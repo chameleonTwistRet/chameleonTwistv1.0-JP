@@ -1,0 +1,132 @@
+name: Chameleon Twist (North America)
+sha1: 173875d2a98161228efb56841484e12446a43156
+options:
+  basename: chameleontwist
+  target_path: baserom.jp.z64
+  base_path: .
+  compiler: IDO
+  find_file_boundaries: True
+  header_encoding: ASCII
+  platform: n64
+  undefined_funcs_auto_path: undefined_funcs_auto.txt
+  undefined_syms_auto_path: undefined_syms_auto.txt
+  # symbol_addrs_path: symbol_addrs.txt
+  # undefined_syms_path: undefined_syms.txt
+  asm_path: asm
+  src_path: src
+  build_path: build
+  # extensions_path: tools/splat_ext
+  # auto_all_sections: True
+segments:
+  - name: header
+    type: header
+    start: 0x0
+  - name: boot
+    type: bin
+    start: 0x40
+  - name: main
+    type: code
+    start: 0x1000
+    vram: 0x80025C90
+    subsegments:
+    subsegments:
+      - [0x1000, asm]
+      - [0x84E0, asm]
+      - [0x298D0, asm]
+      - [0x29DF0, asm]
+      - [0x2C3B0, asm]
+      - [0x30FB0, asm]
+      - [0x5FEB0, asm]
+      - [0xA3D00, asm]
+      - [0xA4300, asm]
+      - [0xB2860, asm]
+      - [0xB39A0, asm]
+      - [0xB4600, asm]
+      - [0xB4B30, asm]
+      - [0xB4F20, asm]
+      - [0xB53D0, asm]
+      - [0xB5440, asm]
+      - [0xB5670, asm]
+      - [0xB5800, asm]
+      - [0xB5910, asm]
+      - [0xB5A20, asm]
+      - [0xB5B60, asm]
+      - [0xB5BC0, asm]
+      - [0xB5E30, asm]
+      - [0xB5ED0, asm]
+      - [0xB5F90, asm]
+      - [0xB6180, asm]
+      - [0xB63E0, asm]
+      - [0xB6460, asm]
+      - [0xB64C0, asm]
+      - [0xB6630, asm]
+      - [0xB66A0, asm]
+      - [0xB6A60, asm]
+      - [0xB6E80, asm]
+      - [0xB6EE0, asm]
+      - [0xB76B0, asm]
+      - [0xB7720, asm]
+      - [0xB7800, asm]
+      - [0xB7950, asm]
+      - [0xB7980, asm]
+      - [0xB7C40, asm]
+      - [0xB7CA0, asm]
+      - [0xB7D20, asm]
+      - [0xB7E40, asm]
+      - [0xB7F10, asm]
+      - [0xB7FC0, asm]
+      - [0xB8000, asm]
+      - [0xB8250, asm]
+      - [0xB95E0, asm]
+      - [0xB9620, asm]
+      - [0xB9D30, asm]
+      - [0xB9D90, asm]
+      - [0xBA5C0, asm]
+      - [0xBA660, asm]
+      - [0xBA680, asm]
+      - [0xBA6E0, asm]
+      - [0xBA740, asm]
+      - [0xBA7D0, asm]
+      - [0xBA830, asm]
+      - [0xBA8A0, asm]
+      - [0xBA910, asm]
+      - [0xBA970, asm]
+      - [0xBA9B0, asm]
+      - [0xBAA80, asm]
+      - [0xBB580, asm]
+      - [0xBB5C0, asm]
+      - [0xBB650, asm]
+      - [0xBB660, asm]
+      - [0xBB820, asm]
+      - [0xBB8C0, asm]
+      - [0xBBBF0, asm]
+      - [0xBBD30, asm]
+      - [0xBBE70, asm]
+      - [0xBBEA0, asm]
+      - [0xBC210, asm]
+      - [0xBC380, asm]
+      - [0xBC8B0, asm]
+      - [0xBCC60, asm]
+      - [0xBCC80, asm]
+      - [0xBCD30, asm]
+      - [0xBD6D0, asm]
+      - [0xBDFE0, asm]
+      - [0xBE020, asm]
+      - [0xBE480, asm]
+      - [0xBE5D0, asm]
+      - [0xBE5E0, asm]
+      - [0xBE940, asm]
+      - [0xBF0F0, asm]
+      - [0xBF300, asm]
+      - [0xBF390, asm]
+      - [0xC00F0, asm]
+      - [0xC1810, asm]
+      - [0xC1B30, asm]
+      - [0xC1B70, asm]
+      - [0xC1C00, asm]
+      - [0xC1C30, asm]
+      - [0xC1CF0, asm]
+      - [0xC1D00, asm]
+  - type: bin
+    start: 0xC3640
+  - [0xC00000]
