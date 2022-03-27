@@ -27,7 +27,7 @@ segments:
   - name: main
     type: code
     start: 0x1000
-    vram: 0x80025C90
+    vram: 0x80025C00
     subsegments:
     subsegments:
       - [0x1000, asm]
