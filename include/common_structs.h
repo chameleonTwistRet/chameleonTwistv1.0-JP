@@ -157,4 +157,10 @@ typedef struct Actor {
     /* 0x170 */ f32 unk_170;
 } Actor; //sizeof 0x174
 
+typedef struct unk_80109E94 {
+    /* 0x00 */ u16 flags;
+    /* 0x02 */ char unk_02[0x22];
+    /* 0x24 */ f32 unk_24;
+} unk_80109E94;
+
 #endif

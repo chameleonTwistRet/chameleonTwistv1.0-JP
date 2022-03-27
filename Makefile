@@ -126,7 +126,7 @@ progress: dirs $(VERIFY) progress.csv
 
 splat: $(SPLAT)
 
-extract: splat
+setup: splat
 	$(PYTHON) $(SPLAT) $(BASENAME).$(VERSION).yaml
 
 clean:
@@ -200,7 +200,7 @@ $(SPLAT):
 	git submodule update --init --recursive
 
 $(BASENAME).ld:
-	$(error Please run make extract and try again.)
+	$(error Please run make setup and try again.)
 
 baserom.$(VERSION).z64:
 	$(error Place the JP chameleon twist ROM, named '$@', in the root of this repo and try again.)

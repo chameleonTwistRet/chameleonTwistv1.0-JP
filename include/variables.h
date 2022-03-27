@@ -7,7 +7,8 @@
 
 extern s32 D_80109E90;
 
-Vec2f D_8010A6D0[0x6C];
+extern unk_80109E94* D_80109E94;
+extern Vec2f D_8010A6D0[0x6C];
 
 extern s32 D_801748A0;
 extern u32 D_800f6884;
