@@ -6,7 +6,7 @@ VERSION  := jp
 BUILD_DIR = build
 ASM_DIRS  = asm
 BIN_DIRS  = assets
-SRC_DIR   = src.$(VERSION)
+SRC_DIR   = src
 
 SRC_DIRS  = $(SRC_DIR)
 
@@ -117,7 +117,7 @@ dirs:
 check: .baserom.$(VERSION).ok
 
 verify: $(TARGET).z64
-	@echo "$$(cat $(BASENAME).$(VERSION).sha1)  $(TARGET).z64" | sha1sum --check
+	sha1sum -c $(BASENAME).$(VERSION).sha1
 
 no_verify: $(TARGET).z64
 	@echo "Skipping SHA1SUM check!"
@@ -126,15 +126,15 @@ progress: dirs $(VERIFY) progress.csv
 
 splat: $(SPLAT)
 
-extract: splat tools
+extract: splat
 	$(PYTHON) $(SPLAT) $(BASENAME).$(VERSION).yaml
-
 
 clean:
 	rm -rf asm
 	rm -rf assets
 	rm -rf build
 	rm -f *auto.txt
+	rm $(BASENAME).ld
 
 
 ### Recipes
@@ -143,7 +143,10 @@ clean:
 	@echo "$$(cat $(BASENAME).$(VERSION).sha1)  $<" | sha1sum --check
 	@touch $@
 
-$(TARGET).elf: $(BASENAME).ld $(BUILD_DIR)/ $(O_FILES)
+$(BUILD_DIR)/:
+	@mkdir -p $(BUILD_DIR)
+
+$(TARGET).elf: $(BASENAME).ld $(O_FILES)
 	$(LD) $(LD_FLAGS) $(LD_FLAGS_EXTRA) -o $@
 
 ifndef PERMUTER
@@ -195,6 +198,9 @@ $(SPLAT):
 	@which git >/dev/null || echo "ERROR: git binary not found on PATH"
 	@which git >/dev/null
 	git submodule update --init --recursive
+
+$(BASENAME).ld:
+	$(error Please run make extract and try again.)
 
 baserom.$(VERSION).z64:
 	$(error Place the JP chameleon twist ROM, named '$@', in the root of this repo and try again.)
