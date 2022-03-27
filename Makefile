@@ -8,7 +8,7 @@ ASM_DIRS  = asm
 BIN_DIRS  = assets
 SRC_DIR   = src.$(VERSION)
 
-SRC_DIRS  = $(SRC_DIR)/
+SRC_DIRS  = $(SRC_DIR)
 
 TOOLS_DIR = tools
 
@@ -98,10 +98,9 @@ GCC_FLAGS += -Wall -Wextra -Wno-missing-braces
 TARGET     = $(BUILD_DIR)/$(BASENAME).$(VERSION)
 LD_SCRIPT  = $(BASENAME).ld
 
-LD_FLAGS   = -T $(LD_SCRIPT) -T undefined_syms.$(VERSION).txt -T undefined_syms_auto.txt -T undefined_funcs_auto.txt
+LD_FLAGS   = -T $(LD_SCRIPT) -T undefined_syms_auto.txt -T undefined_funcs_auto.txt
 LD_FLAGS  += -Map $(TARGET).map --no-check-sections
 
-LD_FLAGS_EXTRA  = -Lbuild/lib -lultra_rom
 LD_FLAGS_EXTRA += $(foreach sym,$(UNDEFINED_SYMS),-u $(sym))
 
 ASM_PROCESSOR_DIR := $(TOOLS_DIR)/asm-processor
@@ -127,8 +126,7 @@ progress: dirs $(VERIFY) progress.csv
 
 splat: $(SPLAT)
 
-#extract: splat check tools
-extract: splat
+extract: splat tools
 	$(PYTHON) $(SPLAT) $(BASENAME).$(VERSION).yaml
 
 

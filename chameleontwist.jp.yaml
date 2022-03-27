@@ -1,5 +1,5 @@
-name: Chameleon Twist (North America)
-sha1: 173875d2a98161228efb56841484e12446a43156
+name: Chameleon Twist (Japan)
+sha1: a1faf5c4ca961ab2c029c84ecfa556755e7f70c8
 options:
   basename: chameleontwist
   target_path: baserom.jp.z64
@@ -113,7 +113,7 @@ segments:
       - [0xBDFE0, asm]
       - [0xBE020, asm]
       - [0xBE480, asm]
-      - [0xBE5D0, asm]
+      - [0xBE5D0, c]
       - [0xBE5E0, asm]
       - [0xBE940, asm]
       - [0xBF0F0, asm]
