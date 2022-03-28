@@ -163,4 +163,14 @@ typedef struct unk_80109E94 {
     /* 0x24 */ f32 unk_24;
 } unk_80109E94;
 
+typedef struct unktemp {
+    /* 0x00 */ f32 unk_00;
+    /* 0x04 */ char unk_04[0x10];
+    /* 0x14 */ f32 unk_14;
+    /* 0x18 */ char unk_18[0x10];
+    /* 0x28 */ f32 unk_28;
+    /* 0x2C */ char unk_2C[0x10];
+    /* 0x3C */ f32 unk_3C;
+} unktemp; //unknown size
+
 #endif

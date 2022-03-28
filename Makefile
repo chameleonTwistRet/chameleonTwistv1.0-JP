@@ -24,9 +24,11 @@ O_FILES := $(foreach file,$(S_FILES),$(BUILD_DIR)/$(file).o) \
            $(foreach file,$(BIN_FILES),$(BUILD_DIR)/$(file).o)
 
 
-
 # function is not included unless explicitly undefined
 UNDEFINED_SYMS  := osViGetCurrentLine
+
+RGBA16_FILES        = $(shell find assets/img/ -name "*.rgba16.png" 2> /dev/null)
+RGBA16_O_FILES      = $(foreach file,$(RGBA16_FILES),$(BUILD_DIR)/$(file:.png=.png.o))
 
 # Tools
 
@@ -43,13 +45,13 @@ GCC      = gcc
 XGCC     = mips-linux-gnu-gcc
 
 GREP     = grep -rl
-CC       = $(TOOLS_DIR)/ido5.3_recomp/cc
+CC       = $(TOOLS_DIR)/usr/lib/cc
 SPLAT    = $(TOOLS_DIR)/splat/split.py
 
 # Flags
 
-OPT_FLAGS      = -O2
-LOOP_UNROLL    =
+OPT_FLAGS       = -O2
+LOOP_UNROLL     =
 
 MIPSISET       = -mips2 -32
 
@@ -105,6 +107,9 @@ LD_FLAGS_EXTRA += $(foreach sym,$(UNDEFINED_SYMS),-u $(sym))
 
 ASM_PROCESSOR_DIR := $(TOOLS_DIR)/asm-processor
 
+$(BUILD_DIR)/$(SRC_DIR)/B7C40.c.o: OPT_FLAGS := -O1
+#$(BUILD_DIR)/$(SRC_DIR)/B5E30.c.o: OPT_FLAGS := -O3
+
 ### Targets
 
 default: all
@@ -134,7 +139,7 @@ clean:
 	rm -rf assets
 	rm -rf build
 	rm -f *auto.txt
-	rm $(BASENAME).ld
+	rm -f $(BASENAME).ld
 
 
 ### Recipes
@@ -146,7 +151,7 @@ clean:
 $(BUILD_DIR)/:
 	@mkdir -p $(BUILD_DIR)
 
-$(TARGET).elf: $(BASENAME).ld $(O_FILES)
+$(TARGET).elf: $(BASENAME).ld $(O_FILES) $(RGBA16_O_FILES)
 	$(LD) $(LD_FLAGS) $(LD_FLAGS_EXTRA) -o $@
 
 ifndef PERMUTER

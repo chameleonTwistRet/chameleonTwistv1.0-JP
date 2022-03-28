@@ -31,6 +31,7 @@ segments:
     subsegments:
     subsegments:
       - [0x1000, asm]
+      - [0x1050, asm]
       - [0x84E0, asm]
       - [0x298D0, asm]
       - [0x29DF0, asm]
@@ -52,7 +53,8 @@ segments:
       - [0xB5A20, asm]
       - [0xB5B60, asm]
       - [0xB5BC0, asm]
-      - [0xB5E30, asm]
+      #- [0xB5E30, c, B5E30] #ido 5.3 -O3
+      - [0xB5E30, asm] #ido 5.3 -O3
       - [0xB5ED0, asm]
       - [0xB5F90, asm]
       - [0xB6180, asm]
@@ -69,7 +71,7 @@ segments:
       - [0xB7800, asm]
       - [0xB7950, asm]
       - [0xB7980, asm]
-      - [0xB7C40, asm]
+      - [0xB7C40, c] #ido 5.3 -O1
       - [0xB7CA0, asm]
       - [0xB7D20, asm]
       - [0xB7E40, asm]
