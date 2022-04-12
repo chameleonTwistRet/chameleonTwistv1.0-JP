@@ -89,25 +89,20 @@ typedef struct Actor {
     /* 0x04C */ f32 unk_4C;
     /* 0x050 */ s32 unk_50;
 
-    /* 0x054 */ actorSubArray unknownPositionThings[2]; //usually 2?
+    /* 0x054 */ actorSubArray unknownPositionThings[3]; //usually 2?
+    //actorSubArray is these offsets in the struct
+        // /* 0x054 */ f32 unk_54;
+        // /* 0x058 */ f32 unk_58;
+        // /* 0x05C */ f32 unk_5C;
+        // /* 0x060 */ f32 unk_60;
+        // /* 0x064 */ f32 unk_64;
+        
+        // /* 0x068 */ f32 unk_68;
+        // /* 0x06C */ f32 unk_6C;
+        // /* 0x070 */ f32 unk_70;
+        // /* 0x074 */ f32 unk_74;
+        // /* 0x078 */ f32 unk_78;
 
-    // /* 0x054 */ f32 unk_54;
-    // /* 0x058 */ f32 unk_58;
-    // /* 0x05C */ f32 unk_5C;
-    // /* 0x060 */ f32 unk_60;
-    // /* 0x064 */ f32 unk_64;
-    
-    // /* 0x068 */ f32 unk_68;
-    // /* 0x06C */ f32 unk_6C;
-    // /* 0x070 */ f32 unk_70;
-    // /* 0x074 */ f32 unk_74;
-    // /* 0x078 */ f32 unk_78;
-
-    /* 0x07C */ f32 unk_7C;
-    /* 0x080 */ f32 unk_80;
-    /* 0x084 */ f32 unk_84;
-    /* 0x088 */ f32 unk_88;
-    /* 0x08C */ f32 unk_8C;
     /* 0x090 */ f32 unk_90;
     /* 0x094 */ f32 unk_94;
     /* 0x098 */ s32 unk_98;
@@ -143,12 +138,12 @@ typedef struct Actor {
     /* 0x12C */ s32 unk_12C;
     /* 0x130 */ s32 unk_130;
     /* 0x134 */ f32 unk_134[8];
-    /* 0x154 */ union {
-        Vec2f _f32;
-        Vec2s _s32;
+        /* 0x154 */ union {
+        Vec2f pos_float;
+        Vec2s pos_int;
     } position;
-    ///* 0x154 */ f32 unk_154;
-    ///* 0x158 */ f32 unk_158;
+    /* 0x154 */ //s32 unk_154;
+    /* 0x158 */ //s32 unk_158;
     /* 0x15C */ f32 unk_15C;
     /* 0x160 */ f32 unk_160;
     /* 0x164 */ f32 unk_164;

@@ -1101,7 +1101,9 @@ void func_8008FDF8(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/5FEB0/func_800B3364.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/5FEB0/func_800B340C.s")
+s32 func_800B340C(s32 value) {
+    return (value >= 0 ) ? 1 : 0;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/5FEB0/func_800B3424.s")
 
