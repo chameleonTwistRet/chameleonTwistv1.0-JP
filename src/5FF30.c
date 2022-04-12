@@ -26,7 +26,7 @@ void func_80085290(void) {
     if (phi_s0 != NULL) {
         do {
             temp_s1 = phi_s0->unk_00;
-            D_800FF63C += 1;
+            D_800FF63C++;
             if ((u32) (phi_s0->unk_0C + 2) < D_80200054) {
                 if (phi_s0 == D_801FFB90.unk_04) {
                     D_801FFB90.unk_04 = phi_s0->unk_00;

@@ -109,7 +109,6 @@ ASM_PROCESSOR_DIR := $(TOOLS_DIR)/asm-processor
 
 $(BUILD_DIR)/$(SRC_DIR)/B7C40.c.o: OPT_FLAGS := -O1
 $(BUILD_DIR)/$(SRC_DIR)/5FEB0.c.o: OPT_FLAGS := -O1
-#$(BUILD_DIR)/$(SRC_DIR)/B5E30.c.o: OPT_FLAGS := -O3
 
 ### Targets
 

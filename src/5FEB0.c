@@ -15,6 +15,6 @@ void func_80084AB0(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
 void func_80084ACC(void) {
     D_800FF5C4 = 0;
     D_800FF5C8 = 0;
-    func_800D99D0(&D_801B1EF0, 5, &func_80084B30, 0, &D_801B30A0, 0x64);
+    func_800D99D0(&D_801B1EF0, 5, &func_80084B30, 0, &D_801B30A0, 100);
     func_800D9B20(&D_801B1EF0);
 }
