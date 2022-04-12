@@ -1,5 +1,5 @@
 #include "common.h"
-#include "5FEB0.h"
+#include "../src/5FF30.h"
 
 #pragma GLOBAL_ASM("asm/nonmatchings/5FF30/func_80084B30.s")
 
@@ -51,7 +51,10 @@ void func_80085290(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/5FF30/func_8008568C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/5FF30/func_80085C08.s")
+void func_80085C08(s32* arg0) {
+    *arg0 = D_80200060;
+    D_80200060 = (s32)arg0; //?
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/5FF30/func_80085C20.s")
 

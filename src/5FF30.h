@@ -38,3 +38,4 @@ void func_800DC950(void*, void*);                      /* extern */
 extern s32 D_800FF63C;
 extern unk_D_801FFB90 D_801FFB90;
 extern u32 D_80200054;
+extern s32 D_80200060;
