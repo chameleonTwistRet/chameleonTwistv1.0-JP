@@ -3,28 +3,16 @@
     "configurations": [
         {
             "name": "chameleonTwist",
-            "browse": {
-                "limitSymbolsToIncludedHeaders": true,
-                "path": [
-                    "${workspaceFolder}/include",
-                    "${workspaceFolder}/src"
-                ]
-            },
             "includePath": [
                 "${workspaceFolder}/include",
-                "${workspaceFolder}/build",
-                "${workspaceFolder}/src",
-                "${workspaceFolder}/assets/"
+                "${workspaceFolder}/src"
             ],
             "defines": [
-                "F3DEX_GBI_2",
                 "_LANGUAGE_C",
-                "_MIPS_SZLONG=32",
-                "SCRIPT(...)={}",
-                "VERSION=us",
-                "VERSION_US"
+                "VERSION=jp",
+                "VERSION_JP"
             ],
-            "cStandard": "c89",
+            "cStandard": "c99",
             "cppStandard": "c++17"
         }
     ]
