@@ -1,7 +1,6 @@
 #ifndef _COMMON_STRUCTS_H_
 #define _COMMON_STRUCTS_H_
 
-#include "ultra64.h"
 #include "types.h"
 
 typedef struct Vec2f {
