@@ -17,10 +17,6 @@ extern s32 D_800F06EC;
 extern s32 D_80174878;
 void func_800D99D0(s32*, s32, void*, s32, s32*, s32);              /* extern */
 void func_800D9B20(s32*);                                /* extern */
-extern s16 D_800FF5C4;
-extern s32 D_800FF5C8;
-extern s32 D_801B1EF0;
-extern s32 D_801B30A0;
 extern s32 func_80084B30;
 void func_800DC400(s32*, s32, s32);                          /* extern */
 extern s32 D_800FF5D0;

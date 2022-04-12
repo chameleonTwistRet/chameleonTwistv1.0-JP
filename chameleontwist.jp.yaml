@@ -38,7 +38,7 @@ segments:
       - [0x2C3B0, c]
       - [0x30FB0, c]
       - [0x5FEB0, c]
-      #- [0x5FF30, c]
+      - [0x5FF30, c]
       - [0xA3D00, c]
       - [0xA4300, c]
       - [0xB2860, c]
@@ -54,7 +54,6 @@ segments:
       - [0xB5A20, c]
       - [0xB5B60, c]
       - [0xB5BC0, c]
-      #- [0xB5E30, c, B5E30] #ido 5.3 -O3
       - [0xB5E30, c] #ido 5.3 -O3
       - [0xB5ED0, c]
       - [0xB5F90, c]
