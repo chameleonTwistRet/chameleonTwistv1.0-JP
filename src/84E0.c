@@ -1,22 +1,119 @@
 #include "common.h"
 
-#pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_8002D0E0.s")
+// Sum of Two Squares: Elisiah
+f32 func_8002D0E0(f32 arg0, f32 arg1) {
+    //return SQ(arg0) + SQ(arg1);
+    return (arg0 * arg0) + (arg1 * arg1);
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_8002D0F4.s")
+// Set f32 in the open set (0, 360) : Elisiah
+void func_8002D0F4(f32* arg0) {
+    f32 temp_f0;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_8002D148.s")
+loop_1:
+    temp_f0 = *arg0;
+    if (temp_f0 >= 360.0f) {
+        *arg0 = temp_f0 - 360.0f;
+        goto loop_1;
+    }
+    if (temp_f0 < 0.0f) {
+        *arg0 = temp_f0 + 360.0f;
+        goto loop_1;
+    }
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_8002D1CC.s")
+// if a^2+b^2 > c^2 -> set a and b st. a^2+b^2=c^2 : Elisiah
+void func_8002D148(f32* a, f32* b, f32 c) {
+    f32 sqrtASquaredPlusBSquared;
+    f32 aSquaredPlusBSquared;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_8002D214.s")
+    aSquaredPlusBSquared = (((*a) * (*a) + (*b) * (*b)));
+    if (!(aSquaredPlusBSquared <= (c * c))) {
+        sqrtASquaredPlusBSquared = func_800DB0B0(aSquaredPlusBSquared);    //sqrt func
+        *a = (*a * c) / sqrtASquaredPlusBSquared;
+        *b = (*b * c) / sqrtASquaredPlusBSquared;
+    }
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_8002D258.s")
+// Unknown Function: Elisiah 
+void func_8002D1CC(f32 arg0, f32 arg1, f32 arg2, f32 arg3) {
+    func_800C8C14(arg2 - arg0, -(arg3 - arg1));
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_8002D2A0.s")
+//#pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_8002D214.s")
+// Input 0-360, counts from 0 to 180 then down to 0: Elisiah
+f32 func_8002D214(f32 arg0) {
 
-#pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_8002D328.s")
+    if (arg0 < 0.0f) {
+        arg0 = -arg0;
+    }
+    if (arg0 > 180.0f) {
+        arg0 = 360.0f - arg0;
+    }
+    return arg0;
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_8002D36C.s")
+// 1 or 0 depending on unk func: Elisiah
+s32 func_8002D258(f32 arg0, f32 arg1, f32 arg2) {
+
+    if (func_8002D214(arg0 - arg1) <= arg2) {
+        return 1;
+    }
+    return 0;
+}
+
+// : Elisiah
+s32 func_8002D2A0(f32 arg0, f32 arg1) {
+    if (arg0 < 180.0f) {
+        if ((arg0 < arg1) && (arg1 <= (arg0 + 180.0f))) {
+            return 1;
+        }
+        return -1;
+    }
+    if (((arg0 - 180.0f) < arg1) && (arg1 <= arg0)) {
+        return -1;
+    }
+    return 1;
+}
+
+// Unknown Function: Elisiah
+void func_8002D328(f32 arg0, f32 arg1) {
+    f32 temp_f12;
+    f32* temp_a0;
+
+    temp_f12 = arg0 - 90.0f;
+    temp_a0 = &arg0;
+    arg0 = temp_f12;
+    func_8002D0F4(/*temp_f12,*/temp_a0);    // Why does everything keep calling this with 2??
+    func_8002D2A0(arg0, arg1);
+}
+
+// Unkown Function: Elisiah
+s32 func_8002D36C(f32* arg0, f32 arg1, f32 arg2) {
+    s32 phi_v1;
+    f32 phi_f0;
+    s32 sp1C;
+
+    phi_v1 = 0;
+    if (*arg0 < arg1) {
+        phi_f0 = -(*arg0 - arg1);
+    } else {
+        phi_f0 = *arg0 - arg1;
+    }
+    if (phi_f0 > 180.0f) {
+        phi_f0 = 360.0f - phi_f0;
+    }
+    if (arg2 <= phi_f0) {
+        sp1C = 0;
+        *arg0 += arg2 * (f32) func_8002D2A0(*arg0, arg1);
+    } else {
+        *arg0 = arg1;
+        phi_v1 = 1;
+    }
+    sp1C = phi_v1;
+    func_8002D0F4(arg0);
+    return sp1C;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_8002D434.s")
 
@@ -182,7 +279,17 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_8003A208.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_8003A3F0.s")
+// Ant Queen Function: Elisiah
+void func_8003A3F0(Actor* antQueenActor) {
+    antQueenActor->unk_120 = (s32) antQueenActor->unk_12C;
+    antQueenActor->unk_50 = 3;
+    antQueenActor->unknownPositionThings[1].unk_0C = 150.0f;
+    antQueenActor->unknownPositionThings[1].unk_10 = (f32) D_8010A6D0[Ant_Queen].y;
+    antQueenActor->unknownPositionThings[2].unk_0C = 200.0f;
+    antQueenActor->unknownPositionThings[2].unk_10 = (f32) D_8010A6D0[Ant_Queen].y;
+    antQueenActor->unknownPositionThings[1].unk_04 = 150.0f;
+    antQueenActor->unknownPositionThings[2].unk_04 = 300.0f;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_8003A444.s")
 
@@ -456,7 +563,13 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_800477CC.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_800479CC.s")
+//#pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_800479CC.s")
+// Hedgehog Function: Elisiah
+void func_800479CC(Actor* hedgehogActor) {
+    hedgehogActor->unk_134[0] = (f32) hedgehogActor->unk_24;
+    hedgehogActor->unk_134[1] = (f32) hedgehogActor->unk_2C;
+    hedgehogActor->unk_134[2] = (f32) hedgehogActor->unk_90;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_800479E8.s")
 
