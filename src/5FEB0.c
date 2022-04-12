@@ -1,4 +1,5 @@
 #include "common.h"
+#include "5FEB0.h"
 
 #pragma GLOBAL_ASM("asm/nonmatchings/5FEB0/func_80084AB0.s")
 
@@ -273,19 +274,85 @@
 #pragma GLOBAL_ASM("asm/nonmatchings/5FEB0/func_8008FB4C.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/5FEB0/func_8008FBC8.s")
+//matches but no rodata support yet
+// s32 func_8008FBC8(D_8010F444) {
+//     s32 tempVar;
+//     switch (D_8010F444) {
+//         case 0:
+//             tempVar = 0;
+//             break;
+//         case 1:
+//             tempVar = 1;
+//             break;
+//         case 2:
+//             tempVar = 2;
+//             break;
+//         case 3:
+//             tempVar = 3;
+//             break;
+//         case 4:
+//             tempVar = 4;
+//             break;
+//         case 5:
+//             tempVar = 5;
+//             break;
+//         case 6:
+//             tempVar = 6;
+//             break;
+//         case 7:
+//         case 8:
+//         case 9:
+//         case 10:
+//         case 11:
+//         case 12:
+//         case 13:
+//         case 14:
+//         case 15:
+//         default:
+//             return -1;
+//     }
+//     return tempVar;
+// }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/5FEB0/func_8008FC34.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/5FEB0/func_8008FD04.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/5FEB0/func_8008FD68.s")
+void func_8008FD68(void) {
+    func_800A7988();
+    D_80174878++;
+    if (D_800F06EC >= 0) {
+        D_80174878 = D_800F06EC;
+    }
+    D_80174878 = func_800961F4(D_80174878);
+    func_8002E0CC();
+    func_800C2FA0();
+    func_80056EB4();
+    func_800615A4();
+    func_8005C9B8();
+    func_80084788();
+    func_8008CDC4();
+}
 
 void func_8008FDF8(void) {
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/5FEB0/func_8008FE00.s")
+void func_8008FE00(void) {
+    func_8006CB34(D_800F06DC);
+    func_8006D598(D_800F06DC, 0, 0);
+    func_8006CBA8(D_800F06DC);
+    func_8006CB34(D_800F06DC);
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/5FEB0/func_8008FE50.s")
+void func_8008FE50(void) {
+    s32 i = 0;
+
+    for (i = 0; i < 6; i++) {
+        func_8006CB34(i);
+        func_8006D598(i, 0, 0);
+        func_8006CBA8(i);
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/5FEB0/func_8008FEA8.s")
 
