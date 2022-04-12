@@ -102,6 +102,12 @@ typedef struct Actor {
         // /* 0x074 */ f32 unk_74;
         // /* 0x078 */ f32 unk_78;
 
+        // /* 0x07C */ f32 unk_7C;
+        // /* 0x080 */ f32 unk_80;
+        // /* 0x084 */ f32 unk_84;
+        // /* 0x088 */ f32 unk_88;
+        // /* 0x08C */ f32 unk_8C;
+
     /* 0x090 */ f32 unk_90;
     /* 0x094 */ f32 unk_94;
     /* 0x098 */ s32 unk_98;
@@ -138,8 +144,8 @@ typedef struct Actor {
     /* 0x130 */ s32 unk_130;
     /* 0x134 */ f32 unk_134[8];
         /* 0x154 */ union {
-        Vec2f pos_float;
-        Vec2s pos_int;
+        Vec2f _f32;
+        Vec2s _s32;
     } position;
     /* 0x154 */ //s32 unk_154;
     /* 0x158 */ //s32 unk_158;
