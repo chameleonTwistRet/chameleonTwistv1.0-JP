@@ -1,8 +1,7 @@
 {
     "files.associations": {
-        "ultra64.h": "c",
-        "macros.h": "c",
-        "gbi_custom.h": "c",
-        "types.h": "c"
+        "types.h": "c",
+        "common.h": "c",
+        "functions.jp.h": "c"
     }
 }
