@@ -38,6 +38,7 @@ segments:
       - [0x2C3B0, c]
       - [0x30FB0, c]
       - [0x5FEB0, c]
+      #- [0x5FF30, c]
       - [0xA3D00, c]
       - [0xA4300, c]
       - [0xB2860, c]

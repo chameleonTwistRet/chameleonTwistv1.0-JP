@@ -3,19 +3,57 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/5FEB0/func_80084AB0.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/5FEB0/func_80084ACC.s")
+void func_80084ACC(void) {
+    D_800FF5C4 = 0;
+    D_800FF5C8 = 0;
+    func_800D99D0(&D_801B1EF0, 5, &func_80084B30, 0, &D_801B30A0, 0x64);
+    func_800D9B20(&D_801B1EF0);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/5FEB0/func_80084B30.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/5FEB0/func_80084F80.s")
+void func_80084F80(s32 arg0, s32 arg1) {
+    D_801B3138 = arg0;
+    D_800FF5D0 = arg1;
+    func_800DC400(&D_801B3120, 3, 0);
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/5FEB0/func_80084FC0.s")
+void func_80084FC0(s32 arg0) {
+    D_801B3140 = arg0;
+    func_800DC400(&D_801B3120, 5, 0);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/5FEB0/func_80084FF4.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/5FEB0/func_800851C0.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/5FEB0/func_80085290.s")
+//TODO: cleanup (linked list that is heap related maybe?)
+void func_80085290(void) {
+    void* temp_s1;
+    unk_D_801FFB90* phi_s0 = D_801FFB90.unk_04;
+
+    D_800FF63C = 0;
+    if (phi_s0 != NULL) {
+        do {
+            temp_s1 = phi_s0->unk_00;
+            D_800FF63C += 1;
+            if ((u32) (phi_s0->unk_0C + 2) < D_80200054) {
+                if (phi_s0 == D_801FFB90.unk_04) {
+                    D_801FFB90.unk_04 = phi_s0->unk_00;
+                }
+                func_800DC920(phi_s0);
+                if (D_801FFB90.unk_08 != 0) {
+                    func_800DC950(phi_s0, D_801FFB90.unk_08);
+                } else {
+                    D_801FFB90.unk_08 = phi_s0;
+                    phi_s0->unk_00 = NULL;
+                    phi_s0->unk_04 = NULL;
+                }
+            }
+            phi_s0 = temp_s1;
+        } while (temp_s1 != NULL);
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/5FEB0/func_80085364.s")
 
