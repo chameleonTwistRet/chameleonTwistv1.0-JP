@@ -1,12 +1,36 @@
 #include "common.h"
 
-#pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_8002D0E0.s")
+// Sum of Two Squares: Elisiah
+//#pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_8002D0E0.s")
+f32 func_8002D0E0(f32 arg0, f32 arg1) {
+    //return SQ(arg0) + SQ(arg1);
+    return (arg0 * arg0) + (arg1 * arg1);
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_8002D0F4.s")
+// Set f32 in the open set (0, 360) : Elisiah
+//#pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_8002D0F4.s")
+void func_8002D0F4(f32* arg0) {
+    f32 temp_f0;
+
+loop_1:
+    temp_f0 = *arg0;
+    if (temp_f0 >= 360.0f) {
+        *arg0 = temp_f0 - 360.0f;
+        goto loop_1;
+    }
+    if (temp_f0 < 0.0f) {
+        *arg0 = temp_f0 + 360.0f;
+        goto loop_1;
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_8002D148.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_8002D1CC.s")
+// Unknown Function: Elisiah 
+//#pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_8002D1CC.s")
+void func_8002D1CC(f32 arg0, f32 arg1, f32 arg2, f32 arg3) {
+    func_800C8C14(arg2 - arg0, -(arg3 - arg1));
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_8002D214.s")
 

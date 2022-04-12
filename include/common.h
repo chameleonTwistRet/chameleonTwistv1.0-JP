@@ -3,5 +3,6 @@
 
 #include "types.h"
 #include "common_structs.h"
+#include "functions.jp.h"
 
 #endif
