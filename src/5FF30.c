@@ -1,6 +1,7 @@
 #include "common.h"
 #include "../src/5FF30.h"
 
+//has jump table requirement
 #pragma GLOBAL_ASM("asm/nonmatchings/5FF30/func_80084B30.s")
 
 void func_80084F80(s32 arg0, s32 arg1) {
@@ -14,8 +15,10 @@ void func_80084FC0(s32 arg0) {
     func_800DC400(&D_801B3120, 5, 0);
 }
 
+//requires struct
 #pragma GLOBAL_ASM("asm/nonmatchings/5FF30/func_80084FF4.s")
 
+//requires struct
 #pragma GLOBAL_ASM("asm/nonmatchings/5FF30/func_800851C0.s")
 
 void func_80085290(void) {
@@ -45,10 +48,15 @@ void func_80085290(void) {
     }
 }
 
+
+//https://decomp.me/scratch/vOerm
 #pragma GLOBAL_ASM("asm/nonmatchings/5FF30/func_80085364.s")
 
+//requires struct
 #pragma GLOBAL_ASM("asm/nonmatchings/5FF30/func_800853B4.s")
 
+
+//requires struct
 #pragma GLOBAL_ASM("asm/nonmatchings/5FF30/func_8008568C.s")
 
 void func_80085C08(s32* arg0) {
@@ -87,8 +95,10 @@ void func_80085D14(void) {
     D_801FC9A0 = 0;
 }
 
+//requires struct
 #pragma GLOBAL_ASM("asm/nonmatchings/5FF30/func_80085D98.s")
 
+//requires struct
 #pragma GLOBAL_ASM("asm/nonmatchings/5FF30/func_80086710.s")
 
 void func_80086C20(void) {
@@ -97,8 +107,10 @@ void func_80086C20(void) {
     func_800D9B20(&D_801FD560);
 }
 
+//requires struct
 #pragma GLOBAL_ASM("asm/nonmatchings/5FF30/func_80086C7C.s")
 
+//requires struct
 #pragma GLOBAL_ASM("asm/nonmatchings/5FF30/func_80086EB4.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/5FF30/func_80086EFC.s")
@@ -1228,6 +1240,7 @@ void func_8008FE50(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/5FF30/func_800B3364.s")
 
+//Greater than 0 check: Rain
 s32 func_800B340C(s32 value) {
     return (value >= 0 ) ? 1 : 0;
 }
@@ -1636,7 +1649,12 @@ s32 func_800B340C(s32 value) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/5FF30/func_800C5304.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/5FF30/func_800C54F8.s")
+//Unkown Function: Nathan R. (yes i did this one haha)
+void func_800C54F8(u32 *arg0, u32 *arg1){
+    *arg0 = 0;
+    arg0[1] = 0;
+    *arg1 = 0;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/5FF30/func_800C5508.s")
 

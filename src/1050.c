@@ -1,6 +1,8 @@
 #include "common.h"
 
+// https://decomp.me/scratch/2A76r
 #pragma GLOBAL_ASM("asm/nonmatchings/1050/func_80025C50.s")
+
 
 #pragma GLOBAL_ASM("asm/nonmatchings/1050/func_80025CB8.s")
 
