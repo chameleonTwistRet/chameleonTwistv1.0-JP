@@ -1,10 +1,17 @@
 #include "common.h"
+#include "variables.jp.h"
 
 #pragma GLOBAL_ASM("asm/nonmatchings/30FB0/func_80055BB0.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/30FB0/func_80055BCC.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/30FB0/func_80055BD8.s")
+u32 func_80055BD8(void) {
+    u32 y, z;
+    y = D_800F6884 * 4 + 2;
+    z = y + 1;
+    y = y * z;
+    return D_800F6884 = y / 4;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/30FB0/func_80055C04.s")
 
