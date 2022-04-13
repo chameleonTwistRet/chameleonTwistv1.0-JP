@@ -5,6 +5,7 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/30FB0/func_80055BCC.s")
 
+// RNG: US by Rain, converted to JP by Nathan R.
 u32 func_80055BD8(void) {
     u32 y, z;
     y = D_800F6884 * 4 + 2;
