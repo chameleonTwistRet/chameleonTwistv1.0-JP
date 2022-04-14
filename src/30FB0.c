@@ -256,7 +256,6 @@ void func_80061308(u8 arg0, u8 arg1, u8 arg2, u8 arg3, u8 arg4, u8 arg5, u8 arg6
     D_80176850[0xF] = argF;
 }
 
-
 void func_80061394(void) {
     D_800FDFC0[0] = 0;
     D_800FDFC0[1] = 0;
