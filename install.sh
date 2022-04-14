@@ -13,5 +13,4 @@ if cat /etc/os-release | grep -E 'ID=debian|ID_LIKE=(.*)debian' &> /dev/null; th
     pip install pylibyaml
     pip install capstone
     chmod +x tools/usr/lib/* #give exec permissions to ido folder (will change in the future)
-    mv tools/asm-processor/prelude.inc tools/asm-processor/prelude.s #this is needed for some reason...maybe this isn't set up correctly
 fi

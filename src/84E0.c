@@ -40,7 +40,6 @@ void func_8002D1CC(f32 arg0, f32 arg1, f32 arg2, f32 arg3) {
     func_800C8C14(arg2 - arg0, -(arg3 - arg1));
 }
 
-//#pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_8002D214.s")
 // Input 0-360, counts from 0 to 180 then down to 0: Elisiah
 f32 func_8002D214(f32 arg0) {
 
@@ -563,7 +562,6 @@ void func_8003A3F0(Actor* antQueenActor) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_800477CC.s")
 
-//#pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_800479CC.s")
 // Hedgehog Function: Elisiah
 void func_800479CC(Actor* hedgehogActor) {
     hedgehogActor->unk_134[0] = (f32) hedgehogActor->unk_24;
