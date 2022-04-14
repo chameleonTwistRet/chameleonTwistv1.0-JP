@@ -159,6 +159,9 @@ segments:
       - [0xC87C0, c]
       - [0xC87E0, c]
       - [0xC9430, c]
+  - type: bin
+    start: 0xC95B0
+  - [0xC00000]
 
 
 
@@ -437,8 +440,7 @@ segments:
 #     - [0x8DAD60]
 #     - [0x8DAD68, palette, img/texture/chameleons/white/eyeHurt2.ci8]
 #     - [0x8DAF68]
-#     ###################################################################################
-#     ###################################################################################
+#     ###############
 
 #     - [0x8DAF68, ci8, img/level/antland/fire.ci8, 256 , 64]
 #     - [0x8DEF68]
@@ -446,37 +448,26 @@ segments:
 #     - [0x8DF168]
 
 #     - [0x8E1540, ci4, img/fx/clouds.ci4, 64, 32]
-#     - [0x8E1940]
-#     - [0x8E1948, palette, img/fx/clouds.ci4]
-#     - [0x8E1B48]
+#     #- [0x8E1948, palette, img/fx/clouds.ci4]
 
-#     - [0x8E2B70, ci8, img/enemies/antWormball.ci4, 40, 40]
-#     - [0x8E31B0]
-#     - [0x8E31B0, palette, img/enemies/antWormball.ci4]
-#     - [0x8E33B0]
+#     #- [0x8E2B70, ci8, img/enemies/antWormball.ci4, 40, 40]
+#     #- [0x8E31B0, palette, img/enemies/antWormball.ci4]
 
-#     - [0x8E33B8, ia4, img/what/ball.ia4, 32, 32]
-#     - [0x8E35B8]
+#     #- [0x8E33B8, ci4?, img/what/ball.ci4, 32, 32]
 
-#     #i genuinely dont know what this is supposed to be
 #     #- [0x8E48C0, ci8?, img/what/circle.ci, 48, 48]
 
-#     - [0x8E582A, rgba16, img/what/eyeBlink.rgba16, 128, 32]
-#     - [0x8E782A]
+#     #- [0x8E582A, rgba16, img/what/eyeBlink.rgba16, 128, 32]
 
     
-#     - [0x8E76F2, rgba16, img/what/eyeDizzy.rgba16, 96, 32]
-#     - [0x8E8EF2]
+#     #- [0x8E76F2, rgba16, img/what/eyeDizzy.rgba16, 96, 32]
 
-#     - [0x8E9036, rgba16, img/what/eyeSexy.rgba16, 96, 32]    
-#     - [0x8EA836]
+#     #- [0x8E9036, rgba16, img/what/eyeSexy.rgba16, 96, 32]    
 
-#     - [0x8EA838, ci4, img/enemies/ant.ci4, 320, 120]
-#     - [0x8EF338]
-#     - [0x8F3E38, palette, img/enemies/ant.ci4]
-#     - [0x8F4038]
+#     #- [0x8EA838, ci4, img/enemies/ant.ci4, 320, 120]
+#     #- [0x8F3E38, palette, img/enemies/ant.ci4]
 
-#     - [0x948B28, rgba16, img/unused/unusedShoe.rgba16, 320, 240]
+#     - [0x948B28, rgba16, img/unused/bigShoeLmfao.rgba16, 320, 240]
 #     - [0x96E328]
 
 
@@ -484,17 +475,17 @@ segments:
 #     - [0x98E3A0, palette, img/enemies/butterfly.ci8]
 #     - [0x98E5A0]
 
-#     - [0x98E5A8, ia4, img/objects/GC/pottery.ia4, 120, 40]
-#     - [0x98EF08]
+#     #- [0x98E5A8, ci4, img/objects/GC/pottery.ci4, 120, 40]
+#     #- [0x98EF08]
 
-#     - [0x98EF10, ia4, img/objects/GC/plates.ia4, 120, 40]
-#     - [0x98F870]
-#     - [0x98F878, ia4, img/objects/billiards/ballNumbers.ia4, 360, 40]
-#     - [0x991498]
-#     - [0x9914A0, ia8, img/objects/ball.ia8, 128, 64]
-#     - [0x9934A0]
-#     - [0x9934A8, ia4, img/objects/GC/candle.ia4, 32, 56]
-#     - [0x993828]
+#     #- [0x98EF10, ci4, img/objects/GC/plates.ci4, 120, 40]
+#     #- [0x98F870]
+#     #- [0x98F878, ci4, img/objects/billiards/ballNumbers.ci4, 360, 40]
+#     #- [0x991498]
+#     #- [0x9914A0, ci8, img/objects/ball.ci8, 128, 64]
+#     #- [0x9934A0]
+#     #- [0x9934A8, ci4, img/objects/GC/candle.ci4, 32, 56]
+#     #- [0x993828]
 
 #     - [0x993830, ci8, img/bg/dl/1.ci8, 64, 256]
 #     - [0x997830, palette, img/bg/dl/1.ci8]
