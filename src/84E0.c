@@ -1,5 +1,7 @@
 #include "common.h"
 
+const char padRodata[] = "\0\0\0\0\0\0\0";
+
 f32 func_800C8C14(f32, f32);                        /* extern */
 f32 func_800DAD80(f32);                             /* extern */
 f32 func_800DB0B0(f32);                             /* extern */
@@ -7,11 +9,6 @@ f32 func_800DB0C0(f32);                             /* extern */
 void func_8006A74C(void);
 void func_8004263C(void);
 void func_8006E16C(f32, f32, f32, s32, f32, s32);
-extern f64 D_8010B0D8;
-extern f64 D_8010B0E0;
-extern f64 D_8010B0E8;
-extern f64 D_8010B0F0;
-extern f64 D_8010B0F8;
 
 // Sum of Two Squares: Elisiah
 f32 func_8002D0E0(f32 arg0, f32 arg1) {
@@ -128,22 +125,390 @@ s32 func_8002D36C(f32* arg0, f32 arg1, f32 arg2) {
 
 void func_8002D434(f32 *arg0, f32 *arg1, f32 arg2, f32 arg3, f32 arg4) {
     f32 temp_f10;
-    f32 temp_f0 = (*arg0) - arg2;
-    f32 temp_f2 = (*arg1) - arg3;
+    f32 temp_f0 = *arg0 - arg2;
+    f32 temp_f2 = *arg1 - arg3;
     f32 temp_f0_2 = func_800DB0B0(SQ(temp_f0) + SQ(temp_f2));
-    f32 temp2 = 2.0f;
     
     if (temp_f0_2 != 0.0f) {
-        temp_f10 = func_800C8C14(temp_f0, -temp_f2);
-        temp_f10 = temp_f10 + arg4;
-        *arg0 = (func_800DB0C0(((temp_f10 * temp2) * D_8010B0D8) / D_8010B0E0) * temp_f0_2) + arg2;
-        *arg1 = arg3 + (-(func_800DAD80(((temp_f10 * temp2) * D_8010B0E8) / D_8010B0F0) * temp_f0_2));
+        temp_f10 = func_800C8C14(temp_f0, -temp_f2) + arg4;
+        *arg0 = func_800DB0C0(temp_f10 * 2 * PI / 360.0) * temp_f0_2 + arg2;
+        *arg1 = arg3 + -(func_800DAD80( temp_f10 * 2 * PI / 360.0) * temp_f0_2);
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_8002D550.s")
+//TODO: fake match (only here to match rodata)
+void func_8002D550(f32 *arg0, f32 *arg1, f32 arg2, f32 arg3, f32 arg4) {
+    f32 temp_f12;
+    f32 *new_var;
+    f32 temp_f2;
+    f32 temp_f12_2 = func_8002D1CC(arg2, arg3, *arg0, *arg1) * 2;
+    temp_f2 = (*arg0) - arg2;
+    temp_f12 = (*arg1) - arg3;
+    if (((temp_f2 * temp_f2) + (temp_f12 * temp_f12)) < (arg4 * arg4)) {
+        temp_f12_2 = (temp_f12_2 * PI) / 360.0;
+        if (temp_f12) {}
+        *arg0 = (func_800DB0C0(temp_f12_2) * arg4) + arg2;
+        *arg1 = ((-func_800DAD80(temp_f12_2)) * arg4) + arg3;
+    }
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_8002D644.s")
+void func_8002D644(s32 actorIndex, s32 actorID, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7, f32 arg8, f32 arg9, f32 argA, f32 argB, f32 argC, f32 argD, f32 argE, f32 argF, f32 arg10, f32 arg11, f32 arg12, f32 arg13, s32 arg14, s32 arg15, s32 arg16, s32 arg17) {
+    Actor* actorInstance;
+    s32 i;
+
+    actorInstance = &D_8016AC68[actorIndex];
+
+    for (i = 0; i < 6;) {
+        actorInstance->unk_10C[i] = 0;
+        i++;
+    }
+
+    for (i = 0; i < 8; ) {
+        actorInstance->unk_134[i] = 0;
+        i++;
+    }
+
+    actorInstance->actorIndex = actorIndex;
+    actorInstance->actorID = actorID;
+    actorInstance->lifeDuration = 0;
+    actorInstance->unk_24 = arg2;
+    actorInstance->unk_28 = arg3;
+    actorInstance->unk_2C = arg4;
+    actorInstance->unk_90 = arg5;
+
+    for (i = 0; i < 3; i++) {
+        actorInstance->unknownPositionThings[i].unk_08 = 0.0f;
+        actorInstance->unknownPositionThings[i].unk_04 = 0.0f;
+        actorInstance->unknownPositionThings[i].unk_00 = 0.0f;
+        actorInstance->unknownPositionThings[i].unk_10 = 0.0f;
+        actorInstance->unknownPositionThings[i].unk_0C = 0.0f;
+    }
+    actorInstance->unk_3C = actorInstance->unknownPositionThings[0].unk_0C = D_8010A6D0[actorID].x;
+    actorInstance->unk_40 = actorInstance->unknownPositionThings[0].unk_10 = D_8010A6D0[actorID].y;
+    actorInstance->unk_50 = 1;
+
+    actorInstance->unk_F4 = arg6;
+    actorInstance->unk_F8 = arg7;
+    actorInstance->unk_FC = arg8;
+    actorInstance->unk_100 = arg9;
+    actorInstance->unk_104 = argA;
+    actorInstance->unk_108 = argB;
+    actorInstance->position._f32.x = argC;
+    actorInstance->position._f32.y = argD;
+    actorInstance->unk_15C = argE;
+    actorInstance->unk_160 = argF;
+    actorInstance->unk_164 = arg10;
+    actorInstance->unk_168 = arg11;
+    actorInstance->unk_16C = arg12;
+    actorInstance->unk_170 = arg13;
+    actorInstance->unk_124 = arg14;
+    actorInstance->unk_128 = arg15;
+    actorInstance->unk_12C = arg16;
+    actorInstance->unk_130 = arg17;
+    actorInstance->unk_08 = 0;
+    actorInstance->unk_30 = 0.0f;
+    actorInstance->unk_34 = 0.0f;
+    actorInstance->unk_38 = 0.0f;
+    actorInstance->unk_44 = 0.0f;
+    actorInstance->unk_48 = 0.0f;
+    actorInstance->unk_4C = 0.0f;
+    actorInstance->unk_94 = 0.0f;
+    actorInstance->unk_0C = 0;
+    actorInstance->unk_14 = 0;
+    actorInstance->unk_18 = 0;
+    actorInstance->unk_1C = 0;
+    actorInstance->unk_98 = 0;
+    actorInstance->unk_9C = 0;
+    actorInstance->unk_B0 = 0.0f;
+    
+    actorInstance->unk_A0.unk_00 = D_8010AA28[actorID].unk_00;
+    actorInstance->unk_A0.unk_04 = D_8010AA28[actorID].unk_04;
+    actorInstance->unk_A0.unk_08 = D_8010AA28[actorID].unk_08;
+    actorInstance->unk_A0.unk_0C = D_8010AA28[actorID].unk_0C;
+    
+
+    actorInstance->unk_C4 = 0;
+    actorInstance->unk_C8 = 0;
+    actorInstance->unk_C0 = 0.0f;
+
+    actorInstance->unk_D0 = actorInstance->unk_CC = 1.0f;
+    actorInstance->unk_EC = 0;
+    actorInstance->unk_F0 = 0;
+    actorInstance->unk_D4 = 0.0f;
+    actorInstance->unk_D8 = 0.0f;
+    actorInstance->unk_DC = 0.0f;
+    actorInstance->unk_E0 = -1;
+    actorInstance->unk_E4 = -1;
+
+    switch (actorID) {
+    case Red_Ant:
+        func_80039368(actorInstance);
+        return;
+    case Green_Ant:
+        func_8003A1B0(actorInstance);
+        return;
+    case Grey_Ant:
+        func_80038510(actorInstance);
+        return;
+    case Bullet_Hell_Ant:
+        func_80038AE0(actorInstance);
+        return;
+    case Ant_Trio:
+        func_80038F70(actorInstance);
+        return;
+    case Yellow_Ant:
+        func_800399A0(actorInstance);
+        return;
+    case Grey_Ant_Spawner:
+        func_800383C0(actorInstance);
+        return;
+    case Bullet_Hell_Ant_Spawner:
+        func_80038990(actorInstance);
+        return;
+    case Ant_Queen:
+        func_8003A3F0(actorInstance);
+        return;
+    case Ant_Queen_Ant:
+        func_8003B894(actorInstance);
+        return;
+    case White_Bomb_Snake:
+        func_8003BA38(actorInstance);
+        return;
+    case Grenade:
+        func_8003BC8C(actorInstance);
+        return;
+    case Missile_Spawner:
+        func_8003BD98(actorInstance);
+        return;
+    case Missile:
+        func_8003BEE8(actorInstance);
+        return;
+    case Cannon:
+        func_8003C20C(actorInstance);
+        return;
+    case Cannonball:
+        func_8003C4B8(actorInstance);
+        return;
+    case BL_Boss_Segment:
+        func_8003C8AC(actorInstance);
+        return;
+    case Explosion:
+        func_8003D574(actorInstance);
+        return;
+    case Black_Chameleon_Projectile_Spawner:
+        func_8003D6A4(actorInstance);
+        return;
+    case Black_Chameleon_Projectile:
+        func_8003D908(actorInstance);
+        return;
+    case Chomper:
+        func_8003D998(actorInstance);
+        return;
+    case Sand_Crab:
+        func_8003DE04(actorInstance);
+        return;
+    case Vulture:
+        func_8003DFB4(actorInstance);
+        return;
+    case Arrows:
+        func_8003E30C(actorInstance);
+        return;
+    case Boulder:
+        func_8003E368(actorInstance);
+        return;
+    case Armadillo:
+        func_8003E62C(actorInstance);
+        return;
+    case Pogo:
+        func_8003FB04(actorInstance);
+        return;
+    case unk_23:
+        func_8003FEB4(actorInstance);
+        return;
+    case Ice_Cream_Sandwich:
+        func_8003FEC4(actorInstance);
+        return;
+    case Training_Room_Choco_Kid:
+        func_80040068(actorInstance);
+        return;
+    case unk_1F:
+        func_800401E8(actorInstance);
+        return;
+    case Popcorn:
+        func_800404D8(actorInstance);
+        return;
+    case Cake_Boss:
+        func_80041050(actorInstance);
+        return;
+    case Cake_Boss_Strawberry:
+        func_800405F8(actorInstance);
+        return;
+    case unk_28:
+        func_80040CDC(actorInstance);
+        return;
+    case Cake_Boss_Choco_Kid:
+        func_80040CEC(actorInstance);
+        return;
+    case Bowling_Ball:
+        func_80042AFC(actorInstance);
+        return;
+    case Bowling_Pins:
+        func_80042FB4(actorInstance);
+        return;
+    case Cue_Ball:
+        func_8004237C(actorInstance);
+        return;
+    case Billiards_Ball:
+        func_8004259C(actorInstance);
+        return;
+    case unk_2E:
+        func_800431E8(actorInstance);
+        return;
+    case unk_2F:
+        func_800434F4(actorInstance);
+        return;
+    case Cup:
+        func_80043998(actorInstance);
+        return;
+    case Saucer:
+        func_800439D8(actorInstance);
+        return;
+    case Metal_Sheet:
+        func_80043A18(actorInstance);
+        return;
+    case Scroll:
+        func_80043A58(actorInstance);
+        return;
+    case RNG_Room_Spawner:
+        func_80043A98(actorInstance);
+        return;
+    case Mirror:
+        func_80043C80(actorInstance);
+        return;
+    case Barrel_Jump_Fire_Spawner:
+        func_80043FE8(actorInstance);
+        return;
+    case Barrel_Jump_Fire:
+        func_800440FC(actorInstance);
+        return;
+    case Fire_Spitter:
+        func_800442E0(actorInstance);
+        return;
+    case Candles:
+        func_80044504(actorInstance);
+        return;
+    case Fire_Spawner:
+        func_80044544(actorInstance);
+        return;
+    case Fire:
+        func_80044584(actorInstance);
+        return;
+    case Sandal:
+        func_80044708(actorInstance);
+        return;
+    case Pile_of_Books:
+        func_80044878(actorInstance);
+        return;
+    case Pile_of_Books_Arm_Segments:
+        func_80046DDC(actorInstance);
+        return;
+    case Pile_of_Books_Arm_Spitter:
+        func_80046FB0(actorInstance);
+        return;
+    case Pile_of_Books_Projectile:
+        func_8004709C(actorInstance);
+        return;
+    case Spider_Spawner:
+        func_8004718C(actorInstance);
+        return;
+    case Spider:
+        func_80047350(actorInstance);
+        return;
+    case Spider_Trio:
+        func_80047520(actorInstance);
+        return;
+    case Golem:
+        func_800477C4(actorInstance);
+        return;
+    case Hedgehog:
+        func_800479CC(actorInstance);
+        return;
+    case Fish:
+        func_80047C04(actorInstance);
+        return;
+    case Lizard_Kong_Butterfly:
+        func_800480EC(actorInstance);
+        return;
+    case Golem_Room_Spider_Spawner:
+        func_8004769C(actorInstance);
+        return;
+    case Lizard_Kong_Butterfly_Spawner:
+        func_800487D8(actorInstance);
+        return;
+    case Lizard_Kong_Boulder:
+        func_800488C4(actorInstance);
+        return;
+    case Lizard_Kong:
+        func_80048A68(actorInstance);
+        return;
+    case Popcorn_Bucket_Spawner:
+        func_80049780(actorInstance);
+        return;
+    case Popcorn_Bucket:
+        func_800498B4(actorInstance);
+        return;
+    case unk_4E:
+        func_800498F4(actorInstance);
+        return;
+    case Choco_Kid_Spawner:
+        func_80049934(actorInstance);
+        return;
+    case Choco_Kid:
+        func_80049A24(actorInstance);
+        return;
+    case unk_51:
+        func_80049A64(actorInstance);
+        return;
+    case unk_52:
+        func_80049AA4(actorInstance);
+        return;
+    case Battle_Mode_Sand_Crab_Spawner:
+        func_80049AE4(actorInstance);
+        return;
+    case Battle_Mode_Sand_Crab:
+        func_80049C34(actorInstance);
+        return;
+    case unk_55:
+        func_80049D0C(actorInstance);
+        return;
+    case Battle_Mode_Fire:
+        func_80049F04(actorInstance);
+        return;
+    case Battle_Mode_Saucer_Spawner:
+        func_80049F14(actorInstance);
+        return;
+    case Battle_Mode_Saucer:
+        func_8004A0A0(actorInstance);
+        return;
+    case unk_59:
+        func_8004A184(actorInstance);
+        return;
+    case unk_5A:
+        func_8004A310(actorInstance);
+        return;
+    case Power_Up_Spawner:
+        func_8004A39C(actorInstance);
+        return;
+    case Falling_Grey_Ant_Spawner:
+        func_8004A544(actorInstance);
+        return;
+    case Falling_Grey_Ant:
+        func_8004A658(actorInstance);
+        return;
+    case unk_5E:
+        func_8004AB00(actorInstance);
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_8002DE30.s")
 
