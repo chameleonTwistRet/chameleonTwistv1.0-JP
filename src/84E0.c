@@ -4,6 +4,9 @@ f32 func_800C8C14(f32, f32);                        /* extern */
 f32 func_800DAD80(f32);                             /* extern */
 f32 func_800DB0B0(f32);                             /* extern */
 f32 func_800DB0C0(f32);                             /* extern */
+void func_8006A74C(void);
+void func_8004263C(void);
+void func_8006E16C(f32, f32, f32, s32, f32, s32);
 extern f64 D_8010B0D8;
 extern f64 D_8010B0E0;
 extern f64 D_8010B0E8;
@@ -12,8 +15,7 @@ extern f64 D_8010B0F8;
 
 // Sum of Two Squares: Elisiah
 f32 func_8002D0E0(f32 arg0, f32 arg1) {
-    //return SQ(arg0) + SQ(arg1);
-    return (arg0 * arg0) + (arg1 * arg1);
+    return SQ(arg0) + SQ(arg1);
 }
 
 // Set f32 in the open set (0, 360) : Elisiah
@@ -37,7 +39,7 @@ void func_8002D148(f32* a, f32* b, f32 c) {
     f32 sqrtASquaredPlusBSquared;
     f32 aSquaredPlusBSquared;
 
-    aSquaredPlusBSquared = (((*a) * (*a) + (*b) * (*b)));
+    aSquaredPlusBSquared = ((SQ(*a) + SQ(*b)));
     if (!(aSquaredPlusBSquared <= (c * c))) {
         sqrtASquaredPlusBSquared = func_800DB0B0(aSquaredPlusBSquared);    //sqrt func
         *a = (*a * c) / sqrtASquaredPlusBSquared;
@@ -46,8 +48,8 @@ void func_8002D148(f32* a, f32* b, f32 c) {
 }
 
 // Unknown Function: Elisiah 
-void func_8002D1CC(f32 arg0, f32 arg1, f32 arg2, f32 arg3) {
-    func_800C8C14(arg2 - arg0, -(arg3 - arg1));
+f32 func_8002D1CC(f32 arg0, f32 arg1, f32 arg2, f32 arg3) {
+    return func_800C8C14(arg2 - arg0, -(arg3 - arg1));
 }
 
 // Input 0-360, counts from 0 to 180 then down to 0: Elisiah
@@ -128,7 +130,7 @@ void func_8002D434(f32 *arg0, f32 *arg1, f32 arg2, f32 arg3, f32 arg4) {
     f32 temp_f10;
     f32 temp_f0 = (*arg0) - arg2;
     f32 temp_f2 = (*arg1) - arg3;
-    f32 temp_f0_2 = func_800DB0B0((temp_f0 * temp_f0) + (temp_f2 * temp_f2));
+    f32 temp_f0_2 = func_800DB0B0(SQ(temp_f0) + SQ(temp_f2));
     f32 temp2 = 2.0f;
     
     if (temp_f0_2 != 0.0f) {
@@ -263,15 +265,31 @@ void func_8002D434(f32 *arg0, f32 *arg1, f32 arg2, f32 arg3, f32 arg4) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_800383A0.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_800383C0.s")
+// Grey Ant Spawner: Elisiah
+void func_800383C0(Actor* greyAntSpawnerActor) {
+    if (greyAntSpawnerActor->unk_12C != 0) {
+        D_801748A0 = 0;
+        greyAntSpawnerActor->unk_10C[1] = greyAntSpawnerActor->unk_12C;
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_800383E4.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_80038510.s")
+// Grey Ant Function: Rainchu and Elisiah
+void func_80038510(Actor* actor) {
+    actor->unk_94 = actor->unk_124;
+    actor->unk_90 = func_8002D1CC(actor->unk_24, actor->unk_2C, actor->position._f32.x, actor->position._f32.y);
+    actor->unk_10C[0] = 4;
+    actor->unk_134[0] = actor->unk_28;
+    actor->unk_28 = actor->unk_28 - actor->unknownPositionThings[0].unk_10;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_80038574.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_80038990.s")
+// Bullet-Hell Ant Spawner: Elisiah
+void func_80038990(Actor* bulletHellAntSpawnerActor) {
+    bulletHellAntSpawnerActor->unk_10C[1] = bulletHellAntSpawnerActor->unk_128;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_8003899C.s")
 
@@ -283,7 +301,14 @@ void func_8002D434(f32 *arg0, f32 *arg1, f32 arg2, f32 arg3, f32 arg4) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_80038E64.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_80038F70.s")
+// Ant Trio Function: Elisiah
+void func_80038F70(Actor* antTrioActor) {
+    antTrioActor->unk_94 = (f32) antTrioActor->unk_124;
+    antTrioActor->unk_90 = func_8002D1CC(antTrioActor->unk_24, antTrioActor->unk_2C, antTrioActor->position._f32.x, antTrioActor->position._f32.y);
+    antTrioActor->unk_98 = 1;
+    func_800382F4(antTrioActor); 
+    antTrioActor->unk_F0 = func_800C8900(0, 0x100);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_80038FDC.s")
 
@@ -297,7 +322,12 @@ void func_8002D434(f32 *arg0, f32 *arg1, f32 arg2, f32 arg3, f32 arg4) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_80039B0C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_8003A1B0.s")
+// Green Ant Function: Rainchu and Elisiah
+void func_8003A1B0(Actor* greenAntActor) {
+    greenAntActor->unk_134[0] = 0.0f;
+    greenAntActor->unk_10C[2] = greenAntActor->unk_15C / greenAntActor->position._f32.x;
+    greenAntActor->unk_F0 = func_800C8900(0, 0x100/*, greenAntActor*/);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_8003A208.s")
 
@@ -321,19 +351,43 @@ void func_8003A3F0(Actor* antQueenActor) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_8003B8D8.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_8003BA38.s")
+// White Bomb Snake Function: Elisiah
+void func_8003BA38(Actor* whiteBombSnakeActor) {
+    f32 temp_f12;
+    f32 temp_f14;
+    s32 temp_f10;
+
+    temp_f12 = whiteBombSnakeActor->unk_24;
+    temp_f14 = whiteBombSnakeActor->unk_2C;
+    whiteBombSnakeActor->unk_10C[0] = 4;
+    whiteBombSnakeActor->unk_134[0] = temp_f12;
+    whiteBombSnakeActor->unk_134[1] = temp_f14;
+    whiteBombSnakeActor->unk_90 = func_8002D1CC(temp_f12, temp_f14, whiteBombSnakeActor->position._f32.x, whiteBombSnakeActor->position._f32.y);
+    temp_f10 = (s32) (180.0f / whiteBombSnakeActor->unk_160);
+    whiteBombSnakeActor->unk_10C[3] = temp_f10;
+    whiteBombSnakeActor->unk_160 = (f32) (0xB4 / temp_f10);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_8003BADC.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_8003BC8C.s")
+// Grenade Function: Elisiah
+void func_8003BC8C(Actor* grenadeActor) {
+    grenadeActor->unk_94 = grenadeActor->position._f32.x;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_8003BC98.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_8003BD98.s")
+// Missile Spawner: Auto-Decompile
+void func_8003BD98(Actor* missileSpawnerActor) {}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_8003BDA0.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_8003BEE8.s")
+// Missile Function: Elisiah
+void func_8003BEE8(Actor* missileActor) {
+    missileActor->unk_134[0] = missileActor->unk_24;
+    missileActor->unk_134[1] = missileActor->unk_28;
+    missileActor->unk_134[2] = missileActor->unk_2C;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_8003BF04.s")
 
@@ -359,7 +413,8 @@ void func_8003A3F0(Actor* antQueenActor) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_8003D5C8.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_8003D6A4.s")
+// Black Chameleon Projectile Spawner: Auto-Decompile
+void func_8003D6A4(Actor* blackChameleonProjectileSpawnerActor){}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_8003D6AC.s")
 
@@ -375,23 +430,42 @@ void func_8003A3F0(Actor* antQueenActor) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_8003DE4C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_8003DFB4.s")
+// Vulture Function: Elisiah
+void func_8003DFB4(Actor* vultureActor) {
+    vultureActor->unk_134[0] = vultureActor->unk_24;
+    vultureActor->unk_134[1] = vultureActor->unk_28;
+    vultureActor->unk_134[2] = vultureActor->unk_2C;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_8003DFD0.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_8003E224.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_8003E30C.s")
+// Arrows Function: Elisiah
+void func_8003E30C(Actor* arrowsActor) {
+    f32 temp_f0;
+
+    temp_f0 = arrowsActor->position._f32.x;
+    arrowsActor->unk_94 = temp_f0;
+    arrowsActor->unk_10C[0] = (s32) (arrowsActor->position._f32.y / temp_f0);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_8003E32C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_8003E368.s")
+// boulder
+void func_8003E368(Actor* boulderActor){}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_8003E370.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_8003E48C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_8003E62C.s")
+// Armadillo Function: Elisiah
+void func_8003E62C(Actor* armadilloActor) {
+    armadilloActor->unk_134[0] = armadilloActor->position._f32.y / armadilloActor->position._f32.x;
+    armadilloActor->unk_28 = -400.0f;
+    armadilloActor->unk_134[4] = 100.0f;
+    armadilloActor->unk_10C[4] = armadilloActor->unk_130;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_8003E660.s")
 
@@ -403,9 +477,33 @@ void func_8003A3F0(Actor* antQueenActor) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_8003EB38.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_8003FA38.s")
+void func_8003FA38(Actor* arg0, f32 arg1, f32 arg2, f32 arg3) {
+    f32 temp_f0;
+    f32 temp_f2;
+    s32 temp_f8;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_8003FB04.s")
+    temp_f0 = arg1 - arg0->unk_24;
+    temp_f2 = arg3 - arg0->unk_2C;
+    if (arg0->unk_10C[0] >= 3) {
+        arg0->unk_94 = (f32) (arg0->unk_16C / 1.5f);
+    } else {
+        arg0->unk_94 = (f32) arg0->unk_16C;
+    }
+    temp_f8 = (s32) (func_800DB0B0((temp_f0 * temp_f0) + (temp_f2 * temp_f2)) / arg0->unk_94);
+    arg0->unk_10C[1] = temp_f8;
+    arg0->unk_134[3] = (f32) ((arg2 - arg0->unk_28) / (f32) temp_f8);
+    arg0->unk_90 = func_800C8C14(temp_f0, -temp_f2);
+}
+
+// Pogo Function: Elisiah
+void func_8003FB04(Actor* pogoActor) {
+    pogoActor->unk_10C[0] = 1;
+    pogoActor->unk_134[0] = pogoActor->unk_24;
+    pogoActor->unk_134[1] = pogoActor->unk_28;
+    pogoActor->unk_134[2] = pogoActor->unk_2C;
+    
+    func_8003FA38(pogoActor, pogoActor->position._f32.x, pogoActor->position._f32.y, pogoActor->unk_15C);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_8003FB4C.s")
 
@@ -413,19 +511,43 @@ void func_8003A3F0(Actor* antQueenActor) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_8003FEAC.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_8003FEB4.s")
+// unk_23
+void func_8003FEB4(Actor* unk_23Actor){}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_8003FEBC.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_8003FEC4.s")
+// Ice Cream Sandwich Function: Elisiah
+void func_8003FEC4(Actor* iceCreamSandwichActor) {
+    f32 temp_f0;
+
+    temp_f0 = iceCreamSandwichActor->unk_28;
+    iceCreamSandwichActor->unk_134[0] = temp_f0;
+    iceCreamSandwichActor->unk_28 = temp_f0 + 2000.0f;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_8003FEE0.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_80040068.s")
+// Training Room Choco Kid Function: Elisiah
+void func_80040068(Actor* trainingRoomChocoKidActor) {
+    trainingRoomChocoKidActor->unk_134[1] = trainingRoomChocoKidActor->unk_2C;
+    trainingRoomChocoKidActor->unk_94 = trainingRoomChocoKidActor->position._f32.x;
+    trainingRoomChocoKidActor->unk_134[0] = trainingRoomChocoKidActor->unk_24;
+    func_8006E16C(trainingRoomChocoKidActor->unk_24, trainingRoomChocoKidActor->unk_28 + 50.0f, trainingRoomChocoKidActor->unk_2C, 0x42F00000, 20.0f, 0xA);
+}
+
 
 #pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_800400C8.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_800401E8.s")
+// unk_1F Function: Elisiah
+void func_800401E8(Actor* unk_1FActor) {
+    f32 temp_f0;
+
+    temp_f0 = unk_1FActor->unk_28;
+    unk_1FActor->unk_134[0] = temp_f0;
+    unk_1FActor->unk_134[1] = unk_1FActor->unk_24;
+    unk_1FActor->unk_134[2] = unk_1FActor->unk_2C;
+    unk_1FActor->unk_28 = temp_f0 + 1000.0f;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_80040214.s")
 
@@ -433,15 +555,25 @@ void func_8003A3F0(Actor* antQueenActor) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_80040590.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_800405F8.s")
+// Cake Boss Strawberry Function: Elisiah
+void func_800405F8(Actor* cakeBossStrawberryActor) {
+    if (cakeBossStrawberryActor->unk_128 == 6) {
+        cakeBossStrawberryActor->unk_3C *= 2.0f;
+        cakeBossStrawberryActor->unk_40 *= 2.0f;
+        cakeBossStrawberryActor->unknownPositionThings[0].unk_0C = cakeBossStrawberryActor->unk_3C;
+        cakeBossStrawberryActor->unknownPositionThings[0].unk_10 = cakeBossStrawberryActor->unk_40;
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_80040638.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_80040CDC.s")
+// unk_28
+void func_80040CDC(Actor* unk_28Actor){}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_80040CE4.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_80040CEC.s")
+// Cake Boss Choco Kid: Auto-Decompile
+void func_80040CEC(Actor* cakeBossChocoKidActor){}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_80040CF4.s")
 
@@ -455,21 +587,36 @@ void func_8003A3F0(Actor* antQueenActor) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_80042174.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_8004237C.s")
+// Cue Ball Actor: Elisiah
+void func_8004237C(Actor* cueBallActor) {
+    cueBallActor->unk_134[0] = cueBallActor->unk_28;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_80042388.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_8004259C.s")
+// Billiards Ball
+void func_8004259C(Actor* billiardsBallActor){}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_800425A4.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_8004263C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_80042AFC.s")
+// Bowling Ball Function: Elisiah
+void func_80042AFC(Actor* bowlingBallActor) {
+    func_8006A74C();
+    func_8004263C();
+    bowlingBallActor->unk_10C[0] = 0;
+    bowlingBallActor->unk_134[0] = bowlingBallActor->unk_28;
+    bowlingBallActor->unk_10C[3] = func_80055BD8() % 5;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_80042B4C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_80042FB4.s")
+// Bowling Pins Function: Elisiah
+void func_80042FB4(Actor* bowlingPinsActor) {
+    bowlingPinsActor->unk_90 = (f32) ((func_80055BD8() % 21) - 0x64);
+    bowlingPinsActor->unk_10C[1] = (func_80055BD8() % 21) + 0x1E;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_80043010.s")
 
@@ -477,7 +624,8 @@ void func_8003A3F0(Actor* antQueenActor) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_800431FC.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_800434F4.s")
+// unk_2F
+void func_800434F4(Actor* unk_2FActor){}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_800434FC.s")
 
@@ -485,23 +633,37 @@ void func_8003A3F0(Actor* antQueenActor) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_80043558.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_80043998.s")
+// Cup Function: Elisiah
+void func_80043998(Actor* cupActor) {
+    func_80043504(cupActor);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_800439B8.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_800439D8.s")
+// Saucer Function: Elisiah
+void func_800439D8(Actor* saucerActor) {
+    func_80043504(saucerActor);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_800439F8.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_80043A18.s")
+// Metal Sheet Function: Elisiah
+void func_80043A18(Actor* metalSheetActor) {
+    func_80043504(metalSheetActor);
+}
+
 
 #pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_80043A38.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_80043A58.s")
+// Scroll Function: Elisiah
+void func_80043A58(Actor* scrollActor) {
+    func_80043504(scrollActor);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_80043A78.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_80043A98.s")
+// RNG Room Spawner: Auto-Decompile
+void func_80043A98(Actor* rngRoomSpawnerActor){}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_80043AA0.s")
 
@@ -509,23 +671,38 @@ void func_8003A3F0(Actor* antQueenActor) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_80043CDC.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_80043FE8.s")
+// Barrel Jump Fire Spawner: Auto-Decompile
+void func_80043FE8(Actor* barrelJumpFireSpawnerActor){}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_80043FF0.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_800440FC.s")
+// Barrel Jump Fire Actor: Elisiah
+void func_800440FC(Actor* barrelJumpFireActor) {
+    barrelJumpFireActor->unk_134[0] = func_8002D1CC(barrelJumpFireActor->position._f32.x, barrelJumpFireActor->position._f32.y, barrelJumpFireActor->unk_24, barrelJumpFireActor->unk_2C);
+    barrelJumpFireActor->unk_10C[0] = (s32) (360.0f / barrelJumpFireActor->unk_160) - 2;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_80044158.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_800442E0.s")
+// Fire Spitter Function: Elisiah
+void func_800442E0(Actor* fireSpitterActor) {
+    fireSpitterActor->unk_10C[0] = fireSpitterActor->unk_124 - 1;
+}
+
 
 #pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_800442F0.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_80044504.s")
+// Candles Function: Elisiah
+void func_80044504(Actor* candlesActor) {
+    func_800442E0(candlesActor);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_80044524.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_80044544.s")
+// Fire Spawner: Elisiah
+void func_80044544(Actor* fireSpawnerActor) {
+    func_80044504(fireSpawnerActor);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_80044564.s")
 
@@ -533,13 +710,23 @@ void func_8003A3F0(Actor* antQueenActor) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_800445CC.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_80044708.s")
+// Sandal Function: Elisiah
+void func_80044708(Actor* sandalActor) {
+    func_800431E8(sandalActor);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_80044728.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_80044748.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_80044878.s")
+// Pile of Books Function: Elisiah
+void func_80044878(Actor* pileOfBooksActor) {
+    pileOfBooksActor->unk_EC = 0;
+    pileOfBooksActor->unk_10C[3] = pileOfBooksActor->unk_128 * 2;
+    pileOfBooksActor->unk_134[1] = pileOfBooksActor->unk_2C + -800.0f;
+    pileOfBooksActor->unk_134[2] = pileOfBooksActor->unk_90;
+    func_80044748(pileOfBooksActor);    // Compiled as empty originally?
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_800448C0.s")
 
@@ -565,11 +752,18 @@ void func_8003A3F0(Actor* antQueenActor) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_800470C0.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_8004718C.s")
+// Spider Spawner: Auto-Decompile
+void func_8004718C(Actor* spiderSpawnerActor){}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_80047194.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_80047350.s")
+// Spider Function: Elisiah
+void func_80047350(Actor* spiderActor) {
+    spiderActor->unk_98 = 1;
+    spiderActor->unk_34 = spiderActor->unk_160;
+    spiderActor->unk_94 = spiderActor->position._f32.x;
+    func_800382F4(spiderActor);    // Sometimes calls with a arg0, sometimes calls empty?
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_80047384.s")
 
@@ -577,11 +771,13 @@ void func_8003A3F0(Actor* antQueenActor) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_80047568.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_8004769C.s")
+// Golem Room Spider Spawner: Auto-Decompile
+void func_8004769C(Actor* golemRoomSpiderSpawnerActor){}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_800476A4.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_800477C4.s")
+// Golem?: Auto-Decompile
+void func_800477C4(Actor* golem) {}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_800477CC.s")
 
@@ -594,7 +790,11 @@ void func_800479CC(Actor* hedgehogActor) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_800479E8.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_80047C04.s")
+// Fish Function: Elisiah
+void func_80047C04(Actor* fishActor) {
+    fishActor->unk_134[0] = fishActor->unk_24;
+    fishActor->unk_134[1] = fishActor->unk_2C;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_80047C18.s")
 
@@ -606,7 +806,8 @@ void func_800479CC(Actor* hedgehogActor) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_800486E0.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_800487D8.s")
+// Lizard Kong Butterfly Spawner: Auto-Decompile
+void func_800487D8(Actor* lizardKongButterflySpawnerActor){}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_800487E0.s")
 
@@ -622,11 +823,15 @@ void func_800479CC(Actor* hedgehogActor) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_80048B88.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_80049780.s")
+// Popcorn Bucket Spawner: Auto-Decompile
+void func_80049780(Actor* popcornBucketSpawnerActor){}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_80049788.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_800498B4.s")
+// Popcorn Bucket Function: Elisiah
+void func_800498B4(Actor* popcornBucketActor) {
+    func_800401E8(popcornBucketActor);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_800498D4.s")
 
@@ -634,31 +839,50 @@ void func_800479CC(Actor* hedgehogActor) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_80049914.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_80049934.s")
+// Choco Kid Spawner: Auto-Decompile
+void func_80049934(Actor* chocoKidSpawnerActor){}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_8004993C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_80049A24.s")
+// Choco Kid Function: Elisiah
+void func_80049A24(Actor* chocoKidActor) {
+    func_80040068(chocoKidActor);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_80049A44.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_80049A64.s")
+// unk_51 Function: Elisiah
+void func_80049A64(Actor* unk_51Actor) {
+    func_800383C0(unk_51Actor);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_80049A84.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_80049AA4.s")
+// unk_52 Function: Elisiah
+void func_80049AA4(Actor* unk_52Actor) {
+    func_80038510(unk_52Actor);
+}
+
 
 #pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_80049AC4.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_80049AE4.s")
+// Battle Mode Sand Crab Spawner: Auto-Decompile
+void func_80049AE4(Actor* battleModeSandCrabSpawnerActor){}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_80049AEC.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_80049C34.s")
+// Battle Mode Sand Crab Function: Elisiah
+void func_80049C34(Actor* battleModeSandCrabActor) {
+    battleModeSandCrabActor->unk_94 = battleModeSandCrabActor->position._f32.x;
+    battleModeSandCrabActor->unk_34 = 32.0f;
+    func_800382F4(battleModeSandCrabActor);
+}
+
 
 #pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_80049C64.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_80049D0C.s")
+// unk_55
+void func_80049D0C(Actor* unk_55Actor){}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_80049D14.s")
 
@@ -670,31 +894,48 @@ void func_800479CC(Actor* hedgehogActor) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_80049F50.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_8004A0A0.s")
+// Battle Mode Saucer Function: Elisiah
+void func_8004A0A0(Actor* battleModeSaucerActor) {
+    battleModeSaucerActor->unk_134[0] = battleModeSaucerActor->unk_28;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_8004A0AC.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_8004A184.s")
+// unk_59
+void func_8004A184(Actor* unk_59Actor){}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_8004A18C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_8004A310.s")
+// unk_5A Function: Elisiah
+void func_8004A310(Actor* unk_5AActor) {
+    unk_5AActor->unk_98 = 1;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_8004A31C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_8004A39C.s")
+// Power Up Spawner: Auto-Decompile
+void func_8004A39C(Actor* powerUpSpawnerActor){}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_8004A3A4.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_8004A544.s")
+// Falling Grey Ant Spawner Auto-Decompile
+void func_8004A544(Actor* fallingGreyAntSpawnerActor){}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_8004A54C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_8004A658.s")
+// Falling Grey Ant Function: Elisiah
+void func_8004A658(Actor* fallingGreyAntActor) {
+    fallingGreyAntActor->unk_94 = (f32) fallingGreyAntActor->unk_124;
+    fallingGreyAntActor->unk_90 = func_8002D1CC(fallingGreyAntActor->unk_24, fallingGreyAntActor->unk_2C, fallingGreyAntActor->position._f32.x, fallingGreyAntActor->position._f32.y);
+    fallingGreyAntActor->unk_98 = 1;
+    func_800382F4(fallingGreyAntActor);
+    fallingGreyAntActor->unk_F0 = func_800C8900(0, 0x100);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_8004A6C4.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_8004AB00.s")
+// unk_5E
+void func_8004AB00(Actor* unk_5EActor){}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_8004AB08.s")
 
