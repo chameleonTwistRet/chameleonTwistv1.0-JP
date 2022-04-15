@@ -166,10 +166,10 @@ segments:
     vram: 0x800EE1C0
 
   - type: code
-    start: 0xE64D8
-    vram: 0x8010B0D8
+    start: 0xE64D0
+    vram: 0x8010B0D0
     subsegments:
-    - [0xE64D8, .rodata, 84E0]
+    - [0xE64D0, rodata, 84E0]
 
   - type: bin
     start: 0xE6680
