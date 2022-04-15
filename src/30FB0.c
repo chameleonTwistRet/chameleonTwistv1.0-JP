@@ -1,12 +1,15 @@
 #include "common.h"
 
-void func_80055F10(s32, s32);
-
-
-void func_80055BB0(s32*);
+//arg0 is a pointer to the string "mem err!\n"
+void func_80055BB0(char*);
 #pragma GLOBAL_ASM("asm/nonmatchings/30FB0/func_80055BB0.s")
+// void func_80055BB0(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
+//     s32 pad;
+// }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/30FB0/func_80055BCC.s")
+void func_80055BCC(s32 arg0) {
+    D_800F6884 = arg0;
+}
 
 s32 func_80055BD8(void) {
     u32 y, z;
@@ -99,7 +102,7 @@ void func_80056D14(unkStruct02* arg0, s32 arg1, unkStruct02* arg2, unkStruct02* 
     }
 }
 
-s32 func_80056D30(void);
+void* func_80056D30(s32);
 #pragma GLOBAL_ASM("asm/nonmatchings/30FB0/func_80056D30.s")
 
 void func_80056DF4(unkStruct02* arg0, unkStruct02* arg1) {
@@ -120,11 +123,11 @@ void func_80056EB4(void) {
     func_80056CDC(D_801191A0, (D_801FFB78 - D_801191A0));
 }
 
-s32 func_80056EE4(void) {
-    s32 temp_v0 = func_80056D30();
+void* func_80056EE4(s32 arg0) {
+    void* temp_v0 = func_80056D30(arg0);
     
-    if (temp_v0 == 0) {
-        func_80055BB0(&D_8010CA10);
+    if (temp_v0 == NULL) {
+        func_80055BB0(D_8010CA10);
     }
     return temp_v0;
 }

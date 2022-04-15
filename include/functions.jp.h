@@ -5,6 +5,7 @@
 void func_80039368(Actor*);
 void func_80038AE0(Actor*);
 
+void func_80055F10(s32, s32);
 
 // Hedgehog Function: Elisiah
 void func_800479CC(Actor*);
