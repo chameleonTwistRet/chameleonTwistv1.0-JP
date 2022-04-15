@@ -3,29 +3,6 @@
 
 #include "types.h"
 
-typedef struct Vec2f {
-               f32 x;
-               f32 y;
-} Vec2f;
-
-typedef struct Vec2s {
-               s32 x;
-               s32 y;
-} Vec2s;
-
-typedef struct Vec3f {
-               f32 x;
-               f32 y;
-               f32 z;
-} Vec3f;
-
-typedef struct Vec4f {
-               f32 x;
-               f32 y;
-               f32 z;
-               f32 yaw;
-} Vec4f;
-
 typedef struct playerActor {
     /* 0x00 */ u32 flags; //a guess
     /* 0x04 */ f32 xPos;
