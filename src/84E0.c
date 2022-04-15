@@ -1,5 +1,15 @@
 #include "common.h"
 
+f32 func_800C8C14(f32, f32);                        /* extern */
+f32 func_800DAD80(f32);                             /* extern */
+f32 func_800DB0B0(f32);                             /* extern */
+f32 func_800DB0C0(f32);                             /* extern */
+extern f64 D_8010B0D8;
+extern f64 D_8010B0E0;
+extern f64 D_8010B0E8;
+extern f64 D_8010B0F0;
+extern f64 D_8010B0F8;
+
 // Sum of Two Squares: Elisiah
 f32 func_8002D0E0(f32 arg0, f32 arg1) {
     //return SQ(arg0) + SQ(arg1);
@@ -114,7 +124,20 @@ s32 func_8002D36C(f32* arg0, f32 arg1, f32 arg2) {
     return sp1C;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_8002D434.s")
+void func_8002D434(f32 *arg0, f32 *arg1, f32 arg2, f32 arg3, f32 arg4) {
+    f32 temp_f10;
+    f32 temp_f0 = (*arg0) - arg2;
+    f32 temp_f2 = (*arg1) - arg3;
+    f32 temp_f0_2 = func_800DB0B0((temp_f0 * temp_f0) + (temp_f2 * temp_f2));
+    f32 temp2 = 2.0f;
+    
+    if (temp_f0_2 != 0.0f) {
+        temp_f10 = func_800C8C14(temp_f0, -temp_f2);
+        temp_f10 = temp_f10 + arg4;
+        *arg0 = (func_800DB0C0(((temp_f10 * temp2) * D_8010B0D8) / D_8010B0E0) * temp_f0_2) + arg2;
+        *arg1 = arg3 + (-(func_800DAD80(((temp_f10 * temp2) * D_8010B0E8) / D_8010B0F0) * temp_f0_2));
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/84E0/func_8002D550.s")
 

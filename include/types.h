@@ -43,6 +43,7 @@ typedef struct Vec4f {
                f32 yaw;
 } Vec4f;
 
-
+#define PI 3.141592653589793
+#define SQ(x) x*x
 
 #endif

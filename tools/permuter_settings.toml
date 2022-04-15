@@ -1,0 +1,10 @@
+[preserve_macros]
+"g[DS]P.*" = "void"
+"G_IM_SIZ_.*" = "int"
+"G_[AC]C.*" = "int"
+"SP_UCODE_DATA_SIZE" = "int"
+"FRUSTRATIO_.*" = "int"
+"FR_[PN].*" = "int"
+
+[decompme.compilers]
+"tools/usr/lib/cc" = "ido5.3"

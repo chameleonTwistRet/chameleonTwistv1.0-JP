@@ -190,12 +190,6 @@ progress.csv: progress.main.csv progress.lib.csv progress.overlay1.csv progress.
 
 progress.main.csv: $(TARGET).elf
 	$(PYTHON) $(TOOLS_DIR)/progress.py . $(TARGET).map .main --version $(VERSION) $(PROGRESS_NONMATCHING) > $@
-progress.lib.csv: $(TARGET).elf
-	$(PYTHON) $(TOOLS_DIR)/progress.py . $(TARGET).map .main_lib --version $(VERSION) $(PROGRESS_NONMATCHING) > $@
-progress.overlay1.csv: $(TARGET).elf
-	$(PYTHON) $(TOOLS_DIR)/progress.py . $(TARGET).map .overlay1 --version $(VERSION) $(PROGRESS_NONMATCHING) > $@
-progress.overlay2.csv: $(TARGET).elf
-	$(PYTHON) $(TOOLS_DIR)/progress.py . $(TARGET).map .overlay2 --version $(VERSION) $(PROGRESS_NONMATCHING) > $@
 
 # fake targets for better error handling
 $(SPLAT):
@@ -204,7 +198,7 @@ $(SPLAT):
 	@which git >/dev/null
 	git submodule update --init --recursive
 
-$(BASENAME).ld:
+$(BASENAME).jp.ld:
 	$(error Please run make setup and try again.)
 
 baserom.$(VERSION).z64:
