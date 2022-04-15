@@ -159,8 +159,20 @@ segments:
       - [0xC87C0, c]
       - [0xC87E0, c]
       - [0xC9430, c]
+      - [0xC95C0, bin]
+
   - type: bin
-    start: 0xC95B0
+    start: 0xC9F50
+    vram: 0x800EE1C0
+
+  - type: code
+    start: 0xE64D8
+    vram: 0x8010B0D8
+    subsegments:
+    - [0xE64D8, .rodata, 84E0]
+
+  - type: bin
+    start: 0xE6680
   - [0xC00000]
 
 
@@ -1256,6 +1268,4 @@ segments:
 #     - [0xB301E0]
 #     - [0xB301E8, palette, img/texture/chameleons/white/fist4.ci4]
 #     - [0xB303E8]
-
-#   - [0xC00000]
 
