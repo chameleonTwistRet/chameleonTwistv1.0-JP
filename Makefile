@@ -101,7 +101,7 @@ TARGET     = $(BUILD_DIR)/$(BASENAME).$(VERSION)
 LD_SCRIPT  = $(BASENAME).$(VERSION).ld
 
 LD_FLAGS   = -T $(LD_SCRIPT) -T undefined_syms_auto.txt -T undefined_funcs_auto.txt
-LD_FLAGS  += -Map $(TARGET).$(VERSION).map --no-check-sections
+LD_FLAGS  += -Map $(TARGET).map --no-check-sections
 
 LD_FLAGS_EXTRA += $(foreach sym,$(UNDEFINED_SYMS),-u $(sym))
 
