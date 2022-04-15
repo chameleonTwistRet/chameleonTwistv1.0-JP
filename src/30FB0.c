@@ -8,7 +8,7 @@ void func_80055BB0(s32*);
 
 #pragma GLOBAL_ASM("asm/nonmatchings/30FB0/func_80055BCC.s")
 
-u32 func_80055BD8(void) {
+s32 func_80055BD8(void) {
     u32 y, z;
     y = D_800F6884 * 4 + 2;
     z = y + 1;

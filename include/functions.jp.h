@@ -2,8 +2,47 @@
 #include "../src/84E0.h"
 #include "../src/B6460.h"
 
+void func_80039368(Actor*);
+void func_80038AE0(Actor*);
+
+
 // Hedgehog Function: Elisiah
 void func_800479CC(Actor*);
+
+void func_800399A0(Actor*);
+
+void func_8003B894(Actor*);
+
+void func_8003C20C(Actor*);
+
+void func_8003C4B8(Actor*);
+
+void func_8003C8AC(Actor*);
+
+void func_8003D908(Actor*);
+
+void func_8003D998(Actor*);
+
+void func_8003DE04(Actor*);
+
+void func_800404D8(Actor*);
+
+void func_80041050(Actor*);
+
+void func_800431E8(Actor*);
+
+void func_8003D574(Actor*);
+
+void func_800382F4(Actor*);
+
+s32 func_800C8900(s32, s32);
+
+void func_80043504(Actor*);
+
+void func_80044748(Actor*);
+
+s32 func_80055BD8(void);
+
 
 // Ant Queen Function: Elisiah
 void func_8003A3F0(Actor*);
