@@ -8,6 +8,7 @@ options:
   find_file_boundaries: True
   header_encoding: ASCII
   platform: n64
+  ld_script_path: chameleontwist.jp.ld
   undefined_funcs_auto_path: undefined_funcs_auto.txt
   undefined_syms_auto_path: undefined_syms_auto.txt
   # symbol_addrs_path: symbol_addrs.txt

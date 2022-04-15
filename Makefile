@@ -98,10 +98,10 @@ GCC_FLAGS += -mdivide-breaks -fno-stack-protector -fno-common -fno-zero-initiali
 GCC_FLAGS += -Wall -Wextra -Wno-missing-braces
 
 TARGET     = $(BUILD_DIR)/$(BASENAME).$(VERSION)
-LD_SCRIPT  = $(BASENAME).ld
+LD_SCRIPT  = $(BASENAME).$(VERSION).ld
 
 LD_FLAGS   = -T $(LD_SCRIPT) -T undefined_syms_auto.txt -T undefined_funcs_auto.txt
-LD_FLAGS  += -Map $(TARGET).map --no-check-sections
+LD_FLAGS  += -Map $(TARGET).$(VERSION).map --no-check-sections
 
 LD_FLAGS_EXTRA += $(foreach sym,$(UNDEFINED_SYMS),-u $(sym))
 
@@ -139,7 +139,7 @@ clean:
 	rm -rf assets
 	rm -rf build
 	rm -f *auto.txt
-	rm -f $(BASENAME).ld
+	rm -f $(BASENAME).$(VERSION).ld
 
 
 ### Recipes
@@ -151,7 +151,7 @@ clean:
 $(BUILD_DIR)/:
 	@mkdir -p $(BUILD_DIR)
 
-$(TARGET).elf: $(BASENAME).ld $(O_FILES) $(RGBA16_O_FILES)
+$(TARGET).elf: $(BASENAME).$(VERSION).ld $(O_FILES) $(RGBA16_O_FILES)
 	$(LD) $(LD_FLAGS) $(LD_FLAGS_EXTRA) -o $@
 
 ifndef PERMUTER
@@ -198,7 +198,7 @@ $(SPLAT):
 	@which git >/dev/null
 	git submodule update --init --recursive
 
-$(BASENAME).jp.ld:
+$(BASENAME).$(VERSION).ld:
 	$(error Please run make setup and try again.)
 
 baserom.$(VERSION).z64:
