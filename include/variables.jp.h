@@ -1,8 +1,9 @@
-#include "types.h"
+#include "common.h"
+#include "src/io/viint.h"
 
 extern s32 D_801748A0;
 extern s32 D_80109E90;
-extern unk_80109E94* D_80109E94;   // Used in b7c40.c
+extern __OSViContext* /*__osViNext*/D_80109E94;
 extern Vec2f D_8010A6D0[0x6C]; //positions?
 extern unk_8010AA28 D_8010AA28[0x6C]; //actor related?
 extern Actor D_8016AC68[64]; //currently loaded actor structs

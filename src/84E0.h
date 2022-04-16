@@ -1,4 +1,4 @@
-#include "types.h"
+#include "PR/ultratypes.h"
 
 f32 func_8002D0E0(f32, f32);
 void func_8002D0F4(f32*);

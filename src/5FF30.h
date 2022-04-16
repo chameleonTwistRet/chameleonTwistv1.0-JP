@@ -1,4 +1,4 @@
-#include "types.h"
+#include "PR/ultratypes.h"
 
 void func_8006CB34(s32);
 void func_8006CBA8(s32);
