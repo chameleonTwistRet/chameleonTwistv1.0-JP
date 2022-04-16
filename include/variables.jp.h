@@ -2,7 +2,7 @@
 #include "src/io/viint.h"
 
 extern s32 D_801748A0;
-extern s32 D_80109E90;
+extern __OSViContext* /*__osViCurr*/D_80109E90;
 extern __OSViContext* /*__osViNext*/D_80109E94;
 extern Vec2f D_8010A6D0[0x6C]; //positions?
 extern unk_8010AA28 D_8010AA28[0x6C]; //actor related?

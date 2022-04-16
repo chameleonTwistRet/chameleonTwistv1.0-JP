@@ -2,6 +2,8 @@
 #include "../src/84E0.h"
 #include "../src/B6460.h"
 
+//void func_800E31E0(void);
+
 void func_80039368(Actor*);
 void func_80038AE0(Actor*);
 
