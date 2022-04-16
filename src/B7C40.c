@@ -1,7 +1,7 @@
 #include "common.h"
 #include "src/io/viint.h"
 
-void func_800DC840(f32 value) 
+void /*osViSetYScale*/func_800DC840(f32 value) 
 {
     register u32 saveMask;
     saveMask = /*__osDisableInt*/func_800E2BE0();
