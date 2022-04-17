@@ -1,4 +1,5 @@
 #include "common.h"
+#include "PR/ultratypes.h"
 
 const char padRodata[] = "\0\0\0\0\0\0\0";
 

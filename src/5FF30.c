@@ -1,5 +1,5 @@
 #include "common.h"
-#include "../src/5FF30.h"
+#include "PR/ultratypes.h"
 
 //has jump table requirement
 #pragma GLOBAL_ASM("asm/nonmatchings/5FF30/func_80084B30.s")

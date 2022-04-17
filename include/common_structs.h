@@ -224,4 +224,15 @@ typedef struct unkStruct03 {
     /* 0x44 */ s32 unk_44;
 } unkStruct03; //sizeof 0x48
 
+
+//5FF30
+//linked list probably, heap related?
+typedef struct unk_D_801FFB90 {
+/* 0x00 */ void* unk_00;
+/* 0x04 */ void* unk_04;
+/* 0x08 */ void* unk_08;
+/* 0x0C */ s32 unk_0C;
+/* 0x10 */ s32 unk_10;
+} unk_D_801FFB90;
+
 #endif
