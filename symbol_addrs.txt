@@ -67,7 +67,12 @@ _bzero = 0x800E0420;
 osEepromLongWrite = 0x800E07F0;
 
 
-
 __osViNext = 0x80109E94;
 __osViCurr = 0x80109E90;
 alGlobals = 0x80109DA0;
+rspbootTextStart = 0x800EE1C0;
+__additional_scanline = 0x800F6884;
+__osActiveQueue = 0x800F68A8;
+osClockRate = 0x80109014;
+
+

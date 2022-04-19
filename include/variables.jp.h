@@ -9,7 +9,7 @@ extern OSThread* D_801FD560;
 extern Vec2f D_8010A6D0[0x6C]; //positions?
 extern unk_8010AA28 D_8010AA28[0x6C]; //actor related?
 extern Actor D_8016AC68[64]; //currently loaded actor structs
-extern s32 D_800F6884; //rng
+extern s32 __additional_scanline; //rng
 
 extern s32 D_800F6888;
 extern s32 D_800F688C;

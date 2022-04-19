@@ -8,21 +8,21 @@ void func_80055BB0(char*);
 // }
 
 void func_80055BCC(s32 arg0) {
-    D_800F6884 = arg0;
+    __additional_scanline = arg0;
 }
 
 s32 func_80055BD8(void) {
     u32 y, z;
-    y = D_800F6884 * 4 + 2;
+    y = __additional_scanline * 4 + 2;
     z = y + 1;
     y = y * z;
-    return D_800F6884 = y / 4;
+    return __additional_scanline = y / 4;
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/30FB0/func_80055C04.s")
 // requires -O1 ??
 // void func_80055C04(void) {
-//     D_800F68A8 = 1;
+//     __osActiveQueue = 1;
 //     D_800F6888 = -1;
 //     D_800F6898 = -1;
 //     D_800F688C = -1;
@@ -34,15 +34,15 @@ s32 func_80055BD8(void) {
 // }
 
 void func_80055C74(void) {
-    D_800F68A8 = 0;
+    __osActiveQueue = 0;
 }
 
 void func_80055C80(void) {
-    D_800F68A8 = 1;
+    __osActiveQueue = 1;
 }
 
 s32 func_80055C90(void) {
-    return D_800F68A8;
+    return __osActiveQueue;
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/30FB0/func_80055C9C.s")
