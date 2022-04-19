@@ -8,7 +8,7 @@ ASM_DIRS  = asm asm/data
 BIN_DIRS  = assets
 SRC_DIR   = src
 
-SRC_DIRS  = $(SRC_DIR)
+SRC_DIRS  = $(SRC_DIR) src/code src/io src/gu src/os src/audio src/libc
 
 TOOLS_DIR = tools
 
@@ -55,8 +55,7 @@ LOOP_UNROLL     =
 
 MIPSISET       = -mips2 -32
 
-INCLUDE_CFLAGS = -I . -I include -I include/2.0 -I include/2.0/PR -I include/libc -I assets \
-                 -I src.$(VERSION)
+INCLUDE_CFLAGS = -I . -I include -I include/PR -I assets \
 
 ASFLAGS        = -EB -mtune=vr4300 -march=vr4300 -mabi=32 -I include
 OBJCOPYFLAGS   = -O binary
@@ -107,8 +106,18 @@ LD_FLAGS_EXTRA += $(foreach sym,$(UNDEFINED_SYMS),-u $(sym))
 
 ASM_PROCESSOR_DIR := $(TOOLS_DIR)/asm-processor
 
-$(BUILD_DIR)/$(SRC_DIR)/B7C40.c.o: OPT_FLAGS := -O1
-$(BUILD_DIR)/$(SRC_DIR)/5FEB0.c.o: OPT_FLAGS := -O1
+$(BUILD_DIR)/$(SRC_DIR)/io/visetyscale.c.o: OPT_FLAGS := -O1
+$(BUILD_DIR)/$(SRC_DIR)/code/5FEB0.c.o: OPT_FLAGS := -O1
+$(BUILD_DIR)/$(SRC_DIR)/os/virtualtophysical.c.o: OPT_FLAGS := -O1
+#$(BUILD_DIR)/$(SRC_DIR)/audio/seqpsetbank.c.o: OPT_FLAGS := -O3
+
+#$(BUILD_DIR)/src/gu/%.o: OPT_FLAGS := -O3
+#$(BUILD_DIR)/src/gt/%.o: OPT_FLAGS := -O3
+#$(BUILD_DIR)/src/rg/%.o: OPT_FLAGS := -O3
+#$(BUILD_DIR)/src/sp/%.o: OPT_FLAGS := -O3
+#$(BUILD_DIR)/src/sched/%.o: OPT_FLAGS := -O3
+#$(BUILD_DIR)/src/audio/%.o: OPT_FLAGS := -O3
+#$(BUILD_DIR)/src/libc/%.o: OPT_FLAGS := -O3
 
 ### Targets
 

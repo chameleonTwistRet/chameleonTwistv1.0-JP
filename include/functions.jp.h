@@ -1,6 +1,5 @@
-#include "../src/A3D00.h"
-#include "../src/84E0.h"
-#include "../src/B6460.h"
+#include "../src/code/A3D00.h"
+#include "../src/code/84E0.h"
 
 //void func_800E31E0(void);
 

@@ -1,9 +1,11 @@
 #include "common.h"
 #include "src/io/viint.h"
+#include "src/os/osint.h"
 
 extern s32 D_801748A0;
-extern __OSViContext* /*__osViCurr*/D_80109E90;
-extern __OSViContext* /*__osViNext*/D_80109E94;
+extern __OSViContext* __osViCurr;
+extern __OSViContext* __osViNext;
+extern OSThread* D_801FD560;
 extern Vec2f D_8010A6D0[0x6C]; //positions?
 extern unk_8010AA28 D_8010AA28[0x6C]; //actor related?
 extern Actor D_8016AC68[64]; //currently loaded actor structs
