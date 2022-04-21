@@ -1,6 +1,11 @@
 #include "common.h"
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/A4300/func_800C8F00.s")
+/*
+void func_800C8F00(void) {
+    D_80236968 = 0;
+}
+*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/A4300/func_800C8F0C.s")
 

@@ -1,6 +1,6 @@
 #include "common.h"
 
-#pragma GLOBAL_ASM("asm/nonmatchings/os/createthread/func_800D99D0.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/os/createthread/osCreateThread.s")
 /*
 #include <os_internal.h>
 #include <R4300.h>

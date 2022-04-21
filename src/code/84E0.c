@@ -5,7 +5,7 @@ const char padRodata[] = "\0\0\0\0\0\0\0";
 f32 func_800C8C14(f32, f32);                        /* extern */
 f32 __sinf(f32);                             /* extern */
 f32 func_800DB0B0(f32);                             /* extern */
-f32 func_800DB0C0(f32);                             /* extern */
+f32 __cosf(f32);                             /* extern */
 void func_8006A74C(void);
 void func_8004263C(void);
 void func_8006E16C(f32, f32, f32, s32, f32, s32);
@@ -131,7 +131,7 @@ void func_8002D434(f32 *arg0, f32 *arg1, f32 arg2, f32 arg3, f32 arg4) {
     
     if (temp_f0_2 != 0.0f) {
         temp_f10 = func_800C8C14(temp_f0, -temp_f2) + arg4;
-        *arg0 = func_800DB0C0(temp_f10 * 2 * PI / 360.0) * temp_f0_2 + arg2;
+        *arg0 = __cosf(temp_f10 * 2 * PI / 360.0) * temp_f0_2 + arg2;
         *arg1 = arg3 + -(__sinf( temp_f10 * 2 * PI / 360.0) * temp_f0_2);
     }
 }
@@ -147,7 +147,7 @@ void func_8002D550(f32 *arg0, f32 *arg1, f32 arg2, f32 arg3, f32 arg4) {
     if (((temp_f2 * temp_f2) + (temp_f12 * temp_f12)) < (arg4 * arg4)) {
         temp_f12_2 = (temp_f12_2 * PI) / 360.0;
         if (temp_f12) {}
-        *arg0 = (func_800DB0C0(temp_f12_2) * arg4) + arg2;
+        *arg0 = (__cosf(temp_f12_2) * arg4) + arg2;
         *arg1 = ((-__sinf(temp_f12_2)) * arg4) + arg3;
     }
 }
@@ -774,7 +774,11 @@ void func_8003BEE8(Actor* missileActor) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8003D574.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8003D598.s")
+void func_8003D598(Actor* arg0) {               //Unsure if struct is actor
+    if (arg0->unk_124 == arg0->lifeDuration) {  //0x124 == 0x10
+        func_80031518();
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8003D5C8.s")
 
@@ -1018,7 +1022,10 @@ void func_80043A18(Actor* metalSheetActor) {
 }
 
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80043A38.s")
+//#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80043A38.s")
+void func_80043A38(void) {
+    func_80043558();
+}
 
 // Scroll Function: Elisiah
 void func_80043A58(Actor* scrollActor) {
@@ -1033,6 +1040,15 @@ void func_80043A98(Actor* rngRoomSpawnerActor){}
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80043AA0.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80043C80.s")
+/* NEEDS PERMUTING
+void func_80043C80(Actor* arg0) {
+    if (arg0->unk_124 == ((s32) D_8017499C % (s32) arg0->unk_128)) {
+        arg0->unk_10C[1] = 1;
+        return;
+    }
+    arg0->unk_10C[1] = 0;
+}*/
+
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80043CDC.s")
 

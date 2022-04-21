@@ -65,6 +65,19 @@ guFrustumF = 0x800E0260;
 guFrustum = 0x800E03B4;
 _bzero = 0x800E0420;
 osEepromLongWrite = 0x800E07F0;
+osSyncPrintf = 0x80055BB0;
+osViExtendVStart = 0x80055BCC;
+__osGetActiveQueue = 0x80055C90;
+leoInitUnit_atten = 0x80055C80;
+leoDrive_reset = 0x80056E28;
+__leoSetReset = 0x80056F24;
+__cosf = 0x800DB0C0; 
+osCreateThread = 0x800D99D0;
+__osAiDeviceBusy = 0x800EB3D0;
+osEepromRead = 0x800EB8E0;
+__osPackEepReadData = 0x800EBAD0;
+osEepromProbe = 0x800E0780;
+
 
 
 __osViNext = 0x80109E94;

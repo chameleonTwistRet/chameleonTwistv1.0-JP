@@ -50,7 +50,7 @@ SECTIONS
         build/src/code/A4300.c.o(.text);
         build/src/code/B2860.c.o(.text);
         build/src/code/B39A0.c.o(.text);
-        build/src/code/B4600.c.o(.text);
+        build/src/io/motor.c.o(.text);
         build/src/code/B4B30.c.o(.text);
         build/src/os/createthread.c.o(.text);
         build/src/os/startthread.c.o(.text);
@@ -187,9 +187,10 @@ SECTIONS
         build/src/io/spgetstat.c.o(.text);
         build/src/io/ai.c.o(.text);
         build/src/io/conteepwrite.c.o(.text);
+        build/src/io/conteepread.c.o(.text);
         build/src/io/si.c.o(.text);
         build/src/os/destroythread.c.o(.text);
-        build/src/code/C7110.c.o(.text);
+        build/src/io/leodiskinit.c.o(.text);
         build/src/os/setcompare.c.o(.text);
         build/src/os/resetglobalintmask.c.o(.text);
         build/src/io/epirawwrite.c.o(.text);
