@@ -182,7 +182,7 @@ $(BUILD_DIR)/$(SRC_DIR)/data/%.c.o: $(SRC_DIR)/data/%.c
 	$(XGCC) -c $(GCC_FLAGS) -o $@ $<
 
 $(BUILD_DIR)/%.s.o: %.s
-	$(AS) $(ASFLAGS) -o $@ $<
+	cat $< | iconv --from UTF-8 --to EUC-JP | $(AS) $(ASFLAGS) -o $@
 
 $(BUILD_DIR)/%.bin.o: %.bin
 	$(LD) -r -b binary -o $@ $<

@@ -201,9 +201,11 @@ segments:
       - [0xC95C0, bin]
       - [0xC9F50, bin]
       - [0xE64D0, .rodata, code/84E0]
-
+      - [0xE6680, rodata]
+      - [0xE8F00, bin]
+      - [0xEC5D0, bin]
   - type: bin
-    start: 0xE6680 #0xED090
+    start: 0xED090
   - [0xC00000]
 
 
