@@ -23,23 +23,23 @@ f32 func_800C89E8(void) {
 */
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/A3D00/func_800C8A1C.s")
-/*
-Fully compiles on decompme
-f32 func_800C8A1C(f32 x) {  // Get Tan(x)
+
+//Fully compiles on decompme
+/*f32 func_800C8A1C(f32 x) {  // Get Tan(x)
     f32 sin_x;
     f32 cos_x;
     f32 tan_x;
 
-    sin_x = __sinf(x);
-    cos_x = __cosf(x);
+    sin_x = sinf(x);
+    cos_x = cosf(x);
     if (cos_x == 0.0) {
         tan_x = 0.0f;       // Return 0 if tan is undefined
     } else {
         tan_x = sin_x / cos_x;
     }
     return tan_x;
-}
-*/
+}*/
+
 
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/A3D00/func_800C8A78.s")

@@ -4,7 +4,7 @@ const char padRodata[] = "\0\0\0\0\0\0\0";
 
 f32 func_800C8C14(f32, f32);                        /* extern */
 f32 __sinf(f32);                             /* extern */
-f32 func_800DB0B0(f32);                             /* extern */
+f32 __sqrtf(f32);                             /* extern */
 f32 __cosf(f32);                             /* extern */
 void func_8006A74C(void);
 void func_8004263C(void);
@@ -12,35 +12,36 @@ void func_8006E16C(f32, f32, f32, s32, f32, s32);
 
 // Sum of Two Squares: Elisiah
 f32 func_8002D0E0(f32 arg0, f32 arg1) {
-    return SQ(arg0) + SQ(arg1);
+    return SUM_OF_SQUARES(arg0, arg1);
 }
 
-// Set f32 in the open set (0, 360) : Elisiah
-void func_8002D0F4(f32* arg0) {
-    f32 temp_f0;
+// Takes an angle in degrees and returns its normalised angle from 0
+void normalizeDegrees(f32* theta_ptr) {
+    f32 theta;
 
 loop_1:
-    temp_f0 = *arg0;
-    if (temp_f0 >= 360.0f) {
-        *arg0 = temp_f0 - 360.0f;
+    theta = *theta_ptr;
+    if (theta >= 360.0f) {
+        *theta_ptr = theta - 360.0f;
         goto loop_1;
     }
-    if (temp_f0 < 0.0f) {
-        *arg0 = temp_f0 + 360.0f;
+    if (theta < 0.0f) {
+        *theta_ptr = theta + 360.0f;
         goto loop_1;
     }
 }
 
 // if a^2+b^2 > c^2 -> set a and b st. a^2+b^2=c^2 : Elisiah
+// If point is outside circle (radius c), set norm st point is on the boundary
 void func_8002D148(f32* a, f32* b, f32 c) {
-    f32 sqrtASquaredPlusBSquared;
+    f32 norm;
     f32 aSquaredPlusBSquared;
 
-    aSquaredPlusBSquared = ((SQ(*a) + SQ(*b)));
-    if (!(aSquaredPlusBSquared <= (c * c))) {
-        sqrtASquaredPlusBSquared = func_800DB0B0(aSquaredPlusBSquared);    //sqrt func
-        *a = (*a * c) / sqrtASquaredPlusBSquared;
-        *b = (*b * c) / sqrtASquaredPlusBSquared;
+    aSquaredPlusBSquared = SUM_OF_SQUARES(*a, *b);
+    if (!(aSquaredPlusBSquared <= SQ(c))) {
+        norm = sqrtf(aSquaredPlusBSquared);
+        *a = (*a * c) / norm;
+        *b = (*b * c) / norm;
     }
 }
 
@@ -84,16 +85,14 @@ s32 func_8002D2A0(f32 arg0, f32 arg1) {
     return 1;
 }
 
-// Unknown Function: Elisiah
-void func_8002D328(f32 arg0, f32 arg1) {
-    f32 temp_f12;
-    f32* temp_a0;
+// Unknown Angle Function: Elisiah
+s32 func_8002D328(f32 theta, f32 phi) { // used to be void and still built
+    f32* theta_ptr;
 
-    temp_f12 = arg0 - 90.0f;
-    temp_a0 = &arg0;
-    arg0 = temp_f12;
-    func_8002D0F4(/*temp_f12,*/temp_a0);    // Why does everything keep calling this with 2??
-    func_8002D2A0(arg0, arg1);
+    theta_ptr = &theta;
+    theta = theta - 90.0f;
+    normalizeDegrees(theta_ptr);
+    return func_8002D2A0(theta, phi);   // used to not return and still built
 }
 
 // Unkown Function: Elisiah
@@ -119,20 +118,20 @@ s32 func_8002D36C(f32* arg0, f32 arg1, f32 arg2) {
         phi_v1 = 1;
     }
     sp1C = phi_v1;
-    func_8002D0F4(arg0);
+    normalizeDegrees(arg0);
     return sp1C;
 }
 
 void func_8002D434(f32 *arg0, f32 *arg1, f32 arg2, f32 arg3, f32 arg4) {
     f32 temp_f10;
-    f32 temp_f0 = *arg0 - arg2;
-    f32 temp_f2 = *arg1 - arg3;
-    f32 temp_f0_2 = func_800DB0B0(SQ(temp_f0) + SQ(temp_f2));
+    f32 a = *arg0 - arg2;
+    f32 b = *arg1 - arg3;
+    f32 c = sqrtf(SUM_OF_SQUARES(a, b));
     
-    if (temp_f0_2 != 0.0f) {
-        temp_f10 = func_800C8C14(temp_f0, -temp_f2) + arg4;
-        *arg0 = __cosf(temp_f10 * 2 * PI / 360.0) * temp_f0_2 + arg2;
-        *arg1 = arg3 + -(__sinf( temp_f10 * 2 * PI / 360.0) * temp_f0_2);
+    if (c != 0.0f) {
+        temp_f10 = func_800C8C14(a, -b) + arg4;
+        *arg0 = cosf(DEGREES_TO_RADIANS(temp_f10)) * c + arg2;
+        *arg1 = arg3 + -(sinf(DEGREES_TO_RADIANS(temp_f10)) * c);
     }
 }
 
@@ -141,14 +140,14 @@ void func_8002D550(f32 *arg0, f32 *arg1, f32 arg2, f32 arg3, f32 arg4) {
     f32 temp_f12;
     f32 *new_var;
     f32 temp_f2;
-    f32 temp_f12_2 = func_8002D1CC(arg2, arg3, *arg0, *arg1) * 2;
+    f32 temp_f12_2 = func_8002D1CC(arg2, arg3, *arg0, *arg1);
     temp_f2 = (*arg0) - arg2;
     temp_f12 = (*arg1) - arg3;
-    if (((temp_f2 * temp_f2) + (temp_f12 * temp_f12)) < (arg4 * arg4)) {
-        temp_f12_2 = (temp_f12_2 * PI) / 360.0;
+    if (SUM_OF_SQUARES(temp_f2, temp_f12) < SQ(arg4)) {
+        temp_f12_2 = DEGREES_TO_RADIANS(temp_f12_2);
         if (temp_f12) {}
-        *arg0 = (__cosf(temp_f12_2) * arg4) + arg2;
-        *arg1 = ((-__sinf(temp_f12_2)) * arg4) + arg3;
+        *arg0 = (cosf(temp_f12_2) * arg4) + arg2;
+        *arg1 = ((-sinf(temp_f12_2)) * arg4) + arg3;
     }
 }
 
@@ -858,7 +857,7 @@ void func_8003FA38(Actor* arg0, f32 arg1, f32 arg2, f32 arg3) {
     } else {
         arg0->unk_94 = (f32) arg0->unk_16C;
     }
-    temp_f8 = (s32) (func_800DB0B0((temp_f0 * temp_f0) + (temp_f2 * temp_f2)) / arg0->unk_94);
+    temp_f8 = (s32) (sqrtf(SQ(temp_f0) + SQ(temp_f2)) / arg0->unk_94);
     arg0->unk_10C[1] = temp_f8;
     arg0->unk_134[3] = (f32) ((arg2 - arg0->unk_28) / (f32) temp_f8);
     arg0->unk_90 = func_800C8C14(temp_f0, -temp_f2);
