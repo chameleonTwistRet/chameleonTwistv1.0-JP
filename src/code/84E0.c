@@ -50,20 +50,20 @@ f32 func_8002D1CC(f32 arg0, f32 arg1, f32 arg2, f32 arg3) {
     return func_800C8C14(arg2 - arg0, -(arg3 - arg1));
 }
 
-// Input 0-360, counts from 0 to 180 then down to 0: Elisiah
-f32 func_8002D214(f32 arg0) {
+// Mirror the lower semicircle onto the top
+f32 func_8002D214(f32 theta) {
 
-    if (arg0 < 0.0f) {
-        arg0 = -arg0;
+    if (theta < 0.0f) {
+        theta = -theta;
     }
-    if (arg0 > 180.0f) {
-        arg0 = 360.0f - arg0;
+    if (theta > 180.0f) {
+        theta = 360.0f - theta;
     }
-    return arg0;
+    return theta;
 }
 
 // 1 or 0 depending on unk func: Elisiah
-s32 func_8002D258(f32 arg0, f32 arg1, f32 arg2) {
+s32 func_8002D258(f32 arg0, f32 arg1, f32 arg2) {   // Usually called as unk_90, arg1, unk_15C
 
     if (func_8002D214(arg0 - arg1) <= arg2) {
         return 1;

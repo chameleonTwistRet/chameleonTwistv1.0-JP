@@ -43,7 +43,9 @@ typedef struct playerActor {
     /* 0x2C */ f32 zSpeed;
     /* 0x30 */ char unk_30[0x0C];
     /* 0x3C */ f32 yAngle;
-    /* 0x40 */ char unk_40[0x88];
+    /* 0x40 */ f32 playerSpeed; // between 0 and 20.8...
+    //char unk_40[0x88];
+    /* 0x54 */ s32 jumpFlag;    // 0x00 = not jumping, 0x01 = jumping
     /* 0xC8 */ s32 hp;
 } playerActor;
 

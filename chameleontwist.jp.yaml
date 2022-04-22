@@ -203,7 +203,7 @@ segments:
       - [0xE64D0, .rodata, code/84E0]
 
   - type: bin
-    start: 0xE6680
+    start: 0xE6680 #0xED090
   - [0xC00000]
 
 
