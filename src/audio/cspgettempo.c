@@ -26,5 +26,3 @@ void func_800DF91C(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/audio/cspgettempo/func_800DFFA0.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/audio/cspgettempo/func_800E000C.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/audio/cspgettempo/func_800E0180.s")

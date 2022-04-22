@@ -113,6 +113,7 @@ segments:
       - [0xBA9E0, c, audio/seqpplay]
       - [0xBAA10, c, audio/seqpsettempo]
       - [0xBAA80, c, audio/cspgettempo]
+      - [0xBB580, c] # splat warned about this being a new file so I added it - eth
       - [0xBB5C0, c, os/gettime]
       - [0xBB650, c, os/getcount]
       - [0xBB660, c, gu/getfrustum]
