@@ -19,7 +19,6 @@ void func_80025C50(void) {
     osStartThread(&D_80113C90);
 }
 
-// #pragma GLOBAL_ASM("asm/nonmatchings/code/1050/func_80025CB8.s")
 void func_80025CB8(void *arg0) {
     osCreateViManager(OS_PRIORITY_VIMGR);
     osViSetMode(&D_801090F0);
