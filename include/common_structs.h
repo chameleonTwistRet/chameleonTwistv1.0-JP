@@ -237,4 +237,12 @@ typedef struct unk_D_801FFB90 {
 /* 0x10 */ s32 unk_10;
 } unk_D_801FFB90;
 
+
+
+
+
+
+
+
+
 #endif
