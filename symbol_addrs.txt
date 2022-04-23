@@ -70,7 +70,7 @@ __osGetActiveQueue = 0x80055C90;
 leoInitUnit_atten = 0x80055C80;
 leoDrive_reset = 0x80056E28;
 __leoSetReset = 0x80056F24;
-__cosf = 0x800DB0C0; 
+__cosf = 0x800DB0C0;
 __sqrtf = 0x800DB0B0;
 osCreateThread = 0x800D99D0;
 __osAiDeviceBusy = 0x800EB3D0;
@@ -89,4 +89,8 @@ __additional_scanline = 0x800F6884;
 __osActiveQueue = 0x800F68A8;
 osClockRate = 0x80109014;
 
-
+osViSetMode = 0x800D9FD0;
+osViBlack = 0x800DA040;
+osViSetSpecialFeatures = 0x800DA0B0;
+osCreatePiManager = 0x800DA270;
+osSetThreadPri = 0x800DA400;
