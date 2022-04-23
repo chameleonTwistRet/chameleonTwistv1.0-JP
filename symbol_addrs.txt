@@ -15,8 +15,8 @@ guRotateRPY = 0x800DAA84;
 __osViGetCurrentContext = 0x800E31D0;
 guMtxXFML = 0x800DAAD0;
 guMtxCatL = 0x800DAB30;
-guAlignF = 0x800DAB90;
-guAlign = 0x800DAD24;
+guAlignF = 0x800DBAE0;
+guAlign = 0x800DBCA0;
 osVirtualToPhysical = 0x800DC8A0;
 __osProbeTLB = 0x800E6830;
 alUnlink = 0x800DC920;
@@ -65,7 +65,6 @@ guFrustumF = 0x800E0260;
 guFrustum = 0x800E03B4;
 _bzero = 0x800E0420;
 osEepromLongWrite = 0x800E07F0;
-osSyncPrintf = 0x80055BB0;
 osViExtendVStart = 0x80055BCC;
 __osGetActiveQueue = 0x80055C90;
 leoInitUnit_atten = 0x80055C80;
@@ -79,8 +78,8 @@ osEepromRead = 0x800EB8E0;
 __osPackEepReadData = 0x800EBAD0;
 osEepromProbe = 0x800E0780;
 normalizeDegrees = 0x8002D0F4;
-
-
+__osSyncVPrintf = 0x800DBA80;
+osSyncPrintf = 0x800DBA94;
 
 __osViNext = 0x80109E94;
 __osViCurr = 0x80109E90;
