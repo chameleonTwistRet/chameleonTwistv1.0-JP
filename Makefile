@@ -134,6 +134,7 @@ clean:
 distclean: clean
 	rm -rf asm
 	rm -rf assets
+	rm -rf expected
 	rm -f *auto.txt
 	rm -f $(BASENAME).$(VERSION).ld
 
