@@ -1,3 +1,9 @@
+#ifndef FUNCTIONS_JP_H
+#define FUNCTIONS_JP_H
+
+#include "../src/code/A3D00.h"
+#include "../src/code/84E0.h"
+
 //void func_800E31E0(void);
 
 void func_80039368(Actor*);
@@ -280,45 +286,4 @@ void func_8004A544(Actor*);            /* extern */
 void func_8004A658(Actor*);            /* extern */
 void func_8004AB00(Actor*);            /* extern */
 
-
-//5FF30
-void func_8006CB34(s32);
-void func_8006CBA8(s32);
-void func_8006D598(s32, s32, s32);
-void func_8002E0CC(void);
-void func_80056EB4(void);
-void func_8005C9B8(void);
-void func_800615A4(void);
-void func_80084788(void);
-void func_8008CDC4(void);
-s32 func_800961F4(s32);
-s32 func_800A7988(void);
-void func_800C2FA0(void);
-void func_800DC400(s32*, s32, s32);
-void func_800D99D0(s32*, s32, void*, s32, s32*, s32);
-void func_800D9B20(s32*);
-void func_800DA510(s32*, s32, s32, s32, s32, s32, s32*);
-void func_800DA620(s32*, s32, s32);
-void func_800DC550(void);
-void func_800DCA90(s32, s32);
-void func_800DCB10(s32, s32);
-void func_80085D98(void);
-s32 func_80086710(void);
-void func_800DC920(void*);
-void func_800DC950(void*, void*);
-extern s32 func_80084B30;
-
-//84E0
-f32 func_8002D0E0(f32, f32);
-void func_8002D0F4(f32*);
-void func_8002D148(f32*, f32*, f32);
-f32 func_8002D1CC(f32, f32, f32, f32);
-s32 func_8002D2A0(f32, f32);
-void func_8002D328(f32, f32);
-f32 func_800C8C14(f32, f32);
-
-//A3D00
-f32 func_800C8C14(f32, f32);
-
-//B6460
-f32 func_800DB0B0(f32);
+#endif

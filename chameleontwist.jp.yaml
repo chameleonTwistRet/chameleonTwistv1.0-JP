@@ -10,14 +10,14 @@ options:
   platform: n64
   ld_script_path: chameleontwist.jp.ld
   undefined_funcs_auto_path: undefined_funcs_auto.txt
-  undefined_syms_auto_path: undefined_syms_auto.txt
-  # symbol_addrs_path: symbol_addrs.txt
+  symbol_addrs_path: symbol_addrs.txt
   # undefined_syms_path: undefined_syms.txt
   asm_path: asm
   src_path: src
   build_path: build
   # extensions_path: tools/splat_ext
   # auto_all_sections: True
+  create_undefined_funcs_auto: no
 segments:
   - name: header
     type: header
@@ -30,142 +30,188 @@ segments:
     start: 0x1000
     vram: 0x80025C00
     subsegments:
-    subsegments:
-      - [0x1000, c]
-      - [0x1050, c]
-      - [0x84E0, c]
-      - [0x298D0, c]
-      - [0x29DF0, c]
-      - [0x2C3B0, c]
-      - [0x30FB0, c]
-      - [0x5FEB0, c]
-      - [0x5FF30, c]
-      - [0xA3D00, c]
-      - [0xA4300, c]
-      - [0xB2860, c]
-      - [0xB39A0, c]
-      - [0xB4600, c]
-      - [0xB4B30, c]
-      - [0xB4F20, c]
-      - [0xB53D0, c]
-      - [0xB5440, c]
-      - [0xB5670, c]
-      - [0xB5800, c]
-      - [0xB5910, c]
-      - [0xB5A20, c]
-      - [0xB5B60, c]
-      - [0xB5BC0, c]
-      - [0xB5E30, c] #ido 5.3 -O3
-      - [0xB5ED0, c]
-      - [0xB5F90, c]
-      - [0xB6180, c]
-      - [0xB63E0, c]
-      - [0xB6460, c]
-      - [0xB64C0, c]
-      - [0xB6630, c]
-      - [0xB66A0, c]
-      - [0xB6A60, c]
-      - [0xB6E80, c]
-      - [0xB6EE0, c]
-      - [0xB76B0, c]
-      - [0xB7720, c]
-      - [0xB7800, c]
-      - [0xB7950, c]
-      - [0xB7980, c]
-      - [0xB7C40, c] #ido 5.3 -O1
-      - [0xB7CA0, c]
-      - [0xB7D20, c]
-      - [0xB7E40, c]
-      - [0xB7F10, c]
-      - [0xB7FC0, c]
-      - [0xB8000, c]
-      - [0xB8250, c]
-      - [0xB95E0, c]
-      - [0xB9620, c]
-      - [0xB9D30, c]
-      - [0xB9D90, c]
-      - [0xBA5C0, c]
-      - [0xBA660, c]
-      - [0xBA680, c]
-      - [0xBA6E0, c]
-      - [0xBA740, c]
-      - [0xBA7D0, c]
-      - [0xBA830, c]
-      - [0xBA8A0, c]
-      - [0xBA910, c]
-      - [0xBA970, c]
-      - [0xBA9B0, c]
-      - [0xBAA80, c]
-      - [0xBB580, c]
-      - [0xBB5C0, c]
-      - [0xBB650, c]
-      - [0xBB660, c]
-      - [0xBB820, c]
-      - [0xBB8C0, c]
-      - [0xBBBF0, c]
-      - [0xBBD30, c]
-      - [0xBBE70, c]
-      - [0xBBEA0, c]
-      - [0xBC210, c]
-      - [0xBC380, c]
-      - [0xBC8B0, c]
-      - [0xBCC60, c]
-      - [0xBCC80, c]
-      - [0xBCD30, c]
-      - [0xBD6D0, c]
-      - [0xBDFE0, c]
-      - [0xBE020, c]
-      - [0xBE480, c]
-      - [0xBE5D0, c]
-      - [0xBE5E0, c]
-      - [0xBE940, c]
-      - [0xBF0F0, c]
-      - [0xBF300, c]
-      - [0xBF390, c]
-      - [0xC00F0, c]
-      - [0xC1810, c]
-      - [0xC1B30, c]
-      - [0xC1B70, c]
-      - [0xC1C00, c]
-      - [0xC1C30, c]
-      - [0xC1CF0, c]
-      - [0xC1D00, c]
-      - [0xC3640, c]
-      - [0xC3A50, c]
-      - [0xC3BA0, c]
-      - [0xC3C30, c]
-      - [0xC3E60, c]
-      - [0xC3F50, c]
-      - [0xC3FE0, c]
-      - [0xC4080, c]
-      - [0xC41B0, c]
-      - [0xC4950, c]
-      - [0xC49F0, c]
-      - [0xC5690, c]
-      - [0xC5990, c]
-      - [0xC65F0, c]
-      - [0xC6700, c]
-      - [0xC67D0, c]
-      - [0xC6FE0, c]
-      - [0xC7010, c]
-      - [0xC7110, c]
-      - [0xC7200, c]
-      - [0xC7210, c]
-      - [0xC7270, c]
-      - [0xC72C0, c]
-      - [0xC7310, c]
-      - [0xC73B0, c]
-      - [0xC7650, c]
-      - [0xC8110, c]
-      - [0xC87C0, c]
-      - [0xC87E0, c]
-      - [0xC9430, c]
+      - [0x1000, c, code/1000]
+      - [0x1050, c, code/1050]
+      - [0x84E0, c, code/84E0]
+      - [0x298D0, c, code/298D0]
+      - [0x29DF0, c, code/29DF0]
+      - [0x2C3B0, c, code/2C3B0]
+      - [0x30FB0, c, code/30FB0]
+      - [0x5FEB0, c, code/5FEB0]
+      - [0x5FF30, c, code/5FF30]
+      - [0xA3D00, c, code/A3D00]
+      - [0xA4300, c, code/A4300]
+      - [0xB2860, c, code/B2860]
+      - [0xB39A0, c, code/B39A0]
+      - [0xB4600, c, io/motor]
+      - [0xB4B30, c, os/initialize]
+      - [0xB4DD0, c, os/createthread]
+      - [0xB4F20, c, os/startthread]
+      - [0xB5070, c, io/vimgr]
+      - [0xB53D0, c, io/visetmode]
+      - [0xB5440, c, io/viblack]
+      - [0xB54B0, c, io/visetspecial]
+      - [0xB5670, c, io/pimgr]
+      - [0xB5800, c, os/setthreadpri]
+      - [0xB58E0, c, os/createmesgqueue]
+      - [0xB5910, c, io/pidma]
+      - [0xB5A20, c, os/recvmesg]
+      - [0xB5B60, c, io/pirawread]
+      - [0xB5BC0, c, gu/mtxutil]
+      - [0xB5E30, c, gu/rotateRPY] #ido 5.3 -O3
+      - [0xB5ED0, c, gu/mtxcatl]
+      - [0xB5F90, c, gu/rotate]
+      - [0xB6180, c, gu/sinf]
+      - [0xB6340, c, gu/translate]
+      - [0xB63E0, c, os/writebackdcache]
+      - [0xB6460, c, io/viswapbuf]
+      - [0xB64B0, c, gu/sqrtf]
+      - [0xB64C0, c, gu/cosf]
+      - [0xB6630, c, os/seteventmesg]
+      - [0xB66A0, c, io/controller]
+      - [0xB6A60, c, io/pfsinit]
+      - [0xB6C20, c, io/contreaddata]
+      - [0xB6E80, c, libc/syncprintf]
+      - [0xB6EE0, c, gu/align]
+      - [0xB70F0, c, gu/lookatstereo]
+      - [0xB7420, c, gu/perspective]
+      - [0xB76B0, c, io/visetevent]
+      - [0xB7720, c, os/settimer]
+      - [0xB7800, c, os/sendmesg]
+      - [0xB7950, c, os/writebackdcacheall]
+      - [0xB7980, c, io/sptask]
+      - [0xB7C40, c, io/visetyscale] #ido 5.3 -O1
+      - [0xB7CA0, c, os/virtualtophysical] #ido 5.3 -O1
+      - [0xB7D20, c, audio/sl]
+      - [0xB7E40, c, audio/cents2ratio]
+      - [0xB7E90, c, os/invalicache]
+      - [0xB7F10, c, os/invaldcache]
+      - [0xB7FC0, c, audio/heapinit]
+      - [0xB8000, c, audio/bnkf]
+      - [0xB8250, c, io/aisetfreq]
+      - [0xB83B0, c, audio/csplayer]
+      - [0xB95E0, c, audio/seqpsetbank]
+      - [0xB9620, c, audio/sndpplayer]
+      - [0xB9D30, c, audio/seqpsetpan]
+      - [0xB9D90, c, audio/synthesizer]
+      - [0xBA470, c, io/sptaskyield]
+      - [0xBA490, c, io/sptaskyielded]
+      - [0xBA510, c, io/aisetnextbuf]
+      - [0xBA5C0, c, audio/sndpallocate]
+      - [0xBA660, c, audio/sndpsetsound]
+      - [0xBA680, c, audio/sndpsetpitch]
+      - [0xBA6E0, c, audio/sndpsetfxmix]
+      - [0xBA740, c, audio/sndpsetpriority]
+      - [0xBA770, c, audio/sndpsetvol]
+      - [0xBA7D0, c, audio/sndpsetpan]
+      - [0xBA830, c, audio/sndpplay]
+      - [0xBA8A0, c, audio/sndpgetstate]
+      - [0xBA8C0, c, audio/sndpstop]
+      - [0xBA910, c, audio/sndpdeallocate]
+      - [0xBA960, c, audio/seqpgetstate]
+      - [0xBA970, c, audio/seqpsetvol]
+      - [0xBA9B0, c, audio/seqpstop]
+      - [0xBA9E0, c, audio/seqpplay]
+      - [0xBAA10, c, audio/seqpsettempo]
+      - [0xBAA80, c, audio/cspgettempo]
+      - [0xBB580, c] # splat warned about this being a new file so I added it - eth
+      - [0xBB5C0, c, os/gettime]
+      - [0xBB650, c, os/getcount]
+      - [0xBB660, c, gu/getfrustum]
+      - [0xBB820, c, libc/bzero]
+      - [0xBB8C0, c, libc/ll]
+      - [0xBBB80, c, io/conteepprobe]
+      - [0xBBBF0, c, io/conteeplongwrite]
+      - [0xBBD30, c, code/BBD30]
+      - [0xBBE70, c, gu/random]
+      - [0xBBEA0, c, io/pfsisplug]
+      - [0xBC210, c, io/siacs]
+      - [0xBC2D0, c, io/sirawdma]
+      - [0xBC380, c, io/crc]
+      - [0xBC500, c, io/contramwrite]
+      - [0xBC8B0, c, io/contramread]
+      - [0xBCC60, c, os/setsr]
+      - [0xBCC70, c, os/getsr]
+      - [0xBCC80, c, os/setfpccsr]
+      - [0xBCC90, c, io/sprawread]
+      - [0xBCCE0, c, io/sprawwrite]
+      - [0xBCD30, c, os/exceptasm]
+      - [0xBD6D0, c, os/sethwinterrupt]
+      - [0xBDFE0, c, os/interrupt]
+      - [0xBE020, c, os/thread]
+      - [0xBE060, c, os/timerintr]
+      - [0xBE460, c, os/getthreadpri]
+      - [0xBE480, c, io/vi]
+      - [0xBE5D0, c, io/vigetcurrcontext]
+      - [0xBE5E0, c, io/viswapcontext]
+      - [0xBE940, c, io/piacs]
+      - [0xBEA00, c, io/pirawdma]
+      - [0xBEF70, c, os/jammesg]
+      - [0xBF0C0, c, io/pigetcmdq]
+      - [0xBF0F0, c, gu/mtxcatf]
+      - [0xBF300, c, gu/normalize]
+      - [0xBF390, c, io/contpfs]
+      - [0xC00F0, c, io/pfschecker]
+      - [0xC1810, c, libc/bcopy]
+      - [0xC1B20, c, io/spsetstat]
+      - [0xC1B30, c, io/spsetpc]
+      - [0xC1B70, c, io/sprawdma]
+      - [0xC1C00, c, io/sp]
+      - [0xC1C30, c, os/probetlb]
+      - [0xC1CF0, c, audio/syndelete]
+      - [0xC1D00, c, audio/seqplayer]
+      - [0xC3640, c, audio/event]
+      - [0xC3980, c, audio/synaddplayer]
+      - [0xC39D0, c, audio/synstopvoice]
+      - [0xC3A50, c, audio/synfreevoice]
+      - [0xC3B00, c, audio/synsetvol]
+      - [0xC3BA0, c, audio/synsetpitch]
+      - [0xC3C30, c, audio/synallocvoice]
+      - [0xC3E60, c, audio/synstartvoiceparam]
+      - [0xC3F50, c, audio/synsetpan]
+      - [0xC3FE0, c, audio/synsetfxmix]
+      - [0xC4080, c, os/setintmask]
+      - [0xC4120, c, audio/synstartvoice]
+      - [0xC41B0, c, audio/drvrNew]
+      - [0xC4950, c, audio/synallocfx]
+      - [0xC49F0, c, audio/mainbus]
+      - [0xC4B40, c, audio/load]
+      - [0xC5690, c, audio/resample]
+      - [0xC5990, c, audio/env]
+      - [0xC65F0, c, audio/auxbus]
+      - [0xC6700, c, audio/save]
+      - [0xC67C0, c, io/spgetstat]
+      - [0xC67D0, c, io/ai]
+      - [0xC6800, c, io/conteepwrite]
+      - [0xC6CE0, c, io/conteepread]
+      - [0xC6FE0, c, io/si]
+      - [0xC7010, c, os/destroythread]
+      - [0xC7110, c, io/leodiskinit]
+      - [0xC7200, c, os/setcompare]
+      - [0xC7210, c, os/resetglobalintmask]
+      - [0xC7270, c, io/epirawwrite]
+      - [0xC72C0, c, os/yieldthread]
+      - [0xC7310, c, libc/string]
+      - [0xC73B0, c, libc/xlitob]
+      - [0xC7650, c, libc/xldtob]
+      - [0xC8110, c, audio/seq]
+      - [0xC8730, c, audio/synsetpriority]
+      - [0xC8740, c, audio/copy]
+      - [0xC87C0, c, audio/filter]
+      - [0xC87E0, c, audio/reverb]
+      - [0xC9430, c, libc/ldiv]
       - [0xC95C0, bin]
       - [0xC9F50, bin]
-      - [0xE64D0, .rodata, 84E0]
-
+      - [0xE56F0, rodata]
+      - [0xE5AD0, rodata]
+      - [0xE64D0, .rodata, code/84E0]
+      - [0xE6680, rodata]
+      - [0xE7D40, rodata]
+      - [0xE8930, rodata]
+      - [0xE8F00, bin]
+      - [0xEC5D0, bin]
   - type: bin
-    start: 0xE6680
+    start: 0xED090
   - [0xC00000]
 
 
@@ -176,10 +222,10 @@ segments:
 #     start: 0xC95B0
 #     vram: 0x800EE1C0
 #     subsegments:
-    
+
 #     - [0x101BE0, rgba32, star, 32, 32]
 #     - [0x102BE0]
-    
+
 #     - [0x102FB8, ci8, health, 16, 16]
 #     - [0x1030B8]
 #     - [0x1030C0, palette, health]
@@ -223,14 +269,14 @@ segments:
 #     - [0x8BD038]
 
 
-# #         _                          _                                         
-# #        | |                        | |                                        
-# #     ___| |__   __ _ _ __ ___   ___| | ___  ___  _ __     ___ _   _  ___  ___ 
+# #         _                          _
+# #        | |                        | |
+# #     ___| |__   __ _ _ __ ___   ___| | ___  ___  _ __     ___ _   _  ___  ___
 # #    / __| '_ \ / _` | '_ ` _ \ / _ \ |/ _ \/ _ \| '_ \   / _ \ | | |/ _ \/ __|
 # #   | (__| | | | (_| | | | | | |  __/ |  __/ (_) | | | | |  __/ |_| |  __/\__ \
 # #    \___|_| |_|\__,_|_| |_| |_|\___|_|\___|\___/|_| |_|  \___|\__, |\___||___/
-# #                                                               __/ |          
-# #                                                              |___/           
+# #                                                               __/ |
+# #                                                              |___/
 # # ... for some reason
 
 
@@ -464,10 +510,10 @@ segments:
 
 #     #- [0x8E582A, rgba16, img/what/eyeBlink.rgba16, 128, 32]
 
-    
+
 #     #- [0x8E76F2, rgba16, img/what/eyeDizzy.rgba16, 96, 32]
 
-#     #- [0x8E9036, rgba16, img/what/eyeSexy.rgba16, 96, 32]    
+#     #- [0x8E9036, rgba16, img/what/eyeSexy.rgba16, 96, 32]
 
 #     #- [0x8EA838, ci4, img/enemies/ant.ci4, 320, 120]
 #     #- [0x8F3E38, palette, img/enemies/ant.ci4]
@@ -496,7 +542,7 @@ segments:
 #     - [0x997830, palette, img/bg/dl/1.ci8]
 #     - [0x997A30]
 
-    
+
 
 
 #     - [0x9E7A80, rgba16, img/misc/titleSplash.rgba16, 320, 240]
@@ -509,7 +555,7 @@ segments:
 #     - [0xA3C658, ci8, img/misc/battleRanking.ci8, 320, 240]
 #     - [0xA4F260, palette, img/misc/battleRanking.ci8]
 #     - [0xA4F460]
-    
+
 #     - [0xA500F8, ci8, img/misc/colorSelect.ci8, 320 , 240]
 #     - [0xA62D00, palette, img/misc/colorSelect.ci8]
 #     - [0xA62F00]
@@ -559,15 +605,15 @@ segments:
 
 
 
-#  #  ____  _      _____      _____ _    _          __  __ ______ _      ______ ____  _   _    _____  _    _ __  __ _____  
-#  # / __ \| |    |  __ \    / ____| |  | |   /\   |  \/  |  ____| |    |  ____/ __ \| \ | |  |  __ \| |  | |  \/  |  __ \ 
+#  #  ____  _      _____      _____ _    _          __  __ ______ _      ______ ____  _   _    _____  _    _ __  __ _____
+#  # / __ \| |    |  __ \    / ____| |  | |   /\   |  \/  |  ____| |    |  ____/ __ \| \ | |  |  __ \| |  | |  \/  |  __ \
 #  #| |  | | |    | |  | |  | |    | |__| |  /  \  | \  / | |__  | |    | |__ | |  | |  \| |  | |  | | |  | | \  / | |__) |
-#  #| |  | | |    | |  | |  | |    |  __  | / /\ \ | |\/| |  __| | |    |  __|| |  | | . ` |  | |  | | |  | | |\/| |  ___/ 
-#  #| |__| | |____| |__| |  | |____| |  | |/ ____ \| |  | | |____| |____| |___| |__| | |\  |  | |__| | |__| | |  | | |     
-#  # \____/|______|_____/    \_____|_|  |_/_/    \_\_|  |_|______|______|______\____/|_| \_|  |_____/ \____/|_|  |_|_|    
-#  # (avgn voice) Whaaat were they thiiiinkiiing 
-                                                                                                                        
-                                                                                                                        
+#  #| |  | | |    | |  | |  | |    |  __  | / /\ \ | |\/| |  __| | |    |  __|| |  | | . ` |  | |  | | |  | | |\/| |  ___/
+#  #| |__| | |____| |__| |  | |____| |  | |/ ____ \| |  | | |____| |____| |___| |__| | |\  |  | |__| | |__| | |  | | |
+#  # \____/|______|_____/    \_____|_|  |_/_/    \_\_|  |_|______|______|______\____/|_| \_|  |_____/ \____/|_|  |_|_|
+#  # (avgn voice) Whaaat were they thiiiinkiiing
+
+
 
 
 
@@ -643,7 +689,7 @@ segments:
 #     - [0xADAE08]
 #     - [0xADAE10, palette, img/texture/chameleonsUnused/fred/eye.ci8]
 #     - [0xADB010]
-    
+
 #     - [0xADB018, ci8, img/texture/chameleonsUnused/fred/eye2.ci8, 32, 32]
 #     - [0xADB418]
 #     - [0xADB420, palette, img/texture/chameleonsUnused/fred/eye2.ci8]
@@ -745,7 +791,7 @@ segments:
 #     - [0xAE6810]
 #     - [0xAE6818, palette, img/texture/chameleonsUnused/linda/fist4.ci4]
 #     - [0xAE6A18]
-    
+
 
 
 #     - [0xAE7BA0, ci4, img/texture/chameleonsUnused/black/backPackStrap.ci4, 32, 64]
@@ -762,7 +808,7 @@ segments:
 #     - [0xAE91C8]
 #     - [0xAE91D0, palette, img/texture/chameleonsUnused/black/eye.ci8]
 #     - [0xAE93D0]
-    
+
 #     - [0xAE93D8, ci8, img/texture/chameleonsUnused/black/eye2.ci8, 32, 32]
 #     - [0xAE97D8]
 #     - [0xAE97E0, palette, img/texture/chameleonsUnused/black/eye2.ci8]
@@ -809,7 +855,7 @@ segments:
 #     - [0xAEEDD8]
 #     - [0xAEEDE0, palette, img/texture/chameleonsUnused/white/backPackStrap.ci4]
 #     - [0xAEEFE0]
-    
+
 #     - [0xAEF218, ci4, img/texture/chameleonsUnused/white/number.ci4, 32, 32]
 #     - [0xAEF418]
 #     - [0xAEF420, palette, img/texture/chameleonsUnused/white/number.ci4]
@@ -819,7 +865,7 @@ segments:
 #     - [0xAF0000]
 #     - [0xAF0008, palette, img/texture/chameleonsUnused/white/eye.ci8]
 #     - [0xAF0208]
-    
+
 #     - [0xAF0210, ci8, img/texture/chameleonsUnused/white/eye2.ci8, 32, 32]
 #     - [0xAF0610]
 #     - [0xAF0618, palette, img/texture/chameleonsUnused/white/eye2.ci8]
@@ -859,18 +905,18 @@ segments:
 #     - [0xAF4480]
 #     - [0xAF4488, palette, img/texture/chameleonsUnused/white/fist4.ci4]
 #     - [0xAF4688]
-  
 
 
 
 
 
-#  #  _____ _    _          __  __ ______ _      ______ ____  _   _   _______ ________   _________ _    _ _____  ______  _____ 
+
+#  #  _____ _    _          __  __ ______ _      ______ ____  _   _   _______ ________   _________ _    _ _____  ______  _____
 #  # / ____| |  | |   /\   |  \/  |  ____| |    |  ____/ __ \| \ | | |__   __|  ____\ \ / /__   __| |  | |  __ \|  ____|/ ____|
-#  #| |    | |__| |  /  \  | \  / | |__  | |    | |__ | |  | |  \| |    | |  | |__   \ V /   | |  | |  | | |__) | |__  | (___  
-#  #| |    |  __  | / /\ \ | |\/| |  __| | |    |  __|| |  | | . ` |    | |  |  __|   > <    | |  | |  | |  _  /|  __|  \___ \ 
+#  #| |    | |__| |  /  \  | \  / | |__  | |    | |__ | |  | |  \| |    | |  | |__   \ V /   | |  | |  | | |__) | |__  | (___
+#  #| |    |  __  | / /\ \ | |\/| |  __| | |    |  __|| |  | | . ` |    | |  |  __|   > <    | |  | |  | |  _  /|  __|  \___ \
 #  #| |____| |  | |/ ____ \| |  | | |____| |____| |___| |__| | |\  |    | |  | |____ / . \   | |  | |__| | | \ \| |____ ____) |
-#  # \_____|_|  |_/_/    \_\_|  |_|______|______|______\____/|_| \_|    |_|  |______/_/ \_\  |_|   \____/|_|  \_\______|_____/ 
+#  # \_____|_|  |_/_/    \_\_|  |_|______|______|______\____/|_| \_|    |_|  |______/_/ \_\  |_|   \____/|_|  \_\______|_____/
 #  #... because one dump wasn't enough
 #  #
 #  #
@@ -878,8 +924,8 @@ segments:
 #  # there seems to be random intervals of no textures, im thinking that those are said textures.
 #  #
 #  #
-                                                                                                                            
-                                                                                                                            
+
+
 
 
 
@@ -957,7 +1003,7 @@ segments:
 #     - [0xB05E70]
 #     - [0xB05E78, palette, img/texture/chameleons/jack/number.ci4]
 #     - [0xB06078]
-    
+
 #     - [0xB06988, ci8, img/texture/chameleons/jack/eye.ci8, 32, 32]
 #     - [0xB06D88]
 #     - [0xB06D90, palette, img/texture/chameleons/jack/eye.ci8]
@@ -1020,7 +1066,7 @@ segments:
 #     - [0xB0EA90]
 #     - [0xB0EA98, palette, img/texture/chameleons/fred/number.ci4]
 #     - [0xB0EC98]
-    
+
 #     - [0xB0F568, ci8, img/texture/chameleons/fred/eye.ci8, 32, 32]
 #     - [0xB0F968]
 #     - [0xB0F970, palette, img/texture/chameleons/fred/eye.ci8]
@@ -1117,7 +1163,7 @@ segments:
 #     - [0xB1D9D0]
 #     - [0xB1D9D8, palette, img/texture/chameleons/linda/fist1.ci4]
 #     - [0xB1DBD8]
-    
+
 #     - [0xB1DBE0, ci4, img/texture/chameleons/linda/fist2.ci4, 32, 32]
 #     - [0xB1DDE0]
 #     - [0xB1DDE8, palette, img/texture/chameleons/linda/fist2.ci4]
@@ -1138,7 +1184,7 @@ segments:
 #     - [0xB1EA18, palette, img/texture/chameleons/linda/fist4.ci4]
 #     - [0xB1EC18]
 
- 
+
 #     - [0xB1FFA0, ci4, img/texture/chameleons/black/backPackStrap.ci4, 32, 64]
 #     - [0xB203A0]
 #     - [0xB203A8, palette, img/texture/chameleons/black/backPackStrap.ci4]
@@ -1148,7 +1194,7 @@ segments:
 #     - [0xB209E0]
 #     - [0xB209E8, palette, img/texture/chameleons/black/number.ci4]
 #     - [0xB20BE8]
-    
+
 #     - [0xB214F8, ci8, img/texture/chameleons/black/eye.ci8, 32, 32]
 #     - [0xB218F8]
 #     - [0xB21900, palette, img/texture/chameleons/black/eye.ci8]
@@ -1210,7 +1256,7 @@ segments:
 #     - [0xB295D0]
 #     - [0xB295D8, palette, img/texture/chameleons/white/number.ci4]
 #     - [0xB297D8]
-    
+
 
 #     - [0xB2A0A8, ci8, img/texture/chameleons/white/eye.ci8, 32, 32]
 #     - [0xB2A4A8]
@@ -1261,4 +1307,3 @@ segments:
 #     - [0xB301E0]
 #     - [0xB301E8, palette, img/texture/chameleons/white/fist4.ci4]
 #     - [0xB303E8]
-
