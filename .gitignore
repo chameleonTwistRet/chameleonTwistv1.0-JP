@@ -1,10 +1,17 @@
-asm/
-assets/
-build/
+# Cache files
+__pycache__/
+.pyc
+.DS_Store
 
-undefined_funcs_auto.txt
-undefined_syms_auto.txt
+# Project-specific ignores
 *.bin
 *.ld
 *.o
 *.z64
+asm/
+assets/
+build/
+
+# Tool artifacts
+undefined_funcs_auto.txt
+undefined_syms_auto.txt
