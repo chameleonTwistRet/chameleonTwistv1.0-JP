@@ -17,17 +17,18 @@ f32 func_8002D0E0(f32 arg0, f32 arg1) {
 
 // Takes an angle in degrees and returns its normalised angle from 0
 void normalizeDegrees(f32* theta_ptr) {
-    f32 theta;
+    while (1) {
+        f32 theta = *theta_ptr;
 
-loop_1:
-    theta = *theta_ptr;
-    if (theta >= 360.0f) {
-        *theta_ptr = theta - 360.0f;
-        goto loop_1;
-    }
-    if (theta < 0.0f) {
-        *theta_ptr = theta + 360.0f;
-        goto loop_1;
+        if (theta >= 360.0f) {
+            *theta_ptr = theta - 360.0f;
+            continue;
+        } else if (theta < 0.0f) {
+            *theta_ptr = theta + 360.0f;
+            continue;
+        } else {
+            break;
+        }
     }
 }
 
