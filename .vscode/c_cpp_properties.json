@@ -12,7 +12,7 @@
                 "VERSION=jp",
                 "VERSION_JP"
             ],
-            "cStandard": "c99",
+            "cStandard": "gnu89",
             "cppStandard": "c++17"
         }
     ]
