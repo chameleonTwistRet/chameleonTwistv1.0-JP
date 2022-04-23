@@ -1,6 +1,11 @@
-#include "common.h"
-#include "src/io/viint.h"
-#include "src/os/osint.h"
+#ifndef VARIABLES_JP_H
+#define VARIABLES_JP_H
+
+#include "ultra64.h"
+#include "macros.h"
+#include "common_structs.h"
+#include "io/viint.h"
+#include "os/osint.h"
 
 extern s32 D_801748A0;
 extern __OSViContext* __osViCurr;
@@ -40,3 +45,5 @@ extern s32 D_800FDFEC;
 extern u8 D_80176850[16];
 extern s32 D_800FDFC0[2];
 extern s32 D_800FDFC8[2];
+
+#endif

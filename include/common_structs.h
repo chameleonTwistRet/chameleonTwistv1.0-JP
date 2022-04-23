@@ -1,5 +1,5 @@
-#ifndef _COMMON_STRUCTS_H_
-#define _COMMON_STRUCTS_H_
+#ifndef COMMON_STRUCTS_H
+#define COMMON_STRUCTS_H
 
 #include "PR/ultratypes.h"
 
