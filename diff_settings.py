@@ -6,3 +6,4 @@ def apply(config, args):
     config['myimg'] = f'build/{basename}.{version}.z64'
     config['mapfile'] = f'build/{basename}.{version}.map'
     config['source_directories'] = ['src', 'include']
+    config['objdump_flags'] = ['-M','reg-names=32']

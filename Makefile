@@ -3,6 +3,7 @@ MAKEFLAGS += --no-builtin-rules
 # Options
 NON_MATCHING ?= 0
 VERSION      ?= jp
+OBJDUMP_BUILD ?= 0
 VERIFY       ?= verify
 
 BASENAME  := chameleontwist
@@ -52,12 +53,17 @@ OPT_FLAGS      := -O2
 MIPS_VERSION   := -mips2
 
 INCLUDE_CFLAGS := -I. -Iinclude -Iinclude/PR -Iassets -Isrc
+DEFINES := -D_LANGUAGE_C -DF3DEX_GBI -DNDEBUG
 
 ASFLAGS        := -EB -mtune=vr4300 -march=vr4300 -mabi=32 -Iinclude -Isrc
 OBJCOPYFLAGS   := -O binary
 OBJDUMPFLAGS   := -drz
 
-DEFINES := -D_LANGUAGE_C -DF3DEX_GBI -DNDEBUG
+ifneq ($(OBJDUMP_BUILD), 0)
+  OBJDUMP_CMD = $(OBJDUMP) $(OBJDUMP_FLAGS) $@ > $(@:.o=.s)
+else
+  OBJDUMP_CMD = @:
+endif
 
 ifeq ($(VERSION),us)
 DEFINES += -DVERSION_US
@@ -65,8 +71,6 @@ endif
 ifeq ($(VERSION),eu)
 DEFINES += -DVERSION_EU
 endif
-
-
 
 ifeq ($(NON_MATCHING),1)
 DEFINES += -DNON_MATCHING
@@ -97,6 +101,8 @@ LD_FLAGS   += -Map $(TARGET).map --no-check-sections
 ASM_PROC := python3 tools/asm-processor/build.py
 ASM_PROC_FLAGS := --input-enc=utf-8 --output-enc=euc-jp
 
+
+### File and directory flags
 $(BUILD_DIR)/$(SRC_DIR)/%.c.o: CC := $(ASM_PROC) $(ASM_PROC_FLAGS) $(CC) -- $(AS) $(ASFLAGS) --
 
 $(BUILD_DIR)/$(SRC_DIR)/io/visetyscale.c.o: OPT_FLAGS := -O1
@@ -131,8 +137,14 @@ clean:
 distclean: clean
 	rm -rf asm
 	rm -rf assets
+	rm -rf expected
 	rm -f *auto.txt
 	rm -f $(LD_SCRIPT)
+
+expected: verify
+	$(RM) -rf expected/
+	mkdir -p expected/
+	cp -r build expected/build
 
 ### Recipes
 
@@ -149,7 +161,7 @@ $(TARGET).elf: $(LD_SCRIPT) $(O_FILES)
 $(BUILD_DIR)/$(SRC_DIR)/%.c.o: $(SRC_DIR)/%.c
 	$(CC_CHECK) $<
 	$(CC) -c $(CFLAGS) $(MIPS_VERSION) $(OPT_FLAGS) -o $@ $<
-	$(OBJDUMP) $(OBJDUMPFLAGS) $@ > $(@:.o=.s)
+	$(OBJDUMP_CMD)
 
 # use modern gcc for data
 $(BUILD_DIR)/$(SRC_DIR)/data/%.c.o: $(SRC_DIR)/data/%.c
@@ -181,5 +193,5 @@ baserom.$(VERSION).z64:
 
 ### Settings
 .DEFAULT_GOAL: all
-.PHONY: all clean distclean default
+.PHONY: all clean distclean expected
 SHELL = /bin/bash -e -o pipefail
