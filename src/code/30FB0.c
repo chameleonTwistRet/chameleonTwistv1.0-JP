@@ -1,11 +1,7 @@
 #include "common.h"
 
 //arg0 is a pointer to the string "mem err!\n"
-//void osSyncPrintf(char*);
-#pragma GLOBAL_ASM("asm/nonmatchings/code/30FB0/osSyncPrintf.s")
-// void osSyncPrintf(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
-//     s32 pad;
-// }
+#pragma GLOBAL_ASM("asm/nonmatchings/code/30FB0/func_80055BB0.s")
 
 void func_80055BCC(s32 arg0) {
     __additional_scanline = arg0;
@@ -116,7 +112,8 @@ void func_80056DF4(unkStruct02* arg0, unkStruct02* arg1) {
     }
 }
 
-//s32 leoDrive_reset(void);
+// Seems incorrectly named
+// s32 leoDrive_reset(void);
 #pragma GLOBAL_ASM("asm/nonmatchings/code/30FB0/leoDrive_reset.s")
 
 void func_80056EB4(void) {
@@ -127,7 +124,7 @@ void* func_80056EE4(s32 arg0) {
     void* temp_v0 = func_80056D30(arg0);
     
     if (temp_v0 == NULL) {
-        osSyncPrintf(D_8010CA10);
+        func_80055BB0(D_8010CA10);
     }
     return temp_v0;
 }

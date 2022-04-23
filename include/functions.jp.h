@@ -1,3 +1,6 @@
+#ifndef FUNCTIONS_JP_H
+#define FUNCTIONS_JP_H
+
 #include "../src/code/A3D00.h"
 #include "../src/code/84E0.h"
 
@@ -282,3 +285,5 @@ void func_8004A39C(Actor*);            /* extern */
 void func_8004A544(Actor*);            /* extern */
 void func_8004A658(Actor*);            /* extern */
 void func_8004AB00(Actor*);            /* extern */
+
+#endif
