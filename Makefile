@@ -137,6 +137,11 @@ distclean: clean
 	rm -f *auto.txt
 	rm -f $(BASENAME).$(VERSION).ld
 
+expected: verify
+	$(RM) -rf expected/
+	mkdir -p expected/
+	cp -r build expected/build
+
 ### Recipes
 
 .baserom.$(VERSION).ok: baserom.$(VERSION).z64
@@ -185,5 +190,5 @@ baserom.$(VERSION).z64:
 
 ### Settings
 .DEFAULT_GOAL: all
-.PHONY: all clean distclean default
+.PHONY: all clean distclean expected
 SHELL = /bin/bash -e -o pipefail
