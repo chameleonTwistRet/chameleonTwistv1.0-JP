@@ -1,10 +1,37 @@
 #include "common.h"
 
-// https://decomp.me/scratch/2A76r
-#pragma GLOBAL_ASM("asm/nonmatchings/code/1050/func_80025C50.s")
+void func_800D9730(void);
+void func_80025CB8(void*);
+void func_80025D80(void*);
 
+extern s32 D_80168D70;
+extern OSViMode D_801090F0;
+extern OSMesgQueue D_80119270;
+extern OSMesg   D_801191A8;
+extern OSThread D_80113C90; // thread1
+extern OSThread D_80115E40; // thread3
+extern s32 D_80117FF0;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/1050/func_80025CB8.s")
+void func_80025C50(void) {
+    func_800D9730();
+    D_80168D70 = 1;
+    osCreateThread(&D_80113C90, 1, func_80025CB8, 0, &D_80115E40, 10);
+    osStartThread(&D_80113C90);
+}
+
+void func_80025CB8(void *arg0) {
+    osCreateViManager(OS_PRIORITY_VIMGR);
+    osViSetMode(&D_801090F0);
+    osViBlack(1);
+    osViSetSpecialFeatures(0x40);
+    osViSetSpecialFeatures(0x20);
+    osCreatePiManager(0x96, &D_80119270, &D_801191A8, 0x32);
+    osCreateThread(&D_80115E40, 3, func_80025D80, arg0, &D_80117FF0, 10);
+    osStartThread(&D_80115E40);
+    osSetThreadPri(0, 0);
+
+    while (TRUE) {};
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/1050/func_80025D80.s")
 

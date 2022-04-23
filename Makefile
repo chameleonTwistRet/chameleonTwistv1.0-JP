@@ -29,9 +29,6 @@ O_FILES   := $(foreach file,$(S_FILES),$(BUILD_DIR)/$(file).o) \
              $(foreach file,$(C_FILES),$(BUILD_DIR)/$(file).o) \
              $(foreach file,$(BIN_FILES),$(BUILD_DIR)/$(file).o)
 
-RGBA16_FILES    := $(shell find assets/img/ -name "*.rgba16.png" 2> /dev/null)
-RGBA16_O_FILES  := $(foreach file,$(RGBA16_FILES),$(BUILD_DIR)/$(file:.png=.png.o))
-
 # Tools
 
 CROSS    := mips-linux-gnu-
@@ -98,7 +95,7 @@ GCC_FLAGS += -Wall -Wextra -Wno-missing-braces
 TARGET     := $(BUILD_DIR)/$(BASENAME).$(VERSION)
 LD_SCRIPT  := $(BASENAME).$(VERSION).ld
 
-LD_FLAGS   := -T $(LD_SCRIPT) -T undefined_syms_auto.txt -T undefined_funcs_auto.txt
+LD_FLAGS   := -T $(LD_SCRIPT) -T undefined_syms_auto.txt
 LD_FLAGS   += -Map $(TARGET).map --no-check-sections
 
 ASM_PROC := python3 tools/asm-processor/build.py
@@ -142,7 +139,7 @@ distclean: clean
 	rm -rf assets
 	rm -rf expected
 	rm -f *auto.txt
-	rm -f $(BASENAME).$(VERSION).ld
+	rm -f $(LD_SCRIPT)
 
 expected: verify
 	$(RM) -rf expected/
@@ -158,8 +155,8 @@ expected: verify
 $(BUILD_DIR)/:
 	@mkdir -p $(BUILD_DIR)
 
-$(TARGET).elf: $(BASENAME).$(VERSION).ld $(O_FILES) $(RGBA16_O_FILES)
-	$(LD) $(LD_FLAGS) $(LD_FLAGS_EXTRA) -o $@
+$(TARGET).elf: $(LD_SCRIPT) $(O_FILES)
+	$(LD) $(LD_FLAGS) -o $@
 
 $(BUILD_DIR)/$(SRC_DIR)/%.c.o: $(SRC_DIR)/%.c
 	$(CC_CHECK) $<
@@ -171,7 +168,7 @@ $(BUILD_DIR)/$(SRC_DIR)/data/%.c.o: $(SRC_DIR)/data/%.c
 	$(XGCC) -c $(GCC_FLAGS) -o $@ $<
 
 $(BUILD_DIR)/%.s.o: %.s
-	cat $< | iconv --from UTF-8 --to EUC-JP | $(AS) $(ASFLAGS) -o $@
+	iconv --from UTF-8 --to EUC-JP $< | $(AS) $(ASFLAGS) -o $@
 
 $(BUILD_DIR)/%.bin.o: %.bin
 	$(LD) -r -b binary -o $@ $<
@@ -186,11 +183,10 @@ $(TARGET).z64: $(TARGET).bin
 $(SPLAT):
 	$(info Repo cloned without submodules, attempting to fetch them now...)
 	@which git >/dev/null || echo "ERROR: git binary not found on PATH"
-	@which git >/dev/null
 	git submodule update --init --recursive
 
-$(BASENAME).$(VERSION).ld:
-	$(error Please run make setup and try again.)
+$(LD_SCRIPT):
+	$(error Please run 'make setup' and try again.)
 
 baserom.$(VERSION).z64:
 	$(error Place the JP chameleon twist ROM, named '$@', in the root of this repo and try again.)
