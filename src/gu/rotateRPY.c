@@ -1,5 +1,3 @@
-#include "common.h"
-
 #pragma GLOBAL_ASM("asm/nonmatchings/gu/rotateRPY/guRotateRPYF.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/gu/rotateRPY/guRotateRPY.s")

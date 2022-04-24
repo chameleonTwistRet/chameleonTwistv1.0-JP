@@ -114,7 +114,7 @@ segments:
       - [0xBA9E0, c, audio/seqpplay]
       - [0xBAA10, c, audio/seqpsettempo]
       - [0xBAA80, c, audio/cspgettempo]
-      - [0xBB580, c] # splat warned about this being a new file so I added it - eth
+      - [0xBB580, c, audio/seqpsetseq]
       - [0xBB5C0, c, os/gettime]
       - [0xBB650, c, os/getcount]
       - [0xBB660, c, gu/getfrustum]
@@ -122,7 +122,7 @@ segments:
       - [0xBB8C0, c, libc/ll]
       - [0xBBB80, c, io/conteepprobe]
       - [0xBBBF0, c, io/conteeplongwrite]
-      - [0xBBD30, c, code/BBD30]
+      - [0xBBD30, c, io/conteeplongread]
       - [0xBBE70, c, gu/random]
       - [0xBBEA0, c, io/pfsisplug]
       - [0xBC210, c, io/siacs]

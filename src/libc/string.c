@@ -1,7 +1,7 @@
 #include "common.h"
 
-#pragma GLOBAL_ASM("asm/nonmatchings/libc/string/func_800EBF10.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/libc/string/memcpy.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/libc/string/func_800EBF3C.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/libc/string/strlen.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/libc/string/func_800EBF64.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/libc/string/strchr.s")

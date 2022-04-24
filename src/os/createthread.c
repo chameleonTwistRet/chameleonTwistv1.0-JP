@@ -2,8 +2,8 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/os/createthread/osCreateThread.s")
 /*
-#include <os_internal.h>
-#include <R4300.h>
+#include <PR/os_internal.h>
+#include <PR/R4300.h>
 void __osCleanupThread(void);
 extern OSThread *__osActiveQueue;
 void osCreateThread(OSThread *t, OSId id, void (*entry)(void *), void *arg, void *sp, OSPri p)
