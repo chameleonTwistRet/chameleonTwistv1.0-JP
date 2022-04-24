@@ -11,8 +11,8 @@ extern s32 D_801748A0;
 extern __OSViContext* __osViCurr;
 extern __OSViContext* __osViNext;
 extern OSThread* D_801FD560;
-extern Vec2f D_8010A6D0[0x6C]; //positions?
-extern unk_8010AA28 D_8010AA28[0x6C]; //actor related?
+extern const Vec2f D_8010A6D0[]; //positions?
+extern const unk_8010AA28 D_8010AA28[]; //actor related?
 extern Actor D_8016AC68[64]; //currently loaded actor structs
 extern s32 __additional_scanline; //rng
 
