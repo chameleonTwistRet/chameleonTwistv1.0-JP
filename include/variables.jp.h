@@ -8,6 +8,9 @@
 #ifndef VARIABLES_JP_H
 #define VARIABLES_JP_H
 
+//A3D00
+extern f64 D_80110120;
+extern f32 D_80110108;
 
 
 extern s32 D_801748A0;

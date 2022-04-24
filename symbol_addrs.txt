@@ -113,6 +113,8 @@ _Ldtob = 0x800EC7C0;
 alSeqpSetSeq = 0x800E0180;
 osEepromLongRead = 0x800E0930;
 
+tanf = 0x800C8A1C;
+
 __osViNext = 0x80109E94;
 __osViCurr = 0x80109E90;
 alGlobals = 0x80109DA0;

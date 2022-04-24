@@ -15,17 +15,11 @@ s32 func_800C8900(s32 arg0, s32 arg1) {
 
 */
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/A3D00/func_800C89E8.s")
-/*
 f32 func_800C89E8(void) {
     return (f32) func_800C8900(0, 0xFFFF) / D_80110108;    //Max 2bytes
 }
-*/
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/A3D00/func_800C8A1C.s")
-
-//Fully compiles on decompme
-/*f32 func_800C8A1C(f32 x) {  // Get Tan(x)
+f32 tanf(f32 x) {
     f32 sin_x;
     f32 cos_x;
     f32 tan_x;
@@ -38,18 +32,17 @@ f32 func_800C89E8(void) {
         tan_x = sin_x / cos_x;
     }
     return tan_x;
-}*/
-
-
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/A3D00/func_800C8A78.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/A3D00/func_800C8BE4.s")
 /*
-extern f64 D_80110120;
-f32 func_800C8BE4(void) {
-    return (f32) (D_80110120 - (f64) func_800C8A78());
+f32 func_800C8BE4(f32 arg0) {
+    return (f32) (D_80110120 - (f64) func_800C8A78(arg0));
 }
 */
 
+
+// jtbl error
 #pragma GLOBAL_ASM("asm/nonmatchings/code/A3D00/func_800C8C14.s")

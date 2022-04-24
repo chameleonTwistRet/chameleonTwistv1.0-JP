@@ -1,6 +1,8 @@
 #ifndef FUNCTIONS_JP_H
 #define FUNCTIONS_JP_H
 
+f32 sinf(f32);
+f32 cosf(f32);
 
 //void func_800E31E0(void);
 
