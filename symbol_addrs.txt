@@ -131,3 +131,5 @@ osSetThreadPri = 0x800DA400;
 
 PlayerPointer = 0x80174858;
 TonguePointer = 0x8017485C;
+
+

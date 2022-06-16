@@ -555,17 +555,15 @@ void func_8002F3D4(void) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8002F528.s")
-/*
+
 void func_8002F528(s32 arg0) {
     PlayerPointer->playerHURTSTATE = 3;
     PlayerPointer->playerHURTTIMER = 0;
-}*/
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8002F54C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8002F568.s")
-/*
+
 void func_8002F568(void) {
     PlayerPointer->xVel = PlayerPointer->xVaultlocity * 0.25f;
     PlayerPointer->zVel = PlayerPointer->zVaultlocity * 0.25f;
@@ -573,8 +571,8 @@ void func_8002F568(void) {
     if (TonguePointer->segments >= 4) {
         PlayerPointer->vaultFall = 0xC;
     }
-}*/
-//
+}
+
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8002F5C4.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8002F6DC.s")

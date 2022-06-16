@@ -195,7 +195,7 @@ typedef struct tongueSlot {
 typedef struct tongue { // at 80169268 (for p1 at least lol)
     /* 0x00 */ u32 vaulting; //0x00 = no, 0x01 = yes
     /* 0x04 */ u32 tongueMode; //enum of tongue actions
-    /* 0x08 */ u32 segments;
+    /* 0x08 */ s32 segments;
     /* 0x0C */ s32 poleSegmentAt;
     /* 0x10 */ u32 timer;
     /* 0x14 */ s32 cameraSegmentAt;//where to point the camera
