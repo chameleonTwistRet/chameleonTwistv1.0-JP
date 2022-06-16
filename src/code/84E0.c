@@ -529,14 +529,52 @@ void func_8002D644(s32 actorIndex, s32 actorID, f32 arg2, f32 arg3, f32 arg4, f3
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8002ECCC.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8002F3D4.s")
+void func_8002F3D4(void) {
+    if (PlayerPointer->shootLeft != 0) {
+        PlayerPointer->shootLeft--;
+    }
+    if (PlayerPointer->vaultFall != 0) {
+        PlayerPointer->vaultFall--;
+    }
+    if (PlayerPointer->canJump == 0) {
+        PlayerPointer->vaultFall = 0;
+    }
+    if (PlayerPointer->canJump == 0) {
+        if (PlayerPointer->forwardVel == 0.0f) {
+            PlayerPointer->groundMovement = 0;
+            PlayerPointer->globalTimer = (PlayerPointer->globalTimer + D_8010B328);
+            return;
+        }
+        if (PlayerPointer->forwardVel < (65.0f * PlayerPointer->forwardImpulse)) {
+            PlayerPointer->groundMovement = 1;
+            PlayerPointer->globalTimer = (PlayerPointer->globalTimer + (((2.0f + (((PlayerPointer->forwardVel / ((65.0f * PlayerPointer->forwardImpulse) / 10.0f)) * PlayerPointer->forwardImpulse) / D_8010B32C)) / 4.5f) / D_8010B330));
+            return;
+        }
+        PlayerPointer->groundMovement = 2;
+        PlayerPointer->globalTimer = PlayerPointer->globalTimer + 1.5f * PlayerPointer->forwardImpulse / D_8010B334;
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8002F528.s")
+/*
+void func_8002F528(s32 arg0) {
+    PlayerPointer->playerHURTSTATE = 3;
+    PlayerPointer->playerHURTTIMER = 0;
+}*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8002F54C.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8002F568.s")
-
+/*
+void func_8002F568(void) {
+    PlayerPointer->xVel = PlayerPointer->xVaultlocity * 0.25f;
+    PlayerPointer->zVel = PlayerPointer->zVaultlocity * 0.25f;
+    //8017485C == Tongue
+    if (TonguePointer->segments >= 4) {
+        PlayerPointer->vaultFall = 0xC;
+    }
+}*/
+//
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8002F5C4.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8002F6DC.s")
@@ -828,7 +866,9 @@ void func_8003E30C(Actor* arrowsActor) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8003E32C.s")
 
 // boulder
-void func_8003E368(Actor* boulderActor){}
+void func_8003E368(Actor* boulderActor){
+
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8003E370.s")
 
@@ -1140,7 +1180,9 @@ void func_80044878(Actor* pileOfBooksActor) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_800470C0.s")
 
 // Spider Spawner: Auto-Decompile
-void func_8004718C(Actor* spiderSpawnerActor){}
+void func_8004718C(Actor* spiderSpawnerActor){
+
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80047194.s")
 
@@ -1159,12 +1201,16 @@ void func_80047350(Actor* spiderActor) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80047568.s")
 
 // Golem Room Spider Spawner: Auto-Decompile
-void func_8004769C(Actor* golemRoomSpiderSpawnerActor){}
+void func_8004769C(Actor* golemRoomSpiderSpawnerActor){
+
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_800476A4.s")
 
 // Golem?: Auto-Decompile
-void func_800477C4(Actor* golem) {}
+void func_800477C4(Actor* golem) {
+
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_800477CC.s")
 
@@ -1322,7 +1368,9 @@ void func_8004A658(Actor* fallingGreyAntActor) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8004A6C4.s")
 
 // unk_5E
-void func_8004AB00(Actor* unk_5EActor){}
+void func_8004AB00(Actor* unk_5EActor){
+
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8004AB08.s")
 

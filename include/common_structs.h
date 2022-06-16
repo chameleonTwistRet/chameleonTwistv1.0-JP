@@ -71,11 +71,13 @@ typedef struct playerActor {
     /* 0xB0 */ f32 zMove;
     /* 0xB4 */ u32 groundMovement; //0x00 = standing, 0x01 = walking, 0x02 = running
     /* 0xB8 */ f32 globalTimer;
-    /* 0xBC */ char unk_BC[0x04];
+    /* 0xBC */ u32 unkBC;
     /* 0xC0 */ u32 shootLeft;
-    /* 0xC4 */ char unk_C4[0x04];
+    /* 0xC4 */ u32 vaultFall;//timer for falling after vault
     /* 0xC8 */ u32 hp;
-    /* 0xCC */ char unk_CC[0x40];
+    /* 0xCC */ u32 playerHURTSTATE;
+    /* 0xD0 */ u32 playerHURTTIMER;
+    /* 0xD4 */ char unk_D4[0x38];
     /* 0x10C*/ f32 timerDown;
     /* 0x110*/ f32 reticleSize;
     /* 0x114*/ u32 active; //0x00 = no, 0x01 = yes
