@@ -10,6 +10,11 @@ void func_8006A74C(void);
 void func_8004263C(void);
 void func_8006E16C(f32, f32, f32, s32, f32, s32);
 
+
+
+
+
+
 // Sum of Two Squares: Elisiah
 f32 func_8002D0E0(f32 arg0, f32 arg1) {
     return SUM_OF_SQUARES(arg0, arg1);
@@ -743,7 +748,8 @@ void func_8003BC8C(Actor* grenadeActor) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8003BC98.s")
 
 // Missile Spawner: Auto-Decompile
-void func_8003BD98(Actor* missileSpawnerActor) {}
+void func_8003BD98(Actor* missileSpawnerActor) {
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8003BDA0.s")
 
@@ -1326,7 +1332,18 @@ void func_8004AB00(Actor* unk_5EActor){}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8004AD2C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8004BA5C.s")
+//iirc this is for the battle start
+//thanks rain for fixing it
+void func_8004BA5C(s32 arg0) {
+    s32 i;
+    PlayerPointer = &D_80168DA8;
+    TonguePointer = &D_80169268;
+    
+    for (i = 0; i < arg0; i++) {
+        func_8004AD2C();
+    }
+}
+
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8004BAC0.s")
 

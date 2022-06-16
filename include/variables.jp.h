@@ -86,5 +86,8 @@ extern s32 D_801FC9A8;
 extern s16 D_801FC9B4;
 extern f64 D_801FCA00;
 extern s32 D_801FF710;
-
+extern s32 D_80169268;
+extern s32 D_80168DA8;
+extern playerActor* PlayerPointer;
+extern tongue* TonguePointer;
 #endif

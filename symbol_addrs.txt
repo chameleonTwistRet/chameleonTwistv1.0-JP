@@ -128,3 +128,6 @@ osViBlack = 0x800DA040;
 osViSetSpecialFeatures = 0x800DA0B0;
 osCreatePiManager = 0x800DA270;
 osSetThreadPri = 0x800DA400;
+
+PlayerPointer = 0x80174858;
+TonguePointer = 0x8017485C;

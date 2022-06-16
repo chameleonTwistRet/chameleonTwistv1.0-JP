@@ -286,6 +286,8 @@ void func_8004A544(Actor*);            /* extern */
 void func_8004A658(Actor*);            /* extern */
 void func_8004AB00(Actor*);            /* extern */
 
+void func_8004AD2C();
+
 //5FF30
 
 void func_8002E0CC(void);
