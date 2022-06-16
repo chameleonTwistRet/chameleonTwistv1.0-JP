@@ -561,7 +561,15 @@ void func_8002F528(s32 arg0) {
     PlayerPointer->playerHURTTIMER = 0;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8002F54C.s")
+
+void func_8002F54C(f32 arg0, playerActor* PlayerP, s32 arg2) {
+    PlayerP->yVel = arg0;
+    PlayerP->canJump = 1;
+    PlayerP->hasTumbled = arg2;
+    PlayerP->jumpReleasedInAir = 0;
+    PlayerP->jumpAnimFrame = 0;
+}
+
 
 
 void func_8002F568(void) {
@@ -669,7 +677,9 @@ void func_8002F568(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_800382F4.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_800383A0.s")
+void func_800383A0(void) {
+    func_800CEFC4();
+}
 
 // Grey Ant Spawner: Elisiah
 void func_800383C0(Actor* greyAntSpawnerActor) {
@@ -922,12 +932,18 @@ void func_8003FB04(Actor* pogoActor) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8003FC54.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8003FEAC.s")
+void func_8003FEAC(s32 arg0) {
+
+}
 
 // unk_23
-void func_8003FEB4(Actor* unk_23Actor){}
+void func_8003FEB4(Actor* unk_23Actor){
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8003FEBC.s")
+}
+
+void func_8003FEBC(s32 arg0) {
+
+}
 
 // Ice Cream Sandwich Function: Elisiah
 void func_8003FEC4(Actor* iceCreamSandwichActor) {
@@ -981,12 +997,18 @@ void func_800405F8(Actor* cakeBossStrawberryActor) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80040638.s")
 
 // unk_28
-void func_80040CDC(Actor* unk_28Actor){}
+void func_80040CDC(Actor* unk_28Actor){
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80040CE4.s")
+}
+
+void func_80040CE4(s32 arg0) {
+
+}
 
 // Cake Boss Choco Kid: Auto-Decompile
-void func_80040CEC(Actor* cakeBossChocoKidActor){}
+void func_80040CEC(Actor* cakeBossChocoKidActor){
+
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80040CF4.s")
 
@@ -1033,14 +1055,21 @@ void func_80042FB4(Actor* bowlingPinsActor) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80043010.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_800431E8.s")
+void func_800431E8(Actor* arg0) {
+    arg0->unk_10C[0] = 0xA;
+    arg0->unk_134[0] = arg0->unk_28;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_800431FC.s")
 
 // unk_2F
-void func_800434F4(Actor* unk_2FActor){}
+void func_800434F4(Actor* unk_2FActor){
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_800434FC.s")
+}
+
+void func_800434FC(s32 arg0) {
+
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80043504.s")
 
@@ -1051,14 +1080,18 @@ void func_80043998(Actor* cupActor) {
     func_80043504(cupActor);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_800439B8.s")
+void func_800439B8(void) {
+    func_80043558();
+}
 
 // Saucer Function: Elisiah
 void func_800439D8(Actor* saucerActor) {
     func_80043504(saucerActor);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_800439F8.s")
+void func_800439F8(void) {
+    func_80043558();
+}
 
 // Metal Sheet Function: Elisiah
 void func_80043A18(Actor* metalSheetActor) {
@@ -1076,7 +1109,9 @@ void func_80043A58(Actor* scrollActor) {
     func_80043504(scrollActor);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80043A78.s")
+void func_80043A78(void) {
+    func_80043558();
+}
 
 // RNG Room Spawner: Auto-Decompile
 void func_80043A98(Actor* rngRoomSpawnerActor){}
@@ -1122,14 +1157,18 @@ void func_80044504(Actor* candlesActor) {
     func_800442E0(candlesActor);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80044524.s")
+void func_80044524(void) {
+    func_800442F0();
+}
 
 // Fire Spawner: Elisiah
 void func_80044544(Actor* fireSpawnerActor) {
     func_80044504(fireSpawnerActor);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80044564.s")
+void func_80044564(void) {
+    func_80044524();
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80044584.s")
 
@@ -1140,7 +1179,10 @@ void func_80044708(Actor* sandalActor) {
     func_800431E8(sandalActor);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80044728.s")
+
+void func_80044728(void) {
+    func_800431FC();
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80044748.s")
 
@@ -1169,7 +1211,9 @@ void func_80044878(Actor* pileOfBooksActor) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80046E50.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80046FB0.s")
+void func_80046FB0(Actor* arg0) {
+
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80046FB8.s")
 
@@ -1264,11 +1308,20 @@ void func_800498B4(Actor* popcornBucketActor) {
     func_800401E8(popcornBucketActor);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_800498D4.s")
+void func_800498D4(void) {
+    func_80040214();
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_800498F4.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80049914.s")
+void func_800498F4(Actor* arg0) {
+    func_800404D8(arg0);
+}
+
+
+void func_80049914(void) {
+    func_80040590();
+}
+
 
 // Choco Kid Spawner: Auto-Decompile
 void func_80049934(Actor* chocoKidSpawnerActor){}
@@ -1280,22 +1333,27 @@ void func_80049A24(Actor* chocoKidActor) {
     func_80040068(chocoKidActor);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80049A44.s")
+void func_80049A44(void) {
+    func_800400C8();
+}
 
 // unk_51 Function: Elisiah
 void func_80049A64(Actor* unk_51Actor) {
     func_800383C0(unk_51Actor);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80049A84.s")
+void func_80049A84(void) {
+    func_800383E4();
+}
 
 // unk_52 Function: Elisiah
 void func_80049AA4(Actor* unk_52Actor) {
     func_80038510(unk_52Actor);
 }
 
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80049AC4.s")
+void func_80049AC4(void) {
+    func_80038574();
+}
 
 // Battle Mode Sand Crab Spawner: Auto-Decompile
 void func_80049AE4(Actor* battleModeSandCrabSpawnerActor){}
@@ -1313,13 +1371,20 @@ void func_80049C34(Actor* battleModeSandCrabActor) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80049C64.s")
 
 // unk_55
-void func_80049D0C(Actor* unk_55Actor){}
+void func_80049D0C(Actor* unk_55Actor){
+
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80049D14.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80049F04.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80049F0C.s")
+void func_80049F04(Actor* arg0) {
+
+}
+
+void func_80049F0C(s32 arg0) {
+
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80049F14.s")
 

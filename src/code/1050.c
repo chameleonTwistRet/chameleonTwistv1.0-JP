@@ -4,6 +4,8 @@ void func_800D9730(void);
 void func_80025CB8(void*);
 void func_80025D80(void*);
 
+
+
 extern s32 D_80168D70;
 extern OSViMode D_801090F0;
 extern OSMesgQueue D_80119270;
@@ -36,6 +38,7 @@ void func_80025CB8(void *arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/1050/func_80025D80.s")
 
 void func_80025EE8(void) {
+    
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/1050/func_80025EF0.s")
@@ -88,12 +91,18 @@ void func_80025EE8(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/1050/func_8002CCA0.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/1050/func_8002CCDC.s")
+void func_8002CCDC(void) {
+    func_8008BEDC();
+    func_80088198();
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/1050/func_8002CD04.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/1050/func_8002CD94.s")
-
+void func_8002CD94(s32 arg0) {
+    if (arg0 == 2) {
+        osViBlack(0);
+    }
+}
 #pragma GLOBAL_ASM("asm/nonmatchings/code/1050/func_8002CDBC.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/1050/func_8002CE54.s")

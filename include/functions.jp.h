@@ -286,11 +286,18 @@ void func_8004A544(Actor*);            /* extern */
 void func_8004A658(Actor*);            /* extern */
 void func_8004AB00(Actor*);            /* extern */
 
+void func_800400C8(void);
 void func_8004AD2C(void);
-
+void func_800383E4(void);
+void func_80040590(void);
+void func_800431FC(void);
+void func_80044524(void);
+void func_800442F0(void);
+void func_80040214(void); 
 void func_80031518(void);
 void func_80043558(void);
-
+void func_800CEFC4(void);
+void func_80038574(void);     
 //5FF30
 
 void func_8002E0CC(void);
@@ -330,7 +337,9 @@ f32 func_800C8C14(f32, f32);
 
 
 
-
+//1050
+void func_80088198(void);
+void func_8008BEDC(void);
 
 
 #endif

@@ -59,8 +59,11 @@ typedef struct playerActor {
     /* 0x58 */ u32 jumpReleasedInAir;    // 0x00 = no, 0x01 = yes
     /* 0x5C */ u32 jumpAnimFrame;
     /* 0x60 */ u32 hasTumbled;    //0x00 = no, 0x01 = yes. resets on jump.
-    /* 0x64 */ char unk_64[0x10];
-    /* 0x74 */ u32 locked; //0x00 = no, 0x01 = yes. when using lock to stand in place.
+    /* 0x64 */ char unk_64[0x04];
+    /* 0x68 */ u32 inWater;//0x00 = no, 0x01 = yes.
+    /* 0x6C */ u32 squishTimer;
+    /* 0x70 */ f32 yScale;
+    /* 0x74 */ u32 locked; //0x00 = no, 0x16 = yes. when using lock to stand in place.
     /* 0x78 */ char unk_78[0x18];
     /* 0x90 */ f32 xFromCenter; //from center of room (when on ground)
     /* 0x94 */ f32 yFromCenter;
