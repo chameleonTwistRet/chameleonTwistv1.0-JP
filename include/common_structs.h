@@ -81,7 +81,7 @@ typedef struct playerActor {
     /* 0xCC */ u32 playerHURTSTATE;
     /* 0xD0 */ u32 playerHURTTIMER;
     /* 0xD4 */ char unk_D4[0x38];
-    /* 0x10C*/ f32 timerDown;
+    /* 0x10C*/ s32 timerDown;
     /* 0x110*/ f32 reticleSize;
     /* 0x114*/ u32 active; //0x00 = no, 0x01 = yes
     /* 0x118*/ u32 exists; //0x00 = no, 0x01 = yes
@@ -283,11 +283,11 @@ typedef struct actorSubArray { //starts at 0x40
 typedef struct Actor {
     /* 0x000 */ s32 actorID;
     /* 0x004 */ s32 actorIndex;
-    /* 0x008 */ s32 unk_08;
-    /* 0x00C */ s32 unk_0C;
+    /* 0x008 */ s32 actorState;//enum, 0 == idle, 1 == on tongue, 2 == in mouth, 3 == spit
+    /* 0x00C */ s32 posOnTongue;//the segment iirc
     /* 0x010 */ s32 lifeDuration;
     /* 0x014 */ s32 unk_14;
-    /* 0x018 */ s32 unk_18;
+    /* 0x018 */ s32 hitStun;
     /* 0x01C */ s32 unk_1C;
     /* 0x020 */ s32 unk_20;
     /* 0x024 */ f32 unk_24;

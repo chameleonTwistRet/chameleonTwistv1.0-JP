@@ -34,7 +34,7 @@ void func_80055C74(void) {
 }
 
 void func_80055C80(void) {
-    __osActiveQueue = 1;
+    __osActiveQueue = 2;
 }
 
 s32 func_80055C90(void) {
@@ -122,7 +122,6 @@ void func_80056EB4(void) {
 
 void* func_80056EE4(s32 arg0) {
     void* temp_v0 = func_80056D30(arg0);
-    
     if (temp_v0 == NULL) {
         func_80055BB0(D_8010CA10);
     }
@@ -778,7 +777,9 @@ void func_80083F10(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/30FB0/func_80084884.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/30FB0/func_800849D4.s")
+s32 func_800849D4(s32 arg0) {
+    return arg0;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/30FB0/func_800849DC.s")
 

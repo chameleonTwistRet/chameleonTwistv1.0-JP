@@ -175,7 +175,7 @@ void func_8002D644(s32 actorIndex, s32 actorID, f32 arg2, f32 arg3, f32 arg4, f3
 
     actorInstance->actorIndex = actorIndex;
     actorInstance->actorID = actorID;
-    actorInstance->lifeDuration = 0;
+    actorInstance->globalTimer = 0;
     actorInstance->unk_24 = arg2;
     actorInstance->unk_28 = arg3;
     actorInstance->unk_2C = arg4;
@@ -210,7 +210,7 @@ void func_8002D644(s32 actorIndex, s32 actorID, f32 arg2, f32 arg3, f32 arg4, f3
     actorInstance->unk_128 = arg15;
     actorInstance->unk_12C = arg16;
     actorInstance->unk_130 = arg17;
-    actorInstance->unk_08 = 0;
+    actorInstance->actorState = 0;
     actorInstance->unk_30 = 0.0f;
     actorInstance->unk_34 = 0.0f;
     actorInstance->unk_38 = 0.0f;
@@ -218,9 +218,9 @@ void func_8002D644(s32 actorIndex, s32 actorID, f32 arg2, f32 arg3, f32 arg4, f3
     actorInstance->unk_48 = 0.0f;
     actorInstance->unk_4C = 0.0f;
     actorInstance->unk_94 = 0.0f;
-    actorInstance->unk_0C = 0;
+    actorInstance->posOnTongue = 0;
     actorInstance->unk_14 = 0;
-    actorInstance->unk_18 = 0;
+    actorInstance->hitStun = 0;
     actorInstance->unk_1C = 0;
     actorInstance->unk_98 = 0;
     actorInstance->unk_9C = 0;
@@ -827,7 +827,7 @@ void func_8003BEE8(Actor* missileActor) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8003D574.s")
 
 void func_8003D598(Actor* arg0) {               //Unsure if struct is actor
-    if (arg0->unk_124 == arg0->lifeDuration) {  //0x124 == 0x10
+    if (arg0->unk_124 == arg0->globalTimer) {  //0x124 == 0x10
         func_80031518();
     }
 }
@@ -1114,7 +1114,9 @@ void func_80043A78(void) {
 }
 
 // RNG Room Spawner: Auto-Decompile
-void func_80043A98(Actor* rngRoomSpawnerActor){}
+void func_80043A98(Actor* rngRoomSpawnerActor){
+
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80043AA0.s")
 

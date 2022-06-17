@@ -341,5 +341,7 @@ f32 func_800C8C14(f32, f32);
 void func_80088198(void);
 void func_8008BEDC(void);
 
-
+//30fb0
+void func_80055BB0(s32);
+void leoDrive_reset(void);
 #endif
