@@ -81,7 +81,7 @@ typedef struct playerActor {
     /* 0xCC */ u32 playerHURTSTATE;
     /* 0xD0 */ u32 playerHURTTIMER;
     /* 0xD4 */ char unk_D4[0x38];
-    /* 0x10C*/ s32 timerDown;
+    /* 0x10C*/ f32 timerDown;
     /* 0x110*/ f32 reticleSize;
     /* 0x114*/ u32 active; //0x00 = no, 0x01 = yes
     /* 0x118*/ u32 exists; //0x00 = no, 0x01 = yes

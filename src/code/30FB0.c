@@ -30,11 +30,11 @@ s32 func_80055BD8(void) {
 // }
 
 void func_80055C74(void) {
-    __osActiveQueue = 0;
+    __osActiveQueue = (OSThread*)0;
 }
 
 void func_80055C80(void) {
-    __osActiveQueue = 1;
+    __osActiveQueue = (OSThread*)1;
 }
 
 s32 func_80055C90(void) {
