@@ -1,6 +1,6 @@
 # Building
 
-`git clone` this repository in a WSL 2 directory<br/>
+`git clone --recurse-submodules -j8 https://github.com/chameleonTwistRet/chameleonTwistv1.0-JP.git` in a WSL 2 directory<br/>
 
 Requirements (for debian based systems only currently)<br/>
 `./install.sh`<br/>
