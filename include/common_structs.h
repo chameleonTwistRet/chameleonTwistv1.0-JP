@@ -3,6 +3,11 @@
 
 #include "PR/ultratypes.h"
 
+
+
+
+
+
 typedef struct Vec2f {
                f32 x;
                f32 y;
@@ -251,7 +256,7 @@ typedef struct tongue { // at 80169268 (for p1 at least lol)
     /* 0x600*/ u32 poleID;//please tell me im right
     /* 0x604*/ u32 tongueDir;//0x01 for counter clockwise. 0xFFFFFFFF for clockwise.
     //wall
-    /* 0x614*/ u32 wallTime;//timer for tongue-touching a wall
+    /* 0x608*/ u32 wallTime;//timer for tongue-touching a wall
 } tongue;
 
 
@@ -444,9 +449,17 @@ typedef struct unk_D_801FFB90 {
 /* 0x10 */ s32 unk_10;
 } unk_D_801FFB90;
 
+typedef struct unk_8002F960{
+    char unk00[0x608];
+    u32 unk608;
 
 
+}unk_8002F960;
 
+typedef struct huh{
+    s32 unk0;
+    s32 unk4;
+}huh;
 
 
 

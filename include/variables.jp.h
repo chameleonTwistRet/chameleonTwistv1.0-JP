@@ -98,4 +98,37 @@ extern f32 D_8010B334;
 extern playerActor* PlayerPointer;
 extern tongue* TonguePointer;
 
+extern f32 D_800FEBD0;
+extern f32 D_800FE060;
+extern s32 D_800FE160;
+extern s32 D_800FE19C;
+extern s32 D_800FE164;
+extern s8 D_800FE4DC;
+extern s32 D_800FDFA0;
+extern s32 D_802025B0;
+extern s32 D_800FE000;
+extern s32 D_800FEA30;
+extern f64 D_80110000;
+extern s32 D_800FEA34;
+extern f64 D_8010FFF8;
+
+extern s32 D_80108B68;
+extern s16 D_800FF854[];
+
+
+
+//1050
+extern s32 D_80174998;
+
+
+//8
+extern f64 D_8010C510;
+extern f64 D_8010C518;
+extern f32 D_8010B34C;
+extern f32 D_8010B350;                         /* extern */
+extern s32 D_800FFEB4;
+extern s32 D_80168D78[];
+extern s32 D_801749B0;
+
+
 #endif

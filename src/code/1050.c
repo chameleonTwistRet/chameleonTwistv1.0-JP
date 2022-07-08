@@ -89,7 +89,14 @@ void func_80025EE8(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/1050/func_8002CBE8.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/1050/func_8002CCA0.s")
+s32 func_8002CCA0(void) {
+    s32 sp1C;
+
+    if (D_80174998 >= 3) {
+        sp1C = func_8002C900();
+    }
+    return sp1C;
+}
 
 void func_8002CCDC(void) {
     func_8008BEDC();

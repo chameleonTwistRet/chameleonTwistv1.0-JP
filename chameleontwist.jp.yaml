@@ -210,44 +210,72 @@ segments:
       - [0xE8930, rodata]
       - [0xE8F00, bin]
       - [0xEC5D0, bin]
-  - type: bin
+
+
+
+
+  - name: assets
+    type: code
     start: 0xED090
+    vram: 0x80111CA0
+    subsegments:
+      - [0xED090, bin, ext]
+
+      - [0x101BE0, rgba32, star.rgba32, 32, 32]
+
+      - [0x102BE0, bin, ext22]
+
+      #- [0x102FB8, ci8, health.ci8, 16, 16]
+      #- [0x1030B8]
+      #- [0x1030C0, palette, health.ci8]
+
+      - [0x1032C0, bin, exxxx]
+
+      #- [0x103658, ia8, textBig.ia8, 432, 48]
+      #- [0x108758, bin, aaaaaa]
+
+      - [0x108760, ia4, textSmall.ia4, 512, 176]
+      - [0x113760, bin, ext2]
+
+      #- [0x113768, ia8, puff.ia8, 96, 32]
+      #- [0x114368, bin, sfasfa]
+
+      - [0x114370, ia4, star2.ia4, 32 ,32]
+      - [0x114570, bin, ashashg]
+      
+      #- [0x114578, ia8, camera.ia8, 48, 32]
+      #- [0x114B78, bin, shshhshs]
+
+      - [0x114B80, ia4, explode.ia4, 40, 40]
+      - [0x114EA0, bin, hhahaha]
+
+      #- [0x8E5828, rgba16, eyeBlink.rgba16, 128, 32]
+      #- [0x8E7828, bin, HAHHAHAHAHAHHAHAHAH]
+      #- [0x8E782C, rgba16, img/what/eyeDizzy.rgba16, 96, 32]
+      #- [0x8E9038, rgba16, img/what/eyeSexy.rgba16, 96, 32]
+      #- [0x8EA838, bin, lolagain]
+      
+      #- [0x948C18, rgba16, img/unused/bigShoeLmfao.rgba16, 320, 240]
+      #- [0x96E418, bin, gggg]
+
+      - [0x9E7A80, rgba16, img/misc/titleSplash.rgba16, 320, 240]
+      - [0xA0D280, rgba16, img/misc/stageSelect.rgba16, 320, 240]
+
+      - [0xA32A80, bin, ext3]
+
+      - [0xAFED90, bin, davyheadMaybe]
+
+      - [0xAFF3B0, bin, ext4]
+
+      - [0xB079B0, bin, jackheadMaybe]
+
+      - [0xB07FD0, bin, ext5]
   - [0xC00000]
 
 
 
 
-#   - name: assets
-#     type: code
-#     start: 0xC95B0
-#     vram: 0x800EE1C0
-#     subsegments:
 
-#     - [0x101BE0, rgba32, star, 32, 32]
-#     - [0x102BE0]
-
-#     - [0x102FB8, ci8, health, 16, 16]
-#     - [0x1030B8]
-#     - [0x1030C0, palette, health]
-#     - [0x1032C0]
-
-#     - [0x103658, ia8, textBig, 432, 48]
-#     - [0x108758]
-
-#     - [0x108760, ia4, textSmall, 512, 176]
-#     - [0x113760]
-
-#     - [0x113768, ia8, puff, 96, 32]
-#     - [0x114368]
-
-#     - [0x114370, ia4, star2, 32 ,32]
-#     - [0x114570]
-
-#     - [0x114578, ia8 , camera, 48, 32]
-#     - [0x114B78]
-
-#     - [0x114B80, ia4, explode, 40, 40]
-#     - [0x114EA0]
 
 
 #     - [0x1150D8, ci4, sand, 64, 64]
@@ -508,18 +536,11 @@ segments:
 
 #     #- [0x8E48C0, ci8?, img/what/circle.ci, 48, 48]
 
-#     #- [0x8E582A, rgba16, img/what/eyeBlink.rgba16, 128, 32]
-
-
-#     #- [0x8E76F2, rgba16, img/what/eyeDizzy.rgba16, 96, 32]
-
-#     #- [0x8E9036, rgba16, img/what/eyeSexy.rgba16, 96, 32]
 
 #     #- [0x8EA838, ci4, img/enemies/ant.ci4, 320, 120]
 #     #- [0x8F3E38, palette, img/enemies/ant.ci4]
 
-#     - [0x948B28, rgba16, img/unused/bigShoeLmfao.rgba16, 320, 240]
-#     - [0x96E328]
+
 
 
 #     - [0x97B7A0, ci8, img/enemies/butterfly.ci8, 320,240]
@@ -544,10 +565,6 @@ segments:
 
 
 
-
-#     - [0x9E7A80, rgba16, img/misc/titleSplash.rgba16, 320, 240]
-#     - [0xA0D280, rgba16, img/misc/stageSelect.rgba16, 320, 240]
-#     - [0xA32A80]
 
 
 

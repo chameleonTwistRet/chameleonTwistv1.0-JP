@@ -29,6 +29,34 @@ O_FILES   := $(foreach file,$(S_FILES),$(BUILD_DIR)/$(file).o) \
              $(foreach file,$(C_FILES),$(BUILD_DIR)/$(file).o) \
              $(foreach file,$(BIN_FILES),$(BUILD_DIR)/$(file).o)
 
+
+RGBA32_FILES        = $(shell find assets/ -name "*.rgba32.png" 2> /dev/null)
+RGBA32_O_FILES      = $(foreach file,$(RGBA32_FILES),$(BUILD_DIR)/$(file:.png=.png.o))
+
+RGBA16_FILES        = $(shell find assets/ -name "*.rgba16.png" 2> /dev/null)
+RGBA16_O_FILES      = $(foreach file,$(RGBA16_FILES),$(BUILD_DIR)/$(file:.png=.png.o))
+
+I4_FILES        = $(shell find assets/ -name "*.i4.png" 2> /dev/null)
+I4_O_FILES      = $(foreach file,$(I4_FILES),$(BUILD_DIR)/$(file:.png=.png.o))
+
+IA4_FILES        = $(shell find assets/ -name "*.ia4.png" 2> /dev/null)
+IA4_O_FILES      = $(foreach file,$(IA4_FILES),$(BUILD_DIR)/$(file:.png=.png.o))
+
+I8_FILES        = $(shell find assets/ -name "*.i8.png" 2> /dev/null)
+I8_O_FILES      = $(foreach file,$(I8_FILES),$(BUILD_DIR)/$(file:.png=.png.o))
+
+IA8_FILES        = $(shell find assets/ -name "*.ia8.png" 2> /dev/null)
+IA8_O_FILES      = $(foreach file,$(IA8_FILES),$(BUILD_DIR)/$(file:.png=.png.o))
+
+
+
+IMAGE_O_FILES = $(RGBA32_O_FILES) $(RGBA16_O_FILES) $(I4_O_FILES) $(IA4_O_FILES) $(I8_O_FILES) $(IA8_O_FILES)
+
+
+
+
+
+
 # Tools
 
 CROSS    := mips-linux-gnu-
@@ -47,6 +75,7 @@ GREP     := grep -rl
 CC       := $(TOOLS_DIR)/usr/lib/cc
 SPLAT    := $(TOOLS_DIR)/splat/split.py
 
+IMG_CONVERT = $(PYTHON) $(TOOLS_DIR)/image_converter.py
 # Flags
 
 OPT_FLAGS      := -O2
@@ -155,7 +184,7 @@ expected: verify
 $(BUILD_DIR)/:
 	@mkdir -p $(BUILD_DIR)
 
-$(TARGET).elf: $(LD_SCRIPT) $(O_FILES)
+$(TARGET).elf: $(LD_SCRIPT) $(O_FILES) $(IMAGE_O_FILES)
 	$(LD) $(LD_FLAGS) -o $@
 
 $(BUILD_DIR)/$(SRC_DIR)/%.c.o: $(SRC_DIR)/%.c
@@ -170,6 +199,64 @@ $(BUILD_DIR)/$(SRC_DIR)/data/%.c.o: $(SRC_DIR)/data/%.c
 $(BUILD_DIR)/%.s.o: %.s
 	iconv --from UTF-8 --to EUC-JP $< | $(AS) $(ASFLAGS) -o $@
 
+
+
+
+#HEREEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
+# uncompressed images
+
+$(BUILD_DIR)/%.rgba32.png: %.rgba32.png
+	@mkdir -p $$(dirname $@)
+	@$(IMG_CONVERT) rgba32 $< $@
+	@printf "$(GREEN) IMG$(NO_COL)  $<\n"
+
+$(BUILD_DIR)/%.rgba16.png: %.rgba16.png
+	@mkdir -p $$(dirname $@)
+	@$(IMG_CONVERT) rgba16 $< $@
+	@printf "$(GREEN) IMG$(NO_COL)  $<\n"
+
+$(BUILD_DIR)/%.i4.png: %.i4.png
+	@mkdir -p $$(dirname $@)
+	@$(IMG_CONVERT) i4 $< $@
+	@printf "$(GREEN) IMG$(NO_COL)  $<\n"
+
+$(BUILD_DIR)/%.ia4.png: %.ia4.png
+	@mkdir -p $$(dirname $@)
+	@$(IMG_CONVERT) ia4 $< $@
+	@printf "$(GREEN) IMG$(NO_COL)  $<\n"
+
+$(BUILD_DIR)/%.i8.png: %.i8.png
+	@mkdir -p $$(dirname $@)
+	@$(IMG_CONVERT) i8 $< $@
+	@printf "$(GREEN) IMG$(NO_COL)  $<\n"
+
+$(BUILD_DIR)/%.ia8.png: %.ia8.png
+	@mkdir -p $$(dirname $@)
+	@$(IMG_CONVERT) ia8 $< $@
+	@printf "$(GREEN) IMG$(NO_COL)  $<\n"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# BUILD_DIR prefix to suppress circular dependency
+$(BUILD_DIR)/%.png.o: $(BUILD_DIR)/%.png
+	@$(LD) -r -b binary -o $@ $<
+	@printf "$(GREEN) LD$(NO_COL)   $<\n"
+
+
+#where the binaries are maaaaade
 $(BUILD_DIR)/%.bin.o: %.bin
 	$(LD) -r -b binary -o $@ $<
 

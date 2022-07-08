@@ -113,7 +113,6 @@ class N64SegPalette(N64Segment):
 
     def get_linker_entries(self):
         from segtypes.linker_entry import LinkerEntry
-
         return [
             LinkerEntry(
                 self,

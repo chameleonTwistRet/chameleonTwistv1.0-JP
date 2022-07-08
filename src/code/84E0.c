@@ -575,7 +575,6 @@ void func_8002F54C(f32 arg0, playerActor* PlayerP, s32 arg2) {
 void func_8002F568(void) {
     PlayerPointer->xVel = PlayerPointer->xVaultlocity * 0.25f;
     PlayerPointer->zVel = PlayerPointer->zVaultlocity * 0.25f;
-    //8017485C == Tongue
     if (TonguePointer->segments >= 4) {
         PlayerPointer->vaultFall = 0xC;
     }
@@ -585,17 +584,51 @@ void func_8002F568(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8002F6DC.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8002F7F0.s")
+void func_8002F7F0(void) {
+    s32 temp_v0;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8002F884.s")
+    temp_v0 = TonguePointer->amountInMouth;
+    if (temp_v0 < 6) {
+        PlayerPointer->forwardImpulse = (f32) (((24.0f - (f32) temp_v0) * D_8010B34C) / 24.0f);
+    } else {
+        PlayerPointer->forwardImpulse = (f32) D_8010B350;
+    }
+    if (PlayerPointer->power == 3) {
+        PlayerPointer->forwardImpulse = (f32) (PlayerPointer->forwardImpulse * 0.5f);
+    }
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8002F960.s")
+void func_8002F884(s32 arg0, s32 arg1) {
+    if (((D_801749B0 == 0) || (PlayerPointer->playerID != 1)) && (D_80168D78[arg0] == 0)) {
+        if (D_800FFEB4 == 7) {
+            func_8007B314(arg0, ((arg1 * 100) / 6.0f), arg1);
+        } else {
+            func_8007B314(arg0, ((arg1 * 100) * 0.5f), arg1);
+        }
+    }
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8002F9BC.s")
+void func_8002F960(unk_8002F960* arg0) {
+    func_8002F884(PlayerPointer->playerID, 2);
+    func_80087ED0(0x10, 0, 0, 0, 0, 0x10);
+    arg0->unk608 = 0xA;
+}
 
+void func_8002F9BC(s32 arg0) {
+    PlayerPointer->power = 0;
+    func_8002F7F0();
+    PlayerPointer->tongueYOffset = 60.0f;
+    PlayerPointer->tongueSeperation = 50.0f;
+    PlayerPointer->hitboxSize = 30.0f;
+    PlayerPointer->hitboxYStretch = 150.0f;
+}
+
+//this one is REALLY long holy shit
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8002FA34.s")
 
+//less long than above but still nauseating
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80030DCC.s")
+
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80030F3C.s")
 
@@ -839,7 +872,11 @@ void func_8003D6A4(Actor* blackChameleonProjectileSpawnerActor){}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8003D6AC.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8003D908.s")
+
+void func_8003D908(Actor* arg0) {
+    arg0->unk_CC = 0.0f;
+    func_800312B0(arg0->actorIndex);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8003D930.s")
 
@@ -1219,7 +1256,10 @@ void func_80046FB0(Actor* arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80046FB8.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8004709C.s")
+void func_8004709C(Actor* arg0) {
+    arg0->unk_94 = arg0->position._f32.x;
+    func_800382F4(arg0);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_800470C0.s")
 
@@ -1472,7 +1512,13 @@ void func_8004BA5C(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8004C1C8.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8004C374.s")
+s32 func_8004C374(u16* arg0, u16* arg1, s32 arg2) {
+    if ((*arg1 & arg2) == 0) {
+        *arg0 |= arg2;
+        return 1;
+    }
+    return 0;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8004C3A4.s")
 
