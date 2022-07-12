@@ -21,6 +21,7 @@
  *====================================================================*/
 
 #include <PR/libaudio.h>
+//AOF=1
 
 s32 alSeqpGetState(ALSeqPlayer *seqp)
 {

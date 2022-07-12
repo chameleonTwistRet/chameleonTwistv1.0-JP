@@ -1,5 +1,6 @@
-#pragma GLOBAL_ASM("asm/nonmatchings/audio/cents2ratio/alCents2Ratio.s")
 #include <PR/libaudio.h>
+//AOF=1
+#pragma GLOBAL_ASM("asm/nonmatchings/audio/cents2ratio/alCents2Ratio.s")
 
 /*
 f32 alCents2Ratio(s32 cents) 

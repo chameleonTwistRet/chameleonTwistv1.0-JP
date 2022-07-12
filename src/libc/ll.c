@@ -1,4 +1,5 @@
 #include "common.h"
+//AOF=10
 
 #pragma GLOBAL_ASM("asm/nonmatchings/libc/ll/__ull_rshift.s")
 

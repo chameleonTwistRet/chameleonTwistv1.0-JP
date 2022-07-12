@@ -1,6 +1,7 @@
 #include <PR/os_internal.h>
 #include <PR/R4300.h>
 #include "osint.h"
+//AOF=1
 
 u32 osVirtualToPhysical(void *addr)
 {

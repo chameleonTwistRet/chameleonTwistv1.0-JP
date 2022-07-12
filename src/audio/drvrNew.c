@@ -1,4 +1,5 @@
 #include "common.h"
+//AOF=8
 
 #pragma GLOBAL_ASM("asm/nonmatchings/audio/drvrNew/func_800E8DB0.s")
 

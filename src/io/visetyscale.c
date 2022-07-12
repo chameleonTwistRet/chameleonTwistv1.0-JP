@@ -1,4 +1,5 @@
 #include "common.h"
+//AOF=1
 
 void osViSetYScale(f32 value)
 {

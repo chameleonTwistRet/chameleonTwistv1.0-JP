@@ -19,8 +19,9 @@
  * DOD or NASA FAR Supplement. Unpublished - rights reserved under the
  * Copyright Laws of the United States.
  *====================================================================*/
-
 #include <PR/libaudio.h>
+//AOF=1
+
 
 void alSeqpStop(ALSeqPlayer *seqp)
 {

@@ -1,4 +1,5 @@
 #include "common.h"
+//AOF=4
 
 #pragma GLOBAL_ASM("asm/nonmatchings/os/sethwinterrupt/func_800E22D0.s")
 

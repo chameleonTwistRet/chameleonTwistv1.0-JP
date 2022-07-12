@@ -21,6 +21,9 @@
 #include <PR/libaudio.h>
 #include <PR/os_internal.h>
 #include <PR/ultraerror.h>
+//AOF=6
+
+
 
 void func_800DCC00(void) {
 }
@@ -34,6 +37,7 @@ void func_800DCCFC(void) {
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/audio/bnkf/func_800DCD04.s")
+
 
 void alSeqFileNew(ALSeqFile *file, u8 *base)
 {

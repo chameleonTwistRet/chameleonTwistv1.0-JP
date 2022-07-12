@@ -1,4 +1,5 @@
 #include "common.h"
+//AOF=8
 
 #pragma GLOBAL_ASM("asm/nonmatchings/os/exceptasm/func_800E1930.s")
 

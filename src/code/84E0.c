@@ -1,19 +1,7 @@
 #include "common.h"
+//AOF=301
 
 const char padRodata[] = "\0\0\0\0\0\0\0";
-
-f32 func_800C8C14(f32, f32);                        /* extern */
-f32 __sinf(f32);                             /* extern */
-f32 __sqrtf(f32);                             /* extern */
-f32 __cosf(f32);                             /* extern */
-void func_8006A74C(void);
-void func_8004263C(void);
-void func_8006E16C(f32, f32, f32, s32, f32, s32);
-
-
-
-
-
 
 // Sum of Two Squares: Elisiah
 f32 func_8002D0E0(f32 arg0, f32 arg1) {
@@ -176,9 +164,9 @@ void func_8002D644(s32 actorIndex, s32 actorID, f32 arg2, f32 arg3, f32 arg4, f3
     actorInstance->actorIndex = actorIndex;
     actorInstance->actorID = actorID;
     actorInstance->globalTimer = 0;
-    actorInstance->unk_24 = arg2;
-    actorInstance->unk_28 = arg3;
-    actorInstance->unk_2C = arg4;
+    actorInstance->posX = arg2;
+    actorInstance->posY = arg3;
+    actorInstance->posZ = arg4;
     actorInstance->unk_90 = arg5;
 
     for (i = 0; i < 3; i++) {
@@ -188,9 +176,9 @@ void func_8002D644(s32 actorIndex, s32 actorID, f32 arg2, f32 arg3, f32 arg4, f3
         actorInstance->unknownPositionThings[i].unk_10 = 0.0f;
         actorInstance->unknownPositionThings[i].unk_0C = 0.0f;
     }
-    actorInstance->unk_3C = actorInstance->unknownPositionThings[0].unk_0C = D_8010A6D0[actorID].x;
-    actorInstance->unk_40 = actorInstance->unknownPositionThings[0].unk_10 = D_8010A6D0[actorID].y;
-    actorInstance->unk_50 = 1;
+    actorInstance->tScale = actorInstance->unknownPositionThings[0].unk_0C = D_8010A6D0[actorID].x;
+    actorInstance->tYPos = actorInstance->unknownPositionThings[0].unk_10 = D_8010A6D0[actorID].y;
+    actorInstance->tongueCollision = 1;
 
     actorInstance->unk_F4 = arg6;
     actorInstance->unk_F8 = arg7;
@@ -211,17 +199,17 @@ void func_8002D644(s32 actorIndex, s32 actorID, f32 arg2, f32 arg3, f32 arg4, f3
     actorInstance->unk_12C = arg16;
     actorInstance->unk_130 = arg17;
     actorInstance->actorState = 0;
-    actorInstance->unk_30 = 0.0f;
-    actorInstance->unk_34 = 0.0f;
+    actorInstance->direction = 0.0f;
+    actorInstance->yVelocity = 0.0f;
     actorInstance->unk_38 = 0.0f;
-    actorInstance->unk_44 = 0.0f;
-    actorInstance->unk_48 = 0.0f;
-    actorInstance->unk_4C = 0.0f;
+    actorInstance->tXOffset = 0.0f;
+    actorInstance->tYOffset = 0.0f;
+    actorInstance->tZOffset = 0.0f;
     actorInstance->unk_94 = 0.0f;
     actorInstance->posOnTongue = 0;
-    actorInstance->unk_14 = 0;
-    actorInstance->hitStun = 0;
-    actorInstance->unk_1C = 0;
+    actorInstance->touched = 0;
+    actorInstance->hit = 0;
+    actorInstance->tongueBumpSeg = 0;
     actorInstance->unk_98 = 0;
     actorInstance->unk_9C = 0;
     actorInstance->unk_B0 = 0.0f;
@@ -727,10 +715,10 @@ void func_800383C0(Actor* greyAntSpawnerActor) {
 // Grey Ant Function: Rainchu and Elisiah
 void func_80038510(Actor* actor) {
     actor->unk_94 = actor->unk_124;
-    actor->unk_90 = func_8002D1CC(actor->unk_24, actor->unk_2C, actor->position._f32.x, actor->position._f32.y);
+    actor->unk_90 = func_8002D1CC(actor->posX, actor->posZ, actor->position._f32.x, actor->position._f32.y);
     actor->unk_10C[0] = 4;
-    actor->unk_134[0] = actor->unk_28;
-    actor->unk_28 = actor->unk_28 - actor->unknownPositionThings[0].unk_10;
+    actor->unk_134[0] = actor->posY;
+    actor->posY = actor->posY - actor->unknownPositionThings[0].unk_10;
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80038574.s")
@@ -753,7 +741,7 @@ void func_80038990(Actor* bulletHellAntSpawnerActor) {
 // Ant Trio Function: Elisiah
 void func_80038F70(Actor* antTrioActor) {
     antTrioActor->unk_94 = (f32) antTrioActor->unk_124;
-    antTrioActor->unk_90 = func_8002D1CC(antTrioActor->unk_24, antTrioActor->unk_2C, antTrioActor->position._f32.x, antTrioActor->position._f32.y);
+    antTrioActor->unk_90 = func_8002D1CC(antTrioActor->posX, antTrioActor->posZ, antTrioActor->position._f32.x, antTrioActor->position._f32.y);
     antTrioActor->unk_98 = 1;
     func_800382F4(antTrioActor); 
     antTrioActor->unk_F0 = func_800C8900(0, 0x100);
@@ -783,7 +771,7 @@ void func_8003A1B0(Actor* greenAntActor) {
 // Ant Queen Function: Elisiah
 void func_8003A3F0(Actor* antQueenActor) {
     antQueenActor->unk_120 = (s32) antQueenActor->unk_12C;
-    antQueenActor->unk_50 = 3;
+    antQueenActor->tongueCollision = 3;
     antQueenActor->unknownPositionThings[1].unk_0C = 150.0f;
     antQueenActor->unknownPositionThings[1].unk_10 = (f32) D_8010A6D0[Ant_Queen].y;
     antQueenActor->unknownPositionThings[2].unk_0C = 200.0f;
@@ -806,8 +794,8 @@ void func_8003BA38(Actor* whiteBombSnakeActor) {
     f32 temp_f14;
     s32 temp_f10;
 
-    temp_f12 = whiteBombSnakeActor->unk_24;
-    temp_f14 = whiteBombSnakeActor->unk_2C;
+    temp_f12 = whiteBombSnakeActor->posX;
+    temp_f14 = whiteBombSnakeActor->posZ;
     whiteBombSnakeActor->unk_10C[0] = 4;
     whiteBombSnakeActor->unk_134[0] = temp_f12;
     whiteBombSnakeActor->unk_134[1] = temp_f14;
@@ -834,9 +822,9 @@ void func_8003BD98(Actor* missileSpawnerActor) {
 
 // Missile Function: Elisiah
 void func_8003BEE8(Actor* missileActor) {
-    missileActor->unk_134[0] = missileActor->unk_24;
-    missileActor->unk_134[1] = missileActor->unk_28;
-    missileActor->unk_134[2] = missileActor->unk_2C;
+    missileActor->unk_134[0] = missileActor->posX;
+    missileActor->unk_134[1] = missileActor->posY;
+    missileActor->unk_134[2] = missileActor->posZ;
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8003BF04.s")
@@ -890,9 +878,9 @@ void func_8003D908(Actor* arg0) {
 
 // Vulture Function: Elisiah
 void func_8003DFB4(Actor* vultureActor) {
-    vultureActor->unk_134[0] = vultureActor->unk_24;
-    vultureActor->unk_134[1] = vultureActor->unk_28;
-    vultureActor->unk_134[2] = vultureActor->unk_2C;
+    vultureActor->unk_134[0] = vultureActor->posX;
+    vultureActor->unk_134[1] = vultureActor->posY;
+    vultureActor->unk_134[2] = vultureActor->posZ;
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8003DFD0.s")
@@ -922,7 +910,7 @@ void func_8003E368(Actor* boulderActor){
 // Armadillo Function: Elisiah
 void func_8003E62C(Actor* armadilloActor) {
     armadilloActor->unk_134[0] = armadilloActor->position._f32.y / armadilloActor->position._f32.x;
-    armadilloActor->unk_28 = -400.0f;
+    armadilloActor->posY = -400.0f;
     armadilloActor->unk_134[4] = 100.0f;
     armadilloActor->unk_10C[4] = armadilloActor->unk_130;
 }
@@ -942,8 +930,8 @@ void func_8003FA38(Actor* arg0, f32 arg1, f32 arg2, f32 arg3) {
     f32 temp_f2;
     s32 temp_f8;
 
-    temp_f0 = arg1 - arg0->unk_24;
-    temp_f2 = arg3 - arg0->unk_2C;
+    temp_f0 = arg1 - arg0->posX;
+    temp_f2 = arg3 - arg0->posZ;
     if (arg0->unk_10C[0] >= 3) {
         arg0->unk_94 = (f32) (arg0->unk_16C / 1.5f);
     } else {
@@ -951,16 +939,16 @@ void func_8003FA38(Actor* arg0, f32 arg1, f32 arg2, f32 arg3) {
     }
     temp_f8 = (s32) (sqrtf(SQ(temp_f0) + SQ(temp_f2)) / arg0->unk_94);
     arg0->unk_10C[1] = temp_f8;
-    arg0->unk_134[3] = (f32) ((arg2 - arg0->unk_28) / (f32) temp_f8);
+    arg0->unk_134[3] = (f32) ((arg2 - arg0->posY) / (f32) temp_f8);
     arg0->unk_90 = func_800C8C14(temp_f0, -temp_f2);
 }
 
 // Pogo Function: Elisiah
 void func_8003FB04(Actor* pogoActor) {
     pogoActor->unk_10C[0] = 1;
-    pogoActor->unk_134[0] = pogoActor->unk_24;
-    pogoActor->unk_134[1] = pogoActor->unk_28;
-    pogoActor->unk_134[2] = pogoActor->unk_2C;
+    pogoActor->unk_134[0] = pogoActor->posX;
+    pogoActor->unk_134[1] = pogoActor->posY;
+    pogoActor->unk_134[2] = pogoActor->posZ;
     
     func_8003FA38(pogoActor, pogoActor->position._f32.x, pogoActor->position._f32.y, pogoActor->unk_15C);
 }
@@ -986,19 +974,19 @@ void func_8003FEBC(s32 arg0) {
 void func_8003FEC4(Actor* iceCreamSandwichActor) {
     f32 temp_f0;
 
-    temp_f0 = iceCreamSandwichActor->unk_28;
+    temp_f0 = iceCreamSandwichActor->posY;
     iceCreamSandwichActor->unk_134[0] = temp_f0;
-    iceCreamSandwichActor->unk_28 = temp_f0 + 2000.0f;
+    iceCreamSandwichActor->posY = temp_f0 + 2000.0f;
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8003FEE0.s")
 
 // Training Room Choco Kid Function: Elisiah
 void func_80040068(Actor* trainingRoomChocoKidActor) {
-    trainingRoomChocoKidActor->unk_134[1] = trainingRoomChocoKidActor->unk_2C;
+    trainingRoomChocoKidActor->unk_134[1] = trainingRoomChocoKidActor->posZ;
     trainingRoomChocoKidActor->unk_94 = trainingRoomChocoKidActor->position._f32.x;
-    trainingRoomChocoKidActor->unk_134[0] = trainingRoomChocoKidActor->unk_24;
-    func_8006E16C(trainingRoomChocoKidActor->unk_24, trainingRoomChocoKidActor->unk_28 + 50.0f, trainingRoomChocoKidActor->unk_2C, 0x42F00000, 20.0f, 0xA);
+    trainingRoomChocoKidActor->unk_134[0] = trainingRoomChocoKidActor->posX;
+    func_8006E16C(trainingRoomChocoKidActor->posX, trainingRoomChocoKidActor->posY + 50.0f, trainingRoomChocoKidActor->posZ, 0x42F00000, 20.0f, 0xA);
 }
 
 
@@ -1008,11 +996,11 @@ void func_80040068(Actor* trainingRoomChocoKidActor) {
 void func_800401E8(Actor* unk_1FActor) {
     f32 temp_f0;
 
-    temp_f0 = unk_1FActor->unk_28;
+    temp_f0 = unk_1FActor->posY;
     unk_1FActor->unk_134[0] = temp_f0;
-    unk_1FActor->unk_134[1] = unk_1FActor->unk_24;
-    unk_1FActor->unk_134[2] = unk_1FActor->unk_2C;
-    unk_1FActor->unk_28 = temp_f0 + 1000.0f;
+    unk_1FActor->unk_134[1] = unk_1FActor->posX;
+    unk_1FActor->unk_134[2] = unk_1FActor->posZ;
+    unk_1FActor->posY = temp_f0 + 1000.0f;
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80040214.s")
@@ -1024,10 +1012,10 @@ void func_800401E8(Actor* unk_1FActor) {
 // Cake Boss Strawberry Function: Elisiah
 void func_800405F8(Actor* cakeBossStrawberryActor) {
     if (cakeBossStrawberryActor->unk_128 == 6) {
-        cakeBossStrawberryActor->unk_3C *= 2.0f;
-        cakeBossStrawberryActor->unk_40 *= 2.0f;
-        cakeBossStrawberryActor->unknownPositionThings[0].unk_0C = cakeBossStrawberryActor->unk_3C;
-        cakeBossStrawberryActor->unknownPositionThings[0].unk_10 = cakeBossStrawberryActor->unk_40;
+        cakeBossStrawberryActor->tScale *= 2.0f;
+        cakeBossStrawberryActor->tYPos *= 2.0f;
+        cakeBossStrawberryActor->unknownPositionThings[0].unk_0C = cakeBossStrawberryActor->tScale;
+        cakeBossStrawberryActor->unknownPositionThings[0].unk_10 = cakeBossStrawberryActor->tYPos;
     }
 }
 
@@ -1061,7 +1049,7 @@ void func_80040CEC(Actor* cakeBossChocoKidActor){
 
 // Cue Ball Actor: Elisiah
 void func_8004237C(Actor* cueBallActor) {
-    cueBallActor->unk_134[0] = cueBallActor->unk_28;
+    cueBallActor->unk_134[0] = cueBallActor->posY;
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80042388.s")
@@ -1078,7 +1066,7 @@ void func_80042AFC(Actor* bowlingBallActor) {
     func_8006A74C();
     func_8004263C();
     bowlingBallActor->unk_10C[0] = 0;
-    bowlingBallActor->unk_134[0] = bowlingBallActor->unk_28;
+    bowlingBallActor->unk_134[0] = bowlingBallActor->posY;
     bowlingBallActor->unk_10C[3] = func_80055BD8() % 5;
 }
 
@@ -1094,7 +1082,7 @@ void func_80042FB4(Actor* bowlingPinsActor) {
 
 void func_800431E8(Actor* arg0) {
     arg0->unk_10C[0] = 0xA;
-    arg0->unk_134[0] = arg0->unk_28;
+    arg0->unk_134[0] = arg0->posY;
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_800431FC.s")
@@ -1135,8 +1123,6 @@ void func_80043A18(Actor* metalSheetActor) {
     func_80043504(metalSheetActor);
 }
 
-
-//#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80043A38.s")
 void func_80043A38(void) {
     func_80043558();
 }
@@ -1177,7 +1163,7 @@ void func_80043FE8(Actor* barrelJumpFireSpawnerActor){}
 
 // Barrel Jump Fire Actor: Elisiah
 void func_800440FC(Actor* barrelJumpFireActor) {
-    barrelJumpFireActor->unk_134[0] = func_8002D1CC(barrelJumpFireActor->position._f32.x, barrelJumpFireActor->position._f32.y, barrelJumpFireActor->unk_24, barrelJumpFireActor->unk_2C);
+    barrelJumpFireActor->unk_134[0] = func_8002D1CC(barrelJumpFireActor->position._f32.x, barrelJumpFireActor->position._f32.y, barrelJumpFireActor->posX, barrelJumpFireActor->posZ);
     barrelJumpFireActor->unk_10C[0] = (s32) (360.0f / barrelJumpFireActor->unk_160) - 2;
 }
 
@@ -1229,7 +1215,7 @@ void func_80044728(void) {
 void func_80044878(Actor* pileOfBooksActor) {
     pileOfBooksActor->unk_EC = 0;
     pileOfBooksActor->unk_10C[3] = pileOfBooksActor->unk_128 * 2;
-    pileOfBooksActor->unk_134[1] = pileOfBooksActor->unk_2C + -800.0f;
+    pileOfBooksActor->unk_134[1] = pileOfBooksActor->posZ + -800.0f;
     pileOfBooksActor->unk_134[2] = pileOfBooksActor->unk_90;
     func_80044748(pileOfBooksActor);    // Compiled as empty originally?
 }
@@ -1273,7 +1259,7 @@ void func_8004718C(Actor* spiderSpawnerActor){
 // Spider Function: Elisiah
 void func_80047350(Actor* spiderActor) {
     spiderActor->unk_98 = 1;
-    spiderActor->unk_34 = spiderActor->unk_160;
+    spiderActor->yVelocity = spiderActor->unk_160;
     spiderActor->unk_94 = spiderActor->position._f32.x;
     func_800382F4(spiderActor);    // Sometimes calls with a arg0, sometimes calls empty?
 }
@@ -1300,8 +1286,8 @@ void func_800477C4(Actor* golem) {
 
 // Hedgehog Function: Elisiah
 void func_800479CC(Actor* hedgehogActor) {
-    hedgehogActor->unk_134[0] = (f32) hedgehogActor->unk_24;
-    hedgehogActor->unk_134[1] = (f32) hedgehogActor->unk_2C;
+    hedgehogActor->unk_134[0] = (f32) hedgehogActor->posX;
+    hedgehogActor->unk_134[1] = (f32) hedgehogActor->posZ;
     hedgehogActor->unk_134[2] = (f32) hedgehogActor->unk_90;
 }
 
@@ -1309,8 +1295,8 @@ void func_800479CC(Actor* hedgehogActor) {
 
 // Fish Function: Elisiah
 void func_80047C04(Actor* fishActor) {
-    fishActor->unk_134[0] = fishActor->unk_24;
-    fishActor->unk_134[1] = fishActor->unk_2C;
+    fishActor->unk_134[0] = fishActor->posX;
+    fishActor->unk_134[1] = fishActor->posZ;
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80047C18.s")
@@ -1405,7 +1391,7 @@ void func_80049AE4(Actor* battleModeSandCrabSpawnerActor){}
 // Battle Mode Sand Crab Function: Elisiah
 void func_80049C34(Actor* battleModeSandCrabActor) {
     battleModeSandCrabActor->unk_94 = battleModeSandCrabActor->position._f32.x;
-    battleModeSandCrabActor->unk_34 = 32.0f;
+    battleModeSandCrabActor->yVelocity = 32.0f;
     func_800382F4(battleModeSandCrabActor);
 }
 
@@ -1434,7 +1420,7 @@ void func_80049F0C(s32 arg0) {
 
 // Battle Mode Saucer Function: Elisiah
 void func_8004A0A0(Actor* battleModeSaucerActor) {
-    battleModeSaucerActor->unk_134[0] = battleModeSaucerActor->unk_28;
+    battleModeSaucerActor->unk_134[0] = battleModeSaucerActor->posY;
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8004A0AC.s")
@@ -1464,7 +1450,7 @@ void func_8004A544(Actor* fallingGreyAntSpawnerActor){}
 // Falling Grey Ant Function: Elisiah
 void func_8004A658(Actor* fallingGreyAntActor) {
     fallingGreyAntActor->unk_94 = (f32) fallingGreyAntActor->unk_124;
-    fallingGreyAntActor->unk_90 = func_8002D1CC(fallingGreyAntActor->unk_24, fallingGreyAntActor->unk_2C, fallingGreyAntActor->position._f32.x, fallingGreyAntActor->position._f32.y);
+    fallingGreyAntActor->unk_90 = func_8002D1CC(fallingGreyAntActor->posX, fallingGreyAntActor->posZ, fallingGreyAntActor->position._f32.x, fallingGreyAntActor->position._f32.y);
     fallingGreyAntActor->unk_98 = 1;
     func_800382F4(fallingGreyAntActor);
     fallingGreyAntActor->unk_F0 = func_800C8900(0, 0x100);
