@@ -12,8 +12,8 @@ Run `make setup` to split the rom, then run `make -j` to build the rom<br/>
 `make clean` will clean the asm/ assets/ and build/ directories<br/>
 
 ### Progresses
-## Total
-<img src ="https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/Rainchus/chameleonTwistv1.0-JP/master/decompAsset/percentBadges/Total.json&style=plastic"/>
+## Totals
+<img src ="https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/Rainchus/chameleonTwistv1.0-JP/master/decompAsset/percentBadges/Total-All.json&style=plastic"/> <img src ="https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/Rainchus/chameleonTwistv1.0-JP/master/decompAsset/percentBadges/Total-Game.json&style=plastic"/>
 
 ## Individual Files
 

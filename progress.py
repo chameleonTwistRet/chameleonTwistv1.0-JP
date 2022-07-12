@@ -97,6 +97,28 @@ for each in percents:
     totalDone += each[6]
 
 
+totalG = 0.0
+totalDoneG = 0.0
+for each in percents:
+    nameVar = 0
+    nameVar += int(each[2] == "2C3B0")
+    nameVar += int(each[2] == "5FEB0")
+    nameVar += int(each[2] == "5FF30")
+    nameVar += int(each[2] == "29DF0")
+    nameVar += int(each[2] == "30FB0")
+    nameVar += int(each[2] == "84E0")
+    nameVar += int(each[2] == "298D0")
+    nameVar += int(each[2] == "1000")
+    nameVar += int(each[2] == "1050")
+    nameVar += int(each[2] == "A3D00")
+    nameVar += int(each[2] == "A4300")
+    nameVar += int(each[2] == "B39A0")
+    nameVar += int(each[2] == "B2860")
+    if nameVar > 0:
+        totalG += 100.0
+        totalDoneG += each[6]
+
+
 
 #dump the base readme
 lines = []
@@ -123,23 +145,25 @@ def makeAndAddBadge(label, message, color = None):
     jss["message"] = message
     jsonPath = "/decompAsset/percentBadges/"
     json_string = json.dumps(jss)
-    newPath = os.getcwd() + jsonPath + label + ".json"
+    newPath = os.getcwd() + jsonPath + label.replace(" ", "") + ".json"
     with open(newPath, "w") as outfile:
         outfile.write(json_string)
     prefix = '<img src ="https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/' + repo + 'master' + jsonPath
     suffix = ".json&style=" + style + '"/>'
-    part = label
+    part = label.replace(" ", "")
     writeToReadMe = prefix + part + suffix
     return writeToReadMe
     
 
 
 outOf = (totalDone / total) * 100
+outOfG = (totalDoneG / totalG) * 100
 
 
 lines.append("### Progresses\n")
-lines.append("## Total\n")
-lines.append(makeAndAddBadge("Total", str(outOf) + "%") + "\n")
+lines.append("## Totals\n")
+lines.append(makeAndAddBadge("Total - All", str(outOf) + "%"))
+lines.append(" " + makeAndAddBadge("Total - Game", str(outOfG) + "%") + "\n")
 lines.append("\n## Individual Files\n\n")
 
 #json
