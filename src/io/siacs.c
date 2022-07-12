@@ -1,4 +1,5 @@
 #include "common.h"
+//AOF=3
 
 #pragma GLOBAL_ASM("asm/nonmatchings/io/siacs/func_800E0E10.s")
 

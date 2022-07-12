@@ -1,4 +1,5 @@
 #include "common.h"
+//AOF=759
 
 //jump table
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80084B30.s")

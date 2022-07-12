@@ -1,10 +1,3 @@
-#pragma GLOBAL_ASM("asm/nonmatchings/gu/mtxutil/guMtxF2L.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/gu/mtxutil/guMtxIdentF.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/gu/mtxutil/guMtxIdent.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/gu/mtxutil/guMtxL2F.s")
 /**************************************************************************
  *									  *
  *		 Copyright (C) 1994, Silicon Graphics, Inc.		  *
@@ -17,8 +10,11 @@
  *									  *
  **************************************************************************/
 /*
-#include "guint.h"
+#include "guint.h"*/
+//AOF=4
 
+#pragma GLOBAL_ASM("asm/nonmatchings/gu/mtxutil/guMtxF2L.s")
+/*
 void guMtxF2L(float mf[4][4], Mtx *m)
 {
 	int	i, j;
@@ -36,9 +32,32 @@ void guMtxF2L(float mf[4][4], Mtx *m)
 		*(ai++) = ( e1 & 0xffff0000 ) | ((e2 >> 16)&0xffff);
 		*(af++) = ((e1 << 16) & 0xffff0000) | (e2 & 0xffff);
 	}
-}
+}*/
 
-void guMtxL2F(float mf[4][4], Mtx *m)
+#pragma GLOBAL_ASM("asm/nonmatchings/gu/mtxutil/guMtxIdentF.s")
+/*
+void guMtxIdentF(float mf[4][4])
+{
+	int	i, j;
+
+	for (i=0; i<4; i++)
+	for (j=0; j<4; j++)
+		if (i == j) mf[i][j] = 1.0;
+		else mf[i][j] = 0.0;
+}*/
+
+#pragma GLOBAL_ASM("asm/nonmatchings/gu/mtxutil/guMtxIdent.s")
+/*void guMtxIdent(Mtx *m)
+{
+        float	mf[4][4];
+
+	guMtxIdentF(mf);
+
+	guMtxF2L(mf, m);
+}*/
+
+#pragma GLOBAL_ASM("asm/nonmatchings/gu/mtxutil/guMtxL2F.s")
+/*void guMtxL2F(float mf[4][4], Mtx *m)
 {
 	int		i, j;
 	unsigned int	e1,e2;
@@ -58,24 +77,4 @@ void guMtxL2F(float mf[4][4], Mtx *m)
 		mf[i][j*2] = FIX32TOF(q1);
 		mf[i][j*2+1] = FIX32TOF(q2);
 	}
-}
-
-void guMtxIdentF(float mf[4][4])
-{
-	int	i, j;
-
-	for (i=0; i<4; i++)
-	for (j=0; j<4; j++)
-		if (i == j) mf[i][j] = 1.0;
-		else mf[i][j] = 0.0;
-}
-
-void guMtxIdent(Mtx *m)
-{
-        float	mf[4][4];
-
-	guMtxIdentF(mf);
-
-	guMtxF2L(mf, m);
-}
-*/
+}*/

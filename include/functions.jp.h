@@ -328,7 +328,7 @@ s32 func_80086710(void);
 s32 func_80086EB4();
 s32 func_80087290(s32);
 void func_800C56D4(u64);
-u32 func_8008BD98(s16);
+u64 func_8008BD98(s16);
 
 
 //84E0
@@ -347,20 +347,34 @@ void func_8007B314(s32, s32, s32);
 void func_8002F54C(f32, playerActor*, s32);
 void func_8002F568(void);
 void func_8002F960(unk_8002F960*);
+f32 func_800C8C14(f32, f32);
+f32 __sinf(f32);
+f32 __sqrtf(f32);
+f32 __cosf(f32);
+void func_8006A74C(void);
+void func_8004263C(void);
+void func_8006E16C(f32, f32, f32, s32, f32, s32);
 
 //and A3D00
 f32 func_800C8C14(f32, f32);
-
+f32 func_800C8A78(f32);
 
 
 //1050
 void func_80088198(void);
 void func_8008BEDC(void);
 s32 func_8002C900();
+void func_800D9730(void);
+void func_80025CB8(void*);
+void func_80025D80(void*);
 
 
 
 //30fb0
 void func_80055BB0(char*);
+void func_800573BC(void);
+void func_8007E5E8(void);
+void func_80056CDC(s32, s32);
 void leoDrive_reset(void);
+void* func_80056D30(s32);
 #endif

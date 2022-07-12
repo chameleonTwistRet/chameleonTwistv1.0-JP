@@ -1,4 +1,6 @@
 #include "common.h"
+//AOF=33
+
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/2C3B0/func_80050FB0.s")
 

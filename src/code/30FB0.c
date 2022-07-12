@@ -1,4 +1,5 @@
 #include "common.h"
+//AOF=326
 
 //arg0 is a pointer to the string "mem err!\n"
 #pragma GLOBAL_ASM("asm/nonmatchings/code/30FB0/func_80055BB0.s")
@@ -64,17 +65,17 @@ void func_80055FBC(s32 arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/30FB0/func_80055FD8.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/30FB0/func_80056064.s")
-// s32 func_80056064(s32 arg0) {
-//     s32 phi_v1;
+/*s32 func_80056064(s32 arg0) {
+    s32 phi_v1;
 
-//     phi_v1 = 0;
-//     if ((D_800F68C4[0] & arg0) != 0) {
-//         phi_v1 = D_800F68CC + 1;
-//     }
+     phi_v1 = 0;
+     if ((D_800F68C4[0] & arg0) != 0) {
+        phi_v1 = D_800F68CC + 1;
+     }
     
-//     D_800F68CC = phi_v1;
-//     return phi_v1;
-// }
+     D_800F68CC = phi_v1;
+     return phi_v1;
+}*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/30FB0/func_8005609C.s")
 
@@ -86,7 +87,7 @@ void func_80055FBC(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/30FB0/func_80056CA0.s")
 
-void func_80056CDC(s32, s32);
+
 #pragma GLOBAL_ASM("asm/nonmatchings/code/30FB0/func_80056CDC.s")
 
 void func_80056D14(unkStruct02* arg0, s32 arg1, unkStruct02* arg2, unkStruct02* arg3) {
@@ -98,7 +99,7 @@ void func_80056D14(unkStruct02* arg0, s32 arg1, unkStruct02* arg2, unkStruct02* 
     }
 }
 
-void* func_80056D30(s32);
+
 #pragma GLOBAL_ASM("asm/nonmatchings/code/30FB0/func_80056D30.s")
 
 void func_80056DF4(unkStruct02* arg0, unkStruct02* arg1) {
@@ -140,7 +141,6 @@ s32 func_80056F24(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/30FB0/func_80057334.s")
 
-void func_800573BC(void);
 #pragma GLOBAL_ASM("asm/nonmatchings/code/30FB0/func_800573BC.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/30FB0/func_8005747C.s")
@@ -179,19 +179,32 @@ void func_8005CA38(void) {
     D_800FDFA0 = 0;
 }
 
+//jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/code/30FB0/func_8005CA44.s")
-
+//jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/code/30FB0/func_8005F408.s")
 
 void func_800610A8(void) {
     D_800FE000 = 1;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/30FB0/func_800610B8.s")
+void func_800610B8(void) {
+    D_800FE000 = 0;
+    func_800573BC();
+    func_8007E5E8();
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/30FB0/func_800610E4.s")
+void func_800610E4(f32 arg0, f32 arg1) {
+    D_800FDFE0 = (s8) (u32) arg0;
+    D_800FDFE4 = (s8) (u32) arg1;
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/30FB0/func_800611F8.s")
+void func_800611F8(f32 arg0, f32 arg1, f32 arg2, f32 arg3) {
+    D_800FE004 = arg0;
+    D_800FE008 = arg1;
+    D_800FE00C = arg2;
+    D_800FE010 = arg3;
+}
 
 void func_8006122C(f32 arg0, f32 arg1) {
     D_800FDFF4 = arg0;

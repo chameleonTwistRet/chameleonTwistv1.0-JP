@@ -1,9 +1,9 @@
 #include "common.h"
 #include "guint.h"
+//AOF=2
+
 
 #pragma GLOBAL_ASM("asm/nonmatchings/gu/align/guAlignF.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/gu/align/guAlign.s")
 /*
 void guAlignF(float mf[4][4], float a, float x, float y, float z)
 {
@@ -44,8 +44,12 @@ void guAlignF(float mf[4][4], float a, float x, float y, float z)
 	} else {
 		// XXX: should do this right
 	}
-}
+}*/
 
+#pragma GLOBAL_ASM("asm/nonmatchings/gu/align/guAlign.s")
+
+
+/*
 void guAlign(Mtx *m, f32 a, f32 x, f32 y, f32 z)
 {
 	Matrix	mf;

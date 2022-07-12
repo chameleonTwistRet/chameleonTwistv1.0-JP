@@ -1,4 +1,5 @@
 #include "common.h"
+//AOF=9
 
 void func_800DE990(void) {
 }

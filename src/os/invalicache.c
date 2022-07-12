@@ -1,4 +1,8 @@
 #include "common.h"
+//AOF=1
+
+#pragma GLOBAL_ASM("asm/nonmatchings/os/invalicache/osInvalICache.s")
+
 /*
 #include "asm_helper.h"
 #.set noreorder
@@ -40,5 +44,3 @@ LEAF(osInvalICache)
 	#nop
 END(osInvalICache)
 */
-
-#pragma GLOBAL_ASM("asm/nonmatchings/os/invalicache/osInvalICache.s")

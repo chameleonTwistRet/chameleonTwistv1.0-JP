@@ -1,4 +1,5 @@
 #include "common.h"
+//AOF=6
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/A3D00/func_800C8900.s")
 /* NEEDS PERMUTING

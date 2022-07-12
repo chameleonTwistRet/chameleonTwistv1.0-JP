@@ -1,4 +1,5 @@
 #include "common.h"
+//AOF=5
 
 #pragma GLOBAL_ASM("asm/nonmatchings/audio/event/func_800E8240.s")
 

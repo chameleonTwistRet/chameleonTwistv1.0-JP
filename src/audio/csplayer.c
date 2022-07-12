@@ -1,4 +1,5 @@
 #include "common.h"
+//AOF=8
 
 #pragma GLOBAL_ASM("asm/nonmatchings/audio/csplayer/func_800DCFB0.s")
 

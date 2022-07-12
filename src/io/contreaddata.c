@@ -1,4 +1,5 @@
 #include "common.h"
+//AOF=3
 
 #pragma GLOBAL_ASM("asm/nonmatchings/io/contreaddata/func_800DB820.s")
 

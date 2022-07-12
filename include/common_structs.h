@@ -291,30 +291,31 @@ typedef struct Actor {
     /* 0x008 */ s32 actorState;//enum, 0 == idle, 1 == on tongue, 2 == in mouth, 3 == spit
     /* 0x00C */ s32 posOnTongue;//the segment iirc
     /* 0x010 */ s32 globalTimer;
-    /* 0x014 */ s32 unk_14;
-    /* 0x018 */ s32 hitStun;
-    /* 0x01C */ s32 unk_1C;
-    /* 0x020 */ s32 unk_20;
-    /* 0x024 */ f32 unk_24;
-    /* 0x028 */ f32 unk_28;
-    /* 0x02C */ f32 unk_2C;
-    /* 0x030 */ f32 unk_30;
-    /* 0x034 */ f32 unk_34;
-    /* 0x038 */ f32 unk_38;
-    /* 0x03C */ f32 unk_3C;
-    /* 0x040 */ f32 unk_40;
-    /* 0x044 */ f32 unk_44;
-    /* 0x048 */ f32 unk_48;
-    /* 0x04C */ f32 unk_4C;
-    /* 0x050 */ s32 unk_50;
+    /* 0x014 */ s32 touched; //0 == false. 1 == true.
+    /* 0x018 */ s32 hit; //triggered when hit
+    /* 0x01C */ s32 tongueBumpSeg; //the segment at which the tongue twas bumped back
+    /* 0x020 */ s32 eaten;//0 == false. 1 == true. does not reset.
+    /* 0x024 */ f32 posX; //i WISH i could make these a Vec3f/Vec4f but it FAILS THE CHECKSUM GOD
+    /* 0x028 */ f32 posY;
+    /* 0x02C */ f32 posZ;
+    /* 0x030 */ f32 direction;
+    /* 0x034 */ f32 yVelocity;
+    /* 0x038 */ f32 unk_38;// i genuinely have no idea. like, it SEEMS like its forward impulse, but it isnt used to
+    //dictate literally anything. what the FUCK is this
+    /* 0x03C */ f32 tScale;
+    /* 0x040 */ f32 tYPos;
+    /* 0x044 */ f32 tXOffset;
+    /* 0x048 */ f32 tYOffset;
+    /* 0x04C */ f32 tZOffset;
+    /* 0x050 */ s32 tongueCollision; //tongue collision enum. 0 == none. 1 == toungable.
 
     /* 0x054 */ actorSubArray unknownPositionThings[3]; //usually 2?
     //actorSubArray is these offsets in the struct
-        // /* 0x054 */ f32 unk_54;
-        // /* 0x058 */ f32 unk_58;
-        // /* 0x05C */ f32 unk_5C;
-        // /* 0x060 */ f32 unk_60;
-        // /* 0x064 */ f32 unk_64;
+        // /* 0x054 */ f32 unk_54;//cos x used by fish
+        // /* 0x058 */ f32 unk_58;//presumably y
+        // /* 0x05C */ f32 unk_5C;//sin z used by fish
+        // /* 0x060 */ f32 unk_60;//hitboxScale
+        // /* 0x064 */ f32 unk_64;//hitboxYstretch
         
         // /* 0x068 */ f32 unk_68;
         // /* 0x06C */ f32 unk_6C;

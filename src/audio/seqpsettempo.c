@@ -1,4 +1,3 @@
-#pragma GLOBAL_ASM("asm/nonmatchings/audio/seqpsettempo/alSeqpSetTempo.s")
 /*====================================================================
  * seqpsettempo.c
  *
@@ -18,6 +17,10 @@
  * DOD or NASA FAR Supplement. Unpublished - rights reserved under the
  * Copyright Laws of the United States.
  *====================================================================*/
+//AOF=1
+
+#pragma GLOBAL_ASM("asm/nonmatchings/audio/seqpsettempo/alSeqpSetTempo.s")
+
 /*
 #include <PR/libaudio.h>
 

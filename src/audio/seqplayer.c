@@ -1,4 +1,5 @@
 #include "common.h"
+//AOF=21
 
 #pragma GLOBAL_ASM("asm/nonmatchings/audio/seqplayer/func_800E6900.s")
 

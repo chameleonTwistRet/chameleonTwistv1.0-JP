@@ -1,18 +1,5 @@
 #include "common.h"
-
-void func_800D9730(void);
-void func_80025CB8(void*);
-void func_80025D80(void*);
-
-
-
-extern s32 D_80168D70;
-extern OSViMode D_801090F0;
-extern OSMesgQueue D_80119270;
-extern OSMesg   D_801191A8;
-extern OSThread D_80113C90; // thread1
-extern OSThread D_80115E40; // thread3
-extern s32 D_80117FF0;
+//AOF=35
 
 void func_80025C50(void) {
     func_800D9730();

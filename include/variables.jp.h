@@ -119,16 +119,33 @@ extern s16 D_800FF854[];
 
 //1050
 extern s32 D_80174998;
-
+extern s32 D_80168D70;
+extern OSViMode D_801090F0;
+extern OSMesgQueue D_80119270;
+extern OSMesg   D_801191A8;
+extern OSThread D_80113C90; // thread1
+extern OSThread D_80115E40; // thread3
+extern s32 D_80117FF0;
 
 //8
 extern f64 D_8010C510;
 extern f64 D_8010C518;
 extern f32 D_8010B34C;
-extern f32 D_8010B350;                         /* extern */
+extern f32 D_8010B350;
 extern s32 D_800FFEB4;
 extern s32 D_80168D78[];
 extern s32 D_801749B0;
+
+//30fb0
+extern s8 D_800FDFE0;
+extern s8 D_800FDFE4;
+extern f32 D_800FE004;
+extern f32 D_800FE008;
+extern f32 D_800FE00C;
+extern f32 D_800FE010;
+
+//a4300
+extern s32 D_80236968;
 
 
 #endif

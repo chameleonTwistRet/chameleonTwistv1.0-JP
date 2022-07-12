@@ -1,4 +1,5 @@
 #include "common.h"
+//AOF=4
 
 #pragma GLOBAL_ASM("asm/nonmatchings/io/motor/func_800D9200.s")
 

@@ -1,4 +1,5 @@
 #include "common.h"
+//AOF=3
 
 #pragma GLOBAL_ASM("asm/nonmatchings/io/sptask/func_800DC580.s")
 

@@ -1,3 +1,5 @@
+//AOF=1
+
 #pragma GLOBAL_ASM("asm/nonmatchings/os/invaldcache/osInvalDCache.s")
 /*#include "asm_helper.h"
 
