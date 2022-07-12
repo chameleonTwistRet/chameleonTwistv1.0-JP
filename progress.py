@@ -80,6 +80,20 @@ for group in percents:
     print(shortName)
 
 
+def myFunc(each):
+    numbesssss = each[6]
+    return numbesssss
+
+
+
+#sort by percent
+percents.sort(key=myFunc)
+percents.reverse()
+
+
+
+
+
 
 #dump the base readme
 lines = []
@@ -104,7 +118,12 @@ for jsonx in percents:
     jss["color"] = "#" + r + g + b
     jss["schemaVersion"] = 1
     jss["label"] = jsonx[2]
-    jss["message"] = str(jsonx[6]) + "%"
+
+    stepper = 10.0 ** 5
+    stepped = math.trunc(stepper * jsonx[6]) / stepper
+
+
+    jss["message"] = str(stepped) + "%"
     jsonPath = "/decompAsset/percentBadges/"
     json_string = json.dumps(jss)
     newPath = os.getcwd() + jsonPath + jsonx[2] + ".json"
