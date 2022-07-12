@@ -134,13 +134,13 @@ def makeAndAddBadge(label, message, color = None):
     
 
 
-outOf = totalDone / total
+outOf = (totalDone / total) * 100
 
 
-lines.append("### Progresses")
-lines.append("##Total")
+lines.append("### Progresses\n")
+lines.append("## Total\n")
 lines.append(makeAndAddBadge("Total", str(outOf) + "%"))
-lines.append("##Individual Files")
+lines.append("\n## Individual Files\n")
 
 #json
 for jsonx in percents:
