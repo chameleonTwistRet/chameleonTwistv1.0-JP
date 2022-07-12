@@ -10,6 +10,10 @@ repo = "Rainchus/chameleonTwistv1.0-JP/"
 nonDir = "/asm/nonmatchings"
 srcDir = "/src"
 
+dirr = os.getcwd() + "/decompAsset/percentBadges/"
+for f in os.listdir(dirr):
+    os.remove(dirr + f)
+
 
 sList = []
 non = os.scandir(os.getcwd() + nonDir)
