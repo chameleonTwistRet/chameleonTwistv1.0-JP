@@ -139,8 +139,8 @@ outOf = (totalDone / total) * 100
 
 lines.append("### Progresses\n")
 lines.append("## Total\n")
-lines.append(makeAndAddBadge("Total", str(outOf) + "%"))
-lines.append("\n## Individual Files\n")
+lines.append(makeAndAddBadge("Total", str(outOf) + "%") + "\n")
+lines.append("\n## Individual Files\n\n")
 
 #json
 for jsonx in percents:
