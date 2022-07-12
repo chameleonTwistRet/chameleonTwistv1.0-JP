@@ -137,9 +137,12 @@ def makeAndAddBadge(label, message, color = None):
         "color": "#000000"
     }
     style = "plastic"
-    r = hex(int(math.ceil(random.random() * 256) - 1)).strip("0x")
-    g = hex(int(math.ceil(random.random() * 256) - 1)).strip("0x")
-    b = hex(int(math.ceil(random.random() * 256) - 1)).strip("0x")
+    if color != None:
+        jss["color"] = color
+    else:
+        r = hex(int(math.ceil(random.random() * 256) - 1)).strip("0x")
+        g = hex(int(math.ceil(random.random() * 256) - 1)).strip("0x")
+        b = hex(int(math.ceil(random.random() * 256) - 1)).strip("0x")
     jss["color"] = "#" + r + g + b
     jss["schemaVersion"] = 1
     jss["label"] = label
