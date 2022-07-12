@@ -107,8 +107,8 @@ for jsonx in percents:
     newPath = os.getcwd() + jsonPath + jsonx[2] + ".json"
     with open(newPath, "w") as outfile:
         outfile.write(json_string)
-    prefix = "<img src ='https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/chameleonTwistRet/chameleonTwistv1.0-JP/master" + jsonPath
-    suffix = ".json&style=" + style + "'/>"
+    prefix = '<img src ="https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/chameleonTwistRet/chameleonTwistv1.0-JP/master' + jsonPath
+    suffix = ".json&style=" + style + '"/>'
     part = jsonx[2]
     
     writeToReadMe = prefix + part + suffix
