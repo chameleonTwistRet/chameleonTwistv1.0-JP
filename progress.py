@@ -119,11 +119,9 @@ for jsonx in percents:
     jss["schemaVersion"] = 1
     jss["label"] = jsonx[2]
 
-    stepper = 10.0 ** 5
-    stepped = math.trunc(stepper * jsonx[6]) / stepper
 
 
-    jss["message"] = str(stepped) + "%"
+    jss["message"] = str(jsonx[6]) + "%"
     jsonPath = "/decompAsset/percentBadges/"
     json_string = json.dumps(jss)
     newPath = os.getcwd() + jsonPath + jsonx[2] + ".json"
