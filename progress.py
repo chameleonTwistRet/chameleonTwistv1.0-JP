@@ -90,8 +90,11 @@ def myFunc(each):
 percents.sort(key=myFunc)
 percents.reverse()
 
-
-
+total = 0.0
+totalDone = 0.0
+for each in percents:
+    total += 100.0
+    totalDone += each[6]
 
 
 
@@ -100,11 +103,7 @@ lines = []
 for line in open(os.getcwd() + "/decompAsset/baseREADME.md", 'r'):
     lines.append(line)
 
-
-
-
-#json
-for jsonx in percents:
+def makeAndAddBadge(label, message, color = None):
     jss = {
         "schemaVersion": 0,
         "label": "fuck",
@@ -117,22 +116,38 @@ for jsonx in percents:
     b = hex(int(math.ceil(random.random() * 256) - 1)).strip("0x")
     jss["color"] = "#" + r + g + b
     jss["schemaVersion"] = 1
-    jss["label"] = jsonx[2]
+    jss["label"] = label
 
 
 
-    jss["message"] = str(jsonx[6]) + "%"
+    jss["message"] = message
     jsonPath = "/decompAsset/percentBadges/"
     json_string = json.dumps(jss)
-    newPath = os.getcwd() + jsonPath + jsonx[2] + ".json"
+    newPath = os.getcwd() + jsonPath + label + ".json"
     with open(newPath, "w") as outfile:
         outfile.write(json_string)
     prefix = '<img src ="https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/' + repo + 'master' + jsonPath
     suffix = ".json&style=" + style + '"/>'
-    part = jsonx[2]
-    
+    part = label
     writeToReadMe = prefix + part + suffix
-    lines.append(writeToReadMe)
+    return writeToReadMe
+    
+
+
+outOf = totalDone / total
+
+
+lines.append("### Progresses")
+lines.append("##Total")
+lines.append(makeAndAddBadge("Total", str(outOf) + "%"))
+lines.append("##Individual Files")
+
+#json
+for jsonx in percents:
+    li = makeAndAddBadge(jsonx[2], str(jsonx[6]) + "%")
+    lines.append(li)
+
+
 
 
 #rewrite readme
