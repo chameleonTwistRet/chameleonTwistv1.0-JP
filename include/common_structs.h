@@ -64,16 +64,23 @@ typedef struct playerActor {
     /* 0x58 */ u32 jumpReleasedInAir;    // 0x00 = no, 0x01 = yes
     /* 0x5C */ u32 jumpAnimFrame;
     /* 0x60 */ u32 hasTumbled;    //0x00 = no, 0x01 = yes. resets on jump.
-    /* 0x64 */ char unk_64[0x04];
+    /* 0x64 */ u32 unk64;
     /* 0x68 */ u32 inWater;//0x00 = no, 0x01 = yes.
     /* 0x6C */ u32 squishTimer;
     /* 0x70 */ f32 yScale;
     /* 0x74 */ u32 locked; //0x00 = no, 0x16 = yes. when using lock to stand in place.
-    /* 0x78 */ char unk_78[0x18];
+    /* 0x78 */ s32 amountToShoot; //number for machine gun shoot
+    /* 0x7C */ s32 surface; //-1 when off ground, diff number when on diff surface. if 0 you slow to a crawl
+    /* 0x80 */ s32 wSurface; //-1 when not in water, diff number when in diff water
+    /* 0x84 */ s32 surfaceSlide; //1 if you slide on a slope while standing. 0 if else (not walkable slopes)
+    /* 0x88 */ s32 surfaceFine; //more accurate
+    /* 0x8C */ s32 vaulting; // 0 if not, 1 if
     /* 0x90 */ f32 xFromCenter; //from center of room (when on ground)
     /* 0x94 */ f32 yFromCenter;
     /* 0x98 */ f32 zFromCenter;
-    /* 0x9C */ char unk_9C[0x0C];
+    /* 0xA8 */ f32 xShift; //override(?) when on moving objects (falling bridges, etc)
+    /* 0xAC */ f32 yShift;
+    /* 0xB0 */ f32 zShift;
     /* 0xA8 */ f32 xMove; //override when sliding on slopes or on poles
     /* 0xAC */ f32 yMove;
     /* 0xB0 */ f32 zMove;
@@ -85,7 +92,20 @@ typedef struct playerActor {
     /* 0xC8 */ u32 hp;
     /* 0xCC */ u32 playerHURTSTATE;
     /* 0xD0 */ u32 playerHURTTIMER;
-    /* 0xD4 */ char unk_D4[0x38];
+    /* 0xD4 */ u32 playerHURTANIM;
+    /* 0xD8 */ u32 playerHURTBY;
+    /* 0xDC */ f32 useless1; //vec3's i have to assume
+    /* 0xE0 */ f32 useless2;
+    /* 0xE4 */ f32 useless3;
+    /* 0xE8 */ f32 useless4;
+    /* 0xEC */ f32 useless5;
+    /* 0xF0 */ f32 useless6;
+    /* 0xF4 */ f32 useless7;
+    /* 0xF8 */ f32 useless8;
+    /* 0xFC */ f32 useless9;
+    /* 0x100*/ f32 useless10;
+    /* 0x104*/ f32 useless11;
+    /* 0x108*/ f32 useless12;
     /* 0x10C*/ f32 timerDown;
     /* 0x110*/ f32 reticleSize;
     /* 0x114*/ u32 active; //0x00 = no, 0x01 = yes
@@ -461,6 +481,148 @@ typedef struct huh{
     s32 unk0;
     s32 unk4;
 }huh;
+
+
+typedef struct arg{
+    s16 unk0;
+    s16 unk2;
+    s16 unk4;
+    s16 unk6;
+    s16 unk8;
+    s16 unkA;
+    f32 unkC;
+}arg;
+
+
+
+typedef struct arb{
+    s32 unk0;
+    s8 unk4;
+    s8 unk5;
+    s8 unk6;
+    s8 unk7;
+    s32 unk8;
+    f32 unkC;
+    s32 unk10;
+    s32 unk14;
+    s32 unk18;
+    s32 unk1C;
+    s32 unk20;
+    s32 unk24;
+    s32 unk28;
+    s32 unk2C;
+    s32 unk30;
+    s32 unk34;
+    s32 unk38;
+    s32 unk3C;
+    s32 unk40;
+    s32 unk44;
+    s32 unk48;
+    s32 unk4C;
+}arb;
+
+typedef struct aaaaa{
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+    s32 unk14;
+    s32 unk18;
+    f32 unk1C;
+}aaaaa;
+
+typedef struct aa2{
+    f32 unk0;
+    f32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+    s32 unk14;
+    s32 unk18;
+    s32 unk1C;
+    s32 unk20;
+    s32 unk24;
+    s32 unk28;
+    s32 unk2C;
+    s32 unk30;
+}aa2;
+
+typedef struct aa1{
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    f32 unkC;
+    f32 unk10;
+    f32 unk14;
+    f32 unk18;
+    f32 unk1C;
+    f32 unk20;
+    f32 unk24;
+    s32 unk28;
+    s32 unk2C;
+    f32 unk30;
+    s32 unk34;
+    aa2* unk38;
+}aa1;
+
+//same ^ V ?
+
+typedef struct unk_8007A25C{
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    //padding ^
+    f32 unkC;
+    f32 unk10;
+    f32 unk14;
+    f32 unk18;
+    f32 unk1C;
+    //padding V
+    s32 unk20;
+    s32 unk24;
+    s32 unk28;
+    s32 unk2C;
+    //padding ^
+    f32 unk30;
+}unk_8007A25C;
+
+
+typedef struct argcdbc{
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+}argcdbc;
+
+typedef struct d8006266c{
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    f32 unkC;
+}d8006266c;
+
+typedef struct argd8006266c{
+    char unk0[0x38];
+    d8006266c* unk38;
+    
+}argd8006266c;
+
+typedef struct bf8{
+    s16 unk0;
+    s16 unk2;
+    s16 unk4;
+    s16 unk6;
+    s16 unk8;
+}bf8;
+
+
+typedef struct what{
+    f32 unk0;
+    f32 unk4;
+    f32 unk8;
+    f32 unkC;
+}what;
+
 
 
 

@@ -63,8 +63,6 @@ void func_80084FC0(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80087290.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80087358.s")
-/*"No prototype for the call to"
 s32 func_80087358(void) {
     s32 temp_v0;
 
@@ -73,7 +71,7 @@ s32 func_80087358(void) {
         return -1;
     }
     return func_80087290(temp_v0);
-}*/
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80087390.s")
 
@@ -1165,11 +1163,9 @@ void func_800A54EC(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800B34D0.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800B3540.s")
-/*"No prototype for the call to"
 s32 func_800B3540(void) {
     return 1 - func_800B34D0();
-}*/
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800B3564.s")
 
@@ -1555,6 +1551,9 @@ void func_800B5600(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800C4594.s")
 
+
+//alotta unks
+//https://decomp.me/scratch/XCUmg
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800C48B8.s")
 
 //subroutine variables

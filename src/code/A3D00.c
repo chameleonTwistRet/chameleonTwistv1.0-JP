@@ -37,12 +37,11 @@ f32 tanf(f32 x) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/A3D00/func_800C8A78.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/A3D00/func_800C8BE4.s")
-/*
+
 f32 func_800C8BE4(f32 arg0) {
     return (f32) (D_80110120 - (f64) func_800C8A78(arg0));
 }
-*/
+
 
 
 // jtbl error
