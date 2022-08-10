@@ -223,7 +223,7 @@ void func_80061264(f32 arg0) {
     D_800FDFFC = arg0;
 }
 
-void func_80061270(s8 arg0, s8 arg1, s8 arg2, u8 arg3) {
+void func_80061270(u8 arg0, u8 arg1, u8 arg2, u8 arg3) {
     D_800FDFD0 = arg0;
     D_800FDFD4 = arg1;
     D_800FDFD8 = arg2;
