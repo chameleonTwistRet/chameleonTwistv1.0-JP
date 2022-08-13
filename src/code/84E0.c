@@ -933,7 +933,7 @@ void func_8003E30C(Actor* arrowsActor) {
 //#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8003E32C.s")
 // Elisiah
 void func_8003E32C(Actor* arg0) {                   // unsure if struct is actor
-    if (arg0->lifeDuration == arg0->unk_10C[0]) {
+    if (arg0->globalTimer == arg0->unk_10C[0]) {
         func_80031518();
     }
     func_800382F4(arg0);
