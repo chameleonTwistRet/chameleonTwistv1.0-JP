@@ -623,6 +623,9 @@ typedef struct what{
     f32 unkC;
 }what;
 
+typedef struct unk_func_800A1F3C {
+    char unk_00[0x28];
+} unk_func_800A1F3C;
 
 
 

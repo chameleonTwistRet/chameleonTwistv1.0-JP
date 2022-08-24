@@ -801,7 +801,23 @@ void func_800A10E8(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A1EC4.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A1F3C.s")
+//#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A1F3C.s")
+void func_80061308(u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8);
+s32 func_80080430(f32, f32, f32, f32, f32, f32, unk_func_800A1F3C*, s32);   /* extern */
+unk_func_800A1F3C* func_8008FA44(s32, s32, unk_func_800A1F3C*);                       /* extern */
+extern unk_func_800A1F3C D_8010E954;
+extern s32 perfectCode;
+
+// To do with the perfect code
+void func_800A1F3C(s32 arg0) {
+    unk_func_800A1F3C sp50;
+
+    func_80061308(0xFF, 0x90, 0xF2, 0xFF, 0xFF, 0x38, 0x64, 0xFF, 0xFF, 0x90, 0xF2, 0xFF, 0xFF, 0x38, 0x64, 0xFF);
+    func_80080430(144.0f, 24.0f, 0.0f, 0.7f, 0.0f, 0.0f, &D_8010E954, 1);
+    func_80061308(0x90, 0xF2, 0xFF, 0xFF, 0x38, 0x64, 0xFF, 0xFF, 0x90, 0xF2, 0xFF, 0xFF, 0x38, 0x64, 0xFF, 0xFF);
+    func_80080430(160.0f, 40.0f, 0.0f, 0.7f, 0.0f, 0.0f, func_8008FA44(perfectCode, 8, &sp50), 1);
+}
+
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A20CC.s")
 
