@@ -931,7 +931,14 @@ void func_8003E30C(Actor* arrowsActor) {
     arrowsActor->unk_10C[0] = (s32) (arrowsActor->position._f32.y / arrowsActor->position._f32.x);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8003E32C.s")
+//#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8003E32C.s")
+// Elisiah
+void func_8003E32C(Actor* arg0) {                   // unsure if struct is actor
+    if (arg0->globalTimer == arg0->unk_10C[0]) {
+        func_80031518();
+    }
+    func_800382F4(arg0);
+}
 
 // boulder
 void func_8003E368(Actor* boulderActor){
@@ -990,10 +997,11 @@ void func_8003FB04(Actor* pogoActor) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8003FB4C.s")
 
+// 0x21
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8003FC54.s")
 
+// 0x22
 void func_8003FEAC(s32 arg0) {
-
 }
 
 // unk_23
@@ -1478,6 +1486,7 @@ void func_8004A310(Actor* unk_5AActor) {
     unk_5AActor->unk_98 = 1;
 }
 
+// unk_5C
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8004A31C.s")
 
 // Power Up Spawner: Auto-Decompile
@@ -1485,6 +1494,7 @@ void func_8004A39C(Actor* powerUpSpawnerActor){
     
 }
 
+// unk_5B
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8004A3A4.s")
 
 // Falling Grey Ant Spawner Auto-Decompile
@@ -1492,6 +1502,7 @@ void func_8004A544(Actor* fallingGreyAntSpawnerActor){
     
 }
 
+// unk_5C
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8004A54C.s")
 
 // Falling Grey Ant Function: Elisiah
@@ -1503,17 +1514,21 @@ void func_8004A658(Actor* fallingGreyAntActor) {
     fallingGreyAntActor->unk_F0 = func_800C8900(0, 0x100);
 }
 
+// unk_5D
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8004A6C4.s")
 
-// unk_5E
+// unk_??
 void func_8004AB00(Actor* unk_5EActor){
-
 }
 
+// unk_5E
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8004AB08.s")
 
+// unk_60
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8004AC20.s")
 
+// unk_66 to unk_69 arent used
+// unk_6A
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8004AC8C.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8004AD2C.s")

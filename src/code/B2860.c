@@ -1,7 +1,8 @@
 #include "common.h"
 //AOF=22
 
-void func_800D7460(s32 arg0, ...) {
+// Auth: Rain, revo, simonlindholm
+void func_800D7460(s32 arg0, ...) { /* variadic args: simonlindholm*/
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/B2860/func_800D747C.s")

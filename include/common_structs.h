@@ -628,4 +628,8 @@ typedef struct unkStruct {
 /* 0x04 */ char unk_04[0x104];
 } unkStruct;
 
+typedef struct unk_func_800A1F3C {
+    char unk_00[0x28];
+} unk_func_800A1F3C;
+
 #endif
