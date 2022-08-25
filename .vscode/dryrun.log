@@ -1,6 +1,0 @@
-make --dry-run --keep-going --print-directory
-make: Entering directory '/root/chameleonTwistv1.0-JP'
- 
-sha1sum -c chameleontwist.jp.sha1
-make: Leaving directory '/root/chameleonTwistv1.0-JP'
- 

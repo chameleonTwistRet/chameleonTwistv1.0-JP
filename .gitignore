@@ -12,6 +12,9 @@ asm/
 assets/
 build/
 expected/
+.vscode/configurationCache.log
+.vscode/dryrun.log
+.vscode/targets.log
 
 # Tool artifacts
 undefined_funcs_auto.txt
