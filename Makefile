@@ -1,12 +1,31 @@
 MAKEFLAGS += --no-builtin-rules
 
 # Options
-NON_MATCHING ?= 0
-VERSION      ?= jp
-OBJDUMP_BUILD ?= 0
-VERIFY       ?= verify
+NON_MATCHING 	?= 0
+VERSION      	?= jp
+OBJDUMP_BUILD 	?= 0
+VERIFY       	?= verify
+VERBOSE 		?= 0
+
+ifeq ($(VERBOSE),0)
+V := @
+endif
 
 BASENAME  := chameleontwist
+
+PRINT := printf '
+ ENDCOLOR := \033[0m
+ WHITE     := \033[0m
+ ENDWHITE  := $(ENDCOLOR)
+ GREEN     := \033[0;32m
+ ENDGREEN  := $(ENDCOLOR)
+ BLUE      := \033[0;34m
+ ENDBLUE   := $(ENDCOLOR)
+ YELLOW    := \033[0;33m
+ ENDYELLOW := $(ENDCOLOR)
+ PURPLE    := \033[0;35m
+ ENDPURPLE := $(ENDCOLOR)
+ENDLINE := \n'
 
 # Directories
 
@@ -161,14 +180,14 @@ setup: splat
 	$(PYTHON) $(SPLAT) $(BASENAME).$(VERSION).yaml
 
 clean:
-	rm -rf build
+	$(V)rm -rf build
 
 distclean: clean
-	rm -rf asm
-	rm -rf assets
-	rm -rf expected
-	rm -f *auto.txt
-	rm -f $(LD_SCRIPT)
+	$(V)rm -rf asm
+	$(V)rm -rf assets
+	$(V)rm -rf expected
+	$(V)rm -f *auto.txt
+	$(V)rm -f $(LD_SCRIPT)
 
 expected: verify
 	$(RM) -rf expected/
@@ -185,85 +204,69 @@ $(BUILD_DIR)/:
 	@mkdir -p $(BUILD_DIR)
 
 $(TARGET).elf: $(LD_SCRIPT) $(O_FILES) $(IMAGE_O_FILES)
-	$(LD) $(LD_FLAGS) -o $@
+	$(V)$(LD) $(LD_FLAGS) -o $@
 
 $(BUILD_DIR)/$(SRC_DIR)/%.c.o: $(SRC_DIR)/%.c
-	$(CC_CHECK) $<
-	$(CC) -c $(CFLAGS) $(MIPS_VERSION) $(OPT_FLAGS) -o $@ $<
-	$(OBJDUMP_CMD)
+	$(V)$(PRINT)$(GREEN)Compiling C file: $(ENDGREEN)$(BLUE)$<$(ENDBLUE)$(ENDLINE)
+	$(V)$(CC_CHECK) $<
+	$(V)$(CC) -c $(CFLAGS) $(MIPS_VERSION) $(OPT_FLAGS) -o $@ $<
+	$(V)$(OBJDUMP_CMD)
 
 # use modern gcc for data
 $(BUILD_DIR)/$(SRC_DIR)/data/%.c.o: $(SRC_DIR)/data/%.c
-	$(XGCC) -c $(GCC_FLAGS) -o $@ $<
+	$(V)$(XGCC) -c $(GCC_FLAGS) -o $@ $<
 
 $(BUILD_DIR)/%.s.o: %.s
-	iconv --from UTF-8 --to EUC-JP $< | $(AS) $(ASFLAGS) -o $@
+	$(V)$(PRINT)$(GREEN)Assembling asm file: $(ENDGREEN)$(BLUE)$<$(ENDBLUE)$(ENDLINE)
+	$(V)iconv --from UTF-8 --to EUC-JP $< | $(AS) $(ASFLAGS) -o $@
 
 
-
-
-#HEREEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
 # uncompressed images
-
 $(BUILD_DIR)/%.rgba32.png: %.rgba32.png
-	@mkdir -p $$(dirname $@)
-	@$(IMG_CONVERT) rgba32 $< $@
-	@printf "$(GREEN) IMG$(NO_COL)  $<\n"
+	$(V)mkdir -p $$(dirname $@)
+	$(V)$(IMG_CONVERT) rgba32 $< $@
 
 $(BUILD_DIR)/%.rgba16.png: %.rgba16.png
-	@mkdir -p $$(dirname $@)
-	@$(IMG_CONVERT) rgba16 $< $@
-	@printf "$(GREEN) IMG$(NO_COL)  $<\n"
+	$(V)mkdir -p $$(dirname $@)
+	$(V)$(IMG_CONVERT) rgba16 $< $@
+
 
 $(BUILD_DIR)/%.i4.png: %.i4.png
-	@mkdir -p $$(dirname $@)
-	@$(IMG_CONVERT) i4 $< $@
-	@printf "$(GREEN) IMG$(NO_COL)  $<\n"
+	$(V)mkdir -p $$(dirname $@)
+	$(V)$(IMG_CONVERT) i4 $< $@
+
 
 $(BUILD_DIR)/%.ia4.png: %.ia4.png
-	@mkdir -p $$(dirname $@)
-	@$(IMG_CONVERT) ia4 $< $@
-	@printf "$(GREEN) IMG$(NO_COL)  $<\n"
+	$(V)mkdir -p $$(dirname $@)
+	$(V)$(IMG_CONVERT) ia4 $< $@
+
 
 $(BUILD_DIR)/%.i8.png: %.i8.png
-	@mkdir -p $$(dirname $@)
-	@$(IMG_CONVERT) i8 $< $@
-	@printf "$(GREEN) IMG$(NO_COL)  $<\n"
+	$(V)mkdir -p $$(dirname $@)
+	$(V)$(IMG_CONVERT) i8 $< $@
+
 
 $(BUILD_DIR)/%.ia8.png: %.ia8.png
-	@mkdir -p $$(dirname $@)
-	@$(IMG_CONVERT) ia8 $< $@
-	@printf "$(GREEN) IMG$(NO_COL)  $<\n"
-
-
-
-
-
-
-
-
-
-
-
-
-
+	$(V)mkdir -p $$(dirname $@)
+	$(V)$(IMG_CONVERT) ia8 $< $@
 
 
 
 # BUILD_DIR prefix to suppress circular dependency
 $(BUILD_DIR)/%.png.o: $(BUILD_DIR)/%.png
-	@$(LD) -r -b binary -o $@ $<
-	@printf "$(GREEN) LD$(NO_COL)   $<\n"
+	$(V)$(LD) -r -b binary -o $@ $<
 
 
 #where the binaries are maaaaade
 $(BUILD_DIR)/%.bin.o: %.bin
-	$(LD) -r -b binary -o $@ $<
+	$(V)$(LD) -r -b binary -o $@ $<
 
 $(TARGET).bin: $(TARGET).elf
-	$(OBJCOPY) $(OBJCOPYFLAGS) $< $@
+	$(V)$(PRINT)$(GREEN)Linking elf file: $(ENDGREEN)$(BLUE)$@$(ENDBLUE)$(ENDLINE)
+	$(V)$(OBJCOPY) $(OBJCOPYFLAGS) $< $@
 
 $(TARGET).z64: $(TARGET).bin
+	$(V)$(PRINT)$(PURPLE)Creating z64: $(ENDPURPLE)$(BLUE)$@$(ENDBLUE)$(ENDLINE)
 	@cp $< $@
 
 # fake targets for better error handling

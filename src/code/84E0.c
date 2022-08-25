@@ -614,12 +614,12 @@ void func_8002F7F0(void) {
 
     aIM = TonguePointer->amountInMouth;
     if (aIM < 6) {
-        PlayerPointer->forwardImpulse = (f32) (((24.0f - (f32) aIM) * D_8010B34C) / 24.0f);
+        PlayerPointer->forwardImpulse = (((24.0f - aIM) * D_8010B34C) / 24.0f);
     } else {
-        PlayerPointer->forwardImpulse = (f32) D_8010B350;
+        PlayerPointer->forwardImpulse = D_8010B350;
     }
     if (PlayerPointer->power == 3) {
-        PlayerPointer->forwardImpulse = (f32) (PlayerPointer->forwardImpulse * 0.5f);
+        PlayerPointer->forwardImpulse = (PlayerPointer->forwardImpulse * 0.5f);
     }
 }
 
@@ -648,16 +648,12 @@ void func_8002F9BC(s32 arg0) {
     PlayerPointer->hitboxYStretch = 150.0f;
 }
 
-//this one is REALLY long holy shit
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8002FA34.s")
 
-//less long than above but still nauseating
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80030DCC.s")
 
-//yeah
 //https://decomp.me/scratch/BeR2b
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80030F3C.s")
-
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_800311C8.s")
 
@@ -667,7 +663,12 @@ void func_8002F9BC(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_800313BC.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_800314E4.s")
+void func_800314E4(Actor* arg0) {
+    if (arg0->actorID == 1) {
+        D_80172E88[arg0->unk_10C[0]].unk_00 = 0;
+    }
+    arg0->actorID = 0;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80031518.s")
 

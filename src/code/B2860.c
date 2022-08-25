@@ -1,7 +1,8 @@
 #include "common.h"
 //AOF=22
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/B2860/func_800D7460.s")
+void func_800D7460(s32 arg0, ...) {
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/B2860/func_800D747C.s")
 

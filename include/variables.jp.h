@@ -146,6 +146,6 @@ extern u32 D_80200054;
 extern s32 D_80200060;
 extern s32 D_802025B0;
 extern s32 D_80236968;
-
+extern unkStruct D_80172E88[];
 
 #endif

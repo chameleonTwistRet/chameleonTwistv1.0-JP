@@ -623,8 +623,9 @@ typedef struct what{
     f32 unkC;
 }what;
 
-
-
-
+typedef struct unkStruct {
+/* 0x00 */ s32 unk_00;
+/* 0x04 */ char unk_04[0x104];
+} unkStruct;
 
 #endif

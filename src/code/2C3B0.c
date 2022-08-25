@@ -49,13 +49,11 @@
 #pragma GLOBAL_ASM("asm/nonmatchings/code/2C3B0/func_80053FA0.s")
 
 void func_8005423C(void) {
-    s32 var_s0;
+    s32 i;
 
-    var_s0 = 0;
-    do {
-        func_8006D598(var_s0, 0, 0);
-        var_s0 += 1;
-    } while (var_s0 != 6);
+    for (i = 0; i < 6; i++) {
+        func_8006D598(i, 0, 0);
+    }
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/2C3B0/func_80054284.s")
