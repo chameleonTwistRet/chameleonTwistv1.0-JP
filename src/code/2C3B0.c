@@ -40,7 +40,16 @@ void func_8005171C(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/2C3B0/func_800536D8.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/2C3B0/func_800538D0.s")
+void func_800538D0(void) {
+    s32 temp_v0;
+
+    temp_v0 = D_80176824;
+    if ((temp_v0 < 1801) && (temp_v0 >= 1711) && ((temp_v0 % 10) < 5)) {
+        func_80076884(1);
+        func_800803F0(100.0f, 10.0f, 0.0f, 1.0f, &D_8010C944, 1);
+    }
+}
+
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/2C3B0/func_80053950.s")
 

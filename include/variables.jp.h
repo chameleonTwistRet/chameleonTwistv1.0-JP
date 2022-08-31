@@ -102,6 +102,7 @@ extern f32 D_8010B350;
 extern f64 D_8010C510;
 extern f64 D_8010C518;
 extern f32 D_8010C7B0;
+extern f32 D_8010C944;
 extern char D_8010CA10[9]; //"mem err!\n"
 extern f64 D_8010FFF8;
 extern f64 D_80110000;
@@ -128,6 +129,7 @@ extern s32 D_801748A0;
 extern s32 D_80174998;
 extern s32 D_801749B0;
 extern u64 D_80175620; //needs to be pointer i guess
+extern s32 D_80176824;
 extern u8 D_80176850[16];
 extern f32 D_80176F50;
 extern s32 D_801B3120;

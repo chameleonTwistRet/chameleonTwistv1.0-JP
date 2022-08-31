@@ -3,11 +3,6 @@
 
 #include "PR/ultratypes.h"
 
-
-
-
-
-
 typedef struct Vec2f {
                f32 x;
                f32 y;
@@ -36,6 +31,10 @@ typedef struct Vec4f {
                f32 z;
                f32 yaw;
 } Vec4f;
+
+
+
+
 
 typedef struct playerActor {
     /* 0x00 */ u32 playerID; //trust me thats what it is
