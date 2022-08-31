@@ -18,10 +18,10 @@ extern tongue* TonguePointer;
 
 
 
-
 extern u8 D_800F06DC;
 extern s32 D_800F06EC;
 extern s32 D_800F0B38;
+extern u32 D_800F0B50;
 extern s32 D_800F6880;
 extern s32 D_800F6888;
 extern s32 D_800F688C;
@@ -121,6 +121,7 @@ extern s32 D_80168E5C;
 extern tongue D_80169268;
 extern Actor D_8016AC68[64]; //currently loaded actor structs
 //eof == 80170968
+extern unkStruct D_80172E88[];
 extern s32 D_80174878;
 extern argcdbc D_80174880;
 extern s32 D_801748A0;
@@ -146,6 +147,6 @@ extern u32 D_80200054;
 extern s32 D_80200060;
 extern s32 D_802025B0;
 extern s32 D_80236968;
-extern unkStruct D_80172E88[];
+extern s32 D_80240CD8;
 
 #endif

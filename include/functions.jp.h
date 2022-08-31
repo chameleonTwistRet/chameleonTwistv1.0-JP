@@ -177,6 +177,7 @@ void func_8004E760(arg*);
 void func_8004ECA8(void);
 void func_8004FFFC(void);
 
+void func_8005171C(void);
 void func_8005423C(void);
 void func_80055BB0(char*);
 void func_80055BCC(s32);

@@ -12,7 +12,11 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/2C3B0/func_80051678.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/2C3B0/func_8005171C.s")
+void func_8005171C(void) {
+    if ((D_80240CD8 == 6) && (((u32) D_800F0B50 % 60) == 0)) {
+        func_80087ED0(137, 0, 0, 0, 0, 16);
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/2C3B0/func_8005177C.s")
 
@@ -49,11 +53,13 @@
 #pragma GLOBAL_ASM("asm/nonmatchings/code/2C3B0/func_80053FA0.s")
 
 void func_8005423C(void) {
-    s32 i;
+    s32 var_s0;
 
-    for (i = 0; i < 6; i++) {
-        func_8006D598(i, 0, 0);
-    }
+    var_s0 = 0;
+    do {
+        func_8006D598(var_s0, 0, 0);
+        var_s0 += 1;
+    } while (var_s0 != 6);
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/2C3B0/func_80054284.s")
