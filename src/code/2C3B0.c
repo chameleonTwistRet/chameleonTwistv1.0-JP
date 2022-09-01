@@ -85,6 +85,35 @@ void func_8005423C(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/2C3B0/func_800557F8.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/2C3B0/func_80055994.s")
+void func_80055994(void) {
+    switch (D_800FFEB8) {
+    case 0:
+        D_800FFDF4 = 1;
+        func_800A7988();
+        func_800A1EC4();
+        func_80057010(94);
+        func_8008CDC4();
+        func_8002E0CC();
+        D_800FFEB8 += 1;
+        D_80100FD0 = 0;
+        D_800FFDF0 = 2;
+        D_801FC9AC = 0;
+        func_8008F114();
+        break;
+    case 1:
+        func_800735A8();
+        D_800FFEB8 += 1;
+        func_8008F114();
+        break;
+    case 2:
+        func_8008F16C();
+        D_8017499C += 1;
+        break;
+    case 3:
+        func_8008FD04(10);
+        break;
+    }
+    func_8008C094();
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/2C3B0/func_80055AA0.s")

@@ -22,6 +22,6 @@ for each in s:
     if not each.startswith("#") and each != "" and each != "\n" and each.find("OS") == -1:
         new.append(each)
 
-f = open(outfile, "a")
+f = open(outfile, "w")
 f.writelines(new)
 f.close()

@@ -88,7 +88,11 @@ extern s32 D_800FF63C;
 extern s8 D_800FF64C;
 extern s8 D_800FF650;
 extern s16 D_800FF854[];
+extern s16 D_800FFDF0;
+extern s16 D_800FFDF4;
 extern s32 D_800FFEB4;
+extern s32 D_800FFEB8;
+extern s16 D_80100FD0;
 extern s32 D_80108B68;
 extern OSViMode D_801090F0;
 extern Vec2f D_8010A6D0[0x6C]; //positions?
@@ -127,6 +131,7 @@ extern s32 D_80174878;
 extern argcdbc D_80174880;
 extern s32 D_801748A0;
 extern s32 D_80174998;
+extern s32 D_8017499C;
 extern s32 D_801749B0;
 extern u64 D_80175620; //needs to be pointer i guess
 extern s32 D_80176824;
@@ -137,6 +142,7 @@ extern s32 D_801B3138;
 extern s32 D_801B3140;
 extern s32 D_801FC9A0;
 extern s32 D_801FC9A8;
+extern s16 D_801FC9AC;
 extern s16 D_801FC9B4;
 extern f64 D_801FCA00;
 extern OSThread* D_801FD560;
