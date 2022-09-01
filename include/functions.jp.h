@@ -270,7 +270,9 @@ void func_8007E5E8(void);
 void func_8007E684(f32, f32, f32, f32, f32);
 void func_8007E714(f32);
 
-void func_800803F0(f32, f32, f32, f32, f32*, s32);
+
+void func_800803F0(f32, f32, f32, f32, u8*, s32);
+void func_80080430(f32, f32, f32, f32, f32, f32, u8*, s32);
 void func_80083F08(void);
 void func_80083F10(void);
 void func_80084788(void);

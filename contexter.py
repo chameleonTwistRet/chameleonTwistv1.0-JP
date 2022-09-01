@@ -25,3 +25,4 @@ for each in s:
 f = open(outfile, "w")
 f.writelines(new)
 f.close()
+print("done!")
