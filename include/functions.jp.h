@@ -10,7 +10,6 @@ f32 __cosf(f32);
 void normalizeDegrees(f32*);
 void leoDrive_reset(void);
 
-
 void func_80025C50(void);
 void func_80025CB8(void*);
 void func_80025D80(void*);
@@ -40,12 +39,12 @@ void func_8002F54C(f32, playerActor*, s32);
 void func_8002F568(void);
 void func_8002F7F0(void);
 void func_8002F884(s32, s32);
-void func_8002F960(unk_8002F960*);
+void func_8002F960(tongue*);
 void func_8002F9BC(s32);
-
 s32 func_80030DCC(f32, f32, s32);
 void func_800312B0(s32);
 void func_80031518(void);
+void func_80031DB0(playerActor*, tongue*, s32);
 void func_800382F4(Actor*);
 void func_800383A0(void);
 void func_800383C0(Actor*); // Grey Ant Spawner: Elisiah
@@ -202,7 +201,7 @@ void func_80056EB4(void);
 void* func_80056EE4(s32);
 s32 func_80056F24(void);
 void func_80056F48(void);
-u64 func_80057010(s32);
+u8 func_80057010(s32);
 void func_800573BC(void);
 void func_80057334(s32);
 void func_8005AFA4(f32, f32, f32, f32);
@@ -244,10 +243,13 @@ void func_8006CB34(s32);
 void func_8006CBA8(s32);
 void func_8006D598(s32, s32, s32);
 void func_8006E16C(f32, f32, f32, s32, f32, s32);
+void func_8006F8D8(f32, f32, f32);
+
 
 void func_800735A8(void);
 void func_80076548(s32, f32);
 void func_80076884(s32);
+void func_80079150(f32, f32, f32, f32, f32, f32, f32, f32, s32, s32, s32);
 void func_80079FC4(void);
 void func_8007A25C(f32, f32, f32, f32, f32);
 s32 func_8007ABDC(s32);
@@ -271,8 +273,8 @@ void func_8007E684(f32, f32, f32, f32, f32);
 void func_8007E714(f32);
 
 
-void func_800803F0(f32, f32, f32, f32, u8*, s32);
-void func_80080430(f32, f32, f32, f32, f32, f32, u8*, s32);
+void func_800803F0(f32, f32, f32, f32, char*, s32);
+s32 func_80080430(f32, f32, f32, f32, f32, f32, char*, s32);
 void func_80083F08(void);
 void func_80083F10(void);
 void func_80084788(void);
@@ -288,6 +290,7 @@ s32 func_80087290(s32);
 s32 func_80087358(void);
 s32 func_80087ED0(s32, s32, s32, s32, s32, s32);
 void func_80088198(void);
+s32 func_80088698(void);
 u64 func_8008BD98(s16);
 void func_8008BEDC(void);
 void func_8008C094(void);
@@ -298,6 +301,7 @@ s32 func_8008C438(void);
 void func_8008CDC4(void);
 void func_8008F114(void);
 void func_8008F16C(void);
+char* func_8008FA44(s32, s32, char*);
 void func_8008FD04(s32);
 void func_8008FDF8(void);
 
@@ -314,7 +318,10 @@ void func_800A10E8(s32);
 void func_800A1EC4(void);
 void func_800A54EC(s32);
 s32 func_800A7988(void);
+s32 func_800AE8E4(func_800AE8E4Compare*, func_800AE8E4Compare*);
 
+
+s32 func_800B2510(void);
 s32 func_800B34D0(void);
 s32 func_800B3540(void);
 void func_800B5600(void);
@@ -333,12 +340,22 @@ f32 func_800C8BE4(f32);
 void func_800C8F00(void);
 void func_800CEFC4(void);
 s32 func_800CF080(s32, f32);
+void func_800CFDB8(playerActor*);
+void func_800CFF64(playerActor*);
+
+void func_800D0708(playerActor*, tongue*); //PLAYER PROCESS
+void func_800D7460(s32, ...);
+s32 func_800D75B4(s32*, s32);
+void func_800D799C(s32*, s32, s32);
+void func_800D79E4(s32*, s32);
+void func_800D8198(Vec3f*);
+f32 func_800D81B0(Vec3f*);
 void func_800D9730(void);
 void func_800D99D0(s32*, s32, void*, s32, s32*, s32);
 void func_800D9B20(s32*);
 void func_800DA510(s32*, s32, s32, s32, s32, s32, s32*);
 void func_800DA620(s32*, s32, s32);
-s32 func_800DB820(s32);
+s32 func_800DB820(unkStruct_80175620**);
 void func_800DC400(s32*, s32, s32);
 void func_800DC550(void);
 void func_800DC920(void*);

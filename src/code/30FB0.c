@@ -39,7 +39,7 @@ void func_80055C80(void) {
 }
 
 s32 func_80055C90(void) {
-    return __osActiveQueue;
+    return (s32)__osActiveQueue;
 }
 
 //https://decomp.me/scratch/5d7ug
@@ -518,9 +518,29 @@ void func_8006BA24(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/30FB0/func_8006CA88.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/30FB0/func_8006CB34.s")
+void func_8006CB34(s32 arg0) {
+    s32 i;
+    s32 var_s0 = (arg0 * 10) + 114;
+    
+    for(i = 0; i != 10; i++){
+        D_800FE6EC = func_80057010(var_s0);
+        if ((D_800FE6EC) > 0) {
+            break;
+        }
+        var_s0 += 1;
+    }
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/30FB0/func_8006CBA8.s")
+void func_8006CBA8(s32 arg0) {
+    s32 i;
+    s32 var_s0 = (arg0 * 10) + 114;
+
+    for(i = 0; i != 10; i++){
+        func_80057334(var_s0);
+        var_s0 += 1;
+    }
+    D_800FE6EC = 255;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/30FB0/func_8006CC0C.s")
 
@@ -614,6 +634,7 @@ void func_8006BA24(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/30FB0/func_80071968.s")
 
+//prints perfect code
 #pragma GLOBAL_ASM("asm/nonmatchings/code/30FB0/func_80071A48.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/30FB0/func_80071A90.s")
@@ -743,7 +764,7 @@ void func_80076884(s32 arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/30FB0/func_80079FC4.s")
 
 void func_8007A25C(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4) {
-    unk_8007A25C* temp_v0;
+    aa1* temp_v0;
 
     temp_v0 = func_800613EC(0, 0, &func_80079FC4);
     if (temp_v0 != NULL) {
@@ -900,7 +921,7 @@ void func_8007E714(f32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/30FB0/func_80080318.s")
 
-void func_800803F0(f32 arg0, f32 arg1, f32 arg2, f32 arg3, u8* arg4, s32 arg5) {
+void func_800803F0(f32 arg0, f32 arg1, f32 arg2, f32 arg3, char* arg4, s32 arg5) {
     func_80080430(arg0, arg1, arg2, arg3, 0.0f, 0.0f, arg4, arg5);
 }
 

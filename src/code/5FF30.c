@@ -109,7 +109,12 @@ s32 func_80087358(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800885EC.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80088698.s")
+s32 func_80088698(void) {
+    s16* temp_v0 = func_80086EB4();
+    if (temp_v0 == 0) {return -1;}
+    temp_v0[16] = temp_v0[16] | 32;
+    return 0;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800886D8.s")
 
@@ -802,20 +807,18 @@ void func_800A10E8(s32 arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A1EC4.s")
 
 //#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A1F3C.s")
-void func_80061308(u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8);
-s32 func_80080430(f32, f32, f32, f32, f32, f32, unk_func_800A1F3C*, s32);   /* extern */
-unk_func_800A1F3C* func_8008FA44(s32, s32, unk_func_800A1F3C*);                       /* extern */
-extern unk_func_800A1F3C D_8010E954;
+char* func_8008FA44(s32, s32, char*);
+extern char D_8010E954[];
 extern s32 perfectCode;
 
 // To do with the perfect code
 void func_800A1F3C(s32 arg0) {
-    unk_func_800A1F3C sp50;
+    char sp50[38];
 
     func_80061308(0xFF, 0x90, 0xF2, 0xFF, 0xFF, 0x38, 0x64, 0xFF, 0xFF, 0x90, 0xF2, 0xFF, 0xFF, 0x38, 0x64, 0xFF);
-    func_80080430(144.0f, 24.0f, 0.0f, 0.7f, 0.0f, 0.0f, &D_8010E954, 1);
+    func_80080430(144.0f, 24.0f, 0.0f, 0.7f, 0.0f, 0.0f, D_8010E954, 1);
     func_80061308(0x90, 0xF2, 0xFF, 0xFF, 0x38, 0x64, 0xFF, 0xFF, 0x90, 0xF2, 0xFF, 0xFF, 0x38, 0x64, 0xFF, 0xFF);
-    func_80080430(160.0f, 40.0f, 0.0f, 0.7f, 0.0f, 0.0f, func_8008FA44(perfectCode, 8, &sp50), 1);
+    func_80080430(160.0f, 40.0f, 0.0f, 0.7f, 0.0f, 0.0f, func_8008FA44(perfectCode, 8, sp50), 1);
 }
 
 
@@ -1061,7 +1064,27 @@ void func_800A54EC(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800AE87C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800AE8E4.s")
+s32 func_800AE8E4(func_800AE8E4Compare* arg0, func_800AE8E4Compare* arg1) {
+    if ((f64) arg1->unkC < (f64) arg0->unk0) {
+        return 0;
+    }
+    if ((f64) arg0->unkC < (f64) arg1->unk0) {
+        return 0;
+    }
+    if ((f64) arg1->unk10 < (f64) arg0->unk4) {
+        return 0;
+    }
+    if ((f64) arg0->unk10 < (f64) arg1->unk4) {
+        return 0;
+    }
+    if ((f64) arg1->unk14 < (f64) arg0->unk8) {
+        return 0;
+    }
+    if ((f64) arg0->unk14 < (f64) arg1->unk8) {
+        return 0;
+    }
+    return 1;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800AE9E0.s")
 

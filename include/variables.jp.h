@@ -65,6 +65,7 @@ extern u8 D_800FE194;
 extern u8 D_800FE198;
 extern s32 D_800FE19C;
 extern s8 D_800FE4DC;
+extern u8 D_800FE6EC;
 extern s32 D_800FEA30;
 extern s32 D_800FEA34;
 extern s32 D_800FEA4C;
@@ -103,15 +104,21 @@ extern f32 D_8010B330;
 extern f32 D_8010B334;
 extern f32 D_8010B34C;
 extern f32 D_8010B350;
+extern f64 D_8010B550;
+extern f64 D_8010B558;
+extern f64 D_8010B560;
+extern f64 D_8010B568;
 extern f64 D_8010C510;
 extern f64 D_8010C518;
-extern f32 D_8010C7B0;
-extern f32 D_8010C944;
+extern char D_8010C7B0[16];
+extern char D_8010C944[8];
 extern char D_8010CA10[9]; //"mem err!\n"
 extern f64 D_8010FFF8;
 extern f64 D_80110000;
 extern f32 D_80110108;
 extern f64 D_80110120;
+extern s32 D_8011074C;
+extern s32 D_8011077C;
 extern OSThread D_80113C90; // thread1
 extern OSThread D_80115E40; // thread3
 extern s32 D_80117FF0;
@@ -127,13 +134,14 @@ extern tongue D_80169268;
 extern Actor D_8016AC68[64]; //currently loaded actor structs
 //eof == 80170968
 extern unkStruct D_80172E88[];
+extern s32 D_80174864;
 extern s32 D_80174878;
 extern argcdbc D_80174880;
 extern s32 D_801748A0;
 extern s32 D_80174998;
 extern s32 D_8017499C;
 extern s32 D_801749B0;
-extern u64 D_80175620; //needs to be pointer i guess
+extern unkStruct_80175620* D_80175620; //some type of struct
 extern s32 D_80176824;
 extern u8 D_80176850[16];
 extern f32 D_80176F50;

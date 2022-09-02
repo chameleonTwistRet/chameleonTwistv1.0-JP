@@ -100,13 +100,21 @@ void func_800C8F00(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/A4300/func_800CFB6C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/A4300/func_800CFDB8.s")
+void func_800CFDB8(playerActor* player) {
+    player->vaulting = 0;
+    player->surface = -1;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/A4300/func_800CFDC8.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/A4300/func_800CFE14.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/A4300/func_800CFF64.s")
+void func_800CFF64(playerActor* player) {
+    player->surfaceSlide = 0;
+    player->zMove = 0.0f;
+    player->yMove = 0.0f;
+    player->xMove = 0.0f;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/A4300/func_800CFF7C.s")
 

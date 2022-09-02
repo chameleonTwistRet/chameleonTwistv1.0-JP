@@ -631,4 +631,18 @@ typedef struct unk_func_800A1F3C {
     char unk_00[0x28];
 } unk_func_800A1F3C;
 
+typedef struct func_800AE8E4Compare{
+    f32 unk0;
+    f32 unk4;
+    f32 unk8;
+    f32 unkC;
+    f32 unk10;
+    f32 unk14;
+}func_800AE8E4Compare;
+
+typedef struct unkStruct_80175620 {
+    /* 0x00 */ s32 unk_00;
+    /* 0x04 */ void* unk_04; //unknown pointer type
+} unkStruct_80175620;
+
 #endif
