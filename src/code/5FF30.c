@@ -1,4 +1,5 @@
 #include "common.h"
+#include "PR/libaudio.h"
 //AOF=759
 
 //jump table
@@ -64,7 +65,22 @@ unk0* func_80086EB4(s32 arg0) {
     return 0;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80086EFC.s")
+s16 func_80086EFC(s32 arg0) {
+    unk0* next;
+    unk0* prev;
+
+    prev = D_801FFB84->unk50;
+    next = prev->unk50;
+    
+    while (next != NULL) {
+        if (arg0 == prev->unk40) {
+            return prev->unk42;
+        }
+        prev = next;
+        next = next->unk50;
+    }
+    return 0;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80086F44.s")
 
@@ -78,11 +94,11 @@ unk0* func_80086EB4(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80087290.s")
 
-unk0* func_80087358(s32 arg0) {
+s32 func_80087358(s32 arg0) {
     unk0* temp_v0 = func_80086EB4(arg0);
 
     if (temp_v0 == NULL) {
-        return (void*)-1;
+        return -1;
     }
 
     return func_80087290(temp_v0);
@@ -162,10 +178,6 @@ s32 func_80088698(s32 arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008BA58.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008BD98.s")
-/*whining about instances again
-void func_8008C330(s32 arg0) {
-    func_8008BD98(D_800FF854[arg0]);
-}*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008BE14.s")
 
@@ -187,7 +199,9 @@ void func_8008C330(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008C1C8.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008C330.s")
+void func_8008C330(s32 arg0) {
+    func_8008BD98(D_800FF854[arg0]);
+}
 
 void func_8008C35C(s32 arg0) {
 
