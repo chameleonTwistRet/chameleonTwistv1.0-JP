@@ -16,7 +16,7 @@ extern s32 __additional_scanline; //rng
 extern playerActor* PlayerPointer;
 extern tongue* TonguePointer;
 
-
+extern unk0* D_801FFB84;
 
 extern u8 D_800F06DC;
 extern s32 D_800F06EC;

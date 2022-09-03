@@ -47,7 +47,22 @@ void func_80084FC0(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80086C7C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80086EB4.s")
+unk0* func_80086EB4(s32 arg0) {
+    unk0* next;
+    unk0* prev;
+
+    prev = D_801FFB84->unk50;
+    next = prev->unk50;
+    
+    while (next != NULL) {
+        if (arg0 == prev->unk40) {
+            return prev;
+        }
+        prev = next;
+        next = next->unk50;
+    }
+    return 0;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80086EFC.s")
 
@@ -63,13 +78,13 @@ void func_80084FC0(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80087290.s")
 
-s32 func_80087358(void) {
-    s32 temp_v0 = func_80086EB4();
+unk0* func_80087358(s32 arg0) {
+    unk0* temp_v0 = func_80086EB4(arg0);
 
-    if (temp_v0 == 0) {
-        return -1;
+    if (temp_v0 == NULL) {
+        return (void*)-1;
     }
-    
+
     return func_80087290(temp_v0);
 }
 
@@ -109,10 +124,14 @@ s32 func_80087358(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800885EC.s")
 
-s32 func_80088698(void) {
-    s16* temp_v0 = func_80086EB4();
-    if (temp_v0 == 0) {return -1;}
-    temp_v0[16] = temp_v0[16] | 32;
+s32 func_80088698(s32 arg0) {
+    unk0* temp_v0 = func_80086EB4(arg0);
+
+    if (temp_v0 == 0) {
+        return -1;
+    }
+
+    temp_v0->unk20 |= 0x20;
     return 0;
 }
 
