@@ -132,7 +132,7 @@ CFLAGS += $(DEFINES)
 CFLAGS += -woff 649,838
 CFLAGS += $(INCLUDE_CFLAGS)
 
-CHECK_WARNINGS := -Wall -Wextra -Wno-format-security -Wno-unknown-pragmas -Wno-unused-parameter -Wno-unused-variable -Wno-missing-braces -Wno-int-conversion
+CHECK_WARNINGS := -Wall -Wextra -Wno-format-security -Wno-unknown-pragmas -Wno-unused-parameter -Wno-unused-variable -Wno-missing-braces -Wno-int-conversion -Wno-comment
 CC_CHECK := $(GCC) -fsyntax-only -fno-builtin -fsigned-char -std=gnu90 -m32 $(CHECK_WARNINGS) $(INCLUDE_CFLAGS) $(DEFINES)
 
 GCC_FLAGS := $(INCLUDE_CFLAGS) $(DEFINES)

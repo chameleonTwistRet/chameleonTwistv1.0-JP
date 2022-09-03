@@ -39,7 +39,7 @@ void func_8002F54C(f32, playerActor*, s32);
 void func_8002F568(void);
 void func_8002F7F0(void);
 void func_8002F884(s32, s32);
-void func_8002F960(tongue*);
+void func_8002F960(unk_8002F960*);
 void func_8002F9BC(s32);
 s32 func_80030DCC(f32, f32, s32);
 void func_800312B0(s32);

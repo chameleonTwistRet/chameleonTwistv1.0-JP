@@ -64,12 +64,12 @@ void func_80084FC0(s32 arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80087290.s")
 
 s32 func_80087358(void) {
-    s32 temp_v0;
+    s32 temp_v0 = func_80086EB4();
 
-    temp_v0 = func_80086EB4();
     if (temp_v0 == 0) {
         return -1;
     }
+    
     return func_80087290(temp_v0);
 }
 

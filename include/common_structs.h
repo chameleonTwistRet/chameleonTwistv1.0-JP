@@ -645,4 +645,8 @@ typedef struct unkStruct_80175620 {
     /* 0x04 */ void* unk_04; //unknown pointer type
 } unkStruct_80175620;
 
+typedef struct D_801FFB84_ptr {
+    char unk_00[0x58];
+} D_801FFB84_ptr;
+
 #endif

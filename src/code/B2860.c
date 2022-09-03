@@ -21,7 +21,7 @@ void func_800D799C(s32* arg0, s32 arg1, s32 arg2) {
 void func_800D79E4(s32* arg0, s32 arg1) {
     s32 i = *arg0 + 1;
     if (*arg0 < arg1) {
-        for (i; arg1 >= i; i++) {
+        for (; arg1 >= i; i++) {
             func_800D75B4(arg0, i);
         }        
     }
