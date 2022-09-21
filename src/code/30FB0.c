@@ -837,7 +837,14 @@ void func_8007AF58(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/30FB0/func_8007B480.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/30FB0/func_8007B4CC.s")
+void func_8007B4CC(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5) {
+    D_800FE048 = arg0;
+    D_800FE04C = arg1;
+    D_800FE050 = arg2;
+    D_800FE054 = arg3;
+    D_800FE058 = arg4;
+    D_800FE05C = arg5;
+}
 
 void func_8007B518(f32 arg0) {
     D_800FE060 = arg0;
