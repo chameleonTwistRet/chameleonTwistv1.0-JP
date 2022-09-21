@@ -399,7 +399,18 @@ aa1* func_8006526C(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/30FB0/func_80065C00.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/30FB0/func_80065CAC.s")
+aa1* func_80065CAC(f32 arg0) {
+    aa1* temp_v0;
+
+    temp_v0 = func_800613EC(0, 0, &func_80065C00);
+    if (temp_v0 == NULL) {
+        return temp_v0;
+    }
+    temp_v0->unkC = 0.0f;
+    temp_v0->unk30 = arg0;
+    return temp_v0;
+}
+
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/30FB0/func_80065D00.s")
 
