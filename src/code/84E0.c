@@ -656,9 +656,15 @@ void func_8002F9BC(s32 arg0) {
 //https://decomp.me/scratch/BeR2b
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80030F3C.s")
 
+//some kind of actor check (and set)
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_800311C8.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_800312B0.s")
+void func_800312B0(s32 id) {
+    Actor* currActor = &D_8016AC68[id];
+    currActor->unknownPositionThings[0].unk_0C = currActor->unk_CC * currActor->tScale;
+    currActor->unknownPositionThings[0].unk_10 = currActor->unk_CC * currActor->tYPos;
+}
+
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_800312FC.s")
 
