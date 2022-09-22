@@ -517,15 +517,15 @@ s32 func_8002DE30(s32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f3
             D_80168DA4 += 1;
             return index;
         }
-        index += 1;
-        pointer += 0x5D;
-        if (index == 0x40) {
+        index++;
+        pointer += 93;
+        if (index == 64) {
             return -1;
         }
     }
 }
 
-//just annoying
+//related to pole hitboxes???? could technically be vec4fs but i guess not
 //https://decomp.me/scratch/vLzb6
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8002DF5C.s")
 
@@ -534,20 +534,19 @@ void func_8002E04C(s32 arg1, f32 arg2, f32 arg3, f32 arg4) {
     func_8002DE30(arg1, arg2, arg3, arg4, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0, 0, 0, 0);
 }
 
-//BACKWARDS struct
-//https://decomp.me/scratch/EqKdo
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8002E0CC.s")
 
-//big and intimidating
-//https://decomp.me/scratch/rdS0x
+//very close outside of args and registers
+//https://decomp.me/scratch/hTq0d
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8002E5DC.s")
 
-//ditto
-//https://decomp.me/scratch/x0ImW
+//camera controller of sorts.
+//main thing holding this back is temp_a1_3 and just its sheer size.
+//all of the context is ready though, as far as i'm aware
+//https://decomp.me/scratch/tpjwG
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8002E9F4.s")
 
-//ditto
-//https://decomp.me/scratch/gxIEG
+//also camera related
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8002ECCC.s")
 
 void func_8002F3D4(void) {
@@ -597,16 +596,16 @@ void func_8002F568(void) {
     PlayerPointer->xVel = PlayerPointer->xVaultlocity * 0.25f;
     PlayerPointer->zVel = PlayerPointer->zVaultlocity * 0.25f;
     if (TonguePointer->segments >= 4) {
-        PlayerPointer->vaultFall = 0xC;
+        PlayerPointer->vaultFall = 12;
     }
 }
 
-//very close
-//https://decomp.me/scratch/oO1ev
+//really long return
+//https://decomp.me/scratch/IBzc9
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8002F5C4.s")
 
-//unGODLY close
-//https://decomp.me/scratch/QW2eP
+//bool return, messed up registers
+//https://decomp.me/scratch/B8Elk
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8002F6DC.s")
 
 void func_8002F7F0(void) {
@@ -635,8 +634,8 @@ void func_8002F884(s32 arg0, s32 arg1) {
 
 void func_8002F960(unk_8002F960* arg0) {
     func_8002F884(PlayerPointer->playerID, 2);
-    func_80087ED0(0x10, 0, 0, 0, 0, 0x10);
-    arg0->unk608 = 0xA;
+    func_80087ED0(16, 0, 0, 0, 0, 16);
+    arg0->unk608 = 10;
 }
 
 void func_8002F9BC(s32 arg0) {
@@ -648,8 +647,10 @@ void func_8002F9BC(s32 arg0) {
     PlayerPointer->hitboxYStretch = 150.0f;
 }
 
+//very long
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8002FA34.s")
 
+//
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80030DCC.s")
 
 //https://decomp.me/scratch/BeR2b

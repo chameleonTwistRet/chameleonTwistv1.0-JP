@@ -12,6 +12,8 @@ void leoDrive_reset(void);
 
 
 
+
+
 void func_80025C50(void);
 void func_80025CB8(void*);
 void func_80025D80(void*);
@@ -39,6 +41,8 @@ void func_8002F3D4(void);
 void func_8002F528(s32);
 void func_8002F54C(f32, playerActor*, s32);
 void func_8002F568(void);
+f32 func_8002F5C4(s32, s32, s32, s32);
+s32 func_8002F6DC(f32, f32*, f32*);
 void func_8002F7F0(void);
 void func_8002F884(s32, s32);
 void func_8002F960(unk_8002F960*);
@@ -235,6 +239,7 @@ void func_8006202C(void);
 void func_8006266C(argd8006266c*);
 void func_800629C4(void);
 void func_800629D4(void);
+aa1* func_80064F94(f32, f32, f32, s32, f32, f32, f32, f32, s32, s32);
 void func_80065088(void);
 aa1* func_8006526C(f32, f32, f32, f32, f32, f32, f32, f32, s32, s32);
 void func_80065C00(void);
@@ -245,17 +250,23 @@ aa1* func_80068A88(f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f
 void func_8006A74C(void);
 void func_8006BA14(void);
 void func_8006BA24(void);
+void func_8006BA30(f32, f32, f32, f32, f32);
+void func_8006BD58(f32, f32, s32, f32, s32);
+void func_8006BE4C(f32, f32, f32, f32);
+void func_8006C368(f32, f32, f32);
 void func_8006CB34(s32);
 void func_8006CBA8(s32);
+u32 func_8006D2FC(s32, s32, f32, s32);
 void func_8006D598(s32, s32, s32);
 void func_8006E16C(f32, f32, f32, s32, f32, s32);
 void func_8006F8D8(f32, f32, f32);
-
 
 void func_800735A8(void);
 void func_80076548(s32, f32);
 void func_80076884(s32);
 void func_800786D8(f32, f32, f32, f32, s32, s32, f32, f32, f32, f32, u8, u8, u8);
+void func_80078AD8(f32, f32, f32, f32, f32, f32);
+void func_80078D00(f32, f32, f32, f32, s32, f32, f32);
 void func_80079150(f32, f32, f32, f32, f32, f32, f32, f32, s32, s32, s32);
 void func_80079FC4(void);
 void func_8007A25C(f32, f32, f32, f32, f32);
