@@ -10,6 +10,8 @@ f32 __cosf(f32);
 void normalizeDegrees(f32*);
 void leoDrive_reset(void);
 
+
+
 void func_80025C50(void);
 void func_80025CB8(void*);
 void func_80025D80(void*);
@@ -201,6 +203,7 @@ void func_80056EB4(void);
 void* func_80056EE4(s32);
 s32 func_80056F24(void);
 void func_80056F48(void);
+void func_80058748(f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, s32);
 u8 func_80057010(s32);
 void func_800573BC(void);
 void func_80057334(s32);
@@ -238,6 +241,7 @@ void func_80065C00(void);
 aa1* func_80065CAC(f32);
 void func_800667A8(void);
 void func_800667B4(aaaaa*);
+aa1* func_80068A88(f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32);
 void func_8006A74C(void);
 void func_8006BA14(void);
 void func_8006BA24(void);
@@ -251,6 +255,7 @@ void func_8006F8D8(f32, f32, f32);
 void func_800735A8(void);
 void func_80076548(s32, f32);
 void func_80076884(s32);
+void func_800786D8(f32, f32, f32, f32, s32, s32, f32, f32, f32, f32, u8, u8, u8);
 void func_80079150(f32, f32, f32, f32, f32, f32, f32, f32, s32, s32, s32);
 void func_80079FC4(void);
 void func_8007A25C(f32, f32, f32, f32, f32);
@@ -274,9 +279,9 @@ void func_8007E5E8(void);
 void func_8007E684(f32, f32, f32, f32, f32);
 void func_8007E714(f32);
 
-
 void func_800803F0(f32, f32, f32, f32, char*, s32);
 s32 func_80080430(f32, f32, f32, f32, f32, f32, char*, s32);
+void func_80080F38(f32, f32, f32, f32, f32, f32, u8, u8, u8, s32);
 void func_80083F08(void);
 void func_80083F10(void);
 void func_80084788(void);

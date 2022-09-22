@@ -19,7 +19,9 @@ f = open(dir_path + includePath + "/" + varName, "r")
 s += f.readlines()
 new = []
 for each in s:
-    if not each.startswith("#") and each != "" and each != "\n" and each.find("OS") == -1:
+    if each.startswith("#define NULL"):
+        new.append(each)
+    elif not each.startswith("#") and each != "" and each != "\n" and each.find("OS") == -1:
         new.append(each)
 
 f = open(outfile, "w")

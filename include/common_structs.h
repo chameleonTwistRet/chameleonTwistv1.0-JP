@@ -192,30 +192,30 @@ typedef struct tongueSlot {
     /* 0x94 */ u32 slot38;
     /* 0x98 */ u32 slot39;
     /* 0x9C */ u32 slot40;
-    /* 0x100*/ u32 slot41;
-    /* 0x108*/ u32 slot42;
-    /* 0x10C*/ u32 slot43;
-    /* 0x110*/ u32 slot44;
-    /* 0x114*/ u32 slot45;
-    /* 0x118*/ u32 slot46;
-    /* 0x11C*/ u32 slot47;
-    /* 0x120*/ u32 slot48;
-    /* 0x124*/ u32 slot49;
-    /* 0x128*/ u32 slot50;
-    /* 0x12C*/ u32 slot51;
-    /* 0x130*/ u32 slot52;
-    /* 0x134*/ u32 slot53;
-    /* 0x138*/ u32 slot54;
-    /* 0x13C*/ u32 slot55;
-    /* 0x140*/ u32 slot56;
-    /* 0x144*/ u32 slot57;
-    /* 0x148*/ u32 slot58;
-    /* 0x14C*/ u32 slot59;
-    /* 0x150*/ u32 slot60;
-    /* 0x154*/ u32 slot61;
-    /* 0x158*/ u32 slot62;
-    /* 0x15C*/ u32 slot63;
-    /* 0x160*/ u32 slot64;
+    /* 0xA0*/ u32 slot41;
+    /* 0xA8*/ u32 slot42;
+    /* 0xAC*/ u32 slot43;
+    /* 0xB0*/ u32 slot44;
+    /* 0xB4*/ u32 slot45;
+    /* 0xB8*/ u32 slot46;
+    /* 0xBC*/ u32 slot47;
+    /* 0xC0*/ u32 slot48;
+    /* 0xC4*/ u32 slot49;
+    /* 0xC8*/ u32 slot50;
+    /* 0xCC*/ u32 slot51;
+    /* 0xD0*/ u32 slot52;
+    /* 0xD4*/ u32 slot53;
+    /* 0xD8*/ u32 slot54;
+    /* 0xDC*/ u32 slot55;
+    /* 0xE0*/ u32 slot56;
+    /* 0xE4*/ u32 slot57;
+    /* 0xE8*/ u32 slot58;
+    /* 0xEC*/ u32 slot59;
+    /* 0xF0*/ u32 slot60;
+    /* 0xF4*/ u32 slot61;
+    /* 0xF8*/ u32 slot62;
+    /* 0xFC*/ u32 slot63;
+    /* 0x100*/ u32 slot64;
 } tongueSlot;
 
 
@@ -277,6 +277,129 @@ typedef struct tongue { // at 80169268 (for p1 at least lol)
     //wall
     /* 0x608*/ u32 wallTime;//timer for tongue-touching a wall
 } tongue;
+
+
+//camera 0x8016AA98
+//camera copy 0x801768A0
+typedef struct camera{//take these with a grain of salt
+    /* 0x00 */ s32 unk0;
+    /* 0x04 */ Vec3f f1;
+    /* 0x10 */ Vec3f f2;
+    /* 0x1C */ Vec3f f3;
+    /* 0x28 */ Vec3f f4;
+    /* 0x34 */ Vec3f f5;
+    /* 0x40 */ s32 unk40;
+    /* 0x44 */ f32 size1;
+    /* 0x48 */ f32 size2;
+    /* 0x4C */ u32 untouchedTimer; //timer that incs when the camera hasnt been used
+    /* 0x50 */ f32 unk50;
+    /* 0x54 */ s32 pushHoriz;//the impulse horizontally by the player
+
+    /* 0x58 */ f32 unk58;
+    /* 0x5C */ f32 unk5C;
+    /* 0x60 */ f32 unk60;
+    /* 0x64 */ f32 unk64;
+    /* 0x68 */ f32 unk68;
+    /* 0x6C */ f32 unk6C;
+    /* 0x70 */ f32 unk70;
+
+    /* 0x74 */ s32 unk74;
+
+    /* 0x78 */ f32 unk78;
+    /* 0x7C */ f32 unk7C;
+    /* 0x80 */ f32 unk80;
+    /* 0x84 */ f32 unk84;
+    /* 0x88 */ f32 unk88;
+    /* 0x8C */ f32 unk8C;
+    /* 0x90 */ f32 unk90;
+    /* 0x94 */ f32 unk94;
+    /* 0x98 */ f32 unk98;
+    /* 0x9C */ f32 unk9C;
+    /* 0xA0 */ f32 unkA0;
+    /* 0xA8 */ f32 unkA8;
+    /* 0xAC */ f32 unkAC;
+    /* 0xB0 */ f32 unkB0;
+    /* 0xB4 */ f32 unkB4;
+
+    /* 0xB8 */ s32 unkB8;
+
+    /* 0xBC */ f32 unkBC;
+    /* 0xC0 */ f32 unkC0;
+
+    /* 0xC4 */ s32 unkC4;
+
+    /* 0xC8 */ f32 unkC8;
+    /* 0xCC */ f32 unkCC;
+    /* 0xD0 */ f32 unkD0;
+    /* 0xD4 */ f32 unkD4;
+    /* 0xD8 */ f32 unkD8;
+    /* 0xDC */ f32 unkDC;
+    /* 0xE0 */ f32 unkE0;
+    /* 0xE4 */ f32 unkE4;
+    /* 0xE8 */ f32 unkE8;
+
+    /* 0xEC */ s32 unkEC;
+
+    /* 0xF0 */ f32 unkF0;
+    /* 0xF4 */ f32 unkF4;
+    /* 0xF8 */ f32 unkF8;
+    /* 0xFC */ f32 unkFC;
+    /* 0x100*/ f32 unk100;
+    /* 0x104*/ f32 unk104;
+    /* 0x108*/ f32 unk108;
+    /* 0x10C*/ f32 unk10C;
+    /* 0x110*/ f32 unk110;
+    /* 0x114*/ f32 unk114;
+    /* 0x118*/ f32 unk118;
+    /* 0x11C*/ f32 unk11C;
+    /* 0x120*/ f32 unk120;
+    /* 0x124*/ f32 unk124;
+    /* 0x128*/ f32 unk128;
+    /* 0x12C*/ f32 unk12C;
+    /* 0x130*/ f32 unk130;
+    /* 0x134*/ f32 unk134;
+    /* 0x138*/ f32 unk138;
+    /* 0x13C*/ f32 unk13C;
+    /* 0x140*/ f32 unk140;
+    /* 0x144*/ f32 unk144;
+    /* 0x148*/ f32 unk148;
+    /* 0x14C*/ f32 unk14C;
+    /* 0x150*/ f32 unk150;
+    /* 0x154*/ f32 unk154;
+    /* 0x158*/ f32 unk158;
+    /* 0x15C*/ f32 unk15C;
+
+    /* 0x160*/ s32 unk160;
+
+    /* 0x164*/ f32 unk164;
+    /* 0x168*/ f32 unk168;
+    /* 0x16C*/ f32 unk16C;
+    /* 0x170*/ f32 unk170;
+    /* 0x174*/ f32 unk174;
+    /* 0x178*/ f32 unk178;
+    /* 0x17C*/ f32 unk17C;
+    /* 0x180*/ f32 unk180;
+    /* 0x184*/ f32 unk184;
+    /* 0x188*/ f32 unk188;
+    /* 0x18C*/ f32 unk18C;
+    /* 0x190*/ f32 unk190;
+    /* 0x194*/ f32 unk194;
+    /* 0x198*/ f32 unk198;
+    /* 0x19C*/ f32 unk19C;
+    /* 0x1A0*/ f32 unk1A0;
+    /* 0x1A4*/ f32 unk1A4;
+    /* 0x1A8*/ f32 unk1A8;
+    /* 0x1AC*/ f32 unk1AC;
+    /* 0x1B0*/ f32 unk1B0;
+    /* 0x1B4*/ f32 unk1B4;
+    /* 0x1B8*/ f32 unk1B8;
+    /* 0x1BC*/ f32 unk1BC;
+    /* 0x1C0*/ f32 unk1C0;
+    /* 0x1C4*/ f32 unk1C4;
+    /* 0x1C8*/ f32 unk1C8;
+    /* 0x1CC*/ f32 unk1CC;
+    /* 0x1D0*/ f32 unk1D0;
+}camera;//size 0x1D0
 
 
 
@@ -420,25 +543,7 @@ typedef struct unkStruct02 {
 } unkStruct02; //sizeof 0x0C
 
 
-//camera 0x8016AA98
-//camera copy 0x801768A0
-typedef struct camera {
-    /* 0x00 */ s32 unk_00;
-    /* 0x04 */ f32 unk_04;
-    /* 0x08 */ f32 unk_08;
-    /* 0x0C */ f32 unk_0C;
-    /* 0x10 */ f32 unk_10;
-    /* 0x14 */ f32 unk_14;
-    /* 0x18 */ f32 unk_18;
-    /* 0x1C */ f32 unk_1C;
-    /* 0x20 */ f32 unk_20;
-    /* 0x24 */ f32 unk_24;
-    /* 0x28 */ f32 unk_28;
-    /* 0x2C */ f32 unk_2C;
-    /* 0x30 */ f32 unk_30;
-    /* 0x34 */ f32 unk_34;
-    /* 0x38 */ f32 unk_38;
-} camera; //sizeof 0x48
+
 
 //related to kicking dust
 typedef struct unkStruct03 {

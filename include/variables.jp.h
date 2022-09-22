@@ -13,6 +13,8 @@
 extern __OSViContext* __osViCurr;
 extern __OSViContext* __osViNext;
 extern s32 __additional_scanline; //rng
+
+extern camera* D_80174860;
 extern playerActor* PlayerPointer;
 extern tongue* TonguePointer;
 
