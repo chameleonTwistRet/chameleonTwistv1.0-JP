@@ -654,7 +654,10 @@ typedef struct aa2{
 
 typedef struct aa1{
     s32 unk0;
-    s32 unk4;
+    s8 unk4;
+    s8 unk5;
+    s8 unk6;
+    s8 unk7;
     s32 unk8;
     f32 unkC;
     f32 unk10;

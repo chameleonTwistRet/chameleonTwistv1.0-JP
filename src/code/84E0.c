@@ -685,7 +685,17 @@ void func_800314E4(Actor* arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80031DB0.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80032074.s")
+s32 func_80032074(s32 arg0) {
+    Actor* temp_v0 = &D_8016AC68[arg0];
+    if ((temp_v0->actorState != 0) && (temp_v0->actorState != 3)) {
+        return 1;
+    }
+    if ((temp_v0->actorID == 0) || (temp_v0->unk_A0.unk_00 == 3)) {
+        return 1;
+    }
+    return 0;
+}
+
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_800320EC.s")
 
@@ -727,7 +737,14 @@ void func_800314E4(Actor* arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80036F30.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8003749C.s")
+s32 func_8003749C(s32 arg0) {
+    s32 temp_v0 = D_8016AC68[arg0].actorID;
+    if ((temp_v0 == 13) || (temp_v0 == 14) || (temp_v0 == 16) || (temp_v0 == 18) || (temp_v0 == 21)) {
+        return 1;
+    }
+    return 0;
+}
+
 
 s32 func_80037504(Actor* actor) {
     if (actor->actorID == 20 && actor->globalTimer >= 5U) {
@@ -736,9 +753,21 @@ s32 func_80037504(Actor* actor) {
     return 0;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80037538.s")
+s32 func_80037538(s32* arg0) {
+    if ((*arg0 == 19) || (*arg0 == 17) || (*arg0 == 18) || (*arg0 == 39) || (*arg0 == 41) || (*arg0 == 38)) {
+        return 1;
+    }
+    return 0;
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80037584.s")
+s32 func_80037584(s32 arg0) {
+    s32 temp_v0 = D_8016AC68[arg0].actorID;
+    if ((temp_v0 == 20) || (temp_v0 == 75) || (temp_v0 == 7) || (temp_v0 == 19) || (temp_v0 == 30) || (temp_v0 == 38) || (temp_v0 == 61) || (temp_v0 == 68) || (temp_v0 == 33)) {
+        return 1;
+    }
+    return 0;
+}
+
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8003760C.s")
 
@@ -746,7 +775,16 @@ s32 func_80037504(Actor* actor) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80037F98.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_800382B4.s")
+void func_800382B4(f32* arg0, f32 arg1) {
+    if (*arg0 > arg1) {
+        *arg0 = arg1;
+    }
+    if (*arg0 < -arg1) {
+        *arg0 = -arg1;
+    }
+}
+
+
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_800382F4.s")
 
@@ -836,7 +874,14 @@ void func_8003A3F0(Actor* antQueenActor) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8003AAB0.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8003B894.s")
+// Ant Queen-Ant: Auto-Decompile
+void func_8003B894(Actor* arg0) {
+    normalizeDegrees(&arg0->unk_90);
+    arg0->unk_94 = arg0->position._f32.x;
+    arg0->yVelocity = D_8010B9E8;
+    func_800382F4(arg0);
+}
+
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8003B8D8.s")
 
@@ -916,9 +961,25 @@ void func_8003D908(Actor* arg0) {
     func_800312B0(arg0->actorIndex);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8003D930.s")
+void func_8003D930(Actor* arg0) {
+    if (arg0->unk_CC < 1.0f) {
+        arg0->unk_CC = arg0->unk_CC + D_8010BAA4;
+        if (arg0->unk_CC > 1.0f) {
+            arg0->unk_CC = 1.0f;
+        }
+        func_800312B0(arg0->actorIndex);
+    }
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8003D998.s")
+void func_8003D998(Actor* arg0) {
+    arg0->unk_134[0] = arg0->posY;
+    arg0->posY -= 100.0f;
+    arg0->unknownPositionThings[0].unk_0C = arg0->unk_164 * arg0->tScale;
+    arg0->tScale *= arg0->unk_164;
+    arg0->unknownPositionThings[0].unk_10 = arg0->unk_164 * arg0->tYPos;
+    arg0->tYPos *= arg0->unk_164;
+}
+
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8003D9D8.s")
 
@@ -1147,7 +1208,10 @@ void func_800434FC(s32 arg0) {
 
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80043504.s")
+void func_80043504(Actor* arg0) {
+    arg0->unk_10C[1] = arg0->unk_12C * arg0->unk_124 / arg0->unk_128;
+}
+
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80043558.s")
 
@@ -1194,7 +1258,14 @@ void func_80043A98(Actor* rngRoomSpawnerActor){
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80043AA0.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80043C80.s")
+void func_80043C80(Actor* arg0) {
+    if (D_8017499C % arg0->unk_128 == arg0->unk_124) {
+        arg0->unk_10C[1] = 1;
+        return;
+    }
+    arg0->unk_10C[1] = 0;
+}
+//what is blud talking about
 /* NEEDS PERMUTING
 void func_80043C80(Actor* arg0) {
     if (arg0->unk_124 == ((s32) D_8017499C % (s32) arg0->unk_128)) {
@@ -1248,7 +1319,12 @@ void func_80044564(void) {
     func_80044524();
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80044584.s")
+//Fire: Auto-Decompile
+void func_80044584(Actor* arg0) {
+    arg0->unk_90 = func_8002D1CC(arg0->posX, arg0->posZ, PlayerPointer->xPos, PlayerPointer->zPos);
+    arg0->unk_10C[1] = arg0->unk_128;
+}
+
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_800445CC.s")
 
@@ -1279,7 +1355,10 @@ void func_80044878(Actor* pileOfBooksActor) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80044D58.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80044E80.s")
+s32 func_80044E80(s32* arg0, s32 arg1) {
+    return (s32) ((arg0 + arg1)[67] + 5) / 6;
+}
+
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80044EA4.s")
 
@@ -1319,7 +1398,13 @@ void func_80047350(Actor* spiderActor) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80047384.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80047520.s")
+void func_80047520(Actor* arg0) {
+    arg0->unk_134[0] = arg0->posX;
+    arg0->unk_134[1] = arg0->posZ;
+    arg0->unk_90 = func_8002D1CC(arg0->posX, arg0->posZ, arg0->position._f32.x, arg0->position._f32.y);
+    arg0->unk_94 = arg0->unk_15C;
+}
+
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80047568.s")
 
@@ -1369,7 +1454,13 @@ void func_800487D8(Actor* lizardKongButterflySpawnerActor){
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_800487E0.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_800488C4.s")
+// ????: Auto-Decompile
+void func_800488C4(Actor* arg0) {
+    arg0->unk_98 = 1;
+    arg0->unk_94 = arg0->position._f32.x;
+    func_8008C364(arg0, 143, 4, 4);
+}
+
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_800488FC.s")
 
@@ -1403,8 +1494,8 @@ void func_800498F4(Actor* arg0) {
 }
 
 
-void func_80049914(void) {
-    func_80040590();
+void func_80049914(Actor* arg0) {
+    func_80040590(arg0);
 }
 
 
@@ -1475,7 +1566,13 @@ void func_80049F0C(s32 arg0) {
 
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80049F14.s")
+void func_80049F14(Actor* arg0) {
+    s32 i;
+    for (i = 0; i < arg0->unk_128; i++) {
+        D_80174758[i] = -1;
+    }
+}
+
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80049F50.s")
 
@@ -1537,7 +1634,21 @@ void func_8004AB00(Actor* unk_5EActor){
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8004AB08.s")
 
 // unk_60
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8004AC20.s")
+void func_8004AC20(Actor* arg0) {
+    f32 temp_f2;
+
+    if (arg0->unk_10C[0] == 0) {
+        arg0->yVelocity -= (D_8010C318 + (arg0->yVelocity * D_8010C31C));
+        temp_f2 = arg0->posY + arg0->yVelocity;
+        if (temp_f2 < 0.0f) {
+            arg0->posY = 0.0f;
+            arg0->unk_10C[0] = 1;
+            return;
+        }
+        arg0->posY = temp_f2;
+    }
+}
+
 
 // unk_66 to unk_69 arent used
 // unk_6A

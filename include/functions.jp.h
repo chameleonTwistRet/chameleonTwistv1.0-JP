@@ -81,6 +81,7 @@ void func_8003D574(Actor*);
 void func_8003D598(Actor*);
 void func_8003D6A4(Actor*); // Black Chameleon Projectile Spawner: Auto-Decompile
 void func_8003D908(Actor*);
+void func_8003D930(Actor*);
 void func_8003D998(Actor*);
 void func_8003DE04(Actor*);
 void func_8003DFB4(Actor*); // Vulture Function: Elisiah
@@ -99,7 +100,7 @@ void func_800400C8(void);
 void func_800401E8(Actor*); // unk_1F Function: Elisiah
 void func_80040214(void);
 void func_800404D8(Actor*);
-void func_80040590(void);
+void func_80040590(Actor*);
 void func_800405F8(Actor*); // Cake Boss Strwaberry Function: Elisiah
 void func_80040CDC(Actor*); // unk_28
 void func_80040CE4(s32);
@@ -139,6 +140,7 @@ void func_80044708(Actor*); // Sandal Function: Elisiah
 void func_80044728(void);
 void func_80044748(Actor*);
 void func_80044878(Actor*); // Pile of Books Function: Elisiah
+s32 func_80044E80(s32*, s32);
 void func_80046DDC(Actor*);
 void func_80046FB0(Actor*);
 void func_8004709C(Actor*);
@@ -158,7 +160,7 @@ void func_80049780(Actor*); // Popcorn Bucket Spawner: Auto-Decompile
 void func_800498B4(Actor*); // Popcorn Bucket Function: Elisiah
 void func_800498D4(void);
 void func_800498F4(Actor*);
-void func_80049914(void);
+void func_80049914(Actor*);
 void func_80049934(Actor*); // Choco Kid Spawner: Auto-Decompile
 void func_80049A24(Actor*); // Choco Kid Function: Elisiah
 void func_80049A44(void);
@@ -179,6 +181,7 @@ void func_8004A39C(Actor*); // Power Up Spawner: Auto-Decompile
 void func_8004A544(Actor*); // Falling Grey Ant Spawner Auto-Decompile
 void func_8004A658(Actor*); // Falling Grey Ant Function: Elisiah
 void func_8004AB00(Actor*); // unk_5E
+void func_8004AC20(Actor*);
 void func_8004AD2C(void);
 void func_8004BA5C(s32);
 s32 func_8004C374(u16*, u16*, s32);
@@ -253,6 +256,7 @@ void func_800667A8(void);
 void func_800667B4(aaaaa*);
 aa1* func_80068A88(f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32);
 void func_8006A74C(void);
+void func_8006AD34(void*, void*);
 void func_8006BA14(void);
 void func_8006BA24(void);
 void func_8006BA30(f32, f32, f32, f32, f32);
@@ -266,6 +270,9 @@ void func_8006D598(s32, s32, s32);
 void func_8006E16C(f32, f32, f32, s32, f32, s32);
 void func_8006F8D8(f32, f32, f32);
 
+void func_80072B1C(void*, void*);
+void func_80072D34(void);
+void func_8007320C(void*, void*);
 void func_800735A8(void);
 void func_80076548(s32, f32);
 void func_80076884(s32);
