@@ -771,4 +771,10 @@ typedef struct unk0 {
     /* 0x54 */ char pad54[4];
 } unk0; 
 
+typedef struct pole{
+    s32 mode;
+    Vec3f pos;
+    f32 yStretch;
+}pole;
+
 #endif

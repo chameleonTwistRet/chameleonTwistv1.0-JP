@@ -53,7 +53,7 @@ void func_800311C8(Actor*);
 void func_800312B0(s32);
 void func_800312FC(Actor*, f32);
 void func_800313BC(s32, f32); //actor kill
-void func_80031518(void);
+void func_80031518(Actor*);
 void func_80031DB0(playerActor*, tongue*, s32);
 s32 func_80037504(Actor*);
 void func_800382F4(Actor*);
@@ -106,8 +106,10 @@ void func_80040CDC(Actor*); // unk_28
 void func_80040CE4(s32);
 void func_80040CEC(Actor*); // Cake Boss Choco Kid: Auto-Decompile
 void func_80041050(Actor*);
+void func_80042174(Actor*);
 void func_8004237C(Actor*); // Cue Ball Actor: Elisiah
 void func_8004259C(Actor*); // Billiards Ball
+void func_800425A4(Actor*);
 void func_8004263C(void);
 void func_80042AFC(Actor*); // Bowling Ball Function: Elisiah
 void func_80042FB4(Actor*); // Bowling Pins Function: Elisiah
@@ -170,6 +172,7 @@ void func_80049AA4(Actor*); // unk_52 Function: Elisiah
 void func_80049AC4(void);
 void func_80049AE4(Actor*); // Battle Mode Sand Crab Spawner: Auto-Decompile
 void func_80049C34(Actor*); // Battle Mode Sand Crab Function: Elisiah
+void func_80049C64(Actor*);
 void func_80049D0C(Actor*); // unk_55
 void func_80049F04(Actor*);
 void func_80049F0C(s32);
@@ -223,7 +226,6 @@ void func_8005AFA4(f32, f32, f32, f32);
 void func_8005AFD0(f32, f32, f32, f32, f32, f32, f32, f32, s32); 
 void func_8005C9B8(void);
 void func_8005CA38(void);
-
 void func_800610A8(void);
 void func_800610B8(void);
 void func_800610E4(f32, f32);
@@ -243,6 +245,7 @@ void func_80061394(void);
 void func_800613D0(arb*);
 aa1* func_800613EC(s32, s32, void*);
 void func_800615A4(void);
+void func_800619F8(f32, f32, f32, s32, s32);
 void func_8006202C(void);
 void func_8006266C(argd8006266c*);
 void func_800629C4(void);

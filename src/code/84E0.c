@@ -525,10 +525,20 @@ s32 func_8002DE30(s32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f3
     }
 }
 
-//related to pole hitboxes???? could technically be vec4fs but i guess not
-//https://decomp.me/scratch/vLzb6
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8002DF5C.s")
-
+s32 func_8002DF5C(s32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4) {
+    s32 i;
+    for (i = 0; i < 64; i++) {
+        if (D_80170968[i].mode == 0) {
+            D_80170968[i].mode = arg0;
+            D_80170968[i].pos.x = arg1;
+            D_80170968[i].pos.y = arg2;
+            D_80170968[i].pos.z = arg3;
+            D_80170968[i].yStretch = arg4; 
+            return i;            
+        }
+    }
+    return -1;
+}
 
 void func_8002E04C(s32 arg1, f32 arg2, f32 arg3, f32 arg4) {
     func_8002DE30(arg1, arg2, arg3, arg4, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0, 0, 0, 0);
@@ -822,7 +832,21 @@ void func_80038990(Actor* bulletHellAntSpawnerActor) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80038AE0.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80038B98.s")
+s32 func_80038B98(Actor* arg0) {
+    if (arg0->unk_98 != 0) {
+        arg0->yVelocity -= D_8010B7F8;
+        arg0->yVelocity -= arg0->yVelocity * D_8010B7FC;
+    }
+    if (D_8017499C % 8 == 0) {
+        func_80087ED0(102,(s32) &arg0->posX,(s32) &arg0->posY,(s32) &arg0->posZ, 1, 0);
+    } 
+    else if (D_8017499C % 8 == 4) {
+        func_80087ED0(101,(s32) &arg0->posX,(s32) &arg0->posY,(s32) &arg0->posZ, 1, 0);
+    }
+    return 0;
+}
+
+
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80038C64.s")
 
@@ -942,11 +966,25 @@ void func_8003BEE8(Actor* missileActor) {
 
 void func_8003D598(Actor* arg0) {               //Unsure if struct is actor
     if (arg0->unk_124 == arg0->globalTimer) {  //0x124 == 0x10
-        func_80031518();
+        func_80031518(arg0);
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8003D5C8.s")
+//????: Nathan R.
+void func_8003D5C8(Actor* arg0) {
+    f32 temp_f12;
+    f32 temp_f2;
+
+    if (arg0->unk_124 == arg0->globalTimer) {
+        temp_f2 = D_8010BA90;
+        temp_f12 = D_8010BA94;
+        if (func_8002DE30(20, arg0->posX, arg0->posY, arg0->posZ, 0.0f, temp_f2, temp_f12, temp_f2, temp_f12, temp_f2, temp_f12, 200.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 10, 0, 0, 0) != -1) {
+            func_800619F8(arg0->posX, arg0->posY, arg0->posZ, 3, 100);
+        }
+        func_80031518(arg0);
+    }
+}
+ 
 
 // Black Chameleon Projectile Spawner: Auto-Decompile
 void func_8003D6A4(Actor* blackChameleonProjectileSpawnerActor){
@@ -1008,7 +1046,7 @@ void func_8003E30C(Actor* arrowsActor) {
 // Elisiah
 void func_8003E32C(Actor* arg0) {                   // unsure if struct is actor
     if (arg0->globalTimer == arg0->unk_10C[0]) {
-        func_80031518();
+        func_80031518(arg0);
     }
     func_800382F4(arg0);
 }
@@ -1169,7 +1207,16 @@ void func_8004259C(Actor* billiardsBallActor){
 
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_800425A4.s")
+void func_800425A4(Actor* arg0) {
+    f32 temp_f0_2;
+
+    func_80042174(arg0);
+    temp_f0_2 = __sqrtf((arg0->direction * arg0->direction) + (arg0->unk_38 * arg0->unk_38));
+    arg0->unk_94 = temp_f0_2;
+    arg0->unk_134[0] = ((180.0f * temp_f0_2) / ( arg0->unknownPositionThings[0].unk_0C * D_8010BE30)) + arg0->unk_134[0];
+    arg0->unk_90 = func_800C8C14(arg0->direction, -arg0->unk_38);
+}
+
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8004263C.s")
 
@@ -1364,7 +1411,18 @@ s32 func_80044E80(s32* arg0, s32 arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8004501C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80046DDC.s")
+//POB Arm Segments: Nathan R. & Rain (mostly rain)
+void func_80046DDC(Actor* arg0) {
+    f32 temp_f0;
+    if ((arg0->unk_124 >= 2)) {
+        if ((arg0->unk_124 < D_8016AC68[arg0->unk_128].unk_128 + 2)) {
+            temp_f0 = D_8010C098;
+            arg0->tScale *= temp_f0;
+            arg0->unknownPositionThings[0].unk_0C *= temp_f0;            
+        }
+    }
+}
+
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80046E50.s")
 
@@ -1372,7 +1430,29 @@ void func_80046FB0(Actor* arg0) {
 
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80046FB8.s")
+void func_80046FB8(Actor* arg0) {
+    if (((arg0->unk_12C == 0) && (D_8016AC68[arg0->unk_128].unk_10C[2] == 4)) || ((arg0->unk_12C == 1) && (D_8016AC68[arg0->unk_128].unk_10C[2] == 5))) {
+        if (arg0->unk_10C[0] == 0) {
+            arg0->unk_F0 += 1;
+            if (arg0->unk_F0 == 9) {
+                arg0->unk_10C[0] = 1;
+            }
+        } 
+        else {
+            arg0->unk_F0 -= 1;
+            if (arg0->unk_F0  == 0) {
+                arg0->unk_10C[0] = 0;
+            }
+        }
+    } 
+    else {
+        if (arg0->unk_F0 != 0) {
+            arg0->unk_F0 -= 1;
+            arg0->unk_10C[0] = 0;
+        }
+    }
+}
+
 
 void func_8004709C(Actor* arg0) {
     arg0->unk_94 = arg0->position._f32.x;
@@ -1452,13 +1532,19 @@ void func_800487D8(Actor* lizardKongButterflySpawnerActor){
 
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_800487E0.s")
+// ????: Auto-Decompile
+void func_800487E0(Actor* arg0) {
+    if (D_80168DA4 < arg0->unk_128) {
+        func_8002DE30(71, arg0->posX, arg0->posY, arg0->posZ, arg0->unk_90, arg0->unk_F4, arg0->unk_F8, arg0->unk_FC, arg0->unk_100, arg0->unk_104, arg0->unk_108, arg0->position._f32.x, arg0->position._f32.y, arg0->unk_15C, arg0->unk_160, arg0->unk_164, arg0->unk_168, arg0->unk_16C, arg0->unk_170, arg0->unk_124, -1, arg0->unk_12C, 0);
+    }
+}
+
 
 // ????: Auto-Decompile
 void func_800488C4(Actor* arg0) {
     arg0->unk_98 = 1;
     arg0->unk_94 = arg0->position._f32.x;
-    func_8008C364(arg0, 143, 4, 4);
+    func_8008C364((s32) arg0, 143, 4, 4);
 }
 
 
@@ -1466,7 +1552,21 @@ void func_800488C4(Actor* arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_800489B0.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80048A68.s")
+//Lizard Kong: Auto-Decompile + Nathan R. (it didnt like the placement of the 1000.0f set lol)
+void func_80048A68(Actor* arg0) {
+    arg0->unk_134[2] = arg0->unk_15C;
+    arg0->unk_134[3] = arg0->unk_90 + 180.0f;
+    normalizeDegrees(&arg0->unk_134[3]);
+    arg0->unk_134[4] = arg0->unk_134[3];
+    arg0->unk_10C[0] = 6;
+    arg0->unk_134[0] = arg0->posX;
+    arg0->unk_134[1] = arg0->posZ;
+    arg0->unk_134[5] = arg0->position._f32.x;
+    arg0->posY += 1000.0f;
+    func_800489B0(arg0);
+    arg0->unk_EC = 5;
+}
+
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80048AFC.s")
 
@@ -1548,7 +1648,23 @@ void func_80049C34(Actor* battleModeSandCrabActor) {
 }
 
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80049C64.s")
+void func_80049C64(Actor* arg0) {
+    if (arg0->unk_10C[1] == 0) {
+        if ((arg0->unk_98 == 0) && (arg0->yVelocity < 0.0f)) {
+            arg0->yVelocity = 0.0f;
+            arg0->unk_10C[1] = 1;
+            return;
+        }
+        arg0->yVelocity -= D_8010C26C;
+        arg0->posY += arg0->yVelocity;
+        return;
+    }
+    if (arg0->unk_98 != 0) {
+        arg0->yVelocity -= D_8010C270;
+        arg0->yVelocity -= arg0->yVelocity * D_8010C274;
+    }
+}
+
 
 // unk_55
 void func_80049D0C(Actor* unk_55Actor){
@@ -1595,8 +1711,16 @@ void func_8004A310(Actor* unk_5AActor) {
     unk_5AActor->unk_98 = 1;
 }
 
-// unk_5C
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8004A31C.s")
+// unk_5C: Auto-Decomp/Nathan R.
+void func_8004A31C(Actor* arg0) {
+    if (arg0->unk_98 != 0) {
+        arg0->yVelocity -= D_8010C2B8;
+        arg0->yVelocity -= arg0->yVelocity * D_8010C2BC;
+        return;
+    }
+    func_800313BC(arg0->actorIndex, func_800C8900(0, 360));
+}
+
 
 // Power Up Spawner: Auto-Decompile
 void func_8004A39C(Actor* powerUpSpawnerActor){
@@ -1652,7 +1776,25 @@ void func_8004AC20(Actor* arg0) {
 
 // unk_66 to unk_69 arent used
 // unk_6A
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8004AC8C.s")
+//?????: Nathan R.
+void func_8004AC8C(Actor* arg0) {
+    if (arg0->unk_10C[0] != 0) {
+        arg0->unk_10C[1] += 1;
+        if (arg0->unk_124 == arg0->unk_10C[1]) {
+            func_80031518(arg0);
+        }
+    }
+    else {
+        arg0->yVelocity -= (D_8010C320 + (arg0->yVelocity * D_8010C324));
+        if (arg0->posY + arg0->yVelocity < arg0->position._f32.x) {
+            arg0->posY = arg0->position._f32.x;
+            arg0->unk_10C[0] = 1;
+            return;
+        }
+        arg0->posY += arg0->yVelocity;
+    }
+}
+
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8004AD2C.s")
 

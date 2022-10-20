@@ -119,10 +119,23 @@ extern f64 D_8010B550;
 extern f64 D_8010B558;
 extern f64 D_8010B560;
 extern f64 D_8010B568;
+extern f32 D_8010B7F8;
+extern f32 D_8010B7FC;
 extern f32 D_8010B9E8;
+extern f32 D_8010BA90;
+extern f32 D_8010BA94;
 extern f32 D_8010BAA4;
+extern f64 D_8010BE30;
+extern f32 D_8010C098;
+extern f32 D_8010C26C;
+extern f32 D_8010C270;
+extern f32 D_8010C274;
+extern f32 D_8010C2B8;
+extern f32 D_8010C2BC;
 extern f32 D_8010C318;
 extern f32 D_8010C31C;
+extern f32 D_8010C320;
+extern f32 D_8010C324;
 extern f64 D_8010C510;
 extern f64 D_8010C518;
 extern char D_8010C7B0[16];
@@ -147,7 +160,7 @@ extern playerActor D_80168DA8;
 extern s32 D_80168E5C;
 extern tongue D_80169268;
 extern Actor D_8016AC68[64]; //currently loaded actor structs
-//eof == 80170968
+extern pole D_80170968[64]; //currently loaded pole structs
 extern unkStruct D_80172E88[];
 extern s32 D_80174758[];
 extern s32 D_80174864;
