@@ -729,7 +729,12 @@ void func_800314E4(Actor* arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8003749C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80037504.s")
+s32 func_80037504(Actor* actor) {
+    if (actor->actorID == 20 && actor->globalTimer >= 5U) {
+        return 1;
+    }
+    return 0;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80037538.s")
 

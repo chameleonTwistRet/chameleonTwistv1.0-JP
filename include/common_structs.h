@@ -692,11 +692,7 @@ typedef struct unk_8007A25C{
 }unk_8007A25C;
 
 
-typedef struct argcdbc{
-    s32 unk0;
-    s32 unk4;
-    s32 unk8;
-}argcdbc;
+
 
 typedef struct d8006266c{
     s32 unk0;

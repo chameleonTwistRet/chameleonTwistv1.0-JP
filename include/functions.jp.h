@@ -49,9 +49,13 @@ void func_8002F960(unk_8002F960*);
 void func_8002F9BC(s32);
 
 s32 func_80030DCC(f32, f32, s32);
+void func_800311C8(Actor*);
 void func_800312B0(s32);
+void func_800312FC(Actor*, f32);
+void func_800313BC(s32, f32); //actor kill
 void func_80031518(void);
 void func_80031DB0(playerActor*, tongue*, s32);
+s32 func_80037504(Actor*);
 void func_800382F4(Actor*);
 void func_800383A0(void);
 void func_800383C0(Actor*); // Grey Ant Spawner: Elisiah

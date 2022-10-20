@@ -898,8 +898,8 @@ s32 func_8007C500(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/30FB0/func_8007C7FC.s")
 
 void func_8007CDBC() {
-    D_80174880.unk4 = 0;
-    D_80174880.unk8 = 0;
+    D_80174880[1] = 0;
+    D_80174880[2] = 0;
     func_8008BD98(23);
 }
 

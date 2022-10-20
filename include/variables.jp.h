@@ -112,6 +112,9 @@ extern f32 D_8010B330;
 extern f32 D_8010B334;
 extern f32 D_8010B34C;
 extern f32 D_8010B350;
+extern f32 D_8010B4D8;
+extern f64 D_8010B4E0;
+extern f64 D_8010B4E8;
 extern f64 D_8010B550;
 extern f64 D_8010B558;
 extern f64 D_8010B560;
@@ -144,7 +147,7 @@ extern Actor D_8016AC68[64]; //currently loaded actor structs
 extern unkStruct D_80172E88[];
 extern s32 D_80174864;
 extern s32 D_80174878;
-extern argcdbc D_80174880;
+extern s32 D_80174880[0x20];
 extern s32 D_801748A0;
 extern s32 D_80174998;
 extern s32 D_8017499C;
