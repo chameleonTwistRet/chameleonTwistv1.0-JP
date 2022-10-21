@@ -20,6 +20,7 @@ extern tongue* TonguePointer;
 
 extern unk0* D_801FFB84;
 
+extern s32 D_800F06B0;
 extern u8 D_800F06DC;
 extern s32 D_800F06EC;
 extern s32 D_800F0B38;
@@ -93,6 +94,7 @@ extern s16 D_800FF5F8;
 extern s16 D_800FF5FC;
 extern s16 D_800FF604;
 extern s16 D_800FF608;
+extern s32 D_800FF614;
 extern s32 D_800FF63C;
 extern s8 D_800FF64C;
 extern s8 D_800FF650;
@@ -102,6 +104,8 @@ extern s16 D_800FFDF4;
 extern s32 D_800FFEB4;
 extern s32 D_800FFEB8;
 extern s16 D_80100FD0;
+extern f32 D_8010881C;
+extern f32 D_80108820;
 extern s32 D_80108B68;
 extern OSViMode D_801090F0;
 extern Vec2f D_8010A6D0[0x6C]; //positions?
@@ -177,6 +181,7 @@ extern f32 D_80176F50;
 extern s32 D_801B3120;
 extern s32 D_801B3138;
 extern s32 D_801B3140;
+extern s16 D_801B3540;
 extern s32 D_801FC9A0;
 extern s32 D_801FC9A8;
 extern s16 D_801FC9AC;
@@ -191,7 +196,11 @@ extern unk_D_801FFB90 D_801FFB90;
 extern u32 D_80200054;
 extern s32 D_80200060;
 extern s32 D_802025B0;
+extern s32 D_8020D854;
+extern s32 D_8020D85C;
+extern s32 D_8020D860;
 extern s32 D_80236968;
+extern s32 D_8023696C;
 extern s32 D_80240CD8;
 
 #endif

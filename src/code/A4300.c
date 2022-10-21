@@ -12,9 +12,14 @@ void func_800C8F00(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/A4300/func_800C9600.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/A4300/func_800C9704.s")
+void func_800C9704(void) {
+    D_8023696C = 0;
+    func_800C9504();
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/A4300/func_800C9728.s")
+void func_800C9728(void) {
+    func_800C9504();
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/A4300/func_800C9748.s")
 

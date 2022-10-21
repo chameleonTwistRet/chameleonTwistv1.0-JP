@@ -331,7 +331,9 @@ void func_8008C35C(s32);
 s32 func_8008C364(s32, s32, s32, s32);
 void func_8008C3F0(s32, s32, s32);
 s32 func_8008C438(void);
+void func_8008CCDC(s32);
 void func_8008CDC4(void);
+void func_8008ECB8(void);
 void func_8008F114(void);
 void func_8008F16C(void);
 char* func_8008FA44(s32, s32, char*);
@@ -344,6 +346,10 @@ void func_80094220(s32);
 void func_800945E4(s32);
 void func_80094E0C(s32);
 s32 func_800961F4(s32);
+void func_800983C8(void);
+void func_80098F50(s32);
+void func_80099570(s32);
+void func_8009961C(void);
 void func_8009B120(s32);
 void func_8009B45C(s32);
 
@@ -353,11 +359,13 @@ void func_800A54EC(s32);
 s32 func_800A7988(void);
 s32 func_800AE8E4(func_800AE8E4Compare*, func_800AE8E4Compare*);
 
-
+void func_800B22AC(s32);
 s32 func_800B2510(void);
 s32 func_800B34D0(void);
 s32 func_800B3540(void);
 void func_800B5600(void);
+void func_800B56D4(f32, f32);
+void func_800BE2C0(void);
 
 void func_800C2FA0(void);
 void func_800C54F8(huh*, s32*);
@@ -371,6 +379,7 @@ f32 func_800C8C14(f32, f32);
 f32 func_800C8A78(f32);
 f32 func_800C8BE4(f32);
 void func_800C8F00(void);
+void func_800C9504(void);
 void func_800CEFC4(void);
 s32 func_800CF080(s32, f32);
 void func_800CFDB8(playerActor*);
@@ -383,6 +392,7 @@ void func_800D799C(s32*, s32, s32);
 void func_800D79E4(s32*, s32);
 void func_800D8198(Vec3f*);
 f32 func_800D81B0(Vec3f*);
+void func_800D87A4(s32, s32); 
 void func_800D9730(void);
 void func_800D99D0(s32*, s32, void*, s32, s32*, s32);
 void func_800D9B20(s32*);
@@ -395,6 +405,7 @@ void func_800DC920(void*);
 void func_800DC950(void*, void*);
 void func_800DCA90(s32, s32);
 void func_800DCB10(s32, s32);
+void func_800DF680(s32);
 
 //void func_800E31E0(void);
 

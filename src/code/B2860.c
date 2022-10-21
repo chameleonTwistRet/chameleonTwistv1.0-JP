@@ -45,7 +45,11 @@ void func_800D79E4(s32* arg0, s32 arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/B2860/func_800D8114.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/B2860/func_800D8178.s")
+void func_800D8178(Vec3f* arg0, f32 arg1, f32 arg2, f32 arg3) {
+    arg0->x = arg1;
+    arg0->y = arg2;
+    arg0->z = arg3;
+}
 
 void func_800D8198(Vec3f* arg0) {
     arg0->x = 0.0f;

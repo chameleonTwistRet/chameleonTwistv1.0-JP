@@ -53,7 +53,9 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/B39A0/func_800D914C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/B39A0/func_800D9170.s")
+void func_800D9170(s32 arg0) {
+    func_800D87A4(arg0, 194);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/B39A0/func_800D9190.s")
 

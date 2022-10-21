@@ -24,8 +24,9 @@ void func_8004ECA8(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/29DF0/func_8004FFAC.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/29DF0/func_8004FFF0.s")
-
+void func_8004FFF0(void) {
+    D_800F06B0 = 0;
+}
 
 void func_8004FFFC(void) {
     s32 *temp = &D_800F0B38;
