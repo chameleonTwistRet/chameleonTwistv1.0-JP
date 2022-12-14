@@ -2,6 +2,17 @@
 #include "PR/libaudio.h"
 //AOF=759
 
+typedef struct tempStruct {
+/* 0x00 */ char unk_00[60];
+/* 0x3C */ Vec3f unk_3C;
+} tempStruct;
+
+typedef struct tempStruct1 {
+/* 0x00 */ s32 unk_00;
+/* 0x04 */ s32 unk_04;
+/* 0x08 */ s32 (*function) (void);
+} tempStruct1;
+
 //jump table
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80084B30.s")
 
@@ -31,9 +42,9 @@ void func_80084FC0(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008568C.s")
 
-void func_80085C08(s32* arg0) {
-    *arg0 = D_80200060;
-    D_80200060 = arg0;
+void func_80085C08(struct UnkList* arg0) {
+    arg0->unk0 = D_80200060.unk0;
+    D_80200060.unk0 = arg0;
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80085C20.s")
@@ -657,10 +668,9 @@ void func_80099570(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80099598.s")
 
-void func_8009960C(u32* arg0) {
-    arg0[2] = &func_8009961C;
+void func_8009960C(tempStruct1* arg0) {
+    arg0->function = &func_8009961C;
 }
-
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009961C.s")
 
@@ -1437,8 +1447,8 @@ void func_800B6040(s32* arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800B6054.s")
 
-void func_800B6078(s32 arg0) {
-    func_800D8198(arg0 + 60);
+void func_800B6078(tempStruct* arg0) {
+    func_800D8198(&arg0->unk_3C);
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800B6098.s")
@@ -1457,8 +1467,8 @@ void func_800B6078(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800B6CD8.s")
 
-void func_800B6D24(s32 arg0) {
-    func_800D8198(arg0 + 60);
+void func_800B6D24(tempStruct* arg0) {
+    func_800D8198(&arg0->unk_3C);
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800B6D44.s")

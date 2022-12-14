@@ -757,7 +757,7 @@ s32 func_8003749C(s32 arg0) {
 
 
 s32 func_80037504(Actor* actor) {
-    if (actor->actorID == 20 && actor->globalTimer >= 5U) {
+    if (actor->actorID == 20 && (u32)actor->globalTimer >= 5) {
         return 1;
     }
     return 0;

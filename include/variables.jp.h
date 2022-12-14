@@ -194,7 +194,7 @@ extern s32 D_801FF7F0;
 extern s32 D_801FFB78;
 extern unk_D_801FFB90 D_801FFB90;
 extern u32 D_80200054;
-extern s32 D_80200060;
+extern struct UnkList D_80200060; //beginning of linked list?
 extern s32 D_802025B0;
 extern s32 D_8020D854;
 extern s32 D_8020D85C;

@@ -777,4 +777,9 @@ typedef struct pole{
     f32 yStretch;
 }pole;
 
+struct UnkList {
+    struct UnkList* unk0;
+    s32 unk_04;
+};
+
 #endif
