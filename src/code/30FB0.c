@@ -71,7 +71,6 @@ void func_80055FBC(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/30FB0/func_80056064.s")
 
-
 //
 #pragma GLOBAL_ASM("asm/nonmatchings/code/30FB0/func_8005609C.s")
 

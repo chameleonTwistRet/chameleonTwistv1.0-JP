@@ -1,4 +1,5 @@
 #include "common.h"
+//AOF=2
 
 void func_80084AB0(s32 arg0, ...) {
     s32 pad;
