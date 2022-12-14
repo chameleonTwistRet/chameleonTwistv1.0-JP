@@ -1,0 +1,4 @@
+leoInitUnit_atten = 0x80055C80;
+__leoSetReset = 0x80056F24;
+osViExtendVStart = 0x80055BCC;
+func_80084B30 = 0x80084B30;
