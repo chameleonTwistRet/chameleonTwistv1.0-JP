@@ -1029,7 +1029,13 @@ void func_8003D998(Actor* arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8003D9D8.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8003DE04.s")
+void func_8003DE04(Actor* actor) {
+    actor->unk_134[0] = actor->posY;
+    actor->posY -= 150.0f;
+    actor->yVelocity = 32.0f;
+    actor->unk_94 = actor->position._f32.x;
+    func_800382F4(actor);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8003DE4C.s")
 
