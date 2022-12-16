@@ -1082,7 +1082,17 @@ void func_8003E62C(Actor* armadilloActor) {
     armadilloActor->unk_10C[4] = armadilloActor->unk_130;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8003E660.s")
+void func_8003E660(Actor* actor) {
+    f32 pad = actor->yVelocity;
+    f32 var1 = D_8010BB30;
+    actor->yVelocity -= var1;
+    if (actor->yVelocity < 0.0f) {
+        actor->yVelocity -= actor->yVelocity * (var1 / actor->unk_16C);
+        if (actor->posY < 1000.0f) {
+            actor->unk_10C[0] = 6;
+        }
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8003E6C4.s")
 
