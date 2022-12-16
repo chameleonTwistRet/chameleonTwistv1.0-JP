@@ -1209,7 +1209,20 @@ void func_80040CEC(Actor* cakeBossChocoKidActor){
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80040CF4.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80041050.s")
+void func_80041050(Actor* actor) {
+    actor->tongueCollision = 3;
+    actor->unk_10C[2] = 4; 
+    actor->unknownPositionThings[1].unk_0C = actor->tScale;
+    actor->unknownPositionThings[1].unk_04 = 250;
+    actor->unknownPositionThings[1].unk_10 = actor->tYPos;
+    actor->unknownPositionThings[1].unk_08 = 0.0f;
+    actor->unknownPositionThings[1].unk_00 = 0.0f;
+    actor->unknownPositionThings[2].unk_08 = 0.0f;
+    actor->unknownPositionThings[2].unk_04 = 0.0f;
+    actor->unknownPositionThings[2].unk_00 = 0.0f;
+    actor->unknownPositionThings[2].unk_0C = 200;
+    actor->unknownPositionThings[2].unk_10 = actor->tYPos * 2;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_800410B4.s")
 
