@@ -1870,7 +1870,11 @@ s32 func_8004C374(u16* arg0, u16* arg1, s32 arg2) {
     return 0;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8004C3A4.s")
+void func_8004C3A4(s16* arg0, f32 arg1) {
+    f32 temp_f12 = (arg1 * 2 * D_8010C510) / D_8010C518;
+    arg0[3] = __cosf(temp_f12) * 65.0f;
+    arg0[4] = __sinf(temp_f12) * 65.0f;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8004C43C.s")
 
