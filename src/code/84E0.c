@@ -544,6 +544,8 @@ void func_8002E04C(s32 arg1, f32 arg2, f32 arg3, f32 arg4) {
     func_8002DE30(arg1, arg2, arg3, arg4, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0, 0, 0, 0);
 }
 
+//https://decomp.me/scratch/kvqhf
+//init script
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8002E0CC.s")
 
 //very close outside of args and registers
@@ -551,7 +553,6 @@ void func_8002E04C(s32 arg1, f32 arg2, f32 arg3, f32 arg4) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8002E5DC.s")
 
 //camera controller of sorts.
-//main thing holding this back is temp_a1_3 and just its sheer size.
 //all of the context is ready though, as far as i'm aware
 //https://decomp.me/scratch/tpjwG
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8002E9F4.s")
@@ -962,7 +963,14 @@ void func_8003BEE8(Actor* missileActor) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8003D210.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8003D574.s")
+void func_8003D574(Actor* actor) {
+    f32 auigh = actor->position._f32.x;
+    auigh *= 2;
+    actor->unknownPositionThings[0].unk_0C = actor->position._f32.x;
+    actor->tScale = actor->position._f32.x;
+    actor->unknownPositionThings[0].unk_10 = auigh;
+    actor->tYPos = auigh;
+}
 
 void func_8003D598(Actor* arg0) {               //Unsure if struct is actor
     if (arg0->unk_124 == arg0->globalTimer) {  //0x124 == 0x10

@@ -12,5 +12,7 @@ if cat /etc/os-release | grep -E 'ID=debian|ID_LIKE=(.*)debian' &> /dev/null; th
     sudo apt-get install -y gcc-mips-linux-gnu
     pip install pylibyaml
     pip install capstone
+    pip install n64img
+    pip install spimdisasm
     chmod +x tools/usr/lib/* #give exec permissions to ido folder (will change in the future)
 fi
