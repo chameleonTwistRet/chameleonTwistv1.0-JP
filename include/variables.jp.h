@@ -129,6 +129,7 @@ extern f32 D_8010B9E8;
 extern f32 D_8010BA90;
 extern f32 D_8010BA94;
 extern f32 D_8010BAA4;
+extern f32 D_8010BB30;
 extern f64 D_8010BE30;
 extern f32 D_8010C098;
 extern f32 D_8010C26C;

@@ -88,6 +88,7 @@ void func_8003DFB4(Actor*); // Vulture Function: Elisiah
 void func_8003E30C(Actor*); // Arrows Function: Elisiah
 void func_8003E368(Actor*); // boulder
 void func_8003E62C(Actor*); // Armadillo Function: Elisiah
+void func_8003E660(Actor*);
 void func_8003FA38(Actor*, f32, f32, f32);
 void func_8003FB04(Actor*); // Pogo Function: Elisiah
 void func_8003FEAC(s32);
