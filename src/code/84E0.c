@@ -840,10 +840,10 @@ s32 func_80038B98(Actor* arg0) {
         arg0->yVelocity -= arg0->yVelocity * D_8010B7FC;
     }
     if (D_8017499C % 8 == 0) {
-        func_80087ED0(102,(s32) &arg0->posX,(s32) &arg0->posY,(s32) &arg0->posZ, 1, 0);
+        func_80087ED0(102, &arg0->posX, &arg0->posY, &arg0->posZ, 1, 0);
     } 
     else if (D_8017499C % 8 == 4) {
-        func_80087ED0(101,(s32) &arg0->posX,(s32) &arg0->posY,(s32) &arg0->posZ, 1, 0);
+        func_80087ED0(101, &arg0->posX, &arg0->posY, &arg0->posZ, 1, 0);
     }
     return 0;
 }
@@ -1582,20 +1582,22 @@ void func_800487E0(Actor* arg0) {
 void func_800488C4(Actor* arg0) {
     arg0->unk_98 = 1;
     arg0->unk_94 = arg0->position._f32.x;
-    func_8008C364((s32) arg0, 143, 4, 4);
+    func_8008C364(arg0, 143, 4, 4);
 }
 
-void func_800488FC(Actor* actor) {
-    actor->unk_134[3] += actor->unk_94;
-    actor->yVelocity -= D_8010C0F4;
-    if (actor->unk_98 == 0) {
-        actor->unk_98 = 1;
-        actor->posY = actor->unknownPositionThings[0].unk_10 / 2;
-        actor->yVelocity = actor->position._f32.y * -actor->yVelocity;
-        actor->unk_94 *= D_8010C0F8;
-        func_80087ED0(0x8F, (s32) actor + 0x24, (s32) actor  + 0x28, (s32) actor + 0x2C, 0, 0);
+void func_800488FC(Actor* arg0) {
+    arg0->unk_134[3] += arg0->unk_94;
+    arg0->yVelocity -= D_8010C0F4;
+    
+    if (arg0->unk_98 == 0) {
+        arg0->unk_98 = 1;
+        arg0->posY = arg0->unknownPositionThings[0].unk_10 / 2;
+        arg0->yVelocity = arg0->position._f32.y * -arg0->yVelocity;
+        arg0->unk_94 *= D_8010C0F8;
+        func_80087ED0(0x8F, &arg0->posX, &arg0->posY, &arg0->posZ, 0, 0);
     }
-    func_800382F4(actor);
+    
+    func_800382F4(arg0);
 } 
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_800489B0.s")
