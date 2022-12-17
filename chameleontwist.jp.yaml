@@ -30,7 +30,7 @@ segments:
     start: 0x1000
     vram: 0x80025C00
     subsegments:
-      - [0x1000, c, code/1000]
+      - [0x1000, hasm]
       - [0x1050, c, code/1050]
       - [0x84E0, c, code/84E0]
       - [0x298D0, c, code/298D0]
@@ -213,9 +213,8 @@ segments:
       # - [0xE8930, rodata]
       # - [0xE8F00, bin]
       # - [0xEC5D0, bin]
-
-
-
+      - [0xEBD80, .rodata, audio/cents2ratio]
+      - [0xEBD90, bin]
 
   - name: assets
     type: code

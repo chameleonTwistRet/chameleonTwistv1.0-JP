@@ -1,3 +1,5 @@
+compiler_type = "ido" # examples: base, ido, mwcc, gcc
+
 [preserve_macros]
 "g[DS]P.*" = "void"
 "G_IM_SIZ_.*" = "int"

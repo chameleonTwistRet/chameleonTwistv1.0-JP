@@ -1577,7 +1577,6 @@ void func_800487E0(Actor* arg0) {
     }
 }
 
-
 // ????: Auto-Decompile
 void func_800488C4(Actor* arg0) {
     arg0->unk_98 = 1;
