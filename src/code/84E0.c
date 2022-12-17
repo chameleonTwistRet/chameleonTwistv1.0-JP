@@ -795,9 +795,10 @@ void func_800382B4(f32* arg0, f32 arg1) {
     }
 }
 
-
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_800382F4.s")
+void func_800382F4(Actor* arg0) {
+    arg0->direction = __cosf((arg0->unk_90 * 2 * D_8010B7A0) / D_8010B7A8) * arg0->unk_94;
+    arg0->unk_38 = -__sinf((arg0->unk_90 * 2 * D_8010B7B0) / D_8010B7B8) * arg0->unk_94;
+}
 
 void func_800383A0(void) {
     func_800CEFC4();
