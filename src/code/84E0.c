@@ -1585,8 +1585,18 @@ void func_800488C4(Actor* arg0) {
     func_8008C364((s32) arg0, 143, 4, 4);
 }
 
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_800488FC.s")
+void func_800488FC(Actor* actor) {
+    actor->unk_134[3] += actor->unk_94;
+    actor->yVelocity -= D_8010C0F4;
+    if (actor->unk_98 == 0) {
+        actor->unk_98 = 1;
+        actor->posY = actor->unknownPositionThings[0].unk_10 / 2;
+        actor->yVelocity = actor->position._f32.y * -actor->yVelocity;
+        actor->unk_94 *= D_8010C0F8;
+        func_80087ED0(0x8F, (s32) actor + 0x24, (s32) actor  + 0x28, (s32) actor + 0x2C, 0, 0);
+    }
+    func_800382F4(actor);
+} 
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_800489B0.s")
 
