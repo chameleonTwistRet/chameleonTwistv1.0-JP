@@ -1491,7 +1491,6 @@ void func_80046FB8(Actor* arg0) {
     }
 }
 
-
 void func_8004709C(Actor* arg0) {
     arg0->unk_94 = arg0->position._f32.x;
     func_800382F4(arg0);

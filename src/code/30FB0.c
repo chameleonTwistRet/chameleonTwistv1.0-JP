@@ -5,15 +5,15 @@
 #pragma GLOBAL_ASM("asm/nonmatchings/code/30FB0/func_80055BB0.s")
 
 void func_80055BCC(s32 arg0) {
-    __additional_scanline = arg0;
+    rngSeed = arg0;
 }
 
 s32 func_80055BD8(void) {
     u32 y, z;
-    y = __additional_scanline * 4 + 2;
+    y = rngSeed * 4 + 2;
     z = y + 1;
     y = y * z;
-    return __additional_scanline = y / 4;
+    return rngSeed = y / 4;
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/30FB0/func_80055C04.s")
