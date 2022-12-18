@@ -1350,16 +1350,6 @@ void func_80043C80(Actor* arg0) {
     }
     arg0->unk_10C[1] = 0;
 }
-//what is blud talking about
-/* NEEDS PERMUTING
-void func_80043C80(Actor* arg0) {
-    if (arg0->unk_124 == ((s32) D_8017499C % (s32) arg0->unk_128)) {
-        arg0->unk_10C[1] = 1;
-        return;
-    }
-    arg0->unk_10C[1] = 0;
-}*/
-
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80043CDC.s")
 

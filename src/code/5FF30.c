@@ -1330,7 +1330,6 @@ void func_800B37D8(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800B3D9C.s")
 
-//if zero
 s32 func_800B3DFC(s32* value) {
     return (*value == 0 ) ? 1 : 0;
 }
@@ -1344,7 +1343,6 @@ s32 func_800B3E7C(s32* value) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800B3E9C.s")
 
-//why are they all the same thing
 s32 func_800B3EFC(s32* value) {
     return (*value == 0 ) ? 1 : 0;
 }
@@ -1367,7 +1365,6 @@ s32 func_800B3F7C(s32* value) {
 void func_800B40F4(s32* arg0) {
     arg0[5] = 0;
 }
-
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800B40FC.s")
 
