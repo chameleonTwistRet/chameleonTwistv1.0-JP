@@ -990,7 +990,15 @@ void func_8007E684(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4) {
     D_80176F50 = arg4;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/30FB0/func_8007E6BC.s")
+void func_8007E6BC(f32 arg0, f32 arg1, f32 arg2, f32 arg3, u8 arg4, u8 arg5, u8 arg6) {
+    D_800FEBB4 = arg0;
+    D_800FEBB8 = arg1;
+    D_800FEBBC = arg2;
+    D_800FEBC0 = arg3;
+    D_800FEBC4 = arg4;
+    D_800FEBC8 = arg5;
+    D_800FEBCC = arg6;
+}
 
 void func_8007E714(f32 arg0) {
     D_800FEBD0 = arg0;
