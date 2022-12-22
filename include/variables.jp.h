@@ -25,6 +25,7 @@ extern u8 D_800F06DC;
 extern s32 D_800F06EC;
 extern s32 D_800F0B38;
 extern u32 D_800F0B50;
+extern s8 D_800F0B54;
 extern s32 D_800F6880;
 extern s32 D_800F6888;
 extern s32 D_800F688C;

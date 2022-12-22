@@ -278,9 +278,10 @@ void func_8006F8D8(f32, f32, f32);
 
 void func_80072B1C(void*, void*);
 void func_80072D34(void);
+void func_80072D80(void);
 void func_8007320C(void*, void*);
 void func_800735A8(void);
-aa1* func_80073C3C(void);
+void func_80073C3C(void);
 void func_80076548(s32, f32);
 void func_80076884(s32);
 void func_800786D8(f32, f32, f32, f32, s32, s32, f32, f32, f32, f32, u8, u8, u8);
