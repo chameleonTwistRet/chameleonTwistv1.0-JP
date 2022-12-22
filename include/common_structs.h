@@ -649,4 +649,16 @@ struct UnkList {
     s32 unk_04;
 };
 
+typedef struct func_80069858_temp_v0{
+    f32 unk0;
+    f32 unk4;
+    s32 unk8;
+    s32 unkC;
+}func_80069858_temp_v0;
+typedef struct func_80069858_arg0{
+    char unk0[0x38];
+    func_80069858_temp_v0* unk38;
+}func_80069858_arg0;
+
+
 #endif

@@ -486,7 +486,12 @@ void func_800667C4(s8 arg0[5], s32 arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/30FB0/func_80069734.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/30FB0/func_80069858.s")
+void func_80069858(func_80069858_arg0* arg0, s32 arg1) {
+    func_80069858_temp_v0* temp_v0 = arg0->unk38;
+    if (func_800836FC(temp_v0->unk0, temp_v0->unk4, temp_v0->unk8, temp_v0->unkC) == 1) {
+        func_80061514(arg0);
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/30FB0/func_800698A4.s")
 
