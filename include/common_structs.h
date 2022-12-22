@@ -514,8 +514,8 @@ typedef struct aaaaa{
 } aaaaa;
 
 typedef struct aa2{
-    f32 unk0;
-    f32 unk4;
+    s32 unk0;
+    s32 unk4;
     s32 unk8;
     s32 unkC;
     s32 unk10;

@@ -71,7 +71,7 @@ void func_80055FBC(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/30FB0/func_80056064.s")
 
-//
+//angle wrapper
 #pragma GLOBAL_ASM("asm/nonmatchings/code/30FB0/func_8005609C.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/30FB0/func_80056104.s")
@@ -511,7 +511,17 @@ void func_80069858(func_80069858_arg0* arg0, s32 arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/30FB0/func_8006AD34.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/30FB0/func_8006B96C.s")
+void func_8006B96C(f32 arg0, s32 arg1, s32 arg2) {
+    aa1* temp_v0 = func_800613EC(0, 8, func_8006AD34);
+    aa2* temp_v1;
+    if (temp_v0 != 0) {
+        temp_v1 = temp_v0->unk38;
+        temp_v0->unkC = 0.0f;
+        temp_v0->unk30 = arg0;
+        temp_v1->unk0 = arg1;
+        temp_v1->unk4 = arg2;
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/30FB0/func_8006B9D0.s")
 
