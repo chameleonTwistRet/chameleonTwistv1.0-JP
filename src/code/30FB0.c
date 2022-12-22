@@ -711,7 +711,17 @@ void func_800735A8(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/30FB0/func_80073C3C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/30FB0/func_80073FD8.s")
+void func_80073FD8(void) {
+    aa1* temp_v0 = func_800613EC(0, 0, &func_80073C3C);
+    if (temp_v0 != 0) {
+        temp_v0->unk0 = 0;
+        temp_v0->unk10 = 0.0f;
+        temp_v0->unk14 = 0.0f;
+        temp_v0->unk18 = 0.0f;
+        temp_v0->unkC = 0;
+        temp_v0->unk1C = 0.0f;
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/30FB0/func_8007402C.s")
 
