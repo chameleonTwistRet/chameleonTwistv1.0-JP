@@ -879,7 +879,15 @@ void func_8007AF58(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/30FB0/func_8007B38C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/30FB0/func_8007B434.s")
+void func_8007B434(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5) {
+    D_800FE018 = arg0;
+    D_800FE01C = arg1;
+    D_800FE020 = arg2;
+    D_800FE024 = arg3;
+    D_800FE028 = arg4;
+    D_800FE02C = arg5;
+}
+
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/30FB0/func_8007B480.s")
 
