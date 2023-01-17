@@ -181,7 +181,7 @@ extern s32 D_801748A0;
 extern s32 D_80174998;
 extern s32 D_8017499C;
 extern s32 D_801749B0;
-extern unkStruct_80175620* D_80175620; //some type of struct
+extern OSMesgQueue D_80175620;
 extern s32 D_80176824;
 extern u8 D_80176850[16];
 extern f32 D_80176F50;

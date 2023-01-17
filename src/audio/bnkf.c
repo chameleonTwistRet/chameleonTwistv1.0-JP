@@ -36,7 +36,7 @@ void func_800DCC08(void) {
 void func_800DCCFC(void) {
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/audio/bnkf/func_800DCD04.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/audio/bnkf/alBnkfNew.s")
 
 
 void alSeqFileNew(ALSeqFile *file, u8 *base)

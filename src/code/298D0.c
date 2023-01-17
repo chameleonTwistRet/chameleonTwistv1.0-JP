@@ -5,7 +5,7 @@
 #pragma GLOBAL_ASM("asm/nonmatchings/code/298D0/func_8004E4D0.s")
 
 void func_8004E73C(void) {
-    func_800DB820(&D_80175620);
+    osContStartReadData(&D_80175620);
 }
 
 void func_8004E760(arg* arg0) {
@@ -17,10 +17,8 @@ void func_8004E760(arg* arg0) {
     arg0->unkC = 0.0f;
 }
 
-//THIS is the hard part
 //https://decomp.me/scratch/yrEom
 #pragma GLOBAL_ASM("asm/nonmatchings/code/298D0/func_8004E784.s")
 
-//bruh
 //https://decomp.me/scratch/EovBq
 #pragma GLOBAL_ASM("asm/nonmatchings/code/298D0/func_8004E9AC.s")

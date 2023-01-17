@@ -399,7 +399,7 @@ void func_800D99D0(s32*, s32, void*, s32, s32*, s32);
 void func_800D9B20(s32*);
 void func_800DA510(s32*, s32, s32, s32, s32, s32, s32*);
 void func_800DA620(s32*, s32, s32);
-s32 func_800DB820(unkStruct_80175620**);
+s32 func_800DB820(OSMesgQueue*);
 void func_800DC400(s32*, s32, s32);
 void func_800DC550(void);
 void func_800DC920(void*);

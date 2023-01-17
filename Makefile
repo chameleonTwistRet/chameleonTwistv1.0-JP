@@ -156,6 +156,7 @@ $(BUILD_DIR)/$(SRC_DIR)/%.c.o: CC := $(ASM_PROC) $(ASM_PROC_FLAGS) $(CC) -- $(AS
 $(BUILD_DIR)/$(SRC_DIR)/io/visetyscale.c.o: OPT_FLAGS := -O1
 $(BUILD_DIR)/$(SRC_DIR)/code/5FEB0.c.o: OPT_FLAGS := -O1
 $(BUILD_DIR)/$(SRC_DIR)/os/virtualtophysical.c.o: OPT_FLAGS := -O1
+$(BUILD_DIR)/$(SRC_DIR)/io/contreaddata.c.o: OPT_FLAGS := -O1
 
 ### Targets
 

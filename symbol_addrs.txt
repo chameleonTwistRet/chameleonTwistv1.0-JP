@@ -141,4 +141,11 @@ D_8010C320 = 0x8010C320;
 D_8010C26C = 0x8010C26C;
 D_8010BA90 = 0x8010BA90;
 
+osContStartReadData = 0x800DB820;
+osContGetReadData = 0x800DB8E4;
+
+alCopy = 0x800ED340;
+alBnkfNew = 0x800DCD04;
+alAdpcmPull = 0x800E9DEC;
+
 perfectCode = 0x80200C04;

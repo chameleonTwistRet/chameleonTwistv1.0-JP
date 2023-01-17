@@ -611,10 +611,6 @@ typedef struct func_800AE8E4Compare{
     f32 unk14;
 }func_800AE8E4Compare;
 
-typedef struct unkStruct_80175620 {
-    /* 0x00 */ s32 unk_00;
-    /* 0x04 */ void* unk_04; //unknown pointer type
-} unkStruct_80175620;
 
 typedef struct unk0 {
     /* 0x00 */ char pad0[0x20];
