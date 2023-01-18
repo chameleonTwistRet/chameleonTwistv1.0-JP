@@ -363,7 +363,8 @@ void func_800A10E8(s32);
 void func_800A1EC4(void);
 void func_800A54EC(s32);
 s32 func_800A7988(void);
-s32 func_800AE8E4(func_800AE8E4Compare*, func_800AE8E4Compare*);
+
+s32 func_800AE8E4(func_800AE8E4Compare* arg0, func_800AE8E4Compare* arg1);
 
 void func_800B22AC(s32);
 s32 func_800B2510(void);
@@ -374,10 +375,10 @@ void func_800B56D4(f32, f32);
 void func_800BE2C0(void);
 
 void func_800C2FA0(void);
-void func_800C54F8(huh*, s32*);
+void func_800C54F8(Vec2s*, s32*);
 void func_800C5508(playerActor*);
 void func_800C5538(playerActor*);
-void func_800C56D4(u64);
+void func_800C56D4(playerActor*);
 void func_800C88AC(void);
 s32 func_800C8900(s32, s32);
 f32 func_800C89E8(void);

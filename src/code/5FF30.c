@@ -2,6 +2,44 @@
 #include "PR/libaudio.h"
 //AOF=759
 
+typedef struct unkFlags {
+    u8 flags0;
+    u8 flags1;
+} unkFlags;
+
+extern u8 D_801B313C;
+void func_800A870C(void);
+extern s8 D_801B313D;
+extern unkFlags D_80200C00;
+
+typedef struct unkSpriteStruct {
+    s32 unk_00;
+    char unk_04[0x10];
+    s32 unk_14;
+    char unk_18[0x34];
+    struct unkSpriteStruct* unk_4C; //pointer to another type of this same struct
+    char unk_50[0x10];
+} unkSpriteStruct;
+
+typedef struct unkSpriteStruct2 {
+    s32 unk_00;
+    char unk_04[0x1C];
+} unkSpriteStruct2;
+
+typedef struct unkSpriteStruct3 {
+    s32 unk_00;
+    char unk_04[0x68];
+} unkSpriteStruct3;
+
+typedef struct unkSpriteStruct4 {
+    s32 unk_00;
+    char unk_04[0x4C];
+} unkSpriteStruct4;
+
+extern Vec3s D_801087D8[];
+s32 func_800B3FFC(unkSpriteStruct*, s32);
+void func_800B402C(unkSpriteStruct*, s32, s32);
+
 typedef struct tempStruct {
 /* 0x00 */ char unk_00[60];
 /* 0x3C */ Vec3f unk_3C;
@@ -1330,45 +1368,130 @@ void func_800B37D8(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800B3D9C.s")
 
-s32 func_800B3DFC(s32* value) {
-    return (*value == 0 ) ? 1 : 0;
+s32 func_800B3DFC(unkSpriteStruct* sprite) {
+    return (sprite->unk_00 == 0 ) ? 1 : 0;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800B3E1C.s")
+s32 func_800B3E1C(unkSpriteStruct* arg0) {
+    s32 i;
+    
+    if (arg0 == 0) {
+        return 0;
+    }
 
-//what the fuck
-s32 func_800B3E7C(s32* value) {
-    return (*value == 0 ) ? 1 : 0;
+    i = 0;
+    while (func_800B3DFC(arg0) == 0) {
+        i++;
+        arg0++;
+    }
+
+    return i;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800B3E9C.s")
-
-s32 func_800B3EFC(s32* value) {
-    return (*value == 0 ) ? 1 : 0;
+s32 func_800B3E7C(unkSpriteStruct2* sprite) {
+    return (sprite->unk_00 == 0 ) ? 1 : 0;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800B3F1C.s")
+s32 func_800B3E9C(unkSpriteStruct2* arg0) {
+    s32 i;
+    
+    if (arg0 == 0) {
+        return 0;
+    }
 
-//if less than zero
-s32 func_800B3F7C(s32* value) {
-    return (*value < 0 ) ? 1 : 0;
+    i = 0;
+    while (func_800B3E7C(arg0) == 0) {
+        i++;
+        arg0++;
+    }
+
+    return i;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800B3F9C.s")
+s32 func_800B3EFC(unkSpriteStruct3* sprite) {
+    return (sprite->unk_00 == 0 ) ? 1 : 0;
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800B3FFC.s")
+s32 func_800B3F1C(unkSpriteStruct3* arg0) {
+    s32 i;
+    
+    if (arg0 == 0) {
+        return 0;
+    }
+
+    i = 0;
+    while (func_800B3EFC(arg0) == 0) {
+        i++;
+        arg0++;
+    }
+
+    return i;
+}
+
+s32 func_800B3F7C(unkSpriteStruct4* sprite) {
+    return (sprite->unk_00 < 0 ) ? 1 : 0;
+}
+
+s32 func_800B3F9C(unkSpriteStruct4* arg0) {
+    s32 i;
+    
+    if (arg0 == 0) {
+        return 0;
+    }
+
+    i = 0;
+    while (func_800B3F7C(arg0) == 0) {
+        i++;
+        arg0++;
+    }
+
+    return i;
+}
+
+//struct pointer arg0 is a guess
+s32 func_800B3FFC(unkSpriteStruct *arg0, s32 arg1) {
+    Vec3s *new_var = &D_801087D8[arg1];
+    int new_var2 = arg0->unk_14 & new_var->y;
+
+    return new_var2 >> (*new_var).z;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800B402C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800B4070.s")
+void func_800B4070(unkSpriteStruct* arg0) {
+    s32 var_a2;
 
-void func_800B40F4(s32* arg0) {
-    arg0[5] = 0;
+    if ((arg0->unk_4C != 0) && (func_800B3FFC(arg0->unk_4C, 4) == 1)) {
+        var_a2 = 1;
+    } else if ( func_800B3FFC(arg0, 0) == 2 || func_800B3FFC(arg0, 2) == 2) {
+        var_a2 = 1;
+    } else {
+        var_a2 = 0;
+    }
+    func_800B402C(arg0, 4, var_a2);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800B40FC.s")
+void func_800B40F4(unkSpriteStruct* arg0) {
+    arg0->unk_14 = 0;
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800B4140.s")
+void func_800B40FC(void) {
+    D_801B313D = 1;
+    if (!(D_80200C00.flags1 & 8)) {
+        D_80200C00.flags1 |= 8;
+        func_800A870C();
+    }
+}
+
+s32 func_800B4140(s32 arg0) {
+    if (arg0 >= 6) {
+        return 0;
+    }
+    if (D_801B313C & (1 << arg0)) {
+        return 0;
+    }
+    return 1;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800B417C.s")
 
@@ -1412,7 +1535,6 @@ void func_800B56D4(f32 arg0, f32 arg1) {
     D_8010881C = arg0;
     D_80108820 = arg1;
 }
-
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800B56E8.s")
 
@@ -1743,32 +1865,29 @@ void func_800BE664(s32* arg0) {
 //really big wow
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800C5304.s")
 
-void func_800C54F8(huh* arg0, s32* arg1) {
-    arg0->unk0 = 0;
-    arg0->unk4 = 0;
+void func_800C54F8(Vec2s* arg0, s32* arg1) {
+    arg0->x = 0;
+    arg0->y = 0;
     *arg1 = 0;
 }
 
 void func_800C5508(playerActor* arg0) {
-    arg0->canJump = 0;
+    arg0->canJump = FALSE;
     arg0->groundMovement = 2;
-    arg0->globalTimer = (f32) ((f64) arg0->globalTimer + 1.5);
+    arg0->globalTimer = arg0->globalTimer + 1.5;
 }
 
 void func_800C5538(playerActor* arg0) {
-    arg0->canJump = 0;
+    arg0->canJump = FALSE;
     arg0->groundMovement = 1;
-    arg0->globalTimer = (f32) ((f64) arg0->globalTimer + D_8010FFF8);
+    arg0->globalTimer = arg0->globalTimer + D_8010FFF8;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800C5564.s")
-/*
-doesnt build for SOME reason
 void func_800C5564(playerActor* arg0) {
-    arg0->canJump = 0;
+    arg0->canJump = FALSE;
     arg0->groundMovement = 0;
-    arg0->globalTimer = (f32) ((f64) arg0->globalTimer + D_80110000);
-}*/
+    arg0->globalTimer = arg0->globalTimer + D_80110000;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800C558C.s")
 
@@ -1782,9 +1901,6 @@ void func_800C88AC(void) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800C88D0.s")
-/*
-"illegal combination of pointer and integer"
 void func_800C88D0(void) {
     func_800C56D4(&D_80168DA8);
-}*/
+}

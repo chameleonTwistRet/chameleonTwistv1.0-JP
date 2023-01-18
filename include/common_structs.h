@@ -461,11 +461,6 @@ typedef struct unk_8002F960{
     u32 unk608;
 } unk_8002F960;
 
-typedef struct huh{
-    s32 unk0;
-    s32 unk4;
-} huh;
-
 typedef struct arg{
     s16 unk0;
     s16 unk2;
@@ -602,16 +597,6 @@ typedef struct unk_func_800A1F3C {
     char unk_00[0x28];
 } unk_func_800A1F3C;
 
-typedef struct func_800AE8E4Compare{
-    f32 unk0;
-    f32 unk4;
-    f32 unk8;
-    f32 unkC;
-    f32 unk10;
-    f32 unk14;
-}func_800AE8E4Compare;
-
-
 typedef struct unk0 {
     /* 0x00 */ char pad0[0x20];
     /* 0x20 */ s16 unk20;
@@ -634,6 +619,15 @@ typedef struct unk0 {
     /* 0x54 */ char pad54[4];
 } unk0; 
 
+typedef struct func_800AE8E4Compare {
+    f32 unk0;
+    f32 unk4;
+    f32 unk8;
+    f32 unkC;
+    f32 unk10;
+    f32 unk14;
+} func_800AE8E4Compare;
+
 typedef struct pole{
     s32 mode;
     Vec3f pos;
@@ -650,11 +644,12 @@ typedef struct func_80069858_temp_v0{
     f32 unk4;
     s32 unk8;
     s32 unkC;
-}func_80069858_temp_v0;
+} func_80069858_temp_v0;
+
 typedef struct func_80069858_arg0{
     char unk0[0x38];
     func_80069858_temp_v0* unk38;
-}func_80069858_arg0;
+} func_80069858_arg0;
 
 
 #endif

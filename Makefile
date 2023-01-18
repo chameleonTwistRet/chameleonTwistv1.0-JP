@@ -158,6 +158,8 @@ $(BUILD_DIR)/$(SRC_DIR)/code/5FEB0.c.o: OPT_FLAGS := -O1
 $(BUILD_DIR)/$(SRC_DIR)/os/virtualtophysical.c.o: OPT_FLAGS := -O1
 $(BUILD_DIR)/$(SRC_DIR)/io/contreaddata.c.o: OPT_FLAGS := -O1
 
+#$(BUILD_DIR)/$(SRC_DIR)/libc/ll.c.o: OPT_FLAGS := -O2 (also needs -mips3 -32)
+
 ### Targets
 
 all: dirs $(VERIFY)
@@ -276,8 +278,8 @@ $(SPLAT):
 	@which git >/dev/null || echo "ERROR: git binary not found on PATH"
 	git submodule update --init --recursive
 
-$(LD_SCRIPT):
-	$(error Please run 'make setup' and try again.)
+# $(LD_SCRIPT):
+# 	$(error Please run 'make setup' and try again.)
 
 baserom.$(VERSION).z64:
 	$(error Place the JP chameleon twist ROM, named '$@', in the root of this repo and try again.)
