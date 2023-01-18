@@ -1,5 +1,4 @@
 #include "common.h"
-//AOF=3
 
 #pragma GLOBAL_ASM("asm/nonmatchings/io/conteepwrite/func_800EB400.s")
 

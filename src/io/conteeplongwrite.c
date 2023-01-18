@@ -1,4 +1,3 @@
 #include "common.h"
-//AOF=1
 
-#pragma GLOBAL_ASM("asm/nonmatchings/io/conteeplongwrite/osEepromLongWrite.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/io/conteeplongwrite/func_800E07F0.s")

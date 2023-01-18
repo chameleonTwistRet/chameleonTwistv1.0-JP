@@ -1,0 +1,70 @@
+TARGET                                                   CURRENT (2469)                             
+ba510:    addiu   sp,sp,-0x20                            ba510:    addiu   sp,sp,-0x20              
+                                                  [32m>[39m      [32mba514:[39m    [32msw      ra,0x14(sp)[39m              
+[94mba514:[39m    [94mlui     t7,0x8011[39m                       [94m|[39m      [94mba518:[39m    [94msw      a0,0x20(sp)[39m              
+[94mba518:[39m    [94mlbu     t7,-0x6250(t7)[39m                  [94m|[39m      [94mba51c:[39m    [94mjal     eb3c0[39m                    
+[33mba51c:[39m    sw      [35ma0[39m,[93m0x20(sp)[39m                     [33mr[39m      [33mba520:[39m    sw      [35ma1[39m,[93m0x24(sp)[39m              
+                                                  [32m>[39m      [32mba524:[39m    [32mbeqz    v0,ba534[39m [35m~>[39m              
+                                                  [32m>[39m      [32mba528:[39m    [32mnop     [39m                         
+                                                  [32m>[39m      [32mba52c:[39m    [32mb       ba5a0[39m [36m~>[39m                 
+                                                  [32m>[39m      [32mba530:[39m    [32mli      v0,-1[39m                    
+[94mba520:[39m    [94mlw      t6,0x20(sp)[39m                     [94m|[39m      [94mba534:[39m [35m~>[39m [94mlui     t7,0x8011[39m                
+[94mba524:[39m    [94msw      ra,0x14(sp)[39m                     [94m|[39m      [94mba538:[39m    [94mlbu     t7,0x1c80(t7)[39m            
+[94mba528:[39m    [94msw      a1,0x24(sp)[39m                     [94m|[39m      [94mba53c:[39m    [94mlw      t6,0x20(sp)[39m              
+ba52c:    beqz    t7,ba53c [35m~>[39m                            ba540:    beqz    t7,ba550 [32m~>[39m              
+ba530:    sw      t6,0x1c(sp)                            ba544:    sw      t6,0x1c(sp)              
+ba534:    addiu   t8,t6,-0x2000                          ba548:    addiu   t8,t6,-0x2000            
+ba538:    sw      t8,0x1c(sp)                            ba54c:    sw      t8,0x1c(sp)              
+ba53c: [35m~>[39m lw      t9,0x20(sp)                            ba550: [32m~>[39m lw      t9,0x20(sp)              
+ba540:    lw      t0,0x24(sp)                            ba554:    lw      t0,0x24(sp)              
+[31mba544:[39m    [31mli      at,0x2000[39m                       [31m<[39m                                                 
+ba548:    addu    t1,t9,t0                               ba558:    addu    t1,t9,t0                 
+ba54c:    andi    t2,t1,[94m0x3fff[39m                    [94mi[39m      ba55c:    andi    t2,t1,[94m0x1fff[39m             
+[94mba550:[39m    [94mbne     t2,at,ba568[39m [36m~>[39m                  [94m|[39m      [94mba560:[39m    [94mbnez    t2,ba578[39m [31m~>[39m              
+ba554:    nop                                            ba564:    nop                              
+ba558:    li      t3,1                                   ba568:    li      t3,1                     
+ba55c:    lui     at,0x8011                              ba56c:    lui     at,0x8011                
+ba560:    b       ba570 [32m~>[39m                               ba570:    b       ba580 [93m~>[39m                 
+ba564:    sb      t3,[94m-0x6250[39m(at)                  [94mi[39m      ba574:    sb      t3,[94m0x1c80[39m(at)            
+ba568: [36m~>[39m lui     at,0x8011                              ba578: [31m~>[39m lui     at,0x8011                
+ba56c:    sb      zero,[94m-0x6250[39m(at)                [94mi[39m      ba57c:    sb      zero,[94m0x1c80[39m(at)          
+ba570: [32m~>[39m jal     [94meb3d0[39m                           [94mi[39m      ba580: [93m~>[39m jal     [94mdc8a0[39m                    
+[31mba574:[39m    [31mnop     [39m                                [31m<[39m                                                 
+[31mba578:[39m    [31mbeqz    v0,ba588[39m [31m~>[39m                     [31m<[39m                                                 
+[31mba57c:[39m    [31mnop     [39m                                [31m<[39m                                                 
+[31mba580:[39m    [31mb       ba5a8[39m [93m~>[39m                        [31m<[39m                                                 
+[31mba584:[39m    [31mli      v0,-1[39m                           [31m<[39m                                                 
+[31mba588:[39m [31m~>[39m [31mjal     dc8a0[39m                           [31m<[39m                                                 
+ba58c:    lw      a0,0x1c(sp)                            ba584:    lw      a0,0x1c(sp)              
+ba590:    lui     t4,0xa450                              ba588:    lui     t4,0xa450                
+ba594:    sw      v0,0(t4)                               ba58c:    sw      v0,0(t4)                 
+ba598:    lw      t5,0x24(sp)                            ba590:    lw      t5,0x24(sp)              
+ba59c:    lui     t7,0xa450                              ba594:    lui     t7,0xa450                
+ba5a0:    move    v0,zero                                ba598:    move    v0,zero                  
+ba5a4:    sw      t5,4(t7)                               ba59c:    sw      t5,4(t7)                 
+ba5a8: [93m~>[39m lw      ra,0x14(sp)                            ba5a0: [36m~>[39m lw      ra,0x14(sp)              
+ba5ac:    addiu   sp,sp,0x20                             ba5a4:    addiu   sp,sp,0x20               
+ba5b0:    jr      ra                                     ba5a8:    jr      ra                       
+ba5b4:    nop                                            ba5ac:    nop                              
+[31mba5b8:[39m    [31mnop     [39m                                [31m<[39m                                                 
+[31mba5bc:[39m    [31mnop     [39m                                [31m<[39m                                                 
+ba5c0:    lw      a2,0x44(a0)                            ba5b0:    lw      a2,0x44(a0)              
+ba5c4:    lw      v0,0x40(a0)                            ba5b4:    lw      v0,0x40(a0)              
+ba5c8:    move    v1,zero                                ba5b8:    move    v1,zero                  
+ba5cc:    blez    a2,ba650 [95m~>[39m                            ba5bc:    blez    a2,ba640 [95m~>[39m              
+ba5d0:    li      a3,0x30                                ba5c0:    li      a3,0x30                  
+ba5d4: [92m~>[39m multu   v1,a3                                  ba5c4: [92m~>[39m multu   v1,a3                    
+ba5d8:    mflo    t6                                     ba5c8:    mflo    t6                       
+ba5dc:    addu    a0,v0,t6                               ba5cc:    addu    a0,v0,t6                 
+ba5e0:    lw      t7,0x1c(a0)                            ba5d0:    lw      t7,0x1c(a0)              
+ba5e4:    bnez    t7,ba638 [96m~>[39m                            ba5d4:    bnez    t7,ba628 [96m~>[39m              
+ba5e8:    lui     at,0x3f80                              ba5d8:    lui     at,0x3f80                
+ba5ec:    mtc1    at,ft0                                 ba5dc:    mtc1    at,ft0                   
+ba5f0:    li      t8,5                                   ba5e0:    li      t8,5                     
+ba5f4:    li      t9,0x40                                ba5e4:    li      t9,0x40                  
+ba5f8:    sw      a1,0x1c(a0)                            ba5e8:    sw      a1,0x1c(a0)              
+ba5fc:    sh      t8,0x20(a0)                            ba5ec:    sh      t8,0x20(a0)              
+ba600:    sw      zero,0x28(a0)                          ba5f0:    sw      zero,0x28(a0)            
+ba604:    sb      t9,0x2e(a0)                            ba5f4:    sb      t9,0x2e(a0)              
+ba608:    sb      zero,0x2f(a0)                          ba5f8:    sb      zero,0x2f(a0)            
+ba60c:    swc1    ft0,0x24(a0)                       

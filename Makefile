@@ -91,7 +91,7 @@ GCC      := gcc
 XGCC     := mips-linux-gnu-gcc
 
 GREP     := grep -rl
-CC       := $(TOOLS_DIR)/usr/lib/cc
+CC       := $(TOOLS_DIR)/ido_5.3/usr/lib/cc
 SPLAT    := $(TOOLS_DIR)/splat/split.py
 
 IMG_CONVERT = $(PYTHON) $(TOOLS_DIR)/image_converter.py
@@ -157,6 +157,11 @@ $(BUILD_DIR)/$(SRC_DIR)/io/visetyscale.c.o: OPT_FLAGS := -O1
 $(BUILD_DIR)/$(SRC_DIR)/code/5FEB0.c.o: OPT_FLAGS := -O1
 $(BUILD_DIR)/$(SRC_DIR)/os/virtualtophysical.c.o: OPT_FLAGS := -O1
 $(BUILD_DIR)/$(SRC_DIR)/io/contreaddata.c.o: OPT_FLAGS := -O1
+$(BUILD_DIR)/$(SRC_DIR)/io/ai.c.o: OPT_FLAGS := -O1
+$(BUILD_DIR)/$(SRC_DIR)/io/aisetfreq.c.o: OPT_FLAGS := -O1
+$(BUILD_DIR)/$(SRC_DIR)/io/aisetnextbuf.c.o: OPT_FLAGS := -O1
+$(BUILD_DIR)/$(SRC_DIR)/io/conteeplongwrite.c.c.o: OPT_FLAGS := -O1
+
 
 #$(BUILD_DIR)/$(SRC_DIR)/libc/ll.c.o: OPT_FLAGS := -O2 (also needs -mips3 -32)
 
@@ -278,8 +283,8 @@ $(SPLAT):
 	@which git >/dev/null || echo "ERROR: git binary not found on PATH"
 	git submodule update --init --recursive
 
-$(LD_SCRIPT):
-	$(error Please run 'make setup' and try again.)
+# $(LD_SCRIPT):
+# 	$(error Please run 'make setup' and try again.)
 
 baserom.$(VERSION).z64:
 	$(error Place the JP chameleon twist ROM, named '$@', in the root of this repo and try again.)

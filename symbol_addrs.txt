@@ -64,14 +64,12 @@ osGetCount = 0x800E0250;
 guFrustumF = 0x800E0260;
 guFrustum = 0x800E03B4;
 _bzero = 0x800E0420;
-osEepromLongWrite = 0x800E07F0;
 __osGetActiveQueue = 0x80055C90;
 leoDrive_reset = 0x80056E28;
 __cosf = 0x800DB0C0;
 __sqrtf = 0x800DB0B0;
 osCreateThread = 0x800D99D0;
 __osAiDeviceBusy = 0x800EB3D0;
-osEepromRead = 0x800EB8E0;
 __osPackEepReadData = 0x800EBAD0;
 osEepromProbe = 0x800E0780;
 normalizeDegrees = 0x8002D0F4;
@@ -112,6 +110,7 @@ osEepromLongRead = 0x800E0930;
 
 tanf = 0x800C8A1C;
 
+osViClock = 0x80109E98;
 __osViNext = 0x80109E94;
 __osViCurr = 0x80109E90;
 alGlobals = 0x80109DA0;
@@ -149,3 +148,10 @@ alAdpcmPull = 0x800E9DEC;
 
 perfectCode = 0x80200C04;
 currentZone = 0x80240CD8;
+__osEepromTimer = 0x8024B148;
+__osEepromTimerQ  = 0x8024B168;
+__osEepromTimerMsg = 0x8024B180;
+osSetTimer = 0x800DC320;
+//osEepromRead = 0x800EB400;
+//osEepromWrite = 0x800EB8E0;
+//osEepromLongWrite = 0x800E07F0;

@@ -17,6 +17,7 @@ options:
   build_path: build
   # extensions_path: tools/splat_ext
   # auto_all_sections: True
+  migrate_rodata_to_functions : True
   create_undefined_funcs_auto: no
 segments:
   - name: header
@@ -213,6 +214,9 @@ segments:
       # - [0xE8930, rodata]
       # - [0xE8F00, bin]
       # - [0xEC5D0, bin]
+      - [0xEBCB0, .rodata, gu/rotate]
+      - [0xEBCC0, bin]
+      - [0xEBD70, .rodata, gu/perspective]
       - [0xEBD80, .rodata, audio/cents2ratio]
       - [0xEBD90, bin]
 
@@ -222,9 +226,7 @@ segments:
     vram: 0x80111CA0
     subsegments:
       - [0xED090, bin, ext]
-
       - [0x101BE0, rgba32, star.rgba32, 32, 32]
-
       - [0x102BE0, bin, ext22]
 
       #- [0x102FB8, ci8, health.ci8, 16, 16]
@@ -262,14 +264,9 @@ segments:
 
       - [0x9E7A80, rgba16, img/misc/titleSplash.rgba16, 320, 240]
       - [0xA0D280, rgba16, img/misc/stageSelect.rgba16, 320, 240]
-
       - [0xA32A80, bin, ext3]
-
       - [0xAFED90, bin, davyheadMaybe]
-
       - [0xAFF3B0, bin, ext4]
-
       - [0xB079B0, bin, jackheadMaybe]
-
       - [0xB07FD0, bin, ext5]
   - [0xC00000]

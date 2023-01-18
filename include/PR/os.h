@@ -31,6 +31,9 @@
 #ifndef _OS_H_
 #define	_OS_H_
 
+#include <os_pfs.h>
+#include <os_time.h>
+
 #ifdef _LANGUAGE_C_PLUS_PLUS
 extern "C" {
 #endif
@@ -45,61 +48,9 @@ extern "C" {
  *
  */
 
-typedef s32	OSPri;
-typedef s32	OSId;
-typedef union	{ struct { f32 f_odd; f32 f_even; } f; f64 d; }	__OSfp;
-
-typedef struct {
-	u64	at, v0, v1, a0, a1, a2, a3;
-	u64	t0, t1, t2, t3, t4, t5, t6, t7;
-	u64	s0, s1, s2, s3, s4, s5, s6, s7;
-	u64	t8, t9,         gp, sp, s8, ra;
-	u64	lo, hi;
-	u32	sr, pc, cause, badvaddr, rcp;
-	u32	fpcsr;
-	__OSfp	 fp0,  fp2,  fp4,  fp6,  fp8, fp10, fp12, fp14;
-	__OSfp	fp16, fp18, fp20, fp22, fp24, fp26, fp28, fp30;
-} __OSThreadContext;
-
-typedef struct OSThread_s {
-	struct OSThread_s	*next;		/* run/mesg queue link */
-	OSPri			priority;	/* run/mesg queue priority */
-	struct OSThread_s	**queue;	/* queue thread is on */
-	struct OSThread_s	*tlnext;	/* all threads queue link */
-	u16			state;		/* OS_STATE_* */
-	u16			flags;		/* flags for rmon */
-	OSId			id;		/* id for debugging */
-	int			fp;		/* thread has used fp unit */
-	__OSThreadContext	context;	/* register/interrupt mask */
-} OSThread;
-
-typedef u32 OSEvent;
 typedef u32 OSIntMask;
 typedef u32 OSPageMask;
 typedef u32 OSHWIntr;
-
-/*
- * Structure for message
- */
-typedef void *	OSMesg;
-
-/*
- * Structure for message queue
- */
-typedef struct OSMesgQueue_s {
-	OSThread	*mtqueue;	/* Queue to store threads blocked
-					   on empty mailboxes (receive) */
-	OSThread	*fullqueue;	/* Queue to store threads blocked
-					   on full mailboxes (send) */
-	s32		validCount;	/* Contains number of valid message */
-	s32		first;		/* Points to first valid message */
-	s32		msgCount;	/* Contains total # of messages */
-	OSMesg		*msg;		/* Points to message buffer array */
-} OSMesgQueue;
-
-/*
- * Structure for Enhanced PI interface
- */
 
 /*
  * OSTranxInfo is set up for Leo Disk DMA. This info will be maintained
@@ -218,24 +169,6 @@ typedef struct {
 } OSViMode;
 
 /*
- * Structure for time value 
- */
-typedef u64	OSTime;
-
-/*
- * Structure for interval timer
- */
-typedef struct OSTimer_s {
-	struct OSTimer_s	*next;	/* point to next timer in list */
-	struct OSTimer_s	*prev;	/* point to previous timer in list */
-	OSTime			interval;	/* duration set by user */
-	OSTime			value;		/* time remaining before */
-						/* timer fires           */
-	OSMesgQueue		*mq;		/* Message Queue */
-	OSMesg			msg;		/* Message to send */
-} OSTimer;
-
-/*
  * Structure for controllers 
  */
 
@@ -263,34 +196,6 @@ typedef struct {
 /*
  * Structure for file system
  */
-
-
-
-typedef struct {
-	int		status;
-	OSMesgQueue 	*queue;
-	int		channel;
-	u8		id[32];
-	u8		label[32];
-	int		version;
-	int		dir_size;
-	int		inode_table;		/* block location */
-	int		minode_table;		/* mirrioring inode_table */
-	int		dir_table;		/* block location */
-	int		inode_start_page;	/* page # */
-	u8		banks;
-	u8		activebank;
-} OSPfs;
-
-
-typedef struct {
-	u32	file_size;	/* bytes */
-  	u32 	game_code;
-  	u16 	company_code;
-  	char  	ext_name[4];
-  	char 	game_name[16];
-} OSPfsState;
-	
 /*
  * Structure for Profiler 
  */
@@ -308,13 +213,6 @@ typedef struct {
  * Global definitions
  *
  */
-
-/* Thread states */
-
-#define OS_STATE_STOPPED	1
-#define OS_STATE_RUNNABLE	2
-#define OS_STATE_RUNNING	4
-#define OS_STATE_WAITING	8
 
 /* Events */
 #ifdef _FINALROM

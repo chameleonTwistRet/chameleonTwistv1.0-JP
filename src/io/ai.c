@@ -1,9 +1,7 @@
 #include "common.h"
-//AOF=1
-
-#pragma GLOBAL_ASM("asm/nonmatchings/io/ai/__osAiDeviceBusy.s")
-/*#include <PR/os_internal.h>
+#include <PR/os_internal.h>
 #include <PR/rcp.h>
+//AOF=1
 
 s32 __osAiDeviceBusy(void)
 {
@@ -14,4 +12,3 @@ s32 __osAiDeviceBusy(void)
 
     return 0;
 }
-*/
