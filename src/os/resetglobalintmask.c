@@ -1,4 +1,12 @@
 #include "common.h"
+#include "PR/os_internal.h"
+
 //AOF=1
 
-#pragma GLOBAL_ASM("asm/nonmatchings/os/resetglobalintmask/func_800EBE10.s")
+void __osResetGlobalIntMask(OSHWIntr mask) {
+    register u32 saveMask = __osDisableInt();
+
+    __OSGlobalIntMask &= ~(mask & ~OS_IM_RCP);
+
+    __osRestoreInt(saveMask);
+}

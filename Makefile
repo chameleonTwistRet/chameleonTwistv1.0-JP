@@ -161,7 +161,15 @@ $(BUILD_DIR)/$(SRC_DIR)/io/ai.c.o: OPT_FLAGS := -O1
 $(BUILD_DIR)/$(SRC_DIR)/io/aisetfreq.c.o: OPT_FLAGS := -O1
 $(BUILD_DIR)/$(SRC_DIR)/io/aisetnextbuf.c.o: OPT_FLAGS := -O1
 $(BUILD_DIR)/$(SRC_DIR)/io/conteeplongwrite.c.c.o: OPT_FLAGS := -O1
-
+$(BUILD_DIR)/$(SRC_DIR)/os/jammesg.c.o: OPT_FLAGS := -O1
+$(BUILD_DIR)/$(SRC_DIR)/os/recvmesg.c.o: OPT_FLAGS := -O1
+$(BUILD_DIR)/$(SRC_DIR)/os/sendmesg.c.o: OPT_FLAGS := -O1
+$(BUILD_DIR)/$(SRC_DIR)/os/createmesgqueue.c.o: OPT_FLAGS := -O1
+$(BUILD_DIR)/$(SRC_DIR)/os/resetglobalintmask.c.o: OPT_FLAGS := -O1
+$(BUILD_DIR)/$(SRC_DIR)/os/createthread.c.o: OPT_FLAGS := -O1 #produces warnings
+$(BUILD_DIR)/$(SRC_DIR)/os/destroythread.c.o: OPT_FLAGS := -O1
+$(BUILD_DIR)/$(SRC_DIR)/os/getthreadpri.c.o: OPT_FLAGS := -O1
+$(BUILD_DIR)/$(SRC_DIR)/os/thread.c.o: OPT_FLAGS := -O1 #produces warnings
 
 #$(BUILD_DIR)/$(SRC_DIR)/libc/ll.c.o: OPT_FLAGS := -O2 (also needs -mips3 -32)
 

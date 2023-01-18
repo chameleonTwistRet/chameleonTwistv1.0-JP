@@ -33,6 +33,8 @@
 
 #include <os_pfs.h>
 #include <os_time.h>
+#include <os_exception.h>
+#include <os_tlb.h>
 
 #ifdef _LANGUAGE_C_PLUS_PLUS
 extern "C" {
@@ -47,10 +49,6 @@ extern "C" {
  * Type definitions
  *
  */
-
-typedef u32 OSIntMask;
-typedef u32 OSPageMask;
-typedef u32 OSHWIntr;
 
 /*
  * OSTranxInfo is set up for Leo Disk DMA. This info will be maintained

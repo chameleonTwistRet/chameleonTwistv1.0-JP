@@ -206,7 +206,7 @@ extern OSMesgQueue D_80175620;
 extern s32 D_80176824;
 extern u8 D_80176850[16];
 extern f32 D_80176F50;
-extern s32 D_801B3120;
+extern OSMesgQueue D_801B3120;
 extern s32 D_801B3138;
 extern s32 D_801B3140;
 extern s16 D_801B3540;

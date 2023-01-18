@@ -64,12 +64,12 @@ typedef struct tempStruct1 {
 void func_80084F80(s32 arg0, s32 arg1) {
     D_801B3138 = arg0;
     D_800FF5D0 = arg1;
-    func_800DC400(&D_801B3120, 3, 0);
+    osSendMesg(&D_801B3120, (OSMesg)3, 0);
 }
 
 void func_80084FC0(s32 arg0) {
     D_801B3140 = arg0;
-    func_800DC400(&D_801B3120, 5, 0);
+    osSendMesg(&D_801B3120, (OSMesg)5, 0);
 }
 
 //os

@@ -18,6 +18,7 @@ extern void __osDequeueThread(OSThread **, OSThread *);
 extern void __osEnqueueThread(OSThread **, OSThread *);
 extern OSThread *__osPopThread(OSThread **);
 extern void __osDispatchThread(void);
+extern void __osCleanupThread(void);
 
 extern void __osSetTimerIntr(OSTime);
 extern OSTime __osInsertTimer(OSTimer *);
@@ -27,6 +28,7 @@ extern int     __osSpDeviceBusy(void);
 
 extern OSThread *__osRunningThread;
 extern OSThread *__osActiveQueue;
+extern OSThread *__osActiveQueue2;
 extern OSThread *__osFaultedThread;
 extern OSThread *__osRunQueue;
 

@@ -5,6 +5,8 @@
         "libaudio.h": "c",
         "osint.h": "c",
         "rcp.h": "c",
-        "os_internal.h": "c"
+        "os_internal.h": "c",
+        "ultratypes.h": "c",
+        "r4300.h": "c"
     }
 }

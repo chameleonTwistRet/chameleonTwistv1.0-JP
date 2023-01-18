@@ -31,15 +31,15 @@ s32 func_80055BD8(void) {
 // }
 
 void func_80055C74(void) {
-    __osActiveQueue = (OSThread*)0;
+    __osActiveQueue2 = (OSThread*)0;
 }
 
 void func_80055C80(void) {
-    __osActiveQueue = (OSThread*)1;
+    __osActiveQueue2 = (OSThread*)1;
 }
 
-s32 func_80055C90(void) {
-    return (s32)__osActiveQueue;
+OSThread* func_80055C90(void) {
+    return __osActiveQueue2;
 }
 
 //https://decomp.me/scratch/5d7ug

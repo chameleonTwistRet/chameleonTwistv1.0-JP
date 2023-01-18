@@ -1,12 +1,10 @@
 #include "common.h"
 //AOF=1
 
-#pragma GLOBAL_ASM("asm/nonmatchings/os/createthread/osCreateThread.s")
-/*
 #include <PR/os_internal.h>
+#include "osint.h"
 #include <PR/R4300.h>
-void __osCleanupThread(void);
-extern OSThread *__osActiveQueue;
+
 void osCreateThread(OSThread *t, OSId id, void (*entry)(void *), void *arg, void *sp, OSPri p)
 {
     register u32 saveMask;
@@ -31,4 +29,3 @@ void osCreateThread(OSThread *t, OSId id, void (*entry)(void *), void *arg, void
     __osActiveQueue = t;
     __osRestoreInt(saveMask);
 }
-*/
