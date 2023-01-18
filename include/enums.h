@@ -1,3 +1,7 @@
+#ifndef _ENUMS_H
+#define _ENUMS_H
+
+#define ACTORS_MAX 64
 
 enum actorIDs {
 	unk_00,
@@ -132,3 +136,5 @@ enum GameModes {
 	GAME_MODE_CREDITS = 20,
 	GAME_MODE_OPENING_CUTSCENE = 21
 };
+
+#endif

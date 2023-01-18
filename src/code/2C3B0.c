@@ -13,7 +13,7 @@
 #pragma GLOBAL_ASM("asm/nonmatchings/code/2C3B0/func_80051678.s")
 
 void func_8005171C(void) {
-    if ((D_80240CD8 == 6) && ((D_800F0B50 % 60) == 0)) {
+    if ((currentZone == 6) && ((D_800F0B50 % 60) == 0)) {
         func_80087ED0(137, 0, 0, 0, 0, 16);
     }
 }

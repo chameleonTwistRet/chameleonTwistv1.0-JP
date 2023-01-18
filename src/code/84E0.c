@@ -1811,10 +1811,6 @@ void func_8004AC20(Actor* arg0) {
     }
 }
 
-
-// unk_66 to unk_69 arent used
-// unk_6A
-//?????: Nathan R.
 void func_8004AC8C(Actor* arg0) {
     if (arg0->unk_10C[0] != 0) {
         arg0->unk_10C[1] += 1;
@@ -1836,8 +1832,7 @@ void func_8004AC8C(Actor* arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8004AD2C.s")
 
-//iirc this is for the battle start
-//thanks rain for fixing it
+//related to spawning collsion pieces
 void func_8004BA5C(s32 arg0) {
     s32 i;
     PlayerPointer = &D_80168DA8;
@@ -1848,6 +1843,7 @@ void func_8004BA5C(s32 arg0) {
     }
 }
 
+s32 func_8004BF88(Actor*, s32, f32, f32);
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8004BAC0.s")
 
@@ -1859,7 +1855,30 @@ void func_8004BA5C(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8004BF88.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8004C110.s")
+s32 func_8004BF88(Actor*, s32, f32, f32);
+
+s32 func_8004C110(s32 arg0, f32 arg1, f32 arg2) {
+    Actor* actorArray;
+    s32 temp_v0;
+    s32 var_s2;
+    s32 actorIndex;
+    s32 i;
+
+    var_s2 = 0x05F5E100; //??
+    actorIndex = -1;
+    actorArray = D_8016AC68;
+    for (i = 0; i < 64; i++, actorArray++) {
+        temp_v0 = func_8004BF88(actorArray, arg0, arg1, arg2);
+        //fake match
+        do {
+            if ((temp_v0 >= 0) && (temp_v0 < var_s2)) {
+                var_s2 = temp_v0;
+                actorIndex = i;
+            }
+        } while (0);
+    }
+    return actorIndex;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8004C1C8.s")
 

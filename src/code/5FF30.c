@@ -2,6 +2,13 @@
 #include "PR/libaudio.h"
 //AOF=759
 
+typedef struct Collision {
+    s32 collisionType; //?
+    char unk_04[0xD4];
+} Collision;
+
+extern Collision D_80240D6C[];
+
 typedef struct unkFlags {
     u8 flags0;
     u8 flags1;
@@ -1283,8 +1290,8 @@ void func_800B21CC(s32 arg0, s32 arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800B2220.s")
 
-s32 func_800B2260(s32* value) {
-    return (*value != 0 && *value < 95) ? 1 : 0;
+s32 func_800B2260(Actor* actor) {
+    return (actor->actorID != 0 && actor->actorID < 95) ? 1 : 0;
 }
 
 s32 func_800B2288(s32* value) {
@@ -1515,7 +1522,16 @@ s32 func_800B4140(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800B4F14.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800B4FCC.s")
+void func_800B4FCC(void) {
+    s32 i;
+    
+    for (i = 0; i < ACTORS_MAX; i++) {
+        if ((func_800B2260(&D_8016AC68[i]) != 0) && (D_8016AC68[i].actorState == 0)) {
+            func_800311C8(&D_8016AC68[i]);
+            func_800313BC(i, func_800C8900(0, 0x168));
+        }        
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800B505C.s")
 
@@ -1750,7 +1766,9 @@ void func_800BE664(s32* arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800BF524.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800BF5A4.s")
+void func_800BF5A4(void) {
+    func_8004BA5C(D_80240D6C[currentZone].collisionType);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800BF5E8.s")
 

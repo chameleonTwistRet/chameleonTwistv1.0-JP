@@ -3,6 +3,7 @@
 #include "common_structs.h"
 #include "io/viint.h"
 #include "os/osint.h"
+#include "enums.h"
 
 
 #ifndef VARIABLES_JP_H
@@ -190,7 +191,7 @@ extern s32 D_80168DA4;
 extern playerActor D_80168DA8;
 extern s32 D_80168E5C;
 extern tongue D_80169268;
-extern Actor D_8016AC68[64]; //currently loaded actor structs
+extern Actor D_8016AC68[ACTORS_MAX]; //currently loaded actor structs
 extern pole D_80170968[64]; //currently loaded pole structs
 extern unkStruct D_80172E88[];
 extern s32 D_80174758[];
@@ -228,6 +229,6 @@ extern s32 D_8020D85C;
 extern s32 D_8020D860;
 extern s32 D_80236968;
 extern s32 D_8023696C;
-extern s32 D_80240CD8;
+extern s32 currentZone; //D_80240CD8
 
 #endif
