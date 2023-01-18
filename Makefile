@@ -278,8 +278,8 @@ $(SPLAT):
 	@which git >/dev/null || echo "ERROR: git binary not found on PATH"
 	git submodule update --init --recursive
 
-# $(LD_SCRIPT):
-# 	$(error Please run 'make setup' and try again.)
+$(LD_SCRIPT):
+	$(error Please run 'make setup' and try again.)
 
 baserom.$(VERSION).z64:
 	$(error Place the JP chameleon twist ROM, named '$@', in the root of this repo and try again.)
