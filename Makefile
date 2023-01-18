@@ -170,6 +170,8 @@ $(BUILD_DIR)/$(SRC_DIR)/os/createthread.c.o: OPT_FLAGS := -O1 #produces warnings
 $(BUILD_DIR)/$(SRC_DIR)/os/destroythread.c.o: OPT_FLAGS := -O1
 $(BUILD_DIR)/$(SRC_DIR)/os/getthreadpri.c.o: OPT_FLAGS := -O1
 $(BUILD_DIR)/$(SRC_DIR)/os/thread.c.o: OPT_FLAGS := -O1 #produces warnings
+$(BUILD_DIR)/$(SRC_DIR)/os/sprawread.c.o: OPT_FLAGS := -O1 #produces warnings
+
 
 #$(BUILD_DIR)/$(SRC_DIR)/libc/ll.c.o: OPT_FLAGS := -O2 (also needs -mips3 -32)
 
@@ -290,9 +292,6 @@ $(SPLAT):
 	$(info Repo cloned without submodules, attempting to fetch them now...)
 	@which git >/dev/null || echo "ERROR: git binary not found on PATH"
 	git submodule update --init --recursive
-
-# $(LD_SCRIPT):
-# 	$(error Please run 'make setup' and try again.)
 
 baserom.$(VERSION).z64:
 	$(error Place the JP chameleon twist ROM, named '$@', in the root of this repo and try again.)
