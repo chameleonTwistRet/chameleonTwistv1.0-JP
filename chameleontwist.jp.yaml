@@ -137,7 +137,7 @@ segments:
       - [0xBCC90, c, io/sprawread]
       - [0xBCCE0, c, io/sprawwrite]
       - [0xBCD30, hasm, os/exceptasm]
-      - [0xBD630, hasm, os/unk]
+      - [0xBD630, hasm, os/createspeedparam]
       - [0xBD6D0, c, os/sethwinterrupt]
       - [0xBD720, c, os/gethwinterrupt]
       - [0xBDFE0, hasm, os/interrupt]

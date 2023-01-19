@@ -400,7 +400,7 @@ void func_800D79E4(s32*, s32);
 void func_800D8198(Vec3f*);
 f32 func_800D81B0(Vec3f*);
 void func_800D87A4(s32, s32); 
-void func_800D9730(void);
+void __osInitialize_common(void);
 void func_800D99D0(s32*, s32, void*, s32, s32*, s32);
 void func_800D9B20(s32*);
 void func_800DA510(s32*, s32, s32, s32, s32, s32, s32*);
@@ -412,7 +412,5 @@ void func_800DC950(void*, void*);
 void func_800DCA90(s32, s32);
 void func_800DCB10(s32, s32);
 void func_800DF680(s32);
-
-//void func_800E31E0(void);
 
 #endif

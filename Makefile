@@ -163,6 +163,7 @@ $(BUILD_DIR)/$(SRC_DIR)/io/aisetnextbuf.c.o: OPT_FLAGS := -O1
 $(BUILD_DIR)/$(SRC_DIR)/io/conteeplongwrite.c.c.o: OPT_FLAGS := -O1
 $(BUILD_DIR)/$(SRC_DIR)/io/sprawwrite.c.o: OPT_FLAGS := -O1
 $(BUILD_DIR)/$(SRC_DIR)/io/sprawread.c.o: OPT_FLAGS := -O1
+$(BUILD_DIR)/$(SRC_DIR)/io/viswapcontext.c.o: OPT_FLAGS := -O1
 $(BUILD_DIR)/$(SRC_DIR)/os/jammesg.c.o: OPT_FLAGS := -O1
 $(BUILD_DIR)/$(SRC_DIR)/os/recvmesg.c.o: OPT_FLAGS := -O1
 $(BUILD_DIR)/$(SRC_DIR)/os/sendmesg.c.o: OPT_FLAGS := -O1

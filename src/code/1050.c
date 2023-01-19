@@ -2,7 +2,7 @@
 //AOF=35
 
 void func_80025C50(void) {
-    func_800D9730();
+    __osInitialize_common();
     D_80168D70 = 1;
     osCreateThread(&D_80113C90, 1, func_80025CB8, 0, &D_80115E40, 10);
     osStartThread(&D_80113C90);
