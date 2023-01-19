@@ -3,8 +3,8 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/os/timerintr/__osTimerServicesInit.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/os/timerintr/func_800E2CEC.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/os/timerintr/__osTimerInterrupt.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/os/timerintr/func_800E2E64.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/os/timerintr/__osSetTimerIntr.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/os/timerintr/func_800E2ED8.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/os/timerintr/__osInsertTimer.s")

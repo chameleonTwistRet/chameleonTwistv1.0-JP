@@ -1,10 +1,7 @@
 #include "common.h"
-//AOF=1
-
-#pragma GLOBAL_ASM("asm/nonmatchings/os/startthread/osStartThread.s")
-/*
 #include <os_internal.h>
 #include "osint.h"
+//AOF=1
 
 void osStartThread(OSThread *t)
 {
@@ -43,4 +40,3 @@ void osStartThread(OSThread *t)
     }
     __osRestoreInt(saveMask);
 }
-*/

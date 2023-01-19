@@ -1,4 +1,12 @@
 #include "common.h"
+#include "siint.h"
 //AOF=1
 
-#pragma GLOBAL_ASM("asm/nonmatchings/io/sprawwrite/func_800E18E0.s")
+s32 __osSpRawWriteIo(u32 devAddr, u32 data) {
+    if (__osSiDeviceBusy()) {
+        return -1;
+    }
+
+    IO_WRITE(devAddr, data);
+    return 0;
+}

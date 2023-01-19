@@ -1,10 +1,16 @@
 #include "common.h"
-//AOF=4
+#include "PR/os_internal.h"
+//AOF=1
 
-#pragma GLOBAL_ASM("asm/nonmatchings/os/sethwinterrupt/func_800E22D0.s")
+struct __osHwInt {
+    s32 (*handler)(void);
+};
 
-#pragma GLOBAL_ASM("asm/nonmatchings/os/sethwinterrupt/func_800E2320.s")
+extern struct __osHwInt __osHwIntTable[];
 
-#pragma GLOBAL_ASM("asm/nonmatchings/os/sethwinterrupt/func_800E2A04.s")
+void __osSetHWIntrRoutine(OSHWIntr interrupt, s32 (*handler)(void)) {
+    register u32 saveMask= __osDisableInt();
 
-#pragma GLOBAL_ASM("asm/nonmatchings/os/sethwinterrupt/func_800E2AEC.s")
+    __osHwIntTable[interrupt].handler = handler;
+    __osRestoreInt(saveMask);
+}
