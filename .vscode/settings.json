@@ -7,6 +7,7 @@
         "rcp.h": "c",
         "os_internal.h": "c",
         "ultratypes.h": "c",
-        "r4300.h": "c"
+        "r4300.h": "c",
+        "siint.h": "c"
     }
 }

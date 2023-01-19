@@ -30,7 +30,7 @@ ENDLINE := \n'
 # Directories
 
 BUILD_DIR := build
-ASM_DIRS  := asm asm/data asm/os
+ASM_DIRS  := asm asm/data asm/os asm/data/audio
 BIN_DIRS  := assets
 SRC_DIR   := src
 SRC_DIRS  := $(shell find $(SRC_DIR) -type d)
@@ -161,6 +161,8 @@ $(BUILD_DIR)/$(SRC_DIR)/io/ai.c.o: OPT_FLAGS := -O1
 $(BUILD_DIR)/$(SRC_DIR)/io/aisetfreq.c.o: OPT_FLAGS := -O1
 $(BUILD_DIR)/$(SRC_DIR)/io/aisetnextbuf.c.o: OPT_FLAGS := -O1
 $(BUILD_DIR)/$(SRC_DIR)/io/conteeplongwrite.c.c.o: OPT_FLAGS := -O1
+$(BUILD_DIR)/$(SRC_DIR)/io/sprawwrite.c.o: OPT_FLAGS := -O1
+$(BUILD_DIR)/$(SRC_DIR)/io/sprawread.c.o: OPT_FLAGS := -O1
 $(BUILD_DIR)/$(SRC_DIR)/os/jammesg.c.o: OPT_FLAGS := -O1
 $(BUILD_DIR)/$(SRC_DIR)/os/recvmesg.c.o: OPT_FLAGS := -O1
 $(BUILD_DIR)/$(SRC_DIR)/os/sendmesg.c.o: OPT_FLAGS := -O1
@@ -170,9 +172,15 @@ $(BUILD_DIR)/$(SRC_DIR)/os/createthread.c.o: OPT_FLAGS := -O1 #produces warnings
 $(BUILD_DIR)/$(SRC_DIR)/os/destroythread.c.o: OPT_FLAGS := -O1
 $(BUILD_DIR)/$(SRC_DIR)/os/getthreadpri.c.o: OPT_FLAGS := -O1
 $(BUILD_DIR)/$(SRC_DIR)/os/thread.c.o: OPT_FLAGS := -O1 #produces warnings
-$(BUILD_DIR)/$(SRC_DIR)/os/sprawread.c.o: OPT_FLAGS := -O1 #produces warnings
-
-
+$(BUILD_DIR)/$(SRC_DIR)/os/timerintr.c.o: OPT_FLAGS := -O1
+$(BUILD_DIR)/$(SRC_DIR)/os/startthread.c.o: OPT_FLAGS := -O1
+$(BUILD_DIR)/$(SRC_DIR)/os/gettime.c.o: OPT_FLAGS := -O1
+$(BUILD_DIR)/$(SRC_DIR)/os/seteventmesg.c.o: OPT_FLAGS := -O1
+$(BUILD_DIR)/$(SRC_DIR)/os/sethwinterrupt.c.o: OPT_FLAGS := -O1
+$(BUILD_DIR)/$(SRC_DIR)/os/setthreadpri.c.o: OPT_FLAGS := -O1
+$(BUILD_DIR)/$(SRC_DIR)/os/settimer.c.o: OPT_FLAGS := -O1
+$(BUILD_DIR)/$(SRC_DIR)/os/yieldthread.c.o: OPT_FLAGS := -O1
+$(BUILD_DIR)/$(SRC_DIR)/os/timerintr.c.o: OPT_FLAGS := -O1
 #$(BUILD_DIR)/$(SRC_DIR)/libc/ll.c.o: OPT_FLAGS := -O2 (also needs -mips3 -32)
 
 ### Targets
