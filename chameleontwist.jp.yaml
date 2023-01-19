@@ -17,7 +17,7 @@ options:
   build_path: build
   # extensions_path: tools/splat_ext
   # auto_all_sections: True
-  migrate_rodata_to_functions : True
+  migrate_rodata_to_functions : False
   create_undefined_funcs_auto: no
 segments:
   - name: header
@@ -208,25 +208,15 @@ segments:
       - [0xC9F50, bin]
       - [0xE64D0, .rodata, code/84E0]
       - [0xE6680, bin]
-      # - [0xE56F0, rodata]
-      # - [0xE5AD0, rodata]
-      # - [0xE64D0, .rodata, code/84E0]
-      # - [0xE6680, rodata]
-      # - [0xE7D40, rodata]
-      # - [0xE8930, rodata]
-      # - [0xE8F00, bin]
-      # - [0xEC5D0, bin]
-      - [0xEBCB0, .rodata, gu/rotate]
-      - [0xEBCC0, bin]
+      - [0xEBCB0, rodata, gu/rotate]
+      - [0xEBCC0, rodata, gu/sinf]
       - [0xEBD70, .rodata, gu/perspective]
       - [0xEBD80, .rodata, audio/cents2ratio]
       - [0xEBD90, rodata, audio/csplayer]
       - [0xEBFD0, rodata, audio/sndpplayer]
-      - [0xEC030, data, os/exceptasm]
-      #- [0xEBD90, .bss, os/timerintr]
-      #- [0xEBD90, rodata, csplayer]
-      - [0xEC0A0, data, __cosf]
-      - [0xECDD0, data, 5FF30]
+      - [0xEC030, rodata, os/exceptasm]
+      - [0xEC0A0, rodata, gu/cosf]
+      - [0xECDD0, rodata, 5FF30]
 
   - name: assets
     type: code
