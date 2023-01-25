@@ -217,7 +217,7 @@ segments:
       - [0xEC030, rodata, os/exceptasm]
       - [0xEC0A0, rodata, gu/cosf]
       - [0xECDD0, rodata, 5FF30]
-
+      #80111C90 - 8024C510 bss
   - name: assets
     type: code
     start: 0xED090
