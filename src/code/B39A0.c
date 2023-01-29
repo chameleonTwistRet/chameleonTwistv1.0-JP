@@ -1,29 +1,29 @@
 #include "common.h"
 //AOF=30
 
-extern f32 D_80110870;
-extern f32 D_80110874;
-extern f32 D_80110878;
-extern f32 D_8011087C;
-extern f32 D_80110880;
-extern f32 D_80110884;
-extern f32 D_80110888;
-extern f32 D_8011088C;
-extern f32 D_80110890;
-extern f32 D_80110894;
-extern f32 D_80110898;
-extern f32 D_8011089C;
-extern f32 D_801108A0;
-extern f32 D_801108A4;
-extern f32 D_801108A8;
-extern f32 D_801108AC;
+// extern f32 0.70710675f;
+// extern f32 0.70710675f;
+// extern f32 0.70710675f;
+// extern f32 0.70710675f;
+
+// extern f32 19600.0f;
+// extern f32 1500.0f;
+// extern f32 6000.0f;
+// extern f32 1500.0f;
+
+// extern f32 1500.0f;
+// extern f32 2500.0f;
+// extern f32 25300.0f;
+// extern f32 2500.0f;
+// extern f32 25300.0f;
+// extern f32 2500.0f;
+// extern f32 23600.0f;
+// extern f32 3000.0f;
 
 extern f32 D_80168DB0;
 extern s32 D_801749A0;
 extern s32 D_80168E24;
 extern s32 D_801749A0;
-void func_800D8628(Collider*, s32, s32);
-void func_800D85A0(Collider*, s32, s32);
 
 
 void func_800D85A0(Collider* arg0, s32 arg1, s32 arg2) {
@@ -83,7 +83,7 @@ void func_800D8918(Collider* arg0, s32 arg1, s32 arg2, f32 arg3, f32 arg4, f32 a
         zPos = D_80168DA8->zPos - arg3;
         xPos = D_80168DA8->xPos - arg4;
         var_v0 = 1;
-        temp_f0 = (zPos - xPos) * D_80110870;
+        temp_f0 = (zPos - xPos) * 0.70710675f;
         
         if (temp_f0 < -(arg5 + arg7)) {
             var_v0 = 0;
@@ -99,7 +99,7 @@ void func_800D8918(Collider* arg0, s32 arg1, s32 arg2, f32 arg3, f32 arg4, f32 a
             }
         }
         
-        temp_f0_2 = (zPos + xPos) * D_80110874;
+        temp_f0_2 = (zPos + xPos) * 0.70710675f;
         
         if (temp_f0_2 < -(arg6 + arg8)) {
             var_v0 = 0;
@@ -117,9 +117,9 @@ void func_800D8918(Collider* arg0, s32 arg1, s32 arg2, f32 arg3, f32 arg4, f32 a
             }
         }
         if (var_v0 != 0) {
-            sp34.z = (*new_var) + (var_f12 - sp44) * D_80110878;
+            sp34.z = (*new_var) + (var_f12 - sp44) * 0.70710675f;
             sp34.y = D_80168DB0;
-            sp34.x = (sp44 + var_f12) * D_8011087C;
+            sp34.x = (sp44 + var_f12) * 0.70710675f;
             sp34.x = arg3 + sp34.x;
             func_80088698(func_80087ED0(arg1, &sp34.z, &sp34.y, &sp34.x, 8, 0));
         }
@@ -187,7 +187,7 @@ void func_800D8CF0(Collider* arg0, s32 arg1) {
     }
 }
 
-void func_800D8D58(Collider* arg0) {func_800D8918(arg0, 0x55, 0x1E, -12800.0f, D_80110880, 700.0f, D_80110884, 1000.0f, 2000.0f);}
+void func_800D8D58(Collider* arg0) {func_800D8918(arg0, 0x55, 0x1E, -12800.0f, 19600.0f, 700.0f, 1500.0f, 1000.0f, 2000.0f);}
 
 void func_800D8DBC(Collider* arg0) {
     func_800D8628(arg0, 0x59, 0x2D);
@@ -209,17 +209,17 @@ void func_800D8E4C(Collider* arg0) {
     func_800D8628(arg0, 0x89, 0x1E);
 }
 
-void func_800D8E70(Collider* arg0) {func_800D8918(arg0, 0x89, 0x1E, D_80110888, D_80110888, 600.0f, D_8011088C, 500.0f, 2000.0f);}
+void func_800D8E70(Collider* arg0) {func_800D8918(arg0, 0x89, 0x1E, 6000.0f, 6000.0f, 600.0f, 1500.0f, 500.0f, 2000.0f);}
 
 void func_800D8ED4(Collider* arg0) { func_800D8918(arg0, 0x89, 0x1E, 2200.0f, 1400.0f, 700.0f, 1000.0f, 500.0f, 2000.0f);}
 
-void func_800D8F3C(Collider* arg0) {func_800D8918(arg0, 0x89, 0x1E, -8500.0f, D_80110890, 600.0f, D_80110894, 1000.0f, 1000.0f);}
+void func_800D8F3C(Collider* arg0) {func_800D8918(arg0, 0x89, 0x1E, -8500.0f, 24000.0f, 600.0f, 2500.0f, 1000.0f, 1000.0f);}
 
-void func_800D8F9C(Collider* arg0) {func_800D8B28(arg0, 0x89, 0x1E, -5100.0f, D_80110898, 600.0f, D_8011089C, 1000.0f, 1000.0f);}
+void func_800D8F9C(Collider* arg0) {func_800D8B28(arg0, 0x89, 0x1E, -5100.0f, 25300.0f, 600.0f, 2500.0f, 1000.0f, 1000.0f);}
 
-void func_800D8FFC(Collider* arg0) {func_800D8B28(arg0, 0x89, 0x1E, 0, D_801108A0, 600.0f, D_801108A4, 1000.0f, 1000.0f);}
+void func_800D8FFC(Collider* arg0) {func_800D8B28(arg0, 0x89, 0x1E, 0, 25300.0f, 600.0f, 2500.0f, 1000.0f, 1000.0f);}
 
-void func_800D9058(Collider* arg0) {func_800D8918(arg0, 0x89, 0x1E, 5100.0f, D_801108A8, D_801108AC, 600.0f, 1000.0f, 1000.0f);}
+void func_800D9058(Collider* arg0) {func_800D8918(arg0, 0x89, 0x1E, 5100.0f, 23600.0f, 3000.0f, 600.0f, 1000.0f, 1000.0f);}
 
 void func_800D90B8(Collider* arg0) {
     func_800D86A4(arg0, 0xA0, -1, 0x1E);

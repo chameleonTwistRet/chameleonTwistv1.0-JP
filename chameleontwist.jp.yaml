@@ -208,6 +208,7 @@ segments:
       - [0xC9F50, bin]
       - [0xE64D0, .rodata, code/84E0]
       - [0xE6680, bin]
+      - [0xEBC70, .rodata, code/B39A0]
       - [0xEBCB0, rodata, gu/rotate]
       - [0xEBCC0, rodata, gu/sinf]
       - [0xEBD70, .rodata, gu/perspective]
