@@ -1343,8 +1343,8 @@ s32 func_800B340C(s32 value) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800B34D0.s")
 
-s32 func_800B3540(void) {
-    return 1 - func_800B34D0();
+s32 func_800B3540(s32 arg0) {
+    return 1 - func_800B34D0(arg0);
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800B3564.s")
@@ -1920,5 +1920,5 @@ void func_800C88AC(void) {
 }
 
 void func_800C88D0(void) {
-    func_800C56D4(&D_80168DA8);
+    func_800C56D4(&D_80168DA8[0]);
 }

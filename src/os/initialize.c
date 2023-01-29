@@ -21,7 +21,7 @@ extern u32 __osFinalrom;
 void __createSpeedParam(void);
 s32 __osGetHWIntrRoutine();
 
-void __osInitialize_common() {
+void __osInitialize_common(void) {
     u32 pifdata;
     u32 sp38 = 0;
     u32 sp34;

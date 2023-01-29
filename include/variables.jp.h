@@ -22,7 +22,7 @@ extern tongue* TonguePointer;
 extern unk0* D_801FFB84;
 
 extern s32 D_800F06B0;
-extern u8 D_800F06DC;
+//extern u8 D_800F06DC;
 extern s32 D_800F06EC;
 extern s32 D_800F0B38;
 extern u32 D_800F0B50;
@@ -188,7 +188,7 @@ extern OSMesgQueue D_80119270;
 extern s32 D_80168D70;
 extern s32 D_80168D78[];
 extern s32 D_80168DA4;
-extern playerActor D_80168DA8;
+extern playerActor D_80168DA8[];
 extern s32 D_80168E5C;
 extern tongue D_80169268;
 extern Actor D_8016AC68[ACTORS_MAX]; //currently loaded actor structs

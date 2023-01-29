@@ -316,6 +316,69 @@ typedef struct actorSubArray { //starts at 0x40
     /* 0x10 */ f32 unk_10;
 } actorSubArray;
 
+typedef struct Collider {
+    s32 unk_00;
+    s32 unk_04;
+    s32 unk_08;
+    s32 unk_0C;
+    s32 unk_10;
+    s32 unk_14;
+    f32 unk_18;
+    f32 unk_1C;
+    f32 unk_20;
+    f32 unk_24;
+    s32 unk_28;
+    s32 unk_2C;
+    f32 unk_30;
+    f32 unk_34;
+    f32 unk_38;
+    f32 unk_3C;
+    f32 unk_40;
+    f32 unk_44;
+    f32 unk_48;
+    void* unk_4C;
+    f32 unk_50;
+    f32 unk_54;
+    f32 unk_58;
+    f32 unk_5C;
+    char unk_60[0x2C];
+    f32 unk_8C;
+    f32 unk_90;
+    f32 unk_94;
+    f32 unk_98;
+    f32 unk_9C;
+    f32 unk_A0;
+    char unk_A4[8];
+    s32 unk_AC;
+    s32 unk_B0;
+    s32 unk_B4;
+    s32 unk_B8;
+    s32 unk_BC;
+    s32 unk_C0;
+    char unk_C4[8];
+    f32 unk_CC;
+    f32 unk_D0;
+    f32 unk_D4;
+    f32 unk_D8;
+    f32 unk_DC;
+    f32 unk_E0;
+    void* unk_E4;
+    void* unk_E8;
+    s32 unk_EC;
+    char unk_F0[8];
+    void* unk_F8;
+    void* unk_FC;
+    void* unk_100; //function pointer
+    char unk_104[12];
+    s32 unk_110;
+    s32 unk_114;
+    s32 unk_118; //flags, visibility is 0x00000004
+    s32 unk_11C;
+    char unk_120[4];
+    s32 unk_124;
+    char unk_128[8];
+} Collider; //sizeof 0x130 (at ram addr 0x80236F70 in kids land)
+
 typedef struct Actor {
     /* 0x000 */ s32 actorID;
     /* 0x004 */ s32 actorIndex;

@@ -1835,7 +1835,7 @@ void func_8004AC8C(Actor* arg0) {
 //related to spawning collsion pieces
 void func_8004BA5C(s32 arg0) {
     s32 i;
-    PlayerPointer = &D_80168DA8;
+    PlayerPointer = &D_80168DA8[0];
     TonguePointer = &D_80169268;
     
     for (i = 0; i < arg0; i++) {

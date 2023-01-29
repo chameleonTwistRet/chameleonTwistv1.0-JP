@@ -1,8 +1,31 @@
 #include "common.h"
 //AOF=33
 
+typedef struct unkStruct0 {
+    /* 0x00 */ s32 unk_00;
+    /* 0x04 */ char unk_04[0x20];
+} unkStruct0;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/2C3B0/func_80050FB0.s")
+void func_8005456C(f32, f32, f32, f32, f32, s32);
+extern u8 D_800F06DC[];
+extern u8 D_800F0BE0[];
+extern unkStruct0 D_800F0BE4[];
+extern s32 D_801749B4;
+
+void func_80050FB0(void) {
+    s32 i;
+
+    if (D_801749B4 == 0) {
+        for (i = 0; i < 4; i++) {
+            if (D_80168DA8[i].active == 1) {
+                if (D_80168DA8[i].yPos < -10.0f) {
+                    D_800F0BE4[D_800F0BE0[i]].unk_00++;
+                    func_8005456C(D_80168DA8[i].xPos, -300.0f, D_80168DA8[i].zPos, D_80168DA8[i].yPos, 200.0f, D_800F06DC[i]);
+                }
+            } 
+        }
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/2C3B0/func_800510E0.s")
 

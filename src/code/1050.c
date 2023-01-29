@@ -1,6 +1,8 @@
 #include "common.h"
 //AOF=35
 
+void __osInitialize_common(void);
+
 void func_80025C50(void) {
     __osInitialize_common();
     D_80168D70 = 1;

@@ -5,6 +5,7 @@
             "name": "chameleonTwist",
             "includePath": [
                 "${workspaceFolder}/include",
+                "${workspaceFolder}/include/PR",
                 "${workspaceFolder}/src"
             ],
             "defines": [
