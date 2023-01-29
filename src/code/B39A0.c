@@ -1,30 +1,10 @@
 #include "common.h"
 //AOF=30
 
-// extern f32 0.70710675f;
-// extern f32 0.70710675f;
-// extern f32 0.70710675f;
-// extern f32 0.70710675f;
-
-// extern f32 19600.0f;
-// extern f32 1500.0f;
-// extern f32 6000.0f;
-// extern f32 1500.0f;
-
-// extern f32 1500.0f;
-// extern f32 2500.0f;
-// extern f32 25300.0f;
-// extern f32 2500.0f;
-// extern f32 25300.0f;
-// extern f32 2500.0f;
-// extern f32 23600.0f;
-// extern f32 3000.0f;
-
 extern f32 D_80168DB0;
 extern s32 D_801749A0;
 extern s32 D_80168E24;
 extern s32 D_801749A0;
-
 
 void func_800D85A0(Collider* arg0, s32 arg1, s32 arg2) {
     if (((arg0->unk_00 + D_801749A0) % arg2) == 0) {
