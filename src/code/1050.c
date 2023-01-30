@@ -92,7 +92,21 @@ void func_8002CCDC(void) {
     func_80088198();
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/1050/func_8002CD04.s")
+void func_8002CD04(void) {
+    func_800A7988();
+    D_80174878 += 1;
+    if (D_800F06EC >= 0) {
+        D_80174878 = D_800F06EC;
+    }
+    D_80174878 = func_800961F4(D_80174878);
+    func_8002E0CC();
+    func_800C2FA0();
+    func_8002CCDC();
+    func_80056EB4();
+    func_800615A4();
+    func_8005C9B8();
+    func_80084788();
+}
 
 void func_8002CD94(s32 arg0) {
     if (arg0 == 2) {
