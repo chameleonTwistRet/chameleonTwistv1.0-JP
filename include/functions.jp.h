@@ -393,10 +393,10 @@ void func_800CFDB8(playerActor*);
 void func_800CFF64(playerActor*);
 
 void func_800D0708(playerActor*, tongue*); //PLAYER PROCESS
-void func_800D7460(s32, ...);
-s32 func_800D75B4(s32*, s32);
-void func_800D799C(s32*, s32, s32);
-void func_800D79E4(s32*, s32);
+void func_800D7460(char*, ...);
+s32 func_800D75B4(unkB2860*, s32);
+void func_800D799C(unkB2860*, s32, char*);
+void func_800D79E4(unkB2860*, s32);
 void func_800D8198(Vec3f*);
 f32 func_800D81B0(Vec3f*);
 void func_800D87A4(Collider* arg0, s32 arg1); 

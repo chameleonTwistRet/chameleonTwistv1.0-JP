@@ -177,8 +177,8 @@ extern f64 D_8010FFF8;
 extern f64 D_80110000;
 extern f32 D_80110108;
 extern f64 D_80110120;
-extern s32 D_8011074C;
-extern s32 D_8011077C;
+extern char D_8011074C[];
+extern char D_8011077C[];
 extern OSThread D_80113C90; // thread1
 extern OSThread D_80115E40; // thread3
 extern s32 D_80117FF0;

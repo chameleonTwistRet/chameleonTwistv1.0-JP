@@ -6,6 +6,8 @@ extern s32 D_801749A0;
 extern s32 D_80168E24;
 extern s32 D_801749A0;
 
+#define SQROOT_2_DIV_2 0.70710678f
+
 void func_800D85A0(Collider* arg0, s32 arg1, s32 arg2) {
     if (((arg0->unk_00 + D_801749A0) % arg2) == 0) {
         func_80088698(func_80087ED0(arg1, &arg0->unk_18, &arg0->unk_1C, &arg0->unk_20, 0, 0));
@@ -63,7 +65,7 @@ void func_800D8918(Collider* arg0, s32 arg1, s32 arg2, f32 arg3, f32 arg4, f32 a
         zPos = D_80168DA8->zPos - arg3;
         xPos = D_80168DA8->xPos - arg4;
         var_v0 = 1;
-        temp_f0 = (zPos - xPos) * 0.70710675f;
+        temp_f0 = (zPos - xPos) * SQROOT_2_DIV_2;
         
         if (temp_f0 < -(arg5 + arg7)) {
             var_v0 = 0;
@@ -79,7 +81,7 @@ void func_800D8918(Collider* arg0, s32 arg1, s32 arg2, f32 arg3, f32 arg4, f32 a
             }
         }
         
-        temp_f0_2 = (zPos + xPos) * 0.70710675f;
+        temp_f0_2 = (zPos + xPos) * SQROOT_2_DIV_2;
         
         if (temp_f0_2 < -(arg6 + arg8)) {
             var_v0 = 0;
@@ -97,9 +99,9 @@ void func_800D8918(Collider* arg0, s32 arg1, s32 arg2, f32 arg3, f32 arg4, f32 a
             }
         }
         if (var_v0 != 0) {
-            sp34.z = (*new_var) + (var_f12 - sp44) * 0.70710675f;
+            sp34.z = (*new_var) + (var_f12 - sp44) * SQROOT_2_DIV_2;
             sp34.y = D_80168DB0;
-            sp34.x = (sp44 + var_f12) * 0.70710675f;
+            sp34.x = (sp44 + var_f12) * SQROOT_2_DIV_2;
             sp34.x = arg3 + sp34.x;
             func_80088698(func_80087ED0(arg1, &sp34.z, &sp34.y, &sp34.x, 8, 0));
         }
