@@ -21,6 +21,7 @@ void func_80025EE8(void);
 s32 func_8002C900(void);
 s32 func_8002CCA0(void);
 void func_8002CCDC(void);
+void func_8002CD04(void);
 void func_8002CD94(s32);
 f32 func_8002D0E0(f32, f32);
 void func_8002D0F4(f32*);
