@@ -7,6 +7,7 @@ extern char D_801107B0[];
 extern char D_801107C0[];
 extern char D_80110820[];
 extern char D_80110830[];
+extern char D_801107D0[];
 
 // Auth: Rain, revo, simonlindholm
 void func_800D7460(char* arg0, ...) { /* variadic args: simonlindholm*/
@@ -138,7 +139,22 @@ Vec3f* func_800D7C3C(Vec3f* arg0, Vec3f arg1, unkB2860* arg4) {
 //     return 1;
 // }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/B2860/func_800D7E10.s")
+s32 func_800D7E10(Vec3f arg0, unkB2860* arg3) {
+    f32 dotProduct;
+    func_800D799C(arg3, 2, D_801107D0);
+    arg0.x -= arg3->unk_08;
+    arg0.y -= arg3->unk_0C;
+    arg0.z -= arg3->unk_10;
+    
+    dotProduct = arg0.z * arg3->unk_64 + (arg0.x * arg3->unk_5C + arg0.y * arg3->unk_60);
+    if (dotProduct < -1.0) {
+        return 0;
+    }
+    if (dotProduct > 1.0) {
+        return 0;
+    }
+    return 1;
+}
 
 Vec3f* func_800D7EE0(Vec3f* arg0, Vec3f arg1, f32 arg4, s32 arg5) {
     Vec3f sp24;

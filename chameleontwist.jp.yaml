@@ -206,6 +206,10 @@ segments:
       #im pretty sure this is where the text starts
       - [0xC95C0, bin]
       - [0xC9F50, bin]
+      - [0xD9480, bin]
+      # - [0xD9480, gfx]
+      # - [0xD94F0, gfx]
+      # - [0xD9518, bin]
       - [0xE64D0, .rodata, code/84E0]
       - [0xE6680, bin]
       - [0xEBC70, .rodata, code/B39A0]
@@ -261,8 +265,9 @@ segments:
       #- [0x948C18, rgba16, img/unused/bigShoeLmfao.rgba16, 320, 240]
       #- [0x96E418, bin, gggg]
 
-      - [0x9E7A80, rgba16, img/misc/titleSplash.rgba16, 320, 240]
-      - [0xA0D280, rgba16, img/misc/stageSelect.rgba16, 320, 240]
+      #- [0x9E7A80, rgba16, img/misc/titleSplash.rgba16, 320, 240]
+      #- [0xA0D280, rgba16, img/misc/stageSelect.rgba16, 320, 240]
+      - [0x9E7A80, bin]
       - [0xA32A80, bin, ext3]
       - [0xAFED90, bin, davyheadMaybe]
       - [0xAFF3B0, bin, ext4]
