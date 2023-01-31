@@ -182,6 +182,7 @@ $(BUILD_DIR)/$(SRC_DIR)/os/setthreadpri.c.o: OPT_FLAGS := -O1
 $(BUILD_DIR)/$(SRC_DIR)/os/settimer.c.o: OPT_FLAGS := -O1
 $(BUILD_DIR)/$(SRC_DIR)/os/yieldthread.c.o: OPT_FLAGS := -O1
 $(BUILD_DIR)/$(SRC_DIR)/os/initialize.c.o: OPT_FLAGS := -O1
+$(BUILD_DIR)/$(SRC_DIR)/io/pidma.c.o: OPT_FLAGS := -O1
 #$(BUILD_DIR)/$(SRC_DIR)/libc/ll.c.o: OPT_FLAGS := -O2 (also needs -mips3 -32)
 
 ### Targets

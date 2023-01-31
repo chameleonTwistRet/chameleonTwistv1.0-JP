@@ -3,4 +3,6 @@
 
 #include "common.h"
 
+typedef u8 Addr[];
+
 #endif
