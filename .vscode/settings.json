@@ -8,6 +8,8 @@
         "os_internal.h": "c",
         "ultratypes.h": "c",
         "r4300.h": "c",
-        "siint.h": "c"
+        "siint.h": "c",
+        "piint.h": "c",
+        "viint.h": "c"
     }
 }

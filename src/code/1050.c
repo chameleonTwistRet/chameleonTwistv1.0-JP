@@ -20,7 +20,7 @@ typedef struct temp {
 void func_8008C494(void);
 void func_8008C4B8(void);
 void func_8008C554(void);
-void func_800DB060(void*);
+void osViSwapBuffer(void* frameBufPtr);
 s32 func_8004E4D0(void);
 void func_80084ACC(void);
 void func_80086C20(void);
@@ -128,7 +128,7 @@ void func_80026CA8(unkMatrix *arg0, Mtx *arg1, u32 arg2, f32 arg3, s32 arg4) {
 void func_8002CBE8(s32 arg0) {
     func_8008C4B8();
     osRecvMesg(&D_801192D0, NULL, 1);
-    func_800DB060(&D_803B5000[arg0].data);
+    osViSwapBuffer(&D_803B5000[arg0].data);
     osViSetSpecialFeatures(5);
     
     if (D_801192E8.validCount >= D_801192E8.msgCount) {
