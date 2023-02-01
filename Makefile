@@ -187,6 +187,14 @@ $(BUILD_DIR)/$(SRC_DIR)/io/pigetcmdq.c.o: OPT_FLAGS := -O1
 $(BUILD_DIR)/$(SRC_DIR)/io/pirawdma.c.o: OPT_FLAGS := -O1
 $(BUILD_DIR)/$(SRC_DIR)/io/si.c.o: OPT_FLAGS := -O1
 $(BUILD_DIR)/$(SRC_DIR)/io/viswapbuf.c.o: OPT_FLAGS := -O1
+$(BUILD_DIR)/$(SRC_DIR)/io/visetspecial.c.o: OPT_FLAGS := -O1
+$(BUILD_DIR)/$(SRC_DIR)/io/visetmode.c.o: OPT_FLAGS := -O1
+$(BUILD_DIR)/$(SRC_DIR)/io/visetevent.c.o: OPT_FLAGS := -O1
+$(BUILD_DIR)/$(SRC_DIR)/io/viblack.c.o: OPT_FLAGS := -O1
+$(BUILD_DIR)/$(SRC_DIR)/io/vi.c.o: OPT_FLAGS := -O1
+$(BUILD_DIR)/$(SRC_DIR)/io/sptaskyielded.c.o: OPT_FLAGS := -O1
+$(BUILD_DIR)/$(SRC_DIR)/io/sptaskyield.c.o: OPT_FLAGS := -O1
+$(BUILD_DIR)/$(SRC_DIR)/io/spsetstat.c.o: OPT_FLAGS := -O1
 #$(BUILD_DIR)/$(SRC_DIR)/gu/rotateRPY.c.o: OPT_FLAGS := -O3
 #$(BUILD_DIR)/$(SRC_DIR)/libc/ll.c.o: OPT_FLAGS := -O2 (also needs -mips3 -32)
 
