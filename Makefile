@@ -97,7 +97,7 @@ SPLAT    := $(TOOLS_DIR)/splat/split.py
 IMG_CONVERT = $(PYTHON) $(TOOLS_DIR)/image_converter.py
 # Flags
 
-OPT_FLAGS      := -O2
+OPT_FLAGS      := -O1
 MIPS_VERSION   := -mips2
 
 INCLUDE_CFLAGS := -I. -Iinclude -Iinclude/PR -Iassets -Isrc
@@ -152,49 +152,30 @@ ASM_PROC_FLAGS := --input-enc=utf-8 --output-enc=euc-jp
 
 ### File and directory flags
 $(BUILD_DIR)/$(SRC_DIR)/%.c.o: CC := $(ASM_PROC) $(ASM_PROC_FLAGS) $(CC) -- $(AS) $(ASFLAGS) --
+$(BUILD_DIR)/$(SRC_DIR)/code/2C3B0.c.o: OPT_FLAGS := -O2
+$(BUILD_DIR)/$(SRC_DIR)/code/5FF30.c.o: OPT_FLAGS := -O2
+$(BUILD_DIR)/$(SRC_DIR)/code/29DF0.c.o: OPT_FLAGS := -O2
+$(BUILD_DIR)/$(SRC_DIR)/code/30FB0.c.o: OPT_FLAGS := -O2
+$(BUILD_DIR)/$(SRC_DIR)/code/84E0.c.o: OPT_FLAGS := -O2
+$(BUILD_DIR)/$(SRC_DIR)/code/298D0.c.o: OPT_FLAGS := -O2
+$(BUILD_DIR)/$(SRC_DIR)/code/1050.c.o: OPT_FLAGS := -O2
+$(BUILD_DIR)/$(SRC_DIR)/code/A3D00.c.o: OPT_FLAGS := -O2
+$(BUILD_DIR)/$(SRC_DIR)/code/A4300.c.o: OPT_FLAGS := -O2
+$(BUILD_DIR)/$(SRC_DIR)/code/B39A0.c.o: OPT_FLAGS := -O2
+$(BUILD_DIR)/$(SRC_DIR)/code/B2860.c.o: OPT_FLAGS := -O2
+$(BUILD_DIR)/$(SRC_DIR)/libc/syncprintf.c.o: OPT_FLAGS := -O2
 
-$(BUILD_DIR)/$(SRC_DIR)/io/visetyscale.c.o: OPT_FLAGS := -O1
-$(BUILD_DIR)/$(SRC_DIR)/code/5FEB0.c.o: OPT_FLAGS := -O1
-$(BUILD_DIR)/$(SRC_DIR)/os/virtualtophysical.c.o: OPT_FLAGS := -O1
-$(BUILD_DIR)/$(SRC_DIR)/io/contreaddata.c.o: OPT_FLAGS := -O1
-$(BUILD_DIR)/$(SRC_DIR)/io/ai.c.o: OPT_FLAGS := -O1
-$(BUILD_DIR)/$(SRC_DIR)/io/aisetfreq.c.o: OPT_FLAGS := -O1
-$(BUILD_DIR)/$(SRC_DIR)/io/aisetnextbuf.c.o: OPT_FLAGS := -O1
-$(BUILD_DIR)/$(SRC_DIR)/io/conteeplongwrite.c.c.o: OPT_FLAGS := -O1
-$(BUILD_DIR)/$(SRC_DIR)/io/sprawwrite.c.o: OPT_FLAGS := -O1
-$(BUILD_DIR)/$(SRC_DIR)/io/sprawread.c.o: OPT_FLAGS := -O1
-$(BUILD_DIR)/$(SRC_DIR)/io/viswapcontext.c.o: OPT_FLAGS := -O1
-$(BUILD_DIR)/$(SRC_DIR)/os/jammesg.c.o: OPT_FLAGS := -O1
-$(BUILD_DIR)/$(SRC_DIR)/os/recvmesg.c.o: OPT_FLAGS := -O1
-$(BUILD_DIR)/$(SRC_DIR)/os/sendmesg.c.o: OPT_FLAGS := -O1
-$(BUILD_DIR)/$(SRC_DIR)/os/createmesgqueue.c.o: OPT_FLAGS := -O1
-$(BUILD_DIR)/$(SRC_DIR)/os/resetglobalintmask.c.o: OPT_FLAGS := -O1
-$(BUILD_DIR)/$(SRC_DIR)/os/createthread.c.o: OPT_FLAGS := -O1 #produces warnings
-$(BUILD_DIR)/$(SRC_DIR)/os/destroythread.c.o: OPT_FLAGS := -O1
-$(BUILD_DIR)/$(SRC_DIR)/os/getthreadpri.c.o: OPT_FLAGS := -O1
-$(BUILD_DIR)/$(SRC_DIR)/os/thread.c.o: OPT_FLAGS := -O1 #produces warnings
-$(BUILD_DIR)/$(SRC_DIR)/os/timerintr.c.o: OPT_FLAGS := -O1
-$(BUILD_DIR)/$(SRC_DIR)/os/startthread.c.o: OPT_FLAGS := -O1
-$(BUILD_DIR)/$(SRC_DIR)/os/gettime.c.o: OPT_FLAGS := -O1
-$(BUILD_DIR)/$(SRC_DIR)/os/seteventmesg.c.o: OPT_FLAGS := -O1
-$(BUILD_DIR)/$(SRC_DIR)/os/sethwinterrupt.c.o: OPT_FLAGS := -O1
-$(BUILD_DIR)/$(SRC_DIR)/os/setthreadpri.c.o: OPT_FLAGS := -O1
-$(BUILD_DIR)/$(SRC_DIR)/os/settimer.c.o: OPT_FLAGS := -O1
-$(BUILD_DIR)/$(SRC_DIR)/os/yieldthread.c.o: OPT_FLAGS := -O1
-$(BUILD_DIR)/$(SRC_DIR)/os/initialize.c.o: OPT_FLAGS := -O1
-$(BUILD_DIR)/$(SRC_DIR)/io/pidma.c.o: OPT_FLAGS := -O1
-$(BUILD_DIR)/$(SRC_DIR)/io/pigetcmdq.c.o: OPT_FLAGS := -O1
-$(BUILD_DIR)/$(SRC_DIR)/io/pirawdma.c.o: OPT_FLAGS := -O1
-$(BUILD_DIR)/$(SRC_DIR)/io/si.c.o: OPT_FLAGS := -O1
-$(BUILD_DIR)/$(SRC_DIR)/io/viswapbuf.c.o: OPT_FLAGS := -O1
-$(BUILD_DIR)/$(SRC_DIR)/io/visetspecial.c.o: OPT_FLAGS := -O1
-$(BUILD_DIR)/$(SRC_DIR)/io/visetmode.c.o: OPT_FLAGS := -O1
-$(BUILD_DIR)/$(SRC_DIR)/io/visetevent.c.o: OPT_FLAGS := -O1
-$(BUILD_DIR)/$(SRC_DIR)/io/viblack.c.o: OPT_FLAGS := -O1
-$(BUILD_DIR)/$(SRC_DIR)/io/vi.c.o: OPT_FLAGS := -O1
-$(BUILD_DIR)/$(SRC_DIR)/io/sptaskyielded.c.o: OPT_FLAGS := -O1
-$(BUILD_DIR)/$(SRC_DIR)/io/sptaskyield.c.o: OPT_FLAGS := -O1
-$(BUILD_DIR)/$(SRC_DIR)/io/spsetstat.c.o: OPT_FLAGS := -O1
+$(BUILD_DIR)/$(SRC_DIR)/gu/rotate.c.o: OPT_FLAGS := -O2 #should actually be O3
+$(BUILD_DIR)/$(SRC_DIR)/gu/perspective.c.o: OPT_FLAGS := -O2 #should actually be O3
+$(BUILD_DIR)/$(SRC_DIR)/gu/translate.c.o: OPT_FLAGS := -O2 #should actually be O3
+
+$(BUILD_DIR)/$(SRC_DIR)/audio/bnkf.c.o: OPT_FLAGS := -O2
+$(BUILD_DIR)/$(SRC_DIR)/audio/cents2ratio.c.o: OPT_FLAGS := -O2
+$(BUILD_DIR)/$(SRC_DIR)/audio/copy.c.o: OPT_FLAGS := -O2
+$(BUILD_DIR)/$(SRC_DIR)/audio/heapinit.c.o: OPT_FLAGS := -O2
+$(BUILD_DIR)/$(SRC_DIR)/audio/seqpgetstate.c.o: OPT_FLAGS := -O2
+$(BUILD_DIR)/$(SRC_DIR)/audio/seqpplay.c.o: OPT_FLAGS := -O2
+$(BUILD_DIR)/$(SRC_DIR)/audio/seqpstop.c.o: OPT_FLAGS := -O2
 #$(BUILD_DIR)/$(SRC_DIR)/gu/rotateRPY.c.o: OPT_FLAGS := -O3
 #$(BUILD_DIR)/$(SRC_DIR)/libc/ll.c.o: OPT_FLAGS := -O2 (also needs -mips3 -32)
 
