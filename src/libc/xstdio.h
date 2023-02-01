@@ -75,6 +75,12 @@ typedef struct {
     long long int rem;		/* Remainder.  */
 } lldiv_t;
 
+lldiv_t lldiv(long long num, long long denom);
+ldiv_t ldiv(long num, long denom);
+void *memcpy(void *s1, const void *s2, u32 n);
+s32 strlen(const u8 *s);
+const u8* strchr(const u8* str, u32 ch);
+
 #define FLAGS_SPACE 1
 #define FLAGS_PLUS 2
 #define FLAGS_MINUS 4
@@ -83,7 +89,7 @@ typedef struct {
 typedef char *outfun(char*,const char*,s32);
 
 int _Printf(outfun prout, char *arg, const char *fmt, va_list args);
-void _Litob(_Pft *args, char type);
-void _Ldtob(_Pft* args, char type);
+void _Litob(_Pft *args, u8 type);
+void _Ldtob(_Pft* args, u8 type);
 
 #endif

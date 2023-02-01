@@ -204,13 +204,15 @@ segments:
       - [0xC87C0, c, audio/filter]
       - [0xC87E0, c, audio/reverb]
       - [0xC9430, c, libc/ldiv]
-      #im pretty sure this is where the text starts
+      #beginning of .data sections?
       - [0xC95C0, bin]
       - [0xC9F50, bin]
       - [0xD9480, bin]
       # - [0xD9480, gfx]
       # - [0xD94F0, gfx]
       # - [0xD9518, bin]
+      - [0xE56C0, .data, libc/xlitob]
+      - [0xE56F0, bin]
       - [0xE64D0, .rodata, code/84E0]
       - [0xE6680, bin]
       - [0xEBC70, .rodata, code/B39A0]
