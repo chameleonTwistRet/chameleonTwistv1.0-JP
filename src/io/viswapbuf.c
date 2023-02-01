@@ -3,9 +3,6 @@
 #include "viint.h"
 //AOF=1
 
-// TODO: this comes from a header
-#ident "$Revision: 1.17 $"
-
 void osViSwapBuffer(void* frameBufPtr) {
     u32 saveMask = __osDisableInt();
 

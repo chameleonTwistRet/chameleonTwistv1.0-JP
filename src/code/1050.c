@@ -15,6 +15,8 @@ typedef struct temp {
 /* 0x24 */ f32 unk_24;
 /* 0x28 */ f32 unk_28;
 /* 0x2C */ f32 unk_2C;
+/* 0x30 */ char unk_30[0x24];
+/* 0x54 */ f32 unk_54;
 } temp;
 
 void func_8008C494(void);

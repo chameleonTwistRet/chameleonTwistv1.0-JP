@@ -30,7 +30,7 @@ ENDLINE := \n'
 # Directories
 
 BUILD_DIR := build
-ASM_DIRS  := asm asm/data asm/os asm/data/audio asm/data/os asm/data/gu
+ASM_DIRS  := asm asm/data asm/os asm/gu asm/data/audio asm/data/os asm/data/gu
 BIN_DIRS  := assets
 SRC_DIR   := src
 SRC_DIRS  := $(shell find $(SRC_DIR) -type d)
@@ -187,6 +187,7 @@ $(BUILD_DIR)/$(SRC_DIR)/io/pigetcmdq.c.o: OPT_FLAGS := -O1
 $(BUILD_DIR)/$(SRC_DIR)/io/pirawdma.c.o: OPT_FLAGS := -O1
 $(BUILD_DIR)/$(SRC_DIR)/io/si.c.o: OPT_FLAGS := -O1
 $(BUILD_DIR)/$(SRC_DIR)/io/viswapbuf.c.o: OPT_FLAGS := -O1
+#$(BUILD_DIR)/$(SRC_DIR)/gu/rotateRPY.c.o: OPT_FLAGS := -O3
 #$(BUILD_DIR)/$(SRC_DIR)/libc/ll.c.o: OPT_FLAGS := -O2 (also needs -mips3 -32)
 
 ### Targets

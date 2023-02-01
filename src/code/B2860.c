@@ -141,6 +141,7 @@ Vec3f* func_800D7C3C(Vec3f* arg0, Vec3f arg1, unkB2860* arg4) {
 
 s32 func_800D7E10(Vec3f arg0, unkB2860* arg3) {
     f32 dotProduct;
+    
     func_800D799C(arg3, 2, D_801107D0);
     arg0.x -= arg3->unk_08;
     arg0.y -= arg3->unk_0C;

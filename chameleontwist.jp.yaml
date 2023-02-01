@@ -66,7 +66,7 @@ segments:
       - [0xB6340, c, gu/translate]
       - [0xB63E0, hasm, os/writebackdcache]
       - [0xB6460, c, io/viswapbuf]
-      - [0xB64B0, c, gu/sqrtf]
+      - [0xB64B0, hasm, gu/sqrtf]
       - [0xB64C0, c, gu/cosf]
       - [0xB6630, c, os/seteventmesg]
       - [0xB66A0, c, io/controller]

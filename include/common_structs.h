@@ -111,6 +111,21 @@ typedef struct playerActor {
     /* 0x12C */ f32 tongueSeperation; 
 } playerActor;
 
+typedef struct unkA4300 {
+/* 0x00 */ char unk_00[0x24];
+/* 0x24 */ f32 unk_24;
+/* 0x28 */ f32 unk_28;
+/* 0x2C */ f32 unk_2C;
+/* 0x30 */ char unk_30[0x24];
+/* 0x54 */ f32 unk_54;
+/* 0x58 */ f32 unk_58;
+/* 0x5C */ f32 unk_5C;
+/* 0x60 */ char unk_60[0x38];
+/* 0x98 */ s32 unk_98;
+/* 0x9C */ s32 unk_9C;
+/* 0xA0 */ f32 unk_A0;
+} unkA4300;
+
 typedef struct TonguePos{
     /* 0x00 */ f32 positions[32];
 } TonguePos; //sizeof 0x80

@@ -1,6 +1,8 @@
 #include "common.h"
 //AOF=82
 
+void func_800CBC08(unkA4300*);
+void func_800CC814(unkA4300*, Vec3f, s32);
 
 void func_800C8F00(void) {
     D_80236968 = 0;
@@ -77,13 +79,26 @@ void func_800C9728(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/A4300/func_800CC2F4.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/A4300/func_800CC7E0.s")
+void func_800CC7E0(Vec3f arg0) {
+    func_800C8C14(arg0.x, -arg0.z);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/A4300/func_800CC814.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/A4300/func_800CCA00.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/A4300/func_800CCDCC.s")
+void func_800CCDCC(unkA4300* arg0) {
+    Vec3f sp24;
+
+    sp24.x = arg0->unk_54 + arg0->unk_24;
+    sp24.y = arg0->unk_28;
+    sp24.z = arg0->unk_5C + arg0->unk_2C;
+    arg0->unk_98 = 0;
+    arg0->unk_9C = 0;
+    func_800CC814(arg0, sp24, 1);
+    func_800CBC08(arg0);
+}
+
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/A4300/func_800CCE4C.s")
 
