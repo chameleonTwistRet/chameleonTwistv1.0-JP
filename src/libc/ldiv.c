@@ -1,20 +1,6 @@
 #include "common.h"
+#include "xstdio.h"
 //AOF=2
-
-typedef struct {
-    int quot;			/* Quotient.  */
-    int rem;			/* Remainder.  */
-} div_t;
-
-typedef struct {
-    long int quot;		/* Quotient.  */
-    long int rem;		/* Remainder.  */
-} ldiv_t;
-
-typedef struct {
-    long long int quot;		/* Quotient.  */
-    long long int rem;		/* Remainder.  */
-} lldiv_t;
 
 
 lldiv_t lldiv(long long num, long long denom) {

@@ -13,27 +13,6 @@ typedef char* va_list;
 #define _VA_ALIGN(p, a) (((u32)(((char*)p) + ((a) > 4 ? (a) : 4) - 1)) & -((a) > 4 ? (a) : 4))
 #define va_start(vp, parmN) (vp = ((va_list)&parmN + sizeof(parmN)))
 
-#define __va_stack_arg(list, mode)                          \
-    (                                                       \
-        ((list) = (char*)_VA_ALIGN(list, __builtin_alignof(mode)) + \
-                  _VA_ALIGN(sizeof(mode), 4)),              \
-        (((char*)list) - (_VA_ALIGN(sizeof(mode), 4) - sizeof(mode))))
-
-#define __va_double_arg(list, mode)                                                                    \
-    (                                                                                                  \
-        (((s32)list & 0x1) /* 1 byte aligned? */                                                      \
-             ? (list = (char*)((s32)list + 7), (char*)((s32)list - 6 - _VA_FP_SAVE_AREA))          \
-             : (((s32)list & 0x2) /* 2 byte aligned? */                                               \
-                    ? (list = (char*)((s32)list + 10), (char*)((s32)list - 24 - _VA_FP_SAVE_AREA)) \
-                    : __va_stack_arg(list, mode))))
-
-#define va_arg(list, mode) ((mode*)(((__builtin_classof(mode) == _FP &&          \
-                                       __builtin_alignof(mode) == sizeof(f64)) \
-                                          ? __va_double_arg(list, mode)           \
-                                          : __va_stack_arg(list, mode))))[-1]
-#define va_end(__list)
-
-typedef char* va_list;
 #define _FP 1
 #define _INT 0
 #define _STRUCT 2
@@ -80,6 +59,21 @@ typedef struct {
     /* 0x30 */ unsigned int flags;
     /* 0x34 */ char qual;
 } _Pft;
+
+typedef struct {
+    int quot;			/* Quotient.  */
+    int rem;			/* Remainder.  */
+} div_t;
+
+typedef struct {
+    long int quot;		/* Quotient.  */
+    long int rem;		/* Remainder.  */
+} ldiv_t;
+
+typedef struct {
+    long long int quot;		/* Quotient.  */
+    long long int rem;		/* Remainder.  */
+} lldiv_t;
 
 #define FLAGS_SPACE 1
 #define FLAGS_PLUS 2

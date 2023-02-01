@@ -1,9 +1,10 @@
 #include "common.h"
+//OPT_FLAGS = -O3
 //AOF=3
 
-#pragma GLOBAL_ASM("asm/nonmatchings/libc/xldtob/func_800EC250.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/libc/xldtob/_Genld.s")
 
-void func_800EC7B8(void) {
+void _Ldunscale(void) { //inlined into _Ldtob ?
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/libc/xldtob/_Ldtob.s")
