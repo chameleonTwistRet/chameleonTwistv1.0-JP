@@ -30,7 +30,7 @@ ENDLINE := \n'
 # Directories
 
 BUILD_DIR := build
-ASM_DIRS  := asm asm/data asm/os asm/gu asm/data/audio asm/data/os asm/data/gu
+ASM_DIRS  := asm asm/data asm/os asm/gu asm/libc asm/data/audio asm/data/os asm/data/gu
 BIN_DIRS  := assets
 SRC_DIR   := src
 SRC_DIRS  := $(shell find $(SRC_DIR) -type d)
@@ -72,10 +72,6 @@ IA8_O_FILES      = $(foreach file,$(IA8_FILES),$(BUILD_DIR)/$(file:.png=.png.o))
 IMAGE_O_FILES = $(RGBA32_O_FILES) $(RGBA16_O_FILES) $(I4_O_FILES) $(IA4_O_FILES) $(I8_O_FILES) $(IA8_O_FILES)
 
 
-
-
-
-
 # Tools
 
 CROSS    := mips-linux-gnu-
@@ -98,6 +94,10 @@ IMG_CONVERT = $(PYTHON) $(TOOLS_DIR)/image_converter.py
 # Flags
 
 OPT_FLAGS      := -O1
+CODE_OPT_FLAGS := -O2
+GU_OPT_FLAGS   := -O2 #should actually be -O3
+LIBC_OPT_FLAGS := -O2
+LIBC_MIPS_VERSION := -mips2
 MIPS_VERSION   := -mips2
 
 INCLUDE_CFLAGS := -I. -Iinclude -Iinclude/PR -Iassets -Isrc
@@ -152,32 +152,15 @@ ASM_PROC_FLAGS := --input-enc=utf-8 --output-enc=euc-jp
 
 ### File and directory flags
 $(BUILD_DIR)/$(SRC_DIR)/%.c.o: CC := $(ASM_PROC) $(ASM_PROC_FLAGS) $(CC) -- $(AS) $(ASFLAGS) --
-$(BUILD_DIR)/$(SRC_DIR)/code/2C3B0.c.o: OPT_FLAGS := -O2
-$(BUILD_DIR)/$(SRC_DIR)/code/5FF30.c.o: OPT_FLAGS := -O2
-$(BUILD_DIR)/$(SRC_DIR)/code/29DF0.c.o: OPT_FLAGS := -O2
-$(BUILD_DIR)/$(SRC_DIR)/code/30FB0.c.o: OPT_FLAGS := -O2
-$(BUILD_DIR)/$(SRC_DIR)/code/84E0.c.o: OPT_FLAGS := -O2
-$(BUILD_DIR)/$(SRC_DIR)/code/298D0.c.o: OPT_FLAGS := -O2
-$(BUILD_DIR)/$(SRC_DIR)/code/1050.c.o: OPT_FLAGS := -O2
-$(BUILD_DIR)/$(SRC_DIR)/code/A3D00.c.o: OPT_FLAGS := -O2
-$(BUILD_DIR)/$(SRC_DIR)/code/A4300.c.o: OPT_FLAGS := -O2
-$(BUILD_DIR)/$(SRC_DIR)/code/B39A0.c.o: OPT_FLAGS := -O2
-$(BUILD_DIR)/$(SRC_DIR)/code/B2860.c.o: OPT_FLAGS := -O2
+
+$(BUILD_DIR)/$(SRC_DIR)/code/5FEB0.c.o: CODE_OPT_FLAGS := -O1
+
 $(BUILD_DIR)/$(SRC_DIR)/libc/syncprintf.c.o: OPT_FLAGS := -O2
 
-$(BUILD_DIR)/$(SRC_DIR)/gu/rotate.c.o: OPT_FLAGS := -O2 #should actually be O3
-$(BUILD_DIR)/$(SRC_DIR)/gu/perspective.c.o: OPT_FLAGS := -O2 #should actually be O3
-$(BUILD_DIR)/$(SRC_DIR)/gu/translate.c.o: OPT_FLAGS := -O2 #should actually be O3
+$(BUILD_DIR)/$(SRC_DIR)/libc/ll.c.o: LIBC_MIPS_VERSION := -mips3 -32
+#$(BUILD_DIR)/$(SRC_DIR)/libc/string.c.o: LIBC_OPT_FLAGS := -O2
 
-$(BUILD_DIR)/$(SRC_DIR)/audio/bnkf.c.o: OPT_FLAGS := -O2
-$(BUILD_DIR)/$(SRC_DIR)/audio/cents2ratio.c.o: OPT_FLAGS := -O2
-$(BUILD_DIR)/$(SRC_DIR)/audio/copy.c.o: OPT_FLAGS := -O2
-$(BUILD_DIR)/$(SRC_DIR)/audio/heapinit.c.o: OPT_FLAGS := -O2
-$(BUILD_DIR)/$(SRC_DIR)/audio/seqpgetstate.c.o: OPT_FLAGS := -O2
-$(BUILD_DIR)/$(SRC_DIR)/audio/seqpplay.c.o: OPT_FLAGS := -O2
-$(BUILD_DIR)/$(SRC_DIR)/audio/seqpstop.c.o: OPT_FLAGS := -O2
-#$(BUILD_DIR)/$(SRC_DIR)/gu/rotateRPY.c.o: OPT_FLAGS := -O3
-#$(BUILD_DIR)/$(SRC_DIR)/libc/ll.c.o: OPT_FLAGS := -O2 (also needs -mips3 -32)
+
 
 ### Targets
 
@@ -228,11 +211,46 @@ $(BUILD_DIR)/:
 $(TARGET).elf: $(LD_SCRIPT) $(O_FILES) $(IMAGE_O_FILES)
 	$(V)$(LD) $(LD_FLAGS) -o $@
 
+
+
 $(BUILD_DIR)/$(SRC_DIR)/%.c.o: $(SRC_DIR)/%.c
 	$(V)$(PRINT)$(GREEN)Compiling C file: $(ENDGREEN)$(BLUE)$<$(ENDBLUE)$(ENDLINE)
 	$(V)$(CC_CHECK) $<
 	$(V)$(CC) -c $(CFLAGS) $(MIPS_VERSION) $(OPT_FLAGS) -o $@ $<
 	$(V)$(OBJDUMP_CMD)
+
+$(BUILD_DIR)/$(SRC_DIR)/code/%.c.o: $(SRC_DIR)/code/%.c
+	$(V)$(PRINT)$(GREEN)Compiling C file: $(ENDGREEN)$(BLUE)$<$(ENDBLUE)$(ENDLINE)
+	$(V)$(CC_CHECK) $<
+	$(V)$(CC) -c $(CFLAGS) $(MIPS_VERSION) $(CODE_OPT_FLAGS) -o $@ $<
+	$(V)$(OBJDUMP_CMD)
+
+$(BUILD_DIR)/$(SRC_DIR)/gu/%.c.o: $(SRC_DIR)/gu/%.c
+	$(V)$(PRINT)$(GREEN)Compiling C file: $(ENDGREEN)$(BLUE)$<$(ENDBLUE)$(ENDLINE)
+	$(V)$(CC_CHECK) $<
+	$(V)$(CC) -c $(CFLAGS) $(MIPS_VERSION) $(GU_OPT_FLAGS) -o $@ $<
+	$(V)$(OBJDUMP_CMD)
+
+$(BUILD_DIR)/$(SRC_DIR)/audio/%.c.o: $(SRC_DIR)/audio/%.c
+	$(V)$(PRINT)$(GREEN)Compiling C file: $(ENDGREEN)$(BLUE)$<$(ENDBLUE)$(ENDLINE)
+	$(V)$(CC_CHECK) $<
+	$(V)$(CC) -c $(CFLAGS) $(MIPS_VERSION) -O2 -o $@ $<
+	$(V)$(OBJDUMP_CMD)
+
+$(BUILD_DIR)/$(SRC_DIR)/libc/%.c.o: $(SRC_DIR)/libc/%.c
+	$(V)$(PRINT)$(GREEN)Compiling C file: $(ENDGREEN)$(BLUE)$<$(ENDBLUE)$(ENDLINE)
+	$(V)$(CC_CHECK) $<
+	$(V)$(CC) -c $(CFLAGS) $(LIBC_MIPS_VERSION) $(LIBC_OPT_FLAGS) -o $@ $<
+	$(V)$(OBJDUMP_CMD)
+
+$(BUILD_DIR)/$(SRC_DIR)/libc/ll.c.o: $(SRC_DIR)/libc/ll.c
+	$(V)$(PRINT)$(GREEN)Compiling C file: $(ENDGREEN)$(BLUE)$<$(ENDBLUE)$(ENDLINE)
+	$(V)$(CC_CHECK) $<
+	$(V)$(CC) -c $(CFLAGS) -mips3 -32 -O1 -o $@ $<
+	@python3 tools/set_o32abi_bit.py $@
+	$(V)$(OBJDUMP_CMD)
+
+
 
 # use modern gcc for data
 $(BUILD_DIR)/$(SRC_DIR)/data/%.c.o: $(SRC_DIR)/data/%.c

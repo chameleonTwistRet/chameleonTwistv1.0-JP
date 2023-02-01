@@ -10,6 +10,8 @@
         "r4300.h": "c",
         "siint.h": "c",
         "piint.h": "c",
-        "viint.h": "c"
+        "viint.h": "c",
+        "stdlib.h": "c",
+        "xstdio.h": "c"
     }
 }
