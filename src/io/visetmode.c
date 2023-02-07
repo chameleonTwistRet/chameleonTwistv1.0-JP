@@ -1,4 +1,5 @@
 #include "common.h"
+#include "viint.h"
 //AOF=1
 
 void osViSetMode(OSViMode *modep) {

@@ -1,4 +1,6 @@
 #include "common.h"
+#include "osint.h"
+
 //AOF=4
 
 
@@ -16,7 +18,7 @@
 // 	__osTimerList->msg = 0;
 // }
 
-
+//https://decomp.me/scratch/jmtY4
 #pragma GLOBAL_ASM("asm/nonmatchings/os/timerintr/__osTimerInterrupt.s")
 
 void __osSetTimerIntr(OSTime tim) {
@@ -30,4 +32,5 @@ void __osSetTimerIntr(OSTime tim) {
 	__osRestoreInt(savedMask);
 }
 
+//https://decomp.me/scratch/nMwzq
 #pragma GLOBAL_ASM("asm/nonmatchings/os/timerintr/__osInsertTimer.s")

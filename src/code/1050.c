@@ -63,10 +63,11 @@ s32 func_80026C78(temp* arg0) {
     return 1 - func_800AF604(arg0->unk_24, arg0->unk_28, arg0->unk_2C, 8000.0f);
 }
 
-void func_80059254(Mtx*, f32, f32, f32, f32, f32, f32, s32); /* extern */
-extern s32 D_8016AA98;
-
+void func_80059254(Mtx*, f32, f32, f32, f32, f32, f32, s32);
+void func_800598C4(Mtx*, f32, f32, f32, f32, f32, f32, s32);
 void func_800849DC(s32, tongue*, playerActor*, s32*);
+void func_8005747C(f32, f32, f32, f32, f32, f32, s32);
+extern s32 D_8016AA98;
 
 typedef struct unkMatrix {
     u8 pad[0x10880];
@@ -87,11 +88,73 @@ void func_80026CA8(unkMatrix *arg0, Mtx *arg1, u32 arg2, f32 arg3, s32 arg4) {
     func_80059254(arg1, D_8016AC68[arg2].posX + xPos, D_8016AC68[arg2].posY + yPos, D_8016AC68[arg2].posZ + zPos, arg3, arg3, 0.0f, arg4);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/1050/func_80026E30.s")
+void func_80026E30(unkMatrix *arg0, Mtx *arg1, u32 arg2, f32 arg3, s32 arg4) {
+    f32 xPos = 0.0f;
+    f32 yPos = 0.0f;
+    f32 zPos = 0.0f;
+    
+    func_800849DC(0, &D_80169268, &D_80168DA8[0], &D_8016AA98);
+    guMtxXFML(&arg0->unk10880[arg2], xPos, yPos, zPos, &xPos, &yPos, &zPos);
+    guMtxXFML(&arg0->unk11880[arg2], xPos, yPos, zPos, &xPos, &yPos, &zPos);
+    guMtxCatL(arg1, &arg0->unk10880[arg2], arg1);
+    guMtxCatL(arg1, &arg0->unk11880[arg2], arg1);
+    func_800598C4(arg1, D_8016AC68[arg2].posX + xPos, D_8016AC68[arg2].posY + yPos, D_8016AC68[arg2].posZ + zPos, arg3, arg3, 0.0f, arg4);
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/1050/func_80026FB8.s")
+void func_80026FB8(unkMatrix *arg0, Mtx *arg1, u32 arg2, f32 arg3, f32 arg4, s32 arg5) {
+    f32 xPos, yPos, zPos;
+    zPos = yPos = xPos = 0.0f;
+    
+    func_800849DC(0, &D_80169268, &D_80168DA8[0], &D_8016AA98);
+    guMtxXFML(arg1, xPos, yPos, zPos, &xPos, &yPos, &zPos);
+    guMtxXFML(&arg0->unk10880[arg2], xPos, yPos, zPos, &xPos, &yPos, &zPos);
+    guMtxXFML(&arg0->unk11880[arg2], xPos, yPos, zPos, &xPos, &yPos, &zPos);
+    func_8005747C(D_8016AC68[arg2].posX + xPos, D_8016AC68[arg2].posY + yPos + arg4, D_8016AC68[arg2].posZ + zPos, arg3, arg3, 0.0f, arg5);
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/1050/func_80027138.s")
+typedef u32 uintptr_t;
+
+extern struct {
+    uintptr_t base_address;
+    u32 unk4;
+} D_80100F50[];
+
+#define SEGMENT_MASK 0x0F000000
+#define SEGMENT_SHIFT 24
+#define IS_SEGMENTED(x)          (((uintptr_t)(x) & SEGMENT_MASK) != 0)
+#define SEGMENT_INDEX(x)         (((uintptr_t)(x) & SEGMENT_MASK) >> SEGMENT_SHIFT)
+#define SEGMENT_OFFSET_CUSTOM(x)        (((uintptr_t)(x) & ~SEGMENT_MASK))
+#define SEGMENTED_TO_VIRTUAL(x)  (void*)(SEGMENT_OFFSET_CUSTOM(x) + D_80100F50[SEGMENT_INDEX(x)].base_address)
+
+void func_80027138(s32 arg0, s32* arg1, s32* arg2, s32* arg3) {
+    s32* var_a2;
+    s32* var_v1;
+
+    //this is required to be 1 line or codegen breaks
+    if (!IS_SEGMENTED(arg0)) {var_v1 = arg0;} else {var_v1 = SEGMENTED_TO_VIRTUAL(arg0);}
+    
+    if (!IS_SEGMENTED(var_v1[1])) {
+        var_a2 = var_v1[1];
+    } else {
+        var_a2 = SEGMENTED_TO_VIRTUAL(var_v1[1]);
+    }
+    
+    *arg1 = *var_a2;
+    
+    if (!IS_SEGMENTED(var_v1[0])) {
+        var_a2 = var_v1[0];
+    } else {
+        var_a2 = SEGMENTED_TO_VIRTUAL(var_v1[0]);
+    }
+    *arg2 = *var_a2;
+    
+    if (!IS_SEGMENTED(var_v1[2])) {
+        *arg3 = var_v1[2];
+    } else {
+        *arg3 = SEGMENTED_TO_VIRTUAL(var_v1[2]);
+    }
+}
+
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/1050/func_80027240.s")
 

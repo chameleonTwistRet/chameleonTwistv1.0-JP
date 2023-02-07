@@ -9,13 +9,10 @@ typedef char* va_list;
 #define _INT 0
 #define _STRUCT 2
 
-#define _VA_FP_SAVE_AREA 0x10
-#define _VA_ALIGN(p, a) (((u32)(((char*)p) + ((a) > 4 ? (a) : 4) - 1)) & -((a) > 4 ? (a) : 4))
-#define va_start(vp, parmN) (vp = ((va_list)&parmN + sizeof(parmN)))
-
-#define _FP 1
-#define _INT 0
-#define _STRUCT 2
+// #ifndef _SIZE_T_DEF
+// #define _SIZE_T_DEF
+// typedef unsigned size_t;
+// #endif
 
 #define _VA_FP_SAVE_AREA 0x10
 #define _VA_ALIGN(p, a) (((u32)(((char*)p) + ((a) > 4 ? (a) : 4) - 1)) & -((a) > 4 ? (a) : 4))
@@ -86,6 +83,42 @@ const u8* strchr(const u8* str, u32 ch);
 #define FLAGS_MINUS 4
 #define FLAGS_HASH 8
 #define FLAGS_ZERO 16
+
+#define TRUE    1
+#define NULL    0
+
+#define isdigit(x) ((x >= '0' && x <= '9'))
+#define LDSIGN(x) (((unsigned short *)&(x))[0] & 0x8000)
+
+#define ATOI(dst, src)                   \
+    for (dst = 0; isdigit(*src); ++src)  \
+    {                                    \
+        if (dst < 999)                   \
+            dst = dst * 10 + *src - '0'; \
+    }
+
+#define MAX_PAD ((33 - 1)) //#define MAX_PAD ((sizeof(spaces) - 1))
+#define PAD(s, n)                                             \
+    if (0 < (n))                                              \
+    {                                                         \
+        int i, j = (n);                                       \
+        for (; 0 < j; j -= i)                                 \
+        {                                                     \
+            i = MAX_PAD < (unsigned int)j ? (int)MAX_PAD : j; \
+            PUT(s, i);                                        \
+        }                                                     \
+    }
+#define PUT(s, n)                                \
+    if (0 < (n))                                 \
+    {                                            \
+        if ((arg = (*prout)(arg, s, n)) != NULL) \
+            x.nchar += (n);                      \
+        else                                     \
+            return x.nchar;                      \
+    }
+//static char spaces[] = "                                ";
+//static char zeroes[] = "00000000000000000000000000000000";
+
 typedef char *outfun(char*,const char*,s32);
 
 int _Printf(outfun prout, char *arg, const char *fmt, va_list args);

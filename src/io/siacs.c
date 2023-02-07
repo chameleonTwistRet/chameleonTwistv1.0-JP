@@ -1,8 +1,29 @@
 #include "common.h"
 //AOF=3
 
-#pragma GLOBAL_ASM("asm/nonmatchings/io/siacs/func_800E0E10.s")
+// #define SI_Q_BUF_LEN 1
+// static OSMesg siAccessBuf[SI_Q_BUF_LEN];
+// OSMesgQueue __osSiAccessQueue;
+// u32 __osSiAccessQueueEnabled = 0;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/io/siacs/func_800E0E60.s")
+#define SI_Q_BUF_LEN 1
+extern OSMesg siAccessBuf[SI_Q_BUF_LEN];
+OSMesgQueue __osSiAccessQueue;
+extern u32 __osSiAccessQueueEnabled = 0;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/io/siacs/func_800E0EA4.s")
+void __osSiCreateAccessQueue(void) {
+	__osSiAccessQueueEnabled = 1;
+	osCreateMesgQueue(&__osSiAccessQueue, siAccessBuf, SI_Q_BUF_LEN);
+	osSendMesg(&__osSiAccessQueue, NULL, OS_MESG_NOBLOCK);
+}
+
+void __osSiGetAccess(void) {
+	OSMesg dummyMesg;
+	if (!__osSiAccessQueueEnabled)
+		__osSiCreateAccessQueue();
+	osRecvMesg(&__osSiAccessQueue, &dummyMesg, OS_MESG_BLOCK);
+}
+
+void __osSiRelAccess(void) {
+	osSendMesg(&__osSiAccessQueue, NULL, OS_MESG_NOBLOCK);
+}

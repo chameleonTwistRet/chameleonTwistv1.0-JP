@@ -6,7 +6,7 @@ struct __osHwInt {
     s32 (*handler)(void);
 };
 
-extern struct __osHwInt __osHwIntTable[];
+struct __osHwInt __osHwIntTable[5] = {0};
 
 void __osSetHWIntrRoutine(OSHWIntr interrupt, s32 (*handler)(void)) {
     register u32 saveMask= __osDisableInt();

@@ -211,6 +211,22 @@ segments:
       # - [0xD9480, gfx]
       # - [0xD94F0, gfx]
       # - [0xD9518, bin]
+      # - [0xE4410, .data, os/initialize]
+      # - [0xE4420, bin]
+      - [0xE51B0, .data, io/aisetnextbuf] #80109DB0
+      - [0xE51C0, .data, gu/random] #80109DC0
+      - [0xE51D0, .data, io/siacs] #80109DD0
+      - [0xE51E0, .data, os/sethwinterrupt] #80109DE0
+      - [0xE5200, .data, os/thread]
+      - [0xE5220, data, os/timerintr]
+      - [0xE5230, .data, io/vi]
+      - [0xE52A0, data, io/piacs]
+      - [0xE52B0, data, libc/xprintf]
+      - [0xE5300, data, audio/drvrNew]
+      - [0xE5490, data, audio/env]
+      - [0xE55D0, .data, io/vimodepallan1]
+      - [0xE5620, .data, io/vimodempallan1]
+      - [0xE5670, .data, io/vimodentsclan1]
       - [0xE56C0, .data, libc/xlitob]
       - [0xE56F0, bin]
       - [0xE64D0, .rodata, code/84E0]

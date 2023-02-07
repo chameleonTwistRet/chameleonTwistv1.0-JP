@@ -9,10 +9,10 @@
 #ifndef VARIABLES_JP_H
 #define VARIABLES_JP_H
 
+extern __OSViContext vi[2];
+extern __OSViContext *__osViCurr;
+extern __OSViContext *__osViNext;
 
-
-extern __OSViContext* __osViCurr;
-extern __OSViContext* __osViNext;
 extern s32 rngSeed; //rng
 
 extern camera* D_80174860;
