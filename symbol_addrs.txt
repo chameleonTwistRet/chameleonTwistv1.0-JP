@@ -247,6 +247,14 @@ __osDevMgrMain = 0x800E37C0;
 __osContDataCrc = 0x800E1030;
 __osContAddressCrc = 0x800E0F80;
 __osPackReadData = 0x800DB98C;
+__osContRamWrite = 0x800E1100;
+__osSumcalc = 0x800E3F90;
+__osIdCheckSum = 0x800E3FEC;
+__osRepairPackId = 0x800E4054;
+__osPfsSelectBank = 0x800E4C7C;
+__osContRamRead = 0x800E14B0;
+__osCheckPackId = 0x800E446C;
+__osGetId = 0x800E4604;
 
 //bss
 __osMaxControllers = 0x8024B141;
@@ -273,3 +281,4 @@ __osPfsPifRam = 0x8024B1E0;
 piEventQueue = 0x8024B050;
 piEventBuf = 0x8024B068;
 piThreadStack = 0x8024A050;
+__osEepPifRam = 0x8024C2A0;
