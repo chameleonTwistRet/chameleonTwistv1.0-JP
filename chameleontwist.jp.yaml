@@ -122,8 +122,8 @@ segments:
       - [0xBB820, hasm, libc/bzero]
       - [0xBB8C0, c, libc/ll]
       - [0xBBB80, c, io/conteepprobe]
-      - [0xBBBF0, c, io/conteeplongwrite]
-      - [0xBBD30, c, io/conteeplongread]
+      - [0xBBBF0, c, io/conteeplongread]
+      - [0xBBD30, c, io/conteeplongwrite]
       - [0xBBE70, c, gu/random]
       - [0xBBEA0, c, io/pfsisplug]
       - [0xBC210, c, io/siacs]
@@ -213,6 +213,9 @@ segments:
       # - [0xD9518, bin]
       # - [0xE4410, .data, os/initialize]
       # - [0xE4420, bin]
+      - [0xE5170, .data, io/pimgr] #80109D70
+      - [0xE5190, .data, io/controller] #80109D90
+      - [0xE51A0, data, audio/csplayer] #80109DA0
       - [0xE51B0, .data, io/aisetnextbuf] #80109DB0
       - [0xE51C0, .data, gu/random] #80109DC0
       - [0xE51D0, .data, io/siacs] #80109DD0
@@ -220,7 +223,7 @@ segments:
       - [0xE5200, .data, os/thread]
       - [0xE5220, data, os/timerintr]
       - [0xE5230, .data, io/vi]
-      - [0xE52A0, data, io/piacs]
+      - [0xE52A0, .data, io/piacs]
       - [0xE52B0, data, libc/xprintf]
       - [0xE5300, data, audio/drvrNew]
       - [0xE5490, data, audio/env]
@@ -239,6 +242,7 @@ segments:
       - [0xEBD90, rodata, audio/csplayer]
       - [0xEBFD0, rodata, audio/sndpplayer]
       - [0xEC030, rodata, os/exceptasm]
+      - [0xEC080, .rodata, io/pirawdma]
       - [0xEC0A0, rodata, gu/cosf]
       - [0xECDD0, rodata, 5FF30]
       #80111C90 - 8024C510 bss

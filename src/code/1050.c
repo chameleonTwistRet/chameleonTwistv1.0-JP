@@ -126,27 +126,28 @@ extern struct {
 #define SEGMENT_OFFSET_CUSTOM(x)        (((uintptr_t)(x) & ~SEGMENT_MASK))
 #define SEGMENTED_TO_VIRTUAL(x)  (void*)(SEGMENT_OFFSET_CUSTOM(x) + D_80100F50[SEGMENT_INDEX(x)].base_address)
 
-void func_80027138(s32 arg0, s32* arg1, s32* arg2, s32* arg3) {
-    s32* var_a2;
+void func_80027138(void* arg0, s32* arg1, s32* arg2, s32* arg3) {
+    void* var_a2;
     s32* var_v1;
 
     //this is required to be 1 line or codegen breaks
     if (!IS_SEGMENTED(arg0)) {var_v1 = arg0;} else {var_v1 = SEGMENTED_TO_VIRTUAL(arg0);}
     
     if (!IS_SEGMENTED(var_v1[1])) {
-        var_a2 = var_v1[1];
+        var_a2 = (s32*)var_v1[1];
     } else {
         var_a2 = SEGMENTED_TO_VIRTUAL(var_v1[1]);
     }
     
-    *arg1 = *var_a2;
+    *arg1 = *(s32*)var_a2;
     
     if (!IS_SEGMENTED(var_v1[0])) {
-        var_a2 = var_v1[0];
+        var_a2 = (s32*)var_v1[0];
     } else {
         var_a2 = SEGMENTED_TO_VIRTUAL(var_v1[0]);
     }
-    *arg2 = *var_a2;
+
+    *arg2 = *(s32*)var_a2;
     
     if (!IS_SEGMENTED(var_v1[2])) {
         *arg3 = var_v1[2];

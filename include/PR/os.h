@@ -77,16 +77,17 @@ typedef struct {
 
 
 typedef struct OSPiHandle_s {
-        struct OSPiHandle_s     *next;  /* point to next handle on the table */
-        u8                      type;   /* DEVICE_TYPE_BULK for disk */
-        u8                      latency;        /* domain latency */
-        u8                      pageSize;       /* domain page size */
-        u8                      relDuration;    /* domain release duration */
-        u8                      pulse;          /* domain pulse width */
-        u32                     baseAddress;    /* Domain address */
-        u32                     speed;          /* for roms only */
-        /* The following are "private" elements" */
-        __OSTranxInfo           transferInfo;	/* for disk only */
+    struct OSPiHandle_s *next;          /* point to next handle on the table */
+    u8                   type;          /* DEVICE_TYPE_BULK for disk */
+    u8                   latency;       /* domain latency */
+    u8                   pageSize;      /* domain page size */
+    u8                   relDuration;   /* domain release duration */
+    u8                   pulse;         /* domain pulse width */
+    u8                   domain;        /* which domain */
+    u32                  baseAddress;   /* Domain address */
+    u32                  speed;         /* for roms only */
+    /* The following are "private" elements" */
+    __OSTranxInfo        transferInfo;  /* for disk only */
 } OSPiHandle;
 
 typedef struct {
@@ -451,6 +452,11 @@ typedef struct {
 #define CONT_RELATIVE           0x0002
 #define CONT_JOYPORT            0x0004
 #define CONT_EEPROM		0x8000
+#define CONT_EEP16K		0x4000
+#define	CONT_TYPE_MASK		0x1f07
+#define	CONT_TYPE_NORMAL	0x0005
+#define	CONT_TYPE_MOUSE		0x0002
+#define	CONT_TYPE_VOICE		0x0100
 
 /* Controller status */
 

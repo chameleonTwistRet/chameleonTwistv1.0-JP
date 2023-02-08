@@ -1,15 +1,10 @@
 #include "common.h"
 //AOF=3
 
-// #define SI_Q_BUF_LEN 1
-// static OSMesg siAccessBuf[SI_Q_BUF_LEN];
-// OSMesgQueue __osSiAccessQueue;
-// u32 __osSiAccessQueueEnabled = 0;
-
 #define SI_Q_BUF_LEN 1
 extern OSMesg siAccessBuf[SI_Q_BUF_LEN];
 OSMesgQueue __osSiAccessQueue;
-extern u32 __osSiAccessQueueEnabled = 0;
+u32 __osSiAccessQueueEnabled = 0;
 
 void __osSiCreateAccessQueue(void) {
 	__osSiAccessQueueEnabled = 1;

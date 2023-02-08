@@ -12,6 +12,7 @@
         "piint.h": "c",
         "viint.h": "c",
         "stdlib.h": "c",
-        "xstdio.h": "c"
+        "xstdio.h": "c",
+        "controller.h": "c"
     }
 }
