@@ -255,7 +255,8 @@ __osPfsSelectBank = 0x800E4C7C;
 __osContRamRead = 0x800E14B0;
 __osCheckPackId = 0x800E446C;
 __osGetId = 0x800E4604;
-
+__osCheckId = 0x800E4860;
+__osPfsRWInode = 0x800E495C;
 //bss
 __osMaxControllers = 0x8024B141;
 __osFinalrom = 0x80248C70;

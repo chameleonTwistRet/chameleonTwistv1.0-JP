@@ -7,11 +7,6 @@ s32 __osContinitialized = 0;
 extern u8 __osContLastCmd;
 extern u8 __osMaxControllers;
 
-// extern OSPifRam __osContPifRam;
-// extern OSTimer __osEepromTimer;
-// extern OSMesgQueue __osEepromTimerQ;
-// extern OSMesg __osEepromTimerMsg;
-
 #define UNK(n) 500000 * (u64)(n) / 1000000
 
 s32 osContInit(OSMesgQueue* mq, u8* bitpattern, OSContStatus* data) {

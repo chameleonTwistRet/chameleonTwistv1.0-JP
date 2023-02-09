@@ -2,13 +2,6 @@
 #include "piint.h"
 //AOF=3
 
-// extern OSPiHandle __Dom1SpeedParam;
-// extern OSPiHandle __Dom2SpeedParam;
-// OSPiHandle *__osCurrentHandle[2] = {&__Dom1SpeedParam, &__Dom2SpeedParam};
-
-#define PI_DOMAIN1  0
-#define PI_DOMAIN2  1
-
 s32 __osPiRawStartDma(s32 direction, u32 devAddr, void* dramAddr, u32 size) {
     register u32 stat;
 

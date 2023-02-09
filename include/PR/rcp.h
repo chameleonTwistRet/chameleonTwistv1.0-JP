@@ -730,6 +730,9 @@ The Indy development board use cartridge domain 1:
 #define	PI_DOMAIN1_REG		PI_BSD_DOM1_LAT_REG
 #define	PI_DOMAIN2_REG		PI_BSD_DOM2_LAT_REG
 
+#define PI_DOMAIN1  0
+#define PI_DOMAIN2  1
+
 #define PI_DOM_LAT_OFS		0x00
 #define PI_DOM_PWD_OFS		0x04
 #define PI_DOM_PGS_OFS		0x08
