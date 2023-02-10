@@ -67,7 +67,7 @@ void func_80059254(Mtx*, f32, f32, f32, f32, f32, f32, s32);
 void func_800598C4(Mtx*, f32, f32, f32, f32, f32, f32, s32);
 void func_800849DC(s32, tongue*, playerActor*, s32*);
 void func_8005747C(f32, f32, f32, f32, f32, f32, s32);
-extern s32 D_8016AA98;
+extern s32 D_8016AA98; //is 0x74 in size
 
 typedef struct unkMatrix {
     u8 pad[0x10880];

@@ -2,6 +2,49 @@
 #include "PR/libaudio.h"
 //AOF=759
 
+typedef u8 Addr[];
+
+s32 dma_copy(void* romAddr, void* ramAddr, s32 size);
+s32 func_800A72E8(s32);
+void func_800AAAC8(void);
+extern char D_8010F1EC[];
+extern char D_8010F1FC[];
+extern u32 D_80168DA0;
+extern f32 D_80168DE4;
+
+extern s32 D_80175668;
+extern s16 D_80175678;
+extern s16 D_8017567A;
+extern s16 D_8017567C;
+extern s16 D_8017567E;
+extern s16 D_801756C0;
+extern s16 D_801756C2;
+extern s16 D_801756C4;
+extern s16 D_801756C6;
+extern s32 D_801FCA10;
+
+typedef struct unk802000C84 {
+    u8 unk0;
+    u16 unk2;
+    s8 unk4;
+    s8 unk5;
+} unk802000C84; //unk size
+
+extern unk802000C84 D_80200C84;
+
+typedef struct unk8016AA98 {
+    char unk_00[0x74];
+} unk8016AA98; //unk size
+
+extern unk8016AA98 D_8016AA98;
+
+extern void* D_80200C8C;
+extern void* D_80200C94;
+extern Addr D_AB10B0;
+extern Addr D_F000000;
+extern Addr D_F0042B0;
+
+
 typedef struct Collision {
     s32 collisionType; //?
     char unk_04[0xD4];
@@ -1054,7 +1097,7 @@ void func_800A54EC(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A73EC.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A75E4.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/dma_copy.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A772C.s")
 
@@ -1156,7 +1199,63 @@ s32 func_800A7E78(u8* arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800AAAC8.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800AAB0C.s")
+void func_800AAB0C(s32 arg0) {
+    s32 dmaResult;
+    s32 dmaSize;
+
+    func_800A7988();
+    func_800961F4(arg0);
+    func_800A7988();
+    _bzero(D_80168DA8, sizeof(D_80168DA8)); //sizeof 4 player actors
+    _bzero(&D_8016AA98, sizeof(D_8016AA98));
+    D_80168DA0 = 1;
+    D_80168DA8[0].active = 1;
+    D_80168DA8[1].active = 0;
+    D_80168DA8[2].active = 0;
+    D_80168DA8[3].active = 0;
+    D_80175668 = 0;
+    func_8002E0CC();
+    func_800C2FA0();
+    func_80056EB4();
+    func_800615A4();
+    func_8005C9B8();
+    func_80084788();
+    func_80055FA4();
+    D_801756C0 = 0;
+    D_80175678 = 0;
+    D_801756C2 = 0;
+    D_8017567A = 0;
+    D_801756C4 = 0;
+    D_8017567C = 0;
+    D_801756C6 = 0;
+    D_8017567E = 0;
+    D_801FCA10 = 0x10A9;
+    dmaSize = D_F0042B0 - D_F000000;
+    D_80100FD0 = 1;
+    D_80200C8C = func_80056EE4(dmaSize);
+    if (D_80200C8C == NULL) {
+        osSyncPrintf(D_8010F1EC, D_80200C8C);
+    } else {
+        dmaResult = dma_copy(&D_AB10B0, D_80200C8C, dmaSize);
+        if (dmaResult < 0) {
+            osSyncPrintf(D_8010F1FC);
+        } else {
+            while (func_800A72E8(dmaResult) == 0) {}
+        }
+    }
+    //TODO fake match
+    if (D_80168DA8){}
+    func_800A7988();
+    D_80200C94 = D_80200C8C;
+    D_80200C84.unk0 = 0;
+    D_80200C84.unk2 = 0xFFFF;
+    D_80200C84.unk4 = 0;
+    D_80200C84.unk5 = 0;
+    D_8017499C = 0;
+    D_80174998 = 0;
+    func_800AAAC8();
+    D_80168DE4 = 0.0f;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800AACFC.s")
 

@@ -154,11 +154,10 @@ D_8010BA90 = 0x8010BA90;
 
 osContStartReadData = 0x800DB820;
 osContGetReadData = 0x800DB8E4;
-
+dma_copy = 0x800A75E4;
 alCopy = 0x800ED340;
 alBnkfNew = 0x800DCD04;
 alAdpcmPull = 0x800E9DEC;
-
 perfectCode = 0x80200C04;
 osSetTimer = 0x800DC320;
 __osEnqueueAndYield = 0x800E1F4C;
@@ -187,7 +186,6 @@ __osSpDeviceBusy = 0x800E6800;
 __osSiDeviceBusy = 0x800EBBE0;
 osYieldThread = 0x800EBEC0;
 __osRunQueue = 0x80109E08;
-
 __osTimerList = 0x80109E20;
 __osEnqueueThread = 0x800E204C;
 __osSpRawWriteIo = 0x800E18E0;
@@ -257,6 +255,7 @@ __osCheckPackId = 0x800E446C;
 __osGetId = 0x800E4604;
 __osCheckId = 0x800E4860;
 __osPfsRWInode = 0x800E495C;
+
 //bss
 __osMaxControllers = 0x8024B141;
 __osFinalrom = 0x80248C70;
