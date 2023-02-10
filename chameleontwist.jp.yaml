@@ -204,21 +204,19 @@ segments:
       - [0xC87C0, c, audio/filter]
       - [0xC87E0, c, audio/reverb]
       - [0xC9430, c, libc/ldiv]
-      #beginning of .data sections?
-      - [0xC95C0, bin]
-      - [0xC9F50, bin]
-      - [0xD9480, bin]
-      # - [0xD9480, gfx]
-      # - [0xD94F0, gfx]
-      # - [0xD9518, bin]
-      # - [0xE4410, .data, os/initialize]
-      # - [0xE4420, bin]
-      - [0xE5170, .data, io/pimgr] #80109D70
-      - [0xE5190, .data, io/controller] #80109D90
-      - [0xE51A0, data, audio/csplayer] #80109DA0
-      - [0xE51B0, .data, io/aisetnextbuf] #80109DB0
-      - [0xE51C0, .data, gu/random] #80109DC0
-      - [0xE51D0, .data, io/siacs] #80109DD0
+      - [0xC95C0, data, rspBootText]
+      - [0xC9690, data, code/1050] #800EE290 through 800F6880
+      - [0xD1C80, data, code/30FB0] #800F6880 through 800FEDC0
+      - [0xDA1C0, data, code/5FF30] #800FEDC0 through 80108B70
+      - [0xE3F70, data, code/A3D00] #80108B70 through 80109010
+      - [0xE4410, .data, os/initialize] #80109010 through 80109030
+      - [0xE4430, data, io/vimgr] # 80109030 through 80109D70
+      - [0xE5170, .data, io/pimgr] #80109D70 through 80109D90
+      - [0xE5190, .data, io/controller] #80109D90 through 80109DA0
+      - [0xE51A0, data, audio/csplayer] #80109DA0 through 80109DB0
+      - [0xE51B0, .data, io/aisetnextbuf] #80109DB0 through 80109DC0
+      - [0xE51C0, .data, gu/random] #80109DC0 through 80109DD0
+      - [0xE51D0, .data, io/siacs] #80109DD0 through 80109DE0
       - [0xE51E0, .data, os/sethwinterrupt] #80109DE0
       - [0xE5200, .data, os/thread]
       - [0xE5220, data, os/timerintr]
@@ -230,9 +228,9 @@ segments:
       - [0xE55D0, .data, io/vimodepallan1]
       - [0xE5620, .data, io/vimodempallan1]
       - [0xE5670, .data, io/vimodentsclan1]
-      - [0xE56C0, .data, libc/xlitob]
-      - [0xE56F0, bin]
-      - [0xE64D0, rodata, code/84E0] #is actually 8010B0D0 through 8010C640. at 8010C640, 29DF0.c rodata begins
+      - [0xE56C0, .data, libc/xlitob] #8010A2C0 through 8010A2F0
+      - [0xE56F0, rodata, code/1050] #8010A2F0 through 8010A6D0
+      - [0xE5AD0, rodata, code/84E0] #8010A6D0 through 8010C640
       - [0xE7A40, rodata, code/29DF0] #8010C640 through 8010C940
       - [0xE7D40, rodata, code/2C3B0] #8010C940 through 8010CA10
       - [0xE7E10, rodata, code/30FB0] #8010CA10 through 8010D530
@@ -260,42 +258,13 @@ segments:
       - [0xED090, bin, ext]
       - [0x101BE0, rgba32, star.rgba32, 32, 32]
       - [0x102BE0, bin, ext22]
-
-      #- [0x102FB8, ci8, health.ci8, 16, 16]
-      #- [0x1030B8]
-      #- [0x1030C0, palette, health.ci8]
-
       - [0x1032C0, bin, exxxx]
-
-      #- [0x103658, ia8, textBig.ia8, 432, 48]
-      #- [0x108758, bin, aaaaaa]
-
       - [0x108760, ia4, textSmall.ia4, 512, 176]
       - [0x113760, bin, ext2]
-
-      #- [0x113768, ia8, puff.ia8, 96, 32]
-      #- [0x114368, bin, sfasfa]
-
       - [0x114370, ia4, star2.ia4, 32 ,32]
       - [0x114570, bin, ashashg]
-      
-      #- [0x114578, ia8, camera.ia8, 48, 32]
-      #- [0x114B78, bin, shshhshs]
-
       - [0x114B80, ia4, explode.ia4, 40, 40]
       - [0x114EA0, bin, hhahaha]
-
-      #- [0x8E5828, rgba16, eyeBlink.rgba16, 128, 32]
-      #- [0x8E7828, bin, HAHHAHAHAHAHHAHAHAH]
-      #- [0x8E782C, rgba16, img/what/eyeDizzy.rgba16, 96, 32]
-      #- [0x8E9038, rgba16, img/what/eyeSexy.rgba16, 96, 32]
-      #- [0x8EA838, bin, lolagain]
-      
-      #- [0x948C18, rgba16, img/unused/bigShoeLmfao.rgba16, 320, 240]
-      #- [0x96E418, bin, gggg]
-
-      #- [0x9E7A80, rgba16, img/misc/titleSplash.rgba16, 320, 240]
-      #- [0xA0D280, rgba16, img/misc/stageSelect.rgba16, 320, 240]
       - [0x9E7A80, bin]
       - [0xA32A80, bin, ext3]
       - [0xAFED90, bin, davyheadMaybe]
