@@ -1,7 +1,9 @@
 #include "common.h"
+#ifndef _RODATA_
+#define _RODATA_
 //AOF=301
 
-const char padRodata[] = "\0\0\0\0\0\0\0";
+//const char padRodata[] = "\0\0\0\0\0\0\0";
 
 // Sum of Two Squares: Elisiah
 f32 func_8002D0E0(f32 arg0, f32 arg1) {
@@ -116,6 +118,7 @@ s32 func_8002D36C(f32* arg0, f32 arg1, f32 arg2) {
     return sp1C;
 }
 
+#ifndef _RODATA_
 void func_8002D434(f32 *arg0, f32 *arg1, f32 arg2, f32 arg3, f32 arg4) {
     f32 temp_f10;
     f32 a = *arg0 - arg2;
@@ -128,7 +131,11 @@ void func_8002D434(f32 *arg0, f32 *arg1, f32 arg2, f32 arg3, f32 arg4) {
         *arg1 = arg3 + -(sinf(DEGREES_TO_RADIANS(temp_f10)) * c);
     }
 }
+#else
+#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8002D434.s")
+#endif
 
+#ifndef _RODATA_
 //TODO: fake match (only here to match rodata)
 void func_8002D550(f32 *arg0, f32 *arg1, f32 arg2, f32 arg3, f32 arg4) {
     f32 temp_f12;
@@ -146,7 +153,12 @@ void func_8002D550(f32 *arg0, f32 *arg1, f32 arg2, f32 arg3, f32 arg4) {
         *arg1 = ((-sinf(temp_f12_2)) * arg4) + arg3;
     }
 }
+#else
+#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8002D550.s")
+#endif
 
+
+#ifndef _RODATA_
 void func_8002D644(s32 actorIndex, s32 actorID, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7, f32 arg8, f32 arg9, f32 argA, f32 argB, f32 argC, f32 argD, f32 argE, f32 argF, f32 arg10, f32 arg11, f32 arg12, f32 arg13, s32 arg14, s32 arg15, s32 arg16, s32 arg17) {
     Actor* actorInstance;
     s32 i;
@@ -504,7 +516,11 @@ void func_8002D644(s32 actorIndex, s32 actorID, f32 arg2, f32 arg3, f32 arg4, f3
         func_8004AB00(actorInstance);
     }
 }
+#else
+#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8002D644.s")
+#endif
 
+//needs proper match
 s32 func_8002DE30(s32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7, f32 arg8, f32 arg9, f32 argA, f32 argB, f32 argC, f32 argD, f32 argE, f32 argF, f32 arg10, f32 arg11, f32 arg12, s32 arg13, s32 arg14, s32 arg15, s32 arg16) {
     s32 index;
     s32* pointer;
@@ -1907,3 +1923,5 @@ void func_8004C3A4(s16* arg0, f32 arg1) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8004CD9C.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8004DDE0.s")
+
+#endif

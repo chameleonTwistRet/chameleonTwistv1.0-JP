@@ -232,8 +232,12 @@ segments:
       - [0xE5670, .data, io/vimodentsclan1]
       - [0xE56C0, .data, libc/xlitob]
       - [0xE56F0, bin]
-      - [0xE64D0, .rodata, code/84E0]
-      - [0xE6680, bin]
+      - [0xE64D0, rodata, code/84E0] #is actually 8010B0D0 through 8010C640. at 8010C640, 29DF0.c rodata begins
+      - [0xE7A40, rodata, code/29DF0] #8010C640 through 8010C940
+      - [0xE7D40, rodata, code/2C3B0] #8010C940 through 8010CA10
+      - [0xE7E10, bin] #temporary bin of rodata
+      #- [0xE7E10, rodata, code/30FB0] #8010C940 through 8010CA10
+      #- [0xE6680, bin] #
       - [0xEBC70, .rodata, code/B39A0]
       - [0xEBCB0, rodata, gu/rotate]
       - [0xEBCC0, rodata, gu/sinf]

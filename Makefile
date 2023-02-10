@@ -30,7 +30,7 @@ ENDLINE := \n'
 # Directories
 
 BUILD_DIR := build
-ASM_DIRS  := asm asm/data asm/data/audio asm/data/gu asm/data/io asm/data/libc asm/data/os asm/gu asm/libc asm/os
+ASM_DIRS  := asm asm/data asm/data/audio asm/data/code asm/data/gu asm/data/io asm/data/libc asm/data/os asm/gu asm/libc asm/os
 BIN_DIRS  := assets
 SRC_DIR   := src
 SRC_DIRS  := $(shell find $(SRC_DIR) -type d)
