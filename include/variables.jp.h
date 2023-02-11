@@ -9,6 +9,7 @@
 #ifndef VARIABLES_JP_H
 #define VARIABLES_JP_H
 
+typedef u8 Addr[];
 extern __OSViContext vi[2];
 extern __OSViContext *__osViCurr;
 extern __OSViContext *__osViNext;
@@ -44,10 +45,10 @@ extern s32 D_800F68CC;
 extern s32 D_800FDFA0;
 extern s32 D_800FDFC0[2];
 extern s32 D_800FDFC8[2];
-extern s8 D_800FDFD0;
-extern s8 D_800FDFD4;
-extern s8 D_800FDFD8;
-extern s8 D_800FDFDC;
+extern u8 D_800FDFD0;
+extern u8 D_800FDFD4;
+extern u8 D_800FDFD8;
+extern u8 D_800FDFDC;
 extern s8 D_800FDFE0;
 extern s8 D_800FDFE4;
 extern s32 D_800FDFE8;

@@ -184,6 +184,22 @@ typedef struct tongue { // at 80169268 (for p1 at least lol)
     /* 0x608*/ u32 wallTime;//timer for tongue-touching a wall
 } tongue;
 
+typedef struct CollisionSubStruct {
+    f32 unk_30;
+    char unk_34[4];
+    f32 unk_38;
+    f32 unk_3C;
+    char unk_40[4];
+    f32 unk_44;
+} CollisionSubStruct; //sizeof 0xD8
+
+typedef struct Collision {
+    s32 collisionType; //?
+    char unk_04[0x2C];
+    CollisionSubStruct collisionSubStruct;
+    char unk_48[0x90];
+} Collision; //sizeof 0xD8
+
 
 //camera 0x8016AA98
 //camera copy 0x801768A0
@@ -332,67 +348,70 @@ typedef struct actorSubArray { //starts at 0x40
 } actorSubArray;
 
 typedef struct Collider {
-/* 0x000 */ s32 unk_00;
-/* 0x004 */ s32 unk_04;
-/* 0x008 */ s32 unk_08;
-/* 0x00C */ s32 unk_0C;
-/* 0x010 */ s32 unk_10;
-/* 0x014 */ s32 unk_14;
-/* 0x018 */ f32 unk_18;
-/* 0x01C */ f32 unk_1C;
-/* 0x020 */ f32 unk_20;
-/* 0x024 */ f32 unk_24;
-/* 0x028 */ s32 unk_28;
-/* 0x02C */ s32 unk_2C;
-/* 0x030 */ f32 unk_30;
-/* 0x034 */ f32 unk_34;
-/* 0x038 */ f32 unk_38;
-/* 0x03C */ f32 unk_3C;
-/* 0x040 */ f32 unk_40;
-/* 0x044 */ f32 unk_44;
-/* 0x048 */ f32 unk_48;
-/* 0x04C */ f32 unk_4C;
-/* 0x050 */ f32 unk_50;
-/* 0x054 */ f32 unk_54;
-/* 0x058 */ f32 unk_58;
-/* 0x05C */ f32 unk_5C;
-/* 0x060 */ char unk_60[0x2C];
-/* 0x08C */ f32 unk_8C;
-/* 0x090 */ f32 unk_90;
-/* 0x094 */ f32 unk_94;
-/* 0x098 */ f32 unk_98;
-/* 0x09C */ f32 unk_9C;
-/* 0x0A0 */ f32 unk_A0;
-/* 0x0A4 */ char unk_A4[8];
-/* 0x0AC */ s32 unk_AC;
-/* 0x0B0 */ s32 unk_B0;
-/* 0x0B4 */ s32 unk_B4;
-/* 0x0B8 */ s32 unk_B8;
-/* 0x0BC */ s32 unk_BC;
-/* 0x0C0 */ s32 unk_C0;
-/* 0x0C4 */ char unk_C4[8];
-/* 0x0CC */ f32 unk_CC;
-/* 0x0D0 */ f32 unk_D0;
-/* 0x0D4 */ f32 unk_D4;
-/* 0x0D8 */ f32 unk_D8;
-/* 0x0DC */ f32 unk_DC;
-/* 0x0E0 */ f32 unk_E0;
-/* 0x0E4 */ void* unk_E4;
-/* 0x0E8 */ void* unk_E8;
-/* 0x0EC */ s32 unk_EC;
-/* 0x0F0 */ char unk_F0[8];
-/* 0x0F8 */ void* unk_F8;
-/* 0x0FC */ void* unk_FC;
-/* 0x100 */ void* unk_100; //function pointer
-/* 0x104 */ char unk_104[12];
-/* 0x110 */ s32 unk_110;
-/* 0x114 */ s32 unk_114;
-/* 0x118 */ s32 unk_118; //flags, visibility is 0x00000004
-/* 0x11C */ s32 unk_11C;
-/* 0x120 */ char unk_120[4];
-/* 0x124 */ s32 unk_124;
-/* 0x128 */ char unk_128[8];
-} Collider; //sizeof 0x130 (at ram addr 0x80236F70 in kids land)
+    /* 0x000 */ s32 unk_00;
+    /* 0x004 */ s32 unk_04;
+    /* 0x008 */ s32 unk_08;
+    /* 0x00C */ s32 unk_0C;
+    /* 0x010 */ s32 unk_10;
+    /* 0x014 */ s32 unk_14;
+    /* 0x018 */ f32 unk_18;
+    /* 0x01C */ f32 unk_1C;
+    /* 0x020 */ f32 unk_20;
+    /* 0x024 */ f32 unk_24;
+    /* 0x028 */ s32 unk_28;
+    /* 0x02C */ s32 unk_2C;
+    /* 0x030 */ f32 unk_30;
+    /* 0x034 */ f32 unk_34;
+    /* 0x038 */ f32 unk_38;
+    /* 0x03C */ f32 unk_3C;
+    /* 0x040 */ f32 unk_40;
+    /* 0x044 */ f32 unk_44;
+    /* 0x048 */ f32 unk_48;
+    /* 0x04C */ f32 unk_4C;
+    /* 0x050 */ f32 unk_50;
+    /* 0x054 */ f32 unk_54;
+    /* 0x058 */ f32 unk_58;
+    /* 0x05C */ f32 unk_5C;
+    /* 0x060 */ char pad60[0x20];                   /* maybe part of unk_5C[9]? */
+    /* 0x080 */ s32 unk80;                          /* inferred */
+    /* 0x084 */ char pad84[8];                      /* maybe part of unk80[3]? */
+    /* 0x08C */ f32 unk_8C;
+    /* 0x090 */ f32 unk_90;
+    /* 0x094 */ f32 unk_94;
+    /* 0x098 */ f32 unk_98;
+    /* 0x09C */ f32 unk_9C;
+    /* 0x0A0 */ f32 unk_A0;
+    /* 0x0A4 */ char padA4[8];                      /* maybe part of unk_A0[3]? */
+    /* 0x0AC */ s32 unk_AC;
+    /* 0x0B0 */ s32 unk_B0;
+    /* 0x0B4 */ s32 unk_B4;
+    /* 0x0B8 */ s32 unk_B8;
+    /* 0x0BC */ s32 unk_BC;
+    /* 0x0C0 */ s32 unk_C0;
+    /* 0x0C4 */ char padC4[8];                      /* maybe part of unk_C0[3]? */
+    /* 0x0CC */ f32 unk_CC;
+    /* 0x0D0 */ f32 unk_D0;
+    /* 0x0D4 */ f32 unk_D4;
+    /* 0x0D8 */ f32 unk_D8;
+    /* 0x0DC */ f32 unk_DC;
+    /* 0x0E0 */ f32 unk_E0;
+    /* 0x0E4 */ void* unk_E4;
+    /* 0x0E8 */ void* unk_E8;
+    /* 0x0EC */ s32 unk_EC;
+    /* 0x0F0 */ char padF0[8];                      /* maybe part of unk_EC[3]? */
+    /* 0x0F8 */ void* unk_F8;
+    /* 0x0FC */ void* unk_FC;
+    /* 0x100 */ void* unk_100;
+    /* 0x104 */ char pad104[0xC];                   /* maybe part of unk_100[4]? */
+    /* 0x110 */ s32 unk_110;
+    /* 0x114 */ s32 unk_114;
+    /* 0x118 */ s32 unk_118;
+    /* 0x11C */ s32 unk_11C;
+    /* 0x120 */ char pad120[4];
+    /* 0x124 */ s32 unk_124;
+    /* 0x128 */ s32 unk_128;
+    /* 0x12C */ char unk_12C[4];
+} Collider;                                         /* size = 0x130 */
 
 typedef struct unkB2860 {
     s32 unk_00;

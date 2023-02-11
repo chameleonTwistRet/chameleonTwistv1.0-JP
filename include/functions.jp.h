@@ -8,7 +8,7 @@ f32 __sinf(f32);
 f32 __sqrtf(f32);
 f32 __cosf(f32);
 void normalizeDegrees(f32*);
-void leoDrive_reset(void);
+void leoDrive_reset(s32);
 
 
 
@@ -201,7 +201,7 @@ void func_800523E4(f32, f32, f32, f32, s32, s32, s32);
 void func_800525E8(s32, f32);
 void func_800538D0(void);
 void func_8005423C(void);
-void func_80055BB0(char*);
+void func_80055BB0(char*, ...);
 void func_80055BCC(s32);
 s32 func_80055BD8(void);
 void func_80055C74(void);
@@ -218,10 +218,10 @@ void* func_80056D30(s32);
 void func_80056DF4(unkStruct02*, unkStruct02*);
 void func_80056EB4(void);
 void* func_80056EE4(s32);
-s32 func_80056F24(void);
+s32 func_80056F24(s32);
 void func_80056F48(s32, tongue*, playerActor*, s32*);
 void func_80058748(f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, s32);
-u8 func_80057010(s32);
+s32 func_80057010(s32);
 void func_800573BC(void);
 void func_80057334(s32);
 void func_8005AFA4(f32, f32, f32, f32);

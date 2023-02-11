@@ -1,4 +1,11 @@
 #include "common.h"
+
+extern f64 D_801104F8;
+extern s32 D_80174874;
+extern s32 D_80236974;
+extern Collision D_80240CE0[];
+extern Collider D_80236980[];
+
 //AOF=82
 
 void func_800CBC08(unkA4300*);
@@ -137,8 +144,67 @@ void func_800CFF64(playerActor* player) {
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/A4300/func_800CFF7C.s")
+//needs rodata support
+// void func_800CFF7C(Vec3f* arg0) {
+//     f32 temp_f0;
+//     f32 temp_f0_2;
+//     f32 temp_f0_3;
+//     f32 temp_f0_4;
+//     f32 temp_f2;
+//     f32 temp_f2_2;
+//     f32 temp_f2_3;
+//     f32 temp_f14;
+//     CollisionSubStruct* temp_v0;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/A4300/func_800D00DC.s")
+//     if (D_80236974 != 1) {
+//         if ((D_80174874 == 1) && ((currentZone == 7) || (currentZone == 0xF)) && (D_80174880[0] != 0)) {
+//             temp_f14 = (SQ(arg0->x) + SQ(arg0->z));
+//             if (810000.0 < temp_f14) {
+//                 temp_f0_2 = __sqrtf((f32) (810000.0 / temp_f14));
+//                 arg0->x = arg0->x * temp_f0_2;
+//                 arg0->z = arg0->z * temp_f0_2;
+//             }
+//         } else {
+//             temp_v0 = &D_80240CE0[currentZone].collisionSubStruct;
+            
+//             if (temp_v0->unk_30 > arg0->x ) {
+//                 arg0->x = temp_v0->unk_30;
+//             }
+            
+//             if (temp_v0->unk_3C < arg0->x) {
+//                 arg0->x = temp_v0->unk_3C;
+//             }
+
+//             if (temp_v0->unk_38 > arg0->z) {
+//                 arg0->z = temp_v0->unk_38;
+//             }
+  
+//             if (temp_v0->unk_44 < arg0->z) {
+//                 arg0->z = temp_v0->unk_44;
+//             }
+//         }
+//     }
+// }
+
+Vec3f* func_800D00DC(Vec3f* arg0, Collider* arg1) {
+    Vec3f sp24;
+    Collider* temp_v1;
+
+    if (arg1->unk80 < 0) {
+        func_800D8198(&sp24);
+    } else {
+        temp_v1 = &D_80236980[arg1->unk80];
+        if (((temp_v1->unk_10 == 0x14) || (temp_v1->unk_10 == 0x15) || (temp_v1->unk_10 == 0x16)) && (arg1->unk_11C != 4)) {
+            sp24.x = temp_v1->unk_8C;
+            sp24.y = temp_v1->unk_90;
+            sp24.z = temp_v1->unk_94;
+        } else {
+            func_800D8198(&sp24);
+        }
+    }
+    *arg0 = sp24;
+    return arg0;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/A4300/func_800D01A8.s")
 

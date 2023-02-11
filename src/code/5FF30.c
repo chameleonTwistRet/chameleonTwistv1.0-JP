@@ -18,11 +18,6 @@ typedef struct unk8016AA98 {
     char unk_00[0x74];
 } unk8016AA98; //unk size
 
-typedef struct Collision {
-    s32 collisionType; //?
-    char unk_04[0xD4];
-} Collision;
-
 typedef struct unkFlags {
     u8 flags0;
     u8 flags1;

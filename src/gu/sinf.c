@@ -1,3 +1,6 @@
+#include "common.h"
+//AOF=1
+
 /**************************************************************************
  *									  *
  *		 Copyright (C) 1994, Silicon Graphics, Inc.		  *
@@ -10,36 +13,26 @@
  *									  *
  **************************************************************************/
 
-//#include "guint.h"
-//AOF=1
+extern f32 D_80110CA0;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/gu/sinf/__sinf.s")
+typedef union
+{
+	struct
+	{
+		unsigned int hi;
+		unsigned int lo;
+	} word;
 
-/* ====================================================================
- * ====================================================================
- *
- * Module: fsin.c
- * $Revision: 1.2 $
- * $Date: 1995/07/12 17:48:01 $
- * $Author: jeffd $
- * $Source: /disk6/Master/cvsmdev2/PR/libultra/gu/sinf.c,v $
- *
- * Revision history:
- *  09-Jun-93 - Original Version
- *
- * Description:	source code for fsin function
- *
- * ====================================================================
- * ====================================================================
- */
+	double	d;
+} du;
 
-//#pragma weak fsin = __sinf
-//#pragma weak sinf = __sinf
-//#define	fsin __sinf
+typedef union
+{
+	unsigned int	i;
+	float		f;
+} fu;
 
-/* coefficients for polynomial approximation of sin on +/- pi/2 */
-
-/*static const du	P[] =
+static const du	P[] =
 {
 {0x3ff00000,	0x00000000},
 {0xbfc55554,	0xbc83656d},
@@ -57,7 +50,7 @@ static const du	pihi =
 static const du	pilo =
 {0x3e6110b4,	0x611a6263};
 
-static const fu	zero = {0x00000000};*/
+static const fu	zero = {0x00000000};
 
 /* ====================================================================
  *
@@ -68,35 +61,33 @@ static const fu	zero = {0x00000000};*/
  * ====================================================================
  */
 
-/*float
-fsin( float x )
-{
-double	dx, xsq, poly;
-double	dn;
-int	n;
-double	result;
-int	ix, xpt;
+float __sinf( float x ) {
+	double	dx, xsq, poly;
+	double	dn;
+	int	n;
+	double	result;
+	int	ix, xpt;
 
 
 	ix = *(int *)&x;
 	xpt = (ix >> 22);
-	xpt &= 0x1ff;*/
+	xpt &= 0x1ff;
 
 	/* xpt is exponent(x) + 1 bit of mantissa */
 
-	//if ( xpt < 0xff )	
-	//{
+	if ( xpt < 0xff )	
+	{
 		/* |x| < 1.5 */
 
-		//dx = x;
+		dx = x;
 
-		//if ( xpt >= 0xe6 )
-		//{
+		if ( xpt >= 0xe6 )
+		{
 			/* |x| >= 2^(-12) */
 
 			/* compute sin(x) with a standard polynomial approximation */
 
-			/*xsq = dx*dx;
+			xsq = dx*dx;
 
 			poly = ((P[4].d*xsq + P[3].d)*xsq + P[2].d)*xsq + P[1].d;
 
@@ -110,24 +101,24 @@ int	ix, xpt;
 
 	if ( xpt < 0x136 )
 	{
-		*//* |x| < 2^28 */
+		/* |x| < 2^28 */
 
-		//dx = x;
+		dx = x;
 
 		/*  reduce argument to +/- pi/2  */
 
-		/*dn = dx*rpi.d;
+		dn = dx*rpi.d;
 
 		n = ROUND(dn);
 		dn = n;
 
 		dx = dx - dn*pihi.d;
-		dx = dx - dn*pilo.d;*/	/* dx = x - n*pi */
+		dx = dx - dn*pilo.d;	/* dx = x - n*pi */
 
 		/* compute sin(dx) as before, negating result if n is odd
 		*/
 
-		/*xsq = dx*dx;
+		xsq = dx*dx;
 
 		poly = ((P[4].d*xsq + P[3].d)*xsq + P[2].d)*xsq + P[1].d;
 
@@ -141,18 +132,13 @@ int	ix, xpt;
 	}
 
 	if ( x != x )
-	{*/
+	{
 		/* x is a NaN; return a quiet NaN */
 
-/*#ifdef _IP_NAN_SETS_ERRNO
-
-		*__errnoaddr = EDOM;
-#endif
-		
-		return ( __libm_qnan_f );
-	}*/
+		return ( D_80110CA0 );
+	}
 
 	/* just give up and return 0.0 */
 
-	/*return ( zero.f );
-}*/
+	return ( zero.f );
+}
