@@ -331,8 +331,8 @@ s32 func_80087358(s32);
 s32 func_80087ED0(s32, f32*, f32*, f32*, s32, s32);
 void func_80088198(void);
 s32 func_80088698(s32);
-u64 func_8008BD98(s16);
-void func_8008BEDC(void);
+s32 func_8008BD98(s32);
+s32 func_8008BEDC(void);
 void func_8008C094(void);
 void func_8008C35C(s32);
 s32 func_8008C364(Actor*, s32, s32, s32);
@@ -411,7 +411,7 @@ void func_800DC920(void*);
 void func_800DC950(void*, void*);
 void func_800DCA90(s32, s32);
 void func_800DCB10(s32, s32);
-void func_800DF680(s32);
+s32 func_800DF680(ALSeqPlayer*);
 void _bzero(void*, s32);
 
 #endif

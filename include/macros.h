@@ -9,5 +9,6 @@
 #define sinf __sinf 
 #define cosf __cosf 
 #define DEGREES_TO_RADIANS(x) (x * 2 * PI / 360.0)
+#define ARRAY_COUNT(arr) (s32)(sizeof(arr) / sizeof(arr[0]))
 
 #endif

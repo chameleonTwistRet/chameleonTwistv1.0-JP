@@ -701,24 +701,26 @@ typedef struct unk_func_800A1F3C {
 typedef struct unk0 {
     /* 0x00 */ char pad0[0x20];
     /* 0x20 */ s16 unk20;
-    /* 0x22 */ s16 unk22;                           /* inferred */
-    /* 0x24 */ u8 unk24;                            /* inferred */
-    /* 0x25 */ char pad25[0xD];                     /* maybe part of unk24[0xE]? */
-    /* 0x32 */ s16 unk32;                           /* inferred */
-    /* 0x34 */ char pad34[4];                       /* maybe part of unk32[3]? */
-    /* 0x38 */ f32 unk38;                           /* inferred */
-    /* 0x3C */ u8 unk3C;                            /* inferred */
-    /* 0x3D */ u8 unk3D;                            /* inferred */
-    /* 0x3E */ char pad3E[2];                       /* maybe part of unk3D[3]? */
+    /* 0x22 */ s16 unk22;
+    /* 0x24 */ u8 unk24;
+    /* 0x25 */ char pad25[7];
+    /* 0x2C */ f32 unk2C;
+    /* 0x30 */ s16 unk30;
+    /* 0x32 */ s16 unk32;
+    /* 0x34 */ char pad34[4];
+    /* 0x38 */ f32 unk38;
+    /* 0x3C */ u8 unk3C;
+    /* 0x3D */ u8 unk3D;
+    /* 0x3E */ char pad3E[2];
     /* 0x40 */ s16 unk40;
     /* 0x42 */ s16 unk42;
-    /* 0x44 */ s8 unk44;                            /* inferred */
-    /* 0x45 */ char pad45[3];                       /* maybe part of unk44[4]? */
-    /* 0x48 */ s32 unk48;                           /* inferred */
-    /* 0x4C */ s32 unk4C;                           /* inferred */
+    /* 0x44 */ s8 unk44;
+    /* 0x45 */ char pad45[3];
+    /* 0x48 */ s32 unk48;
+    /* 0x4C */ s32 unk4C;
     /* 0x50 */ struct unk0* unk50;
     /* 0x54 */ char pad54[4];
-} unk0; 
+} unk0;
 
 typedef struct func_800AE8E4Compare {
     f32 unk0;
