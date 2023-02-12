@@ -1178,7 +1178,7 @@ s32 func_800849D4(s32 arg0) {
     return arg0;
 }
 
-void func_800849DC(s32 arg0, tongue* playerTongue, playerActor* player, s32* unk) {
+void func_800849DC(s32 arg0, tongue* playerTongue, playerActor* player, unk8016AA98* unk) {
     func_80056F48(arg0, playerTongue, player, unk);
     D_800F6880 = arg0;
 }

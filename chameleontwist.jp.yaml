@@ -40,9 +40,12 @@ segments:
       - [0x30FB0, c, code/sprite]
       - [0x5FEB0, c, code/5FEB0]
       - [0x5FF30, c, code/5FF30]
+      - [0x8A2C0, c, code/8A2C0]
+      - [0x8ADD0, c, code/8ADD0]
       - [0xA3D00, c, code/A3D00]
       - [0xA4300, c, code/A4300]
       - [0xB2860, c, code/B2860]
+      - [0xB35B0, c, code/B35B0]
       - [0xB39A0, c, code/B39A0]
       - [0xB4600, c, io/motor]
       - [0xB4B30, c, os/initialize]
@@ -235,9 +238,12 @@ segments:
       - [0xE7D40, rodata, code/2C3B0] #8010C940 through 8010CA10
       - [0xE7E10, rodata, code/sprite] #8010CA10 through 8010D530
       - [0xE8930, rodata, code/5FF30] #8010D530 through 80110110
-      - [0xEB510, rodata, code/A3D00] #80110110 through 80110180
+      - [0xEAD90, rodata, code/8A2C0]
+      - [0xEADE0, rodata, code/8ADD0]
+      - [0xEB500, rodata, code/A3D00] #80110110 through 80110180
       - [0xEB580, rodata, code/A4300] #80110180 through 80110720
       - [0xEBB20, rodata, code/B2860] #80110720 through 80110870
+      - [0xEBC20, rodata, code/B35B0]
       - [0xEBC70, .rodata, code/B39A0]
       - [0xEBCB0, rodata, gu/rotate]
       - [0xEBCC0, .rodata, gu/sinf]
@@ -252,12 +258,15 @@ segments:
       - [0xEC0A0, rodata, nan_f] #80110CA0
       - [0xEC0B0, rodata, libc/xprintf] #80110CB0
       - [0xEC1B0, rodata, audio/seqplayer] #80110DB0
+      - [0xEC3F0, rodata, interruptRelated]
       - [0xEC470, rodata, audio/drvrNew] #80111070
       - [0xEC490, rodata, audio/resample] #80111090
       - [0xEC4D0, rodata, audio/env] #801110D0
+      - [0xEC530, rodata, libc/_Ldtob]
       - [0xEC570, rodata, libc/xldtob] #80111170
       - [0xEC590, rodata, audio/seq] #80111190
       - [0xEC5A0, rodata, audio/reverb] #801111A0
+      - [0xEC5D0, rodata, unk]
       - [0xECDD0, rodata, 5FF30]
       #80111C90 - 8024C510 bss
   - name: assets0
@@ -302,24 +311,13 @@ segments:
   - [0x9D4760, bin] #size of 8? (End DL command)
   - [0x9D4768, bin] #size of 0x5000
   - [0x9D9768, bin] #size of 0x1200
-  
   - [0x9DA970, bin] #size of 0x2800
   - [0x9DD170, bin] #unkSize
-  
-  # - [0x101BE0, rgba32, star.rgba32, 32, 32]
-  # - [0x102BE0, bin, ext22]
-  # - [0x1032C0, bin, exxxx]
-  # - [0x108760, ia4, textSmall.ia4, 512, 176]
-  # - [0x113760, bin, ext2]
-  # - [0x114370, ia4, star2.ia4, 32 ,32]
-  # - [0x114570, bin, ashashg]
-  # - [0x114B80, ia4, explode.ia4, 40, 40]
-  # - [0x114EA0, bin, hhahaha]
-  # - [0x9E7A80, bin]
-  # - [0xA32A80, bin, ext3]
-  # - [0xAFED90, bin, davyheadMaybe]
-  # - [0xAFF3B0, bin, ext4]
-  # - [0xB079B0, bin, jackheadMaybe]
-  # - [0xB07FD0, bin, ext5]
+  - [0xAFC6B0, bin, davy] #size of 0x8BE0
+  - [0xB05290, bin, jack] #size of 0x8C20 (extra data?)
+  - [0xB0DEB0, bin, fred] #size of 0x8BE0
+  - [0xB16A90, bin, linda] #size of 0x8BF0
+  - [0xB1FE00, bin, black] #size of 0x8BF0
+  - [0xB289F0, bin, white]
   - [0xB315D0, bin, romPadding]
   - [0xC00000]

@@ -413,6 +413,87 @@ typedef struct Collider {
     /* 0x12C */ char unk_12C[4];
 } Collider;                                         /* size = 0x130 */
 
+typedef struct unk801FCFD8 {
+    char unk_00[0x18];
+    s32 unk18;
+} unk801FCFD8;
+
+typedef struct unk802000C84 {
+    u8 unk0;
+    u16 unk2;
+    s8 unk4;
+    s8 unk5;
+} unk802000C84; //unk size
+
+typedef struct unk8016AA98 {
+    char unk_00[0x74];
+} unk8016AA98; //unk size
+
+typedef struct unkFlags {
+    u8 flags0;
+    u8 flags1;
+} unkFlags;
+
+typedef struct unkSpriteStruct {
+    s32 unk_00;
+    char unk_04[0x10];
+    s32 unk_14;
+    char unk_18[0x34];
+    struct unkSpriteStruct* unk_4C; //pointer to another type of this same struct
+    char unk_50[0x10];
+} unkSpriteStruct;
+
+typedef struct unkSpriteStruct2 {
+    s32 unk_00;
+    char unk_04[0x1C];
+} unkSpriteStruct2;
+
+typedef struct unkSpriteStruct3 {
+    s32 unk_00;
+    char unk_04[0x68];
+} unkSpriteStruct3;
+
+typedef struct unkSpriteStruct4 {
+    s32 unk_00;
+    char unk_04[0x4C];
+} unkSpriteStruct4;
+
+typedef struct tempStruct {
+/* 0x00 */ char unk_00[60];
+/* 0x3C */ Vec3f unk_3C;
+} tempStruct;
+
+typedef struct tempStruct1 {
+/* 0x00 */ s32 unk_00;
+/* 0x04 */ s32 unk_04;
+/* 0x08 */ s32 (*function) (void);
+} tempStruct1;
+
+typedef struct unk801FCA20 {
+    s32 unk_00;
+    s32 unk_04;
+} unk801FCA20;
+
+typedef struct unk801FCA44 {
+    s32 unk_00;
+    s32 unk_04;
+} unk801FCA44;
+
+typedef struct unk800FF624 {
+    s32 unk_00;
+    s32 unk_04;
+    s32 unk_08;
+} unk800FF624;
+
+typedef struct unk801FD550 {
+    void* unk_00;
+} unk801FD550;
+
+typedef struct unkStruct0 {
+    /* 0x00 */ s32 unk_00;
+    /* 0x04 */ char unk_04[0x20];
+} unkStruct0;
+
 typedef struct unkB2860 {
     s32 unk_00;
     char unk_04[4];

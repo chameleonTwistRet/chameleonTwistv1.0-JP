@@ -256,6 +256,9 @@ __osGetId = 0x800E4604;
 __osCheckId = 0x800E4860;
 __osPfsRWInode = 0x800E495C;
 
+loadStageByIndex = 0x800961F4;
+setCrownPositionsForRoom = 0x800B4B34;
+
 //bss
 __osMaxControllers = 0x8024B141;
 __osFinalrom = 0x80248C70;

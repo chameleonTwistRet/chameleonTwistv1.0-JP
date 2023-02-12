@@ -1,16 +1,7 @@
 #include "common.h"
 //AOF=33
 
-typedef struct unkStruct0 {
-    /* 0x00 */ s32 unk_00;
-    /* 0x04 */ char unk_04[0x20];
-} unkStruct0;
-
 void func_8005456C(f32, f32, f32, f32, f32, s32);
-extern u8 D_800F06DC[];
-extern u8 D_800F0BE0[];
-extern unkStruct0 D_800F0BE4[];
-extern s32 D_801749B4;
 
 void func_80050FB0(void) {
     s32 i;
