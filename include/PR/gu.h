@@ -136,8 +136,7 @@ extern void guLookAtStereo(Mtx *m,
 extern void guLookAtStereoF(float mf[4][4], 
 		      	float xEye, float yEye, float zEye,
 		      	float xAt,  float yAt,  float zAt,
-		      	float xUp,  float yUp,  float zUp, 
-			float eyedist);
+		      	float xUp,  float yUp,  float zUp);
 extern void guRotate(Mtx *m, float a, float x, float y, float z);
 extern void guRotateF(float mf[4][4], float a, float x, float y, float z);
 extern void guRotateRPY(Mtx *m, float r, float p, float y);

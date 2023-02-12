@@ -107,7 +107,7 @@ strchr = 0x800EBF64;
 _Litob = 0x800EBFB0;
 _Ldtob = 0x800EC7C0;
 alSeqpSetSeq = 0x800E0180;
-
+osLeoDiskInit = 0x800EBD10;
 tanf = 0x800C8A1C;
 
 osViClock = 0x80109E98;
@@ -282,3 +282,4 @@ piEventQueue = 0x8024B050;
 piEventBuf = 0x8024B068;
 piThreadStack = 0x8024A050;
 __osEepPifRam = 0x8024C2A0;
+__CartRomHandle = 0x8024C490;

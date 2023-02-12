@@ -2,6 +2,7 @@
 #include "guint.h"
 //AOF=2
 
+//needs -O3
 #pragma GLOBAL_ASM("asm/nonmatchings/gu/rotateRPY/guRotateRPYF.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/gu/rotateRPY/guRotateRPY.s")
