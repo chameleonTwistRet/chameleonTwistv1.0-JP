@@ -243,7 +243,7 @@ segments:
       - [0xEB500, rodata, code/A3D00] #80110110 through 80110180
       - [0xEB580, rodata, code/A4300] #80110180 through 80110720
       - [0xEBB20, rodata, code/B2860] #80110720 through 80110870
-      - [0xEBC20, rodata, code/B35B0]
+      - [0xEBC20, .rodata, code/B35B0]
       - [0xEBC70, .rodata, code/B39A0]
       - [0xEBCB0, rodata, gu/rotate]
       - [0xEBCC0, .rodata, gu/sinf]
@@ -266,7 +266,6 @@ segments:
       - [0xEC570, rodata, libc/xldtob] #80111170
       - [0xEC590, rodata, audio/seq] #80111190
       - [0xEC5A0, rodata, audio/reverb] #801111A0
-      - [0xEC5D0, rodata, unk]
       - [0xECDD0, rodata, 5FF30]
       #80111C90 - 8024C510 bss
   - name: assets0
