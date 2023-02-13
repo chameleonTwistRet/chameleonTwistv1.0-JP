@@ -1,5 +1,4 @@
 #include "common.h"
-//AOF=326
 
 typedef struct unk800F73C8 {
     char unk_00[4];
@@ -142,9 +141,10 @@ void func_80056DF4(unkStruct02* arg0, unkStruct02* arg1) {
 // s32 leoDrive_reset(void);
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/leoDrive_reset.s")
 
-void func_80056EB4(void) {
-    func_80056CDC(D_801191A0, (D_801FFB78 - D_801191A0));
-}
+#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80056EB4.s")
+// void func_80056EB4(void) {
+//     func_80056CDC(D_801191A0, (D_801FFB78 - D_801191A0));
+// }
 
 void* func_80056EE4(s32 arg0) {
     void* temp_v0 = func_80056D30(arg0);
@@ -278,11 +278,9 @@ void func_800573BC(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8005A7CC.s")
 
 void func_8005AFA4(f32 arg0, f32 arg1, f32 arg2, f32 arg3) {
-    //why are there arguments if none of them are used????
     func_800573BC();
 }
 
-//text?
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8005AFD0.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8005B874.s")

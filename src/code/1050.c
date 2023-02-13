@@ -1,11 +1,51 @@
 #include "common.h"
-//AOF=35
 
-typedef struct frameBufferData {
-    char data[0x25800];
-} frameBufferData;
+Gfx* func_8002C4E8(Gfx*, s32, s32);
 
-extern frameBufferData D_803B5000[2];
+typedef struct unkRspRelated {
+/* 0x00 */ char unk_00[8];
+/* 0x08 */ void* rspBootText;
+/* 0x0C */ s32 rspBootTextSize;
+/* 0x10 */ void* rspBootTextEnd;
+/* 0x14 */ char unk_14[4];
+/* 0x18 */ Gfx* unk_18;
+/* 0x1C */ char unk[0x10];
+/* 0x2C */ void* unk_2C;
+/* 0x30 */ Gfx* unk_30;
+/* 0x34 */ s32 unk_34;
+/* 0x38 */ char unk_38[8];
+} unkRspRelated;
+
+void func_8002CB6C(s32, void*, s32);
+void func_8002CBE8(s32);
+void func_8002CDBC(arg*);
+void func_8004BC48(arg*);
+void func_8004CD9C(s32, void*);
+void func_8004DDE0(void);
+void func_8004E784(arg*, u32, s32*, arg*);
+void func_80054864(void);    
+
+
+#define sizeOf800F0668 0x1FB00
+typedef struct unk80129770 {
+    char unk_00[sizeOf800F0668];
+} unk80129770;
+
+extern unk80129770 D_80129770[9];
+
+extern s32 D_800F0668;
+extern s32 D_800F066C;
+extern s32 D_800F06A4;
+extern s8 D_800FF8DC;
+extern s8 D_800FF8E0;
+extern s8 D_800FF8E4;
+extern s32 D_80174980;
+extern s32 D_801749AC;
+
+extern unkRspRelated D_800F04E0[];
+extern Gfx D_801111D0[];
+extern Gfx D_80129720[];
+
 extern s32 D_80174874;
 extern OSMesgQueue D_801192D0;
 extern OSMesgQueue D_801192E8;
@@ -19,6 +59,9 @@ typedef struct temp {
 /* 0x54 */ f32 unk_54;
 } temp;
 
+void func_80059254(Mtx*, f32, f32, f32, f32, f32, f32, s32);
+void func_800598C4(Mtx*, f32, f32, f32, f32, f32, f32, s32);
+void func_8005747C(f32, f32, f32, f32, f32, f32, s32);
 void func_8008C494(void);
 void func_8008C4B8(void);
 void func_8008C554(void);
@@ -26,7 +69,6 @@ void osViSwapBuffer(void* frameBufPtr);
 s32 func_8004E4D0(void);
 void func_80084ACC(void);
 void func_80086C20(void);
-void func_8004CD9C(s32, s32);
 s32 func_800AF604(f32, f32, f32, f32);
 void __osInitialize_common(void);
 
@@ -62,10 +104,6 @@ void func_80025EE8(void) {
 s32 func_80026C78(temp* arg0) {
     return 1 - func_800AF604(arg0->unk_24, arg0->unk_28, arg0->unk_2C, 8000.0f);
 }
-
-void func_80059254(Mtx*, f32, f32, f32, f32, f32, f32, s32);
-void func_800598C4(Mtx*, f32, f32, f32, f32, f32, f32, s32);
-void func_8005747C(f32, f32, f32, f32, f32, f32, s32);
 
 typedef struct unkMatrix {
     u8 pad[0x10880];
@@ -109,20 +147,6 @@ void func_80026FB8(unkMatrix *arg0, Mtx *arg1, u32 arg2, f32 arg3, f32 arg4, s32
     guMtxXFML(&arg0->unk11880[arg2], xPos, yPos, zPos, &xPos, &yPos, &zPos);
     func_8005747C(D_8016AC68[arg2].posX + xPos, D_8016AC68[arg2].posY + yPos + arg4, D_8016AC68[arg2].posZ + zPos, arg3, arg3, 0.0f, arg5);
 }
-
-typedef u32 uintptr_t;
-
-extern struct {
-    uintptr_t base_address;
-    u32 unk4;
-} D_80100F50[];
-
-#define SEGMENT_MASK 0x0F000000
-#define SEGMENT_SHIFT 24
-#define IS_SEGMENTED(x)          (((uintptr_t)(x) & SEGMENT_MASK) != 0)
-#define SEGMENT_INDEX(x)         (((uintptr_t)(x) & SEGMENT_MASK) >> SEGMENT_SHIFT)
-#define SEGMENT_OFFSET_CUSTOM(x)        (((uintptr_t)(x) & ~SEGMENT_MASK))
-#define SEGMENTED_TO_VIRTUAL(x)  (void*)(SEGMENT_OFFSET_CUSTOM(x) + D_80100F50[SEGMENT_INDEX(x)].base_address)
 
 void func_80027138(void* arg0, s32* arg1, s32* arg2, s32* arg3) {
     void* var_a2;
@@ -183,9 +207,26 @@ void func_80027138(void* arg0, s32* arg1, s32* arg2, s32* arg3) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/1050/func_8002C900.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/1050/func_8002CAC8.s")
+void* func_8002CAC8(Gfx* arg0, s32 arg1) {
+    Gfx* temp_v0;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/1050/func_8002CB04.s")
+    temp_v0 = func_8002C4E8(arg0, arg1, 1);
+    gDPFullSync(temp_v0++);
+    gSPEndDisplayList(temp_v0++);
+    return temp_v0;
+}
+
+void func_8002CB04(Gfx* arg0, Gfx* arg1, s32 arg2) {
+    unkRspRelated* temp_v0 = &D_800F04E0[arg2];
+    temp_v0->rspBootText = rspbootTextStart;
+    temp_v0->rspBootTextSize =  ((s32)rspbootTextEnd - (s32)rspbootTextStart);
+    //TODO: fix &rspbootTextStart[208 / 8]
+    temp_v0->rspBootTextEnd = &rspbootTextStart[208 / 8]; //?
+    temp_v0->unk_18 = D_801111D0;
+    temp_v0->unk_2C = D_80129720;
+    temp_v0->unk_30 = arg0;
+    temp_v0->unk_34 = (((s32)arg1 - (s32)arg0) >> 3) << 3;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/1050/func_8002CB6C.s")
 
@@ -204,11 +245,11 @@ void func_8002CBE8(s32 arg0) {
     func_8008C494();
 }
 
-s32 func_8002CCA0(void) {
+s32 func_8002CCA0(void* arg0, s32 arg1) {
     s32 sp1C;
 
     if (D_80174998 >= 3) {
-        sp1C = func_8002C900();
+        sp1C = func_8002C900(arg0, arg1);
     }
 
     return sp1C;
@@ -243,7 +284,7 @@ void func_8002CD94(s32 arg0) {
     }
 }
 
-void func_8002CDBC(s32 arg0) {
+void func_8002CDBC(arg* arg0) {
     s32 i;
 
     if (D_80174874 != 7) {
@@ -254,12 +295,60 @@ void func_8002CDBC(s32 arg0) {
     for (i = 0; i < 4; i++) {
         if (D_80168D78[i] != 0) {
             D_80168D78[i] = 1;
-            func_8004CD9C(i, (i * 0x10) + arg0);
+            func_8004CD9C(i, &arg0[i].unk0);
         }
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/1050/func_8002CE54.s")
+void func_8002CE54(void) {
+    s32 var;
+    s32 i;
+    arg sp28[4];
+    
+    D_800F066C++;
+    func_8002CD94(D_800F066C);
+    func_8004E73C();
+    func_8002CB6C(0, &D_80129770[D_800F0668], D_800F0668);
+    
+    for (i = 0; i < 4; i++) {
+        func_8004E760(&sp28[i]);
+    }
+    
+    if (D_80174980 == 5) {
+        D_80168D78[0] = 1;
+        func_8004BC48(&sp28[0]);
+        func_8004E784(&sp28[0], D_80168DA0, D_80168D78, &sp28[0]);
+        D_800FF8DC = 0;
+        D_800FF8E0 = 0;
+        D_800FF8E4 = 0;
+    } else {
+        if (D_801749AC != 0) {
+            if (D_800F06A4 != 0) {
+                D_80168D78[1] = 1;
+                func_8004CD9C(1, &sp28[1]);
+                D_80168D78[2] = 2;
+                func_8004CD9C(2, &sp28[2]);
+                D_80168D78[3] = 3;
+                func_8004CD9C(3, &sp28[3]);
+            } else {
+                func_8002CDBC(&sp28[0]);
+            }
+        } else if (D_801749B0 != 0) {
+            D_80168D78[1] = 1;
+            func_8004CD9C(1, &sp28[1]);
+        } else {
+            D_80168D78[0] = 0;
+        }
+        func_8004E784(&sp28[0], 4, D_80168D78, &sp28[0]);
+    }
+    
+    func_8004DDE0();
+    func_80054864();
+    var = 1 - D_800F0668;
+    func_8002CCA0(&D_80129770[var], var);
+    func_8002CBE8(D_800F0668);
+    D_800F0668 = 1 - D_800F0668;
+}
 
 void func_8002D080(void) {
     D_80174878 = -1;

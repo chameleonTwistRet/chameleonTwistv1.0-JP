@@ -4,7 +4,6 @@
 extern f32 D_8024B070;
 extern f32 D_801108B0;
 
-//AOF=2
 
 #pragma GLOBAL_ASM("asm/nonmatchings/gu/rotate/guRotateF.s")
 

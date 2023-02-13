@@ -6,7 +6,6 @@ extern s32 D_80236974;
 extern Collision D_80240CE0[];
 extern Collider D_80236980[];
 
-//AOF=82
 
 void func_800CBC08(unkA4300*);
 void func_800CC814(unkA4300*, Vec3f, s32);

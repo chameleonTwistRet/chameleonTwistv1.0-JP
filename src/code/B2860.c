@@ -1,5 +1,4 @@
 #include "common.h"
-//AOF=22
 
 // Auth: Rain, revo, simonlindholm
 void func_800D7460(char* arg0, ...) { /* variadic args: simonlindholm*/

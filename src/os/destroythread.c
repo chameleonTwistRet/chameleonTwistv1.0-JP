@@ -2,7 +2,6 @@
 #include <PR/os_internal.h>
 #include "osint.h"
 #include <PR/R4300.h>
-//AOF=1
 
 void osDestroyThread(OSThread *t) {
     register u32 saveMask;

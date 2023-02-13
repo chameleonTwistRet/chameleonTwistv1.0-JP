@@ -1,5 +1,4 @@
 #include "common.h"
-//AOF=3
 
 #pragma GLOBAL_ASM("asm/nonmatchings/io/sptask/_VirtualToPhysicalTask.s")
 

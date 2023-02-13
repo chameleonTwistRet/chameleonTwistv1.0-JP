@@ -1,5 +1,4 @@
 #include "common.h"
-//AOF=13
 
 #pragma GLOBAL_ASM("asm/nonmatchings/audio/cspgettempo/func_800DF680.s")
 

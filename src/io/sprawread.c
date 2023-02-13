@@ -2,7 +2,6 @@
 #include <PR/os_internal.h>
 #include <PR/rcp.h>
 #include "siint.h"
-//AOF=1
 
 s32 __osSpRawReadIo(u32 devAddr, u32 *data) {
     if (__osSiDeviceBusy()) {

@@ -1,7 +1,6 @@
 #include "common.h"
 #ifndef _RODATA_
 #define _RODATA_
-//AOF=301
 
 //const char padRodata[] = "\0\0\0\0\0\0\0";
 

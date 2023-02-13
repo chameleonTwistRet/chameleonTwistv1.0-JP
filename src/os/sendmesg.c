@@ -1,6 +1,5 @@
 #include "common.h"
 #include "osint.h"
-//AOF=1
 
 s32 osSendMesg(OSMesgQueue *mq, OSMesg msg, s32 flags) {
     register u32 saveMask;

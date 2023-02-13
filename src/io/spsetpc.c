@@ -1,6 +1,5 @@
 #include "common.h"
 #include "PR/rcp.h"
-//AOF=1
 
 s32 __osSpSetPc(u32 pc) {
     register u32 status = IO_READ(SP_STATUS_REG);

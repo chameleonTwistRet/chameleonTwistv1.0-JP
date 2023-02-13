@@ -1,4 +1,3 @@
-//AOF=2
 
 #pragma GLOBAL_ASM("asm/nonmatchings/io/crc/__osContAddressCrc.s")
 

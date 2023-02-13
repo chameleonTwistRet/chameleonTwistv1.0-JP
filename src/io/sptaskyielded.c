@@ -1,5 +1,4 @@
 #include "common.h"
-//AOF=1
 
 OSYieldResult osSpTaskYielded(OSTask *tp) {
     u32 status;

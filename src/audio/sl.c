@@ -21,7 +21,6 @@
  * Copyright Laws of the United States.
  *====================================================================*/
 #include <PR/libaudio.h>
-//AOF=5
 
 /*ALGlobals *alGlobals=0;
 

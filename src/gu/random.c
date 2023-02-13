@@ -1,4 +1,3 @@
-//AOF=1
 
 int guRandom(void)
 {

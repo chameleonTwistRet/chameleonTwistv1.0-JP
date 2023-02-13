@@ -1,5 +1,4 @@
 #include "common.h"
-//AOF=2
 
 /*
 #include <os_internal.h>

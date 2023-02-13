@@ -1,6 +1,5 @@
 #include "common.h"
 #include "piint.h"
-//AOF=1
 
 OSDevMgr __osPiDevMgr = {0};
 OSPiHandle *__osPiTable = NULL;

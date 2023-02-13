@@ -1,5 +1,4 @@
 #include "common.h"
-//AOF=1
 
 void osSetEventMesg(OSEvent event, OSMesgQueue *mq, OSMesg msg) {
 	register u32 saveMask = __osDisableInt();

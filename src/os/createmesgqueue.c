@@ -1,6 +1,5 @@
 #include "common.h"
 #include "osint.h"
-//AOF=1
 
 void osCreateMesgQueue(OSMesgQueue *mq, OSMesg *msg, s32 msgCount) {
     mq->mtqueue = (OSThread *)&__osThreadTail.next;

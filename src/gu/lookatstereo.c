@@ -1,6 +1,5 @@
 #include "common.h"
 #include "guint.h"
-//AOF=2
 
 //needs -O3
 #pragma GLOBAL_ASM("asm/nonmatchings/gu/lookatstereo/guLookAtStereoF.s")

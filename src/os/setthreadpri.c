@@ -1,7 +1,6 @@
 #include "common.h"
 #include "PR/os_internal.h"
 #include "osint.h"
-//AOF=1
 
 void osSetThreadPri(OSThread *t, OSPri pri) {
     register u32 saveMask = __osDisableInt();

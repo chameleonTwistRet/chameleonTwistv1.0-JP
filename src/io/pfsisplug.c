@@ -1,7 +1,6 @@
 #include "common.h"
 #include "controller.h"
 #include "siint.h"
-//AOF=3
 
 extern OSPifRam __osPfsPifRam;
 

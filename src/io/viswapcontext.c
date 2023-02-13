@@ -1,5 +1,4 @@
 #include "common.h"
-//AOF=1
 
 void __osViSwapContext() {
     register OSViMode *vm;

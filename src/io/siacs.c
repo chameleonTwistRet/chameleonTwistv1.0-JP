@@ -1,5 +1,4 @@
 #include "common.h"
-//AOF=3
 
 #define SI_Q_BUF_LEN 1
 extern OSMesg siAccessBuf[SI_Q_BUF_LEN];

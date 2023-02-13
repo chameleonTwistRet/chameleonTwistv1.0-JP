@@ -1,7 +1,6 @@
 #include "common.h"
 #include "PR/os_internal.h"
 #include "siint.h"
-//AOF=1
 
 int __osSiDeviceBusy() {
     register u32 stat = IO_READ(SI_STATUS_REG);

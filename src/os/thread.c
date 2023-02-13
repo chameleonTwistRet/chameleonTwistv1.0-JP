@@ -1,5 +1,4 @@
 #include "common.h"
-//AOF=1
 
 struct __osThreadTail __osThreadTail = {NULL, -1};
 OSThread *__osRunQueue = (OSThread *)&__osThreadTail;

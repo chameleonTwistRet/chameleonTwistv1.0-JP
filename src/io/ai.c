@@ -1,7 +1,6 @@
 #include "common.h"
 #include <PR/os_internal.h>
 #include <PR/rcp.h>
-//AOF=1
 
 s32 __osAiDeviceBusy(void)
 {

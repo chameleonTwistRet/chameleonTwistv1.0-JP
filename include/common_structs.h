@@ -434,6 +434,15 @@ typedef struct unkFlags {
     u8 flags1;
 } unkFlags;
 
+typedef struct unk80100F50 {
+    u32 base_address;
+    u32 unk4;
+} unk80100F50;
+
+typedef struct frameBufferData {
+    char data[0x25800];
+} frameBufferData;
+
 typedef struct unkSpriteStruct {
     s32 unk_00;
     char unk_04[0x10];

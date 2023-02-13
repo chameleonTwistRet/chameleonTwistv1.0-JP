@@ -1,6 +1,5 @@
 #include "common.h"
 #include "osint.h"
-//AOF=1
 
 OSTime osGetTime() {
     u32 tmptime;

@@ -1,6 +1,5 @@
 #include "common.h"
 #include "PR/os_internal.h"
-//AOF=1
 
 //#pragma GLOBAL_ASM("asm/nonmatchings/os/initialize/__osInitialize_common.s")
 

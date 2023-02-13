@@ -1,5 +1,4 @@
 #include "common.h"
-//AOF=30
 
 extern f32 D_80168DB0;
 extern s32 D_801749A0;

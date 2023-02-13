@@ -312,10 +312,22 @@ segments:
   - [0x9D9768, bin] #size of 0x1200
   - [0x9DA970, bin] #size of 0x2800
   - [0x9DD170, bin] #unkSize
+
   - [0xAB5360, bin, rabbit] # ウサギ
   - [0xABD990, bin, subAnime] # サブアニメ
   - [0xACBD90, bin, match] # 青
-  - [0xAFC6B0, bin, davy] #size of 0x8BE0
+
+  - name: davy
+    type: code
+    start: 0xAFC6B0
+    subsegments:
+      - [0xAFC6B0, bin, davy/davyMain] #size of 0x8BE0
+      - [0xAFD090, bin, davy/davyNumber] #should be ci4, 32x32
+      - [0xAFD290, bin, davy/davyUnkDL0] #0x08 into this has the palette
+      #- [0xAFD298, bin, davy/davyNumberPalette] #is palette for davyNumber
+      #- [0xAFD2B8, bin]
+      - [0xAFD2C0, bin]
+
   - [0xB05290, bin, jack] #size of 0x8C20 (extra data?)
   - [0xB0DEB0, bin, fred] #size of 0x8BE0
   - [0xB16A90, bin, linda] #size of 0x8BF0

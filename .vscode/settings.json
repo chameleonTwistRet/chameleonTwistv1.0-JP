@@ -14,6 +14,7 @@
         "stdlib.h": "c",
         "xstdio.h": "c",
         "controller.h": "c",
-        "guint.h": "c"
+        "guint.h": "c",
+        "synthinternals.h": "c"
     }
 }

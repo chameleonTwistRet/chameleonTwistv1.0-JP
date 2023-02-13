@@ -1,4 +1,3 @@
-//AOF=2
 //needs -O3
 
 #pragma GLOBAL_ASM("asm/nonmatchings/gu/mtxcatf/guMtxXFMF.s")

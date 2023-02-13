@@ -1,6 +1,5 @@
 #include "common.h"
 #include "piint.h"
-//AOF=1
 
 s32 osPiStartDma(OSIoMesg *mb, s32 priority, s32 direction, u32 devAddr, void *dramAddr, u32 size, OSMesgQueue *mq) {
     register s32 ret;

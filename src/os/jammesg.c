@@ -1,6 +1,5 @@
 #include "common.h"
 #include "PR/os_internal.h"
-//AOF=1
 
 s32 osJamMesg(OSMesgQueue *mq, OSMesg msg, s32 flag) {
     register u32 saveMask = __osDisableInt();

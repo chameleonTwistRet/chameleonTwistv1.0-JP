@@ -1,6 +1,5 @@
 #include "common.h"
 #include "PR/os_internal.h"
-//AOF=1
 
 s32 osRecvMesg(OSMesgQueue *mq, OSMesg *msg, s32 flags) {
     register u32 saveMask;

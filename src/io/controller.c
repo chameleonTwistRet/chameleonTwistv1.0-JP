@@ -1,7 +1,6 @@
 #include "common.h"
 #include "controller.h"
 #include "siint.h"
-//AOF=3
 
 s32 __osContinitialized = 0;
 extern u8 __osContLastCmd;

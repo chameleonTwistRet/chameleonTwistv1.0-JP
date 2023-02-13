@@ -1,5 +1,4 @@
 #include "common.h"
-//AOF=33
 
 void func_8005456C(f32, f32, f32, f32, f32, s32);
 

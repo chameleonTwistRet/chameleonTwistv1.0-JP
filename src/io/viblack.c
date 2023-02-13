@@ -1,5 +1,4 @@
 #include "common.h"
-//AOF=1
 
 void osViBlack(u8 active) {
     register u32 saveMask = __osDisableInt();

@@ -1,7 +1,6 @@
 #include "common.h"
 #include "osint.h"
 
-//AOF=4
 
 
 #pragma GLOBAL_ASM("asm/nonmatchings/os/timerintr/__osTimerServicesInit.s")

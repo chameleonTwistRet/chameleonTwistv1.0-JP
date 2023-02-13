@@ -1,5 +1,4 @@
 #include "common.h"
-//AOF=1
 
 int __osSpDeviceBusy() {
     register u32 stat = IO_READ(SP_STATUS_REG);

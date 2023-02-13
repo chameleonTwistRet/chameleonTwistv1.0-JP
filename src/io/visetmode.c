@@ -1,6 +1,5 @@
 #include "common.h"
 #include "viint.h"
-//AOF=1
 
 void osViSetMode(OSViMode *modep) {
     register u32 saveMask = __osDisableInt();

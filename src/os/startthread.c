@@ -1,7 +1,6 @@
 #include "common.h"
 #include <os_internal.h>
 #include "osint.h"
-//AOF=1
 
 void osStartThread(OSThread *t)
 {

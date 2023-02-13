@@ -1,6 +1,5 @@
 #include "common.h"
 #include "siint.h"
-//AOF=1
 
 s32 __osSiRawStartDma(s32 direction, void *dramAddr) {
     if (__osSiDeviceBusy() != 0) {

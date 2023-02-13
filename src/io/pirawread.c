@@ -1,6 +1,5 @@
 #include "common.h"
 #include "piint.h"
-//AOF=1
 
 s32 osPiRawReadIo(u32 devAddr, u32 *data) {
     register u32 stat;

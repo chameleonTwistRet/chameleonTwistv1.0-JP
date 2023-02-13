@@ -1,6 +1,5 @@
 #include "common.h"
 //OPT_FLAGS = -O3
-//AOF=3
 
 #pragma GLOBAL_ASM("asm/nonmatchings/libc/xldtob/_Genld.s")
 

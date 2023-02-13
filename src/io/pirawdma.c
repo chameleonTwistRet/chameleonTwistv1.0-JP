@@ -1,6 +1,5 @@
 #include "common.h"
 #include "piint.h"
-//AOF=3
 
 s32 __osPiRawStartDma(s32 direction, u32 devAddr, void* dramAddr, u32 size) {
     register u32 stat;

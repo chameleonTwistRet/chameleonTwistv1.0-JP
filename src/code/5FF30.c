@@ -1,6 +1,5 @@
 #include "common.h"
 #include "PR/libaudio.h"
-//AOF=759
 
 //jump table
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80084B30.s")
@@ -896,7 +895,11 @@ void func_80094E0C(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/loadStageByIndex.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800966E0.s")
+void func_800966E0(void) {
+    D_80100F50[1].base_address = (u32)&D_803B5000 - _ALIGN((u32)&D_1045C00 - (u32)&D_1000000, 16);
+    D_80100F50[1].unk4 = (u32)&D_803B5000;
+    D_801FFB78 = func_8009603C(D_800F06DC[0] + 8, D_80100F50[1].base_address);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80096748.s")
 
@@ -1280,7 +1283,39 @@ void func_800A54EC(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A6DD8.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A72E8.s")
+extern char D_8010ECBC[];
+extern char D_8010ECCC[];
+
+s32 func_800A72E8(s32 arg0) {
+    s32 i, j;
+    //needed for reg alloc
+    s32 zero = 0;
+
+    if (arg0 < 0) {
+        func_80084AB0(D_8010ECBC, arg0); //無効ＩＤ(%d)\n    //invalid ID (%d)\n
+        return -1;
+    }
+
+    j = 0;
+    for (i = zero; i < 50; i++) {
+        if (arg0 == D_801FCFD8[i].unk18) {
+            j++;
+            if (osRecvMesg(&D_801FCA50[i], NULL, 0) != -1) {
+                j--;
+                D_801FCFD8[i].unk18 = -1;
+            }
+        }
+    }
+    
+    func_80084AB0(D_8010ECCC, arg0, j); //Id(%d)残り %d\n     //Id(%d)%d\n remaining
+    
+    if (j > 0) {
+        return 0;
+    }
+    
+    return 1;
+}
+
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A73EC.s")
 
@@ -1494,7 +1529,7 @@ s32 func_800A7E78(u8* arg0) {
 void func_800AAB0C(s32 arg0) {
     s32 dmaResult;
     s32 dmaSize;
-
+    s32 i;
     func_800A7988();
     loadStageByIndex(arg0);
     func_800A7988();
@@ -1505,7 +1540,7 @@ void func_800AAB0C(s32 arg0) {
     D_80168DA8[1].active = 0;
     D_80168DA8[2].active = 0;
     D_80168DA8[3].active = 0;
-    D_80175668 = 0;
+    D_80175668[0] = 0;
     func_8002E0CC();
     func_800C2FA0();
     func_80056EB4();
@@ -1513,14 +1548,12 @@ void func_800AAB0C(s32 arg0) {
     func_8005C9B8();
     func_80084788();
     func_80055FA4();
-    D_801756C0 = 0;
-    D_80175678 = 0;
-    D_801756C2 = 0;
-    D_8017567A = 0;
-    D_801756C4 = 0;
-    D_8017567C = 0;
-    D_801756C6 = 0;
-    D_8017567E = 0;
+
+    for (i = 0; i < 4; i++) {
+        D_801756C0[i] = 0;
+        D_80175678[i] = 0;
+    }
+
     D_801FCA10 = 0x10A9;
     dmaSize = D_F0042B0 - D_F000000;
     D_80100FD0 = 1;

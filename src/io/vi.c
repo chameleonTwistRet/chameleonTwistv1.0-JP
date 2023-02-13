@@ -1,7 +1,6 @@
 #include "common.h"
 #include "PR/os.h"
 #include "PR/rcp.h"
-//AOF=1
 
 __OSViContext vi[2] = {0};
 __OSViContext *__osViCurr = &vi[0];

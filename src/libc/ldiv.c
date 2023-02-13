@@ -1,6 +1,5 @@
 #include "common.h"
 #include "xstdio.h"
-//AOF=2
 
 
 lldiv_t lldiv(long long num, long long denom) {

@@ -253,12 +253,9 @@ extern char D_8010ED5C[];
 extern char D_8010ED68[];
 extern char D_8010ED84[];
 extern char D_8010ED94[];
-extern s32 D_80175668;
-extern s16 D_80175678;
-extern s16 D_8017567A;
-extern s16 D_8017567C;
-extern s16 D_8017567E;
-extern s16 D_801756C0;
+extern s32 D_80175668[4];
+extern u16 D_80175678[4];
+extern s16 D_801756C0[4];
 extern s16 D_801756C2;
 extern s16 D_801756C4;
 extern s16 D_801756C6;
@@ -326,5 +323,8 @@ extern u8 D_80200A98[];
 extern u8 D_800FF64C;
 extern u8 D_800FF650;
 extern ALSndPlayer* D_800FF61C;
-
+extern frameBufferData D_803B5000[2];
+extern Addr D_1000000;
+extern Addr D_1045C00;
+extern unk80100F50 D_80100F50[];
 #endif

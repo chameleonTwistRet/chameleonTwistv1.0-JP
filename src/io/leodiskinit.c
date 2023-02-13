@@ -1,5 +1,4 @@
 #include "common.h"
-//AOF=1
 
 #define FLASH_CMD_PROGRAM_PAGE  0xA5000000
 

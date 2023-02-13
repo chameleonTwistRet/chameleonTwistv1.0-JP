@@ -21,7 +21,6 @@
 #include <PR/libaudio.h>
 #include <PR/os_internal.h>
 #include <PR/ultraerror.h>
-//AOF=6
 
 
 

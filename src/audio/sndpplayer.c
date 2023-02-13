@@ -1,5 +1,4 @@
 #include "common.h"
-//AOF=5
 
 #pragma GLOBAL_ASM("asm/nonmatchings/audio/sndpplayer/func_800DE220.s")
 

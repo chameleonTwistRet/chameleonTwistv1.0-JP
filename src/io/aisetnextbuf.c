@@ -1,5 +1,4 @@
 #include "common.h"
-//AOF=1
 
 s32 osAiSetNextBuffer(void *bufPtr, u32 size) {
 	static u8 hdwrBugFlag = FALSE;

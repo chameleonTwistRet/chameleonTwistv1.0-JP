@@ -1,5 +1,4 @@
 #include <PR/libaudio.h>
-//AOF=1
 
 f32 alCents2Ratio(s32 cents) {
     f32 x;

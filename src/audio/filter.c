@@ -1,4 +1,13 @@
 #include "common.h"
-//AOF=1
+#include "libaudio.h"
+#include "synthInternals.h"
 
-#pragma GLOBAL_ASM("asm/nonmatchings/audio/filter/func_800ED3C0.s")
+void alFilterNew(ALFilter *f, ALCmdHandler h, ALSetParam s, s32 type)
+{
+    f->source    = 0;
+    f->handler   = h;
+    f->setParam  = s;
+    f->inp       = 0;
+    f->outp      = 0;
+    f->type      = type;
+}

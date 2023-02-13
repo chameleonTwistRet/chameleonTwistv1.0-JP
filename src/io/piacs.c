@@ -1,5 +1,4 @@
 #include "common.h"
-//AOF=3
 
 #define PI_Q_BUF_LEN 1
 u32 __osPiAccessQueueEnabled = 0;

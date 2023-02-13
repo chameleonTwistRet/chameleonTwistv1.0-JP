@@ -1,6 +1,5 @@
 #include "common.h"
 #include "controller.h"
-//AOF=8
 
 u16 __osSumcalc(u8 *ptr, int length) {
     int i;

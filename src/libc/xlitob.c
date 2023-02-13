@@ -1,6 +1,5 @@
 #include "common.h"
 #include "xstdio.h"
-//AOF=1
 
 #define BUFF_LEN 0x18
 

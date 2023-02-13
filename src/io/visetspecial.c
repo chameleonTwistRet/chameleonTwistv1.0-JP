@@ -1,5 +1,4 @@
 #include "common.h"
-//AOF=1
 
 void osViSetSpecialFeatures(u32 func) {
     register u32 saveMask = __osDisableInt();

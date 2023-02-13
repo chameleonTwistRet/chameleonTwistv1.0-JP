@@ -1,6 +1,5 @@
 #include "common.h"
 #include "siint.h"
-//AOF=1
 
 s32 __osSpRawWriteIo(u32 devAddr, u32 data) {
     if (__osSiDeviceBusy()) {

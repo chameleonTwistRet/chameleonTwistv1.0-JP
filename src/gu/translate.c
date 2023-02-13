@@ -1,5 +1,4 @@
 #include "common.h"
-//AOF=2
 
 void guTranslateF(float mf[4][4], f32 x, f32 y, f32 z) {
     guMtxIdentF(mf);

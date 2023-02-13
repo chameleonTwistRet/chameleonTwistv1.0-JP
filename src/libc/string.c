@@ -1,5 +1,4 @@
 #include "common.h"
-//AOF=3
 
 void *memcpy(void *s1, const void *s2, u32 n) {
     u8 *su1 = (u8 *)s1;

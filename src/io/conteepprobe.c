@@ -1,7 +1,6 @@
 #include "common.h"
 #include "controller.h"
 #include "siint.h"
-//AOF=1
 
 s32 osEepromProbe(OSMesgQueue *mq) {
     s32 ret = 0;

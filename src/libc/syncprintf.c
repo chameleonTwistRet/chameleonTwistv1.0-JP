@@ -1,6 +1,5 @@
 #include "common.h"
 #include "xstdio.h"
-//AOF=2
 
 s32 __osSyncVPrintf(const char *fmt, va_list args, s32 arg2) {
     return 1;

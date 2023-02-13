@@ -1,5 +1,4 @@
 #include "common.h"
-//AOF=1
 
 void guNormalize(f32* x, f32* y, f32* z) {
     f32 temp_f0;

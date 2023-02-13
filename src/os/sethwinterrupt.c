@@ -1,6 +1,5 @@
 #include "common.h"
 #include "PR/os_internal.h"
-//AOF=1
 
 struct __osHwInt {
     s32 (*handler)(void);

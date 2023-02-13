@@ -1,5 +1,4 @@
 #include "common.h"
-//AOF=1
 
 #include <PR/os_internal.h>
 #include "osint.h"
