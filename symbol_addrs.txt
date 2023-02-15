@@ -257,7 +257,8 @@ __osGetId = 0x800E4604;
 __osCheckId = 0x800E4860;
 __osPfsRWInode = 0x800E495C;
 alFilterNew = 0x800ED3C0;
-
+osMotorInit = 0x800D9344;
+osPfsInitPak = 0x800DB660;
 loadStageByIndex = 0x800961F4;
 setCrownPositionsForRoom = 0x800B4B34;
 

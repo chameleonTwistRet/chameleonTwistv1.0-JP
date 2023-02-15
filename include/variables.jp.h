@@ -18,25 +18,19 @@ extern s32 rngSeed; //rng
 
 extern camera* D_80174860;
 extern playerActor* PlayerPointer;
-extern tongue* TonguePointer;
+extern Tongue* TonguePointer;
 
 extern unk0* D_801FFB84;
-
+extern s32 D_800FE158;
+extern aa1* D_80176F48;
 extern s32 D_800F06B0;
 extern s32 D_800F06EC;
 extern s32 D_800F0B38;
 extern u32 D_800F0B50;
 extern s8 D_800F0B54;
 extern s32 D_800F6880;
-extern s32 D_800F6888;
-extern s32 D_800F688C;
-extern s32 D_800F6890;
-extern s32 D_800F6894;
-extern s32 D_800F6898;
-extern s32 D_800F689C;
-extern s32 D_800F68A0;
-extern s32 D_800F68A4;
-extern s32 D_800F68A8;
+extern s32 D_800F6888[4];
+extern s32 D_800F6898[4];
 extern s32 D_800F68AC;
 extern s32 D_800F68C0;
 extern s32 D_800F68C4[2];
@@ -190,7 +184,7 @@ extern s32 D_80168D78[];
 extern s32 D_80168DA4;
 extern playerActor D_80168DA8[4];
 extern s32 D_80168E5C;
-extern tongue D_80169268;
+extern Tongue D_80169268;
 extern Actor D_8016AC68[ACTORS_MAX]; //currently loaded actor structs
 extern pole D_80170968[64]; //currently loaded pole structs
 extern unkStruct D_80172E88[];
@@ -255,7 +249,7 @@ extern char D_8010ED84[];
 extern char D_8010ED94[];
 extern s32 D_80175668[4];
 extern u16 D_80175678[4];
-extern s16 D_801756C0[4];
+extern u16 D_801756C0[4];
 extern s16 D_801756C2;
 extern s16 D_801756C4;
 extern s16 D_801756C6;

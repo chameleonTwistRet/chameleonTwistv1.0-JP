@@ -658,10 +658,10 @@ void func_8002F884(s32 arg0, s32 arg1) {
     }
 }
 
-void func_8002F960(unk_8002F960* arg0) {
+void func_8002F960(Tongue* arg0) {
     func_8002F884(PlayerPointer->playerID, 2);
     func_80087ED0(16, 0, 0, 0, 0, 16);
-    arg0->unk608 = 10;
+    arg0->wallTime = 10;
 }
 
 void func_8002F9BC(s32 arg0) {

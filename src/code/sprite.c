@@ -24,7 +24,9 @@ extern char D_8010CA54[];
 extern Addr D_8C26A0;
 
 //arg0 is a pointer to the string "mem err!\n"
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80055BB0.s")
+void func_80055BB0(char* arg0, ...) {
+
+}
 
 void func_80055BCC(s32 arg0) {
     rngSeed = arg0;
@@ -38,19 +40,16 @@ s32 func_80055BD8(void) {
     return rngSeed = y / 4;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80055C04.s")
-// requires -O1 ??
-// void func_80055C04(void) {
-//     __osActiveQueue = 1;
-//     D_800F6888 = -1;
-//     D_800F6898 = -1;
-//     D_800F688C = -1;
-//     D_800F689C = -1;
-//     D_800F6890 = -1;
-//     D_800F68A0 = -1;
-//     D_800F6894 = -1;
-//     D_800F68A4 = -1;
-// }
+void func_80055C04(void) {
+    s32 i;
+    
+    __osActiveQueue2 = (OSThread*)1;
+    
+    for (i = 0; i < 4; i++) {
+        D_800F6888[i] = -1;
+        D_800F6898[i] = -1;
+    }
+}
 
 void func_80055C74(void) {
     __osActiveQueue2 = (OSThread*)0;
@@ -152,10 +151,11 @@ void* func_80056EE4(s32 arg0) {
     if (temp_v0 == NULL) {
         func_80055BB0(D_8010CA10);
     }
+
     return temp_v0;
 }
 
-s32 func_80056F24(s32 arg0) {
+s32 func_80056F24(void* arg0) {
     leoDrive_reset(arg0);
     return 0;
 }
@@ -407,7 +407,52 @@ void func_800613D0(arb* arg0) {
     arg0->unkC = 0.0f;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_800613EC.s")
+aa1* func_800613EC(s32 arg0, s32 arg1, void* arg2) {
+    aa1* var_a1;
+    aa1* temp_v0;
+    
+    temp_v0 = func_80056EE4(0x48);
+    var_a1 = temp_v0;
+    
+    if (temp_v0 == NULL) {
+        return NULL;
+    }
+    
+    if (arg0 != 0) {
+        var_a1->unk_3C = func_80056EE4(arg0 * 0x28);
+        if (var_a1->unk_3C == NULL) {
+            func_80056F24(var_a1);
+            return NULL;
+        }        
+    } else {
+        temp_v0->unk_3C = 0;
+    }
+    
+    if (arg1 != 0) {
+        var_a1->unk_38 = func_80056EE4(arg1);
+        if (var_a1->unk_38 == NULL) {
+            func_80056F24(var_a1);
+            func_80056F24(var_a1->unk_3C);
+            return NULL;
+        }        
+    } else {
+        var_a1->unk_38 = NULL;
+    }
+    
+    if (D_80176F48->next != NULL) {
+        D_80176F48->next->previous = var_a1;
+    }
+    
+    var_a1->unk4 = arg0;
+    var_a1->unkC = 0.0f;
+    var_a1->unk34 = arg2;
+    var_a1->previous = D_80176F48;
+    var_a1->next = D_80176F48->next;
+    D_80176F48->next = var_a1;
+    D_80176F48 = var_a1;
+    D_800FE158++;
+    return var_a1;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80061514.s")
 
@@ -431,10 +476,10 @@ void func_8006202C(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80062588.s")
 
-void func_8006266C(argd8006266c* arg0) {
+void func_8006266C(d8006266c* arg0) {
     d8006266c* temp_v0;
     
-    temp_v0 = arg0->unk38;
+    temp_v0 = arg0->unk_38;
     temp_v0->unk4 = 1;
     temp_v0->unkC = 0;
 }
@@ -479,7 +524,7 @@ void func_800629D4(void) {
 /*
 aa1* func_8006526C(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7, s32 arg8, s32 arg9) {
     aa1* temp_v0;
-    aa2* temp_v1;
+    d8006266c* temp_v1;
 
     temp_v0 = func_800613EC(0, 24, &func_80065088);
     if (temp_v0 == NULL) {
@@ -492,12 +537,12 @@ aa1* func_8006526C(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f
     temp_v1->unkC = (s32) D_800FE190;
     temp_v1->unk10 = (s32) D_800FE194;
     temp_v1->unk14 = (s32) D_800FE198;
-    temp_v0->unk10 = arg0;
-    temp_v0->unk14 = arg1;
-    temp_v0->unk18 = arg2;
-    temp_v0->unk1C = arg3;
-    temp_v0->unk20 = arg4;
-    temp_v0->unk24 = arg5;
+    temp_v0->unk_10 = arg0;
+    temp_v0->unk_14 = arg1;
+    temp_v0->unk_18 = arg2;
+    temp_v0->unk_1C = arg3;
+    temp_v0->unk_20 = arg4;
+    temp_v0->unk_24 = arg5;
     temp_v0->unk0 = arg9;
     temp_v0->unk30 = (f32) arg8;
     temp_v0->unkC = 0.0f;
@@ -519,14 +564,14 @@ aa1* func_8006526C(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80065C00.s")
 
 aa1* func_80065CAC(f32 arg0) {
-    aa1* temp_v0;
+    aa1* temp_v0 = func_800613EC(0, 0, &func_80065C00);
 
-    temp_v0 = func_800613EC(0, 0, &func_80065C00);
     if (temp_v0 == NULL) {
         return temp_v0;
     }
+
     temp_v0->unkC = 0.0f;
-    temp_v0->unk30 = arg0;
+    temp_v0->unk_30 = arg0;
     return temp_v0;
 }
 
@@ -625,11 +670,11 @@ void func_80069858(func_80069858_arg0* arg0, s32 arg1) {
 
 void func_8006B96C(f32 arg0, s32 arg1, s32 arg2) {
     aa1* temp_v0 = func_800613EC(0, 8, func_8006AD34);
-    aa2* temp_v1;
+    d8006266c* temp_v1;
     if (temp_v0 != 0) {
-        temp_v1 = temp_v0->unk38;
+        temp_v1 = temp_v0->unk_38;
         temp_v0->unkC = 0.0f;
-        temp_v0->unk30 = arg0;
+        temp_v0->unk_30 = arg0;
         temp_v1->unk0 = arg1;
         temp_v1->unk4 = arg2;
     }
@@ -800,7 +845,7 @@ void func_80072D34(void) {
     if (temp_v0 != NULL) {
         temp_v0->unk0 = 1;
         temp_v0->unkC = 0.0f;
-        temp_v0->unk30 = 0.0f;
+        temp_v0->unk_30 = 0.0f;
         func_8008BD98(23);
     }
 }
@@ -814,9 +859,9 @@ void func_80073090(void) {
     if (temp_v0 != 0) {
         D_800F0B54 = s;
         temp_v0->unk0 = -1;
-        temp_v0->unk18 = 0.0f;
+        temp_v0->unk_18 = 0.0f;
         temp_v0->unkC = 0.0f;
-        temp_v0->unk30 = 0.0f;
+        temp_v0->unk_30 = 0.0f;
     }
 }
 
@@ -847,11 +892,11 @@ void func_80073FD8(void) {
     aa1* temp_v0 = func_800613EC(0, 0, &func_80073C3C);
     if (temp_v0 != 0) {
         temp_v0->unk0 = 0;
-        temp_v0->unk10 = 0.0f;
-        temp_v0->unk14 = 0.0f;
-        temp_v0->unk18 = 0.0f;
+        temp_v0->unk_10 = 0.0f;
+        temp_v0->unk_14 = 0.0f;
+        temp_v0->unk_18 = 0.0f;
         temp_v0->unkC = 0;
-        temp_v0->unk1C = 0.0f;
+        temp_v0->unk_1C = 0.0f;
     }
 }
 
@@ -956,12 +1001,12 @@ void func_8007A25C(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4) {
 
     temp_v0 = func_800613EC(0, 0, &func_80079FC4);
     if (temp_v0 != NULL) {
-        temp_v0->unk10 = arg0;
-        temp_v0->unk14 = arg1;
-        temp_v0->unk18 = arg2;
-        temp_v0->unk1C = arg3;
+        temp_v0->unk_10 = arg0;
+        temp_v0->unk_14 = arg1;
+        temp_v0->unk_18 = arg2;
+        temp_v0->unk_1C = arg3;
         temp_v0->unkC = 0.0f;
-        temp_v0->unk30 = (f32) (1.0f / arg4);
+        temp_v0->unk_30 = (f32) (1.0f / arg4);
     }
 }
 
@@ -1176,7 +1221,7 @@ s32 func_800849D4(s32 arg0) {
     return arg0;
 }
 
-void func_800849DC(s32 arg0, tongue* playerTongue, playerActor* player, unk8016AA98* unk) {
+void func_800849DC(s32 arg0, Tongue* playerTongue, playerActor* player, unk8016AA98* unk) {
     func_80056F48(arg0, playerTongue, player, unk);
     D_800F6880 = arg0;
 }

@@ -8,12 +8,9 @@ f32 __sinf(f32);
 f32 __sqrtf(f32);
 f32 __cosf(f32);
 void normalizeDegrees(f32*);
-void leoDrive_reset(s32);
+void leoDrive_reset(void*);
 
-
-
-
-
+extern s32 osMotorInit(OSMesgQueue *, OSPfs *, int);
 void func_80025C50(void);
 void func_80025CB8(void*);
 void func_80025D80(void*);
@@ -46,7 +43,7 @@ f32 func_8002F5C4(s32, s32, s32, s32);
 s32 func_8002F6DC(f32, f32*, f32*);
 void func_8002F7F0(void);
 void func_8002F884(s32, s32);
-void func_8002F960(unk_8002F960*);
+void func_8002F960(Tongue*);
 void func_8002F9BC(s32);
 
 s32 func_80030DCC(f32, f32, s32);
@@ -55,7 +52,7 @@ void func_800312B0(s32);
 void func_800312FC(Actor*, f32);
 void func_800313BC(s32, f32); //actor kill
 void func_80031518(Actor*);
-void func_80031DB0(playerActor*, tongue*, s32);
+void func_80031DB0(playerActor*, Tongue*, s32);
 s32 func_80037504(Actor*);
 void func_800382F4(Actor*);
 void func_800383A0(void);
@@ -218,8 +215,8 @@ void* func_80056D30(s32);
 void func_80056DF4(unkStruct02*, unkStruct02*);
 void func_80056EB4(void);
 void* func_80056EE4(s32);
-s32 func_80056F24(s32);
-void func_80056F48(s32, tongue*, playerActor*, unk8016AA98*);
+s32 func_80056F24(void*);
+void func_80056F48(s32, Tongue*, playerActor*, unk8016AA98*);
 void func_80058748(f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, s32);
 s32 func_80057010(s32);
 s32 func_8009603C(s32, s32);
@@ -251,7 +248,7 @@ void func_80061514(func_80069858_arg0*);
 void func_800615A4(void);
 void func_800619F8(f32, f32, f32, s32, s32);
 void func_8006202C(void);
-void func_8006266C(argd8006266c*);
+void func_8006266C(d8006266c*);
 void func_800629C4(void);
 void func_800629D4(void);
 aa1* func_80064F94(f32, f32, f32, s32, f32, f32, f32, f32, s32, s32);
@@ -320,7 +317,7 @@ void func_80083F08(void);
 void func_80083F10(void);
 void func_80084788(void);
 s32 func_800849D4(s32);
-void func_800849DC(s32 arg0, tongue* playerTongue, playerActor* player, unk8016AA98* unk);
+void func_800849DC(s32 arg0, Tongue* playerTongue, playerActor* player, unk8016AA98* unk);
 s32 func_80084B30(void);
 void func_80084F80(s32, s32);
 void func_80084FC0(s32);
@@ -410,7 +407,7 @@ s32 func_800CF080(s32, f32);
 void func_800CFDB8(playerActor*);
 void func_800CFF64(playerActor*);
 
-void func_800D0708(playerActor*, tongue*); //PLAYER PROCESS
+void func_800D0708(playerActor*, Tongue*); //PLAYER PROCESS
 void func_800D7460(char*, ...);
 s32 func_800D75B4(unkB2860*, s32);
 void func_800D799C(unkB2860*, s32, char*);

@@ -15,6 +15,7 @@
         "xstdio.h": "c",
         "controller.h": "c",
         "guint.h": "c",
-        "synthinternals.h": "c"
+        "synthinternals.h": "c",
+        "variables.jp.h": "c"
     }
 }
