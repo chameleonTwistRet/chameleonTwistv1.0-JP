@@ -23,7 +23,6 @@ extern char D_8010CA1C[];
 extern char D_8010CA54[];
 extern Addr D_8C26A0;
 
-//arg0 is a pointer to the string "mem err!\n"
 void func_80055BB0(char* arg0, ...) {
 
 }
@@ -43,7 +42,7 @@ s32 func_80055BD8(void) {
 void func_80055C04(void) {
     s32 i;
     
-    __osActiveQueue2 = (OSThread*)1;
+    D_800F68A8 = 1;
     
     for (i = 0; i < 4; i++) {
         D_800F6888[i] = -1;
@@ -52,21 +51,51 @@ void func_80055C04(void) {
 }
 
 void func_80055C74(void) {
-    __osActiveQueue2 = (OSThread*)0;
+    D_800F68A8 = 0;
 }
 
 void func_80055C80(void) {
-    __osActiveQueue2 = (OSThread*)1;
+    D_800F68A8 = 1;
 }
 
-OSThread* func_80055C90(void) {
-    return __osActiveQueue2;
+s32 func_80055C90(void) {
+    return D_800F68A8;
 }
 
-//https://decomp.me/scratch/5d7ug
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80055C9C.s")
+void func_80055C9C(arg* arg0) {
+    s32 i;
+    f32 temp_f0;
+    f32 temp_f2;
 
-//https://decomp.me/scratch/c85I6
+    for (i = 0; i < 4; i++) {
+        D_800F6888[i] = D_800F6898[i];
+        D_800F6898[i] = arg0[i].unk_00;
+        temp_f0 = arg0[i].unk6 * arg0[i].unk6;
+        temp_f2 = (arg0[i].unk8 * arg0[i].unk8);
+        if (__sqrtf(temp_f0 + temp_f2) > 42.0) {
+            if (arg0[i].unk6 < -0x1E) {
+                D_800F6898[i] |= 0x200;
+            } else if (arg0[i].unk6 >= 0x1F) {
+                D_800F6898[i] |= 0x100;
+            }
+            if (arg0[i].unk8 < -0x1E) {
+                D_800F6898[i] |= 0x400;
+            } else if (arg0[i].unk8 >= 0x1F) {
+                D_800F6898[i] |= 0x800;
+            }
+        }
+
+        if (D_800F68A8 == NULL) {
+            if ((D_80168DA8[i].active > 0)) {
+                if (D_80168DA8[i].exists > 0) {
+                    func_8004E760(&arg0[i]);
+                }
+            }
+        }
+    }
+}
+
+//https://decomp.me/scratch/rzD9G
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80055E5C.s")
 
 void func_80055EEC(s32 arg0) {

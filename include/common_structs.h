@@ -102,8 +102,8 @@ typedef struct playerActor {
     /* 0x108 */ f32 unk_108;
     /* 0x10C */ f32 timerDown;
     /* 0x110 */ f32 reticleSize;
-    /* 0x114 */ u32 active; //0x00 = no, 0x01 = yes
-    /* 0x118 */ u32 exists; //0x00 = no, 0x01 = yes
+    /* 0x114 */ s32 active; //0x00 = no, 0x01 = yes
+    /* 0x118 */ s32 exists; //0x00 = no, 0x01 = yes
     /* 0x11C */ u32 power; //enum of power it has
     /* 0x120 */ u32 powerTimer; 
     /* 0x124 */ u32 powerTimerTill; 
@@ -667,15 +667,14 @@ typedef struct unk_D_801FFB90 {
     /* 0x10 */ s32 unk_10;
 } unk_D_801FFB90; //sizeof 0x14
 
-typedef struct arg{
-    /* 0x00 */ s16 unk0;
-    /* 0x02 */ s16 unk2;
-    /* 0x04 */ s16 unk4;
+typedef struct arg {
+    /* 0x00 */ u16 unk_00;
+    /* 0x02 */ char pad2[4];
     /* 0x06 */ s16 unk6;
-    /* 0x08 */ s16 unk8;
+    /* 0x08 */ s16 unk8; 
     /* 0x0A */ s16 unkA;
-    /* 0x0C */ f32 unkC;
-} arg; //sizeof 0x10
+    /* 0x10 */ char padC[4];
+} arg;
 
 typedef struct arb{
     /* 0x00 */ s32 unk0;

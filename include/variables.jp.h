@@ -23,6 +23,7 @@ extern Tongue* TonguePointer;
 extern unk0* D_801FFB84;
 extern s32 D_800FE158;
 extern aa1* D_80176F48;
+extern s32 D_800F68A8;
 extern s32 D_800F06B0;
 extern s32 D_800F06EC;
 extern s32 D_800F0B38;

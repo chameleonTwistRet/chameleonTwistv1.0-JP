@@ -124,7 +124,7 @@ rspbootTextStart = 0x800EE1C0;
 rspbootTextEnd = 0x800EE290;
 rngSeed = 0x800F6884;
 __osActiveQueue = 0x80109E0C;
-__osActiveQueue2 = 0x800F68A8;
+D_800F68A8 = 0x800F68A8;
 
 osClockRate = 0x80109010;
 __osSiAccessQueueEnabled = 0x80109010;

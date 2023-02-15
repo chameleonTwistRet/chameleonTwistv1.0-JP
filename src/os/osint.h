@@ -28,7 +28,6 @@ extern int     __osSpDeviceBusy(void);
 
 extern OSThread *__osRunningThread;
 extern OSThread *__osActiveQueue;
-extern OSThread *__osActiveQueue2;
 extern OSThread *__osFaultedThread;
 extern OSThread *__osRunQueue;
 
