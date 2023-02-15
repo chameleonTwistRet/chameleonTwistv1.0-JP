@@ -93,7 +93,7 @@ void func_8004E760(arg* arg0) {
     arg0->unk8 = 0;
     arg0->unk4 = 0;
     arg0->unk2 = 0;
-    arg0->unk0 = 0;
+    arg0->unk_00 = 0;
     arg0->unk6 = arg0->unk8;
     arg0->unkC = 0.0f;
 }

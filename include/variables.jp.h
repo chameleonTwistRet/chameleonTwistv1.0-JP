@@ -117,7 +117,7 @@ extern u8 D_800FF650;
 extern s16 D_800FF854[];
 extern s16 D_800FFDF0;
 extern s16 D_800FFDF4;
-extern s32 D_800FFEB4;
+extern s32 gameModeCurrent;
 extern s32 D_800FFEB8;
 extern s16 D_80100FD0;
 extern f32 D_8010881C;

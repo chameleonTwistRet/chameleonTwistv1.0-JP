@@ -295,7 +295,7 @@ void func_8002CDBC(arg* arg0) {
     for (i = 0; i < 4; i++) {
         if (D_80168D78[i] != 0) {
             D_80168D78[i] = 1;
-            func_8004CD9C(i, &arg0[i].unk0);
+            func_8004CD9C(i, &arg0[i].unk_00);
         }
     }
 }

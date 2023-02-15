@@ -25,17 +25,17 @@ parser.add_argument(
     help="run diff.py on the result with the provided arguments"
 )
 parser.add_argument(
-    "-m", "--make", help="run make before finding difference(s)", action="store_true"
+    "-m", "--make", help="run ninja before finding difference(s)", action="store_true"
 )
 args = parser.parse_args()
 
 diff_count = args.count
 
 if args.make:
-    check_call(["make", "build/chameleontwist.jp.z64"])
+    check_call(["ninja", "ver/current/build/papermario.z64"])
 
 baseimg = f"baserom.jp.z64"
-basemap = f"expected/build/chameleontwist.jp.map"
+basemap = f"expected/build/papermario.map"
 
 myimg = f"build/chameleontwist.jp.z64"
 mymap = f"build/chameleontwist.jp.map"

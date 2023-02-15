@@ -86,7 +86,7 @@ void func_80055C9C(arg* arg0) {
         }
 
         if (D_800F68A8 == NULL) {
-            if ((D_80168DA8[i].active > 0)) {
+            if (((s32)D_80168DA8[i].active > 0)) { //cast required
                 if (D_80168DA8[i].exists > 0) {
                     func_8004E760(&arg0[i]);
                 }

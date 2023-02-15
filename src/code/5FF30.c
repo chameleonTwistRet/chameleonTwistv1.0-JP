@@ -240,7 +240,7 @@ void func_8008A208(void) {
 }
 
 void func_8008A2B0(void) {
-    if ((D_800FFEB4 == 0) && (D_80174874 == 0)) {
+    if ((gameModeCurrent == 0) && (D_80174874 == 0)) {
         func_8008A208();
     }
 }
@@ -263,7 +263,7 @@ s32 func_8008BA58(void) {
     unk801FCA20* temp_t2;
     s32 anotherTemp;
 
-    if ((D_800FFEB4 == 4) || (D_800FFEB4 == 5)) {
+    if ((gameModeCurrent == 4) || (gameModeCurrent == 5)) {
         return 0;
     }
 
@@ -281,7 +281,7 @@ s32 func_8008BA58(void) {
 
     if ((D_800FF5F8 == 0) && (D_800FF604 != 0)) {
         if ((alSeqpGetState(D_800FF614) != 1) || (D_800FF608 != 0)) {
-            if ((D_800FFEB4 != 4) && (D_800FFEB4 != 5)) {
+            if ((gameModeCurrent != 4) && (gameModeCurrent != 5)) {
                 alSeqpPlay(D_800FF614);
             }
             alSeqpSetVol(D_800FF614, D_801FCA22);
@@ -390,7 +390,7 @@ s32 func_8008BEDC(void) {
 
 s32 func_8008BF20(void) {
     D_801FCA20 = D_800FF4D0[D_800FF624.unk_00];
-    if ((D_800FF614->state != 1) && (D_800FFEB4 != 4) && (D_800FFEB4 != 5)) {
+    if ((D_800FF614->state != 1) && (gameModeCurrent != 4) && (gameModeCurrent != 5)) {
         alSeqpPlay(D_800FF614);
     }
     return 0;
@@ -433,7 +433,7 @@ void func_8008C070(s32 arg0) {
 void func_8008C1C8(s32* arg0) {
     s32 sp4C = *arg0;
 
-    if ((D_800F06DC[0] == 5) && (D_800FFEB4 == 0)) {
+    if ((D_800F06DC[0] == 5) && (gameModeCurrent == 0)) {
         if ((D_80176F58 == 0) && (D_801B1EEC != 0)) {
             if ((D_801B1EEE != 0) && (D_80174874 != 8)) {
                 func_80061308(255, 255, 0, 255, 255, 0, 0, 255, 255, 255, 0, 255, 255, 0, 0, 255);
@@ -462,7 +462,7 @@ void func_8008C35C(s32 arg0) {
 s32 func_8008C364(Actor* arg0, s32 arg1, s32 arg2, s32 arg3) {
     s32 var_v0;
 
-    if (D_800FFEB4 == 7) {
+    if (gameModeCurrent == 7) {
         var_v0 = func_80087ED0(arg1, 0, 0, 0, 1, 0x10);
     } else {
         var_v0 = func_80087ED0(arg1, &arg0->posX, &arg0->posY, &arg0->posZ, 0, 0);
