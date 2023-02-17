@@ -307,7 +307,6 @@ extern s16 D_801B1EEC;
 extern s16 D_801B1EEE;
 extern unk801FCA20 D_801FCA20;
 extern unk801FCA20 D_800FF4D0[];
-extern ALSeqPlayer* D_800FF614;
 extern s16 D_801FCA24;
 extern s16 D_801FCA48;
 extern ALSeq* D_800FF618;

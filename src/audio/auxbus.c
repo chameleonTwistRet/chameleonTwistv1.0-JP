@@ -1,5 +1,25 @@
 #include "common.h"
+#include <libaudio.h>
+#include "PR/synthInternals.h"
 
-#pragma GLOBAL_ASM("asm/nonmatchings/audio/auxbus/func_800EB1F0.s")
+s32 alAuxBusParam(void *filter, s32 paramID, void *param)
+{
+    ALAuxBus     *m = (ALAuxBus *) filter;
+    ALFilter    **sources = m->sources;
+    
+    switch (paramID) {
 
-#pragma GLOBAL_ASM("asm/nonmatchings/audio/auxbus/func_800EB220.s")
+        case (AL_FILTER_ADD_SOURCE):
+            sources[m->sourceCount++] = (ALFilter *) param;
+            break;
+            
+        default:
+            /* ??? */
+            break;
+    }
+
+    return 0;
+    
+}
+
+#pragma GLOBAL_ASM("asm/nonmatchings/audio/auxbus/alAuxBusPull.s")

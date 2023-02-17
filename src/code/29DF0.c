@@ -8,6 +8,20 @@ typedef struct unkTextStruct {
 char strings[4][0x64];
 } unkTextStruct;
 
+typedef struct unkarg0_2 {
+/* 0x00*/ f32 unk_00;
+/* 0x04 */ f32 unk_04;
+/* 0x08 */ f32 unk_08;
+/* 0x0C */ char unk_0C[4];
+/* 0x10 */ f32 unk_10;
+/* 0x14 */ f32 unk_14;
+/* 0x18 */ f32 unk_18;
+/* 0x18 */ f32 unk_1C;
+/* 0x18 */ f32 unk_20;
+/* 0x18 */ f32 unk_24;
+/* 0x18 */ f32 unk_28;
+} unkarg0_2;
+
 void func_8007F0D8(f32, f32, f32, f32, f32, s32, s32);   /* extern */
 void func_8007EBE4(f32, f32, f32, f32, f32, s32, s32);   /* extern */
 
@@ -101,11 +115,20 @@ void func_8004ECA8(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/29DF0/func_8004FE90.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/29DF0/func_8004FF1C.s")
+void func_8004FF1C(unkarg0_2* arg0, f32* arg1, f32* arg2) {
+    *arg1 = (arg0->unk_24 * 100.0f) + (arg0->unk_14 * 0);
+    *arg2 = (arg0->unk_28 * 100.0f) + (arg0->unk_18 * 0);
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/29DF0/func_8004FF64.s")
+void func_8004FF64(unkarg0_2* arg0, f32* arg1, f32* arg2) {
+    *arg1 = (arg0->unk_20 * 100.0f) + (arg0->unk_00 * 0);
+    *arg2 = (arg0->unk_28 * 100.0f) + (arg0->unk_08 * 0);
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/29DF0/func_8004FFAC.s")
+void func_8004FFAC(unkarg0_2* arg0, f32* arg1, f32* arg2) {
+    *arg1 = (arg0->unk_10 * 0) + (arg0->unk_00 * 100.0f);
+    *arg2 = (arg0->unk_14 * 0) + (arg0->unk_04 * 100.0f);
+}
 
 void func_8004FFF0(void) {
     D_800F06B0 = 0;

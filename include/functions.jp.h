@@ -191,7 +191,7 @@ void func_8004E73C(void);
 void func_8004E760(arg*);
 void func_8004ECA8(void);
 void func_8004FFFC(void);
-
+void func_80073FD8(void);
 f32 func_80051678(s32, f32*, f32, f32);
 void func_8005171C(void);
 void func_800523E4(f32, f32, f32, f32, s32, s32, s32); 

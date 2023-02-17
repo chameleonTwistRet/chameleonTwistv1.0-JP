@@ -204,7 +204,7 @@ typedef struct Collision {
 
 //camera 0x8016AA98
 //camera copy 0x801768A0
-typedef struct camera{//take these with a grain of salt
+typedef struct camera {//take these with a grain of salt
     /* 0x00 */ s32 unk0;
     /* 0x04 */ Vec3f f1;
     /* 0x10 */ Vec3f f2;

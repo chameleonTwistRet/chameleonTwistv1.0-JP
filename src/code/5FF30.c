@@ -1,6 +1,12 @@
 #include "common.h"
 #include "PR/libaudio.h"
 
+extern char D_8010E9D0[];
+typedef struct unkarg0 {
+    char unk_00[0x6A];
+    s16 unk6A;
+} unkarg0;
+
 //jump table
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80084B30.s")
 
@@ -307,7 +313,7 @@ s32 func_8008BA58(void) {
     if (D_801FC9B4 != 0) {
         alSeqpSetTempo(D_800FF614, D_801FC9A8);
     } else {
-        D_801FC9B0 = func_800DF680(D_800FF614);
+        D_801FC9B0 = alCSPGetTempo((ALCSPlayer*)D_800FF614);
     }
     
     temp_v0 = alSeqpGetState(D_800FF614);
@@ -407,7 +413,7 @@ s32 func_8008BFE0(s32 arg0) {
 }
 
 s32 func_8008C01C(void) {
-    return func_800DF680(D_800FF614);
+    return alCSPGetTempo((ALCSPlayer*)D_800FF614);
 }
 
 s32 func_8008C040(s32 arg0) {
@@ -1181,7 +1187,18 @@ void func_800A1F3C(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A22D4.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A250C.s")
+void func_800A250C(unkarg0* arg0) {
+    if (arg0->unk6A > 0) {
+        func_80061308(0x6EU, 0xD2U, 0xFF, 0xFF, 0, 0xDE, 0, 0xFF, 0x6E, 0xD2, 0xFF, 0xFF, 0, 0xDE, 0, 0xFF);
+        func_800803F0(72.0f, 176.0f, 0.0f, 1.0f, D_8010E9D0, 1);
+    }
+    
+    arg0->unk6A++;
+    
+    if (arg0->unk6A >= 0x11) {
+        arg0->unk6A = -0xA;
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A25F0.s")
 
