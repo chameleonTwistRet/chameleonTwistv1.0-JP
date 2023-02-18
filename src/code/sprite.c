@@ -18,6 +18,18 @@ typedef struct unk800F73C8 {
     char unk_70[8];
 } unk800F73C8; //sizeof 0x74
 
+typedef struct unk80174880 {
+/* 0x00 */ s32 unk_00[4];
+/* 0x10 */ char unk_10[0x18];
+/* 0x28 */ s32 unk_28[4];
+/* 0x38 */ char unk_38[0x18];
+/* 0x50 */ s32 unk_50[4];
+/* 0x60 */ char unk_60[0x18];
+/* 0x78 */ s32 unk_78;
+/* 0x7C */ s32 unk_7C;
+} unk80174880;
+
+extern unk80174880 D_80174880[];
 extern unk800F73C8 D_800F73C8[];
 extern char D_8010CA1C[];
 extern char D_8010CA54[];
@@ -1162,9 +1174,9 @@ s32 func_8007C500(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8007C7FC.s")
 
-void func_8007CDBC() {
-    D_80174880[1] = 0;
-    D_80174880[2] = 0;
+void func_8007CDBC(void) {
+    D_80174880->unk_00[1] = 0;
+    D_80174880->unk_00[2] = 0;
     func_8008BD98(23);
 }
 

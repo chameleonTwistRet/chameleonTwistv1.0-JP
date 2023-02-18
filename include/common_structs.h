@@ -427,8 +427,13 @@ typedef struct unk802000C84 {
 } unk802000C84; //sizeof 0x06 (unk size)
 
 typedef struct unk8016AA98 {
-    /* 0x00 */ char unk_00[0x74];
-} unk8016AA98; //unk size
+    /* 0x00 */ char pad0[0x28];
+    /* 0x28 */ f32 unk28;                           /* inferred */
+    /* 0x2C */ f32 unk2C;                           /* inferred */
+    /* 0x30 */ f32 unk30;                           /* inferred */
+    /* 0x34 */ Vec3f unk34;                           /* inferred */
+    /* 0x40 */ char pad40[0x34];                    /* maybe part of unk3C[0xE]? */
+} unk8016AA98;                                      /* size = 0x74 */
 
 typedef struct unkFlags {
     /* 0x00 */ u8 flags0;
