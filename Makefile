@@ -275,23 +275,23 @@ $(BUILD_DIR)/%.s.o: %.s
 # uncompressed images
 $(BUILD_DIR)/%.rgba32.png: %.rgba32.png
 	$(V)mkdir -p $$(dirname $@)
-	$(IMG_CONVERT) rgba32 $< $@
+	$(V)$(IMG_CONVERT) rgba32 $< $@
 
 $(BUILD_DIR)/%.rgba16.png: %.rgba16.png
 	$(V)mkdir -p $$(dirname $@)
-	$(IMG_CONVERT) rgba16 $< $@
+	$(V)$(IMG_CONVERT) rgba16 $< $@
 
 $(BUILD_DIR)/%.i4.png: %.i4.png
 	$(V)mkdir -p $$(dirname $@)
-	$(IMG_CONVERT) i4 $< $@
+	$(V)$(IMG_CONVERT) i4 $< $@
 
 $(BUILD_DIR)/%.ia4.png: %.ia4.png
 	$(V)mkdir -p $$(dirname $@)
-	$(IMG_CONVERT) ia4 $< $@
+	$(V)$(IMG_CONVERT) ia4 $< $@
 
 $(BUILD_DIR)/%.i8.png: %.i8.png
 	$(V)mkdir -p $$(dirname $@)
-	$(IMG_CONVERT) i8 $< $@
+	$(V)$(IMG_CONVERT) i8 $< $@
 
 $(BUILD_DIR)/%.ia8.png: %.ia8.png
 	$(V)mkdir -p $$(dirname $@)
@@ -301,22 +301,18 @@ $(BUILD_DIR)/%.ia8.png: %.ia8.png
 # 	$(V)mkdir -p $$(dirname $@)
 # 	$(IMG_CONVERT) palette $< $@
 
-$(BUILD_DIR)/%.ci8.pal: %.ci8.png
-	$(V)mkdir -p $$(dirname $@)
-	$(IMG_CONVERT) palette $@ $<
-
-$(BUILD_DIR)/%.ci8.png: %.ci8.png
-	$(V)mkdir -p $$(dirname $@)
-	$(IMG_CONVERT) ci8 $< $@
-	$(IMG_CONVERT) palette $< $@.pal
-	echo 'if [ -e "$@.pal" ]; then mv "$@.pal" "$(@:.png=.pal)"; fi' | sh
+# $(BUILD_DIR)/%.ci8.png: %.ci8.png
+# 	$(V)mkdir -p $$(dirname $@)
+# 	$(IMG_CONVERT) ci8 $< $@
+# 	$(IMG_CONVERT) palette $< $@.pal
+# 	echo 'if [ -e "$@.pal" ]; then mv "$@.pal" "$(@:.png=.pal)"; fi' | sh
 
 # BUILD_DIR prefix to suppress circular dependency
 $(BUILD_DIR)/%.png.o: $(BUILD_DIR)/%.png
 	$(V)$(LD) -r -b binary -o $@ $<
 
-$(BUILD_DIR)/%.pal.o: $(BUILD_DIR)/%.pal
-	$(LD) -r -b binary -o $@ $<
+# $(BUILD_DIR)/%.pal.o: $(BUILD_DIR)/%.pal
+# 	$(LD) -r -b binary -o $@ $<
 
 $(BUILD_DIR)/%.bin.o: %.bin
 	$(V)$(LD) -r -b binary -o $@ $<
