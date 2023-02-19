@@ -67,9 +67,14 @@ I8_O_FILES      = $(foreach file,$(I8_FILES),$(BUILD_DIR)/$(file:.png=.png.o))
 IA8_FILES        = $(shell find assets/ -name "*.ia8.png" 2> /dev/null)
 IA8_O_FILES      = $(foreach file,$(IA8_FILES),$(BUILD_DIR)/$(file:.png=.png.o))
 
+CI8_FILES        = $(shell find assets/ -name "*.ci8.png" 2> /dev/null)
+CI8_O_FILES      = $(foreach file,$(CI8_FILES),$(BUILD_DIR)/$(file:.png=.png.o))
+
+CI8_PAL_FILES        = $(shell find assets/ -name "*.ci8.pal" 2> /dev/null)
+CI8_PAL_O_FILES      = $(foreach file,$(CI8_PAL_FILES),$(BUILD_DIR)/$(file:.ci8.pal=.ci8.pal.o))
 
 
-IMAGE_O_FILES = $(RGBA32_O_FILES) $(RGBA16_O_FILES) $(I4_O_FILES) $(IA4_O_FILES) $(I8_O_FILES) $(IA8_O_FILES)
+IMAGE_O_FILES = $(RGBA32_O_FILES) $(RGBA16_O_FILES) $(I4_O_FILES) $(IA4_O_FILES) $(I8_O_FILES) $(IA8_O_FILES) $(CI8_O_FILES) $(CI8_PAL_O_FILES)
 
 
 # Tools
@@ -163,7 +168,6 @@ $(BUILD_DIR)/$(SRC_DIR)/libc/ll.c.o: LIBC_MIPS_VERSION := -mips3 -32
 #$(BUILD_DIR)/$(SRC_DIR)/libc/string.c.o: LIBC_OPT_FLAGS := -O2
 
 
-
 ### Targets
 
 all: dirs $(VERIFY)
@@ -197,23 +201,21 @@ distclean: clean
 	$(V)rm -f $(LD_SCRIPT)
 
 expected: verify
-	$(RM) -rf expected/
-	mkdir -p expected/
-	cp -r build expected/build
+	$(V)$(RM) -rf expected/
+	$(V)mkdir -p expected/
+	$(V)cp -r build expected/build
 
 ### Recipes
 
 .baserom.$(VERSION).ok: baserom.$(VERSION).z64
-	@echo "$$(cat $(BASENAME).$(VERSION).sha1)  $<" | sha1sum --check
-	@touch $@
+	echo "$$(cat $(BASENAME).$(VERSION).sha1)  $<" | sha1sum --check
+	touch $@
 
 $(BUILD_DIR)/:
-	@mkdir -p $(BUILD_DIR)
+	mkdir -p $(BUILD_DIR)
 
 $(TARGET).elf: $(LD_SCRIPT) $(O_FILES) $(IMAGE_O_FILES)
 	$(V)$(LD) $(LD_FLAGS) -o $@
-
-
 
 $(BUILD_DIR)/$(SRC_DIR)/%.c.o: $(SRC_DIR)/%.c
 	$(V)$(PRINT)$(GREEN)Compiling C file: $(ENDGREEN)$(BLUE)$<$(ENDBLUE)$(ENDLINE)
@@ -232,6 +234,13 @@ $(BUILD_DIR)/$(SRC_DIR)/gu/%.c.o: $(SRC_DIR)/gu/%.c
 	$(V)$(CC_CHECK) $<
 	$(V)$(CC) -c $(CFLAGS) $(MIPS_VERSION) $(GU_OPT_FLAGS) -o $@ $<
 	$(V)$(OBJDUMP_CMD)
+
+#non asm-processor recipe
+# $(BUILD_DIR)/$(SRC_DIR)/gu/align.c.o: $(SRC_DIR)/gu/align.c
+# 	$(V)$(PRINT)$(GREEN)Compiling C file: $(ENDGREEN)$(BLUE)$<$(ENDBLUE)$(ENDLINE)
+# 	$(V)$(TOOLS_DIR)/ido_5.3/usr/lib/cc -c $(CFLAGS) -O3 $(MIPSISET) -o $@ $<
+# 	$(V)$(CC) -c $(CFLAGS) $(OPT_FLAGS) $(MIPSISET) -o $@ $<
+# 	$(V)$(OBJDUMP_CMD)
 
 $(BUILD_DIR)/$(SRC_DIR)/audio/%.c.o: $(SRC_DIR)/audio/%.c
 	$(V)$(PRINT)$(GREEN)Compiling C file: $(ENDGREEN)$(BLUE)$<$(ENDBLUE)$(ENDLINE)
@@ -272,34 +281,39 @@ $(BUILD_DIR)/%.rgba16.png: %.rgba16.png
 	$(V)mkdir -p $$(dirname $@)
 	$(V)$(IMG_CONVERT) rgba16 $< $@
 
-
 $(BUILD_DIR)/%.i4.png: %.i4.png
 	$(V)mkdir -p $$(dirname $@)
 	$(V)$(IMG_CONVERT) i4 $< $@
-
 
 $(BUILD_DIR)/%.ia4.png: %.ia4.png
 	$(V)mkdir -p $$(dirname $@)
 	$(V)$(IMG_CONVERT) ia4 $< $@
 
-
 $(BUILD_DIR)/%.i8.png: %.i8.png
 	$(V)mkdir -p $$(dirname $@)
 	$(V)$(IMG_CONVERT) i8 $< $@
 
-
 $(BUILD_DIR)/%.ia8.png: %.ia8.png
 	$(V)mkdir -p $$(dirname $@)
-	$(V)$(IMG_CONVERT) ia8 $< $@
+	$(IMG_CONVERT) ia8 $< $@
 
+# $(BUILD_DIR)/%.ci8.pal: %.ci8.png
+# 	$(V)mkdir -p $$(dirname $@)
+# 	$(IMG_CONVERT) palette $< $@
 
+# $(BUILD_DIR)/%.ci8.png: %.ci8.png
+# 	$(V)mkdir -p $$(dirname $@)
+# 	$(IMG_CONVERT) ci8 $< $@
+# 	$(IMG_CONVERT) palette $< $@.pal
+# 	echo 'if [ -e "$@.pal" ]; then mv "$@.pal" "$(@:.png=.pal)"; fi' | sh
 
 # BUILD_DIR prefix to suppress circular dependency
 $(BUILD_DIR)/%.png.o: $(BUILD_DIR)/%.png
 	$(V)$(LD) -r -b binary -o $@ $<
 
+# $(BUILD_DIR)/%.pal.o: $(BUILD_DIR)/%.pal
+# 	$(LD) -r -b binary -o $@ $<
 
-#where the binaries are maaaaade
 $(BUILD_DIR)/%.bin.o: %.bin
 	$(V)$(LD) -r -b binary -o $@ $<
 

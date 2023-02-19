@@ -192,7 +192,7 @@ extern unkStruct D_80172E88[];
 extern s32 D_80174758[];
 extern s32 D_80174864;
 extern s32 D_80174878;
-extern s32 D_80174880[0x20];
+//extern s32 D_80174880[0x20];
 extern s32 D_801748A0;
 extern s32 D_80174998;
 extern s32 D_8017499C;
