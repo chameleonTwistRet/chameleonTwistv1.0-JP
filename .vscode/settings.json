@@ -16,6 +16,9 @@
         "controller.h": "c",
         "guint.h": "c",
         "synthinternals.h": "c",
-        "variables.jp.h": "c"
+        "variables.jp.h": "c",
+        "include_asm.h": "c",
+        "macros.h": "c",
+        "enums.h": "c"
     }
 }

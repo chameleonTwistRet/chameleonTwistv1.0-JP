@@ -6,6 +6,6 @@
 #include "common_structs.h"
 #include "functions.jp.h"
 #include "variables.jp.h"
-#include "enums.h"
-
+//#include "enums.h"
+#include "macros.h"
 #endif

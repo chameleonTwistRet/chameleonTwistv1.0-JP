@@ -341,8 +341,8 @@ segments:
   - [0xA35C40, bin]  #endDL command from rgb2c
   #- [0xA35C48, palette, JungleLandText2.ci8]
   - [0xA35E48, bin]  #endDL command from rgb2c
-  - [0xA35E50, ci8, AntLandText2.ci8, 112, 24]
-  - [0xA368D8, palette, AntLandText2.ci8]
+  #- [0xA35E50, ci8, AntLandText2.ci8, 112, 24]
+  #- [0xA368D8, palette, AntLandText2.ci8]
   - [0xA36AD8, bin]
   # - [0xA369D8, bin]
   #- [0xA32A88, bin, jungleLandIA8Text]

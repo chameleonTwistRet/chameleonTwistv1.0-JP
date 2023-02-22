@@ -265,11 +265,11 @@ $(BUILD_DIR)/$(SRC_DIR)/libc/ll.c.o: $(SRC_DIR)/libc/ll.c
 
 # use modern gcc for data
 $(BUILD_DIR)/$(SRC_DIR)/data/%.c.o: $(SRC_DIR)/data/%.c
-	$(V)$(XGCC) -c $(GCC_FLAGS) -o $@ $<
+	$(XGCC) -c $(GCC_FLAGS) -o $@ $<
 
 $(BUILD_DIR)/%.s.o: %.s
 	$(V)$(PRINT)$(GREEN)Assembling asm file: $(ENDGREEN)$(BLUE)$<$(ENDBLUE)$(ENDLINE)
-	$(V)iconv --from UTF-8 --to EUC-JP $< | $(AS) $(ASFLAGS) -o $@
+	iconv --from UTF-8 --to EUC-JP $< | $(AS) $(ASFLAGS) -o $@
 
 
 # uncompressed images
@@ -297,20 +297,22 @@ $(BUILD_DIR)/%.ia8.png: %.ia8.png
 	$(V)mkdir -p $$(dirname $@)
 	$(V)$(IMG_CONVERT) ia8 $< $@
 
-$(BUILD_DIR)/%.ci8.pal: %.ci8.png
-	$(V)mkdir -p $$(dirname $@)
-	$(IMG_CONVERT) palette $< $@
+# $(BUILD_DIR)/%.ci8.pal: %.ci8.png
+# 	$(V)mkdir -p $$(dirname $@)
+# 	$(IMG_CONVERT) palette $< $@
 
-$(BUILD_DIR)/%.ci8.png: %.ci8.png
-	$(V)mkdir -p $$(dirname $@)
-	$(IMG_CONVERT) ci8 $< $@
+# $(BUILD_DIR)/%.ci8.png: %.ci8.png
+# 	$(V)mkdir -p $$(dirname $@)
+# 	$(IMG_CONVERT) ci8 $< $@
+# 	$(IMG_CONVERT) palette $< $@.pal
+# 	echo 'if [ -e "$@.pal" ]; then mv "$@.pal" "$(@:.png=.pal)"; fi' | sh
 
 # BUILD_DIR prefix to suppress circular dependency
 $(BUILD_DIR)/%.png.o: $(BUILD_DIR)/%.png
 	$(V)$(LD) -r -b binary -o $@ $<
 
-$(BUILD_DIR)/%.pal.o: $(BUILD_DIR)/%.pal
-	$(LD) -r -b binary -o $@ $<
+# $(BUILD_DIR)/%.pal.o: $(BUILD_DIR)/%.pal
+# 	$(LD) -r -b binary -o $@ $<
 
 $(BUILD_DIR)/%.bin.o: %.bin
 	$(V)$(LD) -r -b binary -o $@ $<
