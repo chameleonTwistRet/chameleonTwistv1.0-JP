@@ -295,24 +295,22 @@ $(BUILD_DIR)/%.i8.png: %.i8.png
 
 $(BUILD_DIR)/%.ia8.png: %.ia8.png
 	$(V)mkdir -p $$(dirname $@)
-	$(IMG_CONVERT) ia8 $< $@
+	$(V)$(IMG_CONVERT) ia8 $< $@
 
-# $(BUILD_DIR)/%.ci8.pal: %.ci8.png
-# 	$(V)mkdir -p $$(dirname $@)
-# 	$(IMG_CONVERT) palette $< $@
+$(BUILD_DIR)/%.ci8.pal: %.ci8.png
+	$(V)mkdir -p $$(dirname $@)
+	$(IMG_CONVERT) palette $< $@
 
-# $(BUILD_DIR)/%.ci8.png: %.ci8.png
-# 	$(V)mkdir -p $$(dirname $@)
-# 	$(IMG_CONVERT) ci8 $< $@
-# 	$(IMG_CONVERT) palette $< $@.pal
-# 	echo 'if [ -e "$@.pal" ]; then mv "$@.pal" "$(@:.png=.pal)"; fi' | sh
+$(BUILD_DIR)/%.ci8.png: %.ci8.png
+	$(V)mkdir -p $$(dirname $@)
+	$(IMG_CONVERT) ci8 $< $@
 
 # BUILD_DIR prefix to suppress circular dependency
 $(BUILD_DIR)/%.png.o: $(BUILD_DIR)/%.png
 	$(V)$(LD) -r -b binary -o $@ $<
 
-# $(BUILD_DIR)/%.pal.o: $(BUILD_DIR)/%.pal
-# 	$(LD) -r -b binary -o $@ $<
+$(BUILD_DIR)/%.pal.o: $(BUILD_DIR)/%.pal
+	$(LD) -r -b binary -o $@ $<
 
 $(BUILD_DIR)/%.bin.o: %.bin
 	$(V)$(LD) -r -b binary -o $@ $<

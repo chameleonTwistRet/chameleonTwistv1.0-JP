@@ -291,6 +291,14 @@ segments:
   - [0x2D359C, bin] #unkSize
   - [0x2D3A86, bin] #0x500 (reads a bit from previous element?)
   - [0x2D3F86, bin] #unkSize
+  - [0x480740, bin]
+  - [0x481A70, bin]
+  - [0x488210, bin]
+  - [0x488930, bin]
+  #- [0x4987F0, ci4, brick1.ci4, 64, 64]
+  - [0x498FF0, bin] #size of 8? (End DL command)
+  #- [0x498FF8, palette, brick1.ci4]
+  #- [0x4991F8, bin]
   - [0x9B30D0, bin] #size of 0x780
   - [0x9B3850, bin] #size of 0x200
   - [0x9B3A50, bin] #size of 0x640
@@ -314,31 +322,34 @@ segments:
   - [0x9DD170, bin] #unkSize
 
   - [0x9E7A80, rgba16, TitleScreen.rgba16, 320, 240]
-  - [0xA0D280, bin] #endDL command?
+  - [0xA0D280, bin] #endDL command from rgb2c
   - [0xA0D288, rgba16, StageSelectBackground.rgba16, 320, 240]
-  - [0xA32A88, bin] #endDL command?
+  - [0xA32A88, bin] #endDL command from rgb2c
   - [0xA32A90, ia8, JungleLandText.ia8, 104, 16]
-  - [0xA33110, bin] #endDL command?
+  - [0xA33110, bin] #endDL command from rgb2c
   - [0xA33118, ia8, AntLandText.ia8, 104, 16]
-  - [0xA33798, bin] #endDL command?
+  - [0xA33798, bin] #endDL command from rgb2c
   - [0xA337A0, ia8, BombLandText.ia8, 104, 16]
-  - [0xA33E20, bin] #endDL command?
+  - [0xA33E20, bin] #endDL command from rgb2c
   - [0xA33E28, ia8, DesertCastleText.ia8, 104, 16]
-  - [0xA344A8, bin] #endDL command?
+  - [0xA344A8, bin] #endDL command from rgb2c
   - [0xA344B0, ia8, KidsLandText.ia8, 104, 16]
-  - [0xA34B30, bin] #endDL command?
+  - [0xA34B30, bin] #endDL command from rgb2c
   - [0xA34B38, ia8, GhostCastleText.ia8, 104, 16]
-  - [0xA351B8, bin] #endDL command?
+  - [0xA351B8, bin] #endDL command from rgb2c
   #- [0xA351C0, ci8, JungleLandText2.ci8, 112, 24] #ci8
-  - [0xA35C40, bin]  #endDL command?
+  - [0xA35C40, bin]  #endDL command from rgb2c
   #- [0xA35C48, palette, JungleLandText2.ci8]
-  - [0xA35E48, bin]  #endDL command?
-  #- [0xA35E50, ci8, AntLandText2.ci8, 112, 24]
-  #- [0xA368D8, palette, AntLandText2.ci8]
+  - [0xA35E48, bin]  #endDL command from rgb2c
+  - [0xA35E50, ci8, AntLandText2.ci8, 112, 24]
+  - [0xA368D8, palette, AntLandText2.ci8]
   - [0xA36AD8, bin]
   # - [0xA369D8, bin]
   #- [0xA32A88, bin, jungleLandIA8Text]
-  
+  #- [0xA4F468, ci8, ....QuestionMark.ci8, 112, 24] # "....?" image from file select
+  - [0xA4FEE8, bin] #endDL command from rgb2c
+  #- [0xA4FEF0, palette, ....QuestionMark.ci8]
+  - [0xA500F0, bin]
 
   - [0xAB5360, bin, rabbit] # ウサギ
   - [0xABD990, bin, subAnime] # サブアニメ
