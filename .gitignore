@@ -17,6 +17,7 @@ expected/
 .vscode/targets.log
 
 # Tool artifacts
+--no-check-sections
 .ninja_deps
 .ninja_log
 build.ninja

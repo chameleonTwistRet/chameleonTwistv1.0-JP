@@ -215,7 +215,7 @@ $(BUILD_DIR)/:
 	mkdir -p $(BUILD_DIR)
 
 $(TARGET).elf: $(LD_SCRIPT) $(O_FILES) $(IMAGE_O_FILES)
-	$(V)$(LD) $(LD_FLAGS) -o $@
+	$(LD) $(LD_FLAGS) -o $@
 
 $(BUILD_DIR)/$(SRC_DIR)/%.c.o: $(SRC_DIR)/%.c
 	$(V)$(PRINT)$(GREEN)Compiling C file: $(ENDGREEN)$(BLUE)$<$(ENDBLUE)$(ENDLINE)
