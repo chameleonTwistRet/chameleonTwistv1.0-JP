@@ -265,11 +265,11 @@ $(BUILD_DIR)/$(SRC_DIR)/libc/ll.c.o: $(SRC_DIR)/libc/ll.c
 
 # use modern gcc for data
 $(BUILD_DIR)/$(SRC_DIR)/data/%.c.o: $(SRC_DIR)/data/%.c
-	$(XGCC) -c $(GCC_FLAGS) -o $@ $<
+	$(V)$(XGCC) -c $(GCC_FLAGS) -o $@ $<
 
 $(BUILD_DIR)/%.s.o: %.s
 	$(V)$(PRINT)$(GREEN)Assembling asm file: $(ENDGREEN)$(BLUE)$<$(ENDBLUE)$(ENDLINE)
-	iconv --from UTF-8 --to EUC-JP $< | $(AS) $(ASFLAGS) -o $@
+	$(V)iconv --from UTF-8 --to EUC-JP $< | $(AS) $(ASFLAGS) -o $@
 
 
 # uncompressed images

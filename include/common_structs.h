@@ -819,14 +819,14 @@ typedef struct unk0 {
     /* 0x54 */ char pad54[4];
 } unk0; //sizeof 0x58
 
-typedef struct func_800AE8E4Compare {
-    /* 0x00 */ f32 unk0;
-    /* 0x04 */ f32 unk4;
-    /* 0x08*/ f32 unk8;
-    /* 0x0C */ f32 unkC;
-    /* 0x10 */ f32 unk10;
-    /* 0x14 */ f32 unk14;
-} func_800AE8E4Compare; //sizeof 0x18
+typedef struct unk802018D8 {
+    f32 unk_00;
+    f32 unk_04;
+    f32 unk_08;
+    f32 unk_0C;
+    f32 unk_10;
+    f32 unk_14;
+} unk802018D8;
 
 typedef struct pole{
     /* 0x00 */ s32 mode;

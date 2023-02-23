@@ -238,7 +238,7 @@ segments:
       - [0xE7D40, rodata, code/2C3B0] #8010C940 through 8010CA10
       - [0xE7E10, rodata, code/sprite] #8010CA10 through 8010D530
       - [0xE8930, rodata, code/5FF30] #8010D530 through 80110110
-      - [0xEAD90, rodata, code/8A2C0]
+      - [0xEAD90, .rodata, code/8A2C0]
       - [0xEADE0, rodata, code/8ADD0]
       - [0xEB500, rodata, code/A3D00] #80110110 through 80110180
       - [0xEB580, rodata, code/A4300] #80110180 through 80110720

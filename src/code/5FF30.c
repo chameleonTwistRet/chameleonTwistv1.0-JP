@@ -1633,23 +1633,23 @@ void func_800AAB0C(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800AE87C.s")
 
-s32 func_800AE8E4(func_800AE8E4Compare* arg0, func_800AE8E4Compare* arg1) {
-    if ((f64) arg1->unkC < (f64) arg0->unk0) {
+s32 func_800AE8E4(unk802018D8* arg0, unk802018D8* arg1) {
+    if ((f64) arg1->unk_0C < (f64) arg0->unk_00) {
         return 0;
     }
-    if ((f64) arg0->unkC < (f64) arg1->unk0) {
+    if ((f64) arg0->unk_0C < (f64) arg1->unk_00) {
         return 0;
     }
-    if ((f64) arg1->unk10 < (f64) arg0->unk4) {
+    if ((f64) arg1->unk_10 < (f64) arg0->unk_04) {
         return 0;
     }
-    if ((f64) arg0->unk10 < (f64) arg1->unk4) {
+    if ((f64) arg0->unk_10 < (f64) arg1->unk_04) {
         return 0;
     }
-    if ((f64) arg1->unk14 < (f64) arg0->unk8) {
+    if ((f64) arg1->unk_14 < (f64) arg0->unk_08) {
         return 0;
     }
-    if ((f64) arg0->unk14 < (f64) arg1->unk8) {
+    if ((f64) arg0->unk_14 < (f64) arg1->unk_08) {
         return 0;
     }
     return 1;

@@ -379,7 +379,7 @@ void func_800A1EC4(void);
 void func_800A54EC(s32);
 s32 func_800A7988(void);
 
-s32 func_800AE8E4(func_800AE8E4Compare* arg0, func_800AE8E4Compare* arg1);
+s32 func_800AE8E4(unk802018D8* arg0, unk802018D8* arg1);
 
 void func_800B22AC(s32);
 s32 func_800B2510(void);
