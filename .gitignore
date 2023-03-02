@@ -17,6 +17,10 @@ expected/
 .vscode/targets.log
 
 # Tool artifacts
+--no-check-sections
+.ninja_deps
+.ninja_log
+build.ninja
 undefined_funcs_auto.txt
 undefined_syms_auto.txt
 ctx.c
