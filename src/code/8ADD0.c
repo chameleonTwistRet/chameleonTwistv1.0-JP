@@ -29,7 +29,7 @@ void func_800B09C0(s32 arg0, f32* arg1) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B0AA4.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B0B20.s")
-
+//deals with "shutters"
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B101C.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B118C.s")

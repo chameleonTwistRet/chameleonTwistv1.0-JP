@@ -439,7 +439,7 @@ void func_8008C070(s32 arg0) {
 void func_8008C1C8(s32* arg0) {
     s32 sp4C = *arg0;
 
-    if ((gSelectedCharacters[0] == 5) && (gameModeCurrent == 0)) {
+    if ((gSelectedCharacters[0] == CHARA_WHITE) && (gameModeCurrent == 0)) {
         if ((D_80176F58 == 0) && (D_801B1EEC != 0)) {
             if ((D_801B1EEE != 0) && (gCurrentStage != 8)) {
                 func_80061308(255, 255, 0, 255, 255, 0, 0, 255, 255, 255, 0, 255, 255, 0, 0, 255);

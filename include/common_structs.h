@@ -791,10 +791,7 @@ typedef struct func_80069858_temp_v0{
     /* 0x0C */ s32 unkC;
 } func_80069858_temp_v0; //sizeof 0x10
 
-typedef struct func_80069858_arg0{
-    /* 0x00 */ char unk0[0x38];
-    /* 0x38 */ func_80069858_temp_v0* unk38;
-} func_80069858_arg0; //sizeof 0x3C
+
 
 
 #endif

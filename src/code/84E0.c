@@ -643,7 +643,7 @@ void func_8002F7F0(void) {
     } else {
         PlayerPointer->forwardImpulse = D_8010B350;
     }
-    if (PlayerPointer->power == 3) {
+    if (PlayerPointer->power == POWERUP_MINI) {
         PlayerPointer->forwardImpulse = (PlayerPointer->forwardImpulse * 0.5f);
     }
 }
@@ -665,7 +665,7 @@ void func_8002F960(Tongue* arg0) {
 }
 
 void func_8002F9BC(s32 arg0) {
-    PlayerPointer->power = 0;
+    PlayerPointer->power = POWERUP_NONE;
     func_8002F7F0();
     PlayerPointer->tongueYOffset = 60.0f;
     PlayerPointer->tongueSeperation = 50.0f;

@@ -12,7 +12,7 @@ f32 Vec3f_Normalize(Vec3f* arg0) {
     }
     return temp_f0;
 }
-
+//vev3f lerp?
 Vec3f* func_800D8244(Vec3f* arg0, Vec3f arg1, Vec3f arg4, f32 arg7) {
     Vec3f sp1C;
 
@@ -57,9 +57,9 @@ Vec3f* func_800D8468(Vec3f* arg0, f32 arg1, f32 arg2, f32 arg3) {
     Vec3f sp24;
     Vec3f sp18;
 
-    sp18.y = arg2 * 3.141592653589793 / 180.0;
+    sp18.y = arg2 * PI / 180.0;
     sp18.z = __sinf(sp18.y) * arg1;
-    sp18.x = arg3 * 3.141592653589793 / 180.0;
+    sp18.x = arg3 * PI / 180.0;
     sp18 = sp18;
     sp24.x = __sinf(sp18.x) * sp18.z;
     sp24.y = __cosf(sp18.y) * arg1;

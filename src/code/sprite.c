@@ -686,8 +686,8 @@ void func_800667C4(s8 arg0[5], s32 arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80069734.s")
 
-void func_80069858(func_80069858_arg0* arg0, s32 arg1) {
-    func_80069858_temp_v0* temp_v0 = arg0->unk38;
+void func_80069858(aa1* arg0, s32 arg1) {
+    func_80069858_temp_v0* temp_v0 = arg0->unk_38;
     if (func_800836FC(temp_v0->unk0, temp_v0->unk4, temp_v0->unk8, temp_v0->unkC) == 1) {
         aa1_Free(arg0);
     }
