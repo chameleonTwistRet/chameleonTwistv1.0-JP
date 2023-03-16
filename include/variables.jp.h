@@ -21,8 +21,8 @@ extern playerActor* PlayerPointer;
 extern Tongue* TonguePointer;
 
 extern unk0* D_801FFB84;
-extern s32 D_800FE158;
-extern aa1* D_80176F48;
+extern s32 g_aa1_Count;
+extern aa1* g_aa1_head;
 extern s32 D_800F68A8;
 extern s32 D_800F06B0;
 extern s32 D_800F06EC;
@@ -106,7 +106,7 @@ extern s32 D_800FF5E8;
 extern s16 D_800FF5EC;
 extern s16 D_800FF5F0;
 extern s16 D_800FF5F4;
-extern s16 D_800FF5F8;
+extern s16 gIsPaused;
 extern s16 D_800FF5FC;
 extern s16 D_800FF604;
 extern s16 D_800FF608;
@@ -120,10 +120,11 @@ extern s16 D_800FFDF4;
 extern s32 gameModeCurrent;
 extern s32 D_800FFEB8;
 extern s16 D_80100FD0;
+extern PlayerInit gPlayerInits[10]; // 4 extra blank entries.
 extern f32 D_8010881C;
 extern f32 D_80108820;
 extern s32 D_80108B68;
-extern OSViMode D_801090F0;
+extern OSViMode osViModeTable[42];
 extern Vec2f D_8010A6D0[0x6C]; //positions?
 extern unk_8010AA28 D_8010AA28[0x6C]; //actor related?
 extern f32 D_8010B328;
@@ -174,19 +175,22 @@ extern f32 D_80110108;
 extern f64 D_80110120;
 extern char D_8011074C[];
 extern char D_8011077C[];
-extern OSThread D_80113C90; // thread1
-extern OSThread D_80115E40; // thread3
-extern s32 D_80117FF0;
-extern s32 D_801191A0;
-extern OSMesg   D_801191A8;
-extern OSMesgQueue D_80119270;
+extern OSThread gIdleThread; // thread1
+extern u64 gIdleThreadStack[1024]; // thread1
+extern OSThread gMainThread; // thread3
+extern u64 gMainThreadStack[1024]; // thread3
+extern OSThread D_80117FF0; //unused thread.
+extern u64 D_801181A0[512]; //unused Stack
+extern void* D_801191A0;
+extern OSMesg gPiManMsgs[50];
+extern OSMesgQueue gPiManMgsQ;
 extern s32 D_80168D70;
 extern s32 D_80168D78[];
-extern s32 D_80168DA4;
-extern playerActor D_80168DA8[4];
+extern s32 gActorCount;
+extern playerActor gPlayerActors[4];
 extern s32 D_80168E5C;
-extern Tongue D_80169268;
-extern Actor D_8016AC68[ACTORS_MAX]; //currently loaded actor structs
+extern Tongue gTongues[4];
+extern Actor gActors[ACTORS_MAX]; //currently loaded actor structs
 extern pole D_80170968[64]; //currently loaded pole structs
 extern unkStruct D_80172E88[];
 extern s32 D_80174758[];
@@ -206,15 +210,19 @@ extern OSMesgQueue D_801B3120;
 extern s32 D_801B3138;
 extern s32 D_801B3140;
 extern s16 D_801B3540;
+extern u8 gAlHeapBase[300000];
 extern s32 D_801FC9A0;
 extern s32 D_801FC9A8;
 extern s16 D_801FC9AC;
 extern s16 D_801FC9B4;
 extern f64 D_801FCA00;
-extern OSThread* D_801FD560;
+extern OSThread D_801FD560;
+extern u64 D_801FD710[0x400];
+extern s32 D_801FF634;
 extern s32 D_801FF710;
 extern OSMesgQueue D_801FF750;
 extern OSIoMesg D_801FF7F0;
+extern OSIoMesg D_801FF8A8[30];
 extern s32 D_801FFB78;
 extern unk_D_801FFB90 D_801FFB90;
 extern u32 D_80200054;
@@ -258,17 +266,17 @@ extern s32 D_801FCA10;
 extern OSMesgQueue D_801FCA50[50];
 extern OSMesg D_801FCF08[50];
 extern s32 D_801FD558;
-extern unk801FCFD8 D_801FCFD8[50];
+extern DMAStruct D_801FCFD8[50];
 extern unk801FD550 D_801FD550;
 extern void* D_80200C8C;
 extern void* D_80200C94;
 extern Addr D_AB10B0;
 extern Addr D_F000000;
 extern Addr D_F0042B0;
-extern unk8016AA98 D_8016AA98;
+extern unk8016AA98 gCamera;
 extern unk802000C84 D_80200C84;
 extern Collision D_80240D6C[];
-extern u8 D_801B313C;
+extern u8 gCarrotBitfield;
 extern s8 D_801B313D;
 extern unkFlags D_80200C00;
 extern Vec3s D_801087D8[];
@@ -279,6 +287,7 @@ extern s32 D_800FF8A4;
 extern s32 D_800FF8A8;
 extern s32 D_800FF8AC;
 extern f64 D_8010F410;
+extern char* D_80100FD4[18];
 extern f32 D_801B316C;
 extern char D_8011078C[];
 extern char D_801107A0[];
@@ -297,11 +306,11 @@ extern s32 D_800FF8A8;
 extern s32 D_800FF8B4;
 extern u32 D_800FF8B8;
 extern s32 D_801B3168;
-extern u8 D_800F06DC[];
+extern u8 gSelectedCharacters[];
 extern u8 D_800F0BE0[];
 extern unkStruct0 D_800F0BE4[];
 extern s32 D_801749B4;
-extern s32 D_80174874;
+extern s32 gCurrentStage;
 extern s32 D_80176F58;
 extern s16 D_801B1EEC;
 extern s16 D_801B1EEE;

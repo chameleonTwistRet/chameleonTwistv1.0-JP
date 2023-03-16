@@ -1,10 +1,10 @@
 #include "common.h"
 
 
-f32 func_800D81B0(Vec3f* arg0) {
+f32 Vec3f_Normalize(Vec3f* arg0) {
     f32 temp_f0 = __sqrtf((arg0->x * arg0->x) + (arg0->y * arg0->y) + (arg0->z * arg0->z));
     if (temp_f0 == 0.0f) {
-        func_800D8198(arg0);
+        Vec3f_Zero(arg0);
     } else {
         arg0->x = (f32) (arg0->x / temp_f0);
         arg0->y = (f32) (arg0->y / temp_f0);
@@ -17,7 +17,7 @@ Vec3f* func_800D8244(Vec3f* arg0, Vec3f arg1, Vec3f arg4, f32 arg7) {
     Vec3f sp1C;
 
     if ((arg7 < 0.0f) || (arg7 > 1.0f)) {
-        func_800D7460("?? ratio = %f\n", arg0, arg7);
+        DummiedPrintf3("?? ratio = %f\n", arg0, arg7);
     }
     
     sp1C.x = ((1.0f - arg7) * arg1.x) + (arg4.x * arg7);
@@ -69,5 +69,5 @@ Vec3f* func_800D8468(Vec3f* arg0, f32 arg1, f32 arg2, f32 arg3) {
 }
 
 void func_800D8544(Vec3f arg0) {
-    func_800D7460("%7.1f %7.1f %7.1f ", arg0.x, arg0.y, arg0.z);
+    DummiedPrintf3("%7.1f %7.1f %7.1f ", arg0.x, arg0.y, arg0.z);
 }

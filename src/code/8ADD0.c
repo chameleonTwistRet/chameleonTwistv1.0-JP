@@ -6,7 +6,7 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800AFB88.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800AFC6C.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/MoveTheater.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B06B0.s")
 
@@ -256,17 +256,17 @@ void func_800B40FC(void) {
     }
 }
 
-s32 func_800B4140(s32 arg0) {
+s32 StageCarrotAvailable(s32 arg0) {
     if (arg0 >= 6) {
         return 0;
     }
-    if (D_801B313C & (1 << arg0)) {
+    if (gCarrotBitfield & (1 << arg0)) {
         return 0;
     }
     return 1;
 }
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B417C.s")
+//this may tally the Japan-exclusive carrots collected.
+#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/AddCarrot.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B4264.s")
 
@@ -292,8 +292,8 @@ void func_800B4FCC(void) {
     s32 i;
     
     for (i = 0; i < ACTORS_MAX; i++) {
-        if ((func_800B2260(&D_8016AC68[i]) != 0) && (D_8016AC68[i].actorState == 0)) {
-            func_800311C8(&D_8016AC68[i]);
+        if ((func_800B2260(&gActors[i]) != 0) && (gActors[i].actorState == 0)) {
+            func_800311C8(&gActors[i]);
             func_800313BC(i, func_800C8900(0, 0x168));
         }        
     }
@@ -349,7 +349,7 @@ void func_800B6040(s32* arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B6054.s")
 
 void func_800B6078(tempStruct* arg0) {
-    func_800D8198(&arg0->unk_3C);
+    Vec3f_Zero(&arg0->unk_3C);
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B6098.s")
@@ -369,7 +369,7 @@ void func_800B6078(tempStruct* arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B6CD8.s")
 
 void func_800B6D24(tempStruct* arg0) {
-    func_800D8198(&arg0->unk_3C);
+    Vec3f_Zero(&arg0->unk_3C);
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B6D44.s")
@@ -686,5 +686,5 @@ void func_800C88AC(void) {
 }
 
 void func_800C88D0(void) {
-    func_800C56D4(&D_80168DA8[0]);
+    func_800C56D4(&gPlayerActors[0]);
 }

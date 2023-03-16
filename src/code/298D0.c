@@ -1,26 +1,16 @@
 #include "common.h"
 
-typedef struct contMain {
-    u16 unk_00;
-    u16 unk_02;
-    u16 unk_04;
-    u16 unk_06;
-    u16 unk_08;
-    u16 unk_0A;
-    f32 unk_0C;
-} contMain;
+//these seem to solely be controller-based functions
 
-u16 D_80175678[4];
-contMain D_80175680[4];
+u16 D_80175678[MAXCONTROLLERS];
+contMain gContMain[MAXCONTROLLERS];
 
-typedef struct unkStruct1 {
-    char unk_00[0x68];
-} unkStruct1;
 
 extern s32 D_800F0690;
 extern void* D_80175638;
-extern OSContStatus D_80175640[];
-extern OSPfs D_801756C8[];
+extern OSContStatus D_80175640[MAXCONTROLLERS];
+extern OSContPad D_80175650[MAXCONTROLLERS];
+extern OSPfs gRumblePfs[MAXCONTROLLERS];
 extern s32 D_80176960[];
 extern s32 D_80175668[];
 extern u16 D_80175678[];
@@ -60,9 +50,9 @@ s32 func_8004E4D0(void) {
     for (i = 0; i < MAXCONTROLLERS; i++) {
         D_80176960[i] = 0;
         if (((controllerBits >> i) & 1) && (D_80175640[i].type & CONT_JOYPORT) && (D_80175640[i].status & CONT_CARD_ON)) {
-            temp_v0_2 = osPfsInitPak(&D_80175620, &D_801756C8[i], i);
+            temp_v0_2 = osPfsInitPak(&D_80175620, &gRumblePfs[i], i);
             if (temp_v0_2 == PFS_ERR_ID_FATAL || temp_v0_2 == PFS_ERR_DEVICE) {
-                temp_v0_3 = osMotorInit(&D_80175620, &D_801756C8[i], i);
+                temp_v0_3 = osMotorInit(&D_80175620, &gRumblePfs[i], i);
                 switch (temp_v0_3) {
                 default:
                     D_80176960[i] = 1;
@@ -85,17 +75,17 @@ s32 func_8004E4D0(void) {
     return j;
 }
 
-void func_8004E73C(void) {
+void Controller_StartRead(void) {
     osContStartReadData(&D_80175620);
 }
 
-void func_8004E760(arg* arg0) {
-    arg0->unk8 = 0;
-    arg0->unk4 = 0;
-    arg0->unk2 = 0;
-    arg0->unk_00 = 0;
-    arg0->unk6 = arg0->unk8;
-    arg0->unkC = 0.0f;
+void Controller_Zero(contMain* arg0) {
+    arg0->sticky = 0;
+    arg0->buttons2 = 0;
+    arg0->buttons1 = 0;
+    arg0->buttons0 = 0;
+    arg0->stickx = arg0->sticky;
+    arg0->stickAngle = 0.0f;
 }
 
 //https://decomp.me/scratch/yrEom
@@ -103,5 +93,5 @@ void func_8004E760(arg* arg0) {
 
 void func_8004E9AC(void) {
     s32 i = 0;
-    for (i = 0; i < 4; i++) {D_80175678[i] = D_80175680[i].unk_00;}
+    for (i = 0; i < 4; i++) {D_80175678[i] = gContMain[i].buttons0;}
 }

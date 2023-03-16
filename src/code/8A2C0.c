@@ -37,10 +37,10 @@ void func_800AEEC0(unk8016AA98* arg0, f32 arg1, f32 arg2) {
     sp44.y = sp50.y - sp5C.y;
     sp44.z = sp50.z - sp5C.z;
 
-    func_800D81B0(&sp44);
+    Vec3f_Normalize(&sp44);
     
     if (sp44.x == 0.0 && sp44.y == 0.0 && sp44.z == 0.0) {
-        func_800D7460("SetViewAreaParam(): target and eye are same point\n");
+        DummiedPrintf3("SetViewAreaParam(): target and eye are same point\n");
         return;
     }
     

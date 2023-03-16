@@ -77,7 +77,7 @@ segments:
       - [0xB6C20, c, io/contreaddata]
       - [0xB6E80, c, libc/syncprintf]
       - [0xB6EE0, c, gu/align]
-      - [0xB70F0, c, gu/lookatstereo]
+      - [0xB70F0, c, gu/lookat]
       - [0xB7420, c, gu/perspective]
       - [0xB76B0, c, io/visetevent]
       - [0xB7720, c, os/settimer]
@@ -354,7 +354,7 @@ segments:
   - [0xA4FEE8, bin] #endDL command from rgb2c
   #- [0xA4FEF0, palette, ....QuestionMark.ci8]
   - [0xA500F0, bin]
-
+  - [0xAB10B0, bin] # loaded in func_800AAB0C to *D_80200C8C. 0x42B0 bytes
   - [0xAB5360, bin, rabbit] # ウサギ
   - [0xABD990, bin, subAnime] # サブアニメ
   - [0xACBD90, bin, match] # 青

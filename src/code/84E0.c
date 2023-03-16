@@ -162,7 +162,7 @@ void func_8002D644(s32 actorIndex, s32 actorID, f32 arg2, f32 arg3, f32 arg4, f3
     Actor* actorInstance;
     s32 i;
 
-    actorInstance = &D_8016AC68[actorIndex];
+    actorInstance = &gActors[actorIndex];
 
     for (i = 0; i < 6;) {
         actorInstance->unk_10C[i] = 0;
@@ -177,9 +177,9 @@ void func_8002D644(s32 actorIndex, s32 actorID, f32 arg2, f32 arg3, f32 arg4, f3
     actorInstance->actorIndex = actorIndex;
     actorInstance->actorID = actorID;
     actorInstance->globalTimer = 0;
-    actorInstance->posX = arg2;
-    actorInstance->posY = arg3;
-    actorInstance->posZ = arg4;
+    actorInstance->pos.x = arg2;
+    actorInstance->pos.y = arg3;
+    actorInstance->pos.z = arg4;
     actorInstance->unk_90 = arg5;
 
     for (i = 0; i < 3; i++) {
@@ -520,16 +520,16 @@ void func_8002D644(s32 actorIndex, s32 actorID, f32 arg2, f32 arg3, f32 arg4, f3
 #endif
 
 //needs proper match
-s32 func_8002DE30(s32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7, f32 arg8, f32 arg9, f32 argA, f32 argB, f32 argC, f32 argD, f32 argE, f32 argF, f32 arg10, f32 arg11, f32 arg12, s32 arg13, s32 arg14, s32 arg15, s32 arg16) {
+s32 Actor_Init(s32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7, f32 arg8, f32 arg9, f32 argA, f32 argB, f32 argC, f32 argD, f32 argE, f32 argF, f32 arg10, f32 arg11, f32 arg12, s32 arg13, s32 arg14, s32 arg15, s32 arg16) {
     s32 index;
     s32* pointer;
 
-    pointer = &D_8016AC68->actorID;
+    pointer = &gActors->actorID;
     index = 0;
     while(1){
         if (*pointer == 0) {
             func_8002D644(index, arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, argA, argB, argC, argD, argE, argF, arg10, arg11, arg12, arg13, arg14, arg15, arg16);
-            D_80168DA4 += 1;
+            gActorCount += 1;
             return index;
         }
         index++;
@@ -556,7 +556,7 @@ s32 func_8002DF5C(s32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4) {
 }
 
 void func_8002E04C(s32 arg1, f32 arg2, f32 arg3, f32 arg4) {
-    func_8002DE30(arg1, arg2, arg3, arg4, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0, 0, 0, 0);
+    Actor_Init(arg1, arg2, arg3, arg4, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0, 0, 0, 0);
 }
 
 //https://decomp.me/scratch/kvqhf
@@ -609,7 +609,7 @@ void func_8002F528(s32 arg0) {
 
 
 void func_8002F54C(f32 arg0, playerActor* PlayerP, s32 arg2) {
-    PlayerP->yVel = arg0;
+    PlayerP->vel.y = arg0;
     PlayerP->canJump = 1;
     PlayerP->hasTumbled = arg2;
     PlayerP->jumpReleasedInAir = 0;
@@ -619,8 +619,8 @@ void func_8002F54C(f32 arg0, playerActor* PlayerP, s32 arg2) {
 
 
 void func_8002F568(void) {
-    PlayerPointer->xVel = PlayerPointer->xVaultlocity * 0.25f;
-    PlayerPointer->zVel = PlayerPointer->zVaultlocity * 0.25f;
+    PlayerPointer->vel.x = PlayerPointer->vaultlocity.x * 0.25f;
+    PlayerPointer->vel.z = PlayerPointer->vaultlocity.z * 0.25f;
     if (TonguePointer->segments >= 4) {
         PlayerPointer->vaultFall = 12;
     }
@@ -651,9 +651,9 @@ void func_8002F7F0(void) {
 void func_8002F884(s32 arg0, s32 arg1) {
     if (((D_801749B0 == 0) || (PlayerPointer->playerID != 1)) && (D_80168D78[arg0] == 0)) {
         if (gameModeCurrent == 7) {
-            func_8007B314(arg0, ((arg1 * 100) / 6.0f), arg1);
+            Rumble_AddTime(arg0, ((arg1 * 100) / 6.0f), arg1);
         } else {
-            func_8007B314(arg0, ((arg1 * 100) * 0.5f), arg1);
+            Rumble_AddTime(arg0, ((arg1 * 100) * 0.5f), arg1);
         }
     }
 }
@@ -686,7 +686,7 @@ void func_8002F9BC(s32 arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_800311C8.s")
 
 void func_800312B0(s32 id) {
-    Actor* currActor = &D_8016AC68[id];
+    Actor* currActor = &gActors[id];
     currActor->unknownPositionThings[0].unk_0C = currActor->unk_CC * currActor->tScale;
     currActor->unknownPositionThings[0].unk_10 = currActor->unk_CC * currActor->tYPos;
 }
@@ -712,7 +712,7 @@ void func_800314E4(Actor* arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80031DB0.s")
 
 s32 func_80032074(s32 arg0) {
-    Actor* temp_v0 = &D_8016AC68[arg0];
+    Actor* temp_v0 = &gActors[arg0];
     if ((temp_v0->actorState != 0) && (temp_v0->actorState != 3)) {
         return 1;
     }
@@ -733,7 +733,7 @@ s32 func_80032074(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80033048.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80033C00.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/pickup_collide_func.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80034104.s")
 
@@ -764,7 +764,7 @@ s32 func_80032074(s32 arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80036F30.s")
 
 s32 func_8003749C(s32 arg0) {
-    s32 temp_v0 = D_8016AC68[arg0].actorID;
+    s32 temp_v0 = gActors[arg0].actorID;
     if ((temp_v0 == 13) || (temp_v0 == 14) || (temp_v0 == 16) || (temp_v0 == 18) || (temp_v0 == 21)) {
         return 1;
     }
@@ -787,7 +787,7 @@ s32 func_80037538(s32* arg0) {
 }
 
 s32 func_80037584(s32 arg0) {
-    s32 temp_v0 = D_8016AC68[arg0].actorID;
+    s32 temp_v0 = gActors[arg0].actorID;
     if ((temp_v0 == 20) || (temp_v0 == 75) || (temp_v0 == 7) || (temp_v0 == 19) || (temp_v0 == 30) || (temp_v0 == 38) || (temp_v0 == 61) || (temp_v0 == 68) || (temp_v0 == 33)) {
         return 1;
     }
@@ -816,7 +816,7 @@ void func_800382F4(Actor* arg0) {
 }
 
 void func_800383A0(void) {
-    func_800CEFC4();
+    CalcEnemyNextPosition();
 }
 
 // Grey Ant Spawner: Elisiah
@@ -832,10 +832,10 @@ void func_800383C0(Actor* greyAntSpawnerActor) {
 // Grey Ant Function: Rainchu and Elisiah
 void func_80038510(Actor* actor) {
     actor->unk_94 = actor->unk_124;
-    actor->unk_90 = func_8002D1CC(actor->posX, actor->posZ, actor->position._f32.x, actor->position._f32.y);
+    actor->unk_90 = func_8002D1CC(actor->pos.x, actor->pos.z, actor->position._f32.x, actor->position._f32.y);
     actor->unk_10C[0] = 4;
-    actor->unk_134[0] = actor->posY;
-    actor->posY = actor->posY - actor->unknownPositionThings[0].unk_10;
+    actor->unk_134[0] = actor->pos.y;
+    actor->pos.y = actor->pos.y - actor->unknownPositionThings[0].unk_10;
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80038574.s")
@@ -855,10 +855,10 @@ s32 func_80038B98(Actor* arg0) {
         arg0->yVelocity -= arg0->yVelocity * D_8010B7FC;
     }
     if (D_8017499C % 8 == 0) {
-        func_80087ED0(102, &arg0->posX, &arg0->posY, &arg0->posZ, 1, 0);
+        func_80087ED0(102, &arg0->pos.x, &arg0->pos.y, &arg0->pos.z, 1, 0);
     } 
     else if (D_8017499C % 8 == 4) {
-        func_80087ED0(101, &arg0->posX, &arg0->posY, &arg0->posZ, 1, 0);
+        func_80087ED0(101, &arg0->pos.x, &arg0->pos.y, &arg0->pos.z, 1, 0);
     }
     return 0;
 }
@@ -872,7 +872,7 @@ s32 func_80038B98(Actor* arg0) {
 // Ant Trio Function: Elisiah
 void func_80038F70(Actor* antTrioActor) {
     antTrioActor->unk_94 = (f32) antTrioActor->unk_124;
-    antTrioActor->unk_90 = func_8002D1CC(antTrioActor->posX, antTrioActor->posZ, antTrioActor->position._f32.x, antTrioActor->position._f32.y);
+    antTrioActor->unk_90 = func_8002D1CC(antTrioActor->pos.x, antTrioActor->pos.z, antTrioActor->position._f32.x, antTrioActor->position._f32.y);
     antTrioActor->unk_98 = 1;
     func_800382F4(antTrioActor); 
     antTrioActor->unk_F0 = func_800C8900(0, 0x100);
@@ -931,9 +931,9 @@ void func_8003BA38(Actor* whiteBombSnakeActor) {
     s32 temp_f10;
 
     whiteBombSnakeActor->unk_10C[0] = 4;
-    whiteBombSnakeActor->unk_134[0] = whiteBombSnakeActor->posX;
-    whiteBombSnakeActor->unk_134[1] = whiteBombSnakeActor->posZ;
-    whiteBombSnakeActor->unk_90 = func_8002D1CC(whiteBombSnakeActor->posX, whiteBombSnakeActor->posZ, whiteBombSnakeActor->position._f32.x, whiteBombSnakeActor->position._f32.y);
+    whiteBombSnakeActor->unk_134[0] = whiteBombSnakeActor->pos.x;
+    whiteBombSnakeActor->unk_134[1] = whiteBombSnakeActor->pos.z;
+    whiteBombSnakeActor->unk_90 = func_8002D1CC(whiteBombSnakeActor->pos.x, whiteBombSnakeActor->pos.z, whiteBombSnakeActor->position._f32.x, whiteBombSnakeActor->position._f32.y);
     temp_f10 = (s32) (180.0f / whiteBombSnakeActor->unk_160);
     whiteBombSnakeActor->unk_10C[3] = temp_f10;
     whiteBombSnakeActor->unk_160 = (f32) (0xB4 / temp_f10);
@@ -956,9 +956,9 @@ void func_8003BD98(Actor* missileSpawnerActor) {
 
 // Missile Function: Elisiah
 void func_8003BEE8(Actor* missileActor) {
-    missileActor->unk_134[0] = missileActor->posX;
-    missileActor->unk_134[1] = missileActor->posY;
-    missileActor->unk_134[2] = missileActor->posZ;
+    missileActor->unk_134[0] = missileActor->pos.x;
+    missileActor->unk_134[1] = missileActor->pos.y;
+    missileActor->unk_134[2] = missileActor->pos.z;
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8003BF04.s")
@@ -1002,8 +1002,8 @@ void func_8003D5C8(Actor* arg0) {
     if (arg0->unk_124 == arg0->globalTimer) {
         temp_f2 = D_8010BA90;
         temp_f12 = D_8010BA94;
-        if (func_8002DE30(20, arg0->posX, arg0->posY, arg0->posZ, 0.0f, temp_f2, temp_f12, temp_f2, temp_f12, temp_f2, temp_f12, 200.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 10, 0, 0, 0) != -1) {
-            func_800619F8(arg0->posX, arg0->posY, arg0->posZ, 3, 100);
+        if (Actor_Init(20, arg0->pos.x, arg0->pos.y, arg0->pos.z, 0.0f, temp_f2, temp_f12, temp_f2, temp_f12, temp_f2, temp_f12, 200.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 10, 0, 0, 0) != -1) {
+            func_800619F8(arg0->pos.x, arg0->pos.y, arg0->pos.z, 3, 100);
         }
         func_80031518(arg0);
     }
@@ -1034,8 +1034,8 @@ void func_8003D930(Actor* arg0) {
 }
 
 void func_8003D998(Actor* arg0) {
-    arg0->unk_134[0] = arg0->posY;
-    arg0->posY -= 100.0f;
+    arg0->unk_134[0] = arg0->pos.y;
+    arg0->pos.y -= 100.0f;
     arg0->unknownPositionThings[0].unk_0C = arg0->unk_164 * arg0->tScale;
     arg0->tScale *= arg0->unk_164;
     arg0->unknownPositionThings[0].unk_10 = arg0->unk_164 * arg0->tYPos;
@@ -1046,8 +1046,8 @@ void func_8003D998(Actor* arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8003D9D8.s")
 
 void func_8003DE04(Actor* actor) {
-    actor->unk_134[0] = actor->posY;
-    actor->posY -= 150.0f;
+    actor->unk_134[0] = actor->pos.y;
+    actor->pos.y -= 150.0f;
     actor->yVelocity = 32.0f;
     actor->unk_94 = actor->position._f32.x;
     func_800382F4(actor);
@@ -1057,9 +1057,9 @@ void func_8003DE04(Actor* actor) {
 
 // Vulture Function: Elisiah
 void func_8003DFB4(Actor* vultureActor) {
-    vultureActor->unk_134[0] = vultureActor->posX;
-    vultureActor->unk_134[1] = vultureActor->posY;
-    vultureActor->unk_134[2] = vultureActor->posZ;
+    vultureActor->unk_134[0] = vultureActor->pos.x;
+    vultureActor->unk_134[1] = vultureActor->pos.y;
+    vultureActor->unk_134[2] = vultureActor->pos.z;
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8003DFD0.s")
@@ -1093,7 +1093,7 @@ void func_8003E368(Actor* boulderActor){
 // Armadillo Function: Elisiah
 void func_8003E62C(Actor* armadilloActor) {
     armadilloActor->unk_134[0] = armadilloActor->position._f32.y / armadilloActor->position._f32.x;
-    armadilloActor->posY = -400.0f;
+    armadilloActor->pos.y = -400.0f;
     armadilloActor->unk_134[4] = 100.0f;
     armadilloActor->unk_10C[4] = armadilloActor->unk_130;
 }
@@ -1104,7 +1104,7 @@ void func_8003E660(Actor* actor) {
     actor->yVelocity -= var1;
     if (actor->yVelocity < 0.0f) {
         actor->yVelocity -= actor->yVelocity * (var1 / actor->unk_16C);
-        if (actor->posY < 1000.0f) {
+        if (actor->pos.y < 1000.0f) {
             actor->unk_10C[0] = 6;
         }
     }
@@ -1123,8 +1123,8 @@ void func_8003FA38(Actor* arg0, f32 arg1, f32 arg2, f32 arg3) {
     f32 temp_f2;
     s32 temp_f8;
 
-    temp_f0 = arg1 - arg0->posX;
-    temp_f2 = arg3 - arg0->posZ;
+    temp_f0 = arg1 - arg0->pos.x;
+    temp_f2 = arg3 - arg0->pos.z;
     if (arg0->unk_10C[0] >= 3) {
         arg0->unk_94 = (f32) (arg0->unk_16C / 1.5f);
     } else {
@@ -1132,16 +1132,16 @@ void func_8003FA38(Actor* arg0, f32 arg1, f32 arg2, f32 arg3) {
     }
     temp_f8 = (s32) (sqrtf(SQ(temp_f0) + SQ(temp_f2)) / arg0->unk_94);
     arg0->unk_10C[1] = temp_f8;
-    arg0->unk_134[3] = (f32) ((arg2 - arg0->posY) / (f32) temp_f8);
+    arg0->unk_134[3] = (f32) ((arg2 - arg0->pos.y) / (f32) temp_f8);
     arg0->unk_90 = func_800C8C14(temp_f0, -temp_f2);
 }
 
 // Pogo Function: Elisiah
 void func_8003FB04(Actor* pogoActor) {
     pogoActor->unk_10C[0] = 1;
-    pogoActor->unk_134[0] = pogoActor->posX;
-    pogoActor->unk_134[1] = pogoActor->posY;
-    pogoActor->unk_134[2] = pogoActor->posZ;
+    pogoActor->unk_134[0] = pogoActor->pos.x;
+    pogoActor->unk_134[1] = pogoActor->pos.y;
+    pogoActor->unk_134[2] = pogoActor->pos.z;
     
     func_8003FA38(pogoActor, pogoActor->position._f32.x, pogoActor->position._f32.y, pogoActor->unk_15C);
 }
@@ -1166,18 +1166,18 @@ void func_8003FEBC(s32 arg0) {
 
 // Ice Cream Sandwich Function: Elisiah
 void func_8003FEC4(Actor* iceCreamSandwichActor) {
-    iceCreamSandwichActor->unk_134[0] = iceCreamSandwichActor->posY;
-    iceCreamSandwichActor->posY = iceCreamSandwichActor->posY + 2000.0f;
+    iceCreamSandwichActor->unk_134[0] = iceCreamSandwichActor->pos.y;
+    iceCreamSandwichActor->pos.y = iceCreamSandwichActor->pos.y + 2000.0f;
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8003FEE0.s")
 
 // Training Room Choco Kid Function: Elisiah
 void func_80040068(Actor* trainingRoomChocoKidActor) {
-    trainingRoomChocoKidActor->unk_134[1] = trainingRoomChocoKidActor->posZ;
+    trainingRoomChocoKidActor->unk_134[1] = trainingRoomChocoKidActor->pos.z;
     trainingRoomChocoKidActor->unk_94 = trainingRoomChocoKidActor->position._f32.x;
-    trainingRoomChocoKidActor->unk_134[0] = trainingRoomChocoKidActor->posX;
-    func_8006E16C(trainingRoomChocoKidActor->posX, trainingRoomChocoKidActor->posY + 50.0f, trainingRoomChocoKidActor->posZ, 0x42F00000, 20.0f, 0xA);
+    trainingRoomChocoKidActor->unk_134[0] = trainingRoomChocoKidActor->pos.x;
+    func_8006E16C(trainingRoomChocoKidActor->pos.x, trainingRoomChocoKidActor->pos.y + 50.0f, trainingRoomChocoKidActor->pos.z, 0x42F00000, 20.0f, 0xA);
 }
 
 
@@ -1185,10 +1185,10 @@ void func_80040068(Actor* trainingRoomChocoKidActor) {
 
 // unk_1F Function: Elisiah
 void func_800401E8(Actor* unk_1FActor) {
-    unk_1FActor->unk_134[0] = unk_1FActor->posY;
-    unk_1FActor->unk_134[1] = unk_1FActor->posX;
-    unk_1FActor->unk_134[2] = unk_1FActor->posZ;
-    unk_1FActor->posY = unk_1FActor->posY + 1000.0f;
+    unk_1FActor->unk_134[0] = unk_1FActor->pos.y;
+    unk_1FActor->unk_134[1] = unk_1FActor->pos.x;
+    unk_1FActor->unk_134[2] = unk_1FActor->pos.z;
+    unk_1FActor->pos.y = unk_1FActor->pos.y + 1000.0f;
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80040214.s")
@@ -1250,7 +1250,7 @@ void func_80041050(Actor* actor) {
 
 // Cue Ball Actor: Elisiah
 void func_8004237C(Actor* cueBallActor) {
-    cueBallActor->unk_134[0] = cueBallActor->posY;
+    cueBallActor->unk_134[0] = cueBallActor->pos.y;
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80042388.s")
@@ -1278,23 +1278,23 @@ void func_80042AFC(Actor* bowlingBallActor) {
     func_8006A74C();
     func_8004263C();
     bowlingBallActor->unk_10C[0] = 0;
-    bowlingBallActor->unk_134[0] = bowlingBallActor->posY;
-    bowlingBallActor->unk_10C[3] = func_80055BD8() % 5;
+    bowlingBallActor->unk_134[0] = bowlingBallActor->pos.y;
+    bowlingBallActor->unk_10C[3] = Rand() % 5;
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80042B4C.s")
 
 // Bowling Pins Function: Elisiah
 void func_80042FB4(Actor* bowlingPinsActor) {
-    bowlingPinsActor->unk_90 = (f32) ((func_80055BD8() % 21) - 0x64);
-    bowlingPinsActor->unk_10C[1] = (func_80055BD8() % 21) + 0x1E;
+    bowlingPinsActor->unk_90 = (f32) ((Rand() % 21) - 0x64);
+    bowlingPinsActor->unk_10C[1] = (Rand() % 21) + 0x1E;
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80043010.s")
 
 void func_800431E8(Actor* arg0) {
     arg0->unk_10C[0] = 0xA;
-    arg0->unk_134[0] = arg0->posY;
+    arg0->unk_134[0] = arg0->pos.y;
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_800431FC.s")
@@ -1377,7 +1377,7 @@ void func_80043FE8(Actor* barrelJumpFireSpawnerActor){
 
 // Barrel Jump Fire Actor: Elisiah
 void func_800440FC(Actor* barrelJumpFireActor) {
-    barrelJumpFireActor->unk_134[0] = func_8002D1CC(barrelJumpFireActor->position._f32.x, barrelJumpFireActor->position._f32.y, barrelJumpFireActor->posX, barrelJumpFireActor->posZ);
+    barrelJumpFireActor->unk_134[0] = func_8002D1CC(barrelJumpFireActor->position._f32.x, barrelJumpFireActor->position._f32.y, barrelJumpFireActor->pos.x, barrelJumpFireActor->pos.z);
     barrelJumpFireActor->unk_10C[0] = (s32) (360.0f / barrelJumpFireActor->unk_160) - 2;
 }
 
@@ -1411,7 +1411,7 @@ void func_80044564(void) {
 
 //Fire: Auto-Decompile
 void func_80044584(Actor* arg0) {
-    arg0->unk_90 = func_8002D1CC(arg0->posX, arg0->posZ, PlayerPointer->xPos, PlayerPointer->zPos);
+    arg0->unk_90 = func_8002D1CC(arg0->pos.x, arg0->pos.z, PlayerPointer->pos.x, PlayerPointer->pos.z);
     arg0->unk_10C[1] = arg0->unk_128;
 }
 
@@ -1434,7 +1434,7 @@ void func_80044728(void) {
 void func_80044878(Actor* pileOfBooksActor) {
     pileOfBooksActor->unk_EC = 0;
     pileOfBooksActor->unk_10C[3] = pileOfBooksActor->unk_128 * 2;
-    pileOfBooksActor->unk_134[1] = pileOfBooksActor->posZ + -800.0f;
+    pileOfBooksActor->unk_134[1] = pileOfBooksActor->pos.z + -800.0f;
     pileOfBooksActor->unk_134[2] = pileOfBooksActor->unk_90;
     func_80044748(pileOfBooksActor);    // Compiled as empty originally?
 }
@@ -1458,7 +1458,7 @@ s32 func_80044E80(s32* arg0, s32 arg1) {
 void func_80046DDC(Actor* arg0) {
     f32 temp_f0;
     if ((arg0->unk_124 >= 2)) {
-        if ((arg0->unk_124 < D_8016AC68[arg0->unk_128].unk_128 + 2)) {
+        if ((arg0->unk_124 < gActors[arg0->unk_128].unk_128 + 2)) {
             temp_f0 = D_8010C098;
             arg0->tScale *= temp_f0;
             arg0->unknownPositionThings[0].unk_0C *= temp_f0;            
@@ -1474,7 +1474,7 @@ void func_80046FB0(Actor* arg0) {
 }
 
 void func_80046FB8(Actor* arg0) {
-    if (((arg0->unk_12C == 0) && (D_8016AC68[arg0->unk_128].unk_10C[2] == 4)) || ((arg0->unk_12C == 1) && (D_8016AC68[arg0->unk_128].unk_10C[2] == 5))) {
+    if (((arg0->unk_12C == 0) && (gActors[arg0->unk_128].unk_10C[2] == 4)) || ((arg0->unk_12C == 1) && (gActors[arg0->unk_128].unk_10C[2] == 5))) {
         if (arg0->unk_10C[0] == 0) {
             arg0->unk_F0 += 1;
             if (arg0->unk_F0 == 9) {
@@ -1521,9 +1521,9 @@ void func_80047350(Actor* spiderActor) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80047384.s")
 
 void func_80047520(Actor* arg0) {
-    arg0->unk_134[0] = arg0->posX;
-    arg0->unk_134[1] = arg0->posZ;
-    arg0->unk_90 = func_8002D1CC(arg0->posX, arg0->posZ, arg0->position._f32.x, arg0->position._f32.y);
+    arg0->unk_134[0] = arg0->pos.x;
+    arg0->unk_134[1] = arg0->pos.z;
+    arg0->unk_90 = func_8002D1CC(arg0->pos.x, arg0->pos.z, arg0->position._f32.x, arg0->position._f32.y);
     arg0->unk_94 = arg0->unk_15C;
 }
 
@@ -1546,8 +1546,8 @@ void func_800477C4(Actor* golem) {
 
 // Hedgehog Function: Elisiah
 void func_800479CC(Actor* hedgehogActor) {
-    hedgehogActor->unk_134[0] = (f32) hedgehogActor->posX;
-    hedgehogActor->unk_134[1] = (f32) hedgehogActor->posZ;
+    hedgehogActor->unk_134[0] = (f32) hedgehogActor->pos.x;
+    hedgehogActor->unk_134[1] = (f32) hedgehogActor->pos.z;
     hedgehogActor->unk_134[2] = (f32) hedgehogActor->unk_90;
 }
 
@@ -1555,8 +1555,8 @@ void func_800479CC(Actor* hedgehogActor) {
 
 // Fish Function: Elisiah
 void func_80047C04(Actor* fishActor) {
-    fishActor->unk_134[0] = fishActor->posX;
-    fishActor->unk_134[1] = fishActor->posZ;
+    fishActor->unk_134[0] = fishActor->pos.x;
+    fishActor->unk_134[1] = fishActor->pos.z;
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80047C18.s")
@@ -1576,8 +1576,8 @@ void func_800487D8(Actor* lizardKongButterflySpawnerActor){
 
 // ????: Auto-Decompile
 void func_800487E0(Actor* arg0) {
-    if (D_80168DA4 < arg0->unk_128) {
-        func_8002DE30(71, arg0->posX, arg0->posY, arg0->posZ, arg0->unk_90, arg0->unk_F4, arg0->unk_F8, arg0->unk_FC, arg0->unk_100, arg0->unk_104, arg0->unk_108, arg0->position._f32.x, arg0->position._f32.y, arg0->unk_15C, arg0->unk_160, arg0->unk_164, arg0->unk_168, arg0->unk_16C, arg0->unk_170, arg0->unk_124, -1, arg0->unk_12C, 0);
+    if (gActorCount < arg0->unk_128) {
+        Actor_Init(71, arg0->pos.x, arg0->pos.y, arg0->pos.z, arg0->unk_90, arg0->unk_F4, arg0->unk_F8, arg0->unk_FC, arg0->unk_100, arg0->unk_104, arg0->unk_108, arg0->position._f32.x, arg0->position._f32.y, arg0->unk_15C, arg0->unk_160, arg0->unk_164, arg0->unk_168, arg0->unk_16C, arg0->unk_170, arg0->unk_124, -1, arg0->unk_12C, 0);
     }
 }
 
@@ -1594,10 +1594,10 @@ void func_800488FC(Actor* arg0) {
     
     if (arg0->unk_98 == 0) {
         arg0->unk_98 = 1;
-        arg0->posY = arg0->unknownPositionThings[0].unk_10 / 2;
+        arg0->pos.y = arg0->unknownPositionThings[0].unk_10 / 2;
         arg0->yVelocity = arg0->position._f32.y * -arg0->yVelocity;
         arg0->unk_94 *= D_8010C0F8;
-        func_80087ED0(0x8F, &arg0->posX, &arg0->posY, &arg0->posZ, 0, 0);
+        func_80087ED0(0x8F, &arg0->pos.x, &arg0->pos.y, &arg0->pos.z, 0, 0);
     }
     
     func_800382F4(arg0);
@@ -1612,10 +1612,10 @@ void func_80048A68(Actor* arg0) {
     normalizeDegrees(&arg0->unk_134[3]);
     arg0->unk_134[4] = arg0->unk_134[3];
     arg0->unk_10C[0] = 6;
-    arg0->unk_134[0] = arg0->posX;
-    arg0->unk_134[1] = arg0->posZ;
+    arg0->unk_134[0] = arg0->pos.x;
+    arg0->unk_134[1] = arg0->pos.z;
     arg0->unk_134[5] = arg0->position._f32.x;
-    arg0->posY += 1000.0f;
+    arg0->pos.y += 1000.0f;
     func_800489B0(arg0);
     arg0->unk_EC = 5;
 }
@@ -1709,7 +1709,7 @@ void func_80049C64(Actor* arg0) {
             return;
         }
         arg0->yVelocity -= D_8010C26C;
-        arg0->posY += arg0->yVelocity;
+        arg0->pos.y += arg0->yVelocity;
         return;
     }
     if (arg0->unk_98 != 0) {
@@ -1747,7 +1747,7 @@ void func_80049F14(Actor* arg0) {
 
 // Battle Mode Saucer Function: Elisiah
 void func_8004A0A0(Actor* battleModeSaucerActor) {
-    battleModeSaucerActor->unk_134[0] = battleModeSaucerActor->posY;
+    battleModeSaucerActor->unk_134[0] = battleModeSaucerActor->pos.y;
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8004A0AC.s")
@@ -1794,7 +1794,7 @@ void func_8004A544(Actor* fallingGreyAntSpawnerActor){
 // Falling Grey Ant Function: Elisiah
 void func_8004A658(Actor* fallingGreyAntActor) {
     fallingGreyAntActor->unk_94 = (f32) fallingGreyAntActor->unk_124;
-    fallingGreyAntActor->unk_90 = func_8002D1CC(fallingGreyAntActor->posX, fallingGreyAntActor->posZ, fallingGreyAntActor->position._f32.x, fallingGreyAntActor->position._f32.y);
+    fallingGreyAntActor->unk_90 = func_8002D1CC(fallingGreyAntActor->pos.x, fallingGreyAntActor->pos.z, fallingGreyAntActor->position._f32.x, fallingGreyAntActor->position._f32.y);
     fallingGreyAntActor->unk_98 = 1;
     func_800382F4(fallingGreyAntActor);
     fallingGreyAntActor->unk_F0 = func_800C8900(0, 0x100);
@@ -1816,13 +1816,13 @@ void func_8004AC20(Actor* arg0) {
 
     if (arg0->unk_10C[0] == 0) {
         arg0->yVelocity -= (D_8010C318 + (arg0->yVelocity * D_8010C31C));
-        temp_f2 = arg0->posY + arg0->yVelocity;
+        temp_f2 = arg0->pos.y + arg0->yVelocity;
         if (temp_f2 < 0.0f) {
-            arg0->posY = 0.0f;
+            arg0->pos.y = 0.0f;
             arg0->unk_10C[0] = 1;
             return;
         }
-        arg0->posY = temp_f2;
+        arg0->pos.y = temp_f2;
     }
 }
 
@@ -1835,12 +1835,12 @@ void func_8004AC8C(Actor* arg0) {
     }
     else {
         arg0->yVelocity -= (D_8010C320 + (arg0->yVelocity * D_8010C324));
-        if (arg0->posY + arg0->yVelocity < arg0->position._f32.x) {
-            arg0->posY = arg0->position._f32.x;
+        if (arg0->pos.y + arg0->yVelocity < arg0->position._f32.x) {
+            arg0->pos.y = arg0->position._f32.x;
             arg0->unk_10C[0] = 1;
             return;
         }
-        arg0->posY += arg0->yVelocity;
+        arg0->pos.y += arg0->yVelocity;
     }
 }
 
@@ -1850,8 +1850,8 @@ void func_8004AC8C(Actor* arg0) {
 //related to spawning collsion pieces
 void func_8004BA5C(s32 arg0) {
     s32 i;
-    PlayerPointer = &D_80168DA8[0];
-    TonguePointer = &D_80169268;
+    PlayerPointer = &gPlayerActors[0];
+    TonguePointer = &gTongues;
     
     for (i = 0; i < arg0; i++) {
         func_8004AD2C();
@@ -1881,7 +1881,7 @@ s32 func_8004C110(s32 arg0, f32 arg1, f32 arg2) {
 
     var_s2 = 0x05F5E100; //??
     actorIndex = -1;
-    actorArray = D_8016AC68;
+    actorArray = gActors;
     for (i = 0; i < 64; i++, actorArray++) {
         temp_v0 = func_8004BF88(actorArray, arg0, arg1, arg2);
         //fake match

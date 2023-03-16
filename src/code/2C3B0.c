@@ -20,10 +20,10 @@ void func_80050FB0(void) {
 
     if (D_801749B4 == 0) {
         for (i = 0; i < 4; i++) {
-            if (D_80168DA8[i].active == 1) {
-                if (D_80168DA8[i].yPos < -10.0f) {
+            if (gPlayerActors[i].active == 1) {
+                if (gPlayerActors[i].pos.y < -10.0f) {
                     D_800F0BE4[D_800F0BE0[i]].unk_00++;
-                    func_8005456C(D_80168DA8[i].xPos, -300.0f, D_80168DA8[i].zPos, D_80168DA8[i].yPos, 200.0f, D_800F06DC[i]);
+                    func_8005456C(gPlayerActors[i].pos.x, -300.0f, gPlayerActors[i].pos.z, gPlayerActors[i].pos.y, 200.0f, gSelectedCharacters[i]);
                 }
             } 
         }
@@ -123,7 +123,7 @@ void func_8005564C(void) {
         func_80057010(0xC0);
         func_80057010(0xC1);
         func_80057010(0xC2);
-        func_8008CDC4();
+        TaskInit();
         D_80168DA0 = 4;
         D_800FFEB8++;
         D_80100FD0 = 0;
@@ -160,7 +160,7 @@ void func_800557F8(void) {
         func_800A0D90();
 
         for (i = 0; i < 4; i++) {
-            D_80168DA8[i].exists = D_80168DA8[i].active;
+            gPlayerActors[i].exists = gPlayerActors[i].active;
         }
 
         func_80057010(0xCE);
@@ -172,7 +172,7 @@ void func_800557F8(void) {
         func_8006CB34(3);
         func_8006CB34(4);
         func_8006CB34(5);
-        func_8008CDC4();
+        TaskInit();
         D_80168DA0 = 4;
         D_800FFEB8++;
         D_80100FD0 = 0;
@@ -206,7 +206,7 @@ void func_80055994(void) {
         func_800A7988();
         func_800A1EC4();
         func_80057010(94);
-        func_8008CDC4();
+        TaskInit();
         func_8002E0CC();
         D_800FFEB8 += 1;
         D_80100FD0 = 0;
@@ -238,7 +238,7 @@ void func_80055AA0(void) {
         func_800A7988();
         func_800A1EC4();
         func_80057010(0xCD);
-        func_8008CDC4();
+        TaskInit();
         func_8002E0CC();
         D_800FFEB8++;
         D_80100FD0 = 0;
