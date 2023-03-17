@@ -875,7 +875,7 @@ void func_80038F70(Actor* antTrioActor) {
     antTrioActor->unk_90 = func_8002D1CC(antTrioActor->pos.x, antTrioActor->pos.z, antTrioActor->position._f32.x, antTrioActor->position._f32.y);
     antTrioActor->unk_98 = 1;
     func_800382F4(antTrioActor); 
-    antTrioActor->unk_F0 = func_800C8900(0, 0x100);
+    antTrioActor->unk_F0 = Random(0, 0x100);
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80038FDC.s")
@@ -894,7 +894,7 @@ void func_80038F70(Actor* antTrioActor) {
 void func_8003A1B0(Actor* greenAntActor) {
     greenAntActor->unk_134[0] = 0.0f;
     greenAntActor->unk_10C[2] = greenAntActor->unk_15C / greenAntActor->position._f32.x;
-    greenAntActor->unk_F0 = func_800C8900(0, 0x100/*, greenAntActor*/);
+    greenAntActor->unk_F0 = Random(0, 0x100/*, greenAntActor*/);
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8003A208.s")
@@ -1771,7 +1771,7 @@ void func_8004A31C(Actor* arg0) {
         arg0->yVelocity -= arg0->yVelocity * D_8010C2BC;
         return;
     }
-    func_800313BC(arg0->actorIndex, func_800C8900(0, 360));
+    func_800313BC(arg0->actorIndex, Random(0, 360));
 }
 
 
@@ -1797,7 +1797,7 @@ void func_8004A658(Actor* fallingGreyAntActor) {
     fallingGreyAntActor->unk_90 = func_8002D1CC(fallingGreyAntActor->pos.x, fallingGreyAntActor->pos.z, fallingGreyAntActor->position._f32.x, fallingGreyAntActor->position._f32.y);
     fallingGreyAntActor->unk_98 = 1;
     func_800382F4(fallingGreyAntActor);
-    fallingGreyAntActor->unk_F0 = func_800C8900(0, 0x100);
+    fallingGreyAntActor->unk_F0 = Random(0, 0x100);
 }
 
 // unk_5D

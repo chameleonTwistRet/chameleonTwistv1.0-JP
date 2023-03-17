@@ -377,7 +377,7 @@ s32 func_80087904(u8, s32, s32, s32, s32, s32);
 void func_800A10E8(s32);
 void func_800A1EC4(void);
 void func_800A54EC(s32);
-s32 func_800A7988(void);
+s32 DMAStruct_Print(void);
 
 s32 func_800AE8E4(unk802018D8* arg0, unk802018D8* arg1);
 
@@ -389,13 +389,13 @@ void func_800B5600(void);
 void func_800B56D4(f32, f32);
 void func_800BE2C0(void);
 
-void func_800C2FA0(void);
+void InitField(void);
 void func_800C54F8(Vec2s*, s32*);
 void func_800C5508(playerActor*);
 void func_800C5538(playerActor*);
 void func_800C56D4(playerActor*);
 void func_800C88AC(void);
-s32 func_800C8900(s32, s32);
+s32 Random(s32, s32);
 f32 func_800C89E8(void);
 f32 func_800C8C14(f32, f32);
 f32 func_800C8A78(f32);

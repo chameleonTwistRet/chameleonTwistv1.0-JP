@@ -10,7 +10,7 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B06B0.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B0764.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/CountSpatActors.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B07E4.s")
 
@@ -51,17 +51,17 @@ void func_800B09C0(s32 arg0, f32* arg1) {
 void func_800B21CC(s32 arg0, s32 arg1) {
     func_800BE2C0();
 }
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B21F0.s")
+// referred to in US1.0 as "feild.c - LimitInt"
+#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/LimitInt.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B2220.s")
 
-s32 func_800B2260(Actor* actor) {
-    return (actor->actorID != 0 && actor->actorID < 95) ? 1 : 0;
+s32 IsntPickup(Actor* actor) {
+    return (actor->actorID != 0 && actor->actorID < R_Heart) ? 1 : 0;
 }
 
-s32 func_800B2288(s32* value) {
-    return (*value >= 95 ) ? 1 : 0;
+s32 isPickup(Actor* actor) {
+    return (actor->actorID >= R_Heart ) ? 1 : 0;
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B22AC.s")
@@ -124,9 +124,9 @@ s32 func_800B3540(s32 arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B3698.s")
 
 void func_800B37D8(void) {
-    D_8020D854 = 0;
-    D_8020D85C = 0;
-    D_8020D860 = 0;
+    VertextBufferCount = 0;
+    TriangleBufferCount = 0;
+    ModelBufferCount = 0;
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B37F4.s")
@@ -265,7 +265,7 @@ s32 StageCarrotAvailable(s32 arg0) {
     }
     return 1;
 }
-//this may tally the Japan-exclusive carrots collected.
+
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/AddCarrot.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B4264.s")
@@ -282,9 +282,9 @@ s32 StageCarrotAvailable(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/setCrownPositionsForRoom.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B4BDC.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/checkRoomItem.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B4DB4.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/EraseRoomItem.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B4F14.s")
 
@@ -292,9 +292,9 @@ void func_800B4FCC(void) {
     s32 i;
     
     for (i = 0; i < ACTORS_MAX; i++) {
-        if ((func_800B2260(&gActors[i]) != 0) && (gActors[i].actorState == 0)) {
+        if ((IsntPickup(&gActors[i]) != 0) && (gActors[i].actorState == 0)) {
             func_800311C8(&gActors[i]);
-            func_800313BC(i, func_800C8900(0, 0x168));
+            func_800313BC(i, Random(0, 0x168));
         }        
     }
 }
@@ -317,7 +317,7 @@ void func_800B56D4(f32 arg0, f32 arg1) {
     D_8010881C = arg0;
     D_80108820 = arg1;
 }
-
+//find enemies in explosions' blast radius?
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B56E8.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B5878.s")
@@ -496,11 +496,11 @@ void func_800B6D24(tempStruct* arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BE550.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BE580.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/EraseToungeEatEnemy.s")
 
-void func_800BE664(s32* arg0) {
-    if (arg0[71] == 4) {
-        arg0[71] = 0;
+void func_800BE664(playerActor * arg0) {
+    if (arg0->power == POWERUP_TIME) {
+        arg0->power = POWERUP_NONE;
     }
 }
 
@@ -516,17 +516,17 @@ void func_800BE664(s32* arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BE8D8.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BE9DC.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/RegistField.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BEF6C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BF1BC.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/EraseField.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BF268.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BF2E8.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/RegistDoor.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BF374.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/RegistSwitchArea.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BF4AC.s")
 
@@ -540,25 +540,25 @@ void func_800BF5A4(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BF84C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BF928.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/InitFieldSub.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BFCD0.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BFD64.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BFDF4.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/CalcRoomInfo.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C0274.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C04D4.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/GetDirectionName.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C04F0.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/CalcDoorInfo.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C0760.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C08B8.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C09AC.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/ChameleonFromDoor.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C0AEC.s")
 
@@ -580,7 +580,7 @@ void func_800BF5A4(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C15AC.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C1810.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/InitFieldSubScroll.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C198C.s")
 
@@ -603,12 +603,12 @@ void func_800BF5A4(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C2A00.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C2C34.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C2F48.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C2FA0.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C325C.s")
+//referred to in US1.0 as "EnterBossRoom"
+#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/enterBossRoom.s")
+//referred to in US1.0 as "InitField"
+#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/InitField.s")
+//referred to in US1.0 as "moveField"
+#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/MoveField.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C38E0.s")
 

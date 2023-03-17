@@ -240,7 +240,7 @@ void func_8008A208(void) {
             func_8008BD98(1);
         }
     } else if (((s32) D_8017499C % 300) == 0x12B) {
-        func_80087ED0(func_800C8900(0, 5) + 0x4F, NULL, NULL, NULL, 1, 0x10);
+        func_80087ED0(Random(0, 5) + 0x4F, NULL, NULL, NULL, 1, 0x10);
     }
     D_8020005A = D_80236974;
 }
@@ -1439,7 +1439,7 @@ s32 func_800A78D0(void) {
     return j;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A7988.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/DMAStruct_Print.s")
 //the following three programs are used in generating the "Perfect Code"
 s32 func_800A7A18(u32 arg0) {
     s32 i;
@@ -1538,7 +1538,8 @@ s32 func_800A7E78(u8* arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800AA3F0.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800AA844.s")
-
+//between these funcs in US1.0 is a program printing part of the c script.
+// as well as a few other funcs.
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800AA86C.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800AAAC8.s")
@@ -1547,9 +1548,9 @@ void func_800AAB0C(s32 arg0) {
     s32 dmaResult;
     s32 dmaSize;
     s32 i;
-    func_800A7988();
+    DMAStruct_Print();
     loadStageByIndex(arg0);
-    func_800A7988();
+    DMAStruct_Print();
     _bzero(gPlayerActors, sizeof(gPlayerActors)); //sizeof 4 player actors
     _bzero(&gCamera, sizeof(gCamera));
     D_80168DA0 = 1;
@@ -1559,7 +1560,7 @@ void func_800AAB0C(s32 arg0) {
     gPlayerActors[3].active = 0;
     D_80175668[0] = 0;
     func_8002E0CC();
-    func_800C2FA0();
+    InitField();
     func_80056EB4();
     aa1_InitHead();
     func_8005C9B8();
@@ -1587,7 +1588,7 @@ void func_800AAB0C(s32 arg0) {
     }
     //TODO fake match
     if (gPlayerActors){}
-    func_800A7988();
+    DMAStruct_Print();
     D_80200C94 = D_80200C8C;
     D_80200C84.unk0 = 0;
     D_80200C84.unk2 = 0xFFFF;

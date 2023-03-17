@@ -4,7 +4,7 @@
 void DummiedPrintf3(char* arg0, ...) { /* variadic args: simonlindholm*/
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/B2860/func_800D747C.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/vector/func_800D747C.s")
 // void func_800D747C(f32* arg0) {
 //     if (*arg0 < 0.0) {
 //         *arg0 = (*arg0 + 360.0);
@@ -16,7 +16,7 @@ void DummiedPrintf3(char* arg0, ...) { /* variadic args: simonlindholm*/
 //     }
 // }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/B2860/func_800D74E0.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/vector/func_800D74E0.s")
 // s32 func_800D74E0(f32 arg0, f32 arg1) {
 //     s32 ret;
     
@@ -44,7 +44,7 @@ void DummiedPrintf3(char* arg0, ...) { /* variadic args: simonlindholm*/
 //     return ret;
 // }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/B2860/func_800D75B4.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/vector/func_800D75B4.s")
 
 void OnlyCheckPolyInfoLevel(unkB2860* arg0, s32 arg1, char* arg2) {
     if (arg0->unk_00 < arg1) {
@@ -110,7 +110,7 @@ Vec3f* LocalToWorld(Vec3f* arg0, Vec3f arg1, unkB2860* arg4) {
     return arg0;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/B2860/IsInsidePolygon.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/vector/IsInsidePolygon.s")
 // s32 IsInsidePolygon(Vec3f arg0, unkB2860* arg3) {
 //     f32 temp_f0;
 //     f32 temp_f2;
@@ -180,8 +180,8 @@ Vec3f* func_800D7EE0(Vec3f* arg0, Vec3f arg1, f32 arg4, s32 arg5) {
     return arg0;
 
 }
-
-s32 func_800D8030(Vec3f arg0, Vec3f arg3, f32 arg6) {
+// refered to in  US1.0 as "Vector.c - IsNearPoint"
+s32 IsNearPoint(Vec3f arg0, Vec3f arg3, f32 arg6) {
     f32 temp_f0;
     f32 temp_f14;
     f32 temp_f2;

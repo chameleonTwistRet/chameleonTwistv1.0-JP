@@ -40,11 +40,11 @@ segments:
       - [0x30FB0, c, code/sprite]
       - [0x5FEB0, c, code/5FEB0]
       - [0x5FF30, c, code/5FF30]
-      - [0x8A2C0, c, code/8A2C0]
+      - [0x8A2C0, c, code/clip]
       - [0x8ADD0, c, code/8ADD0]
-      - [0xA3D00, c, code/A3D00]
-      - [0xA4300, c, code/A4300]
-      - [0xB2860, c, code/B2860]
+      - [0xA3D00, c, code/math]
+      - [0xA4300, c, code/poly]
+      - [0xB2860, c, code/vector]
       - [0xB35B0, c, code/B35B0]
       - [0xB39A0, c, code/B39A0]
       - [0xB4600, c, io/motor]
@@ -211,7 +211,7 @@ segments:
       - [0xC9690, data, code/1050] #800EE290 through 800F6880
       - [0xD1C80, data, code/sprite] #800F6880 through 800FEDC0
       - [0xDA1C0, data, code/5FF30] #800FEDC0 through 80108B70
-      - [0xE3F70, data, code/A3D00] #80108B70 through 80109010
+      - [0xE3F70, data, code/math] #80108B70 through 80109010
       - [0xE4410, .data, os/initialize] #80109010 through 80109030
       - [0xE4430, data, io/vimgr] # 80109030 through 80109D70
       - [0xE5170, .data, io/pimgr] #80109D70 through 80109D90
@@ -238,11 +238,11 @@ segments:
       - [0xE7D40, rodata, code/2C3B0] #8010C940 through 8010CA10
       - [0xE7E10, rodata, code/sprite] #8010CA10 through 8010D530
       - [0xE8930, rodata, code/5FF30] #8010D530 through 80110110
-      - [0xEAD90, .rodata, code/8A2C0]
+      - [0xEAD90, .rodata, code/clip]
       - [0xEADE0, rodata, code/8ADD0]
-      - [0xEB500, rodata, code/A3D00] #80110110 through 80110180
-      - [0xEB580, rodata, code/A4300] #80110180 through 80110720
-      - [0xEBB20, rodata, code/B2860] #80110720 through 80110870
+      - [0xEB500, rodata, code/math] #80110110 through 80110180
+      - [0xEB580, rodata, code/poly] #80110180 through 80110720
+      - [0xEBB20, rodata, code/vector] #80110720 through 80110870
       - [0xEBC20, .rodata, code/B35B0]
       - [0xEBC70, .rodata, code/B39A0]
       - [0xEBCB0, rodata, gu/rotate]

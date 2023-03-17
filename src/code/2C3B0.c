@@ -107,7 +107,7 @@ void func_8005564C(void) {
     case 0:
         D_800FFDF4 = 1;
         D_800FE708 = 0;
-        func_800A7988();
+        DMAStruct_Print();
         func_800A1EC4();
         func_80057010(0xD4);
         func_80057010(0x68);
@@ -156,7 +156,7 @@ void func_800557F8(void) {
     switch (D_800FFEB8) {
     case 0:
         D_800FFDF4 = 1;
-        func_800A7988();
+        DMAStruct_Print();
         func_800A0D90();
 
         for (i = 0; i < 4; i++) {
@@ -203,7 +203,7 @@ void func_80055994(void) {
     switch (D_800FFEB8) {
     case 0:
         D_800FFDF4 = 1;
-        func_800A7988();
+        DMAStruct_Print();
         func_800A1EC4();
         func_80057010(94);
         TaskInit();
@@ -235,7 +235,7 @@ void func_80055AA0(void) {
     switch (D_800FFEB8) { 
     case 0:
         D_800FFDF4 = 1;
-        func_800A7988();
+        DMAStruct_Print();
         func_800A1EC4();
         func_80057010(0xCD);
         TaskInit();

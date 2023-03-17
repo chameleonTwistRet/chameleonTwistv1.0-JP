@@ -1,8 +1,8 @@
 #include "common.h"
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/A3D00/func_800C8900.s")
+//referred to in US1.0 as "math.c - Random"
+#pragma GLOBAL_ASM("asm/nonmatchings/code/math/Random.s")
 /* NEEDS PERMUTING
-s32 func_800C8900(s32 arg0, s32 arg1) {
+s32 Random(s32 arg0, s32 arg1) {
     s32 phi_v1;
 
     if (D_80100FD0 != 0) {
@@ -16,7 +16,7 @@ s32 func_800C8900(s32 arg0, s32 arg1) {
 */
 
 f32 func_800C89E8(void) {
-    return (f32) func_800C8900(0, 0xFFFF) / D_80110108;    //Max 2bytes
+    return (f32) Random(0, 0xFFFF) / D_80110108;    //Max 2bytes
 }
 
 f32 tanf(f32 x) {
@@ -34,7 +34,7 @@ f32 tanf(f32 x) {
     return tan_x;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/A3D00/func_800C8A78.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/math/func_800C8A78.s")
 
 
 f32 func_800C8BE4(f32 arg0) {
@@ -44,4 +44,4 @@ f32 func_800C8BE4(f32 arg0) {
 
 
 // jtbl error
-#pragma GLOBAL_ASM("asm/nonmatchings/code/A3D00/func_800C8C14.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/math/func_800C8C14.s")

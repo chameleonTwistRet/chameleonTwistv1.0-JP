@@ -228,9 +228,9 @@ extern unk_D_801FFB90 D_801FFB90;
 extern u32 D_80200054;
 extern struct UnkList D_80200060; //beginning of linked list?
 extern s32 D_802025B0;
-extern s32 D_8020D854;
-extern s32 D_8020D85C;
-extern s32 D_8020D860;
+extern s32 VertextBufferCount;
+extern s32 TriangleBufferCount;
+extern s32 ModelBufferCount;
 extern s32 D_80236968;
 extern s32 D_8023696C;
 extern s32 currentZone; //D_80240CD8

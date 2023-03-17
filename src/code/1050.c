@@ -248,7 +248,7 @@ void func_8002CCDC(void) {
 }
 
 void func_8002CD04(void) {
-    func_800A7988();
+    DMAStruct_Print();
     D_80174878++;
 
     if (D_800F06EC >= 0) {
@@ -257,7 +257,7 @@ void func_8002CD04(void) {
 
     D_80174878 = loadStageByIndex(D_80174878);
     func_8002E0CC();
-    func_800C2FA0();
+    InitField();
     func_8002CCDC();
     func_80056EB4();
     aa1_InitHead();

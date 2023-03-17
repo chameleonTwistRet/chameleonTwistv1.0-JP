@@ -138,7 +138,7 @@ typedef struct Tongue { // at 80169268 (for p1 at least lol)
     /* 0x3AC*/ f32 length;
     /* 0x3B0*/ f32 trueAngle;
     /* 0x3B4*/ tongueSlot onTongue;
-    /* 0x4B4*/ u32 amountTnTongue;
+    /* 0x4B4*/ u32 amountTnTongue; //called "capture_num" in US 1.0
     /* 0x4B8*/ tongueSlot inMouth;
     /* 0x5B8*/ u32 amountInMouth;
     //all of this has to do with vaulting
