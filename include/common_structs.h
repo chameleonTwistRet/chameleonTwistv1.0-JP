@@ -32,22 +32,22 @@ typedef struct Vec4f {
                f32 yaw;
 } Vec4f;
 
+typedef struct Color32{
+    u8 r;
+    u8 g;
+    u8 b;
+    u8 a;
+}Color32;
+
+
 typedef struct playerActor {
     /* 0x000 */ u32 playerID;
-    /* 0x004 */ f32 xPos;
-    /* 0x008 */ f32 yPos;
-    /* 0x00C */ f32 zPos;
-    /* 0x010 */ f32 xPosAgain;
-    /* 0x014 */ f32 yPosAgain;
-    /* 0x018 */ f32 zPosAgain;
+    /* 0x004 */ Vec3f pos;
+    /* 0x010 */ Vec3f pos2; //slightly off from pos
     /* 0x01C */ f32 yCounter; //counts around where the y is but not at
     /* 0x020 */ f32 waterGIMP; //how much to gimp you in water? idk but its correlated
-    /* 0x024 */ f32 xVel;
-    /* 0x028 */ f32 yVel;
-    /* 0x02C */ f32 zVel;
-    /* 0x030 */ f32 xVaultlocity;
-    /* 0x034 */ f32 yVaultlocity;
-    /* 0x038 */ f32 zVaultlocity;
+    /* 0x024 */ Vec3f vel;
+    /* 0x030 */ Vec3f vaultlocity;
     /* 0x03C */ f32 yAngle;
     /* 0x040 */ f32 forwardVel; //between 0 and 20.8. gets broken on slope jumps
     /* 0x044 */ f32 forwardImpulse;
@@ -72,12 +72,8 @@ typedef struct playerActor {
     /* 0x090 */ f32 xFromCenter; //from center of room (when on ground)
     /* 0x094 */ f32 yFromCenter;
     /* 0x098 */ f32 zFromCenter;
-    /* 0x0A8 */ f32 xShift; //override(?) when on moving objects (falling bridges, etc)
-    /* 0x0AC */ f32 yShift;
-    /* 0x0B0 */ f32 zShift;
-    /* 0x0A8 */ f32 xMove; //override when sliding on slopes or on poles
-    /* 0x0AC */ f32 yMove;
-    /* 0x0B0 */ f32 zMove;
+    /* 0x09C */ Vec3f shift; //override(?) when on moving objects (falling bridges, etc)
+    /* 0x0A8 */ Vec3f move; //override when sliding on slopes or on poles
     /* 0x0B4 */ u32 groundMovement; //0x00 = standing, 0x01 = walking, 0x02 = running
     /* 0x0B8 */ f32 globalTimer;
     /* 0x0BC */ u32 unkBC;
@@ -111,20 +107,6 @@ typedef struct playerActor {
     /* 0x12C */ f32 tongueSeperation; 
 } playerActor; //sizeof 0x130
 
-typedef struct unkA4300 {
-    /* 0x00 */ char unk_00[0x24];
-    /* 0x24 */ f32 unk_24;
-    /* 0x28 */ f32 unk_28;
-    /* 0x2C */ f32 unk_2C;
-    /* 0x30 */ char unk_30[0x24];
-    /* 0x54 */ f32 unk_54;
-    /* 0x58 */ f32 unk_58;
-    /* 0x5C */ f32 unk_5C;
-    /* 0x60 */ char unk_60[0x38];
-    /* 0x98 */ s32 unk_98;
-    /* 0x9C */ s32 unk_9C;
-    /* 0xA0 */ f32 unk_A0;
-} unkA4300; //sizeof 0xA4
 
 typedef struct TonguePos{
     /* 0x00 */ f32 positions[32];
@@ -156,7 +138,7 @@ typedef struct Tongue { // at 80169268 (for p1 at least lol)
     /* 0x3AC*/ f32 length;
     /* 0x3B0*/ f32 trueAngle;
     /* 0x3B4*/ tongueSlot onTongue;
-    /* 0x4B4*/ u32 amountTnTongue;
+    /* 0x4B4*/ u32 amountTnTongue; //called "capture_num" in US 1.0
     /* 0x4B8*/ tongueSlot inMouth;
     /* 0x5B8*/ u32 amountInMouth;
     //all of this has to do with vaulting
@@ -209,8 +191,8 @@ typedef struct camera {//take these with a grain of salt
     /* 0x04 */ Vec3f f1;
     /* 0x10 */ Vec3f f2;
     /* 0x1C */ Vec3f f3;
-    /* 0x28 */ Vec3f f4;
-    /* 0x34 */ Vec3f f5;
+    /* 0x28 */ Vec3f f4; // perspective "eye"
+    /* 0x34 */ Vec3f f5; // perspective "at"
     /* 0x40 */ s32 unk40;
     /* 0x44 */ f32 size1;
     /* 0x48 */ f32 size2;
@@ -324,6 +306,19 @@ typedef struct camera {//take these with a grain of salt
     /* 0x1D0*/ f32 unk1D0;
 }camera;//size 0x1D0
 
+typedef struct PlayerInit {
+    u32 unk0; //used to ID selected chameleon.
+    u32 unk4;
+    u32 unk8;
+    playerActor actorInit;
+    Tongue tongueInit;
+    u8 cameraInit[0x6C]; //camera substruct(s?) yet defined. copied like the other 2
+    s32 unk7b4;
+    s32 unk7b8;
+    u32 zone;
+} PlayerInit; //sizeof 0x7c0
+
+
 typedef struct unk_8010AA28 {
     s32 unk_00;
     s32 unk_04;
@@ -414,10 +409,10 @@ typedef struct Collider {
     /* 0x12C */ char unk_12C[4];
 } Collider; //sizeof 0x130
 
-typedef struct unk801FCFD8 {
-    /* 0x00 */ char unk_00[0x18];
-    /* 0x18 */ s32 unk18;
-} unk801FCFD8; //sizeof 0x1C
+typedef struct DMAStruct {
+    /* 0x00 */ OSIoMesg ioMsg;
+    /* 0x18 */ s32 index;
+} DMAStruct; //sizeof 0x1C
 
 typedef struct unk802000C84 {
     /* 0x00 */ u8 unk0;
@@ -446,7 +441,7 @@ typedef struct unk80100F50 {
 } unk80100F50; //sizeof 0x08
 
 typedef struct frameBufferData {
-    /* 0x00 */ char data[0x25800];
+    /* 0x00 */ char data[0x25800]; // h*W*colDepth
 } frameBufferData; //sizeof 0x25800
 
 typedef struct unkSpriteStruct {
@@ -542,9 +537,7 @@ typedef struct Actor {
     /* 0x018 */ s32 hit; //triggered when hit
     /* 0x01C */ s32 tongueBumpSeg; //the segment at which the tongue twas bumped back
     /* 0x020 */ s32 eaten;//0 == false. 1 == true. does not reset.
-    /* 0x024 */ f32 posX;
-    /* 0x028 */ f32 posY;
-    /* 0x02C */ f32 posZ;
+    /* 0x024 */ Vec3f pos;
     /* 0x030 */ f32 direction;
     /* 0x034 */ f32 yVelocity;
     /* 0x038 */ f32 unk_38;//sEEMS like its forward impulse?
@@ -672,52 +665,18 @@ typedef struct unk_D_801FFB90 {
     /* 0x10 */ s32 unk_10;
 } unk_D_801FFB90; //sizeof 0x14
 
-typedef struct arg {
-    /* 0x00 */ u16 unk_00;
-    /* 0x02 */ s16 unk2;
-    /* 0x04 */ s16 unk4;
-    /* 0x06 */ s16 unk6;
-    /* 0x08 */ s16 unk8; 
-    /* 0x0A */ s16 unkA;
-    /* 0x0C */ f32 unkC;
-} arg;
+typedef struct contMain {
+    u16 buttons0;
+    u16 buttons1;
+    u16 buttons2;
+    s16 stickx;
+    s16 sticky;
+    u16 unk_0A; //align
+    f32 stickAngle;
+} contMain;
 
-typedef struct arb{
-    /* 0x00 */ s32 unk0;
-    /* 0x04 */ s8 unk4;
-    /* 0x05 */ s8 unk5;
-    /* 0x06 */ s8 unk6;
-    /* 0x07 */ s8 unk7;
-    /* 0x08 */ s32 unk8;
-    /* 0x0C */ f32 unkC;
-    /* 0x10 */ s32 unk10;
-    /* 0x14 */ s32 unk14;
-    /* 0x18 */ s32 unk18;
-    /* 0x1C */ s32 unk1C;
-    /* 0x20 */ s32 unk20;
-    /* 0x24 */ s32 unk24;
-    /* 0x28 */ s32 unk28;
-    /* 0x2C */ s32 unk2C;
-    /* 0x30 */ s32 unk30;
-    /* 0x34 */ s32 unk34;
-    /* 0x38 */ s32 unk38;
-    /* 0x3C */ s32 unk3C;
-    /* 0x40 */ s32 unk40;
-    /* 0x44 */ s32 unk44;
-    /* 0x48 */ s32 unk48;
-    /* 0x4C */ s32 unk4C;
-} arb; //sizeof 0x50
 
-typedef struct aaaaa{
-    /* 0x00 */ s32 unk0;
-    /* 0x04 */ s32 unk4;
-    /* 0x08 */ s32 unk8;
-    /* 0x0C */ s32 unkC;
-    /* 0x10 */ s32 unk10;
-    /* 0x14 */ s32 unk14;
-    /* 0x18 */ s32 unk18;
-    /* 0x1C */ f32 unk1C;
-} aaaaa; //sizeof 0x20
+
 
 typedef struct d8006266c{
     /* 0x00 */ s32 unk0;
@@ -749,27 +708,13 @@ typedef struct aa1{
     /* 0x2C */ s32 unk_2C;
     /* 0x30 */ f32 unk_30;
     /* 0x34 */ void* unk34;
-    /* 0x38 */ d8006266c* unk_38;
+    /* 0x38 */ void* unk_38;
     /* 0x3C */ d8006266c* unk_3C;
     /* 0x40 */ struct aa1* previous;
     /* 0x44 */ struct aa1* next;
 } aa1; //sizeof 0x48 (unk size)
 
-typedef struct unk_8007A25C{
-    /* 0x00 */ s32 unk0;
-    /* 0x04 */ s32 unk4;
-    /* 0x08 */ s32 unk8;
-    /* 0x0C */ f32 unkC;
-    /* 0x10 */ f32 unk10;
-    /* 0x14 */ f32 unk14;
-    /* 0x18 */ f32 unk18;
-    /* 0x1C */ f32 unk1C;
-    /* 0x20 */ s32 unk20;
-    /* 0x24 */ s32 unk24;
-    /* 0x28 */ s32 unk28;
-    /* 0x2C */ s32 unk2C;
-    /* 0x30 */ f32 unk30;
-} unk_8007A25C; //sizeof 0x34
+
 
 typedef struct bf8{
     /* 0x00 */ s16 unk0;
@@ -846,10 +791,7 @@ typedef struct func_80069858_temp_v0{
     /* 0x0C */ s32 unkC;
 } func_80069858_temp_v0; //sizeof 0x10
 
-typedef struct func_80069858_arg0{
-    /* 0x00 */ char unk0[0x38];
-    /* 0x38 */ func_80069858_temp_v0* unk38;
-} func_80069858_arg0; //sizeof 0x3C
+
 
 
 #endif

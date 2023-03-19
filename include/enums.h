@@ -24,7 +24,7 @@ enum actorIDs {
 	Cannon,
 	Cannonball,
 	BL_Boss_Segment,
-	Explosion,
+	Explosion, //immune to stopwtch powerup
 	BL_Boss_Bombs,
 	Black_Chameleon_Projectile_Spawner,
 	Black_Chameleon_Projectile,
@@ -136,5 +136,19 @@ enum GameModes {
 	GAME_MODE_CREDITS = 20,
 	GAME_MODE_OPENING_CUTSCENE = 21
 };
-
+enum Powerups{
+	POWERUP_NONE,
+	POWERUP_FEET,
+	POWERUP_HEAD,
+	POWERUP_MINI,
+	POWERUP_TIME
+};
+enum PlayerCharacters{
+	CHARA_DAVY,
+	CHARA_JACK,
+	CHARA_FRED,
+	CHARA_LINDA,
+	CHARA_BLACK,
+	CHARA_WHITE
+};
 #endif

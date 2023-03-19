@@ -15,7 +15,7 @@ extern s32 D_802018D4;
 extern unk802018D8 D_802018D8;
 extern f32 D_802018F0;
 
-void func_800AEEC0(unk8016AA98* arg0, f32 arg1, f32 arg2) {
+void SetViewAreaParam(unk8016AA98* arg0, f32 arg1, f32 arg2) {
     Vec3f sp50;
     Vec3f sp5C;
     Vec3f sp44;
@@ -37,10 +37,10 @@ void func_800AEEC0(unk8016AA98* arg0, f32 arg1, f32 arg2) {
     sp44.y = sp50.y - sp5C.y;
     sp44.z = sp50.z - sp5C.z;
 
-    func_800D81B0(&sp44);
+    Vec3f_Normalize(&sp44);
     
     if (sp44.x == 0.0 && sp44.y == 0.0 && sp44.z == 0.0) {
-        func_800D7460("SetViewAreaParam(): target and eye are same point\n");
+        DummiedPrintf3("SetViewAreaParam(): target and eye are same point\n");
         return;
     }
     
@@ -122,9 +122,9 @@ void func_800AEEC0(unk8016AA98* arg0, f32 arg1, f32 arg2) {
     D_802018C4 = sp44.z;
     D_802018F0 = -1.0f;
 }
-
-void func_800AF260(unk8016AA98* arg0, f32 arg1) {
-    func_800AEEC0(arg0, (arg1 + 20.0), 300.0f);
+//refered to in US1.0 as "clip.c - SetViewArea"
+void SetViewArea(unk8016AA98* arg0, f32 arg1) {
+    SetViewAreaParam(arg0, (arg1 + 20.0), 300.0f);
 }
 
 s32 func_800AF2A4(f32 arg0, f32 arg1, f32 arg2, f32 arg3, s32 arg4) {

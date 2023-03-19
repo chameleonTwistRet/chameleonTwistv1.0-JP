@@ -2,9 +2,9 @@
 #include "guint.h"
 
 //needs -O3
-#pragma GLOBAL_ASM("asm/nonmatchings/gu/lookatstereo/guLookAtStereoF.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/gu/lookat/guLookAtF.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/gu/lookatstereo/guLookAtStereo.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/gu/lookat/guLookAt.s")
 
 // void guLookAtStereoF(float mf[4][4], float xEye, float yEye, float zEye,
 // 	       float xAt,  float yAt,  float zAt,

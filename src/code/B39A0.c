@@ -61,8 +61,8 @@ void func_800D8918(Collider* arg0, s32 arg1, s32 arg2, f32 arg3, f32 arg4, f32 a
     f32 sp40;
     
     if ((arg0->unk_00 + D_801749A0) % arg2 == 0) {
-        zPos = D_80168DA8->zPos - arg3;
-        xPos = D_80168DA8->xPos - arg4;
+        zPos = gPlayerActors->pos.z - arg3;
+        xPos = gPlayerActors->pos.x - arg4;
         var_v0 = 1;
         temp_f0 = (zPos - xPos) * SQROOT_2_DIV_2;
         
@@ -120,8 +120,8 @@ void func_800D8B28(Collider* arg0, s32 arg1, s32 arg2, f32 arg3, f32 arg4, f32 a
     if (((arg0->unk_00 + D_801749A0) % arg2) == 0) {
         temp_f12 = arg5 + arg7;
         var_v0 = 1;
-        temp_f16 = D_80168DA8->zPos - arg3;
-        temp_f0 = D_80168DA8->xPos - arg4;
+        temp_f16 = gPlayerActors->pos.z - arg3;
+        temp_f0 = gPlayerActors->pos.x - arg4;
         if (temp_f0 < -(temp_f12)) {
             var_v0 = 0;
         } else {

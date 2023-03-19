@@ -1,10 +1,10 @@
 #include "common.h"
 
 // Auth: Rain, revo, simonlindholm
-void func_800D7460(char* arg0, ...) { /* variadic args: simonlindholm*/
+void DummiedPrintf3(char* arg0, ...) { /* variadic args: simonlindholm*/
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/B2860/func_800D747C.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/vector/func_800D747C.s")
 // void func_800D747C(f32* arg0) {
 //     if (*arg0 < 0.0) {
 //         *arg0 = (*arg0 + 360.0);
@@ -16,7 +16,7 @@ void func_800D7460(char* arg0, ...) { /* variadic args: simonlindholm*/
 //     }
 // }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/B2860/func_800D74E0.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/vector/func_800D74E0.s")
 // s32 func_800D74E0(f32 arg0, f32 arg1) {
 //     s32 ret;
     
@@ -44,12 +44,12 @@ void func_800D7460(char* arg0, ...) { /* variadic args: simonlindholm*/
 //     return ret;
 // }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/B2860/func_800D75B4.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/vector/func_800D75B4.s")
 
-void func_800D799C(unkB2860* arg0, s32 arg1, char* arg2) {
+void OnlyCheckPolyInfoLevel(unkB2860* arg0, s32 arg1, char* arg2) {
     if (arg0->unk_00 < arg1) {
-        func_800D7460(D_8011074C);
-        func_800D7460(D_8011077C, arg2);
+        DummiedPrintf3(D_8011074C);
+        DummiedPrintf3(D_8011077C, arg2);
     }
 }
 
@@ -62,14 +62,14 @@ void func_800D79E4(unkB2860* arg0, s32 arg1) {
     }
 }
 
-Vec3f* func_800D7A4C(Vec3f* arg0, f32 arg1, f32 arg2, f32 arg3, unkB2860* arg4) {
+Vec3f* ProjectOnPolygon(Vec3f* arg0, f32 arg1, f32 arg2, f32 arg3, unkB2860* arg4) {
     Vec3f sp2C;
     f32 temp_f0;
     f32 temp_f12;
     f32 temp_f14;
     f32 temp_f2;
 
-    func_800D799C(arg4, 2, D_8011078C);
+    OnlyCheckPolyInfoLevel(arg4, 2, D_8011078C);
     temp_f0 = arg4->unk_44;
     temp_f2 = arg4->unk_50;
     temp_f12 = (arg4->unk_4C * arg3) + ((arg1 * temp_f0) + (arg2 * arg4->unk_48));
@@ -81,10 +81,10 @@ Vec3f* func_800D7A4C(Vec3f* arg0, f32 arg1, f32 arg2, f32 arg3, unkB2860* arg4) 
     return arg0;
 }
 
-Vec3f* func_800D7B44(Vec3f* arg0, Vec3f arg1, unkB2860* arg4) {
+Vec3f* WorldToLocal(Vec3f* arg0, Vec3f arg1, unkB2860* arg4) {
     Vec3f sp1C;
 
-    func_800D799C(arg4, 2, D_801107A0);
+    OnlyCheckPolyInfoLevel(arg4, 2, D_801107A0);
     arg1.x = arg1.x - arg4->unk_08;
     arg1.y = arg1.y - arg4->unk_0C;
     arg1.z = arg1.z - arg4->unk_10;
@@ -96,10 +96,10 @@ Vec3f* func_800D7B44(Vec3f* arg0, Vec3f arg1, unkB2860* arg4) {
     return arg0;
 }
 
-Vec3f* func_800D7C3C(Vec3f* arg0, Vec3f arg1, unkB2860* arg4) {
+Vec3f* LocalToWorld(Vec3f* arg0, Vec3f arg1, unkB2860* arg4) {
     Vec3f sp1C;
 
-    func_800D799C(arg4, 2, D_801107B0);
+    OnlyCheckPolyInfoLevel(arg4, 2, D_801107B0);
     sp1C.x = (arg4->unk_5C * arg1.z) + ((arg1.x * arg4->unk_44) + (arg1.y * arg4->unk_50));
     sp1C.y = (arg4->unk_60 * arg1.z) + ((arg1.x * arg4->unk_48) + (arg1.y * arg4->unk_54));
     sp1C.z = (arg4->unk_64 * arg1.z) + ((arg1.x * arg4->unk_4C) + (arg1.y * arg4->unk_58));
@@ -110,12 +110,12 @@ Vec3f* func_800D7C3C(Vec3f* arg0, Vec3f arg1, unkB2860* arg4) {
     return arg0;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/B2860/func_800D7D3C.s")
-// s32 func_800D7D3C(Vec3f arg0, unkB2860* arg3) {
+#pragma GLOBAL_ASM("asm/nonmatchings/code/vector/IsInsidePolygon.s")
+// s32 IsInsidePolygon(Vec3f arg0, unkB2860* arg3) {
 //     f32 temp_f0;
 //     f32 temp_f2;
 
-//     func_800D799C(arg3, 3, D_801107C0);
+//     OnlyCheckPolyInfoLevel(arg3, 3, D_801107C0);
 //     temp_f0 = (arg3->unk_74 * arg0.y) + (arg3->unk_6C * arg0.x);
 //     temp_f2 = (arg3->unk_78 * arg0.y) + (arg3->unk_70 * arg0.x);
 //     if (temp_f0 < -0.0001) {
@@ -130,10 +130,10 @@ Vec3f* func_800D7C3C(Vec3f* arg0, Vec3f arg1, unkB2860* arg4) {
 //     return 1;
 // }
 
-s32 func_800D7E10(Vec3f arg0, unkB2860* arg3) {
+s32 IsOnPolygon(Vec3f arg0, unkB2860* arg3) {
     f32 dotProduct;
     
-    func_800D799C(arg3, 2, D_801107D0);
+    OnlyCheckPolyInfoLevel(arg3, 2, D_801107D0);
     arg0.x -= arg3->unk_08;
     arg0.y -= arg3->unk_0C;
     arg0.z -= arg3->unk_10;
@@ -180,8 +180,8 @@ Vec3f* func_800D7EE0(Vec3f* arg0, Vec3f arg1, f32 arg4, s32 arg5) {
     return arg0;
 
 }
-
-s32 func_800D8030(Vec3f arg0, Vec3f arg3, f32 arg6) {
+// refered to in  US1.0 as "Vector.c - IsNearPoint"
+s32 IsNearPoint(Vec3f arg0, Vec3f arg3, f32 arg6) {
     f32 temp_f0;
     f32 temp_f14;
     f32 temp_f2;
@@ -199,7 +199,7 @@ s32 func_800D8030(Vec3f arg0, Vec3f arg3, f32 arg6) {
     return ret;
 }
 
-s32 func_800D80B0(Vec3f arg0, Vec3f arg3) {
+s32 Vec3f_Equals(Vec3f arg0, Vec3f arg3) {
     s32 ret;
     
     if ((arg0.x == arg3.x) && (arg0.y == arg3.y) && (arg0.z == arg3.z)) {
@@ -211,7 +211,7 @@ s32 func_800D80B0(Vec3f arg0, Vec3f arg3) {
     return ret;
 }
 
-s32 func_800D8114(Vec3f arg0, Vec3f arg3) {
+s32 Vec3f_EqualsCopy(Vec3f arg0, Vec3f arg3) {
     s32 ret;
     
     if ((arg0.x == arg3.x) && (arg0.y == arg3.y) && (arg0.z == arg3.z)) {
@@ -224,13 +224,13 @@ s32 func_800D8114(Vec3f arg0, Vec3f arg3) {
 }
 
 
-void func_800D8178(Vec3f* arg0, f32 arg1, f32 arg2, f32 arg3) {
+void Vec3f_Set(Vec3f* arg0, f32 arg1, f32 arg2, f32 arg3) {
     arg0->x = arg1;
     arg0->y = arg2;
     arg0->z = arg3;
 }
 
-void func_800D8198(Vec3f* arg0) {
+void Vec3f_Zero(Vec3f* arg0) {
     arg0->x = 0.0f;
     arg0->y = 0.0f;
     arg0->z = 0.0f;
