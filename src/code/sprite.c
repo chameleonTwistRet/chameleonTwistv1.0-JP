@@ -36,6 +36,7 @@ extern unk800F73C8 D_800F73C8[230];
 extern char D_8010CA1C[];
 extern char D_8010CA54[];
 extern Addr D_8C26A0;
+extern unkStruct02* D_80176F4C;
 
 void DummiedPrintf2(char* arg0, ...) {
 
@@ -158,21 +159,55 @@ void func_80056CA0(u8* arg0, u8* arg1) {
 void func_80056D14(unkStruct02* arg0, s32 arg1, unkStruct02* arg2, unkStruct02* arg3) {
     arg0->flags = arg1;
     arg0->unk_04 = arg2;
-    arg0->unk_08 = arg3;
+    arg0->next = arg3;
     if (arg3 != NULL) {
         arg3->unk_04 = (void*)arg0;
     }
 }
 
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80056D30.s")
+void* func_80056D30(s32 arg0) {
+    unkStruct02* var_a2;
+    unkStruct02* next;
+    s32 flags;
+    
+    if (arg0 == 0) {
+        return NULL;
+    }
+    
+    var_a2 = D_80176F4C;
+    
+    while (1) {
+        flags = var_a2->flags;
+        if ((flags & 1) && ((u32) arg0 < (u32) flags)) {
+            if ((u32)(flags & ~1) >= (u32) ALIGN_128(arg0) + 0x80) {
+                next = var_a2->next;
+                var_a2->flags = ALIGN_128(arg0);
+                var_a2->next = (unkStruct02*)((s32)var_a2 + ALIGN_128(arg0) + 0x80);
+                func_80056D14(var_a2->next, (flags & ~1) - ALIGN_128(arg0) - 0x80, var_a2, next);
+                leoDrive_reset(var_a2->next + 1); //incorrect function name?
+                return var_a2 + 1;
+            }
+            var_a2->flags = flags & ~1; //should be here but breaks tail merging
+            if (((!var_a2) && (!var_a2)) && (!var_a2)){} //TODO: fake match
+            return var_a2 + 1;
+        }
+         
+        if (var_a2->next != NULL) {
+            var_a2 = var_a2->next;
+        } else {
+            break;
+        }
+    }
+    return NULL;
+}
 
 void func_80056DF4(unkStruct02* arg0, unkStruct02* arg1) {
     unkStruct02* temp_v0;
 
     arg0->flags += (arg1->flags & ~1) + 0x80;
-    temp_v0 = arg1->unk_08;
-    arg0->unk_08 = temp_v0;
+    temp_v0 = arg1->next;
+    arg0->next = temp_v0;
     if (temp_v0 != 0) {
         temp_v0->unk_04 = arg0;
     }

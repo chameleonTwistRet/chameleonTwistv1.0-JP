@@ -132,7 +132,17 @@ s32 func_80087358(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80087ED0.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80087FA4.s")
+void func_80087FA4(u32 arg0) {
+    D_800FF5E8 = arg0;
+    D_800FF5E4 = arg0;
+    
+    if (arg0 == 0) {
+        D_801FCA00 = 0.0;
+        return;
+    }
+    
+    D_801FCA00 = 1.0 / arg0;
+}
 
 void func_8008800C(s32 arg0) {
     D_800FF5E8 = arg0;

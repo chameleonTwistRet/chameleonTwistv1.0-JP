@@ -1851,7 +1851,7 @@ void func_8004AC8C(Actor* arg0) {
 void func_8004BA5C(s32 arg0) {
     s32 i;
     PlayerPointer = &gPlayerActors[0];
-    TonguePointer = &gTongues;
+    TonguePointer = gTongues;
     
     for (i = 0; i < arg0; i++) {
         func_8004AD2C();

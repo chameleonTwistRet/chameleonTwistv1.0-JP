@@ -72,7 +72,7 @@ void idleproc(void *arg0) {
     osViBlack(1);
     osViSetSpecialFeatures(OS_VI_DITHER_FILTER_ON);
     osViSetSpecialFeatures(OS_VI_DIVOT_OFF);
-    osCreatePiManager(OS_PRIORITY_PIMGR, &gPiManMgsQ, &gPiManMsgs, 50);
+    osCreatePiManager(OS_PRIORITY_PIMGR, &gPiManMgsQ, gPiManMsgs, 50);
     osCreateThread(&gMainThread, 3, mainproc, arg0, &D_80117FF0, 10);
     osStartThread(&gMainThread);                  //gMainThreadStack[1024]
     osSetThreadPri(0, 0);
@@ -103,7 +103,7 @@ void func_80026CA8(unkMatrix *arg0, Mtx *arg1, u32 arg2, f32 arg3, s32 arg4) {
     f32 yPos = 0.0f;
     f32 zPos = 0.0f;
     
-    func_800849DC(0, &gTongues, &gPlayerActors[0], &gCamera);
+    func_800849DC(0, gTongues, &gPlayerActors[0], &gCamera);
     guMtxXFML(&arg0->unk10880[arg2], xPos, yPos, zPos, &xPos, &yPos, &zPos);
     guMtxXFML(&arg0->unk11880[arg2], xPos, yPos, zPos, &xPos, &yPos, &zPos);
     guMtxCatL(arg1, &arg0->unk10880[arg2], arg1);
@@ -116,7 +116,7 @@ void func_80026E30(unkMatrix *arg0, Mtx *arg1, u32 arg2, f32 arg3, s32 arg4) {
     f32 yPos = 0.0f;
     f32 zPos = 0.0f;
     
-    func_800849DC(0, &gTongues, &gPlayerActors[0], &gCamera);
+    func_800849DC(0, gTongues, &gPlayerActors[0], &gCamera);
     guMtxXFML(&arg0->unk10880[arg2], xPos, yPos, zPos, &xPos, &yPos, &zPos);
     guMtxXFML(&arg0->unk11880[arg2], xPos, yPos, zPos, &xPos, &yPos, &zPos);
     guMtxCatL(arg1, &arg0->unk10880[arg2], arg1);
@@ -128,7 +128,7 @@ void func_80026FB8(unkMatrix *arg0, Mtx *arg1, u32 arg2, f32 arg3, f32 arg4, s32
     f32 xPos, yPos, zPos;
     zPos = yPos = xPos = 0.0f;
     
-    func_800849DC(0, &gTongues, &gPlayerActors[0], &gCamera);
+    func_800849DC(0, gTongues, &gPlayerActors[0], &gCamera);
     guMtxXFML(arg1, xPos, yPos, zPos, &xPos, &yPos, &zPos);
     guMtxXFML(&arg0->unk10880[arg2], xPos, yPos, zPos, &xPos, &yPos, &zPos);
     guMtxXFML(&arg0->unk11880[arg2], xPos, yPos, zPos, &xPos, &yPos, &zPos);
@@ -205,13 +205,13 @@ void* func_8002CAC8(Gfx* arg0, s32 arg1) {
 
 void Video_SetTask(Gfx* arg0, Gfx* arg1, s32 arg2) {
     OSTask_t* task = &D_800F04E0[arg2].t;
-    task->ucode_boot = rspbootTextStart;
+    task->ucode_boot = (u64*)rspbootTextStart;
     task->ucode_boot_size =  ((s32)rspbootTextEnd - (s32)rspbootTextStart);
     //TODO: fix &rspbootTextStart[208 / 8]
-    task->ucode = &rspbootTextStart[208 / 8]; //?
-    task->ucode_data = gspFast3DDataStart;
-    task->output_buff_size = D_80129720;
-    task->data_ptr = arg0;
+    task->ucode = (u64*)&rspbootTextStart[208 / 8]; //?
+    task->ucode_data = (u64*)gspFast3DDataStart;
+    task->output_buff_size = (u64*)D_80129720;
+    task->data_ptr = (u64*)arg0;
     task->data_size = (((s32)arg1 - (s32)arg0) >> 3) << 3;
 }
 

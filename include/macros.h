@@ -16,6 +16,7 @@
 #define ROUND(d)	(int)(((d) >= 0.0) ? ((d) + 0.5) : ((d) - 0.5))
 #define	ABS(d)		((d) > 0) ? (d) : -(d)
 #define _ALIGN(val, alignment) ((((val) + ((alignment) - 1)) / (alignment)) * (alignment))
+#define ALIGN_128(val) ((val + 0x7F) & ~0x7F)
 
 #define SEGMENT_MASK 0x0F000000
 #define SEGMENT_SHIFT 24

@@ -634,8 +634,9 @@ typedef struct unktemp {
 typedef struct unkStruct02 {
     /* 0x00 */ s32 flags;
     /* 0x04 */ void* unk_04;
-    /* 0x08 */ void* unk_08;
-} unkStruct02; //sizeof 0xC
+    /* 0x08 */ struct unkStruct02* next;
+    /* 0x0C */ char unk_0C[0x74];
+} unkStruct02; //is this actually size 0x80?
 
 //related to kicking dust
 typedef struct unkStruct03 {
