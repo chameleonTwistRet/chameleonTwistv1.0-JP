@@ -427,5 +427,11 @@ void func_800DCA90(s32, s32);
 void func_800DCB10(s32, s32);
 s32 func_800DF680(ALSeqPlayer*);
 void _bzero(void*, s32);
+void CalcJumpingEnemyNext(Actor*);
+void CalcWalkingEnemyNext(Actor*);
+void func_800CBD24(Actor*);
+void func_800CCDCC(Actor*);
+void func_800CCE4C(Actor*);
+void func_800CEB10(Actor*);
 
 #endif

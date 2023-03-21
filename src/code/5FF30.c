@@ -1582,9 +1582,9 @@ void func_800AAB0C(s32 arg0) {
         D_80175678[i] = 0;
     }
 
-    D_801FCA10 = 0x10A9;
+    gFixedSeedIndex = 0x10A9;
     dmaSize = D_F0042B0 - D_F000000;
-    D_80100FD0 = 1;
+    UseFixedRNGSeed = 1;
     D_80200C8C = func_80056EE4(dmaSize);
     if (D_80200C8C == NULL) {
         osSyncPrintf(D_8010F1EC, D_80200C8C);

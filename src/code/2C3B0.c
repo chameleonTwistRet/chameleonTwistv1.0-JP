@@ -126,7 +126,7 @@ void func_8005564C(void) {
         TaskInit();
         D_80168DA0 = 4;
         D_800FFEB8++;
-        D_80100FD0 = 0;
+        UseFixedRNGSeed = FALSE;
         D_800FFDF0 = 2;
         func_8008BE14();
         func_80088198();
@@ -175,7 +175,7 @@ void func_800557F8(void) {
         TaskInit();
         D_80168DA0 = 4;
         D_800FFEB8++;
-        D_80100FD0 = 0;
+        UseFixedRNGSeed = FALSE;
         D_800FFDF0 = 2;
         func_8008BE14();
         func_80088198();
@@ -209,7 +209,7 @@ void func_80055994(void) {
         TaskInit();
         func_8002E0CC();
         D_800FFEB8 += 1;
-        D_80100FD0 = 0;
+        UseFixedRNGSeed = FALSE;
         D_800FFDF0 = 2;
         D_801FC9AC = 0;
         func_8008F114();
@@ -241,7 +241,7 @@ void func_80055AA0(void) {
         TaskInit();
         func_8002E0CC();
         D_800FFEB8++;
-        D_80100FD0 = 0;
+        UseFixedRNGSeed = FALSE;
         D_800FFDF0 = 2;
         D_801FC9AC = 0;
         break;

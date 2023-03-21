@@ -1,24 +1,25 @@
 #include "common.h"
 
-extern f32 D_80108B70;
-extern f32 D_80108C74;
-extern f32 D_80108D78;
+extern f32 D_80108B70[64];
+extern f32 D_80108C74[64];
+extern f32 D_80108D78[64];
 extern f32 D_80108E7C[];
-extern s32 D_801FCA10;
+extern s32 gFixedSeedIndex;
 
 s32 Random(s32 arg0, s32 arg1) {
     s32 var_v1;
     f32 new_var2;
     f32 new_var;
     
-    if (D_80100FD0 != 0) {
-        new_var2 = ((D_801FCA10 * 256) + D_801FCA10) % 65535 / 65535.0f;
+    if (UseFixedRNGSeed != FALSE) {
+        new_var2 = ((gFixedSeedIndex * 256) + gFixedSeedIndex) % 65535 / 65535.0f;
         new_var = arg1 - arg0 + 1;
         var_v1 = new_var * new_var2 + arg0;
     } else {
         new_var = guRandom() % 65535;
         var_v1 = (arg1 - arg0 + 1) * (new_var / 65535.0f) + arg0;
     }
+
     return var_v1;
 }
 
@@ -33,64 +34,62 @@ f32 tanf(f32 x) {
 
     sin_x = sinf(x);
     cos_x = cosf(x);
+
     if (cos_x == 0.0) {
         tan_x = 0.0f;       // Return 0 if tan is undefined
     } else {
         tan_x = sin_x / cos_x;
     }
+
     return tan_x;
 }
 
-f32 func_800C8A78(f32 arg0) {
-    s32 var_a0;
-    f32* var_v0;
-    f32 var_f0;
-    f32 var_f12;
-    f64 var_f16;
-    f32 var_f2;
+f32 func_800C8A78(f32 x) {
+    f32* table;
+    f32 sign;
+    f32 abs_x;
+    f32 cur;
+    s32 base;
+    s32 next;
+    f32 entry1;
+    f32 entry2;
+    f32 t;
     
-    s32 temp_f8;
-    f32 temp1;
-    f32 temp2;
+    if (x >= 0.0f) {
+        sign = 1.0f;
+        abs_x = x;
+    } else {
+        sign = -1.0f;
+        abs_x = -x;
+    }
+    
+    if (abs_x > 1.0) {
+        abs_x = 1.0f;
+    }
 
-    if (arg0 >= 0.0f) {
-        var_f0 = arg0;
-        var_f12 = 1.0f;
+    if ((1-1/200.0) <= abs_x) {
+        table = D_80108D78;
+        cur = (abs_x - (1-1/200.0)) * (ARRAY_COUNT(D_80108D78) * 200);
+    } else if ( (1-1/20.0) <= abs_x) {
+        table = D_80108C74;
+        cur = (abs_x - (1-1/20.0)) * (ARRAY_COUNT(D_80108C74) * 20);
     } else {
-        var_f12 = -1.0f;
-        var_f0 = -arg0;
+        table = D_80108B70;
+        cur = abs_x * ARRAY_COUNT(D_80108B70);
+    }
+
+    base = cur;
+    next = base + 1;
+    
+    if (next > 64) {
+        next = 64;
     }
     
-    var_f16 = var_f0;
+    entry1 = table[base];
+    entry2 = table[next];
+    t = cur - base;
     
-    if (var_f16 > 1.0) {
-        var_f0 = 1.0f;
-        if (1){} //TODO: fake match
-        var_f16 = var_f0; //?
-    }
-    
-    if (0.994999999999999996 <= var_f16) {
-        var_v0 = &D_80108D78;
-        var_f2 = (f32) ((var_f16 - 0.994999999999999996) * 12800.0);
-    } else if (0.949999999999999956 <= var_f16) {
-        var_v0 = &D_80108C74;
-        var_f2 = (f32) ((var_f16 - 0.949999999999999956) * 1280.0);
-    } else {
-        var_v0 = &D_80108B70;
-        var_f2 = var_f0 * 64.0f;
-    }
-    
-    temp_f8 = (s32) var_f2;
-    var_a0 = temp_f8 + 1;
-    
-    if (var_a0 > 64) {
-        var_a0 = 64;
-    }
-    
-    temp1 = var_v0[temp_f8];
-    temp2 = var_v0[var_a0];
-    
-    return (((1.0f - (var_f2 - (f32) temp_f8)) * temp1) + ((var_f2 - (f32) temp_f8) * temp2)) * var_f12;
+    return (((1.0f - t) * entry1) + (t * entry2)) * sign;
 }
 
 f32 func_800C8BE4(f32 arg0) {
@@ -144,8 +143,8 @@ f32 func_800C8C14(f32 arg0, f32 arg1) {
         temp_f0 = var_f14 - var_f6;
     }
     
-    if (var_a1 >= 0x41) {
-        var_a1 = 0x40;
+    if (var_a1 > 64) {
+        var_a1 = 64;
     }
     
     temp_f2 = D_80108E7C[var_v1];

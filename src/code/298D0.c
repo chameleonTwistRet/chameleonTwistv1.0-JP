@@ -5,7 +5,6 @@
 u16 D_80175678[MAXCONTROLLERS];
 contMain gContMain[MAXCONTROLLERS];
 
-
 extern s32 D_800F0690;
 extern void* D_80175638;
 extern OSContStatus D_80175640[MAXCONTROLLERS];
@@ -13,10 +12,7 @@ extern OSContPad D_80175650[MAXCONTROLLERS];
 extern OSPfs gRumblePfs[MAXCONTROLLERS];
 extern s32 D_80176960[];
 extern s32 D_80175668[];
-extern u16 D_80175678[];
 
-
-//https://decomp.me/scratch/WixVG
 s32 func_8004E4D0(void) {
     OSMesgQueue siQueue;
     OSMesg mesgBuf;
@@ -88,8 +84,44 @@ void Controller_Zero(contMain* arg0) {
     arg0->stickAngle = 0.0f;
 }
 
-//https://decomp.me/scratch/yrEom
-#pragma GLOBAL_ASM("asm/nonmatchings/code/298D0/func_8004E784.s")
+void func_8004E784(contMain* arg0, s32 arg1, s32* arg2, contMain* arg3) {
+    contMain* var_s0;
+    contMain* temp_v0_2;
+    s32 i;
+
+    osRecvMesg(&D_80175620, NULL, 1);
+    osContGetReadData(&D_80175650[0]);
+
+    for (i = 0; i < arg1; i++) {
+        if ((arg2 == NULL) || (arg2[i] == 0)) {
+            if (D_80175668[i] == -1) {
+                Controller_Zero(&gContMain[i]);
+                continue;
+            }
+            gContMain[i].buttons0 = D_80175650[D_80175668[i]].button;
+            gContMain[i].stickx = D_80175650[D_80175668[i]].stick_x;
+            gContMain[i].sticky = D_80175650[D_80175668[i]].stick_y;
+        } else {
+            gContMain[i].buttons0 = arg3[i].buttons0;
+            gContMain[i].stickx = arg3[i].stickx;
+            gContMain[i].sticky = arg3[i].sticky;
+        }
+
+        gContMain[i].stickAngle = func_800C8C14((f32) gContMain[i].stickx, (f32) gContMain[i].sticky);
+        gContMain[i].buttons1 = (gContMain[i].buttons0 ^ D_80175678[i]) & gContMain[i].buttons0;
+        gContMain[i].buttons2 = (gContMain[i].buttons0 ^ D_801756C0[i]) & gContMain[i].buttons0;
+        D_801756C0[i] = gContMain[i].buttons0;
+        if ((gContMain[i].stickx >= -6) && (gContMain[i].stickx < 7)) {
+            gContMain[i].stickx = 0;
+        }
+        
+        if ((gContMain[i].sticky >= -6) && (gContMain[i].sticky < 7)) {
+            gContMain[i].sticky = 0;
+        }
+
+        arg0[i] = gContMain[i];
+    }
+}
 
 void func_8004E9AC(void) {
     s32 i = 0;

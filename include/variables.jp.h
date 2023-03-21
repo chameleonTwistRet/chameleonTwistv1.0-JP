@@ -119,7 +119,7 @@ extern s16 D_800FFDF0;
 extern s16 D_800FFDF4;
 extern s32 gameModeCurrent;
 extern s32 D_800FFEB8;
-extern s16 D_80100FD0;
+extern s16 UseFixedRNGSeed;
 extern PlayerInit gPlayerInits[10]; // 4 extra blank entries.
 extern f32 D_8010881C;
 extern f32 D_80108820;
@@ -262,7 +262,7 @@ extern u16 D_801756C0[4];
 extern s16 D_801756C2;
 extern s16 D_801756C4;
 extern s16 D_801756C6;
-extern s32 D_801FCA10;
+extern s32 gFixedSeedIndex;
 extern OSMesgQueue D_801FCA50[50];
 extern OSMesg D_801FCF08[50];
 extern s32 D_801FD558;
