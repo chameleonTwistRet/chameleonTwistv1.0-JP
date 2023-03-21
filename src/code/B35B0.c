@@ -12,7 +12,7 @@ f32 Vec3f_Normalize(Vec3f* arg0) {
     }
     return temp_f0;
 }
-//vev3f lerp?
+//vec3f lerp?
 Vec3f* func_800D8244(Vec3f* arg0, Vec3f arg1, Vec3f arg4, f32 arg7) {
     Vec3f sp1C;
 

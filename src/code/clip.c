@@ -212,17 +212,6 @@ s32 func_800AF62C(f32 arg0, f32 arg1, f32 arg2, f32 arg3) {
     return func_800AF2A4(arg0, arg1, arg2, arg3, 1);
 }
 
-extern f64 D_8010F9D0;
-extern f32 D_802018BC;
-extern f32 D_802018C0;
-extern f32 D_802018C4;
-extern f32 D_802018C8;
-extern f32 D_802018CC;
-extern s32 D_802018D0;
-extern s32 D_802018D4;
-
-extern f32 D_802018F0;
-
 s32 func_800AF658(unk802018D8 *arg0, f32 arg1) {
     s32 ret;
     f32 temp_f0_2;

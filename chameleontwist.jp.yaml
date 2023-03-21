@@ -240,7 +240,7 @@ segments:
       - [0xE8930, rodata, code/5FF30] #8010D530 through 80110110
       - [0xEAD90, .rodata, code/clip]
       - [0xEADE0, rodata, code/8ADD0]
-      - [0xEB500, rodata, code/math] #80110110 through 80110180
+      - [0xEB500, .rodata, code/math] #80110110 through 80110180
       - [0xEB580, rodata, code/poly] #80110180 through 80110720
       - [0xEBB20, rodata, code/vector] #80110720 through 80110870
       - [0xEBC20, .rodata, code/B35B0]
