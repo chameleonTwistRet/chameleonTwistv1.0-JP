@@ -29,8 +29,9 @@ def get_func_sizes():
             components = line.split()
             size = int(components[4], 16)
             name = components[5]
-            total += size
-            sizes[name] = size
+            if not name.startswith(".L"):
+                total += size
+                sizes[name] = size
 
     return sizes, total
 
@@ -39,7 +40,7 @@ def get_nonmatching_funcs():
 
     for root, dirs, files in os.walk(asm_dir):
         for f in files:
-            if f.endswith(".s"):
+            if f.endswith(".s") and not f.startswith(".L"):
                 funcs.add(f[:-2])
 
     return funcs
