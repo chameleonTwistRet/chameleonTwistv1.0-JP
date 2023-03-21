@@ -71,6 +71,8 @@ def main(args):
     nonmatching_funcs = get_nonmatching_funcs()
     matching_funcs = all_funcs - nonmatching_funcs
 
+    print(matching_funcs)
+
     matching_size, nonmatching_size = get_funcs_sizes(func_sizes, matching_funcs, nonmatching_funcs)
 
     if len(all_funcs) == 0:

@@ -476,8 +476,12 @@ typedef struct tempStruct {
 typedef struct tempStruct1 {
     /* 0x00 */ s32 unk_00;
     /* 0x04 */ s32 unk_04;
-    /* 0x08 */ s32 (*function) (void);
-} tempStruct1; //sizeof 0xC
+    /* 0x08 */ void (*function) (struct tempStruct1*);
+    /* 0x0C */ char unk_0C[0x56];
+    /* 0x62 */ s16 unk_62;
+    /* 0x64 */ char unk_64[4];
+    /* 0x68 */ s16 unk_68;
+} tempStruct1; //sizeof 0x6C (?)
 
 typedef struct unk801FCA20 {
     /* 0x00 */ s32 unk_00;
@@ -656,6 +660,11 @@ typedef struct unkStruct03 {
     /* 0x44 */ s32 unk_44;
 } unkStruct03; //sizeof 0x48
 
+typedef struct unkStruct06 {
+    char unk_00[0x0C];
+    struct unkStruct06* next;
+} unkStruct06;
+
 //5FF30
 //linked list probably, heap related?
 typedef struct unk_D_801FFB90 {
@@ -675,9 +684,6 @@ typedef struct contMain {
     u16 unk_0A; //align
     f32 stickAngle;
 } contMain;
-
-
-
 
 typedef struct d8006266c{
     /* 0x00 */ s32 unk0;
