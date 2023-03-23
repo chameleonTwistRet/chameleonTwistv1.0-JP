@@ -16,7 +16,7 @@ extern __OSViContext *__osViNext;
 
 extern s32 rngSeed; //rng
 
-extern camera* D_80174860;
+extern Camera* D_80174860;
 extern playerActor* PlayerPointer;
 extern Tongue* TonguePointer;
 
@@ -207,7 +207,7 @@ extern s32 D_80176824;
 extern u8 D_80176850[16];
 extern f32 D_80176F50;
 extern OSMesgQueue D_801B3120;
-extern s32 D_801B3138;
+extern OSTask* D_801B3138;
 extern s32 D_801B3140;
 extern s16 D_801B3540;
 extern u8 gAlHeapBase[300000];
@@ -273,7 +273,7 @@ extern void* D_80200C94;
 extern Addr D_AB10B0;
 extern Addr D_F000000;
 extern Addr D_F0042B0;
-extern unk8016AA98 gCamera;
+extern Camera gCamera[4];
 extern unk802000C84 D_80200C84;
 extern Collision D_80240D6C[];
 extern u8 gCarrotBitfield;

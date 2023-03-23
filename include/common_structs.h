@@ -177,16 +177,35 @@ typedef struct CollisionSubStruct {
 } CollisionSubStruct; //sizeof 0xD8
 
 typedef struct Collision {
-    /* 0x00 */ s32 collisionType; //?
-    /* 0x04 */ char unk_04[0x2C];
-    /* 0x44 */ CollisionSubStruct collisionSubStruct;
-    /* 0x48 */ char unk_48[0x90];
+    /* 0x00 */ s32 collisionType;
+    /* 0x04 */ char pad4[0x14];                     /* maybe part of collisionType[6]? */
+    /* 0x18 */ s32 unk18;
+    /* 0x1C */ char pad1C[0x14];                    /* maybe part of unk18[6]? */
+    /* 0x30 */ CollisionSubStruct collisionSubStruct;
+    /* 0x48 */ char pad48[0x30];                    /* maybe part of collisionSubStruct[3]? */
+    /* 0x78 */ s32 unk78;
+    /* 0x7C */ char pad7C[0x18];                    /* maybe part of unk78[7]? */
+    /* 0x94 */ s32 unk94;
+    /* 0x98 */ char pad98[0x38];                    /* maybe part of unk94[0xF]? */
+    /* 0xD0 */ f32 unk_D0;                           /* inferred */
+    /* 0xD4 */ char padD4[4];
 } Collision; //sizeof 0xD8
 
+typedef struct unkStruct07 {
+    s32 unk_00;
+    char unk_04[8];
+    s32 unk_0C;
+    s32 unk_10;
+} unkStruct07;
+
+typedef struct unkStruct08 {
+    /* 0x00 */ s32 unk0;
+    /* 0x04 */ char pad4[0x10];
+} unkStruct08; 
 
 //camera 0x8016AA98
 //camera copy 0x801768A0
-typedef struct camera {//take these with a grain of salt
+typedef struct Camera {//take these with a grain of salt
     /* 0x00 */ s32 unk0;
     /* 0x04 */ Vec3f f1;
     /* 0x10 */ Vec3f f2;
@@ -199,7 +218,6 @@ typedef struct camera {//take these with a grain of salt
     /* 0x4C */ u32 untouchedTimer; //timer that incs when the camera hasnt been used
     /* 0x50 */ f32 unk50;
     /* 0x54 */ s32 pushHoriz;//the impulse horizontally by the player
-
     /* 0x58 */ f32 unk58;
     /* 0x5C */ f32 unk5C;
     /* 0x60 */ f32 unk60;
@@ -207,104 +225,7 @@ typedef struct camera {//take these with a grain of salt
     /* 0x68 */ f32 unk68;
     /* 0x6C */ f32 unk6C;
     /* 0x70 */ f32 unk70;
-
-    /* 0x74 */ s32 unk74;
-
-    /* 0x78 */ f32 unk78;
-    /* 0x7C */ f32 unk7C;
-    /* 0x80 */ f32 unk80;
-    /* 0x84 */ f32 unk84;
-    /* 0x88 */ f32 unk88;
-    /* 0x8C */ f32 unk8C;
-    /* 0x90 */ f32 unk90;
-    /* 0x94 */ f32 unk94;
-    /* 0x98 */ f32 unk98;
-    /* 0x9C */ f32 unk9C;
-    /* 0xA0 */ f32 unkA0;
-    /* 0xA8 */ f32 unkA8;
-    /* 0xAC */ f32 unkAC;
-    /* 0xB0 */ f32 unkB0;
-    /* 0xB4 */ f32 unkB4;
-
-    /* 0xB8 */ s32 unkB8;
-
-    /* 0xBC */ f32 unkBC;
-    /* 0xC0 */ f32 unkC0;
-
-    /* 0xC4 */ s32 unkC4;
-
-    /* 0xC8 */ f32 unkC8;
-    /* 0xCC */ f32 unkCC;
-    /* 0xD0 */ f32 unkD0;
-    /* 0xD4 */ f32 unkD4;
-    /* 0xD8 */ f32 unkD8;
-    /* 0xDC */ f32 unkDC;
-    /* 0xE0 */ f32 unkE0;
-    /* 0xE4 */ f32 unkE4;
-    /* 0xE8 */ f32 unkE8;
-
-    /* 0xEC */ s32 unkEC;
-
-    /* 0xF0 */ f32 unkF0;
-    /* 0xF4 */ f32 unkF4;
-    /* 0xF8 */ f32 unkF8;
-    /* 0xFC */ f32 unkFC;
-    /* 0x100*/ f32 unk100;
-    /* 0x104*/ f32 unk104;
-    /* 0x108*/ f32 unk108;
-    /* 0x10C*/ f32 unk10C;
-    /* 0x110*/ f32 unk110;
-    /* 0x114*/ f32 unk114;
-    /* 0x118*/ f32 unk118;
-    /* 0x11C*/ f32 unk11C;
-    /* 0x120*/ f32 unk120;
-    /* 0x124*/ f32 unk124;
-    /* 0x128*/ f32 unk128;
-    /* 0x12C*/ f32 unk12C;
-    /* 0x130*/ f32 unk130;
-    /* 0x134*/ f32 unk134;
-    /* 0x138*/ f32 unk138;
-    /* 0x13C*/ f32 unk13C;
-    /* 0x140*/ f32 unk140;
-    /* 0x144*/ f32 unk144;
-    /* 0x148*/ f32 unk148;
-    /* 0x14C*/ f32 unk14C;
-    /* 0x150*/ f32 unk150;
-    /* 0x154*/ f32 unk154;
-    /* 0x158*/ f32 unk158;
-    /* 0x15C*/ f32 unk15C;
-
-    /* 0x160*/ s32 unk160;
-
-    /* 0x164*/ f32 unk164;
-    /* 0x168*/ f32 unk168;
-    /* 0x16C*/ f32 unk16C;
-    /* 0x170*/ f32 unk170;
-    /* 0x174*/ f32 unk174;
-    /* 0x178*/ f32 unk178;
-    /* 0x17C*/ f32 unk17C;
-    /* 0x180*/ f32 unk180;
-    /* 0x184*/ f32 unk184;
-    /* 0x188*/ f32 unk188;
-    /* 0x18C*/ f32 unk18C;
-    /* 0x190*/ f32 unk190;
-    /* 0x194*/ f32 unk194;
-    /* 0x198*/ f32 unk198;
-    /* 0x19C*/ f32 unk19C;
-    /* 0x1A0*/ f32 unk1A0;
-    /* 0x1A4*/ f32 unk1A4;
-    /* 0x1A8*/ f32 unk1A8;
-    /* 0x1AC*/ f32 unk1AC;
-    /* 0x1B0*/ f32 unk1B0;
-    /* 0x1B4*/ f32 unk1B4;
-    /* 0x1B8*/ f32 unk1B8;
-    /* 0x1BC*/ f32 unk1BC;
-    /* 0x1C0*/ f32 unk1C0;
-    /* 0x1C4*/ f32 unk1C4;
-    /* 0x1C8*/ f32 unk1C8;
-    /* 0x1CC*/ f32 unk1CC;
-    /* 0x1D0*/ f32 unk1D0;
-}camera;//size 0x1D0
+} Camera; //size 0x74
 
 typedef struct PlayerInit {
     u32 unk0; //used to ID selected chameleon.
@@ -317,7 +238,6 @@ typedef struct PlayerInit {
     s32 unk7b8;
     u32 zone;
 } PlayerInit; //sizeof 0x7c0
-
 
 typedef struct unk_8010AA28 {
     s32 unk_00;
@@ -428,12 +348,27 @@ typedef struct unk8016AA98 {
     /* 0x30 */ f32 unk30;                           /* inferred */
     /* 0x34 */ Vec3f unk34;                           /* inferred */
     /* 0x40 */ char pad40[0x34];                    /* maybe part of unk3C[0xE]? */
-} unk8016AA98;                                      /* size = 0x74 */
+} unk8016AA98; //sizeof 0x74
+
+typedef struct unkStruct09 {
+char unk_00[0x84];
+} unkStruct09; //sizeof 0x84
+
+typedef struct unkStruct10 {
+    /* 0x00 */ f32 unk_00;
+    /* 0x04 */ f32 unk_04;
+    /* 0x08 */ f32 unk_08;
+    /* 0x0C */ f32 unk_0C;
+    /* 0x10 */ f32 unk_10;
+    /* 0x14 */ f32 unk_14;
+} unkStruct10; //sizeof 0x18
 
 typedef struct unkFlags {
-    /* 0x00 */ u8 flags0;
-    /* 0x01 */ u8 flags1;
-} unkFlags; //unk size
+/* 0x00 */ u8 flags0[4];
+/* 0x04 */ s32 unk_04;
+/* 0x02 */ char unk_08[0x69];
+/* 0x71 */ s8 unk_71;
+} unkFlags; //sizeof 0x72
 
 typedef struct unk80100F50 {
     /* 0x00 */ u32 base_address;
@@ -477,9 +412,12 @@ typedef struct tempStruct1 {
     /* 0x00 */ s32 unk_00;
     /* 0x04 */ s32 unk_04;
     /* 0x08 */ void (*function) (struct tempStruct1*);
-    /* 0x0C */ char unk_0C[0x56];
+    /* 0x0C */ char unk_0C[0x50];
+    /* 0x5C */ s16 unk_5C;
+    /* 0x5E */ char unk_5E[4];
     /* 0x62 */ s16 unk_62;
-    /* 0x64 */ char unk_64[4];
+    /* 0x64 */ s16 unk_64;
+    /* 0x66 */ char unk_66[2];
     /* 0x68 */ s16 unk_68;
 } tempStruct1; //sizeof 0x6C (?)
 
@@ -505,7 +443,14 @@ typedef struct unk801FD550 {
 
 typedef struct unkStruct0 {
     /* 0x00 */ s32 unk_00;
-    /* 0x04 */ char unk_04[0x20];
+    /* 0x04 */ s32 unk_04;
+    /* 0x08 */ s32 unk_08;
+    /* 0x0C */ s32 unk_0C;
+    /* 0x10 */ s32 unk_10;
+    /* 0x14 */ s32 unk_14;
+    /* 0x18 */ s32 unk_18;
+    /* 0x1C */ s32 unk_1C;
+    /* 0x20 */ s32 unk_20;
 } unkStruct0; //sizeof 0x24
 
 typedef struct unkB2860 {
@@ -660,10 +605,20 @@ typedef struct unkStruct03 {
     /* 0x44 */ s32 unk_44;
 } unkStruct03; //sizeof 0x48
 
+typedef struct unkStruct05 {
+    /* 0x00 */ char unk_00[0x57];
+    /* 0x57 */ u8 unk_57;
+    /* 0x58 */ char unk_58[5];
+    /* 0x5D */ u8 unk_5D;
+    /* 0x5E */ u8 unk_5E[2];
+} unkStruct05;
+
 typedef struct unkStruct06 {
-    char unk_00[0x0C];
-    struct unkStruct06* next;
-} unkStruct06;
+    /* 0x00 */ s16 unk0;                            /* inferred */
+    /* 0x02 */ char pad2[0xA];                      /* maybe part of unk0[6]? */
+    /* 0x0C */ struct unkStruct06* next;
+    /* 0x10 */ struct unkStruct06* unk_10;
+} unkStruct06; //sizeof 0x14(?)
 
 //5FF30
 //linked list probably, heap related?

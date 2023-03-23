@@ -1,12 +1,25 @@
 #include "common.h"
 
 extern f64 D_801104F8;
-extern s32 gCurrentStage;
 extern s32 D_80236974;
 extern Collision D_80240CE0[];
 extern Collider D_80236980[];
 extern char D_801103D0[];
+extern s32 D_8020D8F4;
+extern s32 gCurrentStage;
+extern f64 D_801106A0;
+extern f64 D_801106A8;
 
+void func_800D7EE0(Vec3f*, Vec3f, f32, s32);
+void func_800D3854(playerActor*, Tongue*, Camera*, Vec3f*, Vec3f*, s32);
+void func_800D5394(playerActor*, Tongue*, Camera*, Vec3f*, Vec3f*, s32);
+void func_800D6864(playerActor*, Tongue*, Camera*, Vec3f*, Vec3f*);
+void func_800D69D0(s32, playerActor*, Tongue*, Camera*, Vec3f*, Vec3f*, s32);
+Collider* func_800CAF88(Vec3f, f32, f32);
+Collider* SearchPolygonBetween(Vec3f, Vec3f, s32, s32, s32);
+void func_800AE87C(unkStruct10*);
+void func_800C9748(unkStruct10*, s32, s32);
+void func_800CA734(Vec3f*, Vec3f, f32, s32);
 void func_800CBC08(Actor*);
 void func_800CC814(Actor*, Vec3f, s32);
 
@@ -270,18 +283,134 @@ Vec3f* func_800D00DC(Vec3f* arg0, Collider* arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800D5394.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800D6864.s")
+void func_800D6864(playerActor* arg0, Tongue* arg1, Camera* arg2, Vec3f* arg3, Vec3f* arg4) {
+    Collision* collider;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800D68EC.s")
+    collider = &D_80240CE0[currentZone];
+    arg3->x = arg2->f1.z;
+    arg3->y = arg2->f2.x + (collider->unk_D0 * arg2->size1);
+    arg3->z = arg2->f2.y;
+    arg4->x = arg2->f3.x;
+    arg4->y = arg2->f3.y + (collider->unk_D0 * arg2->size1);
+    arg4->z = arg2->f3.z;
+}
+
+void func_800D68EC(Vec3f* arg0, Vec3f* arg1, f32 arg2) {
+    Vec3f sp2C;
+
+    sp2C.x = arg0->x - arg1->x;
+    sp2C.y = arg0->y - arg1->y;
+    sp2C.z = arg0->z - arg1->z;
+    
+    func_800D7EE0(&sp2C, sp2C, ((arg2 * D_801106A0) / D_801106A8), 2);
+    
+    arg0->x = arg1->x + sp2C.x;
+    arg0->y = arg1->y + sp2C.y;
+    arg0->z = arg1->z + sp2C.z;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800D69D0.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800D7028.s")
+void SetCameraParameters(void) {
+    Collision* temp = &D_80240CE0[currentZone];
+    Camera* cam;
+    s32 pad;
+    s32 i;
+    Vec3f sp3C;
+    Vec3f sp30;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800D71E8.s")
+    if ((gCurrentStage == 5) && (currentZone == 0xE)) {
+        func_800D6864(gPlayerActors, gTongues, gCamera, &sp3C, &sp30);
+    } else if ((D_80236974 == 1) && (D_8020D8F4 == 0)) {
+        func_800D3854(gPlayerActors, gTongues, gCamera, &sp3C, &sp30, 0);
+    } else if (gCamera[0].unk0 == 1) {
+        func_800D69D0(temp->unk94, gPlayerActors, gTongues, gCamera, &sp3C, &sp30, 0);
+    } else {
+        func_800D5394(gPlayerActors, gTongues, gCamera, &sp3C, &sp30, 0);
+    }
+    
+    cam = &gCamera[0];
+    
+    for (i = 0; i < 4; i++, cam++) {
+        cam->f5.x = sp3C.x;
+        cam->f5.y = sp3C.y;
+        cam->f5.z = sp3C.z;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800D7248.s")
+        cam->f4.x = sp30.x;
+        cam->f4.y = sp30.y;
+        cam->f4.z = sp30.z;
+        if (gCurrentStage != 7) {
+            break;
+        }
+    }
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800D72DC.s")
+void func_800D71E8(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5) {
+    unkStruct10 sp18;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800D73BC.s")
+    sp18.unk_00 = arg0;
+    sp18.unk_0C = arg1;
+    sp18.unk_04 = arg2;
+    sp18.unk_08 = arg4;
+    sp18.unk_10 = arg3;
+    sp18.unk_14 = arg5;
+    
+    func_800AE87C(&sp18);
+    func_800C9748(&sp18, 0x77, 2);
+}
+
+s32 func_800D7248(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32* arg5, f32* arg6, f32* arg7) {
+    Vec3f sp2C;
+    s32 var_v1;
+    Collider* temp_v0;
+
+    sp2C.x = arg0;
+    sp2C.y = arg1;
+    sp2C.z = arg2;
+    
+    temp_v0 = func_800CAF88(sp2C, arg3, arg4);
+    
+    return (temp_v0 != NULL) ?
+        *arg5 = temp_v0->unk_94,
+        *arg6 = temp_v0->unk_98,
+        *arg7 = temp_v0->unk_9C,
+        1 :
+        0;
+}
+
+s32 func_800D72DC(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32* arg6, f32* arg7, f32* arg8) {
+    Vec3f sp38;
+    Vec3f sp44;
+    Collider* temp_v0;
+
+    sp38.x = arg0;
+    sp38.y = arg1;
+    sp38.z = arg2;
+
+    sp44.x = arg3;
+    sp44.y = arg4;
+    sp44.z = arg5;
+    
+    temp_v0 = SearchPolygonBetween(sp38, sp44, 0x77, 1, 1);
+    return (temp_v0 != NULL) ?
+        *arg6 = temp_v0->unk_94,
+        *arg7 = temp_v0->unk_98,
+        *arg8 = temp_v0->unk_9C,
+        1 :
+        0;
+}
+
+void func_800D73BC(f32* arg0, f32* arg1, f32* arg2, f32 arg3) {
+    Vec3f sp2C;
+    Vec3f sp20;
+
+    sp20.x = *arg0;
+    sp20.y = *arg1;
+    sp20.z = *arg2;
+    
+    func_800CA734(&sp2C, sp20, arg3, 0x77);
+    
+    *arg0 = sp2C.x;
+    *arg1 = sp2C.y;
+    *arg2 = sp2C.z;
+}

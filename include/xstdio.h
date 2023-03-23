@@ -1,18 +1,12 @@
 #ifndef _XSTDIO_H
 #define _XSTDIO_H
 #include "PR/ultratypes.h"
-// #include "stdlib.h"
-// #include "stdarg.h"
 
 typedef char* va_list;
 #define _FP 1
 #define _INT 0
 #define _STRUCT 2
 
-// #ifndef _SIZE_T_DEF
-// #define _SIZE_T_DEF
-// typedef unsigned size_t;
-// #endif
 
 #define _VA_FP_SAVE_AREA 0x10
 #define _VA_ALIGN(p, a) (((u32)(((char*)p) + ((a) > 4 ? (a) : 4) - 1)) & -((a) > 4 ? (a) : 4))
@@ -116,8 +110,6 @@ const u8* strchr(const u8* str, u32 ch);
         else                                     \
             return x.nchar;                      \
     }
-//static char spaces[] = "                                ";
-//static char zeroes[] = "00000000000000000000000000000000";
 
 typedef char *outfun(char*,const char*,s32);
 

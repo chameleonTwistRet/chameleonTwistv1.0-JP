@@ -1,5 +1,15 @@
 #include "common.h"
 
+extern s16 gTotalCarrots;
+extern unkStruct07 D_802019A8[];
+extern Collision D_80240CE0[];
+extern unkStruct08 D_80108AF8[];
+
+s32 func_800B4A3C(s32);
+void func_800BE474(Tongue*);
+s32 isPickup(Actor*);
+void pickup_collide_func(s32);
+
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800AF9D0.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800AFB2C.s")
@@ -250,8 +260,8 @@ void func_800B40F4(unkSpriteStruct* arg0) {
 
 void func_800B40FC(void) {
     D_801B313D = 1;
-    if (!(D_80200C00.flags1 & 8)) {
-        D_80200C00.flags1 |= 8;
+    if (!(D_80200C00.flags0[1] & 8)) {
+        D_80200C00.flags0[1] |= 8;
         func_800A870C();
     }
 }
@@ -266,7 +276,19 @@ s32 StageCarrotAvailable(s32 arg0) {
     return 1;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/AddCarrot.s")
+void AddCarrot(s32 arg0) {
+    s32 i;
+
+    if (arg0 < 6) {
+        gCarrotBitfield = gCarrotBitfield | (1 << arg0);
+        gTotalCarrots = 0;
+        for (i = 0; i < 6; i++) {
+            if (gCarrotBitfield & (1 << i)) {
+                gTotalCarrots += 1;
+            }
+        }        
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B4264.s")
 
@@ -280,7 +302,22 @@ s32 StageCarrotAvailable(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B4A3C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/setCrownPositionsForRoom.s")
+void setCrownPositionsForRoom(s32 arg0) {
+    s32 temp_s3;
+    s32 i;
+    unkStruct07* var_s0;
+    s32 new_var;
+    
+    temp_s3 = D_80240CE0[arg0].unk18;
+    var_s0 = &D_802019A8[D_80240CE0[arg0].unk78];
+    
+    for (i = 0; i < temp_s3; i++, var_s0++) {
+        new_var = var_s0->unk_00;
+        if (var_s0->unk_0C == 1) {
+            var_s0->unk_10 = func_800B4A3C(new_var);
+        }
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/checkRoomItem.s")
 
@@ -498,6 +535,29 @@ void func_800B6D24(tempStruct* arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/EraseToungeEatEnemy.s")
 
+// void EraseToungeEatEnemy(Tongue* arg0) {
+//     s32 i;
+
+//     arg0->vaulting = 0;
+//     arg0->tongueMode = 0;
+//     arg0->segments = 0;
+
+//     for (i = 0; i < 64; i++) {
+//         do { } while (0);
+//         if ((gActors[i].actorID != 0) && (gActors[i].actorState == 1)) {
+//             if (isPickup(&gActors[i]) != 0) {
+//                 pickup_collide_func(i);
+//             } else {
+//                 gActors[i].actorState = 2;
+//                 arg0->inMouth.slots[arg0->amountInMouth] = (u32) i;
+//                 arg0->amountInMouth += 1;
+//             }
+//             arg0->amountTnTongue -= 1;      
+//         }
+//     }
+//     func_800BE474(arg0);
+// }
+
 void func_800BE664(playerActor * arg0) {
     if (arg0->power == POWERUP_TIME) {
         arg0->power = POWERUP_NONE;
@@ -550,7 +610,9 @@ void func_800BF5A4(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C0274.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/GetDirectionName.s")
+s32 GetDirectionName(s32 arg0) {
+    return D_80108AF8[arg0].unk0;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/CalcDoorInfo.s")
 

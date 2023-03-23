@@ -4,15 +4,14 @@ Gfx* func_8002C4E8(Gfx*, s32, s32);
 
 
 
-void func_8002CB6C(s32, void*, s32);
+void func_8002CB6C(Gfx*, void*, s32);
 void func_8002CBE8(s32);
 void func_8002CDBC(contMain*);
 void func_8004BC48(contMain*);
 void func_8004CD9C(s32, void*);
 void func_8004DDE0(void);
 void func_8004E784(contMain*, u32, s32*, contMain*);
-void func_80054864(void);    
-
+void func_80054864(void);
 
 #define sizeOf800F0668 0x1FB00
 typedef struct unk80129770 {
@@ -33,7 +32,6 @@ extern s32 D_801749AC;
 extern OSTask D_800F04E0[];
 extern Gfx D_80129720[];
 
-extern s32 gCurrentStage;
 extern OSMesgQueue D_801192D0;
 extern OSMesgQueue D_801192E8;
 
@@ -103,7 +101,7 @@ void func_80026CA8(unkMatrix *arg0, Mtx *arg1, u32 arg2, f32 arg3, s32 arg4) {
     f32 yPos = 0.0f;
     f32 zPos = 0.0f;
     
-    func_800849DC(0, gTongues, &gPlayerActors[0], &gCamera);
+    func_800849DC(0, gTongues, &gPlayerActors[0], gCamera);
     guMtxXFML(&arg0->unk10880[arg2], xPos, yPos, zPos, &xPos, &yPos, &zPos);
     guMtxXFML(&arg0->unk11880[arg2], xPos, yPos, zPos, &xPos, &yPos, &zPos);
     guMtxCatL(arg1, &arg0->unk10880[arg2], arg1);
@@ -116,7 +114,7 @@ void func_80026E30(unkMatrix *arg0, Mtx *arg1, u32 arg2, f32 arg3, s32 arg4) {
     f32 yPos = 0.0f;
     f32 zPos = 0.0f;
     
-    func_800849DC(0, gTongues, &gPlayerActors[0], &gCamera);
+    func_800849DC(0, gTongues, &gPlayerActors[0], gCamera);
     guMtxXFML(&arg0->unk10880[arg2], xPos, yPos, zPos, &xPos, &yPos, &zPos);
     guMtxXFML(&arg0->unk11880[arg2], xPos, yPos, zPos, &xPos, &yPos, &zPos);
     guMtxCatL(arg1, &arg0->unk10880[arg2], arg1);
@@ -128,7 +126,7 @@ void func_80026FB8(unkMatrix *arg0, Mtx *arg1, u32 arg2, f32 arg3, f32 arg4, s32
     f32 xPos, yPos, zPos;
     zPos = yPos = xPos = 0.0f;
     
-    func_800849DC(0, gTongues, &gPlayerActors[0], &gCamera);
+    func_800849DC(0, gTongues, &gPlayerActors[0], gCamera);
     guMtxXFML(arg1, xPos, yPos, zPos, &xPos, &yPos, &zPos);
     guMtxXFML(&arg0->unk10880[arg2], xPos, yPos, zPos, &xPos, &yPos, &zPos);
     guMtxXFML(&arg0->unk11880[arg2], xPos, yPos, zPos, &xPos, &yPos, &zPos);
@@ -161,7 +159,7 @@ void func_80027138(void* arg0, s32* arg1, s32* arg2, s32* arg3) {
     if (!IS_SEGMENTED(var_v1[2])) {
         *arg3 = var_v1[2];
     } else {
-        *arg3 = SEGMENTED_TO_VIRTUAL(var_v1[2]);
+        *arg3 = (s32)SEGMENTED_TO_VIRTUAL(var_v1[2]);
     }
 }
 
@@ -172,7 +170,21 @@ void func_80027138(void* arg0, s32* arg1, s32* arg2, s32* arg3) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/1050/func_800274F0.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/1050/func_80027650.s")
+s32 func_80027650(void) {
+    s32 i;
+    
+    for (i = 3; i >= 0; i--) {
+        if (gPlayerActors[i].active != 0 && gPlayerActors[i].exists) {
+            break;
+        }
+    }
+    
+    if (i < 0) {
+        i = 0;
+    }
+    
+    return i;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/1050/func_80027694.s")
 
@@ -215,7 +227,16 @@ void Video_SetTask(Gfx* arg0, Gfx* arg1, s32 arg2) {
     task->data_size = (((s32)arg1 - (s32)arg0) >> 3) << 3;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/1050/func_8002CB6C.s")
+void func_8002CB6C(Gfx* arg0, void* arg1, s32 arg2) {
+
+    if (D_80174998 < 3) {
+        arg0 = func_8002CAC8(arg1, arg2);
+    }
+    
+    Video_SetTask(arg1, arg0, arg2);
+    osWritebackDCache(arg1, 0x1FB00);
+    func_80084F80(&D_800F04E0[arg2], arg2);
+}
 
 void func_8002CBE8(s32 arg0) {
     func_8008C4B8();

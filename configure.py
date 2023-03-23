@@ -63,6 +63,10 @@ header = (
     "  description = Generating object file and setting o32abi bit for $out\n"
     "\n"
 
+    "rule xprintf_cc\n"
+    "  command = $ido_cc -c $CFLAGS $mips_version -O3 -o $out $in \n"
+    "\n"
+
     "rule o32_abi_set\n"
     "  command = python3 tools/set_o32abi_bit.py build/libc/ll.c.o"
     "\n"
@@ -127,6 +131,8 @@ with open('build.ninja', 'a') as outfile:
     for c_file in c_files:
         if os.path.basename(c_file) == "ll.c":
            outfile.write("build build/" + os.path.splitext(c_file)[0] + ".c.o: " + "libc_ll_cc " + c_file + "\n")
+        # elif os.path.basename(c_file) == "xprintf.c":
+        #     outfile.write("build build/" + os.path.splitext(c_file)[0] + ".c.o: " + "xprintf_cc " + c_file + "\n")
         else:
             folder_name = os.path.basename(os.path.dirname(c_file))
             outfile.write("build build/" + os.path.splitext(c_file)[0] + ".c.o: " + folder_name + "_cc " + c_file + "\n")

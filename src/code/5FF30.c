@@ -6,14 +6,60 @@ typedef struct unkarg0 {
     char unk_00[0x6A];
     s16 unk6A;
 } unkarg0;
-
+                                 /* extern */
+extern char D_8010EECC[];
+extern char D_8010EEE0[];
+extern char D_8010EEF4[];
+extern char D_8010EE68[];
+extern char D_8010EE7C[];
+extern char D_8010EE88[];
 extern unkStruct06* D_801FCA0C;
+extern s16 D_80100D64[];
+extern s32 D_801FCA08;
+extern s16 D_801FCA18;
+extern unkStruct0 D_80101048;
+extern f32 D_8010F834;
+extern f32 D_8010F838;
+extern f32 D_8010F83C;
+extern f32 D_8010F840;
+extern f32 D_8010F844;
+extern char D_8010EDE8[];
+extern char D_8010EE04[];
+extern char D_8010EE18[];
+extern char D_8010EE24[];
+extern char D_8010EF38[];
+extern char D_8010EF60[];
+extern char D_8010EF74[];
+extern char D_8010EF80[];
+extern char D_8010EF9C[];
+extern char D_8010EFB0[];
+extern char D_8010EFBC[];
+extern unkStruct05* D_80200050;
+extern char D_8010EFD8[];
+extern char D_8010EDB8[];
+
+void func_800A7E9C(s32, u8*);
+void func_800A8668(void);
+u8 func_800A7F70(void);
+void func_800A80C8(void);
+s32 func_800A81E4(u8*, unkStruct05*);
+void func_800A832C(s32, unkStruct05*);
+void func_800A80C8(void);
+void func_800A80C8(void); 
+void func_800A832C(s32, unkStruct05*);
+void func_800A80C8(void);
+void func_800AA844(s32);
+void func_800C29D8(s32);
 void func_8008CCDC(unkStruct06*);
+s32 func_800A7A18(u32 arg0);
+s32 func_800A7E78(s32*);
+void func_8008E9AC(s32, s32, s32, s32, void*);
+void func_800A97E4(tempStruct1*);
 
 //jump table
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/videoproc.s")
 
-void func_80084F80(s32 arg0, s32 arg1) {
+void func_80084F80(OSTask* arg0, s32 arg1) {
     D_801B3138 = arg0;
     D_800FF5D0 = arg1;
     osSendMesg(&D_801B3120, (OSMesg)3, 0);
@@ -579,7 +625,14 @@ void strcpy(u8* arg0, u8* arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008CC48.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008CCDC.s")
+void func_8008CCDC(unkStruct06* arg0) {
+    unkStruct06* v0 = arg0->next;
+    unkStruct06* v1 = arg0->unk_10;
+
+    v0->unk_10 = v1;
+    v1->next = v0;
+    arg0->unk0 = 0;
+}
 
 void func_8008CCF4(void) {
     unkStruct06* prev;
@@ -696,9 +749,22 @@ void func_8008EF78(unkStruct06* arg0) {
 void func_8008FDF8(void) {
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008FE00.s")
+void func_8008FE00(void) {
+    func_8006CB34(*gSelectedCharacters);
+    func_8006D598(*gSelectedCharacters, 0, 0);
+    func_8006CBA8(*gSelectedCharacters);
+    func_8006CB34(*gSelectedCharacters);
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008FE50.s")
+void func_8008FE50(void) {
+    s32 i;
+    
+    for (i = 0; i < 6; i++) {
+        func_8006CB34(i);
+        func_8006D598(i, 0, 0);
+        func_8006CBA8(i);
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008FEA8.s")
 
@@ -974,13 +1040,6 @@ void func_80099570(tempStruct1* arg0) {
     func_800983C8();
     func_80098F50(arg0);
 }
-
-typedef struct unkStruct05 {
-char unk_00[0x60];
-} unkStruct05;
-
-void func_800A832C(s16, unkStruct05*);
-extern unkStruct05* D_80200050;
 
 void func_80099598(tempStruct1* arg0) {
     _bzero(&D_80200050[arg0->unk_62], sizeof(unkStruct05));
@@ -1499,27 +1558,111 @@ s32 func_800A7A18(u32 arg0) {
     return j;
 }
 //this takes (u32)osGetTime() as the arg
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/GeneratePerfectCode.s")
+s32 GeneratePerfectCode(u32 time) {
+    s32 temp_v0;
+    s32 i;
+    s32 perfectCode;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A7C58.s")
+    time = time | 0x01400000;
+    temp_v0 = func_800A7A18(time);
+    
+    for (i = 0, perfectCode = 0; i < 32; i++) {
+        if ((i >= 7) && (i < 0xF)) {
+            if (temp_v0 << 7 >> i & 1) {
+                perfectCode |= 1 << i;
+            }
+        } else if (time >> i & 1) {
+            perfectCode |= 1 << i;
+        }
+    }
+    return perfectCode;
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A7D64.s")
+s32 func_800A7C58(u32 time) {
+    s32 perfectCode;
+    s32 temp_a0;
+    s32 i;
+
+    temp_a0 = func_800A7A18(time) << 7;
+    if (temp_a0 == 0) {
+        return -1;
+    }
+
+    for (i = 0, perfectCode = 0; i < 32; i++) {
+        if (((i >= 7) && (i < 0xF)) && (((temp_a0 >> i) & 1) != ((time >> i) & 1))) {
+            perfectCode = -1;
+        }
+    }
+    return perfectCode;
+}
+
+s32 func_800A7D64(s32* arg0, s32* arg1, s32* arg2) {
+    s32 temp_v0;
+
+    temp_v0 = func_800A7E78(arg0);
+    *arg2 = temp_v0 % 60;
+    *arg1 = temp_v0 / 60;
+    return 0;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A7DD0.s")
 
 //color
-s32 func_800A7E78(u8* arg0) {
-    s32 color = arg0[0] & 15;
+s32 func_800A7E78(s32* arg0) {
+    s32 color = ((u8*)arg0)[0] & 15;
     color <<= 8;
-    color += arg0[1];
+    color += ((u8*)arg0)[1];
     color <<= 8;
-    color += arg0[2];
+    color += ((u8*)arg0)[2];
     return color;
-} 
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A7E9C.s")
+void func_800A7E9C(s32 arg0, u8 *arg1) {
+    u8 temp;
+    u8 *new_var = arg1;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A7ED0.s")
+    arg1[2] = arg0;
+    temp = new_var[0] & 0xF0;
+    arg1[1] = ( (u16)(arg0 & 0xFF00)) >> 8;
+    arg1[0] = (arg0 & 0xFF0000) >> 16;
+    arg1[0] = temp | arg1[0];
+}
+
+//TODO: fake match
+s32 func_800A7ED0(u8 *arg0) {
+    s32 var_a2;
+    int new_var2;
+    s32 var_t1;
+    u8 *new_var;
+    s32 var_t2;
+    s32 var_v1;
+    s32 i;
+    
+    var_a2 = 0;
+    var_t1 = 1;
+    new_var2 = 1;
+    var_t2 = 1;
+    new_var = arg0;
+    
+    for (i = new_var2; i < 0x60; i++) {
+        var_a2 += arg0[i];
+        var_a2 &= 0xff;
+        
+        do { if (new_var[i] != 0) { var_t1 = 0; } } while (0);
+        
+        if (new_var[i] != 0xFF) {
+            var_t2 = 0;
+        }
+    }
+    
+    if ((var_t1 == new_var2) || (var_t2 == new_var2)) {
+        DummiedPrintf(D_8010EDB8, &arg0[i], var_a2, new_var);
+        return ((*arg0) + 5) & 0xFF;
+    }
+    
+    return var_a2;
+}
+
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A7F70.s")
 
@@ -1527,23 +1670,146 @@ s32 func_800A7E78(u8* arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A81E4.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/SaveData_Compare.s")
+s32 SaveData_Compare(u8 *arg0, u8 *arg1) {
+    s32 i;
+    s32 var_s7 = 0;
+    u8 *new_var;
+    new_var = arg1;
+    
+    for (i = 0; i < 128; i++) {
+        if (arg0){}
+        if (arg0[i] != new_var[i]) {
+            var_s7 = 1;
+            do { DummiedPrintf(D_8010EDE8, i, arg0[i], arg1[i]); } while (0);
+        }
+    }
+    
+    return var_s7;
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A832C.s")
+void func_800A832C(s32 arg0, unkStruct05* arg1) {
+    osRecvMesg(&D_80175620, NULL, 0);
+    if (osEepromProbe(&D_80175620) != 1) {
+        DummiedPrintf(D_8010EE04);
+    }
+    
+    DummiedPrintf(D_8010EE18);
+    
+    if (osEepromLongRead(&D_80175620, ((arg0 * 0x60) / 8) & 0xFF, (u8*)arg1, 0x60) != 0) {
+        DummiedPrintf(D_8010EE24, arg0, 0x60);
+    }
+    
+    func_800A80C8();
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A83E8.s")
+void func_800A83E8(u8* arg0) {
+    osRecvMesg(&D_80175620, NULL, 0);
+    if (osEepromProbe(&D_80175620) != 1) {
+        DummiedPrintf(D_8010EE68);
+    }
+    
+    DummiedPrintf(D_8010EE7C);
+    
+    if (osEepromLongRead(&D_80175620, 0, arg0, 0x180) != 0) {
+        DummiedPrintf(D_8010EE88, 0, 0x180);
+    }
+    
+    func_800A80C8();
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A847C.s")
+void func_800A847C(u8* arg0) {
+    osRecvMesg(&D_80175620, NULL, 0);
+    if (osEepromProbe(&D_80175620) != 1) {
+        DummiedPrintf(D_8010EECC);
+    }
+    
+    DummiedPrintf(D_8010EEE0);
+    
+    if (osEepromLongRead(&D_80175620, 0x30U, arg0, 0x80) != 0) {
+        DummiedPrintf(D_8010EEF4, 0x80);
+    }
+    
+    func_800A80C8();
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A850C.s")
+void func_800A850C(s32 arg0, u8* arg1) { 
+    DummiedPrintf(D_8010EF38, arg0, (s32) (arg0 * 0x60) / 8);
+    osRecvMesg(&D_80175620, NULL, 0);
+    
+    if (osEepromProbe(&D_80175620) != 1) {
+        DummiedPrintf(D_8010EF60);
+    }
+    
+    DummiedPrintf(D_8010EF74);
+    
+    if (osEepromLongWrite(&D_80175620, (arg0 * 0x60) / 8, arg1, 0x60) != 0) {
+        DummiedPrintf(D_8010EF80);
+    }
+    
+    func_800A80C8();
+    func_800A80C8();
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A85D8.s")
+s32 func_800A85D8(s32 arg0, u8* arg1) {
+    s32 i;
+    unkStruct05 sp34;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A8668.s")
+    i = 0;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A870C.s")
+    while (1) {
+        func_800A850C(arg0, arg1);
+        func_800A832C(arg0, &sp34);
+        if (func_800A81E4(arg1, &sp34) == 0) {
+            return 0;
+        }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A878C.s")
+        i++;
+
+        if (i == 3) {
+            return 1;
+        }
+    }
+}
+
+void func_800A8668(void) {
+    D_80200C00.flags0[0] = func_800A7F70();
+    
+    osRecvMesg(&D_80175620, NULL, 0);
+    
+    if (osEepromProbe(&D_80175620) != 1) {
+        DummiedPrintf(D_8010EF9C);
+    }
+    
+    DummiedPrintf(D_8010EFB0);
+    
+    if (osEepromLongWrite(&D_80175620, 0x30, &D_80200C00.flags0[0], 0x80) != 0) {
+        DummiedPrintf(D_8010EFBC);
+    }
+    
+    func_800A80C8();
+    func_800A80C8();
+}
+
+s32 func_800A870C(void) {
+    s32 i;
+    unkStruct09 sp28;
+
+    for (i = 0; i < 3; i++) {
+        func_800A8668();
+        func_800A847C((u8*)&sp28);
+        if (SaveData_Compare((u8*)&D_80200C00, (u8*)&sp28) == 0) {
+            return 0;
+        }
+    }
+    return 1;
+}
+
+void func_800A878C(unkStruct05* arg0) {
+    _bzero(arg0, 0x60);
+    DummiedPrintf(D_8010EFD8);
+    func_800A7E9C(0x12C, &arg0->unk_57);
+    arg0->unk_5D = 0;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A87D4.s")
 
@@ -1555,7 +1821,7 @@ s32 func_800A7E78(u8* arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A8AF8.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/SetLevelBitfeild.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/SetLevelBitfield.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A8DF8.s")
 
@@ -1571,7 +1837,23 @@ s32 func_800A7E78(u8* arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A96DC.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A9728.s")
+void func_800A9728(tempStruct1* arg0) {
+    if (arg0->unk_5C != 0) {
+        arg0->unk_5C--;
+        if (arg0->unk_5C != 0) {
+            return;
+        }
+        gFixedSeedIndex = D_801FCA08;
+    }
+    
+    if ((D_80100D64[D_801FCA18] + 0xA) >= gFixedSeedIndex) {
+        arg0->unk_64 = 0;
+        if (gameModeCurrent != 5) {
+            func_8008E9AC(0x20, 0, 0, 0, &arg0->unk_64);
+        }
+        arg0->function = &func_800A97E4;
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A97E4.s")
 
@@ -1583,12 +1865,76 @@ s32 func_800A7E78(u8* arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800AA3F0.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800AA844.s")
+void func_800AA844(s32 arg0) {
+    currentZone = arg0;
+    func_800C29D8(currentZone);
+}
 //between these funcs in US1.0 is a program printing part of the c script.
 // as well as a few other funcs.
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800AA86C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800AAAC8.s")
+void func_800AA86C(void) {
+    if (D_80101048.unk_00 == gFixedSeedIndex) {
+        func_800AA844(0);
+        gPlayerActors->pos.x = 0.0f;
+        gPlayerActors->pos.y = 100.0f;
+        gPlayerActors->pos.z = 600.0f;
+    }
+    if (D_80101048.unk_04 == gFixedSeedIndex) {
+        func_800AA844(1);
+        gPlayerActors->pos.x = 0.0f;
+        gPlayerActors->pos.y = 100.0f;
+        gPlayerActors->pos.z = -1400.0f;
+    }
+    if (D_80101048.unk_08 == gFixedSeedIndex) {
+        func_800AA844(0xA);
+        gPlayerActors->pos.x = 20.0f;
+        gPlayerActors->pos.y = 100.0f;
+        gPlayerActors->pos.z = 620.0f;
+    }
+    if (D_80101048.unk_0C == gFixedSeedIndex) {
+        func_800AA844(0xF);
+        gPlayerActors->pos.x = 0.0f;
+        gPlayerActors->pos.y = 100.0f;
+        gPlayerActors->pos.z = 700.0f;
+    }
+    if (D_80101048.unk_10 == gFixedSeedIndex) {
+        func_800AA844(0x14);
+        gPlayerActors->pos.x = D_8010F834;
+        gPlayerActors->pos.y = 100.0f;
+        gPlayerActors->pos.z = 0.0f;
+    }
+    if (D_80101048.unk_14 == gFixedSeedIndex) {
+        func_800AA844(0x17);
+        gPlayerActors->pos.x = D_8010F838;
+        gPlayerActors->pos.y = 100.0f;
+        gPlayerActors->pos.z = 0.0f;
+    }
+    if (D_80101048.unk_18 == gFixedSeedIndex) {
+        func_800AA844(0x1A);
+        gPlayerActors->pos.x = D_8010F83C;
+        gPlayerActors->pos.y = 100.0f;
+        gPlayerActors->pos.z = 0.0f;
+    }
+    if (D_80101048.unk_1C == gFixedSeedIndex) {
+        func_800AA844(0x1D);
+        gPlayerActors->pos.x = 0.0f;
+        gPlayerActors->pos.y = 100.0f;
+        gPlayerActors->pos.z = D_8010F840;
+    }
+    if (D_80101048.unk_20 == gFixedSeedIndex) {
+        func_800AA844(0x20);
+        gPlayerActors->pos.x = 0.0f;
+        gPlayerActors->pos.y = 100.0f;
+        gPlayerActors->pos.z = D_8010F844;
+    }
+}
+
+void func_800AAAC8(void) {
+    func_800AA844(0);
+    gPlayerActors->pos.x = 0.0f;
+    gPlayerActors->pos.y = 100.0f;
+    gPlayerActors->pos.z = 600.0f;
+}
 
 void func_800AAB0C(s32 arg0) {
     s32 dmaResult;
@@ -1598,7 +1944,7 @@ void func_800AAB0C(s32 arg0) {
     loadStageByIndex(arg0);
     DMAStruct_Print();
     _bzero(gPlayerActors, sizeof(gPlayerActors)); //sizeof 4 player actors
-    _bzero(&gCamera, sizeof(gCamera));
+    _bzero(&gCamera[0], sizeof(Camera));
     D_80168DA0 = 1;
     gPlayerActors[0].active = 1;
     gPlayerActors[1].active = 0;
@@ -1620,7 +1966,7 @@ void func_800AAB0C(s32 arg0) {
 
     gFixedSeedIndex = 0x10A9;
     dmaSize = D_F0042B0 - D_F000000;
-    UseFixedRNGSeed = 1;
+    UseFixedRNGSeed = TRUE;
     D_80200C8C = func_80056EE4(dmaSize);
     if (D_80200C8C == NULL) {
         osSyncPrintf(D_8010F1EC, D_80200C8C);
