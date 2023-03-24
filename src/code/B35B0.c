@@ -27,7 +27,7 @@ Vec3f* InterpolateVec3f(Vec3f* arg0, Vec3f arg1, Vec3f arg4, f32 arg7) {
     return arg0;
 }
 
-void func_800D8338(Vec3f inputVec, f32* vectorLength, f32* theta, f32* verticalAngle) {
+void CartesianToSpherical(Vec3f inputVec, f32* vectorLength, f32* theta, f32* verticalAngle) {
     f32 sqrtResult;
 
     *vectorLength = __sqrtf(SQ(inputVec.x) + SQ(inputVec.y) + SQ(inputVec.z));
@@ -53,22 +53,24 @@ void func_800D8338(Vec3f inputVec, f32* vectorLength, f32* theta, f32* verticalA
     }
 }
 
-//(radius, inclination, azimuth) -> (x, y, z)
-Vec3f* CalculateSphericalToCartesian (Vec3f* arg0, f32 radius, f32 latitude, f32 longitude) {
+// spherical struct: x = r, y = theta, z = phi
+Vec3f* SphericalToCartesian (Vec3f* inputVec, f32 radius, f32 theta, f32 phi) {
+    // y = r*cos(theta) since y is height here
+    // therefore, z = r*sin(theta)*sin(phi) and x = r*sin(theta)*cos(phi)
     Vec3f cartesian_coords;
     Vec3f spherical_coords;
 
-    spherical_coords.y = latitude * PI / 180.0;
+    spherical_coords.y = DEGREES_TO_RADIANS_PI(theta);
     spherical_coords.z = __sinf(spherical_coords.y) * radius;
-    spherical_coords.x = longitude * PI / 180.0;
+    spherical_coords.x = DEGREES_TO_RADIANS_PI(phi);
     spherical_coords = spherical_coords;
     cartesian_coords.x = __sinf(spherical_coords.x) * spherical_coords.z;
     cartesian_coords.y = __cosf(spherical_coords.y) * radius;
     cartesian_coords.z = __cosf(spherical_coords.x) * spherical_coords.z;
-    *arg0 = cartesian_coords;
-    return arg0;
+    *inputVec = cartesian_coords;
+    return inputVec;
 }
 
-void func_800D8544(Vec3f arg0) {
-    DummiedPrintf3("%7.1f %7.1f %7.1f ", arg0.x, arg0.y, arg0.z);
+void PrintVec(Vec3f v) {
+    DummiedPrintf3("%7.1f %7.1f %7.1f ", v.x, v.y, v.z);
 }

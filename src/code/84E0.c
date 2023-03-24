@@ -126,8 +126,8 @@ void func_8002D434(f32 *arg0, f32 *arg1, f32 arg2, f32 arg3, f32 arg4) {
     
     if (c != 0.0f) {
         temp_f10 = CalculateAngleBetweenVectors(a, -b) + arg4;
-        *arg0 = cosf(DEGREES_TO_RADIANS(temp_f10)) * c + arg2;
-        *arg1 = arg3 + -(sinf(DEGREES_TO_RADIANS(temp_f10)) * c);
+        *arg0 = cosf(DEGREES_TO_RADIANS_2PI(temp_f10)) * c + arg2;
+        *arg1 = arg3 + -(sinf(DEGREES_TO_RADIANS_2PI(temp_f10)) * c);
     }
 }
 #else
@@ -144,7 +144,7 @@ void func_8002D550(f32 *arg0, f32 *arg1, f32 arg2, f32 arg3, f32 arg4) {
     temp_f2 = (*arg0) - arg2;
     temp_f12 = (*arg1) - arg3;
     if (SUM_OF_SQUARES(temp_f2, temp_f12) < SQ(arg4)) {
-        temp_f12_2 = DEGREES_TO_RADIANS(temp_f12_2);
+        temp_f12_2 = DEGREES_TO_RADIANS_2PI(temp_f12_2);
         if (temp_f12) {
 
         }

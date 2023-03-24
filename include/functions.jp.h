@@ -10,6 +10,8 @@ f32 __cosf(f32);
 void normalizeDegrees(f32*);
 void leoDrive_reset(void*);
 
+void CartesianToSpherical(Vec3f, f32*, f32*, f32*);
+
 extern s32 osMotorInit(OSMesgQueue *, OSPfs *, int);
 void bootproc(void);
 void idleproc(void*);
@@ -397,7 +399,7 @@ void func_800C5538(playerActor*);
 void func_800C56D4(playerActor*);
 void func_800C88AC(void);
 s32 Random(s32, s32);
-f32 func_800C89E8(void);
+f32 RandomF(void);
 f32 CalculateAngleBetweenVectors(f32, f32);
 f32 InterpolateAndClampArcSin(f32);
 f32 AngleFromArcSin(f32);

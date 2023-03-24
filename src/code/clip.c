@@ -1,6 +1,6 @@
 #include "common.h"
 
-void func_800D8338(Vec3f arg0, f32* arg3, f32* arg4, f32* arg5);
+void CartesianToSpherical(Vec3f arg0, f32* arg3, f32* arg4, f32* arg5);
 void NormalizeAngle(f32*);
 
 //bss externed
@@ -15,58 +15,58 @@ extern s32 D_802018D4;
 extern unk802018D8 D_802018D8;
 extern f32 D_802018F0;
 
-void SetViewAreaParam(Camera* arg0, f32 arg1, f32 arg2) {
+void SetViewAreaParam(Camera* cam, f32 arg1, f32 arg2) {
     Vec3f sp50;
     Vec3f sp5C;
-    Vec3f sp44;
-    Vec3f sp38;
+    Vec3f cartesianVecTwo;   //sp44
+    Vec3f cartesianVecOne;   //sp38
     f32 var_f12;
-    Vec3f sp28;
+    Vec3f polarVec;          //sp28
     f32 var_f2;
     f32 temp_f2_2;
 
-    sp50.x = arg0->f5.x;
-    sp50.y = arg0->f5.y;
-    sp50.z = arg0->f5.z;
+    sp50.x = cam->f5.x;
+    sp50.y = cam->f5.y;
+    sp50.z = cam->f5.z;
     
-    sp5C.x = arg0->f4.x;
-    sp5C.y = arg0->f4.y;
-    sp5C.z = arg0->f4.z;
+    sp5C.x = cam->f4.x;
+    sp5C.y = cam->f4.y;
+    sp5C.z = cam->f4.z;
     
-    sp44.x = sp50.x - sp5C.x;
-    sp44.y = sp50.y - sp5C.y;
-    sp44.z = sp50.z - sp5C.z;
+    cartesianVecTwo.x = sp50.x - sp5C.x;
+    cartesianVecTwo.y = sp50.y - sp5C.y;
+    cartesianVecTwo.z = sp50.z - sp5C.z;
 
-    Vec3f_Normalize(&sp44);
+    Vec3f_Normalize(&cartesianVecTwo);
     
-    if (sp44.x == 0.0 && sp44.y == 0.0 && sp44.z == 0.0) {
+    if (cartesianVecTwo.x == 0.0 && cartesianVecTwo.y == 0.0 && cartesianVecTwo.z == 0.0) {
         DummiedPrintf3("SetViewAreaParam(): target and eye are same point\n");
         return;
     }
     
-    sp38.x = sp5C.x - sp50.x;
+    cartesianVecOne.x = sp5C.x - sp50.x;
     //2 assignments on the same line required to match
-    sp38.y = sp5C.y - sp50.y; sp38.z = sp5C.z - sp50.z;
+    cartesianVecOne.y = sp5C.y - sp50.y; cartesianVecOne.z = sp5C.z - sp50.z;
     
-    func_800D8338(sp38, &sp28.z, &sp28.y, &sp28.x);
+    CartesianToSpherical(cartesianVecOne, &polarVec.z, &polarVec.y, &polarVec.x);
     
-    if (sp28.y < 45.0) {
+    if (polarVec.y < 45.0) {
         D_802018D4 = 1;
     } else {
         D_802018D4 = 0;
     }
     
-    func_800D8338(sp44, &sp28.z, &sp28.y, &sp28.x);
-    sp38 = sp44;
+    CartesianToSpherical(cartesianVecTwo, &polarVec.z, &polarVec.y, &polarVec.x);
+    cartesianVecOne = cartesianVecTwo;
 
-    sp38.x *= arg2;
-    sp38.y *= arg2;
-    sp38.z *= arg2;
+    cartesianVecOne.x *= arg2;
+    cartesianVecOne.y *= arg2;
+    cartesianVecOne.z *= arg2;
     
-    D_802018B0.x = sp5C.x - sp38.x;
-    D_802018B0.y = sp5C.y - sp38.y;
-    D_802018B0.z = sp5C.z - sp38.z;
-    temp_f2_2 = CalculateAngleBetweenVectors(sp44.z, sp44.x);
+    D_802018B0.x = sp5C.x - cartesianVecOne.x;
+    D_802018B0.y = sp5C.y - cartesianVecOne.y;
+    D_802018B0.z = sp5C.z - cartesianVecOne.z;
+    temp_f2_2 = CalculateAngleBetweenVectors(cartesianVecTwo.z, cartesianVecTwo.x);
     D_802018C8 = (temp_f2_2 - arg1 * 0.5);
     D_802018CC = (temp_f2_2 + arg1 * 0.5);
     
@@ -79,52 +79,53 @@ void SetViewAreaParam(Camera* arg0, f32 arg1, f32 arg2) {
         D_802018D0 = 0;
     }
 
-    if (sp44.x < 0.0f) {
-        var_f2 = -sp44.x;
+    if (cartesianVecTwo.x < 0.0f) {
+        var_f2 = -cartesianVecTwo.x;
     } else {
-        var_f2 = sp44.x;
+        var_f2 = cartesianVecTwo.x;
     }
     
-    if (sp44.y < 0.0f) {
-        var_f12 = -sp44.y;
+    if (cartesianVecTwo.y < 0.0f) {
+        var_f12 = -cartesianVecTwo.y;
     } else {
-        var_f12 = sp44.y;
+        var_f12 = cartesianVecTwo.y;
     }
     
     if (var_f2 < var_f12) {
-        if (sp44.y < 0.0f) {
-            var_f2 = -sp44.y;
+        if (cartesianVecTwo.y < 0.0f) {
+            var_f2 = -cartesianVecTwo.y;
         } else {
-            var_f2 = sp44.y;
+            var_f2 = cartesianVecTwo.y;
         }
     }
     
-    if (sp44.z < 0.0f) {
-        var_f12 = -sp44.z;
+    if (cartesianVecTwo.z < 0.0f) {
+        var_f12 = -cartesianVecTwo.z;
     } else {
-        var_f12 = sp44.z;
+        var_f12 = cartesianVecTwo.z;
     }
     
     if (var_f2 < var_f12) {
-        if (sp44.z < 0.0f) {
-            var_f2 = -sp44.z;
+        if (cartesianVecTwo.z < 0.0f) {
+            var_f2 = -cartesianVecTwo.z;
         } else {
-            var_f2 = sp44.z;
+            var_f2 = cartesianVecTwo.z;
         }
     }
 
-    sp44.x /= var_f2;
-    sp44.y /= var_f2;
-    sp44.z /= var_f2;
+    cartesianVecTwo.x /= var_f2;
+    cartesianVecTwo.y /= var_f2;
+    cartesianVecTwo.z /= var_f2;
     
-    D_802018BC = sp44.x;
-    D_802018C0 = sp44.y;
-    D_802018C4 = sp44.z;
+    D_802018BC = cartesianVecTwo.x;
+    D_802018C0 = cartesianVecTwo.y;
+    D_802018C4 = cartesianVecTwo.z;
     D_802018F0 = -1.0f;
 }
+
 //refered to in US1.0 as "clip.c - SetViewArea"
-void SetViewArea(Camera* arg0, f32 arg1) {
-    SetViewAreaParam(arg0, (arg1 + 20.0), 300.0f);
+void SetViewArea(Camera* cam, f32 arg1) {
+    SetViewAreaParam(cam, (arg1 + 20.0), 300.0f);
 }
 
 s32 func_800AF2A4(f32 arg0, f32 arg1, f32 arg2, f32 arg3, s32 arg4) {
