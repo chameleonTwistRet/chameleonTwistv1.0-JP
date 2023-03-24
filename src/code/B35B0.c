@@ -13,7 +13,7 @@ f32 Vec3f_Normalize(Vec3f* arg0) {
     return temp_f0;
 }
 //vec3f lerp?
-Vec3f* func_800D8244(Vec3f* arg0, Vec3f arg1, Vec3f arg4, f32 arg7) {
+Vec3f* InterpolateVec3f(Vec3f* arg0, Vec3f arg1, Vec3f arg4, f32 arg7) {
     Vec3f sp1C;
 
     if ((arg7 < 0.0f) || (arg7 > 1.0f)) {
@@ -27,44 +27,45 @@ Vec3f* func_800D8244(Vec3f* arg0, Vec3f arg1, Vec3f arg4, f32 arg7) {
     return arg0;
 }
 
-void func_800D8338(Vec3f arg0, f32* arg3, f32* arg4, f32* arg5) {
+void func_800D8338(Vec3f inputVec, f32* vectorLength, f32* theta, f32* verticalAngle) {
     f32 sqrtResult;
 
-    *arg3 = __sqrtf(SQ(arg0.x) + SQ(arg0.y) + SQ(arg0.z));
+    *vectorLength = __sqrtf(SQ(inputVec.x) + SQ(inputVec.y) + SQ(inputVec.z));
     
-    if (*arg3 == 0.0) {
-        *arg4 = 0.0f;
-        *arg5 = 0.0f;
+    if (*vectorLength == 0.0) {
+        *theta = 0.0f;
+        *verticalAngle = 0.0f;
         return;
     } else {
-        *arg4 = func_800C8BE4(arg0.y / *arg3);
-        sqrtResult = __sqrtf(SQ(arg0.z) + SQ(arg0.x));
+        *theta = AngleFromArcSin(inputVec.y / *vectorLength);
+        sqrtResult = __sqrtf(SQ(inputVec.z) + SQ(inputVec.x));
         
         if (sqrtResult == 0.0) {
-            *arg5 = 0.0f;
+            *verticalAngle = 0.0f;
             return;
         }
         
-        *arg5 = func_800C8BE4(arg0.z / sqrtResult);
+        *verticalAngle = AngleFromArcSin(inputVec.z / sqrtResult);
         
-        if (arg0.x < 0.0) {
-            *arg5 = *arg5 * -1.0;
+        if (inputVec.x < 0.0) {
+            *verticalAngle = *verticalAngle * -1.0;
         }        
     }
 }
 
-Vec3f* func_800D8468(Vec3f* arg0, f32 arg1, f32 arg2, f32 arg3) {
-    Vec3f sp24;
-    Vec3f sp18;
+//(radius, inclination, azimuth) -> (x, y, z)
+Vec3f* CalculateSphericalToCartesian (Vec3f* arg0, f32 radius, f32 latitude, f32 longitude) {
+    Vec3f cartesian_coords;
+    Vec3f spherical_coords;
 
-    sp18.y = arg2 * PI / 180.0;
-    sp18.z = __sinf(sp18.y) * arg1;
-    sp18.x = arg3 * PI / 180.0;
-    sp18 = sp18;
-    sp24.x = __sinf(sp18.x) * sp18.z;
-    sp24.y = __cosf(sp18.y) * arg1;
-    sp24.z = __cosf(sp18.x) * sp18.z;
-    *arg0 = sp24;
+    spherical_coords.y = latitude * PI / 180.0;
+    spherical_coords.z = __sinf(spherical_coords.y) * radius;
+    spherical_coords.x = longitude * PI / 180.0;
+    spherical_coords = spherical_coords;
+    cartesian_coords.x = __sinf(spherical_coords.x) * spherical_coords.z;
+    cartesian_coords.y = __cosf(spherical_coords.y) * radius;
+    cartesian_coords.z = __cosf(spherical_coords.x) * spherical_coords.z;
+    *arg0 = cartesian_coords;
     return arg0;
 }
 

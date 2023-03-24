@@ -37,7 +37,17 @@ extern char D_8010EFBC[];
 extern unkStruct05* D_80200050;
 extern char D_8010EFD8[];
 extern char D_8010EDB8[];
+extern char D_8010F084[];
 
+void* func_8008CF6C(s32, s32, s32);
+void func_800A96DC(tempStruct1*);
+s32 func_8008EC90(void);
+void func_800A25F0(s32, f32);
+void func_8009BA38(tempStruct1*);
+void func_8009C33C(tempStruct1*);
+void func_80099AF4(void);
+void func_800A8944(void);
+void func_8009C038(tempStruct1*);
 void func_800A7E9C(s32, u8*);
 void func_800A8668(void);
 u8 func_800A7F70(void);
@@ -1148,7 +1158,12 @@ void func_8009BDC0(tempStruct1* arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009BFA0.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009BFF8.s")
+void func_8009BFF8(tempStruct1* arg0) {
+    func_80099AF4();
+    func_800A8944();
+    arg0->function = &func_8009C038;
+    arg0->unk_68 = 4;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009C038.s")
 
@@ -1156,7 +1171,16 @@ void func_8009BDC0(tempStruct1* arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009C278.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009C2FC.s")
+void func_8009C2FC(tempStruct1* arg0) {
+    if (arg0->unk54 == 0xF) {
+        arg0->function = &func_8009C33C;
+        return;
+    }
+    if (arg0->unk54 == 0xE) {
+        arg0->unk54 = 4;
+        arg0->function = &func_8009BA38;
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009C33C.s")
 
@@ -1313,7 +1337,12 @@ void func_800A250C(unkarg0* arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A28B8.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A2B9C.s")
+void func_800A2B9C(s32 arg0) {
+    func_800A25F0(arg0, 162.0f);
+    if (func_8008EC90() != 0) {
+        D_800FFEB8 += 1;
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A2BDC.s")
 
@@ -1833,7 +1862,15 @@ void func_800A878C(unkStruct05* arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A9450.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A9690.s")
+void func_800A9690(void) {
+    tempStruct1* temp_v0 = func_8008CF6C(1, 0x64, 0);
+
+    if (temp_v0 == NULL) {
+        DummiedPrintf(D_8010F084);
+        while (1);
+    }
+    temp_v0->function = &func_800A96DC;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A96DC.s")
 

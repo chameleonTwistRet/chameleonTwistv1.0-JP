@@ -10,7 +10,7 @@ extern s32 gCurrentStage;
 extern f64 D_801106A0;
 extern f64 D_801106A8;
 
-void func_800D7EE0(Vec3f*, Vec3f, f32, s32);
+void RotateVector3D(Vec3f*, Vec3f, f32, s32);
 void func_800D3854(playerActor*, Tongue*, Camera*, Vec3f*, Vec3f*, s32);
 void func_800D5394(playerActor*, Tongue*, Camera*, Vec3f*, Vec3f*, s32);
 void func_800D6864(playerActor*, Tongue*, Camera*, Vec3f*, Vec3f*);
@@ -50,7 +50,18 @@ void func_800C9728(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800C9A24.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800C9B18.s")
+s32 func_800C9B18(Poly* arg0, unk802018D8* arg1) {
+    if (arg0->unk_00 < 0) {
+        return 0;
+    }
+
+    func_800D79E4(arg0, 1);
+
+    if (func_800AE8E4(arg1, &arg0->unk_2C) == 0) {
+        return 0;
+    }
+    return 1;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800C9B7C.s")
 
@@ -99,7 +110,7 @@ void func_800C9728(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800CC2F4.s")
 
 void func_800CC7E0(Vec3f arg0) {
-    func_800C8C14(arg0.x, -arg0.z);
+    CalculateAngleBetweenVectors(arg0.x, -arg0.z);
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800CC814.s")
@@ -269,7 +280,16 @@ Vec3f* func_800D00DC(Vec3f* arg0, Collider* arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800D44C8.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800D4550.s")
+void func_800D4550(s32 arg0, s32 arg1, Poly* arg2, Vec3f* arg3, Vec3f* arg4) {
+    Collision* temp_v0 = &D_80240CE0[currentZone];
+
+    arg3->x = temp_v0->unkA4;
+    arg3->y = temp_v0->unkA8 + (temp_v0->unkD0 * arg2->x);
+    arg3->z = temp_v0->unkAC;
+    arg4->x = temp_v0->unk98;
+    arg4->y = temp_v0->unk9C + (temp_v0->unkD0 * arg2->x);
+    arg4->z = temp_v0->unkA0;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800D45D8.s")
 
@@ -288,21 +308,21 @@ void func_800D6864(playerActor* arg0, Tongue* arg1, Camera* arg2, Vec3f* arg3, V
 
     collider = &D_80240CE0[currentZone];
     arg3->x = arg2->f1.z;
-    arg3->y = arg2->f2.x + (collider->unk_D0 * arg2->size1);
+    arg3->y = arg2->f2.x + (collider->unkD0 * arg2->size1);
     arg3->z = arg2->f2.y;
     arg4->x = arg2->f3.x;
-    arg4->y = arg2->f3.y + (collider->unk_D0 * arg2->size1);
+    arg4->y = arg2->f3.y + (collider->unkD0 * arg2->size1);
     arg4->z = arg2->f3.z;
 }
 
-void func_800D68EC(Vec3f* arg0, Vec3f* arg1, f32 arg2) {
+void ApplyRotationToVector(Vec3f* arg0, Vec3f* arg1, f32 arg2) {
     Vec3f sp2C;
 
     sp2C.x = arg0->x - arg1->x;
     sp2C.y = arg0->y - arg1->y;
     sp2C.z = arg0->z - arg1->z;
     
-    func_800D7EE0(&sp2C, sp2C, ((arg2 * D_801106A0) / D_801106A8), 2);
+    RotateVector3D(&sp2C, sp2C, ((arg2 * D_801106A0) / D_801106A8), 2);
     
     arg0->x = arg1->x + sp2C.x;
     arg0->y = arg1->y + sp2C.y;

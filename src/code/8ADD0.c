@@ -5,10 +5,16 @@ extern unkStruct07 D_802019A8[];
 extern Collision D_80240CE0[];
 extern unkStruct08 D_80108AF8[];
 
+void func_800C2A00(void);
+void func_800CFDC8(playerActor*);
 s32 func_800B4A3C(s32);
 void func_800BE474(Tongue*);
 s32 isPickup(Actor*);
 void pickup_collide_func(s32);
+
+extern f32 D_8010FB50;
+extern s32 D_80168DFC;
+extern s32 D_80168E14;
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800AF9D0.s")
 
@@ -52,9 +58,28 @@ void func_800B09C0(s32 arg0, f32* arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B1DD4.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B2070.s")
+void func_800B2070(s32 arg0) {
+    unkStruct15 sp24;
+    Vec3f sp18;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B2144.s")
+    sp24.unk_00 = -172.0f;
+    sp24.unk_0C = 100.0f;
+    sp24.unk_04 = -155.0f;
+    sp24.unk_10 = -145.0f;
+    sp24.unk_08 = 450.0f;
+    sp24.unk_14 = D_8010FB50;
+    sp18.x = gPlayerActors->pos.x;
+    sp18.y = gPlayerActors->pos.y;
+    sp18.z = gPlayerActors->pos.z;
+    if ((gPlayerActors->squishTimer == 0) && (D_80168DFC == 0) && (func_800AE9E0(sp18, &sp24) != 0)) {
+        D_80168E14 = 1;
+    }
+}
+
+void func_800B2144(Collider* arg0, unkStruct14* arg1) {
+    arg0->unk_AC = arg1->unk_38;
+    func_800B35FC(arg0->unk_AC);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B216C.s")
 
@@ -62,9 +87,25 @@ void func_800B21CC(s32 arg0, s32 arg1) {
     func_800BE2C0();
 }
 // referred to in US1.0 as "feild.c - LimitInt"
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/LimitInt.s")
+void LimitInt(s32* arg0, s32 arg1, s32 arg2) {
+    if (*arg0 < arg1) {
+        *arg0 = arg1;
+        return;
+    }
+    if (arg2 < *arg0) {
+        *arg0 = arg2;
+    }
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B2220.s")
+void LimitFloat(f32* arg0, f32 arg1, f32 arg2) {
+    if (*arg0 < arg1) {
+        *arg0 = arg1;
+        return;
+    }
+    if (arg2 < *arg0) {
+        *arg0 = arg2;
+    }
+}
 
 s32 IsntPickup(Actor* actor) {
     return (actor->actorID != 0 && actor->actorID < R_Heart) ? 1 : 0;
@@ -82,7 +123,14 @@ void func_800B22E8(s32* arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B2308.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B2470.s")
+Vec3f* func_800B2470(Vec3f* arg0, Vec3f arg1, Vec3f arg4, f32 arg7, s32 arg8) {
+    f32 pad;
+    Vec3f sp30;
+    
+    InterpolateVec3f(&sp30, arg1, arg4, func_800B2308(arg7, arg8));
+    *arg0 = sp30;
+    return arg0;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B2510.s")
 
@@ -666,7 +714,22 @@ s32 GetDirectionName(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C2C34.s")
 //referred to in US1.0 as "EnterBossRoom"
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/enterBossRoom.s")
+//TODO: fake match
+void enterBossRoom(void) {
+    int *new_var2;
+    int new_var;
+    func_800CFDC8(gPlayerActors);
+
+    if (D_80236974 == 0) {
+        func_800C2A00();
+        return;
+    }
+
+    new_var = 3;
+    new_var2 = &new_var;
+    D_800FFEB8 = *new_var2;
+    D_80174878 = 0xB;
+}
 //referred to in US1.0 as "InitField"
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/InitField.s")
 //referred to in US1.0 as "moveField"

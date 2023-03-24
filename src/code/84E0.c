@@ -41,12 +41,12 @@ void func_8002D148(f32* a, f32* b, f32 c) {
 }
 
 // Unknown Function: Elisiah 
-f32 func_8002D1CC(f32 arg0, f32 arg1, f32 arg2, f32 arg3) {
-    return func_800C8C14(arg2 - arg0, -(arg3 - arg1));
+f32 CalcAngleBetween2DPoints(f32 x1, f32 y1, f32 x2, f32 y2) {
+    return CalculateAngleBetweenVectors(x2 - x1, -(y2 - y1));
 }
 
 // Mirror the lower semicircle onto the top
-f32 func_8002D214(f32 theta) {
+f32 ReflectAngleToUpperSemicircle(f32 theta) {
 
     if (theta < 0.0f) {
         theta = -theta;
@@ -58,9 +58,9 @@ f32 func_8002D214(f32 theta) {
 }
 
 // 1 or 0 depending on unk func: Elisiah
-s32 func_8002D258(f32 arg0, f32 arg1, f32 arg2) {   // Usually called as unk_90, arg1, unk_15C
+s32 IsAngleWithinTolerance(f32 arg0, f32 arg1, f32 arg2) {   // Usually called as unk_90, arg1, unk_15C
 
-    if (func_8002D214(arg0 - arg1) <= arg2) {
+    if (ReflectAngleToUpperSemicircle(arg0 - arg1) <= arg2) {
         return 1;
     }
     return 0;
@@ -125,7 +125,7 @@ void func_8002D434(f32 *arg0, f32 *arg1, f32 arg2, f32 arg3, f32 arg4) {
     f32 c = sqrtf(SUM_OF_SQUARES(a, b));
     
     if (c != 0.0f) {
-        temp_f10 = func_800C8C14(a, -b) + arg4;
+        temp_f10 = CalculateAngleBetweenVectors(a, -b) + arg4;
         *arg0 = cosf(DEGREES_TO_RADIANS(temp_f10)) * c + arg2;
         *arg1 = arg3 + -(sinf(DEGREES_TO_RADIANS(temp_f10)) * c);
     }
@@ -140,7 +140,7 @@ void func_8002D550(f32 *arg0, f32 *arg1, f32 arg2, f32 arg3, f32 arg4) {
     f32 temp_f12;
     f32 *new_var;
     f32 temp_f2;
-    f32 temp_f12_2 = func_8002D1CC(arg2, arg3, *arg0, *arg1);
+    f32 temp_f12_2 = CalcAngleBetween2DPoints(arg2, arg3, *arg0, *arg1);
     temp_f2 = (*arg0) - arg2;
     temp_f12 = (*arg1) - arg3;
     if (SUM_OF_SQUARES(temp_f2, temp_f12) < SQ(arg4)) {
@@ -832,7 +832,7 @@ void func_800383C0(Actor* greyAntSpawnerActor) {
 // Grey Ant Function: Rainchu and Elisiah
 void func_80038510(Actor* actor) {
     actor->unk_94 = actor->unk_124;
-    actor->unk_90 = func_8002D1CC(actor->pos.x, actor->pos.z, actor->position._f32.x, actor->position._f32.y);
+    actor->unk_90 = CalcAngleBetween2DPoints(actor->pos.x, actor->pos.z, actor->position._f32.x, actor->position._f32.y);
     actor->unk_10C[0] = 4;
     actor->unk_134[0] = actor->pos.y;
     actor->pos.y = actor->pos.y - actor->unknownPositionThings[0].unk_10;
@@ -872,7 +872,7 @@ s32 func_80038B98(Actor* arg0) {
 // Ant Trio Function: Elisiah
 void func_80038F70(Actor* antTrioActor) {
     antTrioActor->unk_94 = (f32) antTrioActor->unk_124;
-    antTrioActor->unk_90 = func_8002D1CC(antTrioActor->pos.x, antTrioActor->pos.z, antTrioActor->position._f32.x, antTrioActor->position._f32.y);
+    antTrioActor->unk_90 = CalcAngleBetween2DPoints(antTrioActor->pos.x, antTrioActor->pos.z, antTrioActor->position._f32.x, antTrioActor->position._f32.y);
     antTrioActor->unk_98 = 1;
     func_800382F4(antTrioActor); 
     antTrioActor->unk_F0 = Random(0, 0x100);
@@ -933,7 +933,7 @@ void func_8003BA38(Actor* whiteBombSnakeActor) {
     whiteBombSnakeActor->unk_10C[0] = 4;
     whiteBombSnakeActor->unk_134[0] = whiteBombSnakeActor->pos.x;
     whiteBombSnakeActor->unk_134[1] = whiteBombSnakeActor->pos.z;
-    whiteBombSnakeActor->unk_90 = func_8002D1CC(whiteBombSnakeActor->pos.x, whiteBombSnakeActor->pos.z, whiteBombSnakeActor->position._f32.x, whiteBombSnakeActor->position._f32.y);
+    whiteBombSnakeActor->unk_90 = CalcAngleBetween2DPoints(whiteBombSnakeActor->pos.x, whiteBombSnakeActor->pos.z, whiteBombSnakeActor->position._f32.x, whiteBombSnakeActor->position._f32.y);
     temp_f10 = (s32) (180.0f / whiteBombSnakeActor->unk_160);
     whiteBombSnakeActor->unk_10C[3] = temp_f10;
     whiteBombSnakeActor->unk_160 = (f32) (0xB4 / temp_f10);
@@ -1133,7 +1133,7 @@ void func_8003FA38(Actor* arg0, f32 arg1, f32 arg2, f32 arg3) {
     temp_f8 = (s32) (sqrtf(SQ(temp_f0) + SQ(temp_f2)) / arg0->unk_94);
     arg0->unk_10C[1] = temp_f8;
     arg0->unk_134[3] = (f32) ((arg2 - arg0->pos.y) / (f32) temp_f8);
-    arg0->unk_90 = func_800C8C14(temp_f0, -temp_f2);
+    arg0->unk_90 = CalculateAngleBetweenVectors(temp_f0, -temp_f2);
 }
 
 // Pogo Function: Elisiah
@@ -1267,7 +1267,7 @@ void func_800425A4(Actor* arg0) {
     temp_f0_2 = __sqrtf((arg0->direction * arg0->direction) + (arg0->unk_38 * arg0->unk_38));
     arg0->unk_94 = temp_f0_2;
     arg0->unk_134[0] = ((180.0f * temp_f0_2) / ( arg0->unknownPositionThings[0].unk_0C * D_8010BE30)) + arg0->unk_134[0];
-    arg0->unk_90 = func_800C8C14(arg0->direction, -arg0->unk_38);
+    arg0->unk_90 = CalculateAngleBetweenVectors(arg0->direction, -arg0->unk_38);
 }
 
 
@@ -1377,7 +1377,7 @@ void func_80043FE8(Actor* barrelJumpFireSpawnerActor){
 
 // Barrel Jump Fire Actor: Elisiah
 void func_800440FC(Actor* barrelJumpFireActor) {
-    barrelJumpFireActor->unk_134[0] = func_8002D1CC(barrelJumpFireActor->position._f32.x, barrelJumpFireActor->position._f32.y, barrelJumpFireActor->pos.x, barrelJumpFireActor->pos.z);
+    barrelJumpFireActor->unk_134[0] = CalcAngleBetween2DPoints(barrelJumpFireActor->position._f32.x, barrelJumpFireActor->position._f32.y, barrelJumpFireActor->pos.x, barrelJumpFireActor->pos.z);
     barrelJumpFireActor->unk_10C[0] = (s32) (360.0f / barrelJumpFireActor->unk_160) - 2;
 }
 
@@ -1411,7 +1411,7 @@ void func_80044564(void) {
 
 //Fire: Auto-Decompile
 void func_80044584(Actor* arg0) {
-    arg0->unk_90 = func_8002D1CC(arg0->pos.x, arg0->pos.z, PlayerPointer->pos.x, PlayerPointer->pos.z);
+    arg0->unk_90 = CalcAngleBetween2DPoints(arg0->pos.x, arg0->pos.z, PlayerPointer->pos.x, PlayerPointer->pos.z);
     arg0->unk_10C[1] = arg0->unk_128;
 }
 
@@ -1523,7 +1523,7 @@ void func_80047350(Actor* spiderActor) {
 void func_80047520(Actor* arg0) {
     arg0->unk_134[0] = arg0->pos.x;
     arg0->unk_134[1] = arg0->pos.z;
-    arg0->unk_90 = func_8002D1CC(arg0->pos.x, arg0->pos.z, arg0->position._f32.x, arg0->position._f32.y);
+    arg0->unk_90 = CalcAngleBetween2DPoints(arg0->pos.x, arg0->pos.z, arg0->position._f32.x, arg0->position._f32.y);
     arg0->unk_94 = arg0->unk_15C;
 }
 
@@ -1794,7 +1794,7 @@ void func_8004A544(Actor* fallingGreyAntSpawnerActor){
 // Falling Grey Ant Function: Elisiah
 void func_8004A658(Actor* fallingGreyAntActor) {
     fallingGreyAntActor->unk_94 = (f32) fallingGreyAntActor->unk_124;
-    fallingGreyAntActor->unk_90 = func_8002D1CC(fallingGreyAntActor->pos.x, fallingGreyAntActor->pos.z, fallingGreyAntActor->position._f32.x, fallingGreyAntActor->position._f32.y);
+    fallingGreyAntActor->unk_90 = CalcAngleBetween2DPoints(fallingGreyAntActor->pos.x, fallingGreyAntActor->pos.z, fallingGreyAntActor->position._f32.x, fallingGreyAntActor->position._f32.y);
     fallingGreyAntActor->unk_98 = 1;
     func_800382F4(fallingGreyAntActor);
     fallingGreyAntActor->unk_F0 = Random(0, 0x100);

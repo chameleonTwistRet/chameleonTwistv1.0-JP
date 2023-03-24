@@ -34,6 +34,7 @@ extern unkTextStruct D_800F0734;
 void func_8004ECA8(void) {
 }
 
+//https://decomp.me/scratch/MZIQO
 #pragma GLOBAL_ASM("asm/nonmatchings/code/29DF0/func_8004ECB0.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/29DF0/func_8004EF5C.s")

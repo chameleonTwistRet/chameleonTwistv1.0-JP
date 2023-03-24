@@ -107,7 +107,7 @@ void func_8004E784(contMain* arg0, s32 arg1, s32* arg2, contMain* arg3) {
             gContMain[i].sticky = arg3[i].sticky;
         }
 
-        gContMain[i].stickAngle = func_800C8C14((f32) gContMain[i].stickx, (f32) gContMain[i].sticky);
+        gContMain[i].stickAngle = CalculateAngleBetweenVectors((f32) gContMain[i].stickx, (f32) gContMain[i].sticky);
         gContMain[i].buttons1 = (gContMain[i].buttons0 ^ D_80175678[i]) & gContMain[i].buttons0;
         gContMain[i].buttons2 = (gContMain[i].buttons0 ^ D_801756C0[i]) & gContMain[i].buttons0;
         D_801756C0[i] = gContMain[i].buttons0;

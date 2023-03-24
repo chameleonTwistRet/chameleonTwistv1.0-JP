@@ -174,7 +174,7 @@ typedef struct CollisionSubStruct {
     /* 0x0C */ f32 unk_3C;
     /* 0x10 */ char unk_40[4];
     /* 0x14 */ f32 unk_44;
-} CollisionSubStruct; //sizeof 0xD8
+} CollisionSubStruct;
 
 typedef struct Collision {
     /* 0x00 */ s32 collisionType;
@@ -186,8 +186,14 @@ typedef struct Collision {
     /* 0x78 */ s32 unk78;
     /* 0x7C */ char pad7C[0x18];                    /* maybe part of unk78[7]? */
     /* 0x94 */ s32 unk94;
-    /* 0x98 */ char pad98[0x38];                    /* maybe part of unk94[0xF]? */
-    /* 0xD0 */ f32 unk_D0;                           /* inferred */
+    /* 0x98 */ f32 unk98;                           /* inferred */
+    /* 0x9C */ f32 unk9C;                           /* inferred */
+    /* 0xA0 */ f32 unkA0;                           /* inferred */
+    /* 0xA4 */ f32 unkA4;                           /* inferred */
+    /* 0xA8 */ f32 unkA8;                           /* inferred */
+    /* 0xAC */ f32 unkAC;                           /* inferred */
+    /* 0xB0 */ char padB0[0x20];                    /* maybe part of unkAC[9]? */
+    /* 0xD0 */ f32 unkD0;                           /* inferred */
     /* 0xD4 */ char padD4[4];
 } Collision; //sizeof 0xD8
 
@@ -361,7 +367,22 @@ typedef struct unkStruct10 {
     /* 0x0C */ f32 unk_0C;
     /* 0x10 */ f32 unk_10;
     /* 0x14 */ f32 unk_14;
-} unkStruct10; //sizeof 0x18
+} unkStruct10; //sizeof 0x1C
+
+typedef struct unkStruct14 {
+/* 0x00 */ char unk_00[0x38];
+/* 0x38 */ s32 unk_38;
+} unkStruct14;
+
+typedef struct unkStruct15 {
+    /* 0x00 */ f32 unk_00;
+    /* 0x04 */ f32 unk_04;
+    /* 0x08 */ f32 unk_08;
+    /* 0x0C */ f32 unk_0C;
+    /* 0x10 */ f32 unk_10;
+    /* 0x14 */ f32 unk_14;
+    /* 0x18 */ f32 unk_18;
+} unkStruct15; //sizeof 0x18
 
 typedef struct unkFlags {
 /* 0x00 */ u8 flags0[4];
@@ -411,15 +432,18 @@ typedef struct tempStruct {
 typedef struct tempStruct1 {
     /* 0x00 */ s32 unk_00;
     /* 0x04 */ s32 unk_04;
-    /* 0x08 */ void (*function) (struct tempStruct1*);
-    /* 0x0C */ char unk_0C[0x50];
+    /* 0x08 */ void (*function)(struct tempStruct1*);
+    /* 0x0C */ char padC[0x48];                     /* maybe part of function[0x13]? */
+    /* 0x54 */ u8 unk54;                            /* inferred */
+    /* 0x55 */ char pad55[7];                       /* maybe part of unk54[8]? */
     /* 0x5C */ s16 unk_5C;
-    /* 0x5E */ char unk_5E[4];
+    /* 0x5E */ char pad5E[4];                       /* maybe part of unk_5C[3]? */
     /* 0x62 */ s16 unk_62;
     /* 0x64 */ s16 unk_64;
-    /* 0x66 */ char unk_66[2];
+    /* 0x66 */ char pad66[2];
     /* 0x68 */ s16 unk_68;
-} tempStruct1; //sizeof 0x6C (?)
+    /* 0x6A */ char pad6A[2];
+} tempStruct1;                                      /* size = 0x6C */
 
 typedef struct unk801FCA20 {
     /* 0x00 */ s32 unk_00;
@@ -453,19 +477,29 @@ typedef struct unkStruct0 {
     /* 0x20 */ s32 unk_20;
 } unkStruct0; //sizeof 0x24
 
-typedef struct unkB2860 {
+typedef struct unk802018D8 {
+    f32 unk_00;
+    f32 unk_04;
+    f32 unk_08;
+    f32 unk_0C;
+    f32 unk_10;
+    f32 unk_14;
+} unk802018D8;
+
+typedef struct Poly {
     /* 0x00 */ s32 unk_00;
     /* 0x04 */ char unk_04[4];
     /* 0x08 */ f32 unk_08;
     /* 0x0C */ f32 unk_0C;
     /* 0x10 */ f32 unk_10;
-    /* 0x14 */ char unk_14[0x30];
-    /* 0x44 */ f32 unk_44;
-    /* 0x48 */ f32 unk_48;
-    /* 0x4C */ f32 unk_4C;
-    /* 0x50 */ f32 unk_50;
-    /* 0x54 */ f32 unk_54;
-    /* 0x58 */ f32 unk_58;
+    /* 0x14 */ char unk_14[0x18];
+    /* 0x2C */ unk802018D8 unk_2C;
+    /* 0x44 */ f32 x;
+    /* 0x48 */ f32 y;
+    /* 0x4C */ f32 z;
+    /* 0x50 */ f32 x2;
+    /* 0x54 */ f32 y2;
+    /* 0x58 */ f32 z2;
     /* 0x5C */ f32 unk_5C;
     /* 0x60 */ f32 unk_60;
     /* 0x64 */ f32 unk_64;
@@ -474,7 +508,7 @@ typedef struct unkB2860 {
     /* 0x70 */ f32 unk_70;
     /* 0x74 */ f32 unk_74;
     /* 0x78 */ f32 unk_78;
-} unkB2860; //sizeof 0x7C
+} Poly; //sizeof 0x7C
 
 typedef struct Actor {
     /* 0x000 */ s32 actorID;
@@ -725,15 +759,6 @@ typedef struct unk0 {
     /* 0x50 */ struct unk0* unk50;
     /* 0x54 */ char pad54[4];
 } unk0; //sizeof 0x58
-
-typedef struct unk802018D8 {
-    f32 unk_00;
-    f32 unk_04;
-    f32 unk_08;
-    f32 unk_0C;
-    f32 unk_10;
-    f32 unk_14;
-} unk802018D8;
 
 typedef struct pole{
     /* 0x00 */ s32 mode;

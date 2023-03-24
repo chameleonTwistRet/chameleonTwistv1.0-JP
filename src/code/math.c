@@ -44,7 +44,7 @@ f32 tanf(f32 x) {
     return tan_x;
 }
 
-f32 func_800C8A78(f32 x) {
+f32 InterpolateAndClampArcSin(f32 x) {
     f32* table;
     f32 sign;
     f32 abs_x;
@@ -92,11 +92,11 @@ f32 func_800C8A78(f32 x) {
     return (((1.0f - t) * entry1) + (t * entry2)) * sign;
 }
 
-f32 func_800C8BE4(f32 arg0) {
-    return 90.0 - func_800C8A78(arg0);
+f32 AngleFromArcSin(f32 arg0) {
+    return 90.0 - InterpolateAndClampArcSin(arg0);
 }
 
-f32 func_800C8C14(f32 arg0, f32 arg1) {
+f32 CalculateAngleBetweenVectors(f32 arg0, f32 arg1) {
     s32 pad[2];
     f32 sp4;
     f32 temp_f0;

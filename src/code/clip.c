@@ -1,7 +1,7 @@
 #include "common.h"
 
 void func_800D8338(Vec3f arg0, f32* arg3, f32* arg4, f32* arg5);
-void func_800D747C(f32*);
+void NormalizeAngle(f32*);
 
 //bss externed
 extern Vec3f D_802018B0;
@@ -66,12 +66,12 @@ void SetViewAreaParam(Camera* arg0, f32 arg1, f32 arg2) {
     D_802018B0.x = sp5C.x - sp38.x;
     D_802018B0.y = sp5C.y - sp38.y;
     D_802018B0.z = sp5C.z - sp38.z;
-    temp_f2_2 = func_800C8C14(sp44.z, sp44.x);
+    temp_f2_2 = CalculateAngleBetweenVectors(sp44.z, sp44.x);
     D_802018C8 = (temp_f2_2 - arg1 * 0.5);
     D_802018CC = (temp_f2_2 + arg1 * 0.5);
     
-    func_800D747C(&D_802018C8);
-    func_800D747C(&D_802018CC);
+    NormalizeAngle(&D_802018C8);
+    NormalizeAngle(&D_802018CC);
     
     if (D_802018CC < D_802018C8) {
         D_802018D0 = 1;
@@ -184,7 +184,7 @@ s32 func_800AF2A4(f32 arg0, f32 arg1, f32 arg2, f32 arg3, s32 arg4) {
             return 0;
         }
         
-        temp_f0_2 = func_800C8C14(arg2, arg0);
+        temp_f0_2 = CalculateAngleBetweenVectors(arg2, arg0);
         
         if (D_802018D0 != 0) {
             if ((D_802018CC < temp_f0_2) && (temp_f0_2 < D_802018C8)) {
@@ -212,7 +212,7 @@ s32 func_800AF62C(f32 arg0, f32 arg1, f32 arg2, f32 arg3) {
     return func_800AF2A4(arg0, arg1, arg2, arg3, 1);
 }
 
-s32 func_800AF658(unk802018D8 *arg0, f32 arg1) {
+s32 check_collision_within_radius(unk802018D8 *arg0, f32 arg1) {
     s32 ret;
     f32 temp_f0_2;
     f32 temp_f12_2;
@@ -276,7 +276,7 @@ s32 func_800AF658(unk802018D8 *arg0, f32 arg1) {
                         temp_fv0 = (sp90[i].z * sp90[i].z) + (sp90[i].x * sp90[i].x);
                         if ((arg1 * arg1) < temp_fv0) {
                         } else {
-                            temp_f0_2 = func_800C8C14(sp90[i].z, sp90[i].x);
+                            temp_f0_2 = CalculateAngleBetweenVectors(sp90[i].z, sp90[i].x);
                             if (D_802018D0 != 0) {
                                 if ((D_802018CC < temp_f0_2) && (temp_f0_2 < D_802018C8)) {
                                     continue;
