@@ -489,18 +489,18 @@ typedef struct unk802018D8 {
 typedef struct Poly {
     /* 0x00 */ s32 unk_00;
     /* 0x04 */ char unk_04[4];
-    /* 0x08 */ f32 offset_x;
+    /* 0x08 */ f32 offset_x;    // Offset Vector    
     /* 0x0C */ f32 offset_y;
     /* 0x10 */ f32 offset_z;
     /* 0x14 */ char unk_14[0x18];
     /* 0x2C */ unk802018D8 unk_2C;
-    /* 0x44 */ f32 x;
+    /* 0x44 */ f32 x;       // Vector 1
     /* 0x48 */ f32 y;
     /* 0x4C */ f32 z;
-    /* 0x50 */ f32 x2;
+    /* 0x50 */ f32 x2;      // Vector 2
     /* 0x54 */ f32 y2;
     /* 0x58 */ f32 z2;
-    /* 0x5C */ f32 x3;
+    /* 0x5C */ f32 x3;      // Normal vector
     /* 0x60 */ f32 y3;
     /* 0x64 */ f32 z3;
     /* 0x68 */ f32 unk_68;

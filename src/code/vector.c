@@ -132,15 +132,24 @@ Vec3f* LocalToWorld(Vec3f* outVec, Vec3f vec, Poly* poly) {
 //     return 1;
 // }
 
-s32 IsOnPolygon(Vec3f vec, Poly* arg3) {
+/*
+ * IsOnPolygon: Uses the dot product of the point and the polygon's normal vector to determine if the point is on the polygon
+ *     vec: the point to check
+ *     poly: the polygon to check
+ * 
+ *     returns: (s32 bool) 1 if the point is on the polygon, 0 otherwise
+ */
+
+s32 IsOnPolygon(Vec3f vec, Poly* poly) {
     f32 dotProduct;
     
-    OnlyCheckPolyInfoLevel(arg3, 2, D_801107D0);
-    vec.x -= arg3->offset_x;
-    vec.y -= arg3->offset_y;
-    vec.z -= arg3->offset_z;
+    OnlyCheckPolyInfoLevel(poly, 2, D_801107D0);
+    vec.x -= poly->offset_x;
+    vec.y -= poly->offset_y;
+    vec.z -= poly->offset_z;
     
-    dotProduct = vec.z * arg3->z3 + (vec.x * arg3->x3 + vec.y * arg3->y3);
+    dotProduct = vec.z * poly->z3 + (vec.x * poly->x3 + vec.y * poly->y3);
+
     if (dotProduct < -1.0) {
         return 0;
     }
@@ -149,6 +158,16 @@ s32 IsOnPolygon(Vec3f vec, Poly* arg3) {
     }
     return 1;
 }
+
+/*
+ * RotateVector3D: Calculates the result of a given rotation matrix multiplied by a given vector
+ *     outVec: pointer to the output vector
+ *     inpVec: the input vector
+ *     theta: the angle of rotation
+ *     rotateAroundAxesIndex: the axis to rotate around / the rotation matrix to use
+ * 
+ *     returns: the vector after the rotation
+*/
 
 Vec3f* RotateVector3D(Vec3f* outVec, Vec3f inpVec, f32 theta, s32 rotateAroundAxesIndex) {
     #define NO_ROTATION 0
@@ -186,18 +205,28 @@ Vec3f* RotateVector3D(Vec3f* outVec, Vec3f inpVec, f32 theta, s32 rotateAroundAx
     return outVec;
 }
 
-// refered to in  US1.0 as "Vector.c - IsNearPoint"
-s32 IsNearPoint(Vec3f arg0, Vec3f arg3, f32 arg6) {
-    f32 temp_f0;
-    f32 temp_f14;
-    f32 temp_f2;
+
+/*
+ * IsNearPoint: checks if a point is within a certain radius of another point
+ *     vec1: first vector
+ *     vec2: second vector
+ *     approxRadius: radius to check
+ * 
+ *     returns: (s32 bool) 1 if within radius, 0 if not
+ */
+
+s32 IsNearPoint(Vec3f vec1, Vec3f vec2, f32 approxRadius) {
+    f32 x_0;
+    f32 z_0;
+    f32 y_0;
     s32 ret;
 
-    temp_f0 = arg0.x - arg3.x;
-    temp_f2 = arg0.y - arg3.y;
-    temp_f14 = arg0.z - arg3.z;
+    // Find a vector to represent the distance between the two points
+    x_0 = vec1.x - vec2.x;
+    y_0 = vec1.y - vec2.y;
+    z_0 = vec1.z - vec2.z;
     
-    if (__sqrtf((SQ(temp_f0)) + (SQ(temp_f2)) + (SQ(temp_f14))) < arg6) {
+    if (NORM_3(x_0, y_0, z_0) < approxRadius) {     // Check if said vector is within the given radius from the origin
         ret = 1;
     } else {
         ret = 0;
@@ -205,20 +234,38 @@ s32 IsNearPoint(Vec3f arg0, Vec3f arg3, f32 arg6) {
     return ret;
 }
 
-s32 Vec3f_Equals(Vec3f arg0, Vec3f arg3) {
-    return ((arg0.x == arg3.x) && (arg0.y == arg3.y) && (arg0.z == arg3.z)) ? 1 : 0;
+/*
+ * Vec3f_Equals | Vec3f_EqualsCopy: compares two Vec3f structs  [Both are neccessary for checksum]
+ *     vec1: first vector
+ *     vec2: second vector
+ * 
+ *     returns: (s32 bool) 1 if equal, 0 if not
+ */
+
+s32 Vec3f_Equals(Vec3f vec1, Vec3f vec2) {
+    return ((vec1.x == vec2.x) && (vec1.y == vec2.y) && (vec1.z == vec2.z)) ? 1 : 0;
 }
 
 s32 Vec3f_EqualsCopy(Vec3f vec1, Vec3f vec2) {
     return ((vec1.x == vec2.x) && (vec1.y == vec2.y) && (vec1.z == vec2.z)) ? 1 : 0;
 }
 
+/*
+ * Vec3f_Set: sets a vector to have given values
+ *     vec: pointer for vector to set
+ *     x, y, z: vector components
+ */
 
 void Vec3f_Set(Vec3f* vec, f32 x, f32 y, f32 z) {
     vec->x = x;
     vec->y = y;
     vec->z = z;
 }
+
+/*
+ * Vec3f_Zero: sets a vector to the zero vector
+ *     vec: pointer for vector to set
+ */
 
 void Vec3f_Zero(Vec3f* vec) {
     vec->x = 0.0f;

@@ -8,6 +8,8 @@
 #define PI 3.141592653589793
 #define SQ(x) ((x)*(x))
 #define SUM_OF_SQUARES(x,y) (SQ(x) + SQ(y))
+#define NORM_2(x,y) (sqrtf(SQ(x) + SQ(y)))
+#define NORM_3(x,y,z) (sqrtf(SQ(x) + SQ(y) + SQ(z)))
 #define sqrtf __sqrtf
 #define sinf __sinf 
 #define cosf __cosf 
