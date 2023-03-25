@@ -62,8 +62,8 @@ void func_800D79E4(Poly* arg0, s32 arg1) {
     }
 }
 
-Vec3f* ProjectOnPolygon(Vec3f* arg0, f32 pointX, f32 pointY, f32 pointZ, Poly* arg4) {
-    Vec3f sp2C;
+Vec3f* ProjectOnPolygon(Vec3f* vec, f32 pointX, f32 pointY, f32 pointZ, Poly* arg4) {
+    Vec3f vec_proj;
     f32 v0x;
     f32 dotProduct;
     f32 dist;
@@ -74,40 +74,42 @@ Vec3f* ProjectOnPolygon(Vec3f* arg0, f32 pointX, f32 pointY, f32 pointZ, Poly* a
     v0z = arg4->x2;
     dotProduct = (arg4->z * pointZ) + ((pointX * v0x) + (pointY * arg4->y));
     dist = (arg4->z2 * pointZ) + ((pointX * v0z) + (pointY * arg4->y2));
-    sp2C.x = (v0z * dist) + (dotProduct * v0x);
-    sp2C.y = (arg4->y2 * dist) + (dotProduct * arg4->y);
-    sp2C.z = (arg4->z2 * dist) + (dotProduct * arg4->z);
-    *arg0 = sp2C;
-    return arg0;
+    vec_proj.x = (v0z * dist) + (dotProduct * v0x);
+    vec_proj.y = (arg4->y2 * dist) + (dotProduct * arg4->y);
+    vec_proj.z = (arg4->z2 * dist) + (dotProduct * arg4->z);
+    *vec = vec_proj;
+    return vec;
 }
 
-Vec3f* WorldToLocal(Vec3f* arg0, Vec3f arg1, Poly* arg4) {
-    Vec3f sp1C;
+Vec3f* WorldToLocal(Vec3f* outVec, Vec3f vec, Poly* poly) {
+    // Take P to be a matrix with the columns being the x, y, and z vectors of the poly struct
+    // P(v) = outVec, where v is the input vector agter being translated by an offset vector
+    Vec3f temp_vec;
+ 
+    OnlyCheckPolyInfoLevel(poly, 2, D_801107A0);
+    vec.x = vec.x - poly->offset_x;
+    vec.y = vec.y - poly->offset_y;
+    vec.z = vec.z - poly->offset_z;
+    temp_vec.x = (poly->z * vec.z) + ((vec.x * poly->x) + (vec.y * poly->y));
+    temp_vec.y = (poly->z2 * vec.z) + ((vec.x * poly->x2) + (vec.y * poly->y2));
+    temp_vec.z = (poly->z3 * vec.z) + ((vec.x * poly->x3) + (vec.y * poly->y3));
+    *outVec = temp_vec;
 
-    OnlyCheckPolyInfoLevel(arg4, 2, D_801107A0);
-    arg1.x = arg1.x - arg4->unk_08;
-    arg1.y = arg1.y - arg4->unk_0C;
-    arg1.z = arg1.z - arg4->unk_10;
-    sp1C.x = (arg4->z * arg1.z) + ((arg1.x * arg4->x) + (arg1.y * arg4->y));
-    sp1C.y = (arg4->z2 * arg1.z) + ((arg1.x * arg4->x2) + (arg1.y * arg4->y2));
-    sp1C.z = (arg4->unk_64 * arg1.z) + ((arg1.x * arg4->unk_5C) + (arg1.y * arg4->unk_60));
-    *arg0 = sp1C;
-
-    return arg0;
+    return outVec;
 }
 
-Vec3f* LocalToWorld(Vec3f* arg0, Vec3f arg1, Poly* arg4) {
-    Vec3f sp1C;
+Vec3f* LocalToWorld(Vec3f* outVec, Vec3f vec, Poly* poly) {
+    Vec3f temp_vec;
 
-    OnlyCheckPolyInfoLevel(arg4, 2, D_801107B0);
-    sp1C.x = (arg4->unk_5C * arg1.z) + ((arg1.x * arg4->x) + (arg1.y * arg4->x2));
-    sp1C.y = (arg4->unk_60 * arg1.z) + ((arg1.x * arg4->y) + (arg1.y * arg4->y2));
-    sp1C.z = (arg4->unk_64 * arg1.z) + ((arg1.x * arg4->z) + (arg1.y * arg4->z2));
-    sp1C.x += arg4->unk_08;
-    sp1C.y += arg4->unk_0C;
-    sp1C.z += arg4->unk_10;
-    *arg0 = sp1C;
-    return arg0;
+    OnlyCheckPolyInfoLevel(poly, 2, D_801107B0);
+    temp_vec.x = (poly->x3 * vec.z) + ((vec.x * poly->x) + (vec.y * poly->x2));
+    temp_vec.y = (poly->y3 * vec.z) + ((vec.x * poly->y) + (vec.y * poly->y2));
+    temp_vec.z = (poly->z3 * vec.z) + ((vec.x * poly->z) + (vec.y * poly->z2));
+    temp_vec.x += poly->offset_x;
+    temp_vec.y += poly->offset_y;
+    temp_vec.z += poly->offset_z;
+    *outVec = temp_vec;
+    return outVec;
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/vector/IsInsidePolygon.s")
@@ -134,11 +136,11 @@ s32 IsOnPolygon(Vec3f vec, Poly* arg3) {
     f32 dotProduct;
     
     OnlyCheckPolyInfoLevel(arg3, 2, D_801107D0);
-    vec.x -= arg3->unk_08;
-    vec.y -= arg3->unk_0C;
-    vec.z -= arg3->unk_10;
+    vec.x -= arg3->offset_x;
+    vec.y -= arg3->offset_y;
+    vec.z -= arg3->offset_z;
     
-    dotProduct = vec.z * arg3->unk_64 + (vec.x * arg3->unk_5C + vec.y * arg3->unk_60);
+    dotProduct = vec.z * arg3->z3 + (vec.x * arg3->x3 + vec.y * arg3->y3);
     if (dotProduct < -1.0) {
         return 0;
     }
@@ -148,41 +150,42 @@ s32 IsOnPolygon(Vec3f vec, Poly* arg3) {
     return 1;
 }
 
-Vec3f* RotateVector3D(Vec3f* arg0, Vec3f arg1, f32 arg4, s32 rotateAroundAxesIndex) {
+Vec3f* RotateVector3D(Vec3f* outVec, Vec3f inpVec, f32 theta, s32 rotateAroundAxesIndex) {
     #define NO_ROTATION 0
     #define X_ROTATION 1
     #define Y_ROTATION 2
     #define Z_ROTATION 3
-    Vec3f sp24;
+    Vec3f temp_vec;
     f32 sin;
     f32 cos;
 
-    sin = __sinf(arg4);
-    cos = __cosf(arg4);
+    sin = __sinf(theta);
+    cos = __cosf(theta);
     switch (rotateAroundAxesIndex) {
     case NO_ROTATION:
-        sp24 = arg1;
+        temp_vec = inpVec;
         break;
     case X_ROTATION:
-        sp24.x = arg1.x;
-        sp24.y = (cos * arg1.y) - (sin * arg1.z);
-        sp24.z = (sin * arg1.y) + (cos * arg1.z);
+        temp_vec.x = inpVec.x;
+        temp_vec.y = (cos * inpVec.y) - (sin * inpVec.z);
+        temp_vec.z = (sin * inpVec.y) + (cos * inpVec.z);
         break;
     case Y_ROTATION:
-        sp24.y = arg1.y;
-        sp24.x = (sin * arg1.z) + (cos * arg1.x);
-        sp24.z = (cos * arg1.z) - (sin * arg1.x);
+        temp_vec.y = inpVec.y;
+        temp_vec.x = (sin * inpVec.z) + (cos * inpVec.x);
+        temp_vec.z = (cos * inpVec.z) - (sin * inpVec.x);
         break;
     case Z_ROTATION:
-        sp24.z = arg1.z;
-        sp24.x = (cos * arg1.x) - (sin * arg1.y);
-        sp24.y = (sin * arg1.x) + (cos * arg1.y);
+        temp_vec.z = inpVec.z;
+        temp_vec.x = (cos * inpVec.x) - (sin * inpVec.y);
+        temp_vec.y = (sin * inpVec.x) + (cos * inpVec.y);
         break;
     }
     
-    *arg0 = sp24;
-    return arg0;
+    *outVec = temp_vec;
+    return outVec;
 }
+
 // refered to in  US1.0 as "Vector.c - IsNearPoint"
 s32 IsNearPoint(Vec3f arg0, Vec3f arg3, f32 arg6) {
     f32 temp_f0;

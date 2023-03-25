@@ -1,5 +1,6 @@
 #include "common.h"
 
+// Vector Math (Probably the end of vector.c just spliced)
 
 f32 Vec3f_Normalize(Vec3f* arg0) {
     f32 temp_f0 = __sqrtf((arg0->x * arg0->x) + (arg0->y * arg0->y) + (arg0->z * arg0->z));
@@ -12,43 +13,44 @@ f32 Vec3f_Normalize(Vec3f* arg0) {
     }
     return temp_f0;
 }
-//vec3f lerp?
-Vec3f* InterpolateVec3f(Vec3f* arg0, Vec3f arg1, Vec3f arg4, f32 arg7) {
-    Vec3f sp1C;
 
-    if ((arg7 < 0.0f) || (arg7 > 1.0f)) {
-        DummiedPrintf3("?? ratio = %f\n", arg0, arg7);
+Vec3f* Vec3f_Lerp(Vec3f* outVec, Vec3f vecOne, Vec3f vecTwo, f32 scalar) {
+    // returns a vector linearly interpolated between two input vectors
+    Vec3f temp_vec;
+
+    if ((scalar < 0.0f) || (scalar > 1.0f)) {
+        DummiedPrintf3("?? ratio = %f\n", outVec, scalar);
     }
     
-    sp1C.x = ((1.0f - arg7) * arg1.x) + (arg4.x * arg7);
-    sp1C.y = ((1.0f - arg7) * arg1.y) + (arg4.y * arg7);
-    sp1C.z = ((1.0f - arg7) * arg1.z) + (arg4.z * arg7);
-    *arg0 = sp1C;
-    return arg0;
+    temp_vec.x = ((1.0f - scalar) * vecOne.x) + (vecTwo.x * scalar);
+    temp_vec.y = ((1.0f - scalar) * vecOne.y) + (vecTwo.y * scalar);
+    temp_vec.z = ((1.0f - scalar) * vecOne.z) + (vecTwo.z * scalar);
+    *outVec = temp_vec;
+    return outVec;
 }
 
-void CartesianToSpherical(Vec3f inputVec, f32* vectorLength, f32* theta, f32* verticalAngle) {
+void CartesianToSpherical(Vec3f inputVec, f32* radius, f32* theta, f32* phi) {
     f32 sqrtResult;
 
-    *vectorLength = __sqrtf(SQ(inputVec.x) + SQ(inputVec.y) + SQ(inputVec.z));
+    *radius = __sqrtf(SQ(inputVec.x) + SQ(inputVec.y) + SQ(inputVec.z));
     
-    if (*vectorLength == 0.0) {
+    if (*radius == 0.0) {
         *theta = 0.0f;
-        *verticalAngle = 0.0f;
+        *phi = 0.0f;
         return;
     } else {
-        *theta = AngleFromArcSin(inputVec.y / *vectorLength);
+        *theta = AngleFromArcSin(inputVec.y / *radius);
         sqrtResult = __sqrtf(SQ(inputVec.z) + SQ(inputVec.x));
         
         if (sqrtResult == 0.0) {
-            *verticalAngle = 0.0f;
+            *phi = 0.0f;
             return;
         }
         
-        *verticalAngle = AngleFromArcSin(inputVec.z / sqrtResult);
+        *phi = AngleFromArcSin(inputVec.z / sqrtResult);
         
         if (inputVec.x < 0.0) {
-            *verticalAngle = *verticalAngle * -1.0;
+            *phi = *phi * -1.0;
         }        
     }
 }

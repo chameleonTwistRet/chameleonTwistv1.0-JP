@@ -127,7 +127,7 @@ Vec3f* func_800B2470(Vec3f* arg0, Vec3f arg1, Vec3f arg4, f32 arg7, s32 arg8) {
     f32 pad;
     Vec3f sp30;
     
-    InterpolateVec3f(&sp30, arg1, arg4, func_800B2308(arg7, arg8));
+    Vec3f_Lerp(&sp30, arg1, arg4, func_800B2308(arg7, arg8));
     *arg0 = sp30;
     return arg0;
 }

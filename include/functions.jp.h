@@ -405,7 +405,7 @@ f32 InterpolateAndClampArcSin(f32);
 f32 AngleFromArcSin(f32);
 void func_800B35FC(s32);
 s32 func_800AE9E0(Vec3f, unkStruct15*);
-Vec3f* InterpolateVec3f(Vec3f*, Vec3f, Vec3f, f32);
+Vec3f* Vec3f_Lerp(Vec3f*, Vec3f, Vec3f, f32);
 f32 func_800B2308(f32, s32);
 void func_800C8F00(void);
 void func_800C9504(void);
