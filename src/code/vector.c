@@ -113,24 +113,23 @@ Vec3f* LocalToWorld(Vec3f* outVec, Vec3f vec, Poly* poly) {
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/vector/IsInsidePolygon.s")
-// s32 IsInsidePolygon(Vec3f arg0, Poly* arg3) {
-//     f32 temp_f0;
-//     f32 temp_f2;
-
-//     OnlyCheckPolyInfoLevel(arg3, 3, D_801107C0);
-//     temp_f0 = (arg3->unk_74 * arg0.y) + (arg3->unk_6C * arg0.x);
-//     temp_f2 = (arg3->unk_78 * arg0.y) + (arg3->unk_70 * arg0.x);
-//     if (temp_f0 < -0.0001) {
-//         return 0;
-//     }
-//     if (temp_f2 < -0.0001) {
-//         return 0;
-//     }
-//     if (1.0001 < (temp_f0 + temp_f2)) {
-//         return 0;
-//     }
-//     return 1;
-// }
+//s32 IsInsidePolygon(Vec3f arg0, Poly* arg3) {
+//    f32 x_0;
+//    f32 y_0;
+//    OnlyCheckPolyInfoLevel(arg3, 3, D_801107C0);
+//    x_0 = (arg3->unk_74 * arg0.y) + (arg3->unk_6C * arg0.x);
+//    y_0 = (arg3->unk_78 * arg0.y) + (arg3->unk_70 * arg0.x);
+//    if (x_0 < -0.0001) {
+//        return 0;
+//    }
+//    if (y_0 < -0.0001) {
+//        return 0;
+//    }
+//    if (1.0001 < (x_0 + y_0)) {
+//        return 0;
+//    }
+//    return 1;
+//}
 
 /*
  * IsOnPolygon: Uses the dot product of the point and the polygon's normal vector to determine if the point is on the polygon
