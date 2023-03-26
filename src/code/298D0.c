@@ -13,18 +13,19 @@ extern OSPfs gRumblePfs[MAXCONTROLLERS];
 extern s32 D_80176960[];
 extern s32 D_80175668[];
 
+/* mainproc() */
 s32 func_8004E4D0(void) {
     OSMesgQueue siQueue;
     OSMesg mesgBuf;
-    s32 temp_v0_2;
-    s32 temp_v0_3;
-    u8 controllerBits;
+    s32 retPfs;         // return value from osPfsInitPak
+    s32 retRumble;      // return value from osMotorInit
+    u8 contPat;         // controller pattern
     s32 i;
-    s32 j;
+    s32 j;              // number of controllers?
 
     osCreateMesgQueue(&siQueue, &mesgBuf, 1);
     osSetEventMesg(OS_EVENT_SI, &siQueue, (OSMesg)1);
-    osContInit(&siQueue, &controllerBits, D_80175640);
+    osContInit(&siQueue, &contPat, D_80175640);
     osCreateMesgQueue(&D_80175620, &D_80175638, 1);
     osSetEventMesg(OS_EVENT_SI, &D_80175620, NULL);
 
@@ -34,22 +35,25 @@ s32 func_8004E4D0(void) {
         D_80175678[i] = D_801756C0[i] = 0;
     }
 
+    /* Confirm if controller [i] is inserted */
     for (i = 0, j = 0; i < MAXCONTROLLERS; i++) {
-        if (controllerBits & (1 << i)) {
-            if (!(D_80175640[i].errno & CONT_NO_RESPONSE_ERROR)) {
-                D_80175668[i] = i; //should be D_80175668[i] = i; ?
+        if (contPat & (1 << i)) {
+            if (!(D_80175640[i].errno & CONT_NO_RESPONSE_ERROR)) {  // if controller responds
+                D_80175668[i] = i;
                 j++;
             }
         }
     }
 
+    // Check for Controller Pak (Pfs) and Rumble Pak (Motor) on each controller
+    // D_80176960[i] = 1 if Controller Pak is present, 0 otherwise, used in displaying error screen?
     for (i = 0; i < MAXCONTROLLERS; i++) {
         D_80176960[i] = 0;
-        if (((controllerBits >> i) & 1) && (D_80175640[i].type & CONT_JOYPORT) && (D_80175640[i].status & CONT_CARD_ON)) {
-            temp_v0_2 = osPfsInitPak(&D_80175620, &gRumblePfs[i], i);
-            if (temp_v0_2 == PFS_ERR_ID_FATAL || temp_v0_2 == PFS_ERR_DEVICE) {
-                temp_v0_3 = osMotorInit(&D_80175620, &gRumblePfs[i], i);
-                switch (temp_v0_3) {
+        if (((contPat >> i) & 1) && (D_80175640[i].type & CONT_JOYPORT) && (D_80175640[i].status & CONT_CARD_ON)) {
+            retPfs = osPfsInitPak(&D_80175620, &gRumblePfs[i], i);
+            if (retPfs == PFS_ERR_ID_FATAL || retPfs == PFS_ERR_DEVICE) {
+                retRumble = osMotorInit(&D_80175620, &gRumblePfs[i], i);
+                switch (retRumble) {
                 default:
                     D_80176960[i] = 1;
                     break;
@@ -86,7 +90,7 @@ void Controller_Zero(contMain* arg0) {
 
 void func_8004E784(contMain* arg0, s32 arg1, s32* arg2, contMain* arg3) {
     contMain* var_s0;
-    contMain* temp_v0_2;
+    contMain* var_s1;
     s32 i;
 
     osRecvMesg(&D_80175620, NULL, 1);

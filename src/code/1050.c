@@ -360,7 +360,7 @@ void func_8002CE54(void) {
 
 void func_8002D080(void) {
     D_80174878 = -1;
-    D_80168D70 = func_8004E4D0();
+    D_80168D70 = func_8004E4D0();   // number of controllers
     gPlayerActors[0].active = 1;
     gPlayerActors[1].active = 0;
     gPlayerActors[2].active = 0;
