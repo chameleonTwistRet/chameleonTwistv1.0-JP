@@ -1,7 +1,7 @@
 #include "common.h"
 
 void CartesianToSpherical(Vec3f arg0, f32* arg3, f32* arg4, f32* arg5);
-void NormalizeAngle(f32*);
+void WrapAngle(f32*);
 
 //bss externed
 extern Vec3f D_802018B0;
@@ -70,8 +70,8 @@ void SetViewAreaParam(Camera* cam, f32 arg1, f32 arg2) {
     D_802018C8 = (temp_f2_2 - arg1 * 0.5);
     D_802018CC = (temp_f2_2 + arg1 * 0.5);
     
-    NormalizeAngle(&D_802018C8);
-    NormalizeAngle(&D_802018CC);
+    WrapAngle(&D_802018C8);
+    WrapAngle(&D_802018CC);
     
     if (D_802018CC < D_802018C8) {
         D_802018D0 = 1;

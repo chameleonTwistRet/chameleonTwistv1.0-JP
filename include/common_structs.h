@@ -504,7 +504,7 @@ typedef struct Poly {
     /* 0x60 */ f32 y3;
     /* 0x64 */ f32 z3;
     /* 0x68 */ f32 unk_68;  // Unknown
-    /* 0x6C */ f32 unk_6C;
+    /* 0x6C */ f32 unk_6C;  // 2x2 coefficient matrix for InPoly
     /* 0x70 */ f32 unk_70;
     /* 0x74 */ f32 unk_74;
     /* 0x78 */ f32 unk_78;

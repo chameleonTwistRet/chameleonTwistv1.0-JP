@@ -4,8 +4,15 @@
 void DummiedPrintf3(char* arg0, ...) { /* variadic args: simonlindholm*/
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/vector/NormalizeAngle.s")
-// void NormalizeAngle(f32* arg0) {
+/*
+ * WrapAngle: Wraps an angle to the range [0, 360).
+ *      angle: pointer to the angle to wrap.
+ * 
+ *      returns: (the wrapped angle).
+ */
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/vector/WrapAngle.s")
+// void WrapAngle(f32* arg0) {
 //     if (*arg0 < 0.0) {
 //         *arg0 = (*arg0 + 360.0);
 //         return;
@@ -16,12 +23,20 @@ void DummiedPrintf3(char* arg0, ...) { /* variadic args: simonlindholm*/
 //     }
 // }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/vector/CompareNormalizedAngles.s")
-// s32 CompareNormalizedAngles(f32 arg0, f32 arg1) {
+/*
+ * CompareWrappedAngles: Compares two angles, wrapping them to the range [0, 360) before comparing.
+ *      angle1: the first angle to compare.
+ *      angle2: the second angle to compare.
+ * 
+ *      returns: 1 if angle1 is greater than angle2, -1 if angle1 is less than angle2, and 0 if they are equal.
+ */
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/vector/CompareWrappedAngles.s")
+// s32 CompareWrappedAngles(f32 arg0, f32 arg1) {
 //     s32 ret;
     
-//     NormalizeAngle(&arg0);
-//     NormalizeAngle(&arg1);
+//     WrapAngle(&arg0);
+//     WrapAngle(&arg1);
     
 //     if (arg0 == arg1) {
 //         ret = 0;
@@ -62,24 +77,44 @@ void func_800D79E4(Poly* arg0, s32 arg1) {
     }
 }
 
-Vec3f* ProjectOnPolygon(Vec3f* vec, f32 pointX, f32 pointY, f32 pointZ, Poly* arg4) {
+/*
+ * ProjectOnPolygon: Projects a given 3D vector onto a polygon in 3D space, returning the projected vector.
+ *      vec: the vector to project.
+ *      perspX: the X coordinate of the perspective point.
+ *      perspY: the Y coordinate of the perspective point.
+ *      perspZ: the Z coordinate of the perspective point.
+ *      poly: the polygon to project onto.
+ * 
+ *      returns: the projected vector.
+ */
+
+Vec3f* ProjectOnPolygon(Vec3f* vec, f32 perspX, f32 perspY, f32 perspZ, Poly* poly) {
     Vec3f vec_proj;
-    f32 v0x;
+    f32 p_x;
     f32 dotProduct;
     f32 dist;
-    f32 v0z;
+    f32 p_x2;
 
-    OnlyCheckPolyInfoLevel(arg4, 2, D_8011078C);
-    v0x = arg4->x;
-    v0z = arg4->x2;
-    dotProduct = (arg4->z * pointZ) + ((pointX * v0x) + (pointY * arg4->y));
-    dist = (arg4->z2 * pointZ) + ((pointX * v0z) + (pointY * arg4->y2));
-    vec_proj.x = (v0z * dist) + (dotProduct * v0x);
-    vec_proj.y = (arg4->y2 * dist) + (dotProduct * arg4->y);
-    vec_proj.z = (arg4->z2 * dist) + (dotProduct * arg4->z);
+    OnlyCheckPolyInfoLevel(poly, 2, D_8011078C);
+    p_x = poly->x;
+    p_x2 = poly->x2;
+    dotProduct = (poly->z * perspZ) + ((perspX * p_x) + (perspY * poly->y));
+    dist = (poly->z2 * perspZ) + ((perspX * p_x2) + (perspY * poly->y2));
+    vec_proj.x = (p_x2 * dist) + (dotProduct * p_x);
+    vec_proj.y = (poly->y2 * dist) + (dotProduct * poly->y);
+    vec_proj.z = (poly->z2 * dist) + (dotProduct * poly->z);
     *vec = vec_proj;
     return vec;
 }
+
+/* 
+ * WorldToLocal: Converts a 3D vector from world space to local space. 
+ *      outVec: Pointer to a Vec3f where the resulting local-space vector will be stored.
+ *      vec: The 3D vector to be converted from world space to local space.
+ *      poly: The polygon with respect to which the conversion should be performed.
+ *
+ *      returns: A pointer to the resulting local-space vector, stored in the `outVec` parameter.
+ */
 
 Vec3f* WorldToLocal(Vec3f* outVec, Vec3f vec, Poly* poly) {
     // Take P to be a matrix with the columns being the x, y, and z vectors of the poly struct
@@ -98,6 +133,15 @@ Vec3f* WorldToLocal(Vec3f* outVec, Vec3f vec, Poly* poly) {
     return outVec;
 }
 
+/* 
+ * LocalToWorld: Converts a 3D vector from local space to world space. 
+ *      outVec: Pointer to a Vec3f where the resulting world-space vector will be stored.
+ *      vec: The 3D vector to be converted from local space to world space.
+ *      poly: The polygon with respect to which the conversion should be performed.
+ *
+ *      returns: A pointer to the resulting world-space vector, stored in the `outVec` parameter.
+ */
+
 Vec3f* LocalToWorld(Vec3f* outVec, Vec3f vec, Poly* poly) {
     Vec3f temp_vec;
 
@@ -112,13 +156,21 @@ Vec3f* LocalToWorld(Vec3f* outVec, Vec3f vec, Poly* poly) {
     return outVec;
 }
 
+/*
+ * IsInsidePolygon: Checks if a given 3D vector is inside a polygon in 3D space.
+ *      vec: the vector to check.
+ *      poly: the polygon to check against.
+ * 
+ *      returns: (s32 bool) 1 if the vector is inside the polygon, 0 otherwise.
+ */
+
 #pragma GLOBAL_ASM("asm/nonmatchings/code/vector/IsInsidePolygon.s")
-//s32 IsInsidePolygon(Vec3f arg0, Poly* arg3) {
+//s32 IsInsidePolygon(Vec3f vec, Poly* poly) {
 //    f32 x_0;
 //    f32 y_0;
-//    OnlyCheckPolyInfoLevel(arg3, 3, D_801107C0);
-//    x_0 = (arg3->unk_74 * arg0.y) + (arg3->unk_6C * arg0.x);
-//    y_0 = (arg3->unk_78 * arg0.y) + (arg3->unk_70 * arg0.x);
+//    OnlyCheckPolyInfoLevel(poly, 3, D_801107C0);
+//    x_0 = (poly->unk_74 * vec.y) + (poly->unk_6C * vec.x);
+//    y_0 = (poly->unk_78 * vec.y) + (poly->unk_70 * vec.x);
 //    if (x_0 < -0.0001) {
 //        return 0;
 //    }
