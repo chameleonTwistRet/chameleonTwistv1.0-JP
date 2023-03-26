@@ -6,9 +6,9 @@ void DummiedPrintf3(char* arg0, ...) { /* variadic args: simonlindholm*/
 
 /*
  * WrapAngle: Wraps an angle to the range [0, 360).
- *      angle: pointer to the angle to wrap.
+ *      @param angle: pointer to the angle to wrap.
  * 
- *      returns: (the wrapped angle).
+ *      @return: (the wrapped angle).
  */
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/vector/WrapAngle.s")
@@ -25,10 +25,10 @@ void DummiedPrintf3(char* arg0, ...) { /* variadic args: simonlindholm*/
 
 /*
  * CompareWrappedAngles: Compares two angles, wrapping them to the range [0, 360) before comparing.
- *      angle1: the first angle to compare.
- *      angle2: the second angle to compare.
+ *      @param angle1: the first angle to compare.
+ *      @param angle2: the second angle to compare.
  * 
- *      returns: 1 if angle1 is greater than angle2, -1 if angle1 is less than angle2, and 0 if they are equal.
+ *      @return: 1 if angle1 is greater than angle2, -1 if angle1 is less than angle2, and 0 if they are equal.
  */
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/vector/CompareWrappedAngles.s")
@@ -79,13 +79,13 @@ void func_800D79E4(Poly* arg0, s32 arg1) {
 
 /*
  * ProjectOnPolygon: Projects a given 3D vector onto a polygon in 3D space, returning the projected vector.
- *      vec: the vector to project.
- *      perspX: the X coordinate of the perspective point.
- *      perspY: the Y coordinate of the perspective point.
- *      perspZ: the Z coordinate of the perspective point.
- *      poly: the polygon to project onto.
+ *      @param[in,out]  vec:    the vector to project.
+ *      @param          perspX: the X coordinate of the perspective point.
+ *      @param          perspY: the Y coordinate of the perspective point.
+ *      @param          perspZ: the Z coordinate of the perspective point.
+ *      @param          poly:   the polygon to project onto.
  * 
- *      returns: the projected vector.
+ *      @return: the projected vector.
  */
 
 Vec3f* ProjectOnPolygon(Vec3f* vec, f32 perspX, f32 perspY, f32 perspZ, Poly* poly) {
@@ -109,9 +109,9 @@ Vec3f* ProjectOnPolygon(Vec3f* vec, f32 perspX, f32 perspY, f32 perspZ, Poly* po
 
 /* 
  * WorldToLocal: Converts a 3D vector from world space to local space. 
- *      outVec: Pointer to a Vec3f where the resulting local-space vector will be stored.
- *      vec: The 3D vector to be converted from world space to local space.
- *      poly: The polygon with respect to which the conversion should be performed.
+ *      @param[in,out]  outVec: Pointer to a Vec3f where the resulting local-space vector will be stored.
+ *      @param          vec:    The 3D vector to be converted from world space to local space.
+ *      @param          poly:   The polygon with respect to which the conversion should be performed.
  *
  *      returns: A pointer to the resulting local-space vector, stored in the `outVec` parameter.
  */
@@ -135,11 +135,11 @@ Vec3f* WorldToLocal(Vec3f* outVec, Vec3f vec, Poly* poly) {
 
 /* 
  * LocalToWorld: Converts a 3D vector from local space to world space. 
- *      outVec: Pointer to a Vec3f where the resulting world-space vector will be stored.
- *      vec: The 3D vector to be converted from local space to world space.
- *      poly: The polygon with respect to which the conversion should be performed.
+ *      @param[in,out] outVec:     Pointer to a Vec3f where the resulting world-space vector will be stored.
+ *      @param         vec:        The 3D vector to be converted from local space to world space.
+ *      @param         poly:       The polygon with respect to which the conversion should be performed.
  *
- *      returns: A pointer to the resulting world-space vector, stored in the `outVec` parameter.
+ *      @return: A pointer to the resulting world-space vector, stored in the `outVec` parameter.
  */
 
 Vec3f* LocalToWorld(Vec3f* outVec, Vec3f vec, Poly* poly) {
@@ -158,10 +158,10 @@ Vec3f* LocalToWorld(Vec3f* outVec, Vec3f vec, Poly* poly) {
 
 /*
  * IsInsidePolygon: Checks if a given 3D vector is inside a polygon in 3D space.
- *      vec: the vector to check.
- *      poly: the polygon to check against.
+ *      @param vec:  the vector to check.
+ *      @param poly: the polygon to check against.
  * 
- *      returns: (s32 bool) 1 if the vector is inside the polygon, 0 otherwise.
+ *      @return: (s32 bool) 1 if the vector is inside the polygon, 0 otherwise.
  */
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/vector/IsInsidePolygon.s")
@@ -185,10 +185,10 @@ Vec3f* LocalToWorld(Vec3f* outVec, Vec3f vec, Poly* poly) {
 
 /*
  * IsOnPolygon: Uses the dot product of the point and the polygon's normal vector to determine if the point is on the polygon
- *     vec: the point to check
- *     poly: the polygon to check
+ *     @param vec:  the point to check
+ *     @param poly: the polygon to check
  * 
- *     returns: (s32 bool) 1 if the point is on the polygon, 0 otherwise
+ *     @return: (s32 bool) 1 if the point is on the polygon, 0 otherwise
  */
 
 s32 IsOnPolygon(Vec3f vec, Poly* poly) {
@@ -212,12 +212,12 @@ s32 IsOnPolygon(Vec3f vec, Poly* poly) {
 
 /*
  * RotateVector3D: Calculates the result of a given rotation matrix multiplied by a given vector
- *     outVec: pointer to the output vector
- *     inpVec: the input vector
- *     theta: the angle of rotation
- *     rotateAroundAxesIndex: the axis to rotate around / the rotation matrix to use
+ *     @param[in,out]   outVec:                 pointer to the output vector
+ *     @param           inpVec:                 the input vector
+ *     @param           theta:                  the angle of rotation
+ *     @param           rotateAroundAxesIndex:  the axis to rotate around / the rotation matrix to use
  * 
- *     returns: the vector after the rotation
+ *     @return: the vector after the rotation
 */
 
 Vec3f* RotateVector3D(Vec3f* outVec, Vec3f inpVec, f32 theta, s32 rotateAroundAxesIndex) {
@@ -259,11 +259,11 @@ Vec3f* RotateVector3D(Vec3f* outVec, Vec3f inpVec, f32 theta, s32 rotateAroundAx
 
 /*
  * IsNearPoint: checks if a point is within a certain radius of another point
- *     vec1: first vector
- *     vec2: second vector
- *     approxRadius: radius to check
+ *     @param   vec1:           first vector
+ *     @param   vec2:           second vector
+ *     @param   approxRadius:   radius to check
  * 
- *     returns: (s32 bool) 1 if within radius, 0 if not
+ *     @return: (s32 bool) 1 if within radius, 0 if not
  */
 
 s32 IsNearPoint(Vec3f vec1, Vec3f vec2, f32 approxRadius) {
@@ -287,10 +287,10 @@ s32 IsNearPoint(Vec3f vec1, Vec3f vec2, f32 approxRadius) {
 
 /*
  * Vec3f_Equals | Vec3f_EqualsCopy: compares two Vec3f structs  [Both are neccessary for checksum]
- *     vec1: first vector
- *     vec2: second vector
+ *     @param vec1: first vector
+ *     @param vec2: second vector
  * 
- *     returns: (s32 bool) 1 if equal, 0 if not
+ *     @return: (s32 bool) 1 if equal, 0 if not
  */
 
 s32 Vec3f_Equals(Vec3f vec1, Vec3f vec2) {
@@ -303,8 +303,8 @@ s32 Vec3f_EqualsCopy(Vec3f vec1, Vec3f vec2) {
 
 /*
  * Vec3f_Set: sets a vector to have given values
- *     vec: pointer for vector to set
- *     x, y, z: vector components
+ *     @param   vec:        pointer for vector to set
+ *     @params  x, y, z:    vector components
  */
 
 void Vec3f_Set(Vec3f* vec, f32 x, f32 y, f32 z) {
@@ -315,7 +315,7 @@ void Vec3f_Set(Vec3f* vec, f32 x, f32 y, f32 z) {
 
 /*
  * Vec3f_Zero: sets a vector to the zero vector
- *     vec: pointer for vector to set
+ *     @param vec: pointer for vector to set
  */
 
 void Vec3f_Zero(Vec3f* vec) {

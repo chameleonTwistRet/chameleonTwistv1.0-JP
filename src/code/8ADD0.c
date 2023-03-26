@@ -86,30 +86,58 @@ void func_800B2144(Collider* arg0, unkStruct14* arg1) {
 void func_800B21CC(s32 arg0, s32 arg1) {
     func_800BE2C0();
 }
+
 // referred to in US1.0 as "feild.c - LimitInt"
-void LimitInt(s32* arg0, s32 arg1, s32 arg2) {
-    if (*arg0 < arg1) {
-        *arg0 = arg1;
+
+/*
+ * LimitInt: Limits an integer to be in an inclusive range [a, b].
+ *      @param integer: The integer to limit.
+ *      @param a: The lower bound of the range.
+ *      @param b: The upper bound of the range.
+ */
+
+void LimitInt(s32* integer, s32 a, s32 b) {
+    if (*integer < a) {
+        *integer = a;
         return;
     }
-    if (arg2 < *arg0) {
-        *arg0 = arg2;
+    if (b < *integer) {
+        *integer = b;
     }
 }
 
-void LimitFloat(f32* arg0, f32 arg1, f32 arg2) {
-    if (*arg0 < arg1) {
-        *arg0 = arg1;
+/*
+ * LimitFloat: Limits a float to be in an inclusive range [a, b].
+ *      @param _float: The float to limit.
+ *      @param a: The lower bound of the range.
+ *      @param b: The upper bound of the range.
+ */
+
+void LimitFloat(f32* _float, f32 a, f32 b) {
+    if (*_float < a) {
+        *_float = a;
         return;
     }
-    if (arg2 < *arg0) {
-        *arg0 = arg2;
+    if (b < *_float) {
+        *_float = b;
     }
 }
+
+/*
+ * IsntPickup: Checks if an actor is not a pickup.
+ *      @param actor: The actor to check.
+ *      @return: 1 if the actor is not a pickup, 0 otherwise.
+ */
 
 s32 IsntPickup(Actor* actor) {
     return (actor->actorID != 0 && actor->actorID < R_Heart) ? 1 : 0;
 }
+
+/*
+ * isPickup: Checks if an actor is a pickup.
+ *      @param actor: The actor to check.
+ *      @return: 1 if the actor is a pickup, 0 otherwise.
+ */
 
 s32 isPickup(Actor* actor) {
     return (actor->actorID >= R_Heart ) ? 1 : 0;
