@@ -50,14 +50,16 @@ void func_800C9728(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800C9A24.s")
 
-s32 func_800C9B18(Poly* arg0, Rect* arg1) {
-    if (arg0->unk_00 < 0) {
+
+// Checks if Poly's bounding box intersects with the given rectangle
+s32 ifPolyBoundIntersectsRect(Poly* poly, Rect* rect) {
+    if (poly->unk_00 < 0) {
         return 0;
     }
 
-    func_800D79E4(arg0, 1);
+    func_800D79E4(poly, 1);
 
-    if (func_800AE8E4(arg1, &arg0->unk_2C) == 0) {
+    if (ifRectsIntersect(rect, &poly->boundBox) == 0) {
         return 0;
     }
     return 1;

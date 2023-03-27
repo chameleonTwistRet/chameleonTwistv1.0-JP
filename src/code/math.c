@@ -93,11 +93,11 @@ f32 InterpolateAndClampArcSin(f32 x) {
     return (((1.0f - t) * entry1) + (t * entry2)) * sign;
 }
 
-f32 AngleFromArcSin(f32 arg0) {
-    return 90.0 - InterpolateAndClampArcSin(arg0);
+f32 AngleFromArcSin(f32 x) {
+    return 90.0 - InterpolateAndClampArcSin(x);
 }
 
-f32 CalculateAngleBetweenVectors(f32 arg0, f32 arg1) {
+f32 CalculateAngleBetweenVectors(f32 x, f32 y) {
     s32 pad[2];
     f32 sp4;
     f32 temp_f0;
@@ -111,22 +111,22 @@ f32 CalculateAngleBetweenVectors(f32 arg0, f32 arg1) {
     s32 var_v1;
     u32 var_v0 = 0;
     
-    if (arg0 == 0.0 && arg1 == 0.0) {
+    if (x == 0.0 && y == 0.0) {
         return 0.0f;
     }
     
-    if (arg0 < 0.0f) {
+    if (x < 0.0f) {
         var_v0 = 1;
-        var_f2 = -arg0;
+        var_f2 = -x;
     } else {
-        var_f2 = arg0;
+        var_f2 = x;
     }
     
-    if (arg1 < 0.0f) {
+    if (y < 0.0f) {
         var_v0 += 2;
-        var_f12 = -arg1;
+        var_f12 = -y;
     } else {
-        var_f12 = arg1;
+        var_f12 = y;
     }
     
     if (var_f2 < var_f12) {

@@ -467,7 +467,6 @@ typedef struct unkStruct0 {
 } unkStruct0; //sizeof 0x24
 
 
-
 typedef struct Poly {
     /* 0x00 */ s32 unk_00;
     /* 0x04 */ char unk_04[4];
@@ -475,7 +474,7 @@ typedef struct Poly {
     /* 0x0C */ f32 offset_y;
     /* 0x10 */ f32 offset_z;
     /* 0x14 */ char unk_14[0x18];
-    /* 0x2C */ Rect unk_2C;
+    /* 0x2C */ Rect boundBox;     // Bounding Box (Smallest Rect that contains the poly)
     /* 0x44 */ f32 x;       // Vector 1 (Edge)
     /* 0x48 */ f32 y;
     /* 0x4C */ f32 z;

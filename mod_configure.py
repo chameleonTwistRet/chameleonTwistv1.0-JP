@@ -1,8 +1,12 @@
 import os
 import subprocess
+import pkg_resources
+import fileinput
+import sys
 
 dir_path = 'src/'
 asm_path = 'asm/'
+mod_asm_path = 'src/mod/'
 assets_path = 'assets/'
 cflags = '-G 0 -fullwarn -verbose -Xcpluscomm -signed -nostdinc -non_shared -Wab,-r4300_mul'
 #python3 tools/splat/split.py chameleontwist.jp.yaml
@@ -100,9 +104,138 @@ header = (
     "\n"
 
     "rule make_rom_z64\n"
-    "  command = (cp $in $out) && (sha1sum -c chameleontwist.jp.sha1)\n"
+    "  command = (cp $in $out) && (./tools/n64crc/n64crc.exe $out)\n"
     "\n"
+
+    "rule mod_cc\n"
+    "  command = $ASM_PROC $ASM_PROC_FLAGS $ido_cc -- $AS $ASFLAGS -- -c $cflags $DEFINES $CFLAGS $mips_version -O2 -o $out $in\n"
+    "\n"
+
 )
+
+#patch MainLoop.s to dma our custom code, then proceed as normal
+# Open the file for reading
+with open('asm/nonmatchings/code/5FF30/MainLoop.s', 'r') as file:
+    # Read the contents of the file
+    lines = file.readlines()
+
+# Replace lines 2 through 15 with the new text
+lines[1:19] = [
+    '/* 6BA84 80090684 */  addiu      $sp, $sp, -0x18\n'
+    '/* 6BA88 80090688 */  sw         $ra, 0x14($sp)\n'
+    '/* 6BA8C 8009068C */  jal        func_8002D080\n',
+    '/* 6BA90 80090690 */  nop\n',
+    '/* 6BA94 80090694 */  lui $a0, %hi(mod_ROM_START)\n',
+    '/* 6BA98 80090698 */  addiu $a0, $a0, %lo(mod_ROM_START)\n',
+    '/* 6BA9C 8009069C */  lui $a1, %hi(mod_VRAM)\n',
+    '/* 6BAA0 800906A0 */  addiu $a0, $a0, %lo(mod_VRAM)\n',
+    '/* 6BAA4 800906A4 */  lui $a2, %hi(mod_ROM_END)\n',
+    '/* 6BAA8 800906A8 */  addiu $a2, $a2, %lo(mod_ROM_END)\n',
+    '/* 6BAAC 800906AC */  lui $a3, %hi(mod_ROM_START)\n',
+    '/* 6BAB0 800906B0 */  addiu $a3, $a3, %lo(mod_ROM_START)\n',
+    '/* 6BAB4 800906B4 */  subu $a2, $a2, $a3\n',
+    '/* 6BAB8 800906B8 */  jal dma_copy\n',
+    '/* 6BABC 800906BC */  nop\n',
+    '/* 6BAC0 800906C0 */  J mod_main_func\n',
+    '/* 6BAC4 800906C4 */  nop\n'
+]
+
+# Open the file for writing
+with open('asm/nonmatchings/code/5FF30/MainLoop.s', 'w') as file:
+    # Write the modified contents back to the file
+    file.writelines(lines)
+
+
+
+filename = 'chameleontwist.jp.ld'
+mod_directory = 'src/mod'
+
+with open(filename) as file:
+    for line_number, line in enumerate(file):
+        if 'romPadding_VRAM_END' in line:
+            next_line = next(file, None)
+            break
+line_number = line_number + 1
+
+with open(filename, 'r') as file:
+    lines = file.readlines()
+
+
+lines.insert(line_number, "\n\t__romPos = 0xC00000;\n")
+lines.insert(line_number + 1, "\tmod_ROM_START = __romPos;\n")
+lines.insert(line_number + 2, "\tmod_VRAM = ADDR(.mod);\n")
+lines.insert(line_number + 3, "\t.mod 0x80400000 : AT(mod_ROM_START) SUBALIGN(16)\n")
+lines.insert(line_number + 4, "\t{\n")
+lines.insert(line_number + 5, "\t\tmod_TEXT_START = .;\n")
+line_number += 6
+
+for index, line in enumerate(lines):
+    if 'romPadding_VRAM_END' in line:
+        for filename_c in os.listdir(mod_directory):
+            if filename_c.endswith('.c'):
+                lines.insert(line_number, f"\t\tbuild/{mod_directory}/{filename_c}.o(.text);\n")
+                line_number += 1
+            elif filename_c.endswith('.s'):
+                lines.insert(line_number, f"\t\tbuild/{mod_directory}/{filename_c}.o(.text);\n")
+                line_number += 1
+        break
+
+
+
+lines.insert(line_number, "\t\tmod_RODATA_START = .;\n")
+line_number += 1
+
+for index, line in enumerate(lines):
+    if 'romPadding_VRAM_END' in line:
+        for filename_c in os.listdir(mod_directory):
+            if filename_c.endswith('.c'):
+                lines.insert(line_number, f"\t\tbuild/{mod_directory}/{filename_c}.o(.rodata);\n")
+                line_number += 1
+            elif filename_c.endswith('.s'):
+                lines.insert(line_number, f"\t\tbuild/{mod_directory}/{filename_c}.o(.rodata);\n")
+                line_number += 1
+        break
+
+
+
+lines.insert(line_number, "\t\tmod_DATA_START = .;\n")
+line_number += 1        
+
+for index, line in enumerate(lines):
+    if 'romPadding_VRAM_END' in line:
+        for filename_c in os.listdir(mod_directory):
+            if filename_c.endswith('.c'):
+                lines.insert(line_number, f"\t\tbuild/{mod_directory}/{filename_c}.o(.data);\n")
+                line_number += 1
+            elif filename_c.endswith('.s'):
+                lines.insert(line_number, f"\t\tbuild/{mod_directory}/{filename_c}.o(.data);\n")
+                line_number += 1
+        break
+
+
+
+lines.insert(line_number, "\t\tmod_BSS_START = .;\n")
+line_number += 1
+
+for index, line in enumerate(lines):
+    if 'romPadding_VRAM_END' in line:
+        for filename_c in os.listdir(mod_directory):
+            if filename_c.endswith('.c'):
+                lines.insert(line_number, f"\t\tbuild/{mod_directory}/{filename_c}.o(.bss);\n")
+                line_number += 1
+            elif filename_c.endswith('.s'):
+                lines.insert(line_number, f"\t\tbuild/{mod_directory}/{filename_c}.o(.bss);\n")
+                line_number += 1
+        break
+
+lines.insert(line_number, "\t}\n")
+lines.insert(line_number + 1, "\t__romPos += SIZEOF(.mod);\n")
+lines.insert(line_number + 2, "\tmod_ROM_END = __romPos;\n")
+lines.insert(line_number + 3, "\tmod_VRAM_END = .;\n")
+line_number += 4
+
+with open(filename, 'w') as file:
+    file.writelines(lines)
 
 # Traverse each subdirectory recursively and find all C files
 c_files = []
@@ -113,6 +246,12 @@ for root, dirs, files in os.walk(dir_path):
 
 s_files = []
 for root, dirs, files in os.walk(asm_path):
+    for file in files:
+        if file.endswith('.s'):
+            s_files.append(os.path.join(root, file))
+
+mod_s_files = []
+for root, dirs, files in os.walk(mod_asm_path):
     for file in files:
         if file.endswith('.s'):
             s_files.append(os.path.join(root, file))
@@ -135,16 +274,17 @@ with open('build.ninja', 'a') as outfile:
         #     outfile.write("build build/" + os.path.splitext(c_file)[0] + ".c.o: " + "xprintf_cc " + c_file + "\n")
         else:
             folder_name = os.path.basename(os.path.dirname(c_file))
-            if folder_name == "mod":
-                continue # skip over the file
             outfile.write("build build/" + os.path.splitext(c_file)[0] + ".c.o: " + folder_name + "_cc " + c_file + "\n")
     for s_file in s_files:
         if "asm/nonmatchings" in s_file:
             continue
         outfile.write("build build/" + os.path.splitext(s_file)[0] + ".s.o: " + "s_file " + s_file + "\n")
+    for s_file in mod_s_files:
+        outfile.write("build build/" + os.path.splitext(s_file)[0] + ".s.o: " + "s_file " + mod_s_files + "\n")
     for bin_file in bin_files:
         outfile.write("build build/" + os.path.splitext(bin_file)[0] + ".bin.o: " + "bin_file " + bin_file + "\n")
 
     outfile.write("build build/chameleontwist.jp.elf: make_elf\n")
     outfile.write("build build/chameleontwist.jp.bin: make_rom_bin build/chameleontwist.jp.elf\n")
     outfile.write("build build/chameleontwist.jp.z64: make_rom_z64 build/chameleontwist.jp.bin\n")
+

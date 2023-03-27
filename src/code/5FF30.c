@@ -50,7 +50,7 @@ void func_800A8944(void);
 void func_8009C038(tempStruct1*);
 void func_800A7E9C(s32, u8*);
 void func_800A8668(void);
-u8 func_800A7F70(void);
+s32 func_800A7F70(void);
 void func_800A80C8(void);
 s32 func_800A81E4(u8*, unkStruct05*);
 void func_800A832C(s32, unkStruct05*);
@@ -1304,9 +1304,9 @@ void func_800A1F3C(s32 arg0) {
     char sp50[38];
 
     func_80061308(0xFF, 0x90, 0xF2, 0xFF, 0xFF, 0x38, 0x64, 0xFF, 0xFF, 0x90, 0xF2, 0xFF, 0xFF, 0x38, 0x64, 0xFF);
-    func_80080430(144.0f, 24.0f, 0.0f, 0.7f, 0.0f, 0.0f, D_8010E954, 1);
+    PrintText(144.0f, 24.0f, 0.0f, 0.7f, 0.0f, 0.0f, D_8010E954, 1);
     func_80061308(0x90, 0xF2, 0xFF, 0xFF, 0x38, 0x64, 0xFF, 0xFF, 0x90, 0xF2, 0xFF, 0xFF, 0x38, 0x64, 0xFF, 0xFF);
-    func_80080430(160.0f, 40.0f, 0.0f, 0.7f, 0.0f, 0.0f, parseIntToHex(perfectCode, 8, sp50), 1);
+    PrintText(160.0f, 40.0f, 0.0f, 0.7f, 0.0f, 0.0f, parseIntToHex(perfectCode, 8, sp50), 1);
 }
 
 
@@ -1319,7 +1319,7 @@ void func_800A1F3C(s32 arg0) {
 void func_800A250C(unkarg0* arg0) {
     if (arg0->unk6A > 0) {
         func_80061308(0x6EU, 0xD2U, 0xFF, 0xFF, 0, 0xDE, 0, 0xFF, 0x6E, 0xD2, 0xFF, 0xFF, 0, 0xDE, 0, 0xFF);
-        func_800803F0(72.0f, 176.0f, 0.0f, 1.0f, D_8010E9D0, 1);
+        PrintTextWrapper(72.0f, 176.0f, 0.0f, 1.0f, D_8010E9D0, 1);
     }
     
     arg0->unk6A++;
@@ -2077,7 +2077,7 @@ void func_800AE82C(Rect* r, f32 s){
  *      @param arg1: second rectangle
  */
 
-s32 func_800AE8E4(Rect* arg0, Rect* arg1) {
+s32 ifRectsIntersect(Rect* arg0, Rect* arg1) {
     if ((f64) arg1->max.x < (f64) arg0->min.x) {
         return 0;
     }
