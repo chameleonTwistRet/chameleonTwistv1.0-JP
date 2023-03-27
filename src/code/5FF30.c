@@ -2069,7 +2069,7 @@ void func_800AAB0C(s32 arg0) {
  *      @param arg1: second rectangle
  */
 
-s32 func_800AE8E4(Rect* arg0, Rect* arg1) {
+s32 ifRectsIntersect(Rect* arg0, Rect* arg1) {
     if ((f64) arg1->max.x < (f64) arg0->min.x) {
         return 0;
     }

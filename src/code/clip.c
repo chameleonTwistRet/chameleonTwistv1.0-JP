@@ -237,7 +237,7 @@ s32 check_collision_within_radius(Rect *arg0, f32 arg1) {
     }
     
     if (D_802018D4 != 0) {
-        ret = func_800AE8E4(arg0, &D_802018D8);
+        ret = ifRectsIntersect(arg0, &D_802018D8);
     } else {
         new_var = arg0->max.x - arg0->min.x;
         var_f2 = new_var;
@@ -253,7 +253,7 @@ s32 check_collision_within_radius(Rect *arg0, f32 arg1) {
         }
         
         if (1000.0 < var_f2) {
-            ret = func_800AE8E4(arg0, &D_802018D8);
+            ret = ifRectsIntersect(arg0, &D_802018D8);
         } else {
             if (arg0->max.y < D_802018D8.min.y) {
                 ret = 0;

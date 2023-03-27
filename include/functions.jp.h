@@ -382,7 +382,7 @@ void func_800A1EC4(void);
 void func_800A54EC(s32);
 s32 DMAStruct_Print(void);
 
-s32 func_800AE8E4(Rect* arg0, Rect* arg1);
+s32 ifRectsIntersect(Rect* arg0, Rect* arg1);
 
 void func_800B22AC(s32);
 s32 func_800B2510(void);

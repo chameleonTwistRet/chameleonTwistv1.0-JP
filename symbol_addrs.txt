@@ -259,6 +259,7 @@ AngleFromArcSin = 0x800C8BE4; // type:func
 PrintVec = 0x800D8544; // type:func
 SphericalToCartesian = 0x800D8468; // type:func
 CartesianToSpherical = 0x800D8338; // type:func
+ifRectsIntersect = 0x800AE8E4; // type:func
 Vec3f_Lerp = 0x800D8244; //type:func
 CalculateAngleBetweenVectors = 0x800C8C14; //type:func
 check_collision_within_radius= 0x800AF658; //type:func
