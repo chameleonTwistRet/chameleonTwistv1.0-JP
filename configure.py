@@ -135,6 +135,8 @@ with open('build.ninja', 'a') as outfile:
         #     outfile.write("build build/" + os.path.splitext(c_file)[0] + ".c.o: " + "xprintf_cc " + c_file + "\n")
         else:
             folder_name = os.path.basename(os.path.dirname(c_file))
+            if folder_name == "mod":
+                continue # skip over the file
             outfile.write("build build/" + os.path.splitext(c_file)[0] + ".c.o: " + folder_name + "_cc " + c_file + "\n")
     for s_file in s_files:
         if "asm/nonmatchings" in s_file:

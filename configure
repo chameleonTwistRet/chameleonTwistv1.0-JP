@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 
 if [[ "$1" == "--mod" ]]; then
+    if [[ ! -d src/mod ]]; then
+        mkdir -p src/mod
+    fi
     if [[ ! -f src/mod/mod_main.c ]]; then
         cp mod_main.c src/mod/mod_main.c
     fi
@@ -9,17 +12,7 @@ if [[ "$1" == "--mod" ]]; then
     python3 mod_configure.py "$@"
     
 else
-    if [[ -d src/mod ]]; then
-        read -p "A normal configure will delete src/mod. Continue? (y/n): " answer
-        if [[ "$answer" == "y" || "$answer" == "Y" ]]; then
-            rm -r src/mod
-            python3 tools/splat/split.py chameleontwist.jp.yaml
-            python3 configure.py "$@"
-        fi
-    else
-        python3 tools/splat/split.py chameleontwist.jp.yaml
-        python3 configure.py "$@"
-    fi
+    python3 tools/splat/split.py chameleontwist.jp.yaml
+    python3 configure.py "$@"
 fi
-
 
