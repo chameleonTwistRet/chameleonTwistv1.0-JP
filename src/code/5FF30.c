@@ -50,7 +50,7 @@ void func_800A8944(void);
 void func_8009C038(tempStruct1*);
 void func_800A7E9C(s32, u8*);
 void func_800A8668(void);
-u8 func_800A7F70(void);
+s32 func_800A7F70(void);
 void func_800A80C8(void);
 s32 func_800A81E4(u8*, unkStruct05*);
 void func_800A832C(s32, unkStruct05*);

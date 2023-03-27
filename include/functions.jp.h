@@ -311,7 +311,7 @@ void func_8007E5E8(void);
 void func_8007E684(f32, f32, f32, f32, f32);
 void func_8007E714(f32);
 void func_8002D080(void);
-u8 func_800A7F70(void);
+s32 func_800A7F70(void);
 void func_8008FF84(void);
 void func_800A8944(void);
 void func_800A847C(u8*);

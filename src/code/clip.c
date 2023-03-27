@@ -212,79 +212,85 @@ s32 func_800AF62C(f32 arg0, f32 arg1, f32 arg2, f32 arg3) {
     return func_800AF2A4(arg0, arg1, arg2, arg3, 1);
 }
 
-s32 check_collision_within_radius(Rect *arg0, f32 arg1) {
+/*
+ * @return 0 if no collision, 1 if collision
+ */
+
+s32 check_collision_within_radius(Rect *rect, f32 radius) {
     s32 ret;
-    f32 temp_f0_2;
-    f32 temp_f12_2;
-    f32 temp_f14_2;
-    f32 var_f2;
-    f32 temp_f0;
+    f32 angle_xz;
+    f32 y_length;
+    f32 z_length;
+    f32 max_side_length;
+    f32 half_radius;
     Vec3f sp90[4];
     s32 i;
     f32 temp_fv0;
-    f32 new_var;
+    f32 x_length;
     
-    if (arg1 != D_802018F0) {
-        D_802018F0 = arg1;
-        temp_f0 = arg1 * 0.5;
-        D_802018D8.min.x = (f32) (D_802018B0.x + ((D_802018BC - 1.0) * temp_f0));
-        D_802018D8.min.y = (f32) (D_802018B0.y + ((D_802018C0 - 1.0) * temp_f0));
-        D_802018D8.min.z = (f32) (D_802018B0.z + ((D_802018C4 - 1.0) * temp_f0));
-        D_802018D8.max.x = (f32) (D_802018B0.x + ((D_802018BC + 1.0) * temp_f0));
+    // Resize the rectangle if the radius has changed since the last call
+    if (radius != D_802018F0) {
+        D_802018F0 = radius;        // prev radius
+        half_radius = radius * 0.5;
+        D_802018D8.min.x = (f32) (D_802018B0.x + ((D_802018BC - 1.0) * half_radius));
+        D_802018D8.min.y = (f32) (D_802018B0.y + ((D_802018C0 - 1.0) * half_radius));
+        D_802018D8.min.z = (f32) (D_802018B0.z + ((D_802018C4 - 1.0) * half_radius));
+        D_802018D8.max.x = (f32) (D_802018B0.x + ((D_802018BC + 1.0) * half_radius));
         ret = 1;
-        D_802018D8.max.y = (f32) (D_802018B0.y + ((D_802018C0 + 1.0) * temp_f0));
-        D_802018D8.max.z = (f32) (D_802018B0.z + ((D_802018C4 + 1.0) * temp_f0));
+        D_802018D8.max.y = (f32) (D_802018B0.y + ((D_802018C0 + 1.0) * half_radius));
+        D_802018D8.max.z = (f32) (D_802018B0.z + ((D_802018C4 + 1.0) * half_radius));
     }
     
+    // Collision check
     if (D_802018D4 != 0) {
-        ret = ifRectsIntersect(arg0, &D_802018D8);
+        ret = ifRectsIntersect(rect, &D_802018D8);
     } else {
-        new_var = arg0->max.x - arg0->min.x;
-        var_f2 = new_var;
-        temp_f12_2 = arg0->max.y - arg0->min.y;
-        temp_f14_2 = arg0->max.z - arg0->min.z;
+        x_length = rect->max.x - rect->min.x;
+        max_side_length = x_length;
+        y_length = rect->max.y - rect->min.y;
+        z_length = rect->max.z - rect->min.z;
         
-        if (var_f2 < temp_f12_2) {
-            var_f2 = temp_f12_2;
+        if (max_side_length < y_length) {
+            max_side_length = y_length;
         }
         
-        if (var_f2 < temp_f14_2) {
-            var_f2 = temp_f14_2;
+        if (max_side_length < z_length) {
+            max_side_length = z_length;
         }
         
-        if (1000.0 < var_f2) {
-            ret = ifRectsIntersect(arg0, &D_802018D8);
+        if (1000.0 < max_side_length) {
+            ret = ifRectsIntersect(rect, &D_802018D8);
         } else {
-            if (arg0->max.y < D_802018D8.min.y) {
+            if (rect->max.y < D_802018D8.min.y) {
                 ret = 0;
             } else {
-                if (D_802018D8.max.y < arg0->min.y) {
+                if (D_802018D8.max.y < rect->min.y) {
                     ret = 0;
                 } else {
-                    sp90[0].x = arg0->min.x;
-                    sp90[0].z = arg0->min.z;
-                    sp90[1].x = arg0->min.x;
-                    sp90[1].z = arg0->max.z;
-                    sp90[2].x = arg0->max.x;
-                    sp90[2].z = arg0->min.z;
-                    sp90[3].x = arg0->max.x;
-                    sp90[3].z = arg0->max.z;
+                    sp90[0].x = rect->min.x;
+                    sp90[0].z = rect->min.z;
+                    sp90[1].x = rect->min.x;
+                    sp90[1].z = rect->max.z;
+                    sp90[2].x = rect->max.x;
+                    sp90[2].z = rect->min.z;
+                    sp90[3].x = rect->max.x;
+                    sp90[3].z = rect->max.z;
                     ret = 0;
                     for (i = 0; i < 4; i++) {
                         sp90[i].x -= D_802018B0.x;
                         sp90[i].z -= D_802018B0.z;
-                        temp_fv0 = (sp90[i].z * sp90[i].z) + (sp90[i].x * sp90[i].x);
-                        if ((arg1 * arg1) < temp_fv0) {
+                        temp_fv0 = SQ(sp90[i].z) + SQ(sp90[i].x);
+                        if (SQ(radius) < temp_fv0) {  //empty if
                         } else {
-                            temp_f0_2 = CalculateAngleBetweenVectors(sp90[i].z, sp90[i].x);
+                            angle_xz = CalculateAngleBetweenVectors(sp90[i].z, sp90[i].x);
                             if (D_802018D0 != 0) {
-                                if ((D_802018CC < temp_f0_2) && (temp_f0_2 < D_802018C8)) {
+                                if ((D_802018CC < angle_xz) && (angle_xz < D_802018C8)) {
                                     continue;
                                 } else {
                                     goto label;
                                 }
                             }
-                            if ((D_802018C8 > temp_f0_2) || (D_802018CC < temp_f0_2)) {
+                            if ((D_802018C8 > angle_xz) || (D_802018CC < angle_xz)) {
                                 continue;
                             } else {
                                 label:
