@@ -88,22 +88,22 @@ void func_8004ECA8(void) {
 //     }
     
 //     func_80061308(D_80176810[0], D_80176814[0], D_80176818[0], 0xFF, D_80176810[1], D_80176814[1], D_80176818[1], 0xFF, D_80176810[2], D_80176814[2], D_80176818[2], 0xFF, D_80176810[3], D_80176814[3], D_80176818[3], 0xFF);
-//     func_800803F0(140.0f, 32.0f, 0.0f, 1.0f, buffer.strings[D_800F08C4], 1);
+//     PrintTextWrapper(140.0f, 32.0f, 0.0f, 1.0f, buffer.strings[D_800F08C4], 1);
     
 //     switch (D_800F08C4) {
 //     default:
 //         break;
 //     case 0:
-//         func_800803F0(124.0f, 16.0f, 0.0f, 0.5f, buffer.strings[D_800F08C4], 1);
+//         PrintTextWrapper(124.0f, 16.0f, 0.0f, 0.5f, buffer.strings[D_800F08C4], 1);
 //         break;
 //     case 1:
-//         func_800803F0(124.0f, 48.0f, 0.0f, 0.5f, buffer.strings[D_800F08C4], 1);
+//         PrintTextWrapper(124.0f, 48.0f, 0.0f, 0.5f, buffer.strings[D_800F08C4], 1);
 //         break;
 //     case 2:
-//         func_800803F0(296.0f, 16.0f, 0.0f, 0.5f, buffer.strings[D_800F08C4], 1);
+//         PrintTextWrapper(296.0f, 16.0f, 0.0f, 0.5f, buffer.strings[D_800F08C4], 1);
 //         break;
 //     case 3:
-//         func_800803F0(296.0f, 48.0f, 0.0f, 0.5f, buffer.strings[D_800F08C4], 1);
+//         PrintTextWrapper(296.0f, 48.0f, 0.0f, 0.5f, buffer.strings[D_800F08C4], 1);
 //         break;
 //     }
     
@@ -147,7 +147,7 @@ void func_8004FFFC(void) {
         func_8007B4CC(0.0f, 120.0f, 0.0f, 0.0f, 120.0f, 0.0f);
         func_8005AFD0(32.0f, 32.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 77);
         func_80061308(191, 10, 0, 255, 200, 200, 0, 255, 191, 10, 0, 255, 200, 200, 0, 255);
-        func_800803F0(64.0f, 32.0f, 0.0f, 1.0f, D_8010C7B0, 1);
+        PrintTextWrapper(64.0f, 32.0f, 0.0f, 1.0f, D_8010C7B0, 1);
     }
 }
 

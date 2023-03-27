@@ -311,8 +311,8 @@ void func_8007E5E8(void);
 void func_8007E684(f32, f32, f32, f32, f32);
 void func_8007E714(f32);
 
-void func_800803F0(f32, f32, f32, f32, char*, s32);
-s32 func_80080430(f32, f32, f32, f32, f32, f32, char*, s32);
+void PrintTextWrapper(f32, f32, f32, f32, char*, s32);
+s32 PrintText(f32, f32, f32, f32, f32, f32, char*, s32);
 void func_80080F38(f32, f32, f32, f32, f32, f32, u8, u8, u8, s32);
 s32 func_800836FC(f32, f32, s32, s32);
 void func_80083F08(void);
