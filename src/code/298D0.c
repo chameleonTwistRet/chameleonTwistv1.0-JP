@@ -21,7 +21,7 @@ s32 func_8004E4D0(void) {
     s32 retRumble;      // return value from osMotorInit
     u8 contPat;         // controller pattern
     s32 i;
-    s32 j;              // number of controllers?
+    s32 contNo;         // number of controllers
 
     osCreateMesgQueue(&siQueue, &mesgBuf, 1);
     osSetEventMesg(OS_EVENT_SI, &siQueue, (OSMesg)1);
@@ -36,11 +36,11 @@ s32 func_8004E4D0(void) {
     }
 
     /* Confirm if controller [i] is inserted */
-    for (i = 0, j = 0; i < MAXCONTROLLERS; i++) {
+    for (i = 0, contNo = 0; i < MAXCONTROLLERS; i++) {
         if (contPat & (1 << i)) {
             if (!(D_80175640[i].errno & CONT_NO_RESPONSE_ERROR)) {  // if controller responds
                 D_80175668[i] = i;
-                j++;
+                contNo++;
             }
         }
     }
@@ -72,7 +72,7 @@ s32 func_8004E4D0(void) {
             }
         }
     }
-    return j;
+    return contNo;
 }
 
 void Controller_StartRead(void) {

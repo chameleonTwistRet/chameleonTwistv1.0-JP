@@ -2063,23 +2063,29 @@ void func_800AAB0C(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800AE87C.s")
 
-s32 func_800AE8E4(unk802018D8* arg0, unk802018D8* arg1) {
-    if ((f64) arg1->unk_0C < (f64) arg0->unk_00) {
+/*
+ * ifRectsIntersect: returns 1 if the two rectangles intersect, 0 otherwise
+ *      @param arg0: first rectangle
+ *      @param arg1: second rectangle
+ */
+
+s32 func_800AE8E4(Rect* arg0, Rect* arg1) {
+    if ((f64) arg1->max.x < (f64) arg0->min.x) {
         return 0;
     }
-    if ((f64) arg0->unk_0C < (f64) arg1->unk_00) {
+    if ((f64) arg0->max.x < (f64) arg1->min.x) {
         return 0;
     }
-    if ((f64) arg1->unk_10 < (f64) arg0->unk_04) {
+    if ((f64) arg1->max.y < (f64) arg0->min.y) {
         return 0;
     }
-    if ((f64) arg0->unk_10 < (f64) arg1->unk_04) {
+    if ((f64) arg0->max.y < (f64) arg1->min.y) {
         return 0;
     }
-    if ((f64) arg1->unk_14 < (f64) arg0->unk_08) {
+    if ((f64) arg1->max.z < (f64) arg0->min.z) {
         return 0;
     }
-    if ((f64) arg0->unk_14 < (f64) arg1->unk_08) {
+    if ((f64) arg0->max.z < (f64) arg1->min.z) {
         return 0;
     }
     return 1;

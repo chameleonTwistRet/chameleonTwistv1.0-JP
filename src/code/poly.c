@@ -50,7 +50,7 @@ void func_800C9728(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800C9A24.s")
 
-s32 func_800C9B18(Poly* arg0, unk802018D8* arg1) {
+s32 func_800C9B18(Poly* arg0, Rect* arg1) {
     if (arg0->unk_00 < 0) {
         return 0;
     }
