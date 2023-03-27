@@ -3,39 +3,38 @@
 extern s32 gameModeCurrent;
 extern s32 D_800F06E8;
 extern OSMesgQueue D_801192E8;
-extern s32 D_8010DB20;
-
-void func_8002D080(void);
-s32 func_800A7F70(void);
-void func_8008FF84(void);
-void func_800A8944(void);
-void func_800A847C(u8*);
-void func_80097910(void);
-void FileWork(void);
-void func_8009C904(void);
-void func_800A9F84(void);
-void func_800AA3F0(void);
-void func_800ADE70(void);
-void func_800AE4AC(void);
-void func_800A2BDC(void);
-void func_800A0810(void);
-void func_800A4320(void);
-void func_800A4EC8(void);
-void func_800A5570(void);
-void func_8009553C(void);
-void func_800A1D38(void);
-void func_800A6DD8(void);
-void func_800A07E0(void);
-void func_8005564C(void);
-void func_800557F8(void);
-void func_80055994(void);
-void func_80055AA0(void);
-void DummiedPrintf(char*, ...);
-
+extern char D_8010DB20[];
 extern Addr* mod_ROM_START;
 extern Addr* mod_VRAM;
 extern Addr* mod_ROM_END;
 extern Addr* mod_ROM_START;
+void mod_main(void);
+void mod_boot_func(void);
+
+void hookCode(s32* patchAddr, void* jumpLocation, s32* instructionBuffer) {
+    jumpLocation = (void*)(u32)((((u32)jumpLocation & 0x00FFFFFF) >> 2) | 0x08000000);
+    instructionBuffer[0] = patchAddr[0];
+    patchAddr[0] = (s32)jumpLocation; //write j instruction
+    instructionBuffer[1] = patchAddr[1];
+    patchAddr[1] = 0; //write nop
+}
+
+void patchInstruction(void* patchAddr, s32 patchInstruction) {
+    *(s32*)patchAddr = patchInstruction;
+}
+
+s32 newFunc(void) {
+    return 1;
+}
+
+void mod_boot_func(void) {
+    // s32 instructionBuffer[2];
+    // hookCode((s32*)0x8002D660, &newFunc, instructionBuffer);
+}
+
+void mod_main(void) {
+    //per frame function
+}
 
 //Thread 3 osStartThread function
 //name is hardcoded in configure script. if name is changed, change it there too
@@ -56,9 +55,10 @@ void mod_main_func(void) {
 
     D_800FF5FC = D_80200C00.flags0[1] & 1;
     osRecvMesg(&D_801192E8, 0, 1);
-
+    mod_boot_func();
     //step current game mode
     loop:
+    mod_main();
     switch(gameModeCurrent) {
         case 0:
             func_8008FF84();
@@ -124,7 +124,7 @@ void mod_main_func(void) {
             func_80055AA0();
             goto loop;
         case 15:
-            DummiedPrintf(&D_8010DB20, gameModeCurrent);
+            DummiedPrintf(D_8010DB20, gameModeCurrent);
             goto loop;
     }        
 }

@@ -6,6 +6,7 @@ import sys
 
 dir_path = 'src/'
 asm_path = 'asm/'
+mod_asm_path = 'src/mod/'
 assets_path = 'assets/'
 cflags = '-G 0 -fullwarn -verbose -Xcpluscomm -signed -nostdinc -non_shared -Wab,-r4300_mul'
 #python3 tools/splat/split.py chameleontwist.jp.yaml
@@ -135,7 +136,7 @@ lines[1:19] = [
     '/* 6BAB4 800906B4 */  subu $a2, $a2, $a3\n',
     '/* 6BAB8 800906B8 */  jal dma_copy\n',
     '/* 6BABC 800906BC */  nop\n',
-    '/* 6BAC0 800906C0 */  J mod_VRAM\n',
+    '/* 6BAC0 800906C0 */  J mod_main_func\n',
     '/* 6BAC4 800906C4 */  nop\n'
 ]
 
@@ -174,6 +175,9 @@ for index, line in enumerate(lines):
             if filename_c.endswith('.c'):
                 lines.insert(line_number, f"\t\tbuild/{mod_directory}/{filename_c}.o(.text);\n")
                 line_number += 1
+            elif filename_c.endswith('.s'):
+                lines.insert(line_number, f"\t\tbuild/{mod_directory}/{filename_c}.o(.text);\n")
+                line_number += 1
         break
 
 
@@ -185,6 +189,9 @@ for index, line in enumerate(lines):
     if 'romPadding_VRAM_END' in line:
         for filename_c in os.listdir(mod_directory):
             if filename_c.endswith('.c'):
+                lines.insert(line_number, f"\t\tbuild/{mod_directory}/{filename_c}.o(.rodata);\n")
+                line_number += 1
+            elif filename_c.endswith('.s'):
                 lines.insert(line_number, f"\t\tbuild/{mod_directory}/{filename_c}.o(.rodata);\n")
                 line_number += 1
         break
@@ -200,6 +207,9 @@ for index, line in enumerate(lines):
             if filename_c.endswith('.c'):
                 lines.insert(line_number, f"\t\tbuild/{mod_directory}/{filename_c}.o(.data);\n")
                 line_number += 1
+            elif filename_c.endswith('.s'):
+                lines.insert(line_number, f"\t\tbuild/{mod_directory}/{filename_c}.o(.data);\n")
+                line_number += 1
         break
 
 
@@ -211,6 +221,9 @@ for index, line in enumerate(lines):
     if 'romPadding_VRAM_END' in line:
         for filename_c in os.listdir(mod_directory):
             if filename_c.endswith('.c'):
+                lines.insert(line_number, f"\t\tbuild/{mod_directory}/{filename_c}.o(.bss);\n")
+                line_number += 1
+            elif filename_c.endswith('.s'):
                 lines.insert(line_number, f"\t\tbuild/{mod_directory}/{filename_c}.o(.bss);\n")
                 line_number += 1
         break
@@ -233,6 +246,12 @@ for root, dirs, files in os.walk(dir_path):
 
 s_files = []
 for root, dirs, files in os.walk(asm_path):
+    for file in files:
+        if file.endswith('.s'):
+            s_files.append(os.path.join(root, file))
+
+mod_s_files = []
+for root, dirs, files in os.walk(mod_asm_path):
     for file in files:
         if file.endswith('.s'):
             s_files.append(os.path.join(root, file))
@@ -260,6 +279,8 @@ with open('build.ninja', 'a') as outfile:
         if "asm/nonmatchings" in s_file:
             continue
         outfile.write("build build/" + os.path.splitext(s_file)[0] + ".s.o: " + "s_file " + s_file + "\n")
+    for s_file in mod_s_files:
+        outfile.write("build build/" + os.path.splitext(s_file)[0] + ".s.o: " + "s_file " + mod_s_files + "\n")
     for bin_file in bin_files:
         outfile.write("build build/" + os.path.splitext(bin_file)[0] + ".bin.o: " + "bin_file " + bin_file + "\n")
 

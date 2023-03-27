@@ -1261,8 +1261,8 @@ void func_8007E714(f32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80080318.s")
 
-void PrintTextWrapper(f32 arg0, f32 arg1, f32 arg2, f32 arg3, char* arg4, s32 arg5) {
-    PrintText(arg0, arg1, arg2, arg3, 0.0f, 0.0f, arg4, arg5);
+void PrintTextWrapper(f32 xPos, f32 yPos, f32 arg2, f32 arg3, char* arg4, s32 arg5) {
+    PrintText(xPos, yPos, arg2, arg3, 0.0f, 0.0f, arg4, arg5);
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/PrintText.s")
