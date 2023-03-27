@@ -3,7 +3,7 @@
 extern f64 D_801104F8;
 extern s32 D_80236974;
 extern Collision D_80240CE0[];
-extern Collider D_80236980[];
+extern Collider D_80236980[128];
 extern char D_801103D0[];
 extern s32 D_8020D8F4;
 extern s32 gCurrentStage;

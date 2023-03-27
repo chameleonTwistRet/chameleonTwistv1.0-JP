@@ -25,7 +25,7 @@ s32 Random(s32 arg0, s32 arg1) {
 
 f32 RandomF(void) {
     // Returns a random float between 0 and 1
-    return Random(0, 0xFFFF) / 65535.0f;
+    return Random(0, 65535) / 65535.0f;
 }
 
 f32 tanf(f32 x) {

@@ -309,7 +309,7 @@ void func_8008A208(void) {
             func_8008BD98(1);
         }
     } else if (((s32) D_8017499C % 300) == 0x12B) {
-        func_80087ED0(Random(0, 5) + 0x4F, NULL, NULL, NULL, 1, 0x10);
+        PLAYSFX(Random(0, 5) + 0x4F, 1, 0x10);
     }
     D_8020005A = D_80236974;
 }
@@ -534,19 +534,19 @@ void func_8008C35C(s32 arg0) {
 
 }
 
-s32 func_8008C364(Actor* arg0, s32 arg1, s32 arg2, s32 arg3) {
+s32 func_8008C364(Actor* arg0, s32 sfxID, s32 arg2, s32 arg3) {
     s32 var_v0;
 
     if (gameModeCurrent == 7) {
-        var_v0 = func_80087ED0(arg1, 0, 0, 0, 1, 0x10);
+        var_v0 = PLAYSFX(sfxID, 1, 0x10);
     } else {
-        var_v0 = func_80087ED0(arg1, &arg0->pos.x, &arg0->pos.y, &arg0->pos.z, 0, 0);
+        var_v0 = PLAYSFXAT(sfxID, arg0->pos, 0, 0);
     }
     return var_v0;
 }
 
-void func_8008C3F0(Actor* arg0, s32 arg1, s32 arg2) {
-    func_80087ED0(arg1, &arg0->pos.x, &arg0->pos.y, &arg0->pos.z, 1, 0);
+void func_8008C3F0(Actor* arg0, s32 sfxID, s32 arg2) {
+    PLAYSFXAT(sfxID, arg0->pos, 1, 0);
 }
 
 s32 func_8008C438(void) {
@@ -1980,7 +1980,7 @@ void func_800AAB0C(s32 arg0) {
     DMAStruct_Print();
     loadStageByIndex(arg0);
     DMAStruct_Print();
-    _bzero(gPlayerActors, sizeof(gPlayerActors)); //sizeof 4 player actors
+    _bzero(gPlayerActors, sizeof(gPlayerActors));
     _bzero(&gCamera[0], sizeof(Camera));
     D_80168DA0 = 1;
     gPlayerActors[0].active = 1;
@@ -2059,7 +2059,15 @@ void func_800AAB0C(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800AE770.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800AE82C.s")
+void func_800AE82C(Rect* r, f32 s){
+    r->min.x-=s;
+    r->min.y-=s;
+    r->min.z-=s;
+    r->max.x+=s;
+    r->max.y+=s;
+    r->max.z+=s;
+}
+//#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800AE82C.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800AE87C.s")
 
@@ -2090,6 +2098,29 @@ s32 func_800AE8E4(Rect* arg0, Rect* arg1) {
     }
     return 1;
 }
+/*
+//is point in Rect
+s32 func_800AE9E0(Vec3f v, Rect* r){
+if ((f64) r->max.x < (f64) v.x) {
+        return 0;
+    }
+    if ((f64) v.x < (f64) r->min.x) {
+        return 0;
+    }
+    if ((f64) r->max.y < (f64) v.y) {
+        return 0;
+    }
+    if ((f64) v.y < (f64) r->min.y) {
+        return 0;
+    }
+    if ((f64) r->max.z < (f64) v.z) {
+        return 0;
+    }
+    if ((f64) v.z < (f64) r->min.z) {
+        return 0;
+    }
+    return 1;
+}*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800AE9E0.s")
 

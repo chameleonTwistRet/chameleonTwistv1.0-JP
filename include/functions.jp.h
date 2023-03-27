@@ -384,7 +384,7 @@ s32 DMAStruct_Print(void);
 
 s32 func_800AE8E4(Rect* arg0, Rect* arg1);
 
-void func_800B22AC(s32);
+s32 func_800B22AC(s32);
 s32 func_800B2510(void);
 s32 func_800B34D0(s32);
 s32 func_800B3540(s32);
@@ -404,7 +404,7 @@ f32 CalculateAngleBetweenVectors(f32, f32);
 f32 InterpolateAndClampArcSin(f32);
 f32 AngleFromArcSin(f32);
 void func_800B35FC(s32);
-s32 func_800AE9E0(Vec3f, unkStruct15*);
+s32 func_800AE9E0(Vec3f, Rect*);
 Vec3f* Vec3f_Lerp(Vec3f*, Vec3f, Vec3f, f32);
 f32 func_800B2308(f32, s32);
 void func_800C8F00(void);

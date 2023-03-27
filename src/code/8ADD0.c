@@ -58,6 +58,8 @@ void func_800B09C0(s32 arg0, f32* arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B1DD4.s")
 
+
+
 void func_800B2070(s32 arg0) {
     unkStruct15 sp24;
     Vec3f sp18;
