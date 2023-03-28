@@ -426,10 +426,6 @@ typedef struct unk801FCA20 {
     /* 0x04 */ s32 unk_04;
 } unk801FCA20; //sizeof 0x8
 
-typedef struct unk801FCA44 {
-    /* 0x00 */ s32 unk_00;
-    /* 0x04 */ s32 unk_04;
-} unk801FCA44; //sizeof 0x8
 
 typedef struct unk800FF624 {
     /* 0x00 */ s32 unk_00;

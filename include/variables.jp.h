@@ -238,7 +238,7 @@ extern s32 D_801FC9B0;
 extern s16 D_801FCA22;
 extern s32 D_800FF620;
 extern unk800FF624 D_800FF624;
-extern unk801FCA44* D_801FCA44;
+extern ALSeqFile* D_801FCA44;
 extern OSMesgQueue D_801FCA50[50];
 typedef u8 Addr[];
 extern char D_8010F1EC[];

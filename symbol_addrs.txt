@@ -249,6 +249,7 @@ aa1_InitHead = 0x800615a4; // type:func rom:0x3c9a4
 Rumble_Tick = 0x8007b004; // type:func rom:0x56404
 Rumble_AddTime = 0x8007b314; // type:func rom:0x56714
 playSoundEffect = 0x80087ed0; // type:func rom:0x632d0
+playBGM = 0x8008bd98; // type:func
 PutDList = 0x8008c780; // type:func rom:0x67b80
 TaskInit = 0x8008cdc4; // type:func rom:0x681c4
 bzero32 = 0x8008cec4; // type:func rom:0x682c4

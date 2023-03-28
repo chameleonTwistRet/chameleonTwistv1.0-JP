@@ -357,7 +357,7 @@ s32 func_80087358(s32);
 s32 playSoundEffect(s32 id, f32* posX, f32* posY, f32* posZ, s32 arg4, s32 flag);
 void func_80088198(void);
 s32 func_80088698(s32);
-s32 func_8008BD98(s32);
+s32 playBGM(s32);
 s32 func_8008BEDC(void);
 void func_8008C094(void);
 void func_8008C35C(s32);

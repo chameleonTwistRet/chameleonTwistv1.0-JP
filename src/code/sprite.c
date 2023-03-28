@@ -924,7 +924,7 @@ void func_80072D34(void) {
         temp_v0->unk0 = 1;
         temp_v0->unkC = 0.0f;
         temp_v0->unk_30 = 0.0f;
-        func_8008BD98(23);
+        playBGM(23);
     }
 }
 
@@ -1214,7 +1214,7 @@ s32 func_8007C500(void) {
 void func_8007CDBC(void) {
     D_80174880->unk_00[1] = 0;
     D_80174880->unk_00[2] = 0;
-    func_8008BD98(23);
+    playBGM(23);
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8007CDEC.s")

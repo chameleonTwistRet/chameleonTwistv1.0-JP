@@ -306,7 +306,7 @@ s32 func_8008873C(s32 arg0, s32 arg1, s32 arg2) {
 void func_8008A208(void) {
     if (D_80236974 == 0) {
         if (D_8020005A == 1) {
-            func_8008BD98(1);
+            playBGM(1);
         }
     } else if (((s32) D_8017499C % 300) == 0x12B) {
         PLAYSFX(Random(0, 5) + 0x4F, 1, 0x10);
@@ -399,8 +399,8 @@ s32 func_8008BA58(void) {
     }
     
     D_800FF624.unk_00 = D_800FF620;
-    sp24 = D_801FCA44[D_800FF624.unk_00 + 1].unk_00; //is this correct?
-    devAddr = D_801FCA44[D_800FF624.unk_00].unk_04;
+    sp24 = D_801FCA44->seqArray[D_800FF624.unk_00].len; 
+    devAddr = D_801FCA44->seqArray[D_800FF624.unk_00].offset;
     
     if (sp24 & 1) {
         sp24 += 1;
@@ -420,8 +420,8 @@ s32 func_8008BA58(void) {
     return 1;
 }
 
-s32 func_8008BD98(s32 arg0) {
-    if ((arg0 >= (s16)D_801FCA44->unk_00) || (arg0 < 0)) {
+s32 playBGM(s32 arg0) {
+    if ((arg0 >= D_801FCA44->seqCount) || (arg0 < 0)) {
         return -1;
     }
     if (D_800FF614->state == 1) {
@@ -527,7 +527,7 @@ void func_8008C1C8(s32* arg0) {
 }
 
 void func_8008C330(s32 arg0) {
-    func_8008BD98(D_800FF854[arg0]);
+    playBGM(D_800FF854[arg0]);
 }
 
 void func_8008C35C(s32 arg0) {
