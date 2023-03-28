@@ -278,7 +278,9 @@ with open('build.ninja', 'w') as f:
 with open('build.ninja', 'a') as outfile:
     for c_file in c_files:
         if os.path.basename(c_file) == "ll.c":
-           outfile.write("build build/" + os.path.splitext(c_file)[0] + ".c.o: " + "libc_ll_cc " + c_file + "\n")
+            outfile.write("build build/" + os.path.splitext(c_file)[0] + ".c.o: " + "libc_ll_cc " + c_file + "\n")
+        elif "src/mod" in os.path.relpath(c_file):
+            outfile.write("build build/" + os.path.splitext(c_file)[0] + ".c.o: " + "mod_cc " + c_file + "\n")
         # elif os.path.basename(c_file) == "xprintf.c":
         #     outfile.write("build build/" + os.path.splitext(c_file)[0] + ".c.o: " + "xprintf_cc " + c_file + "\n")
         else:
