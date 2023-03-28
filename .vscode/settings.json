@@ -19,6 +19,7 @@
         "variables.jp.h": "c",
         "include_asm.h": "c",
         "macros.h": "c",
-        "enums.h": "c"
+        "enums.h": "c",
+        "os.h": "c"
     }
 }

@@ -105,6 +105,9 @@ header = (
 )
 
 # Traverse each subdirectory recursively and find all C files
+def append_extension(filename):
+    return filename + '.o'
+
 c_files = []
 for root, dirs, files in os.walk(dir_path):
     for file in files:
@@ -123,11 +126,19 @@ for root, dirs, files in os.walk(assets_path):
         if file.endswith('.bin'):
             bin_files.append(os.path.join(root, file))
 
+# Combine the lists and change file extensions
+o_files = []
+for file in c_files + s_files + bin_files:
+    if 'src/mod/' not in file:
+        if 'asm/nonmatchings/' not in file:
+            o_files.append("build/" + append_extension(file))
+
 with open('build.ninja', 'w') as f:
     f.write(header)
 
 # Write the full path of each C file to a new text file called build.ninja
 with open('build.ninja', 'a') as outfile:
+    # Write the rules for the .c files
     for c_file in c_files:
         if os.path.basename(c_file) == "ll.c":
            outfile.write("build build/" + os.path.splitext(c_file)[0] + ".c.o: " + "libc_ll_cc " + c_file + "\n")
@@ -138,13 +149,18 @@ with open('build.ninja', 'a') as outfile:
             if folder_name == "mod":
                 continue # skip over the file
             outfile.write("build build/" + os.path.splitext(c_file)[0] + ".c.o: " + folder_name + "_cc " + c_file + "\n")
+
+    # Write the rules for the .s files
     for s_file in s_files:
         if "asm/nonmatchings" in s_file:
             continue
         outfile.write("build build/" + os.path.splitext(s_file)[0] + ".s.o: " + "s_file " + s_file + "\n")
+
+    # Write the rules for the .bin files
     for bin_file in bin_files:
         outfile.write("build build/" + os.path.splitext(bin_file)[0] + ".bin.o: " + "bin_file " + bin_file + "\n")
 
-    outfile.write("build build/chameleontwist.jp.elf: make_elf\n")
+    # Build the ninja rule with the .o files
+    outfile.write("build build/chameleontwist.jp.elf: make_elf " + " ".join(o_files) + "\n")
     outfile.write("build build/chameleontwist.jp.bin: make_rom_bin build/chameleontwist.jp.elf\n")
     outfile.write("build build/chameleontwist.jp.z64: make_rom_z64 build/chameleontwist.jp.bin\n")

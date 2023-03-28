@@ -119,12 +119,14 @@ extern s16 D_800FF854[];
 extern s16 D_800FFDF0;
 extern s16 D_800FFDF4;
 extern s32 gameModeCurrent;
+extern Gfx* gMainGfxPos;
 extern s32 D_800FFEB8;
 extern s16 UseFixedRNGSeed;
 extern PlayerInit gPlayerInits[10]; // 4 extra blank entries.
 extern f32 D_8010881C;
 extern f32 D_80108820;
 extern s32 D_80108B68;
+extern unkSpriteDmaStruct D_80100118[16];
 extern OSViMode osViModeTable[42];
 extern Vec2f D_8010A6D0[0x6C]; //positions?
 extern unk_8010AA28 D_8010AA28[0x6C]; //actor related?

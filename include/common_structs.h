@@ -367,6 +367,14 @@ typedef struct unkFlags {
 /* 0x71 */ s8 unk_71;
 } unkFlags; //sizeof 0x72
 
+typedef struct unkSpriteDmaStruct {
+    char* name;
+    void* romAddrStart;
+    void* romAddrEnd;
+    void* ramAddrStart;
+    void* unk;
+} unkSpriteDmaStruct;
+
 typedef struct unk80100F50 {
     /* 0x00 */ u32 base_address;
     /* 0x04*/ u32 unk4;
@@ -727,8 +735,6 @@ typedef struct func_80069858_temp_v0{
     /* 0x08 */ s32 unk8;
     /* 0x0C */ s32 unkC;
 } func_80069858_temp_v0; //sizeof 0x10
-
-
 
 
 #endif

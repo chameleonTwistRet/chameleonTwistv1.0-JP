@@ -238,6 +238,9 @@ with open(filename, 'w') as file:
     file.writelines(lines)
 
 # Traverse each subdirectory recursively and find all C files
+def append_extension(filename):
+    return filename + '.o'
+
 c_files = []
 for root, dirs, files in os.walk(dir_path):
     for file in files:
@@ -262,6 +265,12 @@ for root, dirs, files in os.walk(assets_path):
         if file.endswith('.bin'):
             bin_files.append(os.path.join(root, file))
 
+# Combine the lists and change file extensions
+o_files = []
+for file in c_files + s_files + bin_files:
+    if 'asm/nonmatchings/' not in file:
+        o_files.append("build/" + append_extension(file))
+
 with open('build.ninja', 'w') as f:
     f.write(header)
 
@@ -284,7 +293,8 @@ with open('build.ninja', 'a') as outfile:
     for bin_file in bin_files:
         outfile.write("build build/" + os.path.splitext(bin_file)[0] + ".bin.o: " + "bin_file " + bin_file + "\n")
 
-    outfile.write("build build/chameleontwist.jp.elf: make_elf\n")
+    # Build the ninja rule with the .o files
+    outfile.write("build build/chameleontwist.jp.elf: make_elf " + " ".join(o_files) + "\n")
     outfile.write("build build/chameleontwist.jp.bin: make_rom_bin build/chameleontwist.jp.elf\n")
     outfile.write("build build/chameleontwist.jp.z64: make_rom_z64 build/chameleontwist.jp.bin\n")
 
