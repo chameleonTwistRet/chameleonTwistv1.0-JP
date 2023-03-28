@@ -42,7 +42,7 @@ void func_8002D148(f32* a, f32* b, f32 c) {
 
 // Unknown Function: Elisiah 
 f32 CalcAngleBetween2DPoints(f32 x1, f32 y1, f32 x2, f32 y2) {
-    return CalculateAngleBetweenVectors(x2 - x1, -(y2 - y1));
+    return CalculateAngleOfVector(x2 - x1, -(y2 - y1));
 }
 
 // Mirror the lower semicircle onto the top
@@ -125,7 +125,7 @@ void func_8002D434(f32 *arg0, f32 *arg1, f32 arg2, f32 arg3, f32 arg4) {
     f32 c = sqrtf(SUM_OF_SQUARES(a, b));
     
     if (c != 0.0f) {
-        temp_f10 = CalculateAngleBetweenVectors(a, -b) + arg4;
+        temp_f10 = CalculateAngleOfVector(a, -b) + arg4;
         *arg0 = cosf(DEGREES_TO_RADIANS_2PI(temp_f10)) * c + arg2;
         *arg1 = arg3 + -(sinf(DEGREES_TO_RADIANS_2PI(temp_f10)) * c);
     }
@@ -1133,7 +1133,7 @@ void func_8003FA38(Actor* arg0, f32 arg1, f32 arg2, f32 arg3) {
     temp_f8 = (s32) (sqrtf(SQ(temp_f0) + SQ(temp_f2)) / arg0->unk_94);
     arg0->unk_10C[1] = temp_f8;
     arg0->unk_134[3] = (f32) ((arg2 - arg0->pos.y) / (f32) temp_f8);
-    arg0->unk_90 = CalculateAngleBetweenVectors(temp_f0, -temp_f2);
+    arg0->unk_90 = CalculateAngleOfVector(temp_f0, -temp_f2);
 }
 
 // Pogo Function: Elisiah
@@ -1267,7 +1267,7 @@ void func_800425A4(Actor* arg0) {
     temp_f0_2 = __sqrtf(SQ(arg0->vel.x) + SQ(arg0->vel.z));
     arg0->unk_94 = temp_f0_2;
     arg0->unk_134[0] = ((180.0f * temp_f0_2) / ( arg0->unknownPositionThings[0].unk_0C * D_8010BE30)) + arg0->unk_134[0];
-    arg0->unk_90 = CalculateAngleBetweenVectors(arg0->vel.x, -arg0->vel.z);
+    arg0->unk_90 = CalculateAngleOfVector(arg0->vel.x, -arg0->vel.z);
 }
 
 //(re)set bowling pins

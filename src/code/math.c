@@ -6,27 +6,46 @@ extern f32 D_80108D78[64];
 extern f32 D_80108E7C[];
 extern s32 gFixedSeedIndex;
 
-s32 Random(s32 arg0, s32 arg1) {
-    s32 var_v1;
-    f32 new_var2;
-    f32 new_var;
+/**
+ * Random: Returns a random integer between min and max, inclusive.
+ * <NB> Uses a fixed seed if UseFixedRNGSeed is TRUE or guRandom() if FALSE.
+ *      @param min: Minimum value to return
+ *      @param max: Maximum value to return
+ * 
+ *      @return: A random integer between min and max, inclusive
+ */
+
+s32 Random(s32 min, s32 max) {
+    s32 randVal;
+    f32 randFloat;
+    f32 randFloat2;
     
     if (UseFixedRNGSeed != FALSE) {
-        new_var2 = ((gFixedSeedIndex * 256) + gFixedSeedIndex) % 65535 / 65535.0f;
-        new_var = arg1 - arg0 + 1;
-        var_v1 = new_var * new_var2 + arg0;
+        randFloat = ((gFixedSeedIndex * 256) + gFixedSeedIndex) % 65535 / 65535.0f;
+        randFloat2 = max - min + 1;
+        randVal = randFloat2 * randFloat + min;
     } else {
-        new_var = guRandom() % 65535;
-        var_v1 = (arg1 - arg0 + 1) * (new_var / 65535.0f) + arg0;
+        randFloat2 = guRandom() % 65535;
+        randVal = (max - min + 1) * (randFloat2 / 65535.0f) + min;
     }
 
-    return var_v1;
+    return randVal;
 }
 
+/**
+ * RandomF: Returns a random float between 0 and 1 by calling Random().
+ *      @return A random float between 0 and 1 
+ */
+
 f32 RandomF(void) {
-    // Returns a random float between 0 and 1
-    return Random(0, 65535) / 65535.0f;
+    return Random(0, 0xFFFF) / 65535.0f;
 }
+
+/**
+ * tanf: Returns the tangent of x.
+ *      @param x: the angle
+ *      @return: the tangent of x or 0 if the tangent is undefined
+ */
 
 f32 tanf(f32 x) {
     f32 sin_x;
@@ -44,6 +63,12 @@ f32 tanf(f32 x) {
 
     return tan_x;
 }
+
+/**
+ * InterpolateAndClampArcSin: Interpolates and clamps the inverse sin of a given float value.
+ *      @param x The value to calculate the arcsine of.
+ *      @return The interpolated and clamped arcsine of the input value.
+ */
 
 f32 InterpolateAndClampArcSin(f32 x) {
     f32* table;
@@ -89,93 +114,123 @@ f32 InterpolateAndClampArcSin(f32 x) {
     entry1 = table[base];
     entry2 = table[next];
     t = cur - base;
-    
+
     return (((1.0f - t) * entry1) + (t * entry2)) * sign;
 }
+
+/**
+ * AngleFromArcSin: Calculates the angle s.t. sin(angle) = x.
+ *      @param x: The value to calculate the angle of.
+ * 
+ *      @return: The angle s.t. sin(angle) = x.
+ */
 
 f32 AngleFromArcSin(f32 x) {
     return 90.0 - InterpolateAndClampArcSin(x);
 }
 
-f32 CalculateAngleBetweenVectors(f32 x, f32 y) {
+/**
+ * CalculateAngleOfVector: Calculates the angle of a 2-dim vector.
+ *      @param x: The x component of the vector
+ *      @param y: The y component of the vector
+ * 
+ *      @return: The angle of the vector (probably in degrees)
+ */
+
+f32 CalculateAngleOfVector(f32 x, f32 y) {
     s32 pad[2];
-    f32 sp4;
-    f32 temp_f0;
-    f32 temp_f12;
-    f32 temp_f2;
-    f32 var_f12;
-    f32 var_f14;
-    f32 var_f2;
-    f32 var_f6;
-    s32 var_a1;
-    s32 var_v1;
-    u32 var_v0 = 0;
+    f32 angle;
+    f32 frac;
+    f32 lookupTwo;
+    f32 lookupOne;
+    f32 absY;
+    f32 slope;
+    f32 absX;
+    f32 floorF;
+    s32 next_index;
+    s32 floor;
+    u32 quadrant = 0;
     
+    // No input vector
     if (x == 0.0 && y == 0.0) {
         return 0.0f;
     }
     
+    /* quadrant is used to store the quadrant of the angle [0,3]
+       and later stores the sgn */
     if (x < 0.0f) {
-        var_v0 = 1;
-        var_f2 = -x;
+        quadrant = 1;
+        absX = -x;
     } else {
-        var_f2 = x;
+        absX = x;
     }
     
     if (y < 0.0f) {
-        var_v0 += 2;
-        var_f12 = -y;
+        quadrant += 2;
+        absY = -y;
     } else {
-        var_f12 = y;
+        absY = y;
     }
     
-    if (var_f2 < var_f12) {
-        var_v0 += 4;
-        var_f14 = (var_f2 / var_f12) * 64.0f;
-        var_v1 = (s32) var_f14;
-        var_a1 = var_v1 + 1;
-        var_f6 = (f32) var_v1;
-        temp_f0 = var_f14 - var_f6;
+    /* quadrant += 4 iff |x| < |y| */
+    if (absX < absY) {
+        quadrant += 4;
+        slope = (absX / absY) * 64.0f;  // between 0 and 64 (inclusive)
+        floor = (s32) slope;            // int of slope
+        next_index = floor + 1;         // floor + 1
+        floorF = (f32) floor;           // floor (as float)
+        frac = slope - floorF;          // frac of slope
     } else {
-        var_f14 = (var_f12 / var_f2) * 64.0f;
-        var_v1 = (s32) var_f14;
-        var_a1 = var_v1 + 1;
-        var_f6 = (f32) var_v1;
-        temp_f0 = var_f14 - var_f6;
+        slope = (absY / absX) * 64.0f;
+        floor = (s32) slope;       
+        next_index = floor + 1;    
+        floorF = (f32) floor;      
+        frac = slope - floorF;     
     }
     
-    if (var_a1 > 64) {
-        var_a1 = 64;
+    /* clamp floor and next_index to [0,64] */
+    if (next_index > 64) {
+        next_index = 64;
     }
     
-    temp_f2 = D_80108E7C[var_v1];
-    temp_f12 = D_80108E7C[var_a1];
+    /* angle lookup table is 65 entries long, but the last entry is the same as the first */
+    lookupOne = D_80108E7C[floor];
+    lookupTwo = D_80108E7C[next_index];
     
-    switch (var_v0) {
+    /* Lerp between lookup angle results */
+    switch (quadrant) {
     case 0:
-        sp4 = ((1.0f - temp_f0) * temp_f2) + (temp_f0 * temp_f12);
+        // Q1, |x| >= |y|
+        angle = ((1.0f - frac) * lookupOne) + (frac * lookupTwo);
         break;
     case 1:
-        sp4 = 180.0 - (f64) (((1.0f - temp_f0) * temp_f2) + (temp_f0 * temp_f12));
+        // Q2, |x| >= |y|
+        angle = 180.0 - (f64) (((1.0f - frac) * lookupOne) + (frac * lookupTwo));
         break;
     case 2:
-        sp4 = 360.0 - (f64) (((1.0f - temp_f0) * temp_f2) + (temp_f0 * temp_f12));
+        // Q3, |x| >= |y|
+        angle = 360.0 - (f64) (((1.0f - frac) * lookupOne) + (frac * lookupTwo));
         break;
     case 3:
-        sp4 = ((1.0f - temp_f0) * temp_f2) + (temp_f0 * temp_f12) + 180.0;
+        // Q4, |x| >= |y|
+        angle = ((1.0f - frac) * lookupOne) + (frac * lookupTwo) + 180.0;
         break;
     case 4:
-        sp4 = 90.0 - (f64) (((1.0f - temp_f0) * temp_f2) + (temp_f0 * temp_f12));
+        // Q1, |x| < |y|
+        angle = 90.0 - (f64) (((1.0f - frac) * lookupOne) + (frac * lookupTwo));
         break;
     case 5:
-        sp4 = ((1.0f - temp_f0) * temp_f2) + (temp_f0 * temp_f12) + 90.0;
+        // Q2, |x| < |y|
+        angle = ((1.0f - frac) * lookupOne) + (frac * lookupTwo) + 90.0;
         break;
     case 6:
-        sp4 = ((1.0f - temp_f0) * temp_f2) + (temp_f0 * temp_f12) + 270.0;
+        // Q3, |x| < |y|
+        angle = ((1.0f - frac) * lookupOne) + (frac * lookupTwo) + 270.0;
         break;
     case 7:
-        sp4 = 270.0 - (f64) (((1.0f - temp_f0) * temp_f2) + (temp_f0 * temp_f12));
+        // Q4, |x| < |y|
+        angle = 270.0 - (f64) (((1.0f - frac) * lookupOne) + (frac * lookupTwo));
         break;
     }
-    return sp4;
+    return angle;
 }

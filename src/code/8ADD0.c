@@ -152,11 +152,12 @@ s32 isBossActor(s32* arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B2308.s")
 
+// lerp 2 vec3f's by a scalar computed by func_800B2308
 Vec3f* func_800B2470(Vec3f* arg0, Vec3f arg1, Vec3f arg4, f32 arg7, s32 arg8) {
     f32 pad;
     Vec3f sp30;
     
-    Vec3f_Lerp(&sp30, arg1, arg4, func_800B2308(arg7, arg8));
+    Vec3f_Lerp(&sp30, arg1, arg4, func_800B2308(arg7, arg8));       //out, vec1, vec2, scalar
     *arg0 = sp30;
     return arg0;
 }
@@ -228,6 +229,7 @@ void func_800B37D8(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B3D9C.s")
 
+// sprite.0 bool checker
 s32 func_800B3DFC(unkSpriteStruct* sprite) {
     return (sprite->unk_00 == 0 ) ? 1 : 0;
 }

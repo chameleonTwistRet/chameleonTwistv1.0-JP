@@ -51,7 +51,7 @@ void __osInitialize_common(void);
 
 void bootproc(void) {
     __osInitialize_common();
-    D_80168D70 = 1;                            //gIdleThreadStack[1024]
+    gControllerNo = 1;                            //gIdleThreadStack[1024]
     osCreateThread(&gIdleThread, 1, idleproc, 0, &gMainThread, 10);
     osStartThread(&gIdleThread);
 }
@@ -352,7 +352,7 @@ void func_8002CE54(void) {
 
 void func_8002D080(void) {
     D_80174878 = -1;
-    D_80168D70 = func_8004E4D0();   // @returned: number of controllers
+    gControllerNo = func_8004E4D0();   // @returned: number of controllers
     gPlayerActors[0].active = 1;
     gPlayerActors[1].active = 0;
     gPlayerActors[2].active = 0;
