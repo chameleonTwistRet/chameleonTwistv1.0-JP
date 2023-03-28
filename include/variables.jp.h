@@ -185,7 +185,7 @@ extern u64 D_801181A0[512]; //unused Stack
 extern void* D_801191A0;
 extern OSMesg gPiManMsgs[50];
 extern OSMesgQueue gPiManMgsQ;
-extern s32 D_80168D70;
+extern s32 gControllerNo;
 extern s32 D_80168D78[];
 extern s32 gActorCount;
 extern playerActor gPlayerActors[4];

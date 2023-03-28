@@ -491,6 +491,7 @@ g_aa1_Count = 0x800fe158; // size:0x4 rom:0xd9558
 gActorCount = 0x80168da4; // size:0x4
 gTongues = 0x80169268; // size:0x1830
 gPlayerActors = 0x80168da8; // size:0x4c0
+gControllerNo = 0x80168D70;
 gPlayerInits = 0x80101088; // size:0x4d80 rom:0xdc488
 gValidPlayerInits = 0x8010107c; // size:0x4 rom:0xdc47c
 gCamera = 0x8016aa98; // size:0x1d0
