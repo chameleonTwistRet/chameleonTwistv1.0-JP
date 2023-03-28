@@ -532,9 +532,27 @@ aa1* aa1_Alloc(s32 arg0, s32 arg1, void* arg2) {
     return var_a1;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/aa1_Free.s")
+void aa1_Free(aa1* arg0) {
+    aa1* temp_v0 = arg0->previous;
+    if (temp_v0 != NULL) {
+        temp_v0->next = arg0->next;
+    }
+    if (arg0->next != NULL) {
+        arg0->next->previous = arg0->previous;
+    }
+    if (arg0 == g_aa1_head) {
+        g_aa1_head = arg0->previous;
+    }
+    func_80056F24(arg0->unk_3C);
+    func_80056F24(arg0->unk_38);
+    func_80056F24(arg0);
+    g_aa1_Count -= 1;
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/aa1_InitHead.s")
+void aa1_InitHead(void) {
+    g_aa1_head = &D_80176F00;
+    func_800613D0(g_aa1_head);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_800615D4.s")
 
@@ -666,7 +684,7 @@ aa1* func_80065CAC(f32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_800662D4.s")
 
-//https://decomp.me/scratch/GHZZV
+//https://decomp.me/scratch/eFSCQ
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80066374.s")
 
 //https://decomp.me/scratch/xl76w
@@ -1261,8 +1279,8 @@ void func_8007E714(f32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80080318.s")
 
-void PrintTextWrapper(f32 xPos, f32 yPos, f32 arg2, f32 arg3, char* arg4, s32 arg5) {
-    PrintText(xPos, yPos, arg2, arg3, 0.0f, 0.0f, arg4, arg5);
+void PrintTextWrapper(f32 arg0, f32 arg1, f32 arg2, f32 arg3, char* arg4, s32 arg5) {
+    PrintText(arg0, arg1, arg2, arg3, 0.0f, 0.0f, arg4, arg5);
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/PrintText.s")

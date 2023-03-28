@@ -691,27 +691,27 @@ typedef struct d8006266c{
 } d8006266c; //sizeof 0x40
 
 typedef struct aa1{
-    /* 0x00 */ s32 unk0;
-    /* 0x04 */ s8 unk4;
-    /* 0x05 */ s8 unk5;
-    /* 0x06 */ s8 unk6;
-    /* 0x07 */ s8 unk7;
-    /* 0x08 */ s32 unk8;
-    /* 0x0C */ f32 unkC;
-    /* 0x10 */ f32 unk_10;
-    /* 0x14 */ f32 unk_14;
-    /* 0x18 */ f32 unk_18;
-    /* 0x1C */ f32 unk_1C;
-    /* 0x20 */ f32 unk_20;
-    /* 0x24 */ f32 unk_24;
-    /* 0x28 */ s32 unk_28;
-    /* 0x2C */ s32 unk_2C;
-    /* 0x30 */ f32 unk_30;
-    /* 0x34 */ void* unk34;
-    /* 0x38 */ void* unk_38;
-    /* 0x3C */ d8006266c* unk_3C;
-    /* 0x40 */ struct aa1* previous;
-    /* 0x44 */ struct aa1* next;
+               s32 unk0;
+               s8 unk4;
+               s8 unk5;
+               s8 unk6;
+               s8 unk7;
+               s32 unk8;
+               f32 unkC;
+               f32 unk_10;
+               f32 unk_14;
+               f32 unk_18;
+               f32 unk_1C;
+               f32 unk_20;
+               f32 unk_24;
+               s32 unk_28;
+               s32 unk_2C;
+               f32 unk_30;
+               void* unk34;
+               Mtx* unk_38;
+               d8006266c* unk_3C;
+               struct aa1* previous;
+               struct aa1* next;
 } aa1; //sizeof 0x48 (unk size)
 
 

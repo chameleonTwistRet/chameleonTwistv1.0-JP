@@ -7,6 +7,9 @@ extern s32 D_801749A0;
 
 #define SQROOT_2_DIV_2 0.70710678f
 
+//0xD7, 0x1E);
+//0xAC, 0x2D);
+//0x5B, 0x78);
 void func_800D85A0(Collider* arg0, s32 arg1, s32 arg2) {
     if (((arg0->unk_00 + D_801749A0) % arg2) == 0) {
         func_80088698(func_80087ED0(arg1, &arg0->unk_18, &arg0->unk_1C, &arg0->unk_20, 0, 0));
@@ -107,45 +110,51 @@ void func_800D8918(Collider* arg0, s32 arg1, s32 arg2, f32 arg3, f32 arg4, f32 a
     }
 }
 
+// arg3, 5, 7 relates to zPos
+// arg4, 6, 8 relates to xPos
+
+// func_800D8B28(arg0, 0x89, 0x1E, -5100.0f, 25300.0f, 600.0f, 2500.0f, 1000.0f, 1000.0f);}
+// func_800D8B28(arg0, 0x89, 0x1E, 0, 25300.0f, 600.0f, 2500.0f, 1000.0f, 1000.0f);}
+
 void func_800D8B28(Collider* arg0, s32 arg1, s32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7, f32 arg8) {
-    f32 temp_f12;
-    f32 temp_f0;
-    f32 temp_f16;
-    f32 temp_f2;
+    f32 sum_arg5_arg7;
+    f32 xPos;
+    f32 zPos;
+    f32 sum_arg6_arg8;
     s32 var_v0;
     f32 sp40;
     f32 sp3C;
     Vec3f sp30;
 
     if (((arg0->unk_00 + D_801749A0) % arg2) == 0) {
-        temp_f12 = arg5 + arg7;
+        sum_arg5_arg7 = arg5 + arg7;
         var_v0 = 1;
-        temp_f16 = gPlayerActors->pos.z - arg3;
-        temp_f0 = gPlayerActors->pos.x - arg4;
-        if (temp_f0 < -(temp_f12)) {
+        zPos = gPlayerActors->pos.z - arg3;
+        xPos = gPlayerActors->pos.x - arg4;
+        if (xPos < -(sum_arg5_arg7)) {
             var_v0 = 0;
         } else {
-            if (temp_f0 < -arg5) {
+            if (xPos < -arg5) {
                 sp40 = -arg5;
-            } else if (temp_f0 < arg5) {
-                sp40 = temp_f0;
-            } else if (temp_f0 < temp_f12) {
+            } else if (xPos < arg5) {
+                sp40 = xPos;
+            } else if (xPos < sum_arg5_arg7) {
                 sp40 = arg5;
             } else {
                 var_v0 = 0;
             }            
         }
         
-        temp_f2 = arg6 + arg8;
+        sum_arg6_arg8 = arg6 + arg8;
         
-        if (temp_f16 < -temp_f2) {
+        if (zPos < -sum_arg6_arg8) {
             var_v0 = 0;
         } else {
-            if (temp_f16 < -arg6) {
+            if (zPos < -arg6) {
                 sp3C = -arg6;
-            } else if (temp_f16 < arg6) {
-                sp3C = temp_f16;
-            } else if (temp_f16 < temp_f2) {
+            } else if (zPos < arg6) {
+                sp3C = zPos;
+            } else if (zPos < sum_arg6_arg8) {
                 sp3C = arg6;
             } else {
                 var_v0 = 0;

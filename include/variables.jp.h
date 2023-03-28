@@ -23,6 +23,7 @@ extern Tongue* TonguePointer;
 extern unk0* D_801FFB84;
 extern s32 g_aa1_Count;
 extern aa1* g_aa1_head;
+extern aa1 D_80176F00;
 extern s32 D_800F68A8;
 extern s32 D_800F06B0;
 extern s32 D_800F06EC;
@@ -186,7 +187,7 @@ extern u64 D_801181A0[512]; //unused Stack
 extern void* D_801191A0;
 extern OSMesg gPiManMsgs[50];
 extern OSMesgQueue gPiManMgsQ;
-extern s32 D_80168D70;
+extern s32 gControllerNo;
 extern s32 D_80168D78[];
 extern s32 gActorCount;
 extern playerActor gPlayerActors[4];
@@ -197,7 +198,7 @@ extern pole D_80170968[64]; //currently loaded pole structs
 extern unkStruct D_80172E88[];
 extern s32 D_80174758[];
 extern s32 D_80174864;
-extern s32 D_80174878;
+extern s32 D_80174878;                  // Level/Stage ID | loadStageByIndex()
 //extern s32 D_80174880[0x20];
 extern s32 D_801748A0;
 extern s32 D_80174998;

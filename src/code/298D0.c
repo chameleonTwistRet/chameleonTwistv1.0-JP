@@ -88,6 +88,12 @@ void Controller_Zero(contMain* arg0) {
     arg0->stickAngle = 0.0f;
 }
 
+/*
+ * @param[in,out] arg0: contMain array (usually the same as arg3)
+ * @param arg1: number of controllers
+
+ */
+// arg2: 80168D78 = [0,1,2,3]
 void func_8004E784(contMain* arg0, s32 arg1, s32* arg2, contMain* arg3) {
     contMain* var_s0;
     contMain* var_s1;
@@ -96,6 +102,7 @@ void func_8004E784(contMain* arg0, s32 arg1, s32* arg2, contMain* arg3) {
     osRecvMesg(&D_80175620, NULL, 1);
     osContGetReadData(&D_80175650[0]);
 
+    // for each controller
     for (i = 0; i < arg1; i++) {
         if ((arg2 == NULL) || (arg2[i] == 0)) {
             if (D_80175668[i] == -1) {
@@ -111,7 +118,7 @@ void func_8004E784(contMain* arg0, s32 arg1, s32* arg2, contMain* arg3) {
             gContMain[i].sticky = arg3[i].sticky;
         }
 
-        gContMain[i].stickAngle = CalculateAngleBetweenVectors((f32) gContMain[i].stickx, (f32) gContMain[i].sticky);
+        gContMain[i].stickAngle = CalculateAngleOfVector((f32) gContMain[i].stickx, (f32) gContMain[i].sticky);
         gContMain[i].buttons1 = (gContMain[i].buttons0 ^ D_80175678[i]) & gContMain[i].buttons0;
         gContMain[i].buttons2 = (gContMain[i].buttons0 ^ D_801756C0[i]) & gContMain[i].buttons0;
         D_801756C0[i] = gContMain[i].buttons0;
