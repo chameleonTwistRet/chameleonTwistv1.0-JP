@@ -84,7 +84,7 @@ void func_80084FC0(s32 arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80084FF4.s")
 
 //os
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800851C0.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/Audio_Dma.s")
 
 //os
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80085290.s")

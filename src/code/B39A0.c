@@ -10,7 +10,7 @@ extern s32 D_801749A0;
 //0xD7, 0x1E);
 //0xAC, 0x2D);
 //0x5B, 0x78);
-void func_800D85A0(Collider* arg0, s32 arg1, s32 arg2) {
+void func_800D85A0(Collider* arg0, s32 sfxID, s32 arg2) {
     if (((arg0->unk_00 + D_801749A0) % arg2) == 0) {
         func_80088698(PLAYSFXAT(sfxID, arg0->sfxPos, 0, 0));
     }
@@ -116,7 +116,7 @@ void func_800D8918(Collider* arg0, s32 sfxID, s32 arg2, f32 arg3, f32 arg4, f32 
 // func_800D8B28(arg0, 0x89, 0x1E, -5100.0f, 25300.0f, 600.0f, 2500.0f, 1000.0f, 1000.0f);}
 // func_800D8B28(arg0, 0x89, 0x1E, 0, 25300.0f, 600.0f, 2500.0f, 1000.0f, 1000.0f);}
 
-void func_800D8B28(Collider* arg0, s32 arg1, s32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7, f32 arg8) {
+void func_800D8B28(Collider* arg0, s32 sfxID, s32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7, f32 arg8) {
     f32 sum_arg5_arg7;
     f32 xPos;
     f32 zPos;
