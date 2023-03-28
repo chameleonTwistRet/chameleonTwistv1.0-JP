@@ -277,10 +277,12 @@ segments:
     
     
   - [0x101B60, bin] #size of 0x45C00 [ram 8036F400]
-  - [0x147760, bin] #size of 0x7B60 [ram 801C4940]
-  - [0x14F2C0, bin] #unksize
-  - [0x282E80, bin] #size of 0xF0
-  - [0x282F70, bin] #unkSize
+  - [0x147760, bin,alBankfile0] #size of 0x7B60 [ram 801C4940]
+  - [0x14F2C0, bin,alBankfile0Table] #unksize
+  - [0x282E80, bin,alBankFileBGM] #size of 0xEC
+  - [0x282F6C, bin,BGM/00Jungle1] #size of 0x3337
+  - [0x2862A4, bin,BGM/01Jungle2] #size of 0x32D3
+  - [0x2A1C00, bin,BGM/1C] #size of 0x0DB9
   - [0x2A29C0, bin] #size of 0x8760
   - [0x2AB120, bin] #unkSize
   - [0x2D2BA0, bin] #size of 8?
