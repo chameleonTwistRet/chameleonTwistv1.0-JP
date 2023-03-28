@@ -129,7 +129,7 @@ for root, dirs, files in os.walk(assets_path):
 # Combine the lists and change file extensions
 o_files = []
 for file in c_files + s_files + bin_files:
-    if 'src/mod/' not in file:
+    if 'src/mod/' not in file and not file.startswith('src/mod/'):
         if 'asm/nonmatchings/' not in file:
             o_files.append("build/" + append_extension(file))
 
@@ -140,15 +140,16 @@ with open('build.ninja', 'w') as f:
 with open('build.ninja', 'a') as outfile:
     # Write the rules for the .c files
     for c_file in c_files:
-        if os.path.basename(c_file) == "ll.c":
-           outfile.write("build build/" + os.path.splitext(c_file)[0] + ".c.o: " + "libc_ll_cc " + c_file + "\n")
-        # elif os.path.basename(c_file) == "xprintf.c":
-        #     outfile.write("build build/" + os.path.splitext(c_file)[0] + ".c.o: " + "xprintf_cc " + c_file + "\n")
-        else:
-            folder_name = os.path.basename(os.path.dirname(c_file))
-            if folder_name == "mod":
-                continue # skip over the file
-            outfile.write("build build/" + os.path.splitext(c_file)[0] + ".c.o: " + folder_name + "_cc " + c_file + "\n")
+        if "src/mod" not in os.path.relpath(c_file):
+            if os.path.basename(c_file) == "ll.c":
+                outfile.write("build build/" + os.path.splitext(c_file)[0] + ".c.o: " + "libc_ll_cc " + c_file + "\n")
+                # elif os.path.basename(c_file) == "xprintf.c":
+                #     outfile.write("build build/" + os.path.splitext(c_file)[0] + ".c.o: " + "xprintf_cc " + c_file + "\n")
+            else:
+                folder_name = os.path.basename(os.path.dirname(c_file))
+                if folder_name == "mod":
+                    continue # skip over the file
+                outfile.write("build build/" + os.path.splitext(c_file)[0] + ".c.o: " + folder_name + "_cc " + c_file + "\n")
 
     # Write the rules for the .s files
     for s_file in s_files:
