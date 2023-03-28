@@ -186,7 +186,7 @@ void func_8004A544(Actor*); // Falling Grey Ant Spawner Auto-Decompile
 void func_8004A658(Actor*); // Falling Grey Ant Function: Elisiah
 void func_8004AB00(Actor*); // unk_5E
 void func_8004AC20(Actor*);
-void func_8004AD2C(void);
+void Actors_Tick(void);
 void func_8004BA5C(s32);
 s32 func_8004C374(u16*, u16*, s32);
 void Controller_StartRead(void);
@@ -322,6 +322,7 @@ void func_800A9F84(void);
 void func_800AA3F0(void);
 void func_800ADE70(void);
 void func_800AE4AC(void);
+void func_800AEAA8(Vec3f,Vec3f,Rect*);
 void func_800A2BDC(void);
 void func_800A0810(void);
 void func_800A4320(void);
@@ -353,10 +354,10 @@ s32 audioproc(void);
 unk0* func_80086EB4(s32);
 s32 func_80087290(unk0*);
 s32 func_80087358(s32);
-s32 func_80087ED0(s32 id, f32* posX, f32* posY, f32* posZ, s32 arg4, s32 flag);
+s32 playSoundEffect(s32 id, f32* posX, f32* posY, f32* posZ, s32 arg4, s32 flag);
 void func_80088198(void);
 s32 func_80088698(s32);
-s32 func_8008BD98(s32);
+s32 playBGM(s32);
 s32 func_8008BEDC(void);
 void func_8008C094(void);
 void func_8008C35C(s32);
@@ -409,7 +410,7 @@ s32 DMAStruct_Print(void);
 
 s32 ifRectsIntersect(Rect* arg0, Rect* arg1);
 
-void func_800B22AC(s32);
+s32 isBossID(s32);
 s32 func_800B2510(void);
 s32 func_800B34D0(s32);
 s32 func_800B3540(s32);
@@ -429,7 +430,8 @@ f32 CalculateAngleOfVector(f32, f32);
 f32 InterpolateAndClampArcSin(f32);
 f32 AngleFromArcSin(f32);
 void func_800B35FC(s32);
-s32 func_800AE9E0(Vec3f, unkStruct15*);
+s32 isPointInRect(Vec3f, unkStruct15*);
+void func_800AE770(Rect *r,float x,float y,float z);
 Vec3f* Vec3f_Lerp(Vec3f*, Vec3f, Vec3f, f32);
 f32 func_800B2308(f32, s32);
 void func_800C8F00(void);

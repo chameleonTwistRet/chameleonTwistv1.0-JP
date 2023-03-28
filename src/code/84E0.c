@@ -212,12 +212,12 @@ void func_8002D644(s32 actorIndex, s32 actorID, f32 arg2, f32 arg3, f32 arg4, f3
     actorInstance->unk_12C = arg16;
     actorInstance->unk_130 = arg17;
     actorInstance->actorState = 0;
-    actorInstance->direction = 0.0f;
-    actorInstance->yVelocity = 0.0f;
-    actorInstance->unk_38 = 0.0f;
-    actorInstance->tXOffset = 0.0f;
-    actorInstance->tYOffset = 0.0f;
-    actorInstance->tZOffset = 0.0f;
+    actorInstance->vel.x = 0.0f;
+    actorInstance->vel.y = 0.0f;
+    actorInstance->vel.z = 0.0f;
+    actorInstance->tOffset.x = 0.0f;
+    actorInstance->tOffset.y = 0.0f;
+    actorInstance->tOffset.z = 0.0f;
     actorInstance->unk_94 = 0.0f;
     actorInstance->posOnTongue = 0;
     actorInstance->touched = 0;
@@ -660,7 +660,7 @@ void func_8002F884(s32 arg0, s32 arg1) {
 
 void func_8002F960(Tongue* arg0) {
     func_8002F884(PlayerPointer->playerID, 2);
-    func_80087ED0(16, 0, 0, 0, 0, 16);
+    PLAYSFX(16, 0, 0X10);
     arg0->wallTime = 10;
 }
 
@@ -811,8 +811,8 @@ void func_800382B4(f32* arg0, f32 arg1) {
 }
 
 void func_800382F4(Actor* arg0) {
-    arg0->direction = __cosf((arg0->unk_90 * 2 * D_8010B7A0) / D_8010B7A8) * arg0->unk_94;
-    arg0->unk_38 = -__sinf((arg0->unk_90 * 2 * D_8010B7B0) / D_8010B7B8) * arg0->unk_94;
+    arg0->vel.x = __cosf((arg0->unk_90 * 2 * D_8010B7A0) / D_8010B7A8) * arg0->unk_94;
+    arg0->vel.z = -__sinf((arg0->unk_90 * 2 * D_8010B7B0) / D_8010B7B8) * arg0->unk_94;
 }
 
 void func_800383A0(void) {
@@ -851,14 +851,14 @@ void func_80038990(Actor* bulletHellAntSpawnerActor) {
 
 s32 func_80038B98(Actor* arg0) {
     if (arg0->unk_98 != 0) {
-        arg0->yVelocity -= D_8010B7F8;
-        arg0->yVelocity -= arg0->yVelocity * D_8010B7FC;
+        arg0->vel.y -= D_8010B7F8;
+        arg0->vel.y -= arg0->vel.y * D_8010B7FC;
     }
     if (D_8017499C % 8 == 0) {
-        func_80087ED0(102, &arg0->pos.x, &arg0->pos.y, &arg0->pos.z, 1, 0);
+        PLAYSFXAT(102, arg0->pos, 1, 0);
     } 
     else if (D_8017499C % 8 == 4) {
-        func_80087ED0(101, &arg0->pos.x, &arg0->pos.y, &arg0->pos.z, 1, 0);
+        PLAYSFXAT(101, arg0->pos, 1, 0);
     }
     return 0;
 }
@@ -919,7 +919,7 @@ void func_8003A3F0(Actor* antQueenActor) {
 void func_8003B894(Actor* arg0) {
     normalizeDegrees(&arg0->unk_90);
     arg0->unk_94 = arg0->position._f32.x;
-    arg0->yVelocity = D_8010B9E8;
+    arg0->vel.y = D_8010B9E8;
     func_800382F4(arg0);
 }
 
@@ -1048,7 +1048,7 @@ void func_8003D998(Actor* arg0) {
 void func_8003DE04(Actor* actor) {
     actor->unk_134[0] = actor->pos.y;
     actor->pos.y -= 150.0f;
-    actor->yVelocity = 32.0f;
+    actor->vel.y = 32.0f;
     actor->unk_94 = actor->position._f32.x;
     func_800382F4(actor);
 }
@@ -1062,7 +1062,7 @@ void func_8003DFB4(Actor* vultureActor) {
     vultureActor->unk_134[2] = vultureActor->pos.z;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8003DFD0.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorInit_Vulture.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8003E224.s")
 
@@ -1099,11 +1099,11 @@ void func_8003E62C(Actor* armadilloActor) {
 }
 
 void func_8003E660(Actor* actor) {
-    f32 pad = actor->yVelocity;
+    f32 pad = actor->vel.y;
     f32 var1 = D_8010BB30;
-    actor->yVelocity -= var1;
-    if (actor->yVelocity < 0.0f) {
-        actor->yVelocity -= actor->yVelocity * (var1 / actor->unk_16C);
+    actor->vel.y -= var1;
+    if (actor->vel.y < 0.0f) {
+        actor->vel.y -= actor->vel.y * (var1 / actor->unk_16C);
         if (actor->pos.y < 1000.0f) {
             actor->unk_10C[0] = 6;
         }
@@ -1264,13 +1264,13 @@ void func_800425A4(Actor* arg0) {
     f32 temp_f0_2;
 
     func_80042174(arg0);
-    temp_f0_2 = __sqrtf((arg0->direction * arg0->direction) + (arg0->unk_38 * arg0->unk_38));
+    temp_f0_2 = __sqrtf(SQ(arg0->vel.x) + SQ(arg0->vel.z));
     arg0->unk_94 = temp_f0_2;
     arg0->unk_134[0] = ((180.0f * temp_f0_2) / ( arg0->unknownPositionThings[0].unk_0C * D_8010BE30)) + arg0->unk_134[0];
-    arg0->unk_90 = CalculateAngleOfVector(arg0->direction, -arg0->unk_38);
+    arg0->unk_90 = CalculateAngleOfVector(arg0->vel.x, -arg0->vel.z);
 }
 
-
+//(re)set bowling pins
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8004263C.s")
 
 // Bowling Ball Function: Elisiah
@@ -1286,8 +1286,8 @@ void func_80042AFC(Actor* bowlingBallActor) {
 
 // Bowling Pins Function: Elisiah
 void func_80042FB4(Actor* bowlingPinsActor) {
-    bowlingPinsActor->unk_90 = (f32) ((Rand() % 21) - 0x64);
-    bowlingPinsActor->unk_10C[1] = (Rand() % 21) + 0x1E;
+    bowlingPinsActor->unk_90 = (f32) ((Rand() % 21) - 100);
+    bowlingPinsActor->unk_10C[1] = (Rand() % 21) + 30;
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80043010.s")
@@ -1513,7 +1513,7 @@ void func_8004718C(Actor* spiderSpawnerActor){
 // Spider Function: Elisiah
 void func_80047350(Actor* spiderActor) {
     spiderActor->unk_98 = 1;
-    spiderActor->yVelocity = spiderActor->unk_160;
+    spiderActor->vel.y = spiderActor->unk_160;
     spiderActor->unk_94 = spiderActor->position._f32.x;
     func_800382F4(spiderActor);    // Sometimes calls with a arg0, sometimes calls empty?
 }
@@ -1590,14 +1590,14 @@ void func_800488C4(Actor* arg0) {
 
 void func_800488FC(Actor* arg0) {
     arg0->unk_134[3] += arg0->unk_94;
-    arg0->yVelocity -= D_8010C0F4;
+    arg0->vel.y -= D_8010C0F4;
     
     if (arg0->unk_98 == 0) {
         arg0->unk_98 = 1;
         arg0->pos.y = arg0->unknownPositionThings[0].unk_10 / 2;
-        arg0->yVelocity = arg0->position._f32.y * -arg0->yVelocity;
+        arg0->vel.y = arg0->position._f32.y * -arg0->vel.y;
         arg0->unk_94 *= D_8010C0F8;
-        func_80087ED0(0x8F, &arg0->pos.x, &arg0->pos.y, &arg0->pos.z, 0, 0);
+        PLAYSFXAT(0x8F, arg0->pos, 0, 0);
     }
     
     func_800382F4(arg0);
@@ -1696,25 +1696,25 @@ void func_80049AE4(Actor* battleModeSandCrabSpawnerActor){
 // Battle Mode Sand Crab Function: Elisiah
 void func_80049C34(Actor* battleModeSandCrabActor) {
     battleModeSandCrabActor->unk_94 = battleModeSandCrabActor->position._f32.x;
-    battleModeSandCrabActor->yVelocity = 32.0f;
+    battleModeSandCrabActor->vel.y = 32.0f;
     func_800382F4(battleModeSandCrabActor);
 }
 
 
 void func_80049C64(Actor* arg0) {
     if (arg0->unk_10C[1] == 0) {
-        if ((arg0->unk_98 == 0) && (arg0->yVelocity < 0.0f)) {
-            arg0->yVelocity = 0.0f;
+        if ((arg0->unk_98 == 0) && (arg0->vel.y < 0.0f)) {
+            arg0->vel.y = 0.0f;
             arg0->unk_10C[1] = 1;
             return;
         }
-        arg0->yVelocity -= D_8010C26C;
-        arg0->pos.y += arg0->yVelocity;
+        arg0->vel.y -= D_8010C26C;
+        arg0->pos.y += arg0->vel.y;
         return;
     }
     if (arg0->unk_98 != 0) {
-        arg0->yVelocity -= D_8010C270;
-        arg0->yVelocity -= arg0->yVelocity * D_8010C274;
+        arg0->vel.y -= D_8010C270;
+        arg0->vel.y -= arg0->vel.y * D_8010C274;
     }
 }
 
@@ -1767,8 +1767,8 @@ void func_8004A310(Actor* unk_5AActor) {
 // unk_5C: Auto-Decomp/Nathan R.
 void func_8004A31C(Actor* arg0) {
     if (arg0->unk_98 != 0) {
-        arg0->yVelocity -= D_8010C2B8;
-        arg0->yVelocity -= arg0->yVelocity * D_8010C2BC;
+        arg0->vel.y -= D_8010C2B8;
+        arg0->vel.y -= arg0->vel.y * D_8010C2BC;
         return;
     }
     func_800313BC(arg0->actorIndex, Random(0, 360));
@@ -1815,8 +1815,8 @@ void func_8004AC20(Actor* arg0) {
     f32 temp_f2;
 
     if (arg0->unk_10C[0] == 0) {
-        arg0->yVelocity -= (D_8010C318 + (arg0->yVelocity * D_8010C31C));
-        temp_f2 = arg0->pos.y + arg0->yVelocity;
+        arg0->vel.y -= (D_8010C318 + (arg0->vel.y * D_8010C31C));
+        temp_f2 = arg0->pos.y + arg0->vel.y;
         if (temp_f2 < 0.0f) {
             arg0->pos.y = 0.0f;
             arg0->unk_10C[0] = 1;
@@ -1834,18 +1834,18 @@ void func_8004AC8C(Actor* arg0) {
         }
     }
     else {
-        arg0->yVelocity -= (D_8010C320 + (arg0->yVelocity * D_8010C324));
-        if (arg0->pos.y + arg0->yVelocity < arg0->position._f32.x) {
+        arg0->vel.y -= (D_8010C320 + (arg0->vel.y * D_8010C324));
+        if (arg0->pos.y + arg0->vel.y < arg0->position._f32.x) {
             arg0->pos.y = arg0->position._f32.x;
             arg0->unk_10C[0] = 1;
             return;
         }
-        arg0->pos.y += arg0->yVelocity;
+        arg0->pos.y += arg0->vel.y;
     }
 }
 
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8004AD2C.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/Actors_Tick.s")
 
 //related to spawning collsion pieces
 void func_8004BA5C(s32 arg0) {
@@ -1854,7 +1854,7 @@ void func_8004BA5C(s32 arg0) {
     TonguePointer = gTongues;
     
     for (i = 0; i < arg0; i++) {
-        func_8004AD2C();
+        Actors_Tick();
     }
 }
 

@@ -28,4 +28,8 @@
 #define SEGMENT_OFFSET_CUSTOM(x)        (((u32)(x) & ~SEGMENT_MASK))
 #define SEGMENTED_TO_VIRTUAL(x)  (void*)(SEGMENT_OFFSET_CUSTOM(x) + D_80100F50[SEGMENT_INDEX(x)].base_address)
 
+//macros for simplifying the "play sound effect" calls
+#define PLAYSFX(id,arg4,flag) playSoundEffect(id,NULL,NULL,NULL,arg4,flag)
+#define PLAYSFXAT(id,pos,arg4,flag) playSoundEffect(id,&pos.x,&pos.y,&pos.z,arg4,flag)
+
 #endif

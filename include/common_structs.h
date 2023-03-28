@@ -39,6 +39,10 @@ typedef struct Color32{
     u8 a;
 }Color32;
 
+typedef struct Rect {
+    Vec3f min;
+    Vec3f max;
+} Rect;
 
 typedef struct playerActor {
     /* 0x000 */ u32 playerID;
@@ -166,22 +170,15 @@ typedef struct Tongue { // at 80169268 (for p1 at least lol)
     /* 0x608*/ u32 wallTime;//timer for tongue-touching a wall
 } Tongue; //sizeof 0x60C
 
-//struct names are based on offset into main struct, Collision which holds CollisionSubStruct
-typedef struct CollisionSubStruct {
-    /* 0x00 */ f32 unk_30;
-    /* 0x04 */ char unk_34[4];
-    /* 0x08 */ f32 unk_38;
-    /* 0x0C */ f32 unk_3C;
-    /* 0x10 */ char unk_40[4];
-    /* 0x14 */ f32 unk_44;
-} CollisionSubStruct;
+//struct names are based on offset into main struct, Collision which holds Rect
+
 
 typedef struct Collision {
     /* 0x00 */ s32 collisionType;
     /* 0x04 */ char pad4[0x14];                     /* maybe part of collisionType[6]? */
     /* 0x18 */ s32 unk18;
     /* 0x1C */ char pad1C[0x14];                    /* maybe part of unk18[6]? */
-    /* 0x30 */ CollisionSubStruct collisionSubStruct;
+    /* 0x30 */ Rect rect_30;
     /* 0x48 */ char pad48[0x30];                    /* maybe part of collisionSubStruct[3]? */
     /* 0x78 */ s32 unk78;
     /* 0x7C */ char pad7C[0x18];                    /* maybe part of unk78[7]? */
@@ -204,10 +201,13 @@ typedef struct unkStruct07 {
     s32 unk_10;
 } unkStruct07;
 
-typedef struct unkStruct08 {
+typedef struct CardinalDirection {
     /* 0x00 */ s32 unk0;
-    /* 0x04 */ char pad4[0x10];
-} unkStruct08; 
+    /* 0x04 */ s32 unk4;
+    /* 0x08 */ s32 unk8;
+    /* 0x0C */ const char* name;
+    /* 0x10 */ f32 angle;
+} CardinalDirection; 
 
 //camera 0x8016AA98
 //camera copy 0x801768A0
@@ -252,14 +252,6 @@ typedef struct unk_8010AA28 {
     s32 unk_0C;
 } unk_8010AA28; //sizeof 0x10
 
-typedef struct unk_80170968 {
-    /* 0x00 */  s32 unk_00;
-    /* 0x04 */  s32 unk_04;
-    /* 0x08 */  s32 unk_08;
-    /* 0x0C */  s32 unk_0C;
-    /* 0x10 */  s32 unk_10;
-    /* 0x14 */  s32 unk_14;
-} unk_80170968; //sizeof 0x18
 
 typedef struct actorSubArray { //starts at 0x40
     /* 0x00 */ f32 unk_00;
@@ -276,9 +268,7 @@ typedef struct Collider {
     /* 0x00C */ s32 unk_0C;
     /* 0x010 */ s32 unk_10;
     /* 0x014 */ s32 unk_14;
-    /* 0x018 */ f32 unk_18;
-    /* 0x01C */ f32 unk_1C;
-    /* 0x020 */ f32 unk_20;
+    /* 0x018 */ Vec3f sfxPos;
     /* 0x024 */ f32 unk_24;
     /* 0x028 */ s32 unk_28;
     /* 0x02C */ s32 unk_2C;
@@ -347,33 +337,19 @@ typedef struct unk802000C84 {
     /* 0x05 */ s8 unk5;
 } unk802000C84; //sizeof 0x06 (unk size)
 
-typedef struct unk8016AA98 {
-    /* 0x00 */ char pad0[0x28];
-    /* 0x28 */ f32 unk28;                           /* inferred */
-    /* 0x2C */ f32 unk2C;                           /* inferred */
-    /* 0x30 */ f32 unk30;                           /* inferred */
-    /* 0x34 */ Vec3f unk34;                           /* inferred */
-    /* 0x40 */ char pad40[0x34];                    /* maybe part of unk3C[0xE]? */
-} unk8016AA98; //sizeof 0x74
-
+//struct for saveGame data?
 typedef struct unkStruct09 {
 char unk_00[0x84];
 } unkStruct09; //sizeof 0x84
 
-typedef struct unkStruct10 {
-    /* 0x00 */ f32 unk_00;
-    /* 0x04 */ f32 unk_04;
-    /* 0x08 */ f32 unk_08;
-    /* 0x0C */ f32 unk_0C;
-    /* 0x10 */ f32 unk_10;
-    /* 0x14 */ f32 unk_14;
-} unkStruct10; //sizeof 0x1C
+
 
 typedef struct unkStruct14 {
 /* 0x00 */ char unk_00[0x38];
 /* 0x38 */ s32 unk_38;
 } unkStruct14;
 
+// this is probably a Rect, but for whatever reason, replacing it causes a mismatch.
 typedef struct unkStruct15 {
     /* 0x00 */ f32 unk_00;
     /* 0x04 */ f32 unk_04;
@@ -383,7 +359,7 @@ typedef struct unkStruct15 {
     /* 0x14 */ f32 unk_14;
     /* 0x18 */ f32 unk_18;
 } unkStruct15; //sizeof 0x18
-
+//SaveGame data?
 typedef struct unkFlags {
 /* 0x00 */ u8 flags0[4];
 /* 0x04 */ s32 unk_04;
@@ -458,10 +434,6 @@ typedef struct unk801FCA20 {
     /* 0x04 */ s32 unk_04;
 } unk801FCA20; //sizeof 0x8
 
-typedef struct unk801FCA44 {
-    /* 0x00 */ s32 unk_00;
-    /* 0x04 */ s32 unk_04;
-} unk801FCA44; //sizeof 0x8
 
 typedef struct unk800FF624 {
     /* 0x00 */ s32 unk_00;
@@ -485,10 +457,6 @@ typedef struct unkStruct0 {
     /* 0x20 */ s32 unk_20;
 } unkStruct0; //sizeof 0x24
 
-typedef struct Rect {
-    Vec3f min;
-    Vec3f max;
-} Rect;
 
 typedef struct Poly {
     /* 0x00 */ s32 unk_00;
@@ -525,14 +493,10 @@ typedef struct Actor {
     /* 0x01C */ s32 tongueBumpSeg; //the segment at which the tongue was bumped back
     /* 0x020 */ s32 eaten;//0 == false. 1 == true. does not reset.
     /* 0x024 */ Vec3f pos;
-    /* 0x030 */ f32 direction;
-    /* 0x034 */ f32 yVelocity;
-    /* 0x038 */ f32 unk_38;//sEEMS like its forward impulse?
+    /* 0x030 */ Vec3f vel;
     /* 0x03C */ f32 tScale;
     /* 0x040 */ f32 tYPos;
-    /* 0x044 */ f32 tXOffset;
-    /* 0x048 */ f32 tYOffset;
-    /* 0x04C */ f32 tZOffset;
+    /* 0x044 */ Vec3f tOffset;
     /* 0x050 */ s32 tongueCollision; //tongue collision enum. 0 == none. 1 == toungable.
 
     /* 0x054 */ actorSubArray unknownPositionThings[3]; //usually 2?
@@ -724,21 +688,11 @@ typedef struct bf8{
     /* 0x08 */ s16 unk8;
 } bf8; //sizeof 0xC
 
-typedef struct what{
-    /* 0x00 */ f32 unk0;
-    /* 0x04 */ f32 unk4;
-    /* 0x08 */ f32 unk8;
-    /* 0x0C */ f32 unkC;
-} what; //sizeof 0x10
 
 typedef struct unkStruct {
     /* 0x00 */ s32 unk_00;
     /* 0x04 */ char unk_04[0x104];
 } unkStruct; //sizeof 0x108
-
-typedef struct unk_func_800A1F3C {
-    /* 0x00 */ char unk_00[0x28];
-} unk_func_800A1F3C; //sizeof 0x28
 
 typedef struct unk0 {
     /* 0x00 */ char pad0[0x20];

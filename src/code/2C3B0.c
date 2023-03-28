@@ -40,7 +40,7 @@ void func_80050FB0(void) {
 
 void func_8005171C(void) {
     if ((currentZone == 6) && ((D_800F0B50 % 60) == 0)) {
-        func_80087ED0(137, 0, 0, 0, 0, 16);
+        PLAYSFX(137, 0, 0X10);
     }
 }
 

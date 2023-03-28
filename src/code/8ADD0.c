@@ -2,8 +2,8 @@
 
 extern s16 gTotalCarrots;
 extern unkStruct07 D_802019A8[];
-extern Collision D_80240CE0[];
-extern unkStruct08 D_80108AF8[];
+extern Collision gZoneCollisions[];
+extern CardinalDirection gCardinalDirections[5]; // including "NO_DIR"
 
 void func_800C2A00(void);
 void func_800CFDC8(playerActor*);
@@ -58,6 +58,7 @@ void func_800B09C0(s32 arg0, f32* arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B1DD4.s")
 
+//fake match - unkStruct15 = Rect, addresses are to gPlayerActors[0]. mismatches when resolved.
 void func_800B2070(s32 arg0) {
     unkStruct15 sp24;
     Vec3f sp18;
@@ -71,7 +72,7 @@ void func_800B2070(s32 arg0) {
     sp18.x = gPlayerActors->pos.x;
     sp18.y = gPlayerActors->pos.y;
     sp18.z = gPlayerActors->pos.z;
-    if ((gPlayerActors->squishTimer == 0) && (D_80168DFC == 0) && (func_800AE9E0(sp18, &sp24) != 0)) {
+    if ((gPlayerActors->squishTimer == 0) && (D_80168DFC == 0) && (isPointInRect(sp18, &sp24) != 0)) {
         D_80168E14 = 1;
     }
 }
@@ -143,10 +144,10 @@ s32 isPickup(Actor* actor) {
     return (actor->actorID >= R_Heart ) ? 1 : 0;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B22AC.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/isBossID.s")
 
-void func_800B22E8(s32* arg0) {
-    func_800B22AC(*arg0);
+s32 isBossActor(s32* arg0) {
+    return isBossID(*arg0);
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B2308.s")
@@ -169,9 +170,9 @@ Vec3f* func_800B2470(Vec3f* arg0, Vec3f arg1, Vec3f arg4, f32 arg7, s32 arg8) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B2B50.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B2BBC.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/Vec3f_SetAtBossPos.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B2C58.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/isBossPresent.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B2CC0.s")
 
@@ -386,8 +387,8 @@ void setCrownPositionsForRoom(s32 arg0) {
     unkStruct07* var_s0;
     s32 new_var;
     
-    temp_s3 = D_80240CE0[arg0].unk18;
-    var_s0 = &D_802019A8[D_80240CE0[arg0].unk78];
+    temp_s3 = gZoneCollisions[arg0].unk18;
+    var_s0 = &D_802019A8[gZoneCollisions[arg0].unk78];
     
     for (i = 0; i < temp_s3; i++, var_s0++) {
         new_var = var_s0->unk_00;
@@ -688,8 +689,8 @@ void func_800BF5A4(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C0274.s")
 
-s32 GetDirectionName(s32 arg0) {
-    return D_80108AF8[arg0].unk0;
+const char* GetDirectionName(s32 arg0) {
+    return gCardinalDirections[arg0].name;
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/CalcDoorInfo.s")

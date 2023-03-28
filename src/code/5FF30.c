@@ -86,18 +86,18 @@ void func_80084FC0(s32 arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80084FF4.s")
 
 //os
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800851C0.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/Audio_Dma.s")
 
 //os
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80085290.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80085364.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800853B4.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/Audio_InitOsc.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008568C.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/Audio_UpdateOsc.s")
 
-void func_80085C08(struct UnkList* arg0) {
+void Audio_stopOsc(struct UnkList* arg0) {
     arg0->unk0 = D_80200060.unk0;
     D_80200060.unk0 = arg0;
 }
@@ -191,7 +191,7 @@ s32 func_80087358(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80087E60.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80087ED0.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/playSoundEffect.s")
 
 void func_80087FA4(u32 arg0) {
     D_800FF5E8 = arg0;
@@ -308,10 +308,10 @@ s32 func_8008873C(s32 arg0, s32 arg1, s32 arg2) {
 void func_8008A208(void) {
     if (D_80236974 == 0) {
         if (D_8020005A == 1) {
-            func_8008BD98(1);
+            playBGM(1);
         }
     } else if (((s32) D_8017499C % 300) == 0x12B) {
-        func_80087ED0(Random(0, 5) + 0x4F, NULL, NULL, NULL, 1, 0x10);
+        PLAYSFX(Random(0, 5) + 0x4F, 1, 0x10);
     }
     D_8020005A = D_80236974;
 }
@@ -401,8 +401,8 @@ s32 func_8008BA58(void) {
     }
     
     D_800FF624.unk_00 = D_800FF620;
-    sp24 = D_801FCA44[D_800FF624.unk_00 + 1].unk_00; //is this correct?
-    devAddr = D_801FCA44[D_800FF624.unk_00].unk_04;
+    sp24 = D_801FCA44->seqArray[D_800FF624.unk_00].len; 
+    devAddr = D_801FCA44->seqArray[D_800FF624.unk_00].offset;
     
     if (sp24 & 1) {
         sp24 += 1;
@@ -422,8 +422,8 @@ s32 func_8008BA58(void) {
     return 1;
 }
 
-s32 func_8008BD98(s32 arg0) {
-    if ((arg0 >= (s16)D_801FCA44->unk_00) || (arg0 < 0)) {
+s32 playBGM(s32 arg0) {
+    if ((arg0 >= D_801FCA44->seqCount) || (arg0 < 0)) {
         return -1;
     }
     if (D_800FF614->state == 1) {
@@ -529,26 +529,26 @@ void func_8008C1C8(s32* arg0) {
 }
 
 void func_8008C330(s32 arg0) {
-    func_8008BD98(D_800FF854[arg0]);
+    playBGM(D_800FF854[arg0]);
 }
 
 void func_8008C35C(s32 arg0) {
 
 }
 
-s32 func_8008C364(Actor* arg0, s32 arg1, s32 arg2, s32 arg3) {
+s32 func_8008C364(Actor* arg0, s32 sfxID, s32 arg2, s32 arg3) {
     s32 var_v0;
 
     if (gameModeCurrent == 7) {
-        var_v0 = func_80087ED0(arg1, 0, 0, 0, 1, 0x10);
+        var_v0 = PLAYSFX(sfxID, 1, 0x10);
     } else {
-        var_v0 = func_80087ED0(arg1, &arg0->pos.x, &arg0->pos.y, &arg0->pos.z, 0, 0);
+        var_v0 = PLAYSFXAT(sfxID, arg0->pos, 0, 0);
     }
     return var_v0;
 }
 
-void func_8008C3F0(Actor* arg0, s32 arg1, s32 arg2) {
-    func_80087ED0(arg1, &arg0->pos.x, &arg0->pos.y, &arg0->pos.z, 1, 0);
+void func_8008C3F0(Actor* arg0, s32 sfxID, s32 arg2) {
+    PLAYSFXAT(sfxID, arg0->pos, 1, 0);
 }
 
 s32 func_8008C438(void) {
@@ -1987,7 +1987,7 @@ void func_800AAB0C(s32 arg0) {
     DMAStruct_Print();
     loadStageByIndex(arg0);
     DMAStruct_Print();
-    _bzero(gPlayerActors, sizeof(gPlayerActors)); //sizeof 4 player actors
+    _bzero(gPlayerActors, sizeof(gPlayerActors));
     _bzero(&gCamera[0], sizeof(Camera));
     D_80168DA0 = 1;
     gPlayerActors[0].active = 1;
@@ -2064,9 +2064,38 @@ void func_800AAB0C(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800AE690.s")
 
+//clamp rect to x/y/z
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800AE770.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800AE82C.s")
+/*
+void func_800AE770(Rect *r,float x,float y,float z){
+  if (x < r->min.x) {
+    r->min.x = x;
+  }
+  else if (x > r->max.x) {
+    r->max.x = x;
+  }
+  if (y < r->min.y) {
+    r->min.y = y;
+  }
+  else if (y>r->max.y) {
+    r->max.y = y;
+  }
+  if (z < r->min.z) {
+    r->min.z = z;
+  }
+  else if (z>r->max.z) {
+    r->max.z = z;
+  }
+}*/
+// expand Rect r by s.
+void Rect_Expand(Rect* r, f32 s){
+    r->min.x -= s;
+    r->min.y -= s;
+    r->min.z -= s;
+    r->max.x += s;
+    r->max.y += s;
+    r->max.z += s;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800AE87C.s")
 
@@ -2097,8 +2126,30 @@ s32 ifRectsIntersect(Rect* arg0, Rect* arg1) {
     }
     return 1;
 }
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800AE9E0.s")
+/*
+s32 isPointInRect(Vec3f v, Rect* r){
+if ((f64) r->max.x < (f64) v.x) {
+        return 0;
+    }
+    if ((f64) v.x < (f64) r->min.x) {
+        return 0;
+    }
+    if ((f64) r->max.y < (f64) v.y) {
+        return 0;
+    }
+    if ((f64) v.y < (f64) r->min.y) {
+        return 0;
+    }
+    if ((f64) r->max.z < (f64) v.z) {
+        return 0;
+    }
+    if ((f64) v.z < (f64) r->min.z) {
+        return 0;
+    }
+    return 1;
+}*/
+//is point in Rect
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/isPointInRect.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800AEAA8.s")
 

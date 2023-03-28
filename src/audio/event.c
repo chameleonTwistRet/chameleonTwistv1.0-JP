@@ -8,4 +8,4 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/audio/event/alEvtqNextEvent.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/audio/event/func_800E850C.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/audio/event/alEvtqNew.s")

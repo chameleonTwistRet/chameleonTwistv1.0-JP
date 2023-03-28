@@ -10,8 +10,8 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/audio/reverb/func_800ED854.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/audio/reverb/func_800EDA78.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/audio/reverb/alFxParamHdl.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/audio/reverb/func_800EDCD4.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/audio/reverb/alFxParam.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/audio/reverb/func_800EDCEC.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/audio/reverb/alFxPull.s")
