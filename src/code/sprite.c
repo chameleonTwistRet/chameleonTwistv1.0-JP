@@ -532,7 +532,22 @@ aa1* aa1_Alloc(s32 arg0, s32 arg1, void* arg2) {
     return var_a1;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/aa1_Free.s")
+void aa1_Free(aa1* arg0) {
+    aa1* temp_v0 = arg0->previous;
+    if (temp_v0 != NULL) {
+        temp_v0->next = arg0->next;
+    }
+    if (arg0->next != NULL) {
+        arg0->next->previous = arg0->previous;
+    }
+    if (arg0 == g_aa1_head) {
+        g_aa1_head = arg0->previous;
+    }
+    func_80056F24(arg0->unk_3C);
+    func_80056F24(arg0->unk_38);
+    func_80056F24(arg0);
+    g_aa1_Count -= 1;
+}
 
 void aa1_InitHead(void) {
     g_aa1_head = &D_80176F00;
