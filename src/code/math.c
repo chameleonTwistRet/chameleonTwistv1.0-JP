@@ -6,11 +6,12 @@ extern f32 D_80108D78[64];
 extern f32 D_80108E7C[];
 extern s32 gFixedSeedIndex;
 
-/*
+/**
  * Random: Returns a random integer between min and max, inclusive.
  * <NB> Uses a fixed seed if UseFixedRNGSeed is TRUE or guRandom() if FALSE.
  *      @param min: Minimum value to return
  *      @param max: Maximum value to return
+ * 
  *      @return: A random integer between min and max, inclusive
  */
 
@@ -31,17 +32,16 @@ s32 Random(s32 min, s32 max) {
     return randVal;
 }
 
-/*
+/**
  * RandomF: Returns a random float between 0 and 1 by calling Random().
  *      @return A random float between 0 and 1 
  */
 
 f32 RandomF(void) {
-    // Returns a random float between 0 and 1
     return Random(0, 0xFFFF) / 65535.0f;
 }
 
-/*
+/**
  * tanf: Returns the tangent of x.
  *      @param x: the angle
  *      @return: the tangent of x or 0 if the tangent is undefined
@@ -63,6 +63,12 @@ f32 tanf(f32 x) {
 
     return tan_x;
 }
+
+/**
+ * InterpolateAndClampArcSin: Interpolates and clamps the inverse sin of a given float value.
+ *      @param x The value to calculate the arcsine of.
+ *      @return The interpolated and clamped arcsine of the input value.
+ */
 
 f32 InterpolateAndClampArcSin(f32 x) {
     f32* table;
@@ -112,9 +118,24 @@ f32 InterpolateAndClampArcSin(f32 x) {
     return (((1.0f - t) * entry1) + (t * entry2)) * sign;
 }
 
+/**
+ * AngleFromArcSin: Calculates the angle s.t. sin(angle) = x.
+ *      @param x: The value to calculate the angle of.
+ * 
+ *      @return: The angle s.t. sin(angle) = x.
+ */
+
 f32 AngleFromArcSin(f32 x) {
     return 90.0 - InterpolateAndClampArcSin(x);
 }
+
+/**
+ * CalculateAngleOfVector: Calculates the angle of a 2-dim vector.
+ *      @param x: The x component of the vector
+ *      @param y: The y component of the vector
+ * 
+ *      @return: The angle of the vector (probably in degrees)
+ */
 
 f32 CalculateAngleOfVector(f32 x, f32 y) {
     s32 pad[2];
