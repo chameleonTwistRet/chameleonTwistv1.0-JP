@@ -102,7 +102,7 @@ void func_800D8918(Collider* arg0, s32 sfxID, s32 arg2, f32 arg3, f32 arg4, f32 
             sp34.y = D_80168DB0;
             sp34.x = (sp44 + var_f12) * SQROOT_2_DIV_2;
             sp34.x = arg3 + sp34.x;
-            func_80088698(func_80087ED0(sfxID, &sp34.z, &sp34.y, &sp34.x, 8, 0));
+            func_80088698(playSoundEffect(sfxID, &sp34.z, &sp34.y, &sp34.x, 8, 0));
         }
     }
 }
@@ -156,7 +156,7 @@ void func_800D8B28(Collider* arg0, s32 sfxID, s32 arg2, f32 arg3, f32 arg4, f32 
             sp30.z = arg4 + sp40;
             sp30.y = D_80168DB0;
             sp30.x = arg3 + sp3C;
-            func_80088698(func_80087ED0(sfxID, &sp30.z, &sp30.y, &sp30.x, 0, 0));
+            func_80088698(playSoundEffect(sfxID, &sp30.z, &sp30.y, &sp30.x, 0, 0));
         }
     }
 }

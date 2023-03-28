@@ -91,11 +91,11 @@ void func_80084FC0(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80085364.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800853B4.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/Audio_InitOsc.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008568C.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/Audio_UpdateOsc.s")
 
-void func_80085C08(struct UnkList* arg0) {
+void Audio_stopOsc(struct UnkList* arg0) {
     arg0->unk0 = D_80200060.unk0;
     D_80200060.unk0 = arg0;
 }
@@ -189,7 +189,7 @@ s32 func_80087358(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80087E60.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80087ED0.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/playSoundEffect.s")
 
 void func_80087FA4(u32 arg0) {
     D_800FF5E8 = arg0;
@@ -2057,17 +2057,38 @@ void func_800AAB0C(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800AE690.s")
 
+//clamp rect to x/y/z
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800AE770.s")
-
-void func_800AE82C(Rect* r, f32 s){
-    r->min.x-=s;
-    r->min.y-=s;
-    r->min.z-=s;
-    r->max.x+=s;
-    r->max.y+=s;
-    r->max.z+=s;
+/*
+void func_800AE770(Rect *r,float x,float y,float z){
+  if (x < r->min.x) {
+    r->min.x = x;
+  }
+  else if (x > r->max.x) {
+    r->max.x = x;
+  }
+  if (y < r->min.y) {
+    r->min.y = y;
+  }
+  else if (y>r->max.y) {
+    r->max.y = y;
+  }
+  if (z < r->min.z) {
+    r->min.z = z;
+  }
+  else if (z>r->max.z) {
+    r->max.z = z;
+  }
+}*/
+// expand Rect r by s.
+void Rect_Expand(Rect* r, f32 s){
+    r->min.x -= s;
+    r->min.y -= s;
+    r->min.z -= s;
+    r->max.x += s;
+    r->max.y += s;
+    r->max.z += s;
 }
-//#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800AE82C.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800AE87C.s")
 
@@ -2099,8 +2120,7 @@ s32 ifRectsIntersect(Rect* arg0, Rect* arg1) {
     return 1;
 }
 /*
-//is point in Rect
-s32 func_800AE9E0(Vec3f v, Rect* r){
+s32 isPointInRect(Vec3f v, Rect* r){
 if ((f64) r->max.x < (f64) v.x) {
         return 0;
     }
@@ -2121,8 +2141,8 @@ if ((f64) r->max.x < (f64) v.x) {
     }
     return 1;
 }*/
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800AE9E0.s")
+//is point in Rect
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/isPointInRect.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800AEAA8.s")
 

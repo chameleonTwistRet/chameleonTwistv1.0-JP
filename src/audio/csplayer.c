@@ -16,4 +16,4 @@ void func_800DDA54(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/audio/csplayer/func_800DDA5C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/audio/csplayer/func_800DE070.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/audio/csplayer/alCSPNew.s")

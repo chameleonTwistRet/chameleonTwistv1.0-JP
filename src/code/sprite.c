@@ -1228,10 +1228,10 @@ void func_8007DFDC(f32 arg0, f32 arg1, f32 arg2, f32 arg3) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8007E5E8.s")
 
 void func_8007E684(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4) {
-    D_800FEBD4.unk0 = arg0;
-    D_800FEBD4.unk4 = arg1;
-    D_800FEBD4.unk8 = arg2;
-    D_800FEBD4.unkC = arg3;
+    D_800FEBD4.x = arg0;
+    D_800FEBD4.y = arg1;
+    D_800FEBD4.z = arg2;
+    D_800FEBD4.yaw = arg3;
     D_80176F50 = arg4;
 }
 

@@ -2,7 +2,7 @@
 
 extern f64 D_801104F8;
 extern s32 D_80236974;
-extern Collision D_80240CE0[];
+extern Collision gZoneCollisions[];
 extern Collider D_80236980[128];
 extern char D_801103D0[];
 extern s32 D_8020D8F4;
@@ -17,8 +17,8 @@ void func_800D6864(playerActor*, Tongue*, Camera*, Vec3f*, Vec3f*);
 void func_800D69D0(s32, playerActor*, Tongue*, Camera*, Vec3f*, Vec3f*, s32);
 Collider* func_800CAF88(Vec3f, f32, f32);
 Collider* SearchPolygonBetween(Vec3f, Vec3f, s32, s32, s32);
-void func_800AE87C(unkStruct10*);
-void func_800C9748(unkStruct10*, s32, s32);
+void func_800AE87C(Rect*);
+void func_800C9748(Rect*, s32, s32);
 void func_800CA734(Vec3f*, Vec3f, f32, s32);
 void func_800CBC08(Actor*);
 void func_800CC814(Actor*, Vec3f, s32);
@@ -215,7 +215,7 @@ void func_800CFF64(playerActor* player) {
 //                 arg0->z = arg0->z * temp_f0_2;
 //             }
 //         } else {
-//             temp_v0 = &D_80240CE0[currentZone].collisionSubStruct;
+//             temp_v0 = &gZoneCollisions[currentZone].collisionSubStruct;
             
 //             if (temp_v0->unk_30 > arg0->x ) {
 //                 arg0->x = temp_v0->unk_30;
@@ -283,7 +283,7 @@ Vec3f* func_800D00DC(Vec3f* arg0, Collider* arg1) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800D44C8.s")
 
 void func_800D4550(s32 arg0, s32 arg1, Poly* arg2, Vec3f* arg3, Vec3f* arg4) {
-    Collision* temp_v0 = &D_80240CE0[currentZone];
+    Collision* temp_v0 = &gZoneCollisions[currentZone];
 
     arg3->x = temp_v0->unkA4;
     arg3->y = temp_v0->unkA8 + (temp_v0->unkD0 * arg2->x);
@@ -308,7 +308,7 @@ void func_800D4550(s32 arg0, s32 arg1, Poly* arg2, Vec3f* arg3, Vec3f* arg4) {
 void func_800D6864(playerActor* arg0, Tongue* arg1, Camera* arg2, Vec3f* arg3, Vec3f* arg4) {
     Collision* collider;
 
-    collider = &D_80240CE0[currentZone];
+    collider = &gZoneCollisions[currentZone];
     arg3->x = arg2->f1.z;
     arg3->y = arg2->f2.x + (collider->unkD0 * arg2->size1);
     arg3->z = arg2->f2.y;
@@ -334,7 +334,7 @@ void ApplyRotationToVector(Vec3f* arg0, Vec3f* arg1, f32 arg2) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800D69D0.s")
 
 void SetCameraParameters(void) {
-    Collision* temp = &D_80240CE0[currentZone];
+    Collision* temp = &gZoneCollisions[currentZone];
     Camera* cam;
     s32 pad;
     s32 i;
@@ -368,17 +368,17 @@ void SetCameraParameters(void) {
 }
 
 void func_800D71E8(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5) {
-    unkStruct10 sp18;
+    Rect r;
 
-    sp18.unk_00 = arg0;
-    sp18.unk_0C = arg1;
-    sp18.unk_04 = arg2;
-    sp18.unk_08 = arg4;
-    sp18.unk_10 = arg3;
-    sp18.unk_14 = arg5;
+    r.min.x = arg0;
+    r.max.x = arg1;
+    r.min.y = arg2;
+    r.min.z = arg4;
+    r.max.y = arg3;
+    r.max.z = arg5;
     
-    func_800AE87C(&sp18);
-    func_800C9748(&sp18, 0x77, 2);
+    func_800AE87C(&r);
+    func_800C9748(&r, 0x77, 2);
 }
 
 s32 func_800D7248(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32* arg5, f32* arg6, f32* arg7) {

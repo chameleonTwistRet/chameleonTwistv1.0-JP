@@ -99,7 +99,7 @@ extern u8 D_800FEBC4;
 extern u8 D_800FEBC8;
 extern u8 D_800FEBCC;
 extern f32 D_800FEBD0;
-extern what D_800FEBD4;
+extern Vec4f D_800FEBD4;
 extern s32 D_800FF5D0;
 extern s32 D_800FF5E4;
 extern s32 D_800FF5E8;

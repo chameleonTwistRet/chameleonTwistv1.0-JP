@@ -29,20 +29,12 @@ extern s8 D_800FF8E4;
 extern s32 D_80174980;
 extern s32 D_801749AC;
 
-extern OSTask D_800F04E0[];
+extern OSTask D_800F04E0[2];
 extern Gfx D_80129720[];
 
 extern OSMesgQueue D_801192D0;
 extern OSMesgQueue D_801192E8;
 
-typedef struct temp {
-/* 0x00 */ char unk_00[0x24];
-/* 0x24 */ f32 unk_24;
-/* 0x28 */ f32 unk_28;
-/* 0x2C */ f32 unk_2C;
-/* 0x30 */ char unk_30[0x24];
-/* 0x54 */ f32 unk_54;
-} temp;
 
 void func_80059254(Mtx*, f32, f32, f32, f32, f32, f32, s32);
 void func_800598C4(Mtx*, f32, f32, f32, f32, f32, f32, s32);
@@ -86,8 +78,8 @@ void func_80025EE8(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/1050/func_80025EF0.s")
 
-s32 func_80026C78(temp* arg0) {
-    return 1 - func_800AF604(arg0->unk_24, arg0->unk_28, arg0->unk_2C, 8000.0f);
+s32 func_80026C78(Actor* arg0) {
+    return 1 - func_800AF604(arg0->pos.x, arg0->pos.y, arg0->pos.z, 8000.0f);
 }
 
 typedef struct unkMatrix {

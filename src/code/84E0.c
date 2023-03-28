@@ -1062,7 +1062,7 @@ void func_8003DFB4(Actor* vultureActor) {
     vultureActor->unk_134[2] = vultureActor->pos.z;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8003DFD0.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorInit_Vulture.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8003E224.s")
 
@@ -1845,7 +1845,7 @@ void func_8004AC8C(Actor* arg0) {
 }
 
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8004AD2C.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/Actors_Tick.s")
 
 //related to spawning collsion pieces
 void func_8004BA5C(s32 arg0) {
@@ -1854,7 +1854,7 @@ void func_8004BA5C(s32 arg0) {
     TonguePointer = gTongues;
     
     for (i = 0; i < arg0; i++) {
-        func_8004AD2C();
+        Actors_Tick();
     }
 }
 
