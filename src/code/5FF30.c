@@ -38,6 +38,8 @@ extern unkStruct05* D_80200050;
 extern char D_8010EFD8[];
 extern char D_8010EDB8[];
 extern char D_8010F084[];
+extern char D_8010DB04[];
+extern char D_8010DB10[];
 
 void* func_8008CF6C(s32, s32, s32);
 void func_800A96DC(tempStruct1*);
@@ -752,7 +754,12 @@ void func_8008EF78(unkStruct06* arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008FC34.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008FD04.s")
+void func_8008FD04(s32 arg0) {
+    DummiedPrintf(D_8010DB04, gameModeCurrent, D_800FFEB8);
+    D_800FFEB8 = 0;
+    gameModeCurrent = arg0;    
+    DummiedPrintf(D_8010DB10, gameModeCurrent, D_800FFEB8);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008FD68.s")
 

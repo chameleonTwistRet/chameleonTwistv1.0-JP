@@ -4,7 +4,7 @@ Gfx* func_8002C4E8(Gfx*, s32, s32);
 
 
 
-void func_8002CB6C(Gfx*, void*, s32);
+void func_8002CB6C(Gfx*, Gfx*, s32);
 void func_8002CBE8(s32);
 void func_8002CDBC(contMain*);
 void func_8004BC48(contMain*);
@@ -227,7 +227,7 @@ void Video_SetTask(Gfx* arg0, Gfx* arg1, s32 arg2) {
     task->data_size = (((s32)arg1 - (s32)arg0) >> 3) << 3;
 }
 
-void func_8002CB6C(Gfx* arg0, void* arg1, s32 arg2) {
+void func_8002CB6C(Gfx* arg0, Gfx* arg1, s32 arg2) {
 
     if (D_80174998 < 3) {
         arg0 = func_8002CAC8(arg1, arg2);
@@ -316,7 +316,7 @@ void func_8002CE54(void) {
     D_800F066C++;
     func_8002CD94(D_800F066C);
     Controller_StartRead();
-    func_8002CB6C(0, &D_80129770[D_800F0668], D_800F0668);
+    func_8002CB6C(0, (Gfx*)&D_80129770[D_800F0668], D_800F0668);
     
     for (i = 0; i < 4; i++) {
         Controller_Zero(&sp28[i]);
