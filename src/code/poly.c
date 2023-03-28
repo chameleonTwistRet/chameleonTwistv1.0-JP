@@ -112,7 +112,7 @@ s32 ifPolyBoundIntersectsRect(Poly* poly, Rect* rect) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800CC2F4.s")
 
 void func_800CC7E0(Vec3f arg0) {
-    CalculateAngleBetweenVectors(arg0.x, -arg0.z);
+    CalculateAngleOfVector(arg0.x, -arg0.z);
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800CC814.s")

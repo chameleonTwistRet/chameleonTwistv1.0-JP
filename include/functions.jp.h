@@ -425,7 +425,7 @@ void func_800C56D4(playerActor*);
 void func_800C88AC(void);
 s32 Random(s32, s32);
 f32 RandomF(void);
-f32 CalculateAngleBetweenVectors(f32, f32);
+f32 CalculateAngleOfVector(f32, f32);
 f32 InterpolateAndClampArcSin(f32);
 f32 AngleFromArcSin(f32);
 void func_800B35FC(s32);
