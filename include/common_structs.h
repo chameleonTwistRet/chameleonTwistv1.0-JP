@@ -413,11 +413,13 @@ typedef struct tempStruct {
     /* 0x3C */ Vec3f unk_3C;
 } tempStruct; //sizeof 0x48
 
-typedef struct tempStruct1 {
+typedef struct CTTask { // interally referred to as "S_task"
     /* 0x00 */ s32 unk_00;
     /* 0x04 */ s32 unk_04;
-    /* 0x08 */ void (*function)(struct tempStruct1*);
-    /* 0x0C */ char padC[0x48];                     /* maybe part of function[0x13]? */
+    /* 0x08 */ void (*function)(struct CTTask*);
+    /* 0x0C */ struct CTTask* next; 
+    /* 0x10 */ struct CTTask* unk_10; //prev?
+    /* 0x14 */ char pad14[0x40];                     /* maybe part of function[0x13]? */
     /* 0x54 */ u8 unk54;                            /* inferred */
     /* 0x55 */ char pad55[7];                       /* maybe part of unk54[8]? */
     /* 0x5C */ s16 unk_5C;
@@ -427,7 +429,9 @@ typedef struct tempStruct1 {
     /* 0x66 */ char pad66[2];
     /* 0x68 */ s16 unk_68;
     /* 0x6A */ char pad6A[2];
-} tempStruct1;                                      /* size = 0x6C */
+    /* 0x6C */ char unk6C[0x18];
+    /* 0x94 */ char str[20];
+} CTTask;                                      /* size = 0xA8 */
 
 typedef struct unk801FCA20 {
     /* 0x00 */ s32 unk_00;
@@ -614,13 +618,6 @@ typedef struct unkStruct05 {
     /* 0x5D */ u8 unk_5D;
     /* 0x5E */ u8 unk_5E[2];
 } unkStruct05;
-
-typedef struct unkStruct06 {
-    /* 0x00 */ s16 unk0;                            /* inferred */
-    /* 0x02 */ char pad2[0xA];                      /* maybe part of unk0[6]? */
-    /* 0x0C */ struct unkStruct06* next;
-    /* 0x10 */ struct unkStruct06* unk_10;
-} unkStruct06; //sizeof 0x14(?)
 
 //5FF30
 //linked list probably, heap related?
