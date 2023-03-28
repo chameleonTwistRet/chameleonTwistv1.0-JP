@@ -684,7 +684,7 @@ aa1* func_80065CAC(f32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_800662D4.s")
 
-//https://decomp.me/scratch/GHZZV
+//https://decomp.me/scratch/eFSCQ
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80066374.s")
 
 //https://decomp.me/scratch/xl76w
