@@ -507,12 +507,79 @@ segments:
   - [0xA4F468, ci8, img/....QuestionMark.ci8, 112, 24] # "....?" image from file select
   - [0xA4FEE8, bin] #endDL command from rgb2c
   - [0xA4FEF0, palette, img/....QuestionMark.ci8]
-  - [0xA500F0, bin]
+  - [0xA500F0, bin] #endDL command from rgb2c
 
-  - [0xAB10B0, bin] # loaded in func_800AAB0C to *D_80200C8C. 0x42B0 bytes
+  - [0xa500f8, ci8, img/battleSelect.ci8, 320, 240] # "....?" image from file select
+  - [0xA62CF8, bin] #endDL command from rgb2c
+  - [0xA62D00, palette, img/battleSelect.ci8]
+
+  - [0xa62f00, ci8, img/bombSnakeParts.ci8, 480, 40]
+  - [0xA67A00, palette, img/bombSnakeParts.ci8]
+  - [0xa67c00, bin] #endDL command from rgb2c
+
+  - [0xa67c08, ci8, img/ranking.ci8, 320, 240]
+  - [0xA7A808, bin] #endDL command from rgb2c
+  - [0xA7A810, palette, img/ranking.ci8]
+  - [0xa7aa10, bin] #endDL command from rgb2c
+
+  - [0xa7aa18, ia8, img/rankingNumbers.ia8, 96, 16]
+  - [0xA7B018, bin] #endDL command from rgb2c
+
+  - [0xA7B020, ia8, img/rankingLevel.ia8, 40, 12]
+  - [0xa7b200, bin] #endDL command from rgb2c
+
+  - [0xa7b208, ia8, img/hexagon.ia8, 64, 64]
+  - [0xA7C208, bin] #endDL command from rgb2c
+
+  - [0xA7C210, ia4, img/square.ia4, 48, 48]
+  - [0xa7c690, bin] #endDL command from rgb2c
+
+  - [0xa7c698, ia4, img/japanSystemSupplyC1997.ia4, 256, 16]
+  - [0xA7CE98, bin] #endDL command from rgb2c # loaded in func_800AAB0C to *D_80200C8C. 0x42B0 bytes
+
+  - [0xA7CEA0, ia4, img/theEnd.ia4, 128, 32]
+  - [0xA7D6A0, bin] #endDL command from rgb2c
+
+  - [0xa7d6a8, ia4, img/bowlingSquare.ia4, 24, 24]
+  - [0xa7d7c8, bin] #endDL command from rgb2c
+
+  - [0xa7d7D0, ia4, img/bowlingNumbers.ia4, 224, 16]
+  - [0xA7ded0, bin] #endDL command from rgb2c
+
+  - [0xA7DED8, ia4, img/rabbitBowl.ia4, 256, 144] #check sizes in game pls
+  - [0xA826D8, bin] #endDL command from rgb2c
+
+  - [0xA826E0, ia4, img/bowlingLastSquare.ia4, 40, 24] #check sizes in game pls
+  - [0xA828C0, bin] #endDL command from rgb2c
+
+  - [0xA828C8, ci8, img/crownSmall.ci8, 32, 24]
+  - [0xA82BC8, bin] #endDL command from rgb2c
+  - [0xA82BD0, palette, img/crownSmall.ci8]
+  - [0xa82dd0, bin] #endDL command from rgb2c
+
+  - [0xA82DD8, ci8, img/carrotSmall.ci8, 24, 24]
+  - [0xA83018, bin] #endDL command from rgb2c
+  - [0xA83020, palette, img/carrotSmall.ci8]
+  - [0xa83220, bin] #endDL command from rgb2c
+
+  - [0xa83228, rgba16, img/bossMeter.rgba16, 40, 16]
+  - [0xA83728, bin] #endDL command from rgb2c
+  - [0xA83730, rgba16, img/bossHealth.rgba16, 16, 16]
+  - [0xA83930, bin] #endDL command from rgb2c
+
   - [0xAB5360, bin, rabbit] # ウサギ
   - [0xABD990, bin, subAnime] # サブアニメ
   - [0xACBD90, bin, match] # 青
+
+  
+  - [0xACBDD0, bin, chameleons/davyOLD] #size of 
+  - [0xAD2820, bin, chameleons/jackOLD] #size of 
+  - [0xAD9658, bin, chameleons/fredOLD] #size of 
+  - [0xAE0490, bin, chameleons/lindaOLD] #size of 
+  - [0xAE7A18, bin, chameleons/blackOLD] #size of 
+  - [0xAEE850, bin, chameleons/whiteOLD] #size of 
+
+  - [0xAF5688, bin, noClue]
 
   - name: davy
     type: code
