@@ -101,6 +101,10 @@ header = (
     " command = python3 ./$IMG_CONVERT ia8 $in $out\n"
     "\n"
 
+    "rule ia4_img_cc\n"
+    " command = python3 ./$IMG_CONVERT ia4 $in $out\n"
+    "\n"
+
     "rule rgba32_img_cc\n"
     " command = python3 ./$IMG_CONVERT rgba32 $in $out\n"
     "\n"
@@ -313,7 +317,7 @@ for root, dirs, files in os.walk(assets_path):
             if file not in mod_rgba16_files:
                 rgba16_files.append(os.path.join(root, file))
 
-# Get modded rgba16 images
+# Get modded ia8 images
 mod_ia8_files = []
 for root, dirs, files in os.walk(mod_assets_path):
     for file in files:
@@ -326,6 +330,20 @@ for root, dirs, files in os.walk(assets_path):
         if file.endswith('ia8.png'):
             if file not in mod_ia8_files:
                 ia8_files.append(os.path.join(root, file))
+
+# Get modded ia4 images
+mod_ia4_files = []
+for root, dirs, files in os.walk(mod_assets_path):
+    for file in files:
+        if file.endswith('ia4.png'):
+            mod_ia4_files.append(os.path.join(root, file))
+
+ia4_files = []
+for root, dirs, files in os.walk(assets_path):
+    for file in files:
+        if file.endswith('ia4.png'):
+            if file not in mod_ia4_files:
+                ia4_files.append(os.path.join(root, file))
 
 
 
@@ -376,12 +394,13 @@ j_files = []
 j_files.extend([f.replace('.png', '.j') for f in rgba32_files])
 j_files.extend([f.replace('.png', '.j') for f in rgba16_files])
 j_files.extend([f.replace('.png', '.j') for f in ia8_files])
+j_files.extend([f.replace('.png', '.j') for f in ia4_files])
 j_files.extend([f.replace('.png', '.j') for f in ci8_files])
 j_files.extend([f.replace('.png', '.j') for f in ci4_files])
 
 # Combine the lists and change file extensions
 o_files = []
-for file in c_files + s_files + bin_files + rgba32_files + mod_rgba32_files + mod_rgba16_files + rgba16_files + ia8_files + ci4_files + ci8_files:
+for file in c_files + s_files + bin_files + rgba32_files + mod_rgba32_files + rgba16_files + mod_rgba16_files + ia8_files + mod_ia8_files + ia4_files + mod_ia4_files + ci4_files + ci8_files:
     if 'src/mod/' not in file and not file.startswith('src/mod/'):
         if 'asm/nonmatchings/' not in file:
             o_files.append("build/" + append_extension(file))
@@ -417,6 +436,16 @@ with open('build.ninja', 'a') as outfile:
     for ia8_file in ia8_files:
         if os.path.basename(ia8_file) not in [os.path.basename(f) for f in mod_ia8_files]:
             outfile.write("build " + os.path.splitext(ia8_file)[0] + ".j: " + "ia8_img_cc " + ia8_file + "\n")
+
+    # Write the rules for ia4 mod files
+    for mod_ia4_file in mod_ia4_files:
+        mod_ia4_file_without_src_mod = mod_ia4_file.replace('src/mod/', '')
+        outfile.write("build " + os.path.splitext(mod_ia4_file_without_src_mod)[0] + ".j: " + "ia4_img_cc " + mod_ia4_file + "\n")
+    
+    # Write the rules for ia4 files
+    for ia4_file in ia4_files:
+        if os.path.basename(ia4_file) not in [os.path.basename(f) for f in mod_ia4_files]:
+            outfile.write("build " + os.path.splitext(ia4_file)[0] + ".j: " + "ia4_img_cc " + ia4_file + "\n")
 
 
     # Write the rules for rgba32 mod files

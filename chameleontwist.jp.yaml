@@ -287,7 +287,8 @@ segments:
   - [0x103450, bin, img/bar.pal] #palette, does not build
   - [0x103658, ia8, img/textBig.ia8, 432, 48] #ia8, 432, 48, does not build
   - [0x108758, bin]
-  - [0x108760, bin, img/textSmall.ia4] #ia4, 512, 176, does not build
+  - [0x108760, ia4, img/textSmall.ia4, 512, 176] #ia4, 512, 176, does not build
+  - [0x113760, bin]
   - [0x113768, bin, img/puff.ia8] #ia8, 96, 32, does not build
   - [0x114370, bin, img/star2.ia4] #ia4, 32, 32, does not build
   - [0x114578, bin, img/camera.ia8] #ia8, 49, 32, does not build
