@@ -7,6 +7,7 @@ import sys
 dir_path = 'src/'
 asm_path = 'asm/'
 mod_asm_path = 'src/mod/'
+mod_assets_path = 'src/mod/assets'
 assets_path = 'assets/'
 cflags = '-G 0 -fullwarn -verbose -Xcpluscomm -signed -nostdinc -non_shared -Wab,-r4300_mul'
 #python3 tools/splat/split.py chameleontwist.jp.yaml
@@ -278,11 +279,22 @@ for root, dirs, files in os.walk(assets_path):
         if file.endswith('.bin'):
             bin_files.append(os.path.join(root, file))
 
+# Get modded rgba16 images
+mod_rgba16_files = []
+for root, dirs, files in os.walk(mod_assets_path):
+    for file in files:
+        if file.endswith('rgba16.png'):
+            mod_rgba16_files.append(file)
+
 rgba16_files = []
 for root, dirs, files in os.walk(assets_path):
     for file in files:
         if file.endswith('rgba16.png'):
-            rgba16_files.append(os.path.join(root, file))
+            # Overwrite vanilla files with modded files if they share the same name
+            if file not in mod_rgba16_files:
+                rgba16_files.append(os.path.join(root, file))
+            else:
+                rgba16_files.append("src/mod/assets/" + file)
 
 ia8_files = []
 for root, dirs, files in os.walk(assets_path):
@@ -293,12 +305,17 @@ for root, dirs, files in os.walk(assets_path):
 j_files = []
 j_files.extend([f.replace('.png', '.j') for f in rgba16_files])
 j_files.extend([f.replace('.png', '.j') for f in ia8_files])
+print(j_files)
 
 # Combine the lists and change file extensions
 o_files = []
 for file in c_files + s_files + bin_files + rgba16_files + ia8_files:
     if 'asm/nonmatchings/' not in file:
-        o_files.append("build/" + append_extension(file))
+        # Mod files used to overwrite vanilla files need "src/mod" removed from the path
+        if (file in rgba16_files) and ("src/mod" in file):
+            o_files.append("build/" + append_extension(file[8:]))
+        else:
+            o_files.append("build/" + append_extension(file))
 
 with open('build.ninja', 'w') as f:
     f.write(header)
@@ -328,11 +345,22 @@ with open('build.ninja', 'a') as outfile:
 
     # Write the rules for rgba16 files
     for rgba16_file in rgba16_files:
-        outfile.write("build " + os.path.splitext(rgba16_file)[0] + ".j: " + "rgba16_img_cc " + rgba16_file + "\n")
+        # Mod files used to overwrite vanilla files need "src/mod" removed from the path
+        if "src/mod" in os.path.splitext(rgba16_file)[0]:
+            outfile.write("build " + os.path.splitext(rgba16_file)[0][8:] + ".j: " + "rgba16_img_cc " + rgba16_file + "\n")
+        else:
+            outfile.write("build " + os.path.splitext(rgba16_file)[0] + ".j: " + "rgba16_img_cc " + rgba16_file + "\n")
+            print("build " + os.path.splitext(rgba16_file)[0] + ".j: " + "rgba16_img_cc " + rgba16_file + "\n")
 
     #j files are png images converted using image_converter.py
     for j_file in j_files:
-        outfile.write("build build/" + os.path.splitext(j_file)[0] + ".png.o: " + "j_to_png_bin " + j_file + "\n")
+        # Mod files used to overwrite vanilla files need "src/mod" removed from the path
+        if "src/mod" in os.path.splitext(j_file)[0]:
+            outfile.write("build build/" + os.path.splitext(j_file)[0][8:] + ".png.o: " + "j_to_png_bin " + j_file[8:] + "\n")
+            print("build build/" + os.path.splitext(j_file)[0][8:] + ".png.o: " + "j_to_png_bin " + j_file[8:] + "\n")
+        else:
+            outfile.write("build build/" + os.path.splitext(j_file)[0] + ".png.o: " + "j_to_png_bin " + j_file + "\n")
+            print("build build/" + os.path.splitext(j_file)[0] + ".png.o: " + "j_to_png_bin " + j_file + "\n")
 
     # Build the ninja rule with the .o files
     outfile.write("build build/chameleontwist.jp.elf: make_elf " + " ".join(o_files) + "\n")
