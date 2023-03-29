@@ -295,7 +295,7 @@ segments:
   - [0x103658, ia8, img/textBig.ia8, 432, 48]
   - [0x108758, bin]  #endDL command from rgb2c
 
-  - [0x108760, bin, img/textSmall.ia4, 512, 176]
+  - [0x108760, ia4, img/textSmall.ia4, 512, 176]
   - [0x113760, bin]  #endDL command from rgb2c
 
   - [0x113768, ia8, img/puff.ia8, 96, 32]

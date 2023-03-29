@@ -499,4 +499,3 @@ with open('build.ninja', 'a') as outfile:
     outfile.write("build build/chameleontwist.jp.elf: make_elf " + " ".join(o_files) + "\n")
     outfile.write("build build/chameleontwist.jp.bin: make_rom_bin build/chameleontwist.jp.elf\n")
     outfile.write("build build/chameleontwist.jp.z64: make_rom_z64 build/chameleontwist.jp.bin\n")
-
