@@ -39,6 +39,7 @@ header = (
     "objdump_command = $OBJDUMP $in > $in:.o=.s\n"
     "splat = python3 tools/splat/split.py chameleontwist.jp.yaml\n"
     "XGCC = mips-linux-gnu-gcc\n"
+    "IMG_CONVERT = tools/image_converter.py\n"
     "GCC_FLAGS = $include_cflags $DEFINES -G 0 -mno-shared -march=vr4300 -mfix4300 -mabi=32 -mhard-float -mdivide-breaks -fno-stack-protector -fno-common -fno-zero-initialized-in-bss -fno-PIC -mno-abicalls -fno-strict-aliasing -fno-inline-functions -ffreestanding -fwrapv -Wall -Wextra -Wno-missing-braces"
     "\n"
 
@@ -92,7 +93,19 @@ header = (
     "\n"
     
     "rule ci8_img_cc\n"
-    " command = $IMG_CONVERT ci8 $in $out\n"
+    " command = ./$IMG_CONVERT ci8 $in $out\n"
+    "\n"
+
+    "rule ia8_img_cc\n"
+    " command = python3 ./$IMG_CONVERT ia8 $in $out\n"
+    "\n"
+
+    "rule rgba16_img_cc\n"
+    " command = python3 ./$IMG_CONVERT rgba16 $in $out\n"
+    "\n"
+
+    "rule j_to_png_bin\n"
+    " command = $LD -r -b binary -o $out $in\n"
     "\n"
 
     "rule make_elf\n"
@@ -265,9 +278,25 @@ for root, dirs, files in os.walk(assets_path):
         if file.endswith('.bin'):
             bin_files.append(os.path.join(root, file))
 
+rgba16_files = []
+for root, dirs, files in os.walk(assets_path):
+    for file in files:
+        if file.endswith('rgba16.png'):
+            rgba16_files.append(os.path.join(root, file))
+
+ia8_files = []
+for root, dirs, files in os.walk(assets_path):
+    for file in files:
+        if file.endswith('ia8.png'):
+            ia8_files.append(os.path.join(root, file))
+
+j_files = []
+j_files.extend([f.replace('.png', '.j') for f in rgba16_files])
+j_files.extend([f.replace('.png', '.j') for f in ia8_files])
+
 # Combine the lists and change file extensions
 o_files = []
-for file in c_files + s_files + bin_files:
+for file in c_files + s_files + bin_files + rgba16_files + ia8_files:
     if 'asm/nonmatchings/' not in file:
         o_files.append("build/" + append_extension(file))
 
@@ -281,8 +310,6 @@ with open('build.ninja', 'a') as outfile:
             outfile.write("build build/" + os.path.splitext(c_file)[0] + ".c.o: " + "libc_ll_cc " + c_file + "\n")
         elif "src/mod" in os.path.relpath(c_file):
             outfile.write("build build/" + os.path.splitext(c_file)[0] + ".c.o: " + "mod_cc " + c_file + "\n")
-        # elif os.path.basename(c_file) == "xprintf.c":
-        #     outfile.write("build build/" + os.path.splitext(c_file)[0] + ".c.o: " + "xprintf_cc " + c_file + "\n")
         else:
             folder_name = os.path.basename(os.path.dirname(c_file))
             outfile.write("build build/" + os.path.splitext(c_file)[0] + ".c.o: " + folder_name + "_cc " + c_file + "\n")
@@ -294,6 +321,18 @@ with open('build.ninja', 'a') as outfile:
         outfile.write("build build/" + os.path.splitext(s_file)[0] + ".s.o: " + "s_file " + mod_s_files + "\n")
     for bin_file in bin_files:
         outfile.write("build build/" + os.path.splitext(bin_file)[0] + ".bin.o: " + "bin_file " + bin_file + "\n")
+
+    # Write the rules for rgba16 files
+    for ia8_file in ia8_files:
+        outfile.write("build " + os.path.splitext(ia8_file)[0] + ".j: " + "ia8_img_cc " + ia8_file + "\n")
+
+    # Write the rules for rgba16 files
+    for rgba16_file in rgba16_files:
+        outfile.write("build " + os.path.splitext(rgba16_file)[0] + ".j: " + "rgba16_img_cc " + rgba16_file + "\n")
+
+    #j files are png images converted using image_converter.py
+    for j_file in j_files:
+        outfile.write("build build/" + os.path.splitext(j_file)[0] + ".png.o: " + "j_to_png_bin " + j_file + "\n")
 
     # Build the ninja rule with the .o files
     outfile.write("build build/chameleontwist.jp.elf: make_elf " + " ".join(o_files) + "\n")
