@@ -295,18 +295,19 @@ segments:
   - [0x103658, ia8, img/textBig.ia8, 432, 48]
   - [0x108758, bin]  #endDL command from rgb2c
 
-  - [0x108760, bin, img/textSmall.ia4] #ia4, 512, 176, does not build
+  - [0x108760, bin, img/textSmall.ia4, 512, 176]
+  - [0x113760, bin]  #endDL command from rgb2c
 
   - [0x113768, ia8, img/puff.ia8, 96, 32]
   - [0x114368, bin]  #endDL command from rgb2c
 
-  - [0x114370, bin, img/star2.ia4] #ia4, 32, 32, does not build
+  - [0x114370, ia4, img/star2.ia4, 32, 32]
+  - [0x114570, bin]  #endDL command from rgb2c
 
   - [0x114578, ia8, img/camera.ia8, 48, 32]
   - [0x114B78, bin]  #endDL command from rgb2c
 
-  - [0x114B80, bin, img/explode.ia4] #ia4, 40, 40, does not build
-
+  - [0x114B80, ia4, img/explode.ia4, 40, 40]
 
   - [0x114ea0, bin, group] #gHeader
   - [0x114eb8, bin, vtx1] #vtx
@@ -438,75 +439,76 @@ segments:
 
   - [0x9E7A80, bin] #temporary
 
-  - [0x9E7A80, rgba16, TitleScreen.rgba16, 320, 240]
+  - [0x9E7A80, rgba16, img/TitleScreen.rgba16, 320, 240]
   - [0xA0D280, bin] #endDL command from rgb2c
-  - [0xA0D288, rgba16, StageSelectBackground.rgba16, 320, 240]
+  - [0xA0D288, rgba16, img/StageSelectBackground.rgba16, 320, 240]
   - [0xA32A88, bin] #endDL command from rgb2c
-  - [0xA32A90, ia8, JungleLandText.ia8, 104, 16]
+  - [0xA32A90, ia8, img/JungleLandText.ia8, 104, 16]
   - [0xA33110, bin] #endDL command from rgb2c
-  - [0xA33118, ia8, AntLandText.ia8, 104, 16]
+  - [0xA33118, ia8, img/AntLandText.ia8, 104, 16]
   - [0xA33798, bin] #endDL command from rgb2c
-  - [0xA337A0, ia8, BombLandText.ia8, 104, 16]
+  - [0xA337A0, ia8, img/BombLandText.ia8, 104, 16]
   - [0xA33E20, bin] #endDL command from rgb2c
-  - [0xA33E28, ia8, DesertCastleText.ia8, 104, 16]
+  - [0xA33E28, ia8, img/DesertCastleText.ia8, 104, 16]
   - [0xA344A8, bin] #endDL command from rgb2c
-  - [0xA344B0, ia8, KidsLandText.ia8, 104, 16]
+  - [0xA344B0, ia8, img/KidsLandText.ia8, 104, 16]
   - [0xA34B30, bin] #endDL command from rgb2c
-  - [0xA34B38, ia8, GhostCastleText.ia8, 104, 16]
+  - [0xA34B38, ia8, img/GhostCastleText.ia8, 104, 16]
   - [0xA351B8, bin] #endDL command from rgb2c
 
-  - [0xA351C0, ci8, JungleLandText2.ci8, 112, 24]
+  - [0xA351C0, ci8, img/JungleLandText2.ci8, 112, 24]
   - [0xA35C40, bin]  #endDL command from rgb2c
-  - [0xA35C48, palette, JungleLandText2.ci8]
+  - [0xA35C48, palette, img/JungleLandText2.ci8]
   - [0xA35E48, bin]  #endDL command from rgb2c
-  - [0xA35E50, ci8, AntLandText2.ci8, 112, 24]
+  - [0xA35E50, ci8, img/AntLandText2.ci8, 112, 24]
   - [0xA368D0, bin]  #endDL command from rgb2c
-  - [0xA368D8, palette, AntLandText2.ci8]
+  - [0xA368D8, palette, img/AntLandText2.ci8]
   - [0xA36AD8, bin] #endDL command from rgb2c
-  - [0xA36ae0, ci8, BombLandText2.ci8, 112, 24]
+  - [0xA36ae0, ci8, img/BombLandText2.ci8, 112, 24]
   - [0xA37560, bin]  #endDL command from rgb2c
-  - [0xA37568, palette, BombLandText2.ci8]
+  - [0xA37568, palette, img/BombLandText2.ci8]
   - [0xA37768, bin]  #endDL command from rgb2c
-  - [0xa37770, ci8, DesertCastleText2.ci8, 112, 24]
+  - [0xa37770, ci8, img/DesertCastleText2.ci8, 112, 24]
   - [0xA381F0, bin]  #endDL command from rgb2c
-  - [0xA381F8, palette, DesertCastleText2.ci8]
+  - [0xA381F8, palette, img/DesertCastleText2.ci8]
   - [0xA383f8, bin] #endDL command from rgb2c
-  - [0xA38400, ci8, KidsLandText2.ci8, 112, 24]
+  - [0xA38400, ci8, img/KidsLandText2.ci8, 112, 24]
   - [0xA38E80, bin]  #endDL command from rgb2c
-  - [0xA38E88, palette, KidsLandText2.ci8]
+  - [0xA38E88, palette, img/KidsLandText2.ci8]
   - [0xa39088, bin]  #endDL command from rgb2c
-  - [0xa39090, ci8, GhostCastleText2.ci8, 112, 24]
+  - [0xa39090, ci8, img/GhostCastleText2.ci8, 112, 24]
   - [0xA39B10, bin]  #endDL command from rgb2c
-  - [0xA39B18, palette, GhostCastleText2.ci8]
+  - [0xA39B18, palette, img/GhostCastleText2.ci8]
   - [0xa39d18, bin] #endDL command from rgb2c
   
-  - [0xa39d20, ci8, quintellaDeadEye.ci8, 32, 32]
+  - [0xa39d20, ci8, img/quintellaDeadEye.ci8, 32, 32]
   - [0xA3A120, bin]  #endDL command from rgb2c
-  - [0xA3A128, palette, quintellaDeadEye.ci8]
+  - [0xA3A128, palette, img/quintellaDeadEye.ci8]
   - [0xa3a328, bin]  #endDL command from rgb2c
 
-  - [0xa3a330, ci4, lizardKongDeadEyes.ci4, 64, 64]
+  - [0xa3a330, ci4, img/lizardKongDeadEyes.ci4, 64, 64]
   - [0xA3AB30, bin]  #endDL command from rgb2c
-  - [0xA3AB38, palette, lizardKongDeadEyes.ci4]
+  - [0xA3AB38, palette, img/lizardKongDeadEyes.ci4]
   - [0xa3ad38, bin] #endDL command from rgb2c
 
-  - [0xa3ad40, ci8, armadilloDeadEyes.ci8, 64, 32]
+  - [0xa3ad40, ci8, img/armadilloDeadEyes.ci8, 64, 32]
   - [0xA3B540, bin]  #endDL command from rgb2c
-  - [0xA3B548, palette, armadilloDeadEyes.ci8]
+  - [0xA3B548, palette, img/armadilloDeadEyes.ci8]
   - [0xa3b748, bin] #endDL command from rgb2c
 
-  #- [0xa3b750, ia4, sunsoft.ia4, 192, 40]
+  - [0xa3b750, ia4, img/sunsoft.ia4, 192, 40]
   - [0xa3c650, bin]  #endDL command from rgb2c
 
-  - [0xa3c658, ci8, battleRanking.ci8, 320, 240]
+  - [0xa3c658, ci8, img/battleRanking.ci8, 320, 240]
   - [0xA4F258, bin] #endDL command from rgb2c
-  - [0xA4F260, palette, battleRanking.ci8]
+  - [0xA4F260, palette, img/battleRanking.ci8]
   - [0xa4f460, bin] #endDL command from rgb2c
   
-  - [0xA4F468, ci8, ....QuestionMark.ci8, 112, 24] # "....?" image from file select
+  - [0xA4F468, ci8, img/....QuestionMark.ci8, 112, 24] # "....?" image from file select
   - [0xA4FEE8, bin] #endDL command from rgb2c
-  - [0xA4FEF0, palette, ....QuestionMark.ci8]
+  - [0xA4FEF0, palette, img/....QuestionMark.ci8]
   - [0xA500F0, bin]
+
   - [0xAB10B0, bin] # loaded in func_800AAB0C to *D_80200C8C. 0x42B0 bytes
   - [0xAB5360, bin, rabbit] # ウサギ
   - [0xABD990, bin, subAnime] # サブアニメ
