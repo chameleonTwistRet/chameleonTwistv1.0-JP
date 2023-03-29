@@ -75,7 +75,6 @@ class Converter():
             self.outfile.write(row)
 
     def _convert_palette(self, img):
-        print("IM DOING")
         img.preamble(True)
         palette = img.palette(alpha="force")
 

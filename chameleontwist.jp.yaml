@@ -270,6 +270,7 @@ segments:
       #80111C90 - 8024C510 bss
   - name: assets0
     type: code
+    subalign: 8
     start: 0xED090
     vram: 0x8024C510
     subsegments:
@@ -284,7 +285,8 @@ segments:
   - [0x1030C0, bin, img/health.pal] #palette, does not build
   - [0x1032C8, bin, img/bar.ci4] #ci4, 48, 16, does not build
   - [0x103450, bin, img/bar.pal] #palette, does not build
-  - [0x103658, bin, img/textBig.ia8] #ia8, 432, 48, does not build
+  - [0x103658, ia8, img/textBig.ia8, 432, 48] #ia8, 432, 48, does not build
+  - [0x108758, bin]
   - [0x108760, bin, img/textSmall.ia4] #ia4, 512, 176, does not build
   - [0x113768, bin, img/puff.ia8] #ia8, 96, 32, does not build
   - [0x114370, bin, img/star2.ia4] #ia4, 32, 32, does not build
@@ -349,10 +351,10 @@ segments:
   #- [0x481A70, bin]
   #- [0x488210, bin]
   #- [0x488930, bin]
-  #- [0x4987F0, ci4, brick1.ci4, 64, 64]
-  #- [0x498FF0, bin] #size of 8? (End DL command)
-  #- [0x498FF8, palette, brick1.ci4]
-  #- [0x4991F8, bin]
+  - [0x4987F0, ci4, brick1.ci4, 64, 64]
+  - [0x498FF0, bin] #size of 8? (End DL command)
+  - [0x498FF8, palette, brick1.ci4]
+  - [0x4991F8, bin]
   - [0x4DBBB0, bin, Level/BombLand]
   - [0x51FB40, bin, Level/KidsLand]
   - [0x578850, bin, Level/DesertCastle]
@@ -410,19 +412,18 @@ segments:
   - [0xA34B38, ia8, GhostCastleText.ia8, 104, 16]
   - [0xA351B8, bin] #endDL command from rgb2c
 
-
-  #- [0xA351C0, ci8, JungleLandText2.ci8, 112, 24] #ci8
+  - [0xA351C0, ci8, JungleLandText2.ci8, 112, 24] #ci8
   - [0xA35C40, bin]  #endDL command from rgb2c
-  #- [0xA35C48, palette, JungleLandText2.ci8]
+  - [0xA35C48, palette, JungleLandText2.ci8]
   - [0xA35E48, bin]  #endDL command from rgb2c
-  #- [0xA35E50, ci8, AntLandText2.ci8, 112, 24]
-  #- [0xA368D8, palette, AntLandText2.ci8]
-  - [0xA36AD8, bin]
-  # - [0xA369D8, bin]
-  #- [0xA32A88, bin, jungleLandIA8Text]
-  #- [0xA4F468, ci8, ....QuestionMark.ci8, 112, 24] # "....?" image from file select
+  - [0xA35E50, ci8, AntLandText2.ci8, 112, 24]
+  - [0xA368D0, bin]
+  - [0xA368D8, palette, AntLandText2.ci8]
+  - [0xA369D8, bin]
+  
+  - [0xA4F468, ci8, ....QuestionMark.ci8, 112, 24] # "....?" image from file select
   - [0xA4FEE8, bin] #endDL command from rgb2c
-  #- [0xA4FEF0, palette, ....QuestionMark.ci8]
+  - [0xA4FEF0, palette, ....QuestionMark.ci8]
   - [0xA500F0, bin]
   - [0xAB10B0, bin] # loaded in func_800AAB0C to *D_80200C8C. 0x42B0 bytes
   - [0xAB5360, bin, rabbit] # ウサギ
@@ -431,13 +432,13 @@ segments:
 
   - name: davy
     type: code
+    subalign: 8
     start: 0xAFC6B0
     subsegments:
       - [0xAFC6B0, bin, davy/davyMain] #size of 0x8BE0
-      - [0xAFD090, bin, davy/davyNumber] #should be ci4, 32x32
-      - [0xAFD290, bin, davy/davyUnkDL0] #0x08 into this has the palette
-      #- [0xAFD298, bin, davy/davyNumberPalette] #is palette for davyNumber
-      #- [0xAFD2B8, bin]
+      - [0xAFD090, ci4, davy/davyNumber.ci4, 32, 32] #should be ci4, 32x32
+      - [0xAFD290, bin] #0x08 into this has the palette
+      - [0xAFD298, palette, davy/davyNumber.ci4] #is palette for davyNumber
       - [0xAFD2C0, bin]
 
   - [0xB05290, bin, jack] #size of 0x8C20 (extra data?)
