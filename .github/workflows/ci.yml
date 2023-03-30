@@ -9,16 +9,17 @@ jobs:
 
     strategy:
         fail-fast: false
-  
+
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
       with:
+        submodules: 'recursive'
         ref: ${{ github.event.pull_request.head.sha }}
-  
+
     - name: Install package requirements
       run: ./install.sh
-  
+
     - name: Get extra deps
       uses: actions/checkout@v3
       with:
@@ -27,13 +28,13 @@ jobs:
         path: deps_repo
     - name: Get the dep
       run: cp deps_repo/chameleon/* .
-  
+
     - name: Setup
       run: ./configure
-  
+
     - name: Build Chameleon Twist
       run: ./configure && ninja
-  
+
     - name: Upload Frogress
       if: github.ref == 'refs/heads/master'
       run: python3 tools/uploadProgress.py
