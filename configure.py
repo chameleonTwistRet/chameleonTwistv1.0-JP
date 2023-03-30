@@ -30,6 +30,7 @@ header = (
     "splat = python3 tools/splat/split.py chameleontwist.jp.yaml\n"
     "XGCC = mips-linux-gnu-gcc\n"
     "IMG_CONVERT = tools/image_converter.py\n"
+    "MAKE_EXPECTED = tools/make_expected.py\n"
     "GCC_FLAGS = $include_cflags $DEFINES -G 0 -mno-shared -march=vr4300 -mfix4300 -mabi=32 -mhard-float -mdivide-breaks -fno-stack-protector -fno-common -fno-zero-initialized-in-bss -fno-PIC -mno-abicalls -fno-strict-aliasing -fno-inline-functions -ffreestanding -fwrapv -Wall -Wextra -Wno-missing-braces"
     "\n"
 
@@ -111,7 +112,7 @@ header = (
     "\n"
 
     "rule j_to_png_bin\n"
-    " command = ($LD -r -b binary -o $out $in) && (rm -f $in)\n"
+    " command = ($LD -r -b binary -o $out $in)\n"
     "\n"
 
     "rule make_elf\n"
@@ -124,6 +125,10 @@ header = (
 
     "rule make_rom_z64\n"
     "  command = (cp $in $out) && (sha1sum -c chameleontwist.jp.sha1)\n"
+    "\n"
+
+    "rule make_expected_folder\n"
+    "  command = (cp $in $out) && (python3 ./$MAKE_EXPECTED $in)\n"
     "\n"
 )
 
@@ -280,3 +285,4 @@ with open('build.ninja', 'a') as outfile:
     outfile.write("build build/chameleontwist.jp.elf: make_elf " + " ".join(o_files) + "\n")
     outfile.write("build build/chameleontwist.jp.bin: make_rom_bin build/chameleontwist.jp.elf\n")
     outfile.write("build build/chameleontwist.jp.z64: make_rom_z64 build/chameleontwist.jp.bin\n")
+    outfile.write("build build/chameleontwist.ok: make_expected_folder build/chameleontwist.jp.z64\n")

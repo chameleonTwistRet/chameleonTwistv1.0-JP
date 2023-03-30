@@ -1,0 +1,39 @@
+name: Build
+
+on: [push, pull_request_target]
+
+jobs:
+  build_repo:
+    name: Build repo
+    runs-on: ubuntu-latest
+
+  strategy:
+      fail-fast: false
+
+  steps:
+  - name: Checkout repository
+    uses: actions/checkout@v3
+    with:
+      ref: ${{ github.event.pull_request.head.sha }}
+
+  - name: Install package requirements
+    run: ./install.sh
+
+  - name: Get extra deps
+    uses: actions/checkout@v3
+    with:
+      repository: ${{ secrets.SECRETREPO }}
+      token: ${{ secrets.SECRETREPOKEY }}
+      path: deps_repo
+  - name: Get the dep
+    run: cp deps_repo/chameleon/* .
+
+  - name: Setup
+    run: ./configure
+
+  - name: Build Chameleon Twist
+    run: ./configure && ninja
+
+  - name: Upload Frogress
+    if: github.ref == 'refs/heads/master'
+    run: python3 tools/uploadProgress.py
