@@ -69,9 +69,12 @@ prev_hash = res["chameleontwist"]["jp"]["default"][0]["git_hash"]
 prev_matching_funcs = res["chameleontwist"]["jp"]["default"][0]["measures"]["funcs"]
 prev_matching_size = res["chameleontwist"]["jp"]["default"][0]["measures"]["bytes"]
 
-if prev_hash != get_commit_hash() and prev_matching_funcs != matching_funcs and prev_matching_size != matching_size:
-    print("Change in progress... Pushing to API")
-    push_data_to_api(end_data)
+if prev_hash != get_commit_hash():
+    if prev_matching_funcs < matching_funcs or prev_matching_size < matching_size:
+        print("Change in progress... Pushing to API")
+        push_data_to_api(end_data)
+    else:
+        print("No change in progress")
 else:
-    print("No change in progress")
+    print("Current push already in API")
     
