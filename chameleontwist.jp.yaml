@@ -301,6 +301,8 @@ segments:
   - [0x498FF0, bin] #size of 8? (End DL command)
   #- [0x498FF8, palette, brick1.ci4]
   #- [0x4991F8, bin]
+  - [0x87F640, bin,common] #size of 0x43060
+  - [0x8C26A0, bin]
   - [0x9B30D0, bin] #size of 0x780
   - [0x9B3850, bin] #size of 0x200
   - [0x9B3A50, bin] #size of 0x640
@@ -355,6 +357,7 @@ segments:
   #- [0xA4F468, ci8, ....QuestionMark.ci8, 112, 24] # "....?" image from file select
   - [0xA4FEE8, bin] #endDL command from rgb2c
   #- [0xA4FEF0, palette, ....QuestionMark.ci8]
+  #-[0xA8FF48, ia8, TitleOptions.ci8] #probably inaccurate
   - [0xA500F0, bin]
   - [0xAB10B0, bin] # loaded in func_800AAB0C to *D_80200C8C. 0x42B0 bytes
   - [0xAB5360, bin, rabbit] # ウサギ
