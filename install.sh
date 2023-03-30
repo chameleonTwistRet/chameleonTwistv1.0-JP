@@ -9,8 +9,15 @@ if cat /etc/os-release | grep -E 'ID=debian|ID_LIKE=(.*)debian' &> /dev/null; th
     # Add i386 arch for wine32
     # sudo dpkg --add-architecture i386
     sudo apt update
-    sudo apt -y install python3-pip
+    sudo apt -y install python3 python3-pip ipython3
+    pip install -r tools/splat/requirements.txt
+
+    sudo apt install -y gcc
     sudo apt-get install -y gcc-mips-linux-gnu
+    sudo wget -qO /usr/local/bin/ninja.gz https://github.com/ninja-build/ninja/releases/latest/download/ninja-linux.zip
+    sudo gunzip /usr/local/bin/ninja.gz
+    sudo chmod a+x /usr/local/bin/ninja
+
     pip install pylibyaml
     pip install capstone
     pip install n64img
