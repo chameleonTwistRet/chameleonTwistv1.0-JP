@@ -37,4 +37,4 @@ jobs:
 
     - name: Upload Frogress
       if: github.ref == 'refs/heads/master'
-      run: python3 tools/uploadProgress.py
+      run: python3 tools/uploadProgress.py --api_key ${{ secrets.API_KEY }}
