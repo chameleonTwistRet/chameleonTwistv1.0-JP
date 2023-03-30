@@ -270,21 +270,118 @@ segments:
       #80111C90 - 8024C510 bss
   - name: assets0
     type: code
+    subalign: 8
     start: 0xED090
     vram: 0x8024C510
     subsegments:
       - [0xED090, bin, unkBlock0] #size of 0x14AD0
     
     
-  - [0x101B60, bin] #size of 0x45C00 [ram 8036F400]
+  - [0x101b60, bin, mtx00] #mtx
+  - [0x101ba0, bin, mtx01] #mtx
+  - [0x101BE0, rgba32, img/star.rgba32, 32, 32]
+  - [0x102BE0, bin, gfx/spriteController] #gfx
+
+  - [0x102FB8, ci8, img/health.ci8, 16, 16]
+  - [0x1030B8, bin]  #endDL command from rgb2c
+  - [0x1030C0, palette, img/health.ci8]
+  - [0x1032c0, bin]  #endDL command from rgb2c
+
+  - [0x1032C8, ci4, img/bar.ci4, 48, 16]
+  - [0x103448, bin]  #endDL command from rgb2c
+  - [0x103450, palette, img/bar.ci4]
+  - [0x103650, bin]  #endDL command from rgb2c
+
+  - [0x103658, ia8, img/textBig.ia8, 432, 48]
+  - [0x108758, bin]  #endDL command from rgb2c
+
+  - [0x108760, ia4, img/textSmall.ia4, 512, 176]
+  - [0x113760, bin]  #endDL command from rgb2c
+
+  - [0x113768, ia8, img/puff.ia8, 96, 32]
+  - [0x114368, bin]  #endDL command from rgb2c
+
+  - [0x114370, ia4, img/star2.ia4, 32, 32]
+  - [0x114570, bin]  #endDL command from rgb2c
+
+  - [0x114578, ia8, img/camera.ia8, 48, 32]
+  - [0x114B78, bin]  #endDL command from rgb2c
+
+  - [0x114B80, ia4, img/explode.ia4, 40, 40]
+
+  - [0x114ea0, bin, group] #gHeader
+  - [0x114eb8, bin, vtx1] #vtx
+  - [0x115088, bin, mtx1] #mtx
+  - [0x1150C8, bin, break] #break
+  - [0x1150D0, ci4, img/sand.ci4, 64, 64]
+  - [0x1158D0, bin]  #endDL command from rgb2c
+  - [0x1158D8, palette, img/sand.ci4]
+  - [0x115ad8, bin, gfx/unk0] #gfx
+  - [0x115d30, bin, vtx2] #vtx
+  - [0x115f30, bin, mtx2] #mtx
+  - [0x115F70, ci8, img/sandSplash.ci8, 30, 32]
+  - [0x116330, palette, img/sandSplash.ci8]
+  - [0x116530, bin, gfx/unk1] #gfx
+  - [0x116948, bin, vtx3] #vtx
+  - [0x116a48, bin, mtx3] #mtx
+  - [0x116a88, bin, gfx/unk2] #gfx
+  - [0x116b60, bin, vtx4] #vtx
+  - [0x116c60, bin, mtx4] #mtx
+  - [0x116ca0, bin, break2] #break
+  - [0x116ca8, ia8, img/fogFade.ia8, 48, 32]
+  - [0x1172a8, bin, gfx/unk3] #gfx
+  - [0x1176b8, bin, group2]
+  - [0x1176d0, bin, vtx5]
+  - [0x117730, bin, gfx/unk4] #gfx
+  - [0x1177c0, bin, vtx6]
+  - [0x117810, bin, gfx/unk5] #gfx
+  - [0x117890, bin, mtx5] #mtx
+  #AnimationSegments
+  - [0x1178D0, bin, anim/chameleon/Idle]
+  - [0x11ad00, bin, anim/chameleon/Walk]
+  - [0x11ee30, bin, anim/chameleon/Run]
+  - [0x122F60, bin, anim/unk]
+  - [0x126050, bin, anim/chameleon/Jump]
+  - [0x129140, bin, anim/chameleon/Tongue]
+  - [0x12C570, bin, anim/chameleon/Vault]
+  - [0x1306A0, bin, anim/chameleon/Spin]
+  - [0x136200, bin, anim/chameleon/LandFromKnockback]
+  - [0x13A330, bin, anim/chameleon/GetupFromKnockback]
+  - [0x13BD40, bin]
   - [0x147760, bin,alBankfile0] #size of 0x7B60 [ram 801C4940]
   - [0x14F2C0, bin,alBankfile0Table] #unksize
   - [0x282E80, bin,alBankFileBGM] #size of 0xEC
   - [0x282F6C, bin,BGM00Jungle1] #size of 0x3337
   - [0x2862A4, bin,BGM01Jungle2] #size of 0x32D3
-  - [0x2A1C00, bin,BGM1C] #size of 0x0DB9
-  - [0x2A29C0, bin] #size of 0x8760
-  - [0x2AB120, bin] #unkSize
+  - [0x289578, bin,BGM02Ant]
+  - [0x28BB9C, bin,BGM03Bomb]
+  - [0x28E9CC, bin,BGM04Desert]
+  - [0x28F668, bin,BGM05Kids]
+  - [0x290EC4, bin,BGM06Ghost]
+  - [0x292ABC, bin,BGM07Battle1]
+  - [0x293898, bin,BGM08Battle2]
+  - [0x295120, bin,BGM09Battle3]
+  - [0x297BB0, bin,BGM10BattleWon]
+  - [0x297E88, bin,BGM11Quintella]
+  - [0x2981B4, bin,BGM12BossBattle1]
+  - [0x298E90, bin,BGM12BossBattle2]
+  - [0x29A20C, bin,BGM13GiantCake]
+  - [0x29B5D4, bin,BGM14BossIntro]
+  - [0x29B8D8, bin,BGM15PileOfBooks2]
+  - [0x29C014, bin,BGM16PileOfBooks1]
+  - [0x29C6A0, bin,BGM17StageSelect]
+  - [0x29CB20, bin,BGM18StageSelect2]
+  - [0x29D79C, bin,BGM19StageWin]
+  - [0x29DA44, bin,BGM20BattleWon2]
+  - [0x29DC68, bin,BGM21GameOver]
+  - [0x29DDD4, bin,BGM22Training]
+  - [0x29E710, bin,BGM23StageStart]
+  - [0x29E89C, bin,BGM24TitleScreen]
+  - [0x29EC3C, bin,BGM25EndingUnused]
+  - [0x2A0008, bin,BGM26GameIntro]
+  - [0x2A1C00, bin,BGM27StageSelectReprise] #size of 0x0DB9
+  - [0x2A29C0, bin,ctl2] #size of 0x8760
+  - [0x2AB120, bin,tbl2] #sfxs #unkSize
   - [0x2D2BA0, bin] #size of 8?
   - [0x2D2BA8, bin] #size of 0x500 (slightly dips into next element?)
   - [0x2D309C, bin] #size of 0x500 (reads a bit from previous element?)
@@ -294,15 +391,30 @@ segments:
   - [0x2D3A86, bin] #0x500 (reads a bit from previous element?)
   - [0x2D3F86, bin] #unkSize
   - [0x480740, bin]
-  - [0x481A70, bin]
-  - [0x488210, bin]
-  - [0x488930, bin]
-  #- [0x4987F0, ci4, brick1.ci4, 64, 64]
+  - [0x4807a0, bin, Level/AntLand]
+  #- [0x481A70, bin]
+  #- [0x488210, bin]
+  #- [0x488930, bin]
+  - [0x4987F0, ci4, brick1.ci4, 64, 64]
   - [0x498FF0, bin] #size of 8? (End DL command)
-  #- [0x498FF8, palette, brick1.ci4]
-  #- [0x4991F8, bin]
-  - [0x87F640, bin,common] #size of 0x43060
-  - [0x8C26A0, bin]
+  - [0x498FF8, palette, brick1.ci4]
+  - [0x4991F8, bin]
+  - [0x4DBBB0, bin, Level/BombLand]
+  - [0x51FB40, bin, Level/KidsLand]
+  - [0x578850, bin, Level/DesertCastle]
+  - [0x5C3B20, bin, Level/IntroOutro]
+  - [0x6344c0, bin, Level/GhostCastle]
+  - [0x6a8e20, bin, Level/JungleLand]
+  - [0x70db70, bin, Level/LizardKong]
+  - [0x7477f0, bin, Level/Quintella]
+  - [0x7a72b0, bin, Level/BombSnake]
+  - [0x7af730, bin, Level/GiantCake]
+  - [0x7d22b0, bin, Level/Armadillo]
+  - [0x7fd3b0, bin, Level/PileOfBooks]
+  - [0x849930, bin, Level/BattleMode]
+  - [0x85c970, bin, Level/Training]
+  - [0x878870, bin, Level/BossRush]
+  - [0x87F640, bin, Level/Global]
   - [0x9B30D0, bin] #size of 0x780
   - [0x9B3850, bin] #size of 0x200
   - [0x9B3A50, bin] #size of 0x640
@@ -323,56 +435,256 @@ segments:
   - [0x9D4768, bin] #size of 0x5000
   - [0x9D9768, bin] #size of 0x1200
   - [0x9DA970, bin] #size of 0x2800
-  - [0x9DD170, bin] #unkSize
 
-  - [0x9E7A80, bin] #temporary
+  - [0x9DD170, bin]  #endDL command from rgb2c
 
-  # - [0x9E7A80, rgba16, TitleScreen.rgba16, 320, 240]
-  # - [0xA0D280, bin] #endDL command from rgb2c
-  # - [0xA0D288, rgba16, StageSelectBackground.rgba16, 320, 240]
-  # - [0xA32A88, bin] #endDL command from rgb2c
-  # - [0xA32A90, ia8, JungleLandText.ia8, 104, 16]
-  # - [0xA33110, bin] #endDL command from rgb2c
-  # - [0xA33118, ia8, AntLandText.ia8, 104, 16]
-  # - [0xA33798, bin] #endDL command from rgb2c
-  # - [0xA337A0, ia8, BombLandText.ia8, 104, 16]
-  # - [0xA33E20, bin] #endDL command from rgb2c
-  # - [0xA33E28, ia8, DesertCastleText.ia8, 104, 16]
-  # - [0xA344A8, bin] #endDL command from rgb2c
-  # - [0xA344B0, ia8, KidsLandText.ia8, 104, 16]
-  # - [0xA34B30, bin] #endDL command from rgb2c
-  # - [0xA34B38, ia8, GhostCastleText.ia8, 104, 16]
-  # - [0xA351B8, bin] #endDL command from rgb2c
+  - [0x9DD178, ci8, img/battleIcon1.ci8, 40, 40]
+  - [0x9dd7b8, bin]  #endDL command from rgb2c
+  - [0x9dd7C0, palette, img/battleIcon1.ci8]
+  - [0x9dd9c0, bin]  #endDL command from rgb2c
 
+  - [0x9dd9c8, ci8, img/battleIcon2.ci8, 40, 40]
+  - [0x9DE008, bin]  #endDL command from rgb2c
+  - [0x9DE010, palette, img/battleIcon2.ci8]
+  - [0x9de210, bin]  #endDL command from rgb2c
 
-  #- [0xA351C0, ci8, JungleLandText2.ci8, 112, 24] #ci8
+  - [0x9de218, ci8, img/battleIcon3.ci8, 40, 40]
+  - [0x9DE858, bin]  #endDL command from rgb2c
+  - [0x9DE860, palette, img/battleIcon3.ci8]
+  - [0x9dea60, bin]  #endDL command from rgb2c
+
+  - [0x9dea68, ci8, img/battleIcon4.ci8, 40, 40]
+  - [0x9DF0A8, bin]  #endDL command from rgb2c
+  - [0x9DF0B0, palette, img/battleIcon4.ci8]
+  - [0x9df2b0, bin]  #endDL command from rgb2c
+
+  - [0x9df2b8, ci8, img/battleIcon5.ci8, 40, 40]
+  - [0x9DF8F8, bin]  #endDL command from rgb2c
+  - [0x9DF900, palette, img/battleIcon5.ci8]
+  - [0x9dfb00, bin]  #endDL command from rgb2c
+
+  - [0x9dfb08, ci8, img/battleIcon6.ci8, 40, 40]
+  - [0x9E0148, bin]  #endDL command from rgb2c
+  - [0x9E0150, palette, img/battleIcon6.ci8]
+  - [0x9e0350, bin]  #endDL command from rgb2c
+
+  - [0x9e0358, ci8, img/battleIcon7.ci8, 40, 40]
+  - [0x9E0998, bin]  #endDL command from rgb2c
+  - [0x9E09A0, palette, img/battleIcon7.ci8]
+  - [0x9e0ba0, bin]  #endDL command from rgb2c
+
+  - [0x9e0ba8, ci8, img/battleIcon8.ci8, 40, 40]
+  - [0x9E11E8, bin]  #endDL command from rgb2c
+  - [0x9E11F0, palette, img/battleIcon8.ci8]
+  - [0x9e13f0, bin]  #endDL command from rgb2c
+
+  - [0x9e13f8, ia8, img/arrow1.ia8, 8, 16]
+  - [0x9e1478, bin]  #endDL command from rgb2c
+
+  - [0x9e1480, ci8, img/davyIcon.ci8, 16, 16]
+  - [0x9E1580, bin]  #endDL command from rgb2c
+  - [0x9E1588, palette, img/davyIcon.ci8]
+  - [0x9e1788, bin]  #endDL command from rgb2c
+
+  - [0x9e1790, ci8, img/jackIcon.ci8, 16, 16]
+  - [0x9E1890, bin]  #endDL command from rgb2c
+  - [0x9E1898, palette, img/jackIcon.ci8]
+  - [0x9e1a98, bin]  #endDL command from rgb2c
+
+  - [0x9e1aA0, ci8, img/fredIcon.ci8, 16, 16]
+  - [0x9E1BA0, bin]  #endDL command from rgb2c
+  - [0x9E1BA8, palette, img/fredIcon.ci8]
+  - [0x9e1da8, bin]  #endDL command from rgb2c
+
+  - [0x9e1db0, ci8, img/lindaIcon.ci8, 16, 16]
+  - [0x9E1EB0, bin]  #endDL command from rgb2c
+  - [0x9E1EB8, palette, img/lindaIcon.ci8]
+  - [0x9e20b8, bin]  #endDL command from rgb2c
+
+  - [0x9e20C0, ci8, img/blackIcon.ci8, 16, 16]
+  - [0x9E21C0, bin]  #endDL command from rgb2c
+  - [0x9E21C8, palette, img/blackIcon.ci8]
+  - [0x9e23c8, bin]  #endDL command from rgb2c
+
+  - [0x9e23d0, ci8, img/whiteIcon.ci8, 16, 16]
+  - [0x9E24D0, bin]  #endDL command from rgb2c
+  - [0x9E24D8, palette, img/whiteIcon.ci8]
+  - [0x9e26d8, bin]  #endDL command from rgb2c
+
+  - [0x9e26E0, ia8, img/whiteIcon.ia8, 144, 16]
+  - [0x9E2FE0, bin]  #endDL command from rgb2c
+
+  - [0x9E2FE8, ci4, img/crownIcon.ci4, 16, 16]
+  - [0x9E3068, bin]  #endDL command from rgb2c
+  - [0x9E3070, palette, img/crownIcon.ci4]
+  - [0x9e3270, bin]  #endDL command from rgb2c
+
+  - [0x9E3278, ia4, img/arrowAnim.ia4, 288, 128]
+  - [0x9E7A78, bin]  #endDL command from rgb2c
+
+  - [0x9E7A80, rgba16, img/TitleScreen.rgba16, 320, 240]
+  - [0xA0D280, bin] #endDL command from rgb2c
+  - [0xA0D288, rgba16, img/StageSelectBackground.rgba16, 320, 240]
+  - [0xA32A88, bin] #endDL command from rgb2c
+  - [0xA32A90, ia8, img/JungleLandText.ia8, 104, 16]
+  - [0xA33110, bin] #endDL command from rgb2c
+  - [0xA33118, ia8, img/AntLandText.ia8, 104, 16]
+  - [0xA33798, bin] #endDL command from rgb2c
+  - [0xA337A0, ia8, img/BombLandText.ia8, 104, 16]
+  - [0xA33E20, bin] #endDL command from rgb2c
+  - [0xA33E28, ia8, img/DesertCastleText.ia8, 104, 16]
+  - [0xA344A8, bin] #endDL command from rgb2c
+  - [0xA344B0, ia8, img/KidsLandText.ia8, 104, 16]
+  - [0xA34B30, bin] #endDL command from rgb2c
+  - [0xA34B38, ia8, img/GhostCastleText.ia8, 104, 16]
+  - [0xA351B8, bin] #endDL command from rgb2c
+
+  - [0xA351C0, ci8, img/JungleLandText2.ci8, 112, 24]
   - [0xA35C40, bin]  #endDL command from rgb2c
-  #- [0xA35C48, palette, JungleLandText2.ci8]
+  - [0xA35C48, palette, img/JungleLandText2.ci8]
   - [0xA35E48, bin]  #endDL command from rgb2c
-  #- [0xA35E50, ci8, AntLandText2.ci8, 112, 24]
-  #- [0xA368D8, palette, AntLandText2.ci8]
-  - [0xA36AD8, bin]
-  # - [0xA369D8, bin]
-  #- [0xA32A88, bin, jungleLandIA8Text]
-  #- [0xA4F468, ci8, ....QuestionMark.ci8, 112, 24] # "....?" image from file select
+  - [0xA35E50, ci8, img/AntLandText2.ci8, 112, 24]
+  - [0xA368D0, bin]  #endDL command from rgb2c
+  - [0xA368D8, palette, img/AntLandText2.ci8]
+  - [0xA36AD8, bin] #endDL command from rgb2c
+  - [0xA36ae0, ci8, img/BombLandText2.ci8, 112, 24]
+  - [0xA37560, bin]  #endDL command from rgb2c
+  - [0xA37568, palette, img/BombLandText2.ci8]
+  - [0xA37768, bin]  #endDL command from rgb2c
+  - [0xa37770, ci8, img/DesertCastleText2.ci8, 112, 24]
+  - [0xA381F0, bin]  #endDL command from rgb2c
+  - [0xA381F8, palette, img/DesertCastleText2.ci8]
+  - [0xA383f8, bin] #endDL command from rgb2c
+  - [0xA38400, ci8, img/KidsLandText2.ci8, 112, 24]
+  - [0xA38E80, bin]  #endDL command from rgb2c
+  - [0xA38E88, palette, img/KidsLandText2.ci8]
+  - [0xa39088, bin]  #endDL command from rgb2c
+  - [0xa39090, ci8, img/GhostCastleText2.ci8, 112, 24]
+  - [0xA39B10, bin]  #endDL command from rgb2c
+  - [0xA39B18, palette, img/GhostCastleText2.ci8]
+  - [0xa39d18, bin] #endDL command from rgb2c
+  
+  - [0xa39d20, ci8, img/quintellaDeadEye.ci8, 32, 32]
+  - [0xA3A120, bin]  #endDL command from rgb2c
+  - [0xA3A128, palette, img/quintellaDeadEye.ci8]
+  - [0xa3a328, bin]  #endDL command from rgb2c
+
+  - [0xa3a330, ci4, img/lizardKongDeadEyes.ci4, 64, 64]
+  - [0xA3AB30, bin]  #endDL command from rgb2c
+  - [0xA3AB38, palette, img/lizardKongDeadEyes.ci4]
+  - [0xa3ad38, bin] #endDL command from rgb2c
+
+  - [0xa3ad40, ci8, img/armadilloDeadEyes.ci8, 64, 32]
+  - [0xA3B540, bin]  #endDL command from rgb2c
+  - [0xA3B548, palette, img/armadilloDeadEyes.ci8]
+  - [0xa3b748, bin] #endDL command from rgb2c
+
+  - [0xa3b750, ia4, img/sunsoft.ia4, 192, 40]
+  - [0xa3c650, bin]  #endDL command from rgb2c
+
+  - [0xa3c658, ci8, img/battleRanking.ci8, 320, 240]
+  - [0xA4F258, bin] #endDL command from rgb2c
+  - [0xA4F260, palette, img/battleRanking.ci8]
+  - [0xa4f460, bin] #endDL command from rgb2c
+  
+  - [0xA4F468, ci8, img/....QuestionMark.ci8, 112, 24] # "....?" image from file select
   - [0xA4FEE8, bin] #endDL command from rgb2c
-  #- [0xA4FEF0, palette, ....QuestionMark.ci8]
-  #-[0xA8FF48, ia8, TitleOptions.ci8] #probably inaccurate
-  - [0xA500F0, bin]
-  - [0xAB10B0, bin] # loaded in func_800AAB0C to *D_80200C8C. 0x42B0 bytes
+  - [0xA4FEF0, palette, img/....QuestionMark.ci8]
+  - [0xA500F0, bin] #endDL command from rgb2c
+
+  - [0xa500f8, ci8, img/battleSelect.ci8, 320, 240] # "....?" image from file select
+  - [0xA62CF8, bin] #endDL command from rgb2c
+  - [0xA62D00, palette, img/battleSelect.ci8]
+
+  - [0xa62f00, ci8, img/bombSnakeParts.ci8, 480, 40]
+  - [0xA67A00, palette, img/bombSnakeParts.ci8]
+  - [0xa67c00, bin] #endDL command from rgb2c
+
+  - [0xa67c08, ci8, img/ranking.ci8, 320, 240]
+  - [0xA7A808, bin] #endDL command from rgb2c
+  - [0xA7A810, palette, img/ranking.ci8]
+  - [0xa7aa10, bin] #endDL command from rgb2c
+
+  - [0xa7aa18, ia8, img/rankingNumbers.ia8, 96, 16]
+  - [0xA7B018, bin] #endDL command from rgb2c
+
+  - [0xA7B020, ia8, img/rankingLevel.ia8, 40, 12]
+  - [0xa7b200, bin] #endDL command from rgb2c
+
+  - [0xa7b208, ia8, img/hexagon.ia8, 64, 64]
+  - [0xA7C208, bin] #endDL command from rgb2c
+
+  - [0xA7C210, ia4, img/square.ia4, 48, 48]
+  - [0xa7c690, bin] #endDL command from rgb2c
+
+  - [0xa7c698, ia4, img/japanSystemSupplyC1997.ia4, 256, 16]
+  - [0xA7CE98, bin] #endDL command from rgb2c # loaded in func_800AAB0C to *D_80200C8C. 0x42B0 bytes
+
+  - [0xA7CEA0, ia4, img/theEnd.ia4, 128, 32]
+  - [0xA7D6A0, bin] #endDL command from rgb2c
+
+  - [0xa7d6a8, ia4, img/bowlingSquare.ia4, 24, 24]
+  - [0xa7d7c8, bin] #endDL command from rgb2c
+
+  - [0xa7d7D0, ia4, img/bowlingNumbers.ia4, 224, 16]
+  - [0xA7ded0, bin] #endDL command from rgb2c
+
+  - [0xA7DED8, ia4, img/rabbitBowl.ia4, 256, 144] #check sizes in game pls
+  - [0xA826D8, bin] #endDL command from rgb2c
+
+  - [0xA826E0, ia4, img/bowlingLastSquare.ia4, 40, 24] #check sizes in game pls
+  - [0xA828C0, bin] #endDL command from rgb2c
+
+  - [0xA828C8, ci8, img/crownSmall.ci8, 32, 24]
+  - [0xA82BC8, bin] #endDL command from rgb2c
+  - [0xA82BD0, palette, img/crownSmall.ci8]
+  - [0xa82dd0, bin] #endDL command from rgb2c
+
+  - [0xA82DD8, ci8, img/carrotSmall.ci8, 24, 24]
+  - [0xA83018, bin] #endDL command from rgb2c
+  - [0xA83020, palette, img/carrotSmall.ci8]
+  - [0xa83220, bin] #endDL command from rgb2c
+
+  - [0xa83228, rgba16, img/bossMeter.rgba16, 40, 16]
+  - [0xA83728, bin] #endDL command from rgb2c
+  - [0xA83730, rgba16, img/bossHealth.rgba16, 16, 16]
+  - [0xA83930, bin] #endDL command from rgb2c
+
+  - [0xa83938, ci4, img/iDontKnow.ci4, 352, 288]
+  - [0xA8FF38, bin] #endDL command from rgb2c
+  - [0xA8FF40, palette, img/iDontKnow.ci4]
+  - [0xa90140, bin] #endDL command from rgb2c
+
+  - [0xa90148, ia8, img/menuOptions.ia8, 128, 144]
+
+  - [0xA94948, bin, unkAnimData]
+  - [0xab10a8, bin, unk00]
+
+
+
   - [0xAB5360, bin, rabbit] # ウサギ
   - [0xABD990, bin, subAnime] # サブアニメ
   - [0xACBD90, bin, match] # 青
 
+  
+  - [0xACBDD0, bin, chameleons/davyOLD] #size of 
+  - [0xAD2820, bin, chameleons/jackOLD] #size of 
+  - [0xAD9658, bin, chameleons/fredOLD] #size of 
+  - [0xAE0490, bin, chameleons/lindaOLD] #size of 
+  - [0xAE7A18, bin, chameleons/blackOLD] #size of 
+  - [0xAEE850, bin, chameleons/whiteOLD] #size of 
+
+  - [0xAF5688, bin, noClue]
+
   - name: davy
     type: code
+    subalign: 8
     start: 0xAFC6B0
     subsegments:
       - [0xAFC6B0, bin, davy/davyMain] #size of 0x8BE0
-      - [0xAFD090, bin, davy/davyNumber] #should be ci4, 32x32
-      - [0xAFD290, bin, davy/davyUnkDL0] #0x08 into this has the palette
-      #- [0xAFD298, bin, davy/davyNumberPalette] #is palette for davyNumber
-      #- [0xAFD2B8, bin]
+      - [0xAFD090, ci4, davy/davyNumber.ci4, 32, 32] #should be ci4, 32x32
+      - [0xAFD290, bin] #0x08 into this has the palette
+      - [0xAFD298, palette, davy/davyNumber.ci4] #is palette for davyNumber
       - [0xAFD2C0, bin]
 
   - [0xB05290, bin, jack] #size of 0x8C20 (extra data?)

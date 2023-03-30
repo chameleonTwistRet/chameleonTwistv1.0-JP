@@ -7,6 +7,7 @@ import sys
 dir_path = 'src/'
 asm_path = 'asm/'
 mod_asm_path = 'src/mod/'
+mod_assets_path = 'src/mod/assets'
 assets_path = 'assets/'
 cflags = '-G 0 -fullwarn -verbose -Xcpluscomm -signed -nostdinc -non_shared -Wab,-r4300_mul'
 #python3 tools/splat/split.py chameleontwist.jp.yaml
@@ -39,6 +40,7 @@ header = (
     "objdump_command = $OBJDUMP $in > $in:.o=.s\n"
     "splat = python3 tools/splat/split.py chameleontwist.jp.yaml\n"
     "XGCC = mips-linux-gnu-gcc\n"
+    "IMG_CONVERT = tools/image_converter.py\n"
     "GCC_FLAGS = $include_cflags $DEFINES -G 0 -mno-shared -march=vr4300 -mfix4300 -mabi=32 -mhard-float -mdivide-breaks -fno-stack-protector -fno-common -fno-zero-initialized-in-bss -fno-PIC -mno-abicalls -fno-strict-aliasing -fno-inline-functions -ffreestanding -fwrapv -Wall -Wextra -Wno-missing-braces"
     "\n"
 
@@ -92,7 +94,35 @@ header = (
     "\n"
     
     "rule ci8_img_cc\n"
-    " command = $IMG_CONVERT ci8 $in $out\n"
+    " command = python3 ./$IMG_CONVERT ci8 $in $out\n"
+    "\n"
+
+    "rule ia8_img_cc\n"
+    " command = python3 ./$IMG_CONVERT ia8 $in $out\n"
+    "\n"
+
+    "rule ia4_img_cc\n"
+    " command = python3 ./$IMG_CONVERT ia4 $in $out\n"
+    "\n"
+
+    "rule rgba32_img_cc\n"
+    " command = python3 ./$IMG_CONVERT rgba32 $in $out\n"
+    "\n"
+
+    "rule rgba16_img_cc\n"
+    " command = python3 ./$IMG_CONVERT rgba16 $in $out\n"
+    "\n"
+
+    "rule ci4_img_cc\n"
+    " command = python3 ./$IMG_CONVERT ci4 $in $out\n"
+    "\n"
+
+    "rule pal_cc\n"
+    " command = python3 ./$IMG_CONVERT palette $in $out\n"
+    "\n"
+
+    "rule j_to_png_bin\n"
+    " command = ($LD -r -b binary -o $out $in) && (rm -f $in)\n"
     "\n"
 
     "rule make_elf\n"
@@ -259,17 +289,121 @@ for root, dirs, files in os.walk(mod_asm_path):
         if file.endswith('.s'):
             s_files.append(os.path.join(root, file))
 
+# Get modded rgba32 images
+mod_rgba32_files = []
+for root, dirs, files in os.walk(mod_assets_path):
+    for file in files:
+        if file.endswith('rgba32.png'):
+            mod_rgba32_files.append(os.path.join(root, file))
+
+rgba32_files = []
+for root, dirs, files in os.walk(assets_path):
+    for file in files:
+        if file.endswith('rgba32.png'):
+            if file not in mod_rgba32_files:
+                rgba32_files.append(os.path.join(root, file))
+
+# Get modded rgba16 images
+mod_rgba16_files = []
+for root, dirs, files in os.walk(mod_assets_path):
+    for file in files:
+        if file.endswith('rgba16.png'):
+            mod_rgba16_files.append(os.path.join(root, file))
+
+rgba16_files = []
+for root, dirs, files in os.walk(assets_path):
+    for file in files:
+        if file.endswith('rgba16.png'):
+            if file not in mod_rgba16_files:
+                rgba16_files.append(os.path.join(root, file))
+
+# Get modded ia8 images
+mod_ia8_files = []
+for root, dirs, files in os.walk(mod_assets_path):
+    for file in files:
+        if file.endswith('ia8.png'):
+            mod_ia8_files.append(os.path.join(root, file))
+
+ia8_files = []
+for root, dirs, files in os.walk(assets_path):
+    for file in files:
+        if file.endswith('ia8.png'):
+            if file not in mod_ia8_files:
+                ia8_files.append(os.path.join(root, file))
+
+# Get modded ia4 images
+mod_ia4_files = []
+for root, dirs, files in os.walk(mod_assets_path):
+    for file in files:
+        if file.endswith('ia4.png'):
+            mod_ia4_files.append(os.path.join(root, file))
+
+ia4_files = []
+for root, dirs, files in os.walk(assets_path):
+    for file in files:
+        if file.endswith('ia4.png'):
+            if file not in mod_ia4_files:
+                ia4_files.append(os.path.join(root, file))
+
+
+
+
+# Get modded ci8 images
+mod_ci8_files = []
+for root, dirs, files in os.walk(mod_assets_path):
+    for file in files:
+        if file.endswith('ci8.png'):
+            mod_ci8_files.append(file)
+
+# Get modded ci4 images
+mod_ci4_files = []
+for root, dirs, files in os.walk(mod_assets_path):
+    for file in files:
+        if file.endswith('ci4.png'):
+            mod_ci4_files.append(file)
+
 bin_files = []
 for root, dirs, files in os.walk(assets_path):
     for file in files:
         if file.endswith('.bin'):
             bin_files.append(os.path.join(root, file))
 
+ia8_files = []
+for root, dirs, files in os.walk(assets_path):
+    for file in files:
+        if file.endswith('ia8.png'):
+            ia8_files.append(os.path.join(root, file))
+
+ci8_files = []
+for root, dirs, files in os.walk(assets_path):
+    for file in files:
+        if file.endswith('ci8.png'):
+            ci8_files.append(os.path.join(root, file))
+
+ci4_files = []
+for root, dirs, files in os.walk(assets_path):
+    for file in files:
+        if file.endswith('ci4.png'):
+            ci4_files.append(os.path.join(root, file))
+
+pal_files = []
+pal_files.extend([f.replace('.png', '.pal') for f in ci8_files])
+pal_files.extend([f.replace('.png', '.pal') for f in ci4_files])
+
+j_files = []
+j_files.extend([f.replace('.png', '.j') for f in rgba32_files])
+j_files.extend([f.replace('.png', '.j') for f in rgba16_files])
+j_files.extend([f.replace('.png', '.j') for f in ia8_files])
+j_files.extend([f.replace('.png', '.j') for f in ia4_files])
+j_files.extend([f.replace('.png', '.j') for f in ci8_files])
+j_files.extend([f.replace('.png', '.j') for f in ci4_files])
+
 # Combine the lists and change file extensions
 o_files = []
-for file in c_files + s_files + bin_files:
-    if 'asm/nonmatchings/' not in file:
-        o_files.append("build/" + append_extension(file))
+for file in c_files + s_files + bin_files + rgba32_files + mod_rgba32_files + rgba16_files + mod_rgba16_files + ia8_files + mod_ia8_files + ia4_files + mod_ia4_files + ci4_files + ci8_files:
+    if 'src/mod/' not in file and not file.startswith('src/mod/'):
+        if 'asm/nonmatchings/' not in file:
+            o_files.append("build/" + append_extension(file))
 
 with open('build.ninja', 'w') as f:
     f.write(header)
@@ -281,8 +415,6 @@ with open('build.ninja', 'a') as outfile:
             outfile.write("build build/" + os.path.splitext(c_file)[0] + ".c.o: " + "libc_ll_cc " + c_file + "\n")
         elif "src/mod" in os.path.relpath(c_file):
             outfile.write("build build/" + os.path.splitext(c_file)[0] + ".c.o: " + "mod_cc " + c_file + "\n")
-        # elif os.path.basename(c_file) == "xprintf.c":
-        #     outfile.write("build build/" + os.path.splitext(c_file)[0] + ".c.o: " + "xprintf_cc " + c_file + "\n")
         else:
             folder_name = os.path.basename(os.path.dirname(c_file))
             outfile.write("build build/" + os.path.splitext(c_file)[0] + ".c.o: " + folder_name + "_cc " + c_file + "\n")
@@ -295,8 +427,75 @@ with open('build.ninja', 'a') as outfile:
     for bin_file in bin_files:
         outfile.write("build build/" + os.path.splitext(bin_file)[0] + ".bin.o: " + "bin_file " + bin_file + "\n")
 
+    # Write the rules for ia8 mod files
+    for mod_ia8_file in mod_ia8_files:
+        mod_ia8_file_without_src_mod = mod_ia8_file.replace('src/mod/', '')
+        outfile.write("build " + os.path.splitext(mod_ia8_file_without_src_mod)[0] + ".j: " + "ia8_img_cc " + mod_ia8_file + "\n")
+    
+    # Write the rules for ia8 files
+    for ia8_file in ia8_files:
+        if os.path.basename(ia8_file) not in [os.path.basename(f) for f in mod_ia8_files]:
+            outfile.write("build " + os.path.splitext(ia8_file)[0] + ".j: " + "ia8_img_cc " + ia8_file + "\n")
+
+    # Write the rules for ia4 mod files
+    for mod_ia4_file in mod_ia4_files:
+        mod_ia4_file_without_src_mod = mod_ia4_file.replace('src/mod/', '')
+        outfile.write("build " + os.path.splitext(mod_ia4_file_without_src_mod)[0] + ".j: " + "ia4_img_cc " + mod_ia4_file + "\n")
+    
+    # Write the rules for ia4 files
+    for ia4_file in ia4_files:
+        if os.path.basename(ia4_file) not in [os.path.basename(f) for f in mod_ia4_files]:
+            outfile.write("build " + os.path.splitext(ia4_file)[0] + ".j: " + "ia4_img_cc " + ia4_file + "\n")
+
+
+    # Write the rules for rgba32 mod files
+    for mod_rgba32_file in mod_rgba32_files:
+        mod_rgba32_file_without_src_mod = mod_rgba32_file.replace('src/mod/', '')
+        outfile.write("build " + os.path.splitext(mod_rgba32_file_without_src_mod)[0] + ".j: " + "rgba32_img_cc " + mod_rgba32_file + "\n")
+    
+    # Write the rules for rgba32 files
+    for rgba32_file in rgba32_files:
+        if os.path.basename(rgba32_file) not in [os.path.basename(f) for f in mod_rgba32_files]:
+            outfile.write("build " + os.path.splitext(rgba32_file)[0] + ".j: " + "rgba32_img_cc " + rgba32_file + "\n")
+
+
+    # Write the rules for rgba16 mod files
+    for mod_rgba16_file in mod_rgba16_files:
+        mod_rgba16_file_without_src_mod = mod_rgba16_file.replace('src/mod/', '')
+        outfile.write("build " + os.path.splitext(mod_rgba16_file_without_src_mod)[0] + ".j: " + "rgba16_img_cc " + mod_rgba16_file + "\n")
+
+    # Write the rules for rgba16 files
+    for rgba16_file in rgba16_files:
+        if os.path.basename(rgba16_file) not in [os.path.basename(f) for f in mod_rgba16_files]:
+            outfile.write("build " + os.path.splitext(rgba16_file)[0] + ".j: " + "rgba16_img_cc " + rgba16_file + "\n")
+    
+
+    # Write the rules for ci8 files
+    for ci8_file in ci8_files:
+        outfile.write("build " + os.path.splitext(ci8_file)[0] + ".j: " + "ci8_img_cc " + ci8_file + "\n")
+
+    # Write the rules for ci8 pal files
+    for ci8_file in ci8_files:
+        outfile.write("build " + os.path.splitext(ci8_file)[0] + ".pal.j: " + "pal_cc " + ci8_file + "\n")
+
+    # Write the rules for ci4 files
+    for ci4_file in ci4_files:
+        outfile.write("build " + os.path.splitext(ci4_file)[0] + ".j: " + "ci4_img_cc " + ci4_file + "\n")
+
+    # Write the rules for ci4 pal files
+    for ci4_file in ci4_files:
+        outfile.write("build " + os.path.splitext(ci4_file)[0] + ".pal.j: " + "pal_cc " + ci4_file + "\n")
+
+    # Write the rules for ci4 files
+    for pal_file in pal_files:
+        outfile.write("build build/" + os.path.splitext(pal_file)[0] + ".pal.o: " + "j_to_png_bin " + pal_file + ".j " + "\n")
+
+    #j files are png images converted using image_converter.py
+    for j_file in j_files:
+        if not file.endswith('.pal.j'):
+            outfile.write("build build/" + os.path.splitext(j_file)[0] + ".png.o: " + "j_to_png_bin " + j_file + "\n")
+
     # Build the ninja rule with the .o files
     outfile.write("build build/chameleontwist.jp.elf: make_elf " + " ".join(o_files) + "\n")
     outfile.write("build build/chameleontwist.jp.bin: make_rom_bin build/chameleontwist.jp.elf\n")
     outfile.write("build build/chameleontwist.jp.z64: make_rom_z64 build/chameleontwist.jp.bin\n")
-
