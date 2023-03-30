@@ -102,9 +102,9 @@ void Audio_stopOsc(struct UnkList* arg0) {
     D_80200060.unk0 = arg0;
 }
 
-void Audio_RomCopy(u32 devAddr, void* arg1, u32 arg2) {
+void Audio_RomCopy(u32 devAddr, void* vAddr, u32 size) {
     osWritebackDCacheAll();
-    osPiStartDma(&D_801FF7F0, 0, 0, devAddr, arg1, arg2, &D_801FF750);
+    osPiStartDma(&D_801FF7F0, 0, 0, devAddr, vAddr, size, &D_801FF750);
     osRecvMesg(&D_801FF750, NULL, 1);
 }
 
@@ -950,7 +950,7 @@ void func_80094220(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80094540.s")
 
-void func_800945E4(s32 arg0) {
+void func_800945E4(CTTask* arg0) {
 
 }
 
