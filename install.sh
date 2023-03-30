@@ -25,5 +25,8 @@ if cat /etc/os-release | grep -E 'ID=debian|ID_LIKE=(.*)debian' &> /dev/null; th
     pip install tqdm
     pip install colorama
     pip install intervaltree
+    pip install GitPython
+    pip install requests
+    pip install colour
     chmod +x tools/ido_5.3/usr/lib/ #give exec permissions to ido folder (will change in the future)
 fi
