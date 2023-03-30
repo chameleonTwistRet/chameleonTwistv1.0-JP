@@ -6,6 +6,7 @@ import os
 import subprocess
 import sys
 from colour import Color
+import json
 
 script_dir = os.path.dirname(os.path.realpath(__file__))
 root_dir = os.path.join(script_dir, "..")
@@ -89,16 +90,17 @@ def main(args):
                     str(len(matching_funcs)), str(total_size), str(nonmatching_size), str(matching_size)]
         print(",".join(csv_list))
     elif args.shield_json:
-        import json
-
         # https://shields.io/endpoint
-        color = Color("#50ca22", hue=lerp(0, 105/255, matching_ratio / 100))
-        print(json.dumps({
+        with open(os.getcwd() + "/decompAsset/percentBadges/Total-All.json", "w") as f:
+            f.write(json.dumps({
             "schemaVersion": 1,
-            "label": f"progress ({args.version})",
+            "label": f"Total - All",
             "message": f"{matching_ratio:.2f}%",
-            "color": color.hex,
-        }))
+            "color": Color("#00FF00", hue=lerp(0, 105/255, matching_ratio / 100)).hex,
+            }))
+        
+        
+
     else:
         if matching_size + nonmatching_size != total_size:
             print("Warning: category/total size mismatch!\n")
