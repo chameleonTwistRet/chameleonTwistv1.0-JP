@@ -17,6 +17,7 @@ expected/
 .vscode/targets.log
 tools/n64crc/n64crc.exe
 src/mod/
+tools/cli.ini
 
 # Tool artifacts
 --no-check-sections
@@ -25,6 +26,5 @@ src/mod/
 build.ninja
 undefined_funcs_auto.txt
 undefined_syms_auto.txt
-api_key.txt
 ctx.c
 context.txt
