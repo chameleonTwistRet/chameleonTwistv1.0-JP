@@ -414,7 +414,8 @@ typedef struct tempStruct {
 } tempStruct; //sizeof 0x48
 
 typedef struct CTTask { // interally referred to as "S_task"
-    /* 0x00 */ s32 unk_00;
+    /* 0x00 */ s16 unk_00;
+    /* 0x02 */ s16 unk_02;
     /* 0x04 */ s32 unk_04;
     /* 0x08 */ void (*function)(struct CTTask*);
     /* 0x0C */ struct CTTask* next; 
