@@ -62,7 +62,7 @@ segments:
       - [0xB5A20, c, os/recvmesg]
       - [0xB5B60, c, io/pirawread]
       - [0xB5BC0, c, gu/mtxutil]
-      - [0xB5E30, c, gu/rotateRPY] #ido 5.3 -O3
+      - [0xB5E30, c, gu/scale] #ido 5.3 -O3
       - [0xB5ED0, c, gu/mtxcatl]
       - [0xB5F90, c, gu/rotate]
       - [0xB6180, c, gu/sinf]
