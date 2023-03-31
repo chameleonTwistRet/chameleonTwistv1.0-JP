@@ -2,9 +2,9 @@
 #include "guint.h"
 
 //needs -O3
-#pragma GLOBAL_ASM("asm/nonmatchings/gu/rotateRPY/guScaleF.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/gu/scale/guScaleF.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/gu/rotateRPY/guScale.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/gu/scale/guScale.s")
 
 // void guScaleF(float mf[4][4], f32 r, f32 p, f32 h) {
 //     guMtxIdentF(mf);
