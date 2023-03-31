@@ -1222,7 +1222,12 @@ void func_8009C2FC(CTTask* arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009D0EC.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009D19C.s")
+//#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009D19C.s")
+void func_8009D19C(s32 arg0) {
+    if (func_8008EC90() != 0) {
+        func_8008FD04(6);
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009D1CC.s")
 
