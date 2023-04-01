@@ -19,7 +19,16 @@ void func_800DF91C(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/audio/cspgettempo/func_800DFD30.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/audio/cspgettempo/func_800DFE9C.s")
+//#pragma GLOBAL_ASM("asm/nonmatchings/audio/cspgettempo/func_800DFE9C.s")
+
+typedef struct temp_func_800DFE9C {
+    char unk0[0xc];
+    s32 unkC;
+} temp_func_800DFE9C;
+
+s32 func_800DFE9C(temp_func_800DFE9C* arg0) {
+    return arg0->unkC;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/audio/cspgettempo/func_800DFEA4.s")
 
