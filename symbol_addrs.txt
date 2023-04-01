@@ -660,3 +660,4 @@ alMainBusPull = 0x800e9620; // type:func rom:0xc4a20
 alRaw16Pull = 0x800e9914; // type:func rom:0xc4d14
 alResamplePull = 0x800ea37c; // type:func rom:0xc577c
 _doModFunc = 0x800ED3E0; // type:func
+alSavePull = 0x800EB334; // type:func

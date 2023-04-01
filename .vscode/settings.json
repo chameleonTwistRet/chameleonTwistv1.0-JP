@@ -20,6 +20,7 @@
         "include_asm.h": "c",
         "macros.h": "c",
         "enums.h": "c",
-        "os.h": "c"
+        "os.h": "c",
+        "assert.h": "c"
     }
 }
