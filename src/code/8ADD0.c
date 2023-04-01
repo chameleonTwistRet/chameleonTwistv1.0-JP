@@ -4,6 +4,13 @@ extern s16 gTotalCarrots;
 extern unkStruct07 D_802019A8[];
 extern Collision gZoneCollisions[];
 extern CardinalDirection gCardinalDirections[5]; // including "NO_DIR"
+extern s32 sBossIDs[6];
+
+typedef struct newStruct {
+    s32 dummy0[10]; // Placeholder for the first 10 elements
+    f32 field1;
+    f32 field2;
+} newStruct;
 
 void func_800C2A00(void);
 void func_800CFDC8(playerActor*);
@@ -34,8 +41,8 @@ extern s32 D_80168E14;
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B08C8.s")
 
-void func_800B09C0(s32 arg0, f32* arg1) {
-    func_800B56D4(arg1[10], arg1[11]);
+void func_800B09C0(s32 arg0, newStruct* arg1) {
+    func_800B56D4(arg1->field1, arg1->field2);
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B09E8.s")
@@ -144,7 +151,18 @@ s32 isPickup(Actor* actor) {
     return (actor->actorID >= R_Heart ) ? 1 : 0;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/isBossID.s")
+s32 isBossID(s32 arg0) {
+    int i;
+    int ret = 0;
+    
+    for (i = 0; i < ARRAY_COUNT(sBossIDs); i++) {
+        if (arg0 == sBossIDs[i]) {
+            ret = 1;
+            break;
+        }
+    }
+    return ret;
+}
 
 s32 isBossActor(s32* arg0) {
     return isBossID(*arg0);

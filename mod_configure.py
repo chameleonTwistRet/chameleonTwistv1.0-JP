@@ -175,8 +175,6 @@ with open('asm/nonmatchings/code/5FF30/MainLoop.s', 'w') as file:
     # Write the modified contents back to the file
     file.writelines(lines)
 
-
-
 filename = 'chameleontwist.jp.ld'
 mod_directory = 'src/mod'
 
