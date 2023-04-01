@@ -13,7 +13,7 @@ extern char D_8010EEF4[];
 extern char D_8010EE68[];
 extern char D_8010EE7C[];
 extern char D_8010EE88[];
-extern unkStruct06* D_801FCA0C;
+extern CTTask* D_801FCA0C;
 extern s16 D_80100D64[];
 extern s32 D_801FCA08;
 extern s16 D_801FCA18;
@@ -42,14 +42,14 @@ extern char D_8010DB04[];
 extern char D_8010DB10[];
 
 void* func_8008CF6C(s32, s32, s32);
-void func_800A96DC(tempStruct1*);
+void func_800A96DC(CTTask*);
 s32 func_8008EC90(void);
 void func_800A25F0(s32, f32);
-void func_8009BA38(tempStruct1*);
-void func_8009C33C(tempStruct1*);
+void func_8009BA38(CTTask*);
+void func_8009C33C(CTTask*);
 void func_80099AF4(void);
 void func_800A8944(void);
-void func_8009C038(tempStruct1*);
+void func_8009C038(CTTask*);
 void func_800A7E9C(s32, u8*);
 void func_800A8668(void);
 s32 func_800A7F70(void);
@@ -62,11 +62,11 @@ void func_800A832C(s32, unkStruct05*);
 void func_800A80C8(void);
 void func_800AA844(s32);
 void func_800C29D8(s32);
-void func_8008CCDC(unkStruct06*);
+void func_8008CCDC(CTTask*);
 s32 func_800A7A18(u32 arg0);
 s32 func_800A7E78(s32*);
 void func_8008E9AC(s32, s32, s32, s32, void*);
-void func_800A97E4(tempStruct1*);
+void func_800A97E4(CTTask*);
 
 //jump table
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/videoproc.s")
@@ -102,9 +102,9 @@ void Audio_stopOsc(struct UnkList* arg0) {
     D_80200060.unk0 = arg0;
 }
 
-void Audio_RomCopy(u32 devAddr, void* arg1, u32 arg2) {
+void Audio_RomCopy(u32 devAddr, void* vAddr, u32 size) {
     osWritebackDCacheAll();
-    osPiStartDma(&D_801FF7F0, 0, 0, devAddr, arg1, arg2, &D_801FF750);
+    osPiStartDma(&D_801FF7F0, 0, 0, devAddr, vAddr, size, &D_801FF750);
     osRecvMesg(&D_801FF750, NULL, 1);
 }
 
@@ -290,7 +290,7 @@ s32 func_8008873C(s32 arg0, s32 arg1, s32 arg2) {
     if (D_800FF64C == D_800FF650 ) {
         return 0;
     }
-    
+    //"TALK = %d\n"
     DummiedPrintf(D_8010D834, D_80200A98[D_800FF64C]);
     return func_80087904(D_80200A98[D_800FF64C], arg0, arg1, arg2, 0, 2);
 }
@@ -588,9 +588,11 @@ void func_8008C584(void) {
             continue;
         }
         if (sp2C == NULL) {
+            //"/* Ｖ割り込みだったらブレイク */\n"("Break if V interrupt")
             DummiedPrintf(D_8010D940, sp2C);
             break;
         } else {
+            //"%d\n"
             DummiedPrintf(D_8010D964, sp2C);
         }
     }
@@ -606,6 +608,7 @@ void func_8008C610(void) {
     D_800FF884 = osGetTime();
     func_8008C584();
     D_800FF884 = osGetTime() - D_800FF884;
+    //"１フレーム時間 %d\n" ("1 frame time %d")
     DummiedPrintf(D_8010D968, D_800FF884);
 }
 
@@ -637,18 +640,18 @@ void strcpy(u8* arg0, u8* arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008CC48.s")
 
-void func_8008CCDC(unkStruct06* arg0) {
-    unkStruct06* v0 = arg0->next;
-    unkStruct06* v1 = arg0->unk_10;
+void func_8008CCDC(CTTask* arg0) {
+    CTTask* v0 = arg0->next;
+    CTTask* v1 = arg0->unk_10;
 
     v0->unk_10 = v1;
     v1->next = v0;
-    arg0->unk0 = 0;
+    arg0->unk_00 = 0;
 }
 
 void func_8008CCF4(void) {
-    unkStruct06* prev;
-    unkStruct06* cur = D_801FCA0C->next;
+    CTTask* prev;
+    CTTask* cur = D_801FCA0C->next;
     
     while (cur->next != 0) {
         prev = cur;
@@ -721,7 +724,7 @@ s32 func_8008EC90(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008ECB8.s")
 
-void func_8008EF78(unkStruct06* arg0) {
+void func_8008EF78(CTTask* arg0) {
     func_8008ECB8();
     func_8008CCDC(arg0);
 }
@@ -755,9 +758,11 @@ void func_8008EF78(unkStruct06* arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008FC34.s")
 
 void func_8008FD04(s32 arg0) {
+    //" 元%d %d\n"("former %d %d")
     DummiedPrintf(D_8010DB04, gameModeCurrent, D_800FFEB8);
     D_800FFEB8 = 0;
-    gameModeCurrent = arg0;    
+    gameModeCurrent = arg0;
+    //" 後%d %d\n"("after %d %d")
     DummiedPrintf(D_8010DB10, gameModeCurrent, D_800FFEB8);
 }
 
@@ -945,7 +950,7 @@ void func_80094220(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80094540.s")
 
-void func_800945E4(s32 arg0) {
+void func_800945E4(CTTask* arg0) {
 
 }
 
@@ -1053,31 +1058,31 @@ void func_800966E0(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80098F50.s")
 
-void func_80099570(tempStruct1* arg0) {
+void func_80099570(CTTask* arg0) {
     func_800983C8();
     func_80098F50(arg0);
 }
 
-void func_80099598(tempStruct1* arg0) {
+void func_80099598(CTTask* arg0) {
     _bzero(&D_80200050[arg0->unk_62], sizeof(unkStruct05));
     func_800A832C(arg0->unk_62, &D_80200050[arg0->unk_62]);
     arg0->function = func_8009961C;
 }
 
-void func_8009960C(tempStruct1* arg0) {
+void func_8009960C(CTTask* arg0) {
     arg0->function = &func_8009961C;
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009961C.s")
 
-void func_8009984C(tempStruct1* arg0) {
+void func_8009984C(CTTask* arg0) {
     arg0->unk_68 = 0xFF;
     func_80099570(arg0);
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80099870.s")
 
-void func_800998CC(tempStruct1* arg0) {
+void func_800998CC(CTTask* arg0) {
     arg0->function = &func_8009984C;
 }
 
@@ -1147,12 +1152,12 @@ void func_8009B45C(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009BCF0.s")
 
-void func_8009BDA8(tempStruct1* arg0) {
+void func_8009BDA8(CTTask* arg0) {
     arg0->unk_68 = 4;
     arg0->function = &func_8009BDE4;
 }
 
-void func_8009BDC0(tempStruct1* arg0) {
+void func_8009BDC0(CTTask* arg0) {
     if (arg0->unk_68--) {
         return;
     }
@@ -1165,7 +1170,7 @@ void func_8009BDC0(tempStruct1* arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009BFA0.s")
 
-void func_8009BFF8(tempStruct1* arg0) {
+void func_8009BFF8(CTTask* arg0) {
     func_80099AF4();
     func_800A8944();
     arg0->function = &func_8009C038;
@@ -1178,7 +1183,7 @@ void func_8009BFF8(tempStruct1* arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009C278.s")
 
-void func_8009C2FC(tempStruct1* arg0) {
+void func_8009C2FC(CTTask* arg0) {
     if (arg0->unk54 == 0xF) {
         arg0->function = &func_8009C33C;
         return;
@@ -1489,7 +1494,7 @@ s32 dma_copy(void* arg0, void* arg1, s32 size) {
     s32 temp_v0;
 
     dmaSizeCalc = (size / 20480) + 1;
-
+    //"ピース %d\n"("piece %d")
     DummiedPrintf(D_8010ECF8, dmaSizeCalc );
     for (i = 0, j = 0; i < ARRAY_COUNT(D_801FCFD8); i++) {
         if (D_801FCFD8[i].index < 0) {
@@ -1501,6 +1506,7 @@ s32 dma_copy(void* arg0, void* arg1, s32 size) {
     }
     
     if (i >= ARRAY_COUNT(D_801FCFD8)) {
+        //"満タン\n"("full tank"?)
         DummiedPrintf(D_8010ED04);
         return -1;
     }
@@ -1511,11 +1517,16 @@ s32 dma_copy(void* arg0, void* arg1, s32 size) {
     temp_v0 = func_800A73EC(arg0, arg1, size, dmaSizeCalc );
 
     if (temp_v0 < 0) {
+        //"ＤＭＡ生成エラー\n"("DMA generation error")
         DummiedPrintf(D_8010ED0C);
+        //"満kkkkタン\n"("full kkkk tank"?)
         DummiedPrintf(D_8010ED20);
     } else {
+        //"読み(%X)書き(%X)サイズ(%d)\n"("read (%X) write (%X) size (%d)")
         DummiedPrintf(D_8010ED2C, arg0, arg1, size);
+        //"書き終わり(%X)\n"("end of write (%x)")
         DummiedPrintf(D_8010ED48, ((s32)arg1 + size));
+        //"%d\n"
         DummiedPrintf(D_8010ED58, temp_v0);
     }
     return temp_v0;
@@ -1528,7 +1539,7 @@ s32 func_800A772C(void* arg0, void* arg1, s32 size) {
     s32 temp_v0;
 
     dmaSizeCalc = (size / 20480) + 1;
-
+    //"ピース %d\n"("piece %d")
     DummiedPrintf(D_8010ED5C, dmaSizeCalc );
     for (i = 0, j = 0; i < ARRAY_COUNT(D_801FCFD8); i++) {
         if (D_801FCFD8[i].index < 0) {
@@ -1542,8 +1553,9 @@ s32 func_800A772C(void* arg0, void* arg1, s32 size) {
     if (i >= ARRAY_COUNT(D_801FCFD8)) {
         return -1;
     }
-    
+    //"読み(%X)書き(%X)サイズ(%d)\n"("read (%X) write (%X) size (%d)")
     DummiedPrintf(D_8010ED68, arg0, arg1, size);
+    //"書き終わり(%X)\n"("end of write (%x)")
     DummiedPrintf(D_8010ED84, (s32)arg1 + size);    
     osInvalICache(arg1, size);
     osInvalDCache(arg1, size);
@@ -1551,6 +1563,7 @@ s32 func_800A772C(void* arg0, void* arg1, s32 size) {
     temp_v0 = func_800A73EC(arg0, arg1, size, dmaSizeCalc );
 
     if (temp_v0 < 0) {
+        //"ＤＭＡ生成エラー\n"("DMA generation error")
         DummiedPrintf(D_8010ED94);
     }
     return temp_v0;
@@ -1697,6 +1710,7 @@ s32 func_800A7ED0(u8 *arg0) {
     }
     
     if ((var_t1 == new_var2) || (var_t2 == new_var2)) {
+        //" SaveData FILLER\n"
         DummiedPrintf(D_8010EDB8, &arg0[i], var_a2, new_var);
         return ((*arg0) + 5) & 0xFF;
     }
@@ -1721,7 +1735,9 @@ s32 SaveData_Compare(u8 *arg0, u8 *arg1) {
         if (arg0){}
         if (arg0[i] != new_var[i]) {
             var_s7 = 1;
-            do { DummiedPrintf(D_8010EDE8, i, arg0[i], arg1[i]); } while (0);
+            do {
+                //"%dバイト目違う [%X][%X}\n"("%d bytes wrong [%X][%X}\n")(sic) 
+                DummiedPrintf(D_8010EDE8, i, arg0[i], arg1[i]); } while (0);
         }
     }
     
@@ -1763,10 +1779,12 @@ void func_800A847C(u8* arg0) {
     if (osEepromProbe(&D_80175620) != 1) {
         DummiedPrintf(D_8010EECC);
     }
-    
+    //"メインロード開始" ("main road start"?)
     DummiedPrintf(D_8010EEE0);
     
     if (osEepromLongRead(&D_80175620, 0x30U, arg0, 0x80) != 0) {
+        //"ＥＥＰロム読み込みエラー 共通部分(Main)から %d バイトを読めません"
+        //("EEP ROM read error Cannot read %d bytes from common part (Main)")
         DummiedPrintf(D_8010EEF4, 0x80);
     }
     
@@ -1774,16 +1792,19 @@ void func_800A847C(u8* arg0) {
 }
 
 void func_800A850C(s32 arg0, u8* arg1) { 
+    //"%d 番目のファイルにセーブ  %dバイト目\n"("save %d bytes to %d file"?)
     DummiedPrintf(D_8010EF38, arg0, (s32) (arg0 * 0x60) / 8);
     osRecvMesg(&D_80175620, NULL, 0);
     
     if (osEepromProbe(&D_80175620) != 1) {
+        //"ＥＥＰロムエラー \n"("EEP rom error")
         DummiedPrintf(D_8010EF60);
     }
-    
+    //"セーブ開始\n" ("start save")
     DummiedPrintf(D_8010EF74);
     
     if (osEepromLongWrite(&D_80175620, (arg0 * 0x60) / 8, arg1, 0x60) != 0) {
+        //"ＥＥＰロム書き込みエラー \n"("EEProm write error")
         DummiedPrintf(D_8010EF80);
     }
     
@@ -1824,6 +1845,7 @@ void func_800A8668(void) {
     DummiedPrintf(D_8010EFB0);
     
     if (osEepromLongWrite(&D_80175620, 0x30, &D_80200C00.flags0[0], 0x80) != 0) {
+        //"ＥＥＰロム書き込みエラー \n"("EEPRom write error")
         DummiedPrintf(D_8010EFBC);
     }
     
@@ -1847,6 +1869,7 @@ s32 func_800A870C(void) {
 
 void func_800A878C(unkStruct05* arg0) {
     _bzero(arg0, 0x60);
+    //"ファイルクリア"("file clear")
     DummiedPrintf(D_8010EFD8);
     func_800A7E9C(0x12C, &arg0->unk_57);
     arg0->unk_5D = 0;
@@ -1875,9 +1898,10 @@ void func_800A878C(unkStruct05* arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A9450.s")
 
 void func_800A9690(void) {
-    tempStruct1* temp_v0 = func_8008CF6C(1, 0x64, 0);
+    CTTask* temp_v0 = func_8008CF6C(1, 0x64, 0);
 
     if (temp_v0 == NULL) {
+        //"エラー\n"("error")
         DummiedPrintf(D_8010F084);
         while (1);
     }
@@ -1886,7 +1910,7 @@ void func_800A9690(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A96DC.s")
 
-void func_800A9728(tempStruct1* arg0) {
+void func_800A9728(CTTask* arg0) {
     if (arg0->unk_5C != 0) {
         arg0->unk_5C--;
         if (arg0->unk_5C != 0) {
@@ -2018,10 +2042,12 @@ void func_800AAB0C(s32 arg0) {
     UseFixedRNGSeed = TRUE;
     D_80200C8C = func_80056EE4(dmaSize);
     if (D_80200C8C == NULL) {
+        //"バッファがない\n"("no buffer")
         osSyncPrintf(D_8010F1EC, D_80200C8C);
     } else {
         dmaResult = dma_copy(&D_AB10B0, D_80200C8C, dmaSize);
         if (dmaResult < 0) {
+            //"データ読み込み失敗\n" ("data read failure")
             osSyncPrintf(D_8010F1FC);
         } else {
             while (func_800A72E8(dmaResult) == 0) {}

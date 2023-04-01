@@ -151,6 +151,7 @@ void mod_main_func(void) {
             func_80055AA0();
             goto loop;
         case GAME_MODE_UNK_15:
+            //"No Process = %d\n"
             DummiedPrintf(D_8010DB20, gameModeCurrent);
             goto loop;
     }
