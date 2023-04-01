@@ -4,13 +4,23 @@
 
 //const char padRodata[] = "\0\0\0\0\0\0\0";
 
-// Sum of Two Squares: Elisiah
-f32 func_8002D0E0(f32 arg0, f32 arg1) {
-    return SUM_OF_SQUARES(arg0, arg1);
+/**
+ * @brief Returns the result of the SUM_OF_SQUARES macro
+ * 
+ * @param x: first value 
+ * @param y: second value
+ * @return (f32) x^2 + y^2
+ */
+f32 func_8002D0E0(f32 x, f32 y) {
+    return SUM_OF_SQUARES(x, y);
 }
 
-// Takes an angle in degrees and returns its normalised angle from 0
-void normalizeDegrees(f32* theta_ptr) {
+/**
+ * @brief Wrap degrees to 0-360
+ * 
+ * @param theta_ptr: pointer to the angle to wrap
+ */
+void wrapDegrees(f32* theta_ptr) {
     while(1){
         f32 theta = *theta_ptr;
 
@@ -86,7 +96,7 @@ s32 func_8002D328(f32 theta, f32 phi) { // used to be void and still built
 
     theta_ptr = &theta;
     theta = theta - 90.0f;
-    normalizeDegrees(theta_ptr);
+    wrapDegrees(theta_ptr);
     return func_8002D2A0(theta, phi);   // used to not return and still built
 }
 
@@ -113,7 +123,7 @@ s32 func_8002D36C(f32* arg0, f32 arg1, f32 arg2) {
         phi_v1 = 1;
     }
     sp1C = phi_v1;
-    normalizeDegrees(arg0);
+    wrapDegrees(arg0);
     return sp1C;
 }
 
@@ -917,7 +927,7 @@ void func_8003A3F0(Actor* antQueenActor) {
 
 // Ant Queen-Ant: Auto-Decompile
 void func_8003B894(Actor* arg0) {
-    normalizeDegrees(&arg0->unk_90);
+    wrapDegrees(&arg0->unk_90);
     arg0->unk_94 = arg0->position._f32.x;
     arg0->vel.y = D_8010B9E8;
     func_800382F4(arg0);
@@ -1609,7 +1619,7 @@ void func_800488FC(Actor* arg0) {
 void func_80048A68(Actor* arg0) {
     arg0->unk_134[2] = arg0->unk_15C;
     arg0->unk_134[3] = arg0->unk_90 + 180.0f;
-    normalizeDegrees(&arg0->unk_134[3]);
+    wrapDegrees(&arg0->unk_134[3]);
     arg0->unk_134[4] = arg0->unk_134[3];
     arg0->unk_10C[0] = 6;
     arg0->unk_134[0] = arg0->pos.x;

@@ -188,6 +188,7 @@ Vec3f* func_800B2470(Vec3f* arg0, Vec3f arg1, Vec3f arg4, f32 arg7, s32 arg8) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B2B50.s")
 
+//https://decomp.me/scratch/9WBVe
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/Vec3f_SetAtBossPos.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/isBossPresent.s")

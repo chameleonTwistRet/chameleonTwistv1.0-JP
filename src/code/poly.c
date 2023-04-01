@@ -10,7 +10,7 @@ extern s32 gCurrentStage;
 extern f64 D_801106A0;
 extern f64 D_801106A8;
 
-void RotateVector3D(Vec3f*, Vec3f, f32, s32);
+Vec3f* RotateVector3D(Vec3f*, Vec3f, f32, s32);
 void func_800D3854(playerActor*, Tongue*, Camera*, Vec3f*, Vec3f*, s32);
 void func_800D5394(playerActor*, Tongue*, Camera*, Vec3f*, Vec3f*, s32);
 void func_800D6864(playerActor*, Tongue*, Camera*, Vec3f*, Vec3f*);

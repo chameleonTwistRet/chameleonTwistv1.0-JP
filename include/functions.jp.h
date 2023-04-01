@@ -7,7 +7,7 @@ f32 tanf(f32);
 f32 __sinf(f32);
 f32 __sqrtf(f32);
 f32 __cosf(f32);
-void normalizeDegrees(f32*);
+void wrapDegrees(f32*);
 void leoDrive_reset(void*);
 
 void CartesianToSpherical(Vec3f, f32*, f32*, f32*);
