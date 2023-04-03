@@ -416,31 +416,74 @@ segments:
     subalign: 8
     subsegments:
     - start: 0x6A8e20
+    name: JungleLand
+    type: data
+    vram: 0x8081B8C8
+    subalign: 8
+    subsegments:
+    - start: 0x6A8e20
       name: lilypad
       type: .data
       vram: 0x8081B8C8
       start: 0x6BC448
       subalign: 8
       subsegments:
-        - { start: 0x6BC448, type: vtx, data_only: True, name: model/lilypad/lilypad}
-        - [0x6BC4C8, mtx, model/lilypad/lilypad]
+        - { start: 0x6BC448, type: vtx, data_only: True, name: model/JungleLand/lilypad/lilypad}
+        - [0x6BC4C8, mtx, model/JungleLand/lilypad/lilypad]
         - [0x6BC508, bin] # rgb2c remnant in mtx
-        - [0x6BC510, ci4, img/lilypad.ci4, 64, 64]
-        - [0x6BCD18, palette, img/lilypad.ci4]
-        - { start: 0x6BCF18, type: gfx, data_only: True, name: model/lilypad/lilypad}
+        - [0x6BC510, ci4, img/JungleLand/lilypad.ci4, 64, 64]
+        - [0x6BCD18, palette, img/JungleLand/lilypad.ci4]
+        - { start: 0x6BCF18, type: gfx, data_only: True, name: model/JungleLand/lilypad/lilypad}
 
-    -   start: 0x6BD040
-        name: vine
-        type: .data
-        vram: 0x8081C4C0
-        #symbol_name_format: $VRAM_$ROM
-        subalign: 8
-        subsegments:
-          - { start: 0x6BD040, type: vtx, data_only: True, name: model/vine/vine}
-          - [0x6BD080, mtx, model/vine/vine]
-          - [0x6BD0C0, ci8, img/vine.ci8, 16, 64]
-          - [0x6BD4C0, palette, img/vine.ci8]
-          - { start: 0x6BD6C0, type: gfx, data_only: True, name: model/vine/vine}
+    - start: 0x6BD040
+      name: vine
+      type: .data
+      vram: 0x8081C4C0
+      #symbol_name_format: $VRAM_$ROM
+      subalign: 8
+      subsegments:
+        - { start: 0x6BD040, type: vtx, data_only: True, name: model/JungleLand/vine/vine}
+        - [0x6BD080, mtx, model/JungleLand/vine/vine]
+        - [0x6BD0C0, ci8, img/JungleLand/vine.ci8, 16, 64]
+        - [0x6BD4C0, palette, img/JungleLand/vine.ci8]
+        - { start: 0x6BD6C0, type: gfx, data_only: True, name: model/JungleLand/vine/vine}
+
+    - start: 0x6BE388
+      name: mossyStump
+      type: .data
+      vram: 0x8081D808
+      subalign: 8
+      subsegments:
+        - { start: 0x6BE388, type: vtx, data_only: True, name: model/JungleLand/vineTree/vineTree}
+        - { start: 0x6BE4A8, type: mtx, data_only: True, name: model/JungleLand/vineTree/vineTree}
+        - [0x6BE4F0, ci8, img/JungleLand/vineTree.ci8, 64, 32]
+        - [0x6BECF8, palette, img/JungleLand/vineTree.ci8]
+        - { start: 0x6BEEF8, type: gfx, data_only: True, name: model/JungleLand/vineTree/vineTree}
+    
+    - [0x06BF150, bin]
+
+   #- [0x6C0AB0, ci8, img/brokenbridge.ci8, 64, 32]
+   #- [0x6C12B8, palette, img/brokenbridge.ci8]
+   #- [0x6C14B8, bin]
+
+   #- [0x6C1740, ci4, img/box.ci4, 32, 32]
+   #- [0x6C1948, palette, img/box.ci4]
+   #- [0x6C1B48, bin]
+
+    #- [0x6C1B50, ci4, img/barrel.ci4, 64, 32]
+    #- [0x6C1F58, palette, img/barrel.ci4]
+    #- [0x6C2158, bin]
+
+    #- [0x6C2160, ci4, barrel2, 64, 32]
+    #- [0x6C2568, palette, barrel2]
+
+    #- [0x6C42F8, ci8, img/singularPlank.ci8, 64, 32]
+    #- [0x6C4AF8, palette, img/singularPlank.ci8]
+    #- [0x6C4D00, bin]
+
+    #- [0x6C6DD8, ci8, img/lava.ci8, 32, 32]
+    #- [0x6C71E0, palette, img/lava.ci8]
+    #- [0x6C73E0, bin]
 
   - [0x70db70, bin, Level/LizardKong]
   - [0x7477f0, bin, Level/Quintella]
