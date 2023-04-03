@@ -14,8 +14,10 @@ options:
   # undefined_syms_path: undefined_syms.txt
   asm_path: asm
   src_path: src
+  asset_path: assets
   build_path: build
-  # extensions_path: tools/splat_ext
+  gfx_ucode: f3dex
+  extensions_path: tools/splat_ext
   auto_all_sections: [".data", ".rodata", ".bss"]
   migrate_rodata_to_functions : False
   create_undefined_funcs_auto: no
@@ -406,6 +408,28 @@ segments:
   - [0x5C3B20, bin, Level/IntroOutro]
   - [0x6344c0, bin, Level/GhostCastle]
   - [0x6a8e20, bin, Level/JungleLand]
+
+  - start: 0x6A8e20
+    name: JungleLand
+    type: data
+    vram: 0x8081B8C8
+    subalign: 8
+    subsegments:
+    - start: 0x6A8e20
+      name: lilypad
+      type: .data
+      vram: 0x8081B8C8
+      start: 0x6BC448
+      subalign: 8
+      subsegments:
+        - { start: 0x6BC448, type: vtx, data_only: True, name: model/lilypad/lilypad}
+        - [0x6BC4C8, mtx, model/lilypad/lilypad]
+        - [0x6BC508, bin] # rgb2c remnant in mtx
+        - [0x6BC510, ci4, img/lilypad.ci4, 64, 64]
+        - [0x6BCD18, palette, img/lilypad.ci4]
+        - { start: 0x6BCF18, type: gfx, data_only: True, name: model/lilypad/lilypad}
+
+
   - [0x70db70, bin, Level/LizardKong]
   - [0x7477f0, bin, Level/Quintella]
   - start: 0x7A72B0
