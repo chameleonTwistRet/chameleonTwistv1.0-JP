@@ -398,7 +398,7 @@ s32 BGMLoad(void) {
     
     D_800FF624.unk_00 = D_800FF620;
     sp24 = gBGMALSeqFileP->seqArray[D_800FF624.unk_00].len; 
-    devAddr = gBGMALSeqFileP->seqArray[D_800FF624.unk_00].offset;
+    devAddr = (s32)gBGMALSeqFileP->seqArray[D_800FF624.unk_00].offset;
     
     if (sp24 & 1) {
         sp24 += 1;
@@ -406,8 +406,8 @@ s32 BGMLoad(void) {
     
     osInvalDCache(D_801FD550.unk_00, sp24);
     Audio_RomCopy(devAddr, D_801FD550.unk_00, sp24);
-    ALCSeqNew(gBGMSeqP, D_801FD550.unk_00);
-    alSeqpSetSeq(gBGMPlayerP, gBGMSeqP);
+    ALCSeqNew((ALSeq*)gBGMSeqP, D_801FD550.unk_00);
+    alSeqpSetSeq((ALSeqPlayer*)gBGMPlayerP, (ALSeq*)gBGMSeqP);
     D_801FCA20 = D_800FF4D0[D_800FF624.unk_00];
     alCSPPlay(gBGMPlayerP);
     alCSPSetVol(gBGMPlayerP, D_801FCA22);
