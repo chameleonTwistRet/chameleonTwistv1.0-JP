@@ -18,12 +18,12 @@
  * Copyright Laws of the United States.
  *====================================================================*/
 
-#pragma GLOBAL_ASM("asm/nonmatchings/audio/seqpsettempo/alSeqpSetTempo.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/audio/seqpsettempo/alCSPSetTempo.s")
 
 /*
 #include <PR/libaudio.h>
 
-void alSeqpSetTempo(ALSeqPlayer *seqp, s32 tempo)
+void alCSPSetTempo(ALCSPlayer *seqp, s32 tempo)
 {
     ALEvent       evt;
     

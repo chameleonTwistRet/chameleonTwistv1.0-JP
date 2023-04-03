@@ -358,9 +358,9 @@ void func_800B40F4(unkSpriteStruct* arg0) {
 
 void func_800B40FC(void) {
     D_801B313D = 1;
-    if (!(D_80200C00.flags0[1] & 8)) {
-        D_80200C00.flags0[1] |= 8;
-        func_800A870C();
+    if (!(gGameRecords.flags0[1] & 8)) {
+        gGameRecords.flags0[1] |= 8;
+        SaveData_UpdateRecords();
     }
 }
 

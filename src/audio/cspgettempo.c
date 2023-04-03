@@ -13,34 +13,29 @@ s32 alCSPGetTempo(ALCSPlayer *seqp)
 
 #pragma GLOBAL_ASM("asm/nonmatchings/audio/cspgettempo/func_800DF6C0.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/audio/cspgettempo/func_800DF760.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/audio/cspgettempo/alCSeqSetLoc.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/audio/cspgettempo/func_800DF800.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/audio/cspgettempo/__getTrackByte.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/audio/cspgettempo/func_800DF8C4.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/audio/cspgettempo/__readVarLen.s")
 
 void func_800DF91C(void) {
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/audio/cspgettempo/func_800DF924.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/audio/cspgettempo/alCSeqNextEvent.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/audio/cspgettempo/func_800DFC1C.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/audio/cspgettempo/ALCSeqNew.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/audio/cspgettempo/func_800DFD30.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/audio/cspgettempo/alCSeqNewMarker.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/audio/cspgettempo/func_800DFE9C.s")
+s32 alCSeqGetTicks(ALCSeq *seq){
+  return seq->lastTicks;
+}
 
-//typedef struct temp_func_800DFE9C {
-//    char unk0[0xc];
-//    s32 unkC;
-//} temp_func_800DFE9C;
-//
-//s32 func_800DFE9C(temp_func_800DFE9C* arg0) {
-//    return arg0->unkC;
-//}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/audio/cspgettempo/func_800DFEA4.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/audio/cspgettempo/func_800DFFA0.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/audio/cspgettempo/alCSeqSecToTicks.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/audio/cspgettempo/func_800E000C.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/audio/cspgettempo/alCSeqTicksToSec.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/audio/cspgettempo/__alCSeqNextDelta.s")

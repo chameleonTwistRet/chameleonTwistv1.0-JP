@@ -22,7 +22,7 @@
 
 #include <PR/libaudio.h>
 
-s32 alSeqpGetState(ALSeqPlayer *seqp)
+s32 alCSPGetState(ALCSPlayer *seqp)
 {
     return seqp->state;
 }

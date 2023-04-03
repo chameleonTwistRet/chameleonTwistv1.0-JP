@@ -4,7 +4,7 @@
 #include "controller.h"
 #include "siint.h"
 
-#pragma GLOBAL_ASM("asm/nonmatchings/io/motor/func_800D9200.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/io/motor/__osMakeMotorData.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/io/motor/osMotorInit.s")
 

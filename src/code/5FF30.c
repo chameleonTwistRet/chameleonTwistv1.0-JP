@@ -34,7 +34,7 @@ extern char D_8010EF80[];
 extern char D_8010EF9C[];
 extern char D_8010EFB0[];
 extern char D_8010EFBC[];
-extern unkStruct05* D_80200050;
+extern unkStruct05* gSaveFiles;
 extern char D_8010EFD8[];
 extern char D_8010EDB8[];
 extern char D_8010F084[];
@@ -48,18 +48,14 @@ void func_800A25F0(s32, f32);
 void func_8009BA38(CTTask*);
 void func_8009C33C(CTTask*);
 void func_80099AF4(void);
-void func_800A8944(void);
+void SaveData_ClearRecords(void);
 void func_8009C038(CTTask*);
 void func_800A7E9C(s32, u8*);
-void func_800A8668(void);
+void SaveData_SaveRecords(void);
 s32 func_800A7F70(void);
-void func_800A80C8(void);
-s32 func_800A81E4(u8*, unkStruct05*);
-void func_800A832C(s32, unkStruct05*);
-void func_800A80C8(void);
-void func_800A80C8(void); 
-void func_800A832C(s32, unkStruct05*);
-void func_800A80C8(void);
+void SaveData_Wait(void);
+s32 SaveData_VerifyFile(u8*, unkStruct05*);
+void SaveData_LoadFile(s32, unkStruct05*);
 void func_800AA844(s32);
 void func_800C29D8(s32);
 void func_8008CCDC(CTTask*);
@@ -83,7 +79,7 @@ void func_80084FC0(s32 arg0) {
 }
 
 //os
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80084FF4.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/Audio_DMACallback.s")
 
 //os
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/Audio_Dma.s")
@@ -187,7 +183,7 @@ s32 func_80087358(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008788C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80087904.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/addSoundEffect.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80087E60.s")
 
@@ -250,8 +246,8 @@ s32 func_800885EC(s32 arg0, s32 arg1) {
     } else {
         temp_v0->unk3D = arg1;
         if ((temp_v0->unk48 >= 0) && (temp_v0->unk48 < 0x10)) {
-            alSndpSetSound(D_800FF61C, temp_v0->unk48);
-            alSndpSetFXMix(D_800FF61C, arg1);
+            alSndpSetSound(gSFXPlayerP, temp_v0->unk48);
+            alSndpSetFXMix(gSFXPlayerP, arg1);
         }
     }
     
@@ -292,7 +288,7 @@ s32 func_8008873C(s32 arg0, s32 arg1, s32 arg2) {
     }
     //"TALK = %d\n"
     DummiedPrintf(D_8010D834, D_80200A98[D_800FF64C]);
-    return func_80087904(D_80200A98[D_800FF64C], arg0, arg1, arg2, 0, 2);
+    return addSoundEffect(D_80200A98[D_800FF64C], arg0, arg1, arg2, 0, 2);
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800887F0.s")
@@ -328,7 +324,7 @@ void func_8008A2B0(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008B458.s")
 
-s32 func_8008BA58(void) {
+s32 BGMLoad(void) {
     //possibly a struct on the stack?
     s32 sp24;
     s32 sp28; //unused
@@ -345,9 +341,9 @@ s32 func_8008BA58(void) {
     }
 
     if ((gIsPaused != 0) && (D_800FF604 == 0)) {
-        if (alSeqpGetState(D_800FF614) == 1) {
-            alSeqpSetVol(D_800FF614, 0);
-            alSeqpStop(D_800FF614);
+        if (alCSPGetState(gBGMPlayerP) == 1) {
+            alCSPSetVol(gBGMPlayerP, 0);
+            alCSPStop(gBGMPlayerP);
             D_800FF608 = 1;
         } else {
             D_800FF608 = 0;
@@ -357,11 +353,11 @@ s32 func_8008BA58(void) {
     }
 
     if ((gIsPaused == 0) && (D_800FF604 != 0)) {
-        if ((alSeqpGetState(D_800FF614) != 1) || (D_800FF608 != 0)) {
+        if ((alCSPGetState(gBGMPlayerP) != 1) || (D_800FF608 != 0)) {
             if ((gameModeCurrent != 4) && (gameModeCurrent != 5)) {
-                alSeqpPlay(D_800FF614);
+                alCSPPlay(gBGMPlayerP);
             }
-            alSeqpSetVol(D_800FF614, D_801FCA22);
+            alCSPSetVol(gBGMPlayerP, D_801FCA22);
         }
         D_800FF604 = gIsPaused;
         return 0;
@@ -377,17 +373,17 @@ s32 func_8008BA58(void) {
             if (D_801FCA20.unk_00 < 0) {
                 D_801FCA20.unk_00 = 0;
             }
-            alSeqpSetVol(D_800FF614, D_801FCA20.unk_00);
+            alCSPSetVol(gBGMPlayerP, D_801FCA20.unk_00);
         } 
     }
     
     if (D_801FC9B4 != 0) {
-        alSeqpSetTempo(D_800FF614, D_801FC9A8);
+        alCSPSetTempo(gBGMPlayerP, D_801FC9A8);
     } else {
-        D_801FC9B0 = alCSPGetTempo((ALCSPlayer*)D_800FF614);
+        D_801FC9B0 = alCSPGetTempo(gBGMPlayerP);
     }
     
-    temp_v0 = alSeqpGetState(D_800FF614);
+    temp_v0 = alCSPGetState(gBGMPlayerP);
     
     if (D_800FF620 == -1) {
         if ((temp_v0 == 0) && (D_801FCA24 != 0)) {
@@ -401,8 +397,8 @@ s32 func_8008BA58(void) {
     }
     
     D_800FF624.unk_00 = D_800FF620;
-    sp24 = D_801FCA44->seqArray[D_800FF624.unk_00].len; 
-    devAddr = D_801FCA44->seqArray[D_800FF624.unk_00].offset;
+    sp24 = gBGMALSeqFileP->seqArray[D_800FF624.unk_00].len; 
+    devAddr = gBGMALSeqFileP->seqArray[D_800FF624.unk_00].offset;
     
     if (sp24 & 1) {
         sp24 += 1;
@@ -410,11 +406,11 @@ s32 func_8008BA58(void) {
     
     osInvalDCache(D_801FD550.unk_00, sp24);
     Audio_RomCopy(devAddr, D_801FD550.unk_00, sp24);
-    func_800DFC1C(D_800FF618, D_801FD550.unk_00);
-    alSeqpSetSeq(D_800FF614, D_800FF618);
+    ALCSeqNew(gBGMSeqP, D_801FD550.unk_00);
+    alSeqpSetSeq(gBGMPlayerP, gBGMSeqP);
     D_801FCA20 = D_800FF4D0[D_800FF624.unk_00];
-    alSeqpPlay(D_800FF614);
-    alSeqpSetVol(D_800FF614, D_801FCA22);
+    alCSPPlay(gBGMPlayerP);
+    alCSPSetVol(gBGMPlayerP, D_801FCA22);
     D_800FF620 = -1;
     D_801FC9B4 = 0;
     D_801FC9A8 = 0;
@@ -423,11 +419,11 @@ s32 func_8008BA58(void) {
 }
 
 s32 playBGM(s32 arg0) {
-    if ((arg0 >= D_801FCA44->seqCount) || (arg0 < 0)) {
+    if ((arg0 >= gBGMALSeqFileP->seqCount) || (arg0 < 0)) {
         return -1;
     }
-    if (D_800FF614->state == 1) {
-        alSeqpStop(D_800FF614);
+    if (gBGMPlayerP->state == 1) {
+        alCSPStop(gBGMPlayerP);
     }
     D_800FF620 = arg0;
     D_801FC9A0 = 0;
@@ -436,8 +432,8 @@ s32 playBGM(s32 arg0) {
 
 s32 func_8008BE14(void) {
     D_801FCA24 = 0;
-    if (D_800FF614->state == 1) {
-        alSeqpStop(D_800FF614);
+    if (gBGMPlayerP->state == 1) {
+        alCSPStop(gBGMPlayerP);
     }
     func_80088198();
     D_800FF5E4 = 0;
@@ -457,23 +453,23 @@ s32 func_8008BE14(void) {
     return 0;
 }
 
-s32 func_8008BEDC(void) {
+s32 BGMStop(void) {
     D_801FCA24 = 0;
-    if (D_800FF614->state == 1) {
-        alSeqpStop(D_800FF614);
+    if (gBGMPlayerP->state == 1) {
+        alCSPStop(gBGMPlayerP);
     }
     return 0;
 }
 
 s32 func_8008BF20(void) {
     D_801FCA20 = D_800FF4D0[D_800FF624.unk_00];
-    if ((D_800FF614->state != 1) && (gameModeCurrent != 4) && (gameModeCurrent != 5)) {
-        alSeqpPlay(D_800FF614);
+    if ((gBGMPlayerP->state != 1) && (gameModeCurrent != 4) && (gameModeCurrent != 5)) {
+        alCSPPlay(gBGMPlayerP);
     }
     return 0;
 }
 s32 func_8008BFA8(s32 arg0) {
-    alSeqpSetVol(D_800FF614, arg0);
+    alCSPSetVol(gBGMPlayerP, arg0);
     D_801FCA20.unk_00 = arg0;
     return 0;
 }
@@ -484,7 +480,7 @@ s32 func_8008BFE0(s32 arg0) {
 }
 
 s32 func_8008C01C(void) {
-    return alCSPGetTempo((ALCSPlayer*)D_800FF614);
+    return alCSPGetTempo(gBGMPlayerP);
 }
 
 s32 func_8008C040(s32 arg0) {
@@ -512,8 +508,8 @@ void func_8008C1C8(s32* arg0) {
 
     if ((gSelectedCharacters[0] == CHARA_WHITE) && (gameModeCurrent == 0)) {
         if ((D_80176F58 == 0) && (D_801B1EEC != 0)) {
-            if ((D_801B1EEE != 0) && (gCurrentStage != 8)) {
-                func_80061308(255, 255, 0, 255, 255, 0, 0, 255, 255, 255, 0, 255, 255, 0, 0, 255);
+            if ((gNoHit != 0) && (gCurrentStage != 8)) {
+                setTextGradient(255, 255, 0, 255, 255, 0, 0, 255, 255, 255, 0, 255, 255, 0, 0, 255);
                 func_8005AFD0(276.0f, 204.0f, 0.0f, 0.0f, 1.0f, 16.0f, 16.0f, 0.0f, 75);
             }
         }
@@ -657,7 +653,7 @@ void func_8008CCF4(void) {
         prev = cur;
         func_8008CCDC(cur);
         cur = cur->next;
-        func_80056F24(prev);
+        free(prev);
     }
 }
 
@@ -699,7 +695,7 @@ void func_8008CCF4(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008E488.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008E5FC.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/setFrustum.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008E698.s")
 
@@ -1064,8 +1060,8 @@ void func_80099570(CTTask* arg0) {
 }
 
 void func_80099598(CTTask* arg0) {
-    _bzero(&D_80200050[arg0->unk_62], sizeof(unkStruct05));
-    func_800A832C(arg0->unk_62, &D_80200050[arg0->unk_62]);
+    _bzero(&gSaveFiles[arg0->unk_62], sizeof(unkStruct05));
+    SaveData_LoadFile(arg0->unk_62, &gSaveFiles[arg0->unk_62]);
     arg0->function = func_8009961C;
 }
 
@@ -1172,7 +1168,7 @@ void func_8009BDC0(CTTask* arg0) {
 
 void func_8009BFF8(CTTask* arg0) {
     func_80099AF4();
-    func_800A8944();
+    SaveData_ClearRecords();
     arg0->function = &func_8009C038;
     arg0->unk_68 = 4;
 }
@@ -1311,18 +1307,18 @@ void func_800A10E8(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A1EC4.s")
 
-//#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A1F3C.s")
+//#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/PrintPerfectCode.s")
 char* parseIntToHex(s32, s32, char*);
 extern char D_8010E954[];
 extern s32 perfectCode;
 
 // To do with the perfect code
-void func_800A1F3C(s32 arg0) {
+void PrintPerfectCode(s32 arg0) {
     char sp50[38];
 
-    func_80061308(0xFF, 0x90, 0xF2, 0xFF, 0xFF, 0x38, 0x64, 0xFF, 0xFF, 0x90, 0xF2, 0xFF, 0xFF, 0x38, 0x64, 0xFF);
+    setTextGradient(0xFF, 0x90, 0xF2, 0xFF, 0xFF, 0x38, 0x64, 0xFF, 0xFF, 0x90, 0xF2, 0xFF, 0xFF, 0x38, 0x64, 0xFF);
     PrintText(144.0f, 24.0f, 0.0f, 0.7f, 0.0f, 0.0f, D_8010E954, 1);
-    func_80061308(0x90, 0xF2, 0xFF, 0xFF, 0x38, 0x64, 0xFF, 0xFF, 0x90, 0xF2, 0xFF, 0xFF, 0x38, 0x64, 0xFF, 0xFF);
+    setTextGradient(0x90, 0xF2, 0xFF, 0xFF, 0x38, 0x64, 0xFF, 0xFF, 0x90, 0xF2, 0xFF, 0xFF, 0x38, 0x64, 0xFF, 0xFF);
     PrintText(160.0f, 40.0f, 0.0f, 0.7f, 0.0f, 0.0f, parseIntToHex(perfectCode, 8, sp50), 1);
 }
 
@@ -1335,7 +1331,7 @@ void func_800A1F3C(s32 arg0) {
 
 void func_800A250C(unkarg0* arg0) {
     if (arg0->unk6A > 0) {
-        func_80061308(0x6EU, 0xD2U, 0xFF, 0xFF, 0, 0xDE, 0, 0xFF, 0x6E, 0xD2, 0xFF, 0xFF, 0, 0xDE, 0, 0xFF);
+        setTextGradient(0x6EU, 0xD2U, 0xFF, 0xFF, 0, 0xDE, 0, 0xFF, 0x6E, 0xD2, 0xFF, 0xFF, 0, 0xDE, 0, 0xFF);
         PrintTextWrapper(72.0f, 176.0f, 0.0f, 1.0f, D_8010E9D0, 1);
     }
     
@@ -1379,7 +1375,7 @@ void func_800A2B9C(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A3DC0.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A3E04.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/PrintDataClearConfirm.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A4074.s")
 
@@ -1437,7 +1433,7 @@ void func_800A54EC(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A5778.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A57DC.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/printSelectedStageInfo.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A6B34.s")
 
@@ -1721,9 +1717,9 @@ s32 func_800A7ED0(u8 *arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A7F70.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A80C8.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/SaveData_Wait.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A81E4.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/SaveData_VerifyFile.s")
 
 s32 SaveData_Compare(u8 *arg0, u8 *arg1) {
     s32 i;
@@ -1744,7 +1740,7 @@ s32 SaveData_Compare(u8 *arg0, u8 *arg1) {
     return var_s7;
 }
 
-void func_800A832C(s32 arg0, unkStruct05* arg1) {
+void SaveData_LoadFile(s32 arg0, unkStruct05* arg1) {
     osRecvMesg(&D_80175620, NULL, 0);
     if (osEepromProbe(&D_80175620) != 1) {
         DummiedPrintf(D_8010EE04);
@@ -1756,10 +1752,10 @@ void func_800A832C(s32 arg0, unkStruct05* arg1) {
         DummiedPrintf(D_8010EE24, arg0, 0x60);
     }
     
-    func_800A80C8();
+    SaveData_Wait();
 }
 
-void func_800A83E8(u8* arg0) {
+void SaveData_LoadAllFiles(u8* arg0) {
     osRecvMesg(&D_80175620, NULL, 0);
     if (osEepromProbe(&D_80175620) != 1) {
         DummiedPrintf(D_8010EE68);
@@ -1771,10 +1767,10 @@ void func_800A83E8(u8* arg0) {
         DummiedPrintf(D_8010EE88, 0, 0x180);
     }
     
-    func_800A80C8();
+    SaveData_Wait();
 }
 
-void func_800A847C(u8* arg0) {
+void SaveData_LoadRecords(u8* arg0) {
     osRecvMesg(&D_80175620, NULL, 0);
     if (osEepromProbe(&D_80175620) != 1) {
         DummiedPrintf(D_8010EECC);
@@ -1788,10 +1784,10 @@ void func_800A847C(u8* arg0) {
         DummiedPrintf(D_8010EEF4, 0x80);
     }
     
-    func_800A80C8();
+    SaveData_Wait();
 }
 
-void func_800A850C(s32 arg0, u8* arg1) { 
+void SaveData_SaveFile(s32 arg0, u8* arg1) { 
     //"%d 番目のファイルにセーブ  %dバイト目\n"("save %d bytes to %d file"?)
     DummiedPrintf(D_8010EF38, arg0, (s32) (arg0 * 0x60) / 8);
     osRecvMesg(&D_80175620, NULL, 0);
@@ -1808,20 +1804,20 @@ void func_800A850C(s32 arg0, u8* arg1) {
         DummiedPrintf(D_8010EF80);
     }
     
-    func_800A80C8();
-    func_800A80C8();
+    SaveData_Wait();
+    SaveData_Wait();
 }
 
-s32 func_800A85D8(s32 arg0, u8* arg1) {
+s32 SaveData_UpdateFile(s32 arg0, u8* arg1) {
     s32 i;
     unkStruct05 sp34;
 
     i = 0;
 
     while (1) {
-        func_800A850C(arg0, arg1);
-        func_800A832C(arg0, &sp34);
-        if (func_800A81E4(arg1, &sp34) == 0) {
+        SaveData_SaveFile(arg0, arg1);
+        SaveData_LoadFile(arg0, &sp34);
+        if (SaveData_VerifyFile(arg1, &sp34) == 0) {
             return 0;
         }
 
@@ -1833,8 +1829,8 @@ s32 func_800A85D8(s32 arg0, u8* arg1) {
     }
 }
 
-void func_800A8668(void) {
-    D_80200C00.flags0[0] = func_800A7F70();
+void SaveData_SaveRecords(void) {
+    gGameRecords.flags0[0] = func_800A7F70();
     
     osRecvMesg(&D_80175620, NULL, 0);
     
@@ -1844,23 +1840,23 @@ void func_800A8668(void) {
     
     DummiedPrintf(D_8010EFB0);
     
-    if (osEepromLongWrite(&D_80175620, 0x30, &D_80200C00.flags0[0], 0x80) != 0) {
+    if (osEepromLongWrite(&D_80175620, 0x30, &gGameRecords.flags0[0], 0x80) != 0) {
         //"ＥＥＰロム書き込みエラー \n"("EEPRom write error")
         DummiedPrintf(D_8010EFBC);
     }
     
-    func_800A80C8();
-    func_800A80C8();
+    SaveData_Wait();
+    SaveData_Wait();
 }
 
-s32 func_800A870C(void) {
+s32 SaveData_UpdateRecords(void) {
     s32 i;
     unkStruct09 sp28;
 
     for (i = 0; i < 3; i++) {
-        func_800A8668();
-        func_800A847C((u8*)&sp28);
-        if (SaveData_Compare((u8*)&D_80200C00, (u8*)&sp28) == 0) {
+        SaveData_SaveRecords();
+        SaveData_LoadRecords((u8*)&sp28);
+        if (SaveData_Compare((u8*)&gGameRecords, (u8*)&sp28) == 0) {
             return 0;
         }
     }
@@ -1877,9 +1873,9 @@ void func_800A878C(unkStruct05* arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A87D4.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A881C.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/SaveData_ResetRecords.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A8944.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/SaveData_ClearRecords.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A8988.s")
 
@@ -2040,7 +2036,7 @@ void func_800AAB0C(s32 arg0) {
     gFixedSeedIndex = 0x10A9;
     dmaSize = D_F0042B0 - D_F000000;
     UseFixedRNGSeed = TRUE;
-    D_80200C8C = func_80056EE4(dmaSize);
+    D_80200C8C = mallloc(dmaSize);
     if (D_80200C8C == NULL) {
         //"バッファがない\n"("no buffer")
         osSyncPrintf(D_8010F1EC, D_80200C8C);
