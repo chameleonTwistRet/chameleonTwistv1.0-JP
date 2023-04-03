@@ -1327,16 +1327,204 @@ segments:
 
   - [0xAF5688, bin, noClue]
 
-  - name: davy
-    type: code
+
+
+  - name: chameleons
+    dir: chameleons
+    type: data #modelGroup
     subalign: 8
     start: 0xAFC6B0
+    vram: 0x80B212B0
     subsegments:
-      - [0xAFC6B0, bin, davy/davyMain] #size of 0x8BE0
-      - [0xAFD090, ci4, davy/davyNumber.ci4, 32, 32] #should be ci4, 32x32
-      - [0xAFD290, bin] #0x08 into this has the palette
-      - [0xAFD298, palette, davy/davyNumber.ci4] #is palette for davyNumber
-      - [0xAFD2C0, bin]
+    - name: Davy
+      dir: Davy
+      type: data #modelActor
+      start: 0xAFC6B0
+      vram: 0x80B212B0
+      subsegments:
+      - [0xAFC6B0, bin, header]
+      - name: body
+        dir: body
+        type: .data #model
+        start: 0xAFC6C8
+        subsegments:
+        - { start: 0xAFC6C8, type: vtx, data_only: True, name: body}
+        - [0xafc808, mtx, body]
+        - [0xafc848, bin] # rgb2c remnant in mtx
+        - [0xafc850, ci4, backpackStrap.ci4, 32, 64]
+        - [0xafcc50, bin] #endDL command from rgb2c
+        - [0xafcc58, palette, backpackStrap.ci4]
+        - [0xafce58, bin] #endDL command from rgb2c
+        - [0xafce60, ci4, solidColor.ci4, 8, 8]
+        - [0xafce80, bin] #endDL command from rgb2c
+        - [0xafce88, palette, solidColor.ci4]
+        - [0xafd088, bin] #endDL command from rgb2c
+        - [0xafd090, ci4, number.ci4, 32, 32]
+        - [0xafd290, bin] #endDL command from rgb2c
+        - [0xafd298, palette, number.ci4]
+        - { start: 0xafd498, type: gfx, data_only: True, name: body}
+      - name: bodyAssociate
+        dir: bodyAssociate
+        type: .data #model
+        start: 0xafd850
+        subsegments:
+        - { start: 0xafd850, type: vtx, data_only: True, name: bodyAssociate}
+        - { start: 0xafd890, type: gfx, data_only: True, name: bodyAssociate}
+      - name: head
+        dir: head
+        type: .data #model
+        start: 0xafd8b0
+        subsegments:
+        - { start: 0xafd8b0, type: vtx, data_only: True, name: head}
+        - [0xafdd20, mtx, head]
+        - [0xafdd60, bin] #endDL command from rgb2c
+        - [0xafdd68, ci8, eye.ci8, 32, 32]
+        - [0xafe168, bin] #endDL command from rgb2c
+        - [0xafe170, palette, eye.ci8]
+        - [0xafe370, bin] #endDL command from rgb2c
+        - [0xafe378, ci8, eye2.ci8, 32, 32]
+        - [0xafe778, bin] #endDL command from rgb2c
+        - [0xafe780, palette, eye2.ci8]
+        - [0xafe980, bin] #endDL command from rgb2c
+        - [0xafe988, ci4, cheek.ci4, 32, 32]
+        - [0xafeb88, bin] #endDL command from rgb2c
+        - [0xafeb90, palette, cheek.ci4]
+        - { start: 0xafed90, type: gfx, data_only: True, name: head}
+      - name: backpack
+        dir: backpack
+        type: .data #model
+        start: 0xaff310
+        subsegments:
+        - { start: 0xaff310, type: vtx, data_only: True, name: backpack}
+        - [0xaff390, mtx, backpack]
+        - [0xaff3d0, bin] #endDL command from rgb2c
+        - [0xaff3d8, ci4, backpack.ci4, 8, 8]
+        - [0xaff3f8, bin] #endDL command from rgb2c
+        - [0xaff400, palette, backpack.ci4]
+        - { start: 0xaff600, type: gfx, data_only: True, name: backpack}
+      - name: shoe
+        dir: shoe
+        type: .data #model
+        start: 0xaff778
+        subsegments:
+        - { start: 0xaff778, type: vtx, data_only: True, name: shoe}
+        - [0xaffa38, bin, shoe]
+        - [0xaffa78, bin] #endDL command from rgb2c
+        - [0xaffa80, ci4, shoe.ci4, 64, 32]
+        - [0xaffe80, bin] #endDL command from rgb2c
+        - [0xaffe88, palette, shoe.ci4]
+        - { start: 0xb00088, type: gfx, data_only: True, name: shoe}
+      - name: Lshoe
+        dir: Lshoe
+        type: .data #model
+        start: 0xb00348
+        subsegments:
+        - { start: 0xb00348, type: vtx, data_only: True, name: Lshoe}
+        - [0xb00608, mtx, Lshoe]
+        - { start: 0xb00648, type: gfx, data_only: True, name: Lshoe}
+      - name: cuff
+        dir: cuff
+        type: .data #model
+        start: 0xb00908
+        subsegments:
+        - { start: 0xb00908, type: vtx, data_only: True, name: cuff}
+        - [0xb009f8, mtx, cuff]
+        - [0xb00A38, bin] #endDL command from rgb2c
+        - [0xb00A40, ci4, color.ci4, 8, 8]
+        - [0xB00A60, bin] #endDL command from rgb2c
+        - [0xB00A68, palette, color.ci4]
+        - { start: 0xb00c68, type: gfx, data_only: True, name: cuff}
+      - name: Lleg
+        dir: Lleg
+        type: .data #model
+        start: 0xb00f20
+        subsegments:
+        - { start: 0xb00f20, type: vtx, data_only: True, name: Lleg}
+        - [0xb01010, mtx, Lleg]
+        - { start: 0xb01050, type: gfx, data_only: True, name: Lleg}
+      - name: wrist
+        dir: wrist
+        type: .data #model
+        start: 0xb01308
+        subsegments:
+        - { start: 0xb01308, type: vtx, data_only: True, name: wrist}
+        - [0xb014d8, mtx, wrist]
+        - [0xb01518, bin] #endDL command from rgb2c
+        - [0xb01520, ci4, wristColor.ci4, 8, 8]
+        - [0xb01540, bin] #endDL command from rgb2c
+        - [0xb01548, palette, wristColor.ci4]
+        - [0xb01748, bin] #endDL command from rgb2c
+        - [0xb01750, ci4, wrist.ci4, 32, 32]
+        - [0xB01950, bin] #endDL command from rgb2c
+        - [0xB01958, palette, wrist.ci4]
+        - { start: 0xb01b58, type: gfx, data_only: True, name: wrist}
+      - name: Larm
+        dir: Larm
+        type: .data #model
+        start: 0xb01f70
+        subsegments:
+        - { start: 0xb01f70, type: vtx, data_only: True, name: Larm}
+        - [0xb02140, mtx, Larm]
+        - { start: 0xb02180, type: gfx, data_only: True, name: Larm}
+      - name: Rshoulder
+        dir: Rshoulder
+        type: .data #model
+        start: 0xb02598
+        subsegments:
+        - { start: 0xb02598, type: vtx, data_only: True, name: Rshoulder}
+        - [0xb025f8, mtx, Rshoulder]
+        - { start: 0xb02638, type: gfx, data_only: True, name: Rshoulder}
+      - name: Lshoulder
+        dir: Lshoulder
+        type: .data #model
+        start: 0xb02790
+        subsegments:
+        - { start: 0xb02790, type: vtx, data_only: True, name: Lshoulder}
+        - [0xb027f0, mtx, Lshoulder]
+        - { start: 0xb02830, type: gfx, data_only: True, name: Lshoulder}
+      - name: fist
+        dir: fist
+        type: .data #model
+        start: 0xb02988
+        subsegments:
+        - { start: 0xb02988, type: vtx, data_only: True, name: fist}
+        - [0xb02c18, mtx, fist]
+        - [0xb02c58, bin] #endDL command from rgb2c
+        - [0xb02c60, ci4, fist1.ci4, 32, 32]
+        - [0xb02e60, bin] #endDL command from rgb2c
+        - [0xb02e68, palette, fist1.ci4]
+        - [0xb03068, bin] #endDL command from rgb2c
+        - [0xb03070, ci4, fist2.ci4, 32, 32]
+        - [0xb03270, bin] #endDL command from rgb2c
+        - [0xb03278, palette, fist2.ci4]
+        - [0xb03478, bin] #endDL command from rgb2c
+        - [0xb03480, ci4, fist3.ci4, 32, 32]
+        - [0xb03680, bin] #endDL command from rgb2c
+        - [0xb03688, palette, fist3.ci4]
+        - [0xb03888, bin] #endDL command from rgb2c
+        - [0xb03890, ci4, fistDiamond.ci4, 32, 32]
+        - [0xb03a90, bin] #endDL command from rgb2c
+        - [0xb03a98, palette, fistDiamond.ci4]
+        - [0xb03c98, bin] #endDL command from rgb2c
+        - [0xb03cA0, ci4, fist4.ci4, 32, 32]
+        - [0xb03ea0, bin] #endDL command from rgb2c
+        - [0xb03ea8, palette, fist4.ci4]
+        - { start: 0xb040a8, type: gfx, data_only: True, name: fist}
+      - name: Lfist
+        dir: Lfist
+        type: .data #model
+        start: 0xb047c0
+        subsegments:
+        - { start: 0xb047c0, type: vtx, data_only: True, name: Lfist}
+        - [0xb04a70, mtx, Lfist]
+        - { start: 0xb04ab0, type: gfx, data_only: True, name: Lfist}
+      - name: restAssociate
+        dir: restAssociate
+        type: .data #model
+        start: 0xb051c8
+        subsegments:
+        - [0xb051c8, mtx, restAssociate]
+        - { start: 0xb05208, type: gfx, data_only: True, name: restAssociate}
 
   - [0xB05290, bin, jack] #size of 0x8C20 (extra data?)
   - [0xB0DEB0, bin, fred] #size of 0x8BE0
