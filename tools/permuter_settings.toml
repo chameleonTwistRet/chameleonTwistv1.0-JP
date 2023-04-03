@@ -1,5 +1,4 @@
-compiler_command = "python3 tools/asm-processor/build.py --input-enc=utf-8 --output-enc=euc-jp tools/ido_5.3/usr/lib/cc -- mips-linux-gnu-as -EB -mtune=vr4300 -march=vr4300 -mabi=32 -Iinclude -Isrc -- -c $-G 0 -fullwarn -verbose -Xcpluscomm -signed -nostdinc -non_shared -Wab,-r4300_mul -D_LANGUAGE_C -DF3DEX_GBI -DNDEBUG -woff 649,838 -I. -Iinclude -Iinclude/PR -Iassets -Isrc -mips2 -O2 -o"
-assembler_command = "mips-linux-gnu-as -EB -mtune=vr4300 -march=vr4300 -mabi=32 -Iinclude -Isrc"
+build_system = "ninja"
 compiler_type = "ido"
 
 [preserve_macros]

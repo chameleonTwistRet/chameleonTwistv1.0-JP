@@ -2089,31 +2089,67 @@ void func_800AAB0C(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800AE4AC.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800AE690.s")
+void ComputeBoundingBoxFromRects(Rect* arg0, Rect* arg1, Rect* rectOut) {
+    if (arg0->min.x < arg1->min.x) {
+        rectOut->min.x = arg0->min.x;
+    } else {
+        rectOut->min.x = arg1->min.x;
+    }
+\
+    if (arg1->max.x < arg0->max.x) {
+        rectOut->max.x = arg0->max.x;
+    } else {
+        rectOut->max.x = arg1->max.x;
+    }
+
+    if (arg0->min.y < arg1->min.y) {
+        rectOut->min.y = arg0->min.y;
+    } else {
+        rectOut->min.y = arg1->min.y;
+    }
+
+    if (arg1->max.y < arg0->max.y) {
+        rectOut->max.y = arg0->max.y;
+    } else {
+        rectOut->max.y = arg1->max.y;
+    }
+
+    if (arg0->min.z < arg1->min.z) {
+        rectOut->min.z = arg0->min.z;
+    } else {
+        rectOut->min.z = arg1->min.z;
+    }
+
+    if (arg1->max.z < arg0->max.z) {
+        rectOut->max.z = arg0->max.z;
+        return;
+    }
+    
+    rectOut->max.z = arg1->max.z;
+}
 
 //clamp rect to x/y/z
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800AE770.s")
-/*
-void func_800AE770(Rect *r,float x,float y,float z){
-  if (x < r->min.x) {
-    r->min.x = x;
-  }
-  else if (x > r->max.x) {
-    r->max.x = x;
-  }
-  if (y < r->min.y) {
-    r->min.y = y;
-  }
-  else if (y>r->max.y) {
-    r->max.y = y;
-  }
-  if (z < r->min.z) {
-    r->min.z = z;
-  }
-  else if (z>r->max.z) {
-    r->max.z = z;
-  }
-}*/
+
+void func_800AE770(Rect* r, Vec3f vec) {
+    if (vec.x < r->min.x) {
+        r->min.x = vec.x;
+    } else if (r->max.x < vec.x) {
+        r->max.x = vec.x;
+    }
+    if (vec.y < r->min.y) {
+        r->min.y = vec.y;
+    } else if (r->max.y < vec.y) {
+        r->max.y = vec.y;
+    }
+    if (vec.z < r->min.z) {
+        r->min.z = vec.z;
+        return;
+    }
+    else if (r->max.z < vec.z) {
+        r->max.z = vec.z;
+    }
+}
+
 // expand Rect r by s.
 void Rect_Expand(Rect* r, f32 s){
     r->min.x -= s;
@@ -2124,7 +2160,30 @@ void Rect_Expand(Rect* r, f32 s){
     r->max.z += s;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800AE87C.s")
+void func_800AE87C(Rect *arg0) {
+    f32 prevMaxX;
+    f32 prevMaxY;
+    f32 prevMaxZ;
+    
+    if (arg0->max.x < arg0->min.x) {
+        prevMaxX = arg0->max.x;
+        arg0->max.x = arg0->min.x;
+        arg0->min.x = prevMaxX;
+    }
+    
+    if (arg0->max.y < arg0->min.y) {
+        prevMaxY = arg0->max.y;
+        arg0->max.y = arg0->min.y;
+        arg0->min.y = prevMaxY;
+    }
+    
+    prevMaxZ = arg0->max.z;
+    
+    if (prevMaxZ < arg0->min.z) {
+        arg0->max.z = arg0->min.z;
+        arg0->min.z = prevMaxZ;
+    }
+}
 
 /*
  * ifRectsIntersect: returns 1 if the two rectangles intersect, 0 otherwise
@@ -2153,30 +2212,28 @@ s32 ifRectsIntersect(Rect* arg0, Rect* arg1) {
     }
     return 1;
 }
-/*
-s32 isPointInRect(Vec3f v, Rect* r){
-if ((f64) r->max.x < (f64) v.x) {
+
+s32 isPointInRect(Vec3f arg0, Rect* arg3) {
+    if (arg0.x < arg3->min.x) {
         return 0;
     }
-    if ((f64) v.x < (f64) r->min.x) {
+    if (arg3->max.x < arg0.x) {
         return 0;
     }
-    if ((f64) r->max.y < (f64) v.y) {
+    if (arg0.y < arg3->min.y) {
         return 0;
     }
-    if ((f64) v.y < (f64) r->min.y) {
+    if (arg3->max.y < arg0.y) {
         return 0;
     }
-    if ((f64) r->max.z < (f64) v.z) {
+    if (arg0.z < arg3->min.z) {
         return 0;
     }
-    if ((f64) v.z < (f64) r->min.z) {
+    if (arg3->max.z < arg0.z) {
         return 0;
     }
     return 1;
-}*/
-//is point in Rect
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/isPointInRect.s")
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800AEAA8.s")
 
