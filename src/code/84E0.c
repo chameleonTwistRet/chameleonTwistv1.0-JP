@@ -759,7 +759,7 @@ s32 func_80032074(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80035374.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80035460.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ControlTongue.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_800360E4.s")
 

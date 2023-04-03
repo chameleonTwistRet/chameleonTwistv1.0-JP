@@ -395,6 +395,7 @@ segments:
   #- [0x481A70, bin]
   #- [0x488210, bin]
   #- [0x488930, bin]
+  #- [0x50D20, vtx, vtx/curtains1]
   - [0x4987F0, ci4, brick1.ci4, 64, 64]
   - [0x498FF0, bin] #size of 8? (End DL command)
   - [0x498FF8, palette, brick1.ci4]
@@ -407,7 +408,19 @@ segments:
   - [0x6a8e20, bin, Level/JungleLand]
   - [0x70db70, bin, Level/LizardKong]
   - [0x7477f0, bin, Level/Quintella]
-  - [0x7a72b0, bin, Level/BombSnake]
+  - start: 0x7A72B0
+    type: data
+    name: BombSnake
+    vram: 0x8031B020
+    subsegments:
+    - [0x7A72B0, bin, bombSnake0]
+    - [0x7AB7F0, bin, bombSnake1]
+    - [0x7AC0A0, bin, bombSnake2]
+    - [0x7AC340, bin, bombSnake3]
+    - [0x7AC450, bin, bombSnake4]
+    - [0x7AC950, bin, bombSnake5]
+    - [0x7ACF90, bin, bombSnake6]
+  #- [0x7a72b0, bin, Level/BombSnake]
   - [0x7af730, bin, Level/GiantCake]
   - [0x7d22b0, bin, Level/Armadillo]
   - [0x7fd3b0, bin, Level/PileOfBooks]
