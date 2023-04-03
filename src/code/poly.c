@@ -1,10 +1,13 @@
 #include "common.h"
 
+/* rodata */
+extern char D_80110180[];
+extern char D_801103D0[];
+
 extern f64 D_801104F8;
 extern s32 D_80236974;
 extern Collision gZoneCollisions[];
 extern Collider D_80236980[128];
-extern char D_801103D0[];
 extern s32 D_8020D8F4;
 extern s32 gCurrentStage;
 extern f64 D_801106A0;
@@ -141,31 +144,32 @@ void func_800CCDCC(Actor* arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800CEB10.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/CalcEnemyNextPosition.s")
-// void CalcEnemyNextPosition(Actor* arg0) {
-//     switch (arg0->unk_A0.unk_04) {
-//     case 0:
-//         func_800CCDCC(arg0);
-//         break;
-//     case 1:
-//         func_800CCE4C(arg0);
-//         break;
-//     case 2:
-//         CalcWalkingEnemyNext(arg0);
-//         break;
-//     case 3:
-//         CalcJumpingEnemyNext(arg0);
-//         break;
-//     case 4:
-//         func_800CEB10(arg0);
-//         break;
-//     default:
-//         DummiedPrintf3(D_801103D0);
-//         break;
-//     }
-//     if (arg0->tongueCollision >= 2) {
-//         func_800CBD24(arg0);
-//     }
-// }
+//void CalcEnemyNextPosition(Actor* arg0) {
+//    switch (arg0->unk_A0.unk_04) {
+//    case 0:
+//        func_800CCDCC(arg0);
+//        break;
+//    case 1:
+//        func_800CCE4C(arg0);
+//        break;
+//    case 2:
+//        CalcWalkingEnemyNext(arg0);
+//        break;
+//    case 3:
+//        CalcJumpingEnemyNext(arg0);
+//        break;
+//    case 4:
+//        func_800CEB10(arg0);
+//        break;
+//    default:
+//        DummiedPrintf3(D_801103D0);
+//        // double 810000
+//        break;
+//    }
+//    if (arg0->tongueCollision >= 2) {
+//        func_800CBD24(arg0);
+//    }
+//}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800CF080.s")
 

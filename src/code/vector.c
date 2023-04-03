@@ -4,14 +4,17 @@
 void DummiedPrintf3(char* arg0, ...) { /* variadic args: simonlindholm*/
 }
 
-/*
- * WrapAngle: Wraps an angle to the range [0, 360).
- *      @param angle: pointer to the angle to wrap.
+/**
+ * @brief Wraps an angle to the range [0, 360).
+ * @param angle: pointer to the angle to wrap.
  * 
- *      @return: (the wrapped angle).
+ * @return: (the wrapped angle).
  */
-
 #pragma GLOBAL_ASM("asm/nonmatchings/code/vector/WrapAngle.s")
+
+extern f64 D_801107E0;  // 360.0
+extern f64 D_801107E8;  // 360.0
+
 // void WrapAngle(f32* arg0) {
 //     if (*arg0 < 0.0) {
 //         *arg0 = (*arg0 + 360.0);
@@ -23,15 +26,17 @@ void DummiedPrintf3(char* arg0, ...) { /* variadic args: simonlindholm*/
 //     }
 // }
 
-/*
- * CompareWrappedAngles: Compares two angles, wrapping them to the range [0, 360) before comparing.
+/**
+ * @brief Compares two angles, wrapping them to the range [0, 360) before comparing.
  *      @param angle1: the first angle to compare.
  *      @param angle2: the second angle to compare.
  * 
  *      @return: 1 if angle1 is greater than angle2, -1 if angle1 is less than angle2, and 0 if they are equal.
  */
-
 #pragma GLOBAL_ASM("asm/nonmatchings/code/vector/CompareWrappedAngles.s")
+
+extern f64 D_801107F0;  // 180.0
+
 // s32 CompareWrappedAngles(f32 arg0, f32 arg1) {
 //     s32 ret;
     
@@ -59,7 +64,11 @@ void DummiedPrintf3(char* arg0, ...) { /* variadic args: simonlindholm*/
 //     return ret;
 // }
 
+// jtbl 801107F8
 #pragma GLOBAL_ASM("asm/nonmatchings/code/vector/func_800D75B4.s")
+
+extern char D_8011074C[];  // "OnlyCheckPolyInfoLevel: Need More Info Level\n"
+extern char D_8011077C[];  // "Function: %s\n"
 
 void OnlyCheckPolyInfoLevel(Poly* arg0, s32 arg1, char* arg2) {
     if (arg0->unk_00 < arg1) {
@@ -87,6 +96,9 @@ void func_800D79E4(Poly* arg0, s32 arg1) {
  * 
  * @return: the projected vector.
  */
+
+extern char D_8011078C[];  // "ProjectOnPolygon"
+
 Vec3f* ProjectOnPolygon(Vec3f* vec, f32 perspX, f32 perspY, f32 perspZ, Poly* poly) {
     Vec3f vec_proj;
     f32 p_x;
@@ -114,6 +126,9 @@ Vec3f* ProjectOnPolygon(Vec3f* vec, f32 perspX, f32 perspY, f32 perspZ, Poly* po
  *
  * returns: A pointer to the resulting local-space vector, stored in the `outVec` parameter.
  */
+
+extern char D_801107A0[]; // = "WorldToLocal";
+
 Vec3f* WorldToLocal(Vec3f* outVec, Vec3f vec, Poly* poly) {
     // Take P to be a matrix with the columns being the x, y, and z vectors of the poly struct
     // P(v) = outVec, where v is the input vector agter being translated by an offset vector
@@ -139,6 +154,9 @@ Vec3f* WorldToLocal(Vec3f* outVec, Vec3f vec, Poly* poly) {
  *
  * @return: A pointer to the resulting world-space vector, stored in the `outVec` parameter.
  */
+
+extern char D_801107B0[]; // = "LocalToWorld";
+
 Vec3f* LocalToWorld(Vec3f* outVec, Vec3f vec, Poly* poly) {
     Vec3f temp_vec;
 
@@ -160,6 +178,10 @@ Vec3f* LocalToWorld(Vec3f* outVec, Vec3f vec, Poly* poly) {
  * 
  * @return: (s32 bool) 1 if the vector is inside the polygon, 0 otherwise.
  */
+
+extern f64 D_80110818; // 1.0001
+extern f64 D_80110810; // -0.0001
+
 #pragma GLOBAL_ASM("asm/nonmatchings/code/vector/IsInsidePolygon.s")
 //s32 IsInsidePolygon(Vec3f vec, Poly* poly) {
 //    f32 x_0;
@@ -186,6 +208,9 @@ Vec3f* LocalToWorld(Vec3f* outVec, Vec3f vec, Poly* poly) {
  * 
  * @return (s32 bool) 1 if the point is on the polygon, 0 otherwise
  */
+
+extern char D_801107D0[]; // = "IsOnPolygon" "";
+
 s32 IsOnPolygon(Vec3f vec, Poly* poly) {
     f32 dotProduct;
     
