@@ -1,6 +1,6 @@
 #include "common.h"
 
-#pragma GLOBAL_ASM("asm/nonmatchings/audio/csplayer/func_800DCFB0.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/audio/csplayer/__CSPPostNextSeqEvent.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/audio/csplayer/func_800DD020.s")
 

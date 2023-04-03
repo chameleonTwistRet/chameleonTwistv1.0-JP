@@ -8,7 +8,7 @@
 80055BCC osViExtendVStart
 80055C80 leoInitUnit_atten
 80055C90 __osGetActiveQueue
-80056E28 leoDrive_reset
+80056E28 Memory_Free
 80056F24 __leoSetReset
 80083F08 ptstart
 8008FB98 osVoiceControlGain
@@ -105,11 +105,11 @@
 800DF4A0 alSndpGetState
 800DF4C0 alSndpStop
 800DF510 alSndpDeallocate
-800DF560 n_alSeqpGetState
-800DF570 alSeqpSetVol
-800DF5B0 alSeqpStop
-800DF5E0 alSeqpPlay
-800DF610 alSeqpSetTempo
+800DF560 n_alCSPGetState
+800DF570 alCSPSetVol
+800DF5B0 alCSPStop
+800DF5E0 alCSPPlay
+800DF610 alCSPSetTempo
 800DF680 alCSPGetTempo
 800DF6C0 alCSeqGetLoc
 800DF760 alCSeqSetLoc

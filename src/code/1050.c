@@ -256,7 +256,7 @@ s32 func_8002CCA0(void* arg0, s32 arg1) {
 }
 
 void func_8002CCDC(void) {
-    func_8008BEDC();
+    BGMStop();
     func_80088198();
 }
 

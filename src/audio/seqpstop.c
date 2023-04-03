@@ -22,7 +22,7 @@
 #include <PR/libaudio.h>
 
 
-void alSeqpStop(ALSeqPlayer *seqp)
+void alCSPStop(ALCSPlayer *seqp)
 {
     ALEvent     evt;
 

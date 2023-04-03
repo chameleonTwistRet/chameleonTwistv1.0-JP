@@ -185,7 +185,7 @@ void* func_80056D30(s32 arg0) {
                 var_a2->flags = ALIGN_128(arg0);
                 var_a2->next = (unkStruct02*)((s32)var_a2 + ALIGN_128(arg0) + 0x80);
                 func_80056D14(var_a2->next, (flags & ~1) - ALIGN_128(arg0) - 0x80, var_a2, next);
-                leoDrive_reset(var_a2->next + 1); //incorrect function name?
+                Memory_Free(var_a2->next + 1); //incorrect function name?
                 return var_a2 + 1;
             }
             var_a2->flags = flags & ~1; //should be here but breaks tail merging
@@ -214,8 +214,8 @@ void func_80056DF4(unkStruct02* arg0, unkStruct02* arg1) {
 }
 
 // Seems incorrectly named
-// s32 leoDrive_reset(void);
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/leoDrive_reset.s")
+// s32 Memory_Free(void);
+#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/Memory_Free.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80056EB4.s")
 // void func_80056EB4(void) {
@@ -223,7 +223,7 @@ void func_80056DF4(unkStruct02* arg0, unkStruct02* arg1) {
 // }
 
 //likely Malloc or equivalent
-void* func_80056EE4(s32 arg0) {
+void* mallloc(s32 arg0) {
     void* temp_v0 = func_80056D30(arg0);
     
     if (temp_v0 == NULL) {
@@ -233,8 +233,8 @@ void* func_80056EE4(s32 arg0) {
     return temp_v0;
 }
 //likely Free or equivalent
-s32 func_80056F24(void* arg0) {
-    leoDrive_reset(arg0);
+s32 free(void* arg0) {
+    Memory_Free(arg0);
     return 0;
 }
 
@@ -276,7 +276,7 @@ s32 func_80056F24(void* arg0) {
 //         temp_s1->unk6C = (void* ) temp_s1->unk8;
 //     }
     
-//     temp_s1->unk4 = func_80056EE4(dmaSize);
+//     temp_s1->unk4 = mallloc(dmaSize);
     
 //     if (temp_s1->unk4 == NULL) {
 //         DummiedPrintf2(D_8010CA1C, dmaSize, arg0);
@@ -292,10 +292,10 @@ s32 func_80056F24(void* arg0) {
 //     while (func_800A72E8(dmaResult) == 0);
     
 //     if ((temp_s1->unkC == 4) || (temp_s1->unkC == 5)) {
-//         temp_s1->unk8 = func_80056EE4(0x200);
+//         temp_s1->unk8 = mallloc(0x200);
 //         if (temp_s1->unk8 == NULL) {
 //             DummiedPrintf2(D_8010CA54, 0x200);
-//             func_80056F24(temp_s1->unk4);
+//             free(temp_s1->unk4);
 //             return -1;
 //         }
         
@@ -332,7 +332,7 @@ void func_800573BC(void) {
         D_800FE010 = 0.0f;
 
         for (i = 0; i < 16; i++) {
-            D_80176850[i] = -1;
+            gTextGradient[i] = -1;
         }
     }
 }
@@ -450,23 +450,23 @@ void func_800612FC(void) {
     D_800FDFEC = 0.0f;
 }
 
-void func_80061308(u8 arg0, u8 arg1, u8 arg2, u8 arg3, u8 arg4, u8 arg5, u8 arg6, u8 arg7, u8 arg8, u8 arg9, u8 argA, u8 argB, u8 argC, u8 argD, u8 argE, u8 argF) {
-    D_80176850[4] = arg4;
-    D_80176850[5] = arg5;
-    D_80176850[0] = arg0;
-    D_80176850[1] = arg1;
-    D_80176850[2] = arg2;
-    D_80176850[3] = arg3;
-    D_80176850[6] = arg6;
-    D_80176850[7] = arg7;
-    D_80176850[8] = arg8;
-    D_80176850[9] = arg9;
-    D_80176850[0xA] = argA;
-    D_80176850[0xB] = argB;
-    D_80176850[0xC] = argC;
-    D_80176850[0xD] = argD;
-    D_80176850[0xE] = argE;
-    D_80176850[0xF] = argF;
+void setTextGradient(u8 arg0, u8 arg1, u8 arg2, u8 arg3, u8 arg4, u8 arg5, u8 arg6, u8 arg7, u8 arg8, u8 arg9, u8 argA, u8 argB, u8 argC, u8 argD, u8 argE, u8 argF) {
+    gTextGradient[4] = arg4;
+    gTextGradient[5] = arg5;
+    gTextGradient[0] = arg0;
+    gTextGradient[1] = arg1;
+    gTextGradient[2] = arg2;
+    gTextGradient[3] = arg3;
+    gTextGradient[6] = arg6;
+    gTextGradient[7] = arg7;
+    gTextGradient[8] = arg8;
+    gTextGradient[9] = arg9;
+    gTextGradient[0xA] = argA;
+    gTextGradient[0xB] = argB;
+    gTextGradient[0xC] = argC;
+    gTextGradient[0xD] = argD;
+    gTextGradient[0xE] = argE;
+    gTextGradient[0xF] = argF;
 }
 
 void func_80061394(void) {
@@ -489,7 +489,7 @@ aa1* aa1_Alloc(s32 arg0, s32 arg1, void* arg2) {
     aa1* var_a1;
     aa1* temp_v0;
     
-    temp_v0 = func_80056EE4(0x48);
+    temp_v0 = mallloc(0x48);
     var_a1 = temp_v0;
     
     if (temp_v0 == NULL) {
@@ -497,9 +497,9 @@ aa1* aa1_Alloc(s32 arg0, s32 arg1, void* arg2) {
     }
     
     if (arg0 != 0) {
-        var_a1->unk_3C = func_80056EE4(arg0 * 0x28);
+        var_a1->unk_3C = mallloc(arg0 * 0x28);
         if (var_a1->unk_3C == NULL) {
-            func_80056F24(var_a1);
+            free(var_a1);
             return NULL;
         }        
     } else {
@@ -507,10 +507,10 @@ aa1* aa1_Alloc(s32 arg0, s32 arg1, void* arg2) {
     }
     
     if (arg1 != 0) {
-        var_a1->unk_38 = func_80056EE4(arg1);
+        var_a1->unk_38 = mallloc(arg1);
         if (var_a1->unk_38 == NULL) {
-            func_80056F24(var_a1);
-            func_80056F24(var_a1->unk_3C);
+            free(var_a1);
+            free(var_a1->unk_3C);
             return NULL;
         }        
     } else {
@@ -543,9 +543,9 @@ void aa1_Free(aa1* arg0) {
     if (arg0 == g_aa1_head) {
         g_aa1_head = arg0->previous;
     }
-    func_80056F24(arg0->unk_3C);
-    func_80056F24(arg0->unk_38);
-    func_80056F24(arg0);
+    free(arg0->unk_3C);
+    free(arg0->unk_38);
+    free(arg0);
     g_aa1_Count -= 1;
 }
 
@@ -1199,7 +1199,7 @@ void func_8007B518(f32 arg0) {
 
 void func_8007C494(void) {
     D_800FEA4C = 0;
-    D_800FEB90 = 0;
+    gTrainingRoomTimer = 0;
     D_800FEB94 = 0;
     D_800FEB98 = 1;
     D_800FEB9C = -1;
@@ -1207,7 +1207,7 @@ void func_8007C494(void) {
 
 void func_8007C4C8(void) {
     D_800FEA4C = 5;
-    D_800FEB90 = 0;
+    gTrainingRoomTimer = 0;
     D_800FEB94 = 0;
     D_800FEB98 = 1;
     D_800FEB9C = -1;
@@ -1225,7 +1225,7 @@ s32 func_8007C500(void) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8007C538.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/PrintTimer.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8007C7FC.s")
 
@@ -1269,7 +1269,7 @@ void func_8007E714(f32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8007E720.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8007EBE4.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/printNumber.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8007F0D8.s")
 

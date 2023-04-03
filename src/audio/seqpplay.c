@@ -22,7 +22,7 @@
 #include <PR/libaudio.h>
 #include "seqp.h"
 
-void alSeqpPlay(ALSeqPlayer *seqp)
+void alCSPPlay(ALCSPlayer *seqp)
 {
     ALEvent evt;
     evt.type = AL_SEQP_PLAY_EVT;           
