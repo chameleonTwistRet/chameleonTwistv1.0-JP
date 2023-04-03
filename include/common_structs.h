@@ -463,29 +463,37 @@ typedef struct unkStruct0 {
 } unkStruct0; //sizeof 0x24
 
 
+// typedef struct Rect {
+//     Vec3f min;
+//     Vec3f max;
+// } Rect;
+
+typedef struct unkVecStruct {
+    Vec3f vec1;
+    Vec3f vec2;
+    Vec3f normal;
+} unkVecStruct;
+
 typedef struct Poly {
-    /* 0x00 */ s32 unk_00;
+    /* 0x00 */ s32 unk_00; 
     /* 0x04 */ char unk_04[4];
-    /* 0x08 */ f32 offset_x;    // Offset Vector    
-    /* 0x0C */ f32 offset_y;
-    /* 0x10 */ f32 offset_z;
-    /* 0x14 */ char unk_14[0x18];
-    /* 0x2C */ Rect boundBox;     // Bounding Box (Smallest Rect that contains the poly)
-    /* 0x44 */ f32 x;       // Vector 1 (Edge)
-    /* 0x48 */ f32 y;
-    /* 0x4C */ f32 z;
-    /* 0x50 */ f32 x2;      // Vector 2 (Edge)
-    /* 0x54 */ f32 y2;
-    /* 0x58 */ f32 z2;
-    /* 0x5C */ f32 x3;      // Normal vector
-    /* 0x60 */ f32 y3;
-    /* 0x64 */ f32 z3;
-    /* 0x68 */ f32 unk_68;  // Unknown
-    /* 0x6C */ f32 unk_6C;  // 2x2 coefficient matrix for InPoly
+    /* 0x08 */ Vec3f offset;
+    /* 0x14 */ Vec3f unkVec;
+    /* 0x20 */ Vec3f unkVec2;
+    /* 0x2C */ Rect boundBox;
+    /* 0x44 */ unkVecStruct unkVectorStruct;
+    /* 0x68 */ f32 unk_68;
+    /* 0x6C */ f32 unk_6C;
     /* 0x70 */ f32 unk_70;
     /* 0x74 */ f32 unk_74;
     /* 0x78 */ f32 unk_78;
-} Poly; //sizeof 0x7C
+    /* 0x7C */ f32 unk_7C;
+    /* 0x80 */ f32 unk_80;
+    /* 0x84 */ f32 unk_84;
+    /* 0x88 */ f32 unk_88;
+    /* 0x8C */ f32 unk_8C;
+    /* 0x90 */ f32 unk_90;
+} Poly;
 
 typedef struct Actor {
     /* 0x000 */ s32 actorID;

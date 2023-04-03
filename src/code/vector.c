@@ -107,13 +107,13 @@ Vec3f* ProjectOnPolygon(Vec3f* vec, f32 perspX, f32 perspY, f32 perspZ, Poly* po
     f32 p_x2;
 
     OnlyCheckPolyInfoLevel(poly, 2, D_8011078C);
-    p_x = poly->x;
-    p_x2 = poly->x2;
-    dotProduct = (poly->z * perspZ) + ((perspX * p_x) + (perspY * poly->y));
-    dist = (poly->z2 * perspZ) + ((perspX * p_x2) + (perspY * poly->y2));
+    p_x = poly->unkVectorStruct.vec1.x;
+    p_x2 = poly->unkVectorStruct.vec2.x;
+    dotProduct = (poly->unkVectorStruct.vec1.z * perspZ) + ((perspX * p_x) + (perspY * poly->unkVectorStruct.vec1.y));
+    dist = (poly->unkVectorStruct.vec2.z * perspZ) + ((perspX * p_x2) + (perspY * poly->unkVectorStruct.vec2.y));
     vec_proj.x = (p_x2 * dist) + (dotProduct * p_x);
-    vec_proj.y = (poly->y2 * dist) + (dotProduct * poly->y);
-    vec_proj.z = (poly->z2 * dist) + (dotProduct * poly->z);
+    vec_proj.y = (poly->unkVectorStruct.vec2.y * dist) + (dotProduct * poly->unkVectorStruct.vec1.y);
+    vec_proj.z = (poly->unkVectorStruct.vec2.z * dist) + (dotProduct * poly->unkVectorStruct.vec1.z);
     *vec = vec_proj;
     return vec;
 }
@@ -135,12 +135,12 @@ Vec3f* WorldToLocal(Vec3f* outVec, Vec3f vec, Poly* poly) {
     Vec3f temp_vec;
  
     OnlyCheckPolyInfoLevel(poly, 2, D_801107A0);
-    vec.x = vec.x - poly->offset_x;
-    vec.y = vec.y - poly->offset_y;
-    vec.z = vec.z - poly->offset_z;
-    temp_vec.x = (poly->z * vec.z) + ((vec.x * poly->x) + (vec.y * poly->y));
-    temp_vec.y = (poly->z2 * vec.z) + ((vec.x * poly->x2) + (vec.y * poly->y2));
-    temp_vec.z = (poly->z3 * vec.z) + ((vec.x * poly->x3) + (vec.y * poly->y3));
+    vec.x = vec.x - poly->offset.x;
+    vec.y = vec.y - poly->offset.y;
+    vec.z = vec.z - poly->offset.z;
+    temp_vec.x = (poly->unkVectorStruct.vec1.z * vec.z) + ((vec.x * poly->unkVectorStruct.vec1.x) + (vec.y * poly->unkVectorStruct.vec1.y));
+    temp_vec.y = (poly->unkVectorStruct.vec2.z * vec.z) + ((vec.x * poly->unkVectorStruct.vec2.x) + (vec.y * poly->unkVectorStruct.vec2.y));
+    temp_vec.z = (poly->unkVectorStruct.normal.z * vec.z) + ((vec.x * poly->unkVectorStruct.normal.x) + (vec.y * poly->unkVectorStruct.normal.y));
     *outVec = temp_vec;
 
     return outVec;
@@ -161,12 +161,12 @@ Vec3f* LocalToWorld(Vec3f* outVec, Vec3f vec, Poly* poly) {
     Vec3f temp_vec;
 
     OnlyCheckPolyInfoLevel(poly, 2, D_801107B0);
-    temp_vec.x = (poly->x3 * vec.z) + ((vec.x * poly->x) + (vec.y * poly->x2));
-    temp_vec.y = (poly->y3 * vec.z) + ((vec.x * poly->y) + (vec.y * poly->y2));
-    temp_vec.z = (poly->z3 * vec.z) + ((vec.x * poly->z) + (vec.y * poly->z2));
-    temp_vec.x += poly->offset_x;
-    temp_vec.y += poly->offset_y;
-    temp_vec.z += poly->offset_z;
+    temp_vec.x = (poly->unkVectorStruct.normal.x * vec.z) + ((vec.x * poly->unkVectorStruct.vec1.x) + (vec.y * poly->unkVectorStruct.vec2.x));
+    temp_vec.y = (poly->unkVectorStruct.normal.y * vec.z) + ((vec.x * poly->unkVectorStruct.vec1.y) + (vec.y * poly->unkVectorStruct.vec2.y));
+    temp_vec.z = (poly->unkVectorStruct.normal.z * vec.z) + ((vec.x * poly->unkVectorStruct.vec1.z) + (vec.y * poly->unkVectorStruct.vec2.z));
+    temp_vec.x += poly->offset.x;
+    temp_vec.y += poly->offset.y;
+    temp_vec.z += poly->offset.z;
     *outVec = temp_vec;
     return outVec;
 }
@@ -215,11 +215,11 @@ s32 IsOnPolygon(Vec3f vec, Poly* poly) {
     f32 dotProduct;
     
     OnlyCheckPolyInfoLevel(poly, 2, D_801107D0);
-    vec.x -= poly->offset_x;
-    vec.y -= poly->offset_y;
-    vec.z -= poly->offset_z;
+    vec.x -= poly->offset.x;
+    vec.y -= poly->offset.y;
+    vec.z -= poly->offset.z;
     
-    dotProduct = vec.z * poly->z3 + (vec.x * poly->x3 + vec.y * poly->y3);
+    dotProduct = vec.z * poly->unkVectorStruct.normal.z + (vec.x * poly->unkVectorStruct.normal.x + vec.y * poly->unkVectorStruct.normal.y);
 
     if (dotProduct < -1.0) {
         return 0;

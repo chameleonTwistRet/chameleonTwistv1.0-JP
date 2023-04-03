@@ -290,10 +290,10 @@ void func_800D4550(s32 arg0, s32 arg1, Poly* arg2, Vec3f* arg3, Vec3f* arg4) {
     Collision* temp_v0 = &gZoneCollisions[currentZone];
 
     arg3->x = temp_v0->unkA4;
-    arg3->y = temp_v0->unkA8 + (temp_v0->unkD0 * arg2->x);
+    arg3->y = temp_v0->unkA8 + (temp_v0->unkD0 * arg2->unkVectorStruct.vec1.x);
     arg3->z = temp_v0->unkAC;
     arg4->x = temp_v0->unk98;
-    arg4->y = temp_v0->unk9C + (temp_v0->unkD0 * arg2->x);
+    arg4->y = temp_v0->unk9C + (temp_v0->unkD0 * arg2->unkVectorStruct.vec1.x);
     arg4->z = temp_v0->unkA0;
 }
 
