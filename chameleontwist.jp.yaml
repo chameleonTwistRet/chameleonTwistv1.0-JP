@@ -429,6 +429,18 @@ segments:
         - [0x6BCD18, palette, img/lilypad.ci4]
         - { start: 0x6BCF18, type: gfx, data_only: True, name: model/lilypad/lilypad}
 
+    -   start: 0x6BD040
+        name: vine
+        type: .data
+        vram: 0x8081C4C0
+        #symbol_name_format: $VRAM_$ROM
+        subalign: 8
+        subsegments:
+          - { start: 0x6BD040, type: vtx, data_only: True, name: model/vine/vine}
+          - [0x6BD080, mtx, model/vine/vine]
+          - [0x6BD0C0, ci8, img/vine.ci8, 16, 64]
+          - [0x6BD4C0, palette, img/vine.ci8]
+          - { start: 0x6BD6C0, type: gfx, data_only: True, name: model/vine/vine}
 
   - [0x70db70, bin, Level/LizardKong]
   - [0x7477f0, bin, Level/Quintella]
