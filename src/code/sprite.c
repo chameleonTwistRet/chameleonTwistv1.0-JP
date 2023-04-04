@@ -213,8 +213,7 @@ void func_80056DF4(unkStruct02* arg0, unkStruct02* arg1) {
     }
 }
 
-// Seems incorrectly named
-// s32 Memory_Free(void);
+
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/Memory_Free.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80056EB4.s")
@@ -222,7 +221,7 @@ void func_80056DF4(unkStruct02* arg0, unkStruct02* arg1) {
 //     func_80056CDC(D_801191A0, (D_801FFB78 - D_801191A0));
 // }
 
-//likely Malloc or equivalent
+
 void* mallloc(s32 arg0) {
     void* temp_v0 = func_80056D30(arg0);
     
@@ -232,7 +231,7 @@ void* mallloc(s32 arg0) {
 
     return temp_v0;
 }
-//likely Free or equivalent
+
 s32 free(void* arg0) {
     Memory_Free(arg0);
     return 0;

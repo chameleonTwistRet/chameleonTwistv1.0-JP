@@ -1613,7 +1613,7 @@ s32 GeneratePerfectCode(u32 time) {
     s32 i;
     s32 perfectCode;
 
-    time = time | 0x01400000;
+    time |= 0x01400000;
     temp_v0 = func_800A7A18(time);
     
     for (i = 0, perfectCode = 0; i < 32; i++) {
@@ -1646,27 +1646,29 @@ s32 func_800A7C58(u32 time) {
     return perfectCode;
 }
 
-s32 func_800A7D64(s32* arg0, s32* arg1, s32* arg2) {
-    s32 temp_v0;
+//parses record time, returns minutes and seconds.
+s32 func_800A7D64(s32* record, s32* mins, s32* secs) {
+    s32 time;
 
-    temp_v0 = func_800A7E78(arg0);
-    *arg2 = temp_v0 % 60;
-    *arg1 = temp_v0 / 60;
+    time = func_800A7E78(record);
+    *secs = time % 60;
+    *mins = time / 60;
     return 0;
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A7DD0.s")
 
-//color
+//parses time kept on record.
 s32 func_800A7E78(s32* arg0) {
-    s32 color = ((u8*)arg0)[0] & 15;
-    color <<= 8;
-    color += ((u8*)arg0)[1];
-    color <<= 8;
-    color += ((u8*)arg0)[2];
-    return color;
+    s32 time = ((u8*)arg0)[0] & 15;
+    time <<= 8;
+    time += ((u8*)arg0)[1];
+    time <<= 8;
+    time += ((u8*)arg0)[2];
+    return time;
 }
 
+//sets record time arg1 to time arg0
 void func_800A7E9C(s32 arg0, u8 *arg1) {
     u8 temp;
     u8 *new_var = arg1;
@@ -1677,7 +1679,7 @@ void func_800A7E9C(s32 arg0, u8 *arg1) {
     arg1[0] = (arg0 & 0xFF0000) >> 16;
     arg1[0] = temp | arg1[0];
 }
-
+//file split? following functions deal with save data.
 //TODO: fake match
 s32 func_800A7ED0(u8 *arg0) {
     s32 var_a2;

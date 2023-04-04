@@ -178,7 +178,7 @@ typedef struct Collision {
     /* 0x04 */ char pad4[0x14];                     /* maybe part of collisionType[6]? */
     /* 0x18 */ s32 unk18;
     /* 0x1C */ char pad1C[0x14];                    /* maybe part of unk18[6]? */
-    /* 0x30 */ Rect rect_30;
+    /* 0x30 */ Rect rect_30; // bounding box?
     /* 0x48 */ char pad48[0x30];                    /* maybe part of collisionSubStruct[3]? */
     /* 0x78 */ s32 unk78;
     /* 0x7C */ char pad7C[0x18];                    /* maybe part of unk78[7]? */

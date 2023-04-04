@@ -170,7 +170,7 @@ extern f32 D_8010C320;
 extern f32 D_8010C324;
 extern f64 D_8010C510;
 extern f64 D_8010C518;
-extern char D_8010C7B0[16];
+extern char D_8010C7B0[16]; //"TestView"
 extern char D_8010C944[8];
 extern char D_8010CA10[9]; //"mem err!\n"
 extern f64 D_8010FFF8;
