@@ -15,6 +15,7 @@ expected/
 .vscode/configurationCache.log
 .vscode/dryrun.log
 .vscode/targets.log
+.vscode/snips.code-snippets
 tools/n64crc/n64crc.exe
 src/mod/
 tools/cli.ini

@@ -759,7 +759,7 @@ s32 func_80032074(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80035374.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80035460.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ControlTongue.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_800360E4.s")
 
@@ -825,9 +825,10 @@ void func_800382F4(Actor* arg0) {
     arg0->vel.z = -__sinf((arg0->unk_90 * 2 * D_8010B7B0) / D_8010B7B8) * arg0->unk_94;
 }
 
-void func_800383A0(void) {
-    CalcEnemyNextPosition();
-}
+#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_800383A0.s")
+//void func_800383A0(void) {
+//    CalcEnemyNextPosition();
+//}
 
 // Grey Ant Spawner: Elisiah
 void func_800383C0(Actor* greyAntSpawnerActor) {

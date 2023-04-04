@@ -5,6 +5,7 @@ extern unkStruct07 D_802019A8[];
 extern Collision gZoneCollisions[];
 extern CardinalDirection gCardinalDirections[5]; // including "NO_DIR"
 extern s32 sBossIDs[6];
+s32* func_800B3424(void);
 
 typedef struct newStruct {
     s32 dummy0[10]; // Placeholder for the first 10 elements
@@ -65,21 +66,22 @@ void func_800B09C0(s32 arg0, newStruct* arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B1DD4.s")
 
-//fake match - unkStruct15 = Rect, addresses are to gPlayerActors[0]. mismatches when resolved.
 void func_800B2070(s32 arg0) {
-    unkStruct15 sp24;
+    playerActor* gPlayer = &gPlayerActors[0];
+    Rect sp24;
     Vec3f sp18;
-
-    sp24.unk_00 = -172.0f;
-    sp24.unk_0C = 100.0f;
-    sp24.unk_04 = -155.0f;
-    sp24.unk_10 = -145.0f;
-    sp24.unk_08 = 450.0f;
-    sp24.unk_14 = D_8010FB50;
-    sp18.x = gPlayerActors->pos.x;
-    sp18.y = gPlayerActors->pos.y;
-    sp18.z = gPlayerActors->pos.z;
-    if ((gPlayerActors->squishTimer == 0) && (D_80168DFC == 0) && (isPointInRect(sp18, &sp24) != 0)) {
+    
+    sp24.min.x = -172.0f;
+    sp24.max.x = 100.0f;
+    sp24.min.y = -155.0f;
+    sp24.max.y = -145.0f;
+    sp24.min.z = 450.0f;
+    sp24.max.z = D_8010FB50;
+    sp18.x = gPlayer->pos.x;
+    sp18.y = gPlayer->pos.y;
+    sp18.z = gPlayer->pos.z;
+    
+    if (((gPlayerActors->squishTimer == 0) && (D_80168DFC == 0)) && (isPointInRect(sp18, &sp24) != 0)) {
         D_80168E14 = 1;
     }
 }
@@ -214,7 +216,30 @@ s32 func_800B340C(s32 value) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B3484.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B34D0.s")
+s32 func_800B34D0(s32 arg0) {
+    s32 temp_v1;
+    s32 var_v0;
+    s32 var_v1;
+
+    temp_v1 = *func_800B3424();
+    if (arg0 & 0x200) {
+        var_v0 = 1;
+    } else {
+        var_v0 = 0;
+    }
+    if (var_v0 != 0) {
+        if (temp_v1 == 0) {
+            var_v1 = 1;
+        } else {
+            var_v1 = 0;
+        }
+    } else if (temp_v1 != 0) {
+        var_v1 = 1;
+    } else {
+        var_v1 = 0;
+    }
+    return var_v1;
+}
 
 s32 func_800B3540(s32 arg0) {
     return 1 - func_800B34D0(arg0);

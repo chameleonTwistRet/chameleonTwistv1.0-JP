@@ -1,5 +1,6 @@
 clean:
 	@echo "If you meant to build, use ./configure && ninja"
+	@echo "If ninja errors, run ./install.sh"
 	rm -rf build
 
 distclean: clean

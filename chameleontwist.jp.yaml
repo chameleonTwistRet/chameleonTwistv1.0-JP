@@ -14,8 +14,10 @@ options:
   # undefined_syms_path: undefined_syms.txt
   asm_path: asm
   src_path: src
+  asset_path: assets
   build_path: build
-  # extensions_path: tools/splat_ext
+  gfx_ucode: f3dex
+  extensions_path: tools/splat_ext
   auto_all_sections: [".data", ".rodata", ".bss"]
   migrate_rodata_to_functions : False
   create_undefined_funcs_auto: no
@@ -395,6 +397,7 @@ segments:
   #- [0x481A70, bin]
   #- [0x488210, bin]
   #- [0x488930, bin]
+  #- [0x50D20, vtx, vtx/curtains1]
   - [0x4987F0, ci4, brick1.ci4, 64, 64]
   - [0x498FF0, bin] #size of 8? (End DL command)
   - [0x498FF8, palette, brick1.ci4]
@@ -405,9 +408,542 @@ segments:
   - [0x5C3B20, bin, Level/IntroOutro]
   - [0x6344c0, bin, Level/GhostCastle]
   - [0x6a8e20, bin, Level/JungleLand]
+
+  - start: 0x6A8e20
+    name: JungleLand
+    type: data
+    vram: 0x8081B8C8
+    subalign: 8
+    subsegments:
+    - start: 0x6BC448
+      name: lilypad
+      type: .data
+      vram: 0x8081B8C8
+      subalign: 8
+      subsegments:
+        - { start: 0x6BC448, type: vtx, data_only: True, name: model/JungleLand/lilypad/lilypad}
+        - [0x6BC4C8, mtx, model/JungleLand/lilypad/lilypad]
+        - [0x6BC508, bin] # rgb2c remnant in mtx
+        - [0x6BC510, ci4, img/JungleLand/lilypad.ci4, 64, 64]
+        - [0x6BCD18, palette, img/JungleLand/lilypad.ci4]
+        - { start: 0x6BCF18, type: gfx, data_only: True, name: model/JungleLand/lilypad/lilypad}
+
+    - start: 0x6BD040
+      name: vine
+      type: .data
+      vram: 0x8081C4C0
+      subalign: 8
+      subsegments:
+        - { start: 0x6BD040, type: vtx, data_only: True, name: model/JungleLand/vine/vine}
+        - [0x6BD080, mtx, model/JungleLand/vine/vine]
+        - [0x6BD0C0, ci8, img/JungleLand/vine.ci8, 16, 64]
+        - [0x6BD4C0, palette, img/JungleLand/vine.ci8]
+        - { start: 0x6BD6C0, type: gfx, data_only: True, name: model/JungleLand/vine/vine}
+
+    - start: 0x6BD7D8
+      name: fallenCrownLog
+      type: .data
+      vram: 0x8081CC58
+      subalign: 8
+      subsegments:
+        - { start: 0x6BD7D8, type: vtx, data_only: True, name: model/JungleLand/fallenCrownLog/fallenCrownLog}
+        - [0x6BDA18, mtx, model/JungleLand/fallenCrownLog/fallenCrownLog]
+        - { start: 0x6BDA58, type: gfx, data_only: True, name: model/JungleLand/fallenCrownLog/fallenCrownLog}
+
+    - start: 0x6BDF30
+      name: unkLog
+      type: .data
+      vram: 0x8081D3B0
+      subalign: 8
+      subsegments:
+        - { start: 0x6BDF30, type: vtx, data_only: True, name: model/JungleLand/unkLog/unkLog}
+        - [0x6BE0B0, mtx, model/JungleLand/unkLog/unkLog]
+        - { start: 0x6BE0F0, type: gfx, data_only: True, name: model/JungleLand/unkLog/unkLog}
+
+    - start: 0x6BE388
+      name: fallenLogStump
+      type: .data
+      vram: 0x8081D808
+      subalign: 8
+      subsegments:
+        - { start: 0x6BE388, type: vtx, data_only: True, name: model/JungleLand/fallenLogStump/fallenLogStump}
+        - { start: 0x6BE4A8, type: mtx, data_only: True, name: model/JungleLand/fallenLogStump/fallenLogStump}
+        - [0x6BE4F0, ci8, img/JungleLand/fallenLogStump.ci8, 64, 32]
+        - [0x6BECF8, palette, img/JungleLand/fallenLogStump.ci8]
+        - { start: 0x6BEEF8, type: gfx, data_only: True, name: model/JungleLand/fallenLogStump/fallenLogStump}
+    
+    - start: 0x6BF150
+      name: logTunnel
+      type: .data
+      vram: 0x8081E5D0
+      subalign: 8
+      subsegments:
+        - { start: 0x6BF150, type: vtx, data_only: True, name: model/JungleLand/logTunnel/logTunnel}
+        - [0x6BF530, mtx, model/JungleLand/logTunnel/logTunnel]
+        - { start: 0x6bf570, type: gfx, data_only: True, name: model/JungleLand/logTunnel/logTunnel}
+    
+    - start: 0x6BFA68
+      name: waterfallRock
+      type: .data
+      vram: 0x8081EEE8
+      subalign: 8
+      subsegments:
+        - { start: 0x6BFA68, type: vtx, data_only: True, name: model/JungleLand/waterfallRock/waterfallRock}
+        - [0x6BFBD8, mtx, model/JungleLand/waterfallRock/waterfallRock]
+        - { start: 0x6BFC18, type: gfx, data_only, True, name: model/JungleLand/waterfallRock/waterfallRock}
+
+    - start: 0x6BFFD8
+      name: unk1
+      type: .data
+      vram: 0x8081F458
+      subalign: 8
+      subsegments:
+        - { start: 0x6BFFD8, type: vtx, data_only: True, name: model/JungleLand/unk1/unk1}
+        - [0x6C03F8, mtx, model/JungleLand/unk1/unk1]
+        - { start: 0x6C0438, type: gfx, data_only: True, name: model/JungleLand/unk1/unk1}
+
+    - start: 0x6C0A30
+      name: fallBridge
+      type: .data
+      vram: 0x8081FEB0
+      subalign: 8
+      subsegments:
+        - { start: 0x6C0A30, type: vtx, data_only: True, name: model/JungleLand/fallBridge/fallBridge}
+        - [0x6C0A70, mtx, model/JungleLand/fallBridge/fallBridge]
+        - [0x6C0AB0, ci8, img/JungleLand/fallBridge.ci8, 64, 32]
+        - [0x6C12B0, palette, img/JungleLand/fallBridge.ci8]
+        - { start: 0x6c14b0, type: gfx, data_only: True, name: model/JungleLand/fallBridge/fallBridge}
+
+    - start: 0x6C15B8
+      name: ctCrate
+      type: .data
+      vram: 0x80820A38
+      subalign: 8
+      subsegments:
+        - { start: 0x6C15B8, type: vtx, data_only: True, name: model/JungleLand/ctCrate/ctCrate}
+        - [0x6C16F8, mtx, model/JungleLand/ctCrate/ctCrate]
+        - [0x6C1740, ci4, img/JungleLand/ctCrate1.ci4, 32, 32]
+        - [0x6c1940, bin]
+        - [0x6C1948, palette, img/JungleLand/ctCrate1.ci4]
+        - [0x6c1b48, bin]
+        - [0x6c1b50, ci4, img/JungleLand/ctCrate2.ci4, 64, 32]
+        - [0x6c1f50, bin]
+        - [0x6c1f58, palette, img/JungleLand/ctCrate2.ci4]
+        - [0x6c2158, bin]
+        - [0x6c2160, ci4, img/JungleLand/ctCrate3.ci4, 64, 32]
+        - [0x6c2560, bin]
+        - [0x6c2568, palette, img/JungleLand/ctCrate3.ci4]
+        - [0x6c2760, bin]
+        - { start: 0x6C2768, type: gfx, data_only: True, name: model/JungleLand/ctCrate/ctCrate}
+
+    - start: 0x6C2B50
+      name: ctCrate2
+      type: .data
+      subalign: 8
+      subsegments:
+        - { start: 0x6C2B50, type: vtx, data_only: True, name: model/JungleLand/ctCrate2/ctCrate2}
+        - { start: 0x6C2C90, type: mtx, data_only: True, name: model/JungleLand/ctCrate2/ctCrate2}
+        - { start: 0x6C2CD0, type: gfx, data_only: True, name: model/JungleLand/ctCrate2/ctCrate2}
+    
+    - start: 0x6C30B8
+      name: walkingPlank
+      type: .data
+      subalign: 8
+      subsegments:
+        - { start: 0x6C30B8, type: vtx, data_only: True, name: model/JungleLand/walkingPlank/walkingPlank}
+        - { start: 0x6C31B8, type: mtx, data_only: True, name: model/JungleLand/walkingPlank/walkingPlank}
+        - { start: 0x6C31F8, type: gfx, data_only: True, name: model/JungleLand/walkingPlank/walkingPlank} 
+        
+    - start: 0x6C34F0
+      name: walkingPlank2
+      type: .data
+      subalign: 8
+      subsegments:
+        - { start: 0x6C34F0, type: vtx, data_only: True, name: model/JungleLand/walkingPlank2/walkingPlank2}
+        - { start: 0x6C35F0, type: mtx, data_only: True, name: model/JungleLand/walkingPlank2/walkingPlank2}
+        - { start: 0x6C3630, type: gfx, data_only: True, name: model/JungleLand/walkingPlank2/walkingPlank2}
+
+    - start: 0x6C3928
+      name: walkingPlank3
+      type: .data
+      subalign: 8
+      subsegments:
+        - { start: 0x6C3928, type: vtx, data_only: True, name: model/JungleLand/walkingPlank3/walkingPlank3}
+        - { start: 0x6C3A28, type: mtx, data_only: True, name: model/JungleLand/walkingPlank3/walkingPlank3}
+        - { start: 0x6C3A68, type: gfx, data_only: True, name: model/JungleLand/walkingPlank3/walkingPlank3}
+
+    - start: 0x6C3D60
+      name: walkingPlank4
+      type: .data
+      subalign: 8
+      subsegments:
+        - { start: 0x6C3D60, type: vtx, data_only: True, name: model/JungleLand/walkingPlank4/walkingPlank4}
+        - { start: 0x6C3E60, type: mtx, data_only: True, name: model/JungleLand/walkingPlank4/walkingPlank4}
+        - { start: 0x6C3EA0, type: gfx, data_only: True, name: model/JungleLand/walkingPlank4/walkingPlank4}
+
+    - start: 0x6C4278
+      name: singularPlank #fall bridge small
+      type: .data
+      subalign: 8
+      subsegments:
+        - { start: 0x6C4278, type: vtx, data_only: True, name: model/JungleLand/singularPlank/singularPlank}
+        - { start: 0x6C42B8, type: mtx, data_only: True, name: }
+        - [0x6C42F8, ci8, img/JungleLand/singularPlank.ci8, 64, 32]
+        - [0x6C4AF8, palette, img/JungleLand/singularPlank.ci8]
+        - { start: 0x6C4CF8, type: gfx, data_only: True, name: model/JungleLand/singularPlank/singularPlank}
+
+    - start: 0x6C4E00
+      name: roomSixStartPlatform
+      type: .data
+      subalign: 8
+      subsegments:
+        - { start: 0x6C4E00, type: vtx, data_only: True, name: model/JungleLand/roomSixStartPlatform/roomSixStartPlatform}
+        - { start: 0x6C4FC0, type: mtx, data_only: True, name: model/JungleLand/roomSixStartPlatform/roomSixStartPlatform}
+        - { start: 0x6C5000, type: gfx, data_only: True, name: model/JungleLand/roomSixStartPlatform/roomSixStartPlatform}
+
+    - start: 0x6C56A8
+      name: cavePlatform
+      type: .data
+      subalign: 8
+      subsegments:
+        - { start: 0x6C56A8, type: vtx, data_only: True, name: model/JungleLand/cavePlatform/cavePlatform}
+        - { start: 0x6C57A8, type: mtx, data_only: True, name: model/JungleLand/cavePlatform/cavePlatform}
+        - { start: 0x6C57E8, type: gfx, data_only: True, name: model/JungleLand/cavePlatform/cavePlatform}
+
+    - start: 0x6C5BC0
+      name: roomSixCrownPlatform
+      type: .data
+      subalign: 8
+      subsegments:
+        - { start: 0x6C5BC0, type: vtx, data_only: True, name: model/JungleLand/roomSixCrownPlatform/roomSixCrownPlatform}
+        - { start: 0x6C5D80, type: mtx, data_only: True, name: model/JungleLand/roomSixCrownPlatform/roomSixCrownPlatform}
+        - { start: 0x6C5DC0, type: gfx, data_only: True, name: model/JungleLand/roomSixCrownPlatform/roomSixCrownPlatform}
+
+    - start: 0x6C6468
+      name: roomSixSidePlatform
+      type: .data
+      subalign: 8
+      subsegments:
+        - { start: 0x6C6468, type: vtx, data_only: True, name: model/JungleLand/roomSixSidePlatform/roomSixSidePlatform}
+        - { start: 0x6C66A8, type: mtx, data_only: True, name: model/JungleLand/roomSixSidePlatform/roomSixSidePlatform}
+        - { start: 0x6C66E8, type: gfx, data_only: True, name: model/JungleLand/roomSixSidePlatform/roomSixSidePlatform}
+
+    - start: 0x6C6CD0
+      name: roomSevenLava
+      type: .data
+      subalign: 8
+      subsegments:
+        - { start: 0x6C6CD0, type: vtx, data_only: True, name: model/JungleLand/roomSevenLava/roomSevenLava}
+        - { start: 0x6C6D90, type: mtx, data_only: True, name: model/JungleLand/roomSevenLava/roomSevenLava}
+        - [0x6C6DD8, ci8, img/JungleLand/lava.ci8, 32, 32]
+        - [0x6C71E0, palette, img/JungleLand/lava.ci8]
+        - { start: 0x6C73E0, type: gfx, data_only: True, name: model/JungleLand/roomSevenLava/roomSevenLava}
+
+    - start: 0x6C7528
+      name: roomSevenFloor
+      type: .data
+      subalign: 8
+      subsegments:
+        - { start: 0x6C7528, type: vtx, data_only: True, name: model/JungleLand/roomSevenFloor/roomSevenFloor}
+        - { start: 0x6C75E8, type: mtx, data_only: True, name: model/JungleLand/roomSevenFloor/roomSevenFloor}
+        - { start: 0x6C7628, type: gfx, data_only: True, name: model/JungleLand/roomSevenFloor/roomSevenFloor}
+
+    - start: 0x6C7910
+      name: roomZeroLava
+      type: .data
+      subalign: 8
+      subsegments:
+        - { start: 0x6C7910, type: vtx, data_only: True, name: model/JungleLand/roomZeroLava/roomZeroLava}
+        - { start: 0x6C7990, type: mtx, data_only: True, name: model/JungleLand/roomZeroLava/roomZeroLava}
+        - { start: 0x6C79D0, type: gfx, data_only: True, name: model/JungleLand/roomZeroLava/roomZeroLava}
+
+    - start: 0x6C7AF8
+      name: roomOnePlatform
+      type: .data
+      subalign: 8
+      subsegments:
+        - { start: 0x6C7AF8, type: vtx, data_only: True, name: model/JungleLand/roomOnePlatform/roomOnePlatform}
+        - { start: 0x6C7CF8, type: mtx, data_only: True, name: model/JungleLand/roomOnePlatform/roomOnePlatform}
+        - { start: 0x6C7D38, type: gfx, data_only: True, name: model/JungleLand/roomOnePlatform/roomOnePlatform}
+
+    - start: 0x6C80A0
+      name: roomSixCrownEdgePlatform
+      type: .data
+      subalign: 8
+      subsegments:
+        - { start: 0x6C80A0, type: vtx, data_only: True, name: model/JungleLand/roomSixCrownEdgePlatform/roomSixCrownEdgePlatform}
+        - { start: 0x6C82E0, type: mtx, data_only: True, name: model/JungleLand/roomSixCrownEdgePlatform/roomSixCrownEdgePlatform}
+        - [0x6C8328, ci8, img/JungleLand/roomSixCrownEdgePlatform.ci8, 64, 32]
+        - [0x6C8B28, bin]
+        - [0x6C8B30, palette, img/JungleLand/roomSixCrownEdgePlatform.ci8]
+        - [0x6C8D28, bin]
+        - { start: 0x6C8D30, type: gfx, data_only: True, name: model/JungleLand/roomSixCrownEdgePlatform/roomSixCrownEdgePlatform}
+
+    - start: 0x6C9248
+      name: roomSevenSpinRing
+      type: .data
+      subalign: 8
+      subsegments:
+        - { start: 0x6C9248, type: vtx, data_only: True, name: model/JungleLand/roomSevenSpinRing}
+        - { start: 0x6C9808, type: mtx, data_only: True, name: model/JungleLand/roomSevenSpinRing}
+        - { start: 0x6C9848, type: gfx, data_only: True, name: model/JungleLand/roomSevenSpinRing}
+
+    - start: 0x6C9DD8
+      name: woodBlock
+      type: .data
+      subalign: 8
+      subsegments:
+        - { start: 0x6C9DD8, type: vtx, data_only: True, name: model/JungleLand/woodBlock/woodBlock}   
+        - { start: 0x6C9F18, type: mtx, data_only: True, name: model/JungleLand/woodBlock/woodBlock}
+        - { start: 0x6C9F58, type: gfx, data_only: True, name: model/JungleLand/woodBlock/woodBlock}
+
+    - start: 0x6CA340
+      name: rope  #room 0 
+      type: .data
+      subalign: 8
+      subsegments:
+        - { start: 0x6CA340, type: vtx, data_only: True, name: model/JungleLand/ropes/ropes}
+        - { start: 0x6CA380, type: mtx, data_only: True, name: model/JungleLand/ropes/ropes}
+        - [0x6CA3C8, rgba16, img/JungleLand/rope.rgba16, 32, 64]
+        - { start: 0x6CB3C8, type: gfx, data_only: True, name: model/JungleLand/ropes/ropes}
+
+    - start: 0x6CB4B0
+      name: railOne #room 6 (int)
+      type: .data
+      subalign: 8
+      subsegments:
+        - { start: 0x6CB4B0, type: vtx, data_only: True, name: model/JungleLand/railOne/railOne}
+        - { start: 0x6CB670, type: mtx, data_only: True, name: model/JungleLand/railOne/railOne}
+        - [0x6CB6B8, bin] # broken image?
+        - { start: 0x6CB940, type: gfx, data_only: True, name: model/JungleLand/railOne/railOne}
+
+    - start: 0x6CBD58
+      name: railTwo #room 6 (int)
+      type: .data
+      subalign: 8
+      subsegments:
+        - { start: 0x6CBD58, type: vtx, data_only: True, name: model/JungleLand/railTwo/railTwo}
+        - { start: 0x6CBF18, type: mtx, data_only: True, name: model/JungleLand/railTwo/railTwo}
+        - { start: 0x6CBF58, type: gfx, data_only: True, name: model/JungleLand/railTwo/railTwo}
+
+    - start: 0x6CC370
+      name: railThree #room 6 (int)
+      type: .data
+      subalign: 8
+      subsegments:
+        - { start: 0x6CC370, type: vtx, data_only: True, name: model/JungleLand/railThree/railThree}
+        - { start: 0x6CC530, type: mtx, data_only: True, name: model/JungleLand/railThree/railThree}
+        - { start: 0x6CC570, type: gfx, data_only: True, name: model/JungleLand/railThree/railThree}
+
+    - start: 0x6CC988
+      name: railFour #room 6 (int)
+      type: .data
+      subalign: 8
+      subsegments:
+        - { start: 0x6CC988, type: vtx, data_only: True, name: model/JungleLand/railFour/railFour}
+        - { start: 0x6CCB48, type: mtx, data_only: True, name: model/JungleLand/railFour/railFour}
+        - { start: 0x6CCB88, type: gfx, data_only: True, name: model/JungleLand/railFour/railFour}
+
+    - start: 0x6CCFA0
+      name: railFive #room 6 (int)
+      type: .data
+      subalign: 8
+      subsegments:
+        - { start: 0x6CCFA0, type: vtx, data_only: True, name: model/JungleLand/railFive/railFive}
+        - { start: 0x6CD160, type: mtx, data_only: True, name: model/JungleLand/railFive/railFive}
+        - { start: 0x6CD1A0, type: gfx, data_only: True, name: model/JungleLand/railFive/railFive}
+
+    - start: 0x6CD5B8
+      name: railSix #room 6 (int)
+      type: .data
+      subalign: 8
+      subsegments:
+        - { start: 0x6CD5B8, type: vtx, data_only: True, name: model/JungleLand/railSix/railSix}
+        - { start: 0x6CD778, type: mtx, data_only: True, name: model/JungleLand/railSix/railSix}
+        - { start: 0x6CD7B8, type: gfx, data_only: True, name: model/JungleLand/railSix/railSix}
+
+    - start: 0x6CDBD0
+      name: rail #room 0 (int)
+      type: .data
+      subalign: 8
+      subsegments:
+        - { start: 0x6CDBD0, type: vtx, data_only: True, name: model/JungleLand/rail/rail}
+        - { start: 0x6CDD90, type: mtx, data_only: True, name: model/JungleLand/rail/rail}
+        - { start: 0x6CDDD0, type: gfx, data_only: True, name: model/JungleLand/rail/rail}
+
+    - start: 0x6CE128
+      name: ctCrate3
+      type: .data
+      subalign: 8
+      subsegments:
+        - { start: 0x6CE128, type: vtx, data_only: True, name: model/JungleLand/ctCrate3/ctCrate3}
+        - { start: 0x6CE268, type: mtx, data_only: True, name: model/JungleLand/ctCrate3/ctCrate3}
+        - { start: 0x6CE2A8, type: gfx, data_only: True, name: model/JungleLand/ctCrate3/ctCrate3}
+
+    - start: 0x6CE690
+      name: logOne
+      type: .data
+      subalign: 8
+      subsegments:
+        - { start: 0x6CE690, type: vtx, data_only: True, name: model/JungleLand/logOne/logOne}
+        - { start: 0x6CE730, type: mtx, data_only: True, name: model/JungleLand/logOne/logOne}
+        - { start: 0x6CE770, type: gfx, data_only: True, name: model/JungleLand/logOne/logOne}
+
+    - start: 0x6CE8A8
+      name: fallBridgeSmall2
+      type: .data
+      subalign: 8
+      subsegments:
+        - { start: 0x6CE8A8, type: vtx, data_only: True, name: model/JungleLand/fallBridgeSmall2/fallBridgeSmall2}
+        - { start: 0x6CE8E8, type: mtx, data_only: True, name: model/JungleLand/fallBridgeSmall2/fallBridgeSmall2}
+        - { start: 0x6CE928, type: gfx, data_only: True, name: model/JungleLand/fallBridgeSmall2/fallBridgeSmall2}
+
+    - start: 0x6CEA30
+      name: logSetPiece #room 6 (ext)
+      type: .data
+      subalign: 8
+      subsegments:
+        - { start: 0x6CEA30, type: vtx, data_only: True, name: model/JungleLand/logSetPiece/logSetPiece}
+        - { start: 0x6CEAC0, type: mtx, data_only: True, name: model/JungleLand/logSetPiece/logSetPiece}
+        - { start: 0x6CEB00, type: gfx, data_only: True, name: model/JungleLand/logSetPiece/logSetPiece}
+
+    # Unused
+    - start: 0x6CEC30
+      name: holeLog
+      type: .data
+      subalign: 8
+      subsegments:
+        - { start: 0x6CEC30, type: vtx, data_only: True, name: model/JungleLand/holeLog/holeLog}
+        - { start: 0x6CF4A0, type: mtx, data_only: True, name: model/JungleLand/holeLog/holeLog}
+        - { start: 0x6CF4E0, type: gfx, data_only: True, name: model/JungleLand/holeLog/holeLog}
+
+    - start: 0x6CF950
+      name: waterfallGroundCollision #room 9 (ext)
+      type: .data
+      subalign: 8
+      subsegments:
+        - { start: 0x6CF950, type: vtx, data_only: True, name: model/JungleLand/waterfallGroundCollision/waterfallGroundCollision}
+        - { start: 0x6CFA10, type: mtx, data_only: True, name: model/JungleLand/waterfallGroundCollision/waterfallGroundCollision}
+        - { start: 0x6CFA50, type: gfx, data_only: True, name: model/JungleLand/waterfallGroundCollision/waterfallGroundCollision}   
+
+    - start: 0x6CFAE8
+      name: waterfallBacksideCollision
+      type: .data
+      subalign: 8
+      subsegments:
+        - { start: 0x6CFAE8, type: vtx, data_only: True, name: model/JungleLand/waterfallBacksideCollision/waterfallBacksideCollision}
+        - { start: 0x6CFB68, type: mtx, data_only: True, name: model/JungleLand/waterfallBacksideCollision/waterfallBacksideCollision}
+        - { start: 0x6CFBA8, type: gfx, data_only: True, name: model/JungleLand/waterfallBacksideCollision/waterfallBacksideCollision}
+
+    - start: 0x6CFC88
+      name: groundCollision
+      type: .data
+      subalign: 8
+      subsegments:
+        - { start: 0x6CFC88, type: vtx, data_only: True, name: model/JungleLand/groundCollision/groundCollision}
+        - { start: 0x6CFEB8, type: mtx, data_only: True, name: model/JungleLand/groundCollision/groundCollision}
+        - { start: 0x6CFEF8, type: gfx, data_only: True, name: model/JungleLand/groundCollision/groundCollision}
+
+    - start: 0x6D0058
+      name: holeLogBottom
+      type: .data
+      subalign: 8
+      subsegments:
+        - { start: 0x6D0058, type: vtx, data_only: True, name: model/JungleLand/groundCollision/groundCollision}
+        - { start: 0x6D01D8, type: mtx, data_only: True, name: model/JungleLand/groundCollision/groundCollision}
+        - { start: 0x6D0218, type: gfx, data_only: True, name: model/JungleLand/groundCollision/groundCollision}
+
+    - start: 0x6D03E0
+      name: extThree
+      type: .data
+      subalign: 8
+      subsegments:
+        - { start: 0x6D03E0, type: vtx, data_only: True, name: model/JungleLand/extThree/extThree}
+        - { start: 0x6D0AD0, type: mtx, data_only: True, name: model/JungleLand/extThree/extThree}
+        - [0x6D0B18, ci8, img/JungleLand/ext3Wall.ci8, 64, 32]
+        - [0x6D1318, bin]
+        - [0x6D1320, palette, img/JungleLand/ext3Wall.ci8]
+        - [0x6D1518, bin]
+        - { start: 0x6D1520, type: gfx, data_only: True, name: model/JungleLand/extThree/extThree}
+
+    - start: 0x6D1F98
+      name: extFour
+      type: .data
+      subalign: 8
+      subsegments:
+        - { start: 0x6D1F98, type: vtx, data_only: True, name: model/JungleLand/extFour/extFour}
+        - { start: 0x6D2278, type: mtx, data_only: True, name: model/JungleLand/extFour/extFour}
+        - { start: 0x6D22B8, type: gfx, data_only: True, name: model/JungleLand/extFour/extFour}
+
+    - start: 0x6D29E0
+      name: extZero
+      type: .data
+      subalign: 8
+      subsegments:
+        - { start: 0x6D29E0, type: vtx, data_only: True, name: model/JungleLand/extZero/extZero}
+        - { start: 0x6D2CE0, type: mtx, data_only: True, name: model/JungleLand/extZero/extZero}
+        - { start: 0x6D2D20, type: gfx, data_only: True, name: model/JungleLand/extZero/extZero}
+
+    - start: 0x6D32C0
+      name: extOne
+      type: .data
+      subalign: 8
+      subsegments:
+        - { start: 0x6D32C0, type: vtx, data_only: True, name: model/JungleLand/extOne/extOne}
+        - { start: 0x6D4280, type: mtx, data_only: True, name: model/JungleLand/extOne/extOne}
+        - { start: 0x6D42C0, type: gfx, data_only: True, name: model/JungleLand/extOne/extOne}
+
+    - start: 0x6D4F40
+      name: extTwo
+      type: .data
+      subalign: 8
+      subsegments:
+        - { start: 0x6D4F40, type: vtx, data_only: True, name: model/JungleLand/extTwo/extTwo}
+        - { start: 0x6D51B0, type: mtx, data_only: True, name: model/JungleLand/extTwo/extTwo}
+        - { start: 0x6D51F0, type: gfx, data_only: True, name: model/JungleLand/extTwo/extTwo}
+
+    - start: 0x6D5750
+      name: rockFloor
+      type: .data
+      subalign: 8
+      subsegments:
+        - { start: 0x6D5750, type: vtx, data_only: True, name: model/JungleLand/rockFloor/rockFloor}
+        - { start: 0x6D5810, type: mtx, data_only: True, name: model/JungleLand/rockFloor/rockFloor}
+        - { start: 0x6D5850, type: gfx, data_only: True, name: model/JungleLand/rockFloor/rockFloor}
+
+    - start: 0x6D59C8
+      name: rockFloor2
+      type: .data
+      subalign: 8
+      subsegments:
+        - { start: 0x6D59C8, type: vtx, data_only: True, name: model/JungleLand/rockFloor2/rockFloor2}
+        - { start: 0x6D5A68, type: mtx, data_only: True, name: model/JungleLand/rockFloor2/rockFloor2}
+        - { start: 0x6D5AA8, type: gfx, data_only: True, name: model/JungleLand/rockFloor2/rockFloor2}
+
+    - start: 0x6D5C10
+      name: extFive
+      type: .data
+      subalign: 8
+      subsegments:
+          - { start: 0x6D5C10, type: vtx, data_only: True, name: model/JungleLand/extFive/extFive}
+          - { start: 0x6D5F10, type: mtx, data_only: True, name: model/JungleLand/extFive/extFive}
+          - { start: 0x6D5F50, type: gfx, data_only: True, name: model/JungleLand/extFive/extFive}
+
   - [0x70db70, bin, Level/LizardKong]
   - [0x7477f0, bin, Level/Quintella]
-  - [0x7a72b0, bin, Level/BombSnake]
+  - start: 0x7A72B0
+    type: data
+    name: BombSnake
+    vram: 0x8031B020
+    subsegments:
+    - [0x7A72B0, bin, bombSnake0]
+    - [0x7AB7F0, bin, bombSnake1]
+    - [0x7AC0A0, bin, bombSnake2]
+    - [0x7AC340, bin, bombSnake3]
+    - [0x7AC450, bin, bombSnake4]
+    - [0x7AC950, bin, bombSnake5]
+    - [0x7ACF90, bin, bombSnake6]
+  #- [0x7a72b0, bin, Level/BombSnake]
   - [0x7af730, bin, Level/GiantCake]
   - [0x7d22b0, bin, Level/Armadillo]
   - [0x7fd3b0, bin, Level/PileOfBooks]
@@ -1278,16 +1814,182 @@ segments:
 
   - [0xAF5688, bin, noClue]
 
-  - name: davy
-    type: code
+
+
+  - start: 0xAFC6B0
+    name: Davy
     subalign: 8
-    start: 0xAFC6B0
+    type: data #modelActor
+    vram: 0x80B212B0
     subsegments:
-      - [0xAFC6B0, bin, davy/davyMain] #size of 0x8BE0
-      - [0xAFD090, ci4, davy/davyNumber.ci4, 32, 32] #should be ci4, 32x32
-      - [0xAFD290, bin] #0x08 into this has the palette
-      - [0xAFD298, palette, davy/davyNumber.ci4] #is palette for davyNumber
-      - [0xAFD2C0, bin]
+    - [0xAFC6B0, bin, header]
+    - name: body
+      type: .data #model
+      start: 0xAFC6C8
+      subsegments:
+      - { start: 0xAFC6C8, type: vtx, data_only: True, name: chameleons/Davy/body/body}
+      - [0xafc808, mtx, chameleons/Davy/body/body]
+      - [0xafc848, bin] # rgb2c remnant in mtx
+      - [0xafc850, ci4, chameleons/Davy/body/backpackStrap.ci4, 32, 64]
+      - [0xafcc50, bin] #endDL command from rgb2c
+      - [0xafcc58, palette, chameleons/Davy/body/backpackStrap.ci4]
+      - [0xafce58, bin] #endDL command from rgb2c
+      - [0xafce60, ci4, chameleons/Davy/body/solidColor.ci4, 8, 8]
+      - [0xafce80, bin] #endDL command from rgb2c
+      - [0xafce88, palette, chameleons/Davy/body/solidColor.ci4]
+      - [0xafd088, bin] #endDL command from rgb2c
+      - [0xafd090, ci4, chameleons/Davy/body/number.ci4, 32, 32]
+      - [0xafd290, bin] #endDL command from rgb2c
+      - [0xafd298, palette, chameleons/Davy/body/number.ci4]
+      - { start: 0xafd498, type: gfx, data_only: True, name: chameleons/Davy/body/body}
+    - name: bodyAssociate
+      type: .data #model
+      start: 0xafd850
+      subsegments:
+      - { start: 0xafd850, type: vtx, data_only: True, name: chameleons/Davy/bodyAssociate/bodyAssociate}
+      - { start: 0xafd890, type: gfx, data_only: True, name: chameleons/Davy/bodyAssociate/bodyAssociate}
+    - name: head
+      type: .data #model
+      start: 0xafd8b0
+      subsegments:
+      - { start: 0xafd8b0, type: vtx, data_only: True, name: chameleons/Davy/head/head}
+      - [0xafdd20, mtx, chameleons/Davy/head/head]
+      - [0xafdd60, bin] #endDL command from rgb2c
+      - [0xafdd68, ci8, chameleons/Davy/head/eye.ci8, 32, 32]
+      - [0xafe168, bin] #endDL command from rgb2c
+      - [0xafe170, palette, chameleons/Davy/head/eye.ci8]
+      - [0xafe370, bin] #endDL command from rgb2c
+      - [0xafe378, ci8, chameleons/Davy/head/eye2.ci8, 32, 32]
+      - [0xafe778, bin] #endDL command from rgb2c
+      - [0xafe780, palette, chameleons/Davy/head/eye2.ci8]
+      - [0xafe980, bin] #endDL command from rgb2c
+      - [0xafe988, ci4, chameleons/Davy/head/cheek.ci4, 32, 32]
+      - [0xafeb88, bin] #endDL command from rgb2c
+      - [0xafeb90, palette, chameleons/Davy/head/cheek.ci4]
+      - { start: 0xafed90, type: gfx, data_only: True, name: chameleons/Davy/head/head}
+    - name: backpack
+      type: .data #model
+      start: 0xaff310
+      subsegments:
+      - { start: 0xaff310, type: vtx, data_only: True, name: chameleons/Davy/backpack/backpack}
+      - [0xaff390, mtx, chameleons/Davy/backpack/backpack]
+      - [0xaff3d0, bin] #endDL command from rgb2c
+      - [0xaff3d8, ci4, chameleons/Davy/backpack/backpack.ci4, 8, 8]
+      - [0xaff3f8, bin] #endDL command from rgb2c
+      - [0xaff400, palette, chameleons/Davy/backpack/backpack.ci4]
+      - { start: 0xaff600, type: gfx, data_only: True, name: chameleons/Davy/backpack/backpack}
+    - name: shoe
+      type: .data #model
+      start: 0xaff778
+      subsegments:
+      - { start: 0xaff778, type: vtx, data_only: True, name: chameleons/Davy/shoe/shoe}
+      - [0xaffa38, bin, chameleons/Davy/shoe/shoe]
+      - [0xaffa78, bin] #endDL command from rgb2c
+      - [0xaffa80, ci4, chameleons/Davy/shoe/shoe.ci4, 64, 32]
+      - [0xaffe80, bin] #endDL command from rgb2c
+      - [0xaffe88, palette, chameleons/Davy/shoe/shoe.ci4]
+      - { start: 0xb00088, type: gfx, data_only: True, name: chameleons/Davy/shoe/shoe}
+    - name: Lshoe
+      type: .data #model
+      start: 0xb00348
+      subsegments:
+      - { start: 0xb00348, type: vtx, data_only: True, name: chameleons/Davy/Lshoe/Lshoe}
+      - [0xb00608, mtx, chameleons/Davy/Lshoe/Lshoe]
+      - { start: 0xb00648, type: gfx, data_only: True, name: chameleons/Davy/Lshoe/Lshoe}
+    - name: cuff
+      type: .data #model
+      start: 0xb00908
+      subsegments:
+      - { start: 0xb00908, type: vtx, data_only: True, name: chameleons/Davy/cuff/cuff}
+      - [0xb009f8, mtx, chameleons/Davy/cuff/cuff]
+      - [0xb00A38, bin] #endDL command from rgb2c
+      - [0xb00A40, ci4, chameleons/Davy/cuff/color.ci4, 8, 8]
+      - [0xB00A60, bin] #endDL command from rgb2c
+      - [0xB00A68, palette, chameleons/Davy/cuff/color.ci4]
+      - { start: 0xb00c68, type: gfx, data_only: True, name: chameleons/Davy/cuff/cuff}
+    - name: Lleg
+      type: .data #model
+      start: 0xb00f20
+      subsegments:
+      - { start: 0xb00f20, type: vtx, data_only: True, name: chameleons/Davy/Lleg/Lleg}
+      - [0xb01010, mtx, chameleons/Davy/Lleg/Lleg]
+      - { start: 0xb01050, type: gfx, data_only: True, name: chameleons/Davy/Lleg/Lleg}
+    - name: wrist
+      type: .data #model
+      start: 0xb01308
+      subsegments:
+      - { start: 0xb01308, type: vtx, data_only: True, name: chameleons/Davy/wrist/wrist}
+      - [0xb014d8, mtx, chameleons/Davy/wrist/wrist]
+      - [0xb01518, bin] #endDL command from rgb2c
+      - [0xb01520, ci4, chameleons/Davy/wrist/wristColor.ci4, 8, 8]
+      - [0xb01540, bin] #endDL command from rgb2c
+      - [0xb01548, palette, chameleons/Davy/wrist/wristColor.ci4]
+      - [0xb01748, bin] #endDL command from rgb2c
+      - [0xb01750, ci4, chameleons/Davy/wrist/wrist.ci4, 32, 32]
+      - [0xB01950, bin] #endDL command from rgb2c
+      - [0xB01958, palette, chameleons/Davy/wrist/wrist.ci4]
+      - { start: 0xb01b58, type: gfx, data_only: True, name: chameleons/Davy/wrist/wrist}
+    - name: Larm
+      type: .data #model
+      start: 0xb01f70
+      subsegments:
+      - { start: 0xb01f70, type: vtx, data_only: True, name: chameleons/Davy/Larm/Larm}
+      - [0xb02140, mtx, chameleons/Davy/Larm/Larm]
+      - { start: 0xb02180, type: gfx, data_only: True, name: chameleons/Davy/Larm/Larm}
+    - name: Rshoulder
+      type: .data #model
+      start: 0xb02598
+      subsegments:
+      - { start: 0xb02598, type: vtx, data_only: True, name: chameleons/Davy/Rshoulder/Rshoulder}
+      - [0xb025f8, mtx, chameleons/Davy/Rshoulder/Rshoulder]
+      - { start: 0xb02638, type: gfx, data_only: True, name: chameleons/Davy/Rshoulder/Rshoulder}
+    - name: Lshoulder
+      type: .data #model
+      start: 0xb02790
+      subsegments:
+      - { start: 0xb02790, type: vtx, data_only: True, name: chameleons/Davy/Lshoulder/Lshoulder}
+      - [0xb027f0, mtx, chameleons/Davy/Lshoulder/Lshoulder]
+      - { start: 0xb02830, type: gfx, data_only: True, name: chameleons/Davy/Lshoulder/Lshoulder}
+    - name: fist
+      type: .data #model
+      start: 0xb02988
+      subsegments:
+      - { start: 0xb02988, type: vtx, data_only: True, name: chameleons/Davy/fist/fist}
+      - [0xb02c18, mtx, chameleons/Davy/fist/fist]
+      - [0xb02c58, bin] #endDL command from rgb2c
+      - [0xb02c60, ci4, chameleons/Davy/fist/fist1.ci4, 32, 32]
+      - [0xb02e60, bin] #endDL command from rgb2c
+      - [0xb02e68, palette, chameleons/Davy/fist/fist1.ci4]
+      - [0xb03068, bin] #endDL command from rgb2c
+      - [0xb03070, ci4, chameleons/Davy/fist/fist2.ci4, 32, 32]
+      - [0xb03270, bin] #endDL command from rgb2c
+      - [0xb03278, palette, chameleons/Davy/fist/fist2.ci4]
+      - [0xb03478, bin] #endDL command from rgb2c
+      - [0xb03480, ci4, chameleons/Davy/fist/fist3.ci4, 32, 32]
+      - [0xb03680, bin] #endDL command from rgb2c
+      - [0xb03688, palette, chameleons/Davy/fist/fist3.ci4]
+      - [0xb03888, bin] #endDL command from rgb2c
+      - [0xb03890, ci4, chameleons/Davy/fist/fistDiamond.ci4, 32, 32]
+      - [0xb03a90, bin] #endDL command from rgb2c
+      - [0xb03a98, palette, chameleons/Davy/fist/fistDiamond.ci4]
+      - [0xb03c98, bin] #endDL command from rgb2c
+      - [0xb03cA0, ci4, chameleons/Davy/fist/fist4.ci4, 32, 32]
+      - [0xb03ea0, bin] #endDL command from rgb2c
+      - [0xb03ea8, palette, chameleons/Davy/fist/fist4.ci4]
+      - { start: 0xb040a8, type: gfx, data_only: True, name: chameleons/Davy/fist/fist}
+    - name: Lfist
+      type: .data #model
+      start: 0xb047c0
+      subsegments:
+      - { start: 0xb047c0, type: vtx, data_only: True, name: chameleons/Davy/Lfist/Lfist}
+      - [0xb04a70, mtx, chameleons/Davy/Lfist/Lfist]
+      - { start: 0xb04ab0, type: gfx, data_only: True, name: chameleons/Davy/Lfist/Lfist}
+    - name: restAssociate
+      type: .data #model
+      start: 0xb051c8
+      subsegments:
+      - [0xb051c8, mtx, chameleons/Davy/restAssociate/restAssociate]
+      - { start: 0xb05208, type: gfx, data_only: True, name: chameleons/Davy/restAssociate/restAssociate}
 
   - [0xB05290, bin, jack] #size of 0x8C20 (extra data?)
   - [0xB0DEB0, bin, fred] #size of 0x8BE0

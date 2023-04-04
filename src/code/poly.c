@@ -1,10 +1,13 @@
 #include "common.h"
 
+/* rodata */
+extern char D_80110180[];
+extern char D_801103D0[];
+
 extern f64 D_801104F8;
 extern s32 D_80236974;
 extern Collision gZoneCollisions[];
 extern Collider D_80236980[128];
-extern char D_801103D0[];
 extern s32 D_8020D8F4;
 extern s32 gCurrentStage;
 extern f64 D_801106A0;
@@ -141,31 +144,32 @@ void func_800CCDCC(Actor* arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800CEB10.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/CalcEnemyNextPosition.s")
-// void CalcEnemyNextPosition(Actor* arg0) {
-//     switch (arg0->unk_A0.unk_04) {
-//     case 0:
-//         func_800CCDCC(arg0);
-//         break;
-//     case 1:
-//         func_800CCE4C(arg0);
-//         break;
-//     case 2:
-//         CalcWalkingEnemyNext(arg0);
-//         break;
-//     case 3:
-//         CalcJumpingEnemyNext(arg0);
-//         break;
-//     case 4:
-//         func_800CEB10(arg0);
-//         break;
-//     default:
-//         DummiedPrintf3(D_801103D0);
-//         break;
-//     }
-//     if (arg0->tongueCollision >= 2) {
-//         func_800CBD24(arg0);
-//     }
-// }
+//void CalcEnemyNextPosition(Actor* arg0) {
+//    switch (arg0->unk_A0.unk_04) {
+//    case 0:
+//        func_800CCDCC(arg0);
+//        break;
+//    case 1:
+//        func_800CCE4C(arg0);
+//        break;
+//    case 2:
+//        CalcWalkingEnemyNext(arg0);
+//        break;
+//    case 3:
+//        CalcJumpingEnemyNext(arg0);
+//        break;
+//    case 4:
+//        func_800CEB10(arg0);
+//        break;
+//    default:
+//        DummiedPrintf3(D_801103D0);
+//        // double 810000
+//        break;
+//    }
+//    if (arg0->tongueCollision >= 2) {
+//        func_800CBD24(arg0);
+//    }
+//}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800CF080.s")
 
@@ -286,10 +290,10 @@ void func_800D4550(s32 arg0, s32 arg1, Poly* arg2, Vec3f* arg3, Vec3f* arg4) {
     Collision* temp_v0 = &gZoneCollisions[currentZone];
 
     arg3->x = temp_v0->unkA4;
-    arg3->y = temp_v0->unkA8 + (temp_v0->unkD0 * arg2->x);
+    arg3->y = temp_v0->unkA8 + (temp_v0->unkD0 * arg2->unkVectorStruct.vec1.x);
     arg3->z = temp_v0->unkAC;
     arg4->x = temp_v0->unk98;
-    arg4->y = temp_v0->unk9C + (temp_v0->unkD0 * arg2->x);
+    arg4->y = temp_v0->unk9C + (temp_v0->unkD0 * arg2->unkVectorStruct.vec1.x);
     arg4->z = temp_v0->unkA0;
 }
 
