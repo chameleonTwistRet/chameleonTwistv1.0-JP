@@ -448,19 +448,55 @@ segments:
         - [0x6BD4C0, palette, img/JungleLand/vine.ci8]
         - { start: 0x6BD6C0, type: gfx, data_only: True, name: model/JungleLand/vine/vine}
 
+    - start: 0x6BD7D8
+      name: fallenCrownLog
+      type: .data
+      vram: 0x8081CC58
+      subalign: 8
+      subsegments:
+        - { start: 0x6BD7D8, type: vtx, data_only: True, name: model/JungleLand/fallenCrownLog/fallenCrownLog}
+        - [0x6BDA18, mtx, model/JungleLand/fallenCrownLog/fallenCrownLog]
+        - { start: 0x6BDA58, type: gfx, data_only: True, name: model/JungleLand/fallenCrownLog/fallenCrownLog}
+
+    - start: 0x6BDF30
+      name: unkLog
+      type: .data
+      vram: 0x8081D3B0
+      subalign: 8
+      subsegments:
+        - { start: 0x6BDF30, type: vtx, data_only: True, name: model/JungleLand/unkLog/unkLog}
+        - [0x6BE0B0, mtx, model/JungleLand/unkLog/unkLog]
+        - { start: 0x6BE0F0, type: gfx, data_only: True, name: model/JungleLand/unkLog/unkLog}
+
     - start: 0x6BE388
-      name: mossyStump
+      name: fallenLogStump
       type: .data
       vram: 0x8081D808
       subalign: 8
       subsegments:
-        - { start: 0x6BE388, type: vtx, data_only: True, name: model/JungleLand/vineTree/vineTree}
-        - { start: 0x6BE4A8, type: mtx, data_only: True, name: model/JungleLand/vineTree/vineTree}
-        - [0x6BE4F0, ci8, img/JungleLand/vineTree.ci8, 64, 32]
-        - [0x6BECF8, palette, img/JungleLand/vineTree.ci8]
-        - { start: 0x6BEEF8, type: gfx, data_only: True, name: model/JungleLand/vineTree/vineTree}
+        - { start: 0x6BE388, type: vtx, data_only: True, name: model/JungleLand/fallenLogStump/fallenLogStump}
+        - { start: 0x6BE4A8, type: mtx, data_only: True, name: model/JungleLand/fallenLogStump/fallenLogStump}
+        - [0x6BE4F0, ci8, img/JungleLand/fallenLogStump.ci8, 64, 32]
+        - [0x6BECF8, palette, img/JungleLand/fallenLogStump.ci8]
+        - { start: 0x6BEEF8, type: gfx, data_only: True, name: model/JungleLand/fallenLogStump/fallenLogStump}
     
-    - [0x06BF150, bin]
+    - start: 0x6BF150
+      name: logTunnel
+      type: .data
+      vram: 0x8081E5D0
+      subalign: 8
+      subsegments:
+        - {start: 0x6BF150, type: vtx, data_only: True, name: model/JungleLand/logTunnel/logTunnel}
+        - [0x6BF530, mtx, model/JungleLand/logTunnel/logTunnel]
+        - { start: 0x6bf570, type: gfx, data_only: True, name: model/JungleLand/logTunnel/logTunnel}
+    
+    - [0x6BFA68, bin]
+
+  #
+  #- { start: 0x6bfc18, type: gfx, data_only: True, name: Room9-WaterfallRock(outside)}
+  #- { start: 0x6c0438, type: gfx, data_only: True, name: Room11-CaveEntranceFrame(outside)}
+  #- { start: 0x6c14b0, type: gfx, data_only: True, name: FallBridge(inside)}
+  
 
    #- [0x6C0AB0, ci8, img/brokenbridge.ci8, 64, 32]
    #- [0x6C12B8, palette, img/brokenbridge.ci8]
@@ -484,6 +520,8 @@ segments:
     #- [0x6C6DD8, ci8, img/lava.ci8, 32, 32]
     #- [0x6C71E0, palette, img/lava.ci8]
     #- [0x6C73E0, bin]
+
+    - { start: 0x6d2d20, type: gfx, data_only: True, name: model/JungleLand/extOne/extOne}
 
   - [0x70db70, bin, Level/LizardKong]
   - [0x7477f0, bin, Level/Quintella]
