@@ -416,12 +416,6 @@ segments:
     subalign: 8
     subsegments:
     - start: 0x6A8e20
-    name: JungleLand
-    type: data
-    vram: 0x8081B8C8
-    subalign: 8
-    subsegments:
-    - start: 0x6A8e20
       name: lilypad
       type: .data
       vram: 0x8081B8C8
@@ -439,7 +433,6 @@ segments:
       name: vine
       type: .data
       vram: 0x8081C4C0
-      #symbol_name_format: $VRAM_$ROM
       subalign: 8
       subsegments:
         - { start: 0x6BD040, type: vtx, data_only: True, name: model/JungleLand/vine/vine}
@@ -486,36 +479,74 @@ segments:
       vram: 0x8081E5D0
       subalign: 8
       subsegments:
-        - {start: 0x6BF150, type: vtx, data_only: True, name: model/JungleLand/logTunnel/logTunnel}
+        - { start: 0x6BF150, type: vtx, data_only: True, name: model/JungleLand/logTunnel/logTunnel}
         - [0x6BF530, mtx, model/JungleLand/logTunnel/logTunnel]
         - { start: 0x6bf570, type: gfx, data_only: True, name: model/JungleLand/logTunnel/logTunnel}
     
-    - [0x6BFA68, bin]
+    - start: 0x6BFA68
+      name: waterfallRock
+      type: .data
+      vram: 0x8081EEE8
+      subalign: 8
+      subsegments:
+        - { start: 0x6BFA68, type: vtx, data_only: True, name: model/JungleLand/waterfallRock/waterfallRock}
+        - [0x6BFBD8, mtx, model/JungleLand/waterfallRock/waterfallRock]
+        - { start: 0x6BFC18, type: gfx, data_only, True, name: model/JungleLand/waterfallRock/waterfallRock}
 
-  #
-  #- { start: 0x6bfc18, type: gfx, data_only: True, name: Room9-WaterfallRock(outside)}
-  #- { start: 0x6c0438, type: gfx, data_only: True, name: Room11-CaveEntranceFrame(outside)}
-  #- { start: 0x6c14b0, type: gfx, data_only: True, name: FallBridge(inside)}
-  
+    - start: 0x6BFFD8
+      name: unk1
+      type: .data
+      vram: 0x8081F458
+      subalign: 8
+      subsegments:
+        - { start: 0x6BFFD8, type: vtx, data_only: True, name: model/JungleLand/unk1/unk1}
+        - [0x6C03F8, mtx, model/JungleLand/unk1/unk1]
+        - { start: 0x6C0438, type: gfx, data_only: True, name: model/JungleLand/unk1/unk1}
 
-   #- [0x6C0AB0, ci8, img/brokenbridge.ci8, 64, 32]
-   #- [0x6C12B8, palette, img/brokenbridge.ci8]
-   #- [0x6C14B8, bin]
+    - start: 0x6C0A30
+      name: fallBridge
+      type: .data
+      vram: 0x8081FEB0
+      subalign: 8
+      subsegments:
+        - { start: 0x6C0A30, type: vtx, data_only: True, name: model/JungleLand/fallBridge/fallBridge}
+        - [0x6C0A70, mtx, model/JungleLand/fallBridge/fallBridge]
+        - [0x6C0AB0, ci8, img/JungleLand/fallBridge.ci8, 64, 32]
+        - [0x6C12B0, palette, img/JungleLand/fallBridge.ci8]
+        - { start: 0x6c14b0, type: gfx, data_only: True, name: model/JungleLand/fallBridge/fallBridge}
+
+    - start: 0x6C15B8
+      name: ctCrate
+      type: .data
+      vram: 0x80820A38
+      subalign: 8
+      subsegments:
+        - { start: 0x6C15B8, type: vtx, data_only: True, name: model/JungleLand/ctCrate/ctCrate}
+        - [0x6C16F8, mtx, model/JungleLand/ctCrate/ctCrate]
+        - [0x6C1740, ci4, img/JungleLand/ctCrate1.ci4, 32, 32]
+        - [0x6c1940, bin]
+        - [0x6C1948, palette, img/JungleLand/ctCrate1.ci4]
+        - [0x6c1b48, bin]
+        - [0x6c1b50, ci4, img/JungleLand/ctCrate2.ci4, 64, 32]
+        - [0x6c1f50, bin]
+        - [0x6c1f58, palette, img/JungleLand/ctCrate2.ci4]
+        - [0x6c2158, bin]
+        - [0x6c2160, ci4, img/JungleLand/ctCrate3.ci4, 64, 32]
+        - [0x6c2560, bin]
+        - [0x6c2568, palette, img/JungleLand/ctCrate3.ci4]
+        - [0x6c2760, bin]
+        - { start: 0x6C2768, type: gfx, data_only: True, name: model/JungleLand/ctCrate/ctCrate}
 
    #- [0x6C1740, ci4, img/box.ci4, 32, 32]
    #- [0x6C1948, palette, img/box.ci4]
    #- [0x6C1B48, bin]
 
-    #- [0x6C1B50, ci4, img/barrel.ci4, 64, 32]
-    #- [0x6C1F58, palette, img/barrel.ci4]
-    #- [0x6C2158, bin]
-
     #- [0x6C2160, ci4, barrel2, 64, 32]
     #- [0x6C2568, palette, barrel2]
 
-    #- [0x6C42F8, ci8, img/singularPlank.ci8, 64, 32]
-    #- [0x6C4AF8, palette, img/singularPlank.ci8]
-    #- [0x6C4D00, bin]
+    - [0x6C42F8, ci8, img/singularPlank.ci8, 64, 32]
+    - [0x6C4AF8, palette, img/singularPlank.ci8]
+    - [0x6C4CF8, bin]
 
     #- [0x6C6DD8, ci8, img/lava.ci8, 32, 32]
     #- [0x6C71E0, palette, img/lava.ci8]
