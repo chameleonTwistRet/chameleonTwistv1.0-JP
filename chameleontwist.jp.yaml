@@ -859,8 +859,75 @@ segments:
       subalign: 8
       subsegments:
         - { start: 0x6D03E0, type: vtx, data_only: True, name: model/JungleLand/extThree/extThree}
+        - { start: 0x6D0AD0, type: mtx, data_only: True, name: model/JungleLand/extThree/extThree}
+        - [0x6D0B18, ci8, img/JungleLand/ext3Wall.ci8, 64, 32]
+        - [0x6D1318, bin]
+        - [0x6D1320, palette, img/JungleLand/ext3Wall.ci8]
+        - [0x6D1518, bin]
+        - { start: 0x6D1520, type: gfx, data_only: True, name: model/JungleLand/extThree/extThree}
 
-    - { start: 0x6d2d20, type: gfx, data_only: True, name: model/JungleLand/extOne/extOne}
+    - start: 0x6D1F98
+      name: extFour
+      type: .data
+      subalign: 8
+      subsegments:
+        - { start: 0x6D1F98, type: vtx, data_only: True, name: model/JungleLand/extFour/extFour}
+        - { start: 0x6D2278, type: mtx, data_only: True, name: model/JungleLand/extFour/extFour}
+        - { start: 0x6D22B8, type: gfx, data_only: True, name: model/JungleLand/extFour/extFour}
+
+    - start: 0x6D29E0
+      name: extZero
+      type: .data
+      subalign: 8
+      subsegments:
+        - { start: 0x6D29E0, type: vtx, data_only: True, name: model/JungleLand/extZero/extZero}
+        - { start: 0x6D2CE0, type: mtx, data_only: True, name: model/JungleLand/extZero/extZero}
+        - { start: 0x6D2D20, type: gfx, data_only: True, name: model/JungleLand/extZero/extZero}
+
+    - start: 0x6D32C0
+      name: extOne
+      type: .data
+      subalign: 8
+      subsegments:
+        - { start: 0x6D32C0, type: vtx, data_only: True, name: model/JungleLand/extOne/extOne}
+        - { start: 0x6D4280, type: mtx, data_only: True, name: model/JungleLand/extOne/extOne}
+        - { start: 0x6D42C0, type: gfx, data_only: True, name: model/JungleLand/extOne/extOne}
+
+    - start: 0x6D4F40
+      name: extTwo
+      type: .data
+      subalign: 8
+      subsegments:
+        - { start: 0x6D4F40, type: vtx, data_only: True, name: model/JungleLand/extTwo/extTwo}
+        - { start: 0x6D51B0, type: mtx, data_only: True, name: model/JungleLand/extTwo/extTwo}
+        - { start: 0x6D51F0, type: gfx, data_only: True, name: model/JungleLand/extTwo/extTwo}
+
+    - start: 0x6D5750
+      name: rockFloor
+      type: .data
+      subalign: 8
+      subsegments:
+        - { start: 0x6D5750, type: vtx, data_only: True, name: model/JungleLand/rockFloor/rockFloor}
+        - { start: 0x6D5810, type: mtx, data_only: True, name: model/JungleLand/rockFloor/rockFloor}
+        - { start: 0x6D5850, type: gfx, data_only: True, name: model/JungleLand/rockFloor/rockFloor}
+
+    - start: 0x6D59C8
+      name: rockFloor2
+      type: .data
+      subalign: 8
+      subsegments:
+        - { start: 0x6D59C8, type: vtx, data_only: True, name: model/JungleLand/rockFloor2/rockFloor2}
+        - { start: 0x6D5A68, type: mtx, data_only: True, name: model/JungleLand/rockFloor2/rockFloor2}
+        - { start: 0x6D5AA8, type: gfx, data_only: True, name: model/JungleLand/rockFloor2/rockFloor2}
+
+    - start: 0x6D5C10
+      name: extFive
+      type: .data
+      subalign: 8
+      subsegments:
+          - { start: 0x6D5C10, type: vtx, data_only: True, name: model/JungleLand/extFive/extFive}
+          - { start: 0x6D5F10, type: mtx, data_only: True, name: model/JungleLand/extFive/extFive}
+          - { start: 0x6D5F50, type: gfx, data_only: True, name: model/JungleLand/extFive/extFive}
 
   - [0x70db70, bin, Level/LizardKong]
   - [0x7477f0, bin, Level/Quintella]
