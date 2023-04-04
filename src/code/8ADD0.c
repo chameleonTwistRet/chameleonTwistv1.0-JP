@@ -5,6 +5,7 @@ extern unkStruct07 D_802019A8[];
 extern Collision gZoneCollisions[];
 extern CardinalDirection gCardinalDirections[5]; // including "NO_DIR"
 extern s32 sBossIDs[6];
+s32* func_800B3424(void);
 
 typedef struct newStruct {
     s32 dummy0[10]; // Placeholder for the first 10 elements
@@ -215,7 +216,30 @@ s32 func_800B340C(s32 value) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B3484.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B34D0.s")
+s32 func_800B34D0(s32 arg0) {
+    s32 temp_v1;
+    s32 var_v0;
+    s32 var_v1;
+
+    temp_v1 = *func_800B3424();
+    if (arg0 & 0x200) {
+        var_v0 = 1;
+    } else {
+        var_v0 = 0;
+    }
+    if (var_v0 != 0) {
+        if (temp_v1 == 0) {
+            var_v1 = 1;
+        } else {
+            var_v1 = 0;
+        }
+    } else if (temp_v1 != 0) {
+        var_v1 = 1;
+    } else {
+        var_v1 = 0;
+    }
+    return var_v1;
+}
 
 s32 func_800B3540(s32 arg0) {
     return 1 - func_800B34D0(arg0);
