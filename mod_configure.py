@@ -3,6 +3,7 @@ import subprocess
 import pkg_resources
 import fileinput
 import sys
+import fnmatch
 
 dir_path = 'src/'
 asm_path = 'asm/'
@@ -175,17 +176,17 @@ with open('asm/nonmatchings/code/5FF30/MainLoop.s', 'w') as file:
     # Write the modified contents back to the file
     file.writelines(lines)
 
-filename = 'chameleontwist.jp.ld'
+linker_script_file = 'chameleontwist.jp.ld'
 mod_directory = 'src/mod'
 
-with open(filename) as file:
+with open(linker_script_file) as file:
     for line_number, line in enumerate(file):
         if 'romPadding_VRAM_END' in line:
             next_line = next(file, None)
             break
 line_number = line_number + 1
 
-with open(filename, 'r') as file:
+with open(linker_script_file, 'r') as file:
     lines = file.readlines()
 
 
@@ -199,60 +200,54 @@ line_number += 6
 
 for index, line in enumerate(lines):
     if 'romPadding_VRAM_END' in line:
-        for filename_c in os.listdir(mod_directory):
-            if filename_c.endswith('.c'):
-                lines.insert(line_number, f"\t\tbuild/{mod_directory}/{filename_c}.o(.text);\n")
+        for root, dirnames, filenames in os.walk(mod_directory):
+            for filename in fnmatch.filter(filenames, '*.c'):
+                lines.insert(line_number, f"\t\tbuild/{root}/{filename}.o(.text);\n")
                 line_number += 1
-            elif filename_c.endswith('.s'):
-                lines.insert(line_number, f"\t\tbuild/{mod_directory}/{filename_c}.o(.text);\n")
+            for filename in fnmatch.filter(filenames, '*.s'):
+                lines.insert(line_number, f"\t\tbuild/{root}/{filename}.o(.text);\n")
                 line_number += 1
         break
-
-
 
 lines.insert(line_number, "\t\tmod_RODATA_START = .;\n")
 line_number += 1
 
 for index, line in enumerate(lines):
     if 'romPadding_VRAM_END' in line:
-        for filename_c in os.listdir(mod_directory):
-            if filename_c.endswith('.c'):
-                lines.insert(line_number, f"\t\tbuild/{mod_directory}/{filename_c}.o(.rodata);\n")
+        for root, dirnames, filenames in os.walk(mod_directory):
+            for filename in fnmatch.filter(filenames, '*.c'):
+                lines.insert(line_number, f"\t\tbuild/{root}/{filename}.o(.rodata);\n")
                 line_number += 1
-            elif filename_c.endswith('.s'):
-                lines.insert(line_number, f"\t\tbuild/{mod_directory}/{filename_c}.o(.rodata);\n")
+            for filename in fnmatch.filter(filenames, '*.s'):
+                lines.insert(line_number, f"\t\tbuild/{root}/{filename}.o(.rodata);\n")
                 line_number += 1
         break
-
-
 
 lines.insert(line_number, "\t\tmod_DATA_START = .;\n")
 line_number += 1        
 
 for index, line in enumerate(lines):
     if 'romPadding_VRAM_END' in line:
-        for filename_c in os.listdir(mod_directory):
-            if filename_c.endswith('.c'):
-                lines.insert(line_number, f"\t\tbuild/{mod_directory}/{filename_c}.o(.data);\n")
+        for root, dirnames, filenames in os.walk(mod_directory):
+            for filename in fnmatch.filter(filenames, '*.c'):
+                lines.insert(line_number, f"\t\tbuild/{root}/{filename}.o(.data);\n")
                 line_number += 1
-            elif filename_c.endswith('.s'):
-                lines.insert(line_number, f"\t\tbuild/{mod_directory}/{filename_c}.o(.data);\n")
+            for filename in fnmatch.filter(filenames, '*.s'):
+                lines.insert(line_number, f"\t\tbuild/{root}/{filename}.o(.data);\n")
                 line_number += 1
         break
-
-
 
 lines.insert(line_number, "\t\tmod_BSS_START = .;\n")
 line_number += 1
 
 for index, line in enumerate(lines):
     if 'romPadding_VRAM_END' in line:
-        for filename_c in os.listdir(mod_directory):
-            if filename_c.endswith('.c'):
-                lines.insert(line_number, f"\t\tbuild/{mod_directory}/{filename_c}.o(.bss);\n")
+        for root, dirnames, filenames in os.walk(mod_directory):
+            for filename in fnmatch.filter(filenames, '*.c'):
+                lines.insert(line_number, f"\t\tbuild/{root}/{filename}.o(.bss);\n")
                 line_number += 1
-            elif filename_c.endswith('.s'):
-                lines.insert(line_number, f"\t\tbuild/{mod_directory}/{filename_c}.o(.bss);\n")
+            for filename in fnmatch.filter(filenames, '*.s'):
+                lines.insert(line_number, f"\t\tbuild/{root}/{filename}.o(.bss);\n")
                 line_number += 1
         break
 
@@ -262,7 +257,7 @@ lines.insert(line_number + 2, "\tmod_ROM_END = __romPos;\n")
 lines.insert(line_number + 3, "\tmod_VRAM_END = .;\n")
 line_number += 4
 
-with open(filename, 'w') as file:
+with open(linker_script_file, 'w') as file:
     file.writelines(lines)
 
 # Traverse each subdirectory recursively and find all C files
@@ -399,9 +394,8 @@ j_files.extend([f.replace('.png', '.j') for f in ci4_files])
 # Combine the lists and change file extensions
 o_files = []
 for file in c_files + s_files + bin_files + rgba32_files + mod_rgba32_files + rgba16_files + mod_rgba16_files + ia8_files + mod_ia8_files + ia4_files + mod_ia4_files + ci4_files + ci8_files:
-    if 'src/mod/' not in file and not file.startswith('src/mod/'):
-        if 'asm/nonmatchings/' not in file:
-            o_files.append("build/" + append_extension(file))
+    if 'asm/nonmatchings/' not in file:
+        o_files.append("build/" + append_extension(file))
 
 with open('build.ninja', 'w') as f:
     f.write(header)

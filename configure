@@ -16,16 +16,17 @@ fi
 if [[ "$1" == "--mod" ]]; then
     if [[ ! -d src/mod ]]; then
         mkdir -p src/mod
-    fi
-    if [[ ! -f src/mod/mod_main.c ]]; then
+    elif [[ -d src/mod/ct1-JP-SpeedrunMod ]]; then
+        echo "Directory src/mod/ct1-JP-SpeedrunMod found."
+    elif [[ ! -f src/mod/mod_main.c ]]; then
         cp mod_main.c src/mod/mod_main.c
     fi
     gcc tools/n64crc/n64crc.c -o tools/n64crc/n64crc.exe
     python3 tools/splat/split.py chameleontwist.jp.yaml
     python3 mod_configure.py "$@"
-    
 else
     python3 tools/splat/split.py chameleontwist.jp.yaml
     python3 configure.py "$@"
 fi
+
 
