@@ -5,7 +5,7 @@
 u16 D_80175678[MAXCONTROLLERS];
 contMain gContMain[MAXCONTROLLERS];
 
-extern s32 D_800F0690;
+extern s32 RumblePakError;
 extern void* D_80175638;
 extern OSContStatus D_80175640[MAXCONTROLLERS];
 extern OSContPad D_80175650[MAXCONTROLLERS];
@@ -62,11 +62,11 @@ s32 func_8004E4D0(void) {
                     break;
                 case PFS_ERR_CONTRFAIL:
                     D_80176960[i] = 0;
-                    D_800F0690 = 1;
+                    RumblePakError = 1;
                     break;
                 case PFS_ERR_DEVICE:
                     D_80176960[i] = 0;
-                    D_800F0690 = 1;
+                    RumblePakError = 1;
                     break;
                 }
             }

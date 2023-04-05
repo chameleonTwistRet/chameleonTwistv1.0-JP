@@ -917,7 +917,7 @@ void func_8006CBA8(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_800714C8.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80071968.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/aa1_DrawGameResults.s")
 
 //prints perfect code
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80071A48.s")
@@ -930,7 +930,7 @@ void func_8006CBA8(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8007294C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_800729E4.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/printStageRecordTimes.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80072B1C.s")
 
@@ -971,7 +971,7 @@ void func_800735A8(void) {
     temp_v0 = aa1_Alloc(0, 0, &func_8007320C);
     var_v1 = temp_v0;
     if (temp_v0 == NULL) {
-        func_8008FD04(0x12);
+        setProcessType(0x12);
         var_v1 = temp_v0;
     }
     var_v1->unk0 = 0;
@@ -1029,13 +1029,13 @@ void func_80073FD8(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8007633C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80076548.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/setTextGradientFromPaletteAlpha.s")
 
-void func_80076884(s32 arg0) {
-    func_80076548(arg0, 1.0f);
+void setTextGradientFromPalette(s32 arg0) {
+    setTextGradientFromPaletteAlpha(arg0, 1.0f);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_800768A4.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/DrawTranslucentRectangle.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8007691C.s")
 

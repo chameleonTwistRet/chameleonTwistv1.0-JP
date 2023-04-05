@@ -50,7 +50,7 @@ void func_8009C33C(CTTask*);
 void func_80099AF4(void);
 void SaveData_ClearRecords(void);
 void func_8009C038(CTTask*);
-void func_800A7E9C(s32, u8*);
+void RecordTime_SetTo(s32, u8*);
 void SaveData_SaveRecords(void);
 s32 func_800A7F70(void);
 void SaveData_Wait(void);
@@ -60,7 +60,7 @@ void func_800AA844(s32);
 void func_800C29D8(s32);
 void func_8008CCDC(CTTask*);
 s32 func_800A7A18(u32 arg0);
-s32 func_800A7E78(s32*);
+s32 RecordTime_ParseToSecs(s32*);
 void func_8008E9AC(s32, s32, s32, s32, void*);
 void func_800A97E4(CTTask*);
 
@@ -753,7 +753,7 @@ void func_8008EF78(CTTask* arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008FC34.s")
 
-void func_8008FD04(s32 arg0) {
+void setProcessType(s32 arg0) {
     //" 元%d %d\n"("former %d %d")
     DummiedPrintf(D_8010DB04, gameModeCurrent, D_800FFEB8);
     D_800FFEB8 = 0;
@@ -1042,7 +1042,7 @@ void func_800966E0(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80097794.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80097910.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/Process_StageSelect.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80097CF8.s")
 
@@ -1221,7 +1221,7 @@ void func_8009C2FC(CTTask* arg0) {
 //#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009D19C.s")
 void func_8009D19C(s32 arg0) {
     if (func_8008EC90() != 0) {
-        func_8008FD04(6);
+        setProcessType(6);
     }
 }
 
@@ -1647,19 +1647,19 @@ s32 func_800A7C58(u32 time) {
 }
 
 //parses record time, returns minutes and seconds.
-s32 func_800A7D64(s32* record, s32* mins, s32* secs) {
+s32 RecordTime_GetMinsSecs(s32* record, s32* mins, s32* secs) {
     s32 time;
 
-    time = func_800A7E78(record);
+    time = RecordTime_ParseToSecs(record);
     *secs = time % 60;
     *mins = time / 60;
     return 0;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A7DD0.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/RecordTime_GetByStageRank.s")
 
 //parses time kept on record.
-s32 func_800A7E78(s32* arg0) {
+s32 RecordTime_ParseToSecs(s32* arg0) {
     s32 time = ((u8*)arg0)[0] & 15;
     time <<= 8;
     time += ((u8*)arg0)[1];
@@ -1669,7 +1669,7 @@ s32 func_800A7E78(s32* arg0) {
 }
 
 //sets record time arg1 to time arg0
-void func_800A7E9C(s32 arg0, u8 *arg1) {
+void RecordTime_SetTo(s32 arg0, u8 *arg1) {
     u8 temp;
     u8 *new_var = arg1;
 
@@ -1869,7 +1869,7 @@ void func_800A878C(unkStruct05* arg0) {
     _bzero(arg0, 0x60);
     //"ファイルクリア"("file clear")
     DummiedPrintf(D_8010EFD8);
-    func_800A7E9C(0x12C, &arg0->unk_57);
+    RecordTime_SetTo(0x12C, &arg0->unk_57);
     arg0->unk_5D = 0;
 }
 

@@ -144,7 +144,7 @@ segments:
       - [0xBCD30, hasm, os/exceptasm]
       - [0xBD630, hasm, os/createspeedparam]
       - [0xBD6D0, c, os/sethwinterrupt]
-      - [0xBD720, c, os/gethwinterrupt]
+      - [0xBD720, c, os/leointerrupt]
       - [0xBDFE0, hasm, os/interrupt]
       - [0xBE020, c, os/thread]
       - [0xBE060, c, os/timerintr]

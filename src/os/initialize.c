@@ -73,7 +73,7 @@ void __osInitialize_common(void) {
     
     if (!(sp34 & 0xFFFF)) {
         __osShutdown = 1;
-        __osSetHWIntrRoutine(1, __osGetHWIntrRoutine);
+        __osSetHWIntrRoutine(1, __osLeoInterrupt);
     } else {
         __osShutdown = 0;
     }

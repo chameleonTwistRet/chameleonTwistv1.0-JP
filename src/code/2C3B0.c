@@ -68,7 +68,7 @@ void func_8005171C(void) {
 
 void func_800538D0(void) {
     if ((D_80176824 < 1801) && (D_80176824 >= 1711) && ((D_80176824 % 10) < 5)) {
-        func_80076884(1);
+        setTextGradientFromPalette(1);
         PrintTextWrapper(100.0f, 10.0f, 0.0f, 1.0f, D_8010C944, 1);
     }
 }
@@ -144,7 +144,7 @@ void func_8005564C(void) {
         D_8017499C++;
         break;
     case 3:
-        func_8008FD04(6);
+        setProcessType(6);
         break;
     }
     func_8008C094();
@@ -192,7 +192,7 @@ void func_800557F8(void) {
         D_8017499C++;
         break;
     case 3:
-        func_8008FD04(6);
+        setProcessType(6);
         break;
     }
 
@@ -224,7 +224,7 @@ void func_80055994(void) {
         D_8017499C += 1;
         break;
     case 3:
-        func_8008FD04(10);
+        setProcessType(10);
         break;
     }
 
@@ -255,7 +255,7 @@ void func_80055AA0(void) {
         D_8017499C++;
         break;
     case 3:
-        func_8008FD04(0xA);
+        setProcessType(0xA);
         break;
     }
     

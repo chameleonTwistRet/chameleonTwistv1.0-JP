@@ -27,15 +27,15 @@ void printNumber(f32, f32, f32, f32, f32, s32, s32);   /* extern */
 
 extern unkTextStruct D_800F0734;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/debug/func_8004E9F0.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/debug/Debug_MovePlayer.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/debug/func_8004EBD4.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/debug/Debug_ChangeRoom.s")
 
-void func_8004ECA8(void) {
+void Debug_NOOP(void) {
 }
 
 //https://decomp.me/scratch/MZIQO
-#pragma GLOBAL_ASM("asm/nonmatchings/code/debug/func_8004ECB0.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/debug/Debug_ChangeView.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/debug/func_8004EF5C.s")
 
@@ -131,16 +131,16 @@ void func_8004FFAC(unkarg0_2* arg0, f32* arg1, f32* arg2) {
     *arg2 = (arg0->unk_14 * 0) + (arg0->unk_04 * 100.0f);
 }
 
-void func_8004FFF0(void) {
-    D_800F06B0 = 0;
+void Debug_ZeroInt(void) {
+    sDebugInt = 0;
 }
 
-void func_8004FFFC(void) {
-    s32 *temp = &D_800F0B38;
+void Debug_TestView(void) {
+    s32 *temp = &sDebugTestView;
     if (func_80055E5C(R_TRIG) != 0) {
         *temp ^= 1;
     }
-    if (D_800F0B38 != 0) {
+    if (sDebugTestView != 0) {
         func_80061270(0, 0, 0, 255);
         func_8005AFD0(0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 320.0f, 180.0f, 0.0f, 0);
         func_8007B480(0.0f, 0.0f, 0.0f, 0.0f, 400.0f, 2000.0f);
@@ -151,4 +151,4 @@ void func_8004FFFC(void) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/debug/func_800501BC.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/debug/debugMain.s")

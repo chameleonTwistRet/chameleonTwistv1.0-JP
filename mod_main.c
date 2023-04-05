@@ -91,7 +91,7 @@ void mod_main_func(void) {
             func_8008FF84();
             goto loop;
         case GAME_MODE_JUNGLE_LAND_MENU:
-            func_80097910();
+            Process_StageSelect();
             goto loop;
         case GAME_MODE_SAVE_MENU:
             FileWork();

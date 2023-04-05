@@ -20,9 +20,9 @@ typedef struct unk80129770 {
 
 extern unk80129770 D_80129770[9];
 
-extern s32 D_800F0668;
+extern s32 gFramebufferIndex;
 extern s32 D_800F066C;
-extern s32 D_800F06A4;
+extern s32 sDebugMultiplayer;
 extern s8 D_800FF8DC;
 extern s8 D_800FF8E0;
 extern s8 D_800FF8E4;
@@ -308,7 +308,7 @@ void func_8002CE54(void) {
     D_800F066C++;
     func_8002CD94(D_800F066C);
     Controller_StartRead();
-    func_8002CB6C(0, (Gfx*)&D_80129770[D_800F0668], D_800F0668);
+    func_8002CB6C(0, (Gfx*)&D_80129770[gFramebufferIndex], gFramebufferIndex);
     
     for (i = 0; i < 4; i++) {
         Controller_Zero(&sp28[i]);
@@ -323,7 +323,7 @@ void func_8002CE54(void) {
         D_800FF8E4 = 0;
     } else {
         if (D_801749AC != 0) {
-            if (D_800F06A4 != 0) {
+            if (sDebugMultiplayer != 0) {
                 D_80168D78[1] = 1;
                 func_8004CD9C(1, &sp28[1]);
                 D_80168D78[2] = 2;
@@ -344,10 +344,10 @@ void func_8002CE54(void) {
     
     func_8004DDE0();
     func_80054864();
-    var = 1 - D_800F0668;
+    var = 1 - gFramebufferIndex;
     func_8002CCA0(&D_80129770[var], var);
-    func_8002CBE8(D_800F0668);
-    D_800F0668 = 1 - D_800F0668;
+    func_8002CBE8(gFramebufferIndex);
+    gFramebufferIndex = 1 - gFramebufferIndex;
 }
 
 void func_8002D080(void) {
