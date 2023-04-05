@@ -394,8 +394,9 @@ j_files.extend([f.replace('.png', '.j') for f in ci4_files])
 # Combine the lists and change file extensions
 o_files = []
 for file in c_files + s_files + bin_files + rgba32_files + mod_rgba32_files + rgba16_files + mod_rgba16_files + ia8_files + mod_ia8_files + ia4_files + mod_ia4_files + ci4_files + ci8_files:
-    if 'asm/nonmatchings/' not in file:
-        o_files.append("build/" + append_extension(file))
+    if 'src/mod/' not in file and not file.startswith('src/mod/'):
+        if 'asm/nonmatchings/' not in file:
+            o_files.append("build/" + append_extension(file))
 
 with open('build.ninja', 'w') as f:
     f.write(header)
