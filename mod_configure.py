@@ -7,9 +7,15 @@ import fnmatch
 
 dir_path = 'src/'
 asm_path = 'asm/'
-mod_asm_path = 'src/mod/'
-mod_assets_path = 'src/mod/assets'
 assets_path = 'assets/'
+mod_asm_path = 'src/mod/'
+mod_assets_path = None
+
+for root, dirs, files in os.walk(mod_asm_path):
+    if 'assets' in dirs:
+        mod_assets_path = os.path.join(root, 'assets')
+        break
+
 cflags = '-G 0 -fullwarn -verbose -Xcpluscomm -signed -nostdinc -non_shared -Wab,-r4300_mul'
 #python3 tools/splat/split.py chameleontwist.jp.yaml
 
@@ -422,8 +428,15 @@ with open('build.ninja', 'a') as outfile:
 
     # Write the rules for ia8 mod files
     for mod_ia8_file in mod_ia8_files:
-        mod_ia8_file_without_src_mod = mod_ia8_file.replace('src/mod/', '')
-        outfile.write("build " + os.path.splitext(mod_ia8_file_without_src_mod)[0] + ".j: " + "ia8_img_cc " + mod_ia8_file + "\n")
+        result = mod_ia8_file.split(assets_path, 1)
+        
+        if len(result) > 1:
+            output_string = assets_path + result[1]
+        else:
+            output_string = mod_ia8_file
+
+        output_string = output_string.replace("src/mod/", "").replace(".png", "")
+        outfile.write("build " + output_string + ".j: " + "ia8_img_cc " + mod_ia8_file + "\n")
     
     # Write the rules for ia8 files
     for ia8_file in ia8_files:
@@ -432,8 +445,15 @@ with open('build.ninja', 'a') as outfile:
 
     # Write the rules for ia4 mod files
     for mod_ia4_file in mod_ia4_files:
-        mod_ia4_file_without_src_mod = mod_ia4_file.replace('src/mod/', '')
-        outfile.write("build " + os.path.splitext(mod_ia4_file_without_src_mod)[0] + ".j: " + "ia4_img_cc " + mod_ia4_file + "\n")
+        result = mod_ia4_file.split(assets_path, 1)
+        
+        if len(result) > 1:
+            output_string = assets_path + result[1]
+        else:
+            output_string = mod_ia4_file
+
+        output_string = output_string.replace("src/mod/", "").replace(".png", "")
+        outfile.write("build " + output_string + ".j: " + "ia4_img_cc " + mod_ia4_file + "\n")
     
     # Write the rules for ia4 files
     for ia4_file in ia4_files:
@@ -443,8 +463,15 @@ with open('build.ninja', 'a') as outfile:
 
     # Write the rules for rgba32 mod files
     for mod_rgba32_file in mod_rgba32_files:
-        mod_rgba32_file_without_src_mod = mod_rgba32_file.replace('src/mod/', '')
-        outfile.write("build " + os.path.splitext(mod_rgba32_file_without_src_mod)[0] + ".j: " + "rgba32_img_cc " + mod_rgba32_file + "\n")
+        result = mod_rgba32_file.split(assets_path, 1)
+        
+        if len(result) > 1:
+            output_string = assets_path + result[1]
+        else:
+            output_string = mod_rgba32_file
+
+        output_string = output_string.replace("src/mod/", "").replace(".png", "")
+        outfile.write("build " + output_string + ".j: " + "rgba32_img_cc " + mod_rgba32_file + "\n")
     
     # Write the rules for rgba32 files
     for rgba32_file in rgba32_files:
@@ -454,8 +481,15 @@ with open('build.ninja', 'a') as outfile:
 
     # Write the rules for rgba16 mod files
     for mod_rgba16_file in mod_rgba16_files:
-        mod_rgba16_file_without_src_mod = mod_rgba16_file.replace('src/mod/', '')
-        outfile.write("build " + os.path.splitext(mod_rgba16_file_without_src_mod)[0] + ".j: " + "rgba16_img_cc " + mod_rgba16_file + "\n")
+        result = mod_rgba16_file.split(assets_path, 1)
+        
+        if len(result) > 1:
+            output_string = assets_path + result[1]
+        else:
+            output_string = mod_rgba16_file
+
+        output_string = output_string.replace("src/mod/", "").replace(".png", "")
+        outfile.write("build " + output_string + ".j: " + "rgba16_img_cc " + mod_rgba16_file + "\n")
 
     # Write the rules for rgba16 files
     for rgba16_file in rgba16_files:
