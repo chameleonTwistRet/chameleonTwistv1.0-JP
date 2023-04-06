@@ -716,7 +716,7 @@ segments:
       subsegments:
         - { start: 0x6C80A0, type: vtx, data_only: True, name: model/JungleLand/roomSixCrownEdgePlatform/roomSixCrownEdgePlatform}
         - { start: 0x6C82E0, type: mtx, data_only: True, name: model/JungleLand/roomSixCrownEdgePlatform/roomSixCrownEdgePlatform}
-        - [0x6C8328, ci8, img/JungleLand/roomSixCrownEdgePlatform.ci8, 64, 32]
+        - [0x6C8328, ci8, img/JungleLand/roomSixCrownEdgePlatform.ci8, 64, 32]  #16, 32? 16,128?
         - [0x6C8B28, bin]
         - [0x6C8B30, palette, img/JungleLand/roomSixCrownEdgePlatform.ci8]
         - [0x6C8D28, bin]
@@ -727,9 +727,9 @@ segments:
       type: .data
       subalign: 8
       subsegments:
-        - { start: 0x6C9248, type: vtx, data_only: True, name: model/JungleLand/roomSevenSpinRing}
-        - { start: 0x6C9808, type: mtx, data_only: True, name: model/JungleLand/roomSevenSpinRing}
-        - { start: 0x6C9848, type: gfx, data_only: True, name: model/JungleLand/roomSevenSpinRing}
+        - { start: 0x6C9248, type: vtx, data_only: True, name: model/JungleLand/roomSevenSpinRing/roomSevenSpinRing}
+        - { start: 0x6C9808, type: mtx, data_only: True, name: model/JungleLand/roomSevenSpinRing/roomSevenSpinRing}
+        - { start: 0x6C9848, type: gfx, data_only: True, name: model/JungleLand/roomSevenSpinRing/roomSevenSpinRing}
 
     - start: 0x6C9DD8
       name: woodBlock
@@ -971,6 +971,494 @@ segments:
           - { start: 0x6D5C10, type: vtx, data_only: True, name: model/JungleLand/extFive/extFive}
           - { start: 0x6D5F10, type: mtx, data_only: True, name: model/JungleLand/extFive/extFive}
           - { start: 0x6D5F50, type: gfx, data_only: True, name: model/JungleLand/extFive/extFive}
+
+    - start: 0x6D65E8
+      name: extThreePartTwo
+      type: .data
+      subalign: 8
+      subsegments:
+        - { start: 0x6D65E8, type: vtx, data_only: True, name: model/JungleLand/extThreePartTwo/extThreePartTwo}
+        - { start: 0x6D66B8, type: mtx, data_only: True, name: model/JungleLand/extThreePartTwo/extThreePartTwo}
+        - { start: 0x6D66F8, type: gfx, data_only: True, name: model/JungleLand/extThreePartTwo/extThreePartTwo}
+
+    - start: 0x6D69E8
+      name: extFivePartTwo
+      type: .data
+      subalign: 8
+      subsegments:
+        - { start: 0x6D69E8, type: vtx, data_only: True, name: model/JungleLand/extFivePartTwo/extFivePartTwo}
+        - { start: 0x6D6C38, type: mtx, data_only: True, name: model/JungleLand/extFivePartTwo/extFivePartTwo}
+        - { start: 0x6D6C78, type: gfx, data_only: True, name: model/JungleLand/extFivePartTwo/extFivePartTwo}
+
+    - start: 0x6D72A0
+      name: extSix
+      type: .data
+      subalign: 8
+      subsegments:
+        - { start: 0x6D72A0, type: vtx, data_only: True, name: model/JungleLand/extSix/extSix}
+        - { start: 0x6D7480, type: mtx, data_only: True, name: model/JungleLand/extSix/extSix}
+        - { start: 0x6D74C0, type: gfx, data_only: True, name: model/JungleLand/extSix/extSix}
+
+    - start: 0x6D7838
+      name: extSeven
+      type: .data
+      subalign: 8
+      subsegments:
+        - { start: 0x6D7838, type: vtx, data_only: True, name: model/JungleLand/extSeven/extSeven}
+        - { start: 0x6D7C28, type: mtx, data_only: True, name: model/JungleLand/extSeven/extSeven}
+        - { start: 0x6D7C68, type: gfx, data_only: True, name: model/JungleLand/extSeven/extSeven}
+
+    - start: 0x6D84E8
+      name: extEight
+      type: .data
+      subalign: 8
+      subsegments:
+        - { start: 0x6D84E8, type: vtx, data_only: True, name: model/JungleLand/extEight/extEight}
+        - { start: 0x6D87F8, type: mtx, data_only: True, name: model/JungleLand/extEight/extEight}
+        - { start: 0x6D8838, type: gfx, data_only: True, name: model/JungleLand/extEight/extEight}
+
+    - start: 0x6D8F78
+      name: extEightBridge
+      type: .data
+      subalign: 8
+      subsegments:
+        - { start: 0x6D8F78, type: vtx, data_only: True, name: model/JungleLand/extEightBridge/extEightBridge}
+        - { start: 0x6D9078, type: mtx, data_only: True, name: model/JungleLand/extEightBridge/extEightBridge}
+        - { start: 0x6D90B8, type: gfx, data_only: True, name: model/JungleLand/extEightBridge/extEightBridge}
+
+    - start: 0x6D9310
+      name: extNine
+      type: .data
+      subalign: 8
+      subsegments:
+        - { start: 0x6D9310, type: vtx, data_only: True, name: model/JungleLand/extNine/extNine}
+        - { start: 0x6D96E0, type: mtx, data_only: True, name: model/JungleLand/extNine/extNine}
+        - { start: 0x6D9720, type: gfx, data_only: True, name: model/JungleLand/extNine/extNine}
+
+    - start: 0x6D9F78
+      name: extTen
+      type: .data
+      subalign: 8
+      subsegments:
+        - { start: 0x6D9F78, type: vtx, data_only: True, name: model/JungleLand/extTen/extTen}
+        - { start: 0x6DA7A8, type: mtx, data_only: True, name: model/JungleLand/extTen/extTen}
+        - { start: 0x6DA7E8, type: gfx, data_only: True, name: model/JungleLand/extTen/extTen}
+
+    - start: 0x6DB398
+      name: extEleven
+      type: .data
+      subalign: 8
+      subsegments:
+        - { start: 0x6DB398, type: vtx, data_only: True, name: model/JungleLand/extEleven/extEleven}
+        - { start: 0x6DC0E8, type: mtx, data_only: True, name: model/JungleLand/extEleven/extEleven}
+        - { start: 0x6DC128, type: gfx, data_only: True, name: model/JungleLand/extEleven/extEleven}
+
+    - start: 0x6DCEC8
+      name: intZero #interior
+      type: .data
+      subalign: 8
+      subsegments:
+        - { start: 0x6DCEC8, type: vtx, data_only: True, name: model/JungleLand/intZero/intZero}
+        - { start: 0x6DD408, type: mtx, data_only: True, name: model/JungleLand/intZero/intZero}
+        - [0x6DD450, ci8, img/JungleLand/lavaWall.ci8, 32, 64]
+        - [0x6DDC58, palette, img/JungleLand/lavaWall.ci8]
+        - { start: 0x6DDE58, type: gfx, data_only: True, name: model/JungleLand/intZero/intZero}
+
+    - start: 0x6DE758
+      name: intOne
+      type: .data
+      subalign: 8
+      subsegments:
+        - { start: 0x6DE758, type: vtx, data_only: True, name: model/JungleLand/intOne/intOne}
+        - { start: 0x6DF778, type: mtx, data_only: True, name: model/JungleLand/intOne/intOne}
+        - { start: 0x6DF7B8, type: gfx, data_only: True, name: model/JungleLand/intOne/intOne}
+
+    - start: 0x6E0D50
+      name: intTwo
+      type: .data
+      subalign: 8
+      subsegments:
+        - { start: 0x6E0D50, type: vtx, data_only: True, name: model/JungleLand/intTwo/intTwo}
+        - { start: 0x6E1050, type: mtx, data_only: True, name: model/JungleLand/intTwo/intTwo}
+        - { start: 0x6E1090, type: gfx, data_only: True, name: model/JungleLand/intTwo/intTwo}
+
+    - start: 0x6E1558
+      name: intThree
+      type: .data
+      subalign: 8
+      subsegments:
+        - { start: 0x6E1558, type: vtx, data_only: True, name: model/JungleLand/intThree/intThree}
+        - { start: 0x6E1798, type: mtx, data_only: True, name: model/JungleLand/intThree/intThree}
+        - { start: 0x6E17D8, type: gfx, data_only: True, name: model/JungleLand/intThree/intThree}
+
+    - start: 0x6E1C50
+      name: intFour
+      type: .data
+      subalign: 8
+      subsegments:
+        - { start: 0x6E1C50, type: vtx, data_only: True, name: model/JungleLand/intFour/intFour}
+        - { start: 0x6E1F10, type: mtx, data_only: True, name: model/JungleLand/intFour/intFour}
+        - { start: 0x6E1F50, type: gfx, data_only: True, name: model/JungleLand/intFour/intFour}
+
+    - start: 0x6E23F8
+      name: intSix
+      type: .data
+      subalign: 8
+      subsegments:
+        - { start: 0x6E23F8, type: vtx, data_only: True, name: model/JungleLand/intSix/intSix}
+        - { start: 0x6E27D8, type: mtx, data_only: True, name: model/JungleLand/intSix/intSix}
+        - { start: 0x6E2818, type: gfx, data_only: True, name: model/JungleLand/intSix/intSix}
+
+    - start: 0x6E2EB8
+      name: intSeven
+      type: .data
+      subalign: 8
+      subsegments:
+        - { start: 0x6E2EB8, type: vtx, data_only: True, name: model/JungleLand/intSeven/intSeven}
+        - { start: 0x6E3078, type: mtx, data_only: True, name: model/JungleLand/intSeven/intSeven}
+        - { start: 0x6E30B8, type: gfx, data_only: True, name: model/JungleLand/intSeven/intSeven}
+
+    - start: 0x6E3330
+      name: intFive
+      type: .data
+      subalign: 8
+      subsegments:
+        - { start: 0x6E3330, type: vtx, data_only: True, name: model/JungleLand/intFive/intFive}
+        - { start: 0x6E36F0, type: mtx, data_only: True, name: model/JungleLand/intFive/intFive}
+        - { start: 0x6E3730, type: gfx, data_only: True, name: model/JungleLand/intFive/intFive}
+
+    - start: 0x6E3C20
+      name: railFloorOne
+      type: .data
+      subalign: 8
+      subsegments:
+        - { start: 0x6E3C20, type: vtx, data_only: True, name: model/JungleLand/railFloorOne/railFloorOne}
+        - { start: 0x6E3C60, type: mtx, data_only: True, name: model/JungleLand/railFloorOne/railFloorOne}
+        - [0x6E3CA0, ci8, img/JungleLand/railTrack.ci8, 32, 64]
+        - [0x6E44A0, palette, img/JungleLand/railTrack.ci8]
+        - { start: 0x6E46A0, type: gfx, data_only: True, name: model/JungleLand/railFloorOne/railFloorOne}
+
+    - start: 0x6E47A8
+      name: singleRailTrack
+      type: .data
+      subalign: 8
+      subsegments:
+        - { start: 0x6E47A8, type: vtx, data_only: True, name: model/JungleLand/singleRailTrack/singleRailTrack}
+        - { start: 0x6E47E8, type: mtx, data_only: True, name: model/JungleLand/singleRailTrack/singleRailTrack}
+        - [0x6E4828, ci8,     img/JungleLand/singleRailTrack.ci8, 32, 32]
+        - [0x6E4C28, palette, img/JungleLand/singleRailTrack.ci8]
+        - { start: 0x6E4E28, type: gfx, data_only: True, name: model/JungleLand/singleRailTrack/singleRailTrack}
+
+    - start: 0x6E4F30
+      name: singleRailTrack2
+      type: .data
+      subalign: 8
+      subsegments:
+        - { start: 0x6E4F30, type: vtx, data_only: True, name: model/JungleLand/singleRailTrack2/singleRailTrack2}
+        - { start: 0x6E4F70, type: mtx, data_only: True, name: model/JungleLand/singleRailTrack2/singleRailTrack2}
+        - [0x6E4FB0, ci8, img/JungleLand/singleRailTrack2.ci8, 32, 32]
+        - [0x6E53B0, palette, img/JungleLand/singleRailTrack2.ci8]
+        - { start: 0x6E55B0, type: gfx, data_only: True, name: model/JungleLand/singleRailTrack2/singleRailTrack2}
+
+    - start: 0x6E56B8
+      name: branchRail
+      type: .data
+      subalign: 8
+      subsegments:
+        - { start: 0x6E56B8, type: vtx, data_only: True, name: model/JungleLand/branchRail/branchRail}
+        - { start: 0x6E56F8, type: mtx, data_only: True, name: model/JungleLand/branchRail/branchRail}
+        - [0x6E5738, ci8, img/JungleLand/branchRail.ci8, 32, 64]
+        - [0x6E5F38, palette, img/JungleLand/branchRail.ci8]
+        - { start: 0x6E6138, type: gfx, data_only: True, name: model/JungleLand/branchRail/branchRail}
+
+    - start: 0x6E6240
+      name: turnRail
+      type: .data
+      subalign: 8
+      subsegments:
+        - { start: 0x6E6240, type: vtx, data_only: True, name: model/JungleLand/turnRail/turnRail}
+        - { start: 0x6E6280, type: mtx, data_only: True, name: model/JungleLand/turnRail/turnRail}
+        - [0x6E62C0, ci8, img/JungleLand/turnRail.ci8, 32, 64]
+        - [0x6E6AC0, palette, img/JungleLand/turnRail.ci8]
+        - { start: 0x6E6CC0, type: gfx, data_only: True, name: model/JungleLand/turnRail/turnRail}
+
+    - start: 0x6E6DC8
+      name: singleRailTrack3
+      type: .data
+      subalign: 8
+      subsegments:
+        - { start: 0x6E6DC8, type: vtx, data_only: True, name: model/JungleLand/singleRailTrack3/singleRailTrack3}
+        - { start: 0x6E6E08, type: mtx, data_only: True, name: model/JungleLand/singleRailTrack3/singleRailTrack3}
+        - { start: 0x6E6E48, type: gfx, data_only: True, name: model/JungleLand/singleRailTrack3/singleRailTrack3}
+
+    - start: 0x6E6F50
+      name: brokenMinecartRail
+      type: .data
+      subalign: 8
+      subsegments:
+        - { start: 0x6E6F50, type: vtx, data_only: True, name: model/JungleLand/brokenMinecartRail/brokenMinecartRail}
+        - { start: 0x6E72F0, type: mtx, data_only: True, name: model/JungleLand/brokenMinecartRail/brokenMinecartRail}
+        - { start: 0x6E7330, type: gfx, data_only: True, name: model/JungleLand/brokenMinecartRail/brokenMinecartRail}
+
+    - start: 0x6E7800
+      name: brokenMinecartRail2
+      type: .data
+      subalign: 8
+      subsegments:
+        - { start: 0x6E7800, type: vtx, data_only: True, name: model/JungleLand/brokenMinecartRail2/brokenMinecartRail2}
+        - { start: 0x6E7B50, type: mtx, data_only: True, name: model/JungleLand/brokenMinecartRail2/brokenMinecartRail2}
+        - { start: 0x6E7B90, type: gfx, data_only: True, name: model/JungleLand/brokenMinecartRail2/brokenMinecartRail2}
+
+    - start: 0x6E8108
+      name: minecart
+      type: .data
+      subalign: 8
+      subsegments:
+        - { start: 0x6E8108, type: vtx, data_only: True, name: model/JungleLand/minecart/minecart}
+        - { start: 0x6E8708, type: mtx, data_only: True, name: model/JungleLand/minecart/minecart}
+        - [0x6E8750, ci4, img/JungleLand/planks.ci4, 64, 64]
+        - [0x6E8F58, palette, img/JungleLand/planks.ci4]
+        - [0x6E9158, bin] #B8
+        - [0x6E9160, bin] #? lots of 22 21 11 12
+        - { start: 0x6E9560, type: gfx, data_only: True, name: model/JungleLand/minecart/minecart}
+
+    - start: 0x6E9E28
+      name: doorFrame
+      type: .data
+      subalign: 8
+      subsegments:
+        - { start: 0x6E9E28, type: vtx, data_only: True, name: model/JungleLand/doorFrame/doorFrame}
+        - { start: 0x6EA1E8, type: mtx, data_only: True, name: model/JungleLand/doorFrame/doorFrame}
+        - [0x6EA230, rgba16, img/JungleLand/topper.rgba16, 32, 32]
+        - { start: 0x6EAA30, type: gfx, data_only: True, name: model/JungleLand/doorFrame/doorFrame}
+
+    - start: 0x6EB228
+      name: doorFrame2
+      type: .data
+      subalign: 8
+      subsegments:
+        - { start: 0x6EB228, type: vtx, data_only: True, name: model/JungleLand/doorFrame2/doorFrame2}
+        - { start: 0x6EB5E8, type: mtx, data_only: True, name: model/JungleLand/doorFrame2/doorFrame2}
+        - { start: 0x6EB628, type: gfx, data_only: True, name: model/JungleLand/doorFrame2/doorFrame2}
+
+    - start: 0x6EBE20
+      name: fernPlant
+      type: .data
+      subalign: 8
+      subsegments:
+        - { start: 0x6EBE20, type: vtx, data_only: True, name: model/JungleLand/fernPlant/fernPlant}
+        - { start: 0x6EBE60, type: mtx, data_only: True, name: model/JungleLand/fernPlant/fernPlant}
+        - [0x6EBEA0, ci8, img/JungleLand/fernPlant.ci8, 48, 40]
+        - [0x6EC620, palette, img/JungleLand/fernPlant.ci8]
+        - { start: 0x6EC820, type: gfx, data_only: True, name: model/JungleLand/fernPlant/fernPlant}
+
+    - start: 0x6EC928
+      name: waterfall
+      type: .data
+      subalign: 8
+      subsegments:
+        - { start: 0x6EC928, type: vtx, data_only: True, name: model/JungleLand/waterfall/waterfall}
+        - { start: 0x6EC9C8, type: mtx, data_only: True, name: model/JungleLand/waterfall/waterfall}
+        - [0x6ECA10, ci4, img/JungleLand/water.ci4, 64, 64]
+        - [0x6ED218, palette, img/JungleLand/water.ci4]
+        - { start: 0x6ED418, type: gfx, data_only: True, name: model/JungleLand/waterfall/waterfall}
+
+    - start: 0x6ED550
+      name: water
+      type: .data
+      subalign: 8
+      subsegments:
+        - { start: 0x6ED550, type: vtx, data_only: True, name: model/JungleLand/water/water}
+        - { start: 0x6ED5A0, type: mtx, data_only: True, name: model/JungleLand/water/water}
+        - [0x6ED5E8, ci4, img/JungleLand/swampWater.ci4, 64, 64]
+        - [0x6EDDF0, palette, img/JungleLand/swampWater.ci4]
+        - { start: 0x6EDFF0, type: gfx, data_only: True, name: model/JungleLand/water/water}
+
+    - start: 0x6EE100
+      name: water2
+      type: .data
+      subalign: 8
+      subsegments:
+        - { start: 0x6EE100, type: vtx, data_only: True, name: model/JungleLand/water2/water2}
+        - { start: 0x6EE150, type: mtx, data_only: True, name: model/JungleLand/water2/water2}
+        - { start: 0x6EE190, type: gfx, data_only: True, name: model/JungleLand/water2/water2}
+
+    - { start: 0x6ee360, type: bin, data_only: True, name: Room5-Lilypad(outside)} #collision
+    - { start: 0x6ee3ec, type: bin, data_only: True, name: Vine(unused)} #collision
+    - { start: 0x6ee670, type: bin, data_only: True, name: Room7-High-crownLog(outside)} #collision
+    - { start: 0x6ee81c, type: bin, data_only: True, name: Room7-High-crownlow-log(outside)} #collision
+    - { start: 0x6ee998, type: bin, data_only: True, name: Room7-High-crownLogplate(outside)} #collision
+    - { start: 0x6eee74, type: bin, data_only: True, name: Room7-HoleLogTop(visual)(outside)} #collision
+    - { start: 0x6eefb4, type: bin, data_only: True, name: Room9-WaterfallRock(outside)} #collision
+    - { start: 0x6ef3b8, type: bin, data_only: True, name: Room11-CaveEntranceFrame(outside)} #collision
+    - { start: 0x6ef42c, type: bin, data_only: True, name: FallBridge(inside)} #collision
+    - { start: 0x6ef530, type: bin, data_only: True, name: C.T.Crate(inside)} #collision
+    - { start: 0x6ef634, type: bin, data_only: True, name: C.T.Crate2(inside)} #collision
+    - { start: 0x6ef720, type: bin, data_only: True, name: Room3-WalkingPlank(inside)} #collision
+    - { start: 0x6ef80c, type: bin, data_only: True, name: Room3-WalkingPlank2(inside)} #collision
+    - { start: 0x6ef8f8, type: bin, data_only: True, name: Room3-"Walking"Plank3(inside)} #collision
+    - { start: 0x6ef9e4, type: bin, data_only: True, name: Room3-WalkingPlank4(inside)} #collision
+    - { start: 0x6efa58, type: bin, data_only: True, name: Room3-FallBridgeSmall(inside)} #collision
+    - { start: 0x6efbbc, type: bin, data_only: True, name: Room6-StartingPlatform(inside)} #collision
+    - { start: 0x6efca8, type: bin, data_only: True, name: CavePlatform(inside)} #collision
+    - { start: 0x6efe0c, type: bin, data_only: True, name: Room6-CrownPlatform(inside)} #collision
+    - { start: 0x6effc4, type: bin, data_only: True, name: Room6-StartingSidePlatform(inside)} #collision
+    - { start: 0x6f00f8, type: bin, data_only: True, name: Room7-Lava(inside)} #collision
+    - { start: 0x6f01cc, type: bin, data_only: True, name: Room7-Floor(inside)} #collision
+    - { start: 0x6f02a0, type: bin, data_only: True, name: Room0-Lava(inside)} #collision
+    - { start: 0x6f0494, type: bin, data_only: True, name: Room1-Platforms(inside)} #collision
+    - { start: 0x6f0688, type: bin, data_only: True, name: Room6-CrownEdgePlatform(inside)} #collision
+    - { start: 0x6f0d20, type: bin, data_only: True, name: Room7-SpinningRing(inside)} #collision
+    - { start: 0x6f0e24, type: bin, data_only: True, name: WoodBlock(inside)(makesupalotofstructures)} #collision
+    - { start: 0x6f0eb0, type: bin, data_only: True, name: Room0-Ropes(inside)} #collision
+    - { start: 0x6f105c, type: bin, data_only: True, name: Room6-Rail1(inside)} #collision
+    - { start: 0x6f1208, type: bin, data_only: True, name: Room6-Rail2(inside)} #collision
+    - { start: 0x6f13b4, type: bin, data_only: True, name: Room6-Rail3(inside)} #collision
+    - { start: 0x6f1560, type: bin, data_only: True, name: Room6-Rail4(inside)} #collision
+    - { start: 0x6f170c, type: bin, data_only: True, name: Room6-Rail5(inside)} #collision
+    - { start: 0x6f18b8, type: bin, data_only: True, name: Room6-Rail6(inside)} #collision
+    - { start: 0x6f1a94, type: bin, data_only: True, name: Room0-Rail(inside)} #collision
+    - { start: 0x6f1b98, type: bin, data_only: True, name: C.T.Crate3(inside)} #collision
+    - { start: 0x6f1c9c, type: bin, data_only: True, name: Log1(outside)} #collision
+    - { start: 0x6f1d10, type: bin, data_only: True, name: FallBridgeSmall2(inside)} #collision
+    - { start: 0x6f1dfc, type: bin, data_only: True, name: Room6-LogSetpiece(outside)} #collision
+    - { start: 0x6f2680, type: bin, data_only: True, name: Room7-HoleLog(collision)(unused)} #collision
+    - { start: 0x6f279c, type: bin, data_only: True, name: Room9-WaterfallGroundCollision(outside)} #collision
+    - { start: 0x6f28a0, type: bin, data_only: True, name: Room9-WaterfallBacksideCollision(outside)} #collision
+    - { start: 0x6f2b90, type: bin, data_only: True, name: Room9-GroundCollision(outside)} #collision
+    - { start: 0x6f2e08, type: bin, data_only: True, name: Room7-HoleLogBottom(visual)(outside)} #collision
+    - { start: 0x6f3404, type: bin, data_only: True, name: Room3(outside)} #collision
+    - { start: 0x6f3694, type: bin, data_only: True, name: Room4(outside)} #collision
+    - { start: 0x6f39a8, type: bin, data_only: True, name: Room0(outside)} #collision
+    - { start: 0x6f4550, type: bin, data_only: True, name: Room1(outside)} #collision
+    - { start: 0x6f47ec, type: bin, data_only: True, name: Room2(outside)} #collision
+    - { start: 0x6f48c0, type: bin, data_only: True, name: Room5-RockFloor(outside)} #collision
+    - { start: 0x6f4970, type: bin, data_only: True, name: Room5-RockFloor2(outside)} #collision
+    - { start: 0x6f4d14, type: bin, data_only: True, name: Room5(outside)} #collision
+    - { start: 0x6f4e00, type: bin, data_only: True, name: Room32(outside)} #collision
+    - { start: 0x6f5078, type: bin, data_only: True, name: Room52(outside)} #collision
+    - { start: 0x6f52b4, type: bin, data_only: True, name: Room6(outside)} #collision
+    - { start: 0x6f567c, type: bin, data_only: True, name: Room7(outside)} #collision
+    - { start: 0x6f5954, type: bin, data_only: True, name: Room8(outside)} #collision
+    - { start: 0x6f5a40, type: bin, data_only: True, name: Room8-Bridge(outside)} #collision
+    - { start: 0x6f5da8, type: bin, data_only: True, name: Room9(outside)} #collision
+    - { start: 0x6f6470, type: bin, data_only: True, name: Room10(outside)} #collision
+    - { start: 0x6f6f58, type: bin, data_only: True, name: Room11(outside)} #collision
+    - { start: 0x6f7434, type: bin, data_only: True, name: Room0(inside)} #collision
+    - { start: 0x6f8138, type: bin, data_only: True, name: Room1(inside)} #collision
+    - { start: 0x6f847c, type: bin, data_only: True, name: Room2(inside)} #collision
+    - { start: 0x6f8718, type: bin, data_only: True, name: Room3(inside)} #collision
+    - { start: 0x6f89fc, type: bin, data_only: True, name: Room4(inside)} #collision
+    - { start: 0x6f8d64, type: bin, data_only: True, name: Room6(inside)} #collision
+    - { start: 0x6f8f70, type: bin, data_only: True, name: Room7(inside)} #collision
+    - { start: 0x6f92e4, type: bin, data_only: True, name: Room5(inside)} #collision
+    - { start: 0x6f9358, type: bin, data_only: True, name: RailFloorProp1(inside)} #collision
+    - { start: 0x6f93cc, type: bin, data_only: True, name: RailFloorProp2(inside)} #collision
+    - { start: 0x6f9440, type: bin, data_only: True, name: RailFloorProp3(inside)} #collision
+    - { start: 0x6f94b4, type: bin, data_only: True, name: RailFloorProp4(inside)} #collision
+    - { start: 0x6f9528, type: bin, data_only: True, name: RailFloorProp5(inside)} #collision
+    - { start: 0x6f959c, type: bin, data_only: True, name: RailFloorProp6(inside)} #collision
+    - { start: 0x6f9aa8, type: bin, data_only: True, name: BrokenMinecartRail(inside)} #collision
+    - { start: 0x6f9e94, type: bin, data_only: True, name: BrokenMinecartRail2(inside)} #collision
+    - { start: 0x6fa298, type: bin, data_only: True, name: Minecart(inside)} #collision
+    - { start: 0x6fa594, type: bin, data_only: True, name: DoorFrame(inside)} #collision
+    - { start: 0x6fa890, type: bin, data_only: True, name: DoorFrame2(inside)} #collision
+    - { start: 0x6fa904, type: bin, data_only: True, name: FlatPlant(outside)} #collision
+    - { start: 0x6faa08, type: bin, data_only: True, name: Room9-Waterfall(outside)} #collision
+    - { start: 0x6faa94, type: bin, data_only: True, name: Room5-SwampWater(outside)} #collision
+    - { start: 0x6fab20, type: bin, data_only: True, name: Room5-SwampWater2(outside)} #collision
+    - { start: 0x6FAB40, type: mtx, data_only: True, name: }
+    
+    #0D0D0D000D0D0D
+    - start: 0x6FAB80
+      name: rockGolem
+      type: .data
+      subalign: 8
+      subsegments:
+        - { start: 0x6FAB88, type: vtx, data_only: True, name: model/JungleLand/rockGolem/rockGolem}
+        - { start: 0x6FAE58, type: mtx, data_only: True, name: model/JungleLand/rockGolem/rockGolem}
+        - [0x6FAEA0, ci4, img/JungleLand/golem.ci4, 64, 64]
+        - [0x6FB6A0, bin]
+        - [0x6FB6A8, palette, img/JungleLand/golem.ci4]
+        - [0x6FB8A8, bin]
+        - [0x6FB8B0, ci8, img/JungleLand/golemFace.ci8, 64, 64] 
+        - [0x6FC8B0, bin]       
+        - [0x6FC8B8, palette, img/JungleLand/golemFace.ci8]
+        - { start: 0x6FCAB8, type: gfx, data_only: True, name: model/JungleLand/rockGolem/rockGolem}
+
+    - start: 0x6FD058
+      name: unknown
+      type: .data
+      subalign: 8
+      subsegments:
+        - { start: 0x6FD058, type: vtx, data_only: True, name: model/JungleLand/unknown/unknown}
+        - { start: 0x6FD2F8, type: mtx, data_only: True, name: model/JungleLand/unknown/unknown}
+        - { start: 0x6FD338, type: gfx, data_only: True, name: model/JungleLand/unknown/unknown}
+
+    #- start: 0x6FD890
+    #  name: unknown2
+    #  type: .data
+    #  subalign: 8
+    #  subsegments:
+    #    - { start: 0x6FD890, type: vtx, data_only: True, name: model/JungleLand/unknown2/unknown2}
+    #    - { start: 0x6FDC00, type: mtx, data_only: True, name: model/JungleLand/unknown2/unknown2}
+    #    - [0x6FDC48, ci4, img/JungleLand/rock2.ci4, 32, 32]        
+    #    - [0x6FDE50, palette, img/JungleLand/rock2.ci4]
+    #    - [0x6FE058, ci4, img/JungleLand/rock3.ci4, 32, 32]
+    #    - [0x6FE260, palette, img/JungleLand/rock3.ci4]
+    #    - [0x6FE468, ci4, img/JungleLand/rock4.ci4, 32, 32]
+    #    - [0x6FE670, palette, img/JungleLand/rock4.ci4]
+    #    - { start: 0x6FE870, type: gfx, data_only: True, name: model/JungleLand/unknown2/unknown2}
+
+    #- start: 0x6FEFC8
+    #  name: 
+    #  type: .data
+    #  subalign: 8
+    #  subsegments:
+    #    - { start: 0x6FEFC8, type: vtx, data_only: True, name: }
+    #    - { start: 0x6FF108, type: mtx, data_only: True, name: }
+    #    - { start: 0x6FF148, type: gfx, data_only: True, name: }
+#
+    #- start: 0x6FF3E0
+    #  name: 
+    #  type: .data
+    #  subalign: 8
+    #  subsegments:
+    #    - { start: 0x6FF3E0, type: vtx, data_only: True, name: }
+    #    - { start: 0x6FF720, type: mtx, data_only: True, name: }
+    #    - { start: 0x6FF760, type: gfx, data_only: True, name: }
+#
+    #- start: 0x6FFDD8
+    #  name: 
+    #  type: .data
+    #  subalign: 8
+    #  subsegments:
+    #    - { start: 0x6FFDD8, type: vtx, data_only: True, name: }
+    #    - { start: 0x700078, type: mtx, data_only: True, name: }
+    #    - { start: 0x7000B8, type: gfx, data_only: True, name: }
+#
+    #- start: 0x700610
+    #  name: 
+    #  type: .data
+    #  subalign: 8
+    #  subsegments:
+    #    - { start: 0x700610, type: vtx, data_only: True, name: }
+    #    - { start: 0x700D98, type: mtx, data_only: True, name: }
+    #    - { start: 0x700DD8, type: gfx, data_only: True, name: }
+
+    #- { start: 0x701530, type: mtx, data_only: True, name: }
+    #- { start: 0x701570, type: gfx, data_only: True, name: }
+#
+    #- { start: 0x7015C8, type: vtx, data_only: True, name: }
+    #- { start: 0x701858, type: mtx, data_only: True, name: }
+    #- { start: 0x7020E8, type: gfx, data_only: True, name: }
+    #- { start: 0x702388, type: mtx, data_only: True, name: }
+    #- { start: 0x7023C8, type: gfx, data_only: True, name: }
+#
+    #- { start: 0x7023E8, type: vtx, data_only: True, name: }
+    #- { start: 0x702478, type: mtx, data_only: True, name: }
+    #- [0x7024C0, bin] # image?
+    #- { start: 0x7033C0, type: gfx, data_only: True, name: }
 
   - [0x70db70, bin, Level/LizardKong]
   - [0x7477f0, bin, Level/Quintella]
