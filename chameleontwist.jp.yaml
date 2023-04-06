@@ -1496,8 +1496,8 @@ segments:
           - { start: 0x87F688, type: vtx, data_only: True, name: }
           - { start: 0x87F888, type: mtx, data_only: True, name: }
           - [0x87F8D0, rgba16, img/Global/cannonHole.rgba16, 32, 32]
-          - [0x8800D8, rgba16, img/Global/cannonBarrel, 32, 64]
-          - [0x8810E0, bin]
+          - [0x8800D8, rgba16, img/Global/cannonBarrel.rgba16, 32, 64]
+          - [0x8810E0, rgba16, img/Global/black.rgba16, 32, 32]
           - { start: 0x8818E0, type: gfx, data_only: True, name: }
 
       - start: 0x881C08
@@ -1507,11 +1507,11 @@ segments:
         subsegments:
           - { start: 0x881C08, type: vtx, data_only: True, name: model/Global/unkWood/unkWood}
           - { start: 0x882068, type: mtx, data_only: True, name: model/Global/unkWood/unkWood}
-          - [0x8820B0, rgba16, img/Global/woodWithBolt, 32, 32]
-          - [0x8828B8, rgba16, img/Global/darkWoodWithBolt, 32, 32]
-          - [0x8830C0, rgba16, img/Global/darkWood, 32, 32]
-          - [0x8838C8, rgba16, img/Global/lightWood, 32, 32]
-          - [0x8840D0, rgba16, img/Global/midWood, 32, 32]
+          - [0x8820B0, rgba16, img/Global/woodWithBolt.rgba16, 32, 32]
+          - [0x8828B8, rgba16, img/Global/darkWoodWithBolt.rgba16, 32, 32]
+          - [0x8830C0, rgba16, img/Global/darkWood.rgba16, 32, 32]
+          - [0x8838C8, rgba16, img/Global/lightWood.rgba16, 32, 32]
+          - [0x8840D0, rgba16, img/Global/midWood.rgba16, 32, 32]
           - { start: 0x8848D0, type: gfx, data_only: True, name: model/Global/unkWood/unkWood}
 
       - start: 0x885058
@@ -1541,6 +1541,19 @@ segments:
           - { start: 0x885940, type: mtx, data_only: True, name: }
           - [0x885988, bin]
 
+      #- [0x8865C0, ci4,     img/Global/yellowBrickWall.ci4, 32, 32]
+      #- [0x8867C8, palette, img/Global/yellowBrickWall.ci4]
+      #- [0x8869C8, bin]
+      #- [0x8869D0, ci4,     img/Global/sandAgain.ci4, 64, 64]
+      #- [0x8871D8, palette, img/Global/sandAgain.ci4]
+      #- [0x8873E0, i4,      img/Global/gravel.i4, 64, 64]
+      #- [0x887BE8, i4,      img/Global/wall.i4, 64, 16]
+      #- [0x887DF0, ia4,     img/Global/poler.ia4, 32, 32]
+      #- [0x887FF8, i4,      img/Gobal/rockerr.i4, 64, 64]
+      #- [0x8887F8, bin]
+      #- [0x888800, ci4,     img/Gobal/thatButAgain.ci4, 64, 64]
+      #- [0x889008, palette, img/Gobal/thatButAgain.ci4]
+      #- [0x889208, bin]
 
       - [0x89E9A8, ci4, img/Global/jlText3.ci4, 64, 64]
       - [0x89F1B0, palette, img/Global/jlText3.ci4]

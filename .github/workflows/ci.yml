@@ -17,6 +17,9 @@ jobs:
         submodules: 'recursive'
         ref: ${{ github.event.pull_request.head.sha }}
 
+    - name: fix submodule repos
+      run: git submodule update --remote
+
     - name: Install package requirements
       run: ./install.sh
 
