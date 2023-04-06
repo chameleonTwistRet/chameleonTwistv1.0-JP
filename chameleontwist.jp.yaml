@@ -412,7 +412,7 @@ segments:
   - start: 0x6A8e20
     name: JungleLand
     type: data
-    vram: 0x8081B8C8
+    vram: 0x8081B8C8  #seg 3 base for JL
     subalign: 8
     subsegments:
     - [0x6A8e20, mtx, model/JungleLand/mtx]
@@ -458,10 +458,18 @@ segments:
     - [0x6ab0f8, bin, model/JungleLand/spriteObjects/sprObj38]
     - [0x6ab148, bin, model/JungleLand/spriteObjects/sprObj39]
     - [0x6ab198, bin, model/JungleLand/spriteObjects/sprObj40]
+
+    - start: 0x6BC3F0
+      name: jlScope
+      type: .data
+      subalign: 8
+      subsegments:
+        - { start: 0x6BC3F0, type: mtx, data_only: True, name: model/JungleLand/jlScope/jlScope}
+        - [0x6BC430, bin, model/JungleLand/jlScope/jlScope] # set Lights 1 for alot of JL assets
+
     - start: 0x6BC448
       name: lilypad
       type: .data
-      vram: 0x8081B8C8
       subalign: 8
       subsegments:
         - { start: 0x6BC448, type: vtx, data_only: True, name: model/JungleLand/lilypad/lilypad}
@@ -474,7 +482,6 @@ segments:
     - start: 0x6BD040
       name: vine
       type: .data
-      vram: 0x8081C4C0
       subalign: 8
       subsegments:
         - { start: 0x6BD040, type: vtx, data_only: True, name: model/JungleLand/vine/vine}
@@ -486,7 +493,6 @@ segments:
     - start: 0x6BD7D8
       name: fallenCrownLog
       type: .data
-      vram: 0x8081CC58
       subalign: 8
       subsegments:
         - { start: 0x6BD7D8, type: vtx, data_only: True, name: model/JungleLand/fallenCrownLog/fallenCrownLog}
@@ -496,7 +502,6 @@ segments:
     - start: 0x6BDF30
       name: unkLog
       type: .data
-      vram: 0x8081D3B0
       subalign: 8
       subsegments:
         - { start: 0x6BDF30, type: vtx, data_only: True, name: model/JungleLand/unkLog/unkLog}
@@ -506,10 +511,10 @@ segments:
     - start: 0x6BE388
       name: fallenLogStump
       type: .data
-      vram: 0x8081D808
       subalign: 8
       subsegments:
         - { start: 0x6BE388, type: vtx, data_only: True, name: model/JungleLand/fallenLogStump/fallenLogStump}
+        - { start: 0x6BE448, type: vtx, data_only: True, name: model/JungleLand/fallenLogStump/fallenLogStump2}
         - { start: 0x6BE4A8, type: mtx, data_only: True, name: model/JungleLand/fallenLogStump/fallenLogStump}
         - [0x6BE4F0, ci8, img/JungleLand/fallenLogStump.ci8, 64, 32]
         - [0x6BECF8, palette, img/JungleLand/fallenLogStump.ci8]
@@ -518,7 +523,6 @@ segments:
     - start: 0x6BF150
       name: logTunnel
       type: .data
-      vram: 0x8081E5D0
       subalign: 8
       subsegments:
         - { start: 0x6BF150, type: vtx, data_only: True, name: model/JungleLand/logTunnel/logTunnel}
@@ -528,7 +532,6 @@ segments:
     - start: 0x6BFA68
       name: waterfallRock
       type: .data
-      vram: 0x8081EEE8
       subalign: 8
       subsegments:
         - { start: 0x6BFA68, type: vtx, data_only: True, name: model/JungleLand/waterfallRock/waterfallRock}
@@ -538,7 +541,6 @@ segments:
     - start: 0x6BFFD8
       name: unk1
       type: .data
-      vram: 0x8081F458
       subalign: 8
       subsegments:
         - { start: 0x6BFFD8, type: vtx, data_only: True, name: model/JungleLand/unk1/unk1}
@@ -548,7 +550,6 @@ segments:
     - start: 0x6C0A30
       name: fallBridge
       type: .data
-      vram: 0x8081FEB0
       subalign: 8
       subsegments:
         - { start: 0x6C0A30, type: vtx, data_only: True, name: model/JungleLand/fallBridge/fallBridge}
@@ -560,7 +561,6 @@ segments:
     - start: 0x6C15B8
       name: ctCrate
       type: .data
-      vram: 0x80820A38
       subalign: 8
       subsegments:
         - { start: 0x6C15B8, type: vtx, data_only: True, name: model/JungleLand/ctCrate/ctCrate}
@@ -1481,24 +1481,79 @@ segments:
   - [0x849930, bin, Level/BattleMode]
   - [0x85c970, bin, Level/Training]
   - [0x878870, bin, Level/BossRush]
+
   - start: 0x87F640
     name: Global
     type: data
     vram: 0x803237c0 #temp
     subalign: 8
     subsegments:
-    - [0x89E9A8, ci4, img/Global/jlText3.ci4, 64, 64]
-    - [0x89F1B0, palette, img/Global/jlText3.ci4]
-    - [0x89f3b0, bin]
-    - [0x8A6950, ci4, img/Global/jlText1.ci4, 64, 64]
-    - [0x8A7158, palette, img/Global/jlText1.ci4]
-    - [0x8a7358, bin]
-    - [0x8AF250, ci4, img/Global/jlText2.ci4, 64, 64]
-    - [0x8AFA58, palette, img/Global/jlText2.ci4]
-    - [0x8afc58, bin]
-    - [0x8AFC60, ci4, img/Global/jlText4.ci4, 64, 64]
-    - [0x8B0468, palette, img/Global/jlText4.ci4]
-    - [0x8b0668, bin]
+      - start: 0x87F688
+        name: cannon
+        type: .data
+        subalign: 8
+        subsegments:
+          - { start: 0x87F688, type: vtx, data_only: True, name: }
+          - { start: 0x87F888, type: mtx, data_only: True, name: }
+          - [0x87F8D0, rgba16, img/Global/cannonHole.rgba16, 32, 32]
+          - [0x8800D8, rgba16, img/Global/cannonBarrel, 32, 64]
+          - [0x8810E0, bin]
+          - { start: 0x8818E0, type: gfx, data_only: True, name: }
+
+      - start: 0x881C08
+        name: unkWood
+        type: .data
+        subalign: 8
+        subsegments:
+          - { start: 0x881C08, type: vtx, data_only: True, name: model/Global/unkWood/unkWood}
+          - { start: 0x882068, type: mtx, data_only: True, name: model/Global/unkWood/unkWood}
+          - [0x8820B0, rgba16, img/Global/woodWithBolt, 32, 32]
+          - [0x8828B8, rgba16, img/Global/darkWoodWithBolt, 32, 32]
+          - [0x8830C0, rgba16, img/Global/darkWood, 32, 32]
+          - [0x8838C8, rgba16, img/Global/lightWood, 32, 32]
+          - [0x8840D0, rgba16, img/Global/midWood, 32, 32]
+          - { start: 0x8848D0, type: gfx, data_only: True, name: model/Global/unkWood/unkWood}
+
+      - start: 0x885058
+        name: unk
+        type: .data
+        subalign: 8
+        subsegments:
+          - { start: 0x885058, type: vtx, data_only: True, name: model/Global/unk/unk}
+          - { start: 0x885238, type: mtx, data_only: True, name: model/Global/unk/unk}
+          - { start: 0x885278, type: gfx, data_only: True, name: model/Global/unk/unk}
+          
+      - start: 0x8855E0
+        name: unk2    #winding thing
+        type: .data
+        subalign: 8
+        subsegments:
+          - { start: 0x8855E0, type: vtx, data_only: True, name: model/Global/unk2/unk2}
+          - { start: 0x885760, type: mtx, data_only: True, name: model/Global/unk2/unk2}
+          - { start: 0x8857A0, type: gfx, data_only: True, name: model/Global/unk2/unk2}
+
+      - start: 0x885900
+        name: 
+        type: .data
+        subalign: 8
+        subsegments:
+          - { start: 0x885900, type: vtx, data_only: True, name: }
+          - { start: 0x885940, type: mtx, data_only: True, name: }
+          - [0x885988, bin]
+
+
+      - [0x89E9A8, ci4, img/Global/jlText3.ci4, 64, 64]
+      - [0x89F1B0, palette, img/Global/jlText3.ci4]
+      - [0x89f3b0, bin]
+      - [0x8A6950, ci4, img/Global/jlText1.ci4, 64, 64]
+      - [0x8A7158, palette, img/Global/jlText1.ci4]
+      - [0x8a7358, bin]
+      - [0x8AF250, ci4, img/Global/jlText2.ci4, 64, 64]
+      - [0x8AFA58, palette, img/Global/jlText2.ci4]
+      - [0x8afc58, bin]
+      - [0x8AFC60, ci4, img/Global/jlText4.ci4, 64, 64]
+      - [0x8B0468, palette, img/Global/jlText4.ci4]
+      - [0x8b0668, bin]
 
   - [0x8c26a8, ia8, img/symbols.ia8, 464, 16]
   - [0x8c43a8, bin] #endDL command from rgb2c
