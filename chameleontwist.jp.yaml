@@ -415,6 +415,49 @@ segments:
     vram: 0x8081B8C8
     subalign: 8
     subsegments:
+    - [0x6A8e20, mtx, model/JungleLand/mtx]
+    - [0x6a8e60, bin, model/JungleLand/pointers]
+    - [0x6aa540, bin, model/JungleLand/rabObjects]
+    - [0x6aa568, bin, model/JungleLand/spriteObjects/sprObj1]
+    - [0x6aa5b8, bin, model/JungleLand/spriteObjects/sprObj2]
+    - [0x6aa608, bin, model/JungleLand/spriteObjects/sprObj3]
+    - [0x6aa658, bin, model/JungleLand/spriteObjects/sprObj4]
+    - [0x6aa6a8, bin, model/JungleLand/spriteObjects/sprObj5]
+    - [0x6aa6f8, bin, model/JungleLand/spriteObjects/sprObj6]
+    - [0x6aa748, bin, model/JungleLand/spriteObjects/sprObj7]
+    - [0x6aa798, bin, model/JungleLand/spriteObjects/sprObj8]
+    - [0x6aa7e8, bin, model/JungleLand/spriteObjects/sprObj9]
+    - [0x6aa838, bin, model/JungleLand/spriteObjects/sprObj10]
+    - [0x6aa888, bin, model/JungleLand/spriteObjects/sprObj11]
+    - [0x6aa8d8, bin, model/JungleLand/spriteObjects/sprObj12]
+    - [0x6aa928, bin, model/JungleLand/spriteObjects/sprObj13]
+    - [0x6aa978, bin, model/JungleLand/spriteObjects/sprObj14]
+    - [0x6aa9c8, bin, model/JungleLand/spriteObjects/sprObj15]
+    - [0x6aaa18, bin, model/JungleLand/spriteObjects/sprObj16]
+    - [0x6aaa68, bin, model/JungleLand/spriteObjects/sprObj17]
+    - [0x6aaab8, bin, model/JungleLand/spriteObjects/sprObj18]
+    - [0x6aab08, bin, model/JungleLand/spriteObjects/sprObj19]
+    - [0x6aab58, bin, model/JungleLand/spriteObjects/sprObj20]
+    - [0x6aaba8, bin, model/JungleLand/spriteObjects/sprObj21]
+    - [0x6aabf8, bin, model/JungleLand/spriteObjects/sprObj22]
+    - [0x6aac48, bin, model/JungleLand/spriteObjects/sprObj23]
+    - [0x6aac98, bin, model/JungleLand/spriteObjects/sprObj24]
+    - [0x6aace8, bin, model/JungleLand/spriteObjects/sprObj25]
+    - [0x6aad38, bin, model/JungleLand/spriteObjects/sprObj26]
+    - [0x6aad88, bin, model/JungleLand/spriteObjects/sprObj27]
+    - [0x6aadd8, bin, model/JungleLand/spriteObjects/sprObj28]
+    - [0x6aae28, bin, model/JungleLand/spriteObjects/sprObj29]
+    - [0x6aae78, bin, model/JungleLand/spriteObjects/sprObj30]
+    - [0x6aaec8, bin, model/JungleLand/spriteObjects/sprObj31]
+    - [0x6aaf18, bin, model/JungleLand/spriteObjects/sprObj32]
+    - [0x6aaf68, bin, model/JungleLand/spriteObjects/sprObj33]
+    - [0x6aafb8, bin, model/JungleLand/spriteObjects/sprObj34]
+    - [0x6ab008, bin, model/JungleLand/spriteObjects/sprObj35]
+    - [0x6ab058, bin, model/JungleLand/spriteObjects/sprObj36]
+    - [0x6ab0a8, bin, model/JungleLand/spriteObjects/sprObj37]
+    - [0x6ab0f8, bin, model/JungleLand/spriteObjects/sprObj38]
+    - [0x6ab148, bin, model/JungleLand/spriteObjects/sprObj39]
+    - [0x6ab198, bin, model/JungleLand/spriteObjects/sprObj40]
     - start: 0x6BC448
       name: lilypad
       type: .data
@@ -950,8 +993,24 @@ segments:
   - [0x849930, bin, Level/BattleMode]
   - [0x85c970, bin, Level/Training]
   - [0x878870, bin, Level/BossRush]
-  - [0x87F640, bin, Level/Global]
-
+  - start: 0x87F640
+    name: Global
+    type: data
+    vram: 0x803237c0 #temp
+    subalign: 8
+    subsegments:
+    - [0x89E9A8, ci4, img/Global/jlText3.ci4, 64, 64]
+    - [0x89F1B0, palette, img/Global/jlText3.ci4]
+    - [0x89f3b0, bin]
+    - [0x8A6950, ci4, img/Global/jlText1.ci4, 64, 64]
+    - [0x8A7158, palette, img/Global/jlText1.ci4]
+    - [0x8a7358, bin]
+    - [0x8AF250, ci4, img/Global/jlText2.ci4, 64, 64]
+    - [0x8AFA58, palette, img/Global/jlText2.ci4]
+    - [0x8afc58, bin]
+    - [0x8AFC60, ci4, img/Global/jlText4.ci4, 64, 64]
+    - [0x8B0468, palette, img/Global/jlText4.ci4]
+    - [0x8b0668, bin]
 
   - [0x8c26a8, ia8, img/symbols.ia8, 464, 16]
   - [0x8c43a8, bin] #endDL command from rgb2c

@@ -6,7 +6,7 @@ import bmesh
 
 silly = '//wsl$/Ubuntu/root/RealCT/'
 assetDir = 'assets/'
-toUse = 'model/JungleLand/fallenLogStump/fallenLogStump.gfx.inc.c'
+toUse = 'chameleons/Davy/body/body.gfx.inc.c'
 namer = toUse.split("/")[len(toUse.split("/")) - 1].split('.')[0]
 
 yamler = 'chameleontwist.jp.yaml'
