@@ -304,7 +304,7 @@ s32 func_8008873C(s32 arg0, s32 arg1, s32 arg2) {
 void func_8008A208(void) {
     if (D_80236974 == 0) {
         if (D_8020005A == 1) {
-            playBGM(1);
+            playBGM(BGM_JUNGLE1);
         }
     } else if (((s32) D_8017499C % 300) == 0x12B) {
         PLAYSFX(Random(0, 5) + 0x4F, 1, 0x10);
@@ -406,8 +406,8 @@ s32 BGMLoad(void) {
     
     osInvalDCache(D_801FD550.unk_00, sp24);
     Audio_RomCopy(devAddr, D_801FD550.unk_00, sp24);
-    ALCSeqNew((ALSeq*)gBGMSeqP, D_801FD550.unk_00);
-    alSeqpSetSeq((ALSeqPlayer*)gBGMPlayerP, (ALSeq*)gBGMSeqP);
+    alCSeqNew(gBGMSeqP, D_801FD550.unk_00);
+    alCSPSetSeq(gBGMPlayerP, gBGMSeqP);
     D_801FCA20 = D_800FF4D0[D_800FF624.unk_00];
     alCSPPlay(gBGMPlayerP);
     alCSPSetVol(gBGMPlayerP, D_801FCA22);
@@ -417,7 +417,7 @@ s32 BGMLoad(void) {
     D_801FC9B0 = 0;
     return 1;
 }
-
+//uses "BGM_*" #defines
 s32 playBGM(s32 arg0) {
     if ((arg0 >= gBGMALSeqFileP->seqCount) || (arg0 < 0)) {
         return -1;
@@ -753,6 +753,7 @@ void func_8008EF78(CTTask* arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008FC34.s")
 
+//Uses "GameModes" enum
 void setProcessType(s32 arg0) {
     //" 元%d %d\n"("former %d %d")
     DummiedPrintf(D_8010DB04, gameModeCurrent, D_800FFEB8);
@@ -1221,7 +1222,7 @@ void func_8009C2FC(CTTask* arg0) {
 //#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009D19C.s")
 void func_8009D19C(s32 arg0) {
     if (func_8008EC90() != 0) {
-        setProcessType(6);
+        setProcessType(GAME_MODE_TITLE_SCREEN);
     }
 }
 
@@ -1332,6 +1333,7 @@ void PrintPerfectCode(s32 arg0) {
 void func_800A250C(unkarg0* arg0) {
     if (arg0->unk6A > 0) {
         setTextGradient(0x6EU, 0xD2U, 0xFF, 0xFF, 0, 0xDE, 0, 0xFF, 0x6E, 0xD2, 0xFF, 0xFF, 0, 0xDE, 0, 0xFF);
+        //ＰＲＥＳＳ  ＳＴＡＲＴ
         PrintTextWrapper(72.0f, 176.0f, 0.0f, 1.0f, D_8010E9D0, 1);
     }
     

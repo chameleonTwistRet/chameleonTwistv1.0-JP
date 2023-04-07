@@ -24,7 +24,7 @@ void func_800DF91C(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/audio/cspgettempo/alCSeqNextEvent.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/audio/cspgettempo/ALCSeqNew.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/audio/cspgettempo/alCSeqNew.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/audio/cspgettempo/alCSeqNewMarker.s")
 

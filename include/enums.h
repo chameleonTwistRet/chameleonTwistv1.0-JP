@@ -151,4 +151,35 @@ enum PlayerCharacters{
 	CHARA_BLACK,
 	CHARA_WHITE
 };
+
+#define BGM_JUNGLE0	0x0	
+#define BGM_JUNGLE1	0x1	
+#define BGM_ANT	0x2	
+#define BGM_BOMB	0x3	
+#define BGM_DESERT	0x4	
+#define BGM_KIDS	0x5	
+#define BGM_GHOST	0x6	
+#define BGM_BATTLE1	0x7	
+#define BGM_BATTLE2	0x8	
+#define BGM_BATTLE3	0x9	
+#define BGM_BATTLEWIN	0xa	
+#define BGM_ANTBOSS	0xb	
+#define BGM_BOSS1	0xc	
+#define BGM_BOSS2	0xd	
+#define BGM_KIDSBOSS	0xe	
+#define BGM_BOSSINTRO	0xf	
+#define BGM_GHOSTBOSS1	0x10	
+#define BGM_GHOSTBOSS2	0x11	
+#define BGM_STAGESELECT	0x12	
+#define BGM_STAGESELECT2	0x13	
+#define BGM_STAGEWIN	0x14	
+#define BGM_BATTLEWIN2	0x15	
+#define BGM_GAMEOVER	0x16	
+#define BGM_TRAINING	0x17	
+#define BGM_STAGESTART	0x18	
+#define BGM_TITLE	0x19	
+#define BGM_ENDINGUNUSED	0x1a	
+#define BGM_INTRO	0x1b	
+#define BGM_STAGESELECTREPRISE	0x1c	
+#define BGM_TACET	-1
 #endif

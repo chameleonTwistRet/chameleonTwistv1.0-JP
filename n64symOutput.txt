@@ -122,7 +122,7 @@
 800DFEA4 alCSeqSecToTicks
 800DFFA0 alCSeqTicksToSec
 800E000C __alCSeqNextDelta
-800E0180 alSeqpSetSeq
+800E0180 alCSPSetSeq
 800E01C0 osGetTime
 800E0250 osGetCount
 800E0260 guFrustumF

@@ -941,7 +941,7 @@ void func_80072D34(void) {
         temp_v0->unk0 = 1;
         temp_v0->unkC = 0.0f;
         temp_v0->unk_30 = 0.0f;
-        playBGM(23);
+        playBGM(BGM_TRAINING);
     }
 }
 
@@ -971,7 +971,7 @@ void func_800735A8(void) {
     temp_v0 = aa1_Alloc(0, 0, &func_8007320C);
     var_v1 = temp_v0;
     if (temp_v0 == NULL) {
-        setProcessType(0x12);
+        setProcessType(GAME_MODE_BOOT);
         var_v1 = temp_v0;
     }
     var_v1->unk0 = 0;
@@ -1231,7 +1231,7 @@ s32 func_8007C500(void) {
 void func_8007CDBC(void) {
     D_80174880->unk_00[1] = 0;
     D_80174880->unk_00[2] = 0;
-    playBGM(23);
+    playBGM(BGM_TRAINING);
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8007CDEC.s")
