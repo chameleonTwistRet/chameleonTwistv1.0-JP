@@ -360,12 +360,15 @@ typedef struct unkStruct15 {
     /* 0x18 */ f32 unk_18;
 } unkStruct15; //sizeof 0x18
 //SaveGame data?
-typedef struct unkFlags {
-/* 0x00 */ u8 flags0[4];
-/* 0x04 */ s32 unk_04;
-/* 0x02 */ char unk_08[0x69];
+typedef struct SaveRecord {
+/* 0x00 */ u8 flags[4]; //{checksum,flags,blank,blank}
+/* 0x04 */ s32 perfectCode; 
+/* 0x08 */ u8 stageTimes[7][5][3]; //[stageIndex][timeRank][]
 /* 0x71 */ s8 unk_71;
-} unkFlags; //sizeof 0x72
+/* 0x72 */ s8 unk_72[2];
+/* 0x74 */ u16 bowlingScore;
+/* 0x76 */ s8 pad[10];
+} SaveRecord; //sizeof 0x80
 
 typedef struct unkSpriteDmaStruct {
     char* name;
@@ -420,7 +423,11 @@ typedef struct CTTask { // interally referred to as "S_task"
     /* 0x08 */ void (*function)(struct CTTask*);
     /* 0x0C */ struct CTTask* next; 
     /* 0x10 */ struct CTTask* unk_10; //prev?
-    /* 0x14 */ char pad14[0x40];                     /* maybe part of function[0x13]? */
+    /* 0x14 */ Vec3f pos;
+    /* 0x20 */ f32 rotA;
+    /* 0x24 */ Vec3f scale;
+    /* 0x30 */ Vec3f rot;
+    /* 0x3C */ f32 un3C;
     /* 0x54 */ u8 unk54;                            /* inferred */
     /* 0x55 */ char pad55[7];                       /* maybe part of unk54[8]? */
     /* 0x5C */ s16 unk_5C;
@@ -431,7 +438,7 @@ typedef struct CTTask { // interally referred to as "S_task"
     /* 0x68 */ s16 unk_68;
     /* 0x6A */ char pad6A[2];
     /* 0x6C */ char unk6C[0x18];
-    /* 0x94 */ char str[20];
+    /* 0x94 */ char str[20]; // used in strcpy twice.
 } CTTask;                                      /* size = 0xA8 */
 
 typedef struct unk801FCA20 {

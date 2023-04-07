@@ -9,7 +9,7 @@
  */
 
 f32 Vec3f_Normalize(Vec3f* vec) {
-    f32 norm = __sqrtf(SQ(vec->x) + SQ(vec->y) + SQ(vec->z));
+    f32 norm = NORM_3(vec->x,vec->y,vec->z);
     if (norm == 0.0f) { 
         Vec3f_Zero(vec);                    // if the norm is 0, then we cannot divide by it
     } else {
@@ -55,7 +55,7 @@ Vec3f* Vec3f_Lerp(Vec3f* outVec, Vec3f vecOne, Vec3f vecTwo, f32 scalar) {
 void CartesianToSpherical(Vec3f inputVec, f32* radius, f32* theta, f32* phi) {
     f32 sqrtResult;
 
-    *radius = __sqrtf(SQ(inputVec.x) + SQ(inputVec.y) + SQ(inputVec.z));
+    *radius = NORM_3(inputVec.x,inputVec.y,inputVec.z);
     
     if (*radius == 0.0) {
         *theta = 0.0f;
@@ -63,7 +63,7 @@ void CartesianToSpherical(Vec3f inputVec, f32* radius, f32* theta, f32* phi) {
         return;
     } else {
         *theta = AngleFromArcSin(inputVec.y / *radius);
-        sqrtResult = __sqrtf(SQ(inputVec.z) + SQ(inputVec.x));
+        sqrtResult = NORM_2(inputVec.z,inputVec.x);
         
         if (sqrtResult == 0.0) {
             *phi = 0.0f;

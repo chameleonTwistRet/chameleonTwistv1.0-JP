@@ -281,7 +281,7 @@ extern unk802000C84 D_80200C84;
 extern Collision D_80240D6C[];
 extern u8 gCarrotBitfield;
 extern s8 D_801B313D;
-extern unkFlags gGameRecords;
+extern SaveRecord gGameRecords;
 extern Vec3s D_801087D8[];
 extern s32 D_800FF898;
 extern u32 D_800FF89C;

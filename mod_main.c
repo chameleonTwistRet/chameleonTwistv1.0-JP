@@ -74,13 +74,13 @@ void mod_main_func(void) {
     
     D_800FFEB8 = 0;
     osRecvMesg(&D_801192E8, 0, 1);
-    SaveData_LoadRecords(&gGameRecords.flags0[0]);
+    SaveData_LoadRecords(&gGameRecords.flags[0]);
     
-    if (func_800A7F70() != gGameRecords.flags0[0]) {
+    if (func_800A7F70() != gGameRecords.flags[0]) {
         SaveData_ClearRecords();
     }
 
-    D_800FF5FC = gGameRecords.flags0[1] & 1;
+    D_800FF5FC = gGameRecords.flags[1] & 1;
     osRecvMesg(&D_801192E8, 0, 1);
     mod_boot_func();
     //step current game mode

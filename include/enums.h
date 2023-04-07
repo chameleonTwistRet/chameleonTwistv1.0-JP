@@ -4,7 +4,7 @@
 #define ACTORS_MAX 64
 
 enum actorIDs {
-	unk_00,
+	Actor_Null,
 	Red_Ant,
 	Green_Ant,
 	Grey_Ant,

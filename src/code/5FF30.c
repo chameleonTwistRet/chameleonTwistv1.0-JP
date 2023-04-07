@@ -1832,7 +1832,7 @@ s32 SaveData_UpdateFile(s32 arg0, u8* arg1) {
 }
 
 void SaveData_SaveRecords(void) {
-    gGameRecords.flags0[0] = func_800A7F70();
+    gGameRecords.flags[0] = func_800A7F70();
     
     osRecvMesg(&D_80175620, NULL, 0);
     
@@ -1842,7 +1842,7 @@ void SaveData_SaveRecords(void) {
     
     DummiedPrintf(D_8010EFB0);
     
-    if (osEepromLongWrite(&D_80175620, 0x30, &gGameRecords.flags0[0], 0x80) != 0) {
+    if (osEepromLongWrite(&D_80175620, 0x30, &gGameRecords.flags[0], 0x80) != 0) {
         //"ＥＥＰロム書き込みエラー \n"("EEPRom write error")
         DummiedPrintf(D_8010EFBC);
     }
