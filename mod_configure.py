@@ -3,12 +3,19 @@ import subprocess
 import pkg_resources
 import fileinput
 import sys
+import fnmatch
 
 dir_path = 'src/'
 asm_path = 'asm/'
-mod_asm_path = 'src/mod/'
-mod_assets_path = 'src/mod/assets'
 assets_path = 'assets/'
+mod_asm_path = 'src/mod/'
+mod_assets_path = None
+
+for root, dirs, files in os.walk(mod_asm_path):
+    if 'assets' in dirs:
+        mod_assets_path = os.path.join(root, 'assets')
+        break
+
 cflags = '-G 0 -fullwarn -verbose -Xcpluscomm -signed -nostdinc -non_shared -Wab,-r4300_mul'
 #python3 tools/splat/split.py chameleontwist.jp.yaml
 
@@ -175,17 +182,17 @@ with open('asm/nonmatchings/code/5FF30/MainLoop.s', 'w') as file:
     # Write the modified contents back to the file
     file.writelines(lines)
 
-filename = 'chameleontwist.jp.ld'
+linker_script_file = 'chameleontwist.jp.ld'
 mod_directory = 'src/mod'
 
-with open(filename) as file:
+with open(linker_script_file) as file:
     for line_number, line in enumerate(file):
         if 'romPadding_VRAM_END' in line:
             next_line = next(file, None)
             break
 line_number = line_number + 1
 
-with open(filename, 'r') as file:
+with open(linker_script_file, 'r') as file:
     lines = file.readlines()
 
 
@@ -199,60 +206,54 @@ line_number += 6
 
 for index, line in enumerate(lines):
     if 'romPadding_VRAM_END' in line:
-        for filename_c in os.listdir(mod_directory):
-            if filename_c.endswith('.c'):
-                lines.insert(line_number, f"\t\tbuild/{mod_directory}/{filename_c}.o(.text);\n")
+        for root, dirnames, filenames in os.walk(mod_directory):
+            for filename in fnmatch.filter(filenames, '*.c'):
+                lines.insert(line_number, f"\t\tbuild/{root}/{filename}.o(.text);\n")
                 line_number += 1
-            elif filename_c.endswith('.s'):
-                lines.insert(line_number, f"\t\tbuild/{mod_directory}/{filename_c}.o(.text);\n")
+            for filename in fnmatch.filter(filenames, '*.s'):
+                lines.insert(line_number, f"\t\tbuild/{root}/{filename}.o(.text);\n")
                 line_number += 1
         break
-
-
 
 lines.insert(line_number, "\t\tmod_RODATA_START = .;\n")
 line_number += 1
 
 for index, line in enumerate(lines):
     if 'romPadding_VRAM_END' in line:
-        for filename_c in os.listdir(mod_directory):
-            if filename_c.endswith('.c'):
-                lines.insert(line_number, f"\t\tbuild/{mod_directory}/{filename_c}.o(.rodata);\n")
+        for root, dirnames, filenames in os.walk(mod_directory):
+            for filename in fnmatch.filter(filenames, '*.c'):
+                lines.insert(line_number, f"\t\tbuild/{root}/{filename}.o(.rodata);\n")
                 line_number += 1
-            elif filename_c.endswith('.s'):
-                lines.insert(line_number, f"\t\tbuild/{mod_directory}/{filename_c}.o(.rodata);\n")
+            for filename in fnmatch.filter(filenames, '*.s'):
+                lines.insert(line_number, f"\t\tbuild/{root}/{filename}.o(.rodata);\n")
                 line_number += 1
         break
-
-
 
 lines.insert(line_number, "\t\tmod_DATA_START = .;\n")
 line_number += 1        
 
 for index, line in enumerate(lines):
     if 'romPadding_VRAM_END' in line:
-        for filename_c in os.listdir(mod_directory):
-            if filename_c.endswith('.c'):
-                lines.insert(line_number, f"\t\tbuild/{mod_directory}/{filename_c}.o(.data);\n")
+        for root, dirnames, filenames in os.walk(mod_directory):
+            for filename in fnmatch.filter(filenames, '*.c'):
+                lines.insert(line_number, f"\t\tbuild/{root}/{filename}.o(.data);\n")
                 line_number += 1
-            elif filename_c.endswith('.s'):
-                lines.insert(line_number, f"\t\tbuild/{mod_directory}/{filename_c}.o(.data);\n")
+            for filename in fnmatch.filter(filenames, '*.s'):
+                lines.insert(line_number, f"\t\tbuild/{root}/{filename}.o(.data);\n")
                 line_number += 1
         break
-
-
 
 lines.insert(line_number, "\t\tmod_BSS_START = .;\n")
 line_number += 1
 
 for index, line in enumerate(lines):
     if 'romPadding_VRAM_END' in line:
-        for filename_c in os.listdir(mod_directory):
-            if filename_c.endswith('.c'):
-                lines.insert(line_number, f"\t\tbuild/{mod_directory}/{filename_c}.o(.bss);\n")
+        for root, dirnames, filenames in os.walk(mod_directory):
+            for filename in fnmatch.filter(filenames, '*.c'):
+                lines.insert(line_number, f"\t\tbuild/{root}/{filename}.o(.bss);\n")
                 line_number += 1
-            elif filename_c.endswith('.s'):
-                lines.insert(line_number, f"\t\tbuild/{mod_directory}/{filename_c}.o(.bss);\n")
+            for filename in fnmatch.filter(filenames, '*.s'):
+                lines.insert(line_number, f"\t\tbuild/{root}/{filename}.o(.bss);\n")
                 line_number += 1
         break
 
@@ -262,7 +263,7 @@ lines.insert(line_number + 2, "\tmod_ROM_END = __romPos;\n")
 lines.insert(line_number + 3, "\tmod_VRAM_END = .;\n")
 line_number += 4
 
-with open(filename, 'w') as file:
+with open(linker_script_file, 'w') as file:
     file.writelines(lines)
 
 # Traverse each subdirectory recursively and find all C files
@@ -427,8 +428,15 @@ with open('build.ninja', 'a') as outfile:
 
     # Write the rules for ia8 mod files
     for mod_ia8_file in mod_ia8_files:
-        mod_ia8_file_without_src_mod = mod_ia8_file.replace('src/mod/', '')
-        outfile.write("build " + os.path.splitext(mod_ia8_file_without_src_mod)[0] + ".j: " + "ia8_img_cc " + mod_ia8_file + "\n")
+        result = mod_ia8_file.split(assets_path, 1)
+        
+        if len(result) > 1:
+            output_string = assets_path + result[1]
+        else:
+            output_string = mod_ia8_file
+
+        output_string = output_string.replace("src/mod/", "").replace(".png", "")
+        outfile.write("build " + output_string + ".j: " + "ia8_img_cc " + mod_ia8_file + "\n")
     
     # Write the rules for ia8 files
     for ia8_file in ia8_files:
@@ -437,8 +445,15 @@ with open('build.ninja', 'a') as outfile:
 
     # Write the rules for ia4 mod files
     for mod_ia4_file in mod_ia4_files:
-        mod_ia4_file_without_src_mod = mod_ia4_file.replace('src/mod/', '')
-        outfile.write("build " + os.path.splitext(mod_ia4_file_without_src_mod)[0] + ".j: " + "ia4_img_cc " + mod_ia4_file + "\n")
+        result = mod_ia4_file.split(assets_path, 1)
+        
+        if len(result) > 1:
+            output_string = assets_path + result[1]
+        else:
+            output_string = mod_ia4_file
+
+        output_string = output_string.replace("src/mod/", "").replace(".png", "")
+        outfile.write("build " + output_string + ".j: " + "ia4_img_cc " + mod_ia4_file + "\n")
     
     # Write the rules for ia4 files
     for ia4_file in ia4_files:
@@ -448,8 +463,15 @@ with open('build.ninja', 'a') as outfile:
 
     # Write the rules for rgba32 mod files
     for mod_rgba32_file in mod_rgba32_files:
-        mod_rgba32_file_without_src_mod = mod_rgba32_file.replace('src/mod/', '')
-        outfile.write("build " + os.path.splitext(mod_rgba32_file_without_src_mod)[0] + ".j: " + "rgba32_img_cc " + mod_rgba32_file + "\n")
+        result = mod_rgba32_file.split(assets_path, 1)
+        
+        if len(result) > 1:
+            output_string = assets_path + result[1]
+        else:
+            output_string = mod_rgba32_file
+
+        output_string = output_string.replace("src/mod/", "").replace(".png", "")
+        outfile.write("build " + output_string + ".j: " + "rgba32_img_cc " + mod_rgba32_file + "\n")
     
     # Write the rules for rgba32 files
     for rgba32_file in rgba32_files:
@@ -459,8 +481,15 @@ with open('build.ninja', 'a') as outfile:
 
     # Write the rules for rgba16 mod files
     for mod_rgba16_file in mod_rgba16_files:
-        mod_rgba16_file_without_src_mod = mod_rgba16_file.replace('src/mod/', '')
-        outfile.write("build " + os.path.splitext(mod_rgba16_file_without_src_mod)[0] + ".j: " + "rgba16_img_cc " + mod_rgba16_file + "\n")
+        result = mod_rgba16_file.split(assets_path, 1)
+        
+        if len(result) > 1:
+            output_string = assets_path + result[1]
+        else:
+            output_string = mod_rgba16_file
+
+        output_string = output_string.replace("src/mod/", "").replace(".png", "")
+        outfile.write("build " + output_string + ".j: " + "rgba16_img_cc " + mod_rgba16_file + "\n")
 
     # Write the rules for rgba16 files
     for rgba16_file in rgba16_files:
