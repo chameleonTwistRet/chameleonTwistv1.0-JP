@@ -269,7 +269,7 @@ extern s32 gFixedSeedIndex;
 extern OSMesg D_801FCF08[50];
 extern s32 D_801FD558;
 extern DMAStruct D_801FCFD8[50];
-extern unk801FD550 D_801FD550;
+extern ALCMidiHdr* D_801FD550;
 extern void* D_80200C8C;
 extern void* D_80200C94;
 extern Addr D_AB10B0;

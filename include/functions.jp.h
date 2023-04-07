@@ -388,7 +388,6 @@ void func_8009B120(s32);
 void func_8009B45C(s32);
 void func_8008A208(void);
 void Audio_RomCopy(u32 devAddr, void* vAddr, u32 size);
-void ALCSeqNew(ALSeq*, void*);
 void func_8008A2B0(void);
 void func_8008A2EC(void);
 void func_8008AD30(void);

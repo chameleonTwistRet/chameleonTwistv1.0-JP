@@ -313,7 +313,7 @@ void func_8008A208(void) {
 }
 
 void func_8008A2B0(void) {
-    if ((gameModeCurrent == 0) && (gCurrentStage == 0)) {
+    if ((gameModeCurrent == GAME_MODE_OVERWORLD) && (gCurrentStage == 0)) {
         func_8008A208();
     }
 }
@@ -336,12 +336,12 @@ s32 BGMLoad(void) {
     unk801FCA20* temp_t2;
     s32 anotherTemp;
 
-    if ((gameModeCurrent == 4) || (gameModeCurrent == 5)) {
+    if ((gameModeCurrent == GAME_MODE_DEMO) || (gameModeCurrent == GAME_MODE_DEMO_2)) {
         return 0;
     }
 
     if ((gIsPaused != 0) && (D_800FF604 == 0)) {
-        if (alCSPGetState(gBGMPlayerP) == 1) {
+        if (alCSPGetState(gBGMPlayerP) == AL_PLAYING) {
             alCSPSetVol(gBGMPlayerP, 0);
             alCSPStop(gBGMPlayerP);
             D_800FF608 = 1;
@@ -353,8 +353,8 @@ s32 BGMLoad(void) {
     }
 
     if ((gIsPaused == 0) && (D_800FF604 != 0)) {
-        if ((alCSPGetState(gBGMPlayerP) != 1) || (D_800FF608 != 0)) {
-            if ((gameModeCurrent != 4) && (gameModeCurrent != 5)) {
+        if ((alCSPGetState(gBGMPlayerP) != AL_PLAYING) || (D_800FF608 != 0)) {
+            if ((gameModeCurrent != GAME_MODE_DEMO) && (gameModeCurrent != GAME_MODE_DEMO_2)) {
                 alCSPPlay(gBGMPlayerP);
             }
             alCSPSetVol(gBGMPlayerP, D_801FCA22);
@@ -386,13 +386,13 @@ s32 BGMLoad(void) {
     temp_v0 = alCSPGetState(gBGMPlayerP);
     
     if (D_800FF620 == -1) {
-        if ((temp_v0 == 0) && (D_801FCA24 != 0)) {
+        if ((temp_v0 == AL_STOPPED) && (D_801FCA24 != 0)) {
             D_800FF620 = D_800FF624.unk_00;
         } else {
             return 0;
         }
     }
-    else if (temp_v0 != 0) {
+    else if (temp_v0 != AL_STOPPED) {
         return 0;
     }
     
@@ -404,9 +404,9 @@ s32 BGMLoad(void) {
         sp24 += 1;
     }
     
-    osInvalDCache(D_801FD550.unk_00, sp24);
-    Audio_RomCopy(devAddr, D_801FD550.unk_00, sp24);
-    alCSeqNew(gBGMSeqP, D_801FD550.unk_00);
+    osInvalDCache(D_801FD550, sp24);
+    Audio_RomCopy(devAddr, D_801FD550, sp24);
+    alCSeqNew(gBGMSeqP, (u8*)D_801FD550);
     alCSPSetSeq(gBGMPlayerP, gBGMSeqP);
     D_801FCA20 = D_800FF4D0[D_800FF624.unk_00];
     alCSPPlay(gBGMPlayerP);
@@ -422,7 +422,7 @@ s32 playBGM(s32 arg0) {
     if ((arg0 >= gBGMALSeqFileP->seqCount) || (arg0 < 0)) {
         return -1;
     }
-    if (gBGMPlayerP->state == 1) {
+    if (gBGMPlayerP->state == AL_PLAYING) {
         alCSPStop(gBGMPlayerP);
     }
     D_800FF620 = arg0;
@@ -432,7 +432,7 @@ s32 playBGM(s32 arg0) {
 
 s32 func_8008BE14(void) {
     D_801FCA24 = 0;
-    if (gBGMPlayerP->state == 1) {
+    if (gBGMPlayerP->state == AL_PLAYING) {
         alCSPStop(gBGMPlayerP);
     }
     func_80088198();
@@ -455,7 +455,7 @@ s32 func_8008BE14(void) {
 
 s32 BGMStop(void) {
     D_801FCA24 = 0;
-    if (gBGMPlayerP->state == 1) {
+    if (gBGMPlayerP->state == AL_PLAYING) {
         alCSPStop(gBGMPlayerP);
     }
     return 0;
@@ -463,14 +463,14 @@ s32 BGMStop(void) {
 
 s32 func_8008BF20(void) {
     D_801FCA20 = D_800FF4D0[D_800FF624.unk_00];
-    if ((gBGMPlayerP->state != 1) && (gameModeCurrent != 4) && (gameModeCurrent != 5)) {
+    if ((gBGMPlayerP->state != AL_PLAYING) && (gameModeCurrent != GAME_MODE_DEMO) && (gameModeCurrent != GAME_MODE_DEMO_2)) {
         alCSPPlay(gBGMPlayerP);
     }
     return 0;
 }
-s32 func_8008BFA8(s32 arg0) {
-    alCSPSetVol(gBGMPlayerP, arg0);
-    D_801FCA20.unk_00 = arg0;
+s32 func_8008BFA8(s32 vol) {
+    alCSPSetVol(gBGMPlayerP, vol);
+    D_801FCA20.unk_00 = vol;
     return 0;
 }
 
@@ -533,14 +533,14 @@ void func_8008C35C(s32 arg0) {
 }
 
 s32 func_8008C364(Actor* arg0, s32 sfxID, s32 arg2, s32 arg3) {
-    s32 var_v0;
+    s32 ret;
 
-    if (gameModeCurrent == 7) {
-        var_v0 = PLAYSFX(sfxID, 1, 0x10);
+    if (gameModeCurrent == GAME_MODE_BATTLE_MENU) {
+        ret = PLAYSFX(sfxID, 1, 0x10);
     } else {
-        var_v0 = PLAYSFXAT(sfxID, arg0->pos, 0, 0);
+        ret = PLAYSFXAT(sfxID, arg0->pos, 0, 0);
     }
-    return var_v0;
+    return ret;
 }
 
 void func_8008C3F0(Actor* arg0, s32 sfxID, s32 arg2) {
@@ -1921,7 +1921,7 @@ void func_800A9728(CTTask* arg0) {
     
     if ((D_80100D64[D_801FCA18] + 0xA) >= gFixedSeedIndex) {
         arg0->unk_64 = 0;
-        if (gameModeCurrent != 5) {
+        if (gameModeCurrent != GAME_MODE_DEMO_2) {
             func_8008E9AC(0x20, 0, 0, 0, &arg0->unk_64);
         }
         arg0->function = &func_800A97E4;

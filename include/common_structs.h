@@ -454,9 +454,6 @@ typedef struct unk800FF624 {
     /* 0x08 */ s32 unk_08;
 } unk800FF624; //sizeof 0xC
 
-typedef struct unk801FD550 {
-    /* 0x00 */ void* unk_00;
-} unk801FD550; //sizeof 0x0
 
 typedef struct unkStruct0 {
     /* 0x00 */ s32 unk_00;
@@ -470,11 +467,6 @@ typedef struct unkStruct0 {
     /* 0x20 */ s32 unk_20;
 } unkStruct0; //sizeof 0x24
 
-
-// typedef struct Rect {
-//     Vec3f min;
-//     Vec3f max;
-// } Rect;
 
 typedef struct unkVecStruct {
     Vec3f vec1;
