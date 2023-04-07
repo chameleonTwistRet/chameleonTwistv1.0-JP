@@ -3,7 +3,7 @@
 typedef struct unk800F73C8 {
     char unk_00[4];
     void* vAddr; // "malloc'd" after size calc.
-    s32 unk8;
+    void* unk8; //palette? both this and above start with devAddr+0XD73D960
     s32 type; // data type? image format?
     void* unk10;
     u8 unk14;

@@ -359,7 +359,7 @@ typedef struct unkStruct15 {
     /* 0x14 */ f32 unk_14;
     /* 0x18 */ f32 unk_18;
 } unkStruct15; //sizeof 0x18
-//SaveGame data?
+
 typedef struct SaveRecord {
 /* 0x00 */ u8 flags[4]; //{checksum,flags,blank,blank}
 /* 0x04 */ s32 perfectCode; 
@@ -427,8 +427,8 @@ typedef struct CTTask { // interally referred to as "S_task"
     /* 0x20 */ f32 rotA;
     /* 0x24 */ Vec3f scale;
     /* 0x30 */ Vec3f rot;
-    /* 0x3C */ f32 un3C;
-    /* 0x40 */ char pad40[0x14];                       /* maybe part of unk_5C[3]? */
+    /* 0x3C */ f32 unk3C;
+    /* 0x40 */ char pad40[0x14];
     /* 0x54 */ u8 unk54;                            /* inferred */
     /* 0x55 */ char pad55[7];                       /* maybe part of unk54[8]? */
     /* 0x5C */ s16 unk_5C;
@@ -628,13 +628,25 @@ typedef struct unkStruct03 {
     /* 0x44 */ s32 unk_44;
 } unkStruct03; //sizeof 0x48
 
-typedef struct unkStruct05 {
-    /* 0x00 */ char unk_00[0x57];
-    /* 0x57 */ u8 unk_57;
-    /* 0x58 */ char unk_58[5];
-    /* 0x5D */ u8 unk_5D;
-    /* 0x5E */ u8 unk_5E[2];
-} unkStruct05;
+typedef struct SaveFile {
+    /* 0x00 */ u8 checksum;
+    /* 0x02 */ u8 flags;
+    /* 0x02 */ char unk_02[0x20];
+    /* 0x22 */ char unk_22[4];
+    /* 0x26 */ u8 stageAccess;
+    /* 0x27 */ u8 stageClear;
+    /* 0x28 */ u8 stageCrownClear;
+    /* 0x29 */ u8 unk_29;
+    /* 0x2A */ u8 stageCrownRecord[7];
+    /* 0x31 */ u8 currentStage;
+    /* 0x32 */ u8 currentZone;
+    /* 0x33 */ u8 unk33; //copies D_8020d8a8
+    /* 0x34 */ u8 unk34[16];
+    /* 0x44 */ u8 stageCrowns;
+    /* 0x45 */ u8 stageTimes[8][3];
+    /* 0x5D */ u8 carrotBitfield; 
+    /* 0x5E */ u8 unk_5E[2]; //first also copies carrot progress.
+} SaveFile;
 
 //5FF30
 //linked list probably, heap related?

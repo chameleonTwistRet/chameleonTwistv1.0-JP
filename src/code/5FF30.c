@@ -34,7 +34,7 @@ extern char D_8010EF80[];
 extern char D_8010EF9C[];
 extern char D_8010EFB0[];
 extern char D_8010EFBC[];
-extern unkStruct05* gSaveFiles;
+extern SaveFile* gSaveFiles;
 extern char D_8010EFD8[];
 extern char D_8010EDB8[];
 extern char D_8010F084[];
@@ -54,8 +54,8 @@ void RecordTime_SetTo(s32, u8*);
 void SaveData_SaveRecords(void);
 s32 func_800A7F70(void);
 void SaveData_Wait(void);
-s32 SaveData_VerifyFile(u8*, unkStruct05*);
-void SaveData_LoadFile(s32, unkStruct05*);
+s32 SaveData_VerifyFile(u8*, SaveFile*);
+void SaveData_LoadFile(s32, SaveFile*);
 void func_800AA844(s32);
 void func_800C29D8(s32);
 void func_8008CCDC(CTTask*);
@@ -1060,7 +1060,7 @@ void func_80099570(CTTask* arg0) {
 }
 
 void func_80099598(CTTask* arg0) {
-    _bzero(&gSaveFiles[arg0->unk_62], sizeof(unkStruct05));
+    _bzero(&gSaveFiles[arg0->unk_62], sizeof(SaveFile));
     SaveData_LoadFile(arg0->unk_62, &gSaveFiles[arg0->unk_62]);
     arg0->function = func_8009961C;
 }
@@ -1742,7 +1742,7 @@ s32 SaveData_Compare(u8 *arg0, u8 *arg1) {
     return var_s7;
 }
 
-void SaveData_LoadFile(s32 arg0, unkStruct05* arg1) {
+void SaveData_LoadFile(s32 arg0, SaveFile* arg1) {
     osRecvMesg(&D_80175620, NULL, 0);
     if (osEepromProbe(&D_80175620) != 1) {
         DummiedPrintf(D_8010EE04);
@@ -1780,10 +1780,10 @@ void SaveData_LoadRecords(u8* arg0) {
     //"メインロード開始" ("main road start"?)
     DummiedPrintf(D_8010EEE0);
     
-    if (osEepromLongRead(&D_80175620, 0x30U, arg0, 0x80) != 0) {
+    if (osEepromLongRead(&D_80175620, 0x30U, arg0, sizeof(SaveRecord)) != 0) {
         //"ＥＥＰロム読み込みエラー 共通部分(Main)から %d バイトを読めません"
         //("EEP ROM read error Cannot read %d bytes from common part (Main)")
-        DummiedPrintf(D_8010EEF4, 0x80);
+        DummiedPrintf(D_8010EEF4, sizeof(SaveRecord));
     }
     
     SaveData_Wait();
@@ -1812,7 +1812,7 @@ void SaveData_SaveFile(s32 arg0, u8* arg1) {
 
 s32 SaveData_UpdateFile(s32 arg0, u8* arg1) {
     s32 i;
-    unkStruct05 sp34;
+    SaveFile sp34;
 
     i = 0;
 
@@ -1865,12 +1865,12 @@ s32 SaveData_UpdateRecords(void) {
     return 1;
 }
 
-void func_800A878C(unkStruct05* arg0) {
-    _bzero(arg0, 0x60);
+void func_800A878C(SaveFile* arg0) {
+    _bzero(arg0, sizeof(SaveFile));
     //"ファイルクリア"("file clear")
     DummiedPrintf(D_8010EFD8);
-    RecordTime_SetTo(0x12C, &arg0->unk_57);
-    arg0->unk_5D = 0;
+    RecordTime_SetTo(300, &arg0->stageTimes[6]);
+    arg0->carrotBitfield = 0;
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A87D4.s")
