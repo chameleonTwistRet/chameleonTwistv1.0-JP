@@ -2,18 +2,18 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/audio/csplayer/__CSPPostNextSeqEvent.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/audio/csplayer/func_800DD020.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/audio/csplayer/__setUsptFromTempo.s")
 
 void func_800DD054(void) {
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/audio/csplayer/func_800DD05C.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/audio/csplayer/__CSPHandleMetaMsg.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/audio/csplayer/func_800DD22C.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/audio/csplayer/__CSPHandleMIDIMsg.s")
 
 void func_800DDA54(void) {
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/audio/csplayer/func_800DDA5C.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/audio/csplayer/__CSPVoiceHandler.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/audio/csplayer/alCSPNew.s")

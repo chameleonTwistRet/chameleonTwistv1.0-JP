@@ -660,7 +660,7 @@ void func_8002F7F0(void) {
 
 void func_8002F884(s32 arg0, s32 arg1) {
     if (((D_801749B0 == 0) || (PlayerPointer->playerID != 1)) && (D_80168D78[arg0] == 0)) {
-        if (gameModeCurrent == 7) {
+        if (gameModeCurrent == GAME_MODE_BATTLE_MENU) {
             Rumble_AddTime(arg0, ((arg1 * 100) / 6.0f), arg1);
         } else {
             Rumble_AddTime(arg0, ((arg1 * 100) * 0.5f), arg1);
@@ -1141,7 +1141,7 @@ void func_8003FA38(Actor* arg0, f32 arg1, f32 arg2, f32 arg3) {
     } else {
         arg0->unk_94 = (f32) arg0->unk_16C;
     }
-    temp_f8 = (s32) (sqrtf(SQ(temp_f0) + SQ(temp_f2)) / arg0->unk_94);
+    temp_f8 = (s32) (NORM_2(temp_f0,temp_f2) / arg0->unk_94);
     arg0->unk_10C[1] = temp_f8;
     arg0->unk_134[3] = (f32) ((arg2 - arg0->pos.y) / (f32) temp_f8);
     arg0->unk_90 = CalculateAngleOfVector(temp_f0, -temp_f2);
@@ -1275,7 +1275,7 @@ void func_800425A4(Actor* arg0) {
     f32 temp_f0_2;
 
     func_80042174(arg0);
-    temp_f0_2 = __sqrtf(SQ(arg0->vel.x) + SQ(arg0->vel.z));
+    temp_f0_2 = NORM_2(arg0->vel.x,arg0->vel.z);
     arg0->unk_94 = temp_f0_2;
     arg0->unk_134[0] = ((180.0f * temp_f0_2) / ( arg0->unknownPositionThings[0].unk_0C * D_8010BE30)) + arg0->unk_134[0];
     arg0->unk_90 = CalculateAngleOfVector(arg0->vel.x, -arg0->vel.z);

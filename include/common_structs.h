@@ -178,7 +178,7 @@ typedef struct Collision {
     /* 0x04 */ char pad4[0x14];                     /* maybe part of collisionType[6]? */
     /* 0x18 */ s32 unk18;
     /* 0x1C */ char pad1C[0x14];                    /* maybe part of unk18[6]? */
-    /* 0x30 */ Rect rect_30;
+    /* 0x30 */ Rect rect_30; // bounding box?
     /* 0x48 */ char pad48[0x30];                    /* maybe part of collisionSubStruct[3]? */
     /* 0x78 */ s32 unk78;
     /* 0x7C */ char pad7C[0x18];                    /* maybe part of unk78[7]? */
@@ -359,13 +359,16 @@ typedef struct unkStruct15 {
     /* 0x14 */ f32 unk_14;
     /* 0x18 */ f32 unk_18;
 } unkStruct15; //sizeof 0x18
-//SaveGame data?
-typedef struct unkFlags {
-/* 0x00 */ u8 flags0[4];
-/* 0x04 */ s32 unk_04;
-/* 0x02 */ char unk_08[0x69];
+
+typedef struct SaveRecord {
+/* 0x00 */ u8 flags[4]; //{checksum,flags,blank,blank}
+/* 0x04 */ s32 perfectCode; 
+/* 0x08 */ u8 stageTimes[7][5][3]; //[stageIndex][timeRank][]
 /* 0x71 */ s8 unk_71;
-} unkFlags; //sizeof 0x72
+/* 0x72 */ s8 unk_72[2];
+/* 0x74 */ u16 bowlingScore;
+/* 0x76 */ s8 pad[10];
+} SaveRecord; //sizeof 0x80
 
 typedef struct unkSpriteDmaStruct {
     char* name;
@@ -420,7 +423,12 @@ typedef struct CTTask { // interally referred to as "S_task"
     /* 0x08 */ void (*function)(struct CTTask*);
     /* 0x0C */ struct CTTask* next; 
     /* 0x10 */ struct CTTask* unk_10; //prev?
-    /* 0x14 */ char pad14[0x40];                     /* maybe part of function[0x13]? */
+    /* 0x14 */ Vec3f pos;
+    /* 0x20 */ f32 rotA;
+    /* 0x24 */ Vec3f scale;
+    /* 0x30 */ Vec3f rot;
+    /* 0x3C */ f32 unk3C;
+    /* 0x40 */ char pad40[0x14];
     /* 0x54 */ u8 unk54;                            /* inferred */
     /* 0x55 */ char pad55[7];                       /* maybe part of unk54[8]? */
     /* 0x5C */ s16 unk_5C;
@@ -431,7 +439,7 @@ typedef struct CTTask { // interally referred to as "S_task"
     /* 0x68 */ s16 unk_68;
     /* 0x6A */ char pad6A[2];
     /* 0x6C */ char unk6C[0x18];
-    /* 0x94 */ char str[20];
+    /* 0x94 */ char str[20]; // used in strcpy twice.
 } CTTask;                                      /* size = 0xA8 */
 
 typedef struct unk801FCA20 {
@@ -446,9 +454,6 @@ typedef struct unk800FF624 {
     /* 0x08 */ s32 unk_08;
 } unk800FF624; //sizeof 0xC
 
-typedef struct unk801FD550 {
-    /* 0x00 */ void* unk_00;
-} unk801FD550; //sizeof 0x0
 
 typedef struct unkStruct0 {
     /* 0x00 */ s32 unk_00;
@@ -462,11 +467,6 @@ typedef struct unkStruct0 {
     /* 0x20 */ s32 unk_20;
 } unkStruct0; //sizeof 0x24
 
-
-// typedef struct Rect {
-//     Vec3f min;
-//     Vec3f max;
-// } Rect;
 
 typedef struct unkVecStruct {
     Vec3f vec1;
@@ -620,13 +620,25 @@ typedef struct unkStruct03 {
     /* 0x44 */ s32 unk_44;
 } unkStruct03; //sizeof 0x48
 
-typedef struct unkStruct05 {
-    /* 0x00 */ char unk_00[0x57];
-    /* 0x57 */ u8 unk_57;
-    /* 0x58 */ char unk_58[5];
-    /* 0x5D */ u8 unk_5D;
-    /* 0x5E */ u8 unk_5E[2];
-} unkStruct05;
+typedef struct SaveFile {
+    /* 0x00 */ u8 checksum;
+    /* 0x02 */ u8 flags;
+    /* 0x02 */ char unk_02[0x20];
+    /* 0x22 */ char unk_22[4];
+    /* 0x26 */ u8 stageAccess;
+    /* 0x27 */ u8 stageClear;
+    /* 0x28 */ u8 stageCrownClear;
+    /* 0x29 */ u8 unk_29;
+    /* 0x2A */ u8 stageCrownRecord[7];
+    /* 0x31 */ u8 currentStage;
+    /* 0x32 */ u8 currentZone;
+    /* 0x33 */ u8 unk33; //copies D_8020d8a8
+    /* 0x34 */ u8 unk34[16];
+    /* 0x44 */ u8 stageCrowns;
+    /* 0x45 */ u8 stageTimes[8][3];
+    /* 0x5D */ u8 carrotBitfield; 
+    /* 0x5E */ u8 unk_5E[2]; //first also copies carrot progress.
+} SaveFile;
 
 //5FF30
 //linked list probably, heap related?
@@ -678,7 +690,7 @@ typedef struct aa1{
     /* 0x2C */ s32 unk_2C;
     /* 0x30 */ f32 unk_30;
     /* 0x34 */ void* unk34;
-    /* 0x38 */ Mtx* unk_38;
+    /* 0x38 */ void* unk_38; // this struct varies widely
     /* 0x3C */ d8006266c* unk_3C;
     /* 0x40 */ struct aa1* previous;
     /* 0x44 */ struct aa1* next;
@@ -700,6 +712,7 @@ typedef struct unkStruct {
     /* 0x04 */ char unk_04[0x104];
 } unkStruct; //sizeof 0x108
 
+// this struct seems to manage sound effects
 typedef struct unk0 {
     /* 0x00 */ char pad0[0x20];
     /* 0x20 */ s16 unk20;

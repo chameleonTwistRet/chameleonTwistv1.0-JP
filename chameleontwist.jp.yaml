@@ -37,7 +37,7 @@ segments:
       - [0x1050, c, code/1050]
       - [0x84E0, c, code/84E0]
       - [0x298D0, c, code/298D0]
-      - [0x29DF0, c, code/29DF0]
+      - [0x29DF0, c, code/debug]
       - [0x2C3B0, c, code/2C3B0]
       - [0x30FB0, c, code/sprite]
       - [0x5FEB0, c, code/5FEB0]
@@ -144,7 +144,7 @@ segments:
       - [0xBCD30, hasm, os/exceptasm]
       - [0xBD630, hasm, os/createspeedparam]
       - [0xBD6D0, c, os/sethwinterrupt]
-      - [0xBD720, c, os/gethwinterrupt]
+      - [0xBD720, c, os/leointerrupt]
       - [0xBDFE0, hasm, os/interrupt]
       - [0xBE020, c, os/thread]
       - [0xBE060, c, os/timerintr]
@@ -236,7 +236,7 @@ segments:
       - [0xE56C0, .data, libc/xlitob] #8010A2C0 through 8010A2F0
       - [0xE56F0, rodata, code/1050] #8010A2F0 through 8010A6D0
       - [0xE5AD0, rodata, code/84E0] #8010A6D0 through 8010C640
-      - [0xE7A40, rodata, code/29DF0] #8010C640 through 8010C940
+      - [0xE7A40, rodata, code/debug] #8010C640 through 8010C940
       - [0xE7D40, rodata, code/2C3B0] #8010C940 through 8010CA10
       - [0xE7E10, rodata, code/sprite] #8010CA10 through 8010D530
       - [0xE8930, rodata, code/5FF30] #8010D530 through 80110110
@@ -366,22 +366,22 @@ segments:
   - [0x297BB0, bin,BGM10BattleWon]
   - [0x297E88, bin,BGM11Quintella]
   - [0x2981B4, bin,BGM12BossBattle1]
-  - [0x298E90, bin,BGM12BossBattle2]
-  - [0x29A20C, bin,BGM13GiantCake]
-  - [0x29B5D4, bin,BGM14BossIntro]
-  - [0x29B8D8, bin,BGM15PileOfBooks2]
-  - [0x29C014, bin,BGM16PileOfBooks1]
-  - [0x29C6A0, bin,BGM17StageSelect]
-  - [0x29CB20, bin,BGM18StageSelect2]
-  - [0x29D79C, bin,BGM19StageWin]
-  - [0x29DA44, bin,BGM20BattleWon2]
-  - [0x29DC68, bin,BGM21GameOver]
-  - [0x29DDD4, bin,BGM22Training]
-  - [0x29E710, bin,BGM23StageStart]
-  - [0x29E89C, bin,BGM24TitleScreen]
-  - [0x29EC3C, bin,BGM25EndingUnused]
-  - [0x2A0008, bin,BGM26GameIntro]
-  - [0x2A1C00, bin,BGM27StageSelectReprise] #size of 0x0DB9
+  - [0x298E90, bin,BGM13BossBattle2]
+  - [0x29A20C, bin,BGM14GiantCake]
+  - [0x29B5D4, bin,BGM15BossIntro]
+  - [0x29B8D8, bin,BGM16PileOfBooks2]
+  - [0x29C014, bin,BGM17PileOfBooks1]
+  - [0x29C6A0, bin,BGM18StageSelect]
+  - [0x29CB20, bin,BGM19StageSelect2]
+  - [0x29D79C, bin,BGM20StageWin]
+  - [0x29DA44, bin,BGM21BattleWon2]
+  - [0x29DC68, bin,BGM22GameOver]
+  - [0x29DDD4, bin,BGM23Training]
+  - [0x29E710, bin,BGM24StageStart]
+  - [0x29E89C, bin,BGM25TitleScreen]
+  - [0x29EC3C, bin,BGM26EndingUnused]
+  - [0x2A0008, bin,BGM27GameIntro]
+  - [0x2A1C00, bin,BGM28StageSelectReprise] #size of 0x0DB9
   - [0x2A29C0, bin,ctl2] #size of 0x8760
   - [0x2AB120, bin,tbl2] #sfxs #unkSize
   - [0x2D2BA0, bin] #size of 8?

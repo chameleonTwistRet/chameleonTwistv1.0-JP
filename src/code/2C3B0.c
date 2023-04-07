@@ -65,10 +65,10 @@ void func_8005171C(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/2C3B0/func_80052890.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/2C3B0/func_800536D8.s")
-
+//prints "HURRY!" during MP Battle
 void func_800538D0(void) {
-    if ((D_80176824 < 1801) && (D_80176824 >= 1711) && ((D_80176824 % 10) < 5)) {
-        func_80076884(1);
+    if ((D_80176824 <= 1800) && (D_80176824 > 1710) && ((D_80176824 % 10) < 5)) {
+        setTextGradientFromPalette(1);             //"HURRY!"
         PrintTextWrapper(100.0f, 10.0f, 0.0f, 1.0f, D_8010C944, 1);
     }
 }
@@ -144,7 +144,7 @@ void func_8005564C(void) {
         D_8017499C++;
         break;
     case 3:
-        func_8008FD04(6);
+        setProcessType(GAME_MODE_TITLE_SCREEN);
         break;
     }
     func_8008C094();
@@ -192,7 +192,7 @@ void func_800557F8(void) {
         D_8017499C++;
         break;
     case 3:
-        func_8008FD04(6);
+        setProcessType(GAME_MODE_TITLE_SCREEN);
         break;
     }
 
@@ -224,7 +224,7 @@ void func_80055994(void) {
         D_8017499C += 1;
         break;
     case 3:
-        func_8008FD04(10);
+        setProcessType(GAME_MODE_SUPPLY_SYSTEM_LOGO);
         break;
     }
 
@@ -255,7 +255,7 @@ void func_80055AA0(void) {
         D_8017499C++;
         break;
     case 3:
-        func_8008FD04(0xA);
+        setProcessType(GAME_MODE_SUPPLY_SYSTEM_LOGO);
         break;
     }
     

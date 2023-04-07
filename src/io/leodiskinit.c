@@ -3,7 +3,7 @@
 #define FLASH_CMD_PROGRAM_PAGE  0xA5000000
 
 OSPiHandle __CartRomHandle;
-extern OSPiHandle* D_8024C504;
+extern OSPiHandle* __osDiskHandle;
 
 OSPiHandle* osLeoDiskInit(void) {
    u32 saveMask;
@@ -25,7 +25,7 @@ OSPiHandle* osLeoDiskInit(void) {
 	saveMask = __osDisableInt();
 	__CartRomHandle.next = __osPiTable;
 	__osPiTable = &__CartRomHandle;
-    D_8024C504 = &__CartRomHandle;
+    __osDiskHandle = &__CartRomHandle;
 	__osRestoreInt(saveMask);
 	
 	return &__CartRomHandle;

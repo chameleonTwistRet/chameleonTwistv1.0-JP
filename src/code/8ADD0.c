@@ -195,7 +195,7 @@ Vec3f* func_800B2470(Vec3f* arg0, Vec3f arg1, Vec3f arg4, f32 arg7, s32 arg8) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/isBossPresent.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B2CC0.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/isBossStage.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B2D10.s")
 
@@ -383,8 +383,8 @@ void func_800B40F4(unkSpriteStruct* arg0) {
 
 void func_800B40FC(void) {
     D_801B313D = 1;
-    if (!(gGameRecords.flags0[1] & 8)) {
-        gGameRecords.flags0[1] |= 8;
+    if (!(gGameRecords.flags[1] & 8)) {
+        gGameRecords.flags[1] |= 8;
         SaveData_UpdateRecords();
     }
 }
@@ -873,7 +873,7 @@ void func_800C5564(playerActor* arg0) {
     arg0->globalTimer = arg0->globalTimer + D_80110000;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C558C.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/Player_SetFromBoss.s")
 
 //jump table
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C56D4.s")

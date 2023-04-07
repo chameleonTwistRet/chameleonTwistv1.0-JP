@@ -3,7 +3,7 @@
 typedef struct unk800F73C8 {
     char unk_00[4];
     void* vAddr; // "malloc'd" after size calc.
-    s32 unk8;
+    void* unk8; //palette? both this and above start with devAddr+0XD73D960
     s32 type; // data type? image format?
     void* unk10;
     u8 unk14;
@@ -213,8 +213,7 @@ void func_80056DF4(unkStruct02* arg0, unkStruct02* arg1) {
     }
 }
 
-// Seems incorrectly named
-// s32 Memory_Free(void);
+
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/Memory_Free.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80056EB4.s")
@@ -222,7 +221,7 @@ void func_80056DF4(unkStruct02* arg0, unkStruct02* arg1) {
 //     func_80056CDC(D_801191A0, (D_801FFB78 - D_801191A0));
 // }
 
-//likely Malloc or equivalent
+
 void* mallloc(s32 arg0) {
     void* temp_v0 = func_80056D30(arg0);
     
@@ -232,7 +231,7 @@ void* mallloc(s32 arg0) {
 
     return temp_v0;
 }
-//likely Free or equivalent
+
 s32 free(void* arg0) {
     Memory_Free(arg0);
     return 0;
@@ -420,11 +419,11 @@ void func_80061264(f32 arg0) {
     D_800FDFFC = arg0;
 }
 
-void func_80061270(u8 arg0, u8 arg1, u8 arg2, u8 arg3) {
-    D_800FDFD0 = arg0;
-    D_800FDFD4 = arg1;
-    D_800FDFD8 = arg2;
-    D_800FDFDC = arg3;
+void func_80061270(u8 r, u8 g, u8 b, u8 a) {
+    D_800FDFD0 = r;
+    D_800FDFD4 = g;
+    D_800FDFD8 = b;
+    D_800FDFDC = a;
 }
 
 void func_800612A4(s8 arg0, s8 arg1, s8 arg2, s8 arg3) {
@@ -734,7 +733,7 @@ void func_800667C4(s8 arg0[5], s32 arg1) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80068A88.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80068BFC.s")
-
+//funcs with rabbit(?)
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80068DB4.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80069734.s")
@@ -918,7 +917,7 @@ void func_8006CBA8(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_800714C8.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80071968.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/aa1_DrawGameResults.s")
 
 //prints perfect code
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80071A48.s")
@@ -931,7 +930,7 @@ void func_8006CBA8(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8007294C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_800729E4.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/printStageRecordTimes.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80072B1C.s")
 
@@ -942,7 +941,7 @@ void func_80072D34(void) {
         temp_v0->unk0 = 1;
         temp_v0->unkC = 0.0f;
         temp_v0->unk_30 = 0.0f;
-        playBGM(23);
+        playBGM(BGM_TRAINING);
     }
 }
 
@@ -972,7 +971,7 @@ void func_800735A8(void) {
     temp_v0 = aa1_Alloc(0, 0, &func_8007320C);
     var_v1 = temp_v0;
     if (temp_v0 == NULL) {
-        func_8008FD04(0x12);
+        setProcessType(GAME_MODE_BOOT);
         var_v1 = temp_v0;
     }
     var_v1->unk0 = 0;
@@ -1030,13 +1029,13 @@ void func_80073FD8(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8007633C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80076548.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/setTextGradientFromPaletteAlpha.s")
 
-void func_80076884(s32 arg0) {
-    func_80076548(arg0, 1.0f);
+void setTextGradientFromPalette(s32 arg0) {
+    setTextGradientFromPaletteAlpha(arg0, 1.0f);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_800768A4.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/DrawTranslucentRectangle.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8007691C.s")
 
@@ -1232,7 +1231,7 @@ s32 func_8007C500(void) {
 void func_8007CDBC(void) {
     D_80174880->unk_00[1] = 0;
     D_80174880->unk_00[2] = 0;
-    playBGM(23);
+    playBGM(BGM_TRAINING);
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8007CDEC.s")
@@ -1240,7 +1239,7 @@ void func_8007CDBC(void) {
 void func_8007DFDC(f32 arg0, f32 arg1, f32 arg2, f32 arg3) {
 
 }
-
+//prints textbox. arg2= char[3][60]*
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8007DFF0.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8007E5E8.s")
