@@ -428,6 +428,7 @@ typedef struct CTTask { // interally referred to as "S_task"
     /* 0x24 */ Vec3f scale;
     /* 0x30 */ Vec3f rot;
     /* 0x3C */ f32 un3C;
+    /* 0x40 */ char pad40[0x14];                       /* maybe part of unk_5C[3]? */
     /* 0x54 */ u8 unk54;                            /* inferred */
     /* 0x55 */ char pad55[7];                       /* maybe part of unk54[8]? */
     /* 0x5C */ s16 unk_5C;
