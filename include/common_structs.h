@@ -698,7 +698,7 @@ typedef struct aa1{
     /* 0x2C */ s32 unk_2C;
     /* 0x30 */ f32 unk_30;
     /* 0x34 */ void* unk34;
-    /* 0x38 */ Mtx* unk_38;
+    /* 0x38 */ void* unk_38; // this struct varies widely
     /* 0x3C */ d8006266c* unk_3C;
     /* 0x40 */ struct aa1* previous;
     /* 0x44 */ struct aa1* next;
@@ -720,6 +720,7 @@ typedef struct unkStruct {
     /* 0x04 */ char unk_04[0x104];
 } unkStruct; //sizeof 0x108
 
+// this struct seems to manage sound effects
 typedef struct unk0 {
     /* 0x00 */ char pad0[0x20];
     /* 0x20 */ s16 unk20;

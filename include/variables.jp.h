@@ -196,7 +196,7 @@ extern s32 D_80168E5C;
 extern Tongue gTongues[4];
 extern Actor gActors[ACTORS_MAX]; //currently loaded actor structs
 extern pole D_80170968[64]; //currently loaded pole structs
-extern unkStruct D_80172E88[];
+extern unkStruct D_80172E88[]; //used by Red ants.
 extern s32 D_80174758[];
 extern s32 D_80174864;
 extern s32 D_80174878;                  // Level/Stage ID | loadStageByIndex()
@@ -206,7 +206,6 @@ extern s32 D_80174998;
 extern s32 D_8017499C;
 extern s32 D_801749B0;
 extern OSMesgQueue D_80175620;
-extern OSPiHandle __CartRomHandle;
 extern s32 D_80176824;
 extern u8 gTextGradient[16]; //probably really color32[4]
 extern f32 D_80176F50;
@@ -220,8 +219,8 @@ extern s32 D_801FC9A8;
 extern s16 D_801FC9AC;
 extern s16 D_801FC9B4;
 extern f64 D_801FCA00;
-extern OSThread D_801FD560;
-extern u64 D_801FD710[0x400];
+extern OSThread gAudioThread;
+extern u64 gAudioThreadStack[0x400];
 extern s32 D_801FF634;
 extern s32 D_801FF710;
 extern OSMesgQueue D_801FF750;
