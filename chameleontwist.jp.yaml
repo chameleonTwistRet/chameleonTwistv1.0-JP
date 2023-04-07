@@ -2493,10 +2493,9 @@ segments:
       - { start: 0xaff310, type: vtx, data_only: True, name: chameleons/Davy/backpack/backpack}
       - [0xaff390, mtx, chameleons/Davy/backpack/backpack]
       - [0xaff3d0, bin] #endDL command from rgb2c
-      - [0xaff3d8, ci4, chameleons/Davy/backpack/backpack.ci4, 8, 8]
+      - [0xaff3d8, ci8, chameleons/Davy/backpack/backpack.ci8, 4, 8] #awful
       - [0xaff3f8, bin] #endDL command from rgb2c
-      - [0xaff400, palette, chameleons/Davy/backpack/backpack.ci4]
-      - [0xaff420, bin]
+      - [0xaff400, palette, chameleons/Davy/backpack/backpack.ci8]
       - { start: 0xaff600, type: gfx, data_only: True, name: chameleons/Davy/backpack/backpack}
     - name: shoe
       type: .data #model
