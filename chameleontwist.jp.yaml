@@ -1259,6 +1259,7 @@ segments:
       subsegments:
         - { start: 0x6EC928, type: vtx, data_only: True, name: model/JungleLand/waterfall/waterfall}
         - { start: 0x6EC9C8, type: mtx, data_only: True, name: model/JungleLand/waterfall/waterfall}
+        - { start: 0x6ECA08, type: bin, data_only: True, name: }
         - [0x6ECA10, ci4, img/JungleLand/water.ci4, 64, 64]
         - [0x6ED218, palette, img/JungleLand/water.ci4]
         - { start: 0x6ED418, type: gfx, data_only: True, name: model/JungleLand/waterfall/waterfall}
@@ -1482,92 +1483,95 @@ segments:
   - [0x85c970, bin, Level/Training]
   - [0x878870, bin, Level/BossRush]
 
-  #- start: 0x87F640
-  #  name: Global
-  #  type: data
-  #  vram: 0x803237c0 #temp
-  #  subalign: 8
-  #  subsegments:
-  #    - start: 0x87F688
-  #      name: cannon
-  #      type: .data
-  #      subalign: 8
-  #      subsegments:
-  #        - { start: 0x87F688, type: vtx, data_only: True, name: }
-  #        - { start: 0x87F888, type: mtx, data_only: True, name: }
-  #        - [0x87F8D0, rgba16, img/Global/cannonHole.rgba16, 32, 32]
-  #        - [0x8800D8, rgba16, img/Global/cannonBarrel.rgba16, 32, 64]
-  #        - [0x8810E0, rgba16, img/Global/black.rgba16, 32, 32]
-  #        - { start: 0x8818E0, type: gfx, data_only: True, name: }
-#
-  #    - start: 0x881C08
-  #      name: unkWood
-  #      type: .data
-  #      subalign: 8
-  #      subsegments:
-  #        - { start: 0x881C08, type: vtx, data_only: True, name: model/Global/unkWood/unkWood}
-  #        - { start: 0x882068, type: mtx, data_only: True, name: model/Global/unkWood/unkWood}
-  #        - [0x8820B0, rgba16, img/Global/woodWithBolt.rgba16, 32, 32]
-  #        - [0x8828B8, rgba16, img/Global/darkWoodWithBolt.rgba16, 32, 32]
-  #        - [0x8830C0, rgba16, img/Global/darkWood.rgba16, 32, 32]
-  #        - [0x8838C8, rgba16, img/Global/lightWood.rgba16, 32, 32]
-  #        - [0x8840D0, rgba16, img/Global/midWood.rgba16, 32, 32]
-  #        - { start: 0x8848D0, type: gfx, data_only: True, name: model/Global/unkWood/unkWood}
-#
-  #    - start: 0x885058
-  #      name: unk
-  #      type: .data
-  #      subalign: 8
-  #      subsegments:
-  #        - { start: 0x885058, type: vtx, data_only: True, name: model/Global/unk/unk}
-  #        - { start: 0x885238, type: mtx, data_only: True, name: model/Global/unk/unk}
-  #        - { start: 0x885278, type: gfx, data_only: True, name: model/Global/unk/unk}
-  #        
-  #    - start: 0x8855E0
-  #      name: unk2    #winding thing
-  #      type: .data
-  #      subalign: 8
-  #      subsegments:
-  #        - { start: 0x8855E0, type: vtx, data_only: True, name: model/Global/unk2/unk2}
-  #        - { start: 0x885760, type: mtx, data_only: True, name: model/Global/unk2/unk2}
-  #        - { start: 0x8857A0, type: gfx, data_only: True, name: model/Global/unk2/unk2}
-#
-  #    - start: 0x885900
-  #      name: 
-  #      type: .data
-  #      subalign: 8
-  #      subsegments:
-  #        - { start: 0x885900, type: vtx, data_only: True, name: }
-  #        - { start: 0x885940, type: mtx, data_only: True, name: }
-  #        - [0x885988, bin]
+  - start: 0x87F640
+    name: Global
+    type: data
+    vram: 0x803237C0 #temp
+    subalign: 8
+    subsegments:
+      - start: 0x87F640
+        name: cannon
+        type: .data
+        subalign: 8
+        subsegments:
+          - { start: 0x87F640, type: mtx, data_only: True, name: }
+          - { start: 0x87F680, type: bin, data_only: True, name: }
+          - { start: 0x87F888, type: mtx, data_only: True, name: }
+          - { start: 0x87F8C8, type: bin, data_only: True, name: }
+          - [0x87F8D0, rgba16, img/Global/cannonHole.rgba16, 32, 32]
+          - [0x8800D8, rgba16, img/Global/cannonBarrel.rgba16, 32, 64]
+          - [0x8810E0, rgba16, img/Global/black.rgba16, 32, 32]
+          - { start: 0x8818E0, type: gfx, data_only: True, name: }
 
-      #- [0x8865C0, ci4,     img/Global/yellowBrickWall.ci4, 32, 32]
-      #- [0x8867C8, palette, img/Global/yellowBrickWall.ci4]
-      #- [0x8869C8, bin]
-      #- [0x8869D0, ci4,     img/Global/sandAgain.ci4, 64, 64]
-      #- [0x8871D8, palette, img/Global/sandAgain.ci4]
-      #- [0x8873E0, i4,      img/Global/gravel.i4, 64, 64]
-      #- [0x887BE8, i4,      img/Global/wall.i4, 64, 16]
-      #- [0x887DF0, ia4,     img/Global/poler.ia4, 32, 32]
-      #- [0x887FF8, i4,      img/Gobal/rockerr.i4, 64, 64]
-      #- [0x8887F8, bin]
-      #- [0x888800, ci4,     img/Gobal/thatButAgain.ci4, 64, 64]
-      #- [0x889008, palette, img/Gobal/thatButAgain.ci4]
-      #- [0x889208, bin]
+      - start: 0x881C08
+        name: unkWood
+        type: .data
+        subalign: 8
+        subsegments:
+          - { start: 0x881C08, type: vtx, data_only: True, name: model/Global/unkWood/unkWood}
+          - { start: 0x882068, type: mtx, data_only: True, name: model/Global/unkWood/unkWood}
+          - [0x8820B0, rgba16, img/Global/woodWithBolt.rgba16, 32, 32]
+          - [0x8828B8, rgba16, img/Global/darkWoodWithBolt.rgba16, 32, 32]
+          - [0x8830C0, rgba16, img/Global/darkWood.rgba16, 32, 32]
+          - [0x8838C8, rgba16, img/Global/lightWood.rgba16, 32, 32]
+          - [0x8840D0, rgba16, img/Global/midWood.rgba16, 32, 32]
+          - { start: 0x8848D0, type: gfx, data_only: True, name: model/Global/unkWood/unkWood}
 
-      #- [0x89E9A8, ci4, img/Global/jlText3.ci4, 64, 64]
-      #- [0x89F1B0, palette, img/Global/jlText3.ci4]
-      #- [0x89f3b0, bin]
-      #- [0x8A6950, ci4, img/Global/jlText1.ci4, 64, 64]
-      #- [0x8A7158, palette, img/Global/jlText1.ci4]
-      #- [0x8a7358, bin]
-      #- [0x8AF250, ci4, img/Global/jlText2.ci4, 64, 64]
-      #- [0x8AFA58, palette, img/Global/jlText2.ci4]
-      #- [0x8afc58, bin]
-      #- [0x8AFC60, ci4, img/Global/jlText4.ci4, 64, 64]
-      #- [0x8B0468, palette, img/Global/jlText4.ci4]
-      #- [0x8b0668, bin]
+      - start: 0x885058
+        name: unk
+        type: .data
+        subalign: 8
+        subsegments:
+          - { start: 0x885058, type: vtx, data_only: True, name: model/Global/unk/unk}
+          - { start: 0x885238, type: mtx, data_only: True, name: model/Global/unk/unk}
+          - { start: 0x885278, type: gfx, data_only: True, name: model/Global/unk/unk}
+         
+      - start: 0x8855E0
+        name: unk2    #winding thing
+        type: .data
+        subalign: 8
+        subsegments:
+          - { start: 0x8855E0, type: vtx, data_only: True, name: model/Global/unk2/unk2}
+          - { start: 0x885760, type: mtx, data_only: True, name: model/Global/unk2/unk2}
+          - { start: 0x8857A0, type: gfx, data_only: True, name: model/Global/unk2/unk2}
 
+      - start: 0x885900
+        name: 
+        type: .data
+        subalign: 8
+        subsegments:
+          - { start: 0x885900, type: vtx, data_only: True, name: }
+          - { start: 0x885940, type: mtx, data_only: True, name: }
+          - [0x885988, bin]
+      - [0x8865C0, ci4,     img/Global/yellowBrickWall.ci4, 32, 32]
+      - [0x8867C8, palette, img/Global/yellowBrickWall.ci4]
+      - [0x8869C8, bin]
+      - [0x8869D0, ci4,     img/Global/sandAgain.ci4, 64, 64]
+      - [0x8871D0, bin]
+      - [0x8871D8, palette, img/Global/sandAgain.ci4]
+      - [0x8871F8, bin]
+      - [0x8873E0, i4,      img/Global/gravel.i4, 64, 64]
+      - [0x887BE8, i4,      img/Global/wall.i4, 64, 16]
+      - [0x887DF0, ia4,     img/Global/poler.ia4, 32, 32]
+      - [0x887FF8, i4,      img/Gobal/rockerr.i4, 64, 64]
+      - [0x8887F8, bin]
+      - [0x888800, ci4,     img/Gobal/thatButAgain.ci4, 64, 64]
+      - [0x889008, palette, img/Gobal/thatButAgain.ci4]
+      - [0x889208, bin]
+
+      - [0x89E9A8, ci4, img/Global/jlText3.ci4, 64, 64]
+      - [0x89F1B0, palette, img/Global/jlText3.ci4]
+      - [0x89f3b0, bin]
+      - [0x8A6950, ci4, img/Global/jlText1.ci4, 64, 64]
+      - [0x8A7158, palette, img/Global/jlText1.ci4]
+      - [0x8a7358, bin]
+      - [0x8AF250, ci4, img/Global/jlText2.ci4, 64, 64]
+      - [0x8AFA58, palette, img/Global/jlText2.ci4]
+      - [0x8afc58, bin]
+      - [0x8AFC60, ci4, img/Global/jlText4.ci4, 64, 64]
+      - [0x8B0468, palette, img/Global/jlText4.ci4]
+      - [0x8b0668, bin]
+  - [0x8b06a0, bin]
   - [0x8c26a8, ia8, img/symbols.ia8, 464, 16]
   - [0x8c43a8, bin] #endDL command from rgb2c
 
@@ -2492,6 +2496,7 @@ segments:
       - [0xaff3d8, ci4, chameleons/Davy/backpack/backpack.ci4, 8, 8]
       - [0xaff3f8, bin] #endDL command from rgb2c
       - [0xaff400, palette, chameleons/Davy/backpack/backpack.ci4]
+      - [0xaff420, bin]
       - { start: 0xaff600, type: gfx, data_only: True, name: chameleons/Davy/backpack/backpack}
     - name: shoe
       type: .data #model
@@ -2543,6 +2548,7 @@ segments:
       - [0xb01750, ci4, chameleons/Davy/wrist/wrist.ci4, 32, 32]
       - [0xB01950, bin] #endDL command from rgb2c
       - [0xB01958, palette, chameleons/Davy/wrist/wrist.ci4]
+      - [0xB01978, bin]
       - { start: 0xb01b58, type: gfx, data_only: True, name: chameleons/Davy/wrist/wrist}
     - name: Larm
       type: .data #model
