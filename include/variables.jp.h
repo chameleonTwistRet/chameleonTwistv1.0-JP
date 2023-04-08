@@ -10,9 +10,6 @@
 #define VARIABLES_JP_H
 
 typedef u8 Addr[];
-extern __OSViContext vi[2];
-extern __OSViContext *__osViCurr;
-extern __OSViContext *__osViNext;
 
 extern s32 rngSeed; //rng
 
@@ -128,7 +125,6 @@ extern f32 D_8010881C;
 extern f32 D_80108820;
 extern s32 D_80108B68;
 extern unkSpriteDmaStruct D_80100118[16];
-extern OSViMode osViModeTable[42];
 extern Vec2f D_8010A6D0[0x6C]; //positions?
 extern unk_8010AA28 D_8010AA28[0x6C]; //actor related?
 extern f32 D_8010B328;
@@ -236,7 +232,7 @@ extern s32 TriangleBufferCount;
 extern s32 ModelBufferCount;
 extern s32 D_80236968;
 extern s32 D_8023696C;
-extern s32 currentZone; //D_80240CD8
+extern s32 currentZone;
 extern s32 D_801FC9B0;
 extern s16 D_801FCA22;
 extern s32 D_800FF620;
@@ -270,6 +266,7 @@ extern OSMesg D_801FCF08[50];
 extern s32 D_801FD558;
 extern DMAStruct D_801FCFD8[50];
 extern ALCMidiHdr* D_801FD550;
+extern SaveFile gGameState; //data on current playthrough's progress.
 extern void* D_80200C8C;
 extern void* D_80200C94;
 extern Addr D_AB10B0;
@@ -308,7 +305,7 @@ extern s32 D_800FF8A8;
 extern s32 D_800FF8B4;
 extern u32 D_800FF8B8;
 extern s32 D_801B3168;
-extern u8 gSelectedCharacters[];
+extern u8 gSelectedCharacters[4];
 extern u8 D_800F0BE0[];
 extern unkStruct0 D_800F0BE4[];
 extern s32 D_801749B4;
