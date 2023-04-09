@@ -436,6 +436,18 @@ segments:
     - [0x6aa9c8, bin, model/JungleLand/spriteActor/spriteAct15]
     - [0x6aaa18, bin, model/JungleLand/spriteActor/spriteAct16]
     - [0x6aaa68, bin, model/JungleLand/spriteActor/spriteAct17]
+    
+    - [0x6aaab8, bin, model/JungleLand/spriteActor/spriteActX1] #bad split
+    - [0x6aab08, bin, model/JungleLand/spriteActor/spriteActX2]
+    - [0x6aab58, bin, model/JungleLand/spriteActor/spriteActX3]
+    - [0x6aabA8, bin, model/JungleLand/spriteActor/spriteActX4]
+    - [0x6aabF8, bin, model/JungleLand/spriteActor/spriteActX5]
+    - [0x6aaC48, bin, model/JungleLand/spriteActor/spriteActX6]
+    - [0x6aaC98, bin, model/JungleLand/spriteActor/spriteActX7]
+    - [0x6aaCE8, bin, model/JungleLand/spriteActor/spriteActX8]
+    - [0x6aad38, bin, model/JungleLand/spriteActor/spriteActX9]
+    - [0x6aad88, bin, model/JungleLand/spriteActor/spriteActX10]
+
     - [0x6aadd8, bin, model/JungleLand/spriteActor/spriteAct18]
     - [0x6aae28, bin, model/JungleLand/spriteActor/spriteAct19]
     - [0x6aae78, bin, model/JungleLand/spriteActor/spriteAct20]
@@ -496,6 +508,16 @@ segments:
     - [0x6ab748, bin, model/JungleLand/specActors/spcAct44]
     - [0x6ab768, bin, model/JungleLand/specActors/spcAct45]
     - [0x6ab788, bin, model/JungleLand/specActors/spcAct46]
+
+    - [0x6ab7A8, bin, model/JungleLand/specActors/spcActX46]
+    - [0x6ab7C8, bin, model/JungleLand/specActors/spcActX47]
+    - [0x6ab7E8, bin, model/JungleLand/specActors/spcActX48]
+    - [0x6ab808, bin, model/JungleLand/specActors/spcActX49]
+    - [0x6ab828, bin, model/JungleLand/specActors/spcActX50]
+    - [0x6ab848, bin, model/JungleLand/specActors/spcActX51]
+
+
+
     - [0x6ab868, bin, model/JungleLand/specActors/spcAct47]
     - [0x6ab888, bin, model/JungleLand/specActors/spcAct48]
     - [0x6ab8a8, bin, model/JungleLand/specActors/spcAct49]
@@ -601,7 +623,14 @@ segments:
 
     - [0x6ae4a4, bin, model/JungleLand/roomObjects/roomObj62]
     - [0x6ae530, bin, model/JungleLand/roomObjects/roomObj63]
-    - [0x6ae5bc, bin, model/JungleLand/roomObjects/roomObj64]
+    - [0x6ae5bc, bin, model/JungleLand/roomObjects/roomObjN64] #null #bad split
+
+    - [0x6ae648, bin, model/JungleLand/roomActors/roomActX1]
+    - [0x6ae6A8, bin, model/JungleLand/roomActors/roomActX2]
+    - [0x6ae708, bin, model/JungleLand/roomActors/roomActN3]
+    - [0x6ae768, bin, model/JungleLand/roomActors/roomActX4]
+    - [0x6ae7C8, bin, model/JungleLand/roomActors/roomActN5]
+
     - [0x6ae828, bin, model/JungleLand/roomObjects/roomObj65]
     - [0x6ae8b4, bin, model/JungleLand/roomObjects/roomObj66]
     - [0x6ae940, bin, model/JungleLand/roomObjects/roomObj67]
@@ -633,6 +662,7 @@ segments:
     - [0x6af078, bin, model/JungleLand/roomActors/roomAct22]
     - [0x6af0d8, bin, model/JungleLand/roomActors/roomAct23]
     - [0x6af138, bin, model/JungleLand/roomActors/roomAct24]
+    - [0x6af198, bin, model/JungleLand/roomActors/roomActN24]
 
     - [0x6af1f8, bin, model/JungleLand/roomObjects/roomObj77]
     - [0x6af284, bin, model/JungleLand/roomObjects/roomObj78]
@@ -928,6 +958,31 @@ segments:
     - [0x6b8388, bin, model/JungleLand/roomActors/roomAct69]
     - [0x6b83e8, bin, model/JungleLand/roomActors/roomAct70]
 
+    - [0x6b8448, bin, model/JungleLand/newType/g1] #9 entries????? 0x24
+    - [0x6b846c, bin, model/JungleLand/newType/g2]
+    - [0x6b8490, bin, model/JungleLand/newType/g3]
+    - [0x6b84b4, bin, model/JungleLand/newType/g4]
+    - [0x6b84d8, bin, model/JungleLand/newType/g5]
+    - [0x6b84fc, bin, model/JungleLand/newType/g6]
+    - [0x6b8520, bin, model/JungleLand/newType/g7]
+    - [0x6b8544, bin, model/JungleLand/newType/g8]
+    - [0x6b8568, bin, model/JungleLand/newType/g9]
+    - [0x6b858c, bin, model/JungleLand/newType/g10]
+    - [0x6b85b0, bin, model/JungleLand/newType/g11]
+    - [0x6b85d4, bin, model/JungleLand/newType/g12]
+    - [0x6b85f8, bin, model/JungleLand/newType/g13]
+    - [0x6b861c, bin, model/JungleLand/newType/g14]
+    - [0x6b8640, bin, model/JungleLand/newType/g15]
+    - [0x6b8664, bin, model/JungleLand/newType/g16]
+    - [0x6b8688, bin, model/JungleLand/newType/g17]
+    - [0x6b86ac, bin, model/JungleLand/newType/g18]
+    - [0x6b86d0, bin, model/JungleLand/newType/g19]
+    - [0x6b86f4, bin, model/JungleLand/newType/g20]
+    - [0x6b8718, bin, model/JungleLand/newType/g21]
+    - [0x6b873c, bin, model/JungleLand/newType/g22]
+    - [0x6b8760, bin, model/JungleLand/newType/g23]
+    - [0x6b8784, bin, model/JungleLand/newType/g24]
+
     - [0x6b87a8, bin, model/JungleLand/roomObjects/roomObj313]
     - [0x6b8834, bin, model/JungleLand/roomObjects/roomObj314]
     - [0x6b88c0, bin, model/JungleLand/roomObjects/roomObj315]
@@ -1011,9 +1066,7 @@ segments:
     - [0x6bb284, bin, model/JungleLand/roomActors/roomAct73]
 
     - [0x6bb2e4, bin, model/JungleLand/roomObjects/roomObj390]
-    - [0x6bb2e4, bin, model/JungleLand/roomObjects/roomObj391]
-    - [0x6bb370, bin, model/JungleLand/roomObjects/roomObj392]
-    - [0x6bb370, bin, model/JungleLand/roomObjects/roomObj393]
+    - [0x6bb370, bin, model/JungleLand/roomObjects/roomObj391]
 
     - [0x6bb3fc, bin, model/JungleLand/roomActors/roomAct74]
     - [0x6bb45c, bin, model/JungleLand/roomActors/roomAct75]
