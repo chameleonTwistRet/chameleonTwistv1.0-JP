@@ -330,7 +330,7 @@ segments:
   - [0x116b60, bin, vtx4] #vtx
   - [0x116c60, bin, mtx4] #mtx
   - [0x116ca0, bin, break2] #break
-  - [0x116ca8, ia8, img/fogFade.ia8, 48, 32]
+  - [0x116ca8, ia8, img/fogFade.ia8, 16, 96]
   - [0x1172a8, bin, gfx/unk3] #gfx
   - [0x1176b8, bin, group2]
   - [0x1176d0, bin, vtx5]
@@ -599,10 +599,10 @@ segments:
     - [0x6adb08, bin, model/JungleLand/roomObjects/roomObj49]
     - [0x6adb94, bin, model/JungleLand/roomObjects/roomObj50]
 
-    - [0x6adc20, bin, model/JungleLand/spriteActor/spriteAct31]
-    - [0x6adc70, bin, model/JungleLand/spriteActor/spriteAct32]
-    - [0x6adcc0, bin, model/JungleLand/spriteActor/spriteAct33]
-    - [0x6add10, bin, model/JungleLand/spriteActor/spriteAct34]
+    - [0x6adc20, spriteActor, model/JungleLand/spriteActor/spriteAct31]
+    - [0x6adc70, spriteActor, model/JungleLand/spriteActor/spriteAct32]
+    - [0x6adcc0, spriteActor, model/JungleLand/spriteActor/spriteAct33]
+    - [0x6add10, spriteActor, model/JungleLand/spriteActor/spriteAct34]
 
     - [0x6add60, bin, model/JungleLand/roomObjects/roomObj51]
     - [0x6addec, bin, model/JungleLand/roomObjects/roomObj52]
@@ -616,10 +616,10 @@ segments:
     - [0x6ae24c, bin, model/JungleLand/roomObjects/roomObj60]
     - [0x6ae2d8, bin, model/JungleLand/roomObjects/roomObj61]
 
-    - [0x6ae364, bin, model/JungleLand/spriteActor/spriteAct35]
-    - [0x6ae3b4, bin, model/JungleLand/spriteActor/spriteAct36]
-    - [0x6ae404, bin, model/JungleLand/spriteActor/spriteAct37]
-    - [0x6ae454, bin, model/JungleLand/spriteActor/spriteAct38]
+    - [0x6ae364, spriteActor, model/JungleLand/spriteActor/spriteAct35]
+    - [0x6ae3b4, spriteActor, model/JungleLand/spriteActor/spriteAct36]
+    - [0x6ae404, spriteActor, model/JungleLand/spriteActor/spriteAct37]
+    - [0x6ae454, spriteActor, model/JungleLand/spriteActor/spriteAct38]
 
     - [0x6ae4a4, bin, model/JungleLand/roomObjects/roomObj62]
     - [0x6ae530, bin, model/JungleLand/roomObjects/roomObj63]
@@ -1071,14 +1071,14 @@ segments:
     - [0x6bb3fc, bin, model/JungleLand/roomActors/roomAct74]
     - [0x6bb45c, bin, model/JungleLand/roomActors/roomAct75]
 
-    - [0x6bb4bc, bin, model/JungleLand/spriteActor/spriteAct39]
-    - [0x6bb50c, bin, model/JungleLand/spriteActor/spriteAct40]
-    - [0x6bb55c, bin, model/JungleLand/spriteActor/spriteAct41]
-    - [0x6bb5ac, bin, model/JungleLand/spriteActor/spriteAct42]
-    - [0x6bb5fc, bin, model/JungleLand/spriteActor/spriteAct43]
-    - [0x6bb64c, bin, model/JungleLand/spriteActor/spriteAct44]
-    - [0x6bb69c, bin, model/JungleLand/spriteActor/spriteAct45]
-    - [0x6bb6ec, bin, model/JungleLand/spriteActor/spriteAct46]
+    - [0x6bb4bc, spriteActor, model/JungleLand/spriteActor/spriteAct39]
+    - [0x6bb50c, spriteActor, model/JungleLand/spriteActor/spriteAct40]
+    - [0x6bb55c, spriteActor, model/JungleLand/spriteActor/spriteAct41]
+    - [0x6bb5ac, spriteActor, model/JungleLand/spriteActor/spriteAct42]
+    - [0x6bb5fc, spriteActor, model/JungleLand/spriteActor/spriteAct43]
+    - [0x6bb64c, spriteActor, model/JungleLand/spriteActor/spriteAct44]
+    - [0x6bb69c, spriteActor, model/JungleLand/spriteActor/spriteAct45]
+    - [0x6bb6ec, spriteActor, model/JungleLand/spriteActor/spriteAct46]
     - [0x6bb73c, bin, model/JungleLand/spriteLib]
     - [0x6bb8bc, bin, model/JungleLand/rooms/room1]
     - [0x6bb928, bin, model/JungleLand/rooms/room2]
@@ -1542,9 +1542,9 @@ segments:
       type: .data
       subalign: 8
       subsegments:
-        - { start: 0x6D0058, type: vtx, data_only: True, name: model/JungleLand/groundCollision/groundCollision}
-        - { start: 0x6D01D8, type: mtx, data_only: True, name: model/JungleLand/groundCollision/groundCollision}
-        - { start: 0x6D0218, type: gfx, data_only: True, name: model/JungleLand/groundCollision/groundCollision}
+        - { start: 0x6D0058, type: vtx, data_only: True, name: model/JungleLand/holeLogBottom/holeLogBottom}
+        - { start: 0x6D01D8, type: mtx, data_only: True, name: model/JungleLand/holeLogBottom/holeLogBottom}
+        - { start: 0x6D0218, type: gfx, data_only: True, name: model/JungleLand/holeLogBottom/holeLogBottom}
 
     - start: 0x6D03E0
       name: extThree
@@ -1934,92 +1934,92 @@ segments:
         - { start: 0x6EE150, type: mtx, data_only: True, name: model/JungleLand/water2/water2}
         - { start: 0x6EE190, type: gfx, data_only: True, name: model/JungleLand/water2/water2}
 
-    - { start: 0x6ee360, type: bin, data_only: True, name: Room5-Lilypad(outside)} #collision
-    - { start: 0x6ee3ec, type: bin, data_only: True, name: Vine(unused)} #collision
-    - { start: 0x6ee670, type: bin, data_only: True, name: Room7-High-crownLog(outside)} #collision
-    - { start: 0x6ee81c, type: bin, data_only: True, name: Room7-High-crownlow-log(outside)} #collision
-    - { start: 0x6ee998, type: bin, data_only: True, name: Room7-High-crownLogplate(outside)} #collision
-    - { start: 0x6eee74, type: bin, data_only: True, name: Room7-HoleLogTop(visual)(outside)} #collision
-    - { start: 0x6eefb4, type: bin, data_only: True, name: Room9-WaterfallRock(outside)} #collision
-    - { start: 0x6ef3b8, type: bin, data_only: True, name: Room11-CaveEntranceFrame(outside)} #collision
-    - { start: 0x6ef42c, type: bin, data_only: True, name: FallBridge(inside)} #collision
-    - { start: 0x6ef530, type: bin, data_only: True, name: C.T.Crate(inside)} #collision
-    - { start: 0x6ef634, type: bin, data_only: True, name: C.T.Crate2(inside)} #collision
-    - { start: 0x6ef720, type: bin, data_only: True, name: Room3-WalkingPlank(inside)} #collision
-    - { start: 0x6ef80c, type: bin, data_only: True, name: Room3-WalkingPlank2(inside)} #collision
-    - { start: 0x6ef8f8, type: bin, data_only: True, name: Room3-"Walking"Plank3(inside)} #collision
-    - { start: 0x6ef9e4, type: bin, data_only: True, name: Room3-WalkingPlank4(inside)} #collision
-    - { start: 0x6efa58, type: bin, data_only: True, name: Room3-FallBridgeSmall(inside)} #collision
-    - { start: 0x6efbbc, type: bin, data_only: True, name: Room6-StartingPlatform(inside)} #collision
-    - { start: 0x6efca8, type: bin, data_only: True, name: CavePlatform(inside)} #collision
-    - { start: 0x6efe0c, type: bin, data_only: True, name: Room6-CrownPlatform(inside)} #collision
-    - { start: 0x6effc4, type: bin, data_only: True, name: Room6-StartingSidePlatform(inside)} #collision
-    - { start: 0x6f00f8, type: bin, data_only: True, name: Room7-Lava(inside)} #collision
-    - { start: 0x6f01cc, type: bin, data_only: True, name: Room7-Floor(inside)} #collision
-    - { start: 0x6f02a0, type: bin, data_only: True, name: Room0-Lava(inside)} #collision
-    - { start: 0x6f0494, type: bin, data_only: True, name: Room1-Platforms(inside)} #collision
-    - { start: 0x6f0688, type: bin, data_only: True, name: Room6-CrownEdgePlatform(inside)} #collision
-    - { start: 0x6f0d20, type: bin, data_only: True, name: Room7-SpinningRing(inside)} #collision
-    - { start: 0x6f0e24, type: bin, data_only: True, name: WoodBlock(inside)(makesupalotofstructures)} #collision
-    - { start: 0x6f0eb0, type: bin, data_only: True, name: Room0-Ropes(inside)} #collision
-    - { start: 0x6f105c, type: bin, data_only: True, name: Room6-Rail1(inside)} #collision
-    - { start: 0x6f1208, type: bin, data_only: True, name: Room6-Rail2(inside)} #collision
-    - { start: 0x6f13b4, type: bin, data_only: True, name: Room6-Rail3(inside)} #collision
-    - { start: 0x6f1560, type: bin, data_only: True, name: Room6-Rail4(inside)} #collision
-    - { start: 0x6f170c, type: bin, data_only: True, name: Room6-Rail5(inside)} #collision
-    - { start: 0x6f18b8, type: bin, data_only: True, name: Room6-Rail6(inside)} #collision
-    - { start: 0x6f1a94, type: bin, data_only: True, name: Room0-Rail(inside)} #collision
-    - { start: 0x6f1b98, type: bin, data_only: True, name: C.T.Crate3(inside)} #collision
-    - { start: 0x6f1c9c, type: bin, data_only: True, name: Log1(outside)} #collision
-    - { start: 0x6f1d10, type: bin, data_only: True, name: FallBridgeSmall2(inside)} #collision
-    - { start: 0x6f1dfc, type: bin, data_only: True, name: Room6-LogSetpiece(outside)} #collision
-    - { start: 0x6f2680, type: bin, data_only: True, name: Room7-HoleLog(collision)(unused)} #collision
-    - { start: 0x6f279c, type: bin, data_only: True, name: Room9-WaterfallGroundCollision(outside)} #collision
-    - { start: 0x6f28a0, type: bin, data_only: True, name: Room9-WaterfallBacksideCollision(outside)} #collision
-    - { start: 0x6f2b90, type: bin, data_only: True, name: Room9-GroundCollision(outside)} #collision
-    - { start: 0x6f2e08, type: bin, data_only: True, name: Room7-HoleLogBottom(visual)(outside)} #collision
-    - { start: 0x6f3404, type: bin, data_only: True, name: Room3(outside)} #collision
-    - { start: 0x6f3694, type: bin, data_only: True, name: Room4(outside)} #collision
-    - { start: 0x6f39a8, type: bin, data_only: True, name: Room0(outside)} #collision
-    - { start: 0x6f4550, type: bin, data_only: True, name: Room1(outside)} #collision
-    - { start: 0x6f47ec, type: bin, data_only: True, name: Room2(outside)} #collision
-    - { start: 0x6f48c0, type: bin, data_only: True, name: Room5-RockFloor(outside)} #collision
-    - { start: 0x6f4970, type: bin, data_only: True, name: Room5-RockFloor2(outside)} #collision
-    - { start: 0x6f4d14, type: bin, data_only: True, name: Room5(outside)} #collision
-    - { start: 0x6f4e00, type: bin, data_only: True, name: Room32(outside)} #collision
-    - { start: 0x6f5078, type: bin, data_only: True, name: Room52(outside)} #collision
-    - { start: 0x6f52b4, type: bin, data_only: True, name: Room6(outside)} #collision
-    - { start: 0x6f567c, type: bin, data_only: True, name: Room7(outside)} #collision
-    - { start: 0x6f5954, type: bin, data_only: True, name: Room8(outside)} #collision
-    - { start: 0x6f5a40, type: bin, data_only: True, name: Room8-Bridge(outside)} #collision
-    - { start: 0x6f5da8, type: bin, data_only: True, name: Room9(outside)} #collision
-    - { start: 0x6f6470, type: bin, data_only: True, name: Room10(outside)} #collision
-    - { start: 0x6f6f58, type: bin, data_only: True, name: Room11(outside)} #collision
-    - { start: 0x6f7434, type: bin, data_only: True, name: Room0(inside)} #collision
-    - { start: 0x6f8138, type: bin, data_only: True, name: Room1(inside)} #collision
-    - { start: 0x6f847c, type: bin, data_only: True, name: Room2(inside)} #collision
-    - { start: 0x6f8718, type: bin, data_only: True, name: Room3(inside)} #collision
-    - { start: 0x6f89fc, type: bin, data_only: True, name: Room4(inside)} #collision
-    - { start: 0x6f8d64, type: bin, data_only: True, name: Room6(inside)} #collision
-    - { start: 0x6f8f70, type: bin, data_only: True, name: Room7(inside)} #collision
-    - { start: 0x6f92e4, type: bin, data_only: True, name: Room5(inside)} #collision
-    - { start: 0x6f9358, type: bin, data_only: True, name: RailFloorProp1(inside)} #collision
-    - { start: 0x6f93cc, type: bin, data_only: True, name: RailFloorProp2(inside)} #collision
-    - { start: 0x6f9440, type: bin, data_only: True, name: RailFloorProp3(inside)} #collision
-    - { start: 0x6f94b4, type: bin, data_only: True, name: RailFloorProp4(inside)} #collision
-    - { start: 0x6f9528, type: bin, data_only: True, name: RailFloorProp5(inside)} #collision
-    - { start: 0x6f959c, type: bin, data_only: True, name: RailFloorProp6(inside)} #collision
-    - { start: 0x6f9aa8, type: bin, data_only: True, name: BrokenMinecartRail(inside)} #collision
-    - { start: 0x6f9e94, type: bin, data_only: True, name: BrokenMinecartRail2(inside)} #collision
-    - { start: 0x6fa298, type: bin, data_only: True, name: Minecart(inside)} #collision
-    - { start: 0x6fa594, type: bin, data_only: True, name: DoorFrame(inside)} #collision
-    - { start: 0x6fa890, type: bin, data_only: True, name: DoorFrame2(inside)} #collision
-    - { start: 0x6fa904, type: bin, data_only: True, name: FlatPlant(outside)} #collision
-    - { start: 0x6faa08, type: bin, data_only: True, name: Room9-Waterfall(outside)} #collision
-    - { start: 0x6faa94, type: bin, data_only: True, name: Room5-SwampWater(outside)} #collision
-    - { start: 0x6fab20, type: bin, data_only: True, name: Room5-SwampWater2(outside)} #collision
+    - { start: 0x6ee360, type: bin, data_only: True, name: model/JungleLand/lilypad/lilypad.col} #collision
+    - { start: 0x6ee3ec, type: bin, data_only: True, name: model/JungleLand/vine/vine.col} #collisionmodel/JungleLand/lilypad/lilypad.col
+    - { start: 0x6ee670, type: bin, data_only: True, name: model/JungleLand/fallenCrownLog/fallenCrownLog.col} #collision
+    - { start: 0x6ee81c, type: bin, data_only: True, name: model/JungleLand/unkLog/unkLog.col} #collision
+    - { start: 0x6ee998, type: bin, data_only: True, name: model/JungleLand/fallenLogStump/fallenLogStump.col} #collision
+    - { start: 0x6eee74, type: bin, data_only: True, name: model/JungleLand/logTunnel/logTunnel.col} #collision
+    - { start: 0x6eefb4, type: bin, data_only: True, name: model/JungleLand/waterfallRock/waterfallRock.col} #collision
+    - { start: 0x6ef3b8, type: bin, data_only: True, name: model/JungleLand/unk1/unk1.col} #collision
+    - { start: 0x6ef42c, type: bin, data_only: True, name: model/JungleLand/fallBridge/fallBridge.col} #collision
+    - { start: 0x6ef530, type: bin, data_only: True, name: model/JungleLand/ctCrate/ctCrate.col} #collision
+    - { start: 0x6ef634, type: bin, data_only: True, name: model/JungleLand/ctCrate2/ctCrate2.col} #collision
+    - { start: 0x6ef720, type: bin, data_only: True, name: model/JungleLand/walkingPlank/walkingPlank.col} #collision
+    - { start: 0x6ef80c, type: bin, data_only: True, name: model/JungleLand/walkingPlank2/walkingPlank2.col} #collision
+    - { start: 0x6ef8f8, type: bin, data_only: True, name: model/JungleLand/walkingPlank3/walkingPlank3.col} #collision
+    - { start: 0x6ef9e4, type: bin, data_only: True, name: model/JungleLand/walkingPlank4/walkingPlank4.col} #collision
+    - { start: 0x6efa58, type: bin, data_only: True, name: model/JungleLand/singularPlank/singularPlank.col} #collision
+    - { start: 0x6efbbc, type: bin, data_only: True, name: model/JungleLand/roomSixStartPlatform/roomSixStartPlatform.col} #collision
+    - { start: 0x6efca8, type: bin, data_only: True, name: model/JungleLand/cavePlatform/cavePlatform.col} #collision
+    - { start: 0x6efe0c, type: bin, data_only: True, name: model/JungleLand/roomSixCrownPlatform/roomSixCrownPlatform.col} #collision
+    - { start: 0x6effc4, type: bin, data_only: True, name: model/JungleLand/roomSixSidePlatform/roomSixSidePlatform.col} #collision
+    - { start: 0x6f00f8, type: bin, data_only: True, name: model/JungleLand/roomSevenLava/roomSevenLava.col} #collision
+    - { start: 0x6f01cc, type: bin, data_only: True, name: model/JungleLand/roomSevenFloor/roomSevenFloor.col} #collision
+    - { start: 0x6f02a0, type: bin, data_only: True, name: model/JungleLand/roomZeroLava/roomZeroLava.col} #collision
+    - { start: 0x6f0494, type: bin, data_only: True, name: model/JungleLand/roomOnePlatform/roomOnePlatform.col} #collision
+    - { start: 0x6f0688, type: bin, data_only: True, name: model/JungleLand/roomSixCrownEdgePlatform/roomSixCrownEdgePlatform.col} #collision
+    - { start: 0x6f0d20, type: bin, data_only: True, name: model/JungleLand/roomSevenSpinRing/roomSevenSpinRing.col} #collision
+    - { start: 0x6f0e24, type: bin, data_only: True, name: model/JungleLand/woodBlock/woodBlock.col} #collision
+    - { start: 0x6f0eb0, type: bin, data_only: True, name: model/JungleLand/ropes/ropes.col} #collision
+    - { start: 0x6f105c, type: bin, data_only: True, name: model/JungleLand/railOne/railOne.col} #collision
+    - { start: 0x6f1208, type: bin, data_only: True, name: model/JungleLand/railTwo/railTwo.col} #collision
+    - { start: 0x6f13b4, type: bin, data_only: True, name: model/JungleLand/railThree/railThree.col} #collision
+    - { start: 0x6f1560, type: bin, data_only: True, name: model/JungleLand/railFour/railFour.col} #collision
+    - { start: 0x6f170c, type: bin, data_only: True, name: model/JungleLand/railFive/railFive.col} #collision
+    - { start: 0x6f18b8, type: bin, data_only: True, name: model/JungleLand/railSix/railSix.col} #collision
+    - { start: 0x6f1a94, type: bin, data_only: True, name: model/JungleLand/rail/rail.col} #collision
+    - { start: 0x6f1b98, type: bin, data_only: True, name: model/JungleLand/ctCrate3/ctCrate3.col} #collision
+    - { start: 0x6f1c9c, type: bin, data_only: True, name: model/JungleLand/logOne/logOne.col} #collision
+    - { start: 0x6f1d10, type: bin, data_only: True, name: model/JungleLand/fallBridgeSmall2/fallBridgeSmall2.col} #collision
+    - { start: 0x6f1dfc, type: bin, data_only: True, name: model/JungleLand/logSetPiece/logSetPiece.col} #collision
+    - { start: 0x6f2680, type: bin, data_only: True, name: model/JungleLand/holeLog/holeLog.col} #collision
+    - { start: 0x6f279c, type: bin, data_only: True, name: model/JungleLand/waterfallGroundCollision/waterfallGroundCollision.col} #collision
+    - { start: 0x6f28a0, type: bin, data_only: True, name: model/JungleLand/waterfallBacksideCollision/waterfallBacksideCollision.col} #collision
+    - { start: 0x6f2b90, type: bin, data_only: True, name: model/JungleLand/groundCollision/groundCollision.col} #collision
+    - { start: 0x6f2e08, type: bin, data_only: True, name: model/JungleLand/holeLogBottom/holeLogBottom.col} #collision
+    - { start: 0x6f3404, type: bin, data_only: True, name: model/JungleLand/extThree/extThree.col} #collision
+    - { start: 0x6f3694, type: bin, data_only: True, name: model/JungleLand/extFour/extFour.col} #collision
+    - { start: 0x6f39a8, type: bin, data_only: True, name: model/JungleLand/extZero/extZero.col} #collision
+    - { start: 0x6f4550, type: bin, data_only: True, name: model/JungleLand/extOne/extOne.col} #collision
+    - { start: 0x6f47ec, type: bin, data_only: True, name: model/JungleLand/extTwo/extTwo.col} #collision
+    - { start: 0x6f48c0, type: bin, data_only: True, name: model/JungleLand/rockFloor/rockFloor.col} #collision
+    - { start: 0x6f4970, type: bin, data_only: True, name: model/JungleLand/rockFloor2/rockFloor2.col} #collision
+    - { start: 0x6f4d14, type: bin, data_only: True, name: model/JungleLand/extFive/extFive.col} #collision
+    - { start: 0x6f4e00, type: bin, data_only: True, name: model/JungleLand/extThreePartTwo/extThreePartTwo.col} #collision
+    - { start: 0x6f5078, type: bin, data_only: True, name: model/JungleLand/extFivePartTwo/extFivePartTwo.col} #collision
+    - { start: 0x6f52b4, type: bin, data_only: True, name: model/JungleLand/extSix/extSix.col} #collision
+    - { start: 0x6f567c, type: bin, data_only: True, name: model/JungleLand/extSeven/extSeven.col} #collision
+    - { start: 0x6f5954, type: bin, data_only: True, name: model/JungleLand/extEight/extEight.col} #collision
+    - { start: 0x6f5a40, type: bin, data_only: True, name: model/JungleLand/extEightBridge/extEightBridge.col} #collision
+    - { start: 0x6f5da8, type: bin, data_only: True, name: model/JungleLand/extNine/extNine.col} #collision
+    - { start: 0x6f6470, type: bin, data_only: True, name: model/JungleLand/extTen/extTen.col} #collision
+    - { start: 0x6f6f58, type: bin, data_only: True, name: model/JungleLand/extEleven/extEleven.col} #collision
+    - { start: 0x6f7434, type: bin, data_only: True, name: model/JungleLand/intZero/intZero.col} #collision
+    - { start: 0x6f8138, type: bin, data_only: True, name: model/JungleLand/intOne/intOne.col} #collision
+    - { start: 0x6f847c, type: bin, data_only: True, name: model/JungleLand/intTwo/intTwo.col} #collision
+    - { start: 0x6f8718, type: bin, data_only: True, name: model/JungleLand/intThree/intThree.col} #collision
+    - { start: 0x6f89fc, type: bin, data_only: True, name: model/JungleLand/intFour/intFour.col} #collision
+    - { start: 0x6f8d64, type: bin, data_only: True, name: model/JungleLand/intSix/intSix.col} #collision
+    - { start: 0x6f8f70, type: bin, data_only: True, name: model/JungleLand/intSeven/intSeven.col} #collision
+    - { start: 0x6f92e4, type: bin, data_only: True, name: model/JungleLand/intFive/intFive.col} #collision
+    - { start: 0x6f9358, type: bin, data_only: True, name: model/JungleLand/railFloorOne/railFloorOne.col} #collision
+    - { start: 0x6f93cc, type: bin, data_only: True, name: model/JungleLand/singleRailTrack/singleRailTrack.col} #collision
+    - { start: 0x6f9440, type: bin, data_only: True, name: model/JungleLand/singleRailTrack2/singleRailTrack2.col} #collision
+    - { start: 0x6f94b4, type: bin, data_only: True, name: model/JungleLand/branchRail/branchRail.col} #collision
+    - { start: 0x6f9528, type: bin, data_only: True, name: model/JungleLand/turnRail/turnRail.col} #collision
+    - { start: 0x6f959c, type: bin, data_only: True, name: model/JungleLand/singleRailTrack3/singleRailTrack3.col} #collision
+    - { start: 0x6f9aa8, type: bin, data_only: True, name: model/JungleLand/brokenMinecartRail/brokenMinecartRail.col} #collision
+    - { start: 0x6f9e94, type: bin, data_only: True, name: model/JungleLand/brokenMinecartRail2/brokenMinecartRail2.col} #collision
+    - { start: 0x6fa298, type: bin, data_only: True, name: model/JungleLand/minecart/minecart.col} #collision
+    - { start: 0x6fa594, type: bin, data_only: True, name: model/JungleLand/doorFrame/doorFrame.col} #collision
+    - { start: 0x6fa890, type: bin, data_only: True, name: model/JungleLand/doorFrame2/doorFrame2.col} #collision
+    - { start: 0x6fa904, type: bin, data_only: True, name: model/JungleLand/fernPlant/fernPlant.col} #collision
+    - { start: 0x6faa08, type: bin, data_only: True, name: model/JungleLand/waterfall/waterfall.col} #collision
+    - { start: 0x6faa94, type: bin, data_only: True, name: model/JungleLand/water/water.col} #collision
+    - { start: 0x6fab20, type: bin, data_only: True, name: model/JungleLand/water2/water2.col} #collision
     - { start: 0x6FAB40, type: mtx, data_only: True, name: }
-    
+
     #0D0D0D000D0D0D
     - start: 0x6FAB80
       name: rockGolem
@@ -2144,13 +2144,13 @@ segments:
         type: .data
         subalign: 8
         subsegments:
-          - { start: 0x87F640, type: mtx, data_only: True, name: }
-          - { start: 0x87F680, type: bin, data_only: True, name: }
+          - { start: 0x87F640, type: mtx, data_only: True, name: model/Global/cannon/cannon}
+          - { start: 0x87F680, type: bin, data_only: True, name: model/Global/cannon/cannon}
           - { start: 0x87F888, type: mtx, data_only: True, name: }
           - { start: 0x87F8C8, type: bin, data_only: True, name: }
-          - [0x87F8D0, rgba16, img/Global/cannonHole.rgba16, 32, 32]
-          - [0x8800D8, rgba16, img/Global/cannonBarrel.rgba16, 32, 64]
-          - [0x8810E0, rgba16, img/Global/black.rgba16, 32, 32]
+          - [0x87F8D0, rgba16, model/Global/cannon/cannonHole.rgba16, 32, 32]
+          - [0x8800D8, rgba16, model/Global/cannon/cannonBarrel.rgba16, 32, 64]
+          - [0x8810E0, rgba16, model/Global/cannon/black.rgba16, 32, 32]
           - { start: 0x8818E0, type: gfx, data_only: True, name: }
 
       - start: 0x881C08
@@ -2160,11 +2160,11 @@ segments:
         subsegments:
           - { start: 0x881C08, type: vtx, data_only: True, name: model/Global/unkWood/unkWood}
           - { start: 0x882068, type: mtx, data_only: True, name: model/Global/unkWood/unkWood}
-          - [0x8820B0, rgba16, img/Global/woodWithBolt.rgba16, 32, 32]
-          - [0x8828B8, rgba16, img/Global/darkWoodWithBolt.rgba16, 32, 32]
-          - [0x8830C0, rgba16, img/Global/darkWood.rgba16, 32, 32]
-          - [0x8838C8, rgba16, img/Global/lightWood.rgba16, 32, 32]
-          - [0x8840D0, rgba16, img/Global/midWood.rgba16, 32, 32]
+          - [0x8820B0, rgba16, model/Global/unkWood/woodWithBolt.rgba16, 32, 32]
+          - [0x8828B8, rgba16, model/Global/unkWood/darkWoodWithBolt.rgba16, 32, 32]
+          - [0x8830C0, rgba16, model/Global/unkWood/darkWood.rgba16, 32, 32]
+          - [0x8838C8, rgba16, model/Global/unkWood/lightWood.rgba16, 32, 32]
+          - [0x8840D0, rgba16, model/Global/unkWood/midWood.rgba16, 32, 32]
           - { start: 0x8848D0, type: gfx, data_only: True, name: model/Global/unkWood/unkWood}
 
       - start: 0x885058
@@ -2175,7 +2175,6 @@ segments:
           - { start: 0x885058, type: vtx, data_only: True, name: model/Global/unk/unk}
           - { start: 0x885238, type: mtx, data_only: True, name: model/Global/unk/unk}
           - { start: 0x885278, type: gfx, data_only: True, name: model/Global/unk/unk}
-         
       - start: 0x8855E0
         name: unk2    #winding thing
         type: .data
@@ -2184,44 +2183,882 @@ segments:
           - { start: 0x8855E0, type: vtx, data_only: True, name: model/Global/unk2/unk2}
           - { start: 0x885760, type: mtx, data_only: True, name: model/Global/unk2/unk2}
           - { start: 0x8857A0, type: gfx, data_only: True, name: model/Global/unk2/unk2}
-
       - start: 0x885900
-        name: 
+        name: unk40
         type: .data
         subalign: 8
         subsegments:
-          - { start: 0x885900, type: vtx, data_only: True, name: }
-          - { start: 0x885940, type: mtx, data_only: True, name: }
-          - [0x885988, bin]
-      - [0x8865C0, ci4,     img/Global/yellowBrickWall.ci4, 32, 32]
-      - [0x8867C8, palette, img/Global/yellowBrickWall.ci4]
+          - { start: 0x885900, type: vtx, data_only: True, name: model/Global/unk40/unk40}
+          - { start: 0x885940, type: mtx, data_only: True, name: model/Global/unk40/unk40}
+          - [0x885980, bin]
+          - [0x885988, ia8, model/Global/unk40/shadow.ia8, 40, 40]
+          - { start: 0x885fc8, type: gfx, data_only: True, name: model/Global/unk40/unk40}
+          - { start: 0x886148, type: bin, data_only: True, name: model/Global/unk40/unk40.col}
+        
+      - [0x8865b8, bin]
+
+      - [0x8865C0, ci4,     img/Global/brownBrickWall.ci4, 32, 32]
+      - [0x8867C0, bin]
+      - [0x8867C8, palette, img/Global/brownBrickWall.ci4]
       - [0x8869C8, bin]
+
       - [0x8869D0, ci4,     img/Global/sandAgain.ci4, 64, 64]
       - [0x8871D0, bin]
       - [0x8871D8, palette, img/Global/sandAgain.ci4]
-      - [0x8871F8, bin]
+      - [0x8873d8, bin]
+
       - [0x8873E0, i4,      img/Global/gravel.i4, 64, 64]
+      - [0x887BE0, bin]
+
       - [0x887BE8, i4,      img/Global/wall.i4, 64, 16]
-      - [0x887DF0, ia4,     img/Global/poler.ia4, 32, 32]
-      - [0x887FF8, i4,      img/Gobal/rockerr.i4, 64, 64]
+      - [0x887De8, bin]
+
+      - [0x887DF0, ia4,     img/Global/gateGray.ia4, 32, 32]
+      - [0x887FF0, bin]
+
+      - [0x887FF8, i4,      img/Global/dcRockFloor.i4, 64, 64]
       - [0x8887F8, bin]
-      - [0x888800, ci4,     img/Gobal/thatButAgain.ci4, 64, 64]
-      - [0x889008, palette, img/Gobal/thatButAgain.ci4]
+
+      - [0x888800, ci4,     img/Global/dcRockFloor.ci4, 64, 64]
+      - [0x889000, bin]
+      - [0x889008, palette, img/Global/dcRockFloor.ci4]
       - [0x889208, bin]
 
+      - [0x889210, i4, img/Global/smallBrickWall.i4, 24, 32]
+      - [0x889390, bin]
+
+      - [0x889398, ci4, img/Global/longWoodTopper.ci4, 32, 32]
+      - [0x889598, bin]
+      - [0x8895a0, palette, img/Global/longWoodTopper.ci4]
+      - [0x8897a0, bin]
+
+      - [0x8897a8, ci4, img/Global/longWood.ci4, 16, 128]
+      - [0x889ba8, bin]
+      - [0x889bb0, palette, img/Global/longWood.ci4]
+      - [0x889db0, bin]
+
+      - [0x889db8, ci4, img/Global/yellowBrickWall.ci4, 64, 64]
+      - [0x88a5b8, bin]
+      - [0x88a5c0, palette, img/Global/yellowBrickWall.ci4]
+      - [0x88a7c0, bin]
+
+      - [0x88a7c8, i4, img/Global/bigBrickWall2.i4, 64, 64]
+      - [0x88afc8, bin]
+
+      - [0x88afd0, i4, img/Global/bigBrickWall.i4, 64, 64]
+      - [0x88b7d0, bin]
+
+      - [0x88b7d8, ci4, img/Global/waterKinda.ci4, 32, 32]
+      - [0x88B9D8, bin]
+      - [0x88b9e0, palette, img/Global/waterKinda.ci4]
+      - [0x88bbe0, bin]
+
+      - [0x88bbe8, ci4, img/Global/brickWall2.ci4, 32, 32]
+      - [0x88bde8, bin]
+      - [0x88bdf0, palette, img/Global/brickWall2.ci4]
+      - [0x88bff0, bin]
+
+      - [0x88bff8, i4, img/Global/unk12.i4, 32, 32]
+      - [0x88c1f8, bin]
+
+      - [0x88c200, ci4, img/Global/goldStrip.ci4, 16, 16]
+      - [0x88c280, bin]
+      - [0x88c288, palette, img/Global/goldStrip.ci4]
+      - [0x88c488, bin]
+
+      - [0x88c490, i4, img/Global/antMural4.i4, 64, 64]
+      - [0x88cc90, bin]
+
+      - [0x88cc98, i4, img/Global/antMural3.i4, 64, 64]
+      - [0x88d498, bin]
+
+      - [0x88d4a0, i4, img/Global/antMural2.i4, 64, 64]
+      - [0x88DCA0, bin]
+
+      - [0x88dca8, i4, img/Global/antMural1.i4, 128, 128]
+      - [0x88FCA8, bin]
+
+      - [0x88fcb0, i4, img/Global/brickWall.i4, 32, 32]
+      - [0x88feb0, bin]
+
+      - [0x88feb8, i4, img/Global/strip2.i4, 16, 16]
+      - [0x88ff38, bin]
+
+      - [0x88ff40, ci4, img/Global/lavaSolid.ci4, 64, 64]
+      - [0x890740, bin]
+      - [0x890748, palette, img/Global/lavaSolid.ci4]
+      - [0x890948, bin]
+
+      - [0x890950, ia4, img/Global/frame.ia4, 64, 64]
+      - [0x891150, bin]
+
+      - [0x891158, i4, img/Global/squares.i4, 32, 32]
+      - [0x891358, bin]
+
+      - [0x891360, i4, img/Global/metalPlate.i4, 32, 32]
+      - [0x891560, bin]
+
+      - [0x891568, i4, img/Global/factoryPlates.i4, 64, 64]
+      - [0x891d68, bin]
+
+      - [0x891d70, i4, img/Global/steelPlate.i4, 64, 64]
+      - [0x892570, bin]
+
+      - [0x892578, i4, img/Global/metalPlates.i4, 64, 64]
+      - [0x892d78, bin]
+
+      - [0x892d80, i4, img/Global/ballGround.i4, 32, 32]
+      - [0x892f80, bin]
+
+      - [0x892f88, i4, img/Global/cube.i4, 64, 64]
+      - [0x893788, bin]
+
+      - [0x893790, i4, img/Global/hexComb.i4, 32, 32]
+      - [0x893990, bin]
+
+      - [0x893998, i8, img/Global/hexCombFade.i8, 32, 64]
+      - [0x894198, bin]
+
+      - [0x8941a0, i4, img/Global/brokenCube.i4, 64, 64]
+      - [0x8949a0, bin]
+
+      - [0x8949a8, ci4, img/Global/klTILE.ci4, 32, 32]
+      - [0x894ba8, bin]
+      - [0x894bb0, palette, img/Global/klTILE.ci4]
+
+      - [0x894db0, ci8, img/Global/gateCompressed.ci8, 32, 32]
+      - [0x8951B0, palette, img/Global/gateCompressed.ci8]
+      - [0x8953b0, bin]
+
+      - [0x8953b8, ci4, img/Global/strip.ci4, 16, 16]
+      - [0x895438, bin]
+      - [0x895440, palette, img/Global/strip.ci4]
+      - [0x895640, bin]
+
+      - [0x895648, ci4, img/Global/chocoKidsLabel.ci4, 64, 16]
+      - [0x895848, bin]
+      - [0x895850, palette, img/Global/chocoKidsLabel.ci4]
+      - [0x895a50, bin]
+
+      - [0x895a58, ci4, img/Global/justBlack.ci4, 32, 32]
+      - [0x895c58, bin]
+      - [0x895c60, palette, img/Global/justBlack.ci4]
+      - [0x895e60, bin]
+
+      - [0x895e68, ci4, img/Global/cracker.ci4, 32, 32]
+      - [0x896068, bin]
+      - [0x896070, palette, img/Global/cracker.ci4]
+      - [0x896270, bin]
+
+      - [0x896278, ci4, img/Global/KLThing1.ci4, 32, 32]
+      - [0x896478, bin]
+      - [0x896480, palette, img/Global/KLThing1.ci4]
+      - [0x896680, bin]
+
+      - [0x896688, ci4, img/Global/KLFloor3.ci4, 64, 64]
+      - [0x896e88, bin]
+      - [0x896e90, palette, img/Global/KLFloor3.ci4]
+      - [0x897090, bin]
+
+      - [0x897098, ci4, img/Global/KLFloor2.ci4, 64, 64]
+      - [0x897898, bin]
+      - [0x8978a0, palette, img/Global/KLFloor2.ci4]
+      - [0x897aa0, bin]
+
+      - [0x897aa8, ci4, img/Global/waferSide.ci4, 32, 32]
+      - [0x897ca8, bin]
+      - [0x897cb0, palette, img/Global/waferSide.ci4]
+      - [0x897eb0, bin]
+
+      - [0x897eb8, ci8, img/Global/chocoKIDS.ci8, 128, 16]
+      - [0x8986b8, bin]
+      - [0x8986c0, palette, img/Global/chocoKIDS.ci8]
+      - [0x8988c0, bin]
+
+      - [0x8988c8, ci4, img/Global/sandwSide.ci4, 32, 32]
+      - [0x898ac8, bin]
+      - [0x898ad0, palette, img/Global/sandwSide.ci4]
+      - [0x898cd0, bin]
+
+      - [0x898cd8, ci4, img/Global/giftSide.ci4, 32, 32]
+      - [0x898ed8, bin]
+      - [0x898ee0, palette, img/Global/giftSide.ci4]
+      - [0x8990e0, bin]
+
+      - [0x8990e8, ci4, img/Global/giftTop.ci4, 32, 32]
+      - [0x8992e8, bin]
+      - [0x8992f0, palette, img/Global/giftTop.ci4]
+      - [0x8994f0, bin]
+
+      - [0x8994f8, ci8, img/Global/blueBrickFade.ci8, 32, 32]
+      - [0x8998f8, bin]
+      - [0x899900, palette, img/Global/blueBrickFade.ci8]
+      - [0x899b00, bin]
+
+      - [0x899b08, ci8, img/Global/rainbow.ci8, 64, 16]
+      - [0x899f08, bin]
+      - [0x899f10, palette, img/Global/rainbow.ci8]
+      - [0x89a110, bin]
+
+      - [0x89a118, ci4, img/Global/blueBrick.ci4, 32, 32]
+      - [0x89a318, bin]
+      - [0x89a320, palette, img/Global/blueBrick.ci4]
+      - [0x89a520, bin]
+
+      - [0x89a528, ci4, img/Global/orangeBrick.ci4, 32, 32]
+      - [0x89a728, bin]
+      - [0x89a730, palette, img/Global/orangeBrick.ci4]
+      - [0x89a930, bin]
+
+      - [0x89a938, ci4, img/Global/orangeLego.ci4, 32, 32]
+      - [0x89ab38, bin]
+      - [0x89ab40, palette, img/Global/orangeLego.ci4]
+      - [0x89ad40, bin]
+
+      - [0x89ad48, ci4, img/Global/blueLego.ci4, 32, 32]
+      - [0x89af48, bin]
+      - [0x89af50, palette, img/Global/blueLego.ci4]
+
+      - [0x89B150, ci8, img/Global/ropeChroma.ci8, 32, 32]
+      - [0x89B550, palette, img/Global/ropeChroma.ci8]
+      - [0x89b750, bin]
+
+      - [0x89b758, ci4, img/Global/pebbles.ci4, 64, 64]
+      - [0x89bf58, bin]
+      - [0x89bf60, palette, img/Global/pebbles.ci4]
+      - [0x89c160, bin]
+
+      - [0x89c168, rgba16, img/Global/chain2.rgba16, 32, 32]
+      - [0x89c968, bin]
+
+      - [0x89c970, rgba16, img/Global/chain1.rgba16, 32, 32]
+      - [0x89D170, bin]
+      
+      - [0x89D178, ci4, img/Global/DCSmallTiles.ci4, 32, 32]
+      - [0x89d378, bin]
+      - [0x89d380, palette, img/Global/DCSmallTiles.ci4]
+      - [0x89d580, bin]
+
+      - [0x89d588, ci4, img/Global/DCSandFloor.ci4, 64, 64]
+      - [0x89DD88, bin]
+      - [0x89DD90, palette, img/Global/DCSandFloor.ci4]
+      - [0x89df90, bin]
+
+      - [0x89df98, ci4, img/Global/dcTHING2.ci4, 64, 64]
+      - [0x89e798, bin]
+      - [0x89e7a0, palette, img/Global/dcTHING2.ci4]
+      - [0x89E9A0, bin]
+
       - [0x89E9A8, ci4, img/Global/jlText3.ci4, 64, 64]
+      - [0x89f1a8, bin]
       - [0x89F1B0, palette, img/Global/jlText3.ci4]
       - [0x89f3b0, bin]
+
+      - [0x89f3b8, ci4, img/Global/DCBricks.ci4, 64, 64]
+      - [0x89fbb8, bin]
+      - [0x89fbc0, palette, img/Global/DCBricks.ci4]
+      - [0x89fdc0, bin]
+
+      - [0x89fdc8, ci4, img/Global/DCFloor2.ci4, 64, 64]
+      - [0x8a05c8, bin]
+      - [0x8a05d0, palette, img/Global/DCFloor2.ci4]
+      - [0x8a07d0, bin]
+
+      - [0x8a07d8, ci4, img/Global/DCWall3.ci4, 32, 32]
+      - [0x8a09d8, bin]
+      - [0x8a09e0, palette, img/Global/DCWall3.ci4]
+      - [0x8a0be0, bin]
+
+      - [0x8a0be8, ci4, img/Global/DCWall2.ci4, 16, 16]
+      - [0x8a0c68, bin]
+      - [0x8a0c70, palette, img/Global/DCWall2.ci4]
+      - [0x8a0e70, bin]
+
+      - [0x8a0e78, ci4, img/Global/DCWall1.ci4, 16, 32]
+      - [0x8a0f78, bin]
+      - [0x8a0f80, palette, img/Global/DCWall1.ci4]
+      - [0x8a1180, bin]
+
+      - [0x8a1188, ci4, img/Global/DCThing3.ci4, 32, 32]
+      - [0x8a1388, bin]
+      - [0x8a1390, palette, img/Global/DCThing3.ci4]
+      - [0x8a1590, bin]
+
+      - [0x8a1598, ci4, img/Global/DCThing2.ci4, 32, 32]
+      - [0x8a1798, bin]
+      - [0x8a17a0, palette, img/Global/DCThing2.ci4]
+      - [0x8a19a0, bin]
+
+      - [0x8a19a8, ci4, img/Global/DCThing1.ci4, 32, 32]
+      - [0x8a1ba8, bin]
+      - [0x8a1bb0, palette, img/Global/DCThing1.ci4]
+      - [0x8a1db0, bin]
+
+      - [0x8a1db8, ci8, img/Global/DCSandWallFadeUp.ci8, 32, 64]
+      - [0x8a25b8, bin]
+      - [0x8a25c0, palette, img/Global/DCSandWallFadeUp.ci8]
+      - [0x8a27c0, bin]
+
+      - [0x8a27c8, ci4, img/Global/GCThing1.ci4, 32, 32]
+      - [0x8a29c8, bin]
+      - [0x8a29d0, palette, img/Global/GCThing1.ci4]
+      - [0x8a2bd0, bin]
+
+      - [0x8a2bd8, ci4, img/Global/DCTiles.ci4, 64, 64]
+      - [0x8a33d8, bin]
+      - [0x8a33e0, palette, img/Global/DCTiles.ci4]
+      - [0x8a35e0, bin]
+
+      - [0x8a35e8, ci4, img/Global/DCFloor.ci4, 64, 64]
+      - [0x8a3de8, bin]
+      - [0x8a3df0, palette, img/Global/DCFloor.ci4]
+      - [0x8a3ff0, bin]
+
+      - [0x8a3ff8, rgba16, img/Global/rope.rgba16, 32, 32]
+      - [0x8A47F8, bin]
+
+      - [0x8A4800, ci4, img/Global/ropeConnector.ci4, 32, 16]
+      - [0x8a4900, bin]
+      - [0x8a4908, palette, img/Global/ropeConnector.ci4]
+      - [0x8a4b08, bin]
+
+      - [0x8a4b10, ci4, img/Global/bigLog.ci4, 32, 64]
+      - [0x8a4f10, bin]
+      - [0x8a4f18, palette, img/Global/bigLog.ci4]
+      - [0x8a5118, bin]
+
+      - [0x8a5120, ci4, img/Global/sander.ci4, 32, 32]
+      - [0x8a5320, bin]
+      - [0x8a5328, palette, img/Global/sander.ci4]
+      - [0x8a5528, bin]
+
+      - [0x8a5530, ci4, img/Global/jllogTop.ci4, 64, 64]
+      - [0x8a5d30, bin]
+      - [0x8a5d38, palette, img/Global/jllogTop.ci4]
+      - [0x8a5f38, bin]
+
+      - [0x8a5f40, ci4, img/Global/jlLog.ci4, 128, 32]
+      - [0x8a6740, bin]
+      - [0x8a6748, palette, img/Global/jlLog.ci4]
+      - [0x8a6948, bin]
+
       - [0x8A6950, ci4, img/Global/jlText1.ci4, 64, 64]
       - [0x8A7158, palette, img/Global/jlText1.ci4]
       - [0x8a7358, bin]
+
+      - [0x8a7360, rgba16, img/Global/gate.rgba16, 32, 32]
+      - [0x8a7b60, bin]
+
+      - [0x8a7b68, ci8, img/Global/poleWood.ci8, 32, 64]
+      - [0x8a8368, bin]
+      - [0x8a8370, palette, img/Global/poleWood.ci8]
+      - [0x8a8570, bin]
+
+      - [0x8a8578, ci4, img/Global/Darkwood.ci4, 32, 32]
+      - [0x8a8778, bin]
+      - [0x8a8780, palette, img/Global/Darkwood.ci4]
+      - [0x8a8980, bin]
+
+      - [0x8a8988, ci4, img/Global/wood.ci4, 32, 32]
+      - [0x8a8b88, bin]
+      - [0x8a8b90, palette, img/Global/wood.ci4]
+      - [0x8a8d90, bin]
+
+      - [0x8a8d98, ci4, img/Global/GCFloorboard.ci4, 32, 64]
+      - [0x8a9198, bin]
+      - [0x8a91a0, palette, img/Global/GCFloorboard.ci4]
+      - [0x8a93a0, bin]
+
+      - [0x8a93a8, ci4, img/Global/GCTiles.ci4, 64, 64]
+      - [0x8a9ba8, bin]
+      - [0x8a9bb0, palette, img/Global/GCTiles.ci4]
+      - [0x8a9db0, bin]
+
+      - [0x8a9db8, ci4, img/Global/GCWall2.ci4, 64, 64]
+      - [0x8aa5b8, bin]
+      - [0x8aa5c0, palette, img/Global/GCWall2.ci4]
+      - [0x8aa7c0, bin]
+
+      - [0x8aa7c8, ia4, img/Global/windows.ia4, 64, 64]
+      - [0x8aafc8, bin]
+
+      - [0x8aafd0, ci4, img/Global/water.ci4, 64, 64]
+      - [0x8ab7d0, bin]
+      - [0x8ab7d8, palette, img/Global/water.ci4]
+      - [0x8ab9d8, bin]
+
+      - [0x8ab9e0, ci4, img/Global/GCWall.ci4, 32, 32]
+      - [0x8abbe0, bin]
+      - [0x8abbe8, palette, img/Global/GCWall.ci4]
+      - [0x8abde8, bin]
+
+      - [0x8abdf0, ci4, img/Global/GCBigCabinet.ci4, 64, 64]
+      - [0x8ac5f0, bin]
+      - [0x8ac5f8, palette, img/Global/GCBigCabinet.ci4]
+      - [0x8ac7f8, bin]
+
+      - [0x8ac800, ci4, img/Global/GCWood.ci4, 64, 64]
+      - [0x8ad000, bin]
+      - [0x8ad008, palette, img/Global/GCWood.ci4]
+      - [0x8ad208, bin]
+
+      - [0x8ad210, ci4, img/Global/sandFadeTop.ci4, 32, 64]
+      - [0x8ad610, bin]
+      - [0x8ad618, palette, img/Global/sandFadeTop.ci4]
+      - [0x8ad818, bin]
+
+      - [0x8ad820, ci4, img/Global/JLMountain.ci4, 32, 64]
+      - [0x8adc20, bin]
+      - [0x8adc28, palette, img/Global/JLMountain.ci4]
+      - [0x8ade28, bin]
+
+      - [0x8ade30, ci8, img/Global/JLCaveFadeTop.ci8, 32, 64]
+      - [0x8ae630, bin]
+      - [0x8ae638, palette, img/Global/JLCaveFadeTop.ci8]
+      - [0x8ae838, bin]
+
+      - [0x8ae840, ci4, img/Global/jlText5.ci4, 64, 64]
+      - [0x8af040, bin]
+      - [0x8af048, palette, img/Global/jlText5.ci4]
+      - [0x8AF248, bin]
+
       - [0x8AF250, ci4, img/Global/jlText2.ci4, 64, 64]
       - [0x8AFA58, palette, img/Global/jlText2.ci4]
       - [0x8afc58, bin]
+
       - [0x8AFC60, ci4, img/Global/jlText4.ci4, 64, 64]
       - [0x8B0468, palette, img/Global/jlText4.ci4]
       - [0x8b0668, bin]
-  - [0x8b06a0, bin]
+  
+      - [0x8b0670, ci8, img/Global/JLCave.ci8, 32, 64]
+      - [0x8b0e70, bin]
+      - [0x8b0e78, palette, img/Global/JLCave.ci8]
+      - [0x8b1078, bin]
+
+      - [0x8b1080, ci8, img/Global/JLCaveFade.ci8, 32, 64]
+      - [0x8b1880, bin]
+      - [0x8b1888, palette, img/Global/JLCaveFade.ci8]
+      - [0x8b1a88, bin]
+
+      - [0x8b1a90, ci4, img/Global/BLRedYellowPlate.ci4, 32, 32]
+      - [0x8b1c90, bin]
+      - [0x8b1c98, palette, img/Global/BLRedYellowPlate.ci4]
+      - [0x8b1e98, bin]
+
+      - [0x8b1ea0, ci8, img/Global/KLOrangeBrickFade.ci8, 32, 32]
+      - [0x8b22a0, bin]
+      - [0x8b22a8, palette, img/Global/KLOrangeBrickFade.ci8]
+      - [0x8b24a8, bin]
+
+      - [0x8b24b0, ci8, img/Global/KLCrackerFade.ci8, 32, 32]
+      - [0x8b28b0, bin]
+      - [0x8b28b8, palette, img/Global/KLCrackerFade.ci8]
+      - [0x8b2ab8, bin]
+
+      - [0x8b2ac0, ci4, img/Global/KLFloor.ci4, 64, 64]
+      - [0x8b32c0, bin]
+      - [0x8b32c8, palette, img/Global/KLFloor.ci4]
+      - [0x8b34c8, bin]
+
+      - [0x8b34d0, ci8, img/Global/woodFade.ci8, 32, 32] #i think they compiled the image part wrong, the palette is for a ci4 lmfao
+      - [0x8b38d0, bin]
+      - [0x8b38d8, palette, img/Global/woodFade.ci8]
+      - [0x8b3ad8, bin]
+
+      - [0x8b3ae0, ci8, img/Global/cabinetFade.ci8, 32, 64]
+      - [0x8b42e0, bin]
+      - [0x8b42e8, palette, img/Global/cabinetFade.ci8]
+      - [0x8b44e8, bin]
+
+      - [0x8b44f0, ci4, img/Global/cabinet.ci4, 32, 32]
+      - [0x8b46f0, bin]
+      - [0x8b46f8, palette, img/Global/cabinet.ci4]
+      - [0x8b48f8, bin]
+
+      - [0x8b4900, ia8, img/Global/fogFade.ia8, 16, 96]
+
+      - start: 0x8b4f00
+        name: unk3
+        type: .data
+        subalign: 8
+        subsegments:
+          - { start: 0x8b4f00, type: vtx, data_only: True, name: model/Global/unk3/unk3}
+          - { start: 0x8b4f80, type: mtx, data_only: True, name: model/Global/unk3/unk3}
+          - { start: 0x8b4fc0, type: gfx, data_only: True, name: model/Global/unk3/unk3}
+          - { start: 0x8b5078, type: bin, data_only: True, name: model/Global/unk3/unk3.col}
+      - start: 0x8b5198
+        name: unk4
+        type: .data
+        subalign: 8
+        subsegments:
+          - { start: 0x8b5198, type: vtx, data_only: True, name: model/Global/unk4/unk4}
+          - { start: 0x8b51d8, type: mtx, data_only: True, name: model/Global/unk4/unk4}
+          - { start: 0x8b5218, type: gfx, data_only: True, name: model/Global/unk4/unk4}
+          - { start: 0x8b5280, type: bin, data_only: True, name: model/Global/unk4/unk4.col}
+      - start: 0x8b52f8
+        name: unk5
+        type: .data
+        subalign: 8
+        subsegments:
+          - { start: 0x8b52f8, type: vtx, data_only: True, name: model/Global/unk5/unk5}
+          - { start: 0x8b5338, type: mtx, data_only: True, name: model/Global/unk5/unk5}
+          - { start: 0x8b5378, type: gfx, data_only: True, name: model/Global/unk5/unk5}
+          - { start: 0x8b53e0, type: bin, data_only: True, name: model/Global/unk5/unk5.col}
+      - start: 0x8b5458
+        name: unk6
+        type: .data
+        subalign: 8
+        subsegments:
+          - { start: 0x8b5458, type: vtx, data_only: True, name: model/Global/unk6/unk6}
+          - { start: 0x8b5498, type: mtx, data_only: True, name: model/Global/unk6/unk6}
+          - { start: 0x8b54D8, type: gfx, data_only: True, name: model/Global/unk6/unk6}
+          - { start: 0x8b5540, type: bin, data_only: True, name: model/Global/unk6/unk6.col}
+      - start: 0x8b55b8
+        name: unk7
+        type: .data
+        subalign: 8
+        subsegments:
+          - { start: 0x8b55b8, type: vtx, data_only: True, name: model/Global/unk7/unk7}
+          - { start: 0x8b55f8, type: mtx, data_only: True, name: model/Global/unk7/unk7}
+          - { start: 0x8b5638, type: gfx, data_only: True, name: model/Global/unk7/unk7}
+          - { start: 0x8b56a0, type: bin, data_only: True, name: model/Global/unk7/unk7.col}
+      - start: 0x8b5718
+        name: unk8
+        type: .data
+        subalign: 8
+        subsegments:
+          - { start: 0x8b5718, type: vtx, data_only: True, name: model/Global/unk8/unk8}
+          - { start: 0x8b57b8, type: mtx, data_only: True, name: model/Global/unk8/unk8}
+          - { start: 0x8b57f8, type: gfx, data_only: True, name: model/Global/unk8/unk8}
+          - { start: 0x8b59c0, type: bin, data_only: True, name: model/Global/unk8/unk8.col}
+      - start: 0x8b5a68
+        name: unk9
+        type: .data
+        subalign: 8
+        subsegments:
+          - { start: 0x8b5a68, type: mtx, data_only: True, name: model/Global/unk9/unk9}
+          - { start: 0x8b5aA8, type: gfx, data_only: True, name: model/Global/unk9/unk9}
+          - { start: 0x8b5bf8, type: bin, data_only: True, name: model/Global/unk9/unk9.col}
+      - start: 0x8b5cc0
+        name: unkA
+        type: .data
+        subalign: 8
+        subsegments:
+          - { start: 0x8b5cc0, type: vtx, data_only: True, name: model/Global/unkA/unkA}
+          - { start: 0x8b5e00, type: mtx, data_only: True, name: model/Global/unkA/unkA}
+          - { start: 0x8b5e40, type: gfx, data_only: True, name: model/Global/unkA/unkA}
+          - { start: 0x8b6228, type: bin, data_only: True, name: model/Global/unkA/unkA.col}
+      - start: 0x8b6330
+        name: unkB
+        type: .data
+        subalign: 8
+        subsegments:
+          - { start: 0x8b6330, type: vtx, data_only: True, name: model/Global/unkB/unkB}
+          - { start: 0x8b6470, type: mtx, data_only: True, name: model/Global/unkB/unkB}
+          - [0x8b64B0, bin]
+          - [0x8b64B8, i4, model/Global/unkB/unkB1.i4, 32, 64]
+          - [0x8b68b8, bin]
+          - [0x8b68c0, i4, model/Global/unkB/unkB2.i4, 16, 16]
+          - { start: 0x8b6940, type: gfx, data_only: True, name: model/Global/unkB/unkB}
+          - { start: 0x8b6bf8, type: bin, data_only: True, name: model/Global/unkB/unkB.col}
+      - start: 0x8b6d00
+        name: unkC
+        type: .data
+        subalign: 8
+        subsegments:
+          - { start: 0x8b6d00, type: vtx, data_only: True, name: model/Global/unkC/unkC}
+          - { start: 0x8b6e00, type: mtx, data_only: True, name: model/Global/unkC/unkC}
+          - [0x8b6e40, bin]
+          - [0x8b6e48, i4, model/Global/unkC/unkC.i4, 32, 32]
+          - { start: 0x8b7048, type: gfx, data_only: True, name: model/Global/unkC/unkC}
+          - { start: 0x8b7200, type: bin, data_only: True, name: model/Global/unkC/unkC.col}
+      - start: 0x8b72f0
+        name: ALSpinDoor
+        type: .data
+        subalign: 8
+        subsegments:
+          - { start: 0x8b72f0, type: vtx, data_only: True, name: model/Global/ALSpinDoor/ALSpinDoor}
+          - { start: 0x8b73f0, type: mtx, data_only: True, name: model/Global/ALSpinDoor/ALSpinDoor}
+          - [0x8b7430, bin]
+          - [0x8b7438, ci4, model/Global/ALSpinDoor/ALSpinDoor.ci4, 32, 32]
+          - [0x8b7638, bin]
+          - [0x8b7640, palette, model/Global/ALSpinDoor/ALSpinDoor.ci4]
+          - { start: 0x8b7840, type: gfx, data_only: True, name: model/Global/ALSpinDoor/ALSpinDoor}
+          - { start: 0x8b7a58, type: bin, data_only: True, name: model/Global/ALSpinDoor/ALSpinDoor.col}
+      - start: 0x8b7b48
+        name: unkD
+        type: .data
+        subalign: 8
+        subsegments:
+          - { start: 0x8b7b48, type: vtx, data_only: True, name: model/Global/unkD/unkD}
+          - { start: 0x8b7b88, type: mtx, data_only: True, name: model/Global/unkD/unkD}
+          - { start: 0x8b7bC8, type: gfx, data_only: True, name: model/Global/unkD/unkD}
+          - { start: 0x8b7cd0, type: bin, data_only: True, name: model/Global/unkD/unkD.col}
+      - start: 0x8b7d48
+        name: BLLava
+        type: .data
+        subalign: 8
+        subsegments:
+          - { start: 0x8b7d48, type: vtx, data_only: True, name: model/Global/BLLava/BLLava}
+          - { start: 0x8b7d88, type: mtx, data_only: True, name: model/Global/BLLava/BLLava}
+          - [0x8b7dC8, bin]
+          - [0x8b7dD0, ci4, model/Global/BLLava/BLLava.ci4, 64, 64]
+          - [0x8b85d0, bin]
+          - [0x8b85d8, palette, model/Global/BLLava/BLLava.ci4]
+          - { start: 0x8b87d8, type: gfx, data_only: True, name: model/Global/BLLava/BLLava}
+          - { start: 0x8b88e0, type: bin, data_only: True, name: model/Global/BLLava/BLLava.col}
+      - start: 0x8b8958
+        name: BLLava2
+        type: .data
+        subalign: 8
+        subsegments:
+          - { start: 0x8b8958, type: vtx, data_only: True, name: model/Global/BLLava2/BLLava2}
+          - { start: 0x8b8998, type: mtx, data_only: True, name: model/Global/BLLava2/BLLava2}
+          - [0x8b89D8, bin]
+          - [0x8b89E0, ci4, model/Global/BLLava2/BLLava2.ci4, 64, 64]
+          - [0x8b91e0, bin]
+          - [0x8b91e8, palette, model/Global/BLLava2/BLLava2.ci4]
+          - { start: 0x8b93e8, type: gfx, data_only: True, name: model/Global/BLLava2/BLLava2}
+          - { start: 0x8b94f0, type: bin, data_only: True, name: model/Global/BLLava2/BLLava2.col}
+      - start: 0x8b9568
+        name: BLLava3
+        type: .data
+        subalign: 8
+        subsegments:
+          - { start: 0x8b9568, type: vtx, data_only: True, name: model/Global/BLLava3/BLLava3}
+          - { start: 0x8b95A8, type: mtx, data_only: True, name: model/Global/BLLava3/BLLava3}
+          - [0x8b95E8, bin]
+          - [0x8b95F0, ci4, model/Global/BLLava3/BLLava3.ci4, 64, 64]
+          - [0x8b9df0, bin]
+          - [0x8b9df8, palette, model/Global/BLLava3/BLLava3.ci4]
+          - { start: 0x8b9ff8, type: gfx, data_only: True, name: model/Global/BLLava3/BLLava3}
+          - { start: 0x8ba100, type: bin, data_only: True, name: model/Global/BLLava3/BLLava3.col}
+      - start: 0x8ba178
+        name: BLLava4
+        type: .data
+        subalign: 8
+        subsegments:
+          - { start: 0x8ba178, type: vtx, data_only: True, name: model/Global/BLLava4/BLLava4}
+          - { start: 0x8ba1B8, type: mtx, data_only: True, name: model/Global/BLLava4/BLLava4}
+          - [0x8ba1F8, bin]
+          - [0x8ba200, ci4, model/Global/BLLava4/BLLava4.ci4, 64, 64]
+          - [0x8baa00, bin]
+          - [0x8baa08, palette, model/Global/BLLava4/BLLava4.ci4]
+          - { start: 0x8bac08, type: gfx, data_only: True, name: model/Global/BLLava4/BLLava4}
+          - { start: 0x8bad10, type: bin, data_only: True, name: model/Global/BLLava4/BLLava4.col}
+      - start: 0x8bad88
+        name: BLLava5
+        type: .data
+        subalign: 8
+        subsegments:
+          - { start: 0x8bad88, type: vtx, data_only: True, name: model/Global/BLLava5/BLLava5}
+          - { start: 0x8badC8, type: mtx, data_only: True, name: model/Global/BLLava5/BLLava5}
+          - [0x8bae08, bin]
+          - [0x8bae10, ci4, model/Global/BLLava5/BLLava5.ci4, 64, 64]
+          - [0x8bb610, bin]
+          - [0x8bb618, palette, model/Global/BLLava5/BLLava5.ci4]
+          - { start: 0x8bb818, type: gfx, data_only: True, name: model/Global/BLLava5/BLLava5}
+          - { start: 0x8bb920, type: bin, data_only: True, name: model/Global/BLLava5/BLLava5.col}
+      - start: 0x8bb998
+        name: BLLava6
+        type: .data
+        subalign: 8
+        subsegments:
+          - { start: 0x8bb998, type: vtx, data_only: True, name: model/Global/BLLava6/BLLava6}
+          - { start: 0x8bb9D8, type: mtx, data_only: True, name: model/Global/BLLava6/BLLava6}
+          - [0x8bbA18, bin]
+          - [0x8bbA20, ci4, model/Global/BLLava6/BLLava6.ci4, 64, 64]
+          - [0x8bc220, bin]
+          - [0x8bc228, palette, model/Global/BLLava6/BLLava6.ci4]
+          - { start: 0x8bc428, type: gfx, data_only: True, name: model/Global/BLLava6/BLLava6}
+          - { start: 0x8bc530, type: bin, data_only: True, name: model/Global/BLLava6/BLLava6.col}
+      - start: 0x8bc5a8
+        name: BLLava7
+        type: .data
+        subalign: 8
+        subsegments:
+          - { start: 0x8bc5a8, type: vtx, data_only: True, name: model/Global/BLLava7/BLLava7}
+          - { start: 0x8bc5E8, type: mtx, data_only: True, name: model/Global/BLLava7/BLLava7}
+          - [0x8bc628, bin]
+          - [0x8bc630, ci4, model/Global/BLLava7/BLLava7.ci4, 64, 64]
+          - [0x8bce30, bin]
+          - [0x8bce38, palette, model/Global/BLLava7/BLLava7.ci4]
+          - { start: 0x8bd038, type: gfx, data_only: True, name: model/Global/BLLava7/BLLava7}
+          - { start: 0x8bd140, type: bin, data_only: True, name: model/Global/BLLava7/BLLava7.col}
+      - start: 0x8bd1b8
+        name: BLLava8
+        type: .data
+        subalign: 8
+        subsegments:
+          - { start: 0x8bd1b8, type: vtx, data_only: True, name: model/Global/BLLava8/BLLava8}
+          - { start: 0x8bd1f8, type: mtx, data_only: True, name: model/Global/BLLava8/BLLava8}
+          - [0x8bd238, bin]
+          - [0x8bd240, ci4, model/Global/BLLava8/BLLava8.ci4, 64, 64]
+          - [0x8bda40, bin]
+          - [0x8bda48, palette, model/Global/BLLava8/BLLava8.ci4]
+          - { start: 0x8bdc48, type: gfx, data_only: True, name: model/Global/BLLava8/BLLava8}
+          - { start: 0x8bdd50, type: bin, data_only: True, name: model/Global/BLLava8/BLLava8.col}
+      - start: 0x8bddc8
+        name: unkE
+        type: .data
+        subalign: 8
+        subsegments:
+          - { start: 0x8bddc8, type: vtx, data_only: True, name: model/Global/unkE/unkE}
+          - { start: 0x8bde08, type: mtx, data_only: True, name: model/Global/unkE/unkE}
+          - { start: 0x8bde48, type: gfx, data_only: True, name: model/Global/unkE/unkE}
+          - { start: 0x8bdf20, type: bin, data_only: True, name: model/Global/unkE/unkE.col}
+      - start: 0x8bdf98
+        name: unkF
+        type: .data
+        subalign: 8
+        subsegments:
+          - { start: 0x8bdf98, type: vtx, data_only: True, name: model/Global/unkF/unkF}
+          - { start: 0x8be0d8, type: mtx, data_only: True, name: model/Global/unkF/unkF}
+          - { start: 0x8be118, type: gfx, data_only: True, name: model/Global/unkF/unkF}
+          - { start: 0x8be390, type: bin, data_only: True, name: model/Global/unkF/unkF.col}
+      - start: 0x8be498
+        name: unk10
+        type: .data
+        subalign: 8
+        subsegments:
+          - { start: 0x8be498, type: vtx, data_only: True, name: model/Global/unk10/unk10}
+          - { start: 0x8be538, type: mtx, data_only: True, name: model/Global/unk10/unk10}
+          - { start: 0x8be578, type: gfx, data_only: True, name: model/Global/unk10/unk10}
+          - { start: 0x8be770, type: bin, data_only: True, name: model/Global/unk10/unk10.col}
+      - start: 0x8be818
+        name: Door1
+        type: .data
+        subalign: 8
+        subsegments:
+          - { start: 0x8be818, type: vtx, data_only: True, name: model/Global/Door1/Door1}
+          - { start: 0x8be918, type: mtx, data_only: True, name: model/Global/Door1/Door1}
+          - [0x8be958, bin]
+          - [0x8be960, ci4, model/Global/Door1/Door1.ci4, 64, 64]
+          - [0x8bf160, bin]
+          - [0x8bf168, palette, model/Global/Door1/Door1.ci4]
+          - { start: 0x8bf368, type: gfx, data_only: True, name: model/Global/Door1/Door1}
+          - { start: 0x8bf580, type: bin, data_only: True, name: model/Global/Door1/Door1.col}
+      - start: 0x8bf670
+        name: unk12
+        type: .data
+        subalign: 8
+        subsegments:
+          - { start: 0x8bf670, type: vtx, data_only: True, name: model/Global/unk12/unk12}
+          - { start: 0x8bf710, type: mtx, data_only: True, name: model/Global/unk12/unk12}
+          - { start: 0x8bf750, type: gfx, data_only: True, name: model/Global/unk12/unk12}
+          - { start: 0x8bf948, type: bin, data_only: True, name: model/Global/unk12/unk12.col}
+      - start: 0x8bf9f0
+        name: unk13
+        type: .data
+        subalign: 8
+        subsegments:
+          - { start: 0x8bf9f0, type: vtx, data_only: True, name: model/Global/unk13/unk13}
+          - { start: 0x8bfa30, type: mtx, data_only: True, name: model/Global/unk13/unk13}
+          - { start: 0x8bfa70, type: gfx, data_only: True, name: model/Global/unk13/unk13}
+          - { start: 0x8bfad8, type: bin, data_only: True, name: model/Global/unk13/unk13.col}
+      - start: 0x8bfb50
+        name: unk14
+        type: .data
+        subalign: 8
+        subsegments:
+          - { start: 0x8bfb50, type: vtx, data_only: True, name: model/Global/unk14/unk14}
+          - { start: 0x8bfb90, type: mtx, data_only: True, name: model/Global/unk14/unk14}
+          - { start: 0x8bfbD0, type: gfx, data_only: True, name: model/Global/unk14/unk14}
+          - { start: 0x8bfc38, type: bin, data_only: True, name: model/Global/unk14/unk14.col}
+      - start: 0x8bfcb0
+        name: unk15
+        type: .data
+        subalign: 8
+        subsegments:
+          - { start: 0x8bfcb0, type: vtx, data_only: True, name: model/Global/unk15/unk15}
+          - { start: 0x8bfd50, type: mtx, data_only: True, name: model/Global/unk15/unk15}
+          - { start: 0x8bfd90, type: gfx, data_only: True, name: model/Global/unk15/unk15}
+          - { start: 0x8bff88, type: bin, data_only: True, name: model/Global/unk15/unk15.col}
+      - start: 0x8c0030
+        name: unk16
+        type: .data
+        subalign: 8
+        subsegments:
+          - { start: 0x8c0030, type: vtx, data_only: True, name: model/Global/unk16/unk16}
+          - { start: 0x8c00d0, type: mtx, data_only: True, name: model/Global/unk16/unk16}
+          - { start: 0x8c0110, type: gfx, data_only: True, name: model/Global/unk16/unk16}
+          - { start: 0x8c0308, type: bin, data_only: True, name: model/Global/unk16/unk16.col}
+      - start: 0x8c03b0
+        name: unk17
+        type: .data
+        subalign: 8
+        subsegments:
+          - { start: 0x8c03b0, type: vtx, data_only: True, name: model/Global/unk17/unk17}
+          - { start: 0x8c0530, type: mtx, data_only: True, name: model/Global/unk17/unk17}
+          - { start: 0x8c0570, type: gfx, data_only: True, name: model/Global/unk17/unk17}
+          - { start: 0x8c0818, type: bin, data_only: True, name: model/Global/unk17/unk17.col}
+      - start: 0x8c0998
+        name: unk18
+        type: .data
+        subalign: 8
+        subsegments:
+          - { start: 0x8c0998, type: vtx, data_only: True, name: model/Global/unk18/unk18}
+          - { start: 0x8c0a38, type: mtx, data_only: True, name: model/Global/unk18/unk18}
+          - { start: 0x8c0a78, type: gfx, data_only: True, name: model/Global/unk18/unk18}
+          - { start: 0x8c0c70, type: bin, data_only: True, name: model/Global/unk18/unk18.col}
+      - start: 0x8c0d18
+        name: unk19
+        type: .data
+        subalign: 8
+        subsegments:
+          - { start: 0x8c0d18, type: vtx, data_only: True, name: model/Global/unk19/unk19}
+          - { start: 0x8c0db8, type: mtx, data_only: True, name: model/Global/unk19/unk19}
+          - { start: 0x8c0df8, type: gfx, data_only: True, name: model/Global/unk19/unk19}
+          - { start: 0x8c0ff0, type: bin, data_only: True, name: model/Global/unk19/unk19.col}
+      - start: 0x8c1098
+        name: unk1A
+        type: .data
+        subalign: 8
+        subsegments:
+          - { start: 0x8c1098, type: vtx, data_only: True, name: model/Global/unk1A/unk1A}
+          - { start: 0x8c1138, type: mtx, data_only: True, name: model/Global/unk1A/unk1A}
+          - { start: 0x8c1178, type: gfx, data_only: True, name: model/Global/unk1A/unk1A}
+          - { start: 0x8c1370, type: bin, data_only: True, name: model/Global/unk1A/unk1A.col}
+      - start: 0x8c1418
+        name: unk1B
+        type: .data
+        subalign: 8
+        subsegments:
+          - { start: 0x8c1418, type: vtx, data_only: True, name: model/Global/unk1B/unk1B}
+          - { start: 0x8c14b8, type: mtx, data_only: True, name: model/Global/unk1B/unk1B}
+          - { start: 0x8c14f8, type: gfx, data_only: True, name: model/Global/unk1B/unk1B}
+          - { start: 0x8c16f0, type: bin, data_only: True, name: model/Global/unk1B/unk1B.col}
+      - start: 0x8c1798
+        name: unk1C
+        type: .data
+        subalign: 8
+        subsegments:
+          - { start: 0x8c1798, type: vtx, data_only: True, name: model/Global/unk1C/unk1C}
+          - { start: 0x8c18f8, type: mtx, data_only: True, name: model/Global/unk1C/unk1C}
+          - { start: 0x8c1938, type: gfx, data_only: True, name: model/Global/unk1C/unk1C}
+          - { start: 0x8c1bd0, type: bin, data_only: True, name: model/Global/unk1C/unk1C.col}
+      - start: 0x8c1d50
+        name: unk1D
+        type: .data
+        subalign: 8
+        subsegments:
+          - { start: 0x8c1d50, type: vtx, data_only: True, name: model/Global/unk1D/unk1D}
+          - { start: 0x8c1e90, type: mtx, data_only: True, name: model/Global/unk1D/unk1D}
+          - { start: 0x8c1ed0, type: gfx, data_only: True, name: model/Global/unk1D/unk1D}
+          - { start: 0x8c2108, type: bin, data_only: True, name: model/Global/unk1D/unk1D.col}
+      - start: 0x8c2258
+        name: unk1E
+        type: .data
+        subalign: 8
+        subsegments:
+          - { start: 0x8c2258, type: vtx, data_only: True, name: model/Global/unk1E/unk1E}
+          - { start: 0x8c2358, type: mtx, data_only: True, name: model/Global/unk1E/unk1E}
+          - { start: 0x8c2398, type: gfx, data_only: True, name: model/Global/unk1E/unk1E}
+          - { start: 0x8c25b0, type: bin, data_only: True, name: model/Global/unk1E/unk1E.col}
+
+
+  - [0x8c26a0, bin] #endDL command from rgb2c
+          
   - [0x8c26a8, ia8, img/symbols.ia8, 464, 16]
   - [0x8c43a8, bin] #endDL command from rgb2c
 
@@ -2656,7 +3493,7 @@ segments:
   - [0x944610, ci8, img/fireSprite.ci8, 240, 48]
   - [0x947310, palette, img/fireSprite.ci8]
 
-  - [0x947510, ci8, img/litCandle.ci8, 128, 42]
+  - [0x947510, ci8, img/litCandle.ci8, 96, 56]
   - [0x948a10, palette, img/litCandle.ci8]
   - [0x948c10, bin] #endDL command from rgb2c
 
