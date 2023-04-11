@@ -99,6 +99,7 @@ extern u8 D_800FEBC8;
 extern u8 D_800FEBCC;
 extern f32 D_800FEBD0;
 extern Vec4f D_800FEBD4;
+extern u8 D_800FEDC0[225][8]; //some data RE each sound effect
 extern s32 D_800FF5D0;
 extern s32 D_800FF5E4;
 extern s32 D_800FF5E8;
@@ -182,6 +183,7 @@ extern u64 gMainThreadStack[1024]; // thread3
 extern OSThread D_80117FF0; //unused thread.
 extern u64 D_801181A0[512]; //unused Stack
 extern void* D_801191A0;
+extern OSMesgQueue D_801192E8;
 extern OSMesg gPiManMsgs[50];
 extern OSMesgQueue gPiManMgsQ;
 extern s32 gControllerNo;
@@ -221,6 +223,11 @@ extern s32 D_801FF634;
 extern s32 D_801FF710;
 extern OSMesgQueue D_801FF750;
 extern OSIoMesg D_801FF7F0;
+extern OSTask* gAudioTasks[2];
+extern ALGlobals D_801FF810;
+extern ALSynConfig D_801FF860;
+extern ALSeqpConfig gBGMplayerCfg;
+extern u32 gCurrentStageTime; //measured as ticks (30/sec)
 extern OSIoMesg gAudioIOMsgs[30];
 extern s32 D_801FFB78;
 extern unk_D_801FFB90 D_801FFB90;
@@ -285,7 +292,9 @@ extern u32 D_800FF8A0;
 extern s32 D_800FF8A4;
 extern s32 D_800FF8A8;
 extern s32 D_800FF8AC;
+extern s16 D_80100E08[17][5]; //coords and behavior for "Game over" letters
 extern f64 D_8010F410;
+extern void* D_80100F28[10]; // coords and text for stage names
 extern char* D_80100FD4[18];
 extern f32 D_801B316C;
 extern char D_8011078C[];

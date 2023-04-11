@@ -13,6 +13,7 @@ extern char D_8010EEF4[];
 extern char D_8010EE68[];
 extern char D_8010EE7C[];
 extern char D_8010EE88[];
+extern char D_8010EB8C[];
 extern CTTask* D_801FCA0C;
 extern s16 D_80100D64[];
 extern s32 D_801FCA08;
@@ -63,7 +64,7 @@ s32 func_800A7A18(u32 arg0);
 s32 RecordTime_ParseToSecs(s32*);
 void func_8008E9AC(s32, s32, s32, s32, void*);
 void func_800A97E4(CTTask*);
-
+void func_800A50B4(CTTask*);
 //jump table
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/videoproc.s")
 
@@ -508,7 +509,7 @@ void func_8008C1C8(s32* arg0) {
 
     if ((gSelectedCharacters[0] == CHARA_WHITE) && (gameModeCurrent == 0)) {
         if ((D_80176F58 == 0) && (D_801B1EEC != 0)) {
-            if ((gNoHit != 0) && (gCurrentStage != 8)) {
+            if ((gNoHit != 0) && (gCurrentStage != STAGE_TRAINING)) {
                 setTextGradient(255, 255, 0, 255, 255, 0, 0, 255, 255, 255, 0, 255, 255, 0, 0, 255);
                 func_8005AFD0(276.0f, 204.0f, 0.0f, 0.0f, 1.0f, 16.0f, 16.0f, 0.0f, 75);
             }
@@ -729,7 +730,13 @@ void func_8008EF78(CTTask* arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008F050.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008F114.s")
+void func_8008F114(void){
+    if(MQ_IS_FULL(&D_801192E8)){
+        osRecvMesg(&D_801192E8,NULL,1);
+    }
+    osRecvMesg(&D_801192E8,NULL,1);
+    func_8008C494();
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008F16C.s")
 
@@ -746,7 +753,31 @@ void func_8008EF78(CTTask* arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/ParseIntToBase10.s")
 //parse int to hex string
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/parseIntToHex.s")
-
+/* jtbl_8010f41c
+u32 func_8008FB4C(u32 x){
+    switch (x){
+        case 0:
+        return 0;
+        case 1:
+        return 1;
+        case 3:
+        return 3;
+        case 4:
+        return 4;
+        case 5:
+        return 5;
+        case 6:
+        return 6;
+        case 7:
+        return 7;
+        case 8:
+        return 8;
+        case 9:
+        return 9;
+        default:
+        return 0;
+    }
+}*/
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008FB4C.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008FBC8.s")
@@ -1411,7 +1442,16 @@ void func_800A2B9C(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A4EC8.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A5060.s")
+CTTask* func_800A5060(void){
+  CTTask* t =func_8008CF6C(1,100,NULL);
+  if(!t){
+    DummiedPrintf(D_8010EB8C);
+    while(1){;}
+  }
+  t->function=func_800A50B4;
+  return t;
+}
+
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A50B4.s")
 
@@ -1924,7 +1964,7 @@ void func_800A9728(CTTask* arg0) {
         if (gameModeCurrent != GAME_MODE_DEMO_2) {
             func_8008E9AC(0x20, 0, 0, 0, &arg0->unk_64);
         }
-        arg0->function = &func_800A97E4;
+        arg0->function = func_800A97E4;
     }
 }
 

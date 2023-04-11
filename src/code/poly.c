@@ -9,7 +9,6 @@ extern s32 D_80236974;
 extern Collision gZoneCollisions[];
 extern Collider D_80236980[128];
 extern s32 D_8020D8F4;
-extern s32 gCurrentStage;
 extern f64 D_801106A0;
 extern f64 D_801106A8;
 
@@ -345,7 +344,7 @@ void SetCameraParameters(void) {
     Vec3f sp3C;
     Vec3f sp30;
 
-    if ((gCurrentStage == 5) && (currentZone == 0xE)) {
+    if ((gCurrentStage == STAGE_GHOST) && (currentZone == 0xE)) { //billiard room?
         func_800D6864(gPlayerActors, gTongues, gCamera, &sp3C, &sp30);
     } else if ((D_80236974 == 1) && (D_8020D8F4 == 0)) {
         func_800D3854(gPlayerActors, gTongues, gCamera, &sp3C, &sp30, 0);
@@ -365,7 +364,7 @@ void SetCameraParameters(void) {
         cam->f4.x = sp30.x;
         cam->f4.y = sp30.y;
         cam->f4.z = sp30.z;
-        if (gCurrentStage != 7) {
+        if (gCurrentStage != STAGE_VS) {
             break;
         }
     }

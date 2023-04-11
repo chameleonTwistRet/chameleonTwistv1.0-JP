@@ -287,7 +287,7 @@ void func_8002CD94(s32 arg0) {
 void func_8002CDBC(contMain* arg0) {
     s32 i;
 
-    if (gCurrentStage != 7) {
+    if (gCurrentStage != STAGE_VS) {
         D_80168D78[0] = 0;
         return;
     }

@@ -3,7 +3,6 @@
 #include "PR/os_internal.h"
 #include "osint.h"
 
-extern OSTimer* __osTimerList;
 
 int osSetTimer(OSTimer *t, OSTime countdown, OSTime interval, OSMesgQueue *mq, OSMesg msg) {
     OSTime time;

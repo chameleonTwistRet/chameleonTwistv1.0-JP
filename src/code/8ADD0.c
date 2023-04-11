@@ -166,8 +166,8 @@ s32 isBossID(s32 arg0) {
     return ret;
 }
 
-s32 isBossActor(s32* arg0) {
-    return isBossID(*arg0);
+s32 isBossActor(Actor* actor) {
+    return isBossID(actor->actorID);
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B2308.s")
@@ -390,20 +390,20 @@ void func_800B40FC(void) {
 }
 
 s32 StageCarrotAvailable(s32 arg0) {
-    if (arg0 >= 6) {
-        return 0;
+    if (arg0 > STAGE_GHOST) { //not a stage with a carrot
+        return FALSE;
     }
-    if (gCarrotBitfield & (1 << arg0)) {
-        return 0;
+    if (gCarrotBitfield & (1 << arg0)) { //carrot already collected
+        return FALSE;
     }
-    return 1;
+    return TRUE;
 }
 
 void AddCarrot(s32 arg0) {
     s32 i;
 
-    if (arg0 < 6) {
-        gCarrotBitfield = gCarrotBitfield | (1 << arg0);
+    if (arg0 <= STAGE_GHOST) {
+        gCarrotBitfield |= (1 << arg0);
         gTotalCarrots = 0;
         for (i = 0; i < 6; i++) {
             if (gCarrotBitfield & (1 << i)) {
