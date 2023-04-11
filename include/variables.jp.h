@@ -184,6 +184,9 @@ extern OSThread D_80117FF0; //unused thread.
 extern u64 D_801181A0[512]; //unused Stack
 extern void* D_801191A0;
 extern OSMesgQueue D_801192E8;
+extern u64 D_80119320[128]; //D_800f04e0[].dram_stack
+extern u64 D_80119720[8192];//D_800f04e0[].output_buff
+extern Gfx D_80129720[10];
 extern OSMesg gPiManMsgs[50];
 extern OSMesgQueue gPiManMgsQ;
 extern s32 gControllerNo;

@@ -725,5 +725,26 @@ typedef struct func_80069858_temp_v0{
     /* 0x0C */ s32 unkC;
 } func_80069858_temp_v0; //sizeof 0x10
 
+typedef struct graphicStruct {
+    Gfx dlist[0x1000];
+    Mtx perspective;
+    Mtx lookAt;
+    Mtx playerTranslate[4];
+    Mtx playerRotate[4];
+    Mtx playerScale[4];
+    Mtx reticuleTranslate[4][6];
+    Mtx reticuleRotate[4][6];
+    Mtx reticuleScale[4][6];
+    Mtx toungeTranslate[4][33];
+    Mtx toungeRotate[4][33];
+    Mtx toungeScale[4][33];
+    Mtx actorTanslate[64];
+    Mtx actorRotate[64];
+    Mtx actorScale[64];
+    Mtx unk12880[256];
+    Mtx colliderTransforms[128][3]; // may be wrong.
+    u8 unk1c880[0x2000];
+    Mtx unk1e880[74];
+} graphicStruct;
 
 #endif

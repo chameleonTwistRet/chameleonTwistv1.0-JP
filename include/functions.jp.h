@@ -344,7 +344,7 @@ s32 func_800836FC(f32, f32, s32, s32);
 void func_80083F08(void);
 void func_80083F10(void);
 void func_80084788(void);
-s32 func_800849D4(s32);
+Gfx* func_800849D4(Gfx*);
 void func_800849DC(s32 arg0, Tongue* playerTongue, playerActor* player, Camera* unk);
 s32 videoproc(void);
 void func_80084F80(OSTask*, s32);

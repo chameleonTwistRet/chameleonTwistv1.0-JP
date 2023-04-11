@@ -1312,7 +1312,7 @@ void func_80083F10(void) {
 //https://decomp.me/scratch/tLaoO
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80084884.s")
 
-s32 func_800849D4(s32 arg0) {
+Gfx* func_800849D4(Gfx* arg0) {
     return arg0;
 }
 

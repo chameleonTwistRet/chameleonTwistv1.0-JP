@@ -714,9 +714,9 @@ void func_8008CCF4(void) {
 
 s32 func_8008EC90(void) {
     if (D_801B3540 == 1) {
-        return 0;
+        return FALSE;
     }
-    return 1;
+    return TRUE;
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008ECB8.s")
@@ -1250,9 +1250,9 @@ void func_8009C2FC(CTTask* arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009D0EC.s")
 
-//#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009D19C.s")
+
 void func_8009D19C(s32 arg0) {
-    if (func_8008EC90() != 0) {
+    if (func_8008EC90()) {
         setProcessType(GAME_MODE_TITLE_SCREEN);
     }
 }
@@ -1339,7 +1339,7 @@ void func_800A10E8(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A1EC4.s")
 
-//#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/PrintPerfectCode.s")
+
 char* parseIntToHex(s32, s32, char*);
 extern char D_8010E954[];
 extern s32 perfectCode;

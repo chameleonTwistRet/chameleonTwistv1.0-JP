@@ -5,14 +5,9 @@
 #pragma GLOBAL_ASM("asm/nonmatchings/audio/seq/func_800ECD2C.s")
 
 
-
-typedef struct temp_func_800ECD48 {
-    char unk0[0xc];
-    s32 unkC;
-} temp_func_800ECD48;
-
-s32 func_800ECD48(temp_func_800ECD48* arg0) {
-    return arg0->unkC;
+s32 alSeqGetTicks(ALSeq *seq)
+{
+    return seq->lastTicks;
 }
 
 

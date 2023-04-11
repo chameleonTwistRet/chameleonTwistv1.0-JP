@@ -530,15 +530,15 @@ void func_8002D644(s32 actorIndex, s32 actorID, f32 arg2, f32 arg3, f32 arg4, f3
 #endif
 
 //needs proper match
-s32 Actor_Init(s32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7, f32 arg8, f32 arg9, f32 argA, f32 argB, f32 argC, f32 argD, f32 argE, f32 argF, f32 arg10, f32 arg11, f32 arg12, s32 arg13, s32 arg14, s32 arg15, s32 arg16) {
+s32 Actor_Init(s32 type, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7, f32 arg8, f32 arg9, f32 argA, f32 argB, f32 argC, f32 argD, f32 argE, f32 argF, f32 arg10, f32 arg11, f32 arg12, s32 arg13, s32 arg14, s32 arg15, s32 arg16) {
     s32 index;
     s32* pointer;
 
     pointer = &gActors->actorID;
     index = 0;
     while(1){
-        if (*pointer == 0) {
-            func_8002D644(index, arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, argA, argB, argC, argD, argE, argF, arg10, arg11, arg12, arg13, arg14, arg15, arg16);
+        if (*pointer == Actor_Null) {
+            func_8002D644(index, type, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, argA, argB, argC, argD, argE, argF, arg10, arg11, arg12, arg13, arg14, arg15, arg16);
             gActorCount += 1;
             return index;
         }
@@ -1083,7 +1083,7 @@ void func_8003E30C(Actor* arrowsActor) {
     arrowsActor->unk_10C[0] = (s32) (arrowsActor->position._f32.y / arrowsActor->position._f32.x);
 }
 
-//#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8003E32C.s")
+
 // Elisiah
 void func_8003E32C(Actor* arg0) {                   // unsure if struct is actor
     if (arg0->globalTimer == arg0->unk_10C[0]) {
