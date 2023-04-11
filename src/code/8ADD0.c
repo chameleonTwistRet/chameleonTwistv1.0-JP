@@ -580,7 +580,12 @@ void func_800B6D24(tempStruct* arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BA89C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BA900.s")
+//#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BA900.s")
+// Not a perfect match, but it's close enough
+void func_800BA900(s32 arg0) {
+    Vec3f_Zero(arg0 + 0x3C);
+    func_800B5C60(arg0);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BA92C.s")
 
@@ -783,7 +788,10 @@ const char* GetDirectionName(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C2820.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C29D8.s")
+//#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C29D8.s")
+void func_800C29D8(s32 arg0) {
+    func_800C2670(arg0, gPlayerActors, 1);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C2A00.s")
 
