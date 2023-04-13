@@ -4,7 +4,7 @@ Gfx* func_8002C4E8(graphicStruct*, s32, s32);
 
 
 
-void func_8002CB6C(Gfx*, Gfx*, s32);
+void func_8002CB6C(Gfx*, graphicStruct*, s32);
 void func_8002CBE8(s32);
 void func_8002CDBC(contMain*);
 void func_8004BC48(contMain*);
@@ -298,7 +298,7 @@ void func_8002CE54(void) {
     D_800F066C++;
     func_8002CD94(D_800F066C);
     Controller_StartRead();
-    func_8002CB6C(0, (Gfx*)&gGraphicsList[gFramebufferIndex], gFramebufferIndex);
+    func_8002CB6C(0, &gGraphicsList[gFramebufferIndex], gFramebufferIndex);
     
     for (i = 0; i < 4; i++) {
         Controller_Zero(&sp28[i]);
