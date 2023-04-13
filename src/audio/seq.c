@@ -14,20 +14,20 @@ s32 alSeqGetTicks(ALSeq *seq)
 void func_800ECD50(void) {
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/audio/seq/func_800ECD58.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/audio/seq/readVarLen.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/audio/seq/func_800ECDA4.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/audio/seq/alSeqNextEvent.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/audio/seq/func_800ECF28.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/audio/seq/alSeqNewMarker.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/audio/seq/func_800ED048.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/audio/seq/alSeqSecToTicks.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/audio/seq/func_800ED12C.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/audio/seq/alSeqTicksToSec.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/audio/seq/func_800ED180.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/audio/seq/__alSeqNextDelta.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/audio/seq/func_800ED1D8.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/audio/seq/_read32.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/audio/seq/func_800ED228.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/audio/seq/_read16.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/audio/seq/func_800ED258.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/audio/seq/alSeqNew.s")

@@ -66,7 +66,7 @@ void func_8005171C(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/2C3B0/func_800536D8.s")
 //prints "HURRY!" during MP Battle
-void func_800538D0(void) {
+void Multiplayer_PrintHurry(void) {
     if ((D_80176824 <= 1800) && (D_80176824 > 1710) && ((D_80176824 % 10) < 5)) {
         setTextGradientFromPalette(1);             //"HURRY!"
         PrintTextWrapper(100.0f, 10.0f, 0.0f, 1.0f, D_8010C944, 1);
@@ -87,7 +87,7 @@ void func_800538D0(void) {
 void func_8005423C(void) {
     s32 i;
     for (i = 0; i != 6; i++){
-        func_8006D598(i, 0, 0);
+        setPlayerContextEyes(i, 0, 0);
     };
 }
 
@@ -102,30 +102,30 @@ void func_8005423C(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/2C3B0/func_80054864.s")
 
-void func_8005564C(void) {
-    switch (D_800FFEB8) {
+void Process_Ranking(void) {
+    switch (gGameModeState) {
     case 0:
         D_800FFDF4 = 1;
         D_800FE708 = 0;
         DMAStruct_Print();
         func_800A1EC4();
-        func_80057010(0xD4);
-        func_80057010(0x68);
-        func_80057010(0x69);
-        func_80057010(0x6A);
-        func_80057010(0x6B);
-        func_80057010(0x6C);
-        func_80057010(0x6D);
-        func_80057010(0x6E);
-        func_80057010(0xBD);
-        func_80057010(0xBE);
-        func_80057010(0xBF);
-        func_80057010(0xC0);
-        func_80057010(0xC1);
-        func_80057010(0xC2);
+        loadSprite(0xD4);
+        loadSprite(0x68);
+        loadSprite(0x69);
+        loadSprite(0x6A);
+        loadSprite(0x6B);
+        loadSprite(0x6C);
+        loadSprite(0x6D);
+        loadSprite(0x6E);
+        loadSprite(0xBD);
+        loadSprite(0xBE);
+        loadSprite(0xBF);
+        loadSprite(0xC0);
+        loadSprite(0xC1);
+        loadSprite(0xC2);
         TaskInit();
         D_80168DA0 = 4;
-        D_800FFEB8++;
+        gGameModeState++;
         UseFixedRNGSeed = FALSE;
         D_800FFDF0 = 2;
         func_8008BE14();
@@ -136,7 +136,7 @@ void func_8005564C(void) {
         break;
     case 1:
         func_80072D34();
-        D_800FFEB8++;
+        gGameModeState++;
         func_8008F114();
         break;
     case 2:
@@ -153,7 +153,7 @@ void func_8005564C(void) {
 void func_800557F8(void) {
     s32 i;
 
-    switch (D_800FFEB8) {
+    switch (gGameModeState) {
     case 0:
         D_800FFDF4 = 1;
         DMAStruct_Print();
@@ -163,18 +163,18 @@ void func_800557F8(void) {
             gPlayerActors[i].exists = gPlayerActors[i].active;
         }
 
-        func_80057010(0xCE);
-        func_80057010(0x6E);
-        func_80057010(0xD5);
-        func_8006CB34(0);
-        func_8006CB34(1);
-        func_8006CB34(2);
-        func_8006CB34(3);
-        func_8006CB34(4);
-        func_8006CB34(5);
+        loadSprite(0xCE);
+        loadSprite(0x6E);
+        loadSprite(0xD5);
+        loadPlayerEyes(0);
+        loadPlayerEyes(1);
+        loadPlayerEyes(2);
+        loadPlayerEyes(3);
+        loadPlayerEyes(4);
+        loadPlayerEyes(5);
         TaskInit();
         D_80168DA0 = 4;
-        D_800FFEB8++;
+        gGameModeState++;
         UseFixedRNGSeed = FALSE;
         D_800FFDF0 = 2;
         func_8008BE14();
@@ -184,7 +184,7 @@ void func_800557F8(void) {
         break;
     case 1:
         func_80073090();
-        D_800FFEB8++;
+        gGameModeState++;
         func_8008F114();
         break;
     case 2:
@@ -199,24 +199,24 @@ void func_800557F8(void) {
     func_8008C094();
 }
 
-void func_80055994(void) {
-    switch (D_800FFEB8) {
+void Process_Boot(void) {
+    switch (gGameModeState) {
     case 0:
         D_800FFDF4 = 1;
         DMAStruct_Print();
         func_800A1EC4();
-        func_80057010(94);
+        loadSprite(94);
         TaskInit();
         func_8002E0CC();
-        D_800FFEB8 += 1;
+        gGameModeState += 1;
         UseFixedRNGSeed = FALSE;
         D_800FFDF0 = 2;
         D_801FC9AC = 0;
         func_8008F114();
         break;
     case 1:
-        func_800735A8();
-        D_800FFEB8 += 1;
+        checkControllerRumble();
+        gGameModeState += 1;
         func_8008F114();
         break;
     case 2:
@@ -231,23 +231,23 @@ void func_80055994(void) {
     func_8008C094();
 }
 
-void func_80055AA0(void) {
-    switch (D_800FFEB8) { 
+void Process_SunsoftLogo(void) {
+    switch (gGameModeState) { 
     case 0:
         D_800FFDF4 = 1;
         DMAStruct_Print();
         func_800A1EC4();
-        func_80057010(0xCD);
+        loadSprite(0xCD);
         TaskInit();
         func_8002E0CC();
-        D_800FFEB8++;
+        gGameModeState++;
         UseFixedRNGSeed = FALSE;
         D_800FFDF0 = 2;
         D_801FC9AC = 0;
         break;
     case 1:
         func_80073FD8();
-        D_800FFEB8++;
+        gGameModeState++;
         func_8008F114();
         break;
     case 2:

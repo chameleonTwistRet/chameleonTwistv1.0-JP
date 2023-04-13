@@ -91,9 +91,9 @@ s32 ifPolyBoundIntersectsRect(Poly* poly, Rect* rect) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800CB294.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800CB3A8.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/poly/Shadows_Reset.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800CB470.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/poly/Shadows_Set.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800CB99C.s")
 
@@ -109,9 +109,9 @@ s32 ifPolyBoundIntersectsRect(Poly* poly, Rect* rect) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800CBF54.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800CBFB4.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/poly/Shadows_Draw_AntQueen.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800CC2F4.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/poly/Shadows_Draw.s")
 
 void func_800CC7E0(Vec3f arg0) {
     CalculateAngleOfVector(arg0.x, -arg0.z);

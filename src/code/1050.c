@@ -13,10 +13,7 @@ void func_8004DDE0(void);
 void func_8004E784(contMain*, u32, s32*, contMain*);
 void func_80054864(void);
 
-#define sizeOf800F0668 0x1FB00
-
-
-extern graphicStruct D_80129770[2];
+extern graphicStruct gGraphicsList[2];
 
 extern s32 gFramebufferIndex;
 extern s32 D_800F066C;
@@ -301,7 +298,7 @@ void func_8002CE54(void) {
     D_800F066C++;
     func_8002CD94(D_800F066C);
     Controller_StartRead();
-    func_8002CB6C(0, (Gfx*)&D_80129770[gFramebufferIndex], gFramebufferIndex);
+    func_8002CB6C(0, (Gfx*)&gGraphicsList[gFramebufferIndex], gFramebufferIndex);
     
     for (i = 0; i < 4; i++) {
         Controller_Zero(&sp28[i]);
@@ -338,7 +335,7 @@ void func_8002CE54(void) {
     func_8004DDE0();
     func_80054864();
     var = 1 - gFramebufferIndex;
-    func_8002CCA0(&D_80129770[var], var);
+    func_8002CCA0(&gGraphicsList[var], var);
     func_8002CBE8(gFramebufferIndex);
     gFramebufferIndex = 1 - gFramebufferIndex;
 }

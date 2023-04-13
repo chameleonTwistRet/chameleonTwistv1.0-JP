@@ -32,7 +32,7 @@ typedef struct unk80174880 {
 } unk80174880;
 
 extern unk80174880 D_80174880[];
-extern unk800F73C8 D_800F73C8[230];
+extern unk800F73C8 gSpriteListings[230];
 extern char D_8010CA1C[];
 extern char D_8010CA54[];
 extern Addr D_8C26A0;
@@ -108,10 +108,11 @@ void Controller_ParseJoystick(contMain* arg0) {
         }
     }
 }
-
+//used for Debug function controls
 //https://decomp.me/scratch/rzD9G
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80055E5C.s")
 
+//takes button define
 void func_80055EEC(s32 arg0) {
     func_80055F10(0, arg0);
 }
@@ -239,13 +240,13 @@ s32 free(void* arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80056F48.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80057010.s")
-// s32 func_80057010(s32 arg0) {
+#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/loadSprite.s")
+// s32 loadSprite(s32 arg0) {
 //     s32 dmaSize;
 //     s32 dmaResult;
 //     unk800F73C8* temp_s1;
 
-//     temp_s1 = &D_800F73C8[arg0];
+//     temp_s1 = &gSpriteListings[arg0];
 //     if ((temp_s1->unkC == 8) || (arg0 < 0) || (arg0 >= 0xE6)) {
 //         return 0;
 //     }
@@ -309,17 +310,17 @@ s32 free(void* arg0) {
 //     return 0;
 // }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80057334.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/freeSprite.s")
 
-void func_800573BC(void) {
+void printReset(void) {
     s32 i;
 
     if (D_800FE000 == 0) {
         D_800FDFFC = 0.0f;
-        D_800FDFD0 = -1;
-        D_800FDFD4 = -1;
-        D_800FDFD8 = -1;
-        D_800FDFDC = -1;
+        gPrimRed = -1;
+        gPrimGreen = -1;
+        gPrimBlue = -1;
+        gPrimAlpha = -1;
         D_800FDFF0 = 1.0f;
         D_800FDFE8 = 0;
         D_800FDFEC = 1;
@@ -355,10 +356,10 @@ void func_800573BC(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8005A7CC.s")
 
 void func_8005AFA4(f32 arg0, f32 arg1, f32 arg2, f32 arg3) {
-    func_800573BC();
+    printReset();
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8005AFD0.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/printUISprite.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8005B874.s")
 
@@ -385,7 +386,7 @@ void func_800610A8(void) {
 
 void func_800610B8(void) {
     D_800FE000 = 0;
-    func_800573BC();
+    printReset();
     func_8007E5E8();
 }
 
@@ -419,18 +420,18 @@ void func_80061264(f32 arg0) {
     D_800FDFFC = arg0;
 }
 
-void func_80061270(u8 r, u8 g, u8 b, u8 a) {
-    D_800FDFD0 = r;
-    D_800FDFD4 = g;
-    D_800FDFD8 = b;
-    D_800FDFDC = a;
+void setPrimColor(u8 r, u8 g, u8 b, u8 a) {
+    gPrimRed = r;
+    gPrimGreen = g;
+    gPrimBlue = b;
+    gPrimAlpha = a;
 }
 
-void func_800612A4(s8 arg0, s8 arg1, s8 arg2, s8 arg3) {
-    D_800FDFD0 = arg0;
-    D_800FDFD4 = arg1;
-    D_800FDFD8 = arg2;
-    D_800FDFDC = arg3;
+void setPrimColorCopy(s8 arg0, s8 arg1, s8 arg2, s8 arg3) {
+    gPrimRed = arg0;
+    gPrimGreen = arg1;
+    gPrimBlue = arg2;
+    gPrimAlpha = arg3;
 }
 
 void func_800612D8(f32 arg0) {
@@ -473,7 +474,7 @@ void func_80061394(void) {
     D_800FDFC0[1] = 0;
     D_800FDFC8[0] = 0;
     D_800FDFC8[1] = 0;
-    func_800573BC();
+    printReset();
 }
 //start of functions using "aa1" struct.
 void func_800613D0(aa1* arg0) {
@@ -589,7 +590,7 @@ void func_800629D4(void) {
     D_800FE164 = 0;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_800629E0.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/aa1_HealthBar.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80062D10.s")
 
@@ -700,8 +701,8 @@ void func_800667B4(aa1* arg0) {
     arg0->unk_1C = 1.0f;
 }
 
-void func_800667C4(s8 arg0[5], s32 arg1) {
-    arg0[5] = (s8) arg1;
+void func_800667C4(aa1*arg0, s32 arg1) {
+    arg0->unk5 = (s8) arg1;
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_800667CC.s")
@@ -753,18 +754,18 @@ void func_80069858(aa1* arg0, s32 arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8006A69C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8006A74C.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/Bowling_ResetScore.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8006A7B0.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/Bowling_CountPins.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8006A824.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/Bowling_UpdateScore.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8006AA3C.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/printBowlingScore.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8006AD34.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/Bowling_DrawScoreCard.s")
 
-void func_8006B96C(f32 arg0, s32 arg1, s32 arg2) {
-    aa1* temp_v0 = aa1_Alloc(0, 8, func_8006AD34);
+void aa1_Bowling(f32 arg0, s32 arg1, s32 arg2) {
+    aa1* temp_v0 = aa1_Alloc(0, 8, Bowling_DrawScoreCard);
     d8006266c* temp_v1;
     if (temp_v0 != 0) {
         temp_v1 = temp_v0->unk_38;
@@ -775,14 +776,14 @@ void func_8006B96C(f32 arg0, s32 arg1, s32 arg2) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8006B9D0.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/resetEyeParams.s")
 
-void func_8006BA14(void) {
-    D_800FE4DC = 1;
+void lockEyeChange(void) {
+    gDontChangeEyes = 1;
 }
 
-void func_8006BA24(void) {
-    D_800FE4DC = 0;
+void unlockEyeChange(void) {
+    gDontChangeEyes = 0;
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8006BA30.s")
@@ -803,45 +804,45 @@ void func_8006BA24(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8006CA88.s")
 
-void func_8006CB34(s32 arg0) {
+void loadPlayerEyes(s32 arg0) {
     s32 i;
     s32 var_s0 = (arg0 * 10) + 114;
     
     for(i = 0; i != 10; i++){
-        D_800FE6EC = func_80057010(var_s0);
-        if ((D_800FE6EC) > 0) {
+        gLockContextEyes = loadSprite(var_s0);
+        if ((gLockContextEyes) > 0) {
             break;
         }
         var_s0 += 1;
     }
 }
 
-void func_8006CBA8(s32 arg0) {
+void freePlayerEyes(s32 arg0) {
     s32 i;
     s32 var_s0 = (arg0 * 10) + 114;
 
     for(i = 0; i != 10; i++){
-        func_80057334(var_s0);
+        freeSprite(var_s0);
         var_s0 += 1;
     }
-    D_800FE6EC = 255;
+    gLockContextEyes = 255;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8006CC0C.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/setEyeTexture.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8006CCB0.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/setPlayerEyes.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8006CEEC.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/aa1_PlayerEyeControl.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8006D2FC.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/initPlayerEyeController.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8006D598.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/setPlayerContextEyes.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8006D60C.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/aa1_BossDeadEyes.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8006D688.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/loadBossDeadEyes.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8006D70C.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/setBossDeadEyes.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8006D844.s")
 
@@ -962,13 +963,13 @@ void func_80073090(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_800730E4.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8007320C.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/aa1_checkControllerRumble.s")
 
-void func_800735A8(void) {
+void checkControllerRumble(void) {
     aa1* temp_v0;
     aa1* var_v1;
 
-    temp_v0 = aa1_Alloc(0, 0, &func_8007320C);
+    temp_v0 = aa1_Alloc(0, 0, &aa1_checkControllerRumble);
     var_v1 = temp_v0;
     if (temp_v0 == NULL) {
         setProcessType(GAME_MODE_BOOT);
@@ -1047,9 +1048,9 @@ void setTextGradientFromPalette(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80077688.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80077A80.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/aa1_StageRecordTime.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80077CAC.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/printStageRecordTime.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80077F40.s")
 
@@ -1141,11 +1142,11 @@ void func_8007AC2C(s32* arg0) {
 
 void func_8007AF30(void) {
     func_8007ADDC(0);
-    func_80057010(207);
+    loadSprite(207);
 }
 
 void func_8007AF58(void) {
-    func_80057334(207);
+    freeSprite(207);
     func_8007ADDC(1);
 }
 
@@ -1197,26 +1198,26 @@ void func_8007B518(f32 arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8007BCE0.s")
 
 void func_8007C494(void) {
-    D_800FEA4C = 0;
+    gTrainingState = 0;
     gTrainingRoomTimer = 0;
-    D_800FEB94 = 0;
+    gTrainingStateTmer = 0;
     D_800FEB98 = 1;
     D_800FEB9C = -1;
 }
 
 void func_8007C4C8(void) {
-    D_800FEA4C = 5;
+    gTrainingState = 5;
     gTrainingRoomTimer = 0;
-    D_800FEB94 = 0;
+    gTrainingStateTmer = 0;
     D_800FEB98 = 1;
     D_800FEB9C = -1;
 }
 
 s32 func_8007C500(void) {
-    if (D_800FEA4C == 1) {
+    if (gTrainingState == 1) {
         return 1;
     }
-    else if (D_800FEA4C >= 2) {
+    else if (gTrainingState >= 2) {
         return 2;
     }
     else {
@@ -1240,7 +1241,7 @@ void func_8007DFDC(f32 arg0, f32 arg1, f32 arg2, f32 arg3) {
 
 }
 //prints textbox. arg2= char[3][60]*
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8007DFF0.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/printTextbox.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8007E5E8.s")
 
@@ -1269,10 +1270,10 @@ void func_8007E714(f32 arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8007E720.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/printNumber.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8007F0D8.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8007F974.s")
+//prints number at (x,y) on screen, turns red if negative.
+#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/printNumberWR.s")
+//another "print number on screen" func,exclusive to bowling score card
+#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/PrintNumberBowling.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8007FB60.s")
 

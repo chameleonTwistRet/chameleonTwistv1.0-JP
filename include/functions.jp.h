@@ -33,9 +33,9 @@ s32 func_8002D328(f32, f32);
 s32 func_8002D36C(f32*, f32, f32);
 void func_8002D434(f32*, f32*, f32, f32, f32);
 void func_8002D550(f32*, f32*, f32, f32, f32);
-void func_8002D644(s32, s32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, s32, s32, s32, s32);
+void Actors_Init(s32, s32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, s32, s32, s32, s32);
 s32 Actor_Init(s32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, s32, s32, s32, s32);
-void func_8002E04C(s32, f32, f32, f32);
+void Actor_SpawnAt(s32, f32, f32, f32);
 void func_8002E0CC(void);
 void func_8002F3D4(void);
 void func_8002F528(s32);
@@ -55,21 +55,21 @@ void func_800312FC(Actor*, f32);
 void func_800313BC(s32, f32); //actor kill
 void func_80031518(Actor*);
 void func_80031DB0(playerActor*, Tongue*, s32);
-s32 func_80037504(Actor*);
+s32 isActiveExplosion(Actor*);
 void func_800382F4(Actor*);
 void func_800383A0(void);
 void func_800383C0(Actor*); // Grey Ant Spawner: Elisiah
 void func_800383E4(void);
-void func_80038510(Actor*); // Grey Ant Function: Rainchu and Elisiah
+void ActorInit_AntGrey(Actor*); // Grey Ant Function: Rainchu and Elisiah
 void func_80038574(void);
 void func_80038990(Actor*); // Bullet-Hell Ant Spawner: Elisiah
-void func_80038AE0(Actor*);
+void ActorInit_AntBulletHell(Actor*);
 void func_80038F70(Actor*); // Ant Trio Function: Elisiah
-void func_80039368(Actor*);
-void func_800399A0(Actor*);
-void func_8003A1B0(Actor*); // Green Ant Function: Rainchu and Elisiah
-void func_8003A3F0(Actor*); // Ant Queen Function: Elisiah
-void func_8003B894(Actor*);
+void ActorInit_AntRed(Actor*);
+void ActorInit_AntYellow(Actor*);
+void ActorInit_AntGreen(Actor*); // Green Ant Function: Rainchu and Elisiah
+void ActorInit_AntQueen(Actor*); // Ant Queen Function: Elisiah
+void ActorInit_AntQueenDrone(Actor*);
 void func_8003BA38(Actor*); // White Bomb Snake Function: Elisiah
 void func_8003BC8C(Actor*); // Grenade Function: Elisiah
 void func_8003BD98(Actor*); // Missile Spawner: Auto-Decompile
@@ -78,10 +78,10 @@ void func_8003C20C(Actor*);
 void func_8003C4B8(Actor*);
 void func_8003C8AC(Actor*);
 void func_8003D574(Actor*);
-void func_8003D598(Actor*);
-void func_8003D6A4(Actor*); // Black Chameleon Projectile Spawner: Auto-Decompile
-void func_8003D908(Actor*);
-void func_8003D930(Actor*);
+void ActorTick_Explosion(Actor*);
+void ActorInit_ChameleonBlackSpotSpawnner(Actor*); // Black Chameleon Projectile Spawner: Auto-Decompile
+void ActorInit_ChameleonBlackSpot(Actor*);
+void ActorTick_ChameleonBlackSpot(Actor*);
 void func_8003D998(Actor*);
 void func_8003DE04(Actor*);
 void func_8003DFB4(Actor*); // Vulture Function: Elisiah
@@ -104,16 +104,16 @@ void func_800404D8(Actor*);
 void func_80040590(Actor*);
 void func_800405F8(Actor*); // Cake Boss Strwaberry Function: Elisiah
 void func_80040CDC(Actor*); // unk_28
-void func_80040CE4(s32);
+void ActorTick_28(s32);
 void func_80040CEC(Actor*); // Cake Boss Choco Kid: Auto-Decompile
-void func_80041050(Actor*);
-void func_80042174(Actor*);
-void func_8004237C(Actor*); // Cue Ball Actor: Elisiah
-void func_8004259C(Actor*); // Billiards Ball
-void func_800425A4(Actor*);
-void func_8004263C(void);
-void func_80042AFC(Actor*); // Bowling Ball Function: Elisiah
-void func_80042FB4(Actor*); // Bowling Pins Function: Elisiah
+void ActorInit_CakeBoss(Actor*);
+void ActorTick_MinigameActor(Actor*);
+void ActorInit_CueBall(Actor*); // Cue Ball Actor: Elisiah
+void ActorInit_BilliardBall(Actor*); // Billiards Ball
+void ActorTick_BilliardBall(Actor*);
+void Bowling_ResetPins(void);
+void ActorInit_BowlingBall(Actor*); // Bowling Ball Function: Elisiah
+void ActorInit_BowlingPin(Actor*); // Bowling Pins Function: Elisiah
 void func_800431E8(Actor*);
 void func_800431FC(void);
 void func_800434F4(Actor*); // unk_2F
@@ -141,12 +141,12 @@ void func_80044564(void);
 void func_80044584(Actor*);
 void func_80044708(Actor*); // Sandal Function: Elisiah
 void func_80044728(void);
-void func_80044748(Actor*);
-void func_80044878(Actor*); // Pile of Books Function: Elisiah
+void GhostBoss_SpawnArms(Actor*);
+void ActtorInit_GhostBoss(Actor*); // Pile of Books Function: Elisiah
 s32 func_80044E80(s32*, s32);
 void func_80046DDC(Actor*);
 void func_80046FB0(Actor*);
-void func_8004709C(Actor*);
+void ActorInit_GhostBossShot(Actor*);
 void func_8004718C(Actor*); // Spider Spawner: Auto-Decompile
 void func_80047350(Actor*); // Spider Function: Elisiah
 void func_80047520(Actor*);
@@ -157,7 +157,7 @@ void func_80047C04(Actor*); // Fish Function: Elisiah
 void func_800480EC(Actor*);
 void func_800487D8(Actor*); // Lizard Kong Butterfly Spawner: Auto-Decompile
 void func_800488C4(Actor*);
-void func_80048A68(Actor*);
+void ActorInit_LizardKong(Actor*);
 void func_800489B0(Actor*);
 void func_80049780(Actor*); // Popcorn Bucket Spawner: Auto-Decompile
 void func_800498B4(Actor*); // Popcorn Bucket Function: Elisiah
@@ -181,11 +181,11 @@ void func_80049F14(Actor*);
 void func_8004A0A0(Actor*); // Battle Mode Saucer Function: Elisiah
 void func_8004A184(Actor*); // unk_59
 void func_8004A310(Actor*); // unk_5A Function: Elisiah
-void func_8004A39C(Actor*); // Power Up Spawner: Auto-Decompile
+void ActorInit_PowerUpSpawner(Actor*); // Power Up Spawner: Auto-Decompile
 void func_8004A544(Actor*); // Falling Grey Ant Spawner Auto-Decompile
 void func_8004A658(Actor*); // Falling Grey Ant Function: Elisiah
 void func_8004AB00(Actor*); // unk_5E
-void func_8004AC20(Actor*);
+void ActorTick_PickupHeartFalling(Actor*);
 void Actors_Tick(void);
 void func_8004BA5C(s32);
 s32 func_8004C374(u16*, u16*, s32);
@@ -198,7 +198,7 @@ f32 func_80051678(s32, f32*, f32, f32);
 void func_8005171C(void);
 void func_800523E4(f32, f32, f32, f32, s32, s32, s32); 
 void func_800525E8(s32, f32);
-void func_800538D0(void);
+void Multiplayer_PrintHurry(void);
 void func_8005423C(void);
 void DummiedPrintf2(char*, ...);
 void Rand_SetSeed(s32);
@@ -220,12 +220,12 @@ void* mallloc(s32);
 s32 free(void*);
 void func_80056F48(s32, Tongue*, playerActor*, Camera*);
 void func_80058748(f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, s32);
-s32 func_80057010(s32);
+s32 loadSprite(s32);
 s32 func_8009603C(s32, s32);
-void func_800573BC(void);
-void func_80057334(s32);
+void printReset(void);
+void freeSprite(s32);
 void func_8005AFA4(f32, f32, f32, f32);
-void func_8005AFD0(f32, f32, f32, f32, f32, f32, f32, f32, s32); 
+void printUISprite(f32, f32, f32, f32, f32, f32, f32, f32, s32); 
 void func_8005C9B8(void);
 void func_8005CA38(void);
 void func_800610A8(void);
@@ -236,8 +236,8 @@ void func_8006122C(f32, f32);
 void func_80061240(void);
 void func_80061258(f32);
 void func_80061264(f32);
-void func_80061270(u8, u8, u8, u8);
-void func_800612A4(s8, s8, s8, s8);
+void setPrimColor(u8, u8, u8, u8);
+void setPrimColorCopy(s8, s8, s8, s8);
 void func_800612D8(f32);
 void func_800612E4(f32);
 void func_800612F0(s32);
@@ -262,26 +262,26 @@ void func_800667A8(void);
 void func_800667B4(aa1*);
 aa1* func_80068A88(f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32);
 void func_80069858(aa1*, s32);
-void func_8006A74C(void);
-void func_8006AD34(void*, void*);
-void func_8006BA14(void);
-void func_8006BA24(void);
+void Bowling_ResetScore(void);
+void Bowling_DrawScoreCard(void*, void*);
+void lockEyeChange(void);
+void unlockEyeChange(void);
 void func_8006BA30(f32, f32, f32, f32, f32);
 void func_8006BD58(f32, f32, s32, f32, s32);
 void func_8006BE4C(f32, f32, f32, f32);
 void func_8006C368(f32, f32, f32);
-void func_8006CB34(s32);
-void func_8006CBA8(s32);
-u32 func_8006D2FC(s32, s32, f32, s32);
-void func_8006D598(s32, s32, s32);
+void loadPlayerEyes(s32);
+void freePlayerEyes(s32);
+u32 initPlayerEyeController(s32, s32, f32, s32);
+void setPlayerContextEyes(s32, s32, s32);
 void func_8006E16C(f32, f32, f32, s32, f32, s32);
 void func_8006F8D8(f32, f32, f32);
 
 void func_80072B1C(void*, void*);
 void func_80072D34(void);
 void func_80072D80(void);
-void func_8007320C(void*, void*);
-void func_800735A8(void);
+void aa1_checkControllerRumble(void*, void*);
+void checkControllerRumble(void);
 void func_80073C3C(void);
 void setTextGradientFromPaletteAlpha(s32, f32);
 void setTextGradientFromPalette(s32);
@@ -311,8 +311,8 @@ void func_8007E5E8(void);
 void func_8007E684(f32, f32, f32, f32, f32);
 void func_8007E714(f32);
 void func_8002D080(void);
-s32 func_800A7F70(void);
-void func_8008FF84(void);
+s32 SaveData_RecordChecksum(void);
+void Porocess_Mode0(void);
 void SaveData_ClearRecords(void);
 void SaveData_LoadRecords(u8*);
 void Process_StageSelect(void);
@@ -324,18 +324,18 @@ void func_800ADE70(void);
 void func_800AE4AC(void);
 void func_800AEAA8(Vec3f,Vec3f,Rect*);
 void func_800A2BDC(void);
-void func_800A0810(void);
+void Process_BattleMenu(void);
 void func_800A4320(void);
-void func_800A4EC8(void);
-void func_800A5570(void);
-void func_8009553C(void);
+void Process_GameOver(void);
+void Process_JSSLogo(void);
+void Process_PreCredits(void);
 void func_800A1D38(void);
 void func_800A6DD8(void);
 void func_800A07E0(void);
-void func_8005564C(void);
+void Process_Ranking(void);
 void func_800557F8(void);
-void func_80055994(void);
-void func_80055AA0(void);
+void Process_Boot(void);
+void Process_SunsoftLogo(void);
 void DummiedPrintf(char*, ...);
 void PrintTextWrapper(f32, f32, f32, f32, char*, s32);
 s32 PrintText(f32, f32, f32, f32, f32, f32, char*, s32);
@@ -361,10 +361,10 @@ s32 playBGM(s32);
 s32 BGMStop(void);
 void func_8008C094(void);
 void func_8008C35C(s32);
-s32 func_8008C364(Actor*, s32, s32, s32);
+s32 Actor_PlaySound(Actor*, s32, s32, s32);
 void func_8008C3F0(Actor*, s32, s32);
 s32 func_8008C438(void);
-void func_8008CCDC(CTTask*);
+void Task_Unlink(CTTask*);
 void TaskInit(void);
 void func_8008ECB8(void);
 void func_8008F114(void);
@@ -382,7 +382,7 @@ s32 loadStageByIndex(s32);
 void func_800983C8(void);
 void func_80098F50(CTTask*);
 void func_80099570(CTTask*);
-void func_8009961C(CTTask*);
+void Task_LoadSaveFileAt(CTTask*);
 void func_8009BDE4(CTTask*);
 void func_8009B120(s32);
 void func_8009B45C(s32);

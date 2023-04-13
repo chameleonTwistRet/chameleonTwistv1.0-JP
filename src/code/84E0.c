@@ -168,7 +168,7 @@ void func_8002D550(f32 *arg0, f32 *arg1, f32 arg2, f32 arg3, f32 arg4) {
 
 
 #ifndef _RODATA_
-void func_8002D644(s32 actorIndex, s32 actorID, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7, f32 arg8, f32 arg9, f32 argA, f32 argB, f32 argC, f32 argD, f32 argE, f32 argF, f32 arg10, f32 arg11, f32 arg12, f32 arg13, s32 arg14, s32 arg15, s32 arg16, s32 arg17) {
+void Actors_Init(s32 actorIndex, s32 actorID, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7, f32 arg8, f32 arg9, f32 argA, f32 argB, f32 argC, f32 argD, f32 argE, f32 argF, f32 arg10, f32 arg11, f32 arg12, f32 arg13, s32 arg14, s32 arg15, s32 arg16, s32 arg17) {
     Actor* actorInstance;
     s32 i;
 
@@ -258,22 +258,22 @@ void func_8002D644(s32 actorIndex, s32 actorID, f32 arg2, f32 arg3, f32 arg4, f3
 
     switch (actorID) {
     case Red_Ant:
-        func_80039368(actorInstance);
+        ActorInit_AntRed(actorInstance);
         return;
     case Green_Ant:
-        func_8003A1B0(actorInstance);
+        ActorInit_AntGreen(actorInstance);
         return;
     case Grey_Ant:
-        func_80038510(actorInstance);
+        ActorInit_AntGrey(actorInstance);
         return;
     case Bullet_Hell_Ant:
-        func_80038AE0(actorInstance);
+        ActorInit_AntBulletHell(actorInstance);
         return;
     case Ant_Trio:
         func_80038F70(actorInstance);
         return;
     case Yellow_Ant:
-        func_800399A0(actorInstance);
+        ActorInit_AntYellow(actorInstance);
         return;
     case Grey_Ant_Spawner:
         func_800383C0(actorInstance);
@@ -282,10 +282,10 @@ void func_8002D644(s32 actorIndex, s32 actorID, f32 arg2, f32 arg3, f32 arg4, f3
         func_80038990(actorInstance);
         return;
     case Ant_Queen:
-        func_8003A3F0(actorInstance);
+        ActorInit_AntQueen(actorInstance);
         return;
     case Ant_Queen_Ant:
-        func_8003B894(actorInstance);
+        ActorInit_AntQueenDrone(actorInstance);
         return;
     case White_Bomb_Snake:
         func_8003BA38(actorInstance);
@@ -312,10 +312,10 @@ void func_8002D644(s32 actorIndex, s32 actorID, f32 arg2, f32 arg3, f32 arg4, f3
         func_8003D574(actorInstance);
         return;
     case Black_Chameleon_Projectile_Spawner:
-        func_8003D6A4(actorInstance);
+        ActorInit_ChameleonBlackSpotSpawnner(actorInstance);
         return;
     case Black_Chameleon_Projectile:
-        func_8003D908(actorInstance);
+        ActorInit_ChameleonBlackSpot(actorInstance);
         return;
     case Chomper:
         func_8003D998(actorInstance);
@@ -354,7 +354,7 @@ void func_8002D644(s32 actorIndex, s32 actorID, f32 arg2, f32 arg3, f32 arg4, f3
         func_800404D8(actorInstance);
         return;
     case Cake_Boss:
-        func_80041050(actorInstance);
+        ActorInit_CakeBoss(actorInstance);
         return;
     case Cake_Boss_Strawberry:
         func_800405F8(actorInstance);
@@ -366,16 +366,16 @@ void func_8002D644(s32 actorIndex, s32 actorID, f32 arg2, f32 arg3, f32 arg4, f3
         func_80040CEC(actorInstance);
         return;
     case Bowling_Ball:
-        func_80042AFC(actorInstance);
+        ActorInit_BowlingBall(actorInstance);
         return;
     case Bowling_Pins:
-        func_80042FB4(actorInstance);
+        ActorInit_BowlingPin(actorInstance);
         return;
     case Cue_Ball:
-        func_8004237C(actorInstance);
+        ActorInit_CueBall(actorInstance);
         return;
     case Billiards_Ball:
-        func_8004259C(actorInstance);
+        ActorInit_BilliardBall(actorInstance);
         return;
     case unk_2E:
         func_800431E8(actorInstance);
@@ -423,7 +423,7 @@ void func_8002D644(s32 actorIndex, s32 actorID, f32 arg2, f32 arg3, f32 arg4, f3
         func_80044708(actorInstance);
         return;
     case Pile_of_Books:
-        func_80044878(actorInstance);
+        ActtorInit_GhostBoss(actorInstance);
         return;
     case Pile_of_Books_Arm_Segments:
         func_80046DDC(actorInstance);
@@ -432,7 +432,7 @@ void func_8002D644(s32 actorIndex, s32 actorID, f32 arg2, f32 arg3, f32 arg4, f3
         func_80046FB0(actorInstance);
         return;
     case Pile_of_Books_Projectile:
-        func_8004709C(actorInstance);
+        ActorInit_GhostBossShot(actorInstance);
         return;
     case Spider_Spawner:
         func_8004718C(actorInstance);
@@ -465,7 +465,7 @@ void func_8002D644(s32 actorIndex, s32 actorID, f32 arg2, f32 arg3, f32 arg4, f3
         func_800488C4(actorInstance);
         return;
     case Lizard_Kong:
-        func_80048A68(actorInstance);
+        ActorInit_LizardKong(actorInstance);
         return;
     case Popcorn_Bucket_Spawner:
         func_80049780(actorInstance);
@@ -513,7 +513,7 @@ void func_8002D644(s32 actorIndex, s32 actorID, f32 arg2, f32 arg3, f32 arg4, f3
         func_8004A310(actorInstance);
         return;
     case Power_Up_Spawner:
-        func_8004A39C(actorInstance);
+        ActorInit_PowerUpSpawner(actorInstance);
         return;
     case Falling_Grey_Ant_Spawner:
         func_8004A544(actorInstance);
@@ -526,7 +526,7 @@ void func_8002D644(s32 actorIndex, s32 actorID, f32 arg2, f32 arg3, f32 arg4, f3
     }
 }
 #else
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8002D644.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/Actors_Init.s")
 #endif
 
 //needs proper match
@@ -538,7 +538,7 @@ s32 Actor_Init(s32 type, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 a
     index = 0;
     while(1){
         if (*pointer == Actor_Null) {
-            func_8002D644(index, type, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, argA, argB, argC, argD, argE, argF, arg10, arg11, arg12, arg13, arg14, arg15, arg16);
+            Actors_Init(index, type, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, argA, argB, argC, argD, argE, argF, arg10, arg11, arg12, arg13, arg14, arg15, arg16);
             gActorCount += 1;
             return index;
         }
@@ -565,7 +565,7 @@ s32 func_8002DF5C(s32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4) {
     return -1;
 }
 
-void func_8002E04C(s32 arg1, f32 arg2, f32 arg3, f32 arg4) {
+void Actor_SpawnAt(s32 arg1, f32 arg2, f32 arg3, f32 arg4) {
     Actor_Init(arg1, arg2, arg3, arg4, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0, 0, 0, 0);
 }
 
@@ -773,7 +773,7 @@ s32 func_80032074(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80036F30.s")
 
-s32 func_8003749C(s32 arg0) {
+s32 isExplodingActor(s32 arg0) {
     s32 temp_v0 = gActors[arg0].actorID;
     if ((temp_v0 == 13) || (temp_v0 == 14) || (temp_v0 == 16) || (temp_v0 == 18) || (temp_v0 == 21)) {
         return 1;
@@ -782,7 +782,7 @@ s32 func_8003749C(s32 arg0) {
 }
 
 
-s32 func_80037504(Actor* actor) {
+s32 isActiveExplosion(Actor* actor) {
     if (actor->actorID == 20 && (u32)actor->globalTimer >= 5) {
         return 1;
     }
@@ -841,7 +841,7 @@ void func_800383C0(Actor* greyAntSpawnerActor) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_800383E4.s")
 
 // Grey Ant Function: Rainchu and Elisiah
-void func_80038510(Actor* actor) {
+void ActorInit_AntGrey(Actor* actor) {
     actor->unk_94 = actor->unk_124;
     actor->unk_90 = CalcAngleBetween2DPoints(actor->pos.x, actor->pos.z, actor->position._f32.x, actor->position._f32.y);
     actor->unk_10C[0] = 4;
@@ -858,7 +858,7 @@ void func_80038990(Actor* bulletHellAntSpawnerActor) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8003899C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80038AE0.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorInit_AntBulletHell.s")
 
 s32 func_80038B98(Actor* arg0) {
     if (arg0->unk_98 != 0) {
@@ -891,18 +891,18 @@ void func_80038F70(Actor* antTrioActor) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80038FDC.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80039368.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorInit_AntRed.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80039500.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_AntRed.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_800397DC.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_800399A0.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorInit_AntYellow.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80039B0C.s")
 
 // Green Ant Function: Rainchu and Elisiah
-void func_8003A1B0(Actor* greenAntActor) {
+void ActorInit_AntGreen(Actor* greenAntActor) {
     greenAntActor->unk_134[0] = 0.0f;
     greenAntActor->unk_10C[2] = greenAntActor->unk_15C / greenAntActor->position._f32.x;
     greenAntActor->unk_F0 = Random(0, 0x100/*, greenAntActor*/);
@@ -911,7 +911,7 @@ void func_8003A1B0(Actor* greenAntActor) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8003A208.s")
 
 // Ant Queen Function: Elisiah
-void func_8003A3F0(Actor* antQueenActor) {
+void ActorInit_AntQueen(Actor* antQueenActor) {
     antQueenActor->unk_120 = (s32) antQueenActor->unk_12C;
     antQueenActor->tongueCollision = 3;
     antQueenActor->unknownPositionThings[1].unk_0C = 150.0f;
@@ -922,12 +922,12 @@ void func_8003A3F0(Actor* antQueenActor) {
     antQueenActor->unknownPositionThings[2].unk_04 = 300.0f;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8003A444.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/QueenAnt_SpawnDrones.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8003AAB0.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_AntQueen.s")
 
 // Ant Queen-Ant: Auto-Decompile
-void func_8003B894(Actor* arg0) {
+void ActorInit_AntQueenDrone(Actor* arg0) {
     wrapDegrees(&arg0->unk_90);
     arg0->unk_94 = arg0->position._f32.x;
     arg0->vel.y = D_8010B9E8;
@@ -935,7 +935,7 @@ void func_8003B894(Actor* arg0) {
 }
 
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8003B8D8.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_AntQueenDrone.s")
 
 // White Bomb Snake Function: Elisiah
 void func_8003BA38(Actor* whiteBombSnakeActor) {
@@ -988,7 +988,7 @@ void func_8003BEE8(Actor* missileActor) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8003CAD8.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8003D210.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_BombBossSegment.s")
 
 void func_8003D574(Actor* actor) {
     f32 auigh = actor->position._f32.x;
@@ -999,14 +999,14 @@ void func_8003D574(Actor* actor) {
     actor->tYPos = auigh;
 }
 
-void func_8003D598(Actor* arg0) {               //Unsure if struct is actor
+void ActorTick_Explosion(Actor* arg0) {               //Unsure if struct is actor
     if (arg0->unk_124 == arg0->globalTimer) {  //0x124 == 0x10
         func_80031518(arg0);
     }
 }
 
 //????: Nathan R.
-void func_8003D5C8(Actor* arg0) {
+void ActorTick_BombBossBomb(Actor* arg0) {
     f32 temp_f12;
     f32 temp_f2;
 
@@ -1022,19 +1022,19 @@ void func_8003D5C8(Actor* arg0) {
  
 
 // Black Chameleon Projectile Spawner: Auto-Decompile
-void func_8003D6A4(Actor* blackChameleonProjectileSpawnerActor){
+void ActorInit_ChameleonBlackSpotSpawnner(Actor* blackChameleonProjectileSpawnerActor){
     
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8003D6AC.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_ChameleonBlackSpotSpawnner.s")
 
 
-void func_8003D908(Actor* arg0) {
+void ActorInit_ChameleonBlackSpot(Actor* arg0) {
     arg0->unk_CC = 0.0f;
     func_800312B0(arg0->actorIndex);
 }
 
-void func_8003D930(Actor* arg0) {
+void ActorTick_ChameleonBlackSpot(Actor* arg0) {
     if (arg0->unk_CC < 1.0f) {
         arg0->unk_CC = arg0->unk_CC + D_8010BAA4;
         if (arg0->unk_CC > 1.0f) {
@@ -1085,7 +1085,7 @@ void func_8003E30C(Actor* arrowsActor) {
 
 
 // Elisiah
-void func_8003E32C(Actor* arg0) {                   // unsure if struct is actor
+void ActorTick_Arrow(Actor* arg0) {                   // unsure if struct is actor
     if (arg0->globalTimer == arg0->unk_10C[0]) {
         func_80031518(arg0);
     }
@@ -1181,7 +1181,7 @@ void func_8003FEC4(Actor* iceCreamSandwichActor) {
     iceCreamSandwichActor->pos.y = iceCreamSandwichActor->pos.y + 2000.0f;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8003FEE0.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_IceCreamSandwich.s")
 
 // Training Room Choco Kid Function: Elisiah
 void func_80040068(Actor* trainingRoomChocoKidActor) {
@@ -1218,14 +1218,14 @@ void func_800405F8(Actor* cakeBossStrawberryActor) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80040638.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_CakeBossStrawberry.s")
 
 // unk_28
 void func_80040CDC(Actor* unk_28Actor){
 
 }
 
-void func_80040CE4(s32 arg0) {
+void ActorTick_28(s32 arg0) {
 
 }
 
@@ -1234,9 +1234,9 @@ void func_80040CEC(Actor* cakeBossChocoKidActor){
 
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80040CF4.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_CakeBossChocoKid.s")
 
-void func_80041050(Actor* actor) {
+void ActorInit_CakeBoss(Actor* actor) {
     actor->tongueCollision = 3;
     actor->unk_10C[2] = 4; 
     actor->unknownPositionThings[1].unk_0C = actor->tScale;
@@ -1253,28 +1253,28 @@ void func_80041050(Actor* actor) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_800410B4.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_800410EC.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_CakeBoss.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80041C84.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/MinigameActors_PhysicsTick.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80042174.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_MinigameActor.s")
 
 // Cue Ball Actor: Elisiah
-void func_8004237C(Actor* cueBallActor) {
+void ActorInit_CueBall(Actor* cueBallActor) {
     cueBallActor->unk_134[0] = cueBallActor->pos.y;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80042388.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_CueBall.s")
 
 // Billiards Ball
-void func_8004259C(Actor* billiardsBallActor){
+void ActorInit_BilliardBall(Actor* billiardsBallActor){
 
 }
 
-void func_800425A4(Actor* arg0) {
+void ActorTick_BilliardBall(Actor* arg0) {
     f32 temp_f0_2;
 
-    func_80042174(arg0);
+    ActorTick_MinigameActor(arg0);
     temp_f0_2 = NORM_2(arg0->vel.x,arg0->vel.z);
     arg0->unk_94 = temp_f0_2;
     arg0->unk_134[0] = ((180.0f * temp_f0_2) / ( arg0->unknownPositionThings[0].unk_0C * D_8010BE30)) + arg0->unk_134[0];
@@ -1282,26 +1282,26 @@ void func_800425A4(Actor* arg0) {
 }
 
 //(re)set bowling pins
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8004263C.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/Bowling_ResetPins.s")
 
 // Bowling Ball Function: Elisiah
-void func_80042AFC(Actor* bowlingBallActor) {
-    func_8006A74C();
-    func_8004263C();
+void ActorInit_BowlingBall(Actor* bowlingBallActor) {
+    Bowling_ResetScore();
+    Bowling_ResetPins();
     bowlingBallActor->unk_10C[0] = 0;
     bowlingBallActor->unk_134[0] = bowlingBallActor->pos.y;
     bowlingBallActor->unk_10C[3] = Rand() % 5;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80042B4C.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_BowlingBall.s")
 
 // Bowling Pins Function: Elisiah
-void func_80042FB4(Actor* bowlingPinsActor) {
+void ActorInit_BowlingPin(Actor* bowlingPinsActor) {
     bowlingPinsActor->unk_90 = (f32) ((Rand() % 21) - 100);
     bowlingPinsActor->unk_10C[1] = (Rand() % 21) + 30;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80043010.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_BowlingPin.s")
 
 void func_800431E8(Actor* arg0) {
     arg0->unk_10C[0] = 0xA;
@@ -1439,15 +1439,15 @@ void func_80044728(void) {
     func_800431FC();
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80044748.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/GhostBoss_SpawnArms.s")
 
 // Pile of Books Function: Elisiah
-void func_80044878(Actor* pileOfBooksActor) {
+void ActtorInit_GhostBoss(Actor* pileOfBooksActor) {
     pileOfBooksActor->unk_EC = 0;
     pileOfBooksActor->unk_10C[3] = pileOfBooksActor->unk_128 * 2;
     pileOfBooksActor->unk_134[1] = pileOfBooksActor->pos.z + -800.0f;
     pileOfBooksActor->unk_134[2] = pileOfBooksActor->unk_90;
-    func_80044748(pileOfBooksActor);    // Compiled as empty originally?
+    GhostBoss_SpawnArms(pileOfBooksActor);    // Compiled as empty originally?
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_800448C0.s")
@@ -1463,7 +1463,7 @@ s32 func_80044E80(s32* arg0, s32 arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80044EA4.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8004501C.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_GhostBoss.s")
 
 //POB Arm Segments: Nathan R. & Rain (mostly rain)
 void func_80046DDC(Actor* arg0) {
@@ -1478,7 +1478,7 @@ void func_80046DDC(Actor* arg0) {
 }
 
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80046E50.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_GhostBossArmSegment.s")
 
 void func_80046FB0(Actor* arg0) {
 
@@ -1507,12 +1507,12 @@ void func_80046FB8(Actor* arg0) {
     }
 }
 
-void func_8004709C(Actor* arg0) {
+void ActorInit_GhostBossShot(Actor* arg0) {
     arg0->unk_94 = arg0->position._f32.x;
     func_800382F4(arg0);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_800470C0.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_GhostBossShot.s")
 
 // Spider Spawner: Auto-Decompile
 void func_8004718C(Actor* spiderSpawnerActor){
@@ -1596,7 +1596,7 @@ void func_800487E0(Actor* arg0) {
 void func_800488C4(Actor* arg0) {
     arg0->unk_98 = 1;
     arg0->unk_94 = arg0->position._f32.x;
-    func_8008C364(arg0, 143, 4, 4);
+    Actor_PlaySound(arg0, 143, 4, 4);
 }
 
 void func_800488FC(Actor* arg0) {
@@ -1617,7 +1617,7 @@ void func_800488FC(Actor* arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_800489B0.s")
 
 //Lizard Kong: Auto-Decompile + Nathan R. (it didnt like the placement of the 1000.0f set lol)
-void func_80048A68(Actor* arg0) {
+void ActorInit_LizardKong(Actor* arg0) {
     arg0->unk_134[2] = arg0->unk_15C;
     arg0->unk_134[3] = arg0->unk_90 + 180.0f;
     wrapDegrees(&arg0->unk_134[3]);
@@ -1634,7 +1634,7 @@ void func_80048A68(Actor* arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80048AFC.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80048B88.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_LizardKong.s")
 
 // Popcorn Bucket Spawner: Auto-Decompile
 void func_80049780(Actor* popcornBucketSpawnerActor){
@@ -1690,7 +1690,7 @@ void func_80049A84(void) {
 
 // unk_52 Function: Elisiah
 void func_80049AA4(Actor* unk_52Actor) {
-    func_80038510(unk_52Actor);
+    ActorInit_AntGrey(unk_52Actor);
 }
 
 void func_80049AC4(void) {
@@ -1787,12 +1787,12 @@ void func_8004A31C(Actor* arg0) {
 
 
 // Power Up Spawner: Auto-Decompile
-void func_8004A39C(Actor* powerUpSpawnerActor){
+void ActorInit_PowerUpSpawner(Actor* powerUpSpawnerActor){
     
 }
 
 // unk_5B
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8004A3A4.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_PowerUpSpawner.s")
 
 // Falling Grey Ant Spawner Auto-Decompile
 void func_8004A544(Actor* fallingGreyAntSpawnerActor){
@@ -1822,7 +1822,7 @@ void func_8004AB00(Actor* unk_5EActor){
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8004AB08.s")
 
 // unk_60
-void func_8004AC20(Actor* arg0) {
+void ActorTick_PickupHeartFalling(Actor* arg0) {
     f32 temp_f2;
 
     if (arg0->unk_10C[0] == 0) {
@@ -1837,7 +1837,7 @@ void func_8004AC20(Actor* arg0) {
     }
 }
 
-void func_8004AC8C(Actor* arg0) {
+void ActorTick_Powerup(Actor* arg0) {
     if (arg0->unk_10C[0] != 0) {
         arg0->unk_10C[1] += 1;
         if (arg0->unk_124 == arg0->unk_10C[1]) {

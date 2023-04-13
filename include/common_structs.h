@@ -726,25 +726,27 @@ typedef struct func_80069858_temp_v0{
 } func_80069858_temp_v0; //sizeof 0x10
 
 typedef struct graphicStruct {
-    Gfx dlist[0x1000];
-    Mtx perspective;
-    Mtx lookAt;
-    Mtx playerTranslate[4];
-    Mtx playerRotate[4];
-    Mtx playerScale[4];
-    Mtx reticuleTranslate[4][6];
-    Mtx reticuleRotate[4][6];
-    Mtx reticuleScale[4][6];
-    Mtx toungeTranslate[4][33];
-    Mtx toungeRotate[4][33];
-    Mtx toungeScale[4][33];
-    Mtx actorTanslate[64];
-    Mtx actorRotate[64];
-    Mtx actorScale[64];
-    Mtx unk12880[256];
-    Mtx colliderTransforms[128][3]; // may be wrong.
-    u8 unk1c880[0x2000];
-    Mtx unk1e880[74];
-} graphicStruct;
+/*0x0*/         Gfx dlist[0x1000];
+/*0x8000*/      Mtx perspective;
+/*0x8040*/      Mtx lookAt;
+/*0x8080*/      Mtx playerTranslate[4];
+/*0x8180*/      Mtx playerRotate[4];
+/*0x8280*/      Mtx playerScale[4];
+/*0x8380*/      Mtx reticuleTranslate[4][6];
+/*0x8980*/      Mtx reticuleRotate[4][6];
+/*0x8F80*/      Mtx reticuleScale[4][6];
+/*0x9580*/      Mtx toungeTranslate[4][33];
+/*0xb680*/      Mtx toungeRotate[4][33];
+/*0xD780*/      Mtx toungeScale[4][33];
+/*0xf880*/      Mtx actorTanslate[64];
+/*0x10880*/    Mtx actorRotate[64];
+/*0x11880*/    Mtx actorScale[64];
+/*0x12880*/    s8 unk12880[0x4000];
+/*0x16880*/    Mtx colliderTransforms[128][3]; // may be wrong.
+/*0x1C880*/    s8 unk1c880[0x2000];
+/*0x1E880*/    Mtx unk1e880[74]; //may be used for "CTTask"s
+} graphicStruct; //sizeof 0x1FB00
+
+
 
 #endif
