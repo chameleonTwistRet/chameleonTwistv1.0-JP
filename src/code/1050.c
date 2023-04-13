@@ -1,6 +1,6 @@
 #include "common.h"
 
-Gfx* func_8002C4E8(Gfx*, s32, s32);
+Gfx* func_8002C4E8(graphicStruct*, s32, s32);
 
 
 
@@ -188,7 +188,7 @@ s32 func_80027650(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/1050/func_8002C900.s")
 
-void* func_8002CAC8(Gfx* arg0, s32 arg1) {
+void* func_8002CAC8(graphicStruct* arg0, s32 arg1) {
     Gfx* temp_v0;
 
     temp_v0 = func_8002C4E8(arg0, arg1, 1);
@@ -209,14 +209,14 @@ void Video_SetTask(Gfx* arg0, Gfx* arg1, s32 arg2) {
     task->data_size = (((s32)arg1 - (s32)arg0) >> 3) << 3;
 }
 
-void func_8002CB6C(Gfx* arg0, Gfx* arg1, s32 arg2) {
+void func_8002CB6C(Gfx* arg0, graphicStruct* arg1, s32 arg2) {
 
     if (D_80174998 < 3) {
         arg0 = func_8002CAC8(arg1, arg2);
     }
     
     Video_SetTask(arg1, arg0, arg2);
-    osWritebackDCache(arg1, 0x1FB00);
+    osWritebackDCache(arg1, sizeof(graphicStruct));
     func_80084F80(&D_800F04E0[arg2], arg2);
 }
 
@@ -238,7 +238,7 @@ void func_8002CBE8(s32 arg0) {
 s32 func_8002CCA0(void* arg0, s32 arg1) {
     s32 sp1C;
 
-    if (D_80174998 >= 3) {
+    if (D_80174998 > 2) {
         sp1C = func_8002C900(arg0, arg1);
     }
 

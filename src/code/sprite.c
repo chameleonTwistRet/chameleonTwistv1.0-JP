@@ -1,24 +1,24 @@
 #include "common.h"
 
-typedef struct unk800F73C8 {
+typedef struct SpriteListing {
     char unk_00[4];
-    void* vAddr; // "malloc'd" after size calc.
-    void* unk8; //palette? both this and above start with devAddr+0XD73D960
-    s32 type; // data type? image format?
+    void* bitmapP; // "malloc'd" after size calc.
+    void* palletteP; //palette? both this and above start with devAddr+0XD73D960
+    s32 type; // use "COLORMODE_*" enum
     void* unk10;
     u8 unk14;
-    u8 unk15; //these two are multi'd with height and width to get size
-    u8 unk16;
+    u8 tileCountX;
+    u8 tileCountY;
     char unk17[3]; //align?
-    u16 height; // entry 0 is 320
-    u16 width; // entry 0 is 240
+    u16 height; // height of each tile
+    u16 width; // width of each tile
     u16 unk1E;
-    char unk20[0x48];
-    s32 romOffset; //devAddr-0x8c26a0
-    s32 unk6C;
+    char unk20[0x48]; //repeating substruct? has 5 feilds of color32
+    s32 bitmapRom; //devAddr-0x8c26a0
+    s32 paletteRom;
     s32 unk70;
     char unk_74[8];
-} unk800F73C8; //sizeof 0x78
+} SpriteListing; //sizeof 0x78
 
 typedef struct unk80174880 {
 /* 0x00 */ s32 unk_00[4];
@@ -32,7 +32,7 @@ typedef struct unk80174880 {
 } unk80174880;
 
 extern unk80174880 D_80174880[];
-extern unk800F73C8 gSpriteListings[230];
+extern SpriteListing gSpriteListings[230];
 extern char D_8010CA1C[];
 extern char D_8010CA54[];
 extern Addr D_8C26A0;
@@ -244,7 +244,7 @@ s32 free(void* arg0) {
 // s32 loadSprite(s32 arg0) {
 //     s32 dmaSize;
 //     s32 dmaResult;
-//     unk800F73C8* temp_s1;
+//     SpriteListing* temp_s1;
 
 //     temp_s1 = &gSpriteListings[arg0];
 //     if ((temp_s1->unkC == 8) || (arg0 < 0) || (arg0 >= 0xE6)) {
@@ -252,19 +252,19 @@ s32 free(void* arg0) {
 //     }
 //     switch (temp_s1->unkC) {
 //     case 7:
-//         dmaSize = temp_s1->unk1A * 4 * temp_s1->unk1C * temp_s1->unk15 * temp_s1->unk16;
+//         dmaSize = temp_s1->unk1A * 4 * temp_s1->unk1C * temp_s1->tileCountX * temp_s1->tileCountY;
 //         break;
 //     case 6:
-//         dmaSize = temp_s1->unk1A * 2 * temp_s1->unk1C * temp_s1->unk15 * temp_s1->unk16;
+//         dmaSize = temp_s1->unk1A * 2 * temp_s1->unk1C * temp_s1->tileCountX * temp_s1->tileCountY;
 //         break;
 //     case 2:
 //     case 5:
-//         dmaSize = temp_s1->unk1A * temp_s1->unk1C * temp_s1->unk15 * temp_s1->unk16;
+//         dmaSize = temp_s1->unk1A * temp_s1->unk1C * temp_s1->tileCountX * temp_s1->tileCountY;
 //         break;
 //     case 0:
 //     case 1:
 //     case 4:
-//         dmaSize = (s32) (temp_s1->unk1A * temp_s1->unk1C * temp_s1->unk15 * temp_s1->unk16) / 2;
+//         dmaSize = (s32) (temp_s1->unk1A * temp_s1->unk1C * temp_s1->tileCountX * temp_s1->tileCountY) / 2;
 //         break;
 //     }
     
@@ -1279,8 +1279,8 @@ void func_8007E714(f32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80080318.s")
 
-void PrintTextWrapper(f32 arg0, f32 arg1, f32 arg2, f32 arg3, char* arg4, s32 arg5) {
-    PrintText(arg0, arg1, arg2, arg3, 0.0f, 0.0f, arg4, arg5);
+void PrintTextWrapper(f32 arg0, f32 arg1, f32 arg2, f32 arg3, char* txt, s32 font) {
+    PrintText(arg0, arg1, arg2, arg3, 0.0f, 0.0f, txt, font);
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/PrintText.s")

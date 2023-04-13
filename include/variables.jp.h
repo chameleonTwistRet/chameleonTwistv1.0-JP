@@ -284,6 +284,11 @@ extern Addr D_F000000;
 extern Addr D_F0042B0;
 extern Camera gCamera[4];
 extern unk802000C84 D_80200C84;
+extern u8 gHasShadows[256]; //unset for actortypes like spawnners.
+extern Collider D_80236980[128];
+extern u32 gFeildCount;
+extern Door gDoors[16];
+extern u32 gDoorCount;
 extern Collision D_80240D6C[];
 extern u8 gCarrotBitfield;
 extern s8 D_801B313D;
@@ -341,5 +346,4 @@ extern frameBufferData D_803B5000[2];
 extern Addr D_1000000;
 extern Addr D_1045C00;
 extern unk80100F50 D_80100F50[];
-extern u8 gHasShadows[256]; //unset for actortypes like spawnners.
 #endif

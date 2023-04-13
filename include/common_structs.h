@@ -593,7 +593,7 @@ typedef struct unkStruct02 {
 typedef struct SaveFile {
     /* 0x00 */ u8 checksum;
     /* 0x02 */ u8 flags;
-    /* 0x02 */ char unk_02[0x20];
+    /* 0x02 */ char unk_02[0x20]; //room/stage flags?
     /* 0x22 */ char unk_22[4];
     /* 0x26 */ u8 stageAccess;
     /* 0x27 */ u8 stageClear;
@@ -642,7 +642,7 @@ typedef struct d8006266c{
     /* 0x3C */ s32 unk_3C[4];
 } d8006266c; //sizeof 0x40
 
-typedef struct aa1{
+typedef struct aa1{ // TODO: give better name
     /* 0x00 */ s32 unk0;
     /* 0x04 */ s8 unk4;
     /* 0x05 */ s8 unk5;
@@ -741,11 +741,54 @@ typedef struct graphicStruct {
 /*0xf880*/      Mtx actorTanslate[64];
 /*0x10880*/    Mtx actorRotate[64];
 /*0x11880*/    Mtx actorScale[64];
-/*0x12880*/    s8 unk12880[0x4000];
+/*0x12880*/    s8 unk12880[0x4000]; //mtx's for shadows?
 /*0x16880*/    Mtx colliderTransforms[128][3]; // may be wrong.
 /*0x1C880*/    s8 unk1c880[0x2000];
 /*0x1E880*/    Mtx unk1e880[74]; //may be used for "CTTask"s
 } graphicStruct; //sizeof 0x1FB00
+
+typedef struct Shadow{
+    u32 active;
+    Vec3f pos;
+    f32 rotY;
+    f32 rotX;
+    f32 scale;
+    f32 unk1c;
+    f32 rotYArrow;
+    u32 dlist;
+    u32 actorID;
+    Actor* actor;
+}Shadow;
+
+typedef struct Door{
+    s32 index;
+    s32 unk4; //not read?
+    s32 inZone;
+    f32 minX;
+    f32 minZ;
+    f32 maxX;
+    f32 maxZ;
+    f32 toX;
+    f32 toZ;
+    f32 unk24;
+    f32 maxY;
+    f32 unk2C;
+    u32 direction; // index in gCardinalDirections
+    s32 unk34; //not read?
+    s32 unk38; 
+    s32 unk3C; 
+    s32 toZone;
+    s32 unk44; 
+    s32 unk48; 
+}Door;
+
+typedef struct ModelData{
+    s32 vertCount;
+    s32 triCount;
+    Vec3f* verts;
+    Vec3f* tris;
+    Rect* modelBox;
+}ModelData;
 
 
 
