@@ -6,6 +6,8 @@ extern Collision gZoneCollisions[];
 extern CardinalDirection gCardinalDirections[5]; // including "NO_DIR"
 extern s32 sBossIDs[6];
 s32* func_800B3424(void);
+void func_800B5C60(tempStruct*);
+void func_800C2670(s32, playerActor*, s32);
 
 typedef struct newStruct {
     s32 dummy0[10]; // Placeholder for the first 10 elements
@@ -580,10 +582,8 @@ void func_800B6D24(tempStruct* arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BA89C.s")
 
-//#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BA900.s")
-// Not a perfect match, but it's close enough
-void func_800BA900(s32 arg0) {
-    Vec3f_Zero(arg0 + 0x3C);
+void func_800BA900(tempStruct* arg0) {
+    Vec3f_Zero(&arg0->unk_3C);
     func_800B5C60(arg0);
 }
 
@@ -788,9 +788,8 @@ const char* GetDirectionName(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C2820.s")
 
-//#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C29D8.s")
 void func_800C29D8(s32 arg0) {
-    func_800C2670(arg0, gPlayerActors, 1);
+    func_800C2670(arg0, &gPlayerActors[0], 1);
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C2A00.s")
