@@ -30,7 +30,7 @@ void func_800DCC00(void) {
 void func_800DCC08(void) {
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/audio/bnkf/func_800DCC10.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/audio/bnkf/_bnkfPatch.s")
 
 void func_800DCCFC(void) {
 }

@@ -54,7 +54,7 @@ void func_800B09C0(s32 arg0, newStruct* arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B0B20.s")
 //deals with "shutters"
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B101C.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/registShutter.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B118C.s")
 
@@ -166,8 +166,8 @@ s32 isBossID(s32 arg0) {
     return ret;
 }
 
-s32 isBossActor(s32* arg0) {
-    return isBossID(*arg0);
+s32 isBossActor(Actor* actor) {
+    return isBossID(actor->actorID);
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B2308.s")
@@ -208,7 +208,7 @@ Vec3f* func_800B2470(Vec3f* arg0, Vec3f arg1, Vec3f arg4, f32 arg7, s32 arg8) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B3364.s")
 
 //rains 7 month old bool checker
-s32 func_800B340C(s32 value) {
+s32 isntNegative(s32 value) {
     return ( value >= 0 ) ? 1 : 0;
 }
 
@@ -255,19 +255,19 @@ s32 func_800B3540(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B3698.s")
 
-void func_800B37D8(void) {
+void resetStageModels(void) {
     VertextBufferCount = 0;
     TriangleBufferCount = 0;
     ModelBufferCount = 0;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B37F4.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/registModel.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B39EC.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/moveModel.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B3AAC.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/scaleModel.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B3B68.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/RotateModel.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B3D38.s")
 
@@ -390,20 +390,20 @@ void func_800B40FC(void) {
 }
 
 s32 StageCarrotAvailable(s32 arg0) {
-    if (arg0 >= 6) {
-        return 0;
+    if (arg0 > STAGE_GHOST) { //not a stage with a carrot
+        return FALSE;
     }
-    if (gCarrotBitfield & (1 << arg0)) {
-        return 0;
+    if (gCarrotBitfield & (1 << arg0)) { //carrot already collected
+        return FALSE;
     }
-    return 1;
+    return TRUE;
 }
 
 void AddCarrot(s32 arg0) {
     s32 i;
 
-    if (arg0 < 6) {
-        gCarrotBitfield = gCarrotBitfield | (1 << arg0);
+    if (arg0 <= STAGE_GHOST) {
+        gCarrotBitfield |= (1 << arg0);
         gTotalCarrots = 0;
         for (i = 0; i < 6; i++) {
             if (gCarrotBitfield & (1 << i)) {
@@ -758,7 +758,7 @@ const char* GetDirectionName(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C0E78.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C0F1C.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/checkDoor.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C1204.s")
 
@@ -810,7 +810,7 @@ void enterBossRoom(void) {
 
     new_var = 3;
     new_var2 = &new_var;
-    D_800FFEB8 = *new_var2;
+    gGameModeState = *new_var2;
     D_80174878 = 0xB;
 }
 //referred to in US1.0 as "InitField"

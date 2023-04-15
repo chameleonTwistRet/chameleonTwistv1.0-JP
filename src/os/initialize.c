@@ -1,7 +1,7 @@
 #include "common.h"
 #include "PR/os_internal.h"
 
-//#pragma GLOBAL_ASM("asm/nonmatchings/os/initialize/__osInitialize_common.s")
+
 
 #define	OS_CLOCK_RATE		62500000LL
 #define	OS_CPU_COUNTER		(OS_CLOCK_RATE*3/4)

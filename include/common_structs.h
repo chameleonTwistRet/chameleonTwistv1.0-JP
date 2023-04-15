@@ -364,7 +364,7 @@ typedef struct SaveRecord {
 /* 0x00 */ u8 flags[4]; //{checksum,flags,blank,blank}
 /* 0x04 */ s32 perfectCode; 
 /* 0x08 */ u8 stageTimes[7][5][3]; //[stageIndex][timeRank][]
-/* 0x71 */ s8 unk_71;
+/* 0x71 */ s8 index; //index of most recent save file
 /* 0x72 */ s8 unk_72[2];
 /* 0x74 */ u16 bowlingScore;
 /* 0x76 */ s8 pad[10];
@@ -579,21 +579,7 @@ typedef struct Actor {
     /* 0x170 */ f32 unk_170;
 } Actor; //sizeof 0x174
 
-typedef struct unk_80109E94 {
-    /* 0x00 */ u16 flags;
-    /* 0x02 */ char unk_02[0x22];
-    /* 0x24 */ f32 unk_24;
-} unk_80109E94; //sizeof 0x28
 
-typedef struct unktemp {
-    /* 0x00 */ f32 unk_00;
-    /* 0x04 */ char unk_04[0x10];
-    /* 0x14 */ f32 unk_14;
-    /* 0x18 */ char unk_18[0x10];
-    /* 0x28 */ f32 unk_28;
-    /* 0x2C */ char unk_2C[0x10];
-    /* 0x3C */ f32 unk_3C;
-} unktemp; //sizeof 0x40
 
 typedef struct unkStruct02 {
     /* 0x00 */ s32 flags;
@@ -602,38 +588,22 @@ typedef struct unkStruct02 {
     /* 0x0C */ char unk_0C[0x74];
 } unkStruct02; //is this actually size 0x80?
 
-//related to kicking dust
-typedef struct unkStruct03 {
-    /* 0x00 */ s32 unk_00;
-    /* 0x04 */ s32 unk_04;
-    /* 0x08 */ s32 unk_08;
-    /* 0x0C */ f32 unk_0C;
-    /* 0x10 */ f32 unk_10;
-    /* 0x14 */ f32 unk_14;
-    /* 0x18 */ f32 unk_18;
-    /* 0x1C */ char unk_1C[0x14];
-    /* 0x30 */ f32 unk_30;
-    /* 0x34 */ void* unk_34;
-    /* 0x38 */ void* unk_38;
-    /* 0x3C */ char unk_3C[4];
-    /* 0x40 */ void* unk_40;
-    /* 0x44 */ s32 unk_44;
-} unkStruct03; //sizeof 0x48
+
 
 typedef struct SaveFile {
     /* 0x00 */ u8 checksum;
     /* 0x02 */ u8 flags;
-    /* 0x02 */ char unk_02[0x20];
+    /* 0x02 */ char unk_02[0x20]; //room/stage flags?
     /* 0x22 */ char unk_22[4];
     /* 0x26 */ u8 stageAccess;
     /* 0x27 */ u8 stageClear;
     /* 0x28 */ u8 stageCrownClear;
-    /* 0x29 */ u8 unk_29;
+    /* 0x29 */ u8 selectedCharacter;
     /* 0x2A */ u8 stageCrownRecord[7];
     /* 0x31 */ u8 currentStage;
     /* 0x32 */ u8 currentZone;
     /* 0x33 */ u8 unk33; //copies D_8020d8a8
-    /* 0x34 */ u8 unk34[16];
+    /* 0x34 */ u8 unk34[16]; //stores D_802023e0[]
     /* 0x44 */ u8 stageCrowns;
     /* 0x45 */ u8 stageTimes[8][3];
     /* 0x5D */ u8 carrotBitfield; 
@@ -672,7 +642,7 @@ typedef struct d8006266c{
     /* 0x3C */ s32 unk_3C[4];
 } d8006266c; //sizeof 0x40
 
-typedef struct aa1{
+typedef struct aa1{ // TODO: give better name
     /* 0x00 */ s32 unk0;
     /* 0x04 */ s8 unk4;
     /* 0x05 */ s8 unk5;
@@ -694,7 +664,7 @@ typedef struct aa1{
     /* 0x3C */ d8006266c* unk_3C;
     /* 0x40 */ struct aa1* previous;
     /* 0x44 */ struct aa1* next;
-} aa1; //sizeof 0x48 (unk size)
+} aa1; //sizeof 0x48
 
 
 
@@ -754,6 +724,72 @@ typedef struct func_80069858_temp_v0{
     /* 0x08 */ s32 unk8;
     /* 0x0C */ s32 unkC;
 } func_80069858_temp_v0; //sizeof 0x10
+
+typedef struct graphicStruct {
+/*0x0*/         Gfx dlist[0x1000];
+/*0x8000*/      Mtx perspective;
+/*0x8040*/      Mtx lookAt;
+/*0x8080*/      Mtx playerTranslate[4];
+/*0x8180*/      Mtx playerRotate[4];
+/*0x8280*/      Mtx playerScale[4];
+/*0x8380*/      Mtx reticuleTranslate[4][6];
+/*0x8980*/      Mtx reticuleRotate[4][6];
+/*0x8F80*/      Mtx reticuleScale[4][6];
+/*0x9580*/      Mtx toungeTranslate[4][33];
+/*0xb680*/      Mtx toungeRotate[4][33];
+/*0xD780*/      Mtx toungeScale[4][33];
+/*0xf880*/      Mtx actorTanslate[64];
+/*0x10880*/    Mtx actorRotate[64];
+/*0x11880*/    Mtx actorScale[64];
+/*0x12880*/    s8 unk12880[0x4000]; //mtx's for shadows?
+/*0x16880*/    Mtx colliderTransforms[128][3]; // may be wrong.
+/*0x1C880*/    s8 unk1c880[0x2000];
+/*0x1E880*/    Mtx unk1e880[74]; //may be used for "CTTask"s
+} graphicStruct; //sizeof 0x1FB00
+
+typedef struct Shadow{
+    u32 active;
+    Vec3f pos;
+    f32 rotY;
+    f32 rotX;
+    f32 scale;
+    f32 unk1c;
+    f32 rotYArrow;
+    u32 dlist;
+    u32 actorID;
+    Actor* actor;
+}Shadow;
+
+typedef struct Door{
+    s32 index;
+    s32 unk4; //not read?
+    s32 inZone;
+    f32 minX;
+    f32 minZ;
+    f32 maxX;
+    f32 maxZ;
+    f32 toX;
+    f32 toZ;
+    f32 unk24;
+    f32 maxY;
+    f32 unk2C;
+    u32 direction; // index in gCardinalDirections
+    s32 unk34; //not read?
+    s32 unk38; 
+    s32 unk3C; 
+    s32 toZone;
+    s32 unk44; 
+    s32 unk48; 
+}Door;
+
+typedef struct ModelData{
+    s32 vertCount;
+    s32 triCount;
+    Vec3f* verts;
+    Vec3f* tris;
+    Rect* modelBox;
+}ModelData;
+
 
 
 #endif

@@ -1,10 +1,10 @@
 #include "common.h"
 
-Gfx* func_8002C4E8(Gfx*, s32, s32);
+Gfx* func_8002C4E8(graphicStruct*, s32, s32);
 
 
 
-void func_8002CB6C(Gfx*, Gfx*, s32);
+void func_8002CB6C(Gfx*, graphicStruct*, s32);
 void func_8002CBE8(s32);
 void func_8002CDBC(contMain*);
 void func_8004BC48(contMain*);
@@ -13,12 +13,7 @@ void func_8004DDE0(void);
 void func_8004E784(contMain*, u32, s32*, contMain*);
 void func_80054864(void);
 
-#define sizeOf800F0668 0x1FB00
-typedef struct unk80129770 {
-    char unk_00[sizeOf800F0668];
-} unk80129770;
-
-extern unk80129770 D_80129770[9];
+extern graphicStruct gGraphicsList[2];
 
 extern s32 gFramebufferIndex;
 extern s32 D_800F066C;
@@ -30,7 +25,6 @@ extern s32 D_80174980;
 extern s32 D_801749AC;
 
 extern OSTask D_800F04E0[2];
-extern Gfx D_80129720[];
 
 extern OSMesgQueue D_801192D0;
 extern OSMesgQueue D_801192E8;
@@ -82,46 +76,42 @@ s32 func_80026C78(Actor* arg0) {
     return 1 - func_800AF604(arg0->pos.x, arg0->pos.y, arg0->pos.z, 8000.0f);
 }
 
-typedef struct unkMatrix {
-    u8 pad[0x10880];
-    Mtx unk10880[0x1000 / sizeof(Mtx)]; // assumed length
-    Mtx unk11880[0x1000 / sizeof(Mtx)]; // assumed length
-} unkMatrix;
 
-void func_80026CA8(unkMatrix *arg0, Mtx *arg1, u32 arg2, f32 arg3, s32 arg4) {
+//adjustment for BL_Boss_Segment
+void func_80026CA8(graphicStruct *arg0, Mtx *arg1, u32 arg2, f32 arg3, s32 arg4) {
     f32 xPos = 0.0f;
     f32 yPos = 0.0f;
     f32 zPos = 0.0f;
     
     func_800849DC(0, gTongues, &gPlayerActors[0], gCamera);
-    guMtxXFML(&arg0->unk10880[arg2], xPos, yPos, zPos, &xPos, &yPos, &zPos);
-    guMtxXFML(&arg0->unk11880[arg2], xPos, yPos, zPos, &xPos, &yPos, &zPos);
-    guMtxCatL(arg1, &arg0->unk10880[arg2], arg1);
-    guMtxCatL(arg1, &arg0->unk11880[arg2], arg1);
+    guMtxXFML(&arg0->actorRotate[arg2], xPos, yPos, zPos, &xPos, &yPos, &zPos);
+    guMtxXFML(&arg0->actorScale[arg2], xPos, yPos, zPos, &xPos, &yPos, &zPos);
+    guMtxCatL(arg1, &arg0->actorRotate[arg2], arg1);
+    guMtxCatL(arg1, &arg0->actorScale[arg2], arg1);
     func_80059254(arg1, gActors[arg2].pos.x + xPos, gActors[arg2].pos.y + yPos, gActors[arg2].pos.z + zPos, arg3, arg3, 0.0f, arg4);
 }
 
-void func_80026E30(unkMatrix *arg0, Mtx *arg1, u32 arg2, f32 arg3, s32 arg4) {
+void func_80026E30(graphicStruct *arg0, Mtx *arg1, u32 arg2, f32 arg3, s32 arg4) {
     f32 xPos = 0.0f;
     f32 yPos = 0.0f;
     f32 zPos = 0.0f;
     
     func_800849DC(0, gTongues, &gPlayerActors[0], gCamera);
-    guMtxXFML(&arg0->unk10880[arg2], xPos, yPos, zPos, &xPos, &yPos, &zPos);
-    guMtxXFML(&arg0->unk11880[arg2], xPos, yPos, zPos, &xPos, &yPos, &zPos);
-    guMtxCatL(arg1, &arg0->unk10880[arg2], arg1);
-    guMtxCatL(arg1, &arg0->unk11880[arg2], arg1);
+    guMtxXFML(&arg0->actorRotate[arg2], xPos, yPos, zPos, &xPos, &yPos, &zPos);
+    guMtxXFML(&arg0->actorScale[arg2], xPos, yPos, zPos, &xPos, &yPos, &zPos);
+    guMtxCatL(arg1, &arg0->actorRotate[arg2], arg1);
+    guMtxCatL(arg1, &arg0->actorScale[arg2], arg1);
     func_800598C4(arg1, gActors[arg2].pos.x + xPos, gActors[arg2].pos.y + yPos, gActors[arg2].pos.z + zPos, arg3, arg3, 0.0f, arg4);
 }
 
-void func_80026FB8(unkMatrix *arg0, Mtx *arg1, u32 arg2, f32 arg3, f32 arg4, s32 arg5) {
+void func_80026FB8(graphicStruct *arg0, Mtx *arg1, u32 arg2, f32 arg3, f32 arg4, s32 arg5) {
     f32 xPos, yPos, zPos;
     zPos = yPos = xPos = 0.0f;
     
     func_800849DC(0, gTongues, &gPlayerActors[0], gCamera);
     guMtxXFML(arg1, xPos, yPos, zPos, &xPos, &yPos, &zPos);
-    guMtxXFML(&arg0->unk10880[arg2], xPos, yPos, zPos, &xPos, &yPos, &zPos);
-    guMtxXFML(&arg0->unk11880[arg2], xPos, yPos, zPos, &xPos, &yPos, &zPos);
+    guMtxXFML(&arg0->actorRotate[arg2], xPos, yPos, zPos, &xPos, &yPos, &zPos);
+    guMtxXFML(&arg0->actorScale[arg2], xPos, yPos, zPos, &xPos, &yPos, &zPos);
     func_8005747C(gActors[arg2].pos.x + xPos, gActors[arg2].pos.y + yPos + arg4, gActors[arg2].pos.z + zPos, arg3, arg3, 0.0f, arg5);
 }
 
@@ -198,7 +188,7 @@ s32 func_80027650(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/1050/func_8002C900.s")
 
-void* func_8002CAC8(Gfx* arg0, s32 arg1) {
+void* func_8002CAC8(graphicStruct* arg0, s32 arg1) {
     Gfx* temp_v0;
 
     temp_v0 = func_8002C4E8(arg0, arg1, 1);
@@ -219,14 +209,14 @@ void Video_SetTask(Gfx* arg0, Gfx* arg1, s32 arg2) {
     task->data_size = (((s32)arg1 - (s32)arg0) >> 3) << 3;
 }
 
-void func_8002CB6C(Gfx* arg0, Gfx* arg1, s32 arg2) {
+void func_8002CB6C(Gfx* arg0, graphicStruct* arg1, s32 arg2) {
 
     if (D_80174998 < 3) {
         arg0 = func_8002CAC8(arg1, arg2);
     }
     
     Video_SetTask(arg1, arg0, arg2);
-    osWritebackDCache(arg1, 0x1FB00);
+    osWritebackDCache(arg1, sizeof(graphicStruct));
     func_80084F80(&D_800F04E0[arg2], arg2);
 }
 
@@ -236,7 +226,7 @@ void func_8002CBE8(s32 arg0) {
     osViSwapBuffer(&D_803B5000[arg0].data);
     osViSetSpecialFeatures(OS_VI_GAMMA_ON|OS_VI_GAMMA_DITHER_ON);
     
-    if (D_801192E8.validCount >= D_801192E8.msgCount) {
+    if (MQ_IS_FULL(&D_801192E8)) {
         osRecvMesg(&D_801192E8, NULL, 1);
     }
     
@@ -248,7 +238,7 @@ void func_8002CBE8(s32 arg0) {
 s32 func_8002CCA0(void* arg0, s32 arg1) {
     s32 sp1C;
 
-    if (D_80174998 >= 3) {
+    if (D_80174998 > 2) {
         sp1C = func_8002C900(arg0, arg1);
     }
 
@@ -287,7 +277,7 @@ void func_8002CD94(s32 arg0) {
 void func_8002CDBC(contMain* arg0) {
     s32 i;
 
-    if (gCurrentStage != 7) {
+    if (gCurrentStage != STAGE_VS) {
         D_80168D78[0] = 0;
         return;
     }
@@ -308,7 +298,7 @@ void func_8002CE54(void) {
     D_800F066C++;
     func_8002CD94(D_800F066C);
     Controller_StartRead();
-    func_8002CB6C(0, (Gfx*)&D_80129770[gFramebufferIndex], gFramebufferIndex);
+    func_8002CB6C(0, &gGraphicsList[gFramebufferIndex], gFramebufferIndex);
     
     for (i = 0; i < 4; i++) {
         Controller_Zero(&sp28[i]);
@@ -345,7 +335,7 @@ void func_8002CE54(void) {
     func_8004DDE0();
     func_80054864();
     var = 1 - gFramebufferIndex;
-    func_8002CCA0(&D_80129770[var], var);
+    func_8002CCA0(&gGraphicsList[var], var);
     func_8002CBE8(gFramebufferIndex);
     gFramebufferIndex = 1 - gFramebufferIndex;
 }

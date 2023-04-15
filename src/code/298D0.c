@@ -26,8 +26,8 @@ s32 func_8004E4D0(void) {
     osCreateMesgQueue(&siQueue, &mesgBuf, 1);
     osSetEventMesg(OS_EVENT_SI, &siQueue, (OSMesg)1);
     osContInit(&siQueue, &contPat, D_80175640);
-    osCreateMesgQueue(&D_80175620, &D_80175638, 1);
-    osSetEventMesg(OS_EVENT_SI, &D_80175620, NULL);
+    osCreateMesgQueue(&gEepromMsgQ, &D_80175638, 1);
+    osSetEventMesg(OS_EVENT_SI, &gEepromMsgQ, NULL);
 
     for (i = 0; i < MAXCONTROLLERS; i++) {
         D_80175668[i] = -1;
@@ -50,9 +50,9 @@ s32 func_8004E4D0(void) {
     for (i = 0; i < MAXCONTROLLERS; i++) {
         D_80176960[i] = 0;
         if (((contPat >> i) & 1) && (D_80175640[i].type & CONT_JOYPORT) && (D_80175640[i].status & CONT_CARD_ON)) {
-            retPfs = osPfsInitPak(&D_80175620, &gRumblePfs[i], i);
+            retPfs = osPfsInitPak(&gEepromMsgQ, &gRumblePfs[i], i);
             if (retPfs == PFS_ERR_ID_FATAL || retPfs == PFS_ERR_DEVICE) {
-                retRumble = osMotorInit(&D_80175620, &gRumblePfs[i], i);
+                retRumble = osMotorInit(&gEepromMsgQ, &gRumblePfs[i], i);
                 switch (retRumble) {
                 default:
                     D_80176960[i] = 1;
@@ -76,7 +76,7 @@ s32 func_8004E4D0(void) {
 }
 
 void Controller_StartRead(void) {
-    osContStartReadData(&D_80175620);
+    osContStartReadData(&gEepromMsgQ);
 }
 
 void Controller_Zero(contMain* arg0) {
@@ -99,7 +99,7 @@ void func_8004E784(contMain* arg0, s32 arg1, s32* arg2, contMain* arg3) {
     contMain* var_s1;
     s32 i;
 
-    osRecvMesg(&D_80175620, NULL, 1);
+    osRecvMesg(&gEepromMsgQ, NULL, 1);
     osContGetReadData(&D_80175650[0]);
 
     // for each controller
