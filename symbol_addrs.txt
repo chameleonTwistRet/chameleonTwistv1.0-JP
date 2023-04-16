@@ -962,3 +962,4 @@ aa1_checkControllerRumble = 0x8007320c; // type:func rom:0x4e60c
 sTextboxCurrentLine = 0x800feba4; // type:u32 size:0x4 rom:0xd9fa4
 gOneRun = 0x801b1eec; // type:u16 size:0x2
 alSynDelete = 0x800e68F0; // type:func
+gSegTable = 0x80100118;

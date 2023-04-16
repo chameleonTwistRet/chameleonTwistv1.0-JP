@@ -1036,7 +1036,30 @@ void func_80094E0C(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80095EC8.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009603C.s")
+extern char D_8010DD40[];   //エラー %d\n | Error %d\n
+extern char D_8010DD4C[];   //%sセグメント(%dk)読み込み(%X)\n | %s segment (%dk) read (%X)\n
+
+s32 func_8009603C(s32 arg0, s32 arg1) {
+    s32 temp_s0;
+    s32 temp_s1;
+    unk80100F50* temp_s3;
+    segTableEntry* temp_s2;
+
+    temp_s2 = &gSegTable[arg0];                            
+    temp_s3 = &D_80100F50[arg0];                            
+    temp_s1 = (u32) temp_s2->ramAddrEnd - (u32) temp_s2->ramAddrStart;
+    temp_s3->base_address = arg1 - temp_s1;
+    temp_s3->unk4 = (u32) arg1;
+    temp_s0 = dma_copy(temp_s2->romAddrStart, (void* ) temp_s3->base_address, temp_s1);
+    temp_s3->unk4 = temp_s3->base_address + temp_s1;
+    if (temp_s0 < 0) {
+        DummiedPrintf(D_8010DD40, temp_s0);
+        return 0;
+    }
+    while (func_800A72E8(temp_s0) == 0) {}
+    DummiedPrintf(D_8010DD4C, temp_s2->name, (u32) temp_s1 >> 0xA, temp_s1);
+    return (s32) temp_s3->base_address;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80096128.s")
 

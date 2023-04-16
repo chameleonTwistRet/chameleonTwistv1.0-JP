@@ -189,10 +189,10 @@ s32 func_80027650(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/1050/func_8002C900.s")
 
 void* func_8002CAC8(graphicStruct* arg0, s32 arg1) {
-    Gfx* temp_v0;
+    Gfx* temp_v0;   //gdl
 
     temp_v0 = func_8002C4E8(arg0, arg1, 1);
-    gDPFullSync(temp_v0++);
+    gDPFullSync(temp_v0++);                    //Signals the end of a frame
     gSPEndDisplayList(temp_v0++);
     return temp_v0;
 }

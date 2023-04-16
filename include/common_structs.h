@@ -370,13 +370,13 @@ typedef struct SaveRecord {
 /* 0x76 */ s8 pad[10];
 } SaveRecord; //sizeof 0x80
 
-typedef struct unkSpriteDmaStruct {
+typedef struct segTableEntry {
     char* name;
     void* romAddrStart;
     void* romAddrEnd;
     void* ramAddrStart;
-    void* unk;
-} unkSpriteDmaStruct;
+    void* ramAddrEnd;
+} segTableEntry;
 
 typedef struct unk80100F50 {
     /* 0x00 */ u32 base_address;
