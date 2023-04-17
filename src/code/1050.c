@@ -197,7 +197,7 @@ void* func_8002CAC8(graphicStruct* arg0, s32 arg1) {
     return temp_v0;
 }
 
-void Video_SetTask(Gfx* arg0, Gfx* arg1, s32 arg2) {
+void Video_SetTask(graphicStruct* arg0, Gfx* arg1, s32 arg2) {
     OSTask_t* task = &D_800F04E0[arg2].t;
     task->ucode_boot = (u64*)rspbootTextStart;
     task->ucode_boot_size =  ((s32)rspbootTextEnd - (s32)rspbootTextStart);

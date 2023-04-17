@@ -1036,30 +1036,7 @@ void func_80094E0C(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80095EC8.s")
 
-extern char D_8010DD40[];   //エラー %d\n | Error %d\n
-extern char D_8010DD4C[];   //%sセグメント(%dk)読み込み(%X)\n | %s segment (%dk) read (%X)\n
-
-s32 func_8009603C(s32 arg0, s32 arg1) {
-    s32 temp_s0;
-    s32 temp_s1;
-    unk80100F50* temp_s3;
-    segTableEntry* temp_s2;
-
-    temp_s2 = &gSegTable[arg0];                            
-    temp_s3 = &D_80100F50[arg0];                            
-    temp_s1 = (u32) temp_s2->ramAddrEnd - (u32) temp_s2->ramAddrStart;
-    temp_s3->base_address = arg1 - temp_s1;
-    temp_s3->unk4 = (u32) arg1;
-    temp_s0 = dma_copy(temp_s2->romAddrStart, (void* ) temp_s3->base_address, temp_s1);
-    temp_s3->unk4 = temp_s3->base_address + temp_s1;
-    if (temp_s0 < 0) {
-        DummiedPrintf(D_8010DD40, temp_s0);
-        return 0;
-    }
-    while (func_800A72E8(temp_s0) == 0) {}
-    DummiedPrintf(D_8010DD4C, temp_s2->name, (u32) temp_s1 >> 0xA, temp_s1);
-    return (s32) temp_s3->base_address;
-}
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009603C.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80096128.s")
 
@@ -1575,7 +1552,7 @@ s32 dma_copy(void* arg0, void* arg1, s32 size) {
     osInvalICache(arg1, size);
     osInvalDCache(arg1, size);
     
-    temp_v0 = func_800A73EC(arg0, arg1, size, dmaSizeCalc );
+    temp_v0 = func_800A73EC(arg0, arg1, size, dmaSizeCalc);
 
     if (temp_v0 < 0) {
         //"ＤＭＡ生成エラー\n"("DMA generation error")
@@ -1734,13 +1711,12 @@ s32 RecordTime_ParseToSecs(s32* arg0) {
 }
 
 //sets record time arg1 to time arg0
-void RecordTime_SetTo(s32 arg0, u8 *arg1) {
+void RecordTime_SetTo(s32 arg0, u8* arg1) {
     u8 temp;
-    u8 *new_var = arg1;
 
     arg1[2] = arg0;
-    temp = new_var[0] & 0xF0;
-    arg1[1] = ( (u16)(arg0 & 0xFF00)) >> 8;
+    temp = arg1[0] & 0xF0;
+    arg1[1] = (u16)(arg0 & 0xFF00) >> 8;
     arg1[0] = (arg0 & 0xFF0000) >> 16;
     arg1[0] = temp | arg1[0];
 }
@@ -1934,7 +1910,7 @@ void func_800A878C(SaveFile* arg0) {
     _bzero(arg0, sizeof(SaveFile));
     //"ファイルクリア"("file clear")
     DummiedPrintf(D_8010EFD8);
-    RecordTime_SetTo(300, &arg0->stageTimes[6]);
+    RecordTime_SetTo(300, (u8*)&arg0->stageTimes[6]);
     arg0->carrotBitfield = 0;
 }
 
