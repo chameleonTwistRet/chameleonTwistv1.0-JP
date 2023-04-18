@@ -1036,9 +1036,57 @@ void func_80094E0C(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80095EC8.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009603C.s")
+//#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009603C.s")
+extern char D_8010DD40[];   //エラー %d\n | Error %d\n
+extern char D_8010DD4C[];   //%sセグメント(%dk)読み込み(%X)\n | %s segment (%dk) read (%X)\n
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80096128.s")
+s32 func_8009603C(s32 segmentID, s32 arg1) {
+    s32 temp_s0;
+    s32 temp_s1;
+    unk80100F50* temp_s3;
+    segTableEntry* segment;
+
+    segment = &gSegTable[segmentID];                            
+    temp_s3 = &D_80100F50[segmentID];                            
+    temp_s1 = (u32) segment->ramAddrEnd - (u32) segment->ramAddrStart;
+    temp_s3->base_address = arg1 - temp_s1;
+    temp_s3->unk4 = (u32) arg1;
+    temp_s0 = dma_copy(segment->romAddrStart, (void* ) temp_s3->base_address, temp_s1);
+    temp_s3->unk4 = temp_s3->base_address + temp_s1;
+    if (temp_s0 < 0) {
+        DummiedPrintf(D_8010DD40, temp_s0);
+        return 0;
+    }
+    while (func_800A72E8(temp_s0) == 0) {}
+    DummiedPrintf(D_8010DD4C, segment->name, (u32) temp_s1 >> 0xA, temp_s1);
+    return (s32) temp_s3->base_address;
+}
+
+extern segTableEntry gStageLoadData[];
+extern unk80100F50 D_80100F50[];
+extern char D_8010DD6C[];
+extern char D_8010DD78[];
+
+s32* func_80096128(s32 stageToLoad, s32 inpAddr) {
+    segTableEntry* segData = &gStageLoadData[stageToLoad];
+    s32 size = (u32) segData->ramAddrStart - (u32) segData->romAddrEnd;
+    s32 temp_v0_2;
+    
+    D_80100F50[0x3].base_address = inpAddr - size;
+    D_80100F50[0x3].unk4 = D_80100F50[0x3].base_address + size;
+    temp_v0_2 = dma_copy(segData->romAddrStart, D_80100F50[0x3].base_address, size);
+    if (temp_v0_2 < 0) {
+        //"エラー %d\n" | "Error %d\n"
+        DummiedPrintf(D_8010DD6C, temp_v0_2);
+        return 0;
+    } else {
+        while (func_800A72E8(temp_v0_2) == 0);
+        //"マップデータ(%dk)読み込み(%X)\n" | Map data(%dk)read(%X)\n
+        DummiedPrintf(D_8010DD78, (u32)size / 1024, size);
+        return D_80100F50[3].base_address;
+    }
+}
+
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/loadStageByIndex.s")
 
