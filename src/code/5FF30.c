@@ -1036,6 +1036,8 @@ void func_80094E0C(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80095EC8.s")
 
+/* SEGMENT ADDRESS FUNCTIONS */
+
 //#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009603C.s")
 extern char D_8010DD40[];   //エラー %d\n | Error %d\n
 extern char D_8010DD4C[];   //%sセグメント(%dk)読み込み(%X)\n | %s segment (%dk) read (%X)\n
@@ -1062,6 +1064,7 @@ s32 func_8009603C(s32 segmentID, s32 arg1) {
     return (s32) temp_s3->base_address;
 }
 
+// Probably used to load Segment 3 data using DMA per level in use
 extern segTableEntry gStageLoadData[];
 extern unk80100F50 D_80100F50[];
 extern char D_8010DD6C[];
