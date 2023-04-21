@@ -217,10 +217,10 @@ void func_80056DF4(unkStruct02* arg0, unkStruct02* arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/Memory_Free.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80056EB4.s")
-// void func_80056EB4(void) {
-//     func_80056CDC(D_801191A0, (D_801FFB78 - D_801191A0));
-// }
+//#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80056EB4.s")
+void func_80056EB4(void) {
+    func_80056CDC((s32) D_801191A0, (s32) D_801FFB78 - (s32) D_801191A0);
+}
 
 
 void* mallloc(s32 arg0) {

@@ -662,7 +662,28 @@ void Task_Clear(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/TaskInit.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008CE94.s")
+//#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008CE94.s")
+// Swap struct members
+typedef struct unk_func_8008CE94 {
+    s16 unk0;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+} unk_func_8008CE94;
+
+void func_8008CE94(unk_func_8008CE94* arg0) {
+    unk_func_8008CE94* temp_v0;
+    unk_func_8008CE94* temp_v1;
+
+    temp_v0 = arg0->unkC;
+    temp_v1 = arg0->unk10;
+    temp_v0->unk10 = temp_v1;
+    temp_v1->unkC = temp_v0;
+    arg0->unk0 = 0;
+    free(arg0);
+}
+
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/bzero32.s")
 
@@ -1223,7 +1244,12 @@ void func_8009B45C(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009BBD8.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009BC30.s")
+//#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009BC30.s")
+// Save Wrapper? [arg0 probably used somehow]
+void func_8009BC30(s32 arg0) {
+    SaveData_UpdateRecords();
+    gGameModeState += 1;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009BC60.s")
 
@@ -1358,7 +1384,13 @@ void func_8009D19C(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A03B8.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A07E0.s")
+//#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A07E0.s")
+void func_800A07E0(void) {
+    func_8008F16C();
+    gameModeCurrent = 7;
+    gGameModeState = 7;
+}
+
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/Process_BattleMenu.s")
 
@@ -1516,7 +1548,17 @@ void func_800A54EC(s32 arg0) {
 
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A54F4.s")
+//#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A54F4.s")
+typedef struct unk_func_800A54F4 {
+    char unk0[0x62];
+    s16 unk62;
+} unk_func_800A54F4;
+
+void func_800A54F4(unk_func_800A54F4* arg0) {
+    if (func_8008EC90() != 0) {
+        setProcessType((s32) arg0->unk62);
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A5524.s")
 
