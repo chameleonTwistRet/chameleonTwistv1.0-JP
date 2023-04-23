@@ -193,7 +193,7 @@ extern s32 gControllerNo;
 extern s32 D_80168D78[];
 extern s32 gActorCount;
 extern playerActor gPlayerActors[4];
-extern s32 D_80168E5C;
+//extern s32 D_80168E5C;
 extern Tongue gTongues[4];
 extern Actor gActors[ACTORS_MAX]; //currently loaded actor structs
 extern pole D_80170968[64]; //currently loaded pole structs
@@ -253,7 +253,7 @@ typedef u8 Addr[];
 extern char D_8010F1EC[];
 extern char D_8010F1FC[];
 extern u32 D_80168DA0;
-extern f32 D_80168DE4;
+//extern f32 D_80168DE4;
 extern char D_8010ECF8[];
 extern char D_8010ED04[];
 extern char D_8010ED0C[];

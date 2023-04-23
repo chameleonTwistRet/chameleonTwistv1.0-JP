@@ -2,7 +2,7 @@
 
 #define FLASH_CMD_PROGRAM_PAGE  0xA5000000
 
-OSPiHandle __CartRomHandle;
+extern OSPiHandle __CartRomHandle;  //bss
 extern OSPiHandle* __osDiskHandle;
 
 OSPiHandle* osLeoDiskInit(void) {

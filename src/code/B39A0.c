@@ -1,8 +1,7 @@
 #include "common.h"
 
-extern f32 D_80168DB0;
+extern playerActor gPlayerActors[4];
 extern s32 D_801749A0;
-extern s32 D_80168E24;
 extern s32 D_801749A0;
 
 #define SQROOT_2_DIV_2 0.70710678f
@@ -46,7 +45,7 @@ void func_800D87F8(Collider* arg0, s32 sfxID, s32 arg2) {
 
 void func_800D887C(Collider* arg0, s32 arg1, s32 arg2) {
     s32 new_var;
-    if (((new_var = arg0->unk_00) == D_80168E24) && (((new_var + D_801749A0) % arg2) == 0)) {
+    if (((new_var = arg0->unk_00) == gPlayerActors[0].surface) && (((new_var + D_801749A0) % arg2) == 0)) {
         func_80088698(PLAYSFXAT(arg1, arg0->sfxPos, 0, 0));
     }
 }
@@ -102,7 +101,7 @@ void func_800D8918(Collider* arg0, s32 sfxID, s32 arg2, f32 arg3, f32 arg4, f32 
         }
         if (var_v0 != 0) {
             sp34.z = (*new_var) + (var_f12 - sp44) * SQROOT_2_DIV_2;
-            sp34.y = D_80168DB0;
+            sp34.y = gPlayerActors[0].pos.y;
             sp34.x = (sp44 + var_f12) * SQROOT_2_DIV_2;
             sp34.x = arg3 + sp34.x;
             func_80088698(playSoundEffect(sfxID, &sp34.z, &sp34.y, &sp34.x, 8, 0));
@@ -163,7 +162,7 @@ void func_800D8B28(Collider* arg0, s32 sfxID, s32 arg2, f32 arg3, f32 arg4, f32 
 
         if (var_v0 != 0) {
             sp30.z = arg4 + sp40;
-            sp30.y = D_80168DB0;
+            sp30.y = gPlayerActors[0].pos.y;
             sp30.x = arg3 + sp3C;
             func_80088698(playSoundEffect(sfxID, &sp30.z, &sp30.y, &sp30.x, 0, 0));
         }

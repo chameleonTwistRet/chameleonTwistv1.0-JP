@@ -2,8 +2,8 @@
 
 //these seem to solely be controller-based functions
 
-u16 D_80175678[MAXCONTROLLERS];
-contMain gContMain[MAXCONTROLLERS];
+//u16 D_80175678[MAXCONTROLLERS];
+//contMain gContMain[MAXCONTROLLERS];
 
 extern s32 RumblePakError;
 extern void* D_80175638;

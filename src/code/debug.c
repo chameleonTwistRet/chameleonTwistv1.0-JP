@@ -1,8 +1,8 @@
 #include "common.h"
 
-u8 D_80176810[4];
-u8 D_80176814[4];
-u8 D_80176818[4];
+//static u8 D_80176810[4];
+//static u8 D_80176814[4];
+//static u8 D_80176818[4];
 
 typedef struct unkTextStruct {
 char strings[4][0x64];
