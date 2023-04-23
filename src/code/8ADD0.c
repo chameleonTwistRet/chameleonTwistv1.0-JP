@@ -69,11 +69,13 @@ void func_800B09C0(s32 arg0, newStruct* arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B1DD4.s")
 
+#ifdef NON_MATCHING
+// TODO: D_80168E14 migration
 void func_800B2070(s32 arg0) {
     playerActor* gPlayer = &gPlayerActors[0];
     Rect sp24;
     Vec3f sp18;
-    
+
     sp24.min.x = -172.0f;
     sp24.max.x = 100.0f;
     sp24.min.y = -155.0f;
@@ -88,7 +90,12 @@ void func_800B2070(s32 arg0) {
         //D_80168E14 = 1;
         gPlayerActors->squishTimer = 1;
     }
+
+    //(((gPlayerActors->squishTimer == 0) && (gPlayerActors->canJump == 0)) && (isPointInRect(sp18, &sp24) != 0)) ? (gPlayerActors->squishTimer = 0) : (gPlayerActors->squishTimer = 1);
 }
+#else
+#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B2070.s")
+#endif
 
 void func_800B2144(Collider* arg0, unkStruct14* arg1) {
     arg0->unk_AC = arg1->unk_38;
@@ -726,9 +733,14 @@ void func_800BE664(playerActor * arg0) {
 //    func_8004BA5C(D_80240D6C[currentZone].collisionType);
 //}
 
+#ifdef NON_MATCHING
+// TODO: D_80240D6C migrate
 void func_800BF5A4(void) {
     func_8004BA5C(gZoneCollisions[currentZone].unk8C);
 }
+#else
+#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BF5A4.s")
+#endif
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BF5E8.s")
 
