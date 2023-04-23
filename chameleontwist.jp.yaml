@@ -25,16 +25,19 @@ segments:
   - name: header
     type: header
     start: 0x0
+
   - name: boot
     type: bin
     start: 0x40
+
   - name: main
     type: code
     start: 0x1000
     vram: 0x80025C00
+    bss_size: 0x13A880
     subsegments:
-      - [0x1000, hasm]
-      - [0x1050, c, code/1050]
+      - [0x1000, hasm]            # ENTRY (should split these some time)
+      - [0x1050, c, code/1050]    # CODE
       - [0x84E0, c, code/84E0]
       - [0x298D0, c, code/298D0]
       - [0x29DF0, c, code/debug]
@@ -269,7 +272,8 @@ segments:
       - [0xEC590, rodata, audio/seq] #80111190
       - [0xEC5A0, rodata, audio/reverb] #801111A0
       - [0xECDD0, rodata, 5FF30]
-      #80111C90 - 8024C510 bss
+      - { start: 0xED090, type: bss, vram: 0x80111C90 }   # This has the same address as below as bss isnt in the ROM
+
   - name: assets0
     type: code
     subalign: 8
