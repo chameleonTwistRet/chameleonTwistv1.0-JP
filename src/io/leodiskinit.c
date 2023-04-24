@@ -2,11 +2,12 @@
 
 #define FLASH_CMD_PROGRAM_PAGE  0xA5000000
 
-OSPiHandle __CartRomHandle;
+extern OSPiHandle __CartRomHandle;  //bss
 extern OSPiHandle* __osDiskHandle;
 
+#ifdef NON_MATCHING
 OSPiHandle* osLeoDiskInit(void) {
-   u32 saveMask;
+    u32 saveMask;
 
     __CartRomHandle.type = DEVICE_TYPE_64DD;
     __CartRomHandle.baseAddress = FLASH_CMD_PROGRAM_PAGE;
@@ -30,3 +31,6 @@ OSPiHandle* osLeoDiskInit(void) {
 	
 	return &__CartRomHandle;
 }
+#else
+#pragma GLOBAL_ASM("asm/nonmatchings/io/leodiskinit/osLeoDiskInit.s")
+#endif

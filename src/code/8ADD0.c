@@ -1,6 +1,7 @@
 #include "common.h"
 
 extern s16 gTotalCarrots;
+extern playerActor gPlayerActors[4];
 extern unkStruct07 D_802019A8[];
 extern Collision gZoneCollisions[];
 extern CardinalDirection gCardinalDirections[5]; // including "NO_DIR"
@@ -23,8 +24,8 @@ s32 isPickup(Actor*);
 void pickup_collide_func(s32);
 
 extern f32 D_8010FB50;
-extern s32 D_80168DFC;
-extern s32 D_80168E14;
+//extern s32 D_80168DFC;
+//extern s32 D_80168E14;
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800AF9D0.s")
 
@@ -68,11 +69,13 @@ void func_800B09C0(s32 arg0, newStruct* arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B1DD4.s")
 
+#ifdef NON_MATCHING
+// TODO: D_80168E14 migration
 void func_800B2070(s32 arg0) {
     playerActor* gPlayer = &gPlayerActors[0];
     Rect sp24;
     Vec3f sp18;
-    
+
     sp24.min.x = -172.0f;
     sp24.max.x = 100.0f;
     sp24.min.y = -155.0f;
@@ -83,10 +86,16 @@ void func_800B2070(s32 arg0) {
     sp18.y = gPlayer->pos.y;
     sp18.z = gPlayer->pos.z;
     
-    if (((gPlayerActors->squishTimer == 0) && (D_80168DFC == 0)) && (isPointInRect(sp18, &sp24) != 0)) {
-        D_80168E14 = 1;
+    if (((gPlayerActors->squishTimer == 0) && (gPlayerActors->canJump == 0)) && (isPointInRect(sp18, &sp24) != 0)) {
+        //D_80168E14 = 1;
+        gPlayerActors->squishTimer = 1;
     }
+
+    //(((gPlayerActors->squishTimer == 0) && (gPlayerActors->canJump == 0)) && (isPointInRect(sp18, &sp24) != 0)) ? (gPlayerActors->squishTimer = 0) : (gPlayerActors->squishTimer = 1);
 }
+#else
+#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B2070.s")
+#endif
 
 void func_800B2144(Collider* arg0, unkStruct14* arg1) {
     arg0->unk_AC = arg1->unk_38;
@@ -720,9 +729,18 @@ void func_800BE664(playerActor * arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BF524.s")
 
+//void func_800BF5A4(void) {
+//    func_8004BA5C(D_80240D6C[currentZone].collisionType);
+//}
+
+#ifdef NON_MATCHING
+// TODO: D_80240D6C migrate
 void func_800BF5A4(void) {
-    func_8004BA5C(D_80240D6C[currentZone].collisionType);
+    func_8004BA5C(gZoneCollisions[currentZone].unk8C);
 }
+#else
+#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BF5A4.s")
+#endif
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BF5E8.s")
 

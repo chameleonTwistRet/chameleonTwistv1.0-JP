@@ -2196,7 +2196,7 @@ void func_800AAB0C(s32 arg0) {
     D_8017499C = 0;
     D_80174998 = 0;
     func_800AAAC8();
-    D_80168DE4 = 0.0f;
+    gPlayerActors->yAngle = 0.0f;
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800AACFC.s")

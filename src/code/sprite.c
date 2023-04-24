@@ -1130,7 +1130,7 @@ void func_8007ABF8(bf8* arg0) {
 
 void func_8007AC2C(s32* arg0) {
     if ((D_800FEA30 > 0) && (D_800FEA30 < 3)) {
-        D_80168E5C = 1;
+        gPlayerActors->groundMovement = 1;
         *arg0 += 10;
     }
 }
