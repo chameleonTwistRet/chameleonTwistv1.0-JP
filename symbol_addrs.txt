@@ -963,3 +963,5 @@ sTextboxCurrentLine = 0x800feba4; // type:u32 size:0x4 rom:0xd9fa4
 gOneRun = 0x801b1eec; // type:u16 size:0x2
 alSynDelete = 0x800e68F0; // type:func
 gSegTable = 0x80100118;
+D_80175678 = 0x80175678; // size:0x8
+D_801756C0 = 0x801756C0; // size:0x8
