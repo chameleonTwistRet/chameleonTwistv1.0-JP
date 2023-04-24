@@ -2,16 +2,20 @@
 
 //these seem to solely be controller-based functions
 
-//u16 D_80175678[MAXCONTROLLERS];       Needs Migration
-//contMain gContMain[MAXCONTROLLERS];
-
+/* Externs */
 extern s32 RumblePakError;
-extern void* D_80175638;
-extern OSContStatus D_80175640[MAXCONTROLLERS];
-extern OSContPad D_80175650[MAXCONTROLLERS];
-extern OSPfs gRumblePfs[MAXCONTROLLERS];
 extern s32 D_80176960[];
-extern s32 D_80175668[];
+
+/* Migrated BSS */
+OSMesgQueue gEepromMsgQ;
+OSMesg D_80175638;
+OSContStatus D_80175640[MAXCONTROLLERS];
+OSContPad D_80175650[MAXCONTROLLERS];
+s32 D_80175668[MAXCONTROLLERS];       
+u16 D_80175678[MAXCONTROLLERS];       
+contMain gContMain[MAXCONTROLLERS];   
+u16 D_801756C0[MAXCONTROLLERS];       
+OSPfs gRumblePfs[MAXCONTROLLERS];     
 
 /* mainproc() */
 s32 func_8004E4D0(void) {
