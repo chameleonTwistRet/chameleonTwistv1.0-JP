@@ -273,6 +273,8 @@ segments:
       - [0xEC5A0, rodata, audio/reverb] #801111A0
       - [0xECDD0, rodata, 5FF30]
       - { start: 0xED090, type: bss, vram: 0x80111C90 }   # This has the same address as below as bss isnt in the ROM
+      - { start: 0xED090, type: bss, vram: 0x80175870, name: debug }
+      - { start: 0xED090, type: bss, vram: 0x80176820, name: restof}
 
   - name: assets0
     type: code
