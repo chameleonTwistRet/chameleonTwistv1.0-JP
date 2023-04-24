@@ -11,7 +11,7 @@ As the decompilation has not neared completion we don't have any systems in plac
 
 We have started work on a modding system that will allow you to use the decompilation to make mods for the game, but more areas of the game need to be decompiled so that we know how to replace them.
 
-If you are interested with helping see the [Developing](#Developing) section below.
+If you are interested with helping with the decompilation see the [Developing](#Developing) section below.
 
 ## Developing:
 
