@@ -343,7 +343,7 @@ s32 BGMLoad(void) {
 
     if ((gIsPaused != 0) && (D_800FF604 == 0)) {
         if (alCSPGetState(gBGMPlayerP) == AL_PLAYING) {
-            alCSPSetVol(gBGMPlayerP, 0);
+            alSeqpSetVol(gBGMPlayerP, 0);
             alCSPStop(gBGMPlayerP);
             D_800FF608 = 1;
         } else {
@@ -358,7 +358,7 @@ s32 BGMLoad(void) {
             if ((gameModeCurrent != GAME_MODE_DEMO) && (gameModeCurrent != GAME_MODE_DEMO_2)) {
                 alCSPPlay(gBGMPlayerP);
             }
-            alCSPSetVol(gBGMPlayerP, D_801FCA22);
+            alSeqpSetVol(gBGMPlayerP, D_801FCA22);
         }
         D_800FF604 = gIsPaused;
         return 0;
@@ -374,7 +374,7 @@ s32 BGMLoad(void) {
             if (D_801FCA20.unk_00 < 0) {
                 D_801FCA20.unk_00 = 0;
             }
-            alCSPSetVol(gBGMPlayerP, D_801FCA20.unk_00);
+            alSeqpSetVol(gBGMPlayerP, D_801FCA20.unk_00);
         } 
     }
     
@@ -411,7 +411,7 @@ s32 BGMLoad(void) {
     alCSPSetSeq(gBGMPlayerP, gBGMSeqP);
     D_801FCA20 = D_800FF4D0[D_800FF624.unk_00];
     alCSPPlay(gBGMPlayerP);
-    alCSPSetVol(gBGMPlayerP, D_801FCA22);
+    alSeqpSetVol(gBGMPlayerP, D_801FCA22);
     D_800FF620 = -1;
     D_801FC9B4 = 0;
     D_801FC9A8 = 0;
@@ -470,7 +470,7 @@ s32 func_8008BF20(void) {
     return 0;
 }
 s32 func_8008BFA8(s32 vol) {
-    alCSPSetVol(gBGMPlayerP, vol);
+    alSeqpSetVol(gBGMPlayerP, vol);
     D_801FCA20.unk_00 = vol;
     return 0;
 }
