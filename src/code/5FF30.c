@@ -841,7 +841,95 @@ void func_8008FE50(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/Porocess_Mode0.s")
 
+#ifdef NON_MATCHING
+extern s8 D_8010DB20;
+extern s32 sGameModeStart;
+
+void MainLoop(void) {
+    func_8002D080();
+    if (sGameModeStart != -1) {
+        gameModeCurrent = sGameModeStart;
+    }
+    gGameModeState = 0;
+    osRecvMesg(&D_801192E8, NULL, 1);
+    SaveData_LoadRecords(gGameRecords.flags);
+    if (SaveData_RecordChecksum() != gGameRecords.flags[0]) {
+        SaveData_ClearRecords();
+    }
+    gIsStero = gGameRecords.flags[1] & 1;
+    osRecvMesg(&D_801192E8, NULL, 1);
+loop_5:
+    switch (gameModeCurrent) {
+    case GAME_MODE_OVERWORLD:
+        Porocess_Mode0();
+        goto loop_5;
+    case 1:
+        Process_StageSelect();
+        goto loop_5;
+    case 2:
+        FileWork();
+        goto loop_5;
+    case 3:
+        func_8009C904();
+        goto loop_5;
+    case 4:
+        func_800A9F84();
+        goto loop_5;
+    case 5:
+        func_800AA3F0();
+        goto loop_5;
+    case 20:
+        func_800ADE70();
+        goto loop_5;
+    case 21:
+        func_800AE4AC();
+        goto loop_5;
+    case 6:
+        func_800A2BDC();
+        goto loop_5;
+    case 7:
+        Process_BattleMenu();
+        goto loop_5;
+    case 8:
+        func_800A4320();
+        goto loop_5;
+    case 9:
+        Process_GameOver();
+        goto loop_5;
+    case 10:
+        Process_JSSLogo();
+        goto loop_5;
+    case 11:
+        Process_PreCredits();
+        goto loop_5;
+    case 12:
+        func_800A1D38();
+        goto loop_5;
+    case 13:
+        func_800A6DD8();
+        goto loop_5;
+    case 14:
+        func_800A07E0();
+        goto loop_5;
+    case 16:
+        Process_Ranking();
+        goto loop_5;
+    case 17:
+        func_800557F8();
+        goto loop_5;
+    case 18:
+        Process_Boot();
+        goto loop_5;
+    case 19:
+        Process_SunsoftLogo();
+        goto loop_5;
+    }
+    DummiedPrintf(&D_8010DB20, gameModeCurrent);
+    goto loop_5;
+}
+#else
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/MainLoop.s")
+#endif
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800908C0.s")
 
