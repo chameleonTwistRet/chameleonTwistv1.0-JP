@@ -70,6 +70,7 @@ void func_80025EE8(void) {
     
 }
 
+// func_80025EF0(playerActor*, Tongue*, s32)
 #pragma GLOBAL_ASM("asm/nonmatchings/code/1050/func_80025EF0.s")
 
 s32 func_80026C78(Actor* arg0) {

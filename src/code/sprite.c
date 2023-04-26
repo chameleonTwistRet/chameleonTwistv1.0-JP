@@ -1135,7 +1135,7 @@ void func_8007AC2C(s32* arg0) {
     }
 }
 
-
+// func_8007AC60(Camera* playerActor*)
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8007AC60.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8007ADDC.s")
