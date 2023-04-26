@@ -193,7 +193,20 @@ Vec3f* func_800B2470(Vec3f* arg0, Vec3f arg1, Vec3f arg4, f32 arg7, s32 arg8) {
     return arg0;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B2510.s")
+//#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B2510.s")
+s32 func_800B2510(void) {
+    playerActor* player = &gPlayerActors[0];
+    s32 ret = 0;
+    s32 i;
+    
+    for (i = 0; i < 4; i++) {
+        if (gPlayerActors[i].exists != 0 && gPlayerActors[i].power == 4) {
+            ret = 1;
+            break;
+        }
+    }
+    return (ret & 0xFFFFFFFF);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B255C.s")
 

@@ -3944,7 +3944,8 @@ segments:
     type: data #modelActor
     vram: 0x80B212B0
     subsegments:
-    - [0xAFC6B0, bin, header]
+    - [0xAFC6B0, bin, chameleons/Davy/light_pad]
+    - [0xAFC6B8, lights, chameleons/Davy/light]
     - name: body
       type: .data #model
       start: 0xAFC6C8
@@ -4114,10 +4115,10 @@ segments:
       - [0xb051c8, mtx, chameleons/Davy/restAssociate/restAssociate]
       - { start: 0xb05208, type: gfx, data_only: True, name: chameleons/Davy/restAssociate/restAssociate}
 
-  - [0xB05290, bin, jack] #size of 0x8C20 (extra data?)
-  - [0xB0DEB0, bin, fred] #size of 0x8BE0
-  - [0xB16A90, bin, linda] #size of 0x8BF0
-  - [0xB1FE00, bin, black] #size of 0x8BF0
+  - [0xB05290, bin, jack] 
+  - [0xB0DEB0, bin, fred] 
+  - [0xB16A90, bin, linda]
+  - [0xB1FE00, bin, black]
   - [0xB289F0, bin, white]
   - [0xB315D0, bin, romPadding]
   - [0xC00000]
