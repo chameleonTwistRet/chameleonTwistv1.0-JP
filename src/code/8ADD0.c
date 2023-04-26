@@ -193,7 +193,20 @@ Vec3f* func_800B2470(Vec3f* arg0, Vec3f arg1, Vec3f arg4, f32 arg7, s32 arg8) {
     return arg0;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B2510.s")
+//#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B2510.s")
+s32 func_800B2510(void) {
+    playerActor* player = &gPlayerActors[0];
+    s32 ret = 0;
+    s32 i;
+    
+    for (i = 0; i < 4; i++) {
+        if (gPlayerActors[i].exists != 0 && gPlayerActors[i].power == 4) {
+            ret = 1;
+            break;
+        }
+    }
+    return ret;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B255C.s")
 
@@ -898,7 +911,61 @@ void func_800C5564(playerActor* arg0) {
     arg0->globalTimer = arg0->globalTimer + D_80110000;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/Player_SetFromBoss.s")
+// Rainchus
+void Player_SetFromBoss(playerActor* arg0, f32 arg1) {
+    Vec3f sp2C;
+    f32 var_f14;
+    f32 var_f2;
+    s32 var_a0;
+    s32 var_v0;
+    s32 var_v1;
+
+    Vec3f_SetAtBossPos(&sp2C, arg0);
+    if (sp2C.x > 0.0f) {
+        var_a0 = 1;
+    } else {
+        if (sp2C.x < 0.0f) {
+            var_v0 = -1;
+        } else {
+            var_v0 = 0;
+        }
+        var_a0 = var_v0;
+    }
+    if (sp2C.z > 0.0f) {
+        var_v1 = 1;
+    } else {
+        if (sp2C.z < 0.0f) {
+            var_v0 = -1;
+        } else {
+            var_v0 = 0;
+        }
+        var_v1 = var_v0;
+    }
+    if (sp2C.x < 0.0f) {
+        var_f14 = -sp2C.x;
+    } else {
+        var_f14 = sp2C.x;
+    }
+    if (sp2C.z < 0.0f) {
+        var_f2 = -sp2C.z;
+    } else {
+        var_f2 = sp2C.z;
+    }
+    if (var_a0 == 0) {
+        var_a0 = 1;
+    }
+    if (var_v1 == 0) {
+        var_v1 = 1;
+    }
+    if (var_f2 < var_f14) {
+        var_v1 = 0;
+    } else {
+        var_a0 = 0;
+    }
+    arg0->pos.x = -var_a0 * arg1;
+    arg0->pos.y = 400.0f;
+    arg0->pos.z = -var_v1 * arg1;
+}
 
 //jump table
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C56D4.s")
