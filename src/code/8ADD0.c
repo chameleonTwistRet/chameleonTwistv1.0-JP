@@ -214,8 +214,26 @@ s32 func_800B2510(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B2B50.s")
 
-//https://decomp.me/scratch/9WBVe
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/Vec3f_SetAtBossPos.s")
+//#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/Vec3f_SetAtBossPos.s")
+Vec3f* Vec3f_SetAtBossPos(Vec3f* arg0) {
+    Actor* actors;
+    s32 numActors;
+    Vec3f pos;
+    s32 i;
+    Vec3f_Zero(&pos); // Call Vec3f_Zero with the passed in pointer
+
+    actors = gActors;
+    for (i = 0; i < 64; i++, actors++) {
+        if (isBossActor(actors)) { // Check if the current actor is a boss
+            pos.x = actors->pos.x; // Set x coordinate of pos to boss x coordinate
+            pos.y = actors->pos.y; // Set y coordinate of pos to boss y coordinate
+            pos.z = actors->pos.z; // Set z coordinate of pos to boss z coordinate
+            break; // Break out of the loop since we found a boss actor
+        }        
+    }
+    *arg0 = pos;
+    return arg0;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/isBossPresent.s")
 
@@ -920,7 +938,7 @@ void Player_SetFromBoss(playerActor* arg0, f32 arg1) {
     s32 var_v0;
     s32 var_v1;
 
-    Vec3f_SetAtBossPos(&sp2C, arg0);
+    Vec3f_SetAtBossPos(&sp2C);
     if (sp2C.x > 0.0f) {
         var_a0 = 1;
     } else {
