@@ -9,7 +9,7 @@ extern s32 D_801749A0;
 //f32 D_80110874 = SQROOT_2_DIV_2;
 //f32 D_80110878 = SQROOT_2_DIV_2;
 //f32 D_8011087C = SQROOT_2_DIV_2;
-
+void func_800D887C(Collider* arg0, s32 arg1, s32 arg2);
 //0xD7, 0x1E);
 //0xAC, 0x2D);
 //0x5B, 0x78);

@@ -343,7 +343,7 @@ s32 BGMLoad(void) {
 
     if ((gIsPaused != 0) && (D_800FF604 == 0)) {
         if (alCSPGetState(gBGMPlayerP) == AL_PLAYING) {
-            alSeqpSetVol(gBGMPlayerP, 0);
+            alSeqpSetVol((ALSeqPlayer*)gBGMPlayerP, 0);
             alCSPStop(gBGMPlayerP);
             D_800FF608 = 1;
         } else {
@@ -358,7 +358,7 @@ s32 BGMLoad(void) {
             if ((gameModeCurrent != GAME_MODE_DEMO) && (gameModeCurrent != GAME_MODE_DEMO_2)) {
                 alCSPPlay(gBGMPlayerP);
             }
-            alSeqpSetVol(gBGMPlayerP, D_801FCA22);
+            alSeqpSetVol((ALSeqPlayer*)gBGMPlayerP, D_801FCA22);
         }
         D_800FF604 = gIsPaused;
         return 0;
@@ -374,7 +374,7 @@ s32 BGMLoad(void) {
             if (D_801FCA20.unk_00 < 0) {
                 D_801FCA20.unk_00 = 0;
             }
-            alSeqpSetVol(gBGMPlayerP, D_801FCA20.unk_00);
+            alSeqpSetVol((ALSeqPlayer*)gBGMPlayerP, D_801FCA20.unk_00);
         } 
     }
     
@@ -411,7 +411,7 @@ s32 BGMLoad(void) {
     alCSPSetSeq(gBGMPlayerP, gBGMSeqP);
     D_801FCA20 = D_800FF4D0[D_800FF624.unk_00];
     alCSPPlay(gBGMPlayerP);
-    alSeqpSetVol(gBGMPlayerP, D_801FCA22);
+    alSeqpSetVol((ALSeqPlayer*)gBGMPlayerP, D_801FCA22);
     D_800FF620 = -1;
     D_801FC9B4 = 0;
     D_801FC9A8 = 0;
@@ -470,7 +470,7 @@ s32 func_8008BF20(void) {
     return 0;
 }
 s32 func_8008BFA8(s32 vol) {
-    alSeqpSetVol(gBGMPlayerP, vol);
+    alSeqpSetVol((ALSeqPlayer*)gBGMPlayerP, vol);
     D_801FCA20.unk_00 = vol;
     return 0;
 }
@@ -668,8 +668,8 @@ typedef struct unk_func_8008CE94 {
     s16 unk0;
     s32 unk4;
     s32 unk8;
-    s32 unkC;
-    s32 unk10;
+    struct unk_func_8008CE94* unkC; //does this actually point the same struct data type?
+    struct unk_func_8008CE94* unk10; //does this actually point the same struct data type?
 } unk_func_8008CE94;
 
 void func_8008CE94(unk_func_8008CE94* arg0) {
@@ -1179,14 +1179,14 @@ extern unk80100F50 D_80100F50[];
 extern char D_8010DD6C[];
 extern char D_8010DD78[];
 
-s32* func_80096128(s32 stageToLoad, s32 inpAddr) {
+u32 func_80096128(s32 stageToLoad, s32 inpAddr) {
     segTableEntry* segData = &gStageLoadData[stageToLoad];
     s32 size = (u32) segData->ramAddrStart - (u32) segData->romAddrEnd;
     s32 temp_v0_2;
     
     D_80100F50[0x3].base_address = inpAddr - size;
     D_80100F50[0x3].unk4 = D_80100F50[0x3].base_address + size;
-    temp_v0_2 = dma_copy(segData->romAddrStart, D_80100F50[0x3].base_address, size);
+    temp_v0_2 = dma_copy(segData->romAddrStart, (void*)D_80100F50[0x3].base_address, size);
     if (temp_v0_2 < 0) {
         //"エラー %d\n" | "Error %d\n"
         DummiedPrintf(D_8010DD6C, temp_v0_2);
