@@ -57,7 +57,7 @@ void func_80031518(Actor*);
 void func_80031DB0(playerActor*, Tongue*, s32);
 s32 isActiveExplosion(Actor*);
 void func_800382F4(Actor*);
-void func_800383A0(void);
+void func_800383A0(Actor*);
 void func_800383C0(Actor*); // Grey Ant Spawner: Elisiah
 void func_800383E4(void);
 void ActorInit_AntGrey(Actor*); // Grey Ant Function: Rainchu and Elisiah
