@@ -1204,7 +1204,14 @@ void func_800401E8(Actor* unk_1FActor) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80040214.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_800404D8.s")
+//? - Nathan R.
+void func_800404D8(Actor* arg0) {
+    f32 s = __cosf(((arg0->unk_90 * 2 * D_8010BC80) / D_8010BC88));
+    arg0->vel.x = arg0->position._f32.x * s;
+    s = -__sinf(((arg0->unk_90 * 2 * D_8010BC90) / D_8010BC98));
+    arg0->vel.z = arg0->position._f32.x * s;
+    arg0->vel.y = 64.0f;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80040590.s")
 
