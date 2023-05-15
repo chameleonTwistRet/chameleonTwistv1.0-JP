@@ -1542,7 +1542,19 @@ void ActorInit_GhostBossShot(Actor* arg0) {
     func_800382F4(arg0);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_GhostBossShot.s")
+//ActorTick_GhostBossShot: Nathan R.
+void ActorTick_GhostBossShot(Actor* arg0) {
+    arg0->unk_10C[0] += 1;
+    if (arg0->unk_10C[0] == 150) {
+        func_800638AC(arg0->pos.x, arg0->pos.y, arg0->pos.z, arg0->pos.x, arg0->pos.y + 300.0f, arg0->pos.z, 255, 255, 255, 128, 8, 74);
+        func_80031518(arg0);
+        return;
+    }
+    if (arg0->pos.y > 50.0f) {
+        arg0->pos.y -= 10.0f;
+    }
+}
+
 
 // Spider Spawner: Auto-Decompile
 void func_8004718C(Actor* spiderSpawnerActor){

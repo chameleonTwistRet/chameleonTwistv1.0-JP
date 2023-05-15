@@ -253,6 +253,7 @@ void func_8006202C(void);
 void func_8006266C(d8006266c*);
 void func_800629C4(void);
 void func_800629D4(void);
+void func_800638AC(f32, f32, f32, f32, f32, f32, s32, s32, s32, s32, s32, s32);
 aa1* func_80064F94(f32, f32, f32, s32, f32, f32, f32, f32, s32, s32);
 void func_80065088(void);
 aa1* func_8006526C(f32, f32, f32, f32, f32, f32, f32, f32, s32, s32);
