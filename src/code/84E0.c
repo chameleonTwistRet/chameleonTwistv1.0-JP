@@ -1621,7 +1621,13 @@ void func_800488FC(Actor* arg0) {
     func_800382F4(arg0);
 } 
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_800489B0.s")
+//? - Nathan R.
+void func_800489B0(Actor* arg0) {
+    arg0->pos.x = arg0->unk_134[0] + (arg0->unk_134[2] * __cosf((arg0->unk_134[3] * 2 * D_8010C100) / D_8010C108));
+    arg0->pos.z = arg0->unk_134[1] + (arg0->unk_134[2] * -__sinf((arg0->unk_134[3] * 2 * D_8010C110) / D_8010C118));
+}
+
+
 
 //Lizard Kong: Auto-Decompile + Nathan R. (it didnt like the placement of the 1000.0f set lol)
 void ActorInit_LizardKong(Actor* arg0) {
