@@ -870,7 +870,18 @@ void func_80038990(Actor* bulletHellAntSpawnerActor) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8003899C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorInit_AntBulletHell.s")
+//ActorInit_AntBulletHell: Nathan R.
+void ActorInit_AntBulletHell(Actor* arg0) {
+    f32 ang;
+    f32 sine;
+    arg0->unk_94 = arg0->position._f32.x;
+    sine = __sinf((6 * D_8017499C * D_8010B7E8) / D_8010B7F0);
+    ang = CalcAngleBetween2DPoints(arg0->pos.x, arg0->pos.z, PlayerPointer->pos.x, PlayerPointer->pos.z);
+    arg0->unk_90 = arg0->position._f32.y + (ang + 12 * sine);
+    wrapDegrees(&arg0->unk_90);
+    func_800382F4(arg0);
+}
+ 
 
 s32 func_80038B98(Actor* arg0) {
     if (arg0->unk_98 != 0) {

@@ -148,6 +148,8 @@ extern f64 D_8010B7A0;
 extern f64 D_8010B7A8;
 extern f64 D_8010B7B0;
 extern f64 D_8010B7B8;
+extern f64 D_8010B7E8;
+extern f64 D_8010B7F0;
 extern f32 D_8010B7F8;
 extern f32 D_8010B7FC;
 extern f32 D_8010B9E8;
