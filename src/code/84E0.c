@@ -702,7 +702,19 @@ void func_800312B0(s32 id) {
 }
 
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_800312FC.s")
+//? - Nathan R.
+void func_800312FC(Actor* arg0, f32 arg1) {
+    f32 temp_f12;
+    arg0->unk_10C[0] = 0;
+    arg0->unk_10C[1] = 14;
+    arg0->unk_134[3] = D_8010B4C0;
+    temp_f12 = (arg1 * 2 * D_8010B4C8) / D_8010B4D0;
+    arg0->vel.x = __cosf(temp_f12) * 16.0f;
+    arg0->vel.z = -__sinf(temp_f12) * 16.0f;
+    arg0->tongueCollision = 0;
+    playSoundEffect(109, &arg0->pos.x, &arg0->pos.y, &arg0->pos.z, 0, 0);
+}
+
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_800313BC.s")
 
