@@ -190,6 +190,7 @@ for ci8_file in ci8_files:
 
 #change .png.png -> png.o
 #change .png.pal -> pal.o
+#we are forced into using these extension names by splat due to how the linker generates
 
 for img_file in image_files_o:
     extension = os.path.splitext(img_file)[1]
