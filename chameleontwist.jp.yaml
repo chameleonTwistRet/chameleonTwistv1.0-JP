@@ -3847,9 +3847,9 @@ segments:
   - [0xA4F260, palette, img/battleRanking.ci8]
   - [0xa4f460, bin] #endDL command from rgb2c
   
-  - [0xA4F468, ci8, img/....QuestionMark.ci8, 112, 24] # "....?" image from file select
+  - [0xA4F468, ci8, img/QuestionMark.ci8, 112, 24] # "....?" image from file select
   - [0xA4FEE8, bin] #endDL command from rgb2c
-  - [0xA4FEF0, palette, img/....QuestionMark.ci8]
+  - [0xA4FEF0, palette, img/QuestionMark.ci8]
   - [0xA500F0, bin] #endDL command from rgb2c
 
   - [0xa500f8, ci8, img/battleSelect.ci8, 320, 240] # "....?" image from file select

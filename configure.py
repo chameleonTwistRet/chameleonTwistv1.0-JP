@@ -1,288 +1,221 @@
+import glob
 import os
-import subprocess
+import ninja_syntax
 
 dir_path = 'src/'
 asm_path = 'asm/'
 assets_path = 'assets/'
-cflags = '-G 0 -fullwarn -verbose -Xcpluscomm -signed -nostdinc -non_shared -Wab,-r4300_mul'
+audio_dir = 'src/audio'
+code_dir = 'src/code'
+gu_dir = 'src/gu'
+io_dir = 'src/io'
+libc_dir = 'src/libc'
+os_dir = 'src/os'
+mod_dir = 'src/mod'
 
-header = (
-    "AS = mips-linux-gnu-as\n"
-    "CPP = cpp\n"
-    "LD = mips-linux-gnu-ld\n"
-    "OBJDUMP = mips-linux-gnu-objdump\n"
-    "OBJCOPY = mips-linux-gnu-objcopy\n"
-    "OBJCOPYFLAGS = -O binary\n"
-    "PYTHON = python3\n"
-    "cflags = -G 0 -fullwarn -verbose -Xcpluscomm -signed -nostdinc -non_shared -Wab,-r4300_mul\n"
-    "include_cflags = -I. -Iinclude -Iinclude/PR -Iassets -Isrc\n"
-    "check_warnings_gcc = -Wall -Waddress -Wextra -Wno-format-security -Wno-unknown-pragmas -Wno-unused-parameter -Wno-unused-variable -Wno-missing-braces -Wno-int-conversion -Wno-comment\n"
-    "cc_check = gcc -fsyntax-only -fno-builtin -fsigned-char -std=gnu90 -m32 $check_warnings_gcc $include_cflags\n"
-    "ido_cc = tools/ido_5.3/usr/lib/cc\n"
-    "mips_version = -mips2\n"
-    "DEFINES = -D_LANGUAGE_C -DF3DEX_GBI -DNDEBUG\n"
-    "CFLAGS = -woff 649,838 $include_cflags\n"
-    "ASM_PROC = python3 tools/asm-processor/build.py\n"
-    "ASM_PROC_FLAGS = --input-enc=utf-8 --output-enc=euc-jp\n"
-    "ASFLAGS = -EB -mtune=vr4300 -march=vr4300 -mabi=32 -Iinclude -Isrc\n"
-    "opt_flags = -O2\n"
-    "objdump_command = $OBJDUMP $in > $in:.o=.s\n"
-    "splat = python3 tools/splat/split.py chameleontwist.jp.yaml\n"
-    "XGCC = mips-linux-gnu-gcc\n"
-    "IMG_CONVERT = tools/image_converter.py\n"
-    "MAKE_EXPECTED = tools/make_expected.py\n"
-    "GCC_FLAGS = $include_cflags $DEFINES -G 0 -mno-shared -march=vr4300 -mfix4300 -mabi=32 -mhard-float -mdivide-breaks -fno-stack-protector -fno-common -fno-zero-initialized-in-bss -fno-PIC -mno-abicalls -fno-strict-aliasing -fno-inline-functions -ffreestanding -fwrapv -Wall -Wextra -Wno-missing-braces"
-    "\n"
+c_files = glob.glob(f'{dir_path}/**/*.c', recursive=True)
+s_files = glob.glob(f'{asm_path}/**/*.s', recursive=True)
+bin_files = glob.glob(f'{assets_path}/**/*.bin', recursive=True)
 
-    "rule audio_cc\n"
-    "  command = $ASM_PROC $ASM_PROC_FLAGS $ido_cc -- $AS $ASFLAGS -- -c $cflags $DEFINES $CFLAGS $mips_version -O2 -o $out $in\n"
-    "\n"
+c_files = [file for file in c_files if not file.startswith(mod_dir)]
+s_files = [file for file in s_files if not file.startswith(mod_dir)]
+bin_files = [file for file in bin_files if not file.startswith(mod_dir)]
 
-    "rule code_cc\n"
-    "  command = $ASM_PROC $ASM_PROC_FLAGS $ido_cc -- $AS $ASFLAGS -- -c $cflags $DEFINES $CFLAGS $mips_version -O2 -o $out $in\n"
-    "\n"
+def append_extension(filename, extension='.o'):
+    return filename + extension
 
-    "rule gu_cc\n"
-    "  command = $ASM_PROC $ASM_PROC_FLAGS $ido_cc -- $AS $ASFLAGS -- -c $cflags $DEFINES $CFLAGS $mips_version -O2 -o $out $in\n"
-    "\n"
+def append_prefix(filename, prefix='build/'):
+    return prefix + filename
 
-    "rule io_cc\n"
-    "  command = $ASM_PROC $ASM_PROC_FLAGS $ido_cc -- $AS $ASFLAGS -- -c $cflags $DEFINES $CFLAGS $mips_version -O1 -o $out $in\n"
-    "\n"
+ia4_files = glob.glob(f'{assets_path}/**/*ia4.png', recursive=True)
+ia8_files = glob.glob(f'{assets_path}/**/*ia8.png', recursive=True)
+rgba16_files = glob.glob(f'{assets_path}/**/*rgba16.png', recursive=True)
+rgba32_files = glob.glob(f'{assets_path}/**/*rgba32.png', recursive=True)
+ci8_files = glob.glob(f'{assets_path}/**/*ci8.png', recursive=True)
+ci4_files = glob.glob(f'{assets_path}/**/*ci4.png', recursive=True)
 
-    "rule libc_cc\n"
-    "  command = $ASM_PROC $ASM_PROC_FLAGS $ido_cc -- $AS $ASFLAGS -- -c $cflags $DEFINES $CFLAGS $mips_version -O2 -o $out $in\n"
-    "\n"
+# Append '.png' to each file name in the lists
+ia4_png_files_o = [file + '.png' for file in ia4_files]
+ia8_png_files_o = [file + '.png' for file in ia8_files]
+rgba16_png_files_o = [file + '.png' for file in rgba16_files]
+rgba32_png_files_o = [file + '.png' for file in rgba32_files]
 
-    "rule libc_ll_cc\n"
-    "  command = ($ASM_PROC $ASM_PROC_FLAGS $ido_cc -- $AS $ASFLAGS -- -c $cflags $DEFINES $CFLAGS -mips3 -32 -O1 -o $out $in) && (python3 tools/set_o32abi_bit.py $out)\n"
-    "  description = Generating object file and setting o32abi bit for $out\n"
-    "\n"
+ci4_png_files_o = [file + '.png' for file in ci4_files]
+ci8_png_files_o = [file + '.png' for file in ci8_files]
 
-    "rule xprintf_cc\n"
-    "  command = $ido_cc -c $CFLAGS $mips_version -O3 -o $out $in \n"
-    "\n"
+ci4_files_pal_final = [os.path.splitext(file)[0] + '.pal' for file in ci4_files]
+ci8_files_pal_final = [os.path.splitext(file)[0] + '.pal' for file in ci8_files]
 
-    "rule o32_abi_set\n"
-    "  command = python3 tools/set_o32abi_bit.py build/libc/ll.c.o"
-    "\n"
+ci4_pal_files_o = [file + '.pal' for file in ci4_files]
+ci8_pal_files_o = [file + '.pal' for file in ci8_files]
 
-    "rule os_cc\n"
-    "  command = $ASM_PROC $ASM_PROC_FLAGS $ido_cc -- $AS $ASFLAGS -- -c $cflags $DEFINES $CFLAGS $mips_version -O1 -o $out $in\n"
-    "\n"
+image_files_o = ia4_png_files_o + ia8_png_files_o + rgba16_png_files_o + rgba32_png_files_o + ci4_png_files_o + ci8_png_files_o + ci4_pal_files_o + ci8_pal_files_o
 
-    "rule s_file\n"
-    "  command = iconv --from UTF-8 --to EUC-JP $in | $AS $ASFLAGS -o $out\n"
-    "\n"
-
-    "rule bin_file\n"
-    "  command = $LD -r -b binary -o $out $in\n"
-    "\n"
-
-    "rule data_cc\n"
-    " command = $XGCC -c $GCC_FLAGS -o $out $in\n"
-    "\n"
-    
-    "rule ci8_img_cc\n"
-    " command = python3 ./$IMG_CONVERT ci8 $in $out\n"
-    "\n"
-
-    "rule ia8_img_cc\n"
-    " command = python3 ./$IMG_CONVERT ia8 $in $out\n"
-    "\n"
-
-    "rule ia4_img_cc\n"
-    " command = python3 ./$IMG_CONVERT ia4 $in $out\n"
-    "\n"
-
-    "rule rgba32_img_cc\n"
-    " command = python3 ./$IMG_CONVERT rgba32 $in $out\n"
-    "\n"
-
-    "rule rgba16_img_cc\n"
-    " command = python3 ./$IMG_CONVERT rgba16 $in $out\n"
-    "\n"
-
-    "rule ci4_img_cc\n"
-    " command = python3 ./$IMG_CONVERT ci4 $in $out\n"
-    "\n"
-
-    "rule pal_cc\n"
-    " command = python3 ./$IMG_CONVERT palette $in $out\n"
-    "\n"
-
-    "rule j_to_png_bin\n"
-    " command = ($LD -r -b binary -o $out $in)\n"
-    "\n"
-
-    "rule make_elf\n"
-    "  command = mips-linux-gnu-ld -T chameleontwist.jp.ld -T undefined_syms_auto.txt -Map build/chameleontwist.jp.map --no-check-sections -o $out\n"
-    "\n"
-
-    "rule make_rom_bin\n"
-    "  command = mips-linux-gnu-objcopy -O binary $in $out\n"
-    "\n"
-
-    "rule make_rom_z64\n"
-    "  command = (cp $in $out) && (sha1sum -c chameleontwist.jp.sha1)\n"
-    "\n"
-
-    "rule make_expected_folder\n"
-    "  command = (cp $in $out) && (python3 ./$MAKE_EXPECTED $in)\n"
-    "\n"
-)
-
-# Traverse each subdirectory recursively and find all C files
-def append_extension(filename):
-    return filename + '.o'
-
-c_files = []
-for root, dirs, files in os.walk(dir_path):
-    for file in files:
-        if file.endswith('.c'):
-            c_files.append(os.path.join(root, file))
-
-s_files = []
-for root, dirs, files in os.walk(asm_path):
-    for file in files:
-        if file.endswith('.s'):
-            s_files.append(os.path.join(root, file))
-
-bin_files = []
-for root, dirs, files in os.walk(assets_path):
-    for file in files:
-        if file.endswith('.bin'):
-            bin_files.append(os.path.join(root, file))
-
-rgba32_files = []
-for root, dirs, files in os.walk(assets_path):
-    for file in files:
-        if file.endswith('rgba32.png'):
-            rgba32_files.append(os.path.join(root, file))
-
-rgba16_files = []
-for root, dirs, files in os.walk(assets_path):
-    for file in files:
-        if file.endswith('rgba16.png'):
-            rgba16_files.append(os.path.join(root, file))
-
-ia8_files = []
-for root, dirs, files in os.walk(assets_path):
-    for file in files:
-        if file.endswith('ia8.png'):
-            ia8_files.append(os.path.join(root, file))
-
-ia4_files = []
-for root, dirs, files in os.walk(assets_path):
-    for file in files:
-        if file.endswith('ia4.png'):
-            ia4_files.append(os.path.join(root, file))
-
-ci8_files = []
-for root, dirs, files in os.walk(assets_path):
-    for file in files:
-        if file.endswith('ci8.png'):
-            ci8_files.append(os.path.join(root, file))
-
-ci4_files = []
-for root, dirs, files in os.walk(assets_path):
-    for file in files:
-        if file.endswith('ci4.png'):
-            ci4_files.append(os.path.join(root, file))
-
-pal_files = []
-pal_files.extend([f.replace('.png', '.pal') for f in ci8_files])
-pal_files.extend([f.replace('.png', '.pal') for f in ci4_files])
-
-j_files = []
-j_files.extend([f.replace('.png', '.j') for f in rgba32_files])
-j_files.extend([f.replace('.png', '.j') for f in rgba16_files])
-j_files.extend([f.replace('.png', '.j') for f in ia8_files])
-j_files.extend([f.replace('.png', '.j') for f in ia4_files])
-j_files.extend([f.replace('.png', '.j') for f in ci8_files])
-j_files.extend([f.replace('.png', '.j') for f in ci4_files])
-
-# Combine the lists and change file extensions
 o_files = []
-for file in c_files + s_files + bin_files + rgba32_files + rgba16_files + ia8_files + ia4_files + ci4_files + ci8_files:
-    if 'src/mod/' not in file and not file.startswith('src/mod/'):
-        if 'asm/nonmatchings/' not in file:
-            o_files.append("build/" + append_extension(file))
+for file in c_files + s_files + bin_files + ia4_files + ia8_files + rgba16_files + rgba32_files + ci8_files + ci4_files + ci4_files_pal_final + ci8_files_pal_final:
+    if 'asm/nonmatchings/' not in file:
+        o_files.append(append_prefix(append_extension(file)))
 
-with open('build.ninja', 'w') as f:
-    f.write(header)
+ninja_file = ninja_syntax.Writer(open('build.ninja', 'w'))
 
-# Write the full path of each C file to a new text file called build.ninja
-with open('build.ninja', 'a') as outfile:
-    # Write the rules for the .c files
-    for c_file in c_files:
-        if "src/mod" in os.path.relpath(c_file):
-            continue
-        else:
-            if os.path.basename(c_file) == "ll.c":
-                outfile.write("build build/" + os.path.splitext(c_file)[0] + ".c.o: " + "libc_ll_cc " + c_file + "\n")
-            else:
-                folder_name = os.path.basename(os.path.dirname(c_file))
-                if folder_name == "mod":
-                    continue # skip over the file
-                outfile.write("build build/" + os.path.splitext(c_file)[0] + ".c.o: " + folder_name + "_cc " + c_file + "\n")
+ninja_file.variable('AS', 'mips-linux-gnu-as')
+ninja_file.variable('CPP', 'cpp')
+ninja_file.variable('LD', 'mips-linux-gnu-ld')
+ninja_file.variable('LDFLAGS', '-T chameleontwist.jp.ld -T undefined_syms_auto.txt -Map build/chameleontwist.jp.map --no-check-sections')
+ninja_file.variable('OBJDUMP', 'mips-linux-gnu-objdump')
+ninja_file.variable('OBJCOPY', 'mips-linux-gnu-objcopy')
+ninja_file.variable('OBJCOPYFLAGS', '-O binary')
+ninja_file.variable('cflags', '-G 0 -fullwarn -verbose -Xcpluscomm -signed -nostdinc -non_shared -Wab,-r4300_mul')
+ninja_file.variable('include_cflags', '-I. -Iinclude -Iinclude/PR -Iassets -Isrc')
+ninja_file.variable('check_warnings_gcc', '-Wall -Waddress -Wextra -Wno-format-security -Wno-unknown-pragmas -Wno-unused-parameter -Wno-unused-variable -Wno-missing-braces -Wno-int-conversion -Wno-comment')
+ninja_file.variable('cc_check', 'gcc -fsyntax-only -fno-builtin -fsigned-char -std=gnu90 -m32 $check_warnings_gcc $include_cflags')
+ninja_file.variable('ido_cc', 'tools/ido_5.3/usr/lib/cc')
+ninja_file.variable('mips_version', '-mips2')
+ninja_file.variable('DEFINES', '-D_LANGUAGE_C -DF3DEX_GBI -DNDEBUG')
+ninja_file.variable('CFLAGS', '-woff 649,838 $include_cflags')
+ninja_file.variable('ASM_PROC', 'python3 tools/asm-processor/build.py')
+ninja_file.variable('ASM_PROC_FLAGS', '--input-enc=utf-8 --output-enc=euc-jp')
+ninja_file.variable('ASFLAGS', '-EB -mtune=vr4300 -march=vr4300 -mabi=32 -Iinclude -Isrc')
+ninja_file.variable('opt_flags', '-O2')
+ninja_file.variable('IMG_CONVERT', 'tools/image_converter.py')
+ninja_file.variable('MAKE_EXPECTED', 'tools/make_expected.py')
+ninja_file.variable('GCC_FLAGS', '$include_cflags $DEFINES -G 0 -mno-shared -march=vr4300 -mfix4300 -mabi=32 -mhard-float -mdivide-breaks -fno-stack-protector -fno-common -fno-zero-initialized-in-bss -fno-PIC -mno-abicalls -fno-strict-aliasing -fno-inline-functions -ffreestanding -fwrapv -Wall -Wextra -Wno-missing-braces')
+
+ninja_file.rule('O2_cc',
+    command = '$ASM_PROC $ASM_PROC_FLAGS $ido_cc -- $AS $ASFLAGS -- -c $cflags $DEFINES $CFLAGS $mips_version -O2 -o $out $in',
+    description = 'Compiling -O2 .c file' )
+
+ninja_file.rule('O1_cc',
+    command = '$ASM_PROC $ASM_PROC_FLAGS $ido_cc -- $AS $ASFLAGS -- -c $cflags $DEFINES $CFLAGS $mips_version -O1 -o $out $in',
+    description = 'Compiling -O1 .c file' )
+
+ninja_file.rule('s_file',
+    command = 'iconv --from UTF-8 --to EUC-JP $in | $AS $ASFLAGS -o $out',
+    description = 'Assembling .s file' )
+
+ninja_file.rule('bin_file',
+    command = '$LD -r -b binary -o $out $in')
+
+ninja_file.rule('make_elf',
+    command = '$LD $LDFLAGS -o $out',
+    description = 'Linking ELF')
+
+ninja_file.rule('make_z64',
+    command = '($OBJCOPY -O binary $in $out) && (sha1sum -c chameleonTwistJP.sha1)',
+    description = 'Making z64')
+
+ninja_file.rule('make_expected',
+    command = '(cp $in $out) && (python3 ./$MAKE_EXPECTED $in)')
+
+ninja_file.rule('ia4_convert',
+                 command = "python3 ./$IMG_CONVERT ia4 $in $out",
+                 description = "Converting ia4")
+
+ninja_file.rule('ia8_convert',
+                 command = "python3 ./$IMG_CONVERT ia8 $in $out",
+                 description = "Converting ia8")
+
+ninja_file.rule('rgba16_convert',
+                 command = "python3 ./$IMG_CONVERT rgba16 $in $out",
+                 description = "Converting rgba16")
+
+ninja_file.rule('rgba32_convert',
+                 command = "python3 ./$IMG_CONVERT rgba32 $in $out",
+                 description = "Converting rgba32")
+
+ninja_file.rule('ci4_convert',
+                 command = "python3 ./$IMG_CONVERT ci4 $in $out",
+                 description = "Converting ci4")
+
+ninja_file.rule('ci8_convert',
+                 command = "python3 ./$IMG_CONVERT ci8 $in $out",
+                 description = "Converting ci8")
+
+ninja_file.rule('objcopy_image',
+                command = "$LD -r -b binary -o $out $in")
+
+ninja_file.rule('pal_convert',
+                 command = "python3 ./$IMG_CONVERT palette $in $out",
+                 description = "Converting pal")
+
+ninja_file.rule('libc_ll_cc',
+                 command = "($ASM_PROC $ASM_PROC_FLAGS $ido_cc -- $AS $ASFLAGS -- -c $cflags $DEFINES $CFLAGS -mips3 -32 -O1 -o $out $in) && (python3 tools/set_o32abi_bit.py $out)",
+                 description = "Converting pal")
+
+for c_file in c_files:
+    if os.path.dirname(c_file) == mod_dir:
+        continue
+    elif os.path.basename(c_file) == 'll.c':  # Compare only the filename
+        ninja_file.build(append_prefix(append_extension(c_file)), "libc_ll_cc", c_file)
+    elif os.path.dirname(c_file) == audio_dir or os.path.dirname(c_file) == code_dir or os.path.dirname(c_file) == libc_dir:  # Check if the file's directory matches the specific folder
+        ninja_file.build(append_prefix(append_extension(c_file)), "O2_cc", c_file)
+    elif os.path.dirname(c_file) == gu_dir:
+        ninja_file.build(append_prefix(append_extension(c_file)), "O2_cc", c_file) #update later
+    elif os.path.dirname(c_file) == io_dir or os.path.dirname(c_file) == os_dir:
+        ninja_file.build(append_prefix(append_extension(c_file)), "O1_cc", c_file)
+
+for s_file in s_files:
+    if "asm/nonmatchings" in s_file:
+        continue
+    ninja_file.build(append_prefix(append_extension(s_file)), "s_file", s_file)
+
+for bin_file in bin_files:
+    ninja_file.build(append_prefix(append_extension(bin_file)), "bin_file", bin_file)
+
+for ia4_file in ia4_files:
+    ninja_file.build(append_prefix(append_extension(ia4_file, ".png")), "ia4_convert", ia4_file)
+
+for ia8_file in ia8_files:
+    ninja_file.build(append_prefix(append_extension(ia8_file, ".png")), "ia8_convert", ia8_file)
+
+for rgba16_file in rgba16_files:
+    ninja_file.build(append_prefix(append_extension(rgba16_file, ".png")), "rgba16_convert", rgba16_file)
+
+for rgba32_file in rgba32_files:
+    ninja_file.build(append_prefix(append_extension(rgba32_file, ".png")), "rgba32_convert", rgba32_file)
 
 
-    # Write the rules for the .s files
-    for s_file in s_files:
-        if "asm/nonmatchings" in s_file:
-            continue
-        outfile.write("build build/" + os.path.splitext(s_file)[0] + ".s.o: " + "s_file " + s_file + "\n")
+for ci4_file in ci4_files:
+    png_png_file = append_prefix(append_extension(ci4_file, ".png"))
+    ninja_file.build(png_png_file, "ci4_convert", ci4_file)
+    png_pal_file = append_prefix(append_extension(ci4_file, ".pal"))
+    ninja_file.build(png_pal_file, "pal_convert", ci4_file)
 
-    # Write the rules for the .bin files
-    for bin_file in bin_files:
-        outfile.write("build build/" + os.path.splitext(bin_file)[0] + ".bin.o: " + "bin_file " + bin_file + "\n")
+    #change .png.png -> png.png.o
+    #change .png.pal -> png.pal.o
 
-    # Write the rules for ia8 files
-    for ia8_file in ia8_files:
-        outfile.write("build " + os.path.splitext(ia8_file)[0] + ".j: " + "ia8_img_cc " + ia8_file + "\n")
 
-    # Write the rules for ia4 files
-    for ia4_file in ia4_files:
-        outfile.write("build " + os.path.splitext(ia4_file)[0] + ".j: " + "ia4_img_cc " + ia4_file + "\n")
-
-    # Write the rules for rgba32 files
-    for rgba32_file in rgba32_files:
-        outfile.write("build " + os.path.splitext(rgba32_file)[0] + ".j: " + "rgba32_img_cc " + rgba32_file + "\n")
-
-    # Write the rules for rgba16 files
-    for rgba16_file in rgba16_files:
-        outfile.write("build " + os.path.splitext(rgba16_file)[0] + ".j: " + "rgba16_img_cc " + rgba16_file + "\n")
+for ci8_file in ci8_files:
+    png_png_file = append_prefix(append_extension(ci8_file, ".png"))
+    ninja_file.build(png_png_file, "ci8_convert", ci8_file)
+    png_pal_file = append_prefix(append_extension(ci8_file, ".pal"))
+    ninja_file.build(png_pal_file, "pal_convert", ci8_file)
     
-    # Write the rules for ci8 files
-    for ci8_file in ci8_files:
-        outfile.write("build " + os.path.splitext(ci8_file)[0] + ".j: " + "ci8_img_cc " + ci8_file + "\n")
+    #change .png.png -> png.png.o
+    #change .png.pal -> png.pal.o
 
-    # Write the rules for ci8 pal files
-    for ci8_file in ci8_files:
-        outfile.write("build " + os.path.splitext(ci8_file)[0] + ".pal.j: " + "pal_cc " + ci8_file + "\n")
+# print(image_files_o)
+# for img_file in image_files_o:
+#     ninja_file.build(append_prefix(append_extension(img_file)), "objcopy_image", append_prefix(img_file))
 
-    # Write the rules for ci4 files
-    for ci4_file in ci4_files:
-        outfile.write("build " + os.path.splitext(ci4_file)[0] + ".j: " + "ci4_img_cc " + ci4_file + "\n")
+for img_file in image_files_o:
+    extension = os.path.splitext(img_file)[1]
+    if extension == '.pal':
+        pal_file = os.path.splitext(img_file)[0]
+        pal_file_pal = os.path.splitext(pal_file)[0] + '.pal'
+        # print(f"Pal file: {pal_file}")
+        ninja_file.build(append_extension(append_prefix(pal_file_pal)), "objcopy_image", append_prefix(img_file))
+    elif extension == '.png':
+        png_file = os.path.splitext(img_file)[0]
+        # print(f"PNG file: {png_file}")
+        ninja_file.build(append_extension(append_prefix(png_file)), "objcopy_image", append_prefix(img_file))
+    else:
+        print('Unknown extension:', extension)
+       
+ninja_file.build("build/chameleonTwistJP.elf", "make_elf ", o_files)
+ninja_file.build("build/chameleonTwistJP.z64", "make_z64 ", "build/chameleonTwistJP.elf")
+ninja_file.build("build/chameleonTwistJP.ok", "make_expected ", "build/chameleonTwistJP.z64")
 
-    # Write the rules for ci4 pal files
-    for ci4_file in ci4_files:
-        outfile.write("build " + os.path.splitext(ci4_file)[0] + ".pal.j: " + "pal_cc " + ci4_file + "\n")
 
-    # Write the rules for ci4 files
-    for pal_file in pal_files:
-        outfile.write("build build/" + os.path.splitext(pal_file)[0] + ".pal.o: " + "j_to_png_bin " + pal_file + ".j " + "\n")
-
-    #j files are png images converted using image_converter.py
-    for j_file in j_files:
-        if not file.endswith('.pal.j'):
-            outfile.write("build build/" + os.path.splitext(j_file)[0] + ".png.o: " + "j_to_png_bin " + j_file + "\n")
-
-
-
-    # Build the ninja rule with the .o files
-    outfile.write("build build/chameleontwist.jp.elf: make_elf " + " ".join(o_files) + "\n")
-    outfile.write("build build/chameleontwist.jp.bin: make_rom_bin build/chameleontwist.jp.elf\n")
-    outfile.write("build build/chameleontwist.jp.z64: make_rom_z64 build/chameleontwist.jp.bin\n")
-    outfile.write("build build/chameleontwist.ok: make_expected_folder build/chameleontwist.jp.z64\n")
+print ("build.ninja generated")
+ninja_file.close()
