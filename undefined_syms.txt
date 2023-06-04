@@ -3,3 +3,5 @@ __leoSetReset = 0x80056F24;
 osViExtendVStart = 0x80055BCC;
 videoproc = 0x80084B30;
 D_801108B0 = 0x801108B0;
+osMemSize = 0x80000318;
+osStopThread = 0x800EBC10;

@@ -106,6 +106,7 @@ VERSION = 0x80000314; // type:u32 size:0x4
 osMemSize = 0x80000318; // type:s32 size:0x4
 osAppNMIBuffer = 0x8000031c; // type:u32 size:0x4 
 __osInitialize_common = 0x800d9730; // type:func rom:0xb4b30
+osStopThread = 0x800EBC10; // type:func
 osCreateThread = 0x800d99d0; // type:func rom:0xb4dd0
 osStartThread = 0x800d9b20; // type:func rom:0xb4f20
 osPiRawReadIo = 0x800da760; // type:func rom:0xb5b60

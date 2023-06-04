@@ -9,8 +9,6 @@
 #ifndef VARIABLES_JP_H
 #define VARIABLES_JP_H
 
-typedef u8 Addr[];
-
 extern s32 rngSeed; //rng
 
 extern Camera* D_80174860;

@@ -30,6 +30,17 @@ for root, dirs, files in os.walk(mod_dir):
     s_file = glob.glob(os.path.join(root, '*.s'))
     s_files.extend(s_file)
 
+if os.name == 'nt':
+    DETECTED_OS = 'windows'
+else:
+    uname = os.uname()
+    if uname[0] == 'Linux':
+        DETECTED_OS = 'linux'
+    elif uname[0] == 'Darwin':
+        DETECTED_OS = 'macos'
+        MAKE = 'gmake'
+        CPPFLAGS += '-xc++'
+
 # c_files = [file for file in c_files if not file.startswith(mod_dir)]
 # s_files = [file for file in s_files if not file.startswith(mod_dir)]
 # bin_files = [file for file in bin_files if not file.startswith(mod_dir)]
@@ -251,7 +262,7 @@ ninja_file = ninja_syntax.Writer(open('build.ninja', 'w'))
 ninja_file.variable('AS', 'mips-linux-gnu-as')
 ninja_file.variable('CPP', 'cpp')
 ninja_file.variable('LD', 'mips-linux-gnu-ld')
-ninja_file.variable('LDFLAGS', '-T chameleontwist.jp.ld -T undefined_syms_auto.txt -Map build/chameleontwist.jp.map --no-check-sections')
+ninja_file.variable('LDFLAGS', '-T chameleontwist.jp.ld -T undefined_syms_auto.txt -T undefined_syms.txt -Map build/chameleontwist.jp.map --no-check-sections')
 ninja_file.variable('OBJDUMP', 'mips-linux-gnu-objdump')
 ninja_file.variable('OBJCOPY', 'mips-linux-gnu-objcopy')
 ninja_file.variable('OBJCOPYFLAGS', '-O binary')
@@ -270,6 +281,14 @@ ninja_file.variable('opt_flags', '-O2')
 ninja_file.variable('IMG_CONVERT', 'tools/image_converter.py')
 ninja_file.variable('MAKE_EXPECTED', 'tools/make_expected.py')
 ninja_file.variable('GCC_FLAGS', '$include_cflags $DEFINES -G 0 -mno-shared -march=vr4300 -mfix4300 -mabi=32 -mhard-float -mdivide-breaks -fno-stack-protector -fno-common -fno-zero-initialized-in-bss -fno-PIC -mno-abicalls -fno-strict-aliasing -fno-inline-functions -ffreestanding -fwrapv -Wall -Wextra -Wno-missing-braces')
+ninja_file.variable('CC', 'tools/gcc_2.7.2/linux/gcc')
+ninja_file.variable('STRIP', 'mips-linux-gnu-strip')
+ninja_file.variable('CPPFLAGS', '-I. -I include -I include/PR -I include -I src -I build/include')
+
+
+ninja_file.rule('gcc_cc',
+    command = '(export COMPILER_PATH=tools/gcc_2.7.2/linux && $CC -O2 -G0 -mips3 -mgp32 -mfp32 -D_LANGUAGE_C $CPPFLAGS -c -o $out $in) && ($STRIP $out -N dummy-symbol-name)',
+    description = 'Compiling -O2 .c file' )
 
 ninja_file.rule('O2_cc',
     command = '$ASM_PROC $ASM_PROC_FLAGS $ido_cc -- $AS $ASFLAGS -- -c $cflags $DEFINES $CFLAGS $mips_version -O2 -o $out $in',
@@ -342,6 +361,7 @@ for c_file in c_files:
     elif os.path.dirname(c_file) == io_dir or os.path.dirname(c_file) == os_dir:
         ninja_file.build(append_prefix(append_extension(c_file)), "O1_cc", c_file)
     else:
+        #ninja_file.build(append_prefix(append_extension(c_file)), "gcc_cc", c_file)
         ninja_file.build(append_prefix(append_extension(c_file)), "O2_cc", c_file)
 
 for s_file in s_files:
