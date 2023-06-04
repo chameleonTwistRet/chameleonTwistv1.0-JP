@@ -1,7 +1,7 @@
 #include "common.h"
 
 extern s32 gameModeCurrent;
-extern s32 D_800F06E8;
+extern s32 sGameModeStart;
 extern OSMesgQueue D_801192E8;
 extern char D_8010DB20[];
 extern Addr* mod_ROM_START;
@@ -68,8 +68,8 @@ void mod_main_per_frame(void) {
 void mod_main_func(void) {
     // func_8002D080(); //is already ran in MainLoop.s patch
     
-    if (D_800F06E8 != -1) {
-        gameModeCurrent = D_800F06E8;
+    if (sGameModeStart != -1) {
+        gameModeCurrent = sGameModeStart;
     }
     
     gGameModeState = 0;

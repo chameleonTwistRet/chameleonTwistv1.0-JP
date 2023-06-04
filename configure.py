@@ -181,36 +181,25 @@ for ci4_file in ci4_files:
     png_pal_file = append_prefix(append_extension(ci4_file, ".pal"))
     ninja_file.build(png_pal_file, "pal_convert", ci4_file)
 
-    #change .png.png -> png.png.o
-    #change .png.pal -> png.pal.o
-
-
 for ci8_file in ci8_files:
     png_png_file = append_prefix(append_extension(ci8_file, ".png"))
     ninja_file.build(png_png_file, "ci8_convert", ci8_file)
     png_pal_file = append_prefix(append_extension(ci8_file, ".pal"))
     ninja_file.build(png_pal_file, "pal_convert", ci8_file)
     
-    #change .png.png -> png.png.o
-    #change .png.pal -> png.pal.o
 
-# print(image_files_o)
-# for img_file in image_files_o:
-#     ninja_file.build(append_prefix(append_extension(img_file)), "objcopy_image", append_prefix(img_file))
+#change .png.png -> png.o
+#change .png.pal -> pal.o
 
 for img_file in image_files_o:
     extension = os.path.splitext(img_file)[1]
     if extension == '.pal':
         pal_file = os.path.splitext(img_file)[0]
         pal_file_pal = os.path.splitext(pal_file)[0] + '.pal'
-        # print(f"Pal file: {pal_file}")
         ninja_file.build(append_extension(append_prefix(pal_file_pal)), "objcopy_image", append_prefix(img_file))
     elif extension == '.png':
         png_file = os.path.splitext(img_file)[0]
-        # print(f"PNG file: {png_file}")
         ninja_file.build(append_extension(append_prefix(png_file)), "objcopy_image", append_prefix(img_file))
-    else:
-        print('Unknown extension:', extension)
        
 ninja_file.build("build/chameleonTwistJP.elf", "make_elf ", o_files)
 ninja_file.build("build/chameleonTwistJP.z64", "make_z64 ", "build/chameleonTwistJP.elf")
