@@ -2,6 +2,7 @@
 #ifndef _RODATA_
 #define _RODATA_
 
+extern f32 D_8010B348;
 //const char padRodata[] = "\0\0\0\0\0\0\0";
 
 /**
@@ -247,7 +248,7 @@ void Actors_Init(s32 actorIndex, s32 actorID, f32 arg2, f32 arg3, f32 arg4, f32 
     actorInstance->unk_C8 = 0;
     actorInstance->unk_C0 = 0.0f;
 
-    actorInstance->unk_D0 = actorInstance->unk_CC = 1.0f;
+    actorInstance->unk_D0 = actorInstance->sizeScalar = 1.0f;
     actorInstance->unk_EC = 0;
     actorInstance->unk_F0 = 0;
     actorInstance->unk_D4 = 0.0f;
@@ -640,9 +641,41 @@ void func_8002F568(void) {
 //https://decomp.me/scratch/IBzc9
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8002F5C4.s")
 
-//bool return, messed up registers
-//https://decomp.me/scratch/B8Elk
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8002F6DC.s")
+s32 func_8002F6DC(f32* arg0, f32 arg1) {
+    f32 var_f0;
+    f32 var_f2;
+
+    var_f2 = 30.0f;
+    
+    if (*arg0 < arg1) {
+        var_f0 = -(*arg0 - arg1);
+    } else {
+        var_f0 = *arg0 - arg1;
+    }
+    
+    if (var_f0 > 180.0f) {
+        var_f0 = 360.0f - var_f0;
+    }
+    
+    if (var_f0 < 45.0f) {
+        var_f2 = (var_f0 / D_8010B348) + 2.0f;
+    }
+    
+    if (var_f2 <= var_f0) {
+        *arg0 += var_f2 * (f32) func_8002D2A0(*arg0, arg1);
+    } else {
+        *arg0 = arg1;
+    }
+    
+    wrapDegrees(arg0);
+    
+    if (var_f0 > 135.0f) {
+        return 1;
+    } else {
+        return 0;
+    }
+}
+
 
 void func_8002F7F0(void) {
     s32 aIM;
@@ -697,8 +730,8 @@ void func_8002F9BC(s32 arg0) {
 
 void func_800312B0(s32 id) {
     Actor* currActor = &gActors[id];
-    currActor->unknownPositionThings[0].unk_0C = currActor->unk_CC * currActor->tScale;
-    currActor->unknownPositionThings[0].unk_10 = currActor->unk_CC * currActor->tYPos;
+    currActor->unknownPositionThings[0].unk_0C = currActor->sizeScalar * currActor->tScale;
+    currActor->unknownPositionThings[0].unk_10 = currActor->sizeScalar * currActor->tYPos;
 }
 
 
@@ -1053,15 +1086,15 @@ void ActorInit_ChameleonBlackSpotSpawnner(Actor* blackChameleonProjectileSpawner
 
 
 void ActorInit_ChameleonBlackSpot(Actor* arg0) {
-    arg0->unk_CC = 0.0f;
+    arg0->sizeScalar = 0.0f;
     func_800312B0(arg0->actorIndex);
 }
 
 void ActorTick_ChameleonBlackSpot(Actor* arg0) {
-    if (arg0->unk_CC < 1.0f) {
-        arg0->unk_CC = arg0->unk_CC + D_8010BAA4;
-        if (arg0->unk_CC > 1.0f) {
-            arg0->unk_CC = 1.0f;
+    if (arg0->sizeScalar < 1.0f) {
+        arg0->sizeScalar += D_8010BAA4;
+        if (arg0->sizeScalar > 1.0f) {
+            arg0->sizeScalar = 1.0f;
         }
         func_800312B0(arg0->actorIndex);
     }
