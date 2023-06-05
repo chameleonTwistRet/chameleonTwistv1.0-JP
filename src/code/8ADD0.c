@@ -18,7 +18,7 @@ typedef struct newStruct {
 
 void func_800C2A00(void);
 void func_800CFDC8(playerActor*);
-s32 func_800B4A3C(s32);
+s32 func_800B4A3C(unkItemStruct*);
 void func_800BE474(Tongue*);
 s32 isPickup(Actor*);
 void pickup_collide_func(s32);
@@ -471,14 +471,14 @@ void setCrownPositionsForRoom(s32 arg0) {
     s32 temp_s3;
     s32 i;
     unkStruct07* var_s0;
-    s32 new_var;
+    unkItemStruct* new_var;
     
     temp_s3 = gZoneCollisions[arg0].unk18;
     var_s0 = &D_802019A8[gZoneCollisions[arg0].unk78];
     
     for (i = 0; i < temp_s3; i++, var_s0++) {
         new_var = var_s0->unk_00;
-        if (var_s0->unk_0C == 1) {
+        if (var_s0->boolForSpawning == 1) {
             var_s0->unk_10 = func_800B4A3C(new_var);
         }
     }

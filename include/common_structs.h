@@ -196,10 +196,25 @@ typedef struct Collision {
     /* 0xD4 */ char padD4[4];
 } Collision; //sizeof 0xD8
 
-typedef struct unkStruct07 {
+typedef struct unkItemStruct {
     s32 unk_00;
-    char unk_04[8];
-    s32 unk_0C;
+    f32 unk_04;
+    f32 unk_08;
+    union {
+        f32 _f32;
+        s32 _s32;
+    } unk_0C;
+    s32 unk_10;
+    f32 unk_14;
+    s32 unk_18;
+    s32 unk_1C;
+} unkItemStruct;
+
+typedef struct unkStruct07 {
+    unkItemStruct* unk_00;
+    s32 unk_04;
+    s32 unk_08;
+    s32 boolForSpawning; //if TRUE, spawn item
     s32 unk_10;
 } unkStruct07;
 
