@@ -15,7 +15,7 @@ extern Camera* D_80174860;
 extern playerActor* PlayerPointer;
 extern Tongue* TonguePointer;
 extern contMain gContMain[MAXCONTROLLERS];
-
+extern s16 gTotalCarrots;
 extern unk0* D_801FFB84;
 extern s32 g_aa1_Count;
 extern aa1* g_aa1_head;

@@ -594,7 +594,24 @@ void func_800629D4(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80062D10.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80062E18.s")
+extern char D_8010CA80[];
+extern char D_8010CA84[];
+
+void func_80062E18(aa1* arg0) {
+    s32** temp_t7;
+
+    temp_t7 = arg0->unk_38;
+    setTextGradient(191, 10, 0, 255, 200, 200, 0, 255, 191, 10, 0, 255, 200, 200, 0, 255);
+    printNumber(264.0f, 16.0f, 0.0f, 1.0f, (f32) **temp_t7, 2, 0);
+    printUISprite(232.0f, 16.0f, 0.0f, 0.0f, 1.0f, 16.0f, 16.0f, 0.0f, 18);
+    setTextGradient(191, 10, 0, 255, 200, 200, 0, 255, 191, 10, 0, 255, 200, 200, 0, 255);
+    PrintText(254.0f, 20.0f, 0.0f, 1.0f, 8.0f, 8.0f, D_8010CA80, 1);
+    setTextGradient(191, 10, 0, 255, 200, 200, 0, 255, 191, 10, 0, 255, 200, 200, 0, 255);
+    printNumber(264.0f, 36.0f, 0.0f, 1.0f, (f32) gTotalCarrots, 2, 0);
+    printUISprite(232.0f, 36.0f, 0.0f, 0.0f, 1.0f, 16.0f, 16.0f, 0.0f, 26);
+    setTextGradient(191, 10, 0, 255, 200, 200, 0, 255, 191, 10, 0, 255, 200, 200, 0, 255);
+    PrintText(254.0f, 40.0f, 0.0f, 1.0f, 8.0f, 8.0f, D_8010CA84, 1);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80063160.s")
 

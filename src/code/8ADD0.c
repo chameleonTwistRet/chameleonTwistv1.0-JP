@@ -1,6 +1,5 @@
 #include "common.h"
 
-extern s16 gTotalCarrots;
 extern playerActor gPlayerActors[4];
 extern unkStruct07 D_802019A8[];
 extern Collision gZoneCollisions[];
