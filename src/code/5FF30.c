@@ -42,6 +42,13 @@ extern char D_8010F084[];
 extern char D_8010DB04[];
 extern char D_8010DB10[];
 
+// Probably used to load Segment 3 data using DMA per level in use
+extern segTableEntry gStageLoadData[];
+extern unk80100F50 D_80100F50[];
+extern char D_8010DD6C[];
+extern char D_8010DD78[];
+
+s32 getBaseStage(s32, s32 ,s32);
 void* Task_Alloc(s32, s32, s32);
 void func_800A96DC(CTTask*);
 s32 func_8008EC90(void);
@@ -802,6 +809,42 @@ u32 func_8008FB4C(u32 x){
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008FB4C.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/getBaseStage.s")
+// s32 getBaseStage(u32 arg0) { //matches, needs rodata support
+//     s32 ret;
+
+//     switch (arg0) {
+//     case 0:
+//     case 9:
+//         ret = 0;
+//         break;
+//     case 1:
+//     case 10:
+//         ret = 1;
+//         break;
+//     case 2:
+//     case 11:
+//         ret = 2;
+//         break;
+//     case 3:
+//     case 12:
+//         ret = 3;
+//         break;
+//     case 4:
+//     case 13:
+//         ret = 4;
+//         break;
+//     case 5:
+//     case 14:
+//         ret = 5;
+//         break;
+//     case 15:
+//         ret = 6;
+//         break;
+//     default:
+//         return -1;
+//     }
+//     return ret;
+// }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/MemsizeCheck.s")
 
@@ -815,7 +858,21 @@ void setProcessType(s32 arg0) {
     DummiedPrintf(D_8010DB10, gameModeCurrent, gGameModeState);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008FD68.s")
+void func_8008FD68(void) {
+    DMAStruct_Print();
+    D_80174878++;
+    if (D_800F06EC >= 0) {
+        D_80174878 = D_800F06EC;
+    }
+    D_80174878 = loadStageByIndex(D_80174878);
+    func_8002E0CC();
+    InitField();
+    func_80056EB4();
+    aa1_InitHead();
+    func_8005C9B8();
+    func_80084788();
+    TaskInit();
+}
 
 void func_8008FDF8(void) {
 }
@@ -837,11 +894,232 @@ void func_8008FE50(void) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008FEA8.s")
+void func_8008FEA8(s32 arg0, s32 arg1) {
+    s32* var_a0; //unknown what this is
+    Vec3f* var_a0_2;
+
+    if (arg1 == 0) {
+        if ((arg0 != 1) && (arg0 != 2) && (arg0 != 4)) {
+            if (arg0 != 5) {
+                return;
+            }
+        }
+        if (!IS_SEGMENTED(gStageLoadData[arg0].name)) {
+            var_a0 = (s32*)gStageLoadData[arg0].name;
+        } else {
+            //why was the macro not used?
+            var_a0 = (s32*)(D_80100F50[((u32)(gStageLoadData[arg0].name) & SEGMENT_MASK) >> SEGMENT_SHIFT].base_address + ((u32)(gStageLoadData[arg0].name) & ~SEGMENT_MASK));
+        }
+        
+        if (!IS_SEGMENTED(var_a0[7])) {
+            var_a0_2 = (Vec3f*)var_a0[7];
+        } else {
+            var_a0_2 = SEGMENTED_TO_VIRTUAL(var_a0[7]);
+        }
+        
+        gPlayerActors->pos.x = var_a0_2->x;
+        gPlayerActors->pos.y = var_a0_2->y;
+        gPlayerActors->pos.z = var_a0_2->z;
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/Porocess_Mode0.s")
+//https://decomp.me/scratch/hFrp7
+/* matches, needs rodata/bss support
+void Porocess_Mode0(void) {
+    u32 temp_s0;
+    s32 sp28;
+    s32 sp24;
+    s32 i;
 
-#ifdef NON_MATCHING
+    switch (gGameModeState) {
+    case 0:
+        D_800FFDF0 = 3;
+        DMAStruct_Print();
+        D_80174878 += 1;
+        
+        if (D_800F06EC >= 0) {
+            D_80174878 = D_800F06EC;
+        }
+        
+        D_80174878 = loadStageByIndex(D_80174878);
+        if (gCurrentStage == 7) {
+            D_80168DA0 = (u32) gControllerNo;
+            D_801749AC = 2;
+        } else {
+            D_801749AC = 0;
+            D_80168DA0 = 1;
+        }
+
+        //required 1 liner to match
+        for (i = 0; i < D_80168DA0; i++) {gPlayerActors[i].active = 1;}
+
+        for (; i < 4; i++) {
+            gPlayerActors[i].active = 0;
+        }            
+        for (i = 0; i < 4; i++) {
+            _bzero(&gTongues[i], sizeof(Tongue));
+        }
+    
+        func_8002E0CC();
+        InitField();
+        func_80056EB4();
+        aa1_InitHead();
+        func_8005C9B8();
+        func_80084788();
+        
+        D_80174980 = 0;
+        if (gCurrentStage == 7) {
+            func_800546F0();
+        } else {
+            func_8008FE00();
+        }
+        if (gCurrentStage == 2) {
+            loadPlayerEyes(4);
+            setPlayerContextEyes(4, 0, 0);
+            freePlayerEyes(4);
+        }
+        TaskInit();
+        if ((gCurrentStage == 0xF) || (gCurrentStage == 8)) {
+            func_800C1458(0);
+        }
+        func_8008BE14();
+        func_8008800C(8);
+        gGameModeState += 1;
+        func_8008F114();
+        gCurrentStageTime = 0;
+        return;
+    case 1:
+        func_8002CE54();
+        return;
+    case 2:
+        gGameModeState = 1;
+        return;
+    case 3:
+        D_801749AC = 0;
+        temp_s0 = gPlayerActors->hp;
+        sp28 = currentStageCrowns;
+        sp24 = D_80247904;
+        DMAStruct_Print();
+        D_80174878 += 1;
+        if (D_800F06EC >= 0) {
+            D_80174878 = D_800F06EC;
+        }
+        D_80174878 = loadStageByIndex(D_80174878);
+        func_8002E0CC();
+        InitField();
+        gPlayerActors->hp = temp_s0;
+        func_80056EB4();
+        aa1_InitHead();
+        func_8005C9B8();
+        func_80084788();
+        TaskInit();
+        if (D_800FFEBC != 0) {
+            func_800C1458(1);
+        } else {
+            func_800C1458(0);
+        }
+        gGameModeState = 1;
+        func_8008F114();
+        currentStageCrowns = sp28;
+        D_80247904 = sp24;
+        func_8008FE00();
+        if (gCurrentStage == 2) {
+            loadPlayerEyes(4);
+            setPlayerContextEyes(4, 0, 0);
+            freePlayerEyes(4);
+            return;
+        }
+    default:
+        return;
+    case 4:
+        for (i = 0; i < 4; i++) {
+            _bzero(&gTongues[i], sizeof(Tongue));
+        }
+        
+        gPlayerActors[0].active = 1;
+        for (i = 1; i < 4; i++) {
+            gPlayerActors[i].active = 0;
+        }
+        
+        gNoHit = 0;
+        gOneRun = 0;
+        D_80200B38 = 0;
+        D_801749AC = 0;
+        SaveData_ReadFile(&gGameState);
+        D_80174878 = gCurrentStage - 1;
+        func_8008FD68();
+        SaveData_ReadFile(&gGameState);
+        if (D_80236974 == 1) {
+            if (gCurrentStage == 0) {
+                D_80236978 = 1;
+            }
+            func_800C2820(gGameState.currentZone, &gPlayerActors[0], &gGameState);
+        } else {
+            D_80236978 = 0;
+            func_800C1510(gGameState.currentZone, gGameState.unk33);
+            func_800B4574(&gGameState.unk2, &gGameState.unk_22);
+            func_800C0760(gGameState.currentZone);
+        }
+        currentStageCrowns = (s32) gGameState.stageCrowns;
+        DummiedPrintf(D_8010DB1C);
+        func_8008FEA8(gCurrentStage, gGameState.currentZone);
+        gGameModeState = 1;
+        func_8008F114();
+        func_8008FE00();
+        if (gCurrentStage == 2) {
+            loadPlayerEyes(4);
+            setPlayerContextEyes(4, 0, 0);
+            freePlayerEyes(4);
+        }
+        func_8008800C(8);
+        return;
+    case 5:
+        setProcessType(1);
+        func_8008F114();
+        return;
+    case 6:
+        setProcessType(6);
+        return;
+    case 7:
+        gNoHit = 0;
+        gOneRun = 0;
+        D_80200B38 = 0;
+        D_80168DA0 = 1;
+        D_801749AC = 0;
+        SaveData_ReadFile(&D_80200BA0);
+        D_80174878 = gCurrentStage - 1;
+        for (i = 0; i < 4; i++) {
+            _bzero(&gTongues[i], sizeof(Tongue));
+        }
+        func_8008FD68();
+        SaveData_ReadFile(&D_80200BA0);
+        if (D_80236974 == 1) {
+            if (gCurrentStage == 0) {
+                D_80236978 = 1;
+            }
+            func_800C2820(D_80200BA0.currentZone, &gPlayerActors[0], &D_80200BA0);
+        } else {
+            D_80236978 = 0;
+            func_800C1510(D_80200BA0.currentZone, D_80200BA0.unk33);
+            func_800B4574(&D_80200BA0.flags, &D_80200BA0.unk_22);
+            func_800C0760(D_80200BA0.currentZone);
+        }
+        func_8008FEA8(gCurrentStage, D_80200BA0.currentZone);
+        currentStageCrowns = (s32) D_80200BE4;
+        gGameModeState = 1;
+        func_8008F114();
+        func_8008FE00();
+        if (gCurrentStage == 2) {
+            loadPlayerEyes(4);
+            setPlayerContextEyes(4, 0, 0);
+            freePlayerEyes(4);
+        }
+        break;
+    }
+}*/
+
+#ifdef NON_MATCHING //matches, needs rodata support
 extern s8 D_8010DB20;
 extern s32 sGameModeStart;
 
@@ -933,7 +1211,30 @@ loop_5:
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800908C0.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80090B10.s")
+s32 func_80090B10(s32 time, s32 arg1) {
+    s32 temp_v0;
+    s32 temp_v0_2;
+    s32 ret = 0;
+    
+    temp_v0 = getBaseStage(arg1, arg1, time);
+    
+    if (temp_v0 < 0) {
+        return 0;
+    }
+    if (time == 0) {
+        return 0;
+    }
+    
+    time /= 30;
+    temp_v0_2 = RecordTime_ParseToSecs((s32*)gGameState.stageTimes[temp_v0]);
+    
+    if ((time < temp_v0_2) || (temp_v0_2 == 0)) {
+        RecordTime_SetTo(time, gGameState.stageTimes[temp_v0]);
+        ret = 1;
+    }
+    
+    return ret;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80090BC0.s")
 
@@ -1172,12 +1473,6 @@ s32 func_8009603C(s32 segmentID, s32 arg1) {
     DummiedPrintf(D_8010DD4C, segment->name, (u32) temp_s1 >> 0xA, temp_s1);
     return (s32) temp_s3->base_address;
 }
-
-// Probably used to load Segment 3 data using DMA per level in use
-extern segTableEntry gStageLoadData[];
-extern unk80100F50 D_80100F50[];
-extern char D_8010DD6C[];
-extern char D_8010DD78[];
 
 u32 func_80096128(s32 stageToLoad, s32 inpAddr) {
     segTableEntry* segData = &gStageLoadData[stageToLoad];
@@ -2239,7 +2534,7 @@ void func_800AAB0C(s32 arg0) {
     _bzero(gPlayerActors, sizeof(gPlayerActors));
     _bzero(&gCamera[0], sizeof(Camera));
     D_80168DA0 = 1;
-    gPlayerActors[0].active = 1;
+    (u32)gPlayerActors[0].active = 1; //required u32 here but usually requires s32?
     gPlayerActors[1].active = 0;
     gPlayerActors[2].active = 0;
     gPlayerActors[3].active = 0;
@@ -2459,7 +2754,29 @@ s32 isPointInRect(Vec3f arg0, Rect* arg3) {
     return 1;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800AEAA8.s")
+void func_800AEAA8(Vec3f Vec1, Vec3f Vec2, Rect* arg6) {
+    if (Vec1.x < Vec2.x) {
+        arg6->min.x = Vec1.x;
+        arg6->max.x = Vec2.x;
+    } else {
+        arg6->min.x = Vec2.x;
+        arg6->max.x = Vec1.x;
+    }
+    if (Vec1.y < Vec2.y) {
+        arg6->min.y = Vec1.y;
+        arg6->max.y = Vec2.y;
+    } else {
+        arg6->min.y = Vec2.y;
+        arg6->max.y = Vec1.y;
+    }
+    if (Vec1.z < Vec2.z) {
+        arg6->min.z = Vec1.z;
+        arg6->max.z = Vec2.z;
+        return;
+    }
+    arg6->min.z = Vec2.z;
+    arg6->max.z = Vec1.z;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800AEB48.s")
 

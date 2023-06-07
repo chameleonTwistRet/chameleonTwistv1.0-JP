@@ -102,7 +102,7 @@ typedef struct playerActor {
     /* 0x108 */ f32 unk_108;
     /* 0x10C */ f32 timerDown;
     /* 0x110 */ f32 reticleSize;
-    /* 0x114 */ u32 active; //0x00 = no, 0x01 = yes
+    /* 0x114 */ s32 active; //0x00 = no, 0x01 = yes
     /* 0x118 */ s32 exists; //0x00 = no, 0x01 = yes
     /* 0x11C */ u32 power; //enum of power it has
     /* 0x120 */ u32 powerTimer; 
@@ -609,9 +609,12 @@ typedef struct unkStruct02 {
 
 typedef struct SaveFile {
     /* 0x00 */ u8 checksum;
-    /* 0x02 */ u8 flags;
-    /* 0x02 */ char unk_02[0x20]; //room/stage flags?
-    /* 0x22 */ char unk_22[4];
+    /* 0x01 */ u8 flags;
+    /* 0x02 */ u8 unk2;
+    /* 0x03 */ char unk3[1];
+    /* 0x04 */ char unk_04[0x1E]; //room/stage flags?
+    /* 0x22 */ s16 unk_22;
+    /* 0x24 */ char unk_24[2];
     /* 0x26 */ u8 stageAccess;
     /* 0x27 */ u8 stageClear;
     /* 0x28 */ u8 stageCrownClear;

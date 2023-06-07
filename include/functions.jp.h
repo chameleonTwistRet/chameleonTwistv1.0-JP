@@ -35,7 +35,7 @@ void func_8002D434(f32*, f32*, f32, f32, f32);
 void func_8002D550(f32*, f32*, f32, f32, f32);
 void Actors_Init(s32, s32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, s32, s32, s32, s32);
 s32 Actor_Init(s32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, s32, s32, s32, s32);
-void Actor_SpawnAt(s32, f32, f32, f32);
+s32 Actor_SpawnAt(s32, f32, f32, f32);
 void printNumber(f32, f32, f32, f32, f32, s32, s32);
 void func_8002E0CC(void);
 void func_8002F3D4(void);

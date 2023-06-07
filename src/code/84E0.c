@@ -566,7 +566,7 @@ s32 func_8002DF5C(s32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4) {
     return -1;
 }
 
-void Actor_SpawnAt(s32 arg1, f32 arg2, f32 arg3, f32 arg4) {
+s32 Actor_SpawnAt(s32 arg1, f32 arg2, f32 arg3, f32 arg4) {
     Actor_Init(arg1, arg2, arg3, arg4, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0, 0, 0, 0);
 }
 
