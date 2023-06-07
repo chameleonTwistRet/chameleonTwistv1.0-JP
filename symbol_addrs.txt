@@ -716,6 +716,7 @@ gTextGradient = 0x80176850; //  size:0x10
 gNoHit = 0x801b1eee; // type:u16 size:0x2
 gStageCrownRecords = 0x80200b6a; //
 gSaveFile = 0x80200BA0; //type:SaveFile size:0x60
+D_80200C08 = 0x80200C08; // size:0x78
 gFeildCount = 0x80240180; // type:u32 size:0x4
 sStageCrownTotals = 0x800f06b4; //  size:0xc rom:0xcbab4
 __MotorDataBuf = 0x80248a30; //  size:0x100

@@ -236,8 +236,8 @@ void func_8002CBE8(s32 arg0) {
     func_8008C494();
 }
 
-s32 func_8002CCA0(void* arg0, s32 arg1) {
-    s32 sp1C;
+Gfx* func_8002CCA0(void* arg0, s32 arg1) {
+    Gfx* sp1C;
 
     if (D_80174998 > 2) {
         sp1C = func_8002C900(arg0, arg1);

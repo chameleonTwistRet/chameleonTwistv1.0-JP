@@ -6,6 +6,10 @@ typedef struct unkarg0 {
     char unk_00[0x6A];
     s16 unk6A;
 } unkarg0;
+
+typedef struct unkSaveData {
+    s32 temp;
+} unkSaveData;
                                  /* extern */
 extern char D_8010EECC[];
 extern char D_8010EEE0[];
@@ -41,6 +45,13 @@ extern char D_8010EDB8[];
 extern char D_8010F084[];
 extern char D_8010DB04[];
 extern char D_8010DB10[];
+extern f32 D_80108760;
+extern f32 D_80108764;
+extern f32 D_80108768;
+extern f32 D_8010F968;
+extern s32 gFramebufferIndex;
+extern graphicStruct gGraphicsList[2];
+extern char D_8010EFE8[];
 
 // Probably used to load Segment 3 data using DMA per level in use
 extern segTableEntry gStageLoadData[];
@@ -48,6 +59,9 @@ extern unk80100F50 D_80100F50[];
 extern char D_8010DD6C[];
 extern char D_8010DD78[];
 
+void func_8002CB6C(Gfx*, void*, s32);
+void func_8002CBE8(s32); 
+void func_8004E784(contMain*, s32, s32, s32);
 s32 getBaseStage(s32, s32 ,s32);
 void* Task_Alloc(s32, s32, s32);
 void func_800A96DC(CTTask*);
@@ -72,6 +86,9 @@ s32 RecordTime_ParseToSecs(s32*);
 void func_8008E9AC(s32, s32, s32, s32, void*);
 void func_800A97E4(CTTask*);
 void func_800A50B4(CTTask*);
+s32 SaveData_FileChecksum(u8*);
+s32 SaveData_UpdateFile(s32, SaveFile*);
+void func_800A878C(SaveFile*);
 //jump table
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/videoproc.s")
 
@@ -2198,7 +2215,7 @@ void RecordTime_SetTo(s32 arg0, u8* arg1) {
 }
 //file split? following functions deal with save data.
 //TODO: fake match
-s32 SaveData_FileChecksum(u8 *arg0) {
+s32 SaveData_FileChecksum(u8 *arg0) { //should probably be SaveFile*
     s32 var_a2;
     int new_var2;
     s32 var_t1;
@@ -2306,7 +2323,7 @@ void SaveData_LoadRecords(u8* arg0) {
     SaveData_Wait();
 }
 
-void SaveData_SaveFile(s32 arg0, u8* arg1) { 
+void SaveData_SaveFile(s32 arg0, SaveFile* arg1) { 
     //"%d 番目のファイルにセーブ  %dバイト目\n"("save %d bytes to %d file"?)
     DummiedPrintf(D_8010EF38, arg0, (s32) (arg0 * 0x60) / 8);
     osRecvMesg(&gEepromMsgQ, NULL, 0);
@@ -2318,7 +2335,7 @@ void SaveData_SaveFile(s32 arg0, u8* arg1) {
     //"セーブ開始\n" ("start save")
     DummiedPrintf(D_8010EF74);
     
-    if (osEepromLongWrite(&gEepromMsgQ, (arg0 * 0x60) / 8, arg1, 0x60) != 0) {
+    if (osEepromLongWrite(&gEepromMsgQ, (arg0 * 0x60) / 8, (u8*)arg1, 0x60) != 0) {
         //"ＥＥＰロム書き込みエラー \n"("EEProm write error")
         DummiedPrintf(D_8010EF80);
     }
@@ -2327,7 +2344,7 @@ void SaveData_SaveFile(s32 arg0, u8* arg1) {
     SaveData_Wait();
 }
 
-s32 SaveData_UpdateFile(s32 arg0, u8* arg1) {
+s32 SaveData_UpdateFile(s32 arg0, SaveFile* arg1) {
     s32 i;
     SaveFile sp34;
 
@@ -2336,7 +2353,7 @@ s32 SaveData_UpdateFile(s32 arg0, u8* arg1) {
     while (1) {
         SaveData_SaveFile(arg0, arg1);
         SaveData_LoadFile(arg0, &sp34);
-        if (SaveData_VerifyFile(arg1, &sp34) == 0) {
+        if (SaveData_VerifyFile((u8*)arg1, &sp34) == 0) {
             return 0;
         }
 
@@ -2390,7 +2407,14 @@ void func_800A878C(SaveFile* arg0) {
     arg0->carrotBitfield = 0;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A87D4.s")
+void func_800A87D4(s32 arg0) {
+    SaveFile sp18;
+
+    DummiedPrintf(D_8010EFE8);
+    func_800A878C(&sp18);
+    sp18.checksum = SaveData_FileChecksum(&sp18.checksum);
+    SaveData_UpdateFile(arg0, &sp18);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/SaveData_ResetRecords.s")
 
@@ -2447,6 +2471,7 @@ void func_800A9728(CTTask* arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A988C.s")
 
+//https://decomp.me/scratch/RmFMW
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/IniDemo.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A9F84.s")
@@ -2592,7 +2617,18 @@ void func_800AAB0C(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800AB734.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800AD980.s")
+s32 func_800AD980(void) {
+    gPlayerActors->pos.x = D_80108760;
+    gPlayerActors->pos.y = D_80108764 + D_8010F968;
+    gPlayerActors->pos.z = D_80108768;
+    Controller_StartRead();
+    func_8002CB6C(gMainGfxPos, &gGraphicsList[gFramebufferIndex], gFramebufferIndex);
+    func_8004E784(gContMain, gControllerNo, 0, 0);
+    gMainGfxPos = func_8002C900(&gGraphicsList[1 - gFramebufferIndex], 1 - gFramebufferIndex);
+    func_8002CBE8(gFramebufferIndex);
+    gFramebufferIndex = 1 - gFramebufferIndex;
+    return 0;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800ADA84.s")
 
