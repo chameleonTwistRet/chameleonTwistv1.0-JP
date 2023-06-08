@@ -17,7 +17,7 @@ typedef struct SpriteListing {
     s32 bitmapRom; //devAddr-0x8c26a0
     s32 paletteRom;
     s32 unk70;
-    char unk_74[8];
+    char unk_74[4];
 } SpriteListing; //sizeof 0x78
 
 typedef struct unk80174880 {
@@ -37,6 +37,24 @@ extern char D_8010CA1C[];
 extern char D_8010CA54[];
 extern Addr D_8C26A0;
 extern unkStruct02* D_80176F4C;
+
+void func_80055C04(void);
+void func_80062D10(s32, s32, u32*, s32*, u32, s32);
+void func_800634D4(s32, s32, s32*, s32*, s32, s32);
+void func_8007AF80(void);
+void resetEyeParams(void);
+extern f32 D_800FEA18;
+extern f32 D_800FEA1C;
+extern u32 D_800FEDB4;
+extern s32 D_800FEDB8;
+extern Tongue* D_80176B70;
+extern playerActor* D_80176B74;
+extern Camera* D_80176B78;
+extern s32 currentStageCrowns;
+void Rumble_Tick(void);
+void func_800615D4(s32*);
+void func_80069734(void);
+void func_8007CDEC(void);
 
 void DummiedPrintf2(char* arg0, ...) {
 
@@ -369,7 +387,23 @@ void func_8005AFA4(f32 arg0, f32 arg1, f32 arg2, f32 arg3) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8005C6FC.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8005C9B8.s")
+void func_8005C9B8(void) {
+    s32 i;
+    for (i = 0; i < ARRAY_COUNT(gSpriteListings); i++) {
+        gSpriteListings[i].unk70 = 0;
+        if (gSpriteListings[i].bitmapRom != 0) {
+            gSpriteListings[i].bitmapP = (void*)gSpriteListings[i].bitmapRom;
+        }
+        if (gSpriteListings[i].paletteRom != 0) {
+            gSpriteListings[i].palletteP = (void*)gSpriteListings[i].paletteRom;
+        }        
+    }
+    loadSprite(SPRITE_CROWN);
+    loadSprite(SPRITE_HEARTRED);
+    loadSprite(SPRITE_HEARTORANGE);
+    loadSprite(SPRITE_HEARTYELLOW);
+    loadSprite(0x1A);
+}
 
 void func_8005CA38(void) {
     D_800FDFA0 = 0;
@@ -1324,11 +1358,44 @@ void func_80083F10(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80083F18.s")
 
-//https://decomp.me/scratch/s5GL7
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80084788.s")
+void func_80084788(void) {
+    D_800F6880 = 0;
+    func_80055C04();
+    func_8007AF80();
+    func_8007C494();
+    D_800FEA18 = 0.0f;
+    D_800FEA1C = 0.0f;
+    D_80176B70 = gTongues;
+    D_80176B74 = gPlayerActors;
+    D_80176B78 = gCamera;
+    if ((gameModeCurrent == 0) && (D_80168DA0 == 1)) {
+        func_80062D10(0x10, 0x10, &gPlayerActors->hp, &D_800FEDB8, gPlayerActors->hp, 0);
+        func_800634D4(0xF0, 0x10, &currentStageCrowns, &D_800FEDB8, 2, 0);
+    }
+    D_800FEDB4 = 1;
+    resetEyeParams();
+    func_800667A8();
+}
 
-//https://decomp.me/scratch/tLaoO
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80084884.s")
+
+s32 func_80084884(s32 arg0) {
+    if (gCurrentStage == 8) {
+        func_8007CDEC();
+    }
+    if ((D_80168DA0 == 1) && (D_800FEDB4 == 1) && (D_80236974 == 0) && (gameModeCurrent == 0)) {
+        if ((u32)D_80176B78->unk0 == 1) {
+            func_800612F0(1);
+            printUISprite(24.0f, 208.0f, 0.0f, 0.0f, 1.0f, 24.0f, 16.0f, 0.0f, 0xCC);
+        } else {
+            func_800612F0(0);
+            printUISprite(24.0f, 208.0f, 0.0f, 0.0f, 1.0f, 24.0f, 16.0f, 0.0f, 0xCC);
+        }
+    }
+    func_80069734();
+    Rumble_Tick();
+    func_800615D4(&arg0);
+    return arg0;
+}
 
 Gfx* func_800849D4(Gfx* arg0) {
     return arg0;
