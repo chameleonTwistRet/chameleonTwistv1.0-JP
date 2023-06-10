@@ -2,7 +2,7 @@
 
 void func_8005456C(f32, f32, f32, f32, f32, s32);
 void func_80073090(void);
-void func_8008BE14(void);
+s32 func_8008BE14(void);
 void func_800A0D90(void);
 void func_800678EC(s32, s32, s32, s32, s32);
 extern s32 D_800FE708;

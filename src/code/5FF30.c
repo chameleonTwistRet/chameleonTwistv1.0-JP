@@ -53,6 +53,31 @@ extern s32 gFramebufferIndex;
 extern graphicStruct gGraphicsList[2];
 extern char D_8010EFE8[];
 
+typedef struct unkDemoStruct {
+    s16 unk0;
+    u16 unk2;
+    char unk4[0xC];
+} unkDemoStruct;
+
+typedef struct unkDemoStruct2 {
+    s16 unk0;
+    char unk2[4];
+} unkDemoStruct2;
+
+extern s32 D_800F0704;
+extern s16 D_800F0708;
+extern s16 D_80100D64[];
+extern s16 D_80101020;
+extern s16 D_80101024[];
+extern s16 D_80101030;
+extern s8 D_80101034[];
+extern char D_8010F1A4[];
+extern char D_8010F1C0[];
+extern unkDemoStruct2 D_80175650[];
+extern unkDemoStruct D_801FC9B8[1]; //sizeof 0x10
+extern s32 D_801FC9C8;
+extern s16 D_801FCA18;
+
 // Probably used to load Segment 3 data using DMA per level in use
 extern segTableEntry gStageLoadData[];
 extern unk80100F50 D_80100F50[];
@@ -89,6 +114,12 @@ void func_800A50B4(CTTask*);
 s32 SaveData_FileChecksum(u8*);
 s32 SaveData_UpdateFile(s32, SaveFile*);
 void func_800A878C(SaveFile*);
+s32 func_80088198(void);
+s32 func_8008BE14(void);
+void func_800A93AC(contMain*);
+void func_800A9450(void);
+void func_800A9690(void); 
+void func_800A988C(s16);
 //jump table
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/videoproc.s")
 
@@ -1784,13 +1815,11 @@ void func_8009D19C(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A03B8.s")
 
-//#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A07E0.s")
 void func_800A07E0(void) {
     func_8008F16C();
     gameModeCurrent = 7;
     gGameModeState = 7;
 }
-
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/Process_BattleMenu.s")
 

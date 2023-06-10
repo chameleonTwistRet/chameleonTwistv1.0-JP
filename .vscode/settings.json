@@ -21,6 +21,7 @@
         "macros.h": "c",
         "enums.h": "c",
         "os.h": "c",
-        "assert.h": "c"
+        "assert.h": "c",
+        "mod_main.h": "c"
     }
 }

@@ -12,6 +12,21 @@ extern s32 D_8020D8F4;
 extern f64 D_801106A0;
 extern f64 D_801106A8;
 
+extern Vec3f D_80108F9C;
+extern Vec3f D_80108FA8;
+extern Vec3f D_80108FB4;
+extern Vec3f D_80108FC0;
+extern f32 D_80108FCC;
+extern s32 D_80108FD0;
+extern s32 D_80108FD4;
+extern f32 D_80108FD8;
+extern f32 D_80108FDC;
+extern s32 D_80108FE0;
+extern f32 D_80108FE4;
+extern s32 D_80108FE8;
+extern s32 D_80108FEC;
+extern Vec3f D_802489C8[8];
+
 Vec3f* RotateVector3D(Vec3f*, Vec3f, f32, s32);
 void func_800D3854(playerActor*, Tongue*, Camera*, Vec3f*, Vec3f*, s32);
 void func_800D5394(playerActor*, Tongue*, Camera*, Vec3f*, Vec3f*, s32);
@@ -269,7 +284,26 @@ Vec3f* func_800D00DC(Vec3f* arg0, Collider* arg1) {
 //referred to in US1.0 as "Poly.c CalcNextPosition"
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/CalcNextPosition.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800D34CC.s")
+void func_800D34CC(void) {
+    s32 i;
+
+    Vec3f_Zero(&D_80108F9C);
+    Vec3f_Zero(&D_80108FA8);
+    Vec3f_Zero(&D_80108FB4);
+    Vec3f_Zero(&D_80108FC0);
+    D_80108FCC = 0.0f;
+    D_80108FD0 = 0;
+    D_80108FD4 = 0;
+    D_80108FD8 = 0.0f;
+    D_80108FDC = 0.0f;
+    D_80108FE0 = 0;
+    D_80108FE4 = 0.0f;
+    D_80108FE8 = 0;
+    D_80108FEC = 0;
+    for (i = 0; i < ARRAY_COUNT(D_802489C8); i++) {
+        Vec3f_Zero(&D_802489C8[i]);
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800D3590.s")
 

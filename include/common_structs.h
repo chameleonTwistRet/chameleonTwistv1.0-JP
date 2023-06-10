@@ -241,7 +241,7 @@ typedef struct Camera {//take these with a grain of salt
     /* 0x4C */ u32 untouchedTimer; //timer that incs when the camera hasnt been used
     /* 0x50 */ f32 unk50;
     /* 0x54 */ s32 pushHoriz;//the impulse horizontally by the player
-    /* 0x58 */ f32 unk58;
+    /* 0x58 */ s32 unk58;
     /* 0x5C */ f32 unk5C;
     /* 0x60 */ f32 unk60;
     /* 0x64 */ f32 unk64;

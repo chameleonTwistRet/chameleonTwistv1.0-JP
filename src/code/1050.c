@@ -19,8 +19,8 @@ extern s32 gFramebufferIndex;
 extern s32 D_800F066C;
 extern s32 sDebugMultiplayer;
 extern s8 D_800FF8DC;
-extern s8 D_800FF8E0;
-extern s8 D_800FF8E4;
+extern u8 D_800FF8E0[];
+extern u8 D_800FF8E4[];
 extern s32 D_80174980;
 extern s32 D_801749AC;
 
@@ -310,8 +310,8 @@ void func_8002CE54(void) {
         func_8004BC48(&sp28[0]);
         func_8004E784(&sp28[0], D_80168DA0, D_80168D78, &sp28[0]);
         D_800FF8DC = 0;
-        D_800FF8E0 = 0;
-        D_800FF8E4 = 0;
+        D_800FF8E0[0] = 0;
+        D_800FF8E4[0] = 0;
     } else {
         if (D_801749AC != 0) {
             if (sDebugMultiplayer != 0) {
