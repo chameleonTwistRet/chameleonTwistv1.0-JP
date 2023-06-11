@@ -2484,10 +2484,10 @@ void func_800A9728(CTTask* arg0) {
         if (arg0->unk_5C != 0) {
             return;
         }
-        gFixedSeedIndex = D_801FCA08;
+        gCurrentDemoTimer = D_801FCA08;
     }
     
-    if ((D_80100D64[D_801FCA18] + 0xA) >= gFixedSeedIndex) {
+    if ((D_80100D64[D_801FCA18] + 0xA) >= gCurrentDemoTimer) {
         arg0->unk_64 = 0;
         if (gameModeCurrent != GAME_MODE_DEMO_2) {
             func_8008E9AC(0x20, 0, 0, 0, &arg0->unk_64);
@@ -2515,55 +2515,55 @@ void func_800AA844(s32 arg0) {
 // as well as a few other funcs.
 
 void func_800AA86C(void) {
-    if (D_80101048.unk_00 == gFixedSeedIndex) {
+    if (D_80101048.unk_00 == gCurrentDemoTimer) {
         func_800AA844(0);
         gPlayerActors->pos.x = 0.0f;
         gPlayerActors->pos.y = 100.0f;
         gPlayerActors->pos.z = 600.0f;
     }
-    if (D_80101048.unk_04 == gFixedSeedIndex) {
+    if (D_80101048.unk_04 == gCurrentDemoTimer) {
         func_800AA844(1);
         gPlayerActors->pos.x = 0.0f;
         gPlayerActors->pos.y = 100.0f;
         gPlayerActors->pos.z = -1400.0f;
     }
-    if (D_80101048.unk_08 == gFixedSeedIndex) {
+    if (D_80101048.unk_08 == gCurrentDemoTimer) {
         func_800AA844(0xA);
         gPlayerActors->pos.x = 20.0f;
         gPlayerActors->pos.y = 100.0f;
         gPlayerActors->pos.z = 620.0f;
     }
-    if (D_80101048.unk_0C == gFixedSeedIndex) {
+    if (D_80101048.unk_0C == gCurrentDemoTimer) {
         func_800AA844(0xF);
         gPlayerActors->pos.x = 0.0f;
         gPlayerActors->pos.y = 100.0f;
         gPlayerActors->pos.z = 700.0f;
     }
-    if (D_80101048.unk_10 == gFixedSeedIndex) {
+    if (D_80101048.unk_10 == gCurrentDemoTimer) {
         func_800AA844(0x14);
         gPlayerActors->pos.x = D_8010F834;
         gPlayerActors->pos.y = 100.0f;
         gPlayerActors->pos.z = 0.0f;
     }
-    if (D_80101048.unk_14 == gFixedSeedIndex) {
+    if (D_80101048.unk_14 == gCurrentDemoTimer) {
         func_800AA844(0x17);
         gPlayerActors->pos.x = D_8010F838;
         gPlayerActors->pos.y = 100.0f;
         gPlayerActors->pos.z = 0.0f;
     }
-    if (D_80101048.unk_18 == gFixedSeedIndex) {
+    if (D_80101048.unk_18 == gCurrentDemoTimer) {
         func_800AA844(0x1A);
         gPlayerActors->pos.x = D_8010F83C;
         gPlayerActors->pos.y = 100.0f;
         gPlayerActors->pos.z = 0.0f;
     }
-    if (D_80101048.unk_1C == gFixedSeedIndex) {
+    if (D_80101048.unk_1C == gCurrentDemoTimer) {
         func_800AA844(0x1D);
         gPlayerActors->pos.x = 0.0f;
         gPlayerActors->pos.y = 100.0f;
         gPlayerActors->pos.z = D_8010F840;
     }
-    if (D_80101048.unk_20 == gFixedSeedIndex) {
+    if (D_80101048.unk_20 == gCurrentDemoTimer) {
         func_800AA844(0x20);
         gPlayerActors->pos.x = 0.0f;
         gPlayerActors->pos.y = 100.0f;
@@ -2606,7 +2606,7 @@ void func_800AAB0C(s32 arg0) {
         D_80175678[i] = 0;
     }
 
-    gFixedSeedIndex = 0x10A9;
+    gCurrentDemoTimer = 0x10A9;
     dmaSize = D_F0042B0 - D_F000000;
     UseFixedRNGSeed = TRUE;
     D_80200C8C = mallloc(dmaSize);

@@ -4,7 +4,7 @@ extern f32 D_80108B70[64];
 extern f32 D_80108C74[64];
 extern f32 D_80108D78[64];
 extern f32 D_80108E7C[];
-extern s32 gFixedSeedIndex;
+extern s32 gCurrentDemoTimer;
 
 /**
  * @brief Returns a random integer between min and max, inclusive.
@@ -20,7 +20,7 @@ s32 Random(s32 min, s32 max) {
     f32 randFloat2;
     
     if (UseFixedRNGSeed != FALSE) {
-        randFloat = ((gFixedSeedIndex * 256) + gFixedSeedIndex) % 65535 / 65535.0f;
+        randFloat = ((gCurrentDemoTimer * 256) + gCurrentDemoTimer) % 65535 / 65535.0f;
         randFloat2 = max - min + 1;
         randVal = randFloat2 * randFloat + min;
     } else {
