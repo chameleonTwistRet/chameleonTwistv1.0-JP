@@ -14,6 +14,8 @@ extern s32 D_8016911C;
 extern s32 D_80169120;
 extern s32 D_8016924C;
 extern s32 D_80169250;
+extern s32 D_800F0B68[4][4];
+extern s32 D_800F0BC0[4];
 
 void func_80050FB0(void) {
     s32 i;
@@ -25,18 +27,53 @@ void func_80050FB0(void) {
                     D_800F0BE4[D_800F0BE0[i]].unk_00++;
                     func_8005456C(gPlayerActors[i].pos.x, -300.0f, gPlayerActors[i].pos.z, gPlayerActors[i].pos.y, 200.0f, gSelectedCharacters[i]);
                 }
-            } 
+            }
         }
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/2C3B0/func_800510E0.s")
+void func_800510E0(void) {
+    s32 i;
+
+    for (i = 0; i < 4; i++) {
+        if (gPlayerActors[i].active == 1) {
+            if (++D_800F0B68[i][D_800F0BC0[i]] >= 100) {
+                D_800F0B68[i][D_800F0BC0[i]] = 99;
+            }
+        }
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/2C3B0/func_8005119C.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/2C3B0/func_80051548.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/2C3B0/func_80051678.s")
+f32 func_80051678(u8 arg0, f32* arg1, f32 arg2, f32 arg3) {
+    f32 ret;
+    f32 temp_f12;
+    f32 temp_f12_2;
+    
+    ret = arg3 - arg2;
+    switch (arg0) {
+    default:
+        break;
+    case 2:
+        temp_f12 = ret / 6.0f;
+        *arg1 = temp_f12 + arg2;
+        ret = temp_f12 * 4.0f;
+        break;
+    case 3:
+        temp_f12 = ret / 8;
+        *arg1 = temp_f12 + arg2;
+        ret = temp_f12 * 3.0f;
+        break;
+    case 4:
+        *arg1 = arg2;
+        ret = ret / 3.0f;
+        break;
+    }
+    return ret;
+}
 
 void func_8005171C(void) {
     if ((currentZone == 6) && ((D_800F0B50 % 60) == 0)) {
@@ -44,6 +81,7 @@ void func_8005171C(void) {
     }
 }
 
+//https://decomp.me/scratch/900gG
 #pragma GLOBAL_ASM("asm/nonmatchings/code/2C3B0/func_8005177C.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/2C3B0/func_800517EC.s")
@@ -90,9 +128,41 @@ void func_8005423C(void) {
     };
 }
 
+//https://decomp.me/scratch/YLdZC
 #pragma GLOBAL_ASM("asm/nonmatchings/code/2C3B0/func_80054284.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/2C3B0/func_8005444C.s")
+// void func_8005444C(void) { matches, has jump table
+//     if (D_801749B4 == 1) {
+//         func_800771DC(&D_800FE404, 16.0f, 16.0f, 1, 5, &D_800F0B5C, 0.0f, 0.0f, 320.0f, 240.0f);
+//     }
+//     switch (D_800F0B5C) {
+//     case -2:
+//     case 1:
+//         D_800F0B5C = -1;
+//         return;
+//     case 2:
+//         D_800FE74C = 0;
+//         D_800F0B5C = -1;
+//         func_8005423C();
+//         setProcessType(0xE);
+//         return;
+//     case 3:
+//         D_800FE74C = 0;
+//         D_800F0B5C = -1;
+//         func_8005423C();
+//         setProcessType(7);
+//         return;
+//     case 4:
+//         D_800FE74C = 0;
+//         D_800F0B5C = -1;
+//         func_8005423C();
+//         setProcessType(6);
+//         /* fallthrough */
+//     default:
+//         return;
+//     }
+// }
 
 //https://decomp.me/scratch/9z01z
 #pragma GLOBAL_ASM("asm/nonmatchings/code/2C3B0/func_8005456C.s")

@@ -456,8 +456,8 @@ typedef struct CTTask { // interally referred to as "S_task"
     /* 0x68 */ s16 unk_68;
     /* 0x6A */ char pad6A[2];
     /* 0x6C */ char unk6C[0x18];
-    /* 0x94 */ char str[20]; // used in strcpy twice.
-} CTTask;                                      /* size = 0xA8 */
+    /* 0x84 */ char str[0x24]; // used in strcpy twice.
+} CTTask; //sizeof 0xA8
 
 typedef struct unk801FCA20 {
     /* 0x00 */ s32 unk_00;

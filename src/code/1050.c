@@ -2,8 +2,6 @@
 
 Gfx* func_8002C4E8(graphicStruct*, s32, s32);
 
-
-
 void func_8002CB6C(Gfx*, graphicStruct*, s32);
 void func_8002CBE8(s32);
 void func_8002CDBC(contMain*);

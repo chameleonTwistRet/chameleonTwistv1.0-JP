@@ -2,6 +2,11 @@
 #include "PR/libaudio.h"
 
 extern char D_8010E9D0[];
+extern char D_8010F070[];
+
+extern char D_8010D9DC[];
+extern char D_8010D9F8[];
+
 typedef struct unkarg0 {
     char unk_00[0x6A];
     s16 unk6A;
@@ -59,10 +64,9 @@ typedef struct unkDemoStruct {
     char unk4[0xC];
 } unkDemoStruct;
 
-typedef struct unkDemoStruct2 {
-    s16 unk0;
-    char unk2[4];
-} unkDemoStruct2;
+typedef struct DemoContPad {
+    OSContPad pad;
+} DemoContPad;
 
 extern s32 D_800F0704;
 extern s16 D_800F0708;
@@ -73,7 +77,7 @@ extern s16 D_80101030;
 extern s8 D_80101034[];
 extern char D_8010F1A4[];
 extern char D_8010F1C0[];
-extern unkDemoStruct2 D_80175650[];
+extern DemoContPad D_80175650[];
 extern unkDemoStruct D_801FC9B8[1]; //sizeof 0x10
 extern s32 D_801FC9C8;
 extern s16 D_801FCA18;
@@ -715,9 +719,23 @@ void Task_Clear(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/Task_ClearMost.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/TaskInit.s")
+void TaskInit(void) {
+    gCTTaskHead = mallloc(sizeof(CTTask));
+    gCTTaskTail = mallloc(sizeof(CTTask));
+    if (gCTTaskHead == NULL) {
+        DummiedPrintf(D_8010D9DC, &gCTTaskTail);
+    }
+    if (gCTTaskTail == NULL) {
+        DummiedPrintf(D_8010D9F8, &gCTTaskTail);
+    }
+    gCTTaskHead->unk_02 = 0;
+    gCTTaskHead->next = gCTTaskTail;
+    gCTTaskHead->unk_10 = NULL;
+    gCTTaskTail->unk_02 = 0xFF;
+    gCTTaskTail->next = NULL;
+    gCTTaskTail->unk_10 = gCTTaskHead;
+}
 
-//#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008CE94.s")
 // Swap struct members
 typedef struct unk_func_8008CE94 {
     s16 unk0;
@@ -2460,8 +2478,17 @@ void func_800A87D4(s32 arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A903C.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A9298.s")
-//Supposed to print the players' button/joystick input.
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A93AC.s")
+
+void func_800A93AC(contMain* arg0) {
+    s32 i;
+
+    for (i = 0; i < 4; i++) {
+        if (gPlayerActors[i].active == 0) {
+            continue;
+        }
+        DummiedPrintf(D_8010F070, D_80175650[i].pad.button, D_80175650[i].pad.stick_x, D_80175650[i].pad.stick_y);
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A9450.s")
 

@@ -195,7 +195,7 @@ void Controller_Zero(contMain*);
 void Debug_NOOP(void);
 void Debug_TestView(void);
 void func_80073FD8(void);
-f32 func_80051678(s32, f32*, f32, f32);
+f32 func_80051678(u8, f32*, f32, f32);
 void func_8005171C(void);
 void func_800523E4(f32, f32, f32, f32, s32, s32, s32); 
 void func_800525E8(s32, f32);
