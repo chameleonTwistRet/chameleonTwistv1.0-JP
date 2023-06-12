@@ -50,7 +50,17 @@ void func_800B09C0(s32 arg0, newStruct* arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B09E8.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B0A30.s")
+void func_800B0A30(unkBlackChameleon0* arg0, unkBlackChameleon1* arg1) {
+    gPlayerActors[1].active = gPlayerActors[1].exists = 1;
+
+    gSelectedCharacters[1] = 4;
+    arg0->unkAC = 0;
+    arg0->unkB0 = arg1->unk38;
+    if (func_800B34D0(arg0->unkB0) != 0) {
+        gPlayerActors[1].active = gPlayerActors[1].exists = 0;
+        arg0->unkAC = 2;
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B0AA4.s")
 
@@ -869,6 +879,7 @@ void enterBossRoom(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C3958.s")
 
+//draw collision
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C3B50.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C3DCC.s")

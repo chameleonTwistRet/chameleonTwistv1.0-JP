@@ -7,6 +7,11 @@ extern char D_8010F070[];
 extern char D_8010D9DC[];
 extern char D_8010D9F8[];
 
+s32 func_8008EC90(void);
+extern u8 D_800FF8DC;
+extern u8 D_800FF8E0;
+extern u8 D_800FF8E4;
+
 typedef struct unkarg0 {
     char unk_00[0x6A];
     s16 unk6A;
@@ -1863,7 +1868,15 @@ void func_800A10E8(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A1B34.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A1CCC.s")
+void func_800A1CCC(unk_func_800A54F4* arg0) {
+    if (func_8008EC90() != 0) {
+        if (arg0->unk60 == 1) {
+            D_800FF8DC = D_800FF8E0 = D_800FF8E4 = 0xFF;
+        }
+        gSelectedCharacters[0] = (u8) arg0->unk5E;
+        setProcessType(arg0->unk60);
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A1D38.s")
 
@@ -1994,12 +2007,6 @@ CTTask* func_800A5060(void){
 void func_800A54EC(s32 arg0) {
 
 }
-
-//#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A54F4.s")
-typedef struct unk_func_800A54F4 {
-    char unk0[0x62];
-    s16 unk62;
-} unk_func_800A54F4;
 
 void func_800A54F4(unk_func_800A54F4* arg0) {
     if (func_8008EC90() != 0) {

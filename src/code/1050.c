@@ -169,6 +169,7 @@ s32 func_80027650(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/1050/func_80027694.s")
 
+//draw player
 #pragma GLOBAL_ASM("asm/nonmatchings/code/1050/func_8002A190.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/1050/func_8002A4C4.s")
@@ -233,7 +234,7 @@ void func_8002CBE8(s32 arg0) {
     osRecvMesg(&D_801192E8, NULL, 1);
     func_8008C494();
 }
-
+//update framebuffer
 Gfx* func_8002CCA0(void* arg0, s32 arg1) {
     Gfx* sp1C;
 

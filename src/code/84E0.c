@@ -583,9 +583,10 @@ s32 Actor_SpawnAt(s32 arg1, f32 arg2, f32 arg3, f32 arg4) {
 //https://decomp.me/scratch/tpjwG
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8002E9F4.s")
 
-//also camera related
+//camera follow player
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8002ECCC.s")
 
+//related to animation
 void func_8002F3D4(void) {
     if (PlayerPointer->shootLeft != 0) {
         PlayerPointer->shootLeft--;
@@ -2013,6 +2014,7 @@ void func_8004C3A4(s16* arg0, f32 arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8004CD9C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8004DDE0.s")
+//related to updating the screen
+#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8004DDE0.s") 
 
 #endif

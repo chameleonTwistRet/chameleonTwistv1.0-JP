@@ -628,7 +628,7 @@ typedef struct SaveFile {
     /* 0x45 */ u8 stageTimes[8][3];
     /* 0x5D */ u8 carrotBitfield; 
     /* 0x5E */ u8 unk_5E[2]; //first also copies carrot progress.
-} SaveFile;
+} SaveFile; //sizeof 0x60
 
 //5FF30
 //linked list probably, heap related?
@@ -648,7 +648,7 @@ typedef struct contMain {
     s16 sticky;
     u16 unk_0A; //align
     f32 stickAngle;
-} contMain;
+} contMain; //sizeof 0x10
 
 typedef struct d8006266c{
     /* 0x00 */ s32 unk0;
@@ -800,7 +800,7 @@ typedef struct Door{
     s32 toZone;
     s32 unk44; 
     s32 unk48; 
-}Door;
+} Door; //sizeof 0x4C (?)
 
 typedef struct ModelData{
     s32 vertCount;
@@ -808,8 +808,25 @@ typedef struct ModelData{
     Vec3f* verts;
     Vec3f* tris;
     Rect* modelBox;
-}ModelData;
+} ModelData; //sizeof 0x14
 
+typedef struct unk_func_800A54F4 {
+    char unk_00[0x5E];
+    s16 unk5E;
+    s16 unk60;
+    s16 unk62;
+} unk_func_800A54F4; //sizeof ?
+
+typedef struct unkBlackChameleon1 {
+    char unk_00[0x38];
+    s32 unk38;
+} unkBlackChameleon1;
+
+typedef struct unkBlackChameleon0 {
+    char unk_00[0xAC];
+    s32 unkAC;
+    s32 unkB0;
+} unkBlackChameleon0;
 
 
 #endif
