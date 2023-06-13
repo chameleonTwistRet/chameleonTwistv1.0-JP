@@ -691,7 +691,57 @@ void func_8008C750(void) {
     D_800FF8B4 = osGetTime() - D_800FF8B8;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/PutDList.s")
+extern Mtx D_80129730[];
+typedef u32 uintptr_t;
+extern char D_8010D97C[];
+extern char D_8010D98C[];
+extern char D_8010D990[];
+
+s32 PutDList(Mtx** arg0, Gfx** arg1, Gfx* arg2) {
+    Mtx* sp64;
+    Gfx* sp60;
+    s32 var_s2;
+    Gfx* var_v1;
+    s32 temp_t9;
+
+    sp64 = *arg0;
+    var_s2 = 1;
+    sp60 = *arg1;
+    
+    DummiedPrintf(D_8010D97C);
+    DummiedPrintf(D_8010D98C, arg2);
+    do {
+        if (!IS_SEGMENTED(arg2)) {
+            var_v1 = arg2;
+        } else {
+            var_v1 = SEGMENTED_TO_VIRTUAL(arg2);
+        }
+
+        switch (var_v1->words.w0 >> 0x18) {
+            default:
+                var_s2 = 0;
+                gSPDisplayList(sp60++, arg2);
+                break;
+            case 1:
+                temp_t9 = (var_v1->words.w1 - (u32)D_80129730) / sizeof(Mtx);
+                if ((temp_t9 >= 0) && (((temp_t9 < 0x28)))) {
+                    gSPMatrix(sp60++, sp64, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+                    sp64++;
+                } else {
+                    gSPMatrix(sp60++, var_v1->words.w1, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+                }
+                break;
+            case 6:
+                PutDList(&sp64, &sp60, var_v1->words.w1);
+                break;
+        }
+        arg2++;
+    } while (var_s2 != 0);
+    *arg1 = sp60;
+    *arg0 = sp64;
+    DummiedPrintf(D_8010D990);
+    return 0;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008C940.s")
 
