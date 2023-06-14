@@ -29,7 +29,36 @@ extern unkTextStruct D_800F0734;
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/debug/Debug_MovePlayer.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/debug/Debug_ChangeRoom.s")
+void func_800C1458(s32, s32);                          /* extern */
+void func_800C29D8(s32, s32);                          /* extern */
+extern s32 D_802478E0;
+
+void Debug_ChangeRoom(void) {
+    s32 sp1C;
+
+    if (func_80055E5C(2) != 0) {
+        sp1C = 1;
+        gCurrentZone--;
+        if (!gCurrentZone){} //fake but function uses potentially uninitialized variable so...
+    }
+    if (func_80055E5C(1) != 0) {
+        sp1C = 1;
+        gCurrentZone++;
+    }
+    if (gCurrentZone < 0) {
+        gCurrentZone = D_802478E0 - 1;
+    }
+    if (gCurrentZone >= D_802478E0) {
+        gCurrentZone = 0;
+    }
+    if (sp1C == 1) {
+        if (D_80236974 == 0) {
+            func_800C1458(gCurrentZone, sp1C);
+            return;
+        }
+        func_800C29D8(gCurrentZone, sp1C);
+    }
+}
 
 void Debug_NOOP(void) {
 }

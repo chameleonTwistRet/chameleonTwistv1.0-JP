@@ -76,7 +76,7 @@ f32 func_80051678(u8 arg0, f32* arg1, f32 arg2, f32 arg3) {
 }
 
 void func_8005171C(void) {
-    if ((currentZone == 6) && ((D_800F0B50 % 60) == 0)) {
+    if ((gCurrentZone == 6) && ((D_800F0B50 % 60) == 0)) {
         PLAYSFX(137, 0, 0X10);
     }
 }

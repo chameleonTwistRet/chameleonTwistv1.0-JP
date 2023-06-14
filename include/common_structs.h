@@ -621,7 +621,7 @@ typedef struct SaveFile {
     /* 0x29 */ u8 selectedCharacter;
     /* 0x2A */ u8 stageCrownRecord[7];
     /* 0x31 */ u8 currentStage;
-    /* 0x32 */ u8 currentZone;
+    /* 0x32 */ u8 gCurrentZone;
     /* 0x33 */ u8 unk33; //copies D_8020d8a8
     /* 0x34 */ u8 unk34[16]; //stores D_802023e0[]
     /* 0x44 */ u8 stageCrowns;

@@ -710,7 +710,7 @@ s32 PutDList(Mtx** arg0, Gfx** arg1, Gfx* arg2) {
     
     DummiedPrintf(D_8010D97C);
     DummiedPrintf(D_8010D98C, arg2);
-    do {
+    while (1) {
         if (!IS_SEGMENTED(arg2)) {
             var_v1 = arg2;
         } else {
@@ -736,7 +736,10 @@ s32 PutDList(Mtx** arg0, Gfx** arg1, Gfx* arg2) {
                 break;
         }
         arg2++;
-    } while (var_s2 != 0);
+        if (var_s2 == 0) {
+            break;
+        }
+    }
     *arg1 = sp60;
     *arg0 = sp64;
     DummiedPrintf(D_8010D990);
@@ -1175,16 +1178,16 @@ void Porocess_Mode0(void) {
             if (gCurrentStage == 0) {
                 D_80236978 = 1;
             }
-            func_800C2820(gGameState.currentZone, &gPlayerActors[0], &gGameState);
+            func_800C2820(gGameState.gCurrentZone, &gPlayerActors[0], &gGameState);
         } else {
             D_80236978 = 0;
-            func_800C1510(gGameState.currentZone, gGameState.unk33);
+            func_800C1510(gGameState.gCurrentZone, gGameState.unk33);
             func_800B4574(&gGameState.unk2, &gGameState.unk_22);
-            func_800C0760(gGameState.currentZone);
+            func_800C0760(gGameState.gCurrentZone);
         }
         currentStageCrowns = (s32) gGameState.stageCrowns;
         DummiedPrintf(D_8010DB1C);
-        func_8008FEA8(gCurrentStage, gGameState.currentZone);
+        func_8008FEA8(gCurrentStage, gGameState.gCurrentZone);
         gGameModeState = 1;
         func_8008F114();
         func_8008FE00();
@@ -1219,14 +1222,14 @@ void Porocess_Mode0(void) {
             if (gCurrentStage == 0) {
                 D_80236978 = 1;
             }
-            func_800C2820(D_80200BA0.currentZone, &gPlayerActors[0], &D_80200BA0);
+            func_800C2820(D_80200BA0.gCurrentZone, &gPlayerActors[0], &D_80200BA0);
         } else {
             D_80236978 = 0;
-            func_800C1510(D_80200BA0.currentZone, D_80200BA0.unk33);
+            func_800C1510(D_80200BA0.gCurrentZone, D_80200BA0.unk33);
             func_800B4574(&D_80200BA0.flags, &D_80200BA0.unk_22);
-            func_800C0760(D_80200BA0.currentZone);
+            func_800C0760(D_80200BA0.gCurrentZone);
         }
-        func_8008FEA8(gCurrentStage, D_80200BA0.currentZone);
+        func_8008FEA8(gCurrentStage, D_80200BA0.gCurrentZone);
         currentStageCrowns = (s32) D_80200BE4;
         gGameModeState = 1;
         func_8008F114();
@@ -2592,8 +2595,8 @@ void func_800A9728(CTTask* arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800AA3F0.s")
 
 void func_800AA844(s32 arg0) {
-    currentZone = arg0;
-    func_800C29D8(currentZone);
+    gCurrentZone = arg0;
+    func_800C29D8(gCurrentZone);
 }
 //between these funcs in US1.0 is a program printing part of the c script.
 // as well as a few other funcs.

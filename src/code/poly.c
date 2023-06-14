@@ -225,7 +225,7 @@ void func_800CFF64(playerActor* player) {
 //     CollisionSubStruct* temp_v0;
 
 //     if (D_80236974 != 1) {
-//         if ((gCurrentStage == 1) && ((currentZone == 7) || (currentZone == 0xF)) && (D_80174880[0] != 0)) {
+//         if ((gCurrentStage == 1) && ((gCurrentZone == 7) || (gCurrentZone == 0xF)) && (D_80174880[0] != 0)) {
 //             temp_f14 = (SQ(arg0->x) + SQ(arg0->z));
 //             if (810000.0 < temp_f14) {
 //                 temp_f0_2 = __sqrtf((f32) (810000.0 / temp_f14));
@@ -233,7 +233,7 @@ void func_800CFF64(playerActor* player) {
 //                 arg0->z = arg0->z * temp_f0_2;
 //             }
 //         } else {
-//             temp_v0 = &gZoneCollisions[currentZone].collisionSubStruct;
+//             temp_v0 = &gZoneCollisions[gCurrentZone].collisionSubStruct;
             
 //             if (temp_v0->unk_30 > arg0->x ) {
 //                 arg0->x = temp_v0->unk_30;
@@ -320,7 +320,7 @@ void func_800D34CC(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800D44C8.s")
 
 void func_800D4550(s32 arg0, s32 arg1, Poly* arg2, Vec3f* arg3, Vec3f* arg4) {
-    Collision* temp_v0 = &gZoneCollisions[currentZone];
+    Collision* temp_v0 = &gZoneCollisions[gCurrentZone];
 
     arg3->x = temp_v0->unkA4;
     arg3->y = temp_v0->unkA8 + (temp_v0->unkD0 * arg2->unkVectorStruct.vec1.x);
@@ -345,7 +345,7 @@ void func_800D4550(s32 arg0, s32 arg1, Poly* arg2, Vec3f* arg3, Vec3f* arg4) {
 void func_800D6864(playerActor* arg0, Tongue* arg1, Camera* arg2, Vec3f* arg3, Vec3f* arg4) {
     Collision* collider;
 
-    collider = &gZoneCollisions[currentZone];
+    collider = &gZoneCollisions[gCurrentZone];
     arg3->x = arg2->f1.z;
     arg3->y = arg2->f2.x + (collider->unkD0 * arg2->size1);
     arg3->z = arg2->f2.y;
@@ -371,14 +371,14 @@ void ApplyRotationToVector(Vec3f* arg0, Vec3f* arg1, f32 arg2) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800D69D0.s")
 
 void SetCameraParameters(void) {
-    Collision* temp = &gZoneCollisions[currentZone];
+    Collision* temp = &gZoneCollisions[gCurrentZone];
     Camera* cam;
     s32 pad;
     s32 i;
     Vec3f sp3C;
     Vec3f sp30;
 
-    if ((gCurrentStage == STAGE_GHOST) && (currentZone == 0xE)) { //billiard room?
+    if ((gCurrentStage == STAGE_GHOST) && (gCurrentZone == 0xE)) { //billiard room?
         func_800D6864(gPlayerActors, gTongues, gCamera, &sp3C, &sp30);
     } else if ((D_80236974 == 1) && (D_8020D8F4 == 0)) {
         func_800D3854(gPlayerActors, gTongues, gCamera, &sp3C, &sp30, 0);

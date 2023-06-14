@@ -770,13 +770,13 @@ void func_800BE664(playerActor * arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BF524.s")
 
 //void func_800BF5A4(void) {
-//    func_8004BA5C(D_80240D6C[currentZone].collisionType);
+//    func_8004BA5C(D_80240D6C[gCurrentZone].collisionType);
 //}
 
 #ifdef NON_MATCHING
 // TODO: D_80240D6C migrate
 void func_800BF5A4(void) {
-    func_8004BA5C(gZoneCollisions[currentZone].unk8C);
+    func_8004BA5C(gZoneCollisions[gCurrentZone].unk8C);
 }
 #else
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BF5A4.s")

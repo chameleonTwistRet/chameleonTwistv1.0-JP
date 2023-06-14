@@ -253,7 +253,7 @@ extern s32 TriangleBufferCount;
 extern s32 ModelBufferCount;
 extern s32 D_80236968;
 extern s32 D_8023696C;
-extern s32 currentZone;
+extern s32 gCurrentZone;
 extern s32 D_801FC9B0;
 extern s16 D_801FCA22;
 extern s32 D_800FF620;
