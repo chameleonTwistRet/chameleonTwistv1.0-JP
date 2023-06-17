@@ -360,4 +360,6 @@ extern Addr D_1045C00;
 extern unk80100F50 D_80100F50[];
 extern CTTask* gCTTaskHead;
 extern CTTask* gCTTaskTail;
+extern s32 sGameModeStart;
+extern char D_8010DB20[];
 #endif

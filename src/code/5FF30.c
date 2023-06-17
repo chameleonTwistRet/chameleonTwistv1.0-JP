@@ -1244,7 +1244,7 @@ void Porocess_Mode0(void) {
 }*/
 
 #ifdef NON_MATCHING //matches, needs rodata support
-extern s8 D_8010DB20;
+extern char D_8010DB20[];
 extern s32 sGameModeStart;
 
 void MainLoop(void) {
