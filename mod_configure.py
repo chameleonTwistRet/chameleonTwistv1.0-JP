@@ -25,6 +25,7 @@ for root, dirs, files in os.walk(mod_asm_path):
 c_files = glob.glob(f'{dir_path}/**/*.c', recursive=True)
 s_files = glob.glob(f'{asm_path}/**/*.s', recursive=True)
 bin_files = glob.glob(f'{assets_path}/**/*.bin', recursive=True)
+a_files = glob.glob(f'{mod_dir}/**/*.a', recursive=True)
 
 for root, dirs, files in os.walk(mod_dir):
     s_file = glob.glob(os.path.join(root, '*.s'))
@@ -113,6 +114,9 @@ for index, line in enumerate(lines):
             for filename in fnmatch.filter(filenames, '*.s'):
                 lines.insert(line_number, f"\t\tbuild/{root}/{filename}.o(.text);\n")
                 line_number += 1
+            for filename in fnmatch.filter(filenames, '*.a'):
+                lines.insert(line_number, f"\t\tbuild/{root}/{filename}.o(.text);\n")
+                line_number += 1
         break
 
 lines.insert(line_number, "\t\tmod_RODATA_START = .;\n")
@@ -125,6 +129,9 @@ for index, line in enumerate(lines):
                 lines.insert(line_number, f"\t\tbuild/{root}/{filename}.o(.rodata);\n")
                 line_number += 1
             for filename in fnmatch.filter(filenames, '*.s'):
+                lines.insert(line_number, f"\t\tbuild/{root}/{filename}.o(.rodata);\n")
+                line_number += 1
+            for filename in fnmatch.filter(filenames, '*.a'):
                 lines.insert(line_number, f"\t\tbuild/{root}/{filename}.o(.rodata);\n")
                 line_number += 1
         break
@@ -141,6 +148,9 @@ for index, line in enumerate(lines):
             for filename in fnmatch.filter(filenames, '*.s'):
                 lines.insert(line_number, f"\t\tbuild/{root}/{filename}.o(.data);\n")
                 line_number += 1
+            for filename in fnmatch.filter(filenames, '*.a'):
+                lines.insert(line_number, f"\t\tbuild/{root}/{filename}.o(.data);\n")
+                line_number += 1
         break
 
 lines.insert(line_number, "\t\tmod_BSS_START = .;\n")
@@ -153,6 +163,9 @@ for index, line in enumerate(lines):
                 lines.insert(line_number, f"\t\tbuild/{root}/{filename}.o(.bss);\n")
                 line_number += 1
             for filename in fnmatch.filter(filenames, '*.s'):
+                lines.insert(line_number, f"\t\tbuild/{root}/{filename}.o(.bss);\n")
+                line_number += 1
+            for filename in fnmatch.filter(filenames, '*.a'):
                 lines.insert(line_number, f"\t\tbuild/{root}/{filename}.o(.bss);\n")
                 line_number += 1
         break
@@ -254,7 +267,7 @@ ci8_pal_files_o = [file + '.pal' for file in ci8_files]
 image_files_o = ia4_png_files_o + ia8_png_files_o + rgba16_png_files_o + rgba32_png_files_o + ci4_png_files_o + ci8_png_files_o + ci4_pal_files_o + ci8_pal_files_o
 
 o_files = []
-for file in c_files + s_files + bin_files + ia4_files + ia8_files + rgba16_files + rgba32_files + ci8_files + ci4_files + ci4_files_pal_final + ci8_files_pal_final:
+for file in c_files + s_files + a_files + bin_files + ia4_files + ia8_files + rgba16_files + rgba32_files + ci8_files + ci4_files + ci4_files_pal_final + ci8_files_pal_final:
     if 'asm/nonmatchings/' not in file:
         if file.endswith(('.png', '.pal')) and file.startswith('src/mod'):
             modified_file = file.split('assets/', 1)[1]  # Split at 'assets/' and take the second part
@@ -310,6 +323,9 @@ ninja_file.rule('s_file',
 
 ninja_file.rule('bin_file',
     command = '$LD -r -b binary -o $out $in')
+
+ninja_file.rule('a_file',
+    command = 'cp $in $out')
 
 ninja_file.rule('make_elf',
     command = '$LD $LDFLAGS -o $out',
@@ -377,6 +393,9 @@ for s_file in s_files:
 
 for bin_file in bin_files:
     ninja_file.build(append_prefix(append_extension(bin_file)), "bin_file", bin_file)
+
+for a_file in a_files:
+    ninja_file.build(append_prefix(append_extension(a_file)), "a_file", a_file)
 
 for ia4_file in ia4_files:
     if ia4_file.startswith("src/mod"):
