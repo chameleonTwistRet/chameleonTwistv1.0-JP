@@ -22,6 +22,7 @@
         "enums.h": "c",
         "os.h": "c",
         "assert.h": "c",
-        "mod_main.h": "c"
+        "mod_main.h": "c",
+        "cart.h": "c"
     }
 }

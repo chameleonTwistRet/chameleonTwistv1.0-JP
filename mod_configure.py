@@ -132,7 +132,7 @@ for index, line in enumerate(lines):
                 lines.insert(line_number, f"\t\tbuild/{root}/{filename}.o(.rodata);\n")
                 line_number += 1
             for filename in fnmatch.filter(filenames, '*.a'):
-                lines.insert(line_number, f"\t\tbuild/{root}/{filename}.o(.rodata);\n")
+                lines.insert(line_number, f"\t\tbuild/{root}/{filename}.o(.rodata*);\n")
                 line_number += 1
         break
 
