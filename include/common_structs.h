@@ -172,29 +172,34 @@ typedef struct Tongue { // at 80169268 (for p1 at least lol)
 
 //struct names are based on offset into main struct, Collision which holds Rect
 
-
 typedef struct Collision {
     /* 0x00 */ s32 collisionType;
     /* 0x04 */ char pad4[0x14];                     /* maybe part of collisionType[6]? */
     /* 0x18 */ s32 unk18;
     /* 0x1C */ char pad1C[0x14];                    /* maybe part of unk18[6]? */
-    /* 0x30 */ Rect rect_30; // bounding box?
-    /* 0x48 */ char pad48[0x30];                    /* maybe part of collisionSubStruct[3]? */
+    /* 0x30 */ Rect rect_30;
+    /* 0x48 */ char pad48[0x18];
+    /* 0x60 */ s32 unk60;                           /* inferred */
+    /* 0x64 */ s32 unk64;                           /* inferred */
+    /* 0x68 */ char pad68[0x10];                    /* maybe part of unk64[5]? */
     /* 0x78 */ s32 unk78;
-    /* 0x7C */ char pad7C[0x10];                    /* maybe part of unk78[7]? */
+    /* 0x7C */ s32 unk7C;
+    /* 0x80 */ char pad80[4];
+    /* 0x84 */ s32 unk84;                           /* inferred */
+    /* 0x88 */ char pad88[4];
     /* 0x8C */ s32 unk8C;
-    /* 0x90 */ char pad90[0x4];                     /* maybe part of unk8C[1]? */
+    /* 0x90 */ char pad90[4];
     /* 0x94 */ s32 unk94;
-    /* 0x98 */ f32 unk98;                           /* inferred */
-    /* 0x9C */ f32 unk9C;                           /* inferred */
-    /* 0xA0 */ f32 unkA0;                           /* inferred */
-    /* 0xA4 */ f32 unkA4;                           /* inferred */
-    /* 0xA8 */ f32 unkA8;                           /* inferred */
-    /* 0xAC */ f32 unkAC;                           /* inferred */
+    /* 0x98 */ f32 unk98;
+    /* 0x9C */ f32 unk9C;
+    /* 0xA0 */ f32 unkA0;
+    /* 0xA4 */ f32 unkA4;
+    /* 0xA8 */ f32 unkA8;
+    /* 0xAC */ f32 unkAC;
     /* 0xB0 */ char padB0[0x20];                    /* maybe part of unkAC[9]? */
-    /* 0xD0 */ f32 unkD0;                           /* inferred */
+    /* 0xD0 */ f32 unkD0;
     /* 0xD4 */ char padD4[4];
-} Collision; //sizeof 0xD8
+} Collision;
 
 typedef struct unkItemStruct {
     s32 unk_00;

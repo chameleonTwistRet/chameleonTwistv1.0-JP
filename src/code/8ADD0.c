@@ -246,7 +246,16 @@ Vec3f* Vec3f_SetAtBossPos(Vec3f* arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/isBossPresent.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/isBossStage.s")
+s32 isBossStage(void) {
+    s32 ret;
+    
+    if ((gCurrentStage != 9) && (gCurrentStage != 0xA) && (gCurrentStage != 0xB) && (gCurrentStage != 0xC) && (gCurrentStage != 0xD) && (gCurrentStage != 0xE)) {
+        ret = 0;
+    } else {
+        ret = 1;
+    }
+    return ret;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B2D10.s")
 
@@ -813,8 +822,81 @@ const char* GetDirectionName(s32 arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C0B74.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C0CDC.s")
+//matches, needs rodata support
+// void func_800C0CDC(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4) {
+//     if (gZoneCollisions[arg1].unk7C != 0) {
+//         gGameModeState = 3;
+//         switch (gCurrentStage) {                    /* switch 1 */
+//         case 0:                                     /* switch 1 */
+//             D_80174878 = 8;
+//             return;
+//         case 1:                                     /* switch 1 */
+//             D_80174878 = 9;
+//             return;
+//         case 2:                                     /* switch 1 */
+//             D_80174878 = 0xA;
+//             return;
+//         case 3:                                     /* switch 1 */
+//             D_80174878 = 0xB;
+//             return;
+//         case 4:                                     /* switch 1 */
+//             D_80174878 = 0xC;
+//             return;
+//         case 5:                                     /* switch 1 */
+//             D_80174878 = 0xD;
+//             return;
+//         case 15:                                    /* switch 1 */
+//             switch (arg1) {                         /* switch 2 */
+//             case 1:                                 /* switch 2 */
+//                 D_80174878 = 8;
+//                 return;
+//             case 3:                                 /* switch 2 */
+//                 D_80174878 = 9;
+//                 return;
+//             case 2:                                 /* switch 2 */
+//                 D_80174878 = 0xA;
+//                 return;
+//             case 4:                                 /* switch 2 */
+//                 D_80174878 = 0xB;
+//                 return;
+//             case 5:                                 /* switch 2 */
+//                 D_80174878 = 0xC;
+//                 return;
+//             case 6:                                 /* switch 2 */
+//                 D_80174878 = 0xD;
+//                 return;
+//             }
+//             break;
+//         default:                                    /* switch 1 */
+//             gGameModeState = 2;
+//         }
+//     }
+//     func_800C0760(arg1);
+//     ChameleonFromDoor(arg0, arg1, arg2, arg3, arg4);
+//     func_800BFCD0();
+// }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C0E78.s")
+void EraseRoomItem(s32);
+
+void func_800C0E78(s32 arg0) {
+    s32 i;
+    s32 temp = arg0;
+
+    if (gZoneCollisions[arg0].unk60 != 0) {
+        temp = 1;
+        for (i = 0; i < 64; i++) {
+            if ((gActors[i].actorID != 0) && (gZoneCollisions[arg0].unk84 == gActors[i].actorID) && (gActors[i].actorState == 0)) {
+                temp = 0;
+                break;
+            }
+        }
+        
+        if (temp != 0) {
+            gZoneCollisions[arg0].unk64 = 0;
+        }
+    }
+    EraseRoomItem(arg0);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/checkDoor.s")
 
