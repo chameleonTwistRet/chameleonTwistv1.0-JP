@@ -235,7 +235,7 @@ typedef struct CardinalDirection {
 //camera copy 0x801768A0
 typedef struct Camera {//take these with a grain of salt
     /* 0x00 */ s32 unk0;
-    /* 0x04 */ Vec3f f1;
+    /* 0x04 */ Vec3f f1; //angle freecam will snap to
     /* 0x10 */ Vec3f f2;
     /* 0x1C */ Vec3f f3;
     /* 0x28 */ Vec3f f4; // perspective "eye"

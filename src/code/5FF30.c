@@ -69,10 +69,6 @@ typedef struct unkDemoStruct {
     char unk4[0xC];
 } unkDemoStruct;
 
-typedef struct DemoContPad {
-    OSContPad pad;
-} DemoContPad;
-
 extern s32 D_800F0704;
 extern s16 D_800F0708;
 extern s16 D_80100D64[];
@@ -82,7 +78,7 @@ extern s16 D_80101030;
 extern s8 D_80101034[];
 extern char D_8010F1A4[];
 extern char D_8010F1C0[];
-extern DemoContPad D_80175650[];
+extern OSContPad D_80175650[];
 extern unkDemoStruct D_801FC9B8[1]; //sizeof 0x10
 extern s32 D_801FC9C8;
 extern s16 D_801FCA18;
@@ -732,7 +728,7 @@ s32 PutDList(Mtx** arg0, Gfx** arg1, Gfx* arg2) {
                 }
                 break;
             case 6:
-                PutDList(&sp64, &sp60, var_v1->words.w1);
+                PutDList(&sp64, &sp60, (Gfx*)var_v1->words.w1);
                 break;
         }
         arg2++;
@@ -2546,7 +2542,7 @@ void func_800A93AC(contMain* arg0) {
         if (gPlayerActors[i].active == 0) {
             continue;
         }
-        DummiedPrintf(D_8010F070, D_80175650[i].pad.button, D_80175650[i].pad.stick_x, D_80175650[i].pad.stick_y);
+        DummiedPrintf(D_8010F070, D_80175650[i].button, D_80175650[i].stick_x, D_80175650[i].stick_y);
     }
 }
 
