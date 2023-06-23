@@ -28,5 +28,6 @@ if cat /etc/os-release | grep -E 'ID=debian|ID_LIKE=(.*)debian' &> /dev/null; th
     pip install GitPython
     pip install requests
     pip install colour
+    pip install ninja_syntax
     chmod +x tools/ido_5.3/usr/lib/ #give exec permissions to ido folder (will change in the future)
 fi
