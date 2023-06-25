@@ -833,5 +833,97 @@ typedef struct unkBlackChameleon0 {
     s32 unkB0;
 } unkBlackChameleon0;
 
+typedef struct Color128 {
+    u32 r;
+    u32 g;
+    u32 b;
+    u32 a;
+} Color128;
+
+typedef struct SpriteActor {
+    s32 size;
+    s32 spriteIndex;
+    Vec3f position;
+    Vec3f scale;
+    s32 unk20;
+    s32 unk24;
+    f32 unk28;
+    s32 damages;
+    s32 unk30;
+    s32 unk34;
+    s32 unk38;
+    s32 unk3C;
+    Color128 color;
+} SpriteActor;
+
+typedef struct Collectable {
+    s32 id;
+    Vec3f position;
+    s32 unk10;
+    s32 unk14;
+    s32 unk18;
+    s32 unk1C;
+} Collectable;
+
+typedef struct RoomObject {
+    Vec3f position;
+    Vec3f scale;
+    s32 unk18;
+    s32 damages;
+    s32 unk20;
+    s32 unk24;
+    f32 unk28;
+    f32 unk2C;
+    f32 unk30;
+    s32 unk34;
+    s32 unk38;
+    s32 unk3C;
+    s32 unk40;
+    s32 unk44;
+    s32 unk48;
+    s32 unk4C;
+    s32 id; //id in levelData pointers
+    s32 unk54;
+    s32 unk58;
+    s32 unk5C;
+    s32 unk60;
+    u32 unk64;
+    s32 unk68;
+    s32 unk6C;
+    s32 unk70;
+    s32 unk74;
+    s32 unk78;
+    s32 unk7C;
+    s32 unk80;
+    s32 unk84;
+    s32 unk88;
+} RoomObject;
+
+typedef struct RoomActor {
+    s32 id;
+    Vec3f position;
+    f32 unk10;
+    f32 unk14;
+    f32 unk18;
+    s32 unk1C;
+    f32 unk20;
+    f32 unk24;
+    f32 unk28;
+    s32 unk2C;
+    f32 unk30;
+    f32 unk34;
+    f32 unk38;
+    f32 unk3C;
+    s32 unk40;
+    s32 unk44;
+    s32 unk48;
+    s32 unk4C;
+    s32 unk50;
+    s32 unk54;
+    s32 unk58;
+    s32 unk5C;
+} RoomActor;
+
+
 
 #endif
