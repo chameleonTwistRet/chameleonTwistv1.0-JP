@@ -924,6 +924,25 @@ typedef struct RoomActor {
     s32 unk5C;
 } RoomActor;
 
+typedef struct UnkType1{
+    Vec3f unk0;
+    s32 unkC;
+    s32 unk10;
+    s32 unk14;
+    s32 unk18;
+    s32 unk1C;
+    s32 unk20;
+} UnkType1;
+
+typedef struct UnkType2{
+    f32 unk0;
+    f32 unk4;
+    s32 unk8;
+    f32 unkC;
+    f32 unk10;
+    f32 unk14;
+} UnkType2;
+
 
 
 #endif

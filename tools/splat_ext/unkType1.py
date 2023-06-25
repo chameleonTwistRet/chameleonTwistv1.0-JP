@@ -3,7 +3,7 @@ Chameleon Twist: Sprite Actor struct splitter
 Dumps out spriteActor data as a .inc.c file.
 
 Original Author: Ellie (Elisiah)
-Modified for Collectable struct: Nathan R.
+Modified for unkType struct: Nathan R.
 """
 
 import re
@@ -15,7 +15,7 @@ from util import options
 from segtypes.common.codesubsegment import CommonSegCodeSubsegment
 
 
-class N64SegCollectable(CommonSegCodeSubsegment):
+class N64SegUnkType1(CommonSegCodeSubsegment):
     def __init__(
         self,
         rom_start,
@@ -43,7 +43,7 @@ class N64SegCollectable(CommonSegCodeSubsegment):
         return []
 
     def out_path(self) -> Path:
-        return options.opts.asset_path / self.dir / f"{self.name}.clct.inc.c"
+        return options.opts.asset_path / self.dir / f"{self.name}.ut1.inc.c"
 
     def scan(self, rom_bytes: bytes):
         if self.out_path().exists():
@@ -53,9 +53,9 @@ class N64SegCollectable(CommonSegCodeSubsegment):
     def disassemble_data(self, rom_bytes):
         sprite_data = rom_bytes[self.rom_start : self.rom_end]
         segment_length = len(sprite_data)
-        if (segment_length) != 0x20:
+        if (segment_length) != 0x24:
             error(
-                f"Error: clct segment {self.name} length ({segment_length}) is not valid"
+                f"Error: unkType1 segment {self.name} length ({segment_length}) is not valid"
             )
 
         lines = []
@@ -67,12 +67,12 @@ class N64SegCollectable(CommonSegCodeSubsegment):
             lines.append('#include "common.h"')
             lines.append("")
             if "/" in self.name:
-                lines.append("Collectable %s = {" % (self.name.split("/")[(len(self.name.split("/"))-1)]))
+                lines.append("UnkType1 %s = {" % (self.name.split("/")[(len(self.name.split("/"))-1)]))
             else:
-                lines.append("Collectable %s = {" % (self.name))
+                lines.append("UnkType1 %s = {" % (self.name))
 
         byteData = bytearray(sprite_data)
-        data = struct.unpack('>ifffiiii', byteData)
+        data = struct.unpack('>fffiiiiii', byteData)
         for v in data: 
             lines.append(f"    {v},")
 
