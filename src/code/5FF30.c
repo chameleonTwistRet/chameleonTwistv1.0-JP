@@ -78,7 +78,7 @@ extern s16 D_80101030;
 extern s8 D_80101034[];
 extern char D_8010F1A4[];
 extern char D_8010F1C0[];
-extern OSContPad D_80175650[];
+extern OSContPad D_80175650[MAXCONTROLLERS];
 extern unkDemoStruct D_801FC9B8[1]; //sizeof 0x10
 extern s32 D_801FC9C8;
 extern s16 D_801FCA18;
