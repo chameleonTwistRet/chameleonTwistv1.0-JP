@@ -39,7 +39,7 @@ extern Addr D_8C26A0;
 extern unkStruct02* D_80176F4C;
 
 void func_80055C04(void);
-void func_80062D10(s32, s32, u32*, s32*, u32, s32);
+void func_80062D10(s32, s32, s32*, s32*, u32, s32);
 void func_800634D4(s32, s32, s32*, s32*, s32, s32);
 void func_8007AF80(void);
 void resetEyeParams(void);
@@ -1369,7 +1369,7 @@ void func_80084788(void) {
     D_80176B74 = gPlayerActors;
     D_80176B78 = gCamera;
     if ((gameModeCurrent == 0) && (D_80168DA0 == 1)) {
-        func_80062D10(0x10, 0x10, &gPlayerActors->hp, &D_800FEDB8, gPlayerActors->hp, 0);
+        func_80062D10(0x10, 0x10, &gPlayerActors[0].hp, &D_800FEDB8, gPlayerActors[0].hp, 0);
         func_800634D4(0xF0, 0x10, &currentStageCrowns, &D_800FEDB8, 2, 0);
     }
     D_800FEDB4 = 1;
