@@ -922,7 +922,7 @@ typedef struct RoomActor {
     s32 unk5C;
 } RoomActor;
 
-typedef struct UnkType1{
+typedef struct UnkType1 {
     Vec3f unk0;
     s32 unkC;
     s32 unk10;
@@ -932,7 +932,7 @@ typedef struct UnkType1{
     s32 unk20;
 } UnkType1;
 
-typedef struct UnkType2{
+typedef struct UnkType2 {
     f32 unk0;
     f32 unk4;
     s32 unk8;
@@ -941,6 +941,52 @@ typedef struct UnkType2{
     f32 unk14;
 } UnkType2;
 
+typedef struct RoomSettings {
+    u32 RoomObjectsPointer;
+    u32 RoomActorPointer;
+    u32 CollectablePointer;
+    u32 SpriteActorPointer;
+    s32 unk10;
+    s32 unk14;
+    s32 amountOfSpriteActors; //needs verification
+    s32 unk1C;
+    s32 unk20;
+    s32 unk24;
+    f32 unk28;
+    s32 unk2C;
+    f32 unk30;
+    f32 unk34;
+    f32 unk38;
+    s32 unk3C;
+    s32 unk40;
+    s32 unk44;
+    f32 unk48;
+    s32 unk4C;
+    s32 unk50;
+    s32 unk54;
+    s32 unk58;
+    s32 unk5C;
+    s32 unk60;
+    f32 unk64;
+    s32 unk68;
+} RoomSettings;
+
+typedef struct LevelHeader {
+    u32 Header;
+    u32 SpriteLib;
+    u32 unk8;
+    u32 RoomObjects;
+    u32 unk10;
+    u32 Pointers;
+    u32 OWRooms;
+    u32 Map;
+    s32 unk20;
+    s32 renderDistance;
+    s32 unk28;
+    s32 unk2C;
+    s32 unk30;
+    s32 unk34;
+} LevelHeader;
 
 
 #endif
