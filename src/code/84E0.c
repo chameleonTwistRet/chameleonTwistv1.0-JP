@@ -815,7 +815,39 @@ s32 func_80032074(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80036900.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80036D74.s")
+void func_80064BFC(f32, f32, f32);
+extern f32 D_8010B748;
+extern f64 D_8010B750;
+extern f64 D_8010B758;
+extern f64 D_8010B760;
+extern f64 D_8010B768;
+extern s32 D_80174980;
+extern s32 D_80174988;
+extern s32 D_801749AC;
+void func_80036D74(playerActor* arg0, Tongue* arg1) {
+    if (arg0->playerHURTSTATE == 0) {
+        func_8002F884(arg0->playerID, 5);
+        func_80064BFC(arg0->pos.x, arg0->pos.y, arg0->pos.z);
+        playSoundEffect(0x17, NULL, NULL, NULL, 0, 0x10);
+        if ((D_801749AC == 0) && (D_80174980 != 3) && (D_80174988 == 0)) {
+            gNoHit = 0;
+            if (--arg0->hp <= 0) {
+                D_80174980 = 4;
+                D_80174860->unk50 = 0.0f;
+                D_80174860->size2 = D_8010B748;
+            }
+        }
+        arg0->playerHURTSTATE = 1;
+        arg0->playerHURTTIMER = 0;
+        arg0->playerHURTANIM = 0;
+        arg0->playerHURTBY = 0;
+        func_80031DB0(arg0, arg1, 0);
+        arg0->yAngle = CalculateAngleOfVector(-arg0->vel.x, arg0->vel.z);;
+        arg0->vel.x = -__cosf(arg0->yAngle * 2 * D_8010B750 / D_8010B758) * 32.0f;
+        arg0->vel.z = __sinf(arg0->yAngle * 2 * D_8010B760 / D_8010B768) * 32.0f;
+        func_8002F54C(48.0f, arg0, 1);
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80036F30.s")
 

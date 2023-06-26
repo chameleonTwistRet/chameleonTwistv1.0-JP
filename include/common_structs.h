@@ -83,7 +83,7 @@ typedef struct playerActor {
     /* 0x0BC */ u32 unkBC;
     /* 0x0C0 */ u32 shootLeft;
     /* 0x0C4 */ u32 vaultFall;//timer for falling after vault
-    /* 0x0C8 */ u32 hp;
+    /* 0x0C8 */ s32 hp;
     /* 0x0CC */ u32 playerHURTSTATE;
     /* 0x0D0 */ u32 playerHURTTIMER;
     /* 0x0D4 */ u32 playerHURTANIM;
@@ -297,9 +297,7 @@ typedef struct Collider {
     /* 0x030 */ f32 unk_30;
     /* 0x034 */ f32 unk_34;
     /* 0x038 */ f32 unk_38;
-    /* 0x03C */ f32 unk_3C;
-    /* 0x040 */ f32 unk_40;
-    /* 0x044 */ f32 unk_44;
+    /* 0x03C */ Vec3f unk_3C;
     /* 0x048 */ f32 unk_48;
     /* 0x04C */ f32 unk_4C;
     /* 0x050 */ f32 unk_50;

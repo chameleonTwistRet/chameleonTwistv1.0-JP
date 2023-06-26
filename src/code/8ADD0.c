@@ -568,7 +568,7 @@ void func_800B6040(s32* arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B6054.s")
 
-void func_800B6078(tempStruct* arg0) {
+void func_800B6078(Collider* arg0) {
     Vec3f_Zero(&arg0->unk_3C);
 }
 
@@ -823,7 +823,7 @@ const char* GetDirectionName(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C0CDC.s")
 //matches, needs rodata support
-// void func_800C0CDC(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4) {
+// void func_800C0CDC(playerActor* arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4) {
 //     if (gZoneCollisions[arg1].unk7C != 0) {
 //         gGameModeState = 3;
 //         switch (gCurrentStage) {                    /* switch 1 */

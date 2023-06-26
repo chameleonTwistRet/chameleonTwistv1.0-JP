@@ -58,66 +58,6 @@ void func_800D887C(Collider* arg0, s32 arg1, s32 arg2) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/B39A0/func_800D887C.s")
 #endif
 
-//#ifdef NON_MATCHING
-//void func_800D8918(Collider* arg0, s32 sfxID, s32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7, f32 arg8) {
-//    s32 var_v0;
-//    f32 temp_f0;
-//    f32 temp_f0_2;
-//    f32 xPos;
-//    f32 zPos;
-//    f32 *new_var = &arg4;
-//    f32 sp44;
-//    f32 var_f12;
-//    Vec3f sp34;
-//    f32 sp40;
-//    
-//    if ((arg0->unk_00 + D_801749A0) % arg2 == 0) {
-//        zPos = gPlayerActors->pos.z - arg3;
-//        xPos = gPlayerActors->pos.x - arg4;
-//        var_v0 = 1;
-//        temp_f0 = (zPos - xPos) * SQROOT_2_DIV_2;
-//        
-//        if (temp_f0 < -(arg5 + arg7)) {
-//          var_v0 = 0;
-//        } else {
-//          if (temp_f0 < -arg5) {
-//              sp44 = -arg5;
-//          } else if (temp_f0 < arg5) {
-//              sp44 = temp_f0;
-//          } else if (temp_f0 < arg5 + arg7) {
-//              sp44 = arg5;
-//          } else {
-//              var_v0 = 0;
-//          }
-//      }
-//        
-//        temp_f0_2 = (zPos + xPos) * SQROOT_2_DIV_2;
-//        
-//        if (temp_f0_2 < -(arg6 + arg8)) {
-//          var_v0 = 0;
-//        } else {
-//          if (temp_f0_2 < -arg6) {
-//              var_f12 = -arg6;
-//          } else if (temp_f0_2 < arg6) {
-//              var_f12 = temp_f0_2;
-//          } else {
-//              if (temp_f0_2 < (arg6 + arg8)) {
-//                  var_f12 = arg6;
-//              } else {
-//                  var_v0 = 0;
-//              }
-//          }
-//      }
-//        if (var_v0 != 0) {
-//          sp34.z = (*new_var) + (var_f12 - sp44) * SQROOT_2_DIV_2;
-//          sp34.y = gPlayerActors[0].pos.y;
-//          sp34.x = (sp44 + var_f12) * SQROOT_2_DIV_2;
-//          sp34.x = arg3 + sp34.x;
-//          func_80088698(playSoundEffect(sfxID, &sp34.z, &sp34.y, &sp34.x, 8, 0));
-//      }
-//    }
-//}
-
 extern s32 D_801749A0;
 
 void func_800D8918(Collider* arg0, s32 arg1, s32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7, f32 arg8) {

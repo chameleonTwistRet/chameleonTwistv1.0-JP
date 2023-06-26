@@ -374,7 +374,7 @@ void func_8008F16C(void);
 char* parseIntToHex(s32, s32, char*);
 void setProcessType(s32);
 void func_8008FDF8(void);
-void ChameleonFromDoor(s32, s32, s32, s32, s32);
+void ChameleonFromDoor(playerActor*, s32, s32, s32, s32);
 void func_800BFCD0(void);
 void func_800C0760(s32);
 void func_800928F0(s32);
