@@ -6,7 +6,7 @@ import bmesh
 
 silly = '//wsl$/Ubuntu/root/RealCT/'
 assetDir = 'assets/'
-toUse = 'model/JungleLand/unknown/unknown.gfx.inc.c'
+toUse = 'model/JungleLand/ffff/ffff.gfx.inc.c'
 namer = toUse.split("/")[len(toUse.split("/")) - 1].split('.')[0]
 
 yamler = 'chameleontwist.jp.yaml'
@@ -237,7 +237,7 @@ def start(toUser):
             v = objdata["uvs"][getVerts[s]]
             zoink = 32768.0 / 8.0
             tx = v[0] / zoink
-            ty = (v[1] / -zoink) + 1
+            ty = (v[1] / -zoink)
             tx /= (twidth / 64.0)
             ty /= (theight / 64.0)
             l[uv_layer].uv[0] = tx
@@ -264,3 +264,5 @@ def start(toUser):
         bpy.ops.mesh.select_interior_faces()
         bpy.ops.mesh.delete(type='FACE')
         bpy.ops.object.mode_set(mode='OBJECT')
+
+start(toUse)
