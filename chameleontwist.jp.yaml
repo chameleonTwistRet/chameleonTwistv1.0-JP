@@ -4106,13 +4106,13 @@ segments:
       - [0xB00A60, bin] #endDL command from rgb2c
       - [0xB00A68, palette, chameleons/Davy/cuff/color.ci4]
       - { start: 0xb00c68, type: gfx, data_only: True, name: chameleons/Davy/cuff/cuff}
-    - name: Lleg
+    - name: Lcuff
       type: .data #model
       start: 0xb00f20
       subsegments:
-      - { start: 0xb00f20, type: vtx, data_only: True, name: chameleons/Davy/Lleg/Lleg}
-      - [0xb01010, mtx, chameleons/Davy/Lleg/Lleg]
-      - { start: 0xb01050, type: gfx, data_only: True, name: chameleons/Davy/Lleg/Lleg}
+      - { start: 0xb00f20, type: vtx, data_only: True, name: chameleons/Davy/Lcuff/Lcuff}
+      - [0xb01010, mtx, chameleons/Davy/Lcuff/Lcuff]
+      - { start: 0xb01050, type: gfx, data_only: True, name: chameleons/Davy/Lcuff/Lcuff}
     - name: wrist
       type: .data #model
       start: 0xb01308
@@ -4129,20 +4129,20 @@ segments:
       - [0xB01958, palette, chameleons/Davy/wrist/wrist.ci4]
       - [0xB01978, bin]
       - { start: 0xb01b58, type: gfx, data_only: True, name: chameleons/Davy/wrist/wrist}
-    - name: Larm
+    - name: Lwrist
       type: .data #model
       start: 0xb01f70
       subsegments:
-      - { start: 0xb01f70, type: vtx, data_only: True, name: chameleons/Davy/Larm/Larm}
-      - [0xb02140, mtx, chameleons/Davy/Larm/Larm]
-      - { start: 0xb02180, type: gfx, data_only: True, name: chameleons/Davy/Larm/Larm}
-    - name: Rshoulder
+      - { start: 0xb01f70, type: vtx, data_only: True, name: chameleons/Davy/Lwrist/Lwrist}
+      - [0xb02140, mtx, chameleons/Davy/Lwrist/Lwrist]
+      - { start: 0xb02180, type: gfx, data_only: True, name: chameleons/Davy/Lwrist/Lwrist}
+    - name: shoulder
       type: .data #model
       start: 0xb02598
       subsegments:
-      - { start: 0xb02598, type: vtx, data_only: True, name: chameleons/Davy/Rshoulder/Rshoulder}
-      - [0xb025f8, mtx, chameleons/Davy/Rshoulder/Rshoulder]
-      - { start: 0xb02638, type: gfx, data_only: True, name: chameleons/Davy/Rshoulder/Rshoulder}
+      - { start: 0xb02598, type: vtx, data_only: True, name: chameleons/Davy/shoulder/shoulder}
+      - [0xb025f8, mtx, chameleons/Davy/shoulder/shoulder]
+      - { start: 0xb02638, type: gfx, data_only: True, name: chameleons/Davy/shoulder/shoulder}
     - name: Lshoulder
       type: .data #model
       start: 0xb02790
