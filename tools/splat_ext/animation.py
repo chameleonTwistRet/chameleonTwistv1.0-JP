@@ -2,8 +2,7 @@
 N64 Mtx struct splitter
 Dumps out Mtx as a .inc.c file.
 
-Original Author: Ellie (Elisiah)
-Modified for Anim (signed) Mtx: Nathan R.
+Originally Created for CT1 Animations: Nathan R.
 """
 
 import re
@@ -15,7 +14,7 @@ from util import options
 from segtypes.common.codesubsegment import CommonSegCodeSubsegment
 
 
-class N64SegSMtx(CommonSegCodeSubsegment):
+class N64SegAnimation(CommonSegCodeSubsegment):
     def __init__(
         self,
         rom_start,
@@ -43,15 +42,15 @@ class N64SegSMtx(CommonSegCodeSubsegment):
         return []
 
     def out_path(self) -> Path:
-        return options.opts.asset_path / self.dir / f"{self.name}.sMtx.inc.c"
+        return options.opts.asset_path / self.dir / f"{self.name}.anim.inc.c"
 
     def scan(self, rom_bytes: bytes):
         if self.out_path().exists():
             return
         self.file_text = self.disassemble_data(rom_bytes)
 
-    def disassemble_data(self, rom_bytes):
-        matrix_data = rom_bytes[self.rom_start : self.rom_end]
+    def mtxDec(self, rom_bytes):
+        matrix_data = rom_bytes
         segment_length = len(matrix_data)
         if (segment_length) != 64:
             if (segment_length == 72):
@@ -102,6 +101,50 @@ class N64SegSMtx(CommonSegCodeSubsegment):
             lines.append("};")
 
         # enforce newline at end of file
+        return "\n".join(lines)
+    
+    def disassemble_data(self, rom_bytes):
+        matrix_data = rom_bytes[self.rom_start : self.rom_end]
+        segment_length = len(matrix_data)
+        if segment_length < 0x30:
+            error(
+                f"Error: Animation segment {self.name} needs at least one frame (0x40)!"
+            )
+        elif (segment_length - 0x30) % 0x10 * 4 != 0:
+            error(
+                f"Error: Animation segment {self.name} length without header ({segment_length}) is not a multiple of 0x40!"
+            )
+
+
+        lines = []
+
+        sym = self.create_symbol(
+            addr=self.vram_start, in_segment=True, type="data", define=True
+        )
+        if not self.data_only:
+            lines.append('#include "common.h"')
+            lines.append("")
+            lines.append(f"Anim {sym.name} = {{")
+
+        byteData = bytearray(matrix_data[0x0:0x30])
+        data = struct.unpack('>fffffffffIII', byteData)
+        for v in data: 
+            lines.append(f"    {v},")
+
+        frames = 0
+        while 0x30 + (frames * 0x40) < segment_length:
+            next = 0x30 + (frames * 0x40)
+            nextAfter = 0x30 + ((frames + 1) * 0x40)
+            lines.append(self.mtxDec(matrix_data[next:nextAfter]))
+            if frames == 0:
+                lines[-1] = lines[-1].replace("{", "[{", 1)
+            lines[-1] = lines[-1].replace("{", "{{", 1) + "},"
+            frames += 1
+        lines[-1] = lines[-1][:-1] + "]"
+        if not self.data_only:
+            lines.append("};")
+
+        # enforce newline at end of file
         lines.append("")
         return "\n".join(lines)
 
@@ -111,6 +154,8 @@ class N64SegSMtx(CommonSegCodeSubsegment):
 
             with open(self.out_path(), "w", newline="\n") as f:
                 f.write(self.file_text)
+
+
 
     #def should_scan(self) -> bool:
     #    return (

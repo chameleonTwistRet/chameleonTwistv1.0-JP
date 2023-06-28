@@ -16,7 +16,7 @@ yamlDir = silly + yamler
 #shouldnt need this
 if os.path.exists("C:/assets/"):
     shutil.rmtree("C:/assets/")
-#
+
 
 byteLimit = {
     "1": 128,
