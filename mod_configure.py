@@ -153,8 +153,12 @@ for index, line in enumerate(lines):
                 line_number += 1
         break
 
-lines.insert(line_number, "\t\tmod_BSS_START = .;\n")
-line_number += 1
+lines.insert(line_number, "\t}\n")
+lines.insert(line_number + 1, "\tmod_BSS_VRAM = ADDR(.mod_BSS);\n")
+lines.insert(line_number + 2, "\t.mod_BSS (NOLOAD) : SUBALIGN(8)\n")
+lines.insert(line_number + 3, "\t{\n")
+lines.insert(line_number + 4, "\t\tmod_BSS_START = .;\n")
+line_number += 5
 
 for index, line in enumerate(lines):
     if 'romPadding_VRAM_END' in line:
@@ -170,11 +174,13 @@ for index, line in enumerate(lines):
                 line_number += 1
         break
 
-lines.insert(line_number, "\t}\n")
-lines.insert(line_number + 1, "\t__romPos += SIZEOF(.mod);\n")
-lines.insert(line_number + 2, "\tmod_ROM_END = __romPos;\n")
-lines.insert(line_number + 3, "\tmod_VRAM_END = .;\n")
-line_number += 4
+lines.insert(line_number, "\t\tmod_BSS_END = .;\n")
+lines.insert(line_number + 1, "\t\tmod_BSS_SIZE = ABSOLUTE(mod_BSS_END - mod_BSS_START);\n")
+lines.insert(line_number + 2, "\t}\n")
+lines.insert(line_number + 3, "\t__romPos += SIZEOF(.mod);\n")
+lines.insert(line_number + 4, "\tmod_ROM_END = __romPos;\n")
+lines.insert(line_number + 5, "\tmod_VRAM_END = .;\n")
+line_number += 6
 
 with open(linker_script_file, 'w') as file:
     file.writelines(lines)
