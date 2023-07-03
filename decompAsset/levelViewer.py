@@ -154,28 +154,28 @@ specialActor = {
     "unk1C": ["int", 4, True],
 }
 roomObject = {
-    "x": ["float"],
-    "y": ["float"],
-    "z": ["float"],
-    "xScale": ["float"],
-    "yScale": ["float"],
-    "zScale": ["float"],
-    "unk18": ["int", 4, True],
-    "hurts": ["int", 4, True],
-    "unk20": ["int", 4, True],
-    "unk24": ["int", 4, True],
-    "unk28": ["float"],
-    "unk2C": ["float"],
-    "unk30": ["float"],
-    "unk34": ["int", 4, True],
-    "unk38": ["int", 4, True],
-    "unk3C": ["int", 4, True],
-    "unk40": ["int", 4, True],
-    "unk44": ["int", 4, True],
-    "unk48": ["int", 4, True],
-    "unk4C": ["int", 4, True],
-    "id": ["int", 4, True],
-    "unk54": ["int", 4, True],
+    "x": ["float"],4
+    "y": ["float"],8
+    "z": ["float"],12
+    "xScale": ["float"],16
+    "yScale": ["float"],20
+    "zScale": ["float"],24
+    "unk18": ["int", 4, True],28
+    "hurts": ["int", 4, True],32
+    "unk20": ["int", 4, True],36
+    "unk24": ["int", 4, True],40
+    "unk28": ["float"],44
+    "unk2C": ["float"],48
+    "unk30": ["float"],52
+    "unk34": ["int", 4, True],56
+    "unk38": ["int", 4, True],60
+    "unk3C": ["int", 4, True],64
+    "unk40": ["int", 4, True],68
+    "unk44": ["int", 4, True],72
+    "unk48": ["int", 4, True],76
+    "unk4C": ["int", 4, True],80
+    "id": ["int", 4, True],84
+    "unk54": ["int", 4, True],88
     "unk58": ["int", 4, True],
     "unk5C": ["int", 4, True],
     "unk60": ["int", 4, True],

@@ -988,5 +988,19 @@ typedef struct LevelHeader {
     s32 unk34;
 } LevelHeader;
 
+typedef struct Anim {
+    f32 unk0;
+    f32 unk4;
+    f32 unk8;
+    f32 unkC;
+    f32 unk10;
+    f32 unk14;
+    f32 unk18;
+    f32 unk1C;
+    f32 unk20;
+    s32 unk24;
+    s32 frames;
+    s32 objects;
+} Anim;
 
 #endif

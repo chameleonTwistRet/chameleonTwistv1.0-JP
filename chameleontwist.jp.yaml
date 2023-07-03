@@ -355,17 +355,18 @@ segments:
       - [0x117810, gfx, gfx/unk5] #gfx
       - [0x117890, mtx, mtx5] #mtx
       #AnimationSegments
-      - [0x1178D0, bin, anim/chameleon/Idle]
-      - [0x11ad00, bin, anim/chameleon/Walk]
-      - [0x11ee30, bin, anim/chameleon/Run]
-      - [0x122F60, bin, anim/unk]
-      - [0x126050, bin, anim/chameleon/Jump]
-      - [0x129140, bin, anim/chameleon/Tongue]
-      - [0x12C570, bin, anim/chameleon/Vault]
-      - [0x1306A0, bin, anim/chameleon/Spin]
-      - [0x136200, bin, anim/chameleon/LandFromKnockback]
-      - [0x13A330, bin, anim/chameleon/GetupFromKnockback]
-      - [0x13BD40, bin]
+      - [0x1178D0, animation, anim/chameleon/Idle]
+      - [0x11ad00, animation, anim/chameleon/Walk]
+      - [0x11ee30, animation, anim/chameleon/Run]
+      - [0x122F60, animation, anim/unk]
+      - [0x126050, animation, anim/chameleon/Jump]
+      - [0x129140, animation, anim/chameleon/Tongue]
+      - [0x12C570, animation, anim/chameleon/Vault]
+      - [0x1306A0, animation, anim/chameleon/Spin]
+      - [0x133450, animation, anim/unk2]
+      - [0x136200, animation, anim/chameleon/LandFromKnockback]
+      - [0x13A330, animation, anim/chameleon/GetupFromKnockback]
+      - [0x13BD60, bin]
 
   # Start of next part?
   - [0x147760, bin, alBankfile0] #size of 0x7B60 [ram 801C4940] 
@@ -2168,8 +2169,39 @@ segments:
         - [0x7024b8, bin]
         - [0x7024c0, rgba16, img/JungleLand/fish.rgba16, 48, 40]
         - { start: 0x7033C0, type: gfx, data_only: True, name: model/JungleLand/fish/fish}
+  
+    - { start: 0x703518, type: mtx, data_only: True, name: unkunk3}
+    - { start: 0x703558, type: gfx, data_only: True, name: unkunk3}
 
-    - [0x703518, bin]
+    - start: 0x703578
+      name: fishTail
+      type: .data
+      subalign: 8
+      subsegments:
+        - { start: 0x703578, type: vtx, data_only: True, name: model/JungleLand/fishTail/fishTail}
+        - { start: 0x7035c8, type: mtx, data_only: True, name: model/JungleLand/fishTail/fishTail}
+        - [0x703608, bin]
+        - [0x703610, rgba16, img/JungleLand/fishTail.rgba16, 32, 48]
+        - { start: 0x704210, type: gfx, data_only: True, name: model/JungleLand/fishTail/fishTail}
+
+    - { start: 0x704300, type: mtx, data_only: True, name: unkunk4}
+    - { start: 0x704340, type: gfx, data_only: True, name: unkunk4}
+
+    - [0x704368, animation, anim/actors/golem/golemSleep]
+    - [0x706b98, bin, anim/actors/golem/golemSleepPointers]
+
+    - [0x706bA8, animation, anim/actors/golem/golemAttack]
+    - [0x70d9d8, bin, anim/actors/golem/golemAttackPointers]
+    
+    - [0x70d9e8, animation, anim/actors/spiderRock/spiderRockInit]
+    - [0x70da58, bin, anim/actors/spiderRock/spiderRockInitPointers]
+    
+    - [0x70da68, animation, anim/actors/fish/fishHeadInit]
+    - [0x70dad8, bin, anim/actors/fish/fishHeadInitPointers]
+    
+    - [0x70dae8, animation, anim/actors/fish/fishTailInit]
+    - [0x70db58, bin, anim/actors/fish/fishTailInitPointers]
+    - [0x70db68, bin] #file break
 
   - [0x70db70, bin, Level/LizardKong]
   - [0x7477f0, bin, Level/Quintella]
@@ -4074,13 +4106,13 @@ segments:
       - [0xB00A60, bin] #endDL command from rgb2c
       - [0xB00A68, palette, chameleons/Davy/cuff/color.ci4]
       - { start: 0xb00c68, type: gfx, data_only: True, name: chameleons/Davy/cuff/cuff}
-    - name: Lleg
+    - name: Lcuff
       type: .data #model
       start: 0xb00f20
       subsegments:
-      - { start: 0xb00f20, type: vtx, data_only: True, name: chameleons/Davy/Lleg/Lleg}
-      - [0xb01010, mtx, chameleons/Davy/Lleg/Lleg]
-      - { start: 0xb01050, type: gfx, data_only: True, name: chameleons/Davy/Lleg/Lleg}
+      - { start: 0xb00f20, type: vtx, data_only: True, name: chameleons/Davy/Lcuff/Lcuff}
+      - [0xb01010, mtx, chameleons/Davy/Lcuff/Lcuff]
+      - { start: 0xb01050, type: gfx, data_only: True, name: chameleons/Davy/Lcuff/Lcuff}
     - name: wrist
       type: .data #model
       start: 0xb01308
@@ -4097,20 +4129,20 @@ segments:
       - [0xB01958, palette, chameleons/Davy/wrist/wrist.ci4]
       - [0xB01978, bin]
       - { start: 0xb01b58, type: gfx, data_only: True, name: chameleons/Davy/wrist/wrist}
-    - name: Larm
+    - name: Lwrist
       type: .data #model
       start: 0xb01f70
       subsegments:
-      - { start: 0xb01f70, type: vtx, data_only: True, name: chameleons/Davy/Larm/Larm}
-      - [0xb02140, mtx, chameleons/Davy/Larm/Larm]
-      - { start: 0xb02180, type: gfx, data_only: True, name: chameleons/Davy/Larm/Larm}
-    - name: Rshoulder
+      - { start: 0xb01f70, type: vtx, data_only: True, name: chameleons/Davy/Lwrist/Lwrist}
+      - [0xb02140, mtx, chameleons/Davy/Lwrist/Lwrist]
+      - { start: 0xb02180, type: gfx, data_only: True, name: chameleons/Davy/Lwrist/Lwrist}
+    - name: shoulder
       type: .data #model
       start: 0xb02598
       subsegments:
-      - { start: 0xb02598, type: vtx, data_only: True, name: chameleons/Davy/Rshoulder/Rshoulder}
-      - [0xb025f8, mtx, chameleons/Davy/Rshoulder/Rshoulder]
-      - { start: 0xb02638, type: gfx, data_only: True, name: chameleons/Davy/Rshoulder/Rshoulder}
+      - { start: 0xb02598, type: vtx, data_only: True, name: chameleons/Davy/shoulder/shoulder}
+      - [0xb025f8, mtx, chameleons/Davy/shoulder/shoulder]
+      - { start: 0xb02638, type: gfx, data_only: True, name: chameleons/Davy/shoulder/shoulder}
     - name: Lshoulder
       type: .data #model
       start: 0xb02790
