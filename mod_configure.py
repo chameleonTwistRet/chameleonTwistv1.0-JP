@@ -97,13 +97,16 @@ with open(linker_script_file, 'r') as file:
     lines = file.readlines()
 
 
-lines.insert(line_number, "\n\t__romPos = 0xC00000;\n")
-lines.insert(line_number + 1, "\tmod_ROM_START = __romPos;\n")
-lines.insert(line_number + 2, "\tmod_VRAM = ADDR(.mod);\n")
-lines.insert(line_number + 3, "\t.mod 0x80400000 : AT(mod_ROM_START) SUBALIGN(16)\n")
-lines.insert(line_number + 4, "\t{\n")
-lines.insert(line_number + 5, "\t\tmod_TEXT_START = .;\n")
+lines[line_number:line_number] = [
+    "\n\t__romPos = 0xC00000;\n",
+    "\tmod_ROM_START = __romPos;\n",
+    "\tmod_VRAM = ADDR(.mod);\n",
+    "\t.mod 0x80400000 : AT(mod_ROM_START) SUBALIGN(16)\n",
+    "\t{\n",
+    "\t\tmod_TEXT_START = .;\n"
+]
 line_number += 6
+
 
 for index, line in enumerate(lines):
     if 'romPadding_VRAM_END' in line:
@@ -153,11 +156,13 @@ for index, line in enumerate(lines):
                 line_number += 1
         break
 
-lines.insert(line_number, "\t}\n")
-lines.insert(line_number + 1, "\tmod_BSS_VRAM = ADDR(.mod_BSS);\n")
-lines.insert(line_number + 2, "\t.mod_BSS (NOLOAD) : SUBALIGN(8)\n")
-lines.insert(line_number + 3, "\t{\n")
-lines.insert(line_number + 4, "\t\tmod_BSS_START = .;\n")
+lines[line_number:line_number] = [
+    "\t}\n",
+    "\tmod_BSS_VRAM = ADDR(.mod_BSS);\n",
+    "\t.mod_BSS (NOLOAD) : SUBALIGN(8)\n",
+    "\t{\n",
+    "\t\tmod_BSS_START = .;\n"
+]
 line_number += 5
 
 for index, line in enumerate(lines):
@@ -174,13 +179,16 @@ for index, line in enumerate(lines):
                 line_number += 1
         break
 
-lines.insert(line_number, "\t\tmod_BSS_END = .;\n")
-lines.insert(line_number + 1, "\t\tmod_BSS_SIZE = ABSOLUTE(mod_BSS_END - mod_BSS_START);\n")
-lines.insert(line_number + 2, "\t}\n")
-lines.insert(line_number + 3, "\t__romPos += SIZEOF(.mod);\n")
-lines.insert(line_number + 4, "\tmod_ROM_END = __romPos;\n")
-lines.insert(line_number + 5, "\tmod_VRAM_END = .;\n")
+lines[line_number:line_number] = [
+    "\t\tmod_BSS_END = .;\n",
+    "\t\tmod_BSS_SIZE = ABSOLUTE(mod_BSS_END - mod_BSS_START);\n",
+    "\t}\n",
+    "\t__romPos += SIZEOF(.mod);\n",
+    "\tmod_ROM_END = __romPos;\n",
+    "\tmod_VRAM_END = .;\n"
+]
 line_number += 6
+
 
 with open(linker_script_file, 'w') as file:
     file.writelines(lines)
@@ -191,68 +199,41 @@ def append_extension(filename, extension='.o'):
 def append_prefix(filename, prefix='build/'):
     return prefix + filename
 
-vanilla_ia4_files = glob.glob(f'{assets_path}/**/*ia4.png', recursive=True)
-vanilla_ia8_files = glob.glob(f'{assets_path}/**/*ia8.png', recursive=True)
-vanilla_rgba16_files = glob.glob(f'{assets_path}/**/*rgba16.png', recursive=True)
-vanilla_rgba32_files = glob.glob(f'{assets_path}/**/*rgba32.png', recursive=True)
-vanilla_ci8_files = glob.glob(f'{assets_path}/**/*ci8.png', recursive=True)
-vanilla_ci4_files = glob.glob(f'{assets_path}/**/*ci4.png', recursive=True)
+def get_files(pattern):
+    return glob.glob(pattern, recursive=True)
 
-mod_ia4_files = glob.glob(f'{mod_assets_path}/**/*ia4.png', recursive=True)
-mod_ia8_files = glob.glob(f'{mod_assets_path}/**/*ia8.png', recursive=True)
-mod_rgba16_files = glob.glob(f'{mod_assets_path}/**/*rgba16.png', recursive=True)
-mod_rgba32_files = glob.glob(f'{mod_assets_path}/**/*rgba32.png', recursive=True)
-mod_ci8_files = glob.glob(f'{mod_assets_path}/**/*ci8.png', recursive=True)
-mod_ci4_files = glob.glob(f'{mod_assets_path}/**/*ci4.png', recursive=True)
+# Get the list of vanilla and mod files for each type
+vanilla_ia4_files = get_files(f'{assets_path}/**/*ia4.png')
+vanilla_ia8_files = get_files(f'{assets_path}/**/*ia8.png')
+vanilla_rgba16_files = get_files(f'{assets_path}/**/*rgba16.png')
+vanilla_rgba32_files = get_files(f'{assets_path}/**/*rgba32.png')
+vanilla_ci8_files = get_files(f'{assets_path}/**/*ci8.png')
+vanilla_ci4_files = get_files(f'{assets_path}/**/*ci4.png')
+
+mod_ia4_files = get_files(f'{mod_assets_path}/**/*ia4.png')
+mod_ia8_files = get_files(f'{mod_assets_path}/**/*ia8.png')
+mod_rgba16_files = get_files(f'{mod_assets_path}/**/*rgba16.png')
+mod_rgba32_files = get_files(f'{mod_assets_path}/**/*rgba32.png')
+mod_ci8_files = get_files(f'{mod_assets_path}/**/*ci8.png')
+mod_ci4_files = get_files(f'{mod_assets_path}/**/*ci4.png')
 
 
-ia4_files = []
-for file_path in mod_ia4_files:
-    file_name = os.path.basename(file_path)
-    if file_name in [os.path.basename(path) for path in vanilla_ia4_files]:
-        vanilla_ia4_files = [path for path in vanilla_ia4_files if os.path.basename(path) != file_name]
-    ia4_files.append(file_path)
-ia4_files.extend(vanilla_ia4_files)
+def filter_and_extend(mod_files, vanilla_files):
+    files = []
+    for file_path in mod_files:
+        file_name = os.path.basename(file_path)
+        if file_name in [os.path.basename(path) for path in vanilla_files]:
+            vanilla_files = [path for path in vanilla_files if os.path.basename(path) != file_name]
+        files.append(file_path)
+    files.extend(vanilla_files)
+    return files
 
-ia8_files = []
-for file_path in mod_ia8_files:
-    file_name = os.path.basename(file_path)
-    if file_name in [os.path.basename(path) for path in vanilla_ia8_files]:
-        vanilla_ia8_files = [path for path in vanilla_ia8_files if os.path.basename(path) != file_name]
-    ia8_files.append(file_path)
-ia8_files.extend(vanilla_ia8_files)
-
-rgba16_files = []
-for file_path in mod_rgba16_files:
-    file_name = os.path.basename(file_path)
-    if file_name in [os.path.basename(path) for path in vanilla_rgba16_files]:
-        vanilla_rgba16_files = [path for path in vanilla_rgba16_files if os.path.basename(path) != file_name]
-    rgba16_files.append(file_path)
-rgba16_files.extend(vanilla_rgba16_files)
-
-rgba32_files = []
-for file_path in mod_rgba32_files:
-    file_name = os.path.basename(file_path)
-    if file_name in [os.path.basename(path) for path in vanilla_rgba32_files]:
-        vanilla_rgba32_files = [path for path in vanilla_rgba32_files if os.path.basename(path) != file_name]
-    rgba32_files.append(file_path)
-rgba32_files.extend(vanilla_rgba32_files)
-
-ci4_files = []
-for file_path in mod_ci4_files:
-    file_name = os.path.basename(file_path)
-    if file_name in [os.path.basename(path) for path in vanilla_ci4_files]:
-        vanilla_ci4_files = [path for path in vanilla_ci4_files if os.path.basename(path) != file_name]
-    ci4_files.append(file_path)
-ci4_files.extend(vanilla_ci4_files)
-
-ci8_files = []
-for file_path in mod_ci8_files:
-    file_name = os.path.basename(file_path)
-    if file_name in [os.path.basename(path) for path in vanilla_ci8_files]:
-        vanilla_ci8_files = [path for path in vanilla_ci8_files if os.path.basename(path) != file_name]
-    ci8_files.append(file_path)
-ci8_files.extend(vanilla_ci8_files)
+ia4_files = filter_and_extend(mod_ia4_files, vanilla_ia4_files)
+ia8_files = filter_and_extend(mod_ia8_files, vanilla_ia8_files)
+rgba16_files = filter_and_extend(mod_rgba16_files, vanilla_rgba16_files)
+rgba32_files = filter_and_extend(mod_rgba32_files, vanilla_rgba32_files)
+ci4_files = filter_and_extend(mod_ci4_files, vanilla_ci4_files)
+ci8_files = filter_and_extend(mod_ci8_files, vanilla_ci8_files)
 
 
 # Append '.png' to each file name in the lists
@@ -340,6 +321,16 @@ ninja_file.rule('make_elf',
 ninja_file.rule('make_z64',
     command = '($OBJCOPY -O binary $in $out) && (./tools/n64crc/n64crc.exe $out)',
     description = 'Making z64')
+
+variable_name = 'AUTO_BOOT_N64'
+variable_value = os.environ.get(variable_name)
+
+if variable_value is not None:
+    ninja_file.rule('start_z64',
+        command = 'cp $in /mnt/c/Users/Rainchus/Desktop/AutoBootN64/game.v64',
+        description = 'Starting z64 ROM...')
+else:
+    print(f"The environment variable {variable_name} does not exist.")
 
 ninja_file.rule('make_expected',
     command = '(cp $in $out) && (python3 ./$MAKE_EXPECTED $in)')
@@ -477,7 +468,10 @@ for img_file in image_files_o:
        
 ninja_file.build("build/chameleonTwistJP.elf", "make_elf ", o_files)
 ninja_file.build("build/chameleonTwistJP.z64", "make_z64 ", "build/chameleonTwistJP.elf")
-#ninja_file.build("build/chameleonTwistJP.ok", "make_expected ", "build/chameleonTwistJP.z64")
+
+if variable_value is not None:
+    ninja_file.build("src/mod/n64AutoBoot/chameleonTwistJP_Mod.z64", "start_z64 ", "build/chameleonTwistJP.z64")
+
 
 
 print ("build.ninja generated")
