@@ -400,7 +400,7 @@ void func_8008C584(void);
 s32 SaveData_UpdateRecords(void);
 void DummiedPrintf(char* arg0, ...);
 s32 func_800A73EC(void*, void*, s32, s32);
-s32 func_800B3FFC(unkSpriteStruct*, s32);
+s32 func_800B3FFC(unkSpriteStruct5*, s32);
 void func_800B402C(unkSpriteStruct*, s32, s32);
 s32 dma_copy(void* romAddr, void* ramAddr, s32 size);
 s32 func_800A72E8(s32);

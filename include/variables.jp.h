@@ -297,7 +297,7 @@ extern Camera gCamera[4];
 extern unk802000C84 D_80200C84;
 extern u8 gHasShadows[256]; //unset for actortypes like spawnners.
 extern Collider D_80236980[128];
-extern u32 gFeildCount;
+extern s32 gFeildCount;
 extern Door gDoors[16];
 extern u32 gDoorCount;
 extern Collision D_80240D6C[];

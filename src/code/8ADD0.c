@@ -5,7 +5,7 @@ extern unkStruct07 D_802019A8[];
 extern Collision gZoneCollisions[];
 extern CardinalDirection gCardinalDirections[5]; // including "NO_DIR"
 extern s32 sBossIDs[6];
-s32* func_800B3424(void);
+s32* func_800B3424(s32);
 void func_800B5C60(tempStruct*);
 void func_800C2670(s32, playerActor*, s32);
 
@@ -14,6 +14,16 @@ typedef struct newStruct {
     f32 field1;
     f32 field2;
 } newStruct;
+
+typedef struct unkStruct20 {
+    char unk_00[0x25];
+    s8 unk25;
+    char unk_26[2];
+} unkStruct20;
+
+extern unkStruct20 D_802039B8[];
+extern s32 D_80206CF4;
+extern unkSpriteStruct5* D_80240898;
 
 void func_800C2A00(void);
 void func_800CFDC8(playerActor*);
@@ -25,6 +35,8 @@ void pickup_collide_func(s32);
 extern f32 D_8010FB50;
 //extern s32 D_80168DFC;
 //extern s32 D_80168E14;
+extern s32 D_802065B8[];
+extern s32 D_80206958[];
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800AF9D0.s")
 
@@ -244,7 +256,19 @@ Vec3f* Vec3f_SetAtBossPos(Vec3f* arg0) {
     return arg0;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/isBossPresent.s")
+s32 isBossPresent(void) {
+    s32 i;
+    Actor* curActor;
+    s32 isBoss = FALSE;
+    
+    for (i = 0, curActor = gActors; i < 64; i++, curActor++) {
+        if (isBossActor(curActor) != 0) {
+            isBoss = TRUE;
+            break;
+        }
+    }
+    return isBoss;
+}
 
 s32 isBossStage(void) {
     s32 ret;
@@ -257,22 +281,52 @@ s32 isBossStage(void) {
     return ret;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B2D10.s")
+s32 func_800B2D10(s32 arg0, s32* arg1) {
+    *arg1 = D_802065B8[arg0];
+    return D_80206958[arg0];
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B2D34.s")
+void func_800B2D34(void) {
+    unkStruct20* temp;
+    s32 i;
+
+    for (i = 0, temp = D_802039B8; i < D_80206CF4; i++, temp++) {
+        temp->unk25 = 1;
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B2D78.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B2E40.s")
+void func_800B2E40(unkSpriteStruct5*);
+void func_800B3364(s32 arg0) {
+    s32 i;
+    unkSpriteStruct5** temp_s0;
+    unkSpriteStruct5* unkSpritePtr;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B3364.s")
+    for (i = 0, temp_s0 = &D_80240898; i < gFeildCount; i++, temp_s0++) {
+        unkSpritePtr = *temp_s0;
+        unkSpritePtr->unk_E4 = 0;
+        if ((arg0 == 1) || (func_800B3FFC(unkSpritePtr, 4) != 0)) {
+            func_800B2E40(unkSpritePtr);
+        }
+    }
+}
 
 //rains 7 month old bool checker
 s32 isntNegative(s32 value) {
     return ( value >= 0 ) ? 1 : 0;
 }
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B3424.s")
+extern s32 D_80174880[];
+s32* func_800B3424(s32 arg0) {
+    s32 var_v0;
+    if (arg0 & 0x100) {
+        var_v0 = 1;
+    } else {
+        var_v0 = 0;
+    }
+    return (var_v0 != 0) ? (s32*)gZoneCollisions[(u8)arg0].pad68 : &D_80174880[(u8)arg0];
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B3484.s")
 
@@ -281,7 +335,7 @@ s32 func_800B34D0(s32 arg0) {
     s32 var_v0;
     s32 var_v1;
 
-    temp_v1 = *func_800B3424();
+    temp_v1 = *func_800B3424(arg0);
     if (arg0 & 0x200) {
         var_v0 = 1;
     } else {
@@ -414,8 +468,8 @@ s32 func_800B3F9C(unkSpriteStruct4* arg0) {
     return i;
 }
 
-//struct pointer arg0 is a guess
-s32 func_800B3FFC(unkSpriteStruct *arg0, s32 arg1) {
+//this struct pointer type for arg0 is wrong
+s32 func_800B3FFC(unkSpriteStruct5 *arg0, s32 arg1) {
     Vec3s *new_var = &D_801087D8[arg1];
     int new_var2 = arg0->unk_14 & new_var->y;
 
@@ -429,7 +483,8 @@ void func_800B4070(unkSpriteStruct* arg0) {
 
     if ((arg0->unk_4C != 0) && (func_800B3FFC(arg0->unk_4C, 4) == 1)) {
         var_a2 = 1;
-    } else if ( func_800B3FFC(arg0, 0) == 2 || func_800B3FFC(arg0, 2) == 2) {
+        //no idea what's going on with arg0 here
+    } else if ( func_800B3FFC((unkSpriteStruct5*)arg0, 0) == 2 || func_800B3FFC((unkSpriteStruct5*)arg0, 2) == 2) {
         var_a2 = 1;
     } else {
         var_a2 = 0;

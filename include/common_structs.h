@@ -407,12 +407,19 @@ typedef struct frameBufferData {
     /* 0x00 */ char data[0x25800]; // h*W*colDepth
 } frameBufferData; //sizeof 0x25800
 
+typedef struct unkSpriteStruct5 {
+    /* 0x00 */ char unk_00[0x14];
+    /* 0x14 */ s32 unk_14;
+    /* 0x18 */ char unk_18[0xCC];
+    /* 0xE4 */ s32 unk_E4;
+} unkSpriteStruct5; //sizeof ??
+
 typedef struct unkSpriteStruct {
     /* 0x00 */ s32 unk_00;
     /* 0x04 */ char unk_04[0x10];
     /* 0x14 */ s32 unk_14;
     /* 0x18 */ char unk_18[0x34];
-    /* 0x4C */ struct unkSpriteStruct* unk_4C; //pointer to another type of this same struct
+    /* 0x4C */ struct unkSpriteStruct5* unk_4C; //pointer to another type of this same struct
     /* 0x50 */ char unk_50[0x10];
 } unkSpriteStruct; //sizeof 0x60
 
