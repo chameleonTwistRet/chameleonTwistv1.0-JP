@@ -34,7 +34,6 @@ void Debug_ChangeRoom(void) {
     if (func_80055E5C(2) != 0) {
         shouldChangeRoom = TRUE;
         gCurrentZone--;
-        if (!gCurrentZone){} //fake but function uses potentially uninitialized variable so...
     }
     if (func_80055E5C(1) != 0) {
         shouldChangeRoom = TRUE;
@@ -49,10 +48,10 @@ void Debug_ChangeRoom(void) {
     //@bug variable could be uninitialized
     if (shouldChangeRoom == 1) {
         if (D_80236974 == 0) {
-            func_800C1458(gCurrentZone, shouldChangeRoom);
+            func_800C1458(gCurrentZone);
             return;
         }
-        func_800C29D8(gCurrentZone, shouldChangeRoom);
+        func_800C29D8(gCurrentZone);
     }
 }
 

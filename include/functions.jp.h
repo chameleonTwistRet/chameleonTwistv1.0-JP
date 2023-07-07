@@ -472,6 +472,6 @@ void func_800CEB10(Actor*);
 void Debug_ZeroInt(void);
 void printNumberWR(f32, f32, f32, f32, f32, s32, s32);
 void printNumber(f32, f32, f32, f32, f32, s32, s32);
-void func_800C1458(s32, s32);
-void func_800C29D8(s32, s32);
+void func_800C1458(s32);
+void func_800C29D8(s32);
 #endif
