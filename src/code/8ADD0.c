@@ -8,7 +8,7 @@ extern s32 sBossIDs[6];
 s32* func_800B3424(s32);
 void func_800B5C60(tempStruct*);
 void func_800C2670(s32, playerActor*, s32);
-
+s32* func_800B3484(s32);
 typedef struct newStruct {
     s32 dummy0[10]; // Placeholder for the first 10 elements
     f32 field1;
@@ -359,13 +359,69 @@ s32 func_800B3540(s32 arg0) {
     return 1 - func_800B34D0(arg0);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B3564.s")
+s32 func_800B3564(s32 arg0) {
+    s32 sp1C;
+    s32 var_v1;
+    s32 var2;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B35B0.s")
+    sp1C = *func_800B3424(arg0);
+    var2 = *func_800B3484(arg0);
+    if (sp1C != var2) {
+        var_v1 = 1;
+    } else {
+        var_v1 = 0;
+    }
+    return var_v1;
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B35FC.s")
+void func_800B35B0(s32 arg0) {
+    s32 sp1C;
+    s32 var_v0;
+    s32 var_v1;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B3648.s")
+    if (arg0 & 0x200) {
+        var_v0 = 1;
+    } else {
+        var_v0 = 0;
+    }
+    
+    if (var_v0 != 0) {
+        sp1C = 0;
+    } else {
+        sp1C = 1;
+    }
+    *func_800B3424(arg0) = sp1C;
+}
+
+void func_800B35FC(s32 arg0) {
+    s32 sp1C;
+    s32 var_v0;
+    s32 var_v1;
+
+    if (arg0 & 0x200) {
+        var_v0 = 1;
+    } else {
+        var_v0 = 0;
+    }
+    
+    if (var_v0 != 0) {
+        sp1C = 1;
+    } else {
+        sp1C = 0;
+    }
+    
+    *func_800B3424(arg0) = sp1C;
+}
+
+
+void func_800B3648(s32 arg0) {
+    s32 var = *func_800B3424(arg0);
+    if (var == 0) {
+        *func_800B3424(arg0) = 1;
+        return;
+    }
+    *func_800B3424(arg0) = 0;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B3698.s")
 

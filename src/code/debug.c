@@ -22,27 +22,22 @@ typedef struct unkarg0_2 {
 /* 0x18 */ f32 unk_28;
 } unkarg0_2;
 
-void printNumberWR(f32, f32, f32, f32, f32, s32, s32);   /* extern */
-void printNumber(f32, f32, f32, f32, f32, s32, s32);   /* extern */
-
 extern unkTextStruct D_800F0734;
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/debug/Debug_MovePlayer.s")
 
-void func_800C1458(s32, s32);                          /* extern */
-void func_800C29D8(s32, s32);                          /* extern */
 extern s32 D_802478E0;
 
 void Debug_ChangeRoom(void) {
-    s32 sp1C;
+    s32 shouldChangeRoom;
 
     if (func_80055E5C(2) != 0) {
-        sp1C = 1;
+        shouldChangeRoom = TRUE;
         gCurrentZone--;
         if (!gCurrentZone){} //fake but function uses potentially uninitialized variable so...
     }
     if (func_80055E5C(1) != 0) {
-        sp1C = 1;
+        shouldChangeRoom = TRUE;
         gCurrentZone++;
     }
     if (gCurrentZone < 0) {
@@ -51,12 +46,13 @@ void Debug_ChangeRoom(void) {
     if (gCurrentZone >= D_802478E0) {
         gCurrentZone = 0;
     }
-    if (sp1C == 1) {
+    //@bug variable could be uninitialized
+    if (shouldChangeRoom == 1) {
         if (D_80236974 == 0) {
-            func_800C1458(gCurrentZone, sp1C);
+            func_800C1458(gCurrentZone, shouldChangeRoom);
             return;
         }
-        func_800C29D8(gCurrentZone, sp1C);
+        func_800C29D8(gCurrentZone, shouldChangeRoom);
     }
 }
 
