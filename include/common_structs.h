@@ -979,20 +979,20 @@ typedef struct RoomSettings {
 } RoomSettings;
 
 typedef struct LevelHeader {
-    u32 Header;
-    u32 SpriteLib;
-    u32 unk8;
-    u32 RoomObjects;
-    u32 unk10;
-    u32 Pointers;
-    u32 OWRooms;
-    u32 Map;
-    s32 unk20;
-    s32 renderDistance;
-    s32 unk28;
-    s32 unk2C;
-    s32 unk30;
     s32 unk34;
+    s32 unk30;
+    s32 unk2C;
+    s32 unk28;
+    s32 renderDistance;
+    s32 unk20;
+    u32 Map;
+    u32 OWRooms;
+    u32 Pointers;
+    u32 unk10;
+    u32 RoomObjects;
+    u32 unk8;
+    u32 SpriteLib;
+    u32 Header;
 } LevelHeader;
 
 typedef struct Anim {

@@ -21,7 +21,7 @@ options:
   auto_all_sections: [".data", ".rodata", ".bss"]
   migrate_rodata_to_functions : False
   create_undefined_funcs_auto: no
-  asm_emit_size_directive: false
+  #asm_emit_size_directive: false
 segments:
   - name: header
     type: header
