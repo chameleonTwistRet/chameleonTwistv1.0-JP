@@ -98,7 +98,7 @@ void func_8003FEBC(s32);
 void func_8003FEC4(Actor*); // Ice Cream Sandwich Function: Elisiah
 
 void func_80040068(Actor*); // Training Room Choco Kid Function: Elisiah
-void func_800400C8(void);
+void ChocoKidMovement(Actor*);
 void func_800401E8(Actor*); // unk_1F Function: Elisiah
 void func_80040214(void);
 void func_800404D8(Actor*);
@@ -167,7 +167,7 @@ void func_800498F4(Actor*);
 void func_80049914(Actor*);
 void func_80049934(Actor*); // Choco Kid Spawner: Auto-Decompile
 void func_80049A24(Actor*); // Choco Kid Function: Elisiah
-void func_80049A44(void);
+void func_80049A44(Actor*);
 void func_80049A64(Actor*); // unk_51 Function: Elisiah
 void func_80049A84(void);
 void func_80049AA4(Actor*); // unk_52 Function: Elisiah
@@ -243,7 +243,7 @@ void func_800612D8(f32);
 void func_800612E4(f32);
 void func_800612F0(s32);
 void func_800612FC(void);
-void setTextGradient(u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8);
+void SetTextGradient(u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8);
 void func_80061394(void);
 void func_800613D0(aa1*);
 aa1* aa1_Alloc(s32, s32, void*);
@@ -276,17 +276,17 @@ void loadPlayerEyes(s32);
 void freePlayerEyes(s32);
 u32 initPlayerEyeController(s32, s32, f32, s32);
 void setPlayerContextEyes(s32, s32, s32);
-void func_8006E16C(f32, f32, f32, s32, f32, s32);
+void func_8006E16C(f32, f32, f32, f32, f32, s32);
 void func_8006F8D8(f32, f32, f32);
-
+void func_80089BA0(void);
 void func_80072B1C(void*, void*);
 void func_80072D34(void);
 void func_80072D80(void);
 void aa1_checkControllerRumble(void*, void*);
 void checkControllerRumble(void);
 void func_80073C3C(void);
-void setTextGradientFromPaletteAlpha(s32, f32);
-void setTextGradientFromPalette(s32);
+void SetTextGradientFromPaletteAlpha(s32, f32);
+void SetTextGradientFromPalette(s32);
 void func_800786D8(f32, f32, f32, f32, s32, s32, f32, f32, f32, f32, u8, u8, u8);
 void func_80078AD8(f32, f32, f32, f32, f32, f32);
 void func_80078D00(f32, f32, f32, f32, s32, f32, f32);

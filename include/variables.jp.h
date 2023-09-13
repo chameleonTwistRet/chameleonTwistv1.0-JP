@@ -241,7 +241,7 @@ extern OSTask* gAudioTasks[2];
 extern ALGlobals D_801FF810;
 extern ALSynConfig D_801FF860;
 extern ALSeqpConfig gBGMplayerCfg;
-extern u32 gCurrentStageTime; //measured as ticks (30/sec)
+extern s32 gCurrentStageTime; //measured as ticks (30/sec)
 extern OSIoMesg gAudioIOMsgs[30];
 extern s32 D_801FFB78;
 extern unk_D_801FFB90 D_801FFB90;

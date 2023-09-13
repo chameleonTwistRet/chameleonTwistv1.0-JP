@@ -1295,11 +1295,37 @@ void func_80040068(Actor* trainingRoomChocoKidActor) {
     trainingRoomChocoKidActor->unk_134[1] = trainingRoomChocoKidActor->pos.z;
     trainingRoomChocoKidActor->unk_94 = trainingRoomChocoKidActor->position._f32.x;
     trainingRoomChocoKidActor->unk_134[0] = trainingRoomChocoKidActor->pos.x;
-    func_8006E16C(trainingRoomChocoKidActor->pos.x, trainingRoomChocoKidActor->pos.y + 50.0f, trainingRoomChocoKidActor->pos.z, 0x42F00000, 20.0f, 0xA);
+    func_8006E16C(trainingRoomChocoKidActor->pos.x, trainingRoomChocoKidActor->pos.y + 50.0f, trainingRoomChocoKidActor->pos.z, 120.0f, 20.0f, 0xA);
 }
 
+extern f32 D_8010BC70;
+extern f32 D_8010BC74;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_800400C8.s")
+void ChocoKidMovement(Actor* chocoKid) {
+    f32 temp_f14;
+
+    temp_f14 = CalcAngleBetween2DPoints(chocoKid->pos.x, chocoKid->pos.z, chocoKid->unk_134[0], chocoKid->unk_134[1]);
+    if (chocoKid->unk_10C[0] != 0) {
+        chocoKid->vel.y -= D_8010BC70;
+        chocoKid->pos.y += chocoKid->vel.y;
+        if (chocoKid->pos.y < 0.0f) {
+            chocoKid->unk_10C[0] = 0;
+            chocoKid->pos.y = 0.0f;
+            chocoKid->vel.y = 0.0f;
+        }
+    } else {
+        chocoKid->unk_134[2] += chocoKid->position._f32.y * (f32) func_8002D2A0(chocoKid->unk_90, temp_f14);
+        func_800382B4(&chocoKid->unk_134[2], chocoKid->unk_15C);
+        chocoKid->unk_90 += chocoKid->unk_134[2];
+        wrapDegrees(&chocoKid->unk_90);
+        if (Random(0, 29) == 15) {
+            chocoKid->unk_10C[0] = 1;
+            chocoKid->vel.y = D_8010BC74;
+        }
+    }
+    Actor_PlaySound(chocoKid, 0x99, 0x1E, 4);
+    func_800382F4(chocoKid);
+}
 
 // unk_1F Function: Elisiah
 void func_800401E8(Actor* unk_1FActor) {
@@ -1807,8 +1833,8 @@ void func_80049A24(Actor* chocoKidActor) {
     func_80040068(chocoKidActor);
 }
 
-void func_80049A44(void) {
-    func_800400C8();
+void func_80049A44(Actor* chocoKidActor) {
+    ChocoKidMovement(chocoKidActor);
 }
 
 // unk_51 Function: Elisiah

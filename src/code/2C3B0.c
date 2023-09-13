@@ -106,7 +106,7 @@ void func_8005171C(void) {
 //prints "HURRY!" during MP Battle [9 times]
 void Multiplayer_PrintHurry(void) {
     if ((D_80176824 <= 1800) && (D_80176824 > 1710) && ((D_80176824 % 10) < 5)) {
-        setTextGradientFromPalette(1);             //"HURRY!"   
+        SetTextGradientFromPalette(1);             //"HURRY!"   
         PrintTextWrapper(100.0f, 10.0f, 0.0f, 1.0f, D_8010C944, 1);
     }
 }

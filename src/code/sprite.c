@@ -473,7 +473,7 @@ void func_800612FC(void) {
     D_800FDFEC = 0.0f;
 }
 
-void setTextGradient(u8 arg0, u8 arg1, u8 arg2, u8 arg3, u8 arg4, u8 arg5, u8 arg6, u8 arg7, u8 arg8, u8 arg9, u8 argA, u8 argB, u8 argC, u8 argD, u8 argE, u8 argF) {
+void SetTextGradient(u8 arg0, u8 arg1, u8 arg2, u8 arg3, u8 arg4, u8 arg5, u8 arg6, u8 arg7, u8 arg8, u8 arg9, u8 argA, u8 argB, u8 argC, u8 argD, u8 argE, u8 argF) {
     gTextGradient[4] = arg4;
     gTextGradient[5] = arg5;
     gTextGradient[0] = arg0;
@@ -624,15 +624,15 @@ void func_80062E18(aa1* arg0) {
     s32** temp_t7;
 
     temp_t7 = arg0->unk_38;
-    setTextGradient(191, 10, 0, 255, 200, 200, 0, 255, 191, 10, 0, 255, 200, 200, 0, 255);
+    SetTextGradient(191, 10, 0, 255, 200, 200, 0, 255, 191, 10, 0, 255, 200, 200, 0, 255);
     printNumber(264.0f, 16.0f, 0.0f, 1.0f, (f32) **temp_t7, 2, 0);
     printUISprite(232.0f, 16.0f, 0.0f, 0.0f, 1.0f, 16.0f, 16.0f, 0.0f, 18);
-    setTextGradient(191, 10, 0, 255, 200, 200, 0, 255, 191, 10, 0, 255, 200, 200, 0, 255);
+    SetTextGradient(191, 10, 0, 255, 200, 200, 0, 255, 191, 10, 0, 255, 200, 200, 0, 255);
     PrintText(254.0f, 20.0f, 0.0f, 1.0f, 8.0f, 8.0f, D_8010CA80, 1);
-    setTextGradient(191, 10, 0, 255, 200, 200, 0, 255, 191, 10, 0, 255, 200, 200, 0, 255);
+    SetTextGradient(191, 10, 0, 255, 200, 200, 0, 255, 191, 10, 0, 255, 200, 200, 0, 255);
     printNumber(264.0f, 36.0f, 0.0f, 1.0f, (f32) gTotalCarrots, 2, 0);
     printUISprite(232.0f, 36.0f, 0.0f, 0.0f, 1.0f, 16.0f, 16.0f, 0.0f, 26);
-    setTextGradient(191, 10, 0, 255, 200, 200, 0, 255, 191, 10, 0, 255, 200, 200, 0, 255);
+    SetTextGradient(191, 10, 0, 255, 200, 200, 0, 255, 191, 10, 0, 255, 200, 200, 0, 255);
     PrintText(254.0f, 40.0f, 0.0f, 1.0f, 8.0f, 8.0f, D_8010CA84, 1);
 }
 
@@ -1070,10 +1070,10 @@ void func_80073FD8(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8007633C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/setTextGradientFromPaletteAlpha.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/SetTextGradientFromPaletteAlpha.s")
 
-void setTextGradientFromPalette(s32 arg0) {
-    setTextGradientFromPaletteAlpha(arg0, 1.0f);
+void SetTextGradientFromPalette(s32 arg0) {
+    SetTextGradientFromPaletteAlpha(arg0, 1.0f);
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/DrawTranslucentRectangle.s")

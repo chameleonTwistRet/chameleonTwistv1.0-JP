@@ -570,7 +570,7 @@ void func_8008C1C8(s32* arg0) {
     if ((gSelectedCharacters[0] == CHARA_WHITE) && (gameModeCurrent == 0)) {
         if ((D_80176F58 == 0) && (gOneRun != 0)) {
             if ((gNoHit != 0) && (gCurrentStage != STAGE_TRAINING)) {
-                setTextGradient(255, 255, 0, 255, 255, 0, 0, 255, 255, 255, 0, 255, 255, 0, 0, 255);
+                SetTextGradient(255, 255, 0, 255, 255, 0, 0, 255, 255, 255, 0, 255, 255, 0, 0, 255);
                 printUISprite(276.0f, 204.0f, 0.0f, 0.0f, 1.0f, 16.0f, 16.0f, 0.0f, 75);
             }
         }
@@ -1207,26 +1207,26 @@ void Porocess_Mode0(void) {
         D_80200B38 = 0;
         D_80168DA0 = 1;
         D_801749AC = 0;
-        SaveData_ReadFile(&D_80200BA0);
+        SaveData_ReadFile(&gSaveFile);
         D_80174878 = gCurrentStage - 1;
         for (i = 0; i < 4; i++) {
             _bzero(&gTongues[i], sizeof(Tongue));
         }
         func_8008FD68();
-        SaveData_ReadFile(&D_80200BA0);
+        SaveData_ReadFile(&gSaveFile);
         if (D_80236974 == 1) {
             if (gCurrentStage == 0) {
                 D_80236978 = 1;
             }
-            func_800C2820(D_80200BA0.gCurrentZone, &gPlayerActors[0], &D_80200BA0);
+            func_800C2820(gSaveFile.gCurrentZone, &gPlayerActors[0], &gSaveFile);
         } else {
             D_80236978 = 0;
-            func_800C1510(D_80200BA0.gCurrentZone, D_80200BA0.unk33);
-            func_800B4574(&D_80200BA0.flags, &D_80200BA0.unk_22);
-            func_800C0760(D_80200BA0.gCurrentZone);
+            func_800C1510(gSaveFile.gCurrentZone, gSaveFile.unk33);
+            func_800B4574(&gSaveFile.flags, &gSaveFile.unk_22);
+            func_800C0760(gSaveFile.gCurrentZone);
         }
-        func_8008FEA8(gCurrentStage, D_80200BA0.gCurrentZone);
-        currentStageCrowns = (s32) D_80200BE4;
+        func_8008FEA8(gCurrentStage, gSaveFile.gCurrentZone);
+        currentStageCrowns = (s32) gSaveFile.stageCrowns;
         gGameModeState = 1;
         func_8008F114();
         func_8008FE00();
@@ -1940,9 +1940,9 @@ extern s32 perfectCode;
 void PrintPerfectCode(s32 arg0) {
     char sp50[38];
 
-    setTextGradient(0xFF, 0x90, 0xF2, 0xFF, 0xFF, 0x38, 0x64, 0xFF, 0xFF, 0x90, 0xF2, 0xFF, 0xFF, 0x38, 0x64, 0xFF);
+    SetTextGradient(0xFF, 0x90, 0xF2, 0xFF, 0xFF, 0x38, 0x64, 0xFF, 0xFF, 0x90, 0xF2, 0xFF, 0xFF, 0x38, 0x64, 0xFF);
     PrintText(144.0f, 24.0f, 0.0f, 0.7f, 0.0f, 0.0f, D_8010E954, 1);
-    setTextGradient(0x90, 0xF2, 0xFF, 0xFF, 0x38, 0x64, 0xFF, 0xFF, 0x90, 0xF2, 0xFF, 0xFF, 0x38, 0x64, 0xFF, 0xFF);
+    SetTextGradient(0x90, 0xF2, 0xFF, 0xFF, 0x38, 0x64, 0xFF, 0xFF, 0x90, 0xF2, 0xFF, 0xFF, 0x38, 0x64, 0xFF, 0xFF);
     PrintText(160.0f, 40.0f, 0.0f, 0.7f, 0.0f, 0.0f, parseIntToHex(perfectCode, 8, sp50), 1);
 }
 
@@ -1955,7 +1955,7 @@ void PrintPerfectCode(s32 arg0) {
 
 void func_800A250C(unkarg0* arg0) {
     if (arg0->unk6A > 0) {
-        setTextGradient(0x6EU, 0xD2U, 0xFF, 0xFF, 0, 0xDE, 0, 0xFF, 0x6E, 0xD2, 0xFF, 0xFF, 0, 0xDE, 0, 0xFF);
+        SetTextGradient(0x6EU, 0xD2U, 0xFF, 0xFF, 0, 0xDE, 0, 0xFF, 0x6E, 0xD2, 0xFF, 0xFF, 0, 0xDE, 0, 0xFF);
         //ＰＲＥＳＳ  ＳＴＡＲＴ
         PrintTextWrapper(72.0f, 176.0f, 0.0f, 1.0f, D_8010E9D0, 1);
     }
