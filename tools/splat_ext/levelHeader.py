@@ -72,7 +72,7 @@ class N64SegLevelHeader(CommonSegCodeSubsegment):
                 lines.append("LevelHeader %s = {" % (self.name))
 
         byteData = bytearray(sprite_data)
-        data = struct.unpack('>IIIIIIIIiiiiii', byteData)
+        data = struct.unpack('>iiiiiiIIIIIIII', byteData)
         for v in data: 
             lines.append(f"    {v},")
 

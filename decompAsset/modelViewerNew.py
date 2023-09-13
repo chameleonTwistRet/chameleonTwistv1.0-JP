@@ -78,6 +78,7 @@ objdata = {
 
 
 def start(toUser):
+    print(toUser)
     toUse = toUser
     namer = toUse.split("/")[len(toUse.split("/")) - 1].split('.')[0]
     lines = open(fullDir).readlines()
@@ -264,5 +265,6 @@ def start(toUser):
         bpy.ops.mesh.select_interior_faces()
         bpy.ops.mesh.delete(type='FACE')
         bpy.ops.object.mode_set(mode='OBJECT')
+    return object
 
-start(toUse)
+#start(toUse)
