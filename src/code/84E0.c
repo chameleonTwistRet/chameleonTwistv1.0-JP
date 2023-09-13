@@ -779,7 +779,25 @@ s32 func_80032074(s32 arg0) {
 }
 
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_800320EC.s")
+void func_800320EC(s32 arg0, f32 arg1, f32 arg2) {
+    f32 sp24;
+
+    sp24 = CalcAngleBetween2DPoints(arg1, arg2, D_80170968[TonguePointer->poleID].pos.x, D_80170968[TonguePointer->poleID].pos.z);
+    if (gActors[arg0].unk_10C[0] == 0) {
+        if (D_8017499C != (gActors[arg0].unk_10C[3] + 1)) {
+            gActors[arg0].unk_10C[3] = D_8017499C;
+            return;
+        }
+        sp24 += TonguePointer->tongueDir * 90.0f;
+        wrapDegrees(&sp24);
+        
+        gActors[arg0].unk_134[2] = sp24;
+        gActors[arg0].unk_10C[0] = 1;
+        gActors[arg0].unk_134[0] = sp24;
+        gActors[arg0].unk_134[1] = 0.0f;
+        gActors[arg0].unk_134[3] = 0.0f;
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_800321F8.s")
 

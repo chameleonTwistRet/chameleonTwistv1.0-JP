@@ -44,6 +44,25 @@ typedef struct Rect {
     Vec3f max;
 } Rect;
 
+typedef struct unkIsChange {
+    /* 0x00 */ char unk_00[8];
+    /* 0x08 */ s32 unk_08;
+    /* 0x0C */ s32 unk_0C;
+    /* 0x10 */ s32 unk_10;
+    /* 0x14 */ s32 unk_14;
+    /* 0x18 */ s32 unk18;
+    /* 0x1C */ char unk_1C[0x24];
+    /* 0x40 */ f32 unk40;
+    /* 0x44 */ f32 unk44;
+    /* 0x48 */ f32 unk48;
+    /* 0x4C */ f32 unk4C;
+    /* 0x50 */ f32 unk50;
+    /* 0x54 */ f32 unk54;
+    /* 0x58 */ char unk_58[0x7C];
+    /* 0xD4 */ s32 unk_D4;
+    /* 0xD8 */ s32 unk_D8;
+} unkIsChange;
+
 typedef struct playerActor {
     /* 0x000 */ u32 playerID;
     /* 0x004 */ Vec3f pos;
@@ -165,7 +184,7 @@ typedef struct Tongue { // at 80169268 (for p1 at least lol)
     //all of this has to do with poles
     /* 0x5FC*/ f32 lastTongueOffset;//offset for matching the twisted model to the last segment
     /* 0x600*/ u32 poleID;//please tell me im right
-    /* 0x604*/ u32 tongueDir;//0x01 for counter clockwise. 0xFFFFFFFF for clockwise.
+    /* 0x604*/ s32 tongueDir;//0x01 for counter clockwise. 0xFFFFFFFF for clockwise.
     //wall
     /* 0x608*/ u32 wallTime;//timer for tongue-touching a wall
 } Tongue; //sizeof 0x60C

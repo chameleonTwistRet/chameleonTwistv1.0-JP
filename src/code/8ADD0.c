@@ -214,7 +214,6 @@ Vec3f* func_800B2470(Vec3f* arg0, Vec3f arg1, Vec3f arg4, f32 arg7, s32 arg8) {
     return arg0;
 }
 
-//#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B2510.s")
 s32 func_800B2510(void) {
     playerActor* player = &gPlayerActors[0];
     s32 ret = 0;
@@ -926,7 +925,33 @@ const char* GetDirectionName(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C08B8.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/ChameleonFromDoor.s")
+void ChameleonFromDoor(playerActor* player, s32 arg1, s32 arg2, s32 arg3, s32 arg4) {
+    Door* var_s0;
+    Door* door;
+    s32 i;
+    s32 pad[3];
+    Vec3f sp24;
+    
+    var_s0 = NULL;
+    door = gDoors;
+    for (i = 0; i < gDoorCount; i++, door++) {
+        if (arg4 == door->direction && arg2 == door->unk38 && arg3 == door->unk3C) {
+            var_s0 = door;
+            break;
+        }
+    }
+    
+    isChange.unk18 = i;
+    func_800C08B8(&sp24, player, var_s0);
+    
+    isChange.unk4C = sp24.x;
+    isChange.unk50 = sp24.y;
+    isChange.unk54 = sp24.z;
+    isChange.unk40 = (gCardinalDirections[var_s0->direction].unk0 * var_s0->toX) + isChange.unk4C;
+    isChange.unk44 = isChange.unk50;
+    isChange.unk48 = (gCardinalDirections[var_s0->direction].unk4 * var_s0->toZ) + isChange.unk54;
+    func_800D34CC();
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C0AEC.s")
 

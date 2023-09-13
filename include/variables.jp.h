@@ -299,7 +299,8 @@ extern u8 gHasShadows[256]; //unset for actortypes like spawnners.
 extern Collider D_80236980[128];
 extern s32 gFeildCount;
 extern Door gDoors[16];
-extern u32 gDoorCount;
+extern unkIsChange isChange;
+extern s32 gDoorCount;
 extern Collision D_80240D6C[];
 extern u8 gCarrotBitfield;
 extern s8 D_801B313D;
