@@ -3,17 +3,17 @@
 void CartesianToSpherical(Vec3f arg0, f32* arg3, f32* arg4, f32* arg5);
 void WrapAngle(f32*);
 
-//bss externed
-extern Vec3f D_802018B0;
-extern f32 D_802018BC;
-extern f32 D_802018C0;
-extern f32 D_802018C4;
-extern f32 D_802018C8;
-extern f32 D_802018CC;
-extern s32 D_802018D0;
-extern s32 D_802018D4;
-extern Rect D_802018D8;
-extern f32 D_802018F0;
+/* Migrated BSS */
+Vec3f D_802018B0;
+f32 D_802018BC;
+f32 D_802018C0;
+f32 D_802018C4;
+f32 D_802018C8;
+f32 D_802018CC;
+s32 D_802018D0;
+s32 D_802018D4;
+Rect D_802018D8;
+f32 D_802018F0;
 
 void SetViewAreaParam(Camera* arg0, f32 arg1, f32 arg2) {
     Vec3f sp50;

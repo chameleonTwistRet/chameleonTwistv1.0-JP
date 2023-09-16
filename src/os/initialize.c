@@ -22,7 +22,7 @@ OSTime osClockRate = 0x0000000003B9ACA0;
 u32 D_80109018 = 0x00000000; //?
 OSIntMask __OSGlobalIntMask = 0x003FFF01;
 s32 __osShutdown = 0;
-extern u32 __osFinalrom;    //= 0; | bss
+u32 __osFinalrom;    //= 0; | bss
 
 void __createSpeedParam(void);
 s32 __osGetHWIntrRoutine();

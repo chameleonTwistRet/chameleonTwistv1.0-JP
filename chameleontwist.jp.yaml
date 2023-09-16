@@ -278,6 +278,10 @@ segments:
       - { start: 0xED090, type: .bss, vram: 0x80175620, name: code/298D0 }
       - { start: 0xED090, type: bss, vram: 0x80175870, name: debug }
       - { start: 0xED090, type: bss, vram: 0x80176820, name: restof }
+      - { start: 0xED090, type: .bss, vram: 0x802018B0, name: code/clip }
+      - { start: 0xED090, type: bss, vram: 0x80201900, name: restof2 }
+      - { start: 0xED090, type: .bss, vram: 0x80248C70, name: os/initialize }
+      - { start: 0xED090, type: bss, vram: 0x80248C80, name: restof3 }
       - { start: 0xED090, type: .bss, vram: 0x8024C280, name: io/piacs }
       - { start: 0xED090, type: .bss, vram: 0x8024C2A0, name: io/conteepread }
       - { start: 0xED090, type: bss, vram: 0x8024C2E0, name: exceptasm }
