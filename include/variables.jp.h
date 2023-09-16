@@ -363,4 +363,5 @@ extern CTTask* gCTTaskHead;
 extern CTTask* gCTTaskTail;
 extern s32 sGameModeStart;
 extern char D_8010DB20[];
+extern CardinalDirection gCardinalDirections[5]; // including "NO_DIR"
 #endif
