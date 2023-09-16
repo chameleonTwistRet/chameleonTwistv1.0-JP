@@ -1,18 +1,16 @@
 #include "common.h"
 
+#define SQROOT_2_DIV_2 0.70710678f
+
+void func_800D887C(Collider* arg0, s32 arg1, s32 arg2);
+
 extern playerActor gPlayerActors[4];
 extern s32 D_801749A0;
 extern s32 D_801749A0;
+extern s32 D_801749A0;
+extern s32 D_80168E24;
+extern s32 D_801749A0;
 
-#define SQROOT_2_DIV_2 0.70710678f
-//f32 D_80110870 = SQROOT_2_DIV_2;
-//f32 D_80110874 = SQROOT_2_DIV_2;
-//f32 D_80110878 = SQROOT_2_DIV_2;
-//f32 D_8011087C = SQROOT_2_DIV_2;
-void func_800D887C(Collider* arg0, s32 arg1, s32 arg2);
-//0xD7, 0x1E);
-//0xAC, 0x2D);
-//0x5B, 0x78);
 void func_800D85A0(Collider* arg0, s32 sfxID, s32 arg2) {
     if (((arg0->unk_00 + D_801749A0) % arg2) == 0) {
         func_80088698(PLAYSFXAT(sfxID, arg0->sfxPos, 0, 0));
@@ -47,18 +45,12 @@ void func_800D87F8(Collider* arg0, s32 sfxID, s32 arg2) {
     }
 }
 
-#ifdef NON_MATCHING
 void func_800D887C(Collider* arg0, s32 arg1, s32 arg2) {
     s32 new_var;
-    if (((new_var = arg0->unk_00) == gPlayerActors[0].surface) && (((new_var + D_801749A0) % arg2) == 0)) {
-        func_80088698(PLAYSFXAT(arg1, arg0->sfxPos, 0, 0));
+    if (((new_var = arg0->unk_00) == D_80168E24) && (((new_var + D_801749A0) % arg2) == 0)) {
+        func_80088698(playSoundEffect(arg1, &arg0->sfxPos.x, &arg0->sfxPos.y, &arg0->sfxPos.z, 0, 0));
     }
 }
-#else
-#pragma GLOBAL_ASM("asm/nonmatchings/code/B39A0/func_800D887C.s")
-#endif
-
-extern s32 D_801749A0;
 
 void func_800D8918(Collider* arg0, s32 arg1, s32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7, f32 arg8) {
     f32 temp_f0_2;
@@ -113,17 +105,7 @@ void func_800D8918(Collider* arg0, s32 arg1, s32 arg2, f32 arg3, f32 arg4, f32 a
         }
     }
 }
-//#else
-//#pragma GLOBAL_ASM("asm/nonmatchings/code/B39A0/func_800D8918.s")
-//#endif
 
-// arg3, 5, 7 relates to zPos
-// arg4, 6, 8 relates to xPos
-
-// func_800D8B28(arg0, 0x89, 0x1E, -5100.0f, 25300.0f, 600.0f, 2500.0f, 1000.0f, 1000.0f);}
-// func_800D8B28(arg0, 0x89, 0x1E, 0, 25300.0f, 600.0f, 2500.0f, 1000.0f, 1000.0f);}
-
-//#ifdef NON_MATCHING
 void func_800D8B28(Collider* arg0, s32 arg1, s32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7, f32 arg8) {
     f32 temp_f12;
     f32 temp_f0;
@@ -179,9 +161,6 @@ void func_800D8B28(Collider* arg0, s32 arg1, s32 arg2, f32 arg3, f32 arg4, f32 a
         }
     }
 }
-//#else
-//#pragma GLOBAL_ASM("asm/nonmatchings/code/B39A0/func_800D8B28.s")
-//#endif
 
 void func_800D8CF0(Collider* arg0, s32 sfxID) {
     if ((func_800B34D0(arg0->unk_AC) != 0) && (arg0->unk_B0 != 0)) {
