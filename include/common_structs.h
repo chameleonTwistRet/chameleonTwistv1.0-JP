@@ -139,7 +139,7 @@ typedef struct tongueSlot {
     /* 0x00 */ u32 slots[64];
 } tongueSlot; //sizeof 0x100
 
-typedef struct Tongue { // at 80169268 (for p1 at least lol)
+typedef struct Tongue { // at 80169268 (for p1)
     /* 0x00 */ u32 vaulting; //0x00 = no, 0x01 = yes
     /* 0x04 */ u32 tongueMode; //enum of tongue actions
     /* 0x08 */ s32 segments;

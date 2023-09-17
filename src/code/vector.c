@@ -66,7 +66,7 @@ extern f64 D_801107F0;  // 180.0
 
 // jtbl 801107F8
 #pragma GLOBAL_ASM("asm/nonmatchings/code/vector/func_800D75B4.s")
-/*
+/* //non equivalent
 void func_800D75B4(Poly* arg0, s32 arg1) {
     Vec3f sp70; //unk_70
     f32 sp50; //unkVecStruct.vec2

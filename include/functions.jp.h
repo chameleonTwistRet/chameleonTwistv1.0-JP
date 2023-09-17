@@ -144,7 +144,7 @@ void func_80044708(Actor*); // Sandal Function: Elisiah
 void func_80044728(void);
 void GhostBoss_SpawnArms(Actor*);
 void ActtorInit_GhostBoss(Actor*); // Pile of Books Function: Elisiah
-s32 func_80044E80(s32*, s32);
+s32 func_80044E80(Actor*, s32);
 void func_80046DDC(Actor*);
 void func_80046FB0(Actor*);
 void ActorInit_GhostBossShot(Actor*);
@@ -448,7 +448,7 @@ void func_800CFF64(playerActor*);
 
 void func_800D0708(playerActor*, Tongue*); //PLAYER PROCESS
 void DummiedPrintf3(char*, ...);
-s32 func_800D75B4(Poly*, s32);
+void func_800D75B4(Poly*, s32);
 void OnlyCheckPolyInfoLevel(Poly*, s32, char*);
 void func_800D79E4(Poly*, s32);
 void Vec3f_Zero(Vec3f*);

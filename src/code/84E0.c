@@ -1596,10 +1596,9 @@ void ActtorInit_GhostBoss(Actor* pileOfBooksActor) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80044D58.s")
 
-s32 func_80044E80(s32* arg0, s32 arg1) {
-    return (s32) ((arg0 + arg1)[67] + 5) / 6;
+s32 func_80044E80(Actor* arg0, s32 arg1) {
+    return (arg0->unk_10C[arg1] + 5) / 6;
 }
-
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80044EA4.s")
 
