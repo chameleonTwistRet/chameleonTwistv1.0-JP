@@ -6,7 +6,8 @@
             "includePath": [
                 "${workspaceFolder}/include",
                 "${workspaceFolder}/include/PR",
-                "${workspaceFolder}/src"
+                "${workspaceFolder}/src",
+                "${workspaceFolder}/src/mod"
             ],
             "defines": [
                 "_LANGUAGE_C",

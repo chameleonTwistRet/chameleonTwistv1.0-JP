@@ -176,7 +176,7 @@ void Actors_Init(s32 actorIndex, s32 actorID, f32 arg2, f32 arg3, f32 arg4, f32 
     actorInstance = &gActors[actorIndex];
 
     for (i = 0; i < 6;) {
-        actorInstance->unk_10C[i] = 0;
+        actorInstance->userVariables[i] = 0;
         i++;
     }
 
@@ -739,8 +739,8 @@ void func_800312B0(s32 id) {
 //? - Nathan R.
 void func_800312FC(Actor* arg0, f32 arg1) {
     f32 temp_f12;
-    arg0->unk_10C[0] = 0;
-    arg0->unk_10C[1] = 14;
+    arg0->userVariables[0] = 0;
+    arg0->userVariables[1] = 14;
     arg0->unk_134[3] = D_8010B4C0;
     temp_f12 = (arg1 * 2 * D_8010B4C8) / D_8010B4D0;
     arg0->vel.x = __cosf(temp_f12) * 16.0f;
@@ -754,7 +754,7 @@ void func_800312FC(Actor* arg0, f32 arg1) {
 
 void func_800314E4(Actor* arg0) {
     if (arg0->actorID == 1) {
-        D_80172E88[arg0->unk_10C[0]].unk_00 = 0;
+        D_80172E88[arg0->userVariables[0]].unk_00 = 0;
     }
     arg0->actorID = 0;
 }
@@ -783,16 +783,16 @@ void func_800320EC(s32 arg0, f32 arg1, f32 arg2) {
     f32 sp24;
 
     sp24 = CalcAngleBetween2DPoints(arg1, arg2, D_80170968[TonguePointer->poleID].pos.x, D_80170968[TonguePointer->poleID].pos.z);
-    if (gActors[arg0].unk_10C[0] == 0) {
-        if (D_8017499C != (gActors[arg0].unk_10C[3] + 1)) {
-            gActors[arg0].unk_10C[3] = D_8017499C;
+    if (gActors[arg0].userVariables[0] == 0) {
+        if (D_8017499C != (gActors[arg0].userVariables[3] + 1)) {
+            gActors[arg0].userVariables[3] = D_8017499C;
             return;
         }
         sp24 += TonguePointer->tongueDir * 90.0f;
         wrapDegrees(&sp24);
         
         gActors[arg0].unk_134[2] = sp24;
-        gActors[arg0].unk_10C[0] = 1;
+        gActors[arg0].userVariables[0] = 1;
         gActors[arg0].unk_134[0] = sp24;
         gActors[arg0].unk_134[1] = 0.0f;
         gActors[arg0].unk_134[3] = 0.0f;
@@ -930,7 +930,7 @@ void func_800383A0(Actor* actor) {
 void func_800383C0(Actor* greyAntSpawnerActor) {
     if (greyAntSpawnerActor->unk_12C != 0) {
         D_801748A0 = 0;
-        greyAntSpawnerActor->unk_10C[1] = greyAntSpawnerActor->unk_12C;
+        greyAntSpawnerActor->userVariables[1] = greyAntSpawnerActor->unk_12C;
     }
 }
 
@@ -940,7 +940,7 @@ void func_800383C0(Actor* greyAntSpawnerActor) {
 void ActorInit_AntGrey(Actor* actor) {
     actor->unk_94 = actor->unk_124;
     actor->unk_90 = CalcAngleBetween2DPoints(actor->pos.x, actor->pos.z, actor->position._f32.x, actor->position._f32.y);
-    actor->unk_10C[0] = 4;
+    actor->userVariables[0] = 4;
     actor->unk_134[0] = actor->pos.y;
     actor->pos.y = actor->pos.y - actor->unknownPositionThings[0].unk_10;
 }
@@ -949,7 +949,7 @@ void ActorInit_AntGrey(Actor* actor) {
 
 // Bullet-Hell Ant Spawner: Elisiah
 void func_80038990(Actor* bulletHellAntSpawnerActor) {
-    bulletHellAntSpawnerActor->unk_10C[1] = bulletHellAntSpawnerActor->unk_128;
+    bulletHellAntSpawnerActor->userVariables[1] = bulletHellAntSpawnerActor->unk_128;
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8003899C.s")
@@ -1011,7 +1011,7 @@ void func_80038F70(Actor* antTrioActor) {
 // Green Ant Function: Rainchu and Elisiah
 void ActorInit_AntGreen(Actor* greenAntActor) {
     greenAntActor->unk_134[0] = 0.0f;
-    greenAntActor->unk_10C[2] = greenAntActor->unk_15C / greenAntActor->position._f32.x;
+    greenAntActor->userVariables[2] = greenAntActor->unk_15C / greenAntActor->position._f32.x;
     greenAntActor->unk_F0 = Random(0, 0x100/*, greenAntActor*/);
 }
 
@@ -1048,12 +1048,12 @@ void ActorInit_AntQueenDrone(Actor* arg0) {
 void func_8003BA38(Actor* whiteBombSnakeActor) {
     s32 temp_f10;
 
-    whiteBombSnakeActor->unk_10C[0] = 4;
+    whiteBombSnakeActor->userVariables[0] = 4;
     whiteBombSnakeActor->unk_134[0] = whiteBombSnakeActor->pos.x;
     whiteBombSnakeActor->unk_134[1] = whiteBombSnakeActor->pos.z;
     whiteBombSnakeActor->unk_90 = CalcAngleBetween2DPoints(whiteBombSnakeActor->pos.x, whiteBombSnakeActor->pos.z, whiteBombSnakeActor->position._f32.x, whiteBombSnakeActor->position._f32.y);
     temp_f10 = (s32) (180.0f / whiteBombSnakeActor->unk_160);
-    whiteBombSnakeActor->unk_10C[3] = temp_f10;
+    whiteBombSnakeActor->userVariables[3] = temp_f10;
     whiteBombSnakeActor->unk_160 = (f32) (0xB4 / temp_f10);
 }
 
@@ -1187,13 +1187,13 @@ void func_8003DFB4(Actor* vultureActor) {
 // Arrows Function: Elisiah
 void func_8003E30C(Actor* arrowsActor) {
     arrowsActor->unk_94 = arrowsActor->position._f32.x;
-    arrowsActor->unk_10C[0] = (s32) (arrowsActor->position._f32.y / arrowsActor->position._f32.x);
+    arrowsActor->userVariables[0] = (s32) (arrowsActor->position._f32.y / arrowsActor->position._f32.x);
 }
 
 
 // Elisiah
 void ActorTick_Arrow(Actor* arg0) {                   // unsure if struct is actor
-    if (arg0->globalTimer == arg0->unk_10C[0]) {
+    if (arg0->globalTimer == arg0->userVariables[0]) {
         func_80031518(arg0);
     }
     func_800382F4(arg0);
@@ -1213,7 +1213,7 @@ void func_8003E62C(Actor* armadilloActor) {
     armadilloActor->unk_134[0] = armadilloActor->position._f32.y / armadilloActor->position._f32.x;
     armadilloActor->pos.y = -400.0f;
     armadilloActor->unk_134[4] = 100.0f;
-    armadilloActor->unk_10C[4] = armadilloActor->unk_130;
+    armadilloActor->userVariables[4] = armadilloActor->unk_130;
 }
 
 void func_8003E660(Actor* actor) {
@@ -1223,7 +1223,7 @@ void func_8003E660(Actor* actor) {
     if (actor->vel.y < 0.0f) {
         actor->vel.y -= actor->vel.y * (var1 / actor->unk_16C);
         if (actor->pos.y < 1000.0f) {
-            actor->unk_10C[0] = 6;
+            actor->userVariables[0] = 6;
         }
     }
 }
@@ -1243,20 +1243,20 @@ void func_8003FA38(Actor* arg0, f32 arg1, f32 arg2, f32 arg3) {
 
     temp_f0 = arg1 - arg0->pos.x;
     temp_f2 = arg3 - arg0->pos.z;
-    if (arg0->unk_10C[0] >= 3) {
+    if (arg0->userVariables[0] >= 3) {
         arg0->unk_94 = (f32) (arg0->unk_16C / 1.5f);
     } else {
         arg0->unk_94 = (f32) arg0->unk_16C;
     }
     temp_f8 = (s32) (NORM_2(temp_f0,temp_f2) / arg0->unk_94);
-    arg0->unk_10C[1] = temp_f8;
+    arg0->userVariables[1] = temp_f8;
     arg0->unk_134[3] = (f32) ((arg2 - arg0->pos.y) / (f32) temp_f8);
     arg0->unk_90 = CalculateAngleOfVector(temp_f0, -temp_f2);
 }
 
 // Pogo Function: Elisiah
 void func_8003FB04(Actor* pogoActor) {
-    pogoActor->unk_10C[0] = 1;
+    pogoActor->userVariables[0] = 1;
     pogoActor->unk_134[0] = pogoActor->pos.x;
     pogoActor->unk_134[1] = pogoActor->pos.y;
     pogoActor->unk_134[2] = pogoActor->pos.z;
@@ -1305,11 +1305,11 @@ void ChocoKidMovement(Actor* chocoKid) {
     f32 temp_f14;
 
     temp_f14 = CalcAngleBetween2DPoints(chocoKid->pos.x, chocoKid->pos.z, chocoKid->unk_134[0], chocoKid->unk_134[1]);
-    if (chocoKid->unk_10C[0] != 0) {
+    if (chocoKid->userVariables[0] != 0) {
         chocoKid->vel.y -= D_8010BC70;
         chocoKid->pos.y += chocoKid->vel.y;
         if (chocoKid->pos.y < 0.0f) {
-            chocoKid->unk_10C[0] = 0;
+            chocoKid->userVariables[0] = 0;
             chocoKid->pos.y = 0.0f;
             chocoKid->vel.y = 0.0f;
         }
@@ -1319,7 +1319,7 @@ void ChocoKidMovement(Actor* chocoKid) {
         chocoKid->unk_90 += chocoKid->unk_134[2];
         wrapDegrees(&chocoKid->unk_90);
         if (Random(0, 29) == 15) {
-            chocoKid->unk_10C[0] = 1;
+            chocoKid->userVariables[0] = 1;
             chocoKid->vel.y = D_8010BC74;
         }
     }
@@ -1378,7 +1378,7 @@ void func_80040CEC(Actor* cakeBossChocoKidActor){
 
 void ActorInit_CakeBoss(Actor* actor) {
     actor->tongueCollision = 3;
-    actor->unk_10C[2] = 4; 
+    actor->userVariables[2] = 4; 
     actor->unknownPositionThings[1].unk_0C = actor->tScale;
     actor->unknownPositionThings[1].unk_04 = 250;
     actor->unknownPositionThings[1].unk_10 = actor->tYPos;
@@ -1428,9 +1428,9 @@ void ActorTick_BilliardBall(Actor* arg0) {
 void ActorInit_BowlingBall(Actor* bowlingBallActor) {
     Bowling_ResetScore();
     Bowling_ResetPins();
-    bowlingBallActor->unk_10C[0] = 0;
+    bowlingBallActor->userVariables[0] = 0;
     bowlingBallActor->unk_134[0] = bowlingBallActor->pos.y;
-    bowlingBallActor->unk_10C[3] = Rand() % 5;
+    bowlingBallActor->userVariables[3] = Rand() % 5;
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_BowlingBall.s")
@@ -1438,13 +1438,13 @@ void ActorInit_BowlingBall(Actor* bowlingBallActor) {
 // Bowling Pins Function: Elisiah
 void ActorInit_BowlingPin(Actor* bowlingPinsActor) {
     bowlingPinsActor->unk_90 = (f32) ((Rand() % 21) - 100);
-    bowlingPinsActor->unk_10C[1] = (Rand() % 21) + 30;
+    bowlingPinsActor->userVariables[1] = (Rand() % 21) + 30;
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_BowlingPin.s")
 
 void func_800431E8(Actor* arg0) {
-    arg0->unk_10C[0] = 0xA;
+    arg0->userVariables[0] = 0xA;
     arg0->unk_134[0] = arg0->pos.y;
 }
 
@@ -1460,7 +1460,7 @@ void func_800434FC(s32 arg0) {
 }
 
 void func_80043504(Actor* arg0) {
-    arg0->unk_10C[1] = arg0->unk_12C * arg0->unk_124 / arg0->unk_128;
+    arg0->userVariables[1] = arg0->unk_12C * arg0->unk_124 / arg0->unk_128;
 }
 
 
@@ -1511,10 +1511,10 @@ void func_80043A98(Actor* rngRoomSpawnerActor){
 
 void func_80043C80(Actor* arg0) {
     if (D_8017499C % arg0->unk_128 == arg0->unk_124) {
-        arg0->unk_10C[1] = 1;
+        arg0->userVariables[1] = 1;
         return;
     }
-    arg0->unk_10C[1] = 0;
+    arg0->userVariables[1] = 0;
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80043CDC.s")
@@ -1529,14 +1529,14 @@ void func_80043FE8(Actor* barrelJumpFireSpawnerActor){
 // Barrel Jump Fire Actor: Elisiah
 void func_800440FC(Actor* barrelJumpFireActor) {
     barrelJumpFireActor->unk_134[0] = CalcAngleBetween2DPoints(barrelJumpFireActor->position._f32.x, barrelJumpFireActor->position._f32.y, barrelJumpFireActor->pos.x, barrelJumpFireActor->pos.z);
-    barrelJumpFireActor->unk_10C[0] = (s32) (360.0f / barrelJumpFireActor->unk_160) - 2;
+    barrelJumpFireActor->userVariables[0] = (s32) (360.0f / barrelJumpFireActor->unk_160) - 2;
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80044158.s")
 
 // Fire Spitter Function: Elisiah
 void func_800442E0(Actor* fireSpitterActor) {
-    fireSpitterActor->unk_10C[0] = fireSpitterActor->unk_124 - 1;
+    fireSpitterActor->userVariables[0] = fireSpitterActor->unk_124 - 1;
 }
 
 
@@ -1563,11 +1563,41 @@ void func_80044564(void) {
 //Fire: Auto-Decompile
 void func_80044584(Actor* arg0) {
     arg0->unk_90 = CalcAngleBetween2DPoints(arg0->pos.x, arg0->pos.z, PlayerPointer->pos.x, PlayerPointer->pos.z);
-    arg0->unk_10C[1] = arg0->unk_128;
+    arg0->userVariables[1] = arg0->unk_128;
 }
 
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_800445CC.s")
+void func_800445CC(Actor* fireActor) {
+    f32 angle;
+
+    angle = CalcAngleBetween2DPoints(fireActor->pos.x, fireActor->pos.z, PlayerPointer->pos.x, PlayerPointer->pos.z);
+    if (fireActor->userVariables[0] == 0) {
+        fireActor->unk_94 = fireActor->position._f32.x;
+        func_8002D36C(&fireActor->unk_90, angle, fireActor->position._f32.y);
+        if (fireActor->userVariables[1] == 0) {
+            fireActor->userVariables[0] = 1;
+            fireActor->userVariables[1] = Random(1, fireActor->unk_12C);
+        } else {
+            fireActor->userVariables[1]--;
+        }
+    } else {
+        fireActor->unk_94 = 0.0f;
+        func_8002D36C(&fireActor->unk_90, angle, fireActor->unk_160);
+        if (fireActor->userVariables[1] == 0) {
+            fireActor->userVariables[0] = 0;
+            fireActor->userVariables[1] = Random(1, fireActor->unk_128);
+        } else {
+            fireActor->userVariables[1]--;
+        }
+    }
+    if (fireActor->pos.y < (PlayerPointer->pos.y - fireActor->unk_15C)) {
+        fireActor->pos.y += fireActor->unk_15C;
+    } else if ((fireActor->unk_15C + PlayerPointer->pos.y) < fireActor->pos.y) {
+        fireActor->pos.y = fireActor->pos.y - fireActor->unk_15C;
+    }
+    fireActor->unk_F0++;
+    func_800382F4(fireActor);
+}
 
 // Sandal Function: Elisiah
 void func_80044708(Actor* sandalActor) {
@@ -1584,7 +1614,7 @@ void func_80044728(void) {
 // Pile of Books Function: Elisiah
 void ActtorInit_GhostBoss(Actor* pileOfBooksActor) {
     pileOfBooksActor->unk_EC = 0;
-    pileOfBooksActor->unk_10C[3] = pileOfBooksActor->unk_128 * 2;
+    pileOfBooksActor->userVariables[3] = pileOfBooksActor->unk_128 * 2;
     pileOfBooksActor->unk_134[1] = pileOfBooksActor->pos.z + -800.0f;
     pileOfBooksActor->unk_134[2] = pileOfBooksActor->unk_90;
     GhostBoss_SpawnArms(pileOfBooksActor);    // Compiled as empty originally?
@@ -1597,7 +1627,7 @@ void ActtorInit_GhostBoss(Actor* pileOfBooksActor) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80044D58.s")
 
 s32 func_80044E80(Actor* arg0, s32 arg1) {
-    return (arg0->unk_10C[arg1] + 5) / 6;
+    return (arg0->userVariables[arg1] + 5) / 6;
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80044EA4.s")
@@ -1624,24 +1654,24 @@ void func_80046FB0(Actor* arg0) {
 }
 
 void func_80046FB8(Actor* arg0) {
-    if (((arg0->unk_12C == 0) && (gActors[arg0->unk_128].unk_10C[2] == 4)) || ((arg0->unk_12C == 1) && (gActors[arg0->unk_128].unk_10C[2] == 5))) {
-        if (arg0->unk_10C[0] == 0) {
+    if (((arg0->unk_12C == 0) && (gActors[arg0->unk_128].userVariables[2] == 4)) || ((arg0->unk_12C == 1) && (gActors[arg0->unk_128].userVariables[2] == 5))) {
+        if (arg0->userVariables[0] == 0) {
             arg0->unk_F0 += 1;
             if (arg0->unk_F0 == 9) {
-                arg0->unk_10C[0] = 1;
+                arg0->userVariables[0] = 1;
             }
         } 
         else {
             arg0->unk_F0 -= 1;
             if (arg0->unk_F0  == 0) {
-                arg0->unk_10C[0] = 0;
+                arg0->userVariables[0] = 0;
             }
         }
     } 
     else {
         if (arg0->unk_F0 != 0) {
             arg0->unk_F0 -= 1;
-            arg0->unk_10C[0] = 0;
+            arg0->userVariables[0] = 0;
         }
     }
 }
@@ -1653,8 +1683,8 @@ void ActorInit_GhostBossShot(Actor* arg0) {
 
 //ActorTick_GhostBossShot: Nathan R.
 void ActorTick_GhostBossShot(Actor* arg0) {
-    arg0->unk_10C[0] += 1;
-    if (arg0->unk_10C[0] == 150) {
+    arg0->userVariables[0] += 1;
+    if (arg0->userVariables[0] == 150) {
         func_800638AC(arg0->pos.x, arg0->pos.y, arg0->pos.z, arg0->pos.x, arg0->pos.y + 300.0f, arg0->pos.z, 255, 255, 255, 128, 8, 74);
         func_80031518(arg0);
         return;
@@ -1779,7 +1809,7 @@ void ActorInit_LizardKong(Actor* arg0) {
     arg0->unk_134[3] = arg0->unk_90 + 180.0f;
     wrapDegrees(&arg0->unk_134[3]);
     arg0->unk_134[4] = arg0->unk_134[3];
-    arg0->unk_10C[0] = 6;
+    arg0->userVariables[0] = 6;
     arg0->unk_134[0] = arg0->pos.x;
     arg0->unk_134[1] = arg0->pos.z;
     arg0->unk_134[5] = arg0->position._f32.x;
@@ -1870,10 +1900,10 @@ void func_80049C34(Actor* battleModeSandCrabActor) {
 
 
 void func_80049C64(Actor* arg0) {
-    if (arg0->unk_10C[1] == 0) {
+    if (arg0->userVariables[1] == 0) {
         if ((arg0->unk_98 == 0) && (arg0->vel.y < 0.0f)) {
             arg0->vel.y = 0.0f;
-            arg0->unk_10C[1] = 1;
+            arg0->userVariables[1] = 1;
             return;
         }
         arg0->vel.y -= D_8010C26C;
@@ -1982,12 +2012,12 @@ void func_8004AB00(Actor* unk_5EActor){
 void ActorTick_PickupHeartFalling(Actor* arg0) {
     f32 temp_f2;
 
-    if (arg0->unk_10C[0] == 0) {
+    if (arg0->userVariables[0] == 0) {
         arg0->vel.y -= (D_8010C318 + (arg0->vel.y * D_8010C31C));
         temp_f2 = arg0->pos.y + arg0->vel.y;
         if (temp_f2 < 0.0f) {
             arg0->pos.y = 0.0f;
-            arg0->unk_10C[0] = 1;
+            arg0->userVariables[0] = 1;
             return;
         }
         arg0->pos.y = temp_f2;
@@ -1995,9 +2025,9 @@ void ActorTick_PickupHeartFalling(Actor* arg0) {
 }
 
 void ActorTick_Powerup(Actor* arg0) {
-    if (arg0->unk_10C[0] != 0) {
-        arg0->unk_10C[1] += 1;
-        if (arg0->unk_124 == arg0->unk_10C[1]) {
+    if (arg0->userVariables[0] != 0) {
+        arg0->userVariables[1] += 1;
+        if (arg0->unk_124 == arg0->userVariables[1]) {
             func_80031518(arg0);
         }
     }
@@ -2005,7 +2035,7 @@ void ActorTick_Powerup(Actor* arg0) {
         arg0->vel.y -= (D_8010C320 + (arg0->vel.y * D_8010C324));
         if (arg0->pos.y + arg0->vel.y < arg0->position._f32.x) {
             arg0->pos.y = arg0->position._f32.x;
-            arg0->unk_10C[0] = 1;
+            arg0->userVariables[0] = 1;
             return;
         }
         arg0->pos.y += arg0->vel.y;

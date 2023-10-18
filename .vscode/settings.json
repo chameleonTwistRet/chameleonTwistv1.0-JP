@@ -24,6 +24,7 @@
         "assert.h": "c",
         "mod_main.h": "c",
         "cart.h": "c",
-        "menu.h": "c"
+        "menu.h": "c",
+        "sd_toggle.h": "c"
     }
 }

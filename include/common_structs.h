@@ -606,7 +606,7 @@ typedef struct Actor {
     /* 0x100 */ f32 unk_100;
     /* 0x104 */ f32 unk_104;
     /* 0x108 */ f32 unk_108;
-    /* 0x10C */ s32 unk_10C[5];
+    /* 0x10C */ s32 userVariables[5];
     /* 0x120 */ s32 unk_120;
     /* 0x124 */ s32 unk_124;
     /* 0x128 */ s32 unk_128;
