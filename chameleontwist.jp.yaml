@@ -102,7 +102,7 @@ segments:
       - [0xB8250, c, io/aisetfreq]
       - [0xB83B0, c, audio/csplayer]
       - [0xB95E0, c, audio/seqpsetbank]
-      - [0xB9620, c, audio/sndpplayer]
+      - [0xB9620, c, audio/sndplayer]
       - [0xB9D30, c, audio/seqpsetpan]
       - [0xB9D90, c, audio/synthesizer]
       - [0xBA470, c, io/sptaskyield]
@@ -119,13 +119,14 @@ segments:
       - [0xBA8A0, c, audio/sndpgetstate]
       - [0xBA8C0, c, audio/sndpstop]
       - [0xBA910, c, audio/sndpdeallocate]
-      - [0xBA960, c, audio/seqpgetstate]
+      - [0xBA960, c, audio/cspgetstate]
       - [0xBA970, c, audio/seqpsetvol]
       - [0xBA9B0, c, audio/seqpstop]
       - [0xBA9E0, c, audio/seqpplay]
-      - [0xBAA10, c, audio/seqpsettempo]
+      - [0xBAA10, c, audio/cspsettempo]
       - [0xBAA80, c, audio/cspgettempo]
-      - [0xBB580, c, audio/seqpsetseq]
+      - [0xBAAC0, c, audio/cseq]
+      - [0xBB580, c, audio/cspsetseq]
       - [0xBB5C0, c, os/gettime]
       - [0xBB650, hasm, os/getcount]
       - [0xBB660, c, gu/getfrustum]
@@ -233,8 +234,8 @@ segments:
       - [0xE5230, .data, io/vi]
       - [0xE52A0, .data, io/piacs]
       - [0xE52B0, .data, libc/xprintf]
-      - [0xE5300, data, audio/drvrNew]
-      - [0xE5490, data, audio/env]
+      - [0xE5300, .data, audio/drvrNew]
+      - [0xE5490, .data, audio/env]
       - [0xE55D0, .data, io/vimodepallan1]
       - [0xE5620, .data, io/vimodempallan1]
       - [0xE5670, .data, io/vimodentsclan1]
@@ -258,21 +259,23 @@ segments:
       - [0xEBD60, .rodata, gu/align]
       - [0xEBD70, .rodata, gu/perspective]
       - [0xEBD80, .rodata, audio/cents2ratio]
-      - [0xEBD90, rodata, audio/csplayer]
-      - [0xEBFD0, rodata, audio/sndpplayer]
-      - [0xEC030, rodata, os/exceptasm]
-      - [0xEC080, .rodata, io/pirawdma]
+      - [0xEBD90, .rodata, audio/csplayer]
+      - [0xEBFD0, rodata, audio/sndplayer]
+      - [0xEC010, .rodata, audio/synthesizer] #80110C10
+      - [0xEC020, .rodata, audio/cseq] #80110C20
+      - [0xEC030, rodata, os/exceptasm] #80110C30
+      - [0xEC080, .rodata, io/pirawdma] #80110C80
       - [0xEC0A0, rodata, nan_f] #80110CA0
       - [0xEC0B0, .rodata, libc/xprintf] #80110CB0
-      - [0xEC1B0, rodata, audio/seqplayer] #80110DB0
+      - [0xEC1B0, .rodata, audio/seqplayer] #80110DB0
       - [0xEC3F0, rodata, interruptRelated]
-      - [0xEC470, rodata, audio/drvrNew] #80111070
-      - [0xEC490, rodata, audio/resample] #80111090
-      - [0xEC4D0, rodata, audio/env] #801110D0
+      - [0xEC470, .rodata, audio/drvrNew] #80111070
+      - [0xEC490, .rodata, audio/resample] #80111090
+      - [0xEC4D0, .rodata, audio/env] #801110D0
       - [0xEC530, .rodata, libc/xldtob] #80111130
-      - [0xEC590, rodata, audio/seq] #80111190
-      - [0xEC5A0, rodata, audio/reverb] #801111A0
-      - [0xECDD0, rodata, 5FF30]
+      - [0xEC590, .rodata, audio/seq] #80111190
+      - [0xEC5A0, .rodata, audio/reverb] #801111A0
+      - [0xEC5D0, rodata, 5FF30]
       - { start: 0xED090, type: bss, vram: 0x80111C90 }   # This has the same address as below as bss isnt in the ROM
       - { start: 0xED090, type: .bss, vram: 0x80175620, name: code/298D0 }
       - { start: 0xED090, type: bss, vram: 0x80175870, name: debug }

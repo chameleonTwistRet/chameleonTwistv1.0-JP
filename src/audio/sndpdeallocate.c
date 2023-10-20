@@ -33,4 +33,3 @@ void alSndpDeallocate(ALSndPlayer *sndp, ALSndId id)
         sndp->target = -1;      
 }
 
-//#pragma GLOBAL_ASM("asm/nonmatchings/audio/sndpdeallocate/alSndpDeallocate.s")

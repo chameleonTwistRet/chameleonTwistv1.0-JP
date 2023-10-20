@@ -26,5 +26,3 @@ s32 alSndpGetState(ALSndPlayer *sndp)
 
     return (sState + sndp->target)->state;
 }
-
-//#pragma GLOBAL_ASM("asm/nonmatchings/audio/sndpgetstate/alSndpGetState.s")

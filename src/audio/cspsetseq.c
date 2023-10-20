@@ -1,5 +1,7 @@
 /*====================================================================
- * seqpsettempo.c
+ * cspsetseq.c
+ *
+ * Synopsis:
  *
  * Copyright 1995, Silicon Graphics, Inc.
  * All Rights Reserved.
@@ -18,22 +20,14 @@
  * Copyright Laws of the United States.
  *====================================================================*/
 
-#pragma GLOBAL_ASM("asm/nonmatchings/audio/seqpsettempo/alCSPSetTempo.s")
+#include <libaudio.h>
 
-/*
-#include <PR/libaudio.h>
-
-void alCSPSetTempo(ALCSPlayer *seqp, s32 tempo)
+void alCSPSetSeq(ALCSPlayer *seqp, ALCSeq *seq)
 {
-    ALEvent       evt;
-    
-    evt.type             = AL_SEQP_META_EVT;
-    evt.msg.tempo.status = AL_MIDI_Meta;
-    evt.msg.tempo.type   = AL_MIDI_META_TEMPO;
-    evt.msg.tempo.byte1  = (tempo & 0xff0000)>>16;
-    evt.msg.tempo.byte2  = (tempo & 0xff00)>>8;
-    evt.msg.tempo.byte3  = tempo & 0xff;
-    
+    ALEvent evt;
+
+    evt.type = AL_SEQP_SEQ_EVT;
+    evt.msg.spseq.seq = seq;
+
     alEvtqPostEvent(&seqp->evtq, &evt, 0);
 }
-*/

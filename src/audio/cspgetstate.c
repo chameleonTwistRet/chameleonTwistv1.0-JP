@@ -1,5 +1,7 @@
 /*====================================================================
- * seqpsetvol.c
+ * cspgetstate.c
+ *
+ * Synopsis:
  *
  * Copyright 1995, Silicon Graphics, Inc.
  * All Rights Reserved.
@@ -20,12 +22,8 @@
 
 #include <libaudio.h>
 
-void alSeqpSetVol(ALSeqPlayer *seqp, s16 vol)
+s32 alCSPGetState(ALCSPlayer *seqp)
 {
-   ALEvent       evt;
-
-   evt.type            = AL_SEQP_VOL_EVT;
-   evt.msg.spvol.vol   = vol;
-   
-   alEvtqPostEvent(&seqp->evtq, &evt, 0);
+    return seqp->state;
 }
+

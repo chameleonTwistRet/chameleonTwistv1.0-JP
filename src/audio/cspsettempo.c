@@ -1,5 +1,5 @@
 /*====================================================================
- * seqpsetvol.c
+ * cspsettempo.c
  *
  * Copyright 1995, Silicon Graphics, Inc.
  * All Rights Reserved.
@@ -20,12 +20,16 @@
 
 #include <libaudio.h>
 
-void alSeqpSetVol(ALSeqPlayer *seqp, s16 vol)
+void alCSPSetTempo(ALCSPlayer *seqp, s32 tempo)
 {
-   ALEvent       evt;
-
-   evt.type            = AL_SEQP_VOL_EVT;
-   evt.msg.spvol.vol   = vol;
-   
-   alEvtqPostEvent(&seqp->evtq, &evt, 0);
+    ALEvent       evt;
+    
+    evt.type             = AL_SEQP_META_EVT;
+    evt.msg.tempo.status = AL_MIDI_Meta;
+    evt.msg.tempo.type   = AL_MIDI_META_TEMPO;
+    evt.msg.tempo.byte1  = (tempo & 0xff0000)>>16;
+    evt.msg.tempo.byte2  = (tempo & 0xff00)>>8;
+    evt.msg.tempo.byte3  = tempo & 0xff;
+    
+    alEvtqPostEvent(&seqp->evtq, &evt, 0);
 }

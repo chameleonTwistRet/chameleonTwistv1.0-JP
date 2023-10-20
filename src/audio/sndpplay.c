@@ -33,5 +33,3 @@ void alSndpPlay(ALSndPlayer *sndp)
     evt.common.state = &sState[sndp->target];
     alEvtqPostEvent(&sndp->evtq, (ALEvent *)&evt, 0);
 }
-
-//#pragma GLOBAL_ASM("asm/nonmatchings/audio/sndpplay/alSndpPlay.s")

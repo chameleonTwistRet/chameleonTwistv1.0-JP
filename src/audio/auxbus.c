@@ -1,6 +1,24 @@
-#include "common.h"
 #include <libaudio.h>
 #include "PR/synthInternals.h"
+
+Acmd *alAuxBusPull(void *filter, s16 *outp, s32 outCount, s32 sampleOffset,
+                   Acmd *p) 
+{
+    Acmd        *ptr = p;
+    ALAuxBus     *m = (ALAuxBus *)filter;
+    ALFilter    **sources = m->sources;
+    s32         i;
+
+    aClearBuffer(ptr++, AL_AUX_L_OUT, outCount<<1);
+    aClearBuffer(ptr++, AL_AUX_R_OUT, outCount<<1);
+
+    for (i = 0; i < m->sourceCount; i++) {
+        ptr = (sources[i]->handler)(sources[i], outp, outCount, sampleOffset,
+                                    ptr);
+    }
+    
+    return ptr;
+}
 
 s32 alAuxBusParam(void *filter, s32 paramID, void *param)
 {
@@ -19,7 +37,4 @@ s32 alAuxBusParam(void *filter, s32 paramID, void *param)
     }
 
     return 0;
-    
 }
-
-#pragma GLOBAL_ASM("asm/nonmatchings/audio/auxbus/alAuxBusPull.s")

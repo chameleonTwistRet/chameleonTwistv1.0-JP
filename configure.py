@@ -157,6 +157,30 @@ c_file_rule_overrides = {
     'align.c': "ido_O3_cc",
     'getfrustum.c': "ido_O3_cc",
     'rotate.c': "ido_O3_cc",
+
+    #audio files. once audio/ is all decompiled, these can be removed and O2_cc -> ido_O3_cc for audio/ below
+    'auxbus.c': "ido_O3_cc",
+    'bnkf.c': "ido_O3_cc",
+    'seqpsetvol.c': "ido_O3_cc",
+    'cseq.c': "ido_O3_cc",
+    'csplayer.c': "ido_O3_cc",
+    'drvrNew.c': "ido_O3_cc",
+    'env.c': "ido_O3_cc",
+    'event.c': "ido_O3_cc",
+    'load.c': "ido_O3_cc",
+    'mainbus.c': "ido_O3_cc",
+    'resample.c': "ido_O3_cc",
+    'reverb.c': "ido_O3_cc",
+    'seq.c': "ido_O3_cc",
+    'seqplayer.c': "ido_O3_cc",
+    'seqpsetbank.c': "ido_O3_cc",
+    'seqpsetpan.c': "ido_O3_cc",
+    'cspsetseq.c': "ido_O3_cc",
+    'cspsettempo.c': "ido_O3_cc",
+    #'sl.c': "ido_O3_cc",
+    #'sndplayer.c': "ido_O3_cc",
+    'synthesizer.c': "ido_O3_cc",
+    'sndpsetfxmix.c': "ido_O3_cc",
 }
 
 for c_file in c_files:
