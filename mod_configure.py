@@ -291,6 +291,9 @@ ninja_file.variable('CC', 'tools/gcc_2.7.2/linux/gcc')
 ninja_file.variable('STRIP', 'mips-linux-gnu-strip')
 ninja_file.variable('CPPFLAGS', '-I. -I include -I include/PR -I include -I src -I build/include')
 
+ninja_file.rule('ido_O3_cc',
+    command = '$ido_cc -c -G 0 -xansi -I. -Iinclude/PR -Iinclude -non_shared -mips2 -woff 819,826,852 -Wab,-r4300_mul -nostdinc -O3 -o $out $in',
+    description = 'Compiling -O3 ido .c file' )
 
 ninja_file.rule('gcc_cc',
     command = '(export COMPILER_PATH=tools/gcc_2.7.2/linux && $CC -O2 -G0 -mips3 -mgp32 -mfp32 -D_LANGUAGE_C $CPPFLAGS -c -o $out $in) && ($STRIP $out -N dummy-symbol-name)',
@@ -373,6 +376,10 @@ ninja_file.rule('libc_ll_cc',
 for c_file in c_files:
     if os.path.basename(c_file) == 'll.c':  # Compare only the filename
         ninja_file.build(append_prefix(append_extension(c_file)), "libc_ll_cc", c_file)
+    elif os.path.basename(c_file) == 'xprintf.c':  # Compare only the filename
+        ninja_file.build(append_prefix(append_extension(c_file)), "ido_O3_cc", c_file)
+    elif os.path.basename(c_file) == 'xldtob.c':  # Compare only the filename
+        ninja_file.build(append_prefix(append_extension(c_file)), "ido_O3_cc", c_file)
     elif os.path.dirname(c_file) == audio_dir or os.path.dirname(c_file) == code_dir or os.path.dirname(c_file) == libc_dir:  # Check if the file's directory matches the specific folder
         ninja_file.build(append_prefix(append_extension(c_file)), "O2_cc", c_file)
     elif os.path.dirname(c_file) == gu_dir:

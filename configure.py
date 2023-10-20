@@ -81,10 +81,6 @@ ninja_file.variable('IMG_CONVERT', 'tools/image_converter.py')
 ninja_file.variable('MAKE_EXPECTED', 'tools/make_expected.py')
 ninja_file.variable('GCC_FLAGS', '$include_cflags $DEFINES -G 0 -mno-shared -march=vr4300 -mfix4300 -mabi=32 -mhard-float -mdivide-breaks -fno-stack-protector -fno-common -fno-zero-initialized-in-bss -fno-PIC -mno-abicalls -fno-strict-aliasing -fno-inline-functions -ffreestanding -fwrapv -Wall -Wextra -Wno-missing-braces')
 
-# ninja_file.rule('ido_O3_cc',
-#     command = '$ido_cc -c $cflags $DEFINES $CFLAGS $mips_version -O2 -o $out $in',
-#     description = 'Compiling -O2 .c file' )
-
 ninja_file.rule('ido_O3_cc',
     command = '$ido_cc -c -G 0 -xansi -I. -Iinclude/PR -Iinclude -non_shared -mips2 -woff 819,826,852 -Wab,-r4300_mul -nostdinc -O3 -o $out $in',
     description = 'Compiling -O3 ido .c file' )
