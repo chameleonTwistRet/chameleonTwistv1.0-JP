@@ -81,6 +81,14 @@ ninja_file.variable('IMG_CONVERT', 'tools/image_converter.py')
 ninja_file.variable('MAKE_EXPECTED', 'tools/make_expected.py')
 ninja_file.variable('GCC_FLAGS', '$include_cflags $DEFINES -G 0 -mno-shared -march=vr4300 -mfix4300 -mabi=32 -mhard-float -mdivide-breaks -fno-stack-protector -fno-common -fno-zero-initialized-in-bss -fno-PIC -mno-abicalls -fno-strict-aliasing -fno-inline-functions -ffreestanding -fwrapv -Wall -Wextra -Wno-missing-braces')
 
+# ninja_file.rule('ido_O3_cc',
+#     command = '$ido_cc -c $cflags $DEFINES $CFLAGS $mips_version -O2 -o $out $in',
+#     description = 'Compiling -O2 .c file' )
+
+ninja_file.rule('ido_O3_cc',
+    command = '$ido_cc -c -G 0 -xansi -I. -Iinclude/PR -Iinclude -non_shared -mips2 -woff 819,826,852 -Wab,-r4300_mul -nostdinc -O3 -o $out $in',
+    description = 'Compiling -O3 ido .c file' )
+
 ninja_file.rule('O2_cc',
     command = '$ASM_PROC $ASM_PROC_FLAGS $ido_cc -- $AS $ASFLAGS -- -c $cflags $DEFINES $CFLAGS $mips_version -O2 -o $out $in',
     description = 'Compiling -O2 .c file' )
@@ -147,6 +155,10 @@ for c_file in c_files:
         continue
     elif os.path.basename(c_file) == 'll.c':  # Compare only the filename
         ninja_file.build(append_prefix(append_extension(c_file)), "libc_ll_cc", c_file)
+    elif os.path.basename(c_file) == 'xprintf.c':  # Compare only the filename
+        ninja_file.build(append_prefix(append_extension(c_file)), "ido_O3_cc", c_file)
+    elif os.path.basename(c_file) == 'xldtob.c':  # Compare only the filename
+        ninja_file.build(append_prefix(append_extension(c_file)), "ido_O3_cc", c_file)
     elif os.path.dirname(c_file) == audio_dir or os.path.dirname(c_file) == code_dir or os.path.dirname(c_file) == libc_dir:  # Check if the file's directory matches the specific folder
         ninja_file.build(append_prefix(append_extension(c_file)), "O2_cc", c_file)
     elif os.path.dirname(c_file) == gu_dir:
@@ -190,7 +202,7 @@ for ci8_file in ci8_files:
 
 #change .png.png -> png.o
 #change .png.pal -> pal.o
-#we are forced into using these extension names by splat due to how the linker generates
+#we are forced into using these extension names by splat due to how the linker script generates
 
 for img_file in image_files_o:
     extension = os.path.splitext(img_file)[1]

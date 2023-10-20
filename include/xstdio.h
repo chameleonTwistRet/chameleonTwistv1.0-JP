@@ -46,7 +46,7 @@ typedef struct {
     /* 0x20 */ int nz2;
     /* 0x24 */ int prec;
     /* 0x28 */ int width;
-    /* 0x2C */ s32 nchar;
+    /* 0x2C */ u32 nchar;
     /* 0x30 */ unsigned int flags;
     /* 0x34 */ char qual;
 } _Pft;
@@ -70,7 +70,7 @@ lldiv_t lldiv(long long num, long long denom);
 ldiv_t ldiv(long num, long denom);
 void *memcpy(void *s1, const void *s2, u32 n);
 s32 strlen(const u8 *s);
-const u8* strchr(const u8* str, u32 ch);
+const char* strchr(const char* str, s32 ch);
 
 #define FLAGS_SPACE 1
 #define FLAGS_PLUS 2
@@ -91,7 +91,7 @@ const u8* strchr(const u8* str, u32 ch);
             dst = dst * 10 + *src - '0'; \
     }
 
-#define MAX_PAD ((33 - 1)) //#define MAX_PAD ((sizeof(spaces) - 1))
+#define MAX_PAD ((33 - 1))
 #define PAD(s, n)                                             \
     if (0 < (n))                                              \
     {                                                         \
@@ -111,7 +111,7 @@ const u8* strchr(const u8* str, u32 ch);
             return x.nchar;                      \
     }
 
-typedef char *outfun(char*,const char*,s32);
+typedef char *outfun(char*,const char*,u32);
 
 int _Printf(outfun prout, char *arg, const char *fmt, va_list args);
 void _Litob(_Pft *args, u8 type);
