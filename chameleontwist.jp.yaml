@@ -252,10 +252,10 @@ segments:
       - [0xEBB20, rodata, code/vector] #80110720 through 80110870
       - [0xEBC20, .rodata, code/B35B0]
       - [0xEBC70, .rodata, code/B39A0]
-      - [0xEBCB0, rodata, gu/rotate]
+      - [0xEBCB0, .rodata, gu/rotate]
       - [0xEBCC0, .rodata, gu/sinf]
       - [0xEBD10, .rodata, gu/cosf]
-      - [0xEBD60, rodata, gu/align]
+      - [0xEBD60, .rodata, gu/align]
       - [0xEBD70, .rodata, gu/perspective]
       - [0xEBD80, .rodata, audio/cents2ratio]
       - [0xEBD90, rodata, audio/csplayer]
@@ -281,6 +281,10 @@ segments:
       - { start: 0xED090, type: bss, vram: 0x80201900, name: restof2 }
       - { start: 0xED090, type: .bss, vram: 0x80248C70, name: os/initialize }
       - { start: 0xED090, type: bss, vram: 0x80248C80, name: restof3 }
+      - { start: 0xED090, type: .bss, vram: 0x8024B070, name: gu/rotate }
+      - { start: 0xED090, type: bss, vram: 0x8024B080, name: restof4 }
+      - { start: 0xED090, type: .bss, vram: 0x8024B190, name: gu/align }
+      - { start: 0xED090, type: bss, vram: 0x8024B1A0, name: restof5 }
       - { start: 0xED090, type: .bss, vram: 0x8024C280, name: io/piacs }
       - { start: 0xED090, type: .bss, vram: 0x8024C2A0, name: io/conteepread }
       - { start: 0xED090, type: bss, vram: 0x8024C2E0, name: exceptasm }

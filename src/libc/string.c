@@ -19,7 +19,7 @@ s32 strlen(const u8 *s) {
 }
 
 
-const u8* strchr(const u8* str, u32 ch) {
+const char* strchr(const u8* str, s32 ch) {
     u8 c = ch;
 
     while (*str != c) {
@@ -28,5 +28,5 @@ const u8* strchr(const u8* str, u32 ch) {
         }
         str++;
     }
-    return str;
+    return (char*)str;
 }

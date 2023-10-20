@@ -70,7 +70,7 @@ lldiv_t lldiv(long long num, long long denom);
 ldiv_t ldiv(long num, long denom);
 void *memcpy(void *s1, const void *s2, u32 n);
 s32 strlen(const u8 *s);
-const char* strchr(const char* str, s32 ch);
+const char* strchr(const u8* str, s32 ch);
 
 #define FLAGS_SPACE 1
 #define FLAGS_PLUS 2

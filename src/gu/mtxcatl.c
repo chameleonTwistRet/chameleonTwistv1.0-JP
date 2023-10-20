@@ -1,6 +1,5 @@
 #include "common.h"
 
-//guMtxXFML should be in a new file, mtxxfml.c
 void guMtxXFML(Mtx *m, float x, float y, float z, float *ox, float *oy, float *oz) {
 	float	mf[4][4];
 

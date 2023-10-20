@@ -3,7 +3,6 @@
 static char spaces[] = "                                ";
 static char zeroes[] = "00000000000000000000000000000000";
 
-
 static void _Putfld(_Pft *x, va_list *args, char type, char *buff);
 
 int _Printf(outfun prout, char *arg, const char *fmt, va_list args) {
