@@ -49,5 +49,3 @@ void alSynSetFXMix(ALSynth *synth, ALVoice *v, u8 fxmix)
         (*f->setParam)(f, AL_FILTER_ADD_UPDATE, update);        
     }
 }
-
-//#pragma GLOBAL_ASM("asm/nonmatchings/audio/synsetfxmix/func_800E8BE0.s")

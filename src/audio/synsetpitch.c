@@ -47,4 +47,3 @@ void alSynSetPitch(ALSynth *synth, ALVoice *v, f32 pitch)
         (*f->setParam)(f, AL_FILTER_ADD_UPDATE, update);        
     }
 }
-//#pragma GLOBAL_ASM("asm/nonmatchings/audio/synsetpitch/alSynSetPitch.s")

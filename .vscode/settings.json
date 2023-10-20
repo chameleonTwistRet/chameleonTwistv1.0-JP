@@ -25,6 +25,11 @@
         "mod_main.h": "c",
         "cart.h": "c",
         "menu.h": "c",
-        "sd_toggle.h": "c"
+        "sd_toggle.h": "c",
+        "os_exception.h": "c",
+        "os_pfs.h": "c",
+        "os_vi.h": "c",
+        "ultra64.h": "c",
+        "gbi.h": "c"
     }
 }

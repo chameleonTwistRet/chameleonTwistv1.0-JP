@@ -221,7 +221,9 @@ segments:
       - [0xDA1C0, data, code/5FF30] #800FEDC0 through 80108B70
       - [0xE3F70, data, code/math] #80108B70 through 80109010
       - [0xE4410, .data, os/initialize] #80109010 through 80109030
-      - [0xE4430, data, io/vimgr] # 80109030 through 80109D70
+      - [0xE4430, .data, io/vimgr] # 80109030 through 80109050
+      - [0xE4450, data, io/vitbl] # 80109050 through 80109D70
+
       - [0xE5170, .data, io/pimgr] #80109D70 through 80109D90
       - [0xE5190, .data, io/controller] #80109D90 through 80109DA0
       - [0xE51A0, data, audio/csplayer] #80109DA0 through 80109DB0
@@ -283,7 +285,8 @@ segments:
       - { start: 0xED090, type: .bss, vram: 0x802018B0, name: code/clip }
       - { start: 0xED090, type: bss, vram: 0x80201900, name: restof2 }
       - { start: 0xED090, type: .bss, vram: 0x80248C70, name: os/initialize }
-      - { start: 0xED090, type: bss, vram: 0x80248C80, name: restof3 }
+      - { start: 0xED090, type: .bss, vram: 0x80248C80, name: io/vimgr }
+      - { start: 0xED090, type: bss, vram: 0x80249EA0, name: restof3 }
       - { start: 0xED090, type: .bss, vram: 0x8024B070, name: gu/rotate }
       - { start: 0xED090, type: bss, vram: 0x8024B080, name: restof4 }
       - { start: 0xED090, type: .bss, vram: 0x8024B190, name: gu/align }

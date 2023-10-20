@@ -1,6 +1,5 @@
 #include "common.h"
 
-/*
 #include <os_internal.h>
 #include <rcp.h>
 #include "viint.h"
@@ -15,12 +14,7 @@ static OSIoMesg viRetraceMsg;
 static OSIoMesg viCounterMsg;
 
 static void viMgrMain(void *arg);
-*/
 
-
-#pragma GLOBAL_ASM("asm/nonmatchings/io/vimgr/osCreateViManager.s")
-
-/*
 void osCreateViManager(OSPri pri)
 {
 	u32 savedMask;
@@ -63,11 +57,7 @@ void osCreateViManager(OSPri pri)
 		}
 	}
 }
-*/
 
-#pragma GLOBAL_ASM("asm/nonmatchings/io/vimgr/viMgrMain.s")
-
-/*
 static void viMgrMain(void *arg)
 {
 	__OSViContext *vc;
@@ -118,4 +108,4 @@ static void viMgrMain(void *arg)
 		}
 	}
 }
-*/
+

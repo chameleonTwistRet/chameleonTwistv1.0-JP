@@ -47,4 +47,3 @@ void alSynSetPan(ALSynth *synth, ALVoice *v, u8 pan)
         (*f->setParam)(f, AL_FILTER_ADD_UPDATE, update);        
     }
 }
-//#pragma GLOBAL_ASM("asm/nonmatchings/audio/synsetpan/func_800E8B50.s")

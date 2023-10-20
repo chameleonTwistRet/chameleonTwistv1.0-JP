@@ -31,5 +31,3 @@ void alSynAddPlayer(ALSynth *drvr, ALPlayer *client)
 
     osSetIntMask(mask);
 }
-
-//#pragma GLOBAL_ASM("asm/nonmatchings/audio/synaddplayer/alSynAddPlayer.s")

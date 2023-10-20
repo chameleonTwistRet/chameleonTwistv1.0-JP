@@ -181,6 +181,11 @@ c_file_rule_overrides = {
     #'sndplayer.c': "ido_O3_cc",
     'synthesizer.c': "ido_O3_cc",
     'sndpsetfxmix.c': "ido_O3_cc",
+    'sndpsetvol.c': "ido_O3_cc",
+    'synallocfx.c': "ido_O3_cc",
+    'synallocvoice.c': "ido_O3_cc",
+    'synfreevoice.c': "ido_O3_cc",
+    'sndpsetpan.c': "ido_O3_cc",
 }
 
 for c_file in c_files:
@@ -190,8 +195,10 @@ for c_file in c_files:
     if file_name in c_file_rule_overrides:
         build_target = c_file_rule_overrides[file_name]
         ninja_file.build(append_prefix(append_extension(c_file)), build_target, c_file)
-    elif os.path.dirname(c_file) in [audio_dir, code_dir, libc_dir]:
+    elif os.path.dirname(c_file) in [code_dir, libc_dir]:
         ninja_file.build(append_prefix(append_extension(c_file)), "O2_cc", c_file)
+    elif os.path.dirname(c_file) == audio_dir:
+        ninja_file.build(append_prefix(append_extension(c_file)), "O2_cc", c_file)  # Update later
     elif os.path.dirname(c_file) == gu_dir:
         ninja_file.build(append_prefix(append_extension(c_file)), "O2_cc", c_file)  # Update later
     elif os.path.dirname(c_file) in [io_dir, os_dir]:
