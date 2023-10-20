@@ -223,7 +223,6 @@ segments:
       - [0xE4410, .data, os/initialize] #80109010 through 80109030
       - [0xE4430, .data, io/vimgr] # 80109030 through 80109050
       - [0xE4450, data, io/vitbl] # 80109050 through 80109D70
-
       - [0xE5170, .data, io/pimgr] #80109D70 through 80109D90
       - [0xE5190, .data, io/controller] #80109D90 through 80109DA0
       - [0xE51A0, data, audio/csplayer] #80109DA0 through 80109DB0
@@ -232,7 +231,7 @@ segments:
       - [0xE51D0, .data, io/siacs] #80109DD0 through 80109DE0
       - [0xE51E0, .data, os/sethwinterrupt] #80109DE0
       - [0xE5200, .data, os/thread]
-      - [0xE5220, data, os/timerintr]
+      - [0xE5220, .data, os/timerintr]
       - [0xE5230, .data, io/vi]
       - [0xE52A0, .data, io/piacs]
       - [0xE52B0, .data, libc/xprintf]
@@ -290,7 +289,11 @@ segments:
       - { start: 0xED090, type: .bss, vram: 0x8024B070, name: gu/rotate }
       - { start: 0xED090, type: bss, vram: 0x8024B080, name: restof4 }
       - { start: 0xED090, type: .bss, vram: 0x8024B190, name: gu/align }
-      - { start: 0xED090, type: bss, vram: 0x8024B1A0, name: restof5 }
+      - { start: 0xED090, type: .bss, vram: 0x8024B1A0, name: io/sptask }
+      - { start: 0xED090, type: .bss, vram: 0x8024B1E0, name: io/pfsisplug }
+      - { start: 0xED090, type: .bss, vram: 0x8024b220, name: io/siacs }
+      - { start: 0xED090, type: .bss, vram: 0x8024B240, name: os/leointerrupt }
+      - { start: 0xED090, type: .bss, vram: 0x8024C240, name: os/timerintr}
       - { start: 0xED090, type: .bss, vram: 0x8024C280, name: io/piacs }
       - { start: 0xED090, type: .bss, vram: 0x8024C2A0, name: io/conteepread }
       - { start: 0xED090, type: bss, vram: 0x8024C2E0, name: exceptasm }

@@ -408,6 +408,12 @@ c_file_rule_overrides = {
     #'sndplayer.c': "ido_O3_cc",
     'synthesizer.c': "ido_O3_cc",
     'sndpsetfxmix.c': "ido_O3_cc",
+    'sndpsetvol.c': "ido_O3_cc",
+    'synallocfx.c': "ido_O3_cc",
+    'synallocvoice.c': "ido_O3_cc",
+    'synfreevoice.c': "ido_O3_cc",
+    'sndpsetpan.c': "ido_O3_cc",
+    'sptask.c': "O2_cc",
 }
 
 for c_file in c_files:

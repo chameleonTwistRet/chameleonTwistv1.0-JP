@@ -2,7 +2,7 @@
 #include "controller.h"
 #include "siint.h"
 
-extern OSPifRam __osPfsPifRam;
+OSPifRam __osPfsPifRam;
 
 s32 osPfsIsPlug(OSMesgQueue* mq, u8* pattern) {
     s32 ret = 0;

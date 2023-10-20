@@ -118,6 +118,11 @@ OSMesgQueue *osPiGetCmdQueue(void);
         ;                                                                                   \
     (void)0
 
+#define WAIT_ON_IOBUSY2(stat)                                                                \
+    while (stat = IO_READ(PI_STATUS_REG), stat & (PI_STATUS_IO_BUSY))  \
+        ;                                                                                   \
+    (void)0
+
 #define UPDATE_REG(pihandle, reg, var) \
     if (cHandle->var != pihandle->var) \
         IO_WRITE(reg, pihandle->var)

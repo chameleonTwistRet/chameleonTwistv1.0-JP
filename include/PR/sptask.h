@@ -115,6 +115,8 @@ typedef u32 OSYieldResult;
  */
 #define OS_TASK_YIELDED			0x0001
 #define OS_TASK_DP_WAIT			0x0002
+#define	OS_TASK_LOADABLE		0x0004
+#define	OS_TASK_SP_ONLY			0x0008
 #define OS_TASK_USR0			0x0010
 #define OS_TASK_USR1			0x0020
 #define OS_TASK_USR2			0x0040
@@ -127,7 +129,7 @@ typedef u32 OSYieldResult;
  * boundary.  The taskHdrPtr->t.yield_data_ptr must be set to point to the
  * buffer BEFORE the task is started.
  */
-#define OS_YIELD_DATA_SIZE		0x900
+#define OS_YIELD_DATA_SIZE		0xc00
 #define OS_YIELD_AUDIO_SIZE		0x400
 
 /**************************************************************************
