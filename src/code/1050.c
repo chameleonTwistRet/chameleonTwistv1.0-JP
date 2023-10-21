@@ -64,10 +64,6 @@ void idleproc(void *arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/1050/mainproc.s")
 
-void func_80025EE8(void) {
-    
-}
-
 // func_80025EF0(playerActor*, Tongue*, s32)
 #pragma GLOBAL_ASM("asm/nonmatchings/code/1050/func_80025EF0.s")
 

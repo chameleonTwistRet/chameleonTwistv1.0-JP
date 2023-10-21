@@ -1258,16 +1258,15 @@ segments:
         - { start: 0x6C15B8, type: vtx, data_only: True, name: model/JungleLand/ctCrate/ctCrate}
         - [0x6C16F8, mtx, model/JungleLand/ctCrate/ctCrate]
         - [0x6C1740, ci4, img/JungleLand/ctCrate1.ci4, 32, 32]
-        - [0x6c1940, bin]
+        - [0x6c1940, bin] #end DL command
         - [0x6C1948, palette, img/JungleLand/ctCrate1.ci4]
-        - [0x6c1b48, bin]
+        - [0x6c1b48, bin] #end DL command
         - [0x6c1b50, ci4, img/JungleLand/ctCrate2.ci4, 64, 32]
-        - [0x6c1f50, bin]
+        - [0x6c1f50, bin] #end DL command
         - [0x6c1f58, palette, img/JungleLand/ctCrate2.ci4]
-        - [0x6c2158, bin]
+        - [0x6c2158, bin] #end DL command
         - [0x6c2160, ci4, img/JungleLand/ctCrate3.ci4, 64, 32]
-        - [0x6c2560, bin]
-        - [0x6c2568, palette, img/JungleLand/ctCrate3.ci4]
+        - [0x6c2560, palette, img/JungleLand/ctCrate3.ci4]
         - [0x6c2760, bin]
         - { start: 0x6C2768, type: gfx, data_only: True, name: model/JungleLand/ctCrate/ctCrate}
 
@@ -1411,7 +1410,6 @@ segments:
         - [0x6C8328, ci8, img/JungleLand/roomSixCrownEdgePlatform.ci8, 64, 32]  #16, 32? 16,128?
         - [0x6C8B28, bin]
         - [0x6C8B30, palette, img/JungleLand/roomSixCrownEdgePlatform.ci8]
-        - [0x6C8D28, bin]
         - { start: 0x6C8D30, type: gfx, data_only: True, name: model/JungleLand/roomSixCrownEdgePlatform/roomSixCrownEdgePlatform}
 
     - start: 0x6C9248
@@ -1598,7 +1596,6 @@ segments:
         - [0x6D0B18, ci8, img/JungleLand/ext3Wall.ci8, 64, 32]
         - [0x6D1318, bin]
         - [0x6D1320, palette, img/JungleLand/ext3Wall.ci8]
-        - [0x6D1518, bin]
         - { start: 0x6D1520, type: gfx, data_only: True, name: model/JungleLand/extThree/extThree}
 
     - start: 0x6D1F98

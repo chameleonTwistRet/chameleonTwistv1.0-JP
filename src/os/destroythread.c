@@ -3,7 +3,7 @@
 #include "osint.h"
 #include <PR/R4300.h>
 
-void osDestroyThread(OSThread *t) {
+void osStopThread(OSThread *t) {
     register u32 saveMask;
     register OSThread *pred;
     register OSThread *succ;
