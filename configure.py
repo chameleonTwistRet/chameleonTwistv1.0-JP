@@ -85,6 +85,10 @@ ninja_file.rule('ido_O3_cc',
     command = '$ido_cc -c -G 0 -Xcpluscomm -xansi -I. -Iinclude/PR -Iinclude -non_shared -mips2 -woff 819,826,852 -Wab,-r4300_mul -nostdinc -O3 -o $out $in',
     description = 'Compiling -O3 ido .c file' )
 
+ninja_file.rule('motor_O3_cc',
+    command = '$ido_cc -c -G 0 -Xcpluscomm -xansi -I. -Iinclude/PR -Iinclude -non_shared -mips1 -woff 819,826,852 -Wab,-r4300_mul -nostdinc -O3 -o $out $in',
+    description = 'Compiling -O3 ido .c file' )
+
 ninja_file.rule('O2_cc',
     command = '$ASM_PROC $ASM_PROC_FLAGS $ido_cc -- $AS $ASFLAGS -- -c $cflags $DEFINES $CFLAGS $mips_version -O2 -o $out $in',
     description = 'Compiling -O2 .c file' )
@@ -178,7 +182,7 @@ c_file_rule_overrides = {
     'cspsetseq.c': "ido_O3_cc",
     'cspsettempo.c': "ido_O3_cc",
     #'sl.c': "ido_O3_cc",
-    #'sndplayer.c': "ido_O3_cc",
+    'sndplayer.c': "ido_O3_cc",
     'synthesizer.c': "ido_O3_cc",
     'sndpsetfxmix.c': "ido_O3_cc",
     'sndpsetvol.c': "ido_O3_cc",
@@ -187,6 +191,8 @@ c_file_rule_overrides = {
     'synfreevoice.c': "ido_O3_cc",
     'sndpsetpan.c': "ido_O3_cc",
     'sptask.c': "O2_cc",
+
+    'motor.c': "O2_cc", #should actually use rule "motor_O3_cc" when C file is ready to compile
 
 
     'mtxcatl.c': "O2_cc",

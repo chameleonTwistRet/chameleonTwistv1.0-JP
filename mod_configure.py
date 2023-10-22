@@ -295,6 +295,10 @@ ninja_file.rule('ido_O3_cc',
     command = '$ido_cc -c -G 0 -Xcpluscomm -xansi -I. -Iinclude/PR -Iinclude -non_shared -mips2 -woff 819,826,852 -Wab,-r4300_mul -nostdinc -O3 -o $out $in',
     description = 'Compiling -O3 ido .c file' )
 
+ninja_file.rule('motor_O3_cc',
+    command = '$ido_cc -c -G 0 -Xcpluscomm -xansi -I. -Iinclude/PR -Iinclude -non_shared -mips1 -woff 819,826,852 -Wab,-r4300_mul -nostdinc -O3 -o $out $in',
+    description = 'Compiling -O3 ido .c file' )
+
 ninja_file.rule('gcc_cc',
     command = '(export COMPILER_PATH=tools/gcc_2.7.2/linux && $CC -O2 -G0 -mips3 -mgp32 -mfp32 -D_LANGUAGE_C $CPPFLAGS -c -o $out $in) && ($STRIP $out -N dummy-symbol-name)',
     description = 'Compiling -O2 .c file' )
@@ -405,7 +409,7 @@ c_file_rule_overrides = {
     'cspsetseq.c': "ido_O3_cc",
     'cspsettempo.c': "ido_O3_cc",
     #'sl.c': "ido_O3_cc",
-    #'sndplayer.c': "ido_O3_cc",
+    'sndplayer.c': "ido_O3_cc",
     'synthesizer.c': "ido_O3_cc",
     'sndpsetfxmix.c': "ido_O3_cc",
     'sndpsetvol.c': "ido_O3_cc",
@@ -414,6 +418,8 @@ c_file_rule_overrides = {
     'synfreevoice.c': "ido_O3_cc",
     'sndpsetpan.c': "ido_O3_cc",
     'sptask.c': "O2_cc",
+
+    'motor.c': "O2_cc", #should actually use rule "motor_O3_cc" when C file is ready to compile
 
 
     'mtxcatl.c': "O2_cc",

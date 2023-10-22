@@ -235,7 +235,8 @@ extern u8 __osMaxControllers;
 #define SET_ACTIVEBANK_TO_ZERO        \
     if (pfs->activebank != 0)         \
     {                                 \
-        ERRCK(__osPfsSelectBank(pfs, 0)) \
+        pfs->activebank = 0;          \
+        ERRCK(__osPfsSelectBank(pfs)) \
     }
 
 #define PFS_CHECK_ID                              \
