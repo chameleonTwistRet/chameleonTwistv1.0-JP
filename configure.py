@@ -151,6 +151,12 @@ c_file_rule_overrides = {
     'll.c': "libc_ll_cc",
     'xprintf.c': "ido_O3_cc",
     'xldtob.c': "ido_O3_cc",
+    'scale.c': "ido_O3_cc",
+    'mtxcatf.c': "ido_O3_cc",
+    'lookat.c': "ido_O3_cc",
+    'align.c': "ido_O3_cc",
+    'getfrustum.c': "ido_O3_cc",
+    'rotate.c': "ido_O3_cc",
 
     #audio files. once audio/ is all decompiled, these can be removed and O2_cc -> ido_O3_cc for audio/ below
     'auxbus.c': "ido_O3_cc",
@@ -202,7 +208,7 @@ for c_file in c_files:
     elif os.path.dirname(c_file) == audio_dir:
         ninja_file.build(append_prefix(append_extension(c_file)), "O2_cc", c_file)  # Update later
     elif os.path.dirname(c_file) == gu_dir:
-        ninja_file.build(append_prefix(append_extension(c_file)), "ido_O3_cc", c_file)  # Update later
+        ninja_file.build(append_prefix(append_extension(c_file)), "O2_cc", c_file)  # Update later
     elif os.path.dirname(c_file) in [io_dir, os_dir]:
         ninja_file.build(append_prefix(append_extension(c_file)), "O1_cc", c_file)
 
