@@ -1,6 +1,8 @@
 #include "common.h"
 #include "PR/libaudio.h"
 
+#define SEGMENTED_TO_VIRTUAL(x)  (void*)(SEGMENT_OFFSET_CUSTOM(x) + D_80100F50[SEGMENT_INDEX(x)].base_address)
+
 extern char D_8010E9D0[];
 extern char D_8010F070[];
 

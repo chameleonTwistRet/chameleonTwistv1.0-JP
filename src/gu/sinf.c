@@ -1,5 +1,5 @@
-#include "common.h"
-
+#include "ultra64.h"
+#include "macros.h"
 /**************************************************************************
  *									  *
  *		 Copyright (C) 1994, Silicon Graphics, Inc.		  *
