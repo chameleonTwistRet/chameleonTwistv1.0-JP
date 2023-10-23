@@ -45,5 +45,3 @@ void alSynStartVoice(ALSynth *synth, ALVoice *v, ALWaveTable *table)
         (*f->setParam)(f, AL_FILTER_ADD_UPDATE, update);
     }
 }
-
-//#pragma GLOBAL_ASM("asm/nonmatchings/audio/synstartvoice/func_800E8D20.s")

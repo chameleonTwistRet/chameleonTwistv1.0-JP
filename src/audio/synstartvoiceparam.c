@@ -61,5 +61,3 @@ void alSynStartVoiceParams(ALSynth *s, ALVoice *v, ALWaveTable *w,
     }
     
 }
-
-//#pragma GLOBAL_ASM("asm/nonmatchings/audio/synstartvoiceparam/alSynStartVoiceParams.s")

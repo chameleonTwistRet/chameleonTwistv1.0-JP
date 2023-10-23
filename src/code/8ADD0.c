@@ -234,7 +234,6 @@ s32 func_800B2510(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B2B50.s")
 
-//#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/Vec3f_SetAtBossPos.s")
 Vec3f* Vec3f_SetAtBossPos(Vec3f* arg0) {
     Actor* actors;
     s32 numActors;
@@ -838,7 +837,7 @@ void func_800BA900(tempStruct* arg0) {
 //     arg0->tongueMode = 0;
 //     arg0->segments = 0;
 
-//     for (i = 0; i < 64; i++) {
+//     for (i = 0; i < ACTORS_MAX; i++) {
 //         do { } while (0);
 //         if ((gActors[i].actorID != 0) && (gActors[i].actorState == 1)) {
 //             if (isPickup(&gActors[i]) != 0) {
@@ -1009,7 +1008,7 @@ void func_800C0E78(s32 arg0) {
 
     if (gZoneCollisions[arg0].unk60 != 0) {
         temp = 1;
-        for (i = 0; i < 64; i++) {
+        for (i = 0; i < ACTORS_MAX; i++) {
             if ((gActors[i].actorID != 0) && (gZoneCollisions[arg0].unk84 == gActors[i].actorID) && (gActors[i].actorState == 0)) {
                 temp = 0;
                 break;
@@ -1146,7 +1145,6 @@ void func_800C5564(playerActor* arg0) {
     arg0->globalTimer = arg0->globalTimer + 0.299999999999999989;
 }
 
-// Rainchus
 void Player_SetFromBoss(playerActor* arg0, f32 arg1) {
     Vec3f sp2C;
     f32 var_f14;

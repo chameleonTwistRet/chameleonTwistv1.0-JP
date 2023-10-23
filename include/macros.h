@@ -2,7 +2,8 @@
 #define MACROS_H
 #include "variables.jp.h"
 #include "common_structs.h"
-//#include "include_asm.h"
+
+#define MAX_ACTORS 64
 
 // GENERAL MATHS //
 #define PI 3.141592653589793

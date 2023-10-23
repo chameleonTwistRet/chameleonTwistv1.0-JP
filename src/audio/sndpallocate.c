@@ -40,5 +40,3 @@ ALSndId alSndpAllocate(ALSndPlayer *sndp, ALSound *sound)
 
     return -1;
 }
-
-//#pragma GLOBAL_ASM("asm/nonmatchings/audio/sndpallocate/alSndpAllocate.s")

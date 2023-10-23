@@ -45,5 +45,3 @@ void alSndpSetPitch(ALSndPlayer *sndp, f32 pitch)
     evt.pitch.pitch = pitch;
     alEvtqPostEvent(&sndp->evtq, (ALEvent *)&evt, 0);
 }
-
-//#pragma GLOBAL_ASM("asm/nonmatchings/audio/sndpsetpitch/alSndpSetPitch.s")

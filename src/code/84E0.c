@@ -514,30 +514,23 @@ void Actors_Init(s32 actorIndex, s32 actorID, f32 arg2, f32 arg3, f32 arg4, f32 
     }
 }
 
-//TODO: match properly
 s32 Actor_Init(s32 type, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7, f32 arg8, f32 arg9, f32 argA, f32 argB, f32 argC, f32 argD, f32 argE, f32 argF, f32 arg10, f32 arg11, f32 arg12, s32 arg13, s32 arg14, s32 arg15, s32 arg16) {
-    s32 index;
-    s32* pointer;
+    s32 i;
+    Actor* curActor = gActors;
 
-    pointer = &gActors->actorID;
-    index = 0;
-    while(1){
-        if (*pointer == Actor_Null) {
-            Actors_Init(index, type, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, argA, argB, argC, argD, argE, argF, arg10, arg11, arg12, arg13, arg14, arg15, arg16);
+    for (i = 0; i < ACTORS_MAX; i++, curActor++) {
+        if (curActor->actorID == 0) {
+            Actors_Init(i, type, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, argA, argB, argC, argD, argE, argF, arg10, arg11, arg12, arg13, arg14, arg15, arg16);
             gActorCount += 1;
-            return index;
-        }
-        index++;
-        pointer += 93;
-        if (index == 64) {
-            return -1;
+            return i;
         }
     }
+    return -1;
 }
 
 s32 func_8002DF5C(s32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4) {
     s32 i;
-    for (i = 0; i < 64; i++) {
+    for (i = 0; i < ACTORS_MAX; i++) {
         if (D_80170968[i].mode == 0) {
             D_80170968[i].mode = arg0;
             D_80170968[i].pos.x = arg1;
@@ -558,9 +551,79 @@ s32 Actor_SpawnAt(s32 arg1, f32 arg2, f32 arg3, f32 arg4) {
 //init script
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8002E0CC.s")
 
-//very close outside of args and registers
-//https://decomp.me/scratch/hTq0d
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8002E5DC.s")
+void func_800D34CC(void);
+extern f32 D_8010B284;
+extern f32 D_8010B288;
+extern f32 D_8010B28C;
+extern f32 D_8010B290;
+extern f32 D_8010B294;
+extern s32 D_801749A8;
+extern s32 D_801749AC;
+extern s32 D_80236974;
+
+typedef struct UnkTempStruct {
+    u16 unk_00;
+    u16 unk_02;
+    s32 unk_04;
+    s32 unk_08;
+    s32 unk_0C;
+} UnkTempStruct;
+
+void func_8002E5DC(UnkTempStruct arg0) {
+    s32 sp2C;
+
+    sp2C = -2;
+    if (1 == D_80236974) {
+        sp2C = -1;
+    }
+
+    D_80174860->size1 = D_80174860->size1 + ((D_80174860->size2 - D_80174860->size1) * 0.200000003f);
+    if (D_801749A8 == 0) {
+        if (((gCurrentStage == 4) && (gCurrentZone == 0xF)) || ((gCurrentStage == 5) && (gCurrentZone == 0xE))) {
+            if (D_80174860->unk0 == 1) {
+                playSoundEffect(0x2C, 0, 0, 0, 0, 0x10);
+                D_80174860->unk0 = 0;
+                if (D_80174860->unk40 == 2) {
+                    playSoundEffect(0x2D, 0, 0, 0, 0, 0x10);
+                    D_80174860->size2 /= 1.299999952f;
+                    D_80174860->unk40 -= 1;
+                }
+                func_800D34CC();
+            }
+        } else if ((D_801749AC == 0) && (1 != D_80236974) && (arg0.unk_02 & 0x20)) {
+            playSoundEffect(0x2C, 0, 0, 0, 0, 0x10);
+            if (D_80174860->unk0 == 0) {
+                D_80174860->unk0 = 1;
+            } else {
+                D_80174860->unk0 = 0;
+                if (D_80174860->unk40 == 2) {
+                    playSoundEffect(0x2D, 0, 0, 0, 0, 0x10);
+                    D_80174860->size2 /= 1.299999952f;
+                    D_80174860->unk40 -= 1;
+                }
+            }
+            func_800D34CC();
+        }
+        if ((arg0.unk_02 & 4) && (((D_80174860->unk0 == 1) && (D_80174860->unk40 < 2)) || (D_80174860->unk40 <= 0))) {
+            playSoundEffect(0x2D, 0, 0, 0, 0, 0x10);
+            D_80174860->size2 *= 1.299999952f;
+            D_80174860->unk40 += 1;
+        }
+        if ((arg0.unk_02 & 8) && (sp2C < D_80174860->unk40)) {
+            playSoundEffect(0x2D, 0, 0, 0, 0, 0x10);
+            D_80174860->size2 /= 1.299999952f;
+            D_80174860->unk40 -= 1;
+        }
+        if ((arg0.unk_02 & 1) && (D_80174860->pushHoriz < 9)) {
+            playSoundEffect(0x2D, 0, 0, 0, 0, 0x10);
+            D_80174860->pushHoriz += 9;
+        }
+        if ((arg0.unk_02 & 2) && (D_80174860->pushHoriz >= -8)) {
+            playSoundEffect(0x2D, 0, 0, 0, 0, 0x10);
+            D_80174860->pushHoriz -= 9;
+        }
+    }
+}
 
 //camera controller of sorts.
 //all of the context is ready though, as far as i'm aware
@@ -2057,7 +2120,7 @@ s32 func_8004C110(s32 arg0, f32 arg1, f32 arg2) {
     var_s2 = 0x05F5E100; //??
     actorIndex = -1;
     actorArray = gActors;
-    for (i = 0; i < 64; i++, actorArray++) {
+    for (i = 0; i < ACTORS_MAX; i++, actorArray++) {
         temp_v0 = func_8004BF88(actorArray, arg0, arg1, arg2);
         //fake match
         do {

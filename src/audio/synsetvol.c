@@ -47,6 +47,3 @@ void alSynSetVol(ALSynth *synth, ALVoice *v, s16 volume, ALMicroTime t)
         (*f->setParam)(f, AL_FILTER_ADD_UPDATE, update);        
     }
 }
-
-
-//#pragma GLOBAL_ASM("asm/nonmatchings/audio/synsetvol/alSynSetVol.s")

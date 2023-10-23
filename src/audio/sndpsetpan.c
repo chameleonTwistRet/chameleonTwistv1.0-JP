@@ -39,5 +39,3 @@ void alSndpSetPan(ALSndPlayer *sndp, ALPan pan)
    evt.pan.state = &sState[sndp->target];
    alEvtqPostEvent(&sndp->evtq, (ALEvent *)&evt, 0);
 }
-
-// #pragma GLOBAL_ASM("asm/nonmatchings/audio/sndpsetpan/alSndpSetPan.s")

@@ -39,5 +39,3 @@ void alSndpSetFXMix(ALSndPlayer *sndp, u8 mix)
    evt.fx.mix = mix;
    alEvtqPostEvent(&sndp->evtq, (ALEvent *)&evt, 0);
 }
-
-// #pragma GLOBAL_ASM("asm/nonmatchings/audio/sndpsetfxmix/alSndpSetFXMix.s")
