@@ -2467,8 +2467,14 @@ void func_800A87D4(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/SaveData_ResetRecords.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/SaveData_ClearRecords.s")
+void SaveData_ClearRecords(void) {
+    DummiedPrintf("ファイルクリア\n");
+    _bzero(&gGameRecords, 0x60);
+    SaveData_ResetRecords();
+    SaveData_UpdateRecords();
+}
 
+//SaveData_WriteFile(SaveFile*)
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/SaveData_WriteFile.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/SaveData_ReadFile.s")

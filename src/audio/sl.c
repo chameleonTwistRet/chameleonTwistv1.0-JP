@@ -21,25 +21,12 @@
  * Copyright Laws of the United States.
  *====================================================================*/
 #include <PR/libaudio.h>
-
-/*ALGlobals *alGlobals=0;
-
-void alInit(ALGlobals *g, ALSynConfig *c)
-{
-    if (!alGlobals) { /* already initialized? *//*
-        alGlobals = g;
-        alSynNew(&alGlobals->drvr, c);
-    }
-}*/
+#include "synthInternals.h"
+#include <os_internal.h>
+#include <ultraerror.h>
 
 /*
-void alClose(ALGlobals *glob)
-{
-    if (alGlobals) {
-        alSynDelete(&glob->drvr);
-        alGlobals = 0;
-    }
-}
+
 
 /* might want to make these macros */
 /*void alLink(ALLink *ln, ALLink *to)
@@ -60,12 +47,84 @@ void alUnlink(ALLink *ln)
 }
 */
 
-#pragma GLOBAL_ASM("asm/nonmatchings/audio/sl/alUnlink.s")
+void alUnlink(ALLink* element) {
+    ALLink* n;
+    ALLink* p;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/audio/sl/alLink.s")
+    n = element->next;
+    if (n != NULL) {
+        n->prev = element->prev;
+    }
+    p = element->prev;
+    if (p != NULL) {
+        p->next = element->next;
+    }
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/audio/sl/alClose.s")
+void alLink(ALLink* element, ALLink* after) {
+    ALLink* temp_v0;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/audio/sl/alInit.s")
+    element->next = after->next;
+    element->prev = after;
+    temp_v0 = after->next;
+    if (temp_v0 != NULL) {
+        temp_v0->prev = element;
+    }
+    after->next = element;
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/audio/sl/alHeapDBAlloc.s")
+void alClose(ALGlobals *glob)
+{
+    if (alGlobals) {
+        alSynDelete(&glob->drvr);
+        alGlobals = 0;
+    }
+}
+
+void alInit(ALGlobals* glob, ALSynConfig* c) {
+    if (alGlobals == NULL) {
+        alGlobals = glob;
+        alSynNew(&glob->drvr, c);
+    }
+}
+
+void *alHeapDBAlloc(u8 *file, s32 line, ALHeap *hp, s32 num, s32 size)
+{
+    s32 bytes;
+    u8 *ptr = 0;
+
+    bytes = (num*size + AL_CACHE_ALIGN) & ~AL_CACHE_ALIGN;
+    
+#ifdef _DEBUG
+    hp->count++;    
+    bytes += sizeof(HeapInfo);
+#endif
+    
+    if ((hp->cur + bytes) <= (hp->base + hp->len)) {
+
+        ptr = hp->cur;
+        hp->cur += bytes;
+
+#ifdef _DEBUG    
+        ((HeapInfo *)ptr)->magic = AL_HEAP_MAGIC;
+        ((HeapInfo *)ptr)->size  = bytes;
+        ((HeapInfo *)ptr)->count = hp->count;
+        if (file) {
+            ((HeapInfo *)ptr)->file  = file;
+            ((HeapInfo *)ptr)->line  = line;
+        } else {
+            ((HeapInfo *)ptr)->file  = (u8 *) "unknown";
+            ((HeapInfo *)ptr)->line  = 0;
+        }
+        
+        ptr += sizeof(HeapInfo);        
+#endif
+
+    } else {
+#ifdef _DEBUG
+        __osError(ERR_ALHEAPNOFREE, 1, size);
+#endif        
+    }
+
+    return ptr;
+}
