@@ -46,7 +46,142 @@ void SaveData_ResetRecords(void);
 void func_800A4484(void);
 void SaveData_WriteFile(SaveFile*);
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/videoproc.s")
+
+void func_8007B174(void);                                  /* extern */
+void func_8008C440(void);                                  /* extern */
+void func_8008C464(void);                                  /* extern */
+void func_8008C4E8(void);                                  /* extern */
+void func_8008C610(void);                                  /* extern */
+void func_8008C698(void);                                  /* extern */
+void func_8008C6D4(void);                                  /* extern */
+void func_800A7844(void);                                  /* extern */
+s32 func_800A78D0(void);                                  /* extern */
+
+extern OSMesg D_801B30A0;
+extern OSTimer D_801B3148;
+extern OSMesgQueue D_801192B8;
+extern OSMesgQueue D_801192D0;
+extern s16 D_800FF5C4;
+extern s32 D_800FF5C8;
+extern s16 D_800FF5CC;
+extern s16 D_800FF5D8;
+extern OSMesgQueue D_801B35A0;
+void Rumble_StopAll(void);
+
+void videoproc(s32 arg0) {
+    s32 var_s2;
+    OSMesg sp58;
+
+    var_s2 = 1;
+    func_800A7844();
+    osCreateMesgQueue(&D_801B3120, &D_801B30A0, 0x14);
+    osSetEventMesg(0xEU, &D_801B3120, (void* )7);
+    osSetEventMesg(9U, &D_801B3120, (void* )2);
+    osSetEventMesg(4U, &D_801B3120, (void* )1);
+    osViSetEvent(&D_801B3120, NULL, 2U);
+    func_8008C610();
+
+    while (1) {
+        osRecvMesg(&D_801B3120, &sp58, 1);
+        switch ((u32) sp58) {
+        case 0:
+            arg0 = var_s2 + 1;
+            osSetTimer(&D_801B3148, 0x8F184, 0, &D_801B3120, (void*) 6);
+            if (arg0 != 0) {
+                if (osSendMesg(&D_801192E8, NULL, 0) == -1) {
+                    DummiedPrintf("Gfx送信失敗\n");
+                } else {
+                    var_s2 ^= 1;
+                }
+            } else {
+                var_s2 ^= 1;
+            }
+            func_800A78D0();
+            continue;
+        case 1:
+            if (D_800FF5F0 == 2) {
+                DummiedPrintf("Ae");
+                func_8008C6D4();
+                D_800FF5F0 = 0;
+                osSendMesg(&D_801192B8, (void* )1, 0);
+            } else if (D_800FF5F0 == (s16) 1) {
+                DummiedPrintf("Gy");
+                func_8008C464();
+                D_800FF5EC = 0;
+                osSendMesg(&D_801192B8, (void* )1, 0);
+            } else {
+                DummiedPrintf("Ge");
+                func_8008C464();
+                D_800FF5EC = 0;
+            }
+            if (D_800FF5C8 != 0) {
+                osSendMesg(&D_801B3120, (void* )3, 0);
+            }
+            continue;
+        case 2:
+            DummiedPrintf("D");
+            if (D_800FF5CC != 0) {
+                D_800FF5CC -= 1;
+                if (D_800FF5CC == 0) {
+                    osViBlack(0U);
+                }
+            }
+            if (D_800FF5D8 == (s16) 1) {
+                D_800FF5D8 = 0;
+            }
+            osSendMesg(&D_801192D0, (void* )2, 0);
+            func_8008C4E8();
+            continue;
+        case 3:
+            if (D_800FF5C4 != 0) {
+                DummiedPrintf("Res ");
+            } else if (D_800FF5F0 != 0) {
+                D_800FF5C8 = 1;
+                DummiedPrintf("Sw ");
+            } else {
+                DummiedPrintf("Gs ");
+                D_800FF5C8 = 0;
+                osWritebackDCacheAll();
+                osSpTaskLoad(D_801B3138);
+                osSpTaskStartGo(D_801B3138);
+                func_8008C440();
+                D_800FF5EC = (s16) 1;
+                D_800FF5D8 = (s16) 1;
+            }
+            continue;
+        case 4:
+            continue;
+        case 5:
+            if (D_800FF5C4 == 0) {
+                osRecvMesg(&D_801192B8, NULL, 0);
+                DummiedPrintf("As");
+                D_800FF5F0 = 2;
+                osWritebackDCacheAll();
+                osSpTaskLoad((OSTask* ) D_801B3140);
+                osSpTaskStartGo((OSTask* ) D_801B3140);
+                func_8008C698();
+            }
+            continue;
+        case 6:
+            break;
+        case 7:
+            D_800FF5C4 = 1;
+            osViBlack(1);
+            osViSetYScale(1.0f);
+            func_8007B174();
+            Rumble_StopAll();
+            continue;
+        default:
+            continue;
+        }
+        
+        D_800FF5F0 = 1;
+        if (osSendMesg(&D_801B35A0, NULL, 0) == -1) {
+            DummiedPrintf("Audio送信失敗\n");
+        }
+        // continue;   
+    }
+}
 
 void func_80084F80(OSTask* arg0, s32 arg1) {
     D_801B3138 = arg0;

@@ -16,6 +16,9 @@ extern s32 D_8016924C;
 extern s32 D_80169250;
 extern s32 D_800F0B68[4][4];
 extern s32 D_800F0BC0[4];
+extern s32 D_800F0B5C;
+extern s32 D_800FE404;
+extern s32 D_800FE74C;
 
 void func_80050FB0(void) {
     s32 i;
@@ -130,39 +133,39 @@ void func_8005423C(void) {
 
 //https://decomp.me/scratch/YLdZC
 #pragma GLOBAL_ASM("asm/nonmatchings/code/2C3B0/func_80054284.s")
+void func_800771DC(s32*, f32, f32, s32, s32, s32*, f32, f32, f32, f32); /* extern */
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/2C3B0/func_8005444C.s")
-// void func_8005444C(void) { matches, has jump table
-//     if (D_801749B4 == 1) {
-//         func_800771DC(&D_800FE404, 16.0f, 16.0f, 1, 5, &D_800F0B5C, 0.0f, 0.0f, 320.0f, 240.0f);
-//     }
-//     switch (D_800F0B5C) {
-//     case -2:
-//     case 1:
-//         D_800F0B5C = -1;
-//         return;
-//     case 2:
-//         D_800FE74C = 0;
-//         D_800F0B5C = -1;
-//         func_8005423C();
-//         setProcessType(0xE);
-//         return;
-//     case 3:
-//         D_800FE74C = 0;
-//         D_800F0B5C = -1;
-//         func_8005423C();
-//         setProcessType(7);
-//         return;
-//     case 4:
-//         D_800FE74C = 0;
-//         D_800F0B5C = -1;
-//         func_8005423C();
-//         setProcessType(6);
-//         /* fallthrough */
-//     default:
-//         return;
-//     }
-// }
+void func_8005444C(void) {
+    if (D_801749B4 == 1) {
+        func_800771DC(&D_800FE404, 16.0f, 16.0f, 1, 5, &D_800F0B5C, 0.0f, 0.0f, 320.0f, 240.0f);
+    }
+    switch (D_800F0B5C) {
+    case -2:
+    case 1:
+        D_800F0B5C = -1;
+        return;
+    case 2:
+        D_800FE74C = 0;
+        D_800F0B5C = -1;
+        func_8005423C();
+        setProcessType(0xE);
+        return;
+    case 3:
+        D_800FE74C = 0;
+        D_800F0B5C = -1;
+        func_8005423C();
+        setProcessType(7);
+        return;
+    case 4:
+        D_800FE74C = 0;
+        D_800F0B5C = -1;
+        func_8005423C();
+        setProcessType(6);
+        /* fallthrough */
+    default:
+        return;
+    }
+}
 
 //https://decomp.me/scratch/9z01z
 #pragma GLOBAL_ASM("asm/nonmatchings/code/2C3B0/func_8005456C.s")

@@ -348,7 +348,7 @@ void func_80083F10(void);
 void func_80084788(void);
 Gfx* func_800849D4(Gfx*);
 void func_800849DC(s32 arg0, Tongue* playerTongue, playerActor* player, Camera* unk);
-s32 videoproc(void);
+void videoproc(s32 arg0);
 void func_80084F80(OSTask*, s32);
 void func_80084FC0(s32);
 void Audio_Init(void);
