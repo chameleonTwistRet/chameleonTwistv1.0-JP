@@ -983,6 +983,7 @@ void func_8008FEA8(s32 arg0, s32 arg1) {
 //needs bss support https://decomp.me/scratch/hFrp7
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/Porocess_Mode0.s")
 
+
 void MainLoop(void) {
     func_8002D080();
     if (sGameModeStart != -1) {
@@ -1959,7 +1960,47 @@ void func_800A2B9C(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A4D58.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/Process_GameOver.s")
+void Process_GameOver(void) {
+    switch (gGameModeState) {
+        case 0:
+            func_80061394();
+            SaveData_WriteFile(&gSaveFile);
+            D_800FFDF4 = 1;
+            D_800FF8DC = D_800FF8E0 = D_800FF8E4 = 0;
+            DummiedPrintf("ゲームオーバープロセス\n");
+            DMAStruct_Print();
+            func_800A0D90();
+            TaskInit();
+            loadSprite(0x5E);
+            D_80168DA0 = 4;
+            gGameModeState++;
+            UseFixedRNGSeed = 0;
+            D_800FFDF0 = 3;
+            func_8008BE14();
+            func_80088198();
+            D_801FC9AC = 0;
+            func_8008F114();
+            func_8008FE00();
+            loadPlayerEyes(*gSelectedCharacters);
+            setPlayerContextEyes(*gSelectedCharacters, 2, 0);
+            break;
+        case 1:
+            func_800A4484();
+            gGameModeState++;
+            func_8008F114();
+            break;
+        case 2:
+            gGameModeState++;
+            func_8008F114();
+            break;
+        case 3:
+            func_8008F16C();
+            D_8017499C++;
+            break;
+    }
+
+    func_8008C094();
+}
 
 CTTask* func_800A5060(void){
     CTTask* t =Task_Alloc(1, 100, NULL);
