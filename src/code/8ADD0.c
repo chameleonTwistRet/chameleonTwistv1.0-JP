@@ -888,18 +888,9 @@ void func_800BE664(playerActor * arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BF524.s")
 
-//void func_800BF5A4(void) {
-//    func_8004BA5C(D_80240D6C[gCurrentZone].collisionType);
-//}
-
-#ifdef NON_MATCHING
-// TODO: D_80240D6C migrate
 void func_800BF5A4(void) {
     func_8004BA5C(gZoneCollisions[gCurrentZone].unk8C);
 }
-#else
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BF5A4.s")
-#endif
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BF5E8.s")
 
@@ -957,60 +948,58 @@ void ChameleonFromDoor(playerActor* player, s32 arg1, s32 arg2, s32 arg3, s32 ar
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C0B74.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C0CDC.s")
-//matches, needs rodata support
-// void func_800C0CDC(playerActor* arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4) {
-//     if (gZoneCollisions[arg1].unk7C != 0) {
-//         gGameModeState = 3;
-//         switch (gCurrentStage) {                    /* switch 1 */
-//         case 0:                                     /* switch 1 */
-//             D_80174878 = 8;
-//             return;
-//         case 1:                                     /* switch 1 */
-//             D_80174878 = 9;
-//             return;
-//         case 2:                                     /* switch 1 */
-//             D_80174878 = 0xA;
-//             return;
-//         case 3:                                     /* switch 1 */
-//             D_80174878 = 0xB;
-//             return;
-//         case 4:                                     /* switch 1 */
-//             D_80174878 = 0xC;
-//             return;
-//         case 5:                                     /* switch 1 */
-//             D_80174878 = 0xD;
-//             return;
-//         case 15:                                    /* switch 1 */
-//             switch (arg1) {                         /* switch 2 */
-//             case 1:                                 /* switch 2 */
-//                 D_80174878 = 8;
-//                 return;
-//             case 3:                                 /* switch 2 */
-//                 D_80174878 = 9;
-//                 return;
-//             case 2:                                 /* switch 2 */
-//                 D_80174878 = 0xA;
-//                 return;
-//             case 4:                                 /* switch 2 */
-//                 D_80174878 = 0xB;
-//                 return;
-//             case 5:                                 /* switch 2 */
-//                 D_80174878 = 0xC;
-//                 return;
-//             case 6:                                 /* switch 2 */
-//                 D_80174878 = 0xD;
-//                 return;
-//             }
-//             break;
-//         default:                                    /* switch 1 */
-//             gGameModeState = 2;
-//         }
-//     }
-//     func_800C0760(arg1);
-//     ChameleonFromDoor(arg0, arg1, arg2, arg3, arg4);
-//     func_800BFCD0();
-// }
+void func_800C0CDC(playerActor* arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4) {
+    if (gZoneCollisions[arg1].unk7C != 0) {
+        gGameModeState = 3;
+        switch (gCurrentStage) {                    /* switch 1 */
+        case 0:                                     /* switch 1 */
+            D_80174878 = 8;
+            return;
+        case 1:                                     /* switch 1 */
+            D_80174878 = 9;
+            return;
+        case 2:                                     /* switch 1 */
+            D_80174878 = 0xA;
+            return;
+        case 3:                                     /* switch 1 */
+            D_80174878 = 0xB;
+            return;
+        case 4:                                     /* switch 1 */
+            D_80174878 = 0xC;
+            return;
+        case 5:                                     /* switch 1 */
+            D_80174878 = 0xD;
+            return;
+        case 15:                                    /* switch 1 */
+            switch (arg1) {                         /* switch 2 */
+            case 1:                                 /* switch 2 */
+                D_80174878 = 8;
+                return;
+            case 3:                                 /* switch 2 */
+                D_80174878 = 9;
+                return;
+            case 2:                                 /* switch 2 */
+                D_80174878 = 0xA;
+                return;
+            case 4:                                 /* switch 2 */
+                D_80174878 = 0xB;
+                return;
+            case 5:                                 /* switch 2 */
+                D_80174878 = 0xC;
+                return;
+            case 6:                                 /* switch 2 */
+                D_80174878 = 0xD;
+                return;
+            }
+            break;
+        default:                                    /* switch 1 */
+            gGameModeState = 2;
+        }
+    }
+    func_800C0760(arg1);
+    ChameleonFromDoor(arg0, arg1, arg2, arg3, arg4);
+    func_800BFCD0();
+}
 
 void EraseRoomItem(s32);
 
