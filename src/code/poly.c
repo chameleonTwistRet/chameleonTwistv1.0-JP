@@ -195,7 +195,11 @@ void CalcEnemyNextPosition(Actor* arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800CFB6C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800CFDB8.s")
+//#pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800CFDB8.s")
+void func_800CFDB8(playerActor* arg0) {
+    arg0->vaulting = 0;
+    arg0->surface = -1;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800CFDC8.s")
 
