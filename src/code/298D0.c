@@ -18,7 +18,7 @@ u16 D_801756C0[MAXCONTROLLERS];
 OSPfs gRumblePfs[MAXCONTROLLERS];     
 
 /* mainproc() */
-s32 func_8004E4D0(void) {
+s32 Controller_Init(void) {
     OSMesgQueue siQueue;
     OSMesg mesgBuf;
     s32 retPfs;         // return value from osPfsInitPak

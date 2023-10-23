@@ -24,4 +24,3 @@ void Video_StartThread(void) {
     osStartThread(&gVideoThread);
                     // Start the new thread
 }
-

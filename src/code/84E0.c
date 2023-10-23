@@ -1,6 +1,4 @@
 #include "common.h"
-#ifndef _RODATA_
-#define _RODATA_
 
 extern f32 D_8010B348;
 //const char padRodata[] = "\0\0\0\0\0\0\0";
@@ -128,7 +126,6 @@ s32 func_8002D36C(f32* arg0, f32 arg1, f32 arg2) {
     return sp1C;
 }
 
-#ifndef _RODATA_
 void func_8002D434(f32 *arg0, f32 *arg1, f32 arg2, f32 arg3, f32 arg4) {
     f32 temp_f10;
     f32 a = *arg0 - arg2;
@@ -141,12 +138,7 @@ void func_8002D434(f32 *arg0, f32 *arg1, f32 arg2, f32 arg3, f32 arg4) {
         *arg1 = arg3 + -(sinf(DEGREES_TO_RADIANS_2PI(temp_f10)) * c);
     }
 }
-#else
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8002D434.s")
-#endif
 
-#ifndef _RODATA_
-//TODO: fake match (only here to match rodata)
 void func_8002D550(f32 *arg0, f32 *arg1, f32 arg2, f32 arg3, f32 arg4) {
     f32 temp_f12;
     f32 *new_var;
@@ -163,12 +155,7 @@ void func_8002D550(f32 *arg0, f32 *arg1, f32 arg2, f32 arg3, f32 arg4) {
         *arg1 = ((-sinf(temp_f12_2)) * arg4) + arg3;
     }
 }
-#else
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8002D550.s")
-#endif
 
-
-#ifndef _RODATA_
 void Actors_Init(s32 actorIndex, s32 actorID, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7, f32 arg8, f32 arg9, f32 argA, f32 argB, f32 argC, f32 argD, f32 argE, f32 argF, f32 arg10, f32 arg11, f32 arg12, f32 arg13, s32 arg14, s32 arg15, s32 arg16, s32 arg17) {
     Actor* actorInstance;
     s32 i;
@@ -526,11 +513,8 @@ void Actors_Init(s32 actorIndex, s32 actorID, f32 arg2, f32 arg3, f32 arg4, f32 
         func_8004AB00(actorInstance);
     }
 }
-#else
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/Actors_Init.s")
-#endif
 
-//needs proper match
+//TODO: match properly
 s32 Actor_Init(s32 type, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7, f32 arg8, f32 arg9, f32 argA, f32 argB, f32 argC, f32 argD, f32 argE, f32 argF, f32 arg10, f32 arg11, f32 arg12, s32 arg13, s32 arg14, s32 arg15, s32 arg16) {
     s32 index;
     s32* pointer;
@@ -600,16 +584,16 @@ void func_8002F3D4(void) {
     if (PlayerPointer->canJump == 0) {
         if (PlayerPointer->forwardVel == 0.0f) {
             PlayerPointer->groundMovement = 0;
-            PlayerPointer->globalTimer = (PlayerPointer->globalTimer + D_8010B328);
+            PlayerPointer->globalTimer = (PlayerPointer->globalTimer + 0.3000000119f);
             return;
         }
         if (PlayerPointer->forwardVel < (65.0f * PlayerPointer->forwardImpulse)) {
             PlayerPointer->groundMovement = 1;
-            PlayerPointer->globalTimer = (PlayerPointer->globalTimer + (((2.0f + (((PlayerPointer->forwardVel / ((65.0f * PlayerPointer->forwardImpulse) / 10.0f)) * PlayerPointer->forwardImpulse) / D_8010B32C)) / 4.5f) / D_8010B330));
+            PlayerPointer->globalTimer = (PlayerPointer->globalTimer + (((2.0f + (((PlayerPointer->forwardVel / ((65.0f * PlayerPointer->forwardImpulse) / 10.0f)) * PlayerPointer->forwardImpulse) / 0.3200000226f)) / 4.5f) / 1.799999952f));
             return;
         }
         PlayerPointer->groundMovement = 2;
-        PlayerPointer->globalTimer = PlayerPointer->globalTimer + 1.5f * PlayerPointer->forwardImpulse / D_8010B334;
+        PlayerPointer->globalTimer = PlayerPointer->globalTimer + 1.5f * PlayerPointer->forwardImpulse / 0.3200000226f;
     }
 }
 
@@ -659,7 +643,7 @@ s32 func_8002F6DC(f32* arg0, f32 arg1) {
     }
     
     if (var_f0 < 45.0f) {
-        var_f2 = (var_f0 / D_8010B348) + 2.0f;
+        var_f2 = (var_f0 / 1.607142806f) + 2.0f;
     }
     
     if (var_f2 <= var_f0) {
@@ -683,9 +667,9 @@ void func_8002F7F0(void) {
 
     aIM = TonguePointer->amountInMouth;
     if (aIM < 6) {
-        PlayerPointer->forwardImpulse = (((24.0f - aIM) * D_8010B34C) / 24.0f);
+        PlayerPointer->forwardImpulse = (((24.0f - aIM) * 0.3200000226f) / 24.0f);
     } else {
-        PlayerPointer->forwardImpulse = D_8010B350;
+        PlayerPointer->forwardImpulse = 0.2400000095f;
     }
     if (PlayerPointer->power == POWERUP_MINI) {
         PlayerPointer->forwardImpulse = (PlayerPointer->forwardImpulse * 0.5f);
@@ -738,13 +722,11 @@ void func_800312B0(s32 id) {
 
 //? - Nathan R.
 void func_800312FC(Actor* arg0, f32 arg1) {
-    f32 temp_f12;
     arg0->userVariables[0] = 0;
     arg0->userVariables[1] = 14;
-    arg0->unk_134[3] = D_8010B4C0;
-    temp_f12 = (arg1 * 2 * D_8010B4C8) / D_8010B4D0;
-    arg0->vel.x = __cosf(temp_f12) * 16.0f;
-    arg0->vel.z = -__sinf(temp_f12) * 16.0f;
+    arg0->unk_134[3] = 76.80000305f;
+    arg0->vel.x = __cosf((arg1 * 2 * 3.14159265358979312) / 360.0) * 16.0f;
+    arg0->vel.z = -__sinf((arg1 * 2 * 3.14159265358979312) / 360.0) * 16.0f;
     arg0->tongueCollision = 0;
     playSoundEffect(109, &arg0->pos.x, &arg0->pos.y, &arg0->pos.z, 0, 0);
 }
@@ -834,11 +816,6 @@ void func_800320EC(s32 arg0, f32 arg1, f32 arg2) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80036900.s")
 
 void func_80064BFC(f32, f32, f32);
-extern f32 D_8010B748;
-extern f64 D_8010B750;
-extern f64 D_8010B758;
-extern f64 D_8010B760;
-extern f64 D_8010B768;
 extern s32 D_80174980;
 extern s32 D_80174988;
 extern s32 D_801749AC;
@@ -852,7 +829,7 @@ void func_80036D74(playerActor* arg0, Tongue* arg1) {
             if (--arg0->hp <= 0) {
                 D_80174980 = 4;
                 D_80174860->unk50 = 0.0f;
-                D_80174860->size2 = D_8010B748;
+                D_80174860->size2 = 0.4551661909f;
             }
         }
         arg0->playerHURTSTATE = 1;
@@ -861,8 +838,8 @@ void func_80036D74(playerActor* arg0, Tongue* arg1) {
         arg0->playerHURTBY = 0;
         func_80031DB0(arg0, arg1, 0);
         arg0->yAngle = CalculateAngleOfVector(-arg0->vel.x, arg0->vel.z);;
-        arg0->vel.x = -__cosf(arg0->yAngle * 2 * D_8010B750 / D_8010B758) * 32.0f;
-        arg0->vel.z = __sinf(arg0->yAngle * 2 * D_8010B760 / D_8010B768) * 32.0f;
+        arg0->vel.x = -__cosf(arg0->yAngle * 2 * 3.14159265358979312 / 360.0) * 32.0f;
+        arg0->vel.z = __sinf(arg0->yAngle * 2 * 3.14159265358979312 / 360.0) * 32.0f;
         func_8002F54C(48.0f, arg0, 1);
     }
 }
@@ -917,8 +894,8 @@ void func_800382B4(f32* arg0, f32 arg1) {
 }
 
 void func_800382F4(Actor* arg0) {
-    arg0->vel.x = __cosf((arg0->unk_90 * 2 * D_8010B7A0) / D_8010B7A8) * arg0->unk_94;
-    arg0->vel.z = -__sinf((arg0->unk_90 * 2 * D_8010B7B0) / D_8010B7B8) * arg0->unk_94;
+    arg0->vel.x = __cosf((arg0->unk_90 * 2 * 3.14159265358979312) / 360.0) * arg0->unk_94;
+    arg0->vel.z = -__sinf((arg0->unk_90 * 2 * 3.14159265358979312) / 360.0) * arg0->unk_94;
 }
 
 void func_800383A0(Actor* actor) {
@@ -959,7 +936,7 @@ void ActorInit_AntBulletHell(Actor* arg0) {
     f32 ang;
     f32 sine;
     arg0->unk_94 = arg0->position._f32.x;
-    sine = __sinf((6 * D_8017499C * D_8010B7E8) / D_8010B7F0);
+    sine = __sinf((6 * D_8017499C * 3.14159265358979312) / 360.0);
     ang = CalcAngleBetween2DPoints(arg0->pos.x, arg0->pos.z, PlayerPointer->pos.x, PlayerPointer->pos.z);
     arg0->unk_90 = arg0->position._f32.y + (ang + 12 * sine);
     wrapDegrees(&arg0->unk_90);
@@ -969,8 +946,8 @@ void ActorInit_AntBulletHell(Actor* arg0) {
 
 s32 func_80038B98(Actor* arg0) {
     if (arg0->unk_98 != 0) {
-        arg0->vel.y -= D_8010B7F8;
-        arg0->vel.y -= arg0->vel.y * D_8010B7FC;
+        arg0->vel.y -= 3.200000048f;
+        arg0->vel.y -= arg0->vel.y * 0.05000000075f;
     }
     if (D_8017499C % 8 == 0) {
         PLAYSFXAT(102, arg0->pos, 1, 0);
@@ -1037,7 +1014,7 @@ void ActorInit_AntQueen(Actor* antQueenActor) {
 void ActorInit_AntQueenDrone(Actor* arg0) {
     wrapDegrees(&arg0->unk_90);
     arg0->unk_94 = arg0->position._f32.x;
-    arg0->vel.y = D_8010B9E8;
+    arg0->vel.y = 38.40000153f;
     func_800382F4(arg0);
 }
 
@@ -1118,8 +1095,8 @@ void ActorTick_BombBossBomb(Actor* arg0) {
     f32 temp_f2;
 
     if (arg0->unk_124 == arg0->globalTimer) {
-        temp_f2 = D_8010BA90;
-        temp_f12 = D_8010BA94;
+        temp_f2 = -50000.0f;
+        temp_f12 = 50000.0f;
         if (Actor_Init(20, arg0->pos.x, arg0->pos.y, arg0->pos.z, 0.0f, temp_f2, temp_f12, temp_f2, temp_f12, temp_f2, temp_f12, 200.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 10, 0, 0, 0) != -1) {
             func_800619F8(arg0->pos.x, arg0->pos.y, arg0->pos.z, 3, 100);
         }
@@ -1143,7 +1120,7 @@ void ActorInit_ChameleonBlackSpot(Actor* arg0) {
 
 void ActorTick_ChameleonBlackSpot(Actor* arg0) {
     if (arg0->sizeScalar < 1.0f) {
-        arg0->sizeScalar += D_8010BAA4;
+        arg0->sizeScalar += 0.05000000075f;
         if (arg0->sizeScalar > 1.0f) {
             arg0->sizeScalar = 1.0f;
         }
@@ -1218,7 +1195,7 @@ void func_8003E62C(Actor* armadilloActor) {
 
 void func_8003E660(Actor* actor) {
     f32 pad = actor->vel.y;
-    f32 var1 = D_8010BB30;
+    f32 var1 = 3.200000048f;
     actor->vel.y -= var1;
     if (actor->vel.y < 0.0f) {
         actor->vel.y -= actor->vel.y * (var1 / actor->unk_16C);
@@ -1306,7 +1283,7 @@ void ChocoKidMovement(Actor* chocoKid) {
 
     temp_f14 = CalcAngleBetween2DPoints(chocoKid->pos.x, chocoKid->pos.z, chocoKid->unk_134[0], chocoKid->unk_134[1]);
     if (chocoKid->userVariables[0] != 0) {
-        chocoKid->vel.y -= D_8010BC70;
+        chocoKid->vel.y -= 3.200000048f;
         chocoKid->pos.y += chocoKid->vel.y;
         if (chocoKid->pos.y < 0.0f) {
             chocoKid->userVariables[0] = 0;
@@ -1320,7 +1297,7 @@ void ChocoKidMovement(Actor* chocoKid) {
         wrapDegrees(&chocoKid->unk_90);
         if (Random(0, 29) == 15) {
             chocoKid->userVariables[0] = 1;
-            chocoKid->vel.y = D_8010BC74;
+            chocoKid->vel.y = 19.20000076f;
         }
     }
     Actor_PlaySound(chocoKid, 0x99, 0x1E, 4);
@@ -1339,9 +1316,9 @@ void func_800401E8(Actor* unk_1FActor) {
 
 //? - Nathan R.
 void func_800404D8(Actor* arg0) {
-    f32 s = __cosf(((arg0->unk_90 * 2 * D_8010BC80) / D_8010BC88));
+    f32 s = __cosf(((arg0->unk_90 * 2 * 3.14159265358979312) / 360.0));
     arg0->vel.x = arg0->position._f32.x * s;
-    s = -__sinf(((arg0->unk_90 * 2 * D_8010BC90) / D_8010BC98));
+    s = -__sinf(((arg0->unk_90 * 2 * 3.14159265358979312) / 360.0));
     arg0->vel.z = arg0->position._f32.x * s;
     arg0->vel.y = 64.0f;
 }
@@ -1417,7 +1394,7 @@ void ActorTick_BilliardBall(Actor* arg0) {
     ActorTick_MinigameActor(arg0);
     temp_f0_2 = NORM_2(arg0->vel.x,arg0->vel.z);
     arg0->unk_94 = temp_f0_2;
-    arg0->unk_134[0] = ((180.0f * temp_f0_2) / ( arg0->unknownPositionThings[0].unk_0C * D_8010BE30)) + arg0->unk_134[0];
+    arg0->unk_134[0] = ((180.0f * temp_f0_2) / ( arg0->unknownPositionThings[0].unk_0C * 3.14159265358979312)) + arg0->unk_134[0];
     arg0->unk_90 = CalculateAngleOfVector(arg0->vel.x, -arg0->vel.z);
 }
 
@@ -1639,7 +1616,7 @@ void func_80046DDC(Actor* arg0) {
     f32 temp_f0;
     if ((arg0->unk_124 >= 2)) {
         if ((arg0->unk_124 < gActors[arg0->unk_128].unk_128 + 2)) {
-            temp_f0 = D_8010C098;
+            temp_f0 = 1.200000048f;
             arg0->tScale *= temp_f0;
             arg0->unknownPositionThings[0].unk_0C *= temp_f0;            
         }
@@ -1782,13 +1759,13 @@ void func_800488C4(Actor* arg0) {
 
 void func_800488FC(Actor* arg0) {
     arg0->unk_134[3] += arg0->unk_94;
-    arg0->vel.y -= D_8010C0F4;
+    arg0->vel.y -= 3.200000048f;
     
     if (arg0->unk_98 == 0) {
         arg0->unk_98 = 1;
         arg0->pos.y = arg0->unknownPositionThings[0].unk_10 / 2;
         arg0->vel.y = arg0->position._f32.y * -arg0->vel.y;
-        arg0->unk_94 *= D_8010C0F8;
+        arg0->unk_94 *= 0.8999999762f;
         PLAYSFXAT(0x8F, arg0->pos, 0, 0);
     }
     
@@ -1797,8 +1774,8 @@ void func_800488FC(Actor* arg0) {
 
 //? - Nathan R.
 void func_800489B0(Actor* arg0) {
-    arg0->pos.x = arg0->unk_134[0] + (arg0->unk_134[2] * __cosf((arg0->unk_134[3] * 2 * D_8010C100) / D_8010C108));
-    arg0->pos.z = arg0->unk_134[1] + (arg0->unk_134[2] * -__sinf((arg0->unk_134[3] * 2 * D_8010C110) / D_8010C118));
+    arg0->pos.x = arg0->unk_134[0] + (arg0->unk_134[2] * __cosf((arg0->unk_134[3] * 2 * 3.14159265358979312) / 360.0));
+    arg0->pos.z = arg0->unk_134[1] + (arg0->unk_134[2] * -__sinf((arg0->unk_134[3] * 2 * 3.14159265358979312) / 360.0));
 }
 
 
@@ -1906,13 +1883,13 @@ void func_80049C64(Actor* arg0) {
             arg0->userVariables[1] = 1;
             return;
         }
-        arg0->vel.y -= D_8010C26C;
+        arg0->vel.y -= 3.200000048f;
         arg0->pos.y += arg0->vel.y;
         return;
     }
     if (arg0->unk_98 != 0) {
-        arg0->vel.y -= D_8010C270;
-        arg0->vel.y -= arg0->vel.y * D_8010C274;
+        arg0->vel.y -= 3.200000048f;
+        arg0->vel.y -= arg0->vel.y * 0.05000000075f;
     }
 }
 
@@ -1965,8 +1942,8 @@ void func_8004A310(Actor* unk_5AActor) {
 // unk_5C: Auto-Decomp/Nathan R.
 void func_8004A31C(Actor* arg0) {
     if (arg0->unk_98 != 0) {
-        arg0->vel.y -= D_8010C2B8;
-        arg0->vel.y -= arg0->vel.y * D_8010C2BC;
+        arg0->vel.y -= 3.200000048f;
+        arg0->vel.y -= arg0->vel.y * 0.05000000075f;
         return;
     }
     func_800313BC(arg0->actorIndex, Random(0, 360));
@@ -2013,7 +1990,7 @@ void ActorTick_PickupHeartFalling(Actor* arg0) {
     f32 temp_f2;
 
     if (arg0->userVariables[0] == 0) {
-        arg0->vel.y -= (D_8010C318 + (arg0->vel.y * D_8010C31C));
+        arg0->vel.y -= (3.200000048f + (arg0->vel.y * 0.05000000075f));
         temp_f2 = arg0->pos.y + arg0->vel.y;
         if (temp_f2 < 0.0f) {
             arg0->pos.y = 0.0f;
@@ -2032,7 +2009,7 @@ void ActorTick_Powerup(Actor* arg0) {
         }
     }
     else {
-        arg0->vel.y -= (D_8010C320 + (arg0->vel.y * D_8010C324));
+        arg0->vel.y -= (3.200000048f + (arg0->vel.y * 0.05000000075f));
         if (arg0->pos.y + arg0->vel.y < arg0->position._f32.x) {
             arg0->pos.y = arg0->position._f32.x;
             arg0->userVariables[0] = 1;
@@ -2104,9 +2081,8 @@ s32 func_8004C374(u16* arg0, u16* arg1, s32 arg2) {
 }
 
 void func_8004C3A4(s16* arg0, f32 arg1) {
-    f32 temp_f12 = (arg1 * 2 * D_8010C510) / D_8010C518;
-    arg0[3] = __cosf(temp_f12) * 65.0f;
-    arg0[4] = __sinf(temp_f12) * 65.0f;
+    arg0[3] = __cosf((arg1 * 2 * 3.14159265358979312) / 360.0) * 65.0f;
+    arg0[4] = __sinf((arg1 * 2 * 3.14159265358979312) / 360.0) * 65.0f;
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8004C43C.s")
@@ -2122,4 +2098,10 @@ void func_8004C3A4(s16* arg0, f32 arg1) {
 //related to updating the screen
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8004DDE0.s") 
 
-#endif
+#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/D_8010A6D0.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/D_8010A774.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/D_8010A8C0.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/D_8010AA28.s")

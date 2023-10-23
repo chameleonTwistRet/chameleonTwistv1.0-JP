@@ -37,7 +37,7 @@ void func_8008C494(void);
 void func_8008C4B8(void);
 void func_8008C554(void);
 void osViSwapBuffer(void* frameBufPtr);
-s32 func_8004E4D0(void);
+s32 Controller_Init(void);
 void Video_StartThread(void);
 void Audio_StartThread(void);
 s32 func_800AF604(f32, f32, f32, f32);
@@ -340,7 +340,7 @@ void func_8002CE54(void) {
 
 void func_8002D080(void) {
     D_80174878 = -1;
-    gControllerNo = func_8004E4D0();   // @returned: number of controllers
+    gControllerNo = Controller_Init();   // @returned: number of controllers
     gPlayerActors[0].active = 1;
     gPlayerActors[1].active = 0;
     gPlayerActors[2].active = 0;

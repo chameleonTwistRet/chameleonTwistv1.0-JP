@@ -171,7 +171,7 @@ void Debug_TestView(void) {
         func_8007B4CC(0.0f, 120.0f, 0.0f, 0.0f, 120.0f, 0.0f);
         printUISprite(32.0f, 32.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 77);
         SetTextGradient(191, 10, 0, 255, 200, 200, 0, 255, 191, 10, 0, 255, 200, 200, 0, 255);
-        PrintTextWrapper(64.0f, 32.0f, 0.0f, 1.0f, D_8010C7B0, 1);
+        PrintTextWrapper(64.0f, 32.0f, 0.0f, 1.0f, "ＴＥＳＴＶＩＥＷ", 1);
     }
 }
 

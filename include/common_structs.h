@@ -680,11 +680,14 @@ typedef struct contMain {
 } contMain; //sizeof 0x10
 
 typedef struct d8006266c{
-    /* 0x00 */ s32 unk0;
-    /* 0x04 */ s32 unk4;
+    /* 0x00 */ f32 unk0;
+    /* 0x04 */ f32 unk4;
     /* 0x08 */ s32 unk8;
-    /* 0x0C */ f32 unkC;
-    /* 0x10 */ char unk_10[0x20];
+    /* 0x0C */ s32 unkC;
+    /* 0x08 */ s32 unk_10;
+    /* 0x08 */ s32 unk_14;
+    /* 0x08 */ s32 unk_18;
+    /* 0x10 */ char unk_1C[0x14];
     /* 0x30 */ f32 unk_30;
     /* 0x34 */ char unk_34[4];
     /* 0x38 */ struct d8006266c* unk_38;

@@ -11,7 +11,7 @@ void wrapDegrees(f32*);
 void Memory_Free(void*);
 
 void CartesianToSpherical(Vec3f, f32*, f32*, f32*);
-
+s32 Controller_Init(void);
 extern s32 osMotorInit(OSMesgQueue *, OSPfs *, int);
 void bootproc(void);
 void idleproc(void*);

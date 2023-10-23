@@ -1148,13 +1148,13 @@ void func_800C5508(playerActor* arg0) {
 void func_800C5538(playerActor* arg0) {
     arg0->canJump = FALSE;
     arg0->groundMovement = 1;
-    arg0->globalTimer = arg0->globalTimer + D_8010FFF8;
+    arg0->globalTimer = arg0->globalTimer + 0.800000000000000044;
 }
 
 void func_800C5564(playerActor* arg0) {
     arg0->canJump = FALSE;
     arg0->groundMovement = 0;
-    arg0->globalTimer = arg0->globalTimer + D_80110000;
+    arg0->globalTimer = arg0->globalTimer + 0.299999999999999989;
 }
 
 // Rainchus
@@ -1226,3 +1226,14 @@ void func_800C88AC(void) {
 void func_800C88D0(void) {
     func_800C56D4(&gPlayerActors[0]);
 }
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/D_8010FA44.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/D_8010FA4C.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/D_8010FA54.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/D_8010FA5C.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/D_8010FA64.s")
+

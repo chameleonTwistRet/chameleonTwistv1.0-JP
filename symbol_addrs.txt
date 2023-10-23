@@ -920,3 +920,11 @@ D_801756C0 = 0x801756C0; // size:0x8
 alSynStartVoice = 0x800E8D20; // type:func
 alSynSetPan = 0x800E8B50; // type:func
 alSynSetFXMix = 0x800E8BE0; // type:func
+
+//rodata stuff
+D_8010B484 = 0x8010B484; // type:f32 force_migration:True size:0x08
+D_8010FA70 = 0x8010FA70; // type:f64 force_migration:True size:0x08
+D_80110000 = 0x80110000; // type:f64 force_migration:True size:0x08
+
+//other stuff
+D_8010DA14 = 0x8010DA14; // type:asciz force_not_migration:True size:0x08

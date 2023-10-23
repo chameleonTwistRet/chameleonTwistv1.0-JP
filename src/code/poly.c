@@ -11,6 +11,7 @@ extern Collider D_80236980[128];
 extern s32 D_8020D8F4;
 extern f64 D_801106A0;
 extern f64 D_801106A8;
+extern s32 D_80174880[0x20];
 
 extern Vec3f D_80108F9C;
 extern Vec3f D_80108FA8;
@@ -44,6 +45,8 @@ void ClearPolygon(void) {
     D_80236968 = 0;
 }
 
+#pragma GLOBAL_ASM("asm/nonmatchings/code/poly/D_80110180.s")
+
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800C8F0C.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800C9504.s")
@@ -66,7 +69,6 @@ void func_800C9728(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800C9928.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800C9A24.s")
-
 
 // Checks if Poly's bounding box intersects with the given rectangle
 s32 ifPolyBoundIntersectsRect(Poly* poly, Rect* rect) {
@@ -148,7 +150,6 @@ void func_800CCDCC(Actor* arg0) {
     func_800CBC08(arg0);
 }
 
-
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800CCE4C.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/CalcWalkingEnemyNext.s")
@@ -157,33 +158,32 @@ void func_800CCDCC(Actor* arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800CEB10.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/poly/CalcEnemyNextPosition.s")
-//void CalcEnemyNextPosition(Actor* arg0) {
-//    switch (arg0->unk_A0.unk_04) {
-//    case 0:
-//        func_800CCDCC(arg0);
-//        break;
-//    case 1:
-//        func_800CCE4C(arg0);
-//        break;
-//    case 2:
-//        CalcWalkingEnemyNext(arg0);
-//        break;
-//    case 3:
-//        CalcJumpingEnemyNext(arg0);
-//        break;
-//    case 4:
-//        func_800CEB10(arg0);
-//        break;
-//    default:
-//        DummiedPrintf3(D_801103D0);
-//        // double 810000
-//        break;
-//    }
-//    if (arg0->tongueCollision >= 2) {
-//        func_800CBD24(arg0);
-//    }
-//}
+void CalcEnemyNextPosition(Actor* arg0) {
+   switch (arg0->unk_A0.unk_04) {
+   case 0:
+       func_800CCDCC(arg0);
+       break;
+   case 1:
+       func_800CCE4C(arg0);
+       break;
+   case 2:
+       CalcWalkingEnemyNext(arg0);
+       break;
+   case 3:
+       CalcJumpingEnemyNext(arg0);
+       break;
+   case 4:
+       func_800CEB10(arg0);
+       break;
+   default:
+       DummiedPrintf3("CalcEnemyNextPosition(): Unknown ATR_IDOU_XXXX\n");
+       // double 810000
+       break;
+   }
+   if (arg0->tongueCollision >= 2) {
+       func_800CBD24(arg0);
+   }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800CF080.s")
 
@@ -195,10 +195,7 @@ void func_800CCDCC(Actor* arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800CFB6C.s")
 
-void func_800CFDB8(playerActor* player) {
-    player->vaulting = 0;
-    player->surface = -1;
-}
+#pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800CFDB8.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800CFDC8.s")
 
@@ -211,48 +208,47 @@ void func_800CFF64(playerActor* player) {
     player->move.x = 0.0f;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800CFF7C.s")
-//needs rodata support
-// void func_800CFF7C(Vec3f* arg0) {
-//     f32 temp_f0;
-//     f32 temp_f0_2;
-//     f32 temp_f0_3;
-//     f32 temp_f0_4;
-//     f32 temp_f2;
-//     f32 temp_f2_2;
-//     f32 temp_f2_3;
-//     f32 temp_f14;
-//     CollisionSubStruct* temp_v0;
+void func_800CFF7C(Vec3f* arg0) {
+    f32 temp_f0;
+    f32 temp_f0_2;
+    f32 temp_f0_3;
+    f32 temp_f0_4;
+    f32 temp_f2;
+    f32 temp_f2_2;
+    f32 temp_f2_3;
+    f32 temp_f14;
+    Rect* temp_v0;
 
-//     if (D_80236974 != 1) {
-//         if ((gCurrentStage == 1) && ((gCurrentZone == 7) || (gCurrentZone == 0xF)) && (D_80174880[0] != 0)) {
-//             temp_f14 = (SQ(arg0->x) + SQ(arg0->z));
-//             if (810000.0 < temp_f14) {
-//                 temp_f0_2 = __sqrtf((f32) (810000.0 / temp_f14));
-//                 arg0->x = arg0->x * temp_f0_2;
-//                 arg0->z = arg0->z * temp_f0_2;
-//             }
-//         } else {
-//             temp_v0 = &gZoneCollisions[gCurrentZone].collisionSubStruct;
+    if (D_80236974 != 1) {
+        if ((gCurrentStage == 1) && ((gCurrentZone == 7) || (gCurrentZone == 0xF)) && (D_80174880[0] != 0)) {
+            temp_f14 = (SQ(arg0->x) + SQ(arg0->z));
+            if (810000.0 < temp_f14) {
+                temp_f0_2 = __sqrtf((f32) (810000.0 / temp_f14));
+                arg0->x = arg0->x * temp_f0_2;
+                arg0->z = arg0->z * temp_f0_2;
+            }
+        } else {
+            temp_v0 = &gZoneCollisions[gCurrentZone].rect_30;
             
-//             if (temp_v0->unk_30 > arg0->x ) {
-//                 arg0->x = temp_v0->unk_30;
-//             }
+            if (temp_v0->min.x > arg0->x ) {
+                arg0->x = temp_v0->min.x;
+            }
             
-//             if (temp_v0->unk_3C < arg0->x) {
-//                 arg0->x = temp_v0->unk_3C;
-//             }
+            if (temp_v0->max.x < arg0->x) {
+                arg0->x = temp_v0->max.x;
+            }
 
-//             if (temp_v0->unk_38 > arg0->z) {
-//                 arg0->z = temp_v0->unk_38;
-//             }
+            if (temp_v0->min.z > arg0->z) {
+                arg0->z = temp_v0->min.z;
+            }
   
-//             if (temp_v0->unk_44 < arg0->z) {
-//                 arg0->z = temp_v0->unk_44;
-//             }
-//         }
-//     }
-// }
+            if (temp_v0->max.z < arg0->z) {
+                arg0->z = temp_v0->max.z;
+            }
+        }
+    }
+}
+
 
 Vec3f* func_800D00DC(Vec3f* arg0, Collider* arg1) {
     Vec3f sp24;
@@ -361,7 +357,7 @@ void ApplyRotationToVector(Vec3f* arg0, Vec3f* arg1, f32 arg2) {
     sp2C.y = arg0->y - arg1->y;
     sp2C.z = arg0->z - arg1->z;
     
-    RotateVector3D(&sp2C, sp2C, ((arg2 * D_801106A0) / D_801106A8), 2);
+    RotateVector3D(&sp2C, sp2C, ((arg2 * 3.14159265358979312) / 180.0), 2);
     
     arg0->x = arg1->x + sp2C.x;
     arg0->y = arg1->y + sp2C.y;

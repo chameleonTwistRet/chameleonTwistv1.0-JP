@@ -137,9 +137,7 @@ void func_80055FBC(s32 arg0) {
     D_800F68C4[0] = arg0;
 }
 
-//https://decomp.me/scratch/R8dqR
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80055FD8.s")
-
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80056064.s")
 
@@ -234,7 +232,7 @@ void* mallloc(s32 arg0) {
     void* temp_v0 = func_80056D30(arg0);
     
     if (temp_v0 == NULL) {
-        DummiedPrintf2(D_8010CA10);
+        DummiedPrintf2("mem err!\n");
     }
 
     return temp_v0;
@@ -247,75 +245,74 @@ s32 free(void* arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80056F48.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/loadSprite.s")
-// s32 loadSprite(s32 arg0) {
-//     s32 dmaSize;
-//     s32 dmaResult;
-//     SpriteListing* temp_s1;
+s32 loadSprite(s32 arg0) {
+    s32 dmaSize;
+    s32 dmaResult;
+    SpriteListing* temp_s1;
 
-//     temp_s1 = &gSpriteListings[arg0];
-//     if ((temp_s1->unkC == 8) || (arg0 < 0) || (arg0 >= 0xE6)) {
-//         return 0;
-//     }
-//     switch (temp_s1->unkC) {
-//     case 7:
-//         dmaSize = temp_s1->unk1A * 4 * temp_s1->unk1C * temp_s1->tileCountX * temp_s1->tileCountY;
-//         break;
-//     case 6:
-//         dmaSize = temp_s1->unk1A * 2 * temp_s1->unk1C * temp_s1->tileCountX * temp_s1->tileCountY;
-//         break;
-//     case 2:
-//     case 5:
-//         dmaSize = temp_s1->unk1A * temp_s1->unk1C * temp_s1->tileCountX * temp_s1->tileCountY;
-//         break;
-//     case 0:
-//     case 1:
-//     case 4:
-//         dmaSize = (s32) (temp_s1->unk1A * temp_s1->unk1C * temp_s1->tileCountX * temp_s1->tileCountY) / 2;
-//         break;
-//     }
+    temp_s1 = &gSpriteListings[arg0];
+    if ((temp_s1->type == 8) || (arg0 < 0) || (arg0 >= 0xE6)) {
+        return 0;
+    }
+    switch (temp_s1->type) {
+    case 7:
+        dmaSize = temp_s1->height * 4 * temp_s1->width * temp_s1->tileCountX * temp_s1->tileCountY;
+        break;
+    case 6:
+        dmaSize = temp_s1->height * 2 * temp_s1->width * temp_s1->tileCountX * temp_s1->tileCountY;
+        break;
+    case 2:
+    case 5:
+        dmaSize = temp_s1->height * temp_s1->width * temp_s1->tileCountX * temp_s1->tileCountY;
+        break;
+    case 0:
+    case 1:
+    case 4:
+        dmaSize = (s32) (temp_s1->height * temp_s1->width * temp_s1->tileCountX * temp_s1->tileCountY) / 2;
+        break;
+    }
     
-//     if (temp_s1->unk68 == NULL) {
-//         temp_s1->unk68 = (void* ) temp_s1->unk4;
-//     }
+    if (temp_s1->bitmapRom == NULL) {
+        temp_s1->bitmapRom = (s32)temp_s1->bitmapP;
+    }
     
-//     if (temp_s1->unk6C == NULL) {
-//         temp_s1->unk6C = (void* ) temp_s1->unk8;
-//     }
+    if (temp_s1->paletteRom == NULL) {
+        temp_s1->paletteRom = (s32)temp_s1->palletteP;
+    }
     
-//     temp_s1->unk4 = mallloc(dmaSize);
+    temp_s1->bitmapP = mallloc(dmaSize);
     
-//     if (temp_s1->unk4 == NULL) {
-//         DummiedPrintf2(D_8010CA1C, dmaSize, arg0);
-//         return -1;
-//     }
+    if (temp_s1->bitmapP == NULL) {
+        DummiedPrintf2(" sprite.c : sprite on mem err!(size=%d SPRITE3ID=%d)\n", dmaSize, arg0);
+        return -1;
+    }
     
-//     dmaResult = dma_copy(&D_8C26A0[temp_s1->unk68 & 0xFFFFFF], temp_s1->unk4, dmaSize);
+    dmaResult = dma_copy(&D_8C26A0[temp_s1->bitmapRom & 0xFFFFFF], temp_s1->bitmapP, dmaSize);
 
-//     while (dmaResult < 0) {
-//         dmaResult = dma_copy(&D_8C26A0[temp_s1->unk68 & 0xFFFFFF], temp_s1->unk4, dmaSize);
-//     }
+    while (dmaResult < 0) {
+        dmaResult = dma_copy(&D_8C26A0[temp_s1->bitmapRom & 0xFFFFFF], temp_s1->bitmapP, dmaSize);
+    }
     
-//     while (func_800A72E8(dmaResult) == 0);
+    while (func_800A72E8(dmaResult) == 0);
     
-//     if ((temp_s1->unkC == 4) || (temp_s1->unkC == 5)) {
-//         temp_s1->unk8 = mallloc(0x200);
-//         if (temp_s1->unk8 == NULL) {
-//             DummiedPrintf2(D_8010CA54, 0x200);
-//             free(temp_s1->unk4);
-//             return -1;
-//         }
+    if ((temp_s1->type == 4) || (temp_s1->type == 5)) {
+        temp_s1->palletteP = mallloc(0x200);
+        if (temp_s1->palletteP == NULL) {
+            DummiedPrintf2(" sprite.c : sprite on mem err! (size = %d)\n", 0x200);
+            free(temp_s1->bitmapP);
+            return -1;
+        }
         
-//         dmaResult = dma_copy(&D_8C26A0[temp_s1->unk6C & 0xFFFFFF], temp_s1->unk8, 0x200);
+        dmaResult = dma_copy(&D_8C26A0[temp_s1->paletteRom & 0xFFFFFF], temp_s1->palletteP, 0x200);
 
-//         while (dmaResult < 0) {
-//             dmaResult = dma_copy(&D_8C26A0[temp_s1->unk6C & 0xFFFFFF], temp_s1->unk8, 0x200);
-//         }
+        while (dmaResult < 0) {
+            dmaResult = dma_copy(&D_8C26A0[temp_s1->paletteRom & 0xFFFFFF], temp_s1->palletteP, 0x200);
+        }
         
-//         while (func_800A72E8(dmaResult) == 0);
-//     }
-//     return 0;
-// }
+        while (func_800A72E8(dmaResult) == 0);
+    }
+    return 0;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/freeSprite.s")
 
@@ -595,10 +592,17 @@ void func_8006202C(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80062588.s")
 
+typedef struct unkStructTemp {
+    char unk_00[4];
+    s32 unk4;
+    char unk_08[4];
+    f32 unkC;
+} unkStructTemp;
+
 void func_8006266C(d8006266c* arg0) {
-    d8006266c* temp_v0;
+    unkStructTemp* temp_v0;
     
-    temp_v0 = arg0->unk_38;
+    temp_v0 = (unkStructTemp*)arg0->unk_38;
     temp_v0->unk4 = 1;
     temp_v0->unkC = 0;
 }
@@ -628,12 +632,12 @@ void func_80062E18(aa1* arg0) {
     printNumber(264.0f, 16.0f, 0.0f, 1.0f, (f32) **temp_t7, 2, 0);
     printUISprite(232.0f, 16.0f, 0.0f, 0.0f, 1.0f, 16.0f, 16.0f, 0.0f, 18);
     SetTextGradient(191, 10, 0, 255, 200, 200, 0, 255, 191, 10, 0, 255, 200, 200, 0, 255);
-    PrintText(254.0f, 20.0f, 0.0f, 1.0f, 8.0f, 8.0f, D_8010CA80, 1);
+    PrintText(254.0f, 20.0f, 0.0f, 1.0f, 8.0f, 8.0f, "Ｘ", 1);
     SetTextGradient(191, 10, 0, 255, 200, 200, 0, 255, 191, 10, 0, 255, 200, 200, 0, 255);
     printNumber(264.0f, 36.0f, 0.0f, 1.0f, (f32) gTotalCarrots, 2, 0);
     printUISprite(232.0f, 36.0f, 0.0f, 0.0f, 1.0f, 16.0f, 16.0f, 0.0f, 26);
     SetTextGradient(191, 10, 0, 255, 200, 200, 0, 255, 191, 10, 0, 255, 200, 200, 0, 255);
-    PrintText(254.0f, 40.0f, 0.0f, 1.0f, 8.0f, 8.0f, D_8010CA84, 1);
+    PrintText(254.0f, 40.0f, 0.0f, 1.0f, 8.0f, 8.0f, "Ｘ", 1);
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80063160.s")
@@ -656,8 +660,6 @@ void func_80062E18(aa1* arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80065088.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8006526C.s")
-/*
 aa1* func_8006526C(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7, s32 arg8, s32 arg9) {
     aa1* temp_v0;
     d8006266c* temp_v1;
@@ -666,13 +668,13 @@ aa1* func_8006526C(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f
     if (temp_v0 == NULL) {
         return temp_v0;
     }
-    temp_v1 = temp_v0->unk38;
+    temp_v1 = temp_v0->unk_38;
     temp_v1->unk0 = arg6;
     temp_v1->unk4 = arg7;
     temp_v1->unk8 = (s32) D_800FE18C;
     temp_v1->unkC = (s32) D_800FE190;
-    temp_v1->unk10 = (s32) D_800FE194;
-    temp_v1->unk14 = (s32) D_800FE198;
+    temp_v1->unk_10 = (s32) D_800FE194;
+    temp_v1->unk_14 = (s32) D_800FE198;
     temp_v0->unk_10 = arg0;
     temp_v0->unk_14 = arg1;
     temp_v0->unk_18 = arg2;
@@ -680,10 +682,10 @@ aa1* func_8006526C(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f
     temp_v0->unk_20 = arg4;
     temp_v0->unk_24 = arg5;
     temp_v0->unk0 = arg9;
-    temp_v0->unk30 = (f32) arg8;
+    temp_v0->unk_30 = (f32) arg8;
     temp_v0->unkC = 0.0f;
     return temp_v0;
-}*/
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80065354.s")
 
@@ -710,7 +712,6 @@ aa1* func_80065CAC(f32 arg0) {
     temp_v0->unk_30 = arg0;
     return temp_v0;
 }
-
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80065D00.s")
 
@@ -774,7 +775,7 @@ void func_800667C4(aa1*arg0, s32 arg1) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80068A88.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80068BFC.s")
-//funcs with rabbit(?)
+
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80068DB4.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80069734.s")
@@ -804,15 +805,36 @@ void func_80069858(aa1* arg0, s32 arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/Bowling_DrawScoreCard.s")
 
+typedef struct UnkBowlingStruct {
+    /* 0x00 */ s32 unk_00;
+    /* 0x04 */ s32 unk_04;
+    /* 0x08 */ char unk_08[0x04];
+    /* 0x0C */ f32 unkC;
+    /* 0x10 */ f32 unk_10;
+    /* 0x14 */ f32 unk_14;
+    /* 0x18 */ f32 unk_18;
+    /* 0x1C */ f32 unk_1C;
+    /* 0x20 */ f32 unk_20;
+    /* 0x24 */ f32 unk_24;
+    /* 0x28*/ s32 unk_28;
+    /* 0x2C */ s32 unk_2C;
+    /* 0x30 */ f32 unk_30;
+    /* 0x34 */ void* unk34;
+    /* 0x38 */ void* unk_38; // this struct varies widely
+    /* 0x3C */ d8006266c* unk_3C;
+    /* 0x40 */ struct aa1* previous;
+    /* 0x44 */ struct aa1* next;
+} UnkBowlingStruct; //sizeof 0x48
+
 void aa1_Bowling(f32 arg0, s32 arg1, s32 arg2) {
     aa1* temp_v0 = aa1_Alloc(0, 8, Bowling_DrawScoreCard);
-    d8006266c* temp_v1;
+    UnkBowlingStruct* temp_v1;
     if (temp_v0 != 0) {
         temp_v1 = temp_v0->unk_38;
         temp_v0->unkC = 0.0f;
         temp_v0->unk_30 = arg0;
-        temp_v1->unk0 = arg1;
-        temp_v1->unk4 = arg2;
+        temp_v1->unk_00 = arg1;
+        temp_v1->unk_04 = arg2;
     }
 }
 
@@ -956,11 +978,28 @@ void freePlayerEyes(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80071420.s")
 
+#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/D_8010CABC.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/D_8010CACC.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/D_8010CADC.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/D_8010CAF8.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/D_8010CB14.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/D_8010CB20.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/D_8010CB2C.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/D_8010CB48.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/D_8010CB64.s")
+
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_800714C8.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/aa1_DrawGameResults.s")
 
-//prints perfect code
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80071A48.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80071A90.s")
@@ -985,7 +1024,6 @@ void func_80072D34(void) {
         playBGM(BGM_TRAINING);
     }
 }
-
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80072D80.s")
 
@@ -1191,7 +1229,6 @@ void func_8007AF58(void) {
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8007AF80.s")
-
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/Rumble_Tick.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8007B174.s")
@@ -1310,8 +1347,10 @@ void func_8007E714(f32 arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8007E720.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/printNumber.s")
+
 //prints number at (x,y) on screen, turns red if negative.
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/printNumberWR.s")
+
 //another "print number on screen" func,exclusive to bowling score card
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/PrintNumberBowling.s")
 
@@ -1365,7 +1404,6 @@ void func_80084788(void) {
     resetEyeParams();
     func_800667A8();
 }
-
 
 s32 func_80084884(s32 arg0) {
     if (gCurrentStage == 8) {
