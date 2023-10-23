@@ -41,6 +41,10 @@ void func_8002CB6C(Gfx*, void*, s32);
 void func_8002CBE8(s32); 
 void func_8004E784(contMain*, s32, s32, s32);
 void func_800AA844(s32);
+void func_800A0D90(void);
+void SaveData_ResetRecords(void);
+void func_800A4484(void);
+void SaveData_WriteFile(SaveFile*);
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/videoproc.s")
 
