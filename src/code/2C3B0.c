@@ -84,8 +84,25 @@ void func_8005171C(void) {
     }
 }
 
-//https://decomp.me/scratch/900gG
-#pragma GLOBAL_ASM("asm/nonmatchings/code/2C3B0/func_8005177C.s")
+s32 func_8005177C(s32 arg0) {
+    s32 i;
+    s32 activeCount = 0;
+
+    for (i = 0; i < 4; i++) {
+        if (gPlayerActors[i].active && (D_80168D78[i] != (((i & 0xFF) == 4) * 0))) {
+            if (arg0 != i) {
+                activeCount++;
+                continue;
+            }
+            break;
+        }
+    }
+    if (i == 4) {
+        activeCount = -1;
+    }
+    return activeCount;
+}
+
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/2C3B0/func_800517EC.s")
 
@@ -106,6 +123,7 @@ void func_8005171C(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/2C3B0/func_80052890.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/2C3B0/func_800536D8.s")
+
 //prints "HURRY!" during MP Battle [9 times]
 void Multiplayer_PrintHurry(void) {
     if ((D_80176824 <= 1800) && (D_80176824 > 1710) && ((D_80176824 % 10) < 5)) {
@@ -169,6 +187,38 @@ void func_8005444C(void) {
 
 //https://decomp.me/scratch/9z01z
 #pragma GLOBAL_ASM("asm/nonmatchings/code/2C3B0/func_8005456C.s")
+/*
+typedef struct unk800FE564 {
+    u8 unk0;
+    u8 unk1;
+    u8 unk2;
+    u8 unk3;
+} unk800FE564;
+
+void func_80061270(u8, u8, u8, u8);
+void func_80058BE4(Mtx* arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, s32 arg7);
+
+extern unk800FE564 D_800FE564[];
+#define flabs(A) (((A) < 0.0f) ? (-A) : (A))
+
+void func_8005456C(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, s32 arg5) {
+    Mtx sp30;
+
+    if (D_800F0B50 & 1) {
+        //if (arg3 / arg1 < 0.0f) {
+        //    arg3 = -(arg3 / arg1);
+        //} else {
+        //    arg3 = arg3 / arg1;
+        //}
+        //arg3 = klabs((arg3 / arg1));
+
+        func_80061270(D_800FE564[arg5].unk0, D_800FE564[arg5].unk1, D_800FE564[arg5].unk2, D_800FE564[arg5].unk3 * flabs((arg3 / arg1)));
+        guAlign(&sp30, 0.0f, 0.0f, 100.0f, 0.0f);
+        func_80058BE4(&sp30, arg0, arg1, arg2, arg4, arg4, 0.0f, 0x4A);
+    }
+}
+*/
+
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/2C3B0/func_800546F0.s")
 
