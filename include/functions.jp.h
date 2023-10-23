@@ -300,7 +300,7 @@ void func_8007AC2C(s32*);
 u64 func_8007ADDC(s32);
 void func_8007AF30(void);
 void func_8007AF58(void);
-void Rumble_AddTime(s32, s32, s32);
+void Rumble_AddTime(s32, s32);
 void func_8007B480(f32, f32, f32, f32, f32, f32);
 void func_8007B4CC(f32, f32, f32, f32, f32, f32);
 void func_8007B518(f32);

@@ -679,9 +679,9 @@ void func_8002F7F0(void) {
 void func_8002F884(s32 arg0, s32 arg1) {
     if (((D_801749B0 == 0) || (PlayerPointer->playerID != 1)) && (D_80168D78[arg0] == 0)) {
         if (gameModeCurrent == GAME_MODE_BATTLE_MENU) {
-            Rumble_AddTime(arg0, ((arg1 * 100) / 6.0f), arg1);
+            Rumble_AddTime(arg0, ((arg1 * 100) / 6.0f));
         } else {
-            Rumble_AddTime(arg0, ((arg1 * 100) * 0.5f), arg1);
+            Rumble_AddTime(arg0, ((arg1 * 100) * 0.5f));
         }
     }
 }

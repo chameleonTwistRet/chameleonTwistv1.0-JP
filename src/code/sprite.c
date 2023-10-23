@@ -1,5 +1,10 @@
 #include "common.h"
 
+void osMotorStop(OSPfs *pfs);
+extern s32 D_80176960[];
+extern OSPfs gRumblePfs[];
+extern s32 gRumbleTime[];
+
 typedef struct SpriteListing {
     char unk_00[4];
     void* bitmapP; // "malloc'd" after size calc.
@@ -1235,7 +1240,15 @@ void func_8007AF58(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/Rumble_StopAll.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/Rumble_AddTime.s")
+void Rumble_AddTime(s32 arg0, s32 arg1) {
+    if (D_80176960[arg0] != 0) {
+        if (arg1 < 0) {
+            osMotorStop(&gRumblePfs[arg0]);
+            return;
+        }
+        gRumbleTime[arg0] += arg1;
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8007B38C.s")
 
