@@ -1,10 +1,24 @@
 #include "common.h"
 
+typedef struct unk800FE564 {
+    u8 unk0;
+    u8 unk1;
+    u8 unk2;
+    u8 unk3;
+} unk800FE564;
+
+
+extern unk800FE564 D_800FE564[];
+
 void func_8005456C(f32, f32, f32, f32, f32, s32);
 void func_80073090(void);
 s32 func_8008BE14(void);
 void func_800A0D90(void);
 void func_800678EC(s32, s32, s32, s32, s32);
+void func_80058BE4(Mtx* arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, s32 arg7);
+void func_800536D8(void);
+void func_80059F28(f32, f32, f32, f32, f32, f32, f32, f32, s32);
+
 extern s32 D_800FE708;
 extern s32 D_80168EBC;
 extern s32 D_80168EC0;
@@ -132,11 +146,32 @@ void Multiplayer_PrintHurry(void) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/2C3B0/func_80053950.s")
+void func_80053950(void) {
+    f32 var_f0 = 1.0f;
+    if (D_80176824 < 0x3A3) {
+        SetTextGradient(0xFFU, 0x3CU, 0U, 0xFFU, (u8) 0xFF, (u8) 0, (u8) 0, (u8) 0xFF, (u8) 0xFF, (u8) 0x3C, (u8) 0, (u8) 0xFF, (u8) 0xFF, (u8) 0, (u8) 0, (u8) 0xFF);
+        if (D_80176824 < 0x15) {
+            var_f0 = (f32) D_80176824 / 20.0f;
+        }
+        func_800523E4(136.0f, ((1.0f - var_f0) * 12.0f) + 10.0f, 1.0f, var_f0, (s32) ((s32) D_80176824 / 30) % 60, 2, 1);
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/2C3B0/func_80053A70.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/2C3B0/func_80053CA0.s")
+void func_80053CA0(void) {
+    s32 var_s1;
+    s32 i, j;
+    s32 var_s4;
+
+    for (i = 0, var_s4 =0; i < 5; i++, var_s4 += 0x30) {
+        for (j = 0, var_s1 = 0; j < 8; j++,  var_s1 += 0x28) {
+            func_800612F0(i);
+            func_80059F28((f32) var_s1, (f32) var_s4, 0, 0, 1.0f, 40.0f, 48.0f, (f32) j, 0xCE);
+        }
+    }
+    func_800536D8();
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/2C3B0/func_80053DA8.s")
 
@@ -185,40 +220,15 @@ void func_8005444C(void) {
     }
 }
 
-//https://decomp.me/scratch/9z01z
-#pragma GLOBAL_ASM("asm/nonmatchings/code/2C3B0/func_8005456C.s")
-/*
-typedef struct unk800FE564 {
-    u8 unk0;
-    u8 unk1;
-    u8 unk2;
-    u8 unk3;
-} unk800FE564;
-
-void func_80061270(u8, u8, u8, u8);
-void func_80058BE4(Mtx* arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, s32 arg7);
-
-extern unk800FE564 D_800FE564[];
-#define flabs(A) (((A) < 0.0f) ? (-A) : (A))
-
 void func_8005456C(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, s32 arg5) {
     Mtx sp30;
 
     if (D_800F0B50 & 1) {
-        //if (arg3 / arg1 < 0.0f) {
-        //    arg3 = -(arg3 / arg1);
-        //} else {
-        //    arg3 = arg3 / arg1;
-        //}
-        //arg3 = klabs((arg3 / arg1));
-
-        func_80061270(D_800FE564[arg5].unk0, D_800FE564[arg5].unk1, D_800FE564[arg5].unk2, D_800FE564[arg5].unk3 * flabs((arg3 / arg1)));
+        setPrimColor(D_800FE564[arg5].unk0, D_800FE564[arg5].unk1, D_800FE564[arg5].unk2, D_800FE564[arg5].unk3 * flabs((arg3 / arg1)));
         guAlign(&sp30, 0.0f, 0.0f, 100.0f, 0.0f);
         func_80058BE4(&sp30, arg0, arg1, arg2, arg4, arg4, 0.0f, 0x4A);
     }
 }
-*/
-
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/2C3B0/func_800546F0.s")
 
