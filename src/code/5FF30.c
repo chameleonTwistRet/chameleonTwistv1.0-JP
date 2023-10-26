@@ -1,4 +1,5 @@
 #include "common.h"
+#include "mod.h" //used to DMA mod stuff in if needed
 
 #define SEGMENTED_TO_VIRTUAL(x)  (void*)(SEGMENT_OFFSET_CUSTOM(x) + D_80100F50[SEGMENT_INDEX(x)].base_address)
 
@@ -1122,7 +1123,7 @@ void func_8008FEA8(s32 arg0, s32 arg1) {
 //needs bss support https://decomp.me/scratch/hFrp7
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/Porocess_Mode0.s")
 
-
+#ifndef MOD
 void MainLoop(void) {
     func_8002D080();
     if (sGameModeStart != -1) {
@@ -1136,75 +1137,79 @@ void MainLoop(void) {
     }
     gIsStero = gGameRecords.flags[1] & 1;
     osRecvMesg(&D_801192E8, NULL, 1);
-loop_5:
+    gameModeLoop:
     switch (gameModeCurrent) {
     case GAME_MODE_OVERWORLD:
         Porocess_Mode0();
-        goto loop_5;
+        goto gameModeLoop;
     case 1:
         Process_StageSelect();
-        goto loop_5;
+        goto gameModeLoop;
     case 2:
         FileWork();
-        goto loop_5;
+        goto gameModeLoop;
     case 3:
         func_8009C904();
-        goto loop_5;
+        goto gameModeLoop;
     case 4:
         func_800A9F84();
-        goto loop_5;
+        goto gameModeLoop;
     case 5:
         func_800AA3F0();
-        goto loop_5;
+        goto gameModeLoop;
     case 20:
         func_800ADE70();
-        goto loop_5;
+        goto gameModeLoop;
     case 21:
         func_800AE4AC();
-        goto loop_5;
+        goto gameModeLoop;
     case 6:
         func_800A2BDC();
-        goto loop_5;
+        goto gameModeLoop;
     case 7:
         Process_BattleMenu();
-        goto loop_5;
+        goto gameModeLoop;
     case 8:
         func_800A4320();
-        goto loop_5;
+        goto gameModeLoop;
     case 9:
         Process_GameOver();
-        goto loop_5;
+        goto gameModeLoop;
     case 10:
         Process_JSSLogo();
-        goto loop_5;
+        goto gameModeLoop;
     case 11:
         Process_PreCredits();
-        goto loop_5;
+        goto gameModeLoop;
     case 12:
         func_800A1D38();
-        goto loop_5;
+        goto gameModeLoop;
     case 13:
         func_800A6DD8();
-        goto loop_5;
+        goto gameModeLoop;
     case 14:
         func_800A07E0();
-        goto loop_5;
+        goto gameModeLoop;
     case 16:
         Process_Ranking();
-        goto loop_5;
+        goto gameModeLoop;
     case 17:
         func_800557F8();
-        goto loop_5;
+        goto gameModeLoop;
     case 18:
         Process_Boot();
-        goto loop_5;
+        goto gameModeLoop;
     case 19:
         Process_SunsoftLogo();
-        goto loop_5;
+        goto gameModeLoop;
     }
     DummiedPrintf("No Process = %d\n", gameModeCurrent);
-    goto loop_5;
+    goto gameModeLoop;
 }
+
+#else
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/MainLoop.s")
+#endif
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800908C0.s")
 
@@ -2834,7 +2839,7 @@ void func_800AAB0C(s32 arg0) {
     _bzero(gPlayerActors, sizeof(gPlayerActors));
     _bzero(&gCamera[0], sizeof(Camera));
     D_80168DA0 = 1;
-    (u32)gPlayerActors[0].active = 1; //required u32 here but usually requires s32?
+    *(u32*)&gPlayerActors[0].active = 1; //required u32 here but usually requires s32?
     gPlayerActors[1].active = 0;
     gPlayerActors[2].active = 0;
     gPlayerActors[3].active = 0;
