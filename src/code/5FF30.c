@@ -2753,7 +2753,21 @@ void func_800A9728(CTTask* arg0) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A97E4.s")
+//#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A97E4.s")
+s32 func_8008EC90();                                /* extern */
+extern s32 D_800F0704;
+
+void func_800A97E4(CTTask* arg0) {
+    if (func_8008EC90() != 0) {
+        setPrimColor(0U, 0U, 0U, 0xFFU);
+        printUISprite(2.0f, 2.0f, 0.0f, 0.0f, 1.0f, 316.0f, 236.0f, 0.0f, 0);
+        if (D_800F0704 != 0) {
+            gGameModeState = 3;
+            return;
+        }
+        gGameModeState = 5;
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A988C.s")
 
