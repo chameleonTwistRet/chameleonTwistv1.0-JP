@@ -1511,12 +1511,10 @@ u32 func_80096128(s32 stageToLoad, s32 inpAddr) {
     D_80100F50[0x3].unk4 = D_80100F50[0x3].base_address + size;
     temp_v0_2 = dma_copy(segData->romAddrStart, (void*)D_80100F50[0x3].base_address, size);
     if (temp_v0_2 < 0) {
-        //"エラー %d\n" | "Error %d\n"
         DummiedPrintf("エラー %d\n", temp_v0_2);
         return 0;
     } else {
         while (func_800A72E8(temp_v0_2) == 0);
-        //"マップデータ(%dk)読み込み(%X)\n" | Map data(%dk)read(%X)\n
         DummiedPrintf("マップデータ(%dk)読み込み(%X)\n", (u32)size / 1024, size);
         return D_80100F50[3].base_address;
     }
@@ -1533,9 +1531,80 @@ void func_800966E0(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80096748.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/canAccessStage.s")
+typedef struct StageSelectionData {
+    u8 temp0;
+    char unk_02[0x17];
+} StageSelectionData;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80096898.s")
+extern StageSelectionData D_8010026E[];
+extern u8 D_80200B68;
+extern u8 gLevelAccessBitfeild;
+extern s16 sDebugLevelAccess;
+
+s32 CanAccessStage(s32 stageIndex) {
+    s32 trueBits;
+    u8 temp_v0;
+    s32 var;
+    
+    temp_v0 = D_8010026E[stageIndex].temp0;
+    if (stageIndex == 0) {
+        return 1;
+    }
+
+    if (temp_v0 == 0) {
+        int i = 0;
+        trueBits = 0;
+        for (i = 0; i < 6; i++) {
+            if (D_80200B68 & (1 << i)) {
+                trueBits++;
+            }
+        }
+        if (trueBits >= 6) {
+            return TRUE;
+        }
+        if (sDebugLevelAccess >= 0) {
+            return TRUE;
+        }
+        return FALSE;
+    }
+    
+    if (gLevelAccessBitfeild & temp_v0) {
+        return TRUE;
+    }
+    return FALSE;
+}
+
+f32 func_80096898(u16 arg0) {
+    f32 floatVar = 0.0f;
+    switch (arg0) {
+        default:
+            break;
+        case 0x800:
+            floatVar = 180.0f;
+            break;
+        case 0x900:
+            floatVar = 135.0f;
+            break;
+        case 0x100:
+            floatVar = 90.0f;
+            break;
+        case 0xC00:
+            floatVar = 45.0f;
+            break;
+        case 0x600:
+            floatVar = -45.0f;
+            break;
+        case 0x200:
+            floatVar = -90.0f;
+            break;
+        case 0xA00:
+            floatVar = -135.0f;
+        case 0x400:
+            break;
+    }
+    return floatVar;
+}
+
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80096964.s")
 
