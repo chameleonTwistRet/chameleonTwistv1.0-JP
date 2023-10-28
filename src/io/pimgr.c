@@ -6,10 +6,10 @@ OSPiHandle *__osPiTable = NULL;
 extern OSPiHandle __Dom1SpeedParam;
 extern OSPiHandle __Dom2SpeedParam;
 //OSPiHandle *__osCurrentHandle[2] = {&__Dom1SpeedParam, &__Dom2SpeedParam};
-extern OSThread piThread;
-extern char piThreadStack[OS_PIM_STACKSIZE];
-extern OSMesgQueue piEventQueue;
-extern OSMesg piEventBuf[1];
+OSThread piThread;
+char piThreadStack[OS_PIM_STACKSIZE];
+OSMesgQueue piEventQueue;
+OSMesg piEventBuf[1];
 
 void osCreatePiManager(OSPri pri, OSMesgQueue *cmdQ, OSMesg *cmdBuf, s32 cmdMsgCnt) {
     u32 savedMask;

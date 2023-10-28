@@ -1043,4 +1043,43 @@ typedef struct unk80174880 {
 /* 0x7C */ s32 unk_7C;
 } unk80174880;
 
+//84E0 bss structs
+typedef struct unk80174900 {
+    char unk_00[0x80];
+} unk80174900;
+
+typedef struct unk801749B0 {
+    s32 unk_00;
+    s32 unk_04;
+    char unk_08[0x20];
+} unk801749B0;
+
+typedef struct unk80174A50 {
+    char unk_00[0xB40];
+} unk80174A50;
+
+typedef struct unk80175590 {
+    char unk_00[0x08];
+} unk80175590;
+
+typedef struct unk80175598 {
+    char unk_00[0x10];
+} unk80175598;
+
+typedef struct unk801755A8 {
+    char unk_00[0x40];
+} unk801755A8;
+
+typedef struct unk801755E8 {
+    char unk_00[0x10];
+} unk801755E8;
+
+typedef struct unk801755F8 {
+    char unk_00[0x10];
+} unk801755F8;
+
+typedef struct unk80175608 {
+    char unk_00[0x18];
+} unk80175608;
+
 #endif

@@ -4,6 +4,20 @@
 //static u8 D_80176814[4];
 //static u8 D_80176818[4];
 
+char D_80175870[0xFA0];
+u8 D_80176810;
+u8 D_80176811;
+u8 D_80176812;
+u8 D_80176813;
+u8 D_80176814;
+u8 D_80176815;
+u8 D_80176816;
+u8 D_80176817;
+u8 D_80176818;
+u8 D_80176819;
+u8 D_8017681A;
+u8 D_8017681B;
+
 typedef struct unkTextStruct {
 char strings[4][0x64];
 } unkTextStruct;

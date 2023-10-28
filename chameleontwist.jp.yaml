@@ -18,7 +18,7 @@ options:
   build_path: build
   gfx_ucode: f3dex
   extensions_path: tools/splat_ext
-  auto_all_sections: [".data", ".rodata", ".bss"]
+  auto_all_sections: [".data", "data", ".rodata", "rodata", ".bss", "bss"]
   migrate_rodata_to_functions : True
   asm_function_macro: glabel
   asm_jtbl_label_macro: jlabel
@@ -280,18 +280,23 @@ segments:
       - [0xEC590, .rodata, audio/seq] #80111190
       - [0xEC5A0, .rodata, audio/reverb] #801111A0
       - [0xEC5D0, rodata, gspFast3DDataStart]
-      - { start: 0xED090, type: bss, vram: 0x80111C90 }   # This has the same rom address as below as bss isnt in the ROM
+      - { start: 0xED090, type: bss, vram: 0x80111C90, name: globalBSS } # This has the same rom address as below as bss isnt in the ROM
+      - { start: 0xED090, type: .bss, vram: 0x801748A0, name: code/84E0 }
       - { start: 0xED090, type: .bss, vram: 0x80175620, name: code/298D0 }
-      - { start: 0xED090, type: bss, vram: 0x80175870, name: debug }
-      - { start: 0xED090, type: bss, vram: 0x80176820, name: restof }
+      - { start: 0xED090, type: .bss, vram: 0x80175870, name: code/debug }
+      - { start: 0xED090, type: .bss, vram: 0x80176820, name: code/2C3B0 }
+      - { start: 0xED090, type: bss, vram: 0x80176850, name: code/sprite }
+      - { start: 0xED090, type: bss, vram: 0x801B1D20, name: code/5FF30 }
       - { start: 0xED090, type: .bss, vram: 0x802018B0, name: code/clip }
-      - { start: 0xED090, type: bss, vram: 0x80201900, name: restof2 }
+      - { start: 0xED090, type: bss, vram: 0x80201900, name: code/8ADD0 }
+      - { start: 0xED090, type: .bss, vram: 0x80247910, name: code/poly }
       - { start: 0xED090, type: bss, vram: 0x80248A30, name: io/motor }
       - { start: 0xED090, type: .bss, vram: 0x80248C70, name: os/initialize }
       - { start: 0xED090, type: .bss, vram: 0x80248C80, name: io/vimgr }
-      - { start: 0xED090, type: bss, vram: 0x80249EA0, name: restof3 }
+      - { start: 0xED090, type: .bss, vram: 0x80249EA0, name: io/pimgr }
       - { start: 0xED090, type: .bss, vram: 0x8024B070, name: gu/rotate }
-      - { start: 0xED090, type: bss, vram: 0x8024B080, name: restof4 }
+      - { start: 0xED090, type: .bss, vram: 0x8024B080, name: os/seteventmesg }
+      - { start: 0xED090, type: .bss, vram: 0x8024B100, name: io/controller }
       - { start: 0xED090, type: .bss, vram: 0x8024B190, name: gu/align }
       - { start: 0xED090, type: .bss, vram: 0x8024B1A0, name: io/sptask }
       - { start: 0xED090, type: .bss, vram: 0x8024B1E0, name: io/pfsisplug }

@@ -1,5 +1,44 @@
 #include "common.h"
 
+/* Migrated BSS */
+//TODO: type this data correctly
+
+s32 D_801748A0;
+s32 D_801748A4;
+unk0 D_801748A8; //is size 0x58, struct is a guess
+unk80174900 D_80174900;
+s32 D_80174980;
+s32 D_80174984;
+s32 D_80174988;
+s32 D_8017498C;
+s32 D_80174990;
+s32 D_80174994;
+s32 D_80174998;
+s32 D_8017499C;
+s32 D_801749A0;
+s32 D_801749A4;
+s32 D_801749A8;
+s32 D_801749AC;
+unk801749B0 D_801749B0;
+
+// typedef struct armsMaybe {
+//     s32 armActorIDs[15][15]; //static s32 D_801749D8[15];
+//     // s32 armActorIDs2[15]; //static s32 D_80174A14[15];
+// } armsMaybe;
+
+// //these 3 should maybe be a struct
+// armsMaybe D_801749D8;
+char D_801749D8[0x78];
+
+unk80174A50 D_80174A50;
+unk80175590 D_80175590;
+unk80175598 D_80175598;
+unk801755A8 D_801755A8;
+unk801755E8 D_801755E8;
+unk801755F8 D_801755F8;
+unk80175608 D_80175608;
+
+
 extern f32 D_8010B348;
 //const char padRodata[] = "\0\0\0\0\0\0\0";
 
@@ -740,7 +779,7 @@ void func_8002F7F0(void) {
 }
 
 void func_8002F884(s32 arg0, s32 arg1) {
-    if (((D_801749B0 == 0) || (PlayerPointer->playerID != 1)) && (D_80168D78[arg0] == 0)) {
+    if (((D_801749B0.unk_00 == 0) || (PlayerPointer->playerID != 1)) && (D_80168D78[arg0] == 0)) {
         if (gameModeCurrent == GAME_MODE_BATTLE_MENU) {
             Rumble_AddTime(arg0, ((arg1 * 100) / 6.0f));
         } else {

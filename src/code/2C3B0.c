@@ -1,5 +1,23 @@
 #include "common.h"
 
+typedef struct unk80176840 {
+    char unk_00[0x10];
+} unk80176840;
+
+u8 D_80176820;
+u8 D_80176821;
+u8 D_80176822;
+u8 D_80176823;
+s32 D_80176824;
+s32 D_80176828;
+s32 D_8017682C;
+s32 gMultiplayerBGM;
+s32 D_80176834;
+s32 D_80176838;
+s32 D_8017683C;
+unk80176840 D_80176840;
+
+
 typedef struct unk800FE564 {
     u8 unk0;
     u8 unk1;
@@ -37,7 +55,7 @@ extern s32 D_800FE74C;
 void func_80050FB0(void) {
     s32 i;
 
-    if (D_801749B4 == 0) {
+    if (D_801749B0.unk_04 == 0) {
         for (i = 0; i < 4; i++) {
             if (gPlayerActors[i].active == 1) {
                 if (gPlayerActors[i].pos.y < -10.0f) {
@@ -189,7 +207,7 @@ void func_8005423C(void) {
 void func_800771DC(s32*, f32, f32, s32, s32, s32*, f32, f32, f32, f32); /* extern */
 
 void func_8005444C(void) {
-    if (D_801749B4 == 1) {
+    if (D_801749B0.unk_04 == 1) {
         func_800771DC(&D_800FE404, 16.0f, 16.0f, 1, 5, &D_800F0B5C, 0.0f, 0.0f, 320.0f, 240.0f);
     }
     switch (D_800F0B5C) {

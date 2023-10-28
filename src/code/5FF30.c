@@ -8,6 +8,7 @@ typedef struct unkarg0 {
     s16 unk6A;
 } unkarg0;
 
+extern s32 D_800F0704;
 extern SaveFile gSaveFile;
 extern SaveFile* gSaveFiles;
 extern segTableEntry gStageLoadData[];
@@ -47,16 +48,16 @@ void SaveData_ResetRecords(void);
 void func_800A4484(void);
 void SaveData_WriteFile(SaveFile*);
 
-
-void func_8007B174(void);                                  /* extern */
-void func_8008C440(void);                                  /* extern */
-void func_8008C464(void);                                  /* extern */
-void func_8008C4E8(void);                                  /* extern */
-void func_8008C610(void);                                  /* extern */
-void func_8008C698(void);                                  /* extern */
-void func_8008C6D4(void);                                  /* extern */
-void func_800A7844(void);                                  /* extern */
-s32 func_800A78D0(void);                                  /* extern */
+s32 func_8008EC90(void);
+void func_8007B174(void);
+void func_8008C440(void);
+void func_8008C464(void);
+void func_8008C4E8(void);
+void func_8008C610(void);
+void func_8008C698(void);
+void func_8008C6D4(void);
+void func_800A7844(void);
+s32 func_800A78D0(void);
 
 extern OSMesg D_801B30A0;
 extern OSTimer D_801B3148;
@@ -2821,10 +2822,6 @@ void func_800A9728(CTTask* arg0) {
         arg0->function = func_800A97E4;
     }
 }
-
-//#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A97E4.s")
-s32 func_8008EC90();                                /* extern */
-extern s32 D_800F0704;
 
 void func_800A97E4(CTTask* arg0) {
     if (func_8008EC90() != 0) {

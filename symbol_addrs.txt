@@ -566,6 +566,7 @@ g_aa1_head = 0x80176f48; // size:0x4
 gSelectedCharacters = 0x800f06dc; // size:0x4 rom:0xcbadc
 gIsPaused = 0x800ff5f8; // size:0x2 rom:0xda9f8
 gCurrentStage = 0x80174874; // size:0x4
+D_801749B0 = 0x801749B0; //size:0x28
 aspMainTextStart = 0x800ef6c0; // size:0xe20 rom:0xcaac0
 aspMainDataStart = 0x801119d0; // size:0x2c0 rom:0xecdd0
 gspFast3DDataStart = 0x801111d0; // size:0x800 rom:0xec5d0
@@ -928,3 +929,8 @@ D_80110000 = 0x80110000; // type:f64 force_migration:True size:0x08
 
 //other stuff
 D_8010DA14 = 0x8010DA14; // type:asciz force_not_migration:True size:0x08
+D_8017682C = 0x8017682C; // type:s32 size:0x04
+D_80174A50 = 0x80174A50; // size:0xB40
+D_80175590 = 0x80175590; // size:0x08
+D_801749D8 = 0x801749D8; // size:0x78
+D_80248540 = 0x80248540; // size:0x368

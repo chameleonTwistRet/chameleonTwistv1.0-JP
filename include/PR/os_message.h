@@ -74,11 +74,8 @@ typedef struct OSMesgQueue_s {
  */
 
 /* Events */
-#ifdef _FINALROM
+
 #define OS_NUM_EVENTS           15
-#else
-#define OS_NUM_EVENTS           23
-#endif
 
 #define OS_EVENT_SW1              0     /* CPU SW1 interrupt */
 #define OS_EVENT_SW2              1     /* CPU SW2 interrupt */

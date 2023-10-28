@@ -1,5 +1,19 @@
 #include "common.h"
 
+/* Migrated BSS */
+//TODO: type this data correctly
+char gShadows[0xC00];
+s32 gShadowCount;
+Vec3f D_80248518;
+char D_80248528[0x18];
+char D_80248540[0x368];
+s32 D_802488A8;
+char D_802488B0[0x10];
+char gHasShadow[0x100];
+char D_802489C0[0x08];
+Vec3f D_802489C8[8];
+char D_80248A28[0x08];
+
 /* rodata */
 extern char D_80110180[];
 extern char D_801103D0[];
@@ -195,7 +209,6 @@ void CalcEnemyNextPosition(Actor* arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800CFB6C.s")
 
-//#pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800CFDB8.s")
 void func_800CFDB8(playerActor* arg0) {
     arg0->vaulting = 0;
     arg0->surface = -1;

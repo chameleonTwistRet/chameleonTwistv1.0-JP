@@ -2,9 +2,15 @@
 #include "controller.h"
 #include "siint.h"
 
+OSPifRam __osContPifRam;
+u8 __osContLastCmd;
+u8 __osMaxControllers;
+
+OSTimer __osEepromTimer;
+OSMesgQueue __osEepromTimerQ;
+OSMesg __osEepromTimerMsg;
+
 s32 __osContinitialized = 0;
-extern u8 __osContLastCmd;
-extern u8 __osMaxControllers;
 
 #define UNK(n) 500000 * (u64)(n) / 1000000
 

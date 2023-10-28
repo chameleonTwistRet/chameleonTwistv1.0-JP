@@ -216,7 +216,6 @@ extern s32 D_80174878;                  // Level/Stage ID | loadStageByIndex()
 extern s32 D_801748A0;
 extern s32 D_80174998;
 extern s32 D_8017499C;
-extern s32 D_801749B0;
 extern OSMesgQueue gEepromMsgQ;
 extern s32 D_80176824;
 extern u8 gTextGradient[16]; //probably really color32[4]
@@ -337,7 +336,7 @@ extern s32 D_801B3168;
 extern u8 gSelectedCharacters[4];
 extern u8 D_800F0BE0[];
 extern unkStruct0 D_800F0BE4[];
-extern s32 D_801749B4;
+extern unk801749B0 D_801749B0;
 extern s32 gCurrentStage;
 extern s32 D_80176F58;
 extern s16 gOneRun;
