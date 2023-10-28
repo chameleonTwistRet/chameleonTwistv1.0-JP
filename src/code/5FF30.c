@@ -1538,7 +1538,7 @@ typedef struct StageSelectionData {
 
 extern StageSelectionData D_8010026E[];
 extern u8 D_80200B68;
-extern u8 gLevelAccessBitfeild;
+//extern u8 gLevelAccessBitfeild;
 extern s16 sDebugLevelAccess;
 
 s32 CanAccessStage(s32 stageIndex) {
@@ -1568,7 +1568,7 @@ s32 CanAccessStage(s32 stageIndex) {
         return FALSE;
     }
     
-    if (gLevelAccessBitfeild & temp_v0) {
+    if (gGameState.stageAccess & temp_v0) {
         return TRUE;
     }
     return FALSE;

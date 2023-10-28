@@ -290,25 +290,41 @@ ninja_file.variable('CC', 'tools/gcc_2.7.2/linux/gcc')
 ninja_file.variable('STRIP', 'mips-linux-gnu-strip')
 ninja_file.variable('CPPFLAGS', '-I. -I include -I include/PR -I include -I src -I build/include')
 
+ninja_file.rule('gcc_dependency',
+    command = '$cc_check -MM $in -MT $out -MF $out.d',
+    description = 'Generating dependencies $out.d',
+    depfile = '$out.d',
+    deps = 'gcc')
+
 ninja_file.rule('ido_O3_cc',
     command = '$ido_cc -c -G 0 -Xcpluscomm -xansi -I. -Iinclude/PR -Iinclude -non_shared -mips2 -woff 819,826,852 -Wab,-r4300_mul -nostdinc -O3 -o $out $in',
-    description = 'Compiling -O3 ido .c file' )
+    description = 'Compiling -O3 ido .c file',
+    depfile = '$out.d',
+    deps = 'gcc')
 
 ninja_file.rule('motor_O3_cc',
     command = '$ido_cc -c -G 0 -Xcpluscomm -xansi -I. -Iinclude/PR -Iinclude -non_shared -mips1 -woff 819,826,852 -Wab,-r4300_mul -nostdinc -O3 -o $out $in',
-    description = 'Compiling -O3 ido .c file' )
+    description = 'Compiling -O3 ido .c file',
+    depfile = '$out.d',
+    deps = 'gcc')
 
 ninja_file.rule('gcc_cc',
     command = '(export COMPILER_PATH=tools/gcc_2.7.2/linux && $CC -O2 -G0 -mips3 -mgp32 -mfp32 -D_LANGUAGE_C $CPPFLAGS -c -o $out $in) && ($STRIP $out -N dummy-symbol-name)',
-    description = 'Compiling -O2 .c file' )
+    description = 'Compiling -O2 .c file',
+    depfile = '$out.d',
+    deps = 'gcc')
 
 ninja_file.rule('O2_cc',
     command = '$ASM_PROC $ASM_PROC_FLAGS $ido_cc -- $AS $ASFLAGS -- -c $cflags $DEFINES $CFLAGS $mips_version -O2 -o $out $in',
-    description = 'Compiling -O2 .c file' )
+    description = 'Compiling -O2 .c file',
+    depfile = '$out.d',
+    deps = 'gcc')
 
 ninja_file.rule('O1_cc',
     command = '$ASM_PROC $ASM_PROC_FLAGS $ido_cc -- $AS $ASFLAGS -- -c $cflags $DEFINES $CFLAGS $mips_version -O1 -o $out $in',
-    description = 'Compiling -O1 .c file' )
+    description = 'Compiling -O1 .c file',
+    depfile = '$out.d',
+    deps = 'gcc')
 
 ninja_file.rule('s_file',
     command = 'iconv --from UTF-8 --to EUC-JP $in | $AS $ASFLAGS -o $out',
@@ -430,17 +446,26 @@ c_file_rule_overrides = {
 
 for c_file in c_files:
     file_name = os.path.basename(c_file)
+    dep = append_prefix(append_extension(c_file) + '.d')
+    c_file_target = append_prefix(append_extension(c_file))
+
+    #build depedency file
+    ninja_file.build(dep, "gcc_dependency", c_file)
+
     if file_name in c_file_rule_overrides:
         build_target = c_file_rule_overrides[file_name]
-        ninja_file.build(append_prefix(append_extension(c_file)), build_target, c_file)
-    elif os.path.dirname(c_file) in [audio_dir, code_dir, libc_dir]:
-        ninja_file.build(append_prefix(append_extension(c_file)), "O2_cc", c_file)
+        ninja_file.build(append_prefix(append_extension(c_file)), build_target, c_file, dep)
+    elif os.path.dirname(c_file) in [code_dir, libc_dir]:
+        ninja_file.build(append_prefix(append_extension(c_file)), "O2_cc", c_file, dep)
+    elif os.path.dirname(c_file) == audio_dir:
+        ninja_file.build(append_prefix(append_extension(c_file)), "O2_cc", c_file, dep)  # Update later
     elif os.path.dirname(c_file) == gu_dir:
-        ninja_file.build(append_prefix(append_extension(c_file)), "O2_cc", c_file)  # Update later
+        ninja_file.build(append_prefix(append_extension(c_file)), "O2_cc", c_file, dep)  # Update later
     elif os.path.dirname(c_file) in [io_dir, os_dir]:
-        ninja_file.build(append_prefix(append_extension(c_file)), "O1_cc", c_file)
+        ninja_file.build(c_file_target, "O1_cc", c_file, dep)
     else:
-        ninja_file.build(append_prefix(append_extension(c_file)), "O2_cc", c_file)
+        ninja_file.build(append_prefix(append_extension(c_file)), "O2_cc", c_file, dep)
+
 
 for s_file in s_files:
     if "asm/nonmatchings" in s_file:
@@ -528,8 +553,8 @@ for img_file in image_files_o:
 ninja_file.build("build/chameleonTwistJP.elf", "make_elf ", o_files)
 ninja_file.build("build/chameleonTwistJP.z64", "make_z64 ", "build/chameleonTwistJP.elf")
 
-if variable_value is not None:
-    ninja_file.build("src/mod/n64AutoBoot/chameleonTwistJP_Mod.z64", "start_z64 ", "build/chameleonTwistJP.z64")
+# if variable_value is not None:
+#     ninja_file.build("src/mod/n64AutoBoot/chameleonTwistJP_Mod.z64", "start_z64 ", "build/chameleonTwistJP.z64")
 
 
 
