@@ -974,7 +974,16 @@ void func_800383C0(Actor* greyAntSpawnerActor) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_800383E4.s")
+// ???: Nathan R.
+void func_800383E4(Actor* arg0) {
+    arg0->userVariables[0] += 1;
+    if (((arg0->userVariables[0] %  arg0->unk_128) == 1) && (Actor_Init(3, arg0->pos.x, arg0->pos.y, arg0->pos.z, 0.0f, -50000.0f, 50000.0f, -50000.0f, 50000.0f, -50000.0f, 50000.0f, arg0->position._f32.x, arg0->position._f32.y, arg0->unk_15C, arg0->unk_160, arg0->unk_164, arg0->unk_168, arg0->unk_16C, arg0->unk_170, arg0->unk_124, arg0->unk_128, arg0->unk_12C, arg0->unk_130) != -1)) {
+        arg0->userVariables[1] -= 1;
+        if (arg0->userVariables[1] == 0) {
+            arg0->actorID = 0;
+        }
+    }
+}
 
 // Grey Ant Function: Rainchu and Elisiah
 void ActorInit_AntGrey(Actor* actor) {
@@ -991,8 +1000,22 @@ void ActorInit_AntGrey(Actor* actor) {
 void func_80038990(Actor* bulletHellAntSpawnerActor) {
     bulletHellAntSpawnerActor->userVariables[1] = bulletHellAntSpawnerActor->unk_128;
 }
+// ???: Nathan R.
+void func_8003899C(Actor* arg0) {
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8003899C.s")
+    if (PlayerPointer->pos.z > -500.0f) {
+        arg0->userVariables[2] = 1;
+    }
+    if (arg0->userVariables[2] != 0) {
+        arg0->userVariables[0] += 1;
+        if (((arg0->userVariables[0] % (s32) arg0->unk_124) == 1) && (Actor_Init(4, arg0->pos.x, arg0->pos.y, arg0->pos.z, 0.0f, -50000.0f, 50000.0f, -50000.0f, 50000.0f, -50000.0f, 50000.0f, arg0->position._f32.x, arg0->position._f32.y, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0, 0, 0, 0) != -1)) {
+            arg0->userVariables[1] -= 1;
+            if (arg0->userVariables[1] == 0) {
+                func_80031518(arg0);
+            }
+        }
+    }
+}
 
 //ActorInit_AntBulletHell: Nathan R.
 void ActorInit_AntBulletHell(Actor* arg0) {
@@ -1025,7 +1048,13 @@ s32 func_80038B98(Actor* arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80038C64.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80038E64.s")
+// ???: Nathan R. (similar to unk_5C)
+void func_80038E64(Actor* arg0) {
+    arg0->userVariables[0] += 1;
+    if ((arg0->userVariables[0] % arg0->unk_128) == 1) {
+        Actor_Init(5, arg0->pos.x, arg0->pos.y, arg0->pos.z, 0.0f, -50000.0f, 50000.0f, -50000.0f, 50000.0f, -50000.0f, 50000.0f, arg0->position._f32.x, arg0->position._f32.y, arg0->unk_15C, arg0->unk_160, arg0->unk_164, arg0->unk_168, arg0->unk_16C, arg0->unk_170, arg0->unk_124, arg0->unk_128, arg0->unk_12C, arg0->unk_130);
+    }
+}
 
 // Ant Trio Function: Elisiah
 void func_80038F70(Actor* antTrioActor) {
@@ -1080,9 +1109,32 @@ void ActorInit_AntQueenDrone(Actor* arg0) {
     arg0->vel.y = 38.40000153f;
     func_800382F4(arg0);
 }
+// Ant Queen-Ant (Tick): Nathan R. (rain matched the same-line thing)
+void ActorTick_AntQueenDrone(Actor* arg0) {
+    f32 playerXMod;
+    f32 playerZMod;
+
+    if (arg0->userVariables[0] == 0) {
+        arg0->vel.y -= 3.2f;
+    }
+    if ((arg0->pos.y <= 0.0f) && (arg0->vel.y < 0.0f)) {
+        arg0->userVariables[0] = 1;
+        arg0->pos.y = 0.0f;
+        arg0->vel.y = 0.0f;
+    }
+    if ((arg0->pos.x < -1400.0f) || (arg0->pos.x > 1400.0f) || (arg0->pos.z < -1400.0f) || (arg0->pos.z > 1400.0f)) {
+        playerXMod = PlayerPointer->pos.x;
+        playerZMod = PlayerPointer->pos.z;
+        if (playerXMod < -1300.0f) playerXMod = -1300.0f;
+        if (playerXMod > 1300.0f) playerXMod = 1300.0f;
+        if (playerZMod < -1300.0f) playerZMod = -1300.0f;
+        if (playerZMod > 1300.0f) playerZMod = 1300.0f;
+        arg0->unk_90 = CalcAngleBetween2DPoints(arg0->pos.x, arg0->pos.z, playerXMod, playerZMod);
+    }
+    func_800382F4(arg0);
+}
 
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_AntQueenDrone.s")
 
 // White Bomb Snake Function: Elisiah
 void func_8003BA38(Actor* whiteBombSnakeActor) {
@@ -1129,7 +1181,29 @@ void func_8003BEE8(Actor* missileActor) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8003C584.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8003C734.s")
+// ???: Nathan R.
+s32 func_8003C734(Actor* arg0, s32 arg1) {
+    s32 passVar;
+    s32 cacheID;
+
+    cacheID = Actor_Init(arg0->actorID, arg0->pos.x, arg0->pos.y, arg0->pos.z, arg0->unk_90, arg0->unk_F4, arg0->unk_F8, arg0->unk_FC, arg0->unk_100, arg0->unk_104, arg0->unk_108, arg0->position._f32.x, arg0->position._f32.y, arg0->unk_15C, arg0->unk_160, arg0->unk_164, arg0->unk_168, arg0->unk_16C, arg0->unk_170, 0, arg0->unk_128, arg0->unk_12C, arg0->unk_130);
+    if (cacheID == -1) return -1;
+    if (arg1 == 1) {
+        passVar = 12;
+        gActors[cacheID].userVariables[2] = passVar;
+        gActors[cacheID].userVariables[1] = passVar;
+    } else {
+        passVar = (arg1 * 8) + 8;
+        gActors[cacheID].userVariables[2] = passVar;
+        gActors[cacheID].userVariables[1] = passVar;
+    }
+    if ((arg1 == 2) || (arg1 == 10)) {
+        gActors[cacheID].unk_A0.unk_00 = 3;
+    }
+    gActors[cacheID].userVariables[3] = arg1;
+    gActors[cacheID].unk_124 = arg0->actorIndex;
+    return cacheID;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8003C8AC.s")
 
@@ -1270,7 +1344,19 @@ void func_8003E660(Actor* actor) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8003E6C4.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8003E870.s")
+// ???: Nathan R.
+void func_8003E870(Actor* arg0, s32 arg1) {
+    arg0->vel.x += -arg0->unk_134[0] * 2 * arg0->vel.x;
+    arg0->vel.z += -arg0->unk_134[0] * 2 * arg0->vel.z;
+    arg0->vel.y -= 3.2f + (arg0->vel.y * (3.2f / arg0->unk_16C));
+    arg0->unk_134[3] += 40;
+    if (arg0->pos.y + arg0->vel.y < 0) {
+        arg0->vel.y = -arg0->vel.y * 0.95f;
+        func_8006F8D8(arg0->pos.x, arg0->pos.y, arg0->pos.z);
+        playSoundEffect(132, &arg0->pos.x, &arg0->pos.y, &arg0->pos.z, 0, 0);
+        arg0->userVariables[0] = arg1;
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8003E968.s")
 
@@ -1304,7 +1390,28 @@ void func_8003FB04(Actor* pogoActor) {
     func_8003FA38(pogoActor, pogoActor->position._f32.x, pogoActor->position._f32.y, pogoActor->unk_15C);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8003FB4C.s")
+void func_8003FB4C(Actor* arg0) {
+    arg0->userVariables[3] += 1;
+    if ((arg0->userVariables[3] % (s32) arg0->unk_124) == 0) {
+        arg0->userVariables[0] += 3;
+        func_8003FA38(arg0, PlayerPointer->pos.x, PlayerPointer->yCounter, PlayerPointer->pos.z);
+        return;
+    }
+    switch (arg0->userVariables[0]) {                              /* irregular */
+    case 0:
+        arg0->userVariables[0] = 1;
+        func_8003FA38(arg0, arg0->position._f32.x, arg0->position._f32.y, arg0->unk_15C);
+        return;
+    case 1:
+        arg0->userVariables[0] = 2;
+        func_8003FA38(arg0, arg0->unk_160, arg0->unk_164, arg0->unk_168);
+        return;
+    case 2:
+        arg0->userVariables[0] = 0;
+        func_8003FA38(arg0, arg0->unk_134[0], arg0->unk_134[1], arg0->unk_134[2]);
+        return;
+    }
+}
 
 // 0x21
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8003FC54.s")
@@ -1564,7 +1671,15 @@ void func_80043FE8(Actor* barrelJumpFireSpawnerActor){
 
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80043FF0.s")
+void func_80043FF0(Actor* arg0) {
+    if ((u32) arg0->unk_128 < (u32) arg0->globalTimer) {
+        arg0->userVariables[0] += 1;
+        if ((arg0->userVariables[0] % (s32) arg0->unk_124) == 0) {
+            Actor_Init(0x37, arg0->pos.x, arg0->pos.y, arg0->pos.z, 0.0f, arg0->unk_F4, arg0->unk_F8, arg0->unk_FC, arg0->unk_100, arg0->unk_104, arg0->unk_108, arg0->position._f32.x, arg0->position._f32.y, arg0->unk_15C, arg0->unk_160, 0.0f, 0.0f, 0.0f, 0.0f, 0, 0, 0, 0);
+        }
+    }
+}
+
 
 // Barrel Jump Fire Actor: Elisiah
 void func_800440FC(Actor* barrelJumpFireActor) {
@@ -1793,7 +1908,21 @@ void func_80047C04(Actor* fishActor) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80047C18.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80047FC0.s")
+// ??? Function: Auto-Decompile
+s32 func_80047FC0(Actor* arg0, s32 arg1) {
+    Actor* temp_v1;
+    s32 temp_v0;
+
+    temp_v0 = Actor_Init(arg0->actorID, arg0->pos.x, arg0->pos.y, arg0->pos.z, arg0->unk_90, arg0->unk_F4, arg0->unk_F8, arg0->unk_FC, arg0->unk_100, arg0->unk_104, arg0->unk_108, arg0->position._f32.x, arg0->position._f32.y, arg0->unk_15C, arg0->unk_160, arg0->unk_164, arg0->unk_168, arg0->unk_16C, arg0->unk_170, arg0->unk_124, arg0->unk_128, arg0->unk_12C, arg0->unk_130);
+    if (temp_v0 == -1) {
+        return -1;
+    }
+    temp_v1 = &gActors[temp_v0];
+    temp_v1->userVariables[0] = arg1 * 0x3C;
+    temp_v1->userVariables[3] = arg1;
+    return temp_v0;
+}
+
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_800480EC.s")
 
@@ -1858,8 +1987,23 @@ void ActorInit_LizardKong(Actor* arg0) {
     arg0->unk_EC = 5;
 }
 
+// ???: Auto-Decompile
+void func_80048AFC(Actor* arg0) {
+    switch (arg0->unk_F0) {
+    case 12:
+        playSoundEffect(72, &arg0->pos.x, &arg0->pos.y, &arg0->pos.z, 0, 0);
+        return;
+    case 34:
+    case 42:
+    case 50:
+    case 58:
+        playSoundEffect(77, &arg0->pos.x, &arg0->pos.y, &arg0->pos.z, 0, 0);
+        /* fallthrough */
+    default:
+        return;
+    }
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80048AFC.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_LizardKong.s")
 
@@ -1911,8 +2055,8 @@ void func_80049A64(Actor* unk_51Actor) {
     func_800383C0(unk_51Actor);
 }
 
-void func_80049A84(void) {
-    func_800383E4();
+void func_80049A84(Actor* arg0) {
+    func_800383E4(arg0);
 }
 
 // unk_52 Function: Elisiah
@@ -1929,7 +2073,18 @@ void func_80049AE4(Actor* battleModeSandCrabSpawnerActor){
 
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80049AEC.s")
+// ???: Nathan R.
+void func_80049AEC(Actor* arg0) {
+    f32 deg;
+    arg0->userVariables[1] += 1;
+    if (arg0->userVariables[1] % arg0->unk_124 == 0) {
+        arg0->userVariables[2] += 1;
+        deg = (arg0->userVariables[2] * 45) + ((arg0->userVariables[2] / 8) * 15);
+        wrapDegrees(&deg);
+        Actor_Init(0x54, arg0->pos.x, arg0->position._f32.x, arg0->pos.z, deg, -50000.0f, 50000.0f, -50000.0f, 50000.0f, -50000.0f, 50000.0f, arg0->position._f32.y, arg0->unk_15C, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0, 0, 0, 0);
+    }
+}
+
 
 // Battle Mode Sand Crab Function: Elisiah
 void func_80049C34(Actor* battleModeSandCrabActor) {
@@ -2021,13 +2176,19 @@ void ActorInit_PowerUpSpawner(Actor* powerUpSpawnerActor){
 // unk_5B
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_PowerUpSpawner.s")
 
-// Falling Grey Ant Spawner Auto-Decompile
+// Falling Grey Ant Spawner: Auto-Decompile
 void func_8004A544(Actor* fallingGreyAntSpawnerActor){
     
 }
 
-// unk_5C
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8004A54C.s")
+// unk_5C: Nathan R.
+void func_8004A54C(Actor* arg0) {
+    arg0->userVariables[0] += 1;
+    if ((arg0->userVariables[0] % arg0->unk_128) == 1) {
+        Actor_Init(93, arg0->pos.x, arg0->pos.y, arg0->pos.z, 0.0f, -50000.0f, 50000.0f, -50000.0f, 50000.0f, -50000.0f, 50000.0f, arg0->position._f32.x, arg0->position._f32.y, arg0->unk_15C, arg0->unk_160, arg0->unk_164, arg0->unk_168, arg0->unk_16C, arg0->unk_170, arg0->unk_124, arg0->unk_128, arg0->unk_12C, arg0->unk_130);
+    }
+}
+
 
 // Falling Grey Ant Function: Elisiah
 void func_8004A658(Actor* fallingGreyAntActor) {
@@ -2152,7 +2313,22 @@ void func_8004C3A4(s16* arg0, f32 arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8004C600.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8004CC6C.s")
+s32 func_8004CC6C(void) {
+    switch (gCurrentZone) {
+    case 15:
+        return 255;
+    case 5:
+        return 1;
+    case 1:
+    case 2:
+    case 3:
+    case 6:
+    case 7:
+        return 255;
+    default:
+        return 8;
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8004CCBC.s")
 

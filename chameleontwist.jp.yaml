@@ -428,14 +428,8 @@ segments:
   - [0x2A1C00, bin, BGM28StageSelectReprise] #size of 0x0DB9
   - [0x2A29C0, bin, ctl2] #size of 0x8760
   - [0x2AB120, bin, tbl2] #sfxs #unkSize
-  - [0x2D2BA0, bin] #size of 8?
-  - [0x2D2BA8, bin] #size of 0x500 (slightly dips into next element?)
-  - [0x2D309C, bin] #size of 0x500 (reads a bit from previous element?)
-  - [0x2D30A8, bin] #unksize
-  - [0x2D3588, bin] #size of 0x500 (slightly dips into next element?)
-  - [0x2D359C, bin] #unkSize
-  - [0x2D3A86, bin] #0x500 (reads a bit from previous element?)
-  - [0x2D3F86, bin] #unkSize
+  - [0x2ab398, bin, sound/testSND] #0x8 padding at end
+  - [0x2ab5e0, bin, rest]
   - [0x480740, bin]
   - [0x4807a0, bin, Level/AntLand]
   #- [0x481A70, bin]

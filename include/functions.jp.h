@@ -60,7 +60,7 @@ s32 isActiveExplosion(Actor*);
 void func_800382F4(Actor*);
 void func_800383A0(Actor*);
 void func_800383C0(Actor*); // Grey Ant Spawner: Elisiah
-void func_800383E4(void);
+void func_800383E4(Actor*);
 void ActorInit_AntGrey(Actor*); // Grey Ant Function: Rainchu and Elisiah
 void func_80038574(void);
 void func_80038990(Actor*); // Bullet-Hell Ant Spawner: Elisiah
@@ -169,7 +169,7 @@ void func_80049934(Actor*); // Choco Kid Spawner: Auto-Decompile
 void func_80049A24(Actor*); // Choco Kid Function: Elisiah
 void func_80049A44(Actor*);
 void func_80049A64(Actor*); // unk_51 Function: Elisiah
-void func_80049A84(void);
+void func_80049A84(Actor*);
 void func_80049AA4(Actor*); // unk_52 Function: Elisiah
 void func_80049AC4(void);
 void func_80049AE4(Actor*); // Battle Mode Sand Crab Spawner: Auto-Decompile
