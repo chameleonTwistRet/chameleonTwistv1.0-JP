@@ -427,7 +427,10 @@ typedef struct frameBufferData {
 } frameBufferData; //sizeof 0x25800
 
 typedef struct unkSpriteStruct5 {
-    /* 0x00 */ char unk_00[0x14];
+    /* 0x00 */ s32 unk_00;
+    /* 0x04 */ s32 unk_04;
+    /* 0x08 */ s32 unk_08;
+    /* 0x0C */ char unk_0C[0x08];
     /* 0x14 */ s32 unk_14;
     /* 0x18 */ char unk_18[0xCC];
     /* 0xE4 */ s32 unk_E4;

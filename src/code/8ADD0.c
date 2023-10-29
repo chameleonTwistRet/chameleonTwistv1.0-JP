@@ -1,16 +1,9 @@
 #include "common.h"
 
-extern playerActor gPlayerActors[4];
-extern unkStruct07 D_802019A8[];
-extern Collision gZoneCollisions[];
-extern CardinalDirection gCardinalDirections[5]; // including "NO_DIR"
-extern s32 sBossIDs[6];
-s32* func_800B3424(s32);
-void func_800B5C60(tempStruct*);
-void func_800C2670(s32, playerActor*, s32);
-s32* func_800B3484(s32);
-void func_800314E4(Actor*);
-void func_800B35B0(s32);
+typedef struct temp_func_800B2AB4 {
+    char unk0[0x4];
+    s32 unk4;
+} temp_func_800B2AB4;
 
 typedef struct unk801B3178 {
     char unk_00[0x18];
@@ -21,9 +14,6 @@ typedef struct unk8020D908 {
     s32 unk_00;
     char unk_04[0x54];
 } unk8020D908;
-
-extern unk801B3178* D_801B3178;
-extern unk8020D908 D_8020D908;
 
 typedef struct newStruct {
     s32 dummy0[10]; // Placeholder for the first 10 elements
@@ -37,10 +27,30 @@ typedef struct unkStruct20 {
     char unk_26[2];
 } unkStruct20;
 
+extern playerActor gPlayerActors[4];
+extern unkStruct07 D_802019A8[];
+extern Collision gZoneCollisions[];
+extern CardinalDirection gCardinalDirections[5]; // including "NO_DIR"
+extern s32 sBossIDs[6];
+extern unk801B3178* D_801B3178;
+extern unk8020D908 D_8020D908;
+
 extern unkStruct20 D_802039B8[];
 extern s32 D_80206CF4;
 extern unkSpriteStruct5* D_80240898;
 
+void func_800BE2A4(s32);
+void func_800BE370(s32);
+void func_800BF268(s32);
+void func_800BF524(s32);
+s32 func_800C1550(void);
+s32* func_800B3424(s32);
+void func_800B5C60(tempStruct*);
+void func_800C2670(s32, playerActor*, s32);
+s32* func_800B3484(s32);
+void func_800314E4(Actor*);
+void func_800B35B0(s32);
+void func_800B255C(Vec3f*, Vec3f, Collider*);
 void func_800C2A00(void);
 void func_800CFDC8(playerActor*);
 s32 func_800B4A3C(unkItemStruct*);
@@ -290,9 +300,31 @@ s32 func_800B2510(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B255C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B2AB4.s")
+Vec3f* func_800B2AB4(Vec3f* arg0, Vec3f arg1, temp_func_800B2AB4* arg4) {
+    Collider* temp = &D_80236980[arg4->unk4];
+    Vec3f sp20;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B2B50.s")
+    func_800B255C(&sp20, arg1, temp);
+    *arg0 = sp20;
+    return arg0;
+}
+
+s32 func_800B2B50(s32 arg0, s32 arg1) {
+    s32 ret = -1;
+    s32 i;
+    unkSpriteStruct5** temp;
+    unkSpriteStruct5* temp2;
+
+    for (i = 0, temp = &D_80240898; i < gFeildCount; i++, temp++) {
+        temp2 = *temp;
+        if ((arg0 == temp2->unk_04) && (arg1 == temp2->unk_08)) {
+            ret = temp2->unk_00;
+            break;
+        }
+        
+    }
+    return ret;
+}
 
 Vec3f* Vec3f_SetAtBossPos(Vec3f* arg0) {
     Actor* actors;
@@ -1145,7 +1177,18 @@ void func_800C0E78(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C1BF0.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C1C64.s")
+void func_800C1C64(s32 arg0) {
+    if (func_800C1550() != 0) {
+        if ((gDoorCount > 0) && (arg0 == gDoors->inZone)) {
+            gDoorCount = 0;
+        }
+        func_800BF268(arg0);
+        func_800BF524(arg0);
+        func_800BE370(arg0);
+        func_800BE2A4(arg0);
+        EraseRoomItem(arg0);
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C1CE0.s")
 
