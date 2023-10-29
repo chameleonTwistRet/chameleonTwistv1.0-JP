@@ -9,6 +9,22 @@ s32* func_800B3424(s32);
 void func_800B5C60(tempStruct*);
 void func_800C2670(s32, playerActor*, s32);
 s32* func_800B3484(s32);
+void func_800314E4(Actor*);
+void func_800B35B0(s32);
+
+typedef struct unk801B3178 {
+    char unk_00[0x18];
+    s32 unk_18;
+} unk801B3178;
+
+typedef struct unk8020D908 {
+    s32 unk_00;
+    char unk_04[0x54];
+} unk8020D908;
+
+extern unk801B3178* D_801B3178;
+extern unk8020D908 D_8020D908;
+
 typedef struct newStruct {
     s32 dummy0[10]; // Placeholder for the first 10 elements
     f32 field1;
@@ -123,7 +139,21 @@ void func_800B2144(Collider* arg0, unkStruct14* arg1) {
     func_800B35FC(arg0->unk_AC);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B216C.s")
+void func_800B216C(Collider* arg0) {
+    Actor* actorList;
+    s32 ballCount = 0;
+    s32 i;
+
+    for (i = 0, actorList = gActors; i < 64; i++, actorList++) {
+        if (actorList->actorID == 0x2D) {
+            ballCount++;
+        }
+    }
+
+    if (ballCount == 0) {
+        func_800B35B0(arg0->unk_AC);
+    }
+}
 
 void func_800B21CC(s32 arg0, s32 arg1) {
     func_800BE2C0();
@@ -202,7 +232,37 @@ s32 isBossActor(Actor* actor) {
     return isBossID(actor->actorID);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B2308.s")
+f32 func_800B2308(f32 arg0, s32 arg1) {
+    f32 var_f12;
+
+    switch (arg1) {
+    case 0:
+        if (arg0 < 0.1) {
+            var_f12 = (arg0 * arg0) / 0.18;
+        } else if (arg0 < 0.9) {
+            var_f12 = (arg0 * 0.2 - 0.01) / 0.18;
+        } else {
+            var_f12 = 1.0 - ((1.0 - arg0) * (1.0 - arg0) / 0.18);
+        }
+        break;
+    case 1:
+        var_f12 = (1.0 - __cosf(arg0 * PI)) * 0.5;
+        break;
+    case 2:
+        var_f12 = arg0;
+        break;
+    case 3:
+        var_f12 = arg0 * arg0;
+        break;
+    case 4:
+        var_f12 = (-arg0 * arg0) + (2.0 * arg0);
+        break;
+    default:
+        var_f12 = arg0;
+        break;
+    }
+    return var_f12;
+}
 
 // lerp 2 vec3f's by a scalar computed by func_800B2308
 Vec3f* func_800B2470(Vec3f* arg0, Vec3f arg1, Vec3f arg4, f32 arg7, s32 arg8) {
@@ -814,15 +874,58 @@ void func_800BA900(tempStruct* arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BE1C4.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BE24C.s")
+void func_800BE24C(void) {
+    s32 temp = D_801B3178->unk_18;
+    D_8020D908.unk_00 = temp;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BE264.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BE2A4.s")
+void func_800BE2A4(s32 arg0) {
+    s32 temp = D_801B3178->unk_18;
+    D_8020D908.unk_00 = temp;
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BE2C0.s")
+void func_800BE2C0(void) {
+    Actor* actorList = gActors;
+    s32 i;
 
+    for (i = 0; i < 64; i++, actorList++) {
+        if ((IsntPickup(actorList) != 0) && (actorList->actorState != 0)) {
+            func_800311C8(actorList);
+            func_800314E4(actorList);
+        }
+    }
+    
+    for (i = 0; i < 4; i++) {
+        gTongues[i].amountTnTongue = 0;
+        gTongues[i].amountInMouth = 0;
+        gPlayerActors[i].amountToShoot = 0;
+        gPlayerActors[i].shootLeft = 0;
+        func_800BE474(&gTongues[i]);
+    }
+}
+
+#ifdef NON_MATCHING
+void func_800BE370(s32 arg0) {
+    Actor* actorList;
+    s32 i;
+    Rect* rectTemp = &gZoneCollisions[arg0].rect_30;
+
+    for (i = 0, actorList = gActors; i < 64; i++, actorList++) {
+        if ((IsntPickup(actorList) != 0) && (actorList->actorState == 0)) {
+            if ((rectTemp->min.x <= actorList->pos.x)  && (actorList->pos.x <= rectTemp->max.x)) {
+                if ((rectTemp->min.z <= actorList->pos.z) && (actorList->pos.z <= rectTemp->max.z)) {
+                    func_800311C8(actorList);
+                    func_800314E4(actorList);
+                }
+            }
+        }
+    }
+}
+#else
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BE370.s")
+#endif
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BE474.s")
 

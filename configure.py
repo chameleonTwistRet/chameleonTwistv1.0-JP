@@ -82,7 +82,7 @@ ninja_file.variable('MAKE_EXPECTED', 'tools/make_expected.py')
 ninja_file.variable('GCC_FLAGS', '$include_cflags $DEFINES -G 0 -mno-shared -march=vr4300 -mfix4300 -mabi=32 -mhard-float -mdivide-breaks -fno-stack-protector -fno-common -fno-zero-initialized-in-bss -fno-PIC -mno-abicalls -fno-strict-aliasing -fno-inline-functions -ffreestanding -fwrapv -Wall -Wextra -Wno-missing-braces')
 
 ninja_file.rule('gcc_dependency',
-    command = '$cc_check -MM $in -MT $out -MF $out.d',
+    command = '$cc_check -MM -MT $out -MF $out.d $in',
     description = 'Generating dependencies $out.d',
     depfile = '$out.d',
     deps = 'gcc')

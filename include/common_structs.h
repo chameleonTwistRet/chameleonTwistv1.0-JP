@@ -462,31 +462,37 @@ typedef struct tempStruct {
     /* 0x3C */ Vec3f unk_3C;
 } tempStruct; //sizeof 0x48
 
-typedef struct CTTask { // interally referred to as "S_task"
+typedef struct CTTask {
     /* 0x00 */ s16 unk_00;
     /* 0x02 */ s16 unk_02;
-    /* 0x04 */ s32 unk_04;
+    /* 0x04 */ s16 unk_04;
+    /* 0x06 */ char unk06[2];
     /* 0x08 */ void (*function)(struct CTTask*);
-    /* 0x0C */ struct CTTask* next; 
-    /* 0x10 */ struct CTTask* unk_10; //prev?
+    /* 0x0C */ struct CTTask* next;
+    /* 0x10 */ struct CTTask* unk_10;
     /* 0x14 */ Vec3f pos;
     /* 0x20 */ f32 rotA;
     /* 0x24 */ Vec3f scale;
     /* 0x30 */ Vec3f rot;
     /* 0x3C */ f32 unk3C;
-    /* 0x40 */ char pad40[0x14];
-    /* 0x54 */ u8 unk54;                            /* inferred */
-    /* 0x55 */ char pad55[7];                       /* maybe part of unk54[8]? */
+    /* 0x40 */ char pad40[0x14];                    /* maybe part of unk3C[6]? */
+    /* 0x54 */ u8 unk54;
+    /* 0x55 */ char pad55[3];                       /* maybe part of unk54[4]? */
+    /* 0x58 */ struct CTTask* unk58;                       /* inferred */
     /* 0x5C */ s16 unk_5C;
-    /* 0x5E */ char pad5E[4];                       /* maybe part of unk_5C[3]? */
+    /* 0x5E */ s16 unk5E;
+    /* 0x60 */ s16 unk60;
     /* 0x62 */ s16 unk_62;
     /* 0x64 */ s16 unk_64;
-    /* 0x66 */ char pad66[2];
+    /* 0x66 */ s16 unk66;
     /* 0x68 */ s16 unk_68;
     /* 0x6A */ char pad6A[2];
-    /* 0x6C */ char unk6C[0x18];
-    /* 0x84 */ char str[0x24]; // used in strcpy twice.
-} CTTask; //sizeof 0xA8
+    /* 0x6C */ char unk6C[2];
+    /* 0x6E */ s16 unk_6E;
+    /* 0x70 */ s16 unk_70;
+    /* 0x74 */ char unk74[0x10];
+    /* 0x84 */ s8 str[0x24]; // used in strcpy twice.
+} CTTask;
 
 typedef struct unk801FCA20 {
     /* 0x00 */ s32 unk_00;
@@ -841,13 +847,6 @@ typedef struct ModelData{
     Vec3f* tris;
     Rect* modelBox;
 } ModelData; //sizeof 0x14
-
-typedef struct unk_func_800A54F4 {
-    char unk_00[0x5E];
-    s16 unk5E;
-    s16 unk60;
-    s16 unk62;
-} unk_func_800A54F4; //sizeof ?
 
 typedef struct unkBlackChameleon1 {
     char unk_00[0x38];
