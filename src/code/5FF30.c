@@ -1125,11 +1125,11 @@ void func_8008FEA8(s32 arg0, s32 arg1) {
                 return;
             }
         }
-        if (!IS_SEGMENTED(gStageLoadData[arg0].name)) {
-            var_a0 = (s32*)gStageLoadData[arg0].name;
+        if (!IS_SEGMENTED(gStageLoadData[arg0].header)) {
+            var_a0 = (s32*)gStageLoadData[arg0].header;
         } else {
             //why was the macro not used?
-            var_a0 = (s32*)(D_80100F50[((u32)(gStageLoadData[arg0].name) & SEGMENT_MASK) >> SEGMENT_SHIFT].base_address + ((u32)(gStageLoadData[arg0].name) & ~SEGMENT_MASK));
+            var_a0 = (s32*)(D_80100F50[((u32)(gStageLoadData[arg0].header) & SEGMENT_MASK) >> SEGMENT_SHIFT].base_address + ((u32)(gStageLoadData[arg0].header) & ~SEGMENT_MASK));
         }
         
         if (!IS_SEGMENTED(var_a0[7])) {
@@ -1512,7 +1512,7 @@ s32 func_8009603C(s32 segmentID, s32 arg1) {
 
     segment = &gSegTable[segmentID];                            
     temp_s3 = &D_80100F50[segmentID];                            
-    temp_s1 = (u32) segment->ramAddrEnd - (u32) segment->ramAddrStart;
+    temp_s1 = (u32) segment->id - (u32) segment->end;
     temp_s3->base_address = arg1 - temp_s1;
     temp_s3->unk4 = (u32) arg1;
     temp_s0 = dma_copy(segment->romAddrStart, (void* ) temp_s3->base_address, temp_s1);
@@ -1522,13 +1522,13 @@ s32 func_8009603C(s32 segmentID, s32 arg1) {
         return 0;
     }
     while (func_800A72E8(temp_s0) == 0) {}
-    DummiedPrintf("%sセグメント(%dk)読み込み(%X)\n", segment->name, (u32) temp_s1 >> 0xA, temp_s1);
+    DummiedPrintf("%sセグメント(%dk)読み込み(%X)\n", segment->header, (u32) temp_s1 >> 0xA, temp_s1);
     return (s32) temp_s3->base_address;
 }
 
 u32 func_80096128(s32 stageToLoad, s32 inpAddr) {
     segTableEntry* segData = &gStageLoadData[stageToLoad];
-    s32 size = (u32) segData->ramAddrStart - (u32) segData->romAddrEnd;
+    s32 size = (u32) segData->end - (u32) segData->bank;
     s32 temp_v0_2;
     
     D_80100F50[0x3].base_address = inpAddr - size;
@@ -2955,7 +2955,10 @@ void func_800A97E4(CTTask* arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800AA3F0.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800AA844.s")
+void func_800AA844(s32 arg0) {
+    gCurrentZone = arg0;
+    func_800C29D8(gCurrentZone);
+}
 
 void func_800AA86C(void) {
     if (D_80101048.unk_00 == gCurrentDemoTimer) {

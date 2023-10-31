@@ -3,7 +3,7 @@ Chameleon Twist: Sprite Actor struct splitter
 Dumps out spriteActor data as a .inc.c file.
 
 Original Author: Ellie (Elisiah)
-Modified for Level Header struct: Nathan R.
+Modified for Level Scope struct: Nathan R.
 """
 
 import re
@@ -15,7 +15,7 @@ from util import options
 from segtypes.common.codesubsegment import CommonSegCodeSubsegment
 
 
-class N64SegLevelHeader(CommonSegCodeSubsegment):
+class N64SegLevelScope(CommonSegCodeSubsegment):
     def __init__(
         self,
         rom_start,
@@ -53,9 +53,9 @@ class N64SegLevelHeader(CommonSegCodeSubsegment):
     def disassemble_data(self, rom_bytes):
         sprite_data = rom_bytes[self.rom_start : self.rom_end]
         segment_length = len(sprite_data)
-        if (segment_length) != 0x20:
+        if (segment_length) != 0x18:
             error(
-                f"Error: levelHeader segment {self.name} length ({segment_length}) is not valid"
+                f"Error: levelScope segment {self.name} length ({segment_length}) is not valid"
             )
 
         lines = []
@@ -67,12 +67,12 @@ class N64SegLevelHeader(CommonSegCodeSubsegment):
             lines.append('#include "common.h"')
             lines.append("")
             if "/" in self.name:
-                lines.append("LevelHeader %s = {" % (self.name.split("/")[(len(self.name.split("/"))-1)]))
+                lines.append("LevelScope %s = {" % (self.name.split("/")[(len(self.name.split("/"))-1)]))
             else:
-                lines.append("LevelHeader %s = {" % (self.name))
+                lines.append("LevelScope %s = {" % (self.name))
 
         byteData = bytearray(sprite_data)
-        data = struct.unpack('>IIIIIIII', byteData)
+        data = struct.unpack('>iiiiii', byteData)
         for v in data: 
             lines.append(f"    {v},")
 

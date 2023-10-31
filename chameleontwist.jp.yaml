@@ -1151,7 +1151,8 @@ segments:
     - [0x6bc274, roomSettings, model/JungleLand/extRooms/extRoom13]
     - [0x6bc2e0, roomSettings, model/JungleLand/extRooms/extRoom14]
     - [0x6bc34c, roomSettings, model/JungleLand/extRooms/extRoom15]
-    - [0x6bc3b8, levelHeader, model/JungleLand/header]
+    - [0x6bc3b8, levelScope, model/JungleLand/scope]
+    - [0x6bc3d0, levelHeader, model/JungleLand/header]
 
     - start: 0x6BC3F0
       name: jlScope

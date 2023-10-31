@@ -409,14 +409,6 @@ typedef struct SaveRecord {
 /* 0x76 */ s8 pad[10];
 } SaveRecord; //sizeof 0x80
 
-typedef struct segTableEntry {
-    char* name;
-    void* romAddrStart;
-    void* romAddrEnd;
-    void* ramAddrStart;
-    void* ramAddrEnd;
-} segTableEntry;
-
 typedef struct unk80100F50 {
     /* 0x00 */ u32 base_address;
     /* 0x04*/ u32 unk4;
@@ -1002,22 +994,33 @@ typedef struct RoomSettings {
     s32 unk68;
 } RoomSettings;
 
-typedef struct LevelHeader {
-    s32 unk34;
-    s32 unk30;
-    s32 unk2C;
-    s32 unk28;
+typedef struct LevelScope {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
     s32 renderDistance;
-    s32 unk20;
+    s32 unk14;
+}LevelScope;
+
+typedef struct LevelHeader {
     u32 Map;
     u32 OWRooms;
     u32 Pointers;
-    u32 unk10;
+    u32 unkC;
     u32 RoomObjects;
-    u32 unk8;
+    u32 unk14;
     u32 SpriteLib;
-    u32 Header;
+    LevelScope* Scope;
 } LevelHeader;
+
+typedef struct segTableEntry {
+    LevelHeader* header;
+    void* romAddrStart;
+    void* bank;
+    void* end;
+    s32 id;
+} segTableEntry;
 
 typedef struct Anim {
     f32 unk0;
