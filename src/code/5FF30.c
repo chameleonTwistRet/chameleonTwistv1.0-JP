@@ -1506,39 +1506,39 @@ void func_80094E0C(s32 arg0) {
 
 s32 func_8009603C(s32 segmentID, s32 arg1) {
     s32 temp_s0;
-    s32 temp_s1;
+    s32 size;
     unk80100F50* temp_s3;
     segTableEntry* segment;
 
     segment = &gSegTable[segmentID];                            
     temp_s3 = &D_80100F50[segmentID];                            
-    temp_s1 = (u32) segment->ramAddrEnd - (u32) segment->ramAddrStart;
-    temp_s3->base_address = arg1 - temp_s1;
+    size = (u32) segment->ramAddrEnd - (u32) segment->ramAddrStart;
+    temp_s3->base_address = arg1 - size;
     temp_s3->unk4 = (u32) arg1;
-    temp_s0 = dma_copy(segment->romAddrStart, (void* ) temp_s3->base_address, temp_s1);
-    temp_s3->unk4 = temp_s3->base_address + temp_s1;
+    temp_s0 = dma_copy(segment->romAddrStart, (void* ) temp_s3->base_address, size);
+    temp_s3->unk4 = temp_s3->base_address + size;
     if (temp_s0 < 0) {
         DummiedPrintf("エラー %d\n", temp_s0);
         return 0;
     }
     while (func_800A72E8(temp_s0) == 0) {}
-    DummiedPrintf("%sセグメント(%dk)読み込み(%X)\n", segment->name, (u32) temp_s1 >> 0xA, temp_s1);
+    DummiedPrintf("%sセグメント(%dk)読み込み(%X)\n", segment->name, (u32) size / 1024, size);
     return (s32) temp_s3->base_address;
 }
 
 u32 func_80096128(s32 stageToLoad, s32 inpAddr) {
     segTableEntry* segData = &gStageLoadData[stageToLoad];
     s32 size = (u32) segData->ramAddrStart - (u32) segData->romAddrEnd;
-    s32 temp_v0_2;
+    s32 dmaResult;
     
     D_80100F50[0x3].base_address = inpAddr - size;
     D_80100F50[0x3].unk4 = D_80100F50[0x3].base_address + size;
-    temp_v0_2 = dma_copy(segData->romAddrStart, (void*)D_80100F50[0x3].base_address, size);
-    if (temp_v0_2 < 0) {
-        DummiedPrintf("エラー %d\n", temp_v0_2);
+    dmaResult = dma_copy(segData->romAddrStart, (void*)D_80100F50[0x3].base_address, size);
+    if (dmaResult < 0) {
+        DummiedPrintf("エラー %d\n", dmaResult);
         return 0;
     } else {
-        while (func_800A72E8(temp_v0_2) == 0);
+        while (func_800A72E8(dmaResult) == 0);
         DummiedPrintf("マップデータ(%dk)読み込み(%X)\n", (u32)size / 1024, size);
         return D_80100F50[3].base_address;
     }
