@@ -1015,11 +1015,11 @@ typedef struct LevelHeader {
 } LevelHeader;
 
 typedef struct segTableEntry {
-    LevelHeader* header;
+    char* name;
     void* romAddrStart;
-    void* bank;
-    void* end;
-    s32 id;
+    void* romAddrEnd;
+    void* ramAddrStart;
+    void* ramAddrEnd;
 } segTableEntry;
 
 typedef struct Anim {
