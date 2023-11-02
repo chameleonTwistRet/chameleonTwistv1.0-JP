@@ -28,7 +28,7 @@ void func_8002D148(f32*, f32*, f32);
 f32 CalcAngleBetween2DPoints(f32, f32, f32, f32);
 f32 ReflectAngleToUpperQuadrants(f32);
 s32 IsAngleWithinTolerance(f32, f32, f32);
-s32 func_8002D2A0(f32, f32);
+s32 AreAnglesWithin180Degrees(f32, f32);
 s32 func_8002D328(f32, f32);
 s32 func_8002D36C(f32*, f32, f32);
 void func_8002D434(f32*, f32*, f32, f32, f32);

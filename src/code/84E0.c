@@ -153,28 +153,39 @@ s32 IsAngleWithinTolerance(f32 targetAngle, f32 refAngle, f32 toleranceAngle) {
     return 0;
 }
 
-// : Elisiah
-s32 func_8002D2A0(f32 arg0, f32 arg1) {
-    if (arg0 < 180.0f) {
-        if ((arg0 < arg1) && (arg1 <= (arg0 + 180.0f))) {
+/**
+ * @brief Compare two angles to determine their relative positioning within a 180-degree range.
+ *
+ * This function compares two angles, `refAngle` and `targetAngle`, to determine whether said target angle is within
+ * a 180-degree range relative to the reference angle. It returns 1 if the target falls within this range,
+ * and -1 if it does not.
+ *
+ * @param refAngle The reference angle, used to define the 180-degree range.
+ * @param targetAngle The angle to be compared to `angleA`.
+ *
+ * @return (s32) 1 if target is within the 180-degree range relative to reference; otherwise, it returns -1.
+ */
+s32 AreAnglesWithin180Degrees(f32 refAngle, f32 targetAngle) {
+    if (refAngle < 180.0f) {
+        if ((refAngle < targetAngle) && (targetAngle <= (refAngle + 180.0f))) {
             return 1;
         }
         return -1;
     }
-    if (((arg0 - 180.0f) < arg1) && (arg1 <= arg0)) {
+    if (((refAngle - 180.0f) < targetAngle) && (targetAngle <= refAngle)) {
         return -1;
     }
     return 1;
 }
 
-// Unknown Angle Function: Elisiah
-s32 func_8002D328(f32 theta, f32 phi) { // used to be void and still built
+// Unknown Angle Function
+s32 func_8002D328(f32 theta, f32 phi) {
     f32* theta_ptr;
 
     theta_ptr = &theta;
     theta = theta - 90.0f;
     WrapDegrees(theta_ptr);
-    return func_8002D2A0(theta, phi);   // used to not return and still built
+    return AreAnglesWithin180Degrees(theta, phi);
 }
 
 // Unkown Function: Elisiah
@@ -194,7 +205,7 @@ s32 func_8002D36C(f32* arg0, f32 arg1, f32 arg2) {
     }
     if (arg2 <= phi_f0) {
         sp1C = 0;
-        *arg0 += arg2 * (f32) func_8002D2A0(*arg0, arg1);
+        *arg0 += arg2 * (f32) AreAnglesWithin180Degrees(*arg0, arg1);
     } else {
         *arg0 = arg1;
         phi_v1 = 1;
@@ -788,7 +799,7 @@ s32 func_8002F6DC(f32* arg0, f32 arg1) {
     }
     
     if (var_f2 <= var_f0) {
-        *arg0 += var_f2 * (f32) func_8002D2A0(*arg0, arg1);
+        *arg0 += var_f2 * (f32) AreAnglesWithin180Degrees(*arg0, arg1);
     } else {
         *arg0 = arg1;
     }
@@ -1539,7 +1550,7 @@ void ChocoKidMovement(Actor* chocoKid) {
             chocoKid->vel.y = 0.0f;
         }
     } else {
-        chocoKid->unk_134[2] += chocoKid->position._f32.y * (f32) func_8002D2A0(chocoKid->unk_90, temp_f14);
+        chocoKid->unk_134[2] += chocoKid->position._f32.y * (f32) AreAnglesWithin180Degrees(chocoKid->unk_90, temp_f14);
         func_800382B4(&chocoKid->unk_134[2], chocoKid->unk_15C);
         chocoKid->unk_90 += chocoKid->unk_134[2];
         WrapDegrees(&chocoKid->unk_90);

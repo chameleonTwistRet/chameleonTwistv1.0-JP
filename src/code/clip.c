@@ -15,7 +15,7 @@ s32 D_802018D4;
 Rect D_802018D8;
 f32 D_802018F0;
 
-void SetViewAreaParam(Camera* arg0, f32 arg1, f32 arg2) {
+void SetViewAreaParam(Camera* cam, f32 arg1, f32 arg2) {
     Vec3f sp50;
     Vec3f sp5C;
     Vec3f sp44;
@@ -25,13 +25,13 @@ void SetViewAreaParam(Camera* arg0, f32 arg1, f32 arg2) {
     f32 var_f2;
     f32 temp_f2_2;
 
-    sp50.x = arg0->f5.x;
-    sp50.y = arg0->f5.y;
-    sp50.z = arg0->f5.z;
+    sp50.x = cam->f5.x;
+    sp50.y = cam->f5.y;
+    sp50.z = cam->f5.z;
     
-    sp5C.x = arg0->f4.x;
-    sp5C.y = arg0->f4.y;
-    sp5C.z = arg0->f4.z;
+    sp5C.x = cam->f4.x;
+    sp5C.y = cam->f4.y;
+    sp5C.z = cam->f4.z;
     
     sp44.x = sp50.x - sp5C.x;
     sp44.y = sp50.y - sp5C.y;
@@ -122,9 +122,9 @@ void SetViewAreaParam(Camera* arg0, f32 arg1, f32 arg2) {
     D_802018C4 = sp44.z;
     D_802018F0 = -1.0f;
 }
-//refered to in US1.0 as "clip.c - SetViewArea"
-void SetViewArea(Camera* arg0, f32 arg1) {
-    SetViewAreaParam(arg0, (arg1 + 20.0), 300.0f);
+
+void SetViewArea(Camera* cam, f32 arg1) {              //refered to in US1.0 as "clip.c - SetViewArea"
+    SetViewAreaParam(cam, (arg1 + 20.0), 300.0f);
 }
 
 s32 func_800AF2A4(f32 arg0, f32 arg1, f32 arg2, f32 arg3, s32 arg4) {

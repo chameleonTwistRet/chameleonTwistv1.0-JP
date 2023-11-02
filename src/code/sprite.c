@@ -54,8 +54,13 @@ void DummiedPrintf2(char* arg0, ...) {
 
 }
 
-void Rand_SetSeed(s32 arg0) {
-    rngSeed = arg0;
+/**
+ * @brief Sets the seed for generating randomness.
+ * 
+ * @param seed: seed for rng
+ */
+void Rand_SetSeed(s32 seed) {
+    rngSeed = seed;
 }
 
 s32 Rand(void) {

@@ -1,13 +1,13 @@
 // Vector Math (Probably the end of vector.c just spliced)
 #include "common.h"
 
-/*  
- *  Vec3f_Normalize: Normalizes the input vector then returns its norm
- *      @param[in,out] vec: pointer to the vector to be normalized
+/**  
+ * @brief Normalizes the input vector then returns its norm.
+ *  
+ * @param[in,out] vec: pointer to the vector to be normalized
  * 
- *      @return: the norm of the input vector 
+ * @return (f32) the norm of the input vector 
  */
-
 f32 Vec3f_Normalize(Vec3f* vec) {
     f32 norm = NORM_3(vec->x,vec->y,vec->z);
     if (norm == 0.0f) { 
@@ -20,16 +20,16 @@ f32 Vec3f_Normalize(Vec3f* vec) {
     return norm;
 }
 
-/*
- *  Vec3f_Lerp: Linearly interpolates between two input vectors
- *      @param[in,out]  outVec:     pointer to the output vector
- *      @param          vecOne:     first input vector
- *      @param          vecTwo:     second input vector
- *      @param          scalar:     scalar value to interpolate between the two vectors
+/**
+ * @brief Linearly interpolates between two input vectors.
  *      
- *      @return: pointer to the output vector
+ * @param[in,out]  outVec:     pointer to the output vector
+ * @param          vecOne:     first input vector
+ * @param          vecTwo:     second input vector
+ * @param          scalar:     scalar value to interpolate between the two vectors
+ * 
+ * @return (Vec3f) pointer to the output vector
  */
-
 Vec3f* Vec3f_Lerp(Vec3f* outVec, Vec3f vecOne, Vec3f vecTwo, f32 scalar) {
     Vec3f temp_vec;
 
@@ -44,14 +44,14 @@ Vec3f* Vec3f_Lerp(Vec3f* outVec, Vec3f vecOne, Vec3f vecTwo, f32 scalar) {
     return outVec;
 }
 
-/*
- *  CartesianToSpherical: Converts a cartesian vector to spherical coordinates
- *      @param          inputVec:   input vector
- *      @param[in,out]  radius:     pointer to the radius of the spherical coordinate
- *      @param[in,out]  theta:      pointer to the theta of the spherical coordinate
- *      @param[in,out]  phi:        pointer to the phi of the spherical coordinate
+/**
+ * @brief Converts a cartesian vector to spherical coordinates.
+ * 
+ * @param          inputVec:   input vector
+ * @param[in,out]  radius:     pointer to the radius of the spherical coordinate
+ * @param[in,out]  theta:      pointer to the theta of the spherical coordinate
+ * @param[in,out]  phi:        pointer to the phi of the spherical coordinate
  */
-
 void CartesianToSpherical(Vec3f inputVec, f32* radius, f32* theta, f32* phi) {
     f32 sqrtResult;
 
@@ -78,16 +78,16 @@ void CartesianToSpherical(Vec3f inputVec, f32* radius, f32* theta, f32* phi) {
     }
 }
 
-/*
- *  SphericalToCartesian: Converts a spherical vector to cartesian coordinates
- *      @param[in,out]  inputVec:   pointer to the input vector
- *      @param          radius:     radius of the spherical coordinate
- *      @param          theta:      theta of the spherical coordinate
- *      @param          phi:        phi of the spherical coordinate
+/**
+ * @brief SphericalToCartesian: Converts a spherical vector to cartesian coordinates
  * 
- *      @return: pointer to the output vector
+ * @param[in,out]  inputVec:   pointer to the vector
+ * @param          radius:     radius of the spherical coordinate
+ * @param          theta:      theta of the spherical coordinate
+ * @param          phi:        phi of the spherical coordinate
+ * 
+ * @return (Vec3f) pointer to the vector
  */
-
 Vec3f* SphericalToCartesian (Vec3f* inputVec, f32 radius, f32 theta, f32 phi) {
     Vec3f cartesian_coords;
     Vec3f spherical_coords;                                                     // spherical 'vector' struct: x = r, y = theta, z = phi
@@ -103,11 +103,11 @@ Vec3f* SphericalToCartesian (Vec3f* inputVec, f32 radius, f32 theta, f32 phi) {
     return inputVec;
 }
 
-/*
- * PrintVec: Prints a vector to the console
- *     @param v: vector to print
+/**
+ * @brief Prints a vector to the console.
+ * 
+ * @param v: vector to print
  */
-
-void PrintVec(Vec3f v) {
+void Vec3f_Print(Vec3f v) {
     DummiedPrintf3("%7.1f %7.1f %7.1f ", v.x, v.y, v.z);
 }
