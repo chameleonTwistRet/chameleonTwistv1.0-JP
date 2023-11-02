@@ -7,7 +7,7 @@ f32 tanf(f32);
 f32 __sinf(f32);
 f32 __sqrtf(f32);
 f32 __cosf(f32);
-void wrapDegrees(f32*);
+void WrapDegrees(f32*);
 void Memory_Free(void*);
 
 void CartesianToSpherical(Vec3f, f32*, f32*, f32*);
@@ -26,7 +26,7 @@ f32 func_8002D0E0(f32, f32);
 void func_8002D0F4(f32*);
 void func_8002D148(f32*, f32*, f32);
 f32 CalcAngleBetween2DPoints(f32, f32, f32, f32);
-f32 ReflectAngleToUpperSemicircle(f32);
+f32 ReflectAngleToUpperQuadrants(f32);
 s32 IsAngleWithinTolerance(f32, f32, f32);
 s32 func_8002D2A0(f32, f32);
 s32 func_8002D328(f32, f32);

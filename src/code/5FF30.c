@@ -1535,11 +1535,12 @@ u32 func_80096128(s32 stageToLoad, s32 inpAddr) {
     D_80100F50[0x3].unk4 = D_80100F50[0x3].base_address + size;
     dmaResult = dma_copy(segData->romAddrStart, (void*)D_80100F50[0x3].base_address, size);
     if (dmaResult < 0) {
-        DummiedPrintf("エラー %d\n", dmaResult);
+        DummiedPrintf("エラー %d\n", dmaResult);    //Error
         return 0;
     } else {
         while (func_800A72E8(dmaResult) == 0);
         DummiedPrintf("マップデータ(%dk)読み込み(%X)\n", (u32)size / 1024, size);
+        // Map data(%dk),  read(%X)
         return D_80100F50[3].base_address;
     }
 }

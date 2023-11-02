@@ -54,11 +54,12 @@ f32 func_8002D0E0(f32 x, f32 y) {
 }
 
 /**
- * @brief Wrap degrees to 0-360
+ * @brief Wrap degrees to range [0-360)
  * 
  * @param theta_ptr: pointer to the angle to wrap
+ * @return (ptr) altered angle
  */
-void wrapDegrees(f32* theta_ptr) {
+void WrapDegrees(f32* theta_ptr) {
     while(1){
         f32 theta = *theta_ptr;
 
@@ -74,8 +75,14 @@ void wrapDegrees(f32* theta_ptr) {
     }
 }
 
-// if a^2+b^2 > c^2 -> set a and b st. a^2+b^2=c^2 : Elisiah
-// If point is outside circle (radius c), set norm st point is on the boundary
+/**
+ * @brief This function takes in a vector, (a,b) in the form of two floats, and a radius c. 
+ * If the vector is outside the circle of radius c, it is normalized to be on the boundary of the circle.
+ * 
+ * @param a: pointer to the x component of the vector
+ * @param b: pointer to the y component of the vector
+ * @param c: radius of a given circle
+ */
 void func_8002D148(f32* a, f32* b, f32 c) {
     f32 norm;
     f32 aSquaredPlusBSquared;
@@ -88,13 +95,34 @@ void func_8002D148(f32* a, f32* b, f32 c) {
     }
 }
 
-// Unknown Function: Elisiah 
+/**
+ * @brief Calculate the counterclockwise angle between two 2D points relative to the positive x-axis.
+ *
+ * This function calculates the counterclockwise angle in radians between two 2D points (x1, y1) and (x2, y2)
+ * relative to the positive x-axis. The angle is computed by CalculateAngleOfVector,
+ * which uses a lookup table to determine the angle based on the provided 2D vector (x, y).
+ *
+ * @param x1 The x-coordinate of the first point.
+ * @param y1 The y-coordinate of the first point.
+ * @param x2 The x-coordinate of the second point.
+ * @param y2 The y-coordinate of the second point.
+ *
+ * @return (f32) The counterclockwise angle between the two points in radians.
+ */
 f32 CalcAngleBetween2DPoints(f32 x1, f32 y1, f32 x2, f32 y2) {
     return CalculateAngleOfVector(x2 - x1, -(y2 - y1));
 }
 
-// Mirror the lower semicircle onto the top
-f32 ReflectAngleToUpperSemicircle(f32 theta) {
+/**
+ * @brief Reflect an angle about the x-axis to the first two quadrants (0 to 180 degrees).
+ *
+ * This function reflects an input angle about the x-axis, effectively mapping it to the first
+ * two quadrants. The result is an angle within the range [0, 180] degrees.
+ *
+ * @param theta The input angle in degrees.
+ * @return (f32) The reflected angle in the range [0, 180] degrees.
+ */
+f32 ReflectAngleToUpperQuadrants(f32 theta) {
 
     if (theta < 0.0f) {
         theta = -theta;
@@ -105,10 +133,21 @@ f32 ReflectAngleToUpperSemicircle(f32 theta) {
     return theta;
 }
 
-// 1 or 0 depending on unk func: Elisiah
-s32 IsAngleWithinTolerance(f32 arg0, f32 arg1, f32 arg2) {   // Usually called as unk_90, arg1, unk_15C
+/**
+ * @brief Check if one angle is within tolerance of another angle (degrees).
+ *
+ * This function determines whether the target angle is approximately equal to the reference angle within
+ * the specified tolerance angle.
+ *
+ * @param targetAngle The angle to be checked.
+ * @param refAngle The reference angle for comparison.
+ * @param toleranceAngle The tolerance angle, within which the angles are considered approximately equal. [0, 180]
+ *
+ * @return (s32) 1 if target is within the specified tolerance of reference; otherwise, it returns 0.
+ */
+s32 IsAngleWithinTolerance(f32 targetAngle, f32 refAngle, f32 toleranceAngle) {
 
-    if (ReflectAngleToUpperSemicircle(arg0 - arg1) <= arg2) {
+    if (ReflectAngleToUpperQuadrants(targetAngle - refAngle) <= toleranceAngle) {
         return 1;
     }
     return 0;
@@ -134,7 +173,7 @@ s32 func_8002D328(f32 theta, f32 phi) { // used to be void and still built
 
     theta_ptr = &theta;
     theta = theta - 90.0f;
-    wrapDegrees(theta_ptr);
+    WrapDegrees(theta_ptr);
     return func_8002D2A0(theta, phi);   // used to not return and still built
 }
 
@@ -161,7 +200,7 @@ s32 func_8002D36C(f32* arg0, f32 arg1, f32 arg2) {
         phi_v1 = 1;
     }
     sp1C = phi_v1;
-    wrapDegrees(arg0);
+    WrapDegrees(arg0);
     return sp1C;
 }
 
@@ -754,7 +793,7 @@ s32 func_8002F6DC(f32* arg0, f32 arg1) {
         *arg0 = arg1;
     }
     
-    wrapDegrees(arg0);
+    WrapDegrees(arg0);
     
     if (var_f0 > 135.0f) {
         return 1;
@@ -873,7 +912,7 @@ void func_800320EC(s32 arg0, f32 arg1, f32 arg2) {
             return;
         }
         sp24 += TonguePointer->tongueDir * 90.0f;
-        wrapDegrees(&sp24);
+        WrapDegrees(&sp24);
         
         gActors[arg0].unk_134[2] = sp24;
         gActors[arg0].userVariables[0] = 1;
@@ -1064,7 +1103,7 @@ void ActorInit_AntBulletHell(Actor* arg0) {
     sine = __sinf((6 * D_8017499C * 3.14159265358979312) / 360.0);
     ang = CalcAngleBetween2DPoints(arg0->pos.x, arg0->pos.z, PlayerPointer->pos.x, PlayerPointer->pos.z);
     arg0->unk_90 = arg0->position._f32.y + (ang + 12 * sine);
-    wrapDegrees(&arg0->unk_90);
+    WrapDegrees(&arg0->unk_90);
     func_800382F4(arg0);
 }
  
@@ -1143,7 +1182,7 @@ void ActorInit_AntQueen(Actor* antQueenActor) {
 
 // Ant Queen-Ant: Auto-Decompile
 void ActorInit_AntQueenDrone(Actor* arg0) {
-    wrapDegrees(&arg0->unk_90);
+    WrapDegrees(&arg0->unk_90);
     arg0->unk_94 = arg0->position._f32.x;
     arg0->vel.y = 38.40000153f;
     func_800382F4(arg0);
@@ -1503,7 +1542,7 @@ void ChocoKidMovement(Actor* chocoKid) {
         chocoKid->unk_134[2] += chocoKid->position._f32.y * (f32) func_8002D2A0(chocoKid->unk_90, temp_f14);
         func_800382B4(&chocoKid->unk_134[2], chocoKid->unk_15C);
         chocoKid->unk_90 += chocoKid->unk_134[2];
-        wrapDegrees(&chocoKid->unk_90);
+        WrapDegrees(&chocoKid->unk_90);
         if (Random(0, 29) == 15) {
             chocoKid->userVariables[0] = 1;
             chocoKid->vel.y = 19.20000076f;
@@ -2015,7 +2054,7 @@ void func_800489B0(Actor* arg0) {
 void ActorInit_LizardKong(Actor* arg0) {
     arg0->unk_134[2] = arg0->unk_15C;
     arg0->unk_134[3] = arg0->unk_90 + 180.0f;
-    wrapDegrees(&arg0->unk_134[3]);
+    WrapDegrees(&arg0->unk_134[3]);
     arg0->unk_134[4] = arg0->unk_134[3];
     arg0->userVariables[0] = 6;
     arg0->unk_134[0] = arg0->pos.x;
@@ -2119,7 +2158,7 @@ void func_80049AEC(Actor* arg0) {
     if (arg0->userVariables[1] % arg0->unk_124 == 0) {
         arg0->userVariables[2] += 1;
         deg = (arg0->userVariables[2] * 45) + ((arg0->userVariables[2] / 8) * 15);
-        wrapDegrees(&deg);
+        WrapDegrees(&deg);
         Actor_Init(0x54, arg0->pos.x, arg0->position._f32.x, arg0->pos.z, deg, -50000.0f, 50000.0f, -50000.0f, 50000.0f, -50000.0f, 50000.0f, arg0->position._f32.y, arg0->unk_15C, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0, 0, 0, 0);
     }
 }
