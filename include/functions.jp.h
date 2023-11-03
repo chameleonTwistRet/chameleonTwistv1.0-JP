@@ -415,7 +415,7 @@ s32 DMAStruct_Print(void);
 
 s32 ifRectsIntersect(Rect* arg0, Rect* arg1);
 
-s32 isBossID(s32);
+s32 IsBossID(s32);
 s32 func_800B2510(void);
 s32 func_800B34D0(s32);
 s32 func_800B3540(s32);

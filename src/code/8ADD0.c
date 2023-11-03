@@ -55,7 +55,7 @@ void func_800C2A00(void);
 void func_800CFDC8(playerActor*);
 s32 func_800B4A3C(unkItemStruct*);
 void func_800BE474(Tongue*);
-s32 isPickup(Actor*);
+s32 IsPickup(Actor*);
 void pickup_collide_func(s32);
 
 extern f32 D_8010FB50;
@@ -171,13 +171,13 @@ void func_800B21CC(s32 arg0, s32 arg1) {
 
 // referred to in US1.0 as "feild.c - LimitInt"
 
-/*
- * LimitInt: Limits an integer to be in an inclusive range [a, b].
- *      @param integer: The integer to limit.
- *      @param a: The lower bound of the range.
- *      @param b: The upper bound of the range.
+/**
+ * @brief Limits an integer to be in an inclusive range [a, b].
+ *      
+ * @param integer: The integer to limit.
+ * @param a: The lower bound of the range.
+ * @param b: The upper bound of the range.
  */
-
 void LimitInt(s32* integer, s32 a, s32 b) {
     if (*integer < a) {
         *integer = a;
@@ -188,13 +188,13 @@ void LimitInt(s32* integer, s32 a, s32 b) {
     }
 }
 
-/*
- * LimitFloat: Limits a float to be in an inclusive range [a, b].
- *      @param _float: The float to limit.
- *      @param a: The lower bound of the range.
- *      @param b: The upper bound of the range.
+/**
+ * @brief Limits a float to be in an inclusive range [a, b].
+ *      
+ * @param _float: The float to limit.
+ * @param a: The lower bound of the range.
+ * @param b: The upper bound of the range.
  */
-
 void LimitFloat(f32* _float, f32 a, f32 b) {
     if (*_float < a) {
         *_float = a;
@@ -205,32 +205,40 @@ void LimitFloat(f32* _float, f32 a, f32 b) {
     }
 }
 
-/*
- * IsntPickup: Checks if an actor is not a pickup.
- *      @param actor: The actor to check.
- *      @return: 1 if the actor is not a pickup, 0 otherwise.
+/**
+ * @brief Checks if an actor is not a pickup.
+ *      
+ * @param actor: The actor to check.
+ * 
+ * @return: 1 if the actor is not a pickup, 0 otherwise.
  */
-
-s32 IsntPickup(Actor* actor) {
+s32 IsNotPickup(Actor* actor) {
     return (actor->actorID != 0 && actor->actorID < R_Heart) ? 1 : 0;
 }
 
-/*
- * isPickup: Checks if an actor is a pickup.
- *      @param actor: The actor to check.
- *      @return: 1 if the actor is a pickup, 0 otherwise.
+/**
+ * @brief Checks if an actor is a pickup.
+ *      
+ * @param actor: The actor to check.
+ *      
+ * @return: 1 if the actor is a pickup, 0 otherwise.
  */
-
-s32 isPickup(Actor* actor) {
+s32 IsPickup(Actor* actor) {
     return (actor->actorID >= R_Heart ) ? 1 : 0;
 }
 
-s32 isBossID(s32 arg0) {
+/**
+ * @brief Checks a given ID against the array of Boss IDs
+ * 
+ * @param id 
+ * @return (s32) 1 if the ID is a Boss ID, 0 otherwise.
+ */
+s32 IsBossID(s32 id) {
     int i;
     int ret = 0;
     
     for (i = 0; i < ARRAY_COUNT(sBossIDs); i++) {
-        if (arg0 == sBossIDs[i]) {
+        if (id == sBossIDs[i]) {
             ret = 1;
             break;
         }
@@ -238,8 +246,14 @@ s32 isBossID(s32 arg0) {
     return ret;
 }
 
-s32 isBossActor(Actor* actor) {
-    return isBossID(actor->actorID);
+/**
+ * @brief Determines if an actor is a boss by checking its ID.
+ * 
+ * @param actor 
+ * @return (s32) 1 if the actor is a boss, 0 otherwise. 
+ */
+s32 IsActorBoss(Actor* actor) {
+    return IsBossID(actor->actorID);
 }
 
 f32 func_800B2308(f32 arg0, s32 arg1) {
@@ -335,7 +349,7 @@ Vec3f* Vec3f_SetAtBossPos(Vec3f* arg0) {
 
     actors = gActors;
     for (i = 0; i < 64; i++, actors++) {
-        if (isBossActor(actors)) { // Check if the current actor is a boss
+        if (IsActorBoss(actors)) { // Check if the current actor is a boss
             pos.x = actors->pos.x; // Set x coordinate of pos to boss x coordinate
             pos.y = actors->pos.y; // Set y coordinate of pos to boss y coordinate
             pos.z = actors->pos.z; // Set z coordinate of pos to boss z coordinate
@@ -346,13 +360,18 @@ Vec3f* Vec3f_SetAtBossPos(Vec3f* arg0) {
     return arg0;
 }
 
-s32 isBossPresent(void) {
+/**
+ * @brief If the boss is in the list of currently active actors.
+ * 
+ * @return (s32) 1 if the boss is in the list of currently active actors, 0 otherwise.
+ */
+s32 IsBossPresent(void) {
     s32 i;
     Actor* curActor;
     s32 isBoss = FALSE;
     
     for (i = 0, curActor = gActors; i < 64; i++, curActor++) {
-        if (isBossActor(curActor) != 0) {
+        if (IsActorBoss(curActor) != 0) {
             isBoss = TRUE;
             break;
         }
@@ -360,7 +379,12 @@ s32 isBossPresent(void) {
     return isBoss;
 }
 
-s32 isBossStage(void) {
+/**
+ * @brief Returns True iff the current stage is a boss stage.
+ * 
+ * @return (s32) 1 if the current stage is a boss stage, 0 otherwise. 
+ */
+s32 IsBossStage(void) {
     s32 ret;
     
     if ((gCurrentStage != 9) && (gCurrentStage != 0xA) && (gCurrentStage != 0xB) && (gCurrentStage != 0xC) && (gCurrentStage != 0xD) && (gCurrentStage != 0xE)) {
@@ -713,7 +737,7 @@ void func_800B4FCC(void) {
     s32 i;
     
     for (i = 0; i < ACTORS_MAX; i++) {
-        if ((IsntPickup(&gActors[i]) != 0) && (gActors[i].actorState == 0)) {
+        if ((IsNotPickup(&gActors[i]) != 0) && (gActors[i].actorState == 0)) {
             func_800311C8(&gActors[i]);
             func_800313BC(i, Random(0, 0x168));
         }        
@@ -923,7 +947,7 @@ void func_800BE2C0(void) {
     s32 i;
 
     for (i = 0; i < 64; i++, actorList++) {
-        if ((IsntPickup(actorList) != 0) && (actorList->actorState != 0)) {
+        if ((IsNotPickup(actorList) != 0) && (actorList->actorState != 0)) {
             func_800311C8(actorList);
             func_800314E4(actorList);
         }
@@ -945,7 +969,7 @@ void func_800BE370(s32 arg0) {
     Rect* rectTemp = &gZoneCollisions[arg0].rect_30;
 
     for (i = 0, actorList = gActors; i < 64; i++, actorList++) {
-        if ((IsntPickup(actorList) != 0) && (actorList->actorState == 0)) {
+        if ((IsNotPickup(actorList) != 0) && (actorList->actorState == 0)) {
             if ((rectTemp->min.x <= actorList->pos.x)  && (actorList->pos.x <= rectTemp->max.x)) {
                 if ((rectTemp->min.z <= actorList->pos.z) && (actorList->pos.z <= rectTemp->max.z)) {
                     func_800311C8(actorList);
@@ -975,7 +999,7 @@ void func_800BE370(s32 arg0) {
 //     for (i = 0; i < ACTORS_MAX; i++) {
 //         do { } while (0);
 //         if ((gActors[i].actorID != 0) && (gActors[i].actorState == 1)) {
-//             if (isPickup(&gActors[i]) != 0) {
+//             if (IsPickup(&gActors[i]) != 0) {
 //                 pickup_collide_func(i);
 //             } else {
 //                 gActors[i].actorState = 2;
