@@ -144,8 +144,14 @@ s32 ifPolyBoundIntersectsRect(Poly* poly, Rect* rect) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/Shadows_Draw.s")
 
-void func_800CC7E0(Vec3f arg0) {
-    CalculateAngleOfVector(arg0.x, -arg0.z);
+/**
+ * @brief Calculates the angle of the (x,z) vector from a 3dim vector, with respect to the positive z-axis.
+ * 
+ * @param vec: The 3dim vector to calculate the angle of. 
+ */
+void func_800CC7E0(Vec3f vec) {
+    // In this instance the z component is flipped.
+    CalculateAngleOfVector(vec.x, -vec.z);
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800CC814.s")

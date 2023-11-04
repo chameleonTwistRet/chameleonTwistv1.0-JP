@@ -94,24 +94,24 @@ s32 func_80055C90(void) {
     return D_800F68A8;
 }
 // simplify joystick movement to d-pad equivalent
-void Controller_ParseJoystick(contMain* arg0) {
+void Controller_ParseJoystick(contMain* cont) {
     s32 i;
-    f32 f0,f1;
+    f32 sqX,sqY;
 
     for (i = 0; i < MAXCONTROLLERS; i++) {
-        D_800F6888[i] = D_800F6898[i];
-        D_800F6898[i] = arg0[i].buttons0;
-        f0=SQ(arg0[i].stickx);
-        f1=SQ(arg0[i].sticky);
-        if (__sqrtf(f0 + f1) > 42.0) {
-            if (arg0[i].stickx < -30) {
+        D_800F6888[i] = D_800F6898[i];              //gPrevButtons[i] = gButtons[i]; (?)
+        D_800F6898[i] = cont[i].buttons0;
+        sqX=SQ(cont[i].stickx);
+        sqY=SQ(cont[i].sticky);
+        if (__sqrtf(sqX + sqY) > 42.0) {
+            if (cont[i].stickx < -30) {
                 D_800F6898[i] |= CONT_LEFT;
-            } else if (arg0[i].stickx > 30) {
+            } else if (cont[i].stickx > 30) {
                 D_800F6898[i] |= CONT_RIGHT;
             }
-            if (arg0[i].sticky < -30) {
+            if (cont[i].sticky < -30) {
                 D_800F6898[i] |= CONT_DOWN;
-            } else if (arg0[i].sticky > 30) {
+            } else if (cont[i].sticky > 30) {
                 D_800F6898[i] |= CONT_UP;
             }
         }
@@ -119,7 +119,7 @@ void Controller_ParseJoystick(contMain* arg0) {
         if (D_800F68A8 == NULL) {
             if (((s32)gPlayerActors[i].active > 0)) { //cast required
                 if (gPlayerActors[i].exists > 0) {
-                    Controller_Zero(&arg0[i]);
+                    Controller_Zero(&cont[i]);
                 }
             }
         }
