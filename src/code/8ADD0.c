@@ -1291,16 +1291,17 @@ void enterBossRoom(void) {
 //really big wow
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C5304.s")
 
+// why would this ever need to zero Vec2s and arg1? (This surely is zeroing a Vec3s? (this is already a function?))
 void func_800C54F8(Vec2s* arg0, s32* arg1) {
     arg0->x = 0;
     arg0->y = 0;
     *arg1 = 0;
 }
 
-void func_800C5508(playerActor* arg0) {
-    arg0->canJump = FALSE;
-    arg0->groundMovement = 2;
-    arg0->globalTimer = arg0->globalTimer + 1.5;
+void func_800C5508(playerActor* player) {
+    player->canJump = FALSE;
+    player->groundMovement = 2;
+    player->globalTimer = player->globalTimer + 1.5;
 }
 
 void func_800C5538(playerActor* arg0) {
@@ -1315,59 +1316,70 @@ void func_800C5564(playerActor* arg0) {
     arg0->globalTimer = arg0->globalTimer + 0.299999999999999989;
 }
 
-void Player_SetFromBoss(playerActor* arg0, f32 arg1) {
-    Vec3f sp2C;
-    f32 var_f14;
-    f32 var_f2;
-    s32 var_a0;
-    s32 var_v0;
-    s32 var_v1;
+/**
+ * @brief Position the player at a fixed distance from the boss either on the X or Z axis depending on which is more significant.
+ *
+ * @param player Pointer to the player's actor structure.
+ * @param distance Distance to place the player from the boss.
+ */
+void Player_SetFromBoss(playerActor* player, f32 distance) {
+    Vec3f bossPos;
+    f32 absX;
+    f32 absZ;
+    s32 sgnX;
+    s32 tempSgn;
+    s32 sgnZ;
 
-    Vec3f_SetAtBossPos(&sp2C);
-    if (sp2C.x > 0.0f) {
-        var_a0 = 1;
+    Vec3f_SetAtBossPos(&bossPos);
+    
+    if (bossPos.x > 0.0f) {
+        sgnX = 1;
     } else {
-        if (sp2C.x < 0.0f) {
-            var_v0 = -1;
+        if (bossPos.x < 0.0f) {
+            tempSgn = -1;
         } else {
-            var_v0 = 0;
+            tempSgn = 0;
         }
-        var_a0 = var_v0;
+        sgnX = tempSgn;
     }
-    if (sp2C.z > 0.0f) {
-        var_v1 = 1;
+    
+    if (bossPos.z > 0.0f) {
+        sgnZ = 1;
     } else {
-        if (sp2C.z < 0.0f) {
-            var_v0 = -1;
+        if (bossPos.z < 0.0f) {
+            tempSgn = -1;
         } else {
-            var_v0 = 0;
+            tempSgn = 0;
         }
-        var_v1 = var_v0;
+        sgnZ = tempSgn;
     }
-    if (sp2C.x < 0.0f) {
-        var_f14 = -sp2C.x;
+    
+    if (bossPos.x < 0.0f) {
+        absX = -bossPos.x;
     } else {
-        var_f14 = sp2C.x;
+        absX = bossPos.x;
     }
-    if (sp2C.z < 0.0f) {
-        var_f2 = -sp2C.z;
+    if (bossPos.z < 0.0f) {
+        absZ = -bossPos.z;
     } else {
-        var_f2 = sp2C.z;
+        absZ = bossPos.z;
     }
-    if (var_a0 == 0) {
-        var_a0 = 1;
+
+    if (sgnX == 0) {
+        sgnX = 1;
     }
-    if (var_v1 == 0) {
-        var_v1 = 1;
+    if (sgnZ == 0) {
+        sgnZ = 1;
     }
-    if (var_f2 < var_f14) {
-        var_v1 = 0;
+    if (absZ < absX) {
+        sgnZ = 0;
     } else {
-        var_a0 = 0;
+        sgnX = 0;
     }
-    arg0->pos.x = -var_a0 * arg1;
-    arg0->pos.y = 400.0f;
-    arg0->pos.z = -var_v1 * arg1;
+
+    player->pos.x = -sgnX * distance;
+    player->pos.y = 400.0f;
+    player->pos.z = -sgnZ * distance;
 }
 
 //jump table
