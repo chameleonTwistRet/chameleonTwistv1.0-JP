@@ -77,8 +77,8 @@ void func_80055C04(void) {
     D_800F68A8 = 1;
     
     for (i = 0; i < 4; i++) {
-        D_800F6888[i] = -1;
-        D_800F6898[i] = -1;
+        gPrevButtons[i] = -1;
+        gButtons[i] = -1;
     }
 }
 
@@ -93,33 +93,38 @@ void func_80055C80(void) {
 s32 func_80055C90(void) {
     return D_800F68A8;
 }
-// simplify joystick movement to d-pad equivalent
-void Controller_ParseJoystick(contMain* cont) {
+
+/**
+ * @brief Simplifies joystick movement to d-pad equivalent.
+ * 
+ * @param conts: controllers struct
+ */
+void Controller_ParseJoystick(contMain* conts) {
     s32 i;
     f32 sqX,sqY;
 
     for (i = 0; i < MAXCONTROLLERS; i++) {
-        D_800F6888[i] = D_800F6898[i];              //gPrevButtons[i] = gButtons[i]; (?)
-        D_800F6898[i] = cont[i].buttons0;
-        sqX=SQ(cont[i].stickx);
-        sqY=SQ(cont[i].sticky);
+        gPrevButtons[i] = gButtons[i];
+        gButtons[i] = conts[i].buttons0;
+        sqX=SQ(conts[i].stickx);
+        sqY=SQ(conts[i].sticky);
         if (__sqrtf(sqX + sqY) > 42.0) {
-            if (cont[i].stickx < -30) {
-                D_800F6898[i] |= CONT_LEFT;
-            } else if (cont[i].stickx > 30) {
-                D_800F6898[i] |= CONT_RIGHT;
+            if (conts[i].stickx < -30) {
+                gButtons[i] |= CONT_LEFT;
+            } else if (conts[i].stickx > 30) {
+                gButtons[i] |= CONT_RIGHT;
             }
-            if (cont[i].sticky < -30) {
-                D_800F6898[i] |= CONT_DOWN;
-            } else if (cont[i].sticky > 30) {
-                D_800F6898[i] |= CONT_UP;
+            if (conts[i].sticky < -30) {
+                gButtons[i] |= CONT_DOWN;
+            } else if (conts[i].sticky > 30) {
+                gButtons[i] |= CONT_UP;
             }
         }
 
-        if (D_800F68A8 == NULL) {
+        if (D_800F68A8 == NULL) {                     // if player is allowed movement (?) | Possibly if the chameleon is loaded 
             if (((s32)gPlayerActors[i].active > 0)) { //cast required
                 if (gPlayerActors[i].exists > 0) {
-                    Controller_Zero(&cont[i]);
+                    Controller_Zero(&conts[i]);
                 }
             }
         }

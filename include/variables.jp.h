@@ -20,15 +20,15 @@ extern unk0* D_801FFB84;
 extern s32 g_aa1_Count;
 extern aa1* g_aa1_head;
 extern aa1 D_80176F00;
-extern s32 D_800F68A8;
+extern s32 D_800F68A8;              // s32 (but really only 1bit) is controller input allowed.
 extern s32 sDebugInt;
 extern s32 D_800F06EC;
 extern s32 sDebugTestView;
 extern u32 D_800F0B50;
 extern s8 D_800F0B54;
 extern s32 D_800F6880;
-extern s32 D_800F6888[MAXCONTROLLERS];
-extern s32 D_800F6898[MAXCONTROLLERS];
+extern s32 gPrevButtons[MAXCONTROLLERS];
+extern s32 gButtons[MAXCONTROLLERS];
 extern s32 D_800F68AC;
 extern s32 D_800F68C0;
 extern s32 D_800F68C4[2];
