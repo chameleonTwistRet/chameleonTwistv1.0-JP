@@ -1087,4 +1087,16 @@ typedef struct unk80175608 {
     char unk_00[0x18];
 } unk80175608;
 
+/*typedef struct CollisionObject{ idk how to define 'dynamic arrays' so this is commented out lol
+    Vec3f verts[];//real world position
+    Vec3s tris[];//uses ^ to construct triangles
+    Vec3f positionProbably;
+    Vec3f scaleProbably;
+    s32 aOVerts;
+    s32 aOTris;
+    Vec3f* vertsStart; //segmented, points to verts[]
+    Vec3f* trisStart; //segmented, points to tris[]
+    u32 settingsStart; //segmented
+} CollisionObject;*/
+
 #endif
