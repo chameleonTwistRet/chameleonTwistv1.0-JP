@@ -69,11 +69,14 @@ if __name__ == "__main__":
             do_dir(root, asm_dir)
     
     if args.alphabetical:
-        print(json.dumps(dict(sorted(funcs.items(), key=lambda f: f[0])), indent=4))
+        filtered_funcs = {key: value for key, value in funcs.items() if not key.startswith("D_")}
+        print(json.dumps(dict(sorted(filtered_funcs.items(), key=lambda f: f[0])), indent=4))
     elif args.size:
-        print(json.dumps(dict(sorted(funcs.items(), key=lambda f: f[1])), indent=4))
+        filtered_funcs = {key: value for key, value in funcs.items() if not key.startswith("D_")}
+        print(json.dumps(dict(sorted(filtered_funcs.items(), key=lambda f: f[1])), indent=4))
     else:
         for thing in sorted(sizes.keys(), key=lambda x: sizes[x][modes.index(args.mode)]):
             val = sizes[thing][modes.index(args.mode)]
-            if val > args.limit:
+            if val > args.limit and not thing.startswith("nonmatchings/D_"):
                 print(thing.split("nonmatchings/")[1].ljust(50) + str(val))
+

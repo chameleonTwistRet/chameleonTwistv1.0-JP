@@ -30,6 +30,7 @@
         "os_vi.h": "c",
         "ultra64.h": "c",
         "gbi.h": "c",
-        "common_structs.h": "c"
+        "common_structs.h": "c",
+        "mod.h": "c"
     }
 }

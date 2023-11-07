@@ -112,7 +112,7 @@ f32 func_80051678(u8 arg0, f32* arg1, f32 arg2, f32 arg3) {
 
 void func_8005171C(void) {
     if ((gCurrentZone == 6) && ((D_800F0B50 % 60) == 0)) {
-        PLAYSFX(137, 0, 0X10);
+        PLAYSFX(137, 0, 0x10);
     }
 }
 
@@ -167,7 +167,7 @@ void Multiplayer_PrintHurry(void) {
 void func_80053950(void) {
     f32 var_f0 = 1.0f;
     if (D_80176824 < 0x3A3) {
-        SetTextGradient(0xFFU, 0x3CU, 0U, 0xFFU, (u8) 0xFF, (u8) 0, (u8) 0, (u8) 0xFF, (u8) 0xFF, (u8) 0x3C, (u8) 0, (u8) 0xFF, (u8) 0xFF, (u8) 0, (u8) 0, (u8) 0xFF);
+        SetTextGradient(0xFFU, 0x3CU, 0U, 0xFFU, 0xFF, 0, 0, 0xFF, 0xFF, 0x3C, 0, 0xFF, 0xFF, 0, 0, 0xFF);
         if (D_80176824 < 0x15) {
             var_f0 = (f32) D_80176824 / 20.0f;
         }
@@ -178,14 +178,12 @@ void func_80053950(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/2C3B0/func_80053A70.s")
 
 void func_80053CA0(void) {
-    s32 var_s1;
     s32 i, j;
-    s32 var_s4;
 
-    for (i = 0, var_s4 =0; i < 5; i++, var_s4 += 0x30) {
-        for (j = 0, var_s1 = 0; j < 8; j++,  var_s1 += 0x28) {
+    for (i = 0; i < 5; i++) {
+        for (j = 0; j < 8; j++) {
             func_800612F0(i);
-            func_80059F28((f32) var_s1, (f32) var_s4, 0, 0, 1.0f, 40.0f, 48.0f, (f32) j, 0xCE);
+            func_80059F28((j * 0x28), (i * 0x30), 0, 0, 1.0f, 40.0f, 48.0f, j, 0xCE);
         }
     }
     func_800536D8();
@@ -197,9 +195,9 @@ void func_80053CA0(void) {
 
 void func_8005423C(void) {
     s32 i;
-    for (i = 0; i != 6; i++){
+    for (i = 0; i < 6; i++){
         setPlayerContextEyes(i, 0, 0);
-    };
+    }
 }
 
 //https://decomp.me/scratch/YLdZC
@@ -358,7 +356,7 @@ void Process_Boot(void) {
         loadSprite(94);
         TaskInit();
         func_8002E0CC();
-        gGameModeState += 1;
+        gGameModeState++;
         UseFixedRNGSeed = FALSE;
         D_800FFDF0 = 2;
         D_801FC9AC = 0;
@@ -366,12 +364,12 @@ void Process_Boot(void) {
         break;
     case 1:
         checkControllerRumble();
-        gGameModeState += 1;
+        gGameModeState++;
         func_8008F114();
         break;
     case 2:
         func_8008F16C();
-        D_8017499C += 1;
+        D_8017499C++;
         break;
     case 3:
         setProcessType(GAME_MODE_SUPPLY_SYSTEM_LOGO);

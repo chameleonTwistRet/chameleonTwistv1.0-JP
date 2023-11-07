@@ -57,6 +57,7 @@ s32 func_800B4A3C(unkItemStruct*);
 void func_800BE474(Tongue*);
 s32 IsPickup(Actor*);
 void pickup_collide_func(s32);
+void func_800B5D68(s32, s32);
 
 extern f32 D_8010FB50;
 //extern s32 D_80168DFC;
@@ -781,17 +782,19 @@ void func_800B56D4(f32 arg0, f32 arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B5ED0.s")
 
-void func_800B602C(s32* arg0, s32 arg1) {
-    arg0[43] = arg1 - 60;
-    arg0[44] = 1;
+void func_800B602C(Collider* arg0, s32 arg1) {
+    arg0->unk_AC = arg1 - 0x3C;
+    arg0->unk_B0 = 1;
 }
 
-void func_800B6040(s32* arg0) {
-    arg0[43] = 60;
-    arg0[44] = 2;
+void func_800B6040(Collider* arg0) {
+    arg0->unk_AC = 60;
+    arg0->unk_B0 = 2;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B6054.s")
+void func_800B6054(s32 arg0, s32 arg1) {
+    func_800B5D68(arg0, 1);
+}
 
 void func_800B6078(Collider* arg0) {
     Vec3f_Zero(&arg0->unk_3C);

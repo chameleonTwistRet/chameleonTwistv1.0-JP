@@ -737,28 +737,31 @@ typedef struct unkStruct {
 
 // this struct seems to manage sound effects
 typedef struct unk0 {
-    /* 0x00 */ char pad0[0x20];
+    /* 0x00 */ s32 unk0;                            /* inferred */
+    /* 0x04 */ s32 unk4;                            /* inferred */
+    /* 0x08 */ s32 unk8;                            /* inferred */
+    /* 0x0C */ char padC[0x14];                     /* maybe part of unk8[6]? */
     /* 0x20 */ s16 unk20;
     /* 0x22 */ s16 unk22;
     /* 0x24 */ u8 unk24;
-    /* 0x25 */ char pad25[7];
+    /* 0x25 */ char pad25[7];                       /* maybe part of unk24[8]? */
     /* 0x2C */ f32 unk2C;
     /* 0x30 */ s16 unk30;
     /* 0x32 */ s16 unk32;
-    /* 0x34 */ char pad34[4];
+    /* 0x34 */ char pad34[4];                       /* maybe part of unk32[3]? */
     /* 0x38 */ f32 unk38;
     /* 0x3C */ u8 unk3C;
     /* 0x3D */ u8 unk3D;
-    /* 0x3E */ char pad3E[2];
+    /* 0x3E */ char pad3E[2];                       /* maybe part of unk3D[3]? */
     /* 0x40 */ s16 unk40;
     /* 0x42 */ s16 unk42;
     /* 0x44 */ s8 unk44;
-    /* 0x45 */ char pad45[3];
+    /* 0x45 */ char pad45[3];                       /* maybe part of unk44[4]? */
     /* 0x48 */ s32 unk48;
     /* 0x4C */ s32 unk4C;
     /* 0x50 */ struct unk0* unk50;
-    /* 0x54 */ char pad54[4];
-} unk0; //sizeof 0x58
+    /* 0x54 */ struct unk0* unk54;                         /* inferred */
+} unk0;                                             /* size = 0x58 */
 
 typedef struct pole{
     /* 0x00 */ s32 mode;

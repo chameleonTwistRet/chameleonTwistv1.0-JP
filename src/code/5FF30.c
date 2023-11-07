@@ -19,6 +19,13 @@ typedef struct unk801FC9BC {
     char unk_02[0x0E];
 } unk801FC9BC;
 
+typedef struct unk801FFB88 {
+    s16 unk0;
+    s32 unk4;
+} unk801FFB88;
+
+extern unk801FFB88* D_801FFB88;
+
 extern unk801FC9BC D_801FC9BC[]; //probably not correct
 extern unk80100DF0 D_80100DF0[];
 extern s32 D_800F0704;
@@ -290,9 +297,45 @@ s16 func_80086EFC(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80086F44.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80087088.s")
+void func_80087088(unk0* arg0) {
+    unk0* temp_v0;
+    unk0* temp_v1_2;
+    s16 temp = arg0->unk22;
+    
+    if (D_801FFB88[temp].unk0 > 0) {
+        D_801FFB88[temp].unk0--;
+    }
+    if (arg0->unk20 != 0) {
+        temp_v0 = arg0->unk54;
+        if (temp_v0 != NULL) {
+            temp_v1_2 = arg0->unk50;
+            if (temp_v1_2 != NULL) {
+                if ((arg0->unk48 >= 0) && (arg0->unk48 < 0x10)) {
+                    DummiedPrintf("音鳴ってます (%d)\n", arg0->unk48);
+                    return;
+                }
+                temp_v1_2->unk54 = temp_v0;
+                temp_v0->unk50 = temp_v1_2;
+                arg0->unk48 = -1;
+                arg0->unk20 = 0;
+                arg0->unk0 = 0;
+                arg0->unk4 = 0;
+                arg0->unk8 = 0;                
+            }
+        }
+    }
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80087130.s")
+s32 func_80087130(unk0* arg0, unk0* arg1) {
+    unk0* temp_v1;
+
+    temp_v1 = arg1->unk50;
+    arg1->unk50 = arg0;
+    arg0->unk54 = arg1;
+    arg0->unk50 = temp_v1;
+    temp_v1->unk54 = arg0;
+    return 0;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008714C.s")
 
@@ -464,7 +507,6 @@ s32 func_8008873C(s32 arg0, s32 arg1, s32 arg2) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80089E24.s")
 
-// JL sfx func
 void func_8008A208(void) {
     if (D_80236974 == 0) {
         if (D_8020005A == 1) {
@@ -476,7 +518,6 @@ void func_8008A208(void) {
     D_8020005A = D_80236974;
 }
 
-// play above sfx func (JL)
 void func_8008A2B0(void) {
     if ((gameModeCurrent == GAME_MODE_OVERWORLD) && (gCurrentStage == 0)) {
         func_8008A208();
@@ -583,19 +624,19 @@ s32 BGMLoad(void) {
     return 1;
 }
 //uses "BGM_*" #defines
-s32 playBGM(s32 bgmID) {
-    if ((bgmID >= gBGMALSeqFileP->seqCount) || (bgmID < 0)) {
+s32 playBGM(s32 arg0) {
+    if ((arg0 >= gBGMALSeqFileP->seqCount) || (arg0 < 0)) {
         return -1;
     }
     if (gBGMPlayerP->state == AL_PLAYING) {
         alCSPStop(gBGMPlayerP);
     }
-    D_800FF620 = bgmID;     //gCurrentBGM (?)
+    D_800FF620 = arg0;
     D_801FC9A0 = 0;
     return 0;
 }
 
-s32 func_8008BE14(void) {           //BGMReset
+s32 func_8008BE14(void) {
     D_801FCA24 = 0;
     if (gBGMPlayerP->state == AL_PLAYING) {
         alCSPStop(gBGMPlayerP);
@@ -644,12 +685,7 @@ s32 func_8008BFE0(s32 arg0) {
     return 0;
 }
 
-/**
- * @brief Returns the current tempo of the BGM sequence player.
- * 
- * @return (s32) Tempo in: `microseconds / quarter note`.
- */
-s32 GetTempoBGMPlayer(void) {
+s32 func_8008C01C(void) {
     return alCSPGetTempo(gBGMPlayerP);
 }
 
@@ -747,19 +783,19 @@ void func_8008C554(void) {
 }
 
 void func_8008C584(void) {
-    OSMesg msg;
+    OSMesg sp2C;
 
     while (1) {
-        if (osRecvMesg(&D_801B3120, &msg, 0) == -1) {
+        if (osRecvMesg(&D_801B3120, &sp2C, 0) == -1) {
             continue;
         }
-        if (msg == NULL) {
+        if (sp2C == NULL) {
             //"/* Ｖ割り込みだったらブレイク */\n"("Break if V interrupt")
-            DummiedPrintf("/* Ｖ割り込みだったらブレイク */\n", msg);
+            DummiedPrintf("/* Ｖ割り込みだったらブレイク */\n", sp2C);
             break;
         } else {
             //"%d\n"
-            DummiedPrintf("%d\n", msg);
+            DummiedPrintf("%d\n", sp2C);
         }
     }
 }
