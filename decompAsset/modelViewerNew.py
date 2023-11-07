@@ -1,16 +1,15 @@
 import os
-import json
 import bpy
 import shutil
 import bmesh
 
 silly = '//wsl$/Ubuntu/root/RealCT/'
 assetDir = 'assets/'
-toUse = 'chameleons/Davy/body/body.gfx.inc.c'
-namer = toUse.split("/")[len(toUse.split("/")) - 1].split('.')[0]
+toUse = 'model/BombSnake/arenaWalls/arenaWalls.gfx.inc.c'
+
+fullDir = silly + assetDir + toUse
 
 yamler = 'chameleontwist.jp.yaml'
-fullDir = silly + assetDir + toUse
 yamlDir = silly + yamler
 
 #shouldnt need this
@@ -18,163 +17,145 @@ if os.path.exists("C:/assets/"):
     shutil.rmtree("C:/assets/")
 #
 
-byteLimit = {
-    "1": 128,
-    "2": 32768,
-    "4": 2147483648,
-}
-def hexToNum(input, limit, signed):
-    inter = int(input, 16)
-    maxer = byteLimit[str(limit)] * 2
-    halfer = byteLimit[str(limit)]
-    if signed:
-        while inter >= halfer:
-            inter -= maxer
-        while inter < -halfer:
-            inter += maxer
-    else:
-        while inter >= maxer:
-            inter -= maxer
-        while inter < -maxer:
-            inter += maxer
-    return inter
-
-def bankParse(adr):
-    d = adr[0:2]
-    segadr = adr[2:10]
-    group = adr[11:len(adr)]
-    
-    arrs = []
-    while group[len(group) - 1] == "]":
-        strs = group[len(group) - 3:]
-        arrs.append(int(strs[1:len(strs) - 1]))
-        group = group[:len(group) - 3]
-    arrs.reverse()
-    if segadr[0:2] == "02":
-        group = "Global"
-    return [d, segadr, group, arrs]
-
-
-
-toTrack = {
-'mtx': ['gsSPMatrix'],
-'txt': ['gsDPLoadTextureTile_4b','gsDPLoadTextureTile'],
-'pal': ['gsDPLoadTLUT_pal256'],
-'vtx': ['gsSPVertex'],
-'tri': ['gsSP1Triangle'],
-}
 files = []
 
 scale = 100.0
+
 objdata = {
-'verts': [],
-'bank': [],
-'uvs': [],
-'uvAssigns': [],
-'faces': [],
-'textures': [],
+    'verts': [],
+    'bank': [],
+    'uvs': [],
+    'uvAssigns': [],
+    'faces': [],
+    'textures': [],
 }
 
 
+def dumpGfx(path):
+    toTrack = {
+        'mtx': ['gsSPMatrix'],
+        'txt': ['gsDPLoadTextureTile_4b','gsDPLoadTextureTile'],
+        'pal': ['gsDPLoadTLUT_pal256'],
+        'vtx': ['gsSPVertex'],
+        'tri': ['gsSP1Triangle'],
+    }
+
+
+    lines = open(path).readlines()
+    fileList = []
+    for line in lines:
+        line = line[4:]
+        for gfxCommand in list(toTrack.keys()):
+            isValid = False
+            for indicator in toTrack[gfxCommand]:
+                if line.find(indicator) != -1:
+                    fileList.append({
+                        "Command": gfxCommand,
+                        "Full": line,
+                        "Indicator": indicator})
+                    isValid = True
+                    break
+            if isValid: break
+    return fileList
+
+def bankParse(adr):
+    segadr = adr[2:10]
+    group = adr[11:]
+    
+    arrs = []
+    while group[-1] == "]":
+        arrs.append(int(group[-3:][1:-1]))
+        group = group[:-3]
+    arrs.reverse()
+    if segadr[0:2] == "02":
+        group = "Global"
+    return {"D_": adr[0:2],
+            "Address": segadr,
+            "Group": group,
+            "Args": arrs}
 
 def start(toUser):
     print(toUser)
-    toUse = toUser
-    namer = toUse.split("/")[len(toUse.split("/")) - 1].split('.')[0]
-    lines = open(fullDir).readlines()
+    namer = toUser.split("/")[-1].split('.')[0]
     yamling = open(yamlDir).readlines()
 
     mesh = bpy.data.meshes.new("model")
     object = bpy.data.objects.new("model", mesh)
     bpy.context.collection.objects.link(object)
-
-    for each in lines:
-        for typee in list(toTrack.keys()):
-            command = each[4:]
-            for typer in toTrack[typee]:
-                if command.find(typer) != -1 :
-                    files.append([typee, each[4:], typer])
-                    break
-    for each in files:
-        if each[0] == 'vtx':
-            print(each[1])
+    files = dumpGfx(fullDir)
     for file in files:
-        doinks = file[0]
-        args = file[1].replace(file[2], "", 1)
-        args = args[1:len(args) - 3]
-        if args[0] == "&":
-            args = args[1:]
-        csv = args.split(", ")
+        allArgs = file["Full"].replace(file["Indicator"], "", 1)[1:-3] #only the goods
+        print(allArgs)
+        if allArgs[0] == "&": allArgs = allArgs[1:]
+        args = allArgs.split(",")
         fileName = ""
         cmdAdr = 0
         trueAdr = 0
-        if doinks != "tri" and doinks != "mtx":
-            new = bankParse(csv[0])
-            cmdAdr = int(new[1][2:], 16)
+        needsFile = not file["Command"] in ["tri", "mtx"]
+        if needsFile:
+            contextAddress = bankParse(args[0])
+            cmdAdr = int(contextAddress["Address"][2:], 16) #the address within the group
             i = 0
             mode = 0
-            while i < len(yamling):
-                yammy = yamling[i]
-                if yammy.find("name: " + new[2]) != -1 and mode == 0:
+            while i < len(yamling): #scan
+                line = yamling[i]
+                if line.find("name: " + contextAddress["Group"]) != -1 and mode == 0:
+                    #found the group!
+                    #we now start going backwards to get the group's rom addr
                     mode = 1
-                elif mode == 1 and yammy.find("start: ") != -1:
-                    adrget = yammy.split(":")
-                    adr1 = adrget[len(adrget) - 1].strip()
-                    cmdAdr += int(adr1, 16)
+                elif mode == 1 and line.find("start: ") != -1:
+                    #we found the group's rom addr
+                    #we add that to the command address to get the rom address of the resource
+                    #we start going forward again to find said resource
+                    cmdAdr += int(line.split(":")[-1].split("#")[0].strip(), 16)
                     mode = 2
                 elif mode == 2:
-                    validAdr = yammy.lower().find(hex(cmdAdr)) != -1 or (yammy.find(namer) != -1 and yammy.find(doinks) != -1)
-                    validSplit = yammy.find("{") != -1 or yammy.find("[") != -1
-                    if validAdr and validSplit:
-                        if yammy.find("name:") != -1:
-                            fileName = yammy.split("name: ")[1]
-                            fileName = fileName[:len(fileName) - 1].replace("{", "").replace("}", "")
-                        else:
-                            fileName = yammy.split(", ")[2]
-                        if yammy.find("start:") != -1:
-                            trueAdr = int(yammy.split("start: ")[1].split(", ")[0], 16)
-                        else:
-                            trueAdr = int(yammy.split(", ")[0].split('[')[1], 16)
+                    validAdr = line.lower().find(hex(cmdAdr)) > -1
+                    validResource = line.find(namer) + line.find(file["Command"]) >= -1
+                    validSplit = line.find("{") + line.find("[") >= -1
+                    if (validAdr or validResource) and validSplit:
+                        #we found the split containing the resource we need!
+                        #lets get the file path and the actual address we got. (just in case cmdAdr wasnt correct)
+                        if line.find("name:") != -1: fileName = line.split("name: ")[1][:-1].replace("{", "").replace("}", "")
+                        else: fileName = line.split(", ")[2]
+                        if line.find("start:") != -1: trueAdr = int(line.split("start: ")[1].split(", ")[0], 16)
+                        else: trueAdr = int(line.split(", ")[0].split('[')[1], 16)
                         break
-                if mode == 0 or mode == 2:
-                    i += 1
-                elif mode == 1:
-                    i -= 1
-        if fileName != "":
-            if doinks == "vtx":
-                fileData = open(silly + assetDir + "/" + fileName + ".vtx.inc.c").readlines()
-                bank = int(csv[2])
-                while len(objdata['bank']) < bank:
-                    objdata['bank'].append(0)
+                if mode in [0, 2]: i += 1
+                elif mode == 1: i -= 1
+            #begin the data usage.
+            if file["Command"] == "vtx": #if resource is vertex data
+                fileData = open(silly+assetDir+"/"+fileName+".vtx.inc.c").readlines()
+                bank = int(args[2])
+                while len(objdata['bank']) < bank: objdata['bank'].append(0)#fill bank
                 
-                ao = int(csv[1])
+                ao = int(args[1])
                 i = 0
-                offset = int((cmdAdr - trueAdr) / 0x10) #into VTX
+                offset = int((cmdAdr - trueAdr) / 0x10) #into VTX, as some calls start a specifie amount into the file.
                 i += offset
                 started = False
                 if fileData[0].find("}") == -1: #if there's a symbol at the start :)
                     started = True
                 while i < ao + offset:
                     line = fileData[i + int(started)]
-                    get = line.replace("}", "").replace("{", "").split(",")
-                    x = -int(get[0].strip()) / scale
-                    y = int(get[1].strip()) / scale
-                    z = int(get[2].strip()) / scale
-                    objdata["verts"].append([x, z, y])
+                    values = line.replace("}", "").replace("{", "").split(",")
+                    vec3s = []
+                    #size down because ints being casted to floats can be REALLY big
+                    for index in range(0,3): vec3s.append(int(values[index].strip()) / scale)
+                    vec3s[0] *= -1 #flip x
+                    vec3s.insert(1, vec3s.pop(2)) #swap y and z
+                    objdata["verts"].append(vec3s)
                     id = len(objdata["verts"]) - 1
-                    if len(objdata['bank']) < bank + 1:
-                        objdata['bank'].append(id)
-                    else:
-                        objdata['bank'][bank] = id
-                    uvx = int(get[4].strip())
-                    uvy = int(get[5].strip())
-                    objdata["uvs"].append([uvx, uvy])
+                    if len(objdata['bank']) < bank + 1: objdata['bank'].append(id)
+                    else: objdata['bank'][bank] = id
+                    uvs = []
+                    for index in range(4,6): uvs.append(int(values[index].strip()))
+                    objdata["uvs"].append(uvs)
                     i += 1
                     bank += 1
                 
-            elif doinks == "txt":
-                smallName = fileName.split("/")
-                smallName = smallName[len(smallName) - 1]
+            elif file["Command"] == "txt": #if resource is texture data
+                smallName = fileName.split("/")[-1]
                 matthew = bpy.data.materials.new(name=smallName)
                 matthew.use_nodes = True
                 
@@ -183,20 +164,19 @@ def start(toUser):
                 #these shouldnt be needed
                 copyTo = "C:/assets/" + fileName + ".png"
                 makerTo = "C:/assets/" + fileName.replace(smallName, "")
-                if not os.path.exists(makerTo):
-                    os.makedirs(makerTo)
+                if not os.path.exists(makerTo):os.makedirs(makerTo)
                 shutil.copyfile(silly + assetDir + "/" + fileName + ".png", copyTo)
                 #
+
                 texImage.image = bpy.data.images.load(copyTo)
                 matthew.node_tree.links.new(bsdf.inputs['Base Color'], texImage.outputs['Color'])
                 object.data.materials.append(matthew)
                 objdata['textures'].append([len(objdata['textures']), matthew])
-        elif doinks == "tri":
-            t1 = objdata['bank'][int(csv[0])]
-            t2 = objdata['bank'][int(csv[1])]
-            t3 = objdata['bank'][int(csv[2])]
-            objdata["faces"].append([t1, t2, t3])
-            objdata['uvAssigns'].append(objdata['textures'][len(objdata['textures']) - 1][0])
+        elif file["Command"] == "tri": #if resource is tri data
+            tri = []
+            for a in range(0,3): tri.append(objdata['bank'][int(args[a])])
+            objdata["faces"].append(tri)
+            objdata['uvAssigns'].append(objdata['textures'][- 1][0])
 
 
     mesh.from_pydata(objdata["verts"], [], objdata["faces"])
@@ -267,4 +247,4 @@ def start(toUser):
         bpy.ops.object.mode_set(mode='OBJECT')
     return object
 
-#start(toUse)
+start(toUse)

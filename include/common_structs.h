@@ -994,6 +994,14 @@ typedef struct RoomSettings {
     s32 unk68;
 } RoomSettings;
 
+typedef struct LevelMap {
+    //s32* rooms; //1 dimensional array that's actually 2 dimensional. the player navigates with axiis on doors that move them on the x or y.
+    s32 width; // width for ^
+    s32 height; // height for ^^
+    u32* dungeonRooms; //pointer to the array of RoomSettings for the dungeon.
+    s32* roomsPointer; //pointer to the array of rooms for this map. is usually directly above the width/this struct.
+} LevelMap;
+
 typedef struct LevelScope {
     s32 unk0;
     s32 unk4;
@@ -1001,10 +1009,10 @@ typedef struct LevelScope {
     s32 unkC;
     s32 renderDistance;
     s32 unk14;
-}LevelScope;
+} LevelScope;
 
 typedef struct LevelHeader {
-    u32 Map;
+    LevelMap* Map;
     u32 OWRooms;
     u32 Pointers;
     u32 unkC;
@@ -1035,6 +1043,7 @@ typedef struct Anim {
     s32 unk24;
     s32 frames;
     s32 objects;
+    u32 data; //the actual frame data as a resource
 } Anim;
 
 typedef struct unk80174880 {
