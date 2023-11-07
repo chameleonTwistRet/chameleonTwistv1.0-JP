@@ -501,6 +501,7 @@ leoDiskStack = 0x8024B240; //size:0x1000
 __osSiAccessQueue = 0x8024b228; // size:0x18
 siAccessBuf = 0x8024b220; //
 gCurrentZone = 0x80240cd8; // size:0x4
+GetTempoBGMPlayer = 0x8008C01C; // type:func
 __osEepromTimer = 0x8024b148; // size:0x20
 __osEepromTimerQ = 0x8024b168; // size:0x18
 __osEepromTimerMsg = 0x8024b180; // size:0x4

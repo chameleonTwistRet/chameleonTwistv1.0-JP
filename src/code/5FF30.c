@@ -464,6 +464,7 @@ s32 func_8008873C(s32 arg0, s32 arg1, s32 arg2) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80089E24.s")
 
+// JL sfx func
 void func_8008A208(void) {
     if (D_80236974 == 0) {
         if (D_8020005A == 1) {
@@ -475,6 +476,7 @@ void func_8008A208(void) {
     D_8020005A = D_80236974;
 }
 
+// play above sfx func (JL)
 void func_8008A2B0(void) {
     if ((gameModeCurrent == GAME_MODE_OVERWORLD) && (gCurrentStage == 0)) {
         func_8008A208();
@@ -581,19 +583,19 @@ s32 BGMLoad(void) {
     return 1;
 }
 //uses "BGM_*" #defines
-s32 playBGM(s32 arg0) {
-    if ((arg0 >= gBGMALSeqFileP->seqCount) || (arg0 < 0)) {
+s32 playBGM(s32 bgmID) {
+    if ((bgmID >= gBGMALSeqFileP->seqCount) || (bgmID < 0)) {
         return -1;
     }
     if (gBGMPlayerP->state == AL_PLAYING) {
         alCSPStop(gBGMPlayerP);
     }
-    D_800FF620 = arg0;
+    D_800FF620 = bgmID;     //gCurrentBGM (?)
     D_801FC9A0 = 0;
     return 0;
 }
 
-s32 func_8008BE14(void) {
+s32 func_8008BE14(void) {           //BGMReset
     D_801FCA24 = 0;
     if (gBGMPlayerP->state == AL_PLAYING) {
         alCSPStop(gBGMPlayerP);
@@ -642,7 +644,12 @@ s32 func_8008BFE0(s32 arg0) {
     return 0;
 }
 
-s32 func_8008C01C(void) {
+/**
+ * @brief Returns the current tempo of the BGM sequence player.
+ * 
+ * @return (s32) Tempo in: `microseconds / quarter note`.
+ */
+s32 GetTempoBGMPlayer(void) {
     return alCSPGetTempo(gBGMPlayerP);
 }
 
@@ -740,19 +747,19 @@ void func_8008C554(void) {
 }
 
 void func_8008C584(void) {
-    OSMesg sp2C;
+    OSMesg msg;
 
     while (1) {
-        if (osRecvMesg(&D_801B3120, &sp2C, 0) == -1) {
+        if (osRecvMesg(&D_801B3120, &msg, 0) == -1) {
             continue;
         }
-        if (sp2C == NULL) {
+        if (msg == NULL) {
             //"/* Ｖ割り込みだったらブレイク */\n"("Break if V interrupt")
-            DummiedPrintf("/* Ｖ割り込みだったらブレイク */\n", sp2C);
+            DummiedPrintf("/* Ｖ割り込みだったらブレイク */\n", msg);
             break;
         } else {
             //"%d\n"
-            DummiedPrintf("%d\n", sp2C);
+            DummiedPrintf("%d\n", msg);
         }
     }
 }
