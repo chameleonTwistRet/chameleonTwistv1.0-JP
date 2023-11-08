@@ -1046,7 +1046,6 @@ typedef struct Anim {
     s32 unk24;
     s32 frames;
     s32 objects;
-    u32 data; //the actual frame data as a resource
 } Anim;
 
 typedef struct unk80174880 {

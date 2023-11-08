@@ -35,7 +35,7 @@ class N64SegMtx(CommonSegCodeSubsegment):
             yaml=yaml,
         )
         self.file_text = None
-        self.data_only = True
+        self.data_only = isinstance(yaml, dict) and yaml.get("data_only", False)
 
     def get_linker_section(self) -> str:
         #return ".data"
@@ -75,8 +75,14 @@ class N64SegMtx(CommonSegCodeSubsegment):
         s15 = []
         s16 = []
         for i in range(0, 16):
-            s15.append(int.from_bytes(matrix_data[(i*2):(i*2)+2], "big"))
-            s16.append(float("0."+str(int.from_bytes(matrix_data[(i*2)+32:(i*2)+34], "big"))))
+            s15.append(int.from_bytes(matrix_data[(i*2):(i*2)+2], "big", signed=True))
+            s = int.from_bytes(matrix_data[(i*2)+32:(i*2)+34], "big", signed=True)
+            sign = ""
+            if str(s)[0] == "-":
+                #remove the sign and add it in front of the 0
+                sign = "-"
+                s *= -1
+            s16.append(float(sign + "0." + str(s)))
 
         lines.append(f"""   {{ {s15[0]+s16[0]}, {s15[1]+s16[1]}, {s15[2]+s16[2]}, {s15[3]+s16[3]} }},""")
         lines.append(f"""   {{ {s15[4]+s16[4]}, {s15[5]+s16[5]}, {s15[6]+s16[6]}, {s15[7]+s16[7]} }},""")

@@ -36,7 +36,7 @@ class N64SegSpriteActor(CommonSegCodeSubsegment):
             yaml=yaml,
         )
         self.file_text = None
-        self.data_only = False
+        self.data_only = isinstance(yaml, dict) and yaml.get("data_only", False)
 
     def get_linker_section(self) -> str:
         #return ".data"
