@@ -238,6 +238,8 @@ for c_file in c_files:
         ninja_file.build(append_prefix(append_extension(c_file)), "O2_cc", c_file, dep)  # Update later
     elif os.path.dirname(c_file) in [io_dir, os_dir]:
         ninja_file.build(c_file_target, "O1_cc", c_file, dep)
+    else:
+        ninja_file.build(append_prefix(append_extension(c_file)), "O2_cc", c_file, dep)  # Update later
 
 for s_file in s_files:
     if "asm/nonmatchings" in s_file:

@@ -386,18 +386,39 @@ segments:
       - [0x117810, gfx, gfx/unk5] #gfx
       - [0x117890, mtx, mtx5] #mtx
       #AnimationSegments
-      - [0x1178D0, bin] #temp, will restore soon
-      #- [0x1178D0, animation, anim/chameleon/Idle]
-      #- [0x11ad00, animation, anim/chameleon/Walk]
-      #- [0x11ee30, animation, anim/chameleon/Run]
-      #- [0x122F60, animation, anim/unk]
-      #- [0x126050, animation, anim/chameleon/Jump]
-      #- [0x129140, animation, anim/chameleon/Tongue]
-      #- [0x12C570, animation, anim/chameleon/Vault]
-      #- [0x1306A0, animation, anim/chameleon/Spin]
-      #- [0x133450, animation, anim/unk2]
-      #- [0x136200, animation, anim/chameleon/LandFromKnockback]
-      #- [0x13A330, animation, anim/chameleon/GetupFromKnockback]
+      - [0x1178D0, animHeader, anim/chameleon/Idle]
+      - [0x117900, animArray, anim/chameleon/Idle, 16, 13]
+      
+      - [0x11ad00, animHeader, anim/chameleon/Walk]
+      - [0x11ad30, animArray, anim/chameleon/Walk, 20, 13]
+
+      - [0x11ee30, animHeader, anim/chameleon/Run]
+      - [0x11ee60, animArray, anim/chameleon/Run, 20, 13]
+
+      - [0x122F60, animHeader, anim/unk]
+      - [0x122F90, animArray, anim/unk, 15, 13]
+
+      - [0x126050, animHeader, anim/chameleon/Jump]
+      - [0x126080, animArray, anim/chameleon/Jump, 15, 13]
+
+      - [0x129140, animHeader, anim/chameleon/Tongue]
+      - [0x129170, animArray, anim/chameleon/Tongue, 16, 13]
+
+      - [0x12C570, animHeader, anim/chameleon/Vault]
+      - [0x12C5A0, animArray, anim/chameleon/Vault, 20, 13]
+
+      - [0x1306A0, animHeader, anim/chameleon/Spin]
+      - [0x1306d0, animArray, anim/chameleon/Spin, 14, 13]
+
+      - [0x133450, animHeader, anim/unk2]
+      - [0x133480, animArray, anim/unk2, 14, 13]
+
+      - [0x136200, animHeader, anim/chameleon/LandFromKnockback]
+      - [0x136230, animArray, anim/chameleon/LandFromKnockback, 20, 13]
+
+      - [0x13A330, animHeader, anim/chameleon/GetupFromKnockback]
+      - [0x13A360, animArray, anim/chameleon/GetupFromKnockback, 20, 13]
+
       - [0x13BD60, bin]
 
   # Start of next part?
@@ -1481,7 +1502,7 @@ segments:
       subalign: 8
       subsegments:
         - { start: 0x6BC3F0, type: mtx, name: model/JungleLand/jlScope/jlScope}
-        - [0x6BC430, bin] # padding for Lights1
+        - [0x6bC430, bin] # padding for Lights1
         - [0x6BC438, lights, model/JungleLand/jlScope/jlScope] # set Lights 1 for alot of JL assets
 
     - start: 0x6BC448
@@ -1494,7 +1515,7 @@ segments:
         - [0x6BC508, bin] # rgb2c remnant in mtx
         - [0x6BC510, ci4, img/JungleLand/lilypad.ci4, 64, 64]
         - [0x6BCD18, palette, img/JungleLand/lilypad.ci4]
-        - { start: 0x6BCF18, type: gfx, name: model/JungleLand/lilypad/lilypad}
+        - { start: 0x6BCF18, type: gfxSeg, name: model/JungleLand/lilypad/lilypad}
 
     - start: 0x6BD040
       name: vine
@@ -1553,7 +1574,7 @@ segments:
       subsegments:
         - { start: 0x6BFA68, type: vtx, name: model/JungleLand/waterfallRock/waterfallRock}
         - [0x6BFBD8, mtx, model/JungleLand/waterfallRock/waterfallRock]
-        - { start: 0x6BFC18, type: gfx, data_only, True, name: model/JungleLand/waterfallRock/waterfallRock}
+        - { start: 0x6BFC18, type: gfx, name: model/JungleLand/waterfallRock/waterfallRock}
 
     - start: 0x6BFFD8
       name: unk1
@@ -1646,7 +1667,7 @@ segments:
       subalign: 8
       subsegments:
         - { start: 0x6C4278, type: vtx, name: model/JungleLand/singularPlank/singularPlank}
-        - { start: 0x6C42B8, type: mtx, name: }
+        - { start: 0x6C42B8, type: mtx, name: model/JungleLand/singularPlank/singularPlank}
         - [0x6C42F8, ci8, img/JungleLand/singularPlank.ci8, 64, 32]
         - [0x6C4AF8, palette, img/JungleLand/singularPlank.ci8]
         - { start: 0x6C4CF8, type: gfx, name: model/JungleLand/singularPlank/singularPlank}
@@ -2273,7 +2294,7 @@ segments:
       subsegments:
         - { start: 0x6EC928, type: vtx, name: model/JungleLand/waterfall/waterfall}
         - { start: 0x6EC9C8, type: mtx, name: model/JungleLand/waterfall/waterfall}
-        - { start: 0x6ECA08, type: bin, name: }
+        - [0x6ECA08, bin]
         - [0x6ECA10, ci4, img/JungleLand/water.ci4, 64, 64]
         - [0x6ED218, palette, img/JungleLand/water.ci4]
         - { start: 0x6ED418, type: gfx, name: model/JungleLand/waterfall/waterfall}
@@ -2530,27 +2551,27 @@ segments:
     - { start: 0x704300, type: mtx, name: unkunk4}
     - { start: 0x704340, type: gfx, name: unkunk4}
 
-    - [0x704368, animation, anim/actors/golem/golemSleep]
+    - [0x704368, animHeader, anim/actors/golem/golemSleep]
     - [0x704398, animArray, anim/actors/golem/golemSleep, 20, 8]
     - [0x706b98, bin, anim/actors/golem/golemSleepPointers]
 
-    - [0x706bA4, animation, anim/actors/golem/golemAttack]
-    - [0x706bd4, bin, anim/actors/golem/golemAttackHeaderpadding] #0x4 pad so the matrix array is 8 aligned
+    - [0x706bA4, animHeader, anim/actors/golem/golemAttack]
+    - [0x706bd4, bin] #0x4 pad so the matrix array is 8 aligned
     - [0x706bd8, animArray, anim/actors/golem/golemAttack, 55, 8]
     - [0x70d9d8, bin, anim/actors/golem/golemAttackPointers]
     
-    - [0x70d9e4, animation, anim/actors/spiderRock/spiderRockInit]
-    - [0x70DA14, bin, anim/actors/spiderRock/spiderRockInitPadding] #0x4 pad so the matrix array is 8 aligned
+    - [0x70d9e4, animHeader, anim/actors/spiderRock/spiderRockInit]
+    - [0x70DA14, bin] #0x4 pad so the matrix array is 8 aligned
     - [0x70DA18, animArray, anim/actors/spiderRock/spiderRockInit, 1, 1]
     - [0x70da58, bin, anim/actors/spiderRock/spiderRockInitPointers]
     
-    - [0x70da64, animation, anim/actors/fish/fishHeadInit]
-    - [0x70da94, bin, anim/actors/fish/fishHeadInitPadding] #0x4 pad so the matrix array is 8 aligned
+    - [0x70da64, animHeader, anim/actors/fish/fishHeadInit]
+    - [0x70da94, bin] #0x4 pad so the matrix array is 8 aligned
     - [0x70da98, animArray, anim/actors/fish/fishHeadInit, 1, 1]
     - [0x70dad8, bin, anim/actors/fish/fishHeadInitPointers]
     
-    - [0x70dae4, animation, anim/actors/fish/fishTailInit]
-    - [0x70db14, bin, anim/actors/fish/fishHeadInitPadding] #0x4 pad so the matrix array is 8 aligned
+    - [0x70dae4, animHeader, anim/actors/fish/fishTailInit]
+    - [0x70db14, bin] #0x4 pad so the matrix array is 8 aligned
     - [0x70db18, animArray, anim/actors/fish/fishHeadInit, 1, 1]
     - [0x70db58, bin, anim/actors/fish/fishTailInitPointers]
     - [0x70db64, bin] #file break
@@ -2627,13 +2648,13 @@ segments:
 
     - { start: 0x7a99a0, type: mtx, name: model/BombSnake/unkMTX}
 
-    - [0x7a99e0, animation, model/unk5/unk5header]
+    - [0x7a99e0, animHeader, model/unk5/unk5]
     - [0x7a9a10, animArray, model/unk5/unk5, 2, 6]
-    - [0x7a9d10, animation, model/unk6/unk6header]
+    - [0x7a9d10, animHeader, model/unk6/unk6]
     - [0x7a9d40, animArray, model/unk6/unk6, 2, 1]
-    - [0x7a9dc0, animation, model/unk7/unk7header]
+    - [0x7a9dc0, animHeader, model/unk7/unk7]
     - [0x7a9df0, animArray, model/unk7/unk7, 15, 1]
-    - [0x7aa1b0, animation, model/unk8/unk8header]
+    - [0x7aa1b0, animHeader, model/unk8/unk8]
     - [0x7aa1e0, animArray, model/unk8/unk8, 15, 1]
 
     - start: 0x7aa5a0

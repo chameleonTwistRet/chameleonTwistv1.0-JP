@@ -1,8 +1,5 @@
 """
-N64 Mtx struct splitter
-Dumps out Mtx as a .inc.c file.
-
-Modified for CT1 Animations: Nathan R.
+Dumps out an animation header as a .inc.c file.
 """
 
 import re
@@ -14,7 +11,7 @@ from util import options
 from segtypes.common.codesubsegment import CommonSegCodeSubsegment
 
 
-class N64SegAnimation(CommonSegCodeSubsegment):
+class N64SegAnimHeader(CommonSegCodeSubsegment):
     def __init__(
         self,
         rom_start,
@@ -42,7 +39,7 @@ class N64SegAnimation(CommonSegCodeSubsegment):
         return []
 
     def out_path(self) -> Path:
-        return options.opts.asset_path / self.dir / f"{self.name}.anim.inc.c"
+        return options.opts.asset_path / self.dir / f"{self.name}.animH.inc.c"
 
     def scan(self, rom_bytes: bytes):
         if self.out_path().exists():

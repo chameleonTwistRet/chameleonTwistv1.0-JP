@@ -1,8 +1,13 @@
 import argparse
 
 def start(group, where):
-    yaml = open("../chameleontwist.jp.yaml", "r", encoding='UTF-8').readlines()
-    writeTo = "../src/assets/"+where+".c"
+    yaml = open("chameleontwist.jp.yaml", "r", encoding='UTF-8').readlines()
+    writeTo = "src/assets/"+where+".c"
+    levels = 2 + len(where.split("/"))
+    dots = []
+    for i in range(levels):
+        dots.append("..")
+    leveler="/".join(dots)
     open(writeTo, "w").close() #clear
     reading = False
     tabbing = ""
@@ -15,9 +20,17 @@ def start(group, where):
         "collectable": "clct",
         "roomObject": "roomObj",
         "roomActor": "roomAct",
+        "roomSettings": "rmSet",
+        "unkType1": "ut1",
+        "unkType2": "ut2",
+        "levelScope": "lvlScope",
+        "levelHeader": "lvlHdr",
+        "lights": "light",
     }
 
-    newC = ["//Generated with Nathan's Epic C creator!!!!111\n"]
+    newC = ["//Generated with Nathan's Epic C creator!!!!111\n",
+            #'#include "common.h"\n'
+            ]
 
     for line in yaml:
         if line.find(group) != -1 and line.find("name: ") != -1 and not reading:
@@ -53,22 +66,23 @@ def start(group, where):
                 }
                 if len(args) > 3:
                     values["Ext"] = args[3:]
-            values["ShortName"] = values["Path"].split("/")[-1]
+            values["ShortName"] = values["Path"].split("/")[-1].replace(".","_")
             if values["ShortName"][0].isdigit(): values["ShortName"]="d"+values["ShortName"] #bc we cant have a number start now can we
             if values["Type"] in notInced:
                 #custom parsing for all that silly shit
                 #put all of the 'pure data' (aka non struct) files here to gen include lines
-                if values["Type"] == "bin":
-                    newC.append("\n".join([
-                    'ALIGNED8 static const u32 '+values["ShortName"]+'[] = {',
-                    ' #include "assets/'+values["Path"]+'.bin"',
-                    '};',
-                    ''])
-                    )
+                #if values["Type"] == "bin":
+                #    newC.append("\n".join([
+                #    'ALIGNED8 static const u8 '+values["ShortName"]+'[] = {',
+                #    ' #include "'+""+'assets/'+values["Path"]+'.bin"',
+                #    '};',
+                #    ''])
+                #    )
+                pass
             else:
                 useType = values["Type"]
                 if values["Type"] in list(incExt.keys()): useType = incExt[values["Type"]]
-                newC.append('#include "assets/'+values["Path"]+'.'+useType+'.inc.c"\n')
+                newC.append('#include "'+""+'assets/'+values["Path"]+'.'+useType+'.inc.c"\n')
     open(writeTo, "w", encoding="UTF-8").writelines(newC)
 
 

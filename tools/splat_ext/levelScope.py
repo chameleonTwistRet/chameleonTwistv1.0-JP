@@ -43,7 +43,7 @@ class N64SegLevelScope(CommonSegCodeSubsegment):
         return []
 
     def out_path(self) -> Path:
-        return options.opts.asset_path / self.dir / f"{self.name}.lvlHdr.inc.c"
+        return options.opts.asset_path / self.dir / f"{self.name}.lvlScope.inc.c"
 
     def scan(self, rom_bytes: bytes):
         if self.out_path().exists():

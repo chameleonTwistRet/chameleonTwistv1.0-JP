@@ -105,12 +105,11 @@ class N64SegAnimArray(CommonSegCodeSubsegment):
             after.append(self.mtxDisasm(buffer[frameStart:frameEnd]))
             after[-1] = after[-1].replace("{", "{{", 1) + "},"
             frames += 1
-
         frame = 0
         for i in range(len(after)):
             line = after[i]
             if frame % Aoobjects == 0: line=line[:4]+"{"+line[4:]
-            elif frame % Aoobjects == Aoobjects-1: line+="},"
+            if frame % Aoobjects == Aoobjects-1:line+="},"
             after[i] = line
             frame += 1
             
