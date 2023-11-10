@@ -433,7 +433,7 @@ DistanceWithLine = 0x800c9bd8; // type:func rom:0xa4fd8
 RandomF = 0x800c89e8; // type:func rom:0xa3de8
 pifMain = 0x1fc00000; // type:func
 bootMain = 0xa4000040; // type:func
-entry_point = 0x80025c00; // type:func
+ramMain = 0x80025c00; // type:func
 CountSpatActors = 0x800b0764; // type:func rom:0x8bb64
 Vec3f_Set = 0x800d8178; // type:func rom:0xb3578
 idleproc = 0x80025cb8; // type:func rom:0x10b8
@@ -940,10 +940,3 @@ D_801749D8 = 0x801749D8; // size:0x78
 D_80248540 = 0x80248540; // size:0x368
 
 //ASSETS
-//these will be automated; these are for show rn
-lilypad = 0x8082F9C0;
-jlScope_mtx = 0x8082EE98;
-lilypad_vtx = 0x8082EEF0;
-lilypad_mtx = 0x8082EF70;
-lilypad_img_pal = 0x8082F7C0;
-lilypad_img = 0x8082EFB8;

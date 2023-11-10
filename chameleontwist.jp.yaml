@@ -1526,7 +1526,7 @@ segments:
         - [0x6BD080, mtx, model/JungleLand/vine/vine]
         - [0x6BD0C0, ci8, img/JungleLand/vine.ci8, 16, 64]
         - [0x6BD4C0, palette, img/JungleLand/vine.ci8]
-        - { start: 0x6BD6C0, type: gfx, name: model/JungleLand/vine/vine}
+        - { start: 0x6BD6C0, type: gfxSeg, name: model/JungleLand/vine/vine}
 
     - start: 0x6BD7D8
       name: fallenCrownLog
@@ -1535,7 +1535,7 @@ segments:
       subsegments:
         - { start: 0x6BD7D8, type: vtx, name: model/JungleLand/fallenCrownLog/fallenCrownLog}
         - [0x6BDA18, mtx, model/JungleLand/fallenCrownLog/fallenCrownLog]
-        - { start: 0x6BDA58, type: gfx, name: model/JungleLand/fallenCrownLog/fallenCrownLog}
+        - { start: 0x6BDA58, type: gfxSeg, name: model/JungleLand/fallenCrownLog/fallenCrownLog}
 
     - start: 0x6BDF30
       name: unkLog
@@ -1544,7 +1544,7 @@ segments:
       subsegments:
         - { start: 0x6BDF30, type: vtx, name: model/JungleLand/unkLog/unkLog}
         - [0x6BE0B0, mtx, model/JungleLand/unkLog/unkLog]
-        - { start: 0x6BE0F0, type: gfx, name: model/JungleLand/unkLog/unkLog}
+        - { start: 0x6BE0F0, type: gfxSeg, name: model/JungleLand/unkLog/unkLog}
 
     - start: 0x6BE388
       name: fallenLogStump
@@ -1556,7 +1556,7 @@ segments:
         - { start: 0x6BE4A8, type: mtx, name: model/JungleLand/fallenLogStump/fallenLogStump}
         - [0x6BE4F0, ci8, img/JungleLand/fallenLogStump.ci8, 64, 32]
         - [0x6BECF8, palette, img/JungleLand/fallenLogStump.ci8]
-        - { start: 0x6BEEF8, type: gfx, name: model/JungleLand/fallenLogStump/fallenLogStump}
+        - { start: 0x6BEEF8, type: gfxSeg, name: model/JungleLand/fallenLogStump/fallenLogStump}
     
     - start: 0x6BF150
       name: logTunnel
@@ -1565,7 +1565,7 @@ segments:
       subsegments:
         - { start: 0x6BF150, type: vtx, name: model/JungleLand/logTunnel/logTunnel}
         - [0x6BF530, mtx, model/JungleLand/logTunnel/logTunnel]
-        - { start: 0x6bf570, type: gfx, name: model/JungleLand/logTunnel/logTunnel}
+        - { start: 0x6bf570, type: gfxSeg, name: model/JungleLand/logTunnel/logTunnel}
     
     - start: 0x6BFA68
       name: waterfallRock
@@ -1574,7 +1574,7 @@ segments:
       subsegments:
         - { start: 0x6BFA68, type: vtx, name: model/JungleLand/waterfallRock/waterfallRock}
         - [0x6BFBD8, mtx, model/JungleLand/waterfallRock/waterfallRock]
-        - { start: 0x6BFC18, type: gfx, name: model/JungleLand/waterfallRock/waterfallRock}
+        - { start: 0x6BFC18, type: gfxSeg, name: model/JungleLand/waterfallRock/waterfallRock}
 
     - start: 0x6BFFD8
       name: unk1
@@ -1583,7 +1583,7 @@ segments:
       subsegments:
         - { start: 0x6BFFD8, type: vtx, name: model/JungleLand/unk1/unk1}
         - [0x6C03F8, mtx, model/JungleLand/unk1/unk1]
-        - { start: 0x6C0438, type: gfx, name: model/JungleLand/unk1/unk1}
+        - { start: 0x6C0438, type: gfxSeg, name: model/JungleLand/unk1/unk1}
 
     - start: 0x6C0A30
       name: fallBridge
@@ -1594,7 +1594,7 @@ segments:
         - [0x6C0A70, mtx, model/JungleLand/fallBridge/fallBridge]
         - [0x6C0AB0, ci8, img/JungleLand/fallBridge.ci8, 64, 32]
         - [0x6C12B0, palette, img/JungleLand/fallBridge.ci8]
-        - { start: 0x6c14b0, type: gfx, name: model/JungleLand/fallBridge/fallBridge}
+        - { start: 0x6c14b0, type: gfxSeg, name: model/JungleLand/fallBridge/fallBridge}
 
     - start: 0x6C15B8
       name: ctCrate
@@ -1614,7 +1614,7 @@ segments:
         - [0x6c2160, ci4, img/JungleLand/ctCrate3.ci4, 64, 32]
         - [0x6c2560, palette, img/JungleLand/ctCrate3.ci4]
         - [0x6c2760, bin]
-        - { start: 0x6C2768, type: gfx, name: model/JungleLand/ctCrate/ctCrate}
+        - { start: 0x6C2768, type: gfxSeg, name: model/JungleLand/ctCrate/ctCrate}
 
     - start: 0x6C2B50
       name: ctCrate2
@@ -1623,7 +1623,7 @@ segments:
       subsegments:
         - { start: 0x6C2B50, type: vtx, name: model/JungleLand/ctCrate2/ctCrate2}
         - { start: 0x6C2C90, type: mtx, name: model/JungleLand/ctCrate2/ctCrate2}
-        - { start: 0x6C2CD0, type: gfx, name: model/JungleLand/ctCrate2/ctCrate2}
+        - { start: 0x6C2CD0, type: gfxSeg, name: model/JungleLand/ctCrate2/ctCrate2}
     
     - start: 0x6C30B8
       name: walkingPlank
@@ -1632,7 +1632,7 @@ segments:
       subsegments:
         - { start: 0x6C30B8, type: vtx, name: model/JungleLand/walkingPlank/walkingPlank}
         - { start: 0x6C31B8, type: mtx, name: model/JungleLand/walkingPlank/walkingPlank}
-        - { start: 0x6C31F8, type: gfx, name: model/JungleLand/walkingPlank/walkingPlank} 
+        - { start: 0x6C31F8, type: gfxSeg, name: model/JungleLand/walkingPlank/walkingPlank} 
         
     - start: 0x6C34F0
       name: walkingPlank2
@@ -1641,7 +1641,7 @@ segments:
       subsegments:
         - { start: 0x6C34F0, type: vtx, name: model/JungleLand/walkingPlank2/walkingPlank2}
         - { start: 0x6C35F0, type: mtx, name: model/JungleLand/walkingPlank2/walkingPlank2}
-        - { start: 0x6C3630, type: gfx, name: model/JungleLand/walkingPlank2/walkingPlank2}
+        - { start: 0x6C3630, type: gfxSeg, name: model/JungleLand/walkingPlank2/walkingPlank2}
 
     - start: 0x6C3928
       name: walkingPlank3
@@ -1650,7 +1650,7 @@ segments:
       subsegments:
         - { start: 0x6C3928, type: vtx, name: model/JungleLand/walkingPlank3/walkingPlank3}
         - { start: 0x6C3A28, type: mtx, name: model/JungleLand/walkingPlank3/walkingPlank3}
-        - { start: 0x6C3A68, type: gfx, name: model/JungleLand/walkingPlank3/walkingPlank3}
+        - { start: 0x6C3A68, type: gfxSeg, name: model/JungleLand/walkingPlank3/walkingPlank3}
 
     - start: 0x6C3D60
       name: walkingPlank4
@@ -1659,7 +1659,7 @@ segments:
       subsegments:
         - { start: 0x6C3D60, type: vtx, name: model/JungleLand/walkingPlank4/walkingPlank4}
         - { start: 0x6C3E60, type: mtx, name: model/JungleLand/walkingPlank4/walkingPlank4}
-        - { start: 0x6C3EA0, type: gfx, name: model/JungleLand/walkingPlank4/walkingPlank4}
+        - { start: 0x6C3EA0, type: gfxSeg, name: model/JungleLand/walkingPlank4/walkingPlank4}
 
     - start: 0x6C4278
       name: singularPlank #fall bridge small
@@ -1670,7 +1670,7 @@ segments:
         - { start: 0x6C42B8, type: mtx, name: model/JungleLand/singularPlank/singularPlank}
         - [0x6C42F8, ci8, img/JungleLand/singularPlank.ci8, 64, 32]
         - [0x6C4AF8, palette, img/JungleLand/singularPlank.ci8]
-        - { start: 0x6C4CF8, type: gfx, name: model/JungleLand/singularPlank/singularPlank}
+        - { start: 0x6C4CF8, type: gfxSeg, name: model/JungleLand/singularPlank/singularPlank}
 
     - start: 0x6C4E00
       name: roomSixStartPlatform
@@ -1679,7 +1679,7 @@ segments:
       subsegments:
         - { start: 0x6C4E00, type: vtx, name: model/JungleLand/roomSixStartPlatform/roomSixStartPlatform}
         - { start: 0x6C4FC0, type: mtx, name: model/JungleLand/roomSixStartPlatform/roomSixStartPlatform}
-        - { start: 0x6C5000, type: gfx, name: model/JungleLand/roomSixStartPlatform/roomSixStartPlatform}
+        - { start: 0x6C5000, type: gfxSeg, name: model/JungleLand/roomSixStartPlatform/roomSixStartPlatform}
 
     - start: 0x6C56A8
       name: cavePlatform
@@ -1688,7 +1688,7 @@ segments:
       subsegments:
         - { start: 0x6C56A8, type: vtx, name: model/JungleLand/cavePlatform/cavePlatform}
         - { start: 0x6C57A8, type: mtx, name: model/JungleLand/cavePlatform/cavePlatform}
-        - { start: 0x6C57E8, type: gfx, name: model/JungleLand/cavePlatform/cavePlatform}
+        - { start: 0x6C57E8, type: gfxSeg, name: model/JungleLand/cavePlatform/cavePlatform}
 
     - start: 0x6C5BC0
       name: roomSixCrownPlatform
@@ -1697,7 +1697,7 @@ segments:
       subsegments:
         - { start: 0x6C5BC0, type: vtx, name: model/JungleLand/roomSixCrownPlatform/roomSixCrownPlatform}
         - { start: 0x6C5D80, type: mtx, name: model/JungleLand/roomSixCrownPlatform/roomSixCrownPlatform}
-        - { start: 0x6C5DC0, type: gfx, name: model/JungleLand/roomSixCrownPlatform/roomSixCrownPlatform}
+        - { start: 0x6C5DC0, type: gfxSeg, name: model/JungleLand/roomSixCrownPlatform/roomSixCrownPlatform}
 
     - start: 0x6C6468
       name: roomSixSidePlatform
@@ -1706,7 +1706,7 @@ segments:
       subsegments:
         - { start: 0x6C6468, type: vtx, name: model/JungleLand/roomSixSidePlatform/roomSixSidePlatform}
         - { start: 0x6C66A8, type: mtx, name: model/JungleLand/roomSixSidePlatform/roomSixSidePlatform}
-        - { start: 0x6C66E8, type: gfx, name: model/JungleLand/roomSixSidePlatform/roomSixSidePlatform}
+        - { start: 0x6C66E8, type: gfxSeg, name: model/JungleLand/roomSixSidePlatform/roomSixSidePlatform}
 
     - start: 0x6C6CD0
       name: roomSevenLava
@@ -1717,7 +1717,7 @@ segments:
         - { start: 0x6C6D90, type: mtx, name: model/JungleLand/roomSevenLava/roomSevenLava}
         - [0x6C6DD8, ci8, img/JungleLand/lava.ci8, 32, 32]
         - [0x6C71E0, palette, img/JungleLand/lava.ci8]
-        - { start: 0x6C73E0, type: gfx, name: model/JungleLand/roomSevenLava/roomSevenLava}
+        - { start: 0x6C73E0, type: gfxSeg, name: model/JungleLand/roomSevenLava/roomSevenLava}
 
     - start: 0x6C7528
       name: roomSevenFloor
@@ -1726,7 +1726,7 @@ segments:
       subsegments:
         - { start: 0x6C7528, type: vtx, name: model/JungleLand/roomSevenFloor/roomSevenFloor}
         - { start: 0x6C75E8, type: mtx, name: model/JungleLand/roomSevenFloor/roomSevenFloor}
-        - { start: 0x6C7628, type: gfx, name: model/JungleLand/roomSevenFloor/roomSevenFloor}
+        - { start: 0x6C7628, type: gfxSeg, name: model/JungleLand/roomSevenFloor/roomSevenFloor}
 
     - start: 0x6C7910
       name: roomZeroLava
@@ -1735,7 +1735,7 @@ segments:
       subsegments:
         - { start: 0x6C7910, type: vtx, name: model/JungleLand/roomZeroLava/roomZeroLava}
         - { start: 0x6C7990, type: mtx, name: model/JungleLand/roomZeroLava/roomZeroLava}
-        - { start: 0x6C79D0, type: gfx, name: model/JungleLand/roomZeroLava/roomZeroLava}
+        - { start: 0x6C79D0, type: gfxSeg, name: model/JungleLand/roomZeroLava/roomZeroLava}
 
     - start: 0x6C7AF8
       name: roomOnePlatform
@@ -1744,7 +1744,7 @@ segments:
       subsegments:
         - { start: 0x6C7AF8, type: vtx, name: model/JungleLand/roomOnePlatform/roomOnePlatform}
         - { start: 0x6C7CF8, type: mtx, name: model/JungleLand/roomOnePlatform/roomOnePlatform}
-        - { start: 0x6C7D38, type: gfx, name: model/JungleLand/roomOnePlatform/roomOnePlatform}
+        - { start: 0x6C7D38, type: gfxSeg, name: model/JungleLand/roomOnePlatform/roomOnePlatform}
 
     - start: 0x6C80A0
       name: roomSixCrownEdgePlatform
@@ -1756,7 +1756,7 @@ segments:
         - [0x6C8328, ci8, img/JungleLand/roomSixCrownEdgePlatform.ci8, 64, 32]  #16, 32? 16,128?
         - [0x6C8B28, bin]
         - [0x6C8B30, palette, img/JungleLand/roomSixCrownEdgePlatform.ci8]
-        - { start: 0x6C8D30, type: gfx, name: model/JungleLand/roomSixCrownEdgePlatform/roomSixCrownEdgePlatform}
+        - { start: 0x6C8D30, type: gfxSeg, name: model/JungleLand/roomSixCrownEdgePlatform/roomSixCrownEdgePlatform}
 
     - start: 0x6C9248
       name: roomSevenSpinRing
@@ -1765,7 +1765,7 @@ segments:
       subsegments:
         - { start: 0x6C9248, type: vtx, name: model/JungleLand/roomSevenSpinRing/roomSevenSpinRing}
         - { start: 0x6C9808, type: mtx, name: model/JungleLand/roomSevenSpinRing/roomSevenSpinRing}
-        - { start: 0x6C9848, type: gfx, name: model/JungleLand/roomSevenSpinRing/roomSevenSpinRing}
+        - { start: 0x6C9848, type: gfxSeg, name: model/JungleLand/roomSevenSpinRing/roomSevenSpinRing}
 
     - start: 0x6C9DD8
       name: woodBlock
@@ -1774,7 +1774,7 @@ segments:
       subsegments:
         - { start: 0x6C9DD8, type: vtx, name: model/JungleLand/woodBlock/woodBlock}   
         - { start: 0x6C9F18, type: mtx, name: model/JungleLand/woodBlock/woodBlock}
-        - { start: 0x6C9F58, type: gfx, name: model/JungleLand/woodBlock/woodBlock}
+        - { start: 0x6C9F58, type: gfxSeg, name: model/JungleLand/woodBlock/woodBlock}
 
     - start: 0x6CA340
       name: rope  #room 0 
@@ -1784,7 +1784,7 @@ segments:
         - { start: 0x6CA340, type: vtx, name: model/JungleLand/ropes/ropes}
         - { start: 0x6CA380, type: mtx, name: model/JungleLand/ropes/ropes}
         - [0x6CA3C8, rgba16, img/JungleLand/rope.rgba16, 32, 64]
-        - { start: 0x6CB3C8, type: gfx, name: model/JungleLand/ropes/ropes}
+        - { start: 0x6CB3C8, type: gfxSeg, name: model/JungleLand/ropes/ropes}
 
     - start: 0x6CB4B0
       name: railOne #room 6 (int)
@@ -1794,7 +1794,7 @@ segments:
         - { start: 0x6CB4B0, type: vtx, name: model/JungleLand/railOne/railOne}
         - { start: 0x6CB670, type: mtx, name: model/JungleLand/railOne/railOne}
         - [0x6CB6B8, bin] # broken image?
-        - { start: 0x6CB940, type: gfx, name: model/JungleLand/railOne/railOne}
+        - { start: 0x6CB940, type: gfxSeg, name: model/JungleLand/railOne/railOne}
 
     - start: 0x6CBD58
       name: railTwo #room 6 (int)
@@ -1803,7 +1803,7 @@ segments:
       subsegments:
         - { start: 0x6CBD58, type: vtx, name: model/JungleLand/railTwo/railTwo}
         - { start: 0x6CBF18, type: mtx, name: model/JungleLand/railTwo/railTwo}
-        - { start: 0x6CBF58, type: gfx, name: model/JungleLand/railTwo/railTwo}
+        - { start: 0x6CBF58, type: gfxSeg, name: model/JungleLand/railTwo/railTwo}
 
     - start: 0x6CC370
       name: railThree #room 6 (int)
@@ -1812,7 +1812,7 @@ segments:
       subsegments:
         - { start: 0x6CC370, type: vtx, name: model/JungleLand/railThree/railThree}
         - { start: 0x6CC530, type: mtx, name: model/JungleLand/railThree/railThree}
-        - { start: 0x6CC570, type: gfx, name: model/JungleLand/railThree/railThree}
+        - { start: 0x6CC570, type: gfxSeg, name: model/JungleLand/railThree/railThree}
 
     - start: 0x6CC988
       name: railFour #room 6 (int)
@@ -1821,7 +1821,7 @@ segments:
       subsegments:
         - { start: 0x6CC988, type: vtx, name: model/JungleLand/railFour/railFour}
         - { start: 0x6CCB48, type: mtx, name: model/JungleLand/railFour/railFour}
-        - { start: 0x6CCB88, type: gfx, name: model/JungleLand/railFour/railFour}
+        - { start: 0x6CCB88, type: gfxSeg, name: model/JungleLand/railFour/railFour}
 
     - start: 0x6CCFA0
       name: railFive #room 6 (int)
@@ -1830,7 +1830,7 @@ segments:
       subsegments:
         - { start: 0x6CCFA0, type: vtx, name: model/JungleLand/railFive/railFive}
         - { start: 0x6CD160, type: mtx, name: model/JungleLand/railFive/railFive}
-        - { start: 0x6CD1A0, type: gfx, name: model/JungleLand/railFive/railFive}
+        - { start: 0x6CD1A0, type: gfxSeg, name: model/JungleLand/railFive/railFive}
 
     - start: 0x6CD5B8
       name: railSix #room 6 (int)
@@ -1839,7 +1839,7 @@ segments:
       subsegments:
         - { start: 0x6CD5B8, type: vtx, name: model/JungleLand/railSix/railSix}
         - { start: 0x6CD778, type: mtx, name: model/JungleLand/railSix/railSix}
-        - { start: 0x6CD7B8, type: gfx, name: model/JungleLand/railSix/railSix}
+        - { start: 0x6CD7B8, type: gfxSeg, name: model/JungleLand/railSix/railSix}
 
     - start: 0x6CDBD0
       name: rail #room 0 (int)
@@ -1848,7 +1848,7 @@ segments:
       subsegments:
         - { start: 0x6CDBD0, type: vtx, name: model/JungleLand/rail/rail}
         - { start: 0x6CDD90, type: mtx, name: model/JungleLand/rail/rail}
-        - { start: 0x6CDDD0, type: gfx, name: model/JungleLand/rail/rail}
+        - { start: 0x6CDDD0, type: gfxSeg, name: model/JungleLand/rail/rail}
 
     - start: 0x6CE128
       name: ctCrate3
@@ -1857,7 +1857,7 @@ segments:
       subsegments:
         - { start: 0x6CE128, type: vtx, name: model/JungleLand/ctCrate3/ctCrate3}
         - { start: 0x6CE268, type: mtx, name: model/JungleLand/ctCrate3/ctCrate3}
-        - { start: 0x6CE2A8, type: gfx, name: model/JungleLand/ctCrate3/ctCrate3}
+        - { start: 0x6CE2A8, type: gfxSeg, name: model/JungleLand/ctCrate3/ctCrate3}
 
     - start: 0x6CE690
       name: logOne
@@ -1866,7 +1866,7 @@ segments:
       subsegments:
         - { start: 0x6CE690, type: vtx, name: model/JungleLand/logOne/logOne}
         - { start: 0x6CE730, type: mtx, name: model/JungleLand/logOne/logOne}
-        - { start: 0x6CE770, type: gfx, name: model/JungleLand/logOne/logOne}
+        - { start: 0x6CE770, type: gfxSeg, name: model/JungleLand/logOne/logOne}
 
     - start: 0x6CE8A8
       name: fallBridgeSmall2
@@ -1875,7 +1875,7 @@ segments:
       subsegments:
         - { start: 0x6CE8A8, type: vtx, name: model/JungleLand/fallBridgeSmall2/fallBridgeSmall2}
         - { start: 0x6CE8E8, type: mtx, name: model/JungleLand/fallBridgeSmall2/fallBridgeSmall2}
-        - { start: 0x6CE928, type: gfx, name: model/JungleLand/fallBridgeSmall2/fallBridgeSmall2}
+        - { start: 0x6CE928, type: gfxSeg, name: model/JungleLand/fallBridgeSmall2/fallBridgeSmall2}
 
     - start: 0x6CEA30
       name: logSetPiece #room 6 (ext)
@@ -1884,7 +1884,7 @@ segments:
       subsegments:
         - { start: 0x6CEA30, type: vtx, name: model/JungleLand/logSetPiece/logSetPiece}
         - { start: 0x6CEAC0, type: mtx, name: model/JungleLand/logSetPiece/logSetPiece}
-        - { start: 0x6CEB00, type: gfx, name: model/JungleLand/logSetPiece/logSetPiece}
+        - { start: 0x6CEB00, type: gfxSeg, name: model/JungleLand/logSetPiece/logSetPiece}
 
     # Unused
     - start: 0x6CEC30
@@ -1894,7 +1894,7 @@ segments:
       subsegments:
         - { start: 0x6CEC30, type: vtx, name: model/JungleLand/holeLog/holeLog}
         - { start: 0x6CF4A0, type: mtx, name: model/JungleLand/holeLog/holeLog}
-        - { start: 0x6CF4E0, type: gfx, name: model/JungleLand/holeLog/holeLog}
+        - { start: 0x6CF4E0, type: gfxSeg, name: model/JungleLand/holeLog/holeLog}
 
     - start: 0x6CF950
       name: waterfallGroundCollision #room 9 (ext)
@@ -1903,7 +1903,7 @@ segments:
       subsegments:
         - { start: 0x6CF950, type: vtx, name: model/JungleLand/waterfallGroundCollision/waterfallGroundCollision}
         - { start: 0x6CFA10, type: mtx, name: model/JungleLand/waterfallGroundCollision/waterfallGroundCollision}
-        - { start: 0x6CFA50, type: gfx, name: model/JungleLand/waterfallGroundCollision/waterfallGroundCollision}   
+        - { start: 0x6CFA50, type: gfxSeg, name: model/JungleLand/waterfallGroundCollision/waterfallGroundCollision}   
 
     - start: 0x6CFAE8
       name: waterfallBacksideCollision
@@ -1912,7 +1912,7 @@ segments:
       subsegments:
         - { start: 0x6CFAE8, type: vtx, name: model/JungleLand/waterfallBacksideCollision/waterfallBacksideCollision}
         - { start: 0x6CFB68, type: mtx, name: model/JungleLand/waterfallBacksideCollision/waterfallBacksideCollision}
-        - { start: 0x6CFBA8, type: gfx, name: model/JungleLand/waterfallBacksideCollision/waterfallBacksideCollision}
+        - { start: 0x6CFBA8, type: gfxSeg, name: model/JungleLand/waterfallBacksideCollision/waterfallBacksideCollision}
 
     - start: 0x6CFC88
       name: groundCollision
@@ -1921,7 +1921,7 @@ segments:
       subsegments:
         - { start: 0x6CFC88, type: vtx, name: model/JungleLand/groundCollision/groundCollision}
         - { start: 0x6CFEB8, type: mtx, name: model/JungleLand/groundCollision/groundCollision}
-        - { start: 0x6CFEF8, type: gfx, name: model/JungleLand/groundCollision/groundCollision}
+        - { start: 0x6CFEF8, type: gfxSeg, name: model/JungleLand/groundCollision/groundCollision}
 
     - start: 0x6D0058
       name: holeLogBottom
@@ -1930,7 +1930,7 @@ segments:
       subsegments:
         - { start: 0x6D0058, type: vtx, name: model/JungleLand/holeLogBottom/holeLogBottom}
         - { start: 0x6D01D8, type: mtx, name: model/JungleLand/holeLogBottom/holeLogBottom}
-        - { start: 0x6D0218, type: gfx, name: model/JungleLand/holeLogBottom/holeLogBottom}
+        - { start: 0x6D0218, type: gfxSeg, name: model/JungleLand/holeLogBottom/holeLogBottom}
 
     - start: 0x6D03E0
       name: extThree
@@ -1942,7 +1942,7 @@ segments:
         - [0x6D0B18, ci8, img/JungleLand/ext3Wall.ci8, 64, 32]
         - [0x6D1318, bin]
         - [0x6D1320, palette, img/JungleLand/ext3Wall.ci8]
-        - { start: 0x6D1520, type: gfx, name: model/JungleLand/extThree/extThree}
+        - { start: 0x6D1520, type: gfxSeg, name: model/JungleLand/extThree/extThree}
 
     - start: 0x6D1F98
       name: extFour
@@ -1951,7 +1951,7 @@ segments:
       subsegments:
         - { start: 0x6D1F98, type: vtx, name: model/JungleLand/extFour/extFour}
         - { start: 0x6D2278, type: mtx, name: model/JungleLand/extFour/extFour}
-        - { start: 0x6D22B8, type: gfx, name: model/JungleLand/extFour/extFour}
+        - { start: 0x6D22B8, type: gfxSeg, name: model/JungleLand/extFour/extFour}
 
     - start: 0x6D29E0
       name: extZero
@@ -1960,7 +1960,7 @@ segments:
       subsegments:
         - { start: 0x6D29E0, type: vtx, name: model/JungleLand/extZero/extZero}
         - { start: 0x6D2CE0, type: mtx, name: model/JungleLand/extZero/extZero}
-        - { start: 0x6D2D20, type: gfx, name: model/JungleLand/extZero/extZero}
+        - { start: 0x6D2D20, type: gfxSeg, name: model/JungleLand/extZero/extZero}
 
     - start: 0x6D32C0
       name: extOne
@@ -1969,7 +1969,7 @@ segments:
       subsegments:
         - { start: 0x6D32C0, type: vtx, name: model/JungleLand/extOne/extOne}
         - { start: 0x6D4280, type: mtx, name: model/JungleLand/extOne/extOne}
-        - { start: 0x6D42C0, type: gfx, name: model/JungleLand/extOne/extOne}
+        - { start: 0x6D42C0, type: gfxSeg, name: model/JungleLand/extOne/extOne}
 
     - start: 0x6D4F40
       name: extTwo
@@ -1978,7 +1978,7 @@ segments:
       subsegments:
         - { start: 0x6D4F40, type: vtx, name: model/JungleLand/extTwo/extTwo}
         - { start: 0x6D51B0, type: mtx, name: model/JungleLand/extTwo/extTwo}
-        - { start: 0x6D51F0, type: gfx, name: model/JungleLand/extTwo/extTwo}
+        - { start: 0x6D51F0, type: gfxSeg, name: model/JungleLand/extTwo/extTwo}
 
     - start: 0x6D5750
       name: rockFloor
@@ -1987,7 +1987,7 @@ segments:
       subsegments:
         - { start: 0x6D5750, type: vtx, name: model/JungleLand/rockFloor/rockFloor}
         - { start: 0x6D5810, type: mtx, name: model/JungleLand/rockFloor/rockFloor}
-        - { start: 0x6D5850, type: gfx, name: model/JungleLand/rockFloor/rockFloor}
+        - { start: 0x6D5850, type: gfxSeg, name: model/JungleLand/rockFloor/rockFloor}
 
     - start: 0x6D59C8
       name: rockFloor2
@@ -1996,7 +1996,7 @@ segments:
       subsegments:
         - { start: 0x6D59C8, type: vtx, name: model/JungleLand/rockFloor2/rockFloor2}
         - { start: 0x6D5A68, type: mtx, name: model/JungleLand/rockFloor2/rockFloor2}
-        - { start: 0x6D5AA8, type: gfx, name: model/JungleLand/rockFloor2/rockFloor2}
+        - { start: 0x6D5AA8, type: gfxSeg, name: model/JungleLand/rockFloor2/rockFloor2}
 
     - start: 0x6D5C10
       name: extFive
@@ -2005,7 +2005,7 @@ segments:
       subsegments:
           - { start: 0x6D5C10, type: vtx, name: model/JungleLand/extFive/extFive}
           - { start: 0x6D5F10, type: mtx, name: model/JungleLand/extFive/extFive}
-          - { start: 0x6D5F50, type: gfx, name: model/JungleLand/extFive/extFive}
+          - { start: 0x6D5F50, type: gfxSeg, name: model/JungleLand/extFive/extFive}
 
     - start: 0x6D65E8
       name: extThreePartTwo
@@ -2014,7 +2014,7 @@ segments:
       subsegments:
         - { start: 0x6D65E8, type: vtx, name: model/JungleLand/extThreePartTwo/extThreePartTwo}
         - { start: 0x6D66B8, type: mtx, name: model/JungleLand/extThreePartTwo/extThreePartTwo}
-        - { start: 0x6D66F8, type: gfx, name: model/JungleLand/extThreePartTwo/extThreePartTwo}
+        - { start: 0x6D66F8, type: gfxSeg, name: model/JungleLand/extThreePartTwo/extThreePartTwo}
 
     - start: 0x6D69E8
       name: extFivePartTwo
@@ -2023,7 +2023,7 @@ segments:
       subsegments:
         - { start: 0x6D69E8, type: vtx, name: model/JungleLand/extFivePartTwo/extFivePartTwo}
         - { start: 0x6D6C38, type: mtx, name: model/JungleLand/extFivePartTwo/extFivePartTwo}
-        - { start: 0x6D6C78, type: gfx, name: model/JungleLand/extFivePartTwo/extFivePartTwo}
+        - { start: 0x6D6C78, type: gfxSeg, name: model/JungleLand/extFivePartTwo/extFivePartTwo}
 
     - start: 0x6D72A0
       name: extSix
@@ -2032,7 +2032,7 @@ segments:
       subsegments:
         - { start: 0x6D72A0, type: vtx, name: model/JungleLand/extSix/extSix}
         - { start: 0x6D7480, type: mtx, name: model/JungleLand/extSix/extSix}
-        - { start: 0x6D74C0, type: gfx, name: model/JungleLand/extSix/extSix}
+        - { start: 0x6D74C0, type: gfxSeg, name: model/JungleLand/extSix/extSix}
 
     - start: 0x6D7838
       name: extSeven
@@ -2041,7 +2041,7 @@ segments:
       subsegments:
         - { start: 0x6D7838, type: vtx, name: model/JungleLand/extSeven/extSeven}
         - { start: 0x6D7C28, type: mtx, name: model/JungleLand/extSeven/extSeven}
-        - { start: 0x6D7C68, type: gfx, name: model/JungleLand/extSeven/extSeven}
+        - { start: 0x6D7C68, type: gfxSeg, name: model/JungleLand/extSeven/extSeven}
 
     - start: 0x6D84E8
       name: extEight
@@ -2050,7 +2050,7 @@ segments:
       subsegments:
         - { start: 0x6D84E8, type: vtx, name: model/JungleLand/extEight/extEight}
         - { start: 0x6D87F8, type: mtx, name: model/JungleLand/extEight/extEight}
-        - { start: 0x6D8838, type: gfx, name: model/JungleLand/extEight/extEight}
+        - { start: 0x6D8838, type: gfxSeg, name: model/JungleLand/extEight/extEight}
 
     - start: 0x6D8F78
       name: extEightBridge
@@ -2059,7 +2059,7 @@ segments:
       subsegments:
         - { start: 0x6D8F78, type: vtx, name: model/JungleLand/extEightBridge/extEightBridge}
         - { start: 0x6D9078, type: mtx, name: model/JungleLand/extEightBridge/extEightBridge}
-        - { start: 0x6D90B8, type: gfx, name: model/JungleLand/extEightBridge/extEightBridge}
+        - { start: 0x6D90B8, type: gfxSeg, name: model/JungleLand/extEightBridge/extEightBridge}
 
     - start: 0x6D9310
       name: extNine
@@ -2068,7 +2068,7 @@ segments:
       subsegments:
         - { start: 0x6D9310, type: vtx, name: model/JungleLand/extNine/extNine}
         - { start: 0x6D96E0, type: mtx, name: model/JungleLand/extNine/extNine}
-        - { start: 0x6D9720, type: gfx, name: model/JungleLand/extNine/extNine}
+        - { start: 0x6D9720, type: gfxSeg, name: model/JungleLand/extNine/extNine}
 
     - start: 0x6D9F78
       name: extTen
@@ -2077,7 +2077,7 @@ segments:
       subsegments:
         - { start: 0x6D9F78, type: vtx, name: model/JungleLand/extTen/extTen}
         - { start: 0x6DA7A8, type: mtx, name: model/JungleLand/extTen/extTen}
-        - { start: 0x6DA7E8, type: gfx, name: model/JungleLand/extTen/extTen}
+        - { start: 0x6DA7E8, type: gfxSeg, name: model/JungleLand/extTen/extTen}
 
     - start: 0x6DB398
       name: extEleven
@@ -2086,7 +2086,7 @@ segments:
       subsegments:
         - { start: 0x6DB398, type: vtx, name: model/JungleLand/extEleven/extEleven}
         - { start: 0x6DC0E8, type: mtx, name: model/JungleLand/extEleven/extEleven}
-        - { start: 0x6DC128, type: gfx, name: model/JungleLand/extEleven/extEleven}
+        - { start: 0x6DC128, type: gfxSeg, name: model/JungleLand/extEleven/extEleven}
 
     - start: 0x6DCEC8
       name: intZero #interior
@@ -2097,7 +2097,7 @@ segments:
         - { start: 0x6DD408, type: mtx, name: model/JungleLand/intZero/intZero}
         - [0x6DD450, ci8, img/JungleLand/lavaWall.ci8, 32, 64]
         - [0x6DDC58, palette, img/JungleLand/lavaWall.ci8]
-        - { start: 0x6DDE58, type: gfx, name: model/JungleLand/intZero/intZero}
+        - { start: 0x6DDE58, type: gfxSeg, name: model/JungleLand/intZero/intZero}
 
     - start: 0x6DE758
       name: intOne
@@ -2106,7 +2106,7 @@ segments:
       subsegments:
         - { start: 0x6DE758, type: vtx, name: model/JungleLand/intOne/intOne}
         - { start: 0x6DF778, type: mtx, name: model/JungleLand/intOne/intOne}
-        - { start: 0x6DF7B8, type: gfx, name: model/JungleLand/intOne/intOne}
+        - { start: 0x6DF7B8, type: gfxSeg, name: model/JungleLand/intOne/intOne}
 
     - start: 0x6E0D50
       name: intTwo
@@ -2115,7 +2115,7 @@ segments:
       subsegments:
         - { start: 0x6E0D50, type: vtx, name: model/JungleLand/intTwo/intTwo}
         - { start: 0x6E1050, type: mtx, name: model/JungleLand/intTwo/intTwo}
-        - { start: 0x6E1090, type: gfx, name: model/JungleLand/intTwo/intTwo}
+        - { start: 0x6E1090, type: gfxSeg, name: model/JungleLand/intTwo/intTwo}
 
     - start: 0x6E1558
       name: intThree
@@ -2124,7 +2124,7 @@ segments:
       subsegments:
         - { start: 0x6E1558, type: vtx, name: model/JungleLand/intThree/intThree}
         - { start: 0x6E1798, type: mtx, name: model/JungleLand/intThree/intThree}
-        - { start: 0x6E17D8, type: gfx, name: model/JungleLand/intThree/intThree}
+        - { start: 0x6E17D8, type: gfxSeg, name: model/JungleLand/intThree/intThree}
 
     - start: 0x6E1C50
       name: intFour
@@ -2133,7 +2133,7 @@ segments:
       subsegments:
         - { start: 0x6E1C50, type: vtx, name: model/JungleLand/intFour/intFour}
         - { start: 0x6E1F10, type: mtx, name: model/JungleLand/intFour/intFour}
-        - { start: 0x6E1F50, type: gfx, name: model/JungleLand/intFour/intFour}
+        - { start: 0x6E1F50, type: gfxSeg, name: model/JungleLand/intFour/intFour}
 
     - start: 0x6E23F8
       name: intSix
@@ -2142,7 +2142,7 @@ segments:
       subsegments:
         - { start: 0x6E23F8, type: vtx, name: model/JungleLand/intSix/intSix}
         - { start: 0x6E27D8, type: mtx, name: model/JungleLand/intSix/intSix}
-        - { start: 0x6E2818, type: gfx, name: model/JungleLand/intSix/intSix}
+        - { start: 0x6E2818, type: gfxSeg, name: model/JungleLand/intSix/intSix}
 
     - start: 0x6E2EB8
       name: intSeven
@@ -2151,7 +2151,7 @@ segments:
       subsegments:
         - { start: 0x6E2EB8, type: vtx, name: model/JungleLand/intSeven/intSeven}
         - { start: 0x6E3078, type: mtx, name: model/JungleLand/intSeven/intSeven}
-        - { start: 0x6E30B8, type: gfx, name: model/JungleLand/intSeven/intSeven}
+        - { start: 0x6E30B8, type: gfxSeg, name: model/JungleLand/intSeven/intSeven}
 
     - start: 0x6E3330
       name: intFive
@@ -2160,7 +2160,7 @@ segments:
       subsegments:
         - { start: 0x6E3330, type: vtx, name: model/JungleLand/intFive/intFive}
         - { start: 0x6E36F0, type: mtx, name: model/JungleLand/intFive/intFive}
-        - { start: 0x6E3730, type: gfx, name: model/JungleLand/intFive/intFive}
+        - { start: 0x6E3730, type: gfxSeg, name: model/JungleLand/intFive/intFive}
 
     - start: 0x6E3C20
       name: railFloorOne
@@ -2171,7 +2171,7 @@ segments:
         - { start: 0x6E3C60, type: mtx, name: model/JungleLand/railFloorOne/railFloorOne}
         - [0x6E3CA0, ci8, img/JungleLand/railTrack.ci8, 32, 64]
         - [0x6E44A0, palette, img/JungleLand/railTrack.ci8]
-        - { start: 0x6E46A0, type: gfx, name: model/JungleLand/railFloorOne/railFloorOne}
+        - { start: 0x6E46A0, type: gfxSeg, name: model/JungleLand/railFloorOne/railFloorOne}
 
     - start: 0x6E47A8
       name: singleRailTrack
@@ -2182,7 +2182,7 @@ segments:
         - { start: 0x6E47E8, type: mtx, name: model/JungleLand/singleRailTrack/singleRailTrack}
         - [0x6E4828, ci8,     img/JungleLand/singleRailTrack.ci8, 32, 32]
         - [0x6E4C28, palette, img/JungleLand/singleRailTrack.ci8]
-        - { start: 0x6E4E28, type: gfx, name: model/JungleLand/singleRailTrack/singleRailTrack}
+        - { start: 0x6E4E28, type: gfxSeg, name: model/JungleLand/singleRailTrack/singleRailTrack}
 
     - start: 0x6E4F30
       name: singleRailTrack2
@@ -2193,7 +2193,7 @@ segments:
         - { start: 0x6E4F70, type: mtx, name: model/JungleLand/singleRailTrack2/singleRailTrack2}
         - [0x6E4FB0, ci8, img/JungleLand/singleRailTrack2.ci8, 32, 32]
         - [0x6E53B0, palette, img/JungleLand/singleRailTrack2.ci8]
-        - { start: 0x6E55B0, type: gfx, name: model/JungleLand/singleRailTrack2/singleRailTrack2}
+        - { start: 0x6E55B0, type: gfxSeg, name: model/JungleLand/singleRailTrack2/singleRailTrack2}
 
     - start: 0x6E56B8
       name: branchRail
@@ -2204,7 +2204,7 @@ segments:
         - { start: 0x6E56F8, type: mtx, name: model/JungleLand/branchRail/branchRail}
         - [0x6E5738, ci8, img/JungleLand/branchRail.ci8, 32, 64]
         - [0x6E5F38, palette, img/JungleLand/branchRail.ci8]
-        - { start: 0x6E6138, type: gfx, name: model/JungleLand/branchRail/branchRail}
+        - { start: 0x6E6138, type: gfxSeg, name: model/JungleLand/branchRail/branchRail}
 
     - start: 0x6E6240
       name: turnRail
@@ -2215,7 +2215,7 @@ segments:
         - { start: 0x6E6280, type: mtx, name: model/JungleLand/turnRail/turnRail}
         - [0x6E62C0, ci8, img/JungleLand/turnRail.ci8, 32, 64]
         - [0x6E6AC0, palette, img/JungleLand/turnRail.ci8]
-        - { start: 0x6E6CC0, type: gfx, name: model/JungleLand/turnRail/turnRail}
+        - { start: 0x6E6CC0, type: gfxSeg, name: model/JungleLand/turnRail/turnRail}
 
     - start: 0x6E6DC8
       name: singleRailTrack3
@@ -2224,7 +2224,7 @@ segments:
       subsegments:
         - { start: 0x6E6DC8, type: vtx, name: model/JungleLand/singleRailTrack3/singleRailTrack3}
         - { start: 0x6E6E08, type: mtx, name: model/JungleLand/singleRailTrack3/singleRailTrack3}
-        - { start: 0x6E6E48, type: gfx, name: model/JungleLand/singleRailTrack3/singleRailTrack3}
+        - { start: 0x6E6E48, type: gfxSeg, name: model/JungleLand/singleRailTrack3/singleRailTrack3}
 
     - start: 0x6E6F50
       name: brokenMinecartRail
@@ -2233,7 +2233,7 @@ segments:
       subsegments:
         - { start: 0x6E6F50, type: vtx, name: model/JungleLand/brokenMinecartRail/brokenMinecartRail}
         - { start: 0x6E72F0, type: mtx, name: model/JungleLand/brokenMinecartRail/brokenMinecartRail}
-        - { start: 0x6E7330, type: gfx, name: model/JungleLand/brokenMinecartRail/brokenMinecartRail}
+        - { start: 0x6E7330, type: gfxSeg, name: model/JungleLand/brokenMinecartRail/brokenMinecartRail}
 
     - start: 0x6E7800
       name: brokenMinecartRail2
@@ -2242,7 +2242,7 @@ segments:
       subsegments:
         - { start: 0x6E7800, type: vtx, name: model/JungleLand/brokenMinecartRail2/brokenMinecartRail2}
         - { start: 0x6E7B50, type: mtx, name: model/JungleLand/brokenMinecartRail2/brokenMinecartRail2}
-        - { start: 0x6E7B90, type: gfx, name: model/JungleLand/brokenMinecartRail2/brokenMinecartRail2}
+        - { start: 0x6E7B90, type: gfxSeg, name: model/JungleLand/brokenMinecartRail2/brokenMinecartRail2}
 
     - start: 0x6E8108
       name: minecart
@@ -2255,7 +2255,7 @@ segments:
         - [0x6E8F58, palette, img/JungleLand/planks.ci4]
         - [0x6E9158, bin] #B8
         - [0x6E9160, bin] #? lots of 22 21 11 12
-        - { start: 0x6E9560, type: gfx, name: model/JungleLand/minecart/minecart}
+        - { start: 0x6E9560, type: gfxSeg, name: model/JungleLand/minecart/minecart}
 
     - start: 0x6E9E28
       name: doorFrame
@@ -2265,7 +2265,7 @@ segments:
         - { start: 0x6E9E28, type: vtx, name: model/JungleLand/doorFrame/doorFrame}
         - { start: 0x6EA1E8, type: mtx, name: model/JungleLand/doorFrame/doorFrame}
         - [0x6EA230, rgba16, img/JungleLand/topper.rgba16, 32, 32]
-        - { start: 0x6EAA30, type: gfx, name: model/JungleLand/doorFrame/doorFrame}
+        - { start: 0x6EAA30, type: gfxSeg, name: model/JungleLand/doorFrame/doorFrame}
 
     - start: 0x6EB228
       name: doorFrame2
@@ -2274,7 +2274,7 @@ segments:
       subsegments:
         - { start: 0x6EB228, type: vtx, name: model/JungleLand/doorFrame2/doorFrame2}
         - { start: 0x6EB5E8, type: mtx, name: model/JungleLand/doorFrame2/doorFrame2}
-        - { start: 0x6EB628, type: gfx, name: model/JungleLand/doorFrame2/doorFrame2}
+        - { start: 0x6EB628, type: gfxSeg, name: model/JungleLand/doorFrame2/doorFrame2}
 
     - start: 0x6EBE20
       name: fernPlant
@@ -2285,7 +2285,7 @@ segments:
         - { start: 0x6EBE60, type: mtx, name: model/JungleLand/fernPlant/fernPlant}
         - [0x6EBEA0, ci8, img/JungleLand/fernPlant.ci8, 48, 40]
         - [0x6EC620, palette, img/JungleLand/fernPlant.ci8]
-        - { start: 0x6EC820, type: gfx, name: model/JungleLand/fernPlant/fernPlant}
+        - { start: 0x6EC820, type: gfxSeg, name: model/JungleLand/fernPlant/fernPlant}
 
     - start: 0x6EC928
       name: waterfall
@@ -2297,7 +2297,7 @@ segments:
         - [0x6ECA08, bin]
         - [0x6ECA10, ci4, img/JungleLand/water.ci4, 64, 64]
         - [0x6ED218, palette, img/JungleLand/water.ci4]
-        - { start: 0x6ED418, type: gfx, name: model/JungleLand/waterfall/waterfall}
+        - { start: 0x6ED418, type: gfxSeg, name: model/JungleLand/waterfall/waterfall}
 
     - start: 0x6ED550
       name: water
@@ -2308,7 +2308,7 @@ segments:
         - { start: 0x6ED5A0, type: mtx, name: model/JungleLand/water/water}
         - [0x6ED5E8, ci4, img/JungleLand/swampWater.ci4, 64, 64]
         - [0x6EDDF0, palette, img/JungleLand/swampWater.ci4]
-        - { start: 0x6EDFF0, type: gfx, name: model/JungleLand/water/water}
+        - { start: 0x6EDFF0, type: gfxSeg, name: model/JungleLand/water/water}
 
     - start: 0x6EE100
       name: water2
@@ -2317,7 +2317,7 @@ segments:
       subsegments:
         - { start: 0x6EE100, type: vtx, name: model/JungleLand/water2/water2}
         - { start: 0x6EE150, type: mtx, name: model/JungleLand/water2/water2}
-        - { start: 0x6EE190, type: gfx, name: model/JungleLand/water2/water2}
+        - { start: 0x6EE190, type: gfxSeg, name: model/JungleLand/water2/water2}
 
     - { start: 0x6ee2a0, type: bin, name: model/JungleLand/lilypad/lilypad.col} #collision
     - { start: 0x6ee3ec, type: bin, name: model/JungleLand/vine/vine.col} #collision
@@ -2428,7 +2428,7 @@ segments:
         - [0x6FB8B0, ci8, img/JungleLand/golemFace.ci8, 64, 64] 
         - [0x6FC8B0, bin]       
         - [0x6FC8B8, palette, img/JungleLand/golemFace.ci8]
-        - { start: 0x6FCAB8, type: gfx, name: model/JungleLand/rockGolem/rockGolem}
+        - { start: 0x6FCAB8, type: gfxSeg, name: model/JungleLand/rockGolem/rockGolem}
 
     - start: 0x6FD058
       name: rockGolemLeg
@@ -2437,7 +2437,7 @@ segments:
       subsegments:
         - { start: 0x6FD058, type: vtx, name: model/JungleLand/rockGolemLeg/rockGolemLeg}
         - { start: 0x6FD2F8, type: mtx, name: model/JungleLand/rockGolemLeg/rockGolemLeg}
-        - { start: 0x6FD338, type: gfx, name: model/JungleLand/rockGolemLeg/rockGolemLeg}
+        - { start: 0x6FD338, type: gfxSeg, name: model/JungleLand/rockGolemLeg/rockGolemLeg}
 
     - start: 0x6FD890
       name: rockGolemArm
@@ -2457,16 +2457,16 @@ segments:
         - [0x6FE468, ci4, img/JungleLand/rock4.ci4, 32, 32]
         - [0x6FE668, bin]
         - [0x6FE670, palette, img/JungleLand/rock4.ci4]
-        - { start: 0x6FE870, type: gfx, name: model/JungleLand/rockGolemArm/rockGolemArm}
+        - { start: 0x6FE870, type: gfxSeg, name: model/JungleLand/rockGolemArm/rockGolemArm}
 
     - start: 0x6FEFC8
-      name: rockGolemLeg
+      name: rockGolemLeg2
       type: .data
       subalign: 8
       subsegments:
-        - { start: 0x6FEFC8, type: vtx, name: model/JungleLand/rockGolemLeg/rockGolemLeg}
-        - { start: 0x6FF108, type: mtx, name: model/JungleLand/rockGolemLeg/rockGolemLeg}
-        - { start: 0x6FF148, type: gfx, name: model/JungleLand/rockGolemLeg/rockGolemLeg}
+        - { start: 0x6FEFC8, type: vtx, name: model/JungleLand/rockGolemLeg2/rockGolemLeg2}
+        - { start: 0x6FF108, type: mtx, name: model/JungleLand/rockGolemLeg2/rockGolemLeg2}
+        - { start: 0x6FF148, type: gfxSeg, name: model/JungleLand/rockGolemLeg2/rockGolemLeg2}
 
     - start: 0x6FF3E0
       name: rockGolemBody
@@ -2475,16 +2475,16 @@ segments:
       subsegments:
         - { start: 0x6FF3E0, type: vtx, name: model/JungleLand/rockGolemBody/rockGolemBody}
         - { start: 0x6FF720, type: mtx, name: model/JungleLand/rockGolemBody/rockGolemBody}
-        - { start: 0x6FF760, type: gfx, name: model/JungleLand/rockGolemBody/rockGolemBody}
+        - { start: 0x6FF760, type: gfxSeg, name: model/JungleLand/rockGolemBody/rockGolemBody}
 
     - start: 0x6FFDD8
-      name: rockGolemLeg2
+      name: rockGolemLeg3
       type: .data
       subalign: 8
       subsegments:
-        - { start: 0x6FFDD8, type: vtx, name: model/JungleLand/rockGolemLeg2/rockGolemLeg2}
-        - { start: 0x700078, type: mtx, name: model/JungleLand/rockGolemLeg2/rockGolemLeg2}
-        - { start: 0x7000B8, type: gfx, name: model/JungleLand/rockGolemLeg2/rockGolemLeg2}
+        - { start: 0x6FFDD8, type: vtx, name: model/JungleLand/rockGolemLeg3/rockGolemLeg3}
+        - { start: 0x700078, type: mtx, name: model/JungleLand/rockGolemLeg3/rockGolemLeg3}
+        - { start: 0x7000B8, type: gfxSeg, name: model/JungleLand/rockGolemLeg3/rockGolemLeg3}
 
     - start: 0x700610
       name: rockGolemElbow
@@ -2493,7 +2493,7 @@ segments:
       subsegments:
         - { start: 0x700610, type: vtx, name: model/JungleLand/rockGolemElbow/rockGolemElbow}
         - { start: 0x700750, type: mtx, name: model/JungleLand/rockGolemElbow/rockGolemElbow}
-        - { start: 0x700790, type: gfx, name: model/JungleLand/rockGolemElbow/rockGolemElbow}
+        - { start: 0x700790, type: gfxSeg, name: model/JungleLand/rockGolemElbow/rockGolemElbow}
     
     - start: 0x700a28
       name: rockGolemArm2
@@ -2502,10 +2502,10 @@ segments:
       subsegments:
         - { start: 0x700a28, type: vtx, name: model/JungleLand/rockGolemArm2/rockGolemArm2}
         - { start: 0x700d98, type: mtx, name: model/JungleLand/rockGolemArm2/rockGolemArm2}
-        - { start: 0x700dd8, type: gfx, name: model/JungleLand/rockGolemArm2/rockGolemArm2}
+        - { start: 0x700dd8, type: gfxSeg, name: model/JungleLand/rockGolemArm2/rockGolemArm2}
 
     - { start: 0x701530, type: mtx, name: unkunk}
-    - { start: 0x701570, type: gfx, name: unkunk}
+    - { start: 0x701570, type: gfxSeg, name: unkunk}
     
     - start: 0x7015c8
       name: spiderRock
@@ -2518,10 +2518,10 @@ segments:
         - [0x7018a0, ci8, img/JungleLand/spiderRock.ci8, 40, 40]
         - [0x701ee0, bin]
         - [0x701ee8, palette, img/JungleLand/spiderRock.ci8]
-        - { start: 0x7020E8, type: gfx, name: model/JungleLand/spiderRock/spiderRock}
+        - { start: 0x7020E8, type: gfxSeg, name: model/JungleLand/spiderRock/spiderRock}
   
     - { start: 0x702388, type: mtx, name: unkunk2}
-    - { start: 0x7023C8, type: gfx, name: unkunk2}
+    - { start: 0x7023C8, type: gfxSeg, name: unkunk2}
 
     - start: 0x7023E8
       name: fish
@@ -2532,10 +2532,10 @@ segments:
         - { start: 0x702478, type: mtx, name: model/JungleLand/fish/fish}
         - [0x7024b8, bin]
         - [0x7024c0, rgba16, img/JungleLand/fish.rgba16, 48, 40]
-        - { start: 0x7033C0, type: gfx, name: model/JungleLand/fish/fish}
+        - { start: 0x7033C0, type: gfxSeg, name: model/JungleLand/fish/fish}
   
     - { start: 0x703518, type: mtx, name: unkunk3}
-    - { start: 0x703558, type: gfx, name: unkunk3}
+    - { start: 0x703558, type: gfxSeg, name: unkunk3}
 
     - start: 0x703578
       name: fishTail
@@ -2546,10 +2546,10 @@ segments:
         - { start: 0x7035c8, type: mtx, name: model/JungleLand/fishTail/fishTail}
         - [0x703608, bin]
         - [0x703610, rgba16, img/JungleLand/fishTail.rgba16, 32, 48]
-        - { start: 0x704210, type: gfx, name: model/JungleLand/fishTail/fishTail}
+        - { start: 0x704210, type: gfxSeg, name: model/JungleLand/fishTail/fishTail}
 
     - { start: 0x704300, type: mtx, name: unkunk4}
-    - { start: 0x704340, type: gfx, name: unkunk4}
+    - { start: 0x704340, type: gfxSeg, name: unkunk4}
 
     - [0x704368, animHeader, anim/actors/golem/golemSleep]
     - [0x704398, animArray, anim/actors/golem/golemSleep, 20, 8]
@@ -2572,7 +2572,7 @@ segments:
     
     - [0x70dae4, animHeader, anim/actors/fish/fishTailInit]
     - [0x70db14, bin] #0x4 pad so the matrix array is 8 aligned
-    - [0x70db18, animArray, anim/actors/fish/fishHeadInit, 1, 1]
+    - [0x70db18, animArray, anim/actors/fish/fishTailInit, 1, 1]
     - [0x70db58, bin, anim/actors/fish/fishTailInitPointers]
     - [0x70db64, bin] #file break
 
@@ -2768,7 +2768,7 @@ segments:
     vram: 0x80323740 #temp
     subalign: 8
     subsegments:
-    - { start: 0x87F600, type: mtx, name: model/Global/mtx}
+    - { start: 0x87F600, type: mtx, name: model/Fail/mtx}
   #apparently ^ this mtx isnt a part of Global???? if it was the start addr would be wrong somehow. weird.
   #also why do i have to make an entire group for this to work :skull:
 
@@ -2798,7 +2798,7 @@ segments:
         - [0x87F8D0, rgba16, model/Global/cannon/cannonHole.rgba16, 32, 32]
         - [0x8800D8, rgba16, model/Global/cannon/cannonBarrel.rgba16, 32, 64]
         - [0x8810E0, rgba16, model/Global/cannon/black.rgba16, 32, 32]
-        - { start: 0x8818E0, type: gfx, name: model/Global/cannon/cannon}
+        - { start: 0x8818E0, type: gfxSeg, name: model/Global/cannon/cannon}
 
     - start: 0x881C08
       name: unkWood
@@ -2812,7 +2812,7 @@ segments:
         - [0x8830C0, rgba16, model/Global/unkWood/darkWood.rgba16, 32, 32]
         - [0x8838C8, rgba16, model/Global/unkWood/lightWood.rgba16, 32, 32]
         - [0x8840D0, rgba16, model/Global/unkWood/midWood.rgba16, 32, 32]
-        - { start: 0x8848D0, type: gfx, name: model/Global/unkWood/unkWood}
+        - { start: 0x8848D0, type: gfxSeg, name: model/Global/unkWood/unkWood}
 
     - start: 0x885058
       name: unk
@@ -2821,7 +2821,7 @@ segments:
       subsegments:
         - { start: 0x885058, type: vtx, name: model/Global/unk/unk}
         - { start: 0x885238, type: mtx, name: model/Global/unk/unk}
-        - { start: 0x885278, type: gfx, name: model/Global/unk/unk}
+        - { start: 0x885278, type: gfxSeg, name: model/Global/unk/unk}
     - start: 0x8855E0
       name: unk2    #winding thing
       type: .data
@@ -2829,7 +2829,7 @@ segments:
       subsegments:
         - { start: 0x8855E0, type: vtx, name: model/Global/unk2/unk2}
         - { start: 0x885760, type: mtx, name: model/Global/unk2/unk2}
-        - { start: 0x8857A0, type: gfx, name: model/Global/unk2/unk2}
+        - { start: 0x8857A0, type: gfxSeg, name: model/Global/unk2/unk2}
     - start: 0x885900
       name: unk40
       type: .data
@@ -2839,7 +2839,7 @@ segments:
         - { start: 0x885940, type: mtx, name: model/Global/unk40/unk40}
         - [0x885980, bin]
         - [0x885988, ia8, model/Global/unk40/shadow.ia8, 40, 40]
-        - { start: 0x885fc8, type: gfx, name: model/Global/unk40/unk40}
+        - { start: 0x885fc8, type: gfxSeg, name: model/Global/unk40/unk40}
         - { start: 0x886148, type: bin, name: model/Global/unk40/unk40.col}
       
     - [0x8865b8, bin]
@@ -3331,7 +3331,7 @@ segments:
       subsegments:
         - { start: 0x8b4f00, type: vtx, name: model/Global/unk3/unk3}
         - { start: 0x8b4f80, type: mtx, name: model/Global/unk3/unk3}
-        - { start: 0x8b4fc0, type: gfx, name: model/Global/unk3/unk3}
+        - { start: 0x8b4fc0, type: gfxSeg, name: model/Global/unk3/unk3}
         - { start: 0x8b5078, type: bin, name: model/Global/unk3/unk3.col}
     - start: 0x8b5198
       name: unk4
@@ -3340,7 +3340,7 @@ segments:
       subsegments:
         - { start: 0x8b5198, type: vtx, name: model/Global/unk4/unk4}
         - { start: 0x8b51d8, type: mtx, name: model/Global/unk4/unk4}
-        - { start: 0x8b5218, type: gfx, name: model/Global/unk4/unk4}
+        - { start: 0x8b5218, type: gfxSeg, name: model/Global/unk4/unk4}
         - { start: 0x8b5280, type: bin, name: model/Global/unk4/unk4.col}
     - start: 0x8b52f8
       name: unk5
@@ -3349,7 +3349,7 @@ segments:
       subsegments:
         - { start: 0x8b52f8, type: vtx, name: model/Global/unk5/unk5}
         - { start: 0x8b5338, type: mtx, name: model/Global/unk5/unk5}
-        - { start: 0x8b5378, type: gfx, name: model/Global/unk5/unk5}
+        - { start: 0x8b5378, type: gfxSeg, name: model/Global/unk5/unk5}
         - { start: 0x8b53e0, type: bin, name: model/Global/unk5/unk5.col}
     - start: 0x8b5458
       name: unk6
@@ -3358,7 +3358,7 @@ segments:
       subsegments:
         - { start: 0x8b5458, type: vtx, name: model/Global/unk6/unk6}
         - { start: 0x8b5498, type: mtx, name: model/Global/unk6/unk6}
-        - { start: 0x8b54D8, type: gfx, name: model/Global/unk6/unk6}
+        - { start: 0x8b54D8, type: gfxSeg, name: model/Global/unk6/unk6}
         - { start: 0x8b5540, type: bin, name: model/Global/unk6/unk6.col}
     - start: 0x8b55b8
       name: unk7
@@ -3367,7 +3367,7 @@ segments:
       subsegments:
         - { start: 0x8b55b8, type: vtx, name: model/Global/unk7/unk7}
         - { start: 0x8b55f8, type: mtx, name: model/Global/unk7/unk7}
-        - { start: 0x8b5638, type: gfx, name: model/Global/unk7/unk7}
+        - { start: 0x8b5638, type: gfxSeg, name: model/Global/unk7/unk7}
         - { start: 0x8b56a0, type: bin, name: model/Global/unk7/unk7.col}
     - start: 0x8b5718
       name: unk8
@@ -3376,7 +3376,7 @@ segments:
       subsegments:
         - { start: 0x8b5718, type: vtx, name: model/Global/unk8/unk8}
         - { start: 0x8b57b8, type: mtx, name: model/Global/unk8/unk8}
-        - { start: 0x8b57f8, type: gfx, name: model/Global/unk8/unk8}
+        - { start: 0x8b57f8, type: gfxSeg, name: model/Global/unk8/unk8}
         - { start: 0x8b59c0, type: bin, name: model/Global/unk8/unk8.col}
     - start: 0x8b5a68
       name: unk9
@@ -3384,7 +3384,7 @@ segments:
       subalign: 8
       subsegments:
         - { start: 0x8b5a68, type: mtx, name: model/Global/unk9/unk9}
-        - { start: 0x8b5aA8, type: gfx, name: model/Global/unk9/unk9}
+        - { start: 0x8b5aA8, type: gfxSeg, name: model/Global/unk9/unk9}
         - { start: 0x8b5bf8, type: bin, name: model/Global/unk9/unk9.col}
     - start: 0x8b5cc0
       name: unkA
@@ -3393,7 +3393,7 @@ segments:
       subsegments:
         - { start: 0x8b5cc0, type: vtx, name: model/Global/unkA/unkA}
         - { start: 0x8b5e00, type: mtx, name: model/Global/unkA/unkA}
-        - { start: 0x8b5e40, type: gfx, name: model/Global/unkA/unkA}
+        - { start: 0x8b5e40, type: gfxSeg, name: model/Global/unkA/unkA}
         - { start: 0x8b6228, type: bin, name: model/Global/unkA/unkA.col}
     - start: 0x8b6330
       name: unkB
@@ -3406,7 +3406,7 @@ segments:
         - [0x8b64B8, i4, model/Global/unkB/unkB1.i4, 32, 64]
         - [0x8b68b8, bin]
         - [0x8b68c0, i4, model/Global/unkB/unkB2.i4, 16, 16]
-        - { start: 0x8b6940, type: gfx, name: model/Global/unkB/unkB}
+        - { start: 0x8b6940, type: gfxSeg, name: model/Global/unkB/unkB}
         - { start: 0x8b6bf8, type: bin, name: model/Global/unkB/unkB.col}
     - start: 0x8b6d00
       name: unkC
@@ -3417,7 +3417,7 @@ segments:
         - { start: 0x8b6e00, type: mtx, name: model/Global/unkC/unkC}
         - [0x8b6e40, bin]
         - [0x8b6e48, i4, model/Global/unkC/unkC.i4, 32, 32]
-        - { start: 0x8b7048, type: gfx, name: model/Global/unkC/unkC}
+        - { start: 0x8b7048, type: gfxSeg, name: model/Global/unkC/unkC}
         - { start: 0x8b7200, type: bin, name: model/Global/unkC/unkC.col}
     - start: 0x8b72f0
       name: ALSpinDoor
@@ -3430,7 +3430,7 @@ segments:
         - [0x8b7438, ci4, model/Global/ALSpinDoor/ALSpinDoor.ci4, 32, 32]
         - [0x8b7638, bin]
         - [0x8b7640, palette, model/Global/ALSpinDoor/ALSpinDoor.ci4]
-        - { start: 0x8b7840, type: gfx, name: model/Global/ALSpinDoor/ALSpinDoor}
+        - { start: 0x8b7840, type: gfxSeg, name: model/Global/ALSpinDoor/ALSpinDoor}
         - { start: 0x8b7a58, type: bin, name: model/Global/ALSpinDoor/ALSpinDoor.col}
     - start: 0x8b7b48
       name: unkD
@@ -3439,7 +3439,7 @@ segments:
       subsegments:
         - { start: 0x8b7b48, type: vtx, name: model/Global/unkD/unkD}
         - { start: 0x8b7b88, type: mtx, name: model/Global/unkD/unkD}
-        - { start: 0x8b7bC8, type: gfx, name: model/Global/unkD/unkD}
+        - { start: 0x8b7bC8, type: gfxSeg, name: model/Global/unkD/unkD}
         - { start: 0x8b7cd0, type: bin, name: model/Global/unkD/unkD.col}
     - start: 0x8b7d48
       name: BLLava
@@ -3452,7 +3452,7 @@ segments:
         - [0x8b7dD0, ci4, model/Global/BLLava/BLLava.ci4, 64, 64]
         - [0x8b85d0, bin]
         - [0x8b85d8, palette, model/Global/BLLava/BLLava.ci4]
-        - { start: 0x8b87d8, type: gfx, name: model/Global/BLLava/BLLava}
+        - { start: 0x8b87d8, type: gfxSeg, name: model/Global/BLLava/BLLava}
         - { start: 0x8b88e0, type: bin, name: model/Global/BLLava/BLLava.col}
     - start: 0x8b8958
       name: BLLava2
@@ -3465,7 +3465,7 @@ segments:
         - [0x8b89E0, ci4, model/Global/BLLava2/BLLava2.ci4, 64, 64]
         - [0x8b91e0, bin]
         - [0x8b91e8, palette, model/Global/BLLava2/BLLava2.ci4]
-        - { start: 0x8b93e8, type: gfx, name: model/Global/BLLava2/BLLava2}
+        - { start: 0x8b93e8, type: gfxSeg, name: model/Global/BLLava2/BLLava2}
         - { start: 0x8b94f0, type: bin, name: model/Global/BLLava2/BLLava2.col}
     - start: 0x8b9568
       name: BLLava3
@@ -3478,7 +3478,7 @@ segments:
         - [0x8b95F0, ci4, model/Global/BLLava3/BLLava3.ci4, 64, 64]
         - [0x8b9df0, bin]
         - [0x8b9df8, palette, model/Global/BLLava3/BLLava3.ci4]
-        - { start: 0x8b9ff8, type: gfx, name: model/Global/BLLava3/BLLava3}
+        - { start: 0x8b9ff8, type: gfxSeg, name: model/Global/BLLava3/BLLava3}
         - { start: 0x8ba100, type: bin, name: model/Global/BLLava3/BLLava3.col}
     - start: 0x8ba178
       name: BLLava4
@@ -3491,7 +3491,7 @@ segments:
         - [0x8ba200, ci4, model/Global/BLLava4/BLLava4.ci4, 64, 64]
         - [0x8baa00, bin]
         - [0x8baa08, palette, model/Global/BLLava4/BLLava4.ci4]
-        - { start: 0x8bac08, type: gfx, name: model/Global/BLLava4/BLLava4}
+        - { start: 0x8bac08, type: gfxSeg, name: model/Global/BLLava4/BLLava4}
         - { start: 0x8bad10, type: bin, name: model/Global/BLLava4/BLLava4.col}
     - start: 0x8bad88
       name: BLLava5
@@ -3504,7 +3504,7 @@ segments:
         - [0x8bae10, ci4, model/Global/BLLava5/BLLava5.ci4, 64, 64]
         - [0x8bb610, bin]
         - [0x8bb618, palette, model/Global/BLLava5/BLLava5.ci4]
-        - { start: 0x8bb818, type: gfx, name: model/Global/BLLava5/BLLava5}
+        - { start: 0x8bb818, type: gfxSeg, name: model/Global/BLLava5/BLLava5}
         - { start: 0x8bb920, type: bin, name: model/Global/BLLava5/BLLava5.col}
     - start: 0x8bb998
       name: BLLava6
@@ -3517,7 +3517,7 @@ segments:
         - [0x8bbA20, ci4, model/Global/BLLava6/BLLava6.ci4, 64, 64]
         - [0x8bc220, bin]
         - [0x8bc228, palette, model/Global/BLLava6/BLLava6.ci4]
-        - { start: 0x8bc428, type: gfx, name: model/Global/BLLava6/BLLava6}
+        - { start: 0x8bc428, type: gfxSeg, name: model/Global/BLLava6/BLLava6}
         - { start: 0x8bc530, type: bin, name: model/Global/BLLava6/BLLava6.col}
     - start: 0x8bc5a8
       name: BLLava7
@@ -3530,7 +3530,7 @@ segments:
         - [0x8bc630, ci4, model/Global/BLLava7/BLLava7.ci4, 64, 64]
         - [0x8bce30, bin]
         - [0x8bce38, palette, model/Global/BLLava7/BLLava7.ci4]
-        - { start: 0x8bd038, type: gfx, name: model/Global/BLLava7/BLLava7}
+        - { start: 0x8bd038, type: gfxSeg, name: model/Global/BLLava7/BLLava7}
         - { start: 0x8bd140, type: bin, name: model/Global/BLLava7/BLLava7.col}
     - start: 0x8bd1b8
       name: BLLava8
@@ -3543,7 +3543,7 @@ segments:
         - [0x8bd240, ci4, model/Global/BLLava8/BLLava8.ci4, 64, 64]
         - [0x8bda40, bin]
         - [0x8bda48, palette, model/Global/BLLava8/BLLava8.ci4]
-        - { start: 0x8bdc48, type: gfx, name: model/Global/BLLava8/BLLava8}
+        - { start: 0x8bdc48, type: gfxSeg, name: model/Global/BLLava8/BLLava8}
         - { start: 0x8bdd50, type: bin, name: model/Global/BLLava8/BLLava8.col}
     - start: 0x8bddc8
       name: unkE
@@ -3552,7 +3552,7 @@ segments:
       subsegments:
         - { start: 0x8bddc8, type: vtx, name: model/Global/unkE/unkE}
         - { start: 0x8bde08, type: mtx, name: model/Global/unkE/unkE}
-        - { start: 0x8bde48, type: gfx, name: model/Global/unkE/unkE}
+        - { start: 0x8bde48, type: gfxSeg, name: model/Global/unkE/unkE}
         - { start: 0x8bdf20, type: bin, name: model/Global/unkE/unkE.col}
     - start: 0x8bdf98
       name: unkF
@@ -3561,7 +3561,7 @@ segments:
       subsegments:
         - { start: 0x8bdf98, type: vtx, name: model/Global/unkF/unkF}
         - { start: 0x8be0d8, type: mtx, name: model/Global/unkF/unkF}
-        - { start: 0x8be118, type: gfx, name: model/Global/unkF/unkF}
+        - { start: 0x8be118, type: gfxSeg, name: model/Global/unkF/unkF}
         - { start: 0x8be390, type: bin, name: model/Global/unkF/unkF.col}
     - start: 0x8be498
       name: unk10
@@ -3570,7 +3570,7 @@ segments:
       subsegments:
         - { start: 0x8be498, type: vtx, name: model/Global/unk10/unk10}
         - { start: 0x8be538, type: mtx, name: model/Global/unk10/unk10}
-        - { start: 0x8be578, type: gfx, name: model/Global/unk10/unk10}
+        - { start: 0x8be578, type: gfxSeg, name: model/Global/unk10/unk10}
         - { start: 0x8be770, type: bin, name: model/Global/unk10/unk10.col}
     - start: 0x8be818
       name: Door1
@@ -3583,7 +3583,7 @@ segments:
         - [0x8be960, ci4, model/Global/Door1/Door1.ci4, 64, 64]
         - [0x8bf160, bin]
         - [0x8bf168, palette, model/Global/Door1/Door1.ci4]
-        - { start: 0x8bf368, type: gfx, name: model/Global/Door1/Door1}
+        - { start: 0x8bf368, type: gfxSeg, name: model/Global/Door1/Door1}
         - { start: 0x8bf580, type: bin, name: model/Global/Door1/Door1.col}
     - start: 0x8bf670
       name: unk12
@@ -3592,7 +3592,7 @@ segments:
       subsegments:
         - { start: 0x8bf670, type: vtx, name: model/Global/unk12/unk12}
         - { start: 0x8bf710, type: mtx, name: model/Global/unk12/unk12}
-        - { start: 0x8bf750, type: gfx, name: model/Global/unk12/unk12}
+        - { start: 0x8bf750, type: gfxSeg, name: model/Global/unk12/unk12}
         - { start: 0x8bf948, type: bin, name: model/Global/unk12/unk12.col}
     - start: 0x8bf9f0
       name: unk13
@@ -3601,7 +3601,7 @@ segments:
       subsegments:
         - { start: 0x8bf9f0, type: vtx, name: model/Global/unk13/unk13}
         - { start: 0x8bfa30, type: mtx, name: model/Global/unk13/unk13}
-        - { start: 0x8bfa70, type: gfx, name: model/Global/unk13/unk13}
+        - { start: 0x8bfa70, type: gfxSeg, name: model/Global/unk13/unk13}
         - { start: 0x8bfad8, type: bin, name: model/Global/unk13/unk13.col}
     - start: 0x8bfb50
       name: unk14
@@ -3610,7 +3610,7 @@ segments:
       subsegments:
         - { start: 0x8bfb50, type: vtx, name: model/Global/unk14/unk14}
         - { start: 0x8bfb90, type: mtx, name: model/Global/unk14/unk14}
-        - { start: 0x8bfbD0, type: gfx, name: model/Global/unk14/unk14}
+        - { start: 0x8bfbD0, type: gfxSeg, name: model/Global/unk14/unk14}
         - { start: 0x8bfc38, type: bin, name: model/Global/unk14/unk14.col}
     - start: 0x8bfcb0
       name: unk15
@@ -3619,7 +3619,7 @@ segments:
       subsegments:
         - { start: 0x8bfcb0, type: vtx, name: model/Global/unk15/unk15}
         - { start: 0x8bfd50, type: mtx, name: model/Global/unk15/unk15}
-        - { start: 0x8bfd90, type: gfx, name: model/Global/unk15/unk15}
+        - { start: 0x8bfd90, type: gfxSeg, name: model/Global/unk15/unk15}
         - { start: 0x8bff88, type: bin, name: model/Global/unk15/unk15.col}
     - start: 0x8c0030
       name: unk16
@@ -3628,7 +3628,7 @@ segments:
       subsegments:
         - { start: 0x8c0030, type: vtx, name: model/Global/unk16/unk16}
         - { start: 0x8c00d0, type: mtx, name: model/Global/unk16/unk16}
-        - { start: 0x8c0110, type: gfx, name: model/Global/unk16/unk16}
+        - { start: 0x8c0110, type: gfxSeg, name: model/Global/unk16/unk16}
         - { start: 0x8c0308, type: bin, name: model/Global/unk16/unk16.col}
     - start: 0x8c03b0
       name: unk17
@@ -3637,7 +3637,7 @@ segments:
       subsegments:
         - { start: 0x8c03b0, type: vtx, name: model/Global/unk17/unk17}
         - { start: 0x8c0530, type: mtx, name: model/Global/unk17/unk17}
-        - { start: 0x8c0570, type: gfx, name: model/Global/unk17/unk17}
+        - { start: 0x8c0570, type: gfxSeg, name: model/Global/unk17/unk17}
         - { start: 0x8c0818, type: bin, name: model/Global/unk17/unk17.col}
     - start: 0x8c0998
       name: unk18
@@ -3646,7 +3646,7 @@ segments:
       subsegments:
         - { start: 0x8c0998, type: vtx, name: model/Global/unk18/unk18}
         - { start: 0x8c0a38, type: mtx, name: model/Global/unk18/unk18}
-        - { start: 0x8c0a78, type: gfx, name: model/Global/unk18/unk18}
+        - { start: 0x8c0a78, type: gfxSeg, name: model/Global/unk18/unk18}
         - { start: 0x8c0c70, type: bin, name: model/Global/unk18/unk18.col}
     - start: 0x8c0d18
       name: unk19
@@ -3655,7 +3655,7 @@ segments:
       subsegments:
         - { start: 0x8c0d18, type: vtx, name: model/Global/unk19/unk19}
         - { start: 0x8c0db8, type: mtx, name: model/Global/unk19/unk19}
-        - { start: 0x8c0df8, type: gfx, name: model/Global/unk19/unk19}
+        - { start: 0x8c0df8, type: gfxSeg, name: model/Global/unk19/unk19}
         - { start: 0x8c0ff0, type: bin, name: model/Global/unk19/unk19.col}
     - start: 0x8c1098
       name: unk1A
@@ -3664,7 +3664,7 @@ segments:
       subsegments:
         - { start: 0x8c1098, type: vtx, name: model/Global/unk1A/unk1A}
         - { start: 0x8c1138, type: mtx, name: model/Global/unk1A/unk1A}
-        - { start: 0x8c1178, type: gfx, name: model/Global/unk1A/unk1A}
+        - { start: 0x8c1178, type: gfxSeg, name: model/Global/unk1A/unk1A}
         - { start: 0x8c1370, type: bin, name: model/Global/unk1A/unk1A.col}
     - start: 0x8c1418
       name: unk1B
@@ -3673,7 +3673,7 @@ segments:
       subsegments:
         - { start: 0x8c1418, type: vtx, name: model/Global/unk1B/unk1B}
         - { start: 0x8c14b8, type: mtx, name: model/Global/unk1B/unk1B}
-        - { start: 0x8c14f8, type: gfx, name: model/Global/unk1B/unk1B}
+        - { start: 0x8c14f8, type: gfxSeg, name: model/Global/unk1B/unk1B}
         - { start: 0x8c16f0, type: bin, name: model/Global/unk1B/unk1B.col}
     - start: 0x8c1798
       name: unk1C
@@ -3682,7 +3682,7 @@ segments:
       subsegments:
         - { start: 0x8c1798, type: vtx, name: model/Global/unk1C/unk1C}
         - { start: 0x8c18f8, type: mtx, name: model/Global/unk1C/unk1C}
-        - { start: 0x8c1938, type: gfx, name: model/Global/unk1C/unk1C}
+        - { start: 0x8c1938, type: gfxSeg, name: model/Global/unk1C/unk1C}
         - { start: 0x8c1bd0, type: bin, name: model/Global/unk1C/unk1C.col}
     - start: 0x8c1d50
       name: unk1D
@@ -3691,7 +3691,7 @@ segments:
       subsegments:
         - { start: 0x8c1d50, type: vtx, name: model/Global/unk1D/unk1D}
         - { start: 0x8c1e90, type: mtx, name: model/Global/unk1D/unk1D}
-        - { start: 0x8c1ed0, type: gfx, name: model/Global/unk1D/unk1D}
+        - { start: 0x8c1ed0, type: gfxSeg, name: model/Global/unk1D/unk1D}
         - { start: 0x8c2108, type: bin, name: model/Global/unk1D/unk1D.col}
     - start: 0x8c2258
       name: unk1E
@@ -3700,7 +3700,7 @@ segments:
       subsegments:
         - { start: 0x8c2258, type: vtx, name: model/Global/unk1E/unk1E}
         - { start: 0x8c2358, type: mtx, name: model/Global/unk1E/unk1E}
-        - { start: 0x8c2398, type: gfx, name: model/Global/unk1E/unk1E}
+        - { start: 0x8c2398, type: gfxSeg, name: model/Global/unk1E/unk1E}
         - { start: 0x8c25b0, type: bin, name: model/Global/unk1E/unk1E.col}
 
 
