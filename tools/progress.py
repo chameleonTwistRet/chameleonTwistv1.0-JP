@@ -30,7 +30,7 @@ def get_func_sizes():
             components = line.split()
             size = int(components[4], 16)
             name = components[5]
-            if not name.startswith(".L"):
+            if not name.startswith(".L") or not name.startswith("D_"):
                 total += size
                 sizes[name] = size
 
