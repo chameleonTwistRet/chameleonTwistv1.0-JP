@@ -87,7 +87,7 @@ mod_directory = 'src/mod'
 
 with open(linker_script_file) as file:
     for line_number, line in enumerate(file):
-        if 'romPadding_VRAM_END' in line:
+        if 'ROM_PADDING_VRAM_END' in line:
             next_line = next(file, None)
             break
 line_number = line_number + 1
@@ -108,7 +108,7 @@ line_number += 6
 
 
 for index, line in enumerate(lines):
-    if 'romPadding_VRAM_END' in line:
+    if 'ROM_PADDING_VRAM_END' in line:
         for root, dirnames, filenames in os.walk(mod_directory):
             for filename in fnmatch.filter(filenames, '*.c'):
                 lines.insert(line_number, f"\t\tbuild/{root}/{filename}.o(.text);\n")
@@ -125,7 +125,7 @@ lines.insert(line_number, "\t\tmod_RODATA_START = .;\n")
 line_number += 1
 
 for index, line in enumerate(lines):
-    if 'romPadding_VRAM_END' in line:
+    if 'ROM_PADDING_VRAM_END' in line:
         for root, dirnames, filenames in os.walk(mod_directory):
             for filename in fnmatch.filter(filenames, '*.c'):
                 lines.insert(line_number, f"\t\tbuild/{root}/{filename}.o(.rodata);\n")
@@ -142,7 +142,7 @@ lines.insert(line_number, "\t\tmod_DATA_START = .;\n")
 line_number += 1        
 
 for index, line in enumerate(lines):
-    if 'romPadding_VRAM_END' in line:
+    if 'ROM_PADDING_VRAM_END' in line:
         for root, dirnames, filenames in os.walk(mod_directory):
             for filename in fnmatch.filter(filenames, '*.c'):
                 lines.insert(line_number, f"\t\tbuild/{root}/{filename}.o(.data);\n")
@@ -165,7 +165,7 @@ lines[line_number:line_number] = [
 line_number += 5
 
 for index, line in enumerate(lines):
-    if 'romPadding_VRAM_END' in line:
+    if 'ROM_PADDING_VRAM_END' in line:
         for root, dirnames, filenames in os.walk(mod_directory):
             for filename in fnmatch.filter(filenames, '*.c'):
                 lines.insert(line_number, f"\t\tbuild/{root}/{filename}.o(.bss);\n")
@@ -202,19 +202,23 @@ def get_files(pattern):
     return glob.glob(pattern, recursive=True)
 
 # Get the list of vanilla and mod files for each type
-vanilla_ia4_files = get_files(f'{assets_path}/**/*ia4.png')
-vanilla_ia8_files = get_files(f'{assets_path}/**/*ia8.png')
-vanilla_rgba16_files = get_files(f'{assets_path}/**/*rgba16.png')
-vanilla_rgba32_files = get_files(f'{assets_path}/**/*rgba32.png')
-vanilla_ci8_files = get_files(f'{assets_path}/**/*ci8.png')
-vanilla_ci4_files = get_files(f'{assets_path}/**/*ci4.png')
+vanilla_i4_files = get_files(f'{assets_path}/**/*.i4.png')
+vanilla_i8_files = get_files(f'{assets_path}/**/*.i8.png')
+vanilla_ia4_files = get_files(f'{assets_path}/**/*.ia4.png')
+vanilla_ia8_files = get_files(f'{assets_path}/**/*.ia8.png')
+vanilla_rgba16_files = get_files(f'{assets_path}/**/*.rgba16.png')
+vanilla_rgba32_files = get_files(f'{assets_path}/**/*.rgba32.png')
+vanilla_ci8_files = get_files(f'{assets_path}/**/*.ci8.png')
+vanilla_ci4_files = get_files(f'{assets_path}/**/*.ci4.png')
 
-mod_ia4_files = get_files(f'{mod_assets_path}/**/*ia4.png')
-mod_ia8_files = get_files(f'{mod_assets_path}/**/*ia8.png')
-mod_rgba16_files = get_files(f'{mod_assets_path}/**/*rgba16.png')
-mod_rgba32_files = get_files(f'{mod_assets_path}/**/*rgba32.png')
-mod_ci8_files = get_files(f'{mod_assets_path}/**/*ci8.png')
-mod_ci4_files = get_files(f'{mod_assets_path}/**/*ci4.png')
+mod_i4_files = get_files(f'{mod_assets_path}/**/*.ia.png')
+mod_i8_files = get_files(f'{mod_assets_path}/**/*.i8.png')
+mod_ia4_files = get_files(f'{mod_assets_path}/**/*.ia4.png')
+mod_ia8_files = get_files(f'{mod_assets_path}/**/*.ia8.png')
+mod_rgba16_files = get_files(f'{mod_assets_path}/**/*.rgba16.png')
+mod_rgba32_files = get_files(f'{mod_assets_path}/**/*.rgba32.png')
+mod_ci8_files = get_files(f'{mod_assets_path}/**/*.ci8.png')
+mod_ci4_files = get_files(f'{mod_assets_path}/**/*.ci4.png')
 
 
 def filter_and_extend(mod_files, vanilla_files):
@@ -227,6 +231,8 @@ def filter_and_extend(mod_files, vanilla_files):
     files.extend(vanilla_files)
     return files
 
+i4_files = filter_and_extend(mod_i4_files, vanilla_i4_files)
+i8_files = filter_and_extend(mod_i8_files, vanilla_i8_files)
 ia4_files = filter_and_extend(mod_ia4_files, vanilla_ia4_files)
 ia8_files = filter_and_extend(mod_ia8_files, vanilla_ia8_files)
 rgba16_files = filter_and_extend(mod_rgba16_files, vanilla_rgba16_files)
@@ -236,6 +242,8 @@ ci8_files = filter_and_extend(mod_ci8_files, vanilla_ci8_files)
 
 
 # Append '.png' to each file name in the lists
+i4_png_files_o = [file + '.png' for file in i4_files]
+i8_png_files_o = [file + '.png' for file in i8_files]
 ia4_png_files_o = [file + '.png' for file in ia4_files]
 ia8_png_files_o = [file + '.png' for file in ia8_files]
 rgba16_png_files_o = [file + '.png' for file in rgba16_files]
@@ -250,10 +258,10 @@ ci8_files_pal_final = [os.path.splitext(file)[0] + '.pal' for file in ci8_files]
 ci4_pal_files_o = [file + '.pal' for file in ci4_files]
 ci8_pal_files_o = [file + '.pal' for file in ci8_files]
 
-image_files_o = ia4_png_files_o + ia8_png_files_o + rgba16_png_files_o + rgba32_png_files_o + ci4_png_files_o + ci8_png_files_o + ci4_pal_files_o + ci8_pal_files_o
+image_files_o = i4_png_files_o + i8_png_files_o + ia4_png_files_o + ia8_png_files_o + rgba16_png_files_o + rgba32_png_files_o + ci4_png_files_o + ci8_png_files_o + ci4_pal_files_o + ci8_pal_files_o
 
 o_files = []
-for file in c_files + s_files + a_files + bin_files + ia4_files + ia8_files + rgba16_files + rgba32_files + ci8_files + ci4_files + ci4_files_pal_final + ci8_files_pal_final:
+for file in c_files + s_files + a_files + bin_files + i4_files + i8_files + ia4_files + ia8_files + rgba16_files + rgba32_files + ci8_files + ci4_files + ci4_files_pal_final + ci8_files_pal_final:
     if 'asm/nonmatchings/' not in file:
         if file.endswith(('.png', '.pal')) and file.startswith('src/mod'):
             modified_file = file.split('assets/', 1)[1]  # Split at 'assets/' and take the second part
@@ -356,6 +364,14 @@ else:
 
 ninja_file.rule('make_expected',
     command = '(cp $in $out) && (python3 ./$MAKE_EXPECTED $in)')
+
+ninja_file.rule('i4_convert',
+                 command = "python3 ./$IMG_CONVERT i4 $in $out",
+                 description = "Converting i4")
+
+ninja_file.rule('i8_convert',
+                 command = "python3 ./$IMG_CONVERT i8 $in $out",
+                 description = "Converting i8")
 
 ninja_file.rule('ia4_convert',
                  command = "python3 ./$IMG_CONVERT ia4 $in $out",
@@ -477,6 +493,22 @@ for bin_file in bin_files:
 
 for a_file in a_files:
     ninja_file.build(append_prefix(append_extension(a_file)), "a_file", a_file)
+
+for i4_file in i4_files:
+    if i4_file.startswith("src/mod"):
+        _, _, modified_path = i4_file.partition("assets/")
+        modified_path = "assets/" + modified_path
+        ninja_file.build(append_prefix(append_extension(modified_path, ".png")), "i4_convert", i4_file)
+    else:
+        ninja_file.build(append_prefix(append_extension(i4_file, ".png")), "i4_convert", i4_file)
+
+for i8_file in i8_files:
+    if i8_file.startswith("src/mod"):
+        _, _, modified_path = i8_file.partition("assets/")
+        modified_path = "assets/" + modified_path
+        ninja_file.build(append_prefix(append_extension(modified_path, ".png")), "i8_convert", i8_file)
+    else:
+        ninja_file.build(append_prefix(append_extension(i8_file, ".png")), "i8_convert", i8_file)
 
 for ia4_file in ia4_files:
     if ia4_file.startswith("src/mod"):

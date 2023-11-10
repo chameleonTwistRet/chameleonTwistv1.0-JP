@@ -157,7 +157,17 @@ void func_80055FBC(s32 arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80056064.s")
 
 //angle wrapper
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8005609C.s")
+f32 func_8005609C(f32 arg0) {
+    if (arg0 >= 360.0f) {
+        arg0 = arg0 - 360.0f;
+        arg0 = func_8005609C(arg0);
+    }
+    else if (arg0 < 0.0f) {
+        arg0 = arg0 + 360.0f;
+        arg0 = func_8005609C(arg0);
+    }
+    return arg0;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80056104.s")
 

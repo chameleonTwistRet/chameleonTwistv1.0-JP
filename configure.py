@@ -27,14 +27,18 @@ def append_extension(filename, extension='.o'):
 def append_prefix(filename, prefix='build/'):
     return prefix + filename
 
-ia4_files = glob.glob(f'{assets_path}/**/*ia4.png', recursive=True)
-ia8_files = glob.glob(f'{assets_path}/**/*ia8.png', recursive=True)
-rgba16_files = glob.glob(f'{assets_path}/**/*rgba16.png', recursive=True)
-rgba32_files = glob.glob(f'{assets_path}/**/*rgba32.png', recursive=True)
-ci8_files = glob.glob(f'{assets_path}/**/*ci8.png', recursive=True)
-ci4_files = glob.glob(f'{assets_path}/**/*ci4.png', recursive=True)
+i4_files = glob.glob(f'{assets_path}/**/*.i4.png', recursive=True)
+i8_files = glob.glob(f'{assets_path}/**/*.i8.png', recursive=True)
+ia4_files = glob.glob(f'{assets_path}/**/*.ia4.png', recursive=True)
+ia8_files = glob.glob(f'{assets_path}/**/*.ia8.png', recursive=True)
+rgba16_files = glob.glob(f'{assets_path}/**/*.rgba16.png', recursive=True)
+rgba32_files = glob.glob(f'{assets_path}/**/*.rgba32.png', recursive=True)
+ci8_files = glob.glob(f'{assets_path}/**/*.ci8.png', recursive=True)
+ci4_files = glob.glob(f'{assets_path}/**/*.ci4.png', recursive=True)
 
 # Append '.png' to each file name in the lists
+i4_png_files_o = [file + '.png' for file in i4_files]
+i8_png_files_o = [file + '.png' for file in i8_files]
 ia4_png_files_o = [file + '.png' for file in ia4_files]
 ia8_png_files_o = [file + '.png' for file in ia8_files]
 rgba16_png_files_o = [file + '.png' for file in rgba16_files]
@@ -49,10 +53,10 @@ ci8_files_pal_final = [os.path.splitext(file)[0] + '.pal' for file in ci8_files]
 ci4_pal_files_o = [file + '.pal' for file in ci4_files]
 ci8_pal_files_o = [file + '.pal' for file in ci8_files]
 
-image_files_o = ia4_png_files_o + ia8_png_files_o + rgba16_png_files_o + rgba32_png_files_o + ci4_png_files_o + ci8_png_files_o + ci4_pal_files_o + ci8_pal_files_o
+image_files_o = i4_png_files_o + i8_png_files_o + ia4_png_files_o + ia8_png_files_o + rgba16_png_files_o + rgba32_png_files_o + ci4_png_files_o + ci8_png_files_o + ci4_pal_files_o + ci8_pal_files_o
 
 o_files = []
-for file in c_files + s_files + bin_files + ia4_files + ia8_files + rgba16_files + rgba32_files + ci8_files + ci4_files + ci4_files_pal_final + ci8_files_pal_final:
+for file in c_files + s_files + bin_files + i4_files + i8_files + ia4_files + ia8_files + rgba16_files + rgba32_files + ci8_files + ci4_files + ci4_files_pal_final + ci8_files_pal_final:
     if 'asm/nonmatchings/' not in file:
         o_files.append(append_prefix(append_extension(file)))
 
@@ -128,6 +132,14 @@ ninja_file.rule('make_z64',
 
 ninja_file.rule('make_expected',
     command = '(cp $in $out) && (python3 ./$MAKE_EXPECTED $in)')
+
+ninja_file.rule('i4_convert',
+                 command = "python3 ./$IMG_CONVERT i4 $in $out",
+                 description = "Converting i4")
+
+ninja_file.rule('i8_convert',
+                 command = "python3 ./$IMG_CONVERT i8 $in $out",
+                 description = "Converting i8")
 
 ninja_file.rule('ia4_convert',
                  command = "python3 ./$IMG_CONVERT ia4 $in $out",
@@ -248,6 +260,12 @@ for s_file in s_files:
 
 for bin_file in bin_files:
     ninja_file.build(append_prefix(append_extension(bin_file)), "bin_file", bin_file)
+
+for i4_file in i4_files:
+    ninja_file.build(append_prefix(append_extension(i4_file, ".png")), "i4_convert", i4_file)
+
+for i8_file in i8_files:
+    ninja_file.build(append_prefix(append_extension(i8_file, ".png")), "i8_convert", i8_file)
 
 for ia4_file in ia4_files:
     ninja_file.build(append_prefix(append_extension(ia4_file, ".png")), "ia4_convert", ia4_file)
