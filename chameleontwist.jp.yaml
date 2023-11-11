@@ -356,8 +356,7 @@ segments:
 
       - [0x114B80, ia4, img/explode.ia4, 40, 40]
 
-      - [0x114ea0, bin, groupLightsPadding] #padding
-      - [0x114ea8, lights, groupLights] #lights
+      - [0x114ea0, lights, groupLights] #lights
       - [0x114eb8, vtx, vtx1] #vtx
       - [0x115088, mtx, mtx1] #mtx
       - [0x1150C8, bin, break] #break
@@ -378,8 +377,7 @@ segments:
       - [0x116ca0, bin, break2] #break
       - [0x116ca8, ia8, img/fogFade.ia8, 16, 96]
       - [0x1172a8, gfx, gfx/unk3] #gfx
-      - [0x1176b8, bin, groupLights2Padding] #padding
-      - [0x1176c0, lights, groupLights2] #lights
+      - [0x1176b8, lights, groupLights2] #lights
       - [0x1176d0, vtx, vtx5]
       - [0x117730, gfx, gfx/unk4] #gfx
       - [0x1177c0, vtx, vtx6]
@@ -1502,8 +1500,7 @@ segments:
       subalign: 8
       subsegments:
         - { start: 0x6BC3F0, type: mtx, name: model/JungleLand/jlScope/jlScope}
-        - [0x6bC430, bin] # padding for Lights1
-        - [0x6BC438, lights, model/JungleLand/jlScope/jlScope] # set Lights 1 for alot of JL assets
+        - [0x6bC430, lights, model/JungleLand/jlScope/jlScope] # set Lights 1 for alot of JL assets
 
     - start: 0x6BC448
       name: lilypad
@@ -2406,13 +2403,12 @@ segments:
 
 
     - start: 0x6FAB40
-      name: jlScope
+      name: jlScope2
       type: .data
       subalign: 8
       subsegments:
         - { start: 0x6FAB40, type: mtx, name: model/JungleLand/jlScope2/jlScope2}
-        - [0x6fab80, bin]
-        - [0x6fab88, lights, model/JungleLand/jlScope2/jlScope2]
+        - [0x6fab80, lights, model/JungleLand/jlScope2/jlScope2]
 
     - start: 0x6FAB98
       name: rockGolem
@@ -2622,8 +2618,7 @@ segments:
       subalign: 8
       subsegments:
         - { start: 0x7a8740, type: mtx, name: model/BombSnake/bsScope/bsScope}
-        - [0x7a8780, bin] # padding for Lights1
-        - [0x7a8788, lights, model/BombSnake/bsScope/bsScope] # set Lights 1 for alot of JL assets
+        - [0x7a8780, lights, model/BombSnake/bsScope/bsScope] # set Lights 1 for alot of JL assets
     - start: 0x7a8798
       name: arenaWalls
       type: .data
@@ -2658,12 +2653,11 @@ segments:
     - [0x7aa1e0, animArray, model/unk8/unk8, 15, 1]
 
     - start: 0x7aa5a0
-      name: bsScope
+      name: bsScope2
       type: .data
       subalign: 8
       subsegments:
-        - [0x7aa5a0, bin] # padding for Lights1
-        - [0x7aa5a8, lights, model/BombSnake/bsScope/bsScope] # set Lights 1 for alot of JL assets
+        - [0x7aa5a0, lights, model/BombSnake/bsScope2/bsScope2] # set Lights 1 for alot of JL assets
     - start: 0x7aa5b8
       name: bombSnakeHead
       type: .data
@@ -2775,7 +2769,7 @@ segments:
   - start: 0x87F640
     name: Global
     type: data
-    vram: 0x80323780 #temp
+    vram: 0x803237C0 #temp
     subalign: 8
     subsegments:
     - start: 0x87F640
@@ -2784,8 +2778,7 @@ segments:
       subalign: 8
       subsegments:
         - { start: 0x87F640, type: mtx, name: model/Global/globalScope/globalScope}
-        - [0x87F680, bin] # padding for Lights1
-        - [0x87F688, lights, model/Global/globalScope/globalScope] # set Lights 1 for alot of Global assets
+        - [0x87F680, lights, model/Global/globalScope/globalScope] # set Lights 1 for alot of Global assets
 
     - start: 0x87F698
       name: cannon
@@ -4577,8 +4570,7 @@ segments:
     type: data #modelActor
     vram: 0x7DA932B0 #temp
     subsegments:
-    - [0xACBDD0, bin, chameleons/Davy_Static/light_pad]
-    - [0xACBDD8, lights, chameleons/Davy_Static/light]
+    - [0xACBDD0, lights, chameleons/Davy_Static/light]
     - name: body
       type: .data #model
       start: 0xACBDE8
@@ -4918,8 +4910,7 @@ segments:
     type: data #modelActor
     vram: 0x80B212B0
     subsegments:
-    - [0xAFC6B0, bin, chameleons/Davy/light_pad]
-    - [0xAFC6B8, lights, chameleons/Davy/light]
+    - [0xAFC6B0, lights, chameleons/Davy/light]
     - name: body
       type: .data #model
       start: 0xAFC6C8
@@ -5094,8 +5085,7 @@ segments:
     type: data #modelActor
     vram: 0x813DF2B0 #temp
     subsegments:
-    - [0xB05290, bin, chameleons/Jack/light_pad]
-    - [0xB05298, lights, chameleons/Jack/light]
+    - [0xB05290, lights, chameleons/Jack/light]
     - name: body
       type: .data #model
       start: 0xB052A8
@@ -5270,8 +5260,7 @@ segments:
     type: data #modelActor
     vram: 0x81CA12B0 #temp
     subsegments:
-    - [0xB0DEB0, bin, chameleons/Fred/light_pad]
-    - [0xB0DEB8, lights, chameleons/Fred/light]
+    - [0xB0DEB0, lights, chameleons/Fred/light]
     - name: body
       type: .data #model
       start: 0xB0DEC8
@@ -5446,8 +5435,7 @@ segments:
     type: data #modelActor
     vram: 0x8255F2B0 #temp
     subsegments:
-    - [0xB16A90, bin, chameleons/Linda/light_pad]
-    - [0xB16A98, lights, chameleons/Linda/light]
+    - [0xB16A90, lights, chameleons/Linda/light]
     - name: body
       type: .data #model
       start: 0xB16AA8
@@ -5626,8 +5614,7 @@ segments:
     type: data #modelActor
     vram: 0x82E962B0 #temp
     subsegments:
-    - [0xB1FE00, bin, chameleons/Black/light_pad]
-    - [0xB1FE08, lights, chameleons/Black/light]
+    - [0xB1FE00, lights, chameleons/Black/light]
     - name: body
       type: .data #model
       start: 0xB1FE18
@@ -5802,8 +5789,7 @@ segments:
     type: data #modelActor
     vram: 0x837552B0 #temp
     subsegments:
-    - [0xB289F0, bin, chameleons/White/light_pad]
-    - [0xB289F8, lights, chameleons/White/light]
+    - [0xB289F0, lights, chameleons/White/light]
     - name: body
       type: .data #model
       start: 0xB28A08

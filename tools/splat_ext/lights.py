@@ -52,7 +52,7 @@ class N64SegLights(CommonSegCodeSubsegment):
     def disassemble_data(self, rom_bytes):
         lights_data = rom_bytes[self.rom_start : self.rom_end]
         segment_length = len(lights_data)
-        if (segment_length) != 16:
+        if (segment_length) != 0x18:
             error(
                 f"Error: Light segment {self.name} length ({segment_length}) is not valid"
             )
@@ -65,18 +65,17 @@ class N64SegLights(CommonSegCodeSubsegment):
         if not self.data_only:
             lines.append('#include "common.h"')
             lines.append("")
-            if "/" in self.name:
-                lines.append("Lights1 %s = gdSPDefLights1(" % (self.name.split("/")[(len(self.name.split("/"))-1)]))
-            else:
-                lines.append("Lights1 %s = gdSPDefLights1(" % (self.name))
+            lines.append("Lights1 %s = gdSPDefLights1(" % (sym.name))
 
         byteData = bytearray(lights_data)
-        data = struct.unpack('>BBBbBBBbbbbbbbbb', byteData)
+        data = struct.unpack('>BBBbBBBbbbbbBBBbbbbbbbbb', byteData)
         # BBB0BBB0bbb00000
         lines.append("\t/* ambient color */")
         lines.append("\t%d, %d, %d," % (data[0], data[1], data[2]))
         lines.append("\t/* colored light direction */")
-        lines.append("\t%d, %d, %d,\t%d, %d, %d" % (data[4], data[5], data[6], data[8], data[9], data[10]))
+        lines.append("\t%d, %d, %d,\t%d, %d, %d," % (data[4], data[5], data[6], data[8], data[9], data[0xA]))
+        lines.append("\t/* colored light direction2 */")
+        lines.append("\t%d, %d, %d,\t%d, %d, %d" % (data[0xC], data[0xD], data[0xE], data[0x10], data[0x11], data[0x12]))
 #
         if not self.data_only:
             lines.append(");")

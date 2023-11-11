@@ -1,26 +1,20 @@
 import argparse
-clearAfterAssets = True #debug
 
 def start(group, where):
     yaml = open("chameleontwist.jp.yaml", "r", encoding='UTF-8').readlines()
-    writeTo = "src/assets/"+where+".c"
-    levels = 2 + len(where.split("/"))
-    dots = []
-    for i in range(levels):
-        dots.append("..")
-    leveler="/".join(dots)
-    open(writeTo, "w").close() #clear
 
     symbolsPath = "symbol_addrs.txt"
-    if clearAfterAssets:
+    if group == "CLEAR":
         symbolAddrs = open(symbolsPath, "r").readlines()
         dump = []
         for line in symbolAddrs:
             dump.append(line)
             if line == "//ASSETS\n": break
         open(symbolsPath, "w").writelines(dump)
-    if group == "CLEAR":
         return
+    
+    writeTo = "src/assets/"+where+".c"
+    open(writeTo, "w").close() #clear
     reading = False
     tabbing = ""
 
@@ -61,18 +55,22 @@ def start(group, where):
     i = 0
     while i < len(yaml):
         line = yaml[i]
-        if line.find(group) != -1 and line.find("name: ") != -1 and not reading:
+        if line.find(" "+group+"\n") != -1 and line.find("name: ") != -1 and not reading:
             tabbing = line.split('name')[0]
-            for back in range(-5, 5):
+            for back in range(5):
                 get = yaml[i + back]
-                print(get)
-                if get.find("start: ") != -1 and baseAdr==0x0:
+                if get.startswith("  - start: ") and baseAdr==0x0:
                     baseAdr = int(get.split(": ")[1].split("#")[0].strip(),16)
-                elif get.find("vram: ") != -1 and vram==0x0:
+                elif get.startswith("    vram: ") and vram==0x0:
+                    vram = int(get.split(": ")[1].split("#")[0].strip(),16)
+                get = yaml[i - back]
+                if get.startswith("  - start: ") and baseAdr==0x0:
+                    baseAdr = int(get.split(": ")[1].split("#")[0].strip(),16)
+                elif get.startswith("    vram: ") and vram==0x0:
                     vram = int(get.split(": ")[1].split("#")[0].strip(),16)
             reading = True
         if reading and line.find("-") != -1 and line.find(",") != -1:
-            if not line.startswith(tabbing):
+            if not line.startswith(tabbing) or line.startswith("  - start: "):
                 break
             values = {}
             if line.find("[") != -1: #normal

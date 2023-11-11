@@ -283,6 +283,17 @@ else:
         ninja_file.build(result, "ia8_convert", ia8_file)
         ninja_file.build(result.replace(".bin", ".inc.c"), "bin_inc_c", result)
 
+
+    for i4_file in i4_files:
+        result = append_prefix(append_extension(i4_file, ".bin"), "build/include/")
+        ninja_file.build(result, "i4_convert", i4_file)
+        ninja_file.build(result.replace(".bin", ".inc.c"), "bin_inc_c", result)
+
+    for i8_file in i8_files:
+        result = append_prefix(append_extension(i8_file, ".bin"), "build/include/")
+        ninja_file.build(result, "i8_convert", i8_file)
+        ninja_file.build(result.replace(".bin", ".inc.c"), "bin_inc_c", result)
+    
     for rgba16_file in rgba16_files:
         result = append_prefix(append_extension(rgba16_file, ".bin"), "build/include/")
         ninja_file.build(result, "rgba16_convert", rgba16_file)
