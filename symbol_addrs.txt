@@ -261,8 +261,8 @@ dma_copy = 0x800a75e4; // type:func rom:0x829e4
 DMAStruct_Print = 0x800a7988; // type:func rom:0x82d88
 SetLevelBitfield = 0x800a8c7c; // type:func rom:0x8407c
 Rect_Expand = 0x800ae82c; // type:func rom:0x89c2c
-ifRectsIntersect = 0x800ae8e4; // type:func rom:0x89ce4
-isPointInRect = 0x800ae9e0; // type:func rom:0x89de0
+IfRectsIntersect = 0x800ae8e4; // type:func rom:0x89ce4
+IsPointInRect = 0x800ae9e0; // type:func rom:0x89de0
 ComputeBoundingBoxFromRects = 0x800AE690; // type:func rom:0x89A90
 ControlTongue = 0x80035460; // type:func rom:0x10860
 SetViewAreaParam = 0x800aeec0; // type:func rom:0x8a2c0
@@ -925,6 +925,9 @@ D_801756C0 = 0x801756C0; // size:0x8
 alSynStartVoice = 0x800E8D20; // type:func
 alSynSetPan = 0x800E8B50; // type:func
 alSynSetFXMix = 0x800E8BE0; // type:func
+OrderRectBounds = 0x800AE87C; // type:func
+AdjustRectToVec3 = 0x800AE770; // type:func
+CalculateBoundingRectFromVectors = 0x800AEAA8; // type:func
 
 //rodata stuff
 D_8010B484 = 0x8010B484; // type:f32 force_migration:True size:0x08

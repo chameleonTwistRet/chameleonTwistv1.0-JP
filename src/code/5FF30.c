@@ -2674,40 +2674,54 @@ void RecordTime_SetTo(s32 arg0, u8* arg1) {
     arg1[0] = (arg0 & 0xFF0000) >> 16;
     arg1[0] = temp | arg1[0];
 }
+
 //file split? following functions deal with save data.
 //TODO: fake match
-s32 SaveData_FileChecksum(u8 *arg0) { //should probably be SaveFile*
-    s32 var_a2;
-    int new_var2;
-    s32 var_t1;
-    u8 *new_var;
-    s32 var_t2;
-    s32 var_v1;
+
+/**
+ * @brief Generates an 8-bit checksum for the save data by summing the bytes together.
+ * 
+ * @param saveData: Passed as a u8* to be iterated over
+ * @return (s32) Checksum value
+ */
+s32 SaveData_FileChecksum(u8 *saveData) {
+    s32 checksum;
+    int one;
+    s32 hasNoNonZeroBytes;
+    u8 *tempSaveData;
+    s32 hasNoNonFFBytes;
     s32 i;
     
-    var_a2 = 0;
-    var_t1 = 1;
-    new_var2 = 1;
-    var_t2 = 1;
-    new_var = arg0;
+    checksum = 0;
+    one = 1;                            // set to 1, (skips the checksum var in the struct)
+    hasNoNonZeroBytes = 1;
+    hasNoNonFFBytes = 1;
+    tempSaveData = saveData;
     
-    for (i = new_var2; i < 0x60; i++) {
-        var_a2 += arg0[i];
-        var_a2 &= 0xff;
+    // Iterate through the save data (excluding the old checksum), adding each byte to the new checksum
+    for (i = 1; i < sizeof(SaveFile); i++) {
+        checksum += saveData[i];
+        checksum &= 0xff;               // keep checksum in the byte range
         
-        do { if (new_var[i] != 0) { var_t1 = 0; } } while (0);
+        // 0x00 or 0xFF checks
+        do { 
+            if (tempSaveData[i] != 0) { 
+                hasNoNonZeroBytes = 0; 
+            } 
+        } while (0);
         
-        if (new_var[i] != 0xFF) {
-            var_t2 = 0;
+        if (tempSaveData[i] != 0xFF) {
+            hasNoNonFFBytes = 0;
         }
     }
     
-    if ((var_t1 == new_var2) || (var_t2 == new_var2)) {
-        DummiedPrintf(" SaveData FILLER\n", &arg0[i], var_a2, new_var);
-        return ((*arg0) + 5) & 0xFF;
+    // If all bytes are 0 or 0xFF, return the checksum + 5 so the checksum is different
+    if ((hasNoNonZeroBytes == one) || (hasNoNonFFBytes == one)) {
+        DummiedPrintf(" SaveData FILLER\n", &saveData[i], checksum, tempSaveData);
+        return ((*saveData) + 5) & 0xFF;
     }
     
-    return var_a2;
+    return checksum;
 }
 
 
@@ -2729,7 +2743,8 @@ s32 SaveData_Compare(u8 *arg0, u8 *arg1) {
             var_s7 = 1;
             do {
                 //"%dバイト目違う [%X][%X}\n"("%d bytes wrong [%X][%X}\n")(sic) 
-                DummiedPrintf("%dバイト目違う [%X][%X}\n", i, arg0[i], arg1[i]); } while (0);
+                DummiedPrintf("%dバイト目違う [%X][%X}\n", i, arg0[i], arg1[i]); 
+            } while (0);
         }
     }
     
@@ -2783,9 +2798,15 @@ void SaveData_LoadRecords(u8* arg0) {
     SaveData_Wait();
 }
 
-void SaveData_SaveFile(s32 arg0, SaveFile* arg1) { 
-    //"%d 番目のファイルにセーブ  %dバイト目\n"("save %d bytes to %d file"?)
-    DummiedPrintf("%d 番目のファイルにセーブ  %dバイト目\n", arg0, (s32) (arg0 * 0x60) / 8);
+/**
+ * @brief Save a given SaveFile to the EEPROM.
+ * 
+ * @param saveIndex: File number minus one 
+ * @param saveFile: SaveFile to be saved 
+ */
+void SaveData_SaveFile(s32 saveIndex, SaveFile* saveFile) { 
+    //"%d 番目のファイルにセーブ  %dバイト目\n"("saving to %d-th file, %d bytes"?)
+    DummiedPrintf("%d 番目のファイルにセーブ  %dバイト目\n", saveIndex, (s32) (saveIndex * 0x60) / 8);
     osRecvMesg(&gEepromMsgQ, NULL, 0);
     
     if (osEepromProbe(&gEepromMsgQ) != 1) {
@@ -2795,7 +2816,7 @@ void SaveData_SaveFile(s32 arg0, SaveFile* arg1) {
     //"セーブ開始\n" ("start save")
     DummiedPrintf("セーブ開始\n");
     
-    if (osEepromLongWrite(&gEepromMsgQ, (arg0 * 0x60) / 8, (u8*)arg1, 0x60) != 0) {
+    if (osEepromLongWrite(&gEepromMsgQ, (saveIndex * 0x60) / 8, (u8*)saveFile, 0x60) != 0) {
         //"ＥＥＰロム書き込みエラー \n"("EEProm write error")
         DummiedPrintf("ＥＥＰロム書き込みエラー \n");
     }
@@ -2804,23 +2825,31 @@ void SaveData_SaveFile(s32 arg0, SaveFile* arg1) {
     SaveData_Wait();
 }
 
-s32 SaveData_UpdateFile(s32 arg0, SaveFile* arg1) {
+/**
+ * @brief Attempt to update a save file, comparing the file being saved with the file when reloaded.
+ * 
+ * @param saveIndex: Index to save file to
+ * @param saveFile: SaveFile to be updated 
+ * @return (s32) 0 for success, 1 for error 
+ */
+s32 SaveData_UpdateFile(s32 saveIndex, SaveFile* saveFile) {
     s32 i;
-    SaveFile sp34;
+    SaveFile newFile;
 
     i = 0;
 
+    // Attempt update 3 times before returning error
     while (1) {
-        SaveData_SaveFile(arg0, arg1);
-        SaveData_LoadFile(arg0, &sp34);
-        if (SaveData_VerifyFile((u8*)arg1, &sp34) == 0) {
-            return 0;
+        SaveData_SaveFile(saveIndex, saveFile);
+        SaveData_LoadFile(saveIndex, &newFile);
+        if (SaveData_VerifyFile((u8*)saveFile, &newFile) == 0) {
+            return 0;   // no error
         }
 
         i++;
 
         if (i == 3) {
-            return 1;
+            return 1;   // error
         }
     }
 }
@@ -2845,6 +2874,11 @@ void SaveData_SaveRecords(void) {
     SaveData_Wait();
 }
 
+/**
+ * @brief Attempt to update game records, comparing the records being saved with the records when reloaded.
+ * 
+ * @return (s32) 0 for success, 1 for error 
+ */
 s32 SaveData_UpdateRecords(void) {
     s32 i;
     unkStruct09 sp28;
@@ -2870,14 +2904,18 @@ void func_800A878C(SaveFile* arg0) {
 void func_800A87D4(s32 arg0) {
     SaveFile sp18;
 
+    //"ファイルクリア"("file clear")
     DummiedPrintf("ファイルクリア\n");
     func_800A878C(&sp18);
-    sp18.checksum = SaveData_FileChecksum(&sp18.checksum);
+    sp18.checksum = SaveData_FileChecksum((u8*)&sp18);
     SaveData_UpdateFile(arg0, &sp18);
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/SaveData_ResetRecords.s")
 
+/**
+ * @brief Clear all records data. 
+ */
 void SaveData_ClearRecords(void) {
     DummiedPrintf("ファイルクリア\n");
     _bzero(&gGameRecords, 0x60);
@@ -2999,6 +3037,12 @@ void func_800A97E4(CTTask* arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800AA3F0.s")
 
+
+/**
+ * @brief 
+ * 
+ * @param zone: room number 
+ */
 void func_800AA844(s32 arg0) {
     gCurrentZone = arg0;
     func_800C29D8(gCurrentZone);
@@ -3163,47 +3207,63 @@ s32 func_800AD980(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800AE4AC.s")
 
-void ComputeBoundingBoxFromRects(Rect* arg0, Rect* arg1, Rect* rectOut) {
-    if (arg0->min.x < arg1->min.x) {
-        rectOut->min.x = arg0->min.x;
+/**
+ * @brief Compute the bounding box that encompasses both input rectangles.
+ * The resulting bounding box is stored in the provided output rectangle.
+ *
+ * @param[in] rectA Pointer to the first input rectangle.
+ * @param[in] rectB Pointer to the second input rectangle.
+ * @param[out] boundingBox Pointer to the output rectangle representing the computed bounding box.
+ *
+ * @note The function considers the minimum and maximum coordinates along the x, y, and z axes
+ *       to determine the bounding box.
+ */
+void ComputeBoundingBoxFromRects(Rect* rectA, Rect* rectB, Rect* rectOut) {
+    if (rectA->min.x < rectB->min.x) {
+        rectOut->min.x = rectA->min.x;
     } else {
-        rectOut->min.x = arg1->min.x;
-    }
-\
-    if (arg1->max.x < arg0->max.x) {
-        rectOut->max.x = arg0->max.x;
-    } else {
-        rectOut->max.x = arg1->max.x;
-    }
-
-    if (arg0->min.y < arg1->min.y) {
-        rectOut->min.y = arg0->min.y;
-    } else {
-        rectOut->min.y = arg1->min.y;
-    }
-
-    if (arg1->max.y < arg0->max.y) {
-        rectOut->max.y = arg0->max.y;
-    } else {
-        rectOut->max.y = arg1->max.y;
+        rectOut->min.x = rectB->min.x;
     }
 
-    if (arg0->min.z < arg1->min.z) {
-        rectOut->min.z = arg0->min.z;
+    if (rectB->max.x < rectA->max.x) {
+        rectOut->max.x = rectA->max.x;
     } else {
-        rectOut->min.z = arg1->min.z;
+        rectOut->max.x = rectB->max.x;
     }
 
-    if (arg1->max.z < arg0->max.z) {
-        rectOut->max.z = arg0->max.z;
+    if (rectA->min.y < rectB->min.y) {
+        rectOut->min.y = rectA->min.y;
+    } else {
+        rectOut->min.y = rectB->min.y;
+    }
+
+    if (rectB->max.y < rectA->max.y) {
+        rectOut->max.y = rectA->max.y;
+    } else {
+        rectOut->max.y = rectB->max.y;
+    }
+
+    if (rectA->min.z < rectB->min.z) {
+        rectOut->min.z = rectA->min.z;
+    } else {
+        rectOut->min.z = rectB->min.z;
+    }
+
+    if (rectB->max.z < rectA->max.z) {
+        rectOut->max.z = rectA->max.z;
         return;
     }
     
-    rectOut->max.z = arg1->max.z;
+    rectOut->max.z = rectB->max.z;
 }
 
-//clamp rect to x/y/z
-void func_800AE770(Rect* r, Vec3f vec) {
+/**
+ * @brief Adjusts the boundaries of a 3D rectangle in order to include the coordinates of the provided 3D vector.
+ *
+ * @param[in,out] r Pointer to the 3D rectangle to be adjusted.
+ * @param[in] vec The 3D vector whose coordinates are included in the rectangle boundaries.
+ */
+void AdjustRectToVec3(Rect* r, Vec3f vec) {
     if (vec.x < r->min.x) {
         r->min.x = vec.x;
     } else if (r->max.x < vec.x) {
@@ -3223,7 +3283,12 @@ void func_800AE770(Rect* r, Vec3f vec) {
     }
 }
 
-// expand Rect r by s.
+/**
+ * @brief Expands the input rectangle by a given amount.
+ * 
+ * @param r: Pointer to the rectangle to be expanded
+ * @param s: Amount to expand the rectangle by 
+ */
 void Rect_Expand(Rect* r, f32 s){
     r->min.x -= s;
     r->min.y -= s;
@@ -3233,103 +3298,125 @@ void Rect_Expand(Rect* r, f32 s){
     r->max.z += s;
 }
 
-void func_800AE87C(Rect *arg0) {
+
+/**
+ * @brief Adjust the bounds of a rectangle to ensure that the minimum values are less than the maximum values.
+ * 
+ * @param[in,out] rect: Pointer to rectangle to adjust
+ */
+void OrderRectBounds(Rect *rect) {
     f32 prevMaxX;
     f32 prevMaxY;
     f32 prevMaxZ;
     
-    if (arg0->max.x < arg0->min.x) {
-        prevMaxX = arg0->max.x;
-        arg0->max.x = arg0->min.x;
-        arg0->min.x = prevMaxX;
+    if (rect->max.x < rect->min.x) {
+        prevMaxX = rect->max.x;
+        rect->max.x = rect->min.x;
+        rect->min.x = prevMaxX;
     }
     
-    if (arg0->max.y < arg0->min.y) {
-        prevMaxY = arg0->max.y;
-        arg0->max.y = arg0->min.y;
-        arg0->min.y = prevMaxY;
+    if (rect->max.y < rect->min.y) {
+        prevMaxY = rect->max.y;
+        rect->max.y = rect->min.y;
+        rect->min.y = prevMaxY;
     }
     
-    prevMaxZ = arg0->max.z;
+    prevMaxZ = rect->max.z;
     
-    if (prevMaxZ < arg0->min.z) {
-        arg0->max.z = arg0->min.z;
-        arg0->min.z = prevMaxZ;
+    if (prevMaxZ < rect->min.z) {
+        rect->max.z = rect->min.z;
+        rect->min.z = prevMaxZ;
     }
 }
 
-/*
- * ifRectsIntersect: returns 1 if the two rectangles intersect, 0 otherwise
- *      @param arg0: first rectangle
- *      @param arg1: second rectangle
+/**
+ * @brief Compares two given rectangles to determine if they intersect.
+ *      
+ * @param[in,out] rectA: first rectangle
+ * @param[in,out] rectB: second rectangle
+ * 
+ * @return (s32) 1 if the two rectangles intersect, 0 otherwise
  */
-
-s32 ifRectsIntersect(Rect* arg0, Rect* arg1) {
-    if ((f64) arg1->max.x < (f64) arg0->min.x) {
+s32 IfRectsIntersect(Rect* rectA, Rect* rectB) {
+    if ((f64) rectB->max.x < (f64) rectA->min.x) {
         return 0;
     }
-    if ((f64) arg0->max.x < (f64) arg1->min.x) {
+    if ((f64) rectA->max.x < (f64) rectB->min.x) {
         return 0;
     }
-    if ((f64) arg1->max.y < (f64) arg0->min.y) {
+    if ((f64) rectB->max.y < (f64) rectA->min.y) {
         return 0;
     }
-    if ((f64) arg0->max.y < (f64) arg1->min.y) {
+    if ((f64) rectA->max.y < (f64) rectB->min.y) {
         return 0;
     }
-    if ((f64) arg1->max.z < (f64) arg0->min.z) {
+    if ((f64) rectB->max.z < (f64) rectA->min.z) {
         return 0;
     }
-    if ((f64) arg0->max.z < (f64) arg1->min.z) {
-        return 0;
-    }
-    return 1;
-}
-
-s32 isPointInRect(Vec3f arg0, Rect* arg3) {
-    if (arg0.x < arg3->min.x) {
-        return 0;
-    }
-    if (arg3->max.x < arg0.x) {
-        return 0;
-    }
-    if (arg0.y < arg3->min.y) {
-        return 0;
-    }
-    if (arg3->max.y < arg0.y) {
-        return 0;
-    }
-    if (arg0.z < arg3->min.z) {
-        return 0;
-    }
-    if (arg3->max.z < arg0.z) {
+    if ((f64) rectA->max.z < (f64) rectB->min.z) {
         return 0;
     }
     return 1;
 }
 
-void func_800AEAA8(Vec3f Vec1, Vec3f Vec2, Rect* arg6) {
-    if (Vec1.x < Vec2.x) {
-        arg6->min.x = Vec1.x;
-        arg6->max.x = Vec2.x;
-    } else {
-        arg6->min.x = Vec2.x;
-        arg6->max.x = Vec1.x;
+/**
+ * @brief Determines if a point (vec3f) is within a given rectangle.
+ * 
+ * @param point: Point to check 
+ * @param rect: Pointer to rectangle to check against
+ * @return (s32) 1 if point is in rectangle, 0 otherwise 
+ */
+s32 IsPointInRect(Vec3f point, Rect* rect) {
+    if (point.x < rect->min.x) {
+        return 0;
     }
-    if (Vec1.y < Vec2.y) {
-        arg6->min.y = Vec1.y;
-        arg6->max.y = Vec2.y;
-    } else {
-        arg6->min.y = Vec2.y;
-        arg6->max.y = Vec1.y;
+    if (rect->max.x < point.x) {
+        return 0;
     }
-    if (Vec1.z < Vec2.z) {
-        arg6->min.z = Vec1.z;
-        arg6->max.z = Vec2.z;
+    if (point.y < rect->min.y) {
+        return 0;
+    }
+    if (rect->max.y < point.y) {
+        return 0;
+    }
+    if (point.z < rect->min.z) {
+        return 0;
+    }
+    if (rect->max.z < point.z) {
+        return 0;
+    }
+    return 1;
+}
+
+/**
+ * @brief Create a bounding box from two given vectors.
+ * 
+ * @param vecA: First vector
+ * @param vecB: Second vector
+ * @param rect: Pointer to rectangle to store bounding box in 
+ */
+void CalculateBoundingRectFromVectors(Vec3f vecA, Vec3f vecB, Rect* rect) {
+    if (vecA.x < vecB.x) {
+        rect->min.x = vecA.x;
+        rect->max.x = vecB.x;
+    } else {
+        rect->min.x = vecB.x;
+        rect->max.x = vecA.x;
+    }
+    if (vecA.y < vecB.y) {
+        rect->min.y = vecA.y;
+        rect->max.y = vecB.y;
+    } else {
+        rect->min.y = vecB.y;
+        rect->max.y = vecA.y;
+    }
+    if (vecA.z < vecB.z) {
+        rect->min.z = vecA.z;
+        rect->max.z = vecB.z;
         return;
     }
-    arg6->min.z = Vec2.z;
-    arg6->max.z = Vec1.z;
+    rect->min.z = vecB.z;
+    rect->max.z = vecA.z;
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800AEB48.s")

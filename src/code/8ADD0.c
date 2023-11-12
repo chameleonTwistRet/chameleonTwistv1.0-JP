@@ -134,12 +134,12 @@ void func_800B2070(s32 arg0) {
     sp18.y = gPlayer->pos.y;
     sp18.z = gPlayer->pos.z;
     
-    if (((gPlayerActors->squishTimer == 0) && (gPlayerActors->canJump == 0)) && (isPointInRect(sp18, &sp24) != 0)) {
+    if (((gPlayerActors->squishTimer == 0) && (gPlayerActors->canJump == 0)) && (IsPointInRect(sp18, &sp24) != 0)) {
         //D_80168E14 = 1;
         gPlayerActors->squishTimer = 1;
     }
 
-    //(((gPlayerActors->squishTimer == 0) && (gPlayerActors->canJump == 0)) && (isPointInRect(sp18, &sp24) != 0)) ? (gPlayerActors->squishTimer = 0) : (gPlayerActors->squishTimer = 1);
+    //(((gPlayerActors->squishTimer == 0) && (gPlayerActors->canJump == 0)) && (IsPointInRect(sp18, &sp24) != 0)) ? (gPlayerActors->squishTimer = 0) : (gPlayerActors->squishTimer = 1);
 }
 #else
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B2070.s")

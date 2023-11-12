@@ -49,7 +49,7 @@ void func_800D6864(playerActor*, Tongue*, Camera*, Vec3f*, Vec3f*);
 void func_800D69D0(s32, playerActor*, Tongue*, Camera*, Vec3f*, Vec3f*, s32);
 Collider* func_800CAF88(Vec3f, f32, f32);
 Collider* SearchPolygonBetween(Vec3f, Vec3f, s32, s32, s32);
-void func_800AE87C(Rect*);
+void OrderRectBounds(Rect*);
 void func_800C9748(Rect*, s32, s32);
 void func_800CA734(Vec3f*, Vec3f, f32, s32);
 void func_800CBC08(Actor*);
@@ -92,7 +92,7 @@ s32 ifPolyBoundIntersectsRect(Poly* poly, Rect* rect) {
 
     func_800D79E4(poly, 1);
 
-    if (ifRectsIntersect(rect, &poly->boundBox) == 0) {
+    if (IfRectsIntersect(rect, &poly->boundBox) == 0) {
         return 0;
     }
     return 1;
@@ -433,7 +433,7 @@ void func_800D71E8(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5) {
     r.max.y = arg3;
     r.max.z = arg5;
     
-    func_800AE87C(&r);
+    OrderRectBounds(&r);
     func_800C9748(&r, 0x77, 2);
 }
 

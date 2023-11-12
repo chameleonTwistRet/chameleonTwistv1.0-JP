@@ -324,7 +324,7 @@ void func_800A9F84(void);
 void func_800AA3F0(void);
 void func_800ADE70(void);
 void func_800AE4AC(void);
-void func_800AEAA8(Vec3f,Vec3f,Rect*);
+void CalculateBoundingRectFromVectors(Vec3f,Vec3f,Rect*);
 void func_800A2BDC(void);
 void Process_BattleMenu(void);
 void func_800A4320(void);
@@ -413,7 +413,7 @@ void func_800A1EC4(void);
 void func_800A54EC(s32);
 s32 DMAStruct_Print(void);
 
-s32 ifRectsIntersect(Rect* arg0, Rect* arg1);
+s32 IfRectsIntersect(Rect* arg0, Rect* arg1);
 
 s32 IsBossID(s32);
 s32 func_800B2510(void);
@@ -435,8 +435,8 @@ f32 CalculateAngleOfVector(f32, f32);
 f32 InterpolateAndClampArcSin(f32);
 f32 AngleFromArcSin(f32);
 void func_800B35FC(s32);
-s32 isPointInRect(Vec3f, Rect*);
-void func_800AE770(Rect* r, Vec3f vec);
+s32 IsPointInRect(Vec3f, Rect*);
+void AdjustRectToVec3(Rect* r, Vec3f vec);
 Vec3f* Vec3f_Lerp(Vec3f*, Vec3f, Vec3f, f32);
 f32 func_800B2308(f32, s32);
 void func_800C8F00(void);

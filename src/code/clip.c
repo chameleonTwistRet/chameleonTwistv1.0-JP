@@ -243,7 +243,7 @@ s32 check_collision_within_radius(Rect *rect, f32 radius) {
     
     // Collision check
     if (D_802018D4 != 0) {
-        ret = ifRectsIntersect(rect, &D_802018D8);
+        ret = IfRectsIntersect(rect, &D_802018D8);
     } else {
         x_length = rect->max.x - rect->min.x;
         max_side_length = x_length;
@@ -259,7 +259,7 @@ s32 check_collision_within_radius(Rect *rect, f32 radius) {
         }
         
         if (1000.0 < max_side_length) {
-            ret = ifRectsIntersect(rect, &D_802018D8);
+            ret = IfRectsIntersect(rect, &D_802018D8);
         } else {
             if (rect->max.y < D_802018D8.min.y) {
                 ret = 0;
