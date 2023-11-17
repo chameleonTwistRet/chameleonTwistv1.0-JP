@@ -49,8 +49,8 @@ void func_800D6864(playerActor*, Tongue*, Camera*, Vec3f*, Vec3f*);
 void func_800D69D0(s32, playerActor*, Tongue*, Camera*, Vec3f*, Vec3f*, s32);
 Collider* func_800CAF88(Vec3f, f32, f32);
 Collider* SearchPolygonBetween(Vec3f, Vec3f, s32, s32, s32);
-void OrderRectBounds(Rect*);
-void func_800C9748(Rect*, s32, s32);
+void OrderRectBounds(Rect3D*);
+void func_800C9748(Rect3D*, s32, s32);
 void func_800CA734(Vec3f*, Vec3f, f32, s32);
 void func_800CBC08(Actor*);
 void func_800CC814(Actor*, Vec3f, s32);
@@ -85,7 +85,7 @@ void func_800C9728(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800C9A24.s")
 
 // Checks if Poly's bounding box intersects with the given rectangle
-s32 ifPolyBoundIntersectsRect(Poly* poly, Rect* rect) {
+s32 IfPolyBoundIntersectsRect(Poly* poly, Rect3D* rect) {
     if (poly->unk_00 < 0) {
         return 0;
     }
@@ -240,7 +240,7 @@ void func_800CFF7C(Vec3f* arg0) {
     f32 temp_f2_2;
     f32 temp_f2_3;
     f32 temp_f14;
-    Rect* temp_v0;
+    Rect3D* temp_v0;
 
     if (D_80236974 != 1) {
         if ((gCurrentStage == 1) && ((gCurrentZone == 7) || (gCurrentZone == 0xF)) && (D_80174880[0] != 0)) {
@@ -373,18 +373,21 @@ void func_800D6864(playerActor* arg0, Tongue* arg1, Camera* arg2, Vec3f* arg3, V
     arg4->z = arg2->f3.z;
 }
 
-void ApplyRotationToVector(Vec3f* arg0, Vec3f* arg1, f32 arg2) {
-    Vec3f sp2C;
+void ApplyRotationToVector(Vec3f* vecA, Vec3f* vecB, f32 degreesAngle) {
+    Vec3f differenceVector;
 
-    sp2C.x = arg0->x - arg1->x;
-    sp2C.y = arg0->y - arg1->y;
-    sp2C.z = arg0->z - arg1->z;
+    // Calculate the difference vector between the two vectors
+    differenceVector.x = vecA->x - vecB->x;
+    differenceVector.y = vecA->y - vecB->y;
+    differenceVector.z = vecA->z - vecB->z;
     
-    RotateVector3D(&sp2C, sp2C, ((arg2 * 3.14159265358979312) / 180.0), 2);
+    // Rotate the difference vector by the given angle around the y-axis
+    RotateVector3D(&differenceVector, differenceVector, DEGREES_TO_RADIANS_PI(degreesAngle), 2);
     
-    arg0->x = arg1->x + sp2C.x;
-    arg0->y = arg1->y + sp2C.y;
-    arg0->z = arg1->z + sp2C.z;
+    // Add the rotated difference vector to the second vector to get the first vector
+    vecA->x = vecB->x + differenceVector.x;
+    vecA->y = vecB->y + differenceVector.y;
+    vecA->z = vecB->z + differenceVector.z;
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800D69D0.s")
@@ -423,72 +426,77 @@ void SetCameraParameters(void) {
     }
 }
 
-void func_800D71E8(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5) {
-    Rect r;
+/* Create a rectangle using two vectors then perform an unknown operation */
+void func_800D71E8(f32 x1, f32 x2, f32 y1, f32 y2, f32 z1, f32 z2) {
+    Rect3D r;
 
-    r.min.x = arg0;
-    r.max.x = arg1;
-    r.min.y = arg2;
-    r.min.z = arg4;
-    r.max.y = arg3;
-    r.max.z = arg5;
+    // define a rectangle with the given bounds
+    r.min.x = x1;
+    r.max.x = x2;
+    r.min.y = y1;
+    r.min.z = z1;
+    r.max.y = y2;
+    r.max.z = z2;
     
+    // ensure max > min
     OrderRectBounds(&r);
-    func_800C9748(&r, 0x77, 2);
+    func_800C9748(&r, 0x77, 2); //unknown
 }
 
-s32 func_800D7248(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32* arg5, f32* arg6, f32* arg7) {
-    Vec3f sp2C;
+s32 func_800D7248(f32 x, f32 y, f32 z, f32 arg3, f32 arg4, f32* outX, f32* arg6, f32* arg7) {
+    Vec3f vec;
     s32 var_v1;
-    Collider* temp_v0;
+    Collider* collider;
 
-    sp2C.x = arg0;
-    sp2C.y = arg1;
-    sp2C.z = arg2;
+    vec.x = x;
+    vec.y = y;
+    vec.z = z;
     
-    temp_v0 = func_800CAF88(sp2C, arg3, arg4);
+    collider = func_800CAF88(vec, arg3, arg4);
     
-    return (temp_v0 != NULL) ?
-        *arg5 = temp_v0->unk_94,
-        *arg6 = temp_v0->unk_98,
-        *arg7 = temp_v0->unk_9C,
+    // if a collider was found assign its position to the output variables then return 1 for success
+    return (collider != NULL) ?
+        *outX = collider->unk_94,
+        *arg6 = collider->unk_98,
+        *arg7 = collider->unk_9C,
         1 :
         0;
 }
 
-s32 func_800D72DC(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32* arg6, f32* arg7, f32* arg8) {
-    Vec3f sp38;
-    Vec3f sp44;
-    Collider* temp_v0;
+s32 func_800D72DC(f32 x1, f32 y1, f32 z1, f32 x2, f32 y2, f32 z2, f32* outX, f32* outY, f32* outZ) {
+    Vec3f vecOne;
+    Vec3f vecTwo;
+    Collider* collider;
 
-    sp38.x = arg0;
-    sp38.y = arg1;
-    sp38.z = arg2;
+    vecOne.x = x1;
+    vecOne.y = y1;
+    vecOne.z = z1;
 
-    sp44.x = arg3;
-    sp44.y = arg4;
-    sp44.z = arg5;
+    vecTwo.x = x2;
+    vecTwo.y = y2;
+    vecTwo.z = z2;
     
-    temp_v0 = SearchPolygonBetween(sp38, sp44, 0x77, 1, 1);
-    return (temp_v0 != NULL) ?
-        *arg6 = temp_v0->unk_94,
-        *arg7 = temp_v0->unk_98,
-        *arg8 = temp_v0->unk_9C,
+    collider = SearchPolygonBetween(vecOne, vecTwo, 0x77, 1, 1);
+    return (collider != NULL) ?
+        *outX = collider->unk_94,
+        *outY = collider->unk_98,
+        *outZ = collider->unk_9C,
         1 :
         0;
 }
 
-void func_800D73BC(f32* arg0, f32* arg1, f32* arg2, f32 arg3) {
-    Vec3f sp2C;
-    Vec3f sp20;
+void func_800D73BC(f32* x, f32* y, f32* z, f32 arg3) {
+    Vec3f destVec;
+    Vec3f srcVec;
 
-    sp20.x = *arg0;
-    sp20.y = *arg1;
-    sp20.z = *arg2;
+    srcVec.x = *x;
+    srcVec.y = *y;
+    srcVec.z = *z;
     
-    func_800CA734(&sp2C, sp20, arg3, 0x77);
+    //wrong number of args(?)
+    func_800CA734(&destVec, srcVec, arg3, 0x77);
     
-    *arg0 = sp2C.x;
-    *arg1 = sp2C.y;
-    *arg2 = sp2C.z;
+    *x = destVec.x;
+    *y = destVec.y;
+    *z = destVec.z;
 }

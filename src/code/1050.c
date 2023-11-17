@@ -69,8 +69,8 @@ void idleproc(void *arg0) {
 // func_80025EF0(playerActor*, Tongue*, s32)
 #pragma GLOBAL_ASM("asm/nonmatchings/code/1050/func_80025EF0.s")
 
-s32 func_80026C78(Actor* arg0) {
-    return 1 - func_800AF604(arg0->pos.x, arg0->pos.y, arg0->pos.z, 8000.0f);
+s32 func_80026C78(Actor* actor) {
+    return 1 - func_800AF604(actor->pos.x, actor->pos.y, actor->pos.z, 8000.0f);
 }
 
 
@@ -81,7 +81,7 @@ void func_80026CA8(graphicStruct *arg0, Mtx *arg1, u32 arg2, f32 arg3, s32 arg4)
     f32 zPos = 0.0f;
     
     func_800849DC(0, gTongues, &gPlayerActors[0], gCamera);
-    guMtxXFML(&arg0->actorRotate[arg2], xPos, yPos, zPos, &xPos, &yPos, &zPos);
+    guMtxXFML(&arg0->actorRotate[arg2], xPos, yPos, zPos, &xPos, &yPos, &zPos);         // 4x4 fp matrix
     guMtxXFML(&arg0->actorScale[arg2], xPos, yPos, zPos, &xPos, &yPos, &zPos);
     guMtxCatL(arg1, &arg0->actorRotate[arg2], arg1);
     guMtxCatL(arg1, &arg0->actorScale[arg2], arg1);
@@ -149,7 +149,12 @@ void func_80027138(void* arg0, s32* arg1, s32* arg2, s32* arg3) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/1050/func_800274F0.s")
 
-s32 func_80027650(void) {
+/**
+ * @brief Returns the index of the first active player actor, or 0 if none are active signalling single player.
+ * 
+ * @return (s32) The highest index of an active player actor. 
+ */
+s32 func_80027650(void) {       // GetHighestActivePlayerIndex
     s32 i;
     
     for (i = 3; i >= 0; i--) {
@@ -187,12 +192,12 @@ s32 func_80027650(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/1050/func_8002C900.s")
 
 void* func_8002CAC8(graphicStruct* arg0, s32 arg1) {
-    Gfx* temp_v0;   //gdl
+    Gfx* gdl;
 
-    temp_v0 = func_8002C4E8(arg0, arg1, 1);
-    gDPFullSync(temp_v0++);                    //Signals the end of a frame
-    gSPEndDisplayList(temp_v0++);
-    return temp_v0;
+    gdl = func_8002C4E8(arg0, arg1, 1);    //Sets up the display list (?)
+    gDPFullSync(gdl++);                    //Signals the end of a frame
+    gSPEndDisplayList(gdl++);
+    return gdl;
 }
 
 void Video_SetTask(graphicStruct* arg0, Gfx* arg1, s32 arg2) {
@@ -232,6 +237,7 @@ void func_8002CBE8(s32 arg0) {
     osRecvMesg(&D_801192E8, NULL, 1);
     func_8008C494();
 }
+
 //update framebuffer
 Gfx* func_8002CCA0(void* arg0, s32 arg1) {
     Gfx* sp1C;
@@ -272,7 +278,7 @@ void func_8002CD94(s32 arg0) {
     }
 }
 
-void func_8002CDBC(contMain* arg0) {
+void func_8002CDBC(contMain* controllers) {
     s32 i;
 
     if (gCurrentStage != STAGE_VS) {
@@ -283,7 +289,7 @@ void func_8002CDBC(contMain* arg0) {
     for (i = 0; i < 4; i++) {
         if (D_80168D78[i] != 0) {
             D_80168D78[i] = 1;
-            func_8004CD9C(i, &arg0[i].buttons0);
+            func_8004CD9C(i, &controllers[i].buttons0);
         }
     }
 }

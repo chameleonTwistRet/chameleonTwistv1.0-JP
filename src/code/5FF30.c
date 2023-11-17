@@ -3218,7 +3218,7 @@ s32 func_800AD980(void) {
  * @note The function considers the minimum and maximum coordinates along the x, y, and z axes
  *       to determine the bounding box.
  */
-void ComputeBoundingBoxFromRects(Rect* rectA, Rect* rectB, Rect* rectOut) {
+void ComputeBoundingBoxFromRects(Rect3D* rectA, Rect3D* rectB, Rect3D* rectOut) {
     if (rectA->min.x < rectB->min.x) {
         rectOut->min.x = rectA->min.x;
     } else {
@@ -3263,7 +3263,7 @@ void ComputeBoundingBoxFromRects(Rect* rectA, Rect* rectB, Rect* rectOut) {
  * @param[in,out] r Pointer to the 3D rectangle to be adjusted.
  * @param[in] vec The 3D vector whose coordinates are included in the rectangle boundaries.
  */
-void AdjustRectToVec3(Rect* r, Vec3f vec) {
+void AdjustRectToVec3(Rect3D* r, Vec3f vec) {
     if (vec.x < r->min.x) {
         r->min.x = vec.x;
     } else if (r->max.x < vec.x) {
@@ -3289,7 +3289,7 @@ void AdjustRectToVec3(Rect* r, Vec3f vec) {
  * @param r: Pointer to the rectangle to be expanded
  * @param s: Amount to expand the rectangle by 
  */
-void Rect_Expand(Rect* r, f32 s){
+void Rect_Expand(Rect3D* r, f32 s){
     r->min.x -= s;
     r->min.y -= s;
     r->min.z -= s;
@@ -3304,7 +3304,7 @@ void Rect_Expand(Rect* r, f32 s){
  * 
  * @param[in,out] rect: Pointer to rectangle to adjust
  */
-void OrderRectBounds(Rect *rect) {
+void OrderRectBounds(Rect3D *rect) {
     f32 prevMaxX;
     f32 prevMaxY;
     f32 prevMaxZ;
@@ -3337,7 +3337,7 @@ void OrderRectBounds(Rect *rect) {
  * 
  * @return (s32) 1 if the two rectangles intersect, 0 otherwise
  */
-s32 IfRectsIntersect(Rect* rectA, Rect* rectB) {
+s32 IfRectsIntersect(Rect3D* rectA, Rect3D* rectB) {
     if ((f64) rectB->max.x < (f64) rectA->min.x) {
         return 0;
     }
@@ -3366,7 +3366,7 @@ s32 IfRectsIntersect(Rect* rectA, Rect* rectB) {
  * @param rect: Pointer to rectangle to check against
  * @return (s32) 1 if point is in rectangle, 0 otherwise 
  */
-s32 IsPointInRect(Vec3f point, Rect* rect) {
+s32 IsPointInRect(Vec3f point, Rect3D* rect) {
     if (point.x < rect->min.x) {
         return 0;
     }
@@ -3395,7 +3395,7 @@ s32 IsPointInRect(Vec3f point, Rect* rect) {
  * @param vecB: Second vector
  * @param rect: Pointer to rectangle to store bounding box in 
  */
-void CalculateBoundingRectFromVectors(Vec3f vecA, Vec3f vecB, Rect* rect) {
+void CalculateBoundingRectFromVectors(Vec3f vecA, Vec3f vecB, Rect3D* rect) {
     if (vecA.x < vecB.x) {
         rect->min.x = vecA.x;
         rect->max.x = vecB.x;

@@ -12,7 +12,7 @@ f32 D_802018C8;
 f32 D_802018CC;
 s32 D_802018D0;
 s32 D_802018D4;
-Rect D_802018D8;
+Rect3D D_802018D8;
 f32 D_802018F0;
 
 void SetViewAreaParam(Camera* cam, f32 arg1, f32 arg2) {
@@ -216,7 +216,7 @@ s32 func_800AF62C(f32 arg0, f32 arg1, f32 arg2, f32 arg3) {
  * @return 0 if no collision, 1 if collision
  */
 
-s32 check_collision_within_radius(Rect *rect, f32 radius) {
+s32 check_collision_within_radius(Rect3D *rect, f32 radius) {
     s32 ret;
     f32 angle_xz;
     f32 y_length;

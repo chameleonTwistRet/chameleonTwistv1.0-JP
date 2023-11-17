@@ -11,14 +11,14 @@ void DummiedPrintf3(char* arg0, ...) { /* variadic args: simonlindholm*/
  * @return: (the wrapped angle).
  */
 
-void WrapAngle(f32* arg0) {
-    if (*arg0 < 0.0) {
-        *arg0 = (*arg0 + 360.0);
+void WrapAngle(f32* angle) {
+    if (*angle < 0.0) {
+        *angle = (*angle + 360.0);
         return;
     }
 
-    if (360.0 <= *arg0) {
-        *arg0 = (*arg0 - 360.0);
+    if (360.0 <= *angle) {
+        *angle = (*angle - 360.0);
     }
 }
 

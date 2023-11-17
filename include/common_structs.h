@@ -37,12 +37,12 @@ typedef struct Color32{
     u8 g;
     u8 b;
     u8 a;
-}Color32;
+} Color32;
 
-typedef struct Rect {
+typedef struct Rect3D {
     Vec3f min;
     Vec3f max;
-} Rect;
+} Rect3D;
 
 typedef struct unkIsChange {
     /* 0x00 */ char unk_00[8];
@@ -100,7 +100,7 @@ typedef struct playerActor {
     /* 0x0B4 */ u32 groundMovement; //0x00 = standing, 0x01 = walking, 0x02 = running
     /* 0x0B8 */ f32 globalTimer;
     /* 0x0BC */ u32 unkBC;
-    /* 0x0C0 */ u32 shootLeft;
+    /* 0x0C0 */ u32 amountLeftToShoot;
     /* 0x0C4 */ u32 vaultFall;//timer for falling after vault
     /* 0x0C8 */ s32 hp;
     /* 0x0CC */ u32 playerHURTSTATE;
@@ -161,7 +161,7 @@ typedef struct Tongue { // at 80169268 (for p1)
     /* 0x3AC*/ f32 length;
     /* 0x3B0*/ f32 trueAngle;
     /* 0x3B4*/ tongueSlot onTongue;
-    /* 0x4B4*/ u32 amountTnTongue; //called "capture_num" in US 1.0
+    /* 0x4B4*/ u32 amountOnTongue; //called "capture_num" in US 1.0
     /* 0x4B8*/ tongueSlot inMouth;
     /* 0x5B8*/ u32 amountInMouth;
     //all of this has to do with vaulting
@@ -189,14 +189,14 @@ typedef struct Tongue { // at 80169268 (for p1)
     /* 0x608*/ u32 wallTime;//timer for tongue-touching a wall
 } Tongue; //sizeof 0x60C
 
-//struct names are based on offset into main struct, Collision which holds Rect
+//struct names are based on offset into main struct, Collision which holds Rect3D
 
 typedef struct Collision {
     /* 0x00 */ s32 collisionType;
     /* 0x04 */ char pad4[0x14];                     /* maybe part of collisionType[6]? */
     /* 0x18 */ s32 unk18;
     /* 0x1C */ char pad1C[0x14];                    /* maybe part of unk18[6]? */
-    /* 0x30 */ Rect rect_30;
+    /* 0x30 */ Rect3D rect_30;
     /* 0x48 */ char pad48[0x18];
     /* 0x60 */ s32 unk60;                           /* inferred */
     /* 0x64 */ s32 unk64;                           /* inferred */
@@ -388,7 +388,7 @@ typedef struct unkStruct14 {
 /* 0x38 */ s32 unk_38;
 } unkStruct14;
 
-// this is probably a Rect, but for whatever reason, replacing it causes a mismatch.
+// this is probably a Rect3D, but for whatever reason, replacing it causes a mismatch.
 typedef struct unkStruct15 {
     /* 0x00 */ f32 unk_00;
     /* 0x04 */ f32 unk_04;
@@ -527,7 +527,7 @@ typedef struct Poly {
     /* 0x08 */ Vec3f offset;
     /* 0x14 */ Vec3f unkVec;
     /* 0x20 */ Vec3f unkVec2;
-    /* 0x2C */ Rect boundBox;
+    /* 0x2C */ Rect3D boundBox;
     /* 0x44 */ unkVecStruct unkVectorStruct;
     /* 0x68 */ f32 unk_68;
     /* 0x6C */ f32 unk_6C;
@@ -795,12 +795,12 @@ typedef struct graphicStruct {
 /*0xb680*/      Mtx toungeRotate[4][33];
 /*0xD780*/      Mtx toungeScale[4][33];
 /*0xf880*/      Mtx actorTanslate[64];
-/*0x10880*/    Mtx actorRotate[64];
-/*0x11880*/    Mtx actorScale[64];
-/*0x12880*/    s8 unk12880[0x4000]; //mtx's for shadows?
-/*0x16880*/    Mtx colliderTransforms[128][3]; // may be wrong.
-/*0x1C880*/    s8 unk1c880[0x2000];
-/*0x1E880*/    Mtx unk1e880[74]; //may be used for "CTTask"s
+/*0x10880*/     Mtx actorRotate[64];
+/*0x11880*/     Mtx actorScale[64];
+/*0x12880*/     s8 unk12880[0x4000]; //mtx's for shadows?
+/*0x16880*/     Mtx colliderTransforms[128][3]; // may be wrong.
+/*0x1C880*/     s8 unk1c880[0x2000];
+/*0x1E880*/     Mtx unk1e880[74]; //may be used for "CTTask"s
 } graphicStruct; //sizeof 0x1FB00
 
 typedef struct Shadow{
@@ -843,7 +843,7 @@ typedef struct ModelData{
     s32 triCount;
     Vec3f* verts;
     Vec3f* tris;
-    Rect* modelBox;
+    Rect3D* modelBox;
 } ModelData; //sizeof 0x14
 
 typedef struct unkBlackChameleon1 {

@@ -119,27 +119,30 @@ void func_800B0A30(unkBlackChameleon0* arg0, unkBlackChameleon1* arg1) {
 
 #ifdef NON_MATCHING
 // TODO: D_80168E14 migration
-void func_800B2070(s32 arg0) {
-    playerActor* gPlayer = &gPlayerActors[0];
-    Rect sp24;
-    Vec3f sp18;
 
-    sp24.min.x = -172.0f;
-    sp24.max.x = 100.0f;
-    sp24.min.y = -155.0f;
-    sp24.max.y = -145.0f;
-    sp24.min.z = 450.0f;
-    sp24.max.z = D_8010FB50;
-    sp18.x = gPlayer->pos.x;
-    sp18.y = gPlayer->pos.y;
-    sp18.z = gPlayer->pos.z;
+// Squish player if they are in the squish zone (givcen by coords not args)
+void func_800B2070(s32 arg0) {
+    playerActor* gPlayer = &gPlayerActors[0];       // Player One
+    Rect3D rect;
+    Vec3f vec;
+
+    rect.min.x = -172.0f;
+    rect.max.x = 100.0f;
+    rect.min.y = -155.0f;
+    rect.max.y = -145.0f;
+    rect.min.z = 450.0f;
+    rect.max.z = D_8010FB50;
+    vec.x = gPlayer->pos.x;
+    vec.y = gPlayer->pos.y;
+    vec.z = gPlayer->pos.z;
     
-    if (((gPlayerActors->squishTimer == 0) && (gPlayerActors->canJump == 0)) && (IsPointInRect(sp18, &sp24) != 0)) {
+    // If the player is not in the bounding box, not squished, and not jumping, set the squish timer to 1
+    if (((gPlayerActors->squishTimer == 0) && (gPlayerActors->canJump == 0)) && (IsPointInRect(vec, &rect) != 0)) {
         //D_80168E14 = 1;
         gPlayerActors->squishTimer = 1;
     }
 
-    //(((gPlayerActors->squishTimer == 0) && (gPlayerActors->canJump == 0)) && (IsPointInRect(sp18, &sp24) != 0)) ? (gPlayerActors->squishTimer = 0) : (gPlayerActors->squishTimer = 1);
+    //(((gPlayerActors->squishTimer == 0) && (gPlayerActors->canJump == 0)) && (IsPointInRect(vec, &rect) != 0)) ? (gPlayerActors->squishTimer = 0) : (gPlayerActors->squishTimer = 1);
 }
 #else
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B2070.s")
@@ -150,13 +153,14 @@ void func_800B2144(Collider* arg0, unkStruct14* arg1) {
     func_800B35FC(arg0->unk_AC);
 }
 
+// If there are no billiards balls left, call func_800B35B0
 void func_800B216C(Collider* arg0) {
     Actor* actorList;
     s32 ballCount = 0;
     s32 i;
 
-    for (i = 0, actorList = gActors; i < 64; i++, actorList++) {
-        if (actorList->actorID == 0x2D) {
+    for (i = 0, actorList = gActors; i < ACTORS_MAX; i++, actorList++) {
+        if (actorList->actorID == Billiards_Ball) {
             ballCount++;
         }
     }
@@ -257,46 +261,47 @@ s32 IsActorBoss(Actor* actor) {
     return IsBossID(actor->actorID);
 }
 
-f32 func_800B2308(f32 arg0, s32 arg1) {
-    f32 var_f12;
+f32 func_800B2308(f32 arg0, s32 caseNum) {
+    f32 ret;
 
-    switch (arg1) {
+    switch (caseNum) {
     case 0:
         if (arg0 < 0.1) {
-            var_f12 = (arg0 * arg0) / 0.18;
+            ret = SQ(arg0) / 0.18;
         } else if (arg0 < 0.9) {
-            var_f12 = (arg0 * 0.2 - 0.01) / 0.18;
+            ret = (arg0 * 0.2 - 0.01) / 0.18;
         } else {
-            var_f12 = 1.0 - ((1.0 - arg0) * (1.0 - arg0) / 0.18);
+            ret = 1.0 - (SQ(1.0 - arg0) / 0.18);
         }
         break;
     case 1:
-        var_f12 = (1.0 - __cosf(arg0 * PI)) * 0.5;
+        // Range(f) = [0, 1]
+        ret = (1.0 - __cosf(arg0 * PI)) * 0.5;
         break;
     case 2:
-        var_f12 = arg0;
+        ret = arg0;
         break;
     case 3:
-        var_f12 = arg0 * arg0;
+        ret = SQ(arg0);
         break;
     case 4:
-        var_f12 = (-arg0 * arg0) + (2.0 * arg0);
+        ret = (-arg0 * arg0) + (2.0 * arg0);
         break;
     default:
-        var_f12 = arg0;
+        ret = arg0;
         break;
     }
-    return var_f12;
+    return ret;
 }
 
 // lerp 2 vec3f's by a scalar computed by func_800B2308
-Vec3f* func_800B2470(Vec3f* arg0, Vec3f arg1, Vec3f arg4, f32 arg7, s32 arg8) {
+Vec3f* func_800B2470(Vec3f* vecA, Vec3f vecB, Vec3f vecC, f32 a, s32 b) {
     f32 pad;
-    Vec3f sp30;
+    Vec3f tempVec;
     
-    Vec3f_Lerp(&sp30, arg1, arg4, func_800B2308(arg7, arg8));       //out, vec1, vec2, scalar
-    *arg0 = sp30;
-    return arg0;
+    Vec3f_Lerp(&tempVec, vecB, vecC, func_800B2308(a, b));
+    *vecA = tempVec;
+    return vecA;
 }
 
 s32 func_800B2510(void) {
@@ -304,7 +309,7 @@ s32 func_800B2510(void) {
     s32 ret = 0;
     s32 i;
     
-    for (i = 0; i < 4; i++) {
+    for (i = 0; i < PLAYERS_MAX; i++) {
         if (gPlayerActors[i].exists != 0 && gPlayerActors[i].power == 4) {
             ret = 1;
             break;
@@ -349,7 +354,7 @@ Vec3f* Vec3f_SetAtBossPos(Vec3f* arg0) {
     Vec3f_Zero(&pos); // Call Vec3f_Zero with the passed in pointer
 
     actors = gActors;
-    for (i = 0; i < 64; i++, actors++) {
+    for (i = 0; i < ACTORS_MAX; i++, actors++) {
         if (IsActorBoss(actors)) { // Check if the current actor is a boss
             pos.x = actors->pos.x; // Set x coordinate of pos to boss x coordinate
             pos.y = actors->pos.y; // Set y coordinate of pos to boss y coordinate
@@ -675,22 +680,35 @@ void func_800B40FC(void) {
     }
 }
 
-s32 StageCarrotAvailable(s32 arg0) {
-    if (arg0 > STAGE_GHOST) { //not a stage with a carrot
+/**
+ * @brief This function returns a boolean value based on whether the carrot item is available in the stage passed in as an argument.
+ * 
+ * @param stage: The stage to check for the carrot item. 
+ * @return true if the carrot item is available in the stage passed in as an argument, false otherwise.
+ */
+s32 StageCarrotAvailable(s32 stage) {
+    if (stage > STAGE_GHOST) { //not a stage with a carrot
         return FALSE;
     }
-    if (gCarrotBitfield & (1 << arg0)) { //carrot already collected
+    if (gCarrotBitfield & (1 << stage)) { //carrot already collected
         return FALSE;
     }
     return TRUE;
 }
 
-void AddCarrot(s32 arg0) {
+/**
+ * @brief Adds a carrot to the global bitfield and increments the total number of carrots collected.
+ * 
+ * @param stage: the index of the bitfield to add the carrot to. 
+ */
+void AddCarrot(s32 stage) {
     s32 i;
 
-    if (arg0 <= STAGE_GHOST) {
-        gCarrotBitfield |= (1 << arg0);
-        gTotalCarrots = 0;
+    if (stage <= STAGE_GHOST) {
+        gCarrotBitfield |= (1 << stage);        // add the bit corresponding to the stage
+        gTotalCarrots = 0;                      // reset the counter
+
+        // iterate through the bitfield and count the number of bits set
         for (i = 0; i < 6; i++) {
             if (gCarrotBitfield & (1 << i)) {
                 gTotalCarrots += 1;
@@ -949,18 +967,19 @@ void func_800BE2C0(void) {
     Actor* actorList = gActors;
     s32 i;
 
-    for (i = 0; i < 64; i++, actorList++) {
+    for (i = 0; i < ACTORS_MAX; i++, actorList++) {
         if ((IsNotPickup(actorList) != 0) && (actorList->actorState != 0)) {
             func_800311C8(actorList);
             func_800314E4(actorList);
         }
     }
     
-    for (i = 0; i < 4; i++) {
-        gTongues[i].amountTnTongue = 0;
+    // For all players reset bullet mechanisms
+    for (i = 0; i < PLAYERS_MAX; i++) {
+        gTongues[i].amountOnTongue = 0;
         gTongues[i].amountInMouth = 0;
         gPlayerActors[i].amountToShoot = 0;
-        gPlayerActors[i].shootLeft = 0;
+        gPlayerActors[i].amountLeftToShoot = 0;
         func_800BE474(&gTongues[i]);
     }
 }
@@ -969,7 +988,7 @@ void func_800BE2C0(void) {
 void func_800BE370(s32 arg0) {
     Actor* actorList;
     s32 i;
-    Rect* rectTemp = &gZoneCollisions[arg0].rect_30;
+    Rect3D* rectTemp = &gZoneCollisions[arg0].rect_30;
 
     for (i = 0, actorList = gActors; i < 64; i++, actorList++) {
         if ((IsNotPickup(actorList) != 0) && (actorList->actorState == 0)) {
@@ -1009,7 +1028,7 @@ void func_800BE370(s32 arg0) {
 //                 arg0->inMouth.slots[arg0->amountInMouth] = (u32) i;
 //                 arg0->amountInMouth += 1;
 //             }
-//             arg0->amountTnTongue -= 1;      
+//             arg0->amountOnTongue -= 1;      
 //         }
 //     }
 //     func_800BE474(arg0);

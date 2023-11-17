@@ -12,8 +12,8 @@
 extern s32 rngSeed; //rng
 
 extern Camera* D_80174860;
-extern playerActor* PlayerPointer;
-extern Tongue* TonguePointer;
+extern playerActor* gPlayerOnePointer;
+extern Tongue* gTongueOnePointer;
 extern contMain gContMain[MAXCONTROLLERS];
 extern s16 gTotalCarrots;
 extern unk0* D_801FFB84;

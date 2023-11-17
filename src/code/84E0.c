@@ -49,7 +49,7 @@ extern f32 D_8010B348;
  * @param y: second value
  * @return (f32) x^2 + y^2
  */
-f32 func_8002D0E0(f32 x, f32 y) {
+f32 SumOfSquaresWrapper(f32 x, f32 y) {
     return SUM_OF_SQUARES(x, y);
 }
 
@@ -77,21 +77,21 @@ void WrapDegrees(f32* theta_ptr) {
 
 /**
  * @brief This function takes in a vector, (a,b) in the form of two floats, and a radius c. 
- * If the vector is outside the circle of radius c, it is normalized to be on the boundary of the circle.
+ * If the vector is outside the disk of radius c about (0,0), it is normalized to be on the boundary.
  * 
  * @param a: pointer to the x component of the vector
  * @param b: pointer to the y component of the vector
- * @param c: radius of a given circle
+ * @param c: radius of a given disk
  */
-void func_8002D148(f32* a, f32* b, f32 c) {
+void ClampPointToDisk(f32* a, f32* b, f32 radius) {
     f32 norm;
     f32 aSquaredPlusBSquared;
 
     aSquaredPlusBSquared = SUM_OF_SQUARES(*a, *b);
-    if (!(aSquaredPlusBSquared <= SQ(c))) {
+    if (!(aSquaredPlusBSquared <= SQ(radius))) {
         norm = sqrtf(aSquaredPlusBSquared);
-        *a = (*a * c) / norm;
-        *b = (*b * c) / norm;
+        *a = (*a * radius) / norm;
+        *b = (*b * radius) / norm;
     }
 }
 
@@ -178,7 +178,7 @@ s32 AreAnglesWithin180Degrees(f32 refAngle, f32 targetAngle) {
     return 1;
 }
 
-// Unknown Angle Function
+// Rotates angle one 90 degrees, then checks if angle two is within 180 degrees of it
 s32 func_8002D328(f32 theta, f32 phi) {
     f32* theta_ptr;
 
@@ -215,16 +215,19 @@ s32 func_8002D36C(f32* arg0, f32 arg1, f32 arg2) {
     return sp1C;
 }
 
-void func_8002D434(f32 *arg0, f32 *arg1, f32 arg2, f32 arg3, f32 arg4) {
-    f32 temp_f10;
-    f32 a = *arg0 - arg2;
-    f32 b = *arg1 - arg3;
+void func_8002D434(f32 *vecX, f32 *vecY, f32 diffX, f32 diffY, f32 addAngle) {
+    f32 newAngle;
+
+    // find magnitude of vector (a,b) = vec - diff
+    f32 a = *vecX - diffX;
+    f32 b = *vecY - diffY;
     f32 c = sqrtf(SUM_OF_SQUARES(a, b));
     
+    // If magnitude is not 0, calculate new angle and adjust vector
     if (c != 0.0f) {
-        temp_f10 = CalculateAngleOfVector(a, -b) + arg4;
-        *arg0 = cosf(DEGREES_TO_RADIANS_2PI(temp_f10)) * c + arg2;
-        *arg1 = arg3 + -(sinf(DEGREES_TO_RADIANS_2PI(temp_f10)) * c);
+        newAngle = CalculateAngleOfVector(a, -b) + addAngle;
+        *vecX = cosf(DEGREES_TO_RADIANS_2PI(newAngle)) * c + diffX;
+        *vecY = diffY + -(sinf(DEGREES_TO_RADIANS_2PI(newAngle)) * c);
     }
 }
 
@@ -500,7 +503,7 @@ void Actors_Init(s32 actorIndex, s32 actorID, f32 arg2, f32 arg3, f32 arg4, f32 
         func_80044708(actorInstance);
         return;
     case Pile_of_Books:
-        ActtorInit_GhostBoss(actorInstance);
+        ActorInit_GhostBoss(actorInstance);
         return;
     case Pile_of_Books_Arm_Segments:
         func_80046DDC(actorInstance);
@@ -619,6 +622,7 @@ s32 Actor_Init(s32 type, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 a
 
 s32 func_8002DF5C(s32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4) {
     s32 i;
+
     for (i = 0; i < ACTORS_MAX; i++) {
         if (D_80170968[i].mode == 0) {
             D_80170968[i].mode = arg0;
@@ -724,35 +728,35 @@ void func_8002E5DC(UnkTempStruct arg0) {
 
 //related to animation
 void func_8002F3D4(void) {
-    if (PlayerPointer->shootLeft != 0) {
-        PlayerPointer->shootLeft--;
+    if (gPlayerOnePointer->amountLeftToShoot != 0) {
+        gPlayerOnePointer->amountLeftToShoot--;
     }
-    if (PlayerPointer->vaultFall != 0) {
-        PlayerPointer->vaultFall--;
+    if (gPlayerOnePointer->vaultFall != 0) {
+        gPlayerOnePointer->vaultFall--;
     }
-    if (PlayerPointer->canJump == 0) {
-        PlayerPointer->vaultFall = 0;
+    if (gPlayerOnePointer->canJump == 0) {
+        gPlayerOnePointer->vaultFall = 0;
     }
-    if (PlayerPointer->canJump == 0) {
-        if (PlayerPointer->forwardVel == 0.0f) {
-            PlayerPointer->groundMovement = 0;
-            PlayerPointer->globalTimer = (PlayerPointer->globalTimer + 0.3000000119f);
+    if (gPlayerOnePointer->canJump == 0) {
+        if (gPlayerOnePointer->forwardVel == 0.0f) {
+            gPlayerOnePointer->groundMovement = 0;
+            gPlayerOnePointer->globalTimer = (gPlayerOnePointer->globalTimer + 0.3000000119f);
             return;
         }
-        if (PlayerPointer->forwardVel < (65.0f * PlayerPointer->forwardImpulse)) {
-            PlayerPointer->groundMovement = 1;
-            PlayerPointer->globalTimer = (PlayerPointer->globalTimer + (((2.0f + (((PlayerPointer->forwardVel / ((65.0f * PlayerPointer->forwardImpulse) / 10.0f)) * PlayerPointer->forwardImpulse) / 0.3200000226f)) / 4.5f) / 1.799999952f));
+        if (gPlayerOnePointer->forwardVel < (65.0f * gPlayerOnePointer->forwardImpulse)) {
+            gPlayerOnePointer->groundMovement = 1;
+            gPlayerOnePointer->globalTimer = (gPlayerOnePointer->globalTimer + (((2.0f + (((gPlayerOnePointer->forwardVel / ((65.0f * gPlayerOnePointer->forwardImpulse) / 10.0f)) * gPlayerOnePointer->forwardImpulse) / 0.3200000226f)) / 4.5f) / 1.799999952f));
             return;
         }
-        PlayerPointer->groundMovement = 2;
-        PlayerPointer->globalTimer = PlayerPointer->globalTimer + 1.5f * PlayerPointer->forwardImpulse / 0.3200000226f;
+        gPlayerOnePointer->groundMovement = 2;
+        gPlayerOnePointer->globalTimer = gPlayerOnePointer->globalTimer + 1.5f * gPlayerOnePointer->forwardImpulse / 0.3200000226f;
     }
 }
 
 
 void func_8002F528(s32 arg0) {
-    PlayerPointer->playerHURTSTATE = 3;
-    PlayerPointer->playerHURTTIMER = 0;
+    gPlayerOnePointer->playerHURTSTATE = 3;
+    gPlayerOnePointer->playerHURTTIMER = 0;
 }
 
 
@@ -767,10 +771,10 @@ void func_8002F54C(f32 arg0, playerActor* PlayerP, s32 arg2) {
 
 
 void func_8002F568(void) {
-    PlayerPointer->vel.x = PlayerPointer->vaultlocity.x * 0.25f;
-    PlayerPointer->vel.z = PlayerPointer->vaultlocity.z * 0.25f;
-    if (TonguePointer->segments >= 4) {
-        PlayerPointer->vaultFall = 12;
+    gPlayerOnePointer->vel.x = gPlayerOnePointer->vaultlocity.x * 0.25f;
+    gPlayerOnePointer->vel.z = gPlayerOnePointer->vaultlocity.z * 0.25f;
+    if (gTongueOnePointer->segments >= 4) {
+        gPlayerOnePointer->vaultFall = 12;
     }
 }
 
@@ -813,23 +817,27 @@ s32 func_8002F6DC(f32* arg0, f32 arg1) {
     }
 }
 
-
+/**
+ * @brief Sets the player's forward impulse based on the amount in the player's mouth.
+ */
 void func_8002F7F0(void) {
-    s32 aIM;
+    s32 amountInMouth;
 
-    aIM = TonguePointer->amountInMouth;
-    if (aIM < 6) {
-        PlayerPointer->forwardImpulse = (((24.0f - aIM) * 0.3200000226f) / 24.0f);
+    amountInMouth = gTongueOnePointer->amountInMouth;
+    if (amountInMouth < 6) {
+        // set impulse between 0.93 and 1.0
+        gPlayerOnePointer->forwardImpulse = (((24.0f - amountInMouth) * 0.3200000226f) / 24.0f);
     } else {
-        PlayerPointer->forwardImpulse = 0.2400000095f;
+        gPlayerOnePointer->forwardImpulse = 0.2400000095f;
     }
-    if (PlayerPointer->power == POWERUP_MINI) {
-        PlayerPointer->forwardImpulse = (PlayerPointer->forwardImpulse * 0.5f);
+    if (gPlayerOnePointer->power == POWERUP_MINI) {
+        // half any impulse if player is mini
+        gPlayerOnePointer->forwardImpulse = (gPlayerOnePointer->forwardImpulse * 0.5f);
     }
 }
 
 void func_8002F884(s32 arg0, s32 arg1) {
-    if (((D_801749B0.unk_00 == 0) || (PlayerPointer->playerID != 1)) && (D_80168D78[arg0] == 0)) {
+    if (((D_801749B0.unk_00 == 0) || (gPlayerOnePointer->playerID != 1)) && (D_80168D78[arg0] == 0)) {
         if (gameModeCurrent == GAME_MODE_BATTLE_MENU) {
             Rumble_AddTime(arg0, ((arg1 * 100) / 6.0f));
         } else {
@@ -839,18 +847,18 @@ void func_8002F884(s32 arg0, s32 arg1) {
 }
 
 void func_8002F960(Tongue* arg0) {
-    func_8002F884(PlayerPointer->playerID, 2);
+    func_8002F884(gPlayerOnePointer->playerID, 2);
     PLAYSFX(16, 0, 0X10);
     arg0->wallTime = 10;
 }
 
 void func_8002F9BC(s32 arg0) {
-    PlayerPointer->power = POWERUP_NONE;
+    gPlayerOnePointer->power = POWERUP_NONE;
     func_8002F7F0();
-    PlayerPointer->tongueYOffset = 60.0f;
-    PlayerPointer->tongueSeperation = 50.0f;
-    PlayerPointer->hitboxSize = 30.0f;
-    PlayerPointer->hitboxYStretch = 150.0f;
+    gPlayerOnePointer->tongueYOffset = 60.0f;
+    gPlayerOnePointer->tongueSeperation = 50.0f;
+    gPlayerOnePointer->hitboxSize = 30.0f;
+    gPlayerOnePointer->hitboxYStretch = 150.0f;
 }
 
 //very long
@@ -877,7 +885,7 @@ void func_800312FC(Actor* arg0, f32 arg1) {
     arg0->userVariables[0] = 0;
     arg0->userVariables[1] = 14;
     arg0->unk_134[3] = 76.80000305f;
-    arg0->vel.x = __cosf((arg1 * 2 * 3.14159265358979312) / 360.0) * 16.0f;
+    arg0->vel.x = __cosf((arg1 * 2 * 3.14159265358979312) / 360.0) * 16.0f;     //cosf(DEGREES_TO_RAD_2PI(arg1)) * 16.0f;
     arg0->vel.z = -__sinf((arg1 * 2 * 3.14159265358979312) / 360.0) * 16.0f;
     arg0->tongueCollision = 0;
     playSoundEffect(109, &arg0->pos.x, &arg0->pos.y, &arg0->pos.z, 0, 0);
@@ -916,13 +924,13 @@ s32 func_80032074(s32 arg0) {
 void func_800320EC(s32 arg0, f32 arg1, f32 arg2) {
     f32 sp24;
 
-    sp24 = CalcAngleBetween2DPoints(arg1, arg2, D_80170968[TonguePointer->poleID].pos.x, D_80170968[TonguePointer->poleID].pos.z);
+    sp24 = CalcAngleBetween2DPoints(arg1, arg2, D_80170968[gTongueOnePointer->poleID].pos.x, D_80170968[gTongueOnePointer->poleID].pos.z);
     if (gActors[arg0].userVariables[0] == 0) {
         if (D_8017499C != (gActors[arg0].userVariables[3] + 1)) {
             gActors[arg0].userVariables[3] = D_8017499C;
             return;
         }
-        sp24 += TonguePointer->tongueDir * 90.0f;
+        sp24 += gTongueOnePointer->tongueDir * 90.0f;
         WrapDegrees(&sp24);
         
         gActors[arg0].unk_134[2] = sp24;
@@ -971,6 +979,7 @@ void func_80064BFC(f32, f32, f32);
 extern s32 D_80174980;
 extern s32 D_80174988;
 extern s32 D_801749AC;
+
 void func_80036D74(playerActor* arg0, Tongue* arg1) {
     if (arg0->playerHURTSTATE == 0) {
         func_8002F884(arg0->playerID, 5);
@@ -1092,7 +1101,7 @@ void func_80038990(Actor* bulletHellAntSpawnerActor) {
 // ???: Nathan R.
 void func_8003899C(Actor* arg0) {
 
-    if (PlayerPointer->pos.z > -500.0f) {
+    if (gPlayerOnePointer->pos.z > -500.0f) {
         arg0->userVariables[2] = 1;
     }
     if (arg0->userVariables[2] != 0) {
@@ -1106,13 +1115,12 @@ void func_8003899C(Actor* arg0) {
     }
 }
 
-//ActorInit_AntBulletHell: Nathan R.
 void ActorInit_AntBulletHell(Actor* arg0) {
     f32 ang;
     f32 sine;
     arg0->unk_94 = arg0->position._f32.x;
     sine = __sinf((6 * D_8017499C * 3.14159265358979312) / 360.0);
-    ang = CalcAngleBetween2DPoints(arg0->pos.x, arg0->pos.z, PlayerPointer->pos.x, PlayerPointer->pos.z);
+    ang = CalcAngleBetween2DPoints(arg0->pos.x, arg0->pos.z, gPlayerOnePointer->pos.x, gPlayerOnePointer->pos.z);
     arg0->unk_90 = arg0->position._f32.y + (ang + 12 * sine);
     WrapDegrees(&arg0->unk_90);
     func_800382F4(arg0);
@@ -1212,8 +1220,8 @@ void ActorTick_AntQueenDrone(Actor* arg0) {
         arg0->vel.y = 0.0f;
     }
     if ((arg0->pos.x < -1400.0f) || (arg0->pos.x > 1400.0f) || (arg0->pos.z < -1400.0f) || (arg0->pos.z > 1400.0f)) {
-        playerXMod = PlayerPointer->pos.x;
-        playerZMod = PlayerPointer->pos.z;
+        playerXMod = gPlayerOnePointer->pos.x;
+        playerZMod = gPlayerOnePointer->pos.z;
         if (playerXMod < -1300.0f) playerXMod = -1300.0f;
         if (playerXMod > 1300.0f) playerXMod = 1300.0f;
         if (playerZMod < -1300.0f) playerZMod = -1300.0f;
@@ -1393,13 +1401,11 @@ void func_8003E30C(Actor* arrowsActor) {
     arrowsActor->userVariables[0] = (s32) (arrowsActor->position._f32.y / arrowsActor->position._f32.x);
 }
 
-
-// Elisiah
-void ActorTick_Arrow(Actor* arg0) {                   // unsure if struct is actor
-    if (arg0->globalTimer == arg0->userVariables[0]) {
-        func_80031518(arg0);
+void ActorTick_Arrow(Actor* arrowActor) {
+    if (arrowActor->globalTimer == arrowActor->userVariables[0]) {
+        func_80031518(arrowActor);
     }
-    func_800382F4(arg0);
+    func_800382F4(arrowActor);
 }
 
 // boulder
@@ -1483,7 +1489,7 @@ void func_8003FB4C(Actor* arg0) {
     arg0->userVariables[3] += 1;
     if ((arg0->userVariables[3] % (s32) arg0->unk_124) == 0) {
         arg0->userVariables[0] += 3;
-        func_8003FA38(arg0, PlayerPointer->pos.x, PlayerPointer->yCounter, PlayerPointer->pos.z);
+        func_8003FA38(arg0, gPlayerOnePointer->pos.x, gPlayerOnePointer->yCounter, gPlayerOnePointer->pos.z);
         return;
     }
     switch (arg0->userVariables[0]) {                              /* irregular */
@@ -1575,9 +1581,9 @@ void func_800401E8(Actor* unk_1FActor) {
 
 //? - Nathan R.
 void func_800404D8(Actor* arg0) {
-    f32 s = __cosf(((arg0->unk_90 * 2 * 3.14159265358979312) / 360.0));
+    f32 s = __cosf(DEGREES_TO_RADIANS_2PI(arg0->unk_90));
     arg0->vel.x = arg0->position._f32.x * s;
-    s = -__sinf(((arg0->unk_90 * 2 * 3.14159265358979312) / 360.0));
+    s = -__sinf(DEGREES_TO_RADIANS_2PI(arg0->unk_90));
     arg0->vel.z = arg0->position._f32.x * s;
     arg0->vel.y = 64.0f;
 }
@@ -1806,7 +1812,7 @@ void func_80044564(void) {
 
 //Fire: Auto-Decompile
 void func_80044584(Actor* arg0) {
-    arg0->unk_90 = CalcAngleBetween2DPoints(arg0->pos.x, arg0->pos.z, PlayerPointer->pos.x, PlayerPointer->pos.z);
+    arg0->unk_90 = CalcAngleBetween2DPoints(arg0->pos.x, arg0->pos.z, gPlayerOnePointer->pos.x, gPlayerOnePointer->pos.z);
     arg0->userVariables[1] = arg0->unk_128;
 }
 
@@ -1814,7 +1820,7 @@ void func_80044584(Actor* arg0) {
 void func_800445CC(Actor* fireActor) {
     f32 angle;
 
-    angle = CalcAngleBetween2DPoints(fireActor->pos.x, fireActor->pos.z, PlayerPointer->pos.x, PlayerPointer->pos.z);
+    angle = CalcAngleBetween2DPoints(fireActor->pos.x, fireActor->pos.z, gPlayerOnePointer->pos.x, gPlayerOnePointer->pos.z);
     if (fireActor->userVariables[0] == 0) {
         fireActor->unk_94 = fireActor->position._f32.x;
         func_8002D36C(&fireActor->unk_90, angle, fireActor->position._f32.y);
@@ -1834,9 +1840,9 @@ void func_800445CC(Actor* fireActor) {
             fireActor->userVariables[1]--;
         }
     }
-    if (fireActor->pos.y < (PlayerPointer->pos.y - fireActor->unk_15C)) {
+    if (fireActor->pos.y < (gPlayerOnePointer->pos.y - fireActor->unk_15C)) {
         fireActor->pos.y += fireActor->unk_15C;
-    } else if ((fireActor->unk_15C + PlayerPointer->pos.y) < fireActor->pos.y) {
+    } else if ((fireActor->unk_15C + gPlayerOnePointer->pos.y) < fireActor->pos.y) {
         fireActor->pos.y = fireActor->pos.y - fireActor->unk_15C;
     }
     fireActor->unk_F0++;
@@ -1856,7 +1862,7 @@ void func_80044728(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/GhostBoss_SpawnArms.s")
 
 // Pile of Books Function: Elisiah
-void ActtorInit_GhostBoss(Actor* pileOfBooksActor) {
+void ActorInit_GhostBoss(Actor* pileOfBooksActor) {
     pileOfBooksActor->unk_EC = 0;
     pileOfBooksActor->userVariables[3] = pileOfBooksActor->unk_128 * 2;
     pileOfBooksActor->unk_134[1] = pileOfBooksActor->pos.z + -800.0f;
@@ -2055,8 +2061,8 @@ void func_800488FC(Actor* arg0) {
 
 //? - Nathan R.
 void func_800489B0(Actor* arg0) {
-    arg0->pos.x = arg0->unk_134[0] + (arg0->unk_134[2] * __cosf((arg0->unk_134[3] * 2 * 3.14159265358979312) / 360.0));
-    arg0->pos.z = arg0->unk_134[1] + (arg0->unk_134[2] * -__sinf((arg0->unk_134[3] * 2 * 3.14159265358979312) / 360.0));
+    arg0->pos.x = arg0->unk_134[0] + (arg0->unk_134[2] * __cosf(DEGREES_TO_RADIANS_2PI(arg0->unk_134[3])));
+    arg0->pos.z = arg0->unk_134[1] + (arg0->unk_134[2] * -__sinf(DEGREES_TO_RADIANS_2PI(arg0->unk_134[3])));
 }
 
 
@@ -2338,8 +2344,8 @@ void ActorTick_Powerup(Actor* arg0) {
 //related to spawning collsion pieces
 void func_8004BA5C(s32 arg0) {
     s32 i;
-    PlayerPointer = &gPlayerActors[0];
-    TonguePointer = gTongues;
+    gPlayerOnePointer = &gPlayerActors[0];
+    gTongueOnePointer = &gTongues[0];
     
     for (i = 0; i < arg0; i++) {
         Actors_Tick();
@@ -2394,8 +2400,8 @@ s32 func_8004C374(u16* arg0, u16* arg1, s32 arg2) {
 }
 
 void func_8004C3A4(s16* arg0, f32 arg1) {
-    arg0[3] = __cosf((arg1 * 2 * 3.14159265358979312) / 360.0) * 65.0f;
-    arg0[4] = __sinf((arg1 * 2 * 3.14159265358979312) / 360.0) * 65.0f;
+    arg0[3] = __cosf(DEGREES_TO_RADIANS_2PI(arg1)) * 65.0f;
+    arg0[4] = __sinf(DEGREES_TO_RADIANS_2PI(arg1)) * 65.0f;
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8004C43C.s")

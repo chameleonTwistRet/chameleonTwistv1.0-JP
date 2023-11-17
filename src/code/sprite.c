@@ -156,15 +156,20 @@ void func_80055FBC(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80056064.s")
 
-//angle wrapper
-f32 func_8005609C(f32 arg0) {
+/**
+ * @brief Recursively calls until the angle is within the range of 0-360.
+ * 
+ * @param arg0 
+ * @return f32 
+ */
+f32 WrapAngleRecursive(f32 arg0) {
     if (arg0 >= 360.0f) {
         arg0 = arg0 - 360.0f;
-        arg0 = func_8005609C(arg0);
+        arg0 = WrapAngleRecursive(arg0);
     }
     else if (arg0 < 0.0f) {
         arg0 = arg0 + 360.0f;
-        arg0 = func_8005609C(arg0);
+        arg0 = WrapAngleRecursive(arg0);
     }
     return arg0;
 }

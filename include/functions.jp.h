@@ -22,9 +22,9 @@ Gfx* func_8002CCA0(void*, s32);
 void func_8002CCDC(void);
 void func_8002CD04(void);
 void func_8002CD94(s32);
-f32 func_8002D0E0(f32, f32);
+f32 SumOfSquaresWrapper(f32, f32);
 void func_8002D0F4(f32*);
-void func_8002D148(f32*, f32*, f32);
+void ClampPointToDisk(f32*, f32*, f32);
 f32 CalcAngleBetween2DPoints(f32, f32, f32, f32);
 f32 ReflectAngleToUpperQuadrants(f32);
 s32 IsAngleWithinTolerance(f32, f32, f32);
@@ -143,7 +143,7 @@ void func_80044584(Actor*);
 void func_80044708(Actor*); // Sandal Function: Elisiah
 void func_80044728(void);
 void GhostBoss_SpawnArms(Actor*);
-void ActtorInit_GhostBoss(Actor*); // Pile of Books Function: Elisiah
+void ActorInit_GhostBoss(Actor*); // Pile of Books Function: Elisiah
 s32 func_80044E80(Actor*, s32);
 void func_80046DDC(Actor*);
 void func_80046FB0(Actor*);
@@ -324,7 +324,7 @@ void func_800A9F84(void);
 void func_800AA3F0(void);
 void func_800ADE70(void);
 void func_800AE4AC(void);
-void CalculateBoundingRectFromVectors(Vec3f,Vec3f,Rect*);
+void CalculateBoundingRectFromVectors(Vec3f,Vec3f,Rect3D*);
 void func_800A2BDC(void);
 void Process_BattleMenu(void);
 void func_800A4320(void);
@@ -413,7 +413,7 @@ void func_800A1EC4(void);
 void func_800A54EC(s32);
 s32 DMAStruct_Print(void);
 
-s32 IfRectsIntersect(Rect* arg0, Rect* arg1);
+s32 IfRectsIntersect(Rect3D* arg0, Rect3D* arg1);
 
 s32 IsBossID(s32);
 s32 func_800B2510(void);
@@ -435,8 +435,8 @@ f32 CalculateAngleOfVector(f32, f32);
 f32 InterpolateAndClampArcSin(f32);
 f32 AngleFromArcSin(f32);
 void func_800B35FC(s32);
-s32 IsPointInRect(Vec3f, Rect*);
-void AdjustRectToVec3(Rect* r, Vec3f vec);
+s32 IsPointInRect(Vec3f, Rect3D*);
+void AdjustRectToVec3(Rect3D* r, Vec3f vec);
 Vec3f* Vec3f_Lerp(Vec3f*, Vec3f, Vec3f, f32);
 f32 func_800B2308(f32, s32);
 void func_800C8F00(void);

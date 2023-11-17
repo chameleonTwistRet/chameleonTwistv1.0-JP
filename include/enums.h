@@ -2,6 +2,7 @@
 #define _ENUMS_H
 
 #define ACTORS_MAX 64
+#define PLAYERS_MAX 4
 
 enum actorIDs {
 	Actor_Null,
