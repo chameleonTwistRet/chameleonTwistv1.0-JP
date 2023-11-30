@@ -60,26 +60,36 @@ class N64SegLights(CommonSegCodeSubsegment):
         lines = []
 
         sym = self.create_symbol(
-            addr=self.vram_start, in_segment=True, type="data", define=True
+            addr=self.vram_start+0x8, in_segment=True, type="data", define=True
         )
+
         if not self.data_only:
             lines.append('#include "common.h"')
             lines.append("")
-            lines.append("Lights1 %s = gdSPDefLights1(" % (sym.name))
+            lines.append("Lights1 %s = " % (sym.name))
+        lines.append("gdSPDefLights1(")
+    
 
-        byteData = bytearray(lights_data)
-        data = struct.unpack('>BBBbBBBbbbbbBBBbbbbbbbbb', byteData)
-        # BBB0BBB0bbb00000
+        data = struct.unpack('>BBBbBBBbBBBbBBBbBBBbBBBb', bytearray(lights_data))
+        ambientColor = [data[0], data[1], data[2]] #copies to data[4], data[5], and data[6]
+        rgb1 = [data[8], data[9], data[0xA]] #copies to data[0xC], data[0xD], and data[0xE]
+        xyz1 = [data[0x10], data[0x11], data[0x12]]
+        #0x4 of padding at the end
+        
         lines.append("\t/* ambient color */")
-        lines.append("\t%d, %d, %d," % (data[0], data[1], data[2]))
+        s = []
+        for i in ambientColor: s.append(str(i))
+        temp = ", ".join(s)
+        lines.append("\t"+temp+",")
+
         lines.append("\t/* colored light direction */")
-        lines.append("\t%d, %d, %d,\t%d, %d, %d," % (data[4], data[5], data[6], data[8], data[9], data[0xA]))
-        lines.append("\t/* colored light direction2 */")
-        lines.append("\t%d, %d, %d,\t%d, %d, %d" % (data[0xC], data[0xD], data[0xE], data[0x10], data[0x11], data[0x12]))
-#
-        if not self.data_only:
-            lines.append(");")
-#
+        s = []
+        for i in rgb1+xyz1: s.append(str(i))
+        temp = ", ".join(s)
+        lines.append("\t"+temp)
+
+        lines.append(");")
+        
         ## enforce newline at end of file
         lines.append("")
         return "\n".join(lines)

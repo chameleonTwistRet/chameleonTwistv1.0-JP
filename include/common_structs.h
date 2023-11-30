@@ -3,6 +3,11 @@
 
 #include "PR/ultratypes.h"
 
+/*for some godforsaken reason in gbi.h line 1045 it defines the core mtx structure as LONGS????
+its two sets of sixteen shorts dude!!! it does no parsing to fix it!!! wtf!!!
+the f stands for fixed btw*/
+typedef short Mtx_f[2][16];
+
 typedef struct Vec2f {
                f32 x;
                f32 y;

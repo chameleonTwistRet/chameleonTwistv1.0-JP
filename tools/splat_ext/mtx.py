@@ -65,29 +65,46 @@ class N64SegMtx(CommonSegCodeSubsegment):
         sym = self.create_symbol(
             addr=self.vram_start, in_segment=True, type="data", define=True
         )
+        #trueResult is compatible with building
+        trueResult = True
+
         if not self.data_only:
             lines.append('#include "common.h"')
             lines.append("")
-            lines.append(f"Mtx {sym.name}[4][4] = {{")
+            typer = "Mtx_f" if trueResult else "Mtx"
+            lines.append(f"{typer} {sym.name} = {{")
+        
+        if trueResult:
+            s = []
+            word_length = 2
+            word_count = 16
+            for i in range(0x20):
+                s.append(int.from_bytes(matrix_data[(i*2):(i*2)+2], "big"))
+            short = []
+            for i in s:
+                short.append(str(i))
+                if len(short)%word_count == 0 and len(short)>=0:
+                    lines.append("{"+",".join(short)+"},")
+                    short = []
+            lines[-1] = lines[-1][:-1]
+        else:
+            s15 = []
+            s16 = []
+            for i in range(16):
+                s15.append(int.from_bytes(matrix_data[(i*2):(i*2)+2], "big", signed=True))
+                s = int.from_bytes(matrix_data[(i*2)+32:(i*2)+34], "big", signed=True)
+                sign = ""
+                if str(s)[0] == "-":
+                    #remove the sign and add it in front of the 0
+                    sign = "-"
+                    s *= -1
+                s16.append(float(sign + "0." + str(s)))
 
-        word_length = 2
-        word_count = 8
-        s15 = []
-        s16 = []
-        for i in range(0, 16):
-            s15.append(int.from_bytes(matrix_data[(i*2):(i*2)+2], "big", signed=True))
-            s = int.from_bytes(matrix_data[(i*2)+32:(i*2)+34], "big", signed=True)
-            sign = ""
-            if str(s)[0] == "-":
-                #remove the sign and add it in front of the 0
-                sign = "-"
-                s *= -1
-            s16.append(float(sign + "0." + str(s)))
+            lines.append(f"""   {{ {s15[0]+s16[0]}, {s15[1]+s16[1]}, {s15[2]+s16[2]}, {s15[3]+s16[3]} }},""")
+            lines.append(f"""   {{ {s15[4]+s16[4]}, {s15[5]+s16[5]}, {s15[6]+s16[6]}, {s15[7]+s16[7]} }},""")
+            lines.append(f"""   {{ {s15[8]+s16[8]}, {s15[9]+s16[9]}, {s15[10]+s16[10]}, {s15[11]+s16[11]} }},""")
+            lines.append(f"""   {{ {s15[12]+s16[12]}, {s15[13]+s16[13]}, {s15[14]+s16[14]}, {s15[15]+s16[15]} }}""")
 
-        lines.append(f"""   {{ {s15[0]+s16[0]}, {s15[1]+s16[1]}, {s15[2]+s16[2]}, {s15[3]+s16[3]} }},""")
-        lines.append(f"""   {{ {s15[4]+s16[4]}, {s15[5]+s16[5]}, {s15[6]+s16[6]}, {s15[7]+s16[7]} }},""")
-        lines.append(f"""   {{ {s15[8]+s16[8]}, {s15[9]+s16[9]}, {s15[10]+s16[10]}, {s15[11]+s16[11]} }},""")
-        lines.append(f"""   {{ {s15[12]+s16[12]}, {s15[13]+s16[13]}, {s15[14]+s16[14]}, {s15[15]+s16[15]} }}""")
 
         if not self.data_only:
             lines.append("};")
