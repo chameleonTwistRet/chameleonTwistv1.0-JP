@@ -6,7 +6,8 @@ from os import remove as deleteFile
 
 if __name__ == "__main__":
     dataOnly, infile, outfile = argv[1:]
-    cname = infile.split("/")[-1].replace(".", "_")[:-4] #get rid of _bin too because that is guaranteed
+    cname = infile.replace("build/include/", "")\
+    .replace("assets/", "").replace("/", "_").replace(".", "_")[:-4] #get rid of _bin too because that is guaranteed
     if cname[0].isdigit(): cname="d"+cname
     dataOnly = bool(int(dataOnly))
     with open(outfile, "w") as f:
