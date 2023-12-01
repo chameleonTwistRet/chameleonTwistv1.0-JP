@@ -46,7 +46,7 @@ unsigned char D_08000BE8_Davy[] = {
 //remove 'build/include/' to route it back to the repo assets
 //change the end to '.gfx.inc.c' instead of 'GFX.inc.c'
 //go into the yaml and remove 'GFX.ME' from the name and change the type from bin to gfxSeg (for better support of vtx's)
-#include "build/include/assets/chameleons/Davy/body/bodyGFX.inc.c"
+#include "assets/chameleons/Davy/body/body.gfx.inc.c"
 //#######
 
 //#######BODYASSOCIATE

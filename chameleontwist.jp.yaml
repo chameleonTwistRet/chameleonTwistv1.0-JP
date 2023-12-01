@@ -4909,7 +4909,7 @@ segments:
     dir: chameleons
     subalign: 8
     type: code
-    vram: 0x80366820 #SEGMENT 0x08
+    vram: 0x80366810 #SEGMENT 0x08
     subsegments:
     - [auto, c, Davy]
     - name: Davy
@@ -4934,7 +4934,7 @@ segments:
       - [0xafd090, ci4, body/number.MEd.ci4, 32, 32]
       - [0xafd290] #B8000000
       - [0xafd298, palette, body/number.MEd.ci4]
-      - [0xafd498, bin, body/bodyGFX.ME]
+      - [0xafd498, gfxSeg, body/body]
 
       - {start: 0xafd850, type: mtx, name: bodyAssociate/bodyAssociate, data_only: True}
       - [0xafd890, bin, bodyAssociate/bodyAssociateGFX.ME]
