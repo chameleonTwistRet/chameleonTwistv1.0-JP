@@ -4564,172 +4564,137 @@ segments:
     - [0xACBD90, bin, match] # 青
 
     
-  - start: 0xACBDD0 #The standard 2.
-    name: Davy_Static
-    subalign: 8
-    type: data #modelActor
-    vram: 0x7DA932B0 #temp
-    subsegments:
-    - [0xACBDD0, lights, chameleons/Davy_Static/light]
-    - name: body
-      type: .data #model
-      start: 0xACBDE8
-      subsegments:
-      - { start: 0xACBDE8, type: vtx, name: chameleons/Davy_Static/body/body}
-      - [0xACBF28, mtx, chameleons/Davy_Static/body/body]
-      - [0xACBF68, bin] # rgb2c remnant in mtx
-      - [0xACBF70, ci4, chameleons/Davy_Static/body/backpackStrap.ci4, 32, 64]
-      - [0xACC370, bin] #endDL command from rgb2c
-      - [0xACC378, palette, chameleons/Davy_Static/body/backpackStrap.ci4]
-      - [0xACC578, bin] #endDL command from rgb2c
-      - [0xACC580, ci4, chameleons/Davy_Static/body/solidColor.ci4, 8, 8]
-      - [0xACC5A0, bin] #endDL command from rgb2c
-      - [0xACC5A8, palette, chameleons/Davy_Static/body/solidColor.ci4]
-      - [0xACC7A8, bin] #endDL command from rgb2c
-      - [0xACC7B0, ci4, chameleons/Davy_Static/body/number.ci4, 32, 32]
-      - [0xACC9B0, bin] #endDL command from rgb2c
-      - [0xACC9B8, palette, chameleons/Davy_Static/body/number.ci4]
-      - { start: 0xACCBB8, type: gfx, name: chameleons/Davy_Static/body/body}
-    - name: bodyAssociate
-      type: .data #model
-      start: 0xACCF70
-      subsegments:
-      - { start: 0xACCF70, type: mtx, name: chameleons/Davy_Static/bodyAssociate/bodyAssociate}
-      - { start: 0xACCFB0, type: gfx, name: chameleons/Davy_Static/bodyAssociate/bodyAssociate}
-    - name: head
-      type: .data #model
-      start: 0xACCFD0
-      subsegments:
-      - { start: 0xACCFD0, type: vtx, name: chameleons/Davy_Static/head/head}
-      - [0xACD150, mtx, chameleons/Davy_Static/head/head]
-      - [0xACD190, bin] #endDL command from rgb2c
-      - [0xACD198, ci8, chameleons/Davy_Static/head/eye.ci8, 32, 32]
-      - [0xACD598, bin] #endDL command from rgb2c
-      - [0xACD5A0, palette, chameleons/Davy_Static/head/eye.ci8]
-      - [0xACD7A0, bin] #endDL command from rgb2c
-      - [0xACD7A8, ci8, chameleons/Davy_Static/head/eye2.ci8, 32, 32]
-      - [0xACDBA8, bin] #endDL command from rgb2c
-      - [0xACDBB0, palette, chameleons/Davy_Static/head/eye2.ci8]
-      - [0xACDDB0, bin] #endDL command from rgb2c
-      - [0xACDDB8, ci4, chameleons/Davy_Static/head/cheek.ci4, 32, 32]
-      - [0xACDFB8, bin] #endDL command from rgb2c
-      - [0xACDFC0, palette, chameleons/Davy_Static/head/cheek.ci4]
-      - { start: 0xACE1C0, type: gfx, name: chameleons/Davy_Static/head/head}
-    - name: backpack
-      type: .data #model
-      start: 0xACE5B8
-      subsegments:
-      - { start: 0xACE5B8, type: vtx, name: chameleons/Davy_Static/backpack/backpack}
-      - [0xACE638, mtx, chameleons/Davy_Static/backpack/backpack]
-      - [0xACE678, bin] #endDL command from rgb2c
-      - [0xACE680, ci8, chameleons/Davy_Static/backpack/backpack.ci8, 4, 8] #awful
-      - [0xACE6A0, bin] #endDL command from rgb2c
-      - [0xACE6A8, palette, chameleons/Davy_Static/backpack/backpack.ci8]
-      - { start: 0xACE8A8, type: gfx, name: chameleons/Davy_Static/backpack/backpack}
-    - name: shoe
-      type: .data #model
-      start: 0xACEA20
-      subsegments:
-      - { start: 0xACEA20, type: vtx, name: chameleons/Davy_Static/shoe/shoe}
-      - [0xACEA70, mtx, chameleons/Davy_Static/shoe/shoe]
-      - [0xACEAB0, bin] #endDL command from rgb2c
-      - [0xACEAB8, ci4, chameleons/Davy_Static/shoe/shoe.ci4, 64, 32]
-      - [0xACEEB8, bin] #endDL command from rgb2c
-      - [0xACEEC0, palette, chameleons/Davy_Static/shoe/shoe.ci4]
-      - { start: 0xACF0C0, type: gfx, name: chameleons/Davy_Static/shoe/shoe}
-    - name: Lshoe
-      type: .data #model
-      start: 0xACF208
-      subsegments:
-      - { start: 0xACF208, type: vtx, name: chameleons/Davy_Static/Lshoe/Lshoe}
-      - [0xACF258, mtx, chameleons/Davy_Static/Lshoe/Lshoe]
-      - { start: 0xACF298, type: gfx, name: chameleons/Davy_Static/Lshoe/Lshoe}
-    - name: cuff
-      type: .data #model
-      start: 0xACF3E0
-      subsegments:
-      - { start: 0xACF3E0, type: vtx, name: chameleons/Davy_Static/cuff/cuff}
-      - [0xACF440, mtx, chameleons/Davy_Static/cuff/cuff]
-      - { start: 0xACF480, type: gfx, name: chameleons/Davy_Static/cuff/cuff}
-    - name: Lcuff
-      type: .data #model
-      start: 0xACF5D8
-      subsegments:
-      - { start: 0xACF5D8, type: vtx, name: chameleons/Davy_Static/Lcuff/Lcuff}
-      - [0xACF638, mtx, chameleons/Davy_Static/Lcuff/Lcuff]
-      - { start: 0xACF678, type: gfx, name: chameleons/Davy_Static/Lcuff/Lcuff}
-    - name: wrist
-      type: .data #model
-      start: 0xACF7D0
-      subsegments:
-      - { start: 0xACF7D0, type: vtx, name: chameleons/Davy_Static/wrist/wrist}
-      - [0xACF830, mtx, chameleons/Davy_Static/wrist/wrist]
-      - { start: 0xACF870, type: gfx, name: chameleons/Davy_Static/wrist/wrist}
-    - name: Lwrist
-      type: .data #model
-      start: 0xACF9C8
-      subsegments:
-      - { start: 0xACF9C8, type: vtx, name: chameleons/Davy_Static/Lwrist/Lwrist}
-      - [0xACFA28, mtx, chameleons/Davy_Static/Lwrist/Lwrist]
-      - { start: 0xACFA68, type: gfx, name: chameleons/Davy_Static/Lwrist/Lwrist}
-    - name: shoulder
-      type: .data #model
-      start: 0xACFBC0
-      subsegments:
-      - { start: 0xACFBC0, type: vtx, name: chameleons/Davy_Static/shoulder/shoulder}
-      - [0xACFC20, mtx, chameleons/Davy_Static/shoulder/shoulder]
-      - [0xACFC60, bin] # rgb2c remnant in mtx
-      - [0xACFC68, ci4, chameleons/Davy_Static/shoulder/color.ci4, 8, 8]
-      - [0xACFC88, bin] #endDL command from rgb2c
-      - [0xACFC90, palette, chameleons/Davy_Static/shoulder/color.ci4]
-      - { start: 0xACFE90, type: gfx, name: chameleons/Davy_Static/shoulder/shoulder}
-    - name: Lshoulder
-      type: .data #model
-      start: 0xACFFE8
-      subsegments:
-      - { start: 0xACFFE8, type: vtx, name: chameleons/Davy_Static/Lshoulder/Lshoulder}
-      - [0xAD0048, mtx, chameleons/Davy_Static/Lshoulder/Lshoulder]
-      - { start: 0xAD0088, type: gfx, name: chameleons/Davy_Static/Lshoulder/Lshoulder}
-    - name: fist
-      type: .data #model
-      start: 0xAD01E0
-      subsegments:
-      - { start: 0xAD01E0, type: vtx, name: chameleons/Davy_Static/fist/fist}
-      - [0xAD0390, mtx, chameleons/Davy_Static/fist/fist]
-      - [0xAD03D0, bin] #endDL command from rgb2c
-      - [0xAD03D8, ci4, chameleons/Davy_Static/fist/fist1.ci4, 32, 32]
-      - [0xAD05D8, bin] #endDL command from rgb2c
-      - [0xAD05E0, palette, chameleons/Davy_Static/fist/fist1.ci4]
-      - [0xAD07E0, bin] #endDL command from rgb2c
-      - [0xAD07E8, ci4, chameleons/Davy_Static/fist/fist2.ci4, 32, 32]
-      - [0xAD09E8, bin] #endDL command from rgb2c
-      - [0xAD09F0, palette, chameleons/Davy_Static/fist/fist2.ci4]
-      - [0xAD0BF0, bin] #endDL command from rgb2c
-      - [0xAD0BF8, ci4, chameleons/Davy_Static/fist/fist3.ci4, 32, 32]
-      - [0xAD0DF8, bin] #endDL command from rgb2c
-      - [0xAD0E00, palette, chameleons/Davy_Static/fist/fist3.ci4]
-      - [0xAD1000, bin] #endDL command from rgb2c
-      - [0xAD1008, ci4, chameleons/Davy_Static/fist/fistDiamond.ci4, 32, 32]
-      - [0xAD1208, bin] #endDL command from rgb2c
-      - [0xAD1210, palette, chameleons/Davy_Static/fist/fistDiamond.ci4]
-      - [0xAD1410, bin] #endDL command from rgb2c
-      - [0xAD1418, ci4, chameleons/Davy_Static/fist/fist4.ci4, 32, 32]
-      - [0xAD1618, bin] #endDL command from rgb2c
-      - [0xAD1620, palette, chameleons/Davy_Static/fist/fist4.ci4]
-      - { start: 0xAD1820, type: gfx, name: chameleons/Davy_Static/fist/fist}
-    - name: Lfist
-      type: .data #model
-      start: 0xAD1EC8
-      subsegments:
-      - { start: 0xAD1EC8, type: vtx, name: chameleons/Davy_Static/Lfist/Lfist}
-      - [0xAD2078, mtx, chameleons/Davy_Static/Lfist/Lfist]
-      - { start: 0xAD20B8, type: gfx, name: chameleons/Davy_Static/Lfist/Lfist}
-    - name: restAssociate
-      type: .data #model
-      start: 0xAD2760
-      subsegments:
-      - [0xAD2760, mtx, chameleons/Davy_Static/restAssociate/restAssociate]
-      - { start: 0xAD27A0, type: gfx, name: chameleons/Davy_Static/restAssociate/restAssociate}
+    - [0xACBDD0, bin, battleModeChameleons] # they are all in the same group! thisll be good
+  # - start: 0xACBDD0
+  #   name: Davy_Static
+  #   dir: chameleons
+  #   subalign: 8
+  #   type: code
+  #   vram: 0x80266810 #SEGMENT 0x07
+  #   subsegments:
+  #   - [auto, c, Davy_Static]
+  #   - name: Davy_Static
+  #     dir: Davy_Static
+  #     type: .data
+  #     subalign: 8
+  #     start: 0xACBDD0
+  #     subsegments:
+  #     - {start: 0xACBDD0, type: lights, name: light, data_only: True}
+
+  #     - {start: 0xACBDE8, type: vtx, name: body/body, data_only: True}
+  #     - [0xACBF28] #identity matrix
+  #     - [0xACBF68] #B8000000
+  #     - [0xACBF70, ci4, body/backpackStrap.ci4, 32, 64]
+  #     - [0xACC370] #B8000000
+  #     - [0xACC378, palette, body/backpackStrap.ci4]
+  #     - [0xACC578] #B8000000
+  #     - [0xACC580, ci4, body/solidColor.ci4, 8, 8]
+  #     - [0xACC5A0] #B8000000
+  #     - [0xACC5A8, palette, body/solidColor.ci4]
+  #     - [0xACC7A8] #B8000000
+  #     - [0xACC7B0, ci4, body/number.ci4, 32, 32]
+  #     - [0xACC9B0] #B8000000
+  #     - [0xACC9B8, palette, body/number.ci4]
+  #     - {start: 0xACCBB8, type: gfxSeg, name: body/body, data_only: True}
+
+  #     - {start: 0xACCF70, type: mtx, name: bodyAssociate/bodyAssociate, data_only: True}
+  #     - {start: 0xACCFB0, type: gfxSeg, name: bodyAssociate/bodyAssociate, data_only: True}
+
+  #     - {start: 0xACCFD0, type: vtx, name: head/head, data_only: True}
+  #     - [0xACD150] #identity matrix
+  #     - [0xACD190] #B8000000
+  #     - [0xACD198, ci8, head/eye.ci8, 32, 32]
+  #     - [0xACD598] #B8000000
+  #     - [0xACD5A0, palette, head/eye.ci8]
+  #     - [0xACD7A0] #B8000000
+  #     - [0xACD7A8, ci8, head/eye2.ci8, 32, 32]
+  #     - [0xACDBA8] #B8000000
+  #     - [0xACDBB0, palette, head/eye2.ci8]
+  #     - [0xACDDB0] #B8000000
+  #     - [0xACDDB8, ci4, head/cheek.ci4, 32, 32]
+  #     - [0xACDFB8] #B8000000
+  #     - [0xACDFC0, palette, head/cheek.ci4]
+  #     - {start: 0xACE1C0, type: gfxSeg, name: head/head, data_only: True}
+
+  #     - {start: 0xACE5B8, type: vtx, name: backpack/backpack, data_only: True}
+  #     - [0xACE638] #identity matrix
+  #     - [0xACE678] #B8000000
+  #     - [0xACE680, ci8, backpack/backpack.ci8, 4, 8] #awful
+  #     - [0xACE6A0] #B8000000
+  #     - [0xACE6A8, palette, backpack/backpack.ci8]
+  #     - {start: 0xACE8A8, type: gfxSeg, name: backpack/backpack, data_only: True}
+
+  #     - {start: 0xACEA20, type: vtx, name: shoe/shoe, data_only: True}
+  #     - [0xACEA70] #identity matrix
+  #     - [0xACEAB0] #B8000000
+  #     - [0xACEAB8, ci4, shoe/shoe.ci4, 64, 32]
+  #     - [0xACEEB8] #B8000000
+  #     - [0xACEEC0, palette, shoe/shoe.ci4]
+  #     - {start: 0xACF0C0, type: gfxSeg, name: shoe/shoe, data_only: True}
+
+  #     - {start: 0xACF208, type: vtx, name: Lshoe/Lshoe, data_only: True}
+  #     - [0xACF258] #identity matrix
+  #     - {start: 0xACF298, type: gfxSeg, name: Lshoe/Lshoe, data_only: True}
+
+  #     - {start: 0xACF3E0, type: vtx, name: cuff/cuff, data_only: True}
+  #     - [0xACF440] #identity matrix
+  #     - {start: 0xACF480, type: gfxSeg, name: cuff/cuff, data_only: True}
+
+  #     - {start: 0xACF5D8, type: vtx, name: Lcuff/Lcuff, data_only: True}
+  #     - [0xACF638] #identity matrix
+  #     - {start: 0xACF678, type: gfxSeg, name: Lcuff/Lcuff, data_only: True}
+
+  #     - {start: 0xACF7D0, type: vtx, name: wrist/wrist, data_only: True}
+  #     - [0xACF830] #identity matrix
+  #     - {start: 0xACF870, type: gfxSeg, name: wrist/wrist, data_only: True}
+
+  #     - {start: 0xACF9C8, type: vtx, name: Lwrist/Lwrist, data_only: True}
+  #     - [0xACFA28] #identity matrix
+  #     - {start: 0xACFA68, type: gfxSeg, name: Lwrist/Lwrist, data_only: True}
+
+  #     - {start: 0xACFBC0, type: vtx, name: shoulder/shoulder, data_only: True}
+  #     - [0xACFC20] #identity matrix
+  #     - [0xACFC60] #B8000000
+  #     - [0xACFC68, ci4, shoulder/color.ci4, 8, 8]
+  #     - [0xACFC88] #B8000000
+  #     - [0xACFC90, palette, shoulder/color.ci4]
+  #     - {start: 0xACFE90, type: gfxSeg, name: shoulder/shoulder, data_only: True}
+
+  #     - {start: 0xACFFE8, type: vtx, name: Lshoulder/Lshoulder, data_only: True}
+  #     - [0xAD0048] #identity matrix
+  #     - {start: 0xAD0088, type: gfxSeg, name: Lshoulder/Lshoulder, data_only: True}
+
+  #     - {start: 0xAD01E0, type: vtx, name: fist/fist, data_only: True}
+  #     - [0xAD0390] #identity matrix
+  #     - [0xAD03D0] #B8000000
+  #     - [0xAD03D8, ci4, fist/fist1.ci4, 32, 32]
+  #     - [0xAD05D8] #B8000000
+  #     - [0xAD05E0, palette, fist/fist1.ci4]
+  #     - [0xAD07E0] #B8000000
+  #     - [0xAD07E8, ci4, fist/fist2.ci4, 32, 32]
+  #     - [0xAD09E8] #B8000000
+  #     - [0xAD09F0, palette, fist/fist2.ci4]
+  #     - [0xAD0BF0] #B8000000
+  #     - [0xAD0BF8, ci4, fist/fist3.ci4, 32, 32]
+  #     - [0xAD0DF8] #B8000000
+  #     - [0xAD0E00, palette, fist/fist3.ci4]
+  #     - [0xAD1000] #B8000000
+  #     - [0xAD1008, ci4, fist/fistDiamond.ci4, 32, 32]
+  #     - [0xAD1208] #B8000000
+  #     - [0xAD1210, palette, fist/fistDiamond.ci4]
+  #     - [0xAD1410] #B8000000
+  #     - [0xAD1418, ci4, fist/fist4.ci4, 32, 32]
+  #     - [0xAD1618] #B8000000
+  #     - [0xAD1620, palette, fist/fist4.ci4]
+  #     - {start: 0xAD1820, type: gfxSeg, name: fist/fist, data_only: True}
+
+  #     - {start: 0xAD1EC8, type: vtx, name: Lfist/Lfist, data_only: True}
+  #     - [0xAD2078] #identity matrix
+  #     - {start: 0xAD20B8, type: gfxSeg, name: Lfist/Lfist, data_only: True}
+
+  #     - {start: 0xAD2760, type: mtx, name: restAssociate/restAssociate, data_only: True}
+  #     - {start: 0xAD27A0, type: gfxSeg, name: restAssociate/restAssociate, data_only: True}
+
   - [0xAD2820, bin, chameleons/jackOLD] #size of 
   #commented out because it doesnt build for some godforsaken reason
   # - start: 0xAD2820
@@ -4909,7 +4874,7 @@ segments:
     dir: chameleons
     subalign: 8
     type: code
-    vram: 0x80366820 #SEGMENT 0x08
+    vram: 0x80366810 #SEGMENT 0x08
     subsegments:
     - [auto, c, Davy]
     - name: Davy
@@ -4921,7 +4886,7 @@ segments:
       - {start: 0xAFC6B0, type: lights, name: light, data_only: True}
 
       - {start: 0xAFC6C8, type: vtx, name: body/body, data_only: True}
-      - {start: 0xafc808, type: mtx, name: body/body, data_only: True}
+      - [0xafc808] #identity matrix
       - [0xafc848] #B8000000
       - [0xafc850, ci4, body/backpackStrap.MEd.ci4, 32, 64]
       - [0xafcc50] #B8000000
@@ -4934,13 +4899,13 @@ segments:
       - [0xafd090, ci4, body/number.MEd.ci4, 32, 32]
       - [0xafd290] #B8000000
       - [0xafd298, palette, body/number.MEd.ci4]
-      - [0xafd498, bin, body/bodyGFX.ME]
+      - {start: 0xafd498, type: gfxSeg, name: body/body, data_only: True}
 
       - {start: 0xafd850, type: mtx, name: bodyAssociate/bodyAssociate, data_only: True}
-      - [0xafd890, bin, bodyAssociate/bodyAssociateGFX.ME]
+      - {start: 0xafd890, type: gfxSeg, name: bodyAssociate/bodyAssociate, data_only: True}
 
       - {start: 0xafd8b0, type: vtx, name: head/head, data_only: True}
-      - {start: 0xafdd20, type: mtx, name: head/head, data_only: True}
+      - [0xafdd20] #identity matrix
       - [0xafdd60] #B8000000
       - [0xafdd68, ci8, head/eyeL.MEd.ci8, 32, 32]
       - [0xafe168] #B8000000
@@ -4953,42 +4918,42 @@ segments:
       - [0xafe988, ci4, head/cheek.MEd.ci4, 32, 32]
       - [0xafeb88] #B8000000
       - [0xafeb90, palette, head/cheek.MEd.ci4]
-      - [0xafed90, bin, head/headGFX.ME]
+      - {start: 0xafed90, type: gfxSeg, name: head/head, data_only: True}
 
       - {start: 0xaff310, type: vtx, name: backpack/backpack, data_only: True}
-      - {start: 0xaff390, type: mtx, name: backpack/backpack, data_only: True}
+      - [0xaff390] #identity matrix
       - [0xaff3d0] #B8000000
       - [0xaff3d8, ci8, backpack/backpack.MEd.ci8, 4, 8] #awful
       - [0xaff3f8] #B8000000
       - [0xaff400, palette, backpack/backpack.MEd.ci8]
-      - [0xaff600, bin, backpack/backpackGFX.ME]
+      - {start: 0xaff600, type: gfxSeg, name: backpack/backpack, data_only: True}
 
       - {start: 0xaff778, type: vtx, name: shoe/shoe, data_only: True}
-      - {start: 0xaffa38, type: mtx, name: shoe/shoe, data_only: True}
+      - [0xaffa38] #identity matrix
       - [0xaffa78] #B8000000
       - [0xaffa80, ci4, shoe/shoe.MEd.ci4, 64, 32]
       - [0xaffe80] #B8000000
       - [0xaffe88, palette, shoe/shoe.MEd.ci4]
-      - [0xb00088, bin, shoe/shoeGFX.ME]
+      - {start: 0xb00088, type: gfxSeg, name: shoe/shoe, data_only: True}
 
       - {start: 0xb00348, type: vtx, name: Lshoe/Lshoe, data_only: True}
-      - {start: 0xb00608, type: mtx, name: Lshoe/Lshoe, data_only: True}
-      - [0xb00648, bin, Lshoe/LshoeGFX.ME]
+      - [0xb00608] #identity matrix
+      - {start: 0xb00648, type: gfxSeg, name: Lshoe/Lshoe, data_only: True}
 
       - {start: 0xb00908, type: vtx, name: cuff/cuff, data_only: True}
-      - {start: 0xb009f8, type: mtx, name: cuff/cuff, data_only: True}
+      - [0xb009f8] #identity matrix
       - [0xb00A38] #B8000000
       - [0xb00A40, ci4, cuff/color.MEd.ci4, 8, 8]
       - [0xB00A60] #B8000000
       - [0xB00A68, palette, cuff/color.MEd.ci4]
-      - [0xb00c68, bin, cuff/cuffGFX.ME]
+      - {start: 0xb00c68, type: gfxSeg, name: cuff/cuff, data_only: True}
 
       - {start: 0xb00f20, type: vtx, name: Lcuff/Lcuff, data_only: True}
-      - {start: 0xb01010, type: mtx, name: Lcuff/Lcuff, data_only: True}
-      - [0xb01050, bin, Lcuff/LcuffGFX.ME]
+      - [0xb01010] #identity matrix
+      - {start: 0xb01050, type: gfxSeg, name: Lcuff/Lcuff, data_only: True}
 
       - {start: 0xb01308, type: vtx, name: wrist/wrist, data_only: True}
-      - {start: 0xb014d8, type: mtx, name: wrist/wrist, data_only: True}
+      - [0xb014d8] #identity matrix
       - [0xb01518] #B8000000
       - [0xb01520, ci4, wrist/wristColor.MEd.ci4, 8, 8]
       - [0xb01540] #B8000000
@@ -4997,22 +4962,22 @@ segments:
       - [0xb01750, ci4, wrist/wrist.MEd.ci4, 32, 32]
       - [0xB01950] #B8000000
       - [0xB01958, palette, wrist/wrist.MEd.ci4]
-      - [0xb01b58, bin, wrist/wristGFX.ME]
+      - {start: 0xb01b58, type: gfxSeg, name: wrist/wrist, data_only: True}
 
       - {start: 0xb01f70, type: vtx, name: Lwrist/Lwrist, data_only: True}
-      - {start: 0xb02140, type: mtx, name: Lwrist/Lwrist, data_only: True}
-      - [0xb02180, bin, Lwrist/LwristGFX.ME]
+      - [0xb02140] #identity matrix
+      - {start: 0xb02180, type: gfxSeg, name: Lwrist/Lwrist, data_only: True}
 
       - {start: 0xb02598, type: vtx, name: shoulder/shoulder, data_only: True}
-      - {start: 0xb025f8, type: mtx, name: shoulder/shoulder, data_only: True}
-      - [0xb02638, bin, shoulder/shoulderGFX.ME]
+      - [0xb025f8] #identity matrix
+      - {start: 0xb02638, type: gfxSeg, name: shoulder/shoulder, data_only: True}
 
       - {start: 0xb02790, type: vtx, name: Lshoulder/Lshoulder, data_only: True}
-      - {start: 0xb027f0, type: mtx, name: Lshoulder/Lshoulder, data_only: True}
-      - [0xb02830, bin, Lshoulder/LshoulderGFX.ME]
+      - [0xb027f0] #identity matrix
+      - {start: 0xb02830, type: gfxSeg, name: Lshoulder/Lshoulder, data_only: True}
 
       - {start: 0xb02988, type: vtx, name: fist/fist, data_only: True}
-      - {start: 0xb02c18, type: mtx, name: fist/fist, data_only: True}
+      - [0xb02c18] #identity matrix
       - [0xb02c58] #B8000000
       - [0xb02c60, ci4, fist/fist1.MEd.ci4, 32, 32]
       - [0xb02e60] #B8000000
@@ -5033,14 +4998,14 @@ segments:
       - [0xb03cA0, ci4, fist/fist4.MEd.ci4, 32, 32]
       - [0xb03ea0] #B8000000
       - [0xb03ea8, palette, fist/fist4.MEd.ci4]
-      - [0xb040a8, bin, fist/fistGFX.ME]
+      - {start: 0xb040a8, type: gfxSeg, name: fist/fist, data_only: True}
 
       - {start: 0xb047c0, type: vtx, name: Lfist/Lfist, data_only: True}
-      - {start: 0xb04a70, type: mtx, name: Lfist/Lfist, data_only: True}
-      - [0xb04ab0, bin, Lfist/LfistGFX.ME]
+      - [0xb04a70] #identity matrix
+      - {start: 0xb04ab0, type: gfxSeg, name: Lfist/Lfist, data_only: True}
       
       - {start: 0xb051c8, type: mtx, name: restAssociate/restAssociate, data_only: True}
-      - [0xb05208, bin, restAssociate/restAssociateGFX.ME]
+      - {start: 0xb05208, type: gfxSeg, name: restAssociate/restAssociate, data_only: True}
 
   - start: 0xB05290
     name: Jack #Jack's head vtx is 4 verts larger than Davy's.
@@ -5059,7 +5024,7 @@ segments:
       - {start: 0xB05290, type: lights, name: light, data_only: True}
 
       - {start: 0xB052A8, type: vtx, name: body/body, data_only: True}
-      - {start: 0xB053E8, type: mtx, name: body/body, data_only: True}
+      - [0xB053E8] #identity matrix
       - [0xB05428] #B8000000
       - [0xB05430, ci4, body/backpackStrap.MEd.ci4, 32, 64]
       - [0xB05830] #B8000000
@@ -5072,13 +5037,13 @@ segments:
       - [0xB05C70, ci4, body/number.MEd.ci4, 32, 32]
       - [0xB05E70] #B8000000
       - [0xB05E78, palette, body/number.MEd.ci4]
-      - [0xB06078, bin, body/bodyGFX.ME]
+      - {start: 0xB06078, type: gfxSeg, name: body/body, data_only: True}
 
       - {start: 0xB06430, type: mtx, name: bodyAssociate/bodyAssociate, data_only: True}
-      - [0xB06470, bin, bodyAssociate/bodyAssociateGFX.ME]
+      - {start: 0xB06470, type: gfxSeg, name: bodyAssociate/bodyAssociate, data_only: True}
 
       - {start: 0xB06490, type: vtx, name: head/head, data_only: True}
-      - {start: 0xB06940, type: mtx, name: head/head, data_only: True}
+      - [0xB06940] #identity matrix
       - [0xB06980] #B8000000
       - [0xB06988, ci8, head/eyeL.MEd.ci8, 32, 32]
       - [0xB06D88] #B8000000
@@ -5091,42 +5056,42 @@ segments:
       - [0xB075A8, ci4, head/cheek.MEd.ci4, 32, 32]
       - [0xB077A8] #B8000000
       - [0xB077B0, palette, head/cheek.MEd.ci4]
-      - [0xB079B0, bin, head/headGFX.ME]
+      - {start: 0xB079B0, type: gfxSeg, name: head/head, data_only: True}
 
       - {start: 0xB07F30, type: vtx, name: backpack/backpack, data_only: True}
-      - {start: 0xB07FB0, type: mtx, name: backpack/backpack, data_only: True}
+      - [0xB07FB0] #identity matrix
       - [0xB07FF0] #B8000000
       - [0xB07FF8, ci8, backpack/backpack.MEd.ci8, 4, 8] #awful
       - [0xB08018] #B8000000
       - [0xB08020, palette, backpack/backpack.MEd.ci8]
-      - [0xB08220, bin, backpack/backpackGFX.ME]
+      - {start: 0xB08220, type: gfxSeg, name: backpack/backpack, data_only: True}
 
       - {start: 0xB08398, type: vtx, name: shoe/shoe, data_only: True}
-      - {start: 0xB08658, type: mtx, name: shoe/shoe, data_only: True}
+      - [0xB08658] #identity matrix
       - [0xB08698] #B8000000
       - [0xB086A0, ci4, shoe/shoe.MEd.ci4, 64, 32]
       - [0xB08AA0] #B8000000
       - [0xB08AA8, palette, shoe/shoe.MEd.ci4]
-      - [0xB08CA8, bin, shoe/shoeGFX.ME]
+      - {start: 0xB08CA8, type: gfxSeg, name: shoe/shoe, data_only: True}
 
       - {start: 0xB08F68, type: vtx, name: Lshoe/Lshoe, data_only: True}
-      - {start: 0xB09228, type: mtx, name: Lshoe/Lshoe, data_only: True}
-      - [0xB09268, bin, Lshoe/LshoeGFX.ME]
+      - [0xB09228] #identity matrix
+      - {start: 0xB09268, type: gfxSeg, name: Lshoe/Lshoe, data_only: True}
 
       - {start: 0xB09528, type: vtx, name: cuff/cuff, data_only: True}
-      - {start: 0xB09618, type: mtx, name: cuff/cuff, data_only: True}
+      - [0xB09618] #identity matrix
       - [0xB09658] #B8000000
       - [0xB09660, ci4, cuff/color.MEd.ci4, 8, 8]
       - [0xB09680] #B8000000
       - [0xB09688, palette, cuff/color.MEd.ci4]
-      - [0xB09888, bin, cuff/cuffGFX.ME]
+      - {start: 0xB09888, type: gfxSeg, name: cuff/cuff, data_only: True}
 
       - {start: 0xB09B40, type: vtx, name: Lcuff/Lcuff, data_only: True}
-      - {start: 0xB09C30, type: mtx, name: Lcuff/Lcuff, data_only: True}
-      - [0xB09C70, bin, Lcuff/LcuffGFX.ME]
+      - [0xB09C30] #identity matrix
+      - {start: 0xB09C70, type: gfxSeg, name: Lcuff/Lcuff, data_only: True}
 
       - {start: 0xB09F28, type: vtx, name: wrist/wrist, data_only: True}
-      - {start: 0xB0A0F8, type: mtx, name: wrist/wrist, data_only: True}
+      - [0xB0A0F8] #identity matrix
       - [0xB0A138] #B8000000
       - [0xB0A140, ci4, wrist/wristColor.MEd.ci4, 8, 8]
       - [0xB0A160] #B8000000
@@ -5135,22 +5100,22 @@ segments:
       - [0xB0A370, ci4, wrist/wrist.MEd.ci4, 32, 32]
       - [0xB0A570] #B8000000
       - [0xB0A578, palette, wrist/wrist.MEd.ci4]
-      - [0xB0A778, bin, wrist/wristGFX.ME]
+      - {start: 0xB0A778, type: gfxSeg, name: wrist/wrist, data_only: True}
 
       - {start: 0xB0AB90, type: vtx, name: Lwrist/Lwrist, data_only: True}
-      - {start: 0xB0AD60, type: mtx, name: Lwrist/Lwrist, data_only: True}
-      - [0xB0ADA0, bin, Lwrist/LwristGFX.ME]
+      - [0xB0AD60] #identity matrix
+      - {start: 0xB0ADA0, type: gfxSeg, name: Lwrist/Lwrist, data_only: True}
 
       - {start: 0xB0B1B8, type: vtx, name: shoulder/shoulder, data_only: True}
-      - {start: 0xB0B218, type: mtx, name: shoulder/shoulder, data_only: True}
-      - [0xB0B258, bin, shoulder/shoulderGFX.ME]
+      - [0xB0B218] #identity matrix
+      - {start: 0xB0B258, type: gfxSeg, name: shoulder/shoulder, data_only: True}
 
       - {start: 0xB0B3B0, type: vtx, name: Lshoulder/Lshoulder, data_only: True}
-      - {start: 0xB0B410, type: mtx, name: Lshoulder/Lshoulder, data_only: True}
-      - [0xB0B450, bin, Lshoulder/LshoulderGFX.ME]
+      - [0xB0B410] #identity matrix
+      - {start: 0xB0B450, type: gfxSeg, name: Lshoulder/Lshoulder, data_only: True}
 
       - {start: 0xB0B5A8, type: vtx, name: fist/fist, data_only: True}
-      - {start: 0xB0B838, type: mtx, name: fist/fist, data_only: True}
+      - [0xB0B838] #identity matrix
       - [0xB0B878] #B8000000
       - [0xB0B880, ci4, fist/fist1.MEd.ci4, 32, 32]
       - [0xB0BA80] #B8000000
@@ -5171,14 +5136,14 @@ segments:
       - [0xB0C8C0, ci4, fist/fist4.MEd.ci4, 32, 32]
       - [0xB0CAC0] #B8000000
       - [0xB0CAC8, palette, fist/fist4.MEd.ci4]
-      - [0xB0CCC8, bin, fist/fistGFX.ME]
+      - {start: 0xB0CCC8, type: gfxSeg, name: fist/fist, data_only: True}
 
       - {start: 0xB0D3E0, type: vtx, name: Lfist/Lfist, data_only: True}
-      - {start: 0xB0D690, type: mtx, name: Lfist/Lfist, data_only: True}
-      - [0xB0D6D0, bin, Lfist/LfistGFX.ME]
+      - [0xB0D690] #identity matrix
+      - {start: 0xB0D6D0, type: gfxSeg, name: Lfist/Lfist, data_only: True}
       
       - {start: 0xB0DDE8, type: mtx, name: restAssociate/restAssociate, data_only: True}
-      - [0xB0DE28, bin, restAssociate/restAssociateGFX.ME]
+      - {start: 0xB0DE28, type: gfxSeg, name: restAssociate/restAssociate, data_only: True}
 
   - start: 0xB0DEB0
     name: Fred #Absolutely no different from Davy.
@@ -5197,7 +5162,7 @@ segments:
       - {start: 0xB0DEB0, type: lights, name: light, data_only: True}
 
       - {start: 0xB0DEC8, type: vtx, name: body/body, data_only: True}
-      - {start: 0xB0E008, type: mtx, name: body/body, data_only: True}
+      - [0xB0E008] #identity matrix
       - [0xB0E048] #B8000000
       - [0xB0E050, ci4, body/backpackStrap.MEd.ci4, 32, 64]
       - [0xB0E450] #B8000000
@@ -5210,13 +5175,13 @@ segments:
       - [0xB0E890, ci4, body/number.MEd.ci4, 32, 32]
       - [0xB0EA90] #B8000000
       - [0xB0EA98, palette, body/number.MEd.ci4]
-      - [0xB0EC98, bin, body/bodyGFX.ME]
+      - {start: 0xB0EC98, type: gfxSeg, name: body/body, data_only: True}
 
       - {start: 0xB0F050, type: mtx, name: bodyAssociate/bodyAssociate, data_only: True}
-      - [0xB0F090, bin, bodyAssociate/bodyAssociateGFX.ME]
+      - {start: 0xB0F090, type: gfxSeg, name: bodyAssociate/bodyAssociate, data_only: True}
 
       - {start: 0xB0F0B0, type: vtx, name: head/head, data_only: True}
-      - {start: 0xB0F520, type: mtx, name: head/head, data_only: True}
+      - [0xB0F520] #identity matrix
       - [0xB0F560] #B8000000
       - [0xB0F568, ci8, head/eyeL.MEd.ci8, 32, 32]
       - [0xB0F968] #B8000000
@@ -5229,42 +5194,42 @@ segments:
       - [0xB10188, ci4, head/cheek.MEd.ci4, 32, 32]
       - [0xB10388] #B8000000
       - [0xB10390, palette, head/cheek.MEd.ci4]
-      - [0xB10590, bin, head/headGFX.ME]
+      - {start: 0xB10590, type: gfxSeg, name: head/head, data_only: True}
 
       - {start: 0xB10B10, type: vtx, name: backpack/backpack, data_only: True}
-      - {start: 0xB10B90, type: mtx, name: backpack/backpack, data_only: True}
+      - [0xB10B90] #identity matrix
       - [0xB10BD0] #B8000000
       - [0xB10BD8, ci8, backpack/backpack.MEd.ci8, 4, 8] #awful
       - [0xB10BF8] #B8000000
       - [0xB10C00, palette, backpack/backpack.MEd.ci8]
-      - [0xB10E00, bin, backpack/backpackGFX.ME]
+      - {start: 0xB10E00, type: gfxSeg, name: backpack/backpack, data_only: True}
 
       - {start: 0xB10F78, type: vtx, name: shoe/shoe, data_only: True}
-      - {start: 0xB11238, type: mtx, name: shoe/shoe, data_only: True}
+      - [0xB11238] #identity matrix
       - [0xB11278] #B8000000
       - [0xB11280, ci4, shoe/shoe.MEd.ci4, 64, 32]
       - [0xB11680] #B8000000
       - [0xB11688, palette, shoe/shoe.MEd.ci4]
-      - [0xB11888, bin, shoe/shoeGFX.ME]
+      - {start: 0xB11888, type: gfxSeg, name: shoe/shoe, data_only: True}
 
       - {start: 0xB11B48, type: vtx, name: Lshoe/Lshoe, data_only: True}
-      - {start: 0xB11E08, type: mtx, name: Lshoe/Lshoe, data_only: True}
-      - [0xB11E48, bin, Lshoe/LshoeGFX.ME]
+      - [0xB11E08] #identity matrix
+      - {start: 0xB11E48, type: gfxSeg, name: Lshoe/Lshoe, data_only: True}
 
       - {start: 0xB12108, type: vtx, name: cuff/cuff, data_only: True}
-      - {start: 0xB121F8, type: mtx, name: cuff/cuff, data_only: True}
+      - [0xB121F8] #identity matrix
       - [0xB12238] #B8000000
       - [0xB12240, ci4, cuff/color.MEd.ci4, 8, 8]
       - [0xB12260] #B8000000
       - [0xB12268, palette, cuff/color.MEd.ci4]
-      - [0xB12468, bin, cuff/cuffGFX.ME]
+      - {start: 0xB12468, type: gfxSeg, name: cuff/cuff, data_only: True}
 
       - {start: 0xB12720, type: vtx, name: Lcuff/Lcuff, data_only: True}
-      - {start: 0xB12810, type: mtx, name: Lcuff/Lcuff, data_only: True}
-      - [0xB12850, bin, Lcuff/LcuffGFX.ME]
+      - [0xB12810] #identity matrix
+      - {start: 0xB12850, type: gfxSeg, name: Lcuff/Lcuff, data_only: True}
 
       - {start: 0xB12B08, type: vtx, name: wrist/wrist, data_only: True}
-      - {start: 0xB12CD8, type: mtx, name: wrist/wrist, data_only: True}
+      - [0xB12CD8] #identity matrix
       - [0xB12D18] #B8000000
       - [0xB12D20, ci4, wrist/wristColor.MEd.ci4, 8, 8]
       - [0xB12D40] #B8000000
@@ -5273,22 +5238,22 @@ segments:
       - [0xB12F50, ci4, wrist/wrist.MEd.ci4, 32, 32]
       - [0xB13150] #B8000000
       - [0xB13158, palette, wrist/wrist.MEd.ci4]
-      - [0xB13358, bin, wrist/wristGFX.ME]
+      - {start: 0xB13358, type: gfxSeg, name: wrist/wrist, data_only: True}
 
       - {start: 0xB13770, type: vtx, name: Lwrist/Lwrist, data_only: True}
-      - {start: 0xB13940, type: mtx, name: Lwrist/Lwrist, data_only: True}
-      - [0xB13980, bin, Lwrist/LwristGFX.ME]
+      - [0xB13940] #identity matrix
+      - {start: 0xB13980, type: gfxSeg, name: Lwrist/Lwrist, data_only: True}
 
       - {start: 0xB13D98, type: vtx, name: shoulder/shoulder, data_only: True}
-      - {start: 0xB13DF8, type: mtx, name: shoulder/shoulder, data_only: True}
-      - [0xB13E38, bin, shoulder/shoulderGFX.ME]
+      - [0xB13DF8] #identity matrix
+      - {start: 0xB13E38, type: gfxSeg, name: shoulder/shoulder, data_only: True}
 
       - {start: 0xB13F90, type: vtx, name: Lshoulder/Lshoulder, data_only: True}
-      - {start: 0xB13FF0, type: mtx, name: Lshoulder/Lshoulder, data_only: True}
-      - [0xB14030, bin, Lshoulder/LshoulderGFX.ME]
+      - [0xB13FF0] #identity matrix
+      - {start: 0xB14030, type: gfxSeg, name: Lshoulder/Lshoulder, data_only: True}
 
       - {start: 0xB14188, type: vtx, name: fist/fist, data_only: True}
-      - {start: 0xB14418, type: mtx, name: fist/fist, data_only: True}
+      - [0xB14418] #identity matrix
       - [0xB14458] #B8000000
       - [0xB14460, ci4, fist/fist1.MEd.ci4, 32, 32]
       - [0xB14660] #B8000000
@@ -5309,14 +5274,14 @@ segments:
       - [0xB154A0, ci4, fist/fist4.MEd.ci4, 32, 32]
       - [0xB156A0] #B8000000
       - [0xB156A8, palette, fist/fist4.MEd.ci4]
-      - [0xB158A8, bin, fist/fistGFX.ME]
+      - {start: 0xB158A8, type: gfxSeg, name: fist/fist, data_only: True}
 
       - {start: 0xB15FC0, type: vtx, name: Lfist/Lfist, data_only: True}
-      - {start: 0xB16270, type: mtx, name: Lfist/Lfist, data_only: True}
-      - [0xB162B0, bin, Lfist/LfistGFX.ME]
+      - [0xB16270] #identity matrix
+      - {start: 0xB162B0, type: gfxSeg, name: Lfist/Lfist, data_only: True}
       
       - {start: 0xB169C8, type: mtx, name: restAssociate/restAssociate, data_only: True}
-      - [0xB16A08, bin, restAssociate/restAssociateGFX.ME]
+      - {start: 0xB16A08, type: gfxSeg, name: restAssociate/restAssociate, data_only: True}
 
   - start: 0xB16A90
     name: Linda #Linda's head group has a ton of changes because of her bow. Her shoe also has 2 more verts.
@@ -5335,7 +5300,7 @@ segments:
       - {start: 0xB16A90, type: lights, name: light, data_only: True}
 
       - {start: 0xB16AA8, type: vtx, name: body/body, data_only: True}
-      - {start: 0xB16BE8, type: mtx, name: body/body, data_only: True}
+      - [0xB16BE8] #identity matrix
       - [0xB16C28] #B8000000
       - [0xB16C30, ci4, body/backpackStrap.MEd.ci4, 32, 64]
       - [0xB17030] #B8000000
@@ -5348,13 +5313,13 @@ segments:
       - [0xB17470, ci4, body/number.MEd.ci4, 32, 32]
       - [0xB17670] #B8000000
       - [0xB17678, palette, body/number.MEd.ci4]
-      - [0xB17878, bin, body/bodyGFX.ME]
+      - {start: 0xB17878, type: gfxSeg, name: body/body, data_only: True}
 
       - {start: 0xB17C30, type: mtx, name: bodyAssociate/bodyAssociate, data_only: True}
-      - [0xB17C70, bin, bodyAssociate/bodyAssociateGFX.ME]
+      - {start: 0xB17C70, type: gfxSeg, name: bodyAssociate/bodyAssociate, data_only: True}
 
       - {start: 0xB17C90, type: vtx, name: head/head, data_only: True}
-      - {start: 0xB18160, type: mtx, name: head/head, data_only: True}
+      - [0xB18160] #identity matrix
       - [0xB181A0] #B8000000
       - [0xB181A8, ci8, head/eyeL.MEd.ci8, 32, 32]
       - [0xB185A8] #B8000000
@@ -5371,41 +5336,42 @@ segments:
       - [0xB193D8, ci4, head/cheek.MEd.ci4, 32, 32]
       - [0xB195D8] #B8000000
       - [0xB195E0, palette, head/cheek.MEd.ci4]
-      - [0xB197E0, bin, head/headGFX.ME]
+      - {start: 0xB197E0, type: gfxSeg, name: head/head, data_only: True}
+
       - {start: 0xB19E60, type: vtx, name: backpack/backpack, data_only: True}
-      - {start: 0xB19EE0, type: mtx, name: backpack/backpack, data_only: True}
+      - [0xB19EE0] #identity matrix
       - [0xB19F20] #B8000000
       - [0xB19F28, ci8, backpack/backpack.MEd.ci8, 4, 8] #awful
       - [0xB19F48] #B8000000
       - [0xB19F50, palette, backpack/backpack.MEd.ci8]
-      - [0xB1A150, bin, backpack/backpackGFX.ME]
+      - {start: 0xB1A150, type: gfxSeg, name: backpack/backpack, data_only: True}
 
       - {start: 0xB1A2C8, type: vtx, name: shoe/shoe, data_only: True}
-      - {start: 0xB1A5A8, type: mtx, name: shoe/shoe, data_only: True}
+      - [0xB1A5A8] #identity matrix
       - [0xB1A5E8] #B8000000
       - [0xB1A5F0, ci4, shoe/shoe.MEd.ci4, 64, 32]
       - [0xB1A9F0] #B8000000
       - [0xB1A9F8, palette, shoe/shoe.MEd.ci4]
-      - [0xB1ABF8, bin, shoe/shoeGFX.ME]
+      - {start: 0xB1ABF8, type: gfxSeg, name: shoe/shoe, data_only: True}
 
       - {start: 0xB1AEB8, type: vtx, name: Lshoe/Lshoe, data_only: True}
-      - {start: 0xB1B178, type: mtx, name: Lshoe/Lshoe, data_only: True}
-      - [0xB1B1B8, bin, Lshoe/LshoeGFX.ME]
+      - [0xB1B178] #identity matrix
+      - {start: 0xB1B1B8, type: gfxSeg, name: Lshoe/Lshoe, data_only: True}
 
       - {start: 0xB1B478, type: vtx, name: cuff/cuff, data_only: True}
-      - {start: 0xB1B568, type: mtx, name: cuff/cuff, data_only: True}
+      - [0xB1B568] #identity matrix
       - [0xB1B5A8] #B8000000
       - [0xB1B5B0, ci4, cuff/color.MEd.ci4, 8, 8]
       - [0xB1B5D0] #B8000000
       - [0xB1B5D8, palette, cuff/color.MEd.ci4]
-      - [0xB1B7D8, bin, cuff/cuffGFX.ME]
+      - {start: 0xB1B7D8, type: gfxSeg, name: cuff/cuff, data_only: True}
 
       - {start: 0xB1BA90, type: vtx, name: Lcuff/Lcuff, data_only: True}
-      - {start: 0xB1BB80, type: mtx, name: Lcuff/Lcuff, data_only: True}
-      - [0xB1BBC0, bin, Lcuff/LcuffGFX.ME]
+      - [0xB1BB80] #identity matrix
+      - {start: 0xB1BBC0, type: gfxSeg, name: Lcuff/Lcuff, data_only: True}
 
       - {start: 0xB1BE78, type: vtx, name: wrist/wrist, data_only: True}
-      - {start: 0xB1C048, type: mtx, name: wrist/wrist, data_only: True}
+      - [0xB1C048] #identity matrix
       - [0xB1C088] #B8000000
       - [0xB1C090, ci4, wrist/wristColor.MEd.ci4, 8, 8]
       - [0xB1C0B0] #B8000000
@@ -5414,22 +5380,22 @@ segments:
       - [0xB1C2C0, ci4, wrist/wrist.MEd.ci4, 32, 32]
       - [0xB1C4C0] #B8000000
       - [0xB1C4C8, palette, wrist/wrist.MEd.ci4]
-      - [0xB1C6C8, bin, wrist/wristGFX.ME]
+      - {start: 0xB1C6C8, type: gfxSeg, name: wrist/wrist, data_only: True}
 
       - {start: 0xB1CAE0, type: vtx, name: Lwrist/Lwrist, data_only: True}
-      - {start: 0xB1CCB0, type: mtx, name: Lwrist/Lwrist, data_only: True}
-      - [0xB1CCF0, bin, Lwrist/LwristGFX.ME]
+      - [0xB1CCB0] #identity matrix
+      - {start: 0xB1CCF0, type: gfxSeg, name: Lwrist/Lwrist, data_only: True}
 
       - {start: 0xB1D108, type: vtx, name: shoulder/shoulder, data_only: True}
-      - {start: 0xB1D168, type: mtx, name: shoulder/shoulder, data_only: True}
-      - [0xB1D1A8, bin, shoulder/shoulderGFX.ME]
+      - [0xB1D168] #identity matrix
+      - {start: 0xB1D1A8, type: gfxSeg, name: shoulder/shoulder, data_only: True}
 
       - {start: 0xB1D300, type: vtx, name: Lshoulder/Lshoulder, data_only: True}
-      - {start: 0xB1D360, type: mtx, name: Lshoulder/Lshoulder, data_only: True}
-      - [0xB1D3A0, bin, Lshoulder/LshoulderGFX.ME]
+      - [0xB1D360] #identity matrix
+      - {start: 0xB1D3A0, type: gfxSeg, name: Lshoulder/Lshoulder, data_only: True}
 
       - {start: 0xB1D4F8, type: vtx, name: fist/fist, data_only: True}
-      - {start: 0xB1D788, type: mtx, name: fist/fist, data_only: True}
+      - [0xB1D788] #identity matrix
       - [0xB1D7C8] #B8000000
       - [0xB1D7D0, ci4, fist/fist1.MEd.ci4, 32, 32]
       - [0xB1D9D0] #B8000000
@@ -5450,14 +5416,14 @@ segments:
       - [0xB1E810, ci4, fist/fist4.MEd.ci4, 32, 32]
       - [0xB1EA10] #B8000000
       - [0xB1EA18, palette, fist/fist4.MEd.ci4]
-      - [0xB1EC18, bin, fist/fistGFX.ME]
+      - {start: 0xB1EC18, type: gfxSeg, name: fist/fist, data_only: True}
 
       - {start: 0xB1F330, type: vtx, name: Lfist/Lfist, data_only: True}
-      - {start: 0xB1F5E0, type: mtx, name: Lfist/Lfist, data_only: True}
-      - [0xB1F620, bin, Lfist/LfistGFX.ME]
+      - [0xB1F5E0] #identity matrix
+      - {start: 0xB1F620, type: gfxSeg, name: Lfist/Lfist, data_only: True}
       
       - {start: 0xB1FD38, type: mtx, name: restAssociate/restAssociate, data_only: True}
-      - [0xB1FD78, bin, restAssociate/restAssociateGFX.ME]
+      - {start: 0xB1FD78, type: gfxSeg, name: restAssociate/restAssociate, data_only: True}
 
   - start: 0xB1FE00
     name: Black #Jack, but with 3 less verts than normal on the shoe.
@@ -5476,7 +5442,7 @@ segments:
       - {start: 0xB1FE00, type: lights, name: light, data_only: True}
 
       - {start: 0xB1FE18, type: vtx, name: body/body, data_only: True}
-      - {start: 0xB1FF58, type: mtx, name: body/body, data_only: True}
+      - [0xB1FF58] #identity matrix
       - [0xB1FF98] #B8000000
       - [0xB1FFA0, ci4, body/backpackStrap.MEd.ci4, 32, 64]
       - [0xB203A0] #B8000000
@@ -5489,13 +5455,13 @@ segments:
       - [0xB207E0, ci4, body/number.MEd.ci4, 32, 32]
       - [0xB209E0] #B8000000
       - [0xB209E8, palette, body/number.MEd.ci4]
-      - [0xB20BE8, bin, body/bodyGFX.ME]
+      - {start: 0xB20BE8, type: gfxSeg, name: body/body, data_only: True}
 
       - {start: 0xB20FA0, type: mtx, name: bodyAssociate/bodyAssociate, data_only: True}
-      - [0xB20FE0, bin, bodyAssociate/bodyAssociateGFX.ME]
+      - {start: 0xB20FE0, type: gfxSeg, name: bodyAssociate/bodyAssociate, data_only: True}
 
       - {start: 0xB21000, type: vtx, name: head/head, data_only: True}
-      - {start: 0xB214B0, type: mtx, name: head/head, data_only: True}
+      - [0xB214B0] #identity matrix
       - [0xB214F0] #B8000000
       - [0xB214F8, ci8, head/eyeL.MEd.ci8, 32, 32]
       - [0xB218F8] #B8000000
@@ -5508,43 +5474,42 @@ segments:
       - [0xB22118, ci4, head/cheek.MEd.ci4, 32, 32]
       - [0xB22318] #B8000000
       - [0xB22320, palette, head/cheek.MEd.ci4]
-      - [0xB22520, bin, head/headGFX.ME]
+      - {start: 0xB22520, type: gfxSeg, name: head/head, data_only: True}
 
       - {start: 0xB22AA0, type: vtx, name: backpack/backpack, data_only: True}
-      - {start: 0xB22B20, type: mtx, name: backpack/backpack, data_only: True}
+      - [0xB22B20] #identity matrix
       - [0xB22B60] #B8000000
       - [0xB22B68, ci8, backpack/backpack.MEd.ci8, 4, 8] #awful
       - [0xB22B88] #B8000000
       - [0xB22B90, palette, backpack/backpack.MEd.ci8]
-      - [0xB22D90, bin, backpack/backpackGFX.ME]
+      - {start: 0xB22D90, type: gfxSeg, name: backpack/backpack, data_only: True}
 
       - {start: 0xB22F08, type: vtx, name: shoe/shoe, data_only: True}
-
-      - {start: 0xB23198, type: mtx, name: shoe/shoe, data_only: True}
+      - [0xB23198] #identity matrix
       - [0xB231D8] #B8000000
       - [0xB231E0, ci4, shoe/shoe.MEd.ci4, 64, 32]
       - [0xB235E0] #B8000000
       - [0xB235E8, palette, shoe/shoe.MEd.ci4]
-      - [0xB237E8, bin, shoe/shoeGFX.ME]
+      - {start: 0xB237E8, type: gfxSeg, name: shoe/shoe, data_only: True}
 
       - {start: 0xB23AA8, type: vtx, name: Lshoe/Lshoe, data_only: True}
-      - {start: 0xB23D68, type: mtx, name: Lshoe/Lshoe, data_only: True}
-      - [0xB23DA8, bin, Lshoe/LshoeGFX.ME]
+      - [0xB23D68] #identity matrix
+      - {start: 0xB23DA8, type: gfxSeg, name: Lshoe/Lshoe, data_only: True}
 
       - {start: 0xB24068, type: vtx, name: cuff/cuff, data_only: True}
-      - {start: 0xB24158, type: mtx, name: cuff/cuff, data_only: True}
+      - [0xB24158] #identity matrix
       - [0xB24198] #B8000000
       - [0xB241A0, ci4, cuff/color.MEd.ci4, 8, 8]
       - [0xB241C0] #B8000000
       - [0xB241C8, palette, cuff/color.MEd.ci4]
-      - [0xB243C8, bin, cuff/cuffGFX.ME]
+      - {start: 0xB243C8, type: gfxSeg, name: cuff/cuff, data_only: True}
 
       - {start: 0xB24680, type: vtx, name: Lcuff/Lcuff, data_only: True}
-      - {start: 0xB24770, type: mtx, name: Lcuff/Lcuff, data_only: True}
-      - [0xB247B0, bin, Lcuff/LcuffGFX.ME]
+      - [0xB24770] #identity matrix
+      - {start: 0xB247B0, type: gfxSeg, name: Lcuff/Lcuff, data_only: True}
 
       - {start: 0xB24A68, type: vtx, name: wrist/wrist, data_only: True}
-      - {start: 0xB24C38, type: mtx, name: wrist/wrist, data_only: True}
+      - [0xB24C38] #identity matrix
       - [0xB24C78] #B8000000
       - [0xB24C80, ci4, wrist/wristColor.MEd.ci4, 8, 8]
       - [0xB24CA0] #B8000000
@@ -5553,22 +5518,22 @@ segments:
       - [0xB24EB0, ci4, wrist/wrist.MEd.ci4, 32, 32]
       - [0xB250B0] #B8000000
       - [0xB250B8, palette, wrist/wrist.MEd.ci4]
-      - [0xB252B8, bin, wrist/wristGFX.ME]
+      - {start: 0xB252B8, type: gfxSeg, name: wrist/wrist, data_only: True}
 
       - {start: 0xB256D0, type: vtx, name: Lwrist/Lwrist, data_only: True}
-      - {start: 0xB258A0, type: mtx, name: Lwrist/Lwrist, data_only: True}
-      - [0xB258E0, bin, Lwrist/LwristGFX.ME]
+      - [0xB258A0] #identity matrix
+      - {start: 0xB258E0, type: gfxSeg, name: Lwrist/Lwrist, data_only: True}
 
       - {start: 0xB25CF8, type: vtx, name: shoulder/shoulder, data_only: True}
-      - {start: 0xB25D58, type: mtx, name: shoulder/shoulder, data_only: True}
-      - [0xB25D98, bin, shoulder/shoulderGFX.ME]
+      - [0xB25D58] #identity matrix
+      - {start: 0xB25D98, type: gfxSeg, name: shoulder/shoulder, data_only: True}
 
       - {start: 0xB25EF0, type: vtx, name: Lshoulder/Lshoulder, data_only: True}
-      - {start: 0xB25F50, type: mtx, name: Lshoulder/Lshoulder, data_only: True}
-      - [0xB25F90, bin, Lshoulder/LshoulderGFX.ME]
+      - [0xB25F50] #identity matrix
+      - {start: 0xB25F90, type: gfxSeg, name: Lshoulder/Lshoulder, data_only: True}
 
       - {start: 0xB260E8, type: vtx, name: fist/fist, data_only: True}
-      - {start: 0xB26378, type: mtx, name: fist/fist, data_only: True}
+      - [0xB26378] #identity matrix
       - [0xB263B8] #B8000000
       - [0xB263C0, ci4, fist/fist1.MEd.ci4, 32, 32]
       - [0xB265C0] #B8000000
@@ -5589,15 +5554,14 @@ segments:
       - [0xB27400, ci4, fist/fist4.MEd.ci4, 32, 32]
       - [0xB27600] #B8000000
       - [0xB27608, palette, fist/fist4.MEd.ci4]
-      - [0xB27808, bin, fist/fistGFX.ME]
+      - {start: 0xB27808, type: gfxSeg, name: fist/fist, data_only: True}
 
       - {start: 0xB27F20, type: vtx, name: Lfist/Lfist, data_only: True}
-      - {start: 0xB281D0, type: mtx, name: Lfist/Lfist, data_only: True}
-      - [0xB28210, bin, Lfist/LfistGFX.ME]
+      - [0xB281D0] #identity matrix
+      - {start: 0xB28210, type: gfxSeg, name: Lfist/Lfist, data_only: True}
       
       - {start: 0xB28928, type: mtx, name: restAssociate/restAssociate, data_only: True}
-      - [0xB28968, bin, restAssociate/restAssociateGFX.ME]
-
+      - {start: 0xB28968, type: gfxSeg, name: restAssociate/restAssociate, data_only: True}
 
   - start: 0xB289F0
     name: White #Absolutely no different from Davy.
@@ -5616,7 +5580,7 @@ segments:
       - {start: 0xB289F0, type: lights, name: light, data_only: True}
 
       - {start: 0xB28A08, type: vtx, name: body/body, data_only: True}
-      - {start: 0xB28B48, type: mtx, name: body/body, data_only: True}
+      - [0xB28B48] #identity matrix
       - [0xB28B88] #B8000000
       - [0xB28B90, ci4, body/backpackStrap.MEd.ci4, 32, 64]
       - [0xB28F90] #B8000000
@@ -5629,13 +5593,13 @@ segments:
       - [0xB293D0, ci4, body/number.MEd.ci4, 32, 32]
       - [0xB295D0] #B8000000
       - [0xB295D8, palette, body/number.MEd.ci4]
-      - [0xB297D8, bin, body/bodyGFX.ME]
+      - {start: 0xB297D8, type: gfxSeg, name: body/body, data_only: True}
 
       - {start: 0xB29B90, type: mtx, name: bodyAssociate/bodyAssociate, data_only: True}
-      - [0xB29BD0, bin, bodyAssociate/bodyAssociateGFX.ME]
+      - {start: 0xB29BD0, type: gfxSeg, name: bodyAssociate/bodyAssociate, data_only: True}
 
       - {start: 0xB29BF0, type: vtx, name: head/head, data_only: True}
-      - {start: 0xB2A060, type: mtx, name: head/head, data_only: True}
+      - [0xB2A060] #identity matrix
       - [0xB2A0A0] #B8000000
       - [0xB2A0A8, ci8, head/eyeL.MEd.ci8, 32, 32]
       - [0xB2A4A8] #B8000000
@@ -5648,42 +5612,42 @@ segments:
       - [0xB2ACC8, ci4, head/cheek.MEd.ci4, 32, 32]
       - [0xB2AEC8] #B8000000
       - [0xB2AED0, palette, head/cheek.MEd.ci4]
-      - [0xB2B0D0, bin, head/headGFX.ME]
+      - {start: 0xB2B0D0, type: gfxSeg, name: head/head, data_only: True}
 
       - {start: 0xB2B650, type: vtx, name: backpack/backpack, data_only: True}
-      - {start: 0xB2B6D0, type: mtx, name: backpack/backpack, data_only: True}
+      - [0xB2B6D0] #identity matrix
       - [0xB2B710] #B8000000
       - [0xB2B718, ci8, backpack/backpack.MEd.ci8, 4, 8] #awful
       - [0xB2B738] #B8000000
       - [0xB2B740, palette, backpack/backpack.MEd.ci8]
-      - [0xB2B940, bin, backpack/backpackGFX.ME]
+      - {start: 0xB2B940, type: gfxSeg, name: backpack/backpack, data_only: True}
 
       - {start: 0xB2BAB8, type: vtx, name: shoe/shoe, data_only: True}
-      - {start: 0xB2BD78, type: mtx, name: shoe/shoe, data_only: True}
+      - [0xB2BD78] #identity matrix
       - [0xB2BDB8] #B8000000
       - [0xB2BDC0, ci4, shoe/shoe.MEd.ci4, 64, 32]
       - [0xB2C1C0] #B8000000
       - [0xB2C1C8, palette, shoe/shoe.MEd.ci4]
-      - [0xB2C3C8, bin, shoe/shoeGFX.ME]
+      - {start: 0xB2C3C8, type: gfxSeg, name: shoe/shoe, data_only: True}
 
       - {start: 0xB2C688, type: vtx, name: Lshoe/Lshoe, data_only: True}
-      - {start: 0xB2C948, type: mtx, name: Lshoe/Lshoe, data_only: True}
-      - [0xB2C988, bin, Lshoe/LshoeGFX.ME]
+      - [0xB2C948] #identity matrix
+      - {start: 0xB2C988, type: gfxSeg, name: Lshoe/Lshoe, data_only: True}
 
       - {start: 0xB2CC48, type: vtx, name: cuff/cuff, data_only: True}
-      - {start: 0xB2CD38, type: mtx, name: cuff/cuff, data_only: True}
+      - [0xB2CD38] #identity matrix
       - [0xB2CD78] #B8000000
       - [0xB2CD80, ci4, cuff/color.MEd.ci4, 8, 8]
       - [0xB2CDA0] #B8000000
       - [0xB2CDA8, palette, cuff/color.MEd.ci4]
-      - [0xB2CFA8, bin, cuff/cuffGFX.ME]
+      - {start: 0xB2CFA8, type: gfxSeg, name: cuff/cuff, data_only: True}
 
       - {start: 0xB2D260, type: vtx, name: Lcuff/Lcuff, data_only: True}
-      - {start: 0xB2D350, type: mtx, name: Lcuff/Lcuff, data_only: True}
-      - [0xB2D390, bin, Lcuff/LcuffGFX.ME]
+      - [0xB2D350] #identity matrix
+      - {start: 0xB2D390, type: gfxSeg, name: Lcuff/Lcuff, data_only: True}
 
       - {start: 0xB2D648, type: vtx, name: wrist/wrist, data_only: True}
-      - {start: 0xB2D818, type: mtx, name: wrist/wrist, data_only: True}
+      - [0xB2D818] #identity matrix
       - [0xB2D858] #B8000000
       - [0xB2D860, ci4, wrist/wristColor.MEd.ci4, 8, 8]
       - [0xB2D880] #B8000000
@@ -5692,22 +5656,22 @@ segments:
       - [0xB2DA90, ci4, wrist/wrist.MEd.ci4, 32, 32]
       - [0xB2DC90] #B8000000
       - [0xB2DC98, palette, wrist/wrist.MEd.ci4]
-      - [0xB2DE98, bin, wrist/wristGFX.ME]
+      - {start: 0xB2DE98, type: gfxSeg, name: wrist/wrist, data_only: True}
 
       - {start: 0xB2E2B0, type: vtx, name: Lwrist/Lwrist, data_only: True}
-      - {start: 0xB2E480, type: mtx, name: Lwrist/Lwrist, data_only: True}
-      - [0xB2E4C0, bin, Lwrist/LwristGFX.ME]
+      - [0xB2E480] #identity matrix
+      - {start: 0xB2E4C0, type: gfxSeg, name: Lwrist/Lwrist, data_only: True}
 
       - {start: 0xB2E8D8, type: vtx, name: shoulder/shoulder, data_only: True}
-      - {start: 0xB2E938, type: mtx, name: shoulder/shoulder, data_only: True}
-      - [0xB2E978, bin, shoulder/shoulderGFX.ME]
+      - [0xB2E938] #identity matrix
+      - {start: 0xB2E978, type: gfxSeg, name: shoulder/shoulder, data_only: True}
 
       - {start: 0xB2EAD0, type: vtx, name: Lshoulder/Lshoulder, data_only: True}
-      - {start: 0xB2EB30, type: mtx, name: Lshoulder/Lshoulder, data_only: True}
-      - [0xB2EB70, bin, Lshoulder/LshoulderGFX.ME]
+      - [0xB2EB30] #identity matrix
+      - {start: 0xB2EB70, type: gfxSeg, name: Lshoulder/Lshoulder, data_only: True}
 
       - {start: 0xB2ECC8, type: vtx, name: fist/fist, data_only: True}
-      - {start: 0xB2EF58, type: mtx, name: fist/fist, data_only: True}
+      - [0xB2EF58] #identity matrix
       - [0xB2EF98] #B8000000
       - [0xB2EFA0, ci4, fist/fist1.MEd.ci4, 32, 32]
       - [0xB2F1A0] #B8000000
@@ -5728,14 +5692,14 @@ segments:
       - [0xB2FFE0, ci4, fist/fist4.MEd.ci4, 32, 32]
       - [0xB301E0] #B8000000
       - [0xB301E8, palette, fist/fist4.MEd.ci4]
-      - [0xB303E8, bin, fist/fistGFX.ME]
+      - {start: 0xB303E8, type: gfxSeg, name: fist/fist, data_only: True}
 
       - {start: 0xB30B00, type: vtx, name: Lfist/Lfist, data_only: True}
-      - {start: 0xB30DB0, type: mtx, name: Lfist/Lfist, data_only: True}
-      - [0xB30DF0, bin, Lfist/LfistGFX.ME]
+      - [0xB30DB0] #identity matrix
+      - {start: 0xB30DF0, type: gfxSeg, name: Lfist/Lfist, data_only: True}
       
       - {start: 0xB31508, type: mtx, name: restAssociate/restAssociate, data_only: True}
-      - [0xB31548, bin, restAssociate/restAssociateGFX.ME]
+      - {start: 0xB31548, type: gfxSeg, name: restAssociate/restAssociate, data_only: True}
 
   - [0xB315D0, bin, ROM_PADDING]
   - [0xC00000]
