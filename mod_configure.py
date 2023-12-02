@@ -14,6 +14,10 @@ libc_dir = 'src/libc'
 os_dir = 'src/os'
 mod_dir = 'src/mod'
 
+incResources = True
+incSuffix = ".ME" #once we properly inc all the resources, obsolete this
+incDataOnly = "d"
+
 mod_asm_path = 'src/mod/'
 mod_assets_path = None
 
@@ -26,6 +30,18 @@ c_files = glob.glob(f'{dir_path}/**/*.c', recursive=True)
 s_files = glob.glob(f'{asm_path}/**/*.s', recursive=True)
 bin_files = glob.glob(f'{assets_path}/**/*.bin', recursive=True)
 a_files = glob.glob(f'{mod_dir}/**/*.a', recursive=True)
+
+def getIncs(arr):
+    new = []
+    i = 0
+    while i < len(arr):
+        if arr[i].find(incSuffix) != -1 and incResources:
+            new.append(arr.pop(i))
+            continue
+        i += 1
+    return new
+
+inc_bin_files = getIncs(bin_files)
 
 for root, dirs, files in os.walk(mod_dir):
     s_file = glob.glob(os.path.join(root, '*.s'))
@@ -41,10 +57,6 @@ else:
         DETECTED_OS = 'macos'
         MAKE = 'gmake'
         CPPFLAGS += '-xc++'
-
-# c_files = [file for file in c_files if not file.startswith(mod_dir)]
-# s_files = [file for file in s_files if not file.startswith(mod_dir)]
-# bin_files = [file for file in bin_files if not file.startswith(mod_dir)]
 
 with open('asm/nonmatchings/code/5FF30/MainLoop.s', 'r') as file:
     # Read the contents of the file
@@ -240,6 +252,15 @@ rgba32_files = filter_and_extend(mod_rgba32_files, vanilla_rgba32_files)
 ci4_files = filter_and_extend(mod_ci4_files, vanilla_ci4_files)
 ci8_files = filter_and_extend(mod_ci8_files, vanilla_ci8_files)
 
+inc_i4_files = getIncs(i4_files)
+inc_i8_files = getIncs(i8_files)
+inc_ia4_files = getIncs(ia4_files)
+inc_ia8_files = getIncs(ia8_files)
+inc_rgba16_files = getIncs(rgba16_files)
+inc_rgba32_files = getIncs(rgba32_files)
+inc_ci8_files = getIncs(ci8_files)
+inc_ci4_files = getIncs(ci4_files)
+
 
 # Append '.png' to each file name in the lists
 i4_png_files_o = [file + '.png' for file in i4_files]
@@ -261,6 +282,7 @@ ci8_pal_files_o = [file + '.pal' for file in ci8_files]
 image_files_o = i4_png_files_o + i8_png_files_o + ia4_png_files_o + ia8_png_files_o + rgba16_png_files_o + rgba32_png_files_o + ci4_png_files_o + ci8_png_files_o + ci4_pal_files_o + ci8_pal_files_o
 
 o_files = []
+
 for file in c_files + s_files + a_files + bin_files + i4_files + i8_files + ia4_files + ia8_files + rgba16_files + rgba32_files + ci8_files + ci4_files + ci4_files_pal_final + ci8_files_pal_final:
     if 'asm/nonmatchings/' not in file:
         if file.endswith(('.png', '.pal')) and file.startswith('src/mod'):
@@ -292,6 +314,7 @@ ninja_file.variable('ASM_PROC_FLAGS', '--input-enc=utf-8 --output-enc=euc-jp')
 ninja_file.variable('ASFLAGS', '-EB -mtune=vr4300 -march=vr4300 -mabi=32 -Iinclude -Isrc')
 ninja_file.variable('opt_flags', '-O2')
 ninja_file.variable('IMG_CONVERT', 'tools/image_converter.py')
+ninja_file.variable('BIN_CONVERT', 'tools/bin_inc_c.py')
 ninja_file.variable('MAKE_EXPECTED', 'tools/make_expected.py')
 ninja_file.variable('GCC_FLAGS', '$include_cflags $DEFINES -G 0 -mno-shared -march=vr4300 -mfix4300 -mabi=32 -mhard-float -mdivide-breaks -fno-stack-protector -fno-common -fno-zero-initialized-in-bss -fno-PIC -mno-abicalls -fno-strict-aliasing -fno-inline-functions -ffreestanding -fwrapv -Wall -Wextra -Wno-missing-braces')
 ninja_file.variable('CC', 'tools/gcc_2.7.2/linux/gcc')
@@ -337,9 +360,6 @@ ninja_file.rule('O1_cc',
 ninja_file.rule('s_file',
     command = 'iconv --from UTF-8 --to EUC-JP $in | $AS $ASFLAGS -o $out',
     description = 'Assembling .s file' )
-
-ninja_file.rule('bin_file',
-    command = '$LD -r -b binary -o $out $in')
 
 ninja_file.rule('a_file',
     command = 'cp $in $out')
@@ -404,6 +424,19 @@ ninja_file.rule('pal_convert',
                  command = "python3 ./$IMG_CONVERT palette $in $out",
                  description = "Converting pal")
 
+#used for inc'd bins
+#dataOnly 
+ninja_file.rule("bin_inc_c_d",
+                 command=f'python3 ./$BIN_CONVERT 1 $in $out',
+                 description="bin_inc_c $out",)
+#with generated symbol
+ninja_file.rule("bin_inc_c",
+                 command=f'python3 ./$BIN_CONVERT 0 $in $out',
+                 description="bin_inc_c $out",)
+#otherwise
+ninja_file.rule('bin_file',
+                 command = '$LD -r -b binary -o $out $in')
+
 ninja_file.rule('libc_ll_cc',
                  command = "($ASM_PROC $ASM_PROC_FLAGS $ido_cc -- $AS $ASFLAGS -- -c $cflags $DEFINES $CFLAGS -mips3 -32 -O1 -o $out $in) && (python3 tools/set_o32abi_bit.py $out)",
                  description = "Converting pal")
@@ -460,6 +493,82 @@ c_file_rule_overrides = {
     'translate.c': "O2_cc",
 }
 
+def getFileSettings(file):
+    suffix = incSuffix+incDataOnly if file.find(incSuffix+incDataOnly) != -1 else incSuffix
+    rule = "bin_inc_c" if suffix == incSuffix else "bin_inc_c_d"
+    return {"suffix":suffix, "rule":rule}
+
+def doImageBuild(image, rule, inc=False):
+    buildToPath = image
+    if image.startswith("src/mod"):
+        _, _, modified_path = image.partition("assets/")
+        buildToPath = "assets/" + modified_path
+    
+    if not inc: #standard building
+        ninja_file.build(append_prefix(append_extension(buildToPath, ".png")), rule, image)
+        if image.find(".ci") != -1: #paletted
+            ninja_file.build(append_prefix(append_extension(buildToPath, ".pal")), "pal_convert", image)
+    else: #inc into c's
+        s = getFileSettings(image)
+        result = append_prefix(append_extension(buildToPath, ".bin").replace(s["suffix"], ""), "build/include/")
+        ninja_file.build(result, rule, image)
+        ninja_file.build(result.replace(".bin", ".inc.c"), s["rule"], result)
+        if image.find(".ci") != -1: #paletted
+            result = append_prefix(append_extension(buildToPath.replace(".png", ".pal"), ".bin").replace(s["suffix"], ""), "build/include/")
+            ninja_file.build(result, "pal_convert", image)
+            ninja_file.build(result.replace(".bin", ".inc.c"), s["rule"], result)
+
+for ia4_file in ia4_files: doImageBuild(ia4_file, "ia4_convert")
+for ia8_file in ia8_files: doImageBuild(ia8_file, "ia8_convert")
+for i4_file in i4_files: doImageBuild(i4_file, "i4_convert")
+for i8_file in i8_files: doImageBuild(i8_file, "i8_convert")
+for rgba16_file in rgba16_files: doImageBuild(rgba16_file, "rgba16_convert")
+for rgba32_file in rgba32_files: doImageBuild(rgba32_file, "rgba32_convert")
+for ci4_file in ci4_files: doImageBuild(ci4_file, "ci4_convert")
+for ci8_file in ci8_files: doImageBuild(ci8_file, "ci8_convert")
+
+for ia4_file in inc_ia4_files: doImageBuild(ia4_file, "ia4_convert", True)
+for ia8_file in inc_ia8_files: doImageBuild(ia8_file, "ia8_convert", True)
+for i4_file in inc_i4_files: doImageBuild(i4_file, "i4_convert", True)
+for i8_file in inc_i8_files: doImageBuild(i8_file, "i8_convert", True)
+for rgba16_file in inc_rgba16_files: doImageBuild(rgba16_file, "rgba16_convert", True)
+for rgba32_file in inc_rgba32_files: doImageBuild(rgba32_file, "rgba32_convert", True)
+for ci4_file in inc_ci4_files: doImageBuild(ci4_file, "ci4_convert", True)
+for ci8_file in inc_ci8_files: doImageBuild(ci8_file, "ci8_convert", True)
+
+for bin_file in bin_files:
+    ninja_file.build(append_prefix(append_extension(bin_file)), "bin_file", bin_file)
+
+for inc_bin in inc_bin_files:
+    s = getFileSettings(inc_bin)
+    ninja_file.build(append_prefix(inc_bin.replace(s["suffix"]+".bin", ".inc.c"), "build/include/"), s["rule"], inc_bin)
+
+#change .png.png -> png.o
+#change .png.pal -> pal.o
+#we are forced into using these extension names by splat due to how the linker generates
+for img_file in image_files_o:
+    extension = os.path.splitext(img_file)[1]
+    if extension == '.pal':
+        if img_file.startswith("src/mod"):
+            _, _, modified_path = img_file.partition("assets/")
+            modified_path = "assets/" + modified_path
+            ninja_file.build(append_extension(append_prefix(modified_path)), "objcopy_image", append_prefix(modified_path))
+        else:
+            pal_file = os.path.splitext(img_file)[0]
+            pal_file_pal = os.path.splitext(pal_file)[0] + '.pal'
+            ninja_file.build(append_extension(append_prefix(pal_file_pal)), "objcopy_image", append_prefix(img_file))
+    elif extension == '.png':
+        if img_file.startswith("src/mod"):
+            png_file = os.path.splitext(img_file)[0]
+            _, _, modified_path = png_file.partition("assets/")
+            modified_path = "assets/" + modified_path
+            print(append_extension(append_prefix(modified_path)))
+            ninja_file.build(append_extension(append_prefix(modified_path)), "objcopy_image", append_prefix(modified_path) + ".png")
+        else:
+            png_file = os.path.splitext(img_file)[0]
+            ninja_file.build(append_extension(append_prefix(png_file)), "objcopy_image", append_prefix(img_file))
+
+
 for c_file in c_files:
     file_name = os.path.basename(c_file)
     dep = append_prefix(append_extension(c_file) + '.d')
@@ -482,113 +591,19 @@ for c_file in c_files:
     else:
         ninja_file.build(append_prefix(append_extension(c_file)), "O2_cc", c_file, dep)
 
-
 for s_file in s_files:
     if "asm/nonmatchings" in s_file:
         continue
     ninja_file.build(append_prefix(append_extension(s_file)), "s_file", s_file)
 
-for bin_file in bin_files:
-    ninja_file.build(append_prefix(append_extension(bin_file)), "bin_file", bin_file)
-
 for a_file in a_files:
     ninja_file.build(append_prefix(append_extension(a_file)), "a_file", a_file)
 
-for i4_file in i4_files:
-    if i4_file.startswith("src/mod"):
-        _, _, modified_path = i4_file.partition("assets/")
-        modified_path = "assets/" + modified_path
-        ninja_file.build(append_prefix(append_extension(modified_path, ".png")), "i4_convert", i4_file)
-    else:
-        ninja_file.build(append_prefix(append_extension(i4_file, ".png")), "i4_convert", i4_file)
-
-for i8_file in i8_files:
-    if i8_file.startswith("src/mod"):
-        _, _, modified_path = i8_file.partition("assets/")
-        modified_path = "assets/" + modified_path
-        ninja_file.build(append_prefix(append_extension(modified_path, ".png")), "i8_convert", i8_file)
-    else:
-        ninja_file.build(append_prefix(append_extension(i8_file, ".png")), "i8_convert", i8_file)
-
-for ia4_file in ia4_files:
-    if ia4_file.startswith("src/mod"):
-        _, _, modified_path = ia4_file.partition("assets/")
-        modified_path = "assets/" + modified_path
-        ninja_file.build(append_prefix(append_extension(modified_path, ".png")), "ia4_convert", ia4_file)
-    else:
-        ninja_file.build(append_prefix(append_extension(ia4_file, ".png")), "ia4_convert", ia4_file)
-
-for ia8_file in ia8_files:
-    if ia8_file.startswith("src/mod"):
-        _, _, modified_path = ia8_file.partition("assets/")
-        modified_path = "assets/" + modified_path
-        ninja_file.build(append_prefix(append_extension(modified_path, ".png")), "ia8_convert", ia8_file)
-    else:
-        ninja_file.build(append_prefix(append_extension(ia8_file, ".png")), "ia8_convert", ia8_file)
-
-for rgba16_file in rgba16_files:
-    if rgba16_file.startswith("src/mod"):
-        _, _, modified_path = rgba16_file.partition("assets/")
-        modified_path = "assets/" + modified_path
-        ninja_file.build(append_prefix(append_extension(modified_path, ".png")), "rgba16_convert", rgba16_file)
-    else:
-        ninja_file.build(append_prefix(append_extension(rgba16_file, ".png")), "rgba16_convert", rgba16_file)
-
-for rgba32_file in rgba32_files:
-    if rgba32_file.startswith("src/mod"):
-        _, _, modified_path = rgba32_file.partition("assets/")
-        modified_path = "assets/" + modified_path
-        ninja_file.build(append_prefix(append_extension(modified_path, ".png")), "rgba32_convert", rgba32_file)
-    else:
-        ninja_file.build(append_prefix(append_extension(rgba32_file, ".png")), "rgba32_convert", rgba32_file)
-
-for ci4_file in ci4_files:
-    png_png_file = append_prefix(append_extension(ci4_file, ".png"))
-    ninja_file.build(png_png_file, "ci4_convert", ci4_file)
-    png_pal_file = append_prefix(append_extension(ci4_file, ".pal"))
-    ninja_file.build(png_pal_file, "pal_convert", ci4_file)
-
-for ci8_file in ci8_files:
-    png_png_file = append_prefix(append_extension(ci8_file, ".png"))
-    ninja_file.build(png_png_file, "ci8_convert", ci8_file)
-    png_pal_file = append_prefix(append_extension(ci8_file, ".pal"))
-    ninja_file.build(png_pal_file, "pal_convert", ci8_file)
-    
-
-#change .png.png -> png.o
-#change .png.pal -> pal.o
-#we are forced into using these extension names by splat due to how the linker generates
-
-for img_file in image_files_o:
-    extension = os.path.splitext(img_file)[1]
-    #print(extension)
-    if extension == '.pal':
-        if img_file.startswith("src/mod"):
-            _, _, modified_path = img_file.partition("assets/")
-            modified_path = "assets/" + modified_path
-            ninja_file.build(append_extension(append_prefix(modified_path)), "objcopy_image", append_prefix(modified_path))
-        else:
-            pal_file = os.path.splitext(img_file)[0]
-            pal_file_pal = os.path.splitext(pal_file)[0] + '.pal'
-            ninja_file.build(append_extension(append_prefix(pal_file_pal)), "objcopy_image", append_prefix(img_file))
-    elif extension == '.png':
-        if img_file.startswith("src/mod"):
-            png_file = os.path.splitext(img_file)[0]
-            _, _, modified_path = png_file.partition("assets/")
-            modified_path = "assets/" + modified_path
-            print(append_extension(append_prefix(modified_path)))
-            ninja_file.build(append_extension(append_prefix(modified_path)), "objcopy_image", append_prefix(modified_path) + ".png")
-        else:
-            png_file = os.path.splitext(img_file)[0]
-            ninja_file.build(append_extension(append_prefix(png_file)), "objcopy_image", append_prefix(img_file))
-       
 ninja_file.build("build/chameleonTwistJP.elf", "make_elf ", o_files)
 ninja_file.build("build/chameleonTwistJP.z64", "make_z64 ", "build/chameleonTwistJP.elf")
 
 # if variable_value is not None:
 #     ninja_file.build("src/mod/n64AutoBoot/chameleonTwistJP_Mod.z64", "start_z64 ", "build/chameleonTwistJP.z64")
-
-
 
 print ("build.ninja generated")
 ninja_file.close()
