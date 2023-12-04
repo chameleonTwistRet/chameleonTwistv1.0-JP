@@ -541,7 +541,7 @@ for bin_file in bin_files:
 
 for inc_bin in inc_bin_files:
     s = getFileSettings(inc_bin)
-    ninja_file.build(append_prefix(inc_bin.replace(s["suffix"]+".bin", ".inc.c"), "build/include/"), s["rule"], inc_bin)
+    ninja_file.build(append_prefix(inc_bin.replace(s["suffix"], "").replace(".bin", ".inc.c"), "build/include/"), s["rule"], inc_bin)
 
 #change .png.png -> png.o
 #change .png.pal -> pal.o

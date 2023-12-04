@@ -13,7 +13,7 @@ def start(group, where):
         open(symbolsPath, "w").writelines(dump)
         return
     
-    writeTo = "src/assets/"+where+".c"
+    writeTo = "src/"+where+".c"
     open(writeTo, "w").close() #clear
     reading = False
     tabbing = ""
@@ -44,77 +44,135 @@ def start(group, where):
         "gfxSeg": "gfx",
     }
 
-    newC = ["//Generated with Nathan's Epic C creator!!!!111\n",
-            #'#include "common.h"\n'
-            ]
-    vram = 0x0
     baseAdr = 0x0
-    newSymbols = []
-
-
+    segmentId = -1
+    newC = [
+        '#include "common.h"\n',
+    ]
+    newSymbols = ["//generated section "+group+" starting here\n"]
+    defDir = ""
+    definitions = []
+    
     i = 0
     while i < len(yaml):
         line = yaml[i]
-        if line.find(" "+group+"\n") != -1 and line.find("name: ") != -1 and not reading:
+        if line.find("name: "+group+"\n") != -1 and not reading:
             tabbing = line.split('name')[0]
             for back in range(5):
+                if baseAdr != 0x0 and segmentId != -1:
+                    break
                 get = yaml[i + back]
                 if get.startswith("  - start: ") and baseAdr==0x0:
                     baseAdr = int(get.split(": ")[1].split("#")[0].strip(),16)
-                elif get.startswith("    vram: ") and vram==0x0:
-                    vram = int(get.split(": ")[1].split("#")[0].strip(),16)
+                if get.find("#SEGMENT ") != -1 and segmentId==-1:
+                    segmentId = int(get.split("#SEGMENT ")[1].split("#")[0].strip(),16)
                 get = yaml[i - back]
                 if get.startswith("  - start: ") and baseAdr==0x0:
                     baseAdr = int(get.split(": ")[1].split("#")[0].strip(),16)
-                elif get.startswith("    vram: ") and vram==0x0:
-                    vram = int(get.split(": ")[1].split("#")[0].strip(),16)
+                if get.find("#SEGMENT ") != -1 and segmentId==-1:
+                    segmentId = int(get.split("#SEGMENT ")[1].split("#")[0].strip(),16)
+            segmentId = segmentId<<24
             reading = True
-        if reading and line.find("-") != -1 and line.find(",") != -1:
-            if not line.startswith(tabbing) or line.startswith("  - start: "):
-                break
+        if reading and (not line.startswith(tabbing) or line.startswith("  - start: ")) and line != "\n":
+            break
+        if reading and line.find("-") != -1 and (line.find(",") != -1 or line.find("#")!=-1):
             values = {}
-            if line.find("[") != -1: #normal
-                args = ("0x"+(line.split("#")[0].strip().split("0x")[-1]))[:-1].split(",")
-                for a in range(len(args)):
-                    args[a] = args[a].strip()
-                values = {
-                "Address": args[0],
-                "Type": args[1],
-                }
-                if len(args) < 3: #no name, usually for fuckall bins
-                    values["Path"] = args[0].split("x")[1].upper()
-                elif len(args) >= 3:
-                    values["Path"] = args[2]
-                if len(args) > 3:
-                    values["Ext"] = args[3:]
+            if line.find(",") != -1:
+                if line.find("[") != -1: #normal
+                    args = ((line.split("#")[0].strip().split("[")[-1]))[:-1].split(",")
+                    for a in range(len(args)):
+                        args[a] = args[a].strip()
+                    values = {
+                    "Address": args[0],
+                    "Type": args[1],
+                    }
+                    if len(args) < 3: #no name, usually for fuckall bins
+                        values["Path"] = args[0].split("x")[1].upper()
+                    elif len(args) >= 3:
+                        values["Path"] = args[2]
+                    if len(args) > 3:
+                        values["Ext"] = args[3:]
+                    if values["Address"] == "auto":
+                        i += 1
+                        continue
 
-            elif line.find("{") != -1: #dict
-                args = ("0x"+(line.split("#")[0].strip().split("0x")[-1]))[:-1].split(",")
-                for a in range(len(args)):
-                    args[a] = args[a].replace("type: ", "").replace("name: ", "").strip()
-                values = {
-                "Address": args[0],
-                "Type": args[1],
-                "Path": args[2],
-                }
-                if len(args) > 3:
-                    values["Ext"] = args[3:]
-            values["ShortName"] = values["Path"].split("/")[-1].replace(".","_")
-            if values["ShortName"][0].isdigit(): values["ShortName"]="d"+values["ShortName"] #bc we cant have a number start now can we
-            useType = values["Type"]
-            if values["Type"] in list(incExt.keys()): useType = incExt[values["Type"]]
-            line = '#include "assets/'+values["Path"]+'.'+useType+'.inc.c"\n'
-            if values["Type"] == "bin":line = line.replace(".bin", "",1)
-            if values["Type"] in buildFolder:line = line.replace("assets/", "build/include/assets/",1)
-            newC.append(line)
-            ####
-            #symbol creation
-            ramadr = hex((int(values["Address"],16)-baseAdr)+vram).upper().replace("0X", "0x")
-            namer = line.split("/")[-1].split(".inc.c")[0].replace(".", "_")
-            if namer[0].isdigit(): namer="d"+namer
-            newSymbols.append(namer+" = "+ramadr+";\n")
+                elif line.find("{") != -1: #dict
+                    args = ("0x"+(line.split("#")[0].strip().split("0x")[-1]))[:-1].split(",")
+                    for a in range(len(args)):
+                        args[a] = args[a].replace("type: ", "").replace("name: ", "").strip()
+                    values = {
+                    "Address": args[0],
+                    "Type": args[1],
+                    "Path": args[2],
+                    }
+                    if len(args) > 3:
+                        values["Ext"] = args[3:]
+                values["Path"] = defDir+"/"+values["Path"].replace(".MEd", "")
+                values["ShortName"] = values["Path"].split("/")[-1].replace(".","_")
+                if values["ShortName"][0].isdigit(): values["ShortName"]="d"+values["ShortName"] #bc we cant have a number start now can we
+                useType = values["Type"]
+                if values["Type"] in list(incExt.keys()): useType = incExt[values["Type"]]
+                nline = '\n#include "assets/'+values["Path"]+'.'+useType+'.inc.c"\n'
+                if values["Type"] == "bin": nline = nline.replace(".bin", "",1)
+                if values["Type"] in buildFolder: nline = nline.replace("assets/", "build/include/assets/",1)
 
+                segmentAdr = (int(values["Address"], 16) - baseAdr) + segmentId
+                #symbol = hex(segmentAdr).upper().replace("0X", "")
+                #while len(symbol) < 8: symbol="0"+symbol
+                #symbol = "D_"+symbol+"_"+values["Address"].upper().replace("0X", "")
+                symbol = values["ShortName"].split("_")[0]+"_"+values["Type"]+"_"+group
+
+                #typedef
+                char = nline.find(".png") != -1 or nline.find(".pal") != -1 or values["Type"] == "bin"
+                char = char and line.find(".MEd") != -1 
+                if values["Type"] == "mtx": 
+                    newC.append("Mtx_f "+symbol+" = {")
+                elif values["Type"] == "lights":
+                    newC.append("Lights1 "+symbol+" =")
+                elif values["Type"] == "vtx":
+                    newC.append("Vtx "+symbol+"[] = {")
+                elif values["Type"] in ["gfx", "gfxSeg"]:
+                    newC.append("Gfx "+symbol+"[] = {")
+                elif char:
+                    newC.append("unsigned char "+symbol+"[] = {")
+                    
+                    
+                newC.append(nline)
+
+                #end_typedef
+                if values["Type"] in ["mtx", "vtx", "gfx", "gfxSeg"] or char: 
+                    newC.append("};\n")
+                
+                #symbol creation
+                customType = ""
+                if values["Type"] in ["mtx", "vtx", "gfx", "gfxSeg"]: customType = values["Type"].capitalize()
+                elif values["Type"] in buildFolder and values["Type"] != "bin": customType = incExt[values["Type"]].upper()
+                else: customType = values["Type"].upper()
+                ss = symbol+" = "+hex(segmentAdr).upper().replace("0X","0x")+";"
+                ss += " // type:"+customType+" rom:"+values["Address"].upper().replace("0X","0x")
+                newSymbols.append(ss+"\n")
+
+
+            elif line.find("#")!=-1:
+                #assumed/known types
+                if line.find("#B8000000"):#filepad
+                    add = '#define FILEPAD {0xB8,0,0,0,0,0,0,0} // the funny\n\n'
+                    if not add in definitions: definitions.append(add)
+
+                    address = line.split("[")[-1].split("]")[0]
+                    symbol = hex((int(address, 16) - baseAdr) + segmentId).upper().replace("0X", "")
+                    while len(symbol) < 8: symbol="0"+symbol
+                    symbol = "D_"+symbol+"_"+address.upper().replace("0X", "")
+                    newC.append("unsigned char "+symbol+"[] = FILEPAD;\n")
+
+
+
+        elif reading and line.find('dir: ') != -1:
+            if defDir != "": defDir+="/"
+            defDir += line.split("dir: ")[-1].strip()
         i += 1
+    definitions.reverse()
+    for i in definitions: newC.insert(1, i)
     open(writeTo, "w", encoding="UTF-8").writelines(newC)
     open(symbolsPath, "a").writelines(newSymbols)
     return 

@@ -786,6 +786,20 @@ typedef struct func_80069858_temp_v0{
     /* 0x0C */ s32 unkC;
 } func_80069858_temp_v0; //sizeof 0x10
 
+/*D_MTXSLOT1 = 0x80129730; // type:Mtx
+D_MTXSLOT2 = 0x80129770; // type:Mtx
+D_MTXSLOT3 = 0x801297B0; // type:Mtx
+D_MTXSLOT4 = 0x801297F0; // type:Mtx
+D_MTXSLOT5 = 0x80129830; // type:Mtx
+D_MTXSLOT6 = 0x80129870; // type:Mtx
+D_MTXSLOT7 = 0x801298B0; // type:Mtx
+D_MTXSLOT8 = 0x801298F0; // type:Mtx
+D_MTXSLOT9 = 0x80129930; // type:Mtx
+D_MTXSLOTA = 0x80129970; // type:Mtx
+D_MTXSLOTB = 0x801299B0; // type:Mtx
+D_MTXSLOTC = 0x801299F0; // type:Mtx
+D_MTXSLOTD = 0x80129A30; // type:Mtx*/
+
 typedef struct graphicStruct {
 /*0x0*/         Gfx dlist[0x1000];
 /*0x8000*/      Mtx perspective;
@@ -1103,16 +1117,16 @@ typedef struct unk80175608 {
     char unk_00[0x18];
 } unk80175608;
 
-/*typedef struct CollisionObject{ idk how to define 'dynamic arrays' so this is commented out lol
-    Vec3f verts[];//real world position
-    Vec3s tris[];//uses ^ to construct triangles
+//ok so you actually have to make the other parts vec3f name[] and vec3s name[] SEPERATE from the struct
+//that kinda sucks but i know why now at least
+typedef struct CollisionData{
     Vec3f positionProbably;
     Vec3f scaleProbably;
     s32 aOVerts;
     s32 aOTris;
-    Vec3f* vertsStart; //segmented, points to verts[]
-    Vec3f* trisStart; //segmented, points to tris[]
+    u32 vertsStart; //segmented, points to verts[]
+    u32 trisStart; //segmented, points to tris[]
     u32 settingsStart; //segmented
-} CollisionObject;*/
+} CollisionData;
 
 #endif
