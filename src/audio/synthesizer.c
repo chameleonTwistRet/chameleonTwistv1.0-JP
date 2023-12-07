@@ -17,7 +17,7 @@
  *====================================================================*/
 #include "synthInternals.h"
 #include <assert.h>
-#include "include/PR/os_version.h"
+#include "os_version.h"
 // TODO: this comes from a header
 #ident "$Revision: 1.17 $"
 

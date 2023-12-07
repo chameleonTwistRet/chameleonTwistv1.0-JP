@@ -92,11 +92,12 @@ ninja_file.variable('IMG_CONVERT', 'tools/image_converter.py')
 ninja_file.variable('BIN_CONVERT', 'tools/bin_inc_c.py')
 ninja_file.variable('MAKE_EXPECTED', 'tools/make_expected.py')
 ninja_file.variable('GCC_FLAGS', '$include_cflags $DEFINES -G 0 -mno-shared -march=vr4300 -mfix4300 -mabi=32 -mhard-float -mdivide-breaks -fno-stack-protector -fno-common -fno-zero-initialized-in-bss -fno-PIC -mno-abicalls -fno-strict-aliasing -fno-inline-functions -ffreestanding -fwrapv -Wall -Wextra -Wno-missing-braces')
+ninja_file.variable('ICONV', '--from UTF-8 --to EUC-JP')
 
 ninja_file.rule('gcc_dependency',
-    command = '$cc_check -MM -MT $out -MF $out.d $in',
-    description = 'Generating dependencies $out.d',
-    depfile = '$out.d',
+    command = "bash -o pipefail -c 'cpp -w -Iinclude -Ibuild/include -Iinclude/PR -Isrc -nostdinc -MD -MF $out $in -o /dev/null'",
+    description = 'Generating dependencies $out',
+    depfile = '$out',
     deps = 'gcc')
 
 ninja_file.rule('ido_O3_cc',
