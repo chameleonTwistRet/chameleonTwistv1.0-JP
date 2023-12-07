@@ -13,9 +13,7 @@ libc_dir = 'src/libc'
 os_dir = 'src/os'
 mod_dir = 'src/mod'
 
-incResources = True
-incSuffix = ".ME" #once we properly inc all the resources, obsolete this
-incDataOnly = "d"
+incResources = False
 
 c_files = glob.glob(f'{dir_path}/**/*.c', recursive=True)
 s_files = glob.glob(f'{asm_path}/**/*.s', recursive=True)
@@ -24,18 +22,6 @@ bin_files = glob.glob(f'{assets_path}/**/*.bin', recursive=True)
 c_files = [file for file in c_files if not file.startswith(mod_dir)]
 s_files = [file for file in s_files if not file.startswith(mod_dir)]
 bin_files = [file for file in bin_files if not file.startswith(mod_dir)]
-
-def getIncs(arr):
-    new = []
-    i = 0
-    while i < len(arr):
-        if arr[i].find(incSuffix) != -1 and incResources:
-            new.append(arr.pop(i))
-            continue
-        i += 1
-    return new
-
-inc_bin_files = getIncs(bin_files)
 
 def append_extension(filename, extension='.o'):
     return filename + extension
@@ -51,17 +37,6 @@ rgba16_files = glob.glob(f'{assets_path}/**/*.rgba16.png', recursive=True)
 rgba32_files = glob.glob(f'{assets_path}/**/*.rgba32.png', recursive=True)
 ci8_files = glob.glob(f'{assets_path}/**/*.ci8.png', recursive=True)
 ci4_files = glob.glob(f'{assets_path}/**/*.ci4.png', recursive=True)
-
-
-inc_i4_files = getIncs(i4_files)
-inc_i8_files = getIncs(i8_files)
-inc_ia4_files = getIncs(ia4_files)
-inc_ia8_files = getIncs(ia8_files)
-inc_rgba16_files = getIncs(rgba16_files)
-inc_rgba32_files = getIncs(rgba32_files)
-inc_ci8_files = getIncs(ci8_files)
-inc_ci4_files = getIncs(ci4_files)
-
 
 # Append '.png' to each file name in the lists
 i4_png_files_o = [file + '.png' for file in i4_files]
@@ -84,7 +59,9 @@ image_files_o = i4_png_files_o + i8_png_files_o + ia4_png_files_o + ia8_png_file
 
 o_files = []
 
-to_o = c_files + s_files + i4_files + i8_files + ia4_files + ia8_files + rgba16_files + rgba32_files + ci8_files + ci4_files + ci4_files_pal_final + ci8_files_pal_final + bin_files
+to_o = c_files + s_files
+if not incResources:
+    to_o += bin_files + i4_files + i8_files + ia4_files + ia8_files + rgba16_files + rgba32_files + ci8_files + ci4_files + ci4_files_pal_final + ci8_files_pal_final
 
 for file in to_o:
     if 'asm/nonmatchings/' not in file:
@@ -200,17 +177,12 @@ ninja_file.rule('pal_convert',
                  command = "python3 ./$IMG_CONVERT palette $in $out",
                  description = "Converting pal")
 
-#used for inc'd bins
-#dataOnly 
-ninja_file.rule("bin_inc_c_d",
-                 command=f'python3 ./$BIN_CONVERT 1 $in $out',
+if incResources:
+    ninja_file.rule("bin_inc_c",
+                 command=f'python3 ./$BIN_CONVERT $in $out',
                  description="bin_inc_c $out",)
-#with generated symbol
-ninja_file.rule("bin_inc_c",
-                 command=f'python3 ./$BIN_CONVERT 0 $in $out',
-                 description="bin_inc_c $out",)
-#otherwise
-ninja_file.rule('bin_file',
+else:
+    ninja_file.rule('bin_file',
                  command = '$LD -r -b binary -o $out $in')
 
 ninja_file.rule('libc_ll_cc',
@@ -269,66 +241,108 @@ c_file_rule_overrides = {
     'translate.c': "O2_cc",
 }
 
-def getFileSettings(file):
-    suffix = incSuffix+incDataOnly if file.find(incSuffix+incDataOnly) != -1 else incSuffix
-    rule = "bin_inc_c" if suffix == incSuffix else "bin_inc_c_d"
-    return {"suffix":suffix, "rule":rule}
+if not incResources:
+    for ia4_file in ia4_files:
+        ninja_file.build(append_prefix(append_extension(ia4_file, ".png")), "ia4_convert", ia4_file)
 
-def doImageBuild(image, rule, inc=False):
-    if not inc: #standard building
-        ninja_file.build(append_prefix(append_extension(image, ".png")), rule, image)
-        if image.find(".ci") != -1: #paletted
-            ninja_file.build(append_prefix(append_extension(image, ".pal")), "pal_convert", image)
-    else: #inc into c's
-        s = getFileSettings(image)
-        result = append_prefix(append_extension(image, ".bin").replace(s["suffix"], ""), "build/include/")
-        ninja_file.build(result, rule, image)
-        ninja_file.build(result.replace(".bin", ".inc.c"), s["rule"], result)
-        if image.find(".ci") != -1: #paletted
-            result = append_prefix(append_extension(image.replace(".png", ".pal"), ".bin").replace(s["suffix"], ""), "build/include/")
-            ninja_file.build(result, "pal_convert", image)
-            ninja_file.build(result.replace(".bin", ".inc.c"), s["rule"], result)
+    for ia8_file in ia8_files:
+        ninja_file.build(append_prefix(append_extension(ia8_file, ".png")), "ia8_convert", ia8_file)
 
-for ia4_file in ia4_files: doImageBuild(ia4_file, "ia4_convert")
-for ia8_file in ia8_files: doImageBuild(ia8_file, "ia8_convert")
-for i4_file in i4_files: doImageBuild(i4_file, "i4_convert")
-for i8_file in i8_files: doImageBuild(i8_file, "i8_convert")
-for rgba16_file in rgba16_files: doImageBuild(rgba16_file, "rgba16_convert")
-for rgba32_file in rgba32_files: doImageBuild(rgba32_file, "rgba32_convert")
-for ci4_file in ci4_files: doImageBuild(ci4_file, "ci4_convert")
-for ci8_file in ci8_files: doImageBuild(ci8_file, "ci8_convert")
+    for i4_file in i4_files:
+        ninja_file.build(append_prefix(append_extension(i4_file, ".png")), "i4_convert", i4_file)
 
-for ia4_file in inc_ia4_files: doImageBuild(ia4_file, "ia4_convert", True)
-for ia8_file in inc_ia8_files: doImageBuild(ia8_file, "ia8_convert", True)
-for i4_file in inc_i4_files: doImageBuild(i4_file, "i4_convert", True)
-for i8_file in inc_i8_files: doImageBuild(i8_file, "i8_convert", True)
-for rgba16_file in inc_rgba16_files: doImageBuild(rgba16_file, "rgba16_convert", True)
-for rgba32_file in inc_rgba32_files: doImageBuild(rgba32_file, "rgba32_convert", True)
-for ci4_file in inc_ci4_files: doImageBuild(ci4_file, "ci4_convert", True)
-for ci8_file in inc_ci8_files: doImageBuild(ci8_file, "ci8_convert", True)
+    for i8_file in i8_files:
+        ninja_file.build(append_prefix(append_extension(i8_file, ".png")), "i8_convert", i8_file)
+
+    for rgba16_file in rgba16_files:
+        ninja_file.build(append_prefix(append_extension(rgba16_file, ".png")), "rgba16_convert", rgba16_file)
+
+    for rgba32_file in rgba32_files:
+        ninja_file.build(append_prefix(append_extension(rgba32_file, ".png")), "rgba32_convert", rgba32_file)
+
+    for ci4_file in ci4_files:
+        png_png_file = append_prefix(append_extension(ci4_file, ".png"))
+        ninja_file.build(png_png_file, "ci4_convert", ci4_file)
+        png_pal_file = append_prefix(append_extension(ci4_file, ".pal"))
+        ninja_file.build(png_pal_file, "pal_convert", ci4_file)
+
+    for ci8_file in ci8_files:
+        png_png_file = append_prefix(append_extension(ci8_file, ".png"))
+        ninja_file.build(png_png_file, "ci8_convert", ci8_file)
+
+        png_pal_file = append_prefix(append_extension(ci8_file, ".pal"))
+        ninja_file.build(png_pal_file, "pal_convert", ci8_file)
+else:
+    for ia4_file in ia4_files:
+        result = append_prefix(append_extension(ia4_file, ".bin"), "build/include/")
+        ninja_file.build(result, "ia4_convert", ia4_file)
+        ninja_file.build(result.replace(".bin", ".inc.c"), "bin_inc_c", result)
+
+    for ia8_file in ia8_files:
+        result = append_prefix(append_extension(ia8_file, ".bin"), "build/include/")
+        ninja_file.build(result, "ia8_convert", ia8_file)
+        ninja_file.build(result.replace(".bin", ".inc.c"), "bin_inc_c", result)
+
+
+    for i4_file in i4_files:
+        result = append_prefix(append_extension(i4_file, ".bin"), "build/include/")
+        ninja_file.build(result, "i4_convert", i4_file)
+        ninja_file.build(result.replace(".bin", ".inc.c"), "bin_inc_c", result)
+
+    for i8_file in i8_files:
+        result = append_prefix(append_extension(i8_file, ".bin"), "build/include/")
+        ninja_file.build(result, "i8_convert", i8_file)
+        ninja_file.build(result.replace(".bin", ".inc.c"), "bin_inc_c", result)
+    
+    for rgba16_file in rgba16_files:
+        result = append_prefix(append_extension(rgba16_file, ".bin"), "build/include/")
+        ninja_file.build(result, "rgba16_convert", rgba16_file)
+        ninja_file.build(result.replace(".bin", ".inc.c"), "bin_inc_c", result)
+
+    for rgba32_file in rgba32_files:
+        result = append_prefix(append_extension(rgba32_file, ".bin"), "build/include/")
+        ninja_file.build(result, "rgba32_convert", rgba32_file)
+        ninja_file.build(result.replace(".bin", ".inc.c"), "bin_inc_c", result)
+
+    for ci4_file in ci4_files:
+        result = append_prefix(append_extension(ci4_file, ".bin"), "build/include/")
+        ninja_file.build(result, "ci4_convert", ci4_file)
+        ninja_file.build(result.replace(".bin", ".inc.c"), "bin_inc_c", result)
+
+        result = append_prefix(append_extension(ci4_file.replace(".png", ".pal"), ".bin"), "build/include/")
+        ninja_file.build(result, "pal_convert", ci4_file)
+        ninja_file.build(result.replace(".bin", ".inc.c"), "bin_inc_c", result)
+
+    for ci8_file in ci8_files:
+        result = append_prefix(append_extension(ci8_file, ".bin"), "build/include/")
+        ninja_file.build(result, "ci4_convert", ci8_file)
+        ninja_file.build(result.replace(".bin", ".inc.c"), "bin_inc_c", result)
+
+        result = append_prefix(append_extension(ci8_file.replace(".png", ".pal"), ".bin"), "build/include/")
+        ninja_file.build(result, "pal_convert", ci8_file)
+        ninja_file.build(result.replace(".bin", ".inc.c"), "bin_inc_c", result)
 
 for bin_file in bin_files:
-    ninja_file.build(append_prefix(append_extension(bin_file)), "bin_file", bin_file)
-
-for inc_bin in inc_bin_files:
-    s = getFileSettings(inc_bin)
-    ninja_file.build(append_prefix(inc_bin.replace(s["suffix"], "").replace(".bin", ".inc.c"), "build/include/"), s["rule"], inc_bin)
+    if incResources: ninja_file.build(append_prefix(bin_file.replace(".bin", ".inc.c"), "build/include/"), "bin_inc_c", bin_file)
+    else: ninja_file.build(append_prefix(append_extension(bin_file)), "bin_file", bin_file)
 
 #change .png.png -> png.o
 #change .png.pal -> pal.o
 #we are forced into using these extension names by splat due to how the linker script generates
-for img_file in image_files_o:
-    extension = os.path.splitext(img_file)[1]
-    if extension == '.pal':
-        pal_file = os.path.splitext(img_file)[0]
-        pal_file_pal = os.path.splitext(pal_file)[0] + '.pal'
-        ninja_file.build(append_extension(append_prefix(pal_file_pal)), "objcopy_image", append_prefix(img_file))
-    elif extension == '.png':
-        png_file = os.path.splitext(img_file)[0]
-        ninja_file.build(append_extension(append_prefix(png_file)), "objcopy_image", append_prefix(img_file))
+if not incResources:
+    for img_file in image_files_o:
+        extension = os.path.splitext(img_file)[1]
+        if extension == '.pal':
+            pal_file = os.path.splitext(img_file)[0]
+            pal_file_pal = os.path.splitext(pal_file)[0] + '.pal'
+            ninja_file.build(append_extension(append_prefix(pal_file_pal)), "objcopy_image", append_prefix(img_file))
+        elif extension == '.png':
+            png_file = os.path.splitext(img_file)[0]
+            ninja_file.build(append_extension(append_prefix(png_file)), "objcopy_image", append_prefix(img_file))
 
 for c_file in c_files:
-    if os.path.dirname(c_file) == mod_dir: continue
+    if os.path.dirname(c_file) == mod_dir:
+        continue
 
     file_name = os.path.basename(c_file)
     dep = append_prefix(append_extension(c_file) + '.d')
@@ -352,7 +366,8 @@ for c_file in c_files:
         ninja_file.build(append_prefix(append_extension(c_file)), "O2_cc", c_file, dep)  # Update later
 
 for s_file in s_files:
-    if "asm/nonmatchings" in s_file: continue
+    if "asm/nonmatchings" in s_file:
+        continue
     ninja_file.build(append_prefix(append_extension(s_file)), "s_file", s_file)
        
 ninja_file.build("build/chameleonTwistJP.elf", "make_elf ", o_files)
