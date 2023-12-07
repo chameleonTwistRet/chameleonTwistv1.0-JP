@@ -1419,25 +1419,25 @@ void func_8003BEE8(Actor* missileActor) {
 // ???: Nathan R.
 s32 func_8003C734(Actor* arg0, s32 arg1) {
     s32 passVar;
-    s32 cacheID;
+    s32 actorIndex;
 
-    cacheID = Actor_Init(arg0->actorID, arg0->pos.x, arg0->pos.y, arg0->pos.z, arg0->unk_90, arg0->unk_F4, arg0->unk_F8, arg0->unk_FC, arg0->unk_100, arg0->unk_104, arg0->unk_108, arg0->position._f32.x, arg0->position._f32.y, arg0->unk_15C, arg0->unk_160, arg0->unk_164, arg0->unk_168, arg0->unk_16C, arg0->unk_170, 0, arg0->unk_128, arg0->unk_12C, arg0->unk_130);
-    if (cacheID == -1) return -1;
+    actorIndex = Actor_Init(arg0->actorID, arg0->pos.x, arg0->pos.y, arg0->pos.z, arg0->unk_90, arg0->unk_F4, arg0->unk_F8, arg0->unk_FC, arg0->unk_100, arg0->unk_104, arg0->unk_108, arg0->position._f32.x, arg0->position._f32.y, arg0->unk_15C, arg0->unk_160, arg0->unk_164, arg0->unk_168, arg0->unk_16C, arg0->unk_170, 0, arg0->unk_128, arg0->unk_12C, arg0->unk_130);
+    if (actorIndex == -1) return -1;
     if (arg1 == 1) {
         passVar = 12;
-        gActors[cacheID].userVariables[2] = passVar;
-        gActors[cacheID].userVariables[1] = passVar;
+        gActors[actorIndex].userVariables[2] = passVar;
+        gActors[actorIndex].userVariables[1] = passVar;
     } else {
         passVar = (arg1 * 8) + 8;
-        gActors[cacheID].userVariables[2] = passVar;
-        gActors[cacheID].userVariables[1] = passVar;
+        gActors[actorIndex].userVariables[2] = passVar;
+        gActors[actorIndex].userVariables[1] = passVar;
     }
     if ((arg1 == 2) || (arg1 == 10)) {
-        gActors[cacheID].unk_A0.unk_00 = 3;
+        gActors[actorIndex].unk_A0.unk_00 = 3;
     }
-    gActors[cacheID].userVariables[3] = arg1;
-    gActors[cacheID].unk_124 = arg0->actorIndex;
-    return cacheID;
+    gActors[actorIndex].userVariables[3] = arg1;
+    gActors[actorIndex].unk_124 = arg0->actorIndex;
+    return actorIndex;
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8003C8AC.s")
