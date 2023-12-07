@@ -42,7 +42,7 @@ extern f32 D_800FEA1C;
 extern u32 D_800FEDB4;
 extern s32 D_800FEDB8;
 extern Tongue* D_80176B70;
-extern playerActor* D_80176B74;
+extern PlayerActor* D_80176B74;
 extern Camera* D_80176B78;
 extern s32 currentStageCrowns;
 void Rumble_Tick(void);
@@ -1242,7 +1242,7 @@ void func_8007AC2C(s32* arg0) {
     }
 }
 
-// func_8007AC60(Camera* playerActor*)
+// func_8007AC60(Camera* PlayerActor*)
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8007AC60.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8007ADDC.s")
@@ -1465,7 +1465,7 @@ Gfx* func_800849D4(Gfx* arg0) {
     return arg0;
 }
 
-void func_800849DC(s32 arg0, Tongue* playerTongue, playerActor* player, Camera* cam) {
+void func_800849DC(s32 arg0, Tongue* playerTongue, PlayerActor* player, Camera* cam) {
     func_80056F48(arg0, playerTongue, player, cam);
     D_800F6880 = arg0;
 }

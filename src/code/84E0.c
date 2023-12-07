@@ -613,7 +613,7 @@ s32 Actor_Init(s32 type, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 a
     for (i = 0; i < ACTORS_MAX; i++, curActor++) {
         if (curActor->actorID == 0) {
             Actors_Init(i, type, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, argA, argB, argC, argD, argE, argF, arg10, arg11, arg12, arg13, arg14, arg15, arg16);
-            gActorCount += 1;
+            gActorCount++;
             return i;
         }
     }
@@ -718,8 +718,7 @@ void func_8002E5DC(UnkTempStruct arg0) {
     }
 }
 
-//camera controller of sorts.
-//all of the context is ready though, as far as i'm aware
+//camera controller of sorts
 //https://decomp.me/scratch/tpjwG
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8002E9F4.s")
 
@@ -728,39 +727,39 @@ void func_8002E5DC(UnkTempStruct arg0) {
 
 //related to animation
 void func_8002F3D4(void) {
-    if (gPlayerOnePointer->amountLeftToShoot != 0) {
-        gPlayerOnePointer->amountLeftToShoot--;
+    if (gCurrentActivePlayerPointer->amountLeftToShoot != 0) {
+        gCurrentActivePlayerPointer->amountLeftToShoot--;
     }
-    if (gPlayerOnePointer->vaultFall != 0) {
-        gPlayerOnePointer->vaultFall--;
+    if (gCurrentActivePlayerPointer->vaultFall != 0) {
+        gCurrentActivePlayerPointer->vaultFall--;
     }
-    if (gPlayerOnePointer->canJump == 0) {
-        gPlayerOnePointer->vaultFall = 0;
+    if (gCurrentActivePlayerPointer->canJump == 0) {
+        gCurrentActivePlayerPointer->vaultFall = 0;
     }
-    if (gPlayerOnePointer->canJump == 0) {
-        if (gPlayerOnePointer->forwardVel == 0.0f) {
-            gPlayerOnePointer->groundMovement = 0;
-            gPlayerOnePointer->globalTimer = (gPlayerOnePointer->globalTimer + 0.3000000119f);
+    if (gCurrentActivePlayerPointer->canJump == 0) {
+        if (gCurrentActivePlayerPointer->forwardVel == 0.0f) {
+            gCurrentActivePlayerPointer->groundMovement = 0;
+            gCurrentActivePlayerPointer->globalTimer = (gCurrentActivePlayerPointer->globalTimer + 0.3000000119f);
             return;
         }
-        if (gPlayerOnePointer->forwardVel < (65.0f * gPlayerOnePointer->forwardImpulse)) {
-            gPlayerOnePointer->groundMovement = 1;
-            gPlayerOnePointer->globalTimer = (gPlayerOnePointer->globalTimer + (((2.0f + (((gPlayerOnePointer->forwardVel / ((65.0f * gPlayerOnePointer->forwardImpulse) / 10.0f)) * gPlayerOnePointer->forwardImpulse) / 0.3200000226f)) / 4.5f) / 1.799999952f));
+        if (gCurrentActivePlayerPointer->forwardVel < (65.0f * gCurrentActivePlayerPointer->forwardImpulse)) {
+            gCurrentActivePlayerPointer->groundMovement = 1;
+            gCurrentActivePlayerPointer->globalTimer = (gCurrentActivePlayerPointer->globalTimer + (((2.0f + (((gCurrentActivePlayerPointer->forwardVel / ((65.0f * gCurrentActivePlayerPointer->forwardImpulse) / 10.0f)) * gCurrentActivePlayerPointer->forwardImpulse) / 0.3200000226f)) / 4.5f) / 1.799999952f));
             return;
         }
-        gPlayerOnePointer->groundMovement = 2;
-        gPlayerOnePointer->globalTimer = gPlayerOnePointer->globalTimer + 1.5f * gPlayerOnePointer->forwardImpulse / 0.3200000226f;
+        gCurrentActivePlayerPointer->groundMovement = 2;
+        gCurrentActivePlayerPointer->globalTimer = gCurrentActivePlayerPointer->globalTimer + 1.5f * gCurrentActivePlayerPointer->forwardImpulse / 0.3200000226f;
     }
 }
 
 
 void func_8002F528(s32 arg0) {
-    gPlayerOnePointer->playerHURTSTATE = 3;
-    gPlayerOnePointer->playerHURTTIMER = 0;
+    gCurrentActivePlayerPointer->playerHURTSTATE = 3;
+    gCurrentActivePlayerPointer->playerHURTTIMER = 0;
 }
 
 
-void func_8002F54C(f32 arg0, playerActor* PlayerP, s32 arg2) {
+void func_8002F54C(f32 arg0, PlayerActor* PlayerP, s32 arg2) {
     PlayerP->vel.y = arg0;
     PlayerP->canJump = 1;
     PlayerP->hasTumbled = arg2;
@@ -771,16 +770,20 @@ void func_8002F54C(f32 arg0, playerActor* PlayerP, s32 arg2) {
 
 
 void func_8002F568(void) {
-    gPlayerOnePointer->vel.x = gPlayerOnePointer->vaultlocity.x * 0.25f;
-    gPlayerOnePointer->vel.z = gPlayerOnePointer->vaultlocity.z * 0.25f;
+    gCurrentActivePlayerPointer->vel.x = gCurrentActivePlayerPointer->vaultlocity.x * 0.25f;
+    gCurrentActivePlayerPointer->vel.z = gCurrentActivePlayerPointer->vaultlocity.z * 0.25f;
     if (gTongueOnePointer->segments >= 4) {
-        gPlayerOnePointer->vaultFall = 12;
+        gCurrentActivePlayerPointer->vaultFall = 12;
     }
 }
 
-//really long return
-//https://decomp.me/scratch/IBzc9
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8002F5C4.s")
+f32 func_8002F5C4(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
+    arg0 = arg1 - arg0;
+    if (arg2 < arg0) {
+        arg0 = arg2;
+    }
+    return ((( ((__sinf(arg0 * 0x168 * arg3 / arg2 * 2 * PI / 360.0) * (arg2 - arg0)) / arg2) + 3.0) * arg0) / 4) / arg2;
+}
 
 s32 func_8002F6DC(f32* arg0, f32 arg1) {
     f32 var_f0;
@@ -803,7 +806,7 @@ s32 func_8002F6DC(f32* arg0, f32 arg1) {
     }
     
     if (var_f2 <= var_f0) {
-        *arg0 += var_f2 * (f32) AreAnglesWithin180Degrees(*arg0, arg1);
+        *arg0 += var_f2 * AreAnglesWithin180Degrees(*arg0, arg1);
     } else {
         *arg0 = arg1;
     }
@@ -826,18 +829,18 @@ void func_8002F7F0(void) {
     amountInMouth = gTongueOnePointer->amountInMouth;
     if (amountInMouth < 6) {
         // set impulse between 0.93 and 1.0
-        gPlayerOnePointer->forwardImpulse = (((24.0f - amountInMouth) * 0.3200000226f) / 24.0f);
+        gCurrentActivePlayerPointer->forwardImpulse = (((24.0f - amountInMouth) * 0.3200000226f) / 24.0f);
     } else {
-        gPlayerOnePointer->forwardImpulse = 0.2400000095f;
+        gCurrentActivePlayerPointer->forwardImpulse = 0.2400000095f;
     }
-    if (gPlayerOnePointer->power == POWERUP_MINI) {
+    if (gCurrentActivePlayerPointer->power == POWERUP_MINI) {
         // half any impulse if player is mini
-        gPlayerOnePointer->forwardImpulse = (gPlayerOnePointer->forwardImpulse * 0.5f);
+        gCurrentActivePlayerPointer->forwardImpulse = (gCurrentActivePlayerPointer->forwardImpulse * 0.5f);
     }
 }
 
 void func_8002F884(s32 arg0, s32 arg1) {
-    if (((D_801749B0.unk_00 == 0) || (gPlayerOnePointer->playerID != 1)) && (D_80168D78[arg0] == 0)) {
+    if (((D_801749B0.unk_00 == 0) || (gCurrentActivePlayerPointer->playerID != 1)) && (D_80168D78[arg0] == 0)) {
         if (gameModeCurrent == GAME_MODE_BATTLE_MENU) {
             Rumble_AddTime(arg0, ((arg1 * 100) / 6.0f));
         } else {
@@ -847,18 +850,18 @@ void func_8002F884(s32 arg0, s32 arg1) {
 }
 
 void func_8002F960(Tongue* arg0) {
-    func_8002F884(gPlayerOnePointer->playerID, 2);
+    func_8002F884(gCurrentActivePlayerPointer->playerID, 2);
     PLAYSFX(16, 0, 0X10);
     arg0->wallTime = 10;
 }
 
-void func_8002F9BC(s32 arg0) {
-    gPlayerOnePointer->power = POWERUP_NONE;
+void func_8002F9BC(PlayerActor* arg0) {
+    gCurrentActivePlayerPointer->power = POWERUP_NONE;
     func_8002F7F0();
-    gPlayerOnePointer->tongueYOffset = 60.0f;
-    gPlayerOnePointer->tongueSeperation = 50.0f;
-    gPlayerOnePointer->hitboxSize = 30.0f;
-    gPlayerOnePointer->hitboxYStretch = 150.0f;
+    gCurrentActivePlayerPointer->tongueYOffset = 60.0f;
+    gCurrentActivePlayerPointer->tongueSeperation = 50.0f;
+    gCurrentActivePlayerPointer->hitboxSize = 30.0f;
+    gCurrentActivePlayerPointer->hitboxYStretch = 150.0f;
 }
 
 //very long
@@ -949,7 +952,117 @@ void func_800320EC(s32 arg0, f32 arg1, f32 arg2) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80033048.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/pickup_collide_func.s")
+void pickup_collide_func(s32 actorIndex) {
+    Actor* temp_s2;
+    s32 var_s0;
+    s32 var_v1;
+    s32 i;
+
+    temp_s2 = &gActors[actorIndex];
+    var_s0 = 0;
+
+    switch (temp_s2->actorID) {
+    case R_Heart:
+    case Falling_R_Heart:
+        if (gCurrentActivePlayerPointer->hp < 10) {
+            gCurrentActivePlayerPointer->hp++;
+        }
+        playSoundEffect(0x3A, NULL, NULL, NULL, 0, 0x10);
+        var_s0 = 0x1E;
+        break;
+    case O_Heart:
+        gCurrentActivePlayerPointer->hp += 3;
+        if (gCurrentActivePlayerPointer->hp > 10) {
+            gCurrentActivePlayerPointer->hp = 10;
+        }
+        playSoundEffect(0x3A, NULL, NULL, NULL, 0, 0x10);
+        var_s0 = 0x28;
+        break;
+    case Y_Heart:
+        gCurrentActivePlayerPointer->hp = 10;
+        playSoundEffect(0x3A, NULL, NULL, NULL, 0, 0x10);
+        var_s0 = 0x32;
+        break;
+    case Crown:
+        playSoundEffect(0x39, NULL, NULL, NULL, 0, 0x10);
+        var_s0 = 0x46;
+        break;
+    case Carrot:
+        playSoundEffect(0x39, NULL, NULL, NULL, 0, 0x10);
+        var_s0 = 0x50;
+        break;
+    case unk_65:
+        playSoundEffect(0x39, NULL, NULL, NULL, 0, 0x10);
+        var_s0 = 0x5A;
+        break;
+    case Time_Stop_Power_Up:
+        func_8002F9BC(gCurrentActivePlayerPointer);
+        gCurrentActivePlayerPointer->power = 4;
+        gCurrentActivePlayerPointer->powerTimer = 0;
+        gCurrentActivePlayerPointer->powerTimerTill = temp_s2->unk_128;
+        playSoundEffect(0x3A, NULL, NULL, NULL, 0, 0x10);
+        var_s0 = 0x32;
+        break;
+    case Big_Feet_Power_Up:
+        func_8002F9BC(gCurrentActivePlayerPointer);
+        gCurrentActivePlayerPointer->power = 1;
+        gCurrentActivePlayerPointer->powerTimer = 0;
+        gCurrentActivePlayerPointer->powerTimerTill = temp_s2->unk_128;
+        playSoundEffect(0x3A, NULL, NULL, NULL, 0, 0x10);
+        var_s0 = 0x32;
+        break;
+    case Big_Head_Power_Up:
+        func_8002F9BC(gCurrentActivePlayerPointer);
+        gCurrentActivePlayerPointer->power = 2;
+        gCurrentActivePlayerPointer->powerTimer = 0;
+        gCurrentActivePlayerPointer->powerTimerTill = temp_s2->unk_128;
+        playSoundEffect(0x3A, NULL, NULL, NULL, 0, 0x10);
+        var_s0 = 0x32;
+        break;
+    case Shrink_Power_Up:
+        func_8002F9BC(gCurrentActivePlayerPointer);
+        gCurrentActivePlayerPointer->power = 3;
+        gCurrentActivePlayerPointer->powerTimer = 0;
+        gCurrentActivePlayerPointer->powerTimerTill = temp_s2->unk_128;
+        gCurrentActivePlayerPointer->tongueYOffset = 30.0f;
+        gCurrentActivePlayerPointer->tongueSeperation = 25.0f;
+        gCurrentActivePlayerPointer->hitboxSize *= 0.5f;
+        gCurrentActivePlayerPointer->hitboxYStretch *= 0.5f;
+        func_8002F7F0();
+        playSoundEffect(0x3A, NULL, NULL, NULL, 0, 0x10);
+        break;
+    case Shrink_Enemy_Power_Up:
+        func_8002F9BC(gCurrentActivePlayerPointer);
+        var_v1 = gCurrentActivePlayerPointer->playerID;
+        for (i = 0; i < 4; i++) {
+            if (var_v1 == i) {
+                continue;
+            }
+
+            gCurrentActivePlayerPointer = &gPlayerActors[i];
+            gCurrentActivePlayerPointer->power = 3;
+            gCurrentActivePlayerPointer->powerTimer = 0;
+            gCurrentActivePlayerPointer->powerTimerTill = temp_s2->unk_128;
+            gCurrentActivePlayerPointer->tongueYOffset = 30.0f;
+            gCurrentActivePlayerPointer->tongueSeperation = 25.0f; 
+            gCurrentActivePlayerPointer->hitboxSize *= 0.5f;
+            gCurrentActivePlayerPointer->hitboxYStretch *= 0.5f;
+            func_8002F7F0();
+        }
+        gCurrentActivePlayerPointer = &gPlayerActors[var_v1];
+        playSoundEffect(0x3A, NULL, NULL, NULL, 0, 0x10);
+        var_s0 = 0x32;
+        break;
+    }
+    
+    temp_s2->actorID = 0;
+    
+    if (var_s0 == 0) {
+        initPlayerEyeController(gSelectedCharacters[gCurrentActivePlayerPointer->playerID], 2, 50.0f, 0);
+        return;
+    }
+    initPlayerEyeController(gSelectedCharacters[gCurrentActivePlayerPointer->playerID], 1, var_s0, 0);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80034104.s")
 
@@ -980,7 +1093,7 @@ extern s32 D_80174980;
 extern s32 D_80174988;
 extern s32 D_801749AC;
 
-void func_80036D74(playerActor* arg0, Tongue* arg1) {
+void func_80036D74(PlayerActor* arg0, Tongue* arg1) {
     if (arg0->playerHURTSTATE == 0) {
         func_8002F884(arg0->playerID, 5);
         func_80064BFC(arg0->pos.x, arg0->pos.y, arg0->pos.z);
@@ -999,17 +1112,18 @@ void func_80036D74(playerActor* arg0, Tongue* arg1) {
         arg0->playerHURTBY = 0;
         func_80031DB0(arg0, arg1, 0);
         arg0->yAngle = CalculateAngleOfVector(-arg0->vel.x, arg0->vel.z);;
-        arg0->vel.x = -__cosf(arg0->yAngle * 2 * 3.14159265358979312 / 360.0) * 32.0f;
-        arg0->vel.z = __sinf(arg0->yAngle * 2 * 3.14159265358979312 / 360.0) * 32.0f;
+        arg0->vel.x = -__cosf(arg0->yAngle * 2 * PI / 360.0) * 32.0f;
+        arg0->vel.z = __sinf(arg0->yAngle * 2 * PI / 360.0) * 32.0f;
         func_8002F54C(48.0f, arg0, 1);
     }
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80036F30.s")
 
-s32 isExplodingActor(s32 arg0) {
-    s32 temp_v0 = gActors[arg0].actorID;
-    if ((temp_v0 == 13) || (temp_v0 == 14) || (temp_v0 == 16) || (temp_v0 == 18) || (temp_v0 == 21)) {
+s32 isExplodingActor(s32 actorIndex) {
+    s32 actorID = gActors[actorIndex].actorID;
+    if ((actorID == White_Bomb_Snake) || (actorID == Grenade) ||
+        (actorID == Missile) || (actorID == Cannonball) || (actorID == BL_Boss_Bombs)) {
         return 1;
     }
     return 0;
@@ -1023,21 +1137,24 @@ s32 isActiveExplosion(Actor* actor) {
     return 0;
 }
 
-s32 func_80037538(s32* arg0) {
-    if ((*arg0 == 19) || (*arg0 == 17) || (*arg0 == 18) || (*arg0 == 39) || (*arg0 == 41) || (*arg0 == 38)) {
+s32 func_80037538(Actor* actor) {
+    if ((actor->actorID == BL_Boss_Segment) || (actor->actorID == Cannon) ||
+        (actor->actorID == Cannonball) || (actor->actorID == Cake_Boss_Strawberry) ||
+        (actor->actorID == Cake_Boss_Choco_Kid) || (actor->actorID == Cake_Boss)) {
         return 1;
     }
     return 0;
 }
 
-s32 func_80037584(s32 arg0) {
-    s32 temp_v0 = gActors[arg0].actorID;
-    if ((temp_v0 == 20) || (temp_v0 == 75) || (temp_v0 == 7) || (temp_v0 == 19) || (temp_v0 == 30) || (temp_v0 == 38) || (temp_v0 == 61) || (temp_v0 == 68) || (temp_v0 == 33)) {
+s32 func_80037584(s32 actorIndex) {
+    s32 actorID = gActors[actorIndex].actorID;
+    if ((actorID == Explosion) || (actorID == Lizard_Kong) || (actorID == Ant_Queen) ||
+        (actorID == BL_Boss_Segment) || (actorID == Armadillo) || (actorID == Cake_Boss) ||
+        (actorID == Pile_of_Books) || (actorID == Golem) || (actorID == Pogo)) {
         return 1;
     }
     return 0;
 }
-
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8003760C.s")
 
@@ -1055,14 +1172,13 @@ void func_800382B4(f32* arg0, f32 arg1) {
 }
 
 void func_800382F4(Actor* arg0) {
-    arg0->vel.x = __cosf((arg0->unk_90 * 2 * 3.14159265358979312) / 360.0) * arg0->unk_94;
-    arg0->vel.z = -__sinf((arg0->unk_90 * 2 * 3.14159265358979312) / 360.0) * arg0->unk_94;
+    arg0->vel.x = __cosf((arg0->unk_90 * 2 * PI) / 360.0) * arg0->unk_94;
+    arg0->vel.z = -__sinf((arg0->unk_90 * 2 * PI) / 360.0) * arg0->unk_94;
 }
 
 void func_800383A0(Actor* actor) {
     CalcEnemyNextPosition(actor);
 }
-
 
 // Grey Ant Spawner: Elisiah
 void func_800383C0(Actor* greyAntSpawnerActor) {
@@ -1101,7 +1217,7 @@ void func_80038990(Actor* bulletHellAntSpawnerActor) {
 // ???: Nathan R.
 void func_8003899C(Actor* arg0) {
 
-    if (gPlayerOnePointer->pos.z > -500.0f) {
+    if (gCurrentActivePlayerPointer->pos.z > -500.0f) {
         arg0->userVariables[2] = 1;
     }
     if (arg0->userVariables[2] != 0) {
@@ -1120,13 +1236,12 @@ void ActorInit_AntBulletHell(Actor* arg0) {
     f32 sine;
     arg0->unk_94 = arg0->position._f32.x;
     sine = __sinf((6 * D_8017499C * 3.14159265358979312) / 360.0);
-    ang = CalcAngleBetween2DPoints(arg0->pos.x, arg0->pos.z, gPlayerOnePointer->pos.x, gPlayerOnePointer->pos.z);
+    ang = CalcAngleBetween2DPoints(arg0->pos.x, arg0->pos.z, gCurrentActivePlayerPointer->pos.x, gCurrentActivePlayerPointer->pos.z);
     arg0->unk_90 = arg0->position._f32.y + (ang + 12 * sine);
     WrapDegrees(&arg0->unk_90);
     func_800382F4(arg0);
 }
  
-
 s32 func_80038B98(Actor* arg0) {
     if (arg0->unk_98 != 0) {
         arg0->vel.y -= 3.200000048f;
@@ -1140,8 +1255,6 @@ s32 func_80038B98(Actor* arg0) {
     }
     return 0;
 }
-
-
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80038C64.s")
 
@@ -1220,8 +1333,8 @@ void ActorTick_AntQueenDrone(Actor* arg0) {
         arg0->vel.y = 0.0f;
     }
     if ((arg0->pos.x < -1400.0f) || (arg0->pos.x > 1400.0f) || (arg0->pos.z < -1400.0f) || (arg0->pos.z > 1400.0f)) {
-        playerXMod = gPlayerOnePointer->pos.x;
-        playerZMod = gPlayerOnePointer->pos.z;
+        playerXMod = gCurrentActivePlayerPointer->pos.x;
+        playerZMod = gCurrentActivePlayerPointer->pos.z;
         if (playerXMod < -1300.0f) playerXMod = -1300.0f;
         if (playerXMod > 1300.0f) playerXMod = 1300.0f;
         if (playerZMod < -1300.0f) playerZMod = -1300.0f;
@@ -1489,7 +1602,7 @@ void func_8003FB4C(Actor* arg0) {
     arg0->userVariables[3] += 1;
     if ((arg0->userVariables[3] % (s32) arg0->unk_124) == 0) {
         arg0->userVariables[0] += 3;
-        func_8003FA38(arg0, gPlayerOnePointer->pos.x, gPlayerOnePointer->yCounter, gPlayerOnePointer->pos.z);
+        func_8003FA38(arg0, gCurrentActivePlayerPointer->pos.x, gCurrentActivePlayerPointer->yCounter, gCurrentActivePlayerPointer->pos.z);
         return;
     }
     switch (arg0->userVariables[0]) {                              /* irregular */
@@ -1812,7 +1925,7 @@ void func_80044564(void) {
 
 //Fire: Auto-Decompile
 void func_80044584(Actor* arg0) {
-    arg0->unk_90 = CalcAngleBetween2DPoints(arg0->pos.x, arg0->pos.z, gPlayerOnePointer->pos.x, gPlayerOnePointer->pos.z);
+    arg0->unk_90 = CalcAngleBetween2DPoints(arg0->pos.x, arg0->pos.z, gCurrentActivePlayerPointer->pos.x, gCurrentActivePlayerPointer->pos.z);
     arg0->userVariables[1] = arg0->unk_128;
 }
 
@@ -1820,7 +1933,7 @@ void func_80044584(Actor* arg0) {
 void func_800445CC(Actor* fireActor) {
     f32 angle;
 
-    angle = CalcAngleBetween2DPoints(fireActor->pos.x, fireActor->pos.z, gPlayerOnePointer->pos.x, gPlayerOnePointer->pos.z);
+    angle = CalcAngleBetween2DPoints(fireActor->pos.x, fireActor->pos.z, gCurrentActivePlayerPointer->pos.x, gCurrentActivePlayerPointer->pos.z);
     if (fireActor->userVariables[0] == 0) {
         fireActor->unk_94 = fireActor->position._f32.x;
         func_8002D36C(&fireActor->unk_90, angle, fireActor->position._f32.y);
@@ -1840,9 +1953,9 @@ void func_800445CC(Actor* fireActor) {
             fireActor->userVariables[1]--;
         }
     }
-    if (fireActor->pos.y < (gPlayerOnePointer->pos.y - fireActor->unk_15C)) {
+    if (fireActor->pos.y < (gCurrentActivePlayerPointer->pos.y - fireActor->unk_15C)) {
         fireActor->pos.y += fireActor->unk_15C;
-    } else if ((fireActor->unk_15C + gPlayerOnePointer->pos.y) < fireActor->pos.y) {
+    } else if ((fireActor->unk_15C + gCurrentActivePlayerPointer->pos.y) < fireActor->pos.y) {
         fireActor->pos.y = fireActor->pos.y - fireActor->unk_15C;
     }
     fireActor->unk_F0++;
@@ -2344,7 +2457,7 @@ void ActorTick_Powerup(Actor* arg0) {
 //related to spawning collsion pieces
 void func_8004BA5C(s32 arg0) {
     s32 i;
-    gPlayerOnePointer = &gPlayerActors[0];
+    gCurrentActivePlayerPointer = &gPlayerActors[0];
     gTongueOnePointer = &gTongues[0];
     
     for (i = 0; i < arg0; i++) {

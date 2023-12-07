@@ -68,7 +68,7 @@ typedef struct unkIsChange {
     /* 0xD8 */ s32 unk_D8;
 } unkIsChange;
 
-typedef struct playerActor {
+typedef struct PlayerActor {
     /* 0x000 */ u32 playerID;
     /* 0x004 */ Vec3f pos;
     /* 0x010 */ Vec3f pos2; //slightly off from pos
@@ -133,7 +133,7 @@ typedef struct playerActor {
     /* 0x124 */ u32 powerTimerTill; 
     /* 0x128 */ f32 tongueYOffset; 
     /* 0x12C */ f32 tongueSeperation; 
-} playerActor; //sizeof 0x130
+} PlayerActor; //sizeof 0x130
 
 
 typedef struct TonguePos{
@@ -151,23 +151,23 @@ typedef struct Tongue { // at 80169268 (for p1)
     /* 0x0C */ s32 poleSegmentAt;
     /* 0x10 */ u32 timer;
     /* 0x14 */ s32 cameraSegmentAt;//where to point the camera
-    /* 0x18 */ TonguePos tongueXs;//all (including the rope model) positions
+    /* 0x18 */ f32 tongueXs[32]; //all (including the rope model) positions
     /* 0x98 */ f32 xpos33;//the last piece is special to the positions and angle
-    /* 0x9C */ TonguePos tongueYs;
+    /* 0x9C */ f32 tongueYs[32];
     /* 0x11C*/ f32 ypos33;
-    /* 0x120*/ TonguePos tongueZs;
+    /* 0x120*/ f32 tongueZs[32];
     /* 0x1A0*/ f32 zpos33;
-    /* 0x1A4*/ TonguePos tongueAngles;
+    /* 0x1A4*/ f32 tongueAngles[32];
     /* 0x224*/ f32 anglepos33;
-    /* 0x228*/ TonguePos tongueForwards;
-    /* 0x2A8*/ TonguePos tongueHalfX;// idk what this or the other one is doing but they are axiis so
-    /* 0x328*/ TonguePos tongueHalfZ;
+    /* 0x228*/ f32 tongueForwards[32];
+    /* 0x2A8*/ f32 tongueHalfX[32]; // unsure, axes related though
+    /* 0x328*/ f32 tongueHalfZ[32];
     /* 0x3A8*/ f32 controlAngle;
     /* 0x3AC*/ f32 length;
     /* 0x3B0*/ f32 trueAngle;
-    /* 0x3B4*/ tongueSlot onTongue;
+    /* 0x3B4*/ u32 onTongue[64];
     /* 0x4B4*/ u32 amountOnTongue; //called "capture_num" in US 1.0
-    /* 0x4B8*/ tongueSlot inMouth;
+    /* 0x4B8*/ u32 inMouth[64];
     /* 0x5B8*/ u32 amountInMouth;
     //all of this has to do with vaulting
     /* 0x5BC*/ f32 reset1;
@@ -283,7 +283,7 @@ typedef struct PlayerInit {
     u32 unk0; //used to ID selected chameleon.
     u32 unk4;
     u32 unk8;
-    playerActor actorInit;
+    PlayerActor actorInit;
     Tongue tongueInit;
     u8 cameraInit[0x6C]; //camera substruct(s?) yet defined. copied like the other 2
     s32 unk7b4;

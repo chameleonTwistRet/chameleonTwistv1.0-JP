@@ -12,7 +12,7 @@
 extern s32 rngSeed; //rng
 
 extern Camera* D_80174860;
-extern playerActor* gPlayerOnePointer;
+extern PlayerActor* gCurrentActivePlayerPointer;
 extern Tongue* gTongueOnePointer;
 extern contMain gContMain[MAXCONTROLLERS];
 extern s16 gTotalCarrots;
@@ -203,7 +203,7 @@ extern OSMesgQueue gPiManMgsQ;
 extern s32 gControllerNo;
 extern s32 D_80168D78[];
 extern s32 gActorCount;
-extern playerActor gPlayerActors[4];
+extern PlayerActor gPlayerActors[4];
 //extern s32 D_80168E5C;
 extern Tongue gTongues[4];
 extern Actor gActors[ACTORS_MAX]; //currently loaded actor structs

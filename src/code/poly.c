@@ -43,10 +43,10 @@ extern s32 D_80108FEC;
 extern Vec3f D_802489C8[8];
 
 Vec3f* RotateVector3D(Vec3f*, Vec3f, f32, s32);
-void func_800D3854(playerActor*, Tongue*, Camera*, Vec3f*, Vec3f*, s32);
-void func_800D5394(playerActor*, Tongue*, Camera*, Vec3f*, Vec3f*, s32);
-void func_800D6864(playerActor*, Tongue*, Camera*, Vec3f*, Vec3f*);
-void func_800D69D0(s32, playerActor*, Tongue*, Camera*, Vec3f*, Vec3f*, s32);
+void func_800D3854(PlayerActor*, Tongue*, Camera*, Vec3f*, Vec3f*, s32);
+void func_800D5394(PlayerActor*, Tongue*, Camera*, Vec3f*, Vec3f*, s32);
+void func_800D6864(PlayerActor*, Tongue*, Camera*, Vec3f*, Vec3f*);
+void func_800D69D0(s32, PlayerActor*, Tongue*, Camera*, Vec3f*, Vec3f*, s32);
 Collider* func_800CAF88(Vec3f, f32, f32);
 Collider* SearchPolygonBetween(Vec3f, Vec3f, s32, s32, s32);
 void OrderRectBounds(Rect3D*);
@@ -215,7 +215,7 @@ void CalcEnemyNextPosition(Actor* arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800CFB6C.s")
 
-void func_800CFDB8(playerActor* arg0) {
+void func_800CFDB8(PlayerActor* arg0) {
     arg0->vaulting = 0;
     arg0->surface = -1;
 }
@@ -224,7 +224,7 @@ void func_800CFDB8(playerActor* arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800CFE14.s")
 
-void func_800CFF64(playerActor* player) {
+void func_800CFF64(PlayerActor* player) {
     player->surfaceSlide = 0;
     player->move.z = 0.0f;
     player->move.y = 0.0f;
@@ -361,7 +361,7 @@ void func_800D4550(s32 arg0, s32 arg1, Poly* arg2, Vec3f* arg3, Vec3f* arg4) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800D5394.s")
 
-void func_800D6864(playerActor* arg0, Tongue* arg1, Camera* arg2, Vec3f* arg3, Vec3f* arg4) {
+void func_800D6864(PlayerActor* arg0, Tongue* arg1, Camera* arg2, Vec3f* arg3, Vec3f* arg4) {
     Collision* collider;
 
     collider = &gZoneCollisions[gCurrentZone];
