@@ -1129,4 +1129,11 @@ typedef struct CollisionData{
     u32 settingsStart; //segmented
 } CollisionData;
 
+typedef struct unk80170E68 {
+    s32 unk_00;
+    char unk_04[0x804];
+} unk80170E68;
+
+extern unk80170E68 D_80170E68[];
+
 #endif

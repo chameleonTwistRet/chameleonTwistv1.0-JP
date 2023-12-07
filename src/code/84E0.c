@@ -873,8 +873,21 @@ void func_8002F9BC(PlayerActor* arg0) {
 //https://decomp.me/scratch/BeR2b
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80030F3C.s")
 
-//some kind of actor check (and set)
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_800311C8.s")
+void func_800311C8(Actor* arg0) {
+    Actor* curActor;
+    s32 i;
+
+    if ((arg0->actorState == 0) && (arg0->actorID == 0x47)) {
+        if (arg0->userVariables[3] == 0) {
+            D_80170E68[arg0->unk_128].unk_00 = 0;
+            for (i = 0; i < MAX_ACTORS; i++, curActor++) {
+                if ((gActors[i].actorID == 0x47) && (arg0->unk_128 == gActors[i].unk_128)) {
+                    gActors[i].userVariables[3] = -1;
+                }                
+            }
+        }
+    }
+}
 
 void func_800312B0(s32 id) {
     Actor* currActor = &gActors[id];
@@ -888,8 +901,8 @@ void func_800312FC(Actor* arg0, f32 arg1) {
     arg0->userVariables[0] = 0;
     arg0->userVariables[1] = 14;
     arg0->unk_134[3] = 76.80000305f;
-    arg0->vel.x = __cosf((arg1 * 2 * 3.14159265358979312) / 360.0) * 16.0f;     //cosf(DEGREES_TO_RAD_2PI(arg1)) * 16.0f;
-    arg0->vel.z = -__sinf((arg1 * 2 * 3.14159265358979312) / 360.0) * 16.0f;
+    arg0->vel.x = __cosf((arg1 * 2 * PI) / 360.0) * 16.0f;     //cosf(DEGREES_TO_RAD_2PI(arg1)) * 16.0f;
+    arg0->vel.z = -__sinf((arg1 * 2 * PI) / 360.0) * 16.0f;
     arg0->tongueCollision = 0;
     playSoundEffect(109, &arg0->pos.x, &arg0->pos.y, &arg0->pos.z, 0, 0);
 }
@@ -1235,7 +1248,7 @@ void ActorInit_AntBulletHell(Actor* arg0) {
     f32 ang;
     f32 sine;
     arg0->unk_94 = arg0->position._f32.x;
-    sine = __sinf((6 * D_8017499C * 3.14159265358979312) / 360.0);
+    sine = __sinf((6 * D_8017499C * PI) / 360.0);
     ang = CalcAngleBetween2DPoints(arg0->pos.x, arg0->pos.z, gCurrentActivePlayerPointer->pos.x, gCurrentActivePlayerPointer->pos.z);
     arg0->unk_90 = arg0->position._f32.y + (ang + 12 * sine);
     WrapDegrees(&arg0->unk_90);
@@ -1772,7 +1785,7 @@ void ActorTick_BilliardBall(Actor* arg0) {
     ActorTick_MinigameActor(arg0);
     temp_f0_2 = NORM_2(arg0->vel.x,arg0->vel.z);
     arg0->unk_94 = temp_f0_2;
-    arg0->unk_134[0] = ((180.0f * temp_f0_2) / ( arg0->unknownPositionThings[0].unk_0C * 3.14159265358979312)) + arg0->unk_134[0];
+    arg0->unk_134[0] = ((180.0f * temp_f0_2) / ( arg0->unknownPositionThings[0].unk_0C * PI)) + arg0->unk_134[0];
     arg0->unk_90 = CalculateAngleOfVector(arg0->vel.x, -arg0->vel.z);
 }
 
