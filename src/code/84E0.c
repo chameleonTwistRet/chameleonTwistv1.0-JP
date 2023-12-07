@@ -20,6 +20,11 @@ s32 D_801749A4;
 s32 D_801749A8;
 s32 D_801749AC;
 unk801749B0 D_801749B0;
+extern s32 D_80174880[0x20];
+void func_80064BFC(f32, f32, f32);
+extern s32 D_80174980;
+extern s32 D_80174988;
+extern s32 D_801749AC;
 
 // typedef struct armsMaybe {
 //     s32 armActorIDs[15][15]; //static s32 D_801749D8[15];
@@ -908,7 +913,19 @@ void func_800312FC(Actor* arg0, f32 arg1) {
 }
 
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_800313BC.s")
+void func_800313BC(s32 arg0, f32 arg1) {
+    func_800311C8(gActors+arg0);
+    gActors[arg0].actorState = 4;
+    gActors[arg0].unk_C8 = 0;
+    gActors[arg0].sizeScalar = 1.0f;
+    func_800312B0(arg0);
+    gActors[arg0].vel.y = 38.4f;
+    gActors[arg0].vel.x = __cosf(arg1 * 2 * PI / 360.0) * 12.0f;
+    gActors[arg0].vel.z = -__sinf(arg1 * 2 * PI / 360.0) * 12.0f;
+    if (gActors[arg0].actorID == Spider_Spawner) {
+        D_80174880[(s32)gActors[arg0].unk_164] = 1;
+    }
+}
 
 void func_800314E4(Actor* arg0) {
     if (arg0->actorID == 1) {
@@ -926,11 +943,11 @@ void func_800314E4(Actor* arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80031DB0.s")
 
 s32 func_80032074(s32 arg0) {
-    Actor* temp_v0 = &gActors[arg0];
-    if ((temp_v0->actorState != 0) && (temp_v0->actorState != 3)) {
+    Actor* actor = &gActors[arg0];
+    if ((actor->actorState != 0) && (actor->actorState != 3)) {
         return 1;
     }
-    if ((temp_v0->actorID == 0) || (temp_v0->unk_A0.unk_00 == 3)) {
+    if ((actor->actorID == 0) || (actor->unk_A0.unk_00 == 3)) {
         return 1;
     }
     return 0;
@@ -938,20 +955,20 @@ s32 func_80032074(s32 arg0) {
 
 
 void func_800320EC(s32 arg0, f32 arg1, f32 arg2) {
-    f32 sp24;
+    f32 angle;
 
-    sp24 = CalcAngleBetween2DPoints(arg1, arg2, D_80170968[gTongueOnePointer->poleID].pos.x, D_80170968[gTongueOnePointer->poleID].pos.z);
+    angle = CalcAngleBetween2DPoints(arg1, arg2, D_80170968[gTongueOnePointer->poleID].pos.x, D_80170968[gTongueOnePointer->poleID].pos.z);
     if (gActors[arg0].userVariables[0] == 0) {
         if (D_8017499C != (gActors[arg0].userVariables[3] + 1)) {
             gActors[arg0].userVariables[3] = D_8017499C;
             return;
         }
-        sp24 += gTongueOnePointer->tongueDir * 90.0f;
-        WrapDegrees(&sp24);
+        angle += gTongueOnePointer->tongueDir * 90.0f;
+        WrapDegrees(&angle);
         
-        gActors[arg0].unk_134[2] = sp24;
+        gActors[arg0].unk_134[2] = angle;
         gActors[arg0].userVariables[0] = 1;
-        gActors[arg0].unk_134[0] = sp24;
+        gActors[arg0].unk_134[0] = angle;
         gActors[arg0].unk_134[1] = 0.0f;
         gActors[arg0].unk_134[3] = 0.0f;
     }
@@ -966,15 +983,15 @@ void func_800320EC(s32 arg0, f32 arg1, f32 arg2) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80033048.s")
 
 void pickup_collide_func(s32 actorIndex) {
-    Actor* temp_s2;
+    Actor* actor;
     s32 var_s0;
     s32 var_v1;
     s32 i;
 
-    temp_s2 = &gActors[actorIndex];
+    actor = &gActors[actorIndex];
     var_s0 = 0;
 
-    switch (temp_s2->actorID) {
+    switch (actor->actorID) {
     case R_Heart:
     case Falling_R_Heart:
         if (gCurrentActivePlayerPointer->hp < 10) {
@@ -1012,7 +1029,7 @@ void pickup_collide_func(s32 actorIndex) {
         func_8002F9BC(gCurrentActivePlayerPointer);
         gCurrentActivePlayerPointer->power = 4;
         gCurrentActivePlayerPointer->powerTimer = 0;
-        gCurrentActivePlayerPointer->powerTimerTill = temp_s2->unk_128;
+        gCurrentActivePlayerPointer->powerTimerTill = actor->unk_128;
         playSoundEffect(0x3A, NULL, NULL, NULL, 0, 0x10);
         var_s0 = 0x32;
         break;
@@ -1020,7 +1037,7 @@ void pickup_collide_func(s32 actorIndex) {
         func_8002F9BC(gCurrentActivePlayerPointer);
         gCurrentActivePlayerPointer->power = 1;
         gCurrentActivePlayerPointer->powerTimer = 0;
-        gCurrentActivePlayerPointer->powerTimerTill = temp_s2->unk_128;
+        gCurrentActivePlayerPointer->powerTimerTill = actor->unk_128;
         playSoundEffect(0x3A, NULL, NULL, NULL, 0, 0x10);
         var_s0 = 0x32;
         break;
@@ -1028,7 +1045,7 @@ void pickup_collide_func(s32 actorIndex) {
         func_8002F9BC(gCurrentActivePlayerPointer);
         gCurrentActivePlayerPointer->power = 2;
         gCurrentActivePlayerPointer->powerTimer = 0;
-        gCurrentActivePlayerPointer->powerTimerTill = temp_s2->unk_128;
+        gCurrentActivePlayerPointer->powerTimerTill = actor->unk_128;
         playSoundEffect(0x3A, NULL, NULL, NULL, 0, 0x10);
         var_s0 = 0x32;
         break;
@@ -1036,7 +1053,7 @@ void pickup_collide_func(s32 actorIndex) {
         func_8002F9BC(gCurrentActivePlayerPointer);
         gCurrentActivePlayerPointer->power = 3;
         gCurrentActivePlayerPointer->powerTimer = 0;
-        gCurrentActivePlayerPointer->powerTimerTill = temp_s2->unk_128;
+        gCurrentActivePlayerPointer->powerTimerTill = actor->unk_128;
         gCurrentActivePlayerPointer->tongueYOffset = 30.0f;
         gCurrentActivePlayerPointer->tongueSeperation = 25.0f;
         gCurrentActivePlayerPointer->hitboxSize *= 0.5f;
@@ -1055,7 +1072,7 @@ void pickup_collide_func(s32 actorIndex) {
             gCurrentActivePlayerPointer = &gPlayerActors[i];
             gCurrentActivePlayerPointer->power = 3;
             gCurrentActivePlayerPointer->powerTimer = 0;
-            gCurrentActivePlayerPointer->powerTimerTill = temp_s2->unk_128;
+            gCurrentActivePlayerPointer->powerTimerTill = actor->unk_128;
             gCurrentActivePlayerPointer->tongueYOffset = 30.0f;
             gCurrentActivePlayerPointer->tongueSeperation = 25.0f; 
             gCurrentActivePlayerPointer->hitboxSize *= 0.5f;
@@ -1068,7 +1085,7 @@ void pickup_collide_func(s32 actorIndex) {
         break;
     }
     
-    temp_s2->actorID = 0;
+    actor->actorID = 0;
     
     if (var_s0 == 0) {
         initPlayerEyeController(gSelectedCharacters[gCurrentActivePlayerPointer->playerID], 2, 50.0f, 0);
@@ -1100,11 +1117,6 @@ void pickup_collide_func(s32 actorIndex) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80036490.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80036900.s")
-
-void func_80064BFC(f32, f32, f32);
-extern s32 D_80174980;
-extern s32 D_80174988;
-extern s32 D_801749AC;
 
 void func_80036D74(PlayerActor* arg0, Tongue* arg1) {
     if (arg0->playerHURTSTATE == 0) {
