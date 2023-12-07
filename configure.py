@@ -350,21 +350,21 @@ for c_file in c_files:
     c_file_target = append_prefix(append_extension(c_file))
 
     #build depedency file
-    ninja_file.build(dep, "gcc_dependency", c_file)
+    # ninja_file.build(dep, "gcc_dependency", c_file)
 
     if file_name in c_file_rule_overrides:
         build_target = c_file_rule_overrides[file_name]
-        ninja_file.build(append_prefix(append_extension(c_file)), build_target, c_file, dep)
+        ninja_file.build(append_prefix(append_extension(c_file)), build_target, c_file)
     elif os.path.dirname(c_file) in [code_dir, libc_dir]:
-        ninja_file.build(append_prefix(append_extension(c_file)), "O2_cc", c_file, dep)
+        ninja_file.build(append_prefix(append_extension(c_file)), "O2_cc", c_file)
     elif os.path.dirname(c_file) == audio_dir:
-        ninja_file.build(append_prefix(append_extension(c_file)), "O2_cc", c_file, dep)  # Update later
+        ninja_file.build(append_prefix(append_extension(c_file)), "O2_cc", c_file)  # Update later
     elif os.path.dirname(c_file) == gu_dir:
-        ninja_file.build(append_prefix(append_extension(c_file)), "O2_cc", c_file, dep)  # Update later
+        ninja_file.build(append_prefix(append_extension(c_file)), "O2_cc", c_file)  # Update later
     elif os.path.dirname(c_file) in [io_dir, os_dir]:
-        ninja_file.build(c_file_target, "O1_cc", c_file, dep)
+        ninja_file.build(c_file_target, "O1_cc", c_file)
     else:
-        ninja_file.build(append_prefix(append_extension(c_file)), "O2_cc", c_file, dep)  # Update later
+        ninja_file.build(append_prefix(append_extension(c_file)), "O2_cc", c_file)  # Update later
 
 for s_file in s_files:
     if "asm/nonmatchings" in s_file:
