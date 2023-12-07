@@ -63,7 +63,7 @@ with open('asm/nonmatchings/code/5FF30/MainLoop.s', 'r') as file:
     lines = file.readlines()
 
 # Replace lines 37 through 61 with the new text
-lines[37:61] = [
+lines[37:60] = [
     '/* 6BA88 80090688 */  sw         $ra, 0x14($sp)\n'
     '/* 6BA8C 8009068C */  jal        func_8002D080\n',
     '/* 6BA90 80090690 */  nop\n',

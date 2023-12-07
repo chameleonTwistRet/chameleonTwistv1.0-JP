@@ -27,7 +27,7 @@ typedef struct unkStruct20 {
     char unk_26[2];
 } unkStruct20;
 
-extern playerActor gPlayerActors[4];
+extern PlayerActor gPlayerActors[4];
 extern unkStruct07 D_802019A8[];
 extern Collision gZoneCollisions[];
 extern CardinalDirection gCardinalDirections[5]; // including "NO_DIR"
@@ -46,13 +46,13 @@ void func_800BF524(s32);
 s32 func_800C1550(void);
 s32* func_800B3424(s32);
 void func_800B5C60(tempStruct*);
-void func_800C2670(s32, playerActor*, s32);
+void func_800C2670(s32, PlayerActor*, s32);
 s32* func_800B3484(s32);
 void func_800314E4(Actor*);
 void func_800B35B0(s32);
 void func_800B255C(Vec3f*, Vec3f, Collider*);
 void func_800C2A00(void);
-void func_800CFDC8(playerActor*);
+void func_800CFDC8(PlayerActor*);
 s32 func_800B4A3C(unkItemStruct*);
 void func_800BE474(Tongue*);
 s32 IsPickup(Actor*);
@@ -122,7 +122,7 @@ void func_800B0A30(unkBlackChameleon0* arg0, unkBlackChameleon1* arg1) {
 
 // Squish player if they are in the squish zone (givcen by coords not args)
 void func_800B2070(s32 arg0) {
-    playerActor* gPlayer = &gPlayerActors[0];       // Player One
+    PlayerActor* gPlayer = &gPlayerActors[0];       // Player One
     Rect3D rect;
     Vec3f vec;
 
@@ -305,7 +305,7 @@ Vec3f* func_800B2470(Vec3f* vecA, Vec3f vecB, Vec3f vecC, f32 a, s32 b) {
 }
 
 s32 func_800B2510(void) {
-    playerActor* player = &gPlayerActors[0];
+    PlayerActor* player = &gPlayerActors[0];
     s32 ret = 0;
     s32 i;
     
@@ -1034,7 +1034,7 @@ void func_800BE370(s32 arg0) {
 //     func_800BE474(arg0);
 // }
 
-void func_800BE664(playerActor * arg0) {
+void func_800BE664(PlayerActor * arg0) {
     if (arg0->power == POWERUP_TIME) {
         arg0->power = POWERUP_NONE;
     }
@@ -1096,7 +1096,7 @@ const char* GetDirectionName(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C08B8.s")
 
-void ChameleonFromDoor(playerActor* player, s32 arg1, s32 arg2, s32 arg3, s32 arg4) {
+void ChameleonFromDoor(PlayerActor* player, s32 arg1, s32 arg2, s32 arg3, s32 arg4) {
     Door* currentDoor;
     Door* door;
     s32 i;
@@ -1128,7 +1128,7 @@ void ChameleonFromDoor(playerActor* player, s32 arg1, s32 arg2, s32 arg3, s32 ar
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C0B74.s")
 
-void func_800C0CDC(playerActor* arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4) {
+void func_800C0CDC(PlayerActor* arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4) {
     if (gZoneCollisions[arg1].unk7C != 0) {
         gGameModeState = 3;
         switch (gCurrentStage) {                    /* switch 1 */
@@ -1320,19 +1320,19 @@ void func_800C54F8(Vec2s* arg0, s32* arg1) {
     *arg1 = 0;
 }
 
-void func_800C5508(playerActor* player) {
+void func_800C5508(PlayerActor* player) {
     player->canJump = FALSE;
     player->groundMovement = 2;
     player->globalTimer = player->globalTimer + 1.5;
 }
 
-void func_800C5538(playerActor* arg0) {
+void func_800C5538(PlayerActor* arg0) {
     arg0->canJump = FALSE;
     arg0->groundMovement = 1;
     arg0->globalTimer = arg0->globalTimer + 0.800000000000000044;
 }
 
-void func_800C5564(playerActor* arg0) {
+void func_800C5564(PlayerActor* arg0) {
     arg0->canJump = FALSE;
     arg0->groundMovement = 0;
     arg0->globalTimer = arg0->globalTimer + 0.299999999999999989;
@@ -1344,7 +1344,7 @@ void func_800C5564(playerActor* arg0) {
  * @param player Pointer to the player's actor structure.
  * @param distance Distance to place the player from the boss.
  */
-void Player_SetFromBoss(playerActor* player, f32 distance) {
+void Player_SetFromBoss(PlayerActor* player, f32 distance) {
     Vec3f bossPos;
     f32 absX;
     f32 absZ;
