@@ -946,7 +946,6 @@ D_801749D8 = 0x801749D8; // size:0x78
 D_80248540 = 0x80248540; // size:0x368
 
 //ASSETS
-Global_globalScope_Mtx = 0x02000000; // type:Mtx rom:0x87F640
 
 Davy_Body_Lights1 = 0x08000000; // type:Light rom:0xAFC6B0
 Davy_Body_Vtx = 0x08000018; // type:Vtx rom:0xAFC6C8

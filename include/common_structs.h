@@ -1120,13 +1120,11 @@ typedef struct unk80175608 {
 //ok so you actually have to make the other parts vec3f name[] and vec3s name[] SEPERATE from the struct
 //that kinda sucks but i know why now at least
 typedef struct CollisionData{
-    Vec3f positionProbably;
-    Vec3f scaleProbably;
     s32 aOVerts;
     s32 aOTris;
     u32 vertsStart; //segmented, points to verts[]
     u32 trisStart; //segmented, points to tris[]
-    u32 settingsStart; //segmented
+    u32 settingsStart; //segmented, points to settings[]
 } CollisionData;
 
 typedef struct unk80170E68 {

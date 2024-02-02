@@ -13,6 +13,8 @@ def start(group, where):
         open(symbolsPath, "w").writelines(dump)
         return
     
+    symbolage = False
+
     writeTo = "src/"+where+".c"
     open(writeTo, "w").close() #clear
     reading = False
@@ -49,10 +51,12 @@ def start(group, where):
     newC = [
         '#include "common.h"\n',
     ]
-    newSymbols = ["//generated section "+group+" starting here\n"]
+    newSymbols = ["\n\n//generated section "+group+" starting here\n"]
     defDir = ""
     definitions = []
     
+    pads = 0
+
     i = 0
     while i < len(yaml):
         line = yaml[i]
@@ -117,14 +121,24 @@ def start(group, where):
                 if values["Type"] in buildFolder: nline = nline.replace("assets/", "build/include/assets/",1)
 
                 segmentAdr = (int(values["Address"], 16) - baseAdr) + segmentId
-                #symbol = hex(segmentAdr).upper().replace("0X", "")
-                #while len(symbol) < 8: symbol="0"+symbol
-                #symbol = "D_"+symbol+"_"+values["Address"].upper().replace("0X", "")
-                symbol = values["ShortName"].split("_")[0]+"_"+values["Type"]+"_"+group
+                # #symbol creation
+                customType = ""
+                if values["Type"] in ["mtx", "vtx", "gfx"]: customType = values["Type"].capitalize()
+                elif values["Type"] in list(incExt.keys()): customType = incExt[values["Type"]].capitalize()
+                elif values["Type"] in buildFolder and values["Type"] != "bin": customType = incExt[values["Type"]].upper()
+                else: customType = values["Type"].capitalize()
+                if symbolage:
+                    symbol = group+"_"+values["ShortName"].split("_")[0]+"_"+customType
+                else:
+                    symbol = hex(segmentAdr).upper().replace("0X", "")
+                    while len(symbol) < 8: symbol="0"+symbol
+                    symbol = "D_"+symbol+"_"+group
+
 
                 #typedef
                 char = nline.find(".png") != -1 or nline.find(".pal") != -1 or values["Type"] == "bin"
                 char = char and line.find(".MEd") != -1 
+
                 if values["Type"] == "mtx": 
                     newC.append("Mtx_f "+symbol+" = {")
                 elif values["Type"] == "lights":
@@ -133,6 +147,17 @@ def start(group, where):
                     newC.append("Vtx "+symbol+"[] = {")
                 elif values["Type"] in ["gfx", "gfxSeg"]:
                     newC.append("Gfx "+symbol+"[] = {")
+                elif values["Type"] in ["collision"]:
+                    colType = values["Ext"][1].split(" ")[-1].replace('"', "").strip()
+                    print(colType)
+                    symbol = symbol.replace(customType, colType)
+                    nline = nline.replace(useType, "col"+colType[0])
+                    if colType in ["Verts", "Settings"]:
+                        newC.append("Vec3f "+symbol+"[] = {")
+                    elif colType == "Tris":
+                        newC.append("Vec3s "+symbol+"[] = {")
+                    elif colType == "Header":
+                        newC.append("CollisionData "+symbol+"[] = {")
                 elif char:
                     newC.append("unsigned char "+symbol+"[] = {")
                     
@@ -140,17 +165,23 @@ def start(group, where):
                 newC.append(nline)
 
                 #end_typedef
-                if values["Type"] in ["mtx", "vtx", "gfx", "gfxSeg"] or char: 
+                if values["Type"] in ["mtx", "vtx", "gfx", "gfxSeg", "collision"] or char: 
                     newC.append("};\n")
                 
-                #symbol creation
-                customType = ""
-                if values["Type"] in ["mtx", "vtx", "gfx", "gfxSeg"]: customType = values["Type"].capitalize()
-                elif values["Type"] in buildFolder and values["Type"] != "bin": customType = incExt[values["Type"]].upper()
-                else: customType = values["Type"].upper()
-                ss = symbol+" = "+hex(segmentAdr).upper().replace("0X","0x")+";"
+                #pretty sure this isnt needed but it helps line up with actual ram values :)
+                padAdr = hex(segmentAdr).upper().replace("0X","0x")
+                while len(padAdr) < 10: padAdr = padAdr.replace("0x", "0x0")
+                ss = symbol+" = "+padAdr+";"
+                #change the customType here to match gfx linking
+                #GENERALLY they are the same as the suffix but stuff like images are Tluts so yeah
+                #might have to go more in depth based on type of image (rgba16, i4, etc)
+                #but until gfx whines at me we go with this :)
+
+                if customType == "Png": customType = "TImg"
+                elif customType == "Pal": customType = "TLut"
                 ss += " // type:"+customType+" rom:"+values["Address"].upper().replace("0X","0x")
-                newSymbols.append(ss+"\n")
+                if symbolage:
+                    newSymbols.append(ss+"\n")
 
 
             elif line.find("#")!=-1:
@@ -158,14 +189,9 @@ def start(group, where):
                 if line.find("#B8000000"):#filepad
                     add = '#define FILEPAD {0xB8,0,0,0,0,0,0,0} // the funny\n\n'
                     if not add in definitions: definitions.append(add)
+                    pads += 1
 
-                    address = line.split("[")[-1].split("]")[0]
-                    symbol = hex((int(address, 16) - baseAdr) + segmentId).upper().replace("0X", "")
-                    while len(symbol) < 8: symbol="0"+symbol
-                    symbol = "D_"+symbol+"_"+address.upper().replace("0X", "")
-                    newC.append("unsigned char "+symbol+"[] = FILEPAD;\n")
-
-
+                    newC.append("unsigned char "+group+"_Pad"+str(pads)+"[] = FILEPAD;\n")
 
         elif reading and line.find('dir: ') != -1:
             if defDir != "": defDir+="/"
@@ -174,7 +200,7 @@ def start(group, where):
     definitions.reverse()
     for i in definitions: newC.insert(1, i)
     open(writeTo, "w", encoding="UTF-8").writelines(newC)
-    open(symbolsPath, "a").writelines(newSymbols)
+    if symbolage: open(symbolsPath, "a").writelines(newSymbols)
     return 
 
 if __name__ == "__main__":

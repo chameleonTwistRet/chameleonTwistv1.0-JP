@@ -2849,8 +2849,23 @@ segments:
       - [0x885988, ia8, unk40/shadow.MEd.ia8, 40, 40]
       - {start: 0x885fc8, type: gfxSeg, name: unk40/unk40, data_only: True}
       - {start: 0x886088, type: gfxSeg, name: unk40/unk402, data_only: True} #what the hell
-      - {start: 0x886148, type: bin, name: unk40/unk40.MEd.col}
+
+      - {start: 0x886148, type: collision, name: unkCol2/unkCol2, data_only: True, args: "Verts"}
+      - {start: 0x8862b0, type: collision, name: unkCol2/unkCol2, data_only: True, args: "Tris"}
+      - {start: 0x886328, type: collision, name: unkCol2/unkCol2, data_only: True, args: "Settings"}
+      - {start: 0x886340, type: collision, name: unkCol2/unkCol2, data_only: True, args: "Header"}
+
+      - {start: 0x886354, type: collision, name: unk40/unk40, data_only: True, args: "Verts"}
+      - {start: 0x8863b4, type: collision, name: unk40/unk40, data_only: True, args: "Tris"}
+      - {start: 0x886444, type: collision, name: unk40/unk40, data_only: True, args: "Settings"}
+      - {start: 0x88645c, type: collision, name: unk40/unk40, data_only: True, args: "Header"}
       
+      - {start: 0x886470, type: collision, name: unkCol3/unkCol3, data_only: True, args: "Verts"}
+      - {start: 0x8864d0, type: collision, name: unkCol3/unkCol3, data_only: True, args: "Tris"}
+      - {start: 0x886560, type: collision, name: unkCol3/unkCol3, data_only: True, args: "Settings"}
+      - {start: 0x886578, type: collision, name: unkCol3/unkCol3, data_only: True, args: "Header"}
+      
+      - [0x88658c, bin, what.MEd] #??????? file padding if it fucking sucked
       - [0x8865b8] #B8000000
 
       - [0x8865C0, ci4, img/brownBrickWall.MEd.ci4, 32, 32]
@@ -2875,9 +2890,9 @@ segments:
       - [0x887FF8, i4, img/dcRockFloor.MEd.i4, 64, 64]
       - [0x8887F8] #B8000000
 
-      - [0x888800, ci4, img/dcRockFloor.MEd.ci4, 64, 64]
+      - [0x888800, ci4, img/dcRockFloorColor.MEd.ci4, 64, 64]
       - [0x889000] #B8000000
-      - [0x889008, palette, img/dcRockFloor.MEd.ci4]
+      - [0x889008, palette, img/dcRockFloorColor.MEd.ci4]
       - [0x889208] #B8000000
 
       - [0x889210, i4, img/smallBrickWall.MEd.i4, 24, 32]
@@ -3339,41 +3354,72 @@ segments:
       - {start: 0x8b4f00, type: vtx, name: unk3/unk3, data_only: True}
       - {start: 0x8b4f80, type: mtx, name: unk3/unk3, data_only: True}
       - {start: 0x8b4fc0, type: gfxSeg, name: unk3/unk3, data_only: True}
-      - {start: 0x8b5078, type: bin, name: unk3/unk3.MEd.col}
+      - {start: 0x8b5078, type: collision, name: unk3/unk3, data_only: True, args: "Verts"}
+      - {start: 0x8b50d8, type: collision, name: unk3/unk3, data_only: True, args: "Tris"}
+      - {start: 0x8b5168, type: collision, name: unk3/unk3, data_only: True, args: "Settings"}
+      - {start: 0x8b5180, type: collision, name: unk3/unk3, data_only: True, args: "Header"}
+      - [0x8b5194, bin, zeroooo.MEd] #00000000
 
       - {start: 0x8b5198, type: vtx, name: unk4/unk4, data_only: True}
       - {start: 0x8b51d8, type: mtx, name: unk4/unk4, data_only: True}
       - {start: 0x8b5218, type: gfxSeg, name: unk4/unk4, data_only: True}
-      - {start: 0x8b5280, type: bin, name: unk4/unk4.MEd.col}
+      - {start: 0x8b5280, type: collision, name: unk4/unk4, data_only: True, args: "Verts"}
+      - {start: 0x8b52b0, type: collision, name: unk4/unk4, data_only: True, args: "Tris"}
+      - {start: 0x8b52c8, type: collision, name: unk4/unk4, data_only: True, args: "Settings"}
+      - {start: 0x8b52e0, type: collision, name: unk4/unk4, data_only: True, args: "Header"}
+      - [0x8b52f4, bin, zeroooo2.MEd] #00000000
 
       - {start: 0x8b52f8, type: vtx, name: unk5/unk5, data_only: True}
       - {start: 0x8b5338, type: mtx, name: unk5/unk5, data_only: True}
       - {start: 0x8b5378, type: gfxSeg, name: unk5/unk5, data_only: True}
-      - {start: 0x8b53e0, type: bin, name: unk5/unk5.MEd.col}
+      - {start: 0x8b53e0, type: collision, name: unk5/unk5, data_only: True, args: "Verts"}
+      - {start: 0x8b5410, type: collision, name: unk5/unk5, data_only: True, args: "Tris"}
+      - {start: 0x8b5428, type: collision, name: unk5/unk5, data_only: True, args: "Settings"}
+      - {start: 0x8b5440, type: collision, name: unk5/unk5, data_only: True, args: "Header"}
+      - [0x8b5454, bin, zeroooo3.MEd] #00000000
 
       - {start: 0x8b5458, type: vtx, name: unk6/unk6, data_only: True}
       - {start: 0x8b5498, type: mtx, name: unk6/unk6, data_only: True}
       - {start: 0x8b54D8, type: gfxSeg, name: unk6/unk6, data_only: True}
-      - {start: 0x8b5540, type: bin, name: unk6/unk6.MEd.col}
+      - {start: 0x8b5540, type: collision, name: unk6/unk6, data_only: True, args: "Verts"}
+      - {start: 0x8b5570, type: collision, name: unk6/unk6, data_only: True, args: "Tris"}
+      - {start: 0x8b5588, type: collision, name: unk6/unk6, data_only: True, args: "Settings"}
+      - {start: 0x8b55a0, type: collision, name: unk6/unk6, data_only: True, args: "Header"}
+      - [0x8b55b4, bin, zeroooo4.MEd] #00000000
 
       - {start: 0x8b55b8, type: vtx, name: unk7/unk7, data_only: True}
       - {start: 0x8b55f8, type: mtx, name: unk7/unk7, data_only: True}
       - {start: 0x8b5638, type: gfxSeg, name: unk7/unk7, data_only: True}
-      - {start: 0x8b56a0, type: bin, name: unk7/unk7.MEd.col}
+      - {start: 0x8b56a0, type: collision, name: unk7/unk7, data_only: True, args: "Verts"}
+      - {start: 0x8b56d0, type: collision, name: unk7/unk7, data_only: True, args: "Tris"}
+      - {start: 0x8b56e8, type: collision, name: unk7/unk7, data_only: True, args: "Settings"}
+      - {start: 0x8b5700, type: collision, name: unk7/unk7, data_only: True, args: "Header"}
+      - [0x8b5714, bin, zeroooo5.MEd] #00000000
 
       - {start: 0x8b5718, type: vtx, name: unk8/unk8, data_only: True}
       - {start: 0x8b57b8, type: mtx, name: unk8/unk8, data_only: True}
       - {start: 0x8b57f8, type: gfxSeg, name: unk8/unk8, data_only: True}
-      - {start: 0x8b59c0, type: bin, name: unk8/unk8.MEd.col}
+      - {start: 0x8b59c0, type: collision, name: unk8/unk8, data_only: True, args: "Verts"}
+      - {start: 0x8b5a08, type: collision, name: unk8/unk8, data_only: True, args: "Tris"}
+      - {start: 0x8b5a38, type: collision, name: unk8/unk8, data_only: True, args: "Settings"}
+      - {start: 0x8b5a50, type: collision, name: unk8/unk8, data_only: True, args: "Header"}
+      - [0x8b5a64, bin, zeroooo6.MEd] #00000000
 
       - {start: 0x8b5a68, type: mtx, name: unk9/unk9, data_only: True}
       - {start: 0x8b5aA8, type: gfxSeg, name: unk9/unk9, data_only: True}
-      - {start: 0x8b5bf8, type: bin, name: unk9/unk9.MEd.col}
+      - {start: 0x8b5bf8, type: collision, name: unk9/unk9, data_only: True, args: "Verts"}
+      - {start: 0x8b5c4c, type: collision, name: unk9/unk9, data_only: True, args: "Tris"}
+      - {start: 0x8b5c94, type: collision, name: unk9/unk9, data_only: True, args: "Settings"}
+      - {start: 0x8b5cac, type: collision, name: unk9/unk9, data_only: True, args: "Header"}
 
       - {start: 0x8b5cc0, type: vtx, name: unkA/unkA, data_only: True}
       - {start: 0x8b5e00, type: mtx, name: unkA/unkA, data_only: True}
       - {start: 0x8b5e40, type: gfxSeg, name: unkA/unkA, data_only: True}
-      - {start: 0x8b6228, type: bin, name: unkA/unkA.MEd.col}
+      - {start: 0x8b6228, type: collision, name: unkA/unkA, data_only: True, args: "Verts"}
+      - {start: 0x8b6288, type: collision, name: unkA/unkA, data_only: True, args: "Tris"}
+      - {start: 0x8b6300, type: collision, name: unkA/unkA, data_only: True, args: "Settings"}
+      - {start: 0x8b6318, type: collision, name: unkA/unkA, data_only: True, args: "Header"}
+      - [0x8b632c, bin, zeroooo7.MEd] #00000000
 
       - {start: 0x8b6330, type: vtx, name: unkB/unkB, data_only: True}
       - {start: 0x8b6470, type: mtx, name: unkB/unkB, data_only: True}
@@ -3382,14 +3428,22 @@ segments:
       - [0x8b68b8] #B8000000
       - [0x8b68c0, i4, unkB/unkB2.MEd.i4, 16, 16]
       - {start: 0x8b6940, type: gfxSeg, name: unkB/unkB, data_only: True}
-      - {start: 0x8b6bf8, type: bin, name: unkB/unkB.MEd.col}
+      - {start: 0x8b6bf8, type: collision, name: unkB/unkB, data_only: True, args: "Verts"}
+      - {start: 0x8b6c58, type: collision, name: unkB/unkB, data_only: True, args: "Tris"}
+      - {start: 0x8b6cd0, type: collision, name: unkB/unkB, data_only: True, args: "Settings"}
+      - {start: 0x8b6ce8, type: collision, name: unkB/unkB, data_only: True, args: "Header"}
+      - [0x8b6cfc, bin, zeroooo8.MEd] #00000000
     
       - {start: 0x8b6d00, type: vtx, name: unkC/unkC, data_only: True}
       - {start: 0x8b6e00, type: mtx, name: unkC/unkC, data_only: True}
       - [0x8b6e40] #B8000000
       - [0x8b6e48, i4, unkC/unkC.MEd.i4, 32, 32]
       - {start: 0x8b7048, type: gfxSeg, name: unkC/unkC, data_only: True}
-      - {start: 0x8b7200, type: bin, name: unkC/unkC.MEd.col}
+      - {start: 0x8b7200, type: collision, name: unkC/unkC, data_only: True, args: "Verts"}
+      - {start: 0x8b7260, type: collision, name: unkC/unkC, data_only: True, args: "Tris"}
+      - {start: 0x8b72c0, type: collision, name: unkC/unkC, data_only: True, args: "Settings"}
+      - {start: 0x8b72d8, type: collision, name: unkC/unkC, data_only: True, args: "Header"}
+      - [0x8b72ec, bin, zeroooo9.MEd] #00000000
 
       - {start: 0x8b72f0, type: vtx, name: ALSpinDoor/ALSpinDoor, data_only: True}
       - {start: 0x8b73f0, type: mtx, name: ALSpinDoor/ALSpinDoor, data_only: True}
@@ -3398,12 +3452,20 @@ segments:
       - [0x8b7638] #B8000000
       - [0x8b7640, palette, ALSpinDoor/ALSpinDoor.MEd.ci4]
       - {start: 0x8b7840, type: gfxSeg, name: ALSpinDoor/ALSpinDoor, data_only: True}
-      - {start: 0x8b7a58, type: bin, name: ALSpinDoor/ALSpinDoor.MEd.col}
+      - {start: 0x8b7a58, type: collision, name: ALSpinDoor/ALSpinDoor, data_only: True, args: "Verts"}
+      - {start: 0x8b7ab8, type: collision, name: ALSpinDoor/ALSpinDoor, data_only: True, args: "Tris"}
+      - {start: 0x8b7b18, type: collision, name: ALSpinDoor/ALSpinDoor, data_only: True, args: "Settings"}
+      - {start: 0x8b7b30, type: collision, name: ALSpinDoor/ALSpinDoor, data_only: True, args: "Header"}
+      - [0x8b7b44, bin, zeroooo10.MEd] #00000000
 
       - {start: 0x8b7b48, type: vtx, name: unkD/unkD, data_only: True}
       - {start: 0x8b7b88, type: mtx, name: unkD/unkD, data_only: True}
       - {start: 0x8b7bC8, type: gfxSeg, name: unkD/unkD, data_only: True}
-      - {start: 0x8b7cd0, type: bin, name: unkD/unkD.MEd.col}
+      - {start: 0x8b7cd0, type: collision, name: unkD/unkD, data_only: True, args: "Verts"}
+      - {start: 0x8b7d00, type: collision, name: unkD/unkD, data_only: True, args: "Tris"}
+      - {start: 0x8b7d18, type: collision, name: unkD/unkD, data_only: True, args: "Settings"}
+      - {start: 0x8b7d30, type: collision, name: unkD/unkD, data_only: True, args: "Header"}
+      - [0x8b7d44, bin, zeroooo11.MEd] #00000000
       
       - {start: 0x8b7d48, type: vtx, name: BLLava/BLLava, data_only: True}
       - {start: 0x8b7d88, type: mtx, name: BLLava/BLLava, data_only: True}
@@ -3412,7 +3474,11 @@ segments:
       - [0x8b85d0] #B8000000
       - [0x8b85d8, palette, BLLava/BLLava.MEd.ci4]
       - {start: 0x8b87d8, type: gfxSeg, name: BLLava/BLLava, data_only: True}
-      - {start: 0x8b88e0, type: bin, name: BLLava/BLLava.MEd.col}
+      - {start: 0x8b88e0, type: collision, name: BLLava/BLLava, data_only: True, args: "Verts"}
+      - {start: 0x8b8910, type: collision, name: BLLava/BLLava, data_only: True, args: "Tris"}
+      - {start: 0x8b8928, type: collision, name: BLLava/BLLava, data_only: True, args: "Settings"}
+      - {start: 0x8b8940, type: collision, name: BLLava/BLLava, data_only: True, args: "Header"}
+      - [0x8b8954, bin, zeroooo12.MEd] #00000000
 
       - {start: 0x8b8958, type: vtx, name: BLLava2/BLLava2, data_only: True}
       - {start: 0x8b8998, type: mtx, name: BLLava2/BLLava2, data_only: True}
@@ -3421,7 +3487,11 @@ segments:
       - [0x8b91e0] #B8000000
       - [0x8b91e8, palette, BLLava2/BLLava2.MEd.ci4]
       - {start: 0x8b93e8, type: gfxSeg, name: BLLava2/BLLava2, data_only: True}
-      - {start: 0x8b94f0, type: bin, name: BLLava2/BLLava2.MEd.col}
+      - {start: 0x8b94f0, type: collision, name: BLLava2/BLLava2, data_only: True, args: "Verts"}
+      - {start: 0x8b9520, type: collision, name: BLLava2/BLLava2, data_only: True, args: "Tris"}
+      - {start: 0x8b9538, type: collision, name: BLLava2/BLLava2, data_only: True, args: "Settings"}
+      - {start: 0x8b9550, type: collision, name: BLLava2/BLLava2, data_only: True, args: "Header"}
+      - [0x8b9564, bin, zeroooo13.MEd] #00000000
 
       - {start: 0x8b9568, type: vtx, name: BLLava3/BLLava3, data_only: True}
       - {start: 0x8b95A8, type: mtx, name: BLLava3/BLLava3, data_only: True}
@@ -3430,7 +3500,11 @@ segments:
       - [0x8b9df0] #B8000000
       - [0x8b9df8, palette, BLLava3/BLLava3.MEd.ci4]
       - {start: 0x8b9ff8, type: gfxSeg, name: BLLava3/BLLava3, data_only: True}
-      - {start: 0x8ba100, type: bin, name: BLLava3/BLLava3.MEd.col}
+      - {start: 0x8ba100, type: collision, name: BLLava3/BLLava3, data_only: True, args: "Verts"}
+      - {start: 0x8ba130, type: collision, name: BLLava3/BLLava3, data_only: True, args: "Tris"}
+      - {start: 0x8ba148, type: collision, name: BLLava3/BLLava3, data_only: True, args: "Settings"}
+      - {start: 0x8ba160, type: collision, name: BLLava3/BLLava3, data_only: True, args: "Header"}
+      - [0x8ba174, bin, zeroooo14.MEd] #00000000
 
       - {start: 0x8ba178, type: vtx, name: BLLava4/BLLava4, data_only: True}
       - {start: 0x8ba1B8, type: mtx, name: BLLava4/BLLava4, data_only: True}
@@ -3439,7 +3513,11 @@ segments:
       - [0x8baa00] #B8000000
       - [0x8baa08, palette, BLLava4/BLLava4.MEd.ci4]
       - {start: 0x8bac08, type: gfxSeg, name: BLLava4/BLLava4, data_only: True}
-      - {start: 0x8bad10, type: bin, name: BLLava4/BLLava4.MEd.col}
+      - {start: 0x8bad10, type: collision, name: BLLava4/BLLava4, data_only: True, args: "Verts"}
+      - {start: 0x8bad40, type: collision, name: BLLava4/BLLava4, data_only: True, args: "Tris"}
+      - {start: 0x8bad58, type: collision, name: BLLava4/BLLava4, data_only: True, args: "Settings"}
+      - {start: 0x8bad70, type: collision, name: BLLava4/BLLava4, data_only: True, args: "Header"}
+      - [0x8bad84, bin, zeroooo15.MEd] #00000000
 
       - {start: 0x8bad88, type: vtx, name: BLLava5/BLLava5, data_only: True}
       - {start: 0x8badC8, type: mtx, name: BLLava5/BLLava5, data_only: True}
@@ -3448,7 +3526,11 @@ segments:
       - [0x8bb610] #B8000000
       - [0x8bb618, palette, BLLava5/BLLava5.MEd.ci4]
       - {start: 0x8bb818, type: gfxSeg, name: BLLava5/BLLava5, data_only: True}
-      - {start: 0x8bb920, type: bin, name: BLLava5/BLLava5.MEd.col}
+      - {start: 0x8bb920, type: collision, name: BLLava5/BLLava5, data_only: True, args: "Verts"}
+      - {start: 0x8bb950, type: collision, name: BLLava5/BLLava5, data_only: True, args: "Tris"}
+      - {start: 0x8bb968, type: collision, name: BLLava5/BLLava5, data_only: True, args: "Settings"}
+      - {start: 0x8bb980, type: collision, name: BLLava5/BLLava5, data_only: True, args: "Header"}
+      - [0x8bb994, bin, zeroooo16.MEd] #00000000
 
       - {start: 0x8bb998, type: vtx, name: BLLava6/BLLava6, data_only: True}
       - {start: 0x8bb9D8, type: mtx, name: BLLava6/BLLava6, data_only: True}
@@ -3457,7 +3539,11 @@ segments:
       - [0x8bc220] #B8000000
       - [0x8bc228, palette, BLLava6/BLLava6.MEd.ci4]
       - {start: 0x8bc428, type: gfxSeg, name: BLLava6/BLLava6, data_only: True}
-      - {start: 0x8bc530, type: bin, name: BLLava6/BLLava6.MEd.col}
+      - {start: 0x8bc530, type: collision, name: BLLava6/BLLava6, data_only: True, args: "Verts"}
+      - {start: 0x8bc560, type: collision, name: BLLava6/BLLava6, data_only: True, args: "Tris"}
+      - {start: 0x8bc578, type: collision, name: BLLava6/BLLava6, data_only: True, args: "Settings"}
+      - {start: 0x8bc590, type: collision, name: BLLava6/BLLava6, data_only: True, args: "Header"}
+      - [0x8bc5a4, bin, zeroooo17.MEd] #00000000
 
       - {start: 0x8bc5a8, type: vtx, name: BLLava7/BLLava7, data_only: True}
       - {start: 0x8bc5E8, type: mtx, name: BLLava7/BLLava7, data_only: True}
@@ -3466,7 +3552,11 @@ segments:
       - [0x8bce30] #B8000000
       - [0x8bce38, palette, BLLava7/BLLava7.MEd.ci4]
       - {start: 0x8bd038, type: gfxSeg, name: BLLava7/BLLava7, data_only: True}
-      - {start: 0x8bd140, type: bin, name: BLLava7/BLLava7.MEd.col}
+      - {start: 0x8bd140, type: collision, name: BLLava7/BLLava7, data_only: True, args: "Verts"}
+      - {start: 0x8bd170, type: collision, name: BLLava7/BLLava7, data_only: True, args: "Tris"}
+      - {start: 0x8bd188, type: collision, name: BLLava7/BLLava7, data_only: True, args: "Settings"}
+      - {start: 0x8bd1a0, type: collision, name: BLLava7/BLLava7, data_only: True, args: "Header"}
+      - [0x8bd1b4, bin, zeroooo18.MEd] #00000000
 
       - {start: 0x8bd1b8, type: vtx, name: BLLava8/BLLava8, data_only: True}
       - {start: 0x8bd1f8, type: mtx, name: BLLava8/BLLava8, data_only: True}
@@ -3475,22 +3565,38 @@ segments:
       - [0x8bda40] #B8000000
       - [0x8bda48, palette, BLLava8/BLLava8.MEd.ci4]
       - {start: 0x8bdc48, type: gfxSeg, name: BLLava8/BLLava8, data_only: True}
-      - {start: 0x8bdd50, type: bin, name: BLLava8/BLLava8.MEd.col}
+      - {start: 0x8bdd50, type: collision, name: BLLava8/BLLava8, data_only: True, args: "Verts"}
+      - {start: 0x8bdd80, type: collision, name: BLLava8/BLLava8, data_only: True, args: "Tris"}
+      - {start: 0x8bdd98, type: collision, name: BLLava8/BLLava8, data_only: True, args: "Settings"}
+      - {start: 0x8bddb0, type: collision, name: BLLava8/BLLava8, data_only: True, args: "Header"}
+      - [0x8bddc4, bin, zeroooo19.MEd] #00000000
 
       - {start: 0x8bddc8, type: vtx, name: unkE/unkE, data_only: True}
       - {start: 0x8bde08, type: mtx, name: unkE/unkE, data_only: True}
       - {start: 0x8bde48, type: gfxSeg, name: unkE/unkE, data_only: True}
-      - {start: 0x8bdf20, type: bin, name: unkE/unkE.MEd.col}
+      - {start: 0x8bdf20, type: collision, name: unkE/unkE, data_only: True, args: "Verts"}
+      - {start: 0x8bdf50, type: collision, name: unkE/unkE, data_only: True, args: "Tris"}
+      - {start: 0x8bdf68, type: collision, name: unkE/unkE, data_only: True, args: "Settings"}
+      - {start: 0x8bdf80, type: collision, name: unkE/unkE, data_only: True, args: "Header"}
+      - [0x8bdf94, bin, zeroooo20.MEd] #00000000
 
       - {start: 0x8bdf98, type: vtx, name: unkF/unkF, data_only: True}
       - {start: 0x8be0d8, type: mtx, name: unkF/unkF, data_only: True}
       - {start: 0x8be118, type: gfxSeg, name: unkF/unkF, data_only: True}
-      - {start: 0x8be390, type: bin, name: unkF/unkF.MEd.col}
+      - {start: 0x8be390, type: collision, name: unkF/unkF, data_only: True, args: "Verts"}
+      - {start: 0x8be3f0, type: collision, name: unkF/unkF, data_only: True, args: "Tris"}
+      - {start: 0x8be468, type: collision, name: unkF/unkF, data_only: True, args: "Settings"}
+      - {start: 0x8be480, type: collision, name: unkF/unkF, data_only: True, args: "Header"}
+      - [0x8be494, bin, zeroooo21.MEd] #00000000
 
       - {start: 0x8be498, type: vtx, name: unk10/unk10, data_only: True}
       - {start: 0x8be538, type: mtx, name: unk10/unk10, data_only: True}
       - {start: 0x8be578, type: gfxSeg, name: unk10/unk10, data_only: True}
-      - {start: 0x8be770, type: bin, name: unk10/unk10.MEd.col}
+      - {start: 0x8be770, type: collision, name: unk10/unk10, data_only: True, args: "Verts"}
+      - {start: 0x8be7b8, type: collision, name: unk10/unk10, data_only: True, args: "Tris"}
+      - {start: 0x8be7e8, type: collision, name: unk10/unk10, data_only: True, args: "Settings"}
+      - {start: 0x8be800, type: collision, name: unk10/unk10, data_only: True, args: "Header"}
+      - [0x8be814, bin, zeroooo22.MEd] #00000000
 
       - {start: 0x8be818, type: vtx, name: Door1/Door1, data_only: True}
       - {start: 0x8be918, type: mtx, name: Door1/Door1, data_only: True}
@@ -3499,72 +3605,128 @@ segments:
       - [0x8bf160] #B8000000
       - [0x8bf168, palette, Door1/Door1.MEd.ci4]
       - {start: 0x8bf368, type: gfxSeg, name: Door1/Door1, data_only: True}
-      - {start: 0x8bf580, type: bin, name: Door1/Door1.MEd.col}
+      - {start: 0x8bf580, type: collision, name: Door1/Door1, data_only: True, args: "Verts"}
+      - {start: 0x8bf5e0, type: collision, name: Door1/Door1, data_only: True, args: "Tris"}
+      - {start: 0x8bf640, type: collision, name: Door1/Door1, data_only: True, args: "Settings"}
+      - {start: 0x8bf658, type: collision, name: Door1/Door1, data_only: True, args: "Header"}
+      - [0x8bf66c, bin, zeroooo23.MEd] #00000000
 
       - {start: 0x8bf670, type: vtx, name: unk12/unk12, data_only: True}
       - {start: 0x8bf710, type: mtx, name: unk12/unk12, data_only: True}
       - {start: 0x8bf750, type: gfxSeg, name: unk12/unk12, data_only: True}
-      - {start: 0x8bf948, type: bin, name: unk12/unk12.MEd.col}
+      - {start: 0x8bf948, type: collision, name: unk12/unk12, data_only: True, args: "Verts"}
+      - {start: 0x8bf990, type: collision, name: unk12/unk12, data_only: True, args: "Tris"}
+      - {start: 0x8bf9c0, type: collision, name: unk12/unk12, data_only: True, args: "Settings"}
+      - {start: 0x8bf9d8, type: collision, name: unk12/unk12, data_only: True, args: "Header"}
+      - [0x8bf9ec, bin, zeroooo24.MEd] #00000000
 
       - {start: 0x8bf9f0, type: vtx, name: unk13/unk13, data_only: True}
       - {start: 0x8bfa30, type: mtx, name: unk13/unk13, data_only: True}
       - {start: 0x8bfa70, type: gfxSeg, name: unk13/unk13, data_only: True}
-      - {start: 0x8bfad8, type: bin, name: unk13/unk13.MEd.col}
+      - {start: 0x8bfad8, type: collision, name: unk13/unk13, data_only: True, args: "Verts"}
+      - {start: 0x8bfb08, type: collision, name: unk13/unk13, data_only: True, args: "Tris"}
+      - {start: 0x8bfb20, type: collision, name: unk13/unk13, data_only: True, args: "Settings"}
+      - {start: 0x8bfb38, type: collision, name: unk13/unk13, data_only: True, args: "Header"}
+      - [0x8bfb4c, bin, zeroooo25.MEd] #00000000
 
       - {start: 0x8bfb50, type: vtx, name: unk14/unk14, data_only: True}
       - {start: 0x8bfb90, type: mtx, name: unk14/unk14, data_only: True}
       - {start: 0x8bfbD0, type: gfxSeg, name: unk14/unk14, data_only: True}
-      - {start: 0x8bfc38, type: bin, name: unk14/unk14.MEd.col}
+      - {start: 0x8bfc38, type: collision, name: unk14/unk14, data_only: True, args: "Verts"}
+      - {start: 0x8bfc68, type: collision, name: unk14/unk14, data_only: True, args: "Tris"}
+      - {start: 0x8bfc80, type: collision, name: unk14/unk14, data_only: True, args: "Settings"}
+      - {start: 0x8bfc98, type: collision, name: unk14/unk14, data_only: True, args: "Header"}
+      - [0x8bfcac, bin, zeroooo26.MEd] #00000000
 
       - {start: 0x8bfcb0, type: vtx, name: unk15/unk15, data_only: True}
       - {start: 0x8bfd50, type: mtx, name: unk15/unk15, data_only: True}
       - {start: 0x8bfd90, type: gfxSeg, name: unk15/unk15, data_only: True}
-      - {start: 0x8bff88, type: bin, name: unk15/unk15.MEd.col}
+      - {start: 0x8bff88, type: collision, name: unk15/unk15, data_only: True, args: "Verts"}
+      - {start: 0x8bffd0, type: collision, name: unk15/unk15, data_only: True, args: "Tris"}
+      - {start: 0x8c0000, type: collision, name: unk15/unk15, data_only: True, args: "Settings"}
+      - {start: 0x8c0018, type: collision, name: unk15/unk15, data_only: True, args: "Header"}
+      - [0x8c002c, bin, zeroooo27.MEd] #00000000
 
       - {start: 0x8c0030, type: vtx, name: unk16/unk16, data_only: True}
       - {start: 0x8c00d0, type: mtx, name: unk16/unk16, data_only: True}
       - {start: 0x8c0110, type: gfxSeg, name: unk16/unk16, data_only: True}
-      - {start: 0x8c0308, type: bin, name: unk16/unk16.MEd.col}
+      - {start: 0x8c0308, type: collision, name: unk16/unk16, data_only: True, args: "Verts"}
+      - {start: 0x8c0350, type: collision, name: unk16/unk16, data_only: True, args: "Tris"}
+      - {start: 0x8c0380, type: collision, name: unk16/unk16, data_only: True, args: "Settings"}
+      - {start: 0x8c0398, type: collision, name: unk16/unk16, data_only: True, args: "Header"}
+      - [0x8c03ac, bin, zeroooo28.MEd] #00000000
 
       - {start: 0x8c03b0, type: vtx, name: unk17/unk17, data_only: True}
       - {start: 0x8c0530, type: mtx, name: unk17/unk17, data_only: True}
       - {start: 0x8c0570, type: gfxSeg, name: unk17/unk17, data_only: True}
-      - {start: 0x8c0818, type: bin, name: unk17/unk17.MEd.col}
+      - {start: 0x8c0818, type: collision, name: unk17/unk17, data_only: True, args: "Verts"}
+      - {start: 0x8c08a8, type: collision, name: unk17/unk17, data_only: True, args: "Tris"}
+      - {start: 0x8c0968, type: collision, name: unk17/unk17, data_only: True, args: "Settings"}
+      - {start: 0x8c0980, type: collision, name: unk17/unk17, data_only: True, args: "Header"}
+      - [0x8c0994, bin, zeroooo29.MEd] #00000000
 
       - {start: 0x8c0998, type: vtx, name: unk18/unk18, data_only: True}
       - {start: 0x8c0a38, type: mtx, name: unk18/unk18, data_only: True}
       - {start: 0x8c0a78, type: gfxSeg, name: unk18/unk18, data_only: True}
-      - {start: 0x8c0c70, type: bin, name: unk18/unk18.MEd.col}
+      - {start: 0x8c0c70, type: collision, name: unk18/unk18, data_only: True, args: "Verts"}
+      - {start: 0x8c0cb8, type: collision, name: unk18/unk18, data_only: True, args: "Tris"}
+      - {start: 0x8c0ce8, type: collision, name: unk18/unk18, data_only: True, args: "Settings"}
+      - {start: 0x8c0d00, type: collision, name: unk18/unk18, data_only: True, args: "Header"}
+      - [0x8c0d14, bin, zeroooo30.MEd] #00000000
 
       - {start: 0x8c0d18, type: vtx, name: unk19/unk19, data_only: True}
       - {start: 0x8c0db8, type: mtx, name: unk19/unk19, data_only: True}
       - {start: 0x8c0df8, type: gfxSeg, name: unk19/unk19, data_only: True}
-      - {start: 0x8c0ff0, type: bin, name: unk19/unk19.MEd.col}
+      - {start: 0x8c0ff0, type: collision, name: unk19/unk19, data_only: True, args: "Verts"}
+      - {start: 0x8c1038, type: collision, name: unk19/unk19, data_only: True, args: "Tris"}
+      - {start: 0x8c1068, type: collision, name: unk19/unk19, data_only: True, args: "Settings"}
+      - {start: 0x8c1080, type: collision, name: unk19/unk19, data_only: True, args: "Header"}
+      - [0x8c1094, bin, zeroooo31.MEd] #00000000
 
       - {start: 0x8c1098, type: vtx, name: unk1A/unk1A, data_only: True}
       - {start: 0x8c1138, type: mtx, name: unk1A/unk1A, data_only: True}
       - {start: 0x8c1178, type: gfxSeg, name: unk1A/unk1A, data_only: True}
-      - {start: 0x8c1370, type: bin, name: unk1A/unk1A.MEd.col}
+      - {start: 0x8c1370, type: collision, name: unk1A/unk1A, data_only: True, args: "Verts"}
+      - {start: 0x8c13b8, type: collision, name: unk1A/unk1A, data_only: True, args: "Tris"}
+      - {start: 0x8c13e8, type: collision, name: unk1A/unk1A, data_only: True, args: "Settings"}
+      - {start: 0x8c1400, type: collision, name: unk1A/unk1A, data_only: True, args: "Header"}
+      - [0x8c1414, bin, zeroooo32.MEd] #00000000
 
       - {start: 0x8c1418, type: vtx, name: unk1B/unk1B, data_only: True}
       - {start: 0x8c14b8, type: mtx, name: unk1B/unk1B, data_only: True}
       - {start: 0x8c14f8, type: gfxSeg, name: unk1B/unk1B, data_only: True}
-      - {start: 0x8c16f0, type: bin, name: unk1B/unk1B.MEd.col}
+      - {start: 0x8c16f0, type: collision, name: unk1B/unk1B, data_only: True, args: "Verts"}
+      - {start: 0x8c1738, type: collision, name: unk1B/unk1B, data_only: True, args: "Tris"}
+      - {start: 0x8c1768, type: collision, name: unk1B/unk1B, data_only: True, args: "Settings"}
+      - {start: 0x8c1780, type: collision, name: unk1B/unk1B, data_only: True, args: "Header"}
+      - [0x8c1794, bin, zeroooo33.MEd] #00000000
 
       - {start: 0x8c1798, type: vtx, name: unk1C/unk1C, data_only: True}
       - {start: 0x8c18f8, type: mtx, name: unk1C/unk1C, data_only: True}
       - {start: 0x8c1938, type: gfxSeg, name: unk1C/unk1C, data_only: True}
-      - {start: 0x8c1bd0, type: bin, name: unk1C/unk1C.MEd.col}
+      - {start: 0x8c1bd0, type: collision, name: unk1C/unk1C, data_only: True, args: "Verts"}
+      - {start: 0x8c1c60, type: collision, name: unk1C/unk1C, data_only: True, args: "Tris"}
+      - {start: 0x8c1d20, type: collision, name: unk1C/unk1C, data_only: True, args: "Settings"}
+      - {start: 0x8c1d38, type: collision, name: unk1C/unk1C, data_only: True, args: "Header"}
+      - [0x8c1d4c, bin, zeroooo34.MEd] #00000000
 
       - {start: 0x8c1d50, type: vtx, name: unk1D/unk1D, data_only: True}
       - {start: 0x8c1e90, type: mtx, name: unk1D/unk1D, data_only: True}
       - {start: 0x8c1ed0, type: gfxSeg, name: unk1D/unk1D, data_only: True}
-      - {start: 0x8c2108, type: bin, name: unk1D/unk1D.MEd.col}
+      - {start: 0x8c2108, type: collision, name: unk1D/unk1D, data_only: True, args: "Verts"}
+      - {start: 0x8c2198, type: collision, name: unk1D/unk1D, data_only: True, args: "Tris"}
+      - {start: 0x8c2228, type: collision, name: unk1D/unk1D, data_only: True, args: "Settings"}
+      - {start: 0x8c2240, type: collision, name: unk1D/unk1D, data_only: True, args: "Header"}
+      - [0x8c2254, bin, zeroooo35.MEd] #00000000
 
       - {start: 0x8c2258, type: vtx, name: unk1E/unk1E, data_only: True}
       - {start: 0x8c2358, type: mtx, name: unk1E/unk1E, data_only: True}
       - {start: 0x8c2398, type: gfxSeg, name: unk1E/unk1E, data_only: True}
-      - {start: 0x8c25b0, type: bin, name: unk1E/unk1E.MEd.col}
+      - {start: 0x8c25b0, type: collision, name: unk1E/unk1E, data_only: True, args: "Verts"}
+      - {start: 0x8c2610, type: collision, name: unk1E/unk1E, data_only: True, args: "Tris"}
+      - {start: 0x8c2670, type: collision, name: unk1E/unk1E, data_only: True, args: "Settings"}
+      - {start: 0x8c2688, type: collision, name: unk1E/unk1E, data_only: True, args: "Header"}
+      - [0x8c269c, bin, zeroooo36.MEd] #00000000
 
   - start: 0x8c26a0
     name: extImages
