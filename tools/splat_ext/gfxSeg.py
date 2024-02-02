@@ -52,14 +52,149 @@ from util import symbols
 LIGHTS_RE = re.compile(r"\*\(Lightsn \*\)0x[0-9A-F]{8}")
 
 class N64SegGfxSeg(N64SegGfx):
+    groupName = ""
 
+    def disassemble_data(self, rom_bytes):
+        assert isinstance(self.rom_start, int)
+        assert isinstance(self.rom_end, int)
+        assert isinstance(self.vram_start, int)
+
+        gfx_data = rom_bytes[self.rom_start : self.rom_end]
+        segment_length = len(gfx_data)
+        if (segment_length) % 8 != 0:
+            error(
+                f"Error: gfx segment {self.name} length ({segment_length}) is not a multiple of 8!"
+            )
+
+        out_str = "" if self.data_only else options.opts.generated_c_preamble + "\n\n"
+
+        sym = self.create_symbol(
+            addr=self.vram_start, in_segment=True, type="data", define=True
+        )
+
+        gfxd_input_buffer(gfx_data)
+
+        # TODO terrible guess at the size we'll need - improve this
+        outb = bytes([0] * segment_length * 100)
+        outbuf = gfxd_output_buffer(outb, len(outb))
+
+        gfxd_target(self.get_gfxd_target())
+        gfxd_endian(
+            GfxdEndian.big if options.opts.endianness == "big" else GfxdEndian.little, 4
+        )
+
+        # Callbacks
+        gfxd_macro_fn(self.macro_fn)
+
+        gfxd_tlut_callback(self.tlut_handler)
+        gfxd_timg_callback(self.timg_handler)
+        gfxd_cimg_callback(self.cimg_handler)
+        gfxd_zimg_callback(self.zimg_handler)
+        gfxd_dl_callback(self.dl_handler)
+        gfxd_mtx_callback(self.mtx_handler)
+        gfxd_lookat_callback(self.lookat_handler)
+        gfxd_light_callback(self.light_handler)
+        # gfxd_seg_callback ?
+        gfxd_vtx_callback(self.vtx_handler)
+        gfxd_vp_callback(self.vp_handler)
+        # gfxd_uctext_callback ?
+        # gfxd_ucdata_callback ?
+        # gfxd_dram_callback ?
+
+        gfxd_execute()
+
+        if self.data_only:
+            out_str += gfxd_buffer_to_string(outbuf)
+        else:
+            out_str += "Gfx " + self.format_sym_name(sym) + "[] = {\n"
+            out_str += gfxd_buffer_to_string(outbuf)
+            out_str += "};\n"
+
+        # Poor man's light fix until we get my libgfxd PR merged
+        def light_sub_func(match):
+            light = match.group(0)
+            addr = int(light[12:], 0)
+
+            splitAdr = self.getTrueAdr(addr, True)
+            addr = self.getTrueAdr(addr)
+            sym = self.retrieve_sym_type(symbols.all_symbols_dict, splitAdr, "Light")
+            if not sym or not sym.rom == addr:
+                sym = self.create_symbol(
+                    addr=splitAdr,
+                    in_segment=self.in_segment,
+                    type="Light",
+                    reference=True,
+                    search_ranges=True,
+                )
+
+            return self.format_sym_name(sym)
+
+        out_str = re.sub(LIGHTS_RE, light_sub_func, out_str)
+
+        return out_str
+    
+    #this one just works???? erm
+    #def tlut_handler(self, addr, idx, count):
+    #    sym = self.create_symbol(
+    #        addr=addr, in_segment=self.in_segment, type="data", reference=True
+    #    )
+    #    gfxd_printf(self.format_sym_name(sym))
+    #    return 1
+
+    #ci image
+    def timg_handler(self, addr, fmt, size, width, height, pal):
+        splitAdr = self.getTrueAdr(addr, True)
+        addr = self.getTrueAdr(addr)
+        sym = self.retrieve_sym_type(symbols.all_symbols_dict, splitAdr, "TImg")
+        if not sym or not sym.rom == addr:
+            sym = self.create_symbol(
+                addr=splitAdr,
+                in_segment=self.in_segment,
+                type="TImg",
+                reference=True,
+                search_ranges=True,
+            )
+        gfxd_printf(self.format_sym_name(sym))
+        return 1
+
+    def cimg_handler(self, addr, fmt, size, width):
+        sym = self.create_symbol(
+            addr=addr, in_segment=self.in_segment, type="data", reference=True
+        )
+        gfxd_printf(self.format_sym_name(sym))
+        return 1
+
+    def zimg_handler(self, addr):
+        sym = self.create_symbol(
+            addr=addr, in_segment=self.in_segment, type="data", reference=True
+        )
+        gfxd_printf(self.format_sym_name(sym))
+        return 1
+    
+    #Gfx
+    def dl_handler(self, addr):
+        # Look for 'Gfx'-typed symbols first
+        splitAdr = self.getTrueAdr(addr, True)
+        addr = self.getTrueAdr(addr)
+        sym = self.retrieve_sym_type(symbols.all_symbols_dict, splitAdr, "Gfx")
+        if not sym or not sym.rom == addr:
+            sym = self.create_symbol(
+                addr=splitAdr,
+                in_segment=self.in_segment,
+                type="Gfx",
+                reference=True,
+                search_ranges=True,
+            )
+        gfxd_printf(self.format_sym_name(sym))
+        return 1
+    
     def vtx_handler(self, addr, count):
         # Look for 'Vtx'-typed symbols first
         splitAdr = self.getTrueAdr(addr, True)
         addr = self.getTrueAdr(addr)
         sym = self.retrieve_sym_type(symbols.all_symbols_dict, splitAdr, "Vtx")
 
-        if not sym:
+        if not sym or not sym.rom == addr:
             sym = self.create_symbol(
                 addr=splitAdr,
                 in_segment=self.in_segment,
@@ -71,7 +206,7 @@ class N64SegGfxSeg(N64SegGfx):
         index = int((addr - splitAdr) / 0x10)
         gfxd_printf(f"&{self.format_sym_name(sym)}[{index}]")
         return 1
-
+    
     def getSplitAdr(self, line):
         args = ("0x"+(line.split("#")[0].strip().split("0x")[-1]))[:-1].split(",")
         if line.find("[") != -1:
@@ -103,7 +238,9 @@ class N64SegGfxSeg(N64SegGfx):
                             line = yamler[i - back]
                             if line.startswith("  - start: ") and baseAdr == 0x0:
                                 baseAdr = int(line.split(": ")[1].split("#")[0].strip(),16)
-                                break
+                            elif line.startswith("    name: ") and self.groupName == "":
+                                self.groupName = line.split(": ")[1].split("#")[0].strip()
+                            if baseAdr != 0x0 and self.groupName != "": break
                     if baseAdr != 0x0:
                         new = baseAdr+otherhalf
                         if not split: break

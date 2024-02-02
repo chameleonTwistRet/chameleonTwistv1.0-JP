@@ -2,7 +2,7 @@
 
 from pathlib import Path
 from sys import argv
-from os import remove as deleteFile
+#from os import remove as deleteFile
 
 if __name__ == "__main__":
     dataOnly, infile, outfile = argv[1:]
@@ -19,5 +19,5 @@ if __name__ == "__main__":
 
         if not dataOnly: f.write(f"}};")
         f.write(f"\n")
-    #if you have to bother converting a bin to inc you probably dont plan on using the bin
-    deleteFile(infile)
+    #UPDATE: ok we need to keep them. my bad lmfao
+    #deleteFile(infile)

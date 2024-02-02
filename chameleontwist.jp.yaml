@@ -785,8 +785,36 @@ segments:
   - [0x498FF0, bin] #size of 8? (End DL command)
   - [0x498FF8, palette, brick1.ci4]
   - [0x4991F8, bin]
-  - [0x4DBBB0, bin, Level/BombLand]
-  - [0x51FB40, bin, Level/KidsLand]
+  - start: 0x4DBBB0
+    name: BombLand
+    dir: levelGroup
+    subalign: 8
+    type: code
+    vram: 0x81000000 #SEGMENT 0x03
+    subsegments:
+    - [auto, c, BombLand]
+    - name: BombLand
+      dir: BombLand
+      type: .data
+      subalign: 8
+      start: 0x4DBBB0
+      subsegments:
+      - {start: 0x4DBBB0, type: bin, name: BombLandPad.MEd}
+  - start: 0x51FB40
+    name: KidsLand
+    dir: levelGroup
+    subalign: 8
+    type: code
+    vram: 0x81100000 #SEGMENT 0x03
+    subsegments:
+    - [auto, c, KidsLand]
+    - name: KidsLand
+      dir: KidsLand
+      type: .data
+      subalign: 8
+      start: 0x51FB40
+      subsegments:
+      - {start: 0x51FB40, type: bin, name: KidsLandPad.MEd}
   - [0x578850, bin, Level/DesertCastle]
   - [0x5C3B20, bin, Level/IntroOutro]
   - [0x6344c0, bin, Level/GhostCastle]

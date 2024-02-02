@@ -7,7 +7,7 @@ extern Vtx D_800FE8C8_Global[];
 #define FILEPAD {0xB8,0,0,0,0,0,0,0} // the funny
 
 
-Mtx_f D_02000000_Global = {
+Mtx_f Global_globalScope_Mtx = {
 #include "assets/levelGroup/Global/globalScope/globalScope.mtx.inc.c"
 };
 Lights1 D_02000040_Global =

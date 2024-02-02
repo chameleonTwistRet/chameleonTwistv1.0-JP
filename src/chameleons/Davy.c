@@ -14,7 +14,6 @@ extern Mtx D_801299B0_Davy; //Lshoulder
 extern Mtx D_801299F0_Davy; //fist
 extern Mtx D_80129A30_Davy; //Lfist
 
-
 #define IDENTITY {{1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1},{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}} // identity matrix so we dont have to spit useless files
 #define FILEPAD {0xB8,0,0,0,0,0,0,0} // the funny
 
@@ -22,21 +21,21 @@ extern Mtx D_80129A30_Davy; //Lfist
 gfx generates symbols from addresses so for stuff DMA'd from rom with segment references
 we have to work around that on c's*/
 
-Lights1 D_08000000_Davy =
+Lights1 Davy_Body_Lights1 =
 #include "assets/chameleons/Davy/light.light.inc.c"
 
 //#######BODY
-Vtx D_08000018_Davy[] = {
+Vtx Davy_Body_Vtx[] = {
 #include "assets/chameleons/Davy/body/body.vtx.inc.c"
 };
 Mtx_f BodyMTX_Davy = IDENTITY;
 unsigned char padding1_Davy[] = FILEPAD;
 
-unsigned char D_080001A0_Davy[] = { // the body markings and backpack straps on the body
+unsigned char Davy_Body_BackpackStrapPNG[] = { // the body markings and backpack straps on the body
 #include "build/include/assets/chameleons/Davy/body/backpackStrap.ci4.png.inc.c"
 };
 unsigned char padding2_Davy[] = FILEPAD;
-unsigned char D_080005A8_Davy[] = {
+unsigned char Davy_Body_BackpackStrapPAL[] = {
 #include "build/include/assets/chameleons/Davy/body/backpackStrap.ci4.pal.inc.c"
 };
 unsigned char padding3_Davy[] = FILEPAD;
@@ -58,7 +57,7 @@ unsigned char D_08000BE8_Davy[] = {
 #include "build/include/assets/chameleons/Davy/body/number.ci4.pal.inc.c"
 };
 
-Gfx D_08000DE8_Davy[] = {
+Gfx Davy_Body[] = {
 #include "assets/chameleons/Davy/body/body.gfx.inc.c"
 };
 //#######
