@@ -54,6 +54,9 @@ LIGHTS_RE = re.compile(r"\*\(Lightsn \*\)0x[0-9A-F]{8}")
 class N64SegGfxSeg(N64SegGfx):
     groupName = ""
 
+    def out_path(self) -> Path:
+        return options.opts.asset_path / self.dir / f"{self.name}.gfx.inc.c"
+    
     def disassemble_data(self, rom_bytes):
         assert isinstance(self.rom_start, int)
         assert isinstance(self.rom_end, int)
@@ -115,17 +118,23 @@ class N64SegGfxSeg(N64SegGfx):
             light = match.group(0)
             addr = int(light[12:], 0)
 
-            splitAdr = self.getTrueAdr(addr, True)
+
+            #Do fixed check first
             addr = self.getTrueAdr(addr)
-            sym = self.retrieve_sym_type(symbols.all_symbols_dict, splitAdr, "Light")
-            if not sym or not sym.rom == addr:
-                sym = self.create_symbol(
-                    addr=splitAdr,
-                    in_segment=self.in_segment,
-                    type="Light",
-                    reference=True,
-                    search_ranges=True,
-                )
+            sym = self.retrieve_sym_type(symbols.all_symbols_dict, addr, "Light")
+            if not sym:
+                #Do legacy check next, for compatability
+                splitAdr = self.getTrueAdr(addr, True)
+                addr = self.getTrueAdr(addr)
+                sym = self.retrieve_sym_type(symbols.all_symbols_dict, splitAdr, "Light")
+                if not sym:
+                    sym = self.create_symbol(
+                        addr=splitAdr,
+                        in_segment=self.in_segment,
+                        type="Light",
+                        reference=True,
+                        search_ranges=True,
+                    )
 
             return self.format_sym_name(sym)
 
@@ -133,27 +142,44 @@ class N64SegGfxSeg(N64SegGfx):
 
         return out_str
     
-    #this one just works???? erm
-    #def tlut_handler(self, addr, idx, count):
-    #    sym = self.create_symbol(
-    #        addr=addr, in_segment=self.in_segment, type="data", reference=True
-    #    )
-    #    gfxd_printf(self.format_sym_name(sym))
-    #    return 1
+    def tlut_handler(self, addr, idx, count):
+        #Do fixed check first
+        addr = self.getTrueAdr(addr)
+        sym = self.retrieve_sym_type(symbols.all_symbols_dict, addr, "TLut")
+        if not sym:
+            #Do legacy check next, for compatability
+            splitAdr = self.getTrueAdr(addr, True)
+            addr = self.getTrueAdr(addr)
+            sym = self.retrieve_sym_type(symbols.all_symbols_dict, splitAdr, "TLut")
+            if not sym:
+                sym = self.create_symbol(
+                    addr=splitAdr,
+                    in_segment=self.in_segment,
+                    type="TLut",
+                    reference=True,
+                    search_ranges=True,
+                )
+        gfxd_printf(self.format_sym_name(sym))
+        return 1
 
     #ci image
     def timg_handler(self, addr, fmt, size, width, height, pal):
-        splitAdr = self.getTrueAdr(addr, True)
+        #Do fixed check first
         addr = self.getTrueAdr(addr)
-        sym = self.retrieve_sym_type(symbols.all_symbols_dict, splitAdr, "TImg")
-        if not sym or not sym.rom == addr:
-            sym = self.create_symbol(
-                addr=splitAdr,
-                in_segment=self.in_segment,
-                type="TImg",
-                reference=True,
-                search_ranges=True,
-            )
+        sym = self.retrieve_sym_type(symbols.all_symbols_dict, addr, "TImg")
+        if not sym:
+            #Do legacy check next, for compatability
+            splitAdr = self.getTrueAdr(addr, True)
+            addr = self.getTrueAdr(addr)
+            sym = self.retrieve_sym_type(symbols.all_symbols_dict, splitAdr, "TImg")
+            if not sym:
+                sym = self.create_symbol(
+                    addr=splitAdr,
+                    in_segment=self.in_segment,
+                    type="TImg",
+                    reference=True,
+                    search_ranges=True,
+                )
         gfxd_printf(self.format_sym_name(sym))
         return 1
 
@@ -173,18 +199,23 @@ class N64SegGfxSeg(N64SegGfx):
     
     #Gfx
     def dl_handler(self, addr):
-        # Look for 'Gfx'-typed symbols first
-        splitAdr = self.getTrueAdr(addr, True)
+        #Do fixed check first
         addr = self.getTrueAdr(addr)
-        sym = self.retrieve_sym_type(symbols.all_symbols_dict, splitAdr, "Gfx")
-        if not sym or not sym.rom == addr:
-            sym = self.create_symbol(
-                addr=splitAdr,
-                in_segment=self.in_segment,
-                type="Gfx",
-                reference=True,
-                search_ranges=True,
-            )
+        sym = self.retrieve_sym_type(symbols.all_symbols_dict, addr, "Gfx")
+        if not sym:
+            #Do legacy check next, for compatability
+            splitAdr = self.getTrueAdr(addr, True)
+            addr = self.getTrueAdr(addr)
+            sym = self.retrieve_sym_type(symbols.all_symbols_dict, splitAdr, "Gfx")
+            if not sym:
+                sym = self.create_symbol(
+                    addr=splitAdr,
+                    in_segment=self.in_segment,
+                    type="Gfx",
+                    reference=True,
+                    search_ranges=True,
+                )
+
         gfxd_printf(self.format_sym_name(sym))
         return 1
     
@@ -194,7 +225,7 @@ class N64SegGfxSeg(N64SegGfx):
         addr = self.getTrueAdr(addr)
         sym = self.retrieve_sym_type(symbols.all_symbols_dict, splitAdr, "Vtx")
 
-        if not sym or not sym.rom == addr:
+        if not sym:
             sym = self.create_symbol(
                 addr=splitAdr,
                 in_segment=self.in_segment,

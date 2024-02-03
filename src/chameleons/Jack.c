@@ -13,296 +13,240 @@ extern Mtx D_80129970_Jack; //shoulder
 extern Mtx D_801299B0_Jack; //Lshoulder
 extern Mtx D_801299F0_Jack; //fist
 extern Mtx D_80129A30_Jack; //Lfist
-
 #define IDENTITY {{1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1},{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}} // identity matrix so we dont have to spit useless files
+
 #define FILEPAD {0xB8,0,0,0,0,0,0,0} // the funny
 
-/*asset names need to follow the format D_<segmentID><distanceFromStart>_<groupName>
-gfx generates symbols from addresses so for stuff DMA'd from rom with segment references
-we have to work around that on c's*/
-
-Lights1 D_09000000_Jack =
+Lights1 Jack_light_Light =
 #include "assets/chameleons/Jack/light.light.inc.c"
-
-//#######BODY
-Vtx D_09000018_Jack[] = {
+Vtx Jack_body_Vtx[] = {
 #include "assets/chameleons/Jack/body/body.vtx.inc.c"
 };
-Mtx_f BodyMTX_Jack = IDENTITY;
-unsigned char padding1_Jack[] = FILEPAD;
-
-unsigned char D_090001A0_Jack[] = { // the body markings and backpack straps on the body
+Mtx_f Jack_IMtx1 = IDENTITY;
+unsigned char Jack_Pad1[] = FILEPAD;
+unsigned char Jack_backpackStrap_PNG[] = {
 #include "build/include/assets/chameleons/Jack/body/backpackStrap.ci4.png.inc.c"
 };
-unsigned char padding2_Jack[] = FILEPAD;
-unsigned char D_090005A8_Jack[] = {
+unsigned char Jack_Pad2[] = FILEPAD;
+unsigned char Jack_backpackStrap_PAL[] = {
 #include "build/include/assets/chameleons/Jack/body/backpackStrap.ci4.pal.inc.c"
 };
-unsigned char padding3_Jack[] = FILEPAD;
-
-unsigned char D_090007B0_Jack[] = { // the solid color used for the body
+unsigned char Jack_Pad3[] = FILEPAD;
+unsigned char Jack_solidColor_PNG[] = {
 #include "build/include/assets/chameleons/Jack/body/solidColor.ci4.png.inc.c"
 };
-unsigned char padding4_Jack[] = FILEPAD;
-unsigned char D_090007D8_Jack[] = {
+unsigned char Jack_Pad4[] = FILEPAD;
+unsigned char Jack_solidColor_PAL[] = {
 #include "build/include/assets/chameleons/Jack/body/solidColor.ci4.pal.inc.c"
 };
-unsigned char padding5_Jack[] = FILEPAD;
-
-unsigned char D_090009E0_Jack[] = { // the number on the front of the chameleon
+unsigned char Jack_Pad5[] = FILEPAD;
+unsigned char Jack_number_PNG[] = {
 #include "build/include/assets/chameleons/Jack/body/number.ci4.png.inc.c"
 };
-unsigned char padding6_Jack[] = FILEPAD;
-unsigned char D_09000BE8_Jack[] = {
+unsigned char Jack_Pad6[] = FILEPAD;
+unsigned char Jack_number_PAL[] = {
 #include "build/include/assets/chameleons/Jack/body/number.ci4.pal.inc.c"
 };
-
-Gfx D_09000DE8_Jack[] = {
+Gfx Jack_body_Gfx[] = {
 #include "assets/chameleons/Jack/body/body.gfx.inc.c"
 };
-//#######
-
-//#######BODYASSOCIATE
-Mtx_f D_090011A0_Jack = {
+Mtx_f Jack_bodyAssociate_Mtx = {
 #include "assets/chameleons/Jack/bodyAssociate/bodyAssociate.mtx.inc.c"
 };
-Gfx D_090011E0_Jack[] = { // i believe this is used for anchoring the limbs against the body? more research needed
+Gfx Jack_bodyAssociate_Gfx[] = {
 #include "assets/chameleons/Jack/bodyAssociate/bodyAssociate.gfx.inc.c"
 };
-//#######
-
-//#######HEAD
-Vtx D_09001200_Jack[] = {
+Vtx Jack_head_Vtx[] = {
 #include "assets/chameleons/Jack/head/head.vtx.inc.c"
 };
-Mtx_f headMtx_Jack = IDENTITY;
-unsigned char padding7_Jack[] = FILEPAD;
-unsigned char D_090016F8_Jack[] = {
+Mtx_f Jack_IMtx2 = IDENTITY;
+unsigned char Jack_Pad7[] = FILEPAD;
+unsigned char Jack_eyeL_PNG[] = {
 #include "build/include/assets/chameleons/Jack/head/eyeL.ci8.png.inc.c"
 };
-unsigned char padding8_Jack[] = FILEPAD;
-unsigned char D_09001B00_Jack[] = {
+unsigned char Jack_Pad8[] = FILEPAD;
+unsigned char Jack_eyeL_PAL[] = {
 #include "build/include/assets/chameleons/Jack/head/eyeL.ci8.pal.inc.c"
 };
-unsigned char padding9_Jack[] = FILEPAD;
-unsigned char D_09001D08_Jack[] = {
+unsigned char Jack_Pad9[] = FILEPAD;
+unsigned char Jack_eyeR_PNG[] = {
 #include "build/include/assets/chameleons/Jack/head/eyeR.ci8.png.inc.c"
 };
-unsigned char paddingA_Jack[] = FILEPAD;
-unsigned char D_09002110_Jack[] = {
+unsigned char Jack_Pad10[] = FILEPAD;
+unsigned char Jack_eyeR_PAL[] = {
 #include "build/include/assets/chameleons/Jack/head/eyeR.ci8.pal.inc.c"
 };
-unsigned char paddingB_Jack[] = FILEPAD;
-unsigned char D_09002318_Jack[] = {
+unsigned char Jack_Pad11[] = FILEPAD;
+unsigned char Jack_cheek_PNG[] = {
 #include "build/include/assets/chameleons/Jack/head/cheek.ci4.png.inc.c"
 };
-unsigned char paddingC_Jack[] = FILEPAD;
-unsigned char D_09002520_Jack[] = {
+unsigned char Jack_Pad12[] = FILEPAD;
+unsigned char Jack_cheek_PAL[] = {
 #include "build/include/assets/chameleons/Jack/head/cheek.ci4.pal.inc.c"
 };
-
-Gfx D_09002720_Jack[] = {
+Gfx Jack_head_Gfx[] = {
 #include "assets/chameleons/Jack/head/head.gfx.inc.c"
 };
-//#######
-
-//#######BACKPACK
-Vtx D_09002CA0_Jack[] = {
+Vtx Jack_backpack_Vtx[] = {
 #include "assets/chameleons/Jack/backpack/backpack.vtx.inc.c"
 };
-Mtx_f backpackMtx_Jack = IDENTITY;
-unsigned char paddingD_Jack[] = FILEPAD;
-unsigned char D_09002D68_Jack[] = {
+Mtx_f Jack_IMtx3 = IDENTITY;
+unsigned char Jack_Pad13[] = FILEPAD;
+unsigned char Jack_backpack_PNG[] = {
 #include "build/include/assets/chameleons/Jack/backpack/backpack.ci8.png.inc.c"
 };
-unsigned char paddingE_Jack[] = FILEPAD;
-unsigned char D_09002D90_Jack[] = {
+unsigned char Jack_Pad14[] = FILEPAD;
+unsigned char Jack_backpack_PAL[] = {
 #include "build/include/assets/chameleons/Jack/backpack/backpack.ci8.pal.inc.c"
 };
-
-Gfx D_09002F90_Jack[] = {
+Gfx Jack_backpack_Gfx[] = {
 #include "assets/chameleons/Jack/backpack/backpack.gfx.inc.c"
 };
-//#######
-
-//#######SHOE
-Vtx D_09003108_Jack[] = {
+Vtx Jack_shoe_Vtx[] = {
 #include "assets/chameleons/Jack/shoe/shoe.vtx.inc.c"
 };
-Mtx_f shoeMtx_Jack = IDENTITY;
-unsigned char paddingF_Jack[] = FILEPAD;
-unsigned char D_09003410_Jack[] = {
+Mtx_f Jack_IMtx4 = IDENTITY;
+unsigned char Jack_Pad15[] = FILEPAD;
+unsigned char Jack_shoe_PNG[] = {
 #include "build/include/assets/chameleons/Jack/shoe/shoe.ci4.png.inc.c"
 };
-unsigned char padding10_Jack[] = FILEPAD;
-unsigned char D_09003818_Jack[] = {
+unsigned char Jack_Pad16[] = FILEPAD;
+unsigned char Jack_shoe_PAL[] = {
 #include "build/include/assets/chameleons/Jack/shoe/shoe.ci4.pal.inc.c"
 };
-
-Gfx D_09003A18_Jack[] = {
+Gfx Jack_shoe_Gfx[] = {
 #include "assets/chameleons/Jack/shoe/shoe.gfx.inc.c"
 };
-//#######
-
-//#######LSHOE
-Vtx D_09003CD8_Jack[] = {
+Vtx Jack_Lshoe_Vtx[] = {
 #include "assets/chameleons/Jack/Lshoe/Lshoe.vtx.inc.c"
 };
-Mtx_f LshoeMtx_Jack = IDENTITY;
-Gfx D_09003FD8_Jack[] = {
+Mtx_f Jack_IMtx5 = IDENTITY;
+Gfx Jack_Lshoe_Gfx[] = {
 #include "assets/chameleons/Jack/Lshoe/Lshoe.gfx.inc.c"
 };
-//#######
-
-//#######CUFF
-Vtx D_09004298_Jack[] = {
+Vtx Jack_cuff_Vtx[] = {
 #include "assets/chameleons/Jack/cuff/cuff.vtx.inc.c"
 };
-Mtx_f cuffMtx_Jack = IDENTITY;
-unsigned char padding11_Jack[] = FILEPAD;
-unsigned char D_090043D0_Jack[] = {
+Mtx_f Jack_IMtx6 = IDENTITY;
+unsigned char Jack_Pad17[] = FILEPAD;
+unsigned char Jack_color_PNG[] = {
 #include "build/include/assets/chameleons/Jack/cuff/color.ci4.png.inc.c"
 };
-unsigned char padding12_Jack[] = FILEPAD;
-unsigned char D_090043F8_Jack[] = {
+unsigned char Jack_Pad18[] = FILEPAD;
+unsigned char Jack_color_PAL[] = {
 #include "build/include/assets/chameleons/Jack/cuff/color.ci4.pal.inc.c"
 };
-
-Gfx D_090045F8_Jack[] = {
+Gfx Jack_cuff_Gfx[] = {
 #include "assets/chameleons/Jack/cuff/cuff.gfx.inc.c"
 };
-//#######
-
-//#######LCUFF
-Vtx D_090048B0_Jack[] = {
+Vtx Jack_Lcuff_Vtx[] = {
 #include "assets/chameleons/Jack/Lcuff/Lcuff.vtx.inc.c"
 };
-Mtx_f LcuffMtx_Jack = IDENTITY;
-Gfx D_090049E0_Jack[] = {
+Mtx_f Jack_IMtx7 = IDENTITY;
+Gfx Jack_Lcuff_Gfx[] = {
 #include "assets/chameleons/Jack/Lcuff/Lcuff.gfx.inc.c"
 };
-//#######
-
-//#######WRIST
-Vtx D_09004C98_Jack[] = {
+Vtx Jack_wrist_Vtx[] = {
 #include "assets/chameleons/Jack/wrist/wrist.vtx.inc.c"
 };
-Mtx_f wristMtx_Jack = IDENTITY;
-unsigned char padding13_Jack[] = FILEPAD;
-unsigned char D_09004EB0_Jack[] = {
+Mtx_f Jack_IMtx8 = IDENTITY;
+unsigned char Jack_Pad19[] = FILEPAD;
+unsigned char Jack_wristColor_PNG[] = {
 #include "build/include/assets/chameleons/Jack/wrist/wristColor.ci4.png.inc.c"
 };
-unsigned char padding14_Jack[] = FILEPAD;
-unsigned char D_09004ED8_Jack[] = {
+unsigned char Jack_Pad20[] = FILEPAD;
+unsigned char Jack_wristColor_PAL[] = {
 #include "build/include/assets/chameleons/Jack/wrist/wristColor.ci4.pal.inc.c"
 };
-unsigned char padding15_Jack[] = FILEPAD;
-unsigned char D_090050E0_Jack[] = {
+unsigned char Jack_Pad21[] = FILEPAD;
+unsigned char Jack_wrist_PNG[] = {
 #include "build/include/assets/chameleons/Jack/wrist/wrist.ci4.png.inc.c"
 };
-unsigned char padding16_Jack[] = FILEPAD;
-unsigned char D_090052E8_Jack[] = {
+unsigned char Jack_Pad22[] = FILEPAD;
+unsigned char Jack_wrist_PAL[] = {
 #include "build/include/assets/chameleons/Jack/wrist/wrist.ci4.pal.inc.c"
 };
-Gfx D_090054E8_Jack[] = {
+Gfx Jack_wrist_Gfx[] = {
 #include "assets/chameleons/Jack/wrist/wrist.gfx.inc.c"
 };
-//#######
-
-//#######LWRIST
-Vtx D_09005900_Jack[] = {
+Vtx Jack_Lwrist_Vtx[] = {
 #include "assets/chameleons/Jack/Lwrist/Lwrist.vtx.inc.c"
 };
-Mtx_f LwristMtx_Jack = IDENTITY;
-Gfx D_09005B10_Jack[] = {
+Mtx_f Jack_IMtx9 = IDENTITY;
+Gfx Jack_Lwrist_Gfx[] = {
 #include "assets/chameleons/Jack/Lwrist/Lwrist.gfx.inc.c"
 };
-//#######
-
-//#######SHOULDER
-Vtx D_09005F28_Jack[] = {
+Vtx Jack_shoulder_Vtx[] = {
 #include "assets/chameleons/Jack/shoulder/shoulder.vtx.inc.c"
 };
-Mtx_f shoulderMtx_Jack = IDENTITY;
-Gfx D_09005FC8_Jack[] = {
+Mtx_f Jack_IMtx10 = IDENTITY;
+Gfx Jack_shoulder_Gfx[] = {
 #include "assets/chameleons/Jack/shoulder/shoulder.gfx.inc.c"
 };
-//#######
-
-//#######LSHOULDER
-Vtx D_09006120_Jack[] = {
+Vtx Jack_Lshoulder_Vtx[] = {
 #include "assets/chameleons/Jack/Lshoulder/Lshoulder.vtx.inc.c"
 };
-Mtx_f LshoulderMtx_Jack = IDENTITY;
-Gfx D_090061C0_Jack[] = {
+Mtx_f Jack_IMtx11 = IDENTITY;
+Gfx Jack_Lshoulder_Gfx[] = {
 #include "assets/chameleons/Jack/Lshoulder/Lshoulder.gfx.inc.c"
 };
-//#######
-
-//#######FIST
-Vtx D_09006318_Jack[] = {
+Vtx Jack_fist_Vtx[] = {
 #include "assets/chameleons/Jack/fist/fist.vtx.inc.c"
 };
-Mtx_f fistMtx_Jack = IDENTITY;
-unsigned char padding17_Jack[] = FILEPAD;
-unsigned char D_090065F0_Jack[] = {
+Mtx_f Jack_IMtx12 = IDENTITY;
+unsigned char Jack_Pad23[] = FILEPAD;
+unsigned char Jack_fist1_PNG[] = {
 #include "build/include/assets/chameleons/Jack/fist/fist1.ci4.png.inc.c"
 };
-unsigned char padding18_Jack[] = FILEPAD;
-unsigned char D_090067F8_Jack[] = {
+unsigned char Jack_Pad24[] = FILEPAD;
+unsigned char Jack_fist1_PAL[] = {
 #include "build/include/assets/chameleons/Jack/fist/fist1.ci4.pal.inc.c"
 };
-unsigned char padding19_Jack[] = FILEPAD;
-unsigned char D_09006A00_Jack[] = {
+unsigned char Jack_Pad25[] = FILEPAD;
+unsigned char Jack_fist2_PNG[] = {
 #include "build/include/assets/chameleons/Jack/fist/fist2.ci4.png.inc.c"
 };
-unsigned char padding1A_Jack[] = FILEPAD;
-unsigned char D_09006C08_Jack[] = {
+unsigned char Jack_Pad26[] = FILEPAD;
+unsigned char Jack_fist2_PAL[] = {
 #include "build/include/assets/chameleons/Jack/fist/fist2.ci4.pal.inc.c"
 };
-unsigned char padding1B_Jack[] = FILEPAD;
-unsigned char D_09006E10_Jack[] = {
+unsigned char Jack_Pad27[] = FILEPAD;
+unsigned char Jack_fist3_PNG[] = {
 #include "build/include/assets/chameleons/Jack/fist/fist3.ci4.png.inc.c"
 };
-unsigned char padding1C_Jack[] = FILEPAD;
-unsigned char D_09007018_Jack[] = {
+unsigned char Jack_Pad28[] = FILEPAD;
+unsigned char Jack_fist3_PAL[] = {
 #include "build/include/assets/chameleons/Jack/fist/fist3.ci4.pal.inc.c"
 };
-unsigned char padding1D_Jack[] = FILEPAD;
-unsigned char D_09007220_Jack[] = {
+unsigned char Jack_Pad29[] = FILEPAD;
+unsigned char Jack_fistDiamond_PNG[] = {
 #include "build/include/assets/chameleons/Jack/fist/fistDiamond.ci4.png.inc.c"
 };
-unsigned char padding1E_Jack[] = FILEPAD;
-unsigned char D_09007428_Jack[] = {
+unsigned char Jack_Pad30[] = FILEPAD;
+unsigned char Jack_fistDiamond_PAL[] = {
 #include "build/include/assets/chameleons/Jack/fist/fistDiamond.ci4.pal.inc.c"
 };
-unsigned char padding1F_Jack[] = FILEPAD;
-unsigned char D_09007630_Jack[] = {
+unsigned char Jack_Pad31[] = FILEPAD;
+unsigned char Jack_fist4_PNG[] = {
 #include "build/include/assets/chameleons/Jack/fist/fist4.ci4.png.inc.c"
 };
-unsigned char padding20_Jack[] = FILEPAD;
-unsigned char D_09007838_Jack[] = {
+unsigned char Jack_Pad32[] = FILEPAD;
+unsigned char Jack_fist4_PAL[] = {
 #include "build/include/assets/chameleons/Jack/fist/fist4.ci4.pal.inc.c"
 };
-Gfx D_09007A38_Jack[] = {
+Gfx Jack_fist_Gfx[] = {
 #include "assets/chameleons/Jack/fist/fist.gfx.inc.c"
 };
-//#######
-
-//#######LFIST
-Vtx D_09008150_Jack[] = {
+Vtx Jack_Lfist_Vtx[] = {
 #include "assets/chameleons/Jack/Lfist/Lfist.vtx.inc.c"
 };
-Mtx_f LfistMtx_Jack = IDENTITY;
-Gfx D_09008440_Jack[] = {
+Mtx_f Jack_IMtx13 = IDENTITY;
+Gfx Jack_Lfist_Gfx[] = {
 #include "assets/chameleons/Jack/Lfist/Lfist.gfx.inc.c"
 };
-//#######
-
-//#######RESTASSOCIATE
-Mtx_f D_09008B58_Jack = {
+Mtx_f Jack_restAssociate_Mtx = {
 #include "assets/chameleons/Jack/restAssociate/restAssociate.mtx.inc.c"
 };
-Gfx Jack_Model[] = {
+Gfx Jack_restAssociate_Gfx[] = {
 #include "assets/chameleons/Jack/restAssociate/restAssociate.gfx.inc.c"
 };

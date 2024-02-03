@@ -2796,7 +2796,7 @@ segments:
 
   - start: 0x87F640
     name: Global
-    vram: 0x809F20E8 #SEGMENT 0x02
+    vram: 0x02000000 #SEGMENT 0x02
     dir: levelGroup
     subalign: 8
     type: code
@@ -2806,6 +2806,7 @@ segments:
       dir: Global
       type: .data
       subalign: 8
+      vram: 0x809F20E8
       start: 0x87F640
       subsegments:
       - {start: 0x87F640, type: mtx, name: globalScope/globalScope, data_only: True}
@@ -4905,16 +4906,17 @@ segments:
 
   - start: 0xAFC6B0
     name: Davy #The standard.
+    vram: 0x08000000 #SEGMENT 0x08
     dir: chameleons
     subalign: 8
     type: code
-    vram: 0x80D69F50 #SEGMENT 0x08
     subsegments:
     - [auto, c, Davy]
     - name: Davy
       dir: Davy
       type: .data
       subalign: 8
+      vram: 0x80D69F50
       start: 0xAFC6B0
       subsegments:
       - {start: 0xAFC6B0, type: lights, name: light, data_only: True}
@@ -5043,16 +5045,17 @@ segments:
 
   - start: 0xB05290
     name: Jack #Jack's head vtx is 4 verts larger than Davy's.
+    vram: 0x09000000 #SEGMENT 0x09
     dir: chameleons
     subalign: 8
     type: code
-    vram: 0x80D72B30 #SEGMENT 0x09
     subsegments:
     - [auto, c, Jack]
     - name: Jack
       dir: Jack
       type: .data
       subalign: 8
+      vram: 0x80D72B30
       start: 0xB05290
       subsegments:
       - {start: 0xB05290, type: lights, name: light, data_only: True}
@@ -5181,16 +5184,17 @@ segments:
 
   - start: 0xB0DEB0
     name: Fred #Absolutely no different from Davy.
+    vram: 0x0A000000 #SEGMENT 0x0A
     dir: chameleons
     subalign: 8
     type: code
-    vram: 0x80D7B750 #SEGMENT 0x0A
     subsegments:
     - [auto, c, Fred]
     - name: Fred
       dir: Fred
       type: .data
       subalign: 8
+      vram: 0x80D7B750
       start: 0xB0DEB0
       subsegments:
       - {start: 0xB0DEB0, type: lights, name: light, data_only: True}
@@ -5319,16 +5323,17 @@ segments:
 
   - start: 0xB16A90
     name: Linda #Linda's head group has a ton of changes because of her bow. Her shoe also has 2 more verts.
+    vram: 0x0B000000 #SEGMENT 0x0B
     dir: chameleons
     subalign: 8
     type: code
-    vram: 0x80D84330 #SEGMENT 0x0B
     subsegments:
     - [auto, c, Linda]
     - name: Linda
       dir: Linda
       type: .data
       subalign: 8
+      vram: 0x80D84330
       start: 0xB16A90
       subsegments:
       - {start: 0xB16A90, type: lights, name: light, data_only: True}
@@ -5461,16 +5466,17 @@ segments:
 
   - start: 0xB1FE00
     name: Black #Jack, but with 3 less verts than normal on the shoe.
+    vram: 0x0C000000 #SEGMENT 0x0C
     dir: chameleons
     subalign: 8
     type: code
-    vram: 0x80D8D6A0 #SEGMENT 0x0C
     subsegments:
     - [auto, c, Black]
     - name: Black
       dir: Black
       type: .data
       subalign: 8
+      vram: 0x80D8D6A0
       start: 0xB1FE00
       subsegments:
       - {start: 0xB1FE00, type: lights, name: light, data_only: True}
@@ -5599,16 +5605,17 @@ segments:
 
   - start: 0xB289F0
     name: White #Absolutely no different from Davy.
+    vram: 0x0D000000 #SEGMENT 0x0D
     dir: chameleons
     subalign: 8
     type: code
-    vram: 0x80D96290 #SEGMENT 0x0D
     subsegments:
     - [auto, c, White]
     - name: White
       dir: White
       type: .data
       subalign: 8
+      vram: 0x80D96290
       start: 0xB289F0
       subsegments:
       - {start: 0xB289F0, type: lights, name: light, data_only: True}
