@@ -46,9 +46,1324 @@ extern unsigned char Global_JLCaveFadeTop_PNG[];
 
 
 #include "assets/levelGroup/JungleLand/mtx.mtx.inc.c"
-unsigned char JungleLand_scaredyPad_Bin[] = {
-#include "build/include/assets/levelGroup/JungleLand/scaredyPad.inc.c"
+unsigned char JungleLand_pointers_Bin[] = {
+#include "build/include/assets/levelGroup/JungleLand/pointers.inc.c"
 };
+unsigned char JungleLand_rabObjects_Bin[] = {
+#include "build/include/assets/levelGroup/JungleLand/rabObjects.inc.c"
+};
+
+#include "assets/levelGroup/JungleLand/spriteActors/spriteAct1.sprite.inc.c"
+
+#include "assets/levelGroup/JungleLand/spriteActors/spriteAct2.sprite.inc.c"
+
+#include "assets/levelGroup/JungleLand/spriteActors/spriteAct3.sprite.inc.c"
+
+#include "assets/levelGroup/JungleLand/spriteActors/spriteAct4.sprite.inc.c"
+
+#include "assets/levelGroup/JungleLand/spriteActors/spriteAct5.sprite.inc.c"
+
+#include "assets/levelGroup/JungleLand/spriteActors/spriteAct6.sprite.inc.c"
+
+#include "assets/levelGroup/JungleLand/spriteActors/spriteAct7.sprite.inc.c"
+
+#include "assets/levelGroup/JungleLand/spriteActors/spriteAct8.sprite.inc.c"
+
+#include "assets/levelGroup/JungleLand/spriteActors/spriteAct9.sprite.inc.c"
+
+#include "assets/levelGroup/JungleLand/spriteActors/spriteAct10.sprite.inc.c"
+
+#include "assets/levelGroup/JungleLand/spriteActors/spriteAct11.sprite.inc.c"
+
+#include "assets/levelGroup/JungleLand/spriteActors/spriteAct12.sprite.inc.c"
+
+#include "assets/levelGroup/JungleLand/spriteActors/spriteAct13.sprite.inc.c"
+
+#include "assets/levelGroup/JungleLand/spriteActors/spriteAct14.sprite.inc.c"
+
+#include "assets/levelGroup/JungleLand/spriteActors/spriteAct15.sprite.inc.c"
+
+#include "assets/levelGroup/JungleLand/spriteActors/spriteAct16.sprite.inc.c"
+
+#include "assets/levelGroup/JungleLand/spriteActors/spriteAct17.sprite.inc.c"
+
+#include "assets/levelGroup/JungleLand/spriteActors/spriteActX1.sprite.inc.c"
+
+#include "assets/levelGroup/JungleLand/spriteActors/spriteActX2.sprite.inc.c"
+
+#include "assets/levelGroup/JungleLand/spriteActors/spriteActX3.sprite.inc.c"
+
+#include "assets/levelGroup/JungleLand/spriteActors/spriteActX4.sprite.inc.c"
+
+#include "assets/levelGroup/JungleLand/spriteActors/spriteActX5.sprite.inc.c"
+
+#include "assets/levelGroup/JungleLand/spriteActors/spriteActX6.sprite.inc.c"
+
+#include "assets/levelGroup/JungleLand/spriteActors/spriteActX7.sprite.inc.c"
+
+#include "assets/levelGroup/JungleLand/spriteActors/spriteActX8.sprite.inc.c"
+
+#include "assets/levelGroup/JungleLand/spriteActors/spriteActX9.sprite.inc.c"
+
+#include "assets/levelGroup/JungleLand/spriteActors/spriteActX10.sprite.inc.c"
+
+#include "assets/levelGroup/JungleLand/spriteActors/spriteAct18.sprite.inc.c"
+
+#include "assets/levelGroup/JungleLand/spriteActors/spriteAct19.sprite.inc.c"
+
+#include "assets/levelGroup/JungleLand/spriteActors/spriteAct20.sprite.inc.c"
+
+#include "assets/levelGroup/JungleLand/spriteActors/spriteAct21.sprite.inc.c"
+
+#include "assets/levelGroup/JungleLand/spriteActors/spriteAct22.sprite.inc.c"
+
+#include "assets/levelGroup/JungleLand/spriteActors/spriteAct23.sprite.inc.c"
+
+#include "assets/levelGroup/JungleLand/spriteActors/spriteAct24.sprite.inc.c"
+
+#include "assets/levelGroup/JungleLand/spriteActors/spriteAct25.sprite.inc.c"
+
+#include "assets/levelGroup/JungleLand/spriteActors/spriteAct26.sprite.inc.c"
+
+#include "assets/levelGroup/JungleLand/spriteActors/spriteAct27.sprite.inc.c"
+
+#include "assets/levelGroup/JungleLand/spriteActors/spriteAct28.sprite.inc.c"
+
+#include "assets/levelGroup/JungleLand/spriteActors/spriteAct29.sprite.inc.c"
+
+#include "assets/levelGroup/JungleLand/spriteActors/spriteAct30.sprite.inc.c"
+
+#include "assets/levelGroup/JungleLand/collectables/clct1.clct.inc.c"
+
+#include "assets/levelGroup/JungleLand/collectables/clct2.clct.inc.c"
+
+#include "assets/levelGroup/JungleLand/collectables/clct3.clct.inc.c"
+
+#include "assets/levelGroup/JungleLand/collectables/clct4.clct.inc.c"
+
+#include "assets/levelGroup/JungleLand/collectables/clct5.clct.inc.c"
+
+#include "assets/levelGroup/JungleLand/collectables/clct6.clct.inc.c"
+
+#include "assets/levelGroup/JungleLand/collectables/clct7.clct.inc.c"
+
+#include "assets/levelGroup/JungleLand/collectables/clct8.clct.inc.c"
+
+#include "assets/levelGroup/JungleLand/collectables/clct9.clct.inc.c"
+
+#include "assets/levelGroup/JungleLand/collectables/clct10.clct.inc.c"
+
+#include "assets/levelGroup/JungleLand/collectables/clct11.clct.inc.c"
+
+#include "assets/levelGroup/JungleLand/collectables/clct12.clct.inc.c"
+
+#include "assets/levelGroup/JungleLand/collectables/clct13.clct.inc.c"
+
+#include "assets/levelGroup/JungleLand/collectables/clct14.clct.inc.c"
+
+#include "assets/levelGroup/JungleLand/collectables/clct15.clct.inc.c"
+
+#include "assets/levelGroup/JungleLand/collectables/clct16.clct.inc.c"
+
+#include "assets/levelGroup/JungleLand/collectables/clct17.clct.inc.c"
+
+#include "assets/levelGroup/JungleLand/collectables/clct18.clct.inc.c"
+
+#include "assets/levelGroup/JungleLand/collectables/clct19.clct.inc.c"
+
+#include "assets/levelGroup/JungleLand/collectables/clct20.clct.inc.c"
+
+#include "assets/levelGroup/JungleLand/collectables/clct21.clct.inc.c"
+
+#include "assets/levelGroup/JungleLand/collectables/clct22.clct.inc.c"
+
+#include "assets/levelGroup/JungleLand/collectables/clct23.clct.inc.c"
+
+#include "assets/levelGroup/JungleLand/collectables/clct24.clct.inc.c"
+
+#include "assets/levelGroup/JungleLand/collectables/clct25.clct.inc.c"
+
+#include "assets/levelGroup/JungleLand/collectables/clct26.clct.inc.c"
+
+#include "assets/levelGroup/JungleLand/collectables/clct27.clct.inc.c"
+
+#include "assets/levelGroup/JungleLand/collectables/clct28.clct.inc.c"
+
+#include "assets/levelGroup/JungleLand/collectables/clct29.clct.inc.c"
+
+#include "assets/levelGroup/JungleLand/collectables/clct30.clct.inc.c"
+
+#include "assets/levelGroup/JungleLand/collectables/clct31.clct.inc.c"
+
+#include "assets/levelGroup/JungleLand/collectables/clct32.clct.inc.c"
+
+#include "assets/levelGroup/JungleLand/collectables/clct33.clct.inc.c"
+
+#include "assets/levelGroup/JungleLand/collectables/clct34.clct.inc.c"
+
+#include "assets/levelGroup/JungleLand/collectables/clct35.clct.inc.c"
+
+#include "assets/levelGroup/JungleLand/collectables/clct36.clct.inc.c"
+
+#include "assets/levelGroup/JungleLand/collectables/clct37.clct.inc.c"
+
+#include "assets/levelGroup/JungleLand/collectables/clct38.clct.inc.c"
+
+#include "assets/levelGroup/JungleLand/collectables/clct39.clct.inc.c"
+
+#include "assets/levelGroup/JungleLand/collectables/clct40.clct.inc.c"
+
+#include "assets/levelGroup/JungleLand/collectables/clct41.clct.inc.c"
+
+#include "assets/levelGroup/JungleLand/collectables/clct42.clct.inc.c"
+
+#include "assets/levelGroup/JungleLand/collectables/clct43.clct.inc.c"
+
+#include "assets/levelGroup/JungleLand/collectables/clct44.clct.inc.c"
+
+#include "assets/levelGroup/JungleLand/collectables/clct45.clct.inc.c"
+
+#include "assets/levelGroup/JungleLand/collectables/clct46.clct.inc.c"
+
+#include "assets/levelGroup/JungleLand/collectables/clctX46.clct.inc.c"
+
+#include "assets/levelGroup/JungleLand/collectables/clctX47.clct.inc.c"
+
+#include "assets/levelGroup/JungleLand/collectables/clctX48.clct.inc.c"
+
+#include "assets/levelGroup/JungleLand/collectables/clctX49.clct.inc.c"
+
+#include "assets/levelGroup/JungleLand/collectables/clctX50.clct.inc.c"
+
+#include "assets/levelGroup/JungleLand/collectables/clctX51.clct.inc.c"
+
+#include "assets/levelGroup/JungleLand/collectables/clct47.clct.inc.c"
+
+#include "assets/levelGroup/JungleLand/collectables/clct48.clct.inc.c"
+
+#include "assets/levelGroup/JungleLand/collectables/clct49.clct.inc.c"
+
+#include "assets/levelGroup/JungleLand/collectables/clct50.clct.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj1.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj2.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj3.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj4.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj5.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj6.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj7.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj8.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj9.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj10.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj11.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj12.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj13.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj14.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj15.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj16.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj17.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj18.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj19.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj20.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj21.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj22.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj23.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj24.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj25.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomActors/roomAct1.roomAct.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomActors/roomAct2.roomAct.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomActors/roomAct3.roomAct.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomActors/roomAct4.roomAct.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomActors/roomAct5.roomAct.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomActors/roomAct6.roomAct.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomActors/roomAct7.roomAct.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomActors/roomAct8.roomAct.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomActors/roomAct9.roomAct.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomActors/roomAct10.roomAct.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomActors/roomAct11.roomAct.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomActors/roomAct12.roomAct.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomActors/roomAct13.roomAct.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomActors/roomAct14.roomAct.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomActors/roomAct15.roomAct.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomActors/roomAct16.roomAct.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomActors/roomAct17.roomAct.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj26.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj27.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj28.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj29.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj30.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj31.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj32.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj33.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj34.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj35.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj36.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomActors/roomAct18.roomAct.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomActors/roomAct19.roomAct.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomActors/roomAct20.roomAct.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomActors/roomAct21.roomAct.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj37.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj38.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj39.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj40.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj41.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj42.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj43.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj44.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj45.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj46.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj47.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj48.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj49.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj50.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/spriteActors/spriteAct31.sprite.inc.c"
+
+#include "assets/levelGroup/JungleLand/spriteActors/spriteAct32.sprite.inc.c"
+
+#include "assets/levelGroup/JungleLand/spriteActors/spriteAct33.sprite.inc.c"
+
+#include "assets/levelGroup/JungleLand/spriteActors/spriteAct34.sprite.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj51.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj52.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj53.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj54.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj55.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj56.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj57.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj58.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj59.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj60.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj61.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/spriteActors/spriteAct35.sprite.inc.c"
+
+#include "assets/levelGroup/JungleLand/spriteActors/spriteAct36.sprite.inc.c"
+
+#include "assets/levelGroup/JungleLand/spriteActors/spriteAct37.sprite.inc.c"
+
+#include "assets/levelGroup/JungleLand/spriteActors/spriteAct38.sprite.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj62.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj63.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObjN64.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomActors/roomActX1.roomAct.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomActors/roomActX2.roomAct.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomActors/roomActN3.roomAct.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomActors/roomActX4.roomAct.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomActors/roomActN5.roomAct.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj65.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj66.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj67.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj68.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj69.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj70.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj71.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj72.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj73.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj74.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj75.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj76.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/collectables/clct51.clct.inc.c"
+
+#include "assets/levelGroup/JungleLand/collectables/clct52.clct.inc.c"
+
+#include "assets/levelGroup/JungleLand/collectables/clct53.clct.inc.c"
+
+#include "assets/levelGroup/JungleLand/collectables/clct54.clct.inc.c"
+
+#include "assets/levelGroup/JungleLand/collectables/clct55.clct.inc.c"
+
+#include "assets/levelGroup/JungleLand/collectables/clct56.clct.inc.c"
+
+#include "assets/levelGroup/JungleLand/collectables/clct57.clct.inc.c"
+
+#include "assets/levelGroup/JungleLand/collectables/clct58.clct.inc.c"
+
+#include "assets/levelGroup/JungleLand/collectables/clct59.clct.inc.c"
+
+#include "assets/levelGroup/JungleLand/collectables/clct60.clct.inc.c"
+
+#include "assets/levelGroup/JungleLand/collectables/clct61.clct.inc.c"
+
+#include "assets/levelGroup/JungleLand/collectables/clct62.clct.inc.c"
+
+#include "assets/levelGroup/JungleLand/collectables/clct63.clct.inc.c"
+
+#include "assets/levelGroup/JungleLand/collectables/clct64.clct.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomActors/roomAct22.roomAct.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomActors/roomAct23.roomAct.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomActors/roomAct24.roomAct.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomActors/roomActN24.roomAct.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj77.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj78.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj79.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj80.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj81.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj82.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj83.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj84.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj85.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj86.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj87.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj88.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj89.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj90.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj91.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj92.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj93.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj94.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj95.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj96.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj97.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj98.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj99.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj100.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj101.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj102.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj103.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj104.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj105.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj106.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj107.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj108.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj109.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj110.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj111.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj112.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj113.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj114.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj115.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj116.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj117.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomActors/roomAct25.roomAct.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomActors/roomAct26.roomAct.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomActors/roomAct27.roomAct.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomActors/roomAct28.roomAct.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomActors/roomAct29.roomAct.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomActors/roomAct30.roomAct.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomActors/roomAct31.roomAct.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomActors/roomAct32.roomAct.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomActors/roomAct33.roomAct.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomActors/roomAct34.roomAct.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomActors/roomAct35.roomAct.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomActors/roomAct36.roomAct.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomActors/roomAct37.roomAct.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomActors/roomAct38.roomAct.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomActors/roomAct39.roomAct.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomActors/roomAct40.roomAct.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomActors/roomAct41.roomAct.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomActors/roomAct42.roomAct.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomActors/roomAct43.roomAct.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomActors/roomAct44.roomAct.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomActors/roomAct45.roomAct.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomActors/roomAct46.roomAct.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomActors/roomAct47.roomAct.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomActors/roomAct48.roomAct.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomActors/roomAct49.roomAct.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj118.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj119.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj120.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj121.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj122.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj123.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj124.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj125.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj126.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj127.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj128.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj129.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj130.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj131.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj132.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj133.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj134.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj135.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj136.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj137.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj138.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj139.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj140.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj141.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj142.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj143.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj144.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj145.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj146.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj147.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj148.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj149.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj150.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj151.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj152.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj153.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj154.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj155.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj156.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj157.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj158.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj159.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj160.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj161.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj162.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj163.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj164.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomActors/roomAct50.roomAct.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomActors/roomAct51.roomAct.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomActors/roomAct52.roomAct.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj165.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj166.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj167.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj168.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj169.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj170.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj171.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj172.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj173.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj174.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj175.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj176.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj177.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj178.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj179.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj180.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj181.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj182.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj183.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj184.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj185.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj186.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj187.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomActors/roomAct53.roomAct.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomActors/roomAct54.roomAct.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj188.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj189.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj190.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj191.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj192.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj193.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj194.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj195.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj196.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj197.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj198.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj199.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj200.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj201.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj202.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj203.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj204.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj205.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj206.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj207.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj208.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj209.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj210.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj211.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj212.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj213.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj214.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj215.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj216.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj217.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomActors/roomAct55.roomAct.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomActors/roomAct56.roomAct.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomActors/roomAct57.roomAct.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomActors/roomAct58.roomAct.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomActors/roomAct59.roomAct.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj218.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj219.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj220.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj221.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj222.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj223.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj224.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj225.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj226.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj227.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj228.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj229.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj230.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj231.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj232.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj233.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj234.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj235.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj236.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj237.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj238.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj239.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj240.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj241.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj242.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj243.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj244.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj245.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj246.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj247.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj248.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj249.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj250.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj251.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj252.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj253.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj254.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj255.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj256.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj257.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj258.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj259.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj260.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj261.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj262.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj263.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj264.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj265.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj266.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj267.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj268.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj269.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj270.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj271.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj272.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj273.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj274.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj275.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj276.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj277.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj278.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj279.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj280.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj281.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj282.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj283.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj284.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj285.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj286.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj287.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj288.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj289.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj290.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj291.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj292.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomActors/roomAct60.roomAct.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomActors/roomAct61.roomAct.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomActors/roomAct62.roomAct.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomActors/roomAct63.roomAct.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj293.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj294.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj295.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj296.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj297.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj298.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj299.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj300.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj301.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj302.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj303.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj304.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj305.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj306.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj307.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj308.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj309.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj310.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj311.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj312.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomActors/roomAct64.roomAct.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomActors/roomAct65.roomAct.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomActors/roomAct66.roomAct.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomActors/roomAct67.roomAct.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomActors/roomAct68.roomAct.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomActors/roomAct69.roomAct.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomActors/roomAct70.roomAct.inc.c"
+
+#include "assets/levelGroup/JungleLand/newType/g1.ut1.inc.c"
+
+#include "assets/levelGroup/JungleLand/newType/g2.ut1.inc.c"
+
+#include "assets/levelGroup/JungleLand/newType/g3.ut1.inc.c"
+
+#include "assets/levelGroup/JungleLand/newType/g4.ut1.inc.c"
+
+#include "assets/levelGroup/JungleLand/newType/g5.ut1.inc.c"
+
+#include "assets/levelGroup/JungleLand/newType/g6.ut1.inc.c"
+
+#include "assets/levelGroup/JungleLand/newType/g7.ut1.inc.c"
+
+#include "assets/levelGroup/JungleLand/newType/g8.ut1.inc.c"
+
+#include "assets/levelGroup/JungleLand/newType/g9.ut1.inc.c"
+
+#include "assets/levelGroup/JungleLand/newType/g10.ut1.inc.c"
+
+#include "assets/levelGroup/JungleLand/newType/g11.ut1.inc.c"
+
+#include "assets/levelGroup/JungleLand/newType/g12.ut1.inc.c"
+
+#include "assets/levelGroup/JungleLand/newType/g13.ut1.inc.c"
+
+#include "assets/levelGroup/JungleLand/newType/g14.ut1.inc.c"
+
+#include "assets/levelGroup/JungleLand/newType/g15.ut1.inc.c"
+
+#include "assets/levelGroup/JungleLand/newType/g16.ut1.inc.c"
+
+#include "assets/levelGroup/JungleLand/newType2/h1.ut2.inc.c"
+
+#include "assets/levelGroup/JungleLand/newType2/h2.ut2.inc.c"
+
+#include "assets/levelGroup/JungleLand/newType2/h3.ut2.inc.c"
+
+#include "assets/levelGroup/JungleLand/newType2/h4.ut2.inc.c"
+
+#include "assets/levelGroup/JungleLand/newType2/h5.ut2.inc.c"
+
+#include "assets/levelGroup/JungleLand/newType2/h6.ut2.inc.c"
+
+#include "assets/levelGroup/JungleLand/newType2/h7.ut2.inc.c"
+
+#include "assets/levelGroup/JungleLand/newType2/h8.ut2.inc.c"
+
+#include "assets/levelGroup/JungleLand/newType2/h9.ut2.inc.c"
+
+#include "assets/levelGroup/JungleLand/newType2/h10.ut2.inc.c"
+
+#include "assets/levelGroup/JungleLand/newType2/h11.ut2.inc.c"
+
+#include "assets/levelGroup/JungleLand/newType2/h12.ut2.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj313.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj314.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj315.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj316.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj317.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj318.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj319.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj320.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj321.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj322.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj323.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj324.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj325.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj326.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj327.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj328.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj329.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj330.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj331.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj332.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj333.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj334.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj335.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj336.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj337.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj338.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj339.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj340.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj341.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj342.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj343.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj344.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj345.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj346.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj347.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj348.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj349.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj350.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj351.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj352.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj353.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj354.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj355.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj356.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj357.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj358.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj359.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj360.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj361.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj362.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj363.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj364.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj365.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj366.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj367.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj368.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj369.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj370.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj371.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj372.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj373.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj374.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj375.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj376.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj377.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj378.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj379.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj380.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj381.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj382.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj383.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj384.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj385.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj386.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj387.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj388.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj389.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomActors/roomAct71.roomAct.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomActors/roomAct72.roomAct.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomActors/roomAct73.roomAct.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj390.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomObjects/roomObj391.roomObj.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomActors/roomAct74.roomAct.inc.c"
+
+#include "assets/levelGroup/JungleLand/roomActors/roomAct75.roomAct.inc.c"
+
+#include "assets/levelGroup/JungleLand/spriteActors/spriteAct39.sprite.inc.c"
+
+#include "assets/levelGroup/JungleLand/spriteActors/spriteAct40.sprite.inc.c"
+
+#include "assets/levelGroup/JungleLand/spriteActors/spriteAct41.sprite.inc.c"
+
+#include "assets/levelGroup/JungleLand/spriteActors/spriteAct42.sprite.inc.c"
+
+#include "assets/levelGroup/JungleLand/spriteActors/spriteAct43.sprite.inc.c"
+
+#include "assets/levelGroup/JungleLand/spriteActors/spriteAct44.sprite.inc.c"
+
+#include "assets/levelGroup/JungleLand/spriteActors/spriteAct45.sprite.inc.c"
+
+#include "assets/levelGroup/JungleLand/spriteActors/spriteAct46.sprite.inc.c"
+unsigned char JungleLand_spriteLib_Bin[] = {
+#include "build/include/assets/levelGroup/JungleLand/spriteLib.inc.c"
+};
+
+#include "assets/levelGroup/JungleLand/rooms/room1.rmSet.inc.c"
+
+#include "assets/levelGroup/JungleLand/rooms/room2.rmSet.inc.c"
+
+#include "assets/levelGroup/JungleLand/rooms/room3.rmSet.inc.c"
+
+#include "assets/levelGroup/JungleLand/rooms/room4.rmSet.inc.c"
+
+#include "assets/levelGroup/JungleLand/rooms/room5.rmSet.inc.c"
+
+#include "assets/levelGroup/JungleLand/rooms/room6.rmSet.inc.c"
+
+#include "assets/levelGroup/JungleLand/rooms/room7.rmSet.inc.c"
+
+#include "assets/levelGroup/JungleLand/rooms/room8.rmSet.inc.c"
+
+#include "assets/levelGroup/JungleLand/rooms/room9.rmSet.inc.c"
+
+#include "assets/levelGroup/JungleLand/rooms/room10.rmSet.inc.c"
+unsigned char JungleLand_map_Bin[] = {
+#include "build/include/assets/levelGroup/JungleLand/map.inc.c"
+};
+
+#include "assets/levelGroup/JungleLand/extRooms/extRoom1.rmSet.inc.c"
+
+#include "assets/levelGroup/JungleLand/extRooms/extRoom2.rmSet.inc.c"
+
+#include "assets/levelGroup/JungleLand/extRooms/extRoom3.rmSet.inc.c"
+
+#include "assets/levelGroup/JungleLand/extRooms/extRoom4.rmSet.inc.c"
+
+#include "assets/levelGroup/JungleLand/extRooms/extRoom5.rmSet.inc.c"
+
+#include "assets/levelGroup/JungleLand/extRooms/extRoom6.rmSet.inc.c"
+
+#include "assets/levelGroup/JungleLand/extRooms/extRoom7.rmSet.inc.c"
+
+#include "assets/levelGroup/JungleLand/extRooms/extRoom8.rmSet.inc.c"
+
+#include "assets/levelGroup/JungleLand/extRooms/extRoom9.rmSet.inc.c"
+
+#include "assets/levelGroup/JungleLand/extRooms/extRoom10.rmSet.inc.c"
+
+#include "assets/levelGroup/JungleLand/extRooms/extRoom11.rmSet.inc.c"
+
+#include "assets/levelGroup/JungleLand/extRooms/extRoom12.rmSet.inc.c"
+
+#include "assets/levelGroup/JungleLand/extRooms/extRoom13.rmSet.inc.c"
+
+#include "assets/levelGroup/JungleLand/extRooms/extRoom14.rmSet.inc.c"
+
+#include "assets/levelGroup/JungleLand/extRooms/extRoom15.rmSet.inc.c"
+
+#include "assets/levelGroup/JungleLand/scope.lvlScope.inc.c"
+
+#include "assets/levelGroup/JungleLand/header.lvlHdr.inc.c"
 Mtx_f JungleLand_jlScope_Mtx = {
 #include "assets/levelGroup/JungleLand/jlScope/jlScope.mtx.inc.c"
 };

@@ -60,16 +60,16 @@ class N64SegSpriteActor(CommonSegCodeSubsegment):
 
         lines = []
 
-        sym = self.create_symbol(
-            addr=self.vram_start, in_segment=True, type="data", define=True
-        )
+        from util import symbols
+        sym = self.retrieve_sym_type(symbols.all_symbols_dict, self.vram_start, "Sprite")
+        if not sym:
+            sym = self.create_symbol(
+                addr=self.vram_start, in_segment=True, type="Sprite", define=True
+            )
         if not self.data_only:
             lines.append('#include "common.h"')
             lines.append("")
-            if "/" in self.name:
-                lines.append("SpriteActor %s = {" % (self.name.split("/")[(len(self.name.split("/"))-1)]))
-            else:
-                lines.append("SpriteActor %s = {" % (self.name))
+            lines.append("SpriteActor %s = {" % (sym.name))
 
         byteData = bytearray(sprite_data)
         data = struct.unpack('>iiffffffiifiiiiiiiii', byteData)

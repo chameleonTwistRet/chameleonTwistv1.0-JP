@@ -60,21 +60,28 @@ class N64SegLevelHeader(CommonSegCodeSubsegment):
 
         lines = []
 
-        sym = self.create_symbol(
-            addr=self.vram_start, in_segment=True, type="data", define=True
-        )
+        from util import symbols
+        sym = self.retrieve_sym_type(symbols.all_symbols_dict, self.vram_start, "Lvlhdr")
+        if not sym:
+            sym = self.create_symbol(
+                addr=self.vram_start, in_segment=True, type="Lvlhdr", define=True
+            )
         if not self.data_only:
             lines.append('#include "common.h"')
             lines.append("")
-            if "/" in self.name:
-                lines.append("LevelHeader %s = {" % (self.name.split("/")[(len(self.name.split("/"))-1)]))
-            else:
-                lines.append("LevelHeader %s = {" % (self.name))
+            lines.append("LevelHeader %s = {" % (sym.name))
 
         byteData = bytearray(sprite_data)
         data = struct.unpack('>IIIIIIII', byteData)
-        for v in data: 
-            lines.append(f"    {v},")
+        i = 0
+        while i < len(data):
+            use = data[i]
+            if i == len(data) - 1: #level scope
+                print('hi')
+                scopeSym = self.retrieve_sym_type(symbols.all_symbols_dict, use, "Lvlscope")
+                if scopeSym: use = "&"+scopeSym.name
+            lines.append(f"    {use},")
+            i += 1
 
         if not self.data_only:
             lines.append("};")

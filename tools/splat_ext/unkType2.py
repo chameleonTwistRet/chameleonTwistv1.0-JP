@@ -60,16 +60,16 @@ class N64SegUnkType2(CommonSegCodeSubsegment):
 
         lines = []
 
-        sym = self.create_symbol(
-            addr=self.vram_start, in_segment=True, type="data", define=True
-        )
+        from util import symbols
+        sym = self.retrieve_sym_type(symbols.all_symbols_dict, self.vram_start, "Ut2")
+        if not sym:
+            sym = self.create_symbol(
+                addr=self.vram_start, in_segment=True, type="Ut2", define=True
+            )
         if not self.data_only:
             lines.append('#include "common.h"')
             lines.append("")
-            if "/" in self.name:
-                lines.append("UnkType2 %s = {" % (self.name.split("/")[(len(self.name.split("/"))-1)]))
-            else:
-                lines.append("UnkType2 %s = {" % (self.name))
+            lines.append("UnkType2 %s = {" % (sym.name))
 
         byteData = bytearray(sprite_data)
         data = struct.unpack('>ffifff', byteData)

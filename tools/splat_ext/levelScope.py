@@ -60,16 +60,16 @@ class N64SegLevelScope(CommonSegCodeSubsegment):
 
         lines = []
 
-        sym = self.create_symbol(
-            addr=self.vram_start, in_segment=True, type="data", define=True
-        )
+        from util import symbols
+        sym = self.retrieve_sym_type(symbols.all_symbols_dict, self.vram_start, "Lvlscope")
+        if not sym:
+            sym = self.create_symbol(
+                addr=self.vram_start, in_segment=True, type="Lvlscope", define=True
+            )
         if not self.data_only:
             lines.append('#include "common.h"')
             lines.append("")
-            if "/" in self.name:
-                lines.append("LevelScope %s = {" % (self.name.split("/")[(len(self.name.split("/"))-1)]))
-            else:
-                lines.append("LevelScope %s = {" % (self.name))
+            lines.append("LevelScope %s = {" % (sym.name))
 
         byteData = bytearray(sprite_data)
         data = struct.unpack('>iiiiii', byteData)

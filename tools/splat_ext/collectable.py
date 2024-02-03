@@ -14,7 +14,6 @@ from util.log import error
 from util import options
 from segtypes.common.codesubsegment import CommonSegCodeSubsegment
 
-
 class N64SegCollectable(CommonSegCodeSubsegment):
     def __init__(
         self,
@@ -59,17 +58,17 @@ class N64SegCollectable(CommonSegCodeSubsegment):
             )
 
         lines = []
-
-        sym = self.create_symbol(
-            addr=self.vram_start, in_segment=True, type="data", define=True
-        )
+        
+        from util import symbols
+        sym = self.retrieve_sym_type(symbols.all_symbols_dict, self.vram_start, "Clct")
+        if not sym:
+            sym = self.create_symbol(
+                addr=self.vram_start, in_segment=True, type="Clct", define=True
+            )
         if not self.data_only:
             lines.append('#include "common.h"')
             lines.append("")
-            if "/" in self.name:
-                lines.append("Collectable %s = {" % (self.name.split("/")[(len(self.name.split("/"))-1)]))
-            else:
-                lines.append("Collectable %s = {" % (self.name))
+            lines.append("Collectable %s = {" % (sym.name))
 
         byteData = bytearray(sprite_data)
         data = struct.unpack('>ifffiiii', byteData)

@@ -1034,7 +1034,7 @@ typedef struct LevelScope {
 } LevelScope;
 
 typedef struct LevelHeader {
-    LevelMap* Map;
+    u32 Map; //points to level map; u32'd to remove warnings (they are very annoying)
     u32 OWRooms;
     u32 Pointers;
     u32 unkC;
