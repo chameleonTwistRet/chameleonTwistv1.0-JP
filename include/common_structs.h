@@ -987,10 +987,10 @@ typedef struct UnkType2 {
 } UnkType2;
 
 typedef struct RoomSettings {
-    u32 RoomObjectsPointer;
-    u32 RoomActorPointer;
-    u32 CollectablePointer;
-    u32 SpriteActorPointer;
+    RoomObject* RoomObjectsPointer;
+    RoomActor* RoomActorPointer;
+    Collectable* CollectablePointer;
+    SpriteActor* SpriteActorPointer;
     s32 unk10;
     s32 unk14;
     s32 amountOfSpriteActors; //needs verification
@@ -1017,10 +1017,9 @@ typedef struct RoomSettings {
 } RoomSettings;
 
 typedef struct LevelMap {
-    //s32* rooms; //1 dimensional array that's actually 2 dimensional. the player navigates with axiis on doors that move them on the x or y.
     s32 width; // width for ^
     s32 height; // height for ^^
-    u32* dungeonRooms; //pointer to the array of RoomSettings for the dungeon.
+    RoomSettings* dungeonRooms; //pointer to the array of RoomSettings for the dungeon.
     s32* roomsPointer; //pointer to the array of rooms for this map. is usually directly above the width/this struct.
 } LevelMap;
 
@@ -1033,14 +1032,30 @@ typedef struct LevelScope {
     s32 unk14;
 } LevelScope;
 
+//ok so you actually have to make the other parts vec3f name[] and vec3s name[] SEPERATE from the struct
+//that kinda sucks but i know why now at least
+typedef struct CollisionData{
+    s32 aOVerts;
+    s32 aOTris;
+    u32 vertsStart; //segmented, points to verts[] vec3f*
+    u32 trisStart; //segmented, points to tris[] vec3s*
+    u32 settingsStart; //segmented, points to settings[] vec3f*
+} CollisionData;
+
+typedef struct LevelPointer{
+    Gfx* Graphics;
+    CollisionData* Collisions;
+    char pad[0x28];
+} LevelPointer;
+
 typedef struct LevelHeader {
-    u32 Map; //points to level map; u32'd to remove warnings (they are very annoying)
-    u32 OWRooms;
-    u32 Pointers;
-    u32 unkC;
-    u32 RoomObjects;
-    u32 unk14;
-    u32 SpriteLib;
+    u32 Map; //points to level map; u32'd to remove warnings (they are very annoying) //LevelMap*
+    u32 OWRooms; // RoomSettings*
+    u32 Pointers; // LevelPointer*
+    u32 unkC; //???? lol idk
+    u32 RoomObjects; // RoombOjects* OR RabObject* though idk loll (probably the latter)
+    u32 unk14; // ??
+    u32 SpriteLib; //s32*
     LevelScope* Scope;
 } LevelHeader;
 
@@ -1117,15 +1132,6 @@ typedef struct unk80175608 {
     char unk_00[0x18];
 } unk80175608;
 
-//ok so you actually have to make the other parts vec3f name[] and vec3s name[] SEPERATE from the struct
-//that kinda sucks but i know why now at least
-typedef struct CollisionData{
-    s32 aOVerts;
-    s32 aOTris;
-    u32 vertsStart; //segmented, points to verts[]
-    u32 trisStart; //segmented, points to tris[]
-    u32 settingsStart; //segmented, points to settings[]
-} CollisionData;
 
 typedef struct unk80170E68 {
     s32 unk_00;

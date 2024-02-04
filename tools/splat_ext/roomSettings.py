@@ -73,8 +73,45 @@ class N64SegRoomSettings(CommonSegCodeSubsegment):
 
         byteData = bytearray(sprite_data)
         data = struct.unpack('>IIIIiiiiiififffiiifiiiiiifi', byteData)
-        for v in data: 
+        i = 0
+        while i < len(data):
+            v = data[i]
+            if data[i] != 0:
+                if i == 0: #Room Objects
+                    rmsym = self.retrieve_sym_type(symbols.all_symbols_dict, data[i], "Roomobj")
+                    if not rmsym:
+                        rmsym = self.create_symbol(
+                            addr=data[i], in_segment=True, type="Roomobj", define=True
+                        )
+                        v = str(data[i])
+                    else: v = "&"+rmsym.name
+                elif i == 1: #Room Actors
+                    rmsym = self.retrieve_sym_type(symbols.all_symbols_dict, data[i], "Roomact")
+                    if not rmsym:
+                        rmsym = self.create_symbol(
+                            addr=data[i], in_segment=True, type="Roomact", define=True
+                        )
+                        v = str(data[i])
+                    else: v = "&"+rmsym.name
+                elif i == 2: #Collectables
+                    rmsym = self.retrieve_sym_type(symbols.all_symbols_dict, data[i], "Clct")
+                    if not rmsym:
+                        rmsym = self.create_symbol(
+                            addr=data[i], in_segment=True, type="Clct", define=True
+                        )
+                        v = str(data[i])
+                    else: v = "&"+rmsym.name
+                elif i == 3: #Sprite Actors
+                    rmsym = self.retrieve_sym_type(symbols.all_symbols_dict, data[i], "Sprite")
+                    if not rmsym:
+                        rmsym = self.create_symbol(
+                            addr=data[i], in_segment=True, type="Sprite", define=True
+                        )
+                        v = str(data[i])
+                    else: v = "&"+rmsym.name
             lines.append(f"    {v},")
+            i += 1
+
 
         if not self.data_only:
             lines.append("};")

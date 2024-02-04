@@ -77,7 +77,6 @@ class N64SegLevelHeader(CommonSegCodeSubsegment):
         while i < len(data):
             use = data[i]
             if i == len(data) - 1: #level scope
-                print('hi')
                 scopeSym = self.retrieve_sym_type(symbols.all_symbols_dict, use, "Lvlscope")
                 if scopeSym: use = "&"+scopeSym.name
             lines.append(f"    {use},")

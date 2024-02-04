@@ -129,18 +129,30 @@ def start(group, where):
                 useType = values["Type"]
                 if values["Type"] in list(incExt.keys()): useType = incExt[values["Type"]]
                 elif values["Type"] in list(splat_exts.keys()): useType = splat_exts[values["Type"]]
+
+                customType = ""
+                
+                if values["Type"] == "levelMap":
+                    mapType = values["Ext"][-1].split(" ")[-1].replace('"', "").strip()
+                    useType = useType.replace("{self.type[0]}", mapType[0])
+                    customType = useType
+
                 nline = '\n#include "assets/'+values["Path"]+'.'+useType+'.inc.c"\n'
                 if values["Type"] == "bin": nline = nline.replace(".bin", "",1)
                 if values["Type"] in buildFolder: nline = nline.replace("assets/", "build/include/assets/",1)
 
                 segmentAdr = (int(values["Address"], 16) - baseAdr) + segmentId
                 #symbol creation
-                customType = ""
                 if values["Type"] in ["mtx", "vtx", "gfx"]: customType = values["Type"].capitalize()
                 elif values["Type"] in buildFolder and values["Type"] != "bin": customType = incExt[values["Type"]].upper()
                 elif values["Type"] in list(incExt.keys()): customType = incExt[values["Type"]].capitalize()
                 elif values["Type"] in list(splat_exts.keys()): customType = splat_exts[values["Type"]].capitalize()
                 else: customType = values["Type"].capitalize()
+
+                if values["Type"] == "levelMap":
+                    customType = useType.capitalize()
+                    customType = customType[:-1] + customType[-1].upper()
+
                 if symbolage:
                     symbol = group+"_"+values["ShortName"].split("_")[0]+"_"+customType
                 else:
@@ -158,7 +170,6 @@ def start(group, where):
                             dataOnly = True
                             break
 
-
                 if dataOnly:
                     if values["Type"] == "mtx": 
                         newC.append("Mtx_f "+symbol+" = {")
@@ -172,6 +183,7 @@ def start(group, where):
                         colType = values["Ext"][1].split(" ")[-1].replace('"', "").strip()
                         print(colType)
                         symbol = symbol.replace(customType, colType)
+                        customType = "Col"+colType[0]
                         nline = nline.replace(useType, "col"+colType[0])
                         if colType in ["Verts", "Settings"]:
                             newC.append("Vec3f "+symbol+"[] = {")
@@ -182,12 +194,11 @@ def start(group, where):
                     elif char:
                         newC.append("unsigned char "+symbol+"[] = {")
                     
-                    
                 newC.append(nline)
 
                 #end_typedef
                 if dataOnly:
-                    if not values["Type"] in ["lights"] or char: 
+                    if (not values["Type"] in ["lights"]) or char: 
                         newC.append("};\n")
                 
                 #pretty sure this isnt needed but it helps line up with actual ram values :)
@@ -250,6 +261,6 @@ if __name__ == "__main__":
     try:
         args = parser.parse_args()
     except SystemExit:
-        start("BombSnake", "levelGroup/BombSnake")
+        start("JungleLand", "levelGroup/JungleLand")
         exit()
     start(args.group, args.outfileName)

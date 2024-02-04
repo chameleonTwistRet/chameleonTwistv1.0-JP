@@ -855,7 +855,7 @@ segments:
       subsegments:
       - [0x6A8e20, mtx, mtx]
 
-      - [0x6a8e60, bin, pointers.MEd]
+      - [0x6a8e60, levelPointer, pointers]
       - [0x6aa540, bin, rabObjects.MEd]
 
       - [0x6aa568, spriteActor, spriteActors/spriteAct1]
@@ -1532,7 +1532,8 @@ segments:
       - [0x6bbbb0, roomSettings, rooms/room8]
       - [0x6bbc1c, roomSettings, rooms/room9]
       - [0x6bbc88, roomSettings, rooms/room10]
-      - [0x6bbcf4, bin, map.MEd]
+      - {start: 0x6bbcf4, type: levelMap, name: map, args: Map}
+      - {start: 0x6bbd54, type: levelMap, name: map, args: Header}
       - [0x6bbd64, roomSettings, extRooms/extRoom1]
       - [0x6bbdd0, roomSettings, extRooms/extRoom2]
       - [0x6bbe3c, roomSettings, extRooms/extRoom3]
