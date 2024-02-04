@@ -73,8 +73,25 @@ class N64SegRoomActor(CommonSegCodeSubsegment):
 
         byteData = bytearray(sprite_data)
         data = struct.unpack('>iffffffifffiffffiiiiiiii', byteData)
-        for v in data: 
-            lines.append(f"    {v},")
+        i = 0
+        while i < len(data):
+            use = data[i]
+            if i == 0: #Actor ID
+                enums = open("include/enums.h", "r", encoding="UTF-8").readlines()
+                enum = 0
+                actorAt = 0 #number in the actor enum
+                reading = False
+                while enum < len(enums):
+                    enumLine = enums[enum]
+                    if enumLine.find("actorIDs") != -1: reading = True
+                    elif reading:
+                        if actorAt == use:
+                            use = enumLine.split(",")[0].split("	")[-1].strip()
+                            break
+                        actorAt += 1
+                    enum += 1
+            lines.append(f"    {use},")
+            i += 1
 
         if not self.data_only:
             lines.append("};")
