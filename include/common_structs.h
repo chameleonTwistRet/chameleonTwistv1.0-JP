@@ -915,11 +915,12 @@ typedef struct RoomObject {
     s32 damages;
     s32 unk20;
     s32 unk24;
-    f32 unk28;
-    f32 unk2C;
-    f32 unk30;
+    f32 loadingZoneSizeX;
+    f32 loadingZoneSizeY;
+    s32 unk30;
     s32 unk34;
-    s32 unk38;
+    s32 exitDirection; // for loading zones, controls which direction the chameleon enters/leaves doors and the direction you go in the level map
+    //0 == none, 1 == up, 2 == right, 3 == down, 4 == left
     s32 unk3C;
     s32 unk40;
     s32 unk44;
@@ -1006,8 +1007,10 @@ typedef struct RoomSettings {
     s32 unk40;
     s32 unk44;
     f32 unk48;
-    s32 unk4C;
-    s32 unk50;
+    s16 respawnPointX;
+    s16 respawnPointY;
+    s16 respawnPointZ;
+    s16 unk50;
     s32 unk54;
     s32 unk58;
     s32 unk5C;
