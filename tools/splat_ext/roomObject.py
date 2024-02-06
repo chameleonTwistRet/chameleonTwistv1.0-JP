@@ -8,6 +8,7 @@ Modified for Room Object struct: Nathan R.
 
 import re
 import struct
+from math import degrees
 from pathlib import Path
 from util.log import error
 
@@ -72,12 +73,31 @@ class N64SegRoomObject(CommonSegCodeSubsegment):
             lines.append("RoomObject %s = {" % (sym.name))
 
         byteData = bytearray(sprite_data)
-        data = struct.unpack('>ffffffiiiiffiiiiiiiiiiiiiIiiiiiiiii', byteData)
+        data = struct.unpack('>ffffffifiiffiiiiiiiiiiiiiIiiiiiiiii', byteData)
+        enums = open("include/enums.h", "r", encoding="UTF-8").readlines()
         i = 0
         while i < len(data):
             v = data[i]
-            if i == 14: #exitDirection
-                enums = open("include/enums.h", "r", encoding="UTF-8").readlines()
+            if i in [0, 3]:
+                v = "{"+str(data[i])+","+str(data[i+1])+","+str(data[i+2])+"}"
+                i += 2
+            elif i == 6: #rotationMode
+                enum = 0
+                actorAt = 0 #number in the actor enum
+                reading = False
+                while enum < len(enums):
+                    enumLine = enums[enum]
+                    if enumLine.find("RotationMode") != -1: reading = True
+                    elif reading:
+                        if actorAt == v:
+                            v = enumLine.split(",")[0].split("	")[-1].strip()
+                            break
+                        elif enumLine.find("};") != -1: break
+                        actorAt += 1
+                    enum += 1
+            elif i == 7:
+                v = "DEGREES_TO_RADIANS_2PI("+str(degrees(v))+")"
+            elif i == 14: #exitDirection
                 enum = 0
                 actorAt = 0 #number in the actor enum
                 reading = False
@@ -88,6 +108,7 @@ class N64SegRoomObject(CommonSegCodeSubsegment):
                         if actorAt == v:
                             v = enumLine.split(",")[0].split("	")[-1].strip()
                             break
+                        elif enumLine.find("};") != -1: break
                         actorAt += 1
                     enum += 1
             lines.append(f"    {v},")

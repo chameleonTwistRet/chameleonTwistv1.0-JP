@@ -44,9 +44,6 @@ extern unsigned char Global_JLMountain_PNG[];
 extern unsigned char Global_JLCaveFadeTop_PAL[];
 extern unsigned char Global_JLCaveFadeTop_PNG[];
 
-
-
-
 extern Gfx Global_unk3_Gfx[];
 extern CollisionData Global_unk3_Header[];
 extern Gfx Global_unk4_Gfx[];
@@ -492,7 +489,7 @@ unsigned char JungleLand_rabObjects_Bin[] = {
 
 #include "assets/levelGroup/JungleLand/collectables/clct50.clct.inc.c"
 
-#include "assets/levelGroup/JungleLand/roomObjects/roomObj1.roomObj.inc.c"
+#include "assets/levelGroup/JungleLand/roomObjects/eroom1_objLand.roomObj.inc.c"
 
 #include "assets/levelGroup/JungleLand/roomObjects/roomObj2.roomObj.inc.c"
 

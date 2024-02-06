@@ -960,7 +960,7 @@ segments:
       - [0x6ab8a8, collectable, collectables/clct49]
       - [0x6ab8c8, collectable, collectables/clct50]
 
-      - [0x6ab8e8, roomObject, roomObjects/roomObj1]
+      - [0x6ab8e8, roomObject, roomObjects/eroom1_objLand]
       - [0x6ab974, roomObject, roomObjects/roomObj2]
       - [0x6aba00, roomObject, roomObjects/roomObj3]
       - [0x6aba8c, roomObject, roomObjects/roomObj4]

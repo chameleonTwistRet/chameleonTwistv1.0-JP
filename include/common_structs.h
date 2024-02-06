@@ -911,18 +911,22 @@ typedef struct Collectable {
 typedef struct RoomObject {
     Vec3f position;
     Vec3f scale;
-    s32 unk18;
-    s32 damages;
+    s32 rotationMode; //RotationMode. 0 == none, 1 == x, 2 == y, 3 == z. need to test extreme values
+    //might be bitwise???? would be nice but i doubt it if 3 == z
+    f32 rotationAmount; // the amount of rotation on the rotationMode axis (in radians)
     s32 unk20;
     s32 unk24;
     f32 loadingZoneSizeX;
     f32 loadingZoneSizeY;
     s32 unk30;
-    s32 unk34;
-    s32 exitDirection; // for loading zones, controls which direction the chameleon enters/leaves doors and the direction you go in the level map
+    s32 customArg2;
+    // SpeedMod for stuff like the swamp water
+    u32 customArg1;
+    // ExitDirection for loading zones, controls which direction the chameleon enters/leaves doors and the direction you go in the level map
     //0 == none, 1 == up, 2 == right, 3 == down, 4 == left
-    s32 unk3C;
-    s32 unk40;
+    // CollisionVtxPointer for stuff like the swamp water
+    s32 textureScrollX;
+    s32 textureScrollY;
     s32 unk44;
     s32 unk48;
     s32 unk4C;

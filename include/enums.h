@@ -261,12 +261,20 @@ enum ColorModes{
 #define SPRITE_BOSSHEALTH	0xe3	
 #define SPRITE_MENUOPTIONS	0xe5	
 
+//these are for RoomObjects, if something happens this is where you will need to edit
 enum ExitDirection {
 	EXIT_NONE,
 	EXIT_UP,
 	EXIT_RIGHT,
 	EXIT_DOWN,
 	EXIT_LEFT
+};
+
+enum RotationMode {
+	ROTATION_NONE,
+	ROTATION_X,
+	ROTATION_Y,
+	ROTATION_Z
 };
 
 
