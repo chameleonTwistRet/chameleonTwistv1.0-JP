@@ -132,7 +132,7 @@ def start(group, where):
 
                 customType = ""
                 
-                if values["Type"] == "levelMap":
+                if values["Type"] in ["levelMap", "collision"]: #arg'd segtypes
                     mapType = values["Ext"][-1].split(" ")[-1].replace('"', "").strip()
                     useType = useType.replace("{self.type[0]}", mapType[0])
                     customType = useType
@@ -149,12 +149,12 @@ def start(group, where):
                 elif values["Type"] in list(splat_exts.keys()): customType = splat_exts[values["Type"]].capitalize()
                 else: customType = values["Type"].capitalize()
 
-                if values["Type"] == "levelMap":
+                if values["Type"] in ["levelMap", "collision"]: #arg'd segtypes
                     customType = useType.capitalize()
                     customType = customType[:-1] + customType[-1].upper()
 
                 if symbolage:
-                    symbol = group+"_"+values["ShortName"].split("_")[0]+"_"+customType
+                    symbol = group+"_"+values["ShortName"]+"_"+customType
                 else:
                     #undefined_syms fallback
                     symbol = hex(segmentAdr).upper().replace("0X", "")
@@ -180,16 +180,11 @@ def start(group, where):
                     elif values["Type"] in ["gfx", "gfxSeg"]:
                         newC.append("Gfx "+symbol+"[] = {")
                     elif values["Type"] == "collision":
-                        colType = values["Ext"][1].split(" ")[-1].replace('"', "").strip()
-                        print(colType)
-                        symbol = symbol.replace(customType, colType)
-                        customType = "Col"+colType[0]
-                        nline = nline.replace(useType, "col"+colType[0])
-                        if colType in ["Verts", "Settings"]:
+                        if customType in ["ColV", "ColS"]:
                             newC.append("Vec3f "+symbol+"[] = {")
-                        elif colType == "Tris":
+                        elif customType == "ColT":
                             newC.append("Vec3s "+symbol+"[] = {")
-                        elif colType == "Header":
+                        elif customType == "ColH":
                             newC.append("CollisionData "+symbol+"[] = {")
                     elif char:
                         newC.append("unsigned char "+symbol+"[] = {")
@@ -261,6 +256,6 @@ if __name__ == "__main__":
     try:
         args = parser.parse_args()
     except SystemExit:
-        start("JungleLand", "levelGroup/JungleLand")
+        start("White", "chameleons/White")
         exit()
     start(args.group, args.outfileName)

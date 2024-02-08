@@ -58,11 +58,12 @@ class N64SegLights(CommonSegCodeSubsegment):
             )
 
         lines = []
-
-        sym = self.create_symbol(
-            addr=self.vram_start+0x8, in_segment=True, type="data", define=True
-        )
-
+        from util import symbols
+        sym = self.retrieve_sym_type(symbols.all_symbols_dict, self.vram_start, "Light")
+        if not sym:
+            sym = self.create_symbol(
+                addr=self.vram_start, in_segment=True, type="Light", define=True
+            )
         if not self.data_only:
             lines.append('#include "common.h"')
             lines.append("")

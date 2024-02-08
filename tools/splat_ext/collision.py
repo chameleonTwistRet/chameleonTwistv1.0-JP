@@ -62,10 +62,14 @@ class N64SegCollision(CommonSegCodeSubsegment):
 
         lines = []
 
-        sym = self.create_symbol(
-            addr=self.vram_start, in_segment=True, type="data", define=True
-        )
+        from util import symbols
+
         if self.type == "Verts":
+            sym = self.retrieve_sym_type(symbols.all_symbols_dict, self.vram_start, "ColV")
+            if not sym:
+                sym = self.create_symbol(
+                    addr=self.vram_start, in_segment=True, type="ColV", define=True
+                )
             if not self.data_only:
                 lines.append('#include "common.h"')
                 lines.append("")
@@ -85,6 +89,11 @@ class N64SegCollision(CommonSegCodeSubsegment):
                 lines[at] = lines[at].replace("[]", "["+str(b)+"]")
                 lines.append("};")
         elif self.type == "Tris":
+            sym = self.retrieve_sym_type(symbols.all_symbols_dict, self.vram_start, "ColT")
+            if not sym:
+                sym = self.create_symbol(
+                    addr=self.vram_start, in_segment=True, type="ColT", define=True
+                )
             if not self.data_only:
                 lines.append('#include "common.h"')
                 lines.append("")
@@ -105,6 +114,11 @@ class N64SegCollision(CommonSegCodeSubsegment):
                 lines[at] = lines[at].replace("[]", "["+str(b)+"]")
                 lines.append("};")
         elif self.type == "Settings":
+            sym = self.retrieve_sym_type(symbols.all_symbols_dict, self.vram_start, "ColS")
+            if not sym:
+                sym = self.create_symbol(
+                    addr=self.vram_start, in_segment=True, type="ColS", define=True
+                )
             if not self.data_only:
                 lines.append('#include "common.h"')
                 lines.append("")
@@ -120,6 +134,11 @@ class N64SegCollision(CommonSegCodeSubsegment):
             if not self.data_only:
                 lines.append("};")
         elif self.type == "Header":
+            sym = self.retrieve_sym_type(symbols.all_symbols_dict, self.vram_start, "ColH")
+            if not sym:
+                sym = self.create_symbol(
+                    addr=self.vram_start, in_segment=True, type="ColH", define=True
+                )
             if not self.data_only:
                 lines.append('#include "common.h"')
                 lines.append("")
@@ -127,7 +146,7 @@ class N64SegCollision(CommonSegCodeSubsegment):
                 lines.append(f"{typer} {sym.name} = {{")
             
             #see common_structs.h
-            newLine = str(struct.unpack(">iiIII", collision_data[0:0x14])).replace("(", "{").replace(")","}")+","
+            newLine = str(struct.unpack(">iiIII", collision_data[0:0x14]))[1:-1]
             lines.append(newLine)
 
             if not self.data_only:
