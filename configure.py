@@ -2,6 +2,31 @@ import glob
 import os
 import ninja_syntax
 
+yamlList = glob.glob("yamls/*.yaml")
+sortList = []
+for yaml in yamlList:
+    lines = open(yaml, "r", encoding="utf-8").readlines()
+    for line in lines:
+        if line.find("start: 0x") != -1:
+            sortList.append([yaml, int(line.split("start: 0x")[-1], 16)])
+            break
+i = 0
+while i < len(sortList):
+    set = sortList[i]
+    j = i + 1
+    while j < len(sortList):
+        set2 = sortList[j]
+        if set[1] > set2[1]:
+            sortList.insert(i, sortList.pop(j))
+            i -= 1
+            break
+        j += 1
+    i += 1
+yamlString = ""
+for yaml in sortList: yamlString += yaml[0]+" "
+yamlString.strip()
+os.system("python3 tools/splat/split.py --disassemble-all "+yamlString)
+
 dir_path = 'src/'
 asm_path = 'asm/'
 assets_path = 'assets/'

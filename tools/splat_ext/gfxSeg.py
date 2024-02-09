@@ -248,45 +248,46 @@ class N64SegGfxSeg(N64SegGfx):
 
     def getTrueAdr(self, addr, split=False):
         if len(hex(addr)) <= 7 + 2:#SPECIFICALLY at the start
-            yamlPath = os.getcwd()+"/chameleontwist.jp.yaml"
-            yamler = open(yamlPath, "r", encoding="utf-8").readlines()
             index = hex((addr & 0x0F000000) >> 24).replace("0x", "0x0")
             otherhalf = addr & ~0x0F000000
-            myself = hex(self.rom_start)
-            i = 0
-            mode = 0
-            vram = 0x0
-            baseAdr = 0x0
-            new = 0x0
-            while i < len(yamler):
-                if mode == 0: #find the split the gfx came from
-                    if yamler[i].lower().find(myself) != -1:
-                        mode = 1
-                    i += 1
-                elif mode == 1: #go backwards until you find a rom start
-                    if yamler[i].find("SEGMENT "+index):
-                        for back in range(0,5):
-                            line = yamler[i - back]
-                            if line.startswith("  - start: ") and baseAdr == 0x0:
-                                baseAdr = int(line.split(": ")[1].split("#")[0].strip(),16)
-                            elif line.startswith("    name: ") and self.groupName == "":
-                                self.groupName = line.split(": ")[1].split("#")[0].strip()
-                            if baseAdr != 0x0 and self.groupName != "": break
-                    if baseAdr != 0x0:
-                        new = baseAdr+otherhalf
-                        if not split: break
-                        mode = 2
-                    i -= 1
-                elif mode == 2: #try and find the asset in which you are calling for
-                    #the only reason this mode exists is because vtx's have a bad habit of being called a specific distance into themselves, making this all worthless
-                    if yamler[i].find("-") != -1 and yamler[i].find("0x") != -1:
-                        yoink = self.getSplitAdr(yamler[i])
-                        if yoink == new: break #is a valid split; wouldve been generated in symbol_addrs if you got to this point
-                        elif yoink > new: #we definitely passed it. it must be in the middle of the one before
-                            diff = (baseAdr+otherhalf)-self.getSplitAdr(yamler[i-1])
-                            #print(hex(otherhalf), hex(diff), hex(myself))
-                            otherhalf -= diff
-                            break
-                    i += 1
+            from glob import glob
+            for yamlPath in glob(os.getcwd()+"/yamls/*.yaml"):
+                yamler = open(yamlPath, "r", encoding="utf-8").readlines()
+                myself = hex(self.rom_start)
+                i = 0
+                mode = 0
+                vram = 0x0
+                baseAdr = 0x0
+                new = 0x0
+                while i < len(yamler):
+                    if mode == 0: #find the split the gfx came from
+                        if yamler[i].lower().find(myself) != -1:
+                            mode = 1
+                        i += 1
+                    elif mode == 1: #go backwards until you find a rom start
+                        if yamler[i].find("SEGMENT "+index):
+                            for back in range(0,5):
+                                line = yamler[i - back]
+                                if line.startswith("  - start: ") and baseAdr == 0x0:
+                                    baseAdr = int(line.split(": ")[1].split("#")[0].strip(),16)
+                                elif line.startswith("    name: ") and self.groupName == "":
+                                    self.groupName = line.split(": ")[1].split("#")[0].strip()
+                                if baseAdr != 0x0 and self.groupName != "": break
+                        if baseAdr != 0x0:
+                            new = baseAdr+otherhalf
+                            if not split: break
+                            mode = 2
+                        i -= 1
+                    elif mode == 2: #try and find the asset in which you are calling for
+                        #the only reason this mode exists is because vtx's have a bad habit of being called a specific distance into themselves, making this all worthless
+                        if yamler[i].find("-") != -1 and yamler[i].find("0x") != -1:
+                            yoink = self.getSplitAdr(yamler[i])
+                            if yoink == new: break #is a valid split; wouldve been generated in symbol_addrs if you got to this point
+                            elif yoink > new: #we definitely passed it. it must be in the middle of the one before
+                                diff = (baseAdr+otherhalf)-self.getSplitAdr(yamler[i-1])
+                                #print(hex(otherhalf), hex(diff), hex(myself))
+                                otherhalf -= diff
+                                break
+                        i += 1
             return int(index+"000000",16)+otherhalf
         else: return addr
