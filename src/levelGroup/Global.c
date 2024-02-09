@@ -8,15 +8,15 @@ extern unsigned char D_02028528_Global[]; // pole img
 extern Vtx D_800FE7D8_Global[];
 extern Vtx D_800FE8C8_Global[];
 #define FILEPAD {0xB8,0,0,0,0,0,0,0} // the funny
+#define IDENTITY {{1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1},{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}} // identity matrix so we dont have to split useless files
 
 
-#include "assets/levelGroup/Global/globalScope/globalScope.mtx.inc.c"
+Mtx_f Global_IMtx1 = IDENTITY;
 
 #include "assets/levelGroup/Global/globalScope/globalScope.light.inc.c"
 
 #include "assets/levelGroup/Global/cannon/cannon.vtx.inc.c"
-
-#include "assets/levelGroup/Global/cannon/cannon.mtx.inc.c"
+Mtx_f Global_IMtx2 = IDENTITY;
 unsigned char Global_Pad1[] = FILEPAD;
 unsigned char Global_cannonHole_rgba16_PNG[] = {
 #include "build/include/assets/levelGroup/Global/cannon/cannonHole.rgba16.png.inc.c"
@@ -33,8 +33,7 @@ unsigned char Global_black_rgba16_PNG[] = {
 #include "assets/levelGroup/Global/cannon/cannon.gfx.inc.c"
 
 #include "assets/levelGroup/Global/unkWood/unkWood.vtx.inc.c"
-
-#include "assets/levelGroup/Global/unkWood/unkWood.mtx.inc.c"
+Mtx_f Global_IMtx3 = IDENTITY;
 unsigned char Global_Pad4[] = FILEPAD;
 unsigned char Global_woodWithBolt_rgba16_PNG[] = {
 #include "build/include/assets/levelGroup/Global/unkWood/woodWithBolt.rgba16.png.inc.c"
@@ -59,20 +58,17 @@ unsigned char Global_midWood_rgba16_PNG[] = {
 #include "assets/levelGroup/Global/unkWood/unkWood.gfx.inc.c"
 
 #include "assets/levelGroup/Global/unk/unk.vtx.inc.c"
-
-#include "assets/levelGroup/Global/unk/unk.mtx.inc.c"
+Mtx_f Global_IMtx4 = IDENTITY;
 
 #include "assets/levelGroup/Global/unk/unk.gfx.inc.c"
 
 #include "assets/levelGroup/Global/unk2/unk2.vtx.inc.c"
-
-#include "assets/levelGroup/Global/unk2/unk2.mtx.inc.c"
+Mtx_f Global_IMtx5 = IDENTITY;
 
 #include "assets/levelGroup/Global/unk2/unk2.gfx.inc.c"
 
 #include "assets/levelGroup/Global/unk40/unk40.vtx.inc.c"
-
-#include "assets/levelGroup/Global/unk40/unk40.mtx.inc.c"
+Mtx_f Global_IMtx6 = IDENTITY;
 unsigned char Global_Pad9[] = FILEPAD;
 unsigned char Global_shadow_ia8_PNG[] = {
 #include "build/include/assets/levelGroup/Global/unk40/shadow.ia8.png.inc.c"
@@ -862,8 +858,7 @@ unsigned char Global_fogFade_ia8_PNG[] = {
 };
 
 #include "assets/levelGroup/Global/unk3/unk3.vtx.inc.c"
-
-#include "assets/levelGroup/Global/unk3/unk3.mtx.inc.c"
+Mtx_f Global_IMtx7 = IDENTITY;
 
 #include "assets/levelGroup/Global/unk3/unk3.gfx.inc.c"
 
@@ -879,8 +874,7 @@ unsigned char Global_zeroooo_Bin[] = {
 };
 
 #include "assets/levelGroup/Global/unk4/unk4.vtx.inc.c"
-
-#include "assets/levelGroup/Global/unk4/unk4.mtx.inc.c"
+Mtx_f Global_IMtx8 = IDENTITY;
 
 #include "assets/levelGroup/Global/unk4/unk4.gfx.inc.c"
 
@@ -896,8 +890,7 @@ unsigned char Global_zeroooo2_Bin[] = {
 };
 
 #include "assets/levelGroup/Global/unk5/unk5.vtx.inc.c"
-
-#include "assets/levelGroup/Global/unk5/unk5.mtx.inc.c"
+Mtx_f Global_IMtx9 = IDENTITY;
 
 #include "assets/levelGroup/Global/unk5/unk5.gfx.inc.c"
 
@@ -913,8 +906,7 @@ unsigned char Global_zeroooo3_Bin[] = {
 };
 
 #include "assets/levelGroup/Global/unk6/unk6.vtx.inc.c"
-
-#include "assets/levelGroup/Global/unk6/unk6.mtx.inc.c"
+Mtx_f Global_IMtx10 = IDENTITY;
 
 #include "assets/levelGroup/Global/unk6/unk6.gfx.inc.c"
 
@@ -930,8 +922,7 @@ unsigned char Global_zeroooo4_Bin[] = {
 };
 
 #include "assets/levelGroup/Global/unk7/unk7.vtx.inc.c"
-
-#include "assets/levelGroup/Global/unk7/unk7.mtx.inc.c"
+Mtx_f Global_IMtx11 = IDENTITY;
 
 #include "assets/levelGroup/Global/unk7/unk7.gfx.inc.c"
 
@@ -947,8 +938,7 @@ unsigned char Global_zeroooo5_Bin[] = {
 };
 
 #include "assets/levelGroup/Global/unk8/unk8.vtx.inc.c"
-
-#include "assets/levelGroup/Global/unk8/unk8.mtx.inc.c"
+Mtx_f Global_IMtx12 = IDENTITY;
 
 #include "assets/levelGroup/Global/unk8/unk8.gfx.inc.c"
 
@@ -962,8 +952,7 @@ unsigned char Global_zeroooo5_Bin[] = {
 unsigned char Global_zeroooo6_Bin[] = {
 #include "build/include/assets/levelGroup/Global/zeroooo6.inc.c"
 };
-
-#include "assets/levelGroup/Global/unk9/unk9.mtx.inc.c"
+Mtx_f Global_IMtx13 = IDENTITY;
 
 #include "assets/levelGroup/Global/unk9/unk9.gfx.inc.c"
 
@@ -976,8 +965,7 @@ unsigned char Global_zeroooo6_Bin[] = {
 #include "assets/levelGroup/Global/unk9/unk9.colH.inc.c"
 
 #include "assets/levelGroup/Global/unkA/unkA.vtx.inc.c"
-
-#include "assets/levelGroup/Global/unkA/unkA.mtx.inc.c"
+Mtx_f Global_IMtx14 = IDENTITY;
 
 #include "assets/levelGroup/Global/unkA/unkA.gfx.inc.c"
 
@@ -993,8 +981,7 @@ unsigned char Global_zeroooo7_Bin[] = {
 };
 
 #include "assets/levelGroup/Global/unkB/unkB.vtx.inc.c"
-
-#include "assets/levelGroup/Global/unkB/unkB.mtx.inc.c"
+Mtx_f Global_IMtx15 = IDENTITY;
 unsigned char Global_Pad195[] = FILEPAD;
 unsigned char Global_unkB1_i4_PNG[] = {
 #include "build/include/assets/levelGroup/Global/unkB/unkB1.i4.png.inc.c"
@@ -1018,8 +1005,7 @@ unsigned char Global_zeroooo8_Bin[] = {
 };
 
 #include "assets/levelGroup/Global/unkC/unkC.vtx.inc.c"
-
-#include "assets/levelGroup/Global/unkC/unkC.mtx.inc.c"
+Mtx_f Global_IMtx16 = IDENTITY;
 unsigned char Global_Pad197[] = FILEPAD;
 unsigned char Global_unkC_i4_PNG[] = {
 #include "build/include/assets/levelGroup/Global/unkC/unkC.i4.png.inc.c"
@@ -1039,8 +1025,7 @@ unsigned char Global_zeroooo9_Bin[] = {
 };
 
 #include "assets/levelGroup/Global/ALSpinDoor/ALSpinDoor.vtx.inc.c"
-
-#include "assets/levelGroup/Global/ALSpinDoor/ALSpinDoor.mtx.inc.c"
+Mtx_f Global_IMtx17 = IDENTITY;
 unsigned char Global_Pad198[] = FILEPAD;
 unsigned char Global_ALSpinDoor_ci4_PNG[] = {
 #include "build/include/assets/levelGroup/Global/ALSpinDoor/ALSpinDoor.ci4.png.inc.c"
@@ -1064,8 +1049,7 @@ unsigned char Global_zeroooo10_Bin[] = {
 };
 
 #include "assets/levelGroup/Global/unkD/unkD.vtx.inc.c"
-
-#include "assets/levelGroup/Global/unkD/unkD.mtx.inc.c"
+Mtx_f Global_IMtx18 = IDENTITY;
 
 #include "assets/levelGroup/Global/unkD/unkD.gfx.inc.c"
 
@@ -1081,8 +1065,7 @@ unsigned char Global_zeroooo11_Bin[] = {
 };
 
 #include "assets/levelGroup/Global/BLLava/BLLava.vtx.inc.c"
-
-#include "assets/levelGroup/Global/BLLava/BLLava.mtx.inc.c"
+Mtx_f Global_IMtx19 = IDENTITY;
 unsigned char Global_Pad200[] = FILEPAD;
 unsigned char Global_BLLava_ci4_PNG[] = {
 #include "build/include/assets/levelGroup/Global/BLLava/BLLava.ci4.png.inc.c"
@@ -1106,8 +1089,7 @@ unsigned char Global_zeroooo12_Bin[] = {
 };
 
 #include "assets/levelGroup/Global/BLLava2/BLLava2.vtx.inc.c"
-
-#include "assets/levelGroup/Global/BLLava2/BLLava2.mtx.inc.c"
+Mtx_f Global_IMtx20 = IDENTITY;
 unsigned char Global_Pad202[] = FILEPAD;
 unsigned char Global_BLLava2_ci4_PNG[] = {
 #include "build/include/assets/levelGroup/Global/BLLava2/BLLava2.ci4.png.inc.c"
@@ -1131,8 +1113,7 @@ unsigned char Global_zeroooo13_Bin[] = {
 };
 
 #include "assets/levelGroup/Global/BLLava3/BLLava3.vtx.inc.c"
-
-#include "assets/levelGroup/Global/BLLava3/BLLava3.mtx.inc.c"
+Mtx_f Global_IMtx21 = IDENTITY;
 unsigned char Global_Pad204[] = FILEPAD;
 unsigned char Global_BLLava3_ci4_PNG[] = {
 #include "build/include/assets/levelGroup/Global/BLLava3/BLLava3.ci4.png.inc.c"
@@ -1156,8 +1137,7 @@ unsigned char Global_zeroooo14_Bin[] = {
 };
 
 #include "assets/levelGroup/Global/BLLava4/BLLava4.vtx.inc.c"
-
-#include "assets/levelGroup/Global/BLLava4/BLLava4.mtx.inc.c"
+Mtx_f Global_IMtx22 = IDENTITY;
 unsigned char Global_Pad206[] = FILEPAD;
 unsigned char Global_BLLava4_ci4_PNG[] = {
 #include "build/include/assets/levelGroup/Global/BLLava4/BLLava4.ci4.png.inc.c"
@@ -1181,8 +1161,7 @@ unsigned char Global_zeroooo15_Bin[] = {
 };
 
 #include "assets/levelGroup/Global/BLLava5/BLLava5.vtx.inc.c"
-
-#include "assets/levelGroup/Global/BLLava5/BLLava5.mtx.inc.c"
+Mtx_f Global_IMtx23 = IDENTITY;
 unsigned char Global_Pad208[] = FILEPAD;
 unsigned char Global_BLLava5_ci4_PNG[] = {
 #include "build/include/assets/levelGroup/Global/BLLava5/BLLava5.ci4.png.inc.c"
@@ -1206,8 +1185,7 @@ unsigned char Global_zeroooo16_Bin[] = {
 };
 
 #include "assets/levelGroup/Global/BLLava6/BLLava6.vtx.inc.c"
-
-#include "assets/levelGroup/Global/BLLava6/BLLava6.mtx.inc.c"
+Mtx_f Global_IMtx24 = IDENTITY;
 unsigned char Global_Pad210[] = FILEPAD;
 unsigned char Global_BLLava6_ci4_PNG[] = {
 #include "build/include/assets/levelGroup/Global/BLLava6/BLLava6.ci4.png.inc.c"
@@ -1231,8 +1209,7 @@ unsigned char Global_zeroooo17_Bin[] = {
 };
 
 #include "assets/levelGroup/Global/BLLava7/BLLava7.vtx.inc.c"
-
-#include "assets/levelGroup/Global/BLLava7/BLLava7.mtx.inc.c"
+Mtx_f Global_IMtx25 = IDENTITY;
 unsigned char Global_Pad212[] = FILEPAD;
 unsigned char Global_BLLava7_ci4_PNG[] = {
 #include "build/include/assets/levelGroup/Global/BLLava7/BLLava7.ci4.png.inc.c"
@@ -1256,8 +1233,7 @@ unsigned char Global_zeroooo18_Bin[] = {
 };
 
 #include "assets/levelGroup/Global/BLLava8/BLLava8.vtx.inc.c"
-
-#include "assets/levelGroup/Global/BLLava8/BLLava8.mtx.inc.c"
+Mtx_f Global_IMtx26 = IDENTITY;
 unsigned char Global_Pad214[] = FILEPAD;
 unsigned char Global_BLLava8_ci4_PNG[] = {
 #include "build/include/assets/levelGroup/Global/BLLava8/BLLava8.ci4.png.inc.c"
@@ -1281,8 +1257,7 @@ unsigned char Global_zeroooo19_Bin[] = {
 };
 
 #include "assets/levelGroup/Global/unkE/unkE.vtx.inc.c"
-
-#include "assets/levelGroup/Global/unkE/unkE.mtx.inc.c"
+Mtx_f Global_IMtx27 = IDENTITY;
 
 #include "assets/levelGroup/Global/unkE/unkE.gfx.inc.c"
 
@@ -1298,8 +1273,7 @@ unsigned char Global_zeroooo20_Bin[] = {
 };
 
 #include "assets/levelGroup/Global/unkF/unkF.vtx.inc.c"
-
-#include "assets/levelGroup/Global/unkF/unkF.mtx.inc.c"
+Mtx_f Global_IMtx28 = IDENTITY;
 
 #include "assets/levelGroup/Global/unkF/unkF.gfx.inc.c"
 
@@ -1315,8 +1289,7 @@ unsigned char Global_zeroooo21_Bin[] = {
 };
 
 #include "assets/levelGroup/Global/unk10/unk10.vtx.inc.c"
-
-#include "assets/levelGroup/Global/unk10/unk10.mtx.inc.c"
+Mtx_f Global_IMtx29 = IDENTITY;
 
 #include "assets/levelGroup/Global/unk10/unk10.gfx.inc.c"
 
@@ -1332,8 +1305,7 @@ unsigned char Global_zeroooo22_Bin[] = {
 };
 
 #include "assets/levelGroup/Global/Door1/Door1.vtx.inc.c"
-
-#include "assets/levelGroup/Global/Door1/Door1.mtx.inc.c"
+Mtx_f Global_IMtx30 = IDENTITY;
 unsigned char Global_Pad216[] = FILEPAD;
 unsigned char Global_Door1_ci4_PNG[] = {
 #include "build/include/assets/levelGroup/Global/Door1/Door1.ci4.png.inc.c"
@@ -1357,8 +1329,7 @@ unsigned char Global_zeroooo23_Bin[] = {
 };
 
 #include "assets/levelGroup/Global/unk12/unk12.vtx.inc.c"
-
-#include "assets/levelGroup/Global/unk12/unk12.mtx.inc.c"
+Mtx_f Global_IMtx31 = IDENTITY;
 
 #include "assets/levelGroup/Global/unk12/unk12.gfx.inc.c"
 
@@ -1374,8 +1345,7 @@ unsigned char Global_zeroooo24_Bin[] = {
 };
 
 #include "assets/levelGroup/Global/unk13/unk13.vtx.inc.c"
-
-#include "assets/levelGroup/Global/unk13/unk13.mtx.inc.c"
+Mtx_f Global_IMtx32 = IDENTITY;
 
 #include "assets/levelGroup/Global/unk13/unk13.gfx.inc.c"
 
@@ -1391,8 +1361,7 @@ unsigned char Global_zeroooo25_Bin[] = {
 };
 
 #include "assets/levelGroup/Global/unk14/unk14.vtx.inc.c"
-
-#include "assets/levelGroup/Global/unk14/unk14.mtx.inc.c"
+Mtx_f Global_IMtx33 = IDENTITY;
 
 #include "assets/levelGroup/Global/unk14/unk14.gfx.inc.c"
 
@@ -1408,8 +1377,7 @@ unsigned char Global_zeroooo26_Bin[] = {
 };
 
 #include "assets/levelGroup/Global/unk15/unk15.vtx.inc.c"
-
-#include "assets/levelGroup/Global/unk15/unk15.mtx.inc.c"
+Mtx_f Global_IMtx34 = IDENTITY;
 
 #include "assets/levelGroup/Global/unk15/unk15.gfx.inc.c"
 
@@ -1425,8 +1393,7 @@ unsigned char Global_zeroooo27_Bin[] = {
 };
 
 #include "assets/levelGroup/Global/unk16/unk16.vtx.inc.c"
-
-#include "assets/levelGroup/Global/unk16/unk16.mtx.inc.c"
+Mtx_f Global_IMtx35 = IDENTITY;
 
 #include "assets/levelGroup/Global/unk16/unk16.gfx.inc.c"
 
@@ -1442,8 +1409,7 @@ unsigned char Global_zeroooo28_Bin[] = {
 };
 
 #include "assets/levelGroup/Global/unk17/unk17.vtx.inc.c"
-
-#include "assets/levelGroup/Global/unk17/unk17.mtx.inc.c"
+Mtx_f Global_IMtx36 = IDENTITY;
 
 #include "assets/levelGroup/Global/unk17/unk17.gfx.inc.c"
 
@@ -1459,8 +1425,7 @@ unsigned char Global_zeroooo29_Bin[] = {
 };
 
 #include "assets/levelGroup/Global/unk18/unk18.vtx.inc.c"
-
-#include "assets/levelGroup/Global/unk18/unk18.mtx.inc.c"
+Mtx_f Global_IMtx37 = IDENTITY;
 
 #include "assets/levelGroup/Global/unk18/unk18.gfx.inc.c"
 
@@ -1476,8 +1441,7 @@ unsigned char Global_zeroooo30_Bin[] = {
 };
 
 #include "assets/levelGroup/Global/unk19/unk19.vtx.inc.c"
-
-#include "assets/levelGroup/Global/unk19/unk19.mtx.inc.c"
+Mtx_f Global_IMtx38 = IDENTITY;
 
 #include "assets/levelGroup/Global/unk19/unk19.gfx.inc.c"
 
@@ -1493,8 +1457,7 @@ unsigned char Global_zeroooo31_Bin[] = {
 };
 
 #include "assets/levelGroup/Global/unk1A/unk1A.vtx.inc.c"
-
-#include "assets/levelGroup/Global/unk1A/unk1A.mtx.inc.c"
+Mtx_f Global_IMtx39 = IDENTITY;
 
 #include "assets/levelGroup/Global/unk1A/unk1A.gfx.inc.c"
 
@@ -1510,8 +1473,7 @@ unsigned char Global_zeroooo32_Bin[] = {
 };
 
 #include "assets/levelGroup/Global/unk1B/unk1B.vtx.inc.c"
-
-#include "assets/levelGroup/Global/unk1B/unk1B.mtx.inc.c"
+Mtx_f Global_IMtx40 = IDENTITY;
 
 #include "assets/levelGroup/Global/unk1B/unk1B.gfx.inc.c"
 
@@ -1527,8 +1489,7 @@ unsigned char Global_zeroooo33_Bin[] = {
 };
 
 #include "assets/levelGroup/Global/unk1C/unk1C.vtx.inc.c"
-
-#include "assets/levelGroup/Global/unk1C/unk1C.mtx.inc.c"
+Mtx_f Global_IMtx41 = IDENTITY;
 
 #include "assets/levelGroup/Global/unk1C/unk1C.gfx.inc.c"
 
@@ -1544,8 +1505,7 @@ unsigned char Global_zeroooo34_Bin[] = {
 };
 
 #include "assets/levelGroup/Global/unk1D/unk1D.vtx.inc.c"
-
-#include "assets/levelGroup/Global/unk1D/unk1D.mtx.inc.c"
+Mtx_f Global_IMtx42 = IDENTITY;
 
 #include "assets/levelGroup/Global/unk1D/unk1D.gfx.inc.c"
 
@@ -1561,8 +1521,7 @@ unsigned char Global_zeroooo35_Bin[] = {
 };
 
 #include "assets/levelGroup/Global/unk1E/unk1E.vtx.inc.c"
-
-#include "assets/levelGroup/Global/unk1E/unk1E.mtx.inc.c"
+Mtx_f Global_IMtx43 = IDENTITY;
 
 #include "assets/levelGroup/Global/unk1E/unk1E.gfx.inc.c"
 

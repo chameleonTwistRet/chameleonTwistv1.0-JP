@@ -13,7 +13,7 @@ extern Mtx D_80129970_Black; //shoulder
 extern Mtx D_801299B0_Black; //Lshoulder
 extern Mtx D_801299F0_Black; //fist
 extern Mtx D_80129A30_Black; //Lfist
-#define IDENTITY {{1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1},{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}} // identity matrix so we dont have to spit useless files
+#define IDENTITY {{1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1},{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}} // identity matrix so we dont have to split useless files
 
 #define FILEPAD {0xB8,0,0,0,0,0,0,0} // the funny
 

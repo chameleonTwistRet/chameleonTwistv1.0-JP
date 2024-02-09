@@ -853,8 +853,7 @@ segments:
       vram: 0x81500000
       start: 0x6A8e20
       subsegments:
-      - [0x6A8e20, mtx, mtx]
-
+      - [0x6A8e20] #identity matrix
       - [0x6a8e60, levelPointer, pointers]
       - [0x6aa540, bin, rabObjects.MEd]
 
@@ -1585,11 +1584,11 @@ segments:
       - [0x6bc3b8, levelScope, scope]
       - [0x6bc3d0, levelHeader, header]
 
-      - [0x6BC3F0, mtx, jlScope/jlScope]
+      - [0x6BC3F0] #identity matrix
       - [0x6bC430, lights, jlScope/jlScope] # set Lights 1 for alot of JL assets
 
       - [0x6BC448, vtx, lilypad/lilypad]
-      - [0x6BC4C8, mtx, lilypad/lilypad]
+      - [0x6BC4C8] #identity matrix
       - [0x6BC508] #B8000000
       - [0x6BC510, ci4,     lilypad.MEd.ci4, 64, 64]
       - [0x6BCD10] #B8000000
@@ -1597,21 +1596,21 @@ segments:
       - [0x6BCF18, gfxSeg, lilypad/lilypad]
 
       - [0x6BD040, vtx, vine/vine]
-      - [0x6BD080, mtx, vine/vine]
+      - [0x6BD080] #identity matrix
       - [0x6BD0C0, ci8,     vine.MEd.ci8, 16, 64]
       - [0x6BD4C0, palette, vine.MEd.ci8]
       - [0x6BD6C0, gfxSeg, vine/vine]
 
       - [0x6BD7D8, vtx, fallenCrownLog/fallenCrownLog]
-      - [0x6BDA18, mtx, fallenCrownLog/fallenCrownLog]
+      - [0x6BDA18] #identity matrix
       - [0x6BDA58, gfxSeg, fallenCrownLog/fallenCrownLog]
 
       - [0x6BDF30, vtx, unkLog/unkLog]
-      - [0x6BE0B0, mtx, unkLog/unkLog]
+      - [0x6BE0B0] #identity matrix
       - [0x6BE0F0, gfxSeg, unkLog/unkLog]
 
       - [0x6BE388, vtx, fallenLogStump/fallenLogStump]
-      - [0x6be4a8, mtx, fallenLogStump/fallenLogStump]
+      - [0x6be4a8] #identity matrix
       - [0x6be4e8] #B8000000
       - [0x6BE4F0, ci8,     fallenLogStump.MEd.ci8, 64, 32]
       - [0x6BECF0] #B8000000
@@ -1619,25 +1618,25 @@ segments:
       - [0x6BEEF8, gfxSeg, fallenLogStump/fallenLogStump]
       
       - [0x6BF150, vtx, logTunnel/logTunnel]
-      - [0x6BF530, mtx, logTunnel/logTunnel]
+      - [0x6BF530] #identity matrix
       - [0x6bf570, gfxSeg, logTunnel/logTunnel]
       
       - [0x6BFA68, vtx, waterfallRock/waterfallRock]
-      - [0x6BFBD8, mtx, waterfallRock/waterfallRock]
+      - [0x6BFBD8] #identity matrix
       - [0x6BFC18, gfxSeg, waterfallRock/waterfallRock]
 
       - [0x6BFFD8, vtx, unk1/unk1]
-      - [0x6C03F8, mtx, unk1/unk1]
+      - [0x6C03F8] #identity matrix
       - [0x6C0438, gfxSeg, unk1/unk1]
 
       - [0x6C0A30, vtx, fallBridge/fallBridge]
-      - [0x6C0A70, mtx, fallBridge/fallBridge]
+      - [0x6C0A70] #identity matrix
       - [0x6C0AB0, ci8,     fallBridge.MEd.ci8, 64, 32]
       - [0x6C12B0, palette, fallBridge.MEd.ci8]
       - [0x6c14b0, gfxSeg, fallBridge/fallBridge]
 
       - [0x6C15B8, vtx, ctCrate/ctCrate]
-      - [0x6C16F8, mtx, ctCrate/ctCrate]
+      - [0x6C16F8] #identity matrix
       - [0x6C1738] #B8000000
       - [0x6C1740, ci4,     ctCrate1.MEd.ci4, 32, 32]
       - [0x6c1940] #B8000000
@@ -1653,49 +1652,49 @@ segments:
       - [0x6C2768, gfxSeg, ctCrate/ctCrate]
 
       - [0x6C2B50, vtx, ctCrate2/ctCrate2]
-      - [0x6C2C90, mtx, ctCrate2/ctCrate2]
+      - [0x6C2C90] #identity matrix
       - [0x6C2CD0, gfxSeg, ctCrate2/ctCrate2]
       
       - [0x6C30B8, vtx, walkingPlank/walkingPlank]
-      - [0x6C31B8, mtx, walkingPlank/walkingPlank]
+      - [0x6C31B8] #identity matrix
       - [0x6C31F8, gfxSeg, walkingPlank/walkingPlank] 
           
       - [0x6C34F0, vtx, walkingPlank2/walkingPlank2]
-      - [0x6C35F0, mtx, walkingPlank2/walkingPlank2]
+      - [0x6C35F0] #identity matrix
       - [0x6C3630, gfxSeg, walkingPlank2/walkingPlank2]
 
       - [0x6C3928, vtx, walkingPlank3/walkingPlank3]
-      - [0x6C3A28, mtx, walkingPlank3/walkingPlank3]
+      - [0x6C3A28] #identity matrix
       - [0x6C3A68, gfxSeg, walkingPlank3/walkingPlank3]
 
       - [0x6C3D60, vtx, walkingPlank4/walkingPlank4]
-      - [0x6C3E60, mtx, walkingPlank4/walkingPlank4]
+      - [0x6C3E60] #identity matrix
       - [0x6C3EA0, gfxSeg, walkingPlank4/walkingPlank4]
 
       - [0x6C4278, vtx, singularPlank/singularPlank]
-      - [0x6C42B8, mtx, singularPlank/singularPlank]
+      - [0x6C42B8] #identity matrix
       - [0x6C42F8, ci8,     singularPlank.MEd.ci8, 64, 32]
       - [0x6C4AF8, palette, singularPlank.MEd.ci8]
       - [0x6C4CF8, gfxSeg, singularPlank/singularPlank]
 
       - [0x6C4E00, vtx, roomSixStartPlatform/roomSixStartPlatform]
-      - [0x6C4FC0, mtx, roomSixStartPlatform/roomSixStartPlatform]
+      - [0x6C4FC0] #identity matrix
       - [0x6C5000, gfxSeg, roomSixStartPlatform/roomSixStartPlatform]
 
       - [0x6C56A8, vtx, cavePlatform/cavePlatform]
-      - [0x6C57A8, mtx, cavePlatform/cavePlatform]
+      - [0x6C57A8] #identity matrix
       - [0x6C57E8, gfxSeg, cavePlatform/cavePlatform]
 
       - [0x6C5BC0, vtx, roomSixCrownPlatform/roomSixCrownPlatform]
-      - [0x6C5D80, mtx, roomSixCrownPlatform/roomSixCrownPlatform]
+      - [0x6C5D80] #identity matrix
       - [0x6C5DC0, gfxSeg, roomSixCrownPlatform/roomSixCrownPlatform]
 
       - [0x6C6468, vtx, roomSixSidePlatform/roomSixSidePlatform]
-      - [0x6C66A8, mtx, roomSixSidePlatform/roomSixSidePlatform]
+      - [0x6C66A8] #identity matrix
       - [0x6C66E8, gfxSeg, roomSixSidePlatform/roomSixSidePlatform]
 
       - [0x6C6CD0, vtx, roomSevenLava/roomSevenLava]
-      - [0x6C6D90, mtx, roomSevenLava/roomSevenLava]
+      - [0x6C6D90] #identity matrix
       - [0x6C6DD0] #B8000000
       - [0x6C6DD8, ci8,     lava.MEd.ci8, 32, 32]
       - [0x6C71D8] #B8000000
@@ -1703,19 +1702,19 @@ segments:
       - [0x6C73E0, gfxSeg, roomSevenLava/roomSevenLava]
 
       - [0x6C7528, vtx, roomSevenFloor/roomSevenFloor]
-      - [0x6C75E8, mtx, roomSevenFloor/roomSevenFloor]
+      - [0x6C75E8] #identity matrix
       - [0x6C7628, gfxSeg, roomSevenFloor/roomSevenFloor]
 
       - [0x6C7910, vtx, roomZeroLava/roomZeroLava]
-      - [0x6C7990, mtx, roomZeroLava/roomZeroLava]
+      - [0x6C7990] #identity matrix
       - [0x6C79D0, gfxSeg, roomZeroLava/roomZeroLava]
 
       - [0x6C7AF8, vtx, roomOnePlatform/roomOnePlatform]
-      - [0x6C7CF8, mtx, roomOnePlatform/roomOnePlatform]
+      - [0x6C7CF8] #identity matrix
       - [0x6C7D38, gfxSeg, roomOnePlatform/roomOnePlatform]
 
       - [0x6C80A0, vtx, roomSixCrownEdgePlatform/roomSixCrownEdgePlatform]
-      - [0x6C82E0, mtx, roomSixCrownEdgePlatform/roomSixCrownEdgePlatform]
+      - [0x6C82E0] #identity matrix
       - [0x6C8320] #B8000000
       - [0x6C8328, ci8,     roomSixCrownEdgePlatform.MEd.ci8, 16, 128]
       - [0x6C8B28] #B8000000
@@ -1723,21 +1722,21 @@ segments:
       - [0x6C8D30, gfxSeg, roomSixCrownEdgePlatform/roomSixCrownEdgePlatform]
 
       - [0x6C9248, vtx, roomSevenSpinRing/roomSevenSpinRing]
-      - [0x6C9808, mtx, roomSevenSpinRing/roomSevenSpinRing]
+      - [0x6C9808] #identity matrix
       - [0x6C9848, gfxSeg, roomSevenSpinRing/roomSevenSpinRing]
 
-      - [0x6C9DD8, vtx, woodBlock/woodBlock]   
-      - [0x6C9F18, mtx, woodBlock/woodBlock]
+      - [0x6C9DD8, vtx, woodBlock/woodBlock]
+      - [0x6C9F18] #identity matrix
       - [0x6C9F58, gfxSeg, woodBlock/woodBlock]
 
       - [0x6CA340, vtx, ropes/ropes]
-      - [0x6CA380, mtx, ropes/ropes]
+      - [0x6CA380] #identity matrix
       - [0x6CA3C0] #B8000000
       - [0x6CA3C8, rgba16, rope.MEd.rgba16, 32, 64]
       - [0x6CB3C8, gfxSeg, ropes/ropes]
 
       - [0x6CB4B0, vtx, railOne/railOne]
-      - [0x6CB670, mtx, railOne/railOne]
+      - [0x6CB670] #identity matrix
       - [0x6CB6B0] #B8000000
       - [0x6CB6B8, ci4,     railColor.MEd.ci4, 16, 16]
       - [0x6CB738] #B8000000
@@ -1745,67 +1744,67 @@ segments:
       - [0x6CB940, gfxSeg, railOne/railOne]
 
       - [0x6CBD58, vtx, railTwo/railTwo]
-      - [0x6CBF18, mtx, railTwo/railTwo]
+      - [0x6CBF18] #identity matrix
       - [0x6CBF58, gfxSeg, railTwo/railTwo]
 
       - [0x6CC370, vtx, railThree/railThree]
-      - [0x6CC530, mtx, railThree/railThree]
+      - [0x6CC530] #identity matrix
       - [0x6CC570, gfxSeg, railThree/railThree]
 
       - [0x6CC988, vtx, railFour/railFour]
-      - [0x6CCB48, mtx, railFour/railFour]
+      - [0x6CCB48] #identity matrix
       - [0x6CCB88, gfxSeg, railFour/railFour]
 
       - [0x6CCFA0, vtx, railFive/railFive]
-      - [0x6CD160, mtx, railFive/railFive]
+      - [0x6CD160] #identity matrix
       - [0x6CD1A0, gfxSeg, railFive/railFive]
 
       - [0x6CD5B8, vtx, railSix/railSix]
-      - [0x6CD778, mtx, railSix/railSix]
+      - [0x6CD778] #identity matrix
       - [0x6CD7B8, gfxSeg, railSix/railSix]
 
       - [0x6CDBD0, vtx, rail/rail]
-      - [0x6CDD90, mtx, rail/rail]
+      - [0x6CDD90] #identity matrix
       - [0x6CDDD0, gfxSeg, rail/rail]
 
       - [0x6CE128, vtx, ctCrate3/ctCrate3]
-      - [0x6CE268, mtx, ctCrate3/ctCrate3]
+      - [0x6CE268] #identity matrix
       - [0x6CE2A8, gfxSeg, ctCrate3/ctCrate3]
 
       - [0x6CE690, vtx, logOne/logOne]
-      - [0x6CE730, mtx, logOne/logOne]
+      - [0x6CE730] #identity matrix
       - [0x6CE770, gfxSeg, logOne/logOne]
 
       - [0x6CE8A8, vtx, fallBridgeSmall2/fallBridgeSmall2]
-      - [0x6CE8E8, mtx, fallBridgeSmall2/fallBridgeSmall2]
+      - [0x6CE8E8] #identity matrix
       - [0x6CE928, gfxSeg, fallBridgeSmall2/fallBridgeSmall2]
 
       - [0x6CEA30, vtx, logSetPiece/logSetPiece]
-      - [0x6CEAC0, mtx, logSetPiece/logSetPiece]
+      - [0x6CEAC0] #identity matrix
       - [0x6CEB00, gfxSeg, logSetPiece/logSetPiece]
 
       - [0x6CEC30, vtx, holeLog/holeLog]
-      - [0x6CF4A0, mtx, holeLog/holeLog]
+      - [0x6CF4A0] #identity matrix
       - [0x6CF4E0, gfxSeg, holeLog/holeLog]
 
       - [0x6CF950, vtx, waterfallGroundCollision/waterfallGroundCollision]
-      - [0x6CFA10, mtx, waterfallGroundCollision/waterfallGroundCollision]
+      - [0x6CFA10] #identity matrix
       - [0x6CFA50, gfxSeg, waterfallGroundCollision/waterfallGroundCollision]   
 
       - [0x6CFAE8, vtx, waterfallBacksideCollision/waterfallBacksideCollision]
-      - [0x6CFB68, mtx, waterfallBacksideCollision/waterfallBacksideCollision]
+      - [0x6CFB68] #identity matrix
       - [0x6CFBA8, gfxSeg, waterfallBacksideCollision/waterfallBacksideCollision]
 
       - [0x6CFC88, vtx, groundCollision/groundCollision]
-      - [0x6CFEB8, mtx, groundCollision/groundCollision]
+      - [0x6CFEB8] #identity matrix
       - [0x6CFEF8, gfxSeg, groundCollision/groundCollision]
 
       - [0x6D0058, vtx, holeLogBottom/holeLogBottom]
-      - [0x6D01D8, mtx, holeLogBottom/holeLogBottom]
+      - [0x6D01D8] #identity matrix
       - [0x6D0218, gfxSeg, holeLogBottom/holeLogBottom]
 
       - [0x6D03E0, vtx, extThree/extThree]
-      - [0x6D0AD0, mtx, extThree/extThree]
+      - [0x6D0AD0] #identity matrix
       - [0x6D0B10] #B8000000
       - [0x6D0B18, ci8,     ext3Wall.MEd.ci8, 64, 32]
       - [0x6D1318] #B8000000
@@ -1813,71 +1812,71 @@ segments:
       - [0x6D1520, gfxSeg, extThree/extThree]
 
       - [0x6D1F98, vtx, extFour/extFour]
-      - [0x6D2278, mtx, extFour/extFour]
+      - [0x6D2278] #identity matrix
       - [0x6D22B8, gfxSeg, extFour/extFour]
 
       - [0x6D29E0, vtx, extZero/extZero]
-      - [0x6D2CE0, mtx, extZero/extZero]
+      - [0x6D2CE0] #identity matrix
       - [0x6D2D20, gfxSeg, extZero/extZero]
 
       - [0x6D32C0, vtx, extOne/extOne]
-      - [0x6D4280, mtx, extOne/extOne]
+      - [0x6D4280] #identity matrix
       - [0x6D42C0, gfxSeg, extOne/extOne]
 
       - [0x6D4F40, vtx, extTwo/extTwo]
-      - [0x6D51B0, mtx, extTwo/extTwo]
+      - [0x6D51B0] #identity matrix
       - [0x6D51F0, gfxSeg, extTwo/extTwo]
 
       - [0x6D5750, vtx, rockFloor/rockFloor]
-      - [0x6D5810, mtx, rockFloor/rockFloor]
+      - [0x6D5810] #identity matrix
       - [0x6D5850, gfxSeg, rockFloor/rockFloor]
 
       - [0x6D59C8, vtx, rockFloor2/rockFloor2]
-      - [0x6D5A68, mtx, rockFloor2/rockFloor2]
+      - [0x6D5A68] #identity matrix
       - [0x6D5AA8, gfxSeg, rockFloor2/rockFloor2]
 
       - [0x6D5C10, vtx, extFive/extFive]
-      - [0x6D5F10, mtx, extFive/extFive]
+      - [0x6D5F10] #identity matrix
       - [0x6D5F50, gfxSeg, extFive/extFive]
 
       - [0x6D65E8, vtx, extThreePartTwo/extThreePartTwo]
-      - [0x6D66B8, mtx, extThreePartTwo/extThreePartTwo]
+      - [0x6D66B8] #identity matrix
       - [0x6D66F8, gfxSeg, extThreePartTwo/extThreePartTwo]
 
       - [0x6D69E8, vtx, extFivePartTwo/extFivePartTwo]
-      - [0x6D6C38, mtx, extFivePartTwo/extFivePartTwo]
+      - [0x6D6C38] #identity matrix
       - [0x6D6C78, gfxSeg, extFivePartTwo/extFivePartTwo]
 
       - [0x6D72A0, vtx, extSix/extSix]
-      - [0x6D7480, mtx, extSix/extSix]
+      - [0x6D7480] #identity matrix
       - [0x6D74C0, gfxSeg, extSix/extSix]
 
       - [0x6D7838, vtx, extSeven/extSeven]
-      - [0x6D7C28, mtx, extSeven/extSeven]
+      - [0x6D7C28] #identity matrix
       - [0x6D7C68, gfxSeg, extSeven/extSeven]
 
       - [0x6D84E8, vtx, extEight/extEight]
-      - [0x6D87F8, mtx, extEight/extEight]
+      - [0x6D87F8] #identity matrix
       - [0x6D8838, gfxSeg, extEight/extEight]
 
       - [0x6D8F78, vtx, extEightBridge/extEightBridge]
-      - [0x6D9078, mtx, extEightBridge/extEightBridge]
+      - [0x6D9078] #identity matrix
       - [0x6D90B8, gfxSeg, extEightBridge/extEightBridge]
 
       - [0x6D9310, vtx, extNine/extNine]
-      - [0x6D96E0, mtx, extNine/extNine]
+      - [0x6D96E0] #identity matrix
       - [0x6D9720, gfxSeg, extNine/extNine]
 
       - [0x6D9F78, vtx, extTen/extTen]
-      - [0x6DA7A8, mtx, extTen/extTen]
+      - [0x6DA7A8] #identity matrix
       - [0x6DA7E8, gfxSeg, extTen/extTen]
 
       - [0x6DB398, vtx, extEleven/extEleven]
-      - [0x6DC0E8, mtx, extEleven/extEleven]
+      - [0x6DC0E8] #identity matrix
       - [0x6DC128, gfxSeg, extEleven/extEleven]
 
       - [0x6DCEC8, vtx, intZero/intZero]
-      - [0x6DD408, mtx, intZero/intZero]
+      - [0x6DD408] #identity matrix
       - [0x6DD448] #B8000000
       - [0x6DD450, ci8,     lavaWall.MEd.ci8, 32, 64]
       - [0x6DDC50] #B8000000
@@ -1885,77 +1884,77 @@ segments:
       - [0x6DDE58, gfxSeg, intZero/intZero]
 
       - [0x6DE758, vtx, intOne/intOne]
-      - [0x6DF778, mtx, intOne/intOne]
+      - [0x6DF778] #identity matrix
       - [0x6DF7B8, gfxSeg, intOne/intOne]
 
       - [0x6E0D50, vtx, intTwo/intTwo]
-      - [0x6E1050, mtx, intTwo/intTwo]
+      - [0x6E1050] #identity matrix
       - [0x6E1090, gfxSeg, intTwo/intTwo]
 
       - [0x6E1558, vtx, intThree/intThree]
-      - [0x6E1798, mtx, intThree/intThree]
+      - [0x6E1798] #identity matrix
       - [0x6E17D8, gfxSeg, intThree/intThree]
 
       - [0x6E1C50, vtx, intFour/intFour]
-      - [0x6E1F10, mtx, intFour/intFour]
+      - [0x6E1F10] #identity matrix
       - [0x6E1F50, gfxSeg, intFour/intFour]
 
       - [0x6E23F8, vtx, intSix/intSix]
-      - [0x6E27D8, mtx, intSix/intSix]
+      - [0x6E27D8] #identity matrix
       - [0x6E2818, gfxSeg, intSix/intSix]
 
       - [0x6E2EB8, vtx, intSeven/intSeven]
-      - [0x6E3078, mtx, intSeven/intSeven]
+      - [0x6E3078] #identity matrix
       - [0x6E30B8, gfxSeg, intSeven/intSeven]
 
       - [0x6E3330, vtx, intFive/intFive]
-      - [0x6E36F0, mtx, intFive/intFive]
+      - [0x6E36F0] #identity matrix
       - [0x6E3730, gfxSeg, intFive/intFive]
 
       - [0x6E3C20, vtx, railFloorOne/railFloorOne]
-      - [0x6E3C60, mtx, railFloorOne/railFloorOne]
+      - [0x6E3C60] #identity matrix
       - [0x6E3CA0, ci8,     railTrack.MEd.ci8, 32, 64]
       - [0x6E44A0, palette, railTrack.MEd.ci8]
       - [0x6E46A0, gfxSeg, railFloorOne/railFloorOne]
 
       - [0x6E47A8, vtx, singleRailTrack/singleRailTrack]
-      - [0x6E47E8, mtx, singleRailTrack/singleRailTrack]
+      - [0x6E47E8] #identity matrix
       - [0x6E4828, ci8,     singleRailTrack.MEd.ci8, 32, 32]
       - [0x6E4C28, palette, singleRailTrack.MEd.ci8]
       - [0x6E4E28, gfxSeg, singleRailTrack/singleRailTrack]
 
       - [0x6E4F30, vtx, singleRailTrack2/singleRailTrack2]
-      - [0x6E4F70, mtx, singleRailTrack2/singleRailTrack2]
+      - [0x6E4F70] #identity matrix
       - [0x6E4FB0, ci8,     singleRailTrack2.MEd.ci8, 32, 32]
       - [0x6E53B0, palette, singleRailTrack2.MEd.ci8]
       - [0x6E55B0, gfxSeg, singleRailTrack2/singleRailTrack2]
 
       - [0x6E56B8, vtx, branchRail/branchRail]
-      - [0x6E56F8, mtx, branchRail/branchRail]
+      - [0x6E56F8] #identity matrix
       - [0x6E5738, ci8,     branchRail.MEd.ci8, 32, 64]
       - [0x6E5F38, palette, branchRail.MEd.ci8]
       - [0x6E6138, gfxSeg, branchRail/branchRail]
 
       - [0x6E6240, vtx, turnRail/turnRail]
-      - [0x6E6280, mtx, turnRail/turnRail]
+      - [0x6E6280] #identity matrix
       - [0x6E62C0, ci8,     turnRail.MEd.ci8, 32, 64]
       - [0x6E6AC0, palette, turnRail.MEd.ci8]
       - [0x6E6CC0, gfxSeg, turnRail/turnRail]
 
       - [0x6E6DC8, vtx, singleRailTrack3/singleRailTrack3]
-      - [0x6E6E08, mtx, singleRailTrack3/singleRailTrack3]
+      - [0x6E6E08] #identity matrix
       - [0x6E6E48, gfxSeg, singleRailTrack3/singleRailTrack3]
 
       - [0x6E6F50, vtx, brokenMinecartRail/brokenMinecartRail]
-      - [0x6E72F0, mtx, brokenMinecartRail/brokenMinecartRail]
+      - [0x6E72F0] #identity matrix
       - [0x6E7330, gfxSeg, brokenMinecartRail/brokenMinecartRail]
 
       - [0x6E7800, vtx, brokenMinecartRail2/brokenMinecartRail2]
-      - [0x6E7B50, mtx, brokenMinecartRail2/brokenMinecartRail2]
+      - [0x6E7B50] #identity matrix
       - [0x6E7B90, gfxSeg, brokenMinecartRail2/brokenMinecartRail2]
 
       - [0x6E8108, vtx, minecart/minecart]
-      - [0x6E8708, mtx, minecart/minecart]
+      - [0x6E8708] #identity matrix
       - [0x6E8748] #B8000000
       - [0x6E8750, ci4,     planks.MEd.ci4, 64, 64]
       - [0x6E8F50] #B8000000
@@ -1965,23 +1964,23 @@ segments:
       - [0x6E9560, gfxSeg, minecart/minecart]
 
       - [0x6E9E28, vtx, doorFrame/doorFrame]
-      - [0x6EA1E8, mtx, doorFrame/doorFrame]
+      - [0x6EA1E8] #identity matrix
       - [0x6EA228] #B8000000
       - [0x6EA230, rgba16, topper.MEd.rgba16, 32, 32]
       - [0x6EAA30, gfxSeg, doorFrame/doorFrame]
 
       - [0x6EB228, vtx, doorFrame2/doorFrame2]
-      - [0x6EB5E8, mtx, doorFrame2/doorFrame2]
+      - [0x6EB5E8] #identity matrix
       - [0x6EB628, gfxSeg, doorFrame2/doorFrame2]
 
       - [0x6EBE20, vtx, fernPlant/fernPlant]
-      - [0x6EBE60, mtx, fernPlant/fernPlant]
+      - [0x6EBE60] #identity matrix
       - [0x6EBEA0, ci8,     fernPlant.MEd.ci8, 48, 40]
       - [0x6EC620, palette, fernPlant.MEd.ci8]
       - [0x6EC820, gfxSeg, fernPlant/fernPlant]
 
       - [0x6EC928, vtx, waterfall/waterfall]
-      - [0x6EC9C8, mtx, waterfall/waterfall]
+      - [0x6EC9C8] #identity matrix
       - [0x6ECA08] #B8000000
       - [0x6ECA10, ci4,     water.MEd.ci4, 64, 64]
       - [0x6ED210] #B8000000
@@ -1989,7 +1988,7 @@ segments:
       - [0x6ED418, gfxSeg, waterfall/waterfall]
 
       - [0x6ED550, vtx, water/water]
-      - [0x6ED5A0, mtx, water/water]
+      - [0x6ED5A0] #identity matrix
       - [0x6ED5E0] #B8000000
       - [0x6ED5E8, ci4,     swampWater.MEd.ci4, 64, 64]
       - [0x6EDDE8] #B8000000
@@ -1997,7 +1996,7 @@ segments:
       - [0x6EDFF0, gfxSeg, water/water]
 
       - [0x6EE100, vtx, water2/water2]
-      - [0x6EE150, mtx, water2/water2]
+      - [0x6EE150] #identity matrix
       - [0x6EE190, gfxSeg, water2/water2]
 
       - {start: 0x6ee2a0, type: collision, name: lilypad/lilypad, args: "Verts"}
@@ -2338,11 +2337,11 @@ segments:
       - {start: 0x6fab20, type: collision, name: water/water, args: "Header"}
       - [0x6fab34, bin, whaermrr.MEd]
 
-      - [0x6FAB40, mtx, jlScope2/jlScope2]
+      - [0x6FAB40] #identity matrix
       - [0x6fab80, lights, jlScope2/jlScope2]
 
       - [0x6FAB98, vtx, rockGolem/rockGolem]
-      - [0x6FAE58, mtx, rockGolem/rockGolem]
+      - [0x6FAE58] #identity matrix
       - [0x6FAE98] #B8000000
       - [0x6FAEA0, ci4,     golem.MEd.ci4, 64, 64]
       - [0x6FB6A0] #B8000000
@@ -2354,11 +2353,11 @@ segments:
       - [0x6FCAB8, gfxSeg, rockGolem/rockGolem]
 
       - [0x6FD058, vtx, rockGolemLeg/rockGolemLeg]
-      - [0x6FD2F8, mtx, rockGolemLeg/rockGolemLeg]
+      - [0x6FD2F8] #identity matrix
       - [0x6FD338, gfxSeg, rockGolemLeg/rockGolemLeg]
 
       - [0x6FD890, vtx, rockGolemArm/rockGolemArm]
-      - [0x6FDC00, mtx, rockGolemArm/rockGolemArm]
+      - [0x6FDC00] #identity matrix
       - [0x6FDC40] #B8000000
       - [0x6FDC48, ci4,     rock2.MEd.ci4, 32, 32]
       - [0x6FDE48] #B8000000
@@ -2374,55 +2373,55 @@ segments:
       - [0x6FE870, gfxSeg, rockGolemArm/rockGolemArm]
 
       - [0x6FEFC8, vtx, rockGolemLeg2/rockGolemLeg2]
-      - [0x6FF108, mtx, rockGolemLeg2/rockGolemLeg2]
+      - [0x6FF108] #identity matrix
       - [0x6FF148, gfxSeg, rockGolemLeg2/rockGolemLeg2]
 
       - [0x6FF3E0, vtx, rockGolemBody/rockGolemBody]
-      - [0x6FF720, mtx, rockGolemBody/rockGolemBody]
+      - [0x6FF720] #identity matrix
       - [0x6FF760, gfxSeg, rockGolemBody/rockGolemBody]
 
       - [0x6FFDD8, vtx, rockGolemLeg3/rockGolemLeg3]
-      - [0x700078, mtx, rockGolemLeg3/rockGolemLeg3]
+      - [0x700078] #identity matrix
       - [0x7000B8, gfxSeg, rockGolemLeg3/rockGolemLeg3]
 
       - [0x700610, vtx, rockGolemElbow/rockGolemElbow]
-      - [0x700750, mtx, rockGolemElbow/rockGolemElbow]
+      - [0x700750] #identity matrix
       - [0x700790, gfxSeg, rockGolemElbow/rockGolemElbow]
       
       - [0x700a28, vtx, rockGolemArm2/rockGolemArm2]
-      - [0x700d98, mtx, rockGolemArm2/rockGolemArm2]
+      - [0x700d98] #identity matrix
       - [0x700dd8, gfxSeg, rockGolemArm2/rockGolemArm2]
 
-      - [0x701530, mtx, unkunk]
+      - [0x701530] #identity matrix
       - [0x701570, gfxSeg, unkunk]
       
       - [0x7015c8, vtx, spiderRock/spiderRock]
-      - [0x701858, mtx, spiderRock/spiderRock]
+      - [0x701858] #identity matrix
       - [0x701898] #B8000000
       - [0x7018a0, ci8,     spiderRock.MEd.ci8, 40, 40]
       - [0x701ee0] #B8000000
       - [0x701ee8, palette, spiderRock.MEd.ci8]
       - [0x7020E8, gfxSeg, spiderRock/spiderRock]
     
-      - [0x702388, mtx, unkunk2]
+      - [0x702388] #identity matrix
       - [0x7023C8, gfxSeg, unkunk2]
 
       - [0x7023E8, vtx, fish/fish]
-      - [0x702478, mtx, fish/fish]
+      - [0x702478] #identity matrix
       - [0x7024b8] #B8000000
       - [0x7024c0, rgba16, fish.MEd.rgba16, 48, 40]
       - [0x7033C0, gfxSeg, fish/fish]
     
-      - [0x703518, mtx, unkunk3]
+      - [0x703518] #identity matrix
       - [0x703558, gfxSeg, unkunk3]
 
       - [0x703578, vtx, fishTail/fishTail]
-      - [0x7035c8, mtx, fishTail/fishTail]
+      - [0x7035c8] #identity matrix
       - [0x703608] #B8000000
       - [0x703610, rgba16, fishTail.MEd.rgba16, 32, 48]
       - [0x704210, gfxSeg, fishTail/fishTail]
 
-      - [0x704308, mtx, unkunk4]
+      - [0x704308] #identity matrix
       - [0x704348, gfxSeg, unkunk4]
 
       - [0x704368, animHeader, anim/actors/golem/golemSleep]
@@ -2622,21 +2621,21 @@ segments:
       vram: 0x809F20E8
       start: 0x87F640
       subsegments:
-      - {start: 0x87F640, type: mtx, name: globalScope/globalScope}
-      - {start: 0x87F680, type: lights, name: globalScope/globalScope} # set Lights 1 for alot of Global assets
+      - [0x87F640] #identity matrix
+      - [0x87F680, lights, globalScope/globalScope] # set Lights 1 for alot of Global assets
 
-      - {start: 0x87F698, type: vtx, name: cannon/cannon}
-      - {start: 0x87F888, type: mtx, name: cannon/cannon}
+      - [0x87F698, vtx, cannon/cannon]
+      - [0x87F888] #identity matrix
       - [0x87F8C8] #B8000000
       - [0x87F8D0, rgba16, cannon/cannonHole.MEd.rgba16, 32, 32]
       - [0x8800d0] #B8000000
       - [0x8800D8, rgba16, cannon/cannonBarrel.MEd.rgba16, 32, 64]
       - [0x8810d8] #B8000000
       - [0x8810E0, rgba16, cannon/black.MEd.rgba16, 32, 32]
-      - {start: 0x8818E0, type: gfxSeg, name: cannon/cannon}
+      - [0x8818E0, gfxSeg, cannon/cannon]
 
-      - {start: 0x881C08, type: vtx, name: unkWood/unkWood}
-      - {start: 0x882068, type: mtx, name: unkWood/unkWood}
+      - [0x881C08, vtx, unkWood/unkWood]
+      - [0x882068] #identity matrix
       - [0x8820a8] #B8000000
       - [0x8820B0, rgba16, unkWood/woodWithBolt.MEd.rgba16, 32, 32]
       - [0x8828B0] #B8000000
@@ -2647,22 +2646,22 @@ segments:
       - [0x8838C8, rgba16, unkWood/lightWood.MEd.rgba16, 32, 32]
       - [0x8840c8] #B8000000
       - [0x8840D0, rgba16, unkWood/midWood.MEd.rgba16, 32, 32]
-      - {start: 0x8848D0, type: gfxSeg, name: unkWood/unkWood}
+      - [0x8848D0, gfxSeg, unkWood/unkWood]
 
-      - {start: 0x885058, type: vtx, name: unk/unk}
-      - {start: 0x885238, type: mtx, name: unk/unk}
-      - {start: 0x885278, type: gfxSeg, name: unk/unk}
+      - [0x885058, vtx, unk/unk]
+      - [0x885238] #identity matrix
+      - [0x885278, gfxSeg, unk/unk]
 
-      - {start: 0x8855E0, type: vtx, name: unk2/unk2}
-      - {start: 0x885760, type: mtx, name: unk2/unk2}
-      - {start: 0x8857A0, type: gfxSeg, name: unk2/unk2}
+      - [0x8855E0, vtx, unk2/unk2]
+      - [0x885760] #identity matrix
+      - [0x8857A0, gfxSeg, unk2/unk2]
 
-      - {start: 0x885900, type: vtx, name: unk40/unk40}
-      - {start: 0x885940, type: mtx, name: unk40/unk40}
+      - [0x885900, vtx, unk40/unk40]
+      - [0x885940] #identity matrix
       - [0x885980] #B8000000
       - [0x885988, ia8, unk40/shadow.MEd.ia8, 40, 40]
-      - {start: 0x885fc8, type: gfxSeg, name: unk40/unk40}
-      - {start: 0x886088, type: gfxSeg, name: unk40/unk402} #what the hell
+      - [0x885fc8, gfxSeg, unk40/unk40]
+      - [0x886088, gfxSeg, unk40/unk402] #what the hell
 
       - {start: 0x886148, type: collision, name: unkCol2/unkCol2, args: "Verts"}
       - {start: 0x8862b0, type: collision, name: unkCol2/unkCol2, args: "Tris"}
@@ -3165,377 +3164,377 @@ segments:
 
       - [0x8b4900, ia8, img/fogFade.MEd.ia8, 16, 96]
 
-      - {start: 0x8b4f00, type: vtx, name: unk3/unk3}
-      - {start: 0x8b4f80, type: mtx, name: unk3/unk3}
-      - {start: 0x8b4fc0, type: gfxSeg, name: unk3/unk3}
+      - [0x8b4f00, vtx, unk3/unk3]
+      - [0x8b4f80] #identity matrix
+      - [0x8b4fc0, gfxSeg, unk3/unk3]
       - {start: 0x8b5078, type: collision, name: unk3/unk3, args: "Verts"}
       - {start: 0x8b50d8, type: collision, name: unk3/unk3, args: "Tris"}
       - {start: 0x8b5168, type: collision, name: unk3/unk3, args: "Settings"}
       - {start: 0x8b5180, type: collision, name: unk3/unk3, args: "Header"}
       - [0x8b5194, bin, zeroooo.MEd] #00000000
 
-      - {start: 0x8b5198, type: vtx, name: unk4/unk4}
-      - {start: 0x8b51d8, type: mtx, name: unk4/unk4}
-      - {start: 0x8b5218, type: gfxSeg, name: unk4/unk4}
+      - [0x8b5198, vtx, unk4/unk4]
+      - [0x8b51d8] #identity matrix
+      - [0x8b5218, gfxSeg, unk4/unk4]
       - {start: 0x8b5280, type: collision, name: unk4/unk4, args: "Verts"}
       - {start: 0x8b52b0, type: collision, name: unk4/unk4, args: "Tris"}
       - {start: 0x8b52c8, type: collision, name: unk4/unk4, args: "Settings"}
       - {start: 0x8b52e0, type: collision, name: unk4/unk4, args: "Header"}
       - [0x8b52f4, bin, zeroooo2.MEd] #00000000
 
-      - {start: 0x8b52f8, type: vtx, name: unk5/unk5}
-      - {start: 0x8b5338, type: mtx, name: unk5/unk5}
-      - {start: 0x8b5378, type: gfxSeg, name: unk5/unk5}
+      - [0x8b52f8, vtx, unk5/unk5]
+      - [0x8b5338] #identity matrix
+      - [0x8b5378, gfxSeg, unk5/unk5]
       - {start: 0x8b53e0, type: collision, name: unk5/unk5, args: "Verts"}
       - {start: 0x8b5410, type: collision, name: unk5/unk5, args: "Tris"}
       - {start: 0x8b5428, type: collision, name: unk5/unk5, args: "Settings"}
       - {start: 0x8b5440, type: collision, name: unk5/unk5, args: "Header"}
       - [0x8b5454, bin, zeroooo3.MEd] #00000000
 
-      - {start: 0x8b5458, type: vtx, name: unk6/unk6}
-      - {start: 0x8b5498, type: mtx, name: unk6/unk6}
-      - {start: 0x8b54D8, type: gfxSeg, name: unk6/unk6}
+      - [0x8b5458, vtx, unk6/unk6]
+      - [0x8b5498] #identity matrix
+      - [0x8b54D8, gfxSeg, unk6/unk6]
       - {start: 0x8b5540, type: collision, name: unk6/unk6, args: "Verts"}
       - {start: 0x8b5570, type: collision, name: unk6/unk6, args: "Tris"}
       - {start: 0x8b5588, type: collision, name: unk6/unk6, args: "Settings"}
       - {start: 0x8b55a0, type: collision, name: unk6/unk6, args: "Header"}
       - [0x8b55b4, bin, zeroooo4.MEd] #00000000
 
-      - {start: 0x8b55b8, type: vtx, name: unk7/unk7}
-      - {start: 0x8b55f8, type: mtx, name: unk7/unk7}
-      - {start: 0x8b5638, type: gfxSeg, name: unk7/unk7}
+      - [0x8b55b8, vtx, unk7/unk7]
+      - [0x8b55f8] #identity matrix
+      - [0x8b5638, gfxSeg, unk7/unk7]
       - {start: 0x8b56a0, type: collision, name: unk7/unk7, args: "Verts"}
       - {start: 0x8b56d0, type: collision, name: unk7/unk7, args: "Tris"}
       - {start: 0x8b56e8, type: collision, name: unk7/unk7, args: "Settings"}
       - {start: 0x8b5700, type: collision, name: unk7/unk7, args: "Header"}
       - [0x8b5714, bin, zeroooo5.MEd] #00000000
 
-      - {start: 0x8b5718, type: vtx, name: unk8/unk8}
-      - {start: 0x8b57b8, type: mtx, name: unk8/unk8}
-      - {start: 0x8b57f8, type: gfxSeg, name: unk8/unk8}
+      - [0x8b5718, vtx, unk8/unk8]
+      - [0x8b57b8] #identity matrix
+      - [0x8b57f8, gfxSeg, unk8/unk8]
       - {start: 0x8b59c0, type: collision, name: unk8/unk8, args: "Verts"}
       - {start: 0x8b5a08, type: collision, name: unk8/unk8, args: "Tris"}
       - {start: 0x8b5a38, type: collision, name: unk8/unk8, args: "Settings"}
       - {start: 0x8b5a50, type: collision, name: unk8/unk8, args: "Header"}
       - [0x8b5a64, bin, zeroooo6.MEd] #00000000
 
-      - {start: 0x8b5a68, type: mtx, name: unk9/unk9}
-      - {start: 0x8b5aA8, type: gfxSeg, name: unk9/unk9}
+      - [0x8b5a68] #identity matrix
+      - [0x8b5aA8, gfxSeg, unk9/unk9]
       - {start: 0x8b5bf8, type: collision, name: unk9/unk9, args: "Verts"}
       - {start: 0x8b5c4c, type: collision, name: unk9/unk9, args: "Tris"}
       - {start: 0x8b5c94, type: collision, name: unk9/unk9, args: "Settings"}
       - {start: 0x8b5cac, type: collision, name: unk9/unk9, args: "Header"}
 
-      - {start: 0x8b5cc0, type: vtx, name: unkA/unkA}
-      - {start: 0x8b5e00, type: mtx, name: unkA/unkA}
-      - {start: 0x8b5e40, type: gfxSeg, name: unkA/unkA}
+      - [0x8b5cc0, vtx, unkA/unkA]
+      - [0x8b5e00] #identity matrix
+      - [0x8b5e40, gfxSeg, unkA/unkA]
       - {start: 0x8b6228, type: collision, name: unkA/unkA, args: "Verts"}
       - {start: 0x8b6288, type: collision, name: unkA/unkA, args: "Tris"}
       - {start: 0x8b6300, type: collision, name: unkA/unkA, args: "Settings"}
       - {start: 0x8b6318, type: collision, name: unkA/unkA, args: "Header"}
       - [0x8b632c, bin, zeroooo7.MEd] #00000000
 
-      - {start: 0x8b6330, type: vtx, name: unkB/unkB}
-      - {start: 0x8b6470, type: mtx, name: unkB/unkB}
+      - [0x8b6330, vtx, unkB/unkB]
+      - [0x8b6470] #identity matrix
       - [0x8b64B0] #B8000000
       - [0x8b64B8, i4, unkB/unkB1.MEd.i4, 32, 64]
       - [0x8b68b8] #B8000000
       - [0x8b68c0, i4, unkB/unkB2.MEd.i4, 16, 16]
-      - {start: 0x8b6940, type: gfxSeg, name: unkB/unkB}
+      - [0x8b6940, gfxSeg, unkB/unkB]
       - {start: 0x8b6bf8, type: collision, name: unkB/unkB, args: "Verts"}
       - {start: 0x8b6c58, type: collision, name: unkB/unkB, args: "Tris"}
       - {start: 0x8b6cd0, type: collision, name: unkB/unkB, args: "Settings"}
       - {start: 0x8b6ce8, type: collision, name: unkB/unkB, args: "Header"}
       - [0x8b6cfc, bin, zeroooo8.MEd] #00000000
     
-      - {start: 0x8b6d00, type: vtx, name: unkC/unkC}
-      - {start: 0x8b6e00, type: mtx, name: unkC/unkC}
+      - [0x8b6d00, vtx, unkC/unkC]
+      - [0x8b6e00] #identity matrix
       - [0x8b6e40] #B8000000
       - [0x8b6e48, i4, unkC/unkC.MEd.i4, 32, 32]
-      - {start: 0x8b7048, type: gfxSeg, name: unkC/unkC}
+      - [0x8b7048, gfxSeg, unkC/unkC]
       - {start: 0x8b7200, type: collision, name: unkC/unkC, args: "Verts"}
       - {start: 0x8b7260, type: collision, name: unkC/unkC, args: "Tris"}
       - {start: 0x8b72c0, type: collision, name: unkC/unkC, args: "Settings"}
       - {start: 0x8b72d8, type: collision, name: unkC/unkC, args: "Header"}
       - [0x8b72ec, bin, zeroooo9.MEd] #00000000
 
-      - {start: 0x8b72f0, type: vtx, name: ALSpinDoor/ALSpinDoor}
-      - {start: 0x8b73f0, type: mtx, name: ALSpinDoor/ALSpinDoor}
+      - [0x8b72f0, vtx, ALSpinDoor/ALSpinDoor]
+      - [0x8b73f0] #identity matrix
       - [0x8b7430] #B8000000
       - [0x8b7438, ci4, ALSpinDoor/ALSpinDoor.MEd.ci4, 32, 32]
       - [0x8b7638] #B8000000
       - [0x8b7640, palette, ALSpinDoor/ALSpinDoor.MEd.ci4]
-      - {start: 0x8b7840, type: gfxSeg, name: ALSpinDoor/ALSpinDoor}
+      - [0x8b7840, gfxSeg, ALSpinDoor/ALSpinDoor]
       - {start: 0x8b7a58, type: collision, name: ALSpinDoor/ALSpinDoor, args: "Verts"}
       - {start: 0x8b7ab8, type: collision, name: ALSpinDoor/ALSpinDoor, args: "Tris"}
       - {start: 0x8b7b18, type: collision, name: ALSpinDoor/ALSpinDoor, args: "Settings"}
       - {start: 0x8b7b30, type: collision, name: ALSpinDoor/ALSpinDoor, args: "Header"}
       - [0x8b7b44, bin, zeroooo10.MEd] #00000000
 
-      - {start: 0x8b7b48, type: vtx, name: unkD/unkD}
-      - {start: 0x8b7b88, type: mtx, name: unkD/unkD}
-      - {start: 0x8b7bC8, type: gfxSeg, name: unkD/unkD}
+      - [0x8b7b48, vtx, unkD/unkD]
+      - [0x8b7b88] #identity matrix
+      - [0x8b7bC8, gfxSeg, unkD/unkD]
       - {start: 0x8b7cd0, type: collision, name: unkD/unkD, args: "Verts"}
       - {start: 0x8b7d00, type: collision, name: unkD/unkD, args: "Tris"}
       - {start: 0x8b7d18, type: collision, name: unkD/unkD, args: "Settings"}
       - {start: 0x8b7d30, type: collision, name: unkD/unkD, args: "Header"}
       - [0x8b7d44, bin, zeroooo11.MEd] #00000000
       
-      - {start: 0x8b7d48, type: vtx, name: BLLava/BLLava}
-      - {start: 0x8b7d88, type: mtx, name: BLLava/BLLava}
+      - [0x8b7d48, vtx, BLLava/BLLava]
+      - [0x8b7d88] #identity matrix
       - [0x8b7dC8] #B8000000
       - [0x8b7dD0, ci4, BLLava/BLLava.MEd.ci4, 64, 64]
       - [0x8b85d0] #B8000000
       - [0x8b85d8, palette, BLLava/BLLava.MEd.ci4]
-      - {start: 0x8b87d8, type: gfxSeg, name: BLLava/BLLava}
+      - [0x8b87d8, gfxSeg, BLLava/BLLava]
       - {start: 0x8b88e0, type: collision, name: BLLava/BLLava, args: "Verts"}
       - {start: 0x8b8910, type: collision, name: BLLava/BLLava, args: "Tris"}
       - {start: 0x8b8928, type: collision, name: BLLava/BLLava, args: "Settings"}
       - {start: 0x8b8940, type: collision, name: BLLava/BLLava, args: "Header"}
       - [0x8b8954, bin, zeroooo12.MEd] #00000000
 
-      - {start: 0x8b8958, type: vtx, name: BLLava2/BLLava2}
-      - {start: 0x8b8998, type: mtx, name: BLLava2/BLLava2}
+      - [0x8b8958, vtx, BLLava2/BLLava2]
+      - [0x8b8998] #identity matrix
       - [0x8b89D8] #B8000000
       - [0x8b89E0, ci4, BLLava2/BLLava2.MEd.ci4, 64, 64]
       - [0x8b91e0] #B8000000
       - [0x8b91e8, palette, BLLava2/BLLava2.MEd.ci4]
-      - {start: 0x8b93e8, type: gfxSeg, name: BLLava2/BLLava2}
+      - [0x8b93e8, gfxSeg, BLLava2/BLLava2]
       - {start: 0x8b94f0, type: collision, name: BLLava2/BLLava2, args: "Verts"}
       - {start: 0x8b9520, type: collision, name: BLLava2/BLLava2, args: "Tris"}
       - {start: 0x8b9538, type: collision, name: BLLava2/BLLava2, args: "Settings"}
       - {start: 0x8b9550, type: collision, name: BLLava2/BLLava2, args: "Header"}
       - [0x8b9564, bin, zeroooo13.MEd] #00000000
 
-      - {start: 0x8b9568, type: vtx, name: BLLava3/BLLava3}
-      - {start: 0x8b95A8, type: mtx, name: BLLava3/BLLava3}
+      - [0x8b9568, vtx, BLLava3/BLLava3]
+      - [0x8b95A8] #identity matrix
       - [0x8b95E8] #B8000000
       - [0x8b95F0, ci4, BLLava3/BLLava3.MEd.ci4, 64, 64]
       - [0x8b9df0] #B8000000
       - [0x8b9df8, palette, BLLava3/BLLava3.MEd.ci4]
-      - {start: 0x8b9ff8, type: gfxSeg, name: BLLava3/BLLava3}
+      - [0x8b9ff8, gfxSeg, BLLava3/BLLava3]
       - {start: 0x8ba100, type: collision, name: BLLava3/BLLava3, args: "Verts"}
       - {start: 0x8ba130, type: collision, name: BLLava3/BLLava3, args: "Tris"}
       - {start: 0x8ba148, type: collision, name: BLLava3/BLLava3, args: "Settings"}
       - {start: 0x8ba160, type: collision, name: BLLava3/BLLava3, args: "Header"}
       - [0x8ba174, bin, zeroooo14.MEd] #00000000
 
-      - {start: 0x8ba178, type: vtx, name: BLLava4/BLLava4}
-      - {start: 0x8ba1B8, type: mtx, name: BLLava4/BLLava4}
+      - [0x8ba178, vtx, BLLava4/BLLava4]
+      - [0x8ba1B8] #identity matrix
       - [0x8ba1F8] #B8000000
       - [0x8ba200, ci4, BLLava4/BLLava4.MEd.ci4, 64, 64]
       - [0x8baa00] #B8000000
       - [0x8baa08, palette, BLLava4/BLLava4.MEd.ci4]
-      - {start: 0x8bac08, type: gfxSeg, name: BLLava4/BLLava4}
+      - [0x8bac08, gfxSeg, BLLava4/BLLava4]
       - {start: 0x8bad10, type: collision, name: BLLava4/BLLava4, args: "Verts"}
       - {start: 0x8bad40, type: collision, name: BLLava4/BLLava4, args: "Tris"}
       - {start: 0x8bad58, type: collision, name: BLLava4/BLLava4, args: "Settings"}
       - {start: 0x8bad70, type: collision, name: BLLava4/BLLava4, args: "Header"}
       - [0x8bad84, bin, zeroooo15.MEd] #00000000
 
-      - {start: 0x8bad88, type: vtx, name: BLLava5/BLLava5}
-      - {start: 0x8badC8, type: mtx, name: BLLava5/BLLava5}
+      - [0x8bad88, vtx, BLLava5/BLLava5]
+      - [0x8badC8] #identity matrix
       - [0x8bae08] #B8000000
       - [0x8bae10, ci4, BLLava5/BLLava5.MEd.ci4, 64, 64]
       - [0x8bb610] #B8000000
       - [0x8bb618, palette, BLLava5/BLLava5.MEd.ci4]
-      - {start: 0x8bb818, type: gfxSeg, name: BLLava5/BLLava5}
+      - [0x8bb818, gfxSeg, BLLava5/BLLava5]
       - {start: 0x8bb920, type: collision, name: BLLava5/BLLava5, args: "Verts"}
       - {start: 0x8bb950, type: collision, name: BLLava5/BLLava5, args: "Tris"}
       - {start: 0x8bb968, type: collision, name: BLLava5/BLLava5, args: "Settings"}
       - {start: 0x8bb980, type: collision, name: BLLava5/BLLava5, args: "Header"}
       - [0x8bb994, bin, zeroooo16.MEd] #00000000
 
-      - {start: 0x8bb998, type: vtx, name: BLLava6/BLLava6}
-      - {start: 0x8bb9D8, type: mtx, name: BLLava6/BLLava6}
+      - [0x8bb998, vtx, BLLava6/BLLava6]
+      - [0x8bb9D8] #identity matrix
       - [0x8bbA18] #B8000000
       - [0x8bbA20, ci4, BLLava6/BLLava6.MEd.ci4, 64, 64]
       - [0x8bc220] #B8000000
       - [0x8bc228, palette, BLLava6/BLLava6.MEd.ci4]
-      - {start: 0x8bc428, type: gfxSeg, name: BLLava6/BLLava6}
+      - [0x8bc428, gfxSeg, BLLava6/BLLava6]
       - {start: 0x8bc530, type: collision, name: BLLava6/BLLava6, args: "Verts"}
       - {start: 0x8bc560, type: collision, name: BLLava6/BLLava6, args: "Tris"}
       - {start: 0x8bc578, type: collision, name: BLLava6/BLLava6, args: "Settings"}
       - {start: 0x8bc590, type: collision, name: BLLava6/BLLava6, args: "Header"}
       - [0x8bc5a4, bin, zeroooo17.MEd] #00000000
 
-      - {start: 0x8bc5a8, type: vtx, name: BLLava7/BLLava7}
-      - {start: 0x8bc5E8, type: mtx, name: BLLava7/BLLava7}
+      - [0x8bc5a8, vtx, BLLava7/BLLava7]
+      - [0x8bc5E8] #identity matrix
       - [0x8bc628] #B8000000
       - [0x8bc630, ci4, BLLava7/BLLava7.MEd.ci4, 64, 64]
       - [0x8bce30] #B8000000
       - [0x8bce38, palette, BLLava7/BLLava7.MEd.ci4]
-      - {start: 0x8bd038, type: gfxSeg, name: BLLava7/BLLava7}
+      - [0x8bd038, gfxSeg, BLLava7/BLLava7]
       - {start: 0x8bd140, type: collision, name: BLLava7/BLLava7, args: "Verts"}
       - {start: 0x8bd170, type: collision, name: BLLava7/BLLava7, args: "Tris"}
       - {start: 0x8bd188, type: collision, name: BLLava7/BLLava7, args: "Settings"}
       - {start: 0x8bd1a0, type: collision, name: BLLava7/BLLava7, args: "Header"}
       - [0x8bd1b4, bin, zeroooo18.MEd] #00000000
 
-      - {start: 0x8bd1b8, type: vtx, name: BLLava8/BLLava8}
-      - {start: 0x8bd1f8, type: mtx, name: BLLava8/BLLava8}
+      - [0x8bd1b8, vtx, BLLava8/BLLava8]
+      - [0x8bd1f8] #identity matrix
       - [0x8bd238] #B8000000
       - [0x8bd240, ci4, BLLava8/BLLava8.MEd.ci4, 64, 64]
       - [0x8bda40] #B8000000
       - [0x8bda48, palette, BLLava8/BLLava8.MEd.ci4]
-      - {start: 0x8bdc48, type: gfxSeg, name: BLLava8/BLLava8}
+      - [0x8bdc48, gfxSeg, BLLava8/BLLava8]
       - {start: 0x8bdd50, type: collision, name: BLLava8/BLLava8, args: "Verts"}
       - {start: 0x8bdd80, type: collision, name: BLLava8/BLLava8, args: "Tris"}
       - {start: 0x8bdd98, type: collision, name: BLLava8/BLLava8, args: "Settings"}
       - {start: 0x8bddb0, type: collision, name: BLLava8/BLLava8, args: "Header"}
       - [0x8bddc4, bin, zeroooo19.MEd] #00000000
 
-      - {start: 0x8bddc8, type: vtx, name: unkE/unkE}
-      - {start: 0x8bde08, type: mtx, name: unkE/unkE}
-      - {start: 0x8bde48, type: gfxSeg, name: unkE/unkE}
+      - [0x8bddc8, vtx, unkE/unkE]
+      - [0x8bde08] #identity matrix
+      - [0x8bde48, gfxSeg, unkE/unkE]
       - {start: 0x8bdf20, type: collision, name: unkE/unkE, args: "Verts"}
       - {start: 0x8bdf50, type: collision, name: unkE/unkE, args: "Tris"}
       - {start: 0x8bdf68, type: collision, name: unkE/unkE, args: "Settings"}
       - {start: 0x8bdf80, type: collision, name: unkE/unkE, args: "Header"}
       - [0x8bdf94, bin, zeroooo20.MEd] #00000000
 
-      - {start: 0x8bdf98, type: vtx, name: unkF/unkF}
-      - {start: 0x8be0d8, type: mtx, name: unkF/unkF}
-      - {start: 0x8be118, type: gfxSeg, name: unkF/unkF}
+      - [0x8bdf98, vtx, unkF/unkF]
+      - [0x8be0d8] #identity matrix
+      - [0x8be118, gfxSeg, unkF/unkF]
       - {start: 0x8be390, type: collision, name: unkF/unkF, args: "Verts"}
       - {start: 0x8be3f0, type: collision, name: unkF/unkF, args: "Tris"}
       - {start: 0x8be468, type: collision, name: unkF/unkF, args: "Settings"}
       - {start: 0x8be480, type: collision, name: unkF/unkF, args: "Header"}
       - [0x8be494, bin, zeroooo21.MEd] #00000000
 
-      - {start: 0x8be498, type: vtx, name: unk10/unk10}
-      - {start: 0x8be538, type: mtx, name: unk10/unk10}
-      - {start: 0x8be578, type: gfxSeg, name: unk10/unk10}
+      - [0x8be498, vtx, unk10/unk10]
+      - [0x8be538] #identity matrix
+      - [0x8be578, gfxSeg, unk10/unk10]
       - {start: 0x8be770, type: collision, name: unk10/unk10, args: "Verts"}
       - {start: 0x8be7b8, type: collision, name: unk10/unk10, args: "Tris"}
       - {start: 0x8be7e8, type: collision, name: unk10/unk10, args: "Settings"}
       - {start: 0x8be800, type: collision, name: unk10/unk10, args: "Header"}
       - [0x8be814, bin, zeroooo22.MEd] #00000000
 
-      - {start: 0x8be818, type: vtx, name: Door1/Door1}
-      - {start: 0x8be918, type: mtx, name: Door1/Door1}
+      - [0x8be818, vtx, Door1/Door1]
+      - [0x8be918] #identity matrix
       - [0x8be958] #B8000000
       - [0x8be960, ci4, Door1/Door1.MEd.ci4, 64, 64]
       - [0x8bf160] #B8000000
       - [0x8bf168, palette, Door1/Door1.MEd.ci4]
-      - {start: 0x8bf368, type: gfxSeg, name: Door1/Door1}
+      - [0x8bf368, gfxSeg, Door1/Door1]
       - {start: 0x8bf580, type: collision, name: Door1/Door1, args: "Verts"}
       - {start: 0x8bf5e0, type: collision, name: Door1/Door1, args: "Tris"}
       - {start: 0x8bf640, type: collision, name: Door1/Door1, args: "Settings"}
       - {start: 0x8bf658, type: collision, name: Door1/Door1, args: "Header"}
       - [0x8bf66c, bin, zeroooo23.MEd] #00000000
 
-      - {start: 0x8bf670, type: vtx, name: unk12/unk12}
-      - {start: 0x8bf710, type: mtx, name: unk12/unk12}
-      - {start: 0x8bf750, type: gfxSeg, name: unk12/unk12}
+      - [0x8bf670, vtx, unk12/unk12]
+      - [0x8bf710] #identity matrix
+      - [0x8bf750, gfxSeg, unk12/unk12]
       - {start: 0x8bf948, type: collision, name: unk12/unk12, args: "Verts"}
       - {start: 0x8bf990, type: collision, name: unk12/unk12, args: "Tris"}
       - {start: 0x8bf9c0, type: collision, name: unk12/unk12, args: "Settings"}
       - {start: 0x8bf9d8, type: collision, name: unk12/unk12, args: "Header"}
       - [0x8bf9ec, bin, zeroooo24.MEd] #00000000
 
-      - {start: 0x8bf9f0, type: vtx, name: unk13/unk13}
-      - {start: 0x8bfa30, type: mtx, name: unk13/unk13}
-      - {start: 0x8bfa70, type: gfxSeg, name: unk13/unk13}
+      - [0x8bf9f0, vtx, unk13/unk13]
+      - [0x8bfa30] #identity matrix
+      - [0x8bfa70, gfxSeg, unk13/unk13]
       - {start: 0x8bfad8, type: collision, name: unk13/unk13, args: "Verts"}
       - {start: 0x8bfb08, type: collision, name: unk13/unk13, args: "Tris"}
       - {start: 0x8bfb20, type: collision, name: unk13/unk13, args: "Settings"}
       - {start: 0x8bfb38, type: collision, name: unk13/unk13, args: "Header"}
       - [0x8bfb4c, bin, zeroooo25.MEd] #00000000
 
-      - {start: 0x8bfb50, type: vtx, name: unk14/unk14}
-      - {start: 0x8bfb90, type: mtx, name: unk14/unk14}
-      - {start: 0x8bfbD0, type: gfxSeg, name: unk14/unk14}
+      - [0x8bfb50, vtx, unk14/unk14]
+      - [0x8bfb90] #identity matrix
+      - [0x8bfbD0, gfxSeg, unk14/unk14]
       - {start: 0x8bfc38, type: collision, name: unk14/unk14, args: "Verts"}
       - {start: 0x8bfc68, type: collision, name: unk14/unk14, args: "Tris"}
       - {start: 0x8bfc80, type: collision, name: unk14/unk14, args: "Settings"}
       - {start: 0x8bfc98, type: collision, name: unk14/unk14, args: "Header"}
       - [0x8bfcac, bin, zeroooo26.MEd] #00000000
 
-      - {start: 0x8bfcb0, type: vtx, name: unk15/unk15}
-      - {start: 0x8bfd50, type: mtx, name: unk15/unk15}
-      - {start: 0x8bfd90, type: gfxSeg, name: unk15/unk15}
+      - [0x8bfcb0, vtx, unk15/unk15]
+      - [0x8bfd50] #identity matrix
+      - [0x8bfd90, gfxSeg, unk15/unk15]
       - {start: 0x8bff88, type: collision, name: unk15/unk15, args: "Verts"}
       - {start: 0x8bffd0, type: collision, name: unk15/unk15, args: "Tris"}
       - {start: 0x8c0000, type: collision, name: unk15/unk15, args: "Settings"}
       - {start: 0x8c0018, type: collision, name: unk15/unk15, args: "Header"}
       - [0x8c002c, bin, zeroooo27.MEd] #00000000
 
-      - {start: 0x8c0030, type: vtx, name: unk16/unk16}
-      - {start: 0x8c00d0, type: mtx, name: unk16/unk16}
-      - {start: 0x8c0110, type: gfxSeg, name: unk16/unk16}
+      - [0x8c0030, vtx, unk16/unk16]
+      - [0x8c00d0] #identity matrix
+      - [0x8c0110, gfxSeg, unk16/unk16]
       - {start: 0x8c0308, type: collision, name: unk16/unk16, args: "Verts"}
       - {start: 0x8c0350, type: collision, name: unk16/unk16, args: "Tris"}
       - {start: 0x8c0380, type: collision, name: unk16/unk16, args: "Settings"}
       - {start: 0x8c0398, type: collision, name: unk16/unk16, args: "Header"}
       - [0x8c03ac, bin, zeroooo28.MEd] #00000000
 
-      - {start: 0x8c03b0, type: vtx, name: unk17/unk17}
-      - {start: 0x8c0530, type: mtx, name: unk17/unk17}
-      - {start: 0x8c0570, type: gfxSeg, name: unk17/unk17}
+      - [0x8c03b0, vtx, unk17/unk17]
+      - [0x8c0530] #identity matrix
+      - [0x8c0570, gfxSeg, unk17/unk17]
       - {start: 0x8c0818, type: collision, name: unk17/unk17, args: "Verts"}
       - {start: 0x8c08a8, type: collision, name: unk17/unk17, args: "Tris"}
       - {start: 0x8c0968, type: collision, name: unk17/unk17, args: "Settings"}
       - {start: 0x8c0980, type: collision, name: unk17/unk17, args: "Header"}
       - [0x8c0994, bin, zeroooo29.MEd] #00000000
 
-      - {start: 0x8c0998, type: vtx, name: unk18/unk18}
-      - {start: 0x8c0a38, type: mtx, name: unk18/unk18}
-      - {start: 0x8c0a78, type: gfxSeg, name: unk18/unk18}
+      - [0x8c0998, vtx, unk18/unk18]
+      - [0x8c0a38] #identity matrix
+      - [0x8c0a78, gfxSeg, unk18/unk18]
       - {start: 0x8c0c70, type: collision, name: unk18/unk18, args: "Verts"}
       - {start: 0x8c0cb8, type: collision, name: unk18/unk18, args: "Tris"}
       - {start: 0x8c0ce8, type: collision, name: unk18/unk18, args: "Settings"}
       - {start: 0x8c0d00, type: collision, name: unk18/unk18, args: "Header"}
       - [0x8c0d14, bin, zeroooo30.MEd] #00000000
 
-      - {start: 0x8c0d18, type: vtx, name: unk19/unk19}
-      - {start: 0x8c0db8, type: mtx, name: unk19/unk19}
-      - {start: 0x8c0df8, type: gfxSeg, name: unk19/unk19}
+      - [0x8c0d18, vtx, unk19/unk19]
+      - [0x8c0db8] #identity matrix
+      - [0x8c0df8, gfxSeg, unk19/unk19]
       - {start: 0x8c0ff0, type: collision, name: unk19/unk19, args: "Verts"}
       - {start: 0x8c1038, type: collision, name: unk19/unk19, args: "Tris"}
       - {start: 0x8c1068, type: collision, name: unk19/unk19, args: "Settings"}
       - {start: 0x8c1080, type: collision, name: unk19/unk19, args: "Header"}
       - [0x8c1094, bin, zeroooo31.MEd] #00000000
 
-      - {start: 0x8c1098, type: vtx, name: unk1A/unk1A}
-      - {start: 0x8c1138, type: mtx, name: unk1A/unk1A}
-      - {start: 0x8c1178, type: gfxSeg, name: unk1A/unk1A}
+      - [0x8c1098, vtx, unk1A/unk1A]
+      - [0x8c1138] #identity matrix
+      - [0x8c1178, gfxSeg, unk1A/unk1A]
       - {start: 0x8c1370, type: collision, name: unk1A/unk1A, args: "Verts"}
       - {start: 0x8c13b8, type: collision, name: unk1A/unk1A, args: "Tris"}
       - {start: 0x8c13e8, type: collision, name: unk1A/unk1A, args: "Settings"}
       - {start: 0x8c1400, type: collision, name: unk1A/unk1A, args: "Header"}
       - [0x8c1414, bin, zeroooo32.MEd] #00000000
 
-      - {start: 0x8c1418, type: vtx, name: unk1B/unk1B}
-      - {start: 0x8c14b8, type: mtx, name: unk1B/unk1B}
-      - {start: 0x8c14f8, type: gfxSeg, name: unk1B/unk1B}
+      - [0x8c1418, vtx, unk1B/unk1B]
+      - [0x8c14b8] #identity matrix
+      - [0x8c14f8, gfxSeg, unk1B/unk1B]
       - {start: 0x8c16f0, type: collision, name: unk1B/unk1B, args: "Verts"}
       - {start: 0x8c1738, type: collision, name: unk1B/unk1B, args: "Tris"}
       - {start: 0x8c1768, type: collision, name: unk1B/unk1B, args: "Settings"}
       - {start: 0x8c1780, type: collision, name: unk1B/unk1B, args: "Header"}
       - [0x8c1794, bin, zeroooo33.MEd] #00000000
 
-      - {start: 0x8c1798, type: vtx, name: unk1C/unk1C}
-      - {start: 0x8c18f8, type: mtx, name: unk1C/unk1C}
-      - {start: 0x8c1938, type: gfxSeg, name: unk1C/unk1C}
+      - [0x8c1798, vtx, unk1C/unk1C]
+      - [0x8c18f8] #identity matrix
+      - [0x8c1938, gfxSeg, unk1C/unk1C]
       - {start: 0x8c1bd0, type: collision, name: unk1C/unk1C, args: "Verts"}
       - {start: 0x8c1c60, type: collision, name: unk1C/unk1C, args: "Tris"}
       - {start: 0x8c1d20, type: collision, name: unk1C/unk1C, args: "Settings"}
       - {start: 0x8c1d38, type: collision, name: unk1C/unk1C, args: "Header"}
       - [0x8c1d4c, bin, zeroooo34.MEd] #00000000
 
-      - {start: 0x8c1d50, type: vtx, name: unk1D/unk1D}
-      - {start: 0x8c1e90, type: mtx, name: unk1D/unk1D}
-      - {start: 0x8c1ed0, type: gfxSeg, name: unk1D/unk1D}
+      - [0x8c1d50, vtx, unk1D/unk1D]
+      - [0x8c1e90] #identity matrix
+      - [0x8c1ed0, gfxSeg, unk1D/unk1D]
       - {start: 0x8c2108, type: collision, name: unk1D/unk1D, args: "Verts"}
       - {start: 0x8c2198, type: collision, name: unk1D/unk1D, args: "Tris"}
       - {start: 0x8c2228, type: collision, name: unk1D/unk1D, args: "Settings"}
       - {start: 0x8c2240, type: collision, name: unk1D/unk1D, args: "Header"}
       - [0x8c2254, bin, zeroooo35.MEd] #00000000
 
-      - {start: 0x8c2258, type: vtx, name: unk1E/unk1E}
-      - {start: 0x8c2358, type: mtx, name: unk1E/unk1E}
-      - {start: 0x8c2398, type: gfxSeg, name: unk1E/unk1E}
+      - [0x8c2258, vtx, unk1E/unk1E]
+      - [0x8c2358] #identity matrix
+      - [0x8c2398, gfxSeg, unk1E/unk1E]
       - {start: 0x8c25b0, type: collision, name: unk1E/unk1E, args: "Verts"}
       - {start: 0x8c2610, type: collision, name: unk1E/unk1E, args: "Tris"}
       - {start: 0x8c2670, type: collision, name: unk1E/unk1E, args: "Settings"}

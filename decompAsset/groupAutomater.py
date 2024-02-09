@@ -221,7 +221,7 @@ def start(group, where):
 
                     newC.append("unsigned char "+group+"_Pad"+str(pads)+"[] = FILEPAD;\n")
                 elif line.find("#identity matrix") != -1:#identity
-                    add = '#define IDENTITY {{1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1},{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}} // identity matrix so we dont have to spit useless files\n\n'
+                    add = '#define IDENTITY {{1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1},{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}} // identity matrix so we dont have to split useless files\n\n'
                     if not add in definitions: definitions.append(add)
                     imtx += 1
                     
