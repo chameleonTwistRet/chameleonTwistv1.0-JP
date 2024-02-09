@@ -858,107 +858,124 @@ segments:
       - [0x6a8e60, levelPointer, pointers]
       - [0x6aa540, bin, rabObjects.MEd]
 
-      - [0x6aa568, spriteActor, spriteActors/spriteAct1]
-      - [0x6aa5b8, spriteActor, spriteActors/spriteAct2]
-      - [0x6aa608, spriteActor, spriteActors/spriteAct3]
-      - [0x6aa658, spriteActor, spriteActors/spriteAct4]
-      - [0x6aa6a8, spriteActor, spriteActors/spriteAct5]
-      - [0x6aa6f8, spriteActor, spriteActors/spriteAct6]
-      - [0x6aa748, spriteActor, spriteActors/spriteAct7]
-      - [0x6aa798, spriteActor, spriteActors/spriteAct8]
-      - [0x6aa7e8, spriteActor, spriteActors/spriteAct9]
-      - [0x6aa838, spriteActor, spriteActors/spriteAct10]
-      - [0x6aa888, spriteActor, spriteActors/spriteAct11]
-      - [0x6aa8d8, spriteActor, spriteActors/spriteAct12]
-      - [0x6aa928, spriteActor, spriteActors/spriteAct13]
-      - [0x6aa978, spriteActor, spriteActors/spriteAct14]
-      - [0x6aa9c8, spriteActor, spriteActors/spriteAct15]
-      - [0x6aaa18, spriteActor, spriteActors/spriteAct16]
-      - [0x6aaa68, spriteActor, spriteActors/spriteAct17]
+      - [0x6aa568, spriteActor, spriteActors/eroom0_sprRabbit]
+      - [0x6aa5b8, spriteActor, spriteActors/eroom0_sprFern]
+      - [0x6aa608, spriteActor, spriteActors/eroom0_sprFern2]
+      - [0x6aa658, spriteActor, spriteActors/eroom0_sprFern3]
+      - [0x6aa6a8, spriteActor, spriteActors/eroom0_sprFern4]
+      - [0x6aa6f8, spriteActor, spriteActors/eroom0_sprFern5]
+      - [0x6aa748, spriteActor, spriteActors/eroom0_sprFern6]
+      - [0x6aa798, spriteActor, spriteActors/eroom0_sprFern7]
+      - [0x6aa7e8, spriteActor, spriteActors/eroom0_sprTree]
+      - [0x6aa838, spriteActor, spriteActors/eroom0_sprTree2]
+      - [0x6aa888, spriteActor, spriteActors/eroom0_sprSTOP]
       
-      - [0x6aaab8, spriteActor, spriteActors/spriteActX1] #bad split
-      - [0x6aab08, spriteActor, spriteActors/spriteActX2]
-      - [0x6aab58, spriteActor, spriteActors/spriteActX3]
-      - [0x6aabA8, spriteActor, spriteActors/spriteActX4]
-      - [0x6aabF8, spriteActor, spriteActors/spriteActX5]
-      - [0x6aaC48, spriteActor, spriteActors/spriteActX6]
-      - [0x6aaC98, spriteActor, spriteActors/spriteActX7]
-      - [0x6aaCE8, spriteActor, spriteActors/spriteActX8]
-      - [0x6aad38, spriteActor, spriteActors/spriteActX9]
-      - [0x6aad88, spriteActor, spriteActors/spriteActX10]
+      - [0x6aa8d8, spriteActor, spriteActors/room6_sprRabbit]
+      - [0x6aa928, spriteActor, spriteActors/room6_sprSTOP]
 
-      - [0x6aadd8, spriteActor, spriteActors/spriteAct18]
-      - [0x6aae28, spriteActor, spriteActors/spriteAct19]
-      - [0x6aae78, spriteActor, spriteActors/spriteAct20]
-      - [0x6aaec8, spriteActor, spriteActors/spriteAct21]
-      - [0x6aaf18, spriteActor, spriteActors/spriteAct22]
-      - [0x6aaf68, spriteActor, spriteActors/spriteAct23]
-      - [0x6aafb8, spriteActor, spriteActors/spriteAct24]
-      - [0x6ab008, spriteActor, spriteActors/spriteAct25]
-      - [0x6ab058, spriteActor, spriteActors/spriteAct26]
-      - [0x6ab0a8, spriteActor, spriteActors/spriteAct27]
-      - [0x6ab0f8, spriteActor, spriteActors/spriteAct28]
-      - [0x6ab148, spriteActor, spriteActors/spriteAct29]
-      - [0x6ab198, spriteActor, spriteActors/spriteAct30]
+      - [0x6aa978, spriteActor, spriteActors/eroom1_sprFern]
+      - [0x6aa9c8, spriteActor, spriteActors/eroom1_sprFern2]
+      - [0x6aaa18, spriteActor, spriteActors/eroom1_sprFern3]
+      - [0x6aaa68, spriteActor, spriteActors/eroom1_sprSTOP]
+      
+      - [0x6aaab8, spriteActor, spriteActors/eroomUnk_sprFern]
+      - [0x6aab08, spriteActor, spriteActors/eroomUnk_sprFern2]
+      - [0x6aab58, spriteActor, spriteActors/eroomUnk_sprFern3]
+      - [0x6aabA8, spriteActor, spriteActors/eroomUnk_sprFern4]
+      - [0x6aabF8, spriteActor, spriteActors/eroomUnk_sprFern5]
+      - [0x6aaC48, spriteActor, spriteActors/eroomUnk_sprFern6]
+      - [0x6aaC98, spriteActor, spriteActors/eroomUnk_sprTree]
+      - [0x6aaCE8, spriteActor, spriteActors/eroomUnk_sprTree2]
+      - [0x6aad38, spriteActor, spriteActors/eroomUnk_sprTree3]
+      - [0x6aad88, spriteActor, spriteActors/eroomUnk_sprSTOP]
 
-      - [0x6ab1e8, collectable, collectables/clct1]
-      - [0x6ab208, collectable, collectables/clct2]
-      - [0x6ab228, collectable, collectables/clct3]
-      - [0x6ab248, collectable, collectables/clct4]
-      - [0x6ab268, collectable, collectables/clct5]
-      - [0x6ab288, collectable, collectables/clct6]
-      - [0x6ab2a8, collectable, collectables/clct7]
-      - [0x6ab2c8, collectable, collectables/clct8]
-      - [0x6ab2e8, collectable, collectables/clct9]
-      - [0x6ab308, collectable, collectables/clct10]
-      - [0x6ab328, collectable, collectables/clct11]
-      - [0x6ab348, collectable, collectables/clct12]
-      - [0x6ab368, collectable, collectables/clct13]
-      - [0x6ab388, collectable, collectables/clct14]
-      - [0x6ab3a8, collectable, collectables/clct15]
-      - [0x6ab3c8, collectable, collectables/clct16]
-      - [0x6ab3e8, collectable, collectables/clct17]
-      - [0x6ab408, collectable, collectables/clct18]
-      - [0x6ab428, collectable, collectables/clct19]
-      - [0x6ab448, collectable, collectables/clct20]
-      - [0x6ab468, collectable, collectables/clct21]
-      - [0x6ab488, collectable, collectables/clct22]
-      - [0x6ab4a8, collectable, collectables/clct23]
-      - [0x6ab4c8, collectable, collectables/clct24]
-      - [0x6ab4e8, collectable, collectables/clct25]
-      - [0x6ab508, collectable, collectables/clct26]
-      - [0x6ab528, collectable, collectables/clct27]
-      - [0x6ab548, collectable, collectables/clct28]
-      - [0x6ab568, collectable, collectables/clct29]
-      - [0x6ab588, collectable, collectables/clct30]
-      - [0x6ab5a8, collectable, collectables/clct31]
-      - [0x6ab5c8, collectable, collectables/clct32]
-      - [0x6ab5e8, collectable, collectables/clct33]
-      - [0x6ab608, collectable, collectables/clct34]
-      - [0x6ab628, collectable, collectables/clct35]
-      - [0x6ab648, collectable, collectables/clct36]
-      - [0x6ab668, collectable, collectables/clct37]
-      - [0x6ab688, collectable, collectables/clct38]
-      - [0x6ab6a8, collectable, collectables/clct39]
-      - [0x6ab6c8, collectable, collectables/clct40]
-      - [0x6ab6e8, collectable, collectables/clct41]
-      - [0x6ab708, collectable, collectables/clct42]
-      - [0x6ab728, collectable, collectables/clct43]
-      - [0x6ab748, collectable, collectables/clct44]
-      - [0x6ab768, collectable, collectables/clct45]
-      - [0x6ab788, collectable, collectables/clct46]
+      - [0x6aadd8, spriteActor, spriteActors/eroom3_sprFern]
+      - [0x6aae28, spriteActor, spriteActors/eroom3_sprTree]
+      - [0x6aae78, spriteActor, spriteActors/eroom3_sprSTOP]
 
-      - [0x6ab7A8, collectable, collectables/clctX46]
-      - [0x6ab7C8, collectable, collectables/clctX47]
-      - [0x6ab7E8, collectable, collectables/clctX48]
-      - [0x6ab808, collectable, collectables/clctX49]
-      - [0x6ab828, collectable, collectables/clctX50]
-      - [0x6ab848, collectable, collectables/clctX51]
+      - [0x6aaec8, spriteActor, spriteActors/eroom7_sprFern]
+      - [0x6aaf18, spriteActor, spriteActors/eroom7_sprFern2]
+      - [0x6aaf68, spriteActor, spriteActors/eroom7_sprSTOP]
+      
+      - [0x6aafb8, spriteActor, spriteActors/eroom12_sprFern]
+      - [0x6ab008, spriteActor, spriteActors/eroom12_sprFern2]
+      - [0x6ab058, spriteActor, spriteActors/eroom12_sprFern3]
+      - [0x6ab0a8, spriteActor, spriteActors/eroom12_sprFern4]
+      - [0x6ab0f8, spriteActor, spriteActors/eroom12_sprFern5]
+      - [0x6ab148, spriteActor, spriteActors/eroom12_sprFern6]
+      - [0x6ab198, spriteActor, spriteActors/eroom12_sprSTOP]
 
-      - [0x6ab868, collectable, collectables/clct47]
-      - [0x6ab888, collectable, collectables/clct48]
-      - [0x6ab8a8, collectable, collectables/clct49]
-      - [0x6ab8c8, collectable, collectables/clct50]
+      - [0x6ab1e8, collectable, collectables/eroom0_clctCrown]
+      - [0x6ab208, collectable, collectables/eroom0_clctCrown2]
+      - [0x6ab228, collectable, collectables/eroom0_clctSTOP]
+
+      - [0x6ab248, collectable, collectables/eroom1_clctOHeart]
+      - [0x6ab268, collectable, collectables/eroom1_clctSTOP]
+
+      - [0x6ab288, collectable, collectables/eroom2_clctCrown]
+      - [0x6ab2a8, collectable, collectables/eroom2_clctSTOP]
+
+      - [0x6ab2c8, collectable, collectables/eroom3to4_clctSTOP]
+
+      - [0x6ab2e8, collectable, collectables/eroom5_clctRHeart]
+      - [0x6ab308, collectable, collectables/eroom5_clctSTOP]
+
+      - [0x6ab328, collectable, collectables/eroom6_clctCrown]
+      - [0x6ab348, collectable, collectables/eroom6_clctSTOP]
+
+      - [0x6ab368, collectable, collectables/eroom7_clctRHeart]
+      - [0x6ab388, collectable, collectables/eroom7_clctSTOP]
+
+      - [0x6ab3a8, collectable, collectables/room0_clctRHeart]
+      - [0x6ab3c8, collectable, collectables/room0_clctCrown]
+      - [0x6ab3e8, collectable, collectables/room0_clctRHeart2]
+      - [0x6ab408, collectable, collectables/room0_clctSTOP]
+
+      - [0x6ab428, collectable, collectables/room1_clctCrown]
+      - [0x6ab448, collectable, collectables/room1_clctSTOP]
+
+      - [0x6ab468, collectable, collectables/room2_clctBigHead]
+      - [0x6ab488, collectable, collectables/room2_clctCrown]
+      - [0x6ab4a8, collectable, collectables/room2_clctCrown2]
+      - [0x6ab4c8, collectable, collectables/room2_clctCrown3]
+      - [0x6ab4e8, collectable, collectables/room2_clctCrown4]
+      - [0x6ab508, collectable, collectables/room2_clctRHeart]
+      - [0x6ab528, collectable, collectables/room2_clctSTOP]
+
+      - [0x6ab548, collectable, collectables/room3_clctRHeart]
+      - [0x6ab568, collectable, collectables/room3_clctCarrot]
+      - [0x6ab588, collectable, collectables/room3_clctCrown]
+      - [0x6ab5a8, collectable, collectables/room3_clctSTOP]
+
+      - [0x6ab5c8, collectable, collectables/room4_clctRHeart]
+      - [0x6ab5e8, collectable, collectables/room4_clctRHeart2]
+      - [0x6ab608, collectable, collectables/room4_clctCrown]
+      - [0x6ab628, collectable, collectables/room4_clctCrown2]
+      - [0x6ab648, collectable, collectables/room5_clctTimeStop]
+      - [0x6ab668, collectable, collectables/room4_clctSTOP]
+
+      - [0x6ab688, collectable, collectables/room5_clctCrown]
+      - [0x6ab6a8, collectable, collectables/room5_clctCrown2]
+      - [0x6ab6c8, collectable, collectables/room5_clctRHeart]
+      - [0x6ab6e8, collectable, collectables/room5_clctRHeart2]
+      - [0x6ab708, collectable, collectables/room5_clctRHeart3]
+      - [0x6ab728, collectable, collectables/room5_clctSTOP]
+
+      - [0x6ab748, collectable, collectables/room6_clctCrown]
+      - [0x6ab768, collectable, collectables/room6_clctOHeart]
+      - [0x6ab788, collectable, collectables/room6_clctSTOP]
+
+      - [0x6ab7A8, collectable, collectables/roomUnk_clctRHeart]
+      - [0x6ab7C8, collectable, collectables/roomUnk_clctRHeart2]
+      - [0x6ab7E8, collectable, collectables/roomUnk_clctRHeart3]
+      - [0x6ab808, collectable, collectables/roomUnk_clctRHeart4]
+      - [0x6ab828, collectable, collectables/roomUnk_clctOHeart]
+      - [0x6ab848, collectable, collectables/roomUnk_clctSTOP]
+
+      - [0x6ab868, collectable, collectables/room8_clctCrown]
+      - [0x6ab888, collectable, collectables/room8_clctRHeart]
+      - [0x6ab8a8, collectable, collectables/room8_clctYHeart]
+      - [0x6ab8c8, collectable, collectables/room8_clctSTOP]
 
       - [0x6ab8e8, roomObject, roomObjects/eroom0_objLand]
       - [0x6ab974, roomObject, roomObjects/eroom0_objPlant]
@@ -988,23 +1005,25 @@ segments:
       - [0x6ac57c, roomObject, roomObjects/eroom2_objPlant3]
       - [0x6ac608, roomObject, roomObjects/eroom2_objSTOP]
 
-      - [0x6ac694, roomActor, roomActors/roomAct1]
-      - [0x6ac6f4, roomActor, roomActors/roomAct2]
-      - [0x6ac754, roomActor, roomActors/roomAct3]
-      - [0x6ac7b4, roomActor, roomActors/roomAct4]
-      - [0x6ac814, roomActor, roomActors/roomAct5]
-      - [0x6ac874, roomActor, roomActors/roomAct6]
-      - [0x6ac8d4, roomActor, roomActors/roomAct7]
-      - [0x6ac934, roomActor, roomActors/roomAct8]
-      - [0x6ac994, roomActor, roomActors/roomAct9]
-      - [0x6ac9f4, roomActor, roomActors/roomAct10]
-      - [0x6aca54, roomActor, roomActors/roomAct11]
-      - [0x6acab4, roomActor, roomActors/roomAct12]
-      - [0x6acb14, roomActor, roomActors/roomAct13]
-      - [0x6acb74, roomActor, roomActors/roomAct14]
-      - [0x6acbd4, roomActor, roomActors/roomAct15]
-      - [0x6acc34, roomActor, roomActors/roomAct16]
-      - [0x6acc94, roomActor, roomActors/roomAct17]
+      - [0x6ac694, roomActor, roomActors/eroom7_actHedgehog]
+      - [0x6ac6f4, roomActor, roomActors/eroom7_actHedgehog2]
+      - [0x6ac754, roomActor, roomActors/eroom7_actHedgehog3]
+      - [0x6ac7b4, roomActor, roomActors/eroom7_actSTOP]
+
+      - [0x6ac814, roomActor, roomActors/eroom9_actHedgehog]
+      - [0x6ac874, roomActor, roomActors/eroom9_actHedgehog2]
+      - [0x6ac8d4, roomActor, roomActors/eroom9_actSTOP]
+
+      - [0x6ac934, roomActor, roomActors/eroom2_actHedgehog]
+      - [0x6ac994, roomActor, roomActors/eroom2_actHedgehog2]
+      - [0x6ac9f4, roomActor, roomActors/eroom2_actHedgehog3]
+      - [0x6aca54, roomActor, roomActors/eroom2_actHedgehog4]
+      - [0x6acab4, roomActor, roomActors/eroom2_actHedgehog5]
+      - [0x6acb14, roomActor, roomActors/eroom2_actHedgehog6]
+      - [0x6acb74, roomActor, roomActors/eroom2_actHedgehog7]
+      - [0x6acbd4, roomActor, roomActors/eroom2_actHedgehog8]
+      - [0x6acc34, roomActor, roomActors/eroom2_actHedgehog9]
+      - [0x6acc94, roomActor, roomActors/eroom2_actSTOP]
 
       - [0x6accf4, roomObject, roomObjects/eroom3_objPole]
       - [0x6acd80, roomObject, roomObjects/eroom3_objPole2]
@@ -1018,10 +1037,10 @@ segments:
       - [0x6ad1e0, roomObject, roomObjects/eroom3_objLand2]
       - [0x6ad26c, roomObject, roomObjects/eroom3_objSTOP]
 
-      - [0x6ad2f8, roomActor, roomActors/roomAct18]
-      - [0x6ad358, roomActor, roomActors/roomAct19]
-      - [0x6ad3b8, roomActor, roomActors/roomAct20]
-      - [0x6ad418, roomActor, roomActors/roomAct21]
+      - [0x6ad2f8, roomActor, roomActors/eroom3_actHedgehog]
+      - [0x6ad358, roomActor, roomActors/eroom3_actHedgehog2]
+      - [0x6ad3b8, roomActor, roomActors/eroom3_actHedgehog3]
+      - [0x6ad418, roomActor, roomActors/eroom3_actSTOP]
 
       - [0x6ad478, roomObject, roomObjects/eroom4_objLand]
       - [0x6ad504, roomObject, roomObjects/eroom4_objPole]
@@ -1039,10 +1058,10 @@ segments:
       - [0x6adb08, roomObject, roomObjects/eroom5_objSwampWater]
       - [0x6adb94, roomObject, roomObjects/eroom5_objSTOP]
 
-      - [0x6adc20, spriteActor, spriteActors/spriteAct31]
-      - [0x6adc70, spriteActor, spriteActors/spriteAct32]
-      - [0x6adcc0, spriteActor, spriteActors/spriteAct33]
-      - [0x6add10, spriteActor, spriteActors/spriteAct34]
+      - [0x6adc20, spriteActor, spriteActors/eroom5_sprLilyWave]
+      - [0x6adc70, spriteActor, spriteActors/eroom5_sprLilyWave2]
+      - [0x6adcc0, spriteActor, spriteActors/eroom5_sprLilyWave3]
+      - [0x6add10, spriteActor, spriteActors/eroom5_sprSTOP]
 
       - [0x6add60, roomObject, roomObjects/eroom6_objLand]
       - [0x6addec, roomObject, roomObjects/eroom6_objRockFloor]
@@ -1056,20 +1075,21 @@ segments:
       - [0x6ae24c, roomObject, roomObjects/eroom6_objSwampWater]
       - [0x6ae2d8, roomObject, roomObjects/eroom6_objSTOP]
 
-      - [0x6ae364, spriteActor, spriteActors/spriteAct35]
-      - [0x6ae3b4, spriteActor, spriteActors/spriteAct36]
-      - [0x6ae404, spriteActor, spriteActors/spriteAct37]
-      - [0x6ae454, spriteActor, spriteActors/spriteAct38]
+      - [0x6ae364, spriteActor, spriteActors/eroom6_sprLilyWave]
+      - [0x6ae3b4, spriteActor, spriteActors/eroom6_sprLilyWave2]
+      - [0x6ae404, spriteActor, spriteActors/eroom6_sprLilyWave3]
+      - [0x6ae454, spriteActor, spriteActors/eroom6_sprSTOP]
 
       - [0x6ae4a4, roomObject, roomObjects/eroom7_objLand]
       - [0x6ae530, roomObject, roomObjects/eroom7_objLog]
       - [0x6ae5bc, roomObject, roomObjects/eroom7_objSTOP]
 
-      - [0x6ae648, roomActor, roomActors/roomActX1]
-      - [0x6ae6A8, roomActor, roomActors/roomActX2]
-      - [0x6ae708, roomActor, roomActors/roomActN3]
-      - [0x6ae768, roomActor, roomActors/roomActX4]
-      - [0x6ae7C8, roomActor, roomActors/roomActN5]
+      - [0x6ae648, roomActor, roomActors/eroomUnk_actFish]
+      - [0x6ae6A8, roomActor, roomActors/eroomUnk_actFish2]
+      - [0x6ae708, roomActor, roomActors/eroomUnk_actSTOP]
+
+      - [0x6ae768, roomActor, roomActors/eroomUnk2_actFish]
+      - [0x6ae7C8, roomActor, roomActors/eroomUnk2_actSTOP]
 
       - [0x6ae828, roomObject, roomObjects/eroom8_objLogBottom]
       - [0x6ae8b4, roomObject, roomObjects/eroom8_objLogPlate]
@@ -1085,25 +1105,29 @@ segments:
       - [0x6aeda0, roomObject, roomObjects/eroom9_objPole]
       - [0x6aee2c, roomObject, roomObjects/eroom9_objSTOP]
 
-      - [0x6aeeb8, collectable, collectables/clct51]
-      - [0x6aeed8, collectable, collectables/clct52]
-      - [0x6aeef8, collectable, collectables/clct53]
-      - [0x6aef18, collectable, collectables/clct54]
-      - [0x6aef38, collectable, collectables/clct55]
-      - [0x6aef58, collectable, collectables/clct56]
-      - [0x6aef78, collectable, collectables/clct57]
-      - [0x6aef98, collectable, collectables/clct58]
-      - [0x6aefb8, collectable, collectables/clct59]
-      - [0x6aefd8, collectable, collectables/clct60]
-      - [0x6aeff8, collectable, collectables/clct61]
-      - [0x6af018, collectable, collectables/clct62]
-      - [0x6af038, collectable, collectables/clct63]
-      - [0x6af058, collectable, collectables/clct64]
+      - [0x6aeeb8, collectable, collectables/eroom8_clctCrown]
+      - [0x6aeed8, collectable, collectables/eroom8_clctCrown2]
+      - [0x6aeef8, collectable, collectables/eroom8_clctRHeart]
+      - [0x6aef18, collectable, collectables/eroom8_clctSTOP]
 
-      - [0x6af078, roomActor, roomActors/roomAct22]
-      - [0x6af0d8, roomActor, roomActors/roomAct23]
-      - [0x6af138, roomActor, roomActors/roomAct24]
-      - [0x6af198, roomActor, roomActors/roomActN24]
+      - [0x6aef38, collectable, collectables/eroom9_clctCrown]
+      - [0x6aef58, collectable, collectables/eroom9_clctSTOP]
+
+      - [0x6aef78, collectable, collectables/eroom10_clctCrown]
+      - [0x6aef98, collectable, collectables/eroom10_clctCrown2]
+      - [0x6aefb8, collectable, collectables/eroom10_clctSTOP]
+
+      - [0x6aefd8, collectable, collectables/eroom11_clctCrown]
+      - [0x6aeff8, collectable, collectables/eroom12_clctRHeart]
+      - [0x6af018, collectable, collectables/eroom11_clctCrown2]
+      - [0x6af038, collectable, collectables/eroom12_clctCrown]
+      - [0x6af058, collectable, collectables/eroom11to12_clctSTOP]
+
+      - [0x6af078, roomActor, roomActors/eroom10_actFish]
+      - [0x6af0d8, roomActor, roomActors/eroom10_actFish2]
+      - [0x6af138, roomActor, roomActors/eroom10_actSTOP]
+
+      - [0x6af198, roomActor, roomActors/eroomUnk3_actSTOP]
 
       - [0x6af1f8, roomObject, roomObjects/eroom10_objLand]
       - [0x6af284, roomObject, roomObjects/eroom10_objWaterfall]
@@ -1150,31 +1174,31 @@ segments:
       - [0x6b074c, roomObject, roomObjects/room8_objSomethingElseDoorRelated2]
       - [0x6b07d8, roomObject, roomObjects/room8_objSTOP]
 
-      - [0x6b0864, roomActor, roomActors/roomAct25]
-      - [0x6b08c4, roomActor, roomActors/roomAct26]
-      - [0x6b0924, roomActor, roomActors/roomAct27]
-      - [0x6b0984, roomActor, roomActors/roomAct28]
-      - [0x6b09e4, roomActor, roomActors/roomAct29]
-      - [0x6b0a44, roomActor, roomActors/roomAct30]
-      - [0x6b0aa4, roomActor, roomActors/roomAct31]
-      - [0x6b0b04, roomActor, roomActors/roomAct32]
-      - [0x6b0b64, roomActor, roomActors/roomAct33]
-      - [0x6b0bc4, roomActor, roomActors/roomAct34]
-      - [0x6b0c24, roomActor, roomActors/roomAct35]
-      - [0x6b0c84, roomActor, roomActors/roomAct36]
-      - [0x6b0ce4, roomActor, roomActors/roomAct37]
-      - [0x6b0d44, roomActor, roomActors/roomAct38]
-      - [0x6b0da4, roomActor, roomActors/roomAct39]
-      - [0x6b0e04, roomActor, roomActors/roomAct40]
-      - [0x6b0e64, roomActor, roomActors/roomAct41]
-      - [0x6b0ec4, roomActor, roomActors/roomAct42]
-      - [0x6b0f24, roomActor, roomActors/roomAct43]
-      - [0x6b0f84, roomActor, roomActors/roomAct44]
-      - [0x6b0fe4, roomActor, roomActors/roomAct45]
-      - [0x6b1044, roomActor, roomActors/roomAct46]
-      - [0x6b10a4, roomActor, roomActors/roomAct47]
-      - [0x6b1104, roomActor, roomActors/roomAct48]
-      - [0x6b1164, roomActor, roomActors/roomAct49]
+      - [0x6b0864, roomActor, roomActors/room8_actHedgehog]
+      - [0x6b08c4, roomActor, roomActors/room8_actHedgehog2]
+      - [0x6b0924, roomActor, roomActors/room8_actHedgehog3]
+      - [0x6b0984, roomActor, roomActors/room8_actHedgehog4]
+      - [0x6b09e4, roomActor, roomActors/room8_actHedgehog5]
+      - [0x6b0a44, roomActor, roomActors/room8_actHedgehog6]
+      - [0x6b0aa4, roomActor, roomActors/room8_actHedgehog7]
+      - [0x6b0b04, roomActor, roomActors/room8_actHedgehog8]
+      - [0x6b0b64, roomActor, roomActors/room8_actHedgehog9]
+      - [0x6b0bc4, roomActor, roomActors/room8_actHedgehog10]
+      - [0x6b0c24, roomActor, roomActors/room8_actHedgehog12]
+      - [0x6b0c84, roomActor, roomActors/room8_actHedgehog13]
+      - [0x6b0ce4, roomActor, roomActors/room8_actHedgehog14]
+      - [0x6b0d44, roomActor, roomActors/room8_actHedgehog15]
+      - [0x6b0da4, roomActor, roomActors/room8_actHedgehog16]
+      - [0x6b0e04, roomActor, roomActors/room8_actHedgehog17]
+      - [0x6b0e64, roomActor, roomActors/room8_actHedgehog18]
+      - [0x6b0ec4, roomActor, roomActors/room8_actHedgehog19]
+      - [0x6b0f24, roomActor, roomActors/room8_actHedgehog20]
+      - [0x6b0f84, roomActor, roomActors/room8_actHedgehog21]
+      - [0x6b0fe4, roomActor, roomActors/room8_actHedgehog22]
+      - [0x6b1044, roomActor, roomActors/room8_actHedgehog23]
+      - [0x6b10a4, roomActor, roomActors/room8_actHedgehog24]
+      - [0x6b1104, roomActor, roomActors/room8_actHedgehog25]
+      - [0x6b1164, roomActor, roomActors/room8_actSTOP]
 
       - [0x6b11c4, roomObject, roomObjects/room0_objWalls]
       - [0x6b1250, roomObject, roomObjects/room0_objLava0]
@@ -1224,9 +1248,9 @@ segments:
       - [0x6b2a60, roomObject, roomObjects/room0_objWoodBlock7]
       - [0x6b2aec, roomObject, roomObjects/room0_objSTOP]
 
-      - [0x6b2b78, roomActor, roomActors/roomAct50]
-      - [0x6b2bd8, roomActor, roomActors/roomAct51]
-      - [0x6b2c38, roomActor, roomActors/roomAct52]
+      - [0x6b2b78, roomActor, roomActors/room0_actHedgehog]
+      - [0x6b2bd8, roomActor, roomActors/room0_actHedgehog2]
+      - [0x6b2c38, roomActor, roomActors/room0_actSTOP]
 
       - [0x6b2c98, roomObject, roomObjects/room1_objWalls]
       - [0x6b2d24, roomObject, roomObjects/room1_objPillar]
@@ -1252,8 +1276,8 @@ segments:
       - [0x6b3814, roomObject, roomObjects/room1_objWoodBlock3]
       - [0x6b38a0, roomObject, roomObjects/room1_objSTOP]
 
-      - [0x6b392c, roomActor, roomActors/roomAct53]
-      - [0x6b398c, roomActor, roomActors/roomAct54]
+      - [0x6b392c, roomActor, roomActors/room1_actSpiderSpawner]
+      - [0x6b398c, roomActor, roomActors/room1_actSTOP]
 
       - [0x6b39ec, roomObject, roomObjects/room2_objWalls]
       - [0x6b3a78, roomObject, roomObjects/room2_objPillar]
@@ -1286,11 +1310,11 @@ segments:
       - [0x6b493c, roomObject, roomObjects/room2_objSomethingElseDoorRelated2]
       - [0x6b49c8, roomObject, roomObjects/room2_objSTOP]
 
-      - [0x6b4a54, roomActor, roomActors/roomAct55]
-      - [0x6b4ab4, roomActor, roomActors/roomAct56]
-      - [0x6b4b14, roomActor, roomActors/roomAct57]
-      - [0x6b4b74, roomActor, roomActors/roomAct58]
-      - [0x6b4bd4, roomActor, roomActors/roomAct59]
+      - [0x6b4a54, roomActor, roomActors/room2_actSpiderSpawner]
+      - [0x6b4ab4, roomActor, roomActors/room2_actSpiderSpawner2]
+      - [0x6b4b14, roomActor, roomActors/room2_actSpiderSpawner3]
+      - [0x6b4b74, roomActor, roomActors/room2_actSpiderSpawner4]
+      - [0x6b4bd4, roomActor, roomActors/room2_actSTOP]
 
       - [0x6b4c34, roomObject, roomObjects/room3_objFrame]
       - [0x6b4cc0, roomObject, roomObjects/room3_objWalls]
@@ -1368,10 +1392,10 @@ segments:
       - [0x6b7420, roomObject, roomObjects/room3_objSomethingElseDoorRelated2]
       - [0x6b74ac, roomObject, roomObjects/room3_objSTOP]
 
-      - [0x6b7538, roomActor, roomActors/roomAct60]
-      - [0x6b7598, roomActor, roomActors/roomAct61]
-      - [0x6b75f8, roomActor, roomActors/roomAct62]
-      - [0x6b7658, roomActor, roomActors/roomAct63]
+      - [0x6b7538, roomActor, roomActors/room3_actSpiderTrio]
+      - [0x6b7598, roomActor, roomActors/room3_actSpiderTrio2]
+      - [0x6b75f8, roomActor, roomActors/room3_actSpiderTrio3]
+      - [0x6b7658, roomActor, roomActors/room3_actSTOP]
 
       - [0x6b76b8, roomObject, roomObjects/room4_objWalls]
       - [0x6b7744, roomObject, roomObjects/room4_objPillar]
@@ -1394,13 +1418,13 @@ segments:
       - [0x6b8090, roomObject, roomObjects/room4_objDoor2]
       - [0x6b811c, roomObject, roomObjects/room4_objSTOP]
 
-      - [0x6b81a8, roomActor, roomActors/roomAct64]
-      - [0x6b8208, roomActor, roomActors/roomAct65]
-      - [0x6b8268, roomActor, roomActors/roomAct66]
-      - [0x6b82c8, roomActor, roomActors/roomAct67]
-      - [0x6b8328, roomActor, roomActors/roomAct68]
-      - [0x6b8388, roomActor, roomActors/roomAct69]
-      - [0x6b83e8, roomActor, roomActors/roomAct70]
+      - [0x6b81a8, roomActor, roomActors/room4_actGolem]
+      - [0x6b8208, roomActor, roomActors/room4_actGolem2]
+      - [0x6b8268, roomActor, roomActors/room4_actGRSpiderSpawner]
+      - [0x6b82c8, roomActor, roomActors/room4_actGRSpiderSpawner2]
+      - [0x6b8328, roomActor, roomActors/room4_actGRSpiderSpawner3]
+      - [0x6b8388, roomActor, roomActors/room4_actGRSpiderSpawner4]
+      - [0x6b83e8, roomActor, roomActors/room4_actSTOP]
 
       - [0x6b8448, unkType1, newType/g1] #9 entries????? 0x24
       - [0x6b846c, unkType1, newType/g2]
@@ -1511,108 +1535,109 @@ segments:
       - [0x6bb0ac, roomObject, roomObjects/room6_objSomethingElseDoorRelated2]
       - [0x6bb138, roomObject, roomObjects/room6_objSTOP]
 
-      - [0x6bb1c4, roomActor, roomActors/roomAct71]
-      - [0x6bb224, roomActor, roomActors/roomAct72]
-      - [0x6bb284, roomActor, roomActors/roomAct73]
+      - [0x6bb1c4, roomActor, roomActors/room6_actHedgehog]
+      - [0x6bb224, roomActor, roomActors/room6_actHedgehog2]
+      - [0x6bb284, roomActor, roomActors/room6_actSTOP]
 
       - [0x6bb2e4, roomObject, roomObjects/roomFallback_objPole]
       - [0x6bb370, roomObject, roomObjects/roomFallback_objSTOP]
 
-      - [0x6bb3fc, roomActor, roomActors/roomAct74]
-      - [0x6bb45c, roomActor, roomActors/roomAct75]
+      - [0x6bb3fc, roomActor, roomActors/roomUnk_actSpiderSpawner]
+      - [0x6bb45c, roomActor, roomActors/roomUnk_actSTOP]
 
-      - [0x6bb4bc, spriteActor, spriteActors/spriteAct39]
-      - [0x6bb50c, spriteActor, spriteActors/spriteAct40]
-      - [0x6bb55c, spriteActor, spriteActors/spriteAct41]
-      - [0x6bb5ac, spriteActor, spriteActors/spriteAct42]
-      - [0x6bb5fc, spriteActor, spriteActors/spriteAct43]
-      - [0x6bb64c, spriteActor, spriteActors/spriteAct44]
-      - [0x6bb69c, spriteActor, spriteActors/spriteAct45]
-      - [0x6bb6ec, spriteActor, spriteActors/spriteAct46]
+      - [0x6bb4bc, spriteActor, spriteActors/room0_sprLavaFlame]
+      - [0x6bb50c, spriteActor, spriteActors/room0_sprLavaFlame2]
+      - [0x6bb55c, spriteActor, spriteActors/room0_sprLavaFlame3]
+      - [0x6bb5ac, spriteActor, spriteActors/room0_sprLavaFlame4]
+      - [0x6bb5fc, spriteActor, spriteActors/room0_sprLavaFlame5]
+      - [0x6bb64c, spriteActor, spriteActors/room0_sprLavaFlame6]
+      - [0x6bb69c, spriteActor, spriteActors/room0_sprLavaFlame7]
+      - [0x6bb6ec, spriteActor, spriteActors/room0_sprSTOP]
+
       - [0x6bb73c, bin, spriteLib.MEd]
-      - [0x6bb8bc, roomSettings, rooms/room1]
-      - [0x6bb928, roomSettings, rooms/room2]
-      - [0x6bb994, roomSettings, rooms/room3]
-      - [0x6bba00, roomSettings, rooms/room4]
-      - [0x6bba6c, roomSettings, rooms/room5]
-      - [0x6bbad8, roomSettings, rooms/room6]
-      - [0x6bbb44, roomSettings, rooms/room7]
-      - [0x6bbbb0, roomSettings, rooms/room8]
-      - [0x6bbc1c, roomSettings, rooms/room9]
-      - [0x6bbc88, roomSettings, rooms/room10]
+      - [0x6bb8bc, roomSettings, rooms/room0]
+      - [0x6bb928, roomSettings, rooms/room1]
+      - [0x6bb994, roomSettings, rooms/room2]
+      - [0x6bba00, roomSettings, rooms/room3]
+      - [0x6bba6c, roomSettings, rooms/room4]
+      - [0x6bbad8, roomSettings, rooms/room5]
+      - [0x6bbb44, roomSettings, rooms/room6]
+      - [0x6bbbb0, roomSettings, rooms/room7]
+      - [0x6bbc1c, roomSettings, rooms/room8]
+      - [0x6bbc88, roomSettings, rooms/roomSTOP]
       - {start: 0x6bbcf4, type: levelMap, name: map, args: Map}
       - {start: 0x6bbd54, type: levelMap, name: map, args: Header}
-      - [0x6bbd64, roomSettings, extRooms/extRoom1]
-      - [0x6bbdd0, roomSettings, extRooms/extRoom2]
-      - [0x6bbe3c, roomSettings, extRooms/extRoom3]
-      - [0x6bbea8, roomSettings, extRooms/extRoom4]
-      - [0x6bbf14, roomSettings, extRooms/extRoom5]
-      - [0x6bbf80, roomSettings, extRooms/extRoom6]
-      - [0x6bbfec, roomSettings, extRooms/extRoom7]
-      - [0x6bc058, roomSettings, extRooms/extRoom8]
-      - [0x6bc0c4, roomSettings, extRooms/extRoom9]
-      - [0x6bc130, roomSettings, extRooms/extRoom10]
-      - [0x6bc19c, roomSettings, extRooms/extRoom11]
-      - [0x6bc208, roomSettings, extRooms/extRoom12]
-      - [0x6bc274, roomSettings, extRooms/extRoom13]
-      - [0x6bc2e0, roomSettings, extRooms/extRoom14]
-      - [0x6bc34c, roomSettings, extRooms/extRoom15]
+      - [0x6bbd64, roomSettings, rooms/fallBack]
+      - [0x6bbdd0, roomSettings, extRooms/extRoom0]
+      - [0x6bbe3c, roomSettings, extRooms/extRoom1]
+      - [0x6bbea8, roomSettings, extRooms/extRoom2]
+      - [0x6bbf14, roomSettings, extRooms/extRoom3]
+      - [0x6bbf80, roomSettings, extRooms/extRoom4]
+      - [0x6bbfec, roomSettings, extRooms/extRoom5]
+      - [0x6bc058, roomSettings, extRooms/extRoom6]
+      - [0x6bc0c4, roomSettings, extRooms/extRoom7]
+      - [0x6bc130, roomSettings, extRooms/extRoom8]
+      - [0x6bc19c, roomSettings, extRooms/extRoom9]
+      - [0x6bc208, roomSettings, extRooms/extRoom10]
+      - [0x6bc274, roomSettings, extRooms/extRoom11]
+      - [0x6bc2e0, roomSettings, extRooms/extRoom12]
+      - [0x6bc34c, roomSettings, extRooms/extRoomSTOP]
       - [0x6bc3b8, levelScope, scope]
       - [0x6bc3d0, levelHeader, header]
 
-      - {start: 0x6BC3F0, type: mtx, name: jlScope/jlScope}
-      - {start: 0x6bC430, type: lights, name: jlScope/jlScope} # set Lights 1 for alot of JL assets
+      - [0x6BC3F0, mtx, jlScope/jlScope]
+      - [0x6bC430, lights, jlScope/jlScope] # set Lights 1 for alot of JL assets
 
-      - {start: 0x6BC448, type: vtx, name: lilypad/lilypad}
-      - {start: 0x6BC4C8, type: mtx, name: lilypad/lilypad}
+      - [0x6BC448, vtx, lilypad/lilypad]
+      - [0x6BC4C8, mtx, lilypad/lilypad]
       - [0x6BC508] #B8000000
       - [0x6BC510, ci4,     lilypad.MEd.ci4, 64, 64]
       - [0x6BCD10] #B8000000
       - [0x6BCD18, palette, lilypad.MEd.ci4]
-      - {start: 0x6BCF18, type: gfxSeg, name: lilypad/lilypad}
+      - [0x6BCF18, gfxSeg, lilypad/lilypad]
 
-      - {start: 0x6BD040, type: vtx, name: vine/vine}
-      - {start: 0x6BD080, type: mtx, name: vine/vine}
+      - [0x6BD040, vtx, vine/vine]
+      - [0x6BD080, mtx, vine/vine]
       - [0x6BD0C0, ci8,     vine.MEd.ci8, 16, 64]
       - [0x6BD4C0, palette, vine.MEd.ci8]
-      - {start: 0x6BD6C0, type: gfxSeg, name: vine/vine}
+      - [0x6BD6C0, gfxSeg, vine/vine]
 
-      - {start: 0x6BD7D8, type: vtx, name: fallenCrownLog/fallenCrownLog}
-      - {start: 0x6BDA18, type: mtx, name: fallenCrownLog/fallenCrownLog}
-      - {start: 0x6BDA58, type: gfxSeg, name: fallenCrownLog/fallenCrownLog}
+      - [0x6BD7D8, vtx, fallenCrownLog/fallenCrownLog]
+      - [0x6BDA18, mtx, fallenCrownLog/fallenCrownLog]
+      - [0x6BDA58, gfxSeg, fallenCrownLog/fallenCrownLog]
 
-      - {start: 0x6BDF30, type: vtx, name: unkLog/unkLog}
-      - {start: 0x6BE0B0, type: mtx, name: unkLog/unkLog}
-      - {start: 0x6BE0F0, type: gfxSeg, name: unkLog/unkLog}
+      - [0x6BDF30, vtx, unkLog/unkLog]
+      - [0x6BE0B0, mtx, unkLog/unkLog]
+      - [0x6BE0F0, gfxSeg, unkLog/unkLog]
 
-      - {start: 0x6BE388, type: vtx, name: fallenLogStump/fallenLogStump}
-      - {start: 0x6be4a8, type: mtx, name: fallenLogStump/fallenLogStump}
+      - [0x6BE388, vtx, fallenLogStump/fallenLogStump]
+      - [0x6be4a8, mtx, fallenLogStump/fallenLogStump]
       - [0x6be4e8] #B8000000
       - [0x6BE4F0, ci8,     fallenLogStump.MEd.ci8, 64, 32]
       - [0x6BECF0] #B8000000
       - [0x6BECF8, palette, fallenLogStump.MEd.ci8]
-      - {start: 0x6BEEF8, type: gfxSeg, name: fallenLogStump/fallenLogStump}
+      - [0x6BEEF8, gfxSeg, fallenLogStump/fallenLogStump]
       
-      - {start: 0x6BF150, type: vtx, name: logTunnel/logTunnel}
-      - {start: 0x6BF530, type: mtx, name: logTunnel/logTunnel}
-      - {start: 0x6bf570, type: gfxSeg, name: logTunnel/logTunnel}
+      - [0x6BF150, vtx, logTunnel/logTunnel]
+      - [0x6BF530, mtx, logTunnel/logTunnel]
+      - [0x6bf570, gfxSeg, logTunnel/logTunnel]
       
-      - {start: 0x6BFA68, type: vtx, name: waterfallRock/waterfallRock}
-      - {start: 0x6BFBD8, type: mtx, name: waterfallRock/waterfallRock}
-      - {start: 0x6BFC18, type: gfxSeg, name: waterfallRock/waterfallRock}
+      - [0x6BFA68, vtx, waterfallRock/waterfallRock]
+      - [0x6BFBD8, mtx, waterfallRock/waterfallRock]
+      - [0x6BFC18, gfxSeg, waterfallRock/waterfallRock]
 
-      - {start: 0x6BFFD8, type: vtx, name: unk1/unk1}
-      - {start: 0x6C03F8, type: mtx, name: unk1/unk1}
-      - {start: 0x6C0438, type: gfxSeg, name: unk1/unk1}
+      - [0x6BFFD8, vtx, unk1/unk1]
+      - [0x6C03F8, mtx, unk1/unk1]
+      - [0x6C0438, gfxSeg, unk1/unk1]
 
-      - {start: 0x6C0A30, type: vtx, name: fallBridge/fallBridge}
-      - {start: 0x6C0A70, type: mtx, name: fallBridge/fallBridge}
+      - [0x6C0A30, vtx, fallBridge/fallBridge]
+      - [0x6C0A70, mtx, fallBridge/fallBridge]
       - [0x6C0AB0, ci8,     fallBridge.MEd.ci8, 64, 32]
       - [0x6C12B0, palette, fallBridge.MEd.ci8]
-      - {start: 0x6c14b0, type: gfxSeg, name: fallBridge/fallBridge}
+      - [0x6c14b0, gfxSeg, fallBridge/fallBridge]
 
-      - {start: 0x6C15B8, type: vtx, name: ctCrate/ctCrate}
-      - {start: 0x6C16F8, type: mtx, name: ctCrate/ctCrate}
+      - [0x6C15B8, vtx, ctCrate/ctCrate]
+      - [0x6C16F8, mtx, ctCrate/ctCrate]
       - [0x6C1738] #B8000000
       - [0x6C1740, ci4,     ctCrate1.MEd.ci4, 32, 32]
       - [0x6c1940] #B8000000
@@ -1625,355 +1650,355 @@ segments:
       - [0x6c2160, ci4,     ctCrate3.MEd.ci4, 64, 32]
       - [0x6C2560] #B8000000
       - [0x6C2568, palette, ctCrate3.MEd.ci4]
-      - {start: 0x6C2768, type: gfxSeg, name: ctCrate/ctCrate}
+      - [0x6C2768, gfxSeg, ctCrate/ctCrate]
 
-      - {start: 0x6C2B50, type: vtx, name: ctCrate2/ctCrate2}
-      - {start: 0x6C2C90, type: mtx, name: ctCrate2/ctCrate2}
-      - {start: 0x6C2CD0, type: gfxSeg, name: ctCrate2/ctCrate2}
+      - [0x6C2B50, vtx, ctCrate2/ctCrate2]
+      - [0x6C2C90, mtx, ctCrate2/ctCrate2]
+      - [0x6C2CD0, gfxSeg, ctCrate2/ctCrate2]
       
-      - {start: 0x6C30B8, type: vtx, name: walkingPlank/walkingPlank}
-      - {start: 0x6C31B8, type: mtx, name: walkingPlank/walkingPlank}
-      - {start: 0x6C31F8, type: gfxSeg, name: walkingPlank/walkingPlank} 
+      - [0x6C30B8, vtx, walkingPlank/walkingPlank]
+      - [0x6C31B8, mtx, walkingPlank/walkingPlank]
+      - [0x6C31F8, gfxSeg, walkingPlank/walkingPlank] 
           
-      - {start: 0x6C34F0, type: vtx, name: walkingPlank2/walkingPlank2}
-      - {start: 0x6C35F0, type: mtx, name: walkingPlank2/walkingPlank2}
-      - {start: 0x6C3630, type: gfxSeg, name: walkingPlank2/walkingPlank2}
+      - [0x6C34F0, vtx, walkingPlank2/walkingPlank2]
+      - [0x6C35F0, mtx, walkingPlank2/walkingPlank2]
+      - [0x6C3630, gfxSeg, walkingPlank2/walkingPlank2]
 
-      - {start: 0x6C3928, type: vtx, name: walkingPlank3/walkingPlank3}
-      - {start: 0x6C3A28, type: mtx, name: walkingPlank3/walkingPlank3}
-      - {start: 0x6C3A68, type: gfxSeg, name: walkingPlank3/walkingPlank3}
+      - [0x6C3928, vtx, walkingPlank3/walkingPlank3]
+      - [0x6C3A28, mtx, walkingPlank3/walkingPlank3]
+      - [0x6C3A68, gfxSeg, walkingPlank3/walkingPlank3]
 
-      - {start: 0x6C3D60, type: vtx, name: walkingPlank4/walkingPlank4}
-      - {start: 0x6C3E60, type: mtx, name: walkingPlank4/walkingPlank4}
-      - {start: 0x6C3EA0, type: gfxSeg, name: walkingPlank4/walkingPlank4}
+      - [0x6C3D60, vtx, walkingPlank4/walkingPlank4]
+      - [0x6C3E60, mtx, walkingPlank4/walkingPlank4]
+      - [0x6C3EA0, gfxSeg, walkingPlank4/walkingPlank4]
 
-      - {start: 0x6C4278, type: vtx, name: singularPlank/singularPlank}
-      - {start: 0x6C42B8, type: mtx, name: singularPlank/singularPlank}
+      - [0x6C4278, vtx, singularPlank/singularPlank]
+      - [0x6C42B8, mtx, singularPlank/singularPlank]
       - [0x6C42F8, ci8,     singularPlank.MEd.ci8, 64, 32]
       - [0x6C4AF8, palette, singularPlank.MEd.ci8]
-      - {start: 0x6C4CF8, type: gfxSeg, name: singularPlank/singularPlank}
+      - [0x6C4CF8, gfxSeg, singularPlank/singularPlank]
 
-      - {start: 0x6C4E00, type: vtx, name: roomSixStartPlatform/roomSixStartPlatform}
-      - {start: 0x6C4FC0, type: mtx, name: roomSixStartPlatform/roomSixStartPlatform}
-      - {start: 0x6C5000, type: gfxSeg, name: roomSixStartPlatform/roomSixStartPlatform}
+      - [0x6C4E00, vtx, roomSixStartPlatform/roomSixStartPlatform]
+      - [0x6C4FC0, mtx, roomSixStartPlatform/roomSixStartPlatform]
+      - [0x6C5000, gfxSeg, roomSixStartPlatform/roomSixStartPlatform]
 
-      - {start: 0x6C56A8, type: vtx, name: cavePlatform/cavePlatform}
-      - {start: 0x6C57A8, type: mtx, name: cavePlatform/cavePlatform}
-      - {start: 0x6C57E8, type: gfxSeg, name: cavePlatform/cavePlatform}
+      - [0x6C56A8, vtx, cavePlatform/cavePlatform]
+      - [0x6C57A8, mtx, cavePlatform/cavePlatform]
+      - [0x6C57E8, gfxSeg, cavePlatform/cavePlatform]
 
-      - {start: 0x6C5BC0, type: vtx, name: roomSixCrownPlatform/roomSixCrownPlatform}
-      - {start: 0x6C5D80, type: mtx, name: roomSixCrownPlatform/roomSixCrownPlatform}
-      - {start: 0x6C5DC0, type: gfxSeg, name: roomSixCrownPlatform/roomSixCrownPlatform}
+      - [0x6C5BC0, vtx, roomSixCrownPlatform/roomSixCrownPlatform]
+      - [0x6C5D80, mtx, roomSixCrownPlatform/roomSixCrownPlatform]
+      - [0x6C5DC0, gfxSeg, roomSixCrownPlatform/roomSixCrownPlatform]
 
-      - {start: 0x6C6468, type: vtx, name: roomSixSidePlatform/roomSixSidePlatform}
-      - {start: 0x6C66A8, type: mtx, name: roomSixSidePlatform/roomSixSidePlatform}
-      - {start: 0x6C66E8, type: gfxSeg, name: roomSixSidePlatform/roomSixSidePlatform}
+      - [0x6C6468, vtx, roomSixSidePlatform/roomSixSidePlatform]
+      - [0x6C66A8, mtx, roomSixSidePlatform/roomSixSidePlatform]
+      - [0x6C66E8, gfxSeg, roomSixSidePlatform/roomSixSidePlatform]
 
-      - {start: 0x6C6CD0, type: vtx, name: roomSevenLava/roomSevenLava}
-      - {start: 0x6C6D90, type: mtx, name: roomSevenLava/roomSevenLava}
+      - [0x6C6CD0, vtx, roomSevenLava/roomSevenLava]
+      - [0x6C6D90, mtx, roomSevenLava/roomSevenLava]
       - [0x6C6DD0] #B8000000
       - [0x6C6DD8, ci8,     lava.MEd.ci8, 32, 32]
       - [0x6C71D8] #B8000000
       - [0x6C71E0, palette, lava.MEd.ci8]
-      - {start: 0x6C73E0, type: gfxSeg, name: roomSevenLava/roomSevenLava}
+      - [0x6C73E0, gfxSeg, roomSevenLava/roomSevenLava]
 
-      - {start: 0x6C7528, type: vtx, name: roomSevenFloor/roomSevenFloor}
-      - {start: 0x6C75E8, type: mtx, name: roomSevenFloor/roomSevenFloor}
-      - {start: 0x6C7628, type: gfxSeg, name: roomSevenFloor/roomSevenFloor}
+      - [0x6C7528, vtx, roomSevenFloor/roomSevenFloor]
+      - [0x6C75E8, mtx, roomSevenFloor/roomSevenFloor]
+      - [0x6C7628, gfxSeg, roomSevenFloor/roomSevenFloor]
 
-      - {start: 0x6C7910, type: vtx, name: roomZeroLava/roomZeroLava}
-      - {start: 0x6C7990, type: mtx, name: roomZeroLava/roomZeroLava}
-      - {start: 0x6C79D0, type: gfxSeg, name: roomZeroLava/roomZeroLava}
+      - [0x6C7910, vtx, roomZeroLava/roomZeroLava]
+      - [0x6C7990, mtx, roomZeroLava/roomZeroLava]
+      - [0x6C79D0, gfxSeg, roomZeroLava/roomZeroLava]
 
-      - {start: 0x6C7AF8, type: vtx, name: roomOnePlatform/roomOnePlatform}
-      - {start: 0x6C7CF8, type: mtx, name: roomOnePlatform/roomOnePlatform}
-      - {start: 0x6C7D38, type: gfxSeg, name: roomOnePlatform/roomOnePlatform}
+      - [0x6C7AF8, vtx, roomOnePlatform/roomOnePlatform]
+      - [0x6C7CF8, mtx, roomOnePlatform/roomOnePlatform]
+      - [0x6C7D38, gfxSeg, roomOnePlatform/roomOnePlatform]
 
-      - {start: 0x6C80A0, type: vtx, name: roomSixCrownEdgePlatform/roomSixCrownEdgePlatform}
-      - {start: 0x6C82E0, type: mtx, name: roomSixCrownEdgePlatform/roomSixCrownEdgePlatform}
+      - [0x6C80A0, vtx, roomSixCrownEdgePlatform/roomSixCrownEdgePlatform]
+      - [0x6C82E0, mtx, roomSixCrownEdgePlatform/roomSixCrownEdgePlatform]
       - [0x6C8320] #B8000000
       - [0x6C8328, ci8,     roomSixCrownEdgePlatform.MEd.ci8, 16, 128]
       - [0x6C8B28] #B8000000
       - [0x6C8B30, palette, roomSixCrownEdgePlatform.MEd.ci8]
-      - {start: 0x6C8D30, type: gfxSeg, name: roomSixCrownEdgePlatform/roomSixCrownEdgePlatform}
+      - [0x6C8D30, gfxSeg, roomSixCrownEdgePlatform/roomSixCrownEdgePlatform]
 
-      - {start: 0x6C9248, type: vtx, name: roomSevenSpinRing/roomSevenSpinRing}
-      - {start: 0x6C9808, type: mtx, name: roomSevenSpinRing/roomSevenSpinRing}
-      - {start: 0x6C9848, type: gfxSeg, name: roomSevenSpinRing/roomSevenSpinRing}
+      - [0x6C9248, vtx, roomSevenSpinRing/roomSevenSpinRing]
+      - [0x6C9808, mtx, roomSevenSpinRing/roomSevenSpinRing]
+      - [0x6C9848, gfxSeg, roomSevenSpinRing/roomSevenSpinRing]
 
-      - {start: 0x6C9DD8, type: vtx, name: woodBlock/woodBlock}   
-      - {start: 0x6C9F18, type: mtx, name: woodBlock/woodBlock}
-      - {start: 0x6C9F58, type: gfxSeg, name: woodBlock/woodBlock}
+      - [0x6C9DD8, vtx, woodBlock/woodBlock]   
+      - [0x6C9F18, mtx, woodBlock/woodBlock]
+      - [0x6C9F58, gfxSeg, woodBlock/woodBlock]
 
-      - {start: 0x6CA340, type: vtx, name: ropes/ropes}
-      - {start: 0x6CA380, type: mtx, name: ropes/ropes}
+      - [0x6CA340, vtx, ropes/ropes]
+      - [0x6CA380, mtx, ropes/ropes]
       - [0x6CA3C0] #B8000000
       - [0x6CA3C8, rgba16, rope.MEd.rgba16, 32, 64]
-      - {start: 0x6CB3C8, type: gfxSeg, name: ropes/ropes}
+      - [0x6CB3C8, gfxSeg, ropes/ropes]
 
-      - {start: 0x6CB4B0, type: vtx, name: railOne/railOne}
-      - {start: 0x6CB670, type: mtx, name: railOne/railOne}
+      - [0x6CB4B0, vtx, railOne/railOne]
+      - [0x6CB670, mtx, railOne/railOne]
       - [0x6CB6B0] #B8000000
       - [0x6CB6B8, ci4,     railColor.MEd.ci4, 16, 16]
       - [0x6CB738] #B8000000
       - [0x6CB740, palette, railColor.MEd.ci4]
-      - {start: 0x6CB940, type: gfxSeg, name: railOne/railOne}
+      - [0x6CB940, gfxSeg, railOne/railOne]
 
-      - {start: 0x6CBD58, type: vtx, name: railTwo/railTwo}
-      - {start: 0x6CBF18, type: mtx, name: railTwo/railTwo}
-      - {start: 0x6CBF58, type: gfxSeg, name: railTwo/railTwo}
+      - [0x6CBD58, vtx, railTwo/railTwo]
+      - [0x6CBF18, mtx, railTwo/railTwo]
+      - [0x6CBF58, gfxSeg, railTwo/railTwo]
 
-      - {start: 0x6CC370, type: vtx, name: railThree/railThree}
-      - {start: 0x6CC530, type: mtx, name: railThree/railThree}
-      - {start: 0x6CC570, type: gfxSeg, name: railThree/railThree}
+      - [0x6CC370, vtx, railThree/railThree]
+      - [0x6CC530, mtx, railThree/railThree]
+      - [0x6CC570, gfxSeg, railThree/railThree]
 
-      - {start: 0x6CC988, type: vtx, name: railFour/railFour}
-      - {start: 0x6CCB48, type: mtx, name: railFour/railFour}
-      - {start: 0x6CCB88, type: gfxSeg, name: railFour/railFour}
+      - [0x6CC988, vtx, railFour/railFour]
+      - [0x6CCB48, mtx, railFour/railFour]
+      - [0x6CCB88, gfxSeg, railFour/railFour]
 
-      - {start: 0x6CCFA0, type: vtx, name: railFive/railFive}
-      - {start: 0x6CD160, type: mtx, name: railFive/railFive}
-      - {start: 0x6CD1A0, type: gfxSeg, name: railFive/railFive}
+      - [0x6CCFA0, vtx, railFive/railFive]
+      - [0x6CD160, mtx, railFive/railFive]
+      - [0x6CD1A0, gfxSeg, railFive/railFive]
 
-      - {start: 0x6CD5B8, type: vtx, name: railSix/railSix}
-      - {start: 0x6CD778, type: mtx, name: railSix/railSix}
-      - {start: 0x6CD7B8, type: gfxSeg, name: railSix/railSix}
+      - [0x6CD5B8, vtx, railSix/railSix]
+      - [0x6CD778, mtx, railSix/railSix]
+      - [0x6CD7B8, gfxSeg, railSix/railSix]
 
-      - {start: 0x6CDBD0, type: vtx, name: rail/rail}
-      - {start: 0x6CDD90, type: mtx, name: rail/rail}
-      - {start: 0x6CDDD0, type: gfxSeg, name: rail/rail}
+      - [0x6CDBD0, vtx, rail/rail]
+      - [0x6CDD90, mtx, rail/rail]
+      - [0x6CDDD0, gfxSeg, rail/rail]
 
-      - {start: 0x6CE128, type: vtx, name: ctCrate3/ctCrate3}
-      - {start: 0x6CE268, type: mtx, name: ctCrate3/ctCrate3}
-      - {start: 0x6CE2A8, type: gfxSeg, name: ctCrate3/ctCrate3}
+      - [0x6CE128, vtx, ctCrate3/ctCrate3]
+      - [0x6CE268, mtx, ctCrate3/ctCrate3]
+      - [0x6CE2A8, gfxSeg, ctCrate3/ctCrate3]
 
-      - {start: 0x6CE690, type: vtx, name: logOne/logOne}
-      - {start: 0x6CE730, type: mtx, name: logOne/logOne}
-      - {start: 0x6CE770, type: gfxSeg, name: logOne/logOne}
+      - [0x6CE690, vtx, logOne/logOne]
+      - [0x6CE730, mtx, logOne/logOne]
+      - [0x6CE770, gfxSeg, logOne/logOne]
 
-      - {start: 0x6CE8A8, type: vtx, name: fallBridgeSmall2/fallBridgeSmall2}
-      - {start: 0x6CE8E8, type: mtx, name: fallBridgeSmall2/fallBridgeSmall2}
-      - {start: 0x6CE928, type: gfxSeg, name: fallBridgeSmall2/fallBridgeSmall2}
+      - [0x6CE8A8, vtx, fallBridgeSmall2/fallBridgeSmall2]
+      - [0x6CE8E8, mtx, fallBridgeSmall2/fallBridgeSmall2]
+      - [0x6CE928, gfxSeg, fallBridgeSmall2/fallBridgeSmall2]
 
-      - {start: 0x6CEA30, type: vtx, name: logSetPiece/logSetPiece}
-      - {start: 0x6CEAC0, type: mtx, name: logSetPiece/logSetPiece}
-      - {start: 0x6CEB00, type: gfxSeg, name: logSetPiece/logSetPiece}
+      - [0x6CEA30, vtx, logSetPiece/logSetPiece]
+      - [0x6CEAC0, mtx, logSetPiece/logSetPiece]
+      - [0x6CEB00, gfxSeg, logSetPiece/logSetPiece]
 
-      - {start: 0x6CEC30, type: vtx, name: holeLog/holeLog}
-      - {start: 0x6CF4A0, type: mtx, name: holeLog/holeLog}
-      - {start: 0x6CF4E0, type: gfxSeg, name: holeLog/holeLog}
+      - [0x6CEC30, vtx, holeLog/holeLog]
+      - [0x6CF4A0, mtx, holeLog/holeLog]
+      - [0x6CF4E0, gfxSeg, holeLog/holeLog]
 
-      - {start: 0x6CF950, type: vtx, name: waterfallGroundCollision/waterfallGroundCollision}
-      - {start: 0x6CFA10, type: mtx, name: waterfallGroundCollision/waterfallGroundCollision}
-      - {start: 0x6CFA50, type: gfxSeg, name: waterfallGroundCollision/waterfallGroundCollision}   
+      - [0x6CF950, vtx, waterfallGroundCollision/waterfallGroundCollision]
+      - [0x6CFA10, mtx, waterfallGroundCollision/waterfallGroundCollision]
+      - [0x6CFA50, gfxSeg, waterfallGroundCollision/waterfallGroundCollision]   
 
-      - {start: 0x6CFAE8, type: vtx, name: waterfallBacksideCollision/waterfallBacksideCollision}
-      - {start: 0x6CFB68, type: mtx, name: waterfallBacksideCollision/waterfallBacksideCollision}
-      - {start: 0x6CFBA8, type: gfxSeg, name: waterfallBacksideCollision/waterfallBacksideCollision}
+      - [0x6CFAE8, vtx, waterfallBacksideCollision/waterfallBacksideCollision]
+      - [0x6CFB68, mtx, waterfallBacksideCollision/waterfallBacksideCollision]
+      - [0x6CFBA8, gfxSeg, waterfallBacksideCollision/waterfallBacksideCollision]
 
-      - {start: 0x6CFC88, type: vtx, name: groundCollision/groundCollision}
-      - {start: 0x6CFEB8, type: mtx, name: groundCollision/groundCollision}
-      - {start: 0x6CFEF8, type: gfxSeg, name: groundCollision/groundCollision}
+      - [0x6CFC88, vtx, groundCollision/groundCollision]
+      - [0x6CFEB8, mtx, groundCollision/groundCollision]
+      - [0x6CFEF8, gfxSeg, groundCollision/groundCollision]
 
-      - {start: 0x6D0058, type: vtx, name: holeLogBottom/holeLogBottom}
-      - {start: 0x6D01D8, type: mtx, name: holeLogBottom/holeLogBottom}
-      - {start: 0x6D0218, type: gfxSeg, name: holeLogBottom/holeLogBottom}
+      - [0x6D0058, vtx, holeLogBottom/holeLogBottom]
+      - [0x6D01D8, mtx, holeLogBottom/holeLogBottom]
+      - [0x6D0218, gfxSeg, holeLogBottom/holeLogBottom]
 
-      - {start: 0x6D03E0, type: vtx, name: extThree/extThree}
-      - {start: 0x6D0AD0, type: mtx, name: extThree/extThree}
+      - [0x6D03E0, vtx, extThree/extThree]
+      - [0x6D0AD0, mtx, extThree/extThree]
       - [0x6D0B10] #B8000000
       - [0x6D0B18, ci8,     ext3Wall.MEd.ci8, 64, 32]
       - [0x6D1318] #B8000000
       - [0x6D1320, palette, ext3Wall.MEd.ci8]
-      - {start: 0x6D1520, type: gfxSeg, name: extThree/extThree}
+      - [0x6D1520, gfxSeg, extThree/extThree]
 
-      - {start: 0x6D1F98, type: vtx, name: extFour/extFour}
-      - {start: 0x6D2278, type: mtx, name: extFour/extFour}
-      - {start: 0x6D22B8, type: gfxSeg, name: extFour/extFour}
+      - [0x6D1F98, vtx, extFour/extFour]
+      - [0x6D2278, mtx, extFour/extFour]
+      - [0x6D22B8, gfxSeg, extFour/extFour]
 
-      - {start: 0x6D29E0, type: vtx, name: extZero/extZero}
-      - {start: 0x6D2CE0, type: mtx, name: extZero/extZero}
-      - {start: 0x6D2D20, type: gfxSeg, name: extZero/extZero}
+      - [0x6D29E0, vtx, extZero/extZero]
+      - [0x6D2CE0, mtx, extZero/extZero]
+      - [0x6D2D20, gfxSeg, extZero/extZero]
 
-      - {start: 0x6D32C0, type: vtx, name: extOne/extOne}
-      - {start: 0x6D4280, type: mtx, name: extOne/extOne}
-      - {start: 0x6D42C0, type: gfxSeg, name: extOne/extOne}
+      - [0x6D32C0, vtx, extOne/extOne]
+      - [0x6D4280, mtx, extOne/extOne]
+      - [0x6D42C0, gfxSeg, extOne/extOne]
 
-      - {start: 0x6D4F40, type: vtx, name: extTwo/extTwo}
-      - {start: 0x6D51B0, type: mtx, name: extTwo/extTwo}
-      - {start: 0x6D51F0, type: gfxSeg, name: extTwo/extTwo}
+      - [0x6D4F40, vtx, extTwo/extTwo]
+      - [0x6D51B0, mtx, extTwo/extTwo]
+      - [0x6D51F0, gfxSeg, extTwo/extTwo]
 
-      - {start: 0x6D5750, type: vtx, name: rockFloor/rockFloor}
-      - {start: 0x6D5810, type: mtx, name: rockFloor/rockFloor}
-      - {start: 0x6D5850, type: gfxSeg, name: rockFloor/rockFloor}
+      - [0x6D5750, vtx, rockFloor/rockFloor]
+      - [0x6D5810, mtx, rockFloor/rockFloor]
+      - [0x6D5850, gfxSeg, rockFloor/rockFloor]
 
-      - {start: 0x6D59C8, type: vtx, name: rockFloor2/rockFloor2}
-      - {start: 0x6D5A68, type: mtx, name: rockFloor2/rockFloor2}
-      - {start: 0x6D5AA8, type: gfxSeg, name: rockFloor2/rockFloor2}
+      - [0x6D59C8, vtx, rockFloor2/rockFloor2]
+      - [0x6D5A68, mtx, rockFloor2/rockFloor2]
+      - [0x6D5AA8, gfxSeg, rockFloor2/rockFloor2]
 
-      - {start: 0x6D5C10, type: vtx, name: extFive/extFive}
-      - {start: 0x6D5F10, type: mtx, name: extFive/extFive}
-      - {start: 0x6D5F50, type: gfxSeg, name: extFive/extFive}
+      - [0x6D5C10, vtx, extFive/extFive]
+      - [0x6D5F10, mtx, extFive/extFive]
+      - [0x6D5F50, gfxSeg, extFive/extFive]
 
-      - {start: 0x6D65E8, type: vtx, name: extThreePartTwo/extThreePartTwo}
-      - {start: 0x6D66B8, type: mtx, name: extThreePartTwo/extThreePartTwo}
-      - {start: 0x6D66F8, type: gfxSeg, name: extThreePartTwo/extThreePartTwo}
+      - [0x6D65E8, vtx, extThreePartTwo/extThreePartTwo]
+      - [0x6D66B8, mtx, extThreePartTwo/extThreePartTwo]
+      - [0x6D66F8, gfxSeg, extThreePartTwo/extThreePartTwo]
 
-      - {start: 0x6D69E8, type: vtx, name: extFivePartTwo/extFivePartTwo}
-      - {start: 0x6D6C38, type: mtx, name: extFivePartTwo/extFivePartTwo}
-      - {start: 0x6D6C78, type: gfxSeg, name: extFivePartTwo/extFivePartTwo}
+      - [0x6D69E8, vtx, extFivePartTwo/extFivePartTwo]
+      - [0x6D6C38, mtx, extFivePartTwo/extFivePartTwo]
+      - [0x6D6C78, gfxSeg, extFivePartTwo/extFivePartTwo]
 
-      - {start: 0x6D72A0, type: vtx, name: extSix/extSix}
-      - {start: 0x6D7480, type: mtx, name: extSix/extSix}
-      - {start: 0x6D74C0, type: gfxSeg, name: extSix/extSix}
+      - [0x6D72A0, vtx, extSix/extSix]
+      - [0x6D7480, mtx, extSix/extSix]
+      - [0x6D74C0, gfxSeg, extSix/extSix]
 
-      - {start: 0x6D7838, type: vtx, name: extSeven/extSeven}
-      - {start: 0x6D7C28, type: mtx, name: extSeven/extSeven}
-      - {start: 0x6D7C68, type: gfxSeg, name: extSeven/extSeven}
+      - [0x6D7838, vtx, extSeven/extSeven]
+      - [0x6D7C28, mtx, extSeven/extSeven]
+      - [0x6D7C68, gfxSeg, extSeven/extSeven]
 
-      - {start: 0x6D84E8, type: vtx, name: extEight/extEight}
-      - {start: 0x6D87F8, type: mtx, name: extEight/extEight}
-      - {start: 0x6D8838, type: gfxSeg, name: extEight/extEight}
+      - [0x6D84E8, vtx, extEight/extEight]
+      - [0x6D87F8, mtx, extEight/extEight]
+      - [0x6D8838, gfxSeg, extEight/extEight]
 
-      - {start: 0x6D8F78, type: vtx, name: extEightBridge/extEightBridge}
-      - {start: 0x6D9078, type: mtx, name: extEightBridge/extEightBridge}
-      - {start: 0x6D90B8, type: gfxSeg, name: extEightBridge/extEightBridge}
+      - [0x6D8F78, vtx, extEightBridge/extEightBridge]
+      - [0x6D9078, mtx, extEightBridge/extEightBridge]
+      - [0x6D90B8, gfxSeg, extEightBridge/extEightBridge]
 
-      - {start: 0x6D9310, type: vtx, name: extNine/extNine}
-      - {start: 0x6D96E0, type: mtx, name: extNine/extNine}
-      - {start: 0x6D9720, type: gfxSeg, name: extNine/extNine}
+      - [0x6D9310, vtx, extNine/extNine]
+      - [0x6D96E0, mtx, extNine/extNine]
+      - [0x6D9720, gfxSeg, extNine/extNine]
 
-      - {start: 0x6D9F78, type: vtx, name: extTen/extTen}
-      - {start: 0x6DA7A8, type: mtx, name: extTen/extTen}
-      - {start: 0x6DA7E8, type: gfxSeg, name: extTen/extTen}
+      - [0x6D9F78, vtx, extTen/extTen]
+      - [0x6DA7A8, mtx, extTen/extTen]
+      - [0x6DA7E8, gfxSeg, extTen/extTen]
 
-      - {start: 0x6DB398, type: vtx, name: extEleven/extEleven}
-      - {start: 0x6DC0E8, type: mtx, name: extEleven/extEleven}
-      - {start: 0x6DC128, type: gfxSeg, name: extEleven/extEleven}
+      - [0x6DB398, vtx, extEleven/extEleven]
+      - [0x6DC0E8, mtx, extEleven/extEleven]
+      - [0x6DC128, gfxSeg, extEleven/extEleven]
 
-      - {start: 0x6DCEC8, type: vtx, name: intZero/intZero}
-      - {start: 0x6DD408, type: mtx, name: intZero/intZero}
+      - [0x6DCEC8, vtx, intZero/intZero]
+      - [0x6DD408, mtx, intZero/intZero]
       - [0x6DD448] #B8000000
       - [0x6DD450, ci8,     lavaWall.MEd.ci8, 32, 64]
       - [0x6DDC50] #B8000000
       - [0x6DDC58, palette, lavaWall.MEd.ci8]
-      - {start: 0x6DDE58, type: gfxSeg, name: intZero/intZero}
+      - [0x6DDE58, gfxSeg, intZero/intZero]
 
-      - {start: 0x6DE758, type: vtx, name: intOne/intOne}
-      - {start: 0x6DF778, type: mtx, name: intOne/intOne}
-      - {start: 0x6DF7B8, type: gfxSeg, name: intOne/intOne}
+      - [0x6DE758, vtx, intOne/intOne]
+      - [0x6DF778, mtx, intOne/intOne]
+      - [0x6DF7B8, gfxSeg, intOne/intOne]
 
-      - {start: 0x6E0D50, type: vtx, name: intTwo/intTwo}
-      - {start: 0x6E1050, type: mtx, name: intTwo/intTwo}
-      - {start: 0x6E1090, type: gfxSeg, name: intTwo/intTwo}
+      - [0x6E0D50, vtx, intTwo/intTwo]
+      - [0x6E1050, mtx, intTwo/intTwo]
+      - [0x6E1090, gfxSeg, intTwo/intTwo]
 
-      - {start: 0x6E1558, type: vtx, name: intThree/intThree}
-      - {start: 0x6E1798, type: mtx, name: intThree/intThree}
-      - {start: 0x6E17D8, type: gfxSeg, name: intThree/intThree}
+      - [0x6E1558, vtx, intThree/intThree]
+      - [0x6E1798, mtx, intThree/intThree]
+      - [0x6E17D8, gfxSeg, intThree/intThree]
 
-      - {start: 0x6E1C50, type: vtx, name: intFour/intFour}
-      - {start: 0x6E1F10, type: mtx, name: intFour/intFour}
-      - {start: 0x6E1F50, type: gfxSeg, name: intFour/intFour}
+      - [0x6E1C50, vtx, intFour/intFour]
+      - [0x6E1F10, mtx, intFour/intFour]
+      - [0x6E1F50, gfxSeg, intFour/intFour]
 
-      - {start: 0x6E23F8, type: vtx, name: intSix/intSix}
-      - {start: 0x6E27D8, type: mtx, name: intSix/intSix}
-      - {start: 0x6E2818, type: gfxSeg, name: intSix/intSix}
+      - [0x6E23F8, vtx, intSix/intSix]
+      - [0x6E27D8, mtx, intSix/intSix]
+      - [0x6E2818, gfxSeg, intSix/intSix]
 
-      - {start: 0x6E2EB8, type: vtx, name: intSeven/intSeven}
-      - {start: 0x6E3078, type: mtx, name: intSeven/intSeven}
-      - {start: 0x6E30B8, type: gfxSeg, name: intSeven/intSeven}
+      - [0x6E2EB8, vtx, intSeven/intSeven]
+      - [0x6E3078, mtx, intSeven/intSeven]
+      - [0x6E30B8, gfxSeg, intSeven/intSeven]
 
-      - {start: 0x6E3330, type: vtx, name: intFive/intFive}
-      - {start: 0x6E36F0, type: mtx, name: intFive/intFive}
-      - {start: 0x6E3730, type: gfxSeg, name: intFive/intFive}
+      - [0x6E3330, vtx, intFive/intFive]
+      - [0x6E36F0, mtx, intFive/intFive]
+      - [0x6E3730, gfxSeg, intFive/intFive]
 
-      - {start: 0x6E3C20, type: vtx, name: railFloorOne/railFloorOne}
-      - {start: 0x6E3C60, type: mtx, name: railFloorOne/railFloorOne}
+      - [0x6E3C20, vtx, railFloorOne/railFloorOne]
+      - [0x6E3C60, mtx, railFloorOne/railFloorOne]
       - [0x6E3CA0, ci8,     railTrack.MEd.ci8, 32, 64]
       - [0x6E44A0, palette, railTrack.MEd.ci8]
-      - {start: 0x6E46A0, type: gfxSeg, name: railFloorOne/railFloorOne}
+      - [0x6E46A0, gfxSeg, railFloorOne/railFloorOne]
 
-      - {start: 0x6E47A8, type: vtx, name: singleRailTrack/singleRailTrack}
-      - {start: 0x6E47E8, type: mtx, name: singleRailTrack/singleRailTrack}
+      - [0x6E47A8, vtx, singleRailTrack/singleRailTrack]
+      - [0x6E47E8, mtx, singleRailTrack/singleRailTrack]
       - [0x6E4828, ci8,     singleRailTrack.MEd.ci8, 32, 32]
       - [0x6E4C28, palette, singleRailTrack.MEd.ci8]
-      - {start: 0x6E4E28, type: gfxSeg, name: singleRailTrack/singleRailTrack}
+      - [0x6E4E28, gfxSeg, singleRailTrack/singleRailTrack]
 
-      - {start: 0x6E4F30, type: vtx, name: singleRailTrack2/singleRailTrack2}
-      - {start: 0x6E4F70, type: mtx, name: singleRailTrack2/singleRailTrack2}
+      - [0x6E4F30, vtx, singleRailTrack2/singleRailTrack2]
+      - [0x6E4F70, mtx, singleRailTrack2/singleRailTrack2]
       - [0x6E4FB0, ci8,     singleRailTrack2.MEd.ci8, 32, 32]
       - [0x6E53B0, palette, singleRailTrack2.MEd.ci8]
-      - {start: 0x6E55B0, type: gfxSeg, name: singleRailTrack2/singleRailTrack2}
+      - [0x6E55B0, gfxSeg, singleRailTrack2/singleRailTrack2]
 
-      - {start: 0x6E56B8, type: vtx, name: branchRail/branchRail}
-      - {start: 0x6E56F8, type: mtx, name: branchRail/branchRail}
+      - [0x6E56B8, vtx, branchRail/branchRail]
+      - [0x6E56F8, mtx, branchRail/branchRail]
       - [0x6E5738, ci8,     branchRail.MEd.ci8, 32, 64]
       - [0x6E5F38, palette, branchRail.MEd.ci8]
-      - {start: 0x6E6138, type: gfxSeg, name: branchRail/branchRail}
+      - [0x6E6138, gfxSeg, branchRail/branchRail]
 
-      - {start: 0x6E6240, type: vtx, name: turnRail/turnRail}
-      - {start: 0x6E6280, type: mtx, name: turnRail/turnRail}
+      - [0x6E6240, vtx, turnRail/turnRail]
+      - [0x6E6280, mtx, turnRail/turnRail]
       - [0x6E62C0, ci8,     turnRail.MEd.ci8, 32, 64]
       - [0x6E6AC0, palette, turnRail.MEd.ci8]
-      - {start: 0x6E6CC0, type: gfxSeg, name: turnRail/turnRail}
+      - [0x6E6CC0, gfxSeg, turnRail/turnRail]
 
-      - {start: 0x6E6DC8, type: vtx, name: singleRailTrack3/singleRailTrack3}
-      - {start: 0x6E6E08, type: mtx, name: singleRailTrack3/singleRailTrack3}
-      - {start: 0x6E6E48, type: gfxSeg, name: singleRailTrack3/singleRailTrack3}
+      - [0x6E6DC8, vtx, singleRailTrack3/singleRailTrack3]
+      - [0x6E6E08, mtx, singleRailTrack3/singleRailTrack3]
+      - [0x6E6E48, gfxSeg, singleRailTrack3/singleRailTrack3]
 
-      - {start: 0x6E6F50, type: vtx, name: brokenMinecartRail/brokenMinecartRail}
-      - {start: 0x6E72F0, type: mtx, name: brokenMinecartRail/brokenMinecartRail}
-      - {start: 0x6E7330, type: gfxSeg, name: brokenMinecartRail/brokenMinecartRail}
+      - [0x6E6F50, vtx, brokenMinecartRail/brokenMinecartRail]
+      - [0x6E72F0, mtx, brokenMinecartRail/brokenMinecartRail]
+      - [0x6E7330, gfxSeg, brokenMinecartRail/brokenMinecartRail]
 
-      - {start: 0x6E7800, type: vtx, name: brokenMinecartRail2/brokenMinecartRail2}
-      - {start: 0x6E7B50, type: mtx, name: brokenMinecartRail2/brokenMinecartRail2}
-      - {start: 0x6E7B90, type: gfxSeg, name: brokenMinecartRail2/brokenMinecartRail2}
+      - [0x6E7800, vtx, brokenMinecartRail2/brokenMinecartRail2]
+      - [0x6E7B50, mtx, brokenMinecartRail2/brokenMinecartRail2]
+      - [0x6E7B90, gfxSeg, brokenMinecartRail2/brokenMinecartRail2]
 
-      - {start: 0x6E8108, type: vtx, name: minecart/minecart}
-      - {start: 0x6E8708, type: mtx, name: minecart/minecart}
+      - [0x6E8108, vtx, minecart/minecart]
+      - [0x6E8708, mtx, minecart/minecart]
       - [0x6E8748] #B8000000
       - [0x6E8750, ci4,     planks.MEd.ci4, 64, 64]
       - [0x6E8F50] #B8000000
       - [0x6E8F58, palette, planks.MEd.ci4]
       - [0x6E9158] #B8000000
       - [0x6E9160, i4, caveWood.MEd.i4, 32, 64] #i think??? it just looks like static otherwise lol
-      - {start: 0x6E9560, type: gfxSeg, name: minecart/minecart}
+      - [0x6E9560, gfxSeg, minecart/minecart]
 
-      - {start: 0x6E9E28, type: vtx, name: doorFrame/doorFrame}
-      - {start: 0x6EA1E8, type: mtx, name: doorFrame/doorFrame}
+      - [0x6E9E28, vtx, doorFrame/doorFrame]
+      - [0x6EA1E8, mtx, doorFrame/doorFrame]
       - [0x6EA228] #B8000000
       - [0x6EA230, rgba16, topper.MEd.rgba16, 32, 32]
-      - {start: 0x6EAA30, type: gfxSeg, name: doorFrame/doorFrame}
+      - [0x6EAA30, gfxSeg, doorFrame/doorFrame]
 
-      - {start: 0x6EB228, type: vtx, name: doorFrame2/doorFrame2}
-      - {start: 0x6EB5E8, type: mtx, name: doorFrame2/doorFrame2}
-      - {start: 0x6EB628, type: gfxSeg, name: doorFrame2/doorFrame2}
+      - [0x6EB228, vtx, doorFrame2/doorFrame2]
+      - [0x6EB5E8, mtx, doorFrame2/doorFrame2]
+      - [0x6EB628, gfxSeg, doorFrame2/doorFrame2]
 
-      - {start: 0x6EBE20, type: vtx, name: fernPlant/fernPlant}
-      - {start: 0x6EBE60, type: mtx, name: fernPlant/fernPlant}
+      - [0x6EBE20, vtx, fernPlant/fernPlant]
+      - [0x6EBE60, mtx, fernPlant/fernPlant]
       - [0x6EBEA0, ci8,     fernPlant.MEd.ci8, 48, 40]
       - [0x6EC620, palette, fernPlant.MEd.ci8]
-      - {start: 0x6EC820, type: gfxSeg, name: fernPlant/fernPlant}
+      - [0x6EC820, gfxSeg, fernPlant/fernPlant]
 
-      - {start: 0x6EC928, type: vtx, name: waterfall/waterfall}
-      - {start: 0x6EC9C8, type: mtx, name: waterfall/waterfall}
+      - [0x6EC928, vtx, waterfall/waterfall]
+      - [0x6EC9C8, mtx, waterfall/waterfall]
       - [0x6ECA08] #B8000000
       - [0x6ECA10, ci4,     water.MEd.ci4, 64, 64]
       - [0x6ED210] #B8000000
       - [0x6ED218, palette, water.MEd.ci4]
-      - {start: 0x6ED418, type: gfxSeg, name: waterfall/waterfall}
+      - [0x6ED418, gfxSeg, waterfall/waterfall]
 
-      - {start: 0x6ED550, type: vtx, name: water/water}
-      - {start: 0x6ED5A0, type: mtx, name: water/water}
+      - [0x6ED550, vtx, water/water]
+      - [0x6ED5A0, mtx, water/water]
       - [0x6ED5E0] #B8000000
       - [0x6ED5E8, ci4,     swampWater.MEd.ci4, 64, 64]
       - [0x6EDDE8] #B8000000
       - [0x6EDDF0, palette, swampWater.MEd.ci4]
-      - {start: 0x6EDFF0, type: gfxSeg, name: water/water}
+      - [0x6EDFF0, gfxSeg, water/water]
 
-      - {start: 0x6EE100, type: vtx, name: water2/water2}
-      - {start: 0x6EE150, type: mtx, name: water2/water2}
-      - {start: 0x6EE190, type: gfxSeg, name: water2/water2}
+      - [0x6EE100, vtx, water2/water2]
+      - [0x6EE150, mtx, water2/water2]
+      - [0x6EE190, gfxSeg, water2/water2]
 
       - {start: 0x6ee2a0, type: collision, name: lilypad/lilypad, args: "Verts"}
       - {start: 0x6ee300, type: collision, name: lilypad/lilypad, args: "Tris"}
@@ -2313,11 +2338,11 @@ segments:
       - {start: 0x6fab20, type: collision, name: water/water, args: "Header"}
       - [0x6fab34, bin, whaermrr.MEd]
 
-      - {start: 0x6FAB40, type: mtx, name: jlScope2/jlScope2}
-      - {start: 0x6fab80, type: lights, name: jlScope2/jlScope2}
+      - [0x6FAB40, mtx, jlScope2/jlScope2]
+      - [0x6fab80, lights, jlScope2/jlScope2]
 
-      - {start: 0x6FAB98, type: vtx, name: rockGolem/rockGolem}
-      - {start: 0x6FAE58, type: mtx, name: rockGolem/rockGolem}
+      - [0x6FAB98, vtx, rockGolem/rockGolem]
+      - [0x6FAE58, mtx, rockGolem/rockGolem]
       - [0x6FAE98] #B8000000
       - [0x6FAEA0, ci4,     golem.MEd.ci4, 64, 64]
       - [0x6FB6A0] #B8000000
@@ -2326,14 +2351,14 @@ segments:
       - [0x6FB8B0, ci8,     golemFace.MEd.ci8, 64, 64] 
       - [0x6FC8B0] #B8000000
       - [0x6FC8B8, palette, golemFace.MEd.ci8]
-      - {start: 0x6FCAB8, type: gfxSeg, name: rockGolem/rockGolem}
+      - [0x6FCAB8, gfxSeg, rockGolem/rockGolem]
 
-      - {start: 0x6FD058, type: vtx, name: rockGolemLeg/rockGolemLeg}
-      - {start: 0x6FD2F8, type: mtx, name: rockGolemLeg/rockGolemLeg}
-      - {start: 0x6FD338, type: gfxSeg, name: rockGolemLeg/rockGolemLeg}
+      - [0x6FD058, vtx, rockGolemLeg/rockGolemLeg]
+      - [0x6FD2F8, mtx, rockGolemLeg/rockGolemLeg]
+      - [0x6FD338, gfxSeg, rockGolemLeg/rockGolemLeg]
 
-      - {start: 0x6FD890, type: vtx, name: rockGolemArm/rockGolemArm}
-      - {start: 0x6FDC00, type: mtx, name: rockGolemArm/rockGolemArm}
+      - [0x6FD890, vtx, rockGolemArm/rockGolemArm]
+      - [0x6FDC00, mtx, rockGolemArm/rockGolemArm]
       - [0x6FDC40] #B8000000
       - [0x6FDC48, ci4,     rock2.MEd.ci4, 32, 32]
       - [0x6FDE48] #B8000000
@@ -2346,59 +2371,59 @@ segments:
       - [0x6FE468, ci4,     rock4.MEd.ci4, 32, 32]
       - [0x6FE668] #B8000000
       - [0x6FE670, palette, rock4.MEd.ci4]
-      - {start: 0x6FE870, type: gfxSeg, name: rockGolemArm/rockGolemArm}
+      - [0x6FE870, gfxSeg, rockGolemArm/rockGolemArm]
 
-      - {start: 0x6FEFC8, type: vtx, name: rockGolemLeg2/rockGolemLeg2}
-      - {start: 0x6FF108, type: mtx, name: rockGolemLeg2/rockGolemLeg2}
-      - {start: 0x6FF148, type: gfxSeg, name: rockGolemLeg2/rockGolemLeg2}
+      - [0x6FEFC8, vtx, rockGolemLeg2/rockGolemLeg2]
+      - [0x6FF108, mtx, rockGolemLeg2/rockGolemLeg2]
+      - [0x6FF148, gfxSeg, rockGolemLeg2/rockGolemLeg2]
 
-      - {start: 0x6FF3E0, type: vtx, name: rockGolemBody/rockGolemBody}
-      - {start: 0x6FF720, type: mtx, name: rockGolemBody/rockGolemBody}
-      - {start: 0x6FF760, type: gfxSeg, name: rockGolemBody/rockGolemBody}
+      - [0x6FF3E0, vtx, rockGolemBody/rockGolemBody]
+      - [0x6FF720, mtx, rockGolemBody/rockGolemBody]
+      - [0x6FF760, gfxSeg, rockGolemBody/rockGolemBody]
 
-      - {start: 0x6FFDD8, type: vtx, name: rockGolemLeg3/rockGolemLeg3}
-      - {start: 0x700078, type: mtx, name: rockGolemLeg3/rockGolemLeg3}
-      - {start: 0x7000B8, type: gfxSeg, name: rockGolemLeg3/rockGolemLeg3}
+      - [0x6FFDD8, vtx, rockGolemLeg3/rockGolemLeg3]
+      - [0x700078, mtx, rockGolemLeg3/rockGolemLeg3]
+      - [0x7000B8, gfxSeg, rockGolemLeg3/rockGolemLeg3]
 
-      - {start: 0x700610, type: vtx, name: rockGolemElbow/rockGolemElbow}
-      - {start: 0x700750, type: mtx, name: rockGolemElbow/rockGolemElbow}
-      - {start: 0x700790, type: gfxSeg, name: rockGolemElbow/rockGolemElbow}
+      - [0x700610, vtx, rockGolemElbow/rockGolemElbow]
+      - [0x700750, mtx, rockGolemElbow/rockGolemElbow]
+      - [0x700790, gfxSeg, rockGolemElbow/rockGolemElbow]
       
-      - {start: 0x700a28, type: vtx, name: rockGolemArm2/rockGolemArm2}
-      - {start: 0x700d98, type: mtx, name: rockGolemArm2/rockGolemArm2}
-      - {start: 0x700dd8, type: gfxSeg, name: rockGolemArm2/rockGolemArm2}
+      - [0x700a28, vtx, rockGolemArm2/rockGolemArm2]
+      - [0x700d98, mtx, rockGolemArm2/rockGolemArm2]
+      - [0x700dd8, gfxSeg, rockGolemArm2/rockGolemArm2]
 
-      - {start: 0x701530, type: mtx, name: unkunk}
-      - {start: 0x701570, type: gfxSeg, name: unkunk}
+      - [0x701530, mtx, unkunk]
+      - [0x701570, gfxSeg, unkunk]
       
-      - {start: 0x7015c8, type: vtx, name: spiderRock/spiderRock}
-      - {start: 0x701858, type: mtx, name: spiderRock/spiderRock}
+      - [0x7015c8, vtx, spiderRock/spiderRock]
+      - [0x701858, mtx, spiderRock/spiderRock]
       - [0x701898] #B8000000
       - [0x7018a0, ci8,     spiderRock.MEd.ci8, 40, 40]
       - [0x701ee0] #B8000000
       - [0x701ee8, palette, spiderRock.MEd.ci8]
-      - {start: 0x7020E8, type: gfxSeg, name: spiderRock/spiderRock}
+      - [0x7020E8, gfxSeg, spiderRock/spiderRock]
     
-      - {start: 0x702388, type: mtx, name: unkunk2}
-      - {start: 0x7023C8, type: gfxSeg, name: unkunk2}
+      - [0x702388, mtx, unkunk2]
+      - [0x7023C8, gfxSeg, unkunk2]
 
-      - {start: 0x7023E8, type: vtx, name: fish/fish}
-      - {start: 0x702478, type: mtx, name: fish/fish}
+      - [0x7023E8, vtx, fish/fish]
+      - [0x702478, mtx, fish/fish]
       - [0x7024b8] #B8000000
       - [0x7024c0, rgba16, fish.MEd.rgba16, 48, 40]
-      - {start: 0x7033C0, type: gfxSeg, name: fish/fish}
+      - [0x7033C0, gfxSeg, fish/fish]
     
-      - {start: 0x703518, type: mtx, name: unkunk3}
-      - {start: 0x703558, type: gfxSeg, name: unkunk3}
+      - [0x703518, mtx, unkunk3]
+      - [0x703558, gfxSeg, unkunk3]
 
-      - {start: 0x703578, type: vtx, name: fishTail/fishTail}
-      - {start: 0x7035c8, type: mtx, name: fishTail/fishTail}
+      - [0x703578, vtx, fishTail/fishTail]
+      - [0x7035c8, mtx, fishTail/fishTail]
       - [0x703608] #B8000000
       - [0x703610, rgba16, fishTail.MEd.rgba16, 32, 48]
-      - {start: 0x704210, type: gfxSeg, name: fishTail/fishTail}
+      - [0x704210, gfxSeg, fishTail/fishTail]
 
-      - {start: 0x704308, type: mtx, name: unkunk4}
-      - {start: 0x704348, type: gfxSeg, name: unkunk4}
+      - [0x704308, mtx, unkunk4]
+      - [0x704348, gfxSeg, unkunk4]
 
       - [0x704368, animHeader, anim/actors/golem/golemSleep]
       - [0x704398, animArray, anim/actors/golem/golemSleep, 20, 8]

@@ -71,8 +71,7 @@ class N64SegRoomActor(CommonSegCodeSubsegment):
             lines.append("")
             lines.append("RoomActor %s = {" % (sym.name))
 
-        byteData = bytearray(sprite_data)
-        data = struct.unpack('>iffffffifffiffffiiiiiiii', byteData)
+        data = struct.unpack('>iffffffifffiffffiiiiiiii', sprite_data)
         i = 0
         while i < len(data):
             use = data[i]
@@ -90,6 +89,9 @@ class N64SegRoomActor(CommonSegCodeSubsegment):
                             break
                         actorAt += 1
                     enum += 1
+            elif i == 1: #Position
+                use = "{"+str(data[i])+","+str(data[i+1])+","+str(data[i+2])+"}"
+                i += 2
             lines.append(f"    {use},")
             i += 1
 

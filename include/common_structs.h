@@ -902,7 +902,7 @@ typedef struct SpriteActor {
 typedef struct Collectable {
     s32 id;
     Vec3f position;
-    s32 unk10;
+    u32 flagToAppear; //flag within the current level to reveal this collectable (best for hidden crowns)
     s32 unk14;
     s32 unk18;
     s32 unk1C;

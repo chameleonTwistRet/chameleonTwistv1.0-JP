@@ -256,6 +256,6 @@ if __name__ == "__main__":
     try:
         args = parser.parse_args()
     except SystemExit:
-        start("White", "chameleons/White")
+        start("JungleLand", "levelGroup/JungleLand")
         exit()
     start(args.group, args.outfileName)

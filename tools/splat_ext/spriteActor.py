@@ -71,10 +71,15 @@ class N64SegSpriteActor(CommonSegCodeSubsegment):
             lines.append("")
             lines.append("SpriteActor %s = {" % (sym.name))
 
-        byteData = bytearray(sprite_data)
-        data = struct.unpack('>iiffffffiifiiiiiiiii', byteData)
-        for v in data: 
-            lines.append(f"    {v},")
+        data = struct.unpack('>iiffffffiifiiiiiiiii', sprite_data)
+        i = 0
+        while i < len(data):
+            use = data[i]
+            if i in [2, 5]: #Position
+                use = "{"+str(data[i])+","+str(data[i+1])+","+str(data[i+2])+"}"
+                i += 2
+            lines.append(f"    {use},")
+            i += 1
 
         if not self.data_only:
             lines.append("};")

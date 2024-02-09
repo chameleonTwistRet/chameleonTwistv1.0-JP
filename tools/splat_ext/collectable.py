@@ -70,10 +70,29 @@ class N64SegCollectable(CommonSegCodeSubsegment):
             lines.append("")
             lines.append("Collectable %s = {" % (sym.name))
 
-        byteData = bytearray(sprite_data)
-        data = struct.unpack('>ifffiiii', byteData)
-        for v in data: 
-            lines.append(f"    {v},")
+        data = struct.unpack('>ifffIiii', sprite_data)
+        i = 0
+        while i < len(data):
+            use = data[i]
+            if i == 0: #Actor ID
+                enums = open("include/enums.h", "r", encoding="UTF-8").readlines()
+                enum = 0
+                actorAt = 0 #number in the actor enum
+                reading = False
+                while enum < len(enums):
+                    enumLine = enums[enum]
+                    if enumLine.find("actorIDs") != -1: reading = True
+                    elif reading:
+                        if actorAt == use:
+                            use = enumLine.split(",")[0].split("	")[-1].strip()
+                            break
+                        actorAt += 1
+                    enum += 1
+            elif i == 1: #Position
+                use = "{"+str(data[i])+","+str(data[i+1])+","+str(data[i+2])+"}"
+                i += 2
+            lines.append(f"    {use},")
+            i += 1
 
         if not self.data_only:
             lines.append("};")
