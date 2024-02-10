@@ -1027,7 +1027,8 @@ typedef struct LevelMap {
     s32 width; // width for ^
     s32 height; // height for ^^
     RoomSettings* dungeonRooms; //pointer to the array of RoomSettings for the dungeon.
-    s32* roomsPointer; //pointer to the array of rooms for this map. is usually directly above the width/this struct.
+    void* roomsPointer; //pointer to the array of rooms for this map. is usually directly above the width/this struct.
+    //^ type s32*, but it throws 3000 errors. wtf???
 } LevelMap;
 
 typedef struct LevelScope {
@@ -1050,15 +1051,15 @@ typedef struct CollisionData{
 } CollisionData;
 
 typedef struct LevelPointer{
-    Gfx* Graphics;
+    void* Graphics; //type Gfx*, but it throws 3000 errors. wtf???
     CollisionData* Collisions;
     char pad[0x28];
 } LevelPointer;
 
 typedef struct LevelHeader {
-    u32 Map; //points to level map; u32'd to remove warnings (they are very annoying) //LevelMap*
-    u32 OWRooms; // RoomSettings*
-    u32 Pointers; // LevelPointer*
+    LevelMap* Map; //points to level map; u32'd to remove warnings (they are very annoying) //LevelMap*
+    RoomSettings* OWRooms; // RoomSettings*
+    void* Pointers; //type LevelPointer*, but it throws 3000 errors. wtf???
     u32 unkC; //???? lol idk
     u32 RoomObjects; // RoombOjects* OR RabObject* though idk loll (probably the latter)
     u32 unk14; // ??

@@ -76,9 +76,19 @@ class N64SegLevelHeader(CommonSegCodeSubsegment):
         i = 0
         while i < len(data):
             use = data[i]
-            if i == len(data) - 1: #level scope
-                scopeSym = self.retrieve_sym_type(symbols.all_symbols_dict, use, "Lvlscope")
-                if scopeSym: use = "&"+scopeSym.name
+            if use != 0:
+                if i == 0: #level map
+                    map = self.retrieve_sym_type(symbols.all_symbols_dict, use, "LvmH")
+                    if map: use = "&"+map.name
+                elif i == 1: #overworld rooms
+                    ov = self.retrieve_sym_type(symbols.all_symbols_dict, use, "Rmset")
+                    if ov: use = "&"+ov.name
+                elif i == 2: #pointers
+                    pointers = self.retrieve_sym_type(symbols.all_symbols_dict, use, "Lvp")
+                    if pointers: use = "&"+pointers.name
+                elif i == len(data) - 1: #level scope
+                    scopeSym = self.retrieve_sym_type(symbols.all_symbols_dict, use, "Lvlscope")
+                    if scopeSym: use = "&"+scopeSym.name
             lines.append(f"    {use},")
             i += 1
 

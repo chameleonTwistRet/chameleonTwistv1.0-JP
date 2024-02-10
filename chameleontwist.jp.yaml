@@ -783,6 +783,7 @@ segments:
     subalign: 8
     type: code
     vram: 0x03000000 #SEGMENT 0x03
+    exclusive_ram_id: "LEVELGROUP"
     subsegments:
     - [auto, c, AntLand]
     - name: AntLand
@@ -792,22 +793,1592 @@ segments:
       vram: 0x81000000
       start: 0x4807a0
       subsegments:
-      - {start: 0x4807a0, type: bin, name: AntLandPad.MEd}
+      - [0x4807a0] #identity matrix
+      - [0x4807e0, levelPointer, pointers]
+      - [0x481a70, bin, rabobjects.MEd]
 
+      - [0x481A98, roomObject, roomObjects/room0_obj0]
+      - [0x481B24, roomObject, roomObjects/room0_obj1]
+      - [0x481BB0, roomObject, roomObjects/room0_obj2]
+      - [0x481C3C, roomObject, roomObjects/room0_obj3]
+      - [0x481CC8, roomObject, roomObjects/room0_obj4]
+      - [0x481D54, roomObject, roomObjects/room0_obj5]
+      - [0x481DE0, roomObject, roomObjects/room0_obj6]
+      - [0x481E6C, roomObject, roomObjects/room0_obj7]
+      - [0x481EF8, roomObject, roomObjects/room0_obj8]
+      - [0x481F84, roomObject, roomObjects/room0_obj9]
+      - [0x482010, roomObject, roomObjects/room0_obj10]
+      - [0x48209C, roomObject, roomObjects/room0_objSTOP]
 
-  #- [0x481A70, bin]
-  #- [0x488210, bin]
-  #- [0x488930, bin]
-  #- [0x4987F0, ci4, brick1.ci4, 64, 64]
-  #- [0x498FF0, bin] #size of 8? (End DL command)
-  #- [0x498FF8, palette, brick1.ci4]
-  #- [0x4991F8, bin]
+      - [0x482128, roomActor, roomActors/room0_actSTOP]
+
+      - [0x482188, roomObject, roomObjects/room1_obj1]
+      - [0x482214, roomObject, roomObjects/room1_obj2]
+      - [0x4822a0, roomObject, roomObjects/room1_obj3]
+      - [0x48232c, roomObject, roomObjects/room1_obj4]
+      - [0x4823b8, roomObject, roomObjects/room1_obj5]
+      - [0x482444, roomObject, roomObjects/room1_obj6]
+      - [0x4824d0, roomObject, roomObjects/room1_obj7]
+      - [0x48255c, roomObject, roomObjects/room1_obj8]
+      - [0x4825e8, roomObject, roomObjects/room1_obj9]
+      - [0x482674, roomObject, roomObjects/room1_obj10]
+      - [0x482700, roomObject, roomObjects/room1_objSTOP]
+
+      - [0x48278c, roomActor, roomActors/room1_act1]
+      - [0x4827ec, roomActor, roomActors/room1_act2]
+      - [0x48284c, roomActor, roomActors/room1_act3]
+      - [0x4828ac, roomActor, roomActors/room1_actSTOP]
+
+      - [0x48290c, roomObject, roomObjects/room2_obj1]
+      - [0x482998, roomObject, roomObjects/room2_obj2]
+      - [0x482a24, roomObject, roomObjects/room2_obj3]
+      - [0x482ab0, roomObject, roomObjects/room2_obj4]
+      - [0x482b3c, roomObject, roomObjects/room2_obj5]
+      - [0x482bc8, roomObject, roomObjects/room2_obj6]
+      - [0x482c54, roomObject, roomObjects/room2_obj7]
+      - [0x482ce0, roomObject, roomObjects/room2_obj8]
+      - [0x482d6c, roomObject, roomObjects/room2_obj9]
+      - [0x482df8, roomObject, roomObjects/room2_obj10]
+      - [0x482e84, roomObject, roomObjects/room2_objSTOP]
+
+      - [0x482f10, roomActor, roomActors/room2_act1]
+      - [0x482f70, roomActor, roomActors/room2_act2]
+      - [0x482fd0, roomActor, roomActors/room2_act3]
+      - [0x483030, roomActor, roomActors/room2_act4]
+      - [0x483090, roomActor, roomActors/room2_actSTOP]
+
+      - [0x4830f0, roomObject, roomObjects/room3_obj1]
+      - [0x48317c, roomObject, roomObjects/room3_obj2]
+      - [0x483208, roomObject, roomObjects/room3_obj3]
+      - [0x483294, roomObject, roomObjects/room3_obj4]
+      - [0x483320, roomObject, roomObjects/room3_obj5]
+      - [0x4833ac, roomObject, roomObjects/room3_obj6]
+      - [0x483438, roomObject, roomObjects/room3_obj7]
+      - [0x4834c4, roomObject, roomObjects/room3_obj8]
+      - [0x483550, roomObject, roomObjects/room3_obj9]
+      - [0x4835dc, roomObject, roomObjects/room3_obj10]
+      - [0x483668, roomObject, roomObjects/room3_obj11]
+      - [0x4836f4, roomObject, roomObjects/room3_obj12]
+      - [0x483780, roomObject, roomObjects/room3_obj13]
+      - [0x48380c, roomObject, roomObjects/room3_obj14]
+      - [0x483898, roomObject, roomObjects/room3_obj15]
+      - [0x483924, roomObject, roomObjects/room3_objSTOP]
+
+      - [0x4839b0, roomActor, roomActors/room3_act1]
+      - [0x483a10, roomActor, roomActors/room3_act2]
+      - [0x483a70, roomActor, roomActors/room3_act3]
+      - [0x483ad0, roomActor, roomActors/room3_act4]
+      - [0x483b30, roomActor, roomActors/room3_act5]
+      - [0x483b90, roomActor, roomActors/room3_act6]
+      - [0x483bf0, roomActor, roomActors/room3_act7]
+      - [0x483c50, roomActor, roomActors/room3_actSTOP]
+
+      - [0x483CB0, unkType1, newType/g1] #9 entries????? 0x24
+      - [0x483Cd4, unkType1, newType/g2]
+      - [0x483Cf8, unkType1, newType/g3]
+      - [0x483d1c, unkType1, newType/g4]
+      - [0x483d40, unkType1, newType/g5]
+      - [0x483d64, unkType1, newType/g6]
+      - [0x483d88, unkType1, newType/g7]
+
+      - [0x483dac, roomObject, roomObjects/room20_obj1]
+      - [0x483e38, roomObject, roomObjects/room20_obj2]
+      - [0x483ec4, roomObject, roomObjects/room20_obj3]
+      - [0x483f50, roomObject, roomObjects/room20_obj4]
+      - [0x483fdc, roomObject, roomObjects/room20_obj5]
+      - [0x484068, roomObject, roomObjects/room20_obj6]
+      - [0x4840f4, roomObject, roomObjects/room20_obj7]
+      - [0x484180, roomObject, roomObjects/room20_obj8]
+      - [0x48420c, roomObject, roomObjects/room20_obj9]
+      - [0x484298, roomObject, roomObjects/room20_obj10]
+      - [0x484324, roomObject, roomObjects/room20_obj11]
+      - [0x4843b0, roomObject, roomObjects/room20_obj12]
+      - [0x48443c, roomObject, roomObjects/room20_obj13]
+      - [0x4844c8, roomObject, roomObjects/room20_obj14]
+      - [0x484554, roomObject, roomObjects/room20_obj15]
+      - [0x4845e0, roomObject, roomObjects/room20_obj16]
+      - [0x48466c, roomObject, roomObjects/room20_obj17]
+      - [0x4846f8, roomObject, roomObjects/room20_obj18]
+      - [0x484784, roomObject, roomObjects/room20_objSTOP]
+
+      - [0x484810, roomActor, roomActors/room20_act1]
+      - [0x484870, roomActor, roomActors/room20_actSTOP]
+
+      - [0x4848d0, roomObject, roomObjects/room4_obj1]
+      - [0x48495c, roomObject, roomObjects/room4_obj2]
+      - [0x4849e8, roomObject, roomObjects/room4_obj3]
+      - [0x484a74, roomObject, roomObjects/room4_obj4]
+      - [0x484b00, roomObject, roomObjects/room4_obj5]
+      - [0x484b8c, roomObject, roomObjects/room4_obj6]
+      - [0x484c18, roomObject, roomObjects/room4_obj7]
+      - [0x484ca4, roomObject, roomObjects/room4_obj8]
+      - [0x484d30, roomObject, roomObjects/room4_obj9]
+      - [0x484dbc, roomObject, roomObjects/room4_obj10]
+      - [0x484e48, roomObject, roomObjects/room4_obj11]
+      - [0x484ed4, roomObject, roomObjects/room4_obj12]
+      - [0x484f60, roomObject, roomObjects/room4_obj13]
+      - [0x484fec, roomObject, roomObjects/room4_obj14]
+      - [0x485078, roomObject, roomObjects/room4_objSTOP]
+
+      - [0x485104, roomActor, roomActors/room4_act1]
+      - [0x485164, roomActor, roomActors/room4_actSTOP]
+
+      - [0x4851c4, unkType1, newType/g8]
+      - [0x4851E8, unkType1, newType/g9]
+      - [0x48520C, unkType1, newType/g10]
+      - [0x485230, unkType1, newType/g11]
+      - [0x485254, unkType1, newType/g12]
+      - [0x485278, unkType1, newType/g13]
+
+      - [0x48529c, roomObject, roomObjects/room5_obj1]
+      - [0x485328, roomObject, roomObjects/room5_obj2]
+      - [0x4853b4, roomObject, roomObjects/room5_obj3]
+      - [0x485440, roomObject, roomObjects/room5_obj4]
+      - [0x4854cc, roomObject, roomObjects/room5_obj5]
+      - [0x485558, roomObject, roomObjects/room5_obj6]
+      - [0x4855e4, roomObject, roomObjects/room5_obj7]
+      - [0x485670, roomObject, roomObjects/room5_obj8]
+      - [0x4856fc, roomObject, roomObjects/room5_obj9]
+      - [0x485788, roomObject, roomObjects/room5_obj10]
+      - [0x485814, roomObject, roomObjects/room5_obj11]
+      - [0x4858a0, roomObject, roomObjects/room5_obj12]
+      - [0x48592c, roomObject, roomObjects/room5_obj13]
+      - [0x4859b8, roomObject, roomObjects/room5_obj14]
+      - [0x485a44, roomObject, roomObjects/room5_obj15]
+      - [0x485ad0, roomObject, roomObjects/room5_objSTOP]
+
+      - [0x485b5c, roomActor, roomActors/room5_act1]
+      - [0x485bbc, roomActor, roomActors/room5_act2]
+      - [0x485c1c, roomActor, roomActors/room5_act3]
+      - [0x485c7c, roomActor, roomActors/room5_act4]
+      - [0x485cdc, roomActor, roomActors/room5_actSTOP]
+
+      - [0x485d3c, roomObject, roomObjects/room6_obj1]
+      - [0x485dc8, roomObject, roomObjects/room6_obj2]
+      - [0x485e54, roomObject, roomObjects/room6_obj3]
+      - [0x485ee0, roomObject, roomObjects/room6_obj4]
+      - [0x485f6c, roomObject, roomObjects/room6_obj5]
+      - [0x485ff8, roomObject, roomObjects/room6_obj6]
+      - [0x486084, roomObject, roomObjects/room6_obj7]
+      - [0x486110, roomObject, roomObjects/room6_obj8]
+      - [0x48619c, roomObject, roomObjects/room6_obj9]
+      - [0x486228, roomObject, roomObjects/room6_obj10]
+      - [0x4862b4, roomObject, roomObjects/room6_obj11]
+      - [0x486340, roomObject, roomObjects/room6_objSTOP]
+
+      - [0x4863cc, roomActor, roomActors/room6_act1]
+      - [0x48642c, roomActor, roomActors/room6_actSTOP]
+
+      - [0x48648C, roomObject, roomObjects/roomUnk_obj1]
+      - [0x486518, roomObject, roomObjects/roomUnk_obj2]
+      - [0x4865A4, roomObject, roomObjects/roomUnk_obj3]
+      - [0x486630, roomObject, roomObjects/roomUnk_obj4]
+      - [0x4866BC, roomObject, roomObjects/roomUnk_obj5]
+      - [0x486748, roomObject, roomObjects/roomUnk_obj6]
+      - [0x4867D4, roomObject, roomObjects/roomUnk_obj7]
+      - [0x486860, roomObject, roomObjects/roomUnk_obj8]
+      - [0x4868EC, roomObject, roomObjects/roomUnk_obj9]
+      - [0x486978, roomObject, roomObjects/roomUnk_obj10]
+      - [0x486A04, roomObject, roomObjects/roomUnk_obj11]
+      - [0x486A90, roomObject, roomObjects/roomUnk_obj12]
+      - [0x486B1C, roomObject, roomObjects/roomUnk_obj13]
+      - [0x486BA8, roomObject, roomObjects/roomUnk_obj14]
+      - [0x486C34, roomObject, roomObjects/roomUnk_objSTOP]
+
+      - [0x486cc0, roomObject, roomObjects/room7_obj1]
+      - [0x486d4c, roomObject, roomObjects/room7_obj2]
+      - [0x486dd8, roomObject, roomObjects/room7_obj3]
+      - [0x486e64, roomObject, roomObjects/room7_obj4]
+      - [0x486ef0, roomObject, roomObjects/room7_obj5]
+      - [0x486f7c, roomObject, roomObjects/room7_obj6]
+      - [0x487008, roomObject, roomObjects/room7_obj7]
+      - [0x487094, roomObject, roomObjects/room7_obj8]
+      - [0x487120, roomObject, roomObjects/room7_obj9]
+      - [0x4871ac, roomObject, roomObjects/room7_obj10]
+      - [0x487238, roomObject, roomObjects/room7_obj11]
+      - [0x4872c4, roomObject, roomObjects/room7_obj12]
+      - [0x487350, roomObject, roomObjects/room7_obj13]
+      - [0x4873dc, roomObject, roomObjects/room7_obj14]
+      - [0x487468, roomObject, roomObjects/room7_obj15]
+      - [0x4874f4, roomObject, roomObjects/room7_obj16]
+      - [0x487580, roomObject, roomObjects/room7_objSTOP]
+
+      - [0x48760c, roomObject, roomObjects/room8_obj1]
+      - [0x487698, roomObject, roomObjects/room8_obj2]
+      - [0x487724, roomObject, roomObjects/room8_obj3]
+      - [0x4877b0, roomObject, roomObjects/room8_obj4]
+      - [0x48783c, roomObject, roomObjects/room8_obj5]
+      - [0x4878c8, roomObject, roomObjects/room8_obj6]
+      - [0x487954, roomObject, roomObjects/room8_obj7]
+      - [0x4879e0, roomObject, roomObjects/room8_obj8]
+      - [0x487a6c, roomObject, roomObjects/room8_obj9]
+      - [0x487af8, roomObject, roomObjects/room8_obj10]
+      - [0x487b84, roomObject, roomObjects/room8_obj11]
+      - [0x487c10, roomObject, roomObjects/room8_obj12]
+      - [0x487c9c, roomObject, roomObjects/room8_obj13]
+      - [0x487d28, roomObject, roomObjects/room8_obj14]
+      - [0x487db4, roomObject, roomObjects/room8_obj15]
+      - [0x487e40, roomObject, roomObjects/room8_obj16]
+      - [0x487ecc, roomObject, roomObjects/room8_obj17]
+      - [0x487f58, roomObject, roomObjects/room8_obj18]
+      - [0x487fe4, roomObject, roomObjects/room8_obj19]
+      - [0x488070, roomObject, roomObjects/room8_obj20]
+      - [0x4880fc, roomObject, roomObjects/room8_obj21]
+      - [0x488188, roomObject, roomObjects/room8_objSTOP]
+
+      - [0x488214, roomActor, roomActors/room8_act1]
+      - [0x488274, roomActor, roomActors/room8_act2]
+      - [0x4882d4, roomActor, roomActors/room8_act3]
+      - [0x488334, roomActor, roomActors/room8_act4]
+      - [0x488394, roomActor, roomActors/room8_act5]
+      - [0x4883f4, roomActor, roomActors/room8_act6]
+      - [0x488454, roomActor, roomActors/room8_act7]
+      - [0x4884b4, roomActor, roomActors/room8_act8]
+      - [0x488514, roomActor, roomActors/room8_act9]
+      - [0x488574, roomActor, roomActors/room8_act10]
+      - [0x4885d4, roomActor, roomActors/room8_act11]
+      - [0x488634, roomActor, roomActors/room8_act12]
+      - [0x488694, roomActor, roomActors/room8_act13]
+      - [0x4886f4, roomActor, roomActors/room8_act14]
+      - [0x488754, roomActor, roomActors/room8_act15]
+      - [0x4887b4, roomActor, roomActors/room8_act16]
+      - [0x488814, roomActor, roomActors/room8_act17]
+      - [0x488874, roomActor, roomActors/room8_act18]
+      - [0x4888d4, roomActor, roomActors/room8_actSTOP]
+
+      - [0x488934, roomObject, roomObjects/room9_obj1]
+      - [0x4889c0, roomObject, roomObjects/room9_obj2]
+      - [0x488a4c, roomObject, roomObjects/room9_obj3]
+      - [0x488ad8, roomObject, roomObjects/room9_obj4]
+      - [0x488b64, roomObject, roomObjects/room9_obj5]
+      - [0x488bf0, roomObject, roomObjects/room9_obj6]
+      - [0x488c7c, roomObject, roomObjects/room9_obj7]
+      - [0x488d08, roomObject, roomObjects/room9_obj8]
+      - [0x488d94, roomObject, roomObjects/room9_obj9]
+      - [0x488e20, roomObject, roomObjects/room9_obj10]
+      - [0x488eac, roomObject, roomObjects/room9_obj11]
+      - [0x488f38, roomObject, roomObjects/room9_obj12]
+      - [0x488fc4, roomObject, roomObjects/room9_obj13]
+      - [0x489050, roomObject, roomObjects/room9_obj14]
+      - [0x4890dc, roomObject, roomObjects/room9_objSTOP]
+
+      - [0x489168, roomActor, roomActors/room9_act1]
+      - [0x4891c8, roomActor, roomActors/room9_act2]
+      - [0x489228, roomActor, roomActors/room9_act3]
+      - [0x489288, roomActor, roomActors/room9_act4]
+      - [0x4892e8, roomActor, roomActors/room9_act5]
+      - [0x489348, roomActor, roomActors/room9_act6]
+      - [0x4893a8, roomActor, roomActors/room9_act7]
+      - [0x489408, roomActor, roomActors/room9_act8]
+      - [0x489468, roomActor, roomActors/room9_actSTOP]
+
+      - [0x4894c8, roomObject, roomObjects/room10_obj1]
+      - [0x489554, roomObject, roomObjects/room10_obj2]
+      - [0x4895e0, roomObject, roomObjects/room10_obj3]
+      - [0x48966c, roomObject, roomObjects/room10_obj4]
+      - [0x4896f8, roomObject, roomObjects/room10_obj5]
+      - [0x489784, roomObject, roomObjects/room10_obj6]
+      - [0x489810, roomObject, roomObjects/room10_obj7]
+      - [0x48989c, roomObject, roomObjects/room10_obj8]
+      - [0x489928, roomObject, roomObjects/room10_obj9]
+      - [0x4899b4, roomObject, roomObjects/room10_obj10]
+      - [0x489a40, roomObject, roomObjects/room10_obj11]
+      - [0x489acc, roomObject, roomObjects/room10_obj12]
+      - [0x489b58, roomObject, roomObjects/room10_obj13]
+      - [0x489be4, roomObject, roomObjects/room10_obj14]
+      - [0x489c70, roomObject, roomObjects/room10_obj15]
+      - [0x489cfc, roomObject, roomObjects/room10_obj16]
+      - [0x489d88, roomObject, roomObjects/room10_obj17]
+      - [0x489e14, roomObject, roomObjects/room10_obj18]
+      - [0x489ea0, roomObject, roomObjects/room10_obj19]
+      - [0x489f2c, roomObject, roomObjects/room10_obj20]
+      - [0x489fb8, roomObject, roomObjects/room10_obj21]
+      - [0x48a044, roomObject, roomObjects/room10_obj22]
+      - [0x48a0d0, roomObject, roomObjects/room10_obj23]
+      - [0x48a15c, roomObject, roomObjects/room10_obj24]
+      - [0x48a1e8, roomObject, roomObjects/room10_obj25]
+      - [0x48a274, roomObject, roomObjects/room10_objSTOP]
+
+      - [0x48a300, roomActor, roomActors/room10_act1]
+      - [0x48a360, roomActor, roomActors/room10_actSTOP]
+
+      - [0x48a3c0, roomObject, roomObjects/room11_obj1]
+      - [0x48a44c, roomObject, roomObjects/room11_obj2]
+      - [0x48a4d8, roomObject, roomObjects/room11_obj3]
+      - [0x48a564, roomObject, roomObjects/room11_obj4]
+      - [0x48a5f0, roomObject, roomObjects/room11_obj5]
+      - [0x48a67c, roomObject, roomObjects/room11_obj6]
+      - [0x48a708, roomObject, roomObjects/room11_obj7]
+      - [0x48a794, roomObject, roomObjects/room11_obj8]
+      - [0x48a820, roomObject, roomObjects/room11_obj9]
+      - [0x48a8ac, roomObject, roomObjects/room11_obj10]
+      - [0x48a938, roomObject, roomObjects/room11_obj11]
+      - [0x48a9c4, roomObject, roomObjects/room11_obj12]
+      - [0x48aa50, roomObject, roomObjects/room11_obj13]
+      - [0x48aadc, roomObject, roomObjects/room11_obj14]
+      - [0x48ab68, roomObject, roomObjects/room11_objSTOP]
+
+      - [0x48abf4, roomObject, roomObjects/room12_obj1]
+      - [0x48ac80, roomObject, roomObjects/room12_obj2]
+      - [0x48ad0c, roomObject, roomObjects/room12_obj3]
+      - [0x48ad98, roomObject, roomObjects/room12_obj4]
+      - [0x48ae24, roomObject, roomObjects/room12_obj5]
+      - [0x48aeb0, roomObject, roomObjects/room12_obj6]
+      - [0x48af3c, roomObject, roomObjects/room12_obj7]
+      - [0x48afc8, roomObject, roomObjects/room12_obj8]
+      - [0x48b054, roomObject, roomObjects/room12_obj9]
+      - [0x48b0e0, roomObject, roomObjects/room12_obj10]
+      - [0x48b16c, roomObject, roomObjects/room12_obj11]
+      - [0x48b1f8, roomObject, roomObjects/room12_obj12]
+      - [0x48b284, roomObject, roomObjects/room12_obj13]
+      - [0x48b310, roomObject, roomObjects/room12_obj14]
+      - [0x48b39c, roomObject, roomObjects/room12_obj15]
+      - [0x48b428, roomObject, roomObjects/room12_obj16]
+      - [0x48b4b4, roomObject, roomObjects/room12_obj17]
+      - [0x48b540, roomObject, roomObjects/room12_obj18]
+      - [0x48b5cc, roomObject, roomObjects/room12_obj19]
+      - [0x48b658, roomObject, roomObjects/room12_obj20]
+      - [0x48b6e4, roomObject, roomObjects/room12_objSTOP]
+
+      - [0x48b770, roomActor, roomActors/room12_act1]
+      - [0x48b7d0, roomActor, roomActors/room12_actSTOP]
+
+      - [0x48b830, roomObject, roomObjects/room13_obj1]
+      - [0x48b8bc, roomObject, roomObjects/room13_obj2]
+      - [0x48b948, roomObject, roomObjects/room13_obj3]
+      - [0x48b9d4, roomObject, roomObjects/room13_obj4]
+      - [0x48ba60, roomObject, roomObjects/room13_obj5]
+      - [0x48baec, roomObject, roomObjects/room13_obj6]
+      - [0x48bb78, roomObject, roomObjects/room13_obj7]
+      - [0x48bc04, roomObject, roomObjects/room13_obj8]
+      - [0x48bc90, roomObject, roomObjects/room13_obj9]
+      - [0x48bd1c, roomObject, roomObjects/room13_obj10]
+      - [0x48bda8, roomObject, roomObjects/room13_obj11]
+      - [0x48be34, roomObject, roomObjects/room13_obj12]
+      - [0x48bec0, roomObject, roomObjects/room13_obj13]
+      - [0x48bf4c, roomObject, roomObjects/room13_objSTOP]
+
+      - [0x48bfd8, roomActor, roomActors/room13_act1]
+      - [0x48c038, roomActor, roomActors/room13_act2]
+      - [0x48c098, roomActor, roomActors/room13_act3]
+      - [0x48c0f8, roomActor, roomActors/room13_act4]
+      - [0x48c158, roomActor, roomActors/room13_act5]
+      - [0x48c1b8, roomActor, roomActors/room13_act6]
+      - [0x48c218, roomActor, roomActors/room13_act7]
+      - [0x48c278, roomActor, roomActors/room13_actSTOP]
+
+      - [0x48c2d8, roomObject, roomObjects/room14_obj1]
+      - [0x48c364, roomObject, roomObjects/room14_obj2]
+      - [0x48c3f0, roomObject, roomObjects/room14_obj3]
+      - [0x48c47c, roomObject, roomObjects/room14_obj4]
+      - [0x48c508, roomObject, roomObjects/room14_obj5]
+      - [0x48c594, roomObject, roomObjects/room14_obj6]
+      - [0x48c620, roomObject, roomObjects/room14_obj7]
+      - [0x48c6ac, roomObject, roomObjects/room14_obj8]
+      - [0x48c738, roomObject, roomObjects/room14_obj9]
+      - [0x48c7c4, roomObject, roomObjects/room14_obj10]
+      - [0x48c850, roomObject, roomObjects/room14_obj11]
+      - [0x48c8dc, roomObject, roomObjects/room14_obj12]
+      - [0x48c968, roomObject, roomObjects/room14_obj13]
+      - [0x48c9f4, roomObject, roomObjects/room14_obj14]
+      - [0x48ca80, roomObject, roomObjects/room14_obj15]
+      - [0x48cb0c, roomObject, roomObjects/room14_obj16]
+      - [0x48cb98, roomObject, roomObjects/room14_obj17]
+      - [0x48cc24, roomObject, roomObjects/room14_obj18]
+      - [0x48ccb0, roomObject, roomObjects/room14_obj19]
+      - [0x48cd3c, roomObject, roomObjects/room14_obj20]
+      - [0x48cdc8, roomObject, roomObjects/room14_obj21]
+      - [0x48ce54, roomObject, roomObjects/room14_obj22]
+      - [0x48cee0, roomObject, roomObjects/room14_obj23]
+      - [0x48cf6c, roomObject, roomObjects/room14_obj24]
+      - [0x48cff8, roomObject, roomObjects/room14_obj25]
+      - [0x48d084, roomObject, roomObjects/room14_obj26]
+      - [0x48d110, roomObject, roomObjects/room14_objSTOP]
+
+      - [0x48d19c, roomActor, roomActors/room14_act1]
+      - [0x48d1fc, roomActor, roomActors/room14_act2]
+      - [0x48d25c, roomActor, roomActors/room14_act3]
+      - [0x48d2bc, roomActor, roomActors/room14_act4]
+      - [0x48d31c, roomActor, roomActors/room14_act5]
+      - [0x48d37c, roomActor, roomActors/room14_act6]
+      - [0x48d3dc, roomActor, roomActors/room14_act7]
+      - [0x48d43c, roomActor, roomActors/room14_act8]
+      - [0x48d49c, roomActor, roomActors/room14_act9]
+      - [0x48d4fc, roomActor, roomActors/room14_act10]
+      - [0x48d55c, roomActor, roomActors/room14_act11]
+      - [0x48d5bc, roomActor, roomActors/room14_actSTOP]
+
+      - [0x48d61c, roomObject, roomObjects/room21_obj1]
+      - [0x48d6a8, roomObject, roomObjects/room21_obj2]
+      - [0x48d734, roomObject, roomObjects/room21_obj3]
+      - [0x48d7c0, roomObject, roomObjects/room21_obj4]
+      - [0x48d84c, roomObject, roomObjects/room21_obj5]
+      - [0x48d8d8, roomObject, roomObjects/room21_obj6]
+      - [0x48d964, roomObject, roomObjects/room21_obj7]
+      - [0x48d9f0, roomObject, roomObjects/room21_obj8]
+      - [0x48da7c, roomObject, roomObjects/room21_obj9]
+      - [0x48db08, roomObject, roomObjects/room21_objSTOP]
+
+      - [0x48db94, roomObject, roomObjects/room15_obj1]
+      - [0x48dc20, roomObject, roomObjects/room15_obj2]
+      - [0x48dcac, roomObject, roomObjects/room15_obj3]
+      - [0x48dd38, roomObject, roomObjects/room15_obj4]
+      - [0x48ddc4, roomObject, roomObjects/room15_obj5]
+      - [0x48de50, roomObject, roomObjects/room15_obj6]
+      - [0x48dedc, roomObject, roomObjects/room15_obj7]
+      - [0x48df68, roomObject, roomObjects/room15_obj8]
+      - [0x48dff4, roomObject, roomObjects/room15_obj9]
+      - [0x48e080, roomObject, roomObjects/room15_obj10]
+      - [0x48e10c, roomObject, roomObjects/room15_obj11]
+      - [0x48e198, roomObject, roomObjects/room15_obj12]
+      - [0x48e224, roomObject, roomObjects/room15_obj13]
+      - [0x48e2b0, roomObject, roomObjects/room15_obj14]
+      - [0x48e33c, roomObject, roomObjects/room15_obj15]
+      - [0x48e3c8, roomObject, roomObjects/room15_obj16]
+      - [0x48e454, roomObject, roomObjects/room15_objSTOP]
+
+      - [0x48E4E0, roomObject, roomObjects/roomUnk3_obj1]
+      - [0x48E56C, roomObject, roomObjects/roomUnk3_obj2]
+      - [0x48E5F8, roomObject, roomObjects/roomUnk3_obj3]
+      - [0x48E684, roomObject, roomObjects/roomUnk3_obj4]
+      - [0x48E710, roomObject, roomObjects/roomUnk3_obj5]
+      - [0x48E79C, roomObject, roomObjects/roomUnk3_obj6]
+      - [0x48E828, roomObject, roomObjects/roomUnk3_obj7]
+      - [0x48E8B4, roomObject, roomObjects/roomUnk3_obj8]
+      - [0x48E940, roomObject, roomObjects/roomUnk3_obj9]
+      - [0x48E9CC, roomObject, roomObjects/roomUnk3_obj10]
+      - [0x48EA58, roomObject, roomObjects/roomUnk3_obj11]
+      - [0x48EAE4, roomObject, roomObjects/roomUnk3_obj12]
+      - [0x48EB70, roomObject, roomObjects/roomUnk3_obj13]
+      - [0x48EBFC, roomObject, roomObjects/roomUnk3_obj14]
+      - [0x48EC88, roomObject, roomObjects/roomUnk3_objSTOP]
+
+      - [0x48ed14, roomObject, roomObjects/room16_obj1]
+      - [0x48eda0, roomObject, roomObjects/room16_obj2]
+      - [0x48ee2c, roomObject, roomObjects/room16_obj3]
+      - [0x48eeb8, roomObject, roomObjects/room16_obj4]
+      - [0x48ef44, roomObject, roomObjects/room16_obj5]
+      - [0x48efd0, roomObject, roomObjects/room16_obj6]
+      - [0x48f05c, roomObject, roomObjects/room16_obj7]
+      - [0x48f0e8, roomObject, roomObjects/room16_obj8]
+      - [0x48f174, roomObject, roomObjects/room16_obj9]
+      - [0x48f200, roomObject, roomObjects/room16_obj10]
+      - [0x48f28c, roomObject, roomObjects/room16_obj11]
+      - [0x48f318, roomObject, roomObjects/room16_obj12]
+      - [0x48f3a4, roomObject, roomObjects/room16_obj13]
+      - [0x48f430, roomObject, roomObjects/room16_obj14]
+      - [0x48f4bc, roomObject, roomObjects/room16_obj15]
+      - [0x48f548, roomObject, roomObjects/room16_obj16]
+      - [0x48f5d4, roomObject, roomObjects/room16_obj17]
+      - [0x48f660, roomObject, roomObjects/room16_obj18]
+      - [0x48f6ec, roomObject, roomObjects/room16_obj19]
+      - [0x48f778, roomObject, roomObjects/room16_obj20]
+      - [0x48f804, roomObject, roomObjects/room16_obj21]
+      - [0x48f890, roomObject, roomObjects/room16_objSTOP]
+
+      - [0x48f91c, roomActor, roomActors/room16_act1]
+      - [0x48f97c, roomActor, roomActors/room16_act2]
+      - [0x48f9dc, roomActor, roomActors/room16_actSTOP]
+
+      - [0x48fa3c, roomObject, roomObjects/room17_obj1]
+      - [0x48fac8, roomObject, roomObjects/room17_obj2]
+      - [0x48fb54, roomObject, roomObjects/room17_obj3]
+      - [0x48fbe0, roomObject, roomObjects/room17_obj4]
+      - [0x48fc6c, roomObject, roomObjects/room17_obj5]
+      - [0x48fcf8, roomObject, roomObjects/room17_obj6]
+      - [0x48fd84, roomObject, roomObjects/room17_obj7]
+      - [0x48fe10, roomObject, roomObjects/room17_obj8]
+      - [0x48fe9c, roomObject, roomObjects/room17_obj9]
+      - [0x48ff28, roomObject, roomObjects/room17_obj10]
+      - [0x48ffb4, roomObject, roomObjects/room17_obj11]
+      - [0x490040, roomObject, roomObjects/room17_obj12]
+      - [0x4900cc, roomObject, roomObjects/room17_obj13]
+      - [0x490158, roomObject, roomObjects/room17_obj14]
+      - [0x4901e4, roomObject, roomObjects/room17_obj15]
+      - [0x490270, roomObject, roomObjects/room17_obj16]
+      - [0x4902fc, roomObject, roomObjects/room17_obj17]
+      - [0x490388, roomObject, roomObjects/room17_obj18]
+      - [0x490414, roomObject, roomObjects/room17_obj19]
+      - [0x4904a0, roomObject, roomObjects/room17_obj20]
+      - [0x49052c, roomObject, roomObjects/room17_obj21]
+      - [0x4905b8, roomObject, roomObjects/room17_obj22]
+      - [0x490644, roomObject, roomObjects/room17_objSTOP]
+
+      - [0x4906d0, roomActor, roomActors/room17_act1]
+      - [0x490730, roomActor, roomActors/room17_act2]
+      - [0x490790, roomActor, roomActors/room17_act3]
+      - [0x4907f0, roomActor, roomActors/room17_act4]
+      - [0x490850, roomActor, roomActors/room17_actSTOP]
+
+      - [0x4908b0, roomObject, roomObjects/room18_obj1]
+      - [0x49093c, roomObject, roomObjects/room18_obj2]
+      - [0x4909c8, roomObject, roomObjects/room18_obj3]
+      - [0x490a54, roomObject, roomObjects/room18_obj4]
+      - [0x490ae0, roomObject, roomObjects/room18_obj5]
+      - [0x490b6c, roomObject, roomObjects/room18_obj6]
+      - [0x490bf8, roomObject, roomObjects/room18_obj7]
+      - [0x490c84, roomObject, roomObjects/room18_obj8]
+      - [0x490d10, roomObject, roomObjects/room18_obj9]
+      - [0x490d9c, roomObject, roomObjects/room18_obj10]
+      - [0x490e28, roomObject, roomObjects/room18_objSTOP]
+
+      - [0x490eb4, roomObject, roomObjects/room19_obj1]
+      - [0x490f40, roomObject, roomObjects/room19_obj2]
+      - [0x490fcc, roomObject, roomObjects/room19_objSTOP]
+
+      - [0x491058, roomActor, roomActors/room19_act1]
+      - [0x4910b8, roomActor, roomActors/room19_actSTOP]
+
+      - [0x491118, bin, newType/idkType1.MEd] #ANOTHER new one??? 0x40 in size??? i think???
+
+      - [0x4912d8, spriteActor, spriteActors/room0_spr1]
+      - [0x491328, spriteActor, spriteActors/room0_spr2]
+      - [0x491378, spriteActor, spriteActors/room0_spr3]
+      - [0x4913C8, spriteActor, spriteActors/room0_spr4]
+      - [0x491418, spriteActor, spriteActors/room0_spr5]
+      - [0x491468, spriteActor, spriteActors/room0_spr6]
+      - [0x4914B8, spriteActor, spriteActors/room0_spr7]
+      - [0x491508, spriteActor, spriteActors/room0_sprSTOP]
+
+      - [0x491558, spriteActor, spriteActors/room1_spr1]
+      - [0x4915a8, spriteActor, spriteActors/room1_spr2]
+      - [0x4915f8, spriteActor, spriteActors/room1_spr3]
+      - [0x491648, spriteActor, spriteActors/room1_spr4]
+      - [0x491698, spriteActor, spriteActors/room1_spr5]
+      - [0x4916e8, spriteActor, spriteActors/room1_spr6]
+      - [0x491738, spriteActor, spriteActors/room1_spr7]
+      - [0x491788, spriteActor, spriteActors/room1_spr8]
+      - [0x4917d8, spriteActor, spriteActors/room1_spr9]
+      - [0x491828, spriteActor, spriteActors/room1_spr10]
+      - [0x491878, spriteActor, spriteActors/room1_spr11]
+      - [0x4918c8, spriteActor, spriteActors/room1_spr12]
+      - [0x491918, spriteActor, spriteActors/room1_spr13]
+      - [0x491968, spriteActor, spriteActors/room1_spr14]
+      - [0x4919b8, spriteActor, spriteActors/room1_spr15]
+      - [0x491a08, spriteActor, spriteActors/room1_spr16]
+      - [0x491a58, spriteActor, spriteActors/room1_spr17]
+      - [0x491aa8, spriteActor, spriteActors/room1_spr18]
+      - [0x491af8, spriteActor, spriteActors/room1_sprSTOP]
+
+      - [0x491b48, spriteActor, spriteActors/room2_spr1]
+      - [0x491b98, spriteActor, spriteActors/room2_spr2]
+      - [0x491be8, spriteActor, spriteActors/room2_spr3]
+      - [0x491c38, spriteActor, spriteActors/room2_spr4]
+      - [0x491c88, spriteActor, spriteActors/room2_spr5]
+      - [0x491cd8, spriteActor, spriteActors/room2_spr6]
+      - [0x491d28, spriteActor, spriteActors/room2_spr7]
+      - [0x491d78, spriteActor, spriteActors/room2_spr8]
+      - [0x491dc8, spriteActor, spriteActors/room2_spr9]
+      - [0x491e18, spriteActor, spriteActors/room2_spr10]
+      - [0x491e68, spriteActor, spriteActors/room2_spr11]
+      - [0x491eb8, spriteActor, spriteActors/room2_spr12]
+      - [0x491f08, spriteActor, spriteActors/room2_sprSTOP]
+
+      - [0x491f58, spriteActor, spriteActors/room3_spr1]
+      - [0x491fa8, spriteActor, spriteActors/room3_spr2]
+      - [0x491ff8, spriteActor, spriteActors/room3_spr3]
+      - [0x492048, spriteActor, spriteActors/room3_spr4]
+      - [0x492098, spriteActor, spriteActors/room3_spr5]
+      - [0x4920e8, spriteActor, spriteActors/room3_spr6]
+      - [0x492138, spriteActor, spriteActors/room3_spr7]
+      - [0x492188, spriteActor, spriteActors/room3_spr8]
+      - [0x4921d8, spriteActor, spriteActors/room3_spr9]
+      - [0x492228, spriteActor, spriteActors/room3_spr10]
+      - [0x492278, spriteActor, spriteActors/room3_spr11]
+      - [0x4922c8, spriteActor, spriteActors/room3_spr12]
+      - [0x492318, spriteActor, spriteActors/room3_spr13]
+      - [0x492368, spriteActor, spriteActors/room3_spr14]
+      - [0x4923b8, spriteActor, spriteActors/room3_spr15]
+      - [0x492408, spriteActor, spriteActors/room3_spr16]
+      - [0x492458, spriteActor, spriteActors/room3_spr17]
+      - [0x4924a8, spriteActor, spriteActors/room3_spr18]
+      - [0x4924f8, spriteActor, spriteActors/room3_spr19]
+      - [0x492548, spriteActor, spriteActors/room3_spr20]
+      - [0x492598, spriteActor, spriteActors/room3_spr21]
+      - [0x4925e8, spriteActor, spriteActors/room3_spr22]
+      - [0x492638, spriteActor, spriteActors/room3_spr23]
+      - [0x492688, spriteActor, spriteActors/room3_spr24]
+      - [0x4926d8, spriteActor, spriteActors/room3_sprSTOP]
+
+      - [0x492728, spriteActor, spriteActors/room4_spr1]
+      - [0x492778, spriteActor, spriteActors/room4_spr2]
+      - [0x4927c8, spriteActor, spriteActors/room4_spr3]
+      - [0x492818, spriteActor, spriteActors/room4_spr4]
+      - [0x492868, spriteActor, spriteActors/room4_spr5]
+      - [0x4928b8, spriteActor, spriteActors/room4_spr6]
+      - [0x492908, spriteActor, spriteActors/room4_spr7]
+      - [0x492958, spriteActor, spriteActors/room4_spr8]
+      - [0x4929a8, spriteActor, spriteActors/room4_spr9]
+      - [0x4929f8, spriteActor, spriteActors/room4_spr10]
+      - [0x492a48, spriteActor, spriteActors/room4_spr11]
+      - [0x492a98, spriteActor, spriteActors/room4_spr12]
+      - [0x492ae8, spriteActor, spriteActors/room4_sprSTOP]
+
+      - [0x492b38, spriteActor, spriteActors/room5_spr1]
+      - [0x492b88, spriteActor, spriteActors/room5_spr2]
+      - [0x492bd8, spriteActor, spriteActors/room5_spr3]
+      - [0x492c28, spriteActor, spriteActors/room5_spr4]
+      - [0x492c78, spriteActor, spriteActors/room5_spr5]
+      - [0x492cc8, spriteActor, spriteActors/room5_spr6]
+      - [0x492d18, spriteActor, spriteActors/room5_spr7]
+      - [0x492d68, spriteActor, spriteActors/room5_spr8]
+      - [0x492db8, spriteActor, spriteActors/room5_spr9]
+      - [0x492e08, spriteActor, spriteActors/room5_spr10]
+      - [0x492e58, spriteActor, spriteActors/room5_spr11]
+      - [0x492ea8, spriteActor, spriteActors/room5_spr12]
+      - [0x492ef8, spriteActor, spriteActors/room5_spr13]
+      - [0x492f48, spriteActor, spriteActors/room5_spr14]
+      - [0x492f98, spriteActor, spriteActors/room5_spr15]
+      - [0x492fe8, spriteActor, spriteActors/room5_spr16]
+      - [0x493038, spriteActor, spriteActors/room5_sprSTOP]
+
+      - [0x493088, spriteActor, spriteActors/room6_spr1]
+      - [0x4930d8, spriteActor, spriteActors/room6_spr2]
+      - [0x493128, spriteActor, spriteActors/room6_spr3]
+      - [0x493178, spriteActor, spriteActors/room6_spr4]
+      - [0x4931c8, spriteActor, spriteActors/room6_spr5]
+      - [0x493218, spriteActor, spriteActors/room6_spr6]
+      - [0x493268, spriteActor, spriteActors/room6_spr7]
+      - [0x4932b8, spriteActor, spriteActors/room6_spr8]
+      - [0x493308, spriteActor, spriteActors/room6_sprSTOP]
+
+      - [0x493358, spriteActor, spriteActors/room8_spr1]
+      - [0x4933a8, spriteActor, spriteActors/room8_spr2]
+      - [0x4933f8, spriteActor, spriteActors/room8_spr3]
+      - [0x493448, spriteActor, spriteActors/room8_spr4]
+      - [0x493498, spriteActor, spriteActors/room8_spr5]
+      - [0x4934e8, spriteActor, spriteActors/room8_spr6]
+      - [0x493538, spriteActor, spriteActors/room8_spr7]
+      - [0x493588, spriteActor, spriteActors/room8_spr8]
+      - [0x4935d8, spriteActor, spriteActors/room8_spr9]
+      - [0x493628, spriteActor, spriteActors/room8_spr10]
+      - [0x493678, spriteActor, spriteActors/room8_spr11]
+      - [0x4936c8, spriteActor, spriteActors/room8_spr12]
+      - [0x493718, spriteActor, spriteActors/room8_spr13]
+      - [0x493768, spriteActor, spriteActors/room8_spr14]
+      - [0x4937b8, spriteActor, spriteActors/room8_spr15]
+      - [0x493808, spriteActor, spriteActors/room8_spr16]
+      - [0x493858, spriteActor, spriteActors/room8_spr17]
+      - [0x4938a8, spriteActor, spriteActors/room8_spr18]
+      - [0x4938f8, spriteActor, spriteActors/room8_spr19]
+      - [0x493948, spriteActor, spriteActors/room8_spr20]
+      - [0x493998, spriteActor, spriteActors/room8_spr21]
+      - [0x4939e8, spriteActor, spriteActors/room8_spr22]
+      - [0x493a38, spriteActor, spriteActors/room8_spr23]
+      - [0x493a88, spriteActor, spriteActors/room8_spr24]
+      - [0x493ad8, spriteActor, spriteActors/room8_sprSTOP]
+
+      - [0x493b28, spriteActor, spriteActors/room9_sprSTOP]
+
+      - [0x493b78, spriteActor, spriteActors/room10_spr1]
+      - [0x493bc8, spriteActor, spriteActors/room10_spr2]
+      - [0x493c18, spriteActor, spriteActors/room10_spr3]
+      - [0x493c68, spriteActor, spriteActors/room10_spr4]
+      - [0x493cb8, spriteActor, spriteActors/room10_spr5]
+      - [0x493d08, spriteActor, spriteActors/room10_spr6]
+      - [0x493d58, spriteActor, spriteActors/room10_spr7]
+      - [0x493da8, spriteActor, spriteActors/room10_spr8]
+      - [0x493df8, spriteActor, spriteActors/room10_spr9]
+      - [0x493e48, spriteActor, spriteActors/room10_spr10]
+      - [0x493e98, spriteActor, spriteActors/room10_spr11]
+      - [0x493ee8, spriteActor, spriteActors/room10_spr12]
+      - [0x493f38, spriteActor, spriteActors/room10_spr13]
+      - [0x493f88, spriteActor, spriteActors/room10_spr14]
+      - [0x493fd8, spriteActor, spriteActors/room10_spr15]
+      - [0x494028, spriteActor, spriteActors/room10_spr16]
+      - [0x494078, spriteActor, spriteActors/room10_sprSTOP]
+
+      - [0x4940c8, spriteActor, spriteActors/room11_spr1]
+      - [0x494118, spriteActor, spriteActors/room11_spr2]
+      - [0x494168, spriteActor, spriteActors/room11_spr3]
+      - [0x4941b8, spriteActor, spriteActors/room11_spr4]
+      - [0x494208, spriteActor, spriteActors/room11_spr5]
+      - [0x494258, spriteActor, spriteActors/room11_spr6]
+      - [0x4942a8, spriteActor, spriteActors/room11_spr7]
+      - [0x4942f8, spriteActor, spriteActors/room11_spr8]
+      - [0x494348, spriteActor, spriteActors/room11_spr9]
+      - [0x494398, spriteActor, spriteActors/room11_spr10]
+      - [0x4943e8, spriteActor, spriteActors/room11_spr11]
+      - [0x494438, spriteActor, spriteActors/room11_spr12]
+      - [0x494488, spriteActor, spriteActors/room11_sprSTOP]
+
+      - [0x4944d8, spriteActor, spriteActors/room12_spr1]
+      - [0x494528, spriteActor, spriteActors/room12_spr2]
+      - [0x494578, spriteActor, spriteActors/room12_spr3]
+      - [0x4945c8, spriteActor, spriteActors/room12_spr4]
+      - [0x494618, spriteActor, spriteActors/room12_spr5]
+      - [0x494668, spriteActor, spriteActors/room12_spr6]
+      - [0x4946b8, spriteActor, spriteActors/room12_spr7]
+      - [0x494708, spriteActor, spriteActors/room12_spr8]
+      - [0x494758, spriteActor, spriteActors/room12_spr9]
+      - [0x4947a8, spriteActor, spriteActors/room12_spr10]
+      - [0x4947f8, spriteActor, spriteActors/room12_spr11]
+      - [0x494848, spriteActor, spriteActors/room12_spr12]
+      - [0x494898, spriteActor, spriteActors/room12_spr13]
+      - [0x4948e8, spriteActor, spriteActors/room12_spr14]
+      - [0x494938, spriteActor, spriteActors/room12_spr15]
+      - [0x494988, spriteActor, spriteActors/room12_spr16]
+      - [0x4949d8, spriteActor, spriteActors/room12_sprSTOP]
+
+      - [0x494a28, spriteActor, spriteActors/room13_spr1]
+      - [0x494a78, spriteActor, spriteActors/room13_spr2]
+      - [0x494ac8, spriteActor, spriteActors/room13_spr3]
+      - [0x494b18, spriteActor, spriteActors/room13_spr4]
+      - [0x494b68, spriteActor, spriteActors/room13_spr5]
+      - [0x494bb8, spriteActor, spriteActors/room13_spr6]
+      - [0x494c08, spriteActor, spriteActors/room13_spr7]
+      - [0x494c58, spriteActor, spriteActors/room13_spr8]
+      - [0x494ca8, spriteActor, spriteActors/room13_spr9]
+      - [0x494cf8, spriteActor, spriteActors/room13_spr10]
+      - [0x494d48, spriteActor, spriteActors/room13_sprSTOP]
+
+      - [0x494d98, spriteActor, spriteActors/room14_spr1]
+      - [0x494de8, spriteActor, spriteActors/room14_spr2]
+      - [0x494e38, spriteActor, spriteActors/room14_spr3]
+      - [0x494e88, spriteActor, spriteActors/room14_spr4]
+      - [0x494ed8, spriteActor, spriteActors/room14_spr5]
+      - [0x494f28, spriteActor, spriteActors/room14_spr6]
+      - [0x494f78, spriteActor, spriteActors/room14_spr7]
+      - [0x494fc8, spriteActor, spriteActors/room14_spr8]
+      - [0x495018, spriteActor, spriteActors/room14_spr9]
+      - [0x495068, spriteActor, spriteActors/room14_spr10]
+      - [0x4950b8, spriteActor, spriteActors/room14_spr11]
+      - [0x495108, spriteActor, spriteActors/room14_spr12]
+      - [0x495158, spriteActor, spriteActors/room14_spr13]
+      - [0x4951a8, spriteActor, spriteActors/room14_spr14]
+      - [0x4951f8, spriteActor, spriteActors/room14_spr15]
+      - [0x495248, spriteActor, spriteActors/room14_spr16]
+      - [0x495298, spriteActor, spriteActors/room14_spr17]
+      - [0x4952e8, spriteActor, spriteActors/room14_spr18]
+      - [0x495338, spriteActor, spriteActors/room14_spr19]
+      - [0x495388, spriteActor, spriteActors/room14_spr20]
+      - [0x4953d8, spriteActor, spriteActors/room14_spr21]
+      - [0x495428, spriteActor, spriteActors/room14_spr22]
+      - [0x495478, spriteActor, spriteActors/room14_spr23]
+      - [0x4954c8, spriteActor, spriteActors/room14_spr24]
+      - [0x495518, spriteActor, spriteActors/room14_spr25]
+      - [0x495568, spriteActor, spriteActors/room14_spr26]
+      - [0x4955b8, spriteActor, spriteActors/room14_spr27]
+      - [0x495608, spriteActor, spriteActors/room14_spr28]
+      - [0x495658, spriteActor, spriteActors/room14_spr29]
+      - [0x4956a8, spriteActor, spriteActors/room14_spr30]
+      - [0x4956f8, spriteActor, spriteActors/room14_sprSTOP]
+
+      - [0x495748, spriteActor, spriteActors/room16_sprSTOP]
+
+      - [0x495798, spriteActor, spriteActors/room17_spr1]
+      - [0x4957e8, spriteActor, spriteActors/room17_spr2]
+      - [0x495838, spriteActor, spriteActors/room17_spr3]
+      - [0x495888, spriteActor, spriteActors/room17_spr4]
+      - [0x4958d8, spriteActor, spriteActors/room17_spr5]
+      - [0x495928, spriteActor, spriteActors/room17_spr6]
+      - [0x495978, spriteActor, spriteActors/room17_spr7]
+      - [0x4959c8, spriteActor, spriteActors/room17_spr8]
+      - [0x495a18, spriteActor, spriteActors/room17_spr9]
+      - [0x495a68, spriteActor, spriteActors/room17_spr10]
+      - [0x495ab8, spriteActor, spriteActors/room17_spr11]
+      - [0x495b08, spriteActor, spriteActors/room17_spr12]
+      - [0x495b58, spriteActor, spriteActors/room17_spr13]
+      - [0x495ba8, spriteActor, spriteActors/room17_spr14]
+      - [0x495bf8, spriteActor, spriteActors/room17_spr15]
+      - [0x495c48, spriteActor, spriteActors/room17_spr16]
+      - [0x495c98, spriteActor, spriteActors/room17_spr17]
+      - [0x495ce8, spriteActor, spriteActors/room17_spr18]
+      - [0x495d38, spriteActor, spriteActors/room17_spr19]
+      - [0x495d88, spriteActor, spriteActors/room17_spr20]
+      - [0x495dd8, spriteActor, spriteActors/room17_sprSTOP]
+
+      - [0x495e28, spriteActor, spriteActors/room18_spr1]
+      - [0x495e78, spriteActor, spriteActors/room18_sprSTOP]
+
+      - [0x495ec8, spriteActor, spriteActors/room20_spr1]
+      - [0x495f18, spriteActor, spriteActors/room20_spr2]
+      - [0x495f68, spriteActor, spriteActors/room20_spr3]
+      - [0x495fb8, spriteActor, spriteActors/room20_spr4]
+      - [0x496008, spriteActor, spriteActors/room20_spr5]
+      - [0x496058, spriteActor, spriteActors/room20_spr6]
+      - [0x4960a8, spriteActor, spriteActors/room20_spr7]
+      - [0x4960f8, spriteActor, spriteActors/room20_spr8]
+      - [0x496148, spriteActor, spriteActors/room20_spr9]
+      - [0x496198, spriteActor, spriteActors/room20_spr10]
+      - [0x4961e8, spriteActor, spriteActors/room20_spr11]
+      - [0x496238, spriteActor, spriteActors/room20_spr12]
+      - [0x496288, spriteActor, spriteActors/room20_spr13]
+      - [0x4962d8, spriteActor, spriteActors/room20_spr14]
+      - [0x496328, spriteActor, spriteActors/room20_spr15]
+      - [0x496378, spriteActor, spriteActors/room20_spr16]
+      - [0x4963c8, spriteActor, spriteActors/room20_spr17]
+      - [0x496418, spriteActor, spriteActors/room20_spr18]
+      - [0x496468, spriteActor, spriteActors/room20_sprSTOP]
+      
+      - [0x4964b8, collectable, collectables/room0_clct1]
+      - [0x4964D8, collectable, collectables/room0_clct2]
+      - [0x4964F8, collectable, collectables/room0_clctSTOP]
+
+      - [0x496518, collectable, collectables/room1_clct1]
+      - [0x496538, collectable, collectables/room1_clctSTOP]
+
+      - [0x496558, collectable, collectables/room2_clctSTOP]
+
+      - [0x496578, collectable, collectables/room3_clct1]
+      - [0x496598, collectable, collectables/room3_clctSTOP]
+
+      - [0x4965b8, collectable, collectables/room20_clct1]
+      - [0x4965d8, collectable, collectables/room20_clct2]
+      - [0x4965f8, collectable, collectables/room20_clct3]
+      - [0x496618, collectable, collectables/room20_clct4]
+      - [0x496638, collectable, collectables/room20_clct5]
+      - [0x496658, collectable, collectables/room20_clct6]
+      - [0x496678, collectable, collectables/room20_clctSTOP]
+
+      - [0x496698, collectable, collectables/room5_clct1]
+      - [0x4966b8, collectable, collectables/room5_clct2]
+      - [0x4966d8, collectable, collectables/room5_clctSTOP]
+
+      - [0x4966f8, collectable, collectables/room6_clct1]
+      - [0x496718, collectable, collectables/room6_clct2]
+      - [0x496738, collectable, collectables/room6_clct3]
+      - [0x496758, collectable, collectables/room6_clctSTOP]
+
+      - [0x496778, collectable, collectables/room8_clct1]
+      - [0x496798, collectable, collectables/room8_clct2]
+      - [0x4967b8, collectable, collectables/room8_clct3]
+      - [0x4967d8, collectable, collectables/room8_clctSTOP]
+
+      - [0x4967f8, collectable, collectables/room9_clct1]
+      - [0x496818, collectable, collectables/room9_clct2]
+      - [0x496838, collectable, collectables/room9_clctSTOP]
+
+      - [0x496858, collectable, collectables/room10_clct1]
+      - [0x496878, collectable, collectables/room10_clct2]
+      - [0x496898, collectable, collectables/room10_clct3]
+      - [0x4968b8, collectable, collectables/room10_clct4]
+      - [0x4968d8, collectable, collectables/room10_clctSTOP]
+
+      - [0x4968f8, collectable, collectables/room11_clct1]
+      - [0x496918, collectable, collectables/room11_clct2]
+      - [0x496938, collectable, collectables/room11_clctSTOP]
+
+      - [0x496958, collectable, collectables/room12_clct1]
+      - [0x496978, collectable, collectables/room12_clct2]
+      - [0x496998, collectable, collectables/room12_clctSTOP]
+
+      - [0x4969B8, collectable, collectables/roomUnk4_clct1]
+      - [0x4969D8, collectable, collectables/roomUnk4_clct2]
+      - [0x4969F8, collectable, collectables/roomUnk4_clctSTOP]
+
+      - [0x496a18, collectable, collectables/room21_clct1]
+      - [0x496a38, collectable, collectables/room21_clct2]
+      - [0x496a58, collectable, collectables/room21_clct3]
+      - [0x496a78, collectable, collectables/room21_clct4]
+      - [0x496a98, collectable, collectables/room21_clct5]
+      - [0x496ab8, collectable, collectables/room21_clct6]
+      - [0x496ad8, collectable, collectables/room21_clct7]
+      - [0x496af8, collectable, collectables/room21_clctSTOP]
+
+      - [0x496b18, collectable, collectables/room16_clct1]
+      - [0x496b38, collectable, collectables/room16_clct2]
+      - [0x496b58, collectable, collectables/room16_clct3]
+      - [0x496b78, collectable, collectables/room16_clct4]
+      - [0x496b98, collectable, collectables/room16_clctSTOP]
+
+      - [0x496bb8, collectable, collectables/room17_clct1]
+      - [0x496bd8, collectable, collectables/room17_clct2]
+      - [0x496bf8, collectable, collectables/room17_clct3]
+      - [0x496c18, collectable, collectables/room17_clctSTOP]
+      
+      - [0x496c38, collectable, collectables/room18_clct1]
+      - [0x496c58, collectable, collectables/room18_clct2]
+      - [0x496c78, collectable, collectables/room18_clct3]
+      - [0x496c98, collectable, collectables/room18_clctSTOP]
+
+      - [0x496CB8, roomSettings, rooms/room0]
+      - [0x496d24, roomSettings, rooms/room1]
+      - [0x496d90, roomSettings, rooms/room2]
+      - [0x496dfc, roomSettings, rooms/room3]
+      - [0x496e68, roomSettings, rooms/room4]
+      - [0x496ed4, roomSettings, rooms/room5]
+      - [0x496f40, roomSettings, rooms/room6]
+      - [0x496fac, roomSettings, rooms/room7]
+      - [0x497018, roomSettings, rooms/room8]
+      - [0x497084, roomSettings, rooms/room9]
+      - [0x4970F0, roomSettings, rooms/room10]
+      - [0x49715C, roomSettings, rooms/room11]
+      - [0x4971C8, roomSettings, rooms/room12]
+      - [0x497234, roomSettings, rooms/room13]
+      - [0x4972A0, roomSettings, rooms/room14]
+      - [0x49730C, roomSettings, rooms/room15]
+      - [0x497378, roomSettings, rooms/room16]
+      - [0x4973E4, roomSettings, rooms/room17]
+      - [0x497450, roomSettings, rooms/room18]
+      - [0x4974BC, roomSettings, rooms/room19]
+      - [0x497528, roomSettings, rooms/room20]
+      - [0x497594, roomSettings, rooms/room21]
+      - [0x497600, roomSettings, rooms/roomSTOP]
+      - {start: 0x49766c, type: levelMap, name: map, args: Map}
+      - {start: 0x4977ac, type: levelMap, name: map, args: Header}
+      - [0x4977bc, roomSettings, nullOWRoom]
+      - [0x497828, levelScope, scope]
+      - [0x497840, levelHeader, header]
+
+      - [0x497860] #identity matrix
+      - [0x4978a0, lights, alScope] # set Lights 1 for alot of JL assets
+
+      - [0x4978B8, vtx, vtx]
+      - [0x497958] #identity matrix
+      - [0x497998] #B8000000
+      - [0x4979A0, i4, antWallw.MEd.i4, 32, 32]
+      - [0x497BA0, gfxSeg, gfx]
+
+      - [0x497D38, vtx, vtx2]
+      - [0x497DD8] #identity matrix
+      - [0x497E18, gfxSeg, gfx2]
+
+      - [0x497FB0, vtx, vtx3]
+      - [0x498050] #identity matrix
+      - [0x498090, gfxSeg, gfx3]
+
+      - [0x498258, vtx, vtx4]
+      - [0x4987A8] #identity matrix
+      - [0x4987e8] #B8000000
+      - [0x4987F0, ci4,     antWallShine1.MEd.ci4, 64, 64]
+      - [0x498FF0] #B8000000
+      - [0x498FF8, palette, antWallShine1.MEd.ci4]
+      - [0x4991F8] #B8000000
+      - [0x499200, ci4,     antWallShine2.MEd.ci4, 64, 64]
+      - [0x499A00] #B8000000
+      - [0x499A08, palette, antWallShine2.MEd.ci4]
+      - [0x499C08, gfxSeg, gfx4]
+
+      - [0x49A778, vtx, vtx5]
+      - [0x49AE08] #identity matrix
+      - [0x49AE48] #B8000000
+      - [0x49AE50, i4, antWalli4.MEd.i4, 24, 32]
+      - [0x49AFD0] #B8000000
+      - [0x49AFD8, i4, gooinga.MEd.i4, 32, 32]
+      - [0x49B1D8] #B8000000
+      - [0x49B1E0, ci8,     AntshineWall3.MEd.ci8, 32, 32]
+      - [0x49B5E0] #B8000000
+      - [0x49B5E8, palette, AntshineWall3.MEd.ci8]
+      - [0x49B7E8, gfxSeg, gfx5]
+
+      - [0x49C3A0, vtx, vtx6]
+      - [0x49CAB0] #identity matrix
+      - [0x49CAF0] #B8000000
+      - [0x49CAF8, i4, horror.MEd.i4, 32, 32]
+      - [0x49CCF8] #B8000000
+      - [0x49CD00, i4, antMural1.MEd.i4, 64, 64]
+      - [0x49d500, gfxSeg, gfx6]
+
+      - [0x49E1B0, vtx, vtx7]
+      - [0x49EAE0] #identity matrix
+      - [0x49EB20] #B8000000
+      - [0x49EB28, ci8,     AlShinewall2.MEd.ci8, 32, 32]
+      - [0x49EF28] #B8000000
+      - [0x49EF30, palette, AlShinewall2.MEd.ci8]
+      - [0x49F130] #B8000000
+      - [0x49F138, ci4,     wallawalwal.MEd.ci4, 32, 32]
+      - [0x49F338] #B8000000
+      - [0x49F340, palette, wallawalwal.MEd.ci4]
+      - [0x49F540, gfxSeg, gfx7]
+
+      - [0x4A03E0, vtx, vtx8]
+      - [0x4A0A80] #identity matrix
+      - [0x4A0AC0] #B8000000
+      - [0x4A0AC8, ci8,     ALWall2.MEd.ci8, 32, 64]
+      - [0x4A12C8] #B8000000
+      - [0x4A12D0, palette, ALWall2.MEd.ci8]
+      - [0x4A14D0, gfxSeg, gfx8]
+
+      - [0x4A2408, vtx, vtx9]
+      - [0x4A2A68] #identity matrix
+      - [0x4A2AA8] #B8000000
+      - [0x4A2AB0, ci8,     ALShinewall.MEd.ci8, 32, 32]
+      - [0x4A2EB0] #B8000000
+      - [0x4A2EB8, palette, ALShinewall.MEd.ci8]
+      - [0x4A30B8, gfxSeg, gfx9]
+
+      - [0x4A3D50, vtx, vtx10]
+      - [0x4A46D0] #identity matrix
+      - [0x4A4710] #B8000000
+      - [0x4A4718, ci8,     antfadeee.MEd.ci8, 32, 64]
+      - [0x4A4F18] #B8000000
+      - [0x4A4F20, palette, antfadeee.MEd.ci8]
+      - [0x4A5120] #B8000000
+      - [0x4A5128, i4, ALMural.MEd.i4, 64, 64]
+      - [0x4A5928, gfxSeg, gfx10]
+
+      - [0x4A6A98, vtx, vtx11]
+      - [0x4A6ED8] #identity matrix
+      - [0x4A6F18, gfxSeg, gfx11]
+
+      - [0x4A75C0, vtx, vtx12]
+      - [0x4A81D0] #identity matrix
+      - [0x4A8210, gfxSeg, gfx12]
+
+      - [0x4A93E8, vtx, vtx13]
+      - [0x4A9728] #identity matrix
+      - [0x4A9768, gfxSeg, gfx13]
+
+      - [0x4A9E10, vtx, vtx14]
+      - [0x4AA690] #identity matrix
+      - [0x4AA6D0, gfxSeg, gfx14]
+
+      - [0x4AB6F0, vtx, vtx15]
+      - [0x4ABE30] #identity matrix
+      - [0x4ABE70, gfxSeg, gfx15]
+
+      - [0x4ACD28, vtx, vtx16]
+      - [0x4AD5D8] #identity matrix
+      - [0x4AD618, gfxSeg, gfx16]
+
+      - [0x4AE658, vtx, vtx17]
+      - [0x4AEDB8] #identity matrix
+      - [0x4AEDF8, gfxSeg, gfx17]
+
+      - [0x4AFB38, vtx, vtx18]
+      - [0x4B0358] #identity matrix
+      - [0x4B0398, gfxSeg, gfx18]
+
+      - [0x4B11C8, vtx, vtx19]
+      - [0x4B1A48] #identity matrix
+      - [0x4B1A88] #B8000000
+      - [0x4B1A90, ci8,     ALwall.MEd.ci8, 32, 64]
+      - [0x4B2290] #B8000000
+      - [0x4B2298, palette, ALwall.MEd.ci8]
+      - [0x4B2498, gfxSeg, gfx19]
+
+      - [0x4B34B8, vtx, vtx20]
+      - [0x4B3918] #identity matrix
+      - [0x4B3958, gfxSeg, gfx20]
+
+      - [0x4B4018, vtx, vtx21]
+      - [0x4B4598] #identity matrix
+      - [0x4B45D8, gfxSeg, gfx21]
+
+      - [0x4B4F18, vtx, vtx22]
+      - [0x4B5318] #identity matrix
+      - [0x4B5358, gfxSeg, gfx22]
+
+      - [0x4B5C28, vtx, vtx23]
+      - [0x4B61D8] #identity matrix
+      - [0x4B6218, gfxSeg, gfx23]
+
+      - [0x4B6CF0, vtx, vtx24]
+      - [0x4B7090] #identity matrix
+      - [0x4B70D0] #B8000000
+      - [0x4B70D8, ci4,     murals.MEd.ci4, 64, 64]
+      - [0x4B78d8] #B8000000
+      - [0x4B78E0, palette, murals.MEd.ci4]
+      - [0x4B7AE0, gfxSeg, gfx24]
+
+      - [0x4B8258, vtx, vtx25]
+      - [0x4B8398] #identity matrix
+      - [0x4B83D8, gfxSeg, gfx25]
+
+      - [0x4B86B0, vtx, vtx26]
+      - [0x4B8860] #identity matrix
+      - [0x4B88A0, gfxSeg, gfx26]
+
+      - [0x4B8C80, vtx, vtx27]
+      - [0x4B8FE0] #identity matrix
+      - [0x4B9020, gfxSeg, gfx27]
+
+      - [0x4B9648, vtx, vtx28]
+      - [0x4B9988] #identity matrix
+      - [0x4B99C8, gfxSeg, gfx28]
+
+      - [0x4B9FE8, vtx, vtx29]
+      - [0x4BA8A8] #identity matrix
+      - [0x4BA8E8, gfxSeg, gfx29]
+
+      - [0x4BAF08, vtx, vtx30]
+      - [0x4BB728] #identity matrix
+      - [0x4BB768] #B8000000
+      - [0x4BB770, ci4,     hole.MEd.ci4, 32, 32]
+      - [0x4BB970] #B8000000
+      - [0x4BB978, palette, hole.MEd.ci4]
+      - [0x4BBB78] #B8000000
+      - [0x4BBB80, ci4,     metallurgic.MEd.ci4, 32, 32]
+      - [0x4BBD80] #B8000000
+      - [0x4BBD88, palette, metallurgic.MEd.ci4]
+      - [0x4BBF88, gfxSeg, gfx30]
+
+      - [0x4BCBA8, vtx, vtx31]
+      - [0x4BCCA8] #identity matrix
+      - [0x4BCCE8, gfxSeg, gfx31]
+
+      - [0x4BD090, vtx, vtx32]
+      - [0x4BD190] #identity matrix
+      - [0x4BD1D0, gfxSeg, gfx32]
+
+      - [0x4BD498, vtx, vtx33]
+      - [0x4BD5D8] #identity matrix
+      - [0x4BD618, gfxSeg, gfx33]
+
+      - [0x4BD9D0, vtx, vtx34]
+      - [0x4BDC10] #identity matrix
+      - [0x4BDC50, gfxSeg, gfx34]
+
+      - [0x4BDF78, vtx, vtx35]
+      - [0x4BE1B8] #identity matrix
+      - [0x4BE1F8, gfxSeg, gfx35]
+
+      - [0x4BE4F0, vtx, vtx36]
+      - [0x4BE5B0] #identity matrix
+      - [0x4BE5F0, gfxSeg, gfx36]
+
+      - [0x4BE8D8, vtx, vtx37]
+      - [0x4BE998] #identity matrix
+      - [0x4BE9D8, gfxSeg, gfx37]
+
+      - [0x4BEC90, vtx, vtx38]
+      - [0x4BF5B0] #identity matrix
+      - [0x4BF5F0] #B8000000
+      - [0x4BF5F8, ci4,     path.MEd.ci4, 32, 32]
+      - [0x4BF7f8] #B8000000
+      - [0x4BF800, palette, path.MEd.ci4]
+      - [0x4BFA00] #B8000000
+      - [0x4BFA08, ci4,     stone.MEd.ci4, 64, 64]
+      - [0x4C0208] #B8000000
+      - [0x4C0210, palette, stone.MEd.ci4]
+      - [0x4C0410, gfxSeg, gfx38]
+
+      - [0x4C0F20, vtx, vtx39]
+      - [0x4C1090] #identity matrix
+      - [0x4C10D0, gfxSeg, gfx39]
+
+      - [0x4C13C0, vtx, vtx40]
+      - [0x4C14C0] #identity matrix
+      - [0x4C1500, gfxSeg, gfx40]
+
+      - [0x4C18A8, vtx, vtx41]
+      - [0x4C19A8] #identity matrix
+      - [0x4C19E8, gfxSeg, gfx41]
+
+      - [0x4C1D90, vtx, vtx42]
+      - [0x4C1DD0] #identity matrix
+      - [0x4C1E10, gfxSeg, gfx42]
+
+      - [0x4C1EF8, vtx, vtx43]
+      - [0x4C1F38] #identity matrix
+      - [0x4C1F78, gfxSeg, gfx43]
+
+      - [0x4C2050, vtx, vtx44]
+      - [0x4C2090] #identity matrix
+      - [0x4C20D0, gfxSeg, gfx44]
+
+      - [0x4C21A8, vtx, vtx45]
+      - [0x4C21E8] #identity matrix
+      - [0x4C2228, gfxSeg, gfx45]
+
+      - [0x4C2300, vtx, vtx46]
+      - [0x4C2340] #identity matrix
+      - [0x4C2380, gfxSeg, gfx46]
+
+      - [0x4C2458, vtx, vtx47]
+      - [0x4C2578] #identity matrix
+      - [0x4C25B8, gfxSeg, gfx47]
+
+      - [0x4C2890, vtx, vtx48]
+      - [0x4C2990] #identity matrix
+      - [0x4C29D0, gfxSeg, gfx48]
+
+      - [0x4C2C98, vtx, vtx49]
+      - [0x4C2D18] #identity matrix
+      - [0x4C2D58] #B8000000
+      - [0x4C2D60, i4, wallagain.MEd.i4, 32, 64]
+      - [0x4C3160, gfxSeg, gfx49]
+
+      - [0x4C32F8, vtx, vtx50]
+      - [0x4C3378] #identity matrix
+      - [0x4C33B8, gfxSeg, gfx50]
+
+      - [0x4C3550, vtx, vtx51]
+      - [0x4C3690] #identity matrix
+      - [0x4C36D0] #B8000000
+      - [0x4C36D8, i4, wallsss.MEd.i4, 64, 32]
+      - [0x4C3AD8] #B8000000
+      - [0x4C3AE0, i4, wallSmall.MEd.i4, 32, 16]
+      - [0x4C3BE0, gfxSeg, gfx51]
+
+      - [0x4C3F08, vtx, vtx52]
+      - [0x4C3FC8] #identity matrix
+      - [0x4C4008] #B8000000
+      - [0x4C4010, i4, muralllll.MEd.i4, 32, 64]
+      - [0x4C4410, gfxSeg, gfx52]
+
+      - [0x4C4668, vtx, vtx53]
+      - [0x4C4728] #identity matrix
+      - [0x4C4768] #B8000000
+      - [0x4C4770, i4, muralllll2.MEd.i4, 32, 64]
+      - [0x4C4B70, gfxSeg, gfx53]
+
+      - [0x4C4DC8, vtx, vtx54]
+      - [0x4C58C8] #identity matrix
+      - [0x4C5908, gfxSeg, gfx54]
+
+      - [0x4C6618, vtx, vtx55]
+      - [0x4C6778] #identity matrix
+      - [0x4C67b8] #B8000000
+      - [0x4C67C0, ci4,     wallFade32.MEd.ci4, 32, 64]
+      - [0x4C6BC0] #B8000000
+      - [0x4C6BC8, palette, wallFade32.MEd.ci4]
+      - [0x4C6DC8, gfxSeg, gfx55]
+
+      - [0x4C7190, vtx, vtx56]
+      - [0x4C71D0] #identity matrix
+      - [0x4C7210, gfxSeg, gfx56]
+
+      - [0x4C72F8, vtx, vtx57]
+      - [0x4C7478] #identity matrix
+      - [0x4C74b8] #B8000000
+      - [0x4C74C0, i4, the30thMural.MEd.i4, 64, 64]
+      - [0x4C7CC0, gfxSeg, gfx57]
+
+      - [0x4C80A8, vtx, vtx58]
+      - [0x4C8228] #identity matrix
+      - [0x4C8268, gfxSeg, gfx58]
+
+      - [0x4C85A0, vtx, vtx59]
+      - [0x4C8720] #identity matrix
+      - [0x4C8760] #B8000000
+      - [0x4C8768, i4, anotherMural.MEd.i4, 64, 64]
+      - [0x4C8F68, gfxSeg, gfx59]
+
+      - [0x4C9350, vtx, vtx60]
+      - [0x4C9390] #identity matrix
+      - [0x4C93D0, gfxSeg, gfx60]
+
+      - [0x4C9438, vtx, vtx61]
+      - [0x4C9538] #identity matrix
+      - [0x4C9578, gfxSeg, gfx61]
+
+    
+      - {start: 0x4C97E0, type: collision, name: unkCol1/unkCol1, args: "Verts"}
+      - {start: 0x4C9828, type: collision, name: unkCol1/unkCol1, args: "Tris"}
+      - {start: 0x4C9858, type: collision, name: unkCol1/unkCol1, args: "Settings"}
+      - {start: 0x4C9870, type: collision, name: unkCol1/unkCol1, args: "Header"}
+      - {start: 0x4C9884, type: collision, name: unkCol2/unkCol2, args: "Verts"}
+      - {start: 0x4C98cc, type: collision, name: unkCol2/unkCol2, args: "Tris"}
+      - {start: 0x4C98fc, type: collision, name: unkCol2/unkCol2, args: "Settings"}
+      - {start: 0x4C9914, type: collision, name: unkCol2/unkCol2, args: "Header"}
+      - {start: 0x4C9928, type: collision, name: unkCol3/unkCol3, args: "Verts"}
+      - {start: 0x4C9970, type: collision, name: unkCol3/unkCol3, args: "Tris"}
+      - {start: 0x4C99a0, type: collision, name: unkCol3/unkCol3, args: "Settings"}
+      - {start: 0x4C99b8, type: collision, name: unkCol3/unkCol3, args: "Header"}
+      - {start: 0x4C99cc, type: collision, name: unkCol4/unkCol4, args: "Verts"}
+      - {start: 0x4c9b70, type: collision, name: unkCol4/unkCol4, args: "Tris"}
+      - {start: 0x4c9e70, type: collision, name: unkCol4/unkCol4, args: "Settings"}
+      - {start: 0x4c9e88, type: collision, name: unkCol4/unkCol4, args: "Header"}
+      - {start: 0x4c9e9c, type: collision, name: unkCol5/unkCol5, args: "Verts"}
+      - {start: 0x4ca0dc, type: collision, name: unkCol5/unkCol5, args: "Tris"}
+      - {start: 0x4ca4cc, type: collision, name: unkCol5/unkCol5, args: "Settings"}
+      - {start: 0x4ca4e4, type: collision, name: unkCol5/unkCol5, args: "Header"}
+      - {start: 0x4ca4f8, type: collision, name: unkCol6/unkCol6, args: "Verts"}
+      - {start: 0x4ca768, type: collision, name: unkCol6/unkCol6, args: "Tris"}
+      - {start: 0x4cabb8, type: collision, name: unkCol6/unkCol6, args: "Settings"}
+      - {start: 0x4cabd0, type: collision, name: unkCol6/unkCol6, args: "Header"}
+      - {start: 0x4cabe4, type: collision, name: unkCol7/unkCol7, args: "Verts"}
+      - {start: 0x4caefc, type: collision, name: unkCol7/unkCol7, args: "Tris"}
+      - {start: 0x4cb484, type: collision, name: unkCol7/unkCol7, args: "Settings"}
+      - {start: 0x4cb49c, type: collision, name: unkCol7/unkCol7, args: "Header"}
+      - {start: 0x4cb4b0, type: collision, name: unkCol8/unkCol8, args: "Verts"}
+      - {start: 0x4cb720, type: collision, name: unkCol8/unkCol8, args: "Tris"}
+      - {start: 0x4cbb34, type: collision, name: unkCol8/unkCol8, args: "Settings"}
+      - {start: 0x4cbb4c, type: collision, name: unkCol8/unkCol8, args: "Header"}
+      - {start: 0x4cbb60, type: collision, name: unkCol9/unkCol9, args: "Verts"}
+      - {start: 0x4cbda0, type: collision, name: unkCol9/unkCol9, args: "Tris"}
+      - {start: 0x4cc190, type: collision, name: unkCol9/unkCol9, args: "Settings"}
+      - {start: 0x4cc1a8, type: collision, name: unkCol9/unkCol9, args: "Header"}
+      - {start: 0x4cc1bc, type: collision, name: unkColA/unkColA, args: "Verts"}
+      - {start: 0x4cc54c, type: collision, name: unkColA/unkColA, args: "Tris"}
+      - {start: 0x4ccad4, type: collision, name: unkColA/unkColA, args: "Settings"}
+      - {start: 0x4ccaec, type: collision, name: unkColA/unkColA, args: "Header"}
+      - {start: 0x4ccb00, type: collision, name: unkColB/unkColB, args: "Verts"}
+      - {start: 0x4cccc8, type: collision, name: unkColB/unkColB, args: "Tris"}
+      - {start: 0x4ccee4, type: collision, name: unkColB/unkColB, args: "Settings"}
+      - {start: 0x4ccefc, type: collision, name: unkColB/unkColB, args: "Header"}
+      - {start: 0x4ccf10, type: collision, name: unkColC/unkColC, args: "Verts"}
+      - {start: 0x4cd2e8, type: collision, name: unkColC/unkColC, args: "Tris"}
+      - {start: 0x4cd9f0, type: collision, name: unkColC/unkColC, args: "Settings"}
+      - {start: 0x4cda08, type: collision, name: unkColC/unkColC, args: "Header"}
+      - {start: 0x4cda1c, type: collision, name: unkColD/unkColD, args: "Verts"}
+      - {start: 0x4cdb3c, type: collision, name: unkColD/unkColD, args: "Tris"}
+      - {start: 0x4cdd04, type: collision, name: unkColD/unkColD, args: "Settings"}
+      - {start: 0x4cdd1c, type: collision, name: unkColD/unkColD, args: "Header"}
+      - {start: 0x4cdd30, type: collision, name: unkColE/unkColE, args: "Verts"}
+      - {start: 0x4cdd78, type: collision, name: unkColE/unkColE, args: "Tris"}
+      - {start: 0x4cdd84, type: collision, name: unkColE/unkColE, args: "Settings"}
+      - {start: 0x4cdd9c, type: collision, name: unkColE/unkColE, args: "Header"}
+      - {start: 0x4cddb0, type: collision, name: unkCo3A/unkCo3A, args: "Verts"}
+      - {start: 0x4ce020, type: collision, name: unkCo3A/unkCo3A, args: "Tris"}
+      - {start: 0x4ce458, type: collision, name: unkCo3A/unkCo3A, args: "Settings"}
+      - {start: 0x4ce470, type: collision, name: unkCo3A/unkCo3A, args: "Header"}
+      - {start: 0x4ce484, type: collision, name: unkColF/unkColF, args: "Verts"}
+      - {start: 0x4ce784, type: collision, name: unkColF/unkColF, args: "Tris"}
+      - {start: 0x4cecac, type: collision, name: unkColF/unkColF, args: "Settings"}
+      - {start: 0x4cecc4, type: collision, name: unkColF/unkColF, args: "Header"}
+      - {start: 0x4cecd8, type: collision, name: unkCol10/unkCol10, args: "Verts"}
+      - {start: 0x4cef78, type: collision, name: unkCol10/unkCol10, args: "Tris"}
+      - {start: 0x4cf41c, type: collision, name: unkCol10/unkCol10, args: "Settings"}
+      - {start: 0x4cf434, type: collision, name: unkCol10/unkCol10, args: "Header"}
+      - {start: 0x4cf448, type: collision, name: unkCol11/unkCol11, args: "Verts"}
+      - {start: 0x4cf718, type: collision, name: unkCol11/unkCol11, args: "Tris"}
+      - {start: 0x4cfc28, type: collision, name: unkCol11/unkCol11, args: "Settings"}
+      - {start: 0x4cfc40, type: collision, name: unkCol11/unkCol11, args: "Header"}
+      - {start: 0x4cfc54, type: collision, name: unkCol12/unkCol12, args: "Verts"}
+      - {start: 0x4cff24, type: collision, name: unkCol12/unkCol12, args: "Tris"}
+      - {start: 0x4d041c, type: collision, name: unkCol12/unkCol12, args: "Settings"}
+      - {start: 0x4d0434, type: collision, name: unkCol12/unkCol12, args: "Header"}
+      - {start: 0x4d0448, type: collision, name: unkCol13/unkCol13, args: "Verts"}
+      - {start: 0x4d0610, type: collision, name: unkCol13/unkCol13, args: "Tris"}
+      - {start: 0x4d0844, type: collision, name: unkCol13/unkCol13, args: "Settings"}
+      - {start: 0x4d085c, type: collision, name: unkCol13/unkCol13, args: "Header"}
+      - {start: 0x4d0870, type: collision, name: unkCol14/unkCol14, args: "Verts"}
+      - {start: 0x4d09f0, type: collision, name: unkCol14/unkCol14, args: "Tris"}
+      - {start: 0x4d0c60, type: collision, name: unkCol14/unkCol14, args: "Settings"}
+      - {start: 0x4d0c78, type: collision, name: unkCol14/unkCol14, args: "Header"}
+      - {start: 0x4d0c8c, type: collision, name: unkCol15/unkCol15, args: "Verts"}
+      - {start: 0x4d0ddc, type: collision, name: unkCol15/unkCol15, args: "Tris"}
+      - {start: 0x4d0fbc, type: collision, name: unkCol15/unkCol15, args: "Settings"}
+      - {start: 0x4d0fd4, type: collision, name: unkCol15/unkCol15, args: "Header"}
+      - {start: 0x4d0fe8, type: collision, name: unkCol16/unkCol16, args: "Verts"}
+      - {start: 0x4d11c8, type: collision, name: unkCol16/unkCol16, args: "Tris"}
+      - {start: 0x4d1528, type: collision, name: unkCol16/unkCol16, args: "Settings"}
+      - {start: 0x4d1540, type: collision, name: unkCol16/unkCol16, args: "Header"}
+      - {start: 0x4d1554, type: collision, name: unkCol17/unkCol17, args: "Verts"}
+      - {start: 0x4d1680, type: collision, name: unkCol17/unkCol17, args: "Tris"}
+      - {start: 0x4d1824, type: collision, name: unkCol17/unkCol17, args: "Settings"}
+      - {start: 0x4d183c, type: collision, name: unkCol17/unkCol17, args: "Header"}
+      - {start: 0x4d1850, type: collision, name: unkCol18/unkCol18, args: "Verts"}
+      - {start: 0x4d18b0, type: collision, name: unkCol18/unkCol18, args: "Tris"}
+      - {start: 0x4d1928, type: collision, name: unkCol18/unkCol18, args: "Settings"}
+      - {start: 0x4d1940, type: collision, name: unkCol18/unkCol18, args: "Header"}
+      - {start: 0x4d1954, type: collision, name: unkCol19/unkCol19, args: "Verts"}
+      - {start: 0x4d19f0, type: collision, name: unkCol19/unkCol19, args: "Tris"}
+      - {start: 0x4d1aa4, type: collision, name: unkCol19/unkCol19, args: "Settings"}
+      - {start: 0x4d1abc, type: collision, name: unkCol19/unkCol19, args: "Header"}
+      - {start: 0x4d1ad0, type: collision, name: unkCol1A/unkCol1A, args: "Verts"}
+      - {start: 0x4d1c20, type: collision, name: unkCol1A/unkCol1A, args: "Tris"}
+      - {start: 0x4d1da0, type: collision, name: unkCol1A/unkCol1A, args: "Settings"}
+      - {start: 0x4d1db8, type: collision, name: unkCol1A/unkCol1A, args: "Header"}
+      - {start: 0x4d1dcc, type: collision, name: unkCol1B/unkCol1B, args: "Verts"}
+      - {start: 0x4d1ec8, type: collision, name: unkCol1B/unkCol1B, args: "Tris"}
+      - {start: 0x4d2030, type: collision, name: unkCol1B/unkCol1B, args: "Settings"}
+      - {start: 0x4d2048, type: collision, name: unkCol1B/unkCol1B, args: "Header"}
+      - {start: 0x4d205c, type: collision, name: unkCol1C/unkCol1C, args: "Verts"}
+      - {start: 0x4d22fc, type: collision, name: unkCol1C/unkCol1C, args: "Tris"}
+      - {start: 0x4d26bc, type: collision, name: unkCol1C/unkCol1C, args: "Settings"}
+      - {start: 0x4d26d4, type: collision, name: unkCol1C/unkCol1C, args: "Header"}
+      - {start: 0x4d26e8, type: collision, name: unkCol1D/unkCol1D, args: "Verts"}
+      - {start: 0x4d2964, type: collision, name: unkCol1D/unkCol1D, args: "Tris"}
+      - {start: 0x4d2cf4, type: collision, name: unkCol1D/unkCol1D, args: "Settings"}
+      - {start: 0x4d2d0c, type: collision, name: unkCol1D/unkCol1D, args: "Header"}
+      - {start: 0x4d2d20, type: collision, name: unkCol1E/unkCol1E, args: "Verts"}
+      - {start: 0x4d2d80, type: collision, name: unkCol1E/unkCol1E, args: "Tris"}
+      - {start: 0x4d2de0, type: collision, name: unkCol1E/unkCol1E, args: "Settings"}
+      - {start: 0x4d2df8, type: collision, name: unkCol1E/unkCol1E, args: "Header"}
+      - {start: 0x4d2e0c, type: collision, name: unkCol1F/unkCol1F, args: "Verts"}
+      - {start: 0x4d2e6c, type: collision, name: unkCol1F/unkCol1F, args: "Tris"}
+      - {start: 0x4d2ecc, type: collision, name: unkCol1F/unkCol1F, args: "Settings"}
+      - {start: 0x4d2ee4, type: collision, name: unkCol1F/unkCol1F, args: "Header"}
+      - {start: 0x4d2ef8, type: collision, name: unkCol20/unkCol20, args: "Verts"}
+      - {start: 0x4d2f58, type: collision, name: unkCol20/unkCol20, args: "Tris"}
+      - {start: 0x4d2fd0, type: collision, name: unkCol20/unkCol20, args: "Settings"}
+      - {start: 0x4d2fe8, type: collision, name: unkCol20/unkCol20, args: "Header"}
+      - {start: 0x4d2ffc, type: collision, name: unkCol21/unkCol21, args: "Verts"}
+      - {start: 0x4d30bc, type: collision, name: unkCol21/unkCol21, args: "Tris"}
+      - {start: 0x4d31ac, type: collision, name: unkCol21/unkCol21, args: "Settings"}
+      - {start: 0x4d31c4, type: collision, name: unkCol21/unkCol21, args: "Header"}
+      - {start: 0x4d31d8, type: collision, name: unkCol22/unkCol22, args: "Verts"}
+      - {start: 0x4d3298, type: collision, name: unkCol22/unkCol22, args: "Tris"}
+      - {start: 0x4d3388, type: collision, name: unkCol22/unkCol22, args: "Settings"}
+      - {start: 0x4d33a0, type: collision, name: unkCol22/unkCol22, args: "Header"}
+      - {start: 0x4d33b4, type: collision, name: unkCol23/unkCol23, args: "Verts"}
+      - {start: 0x4d3408, type: collision, name: unkCol23/unkCol23, args: "Tris"}
+      - {start: 0x4d3450, type: collision, name: unkCol23/unkCol23, args: "Settings"}
+      - {start: 0x4d3468, type: collision, name: unkCol23/unkCol23, args: "Header"}
+      - {start: 0x4d347c, type: collision, name: unkCol24/unkCol24, args: "Verts"}
+      - {start: 0x4d34d0, type: collision, name: unkCol24/unkCol24, args: "Tris"}
+      - {start: 0x4d3518, type: collision, name: unkCol24/unkCol24, args: "Settings"}
+      - {start: 0x4d3530, type: collision, name: unkCol24/unkCol24, args: "Header"}
+      - {start: 0x4d3544, type: collision, name: unkCol25/unkCol25, args: "Verts"}
+      - {start: 0x4d3838, type: collision, name: unkCol25/unkCol25, args: "Tris"}
+      - {start: 0x4d3ca0, type: collision, name: unkCol25/unkCol25, args: "Settings"}
+      - {start: 0x4d3cb8, type: collision, name: unkCol25/unkCol25, args: "Header"}
+      - {start: 0x4d3ccc, type: collision, name: unkCol26/unkCol26, args: "Verts"}
+      - {start: 0x4d3d68, type: collision, name: unkCol26/unkCol26, args: "Tris"}
+      - {start: 0x4d3e04, type: collision, name: unkCol26/unkCol26, args: "Settings"}
+      - {start: 0x4d3e1c, type: collision, name: unkCol26/unkCol26, args: "Header"}
+      - {start: 0x4d3e30, type: collision, name: unkCol27/unkCol27, args: "Verts"}
+      - {start: 0x4d3e90, type: collision, name: unkCol27/unkCol27, args: "Tris"}
+      - {start: 0x4d3ef0, type: collision, name: unkCol27/unkCol27, args: "Settings"}
+      - {start: 0x4d3f08, type: collision, name: unkCol27/unkCol27, args: "Header"}
+      - {start: 0x4d3f1c, type: collision, name: unkCol28/unkCol28, args: "Verts"}
+      - {start: 0x4d3f7c, type: collision, name: unkCol28/unkCol28, args: "Tris"}
+      - {start: 0x4d3fdc, type: collision, name: unkCol28/unkCol28, args: "Settings"}
+      - {start: 0x4d3ff4, type: collision, name: unkCol28/unkCol28, args: "Header"}
+      - {start: 0x4d4008, type: collision, name: unkCol29/unkCol29, args: "Verts"}
+      - {start: 0x4d4038, type: collision, name: unkCol29/unkCol29, args: "Tris"}
+      - {start: 0x4d4068, type: collision, name: unkCol29/unkCol29, args: "Settings"}
+      - {start: 0x4d4080, type: collision, name: unkCol29/unkCol29, args: "Header"}
+      - {start: 0x4d4094, type: collision, name: unkCol2A/unkCol2A, args: "Verts"}
+      - {start: 0x4d40c4, type: collision, name: unkCol2A/unkCol2A, args: "Tris"}
+      - {start: 0x4d40dc, type: collision, name: unkCol2A/unkCol2A, args: "Settings"}
+      - {start: 0x4d40f4, type: collision, name: unkCol2A/unkCol2A, args: "Header"}
+      - {start: 0x4d4108, type: collision, name: unkCol2B/unkCol2B, args: "Verts"}
+      - {start: 0x4d4138, type: collision, name: unkCol2B/unkCol2B, args: "Tris"}
+      - {start: 0x4d4150, type: collision, name: unkCol2B/unkCol2B, args: "Settings"}
+      - {start: 0x4d4168, type: collision, name: unkCol2B/unkCol2B, args: "Header"}
+      - {start: 0x4d417c, type: collision, name: unkCol2C/unkCol2C, args: "Verts"}
+      - {start: 0x4d41ac, type: collision, name: unkCol2C/unkCol2C, args: "Tris"}
+      - {start: 0x4d41c4, type: collision, name: unkCol2C/unkCol2C, args: "Settings"}
+      - {start: 0x4d41dc, type: collision, name: unkCol2C/unkCol2C, args: "Header"}
+      - {start: 0x4d41f0, type: collision, name: unkCol2D/unkCol2D, args: "Verts"}
+      - {start: 0x4d4220, type: collision, name: unkCol2D/unkCol2D, args: "Tris"}
+      - {start: 0x4d4238, type: collision, name: unkCol2D/unkCol2D, args: "Settings"}
+      - {start: 0x4d4250, type: collision, name: unkCol2D/unkCol2D, args: "Header"}
+      - {start: 0x4d4264, type: collision, name: unkCol2E/unkCol2E, args: "Verts"}
+      - {start: 0x4d42dc, type: collision, name: unkCol2E/unkCol2E, args: "Tris"}
+      - {start: 0x4d4354, type: collision, name: unkCol2E/unkCol2E, args: "Settings"}
+      - {start: 0x4d436c, type: collision, name: unkCol2E/unkCol2E, args: "Header"}
+      - {start: 0x4d4380, type: collision, name: unkCol2F/unkCol2F, args: "Verts"}
+      - {start: 0x4d43e0, type: collision, name: unkCol2F/unkCol2F, args: "Tris"}
+      - {start: 0x4d4440, type: collision, name: unkCol2F/unkCol2F, args: "Settings"}
+      - {start: 0x4d4458, type: collision, name: unkCol2F/unkCol2F, args: "Header"}
+      - {start: 0x4d446c, type: collision, name: unkCol30/unkCol30, args: "Verts"}
+      - {start: 0x4d44b4, type: collision, name: unkCol30/unkCol30, args: "Tris"}
+      - {start: 0x4d44e4, type: collision, name: unkCol30/unkCol30, args: "Settings"}
+      - {start: 0x4d44fc, type: collision, name: unkCol30/unkCol30, args: "Header"}
+      - {start: 0x4d4510, type: collision, name: unkCol31/unkCol31, args: "Verts"}
+      - {start: 0x4d4558, type: collision, name: unkCol31/unkCol31, args: "Tris"}
+      - {start: 0x4d4588, type: collision, name: unkCol31/unkCol31, args: "Settings"}
+      - {start: 0x4d45a0, type: collision, name: unkCol31/unkCol31, args: "Header"}
+      - {start: 0x4d45b4, type: collision, name: unkCol32/unkCol32, args: "Verts"}
+      - {start: 0x4d4614, type: collision, name: unkCol32/unkCol32, args: "Tris"}
+      - {start: 0x4d468c, type: collision, name: unkCol32/unkCol32, args: "Settings"}
+      - {start: 0x4d46a4, type: collision, name: unkCol32/unkCol32, args: "Header"}
+      - {start: 0x4d46b8, type: collision, name: unkCol33/unkCol33, args: "Verts"}
+      - {start: 0x4d470c, type: collision, name: unkCol33/unkCol33, args: "Tris"}
+      - {start: 0x4d4754, type: collision, name: unkCol33/unkCol33, args: "Settings"}
+      - {start: 0x4d476c, type: collision, name: unkCol33/unkCol33, args: "Header"}
+      - {start: 0x4d4780, type: collision, name: unkCol34/unkCol34, args: "Verts"}
+      - {start: 0x4d47d4, type: collision, name: unkCol34/unkCol34, args: "Tris"}
+      - {start: 0x4d481c, type: collision, name: unkCol34/unkCol34, args: "Settings"}
+      - {start: 0x4d4834, type: collision, name: unkCol34/unkCol34, args: "Header"}
+      - {start: 0x4d4848, type: collision, name: unkCol35/unkCol35, args: "Verts"}
+      - {start: 0x4d4b78, type: collision, name: unkCol35/unkCol35, args: "Tris"}
+      - {start: 0x4d5070, type: collision, name: unkCol35/unkCol35, args: "Settings"}
+      - {start: 0x4d5088, type: collision, name: unkCol35/unkCol35, args: "Header"}
+      - {start: 0x4d509c, type: collision, name: unkCol36/unkCol36, args: "Verts"}
+      - {start: 0x4d512c, type: collision, name: unkCol36/unkCol36, args: "Tris"}
+      - {start: 0x4d51bc, type: collision, name: unkCol36/unkCol36, args: "Settings"}
+      - {start: 0x4d51d4, type: collision, name: unkCol36/unkCol36, args: "Header"}
+      - {start: 0x4d51e8, type: collision, name: unkCol37/unkCol37, args: "Verts"}
+      - {start: 0x4d5218, type: collision, name: unkCol37/unkCol37, args: "Tris"}
+      - {start: 0x4d5248, type: collision, name: unkCol37/unkCol37, args: "Settings"}
+      - {start: 0x4d5260, type: collision, name: unkCol37/unkCol37, args: "Header"}
+      - {start: 0x4d5274, type: collision, name: unkCol38/unkCol38, args: "Verts"}
+      - {start: 0x4d52d4, type: collision, name: unkCol38/unkCol38, args: "Tris"}
+      - {start: 0x4d5364, type: collision, name: unkCol38/unkCol38, args: "Settings"}
+      - {start: 0x4d537c, type: collision, name: unkCol38/unkCol38, args: "Header"}
+      - {start: 0x4d5390, type: collision, name: unkCol39/unkCol39, args: "Verts"}
+      - {start: 0x4d53f0, type: collision, name: unkCol39/unkCol39, args: "Tris"}
+      - {start: 0x4d5480, type: collision, name: unkCol39/unkCol39, args: "Settings"}
+      - {start: 0x4d5498, type: collision, name: unkCol39/unkCol39, args: "Header"}
+      - {start: 0x4d54ac, type: collision, name: unkCol3B/unkCol3B, args: "Verts"}
+      - {start: 0x4d550c, type: collision, name: unkCol3B/unkCol3B, args: "Tris"}
+      - {start: 0x4d559c, type: collision, name: unkCol3B/unkCol3B, args: "Settings"}
+      - {start: 0x4d55b4, type: collision, name: unkCol3B/unkCol3B, args: "Header"}
+      - {start: 0x4d55c8, type: collision, name: unkCol3C/unkCol3C, args: "Verts"}
+      - {start: 0x4d55f8, type: collision, name: unkCol3C/unkCol3C, args: "Tris"}
+      - {start: 0x4d5610, type: collision, name: unkCol3C/unkCol3C, args: "Settings"}
+      - {start: 0x4d5628, type: collision, name: unkCol3C/unkCol3C, args: "Header"}
+      - {start: 0x4d563c, type: collision, name: unkCol3E/unkCol3E, args: "Verts"}
+      - {start: 0x4d569c, type: collision, name: unkCol3E/unkCol3E, args: "Tris"}
+      - {start: 0x4d56fc, type: collision, name: unkCol3E/unkCol3E, args: "Settings"}
+      - {start: 0x4d5714, type: collision, name: unkCol3E/unkCol3E, args: "Header"}
+
+      - [0x4D5728, bin, ALPADD.MEd]
+      
+      - [0x4D5730] #identity matrix
+      - [0x4D5770, lights, alScope2]
+
+      - [0x4D5788, vtx, yellowAnt_vtx]
+      - [0x4D59D8] #identity matrix
+      - [0x4D5A18] #B8000000
+      - [0x4D5A20, ci8,     yellowAnt_yellowAntEye.MEd.ci8, 48, 32]
+      - [0x4D6020] #B8000000
+      - [0x4D6028, palette, yellowAnt_yellowAntEye.MEd.ci8]
+      - [0x4D6228] #B8000000
+      - [0x4D6230, ci4,     yellowAnt_yellowEyeColor.MEd.ci4, 8, 8]
+      - [0x4D6250] #B8000000
+      - [0x4D6258, palette, yellowAnt_yellowEyeColor.MEd.ci4]
+      - [0x4D6458, gfxSeg, yellowAnt_gfx]
+
+      - [0x4D68C0, vtx, yellowAnt_vtx2]
+      - [0x4D6990] #identity matrix
+      - [0x4D69D0, gfxSeg, yellowAnt_gfx2]
+
+      - [0x4D6AF8, vtx, yellowAnt_vtx3]
+      - [0x4D6B68] #identity matrix
+      - [0x4D6BA8, gfxSeg, yellowAnt_gfx3]
+
+      - [0x4D6C68, vtx, yellowAnt_vtx4]
+      - [0x4D6CD8] #identity matrix
+      - [0x4D6D18, gfxSeg, yellowAnt_gfx4]
+
+      - [0x4D6DD8, vtx, yellowAnt_vtx5]
+      - [0x4D6EA8] #identity matrix
+      - [0x4D6EE8, gfxSeg, yellowAnt_gfx5]
+
+      - [0x4D7010, vtx, yellowAnt_vtx6]
+      - [0x4D7060] #identity matrix
+      - [0x4D70A0, gfxSeg, yellowAnt_gfx6]
+
+      - [0x4D7138, vtx, yellowAnt_vtx7]
+      - [0x4D7188] #identity matrix
+      - [0x4D71C8, gfxSeg, yellowAnt_gfx7]
+
+      - [0x4D7260, vtx, yellowAnt_vtx8]
+      - [0x4D72A0] #identity matrix
+      - [0x4D72E0, gfxSeg, yellowAnt_gfx8]
+
+      - [0x4D7358, vtx, yellowAnt_vtx9]
+      - [0x4D7398] #identity matrix
+      - [0x4D73D8, gfxSeg, yellowAnt_gfx9]
+
+      - [0x4D7450, vtx, yellowAnt_vtx10]
+      - [0x4D74E0] #identity matrix
+      - [0x4D7520, gfxSeg, yellowAnt_gfx10]
+
+      - [0x4D7608, vtx, yellowAnt_vtx11]
+      - [0x4D7698] #identity matrix
+      - [0x4D76D8, gfxSeg, yellowAnt_gfx11]
+
+      - [0x4D77C0, vtx, yellowAnt_vtx12]
+      - [0x4D7800] #identity matrix
+      - [0x4D7840, gfxSeg, yellowAnt_gfx12]
+
+      - [0x4D78B8, vtx, yellowAnt_vtx13]
+      - [0x4D78F8] #identity matrix
+      - [0x4D7938, gfxSeg, yellowAnt_gfx13]
+
+      - [0x4D79B0] #identity matrix
+      - [0x4D79F0, gfxSeg, yellowAnt_gfx14]
+
+      - [0x4D7A70, animHeader, yellowAntAnim/yellowAntAnim]
+      - [0x4D7Aa0, animArray, yellowAntAnim/yellowAntAnim, 20, 13]
+      - [0x4DBBA0, bin, yellowAntAnim/yellowAntAnimPointers.MEd]
+
   - start: 0x4DBBB0
     name: BombLand
     dir: levelGroup
     subalign: 8
     type: code
     vram: 0x03000000 #SEGMENT 0x03
+    exclusive_ram_id: "LEVELGROUP"
     subsegments:
     - [auto, c, BombLand]
     - name: BombLand
@@ -824,6 +2395,7 @@ segments:
     subalign: 8
     type: code
     vram: 0x03000000 #SEGMENT 0x03
+    exclusive_ram_id: "LEVELGROUP"
     subsegments:
     - [auto, c, KidsLand]
     - name: KidsLand
@@ -844,6 +2416,7 @@ segments:
     dir: levelGroup
     subalign: 8
     type: code
+    exclusive_ram_id: "LEVELGROUP"
     subsegments:
     - [auto, c, JungleLand]
     - name: JungleLand
@@ -2458,6 +4031,7 @@ segments:
     dir: levelGroup
     subalign: 8
     type: code
+    exclusive_ram_id: "LEVELGROUP"
     subsegments:
     - [auto, c, BombSnake]
     - name: BombSnake
@@ -2467,8 +4041,8 @@ segments:
       vram: 0x8031B020
       start: 0x7A72B0
       subsegments:
-      - {start: 0x7A72B0, type: mtx, name: mtx}
-      - [0x7A72F0, bin, pointers.MEd]
+      - [0x7A72B0] #identity matrix
+      - [0x7A72F0, levelPointer, pointers]
       - [0x7A7a70, bin, rabObjects.MEd]
 
       - [0x7a7bd4, roomObject, roomObjects/roomObj1]
@@ -2494,24 +4068,25 @@ segments:
       - [0x7a8530, roomSettings, room1]
       - [0x7a859c, roomSettings, room2]
       - [0x7a8608, roomSettings, nullRoom]
-      - [0x7a8674, bin, map.MEd]
+      - {start: 0x7a8674, type: levelMap, name: map, args: Map}
+      - {start: 0x7a8680, type: levelMap, name: map, args: Header}
       - [0x7a8690, roomSettings, nullOWRoom]
       - [0x7A86FC, levelScope, scope]
       - [0x7A8714, levelHeader, header]
       - [0x7a8734, bin, headerPad.MEd] # i guess just so the rest is 16 aligned??????
 
-      - {start: 0x7a8740, type: mtx, name: bsScope/bsScope}
-      - {start: 0x7a8780, type: lights, name: bsScope/bsScope} # set Lights 1 for alot of bs assets
+      - [0x7a8740] #identity matrix
+      - [0x7a8780, lights, bsScope/bsScope] # set Lights 1 for alot of bs assets
 
-      - {start: 0x7a8798, type: vtx, name: arenaWalls/arenaWalls}
-      - {start: 0x7a89b8, type: mtx, name: arenaWalls/arenaWalls}
-      - {start: 0x7a89f8, type: gfxSeg, name: arenaWalls/arenaWalls}
+      - [0x7a8798, vtx, arenaWalls/arenaWalls]
+      - [0x7a89b8] #identity matrix
+      - [0x7a89f8, gfxSeg, arenaWalls/arenaWalls]
 
-      - {start: 0x7a8d90, type: vtx, name: arenaFloor/arenaFloor}
-      - {start: 0x7a8f10, type: mtx, name: arenaFloor/arenaFloor}
+      - [0x7a8d90, vtx, arenaFloor/arenaFloor]
+      - [0x7a8f10] #identity matrix
       - [0x7a8f50] #B8000000
       - [0x7a8f58, i4, arenaFloor/arenaFloor.MEd.i4, 64, 32]
-      - {start: 0x7A9358, type: gfxSeg, name: arenaFloor/arenaFloor}
+      - [0x7A9358, gfxSeg, arenaFloor/arenaFloor]
       
       - {start: 0x7A9600, type: collision, name: unk3/unk3, args: "Verts"}
       - {start: 0x7a96d8, type: collision, name: unk3/unk3, args: "Tris"}
@@ -2522,7 +4097,7 @@ segments:
       - {start: 0x7a9974, type: collision, name: unk4/unk4, args: "Settings"}
       - {start: 0x7a998c, type: collision, name: unk4/unk4, args: "Header"}
 
-      - {start: 0x7a99a0, type: mtx, name: unkMTX}
+      - [0x7a99a0] #identity matrix
 
       - [0x7a99e0, animHeader, model/unk5/unk5]
       - [0x7a9a10, animArray, model/unk5/unk5, 2, 6]
@@ -2533,10 +4108,10 @@ segments:
       - [0x7aa1b0, animHeader, model/unk8/unk8]
       - [0x7aa1e0, animArray, model/unk8/unk8, 15, 1]
 
-      - {start: 0x7aa5a0, type: lights, name: bsScope2/bsScope2} # set Lights 1 for alot of bs objects
+      - [0x7aa5a0, lights, bsScope2/bsScope2] # set Lights 1 for alot of bs objects
 
-      - {start: 0x7aa5b8, type: vtx, name: bombSnakeHead/bombSnakeHead}
-      - {start: 0x7ab208, type: mtx, name: bombSnakeHead/bombSnakeHead}
+      - [0x7aa5b8, vtx, bombSnakeHead/bombSnakeHead]
+      - [0x7ab208] #identity matrix
       - [0x7ab248] #B8000000
       - [0x7ab250, ci4, bombSnakeHead/cannonClone.MEd.ci4, 32, 16]
       - [0x7AB350] #B8000000
@@ -2545,47 +4120,47 @@ segments:
       - [0x7ab560, ci4, bombSnakeHead/color.MEd.ci4, 16, 16]
       - [0x7AB5E0] #B8000000
       - [0x7AB5E8, palette, bombSnakeHead/color.MEd.ci4]
-      - {start: 0x7ab7e8, type: gfxSeg, name: bombSnakeHead/bombSnakeHead}
+      - [0x7ab7e8, gfxSeg, bombSnakeHead/bombSnakeHead]
 
-      - {start: 0x7AC0A0, type: vtx, name: unkA/unkA}
-      - {start: 0x7Ac300, type: mtx, name: unkA/unkA}
+      - [0x7AC0A0, vtx, unkA/unkA]
+      - [0x7Ac300] #identity matrix
       - [0x7Ac340] #B8000000
       - [0x7Ac348, ci4, unkA/cannonCloneRed.MEd.ci4, 32, 16]
       - [0x7AC448] #B8000000
       - [0x7AC450, palette, unkA/cannonCloneRed.MEd.ci4]
-      - {start: 0x7ac650, type: gfxSeg, name: unkA/unkA}
+      - [0x7ac650, gfxSeg, unkA/unkA]
 
-      - {start: 0x7AC948, type: vtx, name: unkB/unkB}
-      - {start: 0x7acf48, type: mtx, name: unkB/unkB}
+      - [0x7AC948, vtx, unkB/unkB]
+      - [0x7acf48] #identity matrix
       - [0x7acf88] #B8000000
       - [0x7acf90, ci8, unkB/gem.MEd.ci8, 32, 48]
       - [0x7AD590] #B8000000
       - [0x7AD598, palette, unkB/gem.MEd.ci8]
-      - {start: 0x7ad798, type: gfxSeg, name: unkB/unkB}
+      - [0x7ad798, gfxSeg, unkB/unkB]
 
-      - {start: 0x7ad9e0, type: vtx, name: unkC/unkC}
-      - {start: 0x7add60, type: mtx, name: unkC/unkC}
+      - [0x7ad9e0, vtx, unkC/unkC]
+      - [0x7add60] #identity matrix
       - [0x7adda0] #B8000000
       - [0x7adda8, rgba16, unkC/speaker.MEd.rgba16, 41, 41]
-      - {start: 0x7AEAD0, type: gfxSeg, name: unkC/unkC}
+      - [0x7AEAD0, gfxSeg, unkC/unkC]
 
-      - {start: 0x7aef20, type: vtx, name: unkD/unkD}
-      - {start: 0x7aef60, type: mtx, name: unkD/unkD}
-      - {start: 0x7aefa0, type: gfxSeg, name: unkD/unkD}
+      - [0x7aef20, vtx, unkD/unkD]
+      - [0x7aef60] #identity matrix
+      - [0x7aefa0, gfxSeg, unkD/unkD]
 
-      - {start: 0x7af018, type: vtx, name: unkE/unkE}
-      - {start: 0x7af058, type: mtx, name: unkE/unkE}
-      - {start: 0x7af098, type: gfxSeg, name: unkE/unkE}
+      - [0x7af018, vtx, unkE/unkE]
+      - [0x7af058] #identity matrix
+      - [0x7af098, gfxSeg, unkE/unkE]
 
-      - {start: 0x7af110, type: mtx, name: unkF/unkF}
-      - {start: 0x7af150, type: gfxSeg, name: unkF/unkF}
+      - [0x7af110] #identity matrix
+      - [0x7af150, gfxSeg, unkF/unkF]
 
-      - {start: 0x7af198, type: vtx, name: unk10/unk10}
-      - {start: 0x7af398, type: mtx, name: unk10/unk10}
-      - {start: 0x7af3d8, type: gfxSeg, name: unk10/unk10}
+      - [0x7af198, vtx, unk10/unk10]
+      - [0x7af398] #identity matrix
+      - [0x7af3d8, gfxSeg, unk10/unk10]
 
-      - {start: 0x7af698, type: mtx, name: unk11/unk11}
-      - {start: 0x7af6d8, type: gfxSeg, name: unk11/unk11}
+      - [0x7af698] #identity matrix
+      - [0x7af6d8, gfxSeg, unk11/unk11]
       - [0x7af6f8, bin, animPointers.MEd]
       #eof
 
