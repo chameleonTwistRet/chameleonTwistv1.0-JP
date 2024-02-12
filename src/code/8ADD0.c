@@ -58,6 +58,7 @@ void func_800BE474(Tongue*);
 s32 IsPickup(Actor*);
 void pickup_collide_func(s32);
 void func_800B5D68(s32, s32);
+s32 IsNotPickup(Actor* actor);
 
 extern f32 D_8010FB50;
 //extern s32 D_80168DFC;
@@ -75,7 +76,20 @@ extern s32 D_80206958[];
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B06B0.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/CountSpatActors.s")
+s32 CountSpatActors(void) {
+    Actor* actor;
+    s32 var_s1;
+    s32 var_s2 = 0;
+    s32 i;
+
+    for (i = 0, actor = gActors; i < MAX_ACTORS; i++, actor++) {
+        if (IsNotPickup(actor) == 0) continue;
+        if (actor->actorState != 3) continue;
+            var_s2++;
+        
+    }
+    return var_s2;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B07E4.s")
 
@@ -984,16 +998,15 @@ void func_800BE2C0(void) {
     }
 }
 
-#ifdef NON_MATCHING
 void func_800BE370(s32 arg0) {
+    Rect3D* rectTemp = &gZoneCollisions[arg0].rect_30;
     Actor* actorList;
     s32 i;
-    Rect3D* rectTemp = &gZoneCollisions[arg0].rect_30;
-
-    for (i = 0, actorList = gActors; i < 64; i++, actorList++) {
-        if ((IsNotPickup(actorList) != 0) && (actorList->actorState == 0)) {
-            if ((rectTemp->min.x <= actorList->pos.x)  && (actorList->pos.x <= rectTemp->max.x)) {
-                if ((rectTemp->min.z <= actorList->pos.z) && (actorList->pos.z <= rectTemp->max.z)) {
+    for (i = 0, actorList = gActors; i < MAX_ACTORS; i++, actorList++) {
+        if (IsNotPickup(actorList) == 0) continue;
+        if (actorList->actorState == 0) {
+            if ((rectTemp->min.x <= actorList->pos.x)  && (rectTemp->max.x >= actorList->pos.x)) {
+                if ((rectTemp->min.z <= actorList->pos.z) && (rectTemp->max.z >= actorList->pos.z)) {
                     func_800311C8(actorList);
                     func_800314E4(actorList);
                 }
@@ -1001,9 +1014,6 @@ void func_800BE370(s32 arg0) {
         }
     }
 }
-#else
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BE370.s")
-#endif
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BE474.s")
 

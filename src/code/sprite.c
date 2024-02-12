@@ -1262,7 +1262,27 @@ void func_8007AF58(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8007B174.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/Rumble_StopAll.s")
+extern s32 D_80176960[];
+extern s32 D_80176980[];
+extern OSPfs gRumblePfs[];
+extern s32 gUnkRumbleArray[];
+void Rumble_StopAll(void) {
+    OSPfs* gRumblePfsTemp = gRumblePfs;
+    //s32* temp2 = gUnkRumbleArray;
+    s32 i;
+    
+    for (i = 0; i < 4; i++) {
+       // if (1) {}
+        if (D_80176960[i] == 0)
+            continue;
+        
+            osMotorStop(&gRumblePfs[i]);
+            gUnkRumbleArray[i] = 0;
+            D_80176980[i] = 0;
+        
+        
+    }
+}
 
 void Rumble_AddTime(s32 arg0, s32 arg1) {
     if (D_80176960[arg0] != 0) {
