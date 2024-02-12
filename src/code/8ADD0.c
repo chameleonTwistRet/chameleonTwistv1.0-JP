@@ -390,7 +390,7 @@ s32 IsBossPresent(void) {
     Actor* curActor;
     s32 isBoss = FALSE;
     
-    for (i = 0, curActor = gActors; i < 64; i++, curActor++) {
+    for (i = 0, curActor = gActors; i < MAX_ACTORS; i++, curActor++) {
         if (IsActorBoss(curActor) != 0) {
             isBoss = TRUE;
             break;
@@ -1019,30 +1019,30 @@ void func_800BE370(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BE550.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/EraseToungeEatEnemy.s")
+void EraseToungeEatEnemy(Tongue* arg0) {
+    s32 i;
 
-// void EraseToungeEatEnemy(Tongue* arg0) {
-//     s32 i;
+    arg0->vaulting = 0;
+    arg0->tongueMode = 0;
+    arg0->segments = 0;
 
-//     arg0->vaulting = 0;
-//     arg0->tongueMode = 0;
-//     arg0->segments = 0;
-
-//     for (i = 0; i < ACTORS_MAX; i++) {
-//         do { } while (0);
-//         if ((gActors[i].actorID != 0) && (gActors[i].actorState == 1)) {
-//             if (IsPickup(&gActors[i]) != 0) {
-//                 pickup_collide_func(i);
-//             } else {
-//                 gActors[i].actorState = 2;
-//                 arg0->inMouth.slots[arg0->amountInMouth] = (u32) i;
-//                 arg0->amountInMouth += 1;
-//             }
-//             arg0->amountOnTongue -= 1;      
-//         }
-//     }
-//     func_800BE474(arg0);
-// }
+    for (i = 0; i < MAX_ACTORS; i++) {
+        if (gActors[i].actorID == 0) 
+            continue;
+        if (gActors[i].actorState != 1)
+            continue;
+            if (IsPickup(&gActors[i]) != 0) {
+                pickup_collide_func(i);
+            } else {
+                gActors[i].actorState = 2;
+                arg0->inMouth[arg0->amountInMouth] = i;
+                arg0->amountInMouth += 1;
+            }
+            arg0->amountOnTongue -= 1;      
+        
+    }
+    func_800BE474(arg0);
+}
 
 void func_800BE664(PlayerActor * arg0) {
     if (arg0->power == POWERUP_TIME) {
