@@ -1520,7 +1520,6 @@ void func_800945E4(CTTask* arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80094D64.s")
 
-//#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80094DBC.s")
 void func_80094DBC(Unk_func_80094DBC_1* arg0) {
     s16 temp_v0;
     Unk_func_80094DBC_2* temp;
@@ -1760,7 +1759,21 @@ f32 func_80096898(u16 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/Process_StageSelect.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80097CF8.s")
+void func_80096D40(u16);
+typedef struct unkStruct2 {
+    char unk_00[0x7A];
+    u16 unk7A;
+} unkStruct2;
+
+typedef struct unkStruct1 {
+    char unk_00[0x58];
+    unkStruct2* unk58;
+} unkStruct1;
+
+void func_80097CF8(unkStruct1* arg0) {
+    unkStruct2* temp = arg0->unk58;
+    func_80096D40(temp->unk7A);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_8010E0CC.s")
 

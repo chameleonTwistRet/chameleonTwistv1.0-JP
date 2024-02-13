@@ -27,6 +27,14 @@ typedef struct unkStruct20 {
     char unk_26[2];
 } unkStruct20;
 
+typedef struct unkStructGlobal1 {
+    char unk_00[0xAC];
+    s32 unkAC;
+    s32 unkB0;
+    s32 unkB4;
+    s32 unkB8;
+} unkStructGlobal1;
+
 extern PlayerActor gPlayerActors[4];
 extern unkStruct07 D_802019A8[];
 extern Collision gZoneCollisions[];
@@ -59,6 +67,7 @@ s32 IsPickup(Actor*);
 void pickup_collide_func(s32);
 void func_800B5D68(s32, s32);
 s32 IsNotPickup(Actor* actor);
+s32 func_800B07E4(void);
 
 extern f32 D_8010FB50;
 //extern s32 D_80168DFC;
@@ -95,7 +104,41 @@ s32 CountShotActors(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B088C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B08C8.s")
+void func_800B08C8(unkStructGlobal1* arg0) {
+    s32 shotActors;
+
+    switch (arg0->unkB4) {
+    case 0:
+        if (CountShotActors() == 1) {
+            arg0->unkB4 = 1;
+            func_800B35B0(arg0->unkAC);
+        }
+        break;
+    case 1:
+        shotActors = CountShotActors();
+        if (shotActors >= 2) {
+            arg0->unkB4 = 3;
+        }
+        if (shotActors == 0) {
+            arg0->unkB4 = 2;
+            arg0->unkB8 = D_8017499C + 150;
+            return;
+        }
+       break;
+    case 2:
+        if (func_800B07E4() == 0) {
+            arg0->unkB4 = 3;
+            func_800B35B0(arg0->unkB0);
+        }
+        if (arg0->unkB8 < D_8017499C) {
+            arg0->unkB4 = 3;
+        }
+        break;
+    
+    case 3:
+        break;
+    }
+}
 
 void func_800B09C0(s32 arg0, newStruct* arg1) {
     func_800B56D4(arg1->field1, arg1->field2);
