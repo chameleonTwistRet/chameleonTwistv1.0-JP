@@ -88,6 +88,7 @@ void func_8008C698(void);
 void func_8008C6D4(void);
 void func_800A7844(void);
 s32 func_800A78D0(void);
+void func_80091A38(s32);
 
 extern OSMesg D_801B30A0;
 extern OSTimer D_801B3148;
@@ -1347,7 +1348,16 @@ s32 func_80090B10(s32 time, s32 arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80092254.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80092324.s")
+//#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80092324.s")
+void func_80092324(s32 arg0) {              // Cy
+    if (func_8008EC90() != 0) {
+        setProcessType(1);
+        return;
+    }
+    DummiedPrintf("フェード待ち\n");
+    func_80091A38(arg0);
+}
+
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009236C.s")
 

@@ -76,19 +76,19 @@ extern s32 D_80206958[];
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B06B0.s")
 
-s32 CountSpatActors(void) {
+s32 CountShotActors(void) {
     Actor* actor;
-    s32 var_s1;
-    s32 var_s2 = 0;
+    s32 count = 0;
     s32 i;
 
     for (i = 0, actor = gActors; i < MAX_ACTORS; i++, actor++) {
-        if (IsNotPickup(actor) == 0) continue;
+        // If the actor is a pickup:
+        if (IsNotPickup(actor) == FALSE) continue;
         if (actor->actorState != 3) continue;
-            var_s2++;
+            count++;
         
     }
-    return var_s2;
+    return count;
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B07E4.s")
@@ -134,7 +134,7 @@ void func_800B0A30(unkBlackChameleon0* arg0, unkBlackChameleon1* arg1) {
 #ifdef NON_MATCHING
 // TODO: D_80168E14 migration
 
-// Squish player if they are in the squish zone (givcen by coords not args)
+// Squish player if they are in the squish zone (given by coords not args)
 void func_800B2070(s32 arg0) {
     PlayerActor* gPlayer = &gPlayerActors[0];       // Player One
     Rect3D rect;
