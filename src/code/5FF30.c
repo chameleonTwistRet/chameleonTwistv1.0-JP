@@ -1361,7 +1361,32 @@ void func_80092324(s32 arg0) {              // Cy
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009236C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009244C.s")
+//#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009244C.s")
+void func_8008D7FC(void);
+void func_80092474(void);
+
+typedef struct Unk_func_80094DBC_2 {
+    char unk00[0x54];
+    s8 unk54;
+} Unk_func_80094DBC_2;
+
+typedef struct Unk_func_80094DBC_1 {
+    char unk00[0x08];
+    void*(unk8);
+    char unkC[0x4C];
+    Unk_func_80094DBC_2* unk58;
+    s16 unk5C;
+    char unk5E[0x02];
+    s16 unk60;
+} Unk_func_80094DBC_1;
+
+void func_8009244C(Unk_func_80094DBC_1* arg0) {
+    if (arg0->unk60 != 0) {
+        arg0->unk60 -= 1;
+    } else {
+        arg0->unk8 = &func_80092474;
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80092474.s")
 
@@ -1495,7 +1520,20 @@ void func_800945E4(CTTask* arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80094D64.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80094DBC.s")
+//#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80094DBC.s")
+void func_80094DBC(Unk_func_80094DBC_1* arg0) {
+    s16 temp_v0;
+    Unk_func_80094DBC_2* temp;
+    
+    func_8008D7FC();
+     if (arg0->unk5C != 0) {
+        arg0->unk5C--;
+        return;
+    }
+    temp = arg0->unk58;
+    temp->unk54 = 7;
+    arg0->unk8 = func_80094E0C;
+}
 
 void func_80094E0C(s32 arg0) {
 
