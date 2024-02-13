@@ -10,7 +10,8 @@ if cat /etc/os-release | grep -E 'ID=debian|ID_LIKE=(.*)debian' &> /dev/null; th
     # sudo dpkg --add-architecture i386
     sudo apt update
     sudo apt -y install python3 python3-pip ipython3
-    pip install -r tools/splat/requirements.txt
+    # pip install -r tools/splat/requirements.txt
+    python3 -m pip install -U splat64[mips]
 
     sudo apt install -y gcc
     sudo apt-get install -y gcc-mips-linux-gnu
