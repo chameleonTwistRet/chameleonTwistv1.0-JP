@@ -1147,6 +1147,8 @@ typedef struct Unk_func_80094DBC_1 {
     s16 unk60;
     s16 unk62;
     s16 unk64;
+    s16 unk66;
+    s16 unk68;
 } Unk_func_80094DBC_1;
 
 #endif

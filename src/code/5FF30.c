@@ -3,7 +3,7 @@
 
 #define SEGMENTED_TO_VIRTUAL(x)  (void*)(SEGMENT_OFFSET_CUSTOM(x) + D_80100F50[SEGMENT_INDEX(x)].base_address)
 
-void func_8008D7FC(void);
+s32 func_8008D7FC(void);
 void func_80092474(CTTask*);
 void func_80094E0C(CTTask* arg0);
 void func_800A54F4(CTTask* arg0);
@@ -1412,7 +1412,16 @@ void func_800928F0(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80092F44.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80092FB8.s")
+void func_80092FB8(Unk_func_80094DBC_1* arg0) {
+  Unk_func_80094DBC_1* sp1C;
+
+    sp1C = arg0->unk58;
+  
+    if (func_8008D7FC() != 0) {
+        sp1C->unk54 = 6;
+    }
+}
+
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80092FEC.s")
 
@@ -1967,7 +1976,16 @@ void func_8009C2FC(CTTask* arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009C6AC.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009C700.s")
+void func_8009C644 (CTTask*);
+
+void func_8009C700(Unk_func_80094DBC_1* arg0) {
+    if (arg0->unk68--) {
+        return;
+    } else {
+        DummiedPrintf("元に戻る\n", arg0);
+        arg0->unk8 = &func_8009C644;
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009C74C.s")
 

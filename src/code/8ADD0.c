@@ -65,7 +65,7 @@ s32 func_800B4A3C(unkItemStruct*);
 void func_800BE474(Tongue*);
 s32 IsPickup(Actor*);
 void pickup_collide_func(s32);
-void func_800B5D68(s32, s32);
+void func_800B5D68(Collider*, s32);
 s32 IsNotPickup(Actor* actor);
 s32 func_800B07E4(void);
 
@@ -170,7 +170,12 @@ void func_800B0A30(unkBlackChameleon0* arg0, unkBlackChameleon1* arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B1538.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B1DA0.s")
+void func_800B5D68(Collider*, s32);                                 /* extern */
+
+void func_800B1DA0(Collider* arg0, s32 arg1) {
+    func_800B5D68(arg0, 2);
+    arg0->unk_8C = 0.0f;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B1DD4.s")
 
@@ -867,7 +872,7 @@ void func_800B6040(Collider* arg0) {
     arg0->unk_B0 = 2;
 }
 
-void func_800B6054(s32 arg0, s32 arg1) {
+void func_800B6054(Collider* arg0, s32 arg1) {
     func_800B5D68(arg0, 1);
 }
 
@@ -992,7 +997,11 @@ void func_800BA900(tempStruct* arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BD55C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BD608.s")
+void func_800BD608(tempStruct* arg0) {
+    Vec3f_Zero(&arg0->unk_3C);
+    func_800B5C60(arg0);
+}
+
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BD634.s")
 
@@ -1060,7 +1069,15 @@ void func_800BE370(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BE474.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BE550.s")
+void func_800BE550(Tongue* arg0) {
+    arg0->vaulting = 0;
+    arg0->tongueMode = 0;
+    arg0->segments = 0;
+    arg0->amountOnTongue = 0;
+    arg0->amountInMouth = 0;
+    func_800BE474(arg0);
+}
+
 
 void EraseToungeEatEnemy(Tongue* arg0) {
     s32 i;
@@ -1097,7 +1114,13 @@ void func_800BE664(PlayerActor * arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BE714.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BE7BC.s")
+void func_800BE7BC(void) {
+    s32 i;
+    pole* var_v1;
+    for(i=0,var_v1=D_80170968; i < 64; i++, var_v1++ ){
+          var_v1->mode=0;        
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BE7F0.s")
 
@@ -1262,7 +1285,14 @@ void func_800C0E78(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C1458.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C1510.s")
+void func_800C1204(s32, PlayerActor*, s32, s32, s32);           /* extern */
+extern s32 D_802039B4;
+
+void func_800C1510(s32 arg0, s32 arg1) {
+    D_802039B4 = 1;
+    func_800C1204(arg0, &gPlayerActors[0], 1,  arg1, 1);
+}
+
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C1550.s")
 
