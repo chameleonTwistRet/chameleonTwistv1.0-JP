@@ -499,7 +499,6 @@ void func_800B3364(s32 arg0) {
 s32 isntNegative(s32 value) {
     return ( value >= 0 ) ? 1 : 0;
 }
-extern s32 D_80174880[];
 s32* func_800B3424(s32 arg0) {
     s32 var_v0;
     if (arg0 & 0x100) {
@@ -507,7 +506,7 @@ s32* func_800B3424(s32 arg0) {
     } else {
         var_v0 = 0;
     }
-    return (var_v0 != 0) ? (s32*)gZoneCollisions[(u8)arg0].pad68 : &D_80174880[(u8)arg0];
+    return (var_v0 != 0) ? (s32*)gZoneCollisions[(u8)arg0].pad68 : &levelFlags[(u8)arg0];
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B3484.s")

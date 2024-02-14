@@ -261,4 +261,40 @@ enum ColorModes{
 #define SPRITE_BOSSHEALTH	0xe3	
 #define SPRITE_MENUOPTIONS	0xe5	
 
+/*
+enum JLFlags {
+	GolemsKilled = 0, //0 == no, 1 == yes
+	JLCaveDoor = 1, // 0 = open, 1 == closed
+	Unk2 = 2,
+	Web1 = 3,
+	Web2 = 4,
+	Web3 = 5,
+	Web4 = 6,
+	Unk7 = 7,
+	Unk8 = 8,
+	Unk9 = 9,
+	Unk10 = 10,
+	Unk11 = 11,
+	Unk12 = 12,
+	Unk13 = 13,
+	Unk14 = 14,
+	Unk15 = 15,
+	Unk16 = 16,
+	Unk17 = 17,
+	Unk18 = 18,
+	Unk19 = 19,
+	Unk20 = 20,
+	Unk21 = 21,
+	GolemsAwoken = 22, // 0 == no, 1 == yes
+	Unk23 = 23,
+	Unk24 = 24,
+	Unk25 = 25,
+	Unk26 = 26,
+	Unk27 = 27,
+	Unk28 = 28,
+	Unk29 = 29,
+	IntroRabbit = 30, //0 == doesnt exist, 1 == idle, 2 == leaving
+	BossRabbit = 31 //^
+};*/
+
 #endif

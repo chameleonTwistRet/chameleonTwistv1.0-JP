@@ -25,7 +25,6 @@ extern Collider D_80236980[128];
 extern s32 D_8020D8F4;
 extern f64 D_801106A0;
 extern f64 D_801106A8;
-extern s32 D_80174880[0x20];
 
 extern Vec3f D_80108F9C;
 extern Vec3f D_80108FA8;
@@ -243,7 +242,7 @@ void func_800CFF7C(Vec3f* arg0) {
     Rect3D* temp_v0;
 
     if (D_80236974 != 1) {
-        if ((gCurrentStage == 1) && ((gCurrentZone == 7) || (gCurrentZone == 0xF)) && (D_80174880[0] != 0)) {
+        if ((gCurrentStage == 1) && ((gCurrentZone == 7) || (gCurrentZone == 0xF)) && (levelFlags[0] != 0)) {
             temp_f14 = (SQ(arg0->x) + SQ(arg0->z));
             if (810000.0 < temp_f14) {
                 temp_f0_2 = __sqrtf((f32) (810000.0 / temp_f14));

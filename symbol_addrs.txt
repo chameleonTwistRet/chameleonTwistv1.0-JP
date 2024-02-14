@@ -931,6 +931,7 @@ CalculateBoundingRectFromVectors = 0x800AEAA8; // type:func
 SumOfSquaresWrapper = 0x8002D0E0; // type:func
 ClampPointToDisk = 0x8002D148; // type:func
 WrapAngleRecursive = 0x8005609C; // type:func
+levelFlags = 0x80174880; // type:s32 size:0x20
 
 //rodata stuff
 D_8010B484 = 0x8010B484; // type:f32 force_migration:True size:0x08

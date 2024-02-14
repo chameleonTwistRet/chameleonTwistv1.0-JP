@@ -25,7 +25,6 @@ typedef struct SpriteListing {
     char unk_74[4];
 } SpriteListing; //sizeof 0x78
 
-extern unk80174880 D_80174880[];
 extern SpriteListing gSpriteListings[230];
 extern char D_8010CA1C[];
 extern char D_8010CA54[];
@@ -1364,8 +1363,8 @@ s32 func_8007C500(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8007C7FC.s")
 
 void func_8007CDBC(void) {
-    D_80174880->unk_00[1] = 0;
-    D_80174880->unk_00[2] = 0;
+    levelFlags[1] = 0;
+    levelFlags[2] = 0;
     playBGM(BGM_TRAINING);
 }
 

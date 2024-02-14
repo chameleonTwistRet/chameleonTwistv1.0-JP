@@ -20,7 +20,6 @@ s32 D_801749A4;
 s32 D_801749A8;
 s32 D_801749AC;
 unk801749B0 D_801749B0;
-extern s32 D_80174880[0x20];
 void func_80064BFC(f32, f32, f32);
 extern s32 D_80174980;
 extern s32 D_80174988;
@@ -906,8 +905,8 @@ void func_800312FC(Actor* arg0, f32 arg1) {
     arg0->userVariables[0] = 0;
     arg0->userVariables[1] = 14;
     arg0->unk_134[3] = 76.80000305f;
-    arg0->vel.x = __cosf((arg1 * 2 * PI) / 360.0) * 16.0f;     //cosf(DEGREES_TO_RAD_2PI(arg1)) * 16.0f;
-    arg0->vel.z = -__sinf((arg1 * 2 * PI) / 360.0) * 16.0f;
+    arg0->vel.x = __cosf(DEGREES_TO_RADIANS_2PI(arg1)) * 16.0f;     //cosf(DEGREES_TO_RADIANS_2PI(arg1)) * 16.0f;
+    arg0->vel.z = -__sinf(DEGREES_TO_RADIANS_2PI(arg1)) * 16.0f;
     arg0->tongueCollision = 0;
     playSoundEffect(109, &arg0->pos.x, &arg0->pos.y, &arg0->pos.z, 0, 0);
 }
@@ -920,10 +919,10 @@ void func_800313BC(s32 arg0, f32 arg1) {
     gActors[arg0].sizeScalar = 1.0f;
     func_800312B0(arg0);
     gActors[arg0].vel.y = 38.4f;
-    gActors[arg0].vel.x = __cosf(arg1 * 2 * PI / 360.0) * 12.0f;
-    gActors[arg0].vel.z = -__sinf(arg1 * 2 * PI / 360.0) * 12.0f;
+    gActors[arg0].vel.x = __cosf(DEGREES_TO_RADIANS_2PI(arg1)) * 12.0f;
+    gActors[arg0].vel.z = -__sinf(DEGREES_TO_RADIANS_2PI(arg1)) * 12.0f;
     if (gActors[arg0].actorID == Spider_Spawner) {
-        D_80174880[(s32)gActors[arg0].unk_164] = 1;
+        levelFlags[(s32)gActors[arg0].unk_164] = 1;
     }
 }
 
@@ -936,7 +935,20 @@ void func_800314E4(Actor* arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80031518.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_800317A0.s")
+//has to do with tonguing poles and camera stuff?
+void func_800317A0(void) {
+    s32 i;
+    gTongueOnePointer->controlAngle = gCurrentActivePlayerPointer->yAngle;
+    gTongueOnePointer->length = 0;
+    
+    for(i = gTongueOnePointer->poleSegmentAt; i < gTongueOnePointer->cameraSegmentAt; i++){
+        if (((gTongueOnePointer->tongueXs[i] != 0.0f) || (gTongueOnePointer->tongueZs[i] != 0.0f)) && (gTongueOnePointer->length < gTongueOnePointer->tongueForwards[i])) {
+            gTongueOnePointer->controlAngle = CalculateAngleOfVector(gTongueOnePointer->tongueXs[i], gTongueOnePointer->tongueZs[i]);
+            gTongueOnePointer->length = gTongueOnePointer->tongueForwards[i];
+        }
+    }
+}
+
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80031898.s")
 
@@ -1106,7 +1118,22 @@ void pickup_collide_func(s32 actorIndex) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80034FFC.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80035374.s")
+//TODO: find out what this does
+typedef struct Unk_func_80035374{
+    s32 unk0;
+    s16 unk4;
+    s16 unk6;
+    s16 unk8;
+    s16 unkA;
+    f32 unkC;
+}Unk_func_80035374;
+void func_80035374(Unk_func_80035374* arg0) {
+    if ((arg0->unk6 == 0) && (arg0->unk8 == 0)) {
+        AreAnglesWithin180Degrees(gCurrentActivePlayerPointer->yAngle, CalculateAngleOfVector((&D_80170968[gTongueOnePointer->poleID])->pos.x - gCurrentActivePlayerPointer->pos.x, -((&D_80170968[gTongueOnePointer->poleID])->pos.z - gCurrentActivePlayerPointer->pos.z)));
+    } else {
+        AreAnglesWithin180Degrees(arg0->unkC, CalcAngleBetween2DPoints(gCurrentActivePlayerPointer->pos.x, gCurrentActivePlayerPointer->pos.z, (&D_80170968[gTongueOnePointer->poleID])->pos.x, (&D_80170968[gTongueOnePointer->poleID])->pos.z));
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ControlTongue.s")
 
@@ -1137,8 +1164,8 @@ void func_80036D74(PlayerActor* arg0, Tongue* arg1) {
         arg0->playerHURTBY = 0;
         func_80031DB0(arg0, arg1, 0);
         arg0->yAngle = CalculateAngleOfVector(-arg0->vel.x, arg0->vel.z);;
-        arg0->vel.x = -__cosf(arg0->yAngle * 2 * PI / 360.0) * 32.0f;
-        arg0->vel.z = __sinf(arg0->yAngle * 2 * PI / 360.0) * 32.0f;
+        arg0->vel.x = -__cosf(DEGREES_TO_RADIANS_2PI(arg0->yAngle)) * 32.0f;
+        arg0->vel.z = __sinf(DEGREES_TO_RADIANS_2PI(arg0->yAngle)) * 32.0f;
         func_8002F54C(48.0f, arg0, 1);
     }
 }
@@ -1197,8 +1224,8 @@ void func_800382B4(f32* arg0, f32 arg1) {
 }
 
 void func_800382F4(Actor* arg0) {
-    arg0->vel.x = __cosf((arg0->unk_90 * 2 * PI) / 360.0) * arg0->unk_94;
-    arg0->vel.z = -__sinf((arg0->unk_90 * 2 * PI) / 360.0) * arg0->unk_94;
+    arg0->vel.x = __cosf(DEGREES_TO_RADIANS_2PI(arg0->unk_90)) * arg0->unk_94;
+    arg0->vel.z = -__sinf(DEGREES_TO_RADIANS_2PI(arg0->unk_90)) * arg0->unk_94;
 }
 
 void func_800383A0(Actor* actor) {
@@ -1391,7 +1418,32 @@ void func_8003BC8C(Actor* grenadeActor) {
     grenadeActor->unk_94 = grenadeActor->position._f32.x;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8003BC98.s")
+//???: Nathan R.
+void func_8003BC98(Actor* arg0) {
+    f32 angle = CalcAngleBetween2DPoints(arg0->pos.x, arg0->pos.z, gCurrentActivePlayerPointer->pos.x, gCurrentActivePlayerPointer->pos.z);
+    arg0->userVariables[1] += 1;
+    switch (arg0->userVariables[0]) {
+    case 0:
+        if (arg0->unk_124 == arg0->userVariables[1]) {
+            arg0->userVariables[0] = 1;
+            arg0->userVariables[1] = 0;
+        }
+        break;
+    case 1:
+        if (arg0->unk_128 == arg0->userVariables[1]) {
+            arg0->userVariables[0] = 0;
+            arg0->userVariables[1] = 0;
+        }
+        angle += 180.0f;
+        WrapDegrees(&angle);
+        break;
+    }
+    if (arg0->unk_12C < (u32) arg0->globalTimer) {
+        func_8002D36C(&arg0->unk_90, angle, arg0->position._f32.y);
+    }
+    Actor_PlaySound(arg0, 0x75, 0xA, 4);
+    func_800382F4(arg0);
+}
 
 // Missile Spawner: Auto-Decompile
 void func_8003BD98(Actor* missileSpawnerActor) {
@@ -1408,11 +1460,33 @@ void func_8003BEE8(Actor* missileActor) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8003BF04.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8003C20C.s")
+// Cannon Function: Nathan R.
+void func_8003C20C(Actor* cannonActor) {
+    cannonActor->tongueCollision = 2;
+    cannonActor->unknownPositionThings[0].unk_00 = __cosf(DEGREES_TO_RADIANS_2PI(cannonActor->unk_90)) * 200.0f;
+    cannonActor->unknownPositionThings[0].unk_04 = -cannonActor->unknownPositionThings[0].unk_10 / 2;
+    cannonActor->unknownPositionThings[0].unk_08 = -__sinf(DEGREES_TO_RADIANS_2PI(cannonActor->unk_90)) * 200.0f;
+    cannonActor->unknownPositionThings[1].unk_10 = cannonActor->tYPos;
+    cannonActor->unknownPositionThings[1].unk_00 = 0.0f;
+    cannonActor->unknownPositionThings[1].unk_0C = cannonActor->tScale;
+    cannonActor->unknownPositionThings[1].unk_04 = -cannonActor->tYPos / 2;
+    cannonActor->unknownPositionThings[1].unk_08 = 0.0f;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8003C308.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8003C4B8.s")
+// Cannonball Function: Nathan R.
+void func_8003C4B8(Actor* cbActor) {
+    //these HAVE to be on the same line. thanks ido!
+    f32 temp_f16 = cbActor->position._f32.x - cbActor->pos.x; f32 temp_f18 = cbActor->unk_15C - cbActor->pos.z;
+    cbActor->unk_90 = CalcAngleBetween2DPoints(cbActor->pos.x, cbActor->pos.z, cbActor->position._f32.x, cbActor->unk_15C);
+    cbActor->unk_94 = cbActor->unk_160;
+    cbActor->userVariables[0] = (s32) (__sqrtf(SQ(temp_f16) + SQ(temp_f18)) / cbActor->unk_94);
+    cbActor->unk_134[0] = (cbActor->position._f32.y - cbActor->pos.y) / (f32) cbActor->userVariables[0];
+    func_800382F4(cbActor);
+    playSoundEffect(119, &cbActor->pos.x, &cbActor->pos.y, &cbActor->pos.z, 0, 0);
+}
+
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8003C584.s")
 
@@ -1531,7 +1605,16 @@ void func_8003DFB4(Actor* vultureActor) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorInit_Vulture.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8003E224.s")
+// ???: Nathan R.
+void func_8003E224(Actor* arg0) {
+    arg0->userVariables[0]++;
+    if (arg0->unk_124 == arg0->userVariables[0]) {
+        arg0->userVariables[0] = 0;
+        if (Actor_Init(28, arg0->pos.x, arg0->pos.y, arg0->pos.z, arg0->unk_90, -50000.0f, 50000.0f, -50000.0f, 50000.0f, -50000.0f, 50000.0f, arg0->position._f32.x, arg0->position._f32.y, arg0->unk_15C, arg0->unk_160, 0.0f, 0.0f, 0.0f, 0.0f, 0, 0, 0, 0) != -1) {
+            playSoundEffect(139, &arg0->pos.x, &arg0->pos.y, &arg0->pos.z, 0, 0);
+        }
+    }
+}
 
 // Arrows Function: Elisiah
 void func_8003E30C(Actor* arrowsActor) {
@@ -1551,7 +1634,31 @@ void func_8003E368(Actor* boulderActor){
 
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8003E370.s")
+// ???: EstexNT, Rainchu & Nathan R.
+void func_8003E370(Actor* arg0) {
+    f32 tempX = arg0->vel.x;
+    f32 tempY = arg0->vel.y;
+    f32 tempZ = arg0->vel.z;
+    f32 tempB4 = arg0->unk_B4;
+    f32 tempB8 = arg0->unk_B8;
+    f32 tempBC = arg0->unk_BC;
+    f32 calculation;
+    f32 var = (((tempX * tempB4) + (tempY * tempB8) + (tempZ * tempBC)) * 2);
+    
+    calculation = var / ((tempB4 * tempB4) + (tempB8 * tempB8) + (tempBC * tempBC));
+    
+    arg0->unk_98 = 1;
+    arg0->pos.y += arg0->unknownPositionThings[0].unk_10 * 0.5f;
+    arg0->vel.x = (tempX - (calculation * tempB4)) * 0.8f;
+    arg0->vel.y = tempY - (calculation * tempB8);
+    arg0->vel.z = (tempZ - (calculation * tempBC)) * 0.8f;
+    if ((arg0->vel.y < arg0->unk_160) && (arg0->globalTimer >= 17U)) {
+        arg0->userVariables[0] = -1;
+        arg0->vel.z = 0;
+        arg0->vel.y = 0;
+        arg0->vel.x = 0;
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8003E48C.s")
 
@@ -1726,7 +1833,16 @@ void func_800404D8(Actor* arg0) {
     arg0->vel.y = 64.0f;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80040590.s")
+//???: Nathan R. (i apparently just had this one lying around????)
+void func_80040590(Actor* arg0) {
+    if ((arg0->pos.y + arg0->vel.y) < 0.0f) {
+        arg0->pos.y = arg0->vel.x = arg0->vel.z = arg0->vel.y = 0.0f;
+        arg0->unk_A0.unk_04 = 0;
+    }
+    if (arg0->pos.y > 0) arg0->vel.y -= 4.8f;
+}
+
+
 
 // Cake Boss Strawberry Function: Elisiah
 void func_800405F8(Actor* cakeBossStrawberryActor) {
@@ -2115,7 +2231,23 @@ void func_8004769C(Actor* golemRoomSpiderSpawnerActor){
 
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_800476A4.s")
+// ???: Nathan R.
+void func_800476A4(Actor* Actor) {
+    if (levelFlags[Actor->unk_124] != 0) {
+        if (gActorCount < (s32) Actor->unk_160) {
+            Actor->userVariables[0] += 1;
+            if (Actor->unk_130 < Actor->userVariables[0]) {
+                Actor->userVariables[0] = 0;
+                Actor_Init(66, Actor->pos.x, Actor->pos.y, Actor->pos.z, Actor->unk_90, Actor->unk_F4, Actor->unk_F8,
+                Actor->unk_FC, Actor->unk_100, Actor->unk_104, Actor->unk_108, Actor->position._f32.x, Actor->position._f32.y,
+                Actor->unk_15C, 0, 0.0f, 0.0f, 0.0f, 0.0f, 0, Actor->unk_128, Actor->unk_12C, 0);
+            }
+        }
+        func_800382F4(Actor);
+    }
+}
+
+
 
 // Golem?: Auto-Decompile
 void func_800477C4(Actor* golem) {
