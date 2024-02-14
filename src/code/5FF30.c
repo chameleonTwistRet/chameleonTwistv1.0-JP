@@ -1245,11 +1245,11 @@ void func_80092324(s32 arg0) {              // Cy
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009236C.s")
 
-void func_8009244C(Unk_func_80094DBC_1* arg0) {
-    if (arg0->unk60 != 0) {
-        arg0->unk60 -= 1;
+void func_8009244C(CTTask* task) {
+    if (task->unk60 != 0) {
+        task->unk60 -= 1;
     } else {
-        arg0->unk8 = &func_80092474;
+        task->function = &func_80092474;
     }
 }
 
@@ -1291,13 +1291,13 @@ void func_800928F0(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80092F44.s")
 
-void func_80092FB8(Unk_func_80094DBC_1* arg0) {
-  Unk_func_80094DBC_1* sp1C;
+void func_80092FB8(CTTask* task) {
+    CTTask* taskNext;
 
-    sp1C = arg0->unk58;
+    taskNext = task->unk58;
   
     if (func_8008D7FC() != 0) {
-        sp1C->unk54 = 6;
+        taskNext->unk54 = 6;
     }
 }
 
@@ -1394,18 +1394,17 @@ void func_800945E4(CTTask* arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80094D64.s")
 
-void func_80094DBC(Unk_func_80094DBC_1* arg0) {
-    s16 temp_v0;
-    Unk_func_80094DBC_1* temp;
+void func_80094DBC(CTTask* task) {
+    CTTask* taskUnk;
     
     func_8008D7FC();
-     if (arg0->unk5C != 0) {
-        arg0->unk5C--;
+     if (task->unk_5C != 0) {
+        task->unk_5C--;
         return;
     }
-    temp = arg0->unk58;
-    temp->unk54 = 7;
-    arg0->unk8 = &func_80094E0C;
+    taskUnk = task->unk58;
+    taskUnk->unk54 = 7;
+    task->function = &func_80094E0C;
 }
 
 void func_80094E0C(CTTask* arg0) {
@@ -1831,14 +1830,14 @@ void func_8009C2FC(CTTask* arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009C6AC.s")
 
-void func_8009C644 (CTTask*);
+void func_8009C644(CTTask*);
 
-void func_8009C700(Unk_func_80094DBC_1* arg0) {
-    if (arg0->unk68--) {
+void func_8009C700(CTTask* task) {
+    if (task->unk_68--) {
         return;
     } else {
-        DummiedPrintf("元に戻る\n", arg0);
-        arg0->unk8 = &func_8009C644;
+        DummiedPrintf("元に戻る\n", task);
+        task->function = &func_8009C644;
     }
 }
 
@@ -2023,10 +2022,10 @@ void func_800A10E8(s32 arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A18C8.s")
 
 void func_800A191C(CTTask* arg0) {
-    CTTask* nextThing = arg0->unk58;
+    CTTask* unkTask = arg0->unk58;
     
     if (!(arg0->unk60-- > 0)) {
-        nextThing->unk54 = 1;
+        unkTask->unk54 = 1;
     }
 }
 
@@ -2272,12 +2271,12 @@ CTTask* func_800A5060(void){
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A5444.s")
 
-void func_800A5488(Unk_func_80094DBC_1* arg0) {
-    if (arg0->unk62 != -1) {
-        arg0->unk64 = 0;
-        func_8008E9AC(0x20, 0, 0, 0, &arg0->unk64);
-        arg0->unk8 = &func_800A54F4;
-        arg0->unk54 = 2;
+void func_800A5488(CTTask* task) {
+    if (task->unk_62 != -1) {
+        task->unk_64 = 0;
+        func_8008E9AC(0x20, 0, 0, 0, &task->unk_64);
+        task->function = &func_800A54F4;
+        task->unk54 = 2;
     }
 }
 

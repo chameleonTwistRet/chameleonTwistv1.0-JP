@@ -104,7 +104,7 @@ void func_8009C33C(CTTask*);
 void func_8009C038(CTTask*);
 void func_80099AF4(void);
 void func_800A6CF4(CTTask*);
-
+void func_8009C644(CTTask*);
 
 /* Ext Variables */
 extern unk801FFB88* D_801FFB88;
