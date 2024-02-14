@@ -1,6 +1,5 @@
 #include "common.h"
 
-#define SEGMENTED_TO_VIRTUAL(x)  (void*)(SEGMENT_OFFSET_CUSTOM(x) + D_80100F50[SEGMENT_INDEX(x)].base_address)
 
 Gfx* func_8002C4E8(graphicStruct*, s32, s32);
 
