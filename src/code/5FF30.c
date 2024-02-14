@@ -138,7 +138,7 @@ void func_80084FC0(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/Audio_UpdateOsc.s")
 
-void Audio_stopOsc(struct UnkList* arg0) {
+void Audio_StopOsc(struct UnkList* arg0) {
     arg0->unk0 = D_80200060.unk0;
     D_80200060.unk0 = arg0;
 }
@@ -410,7 +410,7 @@ s32 func_8008873C(s32 arg0, s32 arg1, s32 arg2) {
 void func_8008A208(void) {
     if (D_80236974 == 0) {
         if (D_8020005A == 1) {
-            playBGM(BGM_JUNGLE1);
+            PlayBGM(BGM_JUNGLE1);
         }
     } else if (((s32) D_8017499C % 300) == 0x12B) {
         PLAYSFX(Random(0, 5) + 0x4F, 1, 0x10);
@@ -430,7 +430,7 @@ void func_8008A2B0(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008B458.s")
 
-s32 BGMLoad(void) {
+s32 LoadBGM(void) {
     //possibly a struct on the stack?
     s32 sp24;
     s32 sp28; //unused
@@ -524,7 +524,7 @@ s32 BGMLoad(void) {
     return 1;
 }
 //uses "BGM_*" #defines
-s32 playBGM(s32 arg0) {
+s32 PlayBGM(s32 arg0) {
     if ((arg0 >= gBGMALSeqFileP->seqCount) || (arg0 < 0)) {
         return -1;
     }
@@ -559,7 +559,7 @@ s32 func_8008BE14(void) {
     return 0;
 }
 
-s32 BGMStop(void) {
+s32 StopBGM(void) {
     D_801FCA24 = 0;
     if (gBGMPlayerP->state == AL_PLAYING) {
         alCSPStop(gBGMPlayerP);
@@ -631,7 +631,7 @@ void func_8008C1C8(s32* arg0) {
 }
 
 void PlayStageBGM(s32 arg0) {
-    playBGM(sStageBGMs[arg0]);
+    PlayBGM(sStageBGMs[arg0]);
 }
 
 void func_8008C35C(s32 arg0) {
@@ -831,9 +831,9 @@ void TaskInit(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_8010DA14.s")
 
-void func_8008CE94(unk_func_8008CE94* arg0) {
-    unk_func_8008CE94* temp_v0;
-    unk_func_8008CE94* temp_v1;
+void func_8008CE94(unk8008CE94* arg0) {
+    unk8008CE94* temp_v0;
+    unk8008CE94* temp_v1;
 
     temp_v0 = arg0->unkC;
     temp_v1 = arg0->unk10;
@@ -960,7 +960,7 @@ s32 func_8008FB4C(s32 arg0) {
     }
 }
 
-s32 getBaseStage(u32 arg0) {
+s32 GetBaseStage(u32 arg0) {
     s32 ret;
 
     switch (arg0) {
@@ -1013,7 +1013,7 @@ void func_8008FD68(void) {
     if (D_800F06EC >= 0) {
         D_80174878 = D_800F06EC;
     }
-    D_80174878 = loadStageByIndex(D_80174878);
+    D_80174878 = LoadStageByIndex(D_80174878);
     func_8002E0CC();
     InitField();
     func_80056EB4();
@@ -1027,19 +1027,19 @@ void func_8008FDF8(void) {
 }
 
 void func_8008FE00(void) {
-    loadPlayerEyes(*gSelectedCharacters);
-    setPlayerContextEyes(*gSelectedCharacters, 0, 0);
-    freePlayerEyes(*gSelectedCharacters);
-    loadPlayerEyes(*gSelectedCharacters);
+    LoadPlayerEyes(*gSelectedCharacters);
+    SetPlayerContextEyes(*gSelectedCharacters, 0, 0);
+    FreePlayerEyes(*gSelectedCharacters);
+    LoadPlayerEyes(*gSelectedCharacters);
 }
 
 void func_8008FE50(void) {
     s32 i;
     
     for (i = 0; i < 6; i++) {
-        loadPlayerEyes(i);
-        setPlayerContextEyes(i, 0, 0);
-        freePlayerEyes(i);
+        LoadPlayerEyes(i);
+        SetPlayerContextEyes(i, 0, 0);
+        FreePlayerEyes(i);
     }
 }
 
@@ -1170,7 +1170,7 @@ s32 func_80090B10(s32 time, s32 arg1) {
     s32 temp_v0_2;
     s32 ret = 0;
     
-    temp_v0 = getBaseStage(arg1);
+    temp_v0 = GetBaseStage(arg1);
     
     if (temp_v0 < 0) {
         return 0;
@@ -1479,7 +1479,7 @@ s32 func_8009603C(s32 segmentID, s32 arg1) {
     size = (u32) segment->ramAddrEnd - (u32) segment->ramAddrStart;
     temp_s3->base_address = arg1 - size;
     temp_s3->unk4 = (u32) arg1;
-    temp_s0 = dma_copy(segment->romAddrStart, (void* ) temp_s3->base_address, size);
+    temp_s0 = DMA_Copy(segment->romAddrStart, (void* ) temp_s3->base_address, size);
     temp_s3->unk4 = temp_s3->base_address + size;
     if (temp_s0 < 0) {
         DummiedPrintf("エラー %d\n", temp_s0);
@@ -1497,7 +1497,7 @@ u32 func_80096128(s32 stageToLoad, s32 inpAddr) {
     
     D_80100F50[0x3].base_address = inpAddr - size;
     D_80100F50[0x3].unk4 = D_80100F50[0x3].base_address + size;
-    dmaResult = dma_copy(segData->romAddrStart, (void*)D_80100F50[0x3].base_address, size);
+    dmaResult = DMA_Copy(segData->romAddrStart, (void*)D_80100F50[0x3].base_address, size);
     if (dmaResult < 0) {
         DummiedPrintf("エラー %d\n", dmaResult);    //Error
         return 0;
@@ -1510,7 +1510,7 @@ u32 func_80096128(s32 stageToLoad, s32 inpAddr) {
 }
 
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/loadStageByIndex.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/LoadStageByIndex.s")
 
 void func_800966E0(void) {
     D_80100F50[1].base_address = (u32)&D_803B5000 - _ALIGN((u32)&D_1045C00 - (u32)&D_1000000, 16);
@@ -1623,8 +1623,8 @@ f32 func_80096898(u16 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/Process_StageSelect.s")
 
-void func_80097CF8(unkStruct1* arg0) {
-    unkStruct2* temp = arg0->unk58;
+void func_80097CF8(unk80097CF8* arg0) {
+    unk80097CF8_2* temp = arg0->unk58;
     func_80096D40(temp->unk7A);
 }
 
@@ -2075,7 +2075,7 @@ void PrintPerfectCode(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_8010E9C8.s")
 
-void func_800A250C(unkarg0* arg0) {
+void func_800A250C(unk800A250C* arg0) {
     if (arg0->unk6A > 0) {
         SetTextGradient(0x6EU, 0xD2U, 0xFF, 0xFF, 0, 0xDE, 0, 0xFF, 0x6E, 0xD2, 0xFF, 0xFF, 0, 0xDE, 0, 0xFF);
         PrintTextWrapper(72.0f, 176.0f, 0.0f, 1.0f, "ＰＲＥＳＳ  ＳＴＡＲＴ", 1);
@@ -2139,6 +2139,7 @@ void func_800A2B9C(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A4320.s")
 
+// Create Game Over Task?
 CTTask* func_800A4484(void) {
     CTTask* task = Task_Alloc(1, 100, NULL);
     
@@ -2223,7 +2224,7 @@ void Process_GameOver(void) {
             DMAStruct_Print();
             func_800A0D90();
             TaskInit();
-            loadSprite(0x5E);
+            LoadSprite(0x5E);
             D_80168DA0 = 4;
             gGameModeState++;
             UseFixedRNGSeed = 0;
@@ -2233,8 +2234,8 @@ void Process_GameOver(void) {
             D_801FC9AC = 0;
             func_8008F114();
             func_8008FE00();
-            loadPlayerEyes(*gSelectedCharacters);
-            setPlayerContextEyes(*gSelectedCharacters, 2, 0);
+            LoadPlayerEyes(*gSelectedCharacters);
+            SetPlayerContextEyes(*gSelectedCharacters, 2, 0);
             break;
         case 1:
             func_800A4484();
@@ -2301,8 +2302,8 @@ void Process_JSSLogo(void) {
         DummiedPrintf("ロゴプロセス\n"); //Logo process
         DMAStruct_Print();
         func_800A1EC4();
-        loadSprite(0x5C);
-        loadSprite(0x5D);
+        LoadSprite(0x5C);
+        LoadSprite(0x5D);
         TaskInit();
         D_80168DA0 = 4;
         UseFixedRNGSeed = 0;
@@ -2338,9 +2339,9 @@ void func_800A56D4(void) {
     func_8005C9B8();
     aa1_InitHead();
     func_80084788();
-    loadSprite(D_80100EB4[D_801B317C]);
-    loadSprite(0x4D);
-    loadSprite(0x4E);
+    LoadSprite(D_80100EB4[D_801B317C]);
+    LoadSprite(0x4D);
+    LoadSprite(0x4E);
 }
 
 s32 func_800A5778(s32 arg0) {
@@ -2388,7 +2389,7 @@ s32 func_800A5778(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_8010EC30.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/printSelectedStageInfo.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/PrintSelectedStageInfo.s")
 
 void func_800A6B34(void) {
     CTTask* task;
@@ -2409,7 +2410,7 @@ void func_800A6B80(CTTask* arg0) {
     arg0->unk_64 = 0;
     
     func_8008EA60(0x20, 0, 0, 0, &arg0->unk_64);
-    Task_Alloc(1, 0x62, 0)->function = printSelectedStageInfo;
+    Task_Alloc(1, 0x62, 0)->function = PrintSelectedStageInfo;
 }
 
 void func_800A6C04(CTTask* arg0) {
@@ -2472,7 +2473,7 @@ s32 func_800A72E8(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A73EC.s")
 
-s32 dma_copy(void* arg0, void* arg1, s32 size) {
+s32 DMA_Copy(void* arg0, void* arg1, s32 size) {
     s32 dmaSizeCalc;
     s32 j;
     s32 i;
@@ -3109,7 +3110,7 @@ void func_800AAB0C(s32 arg0) {
     s32 dmaSize;
     s32 i;
     DMAStruct_Print();
-    loadStageByIndex(arg0);
+    LoadStageByIndex(arg0);
     DMAStruct_Print();
     _bzero(gPlayerActors, sizeof(gPlayerActors));
     _bzero(&gCamera[0], sizeof(Camera));
@@ -3140,7 +3141,7 @@ void func_800AAB0C(s32 arg0) {
         //"バッファがない\n"("no buffer")
         osSyncPrintf("バッファがない\n", D_80200C8C);
     } else {
-        dmaResult = dma_copy(&D_AB10B0, D_80200C8C, dmaSize);
+        dmaResult = DMA_Copy(&D_AB10B0, D_80200C8C, dmaSize);
         if (dmaResult < 0) {
             //"データ読み込み失敗\n" ("data read failure")
             osSyncPrintf("データ読み込み失敗\n");

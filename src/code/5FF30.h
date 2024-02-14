@@ -5,10 +5,10 @@
 #include "mod.h" //used to DMA mod stuff in if needed
 
 /* Structs */
-typedef struct unkarg0 {
+typedef struct unk800A250C {
     char unk_00[0x6A];
     s16 unk6A;
-} unkarg0;
+} unk800A250C;
 
 typedef struct unk80100DF0 {
     s16 unk_00;
@@ -27,28 +27,28 @@ typedef struct unk801FFB88 {
 } unk801FFB88;
 
 // Swap struct members
-typedef struct unk_func_8008CE94 {
+typedef struct unk8008CE94 {
     s16 unk0;
     s32 unk4;
     s32 unk8;
-    struct unk_func_8008CE94* unkC; //does this actually point the same struct data type?
-    struct unk_func_8008CE94* unk10; //does this actually point the same struct data type?
-} unk_func_8008CE94;
+    struct unk8008CE94* unkC; //does this actually point the same struct data type?
+    struct unk8008CE94* unk10; //does this actually point the same struct data type?
+} unk8008CE94;
 
 typedef struct StageSelectionData {
     u8 temp0;
     char unk_02[0x17];
 } StageSelectionData;
 
-typedef struct unkStruct2 {
+typedef struct unk80097CF8_2 {
     char unk_00[0x7A];
     u16 unk7A;
-} unkStruct2;
+} unk80097CF8_2;
 
-typedef struct unkStruct1 {
+typedef struct unk80097CF8 {
     char unk_00[0x58];
-    unkStruct2* unk58;
-} unkStruct1;
+    unk80097CF8_2* unk58;
+} unk80097CF8;
 
 
 /* Functions */
@@ -58,7 +58,7 @@ void func_80094E0C(CTTask* arg0);
 void func_800A54F4(CTTask* arg0);
 void func_8008EA60(s32, s32, s32, s32, s16*);
 void func_800A6C04(CTTask*);
-void printSelectedStageInfo(CTTask*);
+void PrintSelectedStageInfo(CTTask*);
 void func_800A6B80(CTTask*);
 void func_8008EB08(s32, s32, s32, s32, s16*, f32, f32, f32, f32, s32);
 void func_800A4904(CTTask*);

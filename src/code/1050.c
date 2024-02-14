@@ -207,7 +207,7 @@ Gfx* func_8002CCA0(void* arg0, s32 arg1) {
 }
 
 void func_8002CCDC(void) {
-    BGMStop();
+    StopBGM();
     func_80088198();
 }
 
@@ -219,7 +219,7 @@ void func_8002CD04(void) {
         D_80174878 = D_800F06EC;
     }
 
-    D_80174878 = loadStageByIndex(D_80174878);
+    D_80174878 = LoadStageByIndex(D_80174878);
     func_8002E0CC();
     InitField();
     func_8002CCDC();

@@ -76,7 +76,7 @@ lines[37:60] = [
     '/* 6BAAC 800906AC */  lui $a3, %hi(mod_ROM_START)\n',
     '/* 6BAB0 800906B0 */  addiu $a3, $a3, %lo(mod_ROM_START)\n',
     '/* 6BAB4 800906B4 */  subu $a2, $a2, $a3\n',
-    '/* 6BAB8 800906B8 */  jal dma_copy\n',
+    '/* 6BAB8 800906B8 */  jal DMA_Copy\n',
     '/* 6BABC 800906BC */  nop\n',
     '/* 6BAC0 800906C0 */  lui $t0, 0xA460\n'
     '/* 6BAC4 800906C4 */  ori $t0, $t0, 0x0010\n'

@@ -157,7 +157,7 @@ void func_80053CA0(void) {
 void func_8005423C(void) {
     s32 i;
     for (i = 0; i < 6; i++){
-        setPlayerContextEyes(i, 0, 0);
+        SetPlayerContextEyes(i, 0, 0);
     }
 }
 
@@ -217,20 +217,20 @@ void Process_Ranking(void) {
         D_800FE708 = 0;
         DMAStruct_Print();
         func_800A1EC4();
-        loadSprite(0xD4);
-        loadSprite(SPRITE_PORTRAITDAVY);
-        loadSprite(SPRITE_PORTRAITJACK);
-        loadSprite(SPRITE_PORTRAITFRED);
-        loadSprite(SPRITE_PORTRAITLINDA);
-        loadSprite(SPRITE_PORTRAITBLACK);
-        loadSprite(SPRITE_PORTRAITWHITE);
-        loadSprite(0x6E);
-        loadSprite(0xBD);
-        loadSprite(0xBE);
-        loadSprite(0xBF);
-        loadSprite(0xC0);
-        loadSprite(0xC1);
-        loadSprite(0xC2);
+        LoadSprite(0xD4);
+        LoadSprite(SPRITE_PORTRAITDAVY);
+        LoadSprite(SPRITE_PORTRAITJACK);
+        LoadSprite(SPRITE_PORTRAITFRED);
+        LoadSprite(SPRITE_PORTRAITLINDA);
+        LoadSprite(SPRITE_PORTRAITBLACK);
+        LoadSprite(SPRITE_PORTRAITWHITE);
+        LoadSprite(0x6E);
+        LoadSprite(0xBD);
+        LoadSprite(0xBE);
+        LoadSprite(0xBF);
+        LoadSprite(0xC0);
+        LoadSprite(0xC1);
+        LoadSprite(0xC2);
         TaskInit();
         D_80168DA0 = 4;
         gGameModeState++;
@@ -271,15 +271,15 @@ void func_800557F8(void) {
             gPlayerActors[i].exists = gPlayerActors[i].active;
         }
 
-        loadSprite(0xCE);
-        loadSprite(0x6E);
-        loadSprite(0xD5);
-        loadPlayerEyes(CHARA_DAVY);
-        loadPlayerEyes(CHARA_JACK);
-        loadPlayerEyes(CHARA_FRED);
-        loadPlayerEyes(CHARA_LINDA);
-        loadPlayerEyes(CHARA_BLACK);
-        loadPlayerEyes(CHARA_WHITE);
+        LoadSprite(0xCE);
+        LoadSprite(0x6E);
+        LoadSprite(0xD5);
+        LoadPlayerEyes(CHARA_DAVY);
+        LoadPlayerEyes(CHARA_JACK);
+        LoadPlayerEyes(CHARA_FRED);
+        LoadPlayerEyes(CHARA_LINDA);
+        LoadPlayerEyes(CHARA_BLACK);
+        LoadPlayerEyes(CHARA_WHITE);
         TaskInit();
         D_80168DA0 = 4;
         gGameModeState++;
@@ -313,7 +313,7 @@ void Process_Boot(void) {
         D_800FFDF4 = 1;
         DMAStruct_Print();
         func_800A1EC4();
-        loadSprite(94);
+        LoadSprite(94);
         TaskInit();
         func_8002E0CC();
         gGameModeState++;
@@ -345,7 +345,7 @@ void Process_SunsoftLogo(void) {
         D_800FFDF4 = 1;
         DMAStruct_Print();
         func_800A1EC4();
-        loadSprite(0xCD);
+        LoadSprite(0xCD);
         TaskInit();
         func_8002E0CC();
         gGameModeState++;
