@@ -1,15 +1,4 @@
-#include "common.h"
-
-#define SQROOT_2_DIV_2 0.70710678f
-
-void func_800D887C(Collider* arg0, s32 arg1, s32 arg2);
-
-extern PlayerActor gPlayerActors[4];
-extern s32 D_801749A0;
-extern s32 D_801749A0;
-extern s32 D_801749A0;
-extern s32 D_80168E24;
-extern s32 D_801749A0;
+#include "B39A0.h"
 
 void func_800D85A0(Collider* arg0, s32 sfxID, s32 arg2) {
     if (((arg0->unk_00 + D_801749A0) % arg2) == 0) {
