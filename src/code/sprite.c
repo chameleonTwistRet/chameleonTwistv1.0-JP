@@ -75,7 +75,7 @@ void func_80055C04(void) {
     
     D_800F68A8 = 1;
     
-    for (i = 0; i < 4; i++) {
+    for (i = 0; i < MAXCONTROLLERS; i++) {
         gPrevButtons[i] = -1;
         gButtons[i] = -1;
     }
@@ -1267,19 +1267,16 @@ extern OSPfs gRumblePfs[];
 extern s32 gUnkRumbleArray[];
 void Rumble_StopAll(void) {
     OSPfs* gRumblePfsTemp = gRumblePfs;
-    //s32* temp2 = gUnkRumbleArray;
     s32 i;
     
-    for (i = 0; i < 4; i++) {
-       // if (1) {}
-        if (D_80176960[i] == 0)
+    for (i = 0; i < MAXCONTROLLERS; i++) {
+        if (D_80176960[i] == 0) {
             continue;
-        
-            osMotorStop(&gRumblePfs[i]);
-            gUnkRumbleArray[i] = 0;
-            D_80176980[i] = 0;
-        
-        
+        }
+
+        osMotorStop(&gRumblePfs[i]);
+        gUnkRumbleArray[i] = 0;
+        D_80176980[i] = 0;
     }
 }
 

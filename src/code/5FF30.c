@@ -2969,8 +2969,8 @@ void SaveData_ClearRecords(void) {
 void func_800A93AC(contMain* arg0) {
     s32 i;
 
-    for (i = 0; i < 4; i++) {
-        if (gPlayerActors[i].active == 0) {
+    for (i = 0; i < PLAYERS_MAX; i++) {
+        if (gPlayerActors[i].active == FALSE) {
             continue;
         }
         DummiedPrintf("{0x%04X,%d,%d},\n", D_80175650[i].button, D_80175650[i].stick_x, D_80175650[i].stick_y);
@@ -2980,14 +2980,14 @@ void func_800A93AC(contMain* arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A9450.s")
 
 void func_800A9690(void) {
-    CTTask* temp_v0 = Task_Alloc(1, 100, NULL);
+    CTTask* task = Task_Alloc(1, 100, NULL);
 
-    if (temp_v0 == NULL) {
+    if (task == NULL) {
         //"エラー\n"("error")
         DummiedPrintf("エラー\n");
         while (1);
     }
-    temp_v0->function = &func_800A96DC;
+    task->function = &func_800A96DC;
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A96DC.s")
@@ -3127,7 +3127,7 @@ void func_800AAB0C(s32 arg0) {
     func_80084788();
     func_80055FA4();
 
-    for (i = 0; i < 4; i++) {
+    for (i = 0; i < 4; i++) { //TODO: unhardcode this for loop
         D_801756C0[i] = 0;
         D_80175678[i] = 0;
     }

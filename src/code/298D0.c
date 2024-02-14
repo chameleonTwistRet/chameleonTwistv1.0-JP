@@ -135,6 +135,6 @@ void func_8004E784(contMain* arg0, s32 arg1, s32* arg2, contMain* arg3) {
 }
 
 void func_8004E9AC(void) {
-    s32 i = 0;
-    for (i = 0; i < 4; i++) {D_80175678[i] = gContMain[i].buttons0;}
+    s32 i;
+    for (i = 0; i < MAXCONTROLLERS; i++) {D_80175678[i] = gContMain[i].buttons0;}
 }
