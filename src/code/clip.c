@@ -276,7 +276,7 @@ s32 check_collision_within_radius(Rect3D *rect, f32 radius) {
                     sp90[3].x = rect->max.x;
                     sp90[3].z = rect->max.z;
                     ret = 0;
-                    for (i = 0; i < 4; i++) {
+                    for (i = 0; i < 4; i++) { //TODO: unhardcode this for loop
                         sp90[i].x -= D_802018B0.x;
                         sp90[i].z -= D_802018B0.z;
                         temp_fv0 = SQ(sp90[i].z) + SQ(sp90[i].x);

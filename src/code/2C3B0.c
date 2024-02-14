@@ -17,8 +17,8 @@ void func_80050FB0(void) {
     s32 i;
 
     if (D_801749B0.unk_04 == 0) {
-        for (i = 0; i < 4; i++) {
-            if (gPlayerActors[i].active == 1) {
+        for (i = 0; i < PLAYERS_MAX; i++) {
+            if (gPlayerActors[i].active == TRUE) {
                 if (gPlayerActors[i].pos.y < -10.0f) {
                     D_800F0BE4[D_800F0BE0[i]].unk_00++;
                     func_8005456C(gPlayerActors[i].pos.x, -300.0f, gPlayerActors[i].pos.z, gPlayerActors[i].pos.y, 200.0f, gSelectedCharacters[i]);
@@ -31,9 +31,9 @@ void func_80050FB0(void) {
 void func_800510E0(void) {
     s32 i;
 
-    for (i = 0; i < 4; i++) {
-        if (gPlayerActors[i].active == 1) {
-            if (++D_800F0B68[i][D_800F0BC0[i]] >= 100) {
+    for (i = 0; i < PLAYERS_MAX; i++) {
+        if (gPlayerActors[i].active == TRUE) {
+            if (++D_800F0B68[i][D_800F0BC0[i]] > 99) {
                 D_800F0B68[i][D_800F0BC0[i]] = 99;
             }
         }
@@ -81,7 +81,7 @@ s32 func_8005177C(s32 arg0) {
     s32 i;
     s32 activeCount = 0;
 
-    for (i = 0; i < 4; i++) {
+    for (i = 0; i < PLAYERS_MAX; i++) {
         if (gPlayerActors[i].active && (D_80168D78[i] != (((i & 0xFF) == 4) * 0))) {
             if (arg0 != i) {
                 activeCount++;
@@ -90,7 +90,7 @@ s32 func_8005177C(s32 arg0) {
             break;
         }
     }
-    if (i == 4) {
+    if (i == PLAYERS_MAX) {
         activeCount = -1;
     }
     return activeCount;
@@ -267,7 +267,7 @@ void func_800557F8(void) {
         DMAStruct_Print();
         func_800A0D90();
 
-        for (i = 0; i < 4; i++) {
+        for (i = 0; i < PLAYERS_MAX; i++) {
             gPlayerActors[i].exists = gPlayerActors[i].active;
         }
 

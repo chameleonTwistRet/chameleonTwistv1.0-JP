@@ -243,7 +243,7 @@ void func_8002CDBC(contMain* controllers) {
         return;
     }
 
-    for (i = 0; i < 4; i++) {
+    for (i = 0; i < MAXCONTROLLERS; i++) {
         if (D_80168D78[i] != 0) {
             D_80168D78[i] = 1;
             func_8004CD9C(i, &controllers[i].buttons0);
@@ -261,7 +261,7 @@ void func_8002CE54(void) {
     Controller_StartRead();
     func_8002CB6C(0, &gGraphicsList[gFramebufferIndex], gFramebufferIndex);
     
-    for (i = 0; i < 4; i++) {
+    for (i = 0; i < MAXCONTROLLERS; i++) {
         Controller_Zero(&sp28[i]);
     }
     

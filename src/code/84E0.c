@@ -1046,7 +1046,7 @@ void pickup_collide_func(s32 actorIndex) {
     case Shrink_Enemy_Power_Up:
         func_8002F9BC(gCurrentActivePlayerPointer);
         var_v1 = gCurrentActivePlayerPointer->playerID;
-        for (i = 0; i < 4; i++) {
+        for (i = 0; i < PLAYERS_MAX; i++) {
             if (var_v1 == i) {
                 continue;
             }
