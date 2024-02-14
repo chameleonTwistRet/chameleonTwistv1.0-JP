@@ -1136,4 +1136,17 @@ typedef struct unk80170E68 {
 
 extern unk80170E68 D_80170E68[];
 
+typedef struct Unk_func_80094DBC_1 {
+    char unk00[0x08];
+    void (*unk8)(CTTask*);
+    char unkC[0x48];
+    s8 unk54;
+    struct Unk_func_80094DBC_1* unk58;
+    s16 unk5C;
+    char unk5E[0x02];
+    s16 unk60;
+    s16 unk62;
+    s16 unk64;
+} Unk_func_80094DBC_1;
+
 #endif

@@ -1079,7 +1079,7 @@ void checkControllerRumble(void) {
     temp_v0 = aa1_Alloc(0, 0, &aa1_checkControllerRumble);
     var_v1 = temp_v0;
     if (temp_v0 == NULL) {
-        setProcessType(GAME_MODE_BOOT);
+        SetProcessType(GAME_MODE_BOOT);
         var_v1 = temp_v0;
     }
     var_v1->unk0 = 0;

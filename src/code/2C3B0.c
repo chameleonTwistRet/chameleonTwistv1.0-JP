@@ -217,19 +217,19 @@ void func_8005444C(void) {
         D_800FE74C = 0;
         D_800F0B5C = -1;
         func_8005423C();
-        setProcessType(0xE);
+        SetProcessType(0xE);
         return;
     case 3:
         D_800FE74C = 0;
         D_800F0B5C = -1;
         func_8005423C();
-        setProcessType(7);
+        SetProcessType(7);
         return;
     case 4:
         D_800FE74C = 0;
         D_800F0B5C = -1;
         func_8005423C();
-        setProcessType(6);
+        SetProcessType(6);
         /* fallthrough */
     default:
         return;
@@ -292,7 +292,7 @@ void Process_Ranking(void) {
         D_8017499C++;
         break;
     case 3:
-        setProcessType(GAME_MODE_TITLE_SCREEN);
+        SetProcessType(GAME_MODE_TITLE_SCREEN);
         break;
     }
     func_8008C094();
@@ -340,7 +340,7 @@ void func_800557F8(void) {
         D_8017499C++;
         break;
     case 3:
-        setProcessType(GAME_MODE_TITLE_SCREEN);
+        SetProcessType(GAME_MODE_TITLE_SCREEN);
         break;
     }
 
@@ -372,7 +372,7 @@ void Process_Boot(void) {
         D_8017499C++;
         break;
     case 3:
-        setProcessType(GAME_MODE_SUPPLY_SYSTEM_LOGO);
+        SetProcessType(GAME_MODE_SUPPLY_SYSTEM_LOGO);
         break;
     }
 
@@ -403,7 +403,7 @@ void Process_SunsoftLogo(void) {
         D_8017499C++;
         break;
     case 3:
-        setProcessType(GAME_MODE_SUPPLY_SYSTEM_LOGO);
+        SetProcessType(GAME_MODE_SUPPLY_SYSTEM_LOGO);
         break;
     }
     

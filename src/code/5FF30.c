@@ -3,6 +3,11 @@
 
 #define SEGMENTED_TO_VIRTUAL(x)  (void*)(SEGMENT_OFFSET_CUSTOM(x) + D_80100F50[SEGMENT_INDEX(x)].base_address)
 
+void func_8008D7FC(void);
+void func_80092474(CTTask*);
+void func_80094E0C(CTTask* arg0);
+void func_800A54F4(CTTask* arg0);
+
 typedef struct unkarg0 {
     char unk_00[0x6A];
     s16 unk6A;
@@ -1116,7 +1121,7 @@ s32 getBaseStage(u32 arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/MemsizeCheck.s")
 
 //Uses "GameModes" enum
-void setProcessType(s32 arg0) {
+void SetProcessType(s32 arg0) {
     DummiedPrintf(" 元%d %d\n", gameModeCurrent, gGameModeState);
     gGameModeState = 0;
     gameModeCurrent = arg0;
@@ -1351,7 +1356,7 @@ s32 func_80090B10(s32 time, s32 arg1) {
 //#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80092324.s")
 void func_80092324(s32 arg0) {              // Cy
     if (func_8008EC90() != 0) {
-        setProcessType(1);
+        SetProcessType(1);
         return;
     }
     DummiedPrintf("フェード待ち\n");
@@ -1360,25 +1365,6 @@ void func_80092324(s32 arg0) {              // Cy
 
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009236C.s")
-
-//#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009244C.s")
-void func_8008D7FC(void);
-void func_80092474(void);
-
-typedef struct Unk_func_80094DBC_2 {
-    char unk00[0x54];
-    s8 unk54;
-} Unk_func_80094DBC_2;
-
-typedef struct Unk_func_80094DBC_1 {
-    char unk00[0x08];
-    void*(unk8);
-    char unkC[0x4C];
-    Unk_func_80094DBC_2* unk58;
-    s16 unk5C;
-    char unk5E[0x02];
-    s16 unk60;
-} Unk_func_80094DBC_1;
 
 void func_8009244C(Unk_func_80094DBC_1* arg0) {
     if (arg0->unk60 != 0) {
@@ -1522,7 +1508,7 @@ void func_800945E4(CTTask* arg0) {
 
 void func_80094DBC(Unk_func_80094DBC_1* arg0) {
     s16 temp_v0;
-    Unk_func_80094DBC_2* temp;
+    Unk_func_80094DBC_1* temp;
     
     func_8008D7FC();
      if (arg0->unk5C != 0) {
@@ -1531,10 +1517,10 @@ void func_80094DBC(Unk_func_80094DBC_1* arg0) {
     }
     temp = arg0->unk58;
     temp->unk54 = 7;
-    arg0->unk8 = func_80094E0C;
+    arg0->unk8 = &func_80094E0C;
 }
 
-void func_80094E0C(s32 arg0) {
+void func_80094E0C(CTTask* arg0) {
 
 }
 
@@ -2013,7 +1999,7 @@ void func_8009C2FC(CTTask* arg0) {
 
 void func_8009D19C(s32 arg0) {
     if (func_8008EC90()) {
-        setProcessType(GAME_MODE_TITLE_SCREEN);
+        SetProcessType(GAME_MODE_TITLE_SCREEN);
     }
 }
 
@@ -2181,7 +2167,7 @@ void func_800A1CCC(CTTask* arg0) {
             D_800FF8DC = D_800FF8E0 = D_800FF8E4 = 0xFF;
         }
         gSelectedCharacters[0] = arg0->unk5E;
-        setProcessType(arg0->unk60);
+        SetProcessType(arg0->unk60);
     }
 }
 
@@ -2412,25 +2398,101 @@ CTTask* func_800A5060(void){
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A5444.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A5488.s")
+void func_800A5488(Unk_func_80094DBC_1* arg0) {
+    if (arg0->unk62 != -1) {
+        arg0->unk64 = 0;
+        func_8008E9AC(0x20, 0, 0, 0, &arg0->unk64);
+        arg0->unk8 = &func_800A54F4;
+        arg0->unk54 = 2;
+    }
+}
 
-void func_800A54EC(s32 arg0) {
+void func_800A54EC(CTTask* arg0) { //probably CTTask*
 
 }
 
 void func_800A54F4(CTTask* arg0) {
     if (func_8008EC90() != 0) {
-        setProcessType((s32) arg0->unk_62);
+        SetProcessType(arg0->unk_62);
     }
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A5524.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/Process_JSSLogo.s")
+void Process_JSSLogo(void) {
+    switch (gGameModeState) {
+    case 0:
+        D_800FF8DC = D_800FF8E0 = D_800FF8E4 = 0;
+        func_80061394();
+        D_800FFDF4 = 1;
+        DummiedPrintf("ロゴプロセス\n"); //Logo process
+        DMAStruct_Print();
+        func_800A1EC4();
+        loadSprite(0x5C);
+        loadSprite(0x5D);
+        TaskInit();
+        D_80168DA0 = 4;
+        UseFixedRNGSeed = 0;
+        D_800FFDF0 = 3;
+        func_8008BE14();
+        func_80088198();
+        D_801FC9AC = 0;
+        func_8008F114();
+        gGameModeState++;
+        break;
+    case 1:
+        func_800A5060();
+        gGameModeState++;
+        func_8008F114();
+        break;
+    case 2:
+        gGameModeState++;
+        func_8008F114();
+        break;
+    case 3:
+        func_8008F16C();
+        D_8017499C++;
+        break;
+    }
+    func_8008C094();
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A56D4.s")
+extern s16 D_80100EB4[];
+extern s16 D_801B317C;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A5778.s")
+void func_800A56D4(void) {
+    D_80100F50[1].base_address = (u32)&D_803B5000 - _ALIGN((u32)&D_1045C00 - (u32)&D_1000000, 16);
+    D_80100F50[1].unk4 = (u32)&D_803B5000;
+    D_801FFB78 = D_80100F50[1].base_address;
+    func_80056EB4();
+    func_8005C9B8();
+    aa1_InitHead();
+    func_80084788();
+    loadSprite(D_80100EB4[D_801B317C]);
+    loadSprite(0x4D);
+    loadSprite(0x4E);
+}
+
+s32 func_800A5778(s32 arg0) {
+    switch (arg0) {
+    case 0:
+        return 0;
+    case 1:
+        return 1;
+    case 2:
+        return 2;
+    case 3:
+        return 3;
+    case 4:
+        return 4;
+    case 5:
+        return 5;
+    case 15:
+        return 6;
+    default:
+        return 0;
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_8010EBA4.s")
 
