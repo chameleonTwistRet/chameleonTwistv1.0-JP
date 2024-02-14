@@ -37,7 +37,14 @@ void func_80058BE4(Mtx* arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, 
 void func_800536D8(void);
 void func_80059F28(f32, f32, f32, f32, f32, f32, f32, f32, s32);
 
+extern s32 D_800F0B58;
+extern s32 D_800F0B5C;
+extern s32 D_800F0B68[4][4];
+extern s32 D_800F0BC0[4];
+extern s32 D_800F0BD0[4];
+extern s32 D_800FE404;
 extern s32 D_800FE708;
+extern s32 D_800FE74C;
 extern s32 D_80168EBC;
 extern s32 D_80168EC0;
 extern s32 D_80168FEC;
@@ -46,11 +53,9 @@ extern s32 D_8016911C;
 extern s32 D_80169120;
 extern s32 D_8016924C;
 extern s32 D_80169250;
-extern s32 D_800F0B68[4][4];
-extern s32 D_800F0BC0[4];
-extern s32 D_800F0B5C;
-extern s32 D_800FE404;
-extern s32 D_800FE74C;
+extern s32 D_801749AC;
+
+
 
 void func_80050FB0(void) {
     s32 i;
@@ -79,7 +84,69 @@ void func_800510E0(void) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/2C3B0/func_8005119C.s")
+s32 func_8005119C(void) {
+    s32 i, j;
+    s32 sum_1 = 0;
+    s32 sum_2 = 0;
+    
+    s32 var_v0 = D_801749AC;
+    if (D_800F0B58 == 6) {
+        var_v0 = 1;
+    }
+    
+    switch (var_v0) {
+        case 2:
+            for (i = 0; i < 4 ; i++) {
+                s32 total = 0;
+                if (gPlayerActors[i].active == 1) {
+                    for (j = 0; j < 4; j++) {
+                        if (gPlayerActors[j].active == 1) {
+                            if (i != j && D_800F0BE4[D_800F0BE0[j]].unk_00 < D_800F0BE4[D_800F0BE0[i]].unk_00) {
+                                total++; 
+                            }
+                            D_800F0BC0[i] = total;
+                        }    
+                    }
+                    if (D_800F0BC0[i] == 0) {
+                        sum_1 += 1;
+                    }
+                    if (D_800F0BC0[i] == 1) {
+                        sum_2 += 1;
+                    }
+                }
+            }
+
+            if (sum_2 == 2) {
+                for (i = 0; i < 4; i++) {
+                    if (gPlayerActors[i].active == 1 && D_800F0BC0[i] == 3) {
+                        D_800F0BC0[i] = 2;
+                    }
+                }
+            }
+            if (sum_1 == 1) {
+                sum_1 = 0;
+            } else {
+                sum_1--;
+            }
+            break;
+        case 1:
+            for (i = 0; i < 4; i++) {
+                if (gPlayerActors[i].active == 1) {
+                    D_800F0BC0[i] = D_800F0BD0[i] - 1;
+                    
+                    if (D_800F0BD0[i] < 2) {
+                        D_800F0BC0[i] = 0;
+                    }
+                    if (D_800F0BC0[i] == 0) {
+                        sum_1++;
+                    }
+                }
+            }
+            sum_1--;
+            break;
+    }
+    return sum_1;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/2C3B0/func_80051548.s")
 
