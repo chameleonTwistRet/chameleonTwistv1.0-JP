@@ -21,12 +21,14 @@
 #define	ABS(d)		((d) > 0) ? (d) : -(d)
 #define _ALIGN(val, alignment) ((((val) + ((alignment) - 1)) / (alignment)) * (alignment))
 #define ALIGN_128(val) ((val + 0x7F) & ~0x7F)
+#define SQROOT_2_DIV_2 0.70710678f
 
 #define SEGMENT_MASK 0x0F000000
 #define SEGMENT_SHIFT 24
 #define IS_SEGMENTED(x)          (((u32)(x) & SEGMENT_MASK) != 0)
 #define SEGMENT_INDEX(x)         (((u32)(x) & SEGMENT_MASK) >> SEGMENT_SHIFT)
 #define SEGMENT_OFFSET_CUSTOM(x)        (((u32)(x) & ~SEGMENT_MASK))
+#define SEGMENTED_TO_VIRTUAL(x)  (void*)(SEGMENT_OFFSET_CUSTOM(x) + D_80100F50[SEGMENT_INDEX(x)].base_address)
 
 //macros for simplifying the "play sound effect" calls
 #define PLAYSFX(id,arg4,flag) playSoundEffect(id,NULL,NULL,NULL,arg4,flag)

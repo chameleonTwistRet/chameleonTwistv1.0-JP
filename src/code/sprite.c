@@ -273,7 +273,7 @@ s32 free(void* arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80056F48.s")
 
-s32 loadSprite(s32 arg0) {
+s32 LoadSprite(s32 arg0) {
     s32 dmaSize;
     s32 dmaResult;
     SpriteListing* temp_s1;
@@ -315,10 +315,10 @@ s32 loadSprite(s32 arg0) {
         return -1;
     }
     
-    dmaResult = dma_copy(&D_8C26A0[temp_s1->bitmapRom & 0xFFFFFF], temp_s1->bitmapP, dmaSize);
+    dmaResult = DMA_Copy(&D_8C26A0[temp_s1->bitmapRom & 0xFFFFFF], temp_s1->bitmapP, dmaSize);
 
     while (dmaResult < 0) {
-        dmaResult = dma_copy(&D_8C26A0[temp_s1->bitmapRom & 0xFFFFFF], temp_s1->bitmapP, dmaSize);
+        dmaResult = DMA_Copy(&D_8C26A0[temp_s1->bitmapRom & 0xFFFFFF], temp_s1->bitmapP, dmaSize);
     }
     
     while (func_800A72E8(dmaResult) == 0);
@@ -331,10 +331,10 @@ s32 loadSprite(s32 arg0) {
             return -1;
         }
         
-        dmaResult = dma_copy(&D_8C26A0[temp_s1->paletteRom & 0xFFFFFF], temp_s1->palletteP, 0x200);
+        dmaResult = DMA_Copy(&D_8C26A0[temp_s1->paletteRom & 0xFFFFFF], temp_s1->palletteP, 0x200);
 
         while (dmaResult < 0) {
-            dmaResult = dma_copy(&D_8C26A0[temp_s1->paletteRom & 0xFFFFFF], temp_s1->palletteP, 0x200);
+            dmaResult = DMA_Copy(&D_8C26A0[temp_s1->paletteRom & 0xFFFFFF], temp_s1->palletteP, 0x200);
         }
         
         while (func_800A72E8(dmaResult) == 0);
@@ -412,11 +412,11 @@ void func_8005C9B8(void) {
             gSpriteListings[i].palletteP = (void*)gSpriteListings[i].paletteRom;
         }        
     }
-    loadSprite(SPRITE_CROWN);
-    loadSprite(SPRITE_HEARTRED);
-    loadSprite(SPRITE_HEARTORANGE);
-    loadSprite(SPRITE_HEARTYELLOW);
-    loadSprite(0x1A);
+    LoadSprite(SPRITE_CROWN);
+    LoadSprite(SPRITE_HEARTRED);
+    LoadSprite(SPRITE_HEARTORANGE);
+    LoadSprite(SPRITE_HEARTYELLOW);
+    LoadSprite(0x1A);
 }
 
 void func_8005CA38(void) {
@@ -894,12 +894,12 @@ void unlockEyeChange(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8006CA88.s")
 
-void loadPlayerEyes(s32 arg0) {
+void LoadPlayerEyes(s32 arg0) {
     s32 i;
     s32 var_s0 = (arg0 * 10) + 114;
     
     for(i = 0; i != 10; i++){
-        gLockContextEyes = loadSprite(var_s0);
+        gLockContextEyes = LoadSprite(var_s0);
         if ((gLockContextEyes) > 0) {
             break;
         }
@@ -907,7 +907,7 @@ void loadPlayerEyes(s32 arg0) {
     }
 }
 
-void freePlayerEyes(s32 arg0) {
+void FreePlayerEyes(s32 arg0) {
     s32 i;
     s32 var_s0 = (arg0 * 10) + 114;
 
@@ -926,7 +926,7 @@ void freePlayerEyes(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/initPlayerEyeController.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/setPlayerContextEyes.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/SetPlayerContextEyes.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/aa1_BossDeadEyes.s")
 
@@ -1049,7 +1049,7 @@ void func_80072D34(void) {
         temp_v0->unk0 = 1;
         temp_v0->unkC = 0.0f;
         temp_v0->unk_30 = 0.0f;
-        playBGM(BGM_TRAINING);
+        PlayBGM(BGM_TRAINING);
     }
 }
 
@@ -1248,7 +1248,7 @@ void func_8007AC2C(s32* arg0) {
 
 void func_8007AF30(void) {
     func_8007ADDC(0);
-    loadSprite(207);
+    LoadSprite(207);
 }
 
 void func_8007AF58(void) {
@@ -1365,7 +1365,7 @@ s32 func_8007C500(void) {
 void func_8007CDBC(void) {
     levelFlags[1] = 0;
     levelFlags[2] = 0;
-    playBGM(BGM_TRAINING);
+    PlayBGM(BGM_TRAINING);
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8007CDEC.s")

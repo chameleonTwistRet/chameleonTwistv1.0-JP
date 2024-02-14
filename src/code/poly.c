@@ -1,19 +1,5 @@
 #include "common.h"
 
-/* Migrated BSS */
-//TODO: type this data correctly
-char gShadows[0xC00];
-s32 gShadowCount;
-Vec3f D_80248518;
-char D_80248528[0x18];
-char D_80248540[0x368];
-s32 D_802488A8;
-char D_802488B0[0x10];
-char gHasShadow[0x100];
-char D_802489C0[0x08];
-Vec3f D_802489C8[8];
-char D_80248A28[0x08];
-
 /* rodata */
 extern char D_80110180[];
 extern char D_801103D0[];
@@ -40,6 +26,20 @@ extern f32 D_80108FE4;
 extern s32 D_80108FE8;
 extern s32 D_80108FEC;
 extern Vec3f D_802489C8[8];
+
+/* Migrated BSS */
+//TODO: type this data correctly
+char gShadows[0xC00];
+s32 gShadowCount;
+Vec3f D_80248518;
+char D_80248528[0x18];
+char D_80248540[0x368];
+s32 D_802488A8;
+char D_802488B0[0x10];
+char gHasShadow[0x100];
+char D_802489C0[0x08];
+Vec3f D_802489C8[8];
+char D_80248A28[0x08];
 
 Vec3f* RotateVector3D(Vec3f*, Vec3f, f32, s32);
 void func_800D3854(PlayerActor*, Tongue*, Camera*, Vec3f*, Vec3f*, s32);

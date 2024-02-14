@@ -1,10 +1,6 @@
-#include "common.h"
+#include "298D0.h"
 
 //these seem to solely be controller-based functions
-
-/* Externs */
-extern s32 RumblePakError;
-extern s32 D_80176960[];
 
 /* Migrated BSS */
 OSMesgQueue gEepromMsgQ;

@@ -1,8 +1,4 @@
-#include "common.h"
-
-typedef struct unk80176840 {
-    char unk_00[0x10];
-} unk80176840;
+#include "2C3B0.h"
 
 u8 D_80176820;
 u8 D_80176821;
@@ -16,41 +12,6 @@ s32 D_80176834;
 s32 D_80176838;
 s32 D_8017683C;
 unk80176840 D_80176840;
-
-
-typedef struct unk800FE564 {
-    u8 unk0;
-    u8 unk1;
-    u8 unk2;
-    u8 unk3;
-} unk800FE564;
-
-
-extern unk800FE564 D_800FE564[];
-
-void func_8005456C(f32, f32, f32, f32, f32, s32);
-void func_80073090(void);
-s32 func_8008BE14(void);
-void func_800A0D90(void);
-void func_800678EC(s32, s32, s32, s32, s32);
-void func_80058BE4(Mtx* arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, s32 arg7);
-void func_800536D8(void);
-void func_80059F28(f32, f32, f32, f32, f32, f32, f32, f32, s32);
-
-extern s32 D_800FE708;
-extern s32 D_80168EBC;
-extern s32 D_80168EC0;
-extern s32 D_80168FEC;
-extern s32 D_80168FF0;
-extern s32 D_8016911C;
-extern s32 D_80169120;
-extern s32 D_8016924C;
-extern s32 D_80169250;
-extern s32 D_800F0B68[4][4];
-extern s32 D_800F0BC0[4];
-extern s32 D_800F0B5C;
-extern s32 D_800FE404;
-extern s32 D_800FE74C;
 
 void func_80050FB0(void) {
     s32 i;
@@ -196,13 +157,12 @@ void func_80053CA0(void) {
 void func_8005423C(void) {
     s32 i;
     for (i = 0; i < 6; i++){
-        setPlayerContextEyes(i, 0, 0);
+        SetPlayerContextEyes(i, 0, 0);
     }
 }
 
 //https://decomp.me/scratch/YLdZC
 #pragma GLOBAL_ASM("asm/nonmatchings/code/2C3B0/func_80054284.s")
-void func_800771DC(s32*, f32, f32, s32, s32, s32*, f32, f32, f32, f32); /* extern */
 
 void func_8005444C(void) {
     if (D_801749B0.unk_04 == 1) {
@@ -257,20 +217,20 @@ void Process_Ranking(void) {
         D_800FE708 = 0;
         DMAStruct_Print();
         func_800A1EC4();
-        loadSprite(0xD4);
-        loadSprite(SPRITE_PORTRAITDAVY);
-        loadSprite(SPRITE_PORTRAITJACK);
-        loadSprite(SPRITE_PORTRAITFRED);
-        loadSprite(SPRITE_PORTRAITLINDA);
-        loadSprite(SPRITE_PORTRAITBLACK);
-        loadSprite(SPRITE_PORTRAITWHITE);
-        loadSprite(0x6E);
-        loadSprite(0xBD);
-        loadSprite(0xBE);
-        loadSprite(0xBF);
-        loadSprite(0xC0);
-        loadSprite(0xC1);
-        loadSprite(0xC2);
+        LoadSprite(0xD4);
+        LoadSprite(SPRITE_PORTRAITDAVY);
+        LoadSprite(SPRITE_PORTRAITJACK);
+        LoadSprite(SPRITE_PORTRAITFRED);
+        LoadSprite(SPRITE_PORTRAITLINDA);
+        LoadSprite(SPRITE_PORTRAITBLACK);
+        LoadSprite(SPRITE_PORTRAITWHITE);
+        LoadSprite(0x6E);
+        LoadSprite(0xBD);
+        LoadSprite(0xBE);
+        LoadSprite(0xBF);
+        LoadSprite(0xC0);
+        LoadSprite(0xC1);
+        LoadSprite(0xC2);
         TaskInit();
         D_80168DA0 = 4;
         gGameModeState++;
@@ -311,15 +271,15 @@ void func_800557F8(void) {
             gPlayerActors[i].exists = gPlayerActors[i].active;
         }
 
-        loadSprite(0xCE);
-        loadSprite(0x6E);
-        loadSprite(0xD5);
-        loadPlayerEyes(CHARA_DAVY);
-        loadPlayerEyes(CHARA_JACK);
-        loadPlayerEyes(CHARA_FRED);
-        loadPlayerEyes(CHARA_LINDA);
-        loadPlayerEyes(CHARA_BLACK);
-        loadPlayerEyes(CHARA_WHITE);
+        LoadSprite(0xCE);
+        LoadSprite(0x6E);
+        LoadSprite(0xD5);
+        LoadPlayerEyes(CHARA_DAVY);
+        LoadPlayerEyes(CHARA_JACK);
+        LoadPlayerEyes(CHARA_FRED);
+        LoadPlayerEyes(CHARA_LINDA);
+        LoadPlayerEyes(CHARA_BLACK);
+        LoadPlayerEyes(CHARA_WHITE);
         TaskInit();
         D_80168DA0 = 4;
         gGameModeState++;
@@ -353,7 +313,7 @@ void Process_Boot(void) {
         D_800FFDF4 = 1;
         DMAStruct_Print();
         func_800A1EC4();
-        loadSprite(94);
+        LoadSprite(94);
         TaskInit();
         func_8002E0CC();
         gGameModeState++;
@@ -385,7 +345,7 @@ void Process_SunsoftLogo(void) {
         D_800FFDF4 = 1;
         DMAStruct_Print();
         func_800A1EC4();
-        loadSprite(0xCD);
+        LoadSprite(0xCD);
         TaskInit();
         func_8002E0CC();
         gGameModeState++;
