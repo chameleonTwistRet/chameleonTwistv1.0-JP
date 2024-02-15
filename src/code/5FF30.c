@@ -787,7 +787,33 @@ void strcpy(u8* arg0, u8* arg1) {
     while ((*arg0++ = *arg1++)) {}
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/Task_Run.s")
+/**
+ * @brief Run a CTTask's assigned function
+ * 
+ * @param task 
+ */
+void CTTask_Run(CTTask* task) {
+    void (*temp)(CTTask*); //?
+    void (*taskFunc)(CTTask*);
+    
+    temp = taskFunc = task->function;
+    if (taskFunc == 0) {
+        DummiedPrintf("NULL POINTER %d\n", task->unk_02);
+        taskFunc = task->function;
+    }
+    // If function ptr is not in virtual memory space
+    else if ((u32)taskFunc < 0x80000000U) {
+        DummiedPrintf("BAD POINTER %d, %X\n", task->unk_02, (u32)task->function);
+        taskFunc = task->function;
+    }
+    
+    if ((u32)taskFunc & 1) {
+        DummiedPrintf("ERROR POINTER %X\n", task);
+    }
+    
+    taskFunc(task);
+}
+
 
 /**
  * @brief Remove a CTTask from the linked list by linking its surrounding tasks together (sets task to inactive)
@@ -842,7 +868,7 @@ void CTTaskList_Init(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_8010DA14.s")
 
-void func_8008CE94(CTTask* task) {
+void CTTask_Unlink_2(CTTask* task) {
     CTTask* nextTask;
     CTTask* prevTask;
 
@@ -911,9 +937,9 @@ s32 func_8008EC90(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008ECB8.s")
 
-void func_8008EF78(CTTask* arg0) {
+void func_8008EF78(CTTask* task) {
     func_8008ECB8();
-    CTTask_Unlink(arg0);
+    CTTask_Unlink(task);
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008EFA0.s")
@@ -2032,10 +2058,10 @@ void func_800A10E8(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A18C8.s")
 
-void func_800A191C(CTTask* arg0) {
-    CTTask* unkTask = arg0->unk58;
+void func_800A191C(CTTask* task) {
+    CTTask* unkTask = task->unk58;
     
-    if (!(arg0->unk60-- > 0)) {
+    if (!(task->unk60-- > 0)) {
         unkTask->unk54 = 1;
     }
 }
