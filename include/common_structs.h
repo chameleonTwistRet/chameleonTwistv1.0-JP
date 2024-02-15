@@ -463,13 +463,13 @@ typedef struct tempStruct {
 } tempStruct; //sizeof 0x48
 
 typedef struct CTTask {
-    /* 0x00 */ s16 unk_00;
+    /* 0x00 */ s16 active;
     /* 0x02 */ s16 unk_02;
     /* 0x04 */ s16 unk_04;
     /* 0x06 */ char unk06[2];
     /* 0x08 */ void (*function)(struct CTTask*);
     /* 0x0C */ struct CTTask* next;
-    /* 0x10 */ struct CTTask* unk_10;
+    /* 0x10 */ struct CTTask* prev;
     /* 0x14 */ Vec3f pos;
     /* 0x20 */ f32 rotA;
     /* 0x24 */ Vec3f scale;

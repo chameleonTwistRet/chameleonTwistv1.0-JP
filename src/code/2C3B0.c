@@ -231,7 +231,7 @@ void Process_Ranking(void) {
         LoadSprite(0xC0);
         LoadSprite(0xC1);
         LoadSprite(0xC2);
-        TaskInit();
+        CTTaskList_Init();
         D_80168DA0 = 4;
         gGameModeState++;
         UseFixedRNGSeed = FALSE;
@@ -280,7 +280,7 @@ void func_800557F8(void) {
         LoadPlayerEyes(CHARA_LINDA);
         LoadPlayerEyes(CHARA_BLACK);
         LoadPlayerEyes(CHARA_WHITE);
-        TaskInit();
+        CTTaskList_Init();
         D_80168DA0 = 4;
         gGameModeState++;
         UseFixedRNGSeed = FALSE;
@@ -314,7 +314,7 @@ void Process_Boot(void) {
         DMAStruct_Print();
         func_800A1EC4();
         LoadSprite(94);
-        TaskInit();
+        CTTaskList_Init();
         func_8002E0CC();
         gGameModeState++;
         UseFixedRNGSeed = FALSE;
@@ -346,7 +346,7 @@ void Process_SunsoftLogo(void) {
         DMAStruct_Print();
         func_800A1EC4();
         LoadSprite(0xCD);
-        TaskInit();
+        CTTaskList_Init();
         func_8002E0CC();
         gGameModeState++;
         UseFixedRNGSeed = FALSE;

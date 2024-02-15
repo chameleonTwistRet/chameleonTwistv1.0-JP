@@ -787,32 +787,69 @@ void strcpy(u8* arg0, u8* arg1) {
     while ((*arg0++ = *arg1++)) {}
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/Task_Run.s")
-
-void Task_Unlink(CTTask* arg0) {
-    CTTask* v0 = arg0->next;
-    CTTask* v1 = arg0->unk_10;
-
-    v0->unk_10 = v1;
-    v1->next = v0;
-    arg0->unk_00 = 0;
+/**
+ * @brief Run a CTTask's assigned function
+ * 
+ * @param task 
+ */
+void CTTask_Run(CTTask* task) {
+    void (*temp)(CTTask*); //?
+    void (*taskFunc)(CTTask*);
+    
+    temp = taskFunc = task->function;
+    if (taskFunc == 0) {
+        DummiedPrintf("NULL POINTER %d\n", task->unk_02);
+        taskFunc = task->function;
+    }
+    // If function ptr is not in virtual memory space
+    else if ((u32)taskFunc < 0x80000000U) {
+        DummiedPrintf("BAD POINTER %d, %X\n", task->unk_02, (u32)task->function);
+        taskFunc = task->function;
+    }
+    
+    if ((u32)taskFunc & 1) {
+        DummiedPrintf("ERROR POINTER %X\n", task);
+    }
+    
+    taskFunc(task);
 }
 
-void Task_Clear(void) {
+
+/**
+ * @brief Remove a CTTask from the linked list by linking its surrounding tasks together (sets task to inactive)
+ * 
+ * @param taskToRemove 
+ */
+void CTTask_Unlink(CTTask* taskToRemove) {
+    CTTask* nextTask = taskToRemove->next;
+    CTTask* prevTask = taskToRemove->prev;
+
+    nextTask->prev = prevTask;
+    prevTask->next = nextTask;
+    taskToRemove->active = 0;
+}
+
+/**
+ * @brief Clear the CTTask linked list by freeing all tasks
+ */
+void CTTaskList_Clear(void) {
     CTTask* prev;
-    CTTask* cur = gCTTaskHead->next;
+    CTTask* curr = gCTTaskHead->next;
     
-    while (cur->next != 0) {
-        prev = cur;
-        Task_Unlink(cur);
-        cur = cur->next;
-        free(prev);
+    while (curr->next != 0) {
+        prev = curr;
+        CTTask_Unlink(curr);
+        curr = curr->next;
+        Free(prev);
     }
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/Task_ClearMost.s")
 
-void TaskInit(void) {
+/**
+ * @brief Initialize the CTTask linked list
+ */
+void CTTaskList_Init(void) {
     gCTTaskHead = mallloc(sizeof(CTTask));
     gCTTaskTail = mallloc(sizeof(CTTask));
     if (gCTTaskHead == NULL) {
@@ -823,24 +860,24 @@ void TaskInit(void) {
     }
     gCTTaskHead->unk_02 = 0;
     gCTTaskHead->next = gCTTaskTail;
-    gCTTaskHead->unk_10 = NULL;
+    gCTTaskHead->prev = NULL;
     gCTTaskTail->unk_02 = 0xFF;
     gCTTaskTail->next = NULL;
-    gCTTaskTail->unk_10 = gCTTaskHead;
+    gCTTaskTail->prev = gCTTaskHead;
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_8010DA14.s")
 
-void func_8008CE94(unk8008CE94* arg0) {
-    unk8008CE94* temp_v0;
-    unk8008CE94* temp_v1;
+void CTTask_Unlink_2(CTTask* task) {
+    CTTask* nextTask;
+    CTTask* prevTask;
 
-    temp_v0 = arg0->unkC;
-    temp_v1 = arg0->unk10;
-    temp_v0->unk10 = temp_v1;
-    temp_v1->unkC = temp_v0;
-    arg0->unk0 = 0;
-    free(arg0);
+    nextTask = task->next;
+    prevTask = task->prev;
+    nextTask->prev = prevTask;
+    prevTask->next = nextTask;
+    task->active = 0;
+    Free(task);
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/bzero32.s")
@@ -900,9 +937,9 @@ s32 func_8008EC90(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008ECB8.s")
 
-void func_8008EF78(CTTask* arg0) {
+void func_8008EF78(CTTask* task) {
     func_8008ECB8();
-    Task_Unlink(arg0);
+    CTTask_Unlink(task);
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008EFA0.s")
@@ -1020,7 +1057,7 @@ void func_8008FD68(void) {
     aa1_InitHead();
     func_8005C9B8();
     func_80084788();
-    TaskInit();
+    CTTaskList_Init();
 }
 
 void func_8008FDF8(void) {
@@ -2021,10 +2058,10 @@ void func_800A10E8(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A18C8.s")
 
-void func_800A191C(CTTask* arg0) {
-    CTTask* unkTask = arg0->unk58;
+void func_800A191C(CTTask* task) {
+    CTTask* unkTask = task->unk58;
     
-    if (!(arg0->unk60-- > 0)) {
+    if (!(task->unk60-- > 0)) {
         unkTask->unk54 = 1;
     }
 }
@@ -2222,7 +2259,7 @@ void Process_GameOver(void) {
             DummiedPrintf("ゲームオーバープロセス\n");
             DMAStruct_Print();
             func_800A0D90();
-            TaskInit();
+            CTTaskList_Init();
             LoadSprite(0x5E);
             D_80168DA0 = 4;
             gGameModeState++;
@@ -2303,7 +2340,7 @@ void Process_JSSLogo(void) {
         func_800A1EC4();
         LoadSprite(0x5C);
         LoadSprite(0x5D);
-        TaskInit();
+        CTTaskList_Init();
         D_80168DA0 = 4;
         UseFixedRNGSeed = 0;
         D_800FFDF0 = 3;
