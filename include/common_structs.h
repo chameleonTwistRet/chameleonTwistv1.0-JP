@@ -466,7 +466,7 @@ typedef struct CTTask {
     /* 0x00 */ s16 unk_00;
     /* 0x02 */ s16 unk_02;
     /* 0x04 */ s16 unk_04;
-    /* 0x06 */ char unk06[2];
+    /* 0x06 */ s8 unk06[2];
     /* 0x08 */ void (*function)(struct CTTask*);
     /* 0x0C */ struct CTTask* next;
     /* 0x10 */ struct CTTask* unk_10;
@@ -475,10 +475,12 @@ typedef struct CTTask {
     /* 0x24 */ Vec3f scale;
     /* 0x30 */ Vec3f rot;
     /* 0x3C */ f32 unk3C;
-    /* 0x40 */ char pad40[0x14];                    /* maybe part of unk3C[6]? */
+    /* 0x40 */ char pad40[4];
+    /* 0x44 */ s16 unk44;                           /* inferred */
+    /* 0x46 */ char pad46[0xE];                     /* maybe part of unk44[8]? */
     /* 0x54 */ u8 unk54;
     /* 0x55 */ char pad55[3];                       /* maybe part of unk54[4]? */
-    /* 0x58 */ struct CTTask* unk58;                       /* inferred */
+    /* 0x58 */ struct CTTask* unk58;
     /* 0x5C */ s16 unk_5C;
     /* 0x5E */ s16 unk5E;
     /* 0x60 */ s16 unk60;
@@ -487,12 +489,13 @@ typedef struct CTTask {
     /* 0x66 */ s16 unk66;
     /* 0x68 */ s16 unk_68;
     /* 0x6A */ char pad6A[2];
-    /* 0x6C */ char unk6C[2];
+    /* 0x6C */ s8 unk6C[2];
     /* 0x6E */ s16 unk_6E;
     /* 0x70 */ s16 unk_70;
-    /* 0x74 */ char unk74[0x10];
-    /* 0x84 */ s8 str[0x24]; // used in strcpy twice.
-} CTTask;
+    /* 0x72 */ s8 unk74[0x10];
+    /* 0x82 */ s8 str[0x24];
+    /* 0xA6 */ char padA6[2];
+} CTTask;                                           /* size = 0xA8 */
 
 typedef struct unk801FCA20 {
     /* 0x00 */ s32 unk_00;
