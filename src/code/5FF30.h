@@ -106,6 +106,9 @@ void func_8009C038(CTTask*);
 void func_80099AF4(void);
 void func_800A6CF4(CTTask*);
 void func_8009C644(CTTask*);
+void Video_SetTask(graphicStruct* arg0, Gfx* arg1, s32 arg2);
+void func_8008F7A4(s32, s32);
+void func_80097540(CTTask*);
 
 /* Ext Variables */
 extern OSTask D_800F04E0[2];

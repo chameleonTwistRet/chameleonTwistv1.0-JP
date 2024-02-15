@@ -798,12 +798,12 @@ void CTTask_Run(CTTask* task) {
     
     temp = taskFunc = task->function;
     if (taskFunc == 0) {
-        DummiedPrintf("NULL POINTER %d\n", task->unk_02);
+        DummiedPrintf("NULL POINTER %d\n", task->type);
         taskFunc = task->function;
     }
     // If function ptr is not in virtual memory space
     else if ((u32)taskFunc < 0x80000000U) {
-        DummiedPrintf("BAD POINTER %d, %X\n", task->unk_02, (u32)task->function);
+        DummiedPrintf("BAD POINTER %d, %X\n", task->type, (u32)task->function);
         taskFunc = task->function;
     }
     
@@ -858,10 +858,10 @@ void CTTaskList_Init(void) {
     if (gCTTaskTail == NULL) {
         DummiedPrintf("TaskInit()メモリ足りません\n", &gCTTaskTail);
     }
-    gCTTaskHead->unk_02 = 0;
+    gCTTaskHead->type = 0;
     gCTTaskHead->next = gCTTaskTail;
     gCTTaskHead->prev = NULL;
-    gCTTaskTail->unk_02 = 0xFF;
+    gCTTaskTail->type = 0xFF;
     gCTTaskTail->next = NULL;
     gCTTaskTail->prev = gCTTaskHead;
 }
@@ -887,11 +887,10 @@ void CTTask_Unlink_2(CTTask* task) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008D060.s")
 
 void func_8008D114(Gfx* arg0, s32 arg1) {
-    Video_SetTask(arg0, arg0, arg1);
+    Video_SetTask((void*)arg0, arg0, arg1); //TODO: fix type of arg0?
     osWritebackDCache(arg0, 0x1FB00);
     func_80084F80(&D_800F04E0[arg1], arg1);
 }
-
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008D168.s")
 
@@ -1673,7 +1672,10 @@ f32 func_80096898(u16 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80097498.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80097508.s")
+void func_80097508(CTTask* arg0) {
+    func_8008F7A4(3, 8);
+    arg0->function = &func_80097540;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80097540.s")
 

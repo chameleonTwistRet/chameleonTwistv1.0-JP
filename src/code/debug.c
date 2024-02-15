@@ -152,7 +152,11 @@ void Debug_NOOP(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/debug/func_8004FA5C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/debug/func_8004FE90.s")
+void func_8004FE90(unkarg0_2* arg0, f32 arg1, f32 arg2, f32 arg3, f32* arg4, f32* arg5, f32* arg6) {
+    *arg4 = (arg0->unk_20 * arg3) + ((arg0->unk_00 * arg1) + (arg0->unk_10 * arg2));
+    *arg5 = (arg0->unk_24 * arg3) + ((arg0->unk_04 * arg1) + (arg0->unk_14 * arg2));
+    *arg6 = (arg0->unk_28 * arg3) + ((arg0->unk_08 * arg1) + (arg0->unk_18 * arg2));
+}
 
 void func_8004FF1C(unkarg0_2* arg0, f32* arg1, f32* arg2) {
     *arg1 = (arg0->unk_24 * 100.0f) + (arg0->unk_14 * 0);
