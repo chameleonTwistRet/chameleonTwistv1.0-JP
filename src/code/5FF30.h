@@ -52,6 +52,7 @@ typedef struct unk80097CF8 {
 
 
 /* Functions */
+void func_8009DE1C (CTTask*);
 s32 func_8008D7FC(void);
 void func_80092474(CTTask*);
 void func_80094E0C(CTTask* arg0);
@@ -107,6 +108,7 @@ void func_800A6CF4(CTTask*);
 void func_8009C644(CTTask*);
 
 /* Ext Variables */
+extern OSTask D_800F04E0[2];
 extern unk801FFB88* D_801FFB88;
 extern unk801FC9BC D_801FC9BC[]; //probably not correct
 extern unk80100DF0 D_80100DF0[];

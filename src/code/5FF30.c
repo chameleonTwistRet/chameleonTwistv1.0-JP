@@ -886,7 +886,12 @@ void CTTask_Unlink_2(CTTask* task) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008D060.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008D114.s")
+void func_8008D114(Gfx* arg0, s32 arg1) {
+    Video_SetTask(arg0, arg0, arg1);
+    osWritebackDCache(arg0, 0x1FB00);
+    func_80084F80(&D_800F04E0[arg1], arg1);
+}
+
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008D168.s")
 
@@ -1363,7 +1368,15 @@ void func_800935F8(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009384C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800938B0.s")
+void func_800938B0(CTTask* arg0) {
+    CTTask* task;
+
+    task = arg0->unk58;
+    if ((arg0->unk54 == 6) && (task->unk54 < 7)) {
+        task->unk54 = 7;
+    }
+}
+
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800938E4.s")
 
@@ -1458,7 +1471,18 @@ void func_80094E0C(CTTask* arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80095264.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80095500.s")
+void func_80095500(CTTask* arg0) {
+CTTask* temp;
+    
+    if (arg0->unk_5C != 0) {
+        arg0->unk_5C--;
+        return;
+    }
+    temp = arg0->unk58;
+    temp->unk54 = 1;
+    Task_Unlink(arg0);
+}
+
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/Process_PreCredits.s")
 
@@ -1930,7 +1954,15 @@ void func_8009D19C(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009E24C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009E2B0.s")
+void func_8009E2B0(CTTask* arg0) {
+    arg0->unk44 = 3;
+    arg0->pos.y += 4.0f;
+    if (arg0->pos.y >= 128.0f) {
+        arg0->pos.y = 128.0f;
+        arg0->function = func_8009DE1C;
+    }
+}
+
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009E300.s")
 
