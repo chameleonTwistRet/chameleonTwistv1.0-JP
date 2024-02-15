@@ -1472,7 +1472,7 @@ void func_80094E0C(CTTask* arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80095264.s")
 
 void func_80095500(CTTask* arg0) {
-CTTask* temp;
+    CTTask* temp;
     
     if (arg0->unk_5C != 0) {
         arg0->unk_5C--;
@@ -1480,7 +1480,7 @@ CTTask* temp;
     }
     temp = arg0->unk58;
     temp->unk54 = 1;
-    Task_Unlink(arg0);
+    CTTask_Unlink(arg0);
 }
 
 
