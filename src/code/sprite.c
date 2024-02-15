@@ -266,7 +266,7 @@ void* mallloc(s32 arg0) {
     return temp_v0;
 }
 
-s32 free(void* arg0) {
+s32 Free(void* arg0) {
     Memory_Free(arg0);
     return 0;
 }
@@ -327,7 +327,7 @@ s32 LoadSprite(s32 arg0) {
         temp_s1->palletteP = mallloc(0x200);
         if (temp_s1->palletteP == NULL) {
             DummiedPrintf2(" sprite.c : sprite on mem err! (size = %d)\n", 0x200);
-            free(temp_s1->bitmapP);
+            Free(temp_s1->bitmapP);
             return -1;
         }
         
@@ -547,7 +547,7 @@ aa1* aa1_Alloc(s32 arg0, s32 arg1, void* arg2) {
     if (arg0 != 0) {
         var_a1->unk_3C = mallloc(arg0 * 0x28);
         if (var_a1->unk_3C == NULL) {
-            free(var_a1);
+            Free(var_a1);
             return NULL;
         }        
     } else {
@@ -557,8 +557,8 @@ aa1* aa1_Alloc(s32 arg0, s32 arg1, void* arg2) {
     if (arg1 != 0) {
         var_a1->unk_38 = mallloc(arg1);
         if (var_a1->unk_38 == NULL) {
-            free(var_a1);
-            free(var_a1->unk_3C);
+            Free(var_a1);
+            Free(var_a1->unk_3C);
             return NULL;
         }        
     } else {
@@ -591,9 +591,9 @@ void aa1_Free(aa1* arg0) {
     if (arg0 == g_aa1_head) {
         g_aa1_head = arg0->previous;
     }
-    free(arg0->unk_3C);
-    free(arg0->unk_38);
-    free(arg0);
+    Free(arg0->unk_3C);
+    Free(arg0->unk_38);
+    Free(arg0);
     g_aa1_Count -= 1;
 }
 
