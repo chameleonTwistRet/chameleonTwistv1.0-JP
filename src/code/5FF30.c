@@ -2199,7 +2199,18 @@ void func_800A2B9C(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A39EC.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A3DC0.s")
+void func_800A4074(CTTask*);                        /* extern */
+
+void func_800A3DC0(CTTask* arg0) {
+    CTTask* temp_v0;
+
+    temp_v0 = Task_Alloc(1, 0x64, 0);
+    temp_v0->unk58 = arg0;
+    temp_v0->function = func_800A4074;
+    temp_v0->unk_62 = 0;
+ 
+}
+
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/PrintDataClearConfirm.s")
 
@@ -3260,7 +3271,19 @@ s32 func_800AD980(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800ADC50.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800ADE24.s")
+extern contMain D_801FC9B8;
+extern s16 D_80200CA0;
+extern s16 D_80200CA8;
+
+void func_800ADE24(void) {
+    Controller_Zero(&D_801FC9B8);
+    Controller_Zero(gContMain);
+    *D_801756C0 = 0;
+    *D_80175678 = 0;
+    D_80200CA0 = 0;
+    D_80200CA8 = 0;
+}
+
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800ADE70.s")
 
