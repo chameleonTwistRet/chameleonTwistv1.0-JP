@@ -602,7 +602,7 @@ s32 Actor_Init(s32 type, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 a
     s32 i;
     Actor* curActor = gActors;
 
-    for (i = 0; i < ACTORS_MAX; i++, curActor++) {
+    for (i = 0; i < ARRAY_COUNT(gActors); i++, curActor++) {
         if (curActor->actorID == 0) {
             Actors_Init(i, type, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, argA, argB, argC, argD, argE, argF, arg10, arg11, arg12, arg13, arg14, arg15, arg16);
             gActorCount++;
@@ -615,7 +615,7 @@ s32 Actor_Init(s32 type, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 a
 s32 func_8002DF5C(s32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4) {
     s32 i;
 
-    for (i = 0; i < ACTORS_MAX; i++) {
+    for (i = 0; i < ARRAY_COUNT(gActors); i++) {
         if (D_80170968[i].mode == 0) {
             D_80170968[i].mode = arg0;
             D_80170968[i].pos.x = arg1;
@@ -1070,10 +1070,10 @@ void pickup_collide_func(s32 actorIndex) {
     actor->actorID = 0;
     
     if (var_s0 == 0) {
-        initPlayerEyeController(gSelectedCharacters[gCurrentActivePlayerPointer->playerID], 2, 50.0f, 0);
+        InitPlayerEyeController(gSelectedCharacters[gCurrentActivePlayerPointer->playerID], 2, 50.0f, 0);
         return;
     }
-    initPlayerEyeController(gSelectedCharacters[gCurrentActivePlayerPointer->playerID], 1, var_s0, 0);
+    InitPlayerEyeController(gSelectedCharacters[gCurrentActivePlayerPointer->playerID], 1, var_s0, 0);
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80034104.s")
@@ -2596,7 +2596,7 @@ s32 func_8004C110(s32 arg0, f32 arg1, f32 arg2) {
     var_s2 = 0x05F5E100; //??
     actorIndex = -1;
     actorArray = gActors;
-    for (i = 0; i < ACTORS_MAX; i++, actorArray++) {
+    for (i = 0; i < ARRAY_COUNT(gActors); i++, actorArray++) {
         temp_v0 = func_8004BF88(actorArray, arg0, arg1, arg2);
         //fake match
         do {
@@ -2628,7 +2628,7 @@ void func_8004C3A4(s16* arg0, f32 arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8004C600.s")
 
-s32 func_8004CC6C(void) {
+u8 func_8004CC6C(void) {
     switch (gCurrentZone) {
     case 15:
         return 255;
