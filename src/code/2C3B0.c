@@ -40,8 +40,10 @@ void func_80059F28(f32, f32, f32, f32, f32, f32, f32, f32, s32);
 extern s32 D_800F0B58;
 extern s32 D_800F0B5C;
 extern s32 D_800F0B68[4][4];
+extern s32 gCharacterPortraitIndecies[4];
 extern s32 D_800F0BC0[4];
 extern s32 D_800F0BD0[4];
+extern s32 D_800F0C74;
 extern s32 D_800FE404;
 extern s32 D_800FE708;
 extern s32 D_800FE74C;
@@ -148,7 +150,44 @@ s32 func_8005119C(void) {
     return sum_1;
 }
 
+#ifdef NON_MATCHING
+s32 func_80051548(s32 arg0) {
+    s32 var_v1 = 0;
+    s32 i;
+    
+    if (D_800F0C74 == D_800F0B50) {
+        s32 a1 = D_800F0BD0[arg0] = D_80176838;
+
+        for (i = 0; i < 4; i++) {
+            D_800F0BD0[i]--;
+            if (D_800F0BD0[i] <= 0) {
+                D_800F0BD0[i] = 0;
+            }
+            if (D_800F0BD0[i] == 1) {
+                var_v1++;
+            }
+        }
+
+        D_80176838 = a1 - 1;
+    } else {
+        s32 temp_a2 = D_80176834;
+        D_80176838 = D_800F0BD0[arg0] = temp_a2;
+        D_80176834 = temp_a2 - 1;
+    }
+    
+    D_800F0C74 = D_800F0B50;
+    
+    if (var_v1 >= 2) {
+        return 0;
+    } else {
+        var_v1 = -1;
+        return var_v1;
+    }
+}
+#else
 #pragma GLOBAL_ASM("asm/nonmatchings/code/2C3B0/func_80051548.s")
+#endif
+
 
 f32 func_80051678(u8 arg0, f32* arg1, f32 arg2, f32 arg3) {
     f32 ret;
@@ -202,10 +241,39 @@ s32 func_8005177C(s32 arg0) {
     return activeCount;
 }
 
+void func_800517EC(void) {
+    s32 i;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/2C3B0/func_800517EC.s")
+    for (i = 0; i < 4; i++) {
+        if (gPlayerActors[i].active == 1) {
+            if (gSelectedCharacters[i] > 5) {
+                continue;
+            }
+            printUISprite(D_800F0BE4[D_800F0BE0[i]].unk_04, D_800F0BE4[D_800F0BE0[i]].unk_08, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, gCharacterPortraitIndecies[gSelectedCharacters[i]]);
+        }
+    }
+}
 
+#ifdef NON_MATCHING
+void func_80051910(s32 arg0) {
+    if (D_800F0BC0[arg0] == 0) {
+        s8 q = D_800F0B50 * 16;
+        SetTextGradient(255, q, 32, 255,
+                        255, 0,  0, 255,
+                        255, q, 32, 255,
+                        255, 0,  0, 255);
+    } else {
+        SetTextGradientFromPalette(5);
+    }
+    func_800610A8();
+    printNumber(D_800F0BE4[D_800F0BE0[arg0]].unk_0C, D_800F0BE4[D_800F0BE0[arg0]].unk_10, 0.0f, 0.6f, (D_800F0BE4[D_800F0BE0[arg0]].unk_00 / 1800) % 60, 2, 0);
+    PrintTextWrapper(D_800F0BE4[D_800F0BE0[arg0]].unk_0C + 18.0f, D_800F0BE4[D_800F0BE0[arg0]].unk_10 - 2.0f, 0.0f, 0.6f, "：", 1);
+    printNumber(D_800F0BE4[D_800F0BE0[arg0]].unk_0C + 28.0f, D_800F0BE4[D_800F0BE0[arg0]].unk_10, 0.0f, 0.6f, (D_800F0BE4[D_800F0BE0[arg0]].unk_00 / 30) % 60, 2, 0);
+    func_800610B8();
+}
+#else
 #pragma GLOBAL_ASM("asm/nonmatchings/code/2C3B0/func_80051910.s")
+#endif
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/2C3B0/func_80051B24.s")
 

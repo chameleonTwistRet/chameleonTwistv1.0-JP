@@ -336,7 +336,7 @@ extern u32 D_800FF8B8;
 extern s32 D_801B3168;
 extern u8 gSelectedCharacters[4];
 extern u8 D_800F0BE0[];
-extern unkStruct0 D_800F0BE4[];
+extern unkStruct11 D_800F0BE4[];
 extern unk801749B0 D_801749B0;
 extern s32 gCurrentStage;
 extern s32 D_80176F58;
