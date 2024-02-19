@@ -29,8 +29,16 @@ void func_800771DC(s32*, f32, f32, s32, s32, s32*, f32, f32, f32, f32);
 
 
 /* Ext Variables */
+extern s32 D_800F0B58;
+extern s32 D_800F0B5C;
+extern s32 D_800F0B68[4][4];
+extern s32 gCharacterPortraitIndecies[4];
+extern s32 D_800F0BC0[4];
+extern s32 D_800F0BD0[4];
+extern s32 D_800FE404;
 extern unk800FE564 D_800FE564[];
 extern s32 D_800FE708;
+extern s32 D_800FE74C;
 extern s32 D_80168EBC;
 extern s32 D_80168EC0;
 extern s32 D_80168FEC;
@@ -39,10 +47,6 @@ extern s32 D_8016911C;
 extern s32 D_80169120;
 extern s32 D_8016924C;
 extern s32 D_80169250;
-extern s32 D_800F0B68[4][4];
-extern s32 D_800F0BC0[4];
-extern s32 D_800F0B5C;
-extern s32 D_800FE404;
-extern s32 D_800FE74C;
+extern s32 D_801749AC;
 
 #endif  //_2C3B0_H_

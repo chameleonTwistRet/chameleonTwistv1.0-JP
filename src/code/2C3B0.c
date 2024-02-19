@@ -13,48 +13,6 @@ s32 D_80176838;
 s32 D_8017683C;
 unk80176840 D_80176840;
 
-
-typedef struct unk800FE564 {
-    u8 unk0;
-    u8 unk1;
-    u8 unk2;
-    u8 unk3;
-} unk800FE564;
-
-
-extern unk800FE564 D_800FE564[];
-
-void func_8005456C(f32, f32, f32, f32, f32, s32);
-void func_80073090(void);
-s32 func_8008BE14(void);
-void func_800A0D90(void);
-void func_800678EC(s32, s32, s32, s32, s32);
-void func_80058BE4(Mtx* arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, s32 arg7);
-void func_800536D8(void);
-void func_80059F28(f32, f32, f32, f32, f32, f32, f32, f32, s32);
-
-extern s32 D_800F0B58;
-extern s32 D_800F0B5C;
-extern s32 D_800F0B68[4][4];
-extern s32 gCharacterPortraitIndecies[4];
-extern s32 D_800F0BC0[4];
-extern s32 D_800F0BD0[4];
-extern s32 D_800F0C74;
-extern s32 D_800FE404;
-extern s32 D_800FE708;
-extern s32 D_800FE74C;
-extern s32 D_80168EBC;
-extern s32 D_80168EC0;
-extern s32 D_80168FEC;
-extern s32 D_80168FF0;
-extern s32 D_8016911C;
-extern s32 D_80169120;
-extern s32 D_8016924C;
-extern s32 D_80169250;
-extern s32 D_801749AC;
-
-
-
 void func_80050FB0(void) {
     s32 i;
 
@@ -240,8 +198,8 @@ s32 func_8005177C(s32 arg0) {
 void func_800517EC(void) {
     s32 i;
 
-    for (i = 0; i < 4; i++) {
-        if (gPlayerActors[i].active == 1) {
+    for (i = 0; i < PLAYERS_MAX; i++) {
+        if (gPlayerActors[i].active == TRUE) {
             if (gSelectedCharacters[i] > 5) {
                 continue;
             }
