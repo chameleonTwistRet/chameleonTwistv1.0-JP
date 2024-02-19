@@ -33,7 +33,7 @@ typedef struct unkarg0_2 {
 /* 0x18 */ f32 unk_1C;
 /* 0x18 */ f32 unk_20;
 /* 0x18 */ f32 unk_24;
-/* 0x18 */ f32 unk_28;
+/* 0x18 */ f32 UNK_28;
 } unkarg0_2;
 
 extern unkTextStruct D_800F0734;
@@ -118,9 +118,9 @@ void Debug_NOOP(void) {
     
 //     func_800610B8();
 //     for (i = 0; i < 4; i++) {
-//         SetTextGradient(D_80176810[0], D_80176814[0], D_80176818[0], 0xFF, D_80176810[1], D_80176814[1], D_80176818[1], 0xFF, D_80176810[2], D_80176814[2], D_80176818[2], 0xFF, D_80176810[3], D_80176814[3], D_80176818[3], 0xFF); printNumberWR(180.0f, (i + 2) * 0x20, 0.0f, 0.5f, D_80176810[i], 3, 0);
+//         SetTextGradient(D_80176810[0], D_80176814[0], D_80176818[0], 0xFF, D_80176810[1], D_80176814[1], D_80176818[1], 0xFF, D_80176810[2], D_80176814[2], D_80176818[2], 0xFF, D_80176810[3], D_80176814[3], D_80176818[3], 0xFF); PrintNumberWR(180.0f, (i + 2) * 0x20, 0.0f, 0.5f, D_80176810[i], 3, 0);
 //         SetTextGradient(D_80176810[0], D_80176814[0], D_80176818[0], 0xFF, D_80176810[1], D_80176814[1], D_80176818[1], 0xFF, D_80176810[2], D_80176814[2], D_80176818[2], 0xFF, D_80176810[3], D_80176814[3], D_80176818[3], 0xFF);
-//         printNumberWR(210.0f, (i + 2) * 0x20, 0.0f, 0.5f, D_80176814[i], 3, 0);
+//         PrintNumberWR(210.0f, (i + 2) * 0x20, 0.0f, 0.5f, D_80176814[i], 3, 0);
 //         SetTextGradient(D_80176810[0], D_80176814[0], D_80176818[0], 0xFF, D_80176810[1], D_80176814[1], D_80176818[1], 0xFF, D_80176810[2], D_80176814[2], D_80176818[2], 0xFF, D_80176810[3], D_80176814[3], D_80176818[3], 0xFF);
 //         printNumber(240.0f, (i + 2) * 0x20, 0.0f, 0.5f, D_80176818[i], 3, 0);
 //     }
@@ -152,16 +152,20 @@ void Debug_NOOP(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/debug/func_8004FA5C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/debug/func_8004FE90.s")
+void func_8004FE90(unkarg0_2* arg0, f32 arg1, f32 arg2, f32 arg3, f32* arg4, f32* arg5, f32* arg6) {
+    *arg4 = (arg0->unk_20 * arg3) + ((arg0->unk_00 * arg1) + (arg0->unk_10 * arg2));
+    *arg5 = (arg0->unk_24 * arg3) + ((arg0->unk_04 * arg1) + (arg0->unk_14 * arg2));
+    *arg6 = (arg0->UNK_28 * arg3) + ((arg0->unk_08 * arg1) + (arg0->unk_18 * arg2));
+}
 
 void func_8004FF1C(unkarg0_2* arg0, f32* arg1, f32* arg2) {
     *arg1 = (arg0->unk_24 * 100.0f) + (arg0->unk_14 * 0);
-    *arg2 = (arg0->unk_28 * 100.0f) + (arg0->unk_18 * 0);
+    *arg2 = (arg0->UNK_28 * 100.0f) + (arg0->unk_18 * 0);
 }
 
 void func_8004FF64(unkarg0_2* arg0, f32* arg1, f32* arg2) {
     *arg1 = (arg0->unk_20 * 100.0f) + (arg0->unk_00 * 0);
-    *arg2 = (arg0->unk_28 * 100.0f) + (arg0->unk_08 * 0);
+    *arg2 = (arg0->UNK_28 * 100.0f) + (arg0->unk_08 * 0);
 }
 
 void func_8004FFAC(unkarg0_2* arg0, f32* arg1, f32* arg2) {

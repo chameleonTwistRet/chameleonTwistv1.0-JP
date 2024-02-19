@@ -1,8 +1,4 @@
-#include "common.h"
-
-typedef struct unk80176840 {
-    char unk_00[0x10];
-} unk80176840;
+#include "2C3B0.h"
 
 u8 D_80176820;
 u8 D_80176821;
@@ -63,8 +59,8 @@ void func_80050FB0(void) {
     s32 i;
 
     if (D_801749B0.unk_04 == 0) {
-        for (i = 0; i < 4; i++) {
-            if (gPlayerActors[i].active == 1) {
+        for (i = 0; i < PLAYERS_MAX; i++) {
+            if (gPlayerActors[i].active == TRUE) {
                 if (gPlayerActors[i].pos.y < -10.0f) {
                     D_800F0BE4[D_800F0BE0[i]].unk_00++;
                     func_8005456C(gPlayerActors[i].pos.x, -300.0f, gPlayerActors[i].pos.z, gPlayerActors[i].pos.y, 200.0f, gSelectedCharacters[i]);
@@ -77,9 +73,9 @@ void func_80050FB0(void) {
 void func_800510E0(void) {
     s32 i;
 
-    for (i = 0; i < 4; i++) {
-        if (gPlayerActors[i].active == 1) {
-            if (++D_800F0B68[i][D_800F0BC0[i]] >= 100) {
+    for (i = 0; i < PLAYERS_MAX; i++) {
+        if (gPlayerActors[i].active == TRUE) {
+            if (++D_800F0B68[i][D_800F0BC0[i]] > 99) {
                 D_800F0B68[i][D_800F0BC0[i]] = 99;
             }
         }
@@ -226,7 +222,7 @@ s32 func_8005177C(s32 arg0) {
     s32 i;
     s32 activeCount = 0;
 
-    for (i = 0; i < 4; i++) {
+    for (i = 0; i < PLAYERS_MAX; i++) {
         if (gPlayerActors[i].active && (D_80168D78[i] != (((i & 0xFF) == 4) * 0))) {
             if (arg0 != i) {
                 activeCount++;
@@ -235,7 +231,7 @@ s32 func_8005177C(s32 arg0) {
             break;
         }
     }
-    if (i == 4) {
+    if (i == PLAYERS_MAX) {
         activeCount = -1;
     }
     return activeCount;
@@ -331,13 +327,12 @@ void func_80053CA0(void) {
 void func_8005423C(void) {
     s32 i;
     for (i = 0; i < 6; i++){
-        setPlayerContextEyes(i, 0, 0);
+        SetPlayerContextEyes(i, 0, 0);
     }
 }
 
 //https://decomp.me/scratch/YLdZC
 #pragma GLOBAL_ASM("asm/nonmatchings/code/2C3B0/func_80054284.s")
-void func_800771DC(s32*, f32, f32, s32, s32, s32*, f32, f32, f32, f32); /* extern */
 
 void func_8005444C(void) {
     if (D_801749B0.unk_04 == 1) {
@@ -392,21 +387,21 @@ void Process_Ranking(void) {
         D_800FE708 = 0;
         DMAStruct_Print();
         func_800A1EC4();
-        loadSprite(0xD4);
-        loadSprite(SPRITE_PORTRAITDAVY);
-        loadSprite(SPRITE_PORTRAITJACK);
-        loadSprite(SPRITE_PORTRAITFRED);
-        loadSprite(SPRITE_PORTRAITLINDA);
-        loadSprite(SPRITE_PORTRAITBLACK);
-        loadSprite(SPRITE_PORTRAITWHITE);
-        loadSprite(0x6E);
-        loadSprite(0xBD);
-        loadSprite(0xBE);
-        loadSprite(0xBF);
-        loadSprite(0xC0);
-        loadSprite(0xC1);
-        loadSprite(0xC2);
-        TaskInit();
+        LoadSprite(0xD4);
+        LoadSprite(SPRITE_PORTRAITDAVY);
+        LoadSprite(SPRITE_PORTRAITJACK);
+        LoadSprite(SPRITE_PORTRAITFRED);
+        LoadSprite(SPRITE_PORTRAITLINDA);
+        LoadSprite(SPRITE_PORTRAITBLACK);
+        LoadSprite(SPRITE_PORTRAITWHITE);
+        LoadSprite(0x6E);
+        LoadSprite(0xBD);
+        LoadSprite(0xBE);
+        LoadSprite(0xBF);
+        LoadSprite(0xC0);
+        LoadSprite(0xC1);
+        LoadSprite(0xC2);
+        CTTaskList_Init();
         D_80168DA0 = 4;
         gGameModeState++;
         UseFixedRNGSeed = FALSE;
@@ -442,20 +437,20 @@ void func_800557F8(void) {
         DMAStruct_Print();
         func_800A0D90();
 
-        for (i = 0; i < 4; i++) {
+        for (i = 0; i < PLAYERS_MAX; i++) {
             gPlayerActors[i].exists = gPlayerActors[i].active;
         }
 
-        loadSprite(0xCE);
-        loadSprite(0x6E);
-        loadSprite(0xD5);
-        loadPlayerEyes(CHARA_DAVY);
-        loadPlayerEyes(CHARA_JACK);
-        loadPlayerEyes(CHARA_FRED);
-        loadPlayerEyes(CHARA_LINDA);
-        loadPlayerEyes(CHARA_BLACK);
-        loadPlayerEyes(CHARA_WHITE);
-        TaskInit();
+        LoadSprite(0xCE);
+        LoadSprite(0x6E);
+        LoadSprite(0xD5);
+        LoadPlayerEyes(CHARA_DAVY);
+        LoadPlayerEyes(CHARA_JACK);
+        LoadPlayerEyes(CHARA_FRED);
+        LoadPlayerEyes(CHARA_LINDA);
+        LoadPlayerEyes(CHARA_BLACK);
+        LoadPlayerEyes(CHARA_WHITE);
+        CTTaskList_Init();
         D_80168DA0 = 4;
         gGameModeState++;
         UseFixedRNGSeed = FALSE;
@@ -488,8 +483,8 @@ void Process_Boot(void) {
         D_800FFDF4 = 1;
         DMAStruct_Print();
         func_800A1EC4();
-        loadSprite(94);
-        TaskInit();
+        LoadSprite(94);
+        CTTaskList_Init();
         func_8002E0CC();
         gGameModeState++;
         UseFixedRNGSeed = FALSE;
@@ -520,8 +515,8 @@ void Process_SunsoftLogo(void) {
         D_800FFDF4 = 1;
         DMAStruct_Print();
         func_800A1EC4();
-        loadSprite(0xCD);
-        TaskInit();
+        LoadSprite(0xCD);
+        CTTaskList_Init();
         func_8002E0CC();
         gGameModeState++;
         UseFixedRNGSeed = FALSE;

@@ -1,79 +1,4 @@
-#include "common.h"
-
-typedef struct temp_func_800B2AB4 {
-    char unk0[0x4];
-    s32 unk4;
-} temp_func_800B2AB4;
-
-typedef struct unk801B3178 {
-    char unk_00[0x18];
-    s32 unk_18;
-} unk801B3178;
-
-typedef struct unk8020D908 {
-    s32 unk_00;
-    char unk_04[0x54];
-} unk8020D908;
-
-typedef struct newStruct {
-    s32 dummy0[10]; // Placeholder for the first 10 elements
-    f32 field1;
-    f32 field2;
-} newStruct;
-
-typedef struct unkStruct20 {
-    char unk_00[0x25];
-    s8 unk25;
-    char unk_26[2];
-} unkStruct20;
-
-typedef struct unkStructGlobal1 {
-    char unk_00[0xAC];
-    s32 unkAC;
-    s32 unkB0;
-    s32 unkB4;
-    s32 unkB8;
-} unkStructGlobal1;
-
-extern PlayerActor gPlayerActors[4];
-extern unkStruct07 D_802019A8[];
-extern Collision gZoneCollisions[];
-extern CardinalDirection gCardinalDirections[5]; // including "NO_DIR"
-extern s32 sBossIDs[6];
-extern unk801B3178* D_801B3178;
-extern unk8020D908 D_8020D908;
-
-extern unkStruct20 D_802039B8[];
-extern s32 D_80206CF4;
-extern unkSpriteStruct5* D_80240898;
-
-void func_800BE2A4(s32);
-void func_800BE370(s32);
-void func_800BF268(s32);
-void func_800BF524(s32);
-s32 func_800C1550(void);
-s32* func_800B3424(s32);
-void func_800B5C60(tempStruct*);
-void func_800C2670(s32, PlayerActor*, s32);
-s32* func_800B3484(s32);
-void func_800314E4(Actor*);
-void func_800B35B0(s32);
-void func_800B255C(Vec3f*, Vec3f, Collider*);
-void func_800C2A00(void);
-void func_800CFDC8(PlayerActor*);
-s32 func_800B4A3C(unkItemStruct*);
-void func_800BE474(Tongue*);
-s32 IsPickup(Actor*);
-void pickup_collide_func(s32);
-void func_800B5D68(Collider*, s32);
-s32 IsNotPickup(Actor* actor);
-s32 func_800B07E4(void);
-
-extern f32 D_8010FB50;
-//extern s32 D_80168DFC;
-//extern s32 D_80168E14;
-extern s32 D_802065B8[];
-extern s32 D_80206958[];
+#include "8ADD0.h"
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800AF9D0.s")
 
@@ -143,8 +68,16 @@ void func_800B08C8(unkStructGlobal1* arg0) {
 void func_800B09C0(s32 arg0, newStruct* arg1) {
     func_800B56D4(arg1->field1, arg1->field2);
 }
+//unsure of arg1 type
+void func_800B09E8(unkStructGlobal1* arg0, unkBlackChameleon1* arg1) {
+    arg0->unkAC = arg1->unk38;    
+    if (func_800B34D0(arg0->unkAC) != 0) {
+        arg0->unkB0 = 0;
+        return;
+    }
+    arg0->unkB0 = 1;
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B09E8.s")
 
 void func_800B0A30(unkBlackChameleon0* arg0, unkBlackChameleon1* arg1) {
     gPlayerActors[1].active = gPlayerActors[1].exists = 1;
@@ -162,15 +95,13 @@ void func_800B0A30(unkBlackChameleon0* arg0, unkBlackChameleon1* arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B0B20.s")
 //deals with "shutters"
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/registShutter.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/RegistShutter.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B118C.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B12B4.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B1538.s")
-
-void func_800B5D68(Collider*, s32);                                 /* extern */
 
 void func_800B1DA0(Collider* arg0, s32 arg1) {
     func_800B5D68(arg0, 2);
@@ -221,8 +152,8 @@ void func_800B216C(Collider* arg0) {
     s32 ballCount = 0;
     s32 i;
 
-    for (i = 0, actorList = gActors; i < ACTORS_MAX; i++, actorList++) {
-        if (actorList->actorID == Billiards_Ball) {
+    for (i = 0, actorList = gActors; i < ARRAY_COUNT(gActors); i++, actorList++) {
+        if (actorList->actorID == BILLIARDS_BALL) {
             ballCount++;
         }
     }
@@ -280,7 +211,7 @@ void LimitFloat(f32* _float, f32 a, f32 b) {
  * @return: 1 if the actor is not a pickup, 0 otherwise.
  */
 s32 IsNotPickup(Actor* actor) {
-    return (actor->actorID != 0 && actor->actorID < R_Heart) ? 1 : 0;
+    return (actor->actorID != 0 && actor->actorID < R_HEART) ? 1 : 0;
 }
 
 /**
@@ -291,7 +222,7 @@ s32 IsNotPickup(Actor* actor) {
  * @return: 1 if the actor is a pickup, 0 otherwise.
  */
 s32 IsPickup(Actor* actor) {
-    return (actor->actorID >= R_Heart ) ? 1 : 0;
+    return (actor->actorID >= R_HEART ) ? 1 : 0;
 }
 
 /**
@@ -416,7 +347,7 @@ Vec3f* Vec3f_SetAtBossPos(Vec3f* arg0) {
     Vec3f_Zero(&pos); // Call Vec3f_Zero with the passed in pointer
 
     actors = gActors;
-    for (i = 0; i < ACTORS_MAX; i++, actors++) {
+    for (i = 0; i < ARRAY_COUNT(gActors); i++, actors++) {
         if (IsActorBoss(actors)) { // Check if the current actor is a boss
             pos.x = actors->pos.x; // Set x coordinate of pos to boss x coordinate
             pos.y = actors->pos.y; // Set y coordinate of pos to boss y coordinate
@@ -480,7 +411,7 @@ void func_800B2D34(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B2D78.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B2E40.s")
-void func_800B2E40(unkSpriteStruct5*);
+
 void func_800B3364(s32 arg0) {
     s32 i;
     unkSpriteStruct5** temp_s0;
@@ -496,9 +427,10 @@ void func_800B3364(s32 arg0) {
 }
 
 //rains 7 month old bool checker
-s32 isntNegative(s32 value) {
+s32 IsntNegative(s32 value) {
     return ( value >= 0 ) ? 1 : 0;
 }
+
 s32* func_800B3424(s32 arg0) {
     s32 var_v0;
     if (arg0 & 0x100) {
@@ -606,17 +538,17 @@ void func_800B3648(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B3698.s")
 
-void resetStageModels(void) {
+void ResetStageModels(void) {
     VertextBufferCount = 0;
     TriangleBufferCount = 0;
     ModelBufferCount = 0;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/registModel.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/RegistModel.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/moveModel.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/scaleModel.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/ScaleModel.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/RotateModel.s")
 
@@ -742,25 +674,25 @@ void func_800B40FC(void) {
 }
 
 /**
- * @brief This function returns a boolean value based on whether the carrot item is available in the stage passed in as an argument.
+ * @brief This function returns a boolean value based on whether the CARROT item is available in the stage passed in as an argument.
  * 
- * @param stage: The stage to check for the carrot item. 
- * @return true if the carrot item is available in the stage passed in as an argument, false otherwise.
+ * @param stage: The stage to check for the CARROT item. 
+ * @return true if the CARROT item is available in the stage passed in as an argument, false otherwise.
  */
 s32 StageCarrotAvailable(s32 stage) {
-    if (stage > STAGE_GHOST) { //not a stage with a carrot
+    if (stage > STAGE_GHOST) { //not a stage with a CARROT
         return FALSE;
     }
-    if (gCarrotBitfield & (1 << stage)) { //carrot already collected
+    if (gCarrotBitfield & (1 << stage)) { //CARROT already collected
         return FALSE;
     }
     return TRUE;
 }
 
 /**
- * @brief Adds a carrot to the global bitfield and increments the total number of carrots collected.
+ * @brief Adds a CARROT to the global bitfield and increments the total number of carrots collected.
  * 
- * @param stage: the index of the bitfield to add the carrot to. 
+ * @param stage: the index of the bitfield to add the CARROT to. 
  */
 void AddCarrot(s32 stage) {
     s32 i;
@@ -816,7 +748,7 @@ void setCrownPositionsForRoom(s32 arg0) {
 void func_800B4FCC(void) {
     s32 i;
     
-    for (i = 0; i < ACTORS_MAX; i++) {
+    for (i = 0; i < ARRAY_COUNT(gActors); i++) {
         if ((IsNotPickup(&gActors[i]) != 0) && (gActors[i].actorState == 0)) {
             func_800311C8(&gActors[i]);
             func_800313BC(i, Random(0, 0x168));
@@ -1032,7 +964,7 @@ void func_800BE2C0(void) {
     Actor* actorList = gActors;
     s32 i;
 
-    for (i = 0; i < ACTORS_MAX; i++, actorList++) {
+    for (i = 0; i < ARRAY_COUNT(gActors); i++, actorList++) {
         if ((IsNotPickup(actorList) != 0) && (actorList->actorState != 0)) {
             func_800311C8(actorList);
             func_800314E4(actorList);
@@ -1256,15 +1188,13 @@ void func_800C0CDC(PlayerActor* arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4) {
     func_800BFCD0();
 }
 
-void EraseRoomItem(s32);
-
 void func_800C0E78(s32 arg0) {
     s32 i;
     s32 temp = arg0;
 
     if (gZoneCollisions[arg0].unk60 != 0) {
         temp = 1;
-        for (i = 0; i < ACTORS_MAX; i++) {
+        for (i = 0; i < ARRAY_COUNT(gActors); i++) {
             if ((gActors[i].actorID != 0) && (gZoneCollisions[arg0].unk84 == gActors[i].actorID) && (gActors[i].actorState == 0)) {
                 temp = 0;
                 break;
@@ -1278,20 +1208,16 @@ void func_800C0E78(s32 arg0) {
     EraseRoomItem(arg0);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/checkDoor.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/CheckDoor.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C1204.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C1458.s")
 
-void func_800C1204(s32, PlayerActor*, s32, s32, s32);           /* extern */
-extern s32 D_802039B4;
-
 void func_800C1510(s32 arg0, s32 arg1) {
     D_802039B4 = 1;
     func_800C1204(arg0, &gPlayerActors[0], 1,  arg1, 1);
 }
-
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C1550.s")
 

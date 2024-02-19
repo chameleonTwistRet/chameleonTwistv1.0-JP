@@ -211,7 +211,7 @@ extern pole D_80170968[64]; //currently loaded pole structs
 extern unkStruct D_80172E88[]; //used by Red ants.
 extern s32 D_80174758[];
 extern s32 D_80174864;
-extern s32 D_80174878;                  // Level/Stage ID | loadStageByIndex()
+extern s32 D_80174878;                  // Level/Stage ID | LoadStageByIndex()
 extern s32 levelFlags[32]; //contextual-per-level flags
 
 extern s32 D_801748A0;

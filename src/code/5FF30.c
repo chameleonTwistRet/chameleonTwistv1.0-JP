@@ -1,110 +1,4 @@
-#include "common.h"
-#include "mod.h" //used to DMA mod stuff in if needed
-
-#define SEGMENTED_TO_VIRTUAL(x)  (void*)(SEGMENT_OFFSET_CUSTOM(x) + D_80100F50[SEGMENT_INDEX(x)].base_address)
-
-s32 func_8008D7FC(void);
-void func_80092474(CTTask*);
-void func_80094E0C(CTTask* arg0);
-void func_800A54F4(CTTask* arg0);
-
-typedef struct unkarg0 {
-    char unk_00[0x6A];
-    s16 unk6A;
-} unkarg0;
-
-typedef struct unk80100DF0 {
-    s16 unk_00;
-    s16 unk_02;
-    void* unk_04;
-} unk80100DF0; //sizeof 0x08
-
-typedef struct unk801FC9BC {
-    u16 unk_00;
-    char unk_02[0x0E];
-} unk801FC9BC;
-
-typedef struct unk801FFB88 {
-    s16 unk0;
-    s32 unk4;
-} unk801FFB88;
-
-extern unk801FFB88* D_801FFB88;
-
-extern unk801FC9BC D_801FC9BC[]; //probably not correct
-extern unk80100DF0 D_80100DF0[];
-extern s32 D_800F0704;
-extern SaveFile gSaveFile;
-extern SaveFile* gSaveFiles;
-extern segTableEntry gStageLoadData[];
-extern u8 D_800FF8DC;
-extern u8 D_800FF8E0;
-extern u8 D_800FF8E4;
-extern s32 perfectCode;
-extern OSContPad D_80175650[MAXCONTROLLERS];
-extern s32 D_801FCA08;
-extern s16 D_801FCA18;
-extern s16 D_80100D64[];
-extern f32 D_80108760;
-extern f32 D_80108764;
-extern f32 D_80108768;
-extern s32 gFramebufferIndex;
-extern graphicStruct gGraphicsList[2];
-extern unkStruct0 D_80101048;
-extern s32 D_800FF8E8;
-
-void func_8008EA60(s32, s32, s32, s32, s16*);
-void func_800A6C04(CTTask*);
-void printSelectedStageInfo(CTTask*);
-void func_800A6B80(CTTask*);
-void func_8008EB08(s32, s32, s32, s32, s16*, f32, f32, f32, f32, s32);
-void func_800A4904(CTTask*);
-void func_800A4BCC(void);
-void func_800A4868(CTTask*);
-void func_80080864(f32, f32, f32, f32, f32, f32, unk80100DF0*, s32);
-s32 RecordTime_ParseToSecs(s32*);
-void RecordTime_SetTo(s32, u8*);
-void SaveData_LoadFile(s32, SaveFile*);
-void func_800A25F0(s32, f32);
-void func_800A50B4(CTTask*);
-CTTask* Task_Alloc(s16, s32, s32);
-void SaveData_Wait(void);
-s32 SaveData_VerifyFile(u8*, SaveFile*);
-void SaveData_LoadFile(s32, SaveFile*);
-void func_800A96DC(CTTask*);
-void func_800A97E4(CTTask*);
-void func_8008E9AC(s32, s32, s32, s32, void*);
-void func_8002CB6C(Gfx*, void*, s32);
-void func_8002CBE8(s32); 
-void func_8004E784(contMain*, s32, s32, s32);
-void func_800AA844(s32);
-void func_800A0D90(void);
-void SaveData_ResetRecords(void);
-CTTask* func_800A4484(void);
-void SaveData_WriteFile(SaveFile*);
-void GameOverMaster(CTTask*);
-s32 func_8008EC90(void);
-void func_8007B174(void);
-void func_8008C440(void);
-void func_8008C464(void);
-void func_8008C4E8(void);
-void func_8008C610(void);
-void func_8008C698(void);
-void func_8008C6D4(void);
-void func_800A7844(void);
-s32 func_800A78D0(void);
-void func_80091A38(s32);
-
-extern OSMesg D_801B30A0;
-extern OSTimer D_801B3148;
-extern OSMesgQueue D_801192B8;
-extern OSMesgQueue D_801192D0;
-extern s16 D_800FF5C4;
-extern s32 D_800FF5C8;
-extern s16 D_800FF5CC;
-extern s16 D_800FF5D8;
-extern OSMesgQueue D_801B35A0;
-void Rumble_StopAll(void);
+#include "5FF30.h"
 
 void videoproc(s32 arg0) {
     s32 var_s2;
@@ -244,7 +138,7 @@ void func_80084FC0(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/Audio_UpdateOsc.s")
 
-void Audio_stopOsc(struct UnkList* arg0) {
+void Audio_StopOsc(struct UnkList* arg0) {
     arg0->unk0 = D_80200060.unk0;
     D_80200060.unk0 = arg0;
 }
@@ -263,7 +157,11 @@ void Audio_RomCopy(u32 devAddr, void* vAddr, u32 size) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/audioproc.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/Audio_StartThread.s")
+void Audio_StartThread(void) {
+    Audio_Init();
+    osCreateThread(&gAudioThread, 4, (void*) audioproc, NULL, &D_801FF710, 0x5A);
+    osStartThread(&gAudioThread);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80086C7C.s")
 
@@ -516,7 +414,7 @@ s32 func_8008873C(s32 arg0, s32 arg1, s32 arg2) {
 void func_8008A208(void) {
     if (D_80236974 == 0) {
         if (D_8020005A == 1) {
-            playBGM(BGM_JUNGLE1);
+            PlayBGM(BGM_JUNGLE1);
         }
     } else if (((s32) D_8017499C % 300) == 0x12B) {
         PLAYSFX(Random(0, 5) + 0x4F, 1, 0x10);
@@ -536,7 +434,7 @@ void func_8008A2B0(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008B458.s")
 
-s32 BGMLoad(void) {
+s32 LoadBGM(void) {
     //possibly a struct on the stack?
     s32 sp24;
     s32 sp28; //unused
@@ -630,7 +528,7 @@ s32 BGMLoad(void) {
     return 1;
 }
 //uses "BGM_*" #defines
-s32 playBGM(s32 arg0) {
+s32 PlayBGM(s32 arg0) {
     if ((arg0 >= gBGMALSeqFileP->seqCount) || (arg0 < 0)) {
         return -1;
     }
@@ -665,7 +563,7 @@ s32 func_8008BE14(void) {
     return 0;
 }
 
-s32 BGMStop(void) {
+s32 StopBGM(void) {
     D_801FCA24 = 0;
     if (gBGMPlayerP->state == AL_PLAYING) {
         alCSPStop(gBGMPlayerP);
@@ -737,7 +635,7 @@ void func_8008C1C8(s32* arg0) {
 }
 
 void PlayStageBGM(s32 arg0) {
-    playBGM(sStageBGMs[arg0]);
+    PlayBGM(sStageBGMs[arg0]);
 }
 
 void func_8008C35C(s32 arg0) {
@@ -838,12 +736,6 @@ void func_8008C750(void) {
     D_800FF8B4 = osGetTime() - D_800FF8B8;
 }
 
-extern Mtx D_80129730[];
-typedef u32 uintptr_t;
-extern char D_8010D97C[];
-extern char D_8010D98C[];
-extern char D_8010D990[];
-
 s32 PutDList(Mtx** arg0, Gfx** arg1, Gfx* arg2) {
     Mtx* sp64;
     Gfx* sp60;
@@ -899,32 +791,69 @@ void strcpy(u8* arg0, u8* arg1) {
     while ((*arg0++ = *arg1++)) {}
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/Task_Run.s")
-
-void Task_Unlink(CTTask* arg0) {
-    CTTask* v0 = arg0->next;
-    CTTask* v1 = arg0->unk_10;
-
-    v0->unk_10 = v1;
-    v1->next = v0;
-    arg0->unk_00 = 0;
+/**
+ * @brief Run a CTTask's assigned function
+ * 
+ * @param task 
+ */
+void CTTask_Run(CTTask* task) {
+    void (*temp)(CTTask*); //?
+    void (*taskFunc)(CTTask*);
+    
+    temp = taskFunc = task->function;
+    if (taskFunc == 0) {
+        DummiedPrintf("NULL POINTER %d\n", task->type);
+        taskFunc = task->function;
+    }
+    // If function ptr is not in virtual memory space
+    else if ((u32)taskFunc < 0x80000000U) {
+        DummiedPrintf("BAD POINTER %d, %X\n", task->type, (u32)task->function);
+        taskFunc = task->function;
+    }
+    
+    if ((u32)taskFunc & 1) {
+        DummiedPrintf("ERROR POINTER %X\n", task);
+    }
+    
+    taskFunc(task);
 }
 
-void Task_Clear(void) {
+
+/**
+ * @brief Remove a CTTask from the linked list by linking its surrounding tasks together (sets task to inactive)
+ * 
+ * @param taskToRemove 
+ */
+void CTTask_Unlink(CTTask* taskToRemove) {
+    CTTask* nextTask = taskToRemove->next;
+    CTTask* prevTask = taskToRemove->prev;
+
+    nextTask->prev = prevTask;
+    prevTask->next = nextTask;
+    taskToRemove->active = 0;
+}
+
+/**
+ * @brief Clear the CTTask linked list by freeing all tasks
+ */
+void CTTaskList_Clear(void) {
     CTTask* prev;
-    CTTask* cur = gCTTaskHead->next;
+    CTTask* curr = gCTTaskHead->next;
     
-    while (cur->next != 0) {
-        prev = cur;
-        Task_Unlink(cur);
-        cur = cur->next;
-        free(prev);
+    while (curr->next != 0) {
+        prev = curr;
+        CTTask_Unlink(curr);
+        curr = curr->next;
+        Free(prev);
     }
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/Task_ClearMost.s")
 
-void TaskInit(void) {
+/**
+ * @brief Initialize the CTTask linked list
+ */
+void CTTaskList_Init(void) {
     gCTTaskHead = mallloc(sizeof(CTTask));
     gCTTaskTail = mallloc(sizeof(CTTask));
     if (gCTTaskHead == NULL) {
@@ -933,35 +862,26 @@ void TaskInit(void) {
     if (gCTTaskTail == NULL) {
         DummiedPrintf("TaskInit()メモリ足りません\n", &gCTTaskTail);
     }
-    gCTTaskHead->unk_02 = 0;
+    gCTTaskHead->type = 0;
     gCTTaskHead->next = gCTTaskTail;
-    gCTTaskHead->unk_10 = NULL;
-    gCTTaskTail->unk_02 = 0xFF;
+    gCTTaskHead->prev = NULL;
+    gCTTaskTail->type = 0xFF;
     gCTTaskTail->next = NULL;
-    gCTTaskTail->unk_10 = gCTTaskHead;
+    gCTTaskTail->prev = gCTTaskHead;
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_8010DA14.s")
 
-// Swap struct members
-typedef struct unk_func_8008CE94 {
-    s16 unk0;
-    s32 unk4;
-    s32 unk8;
-    struct unk_func_8008CE94* unkC; //does this actually point the same struct data type?
-    struct unk_func_8008CE94* unk10; //does this actually point the same struct data type?
-} unk_func_8008CE94;
+void CTTask_Unlink_2(CTTask* task) {
+    CTTask* nextTask;
+    CTTask* prevTask;
 
-void func_8008CE94(unk_func_8008CE94* arg0) {
-    unk_func_8008CE94* temp_v0;
-    unk_func_8008CE94* temp_v1;
-
-    temp_v0 = arg0->unkC;
-    temp_v1 = arg0->unk10;
-    temp_v0->unk10 = temp_v1;
-    temp_v1->unkC = temp_v0;
-    arg0->unk0 = 0;
-    free(arg0);
+    nextTask = task->next;
+    prevTask = task->prev;
+    nextTask->prev = prevTask;
+    prevTask->next = nextTask;
+    task->active = 0;
+    Free(task);
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/bzero32.s")
@@ -970,7 +890,11 @@ void func_8008CE94(unk_func_8008CE94* arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008D060.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008D114.s")
+void func_8008D114(Gfx* arg0, s32 arg1) {
+    Video_SetTask((void*)arg0, arg0, arg1); //TODO: fix type of arg0?
+    osWritebackDCache(arg0, 0x1FB00);
+    func_80084F80(&D_800F04E0[arg1], arg1);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008D168.s")
 
@@ -1021,9 +945,9 @@ s32 func_8008EC90(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008ECB8.s")
 
-void func_8008EF78(CTTask* arg0) {
+void func_8008EF78(CTTask* task) {
     func_8008ECB8();
-    Task_Unlink(arg0);
+    CTTask_Unlink(task);
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008EFA0.s")
@@ -1081,7 +1005,7 @@ s32 func_8008FB4C(s32 arg0) {
     }
 }
 
-s32 getBaseStage(u32 arg0) {
+s32 GetBaseStage(u32 arg0) {
     s32 ret;
 
     switch (arg0) {
@@ -1134,33 +1058,33 @@ void func_8008FD68(void) {
     if (D_800F06EC >= 0) {
         D_80174878 = D_800F06EC;
     }
-    D_80174878 = loadStageByIndex(D_80174878);
+    D_80174878 = LoadStageByIndex(D_80174878);
     func_8002E0CC();
     InitField();
     func_80056EB4();
     aa1_InitHead();
     func_8005C9B8();
     func_80084788();
-    TaskInit();
+    CTTaskList_Init();
 }
 
 void func_8008FDF8(void) {
 }
 
 void func_8008FE00(void) {
-    loadPlayerEyes(*gSelectedCharacters);
-    setPlayerContextEyes(*gSelectedCharacters, 0, 0);
-    freePlayerEyes(*gSelectedCharacters);
-    loadPlayerEyes(*gSelectedCharacters);
+    LoadPlayerEyes(*gSelectedCharacters);
+    SetPlayerContextEyes(*gSelectedCharacters, 0, 0);
+    FreePlayerEyes(*gSelectedCharacters);
+    LoadPlayerEyes(*gSelectedCharacters);
 }
 
 void func_8008FE50(void) {
     s32 i;
     
     for (i = 0; i < 6; i++) {
-        loadPlayerEyes(i);
-        setPlayerContextEyes(i, 0, 0);
-        freePlayerEyes(i);
+        LoadPlayerEyes(i);
+        SetPlayerContextEyes(i, 0, 0);
+        FreePlayerEyes(i);
     }
 }
 
@@ -1291,7 +1215,7 @@ s32 func_80090B10(s32 time, s32 arg1) {
     s32 temp_v0_2;
     s32 ret = 0;
     
-    temp_v0 = getBaseStage(arg1);
+    temp_v0 = GetBaseStage(arg1);
     
     if (temp_v0 < 0) {
         return 0;
@@ -1366,11 +1290,11 @@ void func_80092324(s32 arg0) {              // Cy
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009236C.s")
 
-void func_8009244C(Unk_func_80094DBC_1* arg0) {
-    if (arg0->unk60 != 0) {
-        arg0->unk60 -= 1;
+void func_8009244C(CTTask* task) {
+    if (task->unk60 != 0) {
+        task->unk60 -= 1;
     } else {
-        arg0->unk8 = &func_80092474;
+        task->function = &func_80092474;
     }
 }
 
@@ -1386,7 +1310,17 @@ void func_8009244C(Unk_func_80094DBC_1* arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800927E8.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80092864.s")
+                   
+void func_8009288C(void);
+typedef struct unkArg0 {
+    char unk_00[8];
+    void* unk8;
+} unkArg0;
+void func_80092864(unkArg0* arg0) {
+    arg0->unk8 = &func_8009288C;
+    func_8008D7FC();
+}
+
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009288C.s")
 
@@ -1412,13 +1346,13 @@ void func_800928F0(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80092F44.s")
 
-void func_80092FB8(Unk_func_80094DBC_1* arg0) {
-  Unk_func_80094DBC_1* sp1C;
+void func_80092FB8(CTTask* task) {
+    CTTask* taskNext;
 
-    sp1C = arg0->unk58;
+    taskNext = task->unk58;
   
     if (func_8008D7FC() != 0) {
-        sp1C->unk54 = 6;
+        taskNext->unk54 = 6;
     }
 }
 
@@ -1447,7 +1381,15 @@ void func_800935F8(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009384C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800938B0.s")
+void func_800938B0(CTTask* arg0) {
+    CTTask* task;
+
+    task = arg0->unk58;
+    if ((arg0->unk54 == 6) && (task->unk54 < 7)) {
+        task->unk54 = 7;
+    }
+}
+
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800938E4.s")
 
@@ -1513,20 +1455,29 @@ void func_800945E4(CTTask* arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80094C84.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80094D64.s")
-
-void func_80094DBC(Unk_func_80094DBC_1* arg0) {
-    s16 temp_v0;
-    Unk_func_80094DBC_1* temp;
-    
-    func_8008D7FC();
-     if (arg0->unk5C != 0) {
-        arg0->unk5C--;
+void func_80094D64(CTTask* arg0) {
+    if (arg0->unk54 == 1) {
+        arg0->function = func_80094DBC;
+        arg0->unk44 = 30;
+        arg0->unk48 = -1;
+        arg0->unk_5C = 8;
         return;
     }
-    temp = arg0->unk58;
-    temp->unk54 = 7;
-    arg0->unk8 = &func_80094E0C;
+    arg0->unk44 = 28;
+    func_8008D7FC();
+}
+
+void func_80094DBC(CTTask* task) {
+    CTTask* taskUnk;
+    
+    func_8008D7FC();
+     if (task->unk_5C != 0) {
+        task->unk_5C--;
+        return;
+    }
+    taskUnk = task->unk58;
+    taskUnk->unk54 = 7;
+    task->function = &func_80094E0C;
 }
 
 void func_80094E0C(CTTask* arg0) {
@@ -1543,7 +1494,18 @@ void func_80094E0C(CTTask* arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80095264.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80095500.s")
+void func_80095500(CTTask* arg0) {
+    CTTask* temp;
+    
+    if (arg0->unk_5C != 0) {
+        arg0->unk_5C--;
+        return;
+    }
+    temp = arg0->unk58;
+    temp->unk54 = 1;
+    CTTask_Unlink(arg0);
+}
+
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/Process_PreCredits.s")
 
@@ -1600,7 +1562,7 @@ s32 func_8009603C(s32 segmentID, s32 arg1) {
     size = (u32) segment->ramAddrEnd - (u32) segment->ramAddrStart;
     temp_s3->base_address = arg1 - size;
     temp_s3->unk4 = (u32) arg1;
-    temp_s0 = dma_copy(segment->romAddrStart, (void* ) temp_s3->base_address, size);
+    temp_s0 = DMA_Copy(segment->romAddrStart, (void* ) temp_s3->base_address, size);
     temp_s3->unk4 = temp_s3->base_address + size;
     if (temp_s0 < 0) {
         DummiedPrintf("エラー %d\n", temp_s0);
@@ -1618,7 +1580,7 @@ u32 func_80096128(s32 stageToLoad, s32 inpAddr) {
     
     D_80100F50[0x3].base_address = inpAddr - size;
     D_80100F50[0x3].unk4 = D_80100F50[0x3].base_address + size;
-    dmaResult = dma_copy(segData->romAddrStart, (void*)D_80100F50[0x3].base_address, size);
+    dmaResult = DMA_Copy(segData->romAddrStart, (void*)D_80100F50[0x3].base_address, size);
     if (dmaResult < 0) {
         DummiedPrintf("エラー %d\n", dmaResult);    //Error
         return 0;
@@ -1631,7 +1593,7 @@ u32 func_80096128(s32 stageToLoad, s32 inpAddr) {
 }
 
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/loadStageByIndex.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/LoadStageByIndex.s")
 
 void func_800966E0(void) {
     D_80100F50[1].base_address = (u32)&D_803B5000 - _ALIGN((u32)&D_1045C00 - (u32)&D_1000000, 16);
@@ -1640,16 +1602,6 @@ void func_800966E0(void) {
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80096748.s")
-
-typedef struct StageSelectionData {
-    u8 temp0;
-    char unk_02[0x17];
-} StageSelectionData;
-
-extern StageSelectionData D_8010026E[];
-extern u8 D_80200B68;
-//extern u8 gLevelAccessBitfeild;
-extern s16 sDebugLevelAccess;
 
 s32 CanAccessStage(s32 stageIndex) {
     s32 trueBits;
@@ -1744,7 +1696,10 @@ f32 func_80096898(u16 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80097498.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80097508.s")
+void func_80097508(CTTask* arg0) {
+    func_8008F7A4(3, 8);
+    arg0->function = &func_80097540;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80097540.s")
 
@@ -1754,19 +1709,8 @@ f32 func_80096898(u16 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/Process_StageSelect.s")
 
-void func_80096D40(u16);
-typedef struct unkStruct2 {
-    char unk_00[0x7A];
-    u16 unk7A;
-} unkStruct2;
-
-typedef struct unkStruct1 {
-    char unk_00[0x58];
-    unkStruct2* unk58;
-} unkStruct1;
-
-void func_80097CF8(unkStruct1* arg0) {
-    unkStruct2* temp = arg0->unk58;
+void func_80097CF8(unk80097CF8* arg0) {
+    unk80097CF8_2* temp = arg0->unk58;
     func_80096D40(temp->unk7A);
 }
 
@@ -1869,7 +1813,18 @@ void func_800998CC(CTTask* arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009ABF4.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009AC74.s")
+void func_8009AC74(CTTask* arg0) {
+    func_80099AF4();
+
+    if (arg0->unk54 == 2) {
+        arg0->function = func_8009ACC8;
+        return;
+    }
+    if (arg0->unk54 == 0) {
+        arg0->function = func_8009ABF4;
+    }
+}
+
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009ACC8.s")
 
@@ -1938,10 +1893,7 @@ void func_8009BDC0(CTTask* arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009BEC4.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009BFA0.s")
-void func_8009BA38(CTTask*);
-void func_8009C33C(CTTask*);
-void func_8009C038(CTTask*);
-void func_80099AF4(void);
+
 void func_8009BFF8(CTTask* arg0) {
     func_80099AF4();
     SaveData_ClearRecords();
@@ -1976,14 +1928,14 @@ void func_8009C2FC(CTTask* arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009C6AC.s")
 
-void func_8009C644 (CTTask*);
+void func_8009C644(CTTask*);
 
-void func_8009C700(Unk_func_80094DBC_1* arg0) {
-    if (arg0->unk68--) {
+void func_8009C700(CTTask* task) {
+    if (task->unk_68--) {
         return;
     } else {
-        DummiedPrintf("元に戻る\n", arg0);
-        arg0->unk8 = &func_8009C644;
+        DummiedPrintf("元に戻る\n", task);
+        task->function = &func_8009C644;
     }
 }
 
@@ -2039,7 +1991,15 @@ void func_8009D19C(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009E24C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009E2B0.s")
+void func_8009E2B0(CTTask* arg0) {
+    arg0->unk44 = 3;
+    arg0->pos.y += 4.0f;
+    if (arg0->pos.y >= 128.0f) {
+        arg0->pos.y = 128.0f;
+        arg0->function = func_8009DE1C;
+    }
+}
+
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009E300.s")
 
@@ -2167,11 +2127,11 @@ void func_800A10E8(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A18C8.s")
 
-void func_800A191C(CTTask* arg0) {
-    CTTask* nextThing = arg0->unk58;
+void func_800A191C(CTTask* task) {
+    CTTask* unkTask = task->unk58;
     
-    if (!(arg0->unk60-- > 0)) {
-        nextThing->unk54 = 1;
+    if (!(task->unk60-- > 0)) {
+        unkTask->unk54 = 1;
     }
 }
 
@@ -2220,7 +2180,7 @@ void PrintPerfectCode(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_8010E9C8.s")
 
-void func_800A250C(unkarg0* arg0) {
+void func_800A250C(unk800A250C* arg0) {
     if (arg0->unk6A > 0) {
         SetTextGradient(0x6EU, 0xD2U, 0xFF, 0xFF, 0, 0xDE, 0, 0xFF, 0x6E, 0xD2, 0xFF, 0xFF, 0, 0xDE, 0, 0xFF);
         PrintTextWrapper(72.0f, 176.0f, 0.0f, 1.0f, "ＰＲＥＳＳ  ＳＴＡＲＴ", 1);
@@ -2274,7 +2234,18 @@ void func_800A2B9C(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A39EC.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A3DC0.s")
+void func_800A4074(CTTask*);                        /* extern */
+
+void func_800A3DC0(CTTask* arg0) {
+    CTTask* temp_v0;
+
+    temp_v0 = Task_Alloc(1, 0x64, 0);
+    temp_v0->unk58 = arg0;
+    temp_v0->function = func_800A4074;
+    temp_v0->unk_62 = 0;
+ 
+}
+
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/PrintDataClearConfirm.s")
 
@@ -2284,6 +2255,7 @@ void func_800A2B9C(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A4320.s")
 
+// Create Game Over Task?
 CTTask* func_800A4484(void) {
     CTTask* task = Task_Alloc(1, 100, NULL);
     
@@ -2349,7 +2321,7 @@ void func_800A4868(CTTask* arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A4A10.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/task_GameOverLetter.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/Task_GameOverLetter.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A4BCC.s")
 
@@ -2367,8 +2339,8 @@ void Process_GameOver(void) {
             DummiedPrintf("ゲームオーバープロセス\n");
             DMAStruct_Print();
             func_800A0D90();
-            TaskInit();
-            loadSprite(0x5E);
+            CTTaskList_Init();
+            LoadSprite(0x5E);
             D_80168DA0 = 4;
             gGameModeState++;
             UseFixedRNGSeed = 0;
@@ -2378,8 +2350,8 @@ void Process_GameOver(void) {
             D_801FC9AC = 0;
             func_8008F114();
             func_8008FE00();
-            loadPlayerEyes(*gSelectedCharacters);
-            setPlayerContextEyes(*gSelectedCharacters, 2, 0);
+            LoadPlayerEyes(*gSelectedCharacters);
+            SetPlayerContextEyes(*gSelectedCharacters, 2, 0);
             break;
         case 1:
             func_800A4484();
@@ -2416,12 +2388,12 @@ CTTask* func_800A5060(void){
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A5444.s")
 
-void func_800A5488(Unk_func_80094DBC_1* arg0) {
-    if (arg0->unk62 != -1) {
-        arg0->unk64 = 0;
-        func_8008E9AC(0x20, 0, 0, 0, &arg0->unk64);
-        arg0->unk8 = &func_800A54F4;
-        arg0->unk54 = 2;
+void func_800A5488(CTTask* task) {
+    if (task->unk_62 != -1) {
+        task->unk_64 = 0;
+        func_8008E9AC(0x20, 0, 0, 0, &task->unk_64);
+        task->function = &func_800A54F4;
+        task->unk54 = 2;
     }
 }
 
@@ -2446,9 +2418,9 @@ void Process_JSSLogo(void) {
         DummiedPrintf("ロゴプロセス\n"); //Logo process
         DMAStruct_Print();
         func_800A1EC4();
-        loadSprite(0x5C);
-        loadSprite(0x5D);
-        TaskInit();
+        LoadSprite(0x5C);
+        LoadSprite(0x5D);
+        CTTaskList_Init();
         D_80168DA0 = 4;
         UseFixedRNGSeed = 0;
         D_800FFDF0 = 3;
@@ -2475,9 +2447,6 @@ void Process_JSSLogo(void) {
     func_8008C094();
 }
 
-extern s16 D_80100EB4[];
-extern s16 D_801B317C;
-
 void func_800A56D4(void) {
     D_80100F50[1].base_address = (u32)&D_803B5000 - _ALIGN((u32)&D_1045C00 - (u32)&D_1000000, 16);
     D_80100F50[1].unk4 = (u32)&D_803B5000;
@@ -2486,9 +2455,9 @@ void func_800A56D4(void) {
     func_8005C9B8();
     aa1_InitHead();
     func_80084788();
-    loadSprite(D_80100EB4[D_801B317C]);
-    loadSprite(0x4D);
-    loadSprite(0x4E);
+    LoadSprite(D_80100EB4[D_801B317C]);
+    LoadSprite(0x4D);
+    LoadSprite(0x4E);
 }
 
 s32 func_800A5778(s32 arg0) {
@@ -2536,7 +2505,7 @@ s32 func_800A5778(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_8010EC30.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/printSelectedStageInfo.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/PrintSelectedStageInfo.s")
 
 void func_800A6B34(void) {
     CTTask* task;
@@ -2557,9 +2526,9 @@ void func_800A6B80(CTTask* arg0) {
     arg0->unk_64 = 0;
     
     func_8008EA60(0x20, 0, 0, 0, &arg0->unk_64);
-    Task_Alloc(1, 0x62, 0)->function = printSelectedStageInfo;
+    Task_Alloc(1, 0x62, 0)->function = PrintSelectedStageInfo;
 }
-void func_800A6CF4(CTTask*);
+
 void func_800A6C04(CTTask* arg0) {
     if (func_8008EC90() != 0) {
         if ((D_801FC9BC[arg0->unk_62].unk_00 & 0x1000) || (D_801FC9BC[arg0->unk_62].unk_00 & 0x8000)) {
@@ -2620,7 +2589,7 @@ s32 func_800A72E8(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A73EC.s")
 
-s32 dma_copy(void* arg0, void* arg1, s32 size) {
+s32 DMA_Copy(void* arg0, void* arg1, s32 size) {
     s32 dmaSizeCalc;
     s32 j;
     s32 i;
@@ -2744,6 +2713,7 @@ s32 func_800A7A18(u32 arg0) {
     }
     return j;
 }
+
 //this takes (u32)osGetTime() as the arg
 s32 GeneratePerfectCode(u32 time) {
     s32 temp_v0;
@@ -2864,7 +2834,6 @@ s32 SaveData_FileChecksum(u8 *saveData) {
     
     return checksum;
 }
-
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/SaveData_RecordChecksum.s")
 
@@ -3117,8 +3086,8 @@ void SaveData_ClearRecords(void) {
 void func_800A93AC(contMain* arg0) {
     s32 i;
 
-    for (i = 0; i < 4; i++) {
-        if (gPlayerActors[i].active == 0) {
+    for (i = 0; i < PLAYERS_MAX; i++) {
+        if (gPlayerActors[i].active == FALSE) {
             continue;
         }
         DummiedPrintf("{0x%04X,%d,%d},\n", D_80175650[i].button, D_80175650[i].stick_x, D_80175650[i].stick_y);
@@ -3128,14 +3097,14 @@ void func_800A93AC(contMain* arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A9450.s")
 
 void func_800A9690(void) {
-    CTTask* temp_v0 = Task_Alloc(1, 100, NULL);
+    CTTask* task = Task_Alloc(1, 100, NULL);
 
-    if (temp_v0 == NULL) {
+    if (task == NULL) {
         //"エラー\n"("error")
         DummiedPrintf("エラー\n");
         while (1);
     }
-    temp_v0->function = &func_800A96DC;
+    task->function = &func_800A96DC;
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A96DC.s")
@@ -3177,7 +3146,6 @@ void func_800A97E4(CTTask* arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A9F84.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800AA3F0.s")
-
 
 /**
  * @brief 
@@ -3258,7 +3226,7 @@ void func_800AAB0C(s32 arg0) {
     s32 dmaSize;
     s32 i;
     DMAStruct_Print();
-    loadStageByIndex(arg0);
+    LoadStageByIndex(arg0);
     DMAStruct_Print();
     _bzero(gPlayerActors, sizeof(gPlayerActors));
     _bzero(&gCamera[0], sizeof(Camera));
@@ -3276,7 +3244,7 @@ void func_800AAB0C(s32 arg0) {
     func_80084788();
     func_80055FA4();
 
-    for (i = 0; i < 4; i++) {
+    for (i = 0; i < 4; i++) { //TODO: unhardcode this for loop
         D_801756C0[i] = 0;
         D_80175678[i] = 0;
     }
@@ -3289,7 +3257,7 @@ void func_800AAB0C(s32 arg0) {
         //"バッファがない\n"("no buffer")
         osSyncPrintf("バッファがない\n", D_80200C8C);
     } else {
-        dmaResult = dma_copy(&D_AB10B0, D_80200C8C, dmaSize);
+        dmaResult = DMA_Copy(&D_AB10B0, D_80200C8C, dmaSize);
         if (dmaResult < 0) {
             //"データ読み込み失敗\n" ("data read failure")
             osSyncPrintf("データ読み込み失敗\n");
@@ -3338,7 +3306,14 @@ s32 func_800AD980(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800ADC50.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800ADE24.s")
+void func_800ADE24(void) {
+    Controller_Zero(&D_801FC9B8);
+    Controller_Zero(gContMain);
+    *D_801756C0 = 0;
+    *D_80175678 = 0;
+    D_80200CA0 = 0;
+    D_80200CA8 = 0;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800ADE70.s")
 

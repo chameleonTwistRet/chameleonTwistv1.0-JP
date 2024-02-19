@@ -1,47 +1,4 @@
-#include "common.h"
-
-#define SEGMENTED_TO_VIRTUAL(x)  (void*)(SEGMENT_OFFSET_CUSTOM(x) + D_80100F50[SEGMENT_INDEX(x)].base_address)
-
-Gfx* func_8002C4E8(graphicStruct*, s32, s32);
-
-void func_8002CB6C(Gfx*, graphicStruct*, s32);
-void func_8002CBE8(s32);
-void func_8002CDBC(contMain*);
-void func_8004BC48(contMain*);
-void func_8004CD9C(s32, void*);
-void func_8004DDE0(void);
-void func_8004E784(contMain*, u32, s32*, contMain*);
-void func_80054864(void);
-
-extern graphicStruct gGraphicsList[2];
-
-extern s32 gFramebufferIndex;
-extern s32 D_800F066C;
-extern s32 sDebugMultiplayer;
-extern s8 D_800FF8DC;
-extern u8 D_800FF8E0[];
-extern u8 D_800FF8E4[];
-extern s32 D_80174980;
-extern s32 D_801749AC;
-
-extern OSTask D_800F04E0[2];
-
-extern OSMesgQueue D_801192D0;
-extern OSMesgQueue D_801192E8;
-
-
-void func_80059254(Mtx*, f32, f32, f32, f32, f32, f32, s32);
-void func_800598C4(Mtx*, f32, f32, f32, f32, f32, f32, s32);
-void func_8005747C(f32, f32, f32, f32, f32, f32, s32);
-void func_8008C494(void);
-void func_8008C4B8(void);
-void func_8008C554(void);
-void osViSwapBuffer(void* frameBufPtr);
-s32 Controller_Init(void);
-void Video_StartThread(void);
-void Audio_StartThread(void);
-s32 func_800AF604(f32, f32, f32, f32);
-void __osInitialize_common(void);
+#include "1050.h"
 
 void bootproc(void) {
     __osInitialize_common();
@@ -74,7 +31,7 @@ s32 func_80026C78(Actor* actor) {
 }
 
 
-//adjustment for BL_Boss_Segment
+//adjustment for BL_BOSS_SEGMENT
 void func_80026CA8(graphicStruct *arg0, Mtx *arg1, u32 arg2, f32 arg3, s32 arg4) {
     f32 xPos = 0.0f;
     f32 yPos = 0.0f;
@@ -250,7 +207,7 @@ Gfx* func_8002CCA0(void* arg0, s32 arg1) {
 }
 
 void func_8002CCDC(void) {
-    BGMStop();
+    StopBGM();
     func_80088198();
 }
 
@@ -262,7 +219,7 @@ void func_8002CD04(void) {
         D_80174878 = D_800F06EC;
     }
 
-    D_80174878 = loadStageByIndex(D_80174878);
+    D_80174878 = LoadStageByIndex(D_80174878);
     func_8002E0CC();
     InitField();
     func_8002CCDC();
@@ -286,7 +243,7 @@ void func_8002CDBC(contMain* controllers) {
         return;
     }
 
-    for (i = 0; i < 4; i++) {
+    for (i = 0; i < MAXCONTROLLERS; i++) {
         if (D_80168D78[i] != 0) {
             D_80168D78[i] = 1;
             func_8004CD9C(i, &controllers[i].buttons0);
@@ -304,7 +261,7 @@ void func_8002CE54(void) {
     Controller_StartRead();
     func_8002CB6C(0, &gGraphicsList[gFramebufferIndex], gFramebufferIndex);
     
-    for (i = 0; i < 4; i++) {
+    for (i = 0; i < MAXCONTROLLERS; i++) {
         Controller_Zero(&sp28[i]);
     }
     

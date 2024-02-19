@@ -316,7 +316,7 @@ typedef struct Collider {
     /* 0x014 */ s32 unk_14;
     /* 0x018 */ Vec3f sfxPos;
     /* 0x024 */ f32 unk_24;
-    /* 0x028 */ s32 unk_28;
+    /* 0x028 */ s32 UNK_28;
     /* 0x02C */ s32 unk_2C;
     /* 0x030 */ f32 unk_30;
     /* 0x034 */ f32 unk_34;
@@ -463,22 +463,26 @@ typedef struct tempStruct {
 } tempStruct; //sizeof 0x48
 
 typedef struct CTTask {
-    /* 0x00 */ s16 unk_00;
-    /* 0x02 */ s16 unk_02;
+    /* 0x00 */ s16 active;
+    /* 0x02 */ s16 type;
     /* 0x04 */ s16 unk_04;
-    /* 0x06 */ char unk06[2];
+    /* 0x06 */ s8 unk06[2];
     /* 0x08 */ void (*function)(struct CTTask*);
     /* 0x0C */ struct CTTask* next;
-    /* 0x10 */ struct CTTask* unk_10;
+    /* 0x10 */ struct CTTask* prev;
     /* 0x14 */ Vec3f pos;
     /* 0x20 */ f32 rotA;
     /* 0x24 */ Vec3f scale;
     /* 0x30 */ Vec3f rot;
     /* 0x3C */ f32 unk3C;
-    /* 0x40 */ char pad40[0x14];                    /* maybe part of unk3C[6]? */
+    /* 0x40 */ char pad40[4];
+    /* 0x44 */ s16 unk44;
+    /* 0x46 */ char pad46[2];
+    /* 0x48 */ s16 unk48;                           /* inferred */
+    /* 0x4A */ char pad4A[0xA];                     /* maybe part of unk48[6]? */
     /* 0x54 */ u8 unk54;
     /* 0x55 */ char pad55[3];                       /* maybe part of unk54[4]? */
-    /* 0x58 */ struct CTTask* unk58;                       /* inferred */
+    /* 0x58 */ struct CTTask* unk58;
     /* 0x5C */ s16 unk_5C;
     /* 0x5E */ s16 unk5E;
     /* 0x60 */ s16 unk60;
@@ -487,12 +491,12 @@ typedef struct CTTask {
     /* 0x66 */ s16 unk66;
     /* 0x68 */ s16 unk_68;
     /* 0x6A */ char pad6A[2];
-    /* 0x6C */ char unk6C[2];
+    /* 0x6C */ s8 unk6C[2];
     /* 0x6E */ s16 unk_6E;
     /* 0x70 */ s16 unk_70;
-    /* 0x74 */ char unk74[0x10];
-    /* 0x84 */ s8 str[0x24]; // used in strcpy twice.
-} CTTask;
+    /* 0x72 */ char unk72[2];
+    /* 0x74 */ char unk74[0x34];
+} CTTask;                                           /* size = 0x74 */
 
 typedef struct unk801FCA20 {
     /* 0x00 */ s32 unk_00;
@@ -577,9 +581,9 @@ typedef struct Actor {
 
     /* 0x054 */ actorSubArray unknownPositionThings[3]; //usually 2?
     //actorSubArray is these offsets in the struct
-        // /* 0x054 */ f32 unk_54;//cos x used by fish
+        // /* 0x054 */ f32 unk_54;//cos x used by FISH
         // /* 0x058 */ f32 unk_58;//presumably y
-        // /* 0x05C */ f32 unk_5C;//sin z used by fish
+        // /* 0x05C */ f32 unk_5C;//sin z used by FISH
         // /* 0x060 */ f32 unk_60;//hitboxScale
         // /* 0x064 */ f32 unk_64;//hitboxYstretch
         
@@ -659,7 +663,7 @@ typedef struct SaveFile {
     /* 0x02 */ u8 unk2;
     /* 0x03 */ char unk3[1];
     /* 0x04 */ char unk_04[0x1E]; //room/stage flags?
-    /* 0x22 */ s16 unk_22;
+    /* 0x22 */ s16 UNK_22;
     /* 0x24 */ char unk_24[2];
     /* 0x26 */ u8 stageAccess;
     /* 0x27 */ u8 stageClear;
@@ -673,7 +677,7 @@ typedef struct SaveFile {
     /* 0x44 */ u8 stageCrowns;
     /* 0x45 */ u8 stageTimes[8][3];
     /* 0x5D */ u8 carrotBitfield; 
-    /* 0x5E */ u8 unk_5E[2]; //first also copies carrot progress.
+    /* 0x5E */ u8 UNK_5E[2]; //first also copies CARROT progress.
 } SaveFile; //sizeof 0x60
 
 //5FF30
@@ -725,7 +729,7 @@ typedef struct aa1{ // TODO: give better name
     /* 0x1C */ f32 unk_1C;
     /* 0x20 */ f32 unk_20;
     /* 0x24 */ f32 unk_24;
-    /* 0x28*/ s32 unk_28;
+    /* 0x28*/ s32 UNK_28;
     /* 0x2C */ s32 unk_2C;
     /* 0x30 */ f32 unk_30;
     /* 0x34 */ void* unk34;
@@ -1081,7 +1085,7 @@ typedef struct Anim {
 typedef struct unk80174880 {
 /* 0x00 */ s32 unk_00[4];
 /* 0x10 */ char unk_10[0x18];
-/* 0x28 */ s32 unk_28[4];
+/* 0x28 */ s32 UNK_28[4];
 /* 0x38 */ char unk_38[0x18];
 /* 0x50 */ s32 unk_50[4];
 /* 0x60 */ char unk_60[0x18];
@@ -1146,20 +1150,5 @@ typedef struct unk80170E68 {
 } unk80170E68;
 
 extern unk80170E68 D_80170E68[];
-
-typedef struct Unk_func_80094DBC_1 {
-    char unk00[0x08];
-    void (*unk8)(CTTask*);
-    char unkC[0x48];
-    s8 unk54;
-    struct Unk_func_80094DBC_1* unk58;
-    s16 unk5C;
-    char unk5E[0x02];
-    s16 unk60;
-    s16 unk62;
-    s16 unk64;
-    s16 unk66;
-    s16 unk68;
-} Unk_func_80094DBC_1;
 
 #endif
