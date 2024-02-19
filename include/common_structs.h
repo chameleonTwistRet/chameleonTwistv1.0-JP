@@ -476,8 +476,10 @@ typedef struct CTTask {
     /* 0x30 */ Vec3f rot;
     /* 0x3C */ f32 unk3C;
     /* 0x40 */ char pad40[4];
-    /* 0x44 */ s16 unk44;                           /* inferred */
-    /* 0x46 */ char pad46[0xE];                     /* maybe part of unk44[8]? */
+    /* 0x44 */ s16 unk44;
+    /* 0x46 */ char pad46[2];
+    /* 0x48 */ s16 unk48;                           /* inferred */
+    /* 0x4A */ char pad4A[0xA];                     /* maybe part of unk48[6]? */
     /* 0x54 */ u8 unk54;
     /* 0x55 */ char pad55[3];                       /* maybe part of unk54[4]? */
     /* 0x58 */ struct CTTask* unk58;
@@ -492,10 +494,9 @@ typedef struct CTTask {
     /* 0x6C */ s8 unk6C[2];
     /* 0x6E */ s16 unk_6E;
     /* 0x70 */ s16 unk_70;
-    /* 0x72 */ s8 unk74[0x10];
-    /* 0x82 */ s8 str[0x24];
-    /* 0xA6 */ char padA6[2];
-} CTTask;                                           /* size = 0xA8 */
+    /* 0x72 */ char unk72[2];
+    /* 0x74 */ char unk74[0x34];
+} CTTask;                                           /* size = 0x74 */
 
 typedef struct unk801FCA20 {
     /* 0x00 */ s32 unk_00;

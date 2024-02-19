@@ -825,7 +825,17 @@ void func_80069858(aa1* arg0, s32 arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/Bowling_ResetScore.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/Bowling_CountPins.s")
+void Bowling_CountPins(s32* pinsRemaining) {
+    s32 i;
+    s32 pinCount;
+    
+    for (i = 0, pinCount = 0; i < ACTORS_MAX; i++){
+        if (gActors[i].actorID == Bowling_Pins) {
+            pinCount++;
+        }
+    }
+    *pinsRemaining = 10 - pinCount;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/Bowling_UpdateScore.s")
 

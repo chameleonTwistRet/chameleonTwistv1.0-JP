@@ -68,8 +68,16 @@ void func_800B08C8(unkStructGlobal1* arg0) {
 void func_800B09C0(s32 arg0, newStruct* arg1) {
     func_800B56D4(arg1->field1, arg1->field2);
 }
+//unsure of arg1 type
+void func_800B09E8(unkStructGlobal1* arg0, unkBlackChameleon1* arg1) {
+    arg0->unkAC = arg1->unk38;    
+    if (func_800B34D0(arg0->unkAC) != 0) {
+        arg0->unkB0 = 0;
+        return;
+    }
+    arg0->unkB0 = 1;
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B09E8.s")
 
 void func_800B0A30(unkBlackChameleon0* arg0, unkBlackChameleon1* arg1) {
     gPlayerActors[1].active = gPlayerActors[1].exists = 1;
