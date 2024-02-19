@@ -57,7 +57,7 @@ struct sprite {
 
 	f32	scalex, scaley;	/* Texel to Pixel scale factor	*/
 
-	s16	expx, expy;	/* Explosion spacing		*/
+	s16	expx, expy;	/* EXPLOSION spacing		*/
 
 	u16 	attr;		/* Attribute Flags		*/
 	s16	zdepth;		/* Z Depth 			*/

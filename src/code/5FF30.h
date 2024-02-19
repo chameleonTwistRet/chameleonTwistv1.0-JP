@@ -114,6 +114,9 @@ void func_8008F7A4(s32, s32);
 void func_80097540(CTTask*);
 
 /* Ext Variables */
+extern contMain D_801FC9B8;
+extern s16 D_80200CA0;
+extern s16 D_80200CA8;
 extern OSTask D_800F04E0[2];
 extern unk801FFB88* D_801FFB88;
 extern unk801FC9BC D_801FC9BC[]; //probably not correct

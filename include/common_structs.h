@@ -316,7 +316,7 @@ typedef struct Collider {
     /* 0x014 */ s32 unk_14;
     /* 0x018 */ Vec3f sfxPos;
     /* 0x024 */ f32 unk_24;
-    /* 0x028 */ s32 unk_28;
+    /* 0x028 */ s32 UNK_28;
     /* 0x02C */ s32 unk_2C;
     /* 0x030 */ f32 unk_30;
     /* 0x034 */ f32 unk_34;
@@ -570,9 +570,9 @@ typedef struct Actor {
 
     /* 0x054 */ actorSubArray unknownPositionThings[3]; //usually 2?
     //actorSubArray is these offsets in the struct
-        // /* 0x054 */ f32 unk_54;//cos x used by fish
+        // /* 0x054 */ f32 unk_54;//cos x used by FISH
         // /* 0x058 */ f32 unk_58;//presumably y
-        // /* 0x05C */ f32 unk_5C;//sin z used by fish
+        // /* 0x05C */ f32 unk_5C;//sin z used by FISH
         // /* 0x060 */ f32 unk_60;//hitboxScale
         // /* 0x064 */ f32 unk_64;//hitboxYstretch
         
@@ -652,7 +652,7 @@ typedef struct SaveFile {
     /* 0x02 */ u8 unk2;
     /* 0x03 */ char unk3[1];
     /* 0x04 */ char unk_04[0x1E]; //room/stage flags?
-    /* 0x22 */ s16 unk_22;
+    /* 0x22 */ s16 UNK_22;
     /* 0x24 */ char unk_24[2];
     /* 0x26 */ u8 stageAccess;
     /* 0x27 */ u8 stageClear;
@@ -666,7 +666,7 @@ typedef struct SaveFile {
     /* 0x44 */ u8 stageCrowns;
     /* 0x45 */ u8 stageTimes[8][3];
     /* 0x5D */ u8 carrotBitfield; 
-    /* 0x5E */ u8 unk_5E[2]; //first also copies carrot progress.
+    /* 0x5E */ u8 UNK_5E[2]; //first also copies CARROT progress.
 } SaveFile; //sizeof 0x60
 
 //5FF30
@@ -718,7 +718,7 @@ typedef struct aa1{ // TODO: give better name
     /* 0x1C */ f32 unk_1C;
     /* 0x20 */ f32 unk_20;
     /* 0x24 */ f32 unk_24;
-    /* 0x28*/ s32 unk_28;
+    /* 0x28*/ s32 UNK_28;
     /* 0x2C */ s32 unk_2C;
     /* 0x30 */ f32 unk_30;
     /* 0x34 */ void* unk34;
@@ -1074,7 +1074,7 @@ typedef struct Anim {
 typedef struct unk80174880 {
 /* 0x00 */ s32 unk_00[4];
 /* 0x10 */ char unk_10[0x18];
-/* 0x28 */ s32 unk_28[4];
+/* 0x28 */ s32 UNK_28[4];
 /* 0x38 */ char unk_38[0x18];
 /* 0x50 */ s32 unk_50[4];
 /* 0x60 */ char unk_60[0x18];

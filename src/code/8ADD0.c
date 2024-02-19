@@ -153,7 +153,7 @@ void func_800B216C(Collider* arg0) {
     s32 i;
 
     for (i = 0, actorList = gActors; i < ACTORS_MAX; i++, actorList++) {
-        if (actorList->actorID == Billiards_Ball) {
+        if (actorList->actorID == BILLIARDS_BALL) {
             ballCount++;
         }
     }
@@ -211,7 +211,7 @@ void LimitFloat(f32* _float, f32 a, f32 b) {
  * @return: 1 if the actor is not a pickup, 0 otherwise.
  */
 s32 IsNotPickup(Actor* actor) {
-    return (actor->actorID != 0 && actor->actorID < R_Heart) ? 1 : 0;
+    return (actor->actorID != 0 && actor->actorID < R_HEART) ? 1 : 0;
 }
 
 /**
@@ -222,7 +222,7 @@ s32 IsNotPickup(Actor* actor) {
  * @return: 1 if the actor is a pickup, 0 otherwise.
  */
 s32 IsPickup(Actor* actor) {
-    return (actor->actorID >= R_Heart ) ? 1 : 0;
+    return (actor->actorID >= R_HEART ) ? 1 : 0;
 }
 
 /**
@@ -674,25 +674,25 @@ void func_800B40FC(void) {
 }
 
 /**
- * @brief This function returns a boolean value based on whether the carrot item is available in the stage passed in as an argument.
+ * @brief This function returns a boolean value based on whether the CARROT item is available in the stage passed in as an argument.
  * 
- * @param stage: The stage to check for the carrot item. 
- * @return true if the carrot item is available in the stage passed in as an argument, false otherwise.
+ * @param stage: The stage to check for the CARROT item. 
+ * @return true if the CARROT item is available in the stage passed in as an argument, false otherwise.
  */
 s32 StageCarrotAvailable(s32 stage) {
-    if (stage > STAGE_GHOST) { //not a stage with a carrot
+    if (stage > STAGE_GHOST) { //not a stage with a CARROT
         return FALSE;
     }
-    if (gCarrotBitfield & (1 << stage)) { //carrot already collected
+    if (gCarrotBitfield & (1 << stage)) { //CARROT already collected
         return FALSE;
     }
     return TRUE;
 }
 
 /**
- * @brief Adds a carrot to the global bitfield and increments the total number of carrots collected.
+ * @brief Adds a CARROT to the global bitfield and increments the total number of carrots collected.
  * 
- * @param stage: the index of the bitfield to add the carrot to. 
+ * @param stage: the index of the bitfield to add the CARROT to. 
  */
 void AddCarrot(s32 stage) {
     s32 i;

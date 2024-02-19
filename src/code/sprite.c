@@ -830,7 +830,7 @@ void Bowling_CountPins(s32* pinsRemaining) {
     s32 pinCount;
     
     for (i = 0, pinCount = 0; i < ACTORS_MAX; i++){
-        if (gActors[i].actorID == Bowling_Pins) {
+        if (gActors[i].actorID == BOWLING_PINS) {
             pinCount++;
         }
     }
@@ -854,7 +854,7 @@ typedef struct UnkBowlingStruct {
     /* 0x1C */ f32 unk_1C;
     /* 0x20 */ f32 unk_20;
     /* 0x24 */ f32 unk_24;
-    /* 0x28*/ s32 unk_28;
+    /* 0x28*/ s32 UNK_28;
     /* 0x2C */ s32 unk_2C;
     /* 0x30 */ f32 unk_30;
     /* 0x34 */ void* unk34;

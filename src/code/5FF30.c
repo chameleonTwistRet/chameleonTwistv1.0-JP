@@ -3306,10 +3306,6 @@ s32 func_800AD980(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800ADC50.s")
 
-extern contMain D_801FC9B8;
-extern s16 D_80200CA0;
-extern s16 D_80200CA8;
-
 void func_800ADE24(void) {
     Controller_Zero(&D_801FC9B8);
     Controller_Zero(gContMain);
@@ -3318,7 +3314,6 @@ void func_800ADE24(void) {
     D_80200CA0 = 0;
     D_80200CA8 = 0;
 }
-
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800ADE70.s")
 

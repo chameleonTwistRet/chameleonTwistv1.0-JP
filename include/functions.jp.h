@@ -72,9 +72,9 @@ void ActorInit_AntGreen(Actor*); // Green Ant Function: Rainchu and Elisiah
 void ActorInit_AntQueen(Actor*); // Ant Queen Function: Elisiah
 void ActorInit_AntQueenDrone(Actor*);
 void func_8003BA38(Actor*); // White Bomb Snake Function: Elisiah
-void func_8003BC8C(Actor*); // Grenade Function: Elisiah
-void func_8003BD98(Actor*); // Missile Spawner: Auto-Decompile
-void func_8003BEE8(Actor*); // Missile Function: Elisiah
+void func_8003BC8C(Actor*); // GRENADE Function: Elisiah
+void func_8003BD98(Actor*); // MISSILE Spawner: Auto-Decompile
+void func_8003BEE8(Actor*); // MISSILE Function: Elisiah
 void func_8003C20C(Actor*);
 void func_8003C4B8(Actor*);
 void func_8003C8AC(Actor*);
@@ -85,26 +85,26 @@ void ActorInit_ChameleonBlackSpot(Actor*);
 void ActorTick_ChameleonBlackSpot(Actor*);
 void func_8003D998(Actor*);
 void func_8003DE04(Actor*);
-void func_8003DFB4(Actor*); // Vulture Function: Elisiah
-void func_8003E30C(Actor*); // Arrows Function: Elisiah
-void func_8003E368(Actor*); // boulder
-void func_8003E62C(Actor*); // Armadillo Function: Elisiah
+void func_8003DFB4(Actor*); // VULTURE Function: Elisiah
+void func_8003E30C(Actor*); // ARROWS Function: Elisiah
+void func_8003E368(Actor*); // BOULDER
+void func_8003E62C(Actor*); // ARMADILLO Function: Elisiah
 void func_8003E660(Actor*);
 void func_8003FA38(Actor*, f32, f32, f32);
-void func_8003FB04(Actor*); // Pogo Function: Elisiah
+void func_8003FB04(Actor*); // POGO Function: Elisiah
 void func_8003FEAC(s32);
-void func_8003FEB4(Actor*); // unk_23
+void func_8003FEB4(Actor*); // UNK_23
 void func_8003FEBC(s32);
 void func_8003FEC4(Actor*); // Ice Cream Sandwich Function: Elisiah
 
 void func_80040068(Actor*); // Training Room Choco Kid Function: Elisiah
 void ChocoKidMovement(Actor*);
-void func_800401E8(Actor*); // unk_1F Function: Elisiah
+void func_800401E8(Actor*); // UNK_1F Function: Elisiah
 void func_80040214(void);
 void func_800404D8(Actor*);
 void func_80040590(Actor*);
 void func_800405F8(Actor*); // Cake Boss Strwaberry Function: Elisiah
-void func_80040CDC(Actor*); // unk_28
+void func_80040CDC(Actor*); // UNK_28
 void ActorTick_28(s32);
 void func_80040CEC(Actor*); // Cake Boss Choco Kid: Auto-Decompile
 void ActorInit_CakeBoss(Actor*);
@@ -117,30 +117,30 @@ void ActorInit_BowlingBall(Actor*); // Bowling Ball Function: Elisiah
 void ActorInit_BowlingPin(Actor*); // Bowling Pins Function: Elisiah
 void func_800431E8(Actor*);
 void func_800431FC(void);
-void func_800434F4(Actor*); // unk_2F
+void func_800434F4(Actor*); // UNK_2F
 void func_800434FC(s32);
 void func_80043504(Actor*);
 void func_80043558(void);
-void func_80043998(Actor*); // Cup Function: Elisiah
+void func_80043998(Actor*); // CUP Function: Elisiah
 void func_800439B8(void);
-void func_800439D8(Actor*); // Saucer Function: Elisiah
+void func_800439D8(Actor*); // SAUCER Function: Elisiah
 void func_800439F8(void);
 void func_80043A18(Actor*); // Metal Sheet Function: Elisiah
 void func_80043A38(void);
-void func_80043A58(Actor*); // Scroll Function: Elisiah
+void func_80043A58(Actor*); // SCROLL Function: Elisiah
 void func_80043A78(void);
 void func_80043A98(Actor*); // RNG Room Spawner: Auto-Decompile
 void func_80043C80(Actor*);
-void func_80043FE8(Actor*); // Barrel Jump Fire Spawner: Auto-Decompile
-void func_800440FC(Actor*); // Barrel Jump Fire Actor: Elisiah
-void func_800442E0(Actor*); // Fire Spitter Function: Elisiah
+void func_80043FE8(Actor*); // Barrel Jump FIRE Spawner: Auto-Decompile
+void func_800440FC(Actor*); // Barrel Jump FIRE Actor: Elisiah
+void func_800442E0(Actor*); // FIRE Spitter Function: Elisiah
 void func_800442F0(void);
-void func_80044504(Actor*); // Candles Function: Elisiah
+void func_80044504(Actor*); // CANDLES Function: Elisiah
 void func_80044524(void);
-void func_80044544(Actor*); // Fire Spawner: Elisiah
+void func_80044544(Actor*); // FIRE Spawner: Elisiah
 void func_80044564(void);
 void func_80044584(Actor*);
-void func_80044708(Actor*); // Sandal Function: Elisiah
+void func_80044708(Actor*); // SANDAL Function: Elisiah
 void func_80044728(void);
 void GhostBoss_SpawnArms(Actor*);
 void ActorInit_GhostBoss(Actor*); // Pile of Books Function: Elisiah
@@ -148,44 +148,44 @@ s32 func_80044E80(Actor*, s32);
 void func_80046DDC(Actor*);
 void func_80046FB0(Actor*);
 void ActorInit_GhostBossShot(Actor*);
-void func_8004718C(Actor*); // Spider Spawner: Auto-Decompile
-void func_80047350(Actor*); // Spider Function: Elisiah
+void func_8004718C(Actor*); // SPIDER Spawner: Auto-Decompile
+void func_80047350(Actor*); // SPIDER Function: Elisiah
 void func_80047520(Actor*);
-void func_8004769C(Actor*); // Golem Room Spider Spawner: Auto-Decompile
-void func_800477C4(Actor*); // Golem?: Auto-Decompile
-void func_800479CC(Actor*); // Hedgehog Function: Elisiah
-void func_80047C04(Actor*); // Fish Function: Elisiah
+void func_8004769C(Actor*); // GOLEM Room SPIDER Spawner: Auto-Decompile
+void func_800477C4(Actor*); // GOLEM?: Auto-Decompile
+void func_800479CC(Actor*); // HEDGEHOG Function: Elisiah
+void func_80047C04(Actor*); // FISH Function: Elisiah
 void func_800480EC(Actor*);
 void func_800487D8(Actor*); // Lizard Kong Butterfly Spawner: Auto-Decompile
 void func_800488C4(Actor*);
 void ActorInit_LizardKong(Actor*);
 void func_800489B0(Actor*);
-void func_80049780(Actor*); // Popcorn Bucket Spawner: Auto-Decompile
-void func_800498B4(Actor*); // Popcorn Bucket Function: Elisiah
+void func_80049780(Actor*); // POPCORN Bucket Spawner: Auto-Decompile
+void func_800498B4(Actor*); // POPCORN Bucket Function: Elisiah
 void func_800498D4(void);
 void func_800498F4(Actor*);
 void func_80049914(Actor*);
 void func_80049934(Actor*); // Choco Kid Spawner: Auto-Decompile
 void func_80049A24(Actor*); // Choco Kid Function: Elisiah
 void func_80049A44(Actor*);
-void func_80049A64(Actor*); // unk_51 Function: Elisiah
+void func_80049A64(Actor*); // UNK_51 Function: Elisiah
 void func_80049A84(Actor*);
-void func_80049AA4(Actor*); // unk_52 Function: Elisiah
+void func_80049AA4(Actor*); // UNK_52 Function: Elisiah
 void func_80049AC4(void);
 void func_80049AE4(Actor*); // Battle Mode Sand Crab Spawner: Auto-Decompile
 void func_80049C34(Actor*); // Battle Mode Sand Crab Function: Elisiah
 void func_80049C64(Actor*);
-void func_80049D0C(Actor*); // unk_55
+void func_80049D0C(Actor*); // UNK_55
 void func_80049F04(Actor*);
 void func_80049F0C(s32);
 void func_80049F14(Actor*);
-void func_8004A0A0(Actor*); // Battle Mode Saucer Function: Elisiah
-void func_8004A184(Actor*); // unk_59
-void func_8004A310(Actor*); // unk_5A Function: Elisiah
+void func_8004A0A0(Actor*); // Battle Mode SAUCER Function: Elisiah
+void func_8004A184(Actor*); // UNK_59
+void func_8004A310(Actor*); // UNK_5A Function: Elisiah
 void ActorInit_PowerUpSpawner(Actor*); // Power Up Spawner: Auto-Decompile
 void func_8004A544(Actor*); // Falling Grey Ant Spawner Auto-Decompile
 void func_8004A658(Actor*); // Falling Grey Ant Function: Elisiah
-void func_8004AB00(Actor*); // unk_5E
+void func_8004AB00(Actor*); // UNK_5E
 void ActorTick_PickupHeartFalling(Actor*);
 void Actors_Tick(void);
 void func_8004BA5C(s32);

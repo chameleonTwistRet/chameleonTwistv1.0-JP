@@ -31,7 +31,7 @@ s32 func_80026C78(Actor* actor) {
 }
 
 
-//adjustment for BL_Boss_Segment
+//adjustment for BL_BOSS_SEGMENT
 void func_80026CA8(graphicStruct *arg0, Mtx *arg1, u32 arg2, f32 arg3, s32 arg4) {
     f32 xPos = 0.0f;
     f32 yPos = 0.0f;
