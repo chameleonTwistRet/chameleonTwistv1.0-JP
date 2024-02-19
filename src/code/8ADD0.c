@@ -95,7 +95,7 @@ void func_800B0A30(unkBlackChameleon0* arg0, unkBlackChameleon1* arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B0B20.s")
 //deals with "shutters"
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/registShutter.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/RegistShutter.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B118C.s")
 
@@ -152,7 +152,7 @@ void func_800B216C(Collider* arg0) {
     s32 ballCount = 0;
     s32 i;
 
-    for (i = 0, actorList = gActors; i < ACTORS_MAX; i++, actorList++) {
+    for (i = 0, actorList = gActors; i < ARRAY_COUNT(gActors); i++, actorList++) {
         if (actorList->actorID == BILLIARDS_BALL) {
             ballCount++;
         }
@@ -347,7 +347,7 @@ Vec3f* Vec3f_SetAtBossPos(Vec3f* arg0) {
     Vec3f_Zero(&pos); // Call Vec3f_Zero with the passed in pointer
 
     actors = gActors;
-    for (i = 0; i < ACTORS_MAX; i++, actors++) {
+    for (i = 0; i < ARRAY_COUNT(gActors); i++, actors++) {
         if (IsActorBoss(actors)) { // Check if the current actor is a boss
             pos.x = actors->pos.x; // Set x coordinate of pos to boss x coordinate
             pos.y = actors->pos.y; // Set y coordinate of pos to boss y coordinate
@@ -427,7 +427,7 @@ void func_800B3364(s32 arg0) {
 }
 
 //rains 7 month old bool checker
-s32 isntNegative(s32 value) {
+s32 IsntNegative(s32 value) {
     return ( value >= 0 ) ? 1 : 0;
 }
 
@@ -538,17 +538,17 @@ void func_800B3648(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B3698.s")
 
-void resetStageModels(void) {
+void ResetStageModels(void) {
     VertextBufferCount = 0;
     TriangleBufferCount = 0;
     ModelBufferCount = 0;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/registModel.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/RegistModel.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/moveModel.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/scaleModel.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/ScaleModel.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/RotateModel.s")
 
@@ -748,7 +748,7 @@ void setCrownPositionsForRoom(s32 arg0) {
 void func_800B4FCC(void) {
     s32 i;
     
-    for (i = 0; i < ACTORS_MAX; i++) {
+    for (i = 0; i < ARRAY_COUNT(gActors); i++) {
         if ((IsNotPickup(&gActors[i]) != 0) && (gActors[i].actorState == 0)) {
             func_800311C8(&gActors[i]);
             func_800313BC(i, Random(0, 0x168));
@@ -964,7 +964,7 @@ void func_800BE2C0(void) {
     Actor* actorList = gActors;
     s32 i;
 
-    for (i = 0; i < ACTORS_MAX; i++, actorList++) {
+    for (i = 0; i < ARRAY_COUNT(gActors); i++, actorList++) {
         if ((IsNotPickup(actorList) != 0) && (actorList->actorState != 0)) {
             func_800311C8(actorList);
             func_800314E4(actorList);
@@ -1194,7 +1194,7 @@ void func_800C0E78(s32 arg0) {
 
     if (gZoneCollisions[arg0].unk60 != 0) {
         temp = 1;
-        for (i = 0; i < ACTORS_MAX; i++) {
+        for (i = 0; i < ARRAY_COUNT(gActors); i++) {
             if ((gActors[i].actorID != 0) && (gZoneCollisions[arg0].unk84 == gActors[i].actorID) && (gActors[i].actorState == 0)) {
                 temp = 0;
                 break;
@@ -1208,7 +1208,7 @@ void func_800C0E78(s32 arg0) {
     EraseRoomItem(arg0);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/checkDoor.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/CheckDoor.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C1204.s")
 

@@ -1,53 +1,5 @@
 #include "common.h"
-
-void osMotorStop(OSPfs *pfs);
-extern s32 D_80176960[];
-extern OSPfs gRumblePfs[];
-extern s32 gRumbleTime[];
-
-typedef struct SpriteListing {
-    char unk_00[4];
-    void* bitmapP; // "malloc'd" after size calc.
-    void* palletteP; //palette? both this and above start with devAddr+0XD73D960
-    s32 type; // use "COLORMODE_*" enum
-    void* unk10;
-    u8 unk14;
-    u8 tileCountX;
-    u8 tileCountY;
-    char unk17[3]; //align?
-    u16 height; // height of each tile
-    u16 width; // width of each tile
-    u16 unk1E;
-    char unk20[0x48]; //repeating substruct? has 5 feilds of color32
-    s32 bitmapRom; //devAddr-0x8c26a0
-    s32 paletteRom;
-    s32 unk70;
-    char unk_74[4];
-} SpriteListing; //sizeof 0x78
-
-extern SpriteListing gSpriteListings[230];
-extern char D_8010CA1C[];
-extern char D_8010CA54[];
-extern Addr D_8C26A0;
-extern unkStruct02* D_80176F4C;
-
-void func_80055C04(void);
-void func_80062D10(s32, s32, s32*, s32*, u32, s32);
-void func_800634D4(s32, s32, s32*, s32*, s32, s32);
-void func_8007AF80(void);
-void resetEyeParams(void);
-extern f32 D_800FEA18;
-extern f32 D_800FEA1C;
-extern u32 D_800FEDB4;
-extern s32 D_800FEDB8;
-extern Tongue* D_80176B70;
-extern PlayerActor* D_80176B74;
-extern Camera* D_80176B78;
-extern s32 currentStageCrowns;
-void Rumble_Tick(void);
-void func_800615D4(s32*);
-void func_80069734(void);
-void func_8007CDEC(void);
+#include "sprite.h"
 
 void DummiedPrintf2(char* arg0, ...) {
 
@@ -273,6 +225,8 @@ s32 Free(void* arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80056F48.s")
 
+//could there be a file split here or close to here?
+
 s32 LoadSprite(s32 arg0) {
     s32 dmaSize;
     s32 dmaResult;
@@ -342,7 +296,7 @@ s32 LoadSprite(s32 arg0) {
     return 0;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/freeSprite.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/FreeSprite.s")
 
 void printReset(void) {
     s32 i;
@@ -423,9 +377,8 @@ void func_8005CA38(void) {
     D_800FDFA0 = 0;
 }
 
-//jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8005CA44.s")
-//jumptable
+
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8005F408.s")
 
 void func_800610A8(void) {
@@ -439,8 +392,8 @@ void func_800610B8(void) {
 }
 
 void func_800610E4(f32 arg0, f32 arg1) {
-    D_800FDFE0 = (s8) (u32) arg0;
-    D_800FDFE4 = (s8) (u32) arg1;
+    D_800FDFE0 = (u32) arg0;
+    D_800FDFE4 = (u32) arg1;
 }
 
 void func_800611F8(f32 arg0, f32 arg1, f32 arg2, f32 arg3) {
@@ -829,7 +782,7 @@ void Bowling_CountPins(s32* pinsRemaining) {
     s32 i;
     s32 pinCount;
     
-    for (i = 0, pinCount = 0; i < ACTORS_MAX; i++){
+    for (i = 0, pinCount = 0; i < ARRAY_COUNT(gActors); i++){
         if (gActors[i].actorID == BOWLING_PINS) {
             pinCount++;
         }
@@ -843,27 +796,6 @@ void Bowling_CountPins(s32* pinsRemaining) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/Bowling_DrawScoreCard.s")
 
-typedef struct UnkBowlingStruct {
-    /* 0x00 */ s32 unk_00;
-    /* 0x04 */ s32 unk_04;
-    /* 0x08 */ char unk_08[0x04];
-    /* 0x0C */ f32 unkC;
-    /* 0x10 */ f32 unk_10;
-    /* 0x14 */ f32 unk_14;
-    /* 0x18 */ f32 unk_18;
-    /* 0x1C */ f32 unk_1C;
-    /* 0x20 */ f32 unk_20;
-    /* 0x24 */ f32 unk_24;
-    /* 0x28*/ s32 UNK_28;
-    /* 0x2C */ s32 unk_2C;
-    /* 0x30 */ f32 unk_30;
-    /* 0x34 */ void* unk34;
-    /* 0x38 */ void* unk_38; // this struct varies widely
-    /* 0x3C */ d8006266c* unk_3C;
-    /* 0x40 */ struct aa1* previous;
-    /* 0x44 */ struct aa1* next;
-} UnkBowlingStruct; //sizeof 0x48
-
 void aa1_Bowling(f32 arg0, s32 arg1, s32 arg2) {
     aa1* temp_v0 = aa1_Alloc(0, 8, Bowling_DrawScoreCard);
     UnkBowlingStruct* temp_v1;
@@ -876,13 +808,13 @@ void aa1_Bowling(f32 arg0, s32 arg1, s32 arg2) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/resetEyeParams.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/ResetEyeParams.s")
 
-void lockEyeChange(void) {
+void LockEyeChange(void) {
     gDontChangeEyes = 1;
 }
 
-void unlockEyeChange(void) {
+void UnlockEyeChange(void) {
     gDontChangeEyes = 0;
 }
 
@@ -922,19 +854,19 @@ void FreePlayerEyes(s32 arg0) {
     s32 var_s0 = (arg0 * 10) + 114;
 
     for(i = 0; i != 10; i++){
-        freeSprite(var_s0);
+        FreeSprite(var_s0);
         var_s0 += 1;
     }
     gLockContextEyes = 255;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/setEyeTexture.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/SetEyeTexture.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/setPlayerEyes.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/SetPlayerEyes.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/aa1_PlayerEyeControl.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/initPlayerEyeController.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/InitPlayerEyeController.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/SetPlayerContextEyes.s")
 
@@ -942,7 +874,7 @@ void FreePlayerEyes(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/loadBossDeadEyes.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/setBossDeadEyes.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/SetBossDeadEyes.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8006D844.s")
 
@@ -1222,7 +1154,6 @@ void func_8007A25C(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4) {
     }
 }
 
-//jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8007A2D8.s")
 
 s32 func_8007ABDC(s32 arg0) {
@@ -1262,7 +1193,7 @@ void func_8007AF30(void) {
 }
 
 void func_8007AF58(void) {
-    freeSprite(207);
+    FreeSprite(207);
     func_8007ADDC(1);
 }
 
@@ -1271,10 +1202,6 @@ void func_8007AF58(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8007B174.s")
 
-extern s32 D_80176960[];
-extern s32 D_80176980[];
-extern OSPfs gRumblePfs[];
-extern s32 gUnkRumbleArray[];
 void Rumble_StopAll(void) {
     OSPfs* gRumblePfsTemp = gRumblePfs;
     s32 i;
@@ -1412,7 +1339,7 @@ void func_8007E714(f32 arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/printNumber.s")
 
 //prints number at (x,y) on screen, turns red if negative.
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/printNumberWR.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/PrintNumberWR.s")
 
 //another "print number on screen" func,exclusive to bowling score card
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/PrintNumberBowling.s")
@@ -1464,7 +1391,7 @@ void func_80084788(void) {
         func_800634D4(0xF0, 0x10, &currentStageCrowns, &D_800FEDB8, 2, 0);
     }
     D_800FEDB4 = 1;
-    resetEyeParams();
+    ResetEyeParams();
     func_800667A8();
 }
 

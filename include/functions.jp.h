@@ -224,7 +224,7 @@ void func_80058748(f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f
 s32 LoadSprite(s32); // uses "SPRITE_" #defines
 s32 func_8009603C(s32, s32);
 void printReset(void);
-void freeSprite(s32);
+void FreeSprite(s32);
 void func_8005AFA4(f32, f32, f32, f32);
 void printUISprite(f32, f32, f32, f32, f32, f32, f32, f32, s32); 
 void func_8005C9B8(void);
@@ -266,15 +266,15 @@ aa1* func_80068A88(f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f
 void func_80069858(aa1*, s32);
 void Bowling_ResetScore(void);
 void Bowling_DrawScoreCard(void*, void*);
-void lockEyeChange(void);
-void unlockEyeChange(void);
+void LockEyeChange(void);
+void UnlockEyeChange(void);
 void func_8006BA30(f32, f32, f32, f32, f32);
 void func_8006BD58(f32, f32, s32, f32, s32);
 void func_8006BE4C(f32, f32, f32, f32);
 void func_8006C368(f32, f32, f32);
 void LoadPlayerEyes(s32);
 void FreePlayerEyes(s32);
-u32 initPlayerEyeController(s32, s32, f32, s32);
+u32 InitPlayerEyeController(s32, s32, f32, s32);
 void SetPlayerContextEyes(s32, s32, s32);
 void func_8006E16C(f32, f32, f32, f32, f32, s32);
 void func_8006F8D8(f32, f32, f32);
@@ -472,7 +472,7 @@ void func_800CCDCC(Actor*);
 void func_800CCE4C(Actor*);
 void func_800CEB10(Actor*);
 void Debug_ZeroInt(void);
-void printNumberWR(f32, f32, f32, f32, f32, s32, s32);
+void PrintNumberWR(f32, f32, f32, f32, f32, s32, s32);
 void printNumber(f32, f32, f32, f32, f32, s32, s32);
 void func_800C1458(s32);
 void func_800C29D8(s32);

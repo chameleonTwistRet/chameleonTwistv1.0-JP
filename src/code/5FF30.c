@@ -2321,7 +2321,7 @@ void func_800A4868(CTTask* arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A4A10.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/task_GameOverLetter.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/Task_GameOverLetter.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A4BCC.s")
 
