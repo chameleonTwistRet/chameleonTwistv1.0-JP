@@ -14,7 +14,7 @@ s32 D_8017498C;
 s32 D_80174990;
 s32 D_80174994;
 s32 D_80174998;
-s32 D_8017499C;
+s32 gTimer;
 s32 D_801749A0;
 s32 D_801749A4;
 s32 D_801749A8;
@@ -815,7 +815,7 @@ void func_8002F7F0(void) {
 
 void func_8002F884(s32 arg0, s32 arg1) {
     if (((D_801749B0.unk_00 == 0) || (gCurrentActivePlayerPointer->playerID != 1)) && (D_80168D78[arg0] == 0)) {
-        if (gameModeCurrent == GAME_MODE_BATTLE_MENU) {
+        if (gGameModeCurrent == GAME_MODE_BATTLE_MENU) {
             Rumble_AddTime(arg0, ((arg1 * 100) / 6.0f));
         } else {
             Rumble_AddTime(arg0, ((arg1 * 100) * 0.5f));
@@ -941,8 +941,8 @@ void func_800320EC(s32 arg0, f32 arg1, f32 arg2) {
 
     angle = CalcAngleBetween2DPoints(arg1, arg2, D_80170968[gTongueOnePointer->poleID].pos.x, D_80170968[gTongueOnePointer->poleID].pos.z);
     if (gActors[arg0].userVariables[0] == 0) {
-        if (D_8017499C != (gActors[arg0].userVariables[3] + 1)) {
-            gActors[arg0].userVariables[3] = D_8017499C;
+        if (gTimer != (gActors[arg0].userVariables[3] + 1)) {
+            gActors[arg0].userVariables[3] = gTimer;
             return;
         }
         angle += gTongueOnePointer->tongueDir * 90.0f;
@@ -1248,7 +1248,7 @@ void ActorInit_AntBulletHell(Actor* arg0) {
     f32 ang;
     f32 sine;
     arg0->unk_94 = arg0->position._f32.x;
-    sine = __sinf((6 * D_8017499C * PI) / 360.0);
+    sine = __sinf((6 * gTimer * PI) / 360.0);
     ang = CalcAngleBetween2DPoints(arg0->pos.x, arg0->pos.z, gCurrentActivePlayerPointer->pos.x, gCurrentActivePlayerPointer->pos.z);
     arg0->unk_90 = arg0->position._f32.y + (ang + 12 * sine);
     WrapDegrees(&arg0->unk_90);
@@ -1260,10 +1260,10 @@ s32 func_80038B98(Actor* arg0) {
         arg0->vel.y -= 3.200000048f;
         arg0->vel.y -= arg0->vel.y * 0.05000000075f;
     }
-    if (D_8017499C % 8 == 0) {
+    if (gTimer % 8 == 0) {
         PLAYSFXAT(102, arg0->pos, 1, 0);
     } 
-    else if (D_8017499C % 8 == 4) {
+    else if (gTimer % 8 == 4) {
         PLAYSFXAT(101, arg0->pos, 1, 0);
     }
     return 0;
@@ -1961,7 +1961,7 @@ void func_80043A98(Actor* rngRoomSpawnerActor){
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80043AA0.s")
 
 void func_80043C80(Actor* arg0) {
-    if (D_8017499C % arg0->unk_128 == arg0->unk_124) {
+    if (gTimer % arg0->unk_128 == arg0->unk_124) {
         arg0->userVariables[1] = 1;
         return;
     }

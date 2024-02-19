@@ -46,7 +46,7 @@ void func_800B08C8(unkStructGlobal1* arg0) {
         }
         if (shotActors == 0) {
             arg0->unkB4 = 2;
-            arg0->unkB8 = D_8017499C + 150;
+            arg0->unkB8 = gTimer + 150;
             return;
         }
        break;
@@ -55,7 +55,7 @@ void func_800B08C8(unkStructGlobal1* arg0) {
             arg0->unkB4 = 3;
             func_800B35B0(arg0->unkB0);
         }
-        if (arg0->unkB8 < D_8017499C) {
+        if (arg0->unkB8 < gTimer) {
             arg0->unkB4 = 3;
         }
         break;
@@ -639,7 +639,7 @@ s32 func_800B3F9C(unkSpriteStruct4* arg0) {
 
 //this struct pointer type for arg0 is wrong
 s32 func_800B3FFC(unkSpriteStruct5 *arg0, s32 arg1) {
-    Vec3s *new_var = &D_801087D8[arg1];
+    Vec3w *new_var = &D_801087D8[arg1];
     int new_var2 = arg0->unk_14 & new_var->y;
 
     return new_var2 >> (*new_var).z;
@@ -1321,8 +1321,8 @@ void enterBossRoom(void) {
 //really big wow
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C5304.s")
 
-// why would this ever need to zero Vec2s and arg1? (This surely is zeroing a Vec3s? (this is already a function?))
-void func_800C54F8(Vec2s* arg0, s32* arg1) {
+// why would this ever need to zero Vec2w and arg1? (This surely is zeroing a Vec3w? (this is already a function?))
+void func_800C54F8(Vec2w* arg0, s32* arg1) {
     arg0->x = 0;
     arg0->y = 0;
     *arg1 = 0;
