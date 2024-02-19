@@ -157,7 +157,11 @@ void Audio_RomCopy(u32 devAddr, void* vAddr, u32 size) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/audioproc.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/Audio_StartThread.s")
+void Audio_StartThread(void) {
+    Audio_Init();
+    osCreateThread(&gAudioThread, 4, (void*) audioproc, NULL, &D_801FF710, 0x5A);
+    osStartThread(&gAudioThread);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80086C7C.s")
 
@@ -1306,7 +1310,17 @@ void func_8009244C(CTTask* task) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800927E8.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80092864.s")
+                   
+void func_8009288C(void);
+typedef struct unkArg0 {
+    char unk_00[8];
+    void* unk8;
+} unkArg0;
+void func_80092864(unkArg0* arg0) {
+    arg0->unk8 = &func_8009288C;
+    func_8008D7FC();
+}
+
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009288C.s")
 
@@ -1441,7 +1455,17 @@ void func_800945E4(CTTask* arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80094C84.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80094D64.s")
+void func_80094D64(CTTask* arg0) {
+    if (arg0->unk54 == 1) {
+        arg0->function = func_80094DBC;
+        arg0->unk44 = 30;
+        arg0->unk48 = -1;
+        arg0->unk_5C = 8;
+        return;
+    }
+    arg0->unk44 = 28;
+    func_8008D7FC();
+}
 
 void func_80094DBC(CTTask* task) {
     CTTask* taskUnk;
@@ -1789,7 +1813,18 @@ void func_800998CC(CTTask* arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009ABF4.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009AC74.s")
+void func_8009AC74(CTTask* arg0) {
+    func_80099AF4();
+
+    if (arg0->unk54 == 2) {
+        arg0->function = func_8009ACC8;
+        return;
+    }
+    if (arg0->unk54 == 0) {
+        arg0->function = func_8009ABF4;
+    }
+}
+
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009ACC8.s")
 

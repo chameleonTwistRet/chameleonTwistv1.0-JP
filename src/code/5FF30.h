@@ -52,6 +52,9 @@ typedef struct unk80097CF8 {
 
 
 /* Functions */
+void func_8009ABF4(CTTask*);
+void func_8009ACC8(CTTask*);
+void func_80094DBC(CTTask* task);
 void func_8009DE1C (CTTask*);
 s32 func_8008D7FC(void);
 void func_80092474(CTTask*);
