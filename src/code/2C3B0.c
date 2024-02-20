@@ -13,6 +13,91 @@ s32 D_80176838;
 s32 D_8017683C;
 unk80176840 D_80176840;
 
+u32 D_800F0B50 = 0;
+u8 D_800F0B54[] = { 255, 0, 0, 0 };
+s32 D_800F0B58 = 0;
+s32 D_800F0B5C = -1;
+s32 D_800F0B60 = 0;
+s32 D_800F0B64 = 1;
+s32 D_800F0B68[4][4] = {
+    { 0, 0, 0, 0 },
+    { 0, 0, 0, 0 },
+    { 0, 0, 0, 0 },
+    { 0, 0, 0, 0 },
+};
+s32 gCharacterPortraitIndecies[6] = { 0x68, 0x69, 0x6A, 0x6B, 0x6C, 0x6D };
+s32 D_800F0BC0[4] = { 0, 0, 0, 0 };
+s32 D_800F0BD0[4] = { 0, 0, 0, 0 };
+u8 D_800F0BE0[4] = { 0, 3, 1, 2 };
+unk800F0BE4 D_800F0BE4[] = {
+    {
+        0,
+        16.0f, 14.0f,
+        36.0f, 14.0f,
+        34.0f, 14.0f,
+        0.0f,
+        0
+    },
+    {
+        0,
+        16.0f, 205.0f,
+        36.0f, 212.0f,
+        34.0f, 206.0f,
+        0.0f,
+        0
+    },
+    {
+        0,
+        288.0f, 14.0f,
+        240.0f, 14.0f,
+        260.0f, 14.0f,
+        0.0f,
+        0
+    },
+    {
+        0,
+        288.0f, 205.0f,
+        240.0f, 212.0f,
+        260.0f, 206.0f,
+        0.0f,
+        0
+    }
+};
+s32 D_800F0C74 = 999999999;
+s32 D_800F0C78[] = { 1, 10, 100, 1000, 10000, 100000, 1000000, 10000000 };
+u8 D_800F0C98[] = { 19, 21, 4, 4, 5, 14, 100, 4, 5, 1, 20, 8 };
+unk_80052094_8 D_800F0CA4[] = {
+    { 0.0f, 2 },
+    { 9.0f, 0 },
+    { 255.0f, 255 },
+    { 2.0f, 2 },
+    { 4.0f, 0 },
+    { 7.0f, 0 },
+};
+unk_80052094_8 D_800F0CD4[] = {
+    { 9.0f, 2 },
+    { 8.0f, 0 },
+    { 6.0f, 0 },
+};
+unk_80052094_8 D_800F0CEC[] = {
+    { 0.0f, 2 },
+    { 255.0f, 255 },
+    { 2.0f, 2 },
+    { 4.0f, 0 },
+    { 7.0f, 0 },
+};
+unk_80052094_8 D_800F0D14[] = {
+    { 1.0f, 0 },
+    { 0.0f, 2 },
+    { 0.0f, 0 },
+    { 2.0f, 2 },
+    { 4.0f, 2 },
+};
+u8 D_800F0D3C[] = { 2, 2, 2, 3, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 7, 7, 6, 6, 5, 5, 4, 4, 3, 3, 3, 2 };
+u8 D_800F0D58[] = { 0, 0, 0, 1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4, 5, 5, 5, 6, 6, 6, 7, 7, 7, 8, 8, 8, 9, 9, 9, 10, 10, 10, 11, 11, 11, 12, 12, 12, 13, 13, 13, 14, 14, 14 };
+s32 D_800F0D88 = 0;
+s8 D_800F0D8C = 3;
+
 void func_80050FB0(void) {
     s32 i;
 
@@ -140,6 +225,7 @@ s32 func_80051548(s32 arg0) {
 }
 #else
 #pragma GLOBAL_ASM("asm/nonmatchings/code/2C3B0/func_80051548.s")
+s32 func_80051548(s32 arg0);
 #endif
 
 
@@ -413,9 +499,106 @@ void func_800525E8(s32 arg0, f32 arg1) {
     }
 }
 
+#ifdef NON_MATCHING
+void func_80052890(u32 arg0) {
+    static u8 D_80176840;
+    static u8 D_80176841;
+    s32 temp_t6 = D_800F0B50 & 0x1F;
+    
+    if (temp_t6 >= 0 && temp_t6 < 8) {
+        D_80176840 = (temp_t6 % 8) * 175.0f / 8.0f;
+        D_80176840 += 80;
+    }
+    if (temp_t6 >= 8 && temp_t6 < 16) {
+        D_80176841 = (temp_t6 % 8) * 175.0f / 8.0f;
+        D_80176841 += 80;
+    }
+    
+    if (temp_t6 >= 16 && temp_t6 < 24) {
+        D_80176840 = (1 - (temp_t6 % 8) / 8.0f) * 175.0f;
+        D_80176840 += 80;
+    }
+    if (temp_t6 >= 24 && temp_t6 <= 32) {
+        D_80176841 = (1 - (temp_t6 % 8) / 8.0f) * 175.0f;
+        D_80176841 += 80;
+    }
+    
+    switch (arg0) {
+        case 0:
+            SetTextGradient(0, D_80176840 * 0.8, D_80176840, 255,
+                            0, D_80176841 * 0.8, D_80176841, 255,
+                            0, D_80176840 * 0.8, D_80176840, 255,
+                            0, D_80176841 * 0.8, D_80176841, 255);
+            break;
+        case 1:
+            SetTextGradient(D_80176840 * 0.4, D_80176840, 0, 255,
+                            D_80176841 * 0.4, D_80176841, 0, 255,
+                            D_80176840 * 0.4, D_80176840, 0, 255,
+                            D_80176841 * 0.4, D_80176841, 0, 255);
+            break;
+        case 2:
+            SetTextGradient(D_80176840, D_80176840, 0, 255,
+                            D_80176841, D_80176841, 0, 255,
+                            D_80176840, D_80176840, 0, 255,
+                            D_80176841, D_80176841, 0, 255);
+            break;
+        case 3:
+            SetTextGradient(D_80176840, D_80176840 * 0.4, D_80176840 * 0.5, 255, 
+                            D_80176841, D_80176841 * 0.4, D_80176841 * 0.5, 255,
+                            D_80176840, D_80176840 * 0.4, D_80176840 * 0.5, 255, 
+                            D_80176841, D_80176841 * 0.4, D_80176841 * 0.5, 255);
+            break;
+        case 4:
+            SetTextGradient(D_80176840 * 0.4, D_80176840 * 0.2, D_80176840, 255,
+                            D_80176841 * 0.4, D_80176841 * 0.2, D_80176841, 255,
+                            D_80176840 * 0.4, D_80176840 * 0.2, D_80176840, 255,
+                            D_80176841 * 0.4, D_80176841 * 0.2, D_80176841, 255);
+            break;
+        case 5:
+            SetTextGradient(D_80176840, D_80176840, D_80176840, 255,
+                            D_80176841, D_80176841, D_80176841, 255,
+                            D_80176840, D_80176840, D_80176840, 255,
+                            D_80176841, D_80176841, D_80176841, 255);
+            break;
+    }
+}
+#else
 #pragma GLOBAL_ASM("asm/nonmatchings/code/2C3B0/func_80052890.s")
+void func_80052890(u32 arg0);
+#endif
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/2C3B0/func_800536D8.s")
+void func_800536D8(void) {
+    s32 i, j;
+    f32 sp9C;
+    s32 v0;
+    f32 sp94;
+
+    sp94 = func_80051678(D_8017682C, &sp9C, 88.0f, 256.0f);
+
+    for (i = 0; i < 4; i++) {
+        if (gPlayerActors[i].active == 1) {
+            f32 y = 128.0f;
+            func_800525E8(i, sp9C - 4.0f);
+            for (j = 0; j < 4; j++, y += 24) {
+                if (j == D_800F0BC0[i] && D_80176828 == 0) {
+                    func_80052890(gSelectedCharacters[i]);
+                } else {
+                    SetTextGradientFromPalette(1);
+                }
+
+                if (D_800F0B68[i][j] >= 10) {
+                    v0 = 2;
+                } else {
+                    v0 = 1;
+                }
+
+                func_800523E4(sp9C + 12.8f * (v0 == 1), y, 0.8f, 0.8f, D_800F0B68[i][j], v0, 0);
+                
+            }
+            sp9C += sp94;
+        }
+    }
+}
 
 //prints "HURRY!" during MP Battle [9 times]
 void Multiplayer_PrintHurry(void) {
@@ -436,7 +619,30 @@ void func_80053950(void) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/2C3B0/func_80053A70.s")
+void func_80053A70(f32 arg0, f32 arg1) {
+    f32 var_f26;
+    s32 i;
+
+    if (D_800F0B50 <= 20) {
+        var_f26 = D_800F0B50 / 20.0f;
+    } else if (D_800F0B50 > 20 && D_800F0B50 < 130) {
+        var_f26 = 1.0f;
+    } else if (D_800F0B50 >= 130 && D_800F0B50 < 150) {
+        var_f26 = 1.0f - (D_800F0B50 - 130.0f) / 20.0f;
+    } else {
+        return;
+    }
+
+    for (i = 0; i < 12; i++) {
+        if ((D_800F0B50 % 10) < 5 && var_f26 == 1.0f) {
+            SetTextGradientFromPalette(1);
+        } else {
+            SetTextGradientFromPalette(4);
+        }
+        func_800612F0(0);
+        printUISprite(arg0 + i * 11.2f, arg1 + (1 - var_f26) * 12.0f, 0.0f, 0.0f, 1.0f, 11.2f, 16.8f * var_f26, D_800F0C98[i], 1);
+    }    
+}
 
 void func_80053CA0(void) {
     s32 i, j;
@@ -450,9 +656,59 @@ void func_80053CA0(void) {
     func_800536D8();
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/2C3B0/func_80053DA8.s")
+void func_80053DA8(s32 arg0) {
+    s32 i;
+    s32 activeCount;    
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/2C3B0/func_80053FA0.s")
+    if (arg0 == 0) {
+        for (i = 0; i < 4; i++) {
+            if (gPlayerActors[i].active == 1 && D_800F0BC0[i] == 0) {
+                break;
+            }
+        }
+    } else {
+        i = -1;
+    }
+    
+    activeCount = func_8005177C(i);
+    if (activeCount >= 0) {
+        D_800F0CEC[0].unk_00 = activeCount + 5;
+    } else {
+        D_800F0CA4[0].unk_00 = i + 5;
+    }
+    if (i == -1) {
+        func_80077688(70.0f, 80.0f, 170.0f, 1.0f, 5, D_800F0D14, 0x11, 0x12, 5.0f, 10.0f, 120.0f);
+    } else if (activeCount >= 0) {
+        func_80077688(60.0f, 80.0f, 180.0f, 0.8f, 8, D_800F0CD4, 0x13, 0x14, 5.0f, 8.0f, 120.0f);
+    } else {
+        func_80077688(70.0f, 80.0f, 170.0f, 1.0f, 6, D_800F0CA4, 0x13, 0x14, 5.0f, 10.0f, 120.0f);
+    }
+}
+
+void func_80053FA0(s32 arg0) {
+    f32 sp84;
+    f32 sp80;
+    f32 sp7C;
+    f32 sp78;
+    f32 posX;
+
+    sp78 = cosf((gPlayerActors[arg0].yAngle - 90.0f) * 2 * 3.141592653589793 / 360.0);
+    sp7C = sinf((gPlayerActors[arg0].yAngle - 90.0f) * 2 * 3.141592653589793 / 360.0);
+    sp80 = cosf((gPlayerActors[arg0].yAngle + 260.0f) * 2 * 3.141592653589793 / 360.0);
+    sp84 = sinf((gPlayerActors[arg0].yAngle + 260.0f) * 2 * 3.141592653589793 / 360.0);
+
+    posX = gPlayerActors[arg0].pos.x; // required for matching
+    
+    func_80068A88(D_80176B78->f5.x, D_80176B78->f5.y, D_80176B78->f5.z,
+                  gPlayerActors[arg0].pos.x, gPlayerActors[arg0].pos.y + 300.0f, gPlayerActors[arg0].pos.z,
+                  gPlayerActors[arg0].pos.x, gPlayerActors[arg0].pos.y + 150.0f, gPlayerActors[arg0].pos.z,
+                  D_80176B78->f3.x * 3.0f, D_80176B78->f3.y * 3.0f, D_80176B78->f3.z * 3.0f,
+                  posX + sp78 * 1000.0f, gPlayerActors[arg0].pos.y + 120.0f, gPlayerActors[arg0].pos.z - sp7C * 1000.0f,
+                  posX + sp80 * 300.0f, gPlayerActors[arg0].pos.y + 90.0f, gPlayerActors[arg0].pos.z - sp84 * 300.0f,
+                  60.0f, 60.0f, 360.0f);
+    func_80070970(D_800F0B54, gPlayerActors[arg0].pos.x, gPlayerActors[arg0].pos.y - 20.0f, gPlayerActors[arg0].pos.z,
+                  gPlayerActors[arg0].yAngle, D_800F0DE0, gSelectedCharacters[arg0], 1, 2);
+}
 
 void func_8005423C(void) {
     s32 i;
@@ -461,8 +717,32 @@ void func_8005423C(void) {
     }
 }
 
-//https://decomp.me/scratch/YLdZC
-#pragma GLOBAL_ASM("asm/nonmatchings/code/2C3B0/func_80054284.s")
+void func_80054284(void) {
+    f32 temp_f22;
+    s32 var_s1;
+    s32 i;
+    f32 sp88;
+
+    func_8005423C();
+    temp_f22 = func_80051678(D_8017682C, &sp88, -160.0f, 310.0f);
+    for (i = 0; i < 4; i++) {
+        if (gPlayerActors[i].active == 1) {
+            if (D_8017682C == D_800F0BC0[i] + 1) {
+                var_s1 = 3;
+                SetPlayerContextEyes(gSelectedCharacters[i], 2, 0);
+            } else {
+                var_s1 = D_800F0BC0[i];
+                SetPlayerContextEyes(gSelectedCharacters[i], 1, (D_800F0BC0[i] == 0) ^ 1);
+            }
+            if (D_800F0B60 == 1) {
+                var_s1 = 1;
+                SetPlayerContextEyes(gSelectedCharacters[i], 0, 0);
+            }
+            func_80070970(D_800F0B54, sp88, D_800F0D90[var_s1].unk10, -500.0f, -sp88 / 12.0f, &D_800F0D90[var_s1], gSelectedCharacters[i], 0, 0);
+            sp88 += temp_f22;
+        }
+    }
+}
 
 void func_8005444C(void) {
     if (D_801749B0.unk_04 == 1) {
@@ -506,7 +786,46 @@ void func_8005456C(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, s32 arg5) {
     }
 }
 
+#ifdef NON_MATCHING
+void func_800546F0(void) {
+    s32 i;
+    
+    D_800F0B58 = 0;
+    D_800F0B64 = 1;
+    D_80176824 = D_8020250C;
+    D_801749B0.unk_04 = 0;
+    D_800F0674 = 0;
+    D_800F0C74 = 999999999;
+    D_80176828 = 99;
+    D_800FE74C = 0;
+    D_800F0B60 = 0;
+    D_800F0B5C = -1;
+    D_800F0B54[0] = 255;
+
+    for (i = 0; i < 4; i++) {
+        D_800F0BE4[i].unk_20 = 99;
+        D_800F0BE4[i].unk_1C = 0.0f;
+    }
+    LoadSprite(0x6E);
+    LoadSprite(0x5E);
+    LoadSprite(0xD5);
+    LockEyeChange();
+    LoadPlayerEyes(0);
+    LoadPlayerEyes(1);
+    LoadPlayerEyes(2);
+    LoadPlayerEyes(3);
+    LoadPlayerEyes(4);
+    LoadPlayerEyes(5);
+    StopBGM();
+    if (gSelectedBattleBGM == -1) {
+        gMultiplayerBGM = (Rand() % 3) + 7;
+    } else {
+        gMultiplayerBGM = gSelectedBattleBGM + 7;
+    }
+}
+#else
 #pragma GLOBAL_ASM("asm/nonmatchings/code/2C3B0/func_800546F0.s")
+#endif
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/2C3B0/func_80054864.s")
 

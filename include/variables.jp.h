@@ -24,7 +24,7 @@ extern s32 D_800F68A8;              // s32 (but really only 1bit) is controller 
 extern s32 sDebugInt;
 extern s32 D_800F06EC;
 extern s32 sDebugTestView;
-extern s8 D_800F0B54;
+extern u8 D_800F0B54[];
 extern s32 D_800F6880;
 extern s32 gPrevButtons[MAXCONTROLLERS];
 extern s32 gButtons[MAXCONTROLLERS];
