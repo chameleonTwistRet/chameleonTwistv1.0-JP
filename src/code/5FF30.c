@@ -429,8 +429,10 @@ s32 func_8008873C(f32* arg0, f32* arg1, f32* arg2) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_8010D8E0.s")
 
+// Display In Game Timer
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80089BA0.s")
 
+// Exit Stage Menu?
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80089E24.s")
 
 void PlayJungleExtSfx(void) {
@@ -827,12 +829,12 @@ void CTTask_Run(CTTask* task) {
     
     temp = taskFunc = task->function;
     if (taskFunc == 0) {
-        DummiedPrintf("NULL POINTER %d\n", task->type);
+        DummiedPrintf("NULL POINTER %d\n", task->taskID);
         taskFunc = task->function;
     }
     // If function ptr is not in virtual memory space
     else if ((u32)taskFunc < 0x80000000U) {
-        DummiedPrintf("BAD POINTER %d, %X\n", task->type, (u32)task->function);
+        DummiedPrintf("BAD POINTER %d, %X\n", task->taskID, (u32)task->function);
         taskFunc = task->function;
     }
     
@@ -855,7 +857,7 @@ void CTTask_Unlink(CTTask* taskToRemove) {
 
     nextTask->prev = prevTask;
     prevTask->next = nextTask;
-    taskToRemove->active = 0;
+    taskToRemove->runType = 0;
 }
 
 /**
@@ -887,10 +889,10 @@ void CTTaskList_Init(void) {
     if (gCTTaskTail == NULL) {
         DummiedPrintf("TaskInit()メモリ足りません\n", &gCTTaskTail);
     }
-    gCTTaskHead->type = 0;
+    gCTTaskHead->taskID = 0;
     gCTTaskHead->next = gCTTaskTail;
     gCTTaskHead->prev = NULL;
-    gCTTaskTail->type = 0xFF;
+    gCTTaskTail->taskID = 0xFF;
     gCTTaskTail->next = NULL;
     gCTTaskTail->prev = gCTTaskHead;
 }
@@ -905,13 +907,13 @@ void CTTask_Unlink_2(CTTask* task) {
     prevTask = task->prev;
     nextTask->prev = prevTask;
     prevTask->next = nextTask;
-    task->active = 0;
+    task->runType = 0;
     Free(task);
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/bzero32.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/Task_Alloc.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/CTTask_Alloc.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008D060.s")
 
@@ -1070,10 +1072,10 @@ s32 GetBaseStage(u32 arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/MemsizeCheck.s")
 
 //Uses "GameModes" enum
-void SetProcessType(s32 arg0) {
+void SetProcessType(s32 gameMode) {
     DummiedPrintf(" 元%d %d\n", gGameModeCurrent, gGameModeState);
     gGameModeState = 0;
-    gGameModeCurrent = arg0;
+    gGameModeCurrent = gameMode;
     DummiedPrintf(" 後%d %d\n", gGameModeCurrent, gGameModeState);
 }
 
@@ -1305,7 +1307,7 @@ s32 func_80090B10(s32 time, s32 arg1) {
 //#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80092324.s")
 void func_80092324(s32 arg0) {              // Cy
     if (func_8008EC90() != 0) {
-        SetProcessType(1);
+        SetProcessType(GAME_MODE_LEVEL_INTRO_MENU);
         return;
     }
     DummiedPrintf("フェード待ち\n");
@@ -1335,17 +1337,10 @@ void func_8009244C(CTTask* task) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800927E8.s")
 
-                   
-void func_8009288C(void);
-typedef struct unkArg0 {
-    char unk_00[8];
-    void* unk8;
-} unkArg0;
-void func_80092864(unkArg0* arg0) {
-    arg0->unk8 = &func_8009288C;
+void func_80092864(CTTask* task) {
+    task->function = &func_8009288C;
     func_8008D7FC();
 }
-
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009288C.s")
 
@@ -1406,12 +1401,12 @@ void func_800935F8(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009384C.s")
 
-void func_800938B0(CTTask* arg0) {
-    CTTask* task;
+void func_800938B0(CTTask* task) {
+    CTTask* otherTask;
 
-    task = arg0->unk58;
-    if ((arg0->unk54 == 6) && (task->unk54 < 7)) {
-        task->unk54 = 7;
+    otherTask = task->unk58;
+    if ((task->unk54 == 6) && (otherTask->unk54 < 7)) {
+        otherTask->unk54 = 7;
     }
 }
 
@@ -1519,16 +1514,16 @@ void func_80094E0C(CTTask* arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80095264.s")
 
-void func_80095500(CTTask* arg0) {
+void func_80095500(CTTask* task) {
     CTTask* temp;
     
-    if (arg0->unk_5C != 0) {
-        arg0->unk_5C--;
+    if (task->unk_5C != 0) {
+        task->unk_5C--;
         return;
     }
-    temp = arg0->unk58;
+    temp = task->unk58;
     temp->unk54 = 1;
-    CTTask_Unlink(arg0);
+    CTTask_Unlink(task);
 }
 
 
@@ -1791,9 +1786,9 @@ void func_80097CF8(CTTask* task) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80098F50.s")
 
-void func_80099570(CTTask* arg0) {
+void func_80099570(CTTask* task) {
     func_800983C8();
-    func_80098F50(arg0);
+    func_80098F50(task);
 }
 
 void func_80099598(CTTask* arg0) {
@@ -2076,7 +2071,7 @@ void func_8009E2B0(CTTask* arg0) {
 
 void func_800A07E0(void) {
     func_8008F16C();
-    gGameModeCurrent = 7;
+    gGameModeCurrent = GAME_MODE_BATTLE_MENU;
     gGameModeState = 7;
 }
 
@@ -2264,7 +2259,7 @@ void func_800A4074(CTTask*);                        /* extern */
 void func_800A3DC0(CTTask* arg0) {
     CTTask* temp_v0;
 
-    temp_v0 = Task_Alloc(1, 0x64, 0);
+    temp_v0 = CTTask_Alloc(1, 0x64, NULL);
     temp_v0->unk58 = arg0;
     temp_v0->function = func_800A4074;
     temp_v0->unk_62 = 0;
@@ -2282,7 +2277,7 @@ void func_800A3DC0(CTTask* arg0) {
 
 // Create Game Over Task?
 CTTask* func_800A4484(void) {
-    CTTask* task = Task_Alloc(1, 100, NULL);
+    CTTask* task = CTTask_Alloc(1, 100, NULL);
     
     if (task == NULL) {
         DummiedPrintf("エラー\n");
@@ -2397,7 +2392,7 @@ void Process_GameOver(void) {
 }
 
 CTTask* func_800A5060(void){
-    CTTask* t = Task_Alloc(1, 100, NULL);
+    CTTask* t = CTTask_Alloc(1, 0x64, NULL);
 
     if(!t){
         DummiedPrintf("エラー\n");
@@ -2535,7 +2530,7 @@ s32 func_800A5778(s32 arg0) {
 void func_800A6B34(void) {
     CTTask* task;
 
-    task = Task_Alloc(1, 100, 0);
+    task = CTTask_Alloc(1, 0x64, NULL);
     if (task == NULL) {
         DummiedPrintf("エラー\n");
         while (1) {}
@@ -2551,7 +2546,7 @@ void func_800A6B80(CTTask* arg0) {
     arg0->unk_64 = 0;
     
     func_8008EA60(0x20, 0, 0, 0, &arg0->unk_64);
-    Task_Alloc(1, 0x62, 0)->function = PrintSelectedStageInfo;
+    CTTask_Alloc(1, 0x62, NULL)->function = PrintSelectedStageInfo;
 }
 
 void func_800A6C04(CTTask* arg0) {
@@ -3122,7 +3117,7 @@ void func_800A93AC(ContMain* arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A9450.s")
 
 void func_800A9690(void) {
-    CTTask* task = Task_Alloc(1, 100, NULL);
+    CTTask* task = CTTask_Alloc(1, 100, NULL);
 
     if (task == NULL) {
         //"エラー\n"("error")
@@ -3177,11 +3172,12 @@ void func_800A97E4(CTTask* arg0) {
  * 
  * @param zone: room number 
  */
-void func_800AA844(s32 arg0) {
-    gCurrentZone = arg0;
+void func_800AA844(s32 zone) {
+    gCurrentZone = zone;
     func_800C29D8(gCurrentZone);
 }
 
+// Loads demo data, stage / player start position
 void func_800AA86C(void) {
     if (D_80101048.unk_00 == gCurrentDemoTimer) {
         func_800AA844(0);

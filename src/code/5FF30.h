@@ -79,7 +79,7 @@ void RecordTime_SetTo(s32, u8*);
 void SaveData_LoadFile(s32, SaveFile*);
 void func_800A25F0(s32, f32);
 void func_800A50B4(CTTask*);
-CTTask* Task_Alloc(s16, s32, s32);
+CTTask* CTTask_Alloc(s16, s32, s32);
 void SaveData_Wait(void);
 s32 SaveData_VerifyFile(u8*, SaveFile*);
 void SaveData_LoadFile(s32, SaveFile*);
@@ -117,6 +117,7 @@ void func_8009C644(CTTask*);
 void Video_SetTask(graphicStruct* arg0, Gfx* arg1, s32 arg2);
 void func_8008F7A4(s32, s32);
 void func_80097540(CTTask*);
+void func_8009288C(CTTask*);
 
 /* Ext Variables */
 extern ContMain D_801FC9B8;

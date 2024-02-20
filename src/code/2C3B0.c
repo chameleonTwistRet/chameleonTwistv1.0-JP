@@ -177,19 +177,19 @@ void func_8005444C(void) {
         D_800FE74C = 0;
         D_800F0B5C = -1;
         func_8005423C();
-        SetProcessType(0xE);
+        SetProcessType(GAME_MODE_STAGE_SELECT);
         return;
     case 3:
         D_800FE74C = 0;
         D_800F0B5C = -1;
         func_8005423C();
-        SetProcessType(7);
+        SetProcessType(GAME_MODE_BATTLE_MENU);
         return;
     case 4:
         D_800FE74C = 0;
         D_800F0B5C = -1;
         func_8005423C();
-        SetProcessType(6);
+        SetProcessType(GAME_MODE_TITLE_SCREEN);
         /* fallthrough */
     default:
         return;

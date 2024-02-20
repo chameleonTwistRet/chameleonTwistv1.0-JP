@@ -458,8 +458,8 @@ typedef struct tempStruct {
 } tempStruct; //sizeof 0x48
 
 typedef struct CTTask {
-    /* 0x00 */ s16 active;
-    /* 0x02 */ s16 type;
+    /* 0x00 */ s16 runType;
+    /* 0x02 */ s16 taskID;
     /* 0x04 */ s16 unk_04;
     /* 0x06 */ s8 unk06[2];
     /* 0x08 */ void (*function)(struct CTTask*);
