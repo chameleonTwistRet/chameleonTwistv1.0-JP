@@ -19,7 +19,10 @@ s32 D_801749A0;
 s32 D_801749A4;
 s32 D_801749A8;
 s32 D_801749AC;
-unk801749B0 D_801749B0;
+s32 D_801749B0;
+s32 D_801749B4;
+char D_801749B8[24];
+s32 D_801749D0;
 
 
 char D_801749D8[0x78];
@@ -814,7 +817,7 @@ void func_8002F7F0(void) {
 }
 
 void func_8002F884(s32 arg0, s32 arg1) {
-    if (((D_801749B0.unk_00 == 0) || (gCurrentActivePlayerPointer->playerID != 1)) && (D_80168D78[arg0] == 0)) {
+    if (((D_801749B0 == 0) || (gCurrentActivePlayerPointer->playerID != 1)) && (D_80168D78[arg0] == 0)) {
         if (gameModeCurrent == GAME_MODE_BATTLE_MENU) {
             Rumble_AddTime(arg0, ((arg1 * 100) / 6.0f));
         } else {

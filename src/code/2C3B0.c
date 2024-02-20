@@ -9,9 +9,6 @@ s32 D_80176828;
 s32 D_8017682C;
 s32 gMultiplayerBGM;
 s32 D_80176834;
-s32 D_80176838;
-s32 D_8017683C;
-unk80176840 D_80176840;
 
 u32 D_800F0B50 = 0;
 u8 D_800F0B54[] = { 255, 0, 0, 0 };
@@ -101,7 +98,7 @@ s8 D_800F0D8C = 3;
 void func_80050FB0(void) {
     s32 i;
 
-    if (D_801749B0.unk_04 == 0) {
+    if (D_801749B4 == 0) {
         for (i = 0; i < PLAYERS_MAX; i++) {
             if (gPlayerActors[i].active == TRUE) {
                 if (gPlayerActors[i].pos.y < -10.0f) {
@@ -189,13 +186,13 @@ s32 func_8005119C(void) {
     return sum_1;
 }
 
-#ifdef NON_MATCHING
 s32 func_80051548(s32 arg0) {
+    static s32 D_80176838;
     s32 var_v1 = 0;
     s32 i;
     
     if (D_800F0C74 == D_800F0B50) {
-        s32 a1 = D_800F0BD0[arg0] = D_80176838;
+        D_800F0BD0[arg0] = D_80176838;
 
         for (i = 0; i < PLAYERS_MAX; i++) {
             D_800F0BD0[i]--;
@@ -207,27 +204,24 @@ s32 func_80051548(s32 arg0) {
             }
         }
 
-        D_80176838 = a1 - 1;
+        D_80176838--;
     } else {
-        s32 temp_a2 = D_80176834;
-        D_80176838 = D_800F0BD0[arg0] = temp_a2;
-        D_80176834 = temp_a2 - 1;
+        D_80176838 = D_800F0BD0[arg0] = D_80176834;
+        D_80176834--;
     }
     
     D_800F0C74 = D_800F0B50;
-    
-    if (var_v1 >= 2) {
-        return 0;
-    } else {
-        var_v1 = -1;
-        return var_v1;
-    }
-}
-#else
-#pragma GLOBAL_ASM("asm/nonmatchings/code/2C3B0/func_80051548.s")
-s32 func_80051548(s32 arg0);
-#endif
 
+    if (var_v1 >= 2) {
+        var_v1 = 0;
+    } else {        
+        var_v1 = -1;        
+    }
+    return var_v1;
+}
+
+s32 D_8017683C;
+unk80176840 D_80176840;
 
 f32 func_80051678(u8 arg0, f32* arg1, f32 arg2, f32 arg3) {
     f32 ret;
@@ -297,10 +291,10 @@ void func_800517EC(void) {
 #ifdef NON_MATCHING
 void func_80051910(s32 arg0) {
     if (D_800F0BC0[arg0] == 0) {
-        s8 q = D_800F0B50 * 16;
-        SetTextGradient(255, q, 32, 255,
+        s8 g = D_800F0B50 * 16;
+        SetTextGradient(255, g, 32, 255,
                         255, 0,  0, 255,
-                        255, q, 32, 255,
+                        255, g, 32, 255,
                         255, 0,  0, 255);
     } else {
         SetTextGradientFromPalette(5);
@@ -745,7 +739,7 @@ void func_80054284(void) {
 }
 
 void func_8005444C(void) {
-    if (D_801749B0.unk_04 == 1) {
+    if (D_801749B4 == 1) {
         func_800771DC(&D_800FE404, 16.0f, 16.0f, 1, 5, &D_800F0B5C, 0.0f, 0.0f, 320.0f, 240.0f);
     }
     switch (D_800F0B5C) {
@@ -779,22 +773,20 @@ void func_8005444C(void) {
 void func_8005456C(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, s32 arg5) {
     Mtx sp30;
 
-    if (D_800F0B50 & 1) {
+    if (D_800F0B50 % 2) {
         setPrimColor(D_800FE564[arg5].unk0, D_800FE564[arg5].unk1, D_800FE564[arg5].unk2, D_800FE564[arg5].unk3 * flabs((arg3 / arg1)));
         guAlign(&sp30, 0.0f, 0.0f, 100.0f, 0.0f);
         func_80058BE4(&sp30, arg0, arg1, arg2, arg4, arg4, 0.0f, 0x4A);
     }
 }
 
-#ifdef NON_MATCHING
 void func_800546F0(void) {
     s32 i;
     
     D_800F0B58 = 0;
     D_800F0B64 = 1;
     D_80176824 = D_8020250C;
-    D_801749B0.unk_04 = 0;
-    D_800F0674 = 0;
+    D_800F0674 = D_801749B4 = 0;
     D_800F0C74 = 999999999;
     D_80176828 = 99;
     D_800FE74C = 0;
@@ -823,11 +815,338 @@ void func_800546F0(void) {
         gMultiplayerBGM = gSelectedBattleBGM + 7;
     }
 }
+
+#ifdef NON_MATCHING
+void func_80054864(void) {
+    s32 var_v0;
+    s32 var_v1;
+    s32 var_v1_3;
+    u32 var_v1_2;
+    s32 i;
+
+    if (gCurrentStage != 7 || D_801749AC == 0) {
+        return;
+    }
+    
+    if (gCurrentZone >= 4) {
+        D_801749AC = 2;
+    } else {
+        D_801749AC = 1;
+    }
+    
+    if (D_801749B4 == 0) {
+        var_v1 = 0;
+        var_v0 = 0;
+        for (i = 0; i < 4; i++) {
+            if (gPlayerActors[i].active != 0 && D_80168D78[i] == 0) {
+                var_v0++;
+                if (gPlayerActors[i].exists == 0) {
+                    var_v1++;
+                }
+            }
+        }
+        
+        if (var_v0 == var_v1) {
+            var_v1_2 = 0;
+        } else {
+            var_v1_2 = 1;
+        }
+        
+        for (i = 0; i < 4; i++) {
+            if (gPlayerActors[i].active != 0) {
+                if (!var_v1_2) {
+                    if (func_80055F10(i, 0x1000) == 1) {
+                        D_800F0674 = 1;
+                    }
+                }
+                if (gPlayerActors[i].exists != 0 && D_80168D78[i] == 0) {
+                    if (func_80055F10(i, 0x1000) == 1) {
+                        D_800F0674 = 1;
+                    }
+                }
+            }
+        }
+    }
+    
+    switch (D_800F0B58) {
+        case 0:
+            D_800F0674 = 2;
+            func_80055C74();
+            for (i = 0; i < 4 ; i++) {
+                if (gPlayerActors[i].active == 1) {
+                    D_8017682C++;
+                }
+            }
+    
+            if (D_801749AC == 1) {
+                D_80176834 = D_8017682C;
+            } else {
+                D_80176834 = 2;
+            }
+            for (i = 0; i < 4; i++) {
+                D_800F0BD0[i] = 0;
+                D_800F0BE4[i].unk_00 = 29;    
+                D_80176820[i] = 0;
+            }
+            for (i = 0; i < 4; i++) {
+                D_800F0BC0[i] = 0;
+            }
+            
+            D_800F0B50 = 0;
+            D_800F0B58 = 2;
+            func_800678EC(0xFF, 0xFF, 0xFF, 0, 0x2D);
+            break;
+        case 1:
+            break;
+        case 2:
+            func_80055C74();
+            D_800F0674 = 2;
+            D_800F0B50++;
+            if (D_800F0B50 > 45) {
+                D_800F0B58 = 3;
+                D_800F0B50 = 0;
+                playSoundEffect(0x3E, NULL, NULL, NULL, 0, 0x10);
+            }
+            break;
+        case 3:
+            func_80055C74();
+            D_800F0674 = 2;
+            D_800F0B50++;
+            func_8005171C();
+            func_80052094(80.0f, 100.0f, D_800F0B50 / 23.333334f, 0x11, 5U, D_800F0DF4, 1);
+            if (D_800F0B50 == 40) {
+                func_800705C4(8.0f, 90.0f, 0x5FFF);
+            }
+            if (D_800F0B50 > 70) {
+                D_800F0674 = 0;
+                D_800F0B58 = 4;
+                D_800F0B50 = 0;
+                D_8017683C = playSoundEffect(0x40, NULL, NULL, NULL, 0, 0x10);
+                PlayBGM(gMultiplayerBGM);
+                func_80055C80();
+            }
+            break;
+        case 4:
+            D_800F0B50++;
+            func_8005171C();
+            func_80052094(110.0f, 100.0f, 1.0f, 0x13, 3, D_800F0E1C, 1);
+            if (D_800F0B50 > 20) {
+                D_800F0B58 = 5;
+                D_800F0B50 = 0;
+                func_80087358(D_8017683C);
+            }
+            break;
+        case 5:
+            if (D_801749B4 == 0) {
+                D_80176824--;
+                D_800F0B50++;
+            }
+            func_800517EC();
+            func_8005171C();
+            func_8005444C();
+            switch (D_801749AC) {
+                case 1:
+                    for (i = 0; i < 4; i++) {
+                        if (gPlayerActors[i].active == 1 && gPlayerActors[i].exists == 0) {
+                            if (D_80176820[i] == 0) {
+                                if (func_80051548(i) == 0) {
+                                    D_800F0B60 = 1;
+                                    D_80176828 = 0x63;
+                                    D_80176824 = 0;
+                                    break;
+                                } else {
+                                    D_80176820[i]++;
+                                }
+                            } else {
+                                func_80051B24(i);
+                            }
+                        }
+                    }
+                    Multiplayer_PrintHurry();
+                    func_80053950();
+                    if (D_800F0B60 == 0) {
+                        D_80176828 = func_8005119C();
+                    }
+                    if (D_800F0B60 == 1 || D_80176828 == 0 || D_80176824 <= 0) {
+                        D_800F0B50 = 0;
+                        if (D_80176828 > 0) {
+                            D_800F0B60 = 1;
+                        }
+                        if (D_800F0B60 == 0) {
+                            D_800F0B58 = 7;
+                        } else {
+                            D_800F0B58 = 8;
+                        }
+                    }
+                    break;
+                case 2:
+                    func_80050FB0();
+                    func_8005171C();
+                    D_80176828 = func_8005119C();
+                    for (i = 0; i < 4 ; i++) {
+                        if (gPlayerActors[i].active != 0) {
+                            func_80051910(i);
+                        }
+                    }
+                    Multiplayer_PrintHurry();
+                    func_80053950();
+                    if (D_80176824 <= 0) {
+                        if (D_80176828 != 0) {
+                            D_800F0B58 = 6;
+                            for (i = 0; i < 4; i++) {
+                                if (gPlayerActors[i].active != 0) {
+                                    D_800F0BD0[i] = D_800F0BC0[i] + 1;
+                                    if (D_800F0BC0[i] > 0) {
+                                        D_80176820[i] = 1;
+                                    }
+                                    D_80176834 = D_80176828 + 1;
+                                }
+                            }
+                        } else {
+                            D_800F0B58 = 7;
+                        }
+                        D_800F0B50 = 0;
+                    }
+                    break;
+            }
+            break;
+        case 6:
+            if (D_801749B4 == 0) {
+                D_800F0B50++;
+            }
+            func_8005171C();
+            for (i = 0; i < 4 ; i++) {
+                if (gPlayerActors[i].active != 0) {
+                    func_8005456C(gPlayerActors[i].pos.x, -300.0f, gPlayerActors[i].pos.z,
+                                  gPlayerActors[i].pos.y, 200.0f, gSelectedCharacters[i]);
+                }
+            }
+            func_8005444C();
+            func_80053A70(90.0f, 16.0f);
+            func_800517EC();
+            func_80051F38();
+            for (i = 0; i < 4 ; i++) {
+                if (gPlayerActors[i].active != 0 && D_80176820[i] == 0 && gPlayerActors[i].pos.y < -10.0f) {
+                    if (func_80051548(i) == 0) {
+                        D_800F0B60 = 1;
+                        D_80176828 = 0x63;
+                        break;
+                    }
+                    D_80176820[i]++;
+                }
+            }
+            if (D_800F0B60 == 0) {
+                D_80176828 = func_8005119C();
+            }
+            if (D_80176828 == 0 || D_800F0B60 == 1) {
+                if (D_800F0B60 == 0) {
+                    D_800F0B64 = D_800F0B58;
+                    D_800F0B58 = 7;
+                } else {
+                    D_800F0B58 = 8;
+                }
+                D_800F0B50 = 0;
+            }
+            break;
+        case 7:
+            D_800F0674 = 0;
+            D_800F0B58 = 8;
+            func_8005171C();
+            func_800517EC();
+            var_v1_3 = 0;
+            for (i = 0; i < 4; i++) {
+                if (gPlayerActors[i].active != 0) {
+                    if (gPlayerActors[i].exists != 0 && D_80176820[i] != 1 || D_800F0B64 != 1) {
+                        var_v1_3++;
+                        if (gPlayerActors[i].canJump != 0 || gPlayerActors[i].playerHURTSTATE != 0 || gTongues[i].tongueMode != 0) {
+                            if (D_800F0BC0[i] != 0) {
+                                func_80055C74();
+                            }
+                            D_800F0B58 = 7;
+                        }
+                    }
+                }
+            }
+            if (var_v1_3 == 0) {
+                D_800F0B58 = 8;
+                D_800F0B60 = 1;
+                D_80176828 = 99;
+            }
+            if (D_800F0B58 == 8 && var_v1_3 != 0) {
+                func_800510E0();
+            }
+            break;
+        case 8:
+            if (D_800F0B50++ < 16) {
+                D_800F0674 = 0;
+                func_800517EC();
+                func_80055C74();
+                break;
+            }
+            D_800F0674 = 2;
+            func_80055C74();
+            func_800517EC();
+            func_80051F38();
+            D_800F0B50 = 0;
+            func_80053DA8(D_80176828);
+            if (D_80176828 > 0 || D_800F0B60 == 1) {
+                for (i = 0; i < 4; i++) {
+                    D_800F0BC0[i] = 1;
+                }
+                func_8008BFE0(0x5A);
+            } else if (D_80176828 == 0 && D_800F0B60 == 0) {
+                PlayBGM(0xA);
+                for (i = 0; i < 4; i++) {
+                    if (gPlayerActors[i].active == 1 && D_800F0BC0[i] == 0) {
+                        UnlockEyeChange();
+                        SetPlayerContextEyes(gSelectedCharacters[i], 1, 0);
+                        func_80053FA0(i);
+                        gPlayerActors[i].pos.y = 5000.0f;
+                        break;
+                    }
+                }
+            }
+            D_800F0B50 = 0;
+            D_800F0B58 = 9;
+            break;
+        case 9:
+            func_80055C74();
+            D_800F0B50++;
+            D_800F0674 = 2;
+            func_8005171C();
+            func_800517EC();
+            func_80051F38();
+            if (D_801749AC == 2) {
+                for (i = 0; i < 4; i++) {
+                    if (gPlayerActors[i].active != 0) {
+                        func_8005456C(gPlayerActors[i].pos.x, -300.0f, gPlayerActors[i].pos.z,
+                                      gPlayerActors[i].pos.y, 200.0f, gSelectedCharacters[i]);
+                    }
+                }
+            }
+            if (D_800F0B50 > 120) {
+                StopBGM();
+                D_800F0B58 = 10;
+            }
+            break;
+        case 10:
+            D_800F0B50 = 0;
+            D_800F0B58 = 0;
+            D_800F0674 = 0;
+            D_800F0B54[0] = 0;
+            func_80055C80();
+            SetProcessType(0x11);
+            break;
+        default:
+            D_800F0B58 = 1;
+            D_800F0B50 = 0;
+            break;
+    }
+}
 #else
-#pragma GLOBAL_ASM("asm/nonmatchings/code/2C3B0/func_800546F0.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/2C3B0/func_80054864.s")
 #endif
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/2C3B0/func_80054864.s")
 
 void Process_Ranking(void) {
     switch (gGameModeState) {

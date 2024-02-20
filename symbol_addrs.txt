@@ -570,7 +570,6 @@ gIsPaused = 0x800ff5f8; // size:0x2 rom:0xda9f8
 gCurrentStage = 0x80174874; // size:0x4
 gButtons = 0x800F6898; // size:0x10
 gPrevButtons = 0x800F6888; // size:0x10
-D_801749B0 = 0x801749B0; //size:0x28
 aspMainTextStart = 0x800ef6c0; // size:0xe20 rom:0xcaac0
 aspMainDataStart = 0x801119d0; // size:0x2c0 rom:0xecdd0
 gspFast3DDataStart = 0x801111d0; // size:0x800 rom:0xec5d0

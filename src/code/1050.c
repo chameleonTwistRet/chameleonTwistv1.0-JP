@@ -284,7 +284,7 @@ void func_8002CE54(void) {
             } else {
                 func_8002CDBC(&sp28[0]);
             }
-        } else if (D_801749B0.unk_00 != 0) {
+        } else if (D_801749B0 != 0) {
             D_80168D78[1] = 1;
             func_8004CD9C(1, &sp28[1]);
         } else {
