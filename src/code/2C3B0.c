@@ -52,11 +52,11 @@ s32 func_8005119C(void) {
     
     switch (var_v0) {
         case 2:
-            for (i = 0; i < 4 ; i++) {
+            for (i = 0; i < PLAYERS_MAX ; i++) {
                 s32 total = 0;
-                if (gPlayerActors[i].active == 1) {
+                if (gPlayerActors[i].active == TRUE) {
                     for (j = 0; j < 4; j++) {
-                        if (gPlayerActors[j].active == 1) {
+                        if (gPlayerActors[j].active == TRUE) {
                             if (i != j && D_800F0BE4[D_800F0BE0[j]].unk_00 < D_800F0BE4[D_800F0BE0[i]].unk_00) {
                                 total++; 
                             }
@@ -73,8 +73,8 @@ s32 func_8005119C(void) {
             }
 
             if (sum_2 == 2) {
-                for (i = 0; i < 4; i++) {
-                    if (gPlayerActors[i].active == 1 && D_800F0BC0[i] == 3) {
+                for (i = 0; i < PLAYERS_MAX; i++) {
+                    if (gPlayerActors[i].active == TRUE && D_800F0BC0[i] == 3) {
                         D_800F0BC0[i] = 2;
                     }
                 }
@@ -86,8 +86,8 @@ s32 func_8005119C(void) {
             }
             break;
         case 1:
-            for (i = 0; i < 4; i++) {
-                if (gPlayerActors[i].active == 1) {
+            for (i = 0; i < PLAYERS_MAX; i++) {
+                if (gPlayerActors[i].active == TRUE) {
                     D_800F0BC0[i] = D_800F0BD0[i] - 1;
                     
                     if (D_800F0BD0[i] < 2) {
@@ -112,7 +112,7 @@ s32 func_80051548(s32 arg0) {
     if (D_800F0C74 == D_800F0B50) {
         s32 a1 = D_800F0BD0[arg0] = D_80176838;
 
-        for (i = 0; i < 4; i++) {
+        for (i = 0; i < PLAYERS_MAX; i++) {
             D_800F0BD0[i]--;
             if (D_800F0BD0[i] <= 0) {
                 D_800F0BD0[i] = 0;
@@ -227,19 +227,191 @@ void func_80051910(s32 arg0) {
 }
 #else
 #pragma GLOBAL_ASM("asm/nonmatchings/code/2C3B0/func_80051910.s")
+void func_80051910(s32 arg0);
 #endif
 
+#ifdef NON_MATCHING
+void func_80051B24(s32 arg0) {
+    f32 go;
+    f32 temp_f2;
+    f32 var_f12 = 1.0f;
+    f32 sp68 = 24.0f;
+    f32 sp64 = 16.0f;
+    f32 sp60 = 0.0f;
+    f32 sp5C = 0.0f;
+    s32 temp_t4;
+    
+    if (D_800F0BE4[D_800F0BE0[arg0]].unk_20 != D_800F0BC0[D_800F0BE0[arg0]]) {
+        D_800F0BE4[D_800F0BE0[arg0]].unk_20 = D_800F0BC0[D_800F0BE0[arg0]];
+        D_800F0BE4[D_800F0BE0[arg0]].unk_1C = 0;
+    } else {
+        D_800F0BE4[D_800F0BE0[arg0]].unk_1C += 0.125f;
+        if (D_800F0BE4[D_800F0BE0[arg0]].unk_1C <= 1.0f) {
+            var_f12 *= D_800F0BE4[D_800F0BE0[arg0]].unk_1C;
+            go = 1 - var_f12;
+            temp_f2 = 1.0f + 2.0f * go;
+            
+            sp68 *= temp_f2;
+            sp64 *= temp_f2;
+            sp60 = 24.0f;
+            sp5C = 16.0f;
+            sp60 *= go;
+            sp5C *= go;
+        }
+    }
+    
+    temp_t4 = D_800F0B50 % 64;
+    if (temp_t4 < 2 || temp_t4 >= 6 && temp_t4 < 8) {
+        SetTextGradient(255, 255, 255, 255 * var_f12, 
+                        255, 255, 255, 255 * var_f12, 
+                        255, 255, 255, 255 * var_f12, 
+                        255, 255, 255, 255 * var_f12);
+    } else {
+        switch (D_800F0BC0[arg0]) {
+            case 0:
+                SetTextGradientFromPaletteAlpha(0xD, var_f12);
+                break;
+            case 1:
+                SetTextGradientFromPaletteAlpha(0xE, var_f12);
+                break;
+            case 2:
+                SetTextGradientFromPaletteAlpha(0xF, var_f12);
+                break;
+            case 3:
+                SetTextGradientFromPaletteAlpha(0x10, var_f12);
+                break;
+        }
+    }
+    printUISprite(D_800F0BE4[D_800F0BE0[arg0]].unk_14 - sp60, D_800F0BE4[D_800F0BE0[arg0]].unk_18 - sp5C,
+                0, 0, 1, sp68, sp64, D_800F0BC0[arg0], 0xd5);
+}
+#else
 #pragma GLOBAL_ASM("asm/nonmatchings/code/2C3B0/func_80051B24.s")
+void func_80051B24(s32 arg0);
+#endif
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/2C3B0/func_80051F38.s")
+void func_80051F38(void) {
+    s32 i;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/2C3B0/func_80052094.s")
+    switch (D_800F0B58) {
+        case 6:
+            for (i = 0; i < PLAYERS_MAX; i++) {
+                if (gPlayerActors[i].active == TRUE) {
+                    if (D_801749AC == 2) {
+                        if (D_800F0BC0[i] < 2) {
+                            func_80051910(i);
+                        } else {
+                            func_80051B24(i);
+                        }
+                    } else if (D_801749AC == 1) {
+                        func_80051B24(i);
+                    }
+                }
+            }
+            break;
+        case 8:
+        case 9:
+            for (i = 0; i < 4; i++) {
+                if (gPlayerActors[i].active == TRUE && D_80176828 == 0) {
+                    func_80051B24(i);
+                }
+            }
+            break;
+    }
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/2C3B0/func_800522A4.s")
+void func_80052094(f32 x, f32 y, f32 arg2, s32 arg3, u8 arg4, unk_80052094_8* arg5, s32 arg6) {
+    s32 i;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/2C3B0/func_800523E4.s")
+    if (arg2 > 1.0f) {
+        arg2 = 1.0f;
+    }
+    
+    for (i = 0; i < arg4; i++) {        
+        SetTextGradientFromPalette(arg3);
+        func_800612F0(arg5[i].unk_04);
+        if (arg6 == 0) {
+            func_80059F28(x + 32 * i, y - 16.0f * arg2, 0.0f, 0.0f, 1.0f, 32.0f, 16 * arg2, arg5[i].unk_00, 0x5E);
+        } else {
+            printUISprite(x + 32 * i, y - 16.0f * arg2, 0.0f, 0.0f, 1.0f, 32.0f, 16 * arg2, arg5[i].unk_00, 0x5E);
+        }
+        SetTextGradientFromPalette(arg3 + 1);
+        func_800612F0(arg5[i].unk_04 + 1);
+        if (arg6 == 0) {
+            func_80059F28(x + 32 * i, y, 0.0f, 0.0f, 1.0f, 32.0f, 16 * arg2, arg5[i].unk_00, 0x5E);
+        } else {
+            printUISprite(x + 32 * i, y, 0.0f, 0.0f, 1.0f, 32.0f, 16 * arg2, arg5[i].unk_00, 0x5E);
+        }
+    }
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/2C3B0/func_800525E8.s")
+void func_800522A4(f32 arg0, f32 arg1, f32 arg2, f32 arg3, s32 arg4, s32 arg5) {
+    s32 var_s0;
+    s32 sp90;
+    s32 sp8C;    
+    s32 var_s1;
+
+    var_s0 = arg4;
+    var_s1 = 0;
+    while (arg4 != 0) {
+        if (func_80080318(1, arg4, &sp90, &sp8C) == 0) {
+            SetTextGradientFromPalette(arg5);
+            func_800612F0(sp8C);
+            func_80059F28(arg0 + 16.0f * arg2 * var_s1, arg1, 0, 0, 1.0f, 16 * arg2, 24.0f * arg3, sp90, 1);
+        }
+        
+        arg4 += 2;
+        var_s1++;
+    }
+}
+
+void func_800523E4(f32 arg0, f32 arg1, f32 arg2, f32 arg3, s32 arg4, s32 arg5, s32 arg6) {
+    s32 i;
+
+    func_800610A8();
+    if (arg5 > 8) {
+        arg5 = 8;
+    }
+    
+    for (i = 0; i < arg5; i++) {
+        s32 temp_s0 = (arg4 / D_800F0C78[arg5 - i - 1]) % 10;
+        func_800612F0(1);
+        if (arg6 != 0) {
+            printUISprite(arg0 + 16 * i * arg2, arg1, 0.0f, 0.0f, 1.0f, 16.0f * arg2, 24.0f * arg3,  temp_s0, 1);
+        } else {
+            func_80059F28(arg0 + 16 * i * arg2, arg1, 0.0f, 0.0f, 1.0f, 16.0f * arg2, 24.0f * arg3, temp_s0, 1);
+        }
+    }
+    func_800610B8();
+}
+
+void func_800525E8(s32 arg0, f32 arg1) {
+    s32 sp44;
+
+    sp44 = func_8005177C(arg0);
+    if (sp44 >= 0) {
+        arg1 -= 3;
+        func_800610A8();
+        SetTextGradientFromPalette(0);
+        
+        func_800612F0(0);
+        func_80059F28(arg1,      102.0f, 0.0f, 0.0f, 1.0f, 12.0f, 24.0f,  3.0f, 1);
+        func_80059F28(arg1 + 12, 104.6f, 0.0f, 0.0f, 1.0f, 12.0f, 24.0f, 15.0f, 1);
+        func_80059F28(arg1 + 24, 107.3f, 0.0f, 0.0f, 1.0f, 12.0f, 24.0f, 13.0f, 1);
+        
+        func_800612F0(1);
+        func_80059F28(arg1 + 36, 110.0f, 0.0f, 0.0f, 1.0f, 12.0f, 24.0f, sp44 + 1, 1);
+        func_800610B8();
+    } else {
+        func_800612F0(1);
+        SetTextGradientFromPalette(0);
+        func_80059F28(arg1, 102.0f, 0.0f, 0.0f, 1.0f, 16.0f, 24.0f, arg0 + 1, 1);
+        
+        func_800612F0(0);
+        SetTextGradientFromPalette(0);
+        func_80059F28(arg1 + 24, 110.0f, 0.0f, 0.0f, 1.0f, 16.0f, 24.0f, 16, 1);
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/2C3B0/func_80052890.s")
 

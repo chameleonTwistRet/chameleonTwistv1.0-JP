@@ -15,6 +15,23 @@ typedef struct unk800FE564 {
     u8 unk3;
 } unk800FE564;
 
+typedef struct unk800F0BE4 {
+    /* 0x00 */ s32 unk_00;
+    /* 0x04 */ f32 unk_04;
+    /* 0x08 */ f32 unk_08;
+    /* 0x0C */ f32 unk_0C;
+    /* 0x10 */ f32 unk_10;
+    /* 0x14 */ s32 unk_14;
+    /* 0x18 */ s32 unk_18;
+    /* 0x1C */ s32 unk_1C;
+    /* 0x20 */ s32 unk_20;
+} unk800F0BE4; //sizeof 0x24
+
+typedef struct unk_80052094_8 {
+    /* 0x00 */ f32 unk_00;
+    /* 0x08 */ s32 unk_04;
+} unk_80052094_8; //sizeof 0x8
+
 
 /* Functions */
 void func_8005456C(f32, f32, f32, f32, f32, s32);
@@ -26,15 +43,21 @@ void func_80058BE4(Mtx* arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, 
 void func_800536D8(void);
 void func_80059F28(f32, f32, f32, f32, f32, f32, f32, f32, s32);
 void func_800771DC(s32*, f32, f32, s32, s32, s32*, f32, f32, f32, f32);
+s32 func_80080318(s32, s32, s32*, s32*);
 
 
 /* Ext Variables */
+extern u32 D_800F0B50;
 extern s32 D_800F0B58;
 extern s32 D_800F0B5C;
 extern s32 D_800F0B68[4][4];
 extern s32 gCharacterPortraitIndecies[4];
 extern s32 D_800F0BC0[4];
 extern s32 D_800F0BD0[4];
+extern u8 D_800F0BE0[];
+extern unk800F0BE4 D_800F0BE4[];
+extern s32 D_800F0C74;
+extern s32 D_800F0C78[];
 extern s32 D_800FE404;
 extern unk800FE564 D_800FE564[];
 extern s32 D_800FE708;

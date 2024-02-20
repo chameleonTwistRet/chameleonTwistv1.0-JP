@@ -523,18 +523,6 @@ typedef struct unkStruct0 {
     /* 0x20 */ s32 unk_20;
 } unkStruct0; //sizeof 0x24
 
-typedef struct unkStruct11 {
-    /* 0x00 */ s32 unk_00;
-    /* 0x04 */ f32 unk_04;
-    /* 0x08 */ f32 unk_08;
-    /* 0x0C */ f32 unk_0C;
-    /* 0x10 */ f32 unk_10;
-    /* 0x14 */ s32 unk_14;
-    /* 0x18 */ s32 unk_18;
-    /* 0x1C */ s32 unk_1C;
-    /* 0x20 */ s32 unk_20;
-} unkStruct11; //sizeof 0x24
-
 typedef struct unkVecStruct {
     Vec3f vec1;
     Vec3f vec2;
