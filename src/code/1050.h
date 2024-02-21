@@ -10,11 +10,11 @@
 Gfx* func_8002C4E8(graphicStruct*, s32, s32);
 void func_8002CB6C(Gfx*, graphicStruct*, s32);
 void func_8002CBE8(s32);
-void func_8002CDBC(contMain*);
-void func_8004BC48(contMain*);
+void func_8002CDBC(ContMain*);
+void func_8004BC48(ContMain*);
 void func_8004CD9C(s32, void*);
 void func_8004DDE0(void);
-void func_8004E784(contMain*, u32, s32*, contMain*);
+void func_8004E784(ContMain*, u32, s32*, ContMain*);
 void func_80054864(void);
 void func_80059254(Mtx*, f32, f32, f32, f32, f32, f32, s32);
 void func_800598C4(Mtx*, f32, f32, f32, f32, f32, f32, s32);

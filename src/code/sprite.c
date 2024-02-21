@@ -50,24 +50,24 @@ s32 func_80055C90(void) {
  * 
  * @param conts: controllers struct
  */
-void Controller_ParseJoystick(contMain* conts) {
+void Controller_ParseJoystick(ContMain* conts) {
     s32 i;
     f32 sqX,sqY;
 
     for (i = 0; i < MAXCONTROLLERS; i++) {
         gPrevButtons[i] = gButtons[i];
         gButtons[i] = conts[i].buttons0;
-        sqX=SQ(conts[i].stickx);
-        sqY=SQ(conts[i].sticky);
+        sqX=SQ(conts[i].stickX);
+        sqY=SQ(conts[i].stickY);
         if (__sqrtf(sqX + sqY) > 42.0) {
-            if (conts[i].stickx < -30) {
+            if (conts[i].stickX < -30) {
                 gButtons[i] |= CONT_LEFT;
-            } else if (conts[i].stickx > 30) {
+            } else if (conts[i].stickX > 30) {
                 gButtons[i] |= CONT_RIGHT;
             }
-            if (conts[i].sticky < -30) {
+            if (conts[i].stickY < -30) {
                 gButtons[i] |= CONT_DOWN;
-            } else if (conts[i].sticky > 30) {
+            } else if (conts[i].stickY > 30) {
                 gButtons[i] |= CONT_UP;
             }
         }
@@ -1386,7 +1386,7 @@ void func_80084788(void) {
     D_80176B70 = gTongues;
     D_80176B74 = gPlayerActors;
     D_80176B78 = gCamera;
-    if ((gameModeCurrent == 0) && (D_80168DA0 == 1)) {
+    if ((gGameModeCurrent == 0) && (D_80168DA0 == 1)) {
         func_80062D10(0x10, 0x10, &gPlayerActors[0].hp, &D_800FEDB8, gPlayerActors[0].hp, 0);
         func_800634D4(0xF0, 0x10, &currentStageCrowns, &D_800FEDB8, 2, 0);
     }
@@ -1399,7 +1399,7 @@ s32 func_80084884(s32 arg0) {
     if (gCurrentStage == 8) {
         func_8007CDEC();
     }
-    if ((D_80168DA0 == 1) && (D_800FEDB4 == 1) && (D_80236974 == 0) && (gameModeCurrent == 0)) {
+    if ((D_80168DA0 == 1) && (D_800FEDB4 == 1) && (D_80236974 == 0) && (gGameModeCurrent == 0)) {
         if ((u32)D_80176B78->unk0 == 1) {
             func_800612F0(1);
             printUISprite(24.0f, 208.0f, 0.0f, 0.0f, 1.0f, 24.0f, 16.0f, 0.0f, 0xCC);

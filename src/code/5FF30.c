@@ -267,11 +267,33 @@ s32 func_80087358(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008788C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/addSoundEffect.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/AddSoundEffect.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80087E60.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/playSoundEffect.s")
+//#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/playSoundEffect.s")
+s32 playSoundEffect(s32 id, f32* posX, f32* posY, f32* posZ, s32 arg4, s32 flag) {
+    if (gSFXMute > 0) {
+        return -1;
+    }
+    if ((id >= D_80200A90->unk_0E) || (id < 0)) {
+        return -1;
+    }
+    if ((D_800FF5E4 > 0) && !(flag & 8)) {
+        return -1;
+    }
+    if (flag & 0x40) {
+        flag |= 0x10;
+    }
+    else if (gIsPaused == 1) {
+        return -1;
+    }
+    if ((s32) D_80168DA0 >= 2) {
+        flag |= 0x10;
+    }
+    return AddSoundEffect(id, posX, posY, posZ, arg4, flag);
+}
+
 
 void func_80087FA4(u32 arg0) {
     D_800FF5E8 = arg0;
@@ -362,7 +384,7 @@ s32 func_800886D8(s32 arg0, s16 arg1, s16 arg2) {
     return 0;
 }
 
-s32 func_8008873C(s32 arg0, s32 arg1, s32 arg2) {
+s32 func_8008873C(f32* arg0, f32* arg1, f32* arg2) {
     if (++D_800FF64C >= 0x80) {
         D_800FF64C = 0;
     }
@@ -372,7 +394,7 @@ s32 func_8008873C(s32 arg0, s32 arg1, s32 arg2) {
     }
     //"TALK = %d\n"
     DummiedPrintf("TALK = %d\n", D_80200A98[D_800FF64C]);
-    return addSoundEffect(D_80200A98[D_800FF64C], arg0, arg1, arg2, 0, 2);
+    return AddSoundEffect(D_80200A98[D_800FF64C], arg0, arg1, arg2, 0, 2);
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800887F0.s")
@@ -407,24 +429,26 @@ s32 func_8008873C(s32 arg0, s32 arg1, s32 arg2) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_8010D8E0.s")
 
+// Display In Game Timer
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80089BA0.s")
 
+// Exit Stage Menu?
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80089E24.s")
 
-void func_8008A208(void) {
+void PlayJungleExtSfx(void) {
     if (D_80236974 == 0) {
-        if (D_8020005A == 1) {
-            PlayBGM(BGM_JUNGLE1);
+        if (gIsNotInCave == 1) {
+            PlayBGM(BGM_JUNGLE_EXT);
         }
-    } else if (((s32) D_8017499C % 300) == 0x12B) {
+    } else if (((s32) gTimer % 300) == 299) {
         PLAYSFX(Random(0, 5) + 0x4F, 1, 0x10);
     }
-    D_8020005A = D_80236974;
+    gIsNotInCave = D_80236974;
 }
 
-void func_8008A2B0(void) {
-    if ((gameModeCurrent == GAME_MODE_OVERWORLD) && (gCurrentStage == 0)) {
-        func_8008A208();
+void PlayJungleExtSfxWrapper(void) {
+    if ((gGameModeCurrent == GAME_MODE_OVERWORLD) && (gCurrentStage == STAGE_JUNGLE)) {
+        PlayJungleExtSfx();
     }
 }
 
@@ -443,10 +467,10 @@ s32 LoadBGM(void) {
     s32 temp_v0;
     s32 var_v0; //unused
     s32 var_v1; //unused
-    unk801FCA20* temp_t2;
+    BGMVolume* temp_t2;
     s32 anotherTemp;
 
-    if ((gameModeCurrent == GAME_MODE_DEMO) || (gameModeCurrent == GAME_MODE_DEMO_2)) {
+    if ((gGameModeCurrent == GAME_MODE_DEMO) || (gGameModeCurrent == GAME_MODE_DEMO_2)) {
         return 0;
     }
 
@@ -464,7 +488,7 @@ s32 LoadBGM(void) {
 
     if ((gIsPaused == 0) && (D_800FF604 != 0)) {
         if ((alCSPGetState(gBGMPlayerP) != AL_PLAYING) || (D_800FF608 != 0)) {
-            if ((gameModeCurrent != GAME_MODE_DEMO) && (gameModeCurrent != GAME_MODE_DEMO_2)) {
+            if ((gGameModeCurrent != GAME_MODE_DEMO) && (gGameModeCurrent != GAME_MODE_DEMO_2)) {
                 alCSPPlay(gBGMPlayerP);
             }
             alSeqpSetVol((ALSeqPlayer*)gBGMPlayerP, D_801FCA22);
@@ -478,26 +502,27 @@ s32 LoadBGM(void) {
     }
     
     if (D_801FC9A0 != 0) {
-        if (D_801FCA20.unk_00 > 0) {
-            D_801FCA20.unk_00 = D_801FCA20.unk_00 - D_801FC9A0;
-            if (D_801FCA20.unk_00 < 0) {
-                D_801FCA20.unk_00 = 0;
+        if (volBGM.vol > 0) {
+            volBGM.vol = volBGM.vol - D_801FC9A0;
+            if (volBGM.vol < 0) {
+                volBGM.vol = 0;
             }
-            alSeqpSetVol((ALSeqPlayer*)gBGMPlayerP, D_801FCA20.unk_00);
+            alSeqpSetVol((ALSeqPlayer*)gBGMPlayerP, volBGM.vol);
         } 
     }
     
-    if (D_801FC9B4 != 0) {
-        alCSPSetTempo(gBGMPlayerP, D_801FC9A8);
+    // Is always 0 (dead code)
+    if (TempoBGMBool != 0) {
+        alCSPSetTempo(gBGMPlayerP, TempoToSetBGM);
     } else {
-        D_801FC9B0 = alCSPGetTempo(gBGMPlayerP);
+        TempoBGM = alCSPGetTempo(gBGMPlayerP);
     }
     
     temp_v0 = alCSPGetState(gBGMPlayerP);
     
-    if (D_800FF620 == -1) {
-        if ((temp_v0 == AL_STOPPED) && (D_801FCA24 != 0)) {
-            D_800FF620 = D_800FF624.unk_00;
+    if (currLoadingBGM == -1) {
+        if ((temp_v0 == AL_STOPPED) && (doesBGMLoop != 0)) {
+            currLoadingBGM = currBGMIndex;
         } else {
             return 0;
         }
@@ -506,9 +531,9 @@ s32 LoadBGM(void) {
         return 0;
     }
     
-    D_800FF624.unk_00 = D_800FF620;
-    sp24 = gBGMALSeqFileP->seqArray[D_800FF624.unk_00].len; 
-    devAddr = (s32)gBGMALSeqFileP->seqArray[D_800FF624.unk_00].offset;
+    currBGMIndex = currLoadingBGM;
+    sp24 = gBGMALSeqFileP->seqArray[currBGMIndex].len; 
+    devAddr = (s32)gBGMALSeqFileP->seqArray[currBGMIndex].offset;
     
     if (sp24 & 1) {
         sp24 += 1;
@@ -518,30 +543,30 @@ s32 LoadBGM(void) {
     Audio_RomCopy(devAddr, D_801FD550, sp24);
     alCSeqNew(gBGMSeqP, (u8*)D_801FD550);
     alCSPSetSeq(gBGMPlayerP, gBGMSeqP);
-    D_801FCA20 = D_800FF4D0[D_800FF624.unk_00];
+    volBGM = volumesBGM[currBGMIndex];
     alCSPPlay(gBGMPlayerP);
     alSeqpSetVol((ALSeqPlayer*)gBGMPlayerP, D_801FCA22);
-    D_800FF620 = -1;
-    D_801FC9B4 = 0;
-    D_801FC9A8 = 0;
-    D_801FC9B0 = 0;
+    currLoadingBGM = -1;
+    TempoBGMBool = 0;
+    TempoToSetBGM = 0;
+    TempoBGM = 0;
     return 1;
 }
 //uses "BGM_*" #defines
-s32 PlayBGM(s32 arg0) {
-    if ((arg0 >= gBGMALSeqFileP->seqCount) || (arg0 < 0)) {
+s32 PlayBGM(s32 index) {
+    if ((index >= gBGMALSeqFileP->seqCount) || (index < 0)) {
         return -1;
     }
     if (gBGMPlayerP->state == AL_PLAYING) {
         alCSPStop(gBGMPlayerP);
     }
-    D_800FF620 = arg0;
+    currLoadingBGM = index;
     D_801FC9A0 = 0;
     return 0;
 }
 
 s32 func_8008BE14(void) {
-    D_801FCA24 = 0;
+    doesBGMLoop = 0;
     if (gBGMPlayerP->state == AL_PLAYING) {
         alCSPStop(gBGMPlayerP);
     }
@@ -555,16 +580,16 @@ s32 func_8008BE14(void) {
     D_800FF608 = 0;
     D_800FF64C = 0;
     D_800FF650 = 0;
-    D_801FC9B4 = 0;
-    D_801FC9A8 = 0;
+    TempoBGMBool = 0;
+    TempoToSetBGM = 0;
     D_801FC9A0 = 0;
-    D_800FF620 = -1;
+    currLoadingBGM = -1;
     D_801FCA48 = 1;
     return 0;
 }
 
 s32 StopBGM(void) {
-    D_801FCA24 = 0;
+    doesBGMLoop = 0;
     if (gBGMPlayerP->state == AL_PLAYING) {
         alCSPStop(gBGMPlayerP);
     }
@@ -572,33 +597,35 @@ s32 StopBGM(void) {
 }
 
 s32 func_8008BF20(void) {
-    D_801FCA20 = D_800FF4D0[D_800FF624.unk_00];
-    if ((gBGMPlayerP->state != AL_PLAYING) && (gameModeCurrent != GAME_MODE_DEMO) && (gameModeCurrent != GAME_MODE_DEMO_2)) {
+    volBGM = volumesBGM[currBGMIndex];
+    if ((gBGMPlayerP->state != AL_PLAYING) && (gGameModeCurrent != GAME_MODE_DEMO) && (gGameModeCurrent != GAME_MODE_DEMO_2)) {
         alCSPPlay(gBGMPlayerP);
     }
     return 0;
 }
+
 s32 func_8008BFA8(s32 vol) {
     alSeqpSetVol((ALSeqPlayer*)gBGMPlayerP, vol);
-    D_801FCA20.unk_00 = vol;
+    volBGM.vol = vol;
     return 0;
 }
 
 s32 func_8008BFE0(s32 arg0) {
-    D_801FC9A0 = (s32) ((f32)D_801FCA20.unk_00 / (f32)arg0) + 1;
+    D_801FC9A0 = (s32) ((f32)volBGM.vol / (f32)arg0) + 1;
     return 0;
 }
 
-s32 func_8008C01C(void) {
+s32 alCSPGetTempoWrapper(void) {
     return alCSPGetTempo(gBGMPlayerP);
 }
 
+// This code is never run
 s32 func_8008C040(s32 arg0) {
     if (arg0 > 0) {
-        D_801FC9A8 = arg0;
-        D_801FC9B4 = 1;
+        TempoToSetBGM = arg0;
+        TempoBGMBool = 1;
     } else {
-        D_801FC9B4 = 0;
+        TempoBGMBool = 0;
     }
     return 0;
 }
@@ -616,7 +643,7 @@ void func_8008C070(s32 arg0) {
 void func_8008C1C8(s32* arg0) {
     s32 sp4C = *arg0;
 
-    if ((gSelectedCharacters[0] == CHARA_WHITE) && (gameModeCurrent == 0)) {
+    if ((gSelectedCharacters[0] == CHARA_WHITE) && (gGameModeCurrent == 0)) {
         if ((D_80176F58 == 0) && (gOneRun != 0)) {
             if ((gNoHit != 0) && (gCurrentStage != STAGE_TRAINING)) {
                 SetTextGradient(255, 255, 0, 255, 255, 0, 0, 255, 255, 255, 0, 255, 255, 0, 0, 255);
@@ -628,7 +655,7 @@ void func_8008C1C8(s32* arg0) {
     func_8008AD30();
     func_8008C094();
     func_8008A2EC();
-    func_8008A2B0();
+    PlayJungleExtSfxWrapper();
     func_8008D060();
     func_8008C438();
     *arg0 = sp4C;
@@ -642,19 +669,19 @@ void func_8008C35C(s32 arg0) {
 
 }
 
-s32 Actor_PlaySound(Actor* arg0, s32 sfxID, s32 arg2, s32 arg3) {
+s32 Actor_PlaySound(Actor* actor, s32 sfxID, s32 unused1, s32 unused2) {
     s32 ret;
 
-    if (gameModeCurrent == GAME_MODE_BATTLE_MENU) {
+    if (gGameModeCurrent == GAME_MODE_BATTLE_MENU) {
         ret = PLAYSFX(sfxID, 1, 0x10);
     } else {
-        ret = PLAYSFXAT(sfxID, arg0->pos, 0, 0);
+        ret = PLAYSFXAT(sfxID, actor->pos, 0, 0);
     }
     return ret;
 }
 
-void func_8008C3F0(Actor* arg0, s32 sfxID, s32 arg2) {
-    PLAYSFXAT(sfxID, arg0->pos, 1, 0);
+void func_8008C3F0(Actor* actor, s32 sfxID, s32 unused) {
+    PLAYSFXAT(sfxID, actor->pos, 1, 0);
 }
 
 s32 func_8008C438(void) {
@@ -785,6 +812,7 @@ s32 PutDList(Mtx** arg0, Gfx** arg1, Gfx* arg2) {
     return 0;
 }
 
+// Uses Dlist
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008C940.s")
 
 void strcpy(u8* arg0, u8* arg1) {
@@ -802,12 +830,12 @@ void CTTask_Run(CTTask* task) {
     
     temp = taskFunc = task->function;
     if (taskFunc == 0) {
-        DummiedPrintf("NULL POINTER %d\n", task->type);
+        DummiedPrintf("NULL POINTER %d\n", task->taskID);
         taskFunc = task->function;
     }
     // If function ptr is not in virtual memory space
     else if ((u32)taskFunc < 0x80000000U) {
-        DummiedPrintf("BAD POINTER %d, %X\n", task->type, (u32)task->function);
+        DummiedPrintf("BAD POINTER %d, %X\n", task->taskID, (u32)task->function);
         taskFunc = task->function;
     }
     
@@ -830,7 +858,7 @@ void CTTask_Unlink(CTTask* taskToRemove) {
 
     nextTask->prev = prevTask;
     prevTask->next = nextTask;
-    taskToRemove->active = 0;
+    taskToRemove->runType = 0;
 }
 
 /**
@@ -862,10 +890,10 @@ void CTTaskList_Init(void) {
     if (gCTTaskTail == NULL) {
         DummiedPrintf("TaskInit()メモリ足りません\n", &gCTTaskTail);
     }
-    gCTTaskHead->type = 0;
+    gCTTaskHead->taskID = 0;
     gCTTaskHead->next = gCTTaskTail;
     gCTTaskHead->prev = NULL;
-    gCTTaskTail->type = 0xFF;
+    gCTTaskTail->taskID = 0xFF;
     gCTTaskTail->next = NULL;
     gCTTaskTail->prev = gCTTaskHead;
 }
@@ -880,13 +908,13 @@ void CTTask_Unlink_2(CTTask* task) {
     prevTask = task->prev;
     nextTask->prev = prevTask;
     prevTask->next = nextTask;
-    task->active = 0;
+    task->runType = 0;
     Free(task);
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/bzero32.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/Task_Alloc.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/CTTask_Alloc.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008D060.s")
 
@@ -956,9 +984,9 @@ void func_8008EF78(CTTask* task) {
 
 void func_8008F114(void){
     if(MQ_IS_FULL(&D_801192E8)){
-        osRecvMesg(&D_801192E8,NULL,1);
+        osRecvMesg(&D_801192E8, NULL, 1);
     }
-    osRecvMesg(&D_801192E8,NULL,1);
+    osRecvMesg(&D_801192E8, NULL, 1);
     func_8008C494();
 }
 
@@ -1045,11 +1073,11 @@ s32 GetBaseStage(u32 arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/MemsizeCheck.s")
 
 //Uses "GameModes" enum
-void SetProcessType(s32 arg0) {
-    DummiedPrintf(" 元%d %d\n", gameModeCurrent, gGameModeState);
+void SetProcessType(s32 gameMode) {
+    DummiedPrintf(" 元%d %d\n", gGameModeCurrent, gGameModeState);
     gGameModeState = 0;
-    gameModeCurrent = arg0;
-    DummiedPrintf(" 後%d %d\n", gameModeCurrent, gGameModeState);
+    gGameModeCurrent = gameMode;
+    DummiedPrintf(" 後%d %d\n", gGameModeCurrent, gGameModeState);
 }
 
 void func_8008FD68(void) {
@@ -1124,7 +1152,7 @@ void func_8008FEA8(s32 arg0, s32 arg1) {
 void MainLoop(void) {
     func_8002D080();
     if (sGameModeStart != -1) {
-        gameModeCurrent = sGameModeStart;
+        gGameModeCurrent = sGameModeStart;
     }
     gGameModeState = 0;
     osRecvMesg(&D_801192E8, NULL, 1);
@@ -1135,7 +1163,7 @@ void MainLoop(void) {
     gIsStero = gGameRecords.flags[1] & 1;
     osRecvMesg(&D_801192E8, NULL, 1);
     gameModeLoop:
-    switch (gameModeCurrent) {
+    switch (gGameModeCurrent) {
     case GAME_MODE_OVERWORLD:
         Porocess_Mode0();
         goto gameModeLoop;
@@ -1200,7 +1228,7 @@ void MainLoop(void) {
         Process_SunsoftLogo();
         goto gameModeLoop;
     }
-    DummiedPrintf("No Process = %d\n", gameModeCurrent);
+    DummiedPrintf("No Process = %d\n", gGameModeCurrent);
     goto gameModeLoop;
 }
 
@@ -1280,7 +1308,7 @@ s32 func_80090B10(s32 time, s32 arg1) {
 //#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80092324.s")
 void func_80092324(s32 arg0) {              // Cy
     if (func_8008EC90() != 0) {
-        SetProcessType(1);
+        SetProcessType(GAME_MODE_LEVEL_INTRO_MENU);
         return;
     }
     DummiedPrintf("フェード待ち\n");
@@ -1310,17 +1338,10 @@ void func_8009244C(CTTask* task) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800927E8.s")
 
-                   
-void func_8009288C(void);
-typedef struct unkArg0 {
-    char unk_00[8];
-    void* unk8;
-} unkArg0;
-void func_80092864(unkArg0* arg0) {
-    arg0->unk8 = &func_8009288C;
+void func_80092864(CTTask* task) {
+    task->function = &func_8009288C;
     func_8008D7FC();
 }
-
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009288C.s")
 
@@ -1381,12 +1402,12 @@ void func_800935F8(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009384C.s")
 
-void func_800938B0(CTTask* arg0) {
-    CTTask* task;
+void func_800938B0(CTTask* task) {
+    CTTask* otherTask;
 
-    task = arg0->unk58;
-    if ((arg0->unk54 == 6) && (task->unk54 < 7)) {
-        task->unk54 = 7;
+    otherTask = task->unk58;
+    if ((task->unk54 == 6) && (otherTask->unk54 < 7)) {
+        otherTask->unk54 = 7;
     }
 }
 
@@ -1494,16 +1515,16 @@ void func_80094E0C(CTTask* arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80095264.s")
 
-void func_80095500(CTTask* arg0) {
+void func_80095500(CTTask* task) {
     CTTask* temp;
     
-    if (arg0->unk_5C != 0) {
-        arg0->unk_5C--;
+    if (task->unk_5C != 0) {
+        task->unk_5C--;
         return;
     }
-    temp = arg0->unk58;
+    temp = task->unk58;
     temp->unk54 = 1;
-    CTTask_Unlink(arg0);
+    CTTask_Unlink(task);
 }
 
 
@@ -1696,9 +1717,9 @@ f32 func_80096898(u16 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80097498.s")
 
-void func_80097508(CTTask* arg0) {
+void func_80097508(CTTask* task) {
     func_8008F7A4(3, 8);
-    arg0->function = &func_80097540;
+    task->function = &func_80097540;
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80097540.s")
@@ -1709,8 +1730,8 @@ void func_80097508(CTTask* arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/Process_StageSelect.s")
 
-void func_80097CF8(unk80097CF8* arg0) {
-    unk80097CF8_2* temp = arg0->unk58;
+void func_80097CF8(CTTask* task) {
+    CTTask* temp = task->unk58;
     func_80096D40(temp->unk7A);
 }
 
@@ -1766,9 +1787,9 @@ void func_80097CF8(unk80097CF8* arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80098F50.s")
 
-void func_80099570(CTTask* arg0) {
+void func_80099570(CTTask* task) {
     func_800983C8();
-    func_80098F50(arg0);
+    func_80098F50(task);
 }
 
 void func_80099598(CTTask* arg0) {
@@ -2051,7 +2072,7 @@ void func_8009E2B0(CTTask* arg0) {
 
 void func_800A07E0(void) {
     func_8008F16C();
-    gameModeCurrent = 7;
+    gGameModeCurrent = GAME_MODE_BATTLE_MENU;
     gGameModeState = 7;
 }
 
@@ -2239,7 +2260,7 @@ void func_800A4074(CTTask*);                        /* extern */
 void func_800A3DC0(CTTask* arg0) {
     CTTask* temp_v0;
 
-    temp_v0 = Task_Alloc(1, 0x64, 0);
+    temp_v0 = CTTask_Alloc(1, 0x64, NULL);
     temp_v0->unk58 = arg0;
     temp_v0->function = func_800A4074;
     temp_v0->unk_62 = 0;
@@ -2257,7 +2278,7 @@ void func_800A3DC0(CTTask* arg0) {
 
 // Create Game Over Task?
 CTTask* func_800A4484(void) {
-    CTTask* task = Task_Alloc(1, 100, NULL);
+    CTTask* task = CTTask_Alloc(1, 100, NULL);
     
     if (task == NULL) {
         DummiedPrintf("エラー\n");
@@ -2364,7 +2385,7 @@ void Process_GameOver(void) {
             break;
         case 3:
             func_8008F16C();
-            D_8017499C++;
+            gTimer++;
             break;
     }
 
@@ -2372,7 +2393,7 @@ void Process_GameOver(void) {
 }
 
 CTTask* func_800A5060(void){
-    CTTask* t = Task_Alloc(1, 100, NULL);
+    CTTask* t = CTTask_Alloc(1, 0x64, NULL);
 
     if(!t){
         DummiedPrintf("エラー\n");
@@ -2441,7 +2462,7 @@ void Process_JSSLogo(void) {
         break;
     case 3:
         func_8008F16C();
-        D_8017499C++;
+        gTimer++;
         break;
     }
     func_8008C094();
@@ -2510,7 +2531,7 @@ s32 func_800A5778(s32 arg0) {
 void func_800A6B34(void) {
     CTTask* task;
 
-    task = Task_Alloc(1, 100, 0);
+    task = CTTask_Alloc(1, 0x64, NULL);
     if (task == NULL) {
         DummiedPrintf("エラー\n");
         while (1) {}
@@ -2526,7 +2547,7 @@ void func_800A6B80(CTTask* arg0) {
     arg0->unk_64 = 0;
     
     func_8008EA60(0x20, 0, 0, 0, &arg0->unk_64);
-    Task_Alloc(1, 0x62, 0)->function = PrintSelectedStageInfo;
+    CTTask_Alloc(1, 0x62, NULL)->function = PrintSelectedStageInfo;
 }
 
 void func_800A6C04(CTTask* arg0) {
@@ -3083,7 +3104,7 @@ void SaveData_ClearRecords(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_8010F06C.s")
 
-void func_800A93AC(contMain* arg0) {
+void func_800A93AC(ContMain* arg0) {
     s32 i;
 
     for (i = 0; i < PLAYERS_MAX; i++) {
@@ -3097,7 +3118,7 @@ void func_800A93AC(contMain* arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A9450.s")
 
 void func_800A9690(void) {
-    CTTask* task = Task_Alloc(1, 100, NULL);
+    CTTask* task = CTTask_Alloc(1, 100, NULL);
 
     if (task == NULL) {
         //"エラー\n"("error")
@@ -3120,7 +3141,7 @@ void func_800A9728(CTTask* arg0) {
     
     if ((D_80100D64[D_801FCA18] + 0xA) >= gCurrentDemoTimer) {
         arg0->unk_64 = 0;
-        if (gameModeCurrent != GAME_MODE_DEMO_2) {
+        if (gGameModeCurrent != GAME_MODE_DEMO_2) {
             func_8008E9AC(0x20, 0, 0, 0, &arg0->unk_64);
         }
         arg0->function = &func_800A97E4;
@@ -3152,11 +3173,12 @@ void func_800A97E4(CTTask* arg0) {
  * 
  * @param zone: room number 
  */
-void func_800AA844(s32 arg0) {
-    gCurrentZone = arg0;
+void func_800AA844(s32 zone) {
+    gCurrentZone = zone;
     func_800C29D8(gCurrentZone);
 }
 
+// Loads demo data, stage / player start position
 void func_800AA86C(void) {
     if (D_80101048.unk_00 == gCurrentDemoTimer) {
         func_800AA844(0);
@@ -3273,7 +3295,7 @@ void func_800AAB0C(s32 arg0) {
     D_80200C84.unk2 = 0xFFFF;
     D_80200C84.unk4 = 0;
     D_80200C84.unk5 = 0;
-    D_8017499C = 0;
+    gTimer = 0;
     D_80174998 = 0;
     func_800AAAC8();
     gPlayerActors->yAngle = 0.0f;

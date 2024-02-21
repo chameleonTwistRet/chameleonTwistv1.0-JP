@@ -17,7 +17,7 @@ typedef struct SpriteListing {
     u16 height; // height of each tile
     u16 width; // width of each tile
     u16 unk1E;
-    char unk20[0x48]; //repeating substruct? has 5 feilds of color32
+    char unk20[0x48]; //repeating substruct? has 5 feilds of RGBA32
     s32 bitmapRom; //devAddr-0x8c26a0
     s32 paletteRom;
     s32 unk70;

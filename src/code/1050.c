@@ -235,7 +235,7 @@ void func_8002CD94(s32 arg0) {
     }
 }
 
-void func_8002CDBC(contMain* controllers) {
+void func_8002CDBC(ContMain* controllers) {
     s32 i;
 
     if (gCurrentStage != STAGE_VS) {
@@ -254,7 +254,7 @@ void func_8002CDBC(contMain* controllers) {
 void func_8002CE54(void) {
     s32 var;
     s32 i;
-    contMain sp28[4];
+    ContMain sp28[4];
     
     D_800F066C++;
     func_8002CD94(D_800F066C);

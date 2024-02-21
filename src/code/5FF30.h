@@ -50,6 +50,11 @@ typedef struct unk80097CF8 {
     unk80097CF8_2* unk58;
 } unk80097CF8;
 
+typedef struct UnkPlaySoundEffect {
+    char unk_00[0x0E];
+    s16 unk_0E;
+} UnkPlaySoundEffect;
+
 
 /* Functions */
 void func_8009ABF4(CTTask*);
@@ -74,7 +79,7 @@ void RecordTime_SetTo(s32, u8*);
 void SaveData_LoadFile(s32, SaveFile*);
 void func_800A25F0(s32, f32);
 void func_800A50B4(CTTask*);
-CTTask* Task_Alloc(s16, s32, s32);
+CTTask* CTTask_Alloc(s16, s32, s32);
 void SaveData_Wait(void);
 s32 SaveData_VerifyFile(u8*, SaveFile*);
 void SaveData_LoadFile(s32, SaveFile*);
@@ -83,7 +88,7 @@ void func_800A97E4(CTTask*);
 void func_8008E9AC(s32, s32, s32, s32, void*);
 void func_8002CB6C(Gfx*, void*, s32);
 void func_8002CBE8(s32); 
-void func_8004E784(contMain*, s32, s32, s32);
+void func_8004E784(ContMain*, s32, s32, s32);
 void func_800AA844(s32);
 void func_800A0D90(void);
 void SaveData_ResetRecords(void);
@@ -112,9 +117,10 @@ void func_8009C644(CTTask*);
 void Video_SetTask(graphicStruct* arg0, Gfx* arg1, s32 arg2);
 void func_8008F7A4(s32, s32);
 void func_80097540(CTTask*);
+void func_8009288C(CTTask*);
 
 /* Ext Variables */
-extern contMain D_801FC9B8;
+extern ContMain D_801FC9B8;
 extern s16 D_80200CA0;
 extern s16 D_80200CA8;
 extern OSTask D_800F04E0[2];
@@ -160,5 +166,7 @@ extern u8 D_80200B68;
 extern s16 sDebugLevelAccess;
 extern s16 D_80100EB4[];
 extern s16 D_801B317C;
+extern s16 gSFXMute;
+extern UnkPlaySoundEffect* D_80200A90;
 
 #endif // _5FF30_H_

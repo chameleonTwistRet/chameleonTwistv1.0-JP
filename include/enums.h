@@ -185,8 +185,8 @@ enum ColorModes{
 };
 
 enum BGM {
-    BGM_JUNGLE0 = 0,
-    BGM_JUNGLE1 = 1,
+    BGM_JUNGLE_INT = 0,
+    BGM_JUNGLE_EXT = 1,
     BGM_ANT = 2,
     BGM_BOMB = 3,
     BGM_DESERT = 4,
