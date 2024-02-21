@@ -1870,9 +1870,25 @@ void func_8009BC30(s32 arg0) {
     gGameModeState += 1;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009BC60.s")
+void func_8009BC60(s32 arg0) {
+    if (func_8008EC90() != 0) {
+        gGameModeState += 2;
+    }
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009BC98.s")
+void func_8009BCF0(CTTask*);                        /* extern */
+
+void func_8009BC98(CTTask* arg0) {
+    func_80099AF4();
+    
+    if (arg0->unk54 == 0xA) {
+        arg0->function = func_8009BCF0;
+        return;
+    }
+    if (arg0->unk54 == 4) {
+        arg0->function = func_8009BA38;
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009BCF0.s")
 
@@ -2407,7 +2423,16 @@ void func_800A54F4(CTTask* arg0) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A5524.s")
+void func_800A5524(CTTask* arg0) {
+    CTTask* temp_v0;
+    u16 temp_v1;
+
+    temp_v0 = arg0->unk58;
+    temp_v1 = gContMain[arg0->unk_62].buttons2;
+    if (((temp_v1 & 0x1000) || (temp_v1 & 0x8000)) && (temp_v0->unk54 == 1)) {
+        temp_v0->unk_62 = 6;
+    }
+}
 
 void Process_JSSLogo(void) {
     switch (gGameModeState) {

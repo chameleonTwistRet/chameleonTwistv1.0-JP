@@ -1084,7 +1084,10 @@ void SetTextGradientFromPalette(s32 arg0) {
     SetTextGradientFromPaletteAlpha(arg0, 1.0f);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/DrawTranslucentRectangle.s")
+void DrawTranslucentRectangle(f32 arg0, f32 arg1, f32 arg2, f32 arg3, u8 arg4) {
+    setPrimColor(0U, 0U, 0U, arg4);
+    printUISprite(arg0, arg1, 0.0f, 0.0f, 1.0f, arg2, arg3, 0.0f, 0);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8007691C.s")
 

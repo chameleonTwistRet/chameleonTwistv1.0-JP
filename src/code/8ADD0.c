@@ -825,7 +825,12 @@ void func_800B6078(Collider* arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B6C34.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B6CD8.s")
+void func_800B6CD8(Collider* arg0, Camera* arg1) {
+    func_800B5D68(arg0, 1);
+    arg0->unk_8C = arg1->f4.x;
+    arg0->unk_90 = arg1->f4.y;
+    arg0->unk_94 = arg1->f4.z;
+}
 
 void func_800B6D24(tempStruct* arg0) {
     Vec3f_Zero(&arg0->unk_3C);
