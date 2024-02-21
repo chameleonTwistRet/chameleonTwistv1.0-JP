@@ -217,7 +217,7 @@ void func_80056D14(unkStruct02*, s32, unkStruct02*, unkStruct02*);
 void* func_80056D30(s32);
 void func_80056DF4(unkStruct02*, unkStruct02*);
 void func_80056EB4(void);
-void* mallloc(s32);
+void* _malloc(s32);
 s32 Free(void*);
 void func_80056F48(s32, Tongue*, PlayerActor*, Camera*);
 void func_80058748(f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, s32);
