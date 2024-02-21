@@ -812,6 +812,7 @@ s32 PutDList(Mtx** arg0, Gfx** arg1, Gfx* arg2) {
     return 0;
 }
 
+// Uses Dlist
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008C940.s")
 
 void strcpy(u8* arg0, u8* arg1) {
