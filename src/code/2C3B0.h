@@ -40,6 +40,26 @@ s32 unkC;
 f32 unk10;
 } unkStruct16;
 
+enum BattleStages {
+    BATTLE_STAGE_0 = 0,
+    BATTLE_STAGE_1 = 1,
+    BATTLE_STAGE_2 = 2,
+    BATTLE_STAGE_READY = 3,
+    BATTLE_STAGE_GO = 4,
+    BATTLE_STAGE_5 = 5,
+    BATTLE_STAGE_6 = 6,
+    BATTLE_STAGE_7= 7,
+    BATTLE_STAGE_8 = 8,
+    BATTLE_STAGE_9 = 9,
+    BATTLE_STAGE_10 = 10
+};
+
+enum BattleTypes {
+    BATTLE_TYPE_UNK_0 = 0,
+    BATTLE_TYPE_SURVIVAL = 1,
+    BATTLE_TYPE_TIME_TRIAL = 2,
+};
+
 /* Functions */
 void func_8005456C(f32, f32, f32, f32, f32, s32);
 void func_80073090(void);
@@ -70,7 +90,7 @@ extern s32 D_800FE74C;
 extern unk_80052094_8 D_800F0DF4[];
 extern unk_80052094_8 D_800F0E1C[];
 
-extern s32 D_801749AC;
+extern s32 Battle_GameType;
 extern s32 D_8020250C;
 
 #endif  //_2C3B0_H_

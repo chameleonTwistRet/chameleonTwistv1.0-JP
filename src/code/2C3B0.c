@@ -1,32 +1,34 @@
 #include "2C3B0.h"
 
+// BSS
 u8 D_80176820;
 u8 D_80176821;
 u8 D_80176822;
 u8 D_80176823;
-s32 D_80176824;
+s32 Battle_TimeLeft;
 s32 D_80176828;
 s32 D_8017682C;
 s32 gMultiplayerBGM;
 s32 D_80176834;
 
-u32 D_800F0B50 = 0;
+// data
+u32 Battle_Time = 0;
 u8 D_800F0B54[] = { 255, 0, 0, 0 };
-s32 D_800F0B58 = 0;
+s32 Battle_Stage = BATTLE_STAGE_0;
 s32 D_800F0B5C = -1;
 s32 D_800F0B60 = 0;
-s32 D_800F0B64 = 1;
+s32 D_800F0B64 = BATTLE_STAGE_1;
 s32 D_800F0B68[4][4] = {
     { 0, 0, 0, 0 },
     { 0, 0, 0, 0 },
     { 0, 0, 0, 0 },
     { 0, 0, 0, 0 },
 };
-s32 gCharacterPortraitIndecies[6] = { 0x68, 0x69, 0x6A, 0x6B, 0x6C, 0x6D };
-s32 D_800F0BC0[4] = { 0, 0, 0, 0 };
+s32 gCharacterPortraits[6] = { SPRITE_PORTRAITDAVY, SPRITE_PORTRAITJACK, SPRITE_PORTRAITFRED, SPRITE_PORTRAITLINDA, SPRITE_PORTRAITBLACK, SPRITE_PORTRAITWHITE };
+s32 Battle_PlayerPlaces[4] = { 0, 0, 0, 0 };
 s32 D_800F0BD0[4] = { 0, 0, 0, 0 };
-u8 D_800F0BE0[4] = { 0, 3, 1, 2 };
-unk800F0BE4 D_800F0BE4[] = {
+u8 Battle_CornerIndices[4] = { 0, 3, 1, 2 };
+unk800F0BE4 Battle_PlayerUIDefs[] = {
     {
         0,
         16.0f, 14.0f,
@@ -61,8 +63,8 @@ unk800F0BE4 D_800F0BE4[] = {
     }
 };
 s32 D_800F0C74 = 999999999;
-s32 D_800F0C78[] = { 1, 10, 100, 1000, 10000, 100000, 1000000, 10000000 };
-u8 D_800F0C98[] = { 19, 21, 4, 4, 5, 14, 100, 4, 5, 1, 20, 8 };
+s32 Battle_DecimalPowers[] = { 1, 10, 100, 1000, 10000, 100000, 1000000, 10000000 };
+u8 Batlle_MsgSuddenDeath[] = { 19, 21, 4, 4, 5, 14, 100, 4, 5, 1, 20, 8 };
 unk_80052094_8 D_800F0CA4[] = {
     { 0.0f, 2 },
     { 9.0f, 0 },
@@ -102,7 +104,7 @@ void func_80050FB0(void) {
         for (i = 0; i < PLAYERS_MAX; i++) {
             if (gPlayerActors[i].active == TRUE) {
                 if (gPlayerActors[i].pos.y < -10.0f) {
-                    D_800F0BE4[D_800F0BE0[i]].unk_00++;
+                    Battle_PlayerUIDefs[Battle_CornerIndices[i]].unk_00++;
                     func_8005456C(gPlayerActors[i].pos.x, -300.0f, gPlayerActors[i].pos.z, gPlayerActors[i].pos.y, 200.0f, gSelectedCharacters[i]);
                 }
             }
@@ -115,8 +117,8 @@ void func_800510E0(void) {
 
     for (i = 0; i < PLAYERS_MAX; i++) {
         if (gPlayerActors[i].active == TRUE) {
-            if (++D_800F0B68[i][D_800F0BC0[i]] > 99) {
-                D_800F0B68[i][D_800F0BC0[i]] = 99;
+            if (++D_800F0B68[i][Battle_PlayerPlaces[i]] > 99) {
+                D_800F0B68[i][Battle_PlayerPlaces[i]] = 99;
             }
         }
     }
@@ -127,37 +129,37 @@ s32 func_8005119C(void) {
     s32 sum_1 = 0;
     s32 sum_2 = 0;
     
-    s32 var_v0 = D_801749AC;
-    if (D_800F0B58 == 6) {
-        var_v0 = 1;
+    s32 gameType = Battle_GameType;
+    if (Battle_Stage == BATTLE_STAGE_6) {
+        gameType = BATTLE_TYPE_SURVIVAL;
     }
     
-    switch (var_v0) {
-        case 2:
+    switch (gameType) {
+        case BATTLE_TYPE_TIME_TRIAL:
             for (i = 0; i < PLAYERS_MAX ; i++) {
                 s32 total = 0;
                 if (gPlayerActors[i].active == TRUE) {
-                    for (j = 0; j < 4; j++) {
+                    for (j = 0; j < PLAYERS_MAX; j++) {
                         if (gPlayerActors[j].active == TRUE) {
-                            if (i != j && D_800F0BE4[D_800F0BE0[j]].unk_00 < D_800F0BE4[D_800F0BE0[i]].unk_00) {
+                            if (i != j && Battle_PlayerUIDefs[Battle_CornerIndices[j]].unk_00 < Battle_PlayerUIDefs[Battle_CornerIndices[i]].unk_00) {
                                 total++; 
                             }
-                            D_800F0BC0[i] = total;
+                            Battle_PlayerPlaces[i] = total;
                         }    
                     }
-                    if (D_800F0BC0[i] == 0) {
-                        sum_1 += 1;
+                    if (Battle_PlayerPlaces[i] == 0) {
+                        sum_1++;
                     }
-                    if (D_800F0BC0[i] == 1) {
-                        sum_2 += 1;
+                    if (Battle_PlayerPlaces[i] == 1) {
+                        sum_2++;
                     }
                 }
             }
 
             if (sum_2 == 2) {
                 for (i = 0; i < PLAYERS_MAX; i++) {
-                    if (gPlayerActors[i].active == TRUE && D_800F0BC0[i] == 3) {
-                        D_800F0BC0[i] = 2;
+                    if (gPlayerActors[i].active == TRUE && Battle_PlayerPlaces[i] == 3) {
+                        Battle_PlayerPlaces[i] = 2;
                     }
                 }
             }
@@ -167,15 +169,15 @@ s32 func_8005119C(void) {
                 sum_1--;
             }
             break;
-        case 1:
+        case BATTLE_TYPE_SURVIVAL:
             for (i = 0; i < PLAYERS_MAX; i++) {
                 if (gPlayerActors[i].active == TRUE) {
-                    D_800F0BC0[i] = D_800F0BD0[i] - 1;
+                    Battle_PlayerPlaces[i] = D_800F0BD0[i] - 1;
                     
                     if (D_800F0BD0[i] < 2) {
-                        D_800F0BC0[i] = 0;
+                        Battle_PlayerPlaces[i] = 0;
                     }
-                    if (D_800F0BC0[i] == 0) {
+                    if (Battle_PlayerPlaces[i] == 0) {
                         sum_1++;
                     }
                 }
@@ -191,7 +193,7 @@ s32 func_80051548(s32 arg0) {
     s32 var_v1 = 0;
     s32 i;
     
-    if (D_800F0C74 == D_800F0B50) {
+    if (D_800F0C74 == Battle_Time) {
         D_800F0BD0[arg0] = D_80176838;
 
         for (i = 0; i < PLAYERS_MAX; i++) {
@@ -210,7 +212,7 @@ s32 func_80051548(s32 arg0) {
         D_80176834--;
     }
     
-    D_800F0C74 = D_800F0B50;
+    D_800F0C74 = Battle_Time;
 
     if (var_v1 >= 2) {
         var_v1 = 0;
@@ -220,6 +222,7 @@ s32 func_80051548(s32 arg0) {
     return var_v1;
 }
 
+// TODO make them static inside function
 s32 D_8017683C;
 unk80176840 D_80176840;
 
@@ -251,18 +254,18 @@ f32 func_80051678(u8 arg0, f32* arg1, f32 arg2, f32 arg3) {
 }
 
 void func_8005171C(void) {
-    if ((gCurrentZone == 6) && ((D_800F0B50 % 60) == 0)) {
+    if (gCurrentZone == 6 && (Battle_Time % 60) == 0) {
         PLAYSFX(137, 0, 0x10);
     }
 }
 
-s32 func_8005177C(s32 arg0) {
+s32 func_8005177C(s32 playerID) {
     s32 i;
     s32 activeCount = 0;
 
     for (i = 0; i < PLAYERS_MAX; i++) {
         if (gPlayerActors[i].active && (D_80168D78[i] != (((i & 0xFF) == 4) * 0))) {
-            if (arg0 != i) {
+            if (playerID != i) {
                 activeCount++;
                 continue;
             }
@@ -275,23 +278,23 @@ s32 func_8005177C(s32 arg0) {
     return activeCount;
 }
 
-void func_800517EC(void) {
+void Battle_DrawPortraits(void) {
     s32 i;
 
     for (i = 0; i < PLAYERS_MAX; i++) {
         if (gPlayerActors[i].active == TRUE) {
-            if (gSelectedCharacters[i] > 5) {
+            if (gSelectedCharacters[i] > CHARA_WHITE) {
                 continue;
             }
-            printUISprite(D_800F0BE4[D_800F0BE0[i]].unk_04, D_800F0BE4[D_800F0BE0[i]].unk_08, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, gCharacterPortraitIndecies[gSelectedCharacters[i]]);
+            printUISprite(Battle_PlayerUIDefs[Battle_CornerIndices[i]].unk_04, Battle_PlayerUIDefs[Battle_CornerIndices[i]].unk_08, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, gCharacterPortraits[gSelectedCharacters[i]]);
         }
     }
 }
 
 #ifdef NON_MATCHING
-void func_80051910(s32 arg0) {
-    if (D_800F0BC0[arg0] == 0) {
-        s8 g = D_800F0B50 * 16;
+void Battle_PrintPlayerTimer(s32 playerID) {
+    if (Battle_PlayerPlaces[playerID] == 0) {
+        s8 g = Battle_Time * 16;
         SetTextGradient(255, g, 32, 255,
                         255, 0,  0, 255,
                         255, g, 32, 255,
@@ -300,35 +303,35 @@ void func_80051910(s32 arg0) {
         SetTextGradientFromPalette(5);
     }
     func_800610A8();
-    printNumber(D_800F0BE4[D_800F0BE0[arg0]].unk_0C, D_800F0BE4[D_800F0BE0[arg0]].unk_10, 0.0f, 0.6f, (D_800F0BE4[D_800F0BE0[arg0]].unk_00 / 1800) % 60, 2, 0);
-    PrintTextWrapper(D_800F0BE4[D_800F0BE0[arg0]].unk_0C + 18.0f, D_800F0BE4[D_800F0BE0[arg0]].unk_10 - 2.0f, 0.0f, 0.6f, "：", 1);
-    printNumber(D_800F0BE4[D_800F0BE0[arg0]].unk_0C + 28.0f, D_800F0BE4[D_800F0BE0[arg0]].unk_10, 0.0f, 0.6f, (D_800F0BE4[D_800F0BE0[arg0]].unk_00 / 30) % 60, 2, 0);
+    printNumber(Battle_PlayerUIDefs[Battle_CornerIndices[playerID]].unk_0C, Battle_PlayerUIDefs[Battle_CornerIndices[playerID]].unk_10, 0.0f, 0.6f, (Battle_PlayerUIDefs[Battle_CornerIndices[playerID]].unk_00 / 1800) % 60, 2, 0);
+    PrintTextWrapper(Battle_PlayerUIDefs[Battle_CornerIndices[playerID]].unk_0C + 18.0f, Battle_PlayerUIDefs[Battle_CornerIndices[playerID]].unk_10 - 2.0f, 0.0f, 0.6f, "：", 1);
+    printNumber(Battle_PlayerUIDefs[Battle_CornerIndices[playerID]].unk_0C + 28.0f, Battle_PlayerUIDefs[Battle_CornerIndices[playerID]].unk_10, 0.0f, 0.6f, (Battle_PlayerUIDefs[Battle_CornerIndices[playerID]].unk_00 / 30) % 60, 2, 0);
     func_800610B8();
 }
 #else
-#pragma GLOBAL_ASM("asm/nonmatchings/code/2C3B0/func_80051910.s")
-void func_80051910(s32 arg0);
+#pragma GLOBAL_ASM("asm/nonmatchings/code/2C3B0/Battle_PrintPlayerTimer.s")
+void Battle_PrintPlayerTimer(s32 playerID);
 #endif
 
 #ifdef NON_MATCHING
-void func_80051B24(s32 arg0) {
+void Battle_PrintPlayerPlace(s32 playerID) {
     f32 go;
     f32 temp_f2;
-    f32 var_f12 = 1.0f;
+    f32 alpha = 1.0f;
     f32 sp68 = 24.0f;
     f32 sp64 = 16.0f;
     f32 sp60 = 0.0f;
     f32 sp5C = 0.0f;
     s32 temp_t4;
     
-    if (D_800F0BE4[D_800F0BE0[arg0]].unk_20 != D_800F0BC0[D_800F0BE0[arg0]]) {
-        D_800F0BE4[D_800F0BE0[arg0]].unk_20 = D_800F0BC0[D_800F0BE0[arg0]];
-        D_800F0BE4[D_800F0BE0[arg0]].unk_1C = 0;
+    if (Battle_PlayerUIDefs[Battle_CornerIndices[playerID]].unk_20 != Battle_PlayerPlaces[Battle_CornerIndices[playerID]]) {
+        Battle_PlayerUIDefs[Battle_CornerIndices[playerID]].unk_20 = Battle_PlayerPlaces[Battle_CornerIndices[playerID]];
+        Battle_PlayerUIDefs[Battle_CornerIndices[playerID]].unk_1C = 0;
     } else {
-        D_800F0BE4[D_800F0BE0[arg0]].unk_1C += 0.125f;
-        if (D_800F0BE4[D_800F0BE0[arg0]].unk_1C <= 1.0f) {
-            var_f12 *= D_800F0BE4[D_800F0BE0[arg0]].unk_1C;
-            go = 1 - var_f12;
+        Battle_PlayerUIDefs[Battle_CornerIndices[playerID]].unk_1C += 0.125f;
+        if (Battle_PlayerUIDefs[Battle_CornerIndices[playerID]].unk_1C <= 1.0f) {
+            alpha *= Battle_PlayerUIDefs[Battle_CornerIndices[playerID]].unk_1C;
+            go = 1 - alpha;
             temp_f2 = 1.0f + 2.0f * go;
             
             sp68 *= temp_f2;
@@ -340,92 +343,91 @@ void func_80051B24(s32 arg0) {
         }
     }
     
-    temp_t4 = D_800F0B50 % 64;
+    temp_t4 = Battle_Time % 64;
     if (temp_t4 < 2 || temp_t4 >= 6 && temp_t4 < 8) {
-        SetTextGradient(255, 255, 255, 255 * var_f12, 
-                        255, 255, 255, 255 * var_f12, 
-                        255, 255, 255, 255 * var_f12, 
-                        255, 255, 255, 255 * var_f12);
+        SetTextGradient(255, 255, 255, 255 * alpha, 
+                        255, 255, 255, 255 * alpha, 
+                        255, 255, 255, 255 * alpha, 
+                        255, 255, 255, 255 * alpha);
     } else {
-        switch (D_800F0BC0[arg0]) {
+        switch (Battle_PlayerPlaces[playerID]) {
             case 0:
-                SetTextGradientFromPaletteAlpha(0xD, var_f12);
+                SetTextGradientFromPaletteAlpha(0xD, alpha);
                 break;
             case 1:
-                SetTextGradientFromPaletteAlpha(0xE, var_f12);
+                SetTextGradientFromPaletteAlpha(0xE, alpha);
                 break;
             case 2:
-                SetTextGradientFromPaletteAlpha(0xF, var_f12);
+                SetTextGradientFromPaletteAlpha(0xF, alpha);
                 break;
             case 3:
-                SetTextGradientFromPaletteAlpha(0x10, var_f12);
+                SetTextGradientFromPaletteAlpha(0x10, alpha);
                 break;
         }
     }
-    printUISprite(D_800F0BE4[D_800F0BE0[arg0]].unk_14 - sp60, D_800F0BE4[D_800F0BE0[arg0]].unk_18 - sp5C,
-                0, 0, 1, sp68, sp64, D_800F0BC0[arg0], 0xd5);
+    printUISprite(Battle_PlayerUIDefs[Battle_CornerIndices[playerID]].unk_14 - sp60, Battle_PlayerUIDefs[Battle_CornerIndices[playerID]].unk_18 - sp5C,
+                0, 0, 1, sp68, sp64, Battle_PlayerPlaces[playerID], 213);
 }
 #else
-#pragma GLOBAL_ASM("asm/nonmatchings/code/2C3B0/func_80051B24.s")
-void func_80051B24(s32 arg0);
+#pragma GLOBAL_ASM("asm/nonmatchings/code/2C3B0/Battle_PrintPlayerPlace.s")
+void Battle_PrintPlayerPlace(s32 arg0); 
 #endif
 
 void func_80051F38(void) {
     s32 i;
-
-    switch (D_800F0B58) {
-        case 6:
+    switch (Battle_Stage) {
+        case BATTLE_STAGE_6:
             for (i = 0; i < PLAYERS_MAX; i++) {
                 if (gPlayerActors[i].active == TRUE) {
-                    if (D_801749AC == 2) {
-                        if (D_800F0BC0[i] < 2) {
-                            func_80051910(i);
+                    if (Battle_GameType == BATTLE_TYPE_TIME_TRIAL) {
+                        if (Battle_PlayerPlaces[i] < 2) {
+                            Battle_PrintPlayerTimer(i);
                         } else {
-                            func_80051B24(i);
+                            Battle_PrintPlayerPlace(i);
                         }
-                    } else if (D_801749AC == 1) {
-                        func_80051B24(i);
+                    } else if (Battle_GameType == BATTLE_TYPE_SURVIVAL) {
+                        Battle_PrintPlayerPlace(i);
                     }
                 }
             }
             break;
-        case 8:
-        case 9:
+        case BATTLE_STAGE_8:
+        case BATTLE_STAGE_9:
             for (i = 0; i < 4; i++) {
                 if (gPlayerActors[i].active == TRUE && D_80176828 == 0) {
-                    func_80051B24(i);
+                    Battle_PrintPlayerPlace(i);
                 }
             }
             break;
     }
 }
 
-void func_80052094(f32 x, f32 y, f32 arg2, s32 arg3, u8 arg4, unk_80052094_8* arg5, s32 arg6) {
+void Battle_PrintTextBig(f32 posX, f32 posY, f32 scaleX, s32 palette, u8 length, unk_80052094_8* arg5, s32 arg6) {
     s32 i;
 
-    if (arg2 > 1.0f) {
-        arg2 = 1.0f;
+    if (scaleX > 1.0f) {
+        scaleX = 1.0f;
     }
     
-    for (i = 0; i < arg4; i++) {        
-        SetTextGradientFromPalette(arg3);
+    for (i = 0; i < length; i++) {        
+        SetTextGradientFromPalette(palette);
         func_800612F0(arg5[i].unk_04);
-        if (arg6 == 0) {
-            func_80059F28(x + 32 * i, y - 16.0f * arg2, 0.0f, 0.0f, 1.0f, 32.0f, 16 * arg2, arg5[i].unk_00, 0x5E);
+        if (!arg6) {
+            func_80059F28(posX + 32 * i, posY - 16.0f * scaleX, 0.0f, 0.0f, 1.0f, 32.0f, 16 * scaleX, arg5[i].unk_00, SPRITE_TEXTBIGGER);
         } else {
-            printUISprite(x + 32 * i, y - 16.0f * arg2, 0.0f, 0.0f, 1.0f, 32.0f, 16 * arg2, arg5[i].unk_00, 0x5E);
+            printUISprite(posX + 32 * i, posY - 16.0f * scaleX, 0.0f, 0.0f, 1.0f, 32.0f, 16 * scaleX, arg5[i].unk_00, SPRITE_TEXTBIGGER);
         }
-        SetTextGradientFromPalette(arg3 + 1);
+        SetTextGradientFromPalette(palette + 1);
         func_800612F0(arg5[i].unk_04 + 1);
-        if (arg6 == 0) {
-            func_80059F28(x + 32 * i, y, 0.0f, 0.0f, 1.0f, 32.0f, 16 * arg2, arg5[i].unk_00, 0x5E);
+        if (!arg6) {
+            func_80059F28(posX + 32 * i, posY, 0.0f, 0.0f, 1.0f, 32.0f, 16 * scaleX, arg5[i].unk_00, SPRITE_TEXTBIGGER);
         } else {
-            printUISprite(x + 32 * i, y, 0.0f, 0.0f, 1.0f, 32.0f, 16 * arg2, arg5[i].unk_00, 0x5E);
+            printUISprite(posX + 32 * i, posY, 0.0f, 0.0f, 1.0f, 32.0f, 16 * scaleX, arg5[i].unk_00, SPRITE_TEXTBIGGER);
         }
     }
 }
 
-void func_800522A4(f32 arg0, f32 arg1, f32 arg2, f32 arg3, s32 arg4, s32 arg5) {
+void func_800522A4(f32 posX, f32 posY, f32 scaleX, f32 scaleY, s32 arg4, s32 arg5) {
     s32 var_s0;
     s32 sp90;
     s32 sp8C;    
@@ -434,10 +436,10 @@ void func_800522A4(f32 arg0, f32 arg1, f32 arg2, f32 arg3, s32 arg4, s32 arg5) {
     var_s0 = arg4;
     var_s1 = 0;
     while (arg4 != 0) {
-        if (func_80080318(1, arg4, &sp90, &sp8C) == 0) {
+        if (func_80080318(SPRITE_TEXTBIG, arg4, &sp90, &sp8C) == 0) {
             SetTextGradientFromPalette(arg5);
             func_800612F0(sp8C);
-            func_80059F28(arg0 + 16.0f * arg2 * var_s1, arg1, 0, 0, 1.0f, 16 * arg2, 24.0f * arg3, sp90, 1);
+            func_80059F28(posX + 16.0f * scaleX * var_s1, posY, 0, 0, 1.0f, 16 * scaleX, 24.0f * scaleY, sp90, SPRITE_TEXTBIG);
         }
         
         arg4 += 2;
@@ -445,59 +447,59 @@ void func_800522A4(f32 arg0, f32 arg1, f32 arg2, f32 arg3, s32 arg4, s32 arg5) {
     }
 }
 
-void func_800523E4(f32 arg0, f32 arg1, f32 arg2, f32 arg3, s32 arg4, s32 arg5, s32 arg6) {
+void Battle_PrintNumber(f32 posX, f32 posY, f32 scaleX, f32 scaleY, s32 value, s32 numDigits, s32 arg6) {
     s32 i;
 
     func_800610A8();
-    if (arg5 > 8) {
-        arg5 = 8;
+    if (numDigits > 8) {
+        numDigits = 8;
     }
     
-    for (i = 0; i < arg5; i++) {
-        s32 temp_s0 = (arg4 / D_800F0C78[arg5 - i - 1]) % 10;
+    for (i = 0; i < numDigits; i++) {
+        s32 digit = (value / Battle_DecimalPowers[numDigits - i - 1]) % 10;
         func_800612F0(1);
-        if (arg6 != 0) {
-            printUISprite(arg0 + 16 * i * arg2, arg1, 0.0f, 0.0f, 1.0f, 16.0f * arg2, 24.0f * arg3,  temp_s0, 1);
+        if (arg6) {
+            printUISprite(posX + 16 * i * scaleX, posY, 0.0f, 0.0f, 1.0f, 16.0f * scaleX, 24.0f * scaleY,  digit, SPRITE_TEXTBIG);
         } else {
-            func_80059F28(arg0 + 16 * i * arg2, arg1, 0.0f, 0.0f, 1.0f, 16.0f * arg2, 24.0f * arg3, temp_s0, 1);
+            func_80059F28(posX + 16 * i * scaleX, posY, 0.0f, 0.0f, 1.0f, 16.0f * scaleX, 24.0f * scaleY, digit, SPRITE_TEXTBIG);
         }
     }
     func_800610B8();
 }
 
-void func_800525E8(s32 arg0, f32 arg1) {
+void func_800525E8(s32 playerID, f32 posX) {
     s32 sp44;
 
-    sp44 = func_8005177C(arg0);
+    sp44 = func_8005177C(playerID);
     if (sp44 >= 0) {
-        arg1 -= 3;
+        posX -= 3;
         func_800610A8();
         SetTextGradientFromPalette(0);
         
         func_800612F0(0);
-        func_80059F28(arg1,      102.0f, 0.0f, 0.0f, 1.0f, 12.0f, 24.0f,  3.0f, 1);
-        func_80059F28(arg1 + 12, 104.6f, 0.0f, 0.0f, 1.0f, 12.0f, 24.0f, 15.0f, 1);
-        func_80059F28(arg1 + 24, 107.3f, 0.0f, 0.0f, 1.0f, 12.0f, 24.0f, 13.0f, 1);
+        func_80059F28(posX,      102.0f, 0.0f, 0.0f, 1.0f, 12.0f, 24.0f,  3.0f, SPRITE_TEXTBIG);
+        func_80059F28(posX + 12, 104.6f, 0.0f, 0.0f, 1.0f, 12.0f, 24.0f, 15.0f, SPRITE_TEXTBIG);
+        func_80059F28(posX + 24, 107.3f, 0.0f, 0.0f, 1.0f, 12.0f, 24.0f, 13.0f, SPRITE_TEXTBIG);
         
         func_800612F0(1);
-        func_80059F28(arg1 + 36, 110.0f, 0.0f, 0.0f, 1.0f, 12.0f, 24.0f, sp44 + 1, 1);
+        func_80059F28(posX + 36, 110.0f, 0.0f, 0.0f, 1.0f, 12.0f, 24.0f, sp44 + 1, SPRITE_TEXTBIG);
         func_800610B8();
     } else {
         func_800612F0(1);
         SetTextGradientFromPalette(0);
-        func_80059F28(arg1, 102.0f, 0.0f, 0.0f, 1.0f, 16.0f, 24.0f, arg0 + 1, 1);
+        func_80059F28(posX, 102.0f, 0.0f, 0.0f, 1.0f, 16.0f, 24.0f, playerID + 1, SPRITE_TEXTBIG);
         
         func_800612F0(0);
         SetTextGradientFromPalette(0);
-        func_80059F28(arg1 + 24, 110.0f, 0.0f, 0.0f, 1.0f, 16.0f, 24.0f, 16, 1);
+        func_80059F28(posX + 24, 110.0f, 0.0f, 0.0f, 1.0f, 16.0f, 24.0f, 16, SPRITE_TEXTBIG);
     }
 }
 
 #ifdef NON_MATCHING
-void func_80052890(u32 arg0) {
+void func_80052890(u32 charID) {
     static u8 D_80176840;
     static u8 D_80176841;
-    s32 temp_t6 = D_800F0B50 & 0x1F;
+    s32 temp_t6 = Battle_Time & 0x1F;
     
     if (temp_t6 >= 0 && temp_t6 < 8) {
         D_80176840 = (temp_t6 % 8) * 175.0f / 8.0f;
@@ -517,38 +519,38 @@ void func_80052890(u32 arg0) {
         D_80176841 += 80;
     }
     
-    switch (arg0) {
-        case 0:
+    switch (charID) {
+        case CHARA_DAVY:
             SetTextGradient(0, D_80176840 * 0.8, D_80176840, 255,
                             0, D_80176841 * 0.8, D_80176841, 255,
                             0, D_80176840 * 0.8, D_80176840, 255,
                             0, D_80176841 * 0.8, D_80176841, 255);
             break;
-        case 1:
+        case CHARA_JACK:
             SetTextGradient(D_80176840 * 0.4, D_80176840, 0, 255,
                             D_80176841 * 0.4, D_80176841, 0, 255,
                             D_80176840 * 0.4, D_80176840, 0, 255,
                             D_80176841 * 0.4, D_80176841, 0, 255);
             break;
-        case 2:
+        case CHARA_FRED:
             SetTextGradient(D_80176840, D_80176840, 0, 255,
                             D_80176841, D_80176841, 0, 255,
                             D_80176840, D_80176840, 0, 255,
                             D_80176841, D_80176841, 0, 255);
             break;
-        case 3:
+        case CHARA_LINDA:
             SetTextGradient(D_80176840, D_80176840 * 0.4, D_80176840 * 0.5, 255, 
                             D_80176841, D_80176841 * 0.4, D_80176841 * 0.5, 255,
                             D_80176840, D_80176840 * 0.4, D_80176840 * 0.5, 255, 
                             D_80176841, D_80176841 * 0.4, D_80176841 * 0.5, 255);
             break;
-        case 4:
+        case CHARA_BLACK:
             SetTextGradient(D_80176840 * 0.4, D_80176840 * 0.2, D_80176840, 255,
                             D_80176841 * 0.4, D_80176841 * 0.2, D_80176841, 255,
                             D_80176840 * 0.4, D_80176840 * 0.2, D_80176840, 255,
                             D_80176841 * 0.4, D_80176841 * 0.2, D_80176841, 255);
             break;
-        case 5:
+        case CHARA_WHITE:
             SetTextGradient(D_80176840, D_80176840, D_80176840, 255,
                             D_80176841, D_80176841, D_80176841, 255,
                             D_80176840, D_80176840, D_80176840, 255,
@@ -574,7 +576,7 @@ void func_800536D8(void) {
             f32 y = 128.0f;
             func_800525E8(i, sp9C - 4.0f);
             for (j = 0; j < 4; j++, y += 24) {
-                if (j == D_800F0BC0[i] && D_80176828 == 0) {
+                if (j == Battle_PlayerPlaces[i] && D_80176828 == 0) {
                     func_80052890(gSelectedCharacters[i]);
                 } else {
                     SetTextGradientFromPalette(1);
@@ -586,7 +588,7 @@ void func_800536D8(void) {
                     v0 = 1;
                 }
 
-                func_800523E4(sp9C + 12.8f * (v0 == 1), y, 0.8f, 0.8f, D_800F0B68[i][j], v0, 0);
+                Battle_PrintNumber(sp9C + 12.8f * (v0 == 1), y, 0.8f, 0.8f, D_800F0B68[i][j], v0, 0);
                 
             }
             sp9C += sp94;
@@ -596,45 +598,48 @@ void func_800536D8(void) {
 
 //prints "HURRY!" during MP Battle [9 times]
 void Multiplayer_PrintHurry(void) {
-    if ((D_80176824 <= 1800) && (D_80176824 > 1710) && ((D_80176824 % 10) < 5)) {
+    if ((Battle_TimeLeft <= 1800) && (Battle_TimeLeft > 1710) && ((Battle_TimeLeft % 10) < 5)) {
         SetTextGradientFromPalette(1); 
-        PrintTextWrapper(100.0f, 10.0f, 0.0f, 1.0f, "ＨＵＲＲＹ！", 1);
+        PrintTextWrapper(100.0f, 10.0f, 0.0f, 1.0f, "ＨＵＲＲＹ！", SPRITE_TEXTBIG);
     }
 }
 
-void func_80053950(void) {
-    f32 var_f0 = 1.0f;
-    if (D_80176824 < 0x3A3) {
-        SetTextGradient(0xFFU, 0x3CU, 0U, 0xFFU, 0xFF, 0, 0, 0xFF, 0xFF, 0x3C, 0, 0xFF, 0xFF, 0, 0, 0xFF);
-        if (D_80176824 < 0x15) {
-            var_f0 = (f32) D_80176824 / 20.0f;
+void Battle_PrintCountdownTimer(void) {
+    f32 scaleY = 1.0f;
+    if (Battle_TimeLeft <= 930) {
+        SetTextGradient(255, 60, 0, 255,
+                        255, 0, 0, 255,
+                        255, 60, 0, 255,
+                        255, 0, 0, 255);
+        if (Battle_TimeLeft <= 20) {
+            scaleY = Battle_TimeLeft / 20.0f;
         }
-        func_800523E4(136.0f, ((1.0f - var_f0) * 12.0f) + 10.0f, 1.0f, var_f0, (s32) ((s32) D_80176824 / 30) % 60, 2, 1);
+        Battle_PrintNumber(136.0f, ((1.0f - scaleY) * 12.0f) + 10.0f, 1.0f, scaleY, (Battle_TimeLeft / 30) % 60, 2, 1);
     }
 }
 
-void func_80053A70(f32 arg0, f32 arg1) {
-    f32 var_f26;
+void Battle_PrintSuddenDeath(f32 posX, f32 posY) {
+    f32 scaleY;
     s32 i;
 
-    if (D_800F0B50 <= 20) {
-        var_f26 = D_800F0B50 / 20.0f;
-    } else if (D_800F0B50 > 20 && D_800F0B50 < 130) {
-        var_f26 = 1.0f;
-    } else if (D_800F0B50 >= 130 && D_800F0B50 < 150) {
-        var_f26 = 1.0f - (D_800F0B50 - 130.0f) / 20.0f;
+    if (Battle_Time <= 20) {
+        scaleY = Battle_Time / 20.0f;
+    } else if (Battle_Time > 20 && Battle_Time < 130) {
+        scaleY = 1.0f;
+    } else if (Battle_Time >= 130 && Battle_Time < 150) {
+        scaleY = 1.0f - (Battle_Time - 130.0f) / 20.0f;
     } else {
         return;
     }
 
-    for (i = 0; i < 12; i++) {
-        if ((D_800F0B50 % 10) < 5 && var_f26 == 1.0f) {
+    for (i = 0; i < ARRAY_COUNT(Batlle_MsgSuddenDeath); i++) {
+        if ((Battle_Time % 10) < 5 && scaleY == 1.0f) {
             SetTextGradientFromPalette(1);
         } else {
             SetTextGradientFromPalette(4);
         }
         func_800612F0(0);
-        printUISprite(arg0 + i * 11.2f, arg1 + (1 - var_f26) * 12.0f, 0.0f, 0.0f, 1.0f, 11.2f, 16.8f * var_f26, D_800F0C98[i], 1);
+        printUISprite(posX + i * 11.2f, posY + (1 - scaleY) * 12.0f, 0.0f, 0.0f, 1.0f, 11.2f, 16.8f * scaleY, Batlle_MsgSuddenDeath[i], SPRITE_TEXTBIG);
     }    
 }
 
@@ -644,7 +649,7 @@ void func_80053CA0(void) {
     for (i = 0; i < 5; i++) {
         for (j = 0; j < 8; j++) {
             func_800612F0(i);
-            func_80059F28((j * 0x28), (i * 0x30), 0, 0, 1.0f, 40.0f, 48.0f, j, 0xCE);
+            func_80059F28((j * 0x28), (i * 0x30), 0, 0, 1.0f, 40.0f, 48.0f, j, 206);
         }
     }
     func_800536D8();
@@ -656,7 +661,7 @@ void func_80053DA8(s32 arg0) {
 
     if (arg0 == 0) {
         for (i = 0; i < 4; i++) {
-            if (gPlayerActors[i].active == 1 && D_800F0BC0[i] == 0) {
+            if (gPlayerActors[i].active == TRUE && Battle_PlayerPlaces[i] == 0) {
                 break;
             }
         }
@@ -721,12 +726,12 @@ void func_80054284(void) {
     temp_f22 = func_80051678(D_8017682C, &sp88, -160.0f, 310.0f);
     for (i = 0; i < 4; i++) {
         if (gPlayerActors[i].active == 1) {
-            if (D_8017682C == D_800F0BC0[i] + 1) {
+            if (D_8017682C == Battle_PlayerPlaces[i] + 1) {
                 var_s1 = 3;
                 SetPlayerContextEyes(gSelectedCharacters[i], 2, 0);
             } else {
-                var_s1 = D_800F0BC0[i];
-                SetPlayerContextEyes(gSelectedCharacters[i], 1, (D_800F0BC0[i] == 0) ^ 1);
+                var_s1 = Battle_PlayerPlaces[i];
+                SetPlayerContextEyes(gSelectedCharacters[i], 1, (Battle_PlayerPlaces[i] == 0) ^ 1);
             }
             if (D_800F0B60 == 1) {
                 var_s1 = 1;
@@ -743,49 +748,49 @@ void func_8005444C(void) {
         func_800771DC(&D_800FE404, 16.0f, 16.0f, 1, 5, &D_800F0B5C, 0.0f, 0.0f, 320.0f, 240.0f);
     }
     switch (D_800F0B5C) {
-    case -2:
-    case 1:
-        D_800F0B5C = -1;
-        return;
-    case 2:
-        D_800FE74C = 0;
-        D_800F0B5C = -1;
-        func_8005423C();
-        SetProcessType(0xE);
-        return;
-    case 3:
-        D_800FE74C = 0;
-        D_800F0B5C = -1;
-        func_8005423C();
-        SetProcessType(7);
-        return;
-    case 4:
-        D_800FE74C = 0;
-        D_800F0B5C = -1;
-        func_8005423C();
-        SetProcessType(6);
-        /* fallthrough */
-    default:
-        return;
+        case -2:
+        case 1:
+            D_800F0B5C = -1;
+            return;
+        case 2:
+            D_800FE74C = 0;
+            D_800F0B5C = -1;
+            func_8005423C();
+            SetProcessType(0xE);
+            return;
+        case 3:
+            D_800FE74C = 0;
+            D_800F0B5C = -1;
+            func_8005423C();
+            SetProcessType(7);
+            return;
+        case 4:
+            D_800FE74C = 0;
+            D_800F0B5C = -1;
+            func_8005423C();
+            SetProcessType(6);
+            /* fallthrough */
+        default:
+            return;
     }
 }
 
 void func_8005456C(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, s32 arg5) {
     Mtx sp30;
 
-    if (D_800F0B50 % 2) {
+    if (Battle_Time % 2) {
         setPrimColor(D_800FE564[arg5].unk0, D_800FE564[arg5].unk1, D_800FE564[arg5].unk2, D_800FE564[arg5].unk3 * flabs((arg3 / arg1)));
         guAlign(&sp30, 0.0f, 0.0f, 100.0f, 0.0f);
         func_80058BE4(&sp30, arg0, arg1, arg2, arg4, arg4, 0.0f, 0x4A);
     }
 }
 
-void func_800546F0(void) {
+void Battle_Init(void) {
     s32 i;
     
-    D_800F0B58 = 0;
-    D_800F0B64 = 1;
-    D_80176824 = D_8020250C;
+    Battle_Stage = BATTLE_STAGE_0;
+    D_800F0B64 = BATTLE_STAGE_1;
+    Battle_TimeLeft = D_8020250C;
     D_800F0674 = D_801749B4 = 0;
     D_800F0C74 = 999999999;
     D_80176828 = 99;
@@ -795,12 +800,12 @@ void func_800546F0(void) {
     D_800F0B54[0] = 255;
 
     for (i = 0; i < 4; i++) {
-        D_800F0BE4[i].unk_20 = 99;
-        D_800F0BE4[i].unk_1C = 0.0f;
+        Battle_PlayerUIDefs[i].unk_20 = 99;
+        Battle_PlayerUIDefs[i].unk_1C = 0.0f;
     }
-    LoadSprite(0x6E);
-    LoadSprite(0x5E);
-    LoadSprite(0xD5);
+    LoadSprite(110);
+    LoadSprite(SPRITE_TEXTBIGGER);
+    LoadSprite(213);
     LockEyeChange();
     LoadPlayerEyes(0);
     LoadPlayerEyes(1);
@@ -817,21 +822,21 @@ void func_800546F0(void) {
 }
 
 #ifdef NON_MATCHING
-void func_80054864(void) {
+void Battle_Update(void) {
     s32 var_v0;
     s32 var_v1;
     s32 var_v1_3;
     u32 var_v1_2;
     s32 i;
 
-    if (gCurrentStage != 7 || D_801749AC == 0) {
+    if (gCurrentStage != STAGE_VS || Battle_GameType == BATTLE_TYPE_UNK_0) {
         return;
     }
     
     if (gCurrentZone >= 4) {
-        D_801749AC = 2;
+        Battle_GameType = BATTLE_TYPE_TIME_TRIAL;
     } else {
-        D_801749AC = 1;
+        Battle_GameType = BATTLE_TYPE_SURVIVAL;
     }
     
     if (D_801749B4 == 0) {
@@ -868,151 +873,151 @@ void func_80054864(void) {
         }
     }
     
-    switch (D_800F0B58) {
-        case 0:
+    switch (Battle_Stage) {
+        case BATTLE_STAGE_0:
             D_800F0674 = 2;
-            func_80055C74();
+            InputDisable();
             for (i = 0; i < 4 ; i++) {
-                if (gPlayerActors[i].active == 1) {
+                if (gPlayerActors[i].active == TRUE) {
                     D_8017682C++;
                 }
             }
     
-            if (D_801749AC == 1) {
+            if (Battle_GameType == BATTLE_TYPE_SURVIVAL) {
                 D_80176834 = D_8017682C;
             } else {
                 D_80176834 = 2;
             }
             for (i = 0; i < 4; i++) {
                 D_800F0BD0[i] = 0;
-                D_800F0BE4[i].unk_00 = 29;    
+                Battle_PlayerUIDefs[i].unk_00 = 29;    
                 D_80176820[i] = 0;
             }
             for (i = 0; i < 4; i++) {
-                D_800F0BC0[i] = 0;
+                Battle_PlayerPlaces[i] = 0;
             }
             
-            D_800F0B50 = 0;
-            D_800F0B58 = 2;
-            func_800678EC(0xFF, 0xFF, 0xFF, 0, 0x2D);
+            Battle_Time = 0;
+            Battle_Stage = BATTLE_STAGE_2;
+            func_800678EC(255, 255, 255, 0, 0x2D);
             break;
-        case 1:
+        case BATTLE_STAGE_1:
             break;
-        case 2:
-            func_80055C74();
+        case BATTLE_STAGE_2:
+            InputDisable();
             D_800F0674 = 2;
-            D_800F0B50++;
-            if (D_800F0B50 > 45) {
-                D_800F0B58 = 3;
-                D_800F0B50 = 0;
-                playSoundEffect(0x3E, NULL, NULL, NULL, 0, 0x10);
+            Battle_Time++;
+            if (Battle_Time > 45) {
+                Battle_Stage = BATTLE_STAGE_READY;
+                Battle_Time = 0;
+                PlaySoundEffect(0x3E, NULL, NULL, NULL, 0, 0x10);
             }
             break;
-        case 3:
-            func_80055C74();
+        case BATTLE_STAGE_READY:
+            InputDisable();
             D_800F0674 = 2;
-            D_800F0B50++;
+            Battle_Time++;
             func_8005171C();
-            func_80052094(80.0f, 100.0f, D_800F0B50 / 23.333334f, 0x11, 5U, D_800F0DF4, 1);
-            if (D_800F0B50 == 40) {
+            Battle_PrintTextBig(80.0f, 100.0f, Battle_Time / 23.333334f, 17, 5, D_800F0DF4, 1);
+            if (Battle_Time == 40) {
                 func_800705C4(8.0f, 90.0f, 0x5FFF);
             }
-            if (D_800F0B50 > 70) {
+            if (Battle_Time > 70) {
                 D_800F0674 = 0;
-                D_800F0B58 = 4;
-                D_800F0B50 = 0;
-                D_8017683C = playSoundEffect(0x40, NULL, NULL, NULL, 0, 0x10);
+                Battle_Stage = BATTLE_STAGE_GO;
+                Battle_Time = 0;
+                D_8017683C = PlaySoundEffect(0x40, NULL, NULL, NULL, 0, 0x10);
                 PlayBGM(gMultiplayerBGM);
-                func_80055C80();
+                InputEnable();
             }
             break;
-        case 4:
-            D_800F0B50++;
+        case BATTLE_STAGE_GO:
+            Battle_Time++;
             func_8005171C();
-            func_80052094(110.0f, 100.0f, 1.0f, 0x13, 3, D_800F0E1C, 1);
-            if (D_800F0B50 > 20) {
-                D_800F0B58 = 5;
-                D_800F0B50 = 0;
-                func_80087358(D_8017683C);
+            Battle_PrintTextBig(110.0f, 100.0f, 1.0f, 19, 3, D_800F0E1C, 1);
+            if (Battle_Time > 20) {
+                Battle_Stage = BATTLE_STAGE_5;
+                Battle_Time = 0;
+                StopSoundEffect(D_8017683C);
             }
             break;
-        case 5:
+        case BATTLE_STAGE_5:
             if (D_801749B4 == 0) {
-                D_80176824--;
-                D_800F0B50++;
+                Battle_TimeLeft--;
+                Battle_Time++;
             }
-            func_800517EC();
+            Battle_DrawPortraits();
             func_8005171C();
             func_8005444C();
-            switch (D_801749AC) {
-                case 1:
+            switch (Battle_GameType) {
+                case BATTLE_TYPE_SURVIVAL:
                     for (i = 0; i < 4; i++) {
-                        if (gPlayerActors[i].active == 1 && gPlayerActors[i].exists == 0) {
+                        if (gPlayerActors[i].active == TRUE && gPlayerActors[i].exists == 0) {
                             if (D_80176820[i] == 0) {
                                 if (func_80051548(i) == 0) {
                                     D_800F0B60 = 1;
-                                    D_80176828 = 0x63;
-                                    D_80176824 = 0;
+                                    D_80176828 = 99;
+                                    Battle_TimeLeft = 0;
                                     break;
                                 } else {
                                     D_80176820[i]++;
                                 }
                             } else {
-                                func_80051B24(i);
+                                Battle_PrintPlayerPlace(i);
                             }
                         }
                     }
                     Multiplayer_PrintHurry();
-                    func_80053950();
+                    Battle_PrintCountdownTimer();
                     if (D_800F0B60 == 0) {
                         D_80176828 = func_8005119C();
                     }
-                    if (D_800F0B60 == 1 || D_80176828 == 0 || D_80176824 <= 0) {
-                        D_800F0B50 = 0;
+                    if (D_800F0B60 == 1 || D_80176828 == 0 || Battle_TimeLeft <= 0) {
+                        Battle_Time = 0;
                         if (D_80176828 > 0) {
                             D_800F0B60 = 1;
                         }
                         if (D_800F0B60 == 0) {
-                            D_800F0B58 = 7;
+                            Battle_Stage = BATTLE_STAGE_7;
                         } else {
-                            D_800F0B58 = 8;
+                            Battle_Stage = BATTLE_STAGE_8;
                         }
                     }
                     break;
-                case 2:
+                case BATTLE_TYPE_TIME_TRIAL:
                     func_80050FB0();
                     func_8005171C();
                     D_80176828 = func_8005119C();
                     for (i = 0; i < 4 ; i++) {
                         if (gPlayerActors[i].active != 0) {
-                            func_80051910(i);
+                            Battle_PrintPlayerTimer(i);
                         }
                     }
                     Multiplayer_PrintHurry();
-                    func_80053950();
-                    if (D_80176824 <= 0) {
+                    Battle_PrintCountdownTimer();
+                    if (Battle_TimeLeft <= 0) {
                         if (D_80176828 != 0) {
-                            D_800F0B58 = 6;
+                            Battle_Stage = BATTLE_STAGE_6;
                             for (i = 0; i < 4; i++) {
                                 if (gPlayerActors[i].active != 0) {
-                                    D_800F0BD0[i] = D_800F0BC0[i] + 1;
-                                    if (D_800F0BC0[i] > 0) {
+                                    D_800F0BD0[i] = Battle_PlayerPlaces[i] + 1;
+                                    if (Battle_PlayerPlaces[i] > 0) {
                                         D_80176820[i] = 1;
                                     }
                                     D_80176834 = D_80176828 + 1;
                                 }
                             }
                         } else {
-                            D_800F0B58 = 7;
+                            Battle_Stage = BATTLE_STAGE_7;
                         }
-                        D_800F0B50 = 0;
+                        Battle_Time = 0;
                     }
                     break;
             }
             break;
-        case 6:
+        case BATTLE_STAGE_6:
             if (D_801749B4 == 0) {
-                D_800F0B50++;
+                Battle_Time++;
             }
             func_8005171C();
             for (i = 0; i < 4 ; i++) {
@@ -1022,8 +1027,8 @@ void func_80054864(void) {
                 }
             }
             func_8005444C();
-            func_80053A70(90.0f, 16.0f);
-            func_800517EC();
+            Battle_PrintSuddenDeath(90.0f, 16.0f);
+            Battle_DrawPortraits();
             func_80051F38();
             for (i = 0; i < 4 ; i++) {
                 if (gPlayerActors[i].active != 0 && D_80176820[i] == 0 && gPlayerActors[i].pos.y < -10.0f) {
@@ -1040,64 +1045,64 @@ void func_80054864(void) {
             }
             if (D_80176828 == 0 || D_800F0B60 == 1) {
                 if (D_800F0B60 == 0) {
-                    D_800F0B64 = D_800F0B58;
-                    D_800F0B58 = 7;
+                    D_800F0B64 = Battle_Stage;
+                    Battle_Stage = BATTLE_STAGE_7;
                 } else {
-                    D_800F0B58 = 8;
+                    Battle_Stage = BATTLE_STAGE_8;
                 }
-                D_800F0B50 = 0;
+                Battle_Time = 0;
             }
             break;
-        case 7:
+        case BATTLE_STAGE_7:
             D_800F0674 = 0;
-            D_800F0B58 = 8;
+            Battle_Stage = BATTLE_STAGE_8;
             func_8005171C();
-            func_800517EC();
+            Battle_DrawPortraits();
             var_v1_3 = 0;
             for (i = 0; i < 4; i++) {
-                if (gPlayerActors[i].active != 0) {
-                    if (gPlayerActors[i].exists != 0 && D_80176820[i] != 1 || D_800F0B64 != 1) {
+                if (gPlayerActors[i].active) {
+                    if (gPlayerActors[i].exists && D_80176820[i] != 1 || D_800F0B64 != BATTLE_STAGE_1) {
                         var_v1_3++;
-                        if (gPlayerActors[i].canJump != 0 || gPlayerActors[i].playerHURTSTATE != 0 || gTongues[i].tongueMode != 0) {
-                            if (D_800F0BC0[i] != 0) {
-                                func_80055C74();
+                        if (gPlayerActors[i].canJump || gPlayerActors[i].playerHURTSTATE != 0 || gTongues[i].tongueMode != 0) {
+                            if (Battle_PlayerPlaces[i] != 0) {
+                                InputDisable();
                             }
-                            D_800F0B58 = 7;
+                            Battle_Stage = BATTLE_STAGE_7;
                         }
                     }
                 }
             }
             if (var_v1_3 == 0) {
-                D_800F0B58 = 8;
+                Battle_Stage = BATTLE_STAGE_8;
                 D_800F0B60 = 1;
                 D_80176828 = 99;
             }
-            if (D_800F0B58 == 8 && var_v1_3 != 0) {
+            if (Battle_Stage == BATTLE_STAGE_8 && var_v1_3 != 0) {
                 func_800510E0();
             }
             break;
-        case 8:
-            if (D_800F0B50++ < 16) {
+        case BATTLE_STAGE_8:
+            if (Battle_Time++ < 16) {
                 D_800F0674 = 0;
-                func_800517EC();
-                func_80055C74();
+                Battle_DrawPortraits();
+                InputDisable();
                 break;
             }
             D_800F0674 = 2;
-            func_80055C74();
-            func_800517EC();
+            InputDisable();
+            Battle_DrawPortraits();
             func_80051F38();
-            D_800F0B50 = 0;
+            Battle_Time = 0;
             func_80053DA8(D_80176828);
             if (D_80176828 > 0 || D_800F0B60 == 1) {
                 for (i = 0; i < 4; i++) {
-                    D_800F0BC0[i] = 1;
+                    Battle_PlayerPlaces[i] = 1;
                 }
                 func_8008BFE0(0x5A);
             } else if (D_80176828 == 0 && D_800F0B60 == 0) {
                 PlayBGM(0xA);
                 for (i = 0; i < 4; i++) {
-                    if (gPlayerActors[i].active == 1 && D_800F0BC0[i] == 0) {
+                    if (gPlayerActors[i].active == 1 && Battle_PlayerPlaces[i] == 0) {
                         UnlockEyeChange();
                         SetPlayerContextEyes(gSelectedCharacters[i], 1, 0);
                         func_80053FA0(i);
@@ -1106,17 +1111,17 @@ void func_80054864(void) {
                     }
                 }
             }
-            D_800F0B50 = 0;
-            D_800F0B58 = 9;
+            Battle_Time = 0;
+            Battle_Stage = BATTLE_STAGE_9;
             break;
-        case 9:
-            func_80055C74();
-            D_800F0B50++;
+        case BATTLE_STAGE_9:
+            InputDisable();
+            Battle_Time++;
             D_800F0674 = 2;
             func_8005171C();
-            func_800517EC();
+            Battle_DrawPortraits();
             func_80051F38();
-            if (D_801749AC == 2) {
+            if (Battle_GameType == BATTLE_TYPE_TIME_TRIAL) {
                 for (i = 0; i < 4; i++) {
                     if (gPlayerActors[i].active != 0) {
                         func_8005456C(gPlayerActors[i].pos.x, -300.0f, gPlayerActors[i].pos.z,
@@ -1124,27 +1129,27 @@ void func_80054864(void) {
                     }
                 }
             }
-            if (D_800F0B50 > 120) {
+            if (Battle_Time > 120) {
                 StopBGM();
-                D_800F0B58 = 10;
+                Battle_Stage = BATTLE_STAGE_10;
             }
             break;
-        case 10:
-            D_800F0B50 = 0;
-            D_800F0B58 = 0;
+        case BATTLE_STAGE_10:
+            Battle_Time = 0;
+            Battle_Stage = BATTLE_STAGE_0;
             D_800F0674 = 0;
             D_800F0B54[0] = 0;
-            func_80055C80();
+            InputEnable();
             SetProcessType(0x11);
             break;
         default:
-            D_800F0B58 = 1;
-            D_800F0B50 = 0;
+            Battle_Stage = BATTLE_STAGE_1;
+            Battle_Time = 0;
             break;
     }
 }
 #else
-#pragma GLOBAL_ASM("asm/nonmatchings/code/2C3B0/func_80054864.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/2C3B0/Battle_Update.s")
 #endif
 
 
@@ -1251,7 +1256,7 @@ void Process_Boot(void) {
         D_800FFDF4 = 1;
         DMAStruct_Print();
         func_800A1EC4();
-        LoadSprite(94);
+        LoadSprite(SPRITE_TEXTBIGGER);
         CTTaskList_Init();
         func_8002E0CC();
         gGameModeState++;

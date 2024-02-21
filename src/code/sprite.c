@@ -33,11 +33,11 @@ void func_80055C04(void) {
     }
 }
 
-void func_80055C74(void) {
+void InputDisable(void) {
     D_800F68A8 = 0;
 }
 
-void func_80055C80(void) {
+void InputEnable(void) {
     D_800F68A8 = 1;
 }
 

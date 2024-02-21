@@ -40,7 +40,7 @@ s32 func_8004BF88(Actor*, s32, f32, f32);
 /* Ext Variables */
 extern s32 D_80174980;
 extern s32 D_80174988;
-extern s32 D_801749AC;
+extern s32 Battle_GameType;
 
 extern f32 D_8010B348;
 extern f32 D_8010B284;
@@ -49,7 +49,7 @@ extern f32 D_8010B28C;
 extern f32 D_8010B290;
 extern f32 D_8010B294;
 extern s32 D_801749A8;
-extern s32 D_801749AC;
+extern s32 Battle_GameType;
 extern s32 D_80236974;
 
 extern f32 D_8010BC70;

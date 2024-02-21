@@ -217,7 +217,7 @@ extern s32 D_801748A0;
 extern s32 D_80174998;
 extern s32 D_8017499C;
 extern OSMesgQueue gEepromMsgQ;
-extern s32 D_80176824;
+extern s32 Battle_TimeLeft;
 extern u8 gTextGradient[16]; //probably really color32[4]
 extern f32 D_80176F50;
 extern OSMesgQueue D_801B3120;

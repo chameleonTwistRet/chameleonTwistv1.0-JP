@@ -247,7 +247,7 @@ s32 func_80087130(unk0* arg0, unk0* arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80087290.s")
 
-s32 func_80087358(s32 arg0) {
+s32 StopSoundEffect(s32 arg0) {
     unk0* temp_v0 = func_80086EB4(arg0);
 
     if (temp_v0 == NULL) {
@@ -271,7 +271,7 @@ s32 func_80087358(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80087E60.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/playSoundEffect.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/PlaySoundEffect.s")
 
 void func_80087FA4(u32 arg0) {
     D_800FF5E8 = arg0;
