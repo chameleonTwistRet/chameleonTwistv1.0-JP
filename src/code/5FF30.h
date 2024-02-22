@@ -169,5 +169,6 @@ extern s16 D_80100EB4[];
 extern s16 D_801B317C;
 extern s16 gSFXMute;
 extern UnkPlaySoundEffect* D_80200A90;
+extern f32 D_8010F2FC;
 
 #endif // _5FF30_H_

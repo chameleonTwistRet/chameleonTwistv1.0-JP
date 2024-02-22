@@ -132,7 +132,25 @@ void func_80084FC0(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80085290.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80085364.s")
+f32 func_80085364(u8 arg0) {
+    f32 var_f0;
+    f32 var_f2;
+    
+    var_f0 = 1.030992985;
+    var_f2 = 1.0f;
+
+    while ((u32)arg0 != 0) {
+        s32 temp;
+        if (arg0 & 1) {
+            var_f2 *= var_f0;
+        }
+        temp = arg0;
+        var_f0 *= var_f0;
+        arg0 = ((u32)temp >> 1);
+    } 
+
+    return var_f2;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/Audio_InitOsc.s")
 
