@@ -766,7 +766,15 @@ void func_800B5600(void) {
     D_802025B0 = 0;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B560C.s")
+extern s32 D_80202530[32];
+
+void func_800B560C(s32 arg0) {
+    if (D_802025B0 < 32) {
+        D_802025B0[D_80202530] = arg0;
+        D_802025B0++;
+    }
+}
+
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B5640.s")
 
