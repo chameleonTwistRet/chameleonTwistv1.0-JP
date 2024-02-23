@@ -2423,7 +2423,13 @@ CTTask* func_800A5060(void){
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A51DC.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A5444.s")
+void func_800A5444(CTTask* arg0) {
+    if (func_8008EC90() != 0) {
+        arg0->function = func_800A5488;
+        arg0->unk54 = 1;
+        arg0->unk60 = 0x96;
+    }
+}
 
 void func_800A5488(CTTask* task) {
     if (task->unk_62 != -1) {
@@ -2597,7 +2603,15 @@ void func_800A6C04(CTTask* arg0) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A6CF4.s")
+void func_800A6CF4(CTTask* arg0) {
+    if (func_8008EC90() != 0) {
+        if (D_800F0704 != 0) {
+            gGameModeState = 3;
+            return;
+        }
+        gGameModeState = 4;
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A6D40.s")
 
