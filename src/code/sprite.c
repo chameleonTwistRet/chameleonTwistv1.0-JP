@@ -208,7 +208,7 @@ void func_80056EB4(void) {
 }
 
 
-void* mallloc(s32 arg0) {
+void* _malloc(s32 arg0) {
     void* temp_v0 = func_80056D30(arg0);
     
     if (temp_v0 == NULL) {
@@ -262,7 +262,7 @@ s32 LoadSprite(s32 arg0) {
         temp_s1->paletteRom = (s32)temp_s1->palletteP;
     }
     
-    temp_s1->bitmapP = mallloc(dmaSize);
+    temp_s1->bitmapP = _malloc(dmaSize);
     
     if (temp_s1->bitmapP == NULL) {
         DummiedPrintf2(" sprite.c : sprite on mem err!(size=%d SPRITE3ID=%d)\n", dmaSize, arg0);
@@ -278,7 +278,7 @@ s32 LoadSprite(s32 arg0) {
     while (func_800A72E8(dmaResult) == 0);
     
     if ((temp_s1->type == 4) || (temp_s1->type == 5)) {
-        temp_s1->palletteP = mallloc(0x200);
+        temp_s1->palletteP = _malloc(0x200);
         if (temp_s1->palletteP == NULL) {
             DummiedPrintf2(" sprite.c : sprite on mem err! (size = %d)\n", 0x200);
             Free(temp_s1->bitmapP);
@@ -490,7 +490,7 @@ aa1* aa1_Alloc(s32 arg0, s32 arg1, void* arg2) {
     aa1* var_a1;
     aa1* temp_v0;
     
-    temp_v0 = mallloc(0x48);
+    temp_v0 = _malloc(0x48);
     var_a1 = temp_v0;
     
     if (temp_v0 == NULL) {
@@ -498,7 +498,7 @@ aa1* aa1_Alloc(s32 arg0, s32 arg1, void* arg2) {
     }
     
     if (arg0 != 0) {
-        var_a1->unk_3C = mallloc(arg0 * 0x28);
+        var_a1->unk_3C = _malloc(arg0 * 0x28);
         if (var_a1->unk_3C == NULL) {
             Free(var_a1);
             return NULL;
@@ -508,7 +508,7 @@ aa1* aa1_Alloc(s32 arg0, s32 arg1, void* arg2) {
     }
     
     if (arg1 != 0) {
-        var_a1->unk_38 = mallloc(arg1);
+        var_a1->unk_38 = _malloc(arg1);
         if (var_a1->unk_38 == NULL) {
             Free(var_a1);
             Free(var_a1->unk_3C);

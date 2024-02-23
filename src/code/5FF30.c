@@ -132,7 +132,25 @@ void func_80084FC0(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80085290.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80085364.s")
+f32 func_80085364(u8 arg0) {
+    f32 var_f0;
+    f32 var_f2;
+    
+    var_f0 = 1.030992985;
+    var_f2 = 1.0f;
+
+    while ((u32)arg0 != 0) {
+        s32 temp;
+        if (arg0 & 1) {
+            var_f2 *= var_f0;
+        }
+        temp = arg0;
+        var_f0 *= var_f0;
+        arg0 = ((u32)temp >> 1);
+    } 
+
+    return var_f2;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/Audio_InitOsc.s")
 
@@ -882,8 +900,8 @@ void CTTaskList_Clear(void) {
  * @brief Initialize the CTTask linked list
  */
 void CTTaskList_Init(void) {
-    gCTTaskHead = mallloc(sizeof(CTTask));
-    gCTTaskTail = mallloc(sizeof(CTTask));
+    gCTTaskHead = _malloc(sizeof(CTTask));
+    gCTTaskTail = _malloc(sizeof(CTTask));
     if (gCTTaskHead == NULL) {
         DummiedPrintf("TaskInit()メモリ足りません\n", &gCTTaskTail);
     }
@@ -956,7 +974,31 @@ void func_8008D114(Gfx* arg0, s32 arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008E840.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008E9AC.s")
+//#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008E9AC.s")
+// UNK58 typing is confusing due to this
+CTTask* func_8008E9AC(s16 arg0, s16 arg1, s16 arg2, s16 arg3, s16* arg4) {
+    CTTask* task;
+
+    task = CTTask_Alloc(1, 0xF0, 0);
+    if (task == NULL) {
+        DummiedPrintf("エラー\n");
+        while (1) {}
+    }
+    task->unk_5C = arg0;
+    task->unk_64 = -24 - arg0;
+    task->unk5E = arg1;
+    task->unk60 = arg2;
+    task->unk_62 = arg3;
+    task->function = func_8008E840;
+    task->pos.x = 0.0f;
+    task->pos.y = 0.0f;
+    task->pos.z = 0.0f;
+    task->unk58 = arg4;
+    D_801B3540 = 1;
+    
+    return task;
+}
+
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008EA60.s")
 
@@ -1006,8 +1048,8 @@ void func_8008F114(void){
 //parse int to hex string
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/parseIntToHex.s")
 
-s32 func_8008FB4C(s32 arg0) {
-    switch (arg0) {
+s32 ReturnInputS32(s32 n) {
+    switch (n) {
     case 0:
         return 0;
     case 1:
@@ -1033,35 +1075,35 @@ s32 func_8008FB4C(s32 arg0) {
     }
 }
 
-s32 GetBaseStage(u32 arg0) {
+s32 GetBaseStage(s32 stageID) {
     s32 ret;
 
-    switch (arg0) {
-    case 0:
-    case 9:
-        ret = 0;
+    switch (stageID) {
+    case STAGE_JUNGLE:
+    case STAGE_JUNGLEBOSS:
+        ret = STAGE_JUNGLE;
         break;
-    case 1:
-    case 10:
-        ret = 1;
+    case STAGE_ANT:
+    case STAGE_ANTBOSS:
+        ret = STAGE_ANT;
         break;
-    case 2:
-    case 11:
-        ret = 2;
+    case STAGE_BOMB:
+    case STAGE_BOMBBOSS:
+        ret = STAGE_BOMB;
         break;
-    case 3:
-    case 12:
-        ret = 3;
+    case STAGE_DESERT:
+    case STAGE_DESERTBOSS:
+        ret = STAGE_DESERT;
         break;
-    case 4:
-    case 13:
-        ret = 4;
+    case STAGE_KIDS:
+    case STAGE_KIDSBOSS:
+        ret = STAGE_KIDS;
         break;
-    case 5:
-    case 14:
-        ret = 5;
+    case STAGE_GHOST:
+    case STAGE_GHOSTBOSS:
+        ret = STAGE_GHOST;
         break;
-    case 15:
+    case STAGE_BOSSRUSH:
         ret = 6;
         break;
     default:
@@ -1070,7 +1112,40 @@ s32 GetBaseStage(u32 arg0) {
     return ret;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/MemsizeCheck.s")
+/**
+ * @brief Scans the memory in quantities of 10KB to find the maximum amount of memory that can be allocated
+ * 
+ * @return s32 - free memory in bytes
+ */
+s32 MemsizeCheck(void) {
+    s32 bytes = 10 * 1024;
+    s32 flag = 0;
+    void* memoryLoc;
+    s32 one = TRUE;
+
+    while (one) {
+        memoryLoc = _malloc(bytes);
+        if (memoryLoc == NULL) {
+            DummiedPrintf("For MemsizeCheck\n");
+            flag |= 1;
+            if (flag != 3) {
+                bytes -= 1024;
+            }
+        } else {
+            flag |= 2;
+            if (flag != 3) {
+                bytes += 1024;
+            }
+            Free(memoryLoc);
+        }
+        if (flag == 3) {
+            DummiedPrintf("最大確保可能サイズ %d KB\n", bytes / 1024);
+            break;
+        }
+    }
+
+    return bytes;
+}
 
 //Uses "GameModes" enum
 void SetProcessType(s32 gameMode) {
@@ -1100,22 +1175,23 @@ void func_8008FDF8(void) {
 }
 
 void func_8008FE00(void) {
-    LoadPlayerEyes(*gSelectedCharacters);
-    SetPlayerContextEyes(*gSelectedCharacters, 0, 0);
-    FreePlayerEyes(*gSelectedCharacters);
-    LoadPlayerEyes(*gSelectedCharacters);
+    LoadPlayerEyes(gSelectedCharacters[0]);
+    SetPlayerContextEyes(gSelectedCharacters[0], 0, 0);
+    FreePlayerEyes(gSelectedCharacters[0]);
+    LoadPlayerEyes(gSelectedCharacters[0]);
 }
 
 void func_8008FE50(void) {
     s32 i;
     
-    for (i = 0; i < 6; i++) {
+    for (i = CHARA_DAVY; i <= CHARA_WHITE; i++) {
         LoadPlayerEyes(i);
         SetPlayerContextEyes(i, 0, 0);
         FreePlayerEyes(i);
     }
 }
 
+//unfinished naming
 void func_8008FEA8(s32 arg0, s32 arg1) {
     s32* var_a0; //unknown what this is
     Vec3f* var_a0_2;
@@ -1126,13 +1202,15 @@ void func_8008FEA8(s32 arg0, s32 arg1) {
                 return;
             }
         }
-        if (!IS_SEGMENTED(gStageLoadData[arg0].name)) {
-            var_a0 = (s32*)gStageLoadData[arg0].name;
+
+        // set to the virtual base address of the stage
+        if (!IS_SEGMENTED(gStageLoadData[arg0].baseAddress)) {
+            var_a0 = (s32*)gStageLoadData[arg0].baseAddress;
         } else {
-            //why was the macro not used?
-            var_a0 = (s32*)(D_80100F50[((u32)(gStageLoadData[arg0].name) & SEGMENT_MASK) >> SEGMENT_SHIFT].base_address + ((u32)(gStageLoadData[arg0].name) & ~SEGMENT_MASK));
+            var_a0 = (s32*)SEGMENTED_TO_VIRTUAL2(gStageLoadData[arg0].baseAddress);
         }
         
+
         if (!IS_SEGMENTED(var_a0[7])) {
             var_a0_2 = (Vec3f*)var_a0[7];
         } else {
@@ -1238,14 +1316,14 @@ void MainLoop(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800908C0.s")
 
-s32 func_80090B10(s32 time, s32 arg1) {
-    s32 temp_v0;
-    s32 temp_v0_2;
+s32 func_80090B10(s32 time, s32 stageID) {
+    s32 baseStage;
+    s32 recordTime;
     s32 ret = 0;
     
-    temp_v0 = GetBaseStage(arg1);
+    baseStage = GetBaseStage(stageID);
     
-    if (temp_v0 < 0) {
+    if (baseStage < 0) {
         return 0;
     }
     if (time == 0) {
@@ -1253,10 +1331,10 @@ s32 func_80090B10(s32 time, s32 arg1) {
     }
     
     time /= 30;
-    temp_v0_2 = RecordTime_ParseToSecs((s32*)gGameState.stageTimes[temp_v0]);
+    recordTime = RecordTime_ParseToSecs((s32*)gGameState.stageTimes[baseStage]);
     
-    if ((time < temp_v0_2) || (temp_v0_2 == 0)) {
-        RecordTime_SetTo(time, gGameState.stageTimes[temp_v0]);
+    if ((time < recordTime) || (recordTime == 0)) {
+        RecordTime_SetTo(time, gGameState.stageTimes[baseStage]);
         ret = 1;
     }
     
@@ -3270,7 +3348,7 @@ void func_800A97E4(CTTask* arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A988C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/IniDemo.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/InitDemo.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A9F84.s")
 
@@ -3382,7 +3460,7 @@ void func_800AAB0C(s32 arg0) {
     gCurrentDemoTimer = 0x10A9;
     dmaSize = D_F0042B0 - D_F000000;
     UseFixedRNGSeed = TRUE;
-    D_80200C8C = mallloc(dmaSize);
+    D_80200C8C = _malloc(dmaSize);
     if (D_80200C8C == NULL) {
         //"バッファがない\n"("no buffer")
         osSyncPrintf("バッファがない\n", D_80200C8C);

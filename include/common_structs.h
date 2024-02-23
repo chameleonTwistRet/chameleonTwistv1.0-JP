@@ -1066,6 +1066,11 @@ typedef struct segTableEntry {
     void* ramAddrEnd;
 } segTableEntry;
 
+typedef struct StageSegData {
+    /* 0x00 */ void* baseAddress;
+    /* 0x04 */ char unk04[0x10];
+} StageSegData;
+
 typedef struct Anim {
     f32 unk0;
     f32 unk4;
