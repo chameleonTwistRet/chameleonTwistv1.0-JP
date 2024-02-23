@@ -1301,11 +1301,16 @@ s32 func_80090B10(s32 time, s32 arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80091A38.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80092208.s")
+void func_80092208(CTTask* arg0) {
+    if ((func_8008EC90() != 0) && (arg0->unk54 == 8)) {
+        arg0->function = &func_80092254;
+        arg0->unk60 = 0;
+        arg0->unk_5C = 4;
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80092254.s")
 
-//#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80092324.s")
 void func_80092324(s32 arg0) {              // Cy
     if (func_8008EC90() != 0) {
         SetProcessType(GAME_MODE_LEVEL_INTRO_MENU);
@@ -1355,13 +1360,39 @@ void func_800928F0(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80092A64.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80092C0C.s")
+s32 func_80092C0C(Poly* arg0) { //struct pointer is a guess
+    s32 var_v1;
+
+    var_v1 = FALSE;
+    arg0->unkVec.x += arg0->unk_80;
+    if (arg0->unkVec.x >= 160.0f) {
+        var_v1 = TRUE;
+        arg0->unk_90 = 90.0f;
+    }
+    return var_v1;
+}
+
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80092C54.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80092D68.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80092E10.s")
+void func_80092E10(CTTask* arg0) {
+    CTTask* temp_v0;
+
+    temp_v0 = arg0->unk58;
+    
+    func_80092A64(arg0, temp_v0->unk8C);
+    if (temp_v0->unk54 == 5) {
+        arg0->function = func_80092E9C;
+        arg0->unk_5C = 3;
+        arg0->unk44 = 0x11;
+        arg0->unk80 = 0.0f;
+        arg0->rotA = 80.0f;
+        func_8008D7FC();
+        arg0->pos.z = -50.0f;
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80092E9C.s")
 
@@ -1715,7 +1746,22 @@ f32 func_80096898(u16 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80097414.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80097498.s")
+CTTask* func_80097498(void) {
+    CTTask* temp_v0;
+
+    temp_v0 = CTTask_Alloc(1, 0x64, 0);
+    if (temp_v0 == NULL) {
+        DummiedPrintf("エラー\n");
+        while (1){}
+    }
+    temp_v0->function = func_80097508;
+    temp_v0->unk66 = 0;
+    temp_v0->pos.x = 64.0f;
+    temp_v0->pos.y = 64.0f;
+    temp_v0->pos.z = 0.0f;
+    return temp_v0;
+}
+
 
 void func_80097508(CTTask* task) {
     func_8008F7A4(3, 8);
@@ -1828,7 +1874,22 @@ void func_800998CC(CTTask* arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009A868.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009A988.s")
+void func_8009A988(CTTask* arg0) {
+    CTTask* temp_v1;
+    temp_v1 = arg0->unk58;
+
+    if (temp_v1->unk54 == 0xD) {
+        func_8009A724();
+        arg0->unk60 = 0;
+    }
+    if (temp_v1->unk54 == 0x10) {
+        arg0->unk5E = 8;
+        arg0->unk60++;
+        if (arg0->unk5E >= arg0->unk60) {
+            func_8009A868(arg0);
+        }
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/MakeSaveMaster.s")
 
@@ -2188,7 +2249,15 @@ void func_800A1CCC(CTTask* arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A1D38.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A1EC4.s")
+void func_800A1EC4(void) {
+    D_80100F50[1].base_address = (u32)D_803B5000 - (u32)_ALIGN(((u32)D_1045C00 - (u32)D_1000000), 16);
+    D_80100F50[1].unk4 = (u32)D_803B5000;
+    D_801FFB78 = D_80100F50[1].base_address;
+    func_80056EB4();
+    aa1_InitHead();
+    func_8005C9B8();
+    func_80084788();
+}
 
 void PrintPerfectCode(s32 arg0) {
     char sp50[38];
