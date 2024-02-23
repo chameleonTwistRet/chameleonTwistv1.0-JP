@@ -492,7 +492,11 @@ typedef struct CTTask {
     /* 0x72 */ char unk72[2];
     /* 0x74 */ char unk74[0x6];
     /* 0x7A */ u16 unk7A;
-    /* 0x7C */ char unk7C[0x2C];
+    /* 0x7C */ char unk7C[0x4];
+    /* 0x80 */ f32 unk80;
+    /* 0x84 */ char unk84[0x8];
+    /* 0x8C */ s32 unk8C;
+    /* 0x90 */ char unk90[0x18];
 } CTTask;                                           /* size = 0xA8 */
 
 typedef struct BGMVolume {

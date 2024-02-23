@@ -57,6 +57,15 @@ typedef struct UnkPlaySoundEffect {
 
 
 /* Functions */
+void func_8009A724(void);                                  /* extern */
+void func_8009A868(CTTask*);                             /* extern */
+void func_8009A988(CTTask* arg0);
+void func_80092A64(CTTask*, s32);                               /* extern */
+void func_80092E9C (CTTask* );
+void func_80092E10(CTTask* arg0);
+void func_80097508(CTTask* task);
+void func_80092254 (CTTask*);
+void func_800A5488(CTTask* task);
 void func_8009ABF4(CTTask*);
 void func_8009ACC8(CTTask*);
 void func_80094DBC(CTTask* task);
