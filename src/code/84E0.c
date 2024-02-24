@@ -330,28 +330,28 @@ void Actors_Init(s32 actorIndex, s32 actorID, f32 arg2, f32 arg3, f32 arg4, f32 
 
     switch (actorID) {
     case RED_ANT:
-        ActorInit_AntRed(actorInstance);
+        ActorInit_RedAnt(actorInstance);
         return;
     case GREEN_ANT:
-        ActorInit_AntGreen(actorInstance);
+        ActorInit_GreenAnt(actorInstance);
         return;
     case GREY_ANT:
-        ActorInit_AntGrey(actorInstance);
+        ActorInit_GreyAnt(actorInstance);
         return;
     case BULLET_HELL_ANT:
         ActorInit_AntBulletHell(actorInstance);
         return;
     case ANT_TRIO:
-        func_80038F70(actorInstance);
+        ActorInit_AntTrio(actorInstance);
         return;
     case YELLOW_ANT:
-        ActorInit_AntYellow(actorInstance);
+        ActorInit_YellowAnt(actorInstance);
         return;
     case GREY_ANT_SPAWNER:
-        func_800383C0(actorInstance);
+        ActorInit_GreyAntSpawner(actorInstance);
         return;
     case BULLET_HELL_ANT_SPAWNER:
-        func_80038990(actorInstance);
+        ActorInit_BulletHellAntSpawner(actorInstance);
         return;
     case ANT_QUEEN:
         ActorInit_AntQueen(actorInstance);
@@ -360,22 +360,22 @@ void Actors_Init(s32 actorIndex, s32 actorID, f32 arg2, f32 arg3, f32 arg4, f32 
         ActorInit_AntQueenDrone(actorInstance);
         return;
     case WHITE_BOMB_SNAKE:
-        func_8003BA38(actorInstance);
+        ActorInit_WhiteBombSnake(actorInstance);
         return;
     case GRENADE:
-        func_8003BC8C(actorInstance);
+        ActorInit_Grenade(actorInstance);
         return;
     case MISSILE_SPAWNER:
-        func_8003BD98(actorInstance);
+        ActorInit_MissileSpawner(actorInstance);
         return;
     case MISSILE:
-        func_8003BEE8(actorInstance);
+        ActorInit_Missile(actorInstance);
         return;
     case CANNON:
-        func_8003C20C(actorInstance);
+        ActorInit_Cannon(actorInstance);
         return;
     case CANNONBALL:
-        func_8003C4B8(actorInstance);
+        ActorInit_Cannonball(actorInstance);
         return;
     case BL_BOSS_SEGMENT:
         func_8003C8AC(actorInstance);
@@ -390,16 +390,16 @@ void Actors_Init(s32 actorIndex, s32 actorID, f32 arg2, f32 arg3, f32 arg4, f32 
         ActorInit_ChameleonBlackSpot(actorInstance);
         return;
     case CHOMPER:
-        func_8003D998(actorInstance);
+        ActorInit_Chomper(actorInstance);
         return;
     case SAND_CRAB:
-        func_8003DE04(actorInstance);
+        ActorInit_SandCrab(actorInstance);
         return;
     case VULTURE:
-        func_8003DFB4(actorInstance);
+        ActorInit_Vulture(actorInstance);
         return;
     case ARROWS:
-        func_8003E30C(actorInstance);
+        ActorInit_Arrows(actorInstance);
         return;
     case BOULDER:
         func_8003E368(actorInstance);
@@ -413,17 +413,17 @@ void Actors_Init(s32 actorIndex, s32 actorID, f32 arg2, f32 arg3, f32 arg4, f32 
     case UNK_23:
         func_8003FEB4(actorInstance);
         return;
-    case ICE_CREAM_SANDWHICH:
-        func_8003FEC4(actorInstance);
+    case ICE_CREAM_SANDWICH:
+        ActorInit_IceCreamSandwich(actorInstance);
         return;
     case TRAINING_ROOM_CHOCO_KID:
-        func_80040068(actorInstance);
+        ActorInit_ChocoKid(actorInstance);
         return;
     case UNK_1F:
-        func_800401E8(actorInstance);
+        ActorInit_Unk1F(actorInstance);
         return;
     case POPCORN:
-        func_800404D8(actorInstance);
+        ActorInit_Popcorn(actorInstance);
         return;
     case CAKE_BOSS:
         ActorInit_CakeBoss(actorInstance);
@@ -456,37 +456,37 @@ void Actors_Init(s32 actorIndex, s32 actorID, f32 arg2, f32 arg3, f32 arg4, f32 
         func_800434F4(actorInstance);
         return;
     case CUP:
-        func_80043998(actorInstance);
+        ActorInit_Cup(actorInstance);
         return;
     case SAUCER:
-        func_800439D8(actorInstance);
+        ActorInit_Saucer(actorInstance);
         return;
     case METAL_SHEET:
-        func_80043A18(actorInstance);
+        ActorInit_MetalSheet(actorInstance);
         return;
     case SCROLL:
-        func_80043A58(actorInstance);
+        ActorInit_Scroll(actorInstance);
         return;
     case RNG_ROOM_SPAWNER:
-        func_80043A98(actorInstance);
+        ActorInit_RNGRoomSpawner(actorInstance);
         return;
     case MIRROR:
-        func_80043C80(actorInstance);
+        ActorInit_Mirror(actorInstance);
         return;
     case BARREL_JUMP_FIRE_SPAWNER:
-        func_80043FE8(actorInstance);
+        ActorInit_BarrelFireSpawner(actorInstance);
         return;
     case BARREL_JUMP_FIRE:
-        func_800440FC(actorInstance);
+        ActorInit_BarrelFire(actorInstance);
         return;
     case FIRE_SPITTER:
-        func_800442E0(actorInstance);
+        ActorInit_FireSpitter(actorInstance);
         return;
     case CANDLES:
-        func_80044504(actorInstance);
+        ActorInit_Candles(actorInstance);
         return;
     case FIRE_SPAWNER:
-        func_80044544(actorInstance);
+        ActorInit_FireSpawner(actorInstance);
         return;
     case FIRE:
         func_80044584(actorInstance);
@@ -598,13 +598,13 @@ void Actors_Init(s32 actorIndex, s32 actorID, f32 arg2, f32 arg3, f32 arg4, f32 
     }
 }
 
-s32 Actor_Init(s32 type, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7, f32 arg8, f32 arg9, f32 argA, f32 argB, f32 argC, f32 argD, f32 argE, f32 argF, f32 arg10, f32 arg11, f32 arg12, s32 arg13, s32 arg14, s32 arg15, s32 arg16) {
+s32 Actor_Init(s32 id, f32 posX, f32 posY, f32 posZ, f32 arg4, f32 arg5, f32 arg6, f32 arg7, f32 arg8, f32 arg9, f32 argA, f32 argB, f32 argC, f32 argD, f32 argE, f32 argF, f32 arg10, f32 arg11, f32 arg12, s32 arg13, s32 arg14, s32 arg15, s32 arg16) {
     s32 i;
     Actor* curActor = gActors;
 
     for (i = 0; i < ARRAY_COUNT(gActors); i++, curActor++) {
         if (curActor->actorID == 0) {
-            Actors_Init(i, type, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, argA, argB, argC, argD, argE, argF, arg10, arg11, arg12, arg13, arg14, arg15, arg16);
+            Actors_Init(i, id, posX, posY, posZ, arg4, arg5, arg6, arg7, arg8, arg9, argA, argB, argC, argD, argE, argF, arg10, arg11, arg12, arg13, arg14, arg15, arg16);
             gActorCount++;
             return i;
         }
@@ -628,8 +628,8 @@ s32 func_8002DF5C(s32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4) {
     return -1;
 }
 
-s32 Actor_SpawnAt(s32 arg1, f32 arg2, f32 arg3, f32 arg4) {
-    Actor_Init(arg1, arg2, arg3, arg4, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0, 0, 0, 0);
+s32 Actor_SpawnAt(s32 actorID, f32 posX, f32 posY, f32 posZ) {
+    Actor_Init(actorID, posX, posY, posZ, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0, 0, 0, 0);
 }
 
 //https://decomp.me/scratch/kvqhf
@@ -795,9 +795,9 @@ s32 func_8002F6DC(f32* arg0, f32 arg1) {
 }
 
 /**
- * @brief Sets the player's forward impulse based on the amount in the player's mouth.
+ * @brief Sets the player's forward impulse (xz speed)
  */
-void func_8002F7F0(void) {
+void SetPlayerImpulse(void) {
     s32 amountInMouth;
 
     amountInMouth = gTongueOnePointer->amountInMouth;
@@ -808,7 +808,6 @@ void func_8002F7F0(void) {
         gCurrentActivePlayerPointer->forwardImpulse = 0.2400000095f;
     }
     if (gCurrentActivePlayerPointer->power == POWERUP_MINI) {
-        // half any impulse if player is mini
         gCurrentActivePlayerPointer->forwardImpulse = (gCurrentActivePlayerPointer->forwardImpulse * 0.5f);
     }
 }
@@ -829,9 +828,9 @@ void func_8002F960(Tongue* arg0) {
     arg0->wallTime = 10;
 }
 
-void func_8002F9BC(PlayerActor* arg0) {
+void ClearPlayerPowerups(PlayerActor* arg0) {
     gCurrentActivePlayerPointer->power = POWERUP_NONE;
-    func_8002F7F0();
+    SetPlayerImpulse();
     gCurrentActivePlayerPointer->tongueYOffset = 60.0f;
     gCurrentActivePlayerPointer->tongueSeperation = 50.0f;
     gCurrentActivePlayerPointer->hitboxSize = 30.0f;
@@ -1008,7 +1007,7 @@ void pickup_collide_func(s32 actorIndex) {
         var_s0 = 0x5A;
         break;
     case TIME_STOP_POWER_UP:
-        func_8002F9BC(gCurrentActivePlayerPointer);
+        ClearPlayerPowerups(gCurrentActivePlayerPointer);
         gCurrentActivePlayerPointer->power = 4;
         gCurrentActivePlayerPointer->powerTimer = 0;
         gCurrentActivePlayerPointer->powerTimerTill = actor->unk_128;
@@ -1016,7 +1015,7 @@ void pickup_collide_func(s32 actorIndex) {
         var_s0 = 0x32;
         break;
     case BIG_FEET_POWER_UP:
-        func_8002F9BC(gCurrentActivePlayerPointer);
+        ClearPlayerPowerups(gCurrentActivePlayerPointer);
         gCurrentActivePlayerPointer->power = 1;
         gCurrentActivePlayerPointer->powerTimer = 0;
         gCurrentActivePlayerPointer->powerTimerTill = actor->unk_128;
@@ -1024,7 +1023,7 @@ void pickup_collide_func(s32 actorIndex) {
         var_s0 = 0x32;
         break;
     case BIG_HEAD_POWER_UP:
-        func_8002F9BC(gCurrentActivePlayerPointer);
+        ClearPlayerPowerups(gCurrentActivePlayerPointer);
         gCurrentActivePlayerPointer->power = 2;
         gCurrentActivePlayerPointer->powerTimer = 0;
         gCurrentActivePlayerPointer->powerTimerTill = actor->unk_128;
@@ -1032,7 +1031,7 @@ void pickup_collide_func(s32 actorIndex) {
         var_s0 = 0x32;
         break;
     case SHRINK_POWER_UP:
-        func_8002F9BC(gCurrentActivePlayerPointer);
+        ClearPlayerPowerups(gCurrentActivePlayerPointer);
         gCurrentActivePlayerPointer->power = 3;
         gCurrentActivePlayerPointer->powerTimer = 0;
         gCurrentActivePlayerPointer->powerTimerTill = actor->unk_128;
@@ -1040,11 +1039,11 @@ void pickup_collide_func(s32 actorIndex) {
         gCurrentActivePlayerPointer->tongueSeperation = 25.0f;
         gCurrentActivePlayerPointer->hitboxSize *= 0.5f;
         gCurrentActivePlayerPointer->hitboxYStretch *= 0.5f;
-        func_8002F7F0();
+        SetPlayerImpulse();
         playSoundEffect(0x3A, NULL, NULL, NULL, 0, 0x10);
         break;
     case SHRINK_ENEMY_POWER_UP:
-        func_8002F9BC(gCurrentActivePlayerPointer);
+        ClearPlayerPowerups(gCurrentActivePlayerPointer);
         var_v1 = gCurrentActivePlayerPointer->playerID;
         for (i = 0; i < PLAYERS_MAX; i++) {
             if (var_v1 == i) {
@@ -1059,7 +1058,7 @@ void pickup_collide_func(s32 actorIndex) {
             gCurrentActivePlayerPointer->tongueSeperation = 25.0f; 
             gCurrentActivePlayerPointer->hitboxSize *= 0.5f;
             gCurrentActivePlayerPointer->hitboxYStretch *= 0.5f;
-            func_8002F7F0();
+            SetPlayerImpulse();
         }
         gCurrentActivePlayerPointer = &gPlayerActors[var_v1];
         playSoundEffect(0x3A, NULL, NULL, NULL, 0, 0x10);
@@ -1193,18 +1192,16 @@ void func_800383A0(Actor* actor) {
     CalcEnemyNextPosition(actor);
 }
 
-// Grey Ant Spawner
-void func_800383C0(Actor* greyAntSpawnerActor) {
+void ActorInit_GreyAntSpawner(Actor* greyAntSpawnerActor) {
     if (greyAntSpawnerActor->unk_12C != 0) {
         D_801748A0 = 0;
         greyAntSpawnerActor->userVariables[1] = greyAntSpawnerActor->unk_12C;
     }
 }
 
-// ???: Nathan R.
-void func_800383E4(Actor* arg0) {
+void ActorTick_GreyAntSpawner(Actor* arg0) {
     arg0->userVariables[0] += 1;
-    if (((arg0->userVariables[0] %  arg0->unk_128) == 1) && (Actor_Init(3, arg0->pos.x, arg0->pos.y, arg0->pos.z, 0.0f, -50000.0f, 50000.0f, -50000.0f, 50000.0f, -50000.0f, 50000.0f, arg0->position._f32.x, arg0->position._f32.y, arg0->unk_15C, arg0->unk_160, arg0->unk_164, arg0->unk_168, arg0->unk_16C, arg0->unk_170, arg0->unk_124, arg0->unk_128, arg0->unk_12C, arg0->unk_130) != -1)) {
+    if (((arg0->userVariables[0] %  arg0->unk_128) == 1) && (Actor_Init(GREY_ANT, arg0->pos.x, arg0->pos.y, arg0->pos.z, 0.0f, -50000.0f, 50000.0f, -50000.0f, 50000.0f, -50000.0f, 50000.0f, arg0->position._f32.x, arg0->position._f32.y, arg0->unk_15C, arg0->unk_160, arg0->unk_164, arg0->unk_168, arg0->unk_16C, arg0->unk_170, arg0->unk_124, arg0->unk_128, arg0->unk_12C, arg0->unk_130) != -1)) {
         arg0->userVariables[1] -= 1;
         if (arg0->userVariables[1] == 0) {
             arg0->actorID = 0;
@@ -1213,7 +1210,7 @@ void func_800383E4(Actor* arg0) {
 }
 
 // Grey Ant Function
-void ActorInit_AntGrey(Actor* actor) {
+void ActorInit_GreyAnt(Actor* actor) {
     actor->unk_94 = actor->unk_124;
     actor->unk_90 = CalcAngleBetween2DPoints(actor->pos.x, actor->pos.z, actor->position._f32.x, actor->position._f32.y);
     actor->userVariables[0] = 4;
@@ -1221,21 +1218,20 @@ void ActorInit_AntGrey(Actor* actor) {
     actor->pos.y = actor->pos.y - actor->unknownPositionThings[0].unk_10;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80038574.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_GreyAnt.s")
 
 // Bullet-Hell Ant Spawner
-void func_80038990(Actor* bulletHellAntSpawnerActor) {
+void ActorInit_BulletHellAntSpawner(Actor* bulletHellAntSpawnerActor) {
     bulletHellAntSpawnerActor->userVariables[1] = bulletHellAntSpawnerActor->unk_128;
 }
 // ???: Nathan R.
-void func_8003899C(Actor* arg0) {
-
+void ActorTick_BulletHellAntSpawner(Actor* arg0) {
     if (gCurrentActivePlayerPointer->pos.z > -500.0f) {
         arg0->userVariables[2] = 1;
     }
     if (arg0->userVariables[2] != 0) {
         arg0->userVariables[0] += 1;
-        if (((arg0->userVariables[0] % (s32) arg0->unk_124) == 1) && (Actor_Init(4, arg0->pos.x, arg0->pos.y, arg0->pos.z, 0.0f, -50000.0f, 50000.0f, -50000.0f, 50000.0f, -50000.0f, 50000.0f, arg0->position._f32.x, arg0->position._f32.y, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0, 0, 0, 0) != -1)) {
+        if (((arg0->userVariables[0] % (s32) arg0->unk_124) == 1) && (Actor_Init(BULLET_HELL_ANT, arg0->pos.x, arg0->pos.y, arg0->pos.z, 0.0f, -50000.0f, 50000.0f, -50000.0f, 50000.0f, -50000.0f, 50000.0f, arg0->position._f32.x, arg0->position._f32.y, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0, 0, 0, 0) != -1)) {
             arg0->userVariables[1] -= 1;
             if (arg0->userVariables[1] == 0) {
                 func_80031518(arg0);
@@ -1255,7 +1251,7 @@ void ActorInit_AntBulletHell(Actor* arg0) {
     func_800382F4(arg0);
 }
  
-s32 func_80038B98(Actor* arg0) {
+s32 ActorTick_BulletHellAnt(Actor* arg0) {
     if (arg0->unk_98 != 0) {
         arg0->vel.y -= 3.200000048f;
         arg0->vel.y -= arg0->vel.y * 0.05000000075f;
@@ -1269,10 +1265,10 @@ s32 func_80038B98(Actor* arg0) {
     return 0;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80038C64.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_RedAntSpawner.s")
 
 // ???: Nathan R. (similar to unk_5C)
-void func_80038E64(Actor* arg0) {
+void ActorTick_AntTrioSpawner(Actor* arg0) {
     arg0->userVariables[0] += 1;
     if ((arg0->userVariables[0] % arg0->unk_128) == 1) {
         Actor_Init(5, arg0->pos.x, arg0->pos.y, arg0->pos.z, 0.0f, -50000.0f, 50000.0f, -50000.0f, 50000.0f, -50000.0f, 50000.0f, arg0->position._f32.x, arg0->position._f32.y, arg0->unk_15C, arg0->unk_160, arg0->unk_164, arg0->unk_168, arg0->unk_16C, arg0->unk_170, arg0->unk_124, arg0->unk_128, arg0->unk_12C, arg0->unk_130);
@@ -1280,7 +1276,7 @@ void func_80038E64(Actor* arg0) {
 }
 
 // Ant Trio Function
-void func_80038F70(Actor* antTrioActor) {
+void ActorInit_AntTrio(Actor* antTrioActor) {
     antTrioActor->unk_94 = (f32) antTrioActor->unk_124;
     antTrioActor->unk_90 = CalcAngleBetween2DPoints(antTrioActor->pos.x, antTrioActor->pos.z, antTrioActor->position._f32.x, antTrioActor->position._f32.y);
     antTrioActor->unk_98 = 1;
@@ -1288,28 +1284,26 @@ void func_80038F70(Actor* antTrioActor) {
     antTrioActor->unk_F0 = Random(0, 0x100);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80038FDC.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_AntTrio.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorInit_AntRed.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorInit_RedAnt.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_AntRed.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_RedAnt.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_800397DC.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorInit_AntYellow.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorInit_YellowAnt.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80039B0C.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_YellowAnt.s")
 
-// Green Ant Function
-void ActorInit_AntGreen(Actor* greenAntActor) {
+void ActorInit_GreenAnt(Actor* greenAntActor) {
     greenAntActor->unk_134[0] = 0.0f;
     greenAntActor->userVariables[2] = greenAntActor->unk_15C / greenAntActor->position._f32.x;
     greenAntActor->unk_F0 = Random(0, 0x100/*, greenAntActor*/);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8003A208.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_GreenAnt.s")
 
-// Ant Queen Function
 void ActorInit_AntQueen(Actor* antQueenActor) {
     antQueenActor->unk_120 = (s32) antQueenActor->unk_12C;
     antQueenActor->tongueCollision = 3;
@@ -1325,7 +1319,6 @@ void ActorInit_AntQueen(Actor* antQueenActor) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_AntQueen.s")
 
-// Ant Queen-Ant
 void ActorInit_AntQueenDrone(Actor* arg0) {
     WrapDegrees(&arg0->unk_90);
     arg0->unk_94 = arg0->position._f32.x;
@@ -1333,7 +1326,6 @@ void ActorInit_AntQueenDrone(Actor* arg0) {
     func_800382F4(arg0);
 }
 
-// Ant Queen-Ant (Tick)
 void ActorTick_AntQueenDrone(Actor* arg0) {
     f32 playerXMod;
     f32 playerZMod;
@@ -1359,7 +1351,7 @@ void ActorTick_AntQueenDrone(Actor* arg0) {
 }
 
 // White Bomb Snake Function
-void func_8003BA38(Actor* whiteBombSnakeActor) {
+void ActorInit_WhiteBombSnake(Actor* whiteBombSnakeActor) {
     s32 temp_f10;
 
     whiteBombSnakeActor->userVariables[0] = 4;
@@ -1371,15 +1363,13 @@ void func_8003BA38(Actor* whiteBombSnakeActor) {
     whiteBombSnakeActor->unk_160 = (f32) (0xB4 / temp_f10);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8003BADC.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_WhiteBombSnake.s")
 
-// GRENADE Function
-void func_8003BC8C(Actor* grenadeActor) {
+void ActorInit_Grenade(Actor* grenadeActor) {
     grenadeActor->unk_94 = grenadeActor->position._f32.x;
 }
 
-//???: Nathan R.
-void func_8003BC98(Actor* arg0) {
+void ActorTick_Grenade(Actor* arg0) {
     f32 angle = CalcAngleBetween2DPoints(arg0->pos.x, arg0->pos.z, gCurrentActivePlayerPointer->pos.x, gCurrentActivePlayerPointer->pos.z);
     arg0->userVariables[1] += 1;
     switch (arg0->userVariables[0]) {
@@ -1405,23 +1395,21 @@ void func_8003BC98(Actor* arg0) {
     func_800382F4(arg0);
 }
 
-// MISSILE Spawner
-void func_8003BD98(Actor* missileSpawnerActor) {
+void ActorInit_MissileSpawner(Actor* missileSpawnerActor) {
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8003BDA0.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_MissileSpawner.s")
 
-// MISSILE Function
-void func_8003BEE8(Actor* missileActor) {
+void ActorInit_Missile(Actor* missileActor) {
     missileActor->unk_134[0] = missileActor->pos.x;
     missileActor->unk_134[1] = missileActor->pos.y;
     missileActor->unk_134[2] = missileActor->pos.z;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8003BF04.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_Missile.s")
 
-// CANNON Function
-void func_8003C20C(Actor* cannonActor) {
+
+void ActorInit_Cannon(Actor* cannonActor) {
     cannonActor->tongueCollision = 2;
     cannonActor->unknownPositionThings[0].unk_00 = __cosf(DEGREES_TO_RADIANS_2PI(cannonActor->unk_90)) * 200.0f;
     cannonActor->unknownPositionThings[0].unk_04 = -cannonActor->unknownPositionThings[0].unk_10 / 2;
@@ -1433,11 +1421,10 @@ void func_8003C20C(Actor* cannonActor) {
     cannonActor->unknownPositionThings[1].unk_08 = 0.0f;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8003C308.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_Cannon.s")
 
 // CANNONBALL Function
-void func_8003C4B8(Actor* cbActor) {
-    //these HAVE to be on the same line. thanks ido!
+void ActorInit_Cannonball(Actor* cbActor) {
     f32 temp_f16 = cbActor->position._f32.x - cbActor->pos.x; f32 temp_f18 = cbActor->unk_15C - cbActor->pos.z;
     cbActor->unk_90 = CalcAngleBetween2DPoints(cbActor->pos.x, cbActor->pos.z, cbActor->position._f32.x, cbActor->unk_15C);
     cbActor->unk_94 = cbActor->unk_160;
@@ -1448,7 +1435,7 @@ void func_8003C4B8(Actor* cbActor) {
 }
 
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8003C584.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_Cannonball.s")
 
 // ???: Nathan R.
 s32 func_8003C734(Actor* arg0, s32 arg1) {
@@ -1518,7 +1505,6 @@ void ActorInit_ChameleonBlackSpotSpawnner(Actor* blackChameleonProjectileSpawner
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_ChameleonBlackSpotSpawnner.s")
 
-
 void ActorInit_ChameleonBlackSpot(Actor* arg0) {
     arg0->sizeScalar = 0.0f;
     func_800312B0(arg0->actorIndex);
@@ -1534,7 +1520,7 @@ void ActorTick_ChameleonBlackSpot(Actor* arg0) {
     }
 }
 
-void func_8003D998(Actor* arg0) {
+void ActorInit_Chomper(Actor* arg0) {
     arg0->unk_134[0] = arg0->pos.y;
     arg0->pos.y -= 100.0f;
     arg0->unknownPositionThings[0].unk_0C = arg0->unk_164 * arg0->tScale;
@@ -1543,10 +1529,9 @@ void func_8003D998(Actor* arg0) {
     arg0->tYPos *= arg0->unk_164;
 }
 
+#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_Chomper.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8003D9D8.s")
-
-void func_8003DE04(Actor* actor) {
+void ActorInit_SandCrab(Actor* actor) {
     actor->unk_134[0] = actor->pos.y;
     actor->pos.y -= 150.0f;
     actor->vel.y = 32.0f;
@@ -1554,19 +1539,17 @@ void func_8003DE04(Actor* actor) {
     func_800382F4(actor);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8003DE4C.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_SandCrab.s")
 
-// VULTURE Function
-void func_8003DFB4(Actor* vultureActor) {
+void ActorInit_Vulture(Actor* vultureActor) {
     vultureActor->unk_134[0] = vultureActor->pos.x;
     vultureActor->unk_134[1] = vultureActor->pos.y;
     vultureActor->unk_134[2] = vultureActor->pos.z;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorInit_Vulture.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_Vulture.s")
 
-// ???: Nathan R.
-void func_8003E224(Actor* arg0) {
+void ActorTick_ArrowSpawner(Actor* arg0) {
     arg0->userVariables[0]++;
     if (arg0->unk_124 == arg0->userVariables[0]) {
         arg0->userVariables[0] = 0;
@@ -1576,8 +1559,7 @@ void func_8003E224(Actor* arg0) {
     }
 }
 
-// ARROWS Function
-void func_8003E30C(Actor* arrowsActor) {
+void ActorInit_Arrows(Actor* arrowsActor) {
     arrowsActor->unk_94 = arrowsActor->position._f32.x;
     arrowsActor->userVariables[0] = (s32) (arrowsActor->position._f32.y / arrowsActor->position._f32.x);
 }
@@ -1595,7 +1577,7 @@ void func_8003E368(Actor* boulderActor){
 }
 
 // ???: EstexNT, Rainchu & Nathan R.
-void func_8003E370(Actor* arg0) {
+void BoulderCalculations(Actor* arg0) {
     f32 tempX = arg0->vel.x;
     f32 tempY = arg0->vel.y;
     f32 tempZ = arg0->vel.z;
@@ -1620,9 +1602,8 @@ void func_8003E370(Actor* arg0) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8003E48C.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_Boulder.s")
 
-// ARMADILLO Function
 void func_8003E62C(Actor* armadilloActor) {
     armadilloActor->unk_134[0] = armadilloActor->position._f32.y / armadilloActor->position._f32.x;
     armadilloActor->pos.y = -400.0f;
@@ -1644,7 +1625,6 @@ void func_8003E660(Actor* actor) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8003E6C4.s")
 
-// ???: Nathan R.
 void func_8003E870(Actor* arg0, s32 arg1) {
     arg0->vel.x += -arg0->unk_134[0] * 2 * arg0->vel.x;
     arg0->vel.z += -arg0->unk_134[0] * 2 * arg0->vel.z;
@@ -1660,7 +1640,7 @@ void func_8003E870(Actor* arg0, s32 arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8003E968.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8003EB38.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_Armadillo.s")
 
 void func_8003FA38(Actor* arg0, f32 arg1, f32 arg2, f32 arg3) {
     f32 temp_f0;
@@ -1713,24 +1693,20 @@ void func_8003FB4C(Actor* arg0) {
     }
 }
 
-// 0x21
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8003FC54.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_Pogo.s")
 
-// 0x22
-void func_8003FEAC(s32 arg0) {
+void ActorTick_Unk22(s32 arg0) {
 }
 
-// UNK_23
 void func_8003FEB4(Actor* unk_23Actor){
 
 }
 
-void func_8003FEBC(s32 arg0) {
+void ActorTick_Unk23(s32 arg0) {
 
 }
 
-// Ice Cream Sandwich Function
-void func_8003FEC4(Actor* iceCreamSandwichActor) {
+void ActorInit_IceCreamSandwich(Actor* iceCreamSandwichActor) {
     iceCreamSandwichActor->unk_134[0] = iceCreamSandwichActor->pos.y;
     iceCreamSandwichActor->pos.y = iceCreamSandwichActor->pos.y + 2000.0f;
 }
@@ -1738,14 +1714,14 @@ void func_8003FEC4(Actor* iceCreamSandwichActor) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_IceCreamSandwich.s")
 
 // Training Room Choco Kid Function
-void func_80040068(Actor* trainingRoomChocoKidActor) {
+void ActorInit_ChocoKid(Actor* trainingRoomChocoKidActor) {
     trainingRoomChocoKidActor->unk_134[1] = trainingRoomChocoKidActor->pos.z;
     trainingRoomChocoKidActor->unk_94 = trainingRoomChocoKidActor->position._f32.x;
     trainingRoomChocoKidActor->unk_134[0] = trainingRoomChocoKidActor->pos.x;
     func_8006E16C(trainingRoomChocoKidActor->pos.x, trainingRoomChocoKidActor->pos.y + 50.0f, trainingRoomChocoKidActor->pos.z, 120.0f, 20.0f, 0xA);
 }
 
-void ChocoKidMovement(Actor* chocoKid) {
+void ActorTick_ChocoKid(Actor* chocoKid) {
     f32 temp_f14;
 
     temp_f14 = CalcAngleBetween2DPoints(chocoKid->pos.x, chocoKid->pos.z, chocoKid->unk_134[0], chocoKid->unk_134[1]);
@@ -1771,18 +1747,17 @@ void ChocoKidMovement(Actor* chocoKid) {
     func_800382F4(chocoKid);
 }
 
-// UNK_1F Function
-void func_800401E8(Actor* unk_1FActor) {
+void ActorInit_Unk1F(Actor* unk_1FActor) {
     unk_1FActor->unk_134[0] = unk_1FActor->pos.y;
     unk_1FActor->unk_134[1] = unk_1FActor->pos.x;
     unk_1FActor->unk_134[2] = unk_1FActor->pos.z;
     unk_1FActor->pos.y = unk_1FActor->pos.y + 1000.0f;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80040214.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_Unk1F.s")
 
 //? - Nathan R.
-void func_800404D8(Actor* arg0) {
+void ActorInit_Popcorn(Actor* arg0) {
     f32 s = __cosf(DEGREES_TO_RADIANS_2PI(arg0->unk_90));
     arg0->vel.x = arg0->position._f32.x * s;
     s = -__sinf(DEGREES_TO_RADIANS_2PI(arg0->unk_90));
@@ -1790,8 +1765,7 @@ void func_800404D8(Actor* arg0) {
     arg0->vel.y = 64.0f;
 }
 
-//???: Nathan R. (i apparently just had this one lying around????)
-void func_80040590(Actor* arg0) {
+void ActorTick_Popcorn(Actor* arg0) {
     if ((arg0->pos.y + arg0->vel.y) < 0.0f) {
         arg0->pos.y = arg0->vel.x = arg0->vel.z = arg0->vel.y = 0.0f;
         arg0->unk_A0.unk_04 = 0;
@@ -1816,7 +1790,7 @@ void func_80040CDC(Actor* unk_28Actor){
 
 }
 
-void ActorTick_28(s32 arg0) {
+void ActorTick_Unk28(s32 arg0) {
 
 }
 
@@ -1899,68 +1873,64 @@ void func_800431E8(Actor* arg0) {
     arg0->unk_134[0] = arg0->pos.y;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_800431FC.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_Unk2E.s")
 
 // UNK_2F
 void func_800434F4(Actor* unk_2FActor){
 
 }
 
-void func_800434FC(s32 arg0) {
+void ActorTick_Unk2F(s32 arg0) {
 
 }
 
-void func_80043504(Actor* arg0) {
+void ActorInit_FloatingObjects(Actor* arg0) {
     arg0->userVariables[1] = arg0->unk_12C * arg0->unk_124 / arg0->unk_128;
 }
 
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80043558.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_FloatingObjects.s")
 
-// CUP Function
-void func_80043998(Actor* cupActor) {
-    func_80043504(cupActor);
+void ActorInit_Cup(Actor* cupActor) {
+    ActorInit_FloatingObjects(cupActor);
 }
 
-void func_800439B8(void) {
-    func_80043558();
+void ActorTick_Cup(void) {
+    ActorTick_FloatingObjects();
 }
 
-// SAUCER Function
-void func_800439D8(Actor* saucerActor) {
-    func_80043504(saucerActor);
+void ActorInit_Saucer(Actor* saucerActor) {
+    ActorInit_FloatingObjects(saucerActor);
 }
 
-void func_800439F8(void) {
-    func_80043558();
+void ActorTick_Saucer(void) {
+    ActorTick_FloatingObjects();
 }
 
-// Metal Sheet Function
-void func_80043A18(Actor* metalSheetActor) {
-    func_80043504(metalSheetActor);
+void ActorInit_MetalSheet(Actor* metalSheetActor) {
+    ActorInit_FloatingObjects(metalSheetActor);
 }
 
-void func_80043A38(void) {
-    func_80043558();
+void ActorTick_MetalSheet(void) {
+    ActorTick_FloatingObjects();
 }
 
-// SCROLL Function
-void func_80043A58(Actor* scrollActor) {
-    func_80043504(scrollActor);
+void ActorInit_Scroll(Actor* scrollActor) {
+    ActorInit_FloatingObjects(scrollActor);
 }
 
-void func_80043A78(void) {
-    func_80043558();
+void ActorTick_Scroll(void) {
+    ActorTick_FloatingObjects();
 }
 
 // RNG Room Spawner
-void func_80043A98(Actor* rngRoomSpawnerActor){
+void ActorInit_RNGRoomSpawner(Actor* rngRoomSpawnerActor){
 
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80043AA0.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_RNGRoomSpawner.s")
 
-void func_80043C80(Actor* arg0) {
+void ActorInit_Mirror(Actor* arg0) {
     if (gTimer % arg0->unk_128 == arg0->unk_124) {
         arg0->userVariables[1] = 1;
         return;
@@ -1968,14 +1938,13 @@ void func_80043C80(Actor* arg0) {
     arg0->userVariables[1] = 0;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80043CDC.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_Mirror.s")
 
-// Barrel Jump FIRE Spawner
-void func_80043FE8(Actor* barrelJumpFireSpawnerActor){
+void ActorInit_BarrelFireSpawner(Actor* barrelJumpFireSpawnerActor){
 
 }
 
-void func_80043FF0(Actor* arg0) {
+void ActorTick_BarrelFireSpawner(Actor* arg0) {
     if ((u32) arg0->unk_128 < (u32) arg0->globalTimer) {
         arg0->userVariables[0] += 1;
         if ((arg0->userVariables[0] % (s32) arg0->unk_124) == 0) {
@@ -1984,38 +1953,33 @@ void func_80043FF0(Actor* arg0) {
     }
 }
 
-// Barrel Jump FIRE Actor
-void func_800440FC(Actor* barrelJumpFireActor) {
+void ActorInit_BarrelFire(Actor* barrelJumpFireActor) {
     barrelJumpFireActor->unk_134[0] = CalcAngleBetween2DPoints(barrelJumpFireActor->position._f32.x, barrelJumpFireActor->position._f32.y, barrelJumpFireActor->pos.x, barrelJumpFireActor->pos.z);
     barrelJumpFireActor->userVariables[0] = (s32) (360.0f / barrelJumpFireActor->unk_160) - 2;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80044158.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_BarrelFire.s")
 
-// FIRE Spitter Function
-void func_800442E0(Actor* fireSpitterActor) {
+void ActorInit_FireSpitter(Actor* fireSpitterActor) {
     fireSpitterActor->userVariables[0] = fireSpitterActor->unk_124 - 1;
 }
 
+#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_FireSpitter.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_800442F0.s")
-
-// CANDLES Function
-void func_80044504(Actor* candlesActor) {
-    func_800442E0(candlesActor);
+void ActorInit_Candles(Actor* candlesActor) {
+    ActorInit_FireSpitter(candlesActor);
 }
 
-void func_80044524(void) {
-    func_800442F0();
+void ActorTick_Candles(void) {
+    ActorTick_FireSpitter();
 }
 
-// FIRE Spawner
-void func_80044544(Actor* fireSpawnerActor) {
-    func_80044504(fireSpawnerActor);
+void ActorInit_FireSpawner(Actor* fireSpawnerActor) {
+    ActorInit_Candles(fireSpawnerActor);
 }
 
-void func_80044564(void) {
-    func_80044524();
+void ActorTick_FireSpawner(void) {
+    ActorTick_Candles();
 }
 
 // FIRE Actor
@@ -2064,7 +2028,7 @@ void func_80044708(Actor* sandalActor) {
 
 
 void func_80044728(void) {
-    func_800431FC();
+    ActorTick_Unk2E();
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/GhostBoss_SpawnArms.s")
@@ -2139,7 +2103,6 @@ void ActorInit_GhostBossShot(Actor* arg0) {
     func_800382F4(arg0);
 }
 
-//ActorTick_GhostBossShot
 void ActorTick_GhostBossShot(Actor* arg0) {
     arg0->userVariables[0] += 1;
     if (arg0->userVariables[0] == 150) {
@@ -2217,7 +2180,7 @@ void func_800479CC(Actor* hedgehogActor) {
     hedgehogActor->unk_134[2] = (f32) hedgehogActor->unk_90;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_800479E8.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_Hedgehog.s")
 
 // FISH Function
 void func_80047C04(Actor* fishActor) {
@@ -2335,21 +2298,21 @@ void func_80049780(Actor* popcornBucketSpawnerActor){
 
 // POPCORN Bucket Function
 void func_800498B4(Actor* popcornBucketActor) {
-    func_800401E8(popcornBucketActor);
+    ActorInit_Unk1F(popcornBucketActor);
 }
 
 void func_800498D4(void) {
-    func_80040214();
+    ActorTick_Unk1F();
 }
 
 
 void func_800498F4(Actor* arg0) {
-    func_800404D8(arg0);
+    ActorInit_Popcorn(arg0);
 }
 
 
 void func_80049914(Actor* arg0) {
-    func_80040590(arg0);
+    ActorTick_Popcorn(arg0);
 }
 
 
@@ -2362,29 +2325,29 @@ void func_80049934(Actor* chocoKidSpawnerActor){
 
 // Choco Kid Function
 void func_80049A24(Actor* chocoKidActor) {
-    func_80040068(chocoKidActor);
+    ActorInit_ChocoKid(chocoKidActor);
 }
 
 void func_80049A44(Actor* chocoKidActor) {
-    ChocoKidMovement(chocoKidActor);
+    ActorTick_ChocoKid(chocoKidActor);
 }
 
 // UNK_51 Function
 void func_80049A64(Actor* unk_51Actor) {
-    func_800383C0(unk_51Actor);
+    ActorInit_GreyAntSpawner(unk_51Actor);
 }
 
 void func_80049A84(Actor* arg0) {
-    func_800383E4(arg0);
+    ActorTick_GreyAntSpawner(arg0);
 }
 
 // UNK_52 Function
 void func_80049AA4(Actor* unk_52Actor) {
-    ActorInit_AntGrey(unk_52Actor);
+    ActorInit_GreyAnt(unk_52Actor);
 }
 
 void func_80049AC4(void) {
-    func_80038574();
+    ActorTick_GreyAnt();
 }
 
 // Battle Mode Sand Crab Spawner
