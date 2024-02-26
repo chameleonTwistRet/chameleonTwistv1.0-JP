@@ -69,6 +69,7 @@ extern Addr D_8C26A0;
 extern unkStruct02* D_80176F4C;
 
 /* functions */
+void func_8006623C(void);
 void func_80055C04(void);
 void func_80062D10(s32, s32, s32*, s32*, u32, s32);
 void func_800634D4(s32, s32, s32*, s32*, s32, s32);

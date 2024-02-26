@@ -704,7 +704,24 @@ aa1* func_80065CAC(f32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8006623C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_800662D4.s")
+aa1* func_800662D4(f32 arg0, f32 arg1, f32 arg2, s32 arg3, s32 arg4) {
+    Mtx* temp_a0;
+    aa1* temp_v0;
+
+    temp_v0 = aa1_Alloc(0, 0x48, func_8006623C);
+    if (temp_v0 == NULL) {
+        return temp_v0;
+    }
+    temp_a0 = (Mtx*)temp_v0->unk_38;
+    guTranslate(temp_a0, arg0, arg1, arg2);
+    temp_a0[1].m[0][0] = arg4;
+    temp_a0[1].m[0][1] = arg3;
+    temp_v0->unk_10 = arg0;
+    temp_v0->unk_14 = arg1;
+    temp_v0->unk_18 = arg2;
+    temp_v0->unkC = 0.0f;
+    return temp_v0;
+}
 
 //https://decomp.me/scratch/eFSCQ
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80066374.s")
