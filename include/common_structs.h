@@ -677,7 +677,7 @@ typedef struct SaveFile {
     /* 0x44 */ u8 stageCrowns;
     /* 0x45 */ u8 stageTimes[8][3];
     /* 0x5D */ u8 carrotBitfield; 
-    /* 0x5E */ u8 UNK_5E[2]; //first also copies CARROT progress.
+    /* 0x5E */ u8 UNK_FIRE_SPAWNER[2]; //first also copies CARROT progress.
 } SaveFile; //sizeof 0x60
 
 //5FF30
