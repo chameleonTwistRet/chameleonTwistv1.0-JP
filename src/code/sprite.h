@@ -17,7 +17,7 @@ typedef struct SpriteListing {
     u16 height; // height of each tile
     u16 width; // width of each tile
     u16 unk1E;
-    char unk20[0x48]; //repeating substruct? has 5 feilds of color32
+    char unk20[0x48]; //repeating substruct? has 5 feilds of RGBA32
     s32 bitmapRom; //devAddr-0x8c26a0
     s32 paletteRom;
     s32 unk70;
@@ -69,6 +69,7 @@ extern Addr D_8C26A0;
 extern unkStruct02* D_80176F4C;
 
 /* functions */
+void func_8006623C(void);
 void func_80055C04(void);
 void func_80062D10(s32, s32, s32*, s32*, u32, s32);
 void func_800634D4(s32, s32, s32*, s32*, s32, s32);

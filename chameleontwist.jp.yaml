@@ -291,7 +291,7 @@ segments:
       - {start: 0xED090, type: .bss, vram: 0x802018B0, name: code/clip }
       - {start: 0xED090, type: bss, vram: 0x80201900, name: code/8ADD0 }
       - {start: 0xED090, type: .bss, vram: 0x80247910, name: code/poly }
-      - {start: 0xED090, type: bss, vram: 0x80248A30, name: io/motor }
+      - {start: 0xED090, type: .bss, vram: 0x80248A30, name: io/motor }
       - {start: 0xED090, type: .bss, vram: 0x80248C70, name: os/initialize }
       - {start: 0xED090, type: .bss, vram: 0x80248C80, name: io/vimgr }
       - {start: 0xED090, type: .bss, vram: 0x80249EA0, name: io/pimgr }

@@ -50,24 +50,24 @@ s32 func_80055C90(void) {
  * 
  * @param conts: controllers struct
  */
-void Controller_ParseJoystick(contMain* conts) {
+void Controller_ParseJoystick(ContMain* conts) {
     s32 i;
     f32 sqX,sqY;
 
     for (i = 0; i < MAXCONTROLLERS; i++) {
         gPrevButtons[i] = gButtons[i];
         gButtons[i] = conts[i].buttons0;
-        sqX=SQ(conts[i].stickx);
-        sqY=SQ(conts[i].sticky);
+        sqX=SQ(conts[i].stickX);
+        sqY=SQ(conts[i].stickY);
         if (__sqrtf(sqX + sqY) > 42.0) {
-            if (conts[i].stickx < -30) {
+            if (conts[i].stickX < -30) {
                 gButtons[i] |= CONT_LEFT;
-            } else if (conts[i].stickx > 30) {
+            } else if (conts[i].stickX > 30) {
                 gButtons[i] |= CONT_RIGHT;
             }
-            if (conts[i].sticky < -30) {
+            if (conts[i].stickY < -30) {
                 gButtons[i] |= CONT_DOWN;
-            } else if (conts[i].sticky > 30) {
+            } else if (conts[i].stickY > 30) {
                 gButtons[i] |= CONT_UP;
             }
         }
@@ -208,7 +208,7 @@ void func_80056EB4(void) {
 }
 
 
-void* mallloc(s32 arg0) {
+void* _malloc(s32 arg0) {
     void* temp_v0 = func_80056D30(arg0);
     
     if (temp_v0 == NULL) {
@@ -262,7 +262,7 @@ s32 LoadSprite(s32 arg0) {
         temp_s1->paletteRom = (s32)temp_s1->palletteP;
     }
     
-    temp_s1->bitmapP = mallloc(dmaSize);
+    temp_s1->bitmapP = _malloc(dmaSize);
     
     if (temp_s1->bitmapP == NULL) {
         DummiedPrintf2(" sprite.c : sprite on mem err!(size=%d SPRITE3ID=%d)\n", dmaSize, arg0);
@@ -278,7 +278,7 @@ s32 LoadSprite(s32 arg0) {
     while (func_800A72E8(dmaResult) == 0);
     
     if ((temp_s1->type == 4) || (temp_s1->type == 5)) {
-        temp_s1->palletteP = mallloc(0x200);
+        temp_s1->palletteP = _malloc(0x200);
         if (temp_s1->palletteP == NULL) {
             DummiedPrintf2(" sprite.c : sprite on mem err! (size = %d)\n", 0x200);
             Free(temp_s1->bitmapP);
@@ -490,7 +490,7 @@ aa1* aa1_Alloc(s32 arg0, s32 arg1, void* arg2) {
     aa1* var_a1;
     aa1* temp_v0;
     
-    temp_v0 = mallloc(0x48);
+    temp_v0 = _malloc(0x48);
     var_a1 = temp_v0;
     
     if (temp_v0 == NULL) {
@@ -498,7 +498,7 @@ aa1* aa1_Alloc(s32 arg0, s32 arg1, void* arg2) {
     }
     
     if (arg0 != 0) {
-        var_a1->unk_3C = mallloc(arg0 * 0x28);
+        var_a1->unk_3C = _malloc(arg0 * 0x28);
         if (var_a1->unk_3C == NULL) {
             Free(var_a1);
             return NULL;
@@ -508,7 +508,7 @@ aa1* aa1_Alloc(s32 arg0, s32 arg1, void* arg2) {
     }
     
     if (arg1 != 0) {
-        var_a1->unk_38 = mallloc(arg1);
+        var_a1->unk_38 = _malloc(arg1);
         if (var_a1->unk_38 == NULL) {
             Free(var_a1);
             Free(var_a1->unk_3C);
@@ -704,7 +704,24 @@ aa1* func_80065CAC(f32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8006623C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_800662D4.s")
+aa1* func_800662D4(f32 arg0, f32 arg1, f32 arg2, s32 arg3, s32 arg4) {
+    Mtx* temp_a0;
+    aa1* temp_v0;
+
+    temp_v0 = aa1_Alloc(0, 0x48, func_8006623C);
+    if (temp_v0 == NULL) {
+        return temp_v0;
+    }
+    temp_a0 = (Mtx*)temp_v0->unk_38;
+    guTranslate(temp_a0, arg0, arg1, arg2);
+    temp_a0[1].m[0][0] = arg4;
+    temp_a0[1].m[0][1] = arg3;
+    temp_v0->unk_10 = arg0;
+    temp_v0->unk_14 = arg1;
+    temp_v0->unk_18 = arg2;
+    temp_v0->unkC = 0.0f;
+    return temp_v0;
+}
 
 //https://decomp.me/scratch/eFSCQ
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80066374.s")
@@ -1084,7 +1101,10 @@ void SetTextGradientFromPalette(s32 arg0) {
     SetTextGradientFromPaletteAlpha(arg0, 1.0f);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/DrawTranslucentRectangle.s")
+void DrawTranslucentRectangle(f32 arg0, f32 arg1, f32 arg2, f32 arg3, u8 arg4) {
+    setPrimColor(0U, 0U, 0U, arg4);
+    printUISprite(arg0, arg1, 0.0f, 0.0f, 1.0f, arg2, arg3, 0.0f, 0);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8007691C.s")
 
@@ -1386,7 +1406,7 @@ void func_80084788(void) {
     D_80176B70 = gTongues;
     D_80176B74 = gPlayerActors;
     D_80176B78 = gCamera;
-    if ((gameModeCurrent == 0) && (D_80168DA0 == 1)) {
+    if ((gGameModeCurrent == 0) && (D_80168DA0 == 1)) {
         func_80062D10(0x10, 0x10, &gPlayerActors[0].hp, &D_800FEDB8, gPlayerActors[0].hp, 0);
         func_800634D4(0xF0, 0x10, &currentStageCrowns, &D_800FEDB8, 2, 0);
     }
@@ -1399,7 +1419,7 @@ s32 func_80084884(s32 arg0) {
     if (gCurrentStage == 8) {
         func_8007CDEC();
     }
-    if ((D_80168DA0 == 1) && (D_800FEDB4 == 1) && (D_80236974 == 0) && (gameModeCurrent == 0)) {
+    if ((D_80168DA0 == 1) && (D_800FEDB4 == 1) && (D_80236974 == 0) && (gGameModeCurrent == 0)) {
         if ((u32)D_80176B78->unk0 == 1) {
             func_800612F0(1);
             printUISprite(24.0f, 208.0f, 0.0f, 0.0f, 1.0f, 24.0f, 16.0f, 0.0f, 0xCC);

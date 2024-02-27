@@ -3,46 +3,41 @@
 
 #include "PR/ultratypes.h"
 
-/*for some godforsaken reason in gbi.h line 1045 it defines the core mtx structure as LONGS????
-its two sets of sixteen shorts dude!!! it does no parsing to fix it!!! wtf!!!
-the f stands for fixed btw*/
-typedef short Mtx_f[2][16];
-
 typedef struct Vec2f {
-               f32 x;
-               f32 y;
+    f32 x;
+    f32 y;
 } Vec2f;
 
-typedef struct Vec2s {
-               s32 x;
-               s32 y;
-} Vec2s;
+typedef struct Vec2w {
+    s32 x;
+    s32 y;
+} Vec2w;
 
 typedef struct Vec3f {
-               f32 x;
-               f32 y;
-               f32 z;
+    f32 x;
+    f32 y;
+    f32 z;
 } Vec3f;
 
-typedef struct Vec3s {
-               s32 x;
-               s32 y;
-               s32 z;
-} Vec3s;
+typedef struct Vec3w {
+    s32 x;
+    s32 y;
+    s32 z;
+} Vec3w;
 
 typedef struct Vec4f {
-               f32 x;
-               f32 y;
-               f32 z;
-               f32 yaw;
+    f32 x;
+    f32 y;
+    f32 z;
+    f32 yaw;
 } Vec4f;
 
-typedef struct Color32{
+typedef struct RGBA32{
     u8 r;
     u8 g;
     u8 b;
     u8 a;
-} Color32;
+} RGBA32;
 
 typedef struct Rect3D {
     Vec3f min;
@@ -463,8 +458,8 @@ typedef struct tempStruct {
 } tempStruct; //sizeof 0x48
 
 typedef struct CTTask {
-    /* 0x00 */ s16 active;
-    /* 0x02 */ s16 type;
+    /* 0x00 */ s16 runType;
+    /* 0x02 */ s16 taskID;
     /* 0x04 */ s16 unk_04;
     /* 0x06 */ s8 unk06[2];
     /* 0x08 */ void (*function)(struct CTTask*);
@@ -495,13 +490,29 @@ typedef struct CTTask {
     /* 0x6E */ s16 unk_6E;
     /* 0x70 */ s16 unk_70;
     /* 0x72 */ char unk72[2];
-    /* 0x74 */ char unk74[0x34];
-} CTTask;                                           /* size = 0x74 */
+    /* 0x74 */ char unk74[0x6];
+    /* 0x7A */ u16 unk7A;
+    /* 0x7C */ char unk7C[0x4];
+    /* 0x80 */ f32 unk80;
+    /* 0x84 */ char unk84[0x8];
+    /* 0x8C */ s32 unk8C;
+    /* 0x90 */ char unk90[0x18];
+} CTTask;                                           /* size = 0xA8 */
 
-typedef struct unk801FCA20 {
-    /* 0x00 */ s32 unk_00;
-    /* 0x04 */ s32 unk_04;
-} unk801FCA20; //sizeof 0x8
+typedef struct BGMVolume {
+    /* 0x00 */ s32 vol;
+    /* 0x04 */ s32 unusedVol;
+} BGMVolume; //sizeof 0x8
+
+/* Real struct layout but could be fake match
+typedef struct BGMVolume {
+    union {
+        s16 vol_s16[2];
+        s32 vol_s32;
+    } vol;
+    /* 0x04  s32 unusedVol;
+} BGMVolume; //sizeof 0x8
+*/
 
 
 typedef struct unk800FF624 {
@@ -624,7 +635,7 @@ typedef struct Actor {
     /* 0x134 */ f32 unk_134[8];
         /* 0x154 */ union {
         Vec2f _f32;
-        Vec2s _s32;
+        Vec2w _s32;
     } position;
     /* 0x15C */ f32 unk_15C;
     /* 0x160 */ f32 unk_160;
@@ -678,15 +689,14 @@ typedef struct unk_D_801FFB90 {
     /* 0x10 */ s32 unk_10;
 } unk_D_801FFB90; //sizeof 0x14
 
-typedef struct contMain {
+typedef struct ContMain {
     u16 buttons0;
     u16 buttons1;
     u16 buttons2;
-    s16 stickx;
-    s16 sticky;
-    u16 unk_0A; //align
+    s16 stickX;
+    s16 stickY;
     f32 stickAngle;
-} contMain; //sizeof 0x10
+} ContMain; //sizeof 0x10
 
 typedef struct d8006266c{
     /* 0x00 */ f32 unk0;
@@ -813,10 +823,10 @@ typedef struct graphicStruct {
 /*0x8380*/      Mtx reticuleTranslate[4][6];
 /*0x8980*/      Mtx reticuleRotate[4][6];
 /*0x8F80*/      Mtx reticuleScale[4][6];
-/*0x9580*/      Mtx toungeTranslate[4][33];
-/*0xb680*/      Mtx toungeRotate[4][33];
-/*0xD780*/      Mtx toungeScale[4][33];
-/*0xf880*/      Mtx actorTanslate[64];
+/*0x9580*/      Mtx tongueTranslate[4][33];
+/*0xb680*/      Mtx tongueRotate[4][33];
+/*0xD780*/      Mtx tongueScale[4][33];
+/*0xf880*/      Mtx actorTranslate[64];
 /*0x10880*/     Mtx actorRotate[64];
 /*0x11880*/     Mtx actorScale[64];
 /*0x12880*/     s8 unk12880[0x4000]; //mtx's for shadows?
@@ -1055,6 +1065,11 @@ typedef struct segTableEntry {
     void* ramAddrEnd;
 } segTableEntry;
 
+typedef struct StageSegData {
+    /* 0x00 */ void* baseAddress;
+    /* 0x04 */ char unk04[0x10];
+} StageSegData;
+
 typedef struct Anim {
     f32 unk0;
     f32 unk4;
@@ -1120,12 +1135,12 @@ typedef struct unk80175608 {
     char unk_00[0x18];
 } unk80175608;
 
-//ok so you actually have to make the other parts vec3f name[] and vec3s name[] SEPERATE from the struct
+//ok so you actually have to make the other parts vec3f name[] and Vec3w name[] SEPERATE from the struct
 //that kinda sucks but i know why now at least
 typedef struct CollisionData{
     Vec3f positionProbably;
     Vec3f scaleProbably;
-    s32 aOVerts;
+    s32 noVerts;
     s32 aOTris;
     u32 vertsStart; //segmented, points to verts[]
     u32 trisStart; //segmented, points to tris[]

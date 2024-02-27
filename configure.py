@@ -308,7 +308,7 @@ c_file_rule_overrides = {
     "synfreevoice.c": "ido_O3_cc",
     "sndpsetpan.c": "ido_O3_cc",
     "sptask.c": "O2_cc",
-    "motor.c": "O2_cc",  # should actually use rule "motor_O3_cc" when C file is ready to compile
+    "motor.c": "motor_O3_cc",
     "mtxcatl.c": "O2_cc",
     "mtxutil.c": "O2_cc",
     "normalize.c": "O2_cc",
