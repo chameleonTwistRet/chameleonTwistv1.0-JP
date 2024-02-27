@@ -46,7 +46,7 @@ segments:
       - [0x84E0, c, code/84E0]
       - [0x298D0, c, code/298D0]
       - [0x29DF0, c, code/debug]
-      - [0x2C3B0, c, code/2C3B0]
+      - [0x2C3B0, c, code/battle]
       - [0x30FB0, c, code/sprite]
       - [0x5FEB0, c, code/5FEB0]
       - [0x5FF30, c, code/5FF30]
@@ -220,7 +220,7 @@ segments:
       - [0xC9430, c, libc/ldiv]
       - [0xC95C0, data, rspBootText]
       - [0xC9690, data, code/1050] #800EE290 through 800F0B50
-      - [0xCBF50, .data, code/2C3B0] #800F0B50 through 800F0D90
+      - [0xCBF50, .data, code/battle] #800F0B50 through 800F0D90
       - [0xCC190, data, code/sprite] #800F0D90 through 800FEDC0
       - [0xDA1C0, data, code/5FF30] #800FEDC0 through 80108B70
       - [0xE3F70, data, code/math] #80108B70 through 80109010
@@ -248,7 +248,7 @@ segments:
       - [0xE56F0, .rodata, code/1050] #8010A2F0 through 8010A6D0
       - [0xE5AD0, .rodata, code/84E0] #8010A6D0 through 8010C640
       - [0xE7A40, .rodata, code/debug] #8010C640 through 8010C940
-      - [0xE7D40, .rodata, code/2C3B0] #8010C940 through 8010CA10
+      - [0xE7D40, .rodata, code/battle] #8010C940 through 8010CA10
       - [0xE7E10, .rodata, code/sprite] #8010CA10 through 8010D530
       - [0xE8930, .rodata, code/5FF30] #8010D530 through 80110110
       - [0xEAD90, .rodata, code/clip]
@@ -285,7 +285,7 @@ segments:
       - {start: 0xED090, type: .bss, vram: 0x801748A0, name: code/84E0 }
       - {start: 0xED090, type: .bss, vram: 0x80175620, name: code/298D0 }
       - {start: 0xED090, type: .bss, vram: 0x80175870, name: code/debug }
-      - {start: 0xED090, type: .bss, vram: 0x80176820, name: code/2C3B0 }
+      - {start: 0xED090, type: .bss, vram: 0x80176820, name: code/battle }
       - {start: 0xED090, type: bss, vram: 0x80176850, name: code/sprite }
       - {start: 0xED090, type: bss, vram: 0x801B1D20, name: code/5FF30 }
       - {start: 0xED090, type: .bss, vram: 0x802018B0, name: code/clip }

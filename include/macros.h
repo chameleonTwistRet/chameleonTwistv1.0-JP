@@ -14,7 +14,7 @@
 #define sqrtf __sqrtf
 #define sinf __sinf 
 #define cosf __cosf 
-#define DEGREES_TO_RADIANS_2PI(x) (x * 2 * PI / 360.0)
+#define DEGREES_TO_RADIANS_2PI(x) ((x) * 2 * PI / 360.0)
 #define DEGREES_TO_RADIANS_PI(x) (x * PI / 180.0)
 #define ARRAY_COUNT(arr) (s32)(sizeof(arr) / sizeof(arr[0]))
 #define ROUND(d)	(int)(((d) >= 0.0) ? ((d) + 0.5) : ((d) - 0.5))

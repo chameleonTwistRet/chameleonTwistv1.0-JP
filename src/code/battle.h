@@ -1,12 +1,9 @@
-#ifndef _2C3B0_H_
-#define _2C3B0_H_
+#ifndef _BATTLE_H_
+#define _BATTLE_H_
 
 #include "common.h"
 
 /* Structs */
-typedef struct unk80176840 {
-    char unk_00[0x10];
-} unk80176840;
 
 typedef struct BattlePlayerData {
     /* 0x00 */ s32 fallOffTime;
@@ -51,13 +48,8 @@ enum BattleTypes {
 };
 
 /* Functions */
-void Batlle_DrawLightSpot(f32, f32, f32, f32, f32, s32);
-void func_80073090(void);
-s32 func_8008BE14(void);
-void func_800A0D90(void);
 void func_800678EC(s32, s32, s32, s32, s32);
 void func_80058BE4(Mtx* arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, s32 arg7);
-void func_800536D8(void);
 void func_80059F28(f32, f32, f32, f32, f32, f32, f32, f32, s32);
 void func_800705C4(f32, f32, s32);
 void func_80070970(u8*, f32, f32, f32, f32, unkStruct16*, s32, s32, s32);
@@ -65,8 +57,13 @@ void func_80077688(f32, f32, f32, f32, s32, unk_80052094_8*, s32, s32, f32, f32,
 void func_800771DC(s32*, f32, f32, s32, s32, s32*, f32, f32, f32, f32);
 s32 func_80080318(s32, s32, s32*, s32*);
 s32 func_8008BFE0(s32);
+void func_800678EC(s32, s32, s32, s32, s32);
+s32 func_8008BE14(void);
+void func_800A0D90(void);
+void func_80073090(void);
 
 /* Ext Variables */
+extern s32 D_800FE708;
 extern Camera* D_80176B78;
 extern s16 gSelectedBattleBGM;
 extern s32 D_800F0674;
@@ -74,7 +71,6 @@ extern unkStruct16 D_800F0D90[];
 extern unkStruct16 D_800F0DE0[];
 extern s32 D_800FE404;
 extern ColorRGBA D_800FE564[];
-extern s32 D_800FE708;
 extern s32 D_800FE74C;
 
 extern unk_80052094_8 Battle_MsgReady[];
@@ -83,4 +79,4 @@ extern unk_80052094_8 Battle_MsgGo[];
 extern s32 Battle_GameType;
 extern s32 gTimeTrialDuration;
 
-#endif  //_2C3B0_H_
+#endif  //_BATTLE_H_

@@ -32,6 +32,7 @@
         "gbi.h": "c",
         "common_structs.h": "c",
         "mod.h": "c",
-        "2c3b0.h": "c"
+        "battle.h": "c",
+        "30a4c.h": "c"
     }
 }
