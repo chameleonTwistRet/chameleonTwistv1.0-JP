@@ -1204,7 +1204,7 @@ void Process_Ranking(void) {
         break;
     case 2:
         func_8008F16C();
-        D_8017499C++;
+        gTimer++;
         break;
     case 3:
         SetProcessType(GAME_MODE_TITLE_SCREEN);
@@ -1252,7 +1252,7 @@ void func_800557F8(void) {
         break;
     case 2:
         func_8008F16C();
-        D_8017499C++;
+        gTimer++;
         break;
     case 3:
         SetProcessType(GAME_MODE_TITLE_SCREEN);
@@ -1284,7 +1284,7 @@ void Process_Boot(void) {
         break;
     case 2:
         func_8008F16C();
-        D_8017499C++;
+        gTimer++;
         break;
     case 3:
         SetProcessType(GAME_MODE_SUPPLY_SYSTEM_LOGO);
@@ -1315,7 +1315,7 @@ void Process_SunsoftLogo(void) {
         break;
     case 2:
         func_8008F16C();
-        D_8017499C++;
+        gTimer++;
         break;
     case 3:
         SetProcessType(GAME_MODE_SUPPLY_SYSTEM_LOGO);
