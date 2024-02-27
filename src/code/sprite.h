@@ -5,23 +5,26 @@
 
 /* structs */
 typedef struct SpriteListing {
-    char unk_00[4];
-    void* bitmapP; // "malloc'd" after size calc.
-    void* palletteP; //palette? both this and above start with devAddr+0XD73D960
-    s32 type; // use "COLORMODE_*" enum
-    void* unk10;
-    u8 unk14;
-    u8 tileCountX;
-    u8 tileCountY;
-    char unk17[3]; //align?
-    u16 height; // height of each tile
-    u16 width; // width of each tile
-    u16 unk1E;
-    char unk20[0x48]; //repeating substruct? has 5 feilds of RGBA32
-    s32 bitmapRom; //devAddr-0x8c26a0
-    s32 paletteRom;
-    s32 unk70;
-    char unk_74[4];
+    /* 0x00 */ char unk_00[4];
+    /* 0x04 */ void* bitmapP; // "malloc'd" after size calc.
+    /* 0x08 */ void* palletteP; //palette? both this and above start with devAddr+0XD73D960
+    /* 0x0C */ s32 type; // use "COLORMODE_*" enum
+    /* 0x10 */ void* unk10;
+    /* 0x14 */ u8 unk14;
+    /* 0x15 */ u8 tileCountX;
+    /* 0x16 */ u8 tileCountY;
+    /* 0x17 */ u8 unk17;
+    /* 0x18 */ u8 unk18;
+    /* 0x19 */ char unk19;
+    /* 0x1A */ u16 width; // width of each tile
+    /* 0x1C */ u16 height; // height of each tile
+    /* 0x1E */ RGBA32 prim;
+    /* 0x22 */ char unk22[0x6];
+    /* 0x28 */ Vtx quad[4];
+    /* 0x68 */ s32 bitmapRom; //devAddr-0x8c26a0
+    /* 0x6C */ s32 paletteRom;
+    /* 0x70 */ s32 unk70;
+    /* 0x74 */ char unk_74[4];
 } SpriteListing; //sizeof 0x78
 
 typedef struct UnkBowlingStruct {
@@ -67,6 +70,15 @@ extern char D_8010CA1C[];
 extern char D_8010CA54[];
 extern Addr D_8C26A0;
 extern unkStruct02* D_80176F4C;
+extern s32 gSpriteFrameBuffer;
+extern Gfx D_10012A0[];
+extern Gfx D_1001300[];
+extern Gfx D_1001370[];
+extern Mtx D_800F69D0;
+extern Gfx D_800FE080[];
+extern SpriteListing D_8019A218[2][200];
+extern SpriteListing D_801A5D98[2][200];
+extern Gfx D_800FE0F0[];
 
 /* functions */
 void func_8006623C(void);

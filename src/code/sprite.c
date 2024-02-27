@@ -238,19 +238,19 @@ s32 LoadSprite(s32 arg0) {
     }
     switch (temp_s1->type) {
     case 7:
-        dmaSize = temp_s1->height * 4 * temp_s1->width * temp_s1->tileCountX * temp_s1->tileCountY;
+        dmaSize = temp_s1->width * 4 * temp_s1->height * temp_s1->tileCountX * temp_s1->tileCountY;
         break;
     case 6:
-        dmaSize = temp_s1->height * 2 * temp_s1->width * temp_s1->tileCountX * temp_s1->tileCountY;
+        dmaSize = temp_s1->width * 2 * temp_s1->height * temp_s1->tileCountX * temp_s1->tileCountY;
         break;
     case 2:
     case 5:
-        dmaSize = temp_s1->height * temp_s1->width * temp_s1->tileCountX * temp_s1->tileCountY;
+        dmaSize = temp_s1->width * temp_s1->height * temp_s1->tileCountX * temp_s1->tileCountY;
         break;
     case 0:
     case 1:
     case 4:
-        dmaSize = (s32) (temp_s1->height * temp_s1->width * temp_s1->tileCountX * temp_s1->tileCountY) / 2;
+        dmaSize = (s32) (temp_s1->width * temp_s1->height * temp_s1->tileCountX * temp_s1->tileCountY) / 2;
         break;
     }
     
@@ -379,7 +379,147 @@ void func_8005CA38(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8005CA44.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8005F408.s")
+Gfx* func_8005F408(Gfx* gfxPos) {
+    s32 i;
+    SpriteListing* sp;
+    s32 ulx, uly;
+
+    func_800610B8();
+    gSPDisplayList(gfxPos++, D_10012A0);
+    gSPMatrix(gfxPos++, &D_800F69D0, G_MTX_PUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    gSPDisplayList(gfxPos++, D_800FE080);
+    gDPSetRenderMode(gfxPos++, G_RM_OPA_SURF, G_RM_OPA_SURF2);
+    gDPSetCombineLERP(gfxPos++, PRIMITIVE, 0, TEXEL0, 0, PRIMITIVE, 0, TEXEL0, 0, PRIMITIVE, 0, TEXEL0, 0, PRIMITIVE, 0, TEXEL0, 0);
+
+    sp = D_8019A218[gSpriteFrameBuffer];
+    for (i = 0; i < D_800FDFC0[gSpriteFrameBuffer]; sp++, i++) {
+        ulx = ABS2(sp->unk17 * sp->width);
+        uly = ABS2(sp->unk18 * sp->height);
+
+        switch (sp->type) {
+            case COLORMODE_BLANK:
+                gDPSetCombineMode(gfxPos++, G_CC_PRIMITIVE, G_CC_PRIMITIVE);
+                break;
+            case COLORMODE_BW:
+            case COLORMODE_IA4:
+                gDPLoadTextureTile_4b(gfxPos++, sp->bitmapP, G_IM_FMT_IA, sp->width * sp->tileCountX, 0,
+                                      ulx, uly, ulx + sp->width - 1, uly + sp->height - 1, 0,
+                                      G_TX_CLAMP, G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
+                break;
+            case COLORMODE_RGBA32:
+                gDPLoadTextureTile(gfxPos++, sp->bitmapP, G_IM_FMT_RGBA, G_IM_SIZ_32b, sp->width * sp->tileCountX, 0,
+                                    ulx, uly, ulx + sp->width - 1, uly + sp->height - 1, 0,
+                                    G_TX_CLAMP, G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
+                break;
+            case COLORMODE_IA8:
+                gDPLoadTextureTile(gfxPos++, sp->bitmapP, G_IM_FMT_IA, G_IM_SIZ_8b, sp->width * sp->tileCountX, 0,
+                                    ulx, uly, ulx + sp->width - 1, uly + sp->height - 1, 0,
+                                    G_TX_CLAMP, G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
+                break;
+            case COLORMODE_IA16:
+                gDPLoadTextureTile(gfxPos++, sp->bitmapP, G_IM_FMT_IA, G_IM_SIZ_16b, sp->width * sp->tileCountX, 0,
+                                    ulx, uly, ulx + sp->width - 1, uly + sp->height - 1, 0,
+                                    G_TX_CLAMP, G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
+                break;
+            case COLORMODE_RGBA16:
+                gDPLoadTextureTile(gfxPos++, sp->bitmapP, G_IM_FMT_RGBA, G_IM_SIZ_16b, sp->width * sp->tileCountX, 0,
+                                    ulx, uly, ulx + sp->width - 1, uly + sp->height - 1, 0,
+                                    G_TX_CLAMP, G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
+                break;
+            case COLORMODE_CI4:
+                gDPLoadTLUT_pal256(gfxPos++, sp->palletteP);
+                gDPSetTextureLUT(gfxPos++, G_TT_RGBA16);
+                gDPLoadTextureTile_4b(gfxPos++, sp->bitmapP, G_IM_FMT_CI, sp->width * sp->tileCountX, 0,
+                                    ulx, uly, ulx + sp->width - 1, uly + sp->height - 1, 0,
+                                    G_TX_CLAMP, G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
+                break;
+            case COLORMODE_CI8:
+                gDPLoadTLUT_pal256(gfxPos++, sp->palletteP);
+                gDPSetTextureLUT(gfxPos++, G_TT_RGBA16);
+                gDPLoadTextureTile(gfxPos++, sp->bitmapP, G_IM_FMT_CI, G_IM_SIZ_8b, sp->width * sp->tileCountX, 0,
+                                    ulx, uly, ulx + sp->width - 1, uly + sp->height - 1, 0,
+                                    G_TX_CLAMP, G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
+                break;
+        }
+
+        gDPSetPrimColor(gfxPos++, 0, 0, sp->prim.r, sp->prim.g, sp->prim.b, sp->prim.a);
+        gSPScisTextureRectangle(gfxPos++, sp->quad[0].v.ob[0], sp->quad[0].v.ob[1], sp->quad[1].v.ob[0], sp->quad[1].v.ob[1],
+                                0, sp->quad[0].v.tc[0], sp->quad[0].v.tc[1], 0x400, 0x400);
+    }
+
+    gSPDisplayList(gfxPos++, D_800FE0F0);
+
+    sp = D_801A5D98[gSpriteFrameBuffer];
+    for (i = 0; i < D_800FDFC8[gSpriteFrameBuffer]; sp++, i++) {
+        ulx = ABS2(sp->unk17 * sp->width);
+        uly = ABS2(sp->unk18 * sp->height);
+
+        switch (sp->type) {
+            case COLORMODE_BLANK:
+                gSPDisplayList(gfxPos++, D_1001370);
+                break;
+            case COLORMODE_BW:
+            case COLORMODE_IA4:
+                gSPDisplayList(gfxPos++, D_1001300);
+                gDPLoadTextureTile_4b(gfxPos++, sp->bitmapP, G_IM_FMT_IA, sp->width * sp->tileCountX, 0,
+                                      ulx, uly, ulx + sp->width - 1, uly + sp->height - 1, 0,
+                                      G_TX_CLAMP, G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
+                break;
+            case COLORMODE_RGBA32:
+                gSPDisplayList(gfxPos++, D_1001300);
+                gDPLoadTextureTile(gfxPos++, sp->bitmapP, G_IM_FMT_RGBA, G_IM_SIZ_32b, sp->width * sp->tileCountX, 0,
+                                    ulx, uly, ulx + sp->width - 1, uly + sp->height - 1, 0,
+                                    G_TX_CLAMP, G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
+                break;
+            case COLORMODE_IA8:
+                gSPDisplayList(gfxPos++, D_1001300);
+                gDPLoadTextureTile(gfxPos++, sp->bitmapP, G_IM_FMT_IA, G_IM_SIZ_8b, sp->width * sp->tileCountX, 0,
+                                    ulx, uly, ulx + sp->width - 1, uly + sp->height - 1, 0,
+                                    G_TX_CLAMP, G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
+                break;
+            case COLORMODE_IA16:
+                gSPDisplayList(gfxPos++, D_1001300);
+                gDPLoadTextureTile(gfxPos++, sp->bitmapP, G_IM_FMT_IA, G_IM_SIZ_16b, sp->width * sp->tileCountX, 0,
+                                    ulx, uly, ulx + sp->width - 1, uly + sp->height - 1, 0,
+                                    G_TX_CLAMP, G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
+                break;
+            case COLORMODE_RGBA16:
+                gSPDisplayList(gfxPos++, D_1001300);
+                gDPLoadTextureTile(gfxPos++, sp->bitmapP, G_IM_FMT_RGBA, G_IM_SIZ_16b, sp->width * sp->tileCountX, 0,
+                                    ulx, uly, ulx + sp->width - 1, uly + sp->height - 1, 0,
+                                    G_TX_CLAMP, G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
+                break;
+            case COLORMODE_CI4:
+                gSPDisplayList(gfxPos++, D_1001300);
+                gDPLoadTLUT_pal256(gfxPos++, sp->palletteP);
+                gDPSetTextureLUT(gfxPos++, G_TT_RGBA16);
+                gDPLoadTextureTile_4b(gfxPos++, sp->bitmapP, G_IM_FMT_CI, sp->width * sp->tileCountX, 0,
+                                    ulx, uly, ulx + sp->width - 1, uly + sp->height - 1, 0,
+                                    G_TX_CLAMP, G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
+                break;
+            case COLORMODE_CI8:
+                gSPDisplayList(gfxPos++, D_1001300);
+                gDPLoadTLUT_pal256(gfxPos++, sp->palletteP);
+                gDPSetTextureLUT(gfxPos++, G_TT_RGBA16);
+                gDPLoadTextureTile(gfxPos++, sp->bitmapP, G_IM_FMT_CI, G_IM_SIZ_8b, sp->width * sp->tileCountX, 0,
+                                    ulx, uly, ulx + sp->width - 1, uly + sp->height - 1, 0,
+                                    G_TX_CLAMP, G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
+                break;
+        }
+
+        gDPSetPrimColor(gfxPos++, 0, 0, sp->prim.r, sp->prim.g, sp->prim.b, sp->prim.a);
+        gSPVertex(gfxPos++, sp->quad, 4, 0);
+        gSP1Triangle(gfxPos++, 0, 1, 2, 0);
+        gSP1Triangle(gfxPos++, 3, 2, 1, 0);
+    }
+
+    gSPPopMatrix(gfxPos++, G_MTX_MODELVIEW);
+    D_800FDFC0[gSpriteFrameBuffer] = 0;
+    D_800FDFC8[gSpriteFrameBuffer] = 0;
+    printReset();
+    return gfxPos;
+}
+
 
 void func_800610A8(void) {
     D_800FE000 = 1;
