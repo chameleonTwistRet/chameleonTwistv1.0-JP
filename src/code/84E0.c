@@ -20,7 +20,7 @@ s32 D_801749A4;
 s32 D_801749A8;
 s32 Battle_GameType;
 s32 D_801749B0;
-s32 D_801749B4;
+s32 gIsMultiplayerPaused;
 char D_801749B8[24];
 s32 D_801749D0;
 

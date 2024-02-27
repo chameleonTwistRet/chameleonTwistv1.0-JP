@@ -335,7 +335,7 @@ extern u32 D_800FF8B8;
 extern s32 D_801B3168;
 extern u8 gSelectedCharacters[4];
 extern s32 D_801749B0;
-extern s32 D_801749B4;
+extern s32 gIsMultiplayerPaused;
 extern s32 gCurrentStage;
 extern s32 D_80176F58;
 extern s16 gOneRun;

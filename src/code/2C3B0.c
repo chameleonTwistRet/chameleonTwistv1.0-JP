@@ -1,70 +1,68 @@
 #include "2C3B0.h"
 
 // BSS
-u8 D_80176820;
-u8 D_80176821;
-u8 D_80176822;
-u8 D_80176823;
+u8 Battle_PlayerIsOut[4];
 s32 Battle_TimeLeft;
-s32 D_80176828;
-s32 D_8017682C;
+s32 Battle_FirstRankCount; // number of players on 1st rank minus 1
+s32 Battle_PlayerCount;
 s32 gMultiplayerBGM;
-s32 D_80176834;
+s32 Battle_NumRanks;
 
 // data
 u32 Battle_Time = 0;
 u8 D_800F0B54[] = { 255, 0, 0, 0 };
-s32 Battle_Stage = BATTLE_STAGE_0;
+s32 Battle_Stage = BATTLE_STAGE_INIT;
 s32 D_800F0B5C = -1;
-s32 D_800F0B60 = 0;
-s32 D_800F0B64 = BATTLE_STAGE_1;
+s32 Battle_NoWinner = FALSE;
+s32 D_800F0B64 = BATTLE_STAGE_INVALID;
 s32 D_800F0B68[4][4] = {
     { 0, 0, 0, 0 },
     { 0, 0, 0, 0 },
     { 0, 0, 0, 0 },
     { 0, 0, 0, 0 },
 };
-s32 gCharacterPortraits[6] = { SPRITE_PORTRAITDAVY, SPRITE_PORTRAITJACK, SPRITE_PORTRAITFRED, SPRITE_PORTRAITLINDA, SPRITE_PORTRAITBLACK, SPRITE_PORTRAITWHITE };
-s32 Battle_PlayerPlaces[4] = { 0, 0, 0, 0 };
-s32 D_800F0BD0[4] = { 0, 0, 0, 0 };
+s32 gCharacterPortraits[6] = { SPRITE_PORTRAITDAVY, SPRITE_PORTRAITJACK, SPRITE_PORTRAITFRED,
+                               SPRITE_PORTRAITLINDA, SPRITE_PORTRAITBLACK, SPRITE_PORTRAITWHITE };
+s32 Battle_PlayerRank[4] = { 0, 0, 0, 0 };
+s32 Battle_SurvivalPlayerRank[4] = { 0, 0, 0, 0 };
 u8 Battle_CornerIndices[4] = { 0, 3, 1, 2 };
-unk800F0BE4 Battle_PlayerUIDefs[] = {
+BattlePlayerData Battle_PlayerData[] = {
     {
         0,
-        16.0f, 14.0f,
-        36.0f, 14.0f,
-        34.0f, 14.0f,
+        { 16.0f, 14.0f },
+        { 36.0f, 14.0f },
+        { 34.0f, 14.0f },
         0.0f,
         0
     },
     {
         0,
-        16.0f, 205.0f,
-        36.0f, 212.0f,
-        34.0f, 206.0f,
+        { 16.0f, 205.0f },
+        { 36.0f, 212.0f },
+        { 34.0f, 206.0f },
         0.0f,
         0
     },
     {
         0,
-        288.0f, 14.0f,
-        240.0f, 14.0f,
-        260.0f, 14.0f,
+        { 288.0f, 14.0f },
+        { 240.0f, 14.0f },
+        { 260.0f, 14.0f },
         0.0f,
         0
     },
     {
         0,
-        288.0f, 205.0f,
-        240.0f, 212.0f,
-        260.0f, 206.0f,
+        { 288.0f, 205.0f },
+        { 240.0f, 212.0f },
+        { 260.0f, 206.0f },
         0.0f,
         0
     }
 };
-s32 D_800F0C74 = 999999999;
+s32 Battle_LastKnockOutTime = 999999999;
 s32 Battle_DecimalPowers[] = { 1, 10, 100, 1000, 10000, 100000, 1000000, 10000000 };
-u8 Batlle_MsgSuddenDeath[] = { 19, 21, 4, 4, 5, 14, 100, 4, 5, 1, 20, 8 };
+u8 Batlle_MsgSuddenDeath[] = { LETTER_S, LETTER_U, LETTER_D, LETTER_D, LETTER_E, LETTER_N, SPACE, LETTER_D, LETTER_E, LETTER_A, LETTER_T, LETTER_H };
 unk_80052094_8 D_800F0CA4[] = {
     { 0.0f, 2 },
     { 9.0f, 0 },
@@ -97,15 +95,15 @@ u8 D_800F0D58[] = { 0, 0, 0, 1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4, 5, 5, 5, 6, 6, 
 s32 D_800F0D88 = 0;
 s8 D_800F0D8C = 3;
 
-void func_80050FB0(void) {
+void Battle_UpdateFallOffTimers(void) {
     s32 i;
 
-    if (D_801749B4 == 0) {
-        for (i = 0; i < PLAYERS_MAX; i++) {
+    if (!gIsMultiplayerPaused) {
+        for (i = 0; i < ARRAY_COUNT(gPlayerActors); i++) {
             if (gPlayerActors[i].active == TRUE) {
                 if (gPlayerActors[i].pos.y < -10.0f) {
-                    Battle_PlayerUIDefs[Battle_CornerIndices[i]].unk_00++;
-                    func_8005456C(gPlayerActors[i].pos.x, -300.0f, gPlayerActors[i].pos.z, gPlayerActors[i].pos.y, 200.0f, gSelectedCharacters[i]);
+                    Battle_PlayerData[Battle_CornerIndices[i]].fallOffTime++;
+                    Batlle_DrawLightSpot(gPlayerActors[i].pos.x, -300.0f, gPlayerActors[i].pos.z, gPlayerActors[i].pos.y, 200.0f, gSelectedCharacters[i]);
                 }
             }
         }
@@ -115,145 +113,146 @@ void func_80050FB0(void) {
 void func_800510E0(void) {
     s32 i;
 
-    for (i = 0; i < PLAYERS_MAX; i++) {
+    for (i = 0; i < ARRAY_COUNT(gPlayerActors); i++) {
         if (gPlayerActors[i].active == TRUE) {
-            if (++D_800F0B68[i][Battle_PlayerPlaces[i]] > 99) {
-                D_800F0B68[i][Battle_PlayerPlaces[i]] = 99;
+            if (++D_800F0B68[i][Battle_PlayerRank[i]] > 99) {
+                D_800F0B68[i][Battle_PlayerRank[i]] = 99;
             }
         }
     }
 }
 
-s32 func_8005119C(void) {
+s32 Battle_UpdateRanking(void) {
     s32 i, j;
-    s32 sum_1 = 0;
-    s32 sum_2 = 0;
+    s32 numFirstPlace = 0;
+    s32 numSecondPlace = 0;
     
     s32 gameType = Battle_GameType;
-    if (Battle_Stage == BATTLE_STAGE_6) {
+    if (Battle_Stage == BATTLE_STAGE_SUDDEN_DEATH) {
         gameType = BATTLE_TYPE_SURVIVAL;
     }
     
     switch (gameType) {
         case BATTLE_TYPE_TIME_TRIAL:
-            for (i = 0; i < PLAYERS_MAX ; i++) {
-                s32 total = 0;
+            for (i = 0; i < ARRAY_COUNT(gPlayerActors) ; i++) {
+                s32 rank = 0;
                 if (gPlayerActors[i].active == TRUE) {
-                    for (j = 0; j < PLAYERS_MAX; j++) {
+                    for (j = 0; j < ARRAY_COUNT(gPlayerActors); j++) {
                         if (gPlayerActors[j].active == TRUE) {
-                            if (i != j && Battle_PlayerUIDefs[Battle_CornerIndices[j]].unk_00 < Battle_PlayerUIDefs[Battle_CornerIndices[i]].unk_00) {
-                                total++; 
+                            if (i != j && Battle_PlayerData[Battle_CornerIndices[j]].fallOffTime <
+                                          Battle_PlayerData[Battle_CornerIndices[i]].fallOffTime) {
+                                rank++; 
                             }
-                            Battle_PlayerPlaces[i] = total;
+                            Battle_PlayerRank[i] = rank;
                         }    
                     }
-                    if (Battle_PlayerPlaces[i] == 0) {
-                        sum_1++;
+                    if (Battle_PlayerRank[i] == 0) {
+                        numFirstPlace++;
                     }
-                    if (Battle_PlayerPlaces[i] == 1) {
-                        sum_2++;
+                    if (Battle_PlayerRank[i] == 1) {
+                        numSecondPlace++;
                     }
                 }
             }
 
-            if (sum_2 == 2) {
-                for (i = 0; i < PLAYERS_MAX; i++) {
-                    if (gPlayerActors[i].active == TRUE && Battle_PlayerPlaces[i] == 3) {
-                        Battle_PlayerPlaces[i] = 2;
+            if (numSecondPlace == 2) {
+                for (i = 0; i < ARRAY_COUNT(gPlayerActors); i++) {
+                    if (gPlayerActors[i].active == TRUE && Battle_PlayerRank[i] == 3) {
+                        Battle_PlayerRank[i] = 2;
                     }
                 }
             }
-            if (sum_1 == 1) {
-                sum_1 = 0;
+            if (numFirstPlace == 1) {
+                numFirstPlace = 0;
             } else {
-                sum_1--;
+                numFirstPlace--;
             }
             break;
         case BATTLE_TYPE_SURVIVAL:
-            for (i = 0; i < PLAYERS_MAX; i++) {
+            for (i = 0; i < ARRAY_COUNT(gPlayerActors); i++) {
                 if (gPlayerActors[i].active == TRUE) {
-                    Battle_PlayerPlaces[i] = D_800F0BD0[i] - 1;
+                    Battle_PlayerRank[i] = Battle_SurvivalPlayerRank[i] - 1;
                     
-                    if (D_800F0BD0[i] < 2) {
-                        Battle_PlayerPlaces[i] = 0;
+                    if (Battle_SurvivalPlayerRank[i] < 2) {
+                        Battle_PlayerRank[i] = 0;
                     }
-                    if (Battle_PlayerPlaces[i] == 0) {
-                        sum_1++;
+                    if (Battle_PlayerRank[i] == 0) {
+                        numFirstPlace++;
                     }
                 }
             }
-            sum_1--;
+            numFirstPlace--;
             break;
     }
-    return sum_1;
+    return numFirstPlace;
 }
 
-s32 func_80051548(s32 arg0) {
-    static s32 D_80176838;
-    s32 var_v1 = 0;
+// return zero if there is no winner
+s32 Battle_KnockOutPlayer(s32 playerID) {
+    static s32 sSurvivalLastPlayerRank;
+    s32 numFirstPlace = 0;
     s32 i;
     
-    if (D_800F0C74 == Battle_Time) {
-        D_800F0BD0[arg0] = D_80176838;
+    if (Battle_LastKnockOutTime == Battle_Time) {
+        // two or more players are knocked out simulataneously
+        Battle_SurvivalPlayerRank[playerID] = sSurvivalLastPlayerRank;
 
-        for (i = 0; i < PLAYERS_MAX; i++) {
-            D_800F0BD0[i]--;
-            if (D_800F0BD0[i] <= 0) {
-                D_800F0BD0[i] = 0;
+        for (i = 0; i < ARRAY_COUNT(gPlayerActors); i++) {
+            Battle_SurvivalPlayerRank[i]--;
+            if (Battle_SurvivalPlayerRank[i] <= 0) {
+                Battle_SurvivalPlayerRank[i] = 0;
             }
-            if (D_800F0BD0[i] == 1) {
-                var_v1++;
+            if (Battle_SurvivalPlayerRank[i] == 1) {
+                numFirstPlace++;
             }
         }
 
-        D_80176838--;
+        sSurvivalLastPlayerRank--;
     } else {
-        D_80176838 = D_800F0BD0[arg0] = D_80176834;
-        D_80176834--;
+        Battle_SurvivalPlayerRank[playerID] = sSurvivalLastPlayerRank = Battle_NumRanks--;
     }
     
-    D_800F0C74 = Battle_Time;
+    Battle_LastKnockOutTime = Battle_Time;
 
-    if (var_v1 >= 2) {
-        var_v1 = 0;
+    if (numFirstPlace >= 2) {
+        numFirstPlace = 0;
     } else {        
-        var_v1 = -1;        
+        numFirstPlace = -1;        
     }
-    return var_v1;
+    return numFirstPlace;
 }
 
 // TODO make them static inside function
 s32 D_8017683C;
-unk80176840 D_80176840;
 
 f32 func_80051678(u8 arg0, f32* arg1, f32 arg2, f32 arg3) {
-    f32 ret;
+    f32 diff;
     f32 temp_f12;
     f32 temp_f12_2;
     
-    ret = arg3 - arg2;
+    diff = arg3 - arg2;
     switch (arg0) {
-    default:
-        break;
-    case 2:
-        temp_f12 = ret / 6.0f;
-        *arg1 = temp_f12 + arg2;
-        ret = temp_f12 * 4.0f;
-        break;
-    case 3:
-        temp_f12 = ret / 8;
-        *arg1 = temp_f12 + arg2;
-        ret = temp_f12 * 3.0f;
-        break;
-    case 4:
-        *arg1 = arg2;
-        ret = ret / 3.0f;
-        break;
+        default:
+            break;
+        case 2:
+            temp_f12 = diff / 6.0f;
+            *arg1 = temp_f12 + arg2;
+            diff = temp_f12 * 4.0f;
+            break;
+        case 3:
+            temp_f12 = diff / 8;
+            *arg1 = temp_f12 + arg2;
+            diff = temp_f12 * 3.0f;
+            break;
+        case 4:
+            *arg1 = arg2;
+            diff = diff / 3.0f;
+            break;
     }
-    return ret;
+    return diff;
 }
 
-void func_8005171C(void) {
+void Battle_PlayEnvSounds(void) {
     if (gCurrentZone == 6 && (Battle_Time % 60) == 0) {
         PLAYSFX(137, 0, 0x10);
     }
@@ -263,7 +262,7 @@ s32 func_8005177C(s32 playerID) {
     s32 i;
     s32 activeCount = 0;
 
-    for (i = 0; i < PLAYERS_MAX; i++) {
+    for (i = 0; i < ARRAY_COUNT(gPlayerActors); i++) {
         if (gPlayerActors[i].active && (D_80168D78[i] != (((i & 0xFF) == 4) * 0))) {
             if (playerID != i) {
                 activeCount++;
@@ -272,7 +271,7 @@ s32 func_8005177C(s32 playerID) {
             break;
         }
     }
-    if (i == PLAYERS_MAX) {
+    if (i == ARRAY_COUNT(gPlayerActors)) {
         activeCount = -1;
     }
     return activeCount;
@@ -281,19 +280,21 @@ s32 func_8005177C(s32 playerID) {
 void Battle_DrawPortraits(void) {
     s32 i;
 
-    for (i = 0; i < PLAYERS_MAX; i++) {
+    for (i = 0; i < ARRAY_COUNT(gPlayerActors); i++) {
         if (gPlayerActors[i].active == TRUE) {
             if (gSelectedCharacters[i] > CHARA_WHITE) {
                 continue;
             }
-            printUISprite(Battle_PlayerUIDefs[Battle_CornerIndices[i]].unk_04, Battle_PlayerUIDefs[Battle_CornerIndices[i]].unk_08, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, gCharacterPortraits[gSelectedCharacters[i]]);
+            printUISprite(Battle_PlayerData[Battle_CornerIndices[i]].portraitPos.x,
+                          Battle_PlayerData[Battle_CornerIndices[i]].portraitPos.y,
+                          0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, gCharacterPortraits[gSelectedCharacters[i]]);
         }
     }
 }
 
 #ifdef NON_MATCHING
 void Battle_PrintPlayerTimer(s32 playerID) {
-    if (Battle_PlayerPlaces[playerID] == 0) {
+    if (Battle_PlayerRank[playerID] == 0) {
         s8 g = Battle_Time * 16;
         SetTextGradient(255, g, 32, 255,
                         255, 0,  0, 255,
@@ -303,9 +304,15 @@ void Battle_PrintPlayerTimer(s32 playerID) {
         SetTextGradientFromPalette(5);
     }
     func_800610A8();
-    printNumber(Battle_PlayerUIDefs[Battle_CornerIndices[playerID]].unk_0C, Battle_PlayerUIDefs[Battle_CornerIndices[playerID]].unk_10, 0.0f, 0.6f, (Battle_PlayerUIDefs[Battle_CornerIndices[playerID]].unk_00 / 1800) % 60, 2, 0);
-    PrintTextWrapper(Battle_PlayerUIDefs[Battle_CornerIndices[playerID]].unk_0C + 18.0f, Battle_PlayerUIDefs[Battle_CornerIndices[playerID]].unk_10 - 2.0f, 0.0f, 0.6f, "：", 1);
-    printNumber(Battle_PlayerUIDefs[Battle_CornerIndices[playerID]].unk_0C + 28.0f, Battle_PlayerUIDefs[Battle_CornerIndices[playerID]].unk_10, 0.0f, 0.6f, (Battle_PlayerUIDefs[Battle_CornerIndices[playerID]].unk_00 / 30) % 60, 2, 0);
+    printNumber(Battle_PlayerData[Battle_CornerIndices[playerID]].timerPos.x,
+                Battle_PlayerData[Battle_CornerIndices[playerID]].timerPos.y,
+                0.0f, 0.6f, (Battle_PlayerData[Battle_CornerIndices[playerID]].fallOffTime / 1800) % 60, 2, 0);
+    PrintTextWrapper(Battle_PlayerData[Battle_CornerIndices[playerID]].timerPos.x + 18.0f,
+                     Battle_PlayerData[Battle_CornerIndices[playerID]].timerPos.y - 2.0f,
+                     0.0f, 0.6f, "：", 1);
+    printNumber(Battle_PlayerData[Battle_CornerIndices[playerID]].timerPos.x + 28.0f,
+                Battle_PlayerData[Battle_CornerIndices[playerID]].timerPos.y,
+                0.0f, 0.6f, (Battle_PlayerData[Battle_CornerIndices[playerID]].fallOffTime / 30) % 60, 2, 0);
     func_800610B8();
 }
 #else
@@ -314,32 +321,34 @@ void Battle_PrintPlayerTimer(s32 playerID);
 #endif
 
 #ifdef NON_MATCHING
-void Battle_PrintPlayerPlace(s32 playerID) {
+void Battle_PrintPlayerRank(s32 playerID) {
     f32 go;
     f32 temp_f2;
     f32 alpha = 1.0f;
     f32 sp68 = 24.0f;
     f32 sp64 = 16.0f;
-    f32 sp60 = 0.0f;
-    f32 sp5C = 0.0f;
+    f32 deltaX = 0.0f;
+    f32 deltaY = 0.0f;
     s32 temp_t4;
     
-    if (Battle_PlayerUIDefs[Battle_CornerIndices[playerID]].unk_20 != Battle_PlayerPlaces[Battle_CornerIndices[playerID]]) {
-        Battle_PlayerUIDefs[Battle_CornerIndices[playerID]].unk_20 = Battle_PlayerPlaces[Battle_CornerIndices[playerID]];
-        Battle_PlayerUIDefs[Battle_CornerIndices[playerID]].unk_1C = 0;
+    if (Battle_PlayerData[Battle_CornerIndices[playerID]].rank != Battle_PlayerRank[Battle_CornerIndices[playerID]]) {
+        Battle_PlayerData[Battle_CornerIndices[playerID]].rank = Battle_PlayerRank[Battle_CornerIndices[playerID]];
+        Battle_PlayerData[Battle_CornerIndices[playerID]].rankTimer = 0;
     } else {
-        Battle_PlayerUIDefs[Battle_CornerIndices[playerID]].unk_1C += 0.125f;
-        if (Battle_PlayerUIDefs[Battle_CornerIndices[playerID]].unk_1C <= 1.0f) {
-            alpha *= Battle_PlayerUIDefs[Battle_CornerIndices[playerID]].unk_1C;
+        Battle_PlayerData[Battle_CornerIndices[playerID]].rankTimer += 0.125f;
+        if (Battle_PlayerData[Battle_CornerIndices[playerID]].rankTimer <= 1.0f) {
+            alpha *= Battle_PlayerData[Battle_CornerIndices[playerID]].rankTimer;
             go = 1 - alpha;
             temp_f2 = 1.0f + 2.0f * go;
             
             sp68 *= temp_f2;
             sp64 *= temp_f2;
-            sp60 = 24.0f;
-            sp5C = 16.0f;
-            sp60 *= go;
-            sp5C *= go;
+
+            deltaX = 24.0f;
+            deltaY = 16.0f;
+
+            deltaX *= go;
+            deltaY *= go;
         }
     }
     
@@ -350,7 +359,7 @@ void Battle_PrintPlayerPlace(s32 playerID) {
                         255, 255, 255, 255 * alpha, 
                         255, 255, 255, 255 * alpha);
     } else {
-        switch (Battle_PlayerPlaces[playerID]) {
+        switch (Battle_PlayerRank[playerID]) {
             case 0:
                 SetTextGradientFromPaletteAlpha(0xD, alpha);
                 break;
@@ -365,37 +374,38 @@ void Battle_PrintPlayerPlace(s32 playerID) {
                 break;
         }
     }
-    printUISprite(Battle_PlayerUIDefs[Battle_CornerIndices[playerID]].unk_14 - sp60, Battle_PlayerUIDefs[Battle_CornerIndices[playerID]].unk_18 - sp5C,
-                0, 0, 1, sp68, sp64, Battle_PlayerPlaces[playerID], 213);
+    printUISprite(Battle_PlayerData[Battle_CornerIndices[playerID]].rankPos.x - deltaX,
+                  Battle_PlayerData[Battle_CornerIndices[playerID]].rankPos.y - deltaY,
+                  0, 0, 1, sp68, sp64, Battle_PlayerRank[playerID], 213);
 }
 #else
-#pragma GLOBAL_ASM("asm/nonmatchings/code/2C3B0/Battle_PrintPlayerPlace.s")
-void Battle_PrintPlayerPlace(s32 arg0); 
+#pragma GLOBAL_ASM("asm/nonmatchings/code/2C3B0/Battle_PrintPlayerRank.s")
+void Battle_PrintPlayerRank(s32 arg0); 
 #endif
 
 void func_80051F38(void) {
     s32 i;
     switch (Battle_Stage) {
-        case BATTLE_STAGE_6:
-            for (i = 0; i < PLAYERS_MAX; i++) {
+        case BATTLE_STAGE_SUDDEN_DEATH:
+            for (i = 0; i < ARRAY_COUNT(gPlayerActors); i++) {
                 if (gPlayerActors[i].active == TRUE) {
                     if (Battle_GameType == BATTLE_TYPE_TIME_TRIAL) {
-                        if (Battle_PlayerPlaces[i] < 2) {
+                        if (Battle_PlayerRank[i] < 2) {
                             Battle_PrintPlayerTimer(i);
                         } else {
-                            Battle_PrintPlayerPlace(i);
+                            Battle_PrintPlayerRank(i);
                         }
                     } else if (Battle_GameType == BATTLE_TYPE_SURVIVAL) {
-                        Battle_PrintPlayerPlace(i);
+                        Battle_PrintPlayerRank(i);
                     }
                 }
             }
             break;
-        case BATTLE_STAGE_8:
-        case BATTLE_STAGE_9:
+        case BATTLE_STAGE_SHOW_WINNER:
+        case BATTLE_STAGE_WAIT_BEFORE_EXIT:
             for (i = 0; i < 4; i++) {
-                if (gPlayerActors[i].active == TRUE && D_80176828 == 0) {
-                    Battle_PrintPlayerPlace(i);
+                if (gPlayerActors[i].active == TRUE && Battle_FirstRankCount == 0) {
+                    Battle_PrintPlayerRank(i);
                 }
             }
             break;
@@ -561,43 +571,45 @@ void func_80052890(u32 charID) {
 #else
 #pragma GLOBAL_ASM("asm/nonmatchings/code/2C3B0/func_80052890.s")
 void func_80052890(u32 arg0);
+static u8 D_80176840;
+static u8 D_80176841;
 #endif
 
 void func_800536D8(void) {
     s32 i, j;
-    f32 sp9C;
-    s32 v0;
-    f32 sp94;
+    f32 posX;
+    s32 numDigits;
+    f32 height;
 
-    sp94 = func_80051678(D_8017682C, &sp9C, 88.0f, 256.0f);
+    height = func_80051678(Battle_PlayerCount, &posX, 88.0f, 256.0f);
 
     for (i = 0; i < 4; i++) {
-        if (gPlayerActors[i].active == 1) {
-            f32 y = 128.0f;
-            func_800525E8(i, sp9C - 4.0f);
-            for (j = 0; j < 4; j++, y += 24) {
-                if (j == Battle_PlayerPlaces[i] && D_80176828 == 0) {
+        if (gPlayerActors[i].active == TRUE) {
+            f32 posY = 128.0f;
+            func_800525E8(i, posX - 4.0f);
+            for (j = 0; j < 4; j++, posY += 24) {
+                if (j == Battle_PlayerRank[i] && Battle_FirstRankCount == 0) {
                     func_80052890(gSelectedCharacters[i]);
                 } else {
                     SetTextGradientFromPalette(1);
                 }
 
                 if (D_800F0B68[i][j] >= 10) {
-                    v0 = 2;
+                    numDigits = 2;
                 } else {
-                    v0 = 1;
+                    numDigits = 1;
                 }
 
-                Battle_PrintNumber(sp9C + 12.8f * (v0 == 1), y, 0.8f, 0.8f, D_800F0B68[i][j], v0, 0);
+                Battle_PrintNumber(posX + 12.8f * (numDigits == 1), posY, 0.8f, 0.8f, D_800F0B68[i][j], numDigits, 0);
                 
             }
-            sp9C += sp94;
+            posX += height;
         }
     }
 }
 
 //prints "HURRY!" during MP Battle [9 times]
-void Multiplayer_PrintHurry(void) {
+void Battle_PrintHurry(void) {
     if ((Battle_TimeLeft <= 1800) && (Battle_TimeLeft > 1710) && ((Battle_TimeLeft % 10) < 5)) {
         SetTextGradientFromPalette(1); 
         PrintTextWrapper(100.0f, 10.0f, 0.0f, 1.0f, "ＨＵＲＲＹ！", SPRITE_TEXTBIG);
@@ -661,7 +673,7 @@ void func_80053DA8(s32 arg0) {
 
     if (arg0 == 0) {
         for (i = 0; i < 4; i++) {
-            if (gPlayerActors[i].active == TRUE && Battle_PlayerPlaces[i] == 0) {
+            if (gPlayerActors[i].active == TRUE && Battle_PlayerRank[i] == 0) {
                 break;
             }
         }
@@ -723,17 +735,17 @@ void func_80054284(void) {
     f32 sp88;
 
     func_8005423C();
-    temp_f22 = func_80051678(D_8017682C, &sp88, -160.0f, 310.0f);
+    temp_f22 = func_80051678(Battle_PlayerCount, &sp88, -160.0f, 310.0f);
     for (i = 0; i < 4; i++) {
         if (gPlayerActors[i].active == 1) {
-            if (D_8017682C == Battle_PlayerPlaces[i] + 1) {
+            if (Battle_PlayerCount == Battle_PlayerRank[i] + 1) {
                 var_s1 = 3;
                 SetPlayerContextEyes(gSelectedCharacters[i], 2, 0);
             } else {
-                var_s1 = Battle_PlayerPlaces[i];
-                SetPlayerContextEyes(gSelectedCharacters[i], 1, (Battle_PlayerPlaces[i] == 0) ^ 1);
+                var_s1 = Battle_PlayerRank[i];
+                SetPlayerContextEyes(gSelectedCharacters[i], 1, (Battle_PlayerRank[i] == 0) ^ 1);
             }
-            if (D_800F0B60 == 1) {
+            if (Battle_NoWinner == TRUE) {
                 var_s1 = 1;
                 SetPlayerContextEyes(gSelectedCharacters[i], 0, 0);
             }
@@ -744,7 +756,7 @@ void func_80054284(void) {
 }
 
 void func_8005444C(void) {
-    if (D_801749B4 == 1) {
+    if (gIsMultiplayerPaused == TRUE) {
         func_800771DC(&D_800FE404, 16.0f, 16.0f, 1, 5, &D_800F0B5C, 0.0f, 0.0f, 320.0f, 240.0f);
     }
     switch (D_800F0B5C) {
@@ -775,37 +787,37 @@ void func_8005444C(void) {
     }
 }
 
-void func_8005456C(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, s32 arg5) {
-    Mtx sp30;
+void Batlle_DrawLightSpot(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, s32 playerID) {
+    Mtx mtx;
 
     if (Battle_Time % 2) {
-        setPrimColor(D_800FE564[arg5].unk0, D_800FE564[arg5].unk1, D_800FE564[arg5].unk2, D_800FE564[arg5].unk3 * flabs((arg3 / arg1)));
-        guAlign(&sp30, 0.0f, 0.0f, 100.0f, 0.0f);
-        func_80058BE4(&sp30, arg0, arg1, arg2, arg4, arg4, 0.0f, 0x4A);
+        setPrimColor(D_800FE564[playerID].r, D_800FE564[playerID].g, D_800FE564[playerID].b, D_800FE564[playerID].a * flabs((arg3 / arg1)));
+        guAlign(&mtx, 0.0f, 0.0f, 100.0f, 0.0f);
+        func_80058BE4(&mtx, arg0, arg1, arg2, arg4, arg4, 0.0f, SPRITE_74);
     }
 }
 
 void Battle_Init(void) {
     s32 i;
     
-    Battle_Stage = BATTLE_STAGE_0;
-    D_800F0B64 = BATTLE_STAGE_1;
-    Battle_TimeLeft = D_8020250C;
-    D_800F0674 = D_801749B4 = 0;
-    D_800F0C74 = 999999999;
-    D_80176828 = 99;
+    Battle_Stage = BATTLE_STAGE_INIT;
+    D_800F0B64 = BATTLE_STAGE_INVALID;
+    Battle_TimeLeft = gTimeTrialDuration;
+    D_800F0674 = gIsMultiplayerPaused = FALSE;
+    Battle_LastKnockOutTime = 999999999;
+    Battle_FirstRankCount = 99;
     D_800FE74C = 0;
-    D_800F0B60 = 0;
+    Battle_NoWinner = FALSE;
     D_800F0B5C = -1;
     D_800F0B54[0] = 255;
 
     for (i = 0; i < 4; i++) {
-        Battle_PlayerUIDefs[i].unk_20 = 99;
-        Battle_PlayerUIDefs[i].unk_1C = 0.0f;
+        Battle_PlayerData[i].rank = 99;
+        Battle_PlayerData[i].rankTimer = 0.0f;
     }
-    LoadSprite(110);
+    LoadSprite(SPRITE_110);
     LoadSprite(SPRITE_TEXTBIGGER);
-    LoadSprite(213);
+    LoadSprite(SPRITE_213);
     LockEyeChange();
     LoadPlayerEyes(0);
     LoadPlayerEyes(1);
@@ -815,9 +827,9 @@ void Battle_Init(void) {
     LoadPlayerEyes(5);
     StopBGM();
     if (gSelectedBattleBGM == -1) {
-        gMultiplayerBGM = (Rand() % 3) + 7;
+        gMultiplayerBGM = (Rand() % 3) + BGM_BATTLE1;
     } else {
-        gMultiplayerBGM = gSelectedBattleBGM + 7;
+        gMultiplayerBGM = gSelectedBattleBGM + BGM_BATTLE1;
     }
 }
 
@@ -825,7 +837,7 @@ void Battle_Init(void) {
 void Battle_Update(void) {
     s32 var_v0;
     s32 var_v1;
-    s32 var_v1_3;
+    s32 numAlive;
     u32 var_v1_2;
     s32 i;
 
@@ -839,11 +851,11 @@ void Battle_Update(void) {
         Battle_GameType = BATTLE_TYPE_SURVIVAL;
     }
     
-    if (D_801749B4 == 0) {
+    if (!gIsMultiplayerPaused) {
         var_v1 = 0;
         var_v0 = 0;
         for (i = 0; i < 4; i++) {
-            if (gPlayerActors[i].active != 0 && D_80168D78[i] == 0) {
+            if (gPlayerActors[i].active && D_80168D78[i] == 0) {
                 var_v0++;
                 if (gPlayerActors[i].exists == 0) {
                     var_v1++;
@@ -858,13 +870,13 @@ void Battle_Update(void) {
         }
         
         for (i = 0; i < 4; i++) {
-            if (gPlayerActors[i].active != 0) {
+            if (gPlayerActors[i].active) {
                 if (!var_v1_2) {
                     if (func_80055F10(i, 0x1000) == 1) {
                         D_800F0674 = 1;
                     }
                 }
-                if (gPlayerActors[i].exists != 0 && D_80168D78[i] == 0) {
+                if (gPlayerActors[i].exists && D_80168D78[i] == 0) {
                     if (func_80055F10(i, 0x1000) == 1) {
                         D_800F0674 = 1;
                     }
@@ -874,51 +886,51 @@ void Battle_Update(void) {
     }
     
     switch (Battle_Stage) {
-        case BATTLE_STAGE_0:
+        case BATTLE_STAGE_INIT:
             D_800F0674 = 2;
-            InputDisable();
-            for (i = 0; i < 4 ; i++) {
+            DisableInput();
+            for (i = 0; i < 4; i++) {
                 if (gPlayerActors[i].active == TRUE) {
-                    D_8017682C++;
+                    Battle_PlayerCount++;
                 }
             }
     
             if (Battle_GameType == BATTLE_TYPE_SURVIVAL) {
-                D_80176834 = D_8017682C;
+                Battle_NumRanks = Battle_PlayerCount;
             } else {
-                D_80176834 = 2;
+                Battle_NumRanks = 2;
             }
             for (i = 0; i < 4; i++) {
-                D_800F0BD0[i] = 0;
-                Battle_PlayerUIDefs[i].unk_00 = 29;    
-                D_80176820[i] = 0;
+                Battle_SurvivalPlayerRank[i] = 0;
+                Battle_PlayerData[i].fallOffTime = 29;    
+                Battle_PlayerIsOut[i] = FALSE;
             }
             for (i = 0; i < 4; i++) {
-                Battle_PlayerPlaces[i] = 0;
+                Battle_PlayerRank[i] = 0;
             }
             
             Battle_Time = 0;
-            Battle_Stage = BATTLE_STAGE_2;
+            Battle_Stage = BATTLE_STAGE_AFTER_INIT;
             func_800678EC(255, 255, 255, 0, 0x2D);
             break;
-        case BATTLE_STAGE_1:
+        case BATTLE_STAGE_INVALID:
             break;
-        case BATTLE_STAGE_2:
-            InputDisable();
+        case BATTLE_STAGE_AFTER_INIT:
+            DisableInput();
             D_800F0674 = 2;
             Battle_Time++;
             if (Battle_Time > 45) {
                 Battle_Stage = BATTLE_STAGE_READY;
                 Battle_Time = 0;
-                PlaySoundEffect(0x3E, NULL, NULL, NULL, 0, 0x10);
+                PLAYSFX(62, 0, 0x10);
             }
             break;
         case BATTLE_STAGE_READY:
-            InputDisable();
+            DisableInput();
             D_800F0674 = 2;
             Battle_Time++;
-            func_8005171C();
-            Battle_PrintTextBig(80.0f, 100.0f, Battle_Time / 23.333334f, 17, 5, D_800F0DF4, 1);
+            Battle_PlayEnvSounds();
+            Battle_PrintTextBig(80.0f, 100.0f, Battle_Time / 23.333334f, 17, 5, Battle_MsgReady, 1);
             if (Battle_Time == 40) {
                 func_800705C4(8.0f, 90.0f, 0x5FFF);
             }
@@ -926,103 +938,104 @@ void Battle_Update(void) {
                 D_800F0674 = 0;
                 Battle_Stage = BATTLE_STAGE_GO;
                 Battle_Time = 0;
-                D_8017683C = PlaySoundEffect(0x40, NULL, NULL, NULL, 0, 0x10);
+                D_8017683C = PLAYSFX(64, 0, 0x10);
                 PlayBGM(gMultiplayerBGM);
-                InputEnable();
+                EnableInput();
             }
             break;
         case BATTLE_STAGE_GO:
             Battle_Time++;
-            func_8005171C();
-            Battle_PrintTextBig(110.0f, 100.0f, 1.0f, 19, 3, D_800F0E1C, 1);
+            Battle_PlayEnvSounds();
+            Battle_PrintTextBig(110.0f, 100.0f, 1.0f, 19, 3, Battle_MsgGo, 1);
             if (Battle_Time > 20) {
-                Battle_Stage = BATTLE_STAGE_5;
+                Battle_Stage = BATTLE_STAGE_GAME;
                 Battle_Time = 0;
                 StopSoundEffect(D_8017683C);
             }
             break;
-        case BATTLE_STAGE_5:
-            if (D_801749B4 == 0) {
+        case BATTLE_STAGE_GAME:
+            if (!gIsMultiplayerPaused) {
                 Battle_TimeLeft--;
                 Battle_Time++;
             }
             Battle_DrawPortraits();
-            func_8005171C();
+            Battle_PlayEnvSounds();
             func_8005444C();
             switch (Battle_GameType) {
                 case BATTLE_TYPE_SURVIVAL:
                     for (i = 0; i < 4; i++) {
                         if (gPlayerActors[i].active == TRUE && gPlayerActors[i].exists == 0) {
-                            if (D_80176820[i] == 0) {
-                                if (func_80051548(i) == 0) {
-                                    D_800F0B60 = 1;
-                                    D_80176828 = 99;
+                            if (!Battle_PlayerIsOut[i]) {
+                                if (Battle_KnockOutPlayer(i) == 0) {
+                                    Battle_NoWinner = TRUE;
+                                    Battle_FirstRankCount = 99;
                                     Battle_TimeLeft = 0;
                                     break;
                                 } else {
-                                    D_80176820[i]++;
+                                    Battle_PlayerIsOut[i]++;
                                 }
                             } else {
-                                Battle_PrintPlayerPlace(i);
+                                Battle_PrintPlayerRank(i);
                             }
                         }
                     }
-                    Multiplayer_PrintHurry();
+                    Battle_PrintHurry();
                     Battle_PrintCountdownTimer();
-                    if (D_800F0B60 == 0) {
-                        D_80176828 = func_8005119C();
+                    if (!Battle_NoWinner) {
+                        Battle_FirstRankCount = Battle_UpdateRanking();
                     }
-                    if (D_800F0B60 == 1 || D_80176828 == 0 || Battle_TimeLeft <= 0) {
+                    if (Battle_NoWinner == TRUE || Battle_FirstRankCount == 0 || Battle_TimeLeft <= 0) {
                         Battle_Time = 0;
-                        if (D_80176828 > 0) {
-                            D_800F0B60 = 1;
+                        if (Battle_FirstRankCount > 0) {
+                            Battle_NoWinner = TRUE;
                         }
-                        if (D_800F0B60 == 0) {
-                            Battle_Stage = BATTLE_STAGE_7;
+                        if (!Battle_NoWinner) {
+                            Battle_Stage = BATTLE_STAGE_END_ACTIONS;
                         } else {
-                            Battle_Stage = BATTLE_STAGE_8;
+                            Battle_Stage = BATTLE_STAGE_SHOW_WINNER;
                         }
                     }
                     break;
                 case BATTLE_TYPE_TIME_TRIAL:
-                    func_80050FB0();
-                    func_8005171C();
-                    D_80176828 = func_8005119C();
-                    for (i = 0; i < 4 ; i++) {
+                    Battle_UpdateFallOffTimers();
+                    Battle_PlayEnvSounds();
+                    Battle_FirstRankCount = Battle_UpdateRanking();
+                    for (i = 0; i < 4; i++) {
                         if (gPlayerActors[i].active != 0) {
                             Battle_PrintPlayerTimer(i);
                         }
                     }
-                    Multiplayer_PrintHurry();
+                    Battle_PrintHurry();
                     Battle_PrintCountdownTimer();
                     if (Battle_TimeLeft <= 0) {
-                        if (D_80176828 != 0) {
-                            Battle_Stage = BATTLE_STAGE_6;
+                        if (Battle_FirstRankCount != 0) {
+                            // at least two players have same time
+                            Battle_Stage = BATTLE_STAGE_SUDDEN_DEATH;
                             for (i = 0; i < 4; i++) {
-                                if (gPlayerActors[i].active != 0) {
-                                    D_800F0BD0[i] = Battle_PlayerPlaces[i] + 1;
-                                    if (Battle_PlayerPlaces[i] > 0) {
-                                        D_80176820[i] = 1;
+                                if (gPlayerActors[i].active) {
+                                    Battle_SurvivalPlayerRank[i] = Battle_PlayerRank[i] + 1;
+                                    if (Battle_PlayerRank[i] > 0) {
+                                        Battle_PlayerIsOut[i]++;
                                     }
-                                    D_80176834 = D_80176828 + 1;
+                                    Battle_NumRanks = Battle_FirstRankCount + 1;
                                 }
                             }
                         } else {
-                            Battle_Stage = BATTLE_STAGE_7;
+                            Battle_Stage = BATTLE_STAGE_END_ACTIONS;
                         }
                         Battle_Time = 0;
                     }
                     break;
             }
             break;
-        case BATTLE_STAGE_6:
-            if (D_801749B4 == 0) {
+        case BATTLE_STAGE_SUDDEN_DEATH:
+            if (!gIsMultiplayerPaused) {
                 Battle_Time++;
             }
-            func_8005171C();
-            for (i = 0; i < 4 ; i++) {
-                if (gPlayerActors[i].active != 0) {
-                    func_8005456C(gPlayerActors[i].pos.x, -300.0f, gPlayerActors[i].pos.z,
+            Battle_PlayEnvSounds();
+            for (i = 0; i < 4; i++) {
+                if (gPlayerActors[i].active) {
+                    Batlle_DrawLightSpot(gPlayerActors[i].pos.x, -300.0f, gPlayerActors[i].pos.z,
                                   gPlayerActors[i].pos.y, 200.0f, gSelectedCharacters[i]);
                 }
             }
@@ -1030,79 +1043,79 @@ void Battle_Update(void) {
             Battle_PrintSuddenDeath(90.0f, 16.0f);
             Battle_DrawPortraits();
             func_80051F38();
-            for (i = 0; i < 4 ; i++) {
-                if (gPlayerActors[i].active != 0 && D_80176820[i] == 0 && gPlayerActors[i].pos.y < -10.0f) {
-                    if (func_80051548(i) == 0) {
-                        D_800F0B60 = 1;
-                        D_80176828 = 0x63;
+            for (i = 0; i < 4; i++) {
+                if (gPlayerActors[i].active && !Battle_PlayerIsOut[i] && gPlayerActors[i].pos.y < -10.0f) {
+                    if (Battle_KnockOutPlayer(i) == 0) {
+                        Battle_NoWinner = TRUE;
+                        Battle_FirstRankCount = 99;
                         break;
                     }
-                    D_80176820[i]++;
+                    Battle_PlayerIsOut[i]++;
                 }
             }
-            if (D_800F0B60 == 0) {
-                D_80176828 = func_8005119C();
+            if (!Battle_NoWinner) {
+                Battle_FirstRankCount = Battle_UpdateRanking();
             }
-            if (D_80176828 == 0 || D_800F0B60 == 1) {
-                if (D_800F0B60 == 0) {
+            if (Battle_FirstRankCount == 0 || Battle_NoWinner == TRUE) {
+                if (!Battle_NoWinner) {
                     D_800F0B64 = Battle_Stage;
-                    Battle_Stage = BATTLE_STAGE_7;
+                    Battle_Stage = BATTLE_STAGE_END_ACTIONS;
                 } else {
-                    Battle_Stage = BATTLE_STAGE_8;
+                    Battle_Stage = BATTLE_STAGE_SHOW_WINNER;
                 }
                 Battle_Time = 0;
             }
             break;
-        case BATTLE_STAGE_7:
+        case BATTLE_STAGE_END_ACTIONS:
             D_800F0674 = 0;
-            Battle_Stage = BATTLE_STAGE_8;
-            func_8005171C();
+            Battle_Stage = BATTLE_STAGE_SHOW_WINNER;
+            Battle_PlayEnvSounds();
             Battle_DrawPortraits();
-            var_v1_3 = 0;
+            numAlive = 0;
             for (i = 0; i < 4; i++) {
                 if (gPlayerActors[i].active) {
-                    if (gPlayerActors[i].exists && D_80176820[i] != 1 || D_800F0B64 != BATTLE_STAGE_1) {
-                        var_v1_3++;
+                    if (gPlayerActors[i].exists && Battle_PlayerIsOut[i] != TRUE || D_800F0B64 != BATTLE_STAGE_INVALID) {
+                        numAlive++;
                         if (gPlayerActors[i].canJump || gPlayerActors[i].playerHURTSTATE != 0 || gTongues[i].tongueMode != 0) {
-                            if (Battle_PlayerPlaces[i] != 0) {
-                                InputDisable();
+                            if (Battle_PlayerRank[i] != 0) {
+                                DisableInput();
                             }
-                            Battle_Stage = BATTLE_STAGE_7;
+                            Battle_Stage = BATTLE_STAGE_END_ACTIONS;
                         }
                     }
                 }
             }
-            if (var_v1_3 == 0) {
-                Battle_Stage = BATTLE_STAGE_8;
-                D_800F0B60 = 1;
-                D_80176828 = 99;
+            if (numAlive == 0) {
+                Battle_Stage = BATTLE_STAGE_SHOW_WINNER;
+                Battle_NoWinner = TRUE;
+                Battle_FirstRankCount = 99;
             }
-            if (Battle_Stage == BATTLE_STAGE_8 && var_v1_3 != 0) {
+            if (Battle_Stage == BATTLE_STAGE_SHOW_WINNER && numAlive != 0) {
                 func_800510E0();
             }
             break;
-        case BATTLE_STAGE_8:
+        case BATTLE_STAGE_SHOW_WINNER:
             if (Battle_Time++ < 16) {
                 D_800F0674 = 0;
                 Battle_DrawPortraits();
-                InputDisable();
+                DisableInput();
                 break;
             }
             D_800F0674 = 2;
-            InputDisable();
+            DisableInput();
             Battle_DrawPortraits();
             func_80051F38();
             Battle_Time = 0;
-            func_80053DA8(D_80176828);
-            if (D_80176828 > 0 || D_800F0B60 == 1) {
+            func_80053DA8(Battle_FirstRankCount);
+            if (Battle_FirstRankCount > 0 || Battle_NoWinner == TRUE) {
                 for (i = 0; i < 4; i++) {
-                    Battle_PlayerPlaces[i] = 1;
+                    Battle_PlayerRank[i] = 1;
                 }
-                func_8008BFE0(0x5A);
-            } else if (D_80176828 == 0 && D_800F0B60 == 0) {
-                PlayBGM(0xA);
+                func_8008BFE0(90);
+            } else if (Battle_FirstRankCount == 0 && !Battle_NoWinner) {
+                PlayBGM(BGM_BATTLEWIN);
                 for (i = 0; i < 4; i++) {
-                    if (gPlayerActors[i].active == 1 && Battle_PlayerPlaces[i] == 0) {
+                    if (gPlayerActors[i].active == TRUE && Battle_PlayerRank[i] == 0) {
                         UnlockEyeChange();
                         SetPlayerContextEyes(gSelectedCharacters[i], 1, 0);
                         func_80053FA0(i);
@@ -1112,38 +1125,38 @@ void Battle_Update(void) {
                 }
             }
             Battle_Time = 0;
-            Battle_Stage = BATTLE_STAGE_9;
+            Battle_Stage = BATTLE_STAGE_WAIT_BEFORE_EXIT;
             break;
-        case BATTLE_STAGE_9:
-            InputDisable();
+        case BATTLE_STAGE_WAIT_BEFORE_EXIT:
+            DisableInput();
             Battle_Time++;
             D_800F0674 = 2;
-            func_8005171C();
+            Battle_PlayEnvSounds();
             Battle_DrawPortraits();
             func_80051F38();
             if (Battle_GameType == BATTLE_TYPE_TIME_TRIAL) {
                 for (i = 0; i < 4; i++) {
-                    if (gPlayerActors[i].active != 0) {
-                        func_8005456C(gPlayerActors[i].pos.x, -300.0f, gPlayerActors[i].pos.z,
+                    if (gPlayerActors[i].active) {
+                        Batlle_DrawLightSpot(gPlayerActors[i].pos.x, -300.0f, gPlayerActors[i].pos.z,
                                       gPlayerActors[i].pos.y, 200.0f, gSelectedCharacters[i]);
                     }
                 }
             }
             if (Battle_Time > 120) {
                 StopBGM();
-                Battle_Stage = BATTLE_STAGE_10;
+                Battle_Stage = BATTLE_STAGE_EXIT;
             }
             break;
-        case BATTLE_STAGE_10:
+        case BATTLE_STAGE_EXIT:
             Battle_Time = 0;
-            Battle_Stage = BATTLE_STAGE_0;
+            Battle_Stage = BATTLE_STAGE_INIT;
             D_800F0674 = 0;
             D_800F0B54[0] = 0;
-            InputEnable();
+            EnableInput();
             SetProcessType(0x11);
             break;
         default:
-            Battle_Stage = BATTLE_STAGE_1;
+            Battle_Stage = BATTLE_STAGE_INVALID;
             Battle_Time = 0;
             break;
     }
@@ -1210,7 +1223,7 @@ void func_800557F8(void) {
         DMAStruct_Print();
         func_800A0D90();
 
-        for (i = 0; i < PLAYERS_MAX; i++) {
+        for (i = 0; i < ARRAY_COUNT(gPlayerActors); i++) {
             gPlayerActors[i].exists = gPlayerActors[i].active;
         }
 

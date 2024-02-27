@@ -8,24 +8,14 @@ typedef struct unk80176840 {
     char unk_00[0x10];
 } unk80176840;
 
-typedef struct unk800FE564 {
-    u8 unk0;
-    u8 unk1;
-    u8 unk2;
-    u8 unk3;
-} unk800FE564;
-
-typedef struct unk800F0BE4 {
-    /* 0x00 */ s32 unk_00;
-    /* 0x04 */ f32 unk_04;
-    /* 0x08 */ f32 unk_08;
-    /* 0x0C */ f32 unk_0C;
-    /* 0x10 */ f32 unk_10;
-    /* 0x14 */ f32 unk_14;
-    /* 0x18 */ f32 unk_18;
-    /* 0x1C */ f32 unk_1C;
-    /* 0x20 */ s32 unk_20;
-} unk800F0BE4; //sizeof 0x24
+typedef struct BattlePlayerData {
+    /* 0x00 */ s32 fallOffTime;
+    /* 0x04 */ Vec2f portraitPos;
+    /* 0x0C */ Vec2f timerPos;
+    /* 0x14 */ Vec2f rankPos;
+    /* 0x1C */ f32 rankTimer;
+    /* 0x20 */ s32 rank;
+} BattlePlayerData; //sizeof 0x24
 
 typedef struct unk_80052094_8 {
     /* 0x00 */ f32 unk_00;
@@ -41,27 +31,27 @@ f32 unk10;
 } unkStruct16;
 
 enum BattleStages {
-    BATTLE_STAGE_0 = 0,
-    BATTLE_STAGE_1 = 1,
-    BATTLE_STAGE_2 = 2,
+    BATTLE_STAGE_INIT = 0,
+    BATTLE_STAGE_INVALID = 1,
+    BATTLE_STAGE_AFTER_INIT = 2,
     BATTLE_STAGE_READY = 3,
     BATTLE_STAGE_GO = 4,
-    BATTLE_STAGE_5 = 5,
-    BATTLE_STAGE_6 = 6,
-    BATTLE_STAGE_7= 7,
-    BATTLE_STAGE_8 = 8,
-    BATTLE_STAGE_9 = 9,
-    BATTLE_STAGE_10 = 10
+    BATTLE_STAGE_GAME = 5,
+    BATTLE_STAGE_SUDDEN_DEATH = 6,
+    BATTLE_STAGE_END_ACTIONS= 7,
+    BATTLE_STAGE_SHOW_WINNER = 8,
+    BATTLE_STAGE_WAIT_BEFORE_EXIT = 9,
+    BATTLE_STAGE_EXIT = 10
 };
 
 enum BattleTypes {
     BATTLE_TYPE_UNK_0 = 0,
     BATTLE_TYPE_SURVIVAL = 1,
-    BATTLE_TYPE_TIME_TRIAL = 2,
+    BATTLE_TYPE_TIME_TRIAL = 2
 };
 
 /* Functions */
-void func_8005456C(f32, f32, f32, f32, f32, s32);
+void Batlle_DrawLightSpot(f32, f32, f32, f32, f32, s32);
 void func_80073090(void);
 s32 func_8008BE14(void);
 void func_800A0D90(void);
@@ -83,14 +73,14 @@ extern s32 D_800F0674;
 extern unkStruct16 D_800F0D90[];
 extern unkStruct16 D_800F0DE0[];
 extern s32 D_800FE404;
-extern unk800FE564 D_800FE564[];
+extern ColorRGBA D_800FE564[];
 extern s32 D_800FE708;
 extern s32 D_800FE74C;
 
-extern unk_80052094_8 D_800F0DF4[];
-extern unk_80052094_8 D_800F0E1C[];
+extern unk_80052094_8 Battle_MsgReady[];
+extern unk_80052094_8 Battle_MsgGo[];
 
 extern s32 Battle_GameType;
-extern s32 D_8020250C;
+extern s32 gTimeTrialDuration;
 
 #endif  //_2C3B0_H_
