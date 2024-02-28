@@ -5,7 +5,7 @@
 
 /* structs */
 typedef struct SpriteListing {
-    /* 0x00 */ char unk_00[4];
+    /* 0x00 */ Gfx* unk_00;
     /* 0x04 */ void* bitmapP; // "malloc'd" after size calc.
     /* 0x08 */ void* palletteP; //palette? both this and above start with devAddr+0XD73D960
     /* 0x0C */ s32 type; // use "COLORMODE_*" enum
@@ -76,11 +76,21 @@ extern Gfx D_1001300[];
 extern Gfx D_1001370[];
 extern Mtx D_800F69D0;
 extern Gfx D_800FE080[];
+extern SpriteListing D_80176F98[2][200];
+extern SpriteListing D_80182B18[2][200];
+extern SpriteListing D_8018E698[2][200];
 extern SpriteListing D_8019A218[2][200];
 extern SpriteListing D_801A5D98[2][200];
 extern Gfx D_800FE0F0[];
+extern s32 D_800FDFA8[2];
+extern s32 D_800FDFB0[2];
+extern s32 D_800FDFB8[2];
 extern f32 D_800FDF9C;
 extern s32 D_800FDF98;
+extern Gfx D_303AD50[];
+extern Gfx D_303F300[];
+extern Gfx D_303F1A0[];
+extern Gfx D_303D418[];
 
 /* functions */
 void func_8006623C(void);
