@@ -337,7 +337,98 @@ void printReset(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_800598C4.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80059F28.s")
+//#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80059F28.s")
+void func_80059F28(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7, s32 arg8) {
+    f32 sp6C;
+    f32 sp68;
+    f32 x1, y1;
+    f32 sp5C;
+    s32 sp58;
+    s32 sp54;
+    SpriteListing* tile;
+
+    if (D_800FDFC8[gSpriteFrameBuffer] >= 200) {
+        printReset();
+        return;
+    }
+
+    tile = &D_801A5D98[gSpriteFrameBuffer][D_800FDFC8[gSpriteFrameBuffer]];
+    *tile = gSpriteListings[arg8];
+    D_800FDFC8[gSpriteFrameBuffer]++;
+
+    arg0 += D_800FDFF4;
+    arg1 += D_800FDFF8;
+
+    if (arg7 >= 1.0 || arg7 == 0.0f) {
+        tile->tileIndexX = arg7;
+    } else {
+        tile->tileIndexX = tile->unk10[(s32)(tile->unk14 * arg7)] % tile->tileCountX;
+    }
+    tile->tileIndexY = D_800FDFE8;
+
+    sp58 = ABS2(tile->tileIndexX * tile->width + D_800FDFE0 * tile->width);
+    sp54 = ABS2(tile->tileIndexY * tile->height + D_800FDFE4 * tile->height);
+
+    if (arg5 == 0.0f && arg6 == 0.0f) {
+        sp6C = tile->width * D_800FDFF0 / 2;
+        sp68 = tile->height * D_800FDFF0 / 2;
+    } else {
+        sp6C = arg5 * arg4 / 2;
+        sp68 = arg6 * arg4 / 2;
+    }
+
+    x1 = -160.0f + arg0 + sp6C;
+    y1 = -arg1 + 120.0f - sp68;
+    sp5C = -arg2 - D_800FDF9C;
+
+    tile->quad[0].v.ob[0] = cosf(arg3) * -sp6C + sinf(arg3) * sp68 + x1;
+    tile->quad[0].v.ob[1] = cosf(arg3) * sp68 + sinf(arg3) * -sp6C + y1;
+    tile->quad[0].v.ob[2] = sp5C + D_800FE004;
+    tile->quad[0].v.tc[0] = (s16)(sp58) << (D_800FDF98 + 6);
+    tile->quad[0].v.tc[1] = (s16)(sp54) << (D_800FDF98 + 6);
+    tile->quad[0].v.cn[0] = gTextGradient[0];
+    tile->quad[0].v.cn[1] = gTextGradient[1];
+    tile->quad[0].v.cn[2] = gTextGradient[2];
+    tile->quad[0].v.cn[3] = gTextGradient[3];
+
+    tile->quad[1].v.ob[0] = cosf(arg3) * -sp6C + sinf(arg3) * (-sp68 * 1) + x1;
+    tile->quad[1].v.ob[1] = cosf(arg3) * (-sp68 * 1) + sinf(arg3) * -sp6C + y1;
+    tile->quad[1].v.ob[2] = sp5C + D_800FE008;
+    tile->quad[1].v.tc[0] = (s16)(sp58) << (D_800FDF98 + 6);
+    tile->quad[1].v.tc[1] = (s16)(sp54 + tile->height - 1) << (D_800FDF98 + 6);
+    tile->quad[1].v.cn[0] = gTextGradient[4];
+    tile->quad[1].v.cn[1] = gTextGradient[5];
+    tile->quad[1].v.cn[2] = gTextGradient[6];
+    tile->quad[1].v.cn[3] = gTextGradient[7];
+
+    tile->quad[2].v.ob[0] = cosf(arg3) * (sp6C * 1) + sinf(arg3) * sp68 + x1;
+    tile->quad[2].v.ob[1] = cosf(arg3) * sp68 + sinf(arg3) * (sp6C * 1) + y1;
+    tile->quad[2].v.ob[2] = sp5C + D_800FE00C;
+    tile->quad[2].v.tc[0] = (s16)(sp58 + tile->width - 1) << (D_800FDF98 + 6);
+    tile->quad[2].v.tc[1] = (s16)(sp54) << (D_800FDF98 + 6);
+    tile->quad[2].v.cn[0] = gTextGradient[8];
+    tile->quad[2].v.cn[1] = gTextGradient[9];
+    tile->quad[2].v.cn[2] = gTextGradient[10];
+    tile->quad[2].v.cn[3] = gTextGradient[11];
+
+    tile->quad[3].v.ob[0] = cosf(arg3) * sp6C + sinf(arg3) * -sp68 + x1;
+    tile->quad[3].v.ob[1] = cosf(arg3) * -sp68 + sinf(arg3) * sp6C + y1;
+    tile->quad[3].v.ob[2] = sp5C + D_800FE010;
+    tile->quad[3].v.tc[0] = (s16)(sp58 + tile->width - 1) << (D_800FDF98 + 6);
+    tile->quad[3].v.tc[1] = (s16)(sp54 + tile->height - 1) << (D_800FDF98 + 6);
+    tile->quad[3].v.cn[0] = gTextGradient[12];
+    tile->quad[3].v.cn[1] = gTextGradient[13];
+    tile->quad[3].v.cn[2] = gTextGradient[14];
+    tile->quad[3].v.cn[3] = gTextGradient[15];
+
+    if (gPrimRed != 0 || gPrimGreen != 0 || gPrimBlue != 0 || gPrimAlpha != 0) {
+        tile->prim.r = gPrimRed;
+        tile->prim.g = gPrimGreen;
+        tile->prim.b = gPrimBlue;
+        tile->prim.a = gPrimAlpha;
+    }
+    printReset();
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8005A7CC.s")
 
@@ -349,11 +440,142 @@ void func_8005AFA4(f32 arg0, f32 arg1, f32 arg2, f32 arg3) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8005B874.s")
 
+#ifdef NON_MATCHING
+void func_8005C04C(f32 arg0, f32 arg1, f32 arg2, f32 arg3, s32 arg4) {
+    SpriteListing* tile;
+
+    if (D_800FDFC0[gSpriteFrameBuffer] >= 200) {
+        printReset();
+        return;
+    }
+
+    tile = &D_8019A218[gSpriteFrameBuffer][D_800FDFC0[gSpriteFrameBuffer]];
+    *tile = gSpriteListings[arg4];
+
+    if (arg3 >= 1.0 || arg3 == 0.0f) {
+        tile->tileIndexX = arg3;
+    } else {
+        tile->tileIndexX = tile->unk10[(s32)(tile->unk14 * arg3)] % tile->tileCountX;
+    }
+    tile->tileIndexY = tile->unk10[(s32)(tile->unk14 * arg3)] / tile->tileCountX + D_800FDFE8;
+
+    tile->quad[0].v.ob[0] = ((s16)arg0) * 4;
+    tile->quad[0].v.ob[1] = ((s16)arg1) * 4;
+    tile->quad[0].v.ob[2] = ((s16)arg2) * 4;
+
+    tile->quad[1].v.ob[0] = (((s16)arg0) + tile->width) * 4;
+    tile->quad[1].v.ob[1] = (((s16)arg1) + tile->height) * 4;
+    tile->quad[1].v.ob[2] = ((s16)arg2) * 4;
+
+    if (tile->quad[1].v.ob[0] < 0 || tile->quad[0].v.ob[0] > SCREEN_WIDTH * 4 ||
+        tile->quad[1].v.ob[1] < 0 || tile->quad[0].v.ob[1] > SCREEN_HEIGHT * 4) {
+        printReset();
+        return;
+    }
+
+    tile->quad[0].v.tc[0] = ((s16)(tile->tileIndexX * tile->width)) << 5;
+    tile->quad[0].v.tc[1] = ((s16)(tile->tileIndexY * tile->height)) << 5;
+
+    if (gPrimRed != 0 || gPrimGreen != 0 || gPrimBlue != 0 || gPrimAlpha != 0) {
+        tile->prim.r = gPrimRed;
+        tile->prim.g = gPrimGreen;
+        tile->prim.b = gPrimBlue;
+        tile->prim.a = gPrimAlpha;
+    }
+    D_800FDFC0[gSpriteFrameBuffer]++;
+    printReset();
+}
+#else
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8005C04C.s")
+#endif
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8005C454.s")
+void func_8005C454(f32 arg0, f32 arg1, f32 arg2, s32 arg3) {
+    s32 i, j;
+    SpriteListing* tile;
+    
+    for (i = 0; i < gSpriteListings[arg3].tileCountX; i++) {
+        for (j = 0; j < gSpriteListings[arg3].tileCountY; j++) {
+            if (D_800FDFC0[gSpriteFrameBuffer] >= 200) {
+                printReset();
+                return;
+            }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8005C6FC.s")
+            tile = &D_8019A218[gSpriteFrameBuffer][D_800FDFC0[gSpriteFrameBuffer]];
+            *tile = gSpriteListings[arg3];
+
+            tile->tileIndexX = i;
+            tile->tileIndexY = j;
+
+            tile->quad[0].v.ob[0] = ((s16)arg0 + i * tile->width) * 4;
+            tile->quad[0].v.ob[1] = ((s16)arg1 + j * tile->height) * 4;
+            tile->quad[0].v.ob[2] = (s16)arg2 * 4;
+
+            tile->quad[1].v.ob[0] = ((s16)arg0 + i * tile->width + tile->width) * 4;
+            tile->quad[1].v.ob[1] = ((s16)arg1 + j * tile->height + tile->height) * 4;            
+            tile->quad[1].v.ob[2] = (s16)arg2 * 4;
+
+            if (tile->quad[1].v.ob[0] < 0 || tile->quad[0].v.ob[0] > SCREEN_WIDTH * 4 ||
+                tile->quad[1].v.ob[1] < 0 || tile->quad[0].v.ob[1] > SCREEN_HEIGHT * 4) {
+                continue;
+            }
+            
+            tile->quad[0].v.tc[0] = ((s16)(tile->tileIndexX * tile->width)) << 5;
+            tile->quad[0].v.tc[1] = ((s16)(tile->tileIndexY * tile->height)) << 5;
+            if (gPrimRed != 0 || gPrimGreen != 0 || gPrimBlue != 0 || gPrimAlpha != 0) {
+                tile->prim.r = gPrimRed;
+                tile->prim.g = gPrimGreen;
+                tile->prim.b = gPrimBlue;
+                tile->prim.a = gPrimAlpha;
+            }
+            D_800FDFC0[gSpriteFrameBuffer]++;
+        }
+    }
+    printReset();
+}
+
+void func_8005C6FC(f32 arg0, f32 arg1, f32 arg2, s32 arg3) {
+    s32 i, j;
+    SpriteListing* tile;
+    
+    for (i = 0; i < gSpriteListings[arg3].tileCountX; i++) {
+        for (j = gSpriteListings[arg3].tileCountY / 2; j < gSpriteListings[arg3].tileCountY; j++) {
+            if (D_800FDFC0[gSpriteFrameBuffer] >= 200) {
+                printReset();
+                return;
+            }
+
+            tile = &D_8019A218[gSpriteFrameBuffer][D_800FDFC0[gSpriteFrameBuffer]];
+            *tile = gSpriteListings[arg3];
+
+            tile->tileIndexX = i;
+            tile->tileIndexY = j;
+
+            tile->quad[0].v.ob[0] = ((s16)arg0 + i * tile->width) * 4;
+            tile->quad[0].v.ob[1] = ((s16)arg1 + j * tile->height) * 4;
+            tile->quad[0].v.ob[2] = (s16)arg2 * 4;
+
+            tile->quad[1].v.ob[0] = ((s16)arg0 + i * tile->width + tile->width) * 4;
+            tile->quad[1].v.ob[1] = ((s16)arg1 + j * tile->height + tile->height) * 4;            
+            tile->quad[1].v.ob[2] = (s16)arg2 * 4;
+
+            if (tile->quad[1].v.ob[0] < 0 || tile->quad[0].v.ob[0] > SCREEN_WIDTH * 4 ||
+                tile->quad[1].v.ob[1] < 0 || tile->quad[0].v.ob[1] > SCREEN_HEIGHT * 4) {
+                continue;
+            }
+            
+            tile->quad[0].v.tc[0] = ((s16)(tile->tileIndexX * tile->width)) << 5;
+            tile->quad[0].v.tc[1] = ((s16)(tile->tileIndexY * tile->height)) << 5;
+            if (gPrimRed != 0 || gPrimGreen != 0 || gPrimBlue != 0 || gPrimAlpha != 0) {
+                tile->prim.r = gPrimRed;
+                tile->prim.g = gPrimGreen;
+                tile->prim.b = gPrimBlue;
+                tile->prim.a = gPrimAlpha;
+            }
+            D_800FDFC0[gSpriteFrameBuffer]++;
+        }
+    }
+    printReset();
+}
 
 void func_8005C9B8(void) {
     s32 i;
@@ -381,7 +603,7 @@ void func_8005CA38(void) {
 
 Gfx* func_8005F408(Gfx* gfxPos) {
     s32 i;
-    SpriteListing* sp;
+    SpriteListing* tile;
     s32 ulx, uly;
 
     func_800610B8();
@@ -391,124 +613,124 @@ Gfx* func_8005F408(Gfx* gfxPos) {
     gDPSetRenderMode(gfxPos++, G_RM_OPA_SURF, G_RM_OPA_SURF2);
     gDPSetCombineLERP(gfxPos++, PRIMITIVE, 0, TEXEL0, 0, PRIMITIVE, 0, TEXEL0, 0, PRIMITIVE, 0, TEXEL0, 0, PRIMITIVE, 0, TEXEL0, 0);
 
-    sp = D_8019A218[gSpriteFrameBuffer];
-    for (i = 0; i < D_800FDFC0[gSpriteFrameBuffer]; sp++, i++) {
-        ulx = ABS2(sp->unk17 * sp->width);
-        uly = ABS2(sp->unk18 * sp->height);
+    tile = D_8019A218[gSpriteFrameBuffer];
+    for (i = 0; i < D_800FDFC0[gSpriteFrameBuffer]; tile++, i++) {
+        ulx = ABS2(tile->tileIndexX * tile->width);
+        uly = ABS2(tile->tileIndexY * tile->height);
 
-        switch (sp->type) {
+        switch (tile->type) {
             case COLORMODE_BLANK:
                 gDPSetCombineMode(gfxPos++, G_CC_PRIMITIVE, G_CC_PRIMITIVE);
                 break;
             case COLORMODE_BW:
             case COLORMODE_IA4:
-                gDPLoadTextureTile_4b(gfxPos++, sp->bitmapP, G_IM_FMT_IA, sp->width * sp->tileCountX, 0,
-                                      ulx, uly, ulx + sp->width - 1, uly + sp->height - 1, 0,
+                gDPLoadTextureTile_4b(gfxPos++, tile->bitmapP, G_IM_FMT_IA, tile->width * tile->tileCountX, 0,
+                                      ulx, uly, ulx + tile->width - 1, uly + tile->height - 1, 0,
                                       G_TX_CLAMP, G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
                 break;
             case COLORMODE_RGBA32:
-                gDPLoadTextureTile(gfxPos++, sp->bitmapP, G_IM_FMT_RGBA, G_IM_SIZ_32b, sp->width * sp->tileCountX, 0,
-                                    ulx, uly, ulx + sp->width - 1, uly + sp->height - 1, 0,
+                gDPLoadTextureTile(gfxPos++, tile->bitmapP, G_IM_FMT_RGBA, G_IM_SIZ_32b, tile->width * tile->tileCountX, 0,
+                                    ulx, uly, ulx + tile->width - 1, uly + tile->height - 1, 0,
                                     G_TX_CLAMP, G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
                 break;
             case COLORMODE_IA8:
-                gDPLoadTextureTile(gfxPos++, sp->bitmapP, G_IM_FMT_IA, G_IM_SIZ_8b, sp->width * sp->tileCountX, 0,
-                                    ulx, uly, ulx + sp->width - 1, uly + sp->height - 1, 0,
+                gDPLoadTextureTile(gfxPos++, tile->bitmapP, G_IM_FMT_IA, G_IM_SIZ_8b, tile->width * tile->tileCountX, 0,
+                                    ulx, uly, ulx + tile->width - 1, uly + tile->height - 1, 0,
                                     G_TX_CLAMP, G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
                 break;
             case COLORMODE_IA16:
-                gDPLoadTextureTile(gfxPos++, sp->bitmapP, G_IM_FMT_IA, G_IM_SIZ_16b, sp->width * sp->tileCountX, 0,
-                                    ulx, uly, ulx + sp->width - 1, uly + sp->height - 1, 0,
+                gDPLoadTextureTile(gfxPos++, tile->bitmapP, G_IM_FMT_IA, G_IM_SIZ_16b, tile->width * tile->tileCountX, 0,
+                                    ulx, uly, ulx + tile->width - 1, uly + tile->height - 1, 0,
                                     G_TX_CLAMP, G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
                 break;
             case COLORMODE_RGBA16:
-                gDPLoadTextureTile(gfxPos++, sp->bitmapP, G_IM_FMT_RGBA, G_IM_SIZ_16b, sp->width * sp->tileCountX, 0,
-                                    ulx, uly, ulx + sp->width - 1, uly + sp->height - 1, 0,
+                gDPLoadTextureTile(gfxPos++, tile->bitmapP, G_IM_FMT_RGBA, G_IM_SIZ_16b, tile->width * tile->tileCountX, 0,
+                                    ulx, uly, ulx + tile->width - 1, uly + tile->height - 1, 0,
                                     G_TX_CLAMP, G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
                 break;
             case COLORMODE_CI4:
-                gDPLoadTLUT_pal256(gfxPos++, sp->palletteP);
+                gDPLoadTLUT_pal256(gfxPos++, tile->palletteP);
                 gDPSetTextureLUT(gfxPos++, G_TT_RGBA16);
-                gDPLoadTextureTile_4b(gfxPos++, sp->bitmapP, G_IM_FMT_CI, sp->width * sp->tileCountX, 0,
-                                    ulx, uly, ulx + sp->width - 1, uly + sp->height - 1, 0,
+                gDPLoadTextureTile_4b(gfxPos++, tile->bitmapP, G_IM_FMT_CI, tile->width * tile->tileCountX, 0,
+                                    ulx, uly, ulx + tile->width - 1, uly + tile->height - 1, 0,
                                     G_TX_CLAMP, G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
                 break;
             case COLORMODE_CI8:
-                gDPLoadTLUT_pal256(gfxPos++, sp->palletteP);
+                gDPLoadTLUT_pal256(gfxPos++, tile->palletteP);
                 gDPSetTextureLUT(gfxPos++, G_TT_RGBA16);
-                gDPLoadTextureTile(gfxPos++, sp->bitmapP, G_IM_FMT_CI, G_IM_SIZ_8b, sp->width * sp->tileCountX, 0,
-                                    ulx, uly, ulx + sp->width - 1, uly + sp->height - 1, 0,
+                gDPLoadTextureTile(gfxPos++, tile->bitmapP, G_IM_FMT_CI, G_IM_SIZ_8b, tile->width * tile->tileCountX, 0,
+                                    ulx, uly, ulx + tile->width - 1, uly + tile->height - 1, 0,
                                     G_TX_CLAMP, G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
                 break;
         }
 
-        gDPSetPrimColor(gfxPos++, 0, 0, sp->prim.r, sp->prim.g, sp->prim.b, sp->prim.a);
-        gSPScisTextureRectangle(gfxPos++, sp->quad[0].v.ob[0], sp->quad[0].v.ob[1], sp->quad[1].v.ob[0], sp->quad[1].v.ob[1],
-                                0, sp->quad[0].v.tc[0], sp->quad[0].v.tc[1], 0x400, 0x400);
+        gDPSetPrimColor(gfxPos++, 0, 0, tile->prim.r, tile->prim.g, tile->prim.b, tile->prim.a);
+        gSPScisTextureRectangle(gfxPos++, tile->quad[0].v.ob[0], tile->quad[0].v.ob[1], tile->quad[1].v.ob[0], tile->quad[1].v.ob[1],
+                                0, tile->quad[0].v.tc[0], tile->quad[0].v.tc[1], 0x400, 0x400);
     }
 
     gSPDisplayList(gfxPos++, D_800FE0F0);
 
-    sp = D_801A5D98[gSpriteFrameBuffer];
-    for (i = 0; i < D_800FDFC8[gSpriteFrameBuffer]; sp++, i++) {
-        ulx = ABS2(sp->unk17 * sp->width);
-        uly = ABS2(sp->unk18 * sp->height);
+    tile = D_801A5D98[gSpriteFrameBuffer];
+    for (i = 0; i < D_800FDFC8[gSpriteFrameBuffer]; tile++, i++) {
+        ulx = ABS2(tile->tileIndexX * tile->width);
+        uly = ABS2(tile->tileIndexY * tile->height);
 
-        switch (sp->type) {
+        switch (tile->type) {
             case COLORMODE_BLANK:
                 gSPDisplayList(gfxPos++, D_1001370);
                 break;
             case COLORMODE_BW:
             case COLORMODE_IA4:
                 gSPDisplayList(gfxPos++, D_1001300);
-                gDPLoadTextureTile_4b(gfxPos++, sp->bitmapP, G_IM_FMT_IA, sp->width * sp->tileCountX, 0,
-                                      ulx, uly, ulx + sp->width - 1, uly + sp->height - 1, 0,
+                gDPLoadTextureTile_4b(gfxPos++, tile->bitmapP, G_IM_FMT_IA, tile->width * tile->tileCountX, 0,
+                                      ulx, uly, ulx + tile->width - 1, uly + tile->height - 1, 0,
                                       G_TX_CLAMP, G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
                 break;
             case COLORMODE_RGBA32:
                 gSPDisplayList(gfxPos++, D_1001300);
-                gDPLoadTextureTile(gfxPos++, sp->bitmapP, G_IM_FMT_RGBA, G_IM_SIZ_32b, sp->width * sp->tileCountX, 0,
-                                    ulx, uly, ulx + sp->width - 1, uly + sp->height - 1, 0,
+                gDPLoadTextureTile(gfxPos++, tile->bitmapP, G_IM_FMT_RGBA, G_IM_SIZ_32b, tile->width * tile->tileCountX, 0,
+                                    ulx, uly, ulx + tile->width - 1, uly + tile->height - 1, 0,
                                     G_TX_CLAMP, G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
                 break;
             case COLORMODE_IA8:
                 gSPDisplayList(gfxPos++, D_1001300);
-                gDPLoadTextureTile(gfxPos++, sp->bitmapP, G_IM_FMT_IA, G_IM_SIZ_8b, sp->width * sp->tileCountX, 0,
-                                    ulx, uly, ulx + sp->width - 1, uly + sp->height - 1, 0,
+                gDPLoadTextureTile(gfxPos++, tile->bitmapP, G_IM_FMT_IA, G_IM_SIZ_8b, tile->width * tile->tileCountX, 0,
+                                    ulx, uly, ulx + tile->width - 1, uly + tile->height - 1, 0,
                                     G_TX_CLAMP, G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
                 break;
             case COLORMODE_IA16:
                 gSPDisplayList(gfxPos++, D_1001300);
-                gDPLoadTextureTile(gfxPos++, sp->bitmapP, G_IM_FMT_IA, G_IM_SIZ_16b, sp->width * sp->tileCountX, 0,
-                                    ulx, uly, ulx + sp->width - 1, uly + sp->height - 1, 0,
+                gDPLoadTextureTile(gfxPos++, tile->bitmapP, G_IM_FMT_IA, G_IM_SIZ_16b, tile->width * tile->tileCountX, 0,
+                                    ulx, uly, ulx + tile->width - 1, uly + tile->height - 1, 0,
                                     G_TX_CLAMP, G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
                 break;
             case COLORMODE_RGBA16:
                 gSPDisplayList(gfxPos++, D_1001300);
-                gDPLoadTextureTile(gfxPos++, sp->bitmapP, G_IM_FMT_RGBA, G_IM_SIZ_16b, sp->width * sp->tileCountX, 0,
-                                    ulx, uly, ulx + sp->width - 1, uly + sp->height - 1, 0,
+                gDPLoadTextureTile(gfxPos++, tile->bitmapP, G_IM_FMT_RGBA, G_IM_SIZ_16b, tile->width * tile->tileCountX, 0,
+                                    ulx, uly, ulx + tile->width - 1, uly + tile->height - 1, 0,
                                     G_TX_CLAMP, G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
                 break;
             case COLORMODE_CI4:
                 gSPDisplayList(gfxPos++, D_1001300);
-                gDPLoadTLUT_pal256(gfxPos++, sp->palletteP);
+                gDPLoadTLUT_pal256(gfxPos++, tile->palletteP);
                 gDPSetTextureLUT(gfxPos++, G_TT_RGBA16);
-                gDPLoadTextureTile_4b(gfxPos++, sp->bitmapP, G_IM_FMT_CI, sp->width * sp->tileCountX, 0,
-                                    ulx, uly, ulx + sp->width - 1, uly + sp->height - 1, 0,
+                gDPLoadTextureTile_4b(gfxPos++, tile->bitmapP, G_IM_FMT_CI, tile->width * tile->tileCountX, 0,
+                                    ulx, uly, ulx + tile->width - 1, uly + tile->height - 1, 0,
                                     G_TX_CLAMP, G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
                 break;
             case COLORMODE_CI8:
                 gSPDisplayList(gfxPos++, D_1001300);
-                gDPLoadTLUT_pal256(gfxPos++, sp->palletteP);
+                gDPLoadTLUT_pal256(gfxPos++, tile->palletteP);
                 gDPSetTextureLUT(gfxPos++, G_TT_RGBA16);
-                gDPLoadTextureTile(gfxPos++, sp->bitmapP, G_IM_FMT_CI, G_IM_SIZ_8b, sp->width * sp->tileCountX, 0,
-                                    ulx, uly, ulx + sp->width - 1, uly + sp->height - 1, 0,
+                gDPLoadTextureTile(gfxPos++, tile->bitmapP, G_IM_FMT_CI, G_IM_SIZ_8b, tile->width * tile->tileCountX, 0,
+                                    ulx, uly, ulx + tile->width - 1, uly + tile->height - 1, 0,
                                     G_TX_CLAMP, G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
                 break;
         }
 
-        gDPSetPrimColor(gfxPos++, 0, 0, sp->prim.r, sp->prim.g, sp->prim.b, sp->prim.a);
-        gSPVertex(gfxPos++, sp->quad, 4, 0);
+        gDPSetPrimColor(gfxPos++, 0, 0, tile->prim.r, tile->prim.g, tile->prim.b, tile->prim.a);
+        gSPVertex(gfxPos++, tile->quad, 4, 0);
         gSP1Triangle(gfxPos++, 0, 1, 2, 0);
         gSP1Triangle(gfxPos++, 3, 2, 1, 0);
     }

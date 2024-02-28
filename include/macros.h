@@ -37,4 +37,7 @@
 #define PLAYSFXAT(id,pos,arg4,flag) playSoundEffect(id,&pos.x,&pos.y,&pos.z,arg4,flag)
 #define flabs(A) (((A) < 0.0f) ? (-A) : (A))
 
+#define SCREEN_WIDTH  320
+#define SCREEN_HEIGHT 240
+
 #endif

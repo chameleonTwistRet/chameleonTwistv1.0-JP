@@ -9,12 +9,12 @@ typedef struct SpriteListing {
     /* 0x04 */ void* bitmapP; // "malloc'd" after size calc.
     /* 0x08 */ void* palletteP; //palette? both this and above start with devAddr+0XD73D960
     /* 0x0C */ s32 type; // use "COLORMODE_*" enum
-    /* 0x10 */ void* unk10;
+    /* 0x10 */ u8* unk10;
     /* 0x14 */ u8 unk14;
     /* 0x15 */ u8 tileCountX;
     /* 0x16 */ u8 tileCountY;
-    /* 0x17 */ u8 unk17;
-    /* 0x18 */ u8 unk18;
+    /* 0x17 */ u8 tileIndexX;
+    /* 0x18 */ u8 tileIndexY;
     /* 0x19 */ char unk19;
     /* 0x1A */ u16 width; // width of each tile
     /* 0x1C */ u16 height; // height of each tile
@@ -79,6 +79,8 @@ extern Gfx D_800FE080[];
 extern SpriteListing D_8019A218[2][200];
 extern SpriteListing D_801A5D98[2][200];
 extern Gfx D_800FE0F0[];
+extern f32 D_800FDF9C;
+extern s32 D_800FDF98;
 
 /* functions */
 void func_8006623C(void);
