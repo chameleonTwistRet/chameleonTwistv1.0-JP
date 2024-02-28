@@ -430,7 +430,98 @@ void func_80059F28(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f
     printReset();
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8005A7CC.s")
+void func_8005A7CC(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, s32 arg7) {
+    f32 sp6C;
+    f32 sp68;
+    f32 x1, y1;
+    f32 sp5C;
+    s32 sp58;
+    s32 sp54;
+    SpriteListing* tile;
+    s32 i, j;
+
+    arg0 += D_800FDFF4;
+    arg1 += D_800FDFF8;
+    
+    for (i = 0; i < gSpriteListings[arg7].tileCountX; i++) {
+        for (j = 0; j < gSpriteListings[arg7].tileCountY; j++) {
+            if (D_800FDFC8[gSpriteFrameBuffer] >= 200) {
+                printReset();
+                return;
+            }
+
+            tile = &D_801A5D98[gSpriteFrameBuffer][D_800FDFC8[gSpriteFrameBuffer]];
+            *tile = gSpriteListings[arg7];
+            D_800FDFC8[gSpriteFrameBuffer]++;
+
+            tile->tileIndexX = i;
+            tile->tileIndexY = j;
+
+            sp58 = ABS2(tile->tileIndexX * tile->width + D_800FDFE0 * tile->width);
+            sp54 = ABS2(tile->tileIndexY * tile->height + D_800FDFE4 * tile->height);
+
+            if (arg5 == 0.0f && arg6 == 0.0f) {
+                sp6C = tile->width * D_800FDFF0 / 2;
+                sp68 = tile->height * D_800FDFF0 / 2;
+            } else {
+                sp6C = arg5 * arg4 / 2;
+                sp68 = arg6 * arg4 / 2;
+            }
+
+            x1 = -160.0f + arg0 + i * tile->width + sp6C;
+            y1 = 120.0f - arg1 - j * tile->height - sp68;
+            sp5C = -D_800FDF9C - arg2;
+
+            tile->quad[0].v.ob[0] = cosf(arg3) * -sp6C + sinf(arg3) * sp68 + x1;
+            tile->quad[0].v.ob[1] = cosf(arg3) * sp68 + sinf(arg3) * -sp6C + y1;
+            tile->quad[0].v.ob[2] = sp5C + D_800FE004;
+            tile->quad[0].v.tc[0] = (s16)(sp58) << (D_800FDF98 + 6);
+            tile->quad[0].v.tc[1] = (s16)(sp54) << (D_800FDF98 + 6);
+            tile->quad[0].v.cn[0] = gTextGradient[0];
+            tile->quad[0].v.cn[1] = gTextGradient[1];
+            tile->quad[0].v.cn[2] = gTextGradient[2];
+            tile->quad[0].v.cn[3] = gTextGradient[3];
+
+            tile->quad[1].v.ob[0] = cosf(arg3) * -sp6C + sinf(arg3) * (-sp68 * 1) + x1;
+            tile->quad[1].v.ob[1] = cosf(arg3) * (-sp68 * 1) + sinf(arg3) * -sp6C + y1;
+            tile->quad[1].v.ob[2] = sp5C + D_800FE008;
+            tile->quad[1].v.tc[0] = (s16)(sp58) << (D_800FDF98 + 6);
+            tile->quad[1].v.tc[1] = (s16)(sp54 + tile->height - 1) << (D_800FDF98 + 6);
+            tile->quad[1].v.cn[0] = gTextGradient[4];
+            tile->quad[1].v.cn[1] = gTextGradient[5];
+            tile->quad[1].v.cn[2] = gTextGradient[6];
+            tile->quad[1].v.cn[3] = gTextGradient[7];
+
+            tile->quad[2].v.ob[0] = cosf(arg3) * (sp6C * 1) + sinf(arg3) * sp68 + x1;
+            tile->quad[2].v.ob[1] = cosf(arg3) * sp68 + sinf(arg3) * (sp6C * 1) + y1;
+            tile->quad[2].v.ob[2] = sp5C + D_800FE00C;
+            tile->quad[2].v.tc[0] = (s16)(sp58 + tile->width - 1) << (D_800FDF98 + 6);
+            tile->quad[2].v.tc[1] = (s16)(sp54) << (D_800FDF98 + 6);
+            tile->quad[2].v.cn[0] = gTextGradient[8];
+            tile->quad[2].v.cn[1] = gTextGradient[9];
+            tile->quad[2].v.cn[2] = gTextGradient[10];
+            tile->quad[2].v.cn[3] = gTextGradient[11];
+
+            tile->quad[3].v.ob[0] = cosf(arg3) * sp6C + sinf(arg3) * -sp68 + x1;
+            tile->quad[3].v.ob[1] = cosf(arg3) * -sp68 + sinf(arg3) * sp6C + y1;
+            tile->quad[3].v.ob[2] = sp5C + D_800FE010;
+            tile->quad[3].v.tc[0] = (s16)(sp58 + tile->width - 1) << (D_800FDF98 + 6);
+            tile->quad[3].v.tc[1] = (s16)(sp54 + tile->height - 1) << (D_800FDF98 + 6);
+            tile->quad[3].v.cn[0] = gTextGradient[12];
+            tile->quad[3].v.cn[1] = gTextGradient[13];
+            tile->quad[3].v.cn[2] = gTextGradient[14];
+            tile->quad[3].v.cn[3] = gTextGradient[15];
+
+            if (gPrimRed != 0 || gPrimGreen != 0 || gPrimBlue != 0 || gPrimAlpha != 0) {
+                tile->prim.r = gPrimRed;
+                tile->prim.g = gPrimGreen;
+                tile->prim.b = gPrimBlue;
+                tile->prim.a = gPrimAlpha;
+            }
+        }
+    }
+    printReset();
+}
 
 void func_8005AFA4(f32 arg0, f32 arg1, f32 arg2, f32 arg3) {
     printReset();
