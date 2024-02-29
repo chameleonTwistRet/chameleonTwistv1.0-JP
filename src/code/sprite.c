@@ -323,19 +323,519 @@ void printReset(void) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8005747C.s")
+void func_8005747C(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, s32 arg6) {
+    f32 sp6C, sp68;
+    f32 sp54, sp50, sp4C;
+    s32 sp48, sp44;    
+    SpriteListing* tile;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80057A68.s")
+    if (D_800FDFA8[gSpriteFrameBuffer] >= 200) {
+        printReset();
+        return;
+    }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80058044.s")
+    tile = &D_80176F98[gSpriteFrameBuffer][D_800FDFA8[gSpriteFrameBuffer]];
+    *tile = gSpriteListings[arg6];
+    D_800FDFA8[gSpriteFrameBuffer]++;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80058748.s")
+    guMtxXFML(&D_80176860, arg0 - D_801768A0.f4.x, arg1 - D_801768A0.f4.y, arg2 - D_801768A0.f4.z, &sp54, &sp50, &sp4C);
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80058BE4.s")
+    if (arg5 >= 1.0 || arg5 == 0.0f) {
+        tile->tileIndexX = arg5;
+    } else {
+        tile->tileIndexX = tile->unk10[(s32)(tile->unk14 * arg5)] % tile->tileCountX;
+    }
+    tile->tileIndexY = tile->unk10[(s32)(tile->unk14 * arg5)] / tile->tileCountX + D_800FDFE8;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80059254.s")
+    sp48 = ABS2(tile->tileIndexX * tile->width + D_800FDFE0 * tile->width);
+    sp44 = ABS2(tile->tileIndexY * tile->height + D_800FDFE4 * tile->height);
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_800598C4.s")
+    if (arg3 == 0.0f && arg4 == 0.0f) {
+        sp6C = tile->width * D_800FDFF0 / 2;
+        sp68 = tile->height * D_800FDFF0 / 2;
+    } else {
+        sp6C = arg3 / 2;
+        sp68 = arg4 / 2;
+    }
+
+    tile->quad[0].v.ob[0] = -sp6C + sp54;
+    tile->quad[0].v.ob[1] = sp68 + sp50;
+    tile->quad[0].v.ob[2] = sp4C;
+    tile->quad[0].v.tc[0] = (s16)(sp48) << 6;
+    tile->quad[0].v.tc[1] = (s16)(sp44) << 6;
+
+    tile->quad[1].v.ob[0] = -sp6C + sp54;
+    tile->quad[1].v.ob[1] = -sp68 * 1 + sp50;
+    tile->quad[1].v.ob[2] = sp4C;
+    tile->quad[1].v.tc[0] = (s16)(sp48) << 6;
+    tile->quad[1].v.tc[1] = (s16)(sp44 + tile->height - 1) << 6;
+
+    tile->quad[2].v.ob[0] = sp6C * 1 + sp54;
+    tile->quad[2].v.ob[1] = sp68 + sp50;
+    tile->quad[2].v.ob[2] = sp4C;
+    tile->quad[2].v.tc[0] = (s16)(sp48 + tile->width - 1) << 6;
+    tile->quad[2].v.tc[1] = (s16)(sp44) << 6;
+
+    tile->quad[3].v.ob[0] = sp6C + sp54;
+    tile->quad[3].v.ob[1] = -sp68 + sp50;
+    tile->quad[3].v.ob[2] = sp4C;
+    tile->quad[3].v.tc[0] = (s16)(sp48 + tile->width - 1) << 6;
+    tile->quad[3].v.tc[1] = (s16)(sp44 + tile->height - 1) << 6;
+
+    if (gPrimRed != 0 || gPrimGreen != 0 || gPrimBlue != 0 || gPrimAlpha != 0) {
+        tile->prim.r = gPrimRed;
+        tile->prim.g = gPrimGreen;
+        tile->prim.b = gPrimBlue;
+        tile->prim.a = gPrimAlpha;
+    }
+    printReset();
+}
+
+void func_80057A68(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, s32 arg6) {
+    f32 sp6C, sp68;
+    f32 sp54, sp50, sp4C;
+    s32 sp48, sp44;    
+    SpriteListing* tile;
+
+    if (D_800FDFA8[gSpriteFrameBuffer] >= 200) {
+        printReset();
+        return;
+    }
+
+    tile = &D_80176F98[gSpriteFrameBuffer][D_800FDFA8[gSpriteFrameBuffer]];
+    *tile = gSpriteListings[arg6];
+    D_800FDFA8[gSpriteFrameBuffer]++;
+
+    guMtxXFML(&D_80176860, arg0 - D_801768A0.f4.x, arg1 - D_801768A0.f4.y, arg2 - D_801768A0.f4.z, &sp54, &sp50, &sp4C);
+
+    if (arg5 >= 1.0 || arg5 == 0.0f) {
+        tile->tileIndexX = arg5;
+    } else {
+        tile->tileIndexX = tile->unk10[(s32)(tile->unk14 * arg5)] % tile->tileCountX;
+    }
+    tile->tileIndexY = tile->unk10[(s32)(tile->unk14 * arg5)] / tile->tileCountX + D_800FDFE8;
+
+    sp48 = ABS2(tile->tileIndexX * tile->width + D_800FDFE0 * tile->width);
+    sp44 = ABS2(tile->tileIndexY * tile->height + D_800FDFE4 * tile->height);
+
+    if (arg3 == 0.0f && arg4 == 0.0f) {
+        sp6C = tile->width * D_800FDFF0 / 2;
+        sp68 = tile->height * D_800FDFF0 / 2;
+    } else {
+        sp6C = arg3 / 2;
+        sp68 = arg4 / 2;
+    }
+
+    tile->quad[0].v.ob[0] = -sp6C + sp54;
+    tile->quad[0].v.ob[1] = sp68 * 2 + sp50;
+    tile->quad[0].v.ob[2] = sp4C;
+    tile->quad[0].v.tc[0] = (s16)(sp48) << 6;
+    tile->quad[0].v.tc[1] = (s16)(sp44) << 6;
+
+    tile->quad[1].v.ob[0] = -sp6C + sp54;
+    tile->quad[1].v.ob[1] = sp50;
+    tile->quad[1].v.ob[2] = sp4C;
+    tile->quad[1].v.tc[0] = (s16)(sp48) << 6;
+    tile->quad[1].v.tc[1] = (s16)(sp44 + tile->height - 1) << 6;
+
+    tile->quad[2].v.ob[0] = sp6C * 1 + sp54;
+    tile->quad[2].v.ob[1] = sp68 * 2 + sp50;
+    tile->quad[2].v.ob[2] = sp4C;
+    tile->quad[2].v.tc[0] = (s16)(sp48 + tile->width - 1) << 6;
+    tile->quad[2].v.tc[1] = (s16)(sp44) << 6;
+
+    tile->quad[3].v.ob[0] = sp6C + sp54;
+    tile->quad[3].v.ob[1] = sp50;
+    tile->quad[3].v.ob[2] = sp4C;
+    tile->quad[3].v.tc[0] = (s16)(sp48 + tile->width - 1) << 6;
+    tile->quad[3].v.tc[1] = (s16)(sp44 + tile->height - 1) << 6;
+
+    if (gPrimRed != 0 || gPrimGreen != 0 || gPrimBlue != 0 || gPrimAlpha != 0) {
+        tile->prim.r = gPrimRed;
+        tile->prim.g = gPrimGreen;
+        tile->prim.b = gPrimBlue;
+        tile->prim.a = gPrimAlpha;
+    }
+    printReset();
+}
+
+void func_80058044(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, s32 arg7) {
+    f32 sp6C, sp68;
+    f32 sp54, sp50, sp4C;
+    f32 angle;
+    s32 sp48, sp44;
+    SpriteListing* tile;    
+
+    if (D_800FDFA8[gSpriteFrameBuffer] >= 200) {
+        printReset();
+        return;
+    }
+
+    tile = &D_80176F98[gSpriteFrameBuffer][D_800FDFA8[gSpriteFrameBuffer]];
+    *tile = gSpriteListings[arg7];
+    D_800FDFA8[gSpriteFrameBuffer]++;
+
+    sp54 = arg0 - D_80176B78->f4.x;
+    sp50 = arg1 - D_80176B78->f4.y;
+    sp4C = arg2 - D_80176B78->f4.z;
+
+    angle = func_80056104(sp54, sp4C);
+
+    if (arg6 >= 1.0 || arg6 == 0.0f) {
+        tile->tileIndexX = arg6;
+    } else {
+        tile->tileIndexX = tile->unk10[(s32)(tile->unk14 * arg6)];
+    }
+    tile->tileIndexY = WrapAngleRecursive(angle + 180.0f + arg5 + tile->tileCountY / 360.0f) * tile->tileCountY * 2.0f / 360.0f;
+
+    if (tile->tileIndexY >= tile->tileCountY) {
+        tile->tileIndexY -= tile->tileCountY;
+        tile->tileIndexX += tile->tileCountX / 2;
+    }
+
+    if (tile->tileIndexX >= tile->tileCountX) {
+        tile->tileIndexX = tile->tileCountX - 1;
+    }
+
+    sp48 = ABS2(tile->tileIndexX * tile->width + D_800FDFE0 * tile->width);
+    sp44 = ABS2(tile->tileIndexY * tile->height + D_800FDFE4 * tile->height);
+
+    if (arg3 == 0.0f && arg4 == 0.0f) {
+        sp6C = tile->width * D_800FDFF0 / 2;
+        sp68 = tile->height * D_800FDFF0 / 2;
+    } else {
+        sp6C = arg3 / 2;
+        sp68 = arg4 / 2;
+    }
+
+    guMtxXFML(&D_80176860, arg0 - D_801768A0.f4.x, arg1 - D_801768A0.f4.y, arg2 - D_801768A0.f4.z, &sp54, &sp50, &sp4C);
+
+    tile->quad[0].v.ob[0] = -sp6C + sp54;
+    tile->quad[0].v.ob[1] = sp68 + sp50;
+    tile->quad[0].v.ob[2] = sp4C;
+    tile->quad[0].v.tc[0] = (s16)(sp48) << 6;
+    tile->quad[0].v.tc[1] = (s16)(sp44) << 6;
+
+    tile->quad[1].v.ob[0] = -sp6C + sp54;
+    tile->quad[1].v.ob[1] = -sp68 * 1 + sp50;
+    tile->quad[1].v.ob[2] = sp4C;
+    tile->quad[1].v.tc[0] = (s16)(sp48) << 6;
+    tile->quad[1].v.tc[1] = (s16)(sp44 + tile->height - 1) << 6;
+
+    tile->quad[2].v.ob[0] = sp6C * 1 + sp54;
+    tile->quad[2].v.ob[1] = sp68 + sp50;
+    tile->quad[2].v.ob[2] = sp4C;
+    tile->quad[2].v.tc[0] = (s16)(sp48 + tile->width - 1) << 6;
+    tile->quad[2].v.tc[1] = (s16)(sp44) << 6;
+
+    tile->quad[3].v.ob[0] = sp6C + sp54;
+    tile->quad[3].v.ob[1] = -sp68 + sp50;
+    tile->quad[3].v.ob[2] = sp4C;
+    tile->quad[3].v.tc[0] = (s16)(sp48 + tile->width - 1) << 6;
+    tile->quad[3].v.tc[1] = (s16)(sp44 + tile->height - 1) << 6;
+
+    if (gPrimRed != 0 || gPrimGreen != 0 || gPrimBlue != 0 || gPrimAlpha != 0) {
+        tile->prim.r = gPrimRed;
+        tile->prim.g = gPrimGreen;
+        tile->prim.b = gPrimBlue;
+        tile->prim.a = gPrimAlpha;
+    }
+    printReset();
+}
+
+void func_80058748(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7, f32 arg8, f32 arg9, f32 argA, f32 argB, f32 argC, f32 argD, f32 argE, s32 argF) {
+    f32 sp3C, sp38;
+    f32 sp54, sp50, sp4C;
+    s32 sp48;
+    s32 sp44;
+    SpriteListing* tile;    
+
+    if (D_800FDFB0[gSpriteFrameBuffer] >= 200) {
+        printReset();
+        return;
+    }
+
+    tile = &D_80182B18[gSpriteFrameBuffer][D_800FDFB0[gSpriteFrameBuffer]];
+    *tile = gSpriteListings[argF];
+    D_800FDFB0[gSpriteFrameBuffer]++;
+
+    if (argE >= 1.0 || argE == 0.0f) {
+        tile->tileIndexX = argE;
+    } else {
+        tile->tileIndexX = tile->unk10[(s32)(tile->unk14 * argE)] % tile->tileCountX;
+    }
+    tile->tileIndexY = tile->unk10[(s32)(tile->unk14 * argE)] / tile->tileCountX + D_800FDFE8;
+
+    sp48 = ABS2(tile->tileIndexX * tile->width + D_800FDFE0 * tile->width);
+    sp44 = ABS2(tile->tileIndexY * tile->height + D_800FDFE4 * tile->height);
+
+    if (gPrimRed != 0 || gPrimGreen != 0 || gPrimBlue != 0 || gPrimAlpha != 0) {
+        tile->prim.r = gPrimRed;
+        tile->prim.g = gPrimGreen;
+        tile->prim.b = gPrimBlue;
+        tile->prim.a = gPrimAlpha;
+    }
+    tile->quad[0].v.ob[0] = arg0;
+    tile->quad[0].v.ob[1] = arg1;
+    tile->quad[0].v.ob[2] = arg2;
+    tile->quad[1].v.ob[0] = arg3;
+    tile->quad[1].v.ob[1] = arg4;
+    tile->quad[1].v.ob[2] = arg5;
+    tile->quad[2].v.ob[0] = arg6;
+    tile->quad[2].v.ob[1] = arg7;
+    tile->quad[2].v.ob[2] = arg8;
+    tile->quad[3].v.ob[0] = arg9;
+    tile->quad[3].v.ob[1] = argA;
+    tile->quad[3].v.ob[2] = argB;
+
+    tile->quad[0].v.tc[0] = (s16)(sp48) << 6;
+    tile->quad[0].v.tc[1] = (s16)(sp44) << 6;
+    tile->quad[1].v.tc[0] = (s16)(sp48) << 6;
+    tile->quad[1].v.tc[1] = (s16)(sp44 + tile->height - 1) << 6;
+    tile->quad[2].v.tc[0] = (s16)(sp48 + tile->width - 1) << 6;
+    tile->quad[2].v.tc[1] = (s16)(sp44) << 6;
+    tile->quad[3].v.tc[0] = (s16)(sp48 + tile->width - 1) << 6;
+    tile->quad[3].v.tc[1] = (s16)(sp44 + tile->height - 1) << 6;
+
+    printReset();
+}
+
+void func_80058BE4(Mtx* arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, s32 arg7) {
+    f32 sp3C, sp38;
+    f32 sp54, sp50, sp4C;
+    s32 sp48;
+    s32 sp44;
+    SpriteListing* tile;    
+
+    if (D_800FDFB0[gSpriteFrameBuffer] >= 200) {
+        printReset();
+        return;
+    }
+
+    tile = &D_80182B18[gSpriteFrameBuffer][D_800FDFB0[gSpriteFrameBuffer]];
+    *tile = gSpriteListings[arg7];
+    D_800FDFB0[gSpriteFrameBuffer]++;
+
+    if (arg6 >= 1.0 || arg6 == 0.0f) {
+        tile->tileIndexX = arg6;
+    } else {
+        tile->tileIndexX = tile->unk10[(s32)(tile->unk14 * arg6)] % tile->tileCountX;
+    }
+    tile->tileIndexY = tile->unk10[(s32)(tile->unk14 * arg6)] / tile->tileCountX + D_800FDFE8;
+
+    sp48 = ABS2(tile->tileIndexX * tile->width + D_800FDFE0 * tile->width);
+    sp44 = ABS2(tile->tileIndexY * tile->height + D_800FDFE4 * tile->height);
+
+    if (gPrimRed != 0 || gPrimGreen != 0 || gPrimBlue != 0 || gPrimAlpha != 0) {
+        tile->prim.r = gPrimRed;
+        tile->prim.g = gPrimGreen;
+        tile->prim.b = gPrimBlue;
+        tile->prim.a = gPrimAlpha;
+    }
+    sp3C = arg4 / 2;
+    sp38 = arg5 / 2;
+
+    sp54 = -sp3C;
+    sp50 = 0.0f;
+    sp4C = sp38;    
+    guMtxXFML(arg0, sp54, sp50, sp4C, &sp54, &sp50, &sp4C);
+    tile->quad[0].v.ob[0] = sp54 + arg1;
+    tile->quad[0].v.ob[1] = sp50 + arg2;
+    tile->quad[0].v.ob[2] = sp4C + arg3;
+
+    sp54 = -sp3C;
+    sp50 = 0.0f;
+    sp4C = -sp38 * 1;    
+    guMtxXFML(arg0, sp54, sp50, sp4C, &sp54, &sp50, &sp4C);
+    tile->quad[1].v.ob[0] = sp54 + arg1;
+    tile->quad[1].v.ob[1] = sp50 + arg2;
+    tile->quad[1].v.ob[2] = sp4C + arg3;
+
+    sp54 = sp3C * 1;
+    sp50 = 0.0f;
+    sp4C = sp38;
+    guMtxXFML(arg0, sp54, sp50, sp4C, &sp54, &sp50, &sp4C);
+    tile->quad[2].v.ob[0] = sp54 + arg1;
+    tile->quad[2].v.ob[1] = sp50 + arg2;
+    tile->quad[2].v.ob[2] = sp4C + arg3;
+
+    sp54 = sp3C;
+    sp50 = 0.0f;
+    sp4C = -sp38;
+    guMtxXFML(arg0, sp54, sp50, sp4C, &sp54, &sp50, &sp4C);
+    tile->quad[3].v.ob[0] = sp54 + arg1;
+    tile->quad[3].v.ob[1] = sp50 + arg2;
+    tile->quad[3].v.ob[2] = sp4C + arg3;
+
+    tile->quad[0].v.tc[0] = (s16)(sp48) << 6;
+    tile->quad[0].v.tc[1] = (s16)(sp44) << 6;
+    tile->quad[1].v.tc[0] = (s16)(sp48) << 6;
+    tile->quad[1].v.tc[1] = (s16)(sp44 + tile->height - 1) << 6;
+    tile->quad[2].v.tc[0] = (s16)(sp48 + tile->width - 1) << 6;
+    tile->quad[2].v.tc[1] = (s16)(sp44) << 6;
+    tile->quad[3].v.tc[0] = (s16)(sp48 + tile->width - 1) << 6;
+    tile->quad[3].v.tc[1] = (s16)(sp44 + tile->height - 1) << 6;
+
+    printReset();
+}
+
+void func_80059254(Mtx* arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, s32 arg7) {
+    f32 sp3C, sp38;
+    f32 sp54, sp50, sp4C;
+    s32 sp48;
+    s32 sp44;
+    SpriteListing* tile;    
+
+    if (D_800FDFB0[gSpriteFrameBuffer] >= 200) {
+        printReset();
+        return;
+    }
+
+    tile = &D_80182B18[gSpriteFrameBuffer][D_800FDFB0[gSpriteFrameBuffer]];
+    *tile = gSpriteListings[arg7];
+    D_800FDFB0[gSpriteFrameBuffer]++;
+
+    if (arg6 >= 1.0 || arg6 == 0.0f) {
+        tile->tileIndexX = arg6;
+    } else {
+        tile->tileIndexX = tile->unk10[(s32)(tile->unk14 * arg6)] % tile->tileCountX;
+    }
+    tile->tileIndexY = tile->unk10[(s32)(tile->unk14 * arg6)] / tile->tileCountX + D_800FDFE8;
+
+    sp48 = ABS2(tile->tileIndexX * tile->width + D_800FDFE0 * tile->width);
+    sp44 = ABS2(tile->tileIndexY * tile->height + D_800FDFE4 * tile->height);
+
+    if (gPrimRed != 0 || gPrimGreen != 0 || gPrimBlue != 0 || gPrimAlpha != 0) {
+        tile->prim.r = gPrimRed;
+        tile->prim.g = gPrimGreen;
+        tile->prim.b = gPrimBlue;
+        tile->prim.a = gPrimAlpha;
+    }
+    sp3C = arg4 / 2;
+    sp38 = arg5 / 2;
+
+    sp54 = -sp3C;
+    sp50 = sp38;
+    sp4C = 0.0f;
+    guMtxXFML(arg0, sp54, sp50, sp4C, &sp54, &sp50, &sp4C);
+    tile->quad[0].v.ob[0] = sp54 + arg1;
+    tile->quad[0].v.ob[1] = sp50 + arg2;
+    tile->quad[0].v.ob[2] = sp4C + arg3;
+
+    sp54 = -sp3C;
+    sp50 = -sp38 * 1;
+    sp4C = 0.0f;
+    guMtxXFML(arg0, sp54, sp50, sp4C, &sp54, &sp50, &sp4C);
+    tile->quad[1].v.ob[0] = sp54 + arg1;
+    tile->quad[1].v.ob[1] = sp50 + arg2;
+    tile->quad[1].v.ob[2] = sp4C + arg3;
+
+    sp54 = sp3C * 1;
+    sp50 = sp38;
+    sp4C = 0.0f;
+    guMtxXFML(arg0, sp54, sp50, sp4C, &sp54, &sp50, &sp4C);
+    tile->quad[2].v.ob[0] = sp54 + arg1;
+    tile->quad[2].v.ob[1] = sp50 + arg2;
+    tile->quad[2].v.ob[2] = sp4C + arg3;
+
+    sp54 = sp3C;
+    sp50 = -sp38;
+    sp4C = 0.0f;
+    guMtxXFML(arg0, sp54, sp50, sp4C, &sp54, &sp50, &sp4C);
+    tile->quad[3].v.ob[0] = sp54 + arg1;
+    tile->quad[3].v.ob[1] = sp50 + arg2;
+    tile->quad[3].v.ob[2] = sp4C + arg3;
+
+    tile->quad[0].v.tc[0] = (s16)(sp48) << 6;
+    tile->quad[0].v.tc[1] = (s16)(sp44) << 6;
+    tile->quad[1].v.tc[0] = (s16)(sp48) << 6;
+    tile->quad[1].v.tc[1] = (s16)(sp44 + tile->height - 1) << 6;
+    tile->quad[2].v.tc[0] = (s16)(sp48 + tile->width - 1) << 6;
+    tile->quad[2].v.tc[1] = (s16)(sp44) << 6;
+    tile->quad[3].v.tc[0] = (s16)(sp48 + tile->width - 1) << 6;
+    tile->quad[3].v.tc[1] = (s16)(sp44 + tile->height - 1) << 6;
+
+    printReset();
+}
+
+void func_800598C4(Mtx* arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, s32 arg7) {
+    f32 sp3C, sp38;
+    f32 sp54, sp50, sp4C;
+    s32 sp48;
+    s32 sp44;
+    SpriteListing* tile;    
+
+    if (D_800FDFB0[gSpriteFrameBuffer] >= 200) {
+        printReset();
+        return;
+    }
+
+    tile = &D_80182B18[gSpriteFrameBuffer][D_800FDFB0[gSpriteFrameBuffer]];
+    *tile = gSpriteListings[arg7];
+    D_800FDFB0[gSpriteFrameBuffer]++;
+
+    if (arg6 >= 1.0 || arg6 == 0.0f) {
+        tile->tileIndexX = arg6;
+    } else {
+        tile->tileIndexX = tile->unk10[(s32)(tile->unk14 * arg6)] % tile->tileCountX;
+    }
+    tile->tileIndexY = tile->unk10[(s32)(tile->unk14 * arg6)] / tile->tileCountX + D_800FDFE8;
+
+    sp48 = ABS2(tile->tileIndexX * tile->width + D_800FDFE0 * tile->width);
+    sp44 = ABS2(tile->tileIndexY * tile->height + D_800FDFE4 * tile->height);
+
+    if (gPrimRed != 0 || gPrimGreen != 0 || gPrimBlue != 0 || gPrimAlpha != 0) {
+        tile->prim.r = gPrimRed;
+        tile->prim.g = gPrimGreen;
+        tile->prim.b = gPrimBlue;
+        tile->prim.a = gPrimAlpha;
+    }
+    sp3C = arg4 / 2;
+    sp38 = arg5 / 2;
+
+    sp54 = sp3C;
+    sp50 = sp38;
+    sp4C = 0.0f;
+    guMtxXFML(arg0, sp54, sp50, sp4C, &sp54, &sp50, &sp4C);
+    tile->quad[0].v.ob[0] = sp54 + arg1;
+    tile->quad[0].v.ob[1] = sp50 + arg2;
+    tile->quad[0].v.ob[2] = sp4C + arg3;
+
+    sp54 = sp3C;
+    sp50 = -sp38 * 1;
+    sp4C = 0.0f;
+    guMtxXFML(arg0, sp54, sp50, sp4C, &sp54, &sp50, &sp4C);
+    tile->quad[1].v.ob[0] = sp54 + arg1;
+    tile->quad[1].v.ob[1] = sp50 + arg2;
+    tile->quad[1].v.ob[2] = sp4C + arg3;
+
+    sp54 = -sp3C * 1;
+    sp50 = sp38;
+    sp4C = 0.0f;
+    guMtxXFML(arg0, sp54, sp50, sp4C, &sp54, &sp50, &sp4C);
+    tile->quad[2].v.ob[0] = sp54 + arg1;
+    tile->quad[2].v.ob[1] = sp50 + arg2;
+    tile->quad[2].v.ob[2] = sp4C + arg3;
+
+    sp54 = -sp3C;
+    sp50 = -sp38;
+    sp4C = 0.0f;
+    guMtxXFML(arg0, sp54, sp50, sp4C, &sp54, &sp50, &sp4C);
+    tile->quad[3].v.ob[0] = sp54 + arg1;
+    tile->quad[3].v.ob[1] = sp50 + arg2;
+    tile->quad[3].v.ob[2] = sp4C + arg3;
+
+    tile->quad[0].v.tc[0] = (s16)(sp48) << 6;
+    tile->quad[0].v.tc[1] = (s16)(sp44) << 6;
+    tile->quad[1].v.tc[0] = (s16)(sp48) << 6;
+    tile->quad[1].v.tc[1] = (s16)(sp44 + tile->height - 1) << 6;
+    tile->quad[2].v.tc[0] = (s16)(sp48 + tile->width - 1) << 6;
+    tile->quad[2].v.tc[1] = (s16)(sp44) << 6;
+    tile->quad[3].v.tc[0] = (s16)(sp48 + tile->width - 1) << 6;
+    tile->quad[3].v.tc[1] = (s16)(sp44 + tile->height - 1) << 6;
+
+    printReset();
+}
 
 void func_80059F28(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7, s32 arg8) {
     f32 sp6C;
@@ -526,9 +1026,190 @@ void func_8005AFA4(f32 arg0, f32 arg1, f32 arg2, f32 arg3) {
     printReset();
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/printUISprite.s")
+void printUISprite(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7, s32 arg8) {
+    f32 sp6C;
+    f32 sp68;
+    f32 x1, y1;
+    f32 sp5C;
+    s32 sp58;
+    s32 sp54;
+    SpriteListing* tile;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8005B874.s")
+    if (D_800FDFB8[gSpriteFrameBuffer] >= 200) {
+        printReset();
+        return;
+    }
+
+    tile = &D_8018E698[gSpriteFrameBuffer][D_800FDFB8[gSpriteFrameBuffer]];
+    *tile = gSpriteListings[arg8];
+    D_800FDFB8[gSpriteFrameBuffer]++;
+
+    arg0 += D_800FDFF4;
+    arg1 += D_800FDFF8;
+
+    if (arg7 >= 1.0 || arg7 == 0.0f) {
+        tile->tileIndexX = arg7;
+    } else {
+        tile->tileIndexX = tile->unk10[(s32)(tile->unk14 * arg7)] % tile->tileCountX;
+    }
+    tile->tileIndexY = D_800FDFE8;
+
+    sp58 = ABS2(tile->tileIndexX * tile->width + D_800FDFE0 * tile->width);
+    sp54 = ABS2(tile->tileIndexY * tile->height + D_800FDFE4 * tile->height);
+
+    if (arg5 == 0.0f && arg6 == 0.0f) {
+        sp6C = tile->width * D_800FDFF0 / 2;
+        sp68 = tile->height * D_800FDFF0 / 2;
+    } else {
+        sp6C = arg5 * arg4 / 2;
+        sp68 = arg6 * arg4 / 2;
+    }
+
+    x1 = -160.0f + arg0 + sp6C;
+    y1 = -arg1 + 120.0f - sp68;
+    sp5C = -arg2 - D_800FDF9C;
+
+    tile->quad[0].v.ob[0] = cosf(arg3) * -sp6C + sinf(arg3) * sp68 + x1;
+    tile->quad[0].v.ob[1] = cosf(arg3) * sp68 + sinf(arg3) * -sp6C + y1;
+    tile->quad[0].v.ob[2] = sp5C + D_800FE004;
+    tile->quad[0].v.tc[0] = (s16)(sp58) << (D_800FDF98 + 6);
+    tile->quad[0].v.tc[1] = (s16)(sp54) << (D_800FDF98 + 6);
+    tile->quad[0].v.cn[0] = gTextGradient[0];
+    tile->quad[0].v.cn[1] = gTextGradient[1];
+    tile->quad[0].v.cn[2] = gTextGradient[2];
+    tile->quad[0].v.cn[3] = gTextGradient[3];
+
+    tile->quad[1].v.ob[0] = cosf(arg3) * -sp6C + sinf(arg3) * (-sp68 * 1) + x1;
+    tile->quad[1].v.ob[1] = cosf(arg3) * (-sp68 * 1) + sinf(arg3) * -sp6C + y1;
+    tile->quad[1].v.ob[2] = sp5C + D_800FE008;
+    tile->quad[1].v.tc[0] = (s16)(sp58) << (D_800FDF98 + 6);
+    tile->quad[1].v.tc[1] = (s16)(sp54 + tile->height - 1) << (D_800FDF98 + 6);
+    tile->quad[1].v.cn[0] = gTextGradient[4];
+    tile->quad[1].v.cn[1] = gTextGradient[5];
+    tile->quad[1].v.cn[2] = gTextGradient[6];
+    tile->quad[1].v.cn[3] = gTextGradient[7];
+
+    tile->quad[2].v.ob[0] = cosf(arg3) * (sp6C * 1) + sinf(arg3) * sp68 + x1;
+    tile->quad[2].v.ob[1] = cosf(arg3) * sp68 + sinf(arg3) * (sp6C * 1) + y1;
+    tile->quad[2].v.ob[2] = sp5C + D_800FE00C;
+    tile->quad[2].v.tc[0] = (s16)(sp58 + tile->width - 1) << (D_800FDF98 + 6);
+    tile->quad[2].v.tc[1] = (s16)(sp54) << (D_800FDF98 + 6);
+    tile->quad[2].v.cn[0] = gTextGradient[8];
+    tile->quad[2].v.cn[1] = gTextGradient[9];
+    tile->quad[2].v.cn[2] = gTextGradient[10];
+    tile->quad[2].v.cn[3] = gTextGradient[11];
+
+    tile->quad[3].v.ob[0] = cosf(arg3) * sp6C + sinf(arg3) * -sp68 + x1;
+    tile->quad[3].v.ob[1] = cosf(arg3) * -sp68 + sinf(arg3) * sp6C + y1;
+    tile->quad[3].v.ob[2] = sp5C + D_800FE010;
+    tile->quad[3].v.tc[0] = (s16)(sp58 + tile->width - 1) << (D_800FDF98 + 6);
+    tile->quad[3].v.tc[1] = (s16)(sp54 + tile->height - 1) << (D_800FDF98 + 6);
+    tile->quad[3].v.cn[0] = gTextGradient[12];
+    tile->quad[3].v.cn[1] = gTextGradient[13];
+    tile->quad[3].v.cn[2] = gTextGradient[14];
+    tile->quad[3].v.cn[3] = gTextGradient[15];
+
+    if (gPrimRed != 0 || gPrimGreen != 0 || gPrimBlue != 0 || gPrimAlpha != 0) {
+        tile->prim.r = gPrimRed;
+        tile->prim.g = gPrimGreen;
+        tile->prim.b = gPrimBlue;
+        tile->prim.a = gPrimAlpha;
+    }
+    printReset();
+}
+
+void func_8005B874(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, s32 arg7) {
+    f32 sp6C;
+    f32 sp68;
+    f32 x1, y1;
+    f32 sp5C;
+    s32 sp58;
+    s32 sp54;
+    SpriteListing* tile;
+    s32 i, j;
+
+    arg0 += D_800FDFF4;
+    arg1 += D_800FDFF8;
+    
+    for (i = 0; i < gSpriteListings[arg7].tileCountX; i++) {
+        for (j = 0; j < gSpriteListings[arg7].tileCountY; j++) {
+            if (D_800FDFB8[gSpriteFrameBuffer] >= 200) {
+                printReset();
+                return;
+            }
+
+            tile = &D_8018E698[gSpriteFrameBuffer][D_800FDFB8[gSpriteFrameBuffer]];
+            *tile = gSpriteListings[arg7];
+            D_800FDFB8[gSpriteFrameBuffer]++;
+
+            tile->tileIndexX = i;
+            tile->tileIndexY = j;
+
+            sp58 = ABS2(tile->tileIndexX * tile->width + D_800FDFE0 * tile->width);
+            sp54 = ABS2(tile->tileIndexY * tile->height + D_800FDFE4 * tile->height);
+
+            if (arg5 == 0.0f && arg6 == 0.0f) {
+                sp6C = tile->width * D_800FDFF0 / 2;
+                sp68 = tile->height * D_800FDFF0 / 2;
+            } else {
+                sp6C = arg5 * arg4 / 2;
+                sp68 = arg6 * arg4 / 2;
+            }
+
+            x1 = -160.0f + arg0 + i * tile->width + sp6C;
+            y1 = 120.0f - arg1 - j * tile->height - sp68;
+            sp5C = -D_800FDF9C - arg2;
+
+            tile->quad[0].v.ob[0] = cosf(arg3) * -sp6C + sinf(arg3) * sp68 + x1;
+            tile->quad[0].v.ob[1] = cosf(arg3) * sp68 + sinf(arg3) * -sp6C + y1;
+            tile->quad[0].v.ob[2] = sp5C + D_800FE004;
+            tile->quad[0].v.tc[0] = (s16)(sp58) << (D_800FDF98 + 6);
+            tile->quad[0].v.tc[1] = (s16)(sp54) << (D_800FDF98 + 6);
+            tile->quad[0].v.cn[0] = gTextGradient[0];
+            tile->quad[0].v.cn[1] = gTextGradient[1];
+            tile->quad[0].v.cn[2] = gTextGradient[2];
+            tile->quad[0].v.cn[3] = gTextGradient[3];
+
+            tile->quad[1].v.ob[0] = cosf(arg3) * -sp6C + sinf(arg3) * (-sp68 * 1) + x1;
+            tile->quad[1].v.ob[1] = cosf(arg3) * (-sp68 * 1) + sinf(arg3) * -sp6C + y1;
+            tile->quad[1].v.ob[2] = sp5C + D_800FE008;
+            tile->quad[1].v.tc[0] = (s16)(sp58) << (D_800FDF98 + 6);
+            tile->quad[1].v.tc[1] = (s16)(sp54 + tile->height - 1) << (D_800FDF98 + 6);
+            tile->quad[1].v.cn[0] = gTextGradient[4];
+            tile->quad[1].v.cn[1] = gTextGradient[5];
+            tile->quad[1].v.cn[2] = gTextGradient[6];
+            tile->quad[1].v.cn[3] = gTextGradient[7];
+
+            tile->quad[2].v.ob[0] = cosf(arg3) * (sp6C * 1) + sinf(arg3) * sp68 + x1;
+            tile->quad[2].v.ob[1] = cosf(arg3) * sp68 + sinf(arg3) * (sp6C * 1) + y1;
+            tile->quad[2].v.ob[2] = sp5C + D_800FE00C;
+            tile->quad[2].v.tc[0] = (s16)(sp58 + tile->width - 1) << (D_800FDF98 + 6);
+            tile->quad[2].v.tc[1] = (s16)(sp54) << (D_800FDF98 + 6);
+            tile->quad[2].v.cn[0] = gTextGradient[8];
+            tile->quad[2].v.cn[1] = gTextGradient[9];
+            tile->quad[2].v.cn[2] = gTextGradient[10];
+            tile->quad[2].v.cn[3] = gTextGradient[11];
+
+            tile->quad[3].v.ob[0] = cosf(arg3) * sp6C + sinf(arg3) * -sp68 + x1;
+            tile->quad[3].v.ob[1] = cosf(arg3) * -sp68 + sinf(arg3) * sp6C + y1;
+            tile->quad[3].v.ob[2] = sp5C + D_800FE010;
+            tile->quad[3].v.tc[0] = (s16)(sp58 + tile->width - 1) << (D_800FDF98 + 6);
+            tile->quad[3].v.tc[1] = (s16)(sp54 + tile->height - 1) << (D_800FDF98 + 6);
+            tile->quad[3].v.cn[0] = gTextGradient[12];
+            tile->quad[3].v.cn[1] = gTextGradient[13];
+            tile->quad[3].v.cn[2] = gTextGradient[14];
+            tile->quad[3].v.cn[3] = gTextGradient[15];
+
+            if (gPrimRed != 0 || gPrimGreen != 0 || gPrimBlue != 0 || gPrimAlpha != 0) {
+                tile->prim.r = gPrimRed;
+                tile->prim.g = gPrimGreen;
+                tile->prim.b = gPrimBlue;
+                tile->prim.a = gPrimAlpha;
+            }
+        }
+    }
+    printReset();
+}
 
 #ifdef NON_MATCHING
 void func_8005C04C(f32 arg0, f32 arg1, f32 arg2, f32 arg3, s32 arg4) {
@@ -1119,12 +1800,12 @@ void func_800612FC(void) {
 }
 
 void SetTextGradient(u8 arg0, u8 arg1, u8 arg2, u8 arg3, u8 arg4, u8 arg5, u8 arg6, u8 arg7, u8 arg8, u8 arg9, u8 argA, u8 argB, u8 argC, u8 argD, u8 argE, u8 argF) {
-    gTextGradient[4] = arg4;
-    gTextGradient[5] = arg5;
     gTextGradient[0] = arg0;
     gTextGradient[1] = arg1;
     gTextGradient[2] = arg2;
     gTextGradient[3] = arg3;
+    gTextGradient[4] = arg4;
+    gTextGradient[5] = arg5;
     gTextGradient[6] = arg6;
     gTextGradient[7] = arg7;
     gTextGradient[8] = arg8;

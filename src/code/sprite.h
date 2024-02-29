@@ -91,6 +91,8 @@ extern Gfx D_303AD50[];
 extern Gfx D_303F300[];
 extern Gfx D_303F1A0[];
 extern Gfx D_303D418[];
+extern Mtx D_80176860;
+extern Camera D_801768A0;
 
 /* functions */
 void func_8006623C(void);
@@ -103,5 +105,6 @@ void Rumble_Tick(void);
 void func_800615D4(s32*);
 void func_80069734(void);
 void func_8007CDEC(void);
+f32 func_80056104(f32, f32);
 
 #endif //_SPRITE_H_
