@@ -176,7 +176,7 @@ enum ColorModes{
 	COLORMODE_BW = 0, //is this right>
 	COLORMODE_IA4 = 1,
 	COLORMODE_IA8 = 2,
-	COLORMODE_IA16 = 3, //what uses this?
+	COLORMODE_IA16 = 3,
 	COLORMODE_CI4 = 4,
 	COLORMODE_CI8 = 5,
 	COLORMODE_RGBA16 = 6,

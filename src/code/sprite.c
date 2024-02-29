@@ -296,7 +296,17 @@ s32 LoadSprite(s32 arg0) {
     return 0;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/FreeSprite.s")
+void FreeSprite(s32 arg0) {
+    SpriteListing* sprite;
+
+    sprite = &gSpriteListings[arg0];
+    if (sprite->type != COLORMODE_BLANK && arg0 >= 0 && arg0 <= 229) {
+        Free(sprite->bitmapP);
+        if (sprite->type == COLORMODE_CI4 || sprite->type == COLORMODE_CI8) {
+            Free(sprite->palletteP);
+        }
+    }
+}
 
 void printReset(void) {
     s32 i;
