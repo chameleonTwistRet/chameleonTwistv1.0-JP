@@ -683,7 +683,7 @@ void PlayStageBGM(s32 arg0) {
     PlayBGM(sStageBGMs[arg0]);
 }
 
-void func_8008C35C(s32 arg0) {
+void func_8008C35C(Gfx** arg0) {
 
 }
 

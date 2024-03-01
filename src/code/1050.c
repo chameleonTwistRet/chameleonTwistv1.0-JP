@@ -23,7 +23,7 @@ void idleproc(void *arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/1050/mainproc.s")
 
-// func_80025EF0(PlayerActor*, Tongue*, s32)
+void func_80025EF0(PlayerActor*, Tongue*, s32);
 #pragma GLOBAL_ASM("asm/nonmatchings/code/1050/func_80025EF0.s")
 
 s32 func_80026C78(Actor* actor) {
@@ -128,6 +128,7 @@ s32 func_80027650(void) {       // GetHighestActivePlayerIndex
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/1050/func_80027694.s")
+void func_80027694(graphicStruct* arg0);
 
 //draw player
 #pragma GLOBAL_ASM("asm/nonmatchings/code/1050/func_8002A190.s")
@@ -143,15 +144,88 @@ s32 func_80027650(void) {       // GetHighestActivePlayerIndex
 #pragma GLOBAL_ASM("asm/nonmatchings/code/1050/func_8002B7BC.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/1050/func_8002C280.s")
+Gfx* func_8002C280(graphicStruct*, Gfx*);
 
+#ifdef NON_MATCHING
+Gfx* func_8002C4E8(Gfx* gfxPos, s32 arg1, s32 arg2) {
+    s32 i;
+
+    gSPSegment(gfxPos++, 0x00, NULL);
+    gSPSegment(gfxPos++, 0x01, OS_K0_TO_PHYSICAL(_ALIGN((u32)D_803B5000 - (u32)D_1045C00 + (u32)D_1000000, 0x10)));
+
+    for (i = 2; i < 16; i++) {
+        if (D_80100F50[i].base_address != NULL) {
+            gSPSegment(gfxPos++, i, OS_K0_TO_PHYSICAL(D_80100F50[i].base_address));
+        }
+    }
+
+    if (D_800FFEC0 != 0) {
+        gSPDisplayList(gfxPos++, D_1015AE8);
+    } else {
+        gSPDisplayList(gfxPos++, D_1015AB8);
+    }
+    gSPDisplayList(gfxPos++, D_1015A70);
+
+    if (D_800FFEC0 != 0) {
+        gDPSetCycleType(gfxPos++, G_CYC_FILL);
+        gDPSetRenderMode(gfxPos++, G_RM_NOOP, G_RM_NOOP2);
+        gDPSetColorImage(gfxPos++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 320, OS_K0_TO_PHYSICAL(&D_803B5000[arg1]));
+        gDPSetFillColor(gfxPos++, PACK_FILL_COLOR(0, 0, 0, 1));
+        gDPFillRectangle(gfxPos++, 0, 0, 319, 239);
+        gDPPipeSync(gfxPos++);
+    } else {
+        gDPSetCycleType(gfxPos++, G_CYC_FILL);
+        gDPSetRenderMode(gfxPos++, G_RM_NOOP, G_RM_NOOP2);
+        gDPSetColorImage(gfxPos++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 320, OS_K0_TO_PHYSICAL(&D_803B5000[arg1]));
+        gDPSetFillColor(gfxPos++, PACK_FILL_COLOR(D_800FF8DC, D_800FF8E0, D_800FF8E4, 1));
+        gDPFillRectangle(gfxPos++, 18, 16, 301, 223);
+        gDPPipeSync(gfxPos++);
+    }
+
+    if (D_800FFEC0 != 0){
+        D_800FFEC0--;
+    }
+    return gfxPos;
+}
+#else
 #pragma GLOBAL_ASM("asm/nonmatchings/code/1050/func_8002C4E8.s")
+Gfx* func_8002C4E8(Gfx* gfxPos, s32 arg1, s32 arg2);
+#endif
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/1050/func_8002C900.s")
+Gfx* func_8002C900(graphicStruct* arg0, s32 arg1) {
+    Gfx* gfxPos = arg0->dlist;
+    s32 i;
 
-void* func_8002CAC8(graphicStruct* arg0, s32 arg1) {
+    gfxPos = func_8002C4E8(arg0->dlist, arg1, 0);
+    gSPDisplayList(gfxPos++, D_1015B18);
+    gDPSetColorImage(gfxPos++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 320, OS_K0_TO_PHYSICAL(&D_803B5000[arg1]));
+    gfxPos = func_8002C280(arg0, gfxPos);
+    D_800FF8D4 = arg0->unk1e880;
+
+    for (i = 0; i < ARRAY_COUNT(gPlayerActors); i++) {
+        if (!gPlayerActors[i].exists) {
+            continue;
+        }
+        func_80025EF0(&gPlayerActors[i], &gTongues[i], i);
+    }
+
+    func_80027694(arg0);
+    func_80084A04();
+    func_8005CA38();
+    gfxPos = func_8007A2D8(gfxPos, gCamera);
+    func_8008C1C8(&gfxPos);
+    gfxPos = func_8005CA44(gfxPos);
+    func_8007AC60(gCamera, gPlayerActors);
+    func_8008C35C(&gfxPos);
+    gDPFullSync(gfxPos++);
+    gSPEndDisplayList(gfxPos++);
+    return gfxPos;
+}
+
+Gfx* func_8002CAC8(graphicStruct* arg0, s32 arg1) {
     Gfx* gdl;
 
-    gdl = func_8002C4E8(arg0, arg1, 1);    //Sets up the display list (?)
+    gdl = func_8002C4E8(arg0->dlist, arg1, 1);    //Sets up the display list (?)
     gDPFullSync(gdl++);                    //Signals the end of a frame
     gSPEndDisplayList(gdl++);
     return gdl;
@@ -270,8 +344,8 @@ void func_8002CE54(void) {
         func_8004BC48(&sp28[0]);
         func_8004E784(sp28, D_80168DA0, D_80168D78, sp28);
         D_800FF8DC = 0;
-        D_800FF8E0[0] = 0;
-        D_800FF8E4[0] = 0;
+        D_800FF8E0 = 0;
+        D_800FF8E4 = 0;
     } else {
         if (D_801749AC != 0) {
             if (sDebugMultiplayer != 0) {
