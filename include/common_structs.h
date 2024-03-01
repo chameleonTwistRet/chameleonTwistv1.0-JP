@@ -1154,8 +1154,4 @@ typedef struct unk80170E68 {
 
 extern unk80170E68 D_80170E68[];
 
-typedef struct ColorRGBA {
-    u8 r, g, b, a;
-} ColorRGBA;
-
 #endif

@@ -70,7 +70,7 @@ extern s32 D_800F0674;
 extern unkStruct16 D_800F0D90[];
 extern unkStruct16 D_800F0DE0[];
 extern s32 D_800FE404;
-extern ColorRGBA D_800FE564[];
+extern RGBA32 D_800FE564[];
 extern s32 D_800FE74C;
 
 extern unk_80052094_8 Battle_MsgReady[];
