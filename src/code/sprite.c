@@ -1176,7 +1176,7 @@ void func_8007A25C(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8007A2D8.s")
 
-s32 func_8007ABDC(s32 arg0) {
+Gfx* func_8007ABDC(Gfx* arg0) {
     return arg0;
 }
 

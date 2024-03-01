@@ -293,7 +293,7 @@ void func_80078D00(f32, f32, f32, f32, s32, f32, f32);
 void func_80079150(f32, f32, f32, f32, f32, f32, f32, f32, s32, s32, s32);
 void func_80079FC4(void);
 void func_8007A25C(f32, f32, f32, f32, f32);
-s32 func_8007ABDC(s32);
+Gfx* func_8007ABDC(Gfx*);
 void func_8007ABE4(void);
 void func_8007ABF8(bf8*);
 void func_8007AC2C(s32*);

@@ -132,19 +132,76 @@ void func_80027694(graphicStruct* arg0);
 
 //draw player
 #pragma GLOBAL_ASM("asm/nonmatchings/code/1050/func_8002A190.s")
+Gfx* func_8002A190(graphicStruct*, Gfx*, PlayerActor*, Tongue*, s32);
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/1050/func_8002A4C4.s")
+Gfx* func_8002A4C4(graphicStruct*, Gfx*, PlayerActor*, Tongue*, s32);
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/1050/func_8002A824.s")
+Gfx* func_8002A824(graphicStruct*, Gfx*, PlayerActor*, Tongue*, s32);
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/1050/func_8002AE3C.s")
+void func_8002AE3C(void);
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/1050/func_8002B118.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/1050/func_8002B7BC.s")
+Gfx* func_8002B7BC(graphicStruct* arg0, Gfx* gfxPos);
 
+#ifdef NON_MATCHING
+Gfx* func_8002C280(graphicStruct* arg0, Gfx* gfxPos) {
+    s32 i;
+
+    gfxPos = func_8007B524(arg0, gfxPos, gCamera);
+    D_800FF8D4 = arg0->unk1e880;
+    gfxPos = func_8005F408(gfxPos);
+
+    for (i = 0; i < 4; i++) {
+        if (!gPlayerActors[i].exists) {
+            continue;
+        }
+        gfxPos = func_8002A190(arg0, gfxPos, &gPlayerActors[i], &gTongues[i], i);
+        gfxPos = func_8002A824(arg0, gfxPos, &gPlayerActors[i], &gTongues[i], i);
+    }
+    gfxPos = func_8002B7BC(arg0, gfxPos);
+    gfxPos = func_800C3B50(arg0, gfxPos);
+    for (i = 0; i < 4; i++) {
+        if (!gPlayerActors[i].exists) {
+            continue;
+        }
+        func_800849DC(i, &gTongues[i], &gPlayerActors[i], gCamera);
+        gfxPos = func_800849D4(gfxPos);
+    }
+
+    func_800849DC(0, &gTongues[0], &gPlayerActors[0], gCamera);
+    gfxPos = func_80084884(gfxPos);
+    gfxPos = func_8007ABDC(gfxPos);
+
+    func_8002AE3C();
+    debugMain();
+
+    gfxPos = Shadows_Draw(arg0, gfxPos);
+
+    if (D_80176F58 == 0) {
+        for (i = 0; i < 4; i++) {
+            if (!gPlayerActors[i].exists) {
+                continue;
+            }
+            if (gGameModeCurrent == 20 || D_80174980 == 3) {
+                continue;
+            }
+            if (gTongues[i].amountInMouth != 0 && gTongues[i].tongueMode == 0 || gPlayerActors[i].locked != 0 || gPlayerActors[i].amountLeftToShoot != 0) {
+                gfxPos = func_8002A4C4(arg0, gfxPos, &gPlayerActors[i], &gTongues[i], i);
+            }
+        }
+    }
+
+    return gfxPos;
+}
+#else
 #pragma GLOBAL_ASM("asm/nonmatchings/code/1050/func_8002C280.s")
-Gfx* func_8002C280(graphicStruct*, Gfx*);
+Gfx* func_8002C280(graphicStruct* arg0, Gfx* gfxPos);
+#endif
 
 #ifdef NON_MATCHING
 Gfx* func_8002C4E8(Gfx* gfxPos, s32 arg1, s32 arg2) {
