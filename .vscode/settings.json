@@ -31,6 +31,8 @@
         "ultra64.h": "c",
         "gbi.h": "c",
         "common_structs.h": "c",
-        "mod.h": "c"
+        "mod.h": "c",
+        "battle.h": "c",
+        "30a4c.h": "c"
     }
 }

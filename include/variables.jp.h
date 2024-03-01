@@ -24,8 +24,7 @@ extern s32 D_800F68A8;              // s32 (but really only 1bit) is controller 
 extern s32 sDebugInt;
 extern s32 D_800F06EC;
 extern s32 sDebugTestView;
-extern u32 D_800F0B50;
-extern s8 D_800F0B54;
+extern u8 D_800F0B54[];
 extern s32 D_800F6880;
 extern s32 gPrevButtons[MAXCONTROLLERS];
 extern s32 gButtons[MAXCONTROLLERS];
@@ -218,7 +217,7 @@ extern s32 D_801748A0;
 extern s32 D_80174998;
 extern s32 gTimer;                                              // Timer: runs when a process starts
 extern OSMesgQueue gEepromMsgQ;
-extern s32 D_80176824;
+extern s32 Battle_TimeLeft;
 extern u8 gTextGradient[16]; //probably really RGBA32[4]
 extern f32 D_80176F50;
 extern OSMesgQueue D_801B3120;
@@ -335,9 +334,8 @@ extern s32 D_800FF8B4;
 extern u32 D_800FF8B8;
 extern s32 D_801B3168;
 extern u8 gSelectedCharacters[4];
-extern u8 D_800F0BE0[];
-extern unkStruct0 D_800F0BE4[];
-extern unk801749B0 D_801749B0;
+extern s32 D_801749B0;
+extern s32 gIsMultiplayerPaused;
 extern s32 gCurrentStage;
 extern s32 D_80176F58;
 extern s16 gOneRun;

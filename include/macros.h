@@ -14,7 +14,7 @@
 #define sqrtf __sqrtf
 #define sinf __sinf 
 #define cosf __cosf 
-#define DEGREES_TO_RADIANS_2PI(x) (x * 2 * PI / 360.0)
+#define DEGREES_TO_RADIANS_2PI(x) ((x) * 2 * PI / 360.0)
 #define DEGREES_TO_RADIANS_PI(x) (x * PI / 180.0)
 #define ARRAY_COUNT(arr) (s32)(sizeof(arr) / sizeof(arr[0]))
 #define ROUND(d)	(int)(((d) >= 0.0) ? ((d) + 0.5) : ((d) - 0.5))
@@ -33,8 +33,8 @@
 #define SEGMENTED_TO_VIRTUAL2(x) (void*)(D_80100F50[SEGMENT_INDEX(x)].base_address + SEGMENT_OFFSET_CUSTOM(x))
 
 //macros for simplifying the "play sound effect" calls
-#define PLAYSFX(id,arg4,flag) playSoundEffect(id,NULL,NULL,NULL,arg4,flag)
-#define PLAYSFXAT(id,pos,arg4,flag) playSoundEffect(id,&pos.x,&pos.y,&pos.z,arg4,flag)
+#define PLAYSFX(id,arg4,flag) PlaySoundEffect(id,NULL,NULL,NULL,arg4,flag)
+#define PLAYSFXAT(id,pos,arg4,flag) PlaySoundEffect(id,&pos.x,&pos.y,&pos.z,arg4,flag)
 #define flabs(A) (((A) < 0.0f) ? (-A) : (A))
 
 #define SCREEN_WIDTH  320

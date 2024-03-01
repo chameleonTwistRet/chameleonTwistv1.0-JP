@@ -33,11 +33,11 @@ void func_80055C04(void) {
     }
 }
 
-void func_80055C74(void) {
+void DisableInput(void) {
     D_800F68A8 = 0;
 }
 
-void func_80055C80(void) {
+void EnableInput(void) {
     D_800F68A8 = 1;
 }
 
@@ -2376,7 +2376,7 @@ void func_80073090(void) {
     aa1* temp_v0 = aa1_Alloc(0, 0, &func_80072D80);
     u8 s = 0xFF; 
     if (temp_v0 != 0) {
-        D_800F0B54 = s;
+        D_800F0B54[0] = s;
         temp_v0->unk0 = -1;
         temp_v0->unk_18 = 0.0f;
         temp_v0->unkC = 0.0f;
