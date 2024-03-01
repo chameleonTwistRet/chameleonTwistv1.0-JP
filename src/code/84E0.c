@@ -18,8 +18,11 @@ s32 gTimer;
 s32 D_801749A0;
 s32 D_801749A4;
 s32 D_801749A8;
-s32 D_801749AC;
-unk801749B0 D_801749B0;
+s32 Battle_GameType;
+s32 D_801749B0;
+s32 gIsMultiplayerPaused;
+char D_801749B8[24];
+s32 D_801749D0;
 
 
 char D_801749D8[0x78];
@@ -648,23 +651,23 @@ void func_8002E5DC(UnkTempStruct arg0) {
     if (D_801749A8 == 0) {
         if (((gCurrentStage == 4) && (gCurrentZone == 0xF)) || ((gCurrentStage == 5) && (gCurrentZone == 0xE))) {
             if (D_80174860->unk0 == 1) {
-                playSoundEffect(0x2C, 0, 0, 0, 0, 0x10);
+                PlaySoundEffect(0x2C, 0, 0, 0, 0, 0x10);
                 D_80174860->unk0 = 0;
                 if (D_80174860->unk40 == 2) {
-                    playSoundEffect(0x2D, 0, 0, 0, 0, 0x10);
+                    PlaySoundEffect(0x2D, 0, 0, 0, 0, 0x10);
                     D_80174860->size2 /= 1.299999952f;
                     D_80174860->unk40 -= 1;
                 }
                 func_800D34CC();
             }
-        } else if ((D_801749AC == 0) && (1 != D_80236974) && (arg0.unk_02 & 0x20)) {
-            playSoundEffect(0x2C, 0, 0, 0, 0, 0x10);
+        } else if ((Battle_GameType == 0) && (1 != D_80236974) && (arg0.unk_02 & 0x20)) {
+            PlaySoundEffect(0x2C, 0, 0, 0, 0, 0x10);
             if (D_80174860->unk0 == 0) {
                 D_80174860->unk0 = 1;
             } else {
                 D_80174860->unk0 = 0;
                 if (D_80174860->unk40 == 2) {
-                    playSoundEffect(0x2D, 0, 0, 0, 0, 0x10);
+                    PlaySoundEffect(0x2D, 0, 0, 0, 0, 0x10);
                     D_80174860->size2 /= 1.299999952f;
                     D_80174860->unk40 -= 1;
                 }
@@ -672,21 +675,21 @@ void func_8002E5DC(UnkTempStruct arg0) {
             func_800D34CC();
         }
         if ((arg0.unk_02 & 4) && (((D_80174860->unk0 == 1) && (D_80174860->unk40 < 2)) || (D_80174860->unk40 <= 0))) {
-            playSoundEffect(0x2D, 0, 0, 0, 0, 0x10);
+            PlaySoundEffect(0x2D, 0, 0, 0, 0, 0x10);
             D_80174860->size2 *= 1.299999952f;
             D_80174860->unk40 += 1;
         }
         if ((arg0.unk_02 & 8) && (sp2C < D_80174860->unk40)) {
-            playSoundEffect(0x2D, 0, 0, 0, 0, 0x10);
+            PlaySoundEffect(0x2D, 0, 0, 0, 0, 0x10);
             D_80174860->size2 /= 1.299999952f;
             D_80174860->unk40 -= 1;
         }
         if ((arg0.unk_02 & 1) && (D_80174860->pushHoriz < 9)) {
-            playSoundEffect(0x2D, 0, 0, 0, 0, 0x10);
+            PlaySoundEffect(0x2D, 0, 0, 0, 0, 0x10);
             D_80174860->pushHoriz += 9;
         }
         if ((arg0.unk_02 & 2) && (D_80174860->pushHoriz >= -8)) {
-            playSoundEffect(0x2D, 0, 0, 0, 0, 0x10);
+            PlaySoundEffect(0x2D, 0, 0, 0, 0, 0x10);
             D_80174860->pushHoriz -= 9;
         }
     }
@@ -813,7 +816,7 @@ void SetPlayerImpulse(void) {
 }
 
 void func_8002F884(s32 arg0, s32 arg1) {
-    if (((D_801749B0.unk_00 == 0) || (gCurrentActivePlayerPointer->playerID != 1)) && (D_80168D78[arg0] == 0)) {
+    if (((D_801749B0 == 0) || (gCurrentActivePlayerPointer->playerID != 1)) && (D_80168D78[arg0] == 0)) {
         if (gGameModeCurrent == GAME_MODE_BATTLE_MENU) {
             Rumble_AddTime(arg0, ((arg1 * 100) / 6.0f));
         } else {
@@ -877,7 +880,7 @@ void func_800312FC(Actor* arg0, f32 arg1) {
     arg0->vel.x = __cosf(DEGREES_TO_RADIANS_2PI(arg1)) * 16.0f;     //cosf(DEGREES_TO_RADIANS_2PI(arg1)) * 16.0f;
     arg0->vel.z = -__sinf(DEGREES_TO_RADIANS_2PI(arg1)) * 16.0f;
     arg0->tongueCollision = 0;
-    playSoundEffect(109, &arg0->pos.x, &arg0->pos.y, &arg0->pos.z, 0, 0);
+    PlaySoundEffect(109, &arg0->pos.x, &arg0->pos.y, &arg0->pos.z, 0, 0);
 }
 
 
@@ -978,7 +981,7 @@ void pickup_collide_func(s32 actorIndex) {
         if (gCurrentActivePlayerPointer->hp < 10) {
             gCurrentActivePlayerPointer->hp++;
         }
-        playSoundEffect(0x3A, NULL, NULL, NULL, 0, 0x10);
+        PlaySoundEffect(0x3A, NULL, NULL, NULL, 0, 0x10);
         var_s0 = 0x1E;
         break;
     case O_HEART:
@@ -986,24 +989,24 @@ void pickup_collide_func(s32 actorIndex) {
         if (gCurrentActivePlayerPointer->hp > 10) {
             gCurrentActivePlayerPointer->hp = 10;
         }
-        playSoundEffect(0x3A, NULL, NULL, NULL, 0, 0x10);
+        PlaySoundEffect(0x3A, NULL, NULL, NULL, 0, 0x10);
         var_s0 = 0x28;
         break;
     case Y_HEART:
         gCurrentActivePlayerPointer->hp = 10;
-        playSoundEffect(0x3A, NULL, NULL, NULL, 0, 0x10);
+        PlaySoundEffect(0x3A, NULL, NULL, NULL, 0, 0x10);
         var_s0 = 0x32;
         break;
     case CROWN:
-        playSoundEffect(0x39, NULL, NULL, NULL, 0, 0x10);
+        PlaySoundEffect(0x39, NULL, NULL, NULL, 0, 0x10);
         var_s0 = 0x46;
         break;
     case CARROT:
-        playSoundEffect(0x39, NULL, NULL, NULL, 0, 0x10);
+        PlaySoundEffect(0x39, NULL, NULL, NULL, 0, 0x10);
         var_s0 = 0x50;
         break;
     case UNK_65:
-        playSoundEffect(0x39, NULL, NULL, NULL, 0, 0x10);
+        PlaySoundEffect(0x39, NULL, NULL, NULL, 0, 0x10);
         var_s0 = 0x5A;
         break;
     case TIME_STOP_POWER_UP:
@@ -1011,7 +1014,7 @@ void pickup_collide_func(s32 actorIndex) {
         gCurrentActivePlayerPointer->power = 4;
         gCurrentActivePlayerPointer->powerTimer = 0;
         gCurrentActivePlayerPointer->powerTimerTill = actor->unk_128;
-        playSoundEffect(0x3A, NULL, NULL, NULL, 0, 0x10);
+        PlaySoundEffect(0x3A, NULL, NULL, NULL, 0, 0x10);
         var_s0 = 0x32;
         break;
     case BIG_FEET_POWER_UP:
@@ -1019,7 +1022,7 @@ void pickup_collide_func(s32 actorIndex) {
         gCurrentActivePlayerPointer->power = 1;
         gCurrentActivePlayerPointer->powerTimer = 0;
         gCurrentActivePlayerPointer->powerTimerTill = actor->unk_128;
-        playSoundEffect(0x3A, NULL, NULL, NULL, 0, 0x10);
+        PlaySoundEffect(0x3A, NULL, NULL, NULL, 0, 0x10);
         var_s0 = 0x32;
         break;
     case BIG_HEAD_POWER_UP:
@@ -1027,7 +1030,7 @@ void pickup_collide_func(s32 actorIndex) {
         gCurrentActivePlayerPointer->power = 2;
         gCurrentActivePlayerPointer->powerTimer = 0;
         gCurrentActivePlayerPointer->powerTimerTill = actor->unk_128;
-        playSoundEffect(0x3A, NULL, NULL, NULL, 0, 0x10);
+        PlaySoundEffect(0x3A, NULL, NULL, NULL, 0, 0x10);
         var_s0 = 0x32;
         break;
     case SHRINK_POWER_UP:
@@ -1040,7 +1043,7 @@ void pickup_collide_func(s32 actorIndex) {
         gCurrentActivePlayerPointer->hitboxSize *= 0.5f;
         gCurrentActivePlayerPointer->hitboxYStretch *= 0.5f;
         SetPlayerImpulse();
-        playSoundEffect(0x3A, NULL, NULL, NULL, 0, 0x10);
+        PlaySoundEffect(0x3A, NULL, NULL, NULL, 0, 0x10);
         break;
     case SHRINK_ENEMY_POWER_UP:
         ClearPlayerPowerups(gCurrentActivePlayerPointer);
@@ -1061,7 +1064,7 @@ void pickup_collide_func(s32 actorIndex) {
             SetPlayerImpulse();
         }
         gCurrentActivePlayerPointer = &gPlayerActors[var_v1];
-        playSoundEffect(0x3A, NULL, NULL, NULL, 0, 0x10);
+        PlaySoundEffect(0x3A, NULL, NULL, NULL, 0, 0x10);
         var_s0 = 0x32;
         break;
     }
@@ -1109,8 +1112,8 @@ void func_80036D74(PlayerActor* arg0, Tongue* arg1) {
     if (arg0->playerHURTSTATE == 0) {
         func_8002F884(arg0->playerID, 5);
         func_80064BFC(arg0->pos.x, arg0->pos.y, arg0->pos.z);
-        playSoundEffect(0x17, NULL, NULL, NULL, 0, 0x10);
-        if ((D_801749AC == 0) && (D_80174980 != 3) && (D_80174988 == 0)) {
+        PlaySoundEffect(0x17, NULL, NULL, NULL, 0, 0x10);
+        if ((Battle_GameType == 0) && (D_80174980 != 3) && (D_80174988 == 0)) {
             gNoHit = 0;
             if (--arg0->hp <= 0) {
                 D_80174980 = 4;
@@ -1431,7 +1434,7 @@ void ActorInit_Cannonball(Actor* cbActor) {
     cbActor->userVariables[0] = (s32) (__sqrtf(SQ(temp_f16) + SQ(temp_f18)) / cbActor->unk_94);
     cbActor->unk_134[0] = (cbActor->position._f32.y - cbActor->pos.y) / (f32) cbActor->userVariables[0];
     func_800382F4(cbActor);
-    playSoundEffect(119, &cbActor->pos.x, &cbActor->pos.y, &cbActor->pos.z, 0, 0);
+    PlaySoundEffect(119, &cbActor->pos.x, &cbActor->pos.y, &cbActor->pos.z, 0, 0);
 }
 
 
@@ -1554,7 +1557,7 @@ void ActorTick_ArrowSpawner(Actor* arg0) {
     if (arg0->unk_124 == arg0->userVariables[0]) {
         arg0->userVariables[0] = 0;
         if (Actor_Init(28, arg0->pos.x, arg0->pos.y, arg0->pos.z, arg0->unk_90, -50000.0f, 50000.0f, -50000.0f, 50000.0f, -50000.0f, 50000.0f, arg0->position._f32.x, arg0->position._f32.y, arg0->unk_15C, arg0->unk_160, 0.0f, 0.0f, 0.0f, 0.0f, 0, 0, 0, 0) != -1) {
-            playSoundEffect(139, &arg0->pos.x, &arg0->pos.y, &arg0->pos.z, 0, 0);
+            PlaySoundEffect(139, &arg0->pos.x, &arg0->pos.y, &arg0->pos.z, 0, 0);
         }
     }
 }
@@ -1633,7 +1636,7 @@ void func_8003E870(Actor* arg0, s32 arg1) {
     if (arg0->pos.y + arg0->vel.y < 0) {
         arg0->vel.y = -arg0->vel.y * 0.95f;
         func_8006F8D8(arg0->pos.x, arg0->pos.y, arg0->pos.z);
-        playSoundEffect(132, &arg0->pos.x, &arg0->pos.y, &arg0->pos.z, 0, 0);
+        PlaySoundEffect(132, &arg0->pos.x, &arg0->pos.y, &arg0->pos.z, 0, 0);
         arg0->userVariables[0] = arg1;
     }
 }
@@ -2253,13 +2256,13 @@ void ActorInit_LizardKong(Actor* arg0) {
 void PlayLizardKongSFX(Actor* arg0) {
     switch (arg0->unk_F0) {
     case 12:
-        playSoundEffect(72, &arg0->pos.x, &arg0->pos.y, &arg0->pos.z, 0, 0);
+        PlaySoundEffect(72, &arg0->pos.x, &arg0->pos.y, &arg0->pos.z, 0, 0);
         return;
     case 34:
     case 42:
     case 50:
     case 58:
-        playSoundEffect(77, &arg0->pos.x, &arg0->pos.y, &arg0->pos.z, 0, 0);
+        PlaySoundEffect(77, &arg0->pos.x, &arg0->pos.y, &arg0->pos.z, 0, 0);
         /* fallthrough */
     default:
         return;

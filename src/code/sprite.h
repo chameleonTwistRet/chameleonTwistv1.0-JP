@@ -5,23 +5,26 @@
 
 /* structs */
 typedef struct SpriteListing {
-    char unk_00[4];
-    void* bitmapP; // "malloc'd" after size calc.
-    void* palletteP; //palette? both this and above start with devAddr+0XD73D960
-    s32 type; // use "COLORMODE_*" enum
-    void* unk10;
-    u8 unk14;
-    u8 tileCountX;
-    u8 tileCountY;
-    char unk17[3]; //align?
-    u16 height; // height of each tile
-    u16 width; // width of each tile
-    u16 unk1E;
-    char unk20[0x48]; //repeating substruct? has 5 feilds of RGBA32
-    s32 bitmapRom; //devAddr-0x8c26a0
-    s32 paletteRom;
-    s32 unk70;
-    char unk_74[4];
+    /* 0x00 */ Gfx* unk_00;
+    /* 0x04 */ void* bitmapP; // "malloc'd" after size calc.
+    /* 0x08 */ void* palletteP; //palette? both this and above start with devAddr+0XD73D960
+    /* 0x0C */ s32 type; // use "COLORMODE_*" enum
+    /* 0x10 */ u8* unk10;
+    /* 0x14 */ u8 unk14;
+    /* 0x15 */ u8 tileCountX;
+    /* 0x16 */ u8 tileCountY;
+    /* 0x17 */ u8 tileIndexX;
+    /* 0x18 */ u8 tileIndexY;
+    /* 0x19 */ char unk19;
+    /* 0x1A */ u16 width; // width of each tile
+    /* 0x1C */ u16 height; // height of each tile
+    /* 0x1E */ RGBA32 prim;
+    /* 0x22 */ char unk22[0x6];
+    /* 0x28 */ Vtx quad[4];
+    /* 0x68 */ s32 bitmapRom; //devAddr-0x8c26a0
+    /* 0x6C */ s32 paletteRom;
+    /* 0x70 */ s32 unk70;
+    /* 0x74 */ char unk_74[4];
 } SpriteListing; //sizeof 0x78
 
 typedef struct UnkBowlingStruct {
@@ -67,6 +70,29 @@ extern char D_8010CA1C[];
 extern char D_8010CA54[];
 extern Addr D_8C26A0;
 extern unkStruct02* D_80176F4C;
+extern s32 gSpriteFrameBuffer;
+extern Gfx D_10012A0[];
+extern Gfx D_1001300[];
+extern Gfx D_1001370[];
+extern Mtx D_800F69D0;
+extern Gfx D_800FE080[];
+extern SpriteListing D_80176F98[2][200];
+extern SpriteListing D_80182B18[2][200];
+extern SpriteListing D_8018E698[2][200];
+extern SpriteListing D_8019A218[2][200];
+extern SpriteListing D_801A5D98[2][200];
+extern Gfx D_800FE0F0[];
+extern s32 D_800FDFA8[2];
+extern s32 D_800FDFB0[2];
+extern s32 D_800FDFB8[2];
+extern f32 D_800FDF9C;
+extern s32 D_800FDF98;
+extern Gfx D_303AD50[];
+extern Gfx D_303F300[];
+extern Gfx D_303F1A0[];
+extern Gfx D_303D418[];
+extern Mtx D_80176860;
+extern Camera D_801768A0;
 
 /* functions */
 void func_8006623C(void);
@@ -79,5 +105,6 @@ void Rumble_Tick(void);
 void func_800615D4(s32*);
 void func_80069734(void);
 void func_8007CDEC(void);
+f32 func_80056104(f32, f32);
 
 #endif //_SPRITE_H_

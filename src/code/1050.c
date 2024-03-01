@@ -404,7 +404,7 @@ void func_8002CE54(void) {
         D_800FF8E0 = 0;
         D_800FF8E4 = 0;
     } else {
-        if (D_801749AC != 0) {
+        if (Battle_GameType != 0) {
             if (sDebugMultiplayer != 0) {
                 D_80168D78[1] = 1;
                 func_8004CD9C(1, &sp28[1]);
@@ -415,7 +415,7 @@ void func_8002CE54(void) {
             } else {
                 func_8002CDBC(&sp28[0]);
             }
-        } else if (D_801749B0.unk_00 != 0) {
+        } else if (D_801749B0 != 0) {
             D_80168D78[1] = 1;
             func_8004CD9C(1, &sp28[1]);
         } else {
@@ -425,7 +425,7 @@ void func_8002CE54(void) {
     }
     
     func_8004DDE0();
-    func_80054864();
+    Battle_Update();
     var = 1 - gFramebufferIndex;
     func_8002CCA0(&gGraphicsList[var], var);
     func_8002CBE8(gFramebufferIndex);
