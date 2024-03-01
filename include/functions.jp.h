@@ -220,7 +220,7 @@ void func_80056EB4(void);
 void* _malloc(s32);
 s32 Free(void*);
 void func_80056F48(s32, Tongue*, PlayerActor*, Camera*);
-void func_80058748(f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, s32);
+void func_80058748(f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, s32);
 s32 LoadSprite(s32); // uses "SPRITE_" #defines
 s32 func_8009603C(s32, s32);
 void printReset(void);

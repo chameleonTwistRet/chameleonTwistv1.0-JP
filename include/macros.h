@@ -19,6 +19,7 @@
 #define ARRAY_COUNT(arr) (s32)(sizeof(arr) / sizeof(arr[0]))
 #define ROUND(d)	(int)(((d) >= 0.0) ? ((d) + 0.5) : ((d) - 0.5))
 #define	ABS(d)		((d) > 0) ? (d) : -(d)
+#define	ABS2(d)		((d) < 0) ? -(d) : (d)
 #define _ALIGN(val, alignment) ((((val) + ((alignment) - 1)) / (alignment)) * (alignment))
 #define ALIGN_128(val) ((val + 0x7F) & ~0x7F)
 #define SQROOT_2_DIV_2 0.70710678f
@@ -35,5 +36,8 @@
 #define PLAYSFX(id,arg4,flag) playSoundEffect(id,NULL,NULL,NULL,arg4,flag)
 #define PLAYSFXAT(id,pos,arg4,flag) playSoundEffect(id,&pos.x,&pos.y,&pos.z,arg4,flag)
 #define flabs(A) (((A) < 0.0f) ? (-A) : (A))
+
+#define SCREEN_WIDTH  320
+#define SCREEN_HEIGHT 240
 
 #endif
