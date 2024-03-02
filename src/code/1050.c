@@ -143,7 +143,66 @@ Gfx* func_8002A824(graphicStruct*, Gfx*, PlayerActor*, Tongue*, s32);
 #pragma GLOBAL_ASM("asm/nonmatchings/code/1050/func_8002AE3C.s")
 void func_8002AE3C(void);
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/1050/func_8002B118.s")
+Gfx* func_8002B118(graphicStruct* arg0, Gfx* gfxPos, Gfx* arg2, Actor* actor, f32 arg4, s32 arg5, s32* arg6) {
+    Mtx sp300, sp2C0, sp280, sp240;
+    Mtx sp200, sp1C0;
+    Mtx sp180, sp140;
+    Mtx sp100, spC0;
+    Mtx sp80, sp40;
+
+    arg4 *= actor->sizeScalar;
+    actor->unk_E8 *= actor->sizeScalar;
+    guTranslate(&arg0->actorTranslate[*arg6], actor->pos.x, actor->pos.y + actor->unk_E8, actor->pos.z);
+    if (actor->actorID == YELLOW_ANT && actor->userVariables[0] > 0) {
+        guRotate(&sp300, actor->unk_90 - actor->unk_134[2], 0.0f, 1.0f, 0.0f);
+        guRotate(&sp2C0, actor->unk_134[1], 1.0f, 0.0f, 0.0f);
+        guRotate(&sp280, actor->unk_134[0] + 90.0f, 0.0f, 1.0f, 0.0f);
+        guMtxCatL(&sp300, &sp2C0, &sp240);
+        guMtxCatL(&sp240, &sp280, &arg0->actorRotate[*arg6]);
+    } else if (actor->actorID == ANT_QUEEN && (actor->userVariables[1] == 10 || actor->userVariables[1] == 11 || actor->userVariables[1] == 12 || actor->userVariables[1] == 14)) {
+        guRotate(&sp1C0, actor->unk_134[1], 0.0f, 0.0f, 1.0f);
+        guRotate(&sp200, actor->unk_90 + 90.0f, 0.0f, 1.0f, 0.0f);
+        guMtxCatL(&sp1C0, &sp200, &arg0->actorRotate[*arg6]);
+    } else if (actor->actorID == ARMADILLO || actor->actorID == BOULDER || actor->actorID == LIZARD_KONG_BOULDER) {
+        if (actor->actorID == BOULDER && actor->userVariables[0] == 0) {
+            return gfxPos;
+        }
+        guRotate(&sp140, actor->unk_134[3], 1.0f, 0.0f, 0.0f);
+        guRotate(&sp180, actor->unk_90 + 90.0f, 0.0f, 1.0f, 0.0f);
+        guMtxCatL(&sp140, &sp180, &arg0->actorRotate[*arg6]);
+    } else if (actor->actorID == FISH) {
+        if (arg5 == 0) {
+            guRotate(&arg0->actorRotate[*arg6], actor->unk_134[2] + actor->unk_C0 + 90.0f, 0.0f, 1.0f, 0.0f);
+        } else {
+            guRotate(&arg0->actorRotate[*arg6], actor->unk_134[3] + actor->unk_C0 + 90.0f, 0.0f, 1.0f, 0.0f);
+        }
+    } else if (actor->actorID == PILE_OF_BOOKS) {
+        if (actor->userVariables[2] >= 9 && actor->userVariables[2] <= 11) {
+            guRotate(&spC0, actor->unk_134[4], 1.0f, 0.0f, 0.0f);
+        } else {
+            guRotate(&spC0, 0.0f, 1.0f, 0.0f, 0.0f);
+        }
+        guRotate(&sp100, actor->unk_90 + 90.0f, 0.0f, 1.0f, 0.0f);
+        guMtxCatL(&spC0, &sp100, &arg0->actorRotate[*arg6]);
+    } else if (actor->actorID == CAKE_BOSS && arg5 == 1) {
+        guRotate(&arg0->actorRotate[*arg6], actor->unk_134[3], 0.0f, 1.0f, 0.0f);
+    } else if (actor->actorID == CAKE_BOSS_STRAWBERRY) {
+        guRotate(&sp40, actor->unk_134[0], 1.0f, 0.0f, 0.0f);
+        guRotate(&sp80, actor->unk_90 + 90.0f, 0.0f, 1.0f, 0.0f);
+        guMtxCatL(&sp40, &sp80, &arg0->actorRotate[*arg6]);
+    } else {
+        guRotate(&arg0->actorRotate[*arg6], actor->unk_C0 + actor->unk_90 + 90.0f, 0.0f, 1.0f, 0.0f);
+    }
+
+    guScale(&arg0->actorScale[*arg6], arg4, arg4, arg4);
+    gSPMatrix(gfxPos++, OS_K0_TO_PHYSICAL(&arg0->actorTranslate[*arg6]), G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+    gSPMatrix(gfxPos++, OS_K0_TO_PHYSICAL(&arg0->actorRotate[*arg6]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+    gSPMatrix(gfxPos++, OS_K0_TO_PHYSICAL(&arg0->actorScale[*arg6]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+    PutDList(&D_800FF8D4, &gfxPos, arg2);
+    gSPPopMatrix(gfxPos++, G_MTX_MODELVIEW);
+    (*arg6)++;
+    return gfxPos;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/1050/func_8002B7BC.s")
 Gfx* func_8002B7BC(graphicStruct* arg0, Gfx* gfxPos);

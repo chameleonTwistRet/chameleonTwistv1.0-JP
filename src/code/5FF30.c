@@ -804,7 +804,7 @@ s32 PutDList(Mtx** arg0, Gfx** arg1, Gfx* arg2) {
                 var_s2 = 0;
                 gSPDisplayList(sp60++, arg2);
                 break;
-            case 1:
+            case G_MTX:
                 temp_t9 = (var_v1->words.w1 - (u32)D_80129730) / sizeof(Mtx);
                 if ((temp_t9 >= 0) && (((temp_t9 < 0x28)))) {
                     gSPMatrix(sp60++, sp64, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
@@ -813,7 +813,7 @@ s32 PutDList(Mtx** arg0, Gfx** arg1, Gfx* arg2) {
                     gSPMatrix(sp60++, var_v1->words.w1, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
                 }
                 break;
-            case 6:
+            case G_DL:
                 PutDList(&sp64, &sp60, (Gfx*)var_v1->words.w1);
                 break;
         }

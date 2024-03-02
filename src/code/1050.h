@@ -38,7 +38,7 @@ Gfx* func_80084884(Gfx*);
 void debugMain(void);
 Gfx* Shadows_Draw(graphicStruct*, Gfx*);
 Gfx* func_800C3B50(graphicStruct*, Gfx*);
-
+s32 PutDList(Mtx** arg0, Gfx** arg1, Gfx* arg2);
 
 
 /* Ext Variables */
