@@ -566,7 +566,7 @@ typedef struct Actor {
     /* 0x004 */ s32 actorIndex;
     /* 0x008 */ s32 actorState;//enum, 0 == idle, 1 == on tongue, 2 == in mouth, 3 == spit
     /* 0x00C */ s32 posOnTongue;//the segment iirc
-    /* 0x010 */ s32 globalTimer;
+    /* 0x010 */ u32 globalTimer;
     /* 0x014 */ s32 touched; //0 == false. 1 == true.
     /* 0x018 */ s32 hit; //triggered when hit
     /* 0x01C */ s32 tongueBumpSeg; //the segment at which the tongue was bumped back

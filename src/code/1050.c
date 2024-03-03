@@ -140,41 +140,141 @@ Gfx* func_8002A4C4(graphicStruct*, Gfx*, PlayerActor*, Tongue*, s32);
 #pragma GLOBAL_ASM("asm/nonmatchings/code/1050/func_8002A824.s")
 Gfx* func_8002A824(graphicStruct*, Gfx*, PlayerActor*, Tongue*, s32);
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/1050/func_8002AE3C.s")
-void func_8002AE3C(void);
+void func_8002AE3C(void) {
+    s32 i;
+    f32 scale;
+    s32 s1;
+    s32 a1;
+    s32 temp = 15;
 
-Gfx* func_8002B118(graphicStruct* arg0, Gfx* gfxPos, Gfx* arg2, Actor* actor, f32 arg4, s32 arg5, s32* arg6) {
+    for (i = 0; i < MAX_ACTORS; i++) {
+        scale = 2.0f;
+        a1 = FALSE;
+
+        if (gActors[i].actorState == 2) {
+            continue;
+        }
+
+        
+
+        if (func_80026C78(&gActors[i])) {
+            continue;
+        }
+
+        if (gActors[i].actorID >= BIG_FEET_POWER_UP &&
+            gActors[i].actorID <= SHRINK_ENEMY_POWER_UP &&
+            gActors[i].userVariables[1] > gActors[i].unk_124 - 30 &&
+            gActors[i].globalTimer % 2 != 0) {
+            continue;
+        }
+
+        switch(gActors[i].actorID) {
+            case R_HEART:
+            case FALLING_R_HEART:
+                s1 = 19;
+                break;
+            case O_HEART:
+                s1 = 20;
+                scale = 2.2f;
+                break;
+            case Y_HEART:
+                s1 = 21;
+                scale = 2.4f;
+                break;
+            case CROWN:
+                s1 = 18;
+                scale = 2.5f;
+                break;
+            case CARROT:
+                s1 = 26;
+                break;
+            case UNK_65:
+                s1 = 26;
+                break;
+            case TIME_STOP_POWER_UP:
+                s1 = 27;
+                scale = 2.2f;
+                break;
+            case BIG_FEET_POWER_UP:
+                s1 = 22;
+                scale = 2.5f;
+                break;
+            case BIG_HEAD_POWER_UP:
+                s1 = 23;
+                scale = 2.5f;
+                break;
+            case SHRINK_POWER_UP:
+                s1 = 24;
+                scale = 2.5f;
+                break;
+            case SHRINK_ENEMY_POWER_UP:
+                s1 = 25;
+                scale = 2.5f;
+                break;
+            case BL_BOSS_SEGMENT:
+                if (gActors[i].globalTimer < 100) {
+                    continue;
+                }
+                if (gActors[i].userVariables[3] > 0 && gActors[i].userVariables[3] <= 10) {
+                    f32 f16 = temp * (1 - gActors[i].userVariables[3]) + 150;
+                    func_8005747C(gActors[i].pos.x, 
+                                  gActors[i].pos.y + (gActors[i].unknownPositionThings[0].unk_10 + f16) * 0.5f,
+                                  gActors[i].pos.z,
+                                  f16 + 2.0f * gActors[i].unknownPositionThings[0].unk_0C,
+                                  f16 + 2.0f * gActors[i].unknownPositionThings[0].unk_0C,
+                                  (f32)(gTimer % 32) / 32,
+                                  gActors[i].userVariables[3] >= 3 && gActors[i].userVariables[3] < 10 ? 0xD3 : 0x2B);
+                }
+                a1 = TRUE;
+                break;
+            default:
+                continue;
+        }
+        if (!a1) {
+            func_8005747C(gActors[i].pos.x, 
+                          gActors[i].pos.y + gActors[i].unknownPositionThings[0].unk_10 * 0.5f,
+                          gActors[i].pos.z,
+                          scale * gActors[i].unknownPositionThings[0].unk_0C,
+                          scale * gActors[i].unknownPositionThings[0].unk_0C,
+                          (f32)(gTimer % 31) / 32,
+                          s1);
+        }
+    }
+
+}
+
+Gfx* func_8002B118(graphicStruct* arg0, Gfx* gfxPos, Gfx* dlist, Actor* actor, f32 scale, s32 arg5, s32* mtxIndex) {
     Mtx sp300, sp2C0, sp280, sp240;
     Mtx sp200, sp1C0;
     Mtx sp180, sp140;
     Mtx sp100, spC0;
     Mtx sp80, sp40;
 
-    arg4 *= actor->sizeScalar;
+    scale *= actor->sizeScalar;
     actor->unk_E8 *= actor->sizeScalar;
-    guTranslate(&arg0->actorTranslate[*arg6], actor->pos.x, actor->pos.y + actor->unk_E8, actor->pos.z);
+    guTranslate(&arg0->actorTranslate[*mtxIndex], actor->pos.x, actor->pos.y + actor->unk_E8, actor->pos.z);
     if (actor->actorID == YELLOW_ANT && actor->userVariables[0] > 0) {
         guRotate(&sp300, actor->unk_90 - actor->unk_134[2], 0.0f, 1.0f, 0.0f);
         guRotate(&sp2C0, actor->unk_134[1], 1.0f, 0.0f, 0.0f);
         guRotate(&sp280, actor->unk_134[0] + 90.0f, 0.0f, 1.0f, 0.0f);
         guMtxCatL(&sp300, &sp2C0, &sp240);
-        guMtxCatL(&sp240, &sp280, &arg0->actorRotate[*arg6]);
+        guMtxCatL(&sp240, &sp280, &arg0->actorRotate[*mtxIndex]);
     } else if (actor->actorID == ANT_QUEEN && (actor->userVariables[1] == 10 || actor->userVariables[1] == 11 || actor->userVariables[1] == 12 || actor->userVariables[1] == 14)) {
         guRotate(&sp1C0, actor->unk_134[1], 0.0f, 0.0f, 1.0f);
         guRotate(&sp200, actor->unk_90 + 90.0f, 0.0f, 1.0f, 0.0f);
-        guMtxCatL(&sp1C0, &sp200, &arg0->actorRotate[*arg6]);
+        guMtxCatL(&sp1C0, &sp200, &arg0->actorRotate[*mtxIndex]);
     } else if (actor->actorID == ARMADILLO || actor->actorID == BOULDER || actor->actorID == LIZARD_KONG_BOULDER) {
         if (actor->actorID == BOULDER && actor->userVariables[0] == 0) {
             return gfxPos;
         }
         guRotate(&sp140, actor->unk_134[3], 1.0f, 0.0f, 0.0f);
         guRotate(&sp180, actor->unk_90 + 90.0f, 0.0f, 1.0f, 0.0f);
-        guMtxCatL(&sp140, &sp180, &arg0->actorRotate[*arg6]);
+        guMtxCatL(&sp140, &sp180, &arg0->actorRotate[*mtxIndex]);
     } else if (actor->actorID == FISH) {
         if (arg5 == 0) {
-            guRotate(&arg0->actorRotate[*arg6], actor->unk_134[2] + actor->unk_C0 + 90.0f, 0.0f, 1.0f, 0.0f);
+            guRotate(&arg0->actorRotate[*mtxIndex], actor->unk_134[2] + actor->unk_C0 + 90.0f, 0.0f, 1.0f, 0.0f);
         } else {
-            guRotate(&arg0->actorRotate[*arg6], actor->unk_134[3] + actor->unk_C0 + 90.0f, 0.0f, 1.0f, 0.0f);
+            guRotate(&arg0->actorRotate[*mtxIndex], actor->unk_134[3] + actor->unk_C0 + 90.0f, 0.0f, 1.0f, 0.0f);
         }
     } else if (actor->actorID == PILE_OF_BOOKS) {
         if (actor->userVariables[2] >= 9 && actor->userVariables[2] <= 11) {
@@ -183,24 +283,24 @@ Gfx* func_8002B118(graphicStruct* arg0, Gfx* gfxPos, Gfx* arg2, Actor* actor, f3
             guRotate(&spC0, 0.0f, 1.0f, 0.0f, 0.0f);
         }
         guRotate(&sp100, actor->unk_90 + 90.0f, 0.0f, 1.0f, 0.0f);
-        guMtxCatL(&spC0, &sp100, &arg0->actorRotate[*arg6]);
+        guMtxCatL(&spC0, &sp100, &arg0->actorRotate[*mtxIndex]);
     } else if (actor->actorID == CAKE_BOSS && arg5 == 1) {
-        guRotate(&arg0->actorRotate[*arg6], actor->unk_134[3], 0.0f, 1.0f, 0.0f);
+        guRotate(&arg0->actorRotate[*mtxIndex], actor->unk_134[3], 0.0f, 1.0f, 0.0f);
     } else if (actor->actorID == CAKE_BOSS_STRAWBERRY) {
         guRotate(&sp40, actor->unk_134[0], 1.0f, 0.0f, 0.0f);
         guRotate(&sp80, actor->unk_90 + 90.0f, 0.0f, 1.0f, 0.0f);
-        guMtxCatL(&sp40, &sp80, &arg0->actorRotate[*arg6]);
+        guMtxCatL(&sp40, &sp80, &arg0->actorRotate[*mtxIndex]);
     } else {
-        guRotate(&arg0->actorRotate[*arg6], actor->unk_C0 + actor->unk_90 + 90.0f, 0.0f, 1.0f, 0.0f);
+        guRotate(&arg0->actorRotate[*mtxIndex], actor->unk_C0 + actor->unk_90 + 90.0f, 0.0f, 1.0f, 0.0f);
     }
 
-    guScale(&arg0->actorScale[*arg6], arg4, arg4, arg4);
-    gSPMatrix(gfxPos++, OS_K0_TO_PHYSICAL(&arg0->actorTranslate[*arg6]), G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
-    gSPMatrix(gfxPos++, OS_K0_TO_PHYSICAL(&arg0->actorRotate[*arg6]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
-    gSPMatrix(gfxPos++, OS_K0_TO_PHYSICAL(&arg0->actorScale[*arg6]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
-    PutDList(&D_800FF8D4, &gfxPos, arg2);
+    guScale(&arg0->actorScale[*mtxIndex], scale, scale, scale);
+    gSPMatrix(gfxPos++, OS_K0_TO_PHYSICAL(&arg0->actorTranslate[*mtxIndex]), G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+    gSPMatrix(gfxPos++, OS_K0_TO_PHYSICAL(&arg0->actorRotate[*mtxIndex]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+    gSPMatrix(gfxPos++, OS_K0_TO_PHYSICAL(&arg0->actorScale[*mtxIndex]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+    PutDList(&D_800FF8D4, &gfxPos, dlist);
     gSPPopMatrix(gfxPos++, G_MTX_MODELVIEW);
-    (*arg6)++;
+    (*mtxIndex)++;
     return gfxPos;
 }
 
