@@ -69,7 +69,7 @@ void func_80026FB8(graphicStruct *arg0, Mtx *arg1, u32 arg2, f32 arg3, f32 arg4,
     func_8005747C(gActors[arg2].pos.x + xPos, gActors[arg2].pos.y + yPos + arg4, gActors[arg2].pos.z + zPos, arg3, arg3, 0.0f, arg5);
 }
 
-void func_80027138(void* arg0, s32* arg1, s32* arg2, s32* arg3) {
+void func_80027138(void* arg0, s32* arg1, s32* arg2, Unk_8002B7BC** arg3) {
     void* var_a2;
     s32* var_v1;
 
@@ -93,9 +93,9 @@ void func_80027138(void* arg0, s32* arg1, s32* arg2, s32* arg3) {
     *arg2 = *(s32*)var_a2;
     
     if (!IS_SEGMENTED(var_v1[2])) {
-        *arg3 = var_v1[2];
+        *arg3 = (Unk_8002B7BC*)var_v1[2];
     } else {
-        *arg3 = (s32)SEGMENTED_TO_VIRTUAL(var_v1[2]);
+        *arg3 = (Unk_8002B7BC*)SEGMENTED_TO_VIRTUAL(var_v1[2]);
     }
 }
 
@@ -153,9 +153,7 @@ void func_8002AE3C(void) {
 
         if (gActors[i].actorState == 2) {
             continue;
-        }
-
-        
+        }        
 
         if (func_80026C78(&gActors[i])) {
             continue;
@@ -304,8 +302,182 @@ Gfx* func_8002B118(graphicStruct* arg0, Gfx* gfxPos, Gfx* dlist, Actor* actor, f
     return gfxPos;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/1050/func_8002B7BC.s")
-Gfx* func_8002B7BC(graphicStruct* arg0, Gfx* gfxPos);
+Gfx* func_8002B7BC(graphicStruct* arg0, Gfx* gfxPos) {
+    s32 i;
+    s32 sp178 = 0;
+    f32 scale1;
+    Gfx* gfx1;
+
+    for (i = 0; i < MAX_ACTORS; i++) {
+        if (gActors[i].actorID == ACTOR_NULL) {
+            continue;
+        }
+
+        if (gActors[i].actorState == 2 || gActors[i].actorState == 4 && (gActors[i].unk_C8 & 1) && D_80174980 != 3 || func_80026C78(&gActors[i])) {
+            continue;
+        }
+        
+        switch (gActors[i].actorID) {
+            case YELLOW_ANT:
+                gActors[i].unk_E8 = gActors[i].unk_134[5] - 40.0f;
+                gfxPos = func_8002B118(arg0, gfxPos, D_3057250, &gActors[i], 3.0f, 0, &sp178);
+                break;
+            case ANT_QUEEN:
+                gActors[i].unk_E8 = gActors[i].unk_134[5];
+                gfxPos = func_8002B118(arg0, gfxPos, D_300EFC0, &gActors[i], 4.0f, 0, &sp178);
+                break;
+            case BL_BOSS_SEGMENT:
+                if (gActors[i].globalTimer >= 100) {
+                    if (gActors[i].userVariables[3] == 0) {
+                        gActors[i].unk_E8 = 0.0f;
+                        gfxPos = func_8002B118(arg0, gfxPos, D_3007EA0, &gActors[i], 10.0f, 0, &sp178);
+                    } else if (gActors[i].userVariables[3] == 10) {
+                        gActors[i].unk_E8 = 0;
+                        gfxPos = func_8002B118(arg0, gfxPos, D_3008428, &gActors[i], 10.0f, 0, &sp178);
+                    }
+                }
+                break;
+            case CANNON:
+                gActors[i].unk_E8 = 0.0f;
+                gfxPos = func_8002B118(arg0, gfxPos, D_3043F60, &gActors[i], 4.0f, 0, &sp178);
+                break;
+            case UNK_1F:
+                gActors[i].unk_E8 = 0.0f;
+                gfxPos = func_8002B118(arg0, gfxPos, D_3012460, &gActors[i], 2.0f, 0, &sp178);
+                break;
+            case POGO:
+                gActors[i].unk_E8 = 0.0f;
+                gfxPos = func_8002B118(arg0, gfxPos, D_3053ED0, &gActors[i], 3.0f, 0, &sp178);
+                break;
+            case CAKE_BOSS:
+                gActors[i].unk_E8 = 0.0f;
+                gfxPos = func_8002B118(arg0, gfxPos, D_30081F8, &gActors[i], 8.0f, 0, &sp178);
+                gActors[i].unk_E8 = 0.0f;
+                gfxPos = func_8002B118(arg0, gfxPos, D_30093A8, &gActors[i], 8.0f, 1, &sp178);
+                break;
+            case CAKE_BOSS_STRAWBERRY:
+                if (gActors[i].unk_128 == 6) {
+                    scale1 = 16.0f;
+                } else {
+                    scale1 = 8.0f;
+                }
+                gActors[i].unk_E8 = 0.0f;
+                //gfxPos = func_8002B118(arg0, gfxPos, D_300A9E0, &gActors[i], gActors[i].unk_128 == 6 ? 16.0f : 8.0f, 0, &sp178);
+                gfxPos = func_8002B118(arg0, gfxPos, D_300A9E0, &gActors[i], scale1, 0, &sp178);
+                break;
+            case BOWLING_PINS:
+                if (D_800FE400 == 0) {
+                    gfx1 = D_30545C8;
+                } else {
+                    gfx1 = D_3056428;
+                }
+                gActors[i].unk_E8 = 0.0f;
+                gfxPos = func_8002B118(arg0, gfxPos, gfx1, &gActors[i], 3.0f, 0, &sp178);
+                break;
+            case ARROWS:
+                gActors[i].unk_E8 = 50.0f;
+                gfxPos = func_8002B118(arg0, gfxPos, D_3044498, &gActors[i], 3.0f, 0, &sp178);
+                break;
+            case CHOMPER:
+                scale1 = gActors[i].unk_164 * 6.0f;
+                gActors[i].unk_E8 = 0.0f;
+                gfxPos = func_8002B118(arg0, gfxPos, D_30466C8, &gActors[i], scale1, 0, &sp178);
+                break;
+            case BOULDER:
+                gActors[i].unk_E8 = 0.0f;
+                gfxPos = func_8002B118(arg0, gfxPos, D_3049EB0, &gActors[i], 2.0f, 0, &sp178);
+                break;
+            case ARMADILLO:
+                gActors[i].unk_E8 = gActors[i].unk_134[4];
+                gfxPos = func_8002B118(arg0, gfxPos, D_300CED0, &gActors[i], 3.0f, 0, &sp178);
+                break;
+            case SANDAL:
+                gActors[i].unk_E8 = 0.0f;
+                gfxPos = func_8002B118(arg0, gfxPos, D_306DDC0, &gActors[i], 2.0f, 0, &sp178);
+                break;
+            case METAL_SHEET:
+                gActors[i].unk_E8 = 0.0f;
+                gfxPos = func_8002B118(arg0, gfxPos, D_306F3C8, &gActors[i], 2.0f, 0, &sp178);
+                break;
+            case SCROLL:
+                gActors[i].unk_E8 = 0.0f;
+                gfxPos = func_8002B118(arg0, gfxPos, D_30708F0, &gActors[i], 3.0f, 0, &sp178);
+                break;
+            case FIRE_SPITTER:
+                gActors[i].unk_E8 = gActors[i].unknownPositionThings[0].unk_10 / 2;
+                gfxPos = func_8002B118(arg0, gfxPos, D_30740B0, &gActors[i], 2.0f, 0, &sp178);
+                break;
+            case PILE_OF_BOOKS:
+                gActors[i].unk_E8 = -60.0f;
+                gfxPos = func_8002B118(arg0, gfxPos, D_3010220, &gActors[i], 6.0f, 0, &sp178);
+                break;
+            case PILE_OF_BOOKS_ARM_SPITTER:
+                gActors[i].unk_E8 = gActors[i].unknownPositionThings[0].unk_10 / 2;
+                gfxPos = func_8002B118(arg0, gfxPos, D_3013390, &gActors[i], 3.0f, 0, &sp178);
+                break;
+            case GOLEM:
+                gActors[i].unk_E8 = 0.0f;
+                gfxPos = func_8002B118(arg0, gfxPos, D_3058750, &gActors[i], 4.0f, 0, &sp178);
+                break;
+            case SPIDER_SPAWNER:
+                gActors[i].unk_E8 = 0.0f;
+                gfxPos = func_8002B118(arg0, gfxPos, D_30595A8, &gActors[i], 2.0f, 0, &sp178);
+                break;
+            case FISH:
+                gActors[i].unk_E8 = 0.0f;
+                gfxPos = func_8002B118(arg0, gfxPos, D_305A738, &gActors[i], 1.4f, 0, &sp178);
+                gfxPos = func_8002B118(arg0, gfxPos, D_305B528, &gActors[i], 1.4f, 1, &sp178);
+                break;
+            case LIZARD_KONG_BOULDER:
+                gActors[i].unk_E8 = gActors[i].unknownPositionThings[0].unk_10 / 2;
+                gfxPos = func_8002B118(arg0, gfxPos, D_3011318, &gActors[i], 2.0f, 0, &sp178);
+                break;
+            case LIZARD_KONG:
+                gActors[i].unk_E8 = 0.0f;
+                gfxPos = func_8002B118(arg0, gfxPos, D_300DB48, &gActors[i], 3.0f, 0, &sp178);
+                if (gActors[i].unk_EC == 1 && gActors[i].unk_F0 > 25 && gActors[i].unk_F0 < 62) {
+                    s32 unused;
+                    Unk_8002B7BC* sp168;
+                    Mtx sp128;
+                    Mtx spE8;
+                    Mtx spA8;
+                    s32 spA4;
+                    s32 spA0;
+                    f32 sp9C, sp98, sp94;
+                    f32 sp90, sp8C, sp88;
+
+                    sp168 = NULL;
+                    guRotate(&spE8, gActors[i].unk_90 + 90.0f, 0, 1.0f, 0);
+                    func_80027138(&D_3025DA8, &spA4, &spA0, &sp168);
+
+                    sp128 = sp168->unk_180[(gActors[i].unk_F0 / 2) * spA4];
+                    guMtxCatL(&sp128, &spE8, &spA8);
+                    guMtxXFML(&spA8, -120.0f, 0.0f, 0.0f, &sp9C, &sp98, &sp94);
+
+                    sp128 = sp168->unk_200[(gActors[i].unk_F0 / 2) * spA4];
+                    guMtxCatL(&sp128, &spE8, &spA8);
+                    guMtxXFML(&spA8, 120.0f, 0.0f, 0.0f, &sp90, &sp8C, &sp88);
+                    guTranslate(&arg0->actorTranslate[sp178], gActors[i].pos.x + 3.0f * ((sp9C + sp90) * 0.5f),
+                                                              gActors[i].pos.y + 3.0f * ((sp98 + sp8C) * 0.5f),
+                                                              gActors[i].pos.z + 3.0f * ((sp94 + sp88) * 0.5f));
+                    guRotate(&arg0->actorRotate[sp178], gActors[i].unk_90 + 90.0f, 0, 1.0f, 0);
+                    guScale(&arg0->actorScale[sp178], 2.0f, 2.0f, 2.0f);
+                    gSPMatrix(gfxPos++, OS_K0_TO_PHYSICAL(&arg0->actorTranslate[sp178]), G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+                    gSPMatrix(gfxPos++, OS_K0_TO_PHYSICAL(&arg0->actorRotate[sp178]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+                    gSPMatrix(gfxPos++, OS_K0_TO_PHYSICAL(&arg0->actorScale[sp178]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+                    PutDList(&D_800FF8D4, &gfxPos, D_3011318);
+                    gSPPopMatrix(gfxPos++, G_MTX_MODELVIEW);
+                }
+                break;
+            case POPCORN_BUCKET:
+                gActors[i].unk_E8 = 0.0f;
+                gfxPos = func_8002B118(arg0, gfxPos, D_3012460, &gActors[i], 2.0f, 0, &sp178);
+                break;
+        }
+    }
+
+    return gfxPos;
+}
 
 #ifdef NON_MATCHING
 Gfx* func_8002C280(graphicStruct* arg0, Gfx* gfxPos) {

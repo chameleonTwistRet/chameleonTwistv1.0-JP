@@ -4,7 +4,11 @@
 #include "common.h"
 
 /* Structs */
-
+typedef struct Unk_8002B7BC {
+    /* 0x000 */ char unk_00[0x180];
+    /* 0x180 */ Mtx unk_180[2];
+    /* 0x200 */ Mtx unk_200[1]; // count unknown
+} Unk_8002B7BC; // size unknown
 
 /* Functions */
 void func_8002CB6C(Gfx*, graphicStruct*, s32);
@@ -60,5 +64,35 @@ extern s16 D_800FFEC0;
 extern Gfx D_1015A70[];
 extern Gfx D_1015AB8[];
 extern Gfx D_1015AE8[];
+extern Gfx D_3057250[];
+extern Gfx D_300EFC0[];
+extern Gfx D_3007EA0[];
+extern Gfx D_3008428[];
+extern Gfx D_3043F60[];
+extern Gfx D_3012460[];
+extern Gfx D_3053ED0[];
+extern Gfx D_30081F8[];
+extern Gfx D_30093A8[];
+extern Gfx D_300A9E0[];
+extern Gfx D_30545C8[];
+extern Gfx D_3056428[];
+extern Gfx D_3044498[];
+extern Gfx D_30466C8[];
+extern Gfx D_3049EB0[];
+extern Gfx D_300CED0[];
+extern Gfx D_306DDC0[];
+extern Gfx D_306F3C8[];
+extern Gfx D_30708F0[];
+extern Gfx D_30740B0[];
+extern Gfx D_3010220[];
+extern Gfx D_3013390[];
+extern Gfx D_3058750[];
+extern Gfx D_30595A8[];
+extern Gfx D_305A738[];
+extern Gfx D_305B528[];
+extern Gfx D_3011318[];
+extern Gfx D_300DB48[];
+extern void* D_3025DA8;
+extern s32 D_800FE400;
 
 #endif // _1050_H_
