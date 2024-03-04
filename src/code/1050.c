@@ -1,5 +1,6 @@
 #include "1050.h"
 #include "battle.h"
+#include "sprite.h"
 
 void bootproc(void) {
     __osInitialize_common();
@@ -24,8 +25,61 @@ void idleproc(void *arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/1050/mainproc.s")
 
-void func_80025EF0(PlayerActor*, Tongue*, s32);
-#pragma GLOBAL_ASM("asm/nonmatchings/code/1050/func_80025EF0.s")
+//#pragma GLOBAL_ASM("asm/nonmatchings/code/1050/func_80025EF0.s")
+void func_80025EF0(PlayerActor* arg0, Tongue* arg1, s32 arg2) {
+    s32 sp124;
+    s32 sp120;
+    s32 sp11C;
+    s32 sp118;
+    Unk_8002B7BC* sp114 = NULL;
+    Mtx* sp110 = D_800FF8D4;
+
+    sp120 = arg0->globalTimer * 0.8f;
+    func_8007AC2C(&sp120);
+
+    if (arg0->playerHURTSTATE == 3 && gTimer % 2 != 0) {
+        return;
+    }
+
+    if (D_80174980 == 5) {
+        func_80027240(&D_800FF8D4, gSpriteListings[207].bitmapP, gTimer / 2, gSpriteListings[207].tileCountY);
+        if (gTimer == 20) {
+            func_800698A4(22.0f, 154.0f, 60, D_800F686C);
+        }
+        if (gTimer == 120) {
+            func_800698A4(22.0f, 154.0f, 60, D_800F6870);
+        }
+    } else if (arg0->playerHURTSTATE == 4) {
+        func_80027138(&D_1045BF4, &sp11C, &sp118, &sp114);
+        func_80027240(&D_800FF8D4, &sp114->unk_00, MAX(arg0->playerHURTTIMER, sp118 - 1), sp11C);
+    } else if (arg0->amountLeftToShoot != 0) {
+        func_80027138(&D_1045BAC, &sp11C, &sp118, &sp114);
+        func_80027240(&D_800FF8D4, &sp114->unk_00, MAX(arg0->amountLeftToShoot, sp118 - 1), sp11C);
+    } else if (arg0->vaultFall != 0) {
+        func_80027138(&D_1045BB8, &sp11C, &sp118, &sp114);
+        func_80027240(&D_800FF8D4, &sp114->unk_00, sp118 - arg0->vaultFall, sp11C);
+    } else if (arg0->playerHURTSTATE == 1) {
+        sp124 = arg0->playerHURTTIMER - 10;
+        func_80027138(&D_1045BDC, &sp11C, &sp118, &sp114);
+        if (sp124 < 0) {
+            sp124 = 0;
+        } else if (sp124 > sp118 - 1) {
+            sp124 = sp118 - 1;
+        }
+        func_80027240(&D_800FF8D4, sp114, sp124, sp11C);
+    } else if (arg0->playerHURTSTATE == 2) {
+        if (arg0->hp > 0) {
+            sp124 = arg0->playerHURTTIMER;
+        } else {
+            sp124 = arg0->playerHURTTIMER / 3;
+        }       
+        func_80027138(&D_1045BDC, &sp11C, &sp118, &sp114);
+        if (sp124 > sp118 - 1) {
+            sp124 = sp118 - 1;
+        }
+        func_80027240(&D_800FF8D4, sp114, sp124, sp11C);
+    }
+}
 
 s32 func_80026C78(Actor* actor) {
     return 1 - func_800AF604(actor->pos.x, actor->pos.y, actor->pos.z, 8000.0f);

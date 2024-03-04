@@ -5,7 +5,8 @@
 
 /* Structs */
 typedef struct Unk_8002B7BC {
-    /* 0x000 */ char unk_00[0x180];
+    /* 0x000 */ Mtx unk_00;
+    /* 0x040 */ char unk_40[0x140];
     /* 0x180 */ Mtx unk_180[2];
     /* 0x200 */ Mtx unk_200[1]; // count unknown
 } Unk_8002B7BC; // size unknown
@@ -45,6 +46,9 @@ Gfx* func_800C3B50(graphicStruct*, Gfx*);
 s32 PutDList(Mtx** arg0, Gfx** arg1, Gfx* arg2);
 void func_80080C28(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, u8 arg6, u8 arg7, u8 arg8, u8 arg9);
 void func_80058044(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, s32 arg7);
+void func_800698A4(f32, f32, s32, s32);
+void func_80027240(Mtx** arg0, Mtx* arg1, s32 arg2, s32 arg3);
+void func_80027138(void* arg0, s32* arg1, s32* arg2, Unk_8002B7BC** arg3);
 
 /* Ext Variables */
 extern graphicStruct gGraphicsList[2];
@@ -101,5 +105,11 @@ extern Gfx* D_800F0650[];
 extern Gfx D_1015CB0[];
 extern Gfx D_1015BD0[];
 extern Gfx D_2006160[];
+extern s32 D_800F686C;
+extern s32 D_800F6870;
+extern void* D_1045BF4;
+extern void* D_1045BAC;
+extern void* D_1045BB8;
+extern void* D_1045BDC;
 
 #endif // _1050_H_
