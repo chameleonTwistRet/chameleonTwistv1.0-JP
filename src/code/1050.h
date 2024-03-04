@@ -94,5 +94,11 @@ extern Gfx D_3011318[];
 extern Gfx D_300DB48[];
 extern void* D_3025DA8;
 extern s32 D_800FE400;
+extern Gfx D_8008B58[];
+extern Gfx* D_800F0638[];
+extern Gfx* D_800F0650[];
+extern Gfx D_1015CB0[];
+extern Gfx D_1015BD0[];
+extern Gfx D_2006160[];
 
 #endif // _1050_H_

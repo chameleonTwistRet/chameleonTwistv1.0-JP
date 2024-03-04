@@ -107,25 +107,15 @@ typedef struct PlayerActor {
     /* 0x0D0 */ u32 playerHURTTIMER;
     /* 0x0D4 */ u32 playerHURTANIM;
     /* 0x0D8 */ u32 playerHURTBY;
-    /* 0x0DC */ f32 unk_DC;
-    /* 0x0E0 */ f32 unk_E0;
-    /* 0x0E4 */ f32 unk_E4;
-    /* 0x0E8 */ f32 unk_E8;
-    /* 0x0EC */ f32 unk_EC;
-    /* 0x0F0 */ f32 unk_F0;
-    /* 0x0F4 */ f32 unk_F4;
-    /* 0x0F8 */ f32 unk_F8;
-    /* 0x0FC */ f32 unk_FC;
-    /* 0x100 */ f32 unk_100;
-    /* 0x104 */ f32 unk_104;
-    /* 0x108 */ f32 unk_108;
+    /* 0x0DC */ f32 unk_DC[6];
+    /* 0x0F4 */ f32 unk_F4[6];
     /* 0x10C */ f32 timerDown;
     /* 0x110 */ f32 reticleSize;
     /* 0x114 */ s32 active; //0x00 = no, 0x01 = yes
     /* 0x118 */ s32 exists; //0x00 = no, 0x01 = yes
     /* 0x11C */ u32 power; //enum of power it has
-    /* 0x120 */ u32 powerTimer; 
-    /* 0x124 */ u32 powerTimerTill; 
+    /* 0x120 */ s32 powerTimer; 
+    /* 0x124 */ s32 powerTimerTill; 
     /* 0x128 */ f32 tongueYOffset; 
     /* 0x12C */ f32 tongueSeperation; 
 } PlayerActor; //sizeof 0x130
@@ -146,14 +136,10 @@ typedef struct Tongue { // at 80169268 (for p1)
     /* 0x0C */ s32 poleSegmentAt;
     /* 0x10 */ u32 timer;
     /* 0x14 */ s32 cameraSegmentAt;//where to point the camera
-    /* 0x18 */ f32 tongueXs[32]; //all (including the rope model) positions
-    /* 0x98 */ f32 xpos33;//the last piece is special to the positions and angle
-    /* 0x9C */ f32 tongueYs[32];
-    /* 0x11C*/ f32 ypos33;
-    /* 0x120*/ f32 tongueZs[32];
-    /* 0x1A0*/ f32 zpos33;
-    /* 0x1A4*/ f32 tongueAngles[32];
-    /* 0x224*/ f32 anglepos33;
+    /* 0x18 */ f32 tongueXs[33]; //all (including the rope model) positions
+    /* 0x9C */ f32 tongueYs[33];
+    /* 0x120*/ f32 tongueZs[33];
+    /* 0x1A4*/ f32 tongueAngles[33];
     /* 0x228*/ f32 tongueForwards[32];
     /* 0x2A8*/ f32 tongueHalfX[32]; // unsure, axes related though
     /* 0x328*/ f32 tongueHalfZ[32];
@@ -163,9 +149,9 @@ typedef struct Tongue { // at 80169268 (for p1)
     /* 0x3B4*/ u32 onTongue[64];
     /* 0x4B4*/ u32 amountOnTongue; //called "capture_num" in US 1.0
     /* 0x4B8*/ u32 inMouth[64];
-    /* 0x5B8*/ u32 amountInMouth;
+    /* 0x5B8*/ s32 amountInMouth;
     //all of this has to do with vaulting
-    /* 0x5BC*/ f32 reset1;
+    /* 0x5BC*/ f32 reset1[1];
     /* 0x5C0*/ f32 reset2;
     /* 0x5C4*/ f32 reset3;
     /* 0x5C8*/ f32 reset4;

@@ -1,4 +1,5 @@
 #include "1050.h"
+#include "battle.h"
 
 void bootproc(void) {
     __osInitialize_common();
@@ -131,14 +132,158 @@ s32 func_80027650(void) {       // GetHighestActivePlayerIndex
 void func_80027694(graphicStruct* arg0);
 
 //draw player
-#pragma GLOBAL_ASM("asm/nonmatchings/code/1050/func_8002A190.s")
-Gfx* func_8002A190(graphicStruct*, Gfx*, PlayerActor*, Tongue*, s32);
+Gfx* func_8002A190(graphicStruct* arg0, Gfx* gfxPos, PlayerActor* player, Tongue* tongue, s32 playerIndex) {
+    f32 scaleX = 1.4f;
+    f32 scaleY = player->yScale * 1.4f;    
+    f32 scaleZ = 1.4f;
+    f32 sp28 = 25.0f;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/1050/func_8002A4C4.s")
-Gfx* func_8002A4C4(graphicStruct*, Gfx*, PlayerActor*, Tongue*, s32);
+    if (player->power == 3 && (player->powerTimer >= 20 && player->powerTimer <= player->powerTimerTill - 20 || !(gTimer % 2))) {
+        scaleX /= 2.0f;
+        scaleY /= 2.0f;
+        scaleZ /= 2.0f;
+        sp28 /= 2.0f;
+    }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/1050/func_8002A824.s")
-Gfx* func_8002A824(graphicStruct*, Gfx*, PlayerActor*, Tongue*, s32);
+    guTranslate(&arg0->playerTranslate[playerIndex], player->pos.x, player->pos.y - sp28 * player->yScale, player->pos.z);
+    guRotate(&arg0->playerRotate[playerIndex], player->yAngle + 90.0f, 0.0f, 1.0f, 0.0f);
+    if (tongue->amountInMouth < 6) {
+        scaleX *= 1.0f + tongue->amountInMouth / 6.0f;
+        scaleZ *= 1.0f + tongue->amountInMouth / 6.0f * 0.5f;
+    } else {
+        scaleX *= 2.0f;
+        scaleZ *= 1.5f;
+    }
+
+    if (gGameModeCurrent == GAME_MODE_CREDITS) {
+        guScale(&arg0->playerScale[playerIndex], scaleX * 0.9f, scaleY * 0.9f, scaleZ * 0.9f);
+    } else {
+        guScale(&arg0->playerScale[playerIndex], scaleX, scaleY, scaleZ);
+    }
+
+    gSPMatrix(gfxPos++, OS_K0_TO_PHYSICAL(&arg0->playerTranslate[playerIndex]), G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+    gSPMatrix(gfxPos++, OS_K0_TO_PHYSICAL(&arg0->playerRotate[playerIndex]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+    gSPMatrix(gfxPos++, OS_K0_TO_PHYSICAL(&arg0->playerScale[playerIndex]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+    if (player->playerHURTSTATE != 3 || gTimer % 2 == 0) {
+        Gfx* dlist = D_8008B58;
+        if (gSelectedCharacters[playerIndex] <= CHARA_WHITE) {
+            if (Battle_GameType == BATTLE_TYPE_UNK_0) {
+                dlist = D_800F0638[gSelectedCharacters[playerIndex]];
+            } else {
+                dlist = D_800F0650[gSelectedCharacters[playerIndex]];
+            }
+        }
+        PutDList(&D_800FF8D4, &gfxPos, dlist);
+    }
+    gSPPopMatrix(gfxPos++, G_MTX_MODELVIEW);
+    return gfxPos;
+}
+
+Gfx* func_8002A4C4(graphicStruct* arg0, Gfx* gfxPos, PlayerActor* player, Tongue* tongue, s32 playerIndex) {
+    s32 i;
+    
+    for (i = 0; i < 6; i++) {
+        Mtx sp100, spC0;
+        f32 f20 = (player->reticleSize - 1.0f) * 0.5f;
+        f32 scale = 1.0f;
+
+        if (gTimer % 2 == i % 2) {
+            continue;
+        }
+        
+        guTranslate(&arg0->reticuleTranslate[playerIndex][i], player->unk_DC[i], player->pos.y + player->tongueYOffset, player->unk_F4[i]);
+        guRotate(&sp100, player->yAngle + 90.0f, 0.0f, 1.0f, 0.0f);
+        guRotate(&spC0, gTimer * f20 * 30.0f + 45.0f, 0.0f, 0.0f, 1.0f);
+        guMtxCatL(&spC0, &sp100, &arg0->reticuleRotate[playerIndex][i]);
+        scale += f20 * 1.5f + sinf((gTimer % 8) * PI_2 / 8) * f20 * 0.5f;
+        scale *= 0.8f;
+        guScale(&arg0->reticuleScale[playerIndex][i], scale, scale, scale);
+        gSPMatrix(gfxPos++, OS_K0_TO_PHYSICAL(&arg0->reticuleTranslate[playerIndex][i]), G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+        gSPMatrix(gfxPos++, OS_K0_TO_PHYSICAL(&arg0->reticuleRotate[playerIndex][i]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+        gSPMatrix(gfxPos++, OS_K0_TO_PHYSICAL(&arg0->reticuleScale[playerIndex][i]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+        if (tongue->amountInMouth != 0) {
+            gDPSetPrimColor(gfxPos++, 0, 0, 255, 255, 0, 255);
+        } else {
+            gDPSetPrimColor(gfxPos++, 0, 0, 0, 255, 255, 255);
+        }
+        gSPDisplayList(gfxPos++, D_1015CB0);
+        gSPPopMatrix(gfxPos++, G_MTX_MODELVIEW);
+    }
+
+    return gfxPos;
+}
+
+Gfx* func_8002A824(graphicStruct* arg0, Gfx* gfxPos, PlayerActor* player, Tongue* tongue, s32 playerIndex) {
+    s32 i;
+    s32 sp160 = FALSE;
+    f32 f28 = 1.0f;
+    Mtx sp118, spD8;    
+
+    if (player->power == 3) {
+        f28 = 0.5f;
+    }
+    if (tongue->tongueMode == 4 || tongue->tongueMode == 5 || tongue->tongueMode == 11) {
+        sp160 = TRUE;
+    }
+
+    for (i = tongue->poleSegmentAt; i < tongue->segments; i++) {
+        guTranslate(&arg0->tongueTranslate[playerIndex][i], 
+                    tongue->tongueXs[i] + player->pos.x,
+                    tongue->tongueYs[i] + player->pos.y + player->tongueYOffset,
+                    tongue->tongueZs[i] + player->pos.z);
+        if (tongue->vaulting == 1) {
+            
+            guRotate(&sp118, tongue->angleOfVault - 90.0f, 0.0f, 1.0f, 0.0f);
+            guRotate(&spD8, 90.0f - tongue->reset1[i], 1.0f, 0.0f, 0.0f);
+            guMtxCatL(&spD8, &sp118, &arg0->tongueRotate[playerIndex][i]);
+        } else {
+            guRotate(&arg0->tongueRotate[playerIndex][i], tongue->tongueAngles[i] + 90.0f, 0.0f, 1.0f, 0.0f);
+        }
+        if (sp160 && i == tongue->segments - 1) {
+            guScale(&arg0->tongueScale[playerIndex][i], 0.06f * f28, 0.06f * f28, tongue->lastTongueOffset);
+        } else {
+            guScale(&arg0->tongueScale[playerIndex][i], 0.06f * f28, 0.06f * f28, f28);
+        }
+        gSPMatrix(gfxPos++, OS_K0_TO_PHYSICAL(&arg0->tongueTranslate[playerIndex][i]), G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+        gSPMatrix(gfxPos++, OS_K0_TO_PHYSICAL(&arg0->tongueRotate[playerIndex][i]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+        gSPMatrix(gfxPos++, OS_K0_TO_PHYSICAL(&arg0->tongueScale[playerIndex][i]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+
+        if (i < 16) {
+            s32 v1 = i * 220;
+            if (tongue->wallTime != 0 && gTimer % 2) {
+                gDPSetPrimColor(gfxPos++, 0, 0, 255, 35 + v1 / 16, 0, 255);
+            } else {
+                gDPSetPrimColor(gfxPos++, 0, 0, 35 + v1 / 16, 0, 0, 255);
+            }
+        } else {
+            s32 v1 = (i - 16) * 255;
+            if (tongue->wallTime != 0 && gTimer % 2) {
+                gDPSetPrimColor(gfxPos++, 0, 0, 255, 255, v1 / 16, 255);
+            } else {
+                gDPSetPrimColor(gfxPos++, 0, 0, 255, v1 / 16, 0, 255);
+            }
+        }
+
+        gSPDisplayList(gfxPos++, D_1015BD0);
+        gSPPopMatrix(gfxPos++, G_MTX_MODELVIEW);
+    }
+
+    if (sp160) {
+        guTranslate(&arg0->tongueTranslate[playerIndex][32], 
+                    tongue->tongueXs[32] + player->pos.x,
+                    tongue->tongueYs[32] + player->pos.y + player->tongueYOffset,
+                    tongue->tongueZs[32] + player->pos.z);
+        guRotate(&arg0->tongueRotate[playerIndex][32], tongue->tongueAngles[32] + 90.0f, 0.0f, 1.0f, 0.0f);
+        guScale(&arg0->tongueScale[playerIndex][32], 0.12f, 0.12f, 0.12f);
+        gSPMatrix(gfxPos++, OS_K0_TO_PHYSICAL(&arg0->tongueTranslate[playerIndex][32]), G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+        gSPMatrix(gfxPos++, OS_K0_TO_PHYSICAL(&arg0->tongueRotate[playerIndex][32]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+        gSPMatrix(gfxPos++, OS_K0_TO_PHYSICAL(&arg0->tongueScale[playerIndex][32]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+        gSPDisplayList(gfxPos++, D_2006160);
+        gSPPopMatrix(gfxPos++, G_MTX_MODELVIEW);
+    }
+
+    return gfxPos;
+}
 
 void func_8002AE3C(void) {
     s32 i;
@@ -362,7 +507,6 @@ Gfx* func_8002B7BC(graphicStruct* arg0, Gfx* gfxPos) {
                     scale1 = 8.0f;
                 }
                 gActors[i].unk_E8 = 0.0f;
-                //gfxPos = func_8002B118(arg0, gfxPos, D_300A9E0, &gActors[i], gActors[i].unk_128 == 6 ? 16.0f : 8.0f, 0, &sp178);
                 gfxPos = func_8002B118(arg0, gfxPos, D_300A9E0, &gActors[i], scale1, 0, &sp178);
                 break;
             case BOWLING_PINS:

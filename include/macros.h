@@ -7,6 +7,7 @@
 
 // GENERAL MATHS //
 #define PI 3.141592653589793
+#define PI_2 6.283185307179586
 #define SQ(x) ((x)*(x))
 #define SUM_OF_SQUARES(x,y) (SQ(x) + SQ(y))
 #define NORM_2(x,y) (sqrtf(SQ(x) + SQ(y)))
