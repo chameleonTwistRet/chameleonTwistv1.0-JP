@@ -736,7 +736,11 @@ typedef struct bf8{
 
 typedef struct unkStruct {
     /* 0x00 */ s32 unk_00;
-    /* 0x04 */ char unk_04[0x104];
+    /* 0x04 */ char unk_04;
+    /* 0x08 */ f32 unk_08[0x10];
+    /* 0x48 */ f32 unk_48[0x10];
+    /* 0x88 */ f32 unk_88[0x10];
+    /* 0xC8 */ char unk_C8[0x40];
 } unkStruct; //sizeof 0x108
 
 // this struct seems to manage sound effects

@@ -31,7 +31,6 @@ s32 func_80026C78(Actor* actor) {
     return 1 - func_800AF604(actor->pos.x, actor->pos.y, actor->pos.z, 8000.0f);
 }
 
-
 //adjustment for BL_BOSS_SEGMENT
 void func_80026CA8(graphicStruct *arg0, Mtx *arg1, u32 arg2, f32 arg3, s32 arg4) {
     f32 xPos = 0.0f;
@@ -100,12 +99,48 @@ void func_80027138(void* arg0, s32* arg1, s32* arg2, Unk_8002B7BC** arg3) {
     }
 }
 
+void func_80027240(Mtx** arg0, Mtx* arg1, s32 arg2, s32 arg3) {
+    Mtx* mtxPtr = *arg0;
+    s32 i;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/1050/func_80027240.s")
+    for (i = 0; i < arg3; i++) {
+        *mtxPtr++ = arg1[arg2 * arg3 + i];
+    }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/1050/func_800273F8.s")
+    *arg0 = mtxPtr;
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/1050/func_800274F0.s")
+void func_800273F8(s32 actorIndex) {
+    s32 i; 
+    for (i = 0; i < gActors[actorIndex].tongueCollision; i++) {
+        func_80080C28(gActors[actorIndex].pos.x + gActors[actorIndex].unknownPositionThings[i].unk_00,
+                      gActors[actorIndex].pos.y + gActors[actorIndex].unknownPositionThings[i].unk_04 + gActors[actorIndex].unknownPositionThings[i].unk_10 / 2,
+                      gActors[actorIndex].pos.z + gActors[actorIndex].unknownPositionThings[i].unk_08,
+                      gActors[actorIndex].unknownPositionThings[i].unk_0C,
+                      gActors[actorIndex].unknownPositionThings[i].unk_10 / 2,
+                      gActors[actorIndex].unknownPositionThings[i].unk_0C,
+                      100, 100, 100, 100);
+    }
+}
+
+void func_800274F0(Actor* actor) {
+    s32 unused;
+    f32 sp38 = (f32)(gTimer % 31) / 32;
+    f32 sp34 = actor->unknownPositionThings[0].unk_10;
+    unkStruct* sp30 = &D_80172E88[actor->userVariables[0]];    
+
+    func_80058044(actor->pos.x, actor->pos.y + sp34 / 2, actor->pos.z,
+                  sp34 * 3 / 2, sp34 * 3 / 2,
+                  -actor->unk_90, sp38, 7);
+    func_8005747C(sp30->unk_08[actor->userVariables[1]],
+                  sp30->unk_48[actor->userVariables[1]] + sp34 / 2,
+                  sp30->unk_88[actor->userVariables[1]],
+                  sp34, sp34, sp38, 8);
+    func_8005747C(sp30->unk_08[actor->userVariables[2]],
+                  sp30->unk_48[actor->userVariables[2]] + sp34 / 2,
+                  sp30->unk_88[actor->userVariables[2]],
+                  sp34, sp34, sp38, 8);
+}
 
 /**
  * @brief Returns the index of the first active player actor, or 0 if none are active signalling single player.
