@@ -49,6 +49,7 @@ void func_80058044(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f
 void func_800698A4(f32, f32, s32, s32);
 void func_80027240(Mtx** arg0, Mtx* arg1, s32 arg2, s32 arg3);
 void func_80027138(void* arg0, s32* arg1, s32* arg2, Unk_8002B7BC** arg3);
+void func_800703C0(f32* arg0, f32* arg1, f32* arg2, f32 arg3, f32 arg4, f32 arg5, s32 arg6, s32 arg7, s32 arg8);
 
 /* Ext Variables */
 extern graphicStruct gGraphicsList[2];
@@ -111,5 +112,16 @@ extern void* D_1045BF4;
 extern void* D_1045BAC;
 extern void* D_1045BB8;
 extern void* D_1045BDC;
+extern void* D_1045BE8;
+extern void* D_1045BD0;
+extern void* D_1045BC4;
+extern void* D_1045B70;
+extern void* D_1045BA0;
+extern void* D_1045B7C;
+extern s32 D_800F0560;
+extern void* D_1045B88;
+extern f32 D_80168D88;
+extern f32 D_80168D8C;
+extern f32 D_80168D90;
 
 #endif // _1050_H_

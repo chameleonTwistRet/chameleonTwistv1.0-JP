@@ -51,10 +51,18 @@ void func_80025EF0(PlayerActor* arg0, Tongue* arg1, s32 arg2) {
         }
     } else if (arg0->playerHURTSTATE == 4) {
         func_80027138(&D_1045BF4, &sp11C, &sp118, &sp114);
-        func_80027240(&D_800FF8D4, &sp114->unk_00, MAX(arg0->playerHURTTIMER, sp118 - 1), sp11C);
+        sp124 = arg0->playerHURTTIMER;
+        if (sp124 > sp118 - 1) {
+            sp124 = sp118 - 1;
+        }
+        func_80027240(&D_800FF8D4, &sp114->unk_00, sp124, sp11C);
     } else if (arg0->amountLeftToShoot != 0) {
         func_80027138(&D_1045BAC, &sp11C, &sp118, &sp114);
-        func_80027240(&D_800FF8D4, &sp114->unk_00, MAX(arg0->amountLeftToShoot, sp118 - 1), sp11C);
+        sp124 = arg0->amountLeftToShoot;
+        if (sp124 > sp118 - 1) {
+            sp124 = sp118 - 1;
+        }
+        func_80027240(&D_800FF8D4, &sp114->unk_00, sp124, sp11C);
     } else if (arg0->vaultFall != 0) {
         func_80027138(&D_1045BB8, &sp11C, &sp118, &sp114);
         func_80027240(&D_800FF8D4, &sp114->unk_00, sp118 - arg0->vaultFall, sp11C);
@@ -66,18 +74,165 @@ void func_80025EF0(PlayerActor* arg0, Tongue* arg1, s32 arg2) {
         } else if (sp124 > sp118 - 1) {
             sp124 = sp118 - 1;
         }
-        func_80027240(&D_800FF8D4, sp114, sp124, sp11C);
+        func_80027240(&D_800FF8D4, &sp114->unk_00, sp124, sp11C);
     } else if (arg0->playerHURTSTATE == 2) {
         if (arg0->hp > 0) {
             sp124 = arg0->playerHURTTIMER;
         } else {
             sp124 = arg0->playerHURTTIMER / 3;
         }       
-        func_80027138(&D_1045BDC, &sp11C, &sp118, &sp114);
+        func_80027138(&D_1045BE8, &sp11C, &sp118, &sp114);
         if (sp124 > sp118 - 1) {
             sp124 = sp118 - 1;
         }
-        func_80027240(&D_800FF8D4, sp114, sp124, sp11C);
+        func_80027240(&D_800FF8D4, &sp114->unk_00, sp124, sp11C);
+    } else {
+        switch (arg1->tongueMode) {
+            case 1:
+            case 2:
+            case 3:
+                sp124 = arg1->segments;
+                if (sp124 > 3) {
+                    sp124 = 3;
+                }
+                func_80027138(&D_1045BAC, &sp11C, &sp118, &sp114);
+                func_80027240(&D_800FF8D4, &sp114->unk_00, sp124, sp11C);
+                break;
+            case 4:
+                sp124 = arg1->timer % 2 + 4;
+                func_80027138(&D_1045BAC, &sp11C, &sp118, &sp114);
+                func_80027240(&D_800FF8D4, &sp114->unk_00, sp124, sp11C);
+                break;
+            case 5:
+                sp124 = arg1->poleSegmentAt % 6 + 6;
+                func_80027138(&D_1045BAC, &sp11C, &sp118, &sp114);
+                func_80027240(&D_800FF8D4, &sp114->unk_00, sp124, sp11C);
+                break;
+            case 6:
+            case 7:
+                func_80027138(&D_1045BAC, &sp11C, &sp118, &sp114);
+                func_80027240(&D_800FF8D4, &sp114->unk_00, arg1->timer + 12, sp11C);
+                break;
+            case 8:
+            case 9:
+                func_80027138(&D_1045BB8, &sp11C, &sp118, &sp114);
+                func_80027240(&D_800FF8D4, &sp114->unk_00, arg1->segments, sp11C);
+                break;
+            case 11:
+                sp124 = arg1->timer;
+                if (sp124 >= 7) {
+                    sp124 = (sp124 - 7) % 7 + 7;
+                }
+                if (arg0->unkBC > 0) {
+                    func_80027138(&D_1045BD0, &sp11C, &sp118, &sp114);
+                    if (sp124 >= sp118) {
+                        sp124 = sp118 - 1;
+                    }
+                    func_80027240(&D_800FF8D4, &sp114->unk_00, sp124, sp11C);
+                } else {
+                    func_80027138(&D_1045BC4, &sp11C, &sp118, &sp114);
+                    if (sp124 >= sp118) {
+                        sp124 = sp118 - 1;
+                    }
+                    func_80027240(&D_800FF8D4, &sp114->unk_00, sp124, sp11C);
+                }
+                break;
+            default:
+                func_80027138(&D_1045B70, &sp11C, &sp118, &sp114);
+                func_80027240(&D_800FF8D4, &sp114->unk_00, (s32)arg0->globalTimer % sp118, sp11C);
+                break;
+            case 0:
+                if (arg0->canJump != 0) {
+                    if (arg0->vel.y > 0.0f) {
+                        func_80027138(&D_1045BA0, &sp11C, &sp118, &sp114);
+                        func_80027240(&D_800FF8D4, &sp114->unk_00, 0, sp11C);
+                    } else {
+                        func_80027138(&D_1045BA0, &sp11C, &sp118, &sp114);
+                        if (-arg0->vel.y * 8.0f < arg0->pos.y - arg0->yCounter) {
+                            arg0->jumpAnimFrame %= 10;
+                            sp124 = arg0->jumpAnimFrame / 2 + 4;
+                        } else {
+                            if (arg0->jumpAnimFrame < 9) {
+                                arg0->jumpAnimFrame = 9;
+                            }
+                            sp124 = arg0->jumpAnimFrame;
+                            if (sp124 >= sp118) {
+                                sp124 = sp118 - 1;
+                            }
+                        }
+                        func_80027240(&D_800FF8D4, &sp114->unk_00, sp124, sp11C);
+                    }
+                } else if (arg0->groundMovement == 0) {
+                    func_80027138(&D_1045B70, &sp11C, &sp118, &sp114);
+                    func_80027240(&D_800FF8D4, &sp114->unk_00, (s32)arg0->globalTimer % sp118, sp11C);
+                } else if (arg0->groundMovement == 1) {
+                    func_80027138(&D_1045B7C, &sp11C, &sp118, &sp114);
+                    func_80027240(&D_800FF8D4, &sp114->unk_00, sp120 % sp118, sp11C);
+                    if (D_800F0560 == 0 && sp120 % sp118 >= 3 && sp120 % sp118 <= 12) {
+                        if (arg0->inWater == 1) {
+                            PlaySoundEffect(2, &arg0->pos.x, &arg0->pos.y, &arg0->pos.z, 0, 0);
+                        } else {
+                            PlaySoundEffect(0, &arg0->pos.x, &arg0->pos.y, &arg0->pos.z, 0, 0);
+                        }
+                        D_800F0560 = 1;
+                    } else if (D_800F0560 == 1 && sp120 % sp118 > 12) {
+                        if (arg0->inWater == 1) {
+                            PlaySoundEffect(3, &arg0->pos.x, &arg0->pos.y, &arg0->pos.z, 0, 0);
+                        } else {
+                            PlaySoundEffect(1, &arg0->pos.x, &arg0->pos.y, &arg0->pos.z, 0, 0);
+                        }
+                        D_800F0560 = 0;
+                    }
+                } else {
+                    func_80027138(&D_1045B88, &sp11C, &sp118, &sp114);
+                    func_80027240(&D_800FF8D4, &sp114->unk_00, sp120 % sp118, sp11C);
+                    if (D_800F0560 == 0 && sp120 % sp118 >= 0 && sp120 % sp118 <= 9) {
+                        if (arg0->inWater == 1) {
+                            PlaySoundEffect(2, &arg0->pos.x, &arg0->pos.y, &arg0->pos.z, 0, 0);
+                        } else {
+                            PlaySoundEffect(0, &arg0->pos.x, &arg0->pos.y, &arg0->pos.z, 0, 0);
+                        }
+                        D_800F0560 = 1;
+                    } else if (D_800F0560 == 1 && sp120 % sp118 > 9) {
+                        if (arg0->inWater == 1) {
+                            PlaySoundEffect(3, &arg0->pos.x, &arg0->pos.y, &arg0->pos.z, 0, 0);
+                        } else {
+                            PlaySoundEffect(1, &arg0->pos.x, &arg0->pos.y, &arg0->pos.z, 0, 0);
+                        }
+                        D_800F0560 = 0;
+                    }
+                }
+                break;
+        }
+    }
+
+    if (arg0->power == 1 && (arg0->powerTimer >= 30 && arg0->powerTimer + arg0->powerTimerTill - 30 || gTimer % 2 == 0)) {
+        Mtx spD0;
+        guMtxIdent(&spD0);
+        guScale(&spD0, 2.0f, 2.0f, 2.0f);
+        guMtxCatL(&spD0, &sp110[4], &sp110[4]);
+        guMtxCatL(&spD0, &sp110[3], &sp110[3]);
+    }
+
+    if (arg0->power == 2 && (arg0->powerTimer >= 30 && arg0->powerTimer + arg0->powerTimerTill - 30 || gTimer % 2 == 0)) {
+        Mtx sp90;
+        guMtxIdent(&sp90);
+        guScale(&sp90, 2.0f, 2.0f, 2.0f);
+        guMtxCatL(&sp90, &sp110[1], &sp110[1]);
+    }
+
+    if (arg0->playerID == 0) {
+        f32 sp8C, sp88, sp84;
+        Mtx sp40;
+        guRotate(&sp40, arg0->yAngle, 0.0f, 1.0f, 0.0f);
+        guMtxCatL(&sp110[1], &sp40, &sp40);
+        guMtxXFML(&sp40, 0, 0, 0, &sp8C, &sp88, &sp84);
+        D_80168D88 = arg0->pos.x + sp8C;
+        D_80168D8C = arg0->pos.y + sp88;
+        D_80168D90 = arg0->pos.z + sp84;
+        if (D_80174980 == 4) {
+            func_800703C0(&D_80168D88, &D_80168D8C, &D_80168D90, 50.0f, 20.0f, 10.0f, 5, 180, 75);
+        }
     }
 }
 

@@ -79,7 +79,7 @@ typedef struct PlayerActor {
     /* 0x050 */ f32 hitboxYStretch; //unconfirmed. 150 default.
     /* 0x054 */ u32 canJump;    //0x00 = yes, 0x01 = no
     /* 0x058 */ u32 jumpReleasedInAir;    // 0x00 = no, 0x01 = yes
-    /* 0x05C */ u32 jumpAnimFrame;
+    /* 0x05C */ s32 jumpAnimFrame;
     /* 0x060 */ u32 hasTumbled;    //0x00 = no, 0x01 = yes. resets on jump.
     /* 0x064 */ u32 unk64;
     /* 0x068 */ u32 inWater;//0x00 = no, 0x01 = yes.
@@ -99,7 +99,7 @@ typedef struct PlayerActor {
     /* 0x0A8 */ Vec3f move; //override when sliding on slopes or on poles
     /* 0x0B4 */ u32 groundMovement; //0x00 = standing, 0x01 = walking, 0x02 = running
     /* 0x0B8 */ f32 globalTimer;
-    /* 0x0BC */ u32 unkBC;
+    /* 0x0BC */ s32 unkBC;
     /* 0x0C0 */ u32 amountLeftToShoot;
     /* 0x0C4 */ u32 vaultFall;//timer for falling after vault
     /* 0x0C8 */ s32 hp;
