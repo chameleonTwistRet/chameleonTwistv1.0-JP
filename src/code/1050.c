@@ -25,16 +25,15 @@ void idleproc(void *arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/1050/mainproc.s")
 
-//#pragma GLOBAL_ASM("asm/nonmatchings/code/1050/func_80025EF0.s")
+#ifdef NON_MATCHING
 void func_80025EF0(PlayerActor* arg0, Tongue* arg1, s32 arg2) {
     s32 sp124;
-    s32 sp120;
+    s32 sp120 = arg0->globalTimer * 0.8f;
     s32 sp11C;
     s32 sp118;
-    Unk_8002B7BC* sp114 = NULL;
+    Mtx* sp114 = NULL;
     Mtx* sp110 = D_800FF8D4;
 
-    sp120 = arg0->globalTimer * 0.8f;
     func_8007AC2C(&sp120);
 
     if (arg0->playerHURTSTATE == 3 && gTimer % 2 != 0) {
@@ -52,29 +51,29 @@ void func_80025EF0(PlayerActor* arg0, Tongue* arg1, s32 arg2) {
     } else if (arg0->playerHURTSTATE == 4) {
         func_80027138(&D_1045BF4, &sp11C, &sp118, &sp114);
         sp124 = arg0->playerHURTTIMER;
-        if (sp124 > sp118 - 1) {
+        if (sp124 >= sp118) {
             sp124 = sp118 - 1;
         }
-        func_80027240(&D_800FF8D4, &sp114->unk_00, sp124, sp11C);
+        func_80027240(&D_800FF8D4, sp114, sp124, sp11C);
     } else if (arg0->amountLeftToShoot != 0) {
         func_80027138(&D_1045BAC, &sp11C, &sp118, &sp114);
         sp124 = arg0->amountLeftToShoot;
-        if (sp124 > sp118 - 1) {
+        if (sp124 >= sp118) {
             sp124 = sp118 - 1;
         }
-        func_80027240(&D_800FF8D4, &sp114->unk_00, sp124, sp11C);
+        func_80027240(&D_800FF8D4, sp114, sp124, sp11C);
     } else if (arg0->vaultFall != 0) {
         func_80027138(&D_1045BB8, &sp11C, &sp118, &sp114);
-        func_80027240(&D_800FF8D4, &sp114->unk_00, sp118 - arg0->vaultFall, sp11C);
+        func_80027240(&D_800FF8D4, sp114, sp118 - arg0->vaultFall, sp11C);
     } else if (arg0->playerHURTSTATE == 1) {
         sp124 = arg0->playerHURTTIMER - 10;
         func_80027138(&D_1045BDC, &sp11C, &sp118, &sp114);
         if (sp124 < 0) {
             sp124 = 0;
-        } else if (sp124 > sp118 - 1) {
+        } else if (sp124 >= sp118) {
             sp124 = sp118 - 1;
         }
-        func_80027240(&D_800FF8D4, &sp114->unk_00, sp124, sp11C);
+        func_80027240(&D_800FF8D4, sp114, sp124, sp11C);
     } else if (arg0->playerHURTSTATE == 2) {
         if (arg0->hp > 0) {
             sp124 = arg0->playerHURTTIMER;
@@ -82,11 +81,11 @@ void func_80025EF0(PlayerActor* arg0, Tongue* arg1, s32 arg2) {
             sp124 = arg0->playerHURTTIMER / 3;
         }       
         func_80027138(&D_1045BE8, &sp11C, &sp118, &sp114);
-        if (sp124 > sp118 - 1) {
+        if (sp124 >= sp118) {
             sp124 = sp118 - 1;
         }
-        func_80027240(&D_800FF8D4, &sp114->unk_00, sp124, sp11C);
-    } else {
+        func_80027240(&D_800FF8D4, sp114, sp124, sp11C);
+    } else if (arg1->tongueMode != 0) {
         switch (arg1->tongueMode) {
             case 1:
             case 2:
@@ -96,27 +95,27 @@ void func_80025EF0(PlayerActor* arg0, Tongue* arg1, s32 arg2) {
                     sp124 = 3;
                 }
                 func_80027138(&D_1045BAC, &sp11C, &sp118, &sp114);
-                func_80027240(&D_800FF8D4, &sp114->unk_00, sp124, sp11C);
+                func_80027240(&D_800FF8D4, sp114, sp124, sp11C);
                 break;
             case 4:
                 sp124 = arg1->timer % 2 + 4;
                 func_80027138(&D_1045BAC, &sp11C, &sp118, &sp114);
-                func_80027240(&D_800FF8D4, &sp114->unk_00, sp124, sp11C);
+                func_80027240(&D_800FF8D4, sp114, sp124, sp11C);
                 break;
             case 5:
                 sp124 = arg1->poleSegmentAt % 6 + 6;
                 func_80027138(&D_1045BAC, &sp11C, &sp118, &sp114);
-                func_80027240(&D_800FF8D4, &sp114->unk_00, sp124, sp11C);
+                func_80027240(&D_800FF8D4, sp114, sp124, sp11C);
                 break;
             case 6:
             case 7:
                 func_80027138(&D_1045BAC, &sp11C, &sp118, &sp114);
-                func_80027240(&D_800FF8D4, &sp114->unk_00, arg1->timer + 12, sp11C);
+                func_80027240(&D_800FF8D4, sp114, arg1->timer + 12, sp11C);
                 break;
             case 8:
             case 9:
                 func_80027138(&D_1045BB8, &sp11C, &sp118, &sp114);
-                func_80027240(&D_800FF8D4, &sp114->unk_00, arg1->segments, sp11C);
+                func_80027240(&D_800FF8D4, sp114, arg1->segments, sp11C);
                 break;
             case 11:
                 sp124 = arg1->timer;
@@ -128,85 +127,82 @@ void func_80025EF0(PlayerActor* arg0, Tongue* arg1, s32 arg2) {
                     if (sp124 >= sp118) {
                         sp124 = sp118 - 1;
                     }
-                    func_80027240(&D_800FF8D4, &sp114->unk_00, sp124, sp11C);
+                    func_80027240(&D_800FF8D4, sp114, sp124, sp11C);
                 } else {
                     func_80027138(&D_1045BC4, &sp11C, &sp118, &sp114);
                     if (sp124 >= sp118) {
                         sp124 = sp118 - 1;
                     }
-                    func_80027240(&D_800FF8D4, &sp114->unk_00, sp124, sp11C);
+                    func_80027240(&D_800FF8D4, sp114, sp124, sp11C);
                 }
                 break;
             default:
                 func_80027138(&D_1045B70, &sp11C, &sp118, &sp114);
-                func_80027240(&D_800FF8D4, &sp114->unk_00, (s32)arg0->globalTimer % sp118, sp11C);
+                func_80027240(&D_800FF8D4, sp114, (s32)arg0->globalTimer % sp118, sp11C);
                 break;
-            case 0:
-                if (arg0->canJump != 0) {
-                    if (arg0->vel.y > 0.0f) {
-                        func_80027138(&D_1045BA0, &sp11C, &sp118, &sp114);
-                        func_80027240(&D_800FF8D4, &sp114->unk_00, 0, sp11C);
-                    } else {
-                        func_80027138(&D_1045BA0, &sp11C, &sp118, &sp114);
-                        if (-arg0->vel.y * 8.0f < arg0->pos.y - arg0->yCounter) {
-                            arg0->jumpAnimFrame %= 10;
-                            sp124 = arg0->jumpAnimFrame / 2 + 4;
-                        } else {
-                            if (arg0->jumpAnimFrame < 9) {
-                                arg0->jumpAnimFrame = 9;
-                            }
-                            sp124 = arg0->jumpAnimFrame;
-                            if (sp124 >= sp118) {
-                                sp124 = sp118 - 1;
-                            }
-                        }
-                        func_80027240(&D_800FF8D4, &sp114->unk_00, sp124, sp11C);
-                    }
-                } else if (arg0->groundMovement == 0) {
-                    func_80027138(&D_1045B70, &sp11C, &sp118, &sp114);
-                    func_80027240(&D_800FF8D4, &sp114->unk_00, (s32)arg0->globalTimer % sp118, sp11C);
-                } else if (arg0->groundMovement == 1) {
-                    func_80027138(&D_1045B7C, &sp11C, &sp118, &sp114);
-                    func_80027240(&D_800FF8D4, &sp114->unk_00, sp120 % sp118, sp11C);
-                    if (D_800F0560 == 0 && sp120 % sp118 >= 3 && sp120 % sp118 <= 12) {
-                        if (arg0->inWater == 1) {
-                            PlaySoundEffect(2, &arg0->pos.x, &arg0->pos.y, &arg0->pos.z, 0, 0);
-                        } else {
-                            PlaySoundEffect(0, &arg0->pos.x, &arg0->pos.y, &arg0->pos.z, 0, 0);
-                        }
-                        D_800F0560 = 1;
-                    } else if (D_800F0560 == 1 && sp120 % sp118 > 12) {
-                        if (arg0->inWater == 1) {
-                            PlaySoundEffect(3, &arg0->pos.x, &arg0->pos.y, &arg0->pos.z, 0, 0);
-                        } else {
-                            PlaySoundEffect(1, &arg0->pos.x, &arg0->pos.y, &arg0->pos.z, 0, 0);
-                        }
-                        D_800F0560 = 0;
-                    }
-                } else {
-                    func_80027138(&D_1045B88, &sp11C, &sp118, &sp114);
-                    func_80027240(&D_800FF8D4, &sp114->unk_00, sp120 % sp118, sp11C);
-                    if (D_800F0560 == 0 && sp120 % sp118 >= 0 && sp120 % sp118 <= 9) {
-                        if (arg0->inWater == 1) {
-                            PlaySoundEffect(2, &arg0->pos.x, &arg0->pos.y, &arg0->pos.z, 0, 0);
-                        } else {
-                            PlaySoundEffect(0, &arg0->pos.x, &arg0->pos.y, &arg0->pos.z, 0, 0);
-                        }
-                        D_800F0560 = 1;
-                    } else if (D_800F0560 == 1 && sp120 % sp118 > 9) {
-                        if (arg0->inWater == 1) {
-                            PlaySoundEffect(3, &arg0->pos.x, &arg0->pos.y, &arg0->pos.z, 0, 0);
-                        } else {
-                            PlaySoundEffect(1, &arg0->pos.x, &arg0->pos.y, &arg0->pos.z, 0, 0);
-                        }
-                        D_800F0560 = 0;
-                    }
+        }
+    } else if (arg0->canJump != 0) {
+        if (arg0->vel.y > 0.0f) {
+            func_80027138(&D_1045BA0, &sp11C, &sp118, &sp114);
+            func_80027240(&D_800FF8D4, sp114, 0, sp11C);
+        } else {
+            func_80027138(&D_1045BA0, &sp11C, &sp118, &sp114);
+            if (-arg0->vel.y * 8.0f < arg0->pos.y - arg0->yCounter) {
+                arg0->jumpAnimFrame %= 10;
+                sp124 = arg0->jumpAnimFrame / 2 + 4;
+            } else {
+                if (arg0->jumpAnimFrame < 9) {
+                    arg0->jumpAnimFrame = 9;
                 }
-                break;
+                sp124 = arg0->jumpAnimFrame;
+                if (sp124 >= sp118) {
+                    sp124 = sp118 - 1;
+                }
+            }
+            func_80027240(&D_800FF8D4, sp114, sp124, sp11C);
+        }
+    } else if (arg0->groundMovement == 0) {
+        func_80027138(&D_1045B70, &sp11C, &sp118, &sp114);
+        func_80027240(&D_800FF8D4, sp114, (s32)arg0->globalTimer % sp118, sp11C);
+    } else if (arg0->groundMovement == 1) {
+        func_80027138(&D_1045B7C, &sp11C, &sp118, &sp114);
+        func_80027240(&D_800FF8D4, sp114, sp120 % sp118, sp11C);
+        if (D_800F0560 == 0 && sp120 % sp118 >= 3 && sp120 % sp118 <= 12) {
+            if (arg0->inWater == 1) {
+                PlaySoundEffect(2, &arg0->pos.x, &arg0->pos.y, &arg0->pos.z, 0, 0);
+            } else {
+                PlaySoundEffect(0, &arg0->pos.x, &arg0->pos.y, &arg0->pos.z, 0, 0);
+            }
+            D_800F0560 = 1;
+        } else if (D_800F0560 == 1 && sp120 % sp118 > 12) {
+            if (arg0->inWater == 1) {
+                PlaySoundEffect(3, &arg0->pos.x, &arg0->pos.y, &arg0->pos.z, 0, 0);
+            } else {
+                PlaySoundEffect(1, &arg0->pos.x, &arg0->pos.y, &arg0->pos.z, 0, 0);
+            }
+            D_800F0560 = 0;
+        }
+    } else {
+        func_80027138(&D_1045B88, &sp11C, &sp118, &sp114);
+        func_80027240(&D_800FF8D4, sp114, sp120 % sp118, sp11C);
+        if (D_800F0560 == 0 && sp120 % sp118 >= 0 && sp120 % sp118 <= 9) {
+            if (arg0->inWater == 1) {
+                PlaySoundEffect(2, &arg0->pos.x, &arg0->pos.y, &arg0->pos.z, 0, 0);
+            } else {
+                PlaySoundEffect(0, &arg0->pos.x, &arg0->pos.y, &arg0->pos.z, 0, 0);
+            }
+            D_800F0560 = 1;
+        } else if (D_800F0560 == 1 && sp120 % sp118 > 9) {
+            if (arg0->inWater == 1) {
+                PlaySoundEffect(3, &arg0->pos.x, &arg0->pos.y, &arg0->pos.z, 0, 0);
+            } else {
+                PlaySoundEffect(1, &arg0->pos.x, &arg0->pos.y, &arg0->pos.z, 0, 0);
+            }
+            D_800F0560 = 0;
         }
     }
 
-    if (arg0->power == 1 && (arg0->powerTimer >= 30 && arg0->powerTimer + arg0->powerTimerTill - 30 || gTimer % 2 == 0)) {
+    if (arg0->power == 1 && (arg0->powerTimer >= 30 && arg0->powerTimer <= arg0->powerTimerTill - 30 || !(gTimer % 2))) {
         Mtx spD0;
         guMtxIdent(&spD0);
         guScale(&spD0, 2.0f, 2.0f, 2.0f);
@@ -214,7 +210,7 @@ void func_80025EF0(PlayerActor* arg0, Tongue* arg1, s32 arg2) {
         guMtxCatL(&spD0, &sp110[3], &sp110[3]);
     }
 
-    if (arg0->power == 2 && (arg0->powerTimer >= 30 && arg0->powerTimer + arg0->powerTimerTill - 30 || gTimer % 2 == 0)) {
+    if (arg0->power == 2 && (arg0->powerTimer >= 30 && arg0->powerTimer <= arg0->powerTimerTill - 30 || !(gTimer % 2))) {
         Mtx sp90;
         guMtxIdent(&sp90);
         guScale(&sp90, 2.0f, 2.0f, 2.0f);
@@ -224,6 +220,7 @@ void func_80025EF0(PlayerActor* arg0, Tongue* arg1, s32 arg2) {
     if (arg0->playerID == 0) {
         f32 sp8C, sp88, sp84;
         Mtx sp40;
+        static f32 D_80168D88, D_80168D8C, D_80168D90;
         guRotate(&sp40, arg0->yAngle, 0.0f, 1.0f, 0.0f);
         guMtxCatL(&sp110[1], &sp40, &sp40);
         guMtxXFML(&sp40, 0, 0, 0, &sp8C, &sp88, &sp84);
@@ -235,6 +232,10 @@ void func_80025EF0(PlayerActor* arg0, Tongue* arg1, s32 arg2) {
         }
     }
 }
+#else
+#pragma GLOBAL_ASM("asm/nonmatchings/code/1050/func_80025EF0.s")
+void func_80025EF0(PlayerActor* arg0, Tongue* arg1, s32 arg2);
+#endif
 
 s32 func_80026C78(Actor* actor) {
     return 1 - func_800AF604(actor->pos.x, actor->pos.y, actor->pos.z, 8000.0f);
@@ -278,7 +279,7 @@ void func_80026FB8(graphicStruct *arg0, Mtx *arg1, u32 arg2, f32 arg3, f32 arg4,
     func_8005747C(gActors[arg2].pos.x + xPos, gActors[arg2].pos.y + yPos + arg4, gActors[arg2].pos.z + zPos, arg3, arg3, 0.0f, arg5);
 }
 
-void func_80027138(void* arg0, s32* arg1, s32* arg2, Unk_8002B7BC** arg3) {
+void func_80027138(void* arg0, s32* arg1, s32* arg2, Mtx** arg3) {
     void* var_a2;
     s32* var_v1;
 
@@ -302,9 +303,9 @@ void func_80027138(void* arg0, s32* arg1, s32* arg2, Unk_8002B7BC** arg3) {
     *arg2 = *(s32*)var_a2;
     
     if (!IS_SEGMENTED(var_v1[2])) {
-        *arg3 = (Unk_8002B7BC*)var_v1[2];
+        *arg3 = (Mtx*)var_v1[2];
     } else {
-        *arg3 = (Unk_8002B7BC*)SEGMENTED_TO_VIRTUAL(var_v1[2]);
+        *arg3 = (Mtx*)SEGMENTED_TO_VIRTUAL(var_v1[2]);
     }
 }
 
@@ -825,7 +826,7 @@ Gfx* func_8002B7BC(graphicStruct* arg0, Gfx* gfxPos) {
                 gfxPos = func_8002B118(arg0, gfxPos, D_300DB48, &gActors[i], 3.0f, 0, &sp178);
                 if (gActors[i].unk_EC == 1 && gActors[i].unk_F0 > 25 && gActors[i].unk_F0 < 62) {
                     s32 unused;
-                    Unk_8002B7BC* sp168;
+                    Mtx* sp168;
                     Mtx sp128;
                     Mtx spE8;
                     Mtx spA8;
@@ -838,11 +839,11 @@ Gfx* func_8002B7BC(graphicStruct* arg0, Gfx* gfxPos) {
                     guRotate(&spE8, gActors[i].unk_90 + 90.0f, 0, 1.0f, 0);
                     func_80027138(&D_3025DA8, &spA4, &spA0, &sp168);
 
-                    sp128 = sp168->unk_180[(gActors[i].unk_F0 / 2) * spA4];
+                    sp128 = sp168[6 + (gActors[i].unk_F0 / 2) * spA4];
                     guMtxCatL(&sp128, &spE8, &spA8);
                     guMtxXFML(&spA8, -120.0f, 0.0f, 0.0f, &sp9C, &sp98, &sp94);
 
-                    sp128 = sp168->unk_200[(gActors[i].unk_F0 / 2) * spA4];
+                    sp128 = sp168[8 + (gActors[i].unk_F0 / 2) * spA4];
                     guMtxCatL(&sp128, &spE8, &spA8);
                     guMtxXFML(&spA8, 120.0f, 0.0f, 0.0f, &sp90, &sp8C, &sp88);
                     guTranslate(&arg0->actorTranslate[sp178], gActors[i].pos.x + 3.0f * ((sp9C + sp90) * 0.5f),
@@ -926,7 +927,7 @@ Gfx* func_8002C280(graphicStruct* arg0, Gfx* gfxPos);
 Gfx* func_8002C4E8(Gfx* gfxPos, s32 arg1, s32 arg2) {
     s32 i;
 
-    gSPSegment(gfxPos++, 0x00, NULL);
+    gSPSegment(gfxPos++, 0x00, 0);
     gSPSegment(gfxPos++, 0x01, OS_K0_TO_PHYSICAL(_ALIGN((u32)D_803B5000 - (u32)D_1045C00 + (u32)D_1000000, 0x10)));
 
     for (i = 2; i < 16; i++) {
@@ -1001,8 +1002,8 @@ Gfx* func_8002C900(graphicStruct* arg0, s32 arg1) {
 Gfx* func_8002CAC8(graphicStruct* arg0, s32 arg1) {
     Gfx* gdl;
 
-    gdl = func_8002C4E8(arg0->dlist, arg1, 1);    //Sets up the display list (?)
-    gDPFullSync(gdl++);                    //Signals the end of a frame
+    gdl = func_8002C4E8(arg0->dlist, arg1, 1);
+    gDPFullSync(gdl++);
     gSPEndDisplayList(gdl++);
     return gdl;
 }
@@ -1019,34 +1020,34 @@ void Video_SetTask(graphicStruct* arg0, Gfx* arg1, s32 arg2) {
     task->data_size = (((s32)arg1 - (s32)arg0) >> 3) << 3;
 }
 
-void func_8002CB6C(Gfx* arg0, graphicStruct* arg1, s32 arg2) {
+void DemoGfx_DrawFrame(Gfx* arg0, graphicStruct* arg1, s32 fbIndex) {
 
     if (D_80174998 < 3) {
-        arg0 = func_8002CAC8(arg1, arg2);
+        arg0 = func_8002CAC8(arg1, fbIndex);
     }
     
-    Video_SetTask(arg1, arg0, arg2);
+    Video_SetTask(arg1, arg0, fbIndex);
     osWritebackDCache(arg1, sizeof(graphicStruct));
-    func_80084F80(&D_800F04E0[arg2], arg2);
+    Sched_SetGfxTask(&D_800F04E0[fbIndex], fbIndex);
 }
 
-void func_8002CBE8(s32 arg0) {
-    func_8008C4B8();
-    osRecvMesg(&D_801192D0, NULL, 1);
-    osViSwapBuffer(&D_803B5000[arg0].data);
+void DemoGfx_SwapFB(s32 fbIndex) {
+    Timing_StopProcess();
+    osRecvMesg(&gFrameDrawnMessageQueue, NULL, OS_MESG_BLOCK);
+    osViSwapBuffer(&D_803B5000[fbIndex].data);
     osViSetSpecialFeatures(OS_VI_GAMMA_ON|OS_VI_GAMMA_DITHER_ON);
     
-    if (MQ_IS_FULL(&D_801192E8)) {
-        osRecvMesg(&D_801192E8, NULL, 1);
+    if (MQ_IS_FULL(&gSyncMessageQueue)) {
+        osRecvMesg(&gSyncMessageQueue, NULL, OS_MESG_BLOCK);
     }
     
     func_8008C554();
-    osRecvMesg(&D_801192E8, NULL, 1);
-    func_8008C494();
+    osRecvMesg(&gSyncMessageQueue, NULL, OS_MESG_BLOCK);
+    Timing_StartProcess();
 }
 
 //update framebuffer
-Gfx* func_8002CCA0(void* arg0, s32 arg1) {
+Gfx* func_8002CCA0(graphicStruct* arg0, s32 arg1) {
     Gfx* sp1C;
 
     if (D_80174998 > 2) {
@@ -1109,7 +1110,7 @@ void func_8002CE54(void) {
     D_800F066C++;
     func_8002CD94(D_800F066C);
     Controller_StartRead();
-    func_8002CB6C(0, &gGraphicsList[gFramebufferIndex], gFramebufferIndex);
+    DemoGfx_DrawFrame(0, &gGraphicsList[gFramebufferIndex], gFramebufferIndex);
     
     for (i = 0; i < MAXCONTROLLERS; i++) {
         Controller_Zero(&sp28[i]);
@@ -1147,7 +1148,7 @@ void func_8002CE54(void) {
     Battle_Update();
     var = 1 - gFramebufferIndex;
     func_8002CCA0(&gGraphicsList[var], var);
-    func_8002CBE8(gFramebufferIndex);
+    DemoGfx_SwapFB(gFramebufferIndex);
     gFramebufferIndex = 1 - gFramebufferIndex;
 }
 

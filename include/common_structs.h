@@ -134,7 +134,7 @@ typedef struct Tongue { // at 80169268 (for p1)
     /* 0x04 */ u32 tongueMode; //enum of tongue actions
     /* 0x08 */ s32 segments;
     /* 0x0C */ s32 poleSegmentAt;
-    /* 0x10 */ u32 timer;
+    /* 0x10 */ s32 timer;
     /* 0x14 */ s32 cameraSegmentAt;//where to point the camera
     /* 0x18 */ f32 tongueXs[33]; //all (including the rope model) positions
     /* 0x9C */ f32 tongueYs[33];

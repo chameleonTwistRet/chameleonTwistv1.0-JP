@@ -1,129 +1,145 @@
 #include "5FF30.h"
 
-void videoproc(s32 arg0) {
+#define SCHED_MESG_VINTR 0
+#define SCHED_MESG_SP_TASK_DONE 1
+#define SCHED_MESG_DP_TASK_DONE 2
+#define SCHED_MESG_START_VIDEO_TASK 3
+#define SCHED_MESG_UNK_4 4
+#define SCHED_MESG_START_AUDIO_TASK 5
+#define SCHED_MESG_TIMEOUT 6
+#define SCHED_MESG_RESET 7
+
+#define AUDIO_TASK_STATE_IDLE 0
+#define AUDIO_TASK_STATE_PENDING 1
+#define AUDIO_TASK_STATE_RUNNING 2
+
+void schedproc(s32 arg0) {
     s32 var_s2;
-    OSMesg sp58;
+    OSMesg mesg;
 
     var_s2 = 1;
     func_800A7844();
-    osCreateMesgQueue(&D_801B3120, &D_801B30A0, 0x14);
-    osSetEventMesg(0xEU, &D_801B3120, (void* )7);
-    osSetEventMesg(9U, &D_801B3120, (void* )2);
-    osSetEventMesg(4U, &D_801B3120, (void* )1);
-    osViSetEvent(&D_801B3120, NULL, 2U);
-    func_8008C610();
+    osCreateMesgQueue(&gSchedMessageQueue, gSchedMessageQueueMsgs, ARRAY_COUNT(gSchedMessageQueueMsgs));
+    osSetEventMesg(OS_EVENT_PRENMI, &gSchedMessageQueue, (OSMesg)SCHED_MESG_RESET);
+    osSetEventMesg(OS_EVENT_DP, &gSchedMessageQueue, (OSMesg)SCHED_MESG_DP_TASK_DONE);
+    osSetEventMesg(OS_EVENT_SP, &gSchedMessageQueue, (OSMesg)SCHED_MESG_SP_TASK_DONE);
+    osViSetEvent(&gSchedMessageQueue, (OSMesg)SCHED_MESG_VINTR, 2); // 30 fps
+    Timing_MeasureFrameDuration();
 
     while (1) {
-        osRecvMesg(&D_801B3120, &sp58, 1);
-        switch ((u32) sp58) {
-        case 0:
-            arg0 = var_s2 + 1;
-            osSetTimer(&D_801B3148, 0x8F184, 0, &D_801B3120, (void*) 6);
-            if (arg0 != 0) {
-                if (osSendMesg(&D_801192E8, NULL, 0) == -1) {
-                    DummiedPrintf("Gfx送信失敗\n");
+        osRecvMesg(&gSchedMessageQueue, &mesg, OS_MESG_BLOCK);
+        switch ((u32) mesg) {
+            case SCHED_MESG_VINTR:
+                arg0 = var_s2 + 1;
+                osSetTimer(&D_801B3148, 586116, 0, &gSchedMessageQueue, (OSMesg) SCHED_MESG_TIMEOUT); // wait ~12.5 msec, then start audio
+                if (arg0 != 0) {
+                    // command main thread to update game and draw frame
+                    if (osSendMesg(&gSyncMessageQueue, NULL, OS_MESG_NOBLOCK) == -1) {
+                        DummiedPrintf("Gfx送信失敗\n");
+                    } else {
+                        var_s2 ^= 1;
+                    }
                 } else {
                     var_s2 ^= 1;
                 }
-            } else {
-                var_s2 ^= 1;
-            }
-            func_800A78D0();
-            continue;
-        case 1:
-            if (D_800FF5F0 == 2) {
-                DummiedPrintf("Ae");
-                func_8008C6D4();
-                D_800FF5F0 = 0;
-                osSendMesg(&D_801192B8, (void* )1, 0);
-            } else if (D_800FF5F0 == (s16) 1) {
-                DummiedPrintf("Gy");
-                func_8008C464();
-                D_800FF5EC = 0;
-                osSendMesg(&D_801192B8, (void* )1, 0);
-            } else {
-                DummiedPrintf("Ge");
-                func_8008C464();
-                D_800FF5EC = 0;
-            }
-            if (D_800FF5C8 != 0) {
-                osSendMesg(&D_801B3120, (void* )3, 0);
-            }
-            continue;
-        case 2:
-            DummiedPrintf("D");
-            if (D_800FF5CC != 0) {
-                D_800FF5CC -= 1;
-                if (D_800FF5CC == 0) {
-                    osViBlack(0U);
+                func_800A78D0();
+                continue;
+            case SCHED_MESG_SP_TASK_DONE:
+                if (gAudioTaskState == AUDIO_TASK_STATE_RUNNING) {
+                    DummiedPrintf("Ae"); // audio end
+                    Timing_StopAudio();
+                    gAudioTaskState = AUDIO_TASK_STATE_IDLE;
+                    osSendMesg(&gAudioDoneMessageQueue, (OSMesg)1, OS_MESG_NOBLOCK);
+                } else if (gAudioTaskState == AUDIO_TASK_STATE_PENDING) {
+                    DummiedPrintf("Gy"); // gfx yield
+                    Timing_StopGfx(); // when gfx task is resumed, this timer is not resumed, so duration might be incorrect
+                    gGfxTaskRunning = FALSE;
+                    // this queue is also used to report audio thread that gfx task yielded or finished
+                    osSendMesg(&gAudioDoneMessageQueue, (OSMesg)1, OS_MESG_NOBLOCK);
+                } else {
+                    DummiedPrintf("Ge"); // gfx end
+                    Timing_StopGfx();
+                    gGfxTaskRunning = FALSE;
                 }
-            }
-            if (D_800FF5D8 == (s16) 1) {
-                D_800FF5D8 = 0;
-            }
-            osSendMesg(&D_801192D0, (void* )2, 0);
-            func_8008C4E8();
-            continue;
-        case 3:
-            if (D_800FF5C4 != 0) {
-                DummiedPrintf("Res ");
-            } else if (D_800FF5F0 != 0) {
-                D_800FF5C8 = 1;
-                DummiedPrintf("Sw ");
-            } else {
-                DummiedPrintf("Gs ");
-                D_800FF5C8 = 0;
-                osWritebackDCacheAll();
-                osSpTaskLoad(D_801B3138);
-                osSpTaskStartGo(D_801B3138);
-                func_8008C440();
-                D_800FF5EC = (s16) 1;
-                D_800FF5D8 = (s16) 1;
-            }
-            continue;
-        case 4:
-            continue;
-        case 5:
-            if (D_800FF5C4 == 0) {
-                osRecvMesg(&D_801192B8, NULL, 0);
-                DummiedPrintf("As");
-                D_800FF5F0 = 2;
-                osWritebackDCacheAll();
-                osSpTaskLoad((OSTask* ) D_801B3140);
-                osSpTaskStartGo((OSTask* ) D_801B3140);
-                func_8008C698();
-            }
-            continue;
-        case 6:
-            break;
-        case 7:
-            D_800FF5C4 = 1;
-            osViBlack(1);
-            osViSetYScale(1.0f);
-            func_8007B174();
-            Rumble_StopAll();
-            continue;
-        default:
-            continue;
+                if (gGfxTaskPending) {
+                    osSendMesg(&gSchedMessageQueue, (OSMesg)SCHED_MESG_START_VIDEO_TASK, OS_MESG_NOBLOCK);
+                }
+                continue;
+            case SCHED_MESG_DP_TASK_DONE:
+                DummiedPrintf("D"); // done
+                if (D_800FF5CC != 0) {
+                    D_800FF5CC--;
+                    if (D_800FF5CC == 0) {
+                        osViBlack(FALSE);
+                    }
+                }
+                if (gGfxTaskStarted == TRUE) {
+                    gGfxTaskStarted = FALSE;
+                }
+                osSendMesg(&gFrameDrawnMessageQueue, (OSMesg)2, OS_MESG_NOBLOCK);
+                Timing_EndFrame();
+                continue;
+            case SCHED_MESG_START_VIDEO_TASK:
+                if (gSchedReset) {
+                    DummiedPrintf("Res "); // reset
+                } else if (gAudioTaskState != AUDIO_TASK_STATE_IDLE) {
+                    // wait until audio task is finished
+                    gGfxTaskPending = TRUE;
+                    DummiedPrintf("Sw "); // ??
+                } else {
+                    DummiedPrintf("Gs "); // gfx start
+                    gGfxTaskPending = FALSE;
+                    osWritebackDCacheAll();
+                    osSpTaskStart(gCurrentGfxTask);
+                    Timing_StartGfx();
+                    gGfxTaskRunning = TRUE;
+                    gGfxTaskStarted = TRUE;
+                }
+                continue;
+            case SCHED_MESG_UNK_4:
+                continue;
+            case SCHED_MESG_START_AUDIO_TASK:
+                if (!gSchedReset) {
+                    // clear queue
+                    osRecvMesg(&gAudioDoneMessageQueue, NULL, OS_MESG_NOBLOCK);
+                    DummiedPrintf("As"); // audio start
+                    gAudioTaskState = AUDIO_TASK_STATE_RUNNING;
+                    osWritebackDCacheAll();
+                    osSpTaskStart(gCurrentAudioTask);
+                    Timing_StartAudio();
+                }
+                continue;
+            case SCHED_MESG_TIMEOUT:
+                // start audio task
+                break;
+            case SCHED_MESG_RESET:
+                gSchedReset = TRUE;
+                osViBlack(TRUE);
+                osViSetYScale(1.0f);
+                func_8007B174();
+                Rumble_StopAll();
+                continue;
+            default:
+                continue;
         }
         
-        D_800FF5F0 = 1;
-        if (osSendMesg(&D_801B35A0, NULL, 0) == -1) {
+        gAudioTaskState = AUDIO_TASK_STATE_PENDING;
+        if (osSendMesg(&gSyncAudioMessageQueue, NULL, OS_MESG_NOBLOCK) == -1) {
             DummiedPrintf("Audio送信失敗\n");
         }
         // continue;   
     }
 }
 
-void func_80084F80(OSTask* arg0, s32 arg1) {
-    D_801B3138 = arg0;
-    D_800FF5D0 = arg1;
-    osSendMesg(&D_801B3120, (OSMesg)3, 0);
+void Sched_SetGfxTask(OSTask* task, s32 fbIndex) {
+    gCurrentGfxTask = task;
+    D_800FF5D0 = fbIndex;
+    osSendMesg(&gSchedMessageQueue, (OSMesg)SCHED_MESG_START_VIDEO_TASK, OS_MESG_NOBLOCK);
 }
 
-void func_80084FC0(s32 arg0) {
-    D_801B3140 = arg0;
-    osSendMesg(&D_801B3120, (OSMesg)5, 0);
+void Sched_SetAudioTask(OSTask* arg0) {
+    gCurrentAudioTask = arg0;
+    osSendMesg(&gSchedMessageQueue, (OSMesg)SCHED_MESG_START_AUDIO_TASK, OS_MESG_NOBLOCK);
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/Audio_DMACallback.s")
@@ -164,7 +180,7 @@ void Audio_StopOsc(struct UnkList* arg0) {
 void Audio_RomCopy(u32 devAddr, void* vAddr, u32 size) {
     osWritebackDCacheAll();
     osPiStartDma(&D_801FF7F0, 0, 0, devAddr, vAddr, size, &D_801FF750);
-    osRecvMesg(&D_801FF750, NULL, 1);
+    osRecvMesg(&D_801FF750, NULL, OS_MESG_BLOCK);
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80085C90.s")
@@ -704,77 +720,79 @@ s32 func_8008C438(void) {
     return 0;
 }
 
-void func_8008C440(void) {
-    D_800FF89C = (u32) osGetTime();
+void Timing_StartGfx(void) {
+    Timing_StartGfxTime = (u32) osGetTime();
 }
 
-void func_8008C464(void) {
-    D_800FF898 = osGetTime() - D_800FF89C;
+void Timing_StopGfx(void) {
+    Timing_StopGfxTime = osGetTime() - Timing_StartGfxTime;
 }
 
-void func_8008C494(void) {
-    D_800FF8A8 = (u32) osGetTime();
+void Timing_StartProcess(void) {
+    Timing_StartProcessTime = (u32) osGetTime();
 }
 
-void func_8008C4B8(void) {
-    D_800FF8A4 = osGetTime() - D_800FF8A8;
+void Timing_StopProcess(void) {
+    Timing_StopProcessTime = osGetTime() - Timing_StartProcessTime;
 }
 
-void func_8008C4E8(void) {
-    D_800FF8A0 = osGetTime() - D_800FF89C;
-    D_801B316C = (f32) (D_800FF8A0 / 1563000.0);
+void Timing_EndFrame(void) {
+    Timing_EndFrameTime = osGetTime() - Timing_StartGfxTime;
+    Timing_BusyTime = (f32) (Timing_EndFrameTime / 1563000.0); // between 0 and 1
 }
 
 void func_8008C554(void) {
-    D_800FF8AC = osGetTime() - D_800FF8A8;
+    D_800FF8AC = osGetTime() - Timing_StartProcessTime;
 }
 
-void func_8008C584(void) {
-    OSMesg sp2C;
+void Timing_WaitForNextFrame(void) {
+    OSMesg mesg;
 
     while (1) {
-        if (osRecvMesg(&D_801B3120, &sp2C, 0) == -1) {
+        if (osRecvMesg(&gSchedMessageQueue, &mesg, OS_MESG_NOBLOCK) == -1) {
             continue;
         }
-        if (sp2C == NULL) {
+        if (mesg == SCHED_MESG_VINTR) {
             //"/* Ｖ割り込みだったらブレイク */\n"("Break if V interrupt")
-            DummiedPrintf("/* Ｖ割り込みだったらブレイク */\n", sp2C);
+            DummiedPrintf("/* Ｖ割り込みだったらブレイク */\n", mesg);
             break;
         } else {
             //"%d\n"
-            DummiedPrintf("%d\n", sp2C);
+            DummiedPrintf("%d\n", mesg);
         }
     }
 }
 
-void func_8008C610(void) {
+void Timing_MeasureFrameDuration(void) {
     while (1) {
-        if (osRecvMesg(&D_801B3120, NULL, 0) == -1) {
+        if (osRecvMesg(&gSchedMessageQueue, NULL, OS_MESG_NOBLOCK) == -1) {
             break;
         }
     }
-    func_8008C584();
+    Timing_WaitForNextFrame();
     D_800FF884 = osGetTime();
-    func_8008C584();
+    Timing_WaitForNextFrame();
     D_800FF884 = osGetTime() - D_800FF884;
     //"１フレーム時間 %d\n" ("1 frame time %d")
     DummiedPrintf("１フレーム時間 %d\n", D_800FF884);
 }
 
-void func_8008C698(void) {
-    D_800FF88C = osGetCount();
-    D_800FF888 = D_800FF88C - D_800FF8A8;
+void Timing_StartAudio(void) {
+    Timing_StartAudioTime = osGetCount();
+    Timing_DelayAudioInterval = Timing_StartAudioTime - Timing_StartProcessTime;
 }
 
-void func_8008C6D4(void) {
-    D_800FF890[D_800FF8BC] = osGetCount() - D_800FF88C;
+void Timing_StopAudio(void) {
+    D_800FF890[D_800FF8BC] = osGetCount() - Timing_StartAudioTime;
 }
 
+// not used
 void func_8008C714(void) {
     D_800FF8B8 = osGetTime();
-    D_801B3168 = D_800FF8B8 - D_800FF8A8;
+    D_801B3168 = D_800FF8B8 - Timing_StartProcessTime;
 }
 
+// not used
 void func_8008C750(void) {
     D_800FF8B4 = osGetTime() - D_800FF8B8;
 }
@@ -934,10 +952,10 @@ void CTTask_Unlink_2(CTTask* task) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008D060.s")
 
-void func_8008D114(Gfx* arg0, s32 arg1) {
-    Video_SetTask((void*)arg0, arg0, arg1); //TODO: fix type of arg0?
-    osWritebackDCache(arg0, 0x1FB00);
-    func_80084F80(&D_800F04E0[arg1], arg1);
+void func_8008D114(graphicStruct* arg0, s32 fbIndex) {
+    Video_SetTask(arg0, arg0->dlist, fbIndex); //TODO: fix type of arg0?
+    osWritebackDCache(arg0, sizeof(graphicStruct));
+    Sched_SetGfxTask(&D_800F04E0[fbIndex], fbIndex);
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008D168.s")
@@ -1023,11 +1041,11 @@ void func_8008EF78(CTTask* task) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008F050.s")
 
 void func_8008F114(void){
-    if(MQ_IS_FULL(&D_801192E8)){
-        osRecvMesg(&D_801192E8, NULL, 1);
+    if(MQ_IS_FULL(&gSyncMessageQueue)){
+        osRecvMesg(&gSyncMessageQueue, NULL, OS_MESG_BLOCK);
     }
-    osRecvMesg(&D_801192E8, NULL, 1);
-    func_8008C494();
+    osRecvMesg(&gSyncMessageQueue, NULL, OS_MESG_BLOCK);
+    Timing_StartProcess();
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008F16C.s")
@@ -1231,13 +1249,13 @@ void MainLoop(void) {
         gGameModeCurrent = sGameModeStart;
     }
     gGameModeState = 0;
-    osRecvMesg(&D_801192E8, NULL, 1);
+    osRecvMesg(&gSyncMessageQueue, NULL, OS_MESG_BLOCK);
     SaveData_LoadRecords(gGameRecords.flags);
     if (SaveData_RecordChecksum() != gGameRecords.flags[0]) {
         SaveData_ClearRecords();
     }
     gIsStero = gGameRecords.flags[1] & 1;
-    osRecvMesg(&D_801192E8, NULL, 1);
+    osRecvMesg(&gSyncMessageQueue, NULL, OS_MESG_BLOCK);
     gameModeLoop:
     switch (gGameModeCurrent) {
     case GAME_MODE_OVERWORLD:
@@ -2776,7 +2794,7 @@ s32 func_800A72E8(s32 arg0) {
     for (i = zero; i < 50; i++) {
         if (arg0 == D_801FCFD8[i].index) {
             j++;
-            if (osRecvMesg(&D_801FCA50[i], NULL, 0) != -1) {
+            if (osRecvMesg(&D_801FCA50[i], NULL, OS_MESG_NOBLOCK) != -1) {
                 j--;
                 D_801FCFD8[i].index = -1;
             }
@@ -2892,7 +2910,7 @@ s32 func_800A78D0(void) {
     
     for (i = 0; i < ARRAY_COUNT(D_801FCA50); i++) {
         if (D_801FCFD8[i].index >= 0) {
-            if (osRecvMesg(&D_801FCA50[i], NULL, 0) != -1) {
+            if (osRecvMesg(&D_801FCA50[i], NULL, OS_MESG_NOBLOCK) != -1) {
                 D_801FCFD8[i].index = -1;
                 //TODO fake match
                 do {
@@ -3067,7 +3085,7 @@ s32 SaveData_Compare(u8 *arg0, u8 *arg1) {
 }
 
 void SaveData_LoadFile(s32 arg0, SaveFile* arg1) {
-    osRecvMesg(&gEepromMsgQ, NULL, 0);
+    osRecvMesg(&gEepromMsgQ, NULL, OS_MESG_NOBLOCK);
     if (osEepromProbe(&gEepromMsgQ) != 1) {
         DummiedPrintf("ＥＥＰロムエラー \n");
     }
@@ -3082,7 +3100,7 @@ void SaveData_LoadFile(s32 arg0, SaveFile* arg1) {
 }
 
 void SaveData_LoadAllFiles(u8* arg0) {
-    osRecvMesg(&gEepromMsgQ, NULL, 0);
+    osRecvMesg(&gEepromMsgQ, NULL, OS_MESG_NOBLOCK);
     if (osEepromProbe(&gEepromMsgQ) != 1) {
         DummiedPrintf("ＥＥＰロムエラー \n");
     }
@@ -3097,7 +3115,7 @@ void SaveData_LoadAllFiles(u8* arg0) {
 }
 
 void SaveData_LoadRecords(u8* arg0) {
-    osRecvMesg(&gEepromMsgQ, NULL, 0);
+    osRecvMesg(&gEepromMsgQ, NULL, OS_MESG_NOBLOCK);
     if (osEepromProbe(&gEepromMsgQ) != 1) {
         DummiedPrintf("ＥＥＰロムエラー \n");
     }
@@ -3122,7 +3140,7 @@ void SaveData_LoadRecords(u8* arg0) {
 void SaveData_SaveFile(s32 saveIndex, SaveFile* saveFile) { 
     //"%d 番目のファイルにセーブ  %dバイト目\n"("saving to %d-th file, %d bytes"?)
     DummiedPrintf("%d 番目のファイルにセーブ  %dバイト目\n", saveIndex, (s32) (saveIndex * 0x60) / 8);
-    osRecvMesg(&gEepromMsgQ, NULL, 0);
+    osRecvMesg(&gEepromMsgQ, NULL, OS_MESG_NOBLOCK);
     
     if (osEepromProbe(&gEepromMsgQ) != 1) {
         //"ＥＥＰロムエラー \n"("EEP rom error")
@@ -3172,7 +3190,7 @@ s32 SaveData_UpdateFile(s32 saveIndex, SaveFile* saveFile) {
 void SaveData_SaveRecords(void) {
     gGameRecords.flags[0] = SaveData_RecordChecksum();
     
-    osRecvMesg(&gEepromMsgQ, NULL, 0);
+    osRecvMesg(&gEepromMsgQ, NULL, OS_MESG_NOBLOCK);
     
     if (osEepromProbe(&gEepromMsgQ) != 1) {
         DummiedPrintf("ＥＥＰロムエラー \n");
@@ -3500,10 +3518,10 @@ s32 func_800AD980(void) {
     gPlayerActors->pos.y = D_80108764 + 5000.0f;
     gPlayerActors->pos.z = D_80108768;
     Controller_StartRead();
-    func_8002CB6C(gMainGfxPos, &gGraphicsList[gFramebufferIndex], gFramebufferIndex);
+    DemoGfx_DrawFrame(gMainGfxPos, &gGraphicsList[gFramebufferIndex], gFramebufferIndex);
     func_8004E784(gContMain, gControllerNo, 0, 0);
     gMainGfxPos = func_8002C900(&gGraphicsList[1 - gFramebufferIndex], 1 - gFramebufferIndex);
-    func_8002CBE8(gFramebufferIndex);
+    DemoGfx_SwapFB(gFramebufferIndex);
     gFramebufferIndex = 1 - gFramebufferIndex;
     return 0;
 }

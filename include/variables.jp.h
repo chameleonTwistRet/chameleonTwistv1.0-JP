@@ -100,8 +100,8 @@ extern u8 D_800FEDC0[225][8]; //some data RE each sound effect
 extern s32 D_800FF5D0;
 extern s32 D_800FF5E4;
 extern s32 D_800FF5E8;
-extern s16 D_800FF5EC;
-extern s16 D_800FF5F0;
+extern s16 gGfxTaskRunning;
+extern s16 gAudioTaskState;
 extern s16 D_800FF5F4;
 extern s16 gIsPaused;
 extern s16 gIsStero;
@@ -193,7 +193,7 @@ extern u64 gMainThreadStack[1024]; // thread3
 extern OSThread D_80117FF0; //unused thread.
 extern u64 D_801181A0[512]; //unused Stack
 extern void* D_801191A0;
-extern OSMesgQueue D_801192E8;
+extern OSMesgQueue gSyncMessageQueue;
 extern u64 D_80119320[128]; //D_800f04e0[].dram_stack
 extern u64 D_80119720[8192];//D_800f04e0[].output_buff
 extern Gfx D_80129720[10];
@@ -220,9 +220,9 @@ extern OSMesgQueue gEepromMsgQ;
 extern s32 Battle_TimeLeft;
 extern u8 gTextGradient[16]; //probably really RGBA32[4]
 extern f32 D_80176F50;
-extern OSMesgQueue D_801B3120;
-extern OSTask* D_801B3138;
-extern s32 D_801B3140;
+extern OSMesgQueue gSchedMessageQueue;
+extern OSTask* gCurrentGfxTask;
+extern OSTask* gCurrentAudioTask;
 extern s16 D_801B3540;
 extern u8 gAlHeapBase[300000];
 extern s32 D_801FC9A0;
@@ -305,17 +305,17 @@ extern u8 gCarrotBitfield;
 extern s8 D_801B313D;
 extern SaveRecord gGameRecords;
 extern Vec3w D_801087D8[];
-extern s32 D_800FF898;
-extern u32 D_800FF89C;
-extern u32 D_800FF8A0;
-extern s32 D_800FF8A4;
-extern s32 D_800FF8A8;
+extern s32 Timing_StopGfxTime;
+extern u32 Timing_StartGfxTime;
+extern u32 Timing_EndFrameTime;
+extern s32 Timing_StopProcessTime;
+extern s32 Timing_StartProcessTime;
 extern s32 D_800FF8AC;
 extern s16 D_80100E08[17][5]; //coords and behavior for "Game over" letters
 extern f64 D_8010F410;
 extern void* D_80100F28[10]; // coords and text for stage names
 extern char* D_80100FD4[18];
-extern f32 D_801B316C;
+extern f32 Timing_BusyTime;
 extern char D_8011078C[];
 extern char D_801107A0[];
 extern char D_801107B0[];
@@ -325,11 +325,11 @@ extern char D_8010D940[];
 extern char D_8010D964[];
 extern u32 D_800FF884;
 extern char D_8010D968[];
-extern s32 D_800FF888;
-extern u32 D_800FF88C;
+extern s32 Timing_DelayAudioInterval;
+extern u32 Timing_StartAudioTime;
 extern s32 D_800FF890[];
 extern s16 D_800FF8BC;
-extern s32 D_800FF8A8;
+extern s32 Timing_StartProcessTime;
 extern s32 D_800FF8B4;
 extern u32 D_800FF8B8;
 extern s32 D_801B3168;
