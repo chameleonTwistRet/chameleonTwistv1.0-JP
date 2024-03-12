@@ -223,7 +223,19 @@ s32 Free(void* arg0) {
     return 0;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80056F48.s")
+void func_80056F48(s32 arg0, Tongue* tongues, PlayerActor* players, Camera* cameras) {
+    f32 xAt = D_801768A0.f5.x - D_801768A0.f4.x;
+    f32 yAt = D_801768A0.f5.y - D_801768A0.f4.y + D_800FE014;
+    f32 zAt = D_801768A0.f5.z - D_801768A0.f4.z;
+    if (xAt != 0 || zAt != 0) {
+        guLookAt(&D_80176860,
+                 0.0f, 0.0f, 0.0f, // Eye
+                 xAt, yAt, zAt, // At
+                 0, 1, 0); // Up
+    } else {
+        guMtxIdent(&D_80176860);
+    }
+}
 
 //could there be a file split here or close to here?
 

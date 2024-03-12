@@ -953,12 +953,53 @@ void CTTask_Unlink_2(CTTask* task) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008D060.s")
 
 void func_8008D114(graphicStruct* arg0, s32 fbIndex) {
-    Video_SetTask(arg0, arg0->dlist, fbIndex); //TODO: fix type of arg0?
+    Video_SetTask(arg0, arg0->dlist, fbIndex);
     osWritebackDCache(arg0, sizeof(graphicStruct));
     Sched_SetGfxTask(&D_800F04E0[fbIndex], fbIndex);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008D168.s")
+Gfx* func_8008D168(Gfx* gfxPos, s32 arg1, s32 arg2) {
+    s32 i;
+
+    gSPSegment(gfxPos++, 0x00, 0);
+    gSPSegment(gfxPos++, 0x01, OS_K0_TO_PHYSICAL(_ALIGN((u32)D_803B5000 - (u32)D_1045C00 + (u32)D_1000000, 16)));
+
+    for (i = 2; i < 16; i++) {
+        if (D_80100F50[i].base_address != NULL) {
+            gSPSegment(gfxPos++, i, OS_K0_TO_PHYSICAL(D_80100F50[i].base_address));
+        }
+    }
+
+    if (D_800FFEC0 != 0) {
+        gSPDisplayList(gfxPos++, D_1015AE8);
+    } else {
+        gSPDisplayList(gfxPos++, D_1015AB8);
+    }
+    gSPDisplayList(gfxPos++, D_1015A70);
+
+    if (D_800FFEC0 != 0) {
+        gDPSetCycleType(gfxPos++, G_CYC_FILL);
+        gDPSetRenderMode(gfxPos++, G_RM_NOOP, G_RM_NOOP2);
+        gDPSetColorImage(gfxPos++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 320, OS_K0_TO_PHYSICAL(&D_803B5000[arg1]));
+        gDPSetFillColor(gfxPos++, PACK_FILL_COLOR(D_800FF8DC, D_800FF8E0, D_800FF8E4, 1));
+        gDPFillRectangle(gfxPos++, 0, 0, 319, 239);
+        gDPPipeSync(gfxPos++);
+    } else {
+        gDPSetCycleType(gfxPos++, G_CYC_FILL);
+        gDPSetRenderMode(gfxPos++, G_RM_NOOP, G_RM_NOOP2);
+        gDPSetColorImage(gfxPos++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 320, OS_K0_TO_PHYSICAL(&D_803B5000[arg1]));
+        gDPSetFillColor(gfxPos++, PACK_FILL_COLOR(D_800FF8DC, D_800FF8E0, D_800FF8E4, 1));
+        gDPFillRectangle(gfxPos++, 18, 16, 337, 247);
+        gDPPipeSync(gfxPos++);
+    }
+
+    if (D_800FFEC0 != 0){
+        D_800FFEC0--;
+    }
+    gSPDisplayList(gfxPos++, D_1015B18);
+    gDPSetColorImage(gfxPos++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 320, OS_K0_TO_PHYSICAL(&D_803B5000[arg1]));
+    return gfxPos;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008D5DC.s")
 
@@ -976,13 +1017,189 @@ void func_8008D114(graphicStruct* arg0, s32 fbIndex) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008DB24.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008DB90.s")
+void func_8008DB90(Gfx** pGfxPos, graphicStruct* arg1) {
+    CTTask* task;
+    Mtx* var_a0;
+    s32* var_t0;
+    s32 i;
+    s32 v12;
+    Gfx* gfxPos;
+    Mtx* mtxTranslate;
+    Mtx* mtxRotate;
+    Mtx* mtxScale;    
+    u32 mtxCount;
+    Mtx* s4;
+    Unk_800FFB74* v1;
+    
+    gfxPos = *pGfxPos;
+    D_800FF8D4 = arg1->unk1e880;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008E314.s")
+    if (D_800FFDEC) { } // required for matching
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008E488.s")
+    task = gCTTaskHead->next;
+    while (task->next != NULL) {
+        if ((task->unk4E & 1) && task->unk46 > 0) {
+            v1 = D_800FFB74[task->unk46];
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/setFrustum.s")
+            if (!IS_SEGMENTED(v1->unk_00)) {
+                var_a0 = v1->unk_00;
+            } else {
+                var_a0 = SEGMENTED_TO_VIRTUAL(v1->unk_00);
+            }
+
+            if (!IS_SEGMENTED(v1->unk_08)) {
+                var_t0 = v1->unk_08;
+            } else {
+                var_t0 = SEGMENTED_TO_VIRTUAL(v1->unk_08);
+            }
+            v12 = *var_t0;
+            for (i = 0; i < v12; i++) {
+                *D_800FF8D4++ = var_a0[v12 * (s32)task->unk40 + i];
+            }
+        }
+        task = task->next;
+    }
+
+    D_800FF8D4 = arg1->unk1e880;
+    
+    mtxTranslate = arg1->actorTranslate;
+    mtxScale = arg1->actorScale;
+    mtxRotate = arg1->actorRotate;    
+
+    task = gCTTaskHead->next;
+    while (task->next != NULL) {
+        if ((task->unk4E & 1) && task->unk46 > 0) {
+            s4 = D_800FF8D4;
+
+            if (D_801FC9AC == 1) {
+                guTranslate(mtxTranslate, task->pos.x, 180.0f - task->pos.y, task->pos.z);
+            } else {
+                guTranslate(mtxTranslate, task->pos.x, 180.0f - task->pos.y, task->pos.z);
+            }
+            guRotate(mtxRotate, task->rotA, task->rot.x, task->rot.y, task->rot.z);
+            guScale(mtxScale, task->scale.x, task->scale.y, task->scale.z);
+
+            gSPMatrix(gfxPos++, OS_K0_TO_PHYSICAL(mtxTranslate), G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+            gSPMatrix(gfxPos++, OS_K0_TO_PHYSICAL(mtxRotate), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+            gSPMatrix(gfxPos++, OS_K0_TO_PHYSICAL(mtxScale), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+
+            PutDList(&D_800FF8D4, &gfxPos, task->unk50);
+            gSPPopMatrix(gfxPos++, G_MTX_MODELVIEW);
+
+            if (task->unk4E & 2) {
+                f32 sp8C = 0.0f;
+                f32 sp88 = 0.0f;
+                f32 sp84 = 0.0f;
+                Unk_800FFDDC* s0 = D_800FFDDC[task->unk_04];
+
+                for (i = 0; s0[i].unk_00 >= 0; i++) {
+                    guMtxXFML(mtxRotate, sp8C, sp88, sp84, &sp8C, &sp88, &sp84);
+                    guMtxXFML(mtxScale, sp8C, sp88, sp84, &sp8C, &sp88, &sp84);
+                    guMtxCatL(&s4[s0[i].unk_00], mtxRotate, &s4[s0[i].unk_00]);
+                    guMtxCatL(&s4[s0[i].unk_00], mtxScale, &s4[s0[i].unk_00]);
+                    if (s0[i].unk_00 == 5) {
+                        func_80059254(&s4[s0[i].unk_00], 
+                            s0[i].unk_02 + (task->pos.x + sp8C),
+                            s0[i].unk_02 + (180.0f - task->pos.y - sp88),
+                            task->pos.z + sp84,
+                            s0[i].unk_06, s0[i].unk_06,
+                            task->unk4C, s0[i].unk_08);
+                    } else {
+                        func_800598C4(&s4[s0[i].unk_00], 
+                            s0[i].unk_02 + (task->pos.x + sp8C),
+                            s0[i].unk_02 + (180.0f - task->pos.y - sp88),
+                            task->pos.z + sp84,
+                            s0[i].unk_06, s0[i].unk_06,
+                            task->unk4C, s0[i].unk_08);
+                    }
+                }
+            }
+
+            mtxTranslate++;
+            mtxRotate++;
+            mtxScale++;
+        }
+        task = task->next;
+    }
+
+    mtxCount = ((u32)D_800FF8D4 - (u32)arg1->unk1e880) / sizeof(Mtx);
+    if (D_800FFDEC < mtxCount) {
+        DummiedPrintf("Mtx Max = %u\n", mtxCount);
+        D_800FFDEC = mtxCount;
+    }
+    if (mtxCount > 64) {
+        DummiedPrintf("マトリクスの数をオーバーしました( %u )\n", mtxCount);
+    }
+    *pGfxPos = gfxPos;
+}
+
+Gfx* func_8008E314(Gfx* gfxPos, Tongue* tongues, PlayerActor* players, Camera* cameras, s32 fbIndex) {
+    u16 perspNorm;
+    Camera* camera = &cameras[0];
+
+    camera->f4.x = 0.0f;
+    camera->f4.y = 0.0f;
+    camera->f4.z = 100.0f;
+
+    camera->f3.x = 0.0f;
+    camera->f3.y = 0.0f;
+    camera->f3.z = 0.0f;
+    
+    camera->f5.x = 0.0f;
+    camera->f5.y = 0.0f;
+    camera->f5.z = 0.0f;
+
+    camera->f1.z = 0.0f;
+    camera->f2.x = 0.0f;
+    camera->f2.y = 100.0f;    
+
+    guPerspective(&D_801B3180[fbIndex], &perspNorm, 60.0f, 4.0f / 3.0f, 1.0f, 1000.0f, 1.0f);
+    gSPPerspNormalize(gfxPos++, perspNorm);
+    guLookAt(&D_801B3240[fbIndex],
+                 camera->f4.x, camera->f4.y, camera->f4.z, // Eye
+                 camera->f5.x, camera->f5.y, camera->f5.z, // At
+                 0, 1, 0); // Up
+    gSPMatrix(gfxPos++, OS_K0_TO_PHYSICAL(&D_801B3180[fbIndex]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+    gSPMatrix(gfxPos++, OS_K0_TO_PHYSICAL(&D_801B3240[fbIndex]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    return gfxPos;
+}
+
+Gfx* func_8008E488(Gfx* gfxPos, Tongue* tongues, PlayerActor* players, Camera* cameras, s32 fbIndex) {
+    u16 perspNorm;
+    Camera* camera = &cameras[0];
+
+    camera->f4.x = 0.0f;
+    camera->f4.y = 0.0f;
+    camera->f4.z = 5.0f;
+
+    camera->f3.x = 0.0f;
+    camera->f3.y = 0.0f;
+    camera->f3.z = 0.0f;
+    
+    camera->f5.x = 0.0f;
+    camera->f5.y = 0.0f;
+    camera->f5.z = 0.0f;
+
+    camera->f1.z = 0.0f;
+    camera->f2.x = 0.0f;
+    camera->f2.y = 5.0f;    
+
+    guPerspective(&D_801B3300[fbIndex], &perspNorm, 60.0f, 4.0f / 3.0f, 1.0f, 20000.0f, 1.0f);
+    gSPPerspNormalize(gfxPos++, perspNorm);
+    guLookAt(&D_801B33C0[fbIndex],
+                 camera->f4.x, camera->f4.y, camera->f4.z, // Eye
+                 camera->f5.x, camera->f5.y, camera->f5.z, // At
+                 0, 1, 0); // Up
+    gSPMatrix(gfxPos++, OS_K0_TO_PHYSICAL(&D_801B3300[fbIndex]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+    gSPMatrix(gfxPos++, OS_K0_TO_PHYSICAL(&D_801B33C0[fbIndex]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    return gfxPos;
+}
+
+Gfx* setFrustum(Gfx* gfxPos, s32 fbIndex) {
+    guOrtho(&D_801B3480[fbIndex], 0.0f, 320.0f, 0.0f, 240.0f, -2000.0f, 2000.0f, 1.0f);
+    gSPMatrix(gfxPos++, OS_K0_TO_PHYSICAL(&D_801B3480[fbIndex]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+    return gfxPos;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008E698.s")
 
@@ -990,7 +1207,6 @@ void func_8008D114(graphicStruct* arg0, s32 fbIndex) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008E840.s")
 
-//#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008E9AC.s")
 // UNK58 typing is confusing due to this
 CTTask* func_8008E9AC(s16 arg0, s16 arg1, s16 arg2, s16 arg3, s16* arg4) {
     CTTask* task;
@@ -1048,7 +1264,77 @@ void func_8008F114(void){
     Timing_StartProcess();
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008F16C.s")
+void func_8008F16C(void) {
+    if (D_800FFDF0 != 0) {
+        osRecvMesg(&gSyncMessageQueue, NULL, OS_MESG_NOBLOCK);
+        gMainGfxPos = gGraphicsList[gFramebufferIndex].dlist;
+        gMainGfxPos = func_8008D168(gMainGfxPos, gFramebufferIndex, D_800FFDF0);
+        func_8005CA38();
+        if (D_800FFDF0 == 3) {
+            func_8002E0CC();
+            gCamera->f4.x = 0.0f;
+            gCamera->f4.y = 0.0f;
+            gCamera->f4.z = 0.0f;
+            gCamera->f5.x = 1000.0f;
+            gCamera->f5.y = 1000.0f;
+            gCamera->f5.z = 1000.0f;
+        }
+        func_80056F48(0, gTongues, gPlayerActors, gCamera);
+        setPrimColor(D_800FF8DC, D_800FF8E0, D_800FF8E4, 255);
+        printUISprite(0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 320.0f, 240.0f, 0.0f, SPRITE_BLANK);
+        gMainGfxPos = func_8008E314(gMainGfxPos, gTongues, gPlayerActors, gCamera, gFramebufferIndex);
+        gMainGfxPos = func_8005F408(gMainGfxPos);
+        gMainGfxPos = func_8005CA44(gMainGfxPos);
+        gDPFullSync(gMainGfxPos++);
+        gSPEndDisplayList(gMainGfxPos++);
+        func_8008D114(&gGraphicsList[gFramebufferIndex], gFramebufferIndex);
+    } else {
+        Controller_StartRead();
+        func_8005CA38();
+        func_80056F48(0, gTongues, gPlayerActors, gCamera);
+        func_8008D114(&gGraphicsList[1 - gFramebufferIndex], 1 - gFramebufferIndex);
+        gMainGfxPos = gGraphicsList[gFramebufferIndex].dlist;
+        gMainGfxPos = func_8008D168(gMainGfxPos, gFramebufferIndex, D_800FFDF0);
+        func_8004E784(gContMain, 4, 0, 0);
+        Controller_ParseJoystick(gContMain);
+        func_8008D060();
+        gMainGfxPos = func_8008E314(gMainGfxPos, gTongues, gPlayerActors, gCamera, gFramebufferIndex);
+        gMainGfxPos = func_8005F408(gMainGfxPos);
+        if (gGameModeCurrent != GAME_MODE_SAVE_MENU) {
+            gMainGfxPos = func_80084884(gMainGfxPos);
+        }
+        func_80084A04();
+        if (D_801FC9AC == 1) {
+            gMainGfxPos = setFrustum(gMainGfxPos, gFramebufferIndex);
+            func_8008DB90(&gMainGfxPos, &gGraphicsList[gFramebufferIndex]);
+            gMainGfxPos = func_8005CA44(gMainGfxPos);
+        } else {
+            gMainGfxPos = setFrustum(gMainGfxPos, gFramebufferIndex);
+            func_8008DB90(&gMainGfxPos, &gGraphicsList[gFramebufferIndex]);
+            gMainGfxPos = func_8008E488(gMainGfxPos, gTongues, gPlayerActors, gCamera, gFramebufferIndex);
+            gMainGfxPos = func_8005CA44(gMainGfxPos);
+        }
+        func_8008C438();
+        gDPFullSync(gMainGfxPos++);
+        gSPEndDisplayList(gMainGfxPos++);
+    }
+    Timing_StopProcess();
+    osRecvMesg(&gFrameDrawnMessageQueue, NULL, OS_MESG_BLOCK);
+    gFramebufferIndex = 1 - gFramebufferIndex;
+    if (D_800FFDF0 == 0) {
+        osViSwapBuffer(D_803B5000[gFramebufferIndex].data);
+    }
+    osViSetSpecialFeatures(OS_VI_GAMMA_ON|OS_VI_GAMMA_DITHER_ON);
+    if (D_800FFDF0 != 0) {
+        D_800FFDF0--;
+    }
+    func_8008C554();
+    if(MQ_IS_FULL(&gSyncMessageQueue)){
+        osRecvMesg(&gSyncMessageQueue, NULL, OS_MESG_BLOCK);
+    }
+    osRecvMesg(&gSyncMessageQueue, NULL, OS_MESG_BLOCK);
+    Timing_StartProcess();
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008F694.s")
 

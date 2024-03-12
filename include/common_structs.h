@@ -456,11 +456,14 @@ typedef struct CTTask {
     /* 0x24 */ Vec3f scale;
     /* 0x30 */ Vec3f rot;
     /* 0x3C */ f32 unk3C;
-    /* 0x40 */ char pad40[4];
+    /* 0x40 */ f32 unk40;
     /* 0x44 */ s16 unk44;
-    /* 0x46 */ char pad46[2];
+    /* 0x46 */ s16 unk46;
     /* 0x48 */ s16 unk48;                           /* inferred */
-    /* 0x4A */ char pad4A[0xA];                     /* maybe part of unk48[6]? */
+    /* 0x4A */ char pad4A[0x2];                     /* maybe part of unk48[6]? */
+    /* 0x4C */ s16 unk4C;
+    /* 0x4E */ u16 unk4E;
+    /* 0x50 */ Gfx* unk50;
     /* 0x54 */ u8 unk54;
     /* 0x55 */ char pad55[3];                       /* maybe part of unk54[4]? */
     /* 0x58 */ struct CTTask* unk58;

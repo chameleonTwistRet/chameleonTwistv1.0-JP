@@ -55,6 +55,22 @@ typedef struct UnkPlaySoundEffect {
     s16 unk_0E;
 } UnkPlaySoundEffect;
 
+typedef struct Unk_800FFB74 {
+    /* 0x00 */ Mtx* unk_00;
+    /* 0x04 */ s32 unk_04;
+    /* 0x08 */ s32* unk_08;
+    /* 0x0C */ s32 unk_0C;
+    /* 0x10 */ s32 unk_10;
+} Unk_800FFB74; // size 0x14
+
+typedef struct Unk_800FFDDC {
+    /* 0x00 */ s16 unk_00;
+    /* 0x02 */ s16 unk_02;
+    /* 0x04 */ s16 unk_04;
+    /* 0x06 */ s16 unk_06;
+    /* 0x07 */ s16 unk_08;
+} Unk_800FFDDC; // size 0xA
+
 
 /* Functions */
 void func_8009A724(void);                                  /* extern */
@@ -128,6 +144,18 @@ void Video_SetTask(graphicStruct* arg0, Gfx* arg1, s32 arg2);
 void func_8008F7A4(s32, s32);
 void func_80097540(CTTask*);
 void func_8009288C(CTTask*);
+Gfx* func_8008D168(Gfx*, s32, s32);
+Gfx* setFrustum(Gfx*, s32);
+Gfx* func_8008E314(Gfx*, Tongue*, PlayerActor*, Camera*, s32);
+Gfx* func_8008E488(Gfx*, Tongue*, PlayerActor*, Camera*, s32);
+Gfx* func_8005F408(Gfx*);
+Gfx* func_8005CA44(Gfx*);
+Gfx* func_80084884(Gfx*);
+void Controller_ParseJoystick(ContMain*);
+void func_80084A04(void);
+void func_8008DB90(Gfx**, graphicStruct*);
+void func_80059254(Mtx* arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, s32 arg7);
+void func_800598C4(Mtx* arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, s32 arg7);
 
 /* Ext Variables */
 extern ContMain D_801FC9B8;
@@ -179,5 +207,19 @@ extern s16 D_801B317C;
 extern s16 gSFXMute;
 extern UnkPlaySoundEffect* D_80200A90;
 extern f32 D_8010F2FC;
+extern s16 D_800FFEC0;
+extern Gfx D_1015A70[];
+extern Gfx D_1015AB8[];
+extern Gfx D_1015AE8[];
+extern Gfx D_1015B18[];
+extern Mtx D_801B3180[];
+extern Mtx D_801B3240[];
+extern Mtx D_801B3300[];
+extern Mtx D_801B33C0[];
+extern Mtx D_801B3480[];
+extern Mtx* D_800FF8D4;
+extern Unk_800FFB74* D_800FFB74[];
+extern Unk_800FFDDC* D_800FFDDC[];
+extern s32 D_800FFDEC;
 
 #endif // _5FF30_H_
