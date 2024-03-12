@@ -25,7 +25,7 @@ void Timing_StopProcess(void);
 void func_8008C554(void);
 void osViSwapBuffer(void* frameBufPtr);
 s32 Controller_Init(void);
-void Video_StartThread(void);
+void Sched_StartThread(void);
 void Audio_StartThread(void);
 s32 func_800AF604(f32, f32, f32, f32);
 void __osInitialize_common(void);

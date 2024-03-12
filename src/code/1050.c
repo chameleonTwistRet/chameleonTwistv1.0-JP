@@ -1160,5 +1160,5 @@ void func_8002D080(void) {
     gPlayerActors[2].active = 0;
     gPlayerActors[3].active = 0;
     Audio_StartThread();
-    Video_StartThread();
+    Sched_StartThread();
 }
