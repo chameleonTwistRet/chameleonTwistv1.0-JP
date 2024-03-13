@@ -93,6 +93,7 @@ extern Gfx D_303F1A0[];
 extern Gfx D_303D418[];
 extern Mtx D_80176860;
 extern Camera D_801768A0;
+extern f32 D_800FE014;
 
 /* functions */
 void func_8006623C(void);

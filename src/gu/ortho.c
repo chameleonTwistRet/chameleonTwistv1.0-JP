@@ -1,6 +1,6 @@
 #include "guint.h"
 
-void guFrustumF(float mf[4][4], float l, float r, float b, float t, float n, float f, float scale) {
+void guOrthoF(float mf[4][4], float l, float r, float b, float t, float n, float f, float scale) {
 	int	i, j;
     f32 temp_f12, temp_f0, temp_f2;
 
@@ -26,10 +26,10 @@ void guFrustumF(float mf[4][4], float l, float r, float b, float t, float n, flo
     }
 }
 
-void guFrustum(Mtx *m, float l, float r, float b, float t, float n, float f, float scale) {
+void guOrtho(Mtx *m, float l, float r, float b, float t, float n, float f, float scale) {
 	Matrix	mf;
 
-	guFrustumF(mf, l, r, b, t, n, f, scale);
+	guOrthoF(mf, l, r, b, t, n, f, scale);
 
 	guMtxF2L(mf, m);
 }

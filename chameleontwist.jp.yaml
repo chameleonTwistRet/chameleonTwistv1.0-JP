@@ -132,7 +132,7 @@ segments:
       - [0xBB580, c, audio/cspsetseq]
       - [0xBB5C0, c, os/gettime]
       - [0xBB650, hasm, os/getcount]
-      - [0xBB660, c, gu/getfrustum]
+      - [0xBB660, c, gu/ortho]
       - [0xBB820, hasm, libc/bzero]
       - [0xBB8C0, c, libc/ll]
       - [0xBBB80, c, io/conteepprobe]
