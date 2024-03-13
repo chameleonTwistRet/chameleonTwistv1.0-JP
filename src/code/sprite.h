@@ -30,23 +30,7 @@ typedef struct SpriteListing {
 typedef struct UnkBowlingStruct {
     /* 0x00 */ s32 unk_00;
     /* 0x04 */ s32 unk_04;
-    /* 0x08 */ char unk_08[0x04];
-    /* 0x0C */ f32 unkC;
-    /* 0x10 */ f32 unk_10;
-    /* 0x14 */ f32 unk_14;
-    /* 0x18 */ f32 unk_18;
-    /* 0x1C */ f32 unk_1C;
-    /* 0x20 */ f32 unk_20;
-    /* 0x24 */ f32 unk_24;
-    /* 0x28*/ s32 UNK_28;
-    /* 0x2C */ s32 unk_2C;
-    /* 0x30 */ f32 unk_30;
-    /* 0x34 */ void* unk34;
-    /* 0x38 */ void* unk_38; // this struct varies widely
-    /* 0x3C */ d8006266c* unk_3C;
-    /* 0x40 */ struct aa1* previous;
-    /* 0x44 */ struct aa1* next;
-} UnkBowlingStruct; //sizeof 0x48
+} UnkBowlingStruct; //sizeof 0x8
 
 /* extern symbols */
 extern s32 D_80176960[];
@@ -93,11 +77,13 @@ extern Gfx D_303F1A0[];
 extern Gfx D_303D418[];
 extern Mtx D_80176860;
 extern Camera D_801768A0;
+extern s32 D_800F687C;
+extern s16 D_800F06E4;
 
 /* functions */
 void func_8006623C(void);
 void func_80055C04(void);
-void func_80062D10(s32, s32, s32*, s32*, u32, s32);
+aa1* func_80062D10(s32, s32, s32*, s32*, u32, s32);
 void func_800634D4(s32, s32, s32*, s32*, s32, s32);
 void func_8007AF80(void);
 void ResetEyeParams(void);

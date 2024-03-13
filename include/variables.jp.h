@@ -337,7 +337,7 @@ extern u8 gSelectedCharacters[4];
 extern s32 D_801749B0;
 extern s32 gIsMultiplayerPaused;
 extern s32 gCurrentStage;
-extern s32 D_80176F58;
+extern s32 D_80176F58[2];
 extern s16 gOneRun;
 extern s16 gNoHit;
 extern BGMVolume volBGM;

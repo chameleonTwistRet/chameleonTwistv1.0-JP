@@ -1104,6 +1104,9 @@ ActorTick_FallingGreyAnt = 0x8004A6C4;
 ActorInit_FallingGreyAnt = 0x8004A658;
 ActorTick_UnkFireSpawner = 0x8004AB08;
 ActorInit_UnkFireSpawner = 0x8004AB00;
+Effect_TypeA_Init = 0x800619F8;
+Effect_TypeA_Init2 = 0x80061D10;
+Effect_TypeB_Init = 0x80062588;
 
 //rodata stuff
 D_8010B484 = 0x8010B484; // type:f32 force_migration:True size:0x08

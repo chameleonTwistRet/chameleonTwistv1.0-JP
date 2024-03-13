@@ -660,7 +660,7 @@ void func_8008C1C8(s32* arg0) {
     s32 sp4C = *arg0;
 
     if ((gSelectedCharacters[0] == CHARA_WHITE) && (gGameModeCurrent == 0)) {
-        if ((D_80176F58 == 0) && (gOneRun != 0)) {
+        if ((D_80176F58[0] == 0) && (gOneRun != 0)) {
             if ((gNoHit != 0) && (gCurrentStage != STAGE_TRAINING)) {
                 SetTextGradient(255, 255, 0, 255, 255, 0, 0, 255, 255, 255, 0, 255, 255, 0, 0, 255);
                 printUISprite(276.0f, 204.0f, 0.0f, 0.0f, 1.0f, 16.0f, 16.0f, 0.0f, 75);

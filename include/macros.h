@@ -36,6 +36,7 @@
 #define PLAYSFX(id,arg4,flag) PlaySoundEffect(id,NULL,NULL,NULL,arg4,flag)
 #define PLAYSFXAT(id,pos,arg4,flag) PlaySoundEffect(id,&pos.x,&pos.y,&pos.z,arg4,flag)
 #define flabs(A) (((A) < 0.0f) ? (-A) : (A))
+#define RANDOM(min, max)  ((min) + (Rand() % ((max) - (min) + 1)))
 
 #define SCREEN_WIDTH  320
 #define SCREEN_HEIGHT 240

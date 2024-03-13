@@ -1838,7 +1838,7 @@ void func_80061394(void) {
 //start of functions using "aa1" struct.
 void func_800613D0(aa1* arg0) {
     arg0->unk4 = 0;
-    arg0->unk_3C = NULL;
+    arg0->parts = NULL;
     arg0->previous = NULL;
     arg0->next = NULL;
     arg0->unkC = 0.0f;
@@ -1856,20 +1856,20 @@ aa1* aa1_Alloc(s32 arg0, s32 arg1, void* arg2) {
     }
     
     if (arg0 != 0) {
-        var_a1->unk_3C = _malloc(arg0 * 0x28);
-        if (var_a1->unk_3C == NULL) {
+        var_a1->parts = _malloc(arg0 * 0x28);
+        if (var_a1->parts == NULL) {
             Free(var_a1);
             return NULL;
         }        
     } else {
-        temp_v0->unk_3C = 0;
+        temp_v0->parts = 0;
     }
     
     if (arg1 != 0) {
         var_a1->unk_38 = _malloc(arg1);
         if (var_a1->unk_38 == NULL) {
             Free(var_a1);
-            Free(var_a1->unk_3C);
+            Free(var_a1->parts);
             return NULL;
         }        
     } else {
@@ -1902,7 +1902,7 @@ void aa1_Free(aa1* arg0) {
     if (arg0 == g_aa1_head) {
         g_aa1_head = arg0->previous;
     }
-    Free(arg0->unk_3C);
+    Free(arg0->parts);
     Free(arg0->unk_38);
     Free(arg0);
     g_aa1_Count -= 1;
@@ -1915,50 +1915,401 @@ void aa1_InitHead(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_800615D4.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80061640.s")
+void Effect_TypeA_Update(aa1* worker, void* arg1) {
+    aa1Sub* parts = worker->parts;
+    s32 i;
+    s32 numAlive;
+    u8 alpha;
+    f32 size;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_800619F8.s")
+    for (i = 0, numAlive = 0; i < worker->unk4; i++) {
+        if (parts[i].lifeTime == 0.0f) {
+            continue;
+        }
+        numAlive++;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80061D10.s")
+        alpha = (1.0f - parts[i].lifeTime) * 255.0f;
+        if (i == 0) {
+            setPrimColor(alpha, alpha, alpha, alpha);
+        } else {
+            setPrimColor(alpha / 50, 0, 0, alpha);
+        }
+
+        size = worker->size - parts[i].lifeTime * worker->size;
+        func_8005747C(parts[i].pos.x, parts[i].pos.y, parts[i].pos.z, size * 2, size * 2, parts[i].lifeTime, 0x4A);
+
+        if (D_800F687C > 0) {
+            if ((i % 2)) {
+                setPrimColor(alpha, 0, 0, 127);
+                func_8005747C(worker->pos.x + RANDOM(-30, 30), worker->pos.y + RANDOM(-60, 60), worker->pos.z + RANDOM(-30, 30), size / 2, size / 2, parts[i].lifeTime, 0x4A);
+            }
+
+            parts[i].pos.x += parts[i].vel.x;
+            parts[i].pos.y += parts[i].vel.y;
+            parts[i].pos.z += parts[i].vel.z;
+
+            parts[i].lifeTime += 1.0f / 30.0f;
+            if (parts[i].lifeTime >= 1.0f) {
+                parts[i].lifeTime = 0.0f;
+            }
+        }
+    }
+
+    if (numAlive == 0) {
+        aa1_Free(worker);
+    }
+}
+
+void Effect_TypeA_Init(f32 posX, f32 posY, f32 posZ, s32 numParts, s32 size) {
+    aa1* worker;
+    aa1Sub* parts;
+    s32 i;
+    
+    worker = aa1_Alloc(numParts, 0, &Effect_TypeA_Update);
+    if (worker == NULL) {
+        return;
+    }
+
+    worker->pos.x = posX;
+    worker->pos.y = posY;
+    worker->pos.z = posZ;
+    worker->size = size * 3;
+    worker->unk8 = PlaySoundEffect(0xC3, &worker->pos.x, &worker->pos.y, &worker->pos.z, 0, 0x20);
+
+    for (parts = worker->parts, i = 0; i < numParts; i++) {
+        parts[i].pos.x = posX + RANDOM(-size, size);
+        parts[i].pos.y = posY + RANDOM(-size, size);
+        parts[i].pos.z = posZ + RANDOM(-size, size);
+        parts[i].vel.x = RANDOM(-size, size) / 10.0f;
+        parts[i].vel.y = RANDOM(size, 2 * size) / 10.0f;
+        parts[i].vel.z = RANDOM(-size, size) / 10.0f;
+        parts[i].lifeTime = 1.0f / RANDOM(27, 60);
+    }
+}
+
+void Effect_TypeA_Init2(f32 posX, f32 posY, f32 posZ, s32 numParts, s32 size) {
+    aa1* worker;
+    aa1Sub* parts;
+    s32 i;
+    
+    worker = aa1_Alloc(numParts, 0, &Effect_TypeA_Update);
+    if (worker == NULL) {
+        return;
+    }
+
+    worker->pos.x = posX;
+    worker->pos.y = posY;
+    worker->pos.z = posZ;
+    worker->size = size * 3;
+    worker->unk8 = PlaySoundEffect(0xC3, &worker->pos.x, &worker->pos.y, &worker->pos.z, 10, 0x20);
+
+    for (parts = worker->parts, i = 0; i < numParts; i++) {
+        parts[i].pos.x = posX + RANDOM(-size, size);
+        parts[i].pos.y = posY + RANDOM(-size, size);
+        parts[i].pos.z = posZ + RANDOM(-size, size);
+        parts[i].vel.x = RANDOM(-size, size) / 10.0f;
+        parts[i].vel.y = RANDOM(size, 2 * size) / 10.0f;
+        parts[i].vel.z = RANDOM(-size, size) / 10.0f;
+        parts[i].lifeTime = 1.0f / RANDOM(27, 60);
+    }
+}
 
 void func_8006202C(void) {
     D_800FE160 = 0;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80062038.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_800620C8.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80062588.s")
-
-typedef struct unkStructTemp {
-    char unk_00[4];
-    s32 unk4;
-    char unk_08[4];
-    f32 unkC;
-} unkStructTemp;
-
-void func_8006266C(d8006266c* arg0) {
-    unkStructTemp* temp_v0;
-    
-    temp_v0 = (unkStructTemp*)arg0->unk_38;
-    temp_v0->unk4 = 1;
-    temp_v0->unkC = 0;
+s32 func_80062038(void) {
+    if (!gContMain->buttons0 && gContMain->stickX > -5 && gContMain->stickX < 5 && gContMain->stickY > -5 && gContMain->stickY < 5) {
+        D_800FE160 = 0;
+        return D_800FE160;
+    } else if (D_800F687C > 0) {
+        D_800FE160++;
+        return D_800FE160;
+    } else {
+        D_800FE160 = 0;
+        return D_800FE160;
+    }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80062684.s")
+void Effect_TypeB_Update(aa1* worker, void* arg1) {
+    aa1Sub* parts = worker->parts;
+    s32 i;
+    s32 numAlive;
+
+    if (D_800F687C > 0) {
+        worker->unkC += 1.0f / worker->size;
+        if (worker->unkC > 1.0f) { } // required for matching
+
+        for (i = 0; i < worker->unk4; i++) {
+            if (parts[i].lifeTime == 0.0f && worker->unkC < 1.0f) {
+                parts[i].pos.x = worker->pos.x + sinf(worker->unkC * 6.28312 * 6.0) * worker->unkC * 150.0f;
+                parts[i].pos.y = worker->pos.y;
+                parts[i].pos.z = worker->pos.z - cosf(worker->unkC * 6.28312 * 6.0) * worker->unkC * 150.0f;
+
+                parts[i].sizeX = 1;
+                parts[i].sizeY = 1;
+
+                parts[i].vel.x = RANDOM(-5, 5);
+                parts[i].vel.y = RANDOM(-5, 5);
+                parts[i].vel.z = RANDOM(-5, 5);
+
+                parts[i].lifeTime = 1.0f / worker->unk4 * 2;
+                break;
+            }
+        }
+    }
+
+    for (i = 0, numAlive = 0; i < worker->unk4; i++) {
+        if (parts[i].lifeTime > 0.0f) {
+            numAlive++;
+
+            setPrimColor(255, 255, 255, 200);
+            func_8005747C(parts[i].pos.x, parts[i].pos.y, parts[i].pos.z, parts[i].sizeX * 1.5, parts[i].sizeY * 1.5, parts[i].lifeTime, 0x48);
+
+            setPrimColor(200, 255, 0, 160);
+            func_8005747C(parts[i].pos.x, parts[i].pos.y, parts[i].pos.z, parts[i].sizeX, parts[i].sizeY, parts[i].lifeTime, 0x49);
+
+            if (D_800F687C > 0) {
+                parts[i].vel.y -= 1.02;
+
+                parts[i].sizeX = RANDOM(10, 50);
+                parts[i].sizeY = RANDOM(10, 50);
+
+                parts[i].pos.x += parts[i].vel.x;
+                parts[i].pos.y += parts[i].vel.y;
+                parts[i].pos.z += parts[i].vel.z;
+
+                parts[i].lifeTime += 1.0f / worker->unk4 * 4.0f;
+                if (parts[i].lifeTime >= 1.0f) {
+                    parts[i].lifeTime = 0.0f;
+                }
+            }
+        }
+    }
+
+    if (numAlive == 0) {
+        aa1_Free(worker);
+    }
+}
+
+aa1* Effect_TypeB_Init(f32 posX, f32 posY, f32 posZ, s32 numParts) {
+    aa1* worker;
+    aa1Sub* parts;
+    s32 i;
+    
+    worker = aa1_Alloc(numParts, 0, &Effect_TypeB_Update);
+    if (worker == NULL) {
+        return worker;
+    }
+    
+    worker->pos.x = posX;
+    worker->pos.y = posY;
+    worker->pos.z = posZ;
+    worker->size = 30.0f;
+    worker->unkC = 0.0f;
+    worker->unk4 = numParts; // unnecessary assignment
+
+    for (parts = worker->parts, i = 0; i < worker->unk4; i++) {
+        parts[i].sizeX = 1.0f;
+        parts[i].sizeY = 1.0f;
+
+        parts[i].pos.x = 0.0f;
+        parts[i].pos.y = 0.0f;
+        parts[i].pos.z = 0.0f;
+
+        parts[i].lifeTime = 0.0f;
+
+        parts[i].vel.x = 0.0f;
+        parts[i].vel.y = -10.0f;
+        parts[i].vel.z = 0.0f;        
+    }
+
+    return worker;
+}
+
+typedef struct aa1_HealthBarData {
+    s32* curHPPtr;
+    s32 mode;
+    f32 movePhase;
+    f32 idleTime;
+    s32 lastHP;
+} aa1_HealthBarData;
+
+void func_8006266C(aa1* worker) {
+    aa1_HealthBarData* data = (aa1_HealthBarData*)worker->unk_38;
+ 
+    data->mode = 1;
+    data->idleTime = 0.0f;
+}
+
+void func_80062684(aa1* worker) {
+    aa1Sub* parts = worker->parts;
+    s32 i;
+
+    for (i = 0; i < worker->unk4; i++) {
+        switch(parts[i].unk_25) {
+            case 0:
+                if (((s32)(parts[i].lifeTime * 50.0f) % 2) || D_800F687C == 0) {
+                    printUISprite(worker->pos.x + parts[i].pos.x, worker->pos.y + parts[i].pos.y, worker->pos.z + parts[i].pos.z, 0.0f, 0.5f, 0.0f, 0.0f, 0.0f, 0xF);
+                }
+                if (D_800F687C > 0) {
+                    parts[i].lifeTime += 1.0f / 30.0f;
+                }
+                if (parts[i].lifeTime >= 1.0f) {
+                    parts[i].lifeTime = 0.0f;
+                    parts[i].unk_25 = 2;
+                }
+                break;
+            case 1:
+                if ((s32)(parts[i].lifeTime * 50.0f) % 2) {
+                    printUISprite(worker->pos.x + parts[i].pos.x, worker->pos.y + parts[i].pos.y, worker->pos.z + parts[i].pos.z, (parts[i].lifeTime - 1.0f) * 6.28312, 0.5f, 0.0f, 0.0f, 0.0f, 0xF);
+                }
+                if (D_800F687C > 0) {
+                    parts[i].lifeTime += 1.0f / 30.0f;
+                }
+                if (parts[i].lifeTime >= 1.0f) {
+                    parts[i].lifeTime = 0.0f;
+                    parts[i].unk_25 = 3;
+                }
+                break;
+            case 2:
+                printUISprite(worker->pos.x + parts[i].pos.x, worker->pos.y + parts[i].pos.y, worker->pos.z + parts[i].pos.z, 0.0f, 0.5f, 0.0f, 0.0f, 0.0f, 0xF);
+                parts[i].lifeTime = 0.0f;
+                break;
+            case 3:
+                parts[i].lifeTime = 0.0f;
+                break;
+        }
+    }
+}
 
 void func_800629C4(void) {
-    D_800FE164 = 1;
+    D_800FE164 = TRUE;
 }
 
 void func_800629D4(void) {
-    D_800FE164 = 0;
+    D_800FE164 = FALSE;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/aa1_HealthBar.s")
+void aa1_HealthBar(aa1* worker, void* arg1) {
+    aa1Sub* parts = worker->parts;
+    aa1_HealthBarData* data = (aa1_HealthBarData*)worker->unk_38;
+    s32 i;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80062D10.s")
+    if (D_800FE164 == TRUE || *data->curHPPtr <= 0) {
+        return;
+    }
+    if (D_80176F58[0] == 1 && D_80176F58[1] == 1) {
+        return;
+    }
+
+    if (*data->curHPPtr < 10) {
+        data->idleTime = 0.0f;
+        data->mode = 1;
+    }
+    
+    for (i = data->lastHP; i < *data->curHPPtr; i++) {
+        parts[i].unk_25 = 0;
+        data->idleTime = 0.0f;
+        data->mode = 1;
+    }
+
+    for (i = data->lastHP; i > *data->curHPPtr; i--) {
+        parts[i - 1].unk_25 = 1;
+        data->idleTime = 0.0f;
+        data->mode = 1;
+    }
+
+    if (D_800F687C == 0) {
+        data->idleTime = 0.0f;
+        if (D_800F06E4 < 0) {
+            data->mode = 1;
+        } else {
+            data->mode = 0;
+        }
+    }
+
+    data->lastHP = *data->curHPPtr;
+
+    switch (data->mode) {
+        case 0:
+            data->idleTime += 1.0f / 360.0f;
+            if (func_80062038() > 0) {
+                data->idleTime = 0.0f;
+            }
+            data->movePhase = 0.0f;
+            if (data->idleTime >= 1.0f) {
+                data->idleTime = 0.0f;
+                data->mode = 1;
+            }
+            break;
+        case 1:
+            func_8006122C(0.0f, sinf(data->movePhase * 3.14156 / 2) * 50.0f - 50.0f);
+            func_80062684(worker);
+            func_80061240();
+            data->movePhase += 1.0f / 8.0f;
+            if (data->movePhase >= 1.0f) {
+                data->movePhase = 1.0f;
+                data->mode = 2;
+            }
+            break;
+        case 2:
+            func_80062684(worker);
+            data->movePhase = 1.0f;
+            if (func_80062038() > 30) {
+                data->mode = 3;
+            }
+            break;
+        case 3:
+            func_8006122C(0.0f, sinf(data->movePhase * 3.14156 / 2) * 50.0f - 50.0f);
+            func_80062684(worker);
+            func_80061240();
+            data->movePhase -= 1.0f / 15.0f;
+            if (data->movePhase <= 0) {
+                data->movePhase = 0.0f;
+                data->mode = 0;
+            }
+            break;
+    }
+}
+
+aa1* func_80062D10(s32 posX, s32 posY, s32* arg2, s32* arg3, u32 arg4, s32 arg5) {
+    aa1* worker;
+    aa1Sub* parts;
+    aa1_HealthBarData* data;
+    s32 i;
+    
+    worker = aa1_Alloc(*arg2, sizeof(aa1_HealthBarData), &aa1_HealthBar);
+    if (worker == NULL) {
+        return worker;
+    }
+
+    func_800629D4();
+
+    data = (aa1_HealthBarData*)worker->unk_38;
+    data->mode = 0;
+    data->curHPPtr = arg2;    
+    data->movePhase = 0.0f;
+    data->lastHP = *arg2;
+    data->idleTime = 0.0f;
+
+    worker->pos.x = posX;
+    worker->pos.y = posY;
+    worker->pos.z = 0.0f;
+    worker->unkC = 0.0f;
+    worker->size = 15.0f;
+
+    for (parts = worker->parts, i = 0; i < worker->unk4; i++) {
+        parts[i].unk_25 = 0;
+        parts[i].lifeTime = 0;
+
+        parts[i].pos.x = i * 14;
+        parts[i].pos.y = 0.0f;
+        parts[i].pos.z = 0.0f;      
+    }
+
+    return worker;
+}
 
 extern char D_8010CA80[];
 extern char D_8010CA84[];
@@ -1999,6 +2350,9 @@ void func_80062E18(aa1* arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80065088.s")
 
+#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8006526C.s")
+
+/*
 aa1* func_8006526C(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7, s32 arg8, s32 arg9) {
     aa1* temp_v0;
     d8006266c* temp_v1;
@@ -2014,17 +2368,17 @@ aa1* func_8006526C(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f
     temp_v1->unkC = (s32) D_800FE190;
     temp_v1->unk_10 = (s32) D_800FE194;
     temp_v1->unk_14 = (s32) D_800FE198;
-    temp_v0->unk_10 = arg0;
-    temp_v0->unk_14 = arg1;
-    temp_v0->unk_18 = arg2;
+    temp_v0->pos.x = arg0;
+    temp_v0->pos.y = arg1;
+    temp_v0->pos.z = arg2;
     temp_v0->unk_1C = arg3;
     temp_v0->unk_20 = arg4;
     temp_v0->unk_24 = arg5;
     temp_v0->unk0 = arg9;
-    temp_v0->unk_30 = (f32) arg8;
+    temp_v0->size = (f32) arg8;
     temp_v0->unkC = 0.0f;
     return temp_v0;
-}
+}*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80065354.s")
 
@@ -2048,7 +2402,7 @@ aa1* func_80065CAC(f32 arg0) {
     }
 
     temp_v0->unkC = 0.0f;
-    temp_v0->unk_30 = arg0;
+    temp_v0->size = arg0;
     return temp_v0;
 }
 
@@ -2074,9 +2428,9 @@ aa1* func_800662D4(f32 arg0, f32 arg1, f32 arg2, s32 arg3, s32 arg4) {
     guTranslate(temp_a0, arg0, arg1, arg2);
     temp_a0[1].m[0][0] = arg4;
     temp_a0[1].m[0][1] = arg3;
-    temp_v0->unk_10 = arg0;
-    temp_v0->unk_14 = arg1;
-    temp_v0->unk_18 = arg2;
+    temp_v0->pos.x = arg0;
+    temp_v0->pos.y = arg1;
+    temp_v0->pos.z = arg2;
     temp_v0->unkC = 0.0f;
     return temp_v0;
 }
@@ -2177,7 +2531,7 @@ void aa1_Bowling(f32 arg0, s32 arg1, s32 arg2) {
     if (temp_v0 != 0) {
         temp_v1 = temp_v0->unk_38;
         temp_v0->unkC = 0.0f;
-        temp_v0->unk_30 = arg0;
+        temp_v0->size = arg0;
         temp_v1->unk_00 = arg1;
         temp_v1->unk_04 = arg2;
     }
@@ -2365,7 +2719,7 @@ void func_80072D34(void) {
     if (temp_v0 != NULL) {
         temp_v0->unk0 = 1;
         temp_v0->unkC = 0.0f;
-        temp_v0->unk_30 = 0.0f;
+        temp_v0->size = 0.0f;
         PlayBGM(BGM_TRAINING);
     }
 }
@@ -2378,9 +2732,9 @@ void func_80073090(void) {
     if (temp_v0 != 0) {
         D_800F0B54[0] = s;
         temp_v0->unk0 = -1;
-        temp_v0->unk_18 = 0.0f;
+        temp_v0->pos.z = 0.0f;
         temp_v0->unkC = 0.0f;
-        temp_v0->unk_30 = 0.0f;
+        temp_v0->size = 0.0f;
     }
 }
 
@@ -2411,9 +2765,9 @@ void func_80073FD8(void) {
     aa1* temp_v0 = aa1_Alloc(0, 0, &func_80073C3C);
     if (temp_v0 != 0) {
         temp_v0->unk0 = 0;
-        temp_v0->unk_10 = 0.0f;
-        temp_v0->unk_14 = 0.0f;
-        temp_v0->unk_18 = 0.0f;
+        temp_v0->pos.x = 0.0f;
+        temp_v0->pos.y = 0.0f;
+        temp_v0->pos.z = 0.0f;
         temp_v0->unkC = 0;
         temp_v0->unk_1C = 0.0f;
     }
@@ -2523,12 +2877,12 @@ void func_8007A25C(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4) {
 
     temp_v0 = aa1_Alloc(0, 0, &func_80079FC4);
     if (temp_v0 != NULL) {
-        temp_v0->unk_10 = arg0;
-        temp_v0->unk_14 = arg1;
-        temp_v0->unk_18 = arg2;
+        temp_v0->pos.x = arg0;
+        temp_v0->pos.y = arg1;
+        temp_v0->pos.z = arg2;
         temp_v0->unk_1C = arg3;
         temp_v0->unkC = 0.0f;
-        temp_v0->unk_30 = (f32) (1.0f / arg4);
+        temp_v0->size = (f32) (1.0f / arg4);
     }
 }
 

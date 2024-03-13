@@ -1494,7 +1494,7 @@ void ActorTick_BombBossBomb(Actor* arg0) {
         temp_f2 = -50000.0f;
         temp_f12 = 50000.0f;
         if (Actor_Init(20, arg0->pos.x, arg0->pos.y, arg0->pos.z, 0.0f, temp_f2, temp_f12, temp_f2, temp_f12, temp_f2, temp_f12, 200.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 10, 0, 0, 0) != -1) {
-            func_800619F8(arg0->pos.x, arg0->pos.y, arg0->pos.z, 3, 100);
+            Effect_TypeA_Init(arg0->pos.x, arg0->pos.y, arg0->pos.z, 3, 100);
         }
         func_80031518(arg0);
     }
