@@ -84,7 +84,7 @@ extern s16 D_800F06E4;
 void func_8006623C(void);
 void func_80055C04(void);
 aa1* func_80062D10(s32, s32, s32*, s32*, u32, s32);
-void func_800634D4(s32, s32, s32*, s32*, s32, s32);
+aa1* func_800634D4(s32, s32, s32*, s32*, u32, s32);
 void func_8007AF80(void);
 void ResetEyeParams(void);
 void Rumble_Tick(void);

@@ -2330,9 +2330,140 @@ void func_80062E18(aa1* arg0) {
     PrintText(254.0f, 40.0f, 0.0f, 1.0f, 8.0f, 8.0f, "Ｘ", 1);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80063160.s")
+//#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80063160.s")
+extern s32 D_80108790;
+extern u32 D_800FE188;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_800634D4.s")
+void func_80063160(aa1* worker, void* arg1) {
+    aa1Sub* parts = worker->parts;
+    aa1_HealthBarData* data = (aa1_HealthBarData*)worker->unk_38;
+    s32 i;
+
+    if (D_800FE164 == TRUE || gCurrentStage == 8) {
+        return;
+    }
+    if (gCurrentStage != 0 &&
+        gCurrentStage != 1 &&
+        gCurrentStage != 2 &&
+        gCurrentStage != 3 &&
+        gCurrentStage != 4 &&
+        gCurrentStage != 5 &&
+        gCurrentStage != 9 &&
+        gCurrentStage != 10 &&
+        gCurrentStage != 11 &&
+        gCurrentStage != 12 &&
+        gCurrentStage != 13 &&
+        gCurrentStage != 14 &&
+        D_80108790 != 0) {
+        return;
+        }
+
+    if (D_80176F58[0] == 1 && D_80176F58[1] == 1) {
+        return;
+    }
+    
+    if (D_800F687C == 0) {
+        data->idleTime = 0.0f;
+        if (D_800F06E4 < 0) {
+            data->mode = 1;
+        } else {
+            data->mode = 0;
+        }
+    }
+
+    for (i = data->lastHP; i < *data->curHPPtr; i++) {
+        data->idleTime = 0.0f;
+        data->mode = 1;
+    }
+
+    if (gTotalCarrots > D_800FE188) {
+        data->idleTime = 0.0f;
+        data->mode = 1;
+    }
+    D_800FE188 = gTotalCarrots;
+
+    data->lastHP = *data->curHPPtr;    
+
+    switch (data->mode) {
+        case 0:
+            data->idleTime += 1.0f / 180.0f;
+            if (func_80062038() > 0) {
+                data->idleTime = 0.0f;
+            }
+            data->movePhase = 0.0f;
+            if (data->idleTime >= 1.0f) {
+                data->idleTime = 0.0f;
+                data->mode = 1;
+            }
+            break;
+        case 1:
+            func_8006122C(0.0f, sinf(data->movePhase * 3.14156 / 2) * 50.0f - 50.0f);
+            func_80062E18(worker);
+            func_80061240();
+            data->movePhase += 1.0f / 8.0f;
+            if (data->movePhase >= 1.0f) {
+                func_8006202C();
+                data->movePhase = 1.0f;
+                data->mode = 2;
+            }
+            break;
+        case 2:
+            func_80062E18(worker);
+            data->movePhase = 1.0f;
+            if (func_80062038() > 30) {
+                data->mode = 3;
+            }
+            break;
+        case 3:
+            func_8006122C(0.0f, sinf(data->movePhase * 3.14156 / 2) * 50.0f - 50.0f);
+            func_80062E18(worker);
+            func_80061240();
+            data->movePhase -= 1.0f / 15.0f;
+            if (data->movePhase <= 0) {
+                data->movePhase = 0.0f;
+                data->mode = 0;
+            }
+            break;
+    }
+}
+
+aa1* func_800634D4(s32 posX, s32 posY, s32* arg2, s32* arg3, u32 arg4, s32 arg5) {
+    aa1* worker;
+    aa1Sub* parts;
+    aa1_HealthBarData* data;
+    s32 i;
+    
+    worker = aa1_Alloc(*arg2, sizeof(aa1_HealthBarData), &func_80063160);
+    if (worker == NULL) {
+        return worker;
+    }
+
+    func_800629D4();
+
+    data = (aa1_HealthBarData*)worker->unk_38;
+    data->mode = 0;
+    data->curHPPtr = arg2;    
+    data->movePhase = 0.0f;
+    data->lastHP = *arg2;
+    data->idleTime = 0.0f;
+
+    worker->pos.x = posX;
+    worker->pos.y = posY;
+    worker->pos.z = 0.0f;
+    worker->unkC = 0.0f;
+    worker->size = 15.0f;
+
+    for (parts = worker->parts, i = 0; i < worker->unk4; i++) {
+        parts[i].unk_25 = 0;
+        parts[i].lifeTime = 0;
+
+        parts[i].pos.x = i * 14;
+        parts[i].pos.y = 0.0f;
+        parts[i].pos.z = 0.0f;      
+    }
+
+    return worker;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_800635DC.s")
 
