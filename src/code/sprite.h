@@ -79,6 +79,7 @@ extern Mtx D_80176860;
 extern Camera D_801768A0;
 extern s32 D_800F687C;
 extern s16 D_800F06E4;
+extern f32 D_800FE014;
 
 /* functions */
 void func_8006623C(void);

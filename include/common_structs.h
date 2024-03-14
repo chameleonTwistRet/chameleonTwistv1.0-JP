@@ -79,7 +79,7 @@ typedef struct PlayerActor {
     /* 0x050 */ f32 hitboxYStretch; //unconfirmed. 150 default.
     /* 0x054 */ u32 canJump;    //0x00 = yes, 0x01 = no
     /* 0x058 */ u32 jumpReleasedInAir;    // 0x00 = no, 0x01 = yes
-    /* 0x05C */ u32 jumpAnimFrame;
+    /* 0x05C */ s32 jumpAnimFrame;
     /* 0x060 */ u32 hasTumbled;    //0x00 = no, 0x01 = yes. resets on jump.
     /* 0x064 */ u32 unk64;
     /* 0x068 */ u32 inWater;//0x00 = no, 0x01 = yes.
@@ -99,7 +99,7 @@ typedef struct PlayerActor {
     /* 0x0A8 */ Vec3f move; //override when sliding on slopes or on poles
     /* 0x0B4 */ u32 groundMovement; //0x00 = standing, 0x01 = walking, 0x02 = running
     /* 0x0B8 */ f32 globalTimer;
-    /* 0x0BC */ u32 unkBC;
+    /* 0x0BC */ s32 unkBC;
     /* 0x0C0 */ u32 amountLeftToShoot;
     /* 0x0C4 */ u32 vaultFall;//timer for falling after vault
     /* 0x0C8 */ s32 hp;
@@ -107,25 +107,15 @@ typedef struct PlayerActor {
     /* 0x0D0 */ u32 playerHURTTIMER;
     /* 0x0D4 */ u32 playerHURTANIM;
     /* 0x0D8 */ u32 playerHURTBY;
-    /* 0x0DC */ f32 unk_DC;
-    /* 0x0E0 */ f32 unk_E0;
-    /* 0x0E4 */ f32 unk_E4;
-    /* 0x0E8 */ f32 unk_E8;
-    /* 0x0EC */ f32 unk_EC;
-    /* 0x0F0 */ f32 unk_F0;
-    /* 0x0F4 */ f32 unk_F4;
-    /* 0x0F8 */ f32 unk_F8;
-    /* 0x0FC */ f32 unk_FC;
-    /* 0x100 */ f32 unk_100;
-    /* 0x104 */ f32 unk_104;
-    /* 0x108 */ f32 unk_108;
+    /* 0x0DC */ f32 unk_DC[6];
+    /* 0x0F4 */ f32 unk_F4[6];
     /* 0x10C */ f32 timerDown;
     /* 0x110 */ f32 reticleSize;
     /* 0x114 */ s32 active; //0x00 = no, 0x01 = yes
     /* 0x118 */ s32 exists; //0x00 = no, 0x01 = yes
     /* 0x11C */ u32 power; //enum of power it has
-    /* 0x120 */ u32 powerTimer; 
-    /* 0x124 */ u32 powerTimerTill; 
+    /* 0x120 */ s32 powerTimer; 
+    /* 0x124 */ s32 powerTimerTill; 
     /* 0x128 */ f32 tongueYOffset; 
     /* 0x12C */ f32 tongueSeperation; 
 } PlayerActor; //sizeof 0x130
@@ -144,16 +134,12 @@ typedef struct Tongue { // at 80169268 (for p1)
     /* 0x04 */ u32 tongueMode; //enum of tongue actions
     /* 0x08 */ s32 segments;
     /* 0x0C */ s32 poleSegmentAt;
-    /* 0x10 */ u32 timer;
+    /* 0x10 */ s32 timer;
     /* 0x14 */ s32 cameraSegmentAt;//where to point the camera
-    /* 0x18 */ f32 tongueXs[32]; //all (including the rope model) positions
-    /* 0x98 */ f32 xpos33;//the last piece is special to the positions and angle
-    /* 0x9C */ f32 tongueYs[32];
-    /* 0x11C*/ f32 ypos33;
-    /* 0x120*/ f32 tongueZs[32];
-    /* 0x1A0*/ f32 zpos33;
-    /* 0x1A4*/ f32 tongueAngles[32];
-    /* 0x224*/ f32 anglepos33;
+    /* 0x18 */ f32 tongueXs[33]; //all (including the rope model) positions
+    /* 0x9C */ f32 tongueYs[33];
+    /* 0x120*/ f32 tongueZs[33];
+    /* 0x1A4*/ f32 tongueAngles[33];
     /* 0x228*/ f32 tongueForwards[32];
     /* 0x2A8*/ f32 tongueHalfX[32]; // unsure, axes related though
     /* 0x328*/ f32 tongueHalfZ[32];
@@ -163,9 +149,9 @@ typedef struct Tongue { // at 80169268 (for p1)
     /* 0x3B4*/ u32 onTongue[64];
     /* 0x4B4*/ u32 amountOnTongue; //called "capture_num" in US 1.0
     /* 0x4B8*/ u32 inMouth[64];
-    /* 0x5B8*/ u32 amountInMouth;
+    /* 0x5B8*/ s32 amountInMouth;
     //all of this has to do with vaulting
-    /* 0x5BC*/ f32 reset1;
+    /* 0x5BC*/ f32 reset1[1];
     /* 0x5C0*/ f32 reset2;
     /* 0x5C4*/ f32 reset3;
     /* 0x5C8*/ f32 reset4;
@@ -470,11 +456,14 @@ typedef struct CTTask {
     /* 0x24 */ Vec3f scale;
     /* 0x30 */ Vec3f rot;
     /* 0x3C */ f32 unk3C;
-    /* 0x40 */ char pad40[4];
+    /* 0x40 */ f32 unk40;
     /* 0x44 */ s16 unk44;
-    /* 0x46 */ char pad46[2];
+    /* 0x46 */ s16 unk46;
     /* 0x48 */ s16 unk48;                           /* inferred */
-    /* 0x4A */ char pad4A[0xA];                     /* maybe part of unk48[6]? */
+    /* 0x4A */ char pad4A[0x2];                     /* maybe part of unk48[6]? */
+    /* 0x4C */ s16 unk4C;
+    /* 0x4E */ u16 unk4E;
+    /* 0x50 */ Gfx* unk50;
     /* 0x54 */ u8 unk54;
     /* 0x55 */ char pad55[3];                       /* maybe part of unk54[4]? */
     /* 0x58 */ struct CTTask* unk58;
@@ -566,7 +555,7 @@ typedef struct Actor {
     /* 0x004 */ s32 actorIndex;
     /* 0x008 */ s32 actorState;//enum, 0 == idle, 1 == on tongue, 2 == in mouth, 3 == spit
     /* 0x00C */ s32 posOnTongue;//the segment iirc
-    /* 0x010 */ s32 globalTimer;
+    /* 0x010 */ u32 globalTimer;
     /* 0x014 */ s32 touched; //0 == false. 1 == true.
     /* 0x018 */ s32 hit; //triggered when hit
     /* 0x01C */ s32 tongueBumpSeg; //the segment at which the tongue was bumped back
@@ -619,7 +608,7 @@ typedef struct Actor {
     /* 0x0E4 */ s32 unk_E4;
     /* 0x0E8 */ f32 unk_E8;
     /* 0x0EC */ s32 unk_EC;
-    /* 0x0F0 */ s32 unk_F0;
+    /* 0x0F0 */ u32 unk_F0;
     /* 0x0F4 */ f32 unk_F4;
     /* 0x0F8 */ f32 unk_F8;
     /* 0x0FC */ f32 unk_FC;
@@ -744,7 +733,11 @@ typedef struct bf8{
 
 typedef struct unkStruct {
     /* 0x00 */ s32 unk_00;
-    /* 0x04 */ char unk_04[0x104];
+    /* 0x04 */ char unk_04;
+    /* 0x08 */ f32 unk_08[0x10];
+    /* 0x48 */ f32 unk_48[0x10];
+    /* 0x88 */ f32 unk_88[0x10];
+    /* 0xC8 */ char unk_C8[0x40];
 } unkStruct; //sizeof 0x108
 
 // this struct seems to manage sound effects

@@ -450,7 +450,7 @@ c_file_rule_overrides = {
     'mtxcatf.c': "ido_O3_cc",
     'lookat.c': "ido_O3_cc",
     'align.c': "ido_O3_cc",
-    'getfrustum.c': "ido_O3_cc",
+    'ortho.c': "ido_O3_cc",
     'rotate.c': "ido_O3_cc",
 
     #audio files. once audio/ is all decompiled, these can be removed and O2_cc -> ido_O3_cc for audio/ below

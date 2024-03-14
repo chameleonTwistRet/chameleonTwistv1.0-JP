@@ -1,129 +1,149 @@
 #include "5FF30.h"
 
-void videoproc(s32 arg0) {
+enum SchedMessages {
+    SCHED_MESG_VINTR = 0,
+    SCHED_MESG_SP_TASK_DONE = 1,
+    SCHED_MESG_DP_TASK_DONE = 2,
+    SCHED_MESG_START_VIDEO_TASK = 3,
+    SCHED_MESG_UNK_4 = 4,
+    SCHED_MESG_START_AUDIO_TASK = 5,
+    SCHED_MESG_TIMEOUT = 6,
+    SCHED_MESG_RESET = 7
+};
+
+enum AudioTaskStates {
+    AUDIO_TASK_STATE_IDLE = 0,
+    AUDIO_TASK_STATE_PENDING = 1,
+    AUDIO_TASK_STATE_RUNNING = 2
+};
+
+void schedproc(s32 arg0) {
     s32 var_s2;
-    OSMesg sp58;
+    OSMesg mesg;
 
     var_s2 = 1;
     func_800A7844();
-    osCreateMesgQueue(&D_801B3120, &D_801B30A0, 0x14);
-    osSetEventMesg(0xEU, &D_801B3120, (void* )7);
-    osSetEventMesg(9U, &D_801B3120, (void* )2);
-    osSetEventMesg(4U, &D_801B3120, (void* )1);
-    osViSetEvent(&D_801B3120, NULL, 2U);
-    func_8008C610();
+    osCreateMesgQueue(&gSchedMessageQueue, gSchedMessageQueueMsgs, ARRAY_COUNT(gSchedMessageQueueMsgs));
+    osSetEventMesg(OS_EVENT_PRENMI, &gSchedMessageQueue, (OSMesg)SCHED_MESG_RESET);
+    osSetEventMesg(OS_EVENT_DP, &gSchedMessageQueue, (OSMesg)SCHED_MESG_DP_TASK_DONE);
+    osSetEventMesg(OS_EVENT_SP, &gSchedMessageQueue, (OSMesg)SCHED_MESG_SP_TASK_DONE);
+    osViSetEvent(&gSchedMessageQueue, (OSMesg)SCHED_MESG_VINTR, 2); // 30 fps
+    Timing_MeasureFrameDuration();
 
     while (1) {
-        osRecvMesg(&D_801B3120, &sp58, 1);
-        switch ((u32) sp58) {
-        case 0:
-            arg0 = var_s2 + 1;
-            osSetTimer(&D_801B3148, 0x8F184, 0, &D_801B3120, (void*) 6);
-            if (arg0 != 0) {
-                if (osSendMesg(&D_801192E8, NULL, 0) == -1) {
-                    DummiedPrintf("Gfx送信失敗\n");
+        osRecvMesg(&gSchedMessageQueue, &mesg, OS_MESG_BLOCK);
+        switch ((u32) mesg) {
+            case SCHED_MESG_VINTR:
+                arg0 = var_s2 + 1;
+                osSetTimer(&D_801B3148, 586116, 0, &gSchedMessageQueue, (OSMesg) SCHED_MESG_TIMEOUT); // wait ~12.5 msec, then start audio
+                if (arg0 != 0) {
+                    // command main thread to update game and draw frame
+                    if (osSendMesg(&gSyncMessageQueue, NULL, OS_MESG_NOBLOCK) == -1) {
+                        DummiedPrintf("Gfx送信失敗\n");
+                    } else {
+                        var_s2 ^= 1;
+                    }
                 } else {
                     var_s2 ^= 1;
                 }
-            } else {
-                var_s2 ^= 1;
-            }
-            func_800A78D0();
-            continue;
-        case 1:
-            if (D_800FF5F0 == 2) {
-                DummiedPrintf("Ae");
-                func_8008C6D4();
-                D_800FF5F0 = 0;
-                osSendMesg(&D_801192B8, (void* )1, 0);
-            } else if (D_800FF5F0 == (s16) 1) {
-                DummiedPrintf("Gy");
-                func_8008C464();
-                D_800FF5EC = 0;
-                osSendMesg(&D_801192B8, (void* )1, 0);
-            } else {
-                DummiedPrintf("Ge");
-                func_8008C464();
-                D_800FF5EC = 0;
-            }
-            if (D_800FF5C8 != 0) {
-                osSendMesg(&D_801B3120, (void* )3, 0);
-            }
-            continue;
-        case 2:
-            DummiedPrintf("D");
-            if (D_800FF5CC != 0) {
-                D_800FF5CC -= 1;
-                if (D_800FF5CC == 0) {
-                    osViBlack(0U);
+                func_800A78D0();
+                continue;
+            case SCHED_MESG_SP_TASK_DONE:
+                if (gAudioTaskState == AUDIO_TASK_STATE_RUNNING) {
+                    DummiedPrintf("Ae"); // audio end
+                    Timing_StopAudio();
+                    gAudioTaskState = AUDIO_TASK_STATE_IDLE;
+                    osSendMesg(&gAudioDoneMessageQueue, (OSMesg)1, OS_MESG_NOBLOCK);
+                } else if (gAudioTaskState == AUDIO_TASK_STATE_PENDING) {
+                    DummiedPrintf("Gy"); // gfx yield
+                    Timing_StopGfx(); // when gfx task is resumed, this timer is not resumed, so duration might be incorrect
+                    gGfxTaskRunning = FALSE;
+                    // this queue is also used to report audio thread that gfx task yielded or finished
+                    osSendMesg(&gAudioDoneMessageQueue, (OSMesg)1, OS_MESG_NOBLOCK);
+                } else {
+                    DummiedPrintf("Ge"); // gfx end
+                    Timing_StopGfx();
+                    gGfxTaskRunning = FALSE;
                 }
-            }
-            if (D_800FF5D8 == (s16) 1) {
-                D_800FF5D8 = 0;
-            }
-            osSendMesg(&D_801192D0, (void* )2, 0);
-            func_8008C4E8();
-            continue;
-        case 3:
-            if (D_800FF5C4 != 0) {
-                DummiedPrintf("Res ");
-            } else if (D_800FF5F0 != 0) {
-                D_800FF5C8 = 1;
-                DummiedPrintf("Sw ");
-            } else {
-                DummiedPrintf("Gs ");
-                D_800FF5C8 = 0;
-                osWritebackDCacheAll();
-                osSpTaskLoad(D_801B3138);
-                osSpTaskStartGo(D_801B3138);
-                func_8008C440();
-                D_800FF5EC = (s16) 1;
-                D_800FF5D8 = (s16) 1;
-            }
-            continue;
-        case 4:
-            continue;
-        case 5:
-            if (D_800FF5C4 == 0) {
-                osRecvMesg(&D_801192B8, NULL, 0);
-                DummiedPrintf("As");
-                D_800FF5F0 = 2;
-                osWritebackDCacheAll();
-                osSpTaskLoad((OSTask* ) D_801B3140);
-                osSpTaskStartGo((OSTask* ) D_801B3140);
-                func_8008C698();
-            }
-            continue;
-        case 6:
-            break;
-        case 7:
-            D_800FF5C4 = 1;
-            osViBlack(1);
-            osViSetYScale(1.0f);
-            func_8007B174();
-            Rumble_StopAll();
-            continue;
-        default:
-            continue;
+                if (gGfxTaskPending) {
+                    osSendMesg(&gSchedMessageQueue, (OSMesg)SCHED_MESG_START_VIDEO_TASK, OS_MESG_NOBLOCK);
+                }
+                continue;
+            case SCHED_MESG_DP_TASK_DONE:
+                DummiedPrintf("D"); // done
+                if (D_800FF5CC != 0) {
+                    D_800FF5CC--;
+                    if (D_800FF5CC == 0) {
+                        osViBlack(FALSE);
+                    }
+                }
+                if (gGfxTaskStarted == TRUE) {
+                    gGfxTaskStarted = FALSE;
+                }
+                osSendMesg(&gFrameDrawnMessageQueue, (OSMesg)2, OS_MESG_NOBLOCK);
+                Timing_EndFrame();
+                continue;
+            case SCHED_MESG_START_VIDEO_TASK:
+                if (gSchedReset) {
+                    DummiedPrintf("Res "); // reset
+                } else if (gAudioTaskState != AUDIO_TASK_STATE_IDLE) {
+                    // wait until audio task is finished
+                    gGfxTaskPending = TRUE;
+                    DummiedPrintf("Sw "); // ??
+                } else {
+                    DummiedPrintf("Gs "); // gfx start
+                    gGfxTaskPending = FALSE;
+                    osWritebackDCacheAll();
+                    osSpTaskStart(gCurrentGfxTask);
+                    Timing_StartGfx();
+                    gGfxTaskRunning = TRUE;
+                    gGfxTaskStarted = TRUE;
+                }
+                continue;
+            case SCHED_MESG_UNK_4:
+                continue;
+            case SCHED_MESG_START_AUDIO_TASK:
+                if (!gSchedReset) {
+                    // clear queue
+                    osRecvMesg(&gAudioDoneMessageQueue, NULL, OS_MESG_NOBLOCK);
+                    DummiedPrintf("As"); // audio start
+                    gAudioTaskState = AUDIO_TASK_STATE_RUNNING;
+                    osWritebackDCacheAll();
+                    osSpTaskStart(gCurrentAudioTask);
+                    Timing_StartAudio();
+                }
+                continue;
+            case SCHED_MESG_TIMEOUT:
+                // start audio task
+                break;
+            case SCHED_MESG_RESET:
+                gSchedReset = TRUE;
+                osViBlack(TRUE);
+                osViSetYScale(1.0f);
+                func_8007B174();
+                Rumble_StopAll();
+                continue;
+            default:
+                continue;
         }
         
-        D_800FF5F0 = 1;
-        if (osSendMesg(&D_801B35A0, NULL, 0) == -1) {
+        gAudioTaskState = AUDIO_TASK_STATE_PENDING;
+        if (osSendMesg(&gSyncAudioMessageQueue, NULL, OS_MESG_NOBLOCK) == -1) {
             DummiedPrintf("Audio送信失敗\n");
         }
         // continue;   
     }
 }
 
-void func_80084F80(OSTask* arg0, s32 arg1) {
-    D_801B3138 = arg0;
-    D_800FF5D0 = arg1;
-    osSendMesg(&D_801B3120, (OSMesg)3, 0);
+void Sched_SetGfxTask(OSTask* task, s32 fbIndex) {
+    gCurrentGfxTask = task;
+    D_800FF5D0 = fbIndex;
+    osSendMesg(&gSchedMessageQueue, (OSMesg)SCHED_MESG_START_VIDEO_TASK, OS_MESG_NOBLOCK);
 }
 
-void func_80084FC0(s32 arg0) {
-    D_801B3140 = arg0;
-    osSendMesg(&D_801B3120, (OSMesg)5, 0);
+void Sched_SetAudioTask(OSTask* arg0) {
+    gCurrentAudioTask = arg0;
+    osSendMesg(&gSchedMessageQueue, (OSMesg)SCHED_MESG_START_AUDIO_TASK, OS_MESG_NOBLOCK);
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/Audio_DMACallback.s")
@@ -164,7 +184,7 @@ void Audio_StopOsc(struct UnkList* arg0) {
 void Audio_RomCopy(u32 devAddr, void* vAddr, u32 size) {
     osWritebackDCacheAll();
     osPiStartDma(&D_801FF7F0, 0, 0, devAddr, vAddr, size, &D_801FF750);
-    osRecvMesg(&D_801FF750, NULL, 1);
+    osRecvMesg(&D_801FF750, NULL, OS_MESG_BLOCK);
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80085C90.s")
@@ -681,7 +701,7 @@ void PlayStageBGM(s32 arg0) {
     PlayBGM(sStageBGMs[arg0]);
 }
 
-void func_8008C35C(s32 arg0) {
+void func_8008C35C(Gfx** arg0) {
 
 }
 
@@ -704,77 +724,79 @@ s32 func_8008C438(void) {
     return 0;
 }
 
-void func_8008C440(void) {
-    D_800FF89C = (u32) osGetTime();
+void Timing_StartGfx(void) {
+    Timing_StartGfxTime = (u32) osGetTime();
 }
 
-void func_8008C464(void) {
-    D_800FF898 = osGetTime() - D_800FF89C;
+void Timing_StopGfx(void) {
+    Timing_StopGfxTime = osGetTime() - Timing_StartGfxTime;
 }
 
-void func_8008C494(void) {
-    D_800FF8A8 = (u32) osGetTime();
+void Timing_StartProcess(void) {
+    Timing_StartProcessTime = (u32) osGetTime();
 }
 
-void func_8008C4B8(void) {
-    D_800FF8A4 = osGetTime() - D_800FF8A8;
+void Timing_StopProcess(void) {
+    Timing_StopProcessTime = osGetTime() - Timing_StartProcessTime;
 }
 
-void func_8008C4E8(void) {
-    D_800FF8A0 = osGetTime() - D_800FF89C;
-    D_801B316C = (f32) (D_800FF8A0 / 1563000.0);
+void Timing_EndFrame(void) {
+    Timing_EndFrameTime = osGetTime() - Timing_StartGfxTime;
+    Timing_BusyTime = (f32) (Timing_EndFrameTime / 1563000.0); // between 0 and 1
 }
 
 void func_8008C554(void) {
-    D_800FF8AC = osGetTime() - D_800FF8A8;
+    D_800FF8AC = osGetTime() - Timing_StartProcessTime;
 }
 
-void func_8008C584(void) {
-    OSMesg sp2C;
+void Timing_WaitForNextFrame(void) {
+    OSMesg mesg;
 
     while (1) {
-        if (osRecvMesg(&D_801B3120, &sp2C, 0) == -1) {
+        if (osRecvMesg(&gSchedMessageQueue, &mesg, OS_MESG_NOBLOCK) == -1) {
             continue;
         }
-        if (sp2C == NULL) {
+        if (mesg == SCHED_MESG_VINTR) {
             //"/* Ｖ割り込みだったらブレイク */\n"("Break if V interrupt")
-            DummiedPrintf("/* Ｖ割り込みだったらブレイク */\n", sp2C);
+            DummiedPrintf("/* Ｖ割り込みだったらブレイク */\n", mesg);
             break;
         } else {
             //"%d\n"
-            DummiedPrintf("%d\n", sp2C);
+            DummiedPrintf("%d\n", mesg);
         }
     }
 }
 
-void func_8008C610(void) {
+void Timing_MeasureFrameDuration(void) {
     while (1) {
-        if (osRecvMesg(&D_801B3120, NULL, 0) == -1) {
+        if (osRecvMesg(&gSchedMessageQueue, NULL, OS_MESG_NOBLOCK) == -1) {
             break;
         }
     }
-    func_8008C584();
+    Timing_WaitForNextFrame();
     D_800FF884 = osGetTime();
-    func_8008C584();
+    Timing_WaitForNextFrame();
     D_800FF884 = osGetTime() - D_800FF884;
     //"１フレーム時間 %d\n" ("1 frame time %d")
     DummiedPrintf("１フレーム時間 %d\n", D_800FF884);
 }
 
-void func_8008C698(void) {
-    D_800FF88C = osGetCount();
-    D_800FF888 = D_800FF88C - D_800FF8A8;
+void Timing_StartAudio(void) {
+    Timing_StartAudioTime = osGetCount();
+    Timing_DelayAudioInterval = Timing_StartAudioTime - Timing_StartProcessTime;
 }
 
-void func_8008C6D4(void) {
-    D_800FF890[D_800FF8BC] = osGetCount() - D_800FF88C;
+void Timing_StopAudio(void) {
+    D_800FF890[D_800FF8BC] = osGetCount() - Timing_StartAudioTime;
 }
 
+// not used
 void func_8008C714(void) {
     D_800FF8B8 = osGetTime();
-    D_801B3168 = D_800FF8B8 - D_800FF8A8;
+    D_801B3168 = D_800FF8B8 - Timing_StartProcessTime;
 }
 
+// not used
 void func_8008C750(void) {
     D_800FF8B4 = osGetTime() - D_800FF8B8;
 }
@@ -804,7 +826,7 @@ s32 PutDList(Mtx** arg0, Gfx** arg1, Gfx* arg2) {
                 var_s2 = 0;
                 gSPDisplayList(sp60++, arg2);
                 break;
-            case 1:
+            case G_MTX:
                 temp_t9 = (var_v1->words.w1 - (u32)D_80129730) / sizeof(Mtx);
                 if ((temp_t9 >= 0) && (((temp_t9 < 0x28)))) {
                     gSPMatrix(sp60++, sp64, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
@@ -813,7 +835,7 @@ s32 PutDList(Mtx** arg0, Gfx** arg1, Gfx* arg2) {
                     gSPMatrix(sp60++, var_v1->words.w1, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
                 }
                 break;
-            case 6:
+            case G_DL:
                 PutDList(&sp64, &sp60, (Gfx*)var_v1->words.w1);
                 break;
         }
@@ -934,13 +956,54 @@ void CTTask_Unlink_2(CTTask* task) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008D060.s")
 
-void func_8008D114(Gfx* arg0, s32 arg1) {
-    Video_SetTask((void*)arg0, arg0, arg1); //TODO: fix type of arg0?
-    osWritebackDCache(arg0, 0x1FB00);
-    func_80084F80(&D_800F04E0[arg1], arg1);
+void func_8008D114(graphicStruct* arg0, s32 fbIndex) {
+    Video_SetTask(arg0, arg0->dlist, fbIndex);
+    osWritebackDCache(arg0, sizeof(graphicStruct));
+    Sched_SetGfxTask(&D_800F04E0[fbIndex], fbIndex);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008D168.s")
+Gfx* func_8008D168(Gfx* gfxPos, s32 arg1, s32 arg2) {
+    s32 i;
+
+    gSPSegment(gfxPos++, 0x00, 0);
+    gSPSegment(gfxPos++, 0x01, OS_K0_TO_PHYSICAL(_ALIGN((u32)D_803B5000 - (u32)D_1045C00 + (u32)D_1000000, 16)));
+
+    for (i = 2; i < 16; i++) {
+        if (D_80100F50[i].base_address != NULL) {
+            gSPSegment(gfxPos++, i, OS_K0_TO_PHYSICAL(D_80100F50[i].base_address));
+        }
+    }
+
+    if (D_800FFEC0 != 0) {
+        gSPDisplayList(gfxPos++, D_1015AE8);
+    } else {
+        gSPDisplayList(gfxPos++, D_1015AB8);
+    }
+    gSPDisplayList(gfxPos++, D_1015A70);
+
+    if (D_800FFEC0 != 0) {
+        gDPSetCycleType(gfxPos++, G_CYC_FILL);
+        gDPSetRenderMode(gfxPos++, G_RM_NOOP, G_RM_NOOP2);
+        gDPSetColorImage(gfxPos++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 320, OS_K0_TO_PHYSICAL(&D_803B5000[arg1]));
+        gDPSetFillColor(gfxPos++, PACK_FILL_COLOR(D_800FF8DC, D_800FF8E0, D_800FF8E4, 1));
+        gDPFillRectangle(gfxPos++, 0, 0, 319, 239);
+        gDPPipeSync(gfxPos++);
+    } else {
+        gDPSetCycleType(gfxPos++, G_CYC_FILL);
+        gDPSetRenderMode(gfxPos++, G_RM_NOOP, G_RM_NOOP2);
+        gDPSetColorImage(gfxPos++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 320, OS_K0_TO_PHYSICAL(&D_803B5000[arg1]));
+        gDPSetFillColor(gfxPos++, PACK_FILL_COLOR(D_800FF8DC, D_800FF8E0, D_800FF8E4, 1));
+        gDPFillRectangle(gfxPos++, 18, 16, 337, 247);
+        gDPPipeSync(gfxPos++);
+    }
+
+    if (D_800FFEC0 != 0){
+        D_800FFEC0--;
+    }
+    gSPDisplayList(gfxPos++, D_1015B18);
+    gDPSetColorImage(gfxPos++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 320, OS_K0_TO_PHYSICAL(&D_803B5000[arg1]));
+    return gfxPos;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008D5DC.s")
 
@@ -958,13 +1021,189 @@ void func_8008D114(Gfx* arg0, s32 arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008DB24.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008DB90.s")
+void func_8008DB90(Gfx** pGfxPos, graphicStruct* arg1) {
+    CTTask* task;
+    Mtx* var_a0;
+    s32* var_t0;
+    s32 i;
+    s32 v12;
+    Gfx* gfxPos;
+    Mtx* mtxTranslate;
+    Mtx* mtxRotate;
+    Mtx* mtxScale;    
+    u32 mtxCount;
+    Mtx* s4;
+    Unk_800FFB74* v1;
+    
+    gfxPos = *pGfxPos;
+    D_800FF8D4 = arg1->unk1e880;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008E314.s")
+    if (D_800FFDEC) { } // required for matching
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008E488.s")
+    task = gCTTaskHead->next;
+    while (task->next != NULL) {
+        if ((task->unk4E & 1) && task->unk46 > 0) {
+            v1 = D_800FFB74[task->unk46];
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/setFrustum.s")
+            if (!IS_SEGMENTED(v1->unk_00)) {
+                var_a0 = v1->unk_00;
+            } else {
+                var_a0 = SEGMENTED_TO_VIRTUAL(v1->unk_00);
+            }
+
+            if (!IS_SEGMENTED(v1->unk_08)) {
+                var_t0 = v1->unk_08;
+            } else {
+                var_t0 = SEGMENTED_TO_VIRTUAL(v1->unk_08);
+            }
+            v12 = *var_t0;
+            for (i = 0; i < v12; i++) {
+                *D_800FF8D4++ = var_a0[v12 * (s32)task->unk40 + i];
+            }
+        }
+        task = task->next;
+    }
+
+    D_800FF8D4 = arg1->unk1e880;
+    
+    mtxTranslate = arg1->actorTranslate;
+    mtxScale = arg1->actorScale;
+    mtxRotate = arg1->actorRotate;    
+
+    task = gCTTaskHead->next;
+    while (task->next != NULL) {
+        if ((task->unk4E & 1) && task->unk46 > 0) {
+            s4 = D_800FF8D4;
+
+            if (D_801FC9AC == 1) {
+                guTranslate(mtxTranslate, task->pos.x, 180.0f - task->pos.y, task->pos.z);
+            } else {
+                guTranslate(mtxTranslate, task->pos.x, 180.0f - task->pos.y, task->pos.z);
+            }
+            guRotate(mtxRotate, task->rotA, task->rot.x, task->rot.y, task->rot.z);
+            guScale(mtxScale, task->scale.x, task->scale.y, task->scale.z);
+
+            gSPMatrix(gfxPos++, OS_K0_TO_PHYSICAL(mtxTranslate), G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+            gSPMatrix(gfxPos++, OS_K0_TO_PHYSICAL(mtxRotate), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+            gSPMatrix(gfxPos++, OS_K0_TO_PHYSICAL(mtxScale), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+
+            PutDList(&D_800FF8D4, &gfxPos, task->unk50);
+            gSPPopMatrix(gfxPos++, G_MTX_MODELVIEW);
+
+            if (task->unk4E & 2) {
+                f32 sp8C = 0.0f;
+                f32 sp88 = 0.0f;
+                f32 sp84 = 0.0f;
+                Unk_800FFDDC* s0 = D_800FFDDC[task->unk_04];
+
+                for (i = 0; s0[i].unk_00 >= 0; i++) {
+                    guMtxXFML(mtxRotate, sp8C, sp88, sp84, &sp8C, &sp88, &sp84);
+                    guMtxXFML(mtxScale, sp8C, sp88, sp84, &sp8C, &sp88, &sp84);
+                    guMtxCatL(&s4[s0[i].unk_00], mtxRotate, &s4[s0[i].unk_00]);
+                    guMtxCatL(&s4[s0[i].unk_00], mtxScale, &s4[s0[i].unk_00]);
+                    if (s0[i].unk_00 == 5) {
+                        func_80059254(&s4[s0[i].unk_00], 
+                            s0[i].unk_02 + (task->pos.x + sp8C),
+                            s0[i].unk_02 + (180.0f - task->pos.y - sp88),
+                            task->pos.z + sp84,
+                            s0[i].unk_06, s0[i].unk_06,
+                            task->unk4C, s0[i].unk_08);
+                    } else {
+                        func_800598C4(&s4[s0[i].unk_00], 
+                            s0[i].unk_02 + (task->pos.x + sp8C),
+                            s0[i].unk_02 + (180.0f - task->pos.y - sp88),
+                            task->pos.z + sp84,
+                            s0[i].unk_06, s0[i].unk_06,
+                            task->unk4C, s0[i].unk_08);
+                    }
+                }
+            }
+
+            mtxTranslate++;
+            mtxRotate++;
+            mtxScale++;
+        }
+        task = task->next;
+    }
+
+    mtxCount = ((u32)D_800FF8D4 - (u32)arg1->unk1e880) / sizeof(Mtx);
+    if (D_800FFDEC < mtxCount) {
+        DummiedPrintf("Mtx Max = %u\n", mtxCount);
+        D_800FFDEC = mtxCount;
+    }
+    if (mtxCount > 64) {
+        DummiedPrintf("マトリクスの数をオーバーしました( %u )\n", mtxCount);
+    }
+    *pGfxPos = gfxPos;
+}
+
+Gfx* func_8008E314(Gfx* gfxPos, Tongue* tongues, PlayerActor* players, Camera* cameras, s32 fbIndex) {
+    u16 perspNorm;
+    Camera* camera = &cameras[0];
+
+    camera->f4.x = 0.0f;
+    camera->f4.y = 0.0f;
+    camera->f4.z = 100.0f;
+
+    camera->f3.x = 0.0f;
+    camera->f3.y = 0.0f;
+    camera->f3.z = 0.0f;
+    
+    camera->f5.x = 0.0f;
+    camera->f5.y = 0.0f;
+    camera->f5.z = 0.0f;
+
+    camera->f1.z = 0.0f;
+    camera->f2.x = 0.0f;
+    camera->f2.y = 100.0f;    
+
+    guPerspective(&D_801B3180[fbIndex], &perspNorm, 60.0f, 4.0f / 3.0f, 1.0f, 1000.0f, 1.0f);
+    gSPPerspNormalize(gfxPos++, perspNorm);
+    guLookAt(&D_801B3240[fbIndex],
+                 camera->f4.x, camera->f4.y, camera->f4.z, // Eye
+                 camera->f5.x, camera->f5.y, camera->f5.z, // At
+                 0, 1, 0); // Up
+    gSPMatrix(gfxPos++, OS_K0_TO_PHYSICAL(&D_801B3180[fbIndex]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+    gSPMatrix(gfxPos++, OS_K0_TO_PHYSICAL(&D_801B3240[fbIndex]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    return gfxPos;
+}
+
+Gfx* func_8008E488(Gfx* gfxPos, Tongue* tongues, PlayerActor* players, Camera* cameras, s32 fbIndex) {
+    u16 perspNorm;
+    Camera* camera = &cameras[0];
+
+    camera->f4.x = 0.0f;
+    camera->f4.y = 0.0f;
+    camera->f4.z = 5.0f;
+
+    camera->f3.x = 0.0f;
+    camera->f3.y = 0.0f;
+    camera->f3.z = 0.0f;
+    
+    camera->f5.x = 0.0f;
+    camera->f5.y = 0.0f;
+    camera->f5.z = 0.0f;
+
+    camera->f1.z = 0.0f;
+    camera->f2.x = 0.0f;
+    camera->f2.y = 5.0f;    
+
+    guPerspective(&D_801B3300[fbIndex], &perspNorm, 60.0f, 4.0f / 3.0f, 1.0f, 20000.0f, 1.0f);
+    gSPPerspNormalize(gfxPos++, perspNorm);
+    guLookAt(&D_801B33C0[fbIndex],
+                 camera->f4.x, camera->f4.y, camera->f4.z, // Eye
+                 camera->f5.x, camera->f5.y, camera->f5.z, // At
+                 0, 1, 0); // Up
+    gSPMatrix(gfxPos++, OS_K0_TO_PHYSICAL(&D_801B3300[fbIndex]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+    gSPMatrix(gfxPos++, OS_K0_TO_PHYSICAL(&D_801B33C0[fbIndex]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    return gfxPos;
+}
+
+Gfx* setFrustum(Gfx* gfxPos, s32 fbIndex) {
+    guOrtho(&D_801B3480[fbIndex], 0.0f, 320.0f, 0.0f, 240.0f, -2000.0f, 2000.0f, 1.0f);
+    gSPMatrix(gfxPos++, OS_K0_TO_PHYSICAL(&D_801B3480[fbIndex]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+    return gfxPos;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008E698.s")
 
@@ -972,7 +1211,6 @@ void func_8008D114(Gfx* arg0, s32 arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008E840.s")
 
-//#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008E9AC.s")
 // UNK58 typing is confusing due to this
 CTTask* func_8008E9AC(s16 arg0, s16 arg1, s16 arg2, s16 arg3, s16* arg4) {
     CTTask* task;
@@ -1023,14 +1261,84 @@ void func_8008EF78(CTTask* task) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008F050.s")
 
 void func_8008F114(void){
-    if(MQ_IS_FULL(&D_801192E8)){
-        osRecvMesg(&D_801192E8, NULL, 1);
+    if(MQ_IS_FULL(&gSyncMessageQueue)){
+        osRecvMesg(&gSyncMessageQueue, NULL, OS_MESG_BLOCK);
     }
-    osRecvMesg(&D_801192E8, NULL, 1);
-    func_8008C494();
+    osRecvMesg(&gSyncMessageQueue, NULL, OS_MESG_BLOCK);
+    Timing_StartProcess();
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008F16C.s")
+void func_8008F16C(void) {
+    if (D_800FFDF0 != 0) {
+        osRecvMesg(&gSyncMessageQueue, NULL, OS_MESG_NOBLOCK);
+        gMainGfxPos = gGraphicsList[gFramebufferIndex].dlist;
+        gMainGfxPos = func_8008D168(gMainGfxPos, gFramebufferIndex, D_800FFDF0);
+        func_8005CA38();
+        if (D_800FFDF0 == 3) {
+            func_8002E0CC();
+            gCamera->f4.x = 0.0f;
+            gCamera->f4.y = 0.0f;
+            gCamera->f4.z = 0.0f;
+            gCamera->f5.x = 1000.0f;
+            gCamera->f5.y = 1000.0f;
+            gCamera->f5.z = 1000.0f;
+        }
+        func_80056F48(0, gTongues, gPlayerActors, gCamera);
+        setPrimColor(D_800FF8DC, D_800FF8E0, D_800FF8E4, 255);
+        printUISprite(0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 320.0f, 240.0f, 0.0f, SPRITE_BLANK);
+        gMainGfxPos = func_8008E314(gMainGfxPos, gTongues, gPlayerActors, gCamera, gFramebufferIndex);
+        gMainGfxPos = func_8005F408(gMainGfxPos);
+        gMainGfxPos = func_8005CA44(gMainGfxPos);
+        gDPFullSync(gMainGfxPos++);
+        gSPEndDisplayList(gMainGfxPos++);
+        func_8008D114(&gGraphicsList[gFramebufferIndex], gFramebufferIndex);
+    } else {
+        Controller_StartRead();
+        func_8005CA38();
+        func_80056F48(0, gTongues, gPlayerActors, gCamera);
+        func_8008D114(&gGraphicsList[1 - gFramebufferIndex], 1 - gFramebufferIndex);
+        gMainGfxPos = gGraphicsList[gFramebufferIndex].dlist;
+        gMainGfxPos = func_8008D168(gMainGfxPos, gFramebufferIndex, D_800FFDF0);
+        func_8004E784(gContMain, 4, 0, 0);
+        Controller_ParseJoystick(gContMain);
+        func_8008D060();
+        gMainGfxPos = func_8008E314(gMainGfxPos, gTongues, gPlayerActors, gCamera, gFramebufferIndex);
+        gMainGfxPos = func_8005F408(gMainGfxPos);
+        if (gGameModeCurrent != GAME_MODE_SAVE_MENU) {
+            gMainGfxPos = func_80084884(gMainGfxPos);
+        }
+        func_80084A04();
+        if (D_801FC9AC == 1) {
+            gMainGfxPos = setFrustum(gMainGfxPos, gFramebufferIndex);
+            func_8008DB90(&gMainGfxPos, &gGraphicsList[gFramebufferIndex]);
+            gMainGfxPos = func_8005CA44(gMainGfxPos);
+        } else {
+            gMainGfxPos = setFrustum(gMainGfxPos, gFramebufferIndex);
+            func_8008DB90(&gMainGfxPos, &gGraphicsList[gFramebufferIndex]);
+            gMainGfxPos = func_8008E488(gMainGfxPos, gTongues, gPlayerActors, gCamera, gFramebufferIndex);
+            gMainGfxPos = func_8005CA44(gMainGfxPos);
+        }
+        func_8008C438();
+        gDPFullSync(gMainGfxPos++);
+        gSPEndDisplayList(gMainGfxPos++);
+    }
+    Timing_StopProcess();
+    osRecvMesg(&gFrameDrawnMessageQueue, NULL, OS_MESG_BLOCK);
+    gFramebufferIndex = 1 - gFramebufferIndex;
+    if (D_800FFDF0 == 0) {
+        osViSwapBuffer(D_803B5000[gFramebufferIndex].data);
+    }
+    osViSetSpecialFeatures(OS_VI_GAMMA_ON|OS_VI_GAMMA_DITHER_ON);
+    if (D_800FFDF0 != 0) {
+        D_800FFDF0--;
+    }
+    func_8008C554();
+    if(MQ_IS_FULL(&gSyncMessageQueue)){
+        osRecvMesg(&gSyncMessageQueue, NULL, OS_MESG_BLOCK);
+    }
+    osRecvMesg(&gSyncMessageQueue, NULL, OS_MESG_BLOCK);
+    Timing_StartProcess();
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008F694.s")
 
@@ -1231,13 +1539,13 @@ void MainLoop(void) {
         gGameModeCurrent = sGameModeStart;
     }
     gGameModeState = 0;
-    osRecvMesg(&D_801192E8, NULL, 1);
+    osRecvMesg(&gSyncMessageQueue, NULL, OS_MESG_BLOCK);
     SaveData_LoadRecords(gGameRecords.flags);
     if (SaveData_RecordChecksum() != gGameRecords.flags[0]) {
         SaveData_ClearRecords();
     }
     gIsStero = gGameRecords.flags[1] & 1;
-    osRecvMesg(&D_801192E8, NULL, 1);
+    osRecvMesg(&gSyncMessageQueue, NULL, OS_MESG_BLOCK);
     gameModeLoop:
     switch (gGameModeCurrent) {
     case GAME_MODE_OVERWORLD:
@@ -2776,7 +3084,7 @@ s32 func_800A72E8(s32 arg0) {
     for (i = zero; i < 50; i++) {
         if (arg0 == D_801FCFD8[i].index) {
             j++;
-            if (osRecvMesg(&D_801FCA50[i], NULL, 0) != -1) {
+            if (osRecvMesg(&D_801FCA50[i], NULL, OS_MESG_NOBLOCK) != -1) {
                 j--;
                 D_801FCFD8[i].index = -1;
             }
@@ -2892,7 +3200,7 @@ s32 func_800A78D0(void) {
     
     for (i = 0; i < ARRAY_COUNT(D_801FCA50); i++) {
         if (D_801FCFD8[i].index >= 0) {
-            if (osRecvMesg(&D_801FCA50[i], NULL, 0) != -1) {
+            if (osRecvMesg(&D_801FCA50[i], NULL, OS_MESG_NOBLOCK) != -1) {
                 D_801FCFD8[i].index = -1;
                 //TODO fake match
                 do {
@@ -3067,7 +3375,7 @@ s32 SaveData_Compare(u8 *arg0, u8 *arg1) {
 }
 
 void SaveData_LoadFile(s32 arg0, SaveFile* arg1) {
-    osRecvMesg(&gEepromMsgQ, NULL, 0);
+    osRecvMesg(&gEepromMsgQ, NULL, OS_MESG_NOBLOCK);
     if (osEepromProbe(&gEepromMsgQ) != 1) {
         DummiedPrintf("ＥＥＰロムエラー \n");
     }
@@ -3082,7 +3390,7 @@ void SaveData_LoadFile(s32 arg0, SaveFile* arg1) {
 }
 
 void SaveData_LoadAllFiles(u8* arg0) {
-    osRecvMesg(&gEepromMsgQ, NULL, 0);
+    osRecvMesg(&gEepromMsgQ, NULL, OS_MESG_NOBLOCK);
     if (osEepromProbe(&gEepromMsgQ) != 1) {
         DummiedPrintf("ＥＥＰロムエラー \n");
     }
@@ -3097,7 +3405,7 @@ void SaveData_LoadAllFiles(u8* arg0) {
 }
 
 void SaveData_LoadRecords(u8* arg0) {
-    osRecvMesg(&gEepromMsgQ, NULL, 0);
+    osRecvMesg(&gEepromMsgQ, NULL, OS_MESG_NOBLOCK);
     if (osEepromProbe(&gEepromMsgQ) != 1) {
         DummiedPrintf("ＥＥＰロムエラー \n");
     }
@@ -3122,7 +3430,7 @@ void SaveData_LoadRecords(u8* arg0) {
 void SaveData_SaveFile(s32 saveIndex, SaveFile* saveFile) { 
     //"%d 番目のファイルにセーブ  %dバイト目\n"("saving to %d-th file, %d bytes"?)
     DummiedPrintf("%d 番目のファイルにセーブ  %dバイト目\n", saveIndex, (s32) (saveIndex * 0x60) / 8);
-    osRecvMesg(&gEepromMsgQ, NULL, 0);
+    osRecvMesg(&gEepromMsgQ, NULL, OS_MESG_NOBLOCK);
     
     if (osEepromProbe(&gEepromMsgQ) != 1) {
         //"ＥＥＰロムエラー \n"("EEP rom error")
@@ -3172,7 +3480,7 @@ s32 SaveData_UpdateFile(s32 saveIndex, SaveFile* saveFile) {
 void SaveData_SaveRecords(void) {
     gGameRecords.flags[0] = SaveData_RecordChecksum();
     
-    osRecvMesg(&gEepromMsgQ, NULL, 0);
+    osRecvMesg(&gEepromMsgQ, NULL, OS_MESG_NOBLOCK);
     
     if (osEepromProbe(&gEepromMsgQ) != 1) {
         DummiedPrintf("ＥＥＰロムエラー \n");
@@ -3500,10 +3808,10 @@ s32 func_800AD980(void) {
     gPlayerActors->pos.y = D_80108764 + 5000.0f;
     gPlayerActors->pos.z = D_80108768;
     Controller_StartRead();
-    func_8002CB6C(gMainGfxPos, &gGraphicsList[gFramebufferIndex], gFramebufferIndex);
+    DemoGfx_DrawFrame(gMainGfxPos, &gGraphicsList[gFramebufferIndex], gFramebufferIndex);
     func_8004E784(gContMain, gControllerNo, 0, 0);
     gMainGfxPos = func_8002C900(&gGraphicsList[1 - gFramebufferIndex], 1 - gFramebufferIndex);
-    func_8002CBE8(gFramebufferIndex);
+    DemoGfx_SwapFB(gFramebufferIndex);
     gFramebufferIndex = 1 - gFramebufferIndex;
     return 0;
 }
