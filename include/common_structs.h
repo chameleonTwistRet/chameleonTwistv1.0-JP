@@ -699,20 +699,18 @@ typedef struct aa1Sub {
 } aa1Sub; //sizeof 0x28
 
 typedef struct aa1{ // TODO: give better name
-    /* 0x00 */ s32 unk0;
+    /* 0x00 */ s32 spriteID;
     /* 0x04 */ u8 unk4;
-    /* 0x05 */ s8 unk5;
+    /* 0x05 */ u8 unk5;
     /* 0x06 */ s8 unk6;
     /* 0x07 */ s8 unk7;
     /* 0x08 */ s32 unk8;
-    /* 0x0C */ f32 unkC;
+    /* 0x0C */ f32 lifeTime;
     /* 0x10 */ Vec3f pos;
-    /* 0x1C */ f32 unk_1C;
-    /* 0x20 */ f32 unk_20;
-    /* 0x24 */ f32 unk_24;
+    /* 0x1C */ Vec3f vel;
     /* 0x28*/ s32 UNK_28;
     /* 0x2C */ s32 unk_2C;
-    /* 0x30 */ f32 size;
+    /* 0x30 */ f32 duration;
     /* 0x34 */ void* unk34;
     /* 0x38 */ void* unk_38; // this struct varies widely
     /* 0x3C */ aa1Sub* parts;

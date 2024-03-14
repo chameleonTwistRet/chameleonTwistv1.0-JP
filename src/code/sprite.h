@@ -80,9 +80,12 @@ extern Camera D_801768A0;
 extern s32 D_800F687C;
 extern s16 D_800F06E4;
 extern f32 D_800FE014;
+extern u32 D_80108790;
+extern s32 D_800FE188;
+extern Gfx D_1013F78[];
+extern Gfx D_10149D0[];
 
 /* functions */
-void func_8006623C(void);
 void func_80055C04(void);
 aa1* func_80062D10(s32, s32, s32*, s32*, u32, s32);
 aa1* func_800634D4(s32, s32, s32*, s32*, u32, s32);
