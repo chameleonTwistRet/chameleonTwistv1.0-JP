@@ -28,72 +28,72 @@ typedef struct SpriteListing {
 } SpriteListing; //sizeof 0x78
 
 typedef struct Effect_HealthBar_Data {
-    s32* curHPPtr;
-    s32 mode;
-    f32 movePhase;
-    f32 idleTime;
-    s32 lastHP;
-} Effect_HealthBar_Data;
+    /* 0x00 */ s32* curHPPtr;
+    /* 0x04 */ s32 mode;
+    /* 0x08 */ f32 movePhase;
+    /* 0x0C */ f32 idleTime;
+    /* 0x10 */ s32 lastHP;
+} Effect_HealthBar_Data; //sizeof 0x14
 
 typedef struct Effect_TypeC_Data {
-    RGBA32 color;
-    s32 spriteID;
-    f32 sizeX;
-    f32 sizeY;
-} Effect_TypeC_Data;
+    /* 0x00 */ RGBA32 color;
+    /* 0x04 */ s32 spriteID;
+    /* 0x08 */ f32 sizeX;
+    /* 0x0C */ f32 sizeY;
+} Effect_TypeC_Data; //sizeof 0x10
 
 typedef struct Effect_TypeD_Data {
-    RGBA32 color;
-    s32 unk_04;
-    f32 sizeX;
-    f32 sizeY;
-} Effect_TypeD_Data;
+    /* 0x00 */ RGBA32 color;
+    /* 0x04 */ s32 unk_04;
+    /* 0x08 */ f32 sizeX;
+    /* 0x0C */ f32 sizeY;
+} Effect_TypeD_Data; //sizeof 0x10
 
 typedef struct Effect_TypeE_Data {
-    Vec3f dir;
-    f32 sizeX;
-    f32 sizeY;
-    u32 colorR;
-    u32 colorG;
-    u32 colorB;
-    u32 colorA;
-} Effect_TypeE_Data;
+    /* 0x00 */ Vec3f dir;
+    /* 0x0C */ f32 sizeX;
+    /* 0x10 */ f32 sizeY;
+    /* 0x14 */ u32 colorR;
+    /* 0x18 */ u32 colorG;
+    /* 0x1C */ u32 colorB;
+    /* 0x20 */ u32 colorA;
+} Effect_TypeE_Data; //sizeof 0x24
 
 typedef struct Effect_TypeF_Data {
-    f32 sizeX;
-    f32 sizeY;
-    u32 colorR;
-    u32 colorG;
-    u32 colorB;
-    u32 colorA;
-} Effect_TypeF_Data;
+    /* 0x00 */ f32 sizeX;
+    /* 0x04 */ f32 sizeY;
+    /* 0x08 */ u32 colorR;
+    /* 0x0C */ u32 colorG;
+    /* 0x10 */ u32 colorB;
+    /* 0x14 */ u32 colorA;
+} Effect_TypeF_Data; //sizeof 0x18
 
 typedef struct Effect_TypeG_Data {
-    Mtx mtx;
-    Vec3f scale;
-    Gfx* dlist;
-} Effect_TypeG_Data;
+    /* 0x00 */ Mtx mtx;
+    /* 0x40 */ Vec3f scale;
+    /* 0x4C */ Gfx* dlist;
+} Effect_TypeG_Data; //sizeof 0x50
 
 typedef struct Effect_TypeH_Data {
-    Mtx mtx[2];
-    s32 mtxIndex;
-    Vec3f scale;
-    Gfx* dlist;
-    f32 angle;
-} Effect_TypeH_Data;
+    /* 0x00 */ Mtx mtx[2];
+    /* 0x80 */ s32 mtxIndex;
+    /* 0x84 */ Vec3f scale;
+    /* 0x90 */ Gfx* dlist;
+    /* 0x94 */ f32 angle;
+} Effect_TypeH_Data; //sizeof 0x98
 
 typedef struct Effect_TypeI_Data {
-    f32* ptrPosX;
-    f32* ptrPosY;
-    f32* ptrPosZ;
-    f32 scale;
-} Effect_TypeI_Data;
+    /* 0x00 */ f32* ptrPosX;
+    /* 0x04 */ f32* ptrPosY;
+    /* 0x08 */ f32* ptrPosZ;
+    /* 0x0C */ f32 scale;
+} Effect_TypeI_Data; //sizeof 0x10
 
 typedef struct Effect_TypeM_Data {
-    Mtx mtx;
-    Gfx* dlist;
-    s32* finish;    
-} Effect_TypeM_Data;
+    /* 0x00 */ Mtx mtx;
+    /* 0x40 */ Gfx* dlist;
+    /* 0x44 */ s32* finish;    
+} Effect_TypeM_Data; //sizeof 0x48
 
 typedef struct UnkBowlingStruct {
     /* 0x00 */ s32 unk_00;

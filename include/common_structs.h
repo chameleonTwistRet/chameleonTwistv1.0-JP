@@ -698,7 +698,7 @@ typedef struct EffectPart {
     /* 0x26 */ char pad_26[2];
 } EffectPart; //sizeof 0x28
 
-typedef struct Effect{ // TODO: give better name
+typedef struct Effect {
     /* 0x00 */ s32 spriteID;
     /* 0x04 */ u8 numParts;
     /* 0x05 */ u8 unk5;
@@ -712,7 +712,7 @@ typedef struct Effect{ // TODO: give better name
     /* 0x2C */ s32 unk_2C;
     /* 0x30 */ f32 duration;
     /* 0x34 */ void* fpUpdate;
-    /* 0x38 */ void* data; // this struct varies widely
+    /* 0x38 */ void* data; // TODO make union maybe
     /* 0x3C */ EffectPart* parts;
     /* 0x40 */ struct Effect* previous;
     /* 0x44 */ struct Effect* next;
