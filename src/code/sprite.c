@@ -2195,7 +2195,7 @@ void func_800629D4(void) {
     D_800FE164 = FALSE;
 }
 
-void aa1_HealthBar(Effect* effect, Gfx** pGfxPos) {
+void Effect_HealthBar_Update(Effect* effect, Gfx** pGfxPos) {
     EffectPart* parts = effect->parts;
     Effect_HealthBar_Data* data = (Effect_HealthBar_Data*)effect->data;
     s32 i;
@@ -2277,13 +2277,13 @@ void aa1_HealthBar(Effect* effect, Gfx** pGfxPos) {
     }
 }
 
-Effect* func_80062D10(s32 posX, s32 posY, s32* arg2, s32* arg3, u32 arg4, s32 arg5) {
+Effect* Effect_HealthBar_Init(s32 posX, s32 posY, s32* arg2, s32* arg3, u32 arg4, s32 arg5) {
     Effect* effect;
     EffectPart* parts;
     Effect_HealthBar_Data* data;
     s32 i;
     
-    effect = Effect_Alloc(*arg2, sizeof(Effect_HealthBar_Data), &aa1_HealthBar);
+    effect = Effect_Alloc(*arg2, sizeof(Effect_HealthBar_Data), &Effect_HealthBar_Update);
     if (effect == NULL) {
         return effect;
     }
@@ -4030,7 +4030,7 @@ void func_80084788(void) {
     D_80176B74 = gPlayerActors;
     D_80176B78 = gCamera;
     if ((gGameModeCurrent == 0) && (D_80168DA0 == 1)) {
-        func_80062D10(0x10, 0x10, &gPlayerActors[0].hp, &D_800FEDB8, gPlayerActors[0].hp, 0);
+        Effect_HealthBar_Init(0x10, 0x10, &gPlayerActors[0].hp, &D_800FEDB8, gPlayerActors[0].hp, 0);
         func_800634D4(0xF0, 0x10, &currentStageCrowns, &D_800FEDB8, 2, 0);
     }
     D_800FEDB4 = 1;

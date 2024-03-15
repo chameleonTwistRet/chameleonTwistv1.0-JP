@@ -156,7 +156,7 @@ extern Effect* D_800FE1A0;
 
 /* functions */
 void func_80055C04(void);
-Effect* func_80062D10(s32, s32, s32*, s32*, u32, s32);
+Effect* Effect_HealthBar_Init(s32, s32, s32*, s32*, u32, s32);
 Effect* func_800634D4(s32, s32, s32*, s32*, u32, s32);
 void func_8007AF80(void);
 void ResetEyeParams(void);
