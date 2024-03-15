@@ -1111,7 +1111,7 @@ void func_80035374(Unk_func_80035374* arg0) {
 void func_80036D74(PlayerActor* arg0, Tongue* arg1) {
     if (arg0->playerHURTSTATE == 0) {
         func_8002F884(arg0->playerID, 5);
-        func_80064BFC(arg0->pos.x, arg0->pos.y, arg0->pos.z);
+        Effect_TypeD_Create(arg0->pos.x, arg0->pos.y, arg0->pos.z);
         PlaySoundEffect(0x17, NULL, NULL, NULL, 0, 0x10);
         if ((Battle_GameType == 0) && (D_80174980 != 3) && (D_80174988 == 0)) {
             gNoHit = 0;
@@ -1494,7 +1494,7 @@ void ActorTick_BombBossBomb(Actor* arg0) {
         temp_f2 = -50000.0f;
         temp_f12 = 50000.0f;
         if (Actor_Init(20, arg0->pos.x, arg0->pos.y, arg0->pos.z, 0.0f, temp_f2, temp_f12, temp_f2, temp_f12, temp_f2, temp_f12, 200.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 10, 0, 0, 0) != -1) {
-            func_800619F8(arg0->pos.x, arg0->pos.y, arg0->pos.z, 3, 100);
+            Effect_TypeA_Init(arg0->pos.x, arg0->pos.y, arg0->pos.z, 3, 100);
         }
         func_80031518(arg0);
     }
@@ -2102,7 +2102,7 @@ void ActorInit_GhostBossShot(Actor* arg0) {
 void ActorTick_GhostBossShot(Actor* arg0) {
     arg0->userVariables[0] += 1;
     if (arg0->userVariables[0] == 150) {
-        func_800638AC(arg0->pos.x, arg0->pos.y, arg0->pos.z, arg0->pos.x, arg0->pos.y + 300.0f, arg0->pos.z, 255, 255, 255, 128, 8, 74);
+        Effect_TypeC_Init(arg0->pos.x, arg0->pos.y, arg0->pos.z, arg0->pos.x, arg0->pos.y + 300.0f, arg0->pos.z, 255, 255, 255, 128, 8, 74);
         func_80031518(arg0);
         return;
     }

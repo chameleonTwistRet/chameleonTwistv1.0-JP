@@ -911,7 +911,7 @@ void Battle_Update(void) {
             
             Battle_Time = 0;
             Battle_Stage = BATTLE_STAGE_AFTER_INIT;
-            func_800678EC(255, 255, 255, 0, 0x2D);
+            Effect_TypeO_Init(255, 255, 255, 0, 0x2D);
             break;
         case BATTLE_STAGE_INVALID:
             break;
@@ -1194,7 +1194,7 @@ void Process_Ranking(void) {
         func_8008BE14();
         func_80088198();
         D_801FC9AC = 0;
-        func_800678EC(0, 0, 0, 0, 0x10);
+        Effect_TypeO_Init(0, 0, 0, 0, 0x10);
         func_8008F114();
         break;
     case 1:

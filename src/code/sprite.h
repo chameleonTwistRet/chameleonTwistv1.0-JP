@@ -27,26 +27,78 @@ typedef struct SpriteListing {
     /* 0x74 */ char unk_74[4];
 } SpriteListing; //sizeof 0x78
 
+typedef struct Effect_HealthBar_Data {
+    /* 0x00 */ s32* curHPPtr;
+    /* 0x04 */ s32 mode;
+    /* 0x08 */ f32 movePhase;
+    /* 0x0C */ f32 idleTime;
+    /* 0x10 */ s32 lastHP;
+} Effect_HealthBar_Data; //sizeof 0x14
+
+typedef struct Effect_TypeC_Data {
+    /* 0x00 */ RGBA32 color;
+    /* 0x04 */ s32 spriteID;
+    /* 0x08 */ f32 sizeX;
+    /* 0x0C */ f32 sizeY;
+} Effect_TypeC_Data; //sizeof 0x10
+
+typedef struct Effect_TypeD_Data {
+    /* 0x00 */ RGBA32 color;
+    /* 0x04 */ s32 unk_04;
+    /* 0x08 */ f32 sizeX;
+    /* 0x0C */ f32 sizeY;
+} Effect_TypeD_Data; //sizeof 0x10
+
+typedef struct Effect_TypeE_Data {
+    /* 0x00 */ Vec3f dir;
+    /* 0x0C */ f32 sizeX;
+    /* 0x10 */ f32 sizeY;
+    /* 0x14 */ u32 colorR;
+    /* 0x18 */ u32 colorG;
+    /* 0x1C */ u32 colorB;
+    /* 0x20 */ u32 colorA;
+} Effect_TypeE_Data; //sizeof 0x24
+
+typedef struct Effect_TypeF_Data {
+    /* 0x00 */ f32 sizeX;
+    /* 0x04 */ f32 sizeY;
+    /* 0x08 */ u32 colorR;
+    /* 0x0C */ u32 colorG;
+    /* 0x10 */ u32 colorB;
+    /* 0x14 */ u32 colorA;
+} Effect_TypeF_Data; //sizeof 0x18
+
+typedef struct Effect_TypeG_Data {
+    /* 0x00 */ Mtx mtx;
+    /* 0x40 */ Vec3f scale;
+    /* 0x4C */ Gfx* dlist;
+} Effect_TypeG_Data; //sizeof 0x50
+
+typedef struct Effect_TypeH_Data {
+    /* 0x00 */ Mtx mtx[2];
+    /* 0x80 */ s32 mtxIndex;
+    /* 0x84 */ Vec3f scale;
+    /* 0x90 */ Gfx* dlist;
+    /* 0x94 */ f32 angle;
+} Effect_TypeH_Data; //sizeof 0x98
+
+typedef struct Effect_TypeI_Data {
+    /* 0x00 */ f32* ptrPosX;
+    /* 0x04 */ f32* ptrPosY;
+    /* 0x08 */ f32* ptrPosZ;
+    /* 0x0C */ f32 scale;
+} Effect_TypeI_Data; //sizeof 0x10
+
+typedef struct Effect_TypeM_Data {
+    /* 0x00 */ Mtx mtx;
+    /* 0x40 */ Gfx* dlist;
+    /* 0x44 */ s32* finish;    
+} Effect_TypeM_Data; //sizeof 0x48
+
 typedef struct UnkBowlingStruct {
     /* 0x00 */ s32 unk_00;
     /* 0x04 */ s32 unk_04;
-    /* 0x08 */ char unk_08[0x04];
-    /* 0x0C */ f32 unkC;
-    /* 0x10 */ f32 unk_10;
-    /* 0x14 */ f32 unk_14;
-    /* 0x18 */ f32 unk_18;
-    /* 0x1C */ f32 unk_1C;
-    /* 0x20 */ f32 unk_20;
-    /* 0x24 */ f32 unk_24;
-    /* 0x28*/ s32 UNK_28;
-    /* 0x2C */ s32 unk_2C;
-    /* 0x30 */ f32 unk_30;
-    /* 0x34 */ void* unk34;
-    /* 0x38 */ void* unk_38; // this struct varies widely
-    /* 0x3C */ d8006266c* unk_3C;
-    /* 0x40 */ struct aa1* previous;
-    /* 0x44 */ struct aa1* next;
-} UnkBowlingStruct; //sizeof 0x48
+} UnkBowlingStruct; //sizeof 0x8
 
 /* extern symbols */
 extern s32 D_80176960[];
@@ -93,17 +145,23 @@ extern Gfx D_303F1A0[];
 extern Gfx D_303D418[];
 extern Mtx D_80176860;
 extern Camera D_801768A0;
+extern s32 D_800F687C;
+extern s16 D_800F06E4;
 extern f32 D_800FE014;
+extern u32 D_80108790;
+extern s32 D_800FE188;
+extern Gfx D_1013F78[];
+extern Gfx D_10149D0[];
+extern Effect* D_800FE1A0;
 
 /* functions */
-void func_8006623C(void);
 void func_80055C04(void);
-void func_80062D10(s32, s32, s32*, s32*, u32, s32);
-void func_800634D4(s32, s32, s32*, s32*, s32, s32);
+Effect* Effect_HealthBar_Init(s32, s32, s32*, s32*, u32, s32);
+Effect* func_800634D4(s32, s32, s32*, s32*, u32, s32);
 void func_8007AF80(void);
 void ResetEyeParams(void);
 void Rumble_Tick(void);
-void func_800615D4(s32*);
+void Effect_UpdateAll(s32*);
 void func_80069734(void);
 void func_8007CDEC(void);
 f32 func_80056104(f32, f32);

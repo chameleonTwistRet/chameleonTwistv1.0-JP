@@ -687,44 +687,36 @@ typedef struct ContMain {
     f32 stickAngle;
 } ContMain; //sizeof 0x10
 
-typedef struct d8006266c{
-    /* 0x00 */ f32 unk0;
-    /* 0x04 */ f32 unk4;
-    /* 0x08 */ s32 unk8;
-    /* 0x0C */ s32 unkC;
-    /* 0x08 */ s32 unk_10;
-    /* 0x08 */ s32 unk_14;
-    /* 0x08 */ s32 unk_18;
-    /* 0x10 */ char unk_1C[0x14];
-    /* 0x30 */ f32 unk_30;
-    /* 0x34 */ char unk_34[4];
-    /* 0x38 */ struct d8006266c* unk_38;
-    /* 0x3C */ s32 unk_3C[4];
-} d8006266c; //sizeof 0x40
+typedef struct EffectPart { 
+    /* 0x00 */ Vec3f pos;
+    /* 0x0C */ Vec3f vel;
+    /* 0x18 */ f32 lifeTime;
+    /* 0x1C */ f32 sizeX;
+    /* 0x20 */ f32 sizeY;
+    /* 0x24 */ s8 unk_24;
+    /* 0x25 */ u8 unk_25;
+    /* 0x26 */ char pad_26[2];
+} EffectPart; //sizeof 0x28
 
-typedef struct aa1{ // TODO: give better name
-    /* 0x00 */ s32 unk0;
-    /* 0x04 */ s8 unk4;
-    /* 0x05 */ s8 unk5;
+typedef struct Effect {
+    /* 0x00 */ s32 spriteID;
+    /* 0x04 */ u8 numParts;
+    /* 0x05 */ u8 unk5;
     /* 0x06 */ s8 unk6;
     /* 0x07 */ s8 unk7;
     /* 0x08 */ s32 unk8;
-    /* 0x0C */ f32 unkC;
-    /* 0x10 */ f32 unk_10;
-    /* 0x14 */ f32 unk_14;
-    /* 0x18 */ f32 unk_18;
-    /* 0x1C */ f32 unk_1C;
-    /* 0x20 */ f32 unk_20;
-    /* 0x24 */ f32 unk_24;
+    /* 0x0C */ f32 lifeTime;
+    /* 0x10 */ Vec3f pos; // TODO make union
+    /* 0x1C */ Vec3f vel;
     /* 0x28*/ s32 UNK_28;
     /* 0x2C */ s32 unk_2C;
-    /* 0x30 */ f32 unk_30;
-    /* 0x34 */ void* unk34;
-    /* 0x38 */ void* unk_38; // this struct varies widely
-    /* 0x3C */ d8006266c* unk_3C;
-    /* 0x40 */ struct aa1* previous;
-    /* 0x44 */ struct aa1* next;
-} aa1; //sizeof 0x48
+    /* 0x30 */ f32 duration;
+    /* 0x34 */ void* fpUpdate;
+    /* 0x38 */ void* data; // TODO make union maybe
+    /* 0x3C */ EffectPart* parts;
+    /* 0x40 */ struct Effect* previous;
+    /* 0x44 */ struct Effect* next;
+} Effect; //sizeof 0x48
 
 
 
