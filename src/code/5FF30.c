@@ -1471,7 +1471,7 @@ void func_8008FD68(void) {
     func_8002E0CC();
     InitField();
     func_80056EB4();
-    aa1_InitHead();
+    Effect_Init();
     func_8005C9B8();
     func_80084788();
     CTTaskList_Init();
@@ -2638,7 +2638,7 @@ void func_800A1EC4(void) {
     D_80100F50[1].unk4 = (u32)D_803B5000;
     D_801FFB78 = D_80100F50[1].base_address;
     func_80056EB4();
-    aa1_InitHead();
+    Effect_Init();
     func_8005C9B8();
     func_80084788();
 }
@@ -2958,7 +2958,7 @@ void func_800A56D4(void) {
     D_801FFB78 = D_80100F50[1].base_address;
     func_80056EB4();
     func_8005C9B8();
-    aa1_InitHead();
+    Effect_Init();
     func_80084788();
     LoadSprite(D_80100EB4[D_801B317C]);
     LoadSprite(0x4D);
@@ -3753,7 +3753,7 @@ void func_800AAB0C(s32 arg0) {
     func_8002E0CC();
     InitField();
     func_80056EB4();
-    aa1_InitHead();
+    Effect_Init();
     func_8005C9B8();
     func_80084788();
     func_80055FA4();

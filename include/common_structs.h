@@ -687,7 +687,7 @@ typedef struct ContMain {
     f32 stickAngle;
 } ContMain; //sizeof 0x10
 
-typedef struct aa1Sub { 
+typedef struct EffectPart { 
     /* 0x00 */ Vec3f pos;
     /* 0x0C */ Vec3f vel;
     /* 0x18 */ f32 lifeTime;
@@ -696,27 +696,27 @@ typedef struct aa1Sub {
     /* 0x24 */ s8 unk_24;
     /* 0x25 */ u8 unk_25;
     /* 0x26 */ char pad_26[2];
-} aa1Sub; //sizeof 0x28
+} EffectPart; //sizeof 0x28
 
-typedef struct aa1{ // TODO: give better name
+typedef struct Effect{ // TODO: give better name
     /* 0x00 */ s32 spriteID;
-    /* 0x04 */ u8 unk4;
+    /* 0x04 */ u8 numParts;
     /* 0x05 */ u8 unk5;
     /* 0x06 */ s8 unk6;
     /* 0x07 */ s8 unk7;
     /* 0x08 */ s32 unk8;
     /* 0x0C */ f32 lifeTime;
-    /* 0x10 */ Vec3f pos;
+    /* 0x10 */ Vec3f pos; // TODO make union
     /* 0x1C */ Vec3f vel;
     /* 0x28*/ s32 UNK_28;
     /* 0x2C */ s32 unk_2C;
     /* 0x30 */ f32 duration;
-    /* 0x34 */ void* unk34;
-    /* 0x38 */ void* unk_38; // this struct varies widely
-    /* 0x3C */ aa1Sub* parts;
-    /* 0x40 */ struct aa1* previous;
-    /* 0x44 */ struct aa1* next;
-} aa1; //sizeof 0x48
+    /* 0x34 */ void* fpUpdate;
+    /* 0x38 */ void* data; // this struct varies widely
+    /* 0x3C */ EffectPart* parts;
+    /* 0x40 */ struct Effect* previous;
+    /* 0x44 */ struct Effect* next;
+} Effect; //sizeof 0x48
 
 
 

@@ -1075,7 +1075,7 @@ void func_8002CD04(void) {
     InitField();
     func_8002CCDC();
     func_80056EB4();
-    aa1_InitHead();
+    Effect_Init();
     func_8005C9B8();
     func_80084788();
 }

@@ -1847,94 +1847,94 @@ void func_80061394(void) {
     D_800FDFC8[1] = 0;
     printReset();
 }
-//start of functions using "aa1" struct.
-void func_800613D0(aa1* arg0) {
-    arg0->unk4 = 0;
-    arg0->parts = NULL;
-    arg0->previous = NULL;
-    arg0->next = NULL;
-    arg0->lifeTime = 0.0f;
+
+void Effect_ResetListEntry(Effect* effect) {
+    effect->numParts = 0;
+    effect->parts = NULL;
+    effect->previous = NULL;
+    effect->next = NULL;
+    effect->lifeTime = 0.0f;
 }
 
-aa1* aa1_Alloc(s32 arg0, s32 arg1, void* arg2) {
-    aa1* var_a1;
-    aa1* temp_v0;
+Effect* Effect_Alloc(s32 numParts, s32 dataSize, void* fpUpdate) {
+    Effect* effect;
     
-    temp_v0 = _malloc(0x48);
-    var_a1 = temp_v0;
+    effect = _malloc(sizeof(Effect));
     
-    if (temp_v0 == NULL) {
+    if (effect == NULL) {
         return NULL;
     }
     
-    if (arg0 != 0) {
-        var_a1->parts = _malloc(arg0 * 0x28);
-        if (var_a1->parts == NULL) {
-            Free(var_a1);
+    if (numParts != 0) {
+        effect->parts = _malloc(numParts * sizeof(EffectPart));
+        if (effect->parts == NULL) {
+            Free(effect);
             return NULL;
         }        
     } else {
-        temp_v0->parts = 0;
+        effect->parts = 0;
     }
     
-    if (arg1 != 0) {
-        var_a1->unk_38 = _malloc(arg1);
-        if (var_a1->unk_38 == NULL) {
-            Free(var_a1);
-            Free(var_a1->parts);
+    if (dataSize != 0) {
+        effect->data = _malloc(dataSize);
+        if (effect->data == NULL) {
+            Free(effect);
+            Free(effect->parts);
             return NULL;
         }        
     } else {
-        var_a1->unk_38 = NULL;
+        effect->data = NULL;
     }
     
-    if (g_aa1_head->next != NULL) {
-        g_aa1_head->next->previous = var_a1;
+    if (gEffectListHead->next != NULL) {
+        gEffectListHead->next->previous = effect;
     }
     
-    var_a1->unk4 = arg0;
-    var_a1->lifeTime = 0.0f;
-    var_a1->unk34 = arg2;
-    var_a1->previous = g_aa1_head;
-    var_a1->next = g_aa1_head->next;
-    g_aa1_head->next = var_a1;
-    g_aa1_head = var_a1;
-    g_aa1_Count++;
-    return var_a1;
+    effect->numParts = numParts;
+    effect->lifeTime = 0.0f;
+    effect->fpUpdate = fpUpdate;
+
+    effect->previous = gEffectListHead;
+    effect->next = gEffectListHead->next;
+    gEffectListHead->next = effect;
+    gEffectListHead = effect;
+
+    gEffectListCount++;
+    return effect;
 }
 
-void aa1_Free(aa1* arg0) {
-    aa1* temp_v0 = arg0->previous;
-    if (temp_v0 != NULL) {
-        temp_v0->next = arg0->next;
+void Effect_Free(Effect* effect) {
+    Effect* previuos = effect->previous;
+    if (previuos != NULL) {
+        previuos->next = effect->next;
     }
-    if (arg0->next != NULL) {
-        arg0->next->previous = arg0->previous;
+    if (effect->next != NULL) {
+        effect->next->previous = effect->previous;
     }
-    if (arg0 == g_aa1_head) {
-        g_aa1_head = arg0->previous;
+    if (effect == gEffectListHead) {
+        gEffectListHead = effect->previous;
     }
-    Free(arg0->parts);
-    Free(arg0->unk_38);
-    Free(arg0);
-    g_aa1_Count -= 1;
+    Free(effect->parts);
+    Free(effect->data);
+    Free(effect);
+    gEffectListCount -= 1;
 }
 
-void aa1_InitHead(void) {
-    g_aa1_head = &D_80176F00;
-    func_800613D0(g_aa1_head);
+void Effect_Init(void) {
+    gEffectListHead = &gEffectList;
+    Effect_ResetListEntry(gEffectListHead);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_800615D4.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/Effect_UpdateAll.s")
 
-void Effect_TypeA_Update(aa1* effect, Gfx** pGfxPos) {
-    aa1Sub* parts = effect->parts;
+void Effect_TypeA_Update(Effect* effect, Gfx** pGfxPos) {
+    EffectPart* parts = effect->parts;
     s32 i;
     s32 numAlive;
     u8 alpha;
     f32 size;
 
-    for (i = 0, numAlive = 0; i < effect->unk4; i++) {
+    for (i = 0, numAlive = 0; i < effect->numParts; i++) {
         if (parts[i].lifeTime == 0.0f) {
             continue;
         }
@@ -1968,16 +1968,16 @@ void Effect_TypeA_Update(aa1* effect, Gfx** pGfxPos) {
     }
 
     if (numAlive == 0) {
-        aa1_Free(effect);
+        Effect_Free(effect);
     }
 }
 
 void Effect_TypeA_Init(f32 posX, f32 posY, f32 posZ, s32 numParts, s32 size) {
-    aa1* effect;
-    aa1Sub* parts;
+    Effect* effect;
+    EffectPart* parts;
     s32 i;
     
-    effect = aa1_Alloc(numParts, 0, &Effect_TypeA_Update);
+    effect = Effect_Alloc(numParts, 0, &Effect_TypeA_Update);
     if (effect == NULL) {
         return;
     }
@@ -2000,11 +2000,11 @@ void Effect_TypeA_Init(f32 posX, f32 posY, f32 posZ, s32 numParts, s32 size) {
 }
 
 void Effect_TypeA_Init2(f32 posX, f32 posY, f32 posZ, s32 numParts, s32 size) {
-    aa1* effect;
-    aa1Sub* parts;
+    Effect* effect;
+    EffectPart* parts;
     s32 i;
     
-    effect = aa1_Alloc(numParts, 0, &Effect_TypeA_Update);
+    effect = Effect_Alloc(numParts, 0, &Effect_TypeA_Update);
     if (effect == NULL) {
         return;
     }
@@ -2043,8 +2043,8 @@ s32 func_80062038(void) {
     }
 }
 
-void Effect_TypeB_Update(aa1* effect, Gfx** pGfxPos) {
-    aa1Sub* parts = effect->parts;
+void Effect_TypeB_Update(Effect* effect, Gfx** pGfxPos) {
+    EffectPart* parts = effect->parts;
     s32 i;
     s32 numAlive;
 
@@ -2052,7 +2052,7 @@ void Effect_TypeB_Update(aa1* effect, Gfx** pGfxPos) {
         effect->lifeTime += 1.0f / effect->duration;
         if (effect->lifeTime > 1.0f) { } // required for matching
 
-        for (i = 0; i < effect->unk4; i++) {
+        for (i = 0; i < effect->numParts; i++) {
             if (parts[i].lifeTime == 0.0f && effect->lifeTime < 1.0f) {
                 parts[i].pos.x = effect->pos.x + sinf(effect->lifeTime * 6.28312 * 6.0) * effect->lifeTime * 150.0f;
                 parts[i].pos.y = effect->pos.y;
@@ -2065,13 +2065,13 @@ void Effect_TypeB_Update(aa1* effect, Gfx** pGfxPos) {
                 parts[i].vel.y = RANDOM(-5, 5);
                 parts[i].vel.z = RANDOM(-5, 5);
 
-                parts[i].lifeTime = 1.0f / effect->unk4 * 2;
+                parts[i].lifeTime = 1.0f / effect->numParts * 2;
                 break;
             }
         }
     }
 
-    for (i = 0, numAlive = 0; i < effect->unk4; i++) {
+    for (i = 0, numAlive = 0; i < effect->numParts; i++) {
         if (parts[i].lifeTime > 0.0f) {
             numAlive++;
 
@@ -2091,7 +2091,7 @@ void Effect_TypeB_Update(aa1* effect, Gfx** pGfxPos) {
                 parts[i].pos.y += parts[i].vel.y;
                 parts[i].pos.z += parts[i].vel.z;
 
-                parts[i].lifeTime += 1.0f / effect->unk4 * 4.0f;
+                parts[i].lifeTime += 1.0f / effect->numParts * 4.0f;
                 if (parts[i].lifeTime >= 1.0f) {
                     parts[i].lifeTime = 0.0f;
                 }
@@ -2100,16 +2100,16 @@ void Effect_TypeB_Update(aa1* effect, Gfx** pGfxPos) {
     }
 
     if (numAlive == 0) {
-        aa1_Free(effect);
+        Effect_Free(effect);
     }
 }
 
-aa1* Effect_TypeB_Init(f32 posX, f32 posY, f32 posZ, s32 numParts) {
-    aa1* effect;
-    aa1Sub* parts;
+Effect* Effect_TypeB_Init(f32 posX, f32 posY, f32 posZ, s32 numParts) {
+    Effect* effect;
+    EffectPart* parts;
     s32 i;
     
-    effect = aa1_Alloc(numParts, 0, &Effect_TypeB_Update);
+    effect = Effect_Alloc(numParts, 0, &Effect_TypeB_Update);
     if (effect == NULL) {
         return effect;
     }
@@ -2119,9 +2119,9 @@ aa1* Effect_TypeB_Init(f32 posX, f32 posY, f32 posZ, s32 numParts) {
     effect->pos.z = posZ;
     effect->duration = 30.0f;
     effect->lifeTime = 0.0f;
-    effect->unk4 = numParts; // unnecessary assignment
+    effect->numParts = numParts; // unnecessary assignment
 
-    for (parts = effect->parts, i = 0; i < effect->unk4; i++) {
+    for (parts = effect->parts, i = 0; i < effect->numParts; i++) {
         parts[i].sizeX = 1.0f;
         parts[i].sizeY = 1.0f;
 
@@ -2139,26 +2139,18 @@ aa1* Effect_TypeB_Init(f32 posX, f32 posY, f32 posZ, s32 numParts) {
     return effect;
 }
 
-typedef struct aa1_HealthBarData {
-    s32* curHPPtr;
-    s32 mode;
-    f32 movePhase;
-    f32 idleTime;
-    s32 lastHP;
-} aa1_HealthBarData;
-
-void func_8006266C(aa1* effect) {
-    aa1_HealthBarData* data = (aa1_HealthBarData*)effect->unk_38;
+void func_8006266C(Effect* effect) {
+    Effect_HealthBar_Data* data = (Effect_HealthBar_Data*)effect->data;
  
     data->mode = 1;
     data->idleTime = 0.0f;
 }
 
-void func_80062684(aa1* effect) {
-    aa1Sub* parts = effect->parts;
+void func_80062684(Effect* effect) {
+    EffectPart* parts = effect->parts;
     s32 i;
 
-    for (i = 0; i < effect->unk4; i++) {
+    for (i = 0; i < effect->numParts; i++) {
         switch(parts[i].unk_25) {
             case 0:
                 if (((s32)(parts[i].lifeTime * 50.0f) % 2) || D_800F687C == 0) {
@@ -2203,9 +2195,9 @@ void func_800629D4(void) {
     D_800FE164 = FALSE;
 }
 
-void aa1_HealthBar(aa1* effect, Gfx** pGfxPos) {
-    aa1Sub* parts = effect->parts;
-    aa1_HealthBarData* data = (aa1_HealthBarData*)effect->unk_38;
+void aa1_HealthBar(Effect* effect, Gfx** pGfxPos) {
+    EffectPart* parts = effect->parts;
+    Effect_HealthBar_Data* data = (Effect_HealthBar_Data*)effect->data;
     s32 i;
 
     if (D_800FE164 == TRUE || *data->curHPPtr <= 0) {
@@ -2285,20 +2277,20 @@ void aa1_HealthBar(aa1* effect, Gfx** pGfxPos) {
     }
 }
 
-aa1* func_80062D10(s32 posX, s32 posY, s32* arg2, s32* arg3, u32 arg4, s32 arg5) {
-    aa1* effect;
-    aa1Sub* parts;
-    aa1_HealthBarData* data;
+Effect* func_80062D10(s32 posX, s32 posY, s32* arg2, s32* arg3, u32 arg4, s32 arg5) {
+    Effect* effect;
+    EffectPart* parts;
+    Effect_HealthBar_Data* data;
     s32 i;
     
-    effect = aa1_Alloc(*arg2, sizeof(aa1_HealthBarData), &aa1_HealthBar);
+    effect = Effect_Alloc(*arg2, sizeof(Effect_HealthBar_Data), &aa1_HealthBar);
     if (effect == NULL) {
         return effect;
     }
 
     func_800629D4();
 
-    data = (aa1_HealthBarData*)effect->unk_38;
+    data = (Effect_HealthBar_Data*)effect->data;
     data->mode = 0;
     data->curHPPtr = arg2;    
     data->movePhase = 0.0f;
@@ -2311,7 +2303,7 @@ aa1* func_80062D10(s32 posX, s32 posY, s32* arg2, s32* arg3, u32 arg4, s32 arg5)
     effect->lifeTime = 0.0f;
     effect->duration = 15.0f;
 
-    for (parts = effect->parts, i = 0; i < effect->unk4; i++) {
+    for (parts = effect->parts, i = 0; i < effect->numParts; i++) {
         parts[i].unk_25 = 0;
         parts[i].lifeTime = 0;
 
@@ -2323,8 +2315,8 @@ aa1* func_80062D10(s32 posX, s32 posY, s32* arg2, s32* arg3, u32 arg4, s32 arg5)
     return effect;
 }
 
-void func_80062E18(aa1* effect) {
-    aa1_HealthBarData* data = (aa1_HealthBarData*)effect->unk_38;
+void func_80062E18(Effect* effect) {
+    Effect_HealthBar_Data* data = (Effect_HealthBar_Data*)effect->data;
 
     SetTextGradient(191, 10, 0, 255, 200, 200, 0, 255, 191, 10, 0, 255, 200, 200, 0, 255);
     printNumber(264.0f, 16.0f, 0.0f, 1.0f, (f32) *data->curHPPtr, 2, 0);
@@ -2344,9 +2336,9 @@ void func_80062E18(aa1* effect) {
 }
 
 #ifdef NON_MATCHING
-void func_80063160(aa1* effect, Gfx** pGfxPos) {
-    aa1Sub* parts = effect->parts;
-    aa1_HealthBarData* data = (aa1_HealthBarData*)effect->unk_38;
+void func_80063160(Effect* effect, Gfx** pGfxPos) {
+    EffectPart* parts = effect->parts;
+    Effect_HealthBar_Data* data = (Effect_HealthBar_Data*)effect->data;
     s32 i;
 
     if (D_800FE164 == TRUE || gCurrentStage == 8) {
@@ -2437,23 +2429,23 @@ void func_80063160(aa1* effect, Gfx** pGfxPos) {
 }
 #else
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80063160.s")
-void func_80063160(aa1* effect, Gfx** pGfxPos);
+void func_80063160(Effect* effect, Gfx** pGfxPos);
 #endif
 
-aa1* func_800634D4(s32 posX, s32 posY, s32* arg2, s32* arg3, u32 arg4, s32 arg5) {
-    aa1* effect;
-    aa1Sub* parts;
-    aa1_HealthBarData* data;
+Effect* func_800634D4(s32 posX, s32 posY, s32* arg2, s32* arg3, u32 arg4, s32 arg5) {
+    Effect* effect;
+    EffectPart* parts;
+    Effect_HealthBar_Data* data;
     s32 i;
     
-    effect = aa1_Alloc(*arg2, sizeof(aa1_HealthBarData), &func_80063160);
+    effect = Effect_Alloc(*arg2, sizeof(Effect_HealthBar_Data), &func_80063160);
     if (effect == NULL) {
         return effect;
     }
 
     func_800629D4();
 
-    data = (aa1_HealthBarData*)effect->unk_38;
+    data = (Effect_HealthBar_Data*)effect->data;
     data->mode = 0;
     data->curHPPtr = arg2;    
     data->movePhase = 0.0f;
@@ -2466,7 +2458,7 @@ aa1* func_800634D4(s32 posX, s32 posY, s32* arg2, s32* arg3, u32 arg4, s32 arg5)
     effect->lifeTime = 0.0f;
     effect->duration = 15.0f;
 
-    for (parts = effect->parts, i = 0; i < effect->unk4; i++) {
+    for (parts = effect->parts, i = 0; i < effect->numParts; i++) {
         parts[i].unk_25 = 0;
         parts[i].lifeTime = 0;
 
@@ -2478,19 +2470,12 @@ aa1* func_800634D4(s32 posX, s32 posY, s32* arg2, s32* arg3, u32 arg4, s32 arg5)
     return effect;
 }
 
-typedef struct aa1_TypeC_Data {
-    RGBA32 color;
-    s32 spriteID;
-    f32 sizeX;
-    f32 sizeY;
-} aa1_TypeC_Data;
-
-void Effect_TypeC_Update(aa1* effect, Gfx** pGfxPos) {
-    aa1_TypeC_Data* data = (aa1_TypeC_Data*)effect->unk_38;
-    aa1Sub* parts = effect->parts;
+void Effect_TypeC_Update(Effect* effect, Gfx** pGfxPos) {
+    Effect_TypeC_Data* data = (Effect_TypeC_Data*)effect->data;
+    EffectPart* parts = effect->parts;
     s32 i;
 
-    for (i = 0; i < effect->unk4; i++) {
+    for (i = 0; i < effect->numParts; i++) {
         if (parts[i].lifeTime < 1.0f) {
             setPrimColor(data->color.r, data->color.g, data->color.b, data->color.a - parts[i].lifeTime * (data->color.a - 1));
             func_8005747C(parts[i].pos.x, parts[i].pos.y, parts[i].pos.z, data->sizeX / 3.0f, data->sizeY / 3.0f, effect->lifeTime, data->spriteID);
@@ -2511,24 +2496,24 @@ void Effect_TypeC_Update(aa1* effect, Gfx** pGfxPos) {
         effect->lifeTime += 1.0f / effect->duration;
     }
     if (effect->lifeTime >= 1.0f) {
-        aa1_Free(effect);
+        Effect_Free(effect);
     }
 }
 
-aa1* Effect_TypeC_Init(f32 posX, f32 posY, f32 posZ, f32 targetX, f32 targetY, f32 targetZ, u8 colorR, u8 colorG, u8 colorB, u8 colorA, s32 numParts, s32 spriteID) {
-    aa1* effect;
-    aa1Sub* parts;
-    aa1_TypeC_Data* data;
+Effect* Effect_TypeC_Init(f32 posX, f32 posY, f32 posZ, f32 targetX, f32 targetY, f32 targetZ, u8 colorR, u8 colorG, u8 colorB, u8 colorA, s32 numParts, s32 spriteID) {
+    Effect* effect;
+    EffectPart* parts;
+    Effect_TypeC_Data* data;
     s32 i;
     f32 dist;
     
     dist = __sqrtf(SQ(posX - targetX) + SQ(posY - targetY) + SQ(posZ - targetZ));
-    effect = aa1_Alloc(numParts, sizeof(aa1_TypeC_Data), &Effect_TypeC_Update);
+    effect = Effect_Alloc(numParts, sizeof(Effect_TypeC_Data), &Effect_TypeC_Update);
     if (effect == NULL) {
         return effect;
     }
 
-    data = (aa1_TypeC_Data*)effect->unk_38;
+    data = (Effect_TypeC_Data*)effect->data;
     data->color.r = colorR;
     data->color.g = colorG;
     data->color.b = colorB;
@@ -2543,7 +2528,7 @@ aa1* Effect_TypeC_Init(f32 posX, f32 posY, f32 posZ, f32 targetX, f32 targetY, f
     effect->duration = 15.0f;
     effect->lifeTime = 0.0f;
 
-    for (parts = effect->parts, i = 0; i < effect->unk4; i++) {
+    for (parts = effect->parts, i = 0; i < effect->numParts; i++) {
         parts[i].lifeTime = 0;
 
         parts[i].pos.x = posX;
@@ -2558,23 +2543,16 @@ aa1* Effect_TypeC_Init(f32 posX, f32 posY, f32 posZ, f32 targetX, f32 targetY, f
     return effect;
 }
 
-typedef struct Effect_TypeD_Data {
-    RGBA32 color;
-    s32 unk_04;
-    f32 sizeX;
-    f32 sizeY;
-} Effect_TypeD_Data;
-
 #ifdef NON_MATCHING
 // float regalloc
-void Effect_TypeD_Update(aa1* effect, Gfx** pGfxPos) {
-    Effect_TypeD_Data* data = (Effect_TypeD_Data*)effect->unk_38;
-    aa1Sub* parts = effect->parts;
+void Effect_TypeD_Update(Effect* effect, Gfx** pGfxPos) {
+    Effect_TypeD_Data* data = (Effect_TypeD_Data*)effect->data;
+    EffectPart* parts = effect->parts;
     s32 i;
 
     switch (data->unk_04) {
         case 2:
-            for (i = 0; i < effect->unk4; i++) {
+            for (i = 0; i < effect->numParts; i++) {
                 if (parts[i].lifeTime < 1.0f) {
                     setPrimColor(data->color.r, data->color.g, data->color.b, data->color.a - parts[i].lifeTime * (data->color.a - 1));
                     func_8005747C(parts[i].pos.x, parts[i].pos.y, parts[i].pos.z, data->sizeX / 3, data->sizeY / 3, effect->lifeTime, 0x4A);
@@ -2592,7 +2570,7 @@ void Effect_TypeD_Update(aa1* effect, Gfx** pGfxPos) {
             }
             break;
         case 0:
-            for (i = 0; i < effect->unk4; i++) {
+            for (i = 0; i < effect->numParts; i++) {
                 if (parts[i].lifeTime < 1.0f) {
                     setPrimColor(parts[i].sizeX * data->color.r, parts[i].sizeY * data->color.g, (1.0f - parts[i].lifeTime) * data->color.b, (1.0f - parts[i].lifeTime) * data->color.a);
                     func_800612D8(sinf(parts[i].lifeTime * 6.28312 * 6) * 3.0f);
@@ -2617,7 +2595,7 @@ void Effect_TypeD_Update(aa1* effect, Gfx** pGfxPos) {
                 printUISprite(0.0f, 0.0f, 0.0f, 0.0f, 1, 320.0f, 240.0f, 0.0f, 0);
             }
 
-            for (i = 0; i < effect->unk4; i++) {
+            for (i = 0; i < effect->numParts; i++) {
                 if (parts[i].lifeTime < 1.0f) {
                     setPrimColor((1.0f - parts[i].lifeTime) * data->color.r, (1.0f - parts[i].lifeTime) * data->color.g, (1.0f - parts[i].lifeTime) * data->color.b, (1.0f - parts[i].lifeTime) * data->color.a);
                     func_800612D8(sinf(parts[i].lifeTime * 6.28312 * 6) * 3.0f);
@@ -2638,18 +2616,18 @@ void Effect_TypeD_Update(aa1* effect, Gfx** pGfxPos) {
     if (D_800F687C > 0) {
         effect->lifeTime += 1.0f / effect->duration;
         if (effect->lifeTime >= 1.0f) {
-            aa1_Free(effect);
+            Effect_Free(effect);
         }
     }    
 }
 #else
-void Effect_TypeD_Update(aa1* effect, Gfx** pGfxPos);
+void Effect_TypeD_Update(Effect* effect, Gfx** pGfxPos);
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/Effect_TypeD_Update.s")
 #endif
 
-aa1* Effect_TypeD_Init(f32 posX, f32 posY, f32 posZ, f32 targetX, f32 targetY, f32 targetZ, f32 arg6, u8 colorR, u8 colorG, u8 colorB, u8 colorA, s32 numParts, s32 argC) {
-    aa1* effect;
-    aa1Sub* parts;
+Effect* Effect_TypeD_Init(f32 posX, f32 posY, f32 posZ, f32 targetX, f32 targetY, f32 targetZ, f32 arg6, u8 colorR, u8 colorG, u8 colorB, u8 colorA, s32 numParts, s32 argC) {
+    Effect* effect;
+    EffectPart* parts;
     Effect_TypeD_Data* data;
     s32 i;
     f32 dist;
@@ -2659,12 +2637,12 @@ aa1* Effect_TypeD_Init(f32 posX, f32 posY, f32 posZ, f32 targetX, f32 targetY, f
     } else {
         dist = 10.0f;
     }
-    effect = aa1_Alloc(numParts, sizeof(Effect_TypeD_Data), &Effect_TypeD_Update);
+    effect = Effect_Alloc(numParts, sizeof(Effect_TypeD_Data), &Effect_TypeD_Update);
     if (effect == NULL) {
         return effect;
     }
 
-    data = (Effect_TypeD_Data*)effect->unk_38;
+    data = (Effect_TypeD_Data*)effect->data;
     data->color.r = colorR;
     data->color.g = colorG;
     data->color.b = colorB;
@@ -2681,7 +2659,7 @@ aa1* Effect_TypeD_Init(f32 posX, f32 posY, f32 posZ, f32 targetX, f32 targetY, f
 
     PlaySoundEffect(0xE0, &effect->pos.x, &effect->pos.y, &effect->pos.z, 0, 0x20);
 
-    for (parts = effect->parts, i = 0; i < effect->unk4; i++) {
+    for (parts = effect->parts, i = 0; i < effect->numParts; i++) {
         parts[i].lifeTime = 0;
 
         if (!argC) {
@@ -2705,7 +2683,7 @@ aa1* Effect_TypeD_Init(f32 posX, f32 posY, f32 posZ, f32 targetX, f32 targetY, f
     return effect;
 }
 
-aa1* Effect_TypeD_Create(f32 posX, f32 posY, f32 posZ) {
+Effect* Effect_TypeD_Create(f32 posX, f32 posY, f32 posZ) {
     if (Timing_BusyTime > 0.85) {
         return NULL;
     }
@@ -2716,20 +2694,10 @@ aa1* Effect_TypeD_Create(f32 posX, f32 posY, f32 posZ) {
     }
 }
 
-typedef struct Effect_TypeE_Data {
-    Vec3f dir;
-    f32 sizeX;
-    f32 sizeY;
-    u32 colorR;
-    u32 colorG;
-    u32 colorB;
-    u32 colorA;
-} Effect_TypeE_Data;
-
-void Effect_TypeE_Update(aa1* effect, Gfx** pGfxPos) {
-    Effect_TypeE_Data* data = (Effect_TypeE_Data*)effect->unk_38;
+void Effect_TypeE_Update(Effect* effect, Gfx** pGfxPos) {
+    Effect_TypeE_Data* data = (Effect_TypeE_Data*)effect->data;
     f32 alpha = 255.0f - effect->lifeTime * 254.0f;
-    aa1Sub* parts = effect->parts;
+    EffectPart* parts = effect->parts;
     
     if (alpha > 254.0) {
         alpha = 254.0f;
@@ -2746,7 +2714,7 @@ void Effect_TypeE_Update(aa1* effect, Gfx** pGfxPos) {
         effect->pos.z += effect->vel.z;
 
         if (effect->lifeTime >= 1.0f) {
-            aa1_Free(effect);
+            Effect_Free(effect);
         }
     }
 
@@ -2760,16 +2728,16 @@ void Effect_TypeE_Update(aa1* effect, Gfx** pGfxPos) {
     }
 }
 
-aa1* Effect_TypeE_Init(f32 posX, f32 posY, f32 posZ, f32 dirX, f32 dirY, f32 dirZ, f32 sizeX, f32 sizeY, s32 duration, s32 spriteID) {
-    aa1* effect;
+Effect* Effect_TypeE_Init(f32 posX, f32 posY, f32 posZ, f32 dirX, f32 dirY, f32 dirZ, f32 sizeX, f32 sizeY, s32 duration, s32 spriteID) {
+    Effect* effect;
     Effect_TypeE_Data* data;
 
-    effect = aa1_Alloc(0, sizeof(Effect_TypeE_Data), &Effect_TypeE_Update);
+    effect = Effect_Alloc(0, sizeof(Effect_TypeE_Data), &Effect_TypeE_Update);
     if (effect == NULL) {
         return effect;
     }
 
-    data = (Effect_TypeE_Data*)effect->unk_38;
+    data = (Effect_TypeE_Data*)effect->data;
     data->sizeX = sizeX;
     data->sizeY = sizeY;
     data->dir.x = dirX;
@@ -2793,19 +2761,10 @@ aa1* Effect_TypeE_Init(f32 posX, f32 posY, f32 posZ, f32 dirX, f32 dirY, f32 dir
     return effect;
 }
 
-typedef struct Effect_TypeF_Data {
-    f32 sizeX;
-    f32 sizeY;
-    u32 colorR;
-    u32 colorG;
-    u32 colorB;
-    u32 colorA;
-} Effect_TypeF_Data;
-
-void Effect_TypeF_Update(aa1* effect, Gfx** pGfxPos) {
-    Effect_TypeF_Data* data = (Effect_TypeF_Data*)effect->unk_38;
+void Effect_TypeF_Update(Effect* effect, Gfx** pGfxPos) {
+    Effect_TypeF_Data* data = (Effect_TypeF_Data*)effect->data;
     f32 alpha = 255.0f * sinf(effect->lifeTime * 1.57078);
-    aa1Sub* parts = effect->parts;
+    EffectPart* parts = effect->parts;
     
     if (alpha > 254.0) {
         alpha = 254.0f;
@@ -2822,7 +2781,7 @@ void Effect_TypeF_Update(aa1* effect, Gfx** pGfxPos) {
         effect->pos.z += effect->vel.z;
 
         if (effect->lifeTime >= 1.0f) {
-            aa1_Free(effect);
+            Effect_Free(effect);
         }
     }
 
@@ -2830,16 +2789,16 @@ void Effect_TypeF_Update(aa1* effect, Gfx** pGfxPos) {
     func_8005747C(effect->pos.x, effect->pos.y, effect->pos.z, data->sizeX, data->sizeY, effect->lifeTime, effect->spriteID);
 }
 
-aa1* Effect_TypeF_Init(f32 posX, f32 posY, f32 posZ, f32 velX, f32 velY, f32 velZ, f32 sizeX, f32 sizeY, s32 duration, s32 spriteID) {
-    aa1* effect;
+Effect* Effect_TypeF_Init(f32 posX, f32 posY, f32 posZ, f32 velX, f32 velY, f32 velZ, f32 sizeX, f32 sizeY, s32 duration, s32 spriteID) {
+    Effect* effect;
     Effect_TypeF_Data* data;
 
-    effect = aa1_Alloc(0, sizeof(Effect_TypeF_Data), &Effect_TypeF_Update);
+    effect = Effect_Alloc(0, sizeof(Effect_TypeF_Data), &Effect_TypeF_Update);
     if (effect == NULL) {
         return effect;
     }
 
-    data = (Effect_TypeF_Data*)effect->unk_38;
+    data = (Effect_TypeF_Data*)effect->data;
     data->sizeX = sizeX;
     data->sizeY = sizeY;
     data->colorR = D_800FE18C;
@@ -2860,15 +2819,9 @@ aa1* Effect_TypeF_Init(f32 posX, f32 posY, f32 posZ, f32 velX, f32 velY, f32 vel
     return effect;
 }
 
-typedef struct Effect_TypeG_Data {
-    Mtx mtx;
-    Vec3f scale;
-    Gfx* dlist;
-} Effect_TypeG_Data;
-
-void Effect_TypeG_Update(aa1* effect, Gfx** pGfxPos) {
+void Effect_TypeG_Update(Effect* effect, Gfx** pGfxPos) {
     Gfx* gfxPos = *pGfxPos;
-    Effect_TypeG_Data* data = (Effect_TypeG_Data*)effect->unk_38;
+    Effect_TypeG_Data* data = (Effect_TypeG_Data*)effect->data;
     Mtx mtxTranslate;
 
     guScale(&data->mtx, data->scale.x, effect->lifeTime * data->scale.y, data->scale.z);
@@ -2887,23 +2840,23 @@ void Effect_TypeG_Update(aa1* effect, Gfx** pGfxPos) {
         effect->pos.z += effect->vel.z;
 
         if (effect->lifeTime >= 1.0f) {
-            aa1_Free(effect);
+            Effect_Free(effect);
         }
     }
 
     *pGfxPos = gfxPos;
 }
 
-aa1* Effect_TypeG_Init(f32 posX, f32 posY, f32 posZ, f32 velX, f32 velY, f32 velZ, f32 scaleX, f32 scaleY, f32 scaleZ, s32 duration, s32 spriteID) {
-    aa1* effect;
+Effect* Effect_TypeG_Init(f32 posX, f32 posY, f32 posZ, f32 velX, f32 velY, f32 velZ, f32 scaleX, f32 scaleY, f32 scaleZ, s32 duration, s32 spriteID) {
+    Effect* effect;
     Effect_TypeG_Data* data;
 
-    effect = aa1_Alloc(0, sizeof(Effect_TypeG_Data), &Effect_TypeG_Update);
+    effect = Effect_Alloc(0, sizeof(Effect_TypeG_Data), &Effect_TypeG_Update);
     if (effect == NULL) {
         return effect;
     }
 
-    data = (Effect_TypeG_Data*)effect->unk_38;
+    data = (Effect_TypeG_Data*)effect->data;
     data->scale.x = scaleX;
     data->scale.y = scaleY;
     data->scale.z = scaleZ;
@@ -2922,21 +2875,13 @@ aa1* Effect_TypeG_Init(f32 posX, f32 posY, f32 posZ, f32 velX, f32 velY, f32 vel
     return effect;
 }
 
-typedef struct Effect_TypeH_Data {
-    Mtx mtx[2];
-    s32 mtxIndex;
-    Vec3f scale;
-    Gfx* dlist;
-    f32 angle;
-} Effect_TypeH_Data;
-
-void Effect_TypeH_Update(aa1* effect, Gfx** pGfxPos) {
-    Effect_TypeH_Data* data = (Effect_TypeH_Data*)effect->unk_38;
+void Effect_TypeH_Update(Effect* effect, Gfx** pGfxPos) {
+    Effect_TypeH_Data* data = (Effect_TypeH_Data*)effect->data;
     Gfx* gfxPos = *pGfxPos;
     Mtx mtxRotate;
 
     if (effect->unk5) {
-        aa1_Free(effect);
+        Effect_Free(effect);
         return;
     }
 
@@ -2966,16 +2911,16 @@ void Effect_TypeH_Update(aa1* effect, Gfx** pGfxPos) {
     data->mtxIndex ^= 1;
 }
 
-aa1* Effect_TypeH_Init(f32 posX, f32 posY, f32 posZ, f32 velX, f32 velY, f32 velZ, f32 scaleX, f32 scaleY, f32 scaleZ, f32 angle, s32 duration, s32 spriteID) {
-    aa1* effect;
+Effect* Effect_TypeH_Init(f32 posX, f32 posY, f32 posZ, f32 velX, f32 velY, f32 velZ, f32 scaleX, f32 scaleY, f32 scaleZ, f32 angle, s32 duration, s32 spriteID) {
+    Effect* effect;
     Effect_TypeH_Data* data;
 
-    effect = aa1_Alloc(0, sizeof(Effect_TypeH_Data), &Effect_TypeH_Update);
+    effect = Effect_Alloc(0, sizeof(Effect_TypeH_Data), &Effect_TypeH_Update);
     if (effect == NULL) {
         return effect;
     }
 
-    data = (Effect_TypeH_Data*)effect->unk_38;
+    data = (Effect_TypeH_Data*)effect->data;
     data->scale.x = scaleX;
     data->scale.y = scaleY;
     data->scale.z = scaleZ;
@@ -2997,15 +2942,8 @@ aa1* Effect_TypeH_Init(f32 posX, f32 posY, f32 posZ, f32 velX, f32 velY, f32 vel
     return effect;
 }
 
-typedef struct Effect_TypeI_Data {
-    f32* ptrPosX;
-    f32* ptrPosY;
-    f32* ptrPosZ;
-    f32 scale;
-} Effect_TypeI_Data;
-
-void Effect_TypeI_Update(aa1* effect, Gfx** pGfxPos) {
-    Effect_TypeI_Data* data = (Effect_TypeI_Data*)effect->unk_38;
+void Effect_TypeI_Update(Effect* effect, Gfx** pGfxPos) {
+    Effect_TypeI_Data* data = (Effect_TypeI_Data*)effect->data;
     Gfx* gfxPos = *pGfxPos;
 
     if (D_800F687C > 0) {
@@ -3025,23 +2963,23 @@ void Effect_TypeI_Update(aa1* effect, Gfx** pGfxPos) {
 
         effect->lifeTime += 1.0f;
         if (effect->lifeTime >= 90.0f) {
-            aa1_Free(effect);
+            Effect_Free(effect);
         }
     }
 
     *pGfxPos = gfxPos;
 }
 
-aa1* Effect_TypeI_Init(f32* ptrPosX, f32* ptrPosY, f32* ptrPosZ, f32 scale) {
-    aa1* effect;
+Effect* Effect_TypeI_Init(f32* ptrPosX, f32* ptrPosY, f32* ptrPosZ, f32 scale) {
+    Effect* effect;
     Effect_TypeI_Data* data;
 
-    effect = aa1_Alloc(0, sizeof(Effect_TypeI_Data), &Effect_TypeI_Update);
+    effect = Effect_Alloc(0, sizeof(Effect_TypeI_Data), &Effect_TypeI_Update);
     if (effect == NULL) {
         return effect;
     }
 
-    data = (Effect_TypeI_Data*)effect->unk_38;
+    data = (Effect_TypeI_Data*)effect->data;
     data->ptrPosX = ptrPosX;
     data->ptrPosY = ptrPosY;
     data->ptrPosZ = ptrPosZ;
@@ -3052,22 +2990,22 @@ aa1* Effect_TypeI_Init(f32* ptrPosX, f32* ptrPosY, f32* ptrPosZ, f32 scale) {
     return effect;
 }
 
-void Effect_TypeJ_Update(aa1* effect, Gfx** pGfxPos) {
+void Effect_TypeJ_Update(Effect* effect, Gfx** pGfxPos) {
     if (D_800F687C > 0) {
         effect->lifeTime += 1.0f / effect->duration;
         if (effect->lifeTime >= 1.0f) {
             effect->lifeTime = 1.0f;
-            aa1_Free(effect);
+            Effect_Free(effect);
         }
     }
 
     func_8007B518((effect->lifeTime * 0.5 * 320.0 + 0.5) / 240.0);
 }
 
-aa1* Effect_TypeJ_Init(f32 duration) {
-    aa1* effect;
+Effect* Effect_TypeJ_Init(f32 duration) {
+    Effect* effect;
 
-    effect = aa1_Alloc(0, 0, &Effect_TypeJ_Update);
+    effect = Effect_Alloc(0, 0, &Effect_TypeJ_Update);
     if (effect == NULL) {
         return effect;
     }
@@ -3077,8 +3015,8 @@ aa1* Effect_TypeJ_Init(f32 duration) {
     return effect;
 }
 
-void Effect_TypeK_Update(aa1* effect, Gfx** pGfxPos) {
-    aa1Sub* parts = effect->parts;
+void Effect_TypeK_Update(Effect* effect, Gfx** pGfxPos) {
+    EffectPart* parts = effect->parts;
 
     func_8007B4CC(-parts->pos.x, parts->pos.y, 0.0f, -parts->pos.x, parts->pos.y, 0.0f);
     func_8006122C(parts->pos.x, parts->pos.y);
@@ -3105,14 +3043,14 @@ void Effect_TypeK_Update(aa1* effect, Gfx** pGfxPos) {
 
     if (effect->lifeTime >= 1.0f) {
         Effect_TypeJ_Init(10.0f);
-        aa1_Free(effect);
+        Effect_Free(effect);
     }
 }
 
-aa1* Effect_TypeK_Init(f32 duration, f32 arg1, f32 arg2) {
-    aa1* effect;
+Effect* Effect_TypeK_Init(f32 duration, f32 arg1, f32 arg2) {
+    Effect* effect;
 
-    effect = aa1_Alloc(1, 0, &Effect_TypeK_Update);
+    effect = Effect_Alloc(1, 0, &Effect_TypeK_Update);
     if (effect == NULL) {
         return effect;
     }
@@ -3128,8 +3066,8 @@ aa1* Effect_TypeK_Init(f32 duration, f32 arg1, f32 arg2) {
     return effect;
 }
 
-void Effect_TypeL_Update(aa1* effect, Gfx** pGfxPos) {
-    aa1Sub* parts = effect->parts;
+void Effect_TypeL_Update(Effect* effect, Gfx** pGfxPos) {
+    EffectPart* parts = effect->parts;
 
     func_8007B4CC(-parts->pos.x, parts->pos.y, 0.0f, -parts->pos.x, parts->pos.y, 0.0f);
     func_800610B8();
@@ -3147,14 +3085,14 @@ void Effect_TypeL_Update(aa1* effect, Gfx** pGfxPos) {
     parts->pos.y += parts->vel.y * 2;
 
     if (effect->lifeTime >= 1.0f) {
-        aa1_Free(effect);
+        Effect_Free(effect);
     }
 }
 
-aa1* Effect_TypeL_Init(f32 duration, f32 arg1, f32 arg2) {
-    aa1* effect;
+Effect* Effect_TypeL_Init(f32 duration, f32 arg1, f32 arg2) {
+    Effect* effect;
 
-    effect = aa1_Alloc(1, 0, &Effect_TypeL_Update);
+    effect = Effect_Alloc(1, 0, &Effect_TypeL_Update);
     if (effect == NULL) {
         return effect;
     }
@@ -3170,19 +3108,13 @@ aa1* Effect_TypeL_Init(f32 duration, f32 arg1, f32 arg2) {
     return effect;
 }
 
-typedef struct Effect_TypeM_Data {
-    Mtx mtx;
-    Gfx* dlist;
-    s32* finish;    
-} Effect_TypeM_Data;
-
-void Effect_TypeM_Update(aa1* effect, Gfx** pGfxPos) {
-    Effect_TypeM_Data* data = (Effect_TypeM_Data*)effect->unk_38;
+void Effect_TypeM_Update(Effect* effect, Gfx** pGfxPos) {
+    Effect_TypeM_Data* data = (Effect_TypeM_Data*)effect->data;
     Gfx* gfxPos = *pGfxPos;
 
     if (D_800F687C > 0) {
         if (*data->finish) {
-            aa1_Free(effect);
+            Effect_Free(effect);
             return;
         }
     }
@@ -3194,16 +3126,16 @@ void Effect_TypeM_Update(aa1* effect, Gfx** pGfxPos) {
     *pGfxPos = gfxPos;
 }
 
-aa1* Effect_TypeM_Init(f32 posX, f32 posY, f32 posZ, s32* finishPtr, Gfx* dlist) {
+Effect* Effect_TypeM_Init(f32 posX, f32 posY, f32 posZ, s32* finishPtr, Gfx* dlist) {
     Effect_TypeM_Data* data;
-    aa1* effect;    
+    Effect* effect;    
 
-    effect = aa1_Alloc(0, sizeof(Effect_TypeM_Data), &Effect_TypeM_Update);
+    effect = Effect_Alloc(0, sizeof(Effect_TypeM_Data), &Effect_TypeM_Update);
     if (effect == NULL) {
         return effect;
     }
 
-    data = (Effect_TypeM_Data*)effect->unk_38;
+    data = (Effect_TypeM_Data*)effect->data;
     guTranslate(&data->mtx, posX, posY, posZ);
     data->dlist = dlist;
     data->finish = finishPtr;
@@ -3216,17 +3148,17 @@ aa1* Effect_TypeM_Init(f32 posX, f32 posY, f32 posZ, s32* finishPtr, Gfx* dlist)
     return effect;
 }
 
-aa1* Effect_TypeM_Init2(f32 posX, f32 posY, f32 posZ, f32 scaleX, f32 scaleY, f32 scaleZ, f32 rotX, f32 rotY, f32 rotZ, s32* finishPtr, Gfx* dlist) {
+Effect* Effect_TypeM_Init2(f32 posX, f32 posY, f32 posZ, f32 scaleX, f32 scaleY, f32 scaleZ, f32 rotX, f32 rotY, f32 rotZ, s32* finishPtr, Gfx* dlist) {
     Effect_TypeM_Data* data;
-    aa1* effect;    
+    Effect* effect;    
     Mtx mtx;
 
-    effect = aa1_Alloc(0, sizeof(Effect_TypeM_Data), &Effect_TypeM_Update);
+    effect = Effect_Alloc(0, sizeof(Effect_TypeM_Data), &Effect_TypeM_Update);
     if (effect == NULL) {
         return effect;
     }
 
-    data = (Effect_TypeM_Data*)effect->unk_38;
+    data = (Effect_TypeM_Data*)effect->data;
     guMtxIdent(&data->mtx);
 
     guScale(&mtx, scaleX, scaleY, scaleZ);
@@ -3265,11 +3197,11 @@ void func_800667A8(void) {
     D_800FE19C = 0;
 }
 
-void func_800667B4(aa1* arg0) {
+void func_800667B4(Effect* arg0) {
     arg0->vel.x = 1.0f;
 }
 
-void func_800667C4(aa1*arg0, s32 arg1) {
+void func_800667C4(Effect*arg0, s32 arg1) {
     arg0->unk5 = (s8) arg1;
 }
 
@@ -3277,25 +3209,187 @@ void func_800667C4(aa1*arg0, s32 arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_800674B8.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_800675D0.s")
+void Effect_TypeO_Update(Effect* effect, Gfx** pGfxPos) {
+    f32 alpha = 255.0f - effect->lifeTime * 254.0f;
+    effect->vel.x += 1.0f / effect->vel.y;
+    if (effect->vel.x >= 1.0f) {
+        setPrimColor(effect->pos.x, effect->pos.y, effect->pos.z, alpha);
+        printUISprite(0.0f, 0.0f, 0.0f, 0.0f, 1, 320.0f, 240.0f, 0.0f, 0);
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_800678EC.s")
+        effect->lifeTime += 1.0f / effect->duration;
+        if (effect->lifeTime >= 1.0f) {
+            Effect_Free(effect);
+        }
+    }
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_800679DC.s")
+Effect* Effect_TypeO_Init(u8 colorR, u8 colorG, u8 colorB, s32 delay, s32 duration) {
+    Effect* effect;    
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80067CF8.s")
+    effect = Effect_Alloc(0, 0, &Effect_TypeO_Update);
+    if (effect == NULL) {
+        return effect;
+    }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80067DE8.s")
+    effect->pos.x = colorR;
+    effect->pos.y = colorG;
+    effect->pos.z = colorB;
+    effect->duration = duration;
+    effect->vel.y = delay;
+    effect->vel.x = 0.0f;
+    effect->lifeTime = 0.0f;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80068128.s")
+    return effect;
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80068218.s")
+void Effect_TypeP_Update(Effect* effect, Gfx** pGfxPos) {
+    f32 alpha = effect->lifeTime * 254.0f + 1;
+    effect->vel.x += 1.0f / effect->vel.y;
+    if (effect->vel.x >= 1.0f) {
+        setPrimColor(effect->pos.x, effect->pos.y, effect->pos.z, alpha);
+        printUISprite(0.0f, 0.0f, 0.0f, 0.0f, 1, 320.0f, 240.0f, 0.0f, 0);
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8006854C.s")
+        effect->lifeTime += 1.0f / effect->duration;
+        if (effect->lifeTime >= 1.0f) {
+            Effect_Free(effect);
+        }
+    }
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8006863C.s")
+Effect* Effect_TypeP_Init(u8 colorR, u8 colorG, u8 colorB, s32 delay, s32 duration) {
+    Effect* effect;    
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80068874.s")
+    effect = Effect_Alloc(0, 0, &Effect_TypeP_Update);
+    if (effect == NULL) {
+        return effect;
+    }
+
+    effect->pos.x = colorR;
+    effect->pos.y = colorG;
+    effect->pos.z = colorB;
+    effect->duration = duration;
+    effect->vel.y = delay;
+    effect->vel.x = 0.0f;
+    effect->lifeTime = 0.0f;
+
+    return effect;
+}
+
+void Effect_TypeQ_Update(Effect* effect, Gfx** pGfxPos) {
+    f32 alpha = 255.0f - effect->lifeTime * 254.0f;
+
+    if (D_800F687C > 0) {
+        effect->vel.x += 1.0f / effect->vel.y;
+    }
+    if (effect->vel.x >= 1.0f) {
+        func_800610B8();
+        setPrimColor(effect->pos.x, effect->pos.y, effect->pos.z, alpha);
+        printUISprite(0.0f, 32.0f, 0.0f, 0.0f, 1, 320.0f, 176.0f, 0.0f, 0);
+
+        effect->lifeTime += 1.0f / effect->duration;
+        if (effect->lifeTime >= 1.0f) {
+            Effect_Free(effect);
+        }
+    }
+}
+
+Effect* Effect_TypeQ_Init(u8 colorR, u8 colorG, u8 colorB, s32 delay, s32 duration) {
+    Effect* effect;    
+
+    effect = Effect_Alloc(0, 0, &Effect_TypeQ_Update);
+    if (effect == NULL) {
+        return effect;
+    }
+
+    effect->pos.x = colorR;
+    effect->pos.y = colorG;
+    effect->pos.z = colorB;
+    effect->duration = duration;
+    effect->vel.y = delay;
+    effect->vel.x = 0.0f;
+    effect->lifeTime = 0.0f;
+
+    return effect;
+}
+
+void Effect_TypeR_Update(Effect* effect, Gfx** pGfxPos) {
+    f32 alpha = effect->lifeTime * 254.0f;
+
+    if (D_800F687C > 0) {
+        effect->vel.x += 1.0f / effect->vel.y;
+    }
+    if (effect->vel.x >= 1.0f) {
+        func_800610B8();
+        setPrimColor(effect->pos.x, effect->pos.y, effect->pos.z, alpha);
+        printUISprite(0.0f, 32.0f, 0.0f, 0.0f, 1, 320.0f, 176.0f, 0.0f, 0);
+
+        effect->lifeTime += 1.0f / effect->duration;
+        if (effect->lifeTime >= 1.0f) {
+            Effect_Free(effect);
+        }
+    }
+}
+
+Effect* Effect_TypeR_Init(u8 colorR, u8 colorG, u8 colorB, s32 delay, s32 duration) {
+    Effect* effect;    
+
+    effect = Effect_Alloc(0, 0, &Effect_TypeR_Update);
+    if (effect == NULL) {
+        return effect;
+    }
+
+    effect->pos.x = colorR;
+    effect->pos.y = colorG;
+    effect->pos.z = colorB;
+    effect->duration = duration;
+    effect->vel.y = delay;
+    effect->vel.x = 0.0f;
+    effect->lifeTime = 0.0f;
+
+    return effect;
+}
+
+void Effect_TypeS_Update(Effect* effect, Gfx** pGfxPos) {
+    f32 alpha = effect->lifeTime * 255.0f;
+
+    if (D_800F687C > 0) {
+        effect->vel.x += 1.0f / effect->vel.y;
+    }
+    if (effect->vel.x >= 1.0f) {
+        setPrimColor(effect->lifeTime * 255.0f, 255, 0, 255); // green to yellow
+        if (D_80176B78->unk0 == 1) {
+            printUISprite(32.0f, 200.0f, 0.0f, 0.0f, 1, 24.0f, 16.0f, 1, 204);
+        } else {
+            printUISprite(32.0f, 200.0f, 0.0f, 0.0f, 1, 24.0f, 16.0f, 0.0f, 204);
+        }
+        
+        if (D_800F687C > 0) {
+            effect->lifeTime += 1.0f / effect->duration;
+            if (effect->lifeTime >= 1.0f) {
+                effect->lifeTime = 1.0f;
+            }
+            if (effect->lifeTime < 0.0f) {
+                effect->lifeTime = 0.0f;
+            }
+        }
+    }
+}
+
+Effect* Effect_TypeS_Init(f32 delay, f32 duration) {
+    if (D_800FE1A0 == NULL) {
+        D_800FE1A0 = Effect_Alloc(0, 0, &Effect_TypeS_Update);
+        if (D_800FE1A0 == NULL) {
+            return D_800FE1A0;
+        }
+        D_800FE1A0->lifeTime = 0.0f;
+    }
+
+    D_800FE1A0->duration = duration;
+    D_800FE1A0->vel.y = delay;
+    D_800FE1A0->vel.x = 0.0f;
+
+    return D_800FE1A0;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80068908.s")
 
@@ -3307,10 +3401,10 @@ void func_800667C4(aa1*arg0, s32 arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80069734.s")
 
-void func_80069858(aa1* arg0, s32 arg1) {
-    func_80069858_temp_v0* temp_v0 = arg0->unk_38;
+void func_80069858(Effect* arg0, s32 arg1) {
+    func_80069858_temp_v0* temp_v0 = arg0->data;
     if (func_800836FC(temp_v0->unk0, temp_v0->unk4, temp_v0->unk8, temp_v0->unkC) == 1) {
-        aa1_Free(arg0);
+        Effect_Free(arg0);
     }
 }
 
@@ -3343,10 +3437,10 @@ void Bowling_CountPins(s32* pinsRemaining) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/Bowling_DrawScoreCard.s")
 
 void aa1_Bowling(f32 arg0, s32 arg1, s32 arg2) {
-    aa1* temp_v0 = aa1_Alloc(0, 8, Bowling_DrawScoreCard);
+    Effect* temp_v0 = Effect_Alloc(0, 8, Bowling_DrawScoreCard);
     UnkBowlingStruct* temp_v1;
     if (temp_v0 != 0) {
-        temp_v1 = temp_v0->unk_38;
+        temp_v1 = temp_v0->data;
         temp_v0->lifeTime = 0.0f;
         temp_v0->duration = arg0;
         temp_v1->unk_00 = arg1;
@@ -3531,8 +3625,8 @@ void FreePlayerEyes(s32 arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80072B1C.s")
 
 void func_80072D34(void) {
-    aa1* temp_v0;
-    temp_v0 = aa1_Alloc(0, 0, &func_80072B1C);
+    Effect* temp_v0;
+    temp_v0 = Effect_Alloc(0, 0, &func_80072B1C);
     if (temp_v0 != NULL) {
         temp_v0->spriteID = 1;
         temp_v0->lifeTime = 0.0f;
@@ -3544,7 +3638,7 @@ void func_80072D34(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80072D80.s")
 
 void func_80073090(void) {
-    aa1* temp_v0 = aa1_Alloc(0, 0, &func_80072D80);
+    Effect* temp_v0 = Effect_Alloc(0, 0, &func_80072D80);
     u8 s = 0xFF; 
     if (temp_v0 != 0) {
         D_800F0B54[0] = s;
@@ -3560,10 +3654,10 @@ void func_80073090(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/aa1_checkControllerRumble.s")
 
 void checkControllerRumble(void) {
-    aa1* temp_v0;
-    aa1* var_v1;
+    Effect* temp_v0;
+    Effect* var_v1;
 
-    temp_v0 = aa1_Alloc(0, 0, &aa1_checkControllerRumble);
+    temp_v0 = Effect_Alloc(0, 0, &aa1_checkControllerRumble);
     var_v1 = temp_v0;
     if (temp_v0 == NULL) {
         SetProcessType(GAME_MODE_BOOT);
@@ -3579,7 +3673,7 @@ void checkControllerRumble(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80073C3C.s")
 
 void func_80073FD8(void) {
-    aa1* temp_v0 = aa1_Alloc(0, 0, &func_80073C3C);
+    Effect* temp_v0 = Effect_Alloc(0, 0, &func_80073C3C);
     if (temp_v0 != 0) {
         temp_v0->spriteID = 0;
         temp_v0->pos.x = 0.0f;
@@ -3690,9 +3784,9 @@ void DrawTranslucentRectangle(f32 arg0, f32 arg1, f32 arg2, f32 arg3, u8 arg4) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80079FC4.s")
 
 void func_8007A25C(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4) {
-    aa1* temp_v0;
+    Effect* temp_v0;
 
-    temp_v0 = aa1_Alloc(0, 0, &func_80079FC4);
+    temp_v0 = Effect_Alloc(0, 0, &func_80079FC4);
     if (temp_v0 != NULL) {
         temp_v0->pos.x = arg0;
         temp_v0->pos.y = arg1;
@@ -3959,7 +4053,7 @@ s32 func_80084884(s32 arg0) {
     }
     func_80069734();
     Rumble_Tick();
-    func_800615D4(&arg0);
+    Effect_UpdateAll(&arg0);
     return arg0;
 }
 

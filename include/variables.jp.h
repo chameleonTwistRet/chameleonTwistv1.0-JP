@@ -17,9 +17,9 @@ extern Tongue* gTongueOnePointer;
 extern ContMain gContMain[MAXCONTROLLERS];
 extern s16 gTotalCarrots;
 extern unk0* D_801FFB84;
-extern s32 g_aa1_Count;
-extern aa1* g_aa1_head;
-extern aa1 D_80176F00;
+extern s32 gEffectListCount;
+extern Effect* gEffectListHead;
+extern Effect gEffectList;
 extern s32 D_800F68A8;              // s32 (but really only 1bit) is controller input allowed.
 extern s32 sDebugInt;
 extern s32 D_800F06EC;

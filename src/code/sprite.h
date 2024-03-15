@@ -27,6 +27,74 @@ typedef struct SpriteListing {
     /* 0x74 */ char unk_74[4];
 } SpriteListing; //sizeof 0x78
 
+typedef struct Effect_HealthBar_Data {
+    s32* curHPPtr;
+    s32 mode;
+    f32 movePhase;
+    f32 idleTime;
+    s32 lastHP;
+} Effect_HealthBar_Data;
+
+typedef struct Effect_TypeC_Data {
+    RGBA32 color;
+    s32 spriteID;
+    f32 sizeX;
+    f32 sizeY;
+} Effect_TypeC_Data;
+
+typedef struct Effect_TypeD_Data {
+    RGBA32 color;
+    s32 unk_04;
+    f32 sizeX;
+    f32 sizeY;
+} Effect_TypeD_Data;
+
+typedef struct Effect_TypeE_Data {
+    Vec3f dir;
+    f32 sizeX;
+    f32 sizeY;
+    u32 colorR;
+    u32 colorG;
+    u32 colorB;
+    u32 colorA;
+} Effect_TypeE_Data;
+
+typedef struct Effect_TypeF_Data {
+    f32 sizeX;
+    f32 sizeY;
+    u32 colorR;
+    u32 colorG;
+    u32 colorB;
+    u32 colorA;
+} Effect_TypeF_Data;
+
+typedef struct Effect_TypeG_Data {
+    Mtx mtx;
+    Vec3f scale;
+    Gfx* dlist;
+} Effect_TypeG_Data;
+
+typedef struct Effect_TypeH_Data {
+    Mtx mtx[2];
+    s32 mtxIndex;
+    Vec3f scale;
+    Gfx* dlist;
+    f32 angle;
+} Effect_TypeH_Data;
+
+typedef struct Effect_TypeI_Data {
+    f32* ptrPosX;
+    f32* ptrPosY;
+    f32* ptrPosZ;
+    f32 scale;
+} Effect_TypeI_Data;
+
+typedef struct Effect_TypeM_Data {
+    Mtx mtx;
+    Gfx* dlist;
+    s32* finish;    
+} Effect_TypeM_Data;
+
 typedef struct UnkBowlingStruct {
     /* 0x00 */ s32 unk_00;
     /* 0x04 */ s32 unk_04;
@@ -84,15 +152,16 @@ extern u32 D_80108790;
 extern s32 D_800FE188;
 extern Gfx D_1013F78[];
 extern Gfx D_10149D0[];
+extern Effect* D_800FE1A0;
 
 /* functions */
 void func_80055C04(void);
-aa1* func_80062D10(s32, s32, s32*, s32*, u32, s32);
-aa1* func_800634D4(s32, s32, s32*, s32*, u32, s32);
+Effect* func_80062D10(s32, s32, s32*, s32*, u32, s32);
+Effect* func_800634D4(s32, s32, s32*, s32*, u32, s32);
 void func_8007AF80(void);
 void ResetEyeParams(void);
 void Rumble_Tick(void);
-void func_800615D4(s32*);
+void Effect_UpdateAll(s32*);
 void func_80069734(void);
 void func_8007CDEC(void);
 f32 func_80056104(f32, f32);
