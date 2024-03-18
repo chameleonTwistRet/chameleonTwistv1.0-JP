@@ -95,6 +95,17 @@ typedef struct Effect_TypeM_Data {
     /* 0x44 */ s32* finish;    
 } Effect_TypeM_Data; //sizeof 0x48
 
+typedef struct Effect_TypeT_Data {
+    /* 0x00 */ f32 unk0;
+    /* 0x04 */ f32 unk4;
+    /* 0x08 */ s32 unk8;
+    /* 0x0C */ s32 unkC;
+} Effect_TypeT_Data; //sizeof 0x10
+
+typedef struct Effect_TypeV_Data {
+    /* 0x00 */ RGBA32 color;
+} Effect_TypeV_Data; //sizeof 0x4
+
 typedef struct UnkBowlingStruct {
     /* 0x00 */ s32 unk_00;
     /* 0x04 */ s32 unk_04;

@@ -3401,20 +3401,100 @@ Effect* Effect_TypeS_Init(f32 delay, f32 duration) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80069734.s")
 
-void func_80069858(Effect* arg0, s32 arg1) {
-    func_80069858_temp_v0* temp_v0 = arg0->data;
-    if (func_800836FC(temp_v0->unk0, temp_v0->unk4, temp_v0->unk8, temp_v0->unkC) == 1) {
-        Effect_Free(arg0);
+void Effect_TypeT_Update(Effect* effect, Gfx** pGfxPos) {
+    Effect_TypeT_Data* data = effect->data;
+
+    if (func_800836FC(data->unk0, data->unk4, data->unk8, data->unkC) == 1) {
+        Effect_Free(effect);
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_800698A4.s")
+Effect* Effect_TypeT_Init(f32 arg0, f32 arg1, s32 arg2, s32 arg3) {
+    Effect* effect;
+    Effect_TypeT_Data* data;
+
+    effect = Effect_Alloc(0, sizeof(Effect_TypeT_Data), &Effect_TypeT_Update);
+    if (effect == NULL) {
+        return effect;
+    }
+
+    data = effect->data;
+    data->unk0 = arg0;
+    data->unk4 = arg1;
+    data->unk8 = arg2;
+    data->unkC = arg3;
+
+    return effect;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80069918.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8006A134.s")
+void Effect_TypeU_Update(Effect* effect, Gfx** pGfxPos) {
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8006A69C.s")
+    func_800610B8();
+    switch(effect->spriteID) {
+        case 0:
+            setPrimColor(255, 255, 150, 80.0f * sinf(effect->lifeTime * 3.14156));
+            break;
+        case 1:
+            setPrimColor(150, 255, 255, 80.0f * sinf(effect->lifeTime * 3.14156));
+            break;
+        case 2:
+            setPrimColor(255, 200, 255, 80.0f * sinf(effect->lifeTime * 3.14156));
+            break;
+        case 3:
+            setPrimColor(255, 220, 200, 80.0f * sinf(effect->lifeTime * 3.14156));
+            break;
+        case 4:
+            setPrimColor(200, 255, 220, 80.0f * sinf(effect->lifeTime * 3.14156));
+            break;
+        case 5:
+            setPrimColor(200, 255, 255, 140);
+            break;
+        case 6:
+            setPrimColor(200, 200, 255, 140);
+            break;
+        case 7:
+            setPrimColor(255, 200, 255, 140);
+            break;
+        case 8:
+            setPrimColor(255, 255, 200, 140);
+            break;
+        default:
+            setPrimColor(200, 255, 200, 140);
+            break;
+    }
+
+    func_8005747C(effect->pos.x, effect->pos.y, effect->pos.z, effect->sizeX, effect->sizeY, effect->lifeTime, 215);
+    effect->pos.x += effect->vel.x;
+    effect->pos.y += effect->vel.y;
+    effect->pos.z += effect->vel.z;
+    effect->lifeTime += 1.0f / effect->duration;
+    if (effect->lifeTime >= 1) {
+        Effect_Free(effect);
+    }
+}
+
+void Effect_TypeU_Init(f32 posX, f32 posY, f32 posZ, f32 targetX, f32 targetY, f32 targetZ, f32 duration, s32 colorMode, f32 sizeX, f32 sizeY) {
+    Effect* effect;
+
+    effect = Effect_Alloc(0, 0, &Effect_TypeU_Update);
+    if (effect == NULL) {
+        return;
+    }
+
+    effect->pos.x = posX;
+    effect->pos.y = posY;
+    effect->pos.z = posZ;
+    effect->vel.x = (targetX - posX) / duration;
+    effect->vel.y = (targetY - posY) / duration;
+    effect->vel.z = (targetZ - posZ) / duration;
+    effect->spriteID = colorMode;
+    effect->sizeX = sizeX;
+    effect->sizeY = sizeY;
+    effect->duration = duration;
+    effect->lifeTime = 0.0f;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/Bowling_ResetScore.s")
 
@@ -3469,6 +3549,19 @@ void UnlockEyeChange(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8006C368.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8006C410.s")
+void func_8006C410(Effect* effect, Gfx** pGfxPos) {
+    Effect_TypeV_Data* data = (Effect_TypeV_Data*)effect->data;
+    f32 sp50 = sinf(effect->lifeTime * 720.0f * (3.14159265359 / 180)) * 1000.0f;
+    f32 sp4C = cosf(effect->lifeTime * 720.0f * (3.14159265359 / 180)) * 1000.0f;
+    f32 sp3C;
+
+    if (effect->numParts == 0) {
+        sp3C = 255.0f;
+    } else {
+        sp3C = effect->numParts * (1 - effect->lifeTime);
+    }
+
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8006C7F4.s")
 

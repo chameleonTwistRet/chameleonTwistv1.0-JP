@@ -43,10 +43,10 @@ void func_80025EF0(PlayerActor* arg0, Tongue* arg1, s32 arg2) {
     if (D_80174980 == 5) {
         func_80027240(&D_800FF8D4, gSpriteListings[207].bitmapP, gTimer / 2, gSpriteListings[207].tileCountY);
         if (gTimer == 20) {
-            func_800698A4(22.0f, 154.0f, 60, D_800F686C);
+            Effect_TypeT_Init(22.0f, 154.0f, 60, D_800F686C);
         }
         if (gTimer == 120) {
-            func_800698A4(22.0f, 154.0f, 60, D_800F6870);
+            Effect_TypeT_Init(22.0f, 154.0f, 60, D_800F6870);
         }
     } else if (arg0->playerHURTSTATE == 4) {
         func_80027138(&D_1045BF4, &sp11C, &sp118, &sp114);
