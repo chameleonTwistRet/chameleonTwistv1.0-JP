@@ -699,8 +699,8 @@ typedef struct EffectPart {
 } EffectPart; //sizeof 0x28
 
 typedef struct Effect {
-    /* 0x00 */ s32 spriteID;
-    /* 0x04 */ u8 numParts;
+    /* 0x00 */ s32 spriteID; // TODO union
+    /* 0x04 */ u8 numParts; // TODO union
     /* 0x05 */ u8 unk5;
     /* 0x06 */ s8 unk6;
     /* 0x07 */ s8 unk7;

@@ -1072,10 +1072,10 @@ void pickup_collide_func(s32 actorIndex) {
     actor->actorID = 0;
     
     if (var_s0 == 0) {
-        InitPlayerEyeController(gSelectedCharacters[gCurrentActivePlayerPointer->playerID], 2, 50.0f, 0);
+        Effect_PlayerEyes_Init(gSelectedCharacters[gCurrentActivePlayerPointer->playerID], 2, 50.0f, 0);
         return;
     }
-    InitPlayerEyeController(gSelectedCharacters[gCurrentActivePlayerPointer->playerID], 1, var_s0, 0);
+    Effect_PlayerEyes_Init(gSelectedCharacters[gCurrentActivePlayerPointer->playerID], 1, var_s0, 0);
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80034104.s")

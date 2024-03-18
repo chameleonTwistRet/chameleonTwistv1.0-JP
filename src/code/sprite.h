@@ -111,6 +111,18 @@ typedef struct UnkBowlingStruct {
     /* 0x04 */ s32 unk_04;
 } UnkBowlingStruct; //sizeof 0x8
 
+typedef struct struct_800FE4E4 {
+    /* 0x0 */ u8 unk_00;
+    /* 0x1 */ u8 unk_01;
+} struct_800FE4E4; //sizeof 0x2
+
+typedef struct struct_800FE4EC {
+    u8* unk_00;
+    u8* unk_04;
+    u8* unk_08;
+    u8* unk_0C;
+} struct_800FE4EC;
+
 /* extern symbols */
 extern s32 D_80176960[];
 extern s32 D_80176980[];
@@ -164,6 +176,11 @@ extern s32 D_800FE188;
 extern Gfx D_1013F78[];
 extern Gfx D_10149D0[];
 extern Effect* D_800FE1A0;
+extern s32 Battle_GameType;
+extern struct_800FE4E4 D_800FE4E4[];
+extern f32 D_800FE6F4[];
+extern u8 D_800FE704[];
+extern struct_800FE4EC D_800FE4EC[];
 
 /* functions */
 void func_80055C04(void);

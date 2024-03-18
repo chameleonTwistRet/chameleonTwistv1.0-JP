@@ -3548,26 +3548,119 @@ void UnlockEyeChange(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8006C368.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8006C410.s")
-void func_8006C410(Effect* effect, Gfx** pGfxPos) {
+void Effect_TypeV_Init(f32 posX, f32 posY, f32 posZ, f32 velX, f32 velY, f32 velZ, f32 size, s32 duration, u8 isMain, u8 opacity);
+
+void Effect_TypeV_Update(Effect* effect, Gfx** pGfxPos) {
+    Mtx mtx;
     Effect_TypeV_Data* data = (Effect_TypeV_Data*)effect->data;
-    f32 sp50 = sinf(effect->lifeTime * 720.0f * (3.14159265359 / 180)) * 1000.0f;
-    f32 sp4C = cosf(effect->lifeTime * 720.0f * (3.14159265359 / 180)) * 1000.0f;
-    f32 sp3C;
+    f32 dirX = sinf(effect->lifeTime * 720.0f * (3.1415926535892 / 180)) * 1000.0f;
+    f32 dirZ = cosf(effect->lifeTime * 720.0f * (3.1415926535892 / 180)) * 1000.0f;
+    f32 spawnX, spawnY, spawnZ;
+    f32 alpha;
 
     if (effect->numParts == 0) {
-        sp3C = 255.0f;
+        alpha = 255.0f;
     } else {
-        sp3C = effect->numParts * (1 - effect->lifeTime);
+        alpha = effect->numParts * (1 - effect->lifeTime);
+    }
+
+    if (D_800F687C > 0) {
+        data->color.r = RANDOM(100, 255);
+        data->color.g = RANDOM(100, 255);
+        data->color.b = RANDOM(100, 255);
+    }
+    setPrimColor(data->color.r, data->color.g, data->color.b, alpha);
+    guAlign(&mtx, 0.0f, dirX, 100000000.0f, dirZ);
+    func_80058BE4(&mtx, effect->pos.x, effect->pos.y, effect->pos.z, effect->sizeX, effect->sizeX, 0.0f, 72);
+
+    if (D_800F687C > 0) {
+        effect->lifeTime += effect->duration;
+
+        effect->pos.x += effect->vel.x;
+        effect->pos.y += effect->vel.y;
+        effect->pos.z += effect->vel.z;
+
+        spawnX = effect->pos.x + RANDOM(-20, 20);
+        spawnY = effect->pos.y + RANDOM(-20, 20);
+        spawnZ = effect->pos.z + RANDOM(-20, 20);
+        if (effect->unk5 == TRUE && (gTimer % 4) == 0) {
+            Effect_TypeV_Init(spawnX, spawnY, spawnZ, 0.0f, 0.0f, 0.0f, 32.0f, 10, FALSE, 144);
+        }
+
+        if (effect->lifeTime >= 1.0f) {
+            Effect_Free(effect);
+        }
+    }
+}
+
+void Effect_TypeV_Init(f32 posX, f32 posY, f32 posZ, f32 velX, f32 velY, f32 velZ, f32 size, s32 duration, u8 isMain, u8 opacity) {
+    Effect* effect;
+    Effect_TypeV_Data* data;
+
+    effect = Effect_Alloc(0, sizeof(Effect_TypeV_Data), &Effect_TypeV_Update);
+    if (effect == NULL) {
+        return;
+    }
+
+    data = (Effect_TypeV_Data*)effect->data;
+    data->color.r = data->color.g = data->color.b = data->color.a = 100;
+
+    effect->sizeX = size;
+    effect->numParts = opacity;
+    effect->unk5 = isMain;
+    effect->pos.x = posX;
+    effect->pos.y = posY;
+    effect->pos.z = posZ;
+    effect->vel.x = velX;
+    effect->vel.y = velY;
+    effect->vel.z = velZ;
+    effect->lifeTime = 0.0f;
+    effect->duration = 1.0f / duration;    
+}
+
+void Effect_TypeW_Update(Effect* effect, Gfx** pGfxPos) {
+    s32 i;
+
+    if (D_800F687C > 0) {
+        if (effect->unk5 == FALSE) {
+            for (i = 0; i < effect->spriteID; i++) {
+                f32 velX = RANDOM(-5, 5);
+                f32 velY = RANDOM(-5, 5);
+                f32 velZ = RANDOM(-5, 5);
+                Effect_TypeV_Init(effect->pos.x, effect->pos.y, effect->pos.z, velX, velY, velZ, effect->sizeX, effect->sizeY, TRUE, 0);
+            }
+            effect->unk5 = TRUE;
+        }        
+
+        effect->lifeTime += effect->duration;
+        if (effect->lifeTime >= 1.0f) {
+            FreeSprite(0x48);
+            Effect_Free(effect);
+        }
     }
 
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8006C7F4.s")
+void Effect_TypeW_Init(f32 posX, f32 posY, f32 posZ, f32 size, s32 duration, s32 arg5) {
+    Effect* effect;
+    Effect_TypeV_Data* data;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8006C8C0.s")
+    effect = Effect_Alloc(0, 0, &Effect_TypeW_Update);
+    if (effect == NULL) {
+        return;
+    }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8006CA88.s")
+    effect->spriteID = arg5;
+    effect->unk5 = FALSE;    
+    effect->pos.x = posX;
+    effect->pos.y = posY;
+    effect->pos.z = posZ;
+    effect->sizeX = size;
+    effect->sizeY = duration;    
+    effect->lifeTime = 0.0f;
+    effect->duration = 1.0f / (duration + 20);
+    LoadSprite(0x48);
+}
 
 void LoadPlayerEyes(s32 arg0) {
     s32 i;
@@ -3593,13 +3686,177 @@ void FreePlayerEyes(s32 arg0) {
     gLockContextEyes = 255;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/SetEyeTexture.s")
+void SetEyeTexture(u8* dest, u8* src, s32 size) {
+    u8* destP;
+    s32 i;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/SetPlayerEyes.s")
+    if (!IS_SEGMENTED(dest)) {
+        destP = dest;
+    } else {
+        destP = SEGMENTED_TO_VIRTUAL(dest);
+    }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/aa1_PlayerEyeControl.s")
+    for (i = 0; i < size; i++) {
+        *destP++ = *src++;
+    }
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/InitPlayerEyeController.s")
+void SetPlayerEyes(s32 arg0, s32 arg1, s32 arg2) {
+    SpriteListing* sprite;
+    struct_800FE4EC* s1;
+    s32 size;
+
+    switch (arg1) {
+        case 0:
+            sprite = &gSpriteListings[arg0];
+            s1 = &D_800FE4EC[arg2];
+            size = sprite->width * sprite->height * sprite->tileCountX * sprite->tileCountY;
+            SetEyeTexture(s1->unk_00, sprite->bitmapP, size);
+            SetEyeTexture(s1->unk_08, sprite->palletteP, 0x200);
+            size = sprite[5].height * sprite[5].tileCountX * sprite[5].tileCountY * sprite[5].width;
+            SetEyeTexture(s1->unk_04, sprite[5].bitmapP, size);
+            SetEyeTexture(s1->unk_0C, sprite[5].palletteP, 0x200);
+            break;
+        case 1:
+            sprite = &gSpriteListings[arg0];
+            s1 = &D_800FE4EC[arg2];
+            size = sprite->width * sprite->height * sprite->tileCountX * sprite->tileCountY;
+            SetEyeTexture(s1->unk_00, sprite->bitmapP, size);
+            SetEyeTexture(s1->unk_08, sprite->palletteP, 0x200);
+            break;
+        case 2:
+            sprite = &gSpriteListings[arg0];
+            s1 = &D_800FE4EC[arg2];
+            size = sprite[5].height * sprite[5].tileCountX * sprite[5].tileCountY * sprite[5].width;
+            SetEyeTexture(s1->unk_04, sprite[5].bitmapP, size);
+            SetEyeTexture(s1->unk_0C, sprite[5].palletteP, 0x200);
+            break;
+    }
+}
+
+void Effect_PlayerEyes_Update(Effect* effect, Gfx** pGfxPos) {
+
+    if (gDontChangeEyes == 1) {
+        Effect_Free(effect);
+        return;
+    }
+
+    if (D_800FE704[effect->unk8] == 1) {
+        effect->pos.x = 2.0f;
+        effect->lifeTime = 0.0f;
+        effect->duration = D_800FE6F4[effect->unk8];
+        D_800FE704[effect->unk8] = 0;
+    }
+
+    if (D_800F687C > 0) {
+        effect->lifeTime += effect->duration;
+
+        switch ((s32)effect->pos.x) {
+            case 0:
+                if (effect->lifeTime > 0.0f && effect->lifeTime <= 0.5f) {
+                    SetPlayerEyes(effect->spriteID, effect->pos.y, effect->pos.z);
+                } else if (effect->lifeTime > 0.5f && effect->lifeTime <= 0.7f) {
+                    SetPlayerEyes(effect->spriteID + 1, effect->pos.y, effect->pos.z);
+                } else if (effect->lifeTime > 0.7f && effect->lifeTime <= 0.8f) {
+                    SetPlayerEyes(effect->spriteID + 2, effect->pos.y, effect->pos.z);
+                } else if (effect->lifeTime > 0.8f && effect->lifeTime <= 1.0f) {
+                    SetPlayerEyes(effect->spriteID, effect->pos.y, effect->pos.z);
+                }
+                break;
+            case 1:
+                if (effect->lifeTime >= 1.0f) {
+                    SetPlayerEyes(effect->spriteID, effect->pos.y, effect->pos.z);
+                } else {
+                    SetPlayerEyes(effect->spriteID + 3, effect->pos.y, effect->pos.z);
+                }
+                break;
+            case 2:
+                if (effect->lifeTime >= 1.0f) {
+                    SetPlayerEyes(effect->spriteID, effect->pos.y, effect->pos.z);
+                } else {
+                    SetPlayerEyes(effect->spriteID + 4, effect->pos.y, effect->pos.z);
+                }
+                break;
+        }
+
+        if (effect->lifeTime >= 1.0f) {
+            if ((s32)effect->pos.y == 0) {
+                D_800FE4E4[effect->unk8].unk_00 = 0;
+                D_800FE4E4[effect->unk8].unk_01 = 0;
+            } else if ((s32)effect->pos.y == 1) {
+                D_800FE4E4[effect->unk8].unk_00 = 0;
+            } else if ((s32)effect->pos.y == 2) {
+                D_800FE4E4[effect->unk8].unk_01 = 0;
+            }
+            Effect_Free(effect);
+        }
+    }
+}
+
+u32 Effect_PlayerEyes_Init(s32 charID, s32 arg1, f32 duration, s32 arg3) {
+    s32 arg0;
+    Effect* effect;    
+
+    if (gDontChangeEyes == TRUE) {
+        return FALSE;
+    }
+    if (gLockContextEyes) {
+        return FALSE;
+    }
+
+    if (Battle_GameType == 0) {
+        arg0 = 0;
+    } else {
+        arg0 = charID;
+    }
+
+    if (arg3 == 0 && (D_800FE4E4[arg0].unk_00 == 1 || D_800FE4E4[charID].unk_01 == 1)) {
+        if (arg1 == 2) {
+            D_800FE6F4[arg0] = 1.0f / duration;
+            D_800FE704[arg0] = 1;
+        }
+        return FALSE;
+    }
+    else if (arg3 == 1 && D_800FE4E4[arg0].unk_00 == 1) {
+        if (arg1 == 2) {
+            D_800FE6F4[arg0] = 1.0f / duration;
+            D_800FE704[arg0] = 1;
+        }
+        return FALSE;
+    }
+    else if (arg3 == 2 && D_800FE4E4[arg0].unk_01 == 1) {
+        if (arg1 == 2) {
+            D_800FE6F4[arg0] = 1.0f / duration;
+            D_800FE704[arg0] = 1;
+        }
+        return FALSE;
+    }
+
+    effect = Effect_Alloc(0, 0, &Effect_PlayerEyes_Update);
+    if (effect == NULL && arg0 < 4) {
+        return FALSE;
+    }
+
+    if (arg3 == 0) {
+        D_800FE4E4[arg0].unk_00 = 1;
+        D_800FE4E4[arg0].unk_01 = 1;
+    } else if (arg3 == 1) {
+        D_800FE4E4[arg0].unk_00 = 1;
+    } else if (arg3 == 2) {
+        D_800FE4E4[arg0].unk_01 = 1;
+    } 
+
+    if (TRUE) { // TODO fake match ??
+        effect->spriteID = 114 + charID * 10;
+        effect->unk8 = arg0;    
+        effect->pos.x = arg1;
+        effect->pos.y = arg3;
+        effect->pos.z = charID;        
+        effect->lifeTime = 0.0f;    
+        effect->duration = 1.0f / duration;
+    }
+    return TRUE;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/SetPlayerContextEyes.s")
 

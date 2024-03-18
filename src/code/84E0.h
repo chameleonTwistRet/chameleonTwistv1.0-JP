@@ -51,7 +51,6 @@ extern f32 D_8010B28C;
 extern f32 D_8010B290;
 extern f32 D_8010B294;
 extern s32 D_801749A8;
-extern s32 Battle_GameType;
 extern s32 D_80236974;
 
 extern f32 D_8010BC70;

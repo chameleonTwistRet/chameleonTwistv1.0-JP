@@ -78,7 +78,7 @@ extern u8 D_800FE190;
 extern u8 D_800FE194;
 extern u8 D_800FE198;
 extern s32 D_800FE19C;
-extern s8 gDontChangeEyes;
+extern u8 gDontChangeEyes;
 extern u8 gLockContextEyes;
 extern s32 D_800FEA30;
 extern s32 D_800FEA34;
