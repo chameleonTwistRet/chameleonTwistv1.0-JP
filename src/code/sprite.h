@@ -123,6 +123,28 @@ typedef struct struct_800FE4EC {
     u8* unk_0C;
 } struct_800FE4EC;
 
+typedef struct struct_800FE54C {
+    u8* unk_00;
+    u8* unk_04;
+} struct_800FE54C;
+
+typedef struct Effect_TypeX_Data {
+    /* 0x00 */ Vec3f unk_00;
+    /* 0x0C */ Vec3f unk_0C;
+} Effect_TypeX_Data; //sizeof 0x18
+
+typedef struct Effect_TypeZ_Data {
+    /* 0x00 */ Vec3f pos;
+    /* 0x0C */ f32 scale;
+    /* 0x10 */ s32 angle;
+    /* 0x14 */ RGBA32 color;
+} Effect_TypeZ_Data; //sizeof 0x18
+
+typedef struct Effect_TypeAA_Data {
+    /* 0x00 */ Vec3f pos;
+    /* 0x0C */ RGBA32 color;
+} Effect_TypeAA_Data; //sizeof 0x10
+
 /* extern symbols */
 extern s32 D_80176960[];
 extern s32 D_80176980[];
@@ -181,6 +203,7 @@ extern struct_800FE4E4 D_800FE4E4[];
 extern f32 D_800FE6F4[];
 extern u8 D_800FE704[];
 extern struct_800FE4EC D_800FE4EC[];
+extern struct_800FE54C D_800FE54C[];
 
 /* functions */
 void func_80055C04(void);

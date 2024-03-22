@@ -3860,29 +3860,329 @@ u32 Effect_PlayerEyes_Init(s32 charID, s32 arg1, f32 duration, s32 arg3) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/SetPlayerContextEyes.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/aa1_BossDeadEyes.s")
+void SetBossDeadEyes(s32);
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/loadBossDeadEyes.s")
+void Effect_BossDeadEyes_Update(Effect* effect, Gfx** pGfxPos) {
+    SetBossDeadEyes(effect->spriteID);
+    switch(effect->spriteID) {
+        case 75:
+            FreeSprite(202);
+            break;
+        case 7:
+            FreeSprite(201);
+            break;        
+        case 30:
+            FreeSprite(203);
+            break;        
+    }
+    Effect_Free(effect);
+}
 
+void Effect_BossDeadEyes_Init(s32 arg0) {
+    Effect* effect;
+    s32 ret;
+
+    switch(arg0) {
+        case 75:
+            ret = LoadSprite(202);
+            break;
+        case 7:
+            ret = LoadSprite(201);
+            break;        
+        case 30:
+            ret = LoadSprite(203);
+            break;
+        default:
+            return;
+    }
+    if (ret == 0) {
+        effect = Effect_Alloc(0, 0, &Effect_BossDeadEyes_Update);
+        if (effect == NULL) {
+            return;
+        }
+
+        effect->spriteID = arg0;
+    }
+}
+
+#ifdef NON_MATCHING
+void SetBossDeadEyes(s32 arg0) {
+    s32 sp28;
+    s32 sp24;
+    s32 size;
+    SpriteListing* sp1C;
+    struct_800FE54C* sp18;
+    s32 sp20 = 1;    
+
+    switch(arg0) {
+        case 75:
+            sp24 = 202;
+            sp20 = 2;
+            sp28 = 0;
+            break;
+        case 7:
+            sp24 = 201;
+            sp28 = 1;            
+            break;       
+        case 30:
+            sp24 = 203;
+            sp28 = 2;
+            break;
+    }
+
+    sp1C = &gSpriteListings[sp24];
+    sp18 = &D_800FE54C[sp28];
+    size = sp1C->width * sp1C->height * sp1C->tileCountX * sp1C->tileCountY / sp20;
+    SetEyeTexture(sp18->unk_00, sp1C->bitmapP, size);
+    SetEyeTexture(sp18->unk_04, sp1C->palletteP, 0x200);
+}
+#else
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/SetBossDeadEyes.s")
+#endif
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8006D844.s")
+void Effect_TypeX_Update(Effect* effect, Gfx** pGfxPos) {
+    Effect_TypeX_Data* data = (Effect_TypeX_Data*)effect->data;
+    f32 f2;
+    f32 sp34;
+    f32 sinAngle;
+    f32 q;    
+    f32 unused2[2];
+    u8 temp;
+    
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8006DAE4.s")
+    sp34 = cosf(effect->lifeTime * 1.57078);
+    sinAngle = sinf(effect->lifeTime * 1.57078);
+    q = 128.0f * sinAngle;
+    if (D_800F687C > 0) {
+        data->unk_00.x = effect->pos.x + effect->vel.x * sinAngle;
+        data->unk_00.y = effect->pos.y + effect->vel.y * sinAngle;
+        data->unk_00.z = effect->pos.z + effect->vel.z * sinAngle;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8006DB80.s")
+        effect->lifeTime += effect->duration;
+        if (effect->lifeTime >= 1.0f) {
+            Effect_Free(effect);
+            return;
+        }
+    }
+    f2 = ABS2(effect->lifeTime - 0.5f);
+    temp = f2 * 255.0f;
+    setPrimColor(255.0f * sp34, 255.0f * sp34, 255.0f * sp34, 255 - temp);
+    func_8005747C(data->unk_00.x, data->unk_00.y, data->unk_00.z, q, q, 0.0f, 0x4A);
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8006DCC0.s")
+void Effect_TypeX_Init(f32 posX, f32 posY, f32 posZ, f32 velX, f32 velY, f32 velZ, f32 duration) {
+    Effect* effect;
+    Effect_TypeX_Data* data;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8006DDCC.s")
+    effect = Effect_Alloc(0, sizeof(Effect_TypeX_Data), &Effect_TypeX_Update);
+    if (effect == NULL) {
+        return;
+    }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8006DE58.s")
+    data = (Effect_TypeX_Data*)effect->data;
+    data->unk_00.x = posX;
+    data->unk_00.y = posY;
+    data->unk_00.z = posZ;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8006E0A4.s")
+    effect->pos.x = posX;
+    effect->pos.y = posY;
+    effect->pos.z = posZ;
+    effect->vel.x = velX;
+    effect->vel.y = velY;
+    effect->vel.z = velZ;
+    effect->lifeTime = 0.0f;
+    effect->duration = 1.0f / duration;    
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8006E16C.s")
+void Effect_TypeX_Create(f32 arg0, f32 arg1, f32 arg2, f32 arg3, s32 arg4) {
+    f32 unused;
+    f32 angle;
+    s32 i;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8006E3A8.s")
+    for (angle = 0.0f, i = 0; i < arg4; angle += 360.0f / arg4, i++) {
+        f32 x1 = sinf(angle * 0.01745329251994) * arg3;
+        f32 z1 = cosf(angle * 0.01745329251994) * arg3;
+        Effect_TypeX_Init(arg0, arg1, arg2, x1, -20.0f, z1, RANDOM(10, 15));
+    }
+}
+
+void Effect_TypeY_Update(Effect* effect, Gfx** pGfxPos) {
+    f32 nv;
+    f32 scaleY = effect->vel.y;
+
+    if (D_800F687C > 0 && (gTimer % 5) == 0) {        
+        f32 f2 = ABS2(effect->lifeTime - 0.5f);
+        nv = f2 * scaleY + effect->vel.y;
+        Effect_TypeH_Init(effect->pos.x, effect->pos.y, effect->pos.z, 0.0f, 0.0f, 0.0f, effect->vel.x, nv, effect->vel.z, 90.0f, 12, 0);
+        if (effect->lifeTime >= 1.0f) {
+            Effect_Free(effect);
+            return;
+        }
+        effect->lifeTime += effect->duration;
+    }
+}
+
+void Effect_TypeY_Init(f32 posX, f32 posY, f32 posZ, f32 scaleX, f32 scaleY, f32 scaleZ, f32 duration) {
+    Effect* effect;
+
+    effect = Effect_Alloc(0, 0, &Effect_TypeY_Update);
+    if (effect == NULL) {
+        return;
+    }
+
+    effect->pos.x = posX;
+    effect->pos.y = posY;
+    effect->pos.z = posZ;
+    effect->vel.x = scaleX;
+    effect->vel.y = scaleY;
+    effect->vel.z = scaleZ;
+    effect->lifeTime = 0.0f;
+    effect->duration = 1.0f / duration;    
+}
+
+void Effect_TypeZ_Update(Effect* effect, Gfx** pGfxPos) {
+    Mtx mtx;
+    Effect_TypeZ_Data* data = (Effect_TypeZ_Data*)effect->data;
+    f32 sp40 = 255.0f;
+    f32 f0;
+
+    f0 = sinf(effect->lifeTime * 1.57078);
+
+    if (D_800F687C > 0) {
+        data->angle += 30;
+        data->pos.x = effect->pos.x + effect->vel.x * effect->lifeTime;
+        data->pos.y = effect->pos.y + effect->vel.y * f0;
+        data->pos.z = effect->pos.z + effect->vel.z * effect->lifeTime;
+
+        effect->lifeTime += effect->duration;
+        if (effect->lifeTime > 0.65f) {
+            sp40 = (gTimer % 2) * 255;
+        }
+
+        if (data->angle >= 360) {
+            data->angle -= 360;
+        }
+
+        if (effect->lifeTime >= 1.0f) {
+            Effect_Free(effect);
+            return;
+        }
+    }
+
+    setPrimColor(data->color.r, data->color.g, data->color.b, sp40);
+    guRotate(&mtx, data->angle, 1.0f, 1.0f, 1.0f);
+    func_80058BE4(&mtx, data->pos.x, data->pos.y, data->pos.z, data->scale, data->scale, 0.0f, 0);
+}
+
+void Effect_TypeZ_Init(f32 posX, f32 posY, f32 posZ, f32 arg3, f32 arg4, f32 arg5, f32 arg6, f32 duration, s32 arg8, u8 arg9, u8 argA, u8 argB) {
+    Effect* effect;
+    Effect_TypeZ_Data* data;
+
+    effect = Effect_Alloc(0, sizeof(Effect_TypeZ_Data), &Effect_TypeZ_Update);
+    if (effect == NULL) {
+        return;
+    }
+
+    data = (Effect_TypeZ_Data*)effect->data;
+    data->pos.x = posX;
+    data->pos.y = posY;
+    data->pos.z = posZ;
+    data->angle = 0;
+    data->scale = arg6;
+    data->color.r = arg9;
+    data->color.g = argA;
+    data->color.b = argB;
+
+    effect->spriteID = arg8;
+    effect->pos.x = posX;
+    effect->pos.y = posY;
+    effect->pos.z = posZ;    
+    effect->vel.x = arg3;
+    effect->vel.y = arg4;
+    effect->vel.z = arg5;
+    effect->lifeTime = 0.0f;
+    effect->duration = 1.0f / duration;    
+}
+
+void Effect_TypeZ_Create(f32 posX, f32 posY, f32 posZ, f32 arg3, f32 arg4, s32 arg5) {
+    f32 angle;
+    s32 i;
+    f32 delta;
+    f32 x1, y1, z1;
+    u8 r,g,b;    
+
+    if (Battle_GameType != 0 || gCurrentStage == 8) {
+        return;
+    }   
+
+    delta = 360.0f / arg5;
+    for (angle = 0.0f, i = 0; i < arg5; angle += delta, i++) {
+        switch(i % 4) {
+            case 0:
+                r = 255;
+                g = 20;
+                b = 20;
+                break;
+            case 1:
+                r = 20;
+                g = 128;
+                b = 255;
+                break;
+            case 2:
+                r = 0;
+                g = 255;
+                b = 100;
+                break;
+            case 3:
+                r = 255;
+                g = 255;
+                b = 255;
+                break;
+        }
+
+        x1 = sinf(angle * 0.01745329251994) * arg3;
+        y1 = RANDOM(100, 250);
+        z1 = cosf(angle * 0.01745329251994) * arg3;
+        Effect_TypeZ_Init(posX, posY, posZ, x1, y1, z1, 16.0f, arg4, 0, r, g, b);
+    }
+}
+
+
+//#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8006E3A8.s")
+void func_8006E3A8(Effect* effect, Gfx** pGfxPos) {
+    Effect_TypeAA_Data* data = (Effect_TypeAA_Data*)effect->data;
+    f32 angleX, angleY, angleZ;
+    f32 x, y, z;
+
+    if (effect->unk5 == 0) {
+        if (effect->numParts == 0) {
+            effect->numParts = 1;
+        }
+
+        angleX = effect->vel.x * 0.01745329251994;
+        angleY = effect->vel.y * 0.01745329251994;
+        angleZ = effect->vel.z * 0.01745329251994;
+
+        x = cosf(angleX) * effect->sizeX;
+        y = sinf(angleX) * -effect->sizeX;
+
+        z = -sinf(angleY) * y;
+        y = cosf(angleY) * y;
+
+        effect->vel.x += RANDOM(-effect->sizeY / 2, effect->sizeY / 2);
+        effect->vel.y += RANDOM(-effect->sizeY / 2, effect->sizeY / 2);
+        effect->vel.z += RANDOM(-effect->sizeY / 2, effect->sizeY / 2);
+
+        WrapDegrees(&effect->vel.x);
+        WrapDegrees(&effect->vel.y);
+        WrapDegrees(&effect->vel.z);
+
+        effect->unk8++;
+        if (effect->unk8 == effect->spriteID) {
+            effect->unk5 = 1;
+        }
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8006E888.s")
 

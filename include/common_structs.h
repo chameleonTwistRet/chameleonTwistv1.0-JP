@@ -718,8 +718,6 @@ typedef struct Effect {
     /* 0x44 */ struct Effect* next;
 } Effect; //sizeof 0x48
 
-
-
 typedef struct bf8{
     /* 0x00 */ s16 unk0;
     /* 0x02 */ s16 unk2;

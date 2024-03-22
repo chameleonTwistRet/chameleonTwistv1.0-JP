@@ -270,7 +270,7 @@ void LoadPlayerEyes(s32);
 void FreePlayerEyes(s32);
 u32 Effect_PlayerEyes_Init(s32, s32, f32, s32);
 void SetPlayerContextEyes(s32, s32, s32);
-void func_8006E16C(f32, f32, f32, f32, f32, s32);
+void Effect_TypeZ_Create(f32, f32, f32, f32, f32, s32);
 void func_8006F8D8(f32, f32, f32);
 void func_80089BA0(void);
 void func_80072B1C(void*, void*);

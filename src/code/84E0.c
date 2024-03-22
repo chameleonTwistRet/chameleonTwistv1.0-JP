@@ -1720,7 +1720,7 @@ void ActorInit_ChocoKid(Actor* trainingRoomChocoKidActor) {
     trainingRoomChocoKidActor->unk_134[1] = trainingRoomChocoKidActor->pos.z;
     trainingRoomChocoKidActor->unk_94 = trainingRoomChocoKidActor->position._f32.x;
     trainingRoomChocoKidActor->unk_134[0] = trainingRoomChocoKidActor->pos.x;
-    func_8006E16C(trainingRoomChocoKidActor->pos.x, trainingRoomChocoKidActor->pos.y + 50.0f, trainingRoomChocoKidActor->pos.z, 120.0f, 20.0f, 0xA);
+    Effect_TypeZ_Create(trainingRoomChocoKidActor->pos.x, trainingRoomChocoKidActor->pos.y + 50.0f, trainingRoomChocoKidActor->pos.z, 120.0f, 20.0f, 0xA);
 }
 
 void ActorTick_ChocoKid(Actor* chocoKid) {
