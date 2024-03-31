@@ -301,6 +301,206 @@ enum Letters {
 	SPACE = 100
 };
 	
+enum SFX {
+    SFX_ChameleonRightFoot = 0,
+    SFX_ChameleonLeftFoot = 1,
+    SFX_ChameleonRightFootSplash = 2,
+    SFX_ChameleonLeftFootSplash = 3,
+    SFX_ChameleonSplash = 4,
+    SFX_ChameleonJump = 5,
+    SFX_ChameleonLand = 6,
+    SFX_ChameleonVault = 7,
+    SFX_TongueOut = 8,
+    SFX_TongueRetract = 9,
+    SFX_EnemyEaten = 10,
+    SFX_EnemyShoot = 11,
+    SFX_EnemyCollide = 12,
+    //13
+    SFX__EnemyHitWall = 14,
+    SFX_EnemyTongued = 15,
+    SFX_TongueWall = 16,
+    SFX_TongueGrasp = 17,
+    SFX_TongueTurn = 18,
+    SFX_unkSnd13 = 19,
+    SFX_IceSlideBattleMode = 20,
+    SFX_ChameleonFlameDeath = 21,
+    SFX_ChameleonOw = 22,
+    //23
+    SFX_ChameleonGameOver = 24,
+    SFX_ChameleonRespawn = 25,
+    SFX_JungleAmbienceEnding = 26,
+    SFX_MagicPot = 27,
+    SFX_EnterMagicPot = 28,
+    SFX_RabbitJumpIntro = 29,
+    //30
+    //31
+    //32
+    SFX_CameraMove = 33,
+    //34
+    SFX_RabbitLeftFootIntro = 35,
+    SFX_24_unkSnd = 36,
+    SFX_25_unkSnd = 37,
+    //38
+    //39
+    SFX_Select = 40,
+    SFX_Save_Delete_Decline = 41,
+    SFX_2A_unkSnd = 42,
+    SFX_2B_unkSnd = 43,
+    SFX_2C_unkSnd = 44,
+    //45
+    SFX_2E_unkSnd = 46,
+    SFX_JSSMeow = 47,
+    SFX_30_unkSnd = 48,
+    SFX_31_unkSnd = 49,
+    SFX_32_unkSnd = 50,
+    SFX_33_unkSnd = 51,
+    SFX_34_unkSnd = 52,
+    SFX_35_unkSnd = 53,
+    SFX_36_unkSnd = 54,
+    SFX_37_unkSnd = 55,
+    SFX_38_unkSnd = 56,
+    SFX_39_unkSnd = 57,
+    SFX_3A_unkSnd = 58,
+    SFX_3B_unkSnd = 59,
+    SFX_3C_unkSnd = 60,
+    SFX_3D_unkSnd = 61,
+    SFX_3E_unkSnd = 62,
+    SFX_3F_unkSnd = 63,
+    SFX_40_unkSnd = 64,
+    SFX_41_unkSnd = 65,
+    SFX_42_unkSnd = 66,
+    SFX_43_unkSnd = 67,
+    SFX_44_unkSnd = 68,
+    SFX_45_unkSnd = 69,
+    SFX_46_unkSnd = 70,
+    SFX_47_unkSnd = 71,
+    SFX_48_unkSnd = 72,
+    SFX_49_unkSnd = 73,
+    SFX_4A_unkSnd = 74,
+    SFX_4B_unkSnd = 75,
+    SFX_Lizard_Kong_Hit = 76, //Jungle Land
+    SFX_4D_unkSnd = 77,
+    SFX_4E_unkSnd = 78,
+    SFX_4F_unkSnd = 79,
+    SFX_50_unkSnd = 80,
+    SFX_51_unkSnd = 81,
+    //82
+    //83
+    //84
+    SFX_55_unkSnd = 85,
+    SFX_56_unkSnd = 86,
+    SFX_57_unkSnd = 87,
+    SFX_58_unkSnd = 88,
+    SFX_59_unkSnd = 89,
+    SFX_5A_unkSnd = 90,
+    SFX_5B_unkSnd = 91,
+    SFX_5C_unkSnd = 92,
+    SFX_5D_unkSnd = 93,
+    SFX_Yellow_Ant_Fall = 94, //Ant Land
+    SFX_5F_unkSnd = 95,
+    SFX_60_unkSnd = 96,
+    //97
+    //98
+    SFX_63_unkSnd = 99,
+    //100
+    //101
+    //102
+    //103
+    //104
+    SFX_69_unkSnd = 105,
+    //106
+    //107
+    //108
+    SFX_6D_unkSnd = 109,
+    SFX_6E_unkSnd = 110,
+    SFX_6F_unkSnd = 111,
+    SFX_70_unkSnd = 112,
+    SFX_71_unkSnd = 113,
+    //114
+    SFX_73_unkSnd = 115,
+    SFX_74_unkSnd = 116,
+    SFX_75_unkSnd = 117,
+    SFX_76_unkSnd = 118,
+    SFX_77_unkSnd = 119,
+    SFX_Bomb_Caterpillar_Slither = 120, //Bomb Land
+    //121
+    //122
+    SFX_7B_unkSnd = 123,
+    //124
+    //125
+    SFX_7E_unkSnd = 126,
+    SFX_7F_unkSnd = 127,
+    SFX_80_unkSnd = 128,
+    SFX_81_unkSnd = 129,
+    SFX_82_unkSnd = 130,
+    SFX_83_unkSnd = 131,
+    SFX_Standard_Bounce = 132,  //Ant Land & Desert Castle
+    //133
+    SFX_86_unkSnd = 134,
+    SFX_87_unkSnd = 135,
+    SFX_88_unkSnd = 136,
+    SFX_89_unkSnd = 137,
+    SFX_8A_unkSnd = 138,
+    SFX_8B_unkSnd = 139,
+    SFX_8C_unkSnd = 140,
+    SFX_8D_unkSnd = 141,
+    SFX_8E_unkSnd = 142,
+    SFX_8F_unkSnd = 143,
+    SFX_90_unkSnd = 144,
+    SFX_91_unkSnd = 145,
+    SFX_92_unkSnd = 146,
+    SFX_93_unkSnd = 147,
+    SFX_94_unkSnd = 148,
+    SFX_95_unkSnd = 149,
+    SFX_96_unkSnd = 150,
+    SFX_97_unkSnd = 151,
+    SFX_98_unkSnd = 152,
+    SFX_99_unkSnd = 153,
+    SFX_9A_unkSnd = 154,
+    SFX_9B_unkSnd = 155,
+    SFX_9C_unkSnd = 156,
+    SFX_9D_unkSnd = 157,
+    SFX_9E_unkSnd = 158,
+    SFX_9F_unkSnd = 159,
+    SFX_A0_unkSnd = 160,
+    SFX_A1_unkSnd = 161,
+    SFX_A2_unkSnd = 162,
+    SFX_A3_unkSnd = 163,
+    SFX_A4_unkSnd = 164,
+    SFX_A5_unkSnd = 165,
+    SFX_A6_unkSnd = 166,
+    SFX_A7_unkSnd = 167,
+    SFX_A8_unkSnd = 168,
+    SFX_A9_unkSnd = 169,
+    SFX_AA_unkSnd = 170,
+    SFX_AB_unkSnd = 171,
+    SFX_AC_unkSnd = 172,
+    //173
+    //174
+    SFX_AF_unkSnd = 175,
+    //176
+    //177
+    //178
+    SFX_B3_unkSnd = 179,
+    //180
+    SFX_B5_unkSnd = 181,
+    SFX_B6_unkSnd = 182,
+    SFX_B7_unkSnd = 183,
+    SFX_B8_unkSnd = 184,
+    //185
+    SFX_BA_unkSnd = 186,
+    SFX_BB_unkSnd = 187,
+    SFX_BC_unkSnd = 188,
+    SFX_BD_unkSnd = 189,
+    SFX_BE_unkSnd = 190,
+    SFX_BF_unkSnd = 191,
+    SFX_C0_unkSnd = 192,
+    SFX_C1_unkSnd = 193,
+    SFX_C2_unkSnd = 194,
+    SFX_C3_unkSnd = 195,
+    SFX_Decline = 196
+};
+
 
 /*
 enum JLFlags {

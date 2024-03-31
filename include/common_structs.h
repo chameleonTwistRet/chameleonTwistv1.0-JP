@@ -459,13 +459,14 @@ typedef struct CTTask {
     /* 0x40 */ f32 unk40;
     /* 0x44 */ s16 unk44;
     /* 0x46 */ s16 unk46;
-    /* 0x48 */ s16 unk48;                           /* inferred */
-    /* 0x4A */ char pad4A[0x2];                     /* maybe part of unk48[6]? */
+    /* 0x48 */ s16 unk48;
+    /* 0x4A */ s16 unk4A;                           /* inferred */
     /* 0x4C */ s16 unk4C;
     /* 0x4E */ u16 unk4E;
     /* 0x50 */ Gfx* unk50;
     /* 0x54 */ u8 unk54;
-    /* 0x55 */ char pad55[3];                       /* maybe part of unk54[4]? */
+    /* 0x55 */ u8 unk55;
+    /* 0x56 */ char pad56[2];                       /* maybe part of unk54[4]? */
     /* 0x58 */ struct CTTask* unk58;
     /* 0x5C */ s16 unk_5C;
     /* 0x5E */ s16 unk5E;
@@ -474,6 +475,59 @@ typedef struct CTTask {
     /* 0x64 */ s16 unk_64;
     /* 0x66 */ s16 unk66;
     /* 0x68 */ s16 unk_68;
+    /* 0x6A */ s16 unk6A;                           /* inferred */
+    /* 0x6C */ s16 unk6C;
+    /* 0x6E */ s16 unk_6E;
+    /* 0x70 */ s16 unk_70;
+    /* 0x72 */ s16 unk72;
+    /* 0x74 */ s16 unk74;
+    /* 0x76 */ char unk76[0x4];
+    /* 0x7A */ u16 unk7A;
+    /* 0x7C */ f32 unk7C;
+    /* 0x80 */ f32 unk80;
+    /* 0x84 */ f32 unk84;
+    /* 0x88 */ f32 unk88;
+    /* 0x8C */ s32 unk8C;
+    /* 0x90 */ f32 unk90;
+    /* 0x94 */ u8 unk94[0x14];
+} CTTask;                                           /* size = 0xA8 */
+
+//placeholder for how func_8008E7B8 uses specific values breaking building
+typedef struct CTTask_CompatFix {
+    /* 0x00 */ s16 runType;
+    /* 0x02 */ s16 taskID;
+    /* 0x04 */ s16 unk_04;
+    /* 0x06 */ s8 unk06[2];
+    /* 0x08 */ void (*function)(struct CTTask_CompatFix*);
+    /* 0x0C */ struct CTTask_CompatFix* next;
+    /* 0x10 */ struct CTTask_CompatFix* prev;
+    /* 0x14 */ Vec3f pos;
+    /* 0x20 */ f32 rotA;
+    /* 0x24 */ Vec3f scale;
+    /* 0x30 */ Vec3f rot;
+    /* 0x3C */ f32 unk3C;
+    /* 0x40 */ f32 unk40;
+    /* 0x44 */ s16 unk44;
+    /* 0x46 */ s16 unk46;
+    /* 0x48 */ s16 unk48;                           /* inferred */
+    /* 0x4A */ char pad4A[0x2];                     /* maybe part of unk48[6]? */
+    /* 0x4C */ s16 unk4C;
+    /* 0x4E */ u16 unk4E;
+    /* 0x50 */ Gfx* unk50;
+    /* 0x54 */ u8 unk54;
+    /* 0x55 */ char pad55[3];                       /* maybe part of unk54[4]? */
+    /* 0x58 */ struct CTTask_CompatFix* unk58;
+    /* 0x5C */ s16 unk_5C;
+    /* 0x5E */ s8 unk5E;
+    /* 0x5F */ s8 unk5F;
+    /* 0x60 */ s8 unk60;
+    /* 0x61 */ s8 unk61;
+    /* 0x62 */ s8 unk_62;
+    /* 0x63 */ s8 unk_63;
+    /* 0x64 */ s16 unk_64;
+    /* 0x66 */ s8 unk66;
+    /* 0x67 */ s8 unk67;
+    /* 0x68 */ s16 unk_68;
     /* 0x6A */ char pad6A[2];
     /* 0x6C */ s8 unk6C[2];
     /* 0x6E */ s16 unk_6E;
@@ -481,12 +535,13 @@ typedef struct CTTask {
     /* 0x72 */ char unk72[2];
     /* 0x74 */ char unk74[0x6];
     /* 0x7A */ u16 unk7A;
-    /* 0x7C */ char unk7C[0x4];
+    /* 0x7C */ f32 unk7C;
     /* 0x80 */ f32 unk80;
-    /* 0x84 */ char unk84[0x8];
+    /* 0x84 */ f32 unk84;
+    /* 0x88 */ f32 unk88;
     /* 0x8C */ s32 unk8C;
     /* 0x90 */ char unk90[0x18];
-} CTTask;                                           /* size = 0xA8 */
+} CTTask_CompatFix;        
 
 typedef struct BGMVolume {
     /* 0x00 */ s32 vol;
@@ -740,10 +795,14 @@ typedef struct unkStruct {
 
 // this struct seems to manage sound effects
 typedef struct unk0 {
-    /* 0x00 */ s32 unk0;                            /* inferred */
-    /* 0x04 */ s32 unk4;                            /* inferred */
-    /* 0x08 */ s32 unk8;                            /* inferred */
-    /* 0x0C */ char padC[0x14];                     /* maybe part of unk8[6]? */
+    /* 0x00 */ s32 unk0;
+    /* 0x04 */ s32 unk4;
+    /* 0x08 */ s32 unk8;
+    /* 0x0C */ f32 unkC;
+    /* 0x10 */ f32 unk10;
+    /* 0x14 */ f32 unk14;
+    /* 0x18 */ f32 unk18;
+    /* 0x1C */ f32 unk1C;
     /* 0x20 */ s16 unk20;
     /* 0x22 */ s16 unk22;
     /* 0x24 */ u8 unk24;
@@ -751,19 +810,20 @@ typedef struct unk0 {
     /* 0x2C */ f32 unk2C;
     /* 0x30 */ s16 unk30;
     /* 0x32 */ s16 unk32;
-    /* 0x34 */ char pad34[4];                       /* maybe part of unk32[3]? */
+    /* 0x34 */ s16 unk34;
+    /* 0x36 */ char pad36[2];
     /* 0x38 */ f32 unk38;
     /* 0x3C */ u8 unk3C;
     /* 0x3D */ u8 unk3D;
-    /* 0x3E */ char pad3E[2];                       /* maybe part of unk3D[3]? */
+    /* 0x3E */ s16 unk3E;                           /* inferred */
     /* 0x40 */ s16 unk40;
     /* 0x42 */ s16 unk42;
     /* 0x44 */ s8 unk44;
     /* 0x45 */ char pad45[3];                       /* maybe part of unk44[4]? */
-    /* 0x48 */ s32 unk48;
+    /* 0x48 */ s32 unk48; // s16 unk4a????
     /* 0x4C */ s32 unk4C;
     /* 0x50 */ struct unk0* unk50;
-    /* 0x54 */ struct unk0* unk54;                         /* inferred */
+    /* 0x54 */ struct unk0* unk54;
 } unk0;                                             /* size = 0x58 */
 
 typedef struct pole{

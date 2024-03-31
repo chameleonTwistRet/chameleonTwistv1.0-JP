@@ -161,7 +161,7 @@ Effect* func_800634D4(s32, s32, s32*, s32*, u32, s32);
 void func_8007AF80(void);
 void ResetEyeParams(void);
 void Rumble_Tick(void);
-void Effect_UpdateAll(s32*);
+void Effect_UpdateAll(Gfx*);
 void func_80069734(void);
 void func_8007CDEC(void);
 f32 func_80056104(f32, f32);

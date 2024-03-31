@@ -216,7 +216,7 @@ void func_8002D434(f32 *vecX, f32 *vecY, f32 diffX, f32 diffY, f32 addAngle) {
     // find magnitude of vector (a,b) = vec - diff
     f32 a = *vecX - diffX;
     f32 b = *vecY - diffY;
-    f32 c = sqrtf(SUM_OF_SQUARES(a, b));
+    f32 c = NORM_2(a, b);
     
     // If magnitude is not 0, calculate new angle and adjust vector
     if (c != 0.0f) {
@@ -242,6 +242,8 @@ void func_8002D550(f32 *arg0, f32 *arg1, f32 arg2, f32 arg3, f32 arg4) {
         *arg1 = ((-sinf(temp_f12_2)) * arg4) + arg3;
     }
 }
+
+
 
 void Actors_Init(s32 actorIndex, s32 actorID, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7, f32 arg8, f32 arg9, f32 argA, f32 argB, f32 argC, f32 argD, f32 argE, f32 argF, f32 arg10, f32 arg11, f32 arg12, f32 arg13, s32 arg14, s32 arg15, s32 arg16, s32 arg17) {
     Actor* actorInstance;
@@ -651,23 +653,23 @@ void func_8002E5DC(UnkTempStruct arg0) {
     if (D_801749A8 == 0) {
         if (((gCurrentStage == 4) && (gCurrentZone == 0xF)) || ((gCurrentStage == 5) && (gCurrentZone == 0xE))) {
             if (D_80174860->unk0 == 1) {
-                PlaySoundEffect(0x2C, 0, 0, 0, 0, 0x10);
+                PLAYSFX(0x2C, 0, 0x10);
                 D_80174860->unk0 = 0;
                 if (D_80174860->unk40 == 2) {
-                    PlaySoundEffect(0x2D, 0, 0, 0, 0, 0x10);
+                    PLAYSFX(0x2D, 0, 0x10);
                     D_80174860->size2 /= 1.299999952f;
                     D_80174860->unk40 -= 1;
                 }
                 func_800D34CC();
             }
         } else if ((Battle_GameType == 0) && (1 != D_80236974) && (arg0.unk_02 & 0x20)) {
-            PlaySoundEffect(0x2C, 0, 0, 0, 0, 0x10);
+            PLAYSFX(0x2C, 0, 0x10);
             if (D_80174860->unk0 == 0) {
                 D_80174860->unk0 = 1;
             } else {
                 D_80174860->unk0 = 0;
                 if (D_80174860->unk40 == 2) {
-                    PlaySoundEffect(0x2D, 0, 0, 0, 0, 0x10);
+                    PLAYSFX(0x2D, 0, 0x10);
                     D_80174860->size2 /= 1.299999952f;
                     D_80174860->unk40 -= 1;
                 }
@@ -675,21 +677,21 @@ void func_8002E5DC(UnkTempStruct arg0) {
             func_800D34CC();
         }
         if ((arg0.unk_02 & 4) && (((D_80174860->unk0 == 1) && (D_80174860->unk40 < 2)) || (D_80174860->unk40 <= 0))) {
-            PlaySoundEffect(0x2D, 0, 0, 0, 0, 0x10);
+            PLAYSFX(0x2D, 0, 0x10);
             D_80174860->size2 *= 1.299999952f;
             D_80174860->unk40 += 1;
         }
         if ((arg0.unk_02 & 8) && (sp2C < D_80174860->unk40)) {
-            PlaySoundEffect(0x2D, 0, 0, 0, 0, 0x10);
+            PLAYSFX(0x2D, 0, 0x10);
             D_80174860->size2 /= 1.299999952f;
             D_80174860->unk40 -= 1;
         }
         if ((arg0.unk_02 & 1) && (D_80174860->pushHoriz < 9)) {
-            PlaySoundEffect(0x2D, 0, 0, 0, 0, 0x10);
+            PLAYSFX(0x2D, 0, 0x10);
             D_80174860->pushHoriz += 9;
         }
         if ((arg0.unk_02 & 2) && (D_80174860->pushHoriz >= -8)) {
-            PlaySoundEffect(0x2D, 0, 0, 0, 0, 0x10);
+            PLAYSFX(0x2D, 0, 0x10);
             D_80174860->pushHoriz -= 9;
         }
     }
@@ -759,7 +761,7 @@ f32 func_8002F5C4(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
     if (arg2 < arg0) {
         arg0 = arg2;
     }
-    return ((( ((__sinf(arg0 * 0x168 * arg3 / arg2 * 2 * PI / 360.0) * (arg2 - arg0)) / arg2) + 3.0) * arg0) / 4) / arg2;
+    return (((((sinf(arg0 * 0x168 * arg3 / arg2 * 2 * PI / 360.0) * (arg2 - arg0)) / arg2) + 3.0) * arg0) / 4) / arg2;
 }
 
 s32 func_8002F6DC(f32* arg0, f32 arg1) {
@@ -877,10 +879,10 @@ void func_800312FC(Actor* arg0, f32 arg1) {
     arg0->userVariables[0] = 0;
     arg0->userVariables[1] = 14;
     arg0->unk_134[3] = 76.80000305f;
-    arg0->vel.x = __cosf(DEGREES_TO_RADIANS_2PI(arg1)) * 16.0f;     //cosf(DEGREES_TO_RADIANS_2PI(arg1)) * 16.0f;
-    arg0->vel.z = -__sinf(DEGREES_TO_RADIANS_2PI(arg1)) * 16.0f;
+    arg0->vel.x = cosf(DEGREES_TO_RADIANS_2PI(arg1)) * 16.0f;     //cosf(DEGREES_TO_RADIANS_2PI(arg1)) * 16.0f;
+    arg0->vel.z = -sinf(DEGREES_TO_RADIANS_2PI(arg1)) * 16.0f;
     arg0->tongueCollision = 0;
-    PlaySoundEffect(109, &arg0->pos.x, &arg0->pos.y, &arg0->pos.z, 0, 0);
+    PLAYSFXAT(109, arg0->pos, 0, 0);
 }
 
 
@@ -891,8 +893,8 @@ void func_800313BC(s32 arg0, f32 arg1) {
     gActors[arg0].sizeScalar = 1.0f;
     func_800312B0(arg0);
     gActors[arg0].vel.y = 38.4f;
-    gActors[arg0].vel.x = __cosf(DEGREES_TO_RADIANS_2PI(arg1)) * 12.0f;
-    gActors[arg0].vel.z = -__sinf(DEGREES_TO_RADIANS_2PI(arg1)) * 12.0f;
+    gActors[arg0].vel.x = cosf(DEGREES_TO_RADIANS_2PI(arg1)) * 12.0f;
+    gActors[arg0].vel.z = -sinf(DEGREES_TO_RADIANS_2PI(arg1)) * 12.0f;
     if (gActors[arg0].actorID == SPIDER_SPAWNER) {
         levelFlags[(s32)gActors[arg0].unk_164] = 1;
     }
@@ -981,7 +983,7 @@ void pickup_collide_func(s32 actorIndex) {
         if (gCurrentActivePlayerPointer->hp < 10) {
             gCurrentActivePlayerPointer->hp++;
         }
-        PlaySoundEffect(0x3A, NULL, NULL, NULL, 0, 0x10);
+        PLAYSFX(0x3A, 0, 0x10);
         var_s0 = 0x1E;
         break;
     case O_HEART:
@@ -989,24 +991,24 @@ void pickup_collide_func(s32 actorIndex) {
         if (gCurrentActivePlayerPointer->hp > 10) {
             gCurrentActivePlayerPointer->hp = 10;
         }
-        PlaySoundEffect(0x3A, NULL, NULL, NULL, 0, 0x10);
+        PLAYSFX(0x3A, 0, 0x10);
         var_s0 = 0x28;
         break;
     case Y_HEART:
         gCurrentActivePlayerPointer->hp = 10;
-        PlaySoundEffect(0x3A, NULL, NULL, NULL, 0, 0x10);
+        PLAYSFX(0x3A, 0, 0x10);
         var_s0 = 0x32;
         break;
     case CROWN:
-        PlaySoundEffect(0x39, NULL, NULL, NULL, 0, 0x10);
+        PLAYSFX(0x39, 0, 0x10);
         var_s0 = 0x46;
         break;
     case CARROT:
-        PlaySoundEffect(0x39, NULL, NULL, NULL, 0, 0x10);
+        PLAYSFX(0x39, 0, 0x10);
         var_s0 = 0x50;
         break;
     case UNK_65:
-        PlaySoundEffect(0x39, NULL, NULL, NULL, 0, 0x10);
+        PLAYSFX(0x39, 0, 0x10);
         var_s0 = 0x5A;
         break;
     case TIME_STOP_POWER_UP:
@@ -1014,7 +1016,7 @@ void pickup_collide_func(s32 actorIndex) {
         gCurrentActivePlayerPointer->power = 4;
         gCurrentActivePlayerPointer->powerTimer = 0;
         gCurrentActivePlayerPointer->powerTimerTill = actor->unk_128;
-        PlaySoundEffect(0x3A, NULL, NULL, NULL, 0, 0x10);
+        PLAYSFX(0x3A, 0, 0x10);
         var_s0 = 0x32;
         break;
     case BIG_FEET_POWER_UP:
@@ -1022,7 +1024,7 @@ void pickup_collide_func(s32 actorIndex) {
         gCurrentActivePlayerPointer->power = 1;
         gCurrentActivePlayerPointer->powerTimer = 0;
         gCurrentActivePlayerPointer->powerTimerTill = actor->unk_128;
-        PlaySoundEffect(0x3A, NULL, NULL, NULL, 0, 0x10);
+        PLAYSFX(0x3A, 0, 0x10);
         var_s0 = 0x32;
         break;
     case BIG_HEAD_POWER_UP:
@@ -1030,7 +1032,7 @@ void pickup_collide_func(s32 actorIndex) {
         gCurrentActivePlayerPointer->power = 2;
         gCurrentActivePlayerPointer->powerTimer = 0;
         gCurrentActivePlayerPointer->powerTimerTill = actor->unk_128;
-        PlaySoundEffect(0x3A, NULL, NULL, NULL, 0, 0x10);
+        PLAYSFX(0x3A, 0, 0x10);
         var_s0 = 0x32;
         break;
     case SHRINK_POWER_UP:
@@ -1043,7 +1045,7 @@ void pickup_collide_func(s32 actorIndex) {
         gCurrentActivePlayerPointer->hitboxSize *= 0.5f;
         gCurrentActivePlayerPointer->hitboxYStretch *= 0.5f;
         SetPlayerImpulse();
-        PlaySoundEffect(0x3A, NULL, NULL, NULL, 0, 0x10);
+        PLAYSFX(0x3A, 0, 0x10);
         break;
     case SHRINK_ENEMY_POWER_UP:
         ClearPlayerPowerups(gCurrentActivePlayerPointer);
@@ -1064,7 +1066,7 @@ void pickup_collide_func(s32 actorIndex) {
             SetPlayerImpulse();
         }
         gCurrentActivePlayerPointer = &gPlayerActors[var_v1];
-        PlaySoundEffect(0x3A, NULL, NULL, NULL, 0, 0x10);
+        PLAYSFX(0x3A, 0, 0x10);
         var_s0 = 0x32;
         break;
     }
@@ -1112,7 +1114,7 @@ void func_80036D74(PlayerActor* arg0, Tongue* arg1) {
     if (arg0->playerHURTSTATE == 0) {
         func_8002F884(arg0->playerID, 5);
         Effect_TypeD_Create(arg0->pos.x, arg0->pos.y, arg0->pos.z);
-        PlaySoundEffect(0x17, NULL, NULL, NULL, 0, 0x10);
+        PLAYSFX(0x17, 0, 0x10);
         if ((Battle_GameType == 0) && (D_80174980 != 3) && (D_80174988 == 0)) {
             gNoHit = 0;
             if (--arg0->hp <= 0) {
@@ -1127,8 +1129,8 @@ void func_80036D74(PlayerActor* arg0, Tongue* arg1) {
         arg0->playerHURTBY = 0;
         func_80031DB0(arg0, arg1, 0);
         arg0->yAngle = CalculateAngleOfVector(-arg0->vel.x, arg0->vel.z);;
-        arg0->vel.x = -__cosf(DEGREES_TO_RADIANS_2PI(arg0->yAngle)) * 32.0f;
-        arg0->vel.z = __sinf(DEGREES_TO_RADIANS_2PI(arg0->yAngle)) * 32.0f;
+        arg0->vel.x = -cosf(DEGREES_TO_RADIANS_2PI(arg0->yAngle)) * 32.0f;
+        arg0->vel.z = sinf(DEGREES_TO_RADIANS_2PI(arg0->yAngle)) * 32.0f;
         func_8002F54C(48.0f, arg0, 1);
     }
 }
@@ -1187,8 +1189,8 @@ void func_800382B4(f32* arg0, f32 arg1) {
 }
 
 void func_800382F4(Actor* arg0) {
-    arg0->vel.x = __cosf(DEGREES_TO_RADIANS_2PI(arg0->unk_90)) * arg0->unk_94;
-    arg0->vel.z = -__sinf(DEGREES_TO_RADIANS_2PI(arg0->unk_90)) * arg0->unk_94;
+    arg0->vel.x = cosf(DEGREES_TO_RADIANS_2PI(arg0->unk_90)) * arg0->unk_94;
+    arg0->vel.z = -sinf(DEGREES_TO_RADIANS_2PI(arg0->unk_90)) * arg0->unk_94;
 }
 
 void func_800383A0(Actor* actor) {
@@ -1247,7 +1249,7 @@ void ActorInit_AntBulletHell(Actor* arg0) {
     f32 ang;
     f32 sine;
     arg0->unk_94 = arg0->position._f32.x;
-    sine = __sinf((6 * gTimer * PI) / 360.0);
+    sine = sinf((6 * gTimer * PI) / 360.0);
     ang = CalcAngleBetween2DPoints(arg0->pos.x, arg0->pos.z, gCurrentActivePlayerPointer->pos.x, gCurrentActivePlayerPointer->pos.z);
     arg0->unk_90 = arg0->position._f32.y + (ang + 12 * sine);
     WrapDegrees(&arg0->unk_90);
@@ -1414,9 +1416,9 @@ void ActorInit_Missile(Actor* missileActor) {
 
 void ActorInit_Cannon(Actor* cannonActor) {
     cannonActor->tongueCollision = 2;
-    cannonActor->unknownPositionThings[0].unk_00 = __cosf(DEGREES_TO_RADIANS_2PI(cannonActor->unk_90)) * 200.0f;
+    cannonActor->unknownPositionThings[0].unk_00 = cosf(DEGREES_TO_RADIANS_2PI(cannonActor->unk_90)) * 200.0f;
     cannonActor->unknownPositionThings[0].unk_04 = -cannonActor->unknownPositionThings[0].unk_10 / 2;
-    cannonActor->unknownPositionThings[0].unk_08 = -__sinf(DEGREES_TO_RADIANS_2PI(cannonActor->unk_90)) * 200.0f;
+    cannonActor->unknownPositionThings[0].unk_08 = -sinf(DEGREES_TO_RADIANS_2PI(cannonActor->unk_90)) * 200.0f;
     cannonActor->unknownPositionThings[1].unk_10 = cannonActor->tYPos;
     cannonActor->unknownPositionThings[1].unk_00 = 0.0f;
     cannonActor->unknownPositionThings[1].unk_0C = cannonActor->tScale;
@@ -1431,10 +1433,10 @@ void ActorInit_Cannonball(Actor* cbActor) {
     f32 temp_f16 = cbActor->position._f32.x - cbActor->pos.x; f32 temp_f18 = cbActor->unk_15C - cbActor->pos.z;
     cbActor->unk_90 = CalcAngleBetween2DPoints(cbActor->pos.x, cbActor->pos.z, cbActor->position._f32.x, cbActor->unk_15C);
     cbActor->unk_94 = cbActor->unk_160;
-    cbActor->userVariables[0] = (s32) (__sqrtf(SQ(temp_f16) + SQ(temp_f18)) / cbActor->unk_94);
+    cbActor->userVariables[0] = (s32) (sqrtf(SUM_OF_SQUARES(temp_f16, temp_f18)) / cbActor->unk_94);
     cbActor->unk_134[0] = (cbActor->position._f32.y - cbActor->pos.y) / (f32) cbActor->userVariables[0];
     func_800382F4(cbActor);
-    PlaySoundEffect(119, &cbActor->pos.x, &cbActor->pos.y, &cbActor->pos.z, 0, 0);
+    PLAYSFXAT(119, cbActor->pos, 0, 0);
 }
 
 
@@ -1557,7 +1559,7 @@ void ActorTick_ArrowSpawner(Actor* arg0) {
     if (arg0->unk_124 == arg0->userVariables[0]) {
         arg0->userVariables[0] = 0;
         if (Actor_Init(28, arg0->pos.x, arg0->pos.y, arg0->pos.z, arg0->unk_90, -50000.0f, 50000.0f, -50000.0f, 50000.0f, -50000.0f, 50000.0f, arg0->position._f32.x, arg0->position._f32.y, arg0->unk_15C, arg0->unk_160, 0.0f, 0.0f, 0.0f, 0.0f, 0, 0, 0, 0) != -1) {
-            PlaySoundEffect(139, &arg0->pos.x, &arg0->pos.y, &arg0->pos.z, 0, 0);
+            PLAYSFXAT(139, arg0->pos, 0, 0);
         }
     }
 }
@@ -1636,7 +1638,7 @@ void func_8003E870(Actor* arg0, s32 arg1) {
     if (arg0->pos.y + arg0->vel.y < 0) {
         arg0->vel.y = -arg0->vel.y * 0.95f;
         func_8006F8D8(arg0->pos.x, arg0->pos.y, arg0->pos.z);
-        PlaySoundEffect(132, &arg0->pos.x, &arg0->pos.y, &arg0->pos.z, 0, 0);
+        PLAYSFXAT(132, arg0->pos, 0, 0);
         arg0->userVariables[0] = arg1;
     }
 }
@@ -1760,9 +1762,9 @@ void ActorInit_Unk1F(Actor* unk_1FActor) {
 
 //? - Nathan R.
 void ActorInit_Popcorn(Actor* arg0) {
-    f32 s = __cosf(DEGREES_TO_RADIANS_2PI(arg0->unk_90));
+    f32 s = cosf(DEGREES_TO_RADIANS_2PI(arg0->unk_90));
     arg0->vel.x = arg0->position._f32.x * s;
-    s = -__sinf(DEGREES_TO_RADIANS_2PI(arg0->unk_90));
+    s = -sinf(DEGREES_TO_RADIANS_2PI(arg0->unk_90));
     arg0->vel.z = arg0->position._f32.x * s;
     arg0->vel.y = 64.0f;
 }
@@ -2232,8 +2234,8 @@ void ActorTick_LizardKongBoulder(Actor* arg0) {
 
 //? - Nathan R.
 void func_800489B0(Actor* arg0) {
-    arg0->pos.x = arg0->unk_134[0] + (arg0->unk_134[2] * __cosf(DEGREES_TO_RADIANS_2PI(arg0->unk_134[3])));
-    arg0->pos.z = arg0->unk_134[1] + (arg0->unk_134[2] * -__sinf(DEGREES_TO_RADIANS_2PI(arg0->unk_134[3])));
+    arg0->pos.x = arg0->unk_134[0] + (arg0->unk_134[2] * cosf(DEGREES_TO_RADIANS_2PI(arg0->unk_134[3])));
+    arg0->pos.z = arg0->unk_134[1] + (arg0->unk_134[2] * -sinf(DEGREES_TO_RADIANS_2PI(arg0->unk_134[3])));
 }
 
 
@@ -2256,13 +2258,13 @@ void ActorInit_LizardKong(Actor* arg0) {
 void PlayLizardKongSFX(Actor* arg0) {
     switch (arg0->unk_F0) {
     case 12:
-        PlaySoundEffect(72, &arg0->pos.x, &arg0->pos.y, &arg0->pos.z, 0, 0);
+        PLAYSFXAT(72, arg0->pos, 0, 0);
         return;
     case 34:
     case 42:
     case 50:
     case 58:
-        PlaySoundEffect(77, &arg0->pos.x, &arg0->pos.y, &arg0->pos.z, 0, 0);
+        PLAYSFXAT(77, arg0->pos, 0, 0);
         /* fallthrough */
     default:
         return;
@@ -2539,8 +2541,8 @@ s32 func_8004C374(u16* arg0, u16* arg1, s32 arg2) {
 }
 
 void func_8004C3A4(s16* arg0, f32 arg1) {
-    arg0[3] = __cosf(DEGREES_TO_RADIANS_2PI(arg1)) * 65.0f;
-    arg0[4] = __sinf(DEGREES_TO_RADIANS_2PI(arg1)) * 65.0f;
+    arg0[3] = cosf(DEGREES_TO_RADIANS_2PI(arg1)) * 65.0f;
+    arg0[4] = sinf(DEGREES_TO_RADIANS_2PI(arg1)) * 65.0f;
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8004C43C.s")
@@ -2571,10 +2573,125 @@ u8 func_8004CC6C(void) {
 //related to updating the screen
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8004DDE0.s") 
 
+//actor floats
+//im not starting this until D_8010AA28 is fixed (it has the same problem!)
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/D_8010A6D0.s")
 
+//these two should be fine to do for now
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/D_8010A774.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/D_8010A8C0.s")
+
+//this should be right but because it is referenced earlier than it is assigned its like. impossible to use?????
+//pls fix
+/*const unk_8010AA28 D_8010AA28[108] = {
+{0, 0, 0, 0},
+{1, 1, 0, 0},
+{0, 1, 0, 0},
+{1, 1, 0, 0},
+{1, 1, 0, 1},
+{1, 1, 0, 1},
+{2, 1, 0, 0},
+{2, 1, 0, 0},
+{1, 4, 0, 0},
+{3, 0, 0, 0},
+{3, 0, 0, 0},
+{3, 0, 0, 0},
+{3, 0, 0, 0},
+{0, 1, 0, 0},
+{0, 1, 1, 0},
+{3, 0, 0, 0},
+{1, 4, 2, 0},
+{0, 0, 0, 0},
+{1, 4, 2, 0},
+{0, 1, 1, 0},
+{0, 0, 0, 0},
+{1, 0, 0, 0},
+{3, 0, 0, 0},
+{1, 0, 0, 0},
+{0, 4, 0, 0},
+{1, 3, 0, 0},
+{1, 4, 0, 0},
+{3, 0, 0, 0},
+{1, 4, 0, 0},
+{0, 3, 0, 1},
+{0, 4, 0, 0},
+{0, 4, 0, 0},
+{1, 4, 0, 0},
+{0, 4, 0, 0},
+{3, 0, 0, 0},
+{1, 1, 0, 0},
+{1, 4, 0, 0},
+{1, 4, 0, 0},
+{0, 1, 0, 0},
+{0, 4, 0, 0},
+{0, 4, 0, 0},
+{0, 4, 0, 0},
+{0, 1, 1, 1},
+{0, 1, 1, 1},
+{0, 1, 1, 1},
+{0, 1, 1, 1},
+{1, 4, 0, 0},
+{1, 1, 0, 0},
+{0, 4, 0, 0},
+{0, 4, 0, 0},
+{0, 4, 0, 0},
+{0, 4, 0, 0},
+{3, 0, 0, 0},
+{0, 0, 0, 0},
+{3, 0, 0, 0},
+{1, 4, 0, 0},
+{0, 0, 0, 0},
+{0, 0, 0, 0},
+{3, 0, 0, 0},
+{1, 4, 0, 0},
+{1, 4, 0, 0},
+{0, 1, 0, 0},
+{0, 4, 0, 0},
+{0, 4, 0, 0},
+{1, 4, 0, 0},
+{0, 0, 0, 0},
+{1, 3, 1, 0},
+{1, 1, 0, 0},
+{0, 1, 1, 0},
+{1, 1, 0, 0},
+{1, 4, 0, 0},
+{1, 4, 0, 0},
+{3, 4, 0, 0},
+{3, 0, 0, 0},
+{0, 3, 0, 1},
+{0, 4, 0, 0},
+{3, 0, 0, 0},
+{0, 4, 0, 0},
+{1, 4, 0, 0},
+{3, 0, 0, 0},
+{1, 4, 0, 0},
+{3, 0, 0, 0},
+{1, 1, 0, 0},
+{3, 0, 0, 0},
+{1, 3, 0, 1},
+{3, 0, 0, 0},
+{1, 4, 0, 0},
+{3, 0, 0, 0},
+{1, 4, 0, 0},
+{3, 0, 0, 0},
+{1, 3, 0, 0},
+{3, 0, 0, 0},
+{3, 0, 0, 0},
+{1, 3, 0, 0},
+{3, 0, 0, 0},
+{1, 0, 0, 0},
+{1, 0, 0, 0},
+{1, 0, 0, 0},
+{1, 0, 0, 0},
+{0, 0, 0, 0},
+{0, 0, 0, 0},
+{0, 0, 0, 0},
+{1, 0, 0, 0},
+{1, 0, 0, 0},
+{1, 0, 0, 0},
+{1, 0, 0, 0},
+{1, 0, 0, 0}
+};*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/D_8010AA28.s")

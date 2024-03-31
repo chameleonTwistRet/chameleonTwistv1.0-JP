@@ -373,9 +373,7 @@ void ChameleonFromDoor(PlayerActor*, s32, s32, s32, s32);
 void func_800D34CC(void);
 void func_800BFCD0(void);
 void func_800C0760(s32);
-void func_800928F0(s32);
 void func_800935F8(s32);
-void func_80094220(s32);
 void func_800945E4(CTTask*);
 void func_80094E0C(CTTask*);
 s32 LoadStageByIndex(s32);
@@ -384,8 +382,6 @@ void func_80098F50(CTTask*);
 void func_80099570(CTTask*);
 void Task_LoadSaveFileAt(CTTask*);
 void func_8009BDE4(CTTask*);
-void func_8009B120(s32);
-void func_8009B45C(s32);
 void PlayJungleExtSfx(void);
 void Audio_RomCopy(u32 devAddr, void* vAddr, u32 size);
 void PlayJungleExtSfxWrapper(void);
@@ -402,7 +398,6 @@ s32 DMA_Copy(void* romAddr, void* ramAddr, s32 size);
 s32 func_800A72E8(s32);
 void func_800AAAC8(void);
 s32 AddSoundEffect(s32, f32*, f32*, f32*, s32, s32);
-void func_800A10E8(s32);
 void func_800A1EC4(void);
 void func_800A54EC(CTTask*);
 s32 DMAStruct_Print(void);
@@ -470,4 +465,34 @@ void PrintNumberWR(f32, f32, f32, f32, f32, s32, s32);
 void printNumber(f32, f32, f32, f32, f32, s32, s32);
 void func_800C1458(s32);
 void func_800C29D8(s32);
+
+//funcs that were in 5ff30.h that are in other c's
+//sprite.c
+void func_80059F28(f32, f32, f32, f32, f32, f32, f32, f32, s32);
+void func_80080864(f32, f32, f32, f32, f32, f32, char*, s32);
+void func_8007B174(void);
+void Rumble_StopAll(void);
+void func_8005C454(f32 arg0, f32 arg1, f32 arg2, s32 arg3);
+Gfx* func_8005F408(Gfx* gfxPos);
+Gfx* func_8005CA44(Gfx* gfxPos);
+Gfx* func_80084884(Gfx* arg0);
+void Controller_ParseJoystick(ContMain* conts);
+void func_80084A04(void);
+void func_80059254(Mtx* arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, s32 arg7);
+void func_800598C4(Mtx* arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, s32 arg7);
+void loadBossDeadEyes(s32, CTTask*);
+void func_8005747C(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, s32 arg6);
+//1050.c
+void DemoGfx_DrawFrame(Gfx* arg0, graphicStruct* arg1, s32 fbIndex);
+void DemoGfx_SwapFB(s32 fbIndex);
+void Video_SetTask(graphicStruct* arg0, Gfx* arg1, s32 arg2);
+//298D0.c
+void func_8004E784(ContMain* arg0, s32 arg1, s32* arg2, ContMain* arg3);
+//8ADD0.c
+void func_800B4408(u8*, s16*);
+
+//funcs from 5ff30 that are called from other c's
+//battle.c
+void func_800A0D90(void);
+
 #endif

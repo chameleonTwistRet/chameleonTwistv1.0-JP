@@ -96,7 +96,7 @@ extern u8 D_800FEBC8;
 extern u8 D_800FEBCC;
 extern f32 D_800FEBD0;
 extern Vec4f D_800FEBD4;
-extern u8 D_800FEDC0[225][8]; //some data RE each sound effect
+extern u8 D_800FEDC0[226][8]; //some data RE each sound effect
 extern s32 D_800FF5D0;
 extern s32 D_800FF5E4;
 extern s32 D_800FF5E8;

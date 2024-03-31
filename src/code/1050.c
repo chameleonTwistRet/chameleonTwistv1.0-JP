@@ -169,16 +169,16 @@ void func_80025EF0(PlayerActor* arg0, Tongue* arg1, s32 arg2) {
         func_80027240(&D_800FF8D4, sp114, sp120 % sp118, sp11C);
         if (D_800F0560 == 0 && sp120 % sp118 >= 3 && sp120 % sp118 <= 12) {
             if (arg0->inWater == 1) {
-                PlaySoundEffect(2, &arg0->pos.x, &arg0->pos.y, &arg0->pos.z, 0, 0);
+                PLAYSFXAT(2, arg0->pos, 0, 0);
             } else {
-                PlaySoundEffect(0, &arg0->pos.x, &arg0->pos.y, &arg0->pos.z, 0, 0);
+                PLAYSFXAT(0, arg0->pos, 0, 0);
             }
             D_800F0560 = 1;
         } else if (D_800F0560 == 1 && sp120 % sp118 > 12) {
             if (arg0->inWater == 1) {
-                PlaySoundEffect(3, &arg0->pos.x, &arg0->pos.y, &arg0->pos.z, 0, 0);
+                PLAYSFXAT(3, arg0->pos, 0, 0);
             } else {
-                PlaySoundEffect(1, &arg0->pos.x, &arg0->pos.y, &arg0->pos.z, 0, 0);
+                PLAYSFXAT(1, arg0->pos, 0, 0);
             }
             D_800F0560 = 0;
         }
@@ -187,16 +187,16 @@ void func_80025EF0(PlayerActor* arg0, Tongue* arg1, s32 arg2) {
         func_80027240(&D_800FF8D4, sp114, sp120 % sp118, sp11C);
         if (D_800F0560 == 0 && sp120 % sp118 >= 0 && sp120 % sp118 <= 9) {
             if (arg0->inWater == 1) {
-                PlaySoundEffect(2, &arg0->pos.x, &arg0->pos.y, &arg0->pos.z, 0, 0);
+                PLAYSFXAT(2, arg0->pos, 0, 0);
             } else {
-                PlaySoundEffect(0, &arg0->pos.x, &arg0->pos.y, &arg0->pos.z, 0, 0);
+                PLAYSFXAT(0, arg0->pos, 0, 0);
             }
             D_800F0560 = 1;
         } else if (D_800F0560 == 1 && sp120 % sp118 > 9) {
             if (arg0->inWater == 1) {
-                PlaySoundEffect(3, &arg0->pos.x, &arg0->pos.y, &arg0->pos.z, 0, 0);
+                PLAYSFXAT(3, arg0->pos, 0, 0);
             } else {
-                PlaySoundEffect(1, &arg0->pos.x, &arg0->pos.y, &arg0->pos.z, 0, 0);
+                PLAYSFXAT(1, arg0->pos, 0, 0);
             }
             D_800F0560 = 0;
         }
