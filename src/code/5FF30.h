@@ -180,8 +180,7 @@ Gfx* func_8008E314(Gfx* gfxPos, Tongue* tongues, PlayerActor* players, Camera* c
 Gfx* func_8008E488(Gfx* gfxPos, Tongue* tongues, PlayerActor* players, Camera* cameras, s32 fbIndex);
 Gfx* setFrustum(Gfx* gfxPos, s32 fbIndex);
 void func_8008E698(CTTask*);
-void func_8008E7B8(CTTask_CompatFix* arg0);
-//or compatfix???
+void func_8008E7B8(CTTask* arg0);
 void func_8008E840(CTTask*);
 //could be (s16, s16, s16, s16, CTTask*)??
 CTTask* func_8008E9AC(s16 arg0, s16 arg1, s16 arg2, s16 arg3, s16* arg4);
@@ -228,7 +227,7 @@ void func_80091548(CTTask* task);
 void func_800915C0(CTTask* arg0);
 void func_80091694(CTTask*);
 void func_80091758(CTTask* arg0);
-void func_800917A8(CTTask_CompatFix* task);
+void func_800917A8(CTTask* task);
 void func_800919D8(s32, s32);
 //stage finish???
 void func_80091A38(CTTask* task);
