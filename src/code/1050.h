@@ -4,6 +4,7 @@
 #include "common.h"
 
 /* Functions */
+void func_80025EF0(PlayerActor* player, Tongue* tongue, s32 arg2);
 void func_8002CDBC(ContMain*);
 void func_8004BC48(ContMain*);
 void func_8004CD9C(s32, void*);
@@ -34,6 +35,9 @@ void func_80027138(void* arg0, s32* arg1, s32* arg2, Mtx** arg3);
 void func_800703C0(f32* arg0, f32* arg1, f32* arg2, f32 arg3, f32 arg4, f32 arg5, s32 arg6, s32 arg7, s32 arg8);
 
 /* Ext Variables */
+extern f32 D_80168D88;
+extern f32 D_80168D8C;
+extern f32 D_80168D90;
 extern graphicStruct gGraphicsList[2];
 extern s32 gFramebufferIndex;
 extern s32 D_800F066C;

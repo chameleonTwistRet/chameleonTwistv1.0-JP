@@ -3684,7 +3684,47 @@ void func_80073FD8(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_800745F8.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_800747E0.s")
+void func_800747E0(f32 arg0, f32 arg1, u32 arg2, f32 arg3, f32 arg4, f32 arg5, u32 arg6, u32 arg7, s32 arg8, u32* arg9) {
+    Effect* effect;
+    f32 var_f0;
+    s32 i;
+    u8* var_v0;
+    Effect_TypeE_Data* data;
+
+    var_v0 = arg7;
+    i = 0;
+    while (var_v0[0] != 0){
+        var_v0 += 2;
+        i++;
+    }
+    if (i != 0) {
+        effect = Effect_Alloc(0, 0x24, func_800745F8);
+        if (effect != NULL) {
+            if (arg2 == 0) {
+                var_f0 = -16 - ((f32) i * 16);
+            } else {
+                var_f0 = 330;
+            }
+            *arg9 = 1;
+            data = effect->data;
+            data->dir.x = 1 / arg3;
+            data->dir.y = 1 / arg4;
+            data->dir.z = (f32) (1 / arg5);
+            //cant really match by dereferencing???
+            data->colorG = arg9;
+            data->colorR = arg6;
+            data->colorA = arg7;
+            effect->spriteID = arg8;
+            effect->unk5 = 0;
+            effect->numParts = arg2;
+            effect->pos.x = arg0;
+            effect->pos.y = arg1;
+            effect->vel.x = var_f0;
+            effect->vel.z = 1;
+            effect->lifeTime = 0;
+        }
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80074908.s")
 

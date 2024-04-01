@@ -11,6 +11,10 @@
 
 extern s32 rngSeed; //rng
 
+extern SpriteListing gSpriteListings[230];
+  
+extern OSPfs gRumblePfs[MAXCONTROLLERS];
+
 extern Camera* D_80174860;
 extern PlayerActor* gCurrentActivePlayerPointer;
 extern Tongue* gTongueOnePointer;

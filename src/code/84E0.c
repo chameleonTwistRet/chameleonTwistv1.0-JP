@@ -1396,7 +1396,7 @@ void ActorTick_Grenade(Actor* arg0) {
     if (arg0->unk_12C < (u32) arg0->globalTimer) {
         func_8002D36C(&arg0->unk_90, angle, arg0->position._f32.y);
     }
-    Actor_PlaySound(arg0, 0x75, 0xA, 4);
+    Actor_PlaySound(arg0, SFX_GrenadeWalk, 10, 4);
     func_800382F4(arg0);
 }
 
@@ -1747,7 +1747,7 @@ void ActorTick_ChocoKid(Actor* chocoKid) {
             chocoKid->vel.y = 19.20000076f;
         }
     }
-    Actor_PlaySound(chocoKid, 0x99, 0x1E, 4);
+    Actor_PlaySound(chocoKid, SFX_ChocoKidNoise, 30, 4);
     func_800382F4(chocoKid);
 }
 
@@ -2214,7 +2214,7 @@ void ActorTick_LizardKongButterflySpawner(Actor* arg0) {
 void func_800488C4(Actor* arg0) {
     arg0->unk_98 = 1;
     arg0->unk_94 = arg0->position._f32.x;
-    Actor_PlaySound(arg0, 143, 4, 4);
+    Actor_PlaySound(arg0, SFX_RockTumble, 4, 4);
 }
 
 void ActorTick_LizardKongBoulder(Actor* arg0) {

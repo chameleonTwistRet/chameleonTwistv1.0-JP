@@ -702,7 +702,69 @@ s32 func_8008873C(f32* arg0, f32* arg1, f32* arg2) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800887F0.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80088B7C.s")
+void func_80088B7C(u8* arg0, u8* arg1, u8* arg2, u8* arg3, u8* arg4, u8* arg5) {
+    f32 temp_f0;
+    s32 temp_t6;
+    s32 temp_v0;
+    s32 var_v1;
+    #define notEight (8.0f+0)
+    
+    temp_v0 = D_80174998 & 7;
+    temp_t6 = (D_80174998 & 0x18) / 8;
+    if (temp_t6 == 0) {
+        if (temp_v0 < 0) {
+            var_v1 = -temp_v0;
+        } else {
+            var_v1 = temp_v0;
+        }
+        temp_f0 = var_v1 / notEight;
+        *arg0 = (0 * temp_f0) + 255;
+        *arg1 = (-175 * (temp_f0)) + 255;
+        *arg2 = 0 * temp_f0;
+        *arg3 = 0xFF;
+        *arg4 = 0xFF;
+        *arg5 = 0;
+    } else if (temp_t6 == 1) {
+        if (temp_v0 < 0) {
+            var_v1 = -temp_v0;
+        } else {
+            var_v1 = temp_v0;
+        }
+        temp_f0 = var_v1 / notEight;
+        *arg0 = 0xFF;
+        *arg1 = 0x50;
+        *arg2 = 0;
+        *arg3 = (0 * temp_f0) + 255;
+        *arg4 = (-175 * temp_f0) + 255;
+        *arg5 = 0 * temp_f0;
+    } else if (temp_t6 == 2) {
+        if (temp_v0 < 0) {
+            var_v1 = -temp_v0;
+        } else {
+            var_v1 = temp_v0;
+        }
+        temp_f0 = (8 - var_v1) / notEight;
+        *arg0 = (0 * temp_f0) + 255;
+        *arg1 = (-175 * temp_f0) + 255;
+        *arg2 = 0 * temp_f0;
+        *arg3 = 0xFF;
+        *arg4 = 0x50;
+        *arg5 = 0;
+    } else {
+        if (temp_v0 < 0) {
+            var_v1 = -temp_v0;
+        } else {
+            var_v1 = temp_v0;
+        }
+        temp_f0 = (8 - var_v1) / notEight;
+        *arg0 = 0xFF;
+        *arg1 = 0xFF;
+        *arg2 = 0;
+        *arg3 = (0 * temp_f0) + 255;
+        *arg4 = (-175 * temp_f0) + 255;
+        *arg5 = 0 * temp_f0;
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800893C0.s")
 
@@ -3278,16 +3340,188 @@ const char D_8010E1CC[] = "Ｃ  ＹＥＳＮＯ";
 const char D_8010E1DC[] = "Ｃ  ＯＫ";
 const char D_8010E1E8[] = "Ｃ  ＱＵＩＴ";
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80097D1C.s")
+void func_80097D1C(CTTask* task) {
+    s16 i;
+    CTTask* newTask = task->unk58;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800983C8.s")
+    setPrimColor(0xCD, 0xFF, 0x4F, 0xFF);
+    func_80059F28(0, 0, 0, 0, 1, 320, 240, 0, 0);
+    func_800610B8();
+    printUISprite(80, 16, 0, 0, 1, 0, 0, 0, 0x4E);
+    printUISprite(208, 16, 0, 0, 1, 0, 0, 2, 0x4E);
+    for(i = 0x70; i < 0xB1; i += 0x20){
+        printUISprite(i, 16, 0, 0, 1, 0, 0, 1, 0x4E);
+    }
+    func_800610A8();
+    SetTextGradient(0xF0, 0x14, 0xA, 0xFF, 0xDC, 0xDC, 1, 0xFF, 0xF0, 0x14, 0xA, 0xFF, 0xDC, 0xDC, 1, 0xFF);
+    PrintText(92, 20, 1, 1, 0, 0, "ＤＡＴＡ", 1);
+    if (newTask->unk54 >= 0xC) {
+        PrintText(164, 20, 1, 1, 0, 0, "ＣＯＰＹ", 1);
+    } else if (newTask->unk54 >= 8) {
+        PrintText(164, 20, 1, 1, 13, 24, "ＣＬＥＡＲ", 1);
+    } else if (newTask->unk54 >= 4) {
+        PrintText(164, 20, 1, 1, 0, 0, "ＬＯＡＤ", 1);
+    } else {
+        PrintText(164, 20, 1, 1, 0, 0, "ＳＡＶＥ", 1);
+    }
+    func_800610A8();
+    SetTextGradient(0x16, 0xC8, 0xA, 0xFF, 0xDC, 0xDC, 1, 0xFF, 0x16, 0xC8, 0xA, 0xFF, 0xDC, 0xDC, 1, 0xFF);
+    if (newTask->unk54 >= 4) {
+        PrintText(47, 209, 1, 1, 8, 14, "ＯＫ", 1);
+        PrintText(101, 209, 1, 1, 8, 14, "ＣＡＮＣＥＬ", 1);
+        PrintText(187, 209, 1, 1, 8, 14, "ＣＬＥＡＲ", 1);
+        PrintText(265, 209, 1, 1, 8, 14, "ＣＯＰＹ", 1);
+        printUISprite(24, 208, 0, 0, 1, 0, 0, 0, 0x6E);
+        printUISprite(78, 208, 0, 0, 1, 0, 0, 1, 0x6E);
+        printUISprite(164, 208, 0, 0, 1, 0, 0, 3, 0x6E);
+        printUISprite(242, 208, 0, 0, 1, 0, 0, 2, 0x6E);
+    } else {
+        PrintText(117, 209, 1, 1, 8, 14, "ＯＫ", 1);
+        PrintText(191, 209, 1, 1, 8, 14, "ＣＡＮＣＥＬ", 1);
+        printUISprite(94, 208, 0, 0, 1, 0, 0, 0, 0x6E);
+        printUISprite(168, 208, 0, 0, 1, 0, 0, 1, 0x6E);
+    }
+    func_800610B8();
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80098684.s")
+void func_800983C8(CTTask* task) {
+    f32 x = task->pos.x - 20;
+    f32 y = task->pos.y - 8;
+    f32 i;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80098F50.s")
+    func_800610B8();
+    func_80059F28(x, y, 0, 0, 1, 0, 0, 0, 0x4D);
+    func_80059F28(x, y + 24, 0, 0, 1, 32, 16, 3, 0x4D);
+    func_80059F28(x, y + 40, 0, 0, 1, 0, 0, 6, 0x4D);
+    func_80059F28(x + 96, y, 0, 0, 1, 0, 0, 2, 0x4D);
+    func_80059F28(x + 96, y + 24, 0, 0, 1, 0, 0, 5, 0x4D);
+    func_80059F28(x + 96, y + 40, 0, 0, 1, 0, 0, 8, 0x4D);
+    for(i = x + 32; i <= x + 64; i += 32){
+        func_80059F28(i, y, 0, 0, 1, 0, 0, 1, 0x4D);
+        func_80059F28(i, y + 24, 0, 0, 1, 0, 0, 4, 0x4D);
+        func_80059F28(i, y + 40, 0, 0, 1, 0, 0, 7, 0x4D);
+    }
+}
+
+void func_80098684(u8* arg0, u8* arg1, u8* arg2, u8* arg3, u8* arg4, u8* arg5) {
+    f32 temp_f0;
+    s32 temp_t6;
+    s32 temp_v0;
+    s32 var_v1;
+    #define notEight (8.0f + 0)
+
+    temp_v0 = D_80174998 & 7;
+    temp_t6 = (D_80174998 & 0x18) / 8;
+    if (temp_t6 == 0) {
+        if (temp_v0 < 0) {
+            var_v1 = -temp_v0;
+        } else {
+            var_v1 = temp_v0;
+        }
+        temp_f0 = var_v1 / notEight;
+        *arg0 = (-198 * temp_f0) + 220;
+        *arg1 = (-20 * temp_f0) + 220;
+        *arg2 = (9 * temp_f0) + 1;
+        *arg3 = 220;
+        *arg4 = 220;
+        *arg5 = 1;
+    } else if (temp_t6 == 1) {
+        if (temp_v0 < 0) {
+            var_v1 = -temp_v0;
+        } else {
+            var_v1 = temp_v0;
+        }
+        temp_f0 = var_v1 / notEight;
+        *arg0 = 22;
+        *arg1 = 200;
+        *arg2 = 10;
+        *arg3 = (-198 * temp_f0) + 220;
+        *arg4 = (-20 * temp_f0) + 220;
+        *arg5 = (9 * temp_f0) + 1;
+    } else if (temp_t6 == 2) {
+        if (temp_v0 < 0) {
+            var_v1 = -temp_v0;
+        } else {
+            var_v1 = temp_v0;
+        }
+        temp_f0 = (8 - var_v1) / notEight;
+        *arg0 = (-198 * temp_f0) + 220;
+        *arg1 = (-20 * temp_f0) + 220;
+        *arg2 = (9 * temp_f0) + 1;
+        *arg3 = 22;
+        *arg4 = 200;
+        *arg5 = 10;
+    } else{
+        if (temp_v0 < 0) {
+            var_v1 = -temp_v0;
+        } else {
+            var_v1 = temp_v0;
+        }
+        temp_f0 = (8 - var_v1) / notEight;
+        *arg0 = 220;
+        *arg1 = 220;
+        *arg2 = 1;
+        *arg3 = (-198 * temp_f0) + 220;
+        *arg4 = (-20 * temp_f0) + 220;
+        *arg5 = (9 * temp_f0) + 1;
+    }
+}
+
+//ty rain
+void func_80098F50(CTTask* task) {
+    CTTask* newTask;
+    f32 x;
+    f32 y;
+    char pad3[8];
+    char pad2[4];
+    char resultChar[1];
+    s32 unk62;
+    s32 temp;
+    u8 r1;
+    u8 r2;
+    u8 g1;
+    u8 g2;
+    u8 b1;
+    u8 b2;
+    
+    unk62 = task->unk_62._s16;
+    newTask = task->unk58;
+    x = task->pos.x;
+    y = task->pos.y;
+    func_800610A8();
+    if ((task->unk_62._s16 == newTask->unk6A) && (newTask->unk54 == 6)) {
+        D_80174998 += 1;
+        func_80098684(&r1, &g1, &b1, &r2, &g2, &b2);
+        SetTextGradient(0xFF, 0, 0, 0xFF, 0xFF, 0x80, 0, 0xFF, 0xFF, 0, 0, 0xFF, 0xFF, 0x80, 0, 0xFF);
+    } else if (task->unk_62._s16 == newTask->unk6A) {
+        func_80098684(&r1, &g1, &b1, &r2, &g2, &b2);
+        SetTextGradient(r1, g1, b1, 0xFF, r2, g2, b2, 0xFF, r1, g1, b1, 0xFF, r2, g2, b2, 0xFF);
+    } else if ((task->unk_62._s16 == newTask->unk_64) && (newTask->unk54 == 0xD)) {
+        SetTextGradient(0xC8, 0x16, 0xA0, task->unk_68._u8[1], 0xDC, 0xDC, 0x14, task->unk_68._u8[1], 0xC8, 0x16, 0xA0, task->unk_68._u8[1], 0xC8, 0xDC, 0x14, task->unk_68._u8[1]);
+    } else {
+        SetTextGradient(0x7F, 0x7F, 0x3C, task->unk_68._u8[1], 0x1E, 0x1E, 0x14, task->unk_68._u8[1], 0x7F, 0x7F, 0x3C, task->unk_68._u8[1], 0x1E, 0x1E, 0x14, task->unk_68._u8[1]);
+    }
+    PrintText(x, y, 0, 1, 0, 0, "ＤＡＴＡ", 1);
+    PrintText(x + 72, y, 0, 1, 0, 0, ParseIntToBase10(unk62 + 1, &resultChar[0]), 1);
+    func_800610B8();
+    if ((u16) task->unk72 == 1) {
+        temp = task->unk_64;
+        func_80059F28(x, y + 33, 0, 0, 1, 0, 0, 0,D_801003CC[task->unk66._s16]);
+        printUISprite(x + 28, y + 33, 0, 0, 1, 0, 0, 0, 0x70);
+        SetTextGradient(0x14, 0x64, 1, 0xFF, 0xF0, 0xDC, 0, 0xFF, 0x14, 0x64, 1, 0xFF, 0xF0, 0xDC, 0, 0xFF);
+        func_800612F0(1);
+        printUISprite(x + 20 + 16 + 9, y + 33, 0, 0, 1, 16, 16, 20, 1);
+        func_800612F0(0);
+        SetTextGradient(0x14, 0x64, 1, 0xFF, 0xF0, 0xDC, 0, 0xFF, 0x14, 0x64, 1, 0xFF, 0xF0, 0xDC, 0, 0xFF);
+        PrintText(x + 20 + 32 + 10, y + 30, 0, 1, 12, 20, ParseIntToBase10(temp, &resultChar[0]), 1);
+    } else{
+        SetTextGradient(1, 1, 1, 0xFF, 1, 1, 1, 0xFF, 1, 1, 1, 0x80, 1, 1, 1, 0x80);
+        PrintText(x + 16, y + 32, 0, 1, 8, 16, "ＮＯ  ＤＡＴＡ！", 1);
+    }
+}
 
 void func_80099570(CTTask* task) {
-    func_800983C8();
+    func_800983C8(task);
     func_80098F50(task);
 }
 
@@ -3304,15 +3538,15 @@ void func_8009960C(CTTask* arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/Task_LoadSaveFileAt.s")
 
 void func_8009984C(CTTask* arg0) {
-    arg0->unk_68 = 0xFF;
+    arg0->unk_68._s16 = 0xFF;
     func_80099570(arg0);
 }
 
 void func_80099870(CTTask* arg0) {
     CTTask* sp1C = arg0->unk58;
-    arg0->unk_68 -= 32;
+    arg0->unk_68._s16 -= 32;
     func_80099570(arg0);
-    if (arg0->unk_68 <= 0) {
+    if (arg0->unk_68._s16 <= 0) {
         arg0->function = func_80099598;
         sp1C->unk5E._s16 = 1;
     }
@@ -3407,10 +3641,10 @@ void func_8009ACC8(CTTask* task) {
     SaveData_WriteFile(&gGameState);
     gGameState.flags |= 2;
     gGameState.checksum = SaveData_FileChecksum(&gGameState.checksum);
-    task->unk_68 = 4;
+    task->unk_68._s16 = 4;
     if (SaveData_UpdateFile(task->unk6A, &gGameState) != 0) {
         task->function = func_8009AE38;
-        task->unk_68 = 0x3C;
+        task->unk_68._s16 = 0x3C;
     }
     else {
         task->function = func_8009ADDC;
@@ -3430,14 +3664,14 @@ void func_8009AD74(CTTask* task) {
         var_v0 = var_v1;
         var_v1 = var_v1->next;
     }
-    task->unk_68 = 4;
+    task->unk_68._s16 = 4;
     task->function = func_8009AF98;
 }
 
 void func_8009ADDC(CTTask* task) {
     //eugh
-    s16 temp_v0 = task->unk_68;
-    task->unk_68 = temp_v0 - 1;
+    s16 temp_v0 = task->unk_68._s16;
+    task->unk_68._s16 = temp_v0 - 1;
     if (temp_v0 == 0) {
         DummiedPrintf("元に戻る\n", task);
         task->function = func_8009AD74;
@@ -3549,14 +3783,14 @@ void func_8009BAF4(CTTask* task) {
     SaveData_LoadFile(task->unk6A, &gGameState);
     (&D_80200C08)[105] = task->unk6A;
     D_800FF8EC = task->unk6A;
-    task->unk_68 = 8;
+    task->unk_68._s16 = 8;
     task->function = func_8009BB54;
 }
 
 void func_8009BB54(CTTask* task) {
     //eugh
-    s16 temp_v0 = task->unk_68;
-    task->unk_68 = temp_v0 - 1;
+    s16 temp_v0 = task->unk_68._s16;
+    task->unk_68._s16 = temp_v0 - 1;
     if (temp_v0 == 0) {
         DummiedPrintf("元に戻る\n");
         task->function = func_8009BBD8;
@@ -3601,12 +3835,12 @@ void func_8009BC98(CTTask* arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009BCF0.s")
 
 void func_8009BDA8(CTTask* arg0) {
-    arg0->unk_68 = 4;
+    arg0->unk_68._s16 = 4;
     arg0->function = &func_8009BDE4;
 }
 
 void func_8009BDC0(CTTask* arg0) {
-    if (arg0->unk_68--) {
+    if (arg0->unk_68._s16--) {
         return;
     }
     arg0->function = &func_8009BDA8;
@@ -3643,7 +3877,7 @@ void func_8009BFF8(CTTask* arg0) {
     func_80099AF4(arg0);
     SaveData_ClearRecords();
     arg0->function = &func_8009C038;
-    arg0->unk_68 = 4;
+    arg0->unk_68._s16 = 4;
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009C038.s")
@@ -3706,10 +3940,10 @@ void func_8009C394(CTTask* task) {
     SaveData_LoadFile(task->unk_64, &gSaveFiles[task->unk_64]);
     gSaveFiles[task->unk_64].checksum = SaveData_FileChecksum(&gSaveFiles[task->unk_64].checksum);
     if (SaveData_UpdateFile(task->unk6A, &gSaveFiles[task->unk_64]) != 0) {
-        task->unk_68 = 0x3C;
+        task->unk_68._s16 = 0x3C;
         task->function = func_8009C4E0;
     } else {
-        task->unk_68 = 8;
+        task->unk_68._s16 = 8;
         task->function = func_8009C700;
     }
 }
@@ -3728,13 +3962,13 @@ void func_8009C644(CTTask* task) {
             at->function = func_80099598;
         }
     }
-    task->unk_68 = 8;
+    task->unk_68._s16 = 8;
     task->function = func_8009C6AC;
 }
 
 void func_8009C6AC(CTTask* arg0) {
-    s16 save = arg0->unk_68;
-    arg0->unk_68 = save-1;
+    s16 save = arg0->unk_68._s16;
+    arg0->unk_68._s16 = save-1;
     if (save == 0) {
         DummiedPrintf("元に戻る\n", arg0);
         arg0->function = func_8009BA38;
@@ -3743,7 +3977,7 @@ void func_8009C6AC(CTTask* arg0) {
 }
 
 void func_8009C700(CTTask* task) {
-    if (task->unk_68--) {
+    if (task->unk_68._s16--) {
         return;
     } else {
         DummiedPrintf("元に戻る\n", task);
@@ -3866,11 +4100,96 @@ void func_8009D954(s32 notUsed) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009DC40.s")
 
-void func_8009DDEC(CTTask* task) {
-    func_8008D6E4(task, &gContMain[task->unk_62._s16]);
+u16 func_8009DDEC(CTTask* task) {
+    return func_8008D6E4(task, &gContMain[task->unk_62._s16]);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009DE1C.s")
+void func_8009DE1C(CTTask* task) {
+    u16 result;
+    CTTask* temp_t1;
+
+    temp_t1 = task->unk58;
+    task->unk54 = 0;
+    task->unk44 = 3;
+    if (temp_t1->unk54 == 15) return;
+    while (temp_t1->unk94[task->unk_5C] != 0xFF){
+        task->unk_5C++;
+        if ((task->unk_5C == 4) && (D_80200B2C == 0)) {
+            task->unk_5C++;
+        }
+        if ((task->unk_5C == 5) && (D_80200B30 == 0)) {
+            task->unk_5C++;
+        }
+        if (task->unk_5C >= 6) {
+            task->unk_5C = 0;
+        }
+    }
+    result = func_8009DDEC(task);
+    temp_t1 = task->unk58;
+    if (gContMain[task->unk_62._s16].buttons2 & 0x8000) {
+        task->unk72 = 2;
+        task->function = func_8009E24C;
+        task->unk60._s16 = 8;
+        temp_t1->unk94[task->unk_5C] = task->unk_62._s16;
+        PLAYSFX(0x28, 0, 0x10);
+    }
+    if (gContMain[task->unk_62._s16].buttons2 & 0x4000) {
+        temp_t1->unk54 = 15;
+        PLAYSFX(0xC4, 0, 0x10);
+        return;
+    }
+    if (result == 0) return;
+    if (result & 0x200) {
+        task->unk_5C--;
+        if (task->unk_5C < 0) {
+            task->unk_5C = 5;
+        }
+        if ((task->unk_5C == 5) && (D_80200B30 == 0)) {
+            task->unk_5C--;
+        }
+        if ((task->unk_5C == 4) && (D_80200B2C == 0)) {
+            task->unk_5C--;
+        }
+        PLAYSFX(0x2A, 0, 0x10);
+        while (temp_t1->unk94[task->unk_5C] != 0xFF){
+            task->unk_5C--;
+            if (task->unk_5C < 0) {
+                task->unk_5C = 5;
+            }
+            if ((task->unk_5C == 5) && (D_80200B30 == 0)) {
+                task->unk_5C--;
+            }
+            if ((task->unk_5C == 4) && (D_80200B2C == 0)) {
+                task->unk_5C--;
+            }
+        }
+    }
+    if (result & 0x100) {
+        task->unk_5C++;
+        if ((task->unk_5C == 4) && (D_80200B2C == 0)) {
+            task->unk_5C++;
+        }
+        if ((task->unk_5C == 5) && (D_80200B30 == 0)) {
+            task->unk_5C++;
+        }
+        if (task->unk_5C >= 6) {
+            task->unk_5C = 0;
+        }
+        PLAYSFX(0x2A, 0, 0x10);
+        while (temp_t1->unk94[task->unk_5C] != 0xFF){
+            task->unk_5C++;
+            if ((task->unk_5C == 4) && (D_80200B2C == 0)) {
+                task->unk_5C++;
+            }
+            if ((task->unk_5C == 5) && (D_80200B30 == 0)) {
+                task->unk_5C++;
+            }
+            if (task->unk_5C >= 6) {
+                task->unk_5C = 0;
+            }
+        }
+    }
+}
 
 void func_8009E24C(CTTask* task) {
     task->unk44 = 4;
@@ -3917,7 +4236,25 @@ void func_8009E784(CTTask* task) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009EE44.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009F0C8.s")
+void func_8009F0C8(CTTask* task) {
+    func_8009E82C(task);
+    if (func_8008EC90() != 0) {
+        if (task->unk54 == 14) {
+            task->unk_64 = 0;
+            func_8008E9AC(32, 0, 0, 0, &task->unk_64);
+            task->function = func_8009F5B0;
+            D_80200B18 = task->unk5E._s16;
+        } else if (task->unk54 == 9) {
+            task->unk_64 = 0;
+            func_8008E9AC(32, 0, 0, 0, &task->unk_64);
+            task->function = func_8009F7F4;
+        } else if (task->unk54 == 8) {
+            task->unk_64 = 0;
+            func_8008E9AC(32, 0, 0, 0, &task->unk_64);
+            task->function = func_8009F1B4;
+        }
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009F1B4.s")
 
@@ -3932,7 +4269,7 @@ void func_8009F7F4(CTTask* task) {
         task->function = func_800A02C4;
         task->unk66._s16 = gSelectedBattleBGM + 1;
         task->unk_62._s16 = D_80200B1A;
-        task->unk_68 = D_80200B1C;
+        task->unk_68._s16 = D_80200B1C;
         task->unk6A = D_801003DC;
         task->unk_64 = 0;
         func_8008EA60(32, 0, 0, 0, &task->unk_64);
@@ -3959,7 +4296,7 @@ void func_800A02C4(CTTask* task) {
     if (task->unk54 == 12) {
         D_80200B1A = task->unk_62._s16;
         gSelectedBattleBGM = task->unk66._s16 - 1;
-        D_80200B1C = task->unk_68;
+        D_80200B1C = task->unk_68._s16;
         D_801003DC = task->unk6A;
         func_8008E9AC(32, 0, 0, 0, &task->unk_64);
         task->function = func_800A0354;
@@ -3989,8 +4326,8 @@ void func_800A07E0(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A0E3C.s")
 
-void func_800A0EB8(CTTask* task) {
-    func_8008D6E4(task, &gContMain[task->unk_62._s16]);
+u16 func_800A0EB8(CTTask* task) {
+    return func_8008D6E4(task, &gContMain[task->unk_62._s16]);
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A0EE8.s")
@@ -4387,7 +4724,7 @@ CTTask* func_800A5060(void){
 
     if(!t){
         DummiedPrintf("エラー\n");
-        while(1){;}
+        while(1){}
     }
     t->function = func_800A50B4;
     return t;

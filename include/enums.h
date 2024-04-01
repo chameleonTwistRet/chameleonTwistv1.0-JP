@@ -419,7 +419,7 @@ enum SFX {
     //114
     SFX_73_unkSnd = 115,
     SFX_74_unkSnd = 116,
-    SFX_75_unkSnd = 117,
+    SFX_GrenadeWalk = 117,
     SFX_76_unkSnd = 118,
     SFX_77_unkSnd = 119,
     SFX_Bomb_Caterpillar_Slither = 120, //Bomb Land
@@ -445,7 +445,7 @@ enum SFX {
     SFX_8C_unkSnd = 140,
     SFX_8D_unkSnd = 141,
     SFX_8E_unkSnd = 142,
-    SFX_8F_unkSnd = 143,
+    SFX_RockTumble = 143,
     SFX_90_unkSnd = 144,
     SFX_91_unkSnd = 145,
     SFX_92_unkSnd = 146,
@@ -455,7 +455,7 @@ enum SFX {
     SFX_96_unkSnd = 150,
     SFX_97_unkSnd = 151,
     SFX_98_unkSnd = 152,
-    SFX_99_unkSnd = 153,
+    SFX_ChocoKidNoise = 153,
     SFX_9A_unkSnd = 154,
     SFX_9B_unkSnd = 155,
     SFX_9C_unkSnd = 156,

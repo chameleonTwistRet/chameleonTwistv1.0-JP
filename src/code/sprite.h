@@ -3,29 +3,6 @@
 
 #include "common.h"
 
-/* structs */
-typedef struct SpriteListing {
-    /* 0x00 */ Gfx* unk_00;
-    /* 0x04 */ void* bitmapP; // "malloc'd" after size calc.
-    /* 0x08 */ void* palletteP; //palette? both this and above start with devAddr+0XD73D960
-    /* 0x0C */ s32 type; // use "COLORMODE_*" enum
-    /* 0x10 */ u8* unk10;
-    /* 0x14 */ u8 unk14;
-    /* 0x15 */ u8 tileCountX;
-    /* 0x16 */ u8 tileCountY;
-    /* 0x17 */ u8 tileIndexX;
-    /* 0x18 */ u8 tileIndexY;
-    /* 0x19 */ char unk19;
-    /* 0x1A */ u16 width; // width of each tile
-    /* 0x1C */ u16 height; // height of each tile
-    /* 0x1E */ RGBA32 prim;
-    /* 0x22 */ char unk22[0x6];
-    /* 0x28 */ Vtx quad[4];
-    /* 0x68 */ s32 bitmapRom; //devAddr-0x8c26a0
-    /* 0x6C */ s32 paletteRom;
-    /* 0x70 */ s32 unk70;
-    /* 0x74 */ char unk_74[4];
-} SpriteListing; //sizeof 0x78
 
 typedef struct Effect_HealthBar_Data {
     /* 0x00 */ s32* curHPPtr;
@@ -103,11 +80,9 @@ typedef struct UnkBowlingStruct {
 /* extern symbols */
 extern s32 D_80176960[];
 extern s32 D_80176980[];
-extern OSPfs gRumblePfs[];
 extern s32 gUnkRumbleArray[];
 void osMotorStop(OSPfs *pfs);
 extern s32 D_80176960[];
-extern OSPfs gRumblePfs[];
 extern s32 gRumbleTime[];
 extern f32 D_800FEA18;
 extern f32 D_800FEA1C;
@@ -117,7 +92,6 @@ extern Tongue* D_80176B70;
 extern PlayerActor* D_80176B74;
 extern Camera* D_80176B78;
 extern s32 currentStageCrowns;
-extern SpriteListing gSpriteListings[230];
 extern char D_8010CA1C[];
 extern char D_8010CA54[];
 extern Addr D_8C26A0;
@@ -165,5 +139,7 @@ void Effect_UpdateAll(Gfx*);
 void func_80069734(void);
 void func_8007CDEC(void);
 f32 func_80056104(f32, f32);
+Effect* Effect_Alloc(s32 numParts, s32 dataSize, void* fpUpdate);
+void* func_800745F8(void);
 
 #endif //_SPRITE_H_

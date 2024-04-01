@@ -94,6 +94,8 @@ typedef struct Unk_800FFDDC {
 u64 __ull_div(u64 a0, u64 a1);
 u64 __ll_mul(u64 a0, u64 a1);
 
+void func_8009F1B4(CTTask* task);                   /* extern */
+void func_8009F5B0(CTTask* task);                   /* extern */
 
 /* funcs */
 void schedproc(s32 arg0);
@@ -121,6 +123,7 @@ s32 func_800885EC(s32 arg0, s32 arg1);
 s32 func_80088698(s32 arg0);
 s32 func_800886D8(s32 arg0, s16 arg1, s16 arg2);
 s32 func_8008873C(f32* arg0, f32* arg1, f32* arg2);
+void func_80088B7C(u8*, u8*, u8*, u8*, u8*, u8*);
 void func_800893C0(u8*, u8*, u8*, u8*, u8*, u8*, u8*, u8*, u8*, u8*, u8*, u8*);
 void PlayJungleExtSfx(void);
 void PlayJungleExtSfxWrapper(void);
@@ -169,7 +172,7 @@ s32 func_8008D5DC(ContMain* controller);
 //this also came up as CTTask but it generates with buttons1 and buttons2 so i think thats more accurate
 //definitely only has one arg though
 u16 func_8008D6B4(ContMain*);
-s32 func_8008D6E4(CTTask*, ContMain*);
+u16 func_8008D6E4(CTTask*, ContMain*);
 s32 func_8008D7B0(CTTask* task);
 s32 func_8008D7FC(CTTask* task);
 s32 func_8008D950(void);
@@ -322,6 +325,10 @@ void func_80097540(CTTask* task);
 void func_80097624(CTTask* task);
 void func_80097794(CTTask* task);
 void func_80097CF8(CTTask* task);
+void func_80097D1C(CTTask* task);
+void func_800983C8(CTTask* task);
+void func_80098684(u8*, u8*, u8*, u8*, u8*, u8*);
+void func_80098F50(CTTask* task);
 void func_80099570(CTTask* task);
 void func_80099598(CTTask* arg0);
 void func_8009960C(CTTask* arg0);
@@ -377,7 +384,7 @@ void func_8009CFA8(void);
 void func_8009D08C(CTTask* task);
 void func_8009D19C(s32 arg0);
 void func_8009D954(s32 notUsed);
-void func_8009DDEC(CTTask* task);
+u16 func_8009DDEC(CTTask* task);
 void func_8009DE1C(CTTask* task);
 void func_8009E24C(CTTask* task);
 void func_8009E2B0(CTTask* arg0);
@@ -386,14 +393,14 @@ void func_8009E504(CTTask* task);
 void func_8009E784(CTTask* task);
 // battle stage select
 void func_8009E82C(CTTask* task);
-void func_8009F0C8(CTTask*);
+void func_8009F0C8(CTTask* task);
 void func_8009F7F4(CTTask* task);
 void func_8009F890(void);
 void func_800A02C4(CTTask* task);
 void func_800A0354(CTTask* arg0);
 void func_800A07E0(void);
 void func_800A0E3C(CTTask* task);
-void func_800A0EB8(CTTask* task);
+u16 func_800A0EB8(CTTask* task);
 void func_800A0EE8(CTTask* task);
 void func_800A10E8(CTTask* task);
 //chameleon select
@@ -604,6 +611,7 @@ extern s16 D_80200B1C;
 extern s16 gSelectedBattleBGM;
 extern f32 D_80100468[];
 extern s8 D_80200B2C;
-
+extern s16 D_801003CC[];
+extern s16 D_80200B18;
 
 #endif // _5FF30_H_

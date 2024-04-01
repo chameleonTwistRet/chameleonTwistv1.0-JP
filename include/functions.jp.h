@@ -377,7 +377,6 @@ void func_800935F8(s32);
 void func_800945E4(CTTask*);
 void func_80094E0C(CTTask*);
 s32 LoadStageByIndex(s32);
-void func_800983C8(void);
 void func_80098F50(CTTask*);
 void func_80099570(CTTask*);
 void Task_LoadSaveFileAt(CTTask*);
@@ -482,6 +481,9 @@ void func_80059254(Mtx* arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, 
 void func_800598C4(Mtx* arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, s32 arg7);
 void loadBossDeadEyes(s32, CTTask*);
 void func_8005747C(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, s32 arg6);
+Effect* Effect_TypeK_Init(f32 duration, f32 arg1, f32 arg2);
+void func_800747E0(f32, f32, u32, f32, f32, f32, u32, u32, s32, u32*);
+void func_800743BC(f32, f32, f32, f32, f32, f32, u32, u32, s32, u32*);
 //1050.c
 void DemoGfx_DrawFrame(Gfx* arg0, graphicStruct* arg1, s32 fbIndex);
 void DemoGfx_SwapFB(s32 fbIndex);

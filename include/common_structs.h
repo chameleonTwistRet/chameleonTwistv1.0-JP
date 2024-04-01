@@ -104,7 +104,7 @@ typedef struct PlayerActor {
     /* 0x0C4 */ u32 vaultFall;//timer for falling after vault
     /* 0x0C8 */ s32 hp;
     /* 0x0CC */ u32 playerHURTSTATE;
-    /* 0x0D0 */ u32 playerHURTTIMER;
+    /* 0x0D0 */ s32 playerHURTTIMER;
     /* 0x0D4 */ u32 playerHURTANIM;
     /* 0x0D8 */ u32 playerHURTBY;
     /* 0x0DC */ f32 unk_DC[6];
@@ -486,10 +486,13 @@ typedef struct CTTask {
         s8 _s8[2];
         s16 _s16;
     } unk66;
-    /* 0x68 */ s16 unk_68;
+    /* 0x68 */ union {
+        u8 _u8[2];
+        s16 _s16;
+    } unk_68;
     /* 0x6A */ s16 unk6A;                           /* inferred */
     /* 0x6C */ s16 unk6C;
-    /* 0x6E */ s16 unk_6E;
+    /* 0x6E */ u16 unk6E;
     /* 0x70 */ s16 unk_70;
     /* 0x72 */ s16 unk72;
     /* 0x74 */ s16 unk74;
@@ -1159,5 +1162,29 @@ typedef struct unk80170E68 {
 } unk80170E68;
 
 extern unk80170E68 D_80170E68[];
+
+/* structs */
+typedef struct SpriteListing {
+    /* 0x00 */ Gfx* unk_00;
+    /* 0x04 */ void* bitmapP; // "malloc'd" after size calc.
+    /* 0x08 */ void* palletteP; //palette? both this and above start with devAddr+0XD73D960
+    /* 0x0C */ s32 type; // use "COLORMODE_*" enum
+    /* 0x10 */ u8* unk10;
+    /* 0x14 */ u8 unk14;
+    /* 0x15 */ u8 tileCountX;
+    /* 0x16 */ u8 tileCountY;
+    /* 0x17 */ u8 tileIndexX;
+    /* 0x18 */ u8 tileIndexY;
+    /* 0x19 */ char unk19;
+    /* 0x1A */ u16 width; // width of each tile
+    /* 0x1C */ u16 height; // height of each tile
+    /* 0x1E */ RGBA32 prim;
+    /* 0x22 */ char unk22[0x6];
+    /* 0x28 */ Vtx quad[4];
+    /* 0x68 */ s32 bitmapRom; //devAddr-0x8c26a0
+    /* 0x6C */ s32 paletteRom;
+    /* 0x70 */ s32 unk70;
+    /* 0x74 */ char unk_74[4];
+} SpriteListing; //sizeof 0x78
 
 #endif
