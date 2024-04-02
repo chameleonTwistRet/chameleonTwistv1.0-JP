@@ -208,7 +208,7 @@ void DisableInput(void);
 void EnableInput(void);
 s32 func_80055C90(void);
 s32 func_80055E5C(s32); // arg is controller #define
-void func_80055EEC(s32);
+s32 func_80055EEC(s32);
 s32 func_80055F10(s32, s32);
 void func_80055FA4(void);
 void func_80055FBC(s32);

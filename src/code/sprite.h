@@ -168,6 +168,30 @@ typedef struct Effect_TypeAF_Data {
     /* 0x28 */ s32 unk_28;
 } Effect_TypeAF_Data; //sizeof 0x2C
 
+typedef struct Effect_TypeAH_Data {
+    /* 0x000 */ Mtx mtx[2];
+    /* 0x080 */ Gfx* dlist;
+    /* 0x084 */ char pad_84[4];
+    /* 0x088 */ Mtx animArray[2][20];
+    /* 0xA88 */ void* unk_A88;
+    /* 0xA8C */ void* unk_A8C;
+    /* 0xA90 */ f32 yaw;
+    /* 0xA94 */ s32 unk_A94;
+    /* 0xA98 */ s32 unk_A98;
+    /* 0xA9C */ s32 unk_A9C;
+    /* 0xAA0 */ u8* unk_AA0;
+    /* 0xAA4 */ u8* unk_AA4;
+    /* 0xAA8 */ u8 unk_AA8;
+    /* 0xAAC */ char unk_AAC[4];
+} Effect_TypeAH_Data; //sizeof 0xAB0
+
+typedef struct Effect_TypeAH_Arg5 {
+    /* 0x00 */ void* unk_00;
+    /* 0x04 */ void* unk_04;
+    /* 0x08 */ u8* unk_08;
+    /* 0x0C */ s32 unk_0C;
+} Effect_TypeAH_Arg5; // sizeof 0x10
+
 /* extern symbols */
 extern s32 D_80176960[];
 extern s32 D_80176980[];
@@ -230,6 +254,8 @@ extern struct_800FE54C D_800FE54C[];
 extern s32 D_80174980;
 extern s16 D_800FFEBC;
 extern u8 D_800FE6F0;
+extern Gfx* D_800F0638[];
+extern s32 D_800FE708;
 
 /* functions */
 void func_80055C04(void);
@@ -246,5 +272,8 @@ void Effect_TypeAC_Init(f32 posX, f32 posY, f32 posZ, f32 arg3, f32 duration);
 void func_80088474(s32, s32);
 void func_800882D0(s32, s32);
 void func_80088474(s32, s32);
+void func_80027138(void* arg0, s32* arg1, s32* arg2, Mtx** arg3);
+void func_80027240(Mtx** arg0, Mtx* arg1, s32 arg2, s32 arg3);
+s32 PutDList(Mtx** arg0, Gfx** arg1, Gfx* arg2);
 
 #endif //_SPRITE_H_
