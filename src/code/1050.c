@@ -228,7 +228,7 @@ void func_80025EF0(PlayerActor* arg0, Tongue* arg1, s32 arg2) {
         D_80168D8C = arg0->pos.y + sp88;
         D_80168D90 = arg0->pos.z + sp84;
         if (D_80174980 == 4) {
-            func_800703C0(&D_80168D88, &D_80168D8C, &D_80168D90, 50.0f, 20.0f, 10.0f, 5, 180, 75);
+            Effect_TypeAF_Init(&D_80168D88, &D_80168D8C, &D_80168D90, 50.0f, 20.0f, 10.0f, 5, 180, 75);
         }
     }
 }

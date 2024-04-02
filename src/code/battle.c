@@ -932,7 +932,7 @@ void Battle_Update(void) {
             Battle_PlayEnvSounds();
             Battle_PrintTextBig(80.0f, 100.0f, Battle_Time / 23.333334f, 17, 5, Battle_MsgReady, 1);
             if (Battle_Time == 40) {
-                func_800705C4(8.0f, 90.0f, 0x5FFF);
+                Effect_TypeAG_Init(8.0f, 90.0f, 0x5FFF);
             }
             if (Battle_Time > 70) {
                 D_800F0674 = 0;

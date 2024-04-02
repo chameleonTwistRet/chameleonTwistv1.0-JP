@@ -41,7 +41,7 @@ void func_80058044(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f
 void Effect_TypeT_Init(f32, f32, s32, s32);
 void func_80027240(Mtx** arg0, Mtx* arg1, s32 arg2, s32 arg3);
 void func_80027138(void* arg0, s32* arg1, s32* arg2, Mtx** arg3);
-void func_800703C0(f32* arg0, f32* arg1, f32* arg2, f32 arg3, f32 arg4, f32 arg5, s32 arg6, s32 arg7, s32 arg8);
+void Effect_TypeAF_Init(f32* arg0, f32* arg1, f32* arg2, f32 arg3, f32 arg4, f32 arg5, s32 arg6, s32 arg7, s32 arg8);
 
 /* Ext Variables */
 extern graphicStruct gGraphicsList[2];

@@ -145,6 +145,29 @@ typedef struct Effect_TypeAA_Data {
     /* 0x0C */ RGBA32 color;
 } Effect_TypeAA_Data; //sizeof 0x10
 
+typedef struct Effect_TypeAB_Data {
+    /* 0x00 */ f32 size;
+    /* 0x04 */ RGBA32 color;
+} Effect_TypeAB_Data; //sizeof 0x08
+
+typedef struct Effect_TypeAC_Data {
+    /* 0x00 */ RGBA32 color;
+} Effect_TypeAC_Data; //sizeof 0x04
+
+typedef struct Effect_TypeAF_Data {
+    /* 0x00 */ f32* pPosX;
+    /* 0x04 */ f32* pPosY;
+    /* 0x08 */ f32* pPosZ;
+    /* 0x0C */ f32 unk_0C;
+    /* 0x10 */ f32 unk_10;
+    /* 0x14 */ f32 unk_14;
+    /* 0x18 */ f32 unk_18;
+    /* 0x1C */ f32 unk_1C;
+    /* 0x20 */ f32 unk_20;
+    /* 0x24 */ f32 unk_24;
+    /* 0x28 */ s32 unk_28;
+} Effect_TypeAF_Data; //sizeof 0x2C
+
 /* extern symbols */
 extern s32 D_80176960[];
 extern s32 D_80176980[];
@@ -204,6 +227,9 @@ extern f32 D_800FE6F4[];
 extern u8 D_800FE704[];
 extern struct_800FE4EC D_800FE4EC[];
 extern struct_800FE54C D_800FE54C[];
+extern s32 D_80174980;
+extern s16 D_800FFEBC;
+extern u8 D_800FE6F0;
 
 /* functions */
 void func_80055C04(void);
@@ -216,5 +242,9 @@ void Effect_UpdateAll(s32*);
 void func_80069734(void);
 void func_8007CDEC(void);
 f32 func_80056104(f32, f32);
+void Effect_TypeAC_Init(f32 posX, f32 posY, f32 posZ, f32 arg3, f32 duration);
+void func_80088474(s32, s32);
+void func_800882D0(s32, s32);
+void func_80088474(s32, s32);
 
 #endif //_SPRITE_H_
