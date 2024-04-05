@@ -3,46 +3,41 @@
 
 #include "PR/ultratypes.h"
 
-/*for some godforsaken reason in gbi.h line 1045 it defines the core mtx structure as LONGS????
-its two sets of sixteen shorts dude!!! it does no parsing to fix it!!! wtf!!!
-the f stands for fixed btw*/
-typedef short Mtx_f[2][16];
-
 typedef struct Vec2f {
-               f32 x;
-               f32 y;
+    f32 x;
+    f32 y;
 } Vec2f;
 
-typedef struct Vec2s {
-               s32 x;
-               s32 y;
-} Vec2s;
+typedef struct Vec2w {
+    s32 x;
+    s32 y;
+} Vec2w;
 
 typedef struct Vec3f {
-               f32 x;
-               f32 y;
-               f32 z;
+    f32 x;
+    f32 y;
+    f32 z;
 } Vec3f;
 
-typedef struct Vec3s {
-               s32 x;
-               s32 y;
-               s32 z;
-} Vec3s;
+typedef struct Vec3w {
+    s32 x;
+    s32 y;
+    s32 z;
+} Vec3w;
 
 typedef struct Vec4f {
-               f32 x;
-               f32 y;
-               f32 z;
-               f32 yaw;
+    f32 x;
+    f32 y;
+    f32 z;
+    f32 yaw;
 } Vec4f;
 
-typedef struct Color32{
+typedef struct RGBA32{
     u8 r;
     u8 g;
     u8 b;
     u8 a;
-} Color32;
+} RGBA32;
 
 typedef struct Rect3D {
     Vec3f min;
@@ -84,7 +79,7 @@ typedef struct PlayerActor {
     /* 0x050 */ f32 hitboxYStretch; //unconfirmed. 150 default.
     /* 0x054 */ u32 canJump;    //0x00 = yes, 0x01 = no
     /* 0x058 */ u32 jumpReleasedInAir;    // 0x00 = no, 0x01 = yes
-    /* 0x05C */ u32 jumpAnimFrame;
+    /* 0x05C */ s32 jumpAnimFrame;
     /* 0x060 */ u32 hasTumbled;    //0x00 = no, 0x01 = yes. resets on jump.
     /* 0x064 */ u32 unk64;
     /* 0x068 */ u32 inWater;//0x00 = no, 0x01 = yes.
@@ -104,33 +99,23 @@ typedef struct PlayerActor {
     /* 0x0A8 */ Vec3f move; //override when sliding on slopes or on poles
     /* 0x0B4 */ u32 groundMovement; //0x00 = standing, 0x01 = walking, 0x02 = running
     /* 0x0B8 */ f32 globalTimer;
-    /* 0x0BC */ u32 unkBC;
+    /* 0x0BC */ s32 unkBC;
     /* 0x0C0 */ u32 amountLeftToShoot;
     /* 0x0C4 */ u32 vaultFall;//timer for falling after vault
     /* 0x0C8 */ s32 hp;
     /* 0x0CC */ u32 playerHURTSTATE;
-    /* 0x0D0 */ u32 playerHURTTIMER;
+    /* 0x0D0 */ s32 playerHURTTIMER;
     /* 0x0D4 */ u32 playerHURTANIM;
     /* 0x0D8 */ u32 playerHURTBY;
-    /* 0x0DC */ f32 unk_DC;
-    /* 0x0E0 */ f32 unk_E0;
-    /* 0x0E4 */ f32 unk_E4;
-    /* 0x0E8 */ f32 unk_E8;
-    /* 0x0EC */ f32 unk_EC;
-    /* 0x0F0 */ f32 unk_F0;
-    /* 0x0F4 */ f32 unk_F4;
-    /* 0x0F8 */ f32 unk_F8;
-    /* 0x0FC */ f32 unk_FC;
-    /* 0x100 */ f32 unk_100;
-    /* 0x104 */ f32 unk_104;
-    /* 0x108 */ f32 unk_108;
+    /* 0x0DC */ f32 unk_DC[6];
+    /* 0x0F4 */ f32 unk_F4[6];
     /* 0x10C */ f32 timerDown;
     /* 0x110 */ f32 reticleSize;
     /* 0x114 */ s32 active; //0x00 = no, 0x01 = yes
     /* 0x118 */ s32 exists; //0x00 = no, 0x01 = yes
     /* 0x11C */ u32 power; //enum of power it has
-    /* 0x120 */ u32 powerTimer; 
-    /* 0x124 */ u32 powerTimerTill; 
+    /* 0x120 */ s32 powerTimer; 
+    /* 0x124 */ s32 powerTimerTill; 
     /* 0x128 */ f32 tongueYOffset; 
     /* 0x12C */ f32 tongueSeperation; 
 } PlayerActor; //sizeof 0x130
@@ -149,16 +134,12 @@ typedef struct Tongue { // at 80169268 (for p1)
     /* 0x04 */ u32 tongueMode; //enum of tongue actions
     /* 0x08 */ s32 segments;
     /* 0x0C */ s32 poleSegmentAt;
-    /* 0x10 */ u32 timer;
+    /* 0x10 */ s32 timer;
     /* 0x14 */ s32 cameraSegmentAt;//where to point the camera
-    /* 0x18 */ f32 tongueXs[32]; //all (including the rope model) positions
-    /* 0x98 */ f32 xpos33;//the last piece is special to the positions and angle
-    /* 0x9C */ f32 tongueYs[32];
-    /* 0x11C*/ f32 ypos33;
-    /* 0x120*/ f32 tongueZs[32];
-    /* 0x1A0*/ f32 zpos33;
-    /* 0x1A4*/ f32 tongueAngles[32];
-    /* 0x224*/ f32 anglepos33;
+    /* 0x18 */ f32 tongueXs[33]; //all (including the rope model) positions
+    /* 0x9C */ f32 tongueYs[33];
+    /* 0x120*/ f32 tongueZs[33];
+    /* 0x1A4*/ f32 tongueAngles[33];
     /* 0x228*/ f32 tongueForwards[32];
     /* 0x2A8*/ f32 tongueHalfX[32]; // unsure, axes related though
     /* 0x328*/ f32 tongueHalfZ[32];
@@ -168,9 +149,9 @@ typedef struct Tongue { // at 80169268 (for p1)
     /* 0x3B4*/ u32 onTongue[64];
     /* 0x4B4*/ u32 amountOnTongue; //called "capture_num" in US 1.0
     /* 0x4B8*/ u32 inMouth[64];
-    /* 0x5B8*/ u32 amountInMouth;
+    /* 0x5B8*/ s32 amountInMouth;
     //all of this has to do with vaulting
-    /* 0x5BC*/ f32 reset1;
+    /* 0x5BC*/ f32 reset1[1];
     /* 0x5C0*/ f32 reset2;
     /* 0x5C4*/ f32 reset3;
     /* 0x5C8*/ f32 reset4;
@@ -316,7 +297,7 @@ typedef struct Collider {
     /* 0x014 */ s32 unk_14;
     /* 0x018 */ Vec3f sfxPos;
     /* 0x024 */ f32 unk_24;
-    /* 0x028 */ s32 unk_28;
+    /* 0x028 */ s32 UNK_28;
     /* 0x02C */ s32 unk_2C;
     /* 0x030 */ f32 unk_30;
     /* 0x034 */ f32 unk_34;
@@ -463,22 +444,30 @@ typedef struct tempStruct {
 } tempStruct; //sizeof 0x48
 
 typedef struct CTTask {
-    /* 0x00 */ s16 unk_00;
-    /* 0x02 */ s16 unk_02;
+    /* 0x00 */ s16 runType;
+    /* 0x02 */ s16 taskID;
     /* 0x04 */ s16 unk_04;
-    /* 0x06 */ char unk06[2];
+    /* 0x06 */ s8 unk06[2];
     /* 0x08 */ void (*function)(struct CTTask*);
     /* 0x0C */ struct CTTask* next;
-    /* 0x10 */ struct CTTask* unk_10;
+    /* 0x10 */ struct CTTask* prev;
     /* 0x14 */ Vec3f pos;
     /* 0x20 */ f32 rotA;
     /* 0x24 */ Vec3f scale;
     /* 0x30 */ Vec3f rot;
     /* 0x3C */ f32 unk3C;
-    /* 0x40 */ char pad40[0x14];                    /* maybe part of unk3C[6]? */
+    /* 0x40 */ f32 unk40;
+    /* 0x44 */ s16 unk44;
+    /* 0x46 */ s16 unk46;
+    /* 0x48 */ s16 unk48;
+    /* 0x4A */ s16 unk4A;                           /* inferred */
+    /* 0x4C */ s16 unk4C;
+    /* 0x4E */ u16 unk4E;
+    /* 0x50 */ Gfx* unk50;
     /* 0x54 */ u8 unk54;
-    /* 0x55 */ char pad55[3];                       /* maybe part of unk54[4]? */
-    /* 0x58 */ struct CTTask* unk58;                       /* inferred */
+    /* 0x55 */ u8 unk55;
+    /* 0x56 */ char pad56[2];                       /* maybe part of unk54[4]? */
+    /* 0x58 */ struct CTTask* unk58;
     /* 0x5C */ s16 unk_5C;
     /* 0x5E */ s16 unk5E;
     /* 0x60 */ s16 unk60;
@@ -486,18 +475,37 @@ typedef struct CTTask {
     /* 0x64 */ s16 unk_64;
     /* 0x66 */ s16 unk66;
     /* 0x68 */ s16 unk_68;
-    /* 0x6A */ char pad6A[2];
-    /* 0x6C */ char unk6C[2];
-    /* 0x6E */ s16 unk_6E;
+    /* 0x6A */ s16 unk6A;                           /* inferred */
+    /* 0x6C */ s16 unk6C;
+    /* 0x6E */ u16 unk6E;
     /* 0x70 */ s16 unk_70;
-    /* 0x74 */ char unk74[0x10];
-    /* 0x84 */ s8 str[0x24]; // used in strcpy twice.
-} CTTask;
+    /* 0x72 */ s16 unk72;
+    /* 0x74 */ s16 unk74;
+    /* 0x76 */ char unk76[0x4];
+    /* 0x7A */ u16 unk7A;
+    /* 0x7C */ f32 unk7C;
+    /* 0x80 */ f32 unk80;
+    /* 0x84 */ f32 unk84;
+    /* 0x88 */ f32 unk88;
+    /* 0x8C */ s32 unk8C;
+    /* 0x90 */ f32 unk90;
+    /* 0x94 */ u8 unk94[0x14];
+} CTTask;                                           /* size = 0xA8 */
 
-typedef struct unk801FCA20 {
-    /* 0x00 */ s32 unk_00;
-    /* 0x04 */ s32 unk_04;
-} unk801FCA20; //sizeof 0x8
+typedef struct BGMVolume {
+    /* 0x00 */ s32 vol;
+    /* 0x04 */ s32 unusedVol;
+} BGMVolume; //sizeof 0x8
+
+/* Real struct layout but could be fake match
+typedef struct BGMVolume {
+    union {
+        s16 vol_s16[2];
+        s32 vol_s32;
+    } vol;
+    /* 0x04  s32 unusedVol;
+} BGMVolume; //sizeof 0x8
+*/
 
 
 typedef struct unk800FF624 {
@@ -518,7 +526,6 @@ typedef struct unkStruct0 {
     /* 0x1C */ s32 unk_1C;
     /* 0x20 */ s32 unk_20;
 } unkStruct0; //sizeof 0x24
-
 
 typedef struct unkVecStruct {
     Vec3f vec1;
@@ -552,7 +559,7 @@ typedef struct Actor {
     /* 0x004 */ s32 actorIndex;
     /* 0x008 */ s32 actorState;//enum, 0 == idle, 1 == on tongue, 2 == in mouth, 3 == spit
     /* 0x00C */ s32 posOnTongue;//the segment iirc
-    /* 0x010 */ s32 globalTimer;
+    /* 0x010 */ u32 globalTimer;
     /* 0x014 */ s32 touched; //0 == false. 1 == true.
     /* 0x018 */ s32 hit; //triggered when hit
     /* 0x01C */ s32 tongueBumpSeg; //the segment at which the tongue was bumped back
@@ -566,9 +573,9 @@ typedef struct Actor {
 
     /* 0x054 */ actorSubArray unknownPositionThings[3]; //usually 2?
     //actorSubArray is these offsets in the struct
-        // /* 0x054 */ f32 unk_54;//cos x used by fish
+        // /* 0x054 */ f32 unk_54;//cos x used by FISH
         // /* 0x058 */ f32 unk_58;//presumably y
-        // /* 0x05C */ f32 unk_5C;//sin z used by fish
+        // /* 0x05C */ f32 unk_5C;//sin z used by FISH
         // /* 0x060 */ f32 unk_60;//hitboxScale
         // /* 0x064 */ f32 unk_64;//hitboxYstretch
         
@@ -605,7 +612,7 @@ typedef struct Actor {
     /* 0x0E4 */ s32 unk_E4;
     /* 0x0E8 */ f32 unk_E8;
     /* 0x0EC */ s32 unk_EC;
-    /* 0x0F0 */ s32 unk_F0;
+    /* 0x0F0 */ u32 unk_F0;
     /* 0x0F4 */ f32 unk_F4;
     /* 0x0F8 */ f32 unk_F8;
     /* 0x0FC */ f32 unk_FC;
@@ -621,7 +628,7 @@ typedef struct Actor {
     /* 0x134 */ f32 unk_134[8];
         /* 0x154 */ union {
         Vec2f _f32;
-        Vec2s _s32;
+        Vec2w _s32;
     } position;
     /* 0x15C */ f32 unk_15C;
     /* 0x160 */ f32 unk_160;
@@ -648,7 +655,7 @@ typedef struct SaveFile {
     /* 0x02 */ u8 unk2;
     /* 0x03 */ char unk3[1];
     /* 0x04 */ char unk_04[0x1E]; //room/stage flags?
-    /* 0x22 */ s16 unk_22;
+    /* 0x22 */ s16 UNK_22;
     /* 0x24 */ char unk_24[2];
     /* 0x26 */ u8 stageAccess;
     /* 0x27 */ u8 stageClear;
@@ -662,7 +669,7 @@ typedef struct SaveFile {
     /* 0x44 */ u8 stageCrowns;
     /* 0x45 */ u8 stageTimes[8][3];
     /* 0x5D */ u8 carrotBitfield; 
-    /* 0x5E */ u8 unk_5E[2]; //first also copies carrot progress.
+    /* 0x5E */ u8 UNK_5E[2]; //first also copies CARROT progress.
 } SaveFile; //sizeof 0x60
 
 //5FF30
@@ -675,54 +682,45 @@ typedef struct unk_D_801FFB90 {
     /* 0x10 */ s32 unk_10;
 } unk_D_801FFB90; //sizeof 0x14
 
-typedef struct contMain {
+typedef struct ContMain {
     u16 buttons0;
     u16 buttons1;
     u16 buttons2;
-    s16 stickx;
-    s16 sticky;
-    u16 unk_0A; //align
+    s16 stickX;
+    s16 stickY;
     f32 stickAngle;
-} contMain; //sizeof 0x10
+} ContMain; //sizeof 0x10
 
-typedef struct d8006266c{
-    /* 0x00 */ f32 unk0;
-    /* 0x04 */ f32 unk4;
-    /* 0x08 */ s32 unk8;
-    /* 0x0C */ s32 unkC;
-    /* 0x08 */ s32 unk_10;
-    /* 0x08 */ s32 unk_14;
-    /* 0x08 */ s32 unk_18;
-    /* 0x10 */ char unk_1C[0x14];
-    /* 0x30 */ f32 unk_30;
-    /* 0x34 */ char unk_34[4];
-    /* 0x38 */ struct d8006266c* unk_38;
-    /* 0x3C */ s32 unk_3C[4];
-} d8006266c; //sizeof 0x40
+typedef struct EffectPart { 
+    /* 0x00 */ Vec3f pos;
+    /* 0x0C */ Vec3f vel;
+    /* 0x18 */ f32 lifeTime;
+    /* 0x1C */ f32 sizeX;
+    /* 0x20 */ f32 sizeY;
+    /* 0x24 */ s8 unk_24;
+    /* 0x25 */ u8 unk_25;
+    /* 0x26 */ char pad_26[2];
+} EffectPart; //sizeof 0x28
 
-typedef struct aa1{ // TODO: give better name
-    /* 0x00 */ s32 unk0;
-    /* 0x04 */ s8 unk4;
-    /* 0x05 */ s8 unk5;
+typedef struct Effect {
+    /* 0x00 */ s32 spriteID;
+    /* 0x04 */ u8 numParts;
+    /* 0x05 */ u8 unk5;
     /* 0x06 */ s8 unk6;
     /* 0x07 */ s8 unk7;
     /* 0x08 */ s32 unk8;
-    /* 0x0C */ f32 unkC;
-    /* 0x10 */ f32 unk_10;
-    /* 0x14 */ f32 unk_14;
-    /* 0x18 */ f32 unk_18;
-    /* 0x1C */ f32 unk_1C;
-    /* 0x20 */ f32 unk_20;
-    /* 0x24 */ f32 unk_24;
-    /* 0x28*/ s32 unk_28;
+    /* 0x0C */ f32 lifeTime;
+    /* 0x10 */ Vec3f pos; // TODO make union
+    /* 0x1C */ Vec3f vel;
+    /* 0x28*/ s32 UNK_28;
     /* 0x2C */ s32 unk_2C;
-    /* 0x30 */ f32 unk_30;
-    /* 0x34 */ void* unk34;
-    /* 0x38 */ void* unk_38; // this struct varies widely
-    /* 0x3C */ d8006266c* unk_3C;
-    /* 0x40 */ struct aa1* previous;
-    /* 0x44 */ struct aa1* next;
-} aa1; //sizeof 0x48
+    /* 0x30 */ f32 duration;
+    /* 0x34 */ void* fpUpdate;
+    /* 0x38 */ void* data; // TODO make union maybe
+    /* 0x3C */ EffectPart* parts;
+    /* 0x40 */ struct Effect* previous;
+    /* 0x44 */ struct Effect* next;
+} Effect; //sizeof 0x48
 
 
 
@@ -737,15 +735,23 @@ typedef struct bf8{
 
 typedef struct unkStruct {
     /* 0x00 */ s32 unk_00;
-    /* 0x04 */ char unk_04[0x104];
+    /* 0x04 */ char unk_04;
+    /* 0x08 */ f32 unk_08[0x10];
+    /* 0x48 */ f32 unk_48[0x10];
+    /* 0x88 */ f32 unk_88[0x10];
+    /* 0xC8 */ char unk_C8[0x40];
 } unkStruct; //sizeof 0x108
 
 // this struct seems to manage sound effects
 typedef struct unk0 {
-    /* 0x00 */ s32 unk0;                            /* inferred */
-    /* 0x04 */ s32 unk4;                            /* inferred */
-    /* 0x08 */ s32 unk8;                            /* inferred */
-    /* 0x0C */ char padC[0x14];                     /* maybe part of unk8[6]? */
+    /* 0x00 */ s32 unk0;
+    /* 0x04 */ s32 unk4;
+    /* 0x08 */ s32 unk8;
+    /* 0x0C */ f32 unkC;
+    /* 0x10 */ f32 unk10;
+    /* 0x14 */ f32 unk14;
+    /* 0x18 */ f32 unk18;
+    /* 0x1C */ f32 unk1C;
     /* 0x20 */ s16 unk20;
     /* 0x22 */ s16 unk22;
     /* 0x24 */ u8 unk24;
@@ -753,19 +759,20 @@ typedef struct unk0 {
     /* 0x2C */ f32 unk2C;
     /* 0x30 */ s16 unk30;
     /* 0x32 */ s16 unk32;
-    /* 0x34 */ char pad34[4];                       /* maybe part of unk32[3]? */
+    /* 0x34 */ s16 unk34;
+    /* 0x36 */ char pad36[2];
     /* 0x38 */ f32 unk38;
     /* 0x3C */ u8 unk3C;
     /* 0x3D */ u8 unk3D;
-    /* 0x3E */ char pad3E[2];                       /* maybe part of unk3D[3]? */
+    /* 0x3E */ s16 unk3E;                           /* inferred */
     /* 0x40 */ s16 unk40;
     /* 0x42 */ s16 unk42;
     /* 0x44 */ s8 unk44;
     /* 0x45 */ char pad45[3];                       /* maybe part of unk44[4]? */
-    /* 0x48 */ s32 unk48;
+    /* 0x48 */ s32 unk48; // s16 unk4a????
     /* 0x4C */ s32 unk4C;
     /* 0x50 */ struct unk0* unk50;
-    /* 0x54 */ struct unk0* unk54;                         /* inferred */
+    /* 0x54 */ struct unk0* unk54;
 } unk0;                                             /* size = 0x58 */
 
 typedef struct pole{
@@ -810,10 +817,10 @@ typedef struct graphicStruct {
 /*0x8380*/      Mtx reticuleTranslate[4][6];
 /*0x8980*/      Mtx reticuleRotate[4][6];
 /*0x8F80*/      Mtx reticuleScale[4][6];
-/*0x9580*/      Mtx toungeTranslate[4][33];
-/*0xb680*/      Mtx toungeRotate[4][33];
-/*0xD780*/      Mtx toungeScale[4][33];
-/*0xf880*/      Mtx actorTanslate[64];
+/*0x9580*/      Mtx tongueTranslate[4][33];
+/*0xb680*/      Mtx tongueRotate[4][33];
+/*0xD780*/      Mtx tongueScale[4][33];
+/*0xf880*/      Mtx actorTranslate[64];
 /*0x10880*/     Mtx actorRotate[64];
 /*0x11880*/     Mtx actorScale[64];
 /*0x12880*/     s8 unk12880[0x4000]; //mtx's for shadows?
@@ -1052,6 +1059,11 @@ typedef struct segTableEntry {
     void* ramAddrEnd;
 } segTableEntry;
 
+typedef struct StageSegData {
+    /* 0x00 */ void* baseAddress;
+    /* 0x04 */ char unk04[0x10];
+} StageSegData;
+
 typedef struct Anim {
     f32 unk0;
     f32 unk4;
@@ -1070,7 +1082,7 @@ typedef struct Anim {
 typedef struct unk80174880 {
 /* 0x00 */ s32 unk_00[4];
 /* 0x10 */ char unk_10[0x18];
-/* 0x28 */ s32 unk_28[4];
+/* 0x28 */ s32 UNK_28[4];
 /* 0x38 */ char unk_38[0x18];
 /* 0x50 */ s32 unk_50[4];
 /* 0x60 */ char unk_60[0x18];
@@ -1117,12 +1129,12 @@ typedef struct unk80175608 {
     char unk_00[0x18];
 } unk80175608;
 
-//ok so you actually have to make the other parts vec3f name[] and vec3s name[] SEPERATE from the struct
+//ok so you actually have to make the other parts vec3f name[] and Vec3w name[] SEPERATE from the struct
 //that kinda sucks but i know why now at least
 typedef struct CollisionData{
     Vec3f positionProbably;
     Vec3f scaleProbably;
-    s32 aOVerts;
+    s32 noVerts;
     s32 aOTris;
     u32 vertsStart; //segmented, points to verts[]
     u32 trisStart; //segmented, points to tris[]
@@ -1135,5 +1147,29 @@ typedef struct unk80170E68 {
 } unk80170E68;
 
 extern unk80170E68 D_80170E68[];
+
+/* structs */
+typedef struct SpriteListing {
+    /* 0x00 */ Gfx* unk_00;
+    /* 0x04 */ void* bitmapP; // "malloc'd" after size calc.
+    /* 0x08 */ void* palletteP; //palette? both this and above start with devAddr+0XD73D960
+    /* 0x0C */ s32 type; // use "COLORMODE_*" enum
+    /* 0x10 */ u8* unk10;
+    /* 0x14 */ u8 unk14;
+    /* 0x15 */ u8 tileCountX;
+    /* 0x16 */ u8 tileCountY;
+    /* 0x17 */ u8 tileIndexX;
+    /* 0x18 */ u8 tileIndexY;
+    /* 0x19 */ char unk19;
+    /* 0x1A */ u16 width; // width of each tile
+    /* 0x1C */ u16 height; // height of each tile
+    /* 0x1E */ RGBA32 prim;
+    /* 0x22 */ char unk22[0x6];
+    /* 0x28 */ Vtx quad[4];
+    /* 0x68 */ s32 bitmapRom; //devAddr-0x8c26a0
+    /* 0x6C */ s32 paletteRom;
+    /* 0x70 */ s32 unk70;
+    /* 0x74 */ char unk_74[4];
+} SpriteListing; //sizeof 0x78
 
 #endif

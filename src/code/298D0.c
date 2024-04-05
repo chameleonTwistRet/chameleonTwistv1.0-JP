@@ -1,10 +1,6 @@
-#include "common.h"
+#include "298D0.h"
 
 //these seem to solely be controller-based functions
-
-/* Externs */
-extern s32 RumblePakError;
-extern s32 D_80176960[];
 
 /* Migrated BSS */
 OSMesgQueue gEepromMsgQ;
@@ -13,7 +9,7 @@ OSContStatus D_80175640[MAXCONTROLLERS];
 OSContPad D_80175650[MAXCONTROLLERS];
 s32 D_80175668[MAXCONTROLLERS];       
 u16 D_80175678[MAXCONTROLLERS];       
-contMain gContMain[MAXCONTROLLERS];   
+ContMain gContMain[MAXCONTROLLERS];   
 u16 D_801756C0[MAXCONTROLLERS];       
 OSPfs gRumblePfs[MAXCONTROLLERS];     
 
@@ -83,24 +79,21 @@ void Controller_StartRead(void) {
     osContStartReadData(&gEepromMsgQ);
 }
 
-void Controller_Zero(contMain* arg0) {
-    arg0->sticky = 0;
-    arg0->buttons2 = 0;
-    arg0->buttons1 = 0;
-    arg0->buttons0 = 0;
-    arg0->stickx = arg0->sticky;
-    arg0->stickAngle = 0.0f;
+void Controller_Zero(ContMain* cont) {
+    cont->buttons0 = cont->buttons1 = cont->buttons2 = 0;
+    cont->stickX = cont->stickY = 0;
+    cont->stickAngle = 0.0f;
 }
 
 /*
- * @param[in,out] arg0: contMain array (usually the same as arg3)
+ * @param[in,out] arg0: ContMain array (usually the same as arg3)
  * @param arg1: number of controllers
 
  */
 // arg2: 80168D78 = [0,1,2,3]
-void func_8004E784(contMain* arg0, s32 arg1, s32* arg2, contMain* arg3) {
-    contMain* var_s0;
-    contMain* var_s1;
+void func_8004E784(ContMain* arg0, s32 arg1, s32* arg2, ContMain* arg3) {
+    ContMain* var_s0;
+    ContMain* var_s1;
     s32 i;
 
     osRecvMesg(&gEepromMsgQ, NULL, 1);
@@ -114,24 +107,24 @@ void func_8004E784(contMain* arg0, s32 arg1, s32* arg2, contMain* arg3) {
                 continue;
             }
             gContMain[i].buttons0 = D_80175650[D_80175668[i]].button;
-            gContMain[i].stickx = D_80175650[D_80175668[i]].stick_x;
-            gContMain[i].sticky = D_80175650[D_80175668[i]].stick_y;
+            gContMain[i].stickX = D_80175650[D_80175668[i]].stick_x;
+            gContMain[i].stickY = D_80175650[D_80175668[i]].stick_y;
         } else {
             gContMain[i].buttons0 = arg3[i].buttons0;
-            gContMain[i].stickx = arg3[i].stickx;
-            gContMain[i].sticky = arg3[i].sticky;
+            gContMain[i].stickX = arg3[i].stickX;
+            gContMain[i].stickY = arg3[i].stickY;
         }
 
-        gContMain[i].stickAngle = CalculateAngleOfVector((f32) gContMain[i].stickx, (f32) gContMain[i].sticky);
+        gContMain[i].stickAngle = CalculateAngleOfVector((f32) gContMain[i].stickX, (f32) gContMain[i].stickY);
         gContMain[i].buttons1 = (gContMain[i].buttons0 ^ D_80175678[i]) & gContMain[i].buttons0;
         gContMain[i].buttons2 = (gContMain[i].buttons0 ^ D_801756C0[i]) & gContMain[i].buttons0;
         D_801756C0[i] = gContMain[i].buttons0;
-        if ((gContMain[i].stickx >= -6) && (gContMain[i].stickx < 7)) {
-            gContMain[i].stickx = 0;
+        if ((gContMain[i].stickX >= -6) && (gContMain[i].stickX < 7)) {
+            gContMain[i].stickX = 0;
         }
         
-        if ((gContMain[i].sticky >= -6) && (gContMain[i].sticky < 7)) {
-            gContMain[i].sticky = 0;
+        if ((gContMain[i].stickY >= -6) && (gContMain[i].stickY < 7)) {
+            gContMain[i].stickY = 0;
         }
 
         arg0[i] = gContMain[i];
@@ -139,6 +132,6 @@ void func_8004E784(contMain* arg0, s32 arg1, s32* arg2, contMain* arg3) {
 }
 
 void func_8004E9AC(void) {
-    s32 i = 0;
-    for (i = 0; i < 4; i++) {D_80175678[i] = gContMain[i].buttons0;}
+    s32 i;
+    for (i = 0; i < MAXCONTROLLERS; i++) {D_80175678[i] = gContMain[i].buttons0;}
 }

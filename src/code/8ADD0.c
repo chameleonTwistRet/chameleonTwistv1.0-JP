@@ -1,79 +1,4 @@
-#include "common.h"
-
-typedef struct temp_func_800B2AB4 {
-    char unk0[0x4];
-    s32 unk4;
-} temp_func_800B2AB4;
-
-typedef struct unk801B3178 {
-    char unk_00[0x18];
-    s32 unk_18;
-} unk801B3178;
-
-typedef struct unk8020D908 {
-    s32 unk_00;
-    char unk_04[0x54];
-} unk8020D908;
-
-typedef struct newStruct {
-    s32 dummy0[10]; // Placeholder for the first 10 elements
-    f32 field1;
-    f32 field2;
-} newStruct;
-
-typedef struct unkStruct20 {
-    char unk_00[0x25];
-    s8 unk25;
-    char unk_26[2];
-} unkStruct20;
-
-typedef struct unkStructGlobal1 {
-    char unk_00[0xAC];
-    s32 unkAC;
-    s32 unkB0;
-    s32 unkB4;
-    s32 unkB8;
-} unkStructGlobal1;
-
-extern PlayerActor gPlayerActors[4];
-extern unkStruct07 D_802019A8[];
-extern Collision gZoneCollisions[];
-extern CardinalDirection gCardinalDirections[5]; // including "NO_DIR"
-extern s32 sBossIDs[6];
-extern unk801B3178* D_801B3178;
-extern unk8020D908 D_8020D908;
-
-extern unkStruct20 D_802039B8[];
-extern s32 D_80206CF4;
-extern unkSpriteStruct5* D_80240898;
-
-void func_800BE2A4(s32);
-void func_800BE370(s32);
-void func_800BF268(s32);
-void func_800BF524(s32);
-s32 func_800C1550(void);
-s32* func_800B3424(s32);
-void func_800B5C60(tempStruct*);
-void func_800C2670(s32, PlayerActor*, s32);
-s32* func_800B3484(s32);
-void func_800314E4(Actor*);
-void func_800B35B0(s32);
-void func_800B255C(Vec3f*, Vec3f, Collider*);
-void func_800C2A00(void);
-void func_800CFDC8(PlayerActor*);
-s32 func_800B4A3C(unkItemStruct*);
-void func_800BE474(Tongue*);
-s32 IsPickup(Actor*);
-void pickup_collide_func(s32);
-void func_800B5D68(s32, s32);
-s32 IsNotPickup(Actor* actor);
-s32 func_800B07E4(void);
-
-extern f32 D_8010FB50;
-//extern s32 D_80168DFC;
-//extern s32 D_80168E14;
-extern s32 D_802065B8[];
-extern s32 D_80206958[];
+#include "8ADD0.h"
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800AF9D0.s")
 
@@ -121,7 +46,7 @@ void func_800B08C8(unkStructGlobal1* arg0) {
         }
         if (shotActors == 0) {
             arg0->unkB4 = 2;
-            arg0->unkB8 = D_8017499C + 150;
+            arg0->unkB8 = gTimer + 150;
             return;
         }
        break;
@@ -130,7 +55,7 @@ void func_800B08C8(unkStructGlobal1* arg0) {
             arg0->unkB4 = 3;
             func_800B35B0(arg0->unkB0);
         }
-        if (arg0->unkB8 < D_8017499C) {
+        if (arg0->unkB8 < gTimer) {
             arg0->unkB4 = 3;
         }
         break;
@@ -143,8 +68,16 @@ void func_800B08C8(unkStructGlobal1* arg0) {
 void func_800B09C0(s32 arg0, newStruct* arg1) {
     func_800B56D4(arg1->field1, arg1->field2);
 }
+//unsure of arg1 type
+void func_800B09E8(unkStructGlobal1* arg0, unkBlackChameleon1* arg1) {
+    arg0->unkAC = arg1->unk38;    
+    if (func_800B34D0(arg0->unkAC) != 0) {
+        arg0->unkB0 = 0;
+        return;
+    }
+    arg0->unkB0 = 1;
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B09E8.s")
 
 void func_800B0A30(unkBlackChameleon0* arg0, unkBlackChameleon1* arg1) {
     gPlayerActors[1].active = gPlayerActors[1].exists = 1;
@@ -162,7 +95,7 @@ void func_800B0A30(unkBlackChameleon0* arg0, unkBlackChameleon1* arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B0B20.s")
 //deals with "shutters"
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/registShutter.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/RegistShutter.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B118C.s")
 
@@ -170,7 +103,10 @@ void func_800B0A30(unkBlackChameleon0* arg0, unkBlackChameleon1* arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B1538.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B1DA0.s")
+void func_800B1DA0(Collider* arg0, s32 arg1) {
+    func_800B5D68(arg0, 2);
+    arg0->unk_8C = 0.0f;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B1DD4.s")
 
@@ -216,8 +152,8 @@ void func_800B216C(Collider* arg0) {
     s32 ballCount = 0;
     s32 i;
 
-    for (i = 0, actorList = gActors; i < ACTORS_MAX; i++, actorList++) {
-        if (actorList->actorID == Billiards_Ball) {
+    for (i = 0, actorList = gActors; i < ARRAY_COUNT(gActors); i++, actorList++) {
+        if (actorList->actorID == BILLIARDS_BALL) {
             ballCount++;
         }
     }
@@ -275,7 +211,7 @@ void LimitFloat(f32* _float, f32 a, f32 b) {
  * @return: 1 if the actor is not a pickup, 0 otherwise.
  */
 s32 IsNotPickup(Actor* actor) {
-    return (actor->actorID != 0 && actor->actorID < R_Heart) ? 1 : 0;
+    return (actor->actorID != 0 && actor->actorID < R_HEART) ? 1 : 0;
 }
 
 /**
@@ -286,7 +222,7 @@ s32 IsNotPickup(Actor* actor) {
  * @return: 1 if the actor is a pickup, 0 otherwise.
  */
 s32 IsPickup(Actor* actor) {
-    return (actor->actorID >= R_Heart ) ? 1 : 0;
+    return (actor->actorID >= R_HEART ) ? 1 : 0;
 }
 
 /**
@@ -411,7 +347,7 @@ Vec3f* Vec3f_SetAtBossPos(Vec3f* arg0) {
     Vec3f_Zero(&pos); // Call Vec3f_Zero with the passed in pointer
 
     actors = gActors;
-    for (i = 0; i < ACTORS_MAX; i++, actors++) {
+    for (i = 0; i < ARRAY_COUNT(gActors); i++, actors++) {
         if (IsActorBoss(actors)) { // Check if the current actor is a boss
             pos.x = actors->pos.x; // Set x coordinate of pos to boss x coordinate
             pos.y = actors->pos.y; // Set y coordinate of pos to boss y coordinate
@@ -475,7 +411,7 @@ void func_800B2D34(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B2D78.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B2E40.s")
-void func_800B2E40(unkSpriteStruct5*);
+
 void func_800B3364(s32 arg0) {
     s32 i;
     unkSpriteStruct5** temp_s0;
@@ -491,10 +427,10 @@ void func_800B3364(s32 arg0) {
 }
 
 //rains 7 month old bool checker
-s32 isntNegative(s32 value) {
+s32 IsntNegative(s32 value) {
     return ( value >= 0 ) ? 1 : 0;
 }
-extern s32 D_80174880[];
+
 s32* func_800B3424(s32 arg0) {
     s32 var_v0;
     if (arg0 & 0x100) {
@@ -502,7 +438,7 @@ s32* func_800B3424(s32 arg0) {
     } else {
         var_v0 = 0;
     }
-    return (var_v0 != 0) ? (s32*)gZoneCollisions[(u8)arg0].pad68 : &D_80174880[(u8)arg0];
+    return (var_v0 != 0) ? (s32*)gZoneCollisions[(u8)arg0].pad68 : &levelFlags[(u8)arg0];
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B3484.s")
@@ -602,17 +538,17 @@ void func_800B3648(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B3698.s")
 
-void resetStageModels(void) {
+void ResetStageModels(void) {
     VertextBufferCount = 0;
     TriangleBufferCount = 0;
     ModelBufferCount = 0;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/registModel.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/RegistModel.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/moveModel.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/scaleModel.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/ScaleModel.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/RotateModel.s")
 
@@ -703,7 +639,7 @@ s32 func_800B3F9C(unkSpriteStruct4* arg0) {
 
 //this struct pointer type for arg0 is wrong
 s32 func_800B3FFC(unkSpriteStruct5 *arg0, s32 arg1) {
-    Vec3s *new_var = &D_801087D8[arg1];
+    Vec3w *new_var = &D_801087D8[arg1];
     int new_var2 = arg0->unk_14 & new_var->y;
 
     return new_var2 >> (*new_var).z;
@@ -738,25 +674,25 @@ void func_800B40FC(void) {
 }
 
 /**
- * @brief This function returns a boolean value based on whether the carrot item is available in the stage passed in as an argument.
+ * @brief This function returns a boolean value based on whether the CARROT item is available in the stage passed in as an argument.
  * 
- * @param stage: The stage to check for the carrot item. 
- * @return true if the carrot item is available in the stage passed in as an argument, false otherwise.
+ * @param stage: The stage to check for the CARROT item. 
+ * @return true if the CARROT item is available in the stage passed in as an argument, false otherwise.
  */
 s32 StageCarrotAvailable(s32 stage) {
-    if (stage > STAGE_GHOST) { //not a stage with a carrot
+    if (stage > STAGE_GHOST) { //not a stage with a CARROT
         return FALSE;
     }
-    if (gCarrotBitfield & (1 << stage)) { //carrot already collected
+    if (gCarrotBitfield & (1 << stage)) { //CARROT already collected
         return FALSE;
     }
     return TRUE;
 }
 
 /**
- * @brief Adds a carrot to the global bitfield and increments the total number of carrots collected.
+ * @brief Adds a CARROT to the global bitfield and increments the total number of carrots collected.
  * 
- * @param stage: the index of the bitfield to add the carrot to. 
+ * @param stage: the index of the bitfield to add the CARROT to. 
  */
 void AddCarrot(s32 stage) {
     s32 i;
@@ -812,7 +748,7 @@ void setCrownPositionsForRoom(s32 arg0) {
 void func_800B4FCC(void) {
     s32 i;
     
-    for (i = 0; i < ACTORS_MAX; i++) {
+    for (i = 0; i < ARRAY_COUNT(gActors); i++) {
         if ((IsNotPickup(&gActors[i]) != 0) && (gActors[i].actorState == 0)) {
             func_800311C8(&gActors[i]);
             func_800313BC(i, Random(0, 0x168));
@@ -830,7 +766,15 @@ void func_800B5600(void) {
     D_802025B0 = 0;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B560C.s")
+extern s32 D_80202530[32];
+
+void func_800B560C(s32 arg0) {
+    if (D_802025B0 < 32) {
+        D_802025B0[D_80202530] = arg0;
+        D_802025B0++;
+    }
+}
+
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B5640.s")
 
@@ -867,7 +811,7 @@ void func_800B6040(Collider* arg0) {
     arg0->unk_B0 = 2;
 }
 
-void func_800B6054(s32 arg0, s32 arg1) {
+void func_800B6054(Collider* arg0, s32 arg1) {
     func_800B5D68(arg0, 1);
 }
 
@@ -889,7 +833,12 @@ void func_800B6078(Collider* arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B6C34.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B6CD8.s")
+void func_800B6CD8(Collider* arg0, Camera* arg1) {
+    func_800B5D68(arg0, 1);
+    arg0->unk_8C = arg1->f4.x;
+    arg0->unk_90 = arg1->f4.y;
+    arg0->unk_94 = arg1->f4.z;
+}
 
 void func_800B6D24(tempStruct* arg0) {
     Vec3f_Zero(&arg0->unk_3C);
@@ -992,7 +941,11 @@ void func_800BA900(tempStruct* arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BD55C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BD608.s")
+void func_800BD608(tempStruct* arg0) {
+    Vec3f_Zero(&arg0->unk_3C);
+    func_800B5C60(arg0);
+}
+
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BD634.s")
 
@@ -1024,7 +977,7 @@ void func_800BE2C0(void) {
     Actor* actorList = gActors;
     s32 i;
 
-    for (i = 0; i < ACTORS_MAX; i++, actorList++) {
+    for (i = 0; i < ARRAY_COUNT(gActors); i++, actorList++) {
         if ((IsNotPickup(actorList) != 0) && (actorList->actorState != 0)) {
             func_800311C8(actorList);
             func_800314E4(actorList);
@@ -1060,7 +1013,15 @@ void func_800BE370(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BE474.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BE550.s")
+void func_800BE550(Tongue* arg0) {
+    arg0->vaulting = 0;
+    arg0->tongueMode = 0;
+    arg0->segments = 0;
+    arg0->amountOnTongue = 0;
+    arg0->amountInMouth = 0;
+    func_800BE474(arg0);
+}
+
 
 void EraseToungeEatEnemy(Tongue* arg0) {
     s32 i;
@@ -1097,7 +1058,13 @@ void func_800BE664(PlayerActor * arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BE714.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BE7BC.s")
+void func_800BE7BC(void) {
+    s32 i;
+    pole* var_v1;
+    for(i=0,var_v1=D_80170968; i < 64; i++, var_v1++ ){
+          var_v1->mode=0;        
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BE7F0.s")
 
@@ -1234,15 +1201,13 @@ void func_800C0CDC(PlayerActor* arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4) {
     func_800BFCD0();
 }
 
-void EraseRoomItem(s32);
-
 void func_800C0E78(s32 arg0) {
     s32 i;
     s32 temp = arg0;
 
     if (gZoneCollisions[arg0].unk60 != 0) {
         temp = 1;
-        for (i = 0; i < ACTORS_MAX; i++) {
+        for (i = 0; i < ARRAY_COUNT(gActors); i++) {
             if ((gActors[i].actorID != 0) && (gZoneCollisions[arg0].unk84 == gActors[i].actorID) && (gActors[i].actorState == 0)) {
                 temp = 0;
                 break;
@@ -1256,13 +1221,16 @@ void func_800C0E78(s32 arg0) {
     EraseRoomItem(arg0);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/checkDoor.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/CheckDoor.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C1204.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C1458.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C1510.s")
+void func_800C1510(s32 arg0, s32 arg1) {
+    D_802039B4 = 1;
+    func_800C1204(arg0, &gPlayerActors[0], 1,  arg1, 1);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C1550.s")
 
@@ -1366,8 +1334,8 @@ void enterBossRoom(void) {
 //really big wow
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C5304.s")
 
-// why would this ever need to zero Vec2s and arg1? (This surely is zeroing a Vec3s? (this is already a function?))
-void func_800C54F8(Vec2s* arg0, s32* arg1) {
+// why would this ever need to zero Vec2w and arg1? (This surely is zeroing a Vec3w? (this is already a function?))
+void func_800C54F8(Vec2w* arg0, s32* arg1) {
     arg0->x = 0;
     arg0->y = 0;
     *arg1 = 0;
@@ -1471,13 +1439,8 @@ void func_800C88D0(void) {
     func_800C56D4(&gPlayerActors[0]);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/D_8010FA44.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/D_8010FA4C.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/D_8010FA54.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/D_8010FA5C.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/D_8010FA64.s")
-
+const char D_8010FA44[] = "NO_DIR";
+const char D_8010FA4C[] = "NORTH";
+const char D_8010FA54[] = "EAST";
+const char D_8010FA5C[] = "SOUTH";
+const char D_8010FA64[] = "WEST";

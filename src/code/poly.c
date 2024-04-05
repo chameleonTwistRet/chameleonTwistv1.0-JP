@@ -1,21 +1,6 @@
 #include "common.h"
 
-/* Migrated BSS */
-//TODO: type this data correctly
-char gShadows[0xC00];
-s32 gShadowCount;
-Vec3f D_80248518;
-char D_80248528[0x18];
-char D_80248540[0x368];
-s32 D_802488A8;
-char D_802488B0[0x10];
-char gHasShadow[0x100];
-char D_802489C0[0x08];
-Vec3f D_802489C8[8];
-char D_80248A28[0x08];
-
 /* rodata */
-extern char D_80110180[];
 extern char D_801103D0[];
 
 extern f64 D_801104F8;
@@ -25,7 +10,6 @@ extern Collider D_80236980[128];
 extern s32 D_8020D8F4;
 extern f64 D_801106A0;
 extern f64 D_801106A8;
-extern s32 D_80174880[0x20];
 
 extern Vec3f D_80108F9C;
 extern Vec3f D_80108FA8;
@@ -41,6 +25,20 @@ extern f32 D_80108FE4;
 extern s32 D_80108FE8;
 extern s32 D_80108FEC;
 extern Vec3f D_802489C8[8];
+
+/* Migrated BSS */
+//TODO: type this data correctly
+char gShadows[0xC00];
+s32 gShadowCount;
+Vec3f D_80248518;
+char D_80248528[0x18];
+char D_80248540[0x368];
+s32 D_802488A8;
+char D_802488B0[0x10];
+char gHasShadow[0x100];
+char D_802489C0[0x08];
+Vec3f D_802489C8[8];
+char D_80248A28[0x08];
 
 Vec3f* RotateVector3D(Vec3f*, Vec3f, f32, s32);
 void func_800D3854(PlayerActor*, Tongue*, Camera*, Vec3f*, Vec3f*, s32);
@@ -59,7 +57,7 @@ void ClearPolygon(void) {
     D_80236968 = 0;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/poly/D_80110180.s")
+const char D_80110180[] = "\n";
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800C8F0C.s")
 
@@ -243,10 +241,10 @@ void func_800CFF7C(Vec3f* arg0) {
     Rect3D* temp_v0;
 
     if (D_80236974 != 1) {
-        if ((gCurrentStage == 1) && ((gCurrentZone == 7) || (gCurrentZone == 0xF)) && (D_80174880[0] != 0)) {
-            temp_f14 = (SQ(arg0->x) + SQ(arg0->z));
+        if ((gCurrentStage == 1) && ((gCurrentZone == 7) || (gCurrentZone == 0xF)) && (levelFlags[0] != 0)) {
+            temp_f14 = SUM_OF_SQUARES(arg0->x, arg0->z);
             if (810000.0 < temp_f14) {
-                temp_f0_2 = __sqrtf((f32) (810000.0 / temp_f14));
+                temp_f0_2 = sqrtf((f32) (810000.0 / temp_f14));
                 arg0->x = arg0->x * temp_f0_2;
                 arg0->z = arg0->z * temp_f0_2;
             }
