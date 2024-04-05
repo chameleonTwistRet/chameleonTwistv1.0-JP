@@ -1,4 +1,5 @@
 #include "battle.h"
+#include "sprite.h"
 
 // BSS
 u8 Battle_PlayerIsOut[4];
@@ -1198,7 +1199,7 @@ void Process_Ranking(void) {
         func_8008F114();
         break;
     case 1:
-        func_80072D34();
+        Effect_TypeAN_Init();
         gGameModeState++;
         func_8008F114();
         break;
@@ -1246,7 +1247,7 @@ void func_800557F8(void) {
         func_8008F114();
         break;
     case 1:
-        func_80073090();
+        Effect_TypeAO_Init();
         gGameModeState++;
         func_8008F114();
         break;
@@ -1278,7 +1279,7 @@ void Process_Boot(void) {
         func_8008F114();
         break;
     case 1:
-        checkControllerRumble();
+        Effect_ControllerRumble_Init();
         gGameModeState++;
         func_8008F114();
         break;

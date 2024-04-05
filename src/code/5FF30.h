@@ -13,7 +13,7 @@ typedef struct unk800A250C {
 typedef struct unk80100DF0 {
     s16 unk_00;
     s16 unk_02;
-    void* unk_04;
+    char* unk_04;
 } unk80100DF0; //sizeof 0x08
 
 typedef struct unk801FC9BC {
@@ -98,9 +98,9 @@ void func_8008EB08(s32, s32, s32, s32, s16*, f32, f32, f32, f32, s32);
 void func_800A4904(CTTask*);
 void func_800A4BCC(void);
 void func_800A4868(CTTask*);
-void func_80080864(f32, f32, f32, f32, f32, f32, unk80100DF0*, s32);
-s32 RecordTime_ParseToSecs(s32*);
-void RecordTime_SetTo(s32, u8*);
+void func_80080864(f32, f32, f32, f32, f32, f32, char*, s32);
+s32 RecordTime_ParseToSecs(TimeVal*);
+void RecordTime_SetTo(s32, TimeVal*);
 void SaveData_LoadFile(s32, SaveFile*);
 void func_800A25F0(s32, f32);
 void func_800A50B4(CTTask*);
@@ -150,7 +150,6 @@ Gfx* func_8008E314(Gfx*, Tongue*, PlayerActor*, Camera*, s32);
 Gfx* func_8008E488(Gfx*, Tongue*, PlayerActor*, Camera*, s32);
 Gfx* func_8005F408(Gfx*);
 Gfx* func_8005CA44(Gfx*);
-Gfx* func_80084884(Gfx*);
 void Controller_ParseJoystick(ContMain*);
 void func_80084A04(void);
 void func_8008DB90(Gfx**, graphicStruct*);

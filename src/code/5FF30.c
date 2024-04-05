@@ -1,4 +1,5 @@
 #include "5FF30.h"
+#include "sprite.h"
 
 enum SchedMessages {
     SCHED_MESG_VINTR = 0,
@@ -1637,10 +1638,10 @@ s32 func_80090B10(s32 time, s32 stageID) {
     }
     
     time /= 30;
-    recordTime = RecordTime_ParseToSecs((s32*)gGameState.stageTimes[baseStage]);
+    recordTime = RecordTime_ParseToSecs(&gGameState.stageTimes[baseStage]);
     
     if ((time < recordTime) || (recordTime == 0)) {
-        RecordTime_SetTo(time, gGameState.stageTimes[baseStage]);
+        RecordTime_SetTo(time, &gGameState.stageTimes[baseStage]);
         ret = 1;
     }
     
@@ -3267,7 +3268,7 @@ s32 func_800A7C58(u32 time) {
 }
 
 //parses record time, returns minutes and seconds.
-s32 RecordTime_GetMinsSecs(s32* record, s32* mins, s32* secs) {
+s32 RecordTime_GetMinsSecs(TimeVal* record, s32* mins, s32* secs) {
     s32 time;
 
     time = RecordTime_ParseToSecs(record);
@@ -3279,24 +3280,24 @@ s32 RecordTime_GetMinsSecs(s32* record, s32* mins, s32* secs) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/RecordTime_GetByStageRank.s")
 
 //parses time kept on record.
-s32 RecordTime_ParseToSecs(s32* arg0) {
-    s32 time = ((u8*)arg0)[0] & 15;
+s32 RecordTime_ParseToSecs(TimeVal* arg0) {
+    s32 time = arg0->b0 & 15;
     time <<= 8;
-    time += ((u8*)arg0)[1];
+    time += arg0->b1;
     time <<= 8;
-    time += ((u8*)arg0)[2];
+    time += arg0->b2;
     return time;
 }
 
 //sets record time arg1 to time arg0
-void RecordTime_SetTo(s32 arg0, u8* arg1) {
-    u8 temp;
+void RecordTime_SetTo(s32 arg0, TimeVal* arg1) {
+    u8 temp = arg1->b0 & 0xF0;
 
-    arg1[2] = arg0;
-    temp = arg1[0] & 0xF0;
-    arg1[1] = (u16)(arg0 & 0xFF00) >> 8;
-    arg1[0] = (arg0 & 0xFF0000) >> 16;
-    arg1[0] = temp | arg1[0];
+    arg1->b2 = arg0 & 0xFF;    
+    arg1->b1 = (arg0 & 0xFF00) >> 8;
+    arg1->b0 = (arg0 & 0xFF0000) >> 16;
+
+    arg1->b0 |= temp; // keep higher 4 bits
 }
 
 //file split? following functions deal with save data.
@@ -3520,7 +3521,7 @@ void func_800A878C(SaveFile* arg0) {
     _bzero(arg0, sizeof(SaveFile));
     //"ファイルクリア"("file clear")
     DummiedPrintf("ファイルクリア\n");
-    RecordTime_SetTo(300, (u8*)&arg0->stageTimes[6]);
+    RecordTime_SetTo(300, &arg0->stageTimes[6]);
     arg0->carrotBitfield = 0;
 }
 

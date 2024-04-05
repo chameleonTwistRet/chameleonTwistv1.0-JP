@@ -185,12 +185,18 @@ typedef struct Effect_TypeAH_Data {
     /* 0xAAC */ char unk_AAC[4];
 } Effect_TypeAH_Data; //sizeof 0xAB0
 
-typedef struct Effect_TypeAH_Arg5 {
-    /* 0x00 */ void* unk_00;
-    /* 0x04 */ void* unk_04;
-    /* 0x08 */ u8* unk_08;
-    /* 0x0C */ s32 unk_0C;
-} Effect_TypeAH_Arg5; // sizeof 0x10
+typedef struct Struct_800714C8 {
+    s32 array[6];
+} Struct_800714C8;
+
+typedef struct Effect_TypeAL_Data {
+    /* 0x00 */ u8 unk_00[0x10];
+    /* 0x10 */ u8 unk_10;
+} Effect_TypeAL_Data; //sizeof 0x11
+
+typedef struct Effect_TypeAM_Data {
+    /* 0x00 */ s32* unk_00;
+} Effect_TypeAM_Data; //sizeof 0x4
 
 /* extern symbols */
 extern s32 D_80176960[];
@@ -256,6 +262,19 @@ extern s16 D_800FFEBC;
 extern u8 D_800FE6F0;
 extern Gfx* D_800F0638[];
 extern s32 D_800FE708;
+extern u8 gLevelAccessBitfeild;
+extern Struct_800714C8 D_800FE70C;
+extern unkStruct16 D_800F0DE0[];
+extern s16 sStageCrownTotals[];
+extern TimeVal D_80200B85[];
+extern s32 perfectCode;
+extern u8 D_800FE724[];
+extern s32 D_800F0674;
+extern s32 D_800F0B5C;
+extern u8 D_800FE748;
+extern s32 D_800FE47C;
+extern s32 RumblePakError;
+extern unk_80052094_8 D_800FE750[];
 
 /* functions */
 void func_80055C04(void);
@@ -264,7 +283,7 @@ Effect* func_800634D4(s32, s32, s32*, s32*, u32, s32);
 void func_8007AF80(void);
 void ResetEyeParams(void);
 void Rumble_Tick(void);
-void Effect_UpdateAll(s32*);
+void Effect_UpdateAll(Gfx**);
 void func_80069734(void);
 void func_8007CDEC(void);
 f32 func_80056104(f32, f32);
@@ -275,5 +294,18 @@ void func_80088474(s32, s32);
 void func_80027138(void* arg0, s32* arg1, s32* arg2, Mtx** arg3);
 void func_80027240(Mtx** arg0, Mtx* arg1, s32 arg2, s32 arg3);
 s32 PutDList(Mtx** arg0, Gfx** arg1, Gfx* arg2);
+void func_800755DC(f32, f32, f32, f32, f32, f32, s32, char*);
+void func_80075918(f32, f32, f32, f32, s32, s32, f32, f32, f32);
+void func_80074C34(f32, f32, f32, f32, f32, f32, f32, f32, s32, s32, s32, s32, s32, s32);
+s32 RecordTime_ParseToSecs(TimeVal*);
+s32 RecordTime_GetByStageRank(s32, s32, s32*, s32*, s32*, s32*);
+void printStageRecordTime(f32 arg0, f32 arg1, f32 arg2, s32 arg3, s32 arg4, s32 arg5, s32 arg6, f32 arg7, f32 arg8);
+void func_80054284(void);
+void func_80053CA0(void);
+void func_800771DC(s32*, f32, f32, s32, s32, s32*, f32, f32, f32, f32);
+Effect* Effect_TypeO_Init(u8, u8, u8, s32, s32);
+void Effect_TypeAG_Init(f32, f32, s32);
+void Effect_TypeAH_Init(u8*, f32, f32, f32, f32, unkStruct16*, s32, s32, u8);
+Gfx* func_80084884(Gfx*);
 
 #endif //_SPRITE_H_

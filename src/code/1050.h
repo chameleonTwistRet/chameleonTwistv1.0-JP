@@ -31,7 +31,6 @@ s32 func_800AF604(f32, f32, f32, f32);
 void __osInitialize_common(void);
 Gfx* func_8007B524(graphicStruct*, Gfx*, Camera*);
 Gfx* func_8005F408(Gfx*);
-Gfx* func_80084884(Gfx*);
 void debugMain(void);
 Gfx* Shadows_Draw(graphicStruct*, Gfx*);
 Gfx* func_800C3B50(graphicStruct*, Gfx*);

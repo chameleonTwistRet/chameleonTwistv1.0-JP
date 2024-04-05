@@ -1,5 +1,7 @@
 #include "common.h"
 #include "sprite.h"
+#include "battle.h"
+#include "5FF30.h"
 
 void DummiedPrintf2(char* arg0, ...) {
 
@@ -4704,7 +4706,7 @@ void Effect_TypeAH_Update(Effect* effect, Gfx** pGfxPos) {
     }
 }
 
-void Effect_TypeAH_Init(u8* arg0, f32 posX, f32 posY, f32 posZ, f32 arg4, Effect_TypeAH_Arg5* arg5, s32 arg6, s32 arg7, u8 arg8) {
+void Effect_TypeAH_Init(u8* arg0, f32 posX, f32 posY, f32 posZ, f32 arg4, unkStruct16* arg5, s32 arg6, s32 arg7, u8 arg8) {
     Effect* effect;
     Effect_TypeAH_Data* data;
 
@@ -4715,21 +4717,21 @@ void Effect_TypeAH_Init(u8* arg0, f32 posX, f32 posY, f32 posZ, f32 arg4, Effect
 
     data = (Effect_TypeAH_Data*)effect->data;
     data->dlist = D_800F0638[arg6];
-    data->unk_A88 = arg5->unk_00;
-    data->unk_A8C = arg5->unk_04;
+    data->unk_A88 = arg5->unk0;
+    data->unk_A8C = arg5->unk4;
     data->yaw = arg4;
     data->unk_A94 = arg7;
     data->unk_A98 = 0;
     data->unk_A9C = 0;
     data->unk_AA0 = arg0;
-    data->unk_AA4 = arg5->unk_08;
+    data->unk_AA4 = arg5->unk8;
     data->unk_AA8 = arg8;
 
     effect->pos.x = posX;
     effect->pos.y = posY;
     effect->pos.z = posZ;
     effect->lifeTime = 0.0f;
-    effect->unk5 = arg5->unk_0C;
+    effect->unk5 = arg5->unkC;
     effect->vel.x = 0.0f;
 }
 
@@ -4925,71 +4927,553 @@ void Effect_TypeAK_Init(f32 posX, f32 posY, f32 arg2, f32 arg3, f32 arg4, f32 ar
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/D_8010CB64.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_800714C8.s")
+void Effect_GameResults_Update(Effect* effect, Gfx** pGfxPos) {
+    s32 a0;
+    f32 x, y;
+    Struct_800714C8 sp8C;
+    s32 i;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/aa1_DrawGameResults.s")
+    setPrimColor(0, 0, 0, 255);
+    printUISprite(0.0f, 0.0f, 0.0f, 0.0f, 1, 320.0f, 240.0f, 0.0f, 0);
+    if (effect->spriteID == 0) {
+        sp8C = D_800FE70C;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80071A48.s")
+        func_800755DC(72.0f, 32.0f, 1, 30.0f, 60.0f, 239.0f, 4, "ＣＬＥＡＲ　ＳＴＡＧＥ");
+        func_800755DC(64.0f, 144.0f, 1, 30.0f, 60.0f, 239.0f, 4,"ＣＯＬＬＥＣＴ　ＩＴＥＭ");
+        func_80075918(64.0f, 178.0f, 32.0f, 24.0f, 0, 0xE0, 30.0f, 60.0f, 240.0f);
+        func_80075918(178.0f, 178.0f, 24.0f, 24.0f, 0, 0xE1, 30.0f, 60.0f, 240.0f);
+        func_800755DC(96.0f, 178.0f, 1, 30.0f, 60.0f, 239.0f, 3, "Ｘ");
+        func_800755DC(208.0f, 178.0f, 1, 30.0f, 60.0f, 239.0f, 3, "Ｘ");
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80071A90.s")
+        a0 = 0;
+        for (i = 0; i < 6; i++) {
+            a0 += gGameState.stageCrownRecord[i];
+        }
+        func_80074C34(112.0f, 178.0f, 1, 1, 30.0f, 8.0f, 60.0f, 218.0f, 5, a0, 0, 0, 3, 0);
+        func_80074C34(224.0f, 178.0f, 1, 1, 30.0f, 8.0f, 60.0f, 218.0f, 5, gTotalCarrots, 0, 0, 1, 0);
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80072310.s")
+        for (i = 0; i < 6; i++) {
+            if (gLevelAccessBitfeild & (1 << i)) {
+                sp8C.array[i] = i;
+            }
+        }
+        x = 40.0f;
+        y = 64.0f;
+        for (i = 0; i < 6; i++) {
+            if (sp8C.array[i] != -1) {
+                f32 arg2 = 4 * i + 30.0f;
+                Effect_TypeAK_Init(x, y, arg2, 30.0f, 60.0f, 240.0f - arg2, sp8C.array[i]);
+                if (x == 40.0f) {
+                    x = 176.0f;
+                } else {
+                    x = 40.0f;
+                    y += 24.0f;
+                }
+            }
+        }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_800723B4.s")
+        effect->spriteID = 1;
+    }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8007294C.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/printStageRecordTimes.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80072B1C.s")
-
-void func_80072D34(void) {
-    Effect* temp_v0;
-    temp_v0 = Effect_Alloc(0, 0, &func_80072B1C);
-    if (temp_v0 != NULL) {
-        temp_v0->spriteID = 1;
-        temp_v0->lifeTime = 0.0f;
-        temp_v0->duration = 0.0f;
-        PlayBGM(BGM_TRAINING);
+    effect->lifeTime += effect->duration;
+    if (effect->lifeTime >= 1.0f) {
+        FreeSprite(189);
+        FreeSprite(190);
+        FreeSprite(191);
+        FreeSprite(192);
+        FreeSprite(193);
+        FreeSprite(194);
+        FreeSprite(224);
+        FreeSprite(225);
+        Effect_Free(effect);
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80072D80.s")
+void Effect_GameResults_Init() {
+    Effect* effect;
 
-void func_80073090(void) {
-    Effect* temp_v0 = Effect_Alloc(0, 0, &func_80072D80);
-    u8 s = 0xFF; 
-    if (temp_v0 != 0) {
-        D_800F0B54[0] = s;
-        temp_v0->spriteID = -1;
-        temp_v0->pos.z = 0.0f;
-        temp_v0->lifeTime = 0.0f;
-        temp_v0->duration = 0.0f;
+    effect = Effect_Alloc(0, 0, &Effect_GameResults_Update);
+    if (effect == NULL) {
+        return;
     }
+
+    effect->spriteID = 0;
+    effect->lifeTime = 0;
+    effect->duration = 1.0f / 272.0f;
+    LoadSprite(189);
+    LoadSprite(190);
+    LoadSprite(191);
+    LoadSprite(192);
+    LoadSprite(193);
+    LoadSprite(194);
+    LoadSprite(224);
+    LoadSprite(225);
+    setPrimColor(0, 0, 0, 255);
+    printUISprite(0.0f, 0.0f, 0.0f, 0.0f, 1, 320.0f, 240.0f, 0.0f, 0);
+}
+
+#ifdef NON_MATCHING
+void func_80071A48(u32 arg0, u8* str) {
+    s32 shift;
+
+    for (shift = 28; shift >= 0; shift -= 4) {
+        s32 digit = ((0xF << shift) & arg0) >> shift;
+        u8* pChar = &D_800FE724[digit * 2];
+        *str++ = *pChar++;
+        *str++ = *pChar++;
+    }
+    *str = 0;
+}
+#else
+#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80071A48.s")
+void func_80071A48(u32 arg0, u8* str);
+#endif
+
+void Effect_TypeAL_Update(Effect* effect, Gfx** pGfxPos) {
+    Effect_TypeAL_Data* data = (Effect_TypeAL_Data*)effect->data;
+    f32 sp68 = 100.0f;
+    f32 sp64;
+    f32 sp60;
+    s32 s2;
+    s32 a0, a1;
+    s32 i, j;
+
+    setPrimColor(0, 0, 0, 255);
+    func_80059F28(0.0f, 0.0f, 0.0f, 0.0f, 1, 320.0f, 240.0f, 0.0f, 0);
+    func_8007B480(0.0f, 10000.0f, 0.0f, 0.0f, 10000.0f, 600.0f);
+
+    switch (effect->unk5) {
+        case 0:
+            effect->lifeTime += effect->pos.x;
+            sp64 = sinf(effect->lifeTime * 1.57078);
+            sp60 = 0.0f;
+            if (effect->lifeTime >= 1.0f) {
+                effect->unk5 = 1;
+                effect->lifeTime = 0;
+            }
+            break;
+        case 1:
+            sp64 = 1.0f;
+            sp60 = sinf(effect->vel.z * 1.57078);
+            s2 = 0;
+            effect->vel.z += effect->pos.y;
+            a0 = 0;
+            a1 = 0;
+
+            if (effect->vel.z >= 1.0f) {
+                for (i = 0; i < 6; i++) {
+                    a0 += gGameState.stageCrownRecord[i];
+                }
+                for (i = 0; i < 9; i++) {
+                    a1 += sStageCrownTotals[i];
+                }
+                if (a0 == a1 && gSelectedCharacters[0] <= 3) {
+                    PLAYSFX(0x19, 0, 0x10);
+                    Effect_TypeW_Init(260.0f, 9920.0f, 0.0f, 32.0f, 20, 16);
+                    Effect_TypeAH_Init(&effect->numParts, 260.0f, 9850.0f, 0.0f, -22.0f, D_800F0DE0, 5, 1, 1);
+                }
+                for (i = 0; i < 6; i++) {
+                    s2 += RecordTime_ParseToSecs(&D_80200B85[i]);
+                }
+                func_80074C34(180.0f, 48.0f, 0.6f, 0.6f, 1, 8.0f, 1, 9.3312e8f, 4, (s2 / 3600) % 24, (s2 / 60) % 60, s2 % 60, 0, 1);
+                func_80071A48(perfectCode, data->unk_00);
+                effect->unk5 = 2;
+                effect->lifeTime = 0;
+            }
+            break;
+        case 2:
+            SetTextGradientFromPalette(5);
+            PrintTextWrapper(64.0f, 48.0f, 0.0f, .6f, "ＴＯＴＡＬ　ＴＩＭＥ", 1);
+            if (gSelectedCharacters[0] == 5 && gNoHit && gOneRun) {
+                sp68 = 100.0f - sinf(effect->lifeTime * 1.57078) * 22.0f;
+            }
+            effect->lifeTime += effect->vel.x;
+            if (effect->lifeTime >= 1.0f) {
+                effect->lifeTime = 1.0f;
+                if (gSelectedCharacters[0] == 5 && gNoHit && gOneRun) {
+                    if (effect->spriteID == 1) {
+                        PLAYSFX(0x38, 0, 0x10);
+                        effect->spriteID = 0;
+                    }
+                    SetTextGradientFromPalette(5);
+                    PrintTextWrapper(100.0f, 128.0f, 0.0f, 0.6f, "ＰＥＲＦＥＣＴ　ＣＯＲＤ", 1);
+                    SetTextGradientFromPalette(4);
+                    PrintTextWrapper(108.0f, 154.0f, 0.0f, 0.8f, data->unk_00, 1); // TODO figure out if unk_00 is u8[] or s8[]
+                }
+            }
+            sp60 = 1.0f;
+            sp64 = 1.0f;
+            break;
+    }
+
+    SetTextGradient(0, 162, 227, 255.0f * sp64, 18, 232, 130, 255.0f * sp64, 255, 255, 0, 255.0f * sp64, 255, 110, 194, 255.0f * sp64);
+    printUISprite(96.0f, sp68, 0.0f, 0.0f, 1, 128.0f, 32.0f, 0.0f, 218);
+    for (j = 0; j < 4; j++) {
+        SetTextGradient(204, 231, 241, 255.0f * sp60, 0, 126, 178, 255.0f * sp60, 204, 231, 241, 255.0f * sp60, 0, 126, 178, 255.0f * sp60);
+        printUISprite(32 + j * 64, 192.0f, 0.0f, 0.0f, 1, 64.0f, 16.0f, j, 217);
+    }
+}
+
+void Effect_TypeAL_Init(void) {
+    Effect* effect;
+    Effect_TypeAL_Data* data;
+
+    effect = Effect_Alloc(0, sizeof(Effect_TypeAL_Data), &Effect_TypeAL_Update);
+    if (effect == NULL) {
+        return;
+    }
+
+    data = (Effect_TypeAL_Data*)effect->data;
+    data->unk_10 = 0;
+
+    LoadSprite(217);
+    LoadSprite(218);    
+
+    effect->spriteID = 1;
+    effect->unk5 = 0;
+    effect->numParts = 1;
+    effect->pos.x = 0.02f;
+    effect->pos.y = 0.025f;
+    effect->pos.z = 0.0076923077f;
+    effect->vel.x = 0.05f;
+    effect->lifeTime = 0.0f;
+    effect->vel.z = 0.0f;
+}
+
+void Effect_TypeAM_Update(Effect* effect, Gfx** pGfxPos) {
+    Effect_TypeAM_Data* data = (Effect_TypeAM_Data*)effect->data;
+    f32 sp90;
+    f32 posX;
+    f32 sp88, sp84, sp80, sp7C;
+    s32 r;
+
+    DisableInput();
+    switch (effect->unk5) {
+        case 0:
+            if (effect->spriteID == 0) {
+                sp7C = cosf(DEGREES_TO_RADIANS_2PI(effect->vel.x + 145.0f));
+                sp80 = sinf(DEGREES_TO_RADIANS_2PI(effect->vel.x + 145.0f));
+                sp84 = cosf(DEGREES_TO_RADIANS_2PI(effect->vel.x + 260.0f));
+                sp88 = sinf(DEGREES_TO_RADIANS_2PI(effect->vel.x + 260.0f));
+                posX = effect->pos.x;
+                func_80068A88(gPlayerActors->pos.x, gPlayerActors->pos.y, gPlayerActors->pos.z,
+                              posX, effect->pos.y + 150.0f, effect->pos.z,
+                              posX, effect->pos.y, effect->pos.z,
+                              D_80176B78->f3.x * 3.0f, D_80176B78->f3.y * 3.0f, D_80176B78->f3.z * 3.0f,
+                              posX + sp7C * 1000.0f, effect->pos.y + 30.0f, effect->pos.z - sp80 * 1000.0f,
+                              posX + sp84 * 800.0f, effect->pos.y, effect->pos.z - sp88 * 800.0f,
+                              60.0f, 60.0f, 18000.0f);
+            }
+            effect->spriteID++;
+            if (effect->spriteID >= 2) {
+                effect->spriteID = 0;
+                effect->unk5++;
+            }
+            break;
+        case 1:
+            if (effect->numParts < 20) {
+                effect->lifeTime += effect->duration;   
+                if (effect->lifeTime >= 1.0f) {
+                    effect->lifeTime = 0.0f;
+                    sp90 = effect->vel.x + RANDOM(45, 120);
+                    sp90 = -sp90;
+                    WrapDegrees(&sp90);
+                    r = Rand();
+                    Effect_TypeAA_Init(effect->pos.x, effect->pos.y, effect->pos.z, 1200.0f, r % 360, sp90, 0.0f, 20.0f, 8.0f, RANDOM(2, 5));
+                    effect->numParts++;
+                }
+            }
+
+            setPrimColor(255, 255, 255, effect->numParts / 21.0f * 255.0f);
+            printUISprite(0.0f, 0.0f, 0.0f, 0.0f, 1, 320.0f, 240.0f, 0.0f, 0);
+            effect->spriteID++;
+
+            if (effect->numParts == 20) {
+                effect->spriteID = 0;
+                effect->unk5++;
+            }
+            break;
+        case 2:
+            setPrimColor(255, 255, 255, 255);
+            printUISprite(0.0f, 0.0f, 0.0f, 0.0f, 1, 320.0f, 240.0f, 0.0f, 0);
+            Effect_TypeAI_Init(255, 1.0f, 32.0f, 1);
+            D_800F0674 = 2;
+            effect->spriteID++;
+            if (effect->spriteID > 30) {
+                *data->unk_00 = 1;
+                Effect_Free(effect);
+            }
+            break;
+    }
+}
+
+void Effect_TypeAM_Init(f32 posX, f32 posY, f32 posZ, f32 arg3, s32* arg4) {
+    Effect* effect;
+    Effect_TypeAM_Data* data;
+
+    effect = Effect_Alloc(0, sizeof(Effect_TypeAM_Data), &Effect_TypeAM_Update);
+    if (effect == NULL) {
+        return;
+    }
+
+    data = (Effect_TypeAM_Data*)effect->data;
+    data->unk_00 = arg4;
+
+    effect->spriteID = 0;
+    
+    effect->numParts = 0;
+    effect->pos.x = posX;
+    effect->pos.y = posY;
+    effect->pos.z = posZ;
+    effect->vel.x = arg3 + 90.0f;
+    effect->unk5 = 0;
+    effect->lifeTime = 0.0f;
+    effect->duration = 0.125f;
+}
+
+void printStageRecordTimes(s32 arg0) {
+    s32 i;
+    s32 sp98;
+    s32 sp94;
+    s32 sp90;
+    s32 sp8C;    
+    f32 yOffset;
+
+    yOffset = 0.0f;
+    for (i = 0; i < 5; i++) {
+        RecordTime_GetByStageRank(arg0, i, &sp98, &sp94, &sp90, &sp8C);
+        printStageRecordTime(156.0f, 64.0f + yOffset, -65.0f, sp98, sp94, sp8C, sp90, 8.0f, 2 * i);
+        yOffset += 32.0f;
+    }
+}
+
+#ifdef NON_MATCHING
+void func_80072B1C(Effect* effect, Gfx** pGfxPos) {
+    s32 i, j, k;
+
+    for (i = 0; i < 5; i++) {
+        for (j = 0; j < 8; j++) {
+            func_800612F0(i);
+            func_80059F28(j * 40, i * 48, 0.0f, 0.0f, 1, 40.0f, 48.0f, j, 212);
+        }
+    }
+
+    if (effect->spriteID != D_800F0B5C) {
+        printStageRecordTimes(D_800F0B5C);
+        effect->spriteID = D_800F0B5C;
+    }
+    D_800F0B5C = func_8007101C();
+    if (effect->spriteID != D_800F0B5C) {
+        D_800FE748 = 1;
+    }
+
+    if (effect->lifeTime == 2.0f) {
+        s32 v0 = FALSE;
+        if (effect->duration >= 20.0f) {
+            v0 = TRUE;
+        }
+        effect->duration += 1;
+        if (v0) {
+            D_800FE748 = 1;
+            Effect_Free(effect);
+        }
+    } else if (effect->lifeTime < 2.0f) {
+        for (k = 0; k < 4; k++) {
+            if (gPlayerActors[k].active && func_80055F10(k, 0x4000) == 1) {
+                Effect_TypeAI_Init(0, 16.0f, 10.0f, 0);
+                effect->lifeTime = 2.0f;
+                return;
+            }
+        }
+    }
+}
+#else
+void func_80072B1C(Effect* effect, Gfx** pGfxPos);
+#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80072B1C.s")
+#endif
+
+void Effect_TypeAN_Init(void) {
+    Effect* effect;
+
+    effect = Effect_Alloc(0, 0, &func_80072B1C);
+    if (effect == NULL) {
+        return;
+    }
+
+    effect->spriteID = 1;
+    effect->lifeTime = 0.0f;
+    effect->duration = 0.0f;
+    PlayBGM(BGM_TRAINING);
+}
+
+void Effect_TypeAO_Update(Effect* effect, Gfx** pGfxPos) {
+    s32 i;
+    s32 temp = 2; // required to match
+
+    Battle_Time++;
+
+    switch ((s32)effect->lifeTime) {
+        case 0:
+            Effect_TypeAJ_Init(0, 4.0f, 16.0f);
+            PlayBGM(BGM_TRAINING);
+            effect->lifeTime = 1.0f;
+            break;
+        case 1:
+            if (Battle_Time == temp) {
+                func_80054284();
+            }
+            func_80053CA0();
+            for (i = 0; i < 4; i++) {
+                if (effect->lifeTime == 2.0f) {
+                    break;
+                }
+                if (gPlayerActors[i].active && D_80168D78[i] != 1) {
+                    if (func_80055F10(i, 0x8000) == 1 || func_80055F10(i, 0x1000) == 1) {
+                        func_800771DC(&D_800FE47C, 1.0f, 1.0f, 0, 4, &effect->spriteID, 54.0f, 56.0f, 212.0f, 148.0f);
+                    }
+                    if (1) {} // required to match
+                }
+            }
+            if (effect->spriteID != -1) {
+                if (effect->spriteID >= 0) {
+                    effect->lifeTime = 2.0f;
+                    Battle_Stage = BATTLE_STAGE_INIT;
+                    D_800FE74C = 0;
+                    Effect_TypeAI_Init(0, 16.0f, 9000.0f, 1);
+                } else if (effect->spriteID == -2) {
+                    D_800FE74C = 0;
+                    effect->spriteID = -1;
+                }
+            }
+            break;
+        case 2:
+            effect->duration += 1.0f;
+            if (effect->duration < 18.0f) {
+                func_80053CA0();
+            }
+            if (effect->duration > 20.0f) {
+                effect->lifeTime = 3.0f;
+            }
+            break;
+        case 3:
+            Battle_Time = 0;
+            D_800F0B54[0] = 0;
+            StopBGM();
+            func_8005423C();
+            UnlockEyeChange();
+            switch (effect->spriteID) {
+                case 0:
+                    SetProcessType(GAME_MODE_BATTLE_MENU);
+                    gGameModeState = 4;
+                    break;
+                case 1:
+                    SetProcessType(GAME_MODE_STAGE_SELECT);
+                    break;
+                case 2:
+                    SetProcessType(GAME_MODE_BATTLE_MENU);
+                    break;
+                case 3:
+                    SetProcessType(GAME_MODE_TITLE_SCREEN);
+                    break;
+            }
+            break;
+    }
+}
+
+void Effect_TypeAO_Init(void) {
+    Effect* effect;
+
+    effect = Effect_Alloc(0, 0, &Effect_TypeAO_Update);
+    if (effect == NULL) {
+        return;
+    }
+
+    D_800F0B54[0] = 255;
+    effect->spriteID = -1;
+    effect->pos.z = 0.0f;
+    effect->lifeTime = 0.0f;
+    effect->duration = 0.0f;
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_800730E4.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/aa1_checkControllerRumble.s")
+void Effect_ControllerRumble_Update(Effect* effect, Gfx** pGfxPos) {
+    s32 s2;
+    s32 i;
+    f32 temp = 16.0f; // required to match
 
-void checkControllerRumble(void) {
-    Effect* temp_v0;
-    Effect* var_v1;
+    s2 = ABS2(((++effect->spriteID) % 32) - 16); // BUG: effect->spriteID incremented twice
 
-    temp_v0 = Effect_Alloc(0, 0, &aa1_checkControllerRumble);
-    var_v1 = temp_v0;
-    if (temp_v0 == NULL) {
-        SetProcessType(GAME_MODE_BOOT);
-        var_v1 = temp_v0;
+    if (D_80175668[0] == -1) {
+        effect->unk5 = 0;
+    } else if (RumblePakError > 0) {
+        effect->unk5 = 1;
+    } else {
+        Effect_Free(effect);
+        gGameModeState = 3;
+        return;
     }
-    var_v1->spriteID = 0;
-    var_v1->unk5 = 0;
+
+    setPrimColor(128, 0, 0, 255);
+    func_80059F28(0.0f, 0.0f, 0.0f, 0.0f, 1, 320.0f, 240.0f, 0.0f, 0);
+
+    for (i = 0; i < 8; i++) {
+        SetTextGradientFromPaletteAlpha(0x15, s2 / temp);
+        func_800612F0(D_800FE750[i].unk_04);
+        func_80059F28(32 + i * 32, 64.0f, 0.0f, 0.0f, 1, 32.0f, temp, D_800FE750[i].unk_00, 0x5E);
+        SetTextGradientFromPaletteAlpha(0x15, s2 / temp);
+        func_800612F0(D_800FE750[i].unk_04 + 1);
+        func_80059F28(32 + i * 32, 80.0f, 0.0f, 0.0f, 1, 32.0f, temp, D_800FE750[i].unk_00, 0x5E);
+    }
+    
+    s2 = effect->unk5;
+    switch (s2) {
+        case 0:
+            // 電源を切って、コントローラを :  Turn off the power and turn off the controller,
+            func_80080864(48.0f, 120.0f, 0.0f, 1, temp, temp, "電源を切って、コントローラを", 3);
+            // １Ｐ用に正しく接続してください。: Please connect correctly for 1P.
+            func_80080864(40.0f, 144.0f, 0.0f, 1, temp, temp, "１Ｐ用に正しく接続してください。", 3);
+            break;
+        case 1:
+            // 振動パックに異状があります。: There is something wrong with the vibration pack.
+            func_80080864(48.0f, 120.0f, 0.0f, 1, temp, temp, "振動パックに異状があります。", 3);
+            // 電源を切って、: Turn off the power,
+            func_80080864(104.0f, 144.0f, 0.0f, 1, temp, temp, "電源を切って、", 3);
+            // 振動パックをきちんと挿入して下さい。: Please insert the vibration pack properly.
+            func_80080864(20.0f, 168.0f, 0.0f, 1, temp, temp, "振動パックをきちんと挿入して下さい。", 3);
+            break;
+    }
 }
 
+void Effect_ControllerRumble_Init(void) {
+    Effect* effect;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_800735F4.s")
+    effect = Effect_Alloc(0, 0, &Effect_ControllerRumble_Update);
+    if (effect == NULL) {
+        SetProcessType(GAME_MODE_BOOT);
+    }
+
+    effect->spriteID = 0;
+    effect->unk5 = 0;
+}
+
+void func_800735F4(f32 arg0, f32 arg1, f32 arg2, f32 arg3) {
+    SetTextGradient(0x6B, 0xC7, 0xE3, arg3, 0x6B, 0xC7, 0xE3, arg3, 0x6B, 0xC7, 0xE3, arg2, 0x6B, 0xC7, 0xE3, arg2);
+    func_80059F28(64.0f, 100.0f, 0.0f, 0.0f, 1.0f, 32.0f, 40.0f, 0.0f, 0xCD);
+    SetTextGradient(0x6B, 0xC7, 0xE3, arg2, 0x6B, 0xC7, 0xE3, arg2, 0x6B, 0xC7, 0xE3, arg1, 0x6B, 0xC7, 0xE3, arg1);
+    func_80059F28(96.0f, 100.0f, 0.0f, 0.0f, 1.0f, 32.0f, 40.0f, 1.0f, 0xCD);
+    SetTextGradient(0x6B, 0xC7, 0xE3, arg1, 0x6B, 0xC7, 0xE3, arg1, 0x6B, 0xC7, 0xE3, arg0, 0x6B, 0xC7, 0xE3, arg0);
+    func_80059F28(128.0f, 100.0f, 0.0f, 0.0f, 1.0f, 32.0f, 40.0f, 2.0f, 0xCD);
+    SetTextGradient(0x6B, 0xC7, 0xE3, arg0, 0x6B, 0xC7, 0xE3, arg0, 0x6B, 0xC7, 0xE3, arg1, 0x6B, 0xC7, 0xE3, arg1);
+    func_80059F28(160.0f, 100.0f, 0.0f, 0.0f, 1.0f, 32.0f, 40.0f, 3.0f, 0xCD);
+    SetTextGradient(0x6B, 0xC7, 0xE3, arg1, 0x6B, 0xC7, 0xE3, arg1, 0x6B, 0xC7, 0xE3, arg2, 0x6B, 0xC7, 0xE3, arg2);
+    func_80059F28(192.0f, 100.0f, 0.0f, 0.0f, 1.0f, 32.0f, 40.0f, 4.0f, 0xCD);
+    SetTextGradient(0x6B, 0xC7, 0xE3, arg2, 0x6B, 0xC7, 0xE3, arg2, 0x6B, 0xC7, 0xE3, arg3, 0x6B, 0xC7, 0xE3, arg3);
+    func_80059F28(224.0f, 100.0f, 0.0f, 0.0f, 1.0f, 32.0f, 40.0f, 5.0f, 0xCD);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80073C3C.s")
+void func_80073C3C(Effect* effect, Gfx** pGfxPos);
 
 void func_80073FD8(void) {
     Effect* temp_v0 = Effect_Alloc(0, 0, &func_80073C3C);
@@ -5357,7 +5841,7 @@ void func_80084788(void) {
     func_800667A8();
 }
 
-s32 func_80084884(s32 arg0) {
+Gfx* func_80084884(Gfx* arg0) {
     if (gCurrentStage == 8) {
         func_8007CDEC();
     }
