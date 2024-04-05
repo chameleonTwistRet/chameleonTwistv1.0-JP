@@ -94,7 +94,7 @@ with open('asm/nonmatchings/code/5FF30/MainLoop.s', 'w') as file:
     # Write the modified contents back to the file
     file.writelines(lines)
 
-linker_script_file = 'chameleontwist.jp.ld'
+linker_script_file = 'build/chameleontwist.jp.ld'
 mod_directory = 'src/mod'
 
 with open(linker_script_file) as file:
@@ -297,7 +297,7 @@ ninja_file = ninja_syntax.Writer(open('build.ninja', 'w'))
 ninja_file.variable('AS', 'mips-linux-gnu-as')
 ninja_file.variable('CPP', 'cpp')
 ninja_file.variable('LD', 'mips-linux-gnu-ld')
-ninja_file.variable('LDFLAGS', '-T chameleontwist.jp.ld -T undefined_syms_auto.txt -T undefined_syms.txt -Map build/chameleontwist.jp.map --no-check-sections')
+ninja_file.variable('LDFLAGS', '-T build/chameleontwist.jp.ld -T undefined_syms_auto.txt -T undefined_syms.txt -Map build/chameleontwist.jp.map --no-check-sections')
 ninja_file.variable('OBJDUMP', 'mips-linux-gnu-objdump')
 ninja_file.variable('OBJCOPY', 'mips-linux-gnu-objcopy')
 ninja_file.variable('OBJCOPYFLAGS', '-O binary')

@@ -7,7 +7,7 @@ distclean: clean
 	rm -rf asm
 	rm -rf assets
 	rm -f *auto.txt
-	rm -f chameleontwist.jp.ld
+	rm -f build/chameleontwist.jp.ld
 
 expectedclean:
 	rm -rf expected

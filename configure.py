@@ -18,7 +18,7 @@ TOOLS_DIR = ROOT / "tools"
 
 BASENAME = "chameleontwist.jp"
 YAML_FILE = f"{BASENAME}.yaml"
-LD_PATH = f"{BASENAME}.ld"
+LD_PATH = f"build/{BASENAME}.ld"
 ELF_PATH = f"build/{BASENAME}"
 MAP_PATH = f"build/{BASENAME}.map"
 PRE_ELF_PATH = f"build/{BASENAME}.elf"
@@ -145,12 +145,10 @@ def build_stuff(linker_entries: List[LinkerEntry]):
     )
 
     ninja.rule(
-        "ld",
-        description="link $out",
+        "make_elf",
         command=f"{MIPS}-ld {LDFLGS} -o $out",
-    )
+        description="Linking ELF")
 
-    #seperate this?
     ninja.rule(
         "make_z64",
         command=f"({MIPS}-objcopy -O binary $in $out) && (sha1sum -c {SHA1_PATH})",
@@ -158,9 +156,8 @@ def build_stuff(linker_entries: List[LinkerEntry]):
     )
 
     ninja.rule(
-        "elf",
-        description="elf $out",
-        command=f"{MIPS}-objcopy $in $out -O binary",
+        "make_expected",
+        command="(cp $in $out) && (python3 ./tools/make_expected.py $in)"
     )
 
 
@@ -287,21 +284,18 @@ def build_stuff(linker_entries: List[LinkerEntry]):
 
     ninja.build(
         PRE_ELF_PATH,
-        "ld",
-        LD_PATH,
+        "make_elf",
         o_files
     )
-
     ninja.build(
         BUILD_PATH,
         "make_z64",
         PRE_ELF_PATH
     )
-
     ninja.build(
-        ELF_PATH,
-        "elf",
-        PRE_ELF_PATH,
+        "build/chameleonTwistJP.ok",
+        "make_expected",
+        BUILD_PATH
     )
 
     print("build.ninja generated")
@@ -321,7 +315,7 @@ if __name__ == "__main__":
     if args.clean:
         clean()
 
-    split.main([YAML_FILE], modes="all", verbose=False)
+    split.main([YAML_FILE], modes="all", verbose=False, use_cache=False)
 
     linker_entries = split.linker_writer.entries
 
