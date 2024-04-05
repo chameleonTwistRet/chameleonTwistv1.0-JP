@@ -469,27 +469,12 @@ typedef struct CTTask {
     /* 0x56 */ char pad56[2];                       /* maybe part of unk54[4]? */
     /* 0x58 */ struct CTTask* unk58;
     /* 0x5C */ s16 unk_5C;
-    /* 0x5E */ union {
-        s8 _s8[2];
-        s16 _s16;
-    } unk5E;
-    /* 0x60 */ union {
-        s8 _s8[2];
-        s16 _s16;
-    } unk60;
-    /* 0x62 */ union {
-        s8 _s8[2];
-        s16 _s16;
-    } unk_62;
+    /* 0x5E */ s16 unk5E;
+    /* 0x60 */ s16 unk60;
+    /* 0x62 */ s16 unk_62;
     /* 0x64 */ s16 unk_64;
-    /* 0x66 */ union {
-        s8 _s8[2];
-        s16 _s16;
-    } unk66;
-    /* 0x68 */ union {
-        u8 _u8[2];
-        s16 _s16;
-    } unk_68;
+    /* 0x66 */ s16 unk66;
+    /* 0x68 */ s16 unk_68;
     /* 0x6A */ s16 unk6A;                           /* inferred */
     /* 0x6C */ s16 unk6C;
     /* 0x6E */ u16 unk6E;

@@ -1,4 +1,6 @@
 #include "5FF30.h"
+
+
 /*const u8 D_800FEDC0[226][8] = {
 {104, 136, 1, 4, 1, 5, 25, 0},
 {104, 136, 1, 4, 1, 5, 25, 0},
@@ -226,6 +228,8 @@
 {79, 255, 1, 1, 0, 0, 25, 0},
 {79, 255, 1, 1, 0, 0, 25, 0},
 {79, 255, 1, 1, 0, 0, 25, 0}};*/
+
+
 
 void schedproc(s32 arg0) {
     s32 var_s2;
@@ -1571,10 +1575,10 @@ Gfx* setFrustum(Gfx* gfxPos, s32 fbIndex) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008E698.s")
 
 void func_8008E7B8(CTTask* arg0) {
-    //nmore research needed? is it just getting the right half???
-    setPrimColor(arg0->unk5E._s8[1], arg0->unk60._s8[1], arg0->unk_62._s8[1], arg0->unk66._s8[1]);
+    //more research needed? is it just getting the right half???
+    setPrimColor(arg0->unk5E, arg0->unk60, arg0->unk_62, arg0->unk66);
     printUISprite(2.0f, 2.0f, 0.0f, 0.0f, 1.0f, 316.0f, 236.0f, 0.0f, 0);
-    CTTask_Unlink((CTTask*) arg0);
+    CTTask_Unlink(arg0);
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008E840.s")
@@ -1590,9 +1594,9 @@ CTTask* func_8008E9AC(s16 arg0, s16 arg1, s16 arg2, s16 arg3, s16* arg4) {
     }
     task->unk_5C = arg0;
     task->unk_64 = -24 - arg0;
-    task->unk5E._s16 = arg1;
-    task->unk60._s16 = arg2;
-    task->unk_62._s16 = arg3;
+    task->unk5E = arg1;
+    task->unk60 = arg2;
+    task->unk_62 = arg3;
     task->function = func_8008E840;
     task->pos.x = 0.0f;
     task->pos.y = 0.0f;
@@ -1611,9 +1615,9 @@ CTTask* func_8008EA60(s16 arg0, s16 arg1, s16 arg2, s16 arg3, s16* arg4) {
     }
     task->unk_5C = -arg0;
     task->unk_64 = arg0 + 280;
-    task->unk5E._s16 = arg1;
-    task->unk60._s16 = arg2;
-    task->unk_62._s16 = arg3;
+    task->unk5E = arg1;
+    task->unk60 = arg2;
+    task->unk_62 = arg3;
     task->function = func_8008E840;
     task->pos.x = 0;
     task->pos.y = 0;
@@ -1651,10 +1655,10 @@ CTTask* func_8008F050(s16 arg0, s16 arg1, s16 arg2, s16 arg3, s16* arg4) {
     }
     task->unk_5C = -arg0;
     task->unk_64 = 160;
-    task->unk66._s16 = 120;
-    task->unk5E._s16 = arg1;
-    task->unk60._s16 = arg2;
-    task->unk_62._s16 = arg3;
+    task->unk66 = 120;
+    task->unk5E = arg1;
+    task->unk60 = arg2;
+    task->unk_62 = arg3;
     task->function = func_8008EFA0;
     task->unk58 = (CTTask* ) arg4;
     task->pos.x = 160;
@@ -2167,7 +2171,7 @@ void func_800911D0(CTTask* task) {
     else if (temp_v0->unk54 == 7) {
         task->unk4E = 1;
         task->function = func_80091694;
-        task->unk60._s16 = 8;
+        task->unk60 = 8;
         task->unk44 = 1;
         task->unk88 = 150;
         task->unk7C = -15;
@@ -2187,7 +2191,7 @@ void func_800914CC(CTTask* task) {
         task->rotA = 0;
     }
     if (func_80090D28(task) != 0) {
-        task->unk60._s16 = 4;
+        task->unk60 = 4;
         task->function = func_80091548;
         task->unk_5C = 2;
         task->unk80 = 0;
@@ -2199,8 +2203,8 @@ void func_800914CC(CTTask* task) {
 void func_80091548(CTTask* task) {
     task->unk44 = 1;
     while (func_8008D7B0(task) == 0){}
-    task->unk60._s16 -= 1;
-    if (task->unk60._s16 <= 0) {
+    task->unk60 -= 1;
+    if (task->unk60 <= 0) {
         task->function = func_800915C0;
         task->unk84 = 1.5f;
     }
@@ -2211,7 +2215,7 @@ void func_800915C0(CTTask* arg0) {
         arg0->unk_5C--;
         if (arg0->unk_5C <= 0) {
             arg0->function = func_80091694;
-            arg0->unk60._s16 = 8;
+            arg0->unk60 = 8;
             arg0->unk44 = 1;
             arg0->unk88 = 150.0f;
             arg0->unk7C = -15.0f;
@@ -2219,7 +2223,7 @@ void func_800915C0(CTTask* arg0) {
             while (func_8008D7B0(arg0) == 0) { }
         } else {
             arg0->unk7C = -15.0f;
-            arg0->unk60._s16 = 4;
+            arg0->unk60 = 4;
             arg0->function = func_80091548;
             goto func; //pls match better
         }
@@ -2233,8 +2237,8 @@ func:
 
 void func_80091758(CTTask* arg0) {
     CTTask* task;
-    if (arg0->unk60._s16) {
-        arg0->unk60._s16--;
+    if (arg0->unk60) {
+        arg0->unk60--;
         return;
     }
     arg0->unk44 = 9;
@@ -2253,7 +2257,7 @@ void func_800919D8(s32 arg0, s32 arg1) {
     if ((arg0 >= 0) || (arg1 != 0)) {
         task = CTTask_Alloc(1, 100, NULL);
         task->function = func_800917A8;
-        task->unk_62._s16 = 128;
+        task->unk_62 = 128;
         task->unk_5C = arg0;
         task->unk_64 = arg1;
     }
@@ -2264,7 +2268,7 @@ void func_800919D8(s32 arg0, s32 arg1) {
 void func_80092208(CTTask* arg0) {
     if ((func_8008EC90() != 0) && (arg0->unk54 == 8)) {
         arg0->function = &func_80092254;
-        arg0->unk60._s16 = 0;
+        arg0->unk60 = 0;
         arg0->unk_5C = 4;
     }
 }
@@ -2272,17 +2276,17 @@ void func_80092208(CTTask* arg0) {
 void func_80092254(CTTask* arg0) {
     arg0->unk_5C--;
     if (arg0->unk_5C <= 0) {
-        arg0->unk60._s16++;
+        arg0->unk60++;
         arg0->unk_5C = 8;
-        if (arg0->unk60._s16 == 4) {
-            func_800919D8(arg0->unk66._s16, arg0->unk_62._s16);
+        if (arg0->unk60 == 4) {
+            func_800919D8(arg0->unk66, arg0->unk_62);
         }
     }
     func_80091A38(arg0);
     if ((gContMain->buttons2 & 0x8000) || (gContMain->buttons2 & 0x1000)) {
-        arg0->unk60._s16 = 0x10;
+        arg0->unk60 = 0x10;
     }
-    if (arg0->unk60._s16 >= 0x10) {
+    if (arg0->unk60 >= 0x10) {
         arg0->unk_64 = 0;
         func_8008E9AC(0x20, 0, 0, 0, &arg0->unk_64);
         arg0->function = func_80092324;
@@ -2302,8 +2306,8 @@ void func_80092324(CTTask* arg0) {              // Cy
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009236C.s")
 
 void func_8009244C(CTTask* task) {
-    if (task->unk60._s16 != 0) {
-        task->unk60._s16--;
+    if (task->unk60 != 0) {
+        task->unk60--;
     } else {
         task->function = &func_80092474;
     }
@@ -2318,7 +2322,7 @@ void func_80092474(CTTask* task) {
     if (func_80090CB0(task) != 0) {
         if (task->unk_5C == 0) {
             temp_v0 = task->unk58;
-            task->unk60._s16 = 0;
+            task->unk60 = 0;
             task->unk88 += 5;
             task->unk7C = 1;
             if (temp_v0->unk54 == 0) {
@@ -2345,7 +2349,7 @@ void func_800925A8(CTTask* task) {
     func_8008D7FC(task);
     task->rot.z = -0.0f;
     task->unk_5C = 0;
-    task->unk5E._s16 = 0;
+    task->unk5E = 0;
     task->function = func_80092690;
     task->scale.z = 0.7f;
     task->scale.y = 0.7f;
@@ -2365,11 +2369,11 @@ void func_800925A8(CTTask* task) {
 
 void func_80092690(CTTask* task) {
 
-    if (task->unk5E._s16 != 0) {
+    if (task->unk5E != 0) {
         func_8008D7FC(task);
     }
     if (func_80090CB0(task) != 0) {
-        task->unk5E._s16 = 1;
+        task->unk5E = 1;
         if (task->unk_5C < 5) {
             task->unk7C *= -1.0f;
             task->unk7C *= 0.7;
@@ -2378,14 +2382,14 @@ void func_80092690(CTTask* task) {
         else {
             task->function = func_8009273C;
             task->unk44 = 20;
-            task->unk60._s16 = 30;
+            task->unk60 = 30;
         }
     }
 }
 
 void func_8009273C(CTTask* task) {
-    if (task->unk60._s16 != 0) {
-        task->unk60._s16--;
+    if (task->unk60 != 0) {
+        task->unk60--;
     }
     else if (func_8008D7FC(task) != 0) {
         task->unk44 = 21;
@@ -2408,7 +2412,7 @@ void func_800927E8(CTTask* task) {
         task->function = func_80092864;
         task->unk44 = 22;
         PLAYSFX(SFX_Lizard_Kong_Hit, 0, 16);
-        task->unk60._s16 = 15;
+        task->unk60 = 15;
         func_8008D7FC(task);
     }
 }
@@ -2419,8 +2423,8 @@ void func_80092864(CTTask* task) {
 }
 
 void func_8009288C(CTTask* task) {
-    if (task->unk60._s16 != 0) {
-        task->unk60._s16--;
+    if (task->unk60 != 0) {
+        task->unk60--;
     }
     else if (func_8008D7FC(task) != 0) {
         if (task->unk58->unk54 < 7) {
@@ -2488,7 +2492,7 @@ CTTask* func_80092C54(s32 task) {
     newTask->rotA = 80;
     newTask->pos.x = -80 - (task * 30);
     newTask->function = func_80092D68;
-    newTask->unk_62._s16 = task + 1;
+    newTask->unk_62 = task + 1;
     newTask->scale.z = 1.5f;
     newTask->scale.y = 1.5f;
     newTask->scale.x = 1.5f;
@@ -2547,7 +2551,7 @@ void func_80092E9C(CTTask* task) {
             task->unk_5C = 3;
         }
     }
-    task->pos.x = sp1C->pos.x - (task->unk_62._s16 * 0x19);
+    task->pos.x = sp1C->pos.x - (task->unk_62 * 0x19);
 }
 
 void func_80092F44(CTTask* task) {
@@ -2595,7 +2599,7 @@ CTTask* func_80092FEC(s32 arg0) {
         temp_v0->pos.y += 4;
         temp_v0->scale.x = 0.8f;
     }
-    temp_v0->unk_62._s16 = arg0 + 1;
+    temp_v0->unk_62 = arg0 + 1;
     temp_v0->unk88 = temp_v0->pos.y;
     return temp_v0;
 }
@@ -2633,8 +2637,8 @@ void func_80093260(CTTask* task) {
             task->unk_5C = 3;
         }
     }
-    task->pos.x = newTask->pos.x - (task->unk_62._s16 * 30);
-    if (task->unk_62._s16 != 1) {
+    task->pos.x = newTask->pos.x - (task->unk_62 * 30);
+    if (task->unk_62 != 1) {
         task->pos.x -= 5;
     }
 }
@@ -2648,9 +2652,9 @@ void func_8009336C(CTTask* task) {
 void func_80093500(CTTask* task) {
     if (func_80092C0C(task) != 0) {
         task->function = func_80093600;
-        task->unk60._s16 = 45;
+        task->unk60 = 45;
         task->unk_5C = 30;
-        task->unk_62._s16 = 30;
+        task->unk_62 = 30;
         task->unk90 = 90;
     }
     else{
@@ -2675,8 +2679,8 @@ void func_800935F8(s32 arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80093600.s")
 
 void func_800937FC(CTTask* arg0) {
-    if (arg0->unk60._s16 != 0) {
-        arg0->unk60._s16--;
+    if (arg0->unk60 != 0) {
+        arg0->unk60--;
     }
     arg0->function = func_8009384C;
     arg0->unk54 = 5;
@@ -2734,12 +2738,12 @@ void func_800938E4(s32 xMult) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80093ECC.s")
 
 void func_80093FC8(CTTask* task) {
-    if (task->unk60._s16 != 0) {
-        task->unk60._s16--;
+    if (task->unk60 != 0) {
+        task->unk60--;
     } else {
         task->unk54 = 3;
         task->function = func_8009403C;
-        task->unk60._s16 = 30;
+        task->unk60 = 30;
         PLAYSFX(SFX_Yellow_Ant_Fall, 0, 16);
     }
 }
@@ -2751,8 +2755,8 @@ void func_8009403C(CTTask* task) {
     }
     else{
         task->unk44 = 11;
-        if (task->unk60._s16 != 0) {
-            task->unk60._s16--;
+        if (task->unk60 != 0) {
+            task->unk60--;
         
         } else {
             task->function = func_800940B8;
@@ -2772,7 +2776,7 @@ void func_800940B8(CTTask* task) {
 
 void func_80094120(CTTask* task) {
     if (func_8008D7FC(task) != 0) {
-        task->unk60._s16 = 15;
+        task->unk60 = 15;
         task->function = func_800941C0;
         task->unk44 = 13;
         PLAYSFX(SFX_Standard_Bounce, 0, 16);
@@ -2829,7 +2833,7 @@ void func_8009430C(CTTask* task) {
             task->unk7C *= 1.2;
         }
         task->function = func_80094410;
-        task->unk60._s16 = 4;
+        task->unk60 = 4;
         task->unk7C = -10;
     }
 }
@@ -2840,8 +2844,8 @@ void func_80094410(CTTask* task) {
         PLAYSFX(SFX_Standard_Bounce, 0, 16);
         task->unk7C *= -0.8;
         task->unk80 = 0;
-        if (task->unk60._s16 != 0) {
-            task->unk60._s16--;
+        if (task->unk60 != 0) {
+            task->unk60--;
         } else{
             task->function = func_80094540;
             task->rotA = 0;
@@ -2853,7 +2857,7 @@ void func_800944C0(CTTask* task) {
     task->rotA += task->unk_5C;
     if (func_80090CB0(task) != 0) {
         PLAYSFX(SFX_Standard_Bounce, 0, 16);
-        task->unk60._s16 = 0;
+        task->unk60 = 0;
         task->function = func_80094540;
         task->rotA = 0;
     }
@@ -2861,18 +2865,18 @@ void func_800944C0(CTTask* task) {
 
 void func_80094540(CTTask* task) {
     CTTask* newTask;
-    if (task->unk60._s16 != 0) {
-        task->unk5E._s16 = 0;
-        task->unk60._s16--;
-        task->unk44 = D_800FFEEC[task->unk5E._s16];
+    if (task->unk60 != 0) {
+        task->unk5E = 0;
+        task->unk60--;
+        task->unk44 = D_800FFEEC[task->unk5E];
     } else if (func_8008D7FC(task) != 0) {
-        task->unk5E._s16 += 1;
-        if (D_800FFEEC[task->unk5E._s16] == -1) {
+        task->unk5E += 1;
+        if (D_800FFEEC[task->unk5E] == -1) {
             task->function = func_800945E4;
             newTask = task->unk58;
             newTask->unk54 = 7;
         } else {
-            task->unk44 = D_800FFEEC[task->unk5E._s16];
+            task->unk44 = D_800FFEEC[task->unk5E];
         }
     }
 }
@@ -3287,7 +3291,7 @@ CTTask* func_80097498(void) {
         while (1){}
     }
     temp_v0->function = func_80097508;
-    temp_v0->unk66._s16 = 0;
+    temp_v0->unk66 = 0;
     temp_v0->pos.x = 64.0f;
     temp_v0->pos.y = 64.0f;
     temp_v0->pos.z = 0.0f;
@@ -3484,29 +3488,29 @@ void func_80098F50(CTTask* task) {
     u8 b1;
     u8 b2;
     
-    unk62 = task->unk_62._s16;
+    unk62 = task->unk_62;
     newTask = task->unk58;
     x = task->pos.x;
     y = task->pos.y;
     func_800610A8();
-    if ((task->unk_62._s16 == newTask->unk6A) && (newTask->unk54 == 6)) {
+    if ((task->unk_62 == newTask->unk6A) && (newTask->unk54 == 6)) {
         D_80174998 += 1;
         func_80098684(&r1, &g1, &b1, &r2, &g2, &b2);
         SetTextGradient(0xFF, 0, 0, 0xFF, 0xFF, 0x80, 0, 0xFF, 0xFF, 0, 0, 0xFF, 0xFF, 0x80, 0, 0xFF);
-    } else if (task->unk_62._s16 == newTask->unk6A) {
+    } else if (task->unk_62 == newTask->unk6A) {
         func_80098684(&r1, &g1, &b1, &r2, &g2, &b2);
         SetTextGradient(r1, g1, b1, 0xFF, r2, g2, b2, 0xFF, r1, g1, b1, 0xFF, r2, g2, b2, 0xFF);
-    } else if ((task->unk_62._s16 == newTask->unk_64) && (newTask->unk54 == 0xD)) {
-        SetTextGradient(0xC8, 0x16, 0xA0, task->unk_68._u8[1], 0xDC, 0xDC, 0x14, task->unk_68._u8[1], 0xC8, 0x16, 0xA0, task->unk_68._u8[1], 0xC8, 0xDC, 0x14, task->unk_68._u8[1]);
+    } else if ((task->unk_62 == newTask->unk_64) && (newTask->unk54 == 0xD)) {
+        SetTextGradient(0xC8, 0x16, 0xA0, task->unk_68, 0xDC, 0xDC, 0x14, task->unk_68, 0xC8, 0x16, 0xA0, task->unk_68, 0xC8, 0xDC, 0x14, task->unk_68);
     } else {
-        SetTextGradient(0x7F, 0x7F, 0x3C, task->unk_68._u8[1], 0x1E, 0x1E, 0x14, task->unk_68._u8[1], 0x7F, 0x7F, 0x3C, task->unk_68._u8[1], 0x1E, 0x1E, 0x14, task->unk_68._u8[1]);
+        SetTextGradient(0x7F, 0x7F, 0x3C, task->unk_68, 0x1E, 0x1E, 0x14, task->unk_68, 0x7F, 0x7F, 0x3C, task->unk_68, 0x1E, 0x1E, 0x14, task->unk_68);
     }
     PrintText(x, y, 0, 1, 0, 0, "ＤＡＴＡ", 1);
     PrintText(x + 72, y, 0, 1, 0, 0, ParseIntToBase10(unk62 + 1, &resultChar[0]), 1);
     func_800610B8();
     if ((u16) task->unk72 == 1) {
         temp = task->unk_64;
-        func_80059F28(x, y + 33, 0, 0, 1, 0, 0, 0,D_801003CC[task->unk66._s16]);
+        func_80059F28(x, y + 33, 0, 0, 1, 0, 0, 0,D_801003CC[task->unk66]);
         printUISprite(x + 28, y + 33, 0, 0, 1, 0, 0, 0, 0x70);
         SetTextGradient(0x14, 0x64, 1, 0xFF, 0xF0, 0xDC, 0, 0xFF, 0x14, 0x64, 1, 0xFF, 0xF0, 0xDC, 0, 0xFF);
         func_800612F0(1);
@@ -3526,8 +3530,8 @@ void func_80099570(CTTask* task) {
 }
 
 void func_80099598(CTTask* arg0) {
-    _bzero(&gSaveFiles[arg0->unk_62._s16], sizeof(SaveFile));
-    SaveData_LoadFile(arg0->unk_62._s16, &gSaveFiles[arg0->unk_62._s16]);
+    _bzero(&gSaveFiles[arg0->unk_62], sizeof(SaveFile));
+    SaveData_LoadFile(arg0->unk_62, &gSaveFiles[arg0->unk_62]);
     arg0->function = Task_LoadSaveFileAt;
 }
 
@@ -3538,17 +3542,17 @@ void func_8009960C(CTTask* arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/Task_LoadSaveFileAt.s")
 
 void func_8009984C(CTTask* arg0) {
-    arg0->unk_68._s16 = 0xFF;
+    arg0->unk_68 = 0xFF;
     func_80099570(arg0);
 }
 
 void func_80099870(CTTask* arg0) {
     CTTask* sp1C = arg0->unk58;
-    arg0->unk_68._s16 -= 32;
+    arg0->unk_68 -= 32;
     func_80099570(arg0);
-    if (arg0->unk_68._s16 <= 0) {
+    if (arg0->unk_68 <= 0) {
         arg0->function = func_80099598;
-        sp1C->unk5E._s16 = 1;
+        sp1C->unk5E = 1;
     }
 }
 
@@ -3565,10 +3569,10 @@ void func_8009A57C(CTTask* task) {
     if (temp_v1->unk54 == 1) {
         task->function = func_8009A64C;
     } else if (temp_v1->unk54 == 0) {
-        if (gContMain[task->unk_62._s16].buttons2 & 0x8000) {
+        if (gContMain[task->unk_62].buttons2 & 0x8000) {
             temp_v1->unk54 = 1;
             PLAYSFX(SFX_Select, 0, 80);
-        } else if (gContMain[task->unk_62._s16].buttons2 & 0x4000) {
+        } else if (gContMain[task->unk_62].buttons2 & 0x4000) {
             temp_v1->unk54 = 3;
             PLAYSFX(SFX_Decline, 0, 80);
         } else {
@@ -3581,11 +3585,11 @@ void func_8009A64C(CTTask* task) {
     CTTask* newTask = task->unk58;
     if (newTask->unk54 != 1) {
         task->function = func_8009A57C;
-    } else if (gContMain[task->unk_62._s16].buttons2 & 0x8000) {
+    } else if (gContMain[task->unk_62].buttons2 & 0x8000) {
         newTask->unk54 = 2;
         task->function = func_8009A57C;
         PLAYSFX(SFX_Select, 0, 80);
-    } else if (gContMain[task->unk_62._s16].buttons2 & 0x4000) {
+    } else if (gContMain[task->unk_62].buttons2 & 0x4000) {
         newTask->unk54 = 0;
         task->function = func_8009A57C;
         PLAYSFX(SFX_Decline, 0, 80);
@@ -3600,12 +3604,12 @@ void func_8009A988(CTTask* arg0) {
     CTTask* temp_v1 = arg0->unk58;
     if (temp_v1->unk54 == 0xD) {
         func_8009A724(arg0);
-        arg0->unk60._s16 = 0;
+        arg0->unk60 = 0;
     }
     if (temp_v1->unk54 == 0x10) {
-        arg0->unk5E._s16 = 8;
-        arg0->unk60._s16++;
-        if (arg0->unk5E._s16 >= arg0->unk60._s16) {
+        arg0->unk5E = 8;
+        arg0->unk60++;
+        if (arg0->unk5E >= arg0->unk60) {
             func_8009A868(arg0);
         }
     }
@@ -3620,8 +3624,8 @@ void func_8009ABF4(CTTask* arg0) {
         }
         else if (arg0->unk54 == 3) {
             arg0->function = func_8009AFFC;
-            arg0->unk5E._s16 = 0;
-            func_8008E9AC(0x20, 0, 0, 0, &arg0->unk5E._s16);
+            arg0->unk5E = 0;
+            func_8008E9AC(0x20, 0, 0, 0, &arg0->unk5E);
         }
     }
 }
@@ -3641,10 +3645,10 @@ void func_8009ACC8(CTTask* task) {
     SaveData_WriteFile(&gGameState);
     gGameState.flags |= 2;
     gGameState.checksum = SaveData_FileChecksum(&gGameState.checksum);
-    task->unk_68._s16 = 4;
+    task->unk_68 = 4;
     if (SaveData_UpdateFile(task->unk6A, &gGameState) != 0) {
         task->function = func_8009AE38;
-        task->unk_68._s16 = 0x3C;
+        task->unk_68 = 0x3C;
     }
     else {
         task->function = func_8009ADDC;
@@ -3657,21 +3661,21 @@ void func_8009AD74(CTTask* task) {
     CTTask* var_v0 = gCTTaskHead;
     CTTask* var_v1 = var_v0->next;
     while (var_v1 != NULL){
-        if ((var_v0->runType == 3) && (task->unk6A == var_v0->unk_62._s16)) {
+        if ((var_v0->runType == 3) && (task->unk6A == var_v0->unk_62)) {
             var_v1 = var_v0->next;
             var_v0->function = func_80099598;
         }
         var_v0 = var_v1;
         var_v1 = var_v1->next;
     }
-    task->unk_68._s16 = 4;
+    task->unk_68 = 4;
     task->function = func_8009AF98;
 }
 
 void func_8009ADDC(CTTask* task) {
     //eugh
-    s16 temp_v0 = task->unk_68._s16;
-    task->unk_68._s16 = temp_v0 - 1;
+    s16 temp_v0 = task->unk_68;
+    task->unk_68 = temp_v0 - 1;
     if (temp_v0 == 0) {
         DummiedPrintf("元に戻る\n", task);
         task->function = func_8009AD74;
@@ -3686,8 +3690,8 @@ void func_8009AF98(CTTask* task) {
     DummiedPrintf("元に戻る\n");
     if (func_8008EC90() != 0) {
         task->function = func_8009AFFC;
-        task->unk5E._s16 = 0;
-        func_8008E9AC(0x20, 0, 0, 0, &task->unk5E._s16);
+        task->unk5E = 0;
+        func_8008E9AC(0x20, 0, 0, 0, &task->unk5E);
     }
 }
 
@@ -3712,7 +3716,7 @@ void func_8009B45C(CTTask* task) {
 
 void func_8009B464(CTTask* task) {
     CTTask* newTask = task->unk58;
-    if (gContMain[task->unk_62._s16].buttons2 & 0x8000) {
+    if (gContMain[task->unk_62].buttons2 & 0x8000) {
         if (gSaveFiles[newTask->unk6A].flags & 2) {
             newTask->unk54 = 6;
             task->function = func_8009B45C;
@@ -3723,12 +3727,12 @@ void func_8009B464(CTTask* task) {
             PLAYSFX(SFX_Save_Delete_Decline, 0, 80);
         }
     }
-    if (gContMain[task->unk_62._s16].buttons2 & 0x4000) {
+    if (gContMain[task->unk_62].buttons2 & 0x4000) {
         newTask->unk54 = 7;
         task->function = func_8009B45C;
         PLAYSFX(SFX_Decline, 0, 80);
     }
-    else if (gContMain[task->unk_62._s16].buttons2 & 0x20) {
+    else if (gContMain[task->unk_62].buttons2 & 0x20) {
         if (!(gSaveFiles[newTask->unk6A].flags & 2)) {
             PLAYSFX(SFX_Save_Delete_Decline, 0, 80);
         } else{
@@ -3737,7 +3741,7 @@ void func_8009B464(CTTask* task) {
             PLAYSFX(SFX_Select, 0, 80);
         }
     }
-    else if (gContMain[task->unk_62._s16].buttons2 & 0x10) {
+    else if (gContMain[task->unk_62].buttons2 & 0x10) {
         if (!(gSaveFiles[newTask->unk6A].flags & 2)) {
             PLAYSFX(SFX_Save_Delete_Decline, 0, 80);
         } else {
@@ -3764,8 +3768,8 @@ void func_8009BA38(CTTask* task) {
         }
         if (task->unk54 == 7) {
             task->function = func_8009BC60;
-            task->unk5E._s16 = 0;
-            func_8008E9AC(32, 0, 0, 0, &task->unk5E._s16);
+            task->unk5E = 0;
+            func_8008E9AC(32, 0, 0, 0, &task->unk5E);
             return;
         }
         if (task->unk54 == 9) {
@@ -3783,19 +3787,19 @@ void func_8009BAF4(CTTask* task) {
     SaveData_LoadFile(task->unk6A, &gGameState);
     (&D_80200C08)[105] = task->unk6A;
     D_800FF8EC = task->unk6A;
-    task->unk_68._s16 = 8;
+    task->unk_68 = 8;
     task->function = func_8009BB54;
 }
 
 void func_8009BB54(CTTask* task) {
     //eugh
-    s16 temp_v0 = task->unk_68._s16;
-    task->unk_68._s16 = temp_v0 - 1;
+    s16 temp_v0 = task->unk_68;
+    task->unk_68 = temp_v0 - 1;
     if (temp_v0 == 0) {
         DummiedPrintf("元に戻る\n");
         task->function = func_8009BBD8;
-        task->unk5E._s16 = 0;
-        func_8008E9AC(32, 255, 255, 255, &task->unk5E._s16);
+        task->unk5E = 0;
+        func_8008E9AC(32, 255, 255, 255, &task->unk5E);
         gGameRecords.flags[0] = SaveData_RecordChecksum();
         D_801FC9A4 = 0;
     }
@@ -3835,12 +3839,12 @@ void func_8009BC98(CTTask* arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009BCF0.s")
 
 void func_8009BDA8(CTTask* arg0) {
-    arg0->unk_68._s16 = 4;
+    arg0->unk_68 = 4;
     arg0->function = &func_8009BDE4;
 }
 
 void func_8009BDC0(CTTask* arg0) {
-    if (arg0->unk_68._s16--) {
+    if (arg0->unk_68--) {
         return;
     }
     arg0->function = &func_8009BDA8;
@@ -3852,11 +3856,11 @@ void func_8009BEC4(CTTask* task) {
     CTTask* newTask = task->unk58;
     if (newTask->unk54 != 9) {
         task->function = func_8009C278;
-    }  else if (gContMain[task->unk_62._s16].buttons2 & 0x8000) {
+    }  else if (gContMain[task->unk_62].buttons2 & 0x8000) {
         newTask->unk54 = 10;
         task->function = func_8009C278;
         PLAYSFX(SFX_Select, 0, 80);
-    } else if (gContMain[task->unk_62._s16].buttons2 & 0x4000) {
+    } else if (gContMain[task->unk_62].buttons2 & 0x4000) {
         newTask->unk54 = 4;
         task->function = func_8009C278;
         PLAYSFX(SFX_Decline, 0, 80);
@@ -3877,7 +3881,7 @@ void func_8009BFF8(CTTask* arg0) {
     func_80099AF4(arg0);
     SaveData_ClearRecords();
     arg0->function = &func_8009C038;
-    arg0->unk_68._s16 = 4;
+    arg0->unk_68 = 4;
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009C038.s")
@@ -3886,11 +3890,11 @@ void func_8009C19C(CTTask* task) {
     CTTask* newTask = task->unk58;
     if (newTask->unk54 != 18) {
         task->function = func_8009C278;
-    } else if (gContMain[task->unk_62._s16].buttons2 & 0x8000) {
+    } else if (gContMain[task->unk_62].buttons2 & 0x8000) {
         newTask->unk54 = 19;
         task->function = func_8009C278;
         PLAYSFX(SFX_Select, 0, 80);
-    } else if (gContMain[task->unk_62._s16].buttons2 & 0x4000) {
+    } else if (gContMain[task->unk_62].buttons2 & 0x4000) {
         newTask->unk54 = 4;
         task->function = func_8009C278;
         PLAYSFX(SFX_Decline, 0, 80);
@@ -3927,11 +3931,11 @@ void func_8009C394(CTTask* task) {
     for(newTask = gCTTaskHead, next = newTask->next;
     next != NULL; newTask = next, next = next->next){
         if (newTask->runType == 3) {
-            if (task->unk_64 == newTask->unk_62._s16) {
+            if (task->unk_64 == newTask->unk_62) {
                 newTask->function = func_800998CC;
                 newTask->unk74 = task->unk6A;
             }
-            if (task->unk6A == newTask->unk_62._s16) {
+            if (task->unk6A == newTask->unk_62) {
                 newTask->function = func_80099870;
             }
             next = newTask->next;
@@ -3940,10 +3944,10 @@ void func_8009C394(CTTask* task) {
     SaveData_LoadFile(task->unk_64, &gSaveFiles[task->unk_64]);
     gSaveFiles[task->unk_64].checksum = SaveData_FileChecksum(&gSaveFiles[task->unk_64].checksum);
     if (SaveData_UpdateFile(task->unk6A, &gSaveFiles[task->unk_64]) != 0) {
-        task->unk_68._s16 = 0x3C;
+        task->unk_68 = 0x3C;
         task->function = func_8009C4E0;
     } else {
-        task->unk_68._s16 = 8;
+        task->unk_68 = 8;
         task->function = func_8009C700;
     }
 }
@@ -3957,18 +3961,18 @@ void func_8009C644(CTTask* task) {
     for(at = gCTTaskHead, next = at->next;
         next != NULL;
         at = next, next = next->next){
-        if ((at->runType == 3) && (task->unk6A == at->unk_62._s16)) {
+        if ((at->runType == 3) && (task->unk6A == at->unk_62)) {
             next = at->next;
             at->function = func_80099598;
         }
     }
-    task->unk_68._s16 = 8;
+    task->unk_68 = 8;
     task->function = func_8009C6AC;
 }
 
 void func_8009C6AC(CTTask* arg0) {
-    s16 save = arg0->unk_68._s16;
-    arg0->unk_68._s16 = save-1;
+    s16 save = arg0->unk_68;
+    arg0->unk_68 = save-1;
     if (save == 0) {
         DummiedPrintf("元に戻る\n", arg0);
         arg0->function = func_8009BA38;
@@ -3977,7 +3981,7 @@ void func_8009C6AC(CTTask* arg0) {
 }
 
 void func_8009C700(CTTask* task) {
-    if (task->unk_68._s16--) {
+    if (task->unk_68--) {
         return;
     } else {
         DummiedPrintf("元に戻る\n", task);
@@ -3988,11 +3992,11 @@ void func_8009C700(CTTask* task) {
 void func_8009C74C(CTTask* task) {
     CTTask* newTask = task->unk58;
     if (newTask->unk54 == 0xD) {
-        if (gContMain[task->unk_62._s16].buttons2 & 0x8000) {
+        if (gContMain[task->unk_62].buttons2 & 0x8000) {
             newTask->unk54 = 15;
             task->function = func_8009C828;
             PLAYSFX(SFX_Select, 0, 80);
-        } else if (gContMain[task->unk_62._s16].buttons2 & 0x4000) {
+        } else if (gContMain[task->unk_62].buttons2 & 0x4000) {
             newTask->unk54 = 14;
             task->function = func_8009B464;
             PLAYSFX(SFX_Decline, 0, 80);
@@ -4006,11 +4010,11 @@ void func_8009C828(CTTask* task) {
     CTTask* newTask = task->unk58;
     if (newTask->unk54 != 15) {
         task->function = func_8009C278;
-    } else if (gContMain[task->unk_62._s16].buttons2 & 0x8000) {
+    } else if (gContMain[task->unk_62].buttons2 & 0x8000) {
         newTask->unk54 = 16;
         task->function = func_8009C278;
         PLAYSFX(SFX_Select, 0, 80);
-    } else if (gContMain[task->unk_62._s16].buttons2 & 0x4000) {
+    } else if (gContMain[task->unk_62].buttons2 & 0x4000) {
         newTask->unk54 = 4;
         task->function = func_8009C278;
         PLAYSFX(SFX_Decline, 0, 80);
@@ -4101,7 +4105,7 @@ void func_8009D954(s32 notUsed) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009DC40.s")
 
 u16 func_8009DDEC(CTTask* task) {
-    return func_8008D6E4(task, &gContMain[task->unk_62._s16]);
+    return func_8008D6E4(task, &gContMain[task->unk_62]);
 }
 
 void func_8009DE1C(CTTask* task) {
@@ -4126,14 +4130,14 @@ void func_8009DE1C(CTTask* task) {
     }
     result = func_8009DDEC(task);
     temp_t1 = task->unk58;
-    if (gContMain[task->unk_62._s16].buttons2 & 0x8000) {
+    if (gContMain[task->unk_62].buttons2 & 0x8000) {
         task->unk72 = 2;
         task->function = func_8009E24C;
-        task->unk60._s16 = 8;
-        temp_t1->unk94[task->unk_5C] = task->unk_62._s16;
+        task->unk60 = 8;
+        temp_t1->unk94[task->unk_5C] = task->unk_62;
         PLAYSFX(0x28, 0, 0x10);
     }
-    if (gContMain[task->unk_62._s16].buttons2 & 0x4000) {
+    if (gContMain[task->unk_62].buttons2 & 0x4000) {
         temp_t1->unk54 = 15;
         PLAYSFX(0xC4, 0, 0x10);
         return;
@@ -4197,7 +4201,7 @@ void func_8009E24C(CTTask* task) {
     if (task->pos.y <= 96) {
         task->pos.y = 96;
         task->function = func_8009E504;
-        gSelectedCharacters[task->unk_62._s16] = task->unk_5C;
+        gSelectedCharacters[task->unk_62] = task->unk_5C;
     }
 }
 
@@ -4243,7 +4247,7 @@ void func_8009F0C8(CTTask* task) {
             task->unk_64 = 0;
             func_8008E9AC(32, 0, 0, 0, &task->unk_64);
             task->function = func_8009F5B0;
-            D_80200B18 = task->unk5E._s16;
+            D_80200B18 = task->unk5E;
         } else if (task->unk54 == 9) {
             task->unk_64 = 0;
             func_8008E9AC(32, 0, 0, 0, &task->unk_64);
@@ -4267,9 +4271,9 @@ void func_8009F7F4(CTTask* task) {
     if (func_8008EC90() != 0) {
         task->unk54 = 11;
         task->function = func_800A02C4;
-        task->unk66._s16 = gSelectedBattleBGM + 1;
-        task->unk_62._s16 = D_80200B1A;
-        task->unk_68._s16 = D_80200B1C;
+        task->unk66 = gSelectedBattleBGM + 1;
+        task->unk_62 = D_80200B1A;
+        task->unk_68 = D_80200B1C;
         task->unk6A = D_801003DC;
         task->unk_64 = 0;
         func_8008EA60(32, 0, 0, 0, &task->unk_64);
@@ -4294,9 +4298,9 @@ const char D_8010E7EC[] = "ＢＧＭ３";
 void func_800A02C4(CTTask* task) {
     func_8009F890();
     if (task->unk54 == 12) {
-        D_80200B1A = task->unk_62._s16;
-        gSelectedBattleBGM = task->unk66._s16 - 1;
-        D_80200B1C = task->unk_68._s16;
+        D_80200B1A = task->unk_62;
+        gSelectedBattleBGM = task->unk66 - 1;
+        D_80200B1C = task->unk_68;
         D_801003DC = task->unk6A;
         func_8008E9AC(32, 0, 0, 0, &task->unk_64);
         task->function = func_800A0354;
@@ -4327,7 +4331,7 @@ void func_800A07E0(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A0E3C.s")
 
 u16 func_800A0EB8(CTTask* task) {
-    return func_8008D6E4(task, &gContMain[task->unk_62._s16]);
+    return func_8008D6E4(task, &gContMain[task->unk_62]);
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A0EE8.s")
@@ -4394,7 +4398,7 @@ CTTask* func_800A18C8(void) {
 void func_800A191C(CTTask* task) {
     CTTask* unkTask = task->unk58;
     
-    if (!(task->unk60._s16-- > 0)) {
+    if (!(task->unk60-- > 0)) {
         unkTask->unk54 = 1;
     }
 }
@@ -4405,11 +4409,11 @@ void func_800A191C(CTTask* task) {
 
 void func_800A1CCC(CTTask* arg0) {
     if (func_8008EC90() != 0) {
-        if (arg0->unk60._s16 == 1) {
+        if (arg0->unk60 == 1) {
             D_800FF8DC = D_800FF8E0 = D_800FF8E4 = 0xFF;
         }
-        gSelectedCharacters[0] = arg0->unk5E._s16;
-        SetProcessType(arg0->unk60._s16);
+        gSelectedCharacters[0] = arg0->unk5E;
+        SetProcessType(arg0->unk60);
     }
 }
 
@@ -4536,7 +4540,7 @@ const char D_8010EA94[] = "　　　　　　　ＥＸＩＴ　　　　　　�
 
 void func_800A38B8(CTTask* task) {
     func_800A2EF4(task);
-    if ((func_8008EC90() != 0) && (task->unk66._s16 == 5)) {
+    if ((func_8008EC90() != 0) && (task->unk66 == 5)) {
         task->unk_64 = 0;
         func_8008E9AC(32, 0, 0, 0, &task->unk_64);
         task->function = func_800A3928;
@@ -4546,7 +4550,7 @@ void func_800A38B8(CTTask* task) {
 void func_800A3928(CTTask* task) {
     func_800A2EF4(task);
     if (func_8008EC90() != 0) {
-        task->unk_62._s16 = 15;
+        task->unk_62 = 15;
         if (gIsStero != (gGameRecords.flags[1] & 1)) {
             task->function = func_800A3990;
         } else{
@@ -4563,7 +4567,7 @@ void func_800A3DC0(CTTask* arg0) {
     CTTask* temp_v0 = CTTask_Alloc(1, 0x64, NULL);
     temp_v0->unk58 = arg0;
     temp_v0->function = func_800A4074;
-    temp_v0->unk_62._s16 = 0;
+    temp_v0->unk_62 = 0;
  
 }
 
@@ -4592,16 +4596,16 @@ void func_800A44D8(CTTask* arg0) {
     f32 temp_f24;
     s32 i;
 
-    if (arg0->unk60._s16 < 0xFF) {
-        arg0->unk60._s16++;
+    if (arg0->unk60 < 0xFF) {
+        arg0->unk60++;
     }
     
-    setPrimColor(0, 0, 0, arg0->unk60._s16);
+    setPrimColor(0, 0, 0, arg0->unk60);
     
     for (i = 0; D_80100DF0[i].letter != 0; i++) {
         temp_f22 = D_80100DF0[i].x;
         temp_f24 = D_80100DF0[i].y;
-        if (i == arg0->unk66._s16) {
+        if (i == arg0->unk66) {
             SetTextGradient(0xA, 0xFF, 0xA, 0xFF, 0xC8, 0xC8, 0, 0xFF, 0xA, 0xFF, 0xA, 0xFF, 0xC8, 0xC8, 0, 0xFF);
         } else {
             SetTextGradient(0xA0, 0xA0, 0xA0, 0xCC, 40, 40, 40, 0xCC, 0xA0, 0xA0, 0xA0, 0xCC, 40, 40, 40, 0xCC);
@@ -4628,7 +4632,7 @@ void func_800A4868(CTTask* arg0) {
     arg0->unk_5C--;
     if (arg0->unk_5C == 0) {
         arg0->function = &func_800A4904;
-        arg0->unk60._s16 = 0;
+        arg0->unk60 = 0;
         func_8008EB08(32, 0, 0, 0, &arg0->unk_64, 10.0f, 120.0f, 168.0f, 55.0f, 0xF0);
     }
 }
@@ -4636,7 +4640,7 @@ void func_800A4868(CTTask* arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A4904.s")
 
 void func_800A49B0(CTTask* task) {
-    if (task->unk5E._s16 != -1) {
+    if (task->unk5E != -1) {
         func_8008E9AC(32, 0, 0, 0, &task->unk_64);
         task->function = func_800A4A10;
     }
@@ -4646,8 +4650,8 @@ void func_800A49B0(CTTask* task) {
 void func_800A4A10(CTTask* task) {
     func_800A44D8(task);
     if (func_8008EC90() != 0) {
-        SetProcessType((s32) task->unk5E._s16);
-        if (task->unk5E._s16 == 0) {
+        SetProcessType((s32) task->unk5E);
+        if (task->unk5E == 0) {
             gGameModeState = 7;
         }
     }
@@ -4738,12 +4742,12 @@ void func_800A5444(CTTask* arg0) {
     if (func_8008EC90() != 0) {
         arg0->function = func_800A5488;
         arg0->unk54 = 1;
-        arg0->unk60._s16 = 0x96;
+        arg0->unk60 = 0x96;
     }
 }
 
 void func_800A5488(CTTask* task) {
-    if (task->unk_62._s16 != -1) {
+    if (task->unk_62 != -1) {
         task->unk_64 = 0;
         func_8008E9AC(0x20, 0, 0, 0, &task->unk_64);
         task->function = &func_800A54F4;
@@ -4757,7 +4761,7 @@ void func_800A54EC(CTTask* arg0) { //probably CTTask*
 
 void func_800A54F4(CTTask* arg0) {
     if (func_8008EC90() != 0) {
-        SetProcessType(arg0->unk_62._s16);
+        SetProcessType(arg0->unk_62);
     }
 }
 
@@ -4766,9 +4770,9 @@ void func_800A5524(CTTask* arg0) {
     u16 temp_v1;
 
     temp_v0 = arg0->unk58;
-    temp_v1 = gContMain[arg0->unk_62._s16].buttons2;
+    temp_v1 = gContMain[arg0->unk_62].buttons2;
     if (((temp_v1 & 0x1000) || (temp_v1 & 0x8000)) && (temp_v0->unk54 == 1)) {
-        temp_v0->unk_62._s16 = 6;
+        temp_v0->unk_62 = 6;
     }
 }
 
@@ -4877,7 +4881,7 @@ void func_800A6B34(void) {
 void func_800A6B80(CTTask* arg0) {
     arg0->unk_04 = 0;
     arg0->function = func_800A6C04;
-    arg0->unk_62._s16 = D_800FF8E8;
+    arg0->unk_62 = D_800FF8E8;
     arg0->unk_5C = 1;
     arg0->unk_64 = 0;
     
@@ -4887,7 +4891,7 @@ void func_800A6B80(CTTask* arg0) {
 
 void func_800A6C04(CTTask* arg0) {
     if (func_8008EC90() != 0) {
-        if ((D_801FC9BC[arg0->unk_62._s16].unk_00 & 0x1000) || (D_801FC9BC[arg0->unk_62._s16].unk_00 & 0x8000)) {
+        if ((D_801FC9BC[arg0->unk_62].unk_00 & 0x1000) || (D_801FC9BC[arg0->unk_62].unk_00 & 0x8000)) {
             func_8008E9AC(0x20, 0, 0, 0, &arg0->unk_64);
             arg0->function = &func_800A6CF4;
         } else if (arg0->unk_5C != 0) {
@@ -5456,7 +5460,7 @@ void func_800A9690(void) {
 void func_800A96DC(CTTask* task) {
     task->unk_04 = 0;
     task->function = func_800A9728;
-    task->unk_62._s16 = (s16) D_800FF8E8;
+    task->unk_62 = (s16) D_800FF8E8;
     task->unk_5C = 1;
     task->unk_64 = 0;
     //this is required
