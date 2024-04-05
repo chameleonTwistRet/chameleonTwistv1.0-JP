@@ -49,15 +49,6 @@ LIB_COMPILE_CMD = (
 LDFLGS = f"-T {LD_PATH} -T undefined_syms_auto.txt -T undefined_syms.txt -Map {MAP_PATH} --no-check-sections"
 DEPENDENCY_GEN = f"cpp -w {INCLUDES} -nostdinc -MD -MF $out.d $in -o /dev/null"
 
-WIBO_VER = "0.6.4"
-
-def exec_shell(command: List[str]) -> str:
-    ret = subprocess.run(
-        command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True
-    )
-    return ret.stdout
-
-
 def clean():
     if os.path.exists(".splache"):
         os.remove(".splache")
@@ -326,16 +317,6 @@ if __name__ == "__main__":
         action="store_true",
     )
     args = parser.parse_args()
-
-    try:
-        exec_shell(["wibo"])
-    except FileNotFoundError:
-        print("ERROR: wibo does not appear to be accessible")
-        print("To install it, please download it and put it in your PATH:")
-        print(
-            f"  wget https://github.com/decompals/wibo/releases/download/{WIBO_VER}/wibo && chmod +x wibo && sudo mv wibo /usr/bin/"
-        )
-        sys.exit(1)
 
     if args.clean:
         clean()
