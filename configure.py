@@ -321,7 +321,7 @@ if __name__ == "__main__":
     if args.clean:
         clean()
 
-    split.main([YAML_FILE], modes="all", verbose=False)
+    split.main([YAML_FILE], modes="all", verbose=False, use_cache=False)
 
     linker_entries = split.linker_writer.entries
 
