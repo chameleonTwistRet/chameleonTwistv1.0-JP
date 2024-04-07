@@ -4,6 +4,16 @@
 #include "common.h"
 #include "mod.h" //used to DMA mod stuff in if needed
 
+//used in func_80098684 and func_80088B7C
+#define notEight 8.0f+0
+
+//migrate these to macros.h or something, since other c's can do stuff like this
+//when the top half is copied to the bottom half
+#define SetTextGradient_TopBottom(r1,g1,b1,a1,r2,g2,b2,a2) SetTextGradient(r1, g1, b1, a1, r2, g2, b2, a2, r1, g1, b1, a1, r2, g2, b2, a2)
+//when the left half is copied to the right half
+#define SetTextGradient_LeftRight(r1,g1,b1,a1,r2,g2,b2,a2) SetTextGradient(r1, g1, b1, a1, r1, g1, b1, a1, r2, g2, b2, a2, r2, g2, b2, a2)
+
+
 enum SchedMessages {
     SCHED_MESG_VINTR = 0,
     SCHED_MESG_SP_TASK_DONE = 1,
@@ -27,11 +37,6 @@ typedef struct chameleonLetter{
     s16 y;
     char* letter;
 }chameleonLetter;
-
-typedef struct unk800A250C {
-    char unk_00[0x6A];
-    s16 unk6A;
-} unk800A250C;
 
 typedef struct unk801FC9BC {
     u16 unk_00;
@@ -57,6 +62,7 @@ typedef struct StageSelectionData {
     char unk_02[0x17];
 } StageSelectionData;
 
+/*what is this used for???
 typedef struct unk80097CF8_2 {
     char unk_00[0x7A];
     u16 unk7A;
@@ -66,6 +72,7 @@ typedef struct unk80097CF8 {
     char unk_00[0x58];
     unk80097CF8_2* unk58;
 } unk80097CF8;
+*/
 
 typedef struct UnkPlaySoundEffect {
     char unk_00[0x0E];
@@ -94,6 +101,11 @@ typedef struct Unk_800FFDDC {
 u64 __ull_div(u64 a0, u64 a1);
 u64 __ll_mul(u64 a0, u64 a1);
 
+void func_800A27B0(CTTask* task);                   /* extern */
+extern s16 D_8020005C;
+
+void func_8009D45C(CTTask*, u8, u8, u8);                 /* extern */
+void func_8009DA20(CTTask* task);                   /* extern */
 void func_8009F1B4(CTTask* task);                   /* extern */
 void func_8009F5B0(CTTask* task);                   /* extern */
 
@@ -175,7 +187,7 @@ u16 func_8008D6B4(ContMain*);
 u16 func_8008D6E4(CTTask*, ContMain*);
 s32 func_8008D7B0(CTTask* task);
 s32 func_8008D7FC(CTTask* task);
-s32 func_8008D950(void);
+s32 func_8008D950(CTTask* task);
 void func_8008DAB8(f32, f32, f32, f32, f32, s32, s16, s16);
 void func_8008DB24(f32, f32, f32, f32, f32, s16, s16, s16);
 void func_8008DB90(Gfx** pGfxPos, graphicStruct* arg1);
@@ -382,8 +394,9 @@ void func_8009C828(CTTask* task);
 void func_8009CBC0(void);
 void func_8009CFA8(void);
 void func_8009D08C(CTTask* task);
-void func_8009D19C(s32 arg0);
-void func_8009D954(s32 notUsed);
+void func_8009D19C(CTTask* task);
+void func_8009D954(CTTask* task);
+void func_8009DB98(CTTask*);
 u16 func_8009DDEC(CTTask* task);
 void func_8009DE1C(CTTask* task);
 void func_8009E24C(CTTask* task);
@@ -394,10 +407,12 @@ void func_8009E784(CTTask* task);
 // battle stage select
 void func_8009E82C(CTTask* task);
 void func_8009F0C8(CTTask* task);
+void func_8009F314(CTTask* task);
 void func_8009F7F4(CTTask* task);
 void func_8009F890(void);
 void func_800A02C4(CTTask* task);
 void func_800A0354(CTTask* arg0);
+void func_800A03B8(CTTask* task);
 void func_800A07E0(void);
 void func_800A0E3C(CTTask* task);
 u16 func_800A0EB8(CTTask* task);
@@ -411,15 +426,18 @@ void func_800A191C(CTTask* task);
 void func_800A1CCC(CTTask* arg0);
 //white perfect code related???
 void func_800A1B34(CTTask* task);
+void func_800A1D38(void);
 void func_800A1EC4(void);
-void PrintPerfectCode(s32 arg0);
+void PrintPerfectCode(CTTask* task);
 CTTask* func_800A20CC(void);
 void func_800A2164(CTTask*);
 void func_800A22D4(CTTask* task, f32 arg1);
-void func_800A250C(unk800A250C* arg0);
+void func_800A250C(CTTask* task);
 void func_800A25F0(CTTask* task, f32 arg0);
 void func_800A272C(CTTask* task);
+void func_800A28B8(CTTask* task);
 void func_800A2B9C(CTTask* task);
+void func_800A2BDC(void);
 CTTask* func_800A2D84(void);
 void func_800A2E18(CTTask*);
 //options draw??
@@ -430,16 +448,21 @@ void func_800A3990(CTTask* task);
 void func_800A39EC(CTTask* task);
 void func_800A3DC0(CTTask* arg0);
 void func_800A4074(CTTask* arg0);
+void PrintDataClearConfirm(void);
+
+
+void func_800A41C0(CTTask* task);
+void func_800A4320(void);
 CTTask* func_800A4484(void);
 void func_800A44D8(CTTask* arg0);
 void GameOverMaster(CTTask* task);
-void func_800A4820(CTTask* arg0);
-void func_800A4868(CTTask* arg0);
+void func_800A4820(CTTask* task);
+void func_800A4868(CTTask* task);
 void func_800A4904(CTTask* task);
 void func_800A49B0(CTTask* task);
 void func_800A4A10(CTTask* task);
 void Task_GameOverLetter(CTTask* task);
-void func_800A4BCC(CTTask* task);
+CTTask* func_800A4BCC(CTTask* task);
 void func_800A4D0C(CTTask* arg0);
 void func_800A4D58(CTTask* task);
 void Process_GameOver(void);
@@ -456,9 +479,10 @@ void func_800A56D4(void);
 s32 func_800A5778(s32 arg0);
 void PrintSelectedStageInfo(CTTask* task);
 void func_800A6B34(void);
-void func_800A6B80(CTTask* arg0);
-void func_800A6C04(CTTask* arg0);
-void func_800A6CF4(CTTask* arg0);
+void func_800A6B80(CTTask* task);
+void func_800A6C04(CTTask* task);
+void func_800A6CF4(CTTask* task);
+void func_800A6DD8(void);
 s32 func_800A72E8(s32 arg0);
 s32 DMA_Copy(void* arg0, void* arg1, s32 size);
 s32 func_800A772C(void* arg0, void* arg1, s32 size);
@@ -591,6 +615,7 @@ extern s32 D_8020D8A8;
 extern s32 currentStageCrowns;
 extern s16 D_80100E10;
 extern s16 sStageCrownTotals[6];
+extern s32 D_80247904;
 
 extern s16 D_80100258[7];
 extern s16 D_80100318[7];
@@ -613,5 +638,14 @@ extern f32 D_80100468[];
 extern s8 D_80200B2C;
 extern s16 D_801003CC[];
 extern s16 D_80200B18;
+extern f32 D_80108784;
+extern f32 D_80108788;
+extern f32 D_8010878C;
+extern u8 D_801003E3;
+extern s16 D_80200B1E;
+extern chameleonLetter* D_80100F28[10]; // coords and text for stage names
+extern chameleonLetter* D_80100DA0[];
+extern s16 D_80100D88;
+extern s16 sDebugPerfectCodeFlag;
 
 #endif // _5FF30_H_

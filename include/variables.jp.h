@@ -317,7 +317,6 @@ extern s32 Timing_StartProcessTime;
 extern s32 D_800FF8AC;
 extern s16 D_80100E08[17][5]; //coords and behavior for "Game over" letters
 extern f64 D_8010F410;
-extern void* D_80100F28[10]; // coords and text for stage names
 extern char* D_80100FD4[18];
 extern f32 Timing_BusyTime;
 extern char D_8011078C[];

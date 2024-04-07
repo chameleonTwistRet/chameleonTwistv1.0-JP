@@ -8,7 +8,6 @@ void func_80025EF0(PlayerActor* player, Tongue* tongue, s32 arg2);
 void func_8002CDBC(ContMain*);
 void func_8004BC48(ContMain*);
 void func_8004CD9C(s32, void*);
-void func_8004DDE0(void);
 void Battle_Update(void);
 Gfx* func_8007A2D8(Gfx*, Camera*);
 void func_8007AC60(Camera*, PlayerActor*);

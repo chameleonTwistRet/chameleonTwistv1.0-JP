@@ -1118,7 +1118,10 @@ typedef struct unk801755A8 {
 } unk801755A8;
 
 typedef struct unk801755E8 {
-    char unk_00[0x10];
+    s32 unk_00;
+    s32 unk_04;
+    s32 unk_08;
+    s32 unk_0C;
 } unk801755E8;
 
 typedef struct unk801755F8 {

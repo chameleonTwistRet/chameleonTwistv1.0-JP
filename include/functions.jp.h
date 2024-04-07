@@ -325,8 +325,6 @@ void func_800A4320(void);
 void Process_GameOver(void);
 void Process_JSSLogo(void);
 void Process_PreCredits(void);
-void func_800A1D38(void);
-void func_800A6DD8(void);
 void func_800A07E0(void);
 void Process_Ranking(void);
 void func_800557F8(void);
@@ -484,6 +482,8 @@ void func_8005747C(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, s
 Effect* Effect_TypeK_Init(f32 duration, f32 arg1, f32 arg2);
 void func_800747E0(f32, f32, u32, f32, f32, f32, u32, u32, s32, u32*);
 void func_800743BC(f32, f32, f32, f32, f32, f32, u32, u32, s32, u32*);
+s32 func_80082714(f32, f32, f32, s32);
+void func_8007E6BC(f32 arg0, f32 arg1, f32 arg2, f32 arg3, u8 arg4, u8 arg5, u8 arg6);
 //1050.c
 void DemoGfx_DrawFrame(Gfx* arg0, graphicStruct* arg1, s32 fbIndex);
 void DemoGfx_SwapFB(s32 fbIndex);
@@ -492,6 +492,8 @@ void Video_SetTask(graphicStruct* arg0, Gfx* arg1, s32 arg2);
 void func_8004E784(ContMain* arg0, s32 arg1, s32* arg2, ContMain* arg3);
 //8ADD0.c
 void func_800B4408(u8*, s16*);
+//84e0.c
+void func_8004DDE0(void);
 
 //funcs from 5ff30 that are called from other c's
 //battle.c

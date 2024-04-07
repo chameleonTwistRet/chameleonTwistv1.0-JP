@@ -36,6 +36,8 @@ void func_800D34CC(void);
 s32 func_8004BF88(Actor*, s32, f32, f32);
 s32 func_8004BF88(Actor*, s32, f32, f32);
 
+void ActorTick_BattleModeSaucer(Actor* actor);
+
 void ActorInit_BulletHellAntSpawner(Actor*);
 void ActorInit_Chomper(Actor*);
 
