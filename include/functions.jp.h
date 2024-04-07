@@ -194,7 +194,7 @@ void Controller_StartRead(void);
 void Controller_Zero(ContMain*);
 void Debug_NOOP(void);
 void Debug_TestView(void);
-void func_80073FD8(void);
+void Effect_TypeAP_Init(void);
 f32 Battle_CalcTableColumnWidths(u8, f32*, f32, f32);
 void Battle_PlayEnvSounds(void);
 void Battle_PrintNumber(f32, f32, f32, f32, s32, s32, s32); 

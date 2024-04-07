@@ -1143,6 +1143,7 @@ Effect_TypeAJ_Init = 0x80070F5C;
 Effect_TypeAK_Init = 0x80071420;
 Effect_TypeAL_Init = 0x80072310;
 Effect_TypeAM_Init = 0x8007294C;
+Effect_TypeAQ_Init = 0x800743BC;
 gEffectList = 0x80176F00;
 gSchedMessageQueueMsgs = 0x801B30A0;
 gSchedMessageQueue = 0x801B3120;

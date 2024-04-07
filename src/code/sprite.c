@@ -5472,28 +5472,316 @@ void func_800735F4(f32 arg0, f32 arg1, f32 arg2, f32 arg3) {
     func_80059F28(224.0f, 100.0f, 0.0f, 0.0f, 1.0f, 32.0f, 40.0f, 5.0f, 0xCD);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80073C3C.s")
-void func_80073C3C(Effect* effect, Gfx** pGfxPos);
+void Effect_TypeAP_Update(Effect* effect, Gfx** pGfxPos) {
+    f32 f0;
+    s32 i;
 
-void func_80073FD8(void) {
-    Effect* temp_v0 = Effect_Alloc(0, 0, &func_80073C3C);
-    if (temp_v0 != 0) {
-        temp_v0->spriteID = 0;
-        temp_v0->pos.x = 0.0f;
-        temp_v0->pos.y = 0.0f;
-        temp_v0->pos.z = 0.0f;
-        temp_v0->lifeTime = 0;
-        temp_v0->vel.x = 0.0f;
+    effect->lifeTime += 1.0f;
+    setPrimColor(255, 255, 255, 255);
+    func_80059F28(0.0f, 0.0f, 0.0f, 0.0f, 1, 320.0f, 240.0f, 0.0f, 0);
+
+    switch (effect->spriteID) {
+        case 0:
+            func_80061394();
+            Effect_TypeAJ_Init(0, 5.0f, 16.0f);
+            effect->spriteID = 1;
+            effect->lifeTime = 0.0f;
+            break;
+        case 1:
+            if (effect->lifeTime > 30.0f) {
+                effect->spriteID = 2;
+                effect->lifeTime = 0.0f;
+            }
+            break;
+        case 2:
+            f0 = effect->lifeTime / 32; 
+            if (f0 > 0.0 && f0 <= 0.25) {
+                effect->pos.x = f0 / 0.25 * 255.0;
+            }
+            if (f0 > 0.25 && f0 <= 0.5) {
+                effect->pos.y = (f0 - 0.25) / 0.25 * 255.0;
+            }
+            if (f0 > 0.5 && f0 <= 0.75) {
+                effect->pos.z = (f0 - 0.5) / 0.25 * 255.0;
+            }
+            if (f0 > 0.75 && f0 <= 1.0) {
+                effect->vel.x = (f0 - 0.75) / 0.25 * 255.0;
+            }
+            func_800735F4(effect->pos.x, effect->pos.y, effect->pos.z, effect->vel.x);
+            if (effect->lifeTime >= 32.0f) {
+                effect->spriteID = 3;
+                effect->lifeTime = 0.0f;
+            }
+            break;
+        case 3:
+            func_800735F4(255.0f, 255.0f, 255.0f, 255.0f);
+            for (i = 0; i < 4; i++) {
+                if (gPlayerActors[i].active && func_80055F10(i, 0x9000)) {
+                    effect->lifeTime = 72.0f;
+                }
+            }
+            if (effect->lifeTime > 72.0f) {
+                effect->spriteID = 4;
+                effect->lifeTime = 0.0f;
+                Effect_TypeAI_Init(0, 8.0f, 16.0f, 0);
+            }
+            break;
+        case 4:
+            func_800735F4(255.0f, 255.0f, 255.0f, 255.0f);
+            if (effect->lifeTime > 8.0f) {
+                Effect_Free(effect);
+            }
+            break;
+    }
+}
+void Effect_TypeAP_Init(void) {
+    Effect* effect;
+
+    effect = Effect_Alloc(0, 0, &Effect_TypeAP_Update);
+    if (effect == NULL) {
+        return;
+    }
+
+    effect->spriteID = 0;
+    effect->pos.x = 0.0f;
+    effect->pos.y = 0.0f;
+    effect->pos.z = 0.0f;
+    effect->lifeTime = 0;
+    effect->vel.x = 0.0f;
+}
+
+void Effect_TypeAQ_Update(Effect* effect, Gfx** pGfxPos) {
+    Effect_TypeAQ_Data* data = (Effect_TypeAQ_Data*)effect->data;
+    EffectPart* parts = effect->parts;
+    s32 v0;
+    s32 i;
+    f32 sinAngle;
+
+    switch (effect->unk5) {
+        case 0:
+            v0 = effect->duration > 0.0f;
+            effect->duration -= 1.0f;
+            if (!v0) {
+                effect->unk5 = 1;
+            } else {
+                return;
+            }
+            break;
+        case 1:
+            effect->lifeTime += data->unk_00;
+            sinAngle = sinf(effect->lifeTime * 1.57078);
+            parts[data->unk_1C].pos.x = data->unk_0C * sinAngle;
+            parts[data->unk_1C].pos.y = data->unk_10 + cosf(effect->lifeTime * 1.57078) * 180.0f;
+            parts[data->unk_1C].lifeTime = sinAngle;
+
+            if (effect->lifeTime >= 1.0f) {
+                effect->lifeTime = 0.0f;
+                data->unk_1C++;
+                if (data->unk_1C == effect->numParts) {
+                    effect->unk5 = 2;
+                }
+            }
+            break;
+        case 2:
+            if (*data->unk_18 == 0) {
+                effect->lifeTime = 1.0f;
+            }
+            effect->lifeTime += data->unk_08;
+            if (effect->lifeTime >= 1.0f) {
+                effect->unk5 = 3;
+                effect->lifeTime = 0.0f;
+            }
+            break;
+        case 3:
+            effect->lifeTime += data->unk_04;
+            for (i = 0; i < effect->numParts; i++) {
+                parts[i].lifeTime = cosf(effect->lifeTime * 1.57078);
+            }
+            if (effect->lifeTime >= 1.0f) {
+                Effect_Free(effect);
+                return;
+            }
+            break;
+    }
+
+    if (effect->unk5 != 0) {
+        for (i = 0; i < effect->numParts; i++) {
+            SetTextGradientFromPaletteAlpha(data->unk_14, parts[i].lifeTime);
+            func_800612F0(parts[i].unk_24);
+            printUISprite(effect->pos.x + effect->vel.x * i - parts[i].pos.x * 0.5f, effect->pos.y - parts[i].pos.y * 0.5f,
+                          0.0f, 0.0f, 1.0f, parts[i].pos.x, parts[i].pos.y, parts[i].unk_25, effect->spriteID);
+        }
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8007402C.s")
+void Effect_TypeAQ_Init(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, s32 arg6, EffectTypeAQArg7* arg7, s32 arg8, s32* arg9) {
+    Effect* effect;
+    Effect_TypeAQ_Data* data;
+    EffectPart* parts;
+    s32 sp60;
+    s32 sp5C;
+    s32 i = 0;
+    EffectTypeAQArg7* ptr = arg7;
+    
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_800743BC.s")
+    while (ptr->unk_0 != 0) {
+        ptr++;
+        i++;
+    }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_800745F8.s")
+    if (i == 0) {
+        return;
+    }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_800747E0.s")
+    effect = Effect_Alloc(i, sizeof(Effect_TypeAQ_Data), &Effect_TypeAQ_Update);
+    if (effect == NULL) {
+        return;
+    }
+
+    data = (Effect_TypeAQ_Data*)effect->data;
+    *arg9 = 1;    
+    parts = effect->parts;
+
+    for (i = 0, ptr = arg7; i < effect->numParts; ptr++, i++) {
+        if (func_80080318(arg8, ptr, &sp60, &sp5C) == 0) {
+            parts[i].unk_24 = sp5C;
+            parts[i].unk_25 = sp60;
+            parts[i].pos.x = 1.0f;
+            parts[i].pos.y = 1.0f;
+            parts[i].lifeTime = 0.0f;
+        }
+    }
+
+    data->unk_00 = 1.0f / arg3;
+    data->unk_04 = 1.0f / arg4;
+    data->unk_08 = 1.0f / arg5;
+
+    switch (arg8) {
+        case 3:
+            data->unk_0C = 16.0f;
+            data->unk_10 = 16.0f;
+            break;
+        case 4:
+            data->unk_0C = 16.0f;
+            data->unk_10 = 16.0f;
+            break;
+        case 1:
+            data->unk_0C = 16.0f;
+            data->unk_10 = 24.0f;
+            break;
+    }
+
+    data->unk_18 = arg9;
+    data->unk_1C = 0;
+    data->unk_14 = arg6;    
+
+    effect->pos.x = arg0;
+    effect->pos.y = arg1;
+    effect->spriteID = arg8;
+    effect->unk5 = 0;
+    effect->vel.x = arg2;
+    effect->lifeTime = 0;
+    effect->duration = 0;
+}
+
+void Effect_TypeAR_Update(Effect* effect, Gfx** pGfxPos) {
+    Effect_TypeAQ_Data* data = (Effect_TypeAQ_Data*)effect->data;
+    f32 f12;
+    f32 posX;
+    f32 nv;
+    f32 f14;
+    f32 unused;
+    f32 nv2;
+
+    switch (effect->unk5) {
+        case 0:
+            effect->lifeTime += data->unk_00;
+            f12 = ABS2(effect->pos.x - effect->vel.x);
+            f14 = (1.0f - effect->lifeTime) * (nv2 = f12);
+            if (effect->numParts == 0) {
+                f12 = effect->pos.x + f14;
+            } else {
+                f12 = effect->pos.x - f14;
+            }
+            if (effect->lifeTime >= 1.0f) {
+                effect->unk5 = 1;
+                effect->lifeTime = 0.0f;
+            }
+            posX = f12;
+            break;
+        case 1:
+            if (*data->unk_18 == 0) {
+                effect->lifeTime = 1.0f;
+            }
+            effect->lifeTime += data->unk_08;
+            if (effect->lifeTime >= 1.0f) {
+                effect->unk5 = 2;
+                effect->lifeTime = 0.0f;
+            }
+            nv = effect->pos.x;
+            posX = nv;
+            break;
+        case 2:
+            effect->lifeTime += data->unk_04;
+            nv = effect->lifeTime * 1.57078;
+            effect->vel.z = cosf(nv);
+            if (effect->lifeTime >= 1.0f) {
+                Effect_Free(effect);
+                return;
+            }
+            unused = posX = effect->pos.x;
+            break;
+    }
+
+    SetTextGradientFromPaletteAlpha(data->unk_14, effect->vel.z);
+    PrintTextWrapper(posX, effect->pos.y, 0.0f, 1.0f, data->unk_20, effect->spriteID);
+}
+
+void Effect_TypeAR_Init(f32 arg0, f32 arg1, s32 arg2, f32 arg3, f32 arg4, f32 arg5, s32 arg6, EffectTypeAQArg7* arg7, s32 arg8, s32* arg9) {
+    Effect* effect;
+    Effect_TypeAQ_Data* data;
+    s32 i = 0;
+    f32 f0;
+    EffectTypeAQArg7* ptr = arg7;
+
+    while (ptr->unk_0 != 0) {
+        ptr++;
+        i++;
+    }
+
+    if (i == 0) {
+        return;
+    }
+
+    effect = Effect_Alloc(0, sizeof(Effect_TypeAQ_Data), &Effect_TypeAR_Update);
+    if (effect == NULL) {
+        return;
+    }
+
+    if (arg2 == 0) {
+        f0 = -16.0f - i * 16.0f;
+    } else {
+        f0 = 330.0f;
+    }
+    *arg9 = 1;
+
+    data = (Effect_TypeAQ_Data*)effect->data;
+    data->unk_00 = 1.0f / arg3;
+    data->unk_04 = 1.0f / arg4;
+    data->unk_08 = 1.0f / arg5;
+    data->unk_18 = arg9;
+    data->unk_14 = arg6;
+    data->unk_20 = arg7;    
+
+    effect->spriteID = arg8;
+    effect->unk5 = 0;
+    effect->numParts = arg2;
+    effect->pos.x = arg0;
+    effect->pos.y = arg1;
+    effect->vel.x = f0;
+    effect->lifeTime = 0.0f;
+    effect->vel.z = 1.0f;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80074908.s")
 

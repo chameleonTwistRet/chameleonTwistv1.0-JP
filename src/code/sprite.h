@@ -198,6 +198,23 @@ typedef struct Effect_TypeAM_Data {
     /* 0x00 */ s32* unk_00;
 } Effect_TypeAM_Data; //sizeof 0x4
 
+typedef struct EffectTypeAQArg7 {
+    /* 0x0 */ u8 unk_0;
+    /* 0x1 */ u8 unk_1;
+} EffectTypeAQArg7; //sizeof 0x2
+
+typedef struct Effect_TypeAQ_Data {
+    /* 0x00 */ f32 unk_00;
+    /* 0x04 */ f32 unk_04;
+    /* 0x08 */ f32 unk_08;
+    /* 0x0C */ f32 unk_0C;
+    /* 0x10 */ f32 unk_10;
+    /* 0x14 */ s32 unk_14;
+    /* 0x18 */ s32* unk_18;
+    /* 0x1C */ u8 unk_1C;
+    /* 0x20 */ EffectTypeAQArg7* unk_20;
+} Effect_TypeAQ_Data; //sizeof 0x24
+
 /* extern symbols */
 extern s32 D_80176960[];
 extern s32 D_80176980[];

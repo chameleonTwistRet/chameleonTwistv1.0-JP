@@ -701,7 +701,7 @@ typedef struct EffectPart {
     /* 0x18 */ f32 lifeTime;
     /* 0x1C */ f32 sizeX;
     /* 0x20 */ f32 sizeY;
-    /* 0x24 */ s8 unk_24;
+    /* 0x24 */ u8 unk_24;
     /* 0x25 */ u8 unk_25;
     /* 0x26 */ char pad_26[2];
 } EffectPart; //sizeof 0x28

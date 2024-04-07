@@ -1310,7 +1310,7 @@ void Process_SunsoftLogo(void) {
         D_801FC9AC = 0;
         break;
     case 1:
-        func_80073FD8();
+        Effect_TypeAP_Init();
         gGameModeState++;
         func_8008F114();
         break;
