@@ -494,6 +494,7 @@ void func_8004E784(ContMain* arg0, s32 arg1, s32* arg2, ContMain* arg3);
 void func_800B4408(u8*, s16*);
 //84e0.c
 void func_8004DDE0(void);
+void Effect_BossDeadEyes_Init(s32 arg0);
 
 //funcs from 5ff30 that are called from other c's
 //battle.c
