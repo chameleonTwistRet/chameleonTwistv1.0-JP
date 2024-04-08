@@ -39,6 +39,7 @@
 //macros for simplifying the "play sound effect" calls
 #define PLAYSFX(id,arg4,flag) PlaySoundEffect(id,NULL,NULL,NULL,arg4,flag)
 #define PLAYSFXAT(id,pos,arg4,flag) PlaySoundEffect(id,&pos.x,&pos.y,&pos.z,arg4,flag)
+
 #define flabs(A) (((A) < 0.0f) ? (-A) : (A))
 #define RANDOM(min, max)  ((min) + (Rand() % (s32)((max) - (min) + 1)))
 

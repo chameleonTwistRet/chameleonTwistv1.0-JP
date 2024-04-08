@@ -93,12 +93,12 @@ Vec3f* SphericalToCartesian (Vec3f* inputVec, f32 radius, f32 theta, f32 phi) {
     Vec3f spherical_coords;                                                     // spherical 'vector' struct: x = r, y = theta, z = phi
 
     spherical_coords.y = DEGREES_TO_RADIANS_PI(theta);
-    spherical_coords.z = __sinf(spherical_coords.y) * radius;
+    spherical_coords.z = sinf(spherical_coords.y) * radius;
     spherical_coords.x = DEGREES_TO_RADIANS_PI(phi);
     spherical_coords = spherical_coords;
-    cartesian_coords.x = __sinf(spherical_coords.x) * spherical_coords.z;       // x = r*sin(theta)*cos(phi)
-    cartesian_coords.y = __cosf(spherical_coords.y) * radius;                   // y = r*cos(theta) since y is height here
-    cartesian_coords.z = __cosf(spherical_coords.x) * spherical_coords.z;       // z = r*sin(theta)*sin(phi)
+    cartesian_coords.x = sinf(spherical_coords.x) * spherical_coords.z;       // x = r*sin(theta)*cos(phi)
+    cartesian_coords.y = cosf(spherical_coords.y) * radius;                   // y = r*cos(theta) since y is height here
+    cartesian_coords.z = cosf(spherical_coords.x) * spherical_coords.z;       // z = r*sin(theta)*sin(phi)
     *inputVec = cartesian_coords;
     return inputVec;
 }
