@@ -494,9 +494,9 @@ s32 func_800A7A18(u32 arg0);
 s32 GeneratePerfectCode(u32 time);
 s32 func_800A7C58(u32 time);
 
-s32 RecordTime_GetMinsSecs(s32* record, s32* mins, s32* secs);
-s32 RecordTime_ParseToSecs(s32* arg0);
-void RecordTime_SetTo(s32 arg0, u8* arg1);
+s32 RecordTime_GetMinsSecs(TimeVal* record, s32* mins, s32* secs);
+s32 RecordTime_ParseToSecs(TimeVal* arg0);
+void RecordTime_SetTo(s32 arg0, TimeVal* arg1);
 
 s32 SaveData_FileChecksum(u8 *saveData);
 void SaveData_Wait(void);
