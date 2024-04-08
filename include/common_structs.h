@@ -703,8 +703,8 @@ typedef struct EffectPart {
 } EffectPart; //sizeof 0x28
 
 typedef struct Effect {
-    /* 0x00 */ s32 spriteID;
-    /* 0x04 */ u8 numParts;
+    /* 0x00 */ s32 spriteID; // TODO union
+    /* 0x04 */ u8 numParts; // TODO union
     /* 0x05 */ u8 unk5;
     /* 0x06 */ s8 unk6;
     /* 0x07 */ s8 unk7;
@@ -712,8 +712,8 @@ typedef struct Effect {
     /* 0x0C */ f32 lifeTime;
     /* 0x10 */ Vec3f pos; // TODO make union
     /* 0x1C */ Vec3f vel;
-    /* 0x28*/ s32 UNK_28;
-    /* 0x2C */ s32 unk_2C;
+    /* 0x28 */ f32 sizeX;
+    /* 0x2C */ f32 sizeY;
     /* 0x30 */ f32 duration;
     /* 0x34 */ void* fpUpdate;
     /* 0x38 */ void* data; // TODO make union maybe
@@ -721,8 +721,6 @@ typedef struct Effect {
     /* 0x40 */ struct Effect* previous;
     /* 0x44 */ struct Effect* next;
 } Effect; //sizeof 0x48
-
-
 
 typedef struct bf8{
     /* 0x00 */ s16 unk0;
@@ -785,13 +783,6 @@ struct UnkList {
     /* 0x00 */ struct UnkList* unk0;
     /* 0x04 */ s32 unk_04;
 }; //sizeof 0x8
-
-typedef struct func_80069858_temp_v0{
-    /* 0x00 */ f32 unk0;
-    /* 0x04 */ f32 unk4;
-    /* 0x08 */ s32 unk8;
-    /* 0x0C */ s32 unkC;
-} func_80069858_temp_v0; //sizeof 0x10
 
 /*D_MTXSLOT1 = 0x80129730; // type:Mtx
 D_MTXSLOT2 = 0x80129770; // type:Mtx

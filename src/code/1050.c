@@ -43,10 +43,10 @@ void func_80025EF0(PlayerActor* arg0, Tongue* arg1, s32 arg2) {
     if (D_80174980 == 5) {
         func_80027240(&D_800FF8D4, gSpriteListings[207].bitmapP, gTimer / 2, gSpriteListings[207].tileCountY);
         if (gTimer == 20) {
-            func_800698A4(22.0f, 154.0f, 60, D_800F686C);
+            Effect_TypeT_Init(22.0f, 154.0f, 60, D_800F686C);
         }
         if (gTimer == 120) {
-            func_800698A4(22.0f, 154.0f, 60, D_800F6870);
+            Effect_TypeT_Init(22.0f, 154.0f, 60, D_800F6870);
         }
     } else if (arg0->playerHURTSTATE == 4) {
         func_80027138(&D_1045BF4, &sp11C, &sp118, &sp114);
@@ -227,7 +227,7 @@ void func_80025EF0(PlayerActor* arg0, Tongue* arg1, s32 arg2) {
         D_80168D8C = arg0->pos.y + sp88;
         D_80168D90 = arg0->pos.z + sp84;
         if (D_80174980 == 4) {
-            func_800703C0(&D_80168D88, &D_80168D8C, &D_80168D90, 50.0f, 20.0f, 10.0f, 5, 180, 75);
+            Effect_TypeAF_Init(&D_80168D88, &D_80168D8C, &D_80168D90, 50.0f, 20.0f, 10.0f, 5, 180, 75);
         }
     }
 }

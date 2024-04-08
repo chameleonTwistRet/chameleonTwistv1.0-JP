@@ -1,4 +1,4 @@
-compiler_command = "python3 tools/asm-processor/build.py --input-enc=utf-8 --output-enc=euc-jp /root/NathaCT/tools/ido_5.3/usr/lib/cc --mips-linux-gnu-as -EB -mtune=vr4300 -march=vr4300 -mabi=32 -I. -Iinclude -Iinclude/PR -Iassets -Isrc -I. -Iinclude -Iinclude/PR -Iassets -Isrc -- -c -G 0 -fullwarn -verbose -Xcpluscomm -signed -nostdinc -non_shared -Wab,-r4300_mul -D_LANGUAGE_C -DF3DEX_GBI -DNDEBUG -woff 649,838 -I. -Iinclude -Iinclude/PR -Iassets -Isrc -mips2 -O2"
+compiler_command = "python3 tools/asm-processor/build.py --input-enc=utf-8 --output-enc=euc-jp /home/unni/repo/chameleonTwistv1.0-JP/tools/ido_5.3/usr/lib/cc --mips-linux-gnu-as -EB -mtune=vr4300 -march=vr4300 -mabi=32 -I. -Iinclude -Iinclude/PR -Iassets -Isrc -I. -Iinclude -Iinclude/PR -Iassets -Isrc -- -c -G 0 -fullwarn -verbose -Xcpluscomm -signed -nostdinc -non_shared -Wab,-r4300_mul -D_LANGUAGE_C -DF3DEX_GBI -DNDEBUG -woff 649,838 -I. -Iinclude -Iinclude/PR -Iassets -Isrc -mips2 -O2"
             assembler_command = "$ASFLAGS"
             compiler_type = "gcc"
 
