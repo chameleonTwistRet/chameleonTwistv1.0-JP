@@ -125,6 +125,15 @@ typedef struct unk_80052094_8 {
     /* 0x08 */ s32 unk_04;
 } unk_80052094_8; //sizeof 0x8
 
+typedef struct Struct_80076EA0 {
+    /* 0x00 */ f32 unk_00;
+    /* 0x04 */ f32 unk_04;
+    /* 0x08 */ f32 unk_08;
+    /* 0x0C */ s32 unk_0C;
+    /* 0x10 */ char* unk_10;
+    /* 0x14 */ s32 unk_14;
+} Struct_80076EA0; // sizeof 0x18
+
 typedef struct TonguePos{
     /* 0x00 */ f32 positions[32];
 } TonguePos; //sizeof 0x80

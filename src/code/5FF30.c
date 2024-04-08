@@ -780,7 +780,7 @@ void PlayJungleExtSfx(void) {
             PlayBGM(BGM_JUNGLE_EXT);
         }
     } else if (((s32) gTimer % 300) == 299) {
-        PLAYSFX(Random(0, 5) + 0x4F, 1, 0x10);
+        PLAYSFX(Random(0, 5) + SFX_4F_unkSnd, 1, 0x10);
     }
     gIsNotInCave = D_80236974;
 }

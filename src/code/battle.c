@@ -507,19 +507,17 @@ void Battle_PrintName(s32 playerID, f32 posX) {
     }
 }
 
-#ifdef NON_MATCHING
 void Battle_ShimmeringText(u32 charID) {
     static u8 D_80176840;
     static u8 D_80176841;
+    f32 newvar; // required to match
     s32 temp_t6 = Battle_Time % 32;
     
     if (temp_t6 >= 0 && temp_t6 < 8) {
-        D_80176840 = (temp_t6 % 8) * 175.0f / 8.0f;
-        D_80176840 += 80;
+        D_80176840 = 80 + (u8)(175.0f * (temp_t6 % 8) / (newvar = 8.0f));
     }
     if (temp_t6 >= 8 && temp_t6 < 16) {
-        D_80176841 = (temp_t6 % 8) * 175.0f / 8.0f;
-        D_80176841 += 80;
+        D_80176841 = 80 + (u8)(175.0f * (temp_t6 % 8) / (newvar = 8.0f));
     }
     
     if (temp_t6 >= 16 && temp_t6 < 24) {
@@ -570,12 +568,6 @@ void Battle_ShimmeringText(u32 charID) {
             break;
     }
 }
-#else
-#pragma GLOBAL_ASM("asm/nonmatchings/code/battle/Battle_ShimmeringText.s")
-void Battle_ShimmeringText(u32 arg0);
-static u8 D_80176840;
-static u8 D_80176841;
-#endif
 
 void Battle_PrintRankingTable(void) {
     s32 i, j;
@@ -689,11 +681,11 @@ void func_80053DA8(s32 arg0) {
         D_800F0CA4[0].unk_00 = i + 5;
     }
     if (i == -1) {
-        func_80077688(70.0f, 80.0f, 170.0f, 1.0f, 5, D_800F0D14, 0x11, 0x12, 5.0f, 10.0f, 120.0f);
+        Effect_TypeAZ_Init(70.0f, 80.0f, 170.0f, 1.0f, 5, D_800F0D14, 0x11, 0x12, 5.0f, 10.0f, 120.0f);
     } else if (comID >= 0) {
-        func_80077688(60.0f, 80.0f, 180.0f, 0.8f, 8, D_800F0CD4, 0x13, 0x14, 5.0f, 8.0f, 120.0f);
+        Effect_TypeAZ_Init(60.0f, 80.0f, 180.0f, 0.8f, 8, D_800F0CD4, 0x13, 0x14, 5.0f, 8.0f, 120.0f);
     } else {
-        func_80077688(70.0f, 80.0f, 170.0f, 1.0f, 6, D_800F0CA4, 0x13, 0x14, 5.0f, 10.0f, 120.0f);
+        Effect_TypeAZ_Init(70.0f, 80.0f, 170.0f, 1.0f, 6, D_800F0CA4, 0x13, 0x14, 5.0f, 10.0f, 120.0f);
     }
 }
 
@@ -758,7 +750,7 @@ void func_80054284(void) {
 
 void func_8005444C(void) {
     if (gIsMultiplayerPaused == TRUE) {
-        func_800771DC(&D_800FE404, 16.0f, 16.0f, 1, 5, &D_800F0B5C, 0.0f, 0.0f, 320.0f, 240.0f);
+        Effect_TypeAY_Init(D_800FE404, 16.0f, 16.0f, 1, 5, &D_800F0B5C, 0.0f, 0.0f, 320.0f, 240.0f);
     }
     switch (D_800F0B5C) {
         case -2:
