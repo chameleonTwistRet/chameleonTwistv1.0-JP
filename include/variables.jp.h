@@ -11,6 +11,10 @@
 
 extern s32 rngSeed; //rng
 
+extern SpriteListing gSpriteListings[230];
+  
+extern OSPfs gRumblePfs[MAXCONTROLLERS];
+
 extern Camera* D_80174860;
 extern PlayerActor* gCurrentActivePlayerPointer;
 extern Tongue* gTongueOnePointer;
@@ -96,7 +100,7 @@ extern u8 D_800FEBC8;
 extern u8 D_800FEBCC;
 extern f32 D_800FEBD0;
 extern Vec4f D_800FEBD4;
-extern u8 D_800FEDC0[225][8]; //some data RE each sound effect
+extern u8 D_800FEDC0[226][8]; //some data RE each sound effect
 extern s32 D_800FF5D0;
 extern s32 D_800FF5E4;
 extern s32 D_800FF5E8;
@@ -123,8 +127,8 @@ extern f32 D_8010881C;
 extern f32 D_80108820;
 extern s32 D_80108B68;
 extern segTableEntry gSegTable[16];
-extern Vec2f D_8010A6D0[0x6C]; //positions?
-extern unk_8010AA28 D_8010AA28[0x6C]; //actor related?
+extern const Vec2f D_8010A6D0[0x6B]; //positions?
+extern const unk_8010AA28 D_8010AA28[0x6B]; //actor related?
 extern f32 D_8010B328;
 extern f32 D_8010B32C;
 extern f32 D_8010B330;
@@ -313,7 +317,6 @@ extern s32 Timing_StartProcessTime;
 extern s32 D_800FF8AC;
 extern s16 D_80100E08[17][5]; //coords and behavior for "Game over" letters
 extern f64 D_8010F410;
-extern void* D_80100F28[10]; // coords and text for stage names
 extern char* D_80100FD4[18];
 extern f32 Timing_BusyTime;
 extern char D_8011078C[];

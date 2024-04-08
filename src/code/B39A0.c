@@ -37,7 +37,7 @@ void func_800D87F8(Collider* arg0, s32 sfxID, s32 arg2) {
 void func_800D887C(Collider* arg0, s32 arg1, s32 arg2) {
     s32 new_var;
     if (((new_var = arg0->unk_00) == D_80168E24) && (((new_var + D_801749A0) % arg2) == 0)) {
-        func_80088698(PlaySoundEffect(arg1, &arg0->sfxPos.x, &arg0->sfxPos.y, &arg0->sfxPos.z, 0, 0));
+        func_80088698(PLAYSFXAT(arg1, arg0->sfxPos, 0, 0));
     }
 }
 

@@ -1,7 +1,6 @@
 #include "common.h"
 
 /* rodata */
-extern char D_80110180[];
 extern char D_801103D0[];
 
 extern f64 D_801104F8;
@@ -58,7 +57,7 @@ void ClearPolygon(void) {
     D_80236968 = 0;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/poly/D_80110180.s")
+const char D_80110180[] = "\n";
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800C8F0C.s")
 
@@ -243,9 +242,9 @@ void func_800CFF7C(Vec3f* arg0) {
 
     if (D_80236974 != 1) {
         if ((gCurrentStage == 1) && ((gCurrentZone == 7) || (gCurrentZone == 0xF)) && (levelFlags[0] != 0)) {
-            temp_f14 = (SQ(arg0->x) + SQ(arg0->z));
+            temp_f14 = SUM_OF_SQUARES(arg0->x, arg0->z);
             if (810000.0 < temp_f14) {
-                temp_f0_2 = __sqrtf((f32) (810000.0 / temp_f14));
+                temp_f0_2 = sqrtf((f32) (810000.0 / temp_f14));
                 arg0->x = arg0->x * temp_f0_2;
                 arg0->z = arg0->z * temp_f0_2;
             }

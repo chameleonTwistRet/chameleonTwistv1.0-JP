@@ -104,7 +104,7 @@ typedef struct PlayerActor {
     /* 0x0C4 */ u32 vaultFall;//timer for falling after vault
     /* 0x0C8 */ s32 hp;
     /* 0x0CC */ u32 playerHURTSTATE;
-    /* 0x0D0 */ u32 playerHURTTIMER;
+    /* 0x0D0 */ s32 playerHURTTIMER;
     /* 0x0D4 */ u32 playerHURTANIM;
     /* 0x0D8 */ u32 playerHURTBY;
     /* 0x0DC */ f32 unk_DC[6];
@@ -459,13 +459,14 @@ typedef struct CTTask {
     /* 0x40 */ f32 unk40;
     /* 0x44 */ s16 unk44;
     /* 0x46 */ s16 unk46;
-    /* 0x48 */ s16 unk48;                           /* inferred */
-    /* 0x4A */ char pad4A[0x2];                     /* maybe part of unk48[6]? */
+    /* 0x48 */ s16 unk48;
+    /* 0x4A */ s16 unk4A;                           /* inferred */
     /* 0x4C */ s16 unk4C;
     /* 0x4E */ u16 unk4E;
     /* 0x50 */ Gfx* unk50;
     /* 0x54 */ u8 unk54;
-    /* 0x55 */ char pad55[3];                       /* maybe part of unk54[4]? */
+    /* 0x55 */ u8 unk55;
+    /* 0x56 */ char pad56[2];                       /* maybe part of unk54[4]? */
     /* 0x58 */ struct CTTask* unk58;
     /* 0x5C */ s16 unk_5C;
     /* 0x5E */ s16 unk5E;
@@ -474,18 +475,21 @@ typedef struct CTTask {
     /* 0x64 */ s16 unk_64;
     /* 0x66 */ s16 unk66;
     /* 0x68 */ s16 unk_68;
-    /* 0x6A */ char pad6A[2];
-    /* 0x6C */ s8 unk6C[2];
-    /* 0x6E */ s16 unk_6E;
+    /* 0x6A */ s16 unk6A;                           /* inferred */
+    /* 0x6C */ s16 unk6C;
+    /* 0x6E */ u16 unk6E;
     /* 0x70 */ s16 unk_70;
-    /* 0x72 */ char unk72[2];
-    /* 0x74 */ char unk74[0x6];
+    /* 0x72 */ s16 unk72;
+    /* 0x74 */ s16 unk74;
+    /* 0x76 */ char unk76[0x4];
     /* 0x7A */ u16 unk7A;
-    /* 0x7C */ char unk7C[0x4];
+    /* 0x7C */ f32 unk7C;
     /* 0x80 */ f32 unk80;
-    /* 0x84 */ char unk84[0x8];
+    /* 0x84 */ f32 unk84;
+    /* 0x88 */ f32 unk88;
     /* 0x8C */ s32 unk8C;
-    /* 0x90 */ char unk90[0x18];
+    /* 0x90 */ f32 unk90;
+    /* 0x94 */ u8 unk94[0x14];
 } CTTask;                                           /* size = 0xA8 */
 
 typedef struct BGMVolume {
@@ -740,10 +744,14 @@ typedef struct unkStruct {
 
 // this struct seems to manage sound effects
 typedef struct unk0 {
-    /* 0x00 */ s32 unk0;                            /* inferred */
-    /* 0x04 */ s32 unk4;                            /* inferred */
-    /* 0x08 */ s32 unk8;                            /* inferred */
-    /* 0x0C */ char padC[0x14];                     /* maybe part of unk8[6]? */
+    /* 0x00 */ s32 unk0;
+    /* 0x04 */ s32 unk4;
+    /* 0x08 */ s32 unk8;
+    /* 0x0C */ f32 unkC;
+    /* 0x10 */ f32 unk10;
+    /* 0x14 */ f32 unk14;
+    /* 0x18 */ f32 unk18;
+    /* 0x1C */ f32 unk1C;
     /* 0x20 */ s16 unk20;
     /* 0x22 */ s16 unk22;
     /* 0x24 */ u8 unk24;
@@ -751,19 +759,20 @@ typedef struct unk0 {
     /* 0x2C */ f32 unk2C;
     /* 0x30 */ s16 unk30;
     /* 0x32 */ s16 unk32;
-    /* 0x34 */ char pad34[4];                       /* maybe part of unk32[3]? */
+    /* 0x34 */ s16 unk34;
+    /* 0x36 */ char pad36[2];
     /* 0x38 */ f32 unk38;
     /* 0x3C */ u8 unk3C;
     /* 0x3D */ u8 unk3D;
-    /* 0x3E */ char pad3E[2];                       /* maybe part of unk3D[3]? */
+    /* 0x3E */ s16 unk3E;                           /* inferred */
     /* 0x40 */ s16 unk40;
     /* 0x42 */ s16 unk42;
     /* 0x44 */ s8 unk44;
     /* 0x45 */ char pad45[3];                       /* maybe part of unk44[4]? */
-    /* 0x48 */ s32 unk48;
+    /* 0x48 */ s32 unk48; // s16 unk4a????
     /* 0x4C */ s32 unk4C;
     /* 0x50 */ struct unk0* unk50;
-    /* 0x54 */ struct unk0* unk54;                         /* inferred */
+    /* 0x54 */ struct unk0* unk54;
 } unk0;                                             /* size = 0x58 */
 
 typedef struct pole{
@@ -1109,7 +1118,10 @@ typedef struct unk801755A8 {
 } unk801755A8;
 
 typedef struct unk801755E8 {
-    char unk_00[0x10];
+    s32 unk_00;
+    s32 unk_04;
+    s32 unk_08;
+    s32 unk_0C;
 } unk801755E8;
 
 typedef struct unk801755F8 {
@@ -1138,5 +1150,29 @@ typedef struct unk80170E68 {
 } unk80170E68;
 
 extern unk80170E68 D_80170E68[];
+
+/* structs */
+typedef struct SpriteListing {
+    /* 0x00 */ Gfx* unk_00;
+    /* 0x04 */ void* bitmapP; // "malloc'd" after size calc.
+    /* 0x08 */ void* palletteP; //palette? both this and above start with devAddr+0XD73D960
+    /* 0x0C */ s32 type; // use "COLORMODE_*" enum
+    /* 0x10 */ u8* unk10;
+    /* 0x14 */ u8 unk14;
+    /* 0x15 */ u8 tileCountX;
+    /* 0x16 */ u8 tileCountY;
+    /* 0x17 */ u8 tileIndexX;
+    /* 0x18 */ u8 tileIndexY;
+    /* 0x19 */ char unk19;
+    /* 0x1A */ u16 width; // width of each tile
+    /* 0x1C */ u16 height; // height of each tile
+    /* 0x1E */ RGBA32 prim;
+    /* 0x22 */ char unk22[0x6];
+    /* 0x28 */ Vtx quad[4];
+    /* 0x68 */ s32 bitmapRom; //devAddr-0x8c26a0
+    /* 0x6C */ s32 paletteRom;
+    /* 0x70 */ s32 unk70;
+    /* 0x74 */ char unk_74[4];
+} SpriteListing; //sizeof 0x78
 
 #endif

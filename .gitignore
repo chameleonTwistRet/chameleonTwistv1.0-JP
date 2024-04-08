@@ -12,7 +12,7 @@ asm/
 assets/
 build/
 expected/
-include/mod.h
+# include/mod.h
 tools/gcc_2.7.2/
 .vscode/configurationCache.log
 .vscode/dryrun.log
