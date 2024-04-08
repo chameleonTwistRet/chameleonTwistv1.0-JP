@@ -58,7 +58,6 @@ void func_800771DC(s32*, f32, f32, s32, s32, s32*, f32, f32, f32, f32);
 s32 func_80080318(s32, s32, s32*, s32*);
 s32 func_8008BFE0(s32);
 s32 func_8008BE14(void);
-void func_800A0D90(void);
 void func_80073090(void);
 
 /* Ext Variables */

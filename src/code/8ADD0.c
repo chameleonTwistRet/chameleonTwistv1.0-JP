@@ -1439,13 +1439,8 @@ void func_800C88D0(void) {
     func_800C56D4(&gPlayerActors[0]);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/D_8010FA44.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/D_8010FA4C.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/D_8010FA54.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/D_8010FA5C.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/D_8010FA64.s")
-
+const char D_8010FA44[] = "NO_DIR";
+const char D_8010FA4C[] = "NORTH";
+const char D_8010FA54[] = "EAST";
+const char D_8010FA5C[] = "SOUTH";
+const char D_8010FA64[] = "WEST";

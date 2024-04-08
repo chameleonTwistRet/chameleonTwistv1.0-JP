@@ -57,9 +57,10 @@ void Controller_ParseJoystick(ContMain* conts) {
     for (i = 0; i < MAXCONTROLLERS; i++) {
         gPrevButtons[i] = gButtons[i];
         gButtons[i] = conts[i].buttons0;
+        //NORM_2
         sqX=SQ(conts[i].stickX);
         sqY=SQ(conts[i].stickY);
-        if (__sqrtf(sqX + sqY) > 42.0) {
+        if (sqrtf(sqX + sqY) > 42.0) {
             if (conts[i].stickX < -30) {
                 gButtons[i] |= CONT_LEFT;
             } else if (conts[i].stickX > 30) {
@@ -1986,7 +1987,7 @@ void Effect_TypeA_Init(f32 posX, f32 posY, f32 posZ, s32 numParts, s32 size) {
     effect->pos.y = posY;
     effect->pos.z = posZ;
     effect->duration = size * 3;
-    effect->unk8 = PlaySoundEffect(0xC3, &effect->pos.x, &effect->pos.y, &effect->pos.z, 0, 0x20);
+    effect->unk8 = PLAYSFXAT(0xC3, effect->pos, 0, 0x20);
 
     for (parts = effect->parts, i = 0; i < numParts; i++) {
         parts[i].pos.x = posX + RANDOM(-size, size);
@@ -2013,7 +2014,7 @@ void Effect_TypeA_Init2(f32 posX, f32 posY, f32 posZ, s32 numParts, s32 size) {
     effect->pos.y = posY;
     effect->pos.z = posZ;
     effect->duration = size * 3;
-    effect->unk8 = PlaySoundEffect(0xC3, &effect->pos.x, &effect->pos.y, &effect->pos.z, 10, 0x20);
+    effect->unk8 = PLAYSFXAT(0xC3, effect->pos, 10, 0x20);
 
     for (parts = effect->parts, i = 0; i < numParts; i++) {
         parts[i].pos.x = posX + RANDOM(-size, size);
@@ -2507,7 +2508,7 @@ Effect* Effect_TypeC_Init(f32 posX, f32 posY, f32 posZ, f32 targetX, f32 targetY
     s32 i;
     f32 dist;
     
-    dist = __sqrtf(SQ(posX - targetX) + SQ(posY - targetY) + SQ(posZ - targetZ));
+    dist = NORM_3(posX - targetX, posY - targetY, posZ - targetZ);
     effect = Effect_Alloc(numParts, sizeof(Effect_TypeC_Data), &Effect_TypeC_Update);
     if (effect == NULL) {
         return effect;
@@ -2633,7 +2634,7 @@ Effect* Effect_TypeD_Init(f32 posX, f32 posY, f32 posZ, f32 targetX, f32 targetY
     f32 dist;
     
     if (SQ(posX - targetX) + SQ(posY - targetY) + SQ(posZ - targetZ) > 0.0f) {
-        dist = __sqrtf(SQ(posX - targetX) + SQ(posY - targetY) + SQ(posZ - targetZ));
+        dist = NORM_3(posX - targetX, posY - targetY, posZ - targetZ);
     } else {
         dist = 10.0f;
     }
@@ -2657,7 +2658,7 @@ Effect* Effect_TypeD_Init(f32 posX, f32 posY, f32 posZ, f32 targetX, f32 targetY
     effect->duration = 30.0f;
     effect->lifeTime = 0.0f;
 
-    PlaySoundEffect(0xE0, &effect->pos.x, &effect->pos.y, &effect->pos.z, 0, 0x20);
+    PLAYSFXAT(0xE0, effect->pos, 0, 0x20);
 
     for (parts = effect->parts, i = 0; i < effect->numParts; i++) {
         parts[i].lifeTime = 0;
@@ -4907,23 +4908,16 @@ void Effect_TypeAK_Init(f32 posX, f32 posY, f32 arg2, f32 arg3, f32 arg4, f32 ar
     effect->lifeTime = 0.0f;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/D_8010CABC.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/D_8010CACC.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/D_8010CADC.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/D_8010CAF8.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/D_8010CB14.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/D_8010CB20.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/D_8010CB2C.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/D_8010CB48.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/D_8010CB64.s")
+//battle pause? is it both of them??
+const char D_8010CABC[] = "ＰＡＵＳＥ！";
+const char D_8010CACC[] = "ＣＡＮＣＥＬ";
+const char D_8010CADC[] = "ＳＴＡＧＥ　ＳＥＬＥＣＴ";
+const char D_8010CAF8[] = "ＣＯＬＯＲ　ＳＥＬＥＣＴ";
+const char D_8010CB14[] = "ＥＸＩＴ";
+const char D_8010CB20[] = "ＲＥＴＲＹ";
+const char D_8010CB2C[] = "ＳＴＡＧＥ　ＣＨＡＮＧＥ";
+const char D_8010CB48[] = "ＣＯＬＯＲ　ＣＨＡＮＧＥ";
+const char D_8010CB64[] = "ＥＸＩＴ";
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_800714C8.s")
 
@@ -5009,7 +5003,47 @@ void func_80073FD8(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_800745F8.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_800747E0.s")
+void func_800747E0(f32 arg0, f32 arg1, u32 arg2, f32 arg3, f32 arg4, f32 arg5, u32 arg6, u32 arg7, s32 arg8, u32* arg9) {
+    Effect* effect;
+    f32 var_f0;
+    s32 i;
+    u8* var_v0;
+    Effect_TypeE_Data* data;
+
+    var_v0 = arg7;
+    i = 0;
+    while (var_v0[0] != 0){
+        var_v0 += 2;
+        i++;
+    }
+    if (i != 0) {
+        effect = Effect_Alloc(0, 0x24, func_800745F8);
+        if (effect != NULL) {
+            if (arg2 == 0) {
+                var_f0 = -16 - ((f32) i * 16);
+            } else {
+                var_f0 = 330;
+            }
+            *arg9 = 1;
+            data = effect->data;
+            data->dir.x = 1 / arg3;
+            data->dir.y = 1 / arg4;
+            data->dir.z = (f32) (1 / arg5);
+            //cant really match by dereferencing???
+            data->colorG = arg9;
+            data->colorR = arg6;
+            data->colorA = arg7;
+            effect->spriteID = arg8;
+            effect->unk5 = 0;
+            effect->numParts = arg2;
+            effect->pos.x = arg0;
+            effect->pos.y = arg1;
+            effect->vel.x = var_f0;
+            effect->vel.z = 1;
+            effect->lifeTime = 0;
+        }
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80074908.s")
 
@@ -5357,7 +5391,7 @@ void func_80084788(void) {
     func_800667A8();
 }
 
-s32 func_80084884(s32 arg0) {
+Gfx* func_80084884(Gfx* arg0) {
     if (gCurrentStage == 8) {
         func_8007CDEC();
     }

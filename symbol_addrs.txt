@@ -1177,6 +1177,8 @@ D_80110000 = 0x80110000; // type:f64 force_migration:True size:0x08
 
 //other stuff
 D_8010DA14 = 0x8010DA14; // type:asciz force_not_migration:True size:0x08
+D_8010A6D0 = 0x8010A6D0; // type:Vec2f size:0x358
+D_8010AA28 = 0x8010AA28; // size:0x358
 Battle_PlayerCount = 0x8017682C; // type:s32 size:0x04
 D_80174A50 = 0x80174A50; // size:0xB40
 D_80175590 = 0x80175590; // size:0x08
