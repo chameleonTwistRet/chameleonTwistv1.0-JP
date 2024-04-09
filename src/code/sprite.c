@@ -225,9 +225,9 @@ s32 Free(void* arg0) {
 }
 
 void func_80056F48(s32 arg0, Tongue* tongues, PlayerActor* players, Camera* cameras) {
-    f32 xAt = D_801768A0.f5._f32.x - D_801768A0.f4.x;
-    f32 yAt = D_801768A0.f5._f32.y - D_801768A0.f4.y + D_800FE014;
-    f32 zAt = D_801768A0.f5._f32.z - D_801768A0.f4.z;
+    f32 xAt = D_801768A0.f5.x - D_801768A0.f4.x;
+    f32 yAt = D_801768A0.f5.y - D_801768A0.f4.y + D_800FE014;
+    f32 zAt = D_801768A0.f5.z - D_801768A0.f4.z;
     if (xAt != 0 || zAt != 0) {
         guLookAt(&D_80176860,
                  0.0f, 0.0f, 0.0f, // Eye

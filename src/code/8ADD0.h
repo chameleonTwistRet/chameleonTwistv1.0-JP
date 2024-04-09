@@ -18,60 +18,25 @@ typedef struct unk8020D908 {
     char unk_04[0x54];
 } unk8020D908;
 
-typedef struct newStruct {
-    s32 dummy0[10]; // Placeholder for the first 10 elements
-    f32 field1;
-    f32 field2;
-} newStruct;
-
 typedef struct unkStruct20 {
     char unk_00[0x25];
     s8 unk25;
     char unk_26[2];
 } unkStruct20;
 
-typedef struct unkStructGlobal1 {
-    char unk_00[0xAC];
-    s32 unkAC;
-    s32 unkB0;
-    s32 unkB4;
-    s32 unkB8;
-} unkStructGlobal1;
-
-typedef struct unkBlackChameleon1 {
-    char unk_00[0x38];
-    s32 unk38;
-} unkBlackChameleon1;
-
-typedef struct unkBlackChameleon0 {
-    char unk_00[0xAC];
-    s32 unkAC;
-    s32 unkB0;
-} unkBlackChameleon0;
-
-typedef struct RegistDoorStruct {
-    Vec3f unk0;
-    char unkc[0x1C];
-    f32 unk28;
-    f32 unk2C;
-    char unk30[0x8];
-    u32 unk38;
-    u32 unk3C;
-} RegistDoorStruct;
-
 /* Functions */
-void func_800AF9D0(Collider* arg0, Camera* arg1);
+void func_800AF9D0(Collider* arg0, RoomObject* arg1);
 void func_800AFB2C(Collider* arg0, s32 arg1);
 void func_800B06B0(Collider* arg0);
 s32 CountShotActors(void);
 s32 func_800B07E4(void);
-void func_800B088C(Collider* arg0, Camera* arg1);
-void func_800B08C8(unkStructGlobal1* arg0);
-void func_800B09C0(s32 arg0, newStruct* arg1);
-void func_800B09E8(unkStructGlobal1* arg0, unkBlackChameleon1* arg1);
-void func_800B0A30(unkBlackChameleon0* arg0, unkBlackChameleon1* arg1);
+void func_800B088C(Collider* arg0, RoomObject* arg1);
+void func_800B08C8(Collider* arg0);
+void func_800B09C0(Collider* arg0, RoomObject* arg1);
+void func_800B09E8(Collider* arg0, RoomObject* arg1);
+void func_800B0A30(Collider* arg0, RoomObject* arg1);
 void func_800B0AA4(Collider* collider);
-void RegistShutter(Collider* arg0, Camera* arg1);
+void RegistShutter(Collider* arg0, RoomObject* arg1);
 void func_800B1DA0(Collider* arg0, s32 arg1);
 void func_800B2070(s32 arg0);
 void func_800B2144(Collider* arg0, unkStruct14* arg1);
@@ -133,19 +98,19 @@ void func_800B560C(s32 arg0);
 void func_800B56D4(f32 arg0, f32 arg1);
 s32 func_800B5878(Rect3D* arg0);
 s32 func_800B5908(Collider* collider, f32 yMod);
-void func_800B5A98(Collider*, Camera*);
+void func_800B5A98(Collider*, RoomObject*);
 void func_800B5C60(tempStruct*);
 void func_800B5D68(Collider*, s32);
 void func_800B602C(Collider* arg0, s32 arg1);
 void func_800B6040(Collider* arg0);
 void func_800B6054(Collider* arg0, s32 arg1);
 void func_800B6078(Collider* arg0);
-void func_800B6CD8(Collider* arg0, Camera* arg1);
+void func_800B6CD8(Collider* arg0, RoomObject* arg1);
 void func_800B6D24(tempStruct* arg0);
-void func_800BA2D0(Collider* arg0, Camera* arg1);
-void func_800BA89C(Collider* arg0, Camera* arg1);
+void func_800BA2D0(Collider* arg0, RoomObject* arg1);
+void func_800BA89C(Collider* arg0, RoomObject* arg1);
 void func_800BA900(tempStruct* arg0);
-void func_800BBC88(Collider* arg0, Camera* arg1);
+void func_800BBC88(Collider* arg0, RoomObject* arg1);
 void func_800BD608(tempStruct* arg0);
 void func_800BDF2C(Collider* arg0, s32 arg1);
 void func_800BE000(Collider* arg0);
@@ -160,7 +125,7 @@ void func_800BE664(PlayerActor * arg0);
 void func_800BE7BC(void);
 void EraseField(Collider*);
 void func_800BF268(s32);
-void RegistDoor(RegistDoorStruct* arg0, s32 arg1, s32 arg2);
+void RegistDoor(RoomObject* arg0, s32 arg1, s32 arg2);
 void func_800BF4AC(Door*);
 void func_800BF524(s32);
 void func_800BF5A4(void);

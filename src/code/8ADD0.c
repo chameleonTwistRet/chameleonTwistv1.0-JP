@@ -15,23 +15,23 @@ Vec3f D_80201950;
 f32 D_80201960;*/
 
 
-void func_800AF9D0(Collider* arg0, Camera* arg1) {
+void func_800AF9D0(Collider* arg0, RoomObject* arg1) {
     arg0->unk_5C = 2;
     D_80201910 = 0.0f;
-    D_80201920 = DEGREES_TO_RADIANS_PI(arg1->f4.x);
+    D_80201920 = DEGREES_TO_RADIANS_PI(arg1->unk28);
     D_80201908 = 0.0f;
     D_80201918 = 0.0f;
-    D_80201940.x = (f32) arg1->f4.y;
-    D_80201940.y = (f32) arg1->f4.z;
-    D_80201940.z = (f32) arg1->f5._f32.x;
+    D_80201940.x = arg1->unk2C;
+    D_80201940.y = arg1->unk30;
+    D_80201940.z = arg1->unk34;
     D_80201964 = 0;
     D_80201970 = 50;
     D_80201974 = 10;
     D_80201978 = 1;
     D_8020197C = 3;
-    D_80201980 = arg1->untouchedTimer;
-    D_80201984 = arg1->size1._s32;
-    D_80201988 = arg1->size2._s32;
+    D_80201980 = arg1->unk4C;
+    D_80201984 = arg1->unk44;
+    D_80201988 = arg1->unk48;
     D_8020198C = arg1->unk40;
     D_80201990 = 1000;
     D_80201998 = 0;
@@ -96,42 +96,42 @@ s32 func_800B07E4(void) {
     return count;
 }
 
-void func_800B088C(Collider* arg0, Camera* arg1) {
-    arg0->unk_AC = arg1->f5._s32.y;
-    arg0->unk_B0 = arg1->f5._s32.z;
+void func_800B088C(Collider* arg0, RoomObject* arg1) {
+    arg0->unk_AC = arg1->unk38;
+    arg0->unk_B0 = arg1->unk3C;
     arg0->unk_B4 = 0;
     arg0->unk_B8 = -1;
     func_800B35FC(arg0->unk_AC);
 }
 
-void func_800B08C8(unkStructGlobal1* arg0) {
+void func_800B08C8(Collider* arg0) {
     s32 shotActors;
 
-    switch (arg0->unkB4) {
+    switch (arg0->unk_B4) {
     case 0:
         if (CountShotActors() == 1) {
-            arg0->unkB4 = 1;
-            func_800B35B0(arg0->unkAC);
+            arg0->unk_B4 = 1;
+            func_800B35B0(arg0->unk_AC);
         }
         break;
     case 1:
         shotActors = CountShotActors();
         if (shotActors >= 2) {
-            arg0->unkB4 = 3;
+            arg0->unk_B4 = 3;
         }
         if (shotActors == 0) {
-            arg0->unkB4 = 2;
-            arg0->unkB8 = gTimer + 150;
+            arg0->unk_B4 = 2;
+            arg0->unk_B8 = gTimer + 150;
             return;
         }
        break;
     case 2:
         if (func_800B07E4() == 0) {
-            arg0->unkB4 = 3;
-            func_800B35B0(arg0->unkB0);
+            arg0->unk_B4 = 3;
+            func_800B35B0(arg0->unk_B0);
         }
-        if (arg0->unkB8 < gTimer) {
-            arg0->unkB4 = 3;
+        if (arg0->unk_B8 < gTimer) {
+            arg0->unk_B4 = 3;
         }
         break;
     
@@ -140,29 +140,28 @@ void func_800B08C8(unkStructGlobal1* arg0) {
     }
 }
 
-void func_800B09C0(s32 arg0, newStruct* arg1) {
-    func_800B56D4(arg1->field1, arg1->field2);
+void func_800B09C0(Collider* arg0, RoomObject* arg1) {
+    func_800B56D4(arg1->unk28, arg1->unk2C);
 }
 
-//unsure of arg1 type
-void func_800B09E8(unkStructGlobal1* arg0, unkBlackChameleon1* arg1) {
-    arg0->unkAC = arg1->unk38;    
-    if (func_800B34D0(arg0->unkAC) != 0) {
-        arg0->unkB0 = 0;
-        return;
+void func_800B09E8(Collider* arg0, RoomObject* arg1) {
+    arg0->unk_AC = arg1->unk38;    
+    if (func_800B34D0(arg0->unk_AC) != 0) {
+        arg0->unk_B0 = 0;
+    } else {
+        arg0->unk_B0 = 1;
     }
-    arg0->unkB0 = 1;
 }
 
-void func_800B0A30(unkBlackChameleon0* arg0, unkBlackChameleon1* arg1) {
+void func_800B0A30(Collider* arg0, RoomObject* arg1) {
     gPlayerActors[1].active = gPlayerActors[1].exists = 1;
 
     gSelectedCharacters[1] = 4;
-    arg0->unkAC = 0;
-    arg0->unkB0 = arg1->unk38;
-    if (func_800B34D0(arg0->unkB0) != 0) {
+    arg0->unk_AC = 0;
+    arg0->unk_B0 = arg1->unk38;
+    if (func_800B34D0(arg0->unk_B0) != 0) {
         gPlayerActors[1].active = gPlayerActors[1].exists = 0;
-        arg0->unkAC = 2;
+        arg0->unk_AC = 2;
     }
 }
 
@@ -185,19 +184,20 @@ void func_800B0AA4(Collider* collider) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B0B20.s")
 
 //deals with "shutters"
-void RegistShutter(Collider* arg0, Camera* arg1) {
+//very literal. manages the grenade shutters in Bomb Land
+void RegistShutter(Collider* arg0, RoomObject* arg1) {
     Collider* realCollider;
     Collider** colliderArray;
     s32 i;
 
-    arg0->unk_8C = arg1->f4.x;
-    arg0->unk_AC = arg1->f5._s32.y;
-    arg0->unk_B0 = arg1->f5._s32.z;
+    arg0->unk_8C = arg1->unk28;
+    arg0->unk_AC = arg1->unk38;
+    arg0->unk_B0 = arg1->unk3C;
     arg0->unk_B4 = arg1->unk40;
-    arg0->unk_B8 = arg1->size1._s32;
-    arg0->unk_BC = arg1->size2._s32;
-    arg0->unk_C0 = arg1->untouchedTimer;
-    arg0->unkC4 = arg1->f4.y;
+    arg0->unk_B8 = arg1->unk44;
+    arg0->unk_BC = arg1->unk48;
+    arg0->unk_C0 = arg1->unk4C;
+    arg0->unkC4 = arg1->unk2C;
     D_802025B4 = 0;
     for(i = 0, colliderArray = &D_80240898;
         i < gFieldCount; i++, colliderArray++){
@@ -1018,11 +1018,11 @@ void func_800B6078(Collider* arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B6C34.s")
 
-void func_800B6CD8(Collider* arg0, Camera* arg1) {
+void func_800B6CD8(Collider* arg0, RoomObject* arg1) {
     func_800B5D68(arg0, 1);
-    arg0->unk_8C = arg1->f4.x;
-    arg0->unk_90 = arg1->f4.y;
-    arg0->unk_94 = arg1->f4.z;
+    arg0->unk_8C = arg1->unk28;
+    arg0->unk_90 = arg1->unk2C;
+    arg0->unk_94 = arg1->unk30;
 }
 
 void func_800B6D24(tempStruct* arg0) {
@@ -1071,17 +1071,17 @@ void func_800B6D24(tempStruct* arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B9FA8.s")
 
-void func_800BA2D0(Collider* arg0, Camera* arg1) {
+void func_800BA2D0(Collider* arg0, RoomObject* arg1) {
     func_800B5D68(arg0, 2);
     arg0->unk_8C = arg0->unk_30.x;
     arg0->unk_90 = arg0->unk_30.y;
     arg0->unk_94 = arg0->unk_30.z;
-    arg0->unk_98 = arg1->f4.x;
-    arg0->unk_9C = arg1->f4.y;
-    arg0->unk_A0 = arg1->f4.z;
+    arg0->unk_98 = arg1->unk28;
+    arg0->unk_9C = arg1->unk2C;
+    arg0->unk_A0 = arg1->unk30;
     arg0->unkA4 = 0;
-    arg0->unk_AC = arg1->f5._s32.y;
-    arg0->unk_B0 = arg1->f5._s32.z;
+    arg0->unk_AC = arg1->unk38;
+    arg0->unk_B0 = arg1->unk3C;
     arg0->unk_B4 = arg1->unk40;
     arg0->unk_B8 = 0;
     arg0->unk_BC = 0;
@@ -1089,12 +1089,12 @@ void func_800BA2D0(Collider* arg0, Camera* arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BA35C.s")
 
-void func_800BA89C(Collider* arg0, Camera* arg1) {
+void func_800BA89C(Collider* arg0, RoomObject* arg1) {
     func_800B5D68(arg0, 1);
-    arg0->unk_8C = arg1->f4.x;
-    arg0->unk_90 = arg1->f4.y;
-    arg0->unk_94 = arg1->f4.z;
-    arg0->unk_98 = arg1->f5._f32.x;
+    arg0->unk_8C = arg1->unk28;
+    arg0->unk_90 = arg1->unk2C;
+    arg0->unk_94 = arg1->unk30;
+    arg0->unk_98 = arg1->unk34;
     func_800B5A98(arg0, arg1);
     arg0->unk_114 = 16;
 }
@@ -1130,12 +1130,12 @@ void func_800BA900(tempStruct* arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BBA80.s")
 
-void func_800BBC88(Collider* arg0, Camera* arg1) {
+void func_800BBC88(Collider* arg0, RoomObject* arg1) {
     func_800B5D68(arg0, 2);
     arg0->unk_8C = arg0->unk_30.x;
     arg0->unk_90 = arg0->unk_30.y;
     arg0->unk_94 = arg0->unk_30.z;
-    arg0->unkA4 = arg1->f4.x;
+    arg0->unkA4 = arg1->unk28;
     arg0->unk_AC = 0;
     arg0->unk_B0 = 0;
     arg0->unk_C0 = 0;
@@ -1318,21 +1318,22 @@ void func_800BF268(s32 arg0) {
     }
 }
 
-void RegistDoor(RegistDoorStruct* arg0, s32 arg1, s32 arg2) {
-    Door* temp_v1;
+//uses a pointer to a roomObject in levelData to generate a door
+void RegistDoor(RoomObject* obj, s32 arg1, s32 arg2) {
+    Door* door;
 
     if (gDoorCount < 16) {
-        temp_v1 = &gDoors[gDoorCount];
-        temp_v1->index = gDoorCount;
-        temp_v1->unk4 = arg2;
-        temp_v1->inZone = arg1;
-        temp_v1->max.x = arg0->unk0.x;
-        temp_v1->max.y = arg0->unk0.y;
-        temp_v1->max.z = arg0->unk0.z;
-        temp_v1->toX = arg0->unk28;
-        temp_v1->toZ = arg0->unk2C;
-        temp_v1->direction = arg0->unk38;
-        temp_v1->unk34 = arg0->unk3C;
+        door = &gDoors[gDoorCount];
+        door->index = gDoorCount;
+        door->unk4 = arg2;
+        door->inZone = arg1;
+        door->max.x = obj->position.x;
+        door->max.y = obj->position.y;
+        door->max.z = obj->position.z;
+        door->toX = obj->unk28;
+        door->toZ = obj->unk2C;
+        door->direction = obj->unk38;
+        door->unk34 = obj->unk3C;
         gDoorCount += 1;
     }
 }
@@ -1641,19 +1642,19 @@ void enterBossRoom(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C3B50.s")
 
 void func_800C3DCC(Camera* camera, Vec3f arg1, f32 arg4, f32 arg5, f32 arg6, f32 arg7) {
-    camera->f5._f32.x = camera->f1.z = arg1.x;
-    camera->f2.x = camera->f5._f32.y = arg1.y;
+    camera->f5.x = camera->f1.z = arg1.x;
+    camera->f2.x = camera->f5.y = arg1.y;
     camera->f2.z = arg7;
     camera->f2.y = arg1.z;
-    camera->f5._f32.z = arg1.z;
+    camera->f5.z = arg1.z;
     camera->f3.x = arg4;
     camera->f4.x = arg4;
     camera->f3.y = arg5;
     camera->f4.y = camera->f3.y;
     camera->f3.z = arg6;
     camera->f4.z = arg6;
-    camera->f2.x -= gZoneCollisions[gCurrentZone].unkD0 * camera->size1._f32;
-    camera->f3.y -= gZoneCollisions[gCurrentZone].unkD0 * camera->size1._f32;
+    camera->f2.x -= gZoneCollisions[gCurrentZone].unkD0 * camera->size1;
+    camera->f3.y -= gZoneCollisions[gCurrentZone].unkD0 * camera->size1;
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C3E94.s")

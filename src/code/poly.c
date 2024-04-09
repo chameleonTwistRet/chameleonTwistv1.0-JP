@@ -362,10 +362,10 @@ void func_800D6864(PlayerActor* arg0, Tongue* arg1, Camera* arg2, Vec3f* arg3, V
 
     collider = &gZoneCollisions[gCurrentZone];
     arg3->x = arg2->f1.z;
-    arg3->y = arg2->f2.x + (collider->unkD0 * arg2->size1._f32);
+    arg3->y = arg2->f2.x + (collider->unkD0 * arg2->size1);
     arg3->z = arg2->f2.y;
     arg4->x = arg2->f3.x;
-    arg4->y = arg2->f3.y + (collider->unkD0 * arg2->size1._f32);
+    arg4->y = arg2->f3.y + (collider->unkD0 * arg2->size1);
     arg4->z = arg2->f3.z;
 }
 
@@ -409,9 +409,9 @@ void SetCameraParameters(void) {
     cam = &gCamera[0];
     
     for (i = 0; i < 4; i++, cam++) {
-        cam->f5._f32.x = sp3C.x;
-        cam->f5._f32.y = sp3C.y;
-        cam->f5._f32.z = sp3C.z;
+        cam->f5.x = sp3C.x;
+        cam->f5.y = sp3C.y;
+        cam->f5.z = sp3C.z;
 
         cam->f4.x = sp30.x;
         cam->f4.y = sp30.y;

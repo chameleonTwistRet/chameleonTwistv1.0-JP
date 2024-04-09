@@ -1497,9 +1497,9 @@ Gfx* func_8008E314(Gfx* gfxPos, Tongue* tongues, PlayerActor* players, Camera* c
     camera->f3.y = 0.0f;
     camera->f3.z = 0.0f;
     
-    camera->f5._f32.x = 0.0f;
-    camera->f5._f32.y = 0.0f;
-    camera->f5._f32.z = 0.0f;
+    camera->f5.x = 0.0f;
+    camera->f5.y = 0.0f;
+    camera->f5.z = 0.0f;
 
     camera->f1.z = 0.0f;
     camera->f2.x = 0.0f;
@@ -1509,7 +1509,7 @@ Gfx* func_8008E314(Gfx* gfxPos, Tongue* tongues, PlayerActor* players, Camera* c
     gSPPerspNormalize(gfxPos++, perspNorm);
     guLookAt(&D_801B3240[fbIndex],
                  camera->f4.x, camera->f4.y, camera->f4.z, // Eye
-                 camera->f5._f32.x, camera->f5._f32.y, camera->f5._f32.z, // At
+                 camera->f5.x, camera->f5.y, camera->f5.z, // At
                  0, 1, 0); // Up
     gSPMatrix(gfxPos++, OS_K0_TO_PHYSICAL(&D_801B3180[fbIndex]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
     gSPMatrix(gfxPos++, OS_K0_TO_PHYSICAL(&D_801B3240[fbIndex]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
@@ -1528,9 +1528,9 @@ Gfx* func_8008E488(Gfx* gfxPos, Tongue* tongues, PlayerActor* players, Camera* c
     camera->f3.y = 0.0f;
     camera->f3.z = 0.0f;
     
-    camera->f5._f32.x = 0.0f;
-    camera->f5._f32.y = 0.0f;
-    camera->f5._f32.z = 0.0f;
+    camera->f5.x = 0.0f;
+    camera->f5.y = 0.0f;
+    camera->f5.z = 0.0f;
 
     camera->f1.z = 0.0f;
     camera->f2.x = 0.0f;
@@ -1540,7 +1540,7 @@ Gfx* func_8008E488(Gfx* gfxPos, Tongue* tongues, PlayerActor* players, Camera* c
     gSPPerspNormalize(gfxPos++, perspNorm);
     guLookAt(&D_801B33C0[fbIndex],
                  camera->f4.x, camera->f4.y, camera->f4.z, // Eye
-                 camera->f5._f32.x, camera->f5._f32.y, camera->f5._f32.z, // At
+                 camera->f5.x, camera->f5.y, camera->f5.z, // At
                  0, 1, 0); // Up
     gSPMatrix(gfxPos++, OS_K0_TO_PHYSICAL(&D_801B3300[fbIndex]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
     gSPMatrix(gfxPos++, OS_K0_TO_PHYSICAL(&D_801B33C0[fbIndex]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
@@ -1709,9 +1709,9 @@ void func_8008F16C(void) {
             gCamera->f4.x = 0.0f;
             gCamera->f4.y = 0.0f;
             gCamera->f4.z = 0.0f;
-            gCamera->f5._f32.x = 1000.0f;
-            gCamera->f5._f32.y = 1000.0f;
-            gCamera->f5._f32.z = 1000.0f;
+            gCamera->f5.x = 1000.0f;
+            gCamera->f5.y = 1000.0f;
+            gCamera->f5.z = 1000.0f;
         }
         func_80056F48(0, gTongues, gPlayerActors, gCamera);
         setPrimColor(D_800FF8DC, D_800FF8E0, D_800FF8E4, 255);

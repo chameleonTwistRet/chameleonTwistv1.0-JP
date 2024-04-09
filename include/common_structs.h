@@ -185,7 +185,7 @@ typedef struct RoomObject {
     f32 unk28;
     f32 unk2C;
     f32 unk30;
-    s32 unk34;
+    f32 unk34;
     s32 unk38;
     s32 unk3C;
     s32 unk40;
@@ -196,8 +196,8 @@ typedef struct RoomObject {
     s32 unk54;
     s32 unk58;
     s32 unk5C;
-    s32 unk60;
-    u32 unk64;
+    void (*func1)(struct RoomObject*);
+    void (*func2)(struct RoomObject*);
     s32 unk68;
     s32 unk6C;
     s32 unk70;
@@ -347,19 +347,10 @@ typedef struct Camera {//take these with a grain of salt
     /* 0x10 */ Vec3f f2;
     /* 0x1C */ Vec3f f3;
     /* 0x28 */ Vec3f f4; // perspective "eye"
-    /* 0x34 */ union f5 { // perspective "at"
-        Vec3f _f32;
-        Vec3w _s32;
-    } f5;
+    /* 0x34 */ Vec3f f5; // perspective "at"
     /* 0x40 */ s32 unk40;
-    /* 0x44 */ union size1 {
-        f32 _f32;
-        s32 _s32;
-    } size1;
-    /* 0x48 */ union size2 {
-        f32 _f32;
-        s32 _s32;
-    } size2;
+    /* 0x44 */ f32 size1;
+    /* 0x48 */ f32 size2;
     /* 0x4C */ u32 untouchedTimer; //timer that incs when the camera hasnt been used
     /* 0x50 */ f32 unk50;
     /* 0x54 */ s32 pushHoriz;//the impulse horizontally by the player

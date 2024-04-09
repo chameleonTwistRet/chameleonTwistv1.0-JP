@@ -710,7 +710,7 @@ void func_80053FA0(s32 playerID) {
 
     posX = gPlayerActors[playerID].pos.x; // required for matching
     
-    func_80068A88(D_80176B78->f5._f32.x, D_80176B78->f5._f32.y, D_80176B78->f5._f32.z,
+    func_80068A88(D_80176B78->f5.x, D_80176B78->f5.y, D_80176B78->f5.z,
                   gPlayerActors[playerID].pos.x, gPlayerActors[playerID].pos.y + 300.0f, gPlayerActors[playerID].pos.z,
                   gPlayerActors[playerID].pos.x, gPlayerActors[playerID].pos.y + 150.0f, gPlayerActors[playerID].pos.z,
                   D_80176B78->f3.x * 3.0f, D_80176B78->f3.y * 3.0f, D_80176B78->f3.z * 3.0f,
