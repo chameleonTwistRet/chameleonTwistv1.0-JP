@@ -201,7 +201,8 @@ void func_8008E840(CTTask*);
 CTTask* func_8008E9AC(s16 arg0, s16 arg1, s16 arg2, s16 arg3, s16* arg4);
 CTTask* func_8008EA60(s16 arg0, s16 arg1, s16 arg2, s16 arg3, s16* arg4);
 //s16 might be CTTask??
-void func_8008EB08(s16, s16, s16, s16, s16*, f32, f32, f32, f32, s16);
+CTTask* func_8008EB08(s16, s16, s16, s16, s16*, f32, f32, f32, f32, s16);
+CTTask* func_8008EBCC(s16, s16, s16, s16, CTTask*, f32, f32, f32, f32, s16);
 s32 func_8008EC90(void);
 void func_8008EF78(CTTask* task);
 void func_8008EFA0(CTTask*);

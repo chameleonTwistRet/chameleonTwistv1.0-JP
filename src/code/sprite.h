@@ -129,6 +129,7 @@ extern Gfx D_10149D0[];
 extern Effect* D_800FE1A0;
 
 /* functions */
+void Memory_Free(void*);
 void func_80055C04(void);
 Effect* Effect_HealthBar_Init(s32, s32, s32*, s32*, u32, s32);
 Effect* func_800634D4(s32, s32, s32*, s32*, u32, s32);

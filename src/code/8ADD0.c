@@ -1,8 +1,29 @@
 #include "8ADD0.h"
+//bss
+/*f32 D_80201900;
+f32 D_80201904;
+f32 D_8020190C;
+
+f32 D_80201914;
+f32 D_8020191C;
+f32 D_80201924;
+
+Vec3f D_80201930;
+
+Vec3f D_80201950;
+
+f32 D_80201960;*/
+
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800AF9D0.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800AFB2C.s")
+void func_800AFB2C(Collider* arg0, s32 arg1) {
+    arg0->unk_5C = 2;
+    arg0->unkA4 = 0;
+    func_800B402C(arg0, 0, 2);
+    func_800B402C(arg0, 1, 2);
+    func_800B402C(arg0, 2, 1);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800AFB88.s")
 
@@ -91,7 +112,21 @@ void func_800B0A30(unkBlackChameleon0* arg0, unkBlackChameleon1* arg1) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B0AA4.s")
+void func_800B0AA4(Collider* collider) {
+    switch (collider->unk_AC) {
+    case 0:
+        if (!gPlayerActors[1].exists) {
+            func_800B4FCC();
+            func_800B40FC();
+            func_800B35B0(collider->unk_B0);
+            collider->unk_AC = 2;
+        }
+    //why even have case 1 or 2 at that point?? nulled code???
+    case 1:
+    case 2:
+        break;
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B0B20.s")
 //deals with "shutters"
@@ -130,9 +165,9 @@ void func_800B2070(s32 arg0) {
     vec.z = gPlayer->pos.z;
     
     // If the player is not in the bounding box, not squished, and not jumping, set the squish timer to 1
-    if (((gPlayerActors->squishTimer == 0) && (gPlayerActors->canJump == 0)) && (IsPointInRect(vec, &rect) != 0)) {
+    if (((gPlayer->squishTimer == 0) && (gPlayer->canJump == 0)) && (IsPointInRect(vec, &rect) != 0)) {
         //D_80168E14 = 1;
-        gPlayerActors->squishTimer = 1;
+        gPlayer->squishTimer = 1;
     }
 
     //(((gPlayerActors->squishTimer == 0) && (gPlayerActors->canJump == 0)) && (IsPointInRect(vec, &rect) != 0)) ? (gPlayerActors->squishTimer = 0) : (gPlayerActors->squishTimer = 1);
@@ -313,8 +348,8 @@ s32 func_800B2510(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B255C.s")
 
-Vec3f* func_800B2AB4(Vec3f* arg0, Vec3f arg1, temp_func_800B2AB4* arg4) {
-    Collider* temp = &D_80236980[arg4->unk4];
+Vec3f* func_800B2AB4(Vec3f* arg0, Vec3f arg1, s32* arg4) {
+    Collider* temp = &D_80236980[arg4[1]];
     Vec3f sp20;
 
     func_800B255C(&sp20, arg1, temp);
@@ -325,10 +360,10 @@ Vec3f* func_800B2AB4(Vec3f* arg0, Vec3f arg1, temp_func_800B2AB4* arg4) {
 s32 func_800B2B50(s32 arg0, s32 arg1) {
     s32 ret = -1;
     s32 i;
-    unkSpriteStruct5** temp;
-    unkSpriteStruct5* temp2;
+    Collider** temp;
+    Collider* temp2;
 
-    for (i = 0, temp = &D_80240898; i < gFeildCount; i++, temp++) {
+    for (i = 0, temp = &D_80240898; i < gFieldCount; i++, temp++) {
         temp2 = *temp;
         if ((arg0 == temp2->unk_04) && (arg1 == temp2->unk_08)) {
             ret = temp2->unk_00;
@@ -349,9 +384,10 @@ Vec3f* Vec3f_SetAtBossPos(Vec3f* arg0) {
     actors = gActors;
     for (i = 0; i < ARRAY_COUNT(gActors); i++, actors++) {
         if (IsActorBoss(actors)) { // Check if the current actor is a boss
-            pos.x = actors->pos.x; // Set x coordinate of pos to boss x coordinate
-            pos.y = actors->pos.y; // Set y coordinate of pos to boss y coordinate
-            pos.z = actors->pos.z; // Set z coordinate of pos to boss z coordinate
+            //Set coordinates of pos to boss coordinates
+            pos.x = actors->pos.x;
+            pos.y = actors->pos.y;
+            pos.z = actors->pos.z;
             break; // Break out of the loop since we found a boss actor
         }        
     }
@@ -379,7 +415,7 @@ s32 IsBossPresent(void) {
 }
 
 /**
- * @brief Returns True iff the current stage is a boss stage.
+ * @brief Returns True if the current stage is a boss stage.
  * 
  * @return (s32) 1 if the current stage is a boss stage, 0 otherwise. 
  */
@@ -414,10 +450,10 @@ void func_800B2D34(void) {
 
 void func_800B3364(s32 arg0) {
     s32 i;
-    unkSpriteStruct5** temp_s0;
-    unkSpriteStruct5* unkSpritePtr;
+    Collider** temp_s0;
+    Collider* unkSpritePtr;
 
-    for (i = 0, temp_s0 = &D_80240898; i < gFeildCount; i++, temp_s0++) {
+    for (i = 0, temp_s0 = &D_80240898; i < gFieldCount; i++, temp_s0++) {
         unkSpritePtr = *temp_s0;
         unkSpritePtr->unk_E4 = 0;
         if ((arg0 == 1) || (func_800B3FFC(unkSpritePtr, 4) != 0)) {
@@ -426,7 +462,6 @@ void func_800B3364(s32 arg0) {
     }
 }
 
-//rains 7 month old bool checker
 s32 IsntNegative(s32 value) {
     return ( value >= 0 ) ? 1 : 0;
 }
@@ -438,10 +473,12 @@ s32* func_800B3424(s32 arg0) {
     } else {
         var_v0 = 0;
     }
-    return (var_v0 != 0) ? (s32*)gZoneCollisions[(u8)arg0].pad68 : &levelFlags[(u8)arg0];
+    return (var_v0 != 0) ? &gZoneCollisions[(u8)arg0].unk68 : &levelFlags[(u8)arg0];
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B3484.s")
+s32* func_800B3484(s32 arg0) {
+    return ((arg0 & 0x100) ? 1 : 0) ? &D_80206D78[arg0 & 0xFF] : &D_80206CF8[arg0 & 0xFF];
+}
 
 s32 func_800B34D0(s32 arg0) {
     s32 temp_v1;
@@ -552,9 +589,22 @@ void ResetStageModels(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/RotateModel.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B3D38.s")
+s32 func_800B3D38(RoomObject* obj) {
+    return obj->scale.x == 0.0 && obj->scale.y == 0.0 && obj->scale.z == 0.0 ? 1 : 0;
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B3D9C.s")
+s32 func_800B3D9C(RoomObject* obj) {
+    s32 end;
+    if (!obj) {
+        return 0;
+    }
+    end = 0;
+    while(!func_800B3D38(obj)){
+        end++;
+        obj++;
+    }
+    return end;
+}
 
 // sprite.0 bool checker
 s32 func_800B3DFC(unkSpriteStruct* sprite) {
@@ -637,8 +687,7 @@ s32 func_800B3F9C(unkSpriteStruct4* arg0) {
     return i;
 }
 
-//this struct pointer type for arg0 is wrong
-s32 func_800B3FFC(unkSpriteStruct5 *arg0, s32 arg1) {
+s32 func_800B3FFC(Collider *arg0, s32 arg1) {
     Vec3w *new_var = &D_801087D8[arg1];
     int new_var2 = arg0->unk_14 & new_var->y;
 
@@ -647,13 +696,12 @@ s32 func_800B3FFC(unkSpriteStruct5 *arg0, s32 arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B402C.s")
 
-void func_800B4070(unkSpriteStruct* arg0) {
+void func_800B4070(Collider* arg0) {
     s32 var_a2;
 
     if ((arg0->unk_4C != 0) && (func_800B3FFC(arg0->unk_4C, 4) == 1)) {
         var_a2 = 1;
-        //no idea what's going on with arg0 here
-    } else if ( func_800B3FFC((unkSpriteStruct5*)arg0, 0) == 2 || func_800B3FFC((unkSpriteStruct5*)arg0, 2) == 2) {
+    } else if (func_800B3FFC(arg0, 0) == 2 || func_800B3FFC(arg0, 2) == 2) {
         var_a2 = 1;
     } else {
         var_a2 = 0;
@@ -710,7 +758,24 @@ void AddCarrot(s32 stage) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B4264.s")
+void func_800B4264(void) {
+    collectableWrapper* cltcWr;
+    s32 ifJL = StageCarrotAvailable(gCurrentStage) != STAGE_JUNGLE ? 1 : 2;
+    s32 i;
+
+    for(i = 0,  cltcWr = D_802019A8; i != 0x80; i++, cltcWr++){
+        if ((cltcWr->levelDataCollectable != NULL) && (cltcWr->levelDataCollectable->id == 0x64) && (ifJL != cltcWr->bitfield)) {
+            cltcWr->bitfield = ifJL;
+            if (ifJL == 2) {
+                if (cltcWr->actorIndex >= 0) {
+                    gActors[cltcWr->actorIndex].actorID = 0;
+                    cltcWr->actorIndex = -1;
+                }
+            }
+        }
+        
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B4408.s")
 
@@ -725,16 +790,16 @@ void AddCarrot(s32 stage) {
 void setCrownPositionsForRoom(s32 arg0) {
     s32 temp_s3;
     s32 i;
-    unkStruct07* var_s0;
-    unkItemStruct* new_var;
+    collectableWrapper* var_s0;
+    Collectable* new_var;
     
     temp_s3 = gZoneCollisions[arg0].unk18;
     var_s0 = &D_802019A8[gZoneCollisions[arg0].unk78];
     
     for (i = 0; i < temp_s3; i++, var_s0++) {
-        new_var = var_s0->unk_00;
-        if (var_s0->boolForSpawning == 1) {
-            var_s0->unk_10 = func_800B4A3C(new_var);
+        new_var = var_s0->levelDataCollectable;
+        if (var_s0->bitfield == 1) {
+            var_s0->actorIndex = func_800B4A3C(new_var);
         }
     }
 }
@@ -766,8 +831,6 @@ void func_800B5600(void) {
     D_802025B0 = 0;
 }
 
-extern s32 D_80202530[32];
-
 void func_800B560C(s32 arg0) {
     if (D_802025B0 < 32) {
         D_802025B0[D_80202530] = arg0;
@@ -785,9 +848,33 @@ void func_800B56D4(f32 arg0, f32 arg1) {
 //find enemies in explosions' blast radius?
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B56E8.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B5878.s")
+s32 func_800B5878(Rect3D* arg0) {
+    s32 flag = FALSE;
+    Rect3D* var_s1;
+    s32 i;
+    for(i = 0, var_s1 = &D_802026B0; i < D_802026A8; i++, var_s1++) {
+        if (IfRectsIntersect(arg0, var_s1)) {
+            flag = TRUE;
+            break;
+        }
+    }
+    return flag;
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B5908.s")
+s32 func_800B5908(Collider* collider, f32 yMod) {
+    s32 flag, i;
+    Rect3D rect = collider->unk_CC;
+    rect.min.y = rect.max.y;
+    rect.max.y += yMod;
+    flag = 0;
+    for(i = 0; i < D_802026A8; i++) {
+        if (IsPointInRect(D_802032B0[i], &rect) != 0) {
+            flag = 1;
+            break;
+        }
+    }
+    return flag;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B59F4.s")
 
@@ -795,7 +882,19 @@ void func_800B56D4(f32 arg0, f32 arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B5C60.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B5D68.s")
+void func_800B5D68(Collider* arg0, s32 arg1) {
+    func_800B402C(arg0, 0, arg1);
+    if (arg0->unk_5C != 0) {
+        func_800B402C(arg0, 1, 1);
+    } else {
+        func_800B402C(arg0, 1, 0);
+    }
+    if (arg0->unk_50 != 1.0 || arg0->unk_54 != 1.0 || arg0->unk_58 != 1.0) {
+        func_800B402C(arg0, 2, 1);
+    } else {
+        func_800B402C(arg0, 2, 0);
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B5E40.s")
 
@@ -887,10 +986,34 @@ void func_800B6D24(tempStruct* arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B9FA8.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BA2D0.s")
+//this builds when camera f5.y and z is Vec3w but that crashes everything else. lame.
+/*void func_800BA2D0(Collider* arg0, Camera* arg1) {
+    func_800B5D68(arg0, 2);
+    arg0->unk_8C = arg0->unk_30.x;
+    arg0->unk_90 = arg0->unk_30.y;
+    arg0->unk_94 = arg0->unk_30.z;
+    arg0->unk_98 = arg1->f4.x;
+    arg0->unk_9C = arg1->f4.y;
+    arg0->unk_A0 = arg1->f4.z;
+    arg0->unkA4 = 0;
+    arg0->unk_AC = arg1->f5.y;
+    arg0->unk_B0 = arg1->f5.z;
+    arg0->unk_B4 = arg1->unk40;
+    arg0->unk_B8 = 0;
+    arg0->unk_BC = 0;
+}*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BA35C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BA89C.s")
+void func_800BA89C(Collider* arg0, Camera* arg1) {
+    func_800B5D68(arg0, 1);
+    arg0->unk_8C = arg1->f4.x;
+    arg0->unk_90 = arg1->f4.y;
+    arg0->unk_94 = arg1->f4.z;
+    arg0->unk_98 = arg1->f5.x;
+    func_800B5A98(arg0, arg1);
+    arg0->unk_114 = 16;
+}
 
 void func_800BA900(tempStruct* arg0) {
     Vec3f_Zero(&arg0->unk_3C);
@@ -923,7 +1046,16 @@ void func_800BA900(tempStruct* arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BBA80.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BBC88.s")
+void func_800BBC88(Collider* arg0, Camera* arg1) {
+    func_800B5D68(arg0, 2);
+    arg0->unk_8C = arg0->unk_30.x;
+    arg0->unk_90 = arg0->unk_30.y;
+    arg0->unk_94 = arg0->unk_30.z;
+    arg0->unkA4 = arg1->f4.x;
+    arg0->unk_AC = 0;
+    arg0->unk_B0 = 0;
+    arg0->unk_C0 = 0;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BBCE4.s")
 
@@ -953,7 +1085,18 @@ void func_800BD608(tempStruct* arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BD938.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BDF2C.s")
+void func_800BDF2C(Collider* arg0, s32 arg1) {
+    func_800B402C(arg0, 0, 2);
+    func_800B402C(arg0, 1, 2);
+    if (arg0->unk_50 != 1.0 || arg0->unk_54 != 1.0 || arg0->unk_58 != 1.0) {
+        func_800B402C(arg0, 2, 1);
+    } else {
+        func_800B402C(arg0, 2, 0);
+    }
+    arg0->unk_8C = arg0->unk_30.x;
+    arg0->unk_90 = arg0->unk_30.y;
+    arg0->unk_94 = arg0->unk_30.z;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BE000.s")
 
@@ -1078,15 +1221,56 @@ void func_800BE7BC(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/EraseField.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BF268.s")
+void func_800BF268(s32 arg0) {
+    Collider** currentCollider;
+    s32 i;
+    for(i = 0, currentCollider = &D_80240898;
+        i < gFieldCount; i++, currentCollider++){
+        if (arg0 == (*currentCollider)->unk_08) {
+            EraseField(*currentCollider);
+            //must be this way
+            i--; currentCollider--;
+        }
+    }
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/RegistDoor.s")
+void RegistDoor(RegistDoorStruct* arg0, s32 arg1, s32 arg2) {
+    Door* temp_v1;
+
+    if (gDoorCount < 16) {
+        temp_v1 = &gDoors[gDoorCount];
+        temp_v1->index = gDoorCount;
+        temp_v1->unk4 = arg2;
+        temp_v1->inZone = arg1;
+        temp_v1->max.x = arg0->unk0.x;
+        temp_v1->max.y = arg0->unk0.y;
+        temp_v1->max.z = arg0->unk0.z;
+        temp_v1->toX = arg0->unk28;
+        temp_v1->toZ = arg0->unk2C;
+        temp_v1->direction = arg0->unk38;
+        temp_v1->unk34 = arg0->unk3C;
+        gDoorCount += 1;
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/RegistSwitchArea.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BF4AC.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BF524.s")
+void func_800BF524(s32 inzone) {
+    Door** var_s1;
+    s32 i;
+
+    for(i = 0, var_s1 = &D_80240C98[i];
+        i < gSwitchAreaCount; i++, var_s1++){
+        if (inzone == (*var_s1)->inZone) {
+            func_800BF4AC(*var_s1);
+            //must be like this
+            i--; var_s1--;
+        }
+        
+    }
+}
 
 void func_800BF5A4(void) {
     func_8004BA5C(gZoneCollisions[gCurrentZone].unk8C);
@@ -1094,7 +1278,17 @@ void func_800BF5A4(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BF5E8.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BF84C.s")
+void func_800BF84C(s32 collision) {
+    s32 i;
+    s32 temp_s5 = gZoneCollisions[collision].unk14;
+    s32* var_s0 = gZoneCollisions[collision].unk4;
+    for(i = 0; i < temp_s5; i++){
+        if ((*var_s0 == 13 || *var_s0 == 45 || gZoneCollisions[collision].unk68 == 0 || gZoneCollisions[collision].unk84 != *var_s0) && (!IsBossStage() || !IsBossID(*var_s0))) {
+            func_800BF5E8(var_s0);
+        }
+        var_s0 += 0x18;
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/InitFieldSub.s")
 
@@ -1144,7 +1338,19 @@ void ChameleonFromDoor(PlayerActor* player, s32 arg1, s32 arg2, s32 arg3, s32 ar
     func_800D34CC();
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C0AEC.s")
+void func_800C0AEC(void) {
+    Actor* currentActor = &gActors[0];
+    s32 i = 0;
+    while (i != 64){
+        if ((IsNotPickup(currentActor) == 0) || (currentActor->actorState != 2)) {
+            func_800311C8(currentActor);
+            func_800314E4(currentActor);
+        }
+        i++;
+        currentActor++;
+    }
+    func_800BE7BC();
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C0B74.s")
 
@@ -1225,14 +1431,41 @@ void func_800C0E78(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C1204.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C1458.s")
+void func_800C1458(s32 arg0) {
+    s32 i;
+    D_802039B4 = 0;
+    func_800C1204(arg0, gPlayerActors, 1, 0, 1);
+    if (gCurrentStage != 7) {
+        return;
+    }
+    for(i = 0; i != 4; i++){
+        if ((gPlayerActors[i].active != 0) && (gPlayerActors[i].exists != 0)) {
+            func_800B4F14(i, &gPlayerActors[i].pos.x, &gPlayerActors[i].pos.y, &gPlayerActors[i].pos.z);
+            gPlayerActors[i].yAngle = CalculateAngleOfVector(-gPlayerActors[i].pos.x, gPlayerActors[i].pos.z);
+        }
+    }
+
+}
 
 void func_800C1510(s32 arg0, s32 arg1) {
     D_802039B4 = 1;
     func_800C1204(arg0, &gPlayerActors[0], 1,  arg1, 1);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C1550.s")
+s32 func_800C1550(s32 arg0) {
+    s32 result = TRUE;
+    if (D_80236978) {
+        if (arg0 < 0 || arg0 >= D_802478E0) {
+            result = FALSE;
+        }
+    } else {
+        if (arg0 < 0 || arg0 >= (D_802478E0 - 1)) {
+            result = FALSE;
+        }
+        
+    }
+    return result;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C15AC.s")
 
@@ -1240,12 +1473,25 @@ void func_800C1510(s32 arg0, s32 arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C198C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C1B70.s")
+void func_800C1B70(void) {
+    if (gZoneCollisions[gCurrentZone].unkCC != -1.0) {
+        D_80174994 = gZoneCollisions[gCurrentZone].unkCC;
+    } else {
+        D_80174994 = gZoneCollisions[gCurrentZone].rect_30.min.y - 500.0;
+    }
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C1BF0.s")
+void func_800C1BF0(s32 arg0) {
+    s8 pad;
+    if (func_800C1550(arg0)) {
+        InitFieldSubScroll(arg0, &gZoneCollisions[arg0], D_801B3178->unk8, D_801B3178->unk10);
+        func_800B3364(1);
+        func_800C198C(arg0, &gZoneCollisions[arg0]);
+    }
+}
 
 void func_800C1C64(s32 arg0) {
-    if (func_800C1550() != 0) {
+    if (func_800C1550(arg0)) {
         if ((gDoorCount > 0) && (arg0 == gDoors->inZone)) {
             gDoorCount = 0;
         }
@@ -1301,7 +1547,21 @@ void enterBossRoom(void) {
 //draw collision
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C3B50.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C3DCC.s")
+void func_800C3DCC(Camera* camera, Vec3f arg1, f32 arg4, f32 arg5, f32 arg6, f32 arg7) {
+    camera->f5.x = camera->f1.z = arg1.x;
+    camera->f2.x = camera->f5.y = arg1.y;
+    camera->f2.z = arg7;
+    camera->f2.y = arg1.z;
+    camera->f5.z = arg1.z;
+    camera->f3.x = arg4;
+    camera->f4.x = arg4;
+    camera->f3.y = arg5;
+    camera->f4.y = camera->f3.y;
+    camera->f3.z = arg6;
+    camera->f4.z = arg6;
+    camera->f2.x -= gZoneCollisions[gCurrentZone].unkD0 * camera->size1;
+    camera->f3.y -= gZoneCollisions[gCurrentZone].unkD0 * camera->size1;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C3E94.s")
 
@@ -1311,10 +1571,13 @@ void enterBossRoom(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C4594.s")
 
-
-//alotta unks
-//https://decomp.me/scratch/XCUmg
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C48B8.s")
+void func_800C48B8(Vec3w arg0, Vec3w arg3, Vec3w arg6, Vec3w arg9, f32 argC) {
+    D_8020A298 = arg0;
+    D_8020D2A8 = arg3;
+    D_8020D5B8 = arg6;
+    D_8020D848 = arg9;
+    D_8020D858 = argC;
+}
 
 //subroutine variables
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C4968.s")
@@ -1322,16 +1585,21 @@ void enterBossRoom(void) {
 //subroutine variables
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C4B1C.s")
 
-//subroutine variables
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C4C48.s")
+void func_800C4C48(Vec3w arg0, f32 arg3, f32 arg4, f32 arg5, f32 arg6) {
+    D_8020D868 = arg0;
+    D_8020D874 = arg3;
+    D_8020D878 = arg4;
+    D_8020D87C = arg5;
+    D_8020D880 = arg6;
+}
 
 //really big wow
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C4CAC.s")
 
-//jump table
+//angle stuff with actors
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C4DF8.s")
 
-//really big wow
+//animates the JL camera pan intro
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C5304.s")
 
 // why would this ever need to zero Vec2w and arg1? (This surely is zeroing a Vec3w? (this is already a function?))
@@ -1425,7 +1693,7 @@ void Player_SetFromBoss(PlayerActor* player, f32 distance) {
     player->pos.z = -sgnZ * distance;
 }
 
-//jump table
+//BIG jump table
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C56D4.s")
 
 void func_800C88AC(void) {

@@ -7,13 +7,17 @@ f32 tanf(f32);
 f32 __sinf(f32);
 f32 __sqrtf(f32);
 f32 __cosf(f32);
-void WrapDegrees(f32*);
-void Memory_Free(void*);
-
-void CartesianToSpherical(Vec3f, f32*, f32*, f32*);
+void CartesianToSpherical(Vec3f inputVec, f32* radius, f32* theta, f32* phi);
+Vec3f* SphericalToCartesian(Vec3f* inputVec, f32 radius, f32 theta, f32 phi);
 s32 Controller_Init(void);
-extern s32 osMotorInit(OSMesgQueue *, OSPfs *, int);
-void bootproc(void);
+
+//vector.c
+Vec3f* RotateVector3D(Vec3f*, Vec3f, f32, s32);
+void WrapAngle(f32* angle);
+
+//from motor.c
+s32 osMotorInit(OSMesgQueue* mq, OSPfs* pfs, int channel);
+
 void idleproc(void*);
 void mainproc(void*);
 void func_80025EE8(void);
@@ -367,7 +371,6 @@ char* parseIntToHex(s32, s32, char*);
 void SetProcessType(s32);
 void func_8008FDF8(void);
 void func_800C08B8(Vec3f*, PlayerActor*, Door*);
-void ChameleonFromDoor(PlayerActor*, s32, s32, s32, s32);
 void func_800D34CC(void);
 void func_800BFCD0(void);
 void func_800C0760(s32);
@@ -389,8 +392,6 @@ void Timing_WaitForNextFrame(void);
 s32 SaveData_UpdateRecords(void);
 void DummiedPrintf(char* arg0, ...);
 s32 func_800A73EC(void*, void*, s32, s32);
-s32 func_800B3FFC(unkSpriteStruct5*, s32);
-void func_800B402C(unkSpriteStruct*, s32, s32);
 s32 DMA_Copy(void* romAddr, void* ramAddr, s32 size);
 s32 func_800A72E8(s32);
 void func_800AAAC8(void);
@@ -398,33 +399,19 @@ s32 AddSoundEffect(s32, f32*, f32*, f32*, s32, s32);
 void func_800A1EC4(void);
 void func_800A54EC(CTTask*);
 s32 DMAStruct_Print(void);
-
 s32 IfRectsIntersect(Rect3D* arg0, Rect3D* arg1);
-
-s32 IsBossID(s32);
-s32 func_800B2510(void);
-s32 func_800B34D0(s32);
 s32 func_800B3540(s32);
-void func_800B5600(void);
-void func_800B56D4(f32, f32);
-void func_800BE2C0(void);
 
 void InitField(void);
-void func_800C54F8(Vec2w*, s32*);
-void func_800C5508(PlayerActor*);
-void func_800C5538(PlayerActor*);
 void func_800C56D4(PlayerActor*);
-void func_800C88AC(void);
 s32 Random(s32, s32);
 f32 RandomF(void);
 f32 CalculateAngleOfVector(f32, f32);
 f32 InterpolateAndClampArcSin(f32);
 f32 AngleFromArcSin(f32);
-void func_800B35FC(s32);
 s32 IsPointInRect(Vec3f, Rect3D*);
 void AdjustRectToVec3(Rect3D* r, Vec3f vec);
 Vec3f* Vec3f_Lerp(Vec3f*, Vec3f, Vec3f, f32);
-f32 func_800B2308(f32, s32);
 void func_800C8F00(void);
 void func_800C9504(void);
 void CalcEnemyNextPosition(Actor*);
@@ -461,6 +448,18 @@ void Debug_ZeroInt(void);
 void PrintNumberWR(f32, f32, f32, f32, f32, s32, s32);
 void printNumber(f32, f32, f32, f32, f32, s32, s32);
 void func_800C1458(s32);
+
+//funcs that were in 8add0.h that are in other c's
+//84e0.c
+void func_800314E4(Actor*);
+void pickup_collide_func(s32 actorIndex);
+//poly.c
+void func_800CFDC8(PlayerActor*);
+
+//funcs from 8add0 that are called from other c's
+//b39a0.c
+s32 func_800B34D0(s32);
+//5ff30.c & debug.c
 void func_800C29D8(s32);
 
 //funcs that were in 5ff30.h that are in other c's

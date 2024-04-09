@@ -1607,9 +1607,50 @@ CTTask* func_8008EA60(s16 arg0, s16 arg1, s16 arg2, s16 arg3, s16* arg4) {
     return task;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008EB08.s")
+CTTask* func_8008EB08(s16 arg0, s16 arg1, s16 arg2, s16 arg3, s16* arg4, f32 arg5, f32 arg6, f32 arg7, f32 arg8, s16 arg9) {
+    CTTask* newTask = CTTask_Alloc(1, arg9, NULL);
+    if (newTask == NULL) {
+        DummiedPrintf("エラー\n");
+        while(1){}
+    }
+    *arg4 = 0;
+    newTask->unk_5C = -arg0;
+    newTask->unk_64 = 279;
+    newTask->unk5E = arg1;
+    newTask->unk60 = arg2;
+    newTask->unk_62 = arg3;
+    newTask->unk7C = arg7;
+    newTask->unk80 = arg8;
+    newTask->pos.x = arg5;
+    newTask->pos.y = arg6;
+    newTask->pos.z = 0;
+    newTask->function = func_8008E698;
+    newTask->unk58 = arg4;
+    return newTask;
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008EBCC.s")
+CTTask* func_8008EBCC(s16 arg0, s16 arg1, s16 arg2, s16 arg3, CTTask* arg4, f32 arg5, f32 arg6, f32 arg7, f32 arg8, s16 arg9) {
+    CTTask* newTask = CTTask_Alloc(1, arg9, NULL);
+    if (newTask == NULL) {
+        DummiedPrintf("エラー\n");
+        while(1){}
+    }
+    arg4->runType = 0;
+    newTask->unk_5C = arg0;
+    newTask->unk_64 = -23;
+    newTask->unk5E = arg1;
+    newTask->unk60 = arg2;
+    newTask->unk_62 = arg3;
+    newTask->unk7C = arg7;
+    newTask->unk80 = arg8;
+    newTask->pos.x = arg5;
+    newTask->pos.y = arg6;
+    newTask->pos.z = 0;
+    newTask->function = func_8008E698;
+    newTask->unk58 = arg4;
+    arg4->runType = 0;
+    return newTask;
+}
 
 s32 func_8008EC90(void) {
     if (D_801B3540 == 1) {
@@ -3424,7 +3465,6 @@ void func_80098684(u8* arg0, u8* arg1, u8* arg2, u8* arg3, u8* arg4, u8* arg5) {
         *arg5 = (9 * temp_f0) + 1;
     }
 }
-
 
 //ty rain
 void func_80098F50(CTTask* task) {
