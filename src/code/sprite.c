@@ -4460,7 +4460,7 @@ void Effect_TypeAD_Update(Effect* effect, Gfx** pGfxPos) {
         sp50 = cosf(sp54 * 0.01745329251994);
         effect->pos.z = effect->vel.z + RANDOM(effect->vel.y - 100.0f, effect->vel.y) * sp50;
         effect->duration = effect->lifeTime + RANDOM(1, 3);
-        func_80079150(effect->pos.x, effect->pos.y + 100.0f, effect->pos.z, 1.0f, sp54, RANDOM(5, 30), 400.0f, RANDOM(12, 24), 214, 181, 143);
+        Effect_TypeBF_Init(effect->pos.x, effect->pos.y + 100.0f, effect->pos.z, 1.0f, sp54, RANDOM(5, 30), 400.0f, RANDOM(12, 24), 214, 181, 143);
     }
 }
 
@@ -4486,9 +4486,9 @@ void Effect_TypeAD_Init(f32 posX, f32 posY, f32 posZ, f32 arg3, f32 arg4, f32 ar
 void func_8006FD14(f32 posX, f32 posY, f32 posZ) {
     f32 angle = Rand() % 360;
 
-    func_80079150(posX, posY, posZ, 0.8f, angle,          8.0f, 200.0f, 20.0f, 255, 255, 255);
-    func_80079150(posX, posY, posZ, 0.8f, angle + 120.0f, 8.0f, 200.0f, 20.0f, 255, 255, 255);
-    func_80079150(posX, posY, posZ, 0.8f, angle - 120.0f, 8.0f, 200.0f, 20.0f, 255, 255, 255);
+    Effect_TypeBF_Init(posX, posY, posZ, 0.8f, angle,          8.0f, 200.0f, 20.0f, 255, 255, 255);
+    Effect_TypeBF_Init(posX, posY, posZ, 0.8f, angle + 120.0f, 8.0f, 200.0f, 20.0f, 255, 255, 255);
+    Effect_TypeBF_Init(posX, posY, posZ, 0.8f, angle - 120.0f, 8.0f, 200.0f, 20.0f, 255, 255, 255);
 }
 
 void Effect_TypeAE_Update(Effect* effect, Gfx** pGfxPos) {
@@ -6164,7 +6164,7 @@ void Effect_TypeAX_Update(Effect* effect, Gfx** pGfxPos) {
             f32 f24 = effect->vel.x * half * 0.5f;
             f32 x = effect->pos.x + sinf(angle * 0.01745329251994) * RANDOM(0, f24);
             f32 z = effect->pos.z + cosf(angle * 0.01745329251994) * RANDOM(0, f24);
-            func_80079820(x,
+            Effect_TypeBH_Init(x,
                           effect->pos.y,
                           z,
                           RANDOM(effect->vel.x * 0.2f, effect->vel.x * half),
@@ -6215,7 +6215,6 @@ void DrawTranslucentRectangle(f32 posX, f32 posY, f32 width, f32 height, u8 opac
     printUISprite(posX, posY, 0.0f, 0.0f, 1.0f, width, height, 0.0f, 0);
 }
 
-//#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8007691C.s")
 void func_8007691C(Effect_TypeAY_Data* arg0, f32 arg1, s32 arg2) {
     s32 i;
     s32 s0;
@@ -6508,58 +6507,476 @@ void Effect_StageRecordTime_Init(f32 arg0, f32 arg1, f32 arg2, u8 arg3, u8 arg4,
     effect->duration = 1.0f / arg7;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80077F40.s")
+void Effect_TypeBA_Update(Effect* effect, Gfx** pGfxPos) {
+    Effect_TypeBA_Data* data = (Effect_TypeBA_Data*)effect->data;
+    Mtx mtx;
+    f32 sp34;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_800781A8.s")
+    sp34 = sinf(data->color.a * 0.01745329251994) * 100.0f;
+    setPrimColor(data->color.r, data->color.g, data->color.b, (1.0f - effect->lifeTime) * 255.0f);
+    guAlign(&mtx, 0.0f, sp34, 100.0f - sp34, sp34);
+    func_80058BE4(&mtx, effect->pos.x, effect->pos.y, effect->pos.z, data->size, data->size, 0.0f, 0x4A);
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80078294.s")
+    if (D_800F687C > 0) {
+        effect->pos.x += effect->vel.x;
+        effect->pos.y += effect->vel.y * (1.0f - effect->lifeTime);
+        effect->pos.z += effect->vel.z;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80078444.s")
+        data->color.r = RANDOM(64, 255);
+        data->color.g = RANDOM(64, 255);
+        data->color.b = RANDOM(64, 255);
+        data->color.a += 30;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_800786D8.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80078958.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80078AD8.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80078B5C.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80078D00.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80078D94.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80078E94.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80078F9C.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80079150.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8007924C.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8007941C.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_800794F0.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80079820.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80079930.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80079F3C.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80079FC4.s")
-
-void func_8007A25C(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4) {
-    Effect* temp_v0;
-
-    temp_v0 = Effect_Alloc(0, 0, &func_80079FC4);
-    if (temp_v0 != NULL) {
-        temp_v0->pos.x = arg0;
-        temp_v0->pos.y = arg1;
-        temp_v0->pos.z = arg2;
-        temp_v0->vel.x = arg3;
-        temp_v0->lifeTime = 0.0f;
-        temp_v0->duration = (f32) (1.0f / arg4);
+        effect->lifeTime += effect->duration;
+        if (effect->lifeTime > 1.0f) {
+            Effect_Free(effect);
+        }
     }
+}
+
+void Effect_TypeBA_Init(f32 posX, f32 posY, f32 posZ, f32 dir, f32 size, f32 arg5, f32 arg6, f32 duration) {
+    Effect* effect;
+    Effect_TypeBA_Data* data;
+
+    effect = Effect_Alloc(0, sizeof(Effect_TypeBA_Data), &Effect_TypeBA_Update);
+    if (effect == NULL) {
+        return;
+    }
+
+    data = (Effect_TypeBA_Data*)effect->data;
+    data->color.r = 255;
+    data->color.g = 255;
+    data->color.b = 255;
+    data->color.a = 0;
+    data->size = size;
+
+    effect->pos.x = posX;
+    effect->pos.y = posY;
+    effect->pos.z = posZ;
+    effect->vel.x = sinf(dir * 0.01745329251994) * arg6;
+    effect->vel.y = arg5;
+    effect->vel.z = cosf(dir * 0.01745329251994) * arg6;
+    effect->lifeTime = 0.0f;
+    effect->duration = 1.0f / duration;
+}
+
+void Effect_TypeBA_Create(f32 posX, f32 posY, f32 posZ, f32 size, u8 count) {
+    u8 i;
+    f32 angle;
+
+    angle = 0.0f;
+    for (i = 0; i < count; i++) {
+        Effect_TypeBA_Init(posX, posY, posZ, angle, size, RANDOM(10, 30), RANDOM(8, 16), RANDOM(15, 30));
+        angle += 360.0f / count;
+    }
+}
+
+void Effect_TypeBB_Update(Effect* effect, Gfx** pGfxPos) {
+    Effect_TypeBB_Data* data = (Effect_TypeBB_Data*)effect->data;
+    f32 f0 = sinf(effect->lifeTime * 1.57078);
+    Mtx mtx1;
+    Mtx mtx2;
+    char unused[4];
+    f32 x1, x2, x3, y1, y2, y3, z1, z2, z3;
+
+    if (D_800F687C > 0) {
+        data->pos.x = effect->pos.x + effect->vel.x * f0;
+        data->pos.y = effect->pos.y + effect->vel.y * f0;
+        data->pos.z = effect->pos.z + effect->vel.z * f0;
+
+        effect->sizeX += effect->sizeY;
+        WrapDegrees(&effect->sizeX);
+
+        effect->lifeTime += effect->duration;
+        if (effect->lifeTime >= 1.0f) {
+            Effect_Free(effect);
+        }
+    }
+
+    if (effect->lifeTime > 0.6f && !(gTimer & 1)) { return; }
+
+    guScale(&mtx2, 0.85f, 0.85f, 0.85f);
+    guRotate(&mtx1, effect->sizeX, 1.0f, 1.0f, 1.0f);
+    guMtxCatL(&mtx2, &mtx1, &mtx2);
+    guTranslate(&mtx1, data->pos.x, data->pos.y, data->pos.z);
+    guMtxCatL(&mtx2, &mtx1, &mtx2);
+    guMtxXFML(&mtx2, data->v1.x, data->v1.y, data->v1.z, &x1, &y1, &z1);
+    guMtxXFML(&mtx2, data->v2.x, data->v2.y, data->v2.z, &x2, &y2, &z2);
+    guMtxXFML(&mtx2, data->v3.x, data->v3.y, data->v3.z, &x3, &y3, &z3);
+    setPrimColor(data->color.r, data->color.g, data->color.b, 100);
+    func_80058748(x1, y1, z1, x1, y1, z1, x2, y2, z2, x3, y3, z3, 0.0f, 0.0f, 0.0f, 0);
+}
+
+#ifdef NON_MATCHING
+void Effect_TypeBB_Init(f32 posX, f32 posY, f32 posZ, f32 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7, f32 arg8, f32 arg9, u8 argA, u8 argB, u8 argC) {
+    Effect* effect;
+    Effect_TypeBB_Data* data;
+    f32 dx, dy, dz;
+    f32 absVal;
+
+    effect = Effect_Alloc(0, sizeof(Effect_TypeBB_Data), &Effect_TypeBB_Update);
+    if (effect == NULL) {
+        return;
+    }
+
+    data = (Effect_TypeBB_Data*)effect->data;
+    data->v1.x = data->v2.x = data->v3.x = 0.0f;
+    data->v1.y = data->v2.y = data->v3.y = 0.0f;
+    data->v1.z = data->v2.z = data->v3.z = 0.0f;
+
+    if (arg3 == 0.0f) {
+        data->v2.y = arg4;
+        data->v3.z = arg5;
+    } else if (arg4 == 0.0f) {
+        data->v2.x = arg3;
+        data->v3.z = arg5;
+    } else if (arg5 == 0.0f) {
+        data->v2.x = arg3;
+        data->v3.y = arg4;
+    }
+    dx = arg3 / 3.0;
+    data->v1.x -= dx;
+    data->v2.x -= dx;
+    data->v3.x -= dx;
+    dy = arg4 / 3.0;
+    data->v1.y -= dy;
+    data->v2.y -= dy;
+    data->v3.y -= dy;
+    dz = arg5 / 3.0;
+    data->v1.z -= dz;
+    data->v2.z -= dz;
+    data->v3.z -= dz;
+
+    data->color.r = argA;
+    data->color.g = argB;
+    data->color.b = argC;
+
+    effect->pos.x = data->pos.x = posX + dx;
+    effect->pos.y = data->pos.y = posY + dy;
+    effect->pos.z = data->pos.z = posZ + dz;
+
+    effect->vel.x = arg6;
+    effect->vel.y = arg7;
+    effect->vel.z = arg8;
+
+    effect->sizeX = 0;
+    posX = RANDOM(-30, 30);
+    if (ABS2(posX) < 18.0f) {
+        posX = posX > 0 ? posX + 18.0f : posX - 18.0f;
+    }
+    effect->sizeY = posX;
+
+    effect->lifeTime = 0.0f;
+    effect->duration = 1.0f / arg9;
+}
+#else
+#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/Effect_TypeBB_Init.s")
+void Effect_TypeBB_Init(f32 posX, f32 posY, f32 posZ, f32 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7, f32 arg8, f32 arg9, u8 argA, u8 argB, u8 argC);
+#endif
+
+void Effect_TypeBC_Update(Effect* effect, Gfx** pGfxPos) {
+    Mtx mtx;
+
+    setPrimColor(220, 255, 255, (1.0f - effect->lifeTime) * 255.0f);
+    guAlign(&mtx, 0.0f, 0.0f, 100.0f, 0.0f);
+    func_80058BE4(&mtx, effect->pos.x, effect->pos.y, effect->pos.z, effect->vel.y, effect->vel.y, 0.0f, 0x6F);
+    if (D_800F687C > 0) {
+        effect->vel.y += effect->vel.x;
+        effect->lifeTime += effect->duration;
+        if (effect->lifeTime >= 1.0f) {
+            Effect_Free(effect);
+        }
+    }
+}
+
+void Effect_TypeBC_Init(f32 posX, f32 posY, f32 posZ, f32 arg3, f32 arg4, f32 duration) {
+    Effect* effect;
+
+    effect = Effect_Alloc(0, 0, &Effect_TypeBC_Update);
+    if (effect == NULL) {
+        return;
+    }
+
+    effect->pos.x = posX;
+    effect->pos.y = posY;
+    effect->pos.z = posZ;
+    effect->vel.x = arg4;
+    effect->vel.y = arg3;
+    effect->lifeTime = 0.0f;
+    effect->duration = 1.0f / duration;
+}
+
+void Effect_TypeBD_Update(Effect* effect, Gfx** pGfxPos) {
+    Mtx mtx;
+    f32 sp34;
+
+    sp34 = effect->sizeX * (1.0f - effect->lifeTime);
+    setPrimColor(255, 255, 255, 212.0f - effect->lifeTime * 212.0f);
+    guAlign(&mtx, 0.0f, 0.0f, 100.0f, 0.0f);
+    func_80058BE4(&mtx, effect->pos.x, effect->pos.y, effect->pos.z, sp34, sp34 * 0.6f, 0.0f, 0x4A);
+    if (D_800F687C > 0) {
+        effect->lifeTime += effect->duration;
+        effect->pos.x += effect->vel.x;
+        effect->pos.z += effect->vel.z;        
+        if (effect->lifeTime >= 1.0f) {
+            Effect_Free(effect);
+        }
+    }
+}
+
+void Effect_TypeBD_Init(f32 posX, f32 posY, f32 posZ, f32 duration, f32 arg4, f32 velX, f32 velZ) {
+    Effect* effect;
+
+    effect = Effect_Alloc(0, 0, &Effect_TypeBD_Update);
+    if (effect == NULL) {
+        return;
+    }
+
+    effect->pos.x = posX;
+    effect->pos.y = posY;
+    effect->pos.z = posZ;
+    effect->vel.x = velX;
+    effect->vel.z = velZ;
+    effect->lifeTime = 0.0f;
+    effect->duration = 1.0f / duration;
+    effect->sizeX = arg4;
+    effect->sizeY = 0;
+}
+
+void Effect_TypeBE_Update(Effect* effect, Gfx** pGfxPos) {
+
+    setPrimColor(220, 255, 255, 144);
+    func_8005747C(effect->pos.x, effect->pos.y, effect->pos.z, 16.0f, 16.0f, 0.0f, 0x4A);
+    if (D_800F687C > 0) {
+        effect->pos.x += effect->vel.x;
+        effect->pos.y += effect->vel.y;
+        effect->pos.z += effect->vel.z;
+        effect->vel.y -= 6.0f;
+        if (effect->pos.y < effect->duration) {
+            Effect_TypeBC_Init(effect->pos.x, effect->duration + 10.0f, effect->pos.z, 32.0f, 10.0f, 8.0f);
+            Effect_Free(effect);
+        }
+    }
+}
+
+void Effect_TypeBE_Init(f32 posX, f32 posY, f32 posZ, f32 arg3, f32 arg4, f32 arg5) {
+    Effect* effect;
+
+    effect = Effect_Alloc(0, 0, &Effect_TypeBE_Update);
+    if (effect == NULL) {
+        return;
+    }
+
+    effect->pos.x = posX;
+    effect->pos.y = posY;
+    effect->pos.z = posZ;
+    effect->duration = posY;
+    effect->lifeTime = 0.0f;
+    arg3 += 90.0f;
+    effect->vel.x = sinf(arg3 * 0.01745329251994) * cosf(arg4 * 0.01745329251994) * arg5;
+    effect->vel.y = arg5;
+    effect->vel.z = cosf(arg3 * 0.01745329251994) * cosf(arg4 * 0.01745329251994) * arg5;
+    effect->lifeTime = 0.0f;
+}
+
+void Effect_TypeBF_Update(Effect* effect, Gfx** pGfxPos) {
+    Effect_TypeBF_Data* data = (Effect_TypeBF_Data*)effect->data;
+    f32 size;
+
+    size = effect->spriteID + effect->lifeTime * effect->spriteID;
+    setPrimColor(data->color.r, data->color.g, data->color.b, 255.0f - effect->lifeTime * 255.0f);
+    func_8005747C(effect->pos.x, effect->pos.y, effect->pos.z, size, size, 0.0f, 0x4A);
+    if (D_800F687C > 0) {
+        effect->lifeTime += effect->duration;
+        effect->pos.x += effect->vel.x * (1.0f - effect->lifeTime);
+        effect->pos.y += effect->vel.y;
+        effect->pos.z += effect->vel.z * (1.0f - effect->lifeTime);
+        effect->vel.y += 0.3f;
+        if (effect->lifeTime >= 1) {
+            Effect_Free(effect);
+        }
+    }
+}
+
+void Effect_TypeBF_Init(f32 posX, f32 posY, f32 posZ, f32 velV, f32 yaw, f32 velH, f32 arg6, f32 duration, u8 colorR, u8 colorG, u8 colorB) {
+    Effect* effect;
+    Effect_TypeBF_Data* data;
+
+    effect = Effect_Alloc(0, sizeof(Effect_TypeBF_Data), &Effect_TypeBF_Update);
+    if (effect == NULL) {
+        return;
+    }
+
+    data = (Effect_TypeBF_Data*)effect->data;
+    data->color.r = colorR;
+    data->color.g = colorG;
+    data->color.b = colorB;
+
+    effect->spriteID = arg6;
+    effect->pos.x = posX;
+    effect->pos.y = posY;
+    effect->pos.z = posZ;
+    effect->vel.x = sinf(yaw * 0.01745329251994) * velH;
+    effect->vel.y = velV;
+    effect->vel.z = cosf(yaw * 0.01745329251994) * velH;
+    effect->lifeTime = 0.0f;
+    effect->duration = 1.0f / duration;
+}
+
+void Effect_TypeBG_Update(Effect* effect, Gfx** pGfxPos) {
+    f32 size = effect->sizeX + effect->sizeX * effect->lifeTime;
+    f32 sp30 = 1.0f - effect->lifeTime;
+
+    setPrimColor(255, 255, 255, 128.0f - (effect->lifeTime - 0.5f) * 255.0f);
+    func_8005747C(effect->pos.x, effect->pos.y, effect->pos.z, size, size * 0.7, 0.0f, 0x4A);
+    if (D_800F687C > 0) {
+        effect->pos.x += effect->vel.x * sp30;
+        effect->pos.y = effect->sizeY + effect->vel.y * effect->lifeTime;
+        effect->pos.z += effect->vel.z * sp30;
+        effect->lifeTime += effect->duration;
+        if (effect->lifeTime > 1) {
+            Effect_Free(effect);
+        }
+    }
+}
+
+void Effect_TypeBG_Init(f32 posX, f32 posY, f32 posZ, f32 velV, f32 yaw, f32 size, f32 velH, f32 duration) {
+    Effect* effect;
+
+    effect = Effect_Alloc(0, 0, &Effect_TypeBG_Update);
+    if (effect == NULL) {
+        return;
+    }
+
+    effect->sizeX = size;
+    effect->sizeY = posY;
+    effect->pos.x = posX;
+    effect->pos.y = posY;
+    effect->pos.z = posZ;
+    effect->vel.x = sinf(yaw * 0.01745329251994) * velH;
+    effect->vel.y = velV;
+    effect->vel.z = cosf(yaw * 0.01745329251994) * velH;
+    effect->lifeTime = 0.0f;
+    effect->duration = 1.0f / duration;
+}
+
+void Effect_TypeBH_Update(Effect* effect, Gfx** pGfxPos) {
+    Mtx mtx;
+    f32 f2 = ABS2(effect->lifeTime - 0.5f);
+
+    setPrimColor(effect->vel.x, effect->vel.y, effect->vel.z, effect->sizeY - f2 * (effect->sizeY * 2));
+    guAlign(&mtx, 0.0f, 0.0f, 100.0f, 0.0f);
+    func_80058BE4(&mtx, effect->pos.x, effect->pos.y, effect->pos.z, effect->sizeX, effect->sizeX, 0.0f, 0x4A);
+    if (D_800F687C > 0) {
+        effect->lifeTime += effect->duration;
+        if (effect->lifeTime > 1.0f) {
+            Effect_Free(effect);
+        }
+    }
+}
+
+void Effect_TypeBH_Init(f32 posX, f32 posY, f32 posZ, f32 size, f32 duration, RGBA32* color) {
+    Effect* effect;
+
+    effect = Effect_Alloc(0, 0, &Effect_TypeBH_Update);
+    if (effect == NULL) {
+        return;
+    }
+
+    effect->sizeX = size;
+    effect->sizeY = color->a;
+    effect->pos.x = posX;
+    effect->pos.y = posY;
+    effect->pos.z = posZ;
+    effect->vel.x = color->r;
+    effect->vel.y = color->g;
+    effect->vel.z = color->b;
+    effect->lifeTime = 0.0f;
+    effect->duration = 1.0f / duration;
+}
+
+#ifdef NON_MATCHING
+void Effect_TypeBI_Update(Effect* effect, Gfx** pGfxPos) {
+    Effect_TypeBI_Data* data = (Effect_TypeBI_Data*)effect->data;
+    Mtx mtx;
+
+    SetTextGradient(data->unk_00[0].r, data->unk_00[0].g, data->unk_00[0].b, data->unk_00[0].a - ABS2((effect->lifeTime - 0.5f) * data->unk_00[0].a * 2),
+                    data->unk_00[1].r, data->unk_00[1].g, data->unk_00[1].b, data->unk_00[1].a - ABS2((effect->lifeTime - 0.5f) * data->unk_00[1].a * 2),
+                    data->unk_00[2].r, data->unk_00[2].g, data->unk_00[2].b, data->unk_00[2].a - ABS2((effect->lifeTime - 0.5f) * data->unk_00[2].a * 2),
+                    data->unk_00[3].r, data->unk_00[3].g, data->unk_00[3].b, data->unk_00[3].a - ABS2((effect->lifeTime - 0.5f) * data->unk_00[3].a * 2));
+    if (gCurrentZone >= 4) {
+        setPrimColor(data->unk_00->r, data->unk_00->g, data->unk_00->b, data->unk_00->a - ABS2((effect->lifeTime - 0.5f) * data->unk_00->a * 2));
+        guAlign(&mtx, 0.0f, 0.0f, 100.0f, 0.0f);
+        func_80058BE4(&mtx, effect->pos.x, effect->pos.y, effect->pos.z, data->size, data->size, 0.0f, 0x4A);
+    } else {
+        func_80059F28(effect->pos.x, effect->pos.y, effect->pos.z, 0.0f, 1.0f, data->size, data->size, effect->lifeTime, 0x4A);
+    }
+    if (D_800F687C > 0) {
+        effect->lifeTime += effect->duration;
+        if (effect->lifeTime > 1.0f) {
+            Effect_Free(effect);
+        }
+    }
+}
+#else
+#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/Effect_TypeBI_Update.s")
+void Effect_TypeBI_Update(Effect* effect, Gfx** pGfxPos);
+#endif
+
+void Effect_TypeBI_Init(f32 posX, f32 posY, f32 posZ, f32 size, f32 duration, RGBA32* colors) {
+    Effect* effect;
+    Effect_TypeBI_Data* data;
+
+    effect = Effect_Alloc(0, sizeof(Effect_TypeBI_Data), &Effect_TypeBI_Update);
+    if (effect == NULL) {
+        return;
+    }
+
+    data = (Effect_TypeBI_Data*)effect->data;
+    data->unk_00 = colors;
+    data->size = size;
+
+    effect->pos.x = posX;
+    effect->pos.y = posY;
+    effect->pos.z = posZ;
+    effect->lifeTime = 0.0f;
+    effect->duration = 1.0f / duration;
+}
+
+#ifdef NON_MATCHING
+void Effect_TypeBJ_Update(Effect* effect, Gfx** pGfxPos) {
+    f32 size = effect->vel.x * (1.0f - effect->lifeTime);
+    setPrimColor(255.0f * (1.0f - effect->lifeTime),
+                 255.0f * (1.0f - effect->lifeTime),
+                 255.0f * (1.0f - effect->lifeTime),
+                 255.0f - effect->lifeTime * 128.0f);
+    func_8005747C(effect->pos.x, effect->pos.y, effect->pos.z, size, size, 0.0f, 0x4A);
+    if (D_800F687C > 0) {
+        effect->lifeTime += effect->duration;
+        if (effect->lifeTime > 1.0f) {
+            Effect_Free(effect);
+        }
+    }
+}
+#else
+#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/Effect_TypeBJ_Update.s")
+void Effect_TypeBJ_Update(Effect* effect, Gfx** pGfxPos);
+#endif
+
+void Effect_TypeBJ_Init(f32 posX, f32 posY, f32 posZ, f32 arg3, f32 duration) {
+    Effect* effect;
+
+    effect = Effect_Alloc(0, 0, &Effect_TypeBJ_Update);
+    if (effect == NULL) {
+        return;
+    }
+
+    effect->pos.x = posX;
+    effect->pos.y = posY;
+    effect->pos.z = posZ;
+    effect->vel.x = arg3;
+    effect->lifeTime = 0.0f;
+    effect->duration = 1.0f / duration;
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8007A2D8.s")

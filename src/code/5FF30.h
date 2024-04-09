@@ -95,6 +95,13 @@ typedef struct Unk_800FFDDC {
     /* 0x07 */ s16 unk_08;
 } Unk_800FFDDC; // size 0xA
 
+typedef struct Struct_800AB734 {
+    /* 0x00 */ s32 unk_00;
+    /* 0x04 */ s32 unk_04;
+    /* 0x08 */ char pad_08[8];
+    /* 0x10 */ EffectTypeAQArg7 unk_10[7][24];
+} Struct_800AB734; //sizeof 0x160
+
 //from ll.c
 //used in AT LEAST SaveData_Wait
 //with SaveData_Wait, just use the last half of the u64's
@@ -647,5 +654,10 @@ extern chameleonLetter* D_80100F28[10]; // coords and text for stage names
 extern chameleonLetter* D_80100DA0[];
 extern s16 D_80100D88;
 extern s16 sDebugPerfectCodeFlag;
+extern s32 D_80101080;
+extern s32 D_80101074;
+extern s32 D_80101078;
+extern Struct_800AB734 D_80105E08[];
+extern s32 D_8010875C;
 
 #endif // _5FF30_H_

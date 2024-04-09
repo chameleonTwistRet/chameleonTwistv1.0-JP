@@ -5926,7 +5926,339 @@ void func_800AAB0C(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/PlayerInits_Copy.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800AB734.s")
+void func_800AB734(void) {
+    s32 i;
+    EffectTypeAQArg7* str1;
+    EffectTypeAQArg7* str2;
+    EffectTypeAQArg7* str3;
+    EffectTypeAQArg7* str4;
+    EffectTypeAQArg7* str5;
+    EffectTypeAQArg7* str6;
+    EffectTypeAQArg7* str7;
+
+    for (i = 0; i < D_80101080; i++) {
+        if (D_80105E08[i].unk_00 == gCurrentDemoTimer - D_80101078) {
+            D_80101074 = D_80105E08[i].unk_04;
+            if (D_80105E08[i].unk_04 && D_80105E08[i].unk_04 && D_80105E08[i].unk_04) {} // TODO: fake match
+            switch (D_80105E08[i].unk_04) {
+                case 0:
+                    str1 = D_80105E08[i].unk_10[0];
+                    str2 = D_80105E08[i].unk_10[1];
+                    str3 = D_80105E08[i].unk_10[2];
+                    str4 = D_80105E08[i].unk_10[3];
+                    str5 = D_80105E08[i].unk_10[4];
+                    Effect_TypeK_Init(150.0f, 0.0f, -120.0f);
+                    Effect_TypeAR_Init(16.0f, 140.0f, 1, 30.0f, 60.0f, 60.0f, 5, str1, 1, &D_8010875C);
+                    Effect_TypeAQ_Init(54.0f, 180.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xC, str2, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(78.0f, 204.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xC, str3, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(54.0f, 228.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xB, str4, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(78.0f, 252.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xB, str5, 4, &D_8010875C);
+                    break;
+                case 1:
+                    str1 = D_80105E08[i].unk_10[0];
+                    str2 = D_80105E08[i].unk_10[1];
+                    str3 = D_80105E08[i].unk_10[2];
+                    str4 = D_80105E08[i].unk_10[3];
+                    str5 = D_80105E08[i].unk_10[4];
+                    str6 = D_80105E08[i].unk_10[5];
+                    str7 = D_80105E08[i].unk_10[6];
+                    Effect_TypeK_Init(150.0f, 160.0f, -60.0f);
+                    Effect_TypeAR_Init(20.0f, 192.0f, 1, 30.0f, 60.0f, 60.0f, 5, str1, 1, &D_8010875C);
+                    Effect_TypeAQ_Init(24.0f, 48.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xC, str2, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(36.0f, 72.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xC, str3, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(24.0f, 96.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xB, str4, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(36.0f, 120.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xB, str5, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(24.0f, 144.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str6, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(36.0f, 168.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str7, 4, &D_8010875C);
+                    break;
+                case 2:
+                    str1 = D_80105E08[i].unk_10[0];
+                    str2 = D_80105E08[i].unk_10[1];
+                    str3 = D_80105E08[i].unk_10[2];
+                    str4 = D_80105E08[i].unk_10[3];
+                    str5 = D_80105E08[i].unk_10[4];
+                    str6 = D_80105E08[i].unk_10[5];
+                    str7 = D_80105E08[i].unk_10[6];
+                    Effect_TypeK_Init(150.0f, 160.0f, 84.0f);
+                    Effect_TypeAR_Init(60.0f, 24.0f, 1, 30.0f, 60.0f, 60.0f, 5, str1, 1, &D_8010875C);
+                    Effect_TypeAR_Init(60.0f, 48.0f, 0, 30.0f, 60.0f, 60.0f, 5, str2, 1, &D_8010875C);
+                    Effect_TypeAQ_Init(24.0f, 112.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str3, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(36.0f, 136.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str4, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(24.0f, 160.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xB, str5, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(36.0f, 184.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xB, str6, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(24.0f, 208.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xC, str7, 4, &D_8010875C);
+                    break;
+                case 3:
+                    str1 = D_80105E08[i].unk_10[0];
+                    str2 = D_80105E08[i].unk_10[1];
+                    str3 = D_80105E08[i].unk_10[2];
+                    str4 = D_80105E08[i].unk_10[3];
+                    str5 = D_80105E08[i].unk_10[4];
+                    str6 = D_80105E08[i].unk_10[5];
+                    str7 = D_80105E08[i].unk_10[6];
+                    Effect_TypeK_Init(150.0f, 160.0f, -60.0f);
+                    Effect_TypeAR_Init(20.0f, 192.0f, 1, 30.0f, 60.0f, 60.0f, 5, str1, 1, &D_8010875C);
+                    Effect_TypeAQ_Init(24.0f, 24.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xC, str2, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(36.0f, 48.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xC, str3, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(24.0f, 72.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xB, str4, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(36.0f, 96.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xB, str5, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(24.0f, 120.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str6, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(36.0f, 144.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str7, 4, &D_8010875C);
+                    break;
+                case 4:
+                    str1 = D_80105E08[i].unk_10[0];
+                    str2 = D_80105E08[i].unk_10[1];
+                    str3 = D_80105E08[i].unk_10[2];
+                    str4 = D_80105E08[i].unk_10[3];
+                    str5 = D_80105E08[i].unk_10[4];
+                    str6 = D_80105E08[i].unk_10[5];
+                    str7 = D_80105E08[i].unk_10[6];
+                    Effect_TypeK_Init(150.0f, -160.0f, -60.0f);
+                    Effect_TypeAR_Init(20.0f, 192.0f, 0, 30.0f, 60.0f, 60.0f, 5, str1, 1, &D_8010875C);
+                    Effect_TypeAQ_Init(196.0f, 48.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str2, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(208.0f, 72.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str3, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(196.0f, 96.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xA, str4, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(208.0f, 120.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xA, str5, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(196.0f, 144.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xB, str6, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(208.0f, 168.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xB, str7, 4, &D_8010875C);
+                    break;
+                case 5:
+                    str1 = D_80105E08[i].unk_10[0];
+                    str2 = D_80105E08[i].unk_10[1];
+                    str3 = D_80105E08[i].unk_10[2];
+                    str4 = D_80105E08[i].unk_10[3];
+                    str5 = D_80105E08[i].unk_10[4];
+                    str6 = D_80105E08[i].unk_10[5];
+                    str7 = D_80105E08[i].unk_10[6];
+                    Effect_TypeK_Init(150.0f, 160.0f, 60.0f);
+                    Effect_TypeAR_Init(20.0f, 24.0f, 1, 30.0f, 60.0f, 60.0f, 5, str1, 1, &D_8010875C);
+                    Effect_TypeAQ_Init(24.0f, 88.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str2, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(36.0f, 112.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str3, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(24.0f, 136.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xB, str4, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(36.0f, 160.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xB, str5, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(24.0f, 184.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xC, str6, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(36.0f, 208.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xC, str7, 4, &D_8010875C);
+                    break;
+                case 6:
+                    str1 = D_80105E08[i].unk_10[0];
+                    str2 = D_80105E08[i].unk_10[1];
+                    str3 = D_80105E08[i].unk_10[2];
+                    str4 = D_80105E08[i].unk_10[3];
+                    str5 = D_80105E08[i].unk_10[4];
+                    str6 = D_80105E08[i].unk_10[5];
+                    str7 = D_80105E08[i].unk_10[6];
+                    Effect_TypeK_Init(150.0f, -160.0f, 60.0f);
+                    Effect_TypeAR_Init(20.0f, 24.0f, 0, 30.0f, 60.0f, 60.0f, 5, str1, 1, &D_8010875C);
+                    Effect_TypeAQ_Init(196.0f, 88.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xB, str2, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(208.0f, 112.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xB, str3, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(196.0f, 136.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xC, str4, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(208.0f, 160.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xC, str5, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(196.0f, 184.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str6, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(208.0f, 208.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str7, 4, &D_8010875C);
+                    break;
+                case 7:
+                    str1 = D_80105E08[i].unk_10[0];
+                    str2 = D_80105E08[i].unk_10[1];
+                    str3 = D_80105E08[i].unk_10[2];
+                    str4 = D_80105E08[i].unk_10[3];
+                    str5 = D_80105E08[i].unk_10[4];
+                    str6 = D_80105E08[i].unk_10[5];
+                    str7 = D_80105E08[i].unk_10[6];
+                    Effect_TypeK_Init(150.0f, 160.0f, -60.0f);
+                    Effect_TypeAR_Init(20.0f, 192.0f, 1, 30.0f, 60.0f, 60.0f, 5, str1, 1, &D_8010875C);
+                    Effect_TypeAQ_Init(24.0f, 72.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xC, str2, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(36.0f, 96.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xC, str3, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(24.0f, 120.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xB, str4, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(36.0f, 144.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xB, str5, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(24.0f, 168.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str6, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(36.0f, 192.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str7, 4, &D_8010875C);
+                    break;
+                case 8:
+                    str1 = D_80105E08[i].unk_10[0];
+                    str2 = D_80105E08[i].unk_10[1];
+                    str3 = D_80105E08[i].unk_10[2];
+                    str4 = D_80105E08[i].unk_10[3];
+                    str5 = D_80105E08[i].unk_10[4];
+                    str6 = D_80105E08[i].unk_10[5];
+                    str7 = D_80105E08[i].unk_10[6];
+                    Effect_TypeK_Init(150.0f, 160.0f, 60.0f);
+                    Effect_TypeAR_Init(20.0f, 24.0f, 1, 30.0f, 60.0f, 60.0f, 5, str1, 1, &D_8010875C);
+                    Effect_TypeAQ_Init(24.0f, 88.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str2, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(36.0f, 112.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str3, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(24.0f, 136.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xB, str4, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(36.0f, 160.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xB, str5, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(24.0f, 184.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xC, str6, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(36.0f, 208.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xC, str7, 4, &D_8010875C);
+                    break;
+                case 9:
+                    str1 = D_80105E08[i].unk_10[0];
+                    str2 = D_80105E08[i].unk_10[1];
+                    str3 = D_80105E08[i].unk_10[2];
+                    str4 = D_80105E08[i].unk_10[3];
+                    str5 = D_80105E08[i].unk_10[4];
+                    str6 = D_80105E08[i].unk_10[5];
+                    str7 = D_80105E08[i].unk_10[6];
+                    Effect_TypeK_Init(150.0f, 160.0f, -60.0f);
+                    Effect_TypeAR_Init(20.0f, 192.0f, 1, 30.0f, 60.0f, 60.0f, 5, str1, 1, &D_8010875C);
+                    Effect_TypeAQ_Init(24.0f, 48.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xC, str2, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(36.0f, 72.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xC, str3, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(24.0f, 96.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xB, str4, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(36.0f, 120.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xB, str5, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(24.0f, 144.0f, 12.0f, 3.0f, 60.0f, 60.0f, 6, str6, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(36.0f, 168.0f, 12.0f, 3.0f, 60.0f, 60.0f, 6, str7, 4, &D_8010875C);
+                    break;
+                case 10:
+                    str1 = D_80105E08[i].unk_10[0];
+                    str2 = D_80105E08[i].unk_10[1];
+                    str3 = D_80105E08[i].unk_10[2];
+                    str4 = D_80105E08[i].unk_10[3];
+                    str5 = D_80105E08[i].unk_10[4];
+                    str6 = D_80105E08[i].unk_10[5];
+                    str7 = D_80105E08[i].unk_10[6];
+                    Effect_TypeK_Init(150.0f, -160.0f, 60.0f);
+                    Effect_TypeAR_Init(20.0f, 24.0f, 0, 30.0f, 60.0f, 60.0f, 5, str1, 1, &D_8010875C);
+                    Effect_TypeAQ_Init(196.0f, 88.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xB, str2, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(208.0f, 112.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xB, str3, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(196.0f, 136.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xC, str4, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(208.0f, 160.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xC, str5, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(196.0f, 184.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str6, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(208.0f, 208.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str7, 4, &D_8010875C);
+                    break;
+                case 11:
+                    str1 = D_80105E08[i].unk_10[0];
+                    str2 = D_80105E08[i].unk_10[1];
+                    str3 = D_80105E08[i].unk_10[2];
+                    str4 = D_80105E08[i].unk_10[3];
+                    str5 = D_80105E08[i].unk_10[4];
+                    str6 = D_80105E08[i].unk_10[5];
+                    str7 = D_80105E08[i].unk_10[6];
+                    Effect_TypeK_Init(150.0f, 160.0f, 60.0f);
+                    Effect_TypeAR_Init(20.0f, 24.0f, 1, 30.0f, 60.0f, 60.0f, 5, str1, 1, &D_8010875C);
+                    Effect_TypeAQ_Init(24.0f, 88.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xC, str2, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(36.0f, 112.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xC, str3, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(24.0f, 136.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xB, str4, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(36.0f, 160.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xB, str5, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(24.0f, 184.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str6, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(36.0f, 208.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str7, 4, &D_8010875C);
+                    break;
+                case 12:
+                    str1 = D_80105E08[i].unk_10[0];
+                    str2 = D_80105E08[i].unk_10[1];
+                    str3 = D_80105E08[i].unk_10[2];
+                    str4 = D_80105E08[i].unk_10[3];
+                    str5 = D_80105E08[i].unk_10[4];
+                    str6 = D_80105E08[i].unk_10[5];
+                    str7 = D_80105E08[i].unk_10[6];
+                    Effect_TypeK_Init(150.0f, -160.0f, -84.0f);
+                    Effect_TypeAR_Init(20.0f, 168.0f, 1, 30.0f, 60.0f, 60.0f, 5, str1, 1, &D_8010875C);
+                    Effect_TypeAR_Init(20.0f, 192.0f, 0, 30.0f, 60.0f, 60.0f, 5, str2, 1, &D_8010875C);
+                    Effect_TypeAQ_Init(196.0f, 96.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str3, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(208.0f, 120.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str4, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(196.0f, 144.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xA, str5, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(208.0f, 168.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xA, str6, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(196.0f, 192.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xB, str7, 4, &D_8010875C);
+                    break;
+                case 13:
+                    str1 = D_80105E08[i].unk_10[0];
+                    str2 = D_80105E08[i].unk_10[1];
+                    str3 = D_80105E08[i].unk_10[2];
+                    str4 = D_80105E08[i].unk_10[3];
+                    str5 = D_80105E08[i].unk_10[4];
+                    str6 = D_80105E08[i].unk_10[5];
+                    str7 = D_80105E08[i].unk_10[6];
+                    Effect_TypeK_Init(150.0f, -160.0f, 60.0f);
+                    Effect_TypeAR_Init(20.0f, 24.0f, 0, 30.0f, 60.0f, 60.0f, 5, str1, 1, &D_8010875C);
+                    Effect_TypeAQ_Init(196.0f, 88.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xB, str2, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(208.0f, 112.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xB, str3, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(196.0f, 136.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xA, str4, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(208.0f, 160.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xA, str5, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(196.0f, 184.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str6, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(208.0f, 208.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str7, 4, &D_8010875C);
+                    break;
+                case 14:
+                    str1 = D_80105E08[i].unk_10[0];
+                    str2 = D_80105E08[i].unk_10[1];
+                    str3 = D_80105E08[i].unk_10[2];
+                    str4 = D_80105E08[i].unk_10[3];
+                    str5 = D_80105E08[i].unk_10[4];
+                    str6 = D_80105E08[i].unk_10[5];
+                    str7 = D_80105E08[i].unk_10[6];
+                    Effect_TypeK_Init(150.0f, -160.0f, -60.0f);
+                    Effect_TypeAR_Init(20.0f, 192.0f, 0, 30.0f, 60.0f, 60.0f, 5, str1, 1, &D_8010875C);
+                    Effect_TypeAQ_Init(196.0f, 72.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str2, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(208.0f, 96.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str3, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(196.0f, 120.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xA, str4, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(208.0f, 144.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xA, str5, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(196.0f, 168.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xB, str6, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(208.0f, 192.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xB, str7, 4, &D_8010875C);
+                    break;
+                case 15:
+                    str1 = D_80105E08[i].unk_10[0];
+                    str2 = D_80105E08[i].unk_10[1];
+                    str3 = D_80105E08[i].unk_10[2];
+                    str4 = D_80105E08[i].unk_10[3];
+                    str5 = D_80105E08[i].unk_10[4];
+                    str6 = D_80105E08[i].unk_10[5];
+                    str7 = D_80105E08[i].unk_10[6];
+                    Effect_TypeK_Init(150.0f, -160.0f, -60.0f);
+                    Effect_TypeAR_Init(20.0f, 192.0f, 0, 30.0f, 60.0f, 60.0f, 5, str1, 1, &D_8010875C);
+                    Effect_TypeAQ_Init(196.0f, 72.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str2, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(208.0f, 96.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str3, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(196.0f, 120.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xA, str4, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(208.0f, 144.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xA, str5, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(196.0f, 168.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xB, str6, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(208.0f, 192.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xB, str7, 4, &D_8010875C);
+                    break;
+                case 16:
+                    str1 = D_80105E08[i].unk_10[0];
+                    str2 = D_80105E08[i].unk_10[1];
+                    str3 = D_80105E08[i].unk_10[2];
+                    str4 = D_80105E08[i].unk_10[3];
+                    str5 = D_80105E08[i].unk_10[4];
+                    str6 = D_80105E08[i].unk_10[5];
+                    str7 = D_80105E08[i].unk_10[6];
+                    Effect_TypeK_Init(150.0f, 160.0f, 60.0f);
+                    Effect_TypeAR_Init(20.0f, 24.0f, 1, 30.0f, 60.0f, 60.0f, 5, str1, 1, &D_8010875C);
+                    Effect_TypeAQ_Init(24.0f, 136.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str2, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(36.0f, 160.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str3, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(24.0f, 184.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xB, str4, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(36.0f, 208.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xB, str5, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(24.0f, 232.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xC, str6, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(36.0f, 256.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xC, str7, 4, &D_8010875C);
+                    break;
+                case 17:
+                    str1 = D_80105E08[i].unk_10[0];
+                    str2 = D_80105E08[i].unk_10[1];
+                    str3 = D_80105E08[i].unk_10[2];
+                    str4 = D_80105E08[i].unk_10[3];
+                    str5 = D_80105E08[i].unk_10[4];
+                    Effect_TypeK_Init(150.0f, 160.0f, 60.0f);
+                    Effect_TypeAR_Init(16.0f, 24.0f, 1, 30.0f, 60.0f, 30.0f, 5, str1, 1, &D_8010875C);
+                    Effect_TypeAQ_Init(24.0f, 112.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xC, str2, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(48.0f, 136.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xC, str3, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(24.0f, 160.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xB, str4, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(48.0f, 184.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xB, str5, 4, &D_8010875C);
+                    break;
+                case 18:
+                    str1 = D_80105E08[i].unk_10[0];
+                    str2 = D_80105E08[i].unk_10[1];
+                    str4 = D_80105E08[i].unk_10[3];
+                    Effect_TypeK_Init(150.0f, 0.0f, -120.0f);
+                    Effect_TypeAR_Init(16.0f, 136.0f, 1, 30.0f, 60.0f, 30.0f, 5, str1, 1, &D_8010875C);
+                    Effect_TypeAQ_Init(24.0f, 188.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xC, str2, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(24.0f, 212.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xB, str4, 4, &D_8010875C);
+                    break;
+                case 19:
+                    str1 = D_80105E08[i].unk_10[0];
+                    str2 = D_80105E08[i].unk_10[1];
+                    Effect_TypeK_Init(150.0f, 0.0f, 120.0f);
+                    Effect_TypeAQ_Init(46.0f, 32.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xC, str1, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(40.0f, 64.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xB, str2, 4, &D_8010875C);
+                    break;
+            }
+        }
+    }
+}
 
 s32 func_800AD980(void) {
     gPlayerActors->pos.x = D_80108760;

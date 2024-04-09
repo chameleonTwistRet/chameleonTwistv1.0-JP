@@ -120,6 +120,11 @@ typedef struct PlayerActor {
     /* 0x12C */ f32 tongueSeperation; 
 } PlayerActor; //sizeof 0x130
 
+typedef struct EffectTypeAQArg7 {
+    /* 0x0 */ u8 unk_0;
+    /* 0x1 */ u8 unk_1;
+} EffectTypeAQArg7; //sizeof 0x2
+
 typedef struct unk_80052094_8 {
     /* 0x00 */ f32 unk_00;
     /* 0x08 */ s32 unk_04;
