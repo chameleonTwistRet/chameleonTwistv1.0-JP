@@ -62,6 +62,14 @@ typedef struct StageSelectionData {
     char unk_02[0x17];
 } StageSelectionData;
 
+typedef struct UnkBg {
+    s16 unk0;
+    s16 unk2;
+    s16 unk4;
+} UnkBg;
+
+extern UnkBg* D_800FFE58[4];
+
 /*what is this used for???
 typedef struct unk80097CF8_2 {
     char unk_00[0x7A];
@@ -201,7 +209,7 @@ void func_8008E840(CTTask*);
 CTTask* func_8008E9AC(s16 arg0, s16 arg1, s16 arg2, s16 arg3, s16* arg4);
 CTTask* func_8008EA60(s16 arg0, s16 arg1, s16 arg2, s16 arg3, s16* arg4);
 //s16 might be CTTask??
-void func_8008EB08(s16, s16, s16, s16, s16*, f32, f32, f32, f32, s16);
+CTTask* func_8008EB08(s16 arg0, s16 arg1, s16 arg2, s16 arg3, s16* arg4, f32 arg5, f32 arg6, f32 arg7, f32 arg8, s16 arg9);
 s32 func_8008EC90(void);
 void func_8008EF78(CTTask* task);
 void func_8008EFA0(CTTask*);
@@ -621,7 +629,6 @@ extern s16 D_80100258[7];
 extern s16 D_80100318[7];
 extern s16 gStageCrownRecords[];
 extern s32 D_800FF8EC;
-extern s16 D_800FFE58;
 extern char D_800FFE78;
 extern s16 D_80100348;
 extern f32 D_800FFEE8;

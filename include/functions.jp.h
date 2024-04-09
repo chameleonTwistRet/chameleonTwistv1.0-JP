@@ -446,8 +446,6 @@ void func_800D9B20(s32*);
 void func_800DA620(s32*, s32, s32);
 s32 func_800DB820(OSMesgQueue*);
 void func_800DC550(void);
-void func_800DC920(void*);
-void func_800DC950(void*, void*);
 void func_800DCA90(s32, s32);
 void func_800DCB10(s32, s32);
 void _bzero(void*, s32);
@@ -480,7 +478,7 @@ void func_800598C4(Mtx* arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, 
 void loadBossDeadEyes(s32, CTTask*);
 void func_8005747C(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, s32 arg6);
 Effect* Effect_TypeK_Init(f32 duration, f32 arg1, f32 arg2);
-void func_800747E0(f32, f32, u32, f32, f32, f32, u32, u32, s32, u32*);
+void func_800747E0(f32 arg0, f32 arg1, u32 arg2, f32 arg3, f32 arg4, f32 arg5, u32 arg6, u8* arg7, s32 arg8, u32* arg9);
 void func_800743BC(f32, f32, f32, f32, f32, f32, u32, u32, s32, u32*);
 s32 func_80082714(f32, f32, f32, s32);
 void func_8007E6BC(f32 arg0, f32 arg1, f32 arg2, f32 arg3, u8 arg4, u8 arg5, u8 arg6);

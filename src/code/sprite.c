@@ -5003,7 +5003,7 @@ void func_80073FD8(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_800745F8.s")
 
-void func_800747E0(f32 arg0, f32 arg1, u32 arg2, f32 arg3, f32 arg4, f32 arg5, u32 arg6, u32 arg7, s32 arg8, u32* arg9) {
+void func_800747E0(f32 arg0, f32 arg1, u32 arg2, f32 arg3, f32 arg4, f32 arg5, u32 arg6, u8* arg7, s32 arg8, u32* arg9) {
     Effect* effect;
     f32 var_f0;
     s32 i;
