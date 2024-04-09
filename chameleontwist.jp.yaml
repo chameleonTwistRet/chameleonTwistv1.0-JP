@@ -4417,12 +4417,12 @@ segments:
 
 
   #   - [0xAB5360, databin, rabbit] # ウサギ
+  #animations
   #   - [0xABD990, databin, subAnime] # サブアニメ
-  #   - [0xACBD90, databin, match] # 青
 
 
   - start: 0xACBD90
-    name: Battle_Chameleons
+    name: Battle_Chameleons # 青, match
     vram: 0x07000000 #SEGMENT 0x07
     dir: chameleons
     subalign: 8

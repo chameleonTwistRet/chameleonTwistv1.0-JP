@@ -5,7 +5,6 @@ extern char D_801103D0[];
 
 extern f64 D_801104F8;
 extern s32 D_80236974;
-extern Collision gZoneCollisions[];
 extern Collider D_80236980[128];
 extern s32 D_8020D8F4;
 extern f64 D_801106A0;
@@ -248,7 +247,7 @@ void func_800CFF7C(Vec3f* arg0) {
                 arg0->z = arg0->z * temp_f0_2;
             }
         } else {
-            temp_v0 = &gZoneCollisions[gCurrentZone].rect_30;
+            temp_v0 = &gZoneCollisions[gCurrentZone].roomBounds;
             
             if (temp_v0->min.x > arg0->x ) {
                 arg0->x = temp_v0->min.x;
@@ -341,9 +340,9 @@ void func_800D4550(s32 arg0, s32 arg1, Poly* arg2, Vec3f* arg3, Vec3f* arg4) {
     arg3->x = temp_v0->unkA4;
     arg3->y = temp_v0->unkA8 + (temp_v0->unkD0 * arg2->unkVectorStruct.vec1.x);
     arg3->z = temp_v0->unkAC;
-    arg4->x = temp_v0->unk98;
-    arg4->y = temp_v0->unk9C + (temp_v0->unkD0 * arg2->unkVectorStruct.vec1.x);
-    arg4->z = temp_v0->unkA0;
+    arg4->x = temp_v0->cameraAnchor.x;
+    arg4->y = temp_v0->cameraAnchor.y + (temp_v0->unkD0 * arg2->unkVectorStruct.vec1.x);
+    arg4->z = temp_v0->cameraAnchor.z;
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800D45D8.s")
@@ -363,10 +362,10 @@ void func_800D6864(PlayerActor* arg0, Tongue* arg1, Camera* arg2, Vec3f* arg3, V
 
     collider = &gZoneCollisions[gCurrentZone];
     arg3->x = arg2->f1.z;
-    arg3->y = arg2->f2.x + (collider->unkD0 * arg2->size1);
+    arg3->y = arg2->f2.x + (collider->unkD0 * arg2->size1._f32);
     arg3->z = arg2->f2.y;
     arg4->x = arg2->f3.x;
-    arg4->y = arg2->f3.y + (collider->unkD0 * arg2->size1);
+    arg4->y = arg2->f3.y + (collider->unkD0 * arg2->size1._f32);
     arg4->z = arg2->f3.z;
 }
 
@@ -402,7 +401,7 @@ void SetCameraParameters(void) {
     } else if ((D_80236974 == 1) && (D_8020D8F4 == 0)) {
         func_800D3854(gPlayerActors, gTongues, gCamera, &sp3C, &sp30, 0);
     } else if (gCamera[0].unk0 == 1) {
-        func_800D69D0(temp->unk94, gPlayerActors, gTongues, gCamera, &sp3C, &sp30, 0);
+        func_800D69D0(temp->cameraMode, gPlayerActors, gTongues, gCamera, &sp3C, &sp30, 0);
     } else {
         func_800D5394(gPlayerActors, gTongues, gCamera, &sp3C, &sp30, 0);
     }
@@ -410,9 +409,9 @@ void SetCameraParameters(void) {
     cam = &gCamera[0];
     
     for (i = 0; i < 4; i++, cam++) {
-        cam->f5.x = sp3C.x;
-        cam->f5.y = sp3C.y;
-        cam->f5.z = sp3C.z;
+        cam->f5._f32.x = sp3C.x;
+        cam->f5._f32.y = sp3C.y;
+        cam->f5._f32.z = sp3C.z;
 
         cam->f4.x = sp30.x;
         cam->f4.y = sp30.y;

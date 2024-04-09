@@ -22,9 +22,9 @@ void SetViewAreaParam(Camera* cam, f32 arg1, f32 arg2) {
     f32 var_f2;
     f32 temp_f2_2;
 
-    sp50.x = cam->f5.x;
-    sp50.y = cam->f5.y;
-    sp50.z = cam->f5.z;
+    sp50.x = cam->f5._f32.x;
+    sp50.y = cam->f5._f32.y;
+    sp50.z = cam->f5._f32.z;
     
     sp5C.x = cam->f4.x;
     sp5C.y = cam->f4.y;

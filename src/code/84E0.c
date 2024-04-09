@@ -649,7 +649,7 @@ void func_8002E5DC(UnkTempStruct arg0) {
         sp2C = -1;
     }
 
-    D_80174860->size1 = D_80174860->size1 + ((D_80174860->size2 - D_80174860->size1) * 0.200000003f);
+    D_80174860->size1._f32 = D_80174860->size1._f32 + ((D_80174860->size2._f32 - D_80174860->size1._f32) * 0.200000003f);
     if (D_801749A8 == 0) {
         if (((gCurrentStage == 4) && (gCurrentZone == 0xF)) || ((gCurrentStage == 5) && (gCurrentZone == 0xE))) {
             if (D_80174860->unk0 == 1) {
@@ -657,7 +657,7 @@ void func_8002E5DC(UnkTempStruct arg0) {
                 D_80174860->unk0 = 0;
                 if (D_80174860->unk40 == 2) {
                     PLAYSFX(0x2D, 0, 0x10);
-                    D_80174860->size2 /= 1.299999952f;
+                    D_80174860->size2._f32 /= 1.299999952f;
                     D_80174860->unk40 -= 1;
                 }
                 func_800D34CC();
@@ -670,7 +670,7 @@ void func_8002E5DC(UnkTempStruct arg0) {
                 D_80174860->unk0 = 0;
                 if (D_80174860->unk40 == 2) {
                     PLAYSFX(0x2D, 0, 0x10);
-                    D_80174860->size2 /= 1.299999952f;
+                    D_80174860->size2._f32 /= 1.299999952f;
                     D_80174860->unk40 -= 1;
                 }
             }
@@ -678,12 +678,12 @@ void func_8002E5DC(UnkTempStruct arg0) {
         }
         if ((arg0.unk_02 & 4) && (((D_80174860->unk0 == 1) && (D_80174860->unk40 < 2)) || (D_80174860->unk40 <= 0))) {
             PLAYSFX(0x2D, 0, 0x10);
-            D_80174860->size2 *= 1.299999952f;
+            D_80174860->size2._f32 *= 1.299999952f;
             D_80174860->unk40 += 1;
         }
         if ((arg0.unk_02 & 8) && (sp2C < D_80174860->unk40)) {
             PLAYSFX(0x2D, 0, 0x10);
-            D_80174860->size2 /= 1.299999952f;
+            D_80174860->size2._f32 /= 1.299999952f;
             D_80174860->unk40 -= 1;
         }
         if ((arg0.unk_02 & 1) && (D_80174860->pushHoriz < 9)) {
@@ -1120,7 +1120,7 @@ void func_80036D74(PlayerActor* arg0, Tongue* arg1) {
             if (--arg0->hp <= 0) {
                 D_80174980 = 4;
                 D_80174860->unk50 = 0.0f;
-                D_80174860->size2 = 0.4551661909f;
+                D_80174860->size2._f32 = 0.4551661909f;
             }
         }
         arg0->playerHURTSTATE = 1;

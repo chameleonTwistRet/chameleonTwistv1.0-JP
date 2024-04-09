@@ -60,14 +60,18 @@ typedef struct RegistDoorStruct {
 } RegistDoorStruct;
 
 /* Functions */
+void func_800AF9D0(Collider* arg0, Camera* arg1);
 void func_800AFB2C(Collider* arg0, s32 arg1);
+void func_800B06B0(Collider* arg0);
 s32 CountShotActors(void);
 s32 func_800B07E4(void);
+void func_800B088C(Collider* arg0, Camera* arg1);
 void func_800B08C8(unkStructGlobal1* arg0);
 void func_800B09C0(s32 arg0, newStruct* arg1);
 void func_800B09E8(unkStructGlobal1* arg0, unkBlackChameleon1* arg1);
 void func_800B0A30(unkBlackChameleon0* arg0, unkBlackChameleon1* arg1);
 void func_800B0AA4(Collider* collider);
+void RegistShutter(Collider* arg0, Camera* arg1);
 void func_800B1DA0(Collider* arg0, s32 arg1);
 void func_800B2070(s32 arg0);
 void func_800B2144(Collider* arg0, unkStruct14* arg1);
@@ -160,7 +164,7 @@ void RegistDoor(RegistDoorStruct* arg0, s32 arg1, s32 arg2);
 void func_800BF4AC(Door*);
 void func_800BF524(s32);
 void func_800BF5A4(void);
-void func_800BF5E8(s32*);
+void func_800BF5E8(RoomActor*);
 void func_800BF84C(s32 collision);
 const char* GetDirectionName(s32 arg0);
 void ChameleonFromDoor(PlayerActor* player, s32 arg1, s32 arg2, s32 arg3, s32 arg4);
@@ -194,7 +198,6 @@ void func_800C88D0(void);
 
 /* Ext Variables */
 extern collectableWrapper D_802019A8[];
-extern Collision gZoneCollisions[];
 extern CardinalDirection gCardinalDirections[5]; // including "NO_DIR"
 extern s32 sBossIDs[6];
 extern unk801B3178* D_801B3178;
@@ -229,5 +232,27 @@ extern f32 D_8020D880;
 extern s32 D_80236978;
 extern s32 D_802478E0;
 extern Rect3D D_802026B0;
+extern f32 D_80201908;
+extern f32 D_80201910;
+extern f32 D_80201918;
+extern f32 D_80201920;
+extern Vec3f D_80201940;
+extern s32 D_80201964;
+extern s32 D_80201970;
+extern s32 D_80201974;
+extern s32 D_80201978;
+extern s32 D_8020197C;
+extern u32 D_80201980;
+extern s32 D_80201984;
+extern s32 D_80201988;
+extern s32 D_8020198C;
+extern s32 D_80201990;
+extern s32 D_80201998;
+extern f32 D_8020199C;
+extern s32 D_802019A0;
+extern s32 D_802023AC;
+extern s32 D_802023D4;
+extern s32 D_802025B4;
+extern Collider* D_802025B8[];
 
 #endif // _8ADD0_H_

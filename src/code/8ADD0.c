@@ -15,7 +15,34 @@ Vec3f D_80201950;
 f32 D_80201960;*/
 
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800AF9D0.s")
+void func_800AF9D0(Collider* arg0, Camera* arg1) {
+    arg0->unk_5C = 2;
+    D_80201910 = 0.0f;
+    D_80201920 = DEGREES_TO_RADIANS_PI(arg1->f4.x);
+    D_80201908 = 0.0f;
+    D_80201918 = 0.0f;
+    D_80201940.x = (f32) arg1->f4.y;
+    D_80201940.y = (f32) arg1->f4.z;
+    D_80201940.z = (f32) arg1->f5._f32.x;
+    D_80201964 = 0;
+    D_80201970 = 50;
+    D_80201974 = 10;
+    D_80201978 = 1;
+    D_8020197C = 3;
+    D_80201980 = arg1->untouchedTimer;
+    D_80201984 = arg1->size1._s32;
+    D_80201988 = arg1->size2._s32;
+    D_8020198C = arg1->unk40;
+    D_80201990 = 1000;
+    D_80201998 = 0;
+    D_8020199C = 0.5f;
+    D_802019A0 = 1;
+    D_802023AC = 0;
+    func_800B402C(arg0, 0, 0);
+    func_800B402C(arg0, 1, 2);
+    func_800B402C(arg0, 2, 1);
+    D_802023D4 = -1;
+}
 
 void func_800AFB2C(Collider* arg0, s32 arg1) {
     arg0->unk_5C = 2;
@@ -29,7 +56,16 @@ void func_800AFB2C(Collider* arg0, s32 arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/MoveTheater.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B06B0.s")
+void func_800B06B0(Collider* arg0) {
+    Vec3f coord;
+    if ((D_80201964 == 1) && (arg0->unkC8 == 1) && (arg0->unk_110 < 0) && (arg0->unkA4 == 0)) {
+        coord.x = arg0->unk_4C->sfxPos.x + arg0->unk_30.x;
+        coord.y = arg0->unk_4C->sfxPos.y + arg0->unk_30.y;
+        coord.z = arg0->unk_4C->sfxPos.z + arg0->unk_30.z;
+        arg0->unkA4 = 1;
+        func_8007633C(coord.x, coord.y, coord.z, CalculateAngleOfVector(-coord.x, coord.z));
+    }
+}
 
 s32 CountShotActors(void) {
     Actor* actor;
@@ -46,9 +82,27 @@ s32 CountShotActors(void) {
     return count;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B07E4.s")
+s32 func_800B07E4(void) {
+    s32 i;
+    Actor* actor;
+    s32 count;
+    count = 0;
+    for(i = 0, actor = &gActors[0];
+        i != 0x40; actor++, i++){
+        if ((actor->actorID == 0xD) && (actor->actorState == 0)) {
+            count++;
+        }
+    }
+    return count;
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B088C.s")
+void func_800B088C(Collider* arg0, Camera* arg1) {
+    arg0->unk_AC = arg1->f5._s32.y;
+    arg0->unk_B0 = arg1->f5._s32.z;
+    arg0->unk_B4 = 0;
+    arg0->unk_B8 = -1;
+    func_800B35FC(arg0->unk_AC);
+}
 
 void func_800B08C8(unkStructGlobal1* arg0) {
     s32 shotActors;
@@ -89,6 +143,7 @@ void func_800B08C8(unkStructGlobal1* arg0) {
 void func_800B09C0(s32 arg0, newStruct* arg1) {
     func_800B56D4(arg1->field1, arg1->field2);
 }
+
 //unsure of arg1 type
 void func_800B09E8(unkStructGlobal1* arg0, unkBlackChameleon1* arg1) {
     arg0->unkAC = arg1->unk38;    
@@ -98,7 +153,6 @@ void func_800B09E8(unkStructGlobal1* arg0, unkBlackChameleon1* arg1) {
     }
     arg0->unkB0 = 1;
 }
-
 
 void func_800B0A30(unkBlackChameleon0* arg0, unkBlackChameleon1* arg1) {
     gPlayerActors[1].active = gPlayerActors[1].exists = 1;
@@ -129,8 +183,40 @@ void func_800B0AA4(Collider* collider) {
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B0B20.s")
+
 //deals with "shutters"
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/RegistShutter.s")
+void RegistShutter(Collider* arg0, Camera* arg1) {
+    Collider* realCollider;
+    Collider** colliderArray;
+    s32 i;
+
+    arg0->unk_8C = arg1->f4.x;
+    arg0->unk_AC = arg1->f5._s32.y;
+    arg0->unk_B0 = arg1->f5._s32.z;
+    arg0->unk_B4 = arg1->unk40;
+    arg0->unk_B8 = arg1->size1._s32;
+    arg0->unk_BC = arg1->size2._s32;
+    arg0->unk_C0 = arg1->untouchedTimer;
+    arg0->unkC4 = arg1->f4.y;
+    D_802025B4 = 0;
+    for(i = 0, colliderArray = &D_80240898;
+        i < gFieldCount; i++, colliderArray++){
+        realCollider = *colliderArray;
+        if (realCollider->unk_10 == 28) {
+            if (D_802025B4 >= 25) {
+                DummiedPrintf3("Too Many Shutter\n");
+            }
+            D_802025B8[D_802025B4] = realCollider;
+            D_802025B4++;
+            realCollider->unk_98 = realCollider->unk_8C;
+            realCollider->unk_9C = arg0->unk_8C + realCollider->unk_90;
+            realCollider->unk_A0 = realCollider->unk_94;
+            realCollider->unk_B4 = arg0->unk_B0;
+            realCollider->unk_B8 = arg0->unk_B4;
+            realCollider->unk_BC = arg0->unk_B8;
+        }
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B118C.s")
 
@@ -788,15 +874,15 @@ void func_800B4264(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B4A3C.s")
 
 void setCrownPositionsForRoom(s32 arg0) {
-    s32 temp_s3;
+    s32 limit;
     s32 i;
     collectableWrapper* var_s0;
     Collectable* new_var;
     
-    temp_s3 = gZoneCollisions[arg0].unk18;
+    limit = gZoneCollisions[arg0].clctCount;
     var_s0 = &D_802019A8[gZoneCollisions[arg0].unk78];
     
-    for (i = 0; i < temp_s3; i++, var_s0++) {
+    for (i = 0; i < limit; i++, var_s0++) {
         new_var = var_s0->levelDataCollectable;
         if (var_s0->bitfield == 1) {
             var_s0->actorIndex = func_800B4A3C(new_var);
@@ -985,9 +1071,7 @@ void func_800B6D24(tempStruct* arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B9FA8.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BA2D0.s")
-//this builds when camera f5.y and z is Vec3w but that crashes everything else. lame.
-/*void func_800BA2D0(Collider* arg0, Camera* arg1) {
+void func_800BA2D0(Collider* arg0, Camera* arg1) {
     func_800B5D68(arg0, 2);
     arg0->unk_8C = arg0->unk_30.x;
     arg0->unk_90 = arg0->unk_30.y;
@@ -996,12 +1080,12 @@ void func_800B6D24(tempStruct* arg0) {
     arg0->unk_9C = arg1->f4.y;
     arg0->unk_A0 = arg1->f4.z;
     arg0->unkA4 = 0;
-    arg0->unk_AC = arg1->f5.y;
-    arg0->unk_B0 = arg1->f5.z;
+    arg0->unk_AC = arg1->f5._s32.y;
+    arg0->unk_B0 = arg1->f5._s32.z;
     arg0->unk_B4 = arg1->unk40;
     arg0->unk_B8 = 0;
     arg0->unk_BC = 0;
-}*/
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BA35C.s")
 
@@ -1010,7 +1094,7 @@ void func_800BA89C(Collider* arg0, Camera* arg1) {
     arg0->unk_8C = arg1->f4.x;
     arg0->unk_90 = arg1->f4.y;
     arg0->unk_94 = arg1->f4.z;
-    arg0->unk_98 = arg1->f5.x;
+    arg0->unk_98 = arg1->f5._f32.x;
     func_800B5A98(arg0, arg1);
     arg0->unk_114 = 16;
 }
@@ -1137,8 +1221,8 @@ void func_800BE2C0(void) {
     }
 }
 
-void func_800BE370(s32 arg0) {
-    Rect3D* rectTemp = &gZoneCollisions[arg0].rect_30;
+void func_800BE370(s32 room) {
+    Rect3D* rectTemp = &gZoneCollisions[room].roomBounds;
     Actor* actorList;
     s32 i;
     for (i = 0, actorList = gActors; i < MAX_ACTORS; i++, actorList++) {
@@ -1278,17 +1362,26 @@ void func_800BF5A4(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BF5E8.s")
 
-void func_800BF84C(s32 collision) {
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BF84C.s")
+
+//something about gZoneCollisions[room].unk84 != actor->id isnt building????
+/*void func_800BF84C(s32 room) {
     s32 i;
-    s32 temp_s5 = gZoneCollisions[collision].unk14;
-    s32* var_s0 = gZoneCollisions[collision].unk4;
-    for(i = 0; i < temp_s5; i++){
-        if ((*var_s0 == 13 || *var_s0 == 45 || gZoneCollisions[collision].unk68 == 0 || gZoneCollisions[collision].unk84 != *var_s0) && (!IsBossStage() || !IsBossID(*var_s0))) {
-            func_800BF5E8(var_s0);
+    s32 limit = gZoneCollisions[room].unk14;
+    RoomActor* actor = gZoneCollisions[room].roomActors;
+    for (i = 0; i < limit; i++){
+        if (actor->id == 13 || actor->id == 45 || 0 == gZoneCollisions[room].unk68 || actor->id != gZoneCollisions[room].unk84){
+            if(!IsBossStage() || !IsBossID(actor->id)) {
+                func_800BF5E8(actor);
+            }
         }
-        var_s0 += 0x18;
+        actor++;
+        
     }
 }
+*/
+
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/InitFieldSub.s")
 
@@ -1477,7 +1570,7 @@ void func_800C1B70(void) {
     if (gZoneCollisions[gCurrentZone].unkCC != -1.0) {
         D_80174994 = gZoneCollisions[gCurrentZone].unkCC;
     } else {
-        D_80174994 = gZoneCollisions[gCurrentZone].rect_30.min.y - 500.0;
+        D_80174994 = gZoneCollisions[gCurrentZone].roomBounds.min.y - 500.0;
     }
 }
 
@@ -1548,19 +1641,19 @@ void enterBossRoom(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C3B50.s")
 
 void func_800C3DCC(Camera* camera, Vec3f arg1, f32 arg4, f32 arg5, f32 arg6, f32 arg7) {
-    camera->f5.x = camera->f1.z = arg1.x;
-    camera->f2.x = camera->f5.y = arg1.y;
+    camera->f5._f32.x = camera->f1.z = arg1.x;
+    camera->f2.x = camera->f5._f32.y = arg1.y;
     camera->f2.z = arg7;
     camera->f2.y = arg1.z;
-    camera->f5.z = arg1.z;
+    camera->f5._f32.z = arg1.z;
     camera->f3.x = arg4;
     camera->f4.x = arg4;
     camera->f3.y = arg5;
     camera->f4.y = camera->f3.y;
     camera->f3.z = arg6;
     camera->f4.z = arg6;
-    camera->f2.x -= gZoneCollisions[gCurrentZone].unkD0 * camera->size1;
-    camera->f3.y -= gZoneCollisions[gCurrentZone].unkD0 * camera->size1;
+    camera->f2.x -= gZoneCollisions[gCurrentZone].unkD0 * camera->size1._f32;
+    camera->f3.y -= gZoneCollisions[gCurrentZone].unkD0 * camera->size1._f32;
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C3E94.s")
