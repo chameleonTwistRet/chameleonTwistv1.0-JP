@@ -72,10 +72,102 @@ typedef struct Effect_TypeM_Data {
     /* 0x44 */ s32* finish;    
 } Effect_TypeM_Data; //sizeof 0x48
 
+typedef struct Effect_TypeT_Data {
+    /* 0x00 */ f32 unk0;
+    /* 0x04 */ f32 unk4;
+    /* 0x08 */ s32 unk8;
+    /* 0x0C */ s32 unkC;
+} Effect_TypeT_Data; //sizeof 0x10
+
+typedef struct Effect_TypeV_Data {
+    /* 0x00 */ RGBA32 color;
+} Effect_TypeV_Data; //sizeof 0x4
+
 typedef struct UnkBowlingStruct {
     /* 0x00 */ s32 unk_00;
     /* 0x04 */ s32 unk_04;
 } UnkBowlingStruct; //sizeof 0x8
+
+typedef struct struct_800FE4E4 {
+    /* 0x0 */ u8 unk_00;
+    /* 0x1 */ u8 unk_01;
+} struct_800FE4E4; //sizeof 0x2
+
+typedef struct struct_800FE4EC {
+    u8* unk_00;
+    u8* unk_04;
+    u8* unk_08;
+    u8* unk_0C;
+} struct_800FE4EC;
+
+typedef struct struct_800FE54C {
+    u8* unk_00;
+    u8* unk_04;
+} struct_800FE54C;
+
+typedef struct Effect_TypeX_Data {
+    /* 0x00 */ Vec3f unk_00;
+    /* 0x0C */ Vec3f unk_0C;
+} Effect_TypeX_Data; //sizeof 0x18
+
+typedef struct Effect_TypeZ_Data {
+    /* 0x00 */ Vec3f pos;
+    /* 0x0C */ f32 scale;
+    /* 0x10 */ s32 angle;
+    /* 0x14 */ RGBA32 color;
+} Effect_TypeZ_Data; //sizeof 0x18
+
+typedef struct Effect_TypeAA_Data {
+    /* 0x00 */ Vec3f pos;
+    /* 0x0C */ RGBA32 color;
+} Effect_TypeAA_Data; //sizeof 0x10
+
+typedef struct Effect_TypeAB_Data {
+    /* 0x00 */ f32 size;
+    /* 0x04 */ RGBA32 color;
+} Effect_TypeAB_Data; //sizeof 0x08
+
+typedef struct Effect_TypeAC_Data {
+    /* 0x00 */ RGBA32 color;
+} Effect_TypeAC_Data; //sizeof 0x04
+
+typedef struct Effect_TypeAF_Data {
+    /* 0x00 */ f32* pPosX;
+    /* 0x04 */ f32* pPosY;
+    /* 0x08 */ f32* pPosZ;
+    /* 0x0C */ f32 unk_0C;
+    /* 0x10 */ f32 unk_10;
+    /* 0x14 */ f32 unk_14;
+    /* 0x18 */ f32 unk_18;
+    /* 0x1C */ f32 unk_1C;
+    /* 0x20 */ f32 unk_20;
+    /* 0x24 */ f32 unk_24;
+    /* 0x28 */ s32 unk_28;
+} Effect_TypeAF_Data; //sizeof 0x2C
+
+typedef struct Effect_TypeAH_Data {
+    /* 0x000 */ Mtx mtx[2];
+    /* 0x080 */ Gfx* dlist;
+    /* 0x084 */ char pad_84[4];
+    /* 0x088 */ Mtx animArray[2][20];
+    /* 0xA88 */ void* unk_A88;
+    /* 0xA8C */ void* unk_A8C;
+    /* 0xA90 */ f32 yaw;
+    /* 0xA94 */ s32 unk_A94;
+    /* 0xA98 */ s32 unk_A98;
+    /* 0xA9C */ s32 unk_A9C;
+    /* 0xAA0 */ u8* unk_AA0;
+    /* 0xAA4 */ u8* unk_AA4;
+    /* 0xAA8 */ u8 unk_AA8;
+    /* 0xAAC */ char unk_AAC[4];
+} Effect_TypeAH_Data; //sizeof 0xAB0
+
+typedef struct Effect_TypeAH_Arg5 {
+    /* 0x00 */ void* unk_00;
+    /* 0x04 */ void* unk_04;
+    /* 0x08 */ u8* unk_08;
+    /* 0x0C */ s32 unk_0C;
+} Effect_TypeAH_Arg5; // sizeof 0x10
 
 /* extern symbols */
 extern s32 D_80176960[];
@@ -127,6 +219,17 @@ extern s32 D_800FE188;
 extern Gfx D_1013F78[];
 extern Gfx D_10149D0[];
 extern Effect* D_800FE1A0;
+extern s32 Battle_GameType;
+extern struct_800FE4E4 D_800FE4E4[];
+extern f32 D_800FE6F4[];
+extern u8 D_800FE704[];
+extern struct_800FE4EC D_800FE4EC[];
+extern struct_800FE54C D_800FE54C[];
+extern s32 D_80174980;
+extern s16 D_800FFEBC;
+extern u8 D_800FE6F0;
+extern Gfx* D_800F0638[];
+extern s32 D_800FE708;
 
 /* functions */
 void Memory_Free(void*);
@@ -140,6 +243,13 @@ void Effect_UpdateAll(Gfx*);
 void func_80069734(void);
 void func_8007CDEC(void);
 f32 func_80056104(f32, f32);
+void Effect_TypeAC_Init(f32 posX, f32 posY, f32 posZ, f32 arg3, f32 duration);
+void func_80088474(s32, s32);
+void func_800882D0(s32, s32);
+void func_80088474(s32, s32);
+void func_80027138(void* arg0, s32* arg1, s32* arg2, Mtx** arg3);
+void func_80027240(Mtx** arg0, Mtx* arg1, s32 arg2, s32 arg3);
+s32 PutDList(Mtx** arg0, Gfx** arg1, Gfx* arg2);
 Effect* Effect_Alloc(s32 numParts, s32 dataSize, void* fpUpdate);
 void* func_800745F8(void);
 
