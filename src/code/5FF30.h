@@ -613,7 +613,6 @@ extern s16 D_800FFEBC;
 extern s32 D_802023E0;
 extern s32 D_80202420; //unk type
 extern s32 D_8020D8A8;
-extern s32 currentStageCrowns;
 extern s16 D_80100E10;
 extern s16 sStageCrownTotals[6];
 extern s32 D_80247904;

@@ -455,8 +455,11 @@ void func_800314E4(Actor*);
 void pickup_collide_func(s32 actorIndex);
 //poly.c
 void func_800CFDC8(PlayerActor*);
+void func_800D3854(PlayerActor*, Tongue*, Camera*, Vec3f*, Vec3f*, s32);
+void func_800D69D0(s32, PlayerActor*, Tongue*, Camera*, Vec3f*, Vec3f*, s32);
 //sprite.c
 void func_8007633C(f32, f32, f32, f32);
+void func_80078294(f32, f32, f32, f32, s32);
 
 
 //funcs from 8add0 that are called from other c's

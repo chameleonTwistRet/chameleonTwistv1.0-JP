@@ -39,10 +39,8 @@ char D_802489C0[0x08];
 Vec3f D_802489C8[8];
 char D_80248A28[0x08];
 
-void func_800D3854(PlayerActor*, Tongue*, Camera*, Vec3f*, Vec3f*, s32);
 void func_800D5394(PlayerActor*, Tongue*, Camera*, Vec3f*, Vec3f*, s32);
 void func_800D6864(PlayerActor*, Tongue*, Camera*, Vec3f*, Vec3f*);
-void func_800D69D0(s32, PlayerActor*, Tongue*, Camera*, Vec3f*, Vec3f*, s32);
 Collider* func_800CAF88(Vec3f, f32, f32);
 Collider* SearchPolygonBetween(Vec3f, Vec3f, s32, s32, s32);
 void OrderRectBounds(Rect3D*);

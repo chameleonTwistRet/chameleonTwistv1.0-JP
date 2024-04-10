@@ -931,6 +931,7 @@ void func_800B56D4(f32 arg0, f32 arg1) {
     D_8010881C = arg0;
     D_80108820 = arg1;
 }
+
 //find enemies in explosions' blast radius?
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B56E8.s")
 
@@ -1634,38 +1635,92 @@ void enterBossRoom(void) {
 //referred to in US1.0 as "moveField"
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/MoveField.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C38E0.s")
+void func_800C38E0(SpriteActor* arg0) {
+    SpriteActor* curSpAct;
+
+    if (arg0 == NULL) {
+        return;
+    }
+    curSpAct = arg0;
+    while (curSpAct->size >= 0){
+        curSpAct->unk20 = func_800AF604(curSpAct->position.x, curSpAct->position.y, curSpAct->position.z, 6000);
+        curSpAct++;
+    }
+    func_80083F18(arg0);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C3958.s")
 
 //draw collision
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C3B50.s")
 
-void func_800C3DCC(Camera* camera, Vec3f arg1, f32 arg4, f32 arg5, f32 arg6, f32 arg7) {
+void func_800C3DCC(Camera* camera, Vec3f arg1, Vec3f arg4, f32 arg7) {
     camera->f5.x = camera->f1.z = arg1.x;
     camera->f2.x = camera->f5.y = arg1.y;
     camera->f2.z = arg7;
     camera->f2.y = arg1.z;
     camera->f5.z = arg1.z;
-    camera->f3.x = arg4;
-    camera->f4.x = arg4;
-    camera->f3.y = arg5;
+    camera->f3.x = arg4.x;
+    camera->f4.x = arg4.x;
+    camera->f3.y = arg4.y;
     camera->f4.y = camera->f3.y;
-    camera->f3.z = arg6;
-    camera->f4.z = arg6;
+    camera->f3.z = arg4.z;
+    camera->f4.z = arg4.z;
     camera->f2.x -= gZoneCollisions[gCurrentZone].unkD0 * camera->size1;
     camera->f3.y -= gZoneCollisions[gCurrentZone].unkD0 * camera->size1;
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C3E94.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C4040.s")
+void func_800C4040(PlayerActor* arg0, Tongue* arg1, Camera* camera, f32 arg3, f32 arg4) {
+    Vec3f sp54;
+    Vec3f sp48;
+    Collision* temp_v0;
+    f32 temp_f0_8;
+    f32 temp_f12;
+
+    temp_v0 = &gZoneCollisions[gCurrentZone];
+    if (arg3 == 0.0 && arg4 == 0.0) {
+        arg3 = 1;
+    }
+    //these MUST be formatted like this
+    camera->f5.x = camera->f1.z = arg0->pos.x;
+    camera->f5.y = camera->f2.x = arg0->pos.y + (60.0 / camera->size1);
+    camera->f2.z = arg0->pos.y;
+    camera->f5.z = camera->f2.y = arg0->pos.z;
+    camera->f4.x = camera->f3.x = camera->f1.z;
+    camera->f4.y = camera->f3.y = arg0->pos.y + 600 * camera->size1;
+    camera->f4.z = camera->f3.z = camera->f2.y;
+    camera->f5.y += gZoneCollisions[gCurrentZone].unkD0 * camera->size1;
+    camera->f4.y += gZoneCollisions[gCurrentZone].unkD0 * camera->size1;
+    if (D_80236974 == 1) {
+        camera->f4.z += 800 * camera->size1;
+        camera->f3.z += 800 * camera->size1;
+        func_800D3854(arg0, arg1, camera, &sp54, &sp48, 1);
+        func_800C3DCC(camera, sp54, sp48, arg0->pos.y);
+        return;
+    }
+    temp_f0_8 = temp_v0->rect_48.min.x;
+    temp_f12 = temp_v0->rect_48.min.z;
+    arg3 *= 800 * camera->size1;
+    arg4 *= 800 * camera->size1;
+    LimitFloat(&arg3, -temp_f0_8, temp_f0_8);
+    LimitFloat(&arg4, -temp_f12, temp_f12);
+    camera->f4.x += arg3;
+    camera->f3.x += arg3;
+    camera->f4.z += arg4;
+    camera->f3.z += arg4;
+    if (camera->unk0 == 1) {
+        func_800D69D0(gZoneCollisions[gCurrentZone].cameraMode, arg0, arg1, camera, &sp54, &sp48, 1);
+        func_800C3DCC(camera, sp54, sp48, arg0->pos.y);
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C43AC.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C4594.s")
 
-void func_800C48B8(Vec3w arg0, Vec3w arg3, Vec3w arg6, Vec3w arg9, f32 argC) {
+void func_800C48B8(Vec3f arg0, Vec3f arg3, Vec3f arg6, Vec3f arg9, f32 argC, s32 zero) {
     D_8020A298 = arg0;
     D_8020D2A8 = arg3;
     D_8020D5B8 = arg6;
@@ -1673,13 +1728,39 @@ void func_800C48B8(Vec3w arg0, Vec3w arg3, Vec3w arg6, Vec3w arg9, f32 argC) {
     D_8020D858 = argC;
 }
 
-//subroutine variables
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C4968.s")
+void func_800C4968(Vec3f arg0, Vec3f arg3, f32 arg6, f32 arg7, f32 arg8) {
+    Vec3f sp7C;
+    Vec3f sp70;
+    f32 pad;
+    f32 pad3;
+    Vec3f sp5C;
 
-//subroutine variables
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C4B1C.s")
+    SphericalToCartesian(&sp5C, 1000, arg6, 180);
+    sp7C.x = arg0.x - sp5C.x;
+    SphericalToCartesian(&sp5C, 1000, arg6, 180);
+    sp7C.y = arg0.y - sp5C.y;
+    SphericalToCartesian(&sp5C, 1000, arg6, 180);
+    sp7C.z = arg0.z - sp5C.z;
+    SphericalToCartesian(&sp5C, 1000, arg7, 180);
+    sp70.x = arg3.x - sp5C.x;
+    SphericalToCartesian(&sp5C, 1000, arg7, 180);
+    sp70.y = arg3.y - sp5C.y;
+    SphericalToCartesian(&sp5C, 1000, arg7, 180);
+    sp70.z = arg3.z - sp5C.z;
+    func_800C48B8(sp7C, sp70, arg0, arg3, arg8, 0);
+}
 
-void func_800C4C48(Vec3w arg0, f32 arg3, f32 arg4, f32 arg5, f32 arg6) {
+void func_800C4B1C(Camera* arg0, f32 arg1) {
+    Vec3f lerp1;
+    Vec3f lerp2;
+
+    arg1 = func_800B2308(arg1, 0);
+    Vec3f_Lerp(&lerp1, D_8020A298, D_8020D2A8, arg1);
+    Vec3f_Lerp(&lerp2, D_8020D5B8, D_8020D848, arg1);
+    func_800C3DCC(arg0, lerp1, lerp2, D_8020D858);
+}
+
+void func_800C4C48(Vec3f arg0, f32 arg3, f32 arg4, f32 arg5, f32 arg6) {
     D_8020D868 = arg0;
     D_8020D874 = arg3;
     D_8020D878 = arg4;
@@ -1687,7 +1768,8 @@ void func_800C4C48(Vec3w arg0, f32 arg3, f32 arg4, f32 arg5, f32 arg6) {
     D_8020D880 = arg6;
 }
 
-//really big wow
+//sphereicalToCartesian calcs
+//https://decomp.me/scratch/crsmT
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C4CAC.s")
 
 //angle stuff with actors

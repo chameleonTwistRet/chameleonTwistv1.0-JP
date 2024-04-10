@@ -183,7 +183,6 @@ extern s32 D_800FEDB8;
 extern Tongue* D_80176B70;
 extern PlayerActor* D_80176B74;
 extern Camera* D_80176B78;
-extern s32 currentStageCrowns;
 extern char D_8010CA1C[];
 extern char D_8010CA54[];
 extern Addr D_8C26A0;
