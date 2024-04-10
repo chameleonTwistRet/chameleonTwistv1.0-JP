@@ -1,9 +1,6 @@
 #include "5FF30.h"
 #include "sprite.h"
 
-
-
-
 /*const u8 D_800FEDC0[226][8] = {
 {104, 136, 1, 4, 1, 5, 25, 0},
 {104, 136, 1, 4, 1, 5, 25, 0},
@@ -367,7 +364,32 @@ void Sched_SetAudioTask(OSTask* arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/Audio_Dma.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80085290.s")
+void func_80085290(void) {
+    void* temp_s1;
+    unk_D_801FFB90* phi_s0 = D_801FFB90.unk_04;
+
+    D_800FF63C = 0;
+    if (phi_s0 != NULL) {
+        do {
+            temp_s1 = phi_s0->unk_00;
+            D_800FF63C += 1;
+            if ((u32) (phi_s0->unk_0C + 2) < D_80200054) {
+                if (phi_s0 == D_801FFB90.unk_04) {
+                    D_801FFB90.unk_04 = phi_s0->unk_00;
+                }
+                alUnlink((void*)phi_s0);
+                if (D_801FFB90.unk_08 != 0) {
+                    alLink((void*)phi_s0, D_801FFB90.unk_08);
+                } else {
+                    D_801FFB90.unk_08 = phi_s0;
+                    phi_s0->unk_00 = NULL;
+                    phi_s0->unk_04 = 0;
+                }
+            }
+            phi_s0 = temp_s1;
+        } while (temp_s1 != NULL);
+    }
+}
 
 f32 func_80085364(u8 arg0) {
     f32 var_f0;
@@ -1583,7 +1605,7 @@ CTTask* func_8008E9AC(s16 arg0, s16 arg1, s16 arg2, s16 arg3, s16* arg4) {
     task->pos.x = 0.0f;
     task->pos.y = 0.0f;
     task->pos.z = 0.0f;
-    task->unk58 = arg4;
+    task->unk58 = (CTTask*)arg4; //TODO: probably fix this
     D_801B3540 = 1;
     
     return task;
@@ -1608,9 +1630,57 @@ CTTask* func_8008EA60(s16 arg0, s16 arg1, s16 arg2, s16 arg3, s16* arg4) {
     return task;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008EB08.s")
+CTTask* func_8008EB08(s16 arg0, s16 arg1, s16 arg2, s16 arg3, s16* arg4, f32 arg5, f32 arg6, f32 arg7, f32 arg8, s16 arg9) {
+    CTTask* temp_v0;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008EBCC.s")
+    temp_v0 = CTTask_Alloc(1, arg9, NULL);
+    if (temp_v0 == NULL) {
+        DummiedPrintf("エラー\n");
+        while (1) {}
+    }
+    *arg4 = 0;
+    temp_v0->unk_5C = -arg0;
+    temp_v0->unk_64 = 0x117;
+    temp_v0->unk5E = arg1;
+    temp_v0->unk60 = arg2;
+    temp_v0->unk_62 = arg3;
+    temp_v0->unk7C = arg7;
+    temp_v0->unk80 = arg8;
+    temp_v0->pos.x = arg5;
+    temp_v0->pos.y = arg6;
+    temp_v0->pos.z = 0.0f;
+    temp_v0->function = func_8008E698;
+    temp_v0->unk58 = (CTTask*)arg4; //TODO: probably fix this
+    return temp_v0;
+}
+
+CTTask* func_8008EBCC(s16 arg0, s16 arg1, s16 arg2, s16 arg3, s16* arg4, f32 arg5, f32 arg6, f32 arg7, f32 arg8, s16 arg9) {
+    CTTask* temp_v0;
+
+    temp_v0 = CTTask_Alloc(1, arg9, NULL);
+    if (temp_v0 == NULL) {
+        DummiedPrintf("エラー\n");
+        while (1) {
+            
+        }
+    }
+
+    *arg4 = 0;
+    temp_v0->unk_5C = arg0;
+    temp_v0->unk_64 = -0x17;
+    temp_v0->unk5E = arg1;
+    temp_v0->unk60 = arg2;
+    temp_v0->unk_62 = arg3;
+    temp_v0->unk7C = arg7;
+    temp_v0->unk80 = arg8;
+    temp_v0->pos.x = arg5;
+    temp_v0->pos.y = arg6;
+    temp_v0->pos.z = 0.0f;
+    temp_v0->function = func_8008E698;
+    temp_v0->unk58 = (CTTask*)arg4; //TODO: probably fix this
+    *arg4 = 0;
+    return temp_v0;
+}
 
 s32 func_8008EC90(void) {
     if (D_801B3540 == 1) {
@@ -1626,8 +1696,27 @@ void func_8008EF78(CTTask* task) {
     CTTask_Unlink(task);
 }
 
-//rain finished this one but assigning to unk58 breaks it
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008EFA0.s")
+void func_8008EFA0(CTTask* arg0) {
+    arg0->unk_64 += arg0->unk_5C;
+    arg0->unk66 += arg0->unk_5C;
+    if (arg0->unk_64 >= 0xA1) {
+        arg0->unk_64 = 0xA0;
+    }
+    if (arg0->unk_64 < 0) {
+        arg0->unk_64 = 0;
+    }
+    if (arg0->unk66 >= 0x79) {
+        arg0->unk66 = 0x78;
+    }
+    if (arg0->unk66 < 0) {
+        arg0->unk66 = 0;
+    }
+    func_8008ECB8();
+    if (arg0->unk_64 == 0) {
+        arg0->unk58->runType = 1;
+        arg0->function = func_8008EF78;
+    }
+}
 
 CTTask* func_8008F050(s16 arg0, s16 arg1, s16 arg2, s16 arg3, s16* arg4) {
     CTTask* task = CTTask_Alloc(1, 240, 0);
@@ -1642,7 +1731,7 @@ CTTask* func_8008F050(s16 arg0, s16 arg1, s16 arg2, s16 arg3, s16* arg4) {
     task->unk60 = arg2;
     task->unk_62 = arg3;
     task->function = func_8008EFA0;
-    task->unk58 = (CTTask* ) arg4;
+    task->unk58 = (CTTask* )arg4;
     task->pos.x = 160;
     task->pos.y = 120;
     task->pos.z = 0;
@@ -1730,9 +1819,29 @@ void func_8008F16C(void) {
     Timing_StartProcess();
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008F694.s")
+s32 func_8008F694(s32 arg0) {
+    s32 var_a1;
+    UnkBg* var_s0;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008F710.s")
+    var_s0 = D_800FFE58[arg0];
+    for (; var_s0->unk4 != -1; var_s0++) {
+            if (LoadSprite(var_s0->unk4) != 0) {
+                DummiedPrintf("ＢＧロードエラー %d\n", var_s0->unk4);
+            }        
+    }
+    return 0;
+}
+
+void func_8008F710(CTTask* task) {
+    UnkBg* var_s0;
+    
+    var_s0 = D_800FFE58[task->unk_04];
+    for (; var_s0->unk4 != -1; var_s0++) {
+        s32 temp0 = var_s0->unk0;
+        s32 temp1 = var_s0->unk2;
+        func_8005C454(temp0, temp1, 0.0f, var_s0->unk4);    
+    }
+}
 
 CTTask* func_8008F7A4(s16 arg0, s16 arg1) {
     CTTask* newTask = CTTask_Alloc(1, arg1, NULL);
