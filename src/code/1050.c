@@ -522,7 +522,7 @@ Gfx* func_8002A824(graphicStruct* arg0, Gfx* gfxPos, PlayerActor* player, Tongue
         gSPMatrix(gfxPos++, OS_K0_TO_PHYSICAL(&arg0->tongueTranslate[playerIndex][32]), G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
         gSPMatrix(gfxPos++, OS_K0_TO_PHYSICAL(&arg0->tongueRotate[playerIndex][32]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
         gSPMatrix(gfxPos++, OS_K0_TO_PHYSICAL(&arg0->tongueScale[playerIndex][32]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
-        gSPDisplayList(gfxPos++, D_2006160);
+        gSPDisplayList(gfxPos++, Global_unusedStructure_Gfx);
         gSPPopMatrix(gfxPos++, G_MTX_MODELVIEW);
     }
 
@@ -805,16 +805,16 @@ Gfx* func_8002B7BC(graphicStruct* arg0, Gfx* gfxPos) {
                 break;
             case GOLEM:
                 gActors[i].unk_E8 = 0.0f;
-                gfxPos = func_8002B118(arg0, gfxPos, D_3058750, &gActors[i], 4.0f, 0, &sp178);
+                gfxPos = func_8002B118(arg0, gfxPos, JungleLand_unkunk_Gfx, &gActors[i], 4.0f, 0, &sp178);
                 break;
             case SPIDER_SPAWNER:
                 gActors[i].unk_E8 = 0.0f;
-                gfxPos = func_8002B118(arg0, gfxPos, D_30595A8, &gActors[i], 2.0f, 0, &sp178);
+                gfxPos = func_8002B118(arg0, gfxPos, JungleLand_unkunk2_Gfx, &gActors[i], 2.0f, 0, &sp178);
                 break;
             case FISH:
                 gActors[i].unk_E8 = 0.0f;
-                gfxPos = func_8002B118(arg0, gfxPos, D_305A738, &gActors[i], 1.4f, 0, &sp178);
-                gfxPos = func_8002B118(arg0, gfxPos, D_305B528, &gActors[i], 1.4f, 1, &sp178);
+                gfxPos = func_8002B118(arg0, gfxPos, JungleLand_unkunk3_Gfx, &gActors[i], 1.4f, 0, &sp178);
+                gfxPos = func_8002B118(arg0, gfxPos, JungleLand_unkunk4_Gfx, &gActors[i], 1.4f, 1, &sp178);
                 break;
             case LIZARD_KONG_BOULDER:
                 gActors[i].unk_E8 = gActors[i].unknownPositionThings[0].unk_10 / 2;

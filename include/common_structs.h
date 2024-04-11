@@ -45,23 +45,34 @@ typedef struct Rect3D {
 } Rect3D;
 
 typedef struct unkIsChange {
-    /* 0x00 */ char unk_00[8];
+    /* 0x00 */ s32 unk0;                            /* inferred */
+    /* 0x04 */ s32 unk4;                            /* inferred */
     /* 0x08 */ s32 unk_08;
     /* 0x0C */ s32 unk_0C;
     /* 0x10 */ s32 unk_10;
     /* 0x14 */ s32 unk_14;
     /* 0x18 */ s32 unk18;
-    /* 0x1C */ char unk_1C[0x24];
+    /* 0x1C */ f32 unk1C;                           /* inferred */
+    /* 0x20 */ f32 unk20;                           /* inferred */
+    /* 0x24 */ f32 unk24;                           /* inferred */
+    /* 0x28 */ char pad28[0x18];                    /* maybe part of unk24[7]? */
     /* 0x40 */ f32 unk40;
     /* 0x44 */ f32 unk44;
     /* 0x48 */ f32 unk48;
     /* 0x4C */ f32 unk4C;
     /* 0x50 */ f32 unk50;
     /* 0x54 */ f32 unk54;
-    /* 0x58 */ char unk_58[0x7C];
+    /* 0x58 */ char pad58[0xC];                     /* maybe part of unk54[4]? */
+    /* 0x64 */ s32 unk64;                           /* inferred */
+    /* 0x68 */ char pad68[0xC];                     /* maybe part of unk64[4]? */
+    /* 0x74 */ s32 unk74;                           /* inferred */
+    /* 0x78 */ s32 unk78;                           /* inferred */
+    /* 0x7C */ char pad7C[0x50];                    /* maybe part of unk78[0x15]? */
+    /* 0xCC */ s32 unkCC;                           /* inferred */
+    /* 0xD0 */ s32 unkD0;                           /* inferred */
     /* 0xD4 */ s32 unk_D4;
     /* 0xD8 */ s32 unk_D8;
-} unkIsChange;
+} unkIsChange;                                      /* size = 0xDC */
 
 typedef struct PlayerActor {
     /* 0x000 */ u32 playerID;
@@ -302,20 +313,22 @@ typedef struct Collision {
     //(will usually crash any room going into it if it doesnt match)
     /* 0x24 */ s32 unk24;
     /* 0x28 */ s32 unk28;
-    /* 0x2C */ f32 unk2C;
+    /* 0x2C */ s32 unk2C;
     /* 0x30 */ Rect3D roomBounds;
     /* 0x48 */ Rect3D rect_48;
     /* 0x60 */ s32 unk60;
     /* 0x64 */ s32 unk64;
     /* 0x68 */ s32 unk68;
-    /* 0x6C */ char pad6C[0xC];                     /* maybe part of unk68[4]? */
+    /* 0x6C */ char pad6C[4];
+    /* 0x70 */ s32 unk70;                           /* inferred */
+    /* 0x74 */ s32 unk74;                           /* inferred */
     /* 0x78 */ s32 unk78;
     /* 0x7C */ s32 unk7C; //boss flag?
     /* 0x80 */ s32 unk80;
     /* 0x84 */ s32 unk84;
-    /* 0x88 */ char pad88[4];
+    /* 0x88 */ s32 unk88;                           /* inferred */
     /* 0x8C */ s32 unk8C;
-    /* 0x90 */ char pad90[4];
+    /* 0x90 */ f32 unk90;                           /* inferred */
     /* 0x94 */ s32 cameraMode;
     //basically an enum, has a ton of different (usually dungeon based) angles
     //it feels like most of them can be seen in the credits, though this definitely needs more research
@@ -324,7 +337,11 @@ typedef struct Collision {
     /* 0xA4 */ f32 unkA4;
     /* 0xA8 */ f32 unkA8;
     /* 0xAC */ f32 unkAC;
-    /* 0xB0 */ char padB0[0x1C];                    /* maybe part of unkAC[8]? */
+    /* 0xB0 */ f32 unkB0;                           /* inferred */
+    /* 0xB4 */ s16 unkB4;                           /* inferred */
+    /* 0xB6 */ s16 unkB6;                           /* inferred */
+    /* 0xB8 */ s16 unkB8;                           /* inferred */
+    /* 0xBA */ char padBA[0x12];                    /* maybe part of unkB8[0xA]? */
     /* 0xCC */ f32 unkCC;                           /* inferred */
     /* 0xD0 */ f32 unkD0;
     /* 0xD4 */ char padD4[4];
@@ -398,6 +415,12 @@ typedef struct CollisionData{
     Rect3D* settingsStart; //segmented
 } CollisionData;
 
+typedef struct LevelPointer{
+    void* Graphics; //type Gfx*, but it throws 3000 errors. wtf???
+    CollisionData* Collisions;
+    char pad[0x28];
+} LevelPointer;
+
 typedef struct Collider {
     /* 0x000 */ s32 unk_00;
     /* 0x004 */ s32 unk_04;
@@ -429,7 +452,7 @@ typedef struct Collider {
     /* 0x09C */ f32 unk_9C;
     /* 0x0A0 */ f32 unk_A0;
     /* 0x0A4 */ f32 unkA4;
-    /* 0x0A8 */ f32 unkA8;                          /* inferred */
+    /* 0x0A8 */ f32 unkA8;
     /* 0x0AC */ s32 unk_AC;
     /* 0x0B0 */ s32 unk_B0;
     /* 0x0B4 */ s32 unk_B4;
@@ -441,12 +464,14 @@ typedef struct Collider {
     /* 0x0CC */ Rect3D unk_CC;
     /* 0x0E4 */ void* unk_E4;
     /* 0x0E8 */ CollisionData* collisionData;
-    /* 0x0EC */ Gfx* gfx; //segmented, usually in levelData (rom)
-    /* 0x0F0 */ char padF0[8];
+    /* 0x0EC */ Gfx* gfx;
+    /* 0x0F0 */ char padF0[4];
+    /* 0x0F4 */ void* unkF4;                        /* inferred */
     /* 0x0F8 */ void (*function)(struct Collider*);
     /* 0x0FC */ void* unk_FC;
     /* 0x100 */ void* unk_100;
-    /* 0x104 */ char pad104[0xC];                   /* maybe part of unk_100[4]? */
+    /* 0x104 */ char pad104[8];                     /* maybe part of unk_100[3]? */
+    /* 0x10C */ s32 unk10C;                         /* inferred */
     /* 0x110 */ s32 unk_110;
     /* 0x114 */ s32 unk_114;
     /* 0x118 */ s32 unk_118;
@@ -532,21 +557,6 @@ typedef struct unk80100F50 {
 typedef struct frameBufferData {
     /* 0x00 */ char data[0x25800]; // h*W*colDepth
 } frameBufferData; //sizeof 0x25800
-
-typedef struct unkSpriteStruct2 {
-    /* 0x00 */ s32 unk_00;
-    /* 0x04 */ char unk_04[0x1C];
-} unkSpriteStruct2; //sizeof 0x20
-
-typedef struct unkSpriteStruct3 {
-    /* 0x00 */ s32 unk_00;
-    /* 0x68 */ char unk_04[0x68];
-} unkSpriteStruct3; //sizeof 0x6C
-
-typedef struct unkSpriteStruct4 {
-    /* 0x00 */ s32 unk_00;
-    /* 0x04 */ char unk_04[0x4C];
-} unkSpriteStruct4; //sizeof 0x50
 
 typedef struct tempStruct {
     /* 0x00 */ char unk_00[60];
@@ -947,12 +957,7 @@ typedef struct Door {
     s32 index;
     s32 unk4; //not read?
     s32 inZone;
-    f32 minX;
-    f32 minZ;
-    f32 maxX;
-    f32 maxZ;
-    f32 toX;
-    f32 toZ;
+    Rect3D rect;
     Vec3f max;
     u32 direction; // index in gCardinalDirections
     s32 unk34; //not read?
@@ -991,10 +996,10 @@ typedef struct UnkType2 {
 } UnkType2;
 
 typedef struct RoomSettings {
-    u32 RoomObjectsPointer;
-    u32 RoomActorPointer;
-    u32 CollectablePointer;
-    u32 SpriteActorPointer;
+    RoomObject* RoomObjectsPointer;
+    RoomActor* RoomActorPointer;
+    Collectable* CollectablePointer;
+    SpriteActor* SpriteActorPointer;
     s32 unk10;
     s32 unk14;
     s32 amountOfSpriteActors; //needs verification
@@ -1006,18 +1011,20 @@ typedef struct RoomSettings {
     f32 unk30;
     f32 unk34;
     f32 unk38;
-    s32 unk3C;
-    s32 unk40;
-    s32 unk44;
+    f32 unk3C;
+    f32 unk40;
+    f32 unk44;
     f32 unk48;
-    s32 unk4C;
-    s32 unk50;
+    s16 unk4C;
+    s16 unk4E;
+    s16 unk50;
+    s16 unk52;
     s32 unk54;
     s32 unk58;
     s32 unk5C;
     s32 unk60;
     f32 unk64;
-    s32 unk68;
+    f32 unk68;
 } RoomSettings;
 
 typedef struct LevelMap {
@@ -1075,6 +1082,12 @@ typedef struct Anim {
     s32 frames;
     s32 objects;
 } Anim;
+
+typedef struct AnimPointer {
+    s32* unk1;
+    s32* unk2;
+    Mtx* animation;
+} AnimPointer;
 
 typedef struct unk80174880 {
 /* 0x00 */ s32 unk_00[4];

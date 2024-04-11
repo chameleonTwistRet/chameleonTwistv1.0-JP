@@ -453,10 +453,12 @@ void func_800C1458(s32);
 //84e0.c
 void func_800314E4(Actor*);
 void pickup_collide_func(s32 actorIndex);
+void func_80036D74(PlayerActor* arg0, Tongue* arg1);
 //poly.c
 void func_800CFDC8(PlayerActor*);
 void func_800D3854(PlayerActor*, Tongue*, Camera*, Vec3f*, Vec3f*, s32);
 void func_800D69D0(s32, PlayerActor*, Tongue*, Camera*, Vec3f*, Vec3f*, s32);
+void ClearPolygon(void);
 //sprite.c
 void func_8007633C(f32, f32, f32, f32);
 void func_80078294(f32, f32, f32, f32, s32);

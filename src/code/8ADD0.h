@@ -69,17 +69,18 @@ s32 func_800B3564(s32 arg0);
 void func_800B35B0(s32 arg0);
 void func_800B35FC(s32 arg0);
 void func_800B3648(s32 arg0);
+void func_800B3698(PlayerActor*);
 void ResetStageModels(void);
-s32 func_800B3D38(RoomObject* obj);
-s32 func_800B3D9C(RoomObject* obj);
-s32 func_800B3DFC(unkSpriteStruct* sprite);
-s32 func_800B3E1C(unkSpriteStruct* arg0);
-s32 func_800B3E7C(unkSpriteStruct2* sprite);
-s32 func_800B3E9C(unkSpriteStruct2* arg0);
-s32 func_800B3EFC(unkSpriteStruct3* sprite);
-s32 func_800B3F1C(unkSpriteStruct3* arg0);
-s32 func_800B3F7C(unkSpriteStruct4* sprite);
-s32 func_800B3F9C(unkSpriteStruct4* arg0);
+s32 IsRoomObjInvalid(RoomObject* obj);
+s32 GetRoomObjCount(RoomObject* obj);
+s32 IsRoomActInvalid(RoomActor* actor);
+s32 GetRoomActCount(RoomActor* actor);
+s32 IsCollectableInvalid(Collectable* clct);
+s32 GetCollectableCount(Collectable* clct);
+s32 IsRoomInvalid(RoomSettings* room);
+s32 GetRoomCount(RoomSettings* room);
+s32 IsSpriteActInvalid(SpriteActor* sprite);
+s32 GetSpriteActCount(SpriteActor* arg0);
 s32 func_800B3FFC(Collider* arg0, s32 arg1);
 void func_800B402C(Collider*, s32, s32);
 void func_800B4070(Collider* arg0);
@@ -94,9 +95,12 @@ void checkRoomItem(s32);
 void EraseRoomItem(s32);
 void func_800B4F14(s32, f32*, f32*, f32*);
 void func_800B4FCC(void);
+void func_800B5314(void);
 void func_800B5600(void);
 void func_800B560C(s32 arg0);
+void func_800B5640(void);
 void func_800B56D4(f32 arg0, f32 arg1);
+void func_800B56E8(void);
 s32 func_800B5878(Rect3D* arg0);
 s32 func_800B5908(Collider* collider, f32 yMod);
 void func_800B5A98(Collider*, RoomObject*);
@@ -104,8 +108,10 @@ void func_800B5C60(tempStruct*);
 void func_800B5D68(Collider*, s32);
 void func_800B602C(Collider* arg0, s32 arg1);
 void func_800B6040(Collider* arg0);
-void func_800B6054(Collider* arg0, s32 arg1);
+void func_800B6054(Collider* arg0, RoomObject* arg1);
 void func_800B6078(Collider* arg0);
+void func_800B6098(Collider* arg0, RoomObject* arg1);
+void func_800B61FC(Collider* arg0);
 void func_800B6CD8(Collider* arg0, RoomObject* arg1);
 void func_800B6D24(tempStruct* arg0);
 void func_800BA2D0(Collider* arg0, RoomObject* arg1);
@@ -135,17 +141,20 @@ void func_800BF84C(s32 collision);
 const char* GetDirectionName(s32 arg0);
 void ChameleonFromDoor(PlayerActor* player, s32 arg1, s32 arg2, s32 arg3, s32 arg4);
 void func_800C0AEC(void);
+void func_800C0B74(void);
 void func_800C0CDC(PlayerActor* arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4);
 void func_800C0E78(s32 arg0);
 void CheckDoor(PlayerActor*);
 void func_800C1204(s32, PlayerActor*, s32, s32, s32); 
 void func_800C1458(s32 arg0);
-s32 func_800C1550(s32 arg0);
 void func_800C1510(s32 arg0, s32 arg1);
+s32 func_800C1550(s32 arg0);
+void func_800C15AC(RoomSettings* arg0, s32 arg1);
 void InitFieldSubScroll(s32, Collision*, s32, s32);
 void func_800C198C(s32, Collision*);
 void func_800C1B70(void);
 void func_800C1C64(s32 arg0);
+void func_800C1CE0(PlayerActor*);
 void func_800C2670(s32, PlayerActor*, s32);
 void func_800C2A00(void);
 void enterBossRoom(void);
@@ -234,5 +243,47 @@ extern Collider* D_802025B8[];
 extern s32 D_80236970;
 s32 func_80083F18(SpriteActor*);                      /* extern */
 s32 func_800AF604(f32, f32, f32, f32);              /* extern */
+
+void func_800B5224(f32, s32*, s32*);                   /* extern */
+void func_800BE714(void);                                  /* extern */
+extern s32 Battle_Stage;
+extern f32 D_80202510;
+extern f32 D_80202514;
+extern f32 D_80202518;
+extern s32 D_8020251C;
+extern s32 D_80202520;
+extern s32 D_80202524;
+extern s32 D_80202528;
+extern s32 D_8020252C;
+
+typedef struct colliderFuncStruct{
+    void (*function)(Collider*);
+    s32 id;
+    void (*function2)(Collider*, RoomObject*);
+}colliderFuncStruct;
+extern colliderFuncStruct D_8010889C[];
+extern s32 D_801749A0;
+
+void func_800B4574(u8*, s16*);                         /* extern */
+void func_800C1BF0(s32);                          /* extern */
+s32 func_800C250C(PlayerActor*);                    /* extern */
+
+
+extern u8 D_802023B0;
+extern s16 D_802023D8;
+extern s32 D_8020D8A4;
+extern f32 D_8020D8DC;
+extern f32 D_8020D8E0;
+extern f32 D_8020D8E4;
+extern s32 D_8020D960;
+extern s32 D_8020D964;
+extern s32 gNextZone;
+extern s32 isFirstZone;
+
+s32 func_800B47DC(s32);                             /* extern */
+void func_800B4884(RoomSettings*);                     /* extern */
+void func_800BE7F0(void);                                  /* extern */
+extern RoomSettings* D_802478F0;
+extern s32 D_80247904;
 
 #endif // _8ADD0_H_

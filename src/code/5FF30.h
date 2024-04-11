@@ -531,7 +531,6 @@ void AdjustRectToVec3(Rect3D* r, Vec3f vec);
 void Rect_Expand(Rect3D* r, f32 s);
 void OrderRectBounds(Rect3D *rect);
 s32 IfRectsIntersect(Rect3D* rectA, Rect3D* rectB);
-s32 IsPointInRect(Vec3f point, Rect3D* rect);
 void CalculateBoundingRectFromVectors(Vec3f vecA, Vec3f vecB, Rect3D* rect);
 //////
 
