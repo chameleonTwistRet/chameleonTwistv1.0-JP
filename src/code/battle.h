@@ -14,19 +14,6 @@ typedef struct BattlePlayerData {
     /* 0x20 */ s32 rank;
 } BattlePlayerData; //sizeof 0x24
 
-typedef struct unk_80052094_8 {
-    /* 0x00 */ f32 unk_00;
-    /* 0x08 */ s32 unk_04;
-} unk_80052094_8; //sizeof 0x8
-
-typedef struct unkStruct16 {
-Addr* unk0;
-Addr* unk4;
-void* unk8;
-s32 unkC;
-f32 unk10;
-} unkStruct16;
-
 enum BattleStages {
     BATTLE_STAGE_INIT = 0,
     BATTLE_STAGE_INVALID = 1,
@@ -48,16 +35,15 @@ enum BattleTypes {
 };
 
 /* Functions */
-void Effect_TypeO_Init(s32, s32, s32, s32, s32);
 void func_80058BE4(Mtx* arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, s32 arg7);
 void func_80059F28(f32, f32, f32, f32, f32, f32, f32, f32, s32);
-void Effect_TypeAG_Init(f32, f32, s32);
-void Effect_TypeAH_Init(u8*, f32, f32, f32, f32, unkStruct16*, s32, s32, s32);
-void func_80077688(f32, f32, f32, f32, s32, unk_80052094_8*, s32, s32, f32, f32, f32);
-void func_800771DC(s32*, f32, f32, s32, s32, s32*, f32, f32, f32, f32);
+void Effect_TypeAZ_Init(f32, f32, f32, f32, s32, unk_80052094_8*, s32, s32, f32, f32, f32);
+void Effect_TypeAY_Init(Struct_80076EA0* arg0, f32 arg1, f32 arg2, s32 arg3, s32 arg4, s32* arg5, f32 arg6, f32 arg7, f32 arg8, f32 arg9);
 s32 func_80080318(s32, s32, s32*, s32*);
 s32 func_8008BFE0(s32);
 s32 func_8008BE14(void);
+void func_800A0D90(void);
+void Effect_TypeAO_Init(void);
 void func_80073090(void);
 
 /* Ext Variables */
@@ -67,7 +53,7 @@ extern s16 gSelectedBattleBGM;
 extern s32 D_800F0674;
 extern unkStruct16 D_800F0D90[];
 extern unkStruct16 D_800F0DE0[];
-extern s32 D_800FE404;
+extern Struct_80076EA0 D_800FE404[];
 extern RGBA32 D_800FE564[];
 extern s32 D_800FE74C;
 
@@ -76,5 +62,8 @@ extern unk_80052094_8 Battle_MsgGo[];
 
 extern s32 Battle_GameType;
 extern s32 gTimeTrialDuration;
+
+extern u32 Battle_Time;
+extern s32 Battle_Stage;
 
 #endif  //_BATTLE_H_

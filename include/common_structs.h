@@ -120,6 +120,24 @@ typedef struct PlayerActor {
     /* 0x12C */ f32 tongueSeperation; 
 } PlayerActor; //sizeof 0x130
 
+typedef struct EffectTypeAQArg7 {
+    /* 0x0 */ u8 unk_0;
+    /* 0x1 */ u8 unk_1;
+} EffectTypeAQArg7; //sizeof 0x2
+
+typedef struct unk_80052094_8 {
+    /* 0x00 */ f32 unk_00;
+    /* 0x08 */ s32 unk_04;
+} unk_80052094_8; //sizeof 0x8
+
+typedef struct Struct_80076EA0 {
+    /* 0x00 */ f32 unk_00;
+    /* 0x04 */ f32 unk_04;
+    /* 0x08 */ f32 unk_08;
+    /* 0x0C */ s32 unk_0C;
+    /* 0x10 */ char* unk_10;
+    /* 0x14 */ s32 unk_14;
+} Struct_80076EA0; // sizeof 0x18
 
 typedef struct TonguePos{
     /* 0x00 */ f32 positions[32];
@@ -647,7 +665,11 @@ typedef struct unkStruct02 {
     /* 0x0C */ char unk_0C[0x74];
 } unkStruct02; //is this actually size 0x80?
 
-
+typedef struct TimeVal {
+    /* 0x00 */ u8 b0;
+    /* 0x01 */ u8 b1;
+    /* 0x02 */ u8 b2;
+} TimeVal; //sizeof 0x3
 
 typedef struct SaveFile {
     /* 0x00 */ u8 checksum;
@@ -667,7 +689,7 @@ typedef struct SaveFile {
     /* 0x33 */ u8 unk33; //copies D_8020d8a8
     /* 0x34 */ u8 unk34[16]; //stores D_802023e0[]
     /* 0x44 */ u8 stageCrowns;
-    /* 0x45 */ u8 stageTimes[8][3];
+    /* 0x45 */ TimeVal stageTimes[8];
     /* 0x5D */ u8 carrotBitfield; 
     /* 0x5E */ u8 UNK_5E[2]; //first also copies CARROT progress.
 } SaveFile; //sizeof 0x60
@@ -697,7 +719,7 @@ typedef struct EffectPart {
     /* 0x18 */ f32 lifeTime;
     /* 0x1C */ f32 sizeX;
     /* 0x20 */ f32 sizeY;
-    /* 0x24 */ s8 unk_24;
+    /* 0x24 */ u8 unk_24;
     /* 0x25 */ u8 unk_25;
     /* 0x26 */ char pad_26[2];
 } EffectPart; //sizeof 0x28
@@ -721,6 +743,14 @@ typedef struct Effect {
     /* 0x40 */ struct Effect* previous;
     /* 0x44 */ struct Effect* next;
 } Effect; //sizeof 0x48
+
+typedef struct unkStruct16 {
+    /* 0x00 */ void* unk0;
+    /* 0x04 */ void* unk4;
+    /* 0x08 */ u8* unk8;
+    /* 0x0C */ s32 unkC;
+    /* 0x10 */ f32 unk10;
+} unkStruct16; // sizeof 0x14
 
 typedef struct bf8{
     /* 0x00 */ s16 unk0;
