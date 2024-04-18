@@ -34,14 +34,14 @@ void func_800D87F8(Collider* arg0, s32 sfxID, s32 arg2) {
     }
 }
 
-void func_800D887C(Collider* arg0, s32 arg1, s32 arg2) {
+void func_800D887C(Collider* arg0, s32 sfxID, s32 arg2) {
     s32 new_var;
     if (((new_var = arg0->unk_00) == D_80168E24) && (((new_var + D_801749A0) % arg2) == 0)) {
-        func_80088698(PLAYSFXAT(arg1, arg0->sfxPos, 0, 0));
+        func_80088698(PLAYSFXAT(sfxID, arg0->sfxPos, 0, 0));
     }
 }
 
-void func_800D8918(Collider* arg0, s32 arg1, s32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7, f32 arg8) {
+void func_800D8918(Collider* arg0, s32 sfxID, s32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7, f32 arg8) {
     f32 temp_f0_2;
     s32 var_v0;
     f32 xPos;
@@ -90,12 +90,12 @@ void func_800D8918(Collider* arg0, s32 arg1, s32 arg2, f32 arg3, f32 arg4, f32 a
             sp34.z = (arg4 * 1.0f) + (var_f12 - sp44) * SQROOT_2_DIV_2;
             sp34.y = gPlayerActors[zero].pos.y; 
             sp34.x = (arg3 * 1.0f) + (sp44 + var_f12) * SQROOT_2_DIV_2;
-            func_80088698(PlaySoundEffect(arg1, &sp34.z, &sp34.y, &sp34.x, 8, 0));
+            func_80088698(PlaySoundEffect(sfxID, &sp34.z, &sp34.y, &sp34.x, 8, 0));
         }
     }
 }
 
-void func_800D8B28(Collider* arg0, s32 arg1, s32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7, f32 arg8) {
+void func_800D8B28(Collider* arg0, s32 sfxID, s32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7, f32 arg8) {
     f32 temp_f12;
     f32 temp_f0;
     f32 temp_f16;
@@ -146,7 +146,7 @@ void func_800D8B28(Collider* arg0, s32 arg1, s32 arg2, f32 arg3, f32 arg4, f32 a
             sp30.y = gPlayerActors[zero].pos.y;
             //sp30.y = D_80168DB0;
             sp30.x = arg3 + sp3C;
-            func_80088698(PlaySoundEffect(arg1, &sp30.z, &sp30.y, &sp30.x, 0, 0));
+            func_80088698(PlaySoundEffect(sfxID, &sp30.z, &sp30.y, &sp30.x, 0, 0));
         }
     }
 }
@@ -158,7 +158,7 @@ void func_800D8CF0(Collider* arg0, s32 sfxID) {
     }
 }
 
-void func_800D8D58(Collider* arg0) {func_800D8918(arg0, 0x55, 0x1E, -12800.0f, 19600.0f, 700.0f, 1500.0f, 1000.0f, 2000.0f);}
+void func_800D8D58(Collider* arg0) {func_800D8918(arg0, SFX_55_unkSnd, 0x1E, -12800.0f, 19600.0f, 700.0f, 1500.0f, 1000.0f, 2000.0f);}
 
 void func_800D8DBC(Collider* arg0) {
     func_800D8628(arg0, 0x59, 0x2D);
@@ -180,17 +180,17 @@ void func_800D8E4C(Collider* arg0) {
     func_800D8628(arg0, 0x89, 0x1E);
 }
 
-void func_800D8E70(Collider* arg0) {func_800D8918(arg0, 0x89, 0x1E, 6000.0f, 6000.0f, 600.0f, 1500.0f, 500.0f, 2000.0f);}
+void func_800D8E70(Collider* arg0) {func_800D8918(arg0, SFX_89_unkSnd, 0x1E, 6000.0f, 6000.0f, 600.0f, 1500.0f, 500.0f, 2000.0f);}
 
-void func_800D8ED4(Collider* arg0) { func_800D8918(arg0, 0x89, 0x1E, 2200.0f, 1400.0f, 700.0f, 1000.0f, 500.0f, 2000.0f);}
+void func_800D8ED4(Collider* arg0) { func_800D8918(arg0, SFX_89_unkSnd, 0x1E, 2200.0f, 1400.0f, 700.0f, 1000.0f, 500.0f, 2000.0f);}
 
-void func_800D8F3C(Collider* arg0) {func_800D8918(arg0, 0x89, 0x1E, -8500.0f, 24000.0f, 600.0f, 2500.0f, 1000.0f, 1000.0f);}
+void func_800D8F3C(Collider* arg0) {func_800D8918(arg0, SFX_89_unkSnd, 0x1E, -8500.0f, 24000.0f, 600.0f, 2500.0f, 1000.0f, 1000.0f);}
 
-void func_800D8F9C(Collider* arg0) {func_800D8B28(arg0, 0x89, 0x1E, -5100.0f, 25300.0f, 600.0f, 2500.0f, 1000.0f, 1000.0f);}
+void func_800D8F9C(Collider* arg0) {func_800D8B28(arg0, SFX_89_unkSnd, 0x1E, -5100.0f, 25300.0f, 600.0f, 2500.0f, 1000.0f, 1000.0f);}
 
-void func_800D8FFC(Collider* arg0) {func_800D8B28(arg0, 0x89, 0x1E, 0, 25300.0f, 600.0f, 2500.0f, 1000.0f, 1000.0f);}
+void func_800D8FFC(Collider* arg0) {func_800D8B28(arg0, SFX_89_unkSnd, 0x1E, 0, 25300.0f, 600.0f, 2500.0f, 1000.0f, 1000.0f);}
 
-void func_800D9058(Collider* arg0) {func_800D8918(arg0, 0x89, 0x1E, 5100.0f, 23600.0f, 3000.0f, 600.0f, 1000.0f, 1000.0f);}
+void func_800D9058(Collider* arg0) {func_800D8918(arg0, SFX_89_unkSnd, 0x1E, 5100.0f, 23600.0f, 3000.0f, 600.0f, 1000.0f, 1000.0f);}
 
 void func_800D90B8(Collider* arg0) {
     func_800D86A4(arg0, 0xA0, -1, 0x1E);
