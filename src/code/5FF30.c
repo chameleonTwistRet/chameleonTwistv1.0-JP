@@ -3672,8 +3672,7 @@ void func_8009A988(CTTask* arg0) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/MakeSave
-.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/MakeSaveMaster.s")
 
 void func_8009ABF4(CTTask* arg0) {
     if (func_8008EC90() != 0) {
