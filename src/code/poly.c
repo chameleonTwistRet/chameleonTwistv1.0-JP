@@ -5,6 +5,7 @@ extern char D_801103D0[];
 
 extern f64 D_801104F8;
 extern s32 D_80236974;
+extern Collision gZoneCollisions[];
 extern Collider D_80236980[128];
 extern s32 D_8020D8F4;
 extern f64 D_801106A0;
@@ -39,8 +40,10 @@ char D_802489C0[0x08];
 Vec3f D_802489C8[8];
 char D_80248A28[0x08];
 
+void func_800D3854(PlayerActor*, Tongue*, Camera*, Vec3f*, Vec3f*, s32);
 void func_800D5394(PlayerActor*, Tongue*, Camera*, Vec3f*, Vec3f*, s32);
 void func_800D6864(PlayerActor*, Tongue*, Camera*, Vec3f*, Vec3f*);
+void func_800D69D0(s32, PlayerActor*, Tongue*, Camera*, Vec3f*, Vec3f*, s32);
 Collider* func_800CAF88(Vec3f, f32, f32);
 Collider* SearchPolygonBetween(Vec3f, Vec3f, s32, s32, s32);
 void OrderRectBounds(Rect3D*);
@@ -245,7 +248,7 @@ void func_800CFF7C(Vec3f* arg0) {
                 arg0->z = arg0->z * temp_f0_2;
             }
         } else {
-            temp_v0 = &gZoneCollisions[gCurrentZone].roomBounds;
+            temp_v0 = &gZoneCollisions[gCurrentZone].rect_30;
             
             if (temp_v0->min.x > arg0->x ) {
                 arg0->x = temp_v0->min.x;
@@ -338,9 +341,9 @@ void func_800D4550(s32 arg0, s32 arg1, Poly* arg2, Vec3f* arg3, Vec3f* arg4) {
     arg3->x = temp_v0->unkA4;
     arg3->y = temp_v0->unkA8 + (temp_v0->unkD0 * arg2->unkVectorStruct.vec1.x);
     arg3->z = temp_v0->unkAC;
-    arg4->x = temp_v0->cameraAnchor.x;
-    arg4->y = temp_v0->cameraAnchor.y + (temp_v0->unkD0 * arg2->unkVectorStruct.vec1.x);
-    arg4->z = temp_v0->cameraAnchor.z;
+    arg4->x = temp_v0->unk98;
+    arg4->y = temp_v0->unk9C + (temp_v0->unkD0 * arg2->unkVectorStruct.vec1.x);
+    arg4->z = temp_v0->unkA0;
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800D45D8.s")
@@ -399,7 +402,7 @@ void SetCameraParameters(void) {
     } else if ((D_80236974 == 1) && (D_8020D8F4 == 0)) {
         func_800D3854(gPlayerActors, gTongues, gCamera, &sp3C, &sp30, 0);
     } else if (gCamera[0].unk0 == 1) {
-        func_800D69D0(temp->cameraMode, gPlayerActors, gTongues, gCamera, &sp3C, &sp30, 0);
+        func_800D69D0(temp->unk94, gPlayerActors, gTongues, gCamera, &sp3C, &sp30, 0);
     } else {
         func_800D5394(gPlayerActors, gTongues, gCamera, &sp3C, &sp30, 0);
     }

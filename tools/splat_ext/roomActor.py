@@ -10,7 +10,8 @@ import re
 import struct
 from pathlib import Path
 from splat.util.log import error
-from splat.util import options, symbols
+
+from splat.util import options
 from splat.segtypes.common.codesubsegment import CommonSegCodeSubsegment
 
 
@@ -59,37 +60,21 @@ class N64SegRoomActor(CommonSegCodeSubsegment):
 
         lines = []
 
-        sym = self.retrieve_sym_type(symbols.all_symbols_dict, self.vram_start, "Roomact")
-        if not sym:
-            sym = self.create_symbol(
-                addr=self.vram_start, in_segment=True, type="Roomact", define=True
-            )
+        sym = self.create_symbol(
+            addr=self.vram_start, in_segment=True, type="data", define=True
+        )
         if not self.data_only:
             lines.append('#include "common.h"')
             lines.append("")
-            lines.append("RoomActor %s = {" % (sym.name))
+            if "/" in self.name:
+                lines.append("RoomActor %s = {" % (self.name.split("/")[(len(self.name.split("/"))-1)]))
+            else:
+                lines.append("RoomActor %s = {" % (self.name))
 
-        data = struct.unpack('>iffffffifffiffffiiiiiiii', sprite_data)
-        i = 0
-        while i < len(data):
-            use = data[i]
-            if i == 0: #Actor ID
-                enums = open("include/enums.h", "r", encoding="UTF-8").readlines()
-                reading = False
-                for enumLine in enums:
-                    if enumLine.find("actorIDs") != -1: reading = True
-                    elif reading:
-                        info = enumLine.split(" = ")
-                        actorAt = int(info[-1].replace(",", "").split("//")[0].strip())
-                        name = info[0].strip()
-                        if actorAt == use:
-                            use = name
-                            break
-            elif i == 1: #Position
-                use = "{"+str(data[i])+","+str(data[i+1])+","+str(data[i+2])+"}"
-                i += 2
-            lines.append(f"    {use},")
-            i += 1
+        byteData = bytearray(sprite_data)
+        data = struct.unpack('>iffffffifffiffffiiiiiiii', byteData)
+        for v in data: 
+            lines.append(f"    {v},")
 
         if not self.data_only:
             lines.append("};")

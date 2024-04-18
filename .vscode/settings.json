@@ -34,7 +34,6 @@
         "mod.h": "c",
         "battle.h": "c",
         "30a4c.h": "c",
-        "limits": "c",
-        "functions.jp.h": "c"
+        "limits": "c"
     }
 }

@@ -212,7 +212,7 @@ void DisableInput(void);
 void EnableInput(void);
 s32 func_80055C90(void);
 s32 func_80055E5C(s32); // arg is controller #define
-s32 func_80055EEC(s32);
+void func_80055EEC(s32);
 s32 func_80055F10(s32, s32);
 void func_80055FA4(void);
 void func_80055FBC(s32);
@@ -272,9 +272,9 @@ void func_8006BE4C(f32, f32, f32, f32);
 void func_8006C368(f32, f32, f32);
 void LoadPlayerEyes(s32);
 void FreePlayerEyes(s32);
-u32 Effect_PlayerEyes_Init(s32, s32, f32, s32);
+u32 InitPlayerEyeController(s32, s32, f32, s32);
 void SetPlayerContextEyes(s32, s32, s32);
-void Effect_TypeZ_Create(f32, f32, f32, f32, f32, s32);
+void func_8006E16C(f32, f32, f32, f32, f32, s32);
 void func_8006F8D8(f32, f32, f32);
 void func_80089BA0(void);
 void func_80072B1C(void*, void*);
@@ -453,16 +453,8 @@ void func_800C1458(s32);
 //84e0.c
 void func_800314E4(Actor*);
 void pickup_collide_func(s32 actorIndex);
-void func_80036D74(PlayerActor* arg0, Tongue* arg1);
 //poly.c
 void func_800CFDC8(PlayerActor*);
-void func_800D3854(PlayerActor*, Tongue*, Camera*, Vec3f*, Vec3f*, s32);
-void func_800D69D0(s32, PlayerActor*, Tongue*, Camera*, Vec3f*, Vec3f*, s32);
-void ClearPolygon(void);
-//sprite.c
-void func_8007633C(f32, f32, f32, f32);
-void func_80078294(f32, f32, f32, f32, s32);
-
 
 //funcs from 8add0 that are called from other c's
 //b39a0.c
@@ -501,7 +493,6 @@ void func_8004E784(ContMain* arg0, s32 arg1, s32* arg2, ContMain* arg3);
 void func_800B4408(u8*, s16*);
 //84e0.c
 void func_8004DDE0(void);
-void Effect_BossDeadEyes_Init(s32 arg0);
 
 //funcs from 5ff30 that are called from other c's
 //battle.c

@@ -1074,10 +1074,10 @@ void pickup_collide_func(s32 actorIndex) {
     actor->actorID = 0;
     
     if (var_s0 == 0) {
-        Effect_PlayerEyes_Init(gSelectedCharacters[gCurrentActivePlayerPointer->playerID], 2, 50.0f, 0);
+        InitPlayerEyeController(gSelectedCharacters[gCurrentActivePlayerPointer->playerID], 2, 50.0f, 0);
         return;
     }
-    Effect_PlayerEyes_Init(gSelectedCharacters[gCurrentActivePlayerPointer->playerID], 1, var_s0, 0);
+    InitPlayerEyeController(gSelectedCharacters[gCurrentActivePlayerPointer->playerID], 1, var_s0, 0);
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80034104.s")
@@ -1722,7 +1722,7 @@ void ActorInit_ChocoKid(Actor* trainingRoomChocoKidActor) {
     trainingRoomChocoKidActor->unk_134[1] = trainingRoomChocoKidActor->pos.z;
     trainingRoomChocoKidActor->unk_94 = trainingRoomChocoKidActor->position._f32.x;
     trainingRoomChocoKidActor->unk_134[0] = trainingRoomChocoKidActor->pos.x;
-    Effect_TypeZ_Create(trainingRoomChocoKidActor->pos.x, trainingRoomChocoKidActor->pos.y + 50.0f, trainingRoomChocoKidActor->pos.z, 120.0f, 20.0f, 0xA);
+    func_8006E16C(trainingRoomChocoKidActor->pos.x, trainingRoomChocoKidActor->pos.y + 50.0f, trainingRoomChocoKidActor->pos.z, 120.0f, 20.0f, 0xA);
 }
 
 void ActorTick_ChocoKid(Actor* chocoKid) {

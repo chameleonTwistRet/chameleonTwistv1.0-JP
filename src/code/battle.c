@@ -717,7 +717,7 @@ void func_80053FA0(s32 playerID) {
                   posX + sp78 * 1000.0f, gPlayerActors[playerID].pos.y + 120.0f, gPlayerActors[playerID].pos.z - sp7C * 1000.0f,
                   posX + sp80 * 300.0f, gPlayerActors[playerID].pos.y + 90.0f, gPlayerActors[playerID].pos.z - sp84 * 300.0f,
                   60.0f, 60.0f, 360.0f);
-    Effect_TypeAH_Init(D_800F0B54, gPlayerActors[playerID].pos.x, gPlayerActors[playerID].pos.y - 20.0f, gPlayerActors[playerID].pos.z,
+    func_80070970(D_800F0B54, gPlayerActors[playerID].pos.x, gPlayerActors[playerID].pos.y - 20.0f, gPlayerActors[playerID].pos.z,
                   gPlayerActors[playerID].yAngle, D_800F0DE0, gSelectedCharacters[playerID], 1, 2);
 }
 
@@ -749,7 +749,7 @@ void func_80054284(void) {
                 var_s1 = 1;
                 SetPlayerContextEyes(gSelectedCharacters[i], 0, 0);
             }
-            Effect_TypeAH_Init(D_800F0B54, posX, D_800F0D90[var_s1].unk10, -500.0f, -posX / 12.0f, &D_800F0D90[var_s1], gSelectedCharacters[i], 0, 0);
+            func_80070970(D_800F0B54, posX, D_800F0D90[var_s1].unk10, -500.0f, -posX / 12.0f, &D_800F0D90[var_s1], gSelectedCharacters[i], 0, 0);
             posX += width;
         }
     }
@@ -932,7 +932,7 @@ void Battle_Update(void) {
             Battle_PlayEnvSounds();
             Battle_PrintTextBig(80.0f, 100.0f, Battle_Time / 23.333334f, 17, 5, Battle_MsgReady, 1);
             if (Battle_Time == 40) {
-                Effect_TypeAG_Init(8.0f, 90.0f, 0x5FFF);
+                func_800705C4(8.0f, 90.0f, 0x5FFF);
             }
             if (Battle_Time > 70) {
                 D_800F0674 = 0;

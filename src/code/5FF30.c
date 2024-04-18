@@ -2359,7 +2359,7 @@ void func_80092474(CTTask* task) {
 }
 
 void func_800925A8(CTTask* task) {
-    Effect_BossDeadEyes_Init(75);
+    loadBossDeadEyes(75, task);
     task->unk44 = 19;
     task->unk4E = 1;
     task->unk48 = -1;
@@ -2810,7 +2810,7 @@ void func_80094220(CTTask* task) {
 }
 
 void func_80094228(CTTask* task) {
-    Effect_BossDeadEyes_Init(30);
+    loadBossDeadEyes(30, task);
     D_801FC9AC = 0;
     task->unk4E = 1;
     task->unk44 = 24;

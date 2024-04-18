@@ -120,6 +120,7 @@ def start(group, where):
                     }
                     if len(args) > 3:
                         values["Ext"] = args[3:]
+                
                 dataOnly = values["Type"] in buildFolder
                 #new splat thing
                 if values["Type"] == "databin": values["Type"] = "bin"
@@ -257,6 +258,6 @@ if __name__ == "__main__":
     try:
         args = parser.parse_args()
     except SystemExit:
-        start("JungleLand", "levelGroup/JungleLand")
+        start("Battle_Chameleons", "chameleons/Battle_Chameleons")
         exit()
     start(args.group, args.outfileName)

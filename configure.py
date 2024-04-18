@@ -224,7 +224,7 @@ def build_stuff(linker_entries: List[LinkerEntry]):
     import glob
     asset_files = []
     for file in glob.glob(f"src/**/*.c", recursive=True):
-        for custom in ["chameleons/", "levelGroup/"]:
+        for custom in ["chameleons/"]:
             if file.find(custom) != -1:
                 asset_files.append(file)
                 break
@@ -247,7 +247,7 @@ def build_stuff(linker_entries: List[LinkerEntry]):
                         ninja.rule(
                             f'{imageType}_convert',
                             command = f"python3 {IMG_CONVERT} {imageType} $in $out",
-                            description = f"Converting {imageType}"
+                            description = "Converting {imageType}"
                         )
                     imageOpt = True
                 if not binOpt:
@@ -355,7 +355,6 @@ def build_stuff(linker_entries: List[LinkerEntry]):
         o_files.append(str(obj))
     #########################
 
-
     ninja.build(
         PRE_ELF_PATH,
         "ld",
@@ -379,10 +378,6 @@ def build_stuff(linker_entries: List[LinkerEntry]):
     ninja.close()
 
 
-    #print to ci
-    for line in open("build.ninja", "r", encoding="utf-8").readlines():
-        print(line)
-    
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Configure the project")
     parser.add_argument(

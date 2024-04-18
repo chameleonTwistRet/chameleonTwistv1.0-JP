@@ -10,7 +10,8 @@ import re
 import struct
 from pathlib import Path
 from splat.util.log import error
-from splat.util import options, symbols
+
+from splat.util import options
 from splat.segtypes.common.codesubsegment import CommonSegCodeSubsegment
 
 
@@ -59,15 +60,16 @@ class N64SegUnkType2(CommonSegCodeSubsegment):
 
         lines = []
 
-        sym = self.retrieve_sym_type(symbols.all_symbols_dict, self.vram_start, "Ut2")
-        if not sym:
-            sym = self.create_symbol(
-                addr=self.vram_start, in_segment=True, type="Ut2", define=True
-            )
+        sym = self.create_symbol(
+            addr=self.vram_start, in_segment=True, type="data", define=True
+        )
         if not self.data_only:
             lines.append('#include "common.h"')
             lines.append("")
-            lines.append("UnkType2 %s = {" % (sym.name))
+            if "/" in self.name:
+                lines.append("UnkType2 %s = {" % (self.name.split("/")[(len(self.name.split("/"))-1)]))
+            else:
+                lines.append("UnkType2 %s = {" % (self.name))
 
         byteData = bytearray(sprite_data)
         data = struct.unpack('>ffifff', byteData)

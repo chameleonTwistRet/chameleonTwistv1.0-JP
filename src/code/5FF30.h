@@ -531,6 +531,7 @@ void AdjustRectToVec3(Rect3D* r, Vec3f vec);
 void Rect_Expand(Rect3D* r, f32 s);
 void OrderRectBounds(Rect3D *rect);
 s32 IfRectsIntersect(Rect3D* rectA, Rect3D* rectB);
+s32 IsPointInRect(Vec3f point, Rect3D* rect);
 void CalculateBoundingRectFromVectors(Vec3f vecA, Vec3f vecB, Rect3D* rect);
 //////
 
@@ -612,6 +613,7 @@ extern s16 D_800FFEBC;
 extern s32 D_802023E0;
 extern s32 D_80202420; //unk type
 extern s32 D_8020D8A8;
+extern s32 currentStageCrowns;
 extern s16 D_80100E10;
 extern s16 sStageCrownTotals[6];
 extern s32 D_80247904;

@@ -28,10 +28,10 @@ Gfx* func_800C3B50(graphicStruct*, Gfx*);
 s32 PutDList(Mtx** arg0, Gfx** arg1, Gfx* arg2);
 void func_80080C28(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, u8 arg6, u8 arg7, u8 arg8, u8 arg9);
 void func_80058044(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, s32 arg7);
-void Effect_TypeT_Init(f32, f32, s32, s32);
+void func_800698A4(f32, f32, s32, s32);
 void func_80027240(Mtx** arg0, Mtx* arg1, s32 arg2, s32 arg3);
 void func_80027138(void* arg0, s32* arg1, s32* arg2, Mtx** arg3);
-void Effect_TypeAF_Init(f32* arg0, f32* arg1, f32* arg2, f32 arg3, f32 arg4, f32 arg5, s32 arg6, s32 arg7, s32 arg8);
+void func_800703C0(f32* arg0, f32* arg1, f32* arg2, f32 arg3, f32 arg4, f32 arg5, s32 arg6, s32 arg7, s32 arg8);
 
 /* Ext Variables */
 extern f32 D_80168D88;
@@ -77,10 +77,10 @@ extern Gfx D_30708F0[];
 extern Gfx D_30740B0[];
 extern Gfx D_3010220[];
 extern Gfx D_3013390[];
-extern Gfx JungleLand_unkunk_Gfx[];
-extern Gfx JungleLand_unkunk2_Gfx[];
-extern Gfx JungleLand_unkunk3_Gfx[];
-extern Gfx JungleLand_unkunk4_Gfx[];
+extern Gfx D_3058750[];
+extern Gfx D_30595A8[];
+extern Gfx D_305A738[];
+extern Gfx D_305B528[];
 extern Gfx D_3011318[];
 extern Gfx D_300DB48[];
 extern void* D_3025DA8;
@@ -90,7 +90,7 @@ extern Gfx* D_800F0638[];
 extern Gfx* D_800F0650[];
 extern Gfx D_1015CB0[];
 extern Gfx D_1015BD0[];
-extern Gfx Global_unusedStructure_Gfx[];
+extern Gfx D_2006160[];
 extern s32 D_800F686C;
 extern s32 D_800F6870;
 extern void* D_1045B70;
@@ -105,12 +105,5 @@ extern void* D_1045BDC;
 extern void* D_1045BE8;
 extern void* D_1045BF4;
 extern s32 D_800F0560;
-
-extern AnimPointer JungleLand_spiderRockInitPointers_Bin;
-extern AnimPointer JungleLand_golemSleepPointers_Bin;
-extern AnimPointer JungleLand_golemAttackPointers_Bin;
-extern AnimPointer JungleLand_fishHeadInitPointers_Bin;
-extern AnimPointer JungleLand_fishTailInitPointers_Bin;
-
 
 #endif // _1050_H_
