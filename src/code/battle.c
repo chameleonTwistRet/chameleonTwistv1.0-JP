@@ -1,4 +1,5 @@
 #include "battle.h"
+#include "sprite.h"
 
 // BSS
 u8 Battle_PlayerIsOut[4];
@@ -506,19 +507,17 @@ void Battle_PrintName(s32 playerID, f32 posX) {
     }
 }
 
-#ifdef NON_MATCHING
 void Battle_ShimmeringText(u32 charID) {
     static u8 D_80176840;
     static u8 D_80176841;
+    f32 newvar; // required to match
     s32 temp_t6 = Battle_Time % 32;
     
     if (temp_t6 >= 0 && temp_t6 < 8) {
-        D_80176840 = (temp_t6 % 8) * 175.0f / 8.0f;
-        D_80176840 += 80;
+        D_80176840 = 80 + (u8)(175.0f * (temp_t6 % 8) / (newvar = 8.0f));
     }
     if (temp_t6 >= 8 && temp_t6 < 16) {
-        D_80176841 = (temp_t6 % 8) * 175.0f / 8.0f;
-        D_80176841 += 80;
+        D_80176841 = 80 + (u8)(175.0f * (temp_t6 % 8) / (newvar = 8.0f));
     }
     
     if (temp_t6 >= 16 && temp_t6 < 24) {
@@ -569,12 +568,6 @@ void Battle_ShimmeringText(u32 charID) {
             break;
     }
 }
-#else
-#pragma GLOBAL_ASM("asm/nonmatchings/code/battle/Battle_ShimmeringText.s")
-void Battle_ShimmeringText(u32 arg0);
-static u8 D_80176840;
-static u8 D_80176841;
-#endif
 
 void Battle_PrintRankingTable(void) {
     s32 i, j;
@@ -688,11 +681,11 @@ void func_80053DA8(s32 arg0) {
         D_800F0CA4[0].unk_00 = i + 5;
     }
     if (i == -1) {
-        func_80077688(70.0f, 80.0f, 170.0f, 1.0f, 5, D_800F0D14, 0x11, 0x12, 5.0f, 10.0f, 120.0f);
+        Effect_TypeAZ_Init(70.0f, 80.0f, 170.0f, 1.0f, 5, D_800F0D14, 0x11, 0x12, 5.0f, 10.0f, 120.0f);
     } else if (comID >= 0) {
-        func_80077688(60.0f, 80.0f, 180.0f, 0.8f, 8, D_800F0CD4, 0x13, 0x14, 5.0f, 8.0f, 120.0f);
+        Effect_TypeAZ_Init(60.0f, 80.0f, 180.0f, 0.8f, 8, D_800F0CD4, 0x13, 0x14, 5.0f, 8.0f, 120.0f);
     } else {
-        func_80077688(70.0f, 80.0f, 170.0f, 1.0f, 6, D_800F0CA4, 0x13, 0x14, 5.0f, 10.0f, 120.0f);
+        Effect_TypeAZ_Init(70.0f, 80.0f, 170.0f, 1.0f, 6, D_800F0CA4, 0x13, 0x14, 5.0f, 10.0f, 120.0f);
     }
 }
 
@@ -717,7 +710,7 @@ void func_80053FA0(s32 playerID) {
                   posX + sp78 * 1000.0f, gPlayerActors[playerID].pos.y + 120.0f, gPlayerActors[playerID].pos.z - sp7C * 1000.0f,
                   posX + sp80 * 300.0f, gPlayerActors[playerID].pos.y + 90.0f, gPlayerActors[playerID].pos.z - sp84 * 300.0f,
                   60.0f, 60.0f, 360.0f);
-    func_80070970(D_800F0B54, gPlayerActors[playerID].pos.x, gPlayerActors[playerID].pos.y - 20.0f, gPlayerActors[playerID].pos.z,
+    Effect_TypeAH_Init(D_800F0B54, gPlayerActors[playerID].pos.x, gPlayerActors[playerID].pos.y - 20.0f, gPlayerActors[playerID].pos.z,
                   gPlayerActors[playerID].yAngle, D_800F0DE0, gSelectedCharacters[playerID], 1, 2);
 }
 
@@ -749,7 +742,7 @@ void func_80054284(void) {
                 var_s1 = 1;
                 SetPlayerContextEyes(gSelectedCharacters[i], 0, 0);
             }
-            func_80070970(D_800F0B54, posX, D_800F0D90[var_s1].unk10, -500.0f, -posX / 12.0f, &D_800F0D90[var_s1], gSelectedCharacters[i], 0, 0);
+            Effect_TypeAH_Init(D_800F0B54, posX, D_800F0D90[var_s1].unk10, -500.0f, -posX / 12.0f, &D_800F0D90[var_s1], gSelectedCharacters[i], 0, 0);
             posX += width;
         }
     }
@@ -757,7 +750,7 @@ void func_80054284(void) {
 
 void func_8005444C(void) {
     if (gIsMultiplayerPaused == TRUE) {
-        func_800771DC(&D_800FE404, 16.0f, 16.0f, 1, 5, &D_800F0B5C, 0.0f, 0.0f, 320.0f, 240.0f);
+        Effect_TypeAY_Init(D_800FE404, 16.0f, 16.0f, 1, 5, &D_800F0B5C, 0.0f, 0.0f, 320.0f, 240.0f);
     }
     switch (D_800F0B5C) {
         case -2:
@@ -932,7 +925,7 @@ void Battle_Update(void) {
             Battle_PlayEnvSounds();
             Battle_PrintTextBig(80.0f, 100.0f, Battle_Time / 23.333334f, 17, 5, Battle_MsgReady, 1);
             if (Battle_Time == 40) {
-                func_800705C4(8.0f, 90.0f, 0x5FFF);
+                Effect_TypeAG_Init(8.0f, 90.0f, 0x5FFF);
             }
             if (Battle_Time > 70) {
                 D_800F0674 = 0;
@@ -1198,7 +1191,7 @@ void Process_Ranking(void) {
         func_8008F114();
         break;
     case 1:
-        func_80072D34();
+        Effect_TypeAN_Init();
         gGameModeState++;
         func_8008F114();
         break;
@@ -1246,7 +1239,7 @@ void func_800557F8(void) {
         func_8008F114();
         break;
     case 1:
-        func_80073090();
+        Effect_TypeAO_Init();
         gGameModeState++;
         func_8008F114();
         break;
@@ -1278,7 +1271,7 @@ void Process_Boot(void) {
         func_8008F114();
         break;
     case 1:
-        checkControllerRumble();
+        Effect_ControllerRumble_Init();
         gGameModeState++;
         func_8008F114();
         break;
@@ -1309,7 +1302,7 @@ void Process_SunsoftLogo(void) {
         D_801FC9AC = 0;
         break;
     case 1:
-        func_80073FD8();
+        Effect_TypeAP_Init();
         gGameModeState++;
         func_8008F114();
         break;

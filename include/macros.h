@@ -20,7 +20,7 @@
 #define ARRAY_COUNT(arr) (s32)(sizeof(arr) / sizeof(arr[0]))
 #define ROUND(d)	(int)(((d) >= 0.0) ? ((d) + 0.5) : ((d) - 0.5))
 #define	ABS(d)		((d) > 0) ? (d) : -(d)
-#define	ABS2(d)		((d) < 0) ? -(d) : (d)
+#define	ABS2(d)		(((d) < 0) ? -(d) : (d))
 #define _ALIGN(val, alignment) ((((val) + ((alignment) - 1)) / (alignment)) * (alignment))
 #define ALIGN_128(val) ((val + 0x7F) & ~0x7F)
 #define SQROOT_2_DIV_2 0.70710678f
@@ -45,15 +45,5 @@
 
 #define SCREEN_WIDTH  320
 #define SCREEN_HEIGHT 240
-
-//asset file related macros so we dont have to split useless files
-//identity matrix
-//see the end of common_structs.h for Mtx_f
-//building matricies is really weird
-#define IDENTITY_M {{1,0,0,0},{0,1,0,0},{0,0,1,0},{0,0,0,1}}
-#define IDENTITY {{1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1},{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}}
-//basic file padding
-#define FILEPAD {0xB8,0,0,0,0,0,0,0}
-
 
 #endif

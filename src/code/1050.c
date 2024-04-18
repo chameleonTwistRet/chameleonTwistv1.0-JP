@@ -43,10 +43,10 @@ void func_80025EF0(PlayerActor* arg0, Tongue* arg1, s32 arg2) {
     if (D_80174980 == 5) {
         func_80027240(&D_800FF8D4, gSpriteListings[207].bitmapP, gTimer / 2, gSpriteListings[207].tileCountY);
         if (gTimer == 20) {
-            func_800698A4(22.0f, 154.0f, 60, D_800F686C);
+            Effect_TypeT_Init(22.0f, 154.0f, 60, D_800F686C);
         }
         if (gTimer == 120) {
-            func_800698A4(22.0f, 154.0f, 60, D_800F6870);
+            Effect_TypeT_Init(22.0f, 154.0f, 60, D_800F6870);
         }
     } else if (arg0->playerHURTSTATE == 4) {
         func_80027138(&D_1045BF4, &sp11C, &sp118, &sp114);
@@ -227,7 +227,7 @@ void func_80025EF0(PlayerActor* arg0, Tongue* arg1, s32 arg2) {
         D_80168D8C = arg0->pos.y + sp88;
         D_80168D90 = arg0->pos.z + sp84;
         if (D_80174980 == 4) {
-            func_800703C0(&D_80168D88, &D_80168D8C, &D_80168D90, 50.0f, 20.0f, 10.0f, 5, 180, 75);
+            Effect_TypeAF_Init(&D_80168D88, &D_80168D8C, &D_80168D90, 50.0f, 20.0f, 10.0f, 5, 180, 75);
         }
     }
 }
@@ -409,7 +409,7 @@ Gfx* func_8002A190(graphicStruct* arg0, Gfx* gfxPos, PlayerActor* player, Tongue
     gSPMatrix(gfxPos++, OS_K0_TO_PHYSICAL(&arg0->playerRotate[playerIndex]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
     gSPMatrix(gfxPos++, OS_K0_TO_PHYSICAL(&arg0->playerScale[playerIndex]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
     if (player->playerHURTSTATE != 3 || gTimer % 2 == 0) {
-        Gfx* dlist = Davy_restAssociate_Gfx;
+        Gfx* dlist = D_8008B58;
         if (gSelectedCharacters[playerIndex] <= CHARA_WHITE) {
             if (Battle_GameType == BATTLE_TYPE_UNK_0) {
                 dlist = D_800F0638[gSelectedCharacters[playerIndex]];

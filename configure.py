@@ -49,9 +49,6 @@ LIB_COMPILE_CMD = (
 LDFLGS = f"-T {LD_PATH} -T undefined_syms_auto.txt -T undefined_syms.txt -Map {MAP_PATH} --no-check-sections"
 DEPENDENCY_GEN = f"cpp -w {INCLUDES} -nostdinc -MD -MF $out.d $in -o /dev/null"
 
-IMG_CONVERT = f"{TOOLS_DIR}/image_converter.py"
-BIN_CONVERT = f"{TOOLS_DIR}/bin_inc_c.py"
-
 def clean():
     if os.path.exists(".splache"):
         os.remove(".splache")
@@ -102,6 +99,7 @@ def build_stuff(linker_entries: List[LinkerEntry]):
             )
 
     ninja = ninja_syntax.Writer(open("build.ninja", "w"))
+    
 
     ninja.rule(
         "ido_O3_cc",
@@ -214,82 +212,6 @@ def build_stuff(linker_entries: List[LinkerEntry]):
         "perspective.c": "O2_cc",
         "translate.c": "O2_cc",
     }
-
-    #assets
-    #i dont think there is a way to retrieve needed files? since its .data anyways
-    #manual it is
-
-    #TODO: get a better method to get custom c's. maybe some asset path reading???
-    
-    import glob
-    asset_files = []
-    for file in glob.glob(f"src/**/*.c", recursive=True):
-        for custom in ["chameleons/"]:
-            if file.find(custom) != -1:
-                asset_files.append(file)
-                break
-    
-    #print(split.config["segments"])
-
-    imageOpt = False
-    binOpt = False
-    binOpt2 = False
-
-    for file in asset_files:
-        fileContents = open(file, "r", encoding="utf-8").readlines()
-        for line in fileContents:
-            if line.find("build/assets/") == -1: continue
-            #manual compilation for build/asset files
-            if line.find(".png.inc.c") != -1: #is image
-                if not imageOpt:
-                    #generate image rules if any images used
-                    for imageType in ["ia4", "ia8", "i4", "i8", "rgba16", "rgba32", "ci4", "ci8", "palette"]:
-                        ninja.rule(
-                            f'{imageType}_convert',
-                            command = f"python3 {IMG_CONVERT} {imageType} $in $out",
-                            description = "Converting {imageType}"
-                        )
-                    imageOpt = True
-                if not binOpt:
-                    #used for inc'd bins
-                    #dataOnly 
-                    ninja.rule(
-                        "bin_inc_c_d",
-                        command=f'python3 {BIN_CONVERT} 1 $in $out',
-                        description="bin_inc_c $out"
-                    )
-                    binOpt = True
-
-                path = line.split("build/")[-1].split(".inc.c")[0].split(".")
-                #path should be assets/**/*
-                #technically, the type can be gotten from the symbol
-                #im too lazy rn, should be easy as going back a line
-                png = path.pop(-1)
-                type = path[-1]
-                path = path[0]+"."+type+".png"
-                base = path
-
-                bin = "build/"+path+".bin"
-                ninja.build(bin, type+"_convert", base)
-                ninja.build(bin.replace(".bin", ".inc.c"), "bin_inc_c_d", bin)
-                if type.find("ci") != -1: #paletted
-                    bin = "build/"+path.replace(".png",".pal")+".bin"
-                    ninja.build(bin, "palette_convert", base)
-                    ninja.build(bin.replace(".bin", ".inc.c"), "bin_inc_c_d", bin)
-            elif line.find(".inc.c") != -1 and line.find(".pal.inc.c") == -1: #is databin
-                if not binOpt2:
-                    #used for inc'd bins
-                    #dataOnly 
-                    ninja.rule(
-                        "bin_inc_c",
-                        command=f'python3 {BIN_CONVERT} 0 $in $out',
-                        description="bin_inc_c $out"
-                    )
-                    binOpt2 = True
-                path = line.split("build/")[-1].split(".inc.c")[0]+".databin.bin"
-                ninja.build("build/"+path.replace(".databin.bin", ".inc.c"), "bin_inc_c", path)
-            
-
     overrideC = []
     for entry in linker_entries:
         seg = entry.segment
@@ -299,7 +221,7 @@ def build_stuff(linker_entries: List[LinkerEntry]):
 
         if entry.object_path is None:
             continue
-        
+
         #databins' src paths are actually pointing to asm/data.
         #the .s' just incbin the bins anyways. whatever.
         #the rest are just asm so it makes sense
@@ -314,42 +236,51 @@ def build_stuff(linker_entries: List[LinkerEntry]):
             osCheck = any(str(src_path).startswith("src/os/") for src_path in entry.src_paths)
             if override:
                 for src_path in entry.src_paths:
-                    fixed = str(src_path).split("/")[-1]
-                    if fixed in list(c_file_rule_overrides.keys()):
-                        overrideC.append(str(src_path))
-                        build(entry.object_path, entry.src_paths, c_file_rule_overrides[fixed])
-                        break
+                    if str(src_path).startswith("src/"):
+                        fixed = str(src_path).split("/")[-1]
+                        if fixed in list(c_file_rule_overrides.keys()):
+                            overrideC.append(str(src_path))
+                            build(entry.object_path, entry.src_paths, c_file_rule_overrides[fixed])
+                            break
             elif ioCheck or osCheck:
                 for src_path in entry.src_paths:
-                    overrideC.append(str(src_path))
+                    if str(src_path).startswith("src/"):
+                        overrideC.append(str(src_path))
                 build(entry.object_path, entry.src_paths, "O1_cc")
             else:
                 for src_path in entry.src_paths:
-                    overrideC.append(str(src_path))
+                    if str(src_path).startswith("src/"):
+                        overrideC.append(str(src_path))
                 build(entry.object_path, entry.src_paths, "O2_cc")
         else:
             print(f"ERROR: Unsupported build segment type {seg.type}")
             sys.exit(1)
-
-
+    
     #invalidate this by letting the linker entries do the work
     #cant rn bc of yaml stuff but when we can get that to work
 
+    import glob
 
-    c_files = [file for file in glob.glob(f"src/**/*.c", recursive=True) if not file in overrideC]
+    c_files = glob.glob(f"src/**/*.c", recursive=True)
+    c_files = [file for file in c_files if not file in overrideC]
+
+    def append_extension(filename, extension=".o"):
+        return filename + extension
+    def append_prefix(filename, prefix="build/"):
+        return prefix + filename
 
     o_files = []
-    for c_file in c_files:
-        o_file = "build/"+c_file+".o"
-        o_files.append(o_file)
+    for file in c_files:
+        o_files.append(append_prefix(append_extension(file)))
 
+    for c_file in c_files:
         if os.path.dirname(c_file) == "src/mod":
             continue
 
         if os.path.dirname(c_file) == "src/audio":
-            ninja.build(o_file, "O2_cc", c_file)  # Update later
+            ninja.build(append_prefix(append_extension(c_file)), "O2_cc", c_file)  # Update later
         elif os.path.dirname(c_file) in ["src/io", "src/os"]:
-            ninja.build(o_file, "O1_cc", c_file)
+            ninja.build(append_prefix(append_extension(c_file)), "O1_cc", c_file)
     
     for obj in built_objects:
         o_files.append(str(obj))

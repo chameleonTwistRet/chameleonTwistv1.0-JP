@@ -82,7 +82,7 @@ extern u8 D_800FE190;
 extern u8 D_800FE194;
 extern u8 D_800FE198;
 extern s32 D_800FE19C;
-extern s8 gDontChangeEyes;
+extern u8 gDontChangeEyes;
 extern u8 gLockContextEyes;
 extern s32 D_800FEA30;
 extern s32 D_800FEA34;
@@ -300,7 +300,7 @@ extern Camera gCamera[4];
 extern unk802000C84 D_80200C84;
 extern u8 gHasShadows[256]; //unset for actortypes like spawnners.
 extern Collider D_80236980[128];
-extern s32 gFieldCount;
+extern s32 gFeildCount;
 extern Door gDoors[16];
 extern unkIsChange isChange;
 extern s32 gDoorCount;
@@ -364,5 +364,5 @@ extern CTTask* gCTTaskHead;
 extern CTTask* gCTTaskTail;
 extern s32 sGameModeStart;
 extern char D_8010DB20[];
-
+extern CardinalDirection gCardinalDirections[5]; // including "NO_DIR"
 #endif

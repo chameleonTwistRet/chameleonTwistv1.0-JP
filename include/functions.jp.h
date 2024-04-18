@@ -7,17 +7,13 @@ f32 tanf(f32);
 f32 __sinf(f32);
 f32 __sqrtf(f32);
 f32 __cosf(f32);
-void CartesianToSpherical(Vec3f inputVec, f32* radius, f32* theta, f32* phi);
-Vec3f* SphericalToCartesian(Vec3f* inputVec, f32 radius, f32 theta, f32 phi);
+void WrapDegrees(f32*);
+void Memory_Free(void*);
+
+void CartesianToSpherical(Vec3f, f32*, f32*, f32*);
 s32 Controller_Init(void);
-
-//vector.c
-Vec3f* RotateVector3D(Vec3f*, Vec3f, f32, s32);
-void WrapAngle(f32* angle);
-
-//from motor.c
-s32 osMotorInit(OSMesgQueue* mq, OSPfs* pfs, int channel);
-
+extern s32 osMotorInit(OSMesgQueue *, OSPfs *, int);
+void bootproc(void);
 void idleproc(void*);
 void mainproc(void*);
 void func_80025EE8(void);
@@ -198,7 +194,7 @@ void Controller_StartRead(void);
 void Controller_Zero(ContMain*);
 void Debug_NOOP(void);
 void Debug_TestView(void);
-void func_80073FD8(void);
+void Effect_TypeAP_Init(void);
 f32 Battle_CalcTableColumnWidths(u8, f32*, f32, f32);
 void Battle_PlayEnvSounds(void);
 void Battle_PrintNumber(f32, f32, f32, f32, s32, s32, s32); 
@@ -212,7 +208,7 @@ void DisableInput(void);
 void EnableInput(void);
 s32 func_80055C90(void);
 s32 func_80055E5C(s32); // arg is controller #define
-void func_80055EEC(s32);
+s32 func_80055EEC(s32);
 s32 func_80055F10(s32, s32);
 void func_80055FA4(void);
 void func_80055FBC(s32);
@@ -272,25 +268,19 @@ void func_8006BE4C(f32, f32, f32, f32);
 void func_8006C368(f32, f32, f32);
 void LoadPlayerEyes(s32);
 void FreePlayerEyes(s32);
-u32 InitPlayerEyeController(s32, s32, f32, s32);
+u32 Effect_PlayerEyes_Init(s32, s32, f32, s32);
 void SetPlayerContextEyes(s32, s32, s32);
-void func_8006E16C(f32, f32, f32, f32, f32, s32);
+void Effect_TypeZ_Create(f32, f32, f32, f32, f32, s32);
 void func_8006F8D8(f32, f32, f32);
 void func_80089BA0(void);
-void func_80072B1C(void*, void*);
-void func_80072D34(void);
-void func_80072D80(void);
-void aa1_checkControllerRumble(void*, void*);
-void checkControllerRumble(void);
-void func_80073C3C(void);
+void Effect_TypeAN_Init(void);
+void Effect_ControllerRumble_Init(void);
 void SetTextGradientFromPaletteAlpha(s32, f32);
 void SetTextGradientFromPalette(s32);
-void func_800786D8(f32, f32, f32, f32, s32, s32, f32, f32, f32, f32, u8, u8, u8);
-void func_80078AD8(f32, f32, f32, f32, f32, f32);
-void func_80078D00(f32, f32, f32, f32, s32, f32, f32);
-void func_80079150(f32, f32, f32, f32, f32, f32, f32, f32, s32, s32, s32);
-void func_80079FC4(void);
-void func_8007A25C(f32, f32, f32, f32, f32);
+void Effect_TypeBC_Init(f32, f32, f32, f32, f32, f32);
+void Effect_TypeAR_Init(f32 arg0, f32 arg1, s32 arg2, f32 arg3, f32 arg4, f32 arg5, s32 arg6, EffectTypeAQArg7* arg7, s32 arg8, s32* arg9);
+void Effect_TypeAQ_Init(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, s32 arg6, EffectTypeAQArg7* arg7, s32 arg8, s32* arg9);
+void Effect_TypeBJ_Init(f32, f32, f32, f32, f32);
 Gfx* func_8007ABDC(Gfx*);
 void func_8007ABE4(void);
 void func_8007ABF8(bf8*);
@@ -371,6 +361,7 @@ char* parseIntToHex(s32, s32, char*);
 void SetProcessType(s32);
 void func_8008FDF8(void);
 void func_800C08B8(Vec3f*, PlayerActor*, Door*);
+void ChameleonFromDoor(PlayerActor*, s32, s32, s32, s32);
 void func_800D34CC(void);
 void func_800BFCD0(void);
 void func_800C0760(s32);
@@ -392,6 +383,8 @@ void Timing_WaitForNextFrame(void);
 s32 SaveData_UpdateRecords(void);
 void DummiedPrintf(char* arg0, ...);
 s32 func_800A73EC(void*, void*, s32, s32);
+s32 func_800B3FFC(unkSpriteStruct5*, s32);
+void func_800B402C(unkSpriteStruct*, s32, s32);
 s32 DMA_Copy(void* romAddr, void* ramAddr, s32 size);
 s32 func_800A72E8(s32);
 void func_800AAAC8(void);
@@ -399,19 +392,33 @@ s32 AddSoundEffect(s32, f32*, f32*, f32*, s32, s32);
 void func_800A1EC4(void);
 void func_800A54EC(CTTask*);
 s32 DMAStruct_Print(void);
+
 s32 IfRectsIntersect(Rect3D* arg0, Rect3D* arg1);
+
+s32 IsBossID(s32);
+s32 func_800B2510(void);
+s32 func_800B34D0(s32);
 s32 func_800B3540(s32);
+void func_800B5600(void);
+void func_800B56D4(f32, f32);
+void func_800BE2C0(void);
 
 void InitField(void);
+void func_800C54F8(Vec2w*, s32*);
+void func_800C5508(PlayerActor*);
+void func_800C5538(PlayerActor*);
 void func_800C56D4(PlayerActor*);
+void func_800C88AC(void);
 s32 Random(s32, s32);
 f32 RandomF(void);
 f32 CalculateAngleOfVector(f32, f32);
 f32 InterpolateAndClampArcSin(f32);
 f32 AngleFromArcSin(f32);
+void func_800B35FC(s32);
 s32 IsPointInRect(Vec3f, Rect3D*);
 void AdjustRectToVec3(Rect3D* r, Vec3f vec);
 Vec3f* Vec3f_Lerp(Vec3f*, Vec3f, Vec3f, f32);
+f32 func_800B2308(f32, s32);
 void func_800C8F00(void);
 void func_800C9504(void);
 void CalcEnemyNextPosition(Actor*);
@@ -433,8 +440,6 @@ void func_800D9B20(s32*);
 void func_800DA620(s32*, s32, s32);
 s32 func_800DB820(OSMesgQueue*);
 void func_800DC550(void);
-void func_800DC920(void*);
-void func_800DC950(void*, void*);
 void func_800DCA90(s32, s32);
 void func_800DCB10(s32, s32);
 void _bzero(void*, s32);
@@ -448,18 +453,6 @@ void Debug_ZeroInt(void);
 void PrintNumberWR(f32, f32, f32, f32, f32, s32, s32);
 void printNumber(f32, f32, f32, f32, f32, s32, s32);
 void func_800C1458(s32);
-
-//funcs that were in 8add0.h that are in other c's
-//84e0.c
-void func_800314E4(Actor*);
-void pickup_collide_func(s32 actorIndex);
-//poly.c
-void func_800CFDC8(PlayerActor*);
-
-//funcs from 8add0 that are called from other c's
-//b39a0.c
-s32 func_800B34D0(s32);
-//5ff30.c & debug.c
 void func_800C29D8(s32);
 
 //funcs that were in 5ff30.h that are in other c's
@@ -479,7 +472,7 @@ void func_800598C4(Mtx* arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, 
 void loadBossDeadEyes(s32, CTTask*);
 void func_8005747C(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, s32 arg6);
 Effect* Effect_TypeK_Init(f32 duration, f32 arg1, f32 arg2);
-void func_800747E0(f32, f32, u32, f32, f32, f32, u32, u32, s32, u32*);
+void func_800747E0(f32 arg0, f32 arg1, u32 arg2, f32 arg3, f32 arg4, f32 arg5, u32 arg6, u8* arg7, s32 arg8, u32* arg9);
 void func_800743BC(f32, f32, f32, f32, f32, f32, u32, u32, s32, u32*);
 s32 func_80082714(f32, f32, f32, s32);
 void func_8007E6BC(f32 arg0, f32 arg1, f32 arg2, f32 arg3, u8 arg4, u8 arg5, u8 arg6);
@@ -493,6 +486,7 @@ void func_8004E784(ContMain* arg0, s32 arg1, s32* arg2, ContMain* arg3);
 void func_800B4408(u8*, s16*);
 //84e0.c
 void func_8004DDE0(void);
+void Effect_BossDeadEyes_Init(s32 arg0);
 
 //funcs from 5ff30 that are called from other c's
 //battle.c

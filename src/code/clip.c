@@ -1,5 +1,8 @@
 #include "common.h"
 
+void CartesianToSpherical(Vec3f arg0, f32* arg3, f32* arg4, f32* arg5);
+void WrapAngle(f32*);
+
 /* Migrated BSS */
 Vec3f D_802018B0;
 f32 D_802018BC;

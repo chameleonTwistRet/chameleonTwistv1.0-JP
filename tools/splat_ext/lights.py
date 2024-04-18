@@ -10,7 +10,7 @@ import struct
 from pathlib import Path
 from splat.util.log import error
 
-from splat.util import options, symbols
+from splat.util import options
 from splat.segtypes.common.codesubsegment import CommonSegCodeSubsegment
 
 
@@ -58,11 +58,11 @@ class N64SegLights(CommonSegCodeSubsegment):
             )
 
         lines = []
-        sym = self.retrieve_sym_type(symbols.all_symbols_dict, self.vram_start, "Light")
-        if not sym:
-            sym = self.create_symbol(
-                addr=self.vram_start, in_segment=True, type="Light", define=True
-            )
+
+        sym = self.create_symbol(
+            addr=self.vram_start+0x8, in_segment=True, type="data", define=True
+        )
+
         if not self.data_only:
             lines.append('#include "common.h"')
             lines.append("")
