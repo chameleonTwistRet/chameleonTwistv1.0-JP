@@ -376,12 +376,13 @@ def build_stuff(linker_entries: List[LinkerEntry]):
     )
 
     print("build.ninja generated")
-    #print to ci
-    for line in open("build.ninja", "r", encoding="utf-8").readlines():
-        print(line)
     ninja.close()
 
 
+    #print to ci
+    for line in open("build.ninja", "r", encoding="utf-8").readlines():
+        print(line)
+    
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Configure the project")
     parser.add_argument(
