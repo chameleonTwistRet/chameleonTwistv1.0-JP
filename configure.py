@@ -236,6 +236,7 @@ def build_stuff(linker_entries: List[LinkerEntry]):
     binOpt2 = False
 
     for file in asset_files:
+        print("building assets for file " + file)
         fileContents = open(file, "r", encoding="utf-8").readlines()
         for line in fileContents:
             if line.find("build/assets/") == -1: continue
@@ -247,7 +248,7 @@ def build_stuff(linker_entries: List[LinkerEntry]):
                         ninja.rule(
                             f'{imageType}_convert',
                             command = f"python3 {IMG_CONVERT} {imageType} $in $out",
-                            description = "Converting {imageType}"
+                            description = f"Converting {imageType}"
                         )
                     imageOpt = True
                 if not binOpt:

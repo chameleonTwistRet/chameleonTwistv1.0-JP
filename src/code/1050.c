@@ -409,7 +409,7 @@ Gfx* func_8002A190(graphicStruct* arg0, Gfx* gfxPos, PlayerActor* player, Tongue
     gSPMatrix(gfxPos++, OS_K0_TO_PHYSICAL(&arg0->playerRotate[playerIndex]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
     gSPMatrix(gfxPos++, OS_K0_TO_PHYSICAL(&arg0->playerScale[playerIndex]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
     if (player->playerHURTSTATE != 3 || gTimer % 2 == 0) {
-        Gfx* dlist = D_8008B58;
+        Gfx* dlist = Davy_restAssociate_Gfx;
         if (gSelectedCharacters[playerIndex] <= CHARA_WHITE) {
             if (Battle_GameType == BATTLE_TYPE_UNK_0) {
                 dlist = D_800F0638[gSelectedCharacters[playerIndex]];
