@@ -355,6 +355,7 @@ def build_stuff(linker_entries: List[LinkerEntry]):
         o_files.append(str(obj))
     #########################
 
+
     ninja.build(
         PRE_ELF_PATH,
         "ld",
@@ -375,6 +376,9 @@ def build_stuff(linker_entries: List[LinkerEntry]):
     )
 
     print("build.ninja generated")
+    #print to ci
+    for line in open("build.ninja", "r", encoding="utf-8").readlines():
+        print(line)
     ninja.close()
 
 
