@@ -45,23 +45,34 @@ typedef struct Rect3D {
 } Rect3D;
 
 typedef struct unkIsChange {
-    /* 0x00 */ char unk_00[8];
+    /* 0x00 */ s32 unk0;                            /* inferred */
+    /* 0x04 */ s32 unk4;                            /* inferred */
     /* 0x08 */ s32 unk_08;
     /* 0x0C */ s32 unk_0C;
     /* 0x10 */ s32 unk_10;
     /* 0x14 */ s32 unk_14;
     /* 0x18 */ s32 unk18;
-    /* 0x1C */ char unk_1C[0x24];
+    /* 0x1C */ f32 unk1C;                           /* inferred */
+    /* 0x20 */ f32 unk20;                           /* inferred */
+    /* 0x24 */ f32 unk24;                           /* inferred */
+    /* 0x28 */ char pad28[0x18];                    /* maybe part of unk24[7]? */
     /* 0x40 */ f32 unk40;
     /* 0x44 */ f32 unk44;
     /* 0x48 */ f32 unk48;
     /* 0x4C */ f32 unk4C;
     /* 0x50 */ f32 unk50;
     /* 0x54 */ f32 unk54;
-    /* 0x58 */ char unk_58[0x7C];
+    /* 0x58 */ char pad58[0xC];                     /* maybe part of unk54[4]? */
+    /* 0x64 */ s32 unk64;                           /* inferred */
+    /* 0x68 */ char pad68[0xC];                     /* maybe part of unk64[4]? */
+    /* 0x74 */ s32 unk74;                           /* inferred */
+    /* 0x78 */ s32 unk78;                           /* inferred */
+    /* 0x7C */ char pad7C[0x50];                    /* maybe part of unk78[0x15]? */
+    /* 0xCC */ s32 unkCC;                           /* inferred */
+    /* 0xD0 */ s32 unkD0;                           /* inferred */
     /* 0xD4 */ s32 unk_D4;
     /* 0xD8 */ s32 unk_D8;
-} unkIsChange;
+} unkIsChange;                                      /* size = 0xDC */
 
 typedef struct PlayerActor {
     /* 0x000 */ u32 playerID;
@@ -193,58 +204,167 @@ typedef struct Tongue { // at 80169268 (for p1)
     /* 0x608*/ u32 wallTime;//timer for tongue-touching a wall
 } Tongue; //sizeof 0x60C
 
-//struct names are based on offset into main struct, Collision which holds Rect3D
+typedef struct RoomObject {
+    Vec3f position;
+    Vec3f scale;
+    s32 unk18;
+    s32 damages;
+    s32 unk20;
+    s32 unk24;
+    f32 unk28;
+    f32 unk2C;
+    f32 unk30;
+    f32 unk34;
+    s32 unk38;
+    s32 unk3C;
+    s32 unk40;
+    s32 unk44;
+    s32 unk48;
+    s32 unk4C;
+    s32 id; //id in levelData pointers
+    s32 unk54;
+    s32 unk58;
+    s32 unk5C;
+    void (*func1)(struct RoomObject*);
+    void (*func2)(struct RoomObject*);
+    s32 unk68;
+    s32 unk6C;
+    s32 unk70;
+    s32 unk74;
+    s32 unk78;
+    s32 unk7C;
+    s32 unk80;
+    s32 unk84;
+    s32 unk88;
+} RoomObject;
 
+typedef struct RoomActor {
+    s32 id;
+    Vec3f position;
+    f32 unk10;
+    f32 unk14;
+    f32 unk18;
+    s32 unk1C;
+    f32 unk20;
+    f32 unk24;
+    f32 unk28;
+    s32 unk2C;
+    f32 unk30;
+    f32 unk34;
+    f32 unk38;
+    f32 unk3C;
+    s32 unk40;
+    s32 unk44;
+    s32 unk48;
+    s32 unk4C;
+    s32 unk50;
+    s32 unk54;
+    s32 unk58;
+    s32 unk5C;
+} RoomActor;
+
+typedef struct Collectable {
+    s32 id;
+    Vec3f position;
+    s32 unk10;
+    s32 unk14;
+    s32 unk18;
+    s32 unk1C;
+} Collectable;
+
+typedef struct collectableWrapper {
+    Collectable* levelDataCollectable;
+    s32 unk_04;
+    s32 unk_08;
+    s32 bitfield;
+    s32 actorIndex;
+} collectableWrapper;
+
+typedef struct Color128 {
+    u32 r;
+    u32 g;
+    u32 b;
+    u32 a;
+} Color128;
+
+typedef struct SpriteActor {
+    s32 size;
+    s32 spriteIndex;
+    Vec3f position;
+    Vec3f scale;
+    s32 unk20;
+    s32 unk24;
+    f32 unk28;
+    s32 damages;
+    s32 unk30;
+    s32 unk34;
+    s32 unk38;
+    s32 unk3C;
+    Color128 color;
+} SpriteActor;
+
+//this isnt JUST collision, its also a variation of RoomSettings
+//you can tell because of the 4 pointers at the start
 typedef struct Collision {
-    /* 0x00 */ s32 collisionType;
-    /* 0x04 */ char pad4[0x14];                     /* maybe part of collisionType[6]? */
-    /* 0x18 */ s32 unk18;
-    /* 0x1C */ char pad1C[0x14];                    /* maybe part of unk18[6]? */
-    /* 0x30 */ Rect3D rect_30;
-    /* 0x48 */ char pad48[0x18];
-    /* 0x60 */ s32 unk60;                           /* inferred */
-    /* 0x64 */ s32 unk64;                           /* inferred */
-    /* 0x68 */ char pad68[0x10];                    /* maybe part of unk64[5]? */
+    /* 0x00 */ RoomObject* roomObjects;
+    //pointer of levelData roomObjects
+    //0 for none
+    /* 0x04 */ RoomActor* roomActors;
+    //pointer of levelData roomActors
+    //0 for none
+    /* 0x08 */ Collectable* collectables; 
+    //pointer of levelData collectables
+    //0 for none
+    /* 0x0C */ SpriteActor* spriteActors;
+    //pointer of levelData spriteActors
+    //0 for none
+    /* 0x10 */ s32 rmObjCount;
+    //how much to iterate in Collision.roomObjects
+    /* 0x14 */ s32 rmActCount;
+    //how much to iterate in Collision.roomActors
+    /* 0x18 */ s32 clctCount;
+    //how much to iterate in Collision.collectables
+    /* 0x1C */ Vec2w exit;
+    //where to send you relative on exit of the room
+    //moves along a 2d grid of the rooms, can be found in the level data's map
+    //usually must actually connect rooms, though some can be euclidian if you play your cards right (eg, one way doors)
+    //(will usually crash any room going into it if it doesnt match)
+    /* 0x24 */ s32 unk24;
+    /* 0x28 */ s32 unk28;
+    /* 0x2C */ s32 unk2C;
+    /* 0x30 */ Rect3D roomBounds;
+    /* 0x48 */ Rect3D rect_48;
+    /* 0x60 */ s32 unk60;
+    /* 0x64 */ s32 unk64;
+    /* 0x68 */ s32 unk68;
+    /* 0x6C */ char pad6C[4];
+    /* 0x70 */ s32 unk70;                           /* inferred */
+    /* 0x74 */ s32 unk74;                           /* inferred */
     /* 0x78 */ s32 unk78;
-    /* 0x7C */ s32 unk7C;
-    /* 0x80 */ char pad80[4];
-    /* 0x84 */ s32 unk84;                           /* inferred */
-    /* 0x88 */ char pad88[4];
+    /* 0x7C */ s32 unk7C; //boss flag?
+    /* 0x80 */ s32 unk80;
+    /* 0x84 */ s32 unk84;
+    /* 0x88 */ s32 unk88;                           /* inferred */
     /* 0x8C */ s32 unk8C;
-    /* 0x90 */ char pad90[4];
-    /* 0x94 */ s32 unk94;
-    /* 0x98 */ f32 unk98;
-    /* 0x9C */ f32 unk9C;
-    /* 0xA0 */ f32 unkA0;
+    /* 0x90 */ f32 unk90;                           /* inferred */
+    /* 0x94 */ s32 cameraMode;
+    //basically an enum, has a ton of different (usually dungeon based) angles
+    //it feels like most of them can be seen in the credits, though this definitely needs more research
+    /* 0x98 */ Vec3f cameraAnchor; 
+    //the position the camera is anchored within the room
     /* 0xA4 */ f32 unkA4;
     /* 0xA8 */ f32 unkA8;
     /* 0xAC */ f32 unkAC;
-    /* 0xB0 */ char padB0[0x20];                    /* maybe part of unkAC[9]? */
+    /* 0xB0 */ f32 unkB0;                           /* inferred */
+    /* 0xB4 */ s16 unkB4;                           /* inferred */
+    /* 0xB6 */ s16 unkB6;                           /* inferred */
+    /* 0xB8 */ s16 unkB8;                           /* inferred */
+    /* 0xBA */ char padBA[0x12];                    /* maybe part of unkB8[0xA]? */
+    /* 0xCC */ f32 unkCC;                           /* inferred */
     /* 0xD0 */ f32 unkD0;
     /* 0xD4 */ char padD4[4];
-} Collision;
+} Collision;                                        /* size = 0xD8 */
 
-typedef struct unkItemStruct {
-    s32 unk_00;
-    f32 unk_04;
-    f32 unk_08;
-    union {
-        f32 _f32;
-        s32 _s32;
-    } unk_0C;
-    s32 unk_10;
-    f32 unk_14;
-    s32 unk_18;
-    s32 unk_1C;
-} unkItemStruct;
-
-typedef struct unkStruct07 {
-    unkItemStruct* unk_00;
-    s32 unk_04;
-    s32 unk_08;
-    s32 boolForSpawning; //if TRUE, spawn item
-    s32 unk_10;
-} unkStruct07;
 
 typedef struct CardinalDirection {
     /* 0x00 */ s32 unk0;
@@ -297,7 +417,6 @@ typedef struct unk_8010AA28 {
     s32 unk_0C;
 } unk_8010AA28; //sizeof 0x10
 
-
 typedef struct actorSubArray { //starts at 0x40
     /* 0x00 */ f32 unk_00;
     /* 0x04 */ f32 unk_04;
@@ -305,6 +424,20 @@ typedef struct actorSubArray { //starts at 0x40
     /* 0x0C */ f32 unk_0C;
     /* 0x10 */ f32 unk_10;
 } actorSubArray; //sizeof 0x14
+
+typedef struct CollisionData{
+    s32 aOVerts;
+    s32 aOTris;
+    Vec3f* vertsStart; //segmented
+    Vec3w* trisStart; //segmented
+    Rect3D* settingsStart; //segmented
+} CollisionData;
+
+typedef struct LevelPointer{
+    void* Graphics; //type Gfx*, but it throws 3000 errors. wtf???
+    CollisionData* Collisions;
+    char pad[0x28];
+} LevelPointer;
 
 typedef struct Collider {
     /* 0x000 */ s32 unk_00;
@@ -317,18 +450,18 @@ typedef struct Collider {
     /* 0x024 */ f32 unk_24;
     /* 0x028 */ s32 UNK_28;
     /* 0x02C */ s32 unk_2C;
-    /* 0x030 */ f32 unk_30;
-    /* 0x034 */ f32 unk_34;
-    /* 0x038 */ f32 unk_38;
+    /* 0x030 */ Vec3f unk_30;
     /* 0x03C */ Vec3f unk_3C;
     /* 0x048 */ f32 unk_48;
-    /* 0x04C */ f32 unk_4C;
+    /* 0x04C */ struct Collider* unk_4C;
     /* 0x050 */ f32 unk_50;
     /* 0x054 */ f32 unk_54;
     /* 0x058 */ f32 unk_58;
-    /* 0x05C */ f32 unk_5C;
-    /* 0x060 */ char pad60[0x20];                   /* maybe part of unk_5C[9]? */
-    /* 0x080 */ s32 unk80;                          /* inferred */
+    /* 0x05C */ s32 unk_5C;
+    /* 0x060 */ f32 unk60;
+    /* 0x064 */ f32 unk64;
+    /* 0x068 */ char pad68[0x18];                   /* maybe part of unk64[7]? */
+    /* 0x080 */ s32 unk80;
     /* 0x084 */ char pad84[8];                      /* maybe part of unk80[3]? */
     /* 0x08C */ f32 unk_8C;
     /* 0x090 */ f32 unk_90;
@@ -336,28 +469,27 @@ typedef struct Collider {
     /* 0x098 */ f32 unk_98;
     /* 0x09C */ f32 unk_9C;
     /* 0x0A0 */ f32 unk_A0;
-    /* 0x0A4 */ char padA4[8];                      /* maybe part of unk_A0[3]? */
+    /* 0x0A4 */ f32 unkA4;
+    /* 0x0A8 */ f32 unkA8;
     /* 0x0AC */ s32 unk_AC;
     /* 0x0B0 */ s32 unk_B0;
     /* 0x0B4 */ s32 unk_B4;
     /* 0x0B8 */ s32 unk_B8;
     /* 0x0BC */ s32 unk_BC;
     /* 0x0C0 */ s32 unk_C0;
-    /* 0x0C4 */ char padC4[8];                      /* maybe part of unk_C0[3]? */
-    /* 0x0CC */ f32 unk_CC;
-    /* 0x0D0 */ f32 unk_D0;
-    /* 0x0D4 */ f32 unk_D4;
-    /* 0x0D8 */ f32 unk_D8;
-    /* 0x0DC */ f32 unk_DC;
-    /* 0x0E0 */ f32 unk_E0;
+    /* 0x0C4 */ s32 unkC4;
+    /* 0x0C8 */ s32 unkC8;
+    /* 0x0CC */ Rect3D unk_CC;
     /* 0x0E4 */ void* unk_E4;
-    /* 0x0E8 */ void* unk_E8;
-    /* 0x0EC */ s32 unk_EC;
-    /* 0x0F0 */ char padF0[8];                      /* maybe part of unk_EC[3]? */
-    /* 0x0F8 */ void* unk_F8;
+    /* 0x0E8 */ CollisionData* collisionData;
+    /* 0x0EC */ Gfx* gfx;
+    /* 0x0F0 */ char padF0[4];
+    /* 0x0F4 */ void* unkF4;                        /* inferred */
+    /* 0x0F8 */ void (*function)(struct Collider*);
     /* 0x0FC */ void* unk_FC;
     /* 0x100 */ void* unk_100;
-    /* 0x104 */ char pad104[0xC];                   /* maybe part of unk_100[4]? */
+    /* 0x104 */ char pad104[8];                     /* maybe part of unk_100[3]? */
+    /* 0x10C */ s32 unk10C;                         /* inferred */
     /* 0x110 */ s32 unk_110;
     /* 0x114 */ s32 unk_114;
     /* 0x118 */ s32 unk_118;
@@ -365,8 +497,30 @@ typedef struct Collider {
     /* 0x120 */ char pad120[4];
     /* 0x124 */ s32 unk_124;
     /* 0x128 */ s32 unk_128;
-    /* 0x12C */ char unk_12C[4];
-} Collider; //sizeof 0x130
+    /* 0x12C */ char pad12C[4];
+} Collider;                                         /* size = 0x130 */
+
+typedef struct unkSpriteStruct {
+    /* 0x000 */ s32 unk_00;
+    /* 0x004 */ s32 unk_04;
+    /* 0x008 */ s32 unk_08;
+    /* 0x00C */ s32 unk_0C;
+    /* 0x010 */ s32 unk_10;
+    /* 0x014 */ s32 unk_14;
+    /* 0x018 */ Vec3f sfxPos;
+    /* 0x024 */ f32 unk_24;
+    /* 0x028 */ s32 UNK_28;
+    /* 0x02C */ s32 unk_2C;
+    /* 0x030 */ Vec3f unk_30;
+    /* 0x03C */ Vec3f unk_3C;
+    /* 0x048 */ f32 unk_48;
+    /* 0x04C */ struct Collider* unk_4C;
+    /* 0x050 */ f32 unk_50;
+    /* 0x054 */ f32 unk_54;
+    /* 0x058 */ f32 unk_58;
+    /* 0x05C */ s32 unk_5C;
+} unkSpriteStruct; //sizeof 0x60
+
 
 typedef struct DMAStruct {
     /* 0x00 */ OSIoMesg ioMsg;
@@ -421,40 +575,6 @@ typedef struct unk80100F50 {
 typedef struct frameBufferData {
     /* 0x00 */ char data[0x25800]; // h*W*colDepth
 } frameBufferData; //sizeof 0x25800
-
-typedef struct unkSpriteStruct5 {
-    /* 0x00 */ s32 unk_00;
-    /* 0x04 */ s32 unk_04;
-    /* 0x08 */ s32 unk_08;
-    /* 0x0C */ char unk_0C[0x08];
-    /* 0x14 */ s32 unk_14;
-    /* 0x18 */ char unk_18[0xCC];
-    /* 0xE4 */ s32 unk_E4;
-} unkSpriteStruct5; //sizeof ??
-
-typedef struct unkSpriteStruct {
-    /* 0x00 */ s32 unk_00;
-    /* 0x04 */ char unk_04[0x10];
-    /* 0x14 */ s32 unk_14;
-    /* 0x18 */ char unk_18[0x34];
-    /* 0x4C */ struct unkSpriteStruct5* unk_4C; //pointer to another type of this same struct
-    /* 0x50 */ char unk_50[0x10];
-} unkSpriteStruct; //sizeof 0x60
-
-typedef struct unkSpriteStruct2 {
-    /* 0x00 */ s32 unk_00;
-    /* 0x04 */ char unk_04[0x1C];
-} unkSpriteStruct2; //sizeof 0x20
-
-typedef struct unkSpriteStruct3 {
-    /* 0x00 */ s32 unk_00;
-    /* 0x68 */ char unk_04[0x68];
-} unkSpriteStruct3; //sizeof 0x6C
-
-typedef struct unkSpriteStruct4 {
-    /* 0x00 */ s32 unk_00;
-    /* 0x04 */ char unk_04[0x4C];
-} unkSpriteStruct4; //sizeof 0x50
 
 typedef struct tempStruct {
     /* 0x00 */ char unk_00[60];
@@ -850,7 +970,7 @@ typedef struct graphicStruct {
 /*0x1E880*/     Mtx unk1e880[74]; //may be used for "CTTask"s
 } graphicStruct; //sizeof 0x1FB00
 
-typedef struct Shadow{
+typedef struct Shadow {
     u32 active;
     Vec3f pos;
     f32 rotY;
@@ -861,21 +981,14 @@ typedef struct Shadow{
     u32 dlist;
     u32 actorID;
     Actor* actor;
-}Shadow;
+} Shadow;
 
-typedef struct Door{
+typedef struct Door {
     s32 index;
     s32 unk4; //not read?
     s32 inZone;
-    f32 minX;
-    f32 minZ;
-    f32 maxX;
-    f32 maxZ;
-    f32 toX;
-    f32 toZ;
-    f32 unk24;
-    f32 maxY;
-    f32 unk2C;
+    Rect3D rect;
+    Vec3f max;
     u32 direction; // index in gCardinalDirections
     s32 unk34; //not read?
     s32 unk38; 
@@ -885,116 +998,14 @@ typedef struct Door{
     s32 unk48; 
 } Door; //sizeof 0x4C (?)
 
+/*Dupe of CollisionData???
 typedef struct ModelData{
     s32 vertCount;
     s32 triCount;
     Vec3f* verts;
     Vec3f* tris;
     Rect3D* modelBox;
-} ModelData; //sizeof 0x14
-
-typedef struct unkBlackChameleon1 {
-    char unk_00[0x38];
-    s32 unk38;
-} unkBlackChameleon1;
-
-typedef struct unkBlackChameleon0 {
-    char unk_00[0xAC];
-    s32 unkAC;
-    s32 unkB0;
-} unkBlackChameleon0;
-
-typedef struct Color128 {
-    u32 r;
-    u32 g;
-    u32 b;
-    u32 a;
-} Color128;
-
-typedef struct SpriteActor {
-    s32 size;
-    s32 spriteIndex;
-    Vec3f position;
-    Vec3f scale;
-    s32 unk20;
-    s32 unk24;
-    f32 unk28;
-    s32 damages;
-    s32 unk30;
-    s32 unk34;
-    s32 unk38;
-    s32 unk3C;
-    Color128 color;
-} SpriteActor;
-
-typedef struct Collectable {
-    s32 id;
-    Vec3f position;
-    s32 unk10;
-    s32 unk14;
-    s32 unk18;
-    s32 unk1C;
-} Collectable;
-
-typedef struct RoomObject {
-    Vec3f position;
-    Vec3f scale;
-    s32 unk18;
-    s32 damages;
-    s32 unk20;
-    s32 unk24;
-    f32 unk28;
-    f32 unk2C;
-    f32 unk30;
-    s32 unk34;
-    s32 unk38;
-    s32 unk3C;
-    s32 unk40;
-    s32 unk44;
-    s32 unk48;
-    s32 unk4C;
-    s32 id; //id in levelData pointers
-    s32 unk54;
-    s32 unk58;
-    s32 unk5C;
-    s32 unk60;
-    u32 unk64;
-    s32 unk68;
-    s32 unk6C;
-    s32 unk70;
-    s32 unk74;
-    s32 unk78;
-    s32 unk7C;
-    s32 unk80;
-    s32 unk84;
-    s32 unk88;
-} RoomObject;
-
-typedef struct RoomActor {
-    s32 id;
-    Vec3f position;
-    f32 unk10;
-    f32 unk14;
-    f32 unk18;
-    s32 unk1C;
-    f32 unk20;
-    f32 unk24;
-    f32 unk28;
-    s32 unk2C;
-    f32 unk30;
-    f32 unk34;
-    f32 unk38;
-    f32 unk3C;
-    s32 unk40;
-    s32 unk44;
-    s32 unk48;
-    s32 unk4C;
-    s32 unk50;
-    s32 unk54;
-    s32 unk58;
-    s32 unk5C;
-} RoomActor;
-
+} ModelData; //sizeof 0x14*/
 typedef struct UnkType1 {
     Vec3f unk0;
     s32 unkC;
@@ -1015,10 +1026,10 @@ typedef struct UnkType2 {
 } UnkType2;
 
 typedef struct RoomSettings {
-    u32 RoomObjectsPointer;
-    u32 RoomActorPointer;
-    u32 CollectablePointer;
-    u32 SpriteActorPointer;
+    RoomObject* RoomObjectsPointer;
+    RoomActor* RoomActorPointer;
+    Collectable* CollectablePointer;
+    SpriteActor* SpriteActorPointer;
     s32 unk10;
     s32 unk14;
     s32 amountOfSpriteActors; //needs verification
@@ -1030,18 +1041,20 @@ typedef struct RoomSettings {
     f32 unk30;
     f32 unk34;
     f32 unk38;
-    s32 unk3C;
-    s32 unk40;
-    s32 unk44;
+    f32 unk3C;
+    f32 unk40;
+    f32 unk44;
     f32 unk48;
-    s32 unk4C;
-    s32 unk50;
+    s16 unk4C;
+    s16 unk4E;
+    s16 unk50;
+    s16 unk52;
     s32 unk54;
     s32 unk58;
     s32 unk5C;
     s32 unk60;
     f32 unk64;
-    s32 unk68;
+    f32 unk68;
 } RoomSettings;
 
 typedef struct LevelMap {
@@ -1100,6 +1113,12 @@ typedef struct Anim {
     s32 objects;
 } Anim;
 
+typedef struct AnimPointer {
+    s32* unk1;
+    s32* unk2;
+    Mtx* animation;
+} AnimPointer;
+
 typedef struct unk80174880 {
 /* 0x00 */ s32 unk_00[4];
 /* 0x10 */ char unk_10[0x18];
@@ -1153,18 +1172,6 @@ typedef struct unk80175608 {
     char unk_00[0x18];
 } unk80175608;
 
-//ok so you actually have to make the other parts vec3f name[] and Vec3w name[] SEPERATE from the struct
-//that kinda sucks but i know why now at least
-typedef struct CollisionData{
-    Vec3f positionProbably;
-    Vec3f scaleProbably;
-    s32 noVerts;
-    s32 aOTris;
-    u32 vertsStart; //segmented, points to verts[]
-    u32 trisStart; //segmented, points to tris[]
-    u32 settingsStart; //segmented
-} CollisionData;
-
 typedef struct unk80170E68 {
     s32 unk_00;
     char unk_04[0x804];
@@ -1195,5 +1202,10 @@ typedef struct SpriteListing {
     /* 0x70 */ s32 unk70;
     /* 0x74 */ char unk_74[4];
 } SpriteListing; //sizeof 0x78
+
+/*'fixed' matrix for building
+if you can get the base Mtx to work with the splat_ext Mtx be my guest, its all set up
+building just REALLY does not like gbi Mtx*/
+typedef short Mtx_f[2][16];
 
 #endif

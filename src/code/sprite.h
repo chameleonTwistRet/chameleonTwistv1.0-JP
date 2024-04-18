@@ -306,7 +306,6 @@ extern s32 D_800FEDB8;
 extern Tongue* D_80176B70;
 extern PlayerActor* D_80176B74;
 extern Camera* D_80176B78;
-extern s32 currentStageCrowns;
 extern char D_8010CA1C[];
 extern char D_8010CA54[];
 extern Addr D_8C26A0;
@@ -372,6 +371,7 @@ extern s32 gCharacterPortraits[];
 extern u8 D_800FE790[];
 
 /* functions */
+void Memory_Free(void*);
 void func_80055C04(void);
 Effect* Effect_HealthBar_Init(s32, s32, s32*, s32*, u32, s32);
 Effect* func_800634D4(s32, s32, s32*, s32*, u32, s32);

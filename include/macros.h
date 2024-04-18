@@ -13,8 +13,8 @@
 #define NORM_2(x,y) (sqrtf(SQ(x) + SQ(y)))
 #define NORM_3(x,y,z) (sqrtf(SQ(x) + SQ(y) + SQ(z)))
 #define sqrtf __sqrtf
-#define sinf __sinf 
-#define cosf __cosf 
+#define sinf __sinf
+#define cosf __cosf
 #define DEGREES_TO_RADIANS_2PI(x) ((x) * 2 * PI / 360.0)
 #define DEGREES_TO_RADIANS_PI(x) (x * PI / 180.0)
 #define ARRAY_COUNT(arr) (s32)(sizeof(arr) / sizeof(arr[0]))
@@ -45,5 +45,15 @@
 
 #define SCREEN_WIDTH  320
 #define SCREEN_HEIGHT 240
+
+//asset file related macros so we dont have to split useless files
+//identity matrix
+//see the end of common_structs.h for Mtx_f
+//building matricies is really weird
+#define IDENTITY_M {{1,0,0,0},{0,1,0,0},{0,0,1,0},{0,0,0,1}}
+#define IDENTITY {{1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1},{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}}
+//basic file padding
+#define FILEPAD {0xB8,0,0,0,0,0,0,0}
+
 
 #endif

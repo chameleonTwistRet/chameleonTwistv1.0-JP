@@ -8,7 +8,6 @@
 
 /* Functions */
 
-
 /* Ext Variables */
 extern s32 RumblePakError;
 extern s32 D_80176960[];

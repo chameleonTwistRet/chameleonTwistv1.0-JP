@@ -300,7 +300,7 @@ extern Camera gCamera[4];
 extern unk802000C84 D_80200C84;
 extern u8 gHasShadows[256]; //unset for actortypes like spawnners.
 extern Collider D_80236980[128];
-extern s32 gFeildCount;
+extern s32 gFieldCount;
 extern Door gDoors[16];
 extern unkIsChange isChange;
 extern s32 gDoorCount;
@@ -364,5 +364,7 @@ extern CTTask* gCTTaskHead;
 extern CTTask* gCTTaskTail;
 extern s32 sGameModeStart;
 extern char D_8010DB20[];
-extern CardinalDirection gCardinalDirections[5]; // including "NO_DIR"
+extern Collision gZoneCollisions[];
+extern s32 currentStageCrowns;
+
 #endif
