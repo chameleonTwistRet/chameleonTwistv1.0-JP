@@ -1,12 +1,13 @@
+#build to test building and nothing else
+#only for this branch
+#if you want more main centered build testing use buildUpdate
+
 name: Build
 
 on: 
   push:
     branches:
-      - master
-  pull_request_target:
-    branches:
-      - master
+      - nathanImgStuff
 
 jobs:
   build_repo:
@@ -44,6 +45,6 @@ jobs:
     - name: Build Chameleon Twist
       run: ./configure && ninja
 
-    - name: Upload Frogress
-      if: github.ref == 'refs/heads/master'
-      run: python3 tools/uploadProgress.py --api_key ${{ secrets.API_KEY }}
+    #- name: Upload Frogress
+    #  if: github.ref == 'refs/heads/master'
+    #  run: python3 tools/uploadProgress.py --api_key ${{ secrets.API_KEY }}
