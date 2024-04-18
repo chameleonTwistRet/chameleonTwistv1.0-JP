@@ -7,10 +7,9 @@ Author: Nathan R.
 import re
 import struct
 from pathlib import Path
-from util.log import error
-
-from util import options
-from segtypes.common.codesubsegment import CommonSegCodeSubsegment
+from splat.util.log import error
+from splat.util import options, symbols
+from splat.segtypes.common.codesubsegment import CommonSegCodeSubsegment
 
 
 class N64SegCollision(CommonSegCodeSubsegment):
@@ -62,8 +61,6 @@ class N64SegCollision(CommonSegCodeSubsegment):
 
         lines = []
 
-        from util import symbols
-
         if self.type == "Verts":
             sym = self.retrieve_sym_type(symbols.all_symbols_dict, self.vram_start, "ColV")
             if not sym:
@@ -97,7 +94,7 @@ class N64SegCollision(CommonSegCodeSubsegment):
             if not self.data_only:
                 lines.append('#include "common.h"')
                 lines.append("")
-                typer = "Vec3s"
+                typer = "Vec3w"
                 lines.append(f"{typer} {sym.name}[] = {{")
             at = len(lines)
             
@@ -122,13 +119,11 @@ class N64SegCollision(CommonSegCodeSubsegment):
             if not self.data_only:
                 lines.append('#include "common.h"')
                 lines.append("")
-                typer = "Vec3f"
-                lines.append(f"{typer} {sym.name}[2] = {{")
+                typer = "Rect3D"
+                lines.append(f"{typer} {sym.name} = {{")
             
-            #settings only consist of 2 vec3f's
-            newLine = str(struct.unpack(">fff", collision_data[0:0xC])).replace("(", "{").replace(")","}")+","
-            lines.append(newLine)
-            newLine = str(struct.unpack(">fff", collision_data[0xC:0xC*2])).replace("(", "{").replace(")","}")+","
+            newLine = str(struct.unpack(">fff", collision_data[0:0xC])).replace("(", "{").replace(")","}")+"," +\
+                      str(struct.unpack(">fff", collision_data[0xC:0xC+0xC])).replace("(", "{").replace(")","}")
             lines.append(newLine)
 
             if not self.data_only:
@@ -146,8 +141,39 @@ class N64SegCollision(CommonSegCodeSubsegment):
                 lines.append(f"{typer} {sym.name} = {{")
             
             #see common_structs.h
-            newLine = str(struct.unpack(">iiIII", collision_data[0:0x14]))[1:-1]
-            lines.append(newLine)
+            newLine = str()
+
+            
+            data = struct.unpack(">iiIII", collision_data[0:0x14])
+            one = ""
+            enums = open("include/enums.h", "r", encoding="UTF-8").readlines()
+            i = 0
+            while i < len(data):
+                v = data[i]
+                if i == 2:
+                    sym2 = self.retrieve_sym_type(symbols.all_symbols_dict, v, "ColV")
+                    if not sym2:
+                        sym2 = self.create_symbol(
+                            addr=self.vram_start, in_segment=True, type="ColV", define=True
+                        )
+                    v = "&"+sym2.name
+                elif i == 3:
+                    sym2 = self.retrieve_sym_type(symbols.all_symbols_dict, v, "ColT")
+                    if not sym2:
+                        sym2 = self.create_symbol(
+                            addr=self.vram_start, in_segment=True, type="ColT", define=True
+                        )
+                    v = "&"+sym2.name
+                elif i == 4:
+                    sym2 = self.retrieve_sym_type(symbols.all_symbols_dict, v, "ColS")
+                    if not sym2:
+                        sym2 = self.create_symbol(
+                            addr=self.vram_start, in_segment=True, type="ColS", define=True
+                        )
+                    v = "&"+sym2.name
+                one += str(v)+", "
+                i += 1
+            lines.append(one[:-2])
 
             if not self.data_only:
                 lines.append("};")

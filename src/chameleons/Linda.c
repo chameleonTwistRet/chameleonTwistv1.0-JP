@@ -13,9 +13,6 @@ extern Mtx D_80129970_Linda; //shoulder
 extern Mtx D_801299B0_Linda; //Lshoulder
 extern Mtx D_801299F0_Linda; //fist
 extern Mtx D_80129A30_Linda; //Lfist
-#define IDENTITY {{1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1},{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}} // identity matrix so we dont have to split useless files
-
-#define FILEPAD {0xB8,0,0,0,0,0,0,0} // the funny
 
 
 #include "assets/chameleons/Linda/light.light.inc.c"
@@ -24,27 +21,27 @@ extern Mtx D_80129A30_Linda; //Lfist
 Mtx_f Linda_IMtx1 = IDENTITY;
 unsigned char Linda_Pad1[] = FILEPAD;
 unsigned char Linda_backpackStrap_ci4_PNG[] = {
-#include "build/include/assets/chameleons/Linda/body/backpackStrap.ci4.png.inc.c"
+#include "build/assets/chameleons/Linda/body/backpackStrap.ci4.png.inc.c"
 };
 unsigned char Linda_Pad2[] = FILEPAD;
 unsigned char Linda_backpackStrap_ci4_PAL[] = {
-#include "build/include/assets/chameleons/Linda/body/backpackStrap.ci4.pal.inc.c"
+#include "build/assets/chameleons/Linda/body/backpackStrap.ci4.pal.inc.c"
 };
 unsigned char Linda_Pad3[] = FILEPAD;
 unsigned char Linda_solidColor_ci4_PNG[] = {
-#include "build/include/assets/chameleons/Linda/body/solidColor.ci4.png.inc.c"
+#include "build/assets/chameleons/Linda/body/solidColor.ci4.png.inc.c"
 };
 unsigned char Linda_Pad4[] = FILEPAD;
 unsigned char Linda_solidColor_ci4_PAL[] = {
-#include "build/include/assets/chameleons/Linda/body/solidColor.ci4.pal.inc.c"
+#include "build/assets/chameleons/Linda/body/solidColor.ci4.pal.inc.c"
 };
 unsigned char Linda_Pad5[] = FILEPAD;
 unsigned char Linda_number_ci4_PNG[] = {
-#include "build/include/assets/chameleons/Linda/body/number.ci4.png.inc.c"
+#include "build/assets/chameleons/Linda/body/number.ci4.png.inc.c"
 };
 unsigned char Linda_Pad6[] = FILEPAD;
 unsigned char Linda_number_ci4_PAL[] = {
-#include "build/include/assets/chameleons/Linda/body/number.ci4.pal.inc.c"
+#include "build/assets/chameleons/Linda/body/number.ci4.pal.inc.c"
 };
 
 #include "assets/chameleons/Linda/body/body.gfx.inc.c"
@@ -57,35 +54,35 @@ unsigned char Linda_number_ci4_PAL[] = {
 Mtx_f Linda_IMtx2 = IDENTITY;
 unsigned char Linda_Pad7[] = FILEPAD;
 unsigned char Linda_eyeL_ci8_PNG[] = {
-#include "build/include/assets/chameleons/Linda/head/eyeL.ci8.png.inc.c"
+#include "build/assets/chameleons/Linda/head/eyeL.ci8.png.inc.c"
 };
 unsigned char Linda_Pad8[] = FILEPAD;
 unsigned char Linda_eyeL_ci8_PAL[] = {
-#include "build/include/assets/chameleons/Linda/head/eyeL.ci8.pal.inc.c"
+#include "build/assets/chameleons/Linda/head/eyeL.ci8.pal.inc.c"
 };
 unsigned char Linda_Pad9[] = FILEPAD;
 unsigned char Linda_bow_ci4_PNG[] = {
-#include "build/include/assets/chameleons/Linda/head/bow.ci4.png.inc.c"
+#include "build/assets/chameleons/Linda/head/bow.ci4.png.inc.c"
 };
 unsigned char Linda_Pad10[] = FILEPAD;
 unsigned char Linda_bow_ci4_PAL[] = {
-#include "build/include/assets/chameleons/Linda/head/bow.ci4.pal.inc.c"
+#include "build/assets/chameleons/Linda/head/bow.ci4.pal.inc.c"
 };
 unsigned char Linda_Pad11[] = FILEPAD;
 unsigned char Linda_eyeR_ci8_PNG[] = {
-#include "build/include/assets/chameleons/Linda/head/eyeR.ci8.png.inc.c"
+#include "build/assets/chameleons/Linda/head/eyeR.ci8.png.inc.c"
 };
 unsigned char Linda_Pad12[] = FILEPAD;
 unsigned char Linda_eyeR_ci8_PAL[] = {
-#include "build/include/assets/chameleons/Linda/head/eyeR.ci8.pal.inc.c"
+#include "build/assets/chameleons/Linda/head/eyeR.ci8.pal.inc.c"
 };
 unsigned char Linda_Pad13[] = FILEPAD;
 unsigned char Linda_cheek_ci4_PNG[] = {
-#include "build/include/assets/chameleons/Linda/head/cheek.ci4.png.inc.c"
+#include "build/assets/chameleons/Linda/head/cheek.ci4.png.inc.c"
 };
 unsigned char Linda_Pad14[] = FILEPAD;
 unsigned char Linda_cheek_ci4_PAL[] = {
-#include "build/include/assets/chameleons/Linda/head/cheek.ci4.pal.inc.c"
+#include "build/assets/chameleons/Linda/head/cheek.ci4.pal.inc.c"
 };
 
 #include "assets/chameleons/Linda/head/head.gfx.inc.c"
@@ -94,11 +91,11 @@ unsigned char Linda_cheek_ci4_PAL[] = {
 Mtx_f Linda_IMtx3 = IDENTITY;
 unsigned char Linda_Pad15[] = FILEPAD;
 unsigned char Linda_backpack_ci8_PNG[] = {
-#include "build/include/assets/chameleons/Linda/backpack/backpack.ci8.png.inc.c"
+#include "build/assets/chameleons/Linda/backpack/backpack.ci8.png.inc.c"
 };
 unsigned char Linda_Pad16[] = FILEPAD;
 unsigned char Linda_backpack_ci8_PAL[] = {
-#include "build/include/assets/chameleons/Linda/backpack/backpack.ci8.pal.inc.c"
+#include "build/assets/chameleons/Linda/backpack/backpack.ci8.pal.inc.c"
 };
 
 #include "assets/chameleons/Linda/backpack/backpack.gfx.inc.c"
@@ -107,11 +104,11 @@ unsigned char Linda_backpack_ci8_PAL[] = {
 Mtx_f Linda_IMtx4 = IDENTITY;
 unsigned char Linda_Pad17[] = FILEPAD;
 unsigned char Linda_shoe_ci4_PNG[] = {
-#include "build/include/assets/chameleons/Linda/shoe/shoe.ci4.png.inc.c"
+#include "build/assets/chameleons/Linda/shoe/shoe.ci4.png.inc.c"
 };
 unsigned char Linda_Pad18[] = FILEPAD;
 unsigned char Linda_shoe_ci4_PAL[] = {
-#include "build/include/assets/chameleons/Linda/shoe/shoe.ci4.pal.inc.c"
+#include "build/assets/chameleons/Linda/shoe/shoe.ci4.pal.inc.c"
 };
 
 #include "assets/chameleons/Linda/shoe/shoe.gfx.inc.c"
@@ -125,11 +122,11 @@ Mtx_f Linda_IMtx5 = IDENTITY;
 Mtx_f Linda_IMtx6 = IDENTITY;
 unsigned char Linda_Pad19[] = FILEPAD;
 unsigned char Linda_color_ci4_PNG[] = {
-#include "build/include/assets/chameleons/Linda/cuff/color.ci4.png.inc.c"
+#include "build/assets/chameleons/Linda/cuff/color.ci4.png.inc.c"
 };
 unsigned char Linda_Pad20[] = FILEPAD;
 unsigned char Linda_color_ci4_PAL[] = {
-#include "build/include/assets/chameleons/Linda/cuff/color.ci4.pal.inc.c"
+#include "build/assets/chameleons/Linda/cuff/color.ci4.pal.inc.c"
 };
 
 #include "assets/chameleons/Linda/cuff/cuff.gfx.inc.c"
@@ -143,19 +140,19 @@ Mtx_f Linda_IMtx7 = IDENTITY;
 Mtx_f Linda_IMtx8 = IDENTITY;
 unsigned char Linda_Pad21[] = FILEPAD;
 unsigned char Linda_wristColor_ci4_PNG[] = {
-#include "build/include/assets/chameleons/Linda/wrist/wristColor.ci4.png.inc.c"
+#include "build/assets/chameleons/Linda/wrist/wristColor.ci4.png.inc.c"
 };
 unsigned char Linda_Pad22[] = FILEPAD;
 unsigned char Linda_wristColor_ci4_PAL[] = {
-#include "build/include/assets/chameleons/Linda/wrist/wristColor.ci4.pal.inc.c"
+#include "build/assets/chameleons/Linda/wrist/wristColor.ci4.pal.inc.c"
 };
 unsigned char Linda_Pad23[] = FILEPAD;
 unsigned char Linda_wrist_ci4_PNG[] = {
-#include "build/include/assets/chameleons/Linda/wrist/wrist.ci4.png.inc.c"
+#include "build/assets/chameleons/Linda/wrist/wrist.ci4.png.inc.c"
 };
 unsigned char Linda_Pad24[] = FILEPAD;
 unsigned char Linda_wrist_ci4_PAL[] = {
-#include "build/include/assets/chameleons/Linda/wrist/wrist.ci4.pal.inc.c"
+#include "build/assets/chameleons/Linda/wrist/wrist.ci4.pal.inc.c"
 };
 
 #include "assets/chameleons/Linda/wrist/wrist.gfx.inc.c"
@@ -179,43 +176,43 @@ Mtx_f Linda_IMtx11 = IDENTITY;
 Mtx_f Linda_IMtx12 = IDENTITY;
 unsigned char Linda_Pad25[] = FILEPAD;
 unsigned char Linda_fist1_ci4_PNG[] = {
-#include "build/include/assets/chameleons/Linda/fist/fist1.ci4.png.inc.c"
+#include "build/assets/chameleons/Linda/fist/fist1.ci4.png.inc.c"
 };
 unsigned char Linda_Pad26[] = FILEPAD;
 unsigned char Linda_fist1_ci4_PAL[] = {
-#include "build/include/assets/chameleons/Linda/fist/fist1.ci4.pal.inc.c"
+#include "build/assets/chameleons/Linda/fist/fist1.ci4.pal.inc.c"
 };
 unsigned char Linda_Pad27[] = FILEPAD;
 unsigned char Linda_fist2_ci4_PNG[] = {
-#include "build/include/assets/chameleons/Linda/fist/fist2.ci4.png.inc.c"
+#include "build/assets/chameleons/Linda/fist/fist2.ci4.png.inc.c"
 };
 unsigned char Linda_Pad28[] = FILEPAD;
 unsigned char Linda_fist2_ci4_PAL[] = {
-#include "build/include/assets/chameleons/Linda/fist/fist2.ci4.pal.inc.c"
+#include "build/assets/chameleons/Linda/fist/fist2.ci4.pal.inc.c"
 };
 unsigned char Linda_Pad29[] = FILEPAD;
 unsigned char Linda_fist3_ci4_PNG[] = {
-#include "build/include/assets/chameleons/Linda/fist/fist3.ci4.png.inc.c"
+#include "build/assets/chameleons/Linda/fist/fist3.ci4.png.inc.c"
 };
 unsigned char Linda_Pad30[] = FILEPAD;
 unsigned char Linda_fist3_ci4_PAL[] = {
-#include "build/include/assets/chameleons/Linda/fist/fist3.ci4.pal.inc.c"
+#include "build/assets/chameleons/Linda/fist/fist3.ci4.pal.inc.c"
 };
 unsigned char Linda_Pad31[] = FILEPAD;
 unsigned char Linda_fistDiamond_ci4_PNG[] = {
-#include "build/include/assets/chameleons/Linda/fist/fistDiamond.ci4.png.inc.c"
+#include "build/assets/chameleons/Linda/fist/fistDiamond.ci4.png.inc.c"
 };
 unsigned char Linda_Pad32[] = FILEPAD;
 unsigned char Linda_fistDiamond_ci4_PAL[] = {
-#include "build/include/assets/chameleons/Linda/fist/fistDiamond.ci4.pal.inc.c"
+#include "build/assets/chameleons/Linda/fist/fistDiamond.ci4.pal.inc.c"
 };
 unsigned char Linda_Pad33[] = FILEPAD;
 unsigned char Linda_fist4_ci4_PNG[] = {
-#include "build/include/assets/chameleons/Linda/fist/fist4.ci4.png.inc.c"
+#include "build/assets/chameleons/Linda/fist/fist4.ci4.png.inc.c"
 };
 unsigned char Linda_Pad34[] = FILEPAD;
 unsigned char Linda_fist4_ci4_PAL[] = {
-#include "build/include/assets/chameleons/Linda/fist/fist4.ci4.pal.inc.c"
+#include "build/assets/chameleons/Linda/fist/fist4.ci4.pal.inc.c"
 };
 
 #include "assets/chameleons/Linda/fist/fist.gfx.inc.c"

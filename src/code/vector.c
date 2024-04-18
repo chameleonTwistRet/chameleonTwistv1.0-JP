@@ -345,8 +345,8 @@ Vec3f* RotateVector3D(Vec3f* outVec, Vec3f inpVec, f32 theta, s32 rotateAroundAx
     f32 sin;
     f32 cos;
 
-    sin = __sinf(theta);
-    cos = __cosf(theta);
+    sin = sinf(theta);
+    cos = cosf(theta);
     switch (rotateAroundAxesIndex) {
     case NO_ROTATION:
         temp_vec = inpVec;

@@ -1,10 +1,9 @@
 import argparse
 from glob import glob
 
+#specifically for ones who dont exactly match their file inc names
 splat_exts = {
 }
-#specifically for ones who dont exactly match their file inc names
-#hardcoded because i dont want to glob all of splat lmfao
 incExt = {
     "palette": "pal",
     "ci4": "png",
@@ -121,8 +120,9 @@ def start(group, where):
                     }
                     if len(args) > 3:
                         values["Ext"] = args[3:]
-                
-                dataOnly = values["Path"].find(".MEd") != -1
+                dataOnly = values["Type"] in buildFolder
+                #new splat thing
+                if values["Type"] == "databin": values["Type"] = "bin"
                 values["Path"] = defDir+"/"+values["Path"].replace(".MEd", "")
                 values["ShortName"] = values["Path"].split("/")[-1].replace(".","_")
                 if values["ShortName"][0].isdigit(): values["ShortName"]="d"+values["ShortName"] #bc we cant have a number start now can we
@@ -136,10 +136,11 @@ def start(group, where):
                     mapType = values["Ext"][-1].split(" ")[-1].replace('"', "").strip()
                     useType = useType.replace("{self.type[0]}", mapType[0])
                     customType = useType
+                
 
                 nline = '\n#include "assets/'+values["Path"]+'.'+useType+'.inc.c"\n'
                 if values["Type"] == "bin": nline = nline.replace(".bin", "",1)
-                if values["Type"] in buildFolder: nline = nline.replace("assets/", "build/include/assets/",1)
+                if values["Type"] in buildFolder: nline = nline.replace("assets/", "build/assets/",1)
 
                 segmentAdr = (int(values["Address"], 16) - baseAdr) + segmentId
                 #symbol creation
@@ -162,7 +163,7 @@ def start(group, where):
                     symbol = "D_"+symbol+"_"+group
 
                 #typedef
-                char = values["Type"] in buildFolder and line.find(".MEd") != -1 
+                char = values["Type"] in buildFolder and dataOnly
 
                 if "Ext" in list(values.keys()) and not dataOnly:
                     for arg in values["Ext"]:
@@ -242,8 +243,8 @@ def start(group, where):
             if defDir != "": defDir+="/"
             defDir += line.split("dir: ")[-1].strip()
         i += 1
-    definitions.reverse()
-    for i in definitions: newC.insert(1, i)
+    #definitions.reverse()
+    #for i in definitions: newC.insert(1, i)
     open(writeTo, "w", encoding="UTF-8").writelines(newC)
     if symbolage: open(symbolsPath, "a").writelines(newSymbols)
     return 
@@ -256,6 +257,6 @@ if __name__ == "__main__":
     try:
         args = parser.parse_args()
     except SystemExit:
-        start("AntLand", "levelGroup/AntLand")
+        start("JungleLand", "levelGroup/JungleLand")
         exit()
     start(args.group, args.outfileName)

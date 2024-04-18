@@ -9,10 +9,9 @@ Modified for Collectable struct: Nathan R.
 import re
 import struct
 from pathlib import Path
-from util.log import error
-
-from util import options
-from segtypes.common.codesubsegment import CommonSegCodeSubsegment
+from splat.util.log import error
+from splat.util import symbols, options
+from splat.segtypes.common.codesubsegment import CommonSegCodeSubsegment
 
 class N64SegCollectable(CommonSegCodeSubsegment):
     def __init__(
@@ -59,7 +58,6 @@ class N64SegCollectable(CommonSegCodeSubsegment):
 
         lines = []
         
-        from util import symbols
         sym = self.retrieve_sym_type(symbols.all_symbols_dict, self.vram_start, "Clct")
         if not sym:
             sym = self.create_symbol(
@@ -76,18 +74,16 @@ class N64SegCollectable(CommonSegCodeSubsegment):
             use = data[i]
             if i == 0: #Actor ID
                 enums = open("include/enums.h", "r", encoding="UTF-8").readlines()
-                enum = 0
-                actorAt = 0 #number in the actor enum
                 reading = False
-                while enum < len(enums):
-                    enumLine = enums[enum]
+                for enumLine in enums:
                     if enumLine.find("actorIDs") != -1: reading = True
                     elif reading:
+                        info = enumLine.split(" = ")
+                        actorAt = int(info[-1].replace(",", "").split("//")[0].strip())
+                        name = info[0].strip()
                         if actorAt == use:
-                            use = enumLine.split(",")[0].split("	")[-1].strip()
+                            use = name
                             break
-                        actorAt += 1
-                    enum += 1
             elif i == 1: #Position
                 use = "{"+str(data[i])+","+str(data[i+1])+","+str(data[i+2])+"}"
                 i += 2

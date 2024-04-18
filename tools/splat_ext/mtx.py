@@ -8,10 +8,10 @@ Author: Ellie (Elisiah)
 import re
 import struct
 from pathlib import Path
-from util.log import error
+from splat.util.log import error
 
-from util import options
-from segtypes.common.codesubsegment import CommonSegCodeSubsegment
+from splat.util import options
+from splat.segtypes.common.codesubsegment import CommonSegCodeSubsegment
 
 
 class N64SegMtx(CommonSegCodeSubsegment):

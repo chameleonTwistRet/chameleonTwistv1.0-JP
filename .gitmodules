@@ -6,6 +6,3 @@
 	path = tools/asm-differ
 	url = https://github.com/simonlindholm/asm-differ.git
 	branch = main
-[submodule "tools/splat"]
-	path = tools/splat
-	url = https://github.com/ethteck/splat

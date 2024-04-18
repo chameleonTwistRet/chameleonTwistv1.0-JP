@@ -12,7 +12,7 @@ asm/
 assets/
 build/
 expected/
-include/mod.h
+# include/mod.h
 tools/gcc_2.7.2/
 .vscode/configurationCache.log
 .vscode/dryrun.log
@@ -30,4 +30,3 @@ build.ninja
 undefined_funcs_auto.txt
 undefined_syms_auto.txt
 ctx.c
-context.txt

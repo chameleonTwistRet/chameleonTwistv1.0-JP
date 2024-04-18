@@ -11,21 +11,24 @@
 
 extern s32 rngSeed; //rng
 
+extern SpriteListing gSpriteListings[230];
+  
+extern OSPfs gRumblePfs[MAXCONTROLLERS];
+
 extern Camera* D_80174860;
 extern PlayerActor* gCurrentActivePlayerPointer;
 extern Tongue* gTongueOnePointer;
-extern contMain gContMain[MAXCONTROLLERS];
+extern ContMain gContMain[MAXCONTROLLERS];
 extern s16 gTotalCarrots;
 extern unk0* D_801FFB84;
-extern s32 g_aa1_Count;
-extern aa1* g_aa1_head;
-extern aa1 D_80176F00;
+extern s32 gEffectListCount;
+extern Effect* gEffectListHead;
+extern Effect gEffectList;
 extern s32 D_800F68A8;              // s32 (but really only 1bit) is controller input allowed.
 extern s32 sDebugInt;
 extern s32 D_800F06EC;
 extern s32 sDebugTestView;
-extern u32 D_800F0B50;
-extern s8 D_800F0B54;
+extern u8 D_800F0B54[];
 extern s32 D_800F6880;
 extern s32 gPrevButtons[MAXCONTROLLERS];
 extern s32 gButtons[MAXCONTROLLERS];
@@ -40,8 +43,8 @@ extern u8 gPrimRed;
 extern u8 gPrimGreen;
 extern u8 gPrimBlue;
 extern u8 gPrimAlpha;
-extern s8 D_800FDFE0;
-extern s8 D_800FDFE4;
+extern u8 D_800FDFE0;
+extern u8 D_800FDFE4;
 extern s32 D_800FDFE8;
 extern s32 D_800FDFEC;
 extern f32 D_800FDFF0;
@@ -79,7 +82,7 @@ extern u8 D_800FE190;
 extern u8 D_800FE194;
 extern u8 D_800FE198;
 extern s32 D_800FE19C;
-extern s8 gDontChangeEyes;
+extern u8 gDontChangeEyes;
 extern u8 gLockContextEyes;
 extern s32 D_800FEA30;
 extern s32 D_800FEA34;
@@ -97,12 +100,12 @@ extern u8 D_800FEBC8;
 extern u8 D_800FEBCC;
 extern f32 D_800FEBD0;
 extern Vec4f D_800FEBD4;
-extern u8 D_800FEDC0[225][8]; //some data RE each sound effect
+extern u8 D_800FEDC0[226][8]; //some data RE each sound effect
 extern s32 D_800FF5D0;
 extern s32 D_800FF5E4;
 extern s32 D_800FF5E8;
-extern s16 D_800FF5EC;
-extern s16 D_800FF5F0;
+extern s16 gGfxTaskRunning;
+extern s16 gAudioTaskState;
 extern s16 D_800FF5F4;
 extern s16 gIsPaused;
 extern s16 gIsStero;
@@ -115,7 +118,7 @@ extern u8 D_800FF650;
 extern s16 sStageBGMs[];
 extern s16 D_800FFDF0;
 extern s16 D_800FFDF4;
-extern s32 gameModeCurrent;
+extern s32 gGameModeCurrent;
 extern Gfx* gMainGfxPos;
 extern s32 gGameModeState;
 extern s16 UseFixedRNGSeed;
@@ -124,8 +127,8 @@ extern f32 D_8010881C;
 extern f32 D_80108820;
 extern s32 D_80108B68;
 extern segTableEntry gSegTable[16];
-extern Vec2f D_8010A6D0[0x6C]; //positions?
-extern unk_8010AA28 D_8010AA28[0x6C]; //actor related?
+extern const Vec2f D_8010A6D0[0x6B]; //positions?
+extern const unk_8010AA28 D_8010AA28[0x6B]; //actor related?
 extern f32 D_8010B328;
 extern f32 D_8010B32C;
 extern f32 D_8010B330;
@@ -194,7 +197,7 @@ extern u64 gMainThreadStack[1024]; // thread3
 extern OSThread D_80117FF0; //unused thread.
 extern u64 D_801181A0[512]; //unused Stack
 extern void* D_801191A0;
-extern OSMesgQueue D_801192E8;
+extern OSMesgQueue gSyncMessageQueue;
 extern u64 D_80119320[128]; //D_800f04e0[].dram_stack
 extern u64 D_80119720[8192];//D_800f04e0[].output_buff
 extern Gfx D_80129720[10];
@@ -211,24 +214,25 @@ extern pole D_80170968[64]; //currently loaded pole structs
 extern unkStruct D_80172E88[]; //used by Red ants.
 extern s32 D_80174758[];
 extern s32 D_80174864;
-extern s32 D_80174878;                  // Level/Stage ID | loadStageByIndex()
-//extern s32 D_80174880[0x20];
+extern s32 D_80174878;                  // Level/Stage ID | LoadStageByIndex()
+extern s32 levelFlags[32]; //contextual-per-level flags
+
 extern s32 D_801748A0;
 extern s32 D_80174998;
-extern s32 D_8017499C;
+extern s32 gTimer;                                              // Timer: runs when a process starts
 extern OSMesgQueue gEepromMsgQ;
-extern s32 D_80176824;
-extern u8 gTextGradient[16]; //probably really color32[4]
+extern s32 Battle_TimeLeft;
+extern u8 gTextGradient[16]; //probably really RGBA32[4]
 extern f32 D_80176F50;
-extern OSMesgQueue D_801B3120;
-extern OSTask* D_801B3138;
-extern s32 D_801B3140;
+extern OSMesgQueue gSchedMessageQueue;
+extern OSTask* gCurrentGfxTask;
+extern OSTask* gCurrentAudioTask;
 extern s16 D_801B3540;
 extern u8 gAlHeapBase[300000];
 extern s32 D_801FC9A0;
-extern s32 D_801FC9A8;
+extern s32 TempoToSetBGM;
 extern s16 D_801FC9AC;
-extern s16 D_801FC9B4;
+extern s16 TempoBGMBool;
 extern f64 D_801FCA00;
 extern OSThread gAudioThread;
 extern u64 gAudioThreadStack[0x400];
@@ -253,10 +257,10 @@ extern s32 ModelBufferCount;
 extern s32 D_80236968;
 extern s32 D_8023696C;
 extern s32 gCurrentZone;
-extern s32 D_801FC9B0;
+extern s32 TempoBGM;
 extern s16 D_801FCA22;
-extern s32 D_800FF620;
-extern unk800FF624 D_800FF624;
+extern s32 currLoadingBGM;
+extern s32 currBGMIndex;
 extern ALSeqFile* gBGMALSeqFileP;
 extern OSMesgQueue D_801FCA50[50];
 typedef u8 Addr[];
@@ -296,7 +300,7 @@ extern Camera gCamera[4];
 extern unk802000C84 D_80200C84;
 extern u8 gHasShadows[256]; //unset for actortypes like spawnners.
 extern Collider D_80236980[128];
-extern s32 gFeildCount;
+extern s32 gFieldCount;
 extern Door gDoors[16];
 extern unkIsChange isChange;
 extern s32 gDoorCount;
@@ -304,18 +308,17 @@ extern Collision D_80240D6C[];
 extern u8 gCarrotBitfield;
 extern s8 D_801B313D;
 extern SaveRecord gGameRecords;
-extern Vec3s D_801087D8[];
-extern s32 D_800FF898;
-extern u32 D_800FF89C;
-extern u32 D_800FF8A0;
-extern s32 D_800FF8A4;
-extern s32 D_800FF8A8;
+extern Vec3w D_801087D8[];
+extern s32 Timing_StopGfxTime;
+extern u32 Timing_StartGfxTime;
+extern u32 Timing_EndFrameTime;
+extern s32 Timing_StopProcessTime;
+extern s32 Timing_StartProcessTime;
 extern s32 D_800FF8AC;
 extern s16 D_80100E08[17][5]; //coords and behavior for "Game over" letters
 extern f64 D_8010F410;
-extern void* D_80100F28[10]; // coords and text for stage names
 extern char* D_80100FD4[18];
-extern f32 D_801B316C;
+extern f32 Timing_BusyTime;
 extern char D_8011078C[];
 extern char D_801107A0[];
 extern char D_801107B0[];
@@ -325,29 +328,28 @@ extern char D_8010D940[];
 extern char D_8010D964[];
 extern u32 D_800FF884;
 extern char D_8010D968[];
-extern s32 D_800FF888;
-extern u32 D_800FF88C;
+extern s32 Timing_DelayAudioInterval;
+extern u32 Timing_StartAudioTime;
 extern s32 D_800FF890[];
 extern s16 D_800FF8BC;
-extern s32 D_800FF8A8;
+extern s32 Timing_StartProcessTime;
 extern s32 D_800FF8B4;
 extern u32 D_800FF8B8;
 extern s32 D_801B3168;
 extern u8 gSelectedCharacters[4];
-extern u8 D_800F0BE0[];
-extern unkStruct0 D_800F0BE4[];
-extern unk801749B0 D_801749B0;
+extern s32 D_801749B0;
+extern s32 gIsMultiplayerPaused;
 extern s32 gCurrentStage;
-extern s32 D_80176F58;
+extern s32 D_80176F58[2];
 extern s16 gOneRun;
 extern s16 gNoHit;
-extern unk801FCA20 D_801FCA20;
-extern unk801FCA20 D_800FF4D0[];
-extern s16 D_801FCA24;
+extern BGMVolume volBGM;
+extern BGMVolume volumesBGM[];
+extern s16 doesBGMLoop;
 extern s16 gIsStero;
 extern s16 D_801FCA48;
 extern ALCSeq* gBGMSeqP;
-extern s16 D_8020005A;
+extern s16 gIsNotInCave;
 extern s32 D_80236974;
 extern char D_8010D834[];
 extern u8 D_80200A98[];
@@ -362,5 +364,7 @@ extern CTTask* gCTTaskHead;
 extern CTTask* gCTTaskTail;
 extern s32 sGameModeStart;
 extern char D_8010DB20[];
-extern CardinalDirection gCardinalDirections[5]; // including "NO_DIR"
+extern Collision gZoneCollisions[];
+extern s32 currentStageCrowns;
+
 #endif

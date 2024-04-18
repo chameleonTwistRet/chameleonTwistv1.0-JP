@@ -1,6 +1,4 @@
 #include "common.h"
-#define IDENTITY {{1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1},{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}} // identity matrix so we dont have to split useless files
-#define FILEPAD {0xB8,0,0,0,0,0,0,0} // the funny
 
 extern Mtx D_80129730_JungleLand; //golem
 extern Mtx D_80129770_JungleLand; //golem leg
@@ -45,30 +43,30 @@ extern unsigned char Global_JLMountain_ci4_PNG[];
 extern unsigned char Global_JLCaveFadeTop_ci8_PAL[];
 extern unsigned char Global_JLCaveFadeTop_ci8_PNG[];
 
+extern Gfx Global_fallbackCube_Gfx[];
+extern CollisionData Global_fallbackCube_ColH;
+extern Gfx Global_exitShadowSouth_Gfx[];
+extern CollisionData Global_exitShadowSouth_ColH;
+extern Gfx Global_exitShadowNorth_Gfx[];
+extern CollisionData Global_exitShadowNorth_ColH;
+extern Gfx Global_exitShadowEast_Gfx[];
+extern CollisionData Global_exitShadowEast_ColH;
+extern Gfx Global_exitShadowWest_Gfx[];
+extern CollisionData Global_exitShadowWest_ColH;
+extern Gfx Global_ALBLExit_Gfx[];
+extern CollisionData Global_ALBLExit_ColH;
 extern Gfx Global_unk3_Gfx[];
 extern CollisionData Global_unk3_ColH;
-extern Gfx Global_unk4_Gfx[];
-extern CollisionData Global_unk4_ColH;
-extern Gfx Global_unk5_Gfx[];
-extern CollisionData Global_unk5_ColH;
-extern Gfx Global_unk6_Gfx[];
-extern CollisionData Global_unk6_ColH;
-extern Gfx Global_unk7_Gfx[];
-extern CollisionData Global_unk7_ColH;
-extern Gfx Global_unk8_Gfx[];
-extern CollisionData Global_unk8_ColH;
-extern Gfx Global_unk9_Gfx[];
-extern CollisionData Global_unk9_ColH;
-extern Gfx Global_unkA_Gfx[];
-extern CollisionData Global_unkA_ColH;
-extern Gfx Global_unkB_Gfx[];
-extern CollisionData Global_unkB_ColH;
-extern Gfx Global_unkC_Gfx[];
-extern CollisionData Global_unkC_ColH;
+extern Gfx Global_BossBridge_Gfx[];
+extern CollisionData Global_BossBridge_ColH;
+extern Gfx Global_ALPole_Gfx[];
+extern CollisionData Global_ALPole_ColH;
+extern Gfx Global_ALBLDoor_Gfx[];
+extern CollisionData Global_ALBLDoor_ColH;
 extern Gfx Global_ALSpinDoor_Gfx[];
 extern CollisionData Global_ALSpinDoor_ColH;
-extern Gfx Global_unkD_Gfx[];
-extern CollisionData Global_unkD_ColH;
+extern Gfx Global_BLLavaFloor_Gfx[];
+extern CollisionData Global_BLLavaFloor_ColH;
 extern Gfx Global_BLLava_Gfx[];
 extern CollisionData Global_BLLava_ColH;
 extern Gfx Global_BLLava2_Gfx[];
@@ -85,217 +83,216 @@ extern Gfx Global_BLLava7_Gfx[];
 extern CollisionData Global_BLLava7_ColH;
 extern Gfx Global_BLLava8_Gfx[];
 extern CollisionData Global_BLLava8_ColH;
-extern Gfx Global_unkE_Gfx[];
-extern CollisionData Global_unkE_ColH;
-extern Gfx Global_unkF_Gfx[];
-extern CollisionData Global_unkF_ColH;
-extern Gfx Global_unk10_Gfx[];
-extern CollisionData Global_unk10_ColH;
-extern Gfx Global_Door1_Gfx[];
-extern CollisionData Global_Door1_ColH;
-extern Gfx Global_unk12_Gfx[];
-extern CollisionData Global_unk12_ColH;
-extern Gfx Global_unk13_Gfx[];
-extern CollisionData Global_unk13_ColH;
-extern Gfx Global_unk14_Gfx[];
-extern CollisionData Global_unk14_ColH;
-extern Gfx Global_unk15_Gfx[];
-extern CollisionData Global_unk15_ColH;
-extern Gfx Global_unk16_Gfx[];
-extern CollisionData Global_unk16_ColH;
-extern Gfx Global_unk17_Gfx[];
-extern CollisionData Global_unk17_ColH;
-extern Gfx Global_unk18_Gfx[];
-extern CollisionData Global_unk18_ColH;
-extern Gfx Global_unk19_Gfx[];
-extern CollisionData Global_unk19_ColH;
-extern Gfx Global_unk1A_Gfx[];
-extern CollisionData Global_unk1A_ColH;
-extern Gfx Global_unk1B_Gfx[];
-extern CollisionData Global_unk1B_ColH;
-extern Gfx Global_unk1C_Gfx[];
-extern CollisionData Global_unk1C_ColH;
-extern Gfx Global_unk1D_Gfx[];
-extern CollisionData Global_unk1D_ColH;
-extern Gfx Global_unk1E_Gfx[];
-extern CollisionData Global_unk1E_ColH;
+extern Gfx Global_BLDestructableTop_Gfx[];
+extern CollisionData Global_BLDestructableTop_ColH;
+extern Gfx Global_BLMetalBridge_Gfx[];
+extern CollisionData Global_BLMetalBridge_ColH;
+extern Gfx Global_KLExit_Gfx[];
+extern CollisionData Global_KLExit_ColH;
+extern Gfx Global_KLDoor_Gfx[];
+extern CollisionData Global_KLDoor_ColH;
+extern Gfx Global_DCExit_Gfx[];
+extern CollisionData Global_DCExit_ColH;
+extern Gfx Global_TallExitShadow1_Gfx[];
+extern CollisionData Global_TallExitShadow1_ColH;
+extern Gfx Global_TallExitShadow2_Gfx[];
+extern CollisionData Global_TallExitShadow2_ColH;
+extern Gfx Global_GCExit1_Gfx[];
+extern CollisionData Global_GCExit1_ColH;
+extern Gfx Global_GCExit2_Gfx[];
+extern CollisionData Global_GCExit2_ColH;
+extern Gfx Global_trainingRoomLight_Gfx[];
+extern CollisionData Global_trainingRoomLight_ColH;
+extern Gfx Global_JLCaveExit1_Gfx[];
+extern CollisionData Global_JLCaveExit1_ColH;
+extern Gfx Global_JLCaveExit2_Gfx[];
+extern CollisionData Global_JLCaveExit2_ColH;
+extern Gfx Global_JLCaveExit3_Gfx[];
+extern CollisionData Global_JLCaveExit3_ColH;
+extern Gfx Global_JLCaveExit4_Gfx[];
+extern CollisionData Global_JLCaveExit4_ColH;
+extern Gfx Global_JLOutsideEntrance_Gfx[];
+extern CollisionData Global_JLOutsideEntrance_ColH;
+extern Gfx Global_JLFxCamPillar_Gfx[];
+extern CollisionData Global_JLFxCamPillar_ColH;
+extern Gfx Global_JLCaveDoor_Gfx[];
+extern CollisionData Global_JLCaveDoor_ColH;
 extern Gfx JungleLand_lilypad_Gfx[];
 extern CollisionData JungleLand_lilypad_ColH;
 extern Gfx JungleLand_vine_Gfx[];
-extern CollisionData JungleLand_unkerer_ColH;
-extern Gfx JungleLand_fallenCrownLog_Gfx[];
 extern CollisionData JungleLand_vine_ColH;
-extern Gfx JungleLand_unkLog_Gfx[];
+extern Gfx JungleLand_fallenCrownLog_Gfx[];
 extern CollisionData JungleLand_fallenCrownLog_ColH;
-extern Gfx JungleLand_fallenLogStump_Gfx[];
+extern Gfx JungleLand_unkLog_Gfx[];
 extern CollisionData JungleLand_unkLog_ColH;
-extern Gfx JungleLand_logTunnel_Gfx[];
+extern Gfx JungleLand_fallenLogStump_Gfx[];
 extern CollisionData JungleLand_fallenLogStump_ColH;
-extern Gfx JungleLand_waterfallRock_Gfx[];
+extern Gfx JungleLand_logTunnel_Gfx[];
 extern CollisionData JungleLand_logTunnel_ColH;
-extern Gfx JungleLand_unk1_Gfx[];
+extern Gfx JungleLand_waterfallRock_Gfx[];
 extern CollisionData JungleLand_waterfallRock_ColH;
+extern Gfx JungleLand_extEntranceDoorFrame_Gfx[];
+extern CollisionData JungleLand_extEntranceDoorFrame_ColH;
 extern Gfx JungleLand_fallBridge_Gfx[];
-extern CollisionData JungleLand_unk1_ColH;
-extern Gfx JungleLand_ctCrate_Gfx[];
 extern CollisionData JungleLand_fallBridge_ColH;
-extern Gfx JungleLand_ctCrate2_Gfx[];
+extern Gfx JungleLand_ctCrate_Gfx[];
 extern CollisionData JungleLand_ctCrate_ColH;
-extern Gfx JungleLand_walkingPlank_Gfx[];
+extern Gfx JungleLand_ctCrate2_Gfx[];
 extern CollisionData JungleLand_ctCrate2_ColH;
-extern Gfx JungleLand_walkingPlank2_Gfx[];
+extern Gfx JungleLand_walkingPlank_Gfx[];
 extern CollisionData JungleLand_walkingPlank_ColH;
-extern Gfx JungleLand_walkingPlank3_Gfx[];
+extern Gfx JungleLand_walkingPlank2_Gfx[];
 extern CollisionData JungleLand_walkingPlank2_ColH;
-extern Gfx JungleLand_walkingPlank4_Gfx[];
+extern Gfx JungleLand_walkingPlank3_Gfx[];
 extern CollisionData JungleLand_walkingPlank3_ColH;
-extern Gfx JungleLand_singularPlank_Gfx[];
+extern Gfx JungleLand_walkingPlank4_Gfx[];
 extern CollisionData JungleLand_walkingPlank4_ColH;
-extern Gfx JungleLand_roomSixStartPlatform_Gfx[];
+extern Gfx JungleLand_singularPlank_Gfx[];
 extern CollisionData JungleLand_singularPlank_ColH;
-extern Gfx JungleLand_cavePlatform_Gfx[];
+extern Gfx JungleLand_roomSixStartPlatform_Gfx[];
 extern CollisionData JungleLand_roomSixStartPlatform_ColH;
-extern Gfx JungleLand_roomSixCrownPlatform_Gfx[];
+extern Gfx JungleLand_cavePlatform_Gfx[];
 extern CollisionData JungleLand_cavePlatform_ColH;
-extern Gfx JungleLand_roomSixSidePlatform_Gfx[];
+extern Gfx JungleLand_roomSixCrownPlatform_Gfx[];
 extern CollisionData JungleLand_roomSixCrownPlatform_ColH;
-extern Gfx JungleLand_roomSevenLava_Gfx[];
+extern Gfx JungleLand_roomSixSidePlatform_Gfx[];
 extern CollisionData JungleLand_roomSixSidePlatform_ColH;
-extern Gfx JungleLand_roomSevenFloor_Gfx[];
+extern Gfx JungleLand_roomSevenLava_Gfx[];
 extern CollisionData JungleLand_roomSevenLava_ColH;
-extern Gfx JungleLand_roomZeroLava_Gfx[];
+extern Gfx JungleLand_roomSevenFloor_Gfx[];
 extern CollisionData JungleLand_roomSevenFloor_ColH;
-extern Gfx JungleLand_roomOnePlatform_Gfx[];
+extern Gfx JungleLand_roomZeroLava_Gfx[];
 extern CollisionData JungleLand_roomZeroLava_ColH;
-extern Gfx JungleLand_roomSixCrownEdgePlatform_Gfx[];
+extern Gfx JungleLand_roomOnePlatform_Gfx[];
 extern CollisionData JungleLand_roomOnePlatform_ColH;
-extern Gfx JungleLand_roomSevenSpinRing_Gfx[];
+extern Gfx JungleLand_roomSixCrownEdgePlatform_Gfx[];
 extern CollisionData JungleLand_roomSixCrownEdgePlatform_ColH;
-extern Gfx JungleLand_woodBlock_Gfx[];
+extern Gfx JungleLand_roomSevenSpinRing_Gfx[];
 extern CollisionData JungleLand_roomSevenSpinRing_ColH;
-extern Gfx JungleLand_ropes_Gfx[];
+extern Gfx JungleLand_woodBlock_Gfx[];
 extern CollisionData JungleLand_woodBlock_ColH;
-extern Gfx JungleLand_railOne_Gfx[];
+extern Gfx JungleLand_ropes_Gfx[];
 extern CollisionData JungleLand_ropes_ColH;
-extern Gfx JungleLand_railTwo_Gfx[];
+extern Gfx JungleLand_railOne_Gfx[];
 extern CollisionData JungleLand_railOne_ColH;
-extern Gfx JungleLand_railThree_Gfx[];
+extern Gfx JungleLand_railTwo_Gfx[];
 extern CollisionData JungleLand_railTwo_ColH;
-extern Gfx JungleLand_railFour_Gfx[];
+extern Gfx JungleLand_railThree_Gfx[];
 extern CollisionData JungleLand_railThree_ColH;
-extern Gfx JungleLand_railFive_Gfx[];
+extern Gfx JungleLand_railFour_Gfx[];
 extern CollisionData JungleLand_railFour_ColH;
-extern Gfx JungleLand_railSix_Gfx[];
+extern Gfx JungleLand_railFive_Gfx[];
 extern CollisionData JungleLand_railFive_ColH;
-extern Gfx JungleLand_rail_Gfx[];
+extern Gfx JungleLand_railSix_Gfx[];
 extern CollisionData JungleLand_railSix_ColH;
-extern Gfx JungleLand_ctCrate3_Gfx[];
+extern Gfx JungleLand_rail_Gfx[];
 extern CollisionData JungleLand_rail_ColH;
-extern Gfx JungleLand_logOne_Gfx[];
+extern Gfx JungleLand_ctCrate3_Gfx[];
 extern CollisionData JungleLand_ctCrate3_ColH;
-extern Gfx JungleLand_fallBridgeSmall2_Gfx[];
+extern Gfx JungleLand_logOne_Gfx[];
 extern CollisionData JungleLand_logOne_ColH;
-extern Gfx JungleLand_logSetPiece_Gfx[];
+extern Gfx JungleLand_fallBridgeSmall2_Gfx[];
 extern CollisionData JungleLand_fallBridgeSmall2_ColH;
-extern Gfx JungleLand_holeLog_Gfx[];
+extern Gfx JungleLand_logSetPiece_Gfx[];
 extern CollisionData JungleLand_logSetPiece_ColH;
-extern Gfx JungleLand_waterfallGroundCollision_Gfx[];
+extern Gfx JungleLand_holeLog_Gfx[];
 extern CollisionData JungleLand_holeLog_ColH;
-extern Gfx JungleLand_waterfallBacksideCollision_Gfx[];
+extern Gfx JungleLand_waterfallGroundCollision_Gfx[];
 extern CollisionData JungleLand_waterfallGroundCollision_ColH;
-extern Gfx JungleLand_groundCollision_Gfx[];
+extern Gfx JungleLand_waterfallBacksideCollision_Gfx[];
 extern CollisionData JungleLand_waterfallBacksideCollision_ColH;
-extern Gfx JungleLand_holeLogBottom_Gfx[];
+extern Gfx JungleLand_groundCollision_Gfx[];
 extern CollisionData JungleLand_groundCollision_ColH;
-extern Gfx JungleLand_extThree_Gfx[];
+extern Gfx JungleLand_holeLogBottom_Gfx[];
 extern CollisionData JungleLand_holeLogBottom_ColH;
-extern Gfx JungleLand_extFour_Gfx[];
+extern Gfx JungleLand_extThree_Gfx[];
 extern CollisionData JungleLand_extThree_ColH;
-extern Gfx JungleLand_extZero_Gfx[];
+extern Gfx JungleLand_extFour_Gfx[];
 extern CollisionData JungleLand_extFour_ColH;
-extern Gfx JungleLand_extOne_Gfx[];
+extern Gfx JungleLand_extZero_Gfx[];
 extern CollisionData JungleLand_extZero_ColH;
-extern Gfx JungleLand_extTwo_Gfx[];
+extern Gfx JungleLand_extOne_Gfx[];
 extern CollisionData JungleLand_extOne_ColH;
-extern Gfx JungleLand_rockFloor_Gfx[];
+extern Gfx JungleLand_extTwo_Gfx[];
 extern CollisionData JungleLand_extTwo_ColH;
-extern Gfx JungleLand_rockFloor2_Gfx[];
+extern Gfx JungleLand_rockFloor_Gfx[];
 extern CollisionData JungleLand_rockFloor_ColH;
-extern Gfx JungleLand_extFive_Gfx[];
+extern Gfx JungleLand_rockFloor2_Gfx[];
 extern CollisionData JungleLand_rockFloor2_ColH;
-extern Gfx JungleLand_extThreePartTwo_Gfx[];
+extern Gfx JungleLand_extFive_Gfx[];
 extern CollisionData JungleLand_extFive_ColH;
-extern Gfx JungleLand_extFivePartTwo_Gfx[];
+extern Gfx JungleLand_extThreePartTwo_Gfx[];
 extern CollisionData JungleLand_extThreePartTwo_ColH;
-extern Gfx JungleLand_extSix_Gfx[];
+extern Gfx JungleLand_extFivePartTwo_Gfx[];
 extern CollisionData JungleLand_extFivePartTwo_ColH;
-extern Gfx JungleLand_extSeven_Gfx[];
+extern Gfx JungleLand_extSix_Gfx[];
 extern CollisionData JungleLand_extSix_ColH;
-extern Gfx JungleLand_extEight_Gfx[];
+extern Gfx JungleLand_extSeven_Gfx[];
 extern CollisionData JungleLand_extSeven_ColH;
-extern Gfx JungleLand_extEightBridge_Gfx[];
+extern Gfx JungleLand_extEight_Gfx[];
 extern CollisionData JungleLand_extEight_ColH;
-extern Gfx JungleLand_extNine_Gfx[];
+extern Gfx JungleLand_extEightBridge_Gfx[];
 extern CollisionData JungleLand_extEightBridge_ColH;
-extern Gfx JungleLand_extTen_Gfx[];
+extern Gfx JungleLand_extNine_Gfx[];
 extern CollisionData JungleLand_extNine_ColH;
-extern Gfx JungleLand_extEleven_Gfx[];
+extern Gfx JungleLand_extTen_Gfx[];
 extern CollisionData JungleLand_extTen_ColH;
-extern Gfx JungleLand_intZero_Gfx[];
+extern Gfx JungleLand_extEleven_Gfx[];
 extern CollisionData JungleLand_extEleven_ColH;
-extern Gfx JungleLand_intOne_Gfx[];
+extern Gfx JungleLand_intZero_Gfx[];
 extern CollisionData JungleLand_intZero_ColH;
-extern Gfx JungleLand_intTwo_Gfx[];
+extern Gfx JungleLand_intOne_Gfx[];
 extern CollisionData JungleLand_intOne_ColH;
-extern Gfx JungleLand_intThree_Gfx[];
+extern Gfx JungleLand_intTwo_Gfx[];
 extern CollisionData JungleLand_intTwo_ColH;
-extern Gfx JungleLand_intFour_Gfx[];
+extern Gfx JungleLand_intThree_Gfx[];
 extern CollisionData JungleLand_intThree_ColH;
-extern Gfx JungleLand_intSix_Gfx[];
+extern Gfx JungleLand_intFour_Gfx[];
 extern CollisionData JungleLand_intFour_ColH;
-extern Gfx JungleLand_intSeven_Gfx[];
+extern Gfx JungleLand_intSix_Gfx[];
 extern CollisionData JungleLand_intSix_ColH;
-extern Gfx JungleLand_intFive_Gfx[];
+extern Gfx JungleLand_intSeven_Gfx[];
 extern CollisionData JungleLand_intSeven_ColH;
-extern Gfx JungleLand_railFloorOne_Gfx[];
+extern Gfx JungleLand_intFive_Gfx[];
 extern CollisionData JungleLand_intFive_ColH;
-extern Gfx JungleLand_singleRailTrack_Gfx[];
+extern Gfx JungleLand_railFloorOne_Gfx[];
 extern CollisionData JungleLand_railFloorOne_ColH;
-extern Gfx JungleLand_singleRailTrack2_Gfx[];
+extern Gfx JungleLand_singleRailTrack_Gfx[];
 extern CollisionData JungleLand_singleRailTrack_ColH;
-extern Gfx JungleLand_branchRail_Gfx[];
+extern Gfx JungleLand_singleRailTrack2_Gfx[];
 extern CollisionData JungleLand_singleRailTrack2_ColH;
-extern Gfx JungleLand_turnRail_Gfx[];
+extern Gfx JungleLand_branchRail_Gfx[];
 extern CollisionData JungleLand_branchRail_ColH;
-extern Gfx JungleLand_singleRailTrack3_Gfx[];
+extern Gfx JungleLand_turnRail_Gfx[];
 extern CollisionData JungleLand_turnRail_ColH;
-extern Gfx JungleLand_brokenMinecartRail_Gfx[];
+extern Gfx JungleLand_singleRailTrack3_Gfx[];
 extern CollisionData JungleLand_singleRailTrack3_ColH;
-extern Gfx JungleLand_brokenMinecartRail2_Gfx[];
+extern Gfx JungleLand_brokenMinecartRail_Gfx[];
 extern CollisionData JungleLand_brokenMinecartRail_ColH;
-extern Gfx JungleLand_minecart_Gfx[];
+extern Gfx JungleLand_brokenMinecartRail2_Gfx[];
 extern CollisionData JungleLand_brokenMinecartRail2_ColH;
-extern Gfx JungleLand_doorFrame_Gfx[];
+extern Gfx JungleLand_minecart_Gfx[];
 extern CollisionData JungleLand_minecart_ColH;
-extern Gfx JungleLand_doorFrame2_Gfx[];
+extern Gfx JungleLand_doorFrame_Gfx[];
 extern CollisionData JungleLand_doorFraMEd_ColH;
-extern Gfx JungleLand_fernPlant_Gfx[];
+extern Gfx JungleLand_doorFrame2_Gfx[];
 extern CollisionData JungleLand_doorFrame2_ColH;
-extern Gfx JungleLand_waterfall_Gfx[];
+extern Gfx JungleLand_fernPlant_Gfx[];
 extern CollisionData JungleLand_fernPlant_ColH;
-extern Gfx JungleLand_water_Gfx[];
+extern Gfx JungleLand_waterfall_Gfx[];
 extern CollisionData JungleLand_waterfall_ColH;
-extern Gfx JungleLand_water2_Gfx[];
+extern Gfx JungleLand_water_Gfx[];
 extern CollisionData JungleLand_water_ColH;
-extern Gfx Global_unk_Gfx[];
-extern CollisionData Global_unkCol2_ColH;
+extern Gfx JungleLand_water2_Gfx[];
+extern CollisionData JungleLand_water2_ColH;
+extern Gfx Global_pole_Gfx[];
+extern CollisionData Global_pole_ColH;
 
 Mtx_f JungleLand_IMtx1 = IDENTITY;
 
 #include "assets/levelGroup/JungleLand/pointers.lvp.inc.c"
-unsigned char JungleLand_rabObjects_Bin[] = {
-#include "build/include/assets/levelGroup/JungleLand/rabObjects.inc.c"
-};
+
+#include "build/assets/levelGroup/JungleLand/rabObjects.inc.c"
 
 #include "assets/levelGroup/JungleLand/spriteActors/eroom0_sprRabbit.sprite.inc.c"
 
@@ -1548,9 +1545,8 @@ unsigned char JungleLand_rabObjects_Bin[] = {
 #include "assets/levelGroup/JungleLand/spriteActors/room0_sprLavaFlame7.sprite.inc.c"
 
 #include "assets/levelGroup/JungleLand/spriteActors/room0_sprSTOP.sprite.inc.c"
-unsigned char JungleLand_spriteLib_Bin[] = {
-#include "build/include/assets/levelGroup/JungleLand/spriteLib.inc.c"
-};
+
+#include "build/assets/levelGroup/JungleLand/spriteLib.inc.c"
 
 #include "assets/levelGroup/JungleLand/rooms/room0.rmSet.inc.c"
 
@@ -1617,11 +1613,11 @@ Mtx_f JungleLand_IMtx2 = IDENTITY;
 Mtx_f JungleLand_IMtx3 = IDENTITY;
 unsigned char JungleLand_Pad1[] = FILEPAD;
 unsigned char JungleLand_lilypad_ci4_PNG[] = {
-#include "build/include/assets/levelGroup/JungleLand/lilypad.ci4.png.inc.c"
+#include "build/assets/levelGroup/JungleLand/lilypad.ci4.png.inc.c"
 };
 unsigned char JungleLand_Pad2[] = FILEPAD;
 unsigned char JungleLand_lilypad_ci4_PAL[] = {
-#include "build/include/assets/levelGroup/JungleLand/lilypad.ci4.pal.inc.c"
+#include "build/assets/levelGroup/JungleLand/lilypad.ci4.pal.inc.c"
 };
 
 #include "assets/levelGroup/JungleLand/lilypad/lilypad.gfx.inc.c"
@@ -1629,10 +1625,10 @@ unsigned char JungleLand_lilypad_ci4_PAL[] = {
 #include "assets/levelGroup/JungleLand/vine/vine.vtx.inc.c"
 Mtx_f JungleLand_IMtx4 = IDENTITY;
 unsigned char JungleLand_vine_ci8_PNG[] = {
-#include "build/include/assets/levelGroup/JungleLand/vine.ci8.png.inc.c"
+#include "build/assets/levelGroup/JungleLand/vine.ci8.png.inc.c"
 };
 unsigned char JungleLand_vine_ci8_PAL[] = {
-#include "build/include/assets/levelGroup/JungleLand/vine.ci8.pal.inc.c"
+#include "build/assets/levelGroup/JungleLand/vine.ci8.pal.inc.c"
 };
 
 #include "assets/levelGroup/JungleLand/vine/vine.gfx.inc.c"
@@ -1651,11 +1647,11 @@ Mtx_f JungleLand_IMtx6 = IDENTITY;
 Mtx_f JungleLand_IMtx7 = IDENTITY;
 unsigned char JungleLand_Pad3[] = FILEPAD;
 unsigned char JungleLand_fallenLogStump_ci8_PNG[] = {
-#include "build/include/assets/levelGroup/JungleLand/fallenLogStump.ci8.png.inc.c"
+#include "build/assets/levelGroup/JungleLand/fallenLogStump.ci8.png.inc.c"
 };
 unsigned char JungleLand_Pad4[] = FILEPAD;
 unsigned char JungleLand_fallenLogStump_ci8_PAL[] = {
-#include "build/include/assets/levelGroup/JungleLand/fallenLogStump.ci8.pal.inc.c"
+#include "build/assets/levelGroup/JungleLand/fallenLogStump.ci8.pal.inc.c"
 };
 
 #include "assets/levelGroup/JungleLand/fallenLogStump/fallenLogStump.gfx.inc.c"
@@ -1670,18 +1666,18 @@ Mtx_f JungleLand_IMtx9 = IDENTITY;
 
 #include "assets/levelGroup/JungleLand/waterfallRock/waterfallRock.gfx.inc.c"
 
-#include "assets/levelGroup/JungleLand/unk1/unk1.vtx.inc.c"
+#include "assets/levelGroup/JungleLand/extEntranceDoorFrame/extEntranceDoorFrame.vtx.inc.c"
 Mtx_f JungleLand_IMtx10 = IDENTITY;
 
-#include "assets/levelGroup/JungleLand/unk1/unk1.gfx.inc.c"
+#include "assets/levelGroup/JungleLand/extEntranceDoorFrame/extEntranceDoorFrame.gfx.inc.c"
 
 #include "assets/levelGroup/JungleLand/fallBridge/fallBridge.vtx.inc.c"
 Mtx_f JungleLand_IMtx11 = IDENTITY;
 unsigned char JungleLand_fallBridge_ci8_PNG[] = {
-#include "build/include/assets/levelGroup/JungleLand/fallBridge.ci8.png.inc.c"
+#include "build/assets/levelGroup/JungleLand/fallBridge.ci8.png.inc.c"
 };
 unsigned char JungleLand_fallBridge_ci8_PAL[] = {
-#include "build/include/assets/levelGroup/JungleLand/fallBridge.ci8.pal.inc.c"
+#include "build/assets/levelGroup/JungleLand/fallBridge.ci8.pal.inc.c"
 };
 
 #include "assets/levelGroup/JungleLand/fallBridge/fallBridge.gfx.inc.c"
@@ -1690,27 +1686,27 @@ unsigned char JungleLand_fallBridge_ci8_PAL[] = {
 Mtx_f JungleLand_IMtx12 = IDENTITY;
 unsigned char JungleLand_Pad5[] = FILEPAD;
 unsigned char JungleLand_ctCrate1_ci4_PNG[] = {
-#include "build/include/assets/levelGroup/JungleLand/ctCrate1.ci4.png.inc.c"
+#include "build/assets/levelGroup/JungleLand/ctCrate1.ci4.png.inc.c"
 };
 unsigned char JungleLand_Pad6[] = FILEPAD;
 unsigned char JungleLand_ctCrate1_ci4_PAL[] = {
-#include "build/include/assets/levelGroup/JungleLand/ctCrate1.ci4.pal.inc.c"
+#include "build/assets/levelGroup/JungleLand/ctCrate1.ci4.pal.inc.c"
 };
 unsigned char JungleLand_Pad7[] = FILEPAD;
 unsigned char JungleLand_ctCrate2_ci4_PNG[] = {
-#include "build/include/assets/levelGroup/JungleLand/ctCrate2.ci4.png.inc.c"
+#include "build/assets/levelGroup/JungleLand/ctCrate2.ci4.png.inc.c"
 };
 unsigned char JungleLand_Pad8[] = FILEPAD;
 unsigned char JungleLand_ctCrate2_ci4_PAL[] = {
-#include "build/include/assets/levelGroup/JungleLand/ctCrate2.ci4.pal.inc.c"
+#include "build/assets/levelGroup/JungleLand/ctCrate2.ci4.pal.inc.c"
 };
 unsigned char JungleLand_Pad9[] = FILEPAD;
 unsigned char JungleLand_ctCrate3_ci4_PNG[] = {
-#include "build/include/assets/levelGroup/JungleLand/ctCrate3.ci4.png.inc.c"
+#include "build/assets/levelGroup/JungleLand/ctCrate3.ci4.png.inc.c"
 };
 unsigned char JungleLand_Pad10[] = FILEPAD;
 unsigned char JungleLand_ctCrate3_ci4_PAL[] = {
-#include "build/include/assets/levelGroup/JungleLand/ctCrate3.ci4.pal.inc.c"
+#include "build/assets/levelGroup/JungleLand/ctCrate3.ci4.pal.inc.c"
 };
 
 #include "assets/levelGroup/JungleLand/ctCrate/ctCrate.gfx.inc.c"
@@ -1743,10 +1739,10 @@ Mtx_f JungleLand_IMtx17 = IDENTITY;
 #include "assets/levelGroup/JungleLand/singularPlank/singularPlank.vtx.inc.c"
 Mtx_f JungleLand_IMtx18 = IDENTITY;
 unsigned char JungleLand_singularPlank_ci8_PNG[] = {
-#include "build/include/assets/levelGroup/JungleLand/singularPlank.ci8.png.inc.c"
+#include "build/assets/levelGroup/JungleLand/singularPlank.ci8.png.inc.c"
 };
 unsigned char JungleLand_singularPlank_ci8_PAL[] = {
-#include "build/include/assets/levelGroup/JungleLand/singularPlank.ci8.pal.inc.c"
+#include "build/assets/levelGroup/JungleLand/singularPlank.ci8.pal.inc.c"
 };
 
 #include "assets/levelGroup/JungleLand/singularPlank/singularPlank.gfx.inc.c"
@@ -1775,11 +1771,11 @@ Mtx_f JungleLand_IMtx22 = IDENTITY;
 Mtx_f JungleLand_IMtx23 = IDENTITY;
 unsigned char JungleLand_Pad11[] = FILEPAD;
 unsigned char JungleLand_lava_ci8_PNG[] = {
-#include "build/include/assets/levelGroup/JungleLand/lava.ci8.png.inc.c"
+#include "build/assets/levelGroup/JungleLand/lava.ci8.png.inc.c"
 };
 unsigned char JungleLand_Pad12[] = FILEPAD;
 unsigned char JungleLand_lava_ci8_PAL[] = {
-#include "build/include/assets/levelGroup/JungleLand/lava.ci8.pal.inc.c"
+#include "build/assets/levelGroup/JungleLand/lava.ci8.pal.inc.c"
 };
 
 #include "assets/levelGroup/JungleLand/roomSevenLava/roomSevenLava.gfx.inc.c"
@@ -1803,11 +1799,11 @@ Mtx_f JungleLand_IMtx26 = IDENTITY;
 Mtx_f JungleLand_IMtx27 = IDENTITY;
 unsigned char JungleLand_Pad13[] = FILEPAD;
 unsigned char JungleLand_roomSixCrownEdgePlatform_ci8_PNG[] = {
-#include "build/include/assets/levelGroup/JungleLand/roomSixCrownEdgePlatform.ci8.png.inc.c"
+#include "build/assets/levelGroup/JungleLand/roomSixCrownEdgePlatform.ci8.png.inc.c"
 };
 unsigned char JungleLand_Pad14[] = FILEPAD;
 unsigned char JungleLand_roomSixCrownEdgePlatform_ci8_PAL[] = {
-#include "build/include/assets/levelGroup/JungleLand/roomSixCrownEdgePlatform.ci8.pal.inc.c"
+#include "build/assets/levelGroup/JungleLand/roomSixCrownEdgePlatform.ci8.pal.inc.c"
 };
 
 #include "assets/levelGroup/JungleLand/roomSixCrownEdgePlatform/roomSixCrownEdgePlatform.gfx.inc.c"
@@ -1826,7 +1822,7 @@ Mtx_f JungleLand_IMtx29 = IDENTITY;
 Mtx_f JungleLand_IMtx30 = IDENTITY;
 unsigned char JungleLand_Pad15[] = FILEPAD;
 unsigned char JungleLand_rope_rgba16_PNG[] = {
-#include "build/include/assets/levelGroup/JungleLand/rope.rgba16.png.inc.c"
+#include "build/assets/levelGroup/JungleLand/rope.rgba16.png.inc.c"
 };
 
 #include "assets/levelGroup/JungleLand/ropes/ropes.gfx.inc.c"
@@ -1835,11 +1831,11 @@ unsigned char JungleLand_rope_rgba16_PNG[] = {
 Mtx_f JungleLand_IMtx31 = IDENTITY;
 unsigned char JungleLand_Pad16[] = FILEPAD;
 unsigned char JungleLand_railColor_ci4_PNG[] = {
-#include "build/include/assets/levelGroup/JungleLand/railColor.ci4.png.inc.c"
+#include "build/assets/levelGroup/JungleLand/railColor.ci4.png.inc.c"
 };
 unsigned char JungleLand_Pad17[] = FILEPAD;
 unsigned char JungleLand_railColor_ci4_PAL[] = {
-#include "build/include/assets/levelGroup/JungleLand/railColor.ci4.pal.inc.c"
+#include "build/assets/levelGroup/JungleLand/railColor.ci4.pal.inc.c"
 };
 
 #include "assets/levelGroup/JungleLand/railOne/railOne.gfx.inc.c"
@@ -1923,11 +1919,11 @@ Mtx_f JungleLand_IMtx46 = IDENTITY;
 Mtx_f JungleLand_IMtx47 = IDENTITY;
 unsigned char JungleLand_Pad18[] = FILEPAD;
 unsigned char JungleLand_ext3Wall_ci8_PNG[] = {
-#include "build/include/assets/levelGroup/JungleLand/ext3Wall.ci8.png.inc.c"
+#include "build/assets/levelGroup/JungleLand/ext3Wall.ci8.png.inc.c"
 };
 unsigned char JungleLand_Pad19[] = FILEPAD;
 unsigned char JungleLand_ext3Wall_ci8_PAL[] = {
-#include "build/include/assets/levelGroup/JungleLand/ext3Wall.ci8.pal.inc.c"
+#include "build/assets/levelGroup/JungleLand/ext3Wall.ci8.pal.inc.c"
 };
 
 #include "assets/levelGroup/JungleLand/extThree/extThree.gfx.inc.c"
@@ -2016,11 +2012,11 @@ Mtx_f JungleLand_IMtx63 = IDENTITY;
 Mtx_f JungleLand_IMtx64 = IDENTITY;
 unsigned char JungleLand_Pad20[] = FILEPAD;
 unsigned char JungleLand_lavaWall_ci8_PNG[] = {
-#include "build/include/assets/levelGroup/JungleLand/lavaWall.ci8.png.inc.c"
+#include "build/assets/levelGroup/JungleLand/lavaWall.ci8.png.inc.c"
 };
 unsigned char JungleLand_Pad21[] = FILEPAD;
 unsigned char JungleLand_lavaWall_ci8_PAL[] = {
-#include "build/include/assets/levelGroup/JungleLand/lavaWall.ci8.pal.inc.c"
+#include "build/assets/levelGroup/JungleLand/lavaWall.ci8.pal.inc.c"
 };
 
 #include "assets/levelGroup/JungleLand/intZero/intZero.gfx.inc.c"
@@ -2063,10 +2059,10 @@ Mtx_f JungleLand_IMtx71 = IDENTITY;
 #include "assets/levelGroup/JungleLand/railFloorOne/railFloorOne.vtx.inc.c"
 Mtx_f JungleLand_IMtx72 = IDENTITY;
 unsigned char JungleLand_railTrack_ci8_PNG[] = {
-#include "build/include/assets/levelGroup/JungleLand/railTrack.ci8.png.inc.c"
+#include "build/assets/levelGroup/JungleLand/railTrack.ci8.png.inc.c"
 };
 unsigned char JungleLand_railTrack_ci8_PAL[] = {
-#include "build/include/assets/levelGroup/JungleLand/railTrack.ci8.pal.inc.c"
+#include "build/assets/levelGroup/JungleLand/railTrack.ci8.pal.inc.c"
 };
 
 #include "assets/levelGroup/JungleLand/railFloorOne/railFloorOne.gfx.inc.c"
@@ -2074,10 +2070,10 @@ unsigned char JungleLand_railTrack_ci8_PAL[] = {
 #include "assets/levelGroup/JungleLand/singleRailTrack/singleRailTrack.vtx.inc.c"
 Mtx_f JungleLand_IMtx73 = IDENTITY;
 unsigned char JungleLand_singleRailTrack_ci8_PNG[] = {
-#include "build/include/assets/levelGroup/JungleLand/singleRailTrack.ci8.png.inc.c"
+#include "build/assets/levelGroup/JungleLand/singleRailTrack.ci8.png.inc.c"
 };
 unsigned char JungleLand_singleRailTrack_ci8_PAL[] = {
-#include "build/include/assets/levelGroup/JungleLand/singleRailTrack.ci8.pal.inc.c"
+#include "build/assets/levelGroup/JungleLand/singleRailTrack.ci8.pal.inc.c"
 };
 
 #include "assets/levelGroup/JungleLand/singleRailTrack/singleRailTrack.gfx.inc.c"
@@ -2085,10 +2081,10 @@ unsigned char JungleLand_singleRailTrack_ci8_PAL[] = {
 #include "assets/levelGroup/JungleLand/singleRailTrack2/singleRailTrack2.vtx.inc.c"
 Mtx_f JungleLand_IMtx74 = IDENTITY;
 unsigned char JungleLand_singleRailTrack2_ci8_PNG[] = {
-#include "build/include/assets/levelGroup/JungleLand/singleRailTrack2.ci8.png.inc.c"
+#include "build/assets/levelGroup/JungleLand/singleRailTrack2.ci8.png.inc.c"
 };
 unsigned char JungleLand_singleRailTrack2_ci8_PAL[] = {
-#include "build/include/assets/levelGroup/JungleLand/singleRailTrack2.ci8.pal.inc.c"
+#include "build/assets/levelGroup/JungleLand/singleRailTrack2.ci8.pal.inc.c"
 };
 
 #include "assets/levelGroup/JungleLand/singleRailTrack2/singleRailTrack2.gfx.inc.c"
@@ -2096,10 +2092,10 @@ unsigned char JungleLand_singleRailTrack2_ci8_PAL[] = {
 #include "assets/levelGroup/JungleLand/branchRail/branchRail.vtx.inc.c"
 Mtx_f JungleLand_IMtx75 = IDENTITY;
 unsigned char JungleLand_branchRail_ci8_PNG[] = {
-#include "build/include/assets/levelGroup/JungleLand/branchRail.ci8.png.inc.c"
+#include "build/assets/levelGroup/JungleLand/branchRail.ci8.png.inc.c"
 };
 unsigned char JungleLand_branchRail_ci8_PAL[] = {
-#include "build/include/assets/levelGroup/JungleLand/branchRail.ci8.pal.inc.c"
+#include "build/assets/levelGroup/JungleLand/branchRail.ci8.pal.inc.c"
 };
 
 #include "assets/levelGroup/JungleLand/branchRail/branchRail.gfx.inc.c"
@@ -2107,10 +2103,10 @@ unsigned char JungleLand_branchRail_ci8_PAL[] = {
 #include "assets/levelGroup/JungleLand/turnRail/turnRail.vtx.inc.c"
 Mtx_f JungleLand_IMtx76 = IDENTITY;
 unsigned char JungleLand_turnRail_ci8_PNG[] = {
-#include "build/include/assets/levelGroup/JungleLand/turnRail.ci8.png.inc.c"
+#include "build/assets/levelGroup/JungleLand/turnRail.ci8.png.inc.c"
 };
 unsigned char JungleLand_turnRail_ci8_PAL[] = {
-#include "build/include/assets/levelGroup/JungleLand/turnRail.ci8.pal.inc.c"
+#include "build/assets/levelGroup/JungleLand/turnRail.ci8.pal.inc.c"
 };
 
 #include "assets/levelGroup/JungleLand/turnRail/turnRail.gfx.inc.c"
@@ -2134,15 +2130,15 @@ Mtx_f JungleLand_IMtx79 = IDENTITY;
 Mtx_f JungleLand_IMtx80 = IDENTITY;
 unsigned char JungleLand_Pad22[] = FILEPAD;
 unsigned char JungleLand_planks_ci4_PNG[] = {
-#include "build/include/assets/levelGroup/JungleLand/planks.ci4.png.inc.c"
+#include "build/assets/levelGroup/JungleLand/planks.ci4.png.inc.c"
 };
 unsigned char JungleLand_Pad23[] = FILEPAD;
 unsigned char JungleLand_planks_ci4_PAL[] = {
-#include "build/include/assets/levelGroup/JungleLand/planks.ci4.pal.inc.c"
+#include "build/assets/levelGroup/JungleLand/planks.ci4.pal.inc.c"
 };
 unsigned char JungleLand_Pad24[] = FILEPAD;
 unsigned char JungleLand_caveWood_i4_PNG[] = {
-#include "build/include/assets/levelGroup/JungleLand/caveWood.i4.png.inc.c"
+#include "build/assets/levelGroup/JungleLand/caveWood.i4.png.inc.c"
 };
 
 #include "assets/levelGroup/JungleLand/minecart/minecart.gfx.inc.c"
@@ -2151,7 +2147,7 @@ unsigned char JungleLand_caveWood_i4_PNG[] = {
 Mtx_f JungleLand_IMtx81 = IDENTITY;
 unsigned char JungleLand_Pad25[] = FILEPAD;
 unsigned char JungleLand_topper_rgba16_PNG[] = {
-#include "build/include/assets/levelGroup/JungleLand/topper.rgba16.png.inc.c"
+#include "build/assets/levelGroup/JungleLand/topper.rgba16.png.inc.c"
 };
 
 #include "assets/levelGroup/JungleLand/doorFrame/doorFrame.gfx.inc.c"
@@ -2164,10 +2160,10 @@ Mtx_f JungleLand_IMtx82 = IDENTITY;
 #include "assets/levelGroup/JungleLand/fernPlant/fernPlant.vtx.inc.c"
 Mtx_f JungleLand_IMtx83 = IDENTITY;
 unsigned char JungleLand_fernPlant_ci8_PNG[] = {
-#include "build/include/assets/levelGroup/JungleLand/fernPlant.ci8.png.inc.c"
+#include "build/assets/levelGroup/JungleLand/fernPlant.ci8.png.inc.c"
 };
 unsigned char JungleLand_fernPlant_ci8_PAL[] = {
-#include "build/include/assets/levelGroup/JungleLand/fernPlant.ci8.pal.inc.c"
+#include "build/assets/levelGroup/JungleLand/fernPlant.ci8.pal.inc.c"
 };
 
 #include "assets/levelGroup/JungleLand/fernPlant/fernPlant.gfx.inc.c"
@@ -2176,11 +2172,11 @@ unsigned char JungleLand_fernPlant_ci8_PAL[] = {
 Mtx_f JungleLand_IMtx84 = IDENTITY;
 unsigned char JungleLand_Pad26[] = FILEPAD;
 unsigned char JungleLand_water_ci4_PNG[] = {
-#include "build/include/assets/levelGroup/JungleLand/water.ci4.png.inc.c"
+#include "build/assets/levelGroup/JungleLand/water.ci4.png.inc.c"
 };
 unsigned char JungleLand_Pad27[] = FILEPAD;
 unsigned char JungleLand_water_ci4_PAL[] = {
-#include "build/include/assets/levelGroup/JungleLand/water.ci4.pal.inc.c"
+#include "build/assets/levelGroup/JungleLand/water.ci4.pal.inc.c"
 };
 
 #include "assets/levelGroup/JungleLand/waterfall/waterfall.gfx.inc.c"
@@ -2189,11 +2185,11 @@ unsigned char JungleLand_water_ci4_PAL[] = {
 Mtx_f JungleLand_IMtx85 = IDENTITY;
 unsigned char JungleLand_Pad28[] = FILEPAD;
 unsigned char JungleLand_swampWater_ci4_PNG[] = {
-#include "build/include/assets/levelGroup/JungleLand/swampWater.ci4.png.inc.c"
+#include "build/assets/levelGroup/JungleLand/swampWater.ci4.png.inc.c"
 };
 unsigned char JungleLand_Pad29[] = FILEPAD;
 unsigned char JungleLand_swampWater_ci4_PAL[] = {
-#include "build/include/assets/levelGroup/JungleLand/swampWater.ci4.pal.inc.c"
+#include "build/assets/levelGroup/JungleLand/swampWater.ci4.pal.inc.c"
 };
 
 #include "assets/levelGroup/JungleLand/water/water.gfx.inc.c"
@@ -2210,14 +2206,6 @@ Mtx_f JungleLand_IMtx86 = IDENTITY;
 #include "assets/levelGroup/JungleLand/lilypad/lilypad.colS.inc.c"
 
 #include "assets/levelGroup/JungleLand/lilypad/lilypad.colH.inc.c"
-
-#include "assets/levelGroup/JungleLand/unkerer/unkerer.colV.inc.c"
-
-#include "assets/levelGroup/JungleLand/unkerer/unkerer.colT.inc.c"
-
-#include "assets/levelGroup/JungleLand/unkerer/unkerer.colS.inc.c"
-
-#include "assets/levelGroup/JungleLand/unkerer/unkerer.colH.inc.c"
 
 #include "assets/levelGroup/JungleLand/vine/vine.colV.inc.c"
 
@@ -2267,13 +2255,13 @@ Mtx_f JungleLand_IMtx86 = IDENTITY;
 
 #include "assets/levelGroup/JungleLand/waterfallRock/waterfallRock.colH.inc.c"
 
-#include "assets/levelGroup/JungleLand/unk1/unk1.colV.inc.c"
+#include "assets/levelGroup/JungleLand/extEntranceDoorFrame/extEntranceDoorFrame.colV.inc.c"
 
-#include "assets/levelGroup/JungleLand/unk1/unk1.colT.inc.c"
+#include "assets/levelGroup/JungleLand/extEntranceDoorFrame/extEntranceDoorFrame.colT.inc.c"
 
-#include "assets/levelGroup/JungleLand/unk1/unk1.colS.inc.c"
+#include "assets/levelGroup/JungleLand/extEntranceDoorFrame/extEntranceDoorFrame.colS.inc.c"
 
-#include "assets/levelGroup/JungleLand/unk1/unk1.colH.inc.c"
+#include "assets/levelGroup/JungleLand/extEntranceDoorFrame/extEntranceDoorFrame.colH.inc.c"
 
 #include "assets/levelGroup/JungleLand/fallBridge/fallBridge.colV.inc.c"
 
@@ -2835,13 +2823,13 @@ Mtx_f JungleLand_IMtx86 = IDENTITY;
 
 #include "assets/levelGroup/JungleLand/minecart/minecart.colH.inc.c"
 
-#include "assets/levelGroup/JungleLand/doorFrame/doorFraMEd.colV.inc.c"
+#include "assets/levelGroup/JungleLand/doorFraMEd/doorFraMEd.colV.inc.c"
 
-#include "assets/levelGroup/JungleLand/doorFrame/doorFraMEd.colT.inc.c"
+#include "assets/levelGroup/JungleLand/doorFraMEd/doorFraMEd.colT.inc.c"
 
-#include "assets/levelGroup/JungleLand/doorFrame/doorFraMEd.colS.inc.c"
+#include "assets/levelGroup/JungleLand/doorFraMEd/doorFraMEd.colS.inc.c"
 
-#include "assets/levelGroup/JungleLand/doorFrame/doorFraMEd.colH.inc.c"
+#include "assets/levelGroup/JungleLand/doorFraMEd/doorFraMEd.colH.inc.c"
 
 #include "assets/levelGroup/JungleLand/doorFrame2/doorFrame2.colV.inc.c"
 
@@ -2874,9 +2862,16 @@ Mtx_f JungleLand_IMtx86 = IDENTITY;
 #include "assets/levelGroup/JungleLand/water/water.colS.inc.c"
 
 #include "assets/levelGroup/JungleLand/water/water.colH.inc.c"
-unsigned char JungleLand_whaermrr_Bin[] = {
-#include "build/include/assets/levelGroup/JungleLand/whaermrr.inc.c"
-};
+
+#include "assets/levelGroup/JungleLand/water2/water2.colV.inc.c"
+
+#include "assets/levelGroup/JungleLand/water2/water2.colT.inc.c"
+
+#include "assets/levelGroup/JungleLand/water2/water2.colS.inc.c"
+
+#include "assets/levelGroup/JungleLand/water2/water2.colH.inc.c"
+
+#include "build/assets/levelGroup/JungleLand/whaermrr.inc.c"
 Mtx_f JungleLand_IMtx87 = IDENTITY;
 
 #include "assets/levelGroup/JungleLand/jlScope2/jlScope2.light.inc.c"
@@ -2885,19 +2880,19 @@ Mtx_f JungleLand_IMtx87 = IDENTITY;
 Mtx_f JungleLand_IMtx88 = IDENTITY;
 unsigned char JungleLand_Pad30[] = FILEPAD;
 unsigned char JungleLand_golem_ci4_PNG[] = {
-#include "build/include/assets/levelGroup/JungleLand/golem.ci4.png.inc.c"
+#include "build/assets/levelGroup/JungleLand/golem.ci4.png.inc.c"
 };
 unsigned char JungleLand_Pad31[] = FILEPAD;
 unsigned char JungleLand_golem_ci4_PAL[] = {
-#include "build/include/assets/levelGroup/JungleLand/golem.ci4.pal.inc.c"
+#include "build/assets/levelGroup/JungleLand/golem.ci4.pal.inc.c"
 };
 unsigned char JungleLand_Pad32[] = FILEPAD;
 unsigned char JungleLand_golemFace_ci8_PNG[] = {
-#include "build/include/assets/levelGroup/JungleLand/golemFace.ci8.png.inc.c"
+#include "build/assets/levelGroup/JungleLand/golemFace.ci8.png.inc.c"
 };
 unsigned char JungleLand_Pad33[] = FILEPAD;
 unsigned char JungleLand_golemFace_ci8_PAL[] = {
-#include "build/include/assets/levelGroup/JungleLand/golemFace.ci8.pal.inc.c"
+#include "build/assets/levelGroup/JungleLand/golemFace.ci8.pal.inc.c"
 };
 
 #include "assets/levelGroup/JungleLand/rockGolem/rockGolem.gfx.inc.c"
@@ -2911,27 +2906,27 @@ Mtx_f JungleLand_IMtx89 = IDENTITY;
 Mtx_f JungleLand_IMtx90 = IDENTITY;
 unsigned char JungleLand_Pad34[] = FILEPAD;
 unsigned char JungleLand_rock2_ci4_PNG[] = {
-#include "build/include/assets/levelGroup/JungleLand/rock2.ci4.png.inc.c"
+#include "build/assets/levelGroup/JungleLand/rock2.ci4.png.inc.c"
 };
 unsigned char JungleLand_Pad35[] = FILEPAD;
 unsigned char JungleLand_rock2_ci4_PAL[] = {
-#include "build/include/assets/levelGroup/JungleLand/rock2.ci4.pal.inc.c"
+#include "build/assets/levelGroup/JungleLand/rock2.ci4.pal.inc.c"
 };
 unsigned char JungleLand_Pad36[] = FILEPAD;
 unsigned char JungleLand_rock3_ci4_PNG[] = {
-#include "build/include/assets/levelGroup/JungleLand/rock3.ci4.png.inc.c"
+#include "build/assets/levelGroup/JungleLand/rock3.ci4.png.inc.c"
 };
 unsigned char JungleLand_Pad37[] = FILEPAD;
 unsigned char JungleLand_rock3_ci4_PAL[] = {
-#include "build/include/assets/levelGroup/JungleLand/rock3.ci4.pal.inc.c"
+#include "build/assets/levelGroup/JungleLand/rock3.ci4.pal.inc.c"
 };
 unsigned char JungleLand_Pad38[] = FILEPAD;
 unsigned char JungleLand_rock4_ci4_PNG[] = {
-#include "build/include/assets/levelGroup/JungleLand/rock4.ci4.png.inc.c"
+#include "build/assets/levelGroup/JungleLand/rock4.ci4.png.inc.c"
 };
 unsigned char JungleLand_Pad39[] = FILEPAD;
 unsigned char JungleLand_rock4_ci4_PAL[] = {
-#include "build/include/assets/levelGroup/JungleLand/rock4.ci4.pal.inc.c"
+#include "build/assets/levelGroup/JungleLand/rock4.ci4.pal.inc.c"
 };
 
 #include "assets/levelGroup/JungleLand/rockGolemArm/rockGolemArm.gfx.inc.c"
@@ -2968,11 +2963,11 @@ Mtx_f JungleLand_IMtx96 = IDENTITY;
 Mtx_f JungleLand_IMtx97 = IDENTITY;
 unsigned char JungleLand_Pad40[] = FILEPAD;
 unsigned char JungleLand_spiderRock_ci8_PNG[] = {
-#include "build/include/assets/levelGroup/JungleLand/spiderRock.ci8.png.inc.c"
+#include "build/assets/levelGroup/JungleLand/spiderRock.ci8.png.inc.c"
 };
 unsigned char JungleLand_Pad41[] = FILEPAD;
 unsigned char JungleLand_spiderRock_ci8_PAL[] = {
-#include "build/include/assets/levelGroup/JungleLand/spiderRock.ci8.pal.inc.c"
+#include "build/assets/levelGroup/JungleLand/spiderRock.ci8.pal.inc.c"
 };
 
 #include "assets/levelGroup/JungleLand/spiderRock/spiderRock.gfx.inc.c"
@@ -2984,7 +2979,7 @@ Mtx_f JungleLand_IMtx98 = IDENTITY;
 Mtx_f JungleLand_IMtx99 = IDENTITY;
 unsigned char JungleLand_Pad42[] = FILEPAD;
 unsigned char JungleLand_fish_rgba16_PNG[] = {
-#include "build/include/assets/levelGroup/JungleLand/fish.rgba16.png.inc.c"
+#include "build/assets/levelGroup/JungleLand/fish.rgba16.png.inc.c"
 };
 
 #include "assets/levelGroup/JungleLand/fish/fish.gfx.inc.c"
@@ -2996,7 +2991,7 @@ Mtx_f JungleLand_IMtx100 = IDENTITY;
 Mtx_f JungleLand_IMtx101 = IDENTITY;
 unsigned char JungleLand_Pad43[] = FILEPAD;
 unsigned char JungleLand_fishTail_rgba16_PNG[] = {
-#include "build/include/assets/levelGroup/JungleLand/fishTail.rgba16.png.inc.c"
+#include "build/assets/levelGroup/JungleLand/fishTail.rgba16.png.inc.c"
 };
 
 #include "assets/levelGroup/JungleLand/fishTail/fishTail.gfx.inc.c"
@@ -3007,49 +3002,39 @@ Mtx_f JungleLand_IMtx102 = IDENTITY;
 #include "assets/levelGroup/JungleLand/anim/actors/golem/golemSleep.animH.inc.c"
 
 #include "assets/levelGroup/JungleLand/anim/actors/golem/golemSleep.animArr.inc.c"
-unsigned char JungleLand_golemSleepPointers_Bin[] = {
-#include "build/include/assets/levelGroup/JungleLand/anim/actors/golem/golemSleepPointers.inc.c"
-};
+
+#include "build/assets/levelGroup/JungleLand/anim/actors/golem/golemSleepPointers.inc.c"
 
 #include "assets/levelGroup/JungleLand/anim/actors/golem/golemAttack.animH.inc.c"
-unsigned char JungleLand_golemAttackPad_Bin[] = {
-#include "build/include/assets/levelGroup/JungleLand/golemAttackPad.inc.c"
-};
+
+#include "build/assets/levelGroup/JungleLand/golemAttackPad.inc.c"
 
 #include "assets/levelGroup/JungleLand/anim/actors/golem/golemAttack.animArr.inc.c"
-unsigned char JungleLand_golemAttackPointers_Bin[] = {
-#include "build/include/assets/levelGroup/JungleLand/anim/actors/golem/golemAttackPointers.inc.c"
-};
+
+#include "build/assets/levelGroup/JungleLand/anim/actors/golem/golemAttackPointers.inc.c"
 
 #include "assets/levelGroup/JungleLand/anim/actors/spiderRock/spiderRockInit.animH.inc.c"
-unsigned char JungleLand_spiderRockPad_Bin[] = {
-#include "build/include/assets/levelGroup/JungleLand/spiderRockPad.inc.c"
-};
+
+#include "build/assets/levelGroup/JungleLand/spiderRockPad.inc.c"
 
 #include "assets/levelGroup/JungleLand/anim/actors/spiderRock/spiderRockInit.animArr.inc.c"
-unsigned char JungleLand_spiderRockInitPointers_Bin[] = {
-#include "build/include/assets/levelGroup/JungleLand/anim/actors/spiderRock/spiderRockInitPointers.inc.c"
-};
+
+#include "build/assets/levelGroup/JungleLand/anim/actors/spiderRock/spiderRockInitPointers.inc.c"
 
 #include "assets/levelGroup/JungleLand/anim/actors/fish/fishHeadInit.animH.inc.c"
-unsigned char JungleLand_fishHeadPad_Bin[] = {
-#include "build/include/assets/levelGroup/JungleLand/fishHeadPad.inc.c"
-};
+
+#include "build/assets/levelGroup/JungleLand/fishHeadPad.inc.c"
 
 #include "assets/levelGroup/JungleLand/anim/actors/fish/fishHeadInit.animArr.inc.c"
-unsigned char JungleLand_fishHeadInitPointers_Bin[] = {
-#include "build/include/assets/levelGroup/JungleLand/anim/actors/fish/fishHeadInitPointers.inc.c"
-};
+
+#include "build/assets/levelGroup/JungleLand/anim/actors/fish/fishHeadInitPointers.inc.c"
 
 #include "assets/levelGroup/JungleLand/anim/actors/fish/fishTailInit.animH.inc.c"
-unsigned char JungleLand_fishTailPad_Bin[] = {
-#include "build/include/assets/levelGroup/JungleLand/fishTailPad.inc.c"
-};
+
+#include "build/assets/levelGroup/JungleLand/fishTailPad.inc.c"
 
 #include "assets/levelGroup/JungleLand/anim/actors/fish/fishTailInit.animArr.inc.c"
-unsigned char JungleLand_fishTailInitPointers_Bin[] = {
-#include "build/include/assets/levelGroup/JungleLand/anim/actors/fish/fishTailInitPointers.inc.c"
-};
-unsigned char JungleLand_levelFileBreak_Bin[] = {
-#include "build/include/assets/levelGroup/JungleLand/levelFileBreak.inc.c"
-};
+
+#include "build/assets/levelGroup/JungleLand/anim/actors/fish/fishTailInitPointers.inc.c"
+
+#include "build/assets/levelGroup/JungleLand/levelFileBreak.inc.c"

@@ -9,10 +9,9 @@ Modified for Level Header struct: Nathan R.
 import re
 import struct
 from pathlib import Path
-from util.log import error
-
-from util import options
-from segtypes.common.codesubsegment import CommonSegCodeSubsegment
+from splat.util.log import error
+from splat.util import options, symbols
+from splat.segtypes.common.codesubsegment import CommonSegCodeSubsegment
 
 
 class N64SegLevelHeader(CommonSegCodeSubsegment):
@@ -60,7 +59,6 @@ class N64SegLevelHeader(CommonSegCodeSubsegment):
 
         lines = []
 
-        from util import symbols
         sym = self.retrieve_sym_type(symbols.all_symbols_dict, self.vram_start, "Lvlhdr")
         if not sym:
             sym = self.create_symbol(

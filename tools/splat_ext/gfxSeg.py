@@ -40,14 +40,13 @@ from pygfxd import (
     gfxd_f3dexb,
     gfxd_f3dex2,
 )
-from segtypes.segment import Segment
+from splat.segtypes.segment import Segment
 
-from util import log, options
-from util.log import error
+from splat.util import log, options, symbols
+from splat.util.log import error
 
-from segtypes.n64.gfx import N64SegGfx
+from splat.segtypes.n64.gfx import N64SegGfx
 
-from util import symbols
 
 LIGHTS_RE = re.compile(r"\*\(Lightsn \*\)0x[0-9A-F]{8}")
 

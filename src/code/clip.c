@@ -1,8 +1,5 @@
 #include "common.h"
 
-void CartesianToSpherical(Vec3f arg0, f32* arg3, f32* arg4, f32* arg5);
-void WrapAngle(f32*);
-
 /* Migrated BSS */
 Vec3f D_802018B0;
 f32 D_802018BC;
@@ -276,10 +273,10 @@ s32 check_collision_within_radius(Rect3D *rect, f32 radius) {
                     sp90[3].x = rect->max.x;
                     sp90[3].z = rect->max.z;
                     ret = 0;
-                    for (i = 0; i < 4; i++) {
+                    for (i = 0; i < 4; i++) { //TODO: unhardcode this for loop
                         sp90[i].x -= D_802018B0.x;
                         sp90[i].z -= D_802018B0.z;
-                        temp_fv0 = SQ(sp90[i].z) + SQ(sp90[i].x);
+                        temp_fv0 = SUM_OF_SQUARES(sp90[i].z, sp90[i].x);
                         if (SQ(radius) < temp_fv0) {  //empty if
                         } else {
                             angle_xz = CalculateAngleOfVector(sp90[i].z, sp90[i].x);

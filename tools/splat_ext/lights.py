@@ -8,10 +8,10 @@ Author: Ellie (Elisiah)
 import re
 import struct
 from pathlib import Path
-from util.log import error
+from splat.util.log import error
 
-from util import options
-from segtypes.common.codesubsegment import CommonSegCodeSubsegment
+from splat.util import options, symbols
+from splat.segtypes.common.codesubsegment import CommonSegCodeSubsegment
 
 
 class N64SegLights(CommonSegCodeSubsegment):
@@ -58,7 +58,6 @@ class N64SegLights(CommonSegCodeSubsegment):
             )
 
         lines = []
-        from util import symbols
         sym = self.retrieve_sym_type(symbols.all_symbols_dict, self.vram_start, "Light")
         if not sym:
             sym = self.create_symbol(

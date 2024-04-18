@@ -76,7 +76,7 @@ lines[37:60] = [
     '/* 6BAAC 800906AC */  lui $a3, %hi(mod_ROM_START)\n',
     '/* 6BAB0 800906B0 */  addiu $a3, $a3, %lo(mod_ROM_START)\n',
     '/* 6BAB4 800906B4 */  subu $a2, $a2, $a3\n',
-    '/* 6BAB8 800906B8 */  jal dma_copy\n',
+    '/* 6BAB8 800906B8 */  jal DMA_Copy\n',
     '/* 6BABC 800906BC */  nop\n',
     '/* 6BAC0 800906C0 */  lui $t0, 0xA460\n'
     '/* 6BAC4 800906C4 */  ori $t0, $t0, 0x0010\n'
@@ -450,7 +450,7 @@ c_file_rule_overrides = {
     'mtxcatf.c': "ido_O3_cc",
     'lookat.c': "ido_O3_cc",
     'align.c': "ido_O3_cc",
-    'getfrustum.c': "ido_O3_cc",
+    'ortho.c': "ido_O3_cc",
     'rotate.c': "ido_O3_cc",
 
     #audio files. once audio/ is all decompiled, these can be removed and O2_cc -> ido_O3_cc for audio/ below
@@ -574,22 +574,22 @@ for c_file in c_files:
     dep = append_prefix(append_extension(c_file) + '.d')
     c_file_target = append_prefix(append_extension(c_file))
 
-    #build depedency file
-    ninja_file.build(dep, "gcc_dependency", c_file)
+    # #build depedency file
+    # ninja_file.build(dep, "gcc_dependency", c_file)
 
     if file_name in c_file_rule_overrides:
         build_target = c_file_rule_overrides[file_name]
-        ninja_file.build(append_prefix(append_extension(c_file)), build_target, c_file, dep)
+        ninja_file.build(append_prefix(append_extension(c_file)), build_target, c_file)
     elif os.path.dirname(c_file) in [code_dir, libc_dir]:
-        ninja_file.build(append_prefix(append_extension(c_file)), "O2_cc", c_file, dep)
+        ninja_file.build(append_prefix(append_extension(c_file)), "O2_cc", c_file)
     elif os.path.dirname(c_file) == audio_dir:
-        ninja_file.build(append_prefix(append_extension(c_file)), "O2_cc", c_file, dep)  # Update later
+        ninja_file.build(append_prefix(append_extension(c_file)), "O2_cc", c_file)  # Update later
     elif os.path.dirname(c_file) == gu_dir:
-        ninja_file.build(append_prefix(append_extension(c_file)), "O2_cc", c_file, dep)  # Update later
+        ninja_file.build(append_prefix(append_extension(c_file)), "O2_cc", c_file)  # Update later
     elif os.path.dirname(c_file) in [io_dir, os_dir]:
-        ninja_file.build(c_file_target, "O1_cc", c_file, dep)
+        ninja_file.build(c_file_target, "O1_cc", c_file)
     else:
-        ninja_file.build(append_prefix(append_extension(c_file)), "O2_cc", c_file, dep)
+        ninja_file.build(append_prefix(append_extension(c_file)), "O2_cc", c_file)
 
 for s_file in s_files:
     if "asm/nonmatchings" in s_file:

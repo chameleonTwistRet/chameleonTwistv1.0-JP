@@ -5,10 +5,10 @@ Dumps out an animation header as a .inc.c file.
 import re
 import struct
 from pathlib import Path
-from util.log import error
+from splat.util.log import error
 from math import floor
-from util import options
-from segtypes.common.codesubsegment import CommonSegCodeSubsegment
+from splat.util import options
+from splat.segtypes.common.codesubsegment import CommonSegCodeSubsegment
 
 
 class N64SegAnimHeader(CommonSegCodeSubsegment):

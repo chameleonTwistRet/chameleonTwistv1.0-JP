@@ -1,31 +1,14 @@
 #include "common.h"
 
-/* Migrated BSS */
-//TODO: type this data correctly
-char gShadows[0xC00];
-s32 gShadowCount;
-Vec3f D_80248518;
-char D_80248528[0x18];
-char D_80248540[0x368];
-s32 D_802488A8;
-char D_802488B0[0x10];
-char gHasShadow[0x100];
-char D_802489C0[0x08];
-Vec3f D_802489C8[8];
-char D_80248A28[0x08];
-
 /* rodata */
-extern char D_80110180[];
 extern char D_801103D0[];
 
 extern f64 D_801104F8;
 extern s32 D_80236974;
-extern Collision gZoneCollisions[];
 extern Collider D_80236980[128];
 extern s32 D_8020D8F4;
 extern f64 D_801106A0;
 extern f64 D_801106A8;
-extern s32 D_80174880[0x20];
 
 extern Vec3f D_80108F9C;
 extern Vec3f D_80108FA8;
@@ -42,11 +25,22 @@ extern s32 D_80108FE8;
 extern s32 D_80108FEC;
 extern Vec3f D_802489C8[8];
 
-Vec3f* RotateVector3D(Vec3f*, Vec3f, f32, s32);
-void func_800D3854(PlayerActor*, Tongue*, Camera*, Vec3f*, Vec3f*, s32);
+/* Migrated BSS */
+//TODO: type this data correctly
+char gShadows[0xC00];
+s32 gShadowCount;
+Vec3f D_80248518;
+char D_80248528[0x18];
+char D_80248540[0x368];
+s32 D_802488A8;
+char D_802488B0[0x10];
+char gHasShadow[0x100];
+char D_802489C0[0x08];
+Vec3f D_802489C8[8];
+char D_80248A28[0x08];
+
 void func_800D5394(PlayerActor*, Tongue*, Camera*, Vec3f*, Vec3f*, s32);
 void func_800D6864(PlayerActor*, Tongue*, Camera*, Vec3f*, Vec3f*);
-void func_800D69D0(s32, PlayerActor*, Tongue*, Camera*, Vec3f*, Vec3f*, s32);
 Collider* func_800CAF88(Vec3f, f32, f32);
 Collider* SearchPolygonBetween(Vec3f, Vec3f, s32, s32, s32);
 void OrderRectBounds(Rect3D*);
@@ -59,7 +53,7 @@ void ClearPolygon(void) {
     D_80236968 = 0;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/poly/D_80110180.s")
+const char D_80110180[] = "\n";
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800C8F0C.s")
 
@@ -243,15 +237,15 @@ void func_800CFF7C(Vec3f* arg0) {
     Rect3D* temp_v0;
 
     if (D_80236974 != 1) {
-        if ((gCurrentStage == 1) && ((gCurrentZone == 7) || (gCurrentZone == 0xF)) && (D_80174880[0] != 0)) {
-            temp_f14 = (SQ(arg0->x) + SQ(arg0->z));
+        if ((gCurrentStage == 1) && ((gCurrentZone == 7) || (gCurrentZone == 0xF)) && (levelFlags[0] != 0)) {
+            temp_f14 = SUM_OF_SQUARES(arg0->x, arg0->z);
             if (810000.0 < temp_f14) {
-                temp_f0_2 = __sqrtf((f32) (810000.0 / temp_f14));
+                temp_f0_2 = sqrtf((f32) (810000.0 / temp_f14));
                 arg0->x = arg0->x * temp_f0_2;
                 arg0->z = arg0->z * temp_f0_2;
             }
         } else {
-            temp_v0 = &gZoneCollisions[gCurrentZone].rect_30;
+            temp_v0 = &gZoneCollisions[gCurrentZone].roomBounds;
             
             if (temp_v0->min.x > arg0->x ) {
                 arg0->x = temp_v0->min.x;
@@ -344,9 +338,9 @@ void func_800D4550(s32 arg0, s32 arg1, Poly* arg2, Vec3f* arg3, Vec3f* arg4) {
     arg3->x = temp_v0->unkA4;
     arg3->y = temp_v0->unkA8 + (temp_v0->unkD0 * arg2->unkVectorStruct.vec1.x);
     arg3->z = temp_v0->unkAC;
-    arg4->x = temp_v0->unk98;
-    arg4->y = temp_v0->unk9C + (temp_v0->unkD0 * arg2->unkVectorStruct.vec1.x);
-    arg4->z = temp_v0->unkA0;
+    arg4->x = temp_v0->cameraAnchor.x;
+    arg4->y = temp_v0->cameraAnchor.y + (temp_v0->unkD0 * arg2->unkVectorStruct.vec1.x);
+    arg4->z = temp_v0->cameraAnchor.z;
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800D45D8.s")
@@ -405,7 +399,7 @@ void SetCameraParameters(void) {
     } else if ((D_80236974 == 1) && (D_8020D8F4 == 0)) {
         func_800D3854(gPlayerActors, gTongues, gCamera, &sp3C, &sp30, 0);
     } else if (gCamera[0].unk0 == 1) {
-        func_800D69D0(temp->unk94, gPlayerActors, gTongues, gCamera, &sp3C, &sp30, 0);
+        func_800D69D0(temp->cameraMode, gPlayerActors, gTongues, gCamera, &sp3C, &sp30, 0);
     } else {
         func_800D5394(gPlayerActors, gTongues, gCamera, &sp3C, &sp30, 0);
     }

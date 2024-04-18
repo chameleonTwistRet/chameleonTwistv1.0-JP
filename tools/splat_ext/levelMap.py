@@ -4,10 +4,9 @@
 import re
 import struct
 from pathlib import Path
-from util.log import error
-
-from util import options
-from segtypes.common.codesubsegment import CommonSegCodeSubsegment
+from splat.util.log import error
+from splat.util import options, symbols
+from splat.segtypes.common.codesubsegment import CommonSegCodeSubsegment
 
 class N64SegLevelMap(CommonSegCodeSubsegment):
     def __init__(
@@ -49,8 +48,6 @@ class N64SegLevelMap(CommonSegCodeSubsegment):
         map_data = rom_bytes[self.rom_start : self.rom_end]
 
         lines = []
-        
-        from util import symbols
         sym = self.retrieve_sym_type(symbols.all_symbols_dict, self.vram_start, "Lvp")
         if not sym:
             sym = self.create_symbol(

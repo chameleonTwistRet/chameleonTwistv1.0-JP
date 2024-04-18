@@ -12,11 +12,6 @@ fullDir = silly + assetDir + toUse
 yamler = 'chameleontwist.jp.yaml'
 yamlDir = silly + yamler
 
-
-#whether or not texture filtering is enabled
-#option mostly for me because i love the crust :D
-filtering = True
-
 #shouldnt need this
 if os.path.exists("C:/assets/"):
     shutil.rmtree("C:/assets/")
@@ -24,8 +19,6 @@ if os.path.exists("C:/assets/"):
 
 files = []
 
-#object integer scaling
-#if you cast some of these ints to float the models would be HUGE
 scale = 100.0
 
 objdata = {
@@ -123,19 +116,16 @@ def start(toUser):
                     if (validAdr or validResource) and validSplit:
                         #we found the split containing the resource we need!
                         #lets get the file path and the actual address we got. (just in case cmdAdr wasnt correct)
-                        if line.find("name:") != -1: fileName += line.split("name: ")[1][:-1].replace("{", "").replace("}", "")
-                        else: fileName += line.split(", ")[2]
+                        if line.find("name:") != -1: fileName = line.split("name: ")[1][:-1].replace("{", "").replace("}", "")
+                        else: fileName = line.split(", ")[2]
                         if line.find("start:") != -1: trueAdr = int(line.split("start: ")[1].split(", ")[0], 16)
                         else: trueAdr = int(line.split(", ")[0].split('[')[1], 16)
                         break
-                    elif line.find("dir: ") != -1:
-                        fileName += line.split("dir: ")[-1].strip().split("#")[0].strip() + "/"
                 if mode in [0, 2]: i += 1
                 elif mode == 1: i -= 1
             #begin the data usage.
             if file["Command"] == "vtx": #if resource is vertex data
-                newFileName = silly+assetDir+"/"+fileName+".vtx.inc.c"
-                fileData = open(newFileName).readlines()
+                fileData = open(silly+assetDir+"/"+fileName+".vtx.inc.c").readlines()
                 bank = int(args[2])
                 while len(objdata['bank']) < bank: objdata['bank'].append(0)#fill bank
                 
@@ -143,16 +133,14 @@ def start(toUser):
                 i = 0
                 offset = int((cmdAdr - trueAdr) / 0x10) #into VTX, as some calls start a specifie amount into the file.
                 i += offset
-                started = 0
-                for fileLine in fileData:
-                    if fileLine.find("}") == -1: #if there's a symbol at the start :)
-                        started += 1
+                started = False
+                if fileData[0].find("}") == -1: #if there's a symbol at the start :)
+                    started = True
                 while i < ao + offset:
                     line = fileData[i + int(started)]
                     values = line.replace("}", "").replace("{", "").split(",")
                     vec3s = []
                     #size down because ints being casted to floats can be REALLY big
-                    print(fileData)
                     for index in range(0,3): vec3s.append(int(values[index].strip()) / scale)
                     vec3s[0] *= -1 #flip x
                     vec3s.insert(1, vec3s.pop(2)) #swap y and z
@@ -182,12 +170,6 @@ def start(toUser):
 
                 texImage.image = bpy.data.images.load(copyTo)
                 matthew.node_tree.links.new(bsdf.inputs['Base Color'], texImage.outputs['Color'])
-                #these add transparency
-                #thanks pacman party
-                matthew.node_tree.links.new(bsdf.inputs['Alpha'], texImage.outputs['Alpha'])
-                matthew.blend_method = 'CLIP'
-                #this is optional i just think it looks nice :)
-                texImage.interpolation = "Linear" if filtering else "Closest"
                 object.data.materials.append(matthew)
                 objdata['textures'].append([len(objdata['textures']), matthew])
         elif file["Command"] == "tri": #if resource is tri data

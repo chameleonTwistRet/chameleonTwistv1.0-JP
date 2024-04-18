@@ -13,9 +13,6 @@ extern Mtx D_80129970_Black; //shoulder
 extern Mtx D_801299B0_Black; //Lshoulder
 extern Mtx D_801299F0_Black; //fist
 extern Mtx D_80129A30_Black; //Lfist
-#define IDENTITY {{1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1},{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}} // identity matrix so we dont have to split useless files
-
-#define FILEPAD {0xB8,0,0,0,0,0,0,0} // the funny
 
 
 #include "assets/chameleons/Black/light.light.inc.c"
@@ -24,27 +21,27 @@ extern Mtx D_80129A30_Black; //Lfist
 Mtx_f Black_IMtx1 = IDENTITY;
 unsigned char Black_Pad1[] = FILEPAD;
 unsigned char Black_backpackStrap_ci4_PNG[] = {
-#include "build/include/assets/chameleons/Black/body/backpackStrap.ci4.png.inc.c"
+#include "build/assets/chameleons/Black/body/backpackStrap.ci4.png.inc.c"
 };
 unsigned char Black_Pad2[] = FILEPAD;
 unsigned char Black_backpackStrap_ci4_PAL[] = {
-#include "build/include/assets/chameleons/Black/body/backpackStrap.ci4.pal.inc.c"
+#include "build/assets/chameleons/Black/body/backpackStrap.ci4.pal.inc.c"
 };
 unsigned char Black_Pad3[] = FILEPAD;
 unsigned char Black_solidColor_ci4_PNG[] = {
-#include "build/include/assets/chameleons/Black/body/solidColor.ci4.png.inc.c"
+#include "build/assets/chameleons/Black/body/solidColor.ci4.png.inc.c"
 };
 unsigned char Black_Pad4[] = FILEPAD;
 unsigned char Black_solidColor_ci4_PAL[] = {
-#include "build/include/assets/chameleons/Black/body/solidColor.ci4.pal.inc.c"
+#include "build/assets/chameleons/Black/body/solidColor.ci4.pal.inc.c"
 };
 unsigned char Black_Pad5[] = FILEPAD;
 unsigned char Black_number_ci4_PNG[] = {
-#include "build/include/assets/chameleons/Black/body/number.ci4.png.inc.c"
+#include "build/assets/chameleons/Black/body/number.ci4.png.inc.c"
 };
 unsigned char Black_Pad6[] = FILEPAD;
 unsigned char Black_number_ci4_PAL[] = {
-#include "build/include/assets/chameleons/Black/body/number.ci4.pal.inc.c"
+#include "build/assets/chameleons/Black/body/number.ci4.pal.inc.c"
 };
 
 #include "assets/chameleons/Black/body/body.gfx.inc.c"
@@ -57,27 +54,27 @@ unsigned char Black_number_ci4_PAL[] = {
 Mtx_f Black_IMtx2 = IDENTITY;
 unsigned char Black_Pad7[] = FILEPAD;
 unsigned char Black_eyeL_ci8_PNG[] = {
-#include "build/include/assets/chameleons/Black/head/eyeL.ci8.png.inc.c"
+#include "build/assets/chameleons/Black/head/eyeL.ci8.png.inc.c"
 };
 unsigned char Black_Pad8[] = FILEPAD;
 unsigned char Black_eyeL_ci8_PAL[] = {
-#include "build/include/assets/chameleons/Black/head/eyeL.ci8.pal.inc.c"
+#include "build/assets/chameleons/Black/head/eyeL.ci8.pal.inc.c"
 };
 unsigned char Black_Pad9[] = FILEPAD;
 unsigned char Black_eyeR_ci8_PNG[] = {
-#include "build/include/assets/chameleons/Black/head/eyeR.ci8.png.inc.c"
+#include "build/assets/chameleons/Black/head/eyeR.ci8.png.inc.c"
 };
 unsigned char Black_Pad10[] = FILEPAD;
 unsigned char Black_eyeR_ci8_PAL[] = {
-#include "build/include/assets/chameleons/Black/head/eyeR.ci8.pal.inc.c"
+#include "build/assets/chameleons/Black/head/eyeR.ci8.pal.inc.c"
 };
 unsigned char Black_Pad11[] = FILEPAD;
 unsigned char Black_cheek_ci4_PNG[] = {
-#include "build/include/assets/chameleons/Black/head/cheek.ci4.png.inc.c"
+#include "build/assets/chameleons/Black/head/cheek.ci4.png.inc.c"
 };
 unsigned char Black_Pad12[] = FILEPAD;
 unsigned char Black_cheek_ci4_PAL[] = {
-#include "build/include/assets/chameleons/Black/head/cheek.ci4.pal.inc.c"
+#include "build/assets/chameleons/Black/head/cheek.ci4.pal.inc.c"
 };
 
 #include "assets/chameleons/Black/head/head.gfx.inc.c"
@@ -86,11 +83,11 @@ unsigned char Black_cheek_ci4_PAL[] = {
 Mtx_f Black_IMtx3 = IDENTITY;
 unsigned char Black_Pad13[] = FILEPAD;
 unsigned char Black_backpack_ci8_PNG[] = {
-#include "build/include/assets/chameleons/Black/backpack/backpack.ci8.png.inc.c"
+#include "build/assets/chameleons/Black/backpack/backpack.ci8.png.inc.c"
 };
 unsigned char Black_Pad14[] = FILEPAD;
 unsigned char Black_backpack_ci8_PAL[] = {
-#include "build/include/assets/chameleons/Black/backpack/backpack.ci8.pal.inc.c"
+#include "build/assets/chameleons/Black/backpack/backpack.ci8.pal.inc.c"
 };
 
 #include "assets/chameleons/Black/backpack/backpack.gfx.inc.c"
@@ -99,11 +96,11 @@ unsigned char Black_backpack_ci8_PAL[] = {
 Mtx_f Black_IMtx4 = IDENTITY;
 unsigned char Black_Pad15[] = FILEPAD;
 unsigned char Black_shoe_ci4_PNG[] = {
-#include "build/include/assets/chameleons/Black/shoe/shoe.ci4.png.inc.c"
+#include "build/assets/chameleons/Black/shoe/shoe.ci4.png.inc.c"
 };
 unsigned char Black_Pad16[] = FILEPAD;
 unsigned char Black_shoe_ci4_PAL[] = {
-#include "build/include/assets/chameleons/Black/shoe/shoe.ci4.pal.inc.c"
+#include "build/assets/chameleons/Black/shoe/shoe.ci4.pal.inc.c"
 };
 
 #include "assets/chameleons/Black/shoe/shoe.gfx.inc.c"
@@ -117,11 +114,11 @@ Mtx_f Black_IMtx5 = IDENTITY;
 Mtx_f Black_IMtx6 = IDENTITY;
 unsigned char Black_Pad17[] = FILEPAD;
 unsigned char Black_color_ci4_PNG[] = {
-#include "build/include/assets/chameleons/Black/cuff/color.ci4.png.inc.c"
+#include "build/assets/chameleons/Black/cuff/color.ci4.png.inc.c"
 };
 unsigned char Black_Pad18[] = FILEPAD;
 unsigned char Black_color_ci4_PAL[] = {
-#include "build/include/assets/chameleons/Black/cuff/color.ci4.pal.inc.c"
+#include "build/assets/chameleons/Black/cuff/color.ci4.pal.inc.c"
 };
 
 #include "assets/chameleons/Black/cuff/cuff.gfx.inc.c"
@@ -135,19 +132,19 @@ Mtx_f Black_IMtx7 = IDENTITY;
 Mtx_f Black_IMtx8 = IDENTITY;
 unsigned char Black_Pad19[] = FILEPAD;
 unsigned char Black_wristColor_ci4_PNG[] = {
-#include "build/include/assets/chameleons/Black/wrist/wristColor.ci4.png.inc.c"
+#include "build/assets/chameleons/Black/wrist/wristColor.ci4.png.inc.c"
 };
 unsigned char Black_Pad20[] = FILEPAD;
 unsigned char Black_wristColor_ci4_PAL[] = {
-#include "build/include/assets/chameleons/Black/wrist/wristColor.ci4.pal.inc.c"
+#include "build/assets/chameleons/Black/wrist/wristColor.ci4.pal.inc.c"
 };
 unsigned char Black_Pad21[] = FILEPAD;
 unsigned char Black_wrist_ci4_PNG[] = {
-#include "build/include/assets/chameleons/Black/wrist/wrist.ci4.png.inc.c"
+#include "build/assets/chameleons/Black/wrist/wrist.ci4.png.inc.c"
 };
 unsigned char Black_Pad22[] = FILEPAD;
 unsigned char Black_wrist_ci4_PAL[] = {
-#include "build/include/assets/chameleons/Black/wrist/wrist.ci4.pal.inc.c"
+#include "build/assets/chameleons/Black/wrist/wrist.ci4.pal.inc.c"
 };
 
 #include "assets/chameleons/Black/wrist/wrist.gfx.inc.c"
@@ -171,43 +168,43 @@ Mtx_f Black_IMtx11 = IDENTITY;
 Mtx_f Black_IMtx12 = IDENTITY;
 unsigned char Black_Pad23[] = FILEPAD;
 unsigned char Black_fist1_ci4_PNG[] = {
-#include "build/include/assets/chameleons/Black/fist/fist1.ci4.png.inc.c"
+#include "build/assets/chameleons/Black/fist/fist1.ci4.png.inc.c"
 };
 unsigned char Black_Pad24[] = FILEPAD;
 unsigned char Black_fist1_ci4_PAL[] = {
-#include "build/include/assets/chameleons/Black/fist/fist1.ci4.pal.inc.c"
+#include "build/assets/chameleons/Black/fist/fist1.ci4.pal.inc.c"
 };
 unsigned char Black_Pad25[] = FILEPAD;
 unsigned char Black_fist2_ci4_PNG[] = {
-#include "build/include/assets/chameleons/Black/fist/fist2.ci4.png.inc.c"
+#include "build/assets/chameleons/Black/fist/fist2.ci4.png.inc.c"
 };
 unsigned char Black_Pad26[] = FILEPAD;
 unsigned char Black_fist2_ci4_PAL[] = {
-#include "build/include/assets/chameleons/Black/fist/fist2.ci4.pal.inc.c"
+#include "build/assets/chameleons/Black/fist/fist2.ci4.pal.inc.c"
 };
 unsigned char Black_Pad27[] = FILEPAD;
 unsigned char Black_fist3_ci4_PNG[] = {
-#include "build/include/assets/chameleons/Black/fist/fist3.ci4.png.inc.c"
+#include "build/assets/chameleons/Black/fist/fist3.ci4.png.inc.c"
 };
 unsigned char Black_Pad28[] = FILEPAD;
 unsigned char Black_fist3_ci4_PAL[] = {
-#include "build/include/assets/chameleons/Black/fist/fist3.ci4.pal.inc.c"
+#include "build/assets/chameleons/Black/fist/fist3.ci4.pal.inc.c"
 };
 unsigned char Black_Pad29[] = FILEPAD;
 unsigned char Black_fistDiamond_ci4_PNG[] = {
-#include "build/include/assets/chameleons/Black/fist/fistDiamond.ci4.png.inc.c"
+#include "build/assets/chameleons/Black/fist/fistDiamond.ci4.png.inc.c"
 };
 unsigned char Black_Pad30[] = FILEPAD;
 unsigned char Black_fistDiamond_ci4_PAL[] = {
-#include "build/include/assets/chameleons/Black/fist/fistDiamond.ci4.pal.inc.c"
+#include "build/assets/chameleons/Black/fist/fistDiamond.ci4.pal.inc.c"
 };
 unsigned char Black_Pad31[] = FILEPAD;
 unsigned char Black_fist4_ci4_PNG[] = {
-#include "build/include/assets/chameleons/Black/fist/fist4.ci4.png.inc.c"
+#include "build/assets/chameleons/Black/fist/fist4.ci4.png.inc.c"
 };
 unsigned char Black_Pad32[] = FILEPAD;
 unsigned char Black_fist4_ci4_PAL[] = {
-#include "build/include/assets/chameleons/Black/fist/fist4.ci4.pal.inc.c"
+#include "build/assets/chameleons/Black/fist/fist4.ci4.pal.inc.c"
 };
 
 #include "assets/chameleons/Black/fist/fist.gfx.inc.c"
