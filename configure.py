@@ -107,6 +107,12 @@ def build_stuff(linker_entries: List[LinkerEntry]):
     ninja = ninja_syntax.Writer(open(NINJA_FILE, "w"))
 
     ninja.rule(
+        "subNinja",
+        command = "ninja -f $in",
+    )
+    ninja.build("otherNinja", "subNinja", "assets.ninja")
+
+    ninja.rule(
         "ido_O3_cc",
         command=f"{IDO_CC} -c -G 0 -Xcpluscomm -xansi {INCLUDES} -non_shared -mips2 -woff 819,826,852 -Wab,-r4300_mul -nostdinc -O3 -o $out $in && {DEPENDENCY_GEN}",
         description="Compiling -O3 ido .c file",
@@ -141,7 +147,7 @@ def build_stuff(linker_entries: List[LinkerEntry]):
     ninja.rule(
         "libc_ll_cc",
         command=f"({ASM_PROC} {ASM_PROC_FLAGS} {IDO_CC} -- {ASFLAGS} -- -c {CFLAGS} -mips3 -32 -O1 -o $out $in) && (python3 {TOOLS_DIR}/set_o32abi_bit.py $out)",
-        description="Converting pal",
+        description="Compiling libc_ll_cc .c file",
     )
 
     ninja.rule(
@@ -253,7 +259,7 @@ def build_stuff(linker_entries: List[LinkerEntry]):
                         ninja2.rule(
                             f'{imageType}_convert',
                             command = f"python3 {IMG_CONVERT} {imageType} $in $out",
-                            description = "Converting {imageType}"
+                            description = f"Converting {imageType}"
                         )
                     imageOpt = True
                 if not binOpt:
@@ -383,11 +389,6 @@ def build_stuff(linker_entries: List[LinkerEntry]):
 
     print(f"{NINJA_FILE} generated")
     ninja.close()
-
-    a = open(NINJA_FILE_ASSETS, "r", encoding="utf-8").readlines()
-    b = open(NINJA_FILE, "r", encoding="utf-8").readlines()
-
-    open(NINJA_FILE, "w", encoding="utf-8").writelines(a+b)
 
 
 if __name__ == "__main__":
