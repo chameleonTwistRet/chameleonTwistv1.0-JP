@@ -52,6 +52,8 @@ DEPENDENCY_GEN = f"cpp -w {INCLUDES} -nostdinc -MD -MF $out.d $in -o /dev/null"
 IMG_CONVERT = f"{TOOLS_DIR}/image_converter.py"
 BIN_CONVERT = f"{TOOLS_DIR}/bin_inc_c.py"
 
+NINJA_FILE = "build.ninja"
+
 def clean():
     if os.path.exists(".splache"):
         os.remove(".splache")
@@ -101,7 +103,9 @@ def build_stuff(linker_entries: List[LinkerEntry]):
                 implicit_outputs=implicit_outputs,
             )
 
-    ninja = ninja_syntax.Writer(open("build.ninja", "w"))
+    ninja = ninja_syntax.Writer(open(NINJA_FILE, "w"))
+    NINJA_FILE_ASSETS = "assets.ninja"
+    ninja2 = ninja_syntax.Writer(open(NINJA_FILE_ASSETS, "w"))
 
     ninja.rule(
         "ido_O3_cc",
@@ -244,7 +248,7 @@ def build_stuff(linker_entries: List[LinkerEntry]):
                 if not imageOpt:
                     #generate image rules if any images used
                     for imageType in ["ia4", "ia8", "i4", "i8", "rgba16", "rgba32", "ci4", "ci8", "palette"]:
-                        ninja.rule(
+                        ninja2.rule(
                             f'{imageType}_convert',
                             command = f"python3 {IMG_CONVERT} {imageType} $in $out",
                             description = "Converting {imageType}"
@@ -253,7 +257,7 @@ def build_stuff(linker_entries: List[LinkerEntry]):
                 if not binOpt:
                     #used for inc'd bins
                     #dataOnly 
-                    ninja.rule(
+                    ninja2.rule(
                         "bin_inc_c_d",
                         command=f'python3 {BIN_CONVERT} 1 $in $out',
                         description="bin_inc_c $out"
@@ -270,25 +274,26 @@ def build_stuff(linker_entries: List[LinkerEntry]):
                 base = path
 
                 bin = "build/"+path+".bin"
-                ninja.build(bin, type+"_convert", base)
-                ninja.build(bin.replace(".bin", ".inc.c"), "bin_inc_c_d", bin)
+                ninja2.build(bin, type+"_convert", base)
+                ninja2.build(bin.replace(".bin", ".inc.c"), "bin_inc_c_d", bin)
                 if type.find("ci") != -1: #paletted
                     bin = "build/"+path.replace(".png",".pal")+".bin"
-                    ninja.build(bin, "palette_convert", base)
-                    ninja.build(bin.replace(".bin", ".inc.c"), "bin_inc_c_d", bin)
+                    ninja2.build(bin, "palette_convert", base)
+                    ninja2.build(bin.replace(".bin", ".inc.c"), "bin_inc_c_d", bin)
             elif line.find(".inc.c") != -1 and line.find(".pal.inc.c") == -1: #is databin
                 if not binOpt2:
                     #used for inc'd bins
                     #dataOnly 
-                    ninja.rule(
+                    ninja2.rule(
                         "bin_inc_c",
                         command=f'python3 {BIN_CONVERT} 0 $in $out',
                         description="bin_inc_c $out"
                     )
                     binOpt2 = True
                 path = line.split("build/")[-1].split(".inc.c")[0]+".databin.bin"
-                ninja.build("build/"+path.replace(".databin.bin", ".inc.c"), "bin_inc_c", path)
-            
+                ninja2.build("build/"+path.replace(".databin.bin", ".inc.c"), "bin_inc_c", path)
+    print("assets.ninja generated")
+    ninja2.close()
 
     overrideC = []
     for entry in linker_entries:
