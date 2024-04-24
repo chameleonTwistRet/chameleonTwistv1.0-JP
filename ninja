@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+ninja -f assets.ninja && ninja

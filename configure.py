@@ -107,12 +107,6 @@ def build_stuff(linker_entries: List[LinkerEntry]):
     ninja = ninja_syntax.Writer(open(NINJA_FILE, "w"))
 
     ninja.rule(
-        "subNinja",
-        command = "ninja -f $in",
-    )
-    ninja.build("otherNinja", "subNinja", "assets.ninja")
-
-    ninja.rule(
         "ido_O3_cc",
         command=f"{IDO_CC} -c -G 0 -Xcpluscomm -xansi {INCLUDES} -non_shared -mips2 -woff 819,826,852 -Wab,-r4300_mul -nostdinc -O3 -o $out $in && {DEPENDENCY_GEN}",
         description="Compiling -O3 ido .c file",
