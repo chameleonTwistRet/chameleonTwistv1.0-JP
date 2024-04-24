@@ -43,7 +43,7 @@ jobs:
       run: ./configure
 
     - name: Build Chameleon Twist
-      run: ./configure && ninja -v -f assets.ninja && ninja -v -f build.ninja
+      run: ./configure && ninja -v
 
     #- name: Upload Frogress
     #  if: github.ref == 'refs/heads/master'

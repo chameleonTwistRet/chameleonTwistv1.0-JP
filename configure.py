@@ -53,6 +53,7 @@ IMG_CONVERT = f"{TOOLS_DIR}/image_converter.py"
 BIN_CONVERT = f"{TOOLS_DIR}/bin_inc_c.py"
 
 NINJA_FILE = "build.ninja"
+NINJA_FILE_ASSETS = "assets.ninja"
 
 def clean():
     if os.path.exists(".splache"):
@@ -104,8 +105,6 @@ def build_stuff(linker_entries: List[LinkerEntry]):
             )
 
     ninja = ninja_syntax.Writer(open(NINJA_FILE, "w"))
-    NINJA_FILE_ASSETS = "assets.ninja"
-    ninja2 = ninja_syntax.Writer(open(NINJA_FILE_ASSETS, "w"))
 
     ninja.rule(
         "ido_O3_cc",
@@ -224,7 +223,10 @@ def build_stuff(linker_entries: List[LinkerEntry]):
     #manual it is
 
     #TODO: get a better method to get custom c's. maybe some asset path reading???
+    #TODO: why does the github ci compile c's first THEN assets???? ninja2 should NOT be needed and wasnt before.
     
+    ninja2 = ninja_syntax.Writer(open(NINJA_FILE_ASSETS, "w"))
+
     import glob
     asset_files = []
     for file in glob.glob(f"src/**/*.c", recursive=True):
@@ -292,7 +294,7 @@ def build_stuff(linker_entries: List[LinkerEntry]):
                     binOpt2 = True
                 path = line.split("build/")[-1].split(".inc.c")[0]+".databin.bin"
                 ninja2.build("build/"+path.replace(".databin.bin", ".inc.c"), "bin_inc_c", path)
-    print("assets.ninja generated")
+    print(f"{NINJA_FILE_ASSETS} generated")
     ninja2.close()
 
     overrideC = []
@@ -379,8 +381,13 @@ def build_stuff(linker_entries: List[LinkerEntry]):
         PRE_ELF_PATH,
     )
 
-    print("build.ninja generated")
+    print(f"{NINJA_FILE} generated")
     ninja.close()
+
+    a = open(NINJA_FILE_ASSETS, "r", encoding="utf-8").readlines()
+    b = open(NINJA_FILE, "r", encoding="utf-8").readlines()
+
+    open(NINJA_FILE, "w", encoding="utf-8").writelines(a+b)
 
 
 if __name__ == "__main__":
