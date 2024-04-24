@@ -14,7 +14,7 @@ import splat.scripts.split as split
 from splat.segtypes.linker_entry import LinkerEntry
 
 ROOT = Path(__file__).parent.resolve()
-TOOLS_DIR = ROOT / "tools"
+TOOLS_DIR = "tools"
 
 BASENAME = "chameleontwist.jp"
 YAML_FILE = f"{BASENAME}.yaml"
@@ -30,7 +30,7 @@ INCLUDES = "-I. -Iinclude -Iinclude/PR -Iassets -Isrc"
 MIPS = "mips-linux-gnu"
 
 IDO_CC = f"{TOOLS_DIR}/ido_5.3/usr/lib/cc"
-ASM_PROC = "python3 tools/asm-processor/build.py"
+ASM_PROC = f"python3 {TOOLS_DIR}/asm-processor/build.py"
 ASM_PROC_FLAGS = "--input-enc=utf-8 --output-enc=euc-jp"
 ASFLAGS = f"{MIPS}-as -EB -mtune=vr4300 -march=vr4300 -mabi=32 {INCLUDES}"
 
@@ -71,7 +71,7 @@ def write_permuter_settings():
             [preserve_macros]
 
             [decompme.compilers]
-            "tools/ido_5.3/usr/lib/cc" = "ido_5.3"
+            f"{TOOLS_DIR}/ido_5.3/usr/lib/cc" = "ido_5.3"
             """
             )
 
@@ -137,7 +137,7 @@ def build_stuff(linker_entries: List[LinkerEntry]):
 
     ninja.rule(
         "libc_ll_cc",
-        command=f"({ASM_PROC} {ASM_PROC_FLAGS} {IDO_CC} -- {ASFLAGS} -- -c {CFLAGS} -mips3 -32 -O1 -o $out $in) && (python3 tools/set_o32abi_bit.py $out)",
+        command=f"({ASM_PROC} {ASM_PROC_FLAGS} {IDO_CC} -- {ASFLAGS} -- -c {CFLAGS} -mips3 -32 -O1 -o $out $in) && (python3 {TOOLS_DIR}/set_o32abi_bit.py $out)",
         description="Converting pal",
     )
 
@@ -236,7 +236,6 @@ def build_stuff(linker_entries: List[LinkerEntry]):
     binOpt2 = False
 
     for file in asset_files:
-        print("building assets for file " + file)
         fileContents = open(file, "r", encoding="utf-8").readlines()
         for line in fileContents:
             if line.find("build/assets/") == -1: continue
@@ -248,7 +247,7 @@ def build_stuff(linker_entries: List[LinkerEntry]):
                         ninja.rule(
                             f'{imageType}_convert',
                             command = f"python3 {IMG_CONVERT} {imageType} $in $out",
-                            description = f"Converting {imageType}"
+                            description = "Converting {imageType}"
                         )
                     imageOpt = True
                 if not binOpt:
