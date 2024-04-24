@@ -406,5 +406,6 @@ Effect* Effect_Alloc(s32 numParts, s32 dataSize, void* fpUpdate);
 void* func_800745F8(void);
 void Effect_TypeBH_Init(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, RGBA32* arg5);
 void Effect_TypeBF_Init(f32 posX, f32 posY, f32 posZ, f32 velV, f32 yaw, f32 velH, f32 arg6, f32 duration, u8 colorR, u8 colorG, u8 colorB);
+void SetPlayerEyes(s32 arg0, s32 arg1, s32 arg2);
 
 #endif //_SPRITE_H_

@@ -2075,13 +2075,13 @@ void MainLoop(void) {
             func_800AE4AC();
             continue;
         case 6:
-            func_800A2BDC();
+            Process_TitleMenu();
             continue;
         case 7:
             Process_BattleMenu();
             continue;
         case 8:
-            func_800A4320();
+            Process_OptionsMenu();
             continue;
         case 9:
             Process_GameOver();
@@ -2093,7 +2093,7 @@ void MainLoop(void) {
             Process_PreCredits();
             continue;
         case 12:
-            func_800A1D38();
+            Process_NewGameMenu();
             continue;
         case 13:
             func_800A6DD8();
@@ -2146,7 +2146,7 @@ s32 func_80090B10(s32 time, s32 stageID) {
 }
 
 void func_80090BC0(void) {
-    LoadSprite(0x6E);
+    LoadSprite(SPRITE_BATTLE_STARS);
     switch (gCurrentStage) {
     case 13:
         LoadSprite(113);
@@ -4628,7 +4628,7 @@ void func_800A1CCC(CTTask* arg0) {
     }
 }
 
-void func_800A1D38(void) {
+void Process_NewGameMenu(void) {
     switch (gGameModeState) {
     case 0:
         D_800FFDF0 = 3;
@@ -4639,10 +4639,10 @@ void func_800A1D38(void) {
         DMAStruct_Print();
         func_8008F16C();
         func_800A0D90();
-        LoadSprite(77);
-        LoadSprite(78);
-        LoadSprite(110);
-        LoadSprite(103);
+        LoadSprite(SPRITE_BATTLE_BIGBOARD);
+        LoadSprite(SPRITE_BATTLE_STAGETITLEBOARD);
+        LoadSprite(SPRITE_BATTLE_STARS);
+        LoadSprite(SPRITE_BATTLE_OPTIONSARROWS);
         CTTaskList_Init();
         D_80168DA0 = 1;
         gGameModeState++;
@@ -4657,7 +4657,7 @@ void func_800A1D38(void) {
         func_8008F16C();
         break;
     case 1:
-        PlayBGM(23);
+        PlayBGM(BGM_TRAINING);
         func_800A18C8();
         gGameModeState++;
         func_8008F16C();
@@ -4757,7 +4757,7 @@ void func_800A2B9C(CTTask* task) {
     }
 }
 
-void func_800A2BDC(void) {
+void Process_TitleMenu(void) {
     switch (gGameModeState) {
     case 0:
         func_80061394();
@@ -4770,7 +4770,7 @@ void func_800A2BDC(void) {
         DummiedPrintf("タイトルプロセス\n");
         DMAStruct_Print();
         func_800A1EC4();
-        LoadSprite(229);
+        LoadSprite(SPRITE_MENUOPTIONS);
         CTTaskList_Init();
         func_8008F16C();
         D_80168DA0 = 4;
@@ -4782,11 +4782,11 @@ void func_800A2BDC(void) {
         func_8008F16C();
         break;
     case 1:
-        LoadSprite(77);
-        LoadSprite(78);
+        LoadSprite(SPRITE_BATTLE_BIGBOARD);
+        LoadSprite(SPRITE_BATTLE_STAGETITLEBOARD);
         LoadSprite(79);
         LoadSprite(80);
-        PlayBGM(25);
+        PlayBGM(BGM_TITLE);
         func_800A20CC();
         gGameModeState++;
         func_8008F114();
@@ -4901,7 +4901,7 @@ void func_800A41C0(CTTask* task) {
     }
 }
 
-void func_800A4320(void) {
+void Process_OptionsMenu(void) {
     switch (gGameModeState) {
     case 0:
         D_800FFDF4 = 1;
@@ -4909,10 +4909,10 @@ void func_800A4320(void) {
         DMAStruct_Print();
         func_800A1EC4();
         UseFixedRNGSeed = 0;
-        LoadSprite(110);
-        LoadSprite(77);
-        LoadSprite(78);
-        LoadSprite(103);
+        LoadSprite(SPRITE_BATTLE_STARS);
+        LoadSprite(SPRITE_BATTLE_BIGBOARD);
+        LoadSprite(SPRITE_BATTLE_STAGETITLEBOARD);
+        LoadSprite(SPRITE_BATTLE_OPTIONSARROWS);
         LoadSprite(195);
         LoadSprite(14);
         CTTaskList_Init();
@@ -5075,7 +5075,7 @@ void Process_GameOver(void) {
             DMAStruct_Print();
             func_800A0D90();
             CTTaskList_Init();
-            LoadSprite(0x5E);
+            LoadSprite(SPRITE_TEXTBIGGER);
             D_80168DA0 = 4;
             gGameModeState++;
             UseFixedRNGSeed = 0;
@@ -5168,8 +5168,8 @@ void Process_JSSLogo(void) {
         DummiedPrintf("ロゴプロセス\n"); //Logo process
         DMAStruct_Print();
         func_800A1EC4();
-        LoadSprite(0x5C);
-        LoadSprite(0x5D);
+        LoadSprite(SPRITE_JSSLOGO_BG);
+        LoadSprite(SPRITE_JSSLOGO_CAT);
         CTTaskList_Init();
         D_80168DA0 = 4;
         UseFixedRNGSeed = 0;
@@ -5206,8 +5206,8 @@ void func_800A56D4(void) {
     Effect_Init();
     func_80084788();
     LoadSprite(D_80100EB4[D_801B317C]);
-    LoadSprite(0x4D);
-    LoadSprite(0x4E);
+    LoadSprite(SPRITE_BATTLE_BIGBOARD);
+    LoadSprite(SPRITE_BATTLE_STAGETITLEBOARD);
 }
 
 s32 func_800A5778(s32 arg0) {

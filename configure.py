@@ -14,7 +14,7 @@ import splat.scripts.split as split
 from splat.segtypes.linker_entry import LinkerEntry
 
 ROOT = Path(__file__).parent.resolve()
-TOOLS_DIR = ROOT / "tools"
+TOOLS_DIR = "tools"
 
 BASENAME = "chameleontwist.jp"
 YAML_FILE = f"{BASENAME}.yaml"
@@ -30,7 +30,7 @@ INCLUDES = "-I. -Iinclude -Iinclude/PR -Iassets -Isrc"
 MIPS = "mips-linux-gnu"
 
 IDO_CC = f"{TOOLS_DIR}/ido_5.3/usr/lib/cc"
-ASM_PROC = "python3 tools/asm-processor/build.py"
+ASM_PROC = f"python3 {TOOLS_DIR}/asm-processor/build.py"
 ASM_PROC_FLAGS = "--input-enc=utf-8 --output-enc=euc-jp"
 ASFLAGS = f"{MIPS}-as -EB -mtune=vr4300 -march=vr4300 -mabi=32 {INCLUDES}"
 
@@ -52,6 +52,9 @@ DEPENDENCY_GEN = f"cpp -w {INCLUDES} -nostdinc -MD -MF $out.d $in -o /dev/null"
 IMG_CONVERT = f"{TOOLS_DIR}/image_converter.py"
 BIN_CONVERT = f"{TOOLS_DIR}/bin_inc_c.py"
 
+NINJA_FILE = "build.ninja"
+NINJA_FILE_ASSETS = "assets.ninja"
+
 def clean():
     if os.path.exists(".splache"):
         os.remove(".splache")
@@ -71,7 +74,7 @@ def write_permuter_settings():
             [preserve_macros]
 
             [decompme.compilers]
-            "tools/ido_5.3/usr/lib/cc" = "ido_5.3"
+            f"{TOOLS_DIR}/ido_5.3/usr/lib/cc" = "ido_5.3"
             """
             )
 
@@ -101,7 +104,7 @@ def build_stuff(linker_entries: List[LinkerEntry]):
                 implicit_outputs=implicit_outputs,
             )
 
-    ninja = ninja_syntax.Writer(open("build.ninja", "w"))
+    ninja = ninja_syntax.Writer(open(NINJA_FILE, "w"))
 
     ninja.rule(
         "ido_O3_cc",
@@ -137,8 +140,8 @@ def build_stuff(linker_entries: List[LinkerEntry]):
 
     ninja.rule(
         "libc_ll_cc",
-        command=f"({ASM_PROC} {ASM_PROC_FLAGS} {IDO_CC} -- {ASFLAGS} -- -c {CFLAGS} -mips3 -32 -O1 -o $out $in) && (python3 tools/set_o32abi_bit.py $out)",
-        description="Converting pal",
+        command=f"({ASM_PROC} {ASM_PROC_FLAGS} {IDO_CC} -- {ASFLAGS} -- -c {CFLAGS} -mips3 -32 -O1 -o $out $in) && (python3 {TOOLS_DIR}/set_o32abi_bit.py $out)",
+        description="Compiling libc_ll_cc .c file",
     )
 
     ninja.rule(
@@ -220,7 +223,10 @@ def build_stuff(linker_entries: List[LinkerEntry]):
     #manual it is
 
     #TODO: get a better method to get custom c's. maybe some asset path reading???
+    #TODO: why does the github ci compile c's first THEN assets???? ninja2 should NOT be needed and wasnt before.
     
+    ninja2 = ninja_syntax.Writer(open(NINJA_FILE_ASSETS, "w"))
+
     import glob
     asset_files = []
     for file in glob.glob(f"src/**/*.c", recursive=True):
@@ -244,16 +250,16 @@ def build_stuff(linker_entries: List[LinkerEntry]):
                 if not imageOpt:
                     #generate image rules if any images used
                     for imageType in ["ia4", "ia8", "i4", "i8", "rgba16", "rgba32", "ci4", "ci8", "palette"]:
-                        ninja.rule(
+                        ninja2.rule(
                             f'{imageType}_convert',
                             command = f"python3 {IMG_CONVERT} {imageType} $in $out",
-                            description = "Converting {imageType}"
+                            description = f"Converting {imageType}"
                         )
                     imageOpt = True
                 if not binOpt:
                     #used for inc'd bins
                     #dataOnly 
-                    ninja.rule(
+                    ninja2.rule(
                         "bin_inc_c_d",
                         command=f'python3 {BIN_CONVERT} 1 $in $out',
                         description="bin_inc_c $out"
@@ -270,25 +276,26 @@ def build_stuff(linker_entries: List[LinkerEntry]):
                 base = path
 
                 bin = "build/"+path+".bin"
-                ninja.build(bin, type+"_convert", base)
-                ninja.build(bin.replace(".bin", ".inc.c"), "bin_inc_c_d", bin)
+                ninja2.build(bin, type+"_convert", base)
+                ninja2.build(bin.replace(".bin", ".inc.c"), "bin_inc_c_d", bin)
                 if type.find("ci") != -1: #paletted
                     bin = "build/"+path.replace(".png",".pal")+".bin"
-                    ninja.build(bin, "palette_convert", base)
-                    ninja.build(bin.replace(".bin", ".inc.c"), "bin_inc_c_d", bin)
+                    ninja2.build(bin, "palette_convert", base)
+                    ninja2.build(bin.replace(".bin", ".inc.c"), "bin_inc_c_d", bin)
             elif line.find(".inc.c") != -1 and line.find(".pal.inc.c") == -1: #is databin
                 if not binOpt2:
                     #used for inc'd bins
                     #dataOnly 
-                    ninja.rule(
+                    ninja2.rule(
                         "bin_inc_c",
                         command=f'python3 {BIN_CONVERT} 0 $in $out',
                         description="bin_inc_c $out"
                     )
                     binOpt2 = True
                 path = line.split("build/")[-1].split(".inc.c")[0]+".databin.bin"
-                ninja.build("build/"+path.replace(".databin.bin", ".inc.c"), "bin_inc_c", path)
-            
+                ninja2.build("build/"+path.replace(".databin.bin", ".inc.c"), "bin_inc_c", path)
+    print(f"{NINJA_FILE_ASSETS} generated")
+    ninja2.close()
 
     overrideC = []
     for entry in linker_entries:
@@ -374,7 +381,7 @@ def build_stuff(linker_entries: List[LinkerEntry]):
         PRE_ELF_PATH,
     )
 
-    print("build.ninja generated")
+    print(f"{NINJA_FILE} generated")
     ninja.close()
 
 

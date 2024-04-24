@@ -1320,7 +1320,14 @@ void ActorInit_AntQueen(Actor* antQueenActor) {
     antQueenActor->unknownPositionThings[2].unk_04 = 300.0f;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/QueenAnt_SpawnDrones.s")
+void QueenAnt_SpawnDrones(Actor* arg0) {
+    Actor_Init(8, arg0->pos.x - (cosf(DEGREES_TO_RADIANS_2PI(arg0->unk_90)) * 300), arg0->pos.y + 100, (__sinf(DEGREES_TO_RADIANS_2PI(arg0->unk_90)) * 300) + arg0->pos.z, arg0->unk_90 - 90, -10000, 10000, -1000, 1000, -10000, 10000, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+    Actor_Init(8, arg0->pos.x - (cosf(DEGREES_TO_RADIANS_2PI(arg0->unk_90)) * 420), arg0->pos.y + 100, (__sinf(DEGREES_TO_RADIANS_2PI(arg0->unk_90)) * 420) + arg0->pos.z, arg0->unk_90 - 90, -10000, 10000, -1000, 1000, -10000, 10000, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+    Actor_Init(8, arg0->pos.x - (cosf(DEGREES_TO_RADIANS_2PI(arg0->unk_90)) * 540), arg0->pos.y + 100, (__sinf(DEGREES_TO_RADIANS_2PI(arg0->unk_90)) * 540) + arg0->pos.z, arg0->unk_90 - 90, -10000, 10000, -1000, 1000, -10000, 10000, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+    Actor_Init(8, arg0->pos.x - (cosf(DEGREES_TO_RADIANS_2PI(arg0->unk_90)) * 300), arg0->pos.y + 100, (__sinf(DEGREES_TO_RADIANS_2PI(arg0->unk_90)) * 300) + arg0->pos.z, arg0->unk_90 + 90, -10000, 10000, -1000, 1000, -10000, 10000, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+    Actor_Init(8, arg0->pos.x - (cosf(DEGREES_TO_RADIANS_2PI(arg0->unk_90)) * 420), arg0->pos.y + 100, (__sinf(DEGREES_TO_RADIANS_2PI(arg0->unk_90)) * 420) + arg0->pos.z, arg0->unk_90 + 90, -10000, 10000, -1000, 1000, -10000, 10000, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+    Actor_Init(8, arg0->pos.x - (cosf(DEGREES_TO_RADIANS_2PI(arg0->unk_90)) * 540), arg0->pos.y + 100, (__sinf(DEGREES_TO_RADIANS_2PI(arg0->unk_90)) * 540) + arg0->pos.z, arg0->unk_90 + 90, -10000, 10000, -1000, 1000, -10000, 10000, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_AntQueen.s")
 
@@ -1698,7 +1705,63 @@ void func_8003FB4C(Actor* arg0) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_Pogo.s")
+void ActorTick_Pogo(Actor* arg0) {
+    f32 var_f2;
+
+    if (arg0->userVariables[2] < arg0->userVariables[1]) {
+        var_f2 = arg0->unk_170;
+        if (arg0->userVariables[0] >= 3) {
+            var_f2 /= 4;
+        }
+        arg0->pos.y += arg0->unk_134[3] + (var_f2 * __sinf((((((arg0->userVariables[2] * 0xB4) + 0x5A) / arg0->userVariables[1]) * 2) + 0xB4) * PI / 360.0));
+        arg0->userVariables[2] += 1;
+    } else if (arg0->userVariables[4] == 0) {
+        arg0->unk_F0++;
+        arg0->unk_94 = 0;
+        arg0->vel.y = 0;
+        if (arg0->unk_F0 == 0x13) {
+            arg0->userVariables[4] = 1;
+        }
+    } else {
+        arg0->unk_F0 = 0;
+        arg0->userVariables[4] = 0;
+        arg0->userVariables[2] = 0;
+        PLAYSFXAT(0x93, arg0->pos, 0, 0);
+        switch (arg0->userVariables[0]) {
+        case 0:
+            arg0->pos.x = arg0->unk_134[0];
+            arg0->pos.y = arg0->unk_134[1];
+            arg0->pos.z = arg0->unk_134[2];
+            func_8003FB4C(arg0);
+            break;
+        case 1:
+            arg0->pos.x = arg0->position._f32.x;
+            arg0->pos.y = arg0->position._f32.y;
+            arg0->pos.z = arg0->unk_15C;
+            func_8003FB4C(arg0);
+            break;
+        case 2:
+            arg0->pos.x = arg0->unk_160;
+            arg0->pos.y = arg0->unk_164;
+            arg0->pos.z = arg0->unk_168;
+            func_8003FB4C(arg0);
+            break;
+        case 3:
+            func_8003FA38(arg0, arg0->unk_134[0], arg0->unk_134[1], arg0->unk_134[2]);
+            arg0->userVariables[0] = 0;
+            break;
+        case 4:
+            func_8003FA38(arg0, arg0->position._f32.x, arg0->position._f32.y, arg0->unk_15C);
+            arg0->userVariables[0] = 1;
+            break;
+        case 5:
+            func_8003FA38(arg0, arg0->unk_160, arg0->unk_164, arg0->unk_168);
+            arg0->userVariables[0] = 2;
+            break;
+        }
+    }
+    func_800382F4(arg0);
+}
 
 void ActorTick_Unk22(s32 arg0) {
 }
@@ -1716,7 +1779,30 @@ void ActorInit_IceCreamSandwich(Actor* iceCreamSandwichActor) {
     iceCreamSandwichActor->pos.y = iceCreamSandwichActor->pos.y + 2000.0f;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_IceCreamSandwich.s")
+void ActorTick_IceCreamSandwich(Actor* arg0) {
+    switch (arg0->userVariables[0]) {
+    case 2: break;
+    case 0:
+        if (SQ(arg0->pos.x - gCurrentActivePlayerPointer->pos.x) + SQ(arg0->pos.z - gCurrentActivePlayerPointer->pos.z) < arg0->position._f32.x) {
+            arg0->userVariables[0] = 1;
+            arg0->pos.y = arg0->unk_134[0];
+            arg0->vel.y = 25.6f;
+            Effect_TypeC_Init(arg0->pos.x, arg0->unk_134[0], arg0->pos.z, arg0->pos.x, arg0->unk_134[0] + 300.0f, arg0->pos.z, 255, 255, 255, 128, 8, 74);
+            PLAYSFXAT(152, arg0->pos, 0, 0);
+        }
+        break;
+    case 1:
+        arg0->vel.y -= 3.2f;
+        if ((arg0->pos.y + arg0->vel.y) < arg0->unk_134[0]) {
+            arg0->pos.y = arg0->unk_134[0];
+            arg0->userVariables[0] = 2;
+            arg0->vel.y = 0.0f;
+        }
+        Actor_PlaySound(arg0, 151, 10, 4);
+        break;
+    }
+    arg0->pos.y += arg0->vel.y;
+}
 
 void ActorInit_ChocoKid(Actor* trainingRoomChocoKidActor) {
     trainingRoomChocoKidActor->unk_134[1] = trainingRoomChocoKidActor->pos.z;
@@ -2068,8 +2154,29 @@ void func_80046DDC(Actor* arg0) {
     }
 }
 
+void ActorTick_GhostBossArmSegment(Actor* arg0) {
+    Actor* temp_v1;
+    f32 temp_f0;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_GhostBossArmSegment.s")
+    if (arg0->unk_124 >= 2) {
+        temp_v1 = &gActors[arg0->unk_128];
+        if ((arg0->unk_124 < (temp_v1->unk_128 + 2)) && (arg0->userVariables[0] == 0) && (arg0->tongueBumpSeg != 0) && (arg0->eaten != 0) && (gCurrentActivePlayerPointer->canJump == 0) && (gTongueOnePointer->vaulting == 0)) {
+            temp_f0 = D_8010A6D0[0x3E].x;
+            arg0->userVariables[0] = 1;
+            arg0->tScale = temp_f0;
+            arg0->unknownPositionThings[0].unk_0C = temp_f0;
+            temp_v1->userVariables[3] -= 1;
+            if (gActors[arg0->unk_128].userVariables[3] == 0) {
+                PlaySoundEffect(0xB6, &arg0->pos.x, &arg0->pos.y, &arg0->pos.z, 0, 0);
+                PlaySoundEffect(0xB7, NULL, NULL, NULL, 0, 0x10);
+                func_8008BFE0(0xF0);
+            } else {
+                PlaySoundEffect(0xB6, &arg0->pos.x, &arg0->pos.y, &arg0->pos.z, 0, 0);
+            }
+            arg0->unk_F0 = 1;
+        }
+    }
+}
 
 void func_80046FB0(Actor* arg0) {
 
@@ -2585,104 +2692,104 @@ const Vec2f D_8010A6D0[0x6B] = {
 { 70, 300},
 {100, 250},
 { 50, 140},
-{  0, 0},
-{  0, 0},
+{  0,   0},
+{  0,   0},
 { 50, 100},
 { 50, 100},
 { 50, 140},
 { 50, 140},
-{  0, 0},
+{  0,   0},
 { 50, 140},
 {100, 120},
 { 50, 100},
 { 50, 100},
 {200, 400},
 { 50, 140},
-{  0, 0},
+{  0,   0},
 { 50, 100},
 {150, 150},
 { 50, 100},
 { 50, 100},
-{  0, 0},
-{ 80, 80},
+{  0,   0},
+{ 80,  80},
 {120, 240},
 {150, 250},
 {100, 200},
-{ 40, 80},
+{ 40,  80},
 {120, 350},
-{0, 0},
-{50, 100},
-{50, 140},
-{50, 140},
+{  0,   0},
+{ 50, 100},
+{ 50, 140},
+{ 50, 140},
 {350, 220},
-{60, 100},
-{0, 0},
-{80, 200},
-{60, 156},
-{60, 156},
+{ 60, 100},
+{  0,   0},
+{ 80, 200},
+{ 60, 156},
+{ 60, 156},
 {100, 260},
-{80, 208},
-{50, 100},
-{50, 100},
-{50, 140},
-{60, 90},
-{80, 200},
-{50, 250},
-{0, 0},
+{ 80, 208},
+{ 50, 100},
+{ 50, 100},
+{ 50, 140},
+{ 60,  90},
+{ 80, 200},
+{ 50, 250},
+{  0,   0},
 {180, 360},
-{0, 0},
-{50, 140},
-{50, 140},
-{50, 180},
-{0, 0},
-{50, 140},
-{75, 100},
+{  0,   0},
+{ 50, 140},
+{ 50, 140},
+{ 50, 180},
+{  0,   0},
+{ 50, 140},
+{ 75, 100},
 {200, 450},
-{60, 120},
-{50, 250},
-{60, 120},
+{ 60, 120},
+{ 50, 250},
+{ 60, 120},
 {100, 100},
-{50, 100},
-{50, 100},
+{ 50, 100},
+{ 50, 100},
 {170, 500},
-{50, 100},
-{50, 150},
-{50, 100},
-{50, 100},
-{0, 0},
+{ 50, 100},
+{ 50, 150},
+{ 50, 100},
+{ 50, 100},
+{  0,   0},
 {120, 240},
 {150, 450},
-{0, 0},
-{90, 110},
-{50, 80},
-{0, 0},
-{50, 140},
-{0, 0},
-{50, 140},
-{0, 0},
-{50, 100},
-{0, 0},
-{50, 140},
-{0, 0},
-{60, 50},
-{0, 0},
-{50, 80},
-{0, 0},
-{0, 0},
-{50, 140},
-{0, 0},
-{55, 110},
-{55, 110},
-{65, 130},
-{75, 150},
-{75, 150},
-{65, 130},
-{70, 140},
-{80, 140},
-{80, 140},
-{80, 140},
-{80, 140},
-{80, 140}
+{  0,   0},
+{ 90, 110},
+{ 50,  80},
+{  0,   0},
+{ 50, 140},
+{  0,   0},
+{ 50, 140},
+{  0,   0},
+{ 50, 100},
+{  0,   0},
+{ 50, 140},
+{  0,   0},
+{ 60,  50},
+{  0,   0},
+{ 50,  80},
+{  0,   0},
+{  0,   0},
+{ 50, 140},
+{  0,   0},
+{ 55, 110},
+{ 55, 110},
+{ 65, 130},
+{ 75, 150},
+{ 75, 150},
+{ 65, 130},
+{ 70, 140},
+{ 80, 140},
+{ 80, 140},
+{ 80, 140},
+{ 80, 140},
+{ 80, 140}
 };
 
 const unk_8010AA28 D_8010AA28[0x6B] = {

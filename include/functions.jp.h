@@ -317,9 +317,9 @@ void func_800AA3F0(void);
 void func_800ADE70(void);
 void func_800AE4AC(void);
 void CalculateBoundingRectFromVectors(Vec3f,Vec3f,Rect3D*);
-void func_800A2BDC(void);
+void Process_TitleMenu(void);
 void Process_BattleMenu(void);
-void func_800A4320(void);
+void Process_OptionsMenu(void);
 void Process_GameOver(void);
 void Process_JSSLogo(void);
 void Process_PreCredits(void);
@@ -498,5 +498,27 @@ void Effect_BossDeadEyes_Init(s32 arg0);
 //funcs from 5ff30 that are called from other c's
 //battle.c
 void func_800A0D90(void);
+//8ADD0.c & battle.c
+s32 func_8008BFE0(s32 arg0);
+//8ADD0.c
+void PlayStageBGM(s32 arg0);
+
+//funcs from sprite that are called from other c's
+//8ADD0.c
+void Effect_TypeW_Init(f32 posX, f32 posY, f32 posZ, f32 size, s32 duration, s32 arg5);
+Effect* Effect_TypeB_Init(f32 posX, f32 posY, f32 posZ, s32 numParts);
+//84e0.c
+void Effect_TypeA_Init2(f32 posX, f32 posY, f32 posZ, s32 numParts, s32 size);
+
+//funcs from vector that are called from other c's
+//8ADD0.c
+s32 CompareWrappedAngles(f32 angle1, f32 angle2);
+
+//funcs from battle that are called from other c's
+//5ff30.c
+void Battle_Init(void);
+
+//funcs from 1050 that are called from other c's
+void func_8002CE54(void);
 
 #endif

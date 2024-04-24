@@ -160,12 +160,10 @@ s32 func_8008BE14(void);
 s32 StopBGM(void);
 s32 func_8008BF20(void);
 s32 func_8008BFA8(s32 vol);
-s32 func_8008BFE0(s32 arg0);
 s32 alCSPGetTempoWrapper(void);
 s32 func_8008C040(s32 arg0);
 void func_8008C070(s32 arg0);
 void func_8008C1C8(s32* arg0);
-void PlayStageBGM(s32 arg0);
 void func_8008C35C(Gfx** arg0);
 s32 Actor_PlaySound(Actor* actor, s32 sfxID, s32 unused1, s32 unused2);
 void func_8008C3F0(Actor* actor, s32 sfxID, s32 unused);
@@ -442,7 +440,7 @@ void func_800A191C(CTTask* task);
 void func_800A1CCC(CTTask* arg0);
 //white perfect code related???
 void func_800A1B34(CTTask* task);
-void func_800A1D38(void);
+void Process_NewGameMenu(void);
 void func_800A1EC4(void);
 void PrintPerfectCode(CTTask* task);
 CTTask* func_800A20CC(void);
@@ -453,7 +451,6 @@ void func_800A25F0(CTTask* task, f32 arg0);
 void func_800A272C(CTTask* task);
 void func_800A28B8(CTTask* task);
 void func_800A2B9C(CTTask* task);
-void func_800A2BDC(void);
 CTTask* func_800A2D84(void);
 void func_800A2E18(CTTask*);
 //options draw??
@@ -468,7 +465,6 @@ void PrintDataClearConfirm(void);
 
 
 void func_800A41C0(CTTask* task);
-void func_800A4320(void);
 CTTask* func_800A4484(void);
 void func_800A44D8(CTTask* arg0);
 void GameOverMaster(CTTask* task);
@@ -549,6 +545,9 @@ s32 IfRectsIntersect(Rect3D* rectA, Rect3D* rectB);
 void CalculateBoundingRectFromVectors(Vec3f vecA, Vec3f vecB, Rect3D* rect);
 //////
 
+void func_8009CB14(void);
+void func_8009D0EC(void);
+void func_8009EE44(void);
 
 /* Ext Variables */
 extern ContMain D_801FC9B8;

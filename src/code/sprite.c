@@ -1388,7 +1388,7 @@ void func_8005C9B8(void) {
     LoadSprite(SPRITE_HEARTRED);
     LoadSprite(SPRITE_HEARTORANGE);
     LoadSprite(SPRITE_HEARTYELLOW);
-    LoadSprite(0x1A);
+    LoadSprite(26);
 }
 
 void func_8005CA38(void) {
@@ -3637,7 +3637,7 @@ void Effect_TypeW_Update(Effect* effect, Gfx** pGfxPos) {
 
         effect->lifeTime += effect->duration;
         if (effect->lifeTime >= 1.0f) {
-            FreeSprite(0x48);
+            FreeSprite(72);
             Effect_Free(effect);
         }
     }
@@ -3662,7 +3662,7 @@ void Effect_TypeW_Init(f32 posX, f32 posY, f32 posZ, f32 size, s32 duration, s32
     effect->sizeY = duration;    
     effect->lifeTime = 0.0f;
     effect->duration = 1.0f / (duration + 20);
-    LoadSprite(0x48);
+    LoadSprite(72);
 }
 
 void LoadPlayerEyes(s32 arg0) {
@@ -3869,13 +3869,13 @@ void Effect_BossDeadEyes_Update(Effect* effect, Gfx** pGfxPos) {
     SetBossDeadEyes(effect->spriteID);
     switch(effect->spriteID) {
         case 75:
-            FreeSprite(202);
+            FreeSprite(SPRITE_EYESDAEADLIZARDKONG);
             break;
         case 7:
-            FreeSprite(201);
+            FreeSprite(SPRITE_EYESDEADANTQUEEN);
             break;        
         case 30:
-            FreeSprite(203);
+            FreeSprite(SPRITE_EYESDEADARMADILLO);
             break;        
     }
     Effect_Free(effect);
@@ -3887,13 +3887,13 @@ void Effect_BossDeadEyes_Init(s32 arg0) {
 
     switch(arg0) {
         case 75:
-            ret = LoadSprite(202);
+            ret = LoadSprite(SPRITE_EYESDAEADLIZARDKONG);
             break;
         case 7:
-            ret = LoadSprite(201);
+            ret = LoadSprite(SPRITE_EYESDEADANTQUEEN);
             break;        
         case 30:
-            ret = LoadSprite(203);
+            ret = LoadSprite(SPRITE_EYESDEADARMADILLO);
             break;
         default:
             return;
@@ -4971,12 +4971,12 @@ void Effect_GameResults_Update(Effect* effect, Gfx** pGfxPos) {
 
     effect->lifeTime += effect->duration;
     if (effect->lifeTime >= 1.0f) {
-        FreeSprite(189);
-        FreeSprite(190);
-        FreeSprite(191);
-        FreeSprite(192);
-        FreeSprite(193);
-        FreeSprite(194);
+        FreeSprite(SPRITE_RANKING_TEXT_JL);
+        FreeSprite(SPRITE_RANKING_TEXT_AL);
+        FreeSprite(SPRITE_RANKING_TEXT_BL);
+        FreeSprite(SPRITE_RANKING_TEXT_DC);
+        FreeSprite(SPRITE_RANKING_TEXT_KL);
+        FreeSprite(SPRITE_RANKING_TEXT_GC);
         FreeSprite(224);
         FreeSprite(225);
         Effect_Free(effect);
@@ -4994,12 +4994,12 @@ void Effect_GameResults_Init() {
     effect->spriteID = 0;
     effect->lifeTime = 0;
     effect->duration = 1.0f / 272.0f;
-    LoadSprite(189);
-    LoadSprite(190);
-    LoadSprite(191);
-    LoadSprite(192);
-    LoadSprite(193);
-    LoadSprite(194);
+    LoadSprite(SPRITE_RANKING_TEXT_JL);
+    LoadSprite(SPRITE_RANKING_TEXT_AL);
+    LoadSprite(SPRITE_RANKING_TEXT_BL);
+    LoadSprite(SPRITE_RANKING_TEXT_DC);
+    LoadSprite(SPRITE_RANKING_TEXT_KL);
+    LoadSprite(SPRITE_RANKING_TEXT_GC);
     LoadSprite(224);
     LoadSprite(225);
     setPrimColor(0, 0, 0, 255);

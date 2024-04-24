@@ -1615,6 +1615,7 @@ void func_800C0E78(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C1204.s")
 
+//multiplayer load?
 void func_800C1458(s32 arg0) {
     s32 i;
     D_802039B4 = 0;
@@ -1967,8 +1968,28 @@ void func_800C4C48(Vec3f arg0, f32 arg3, f32 arg4, f32 arg5, f32 arg6) {
 //angle stuff with actors
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C4DF8.s")
 
-//animates the JL camera pan intro
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C5304.s")
+//animates camera pans
+void func_800C5304(Camera* camera, f32 weight) {
+    Vec3f sp54;
+    Vec3f sp48;
+    f32 radius;
+    f32 theta;
+    f32 phi;
+    Vec3f sp30;
+
+    weight = func_800B2308(weight, 0);
+    radius = ((1.0 - weight) * D_80201900) + (weight * D_80201914);
+    theta = ((1.0 - weight) * D_80201904) + (weight * D_8020191C);
+    phi = ((1.0 - weight) * D_8020190C) + (weight * D_80201924);
+    WrapAngle(&phi);
+    Vec3f_Lerp(&sp30, D_80201930, D_80201950, weight);
+    SphericalToCartesian(&sp48, radius, theta, phi);
+    sp54.x = sp30.x + sp48.x;
+    sp54.y = sp30.y + sp48.y; sp54.z = sp30.z + sp48.z;
+    sp30.y += gZoneCollisions[gCurrentZone].unkD0 * camera->size1;
+    func_800C3DCC(camera, sp30, sp54, D_80201960);
+}
+
 
 // why would this ever need to zero Vec2w and arg1? (This surely is zeroing a Vec3w? (this is already a function?))
 void func_800C54F8(Vec2w* arg0, s32* arg1) {
@@ -2061,6 +2082,7 @@ void Player_SetFromBoss(PlayerActor* player, f32 distance) {
     player->pos.z = -sgnZ * distance;
 }
 
+//camera pan controller
 //BIG jump table
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C56D4.s")
 

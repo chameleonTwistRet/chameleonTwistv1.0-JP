@@ -157,6 +157,7 @@ void func_800C1C64(s32 arg0);
 void func_800C1CE0(PlayerActor*);
 void func_800C2670(s32, PlayerActor*, s32);
 void func_800C2A00(void);
+void func_800C2C34(void);
 void enterBossRoom(void);
 void func_800C38E0(SpriteActor*);
 s32 func_800C3958(s32, s32*, s32, Collider*);
@@ -171,6 +172,8 @@ void func_800C4968(Vec3f arg0, Vec3f arg3, f32 arg6, f32 arg7, f32 arg8);
 void func_800C4B1C(Camera* arg0, f32 arg1);
 void func_800C4C48(Vec3f arg0, f32 arg3, f32 arg4, f32 arg5, f32 arg6);
 void func_800C4CAC(Camera* arg0, f32 arg1);
+void func_800C4DF8(Vec3w arg0, Vec3w arg3, Vec3f arg6, Vec3f arg9, f32 argC, u32 argD);
+void func_800C5304(Camera* camera, f32 weight);
 void func_800C54F8(Vec2w* arg0, s32* arg1);
 void func_800C5508(PlayerActor* player);
 void func_800C5538(PlayerActor* arg0);
@@ -285,5 +288,16 @@ void func_800B4884(RoomSettings*);                     /* extern */
 void func_800BE7F0(void);                                  /* extern */
 extern RoomSettings* D_802478F0;
 extern s32 D_80247904;
+
+extern Vec3f D_80201930;
+extern Vec3f D_80201950;
+
+extern f32 D_80201900;
+extern f32 D_80201904;
+extern f32 D_8020190C;
+extern f32 D_80201914;
+extern f32 D_8020191C;
+extern f32 D_80201924;
+extern f32 D_80201960;
 
 #endif // _8ADD0_H_

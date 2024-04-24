@@ -808,7 +808,7 @@ void Battle_Init(void) {
         Battle_PlayerData[i].rank = 99;
         Battle_PlayerData[i].rankTimer = 0.0f;
     }
-    LoadSprite(SPRITE_110);
+    LoadSprite(SPRITE_BATTLE_STARS);
     LoadSprite(SPRITE_TEXTBIGGER);
     LoadSprite(SPRITE_ORDINALS);
     LockEyeChange();
@@ -1165,20 +1165,20 @@ void Process_Ranking(void) {
         D_800FE708 = 0;
         DMAStruct_Print();
         func_800A1EC4();
-        LoadSprite(0xD4);
+        LoadSprite(212);
         LoadSprite(SPRITE_PORTRAITDAVY);
         LoadSprite(SPRITE_PORTRAITJACK);
         LoadSprite(SPRITE_PORTRAITFRED);
         LoadSprite(SPRITE_PORTRAITLINDA);
         LoadSprite(SPRITE_PORTRAITBLACK);
         LoadSprite(SPRITE_PORTRAITWHITE);
-        LoadSprite(0x6E);
-        LoadSprite(0xBD);
-        LoadSprite(0xBE);
-        LoadSprite(0xBF);
-        LoadSprite(0xC0);
-        LoadSprite(0xC1);
-        LoadSprite(0xC2);
+        LoadSprite(SPRITE_BATTLE_STARS);
+        LoadSprite(SPRITE_RANKING_TEXT_JL);
+        LoadSprite(SPRITE_RANKING_TEXT_AL);
+        LoadSprite(SPRITE_RANKING_TEXT_BL);
+        LoadSprite(SPRITE_RANKING_TEXT_DC);
+        LoadSprite(SPRITE_RANKING_TEXT_KL);
+        LoadSprite(SPRITE_RANKING_TEXT_GC);
         CTTaskList_Init();
         D_80168DA0 = 4;
         gGameModeState++;
@@ -1219,9 +1219,9 @@ void func_800557F8(void) {
             gPlayerActors[i].exists = gPlayerActors[i].active;
         }
 
-        LoadSprite(0xCE);
-        LoadSprite(0x6E);
-        LoadSprite(0xD5);
+        LoadSprite(SPRITE_RANKINGBACKGROUND);
+        LoadSprite(SPRITE_BATTLE_STARS);
+        LoadSprite(SPRITE_ORDINALS);
         LoadPlayerEyes(CHARA_DAVY);
         LoadPlayerEyes(CHARA_JACK);
         LoadPlayerEyes(CHARA_FRED);
@@ -1293,7 +1293,7 @@ void Process_SunsoftLogo(void) {
         D_800FFDF4 = 1;
         DMAStruct_Print();
         func_800A1EC4();
-        LoadSprite(0xCD);
+        LoadSprite(SPRITE_SUNSOFTLOGO);
         CTTaskList_Init();
         func_8002E0CC();
         gGameModeState++;
