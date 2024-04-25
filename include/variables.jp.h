@@ -366,5 +366,6 @@ extern s32 sGameModeStart;
 extern char D_8010DB20[];
 extern Collision gZoneCollisions[];
 extern s32 currentStageCrowns;
+extern char* Dialogue[6][20]; //sizeof 0x1E0
 
 #endif

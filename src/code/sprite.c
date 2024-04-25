@@ -3400,6 +3400,7 @@ Effect* Effect_TypeS_Init(f32 delay, f32 duration) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80068BFC.s")
 
+//manage rabbit functionality
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80068DB4.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80069734.s")
@@ -7132,7 +7133,7 @@ void func_8007CDBC(void) {
 void func_8007DFDC(f32 arg0, f32 arg1, f32 arg2, f32 arg3) {
 
 }
-//prints textbox. arg2= char[3][60]*
+//prints textbox. arg2= char[3][30]*
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/printTextbox.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8007E5E8.s")

@@ -75,16 +75,23 @@ class N64SegRoomActor(CommonSegCodeSubsegment):
             use = data[i]
             if i == 0: #Actor ID
                 enums = open("include/enums.h", "r", encoding="UTF-8").readlines()
+                enum = 0
+                actorAt = 0 #number in the actor enum
                 reading = False
-                for enumLine in enums:
+                while enum < len(enums):
+                    enumLine = enums[enum]
                     if enumLine.find("actorIDs") != -1: reading = True
                     elif reading:
-                        info = enumLine.split(" = ")
-                        actorAt = int(info[-1].replace(",", "").split("//")[0].strip())
-                        name = info[0].strip()
-                        if actorAt == use:
-                            use = name
+                        if enumLine.find("=") != -1: actorAt = int(enumLine.split("=")[-1].split("//")[0].replace(",", "").strip())
+                        if not enumLine.startswith("	"):
+                            enum += 1
+                            continue
+                        elif actorAt == use:
+                            use = enumLine.split(",")[0].split("	")[-1].split("//")[0].strip()
+                            if use.find("=") != -1: use = use.split("=")[0].split("//")[0].strip()
                             break
+                        actorAt += 1
+                    enum += 1
             elif i == 1: #Position
                 use = "{"+str(data[i])+","+str(data[i+1])+","+str(data[i+2])+"}"
                 i += 2

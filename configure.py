@@ -36,7 +36,11 @@ ASFLAGS = f"{MIPS}-as -EB -mtune=vr4300 -march=vr4300 -mabi=32 {INCLUDES}"
 
 GAME_CC_DIR = f"{ASM_PROC} {ASM_PROC_FLAGS} {IDO_CC} --{ASFLAGS}"
 LIB_CC_DIR = GAME_CC_DIR
-DEFINES = "-D_LANGUAGE_C -DF3DEX_GBI -DNDEBUG"
+
+VERSION = "VER_JP"
+
+DEFINES = f"-D_LANGUAGE_C -DF3DEX_GBI -DNDEBUG -D{VERSION}"
+
 WARNINGS = f"-fullwarn -verbose -Xcpluscomm -signed -nostdinc -non_shared -Wab,-r4300_mul {DEFINES} -woff 649,838"
 CFLAGS = f"-G 0 {WARNINGS} {INCLUDES}" 
 GAME_COMPILE_CMD = (
@@ -54,6 +58,8 @@ BIN_CONVERT = f"{TOOLS_DIR}/bin_inc_c.py"
 
 NINJA_FILE = "build.ninja"
 NINJA_FILE_ASSETS = "assets.ninja"
+
+args = None #cmd args for use in build_stuff
 
 def clean():
     if os.path.exists(".splache"):
@@ -141,27 +147,37 @@ def build_stuff(linker_entries: List[LinkerEntry]):
     ninja.rule(
         "libc_ll_cc",
         command=f"({ASM_PROC} {ASM_PROC_FLAGS} {IDO_CC} -- {ASFLAGS} -- -c {CFLAGS} -mips3 -32 -O1 -o $out $in) && (python3 {TOOLS_DIR}/set_o32abi_bit.py $out)",
-        description="Compiling libc_ll_cc .c file",
+        description="Compiling libc_ll_cc .c file"
     )
 
     ninja.rule(
         "s_file",
         command=f"iconv --from UTF-8 --to EUC-JP $in | {ASFLAGS} -o $out",
-        description="Assembling .s file",
+        description="Assembling .s file"
     )
 
     ninja.rule(
         "ld",
         description="link $out",
-        command=f"{MIPS}-ld {LDFLGS} -o $out",
+        command=f"{MIPS}-ld {LDFLGS} -o $out"
     )
 
     #seperate this?
-    ninja.rule(
-        "make_z64",
-        command=f"({MIPS}-objcopy -O binary $in $out) && (sha1sum -c {SHA1_PATH})",
-        description="Making z64",
-    )
+    if not args.nonmatching:
+        ninja.rule(
+            "make_z64",
+            command=f"({MIPS}-objcopy -O binary $in $out) && (sha1sum -c {SHA1_PATH})",
+            description="Making z64"
+        )
+    else:
+        ninja.rule(
+            "make_z64",
+            command=f"({MIPS}-objcopy -O binary $in $out) && ({TOOLS_DIR}/n64crc/n64crc.exe $out)",
+            description="Making z64"
+        )
+        
+    
+
 
     ninja.rule(
         "elf",
@@ -381,8 +397,10 @@ def build_stuff(linker_entries: List[LinkerEntry]):
         PRE_ELF_PATH,
     )
 
+
     print(f"{NINJA_FILE} generated")
     ninja.close()
+
 
 
 if __name__ == "__main__":
@@ -393,10 +411,21 @@ if __name__ == "__main__":
         help="Clean extraction and build artifacts",
         action="store_true",
     )
+
+    parser.add_argument(
+        "-n",
+        "--nonmatching",
+        help="Build a non-matching version of the game",
+        action="store_true",
+    )
     args = parser.parse_args()
 
     if args.clean:
         clean()
+    
+    if args.nonmatching:
+        subprocess.run(f"gcc {TOOLS_DIR}/n64crc/n64crc.c -o {TOOLS_DIR}/n64crc/n64crc.exe", shell = True, executable="/bin/bash")
+        
 
     split.main([YAML_FILE], modes="all", verbose=False, use_cache=False)
 

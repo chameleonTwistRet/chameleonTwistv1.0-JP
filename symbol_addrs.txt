@@ -978,6 +978,7 @@ Battle_PlayerIsOut = 0x80176820; // type:u8 size:0x4
 Battle_TimeLeft = 0x80176824; // type:s32 size:0x4
 Battle_FirstRankCount = 0x80176828; // type:s32 size:0x4
 Battle_NumRanks = 0x80176834; // type:s32 size:0x4
+Dialogue = 0x800F4E3C; // size:0x1E0
 
 volBGM = 0x801FCA20;
 gIsNotInCave = 0x8020005A; //type:s16

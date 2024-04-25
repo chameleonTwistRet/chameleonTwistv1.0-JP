@@ -4129,7 +4129,7 @@ void func_8009CFA8(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009D08C.s")
 
-//battle mode???
+//battle mode
 const char D_8010E60C[] = "ＤＡＶＹ";
 const char D_8010E618[] = "ＪＡＣＫ";
 const char D_8010E624[] = "ＦＲＥＤ";
@@ -4149,6 +4149,7 @@ void func_8009D19C(CTTask* task) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009D45C.s")
 
+//battle mode
 void func_8009D954(CTTask* task) {
     func_800610B8();
     SetTextGradient_TopBottom(70, 192, 235, 255, 0, 143, 36, 255);
@@ -4716,6 +4717,7 @@ const char D_8010E9B8[] = "６７";
 const char D_8010E9C0[] = "８９";
 const char D_8010E9C8[] = "ＡＢ";
 
+//title screen
 void func_800A250C(CTTask* task) {
     if (task->unk6A > 0) {
         SetTextGradient_TopBottom(110, 210, 255, 255, 0, 222, 0, 255);
