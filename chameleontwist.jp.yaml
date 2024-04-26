@@ -18,7 +18,7 @@ options:
   build_path: build
   gfx_ucode: f3dex
   extensions_path: tools/splat_ext
-  auto_all_sections: [".data", ".rodata", ".bss"]
+  # auto_all_sections: [".data", ".rodata", ".bss"]
   migrate_rodata_to_functions : True
   asm_function_macro: glabel
   asm_jtbl_label_macro: jlabel
@@ -317,7 +317,477 @@ segments:
     follows_vram: main
     vram: 0x8024C510
     subsegments:
-      - [0xED090, databin, unkBlock0] #size of 0x14AD0
+      - [0xED090, databin, unkBlock0Assets0] #size of 0x14AD0
+
+  - name: Seg1
+    type: code
+    subalign: 8
+    vram: 0x01000000
+    start: 0x101B60
+    subsegments:
+    - [0x101B60, databin, seg1Data] #ends at 0x147760
+
+  - name: assets1
+    type: code
+    subalign: 8
+    start: 0x147760
+    subsegments:
+      - [0x147760, databin, alBankfile0] #size of 0x7B60 [ram 801C4940] 
+      - [0x004DA7A0, databin, unkBlock291]
+      - [0x0051CBB0, databin, unkBlock311]
+      - [0x00574B40, databin, unkBlock287]
+      - [0x005C3850, databin, unkBlock338]
+      - [0x00631B20, databin, unkBlock151]
+      - [0x006A74C0, databin, unkBlock353]
+      - [0x0070CE20, databin, unkBlock155]
+      - [0x00744B70, databin, unkBlock197]
+      - [0x007A67F0, databin, unkBlock306]
+      - [0x007AC2B0, databin, unkBlock324]
+      - [0x007CD730, databin, unkBlock337]
+      - [0x007FA2B0, databin, unkBlock350]
+      - [0x008483B0, databin, unkBlock361]
+      - [0x00858930, databin, unkBlock272]
+      - [0x00875970, databin, unkBlock240]
+
+  - name: Seg2
+    type: code
+    subalign: 8
+    vram: 0x02000000
+    start: 0x87F640
+    subsegments:
+    - [0x87F640, databin, seg2Data] #ends at 0x8C26A0
+
+
+  - name: assets2
+    type: code
+    subalign: 8
+    start: 0x8C0640
+    subsegments:
+      - [auto, databin, unkBlock150]
+      - [auto, databin, unkBlock175]
+      - [auto, databin, unkBlock363]
+      - [auto, databin, unkBlock30]
+      - [auto, databin, unkBlock31]
+      - [auto, databin, unkBlock32]
+      - [auto, databin, unkBlock33]
+      - [auto, databin, unkBlock34]
+      - [auto, databin, unkBlock35]
+      - [auto, databin, unkBlock36]
+      - [auto, databin, unkBlock37]
+      - [auto, databin, unkBlock38]
+      - [auto, databin, unkBlock39]
+      - [auto, databin, unkBlock40]
+      - [auto, databin, unkBlock41]
+      - [auto, databin, unkBlock42]
+      - [auto, databin, unkBlock43]
+      - [auto, databin, unkBlock44]
+      - [auto, databin, unkBlock45]
+      - [auto, databin, unkBlock46]
+      - [auto, databin, unkBlock47]
+      - [auto, databin, unkBlock48]
+      - [auto, databin, unkBlock49]
+      - [auto, databin, unkBlock50]
+      - [auto, databin, unkBlock51]
+      - [auto, databin, unkBlock52]
+      - [auto, databin, unkBlock53]
+      - [auto, databin, unkBlock54]
+      - [auto, databin, unkBlock55]
+      - [auto, databin, unkBlock56]
+      - [auto, databin, unkBlock57]
+      - [auto, databin, unkBlock58]
+      - [auto, databin, unkBlock59]
+      - [auto, databin, unkBlock60]
+      - [auto, databin, unkBlock61]
+      - [auto, databin, unkBlock62]
+      - [auto, databin, unkBlock63]
+      - [auto, databin, unkBlock64]
+      - [auto, databin, unkBlock65]
+      - [auto, databin, unkBlock66]
+      - [auto, databin, unkBlock67]
+      - [auto, databin, unkBlock68]
+      - [auto, databin, unkBlock69]
+      - [auto, databin, unkBlock90]
+      - [auto, databin, unkBlock91]
+      - [auto, databin, unkBlock92]
+      - [auto, databin, unkBlock93]
+      - [auto, databin, unkBlock94]
+      - [auto, databin, unkBlock95]
+      - [auto, databin, unkBlock96]
+      - [auto, databin, unkBlock97]
+      - [auto, databin, unkBlock98]
+      - [auto, databin, unkBlock99]
+      - [auto, databin, unkBlock100]
+      - [auto, databin, unkBlock101]
+      - [auto, databin, unkBlock102]
+      - [auto, databin, unkBlock103]
+      - [auto, databin, unkBlock104]
+      - [auto, databin, unkBlock105]
+      - [auto, databin, unkBlock106]
+      - [auto, databin, unkBlock107]
+      - [auto, databin, unkBlock108]
+      - [auto, databin, unkBlock109]
+      - [auto, databin, unkBlock70]
+      - [auto, databin, unkBlock71]
+      - [auto, databin, unkBlock72]
+      - [auto, databin, unkBlock73]
+      - [auto, databin, unkBlock74]
+      - [auto, databin, unkBlock75]
+      - [auto, databin, unkBlock76]
+      - [auto, databin, unkBlock77]
+      - [auto, databin, unkBlock78]
+      - [auto, databin, unkBlock79]
+      - [auto, databin, unkBlock80]
+      - [auto, databin, unkBlock81]
+      - [auto, databin, unkBlock82]
+      - [auto, databin, unkBlock83]
+      - [auto, databin, unkBlock84]
+      - [auto, databin, unkBlock85]
+      - [auto, databin, unkBlock86]
+      - [auto, databin, unkBlock87]
+      - [auto, databin, unkBlock88]
+      - [auto, databin, unkBlock89]
+      - [auto, databin, unkBlock110]
+      - [auto, databin, unkBlock111]
+      - [auto, databin, unkBlock112]
+      - [auto, databin, unkBlock113]
+      - [auto, databin, unkBlock114]
+      - [auto, databin, unkBlock115]
+      - [auto, databin, unkBlock116]
+      - [auto, databin, unkBlock117]
+      - [auto, databin, unkBlock118]
+      - [auto, databin, unkBlock119]
+      - [auto, databin, unkBlock120]
+      - [auto, databin, unkBlock121]
+      - [auto, databin, unkBlock122]
+      - [auto, databin, unkBlock123]
+      - [auto, databin, unkBlock124]
+      - [auto, databin, unkBlock125]
+      - [auto, databin, unkBlock126]
+      - [auto, databin, unkBlock127]
+      - [auto, databin, unkBlock128]
+      - [auto, databin, unkBlock129]
+      - [auto, databin, unkBlock130]
+      - [auto, databin, unkBlock131]
+      - [auto, databin, unkBlock132]
+      - [auto, databin, unkBlock133]
+      - [auto, databin, unkBlock134]
+      - [auto, databin, unkBlock135]
+      - [auto, databin, unkBlock136]
+      - [auto, databin, unkBlock137]
+      - [auto, databin, unkBlock138]
+      - [auto, databin, unkBlock139]
+      - [auto, databin, unkBlock140]
+      - [auto, databin, unkBlock141]
+      - [auto, databin, unkBlock142]
+      - [auto, databin, unkBlock143]
+      - [auto, databin, unkBlock144]
+      - [auto, databin, unkBlock145]
+      - [auto, databin, unkBlock146]
+      - [auto, databin, unkBlock147]
+      - [auto, databin, unkBlock148]
+      - [auto, databin, unkBlock149]
+      - [auto, databin, unkBlock300]
+      - [auto, databin, unkBlock301]
+      - [auto, databin, unkBlock298]
+      - [auto, databin, unkBlock299]
+      - [auto, databin, unkBlock194]
+      - [auto, databin, unkBlock323]
+      - [auto, databin, unkBlock296]
+      - [auto, databin, unkBlock297]
+      - [auto, databin, unkBlock322]
+      - [auto, databin, unkBlock169]
+      - [auto, databin, unkBlock170]
+      - [auto, databin, unkBlock171]
+      - [auto, databin, unkBlock172]
+      - [auto, databin, unkBlock173]
+      - [auto, databin, unkBlock327]
+      - [auto, databin, unkBlock328]
+      - [auto, databin, unkBlock247]
+      - [auto, databin, unkBlock248]
+      - [auto, databin, unkBlock302]
+      - [auto, databin, unkBlock303]
+      - [auto, databin, unkBlock304]
+      - [auto, databin, unkBlock305]
+      - [auto, databin, unkBlock294]
+      - [auto, databin, unkBlock295]
+      - [auto, databin, unkBlock313]
+      - [auto, databin, unkBlock314]
+      - [auto, databin, unkBlock241]
+      - [auto, databin, unkBlock242]
+      - [auto, databin, unkBlock315]
+      - [auto, databin, unkBlock316]
+      - [auto, databin, unkBlock317]
+      - [auto, databin, unkBlock318]
+      - [auto, databin, unkBlock319]
+      - [auto, databin, unkBlock320]
+      - [auto, databin, unkBlock288]
+      - [auto, databin, unkBlock289]
+      - [auto, databin, unkBlock290]
+      - [auto, databin, unkBlock243]
+      - [auto, databin, unkBlock244]
+      - [auto, databin, unkBlock280]
+      - [auto, databin, unkBlock281]
+      - [auto, databin, unkBlock283]
+      - [auto, databin, unkBlock284]
+      - [auto, databin, unkBlock285]
+      - [auto, databin, unkBlock286]
+      - [auto, databin, unkBlock153]
+      - [auto, databin, unkBlock154]
+      - [auto, databin, unkBlock245]
+      - [auto, databin, unkBlock246]
+      - [auto, databin, unkBlock356]
+      - [auto, databin, unkBlock357]
+      - [auto, databin, unkBlock360]
+      - [auto, databin, unkBlock157]
+      - [auto, databin, unkBlock158]
+      - [auto, databin, unkBlock190]
+      - [auto, databin, unkBlock191]
+      - [auto, databin, unkBlock198]
+      - [auto, databin, unkBlock199]
+      - [auto, databin, unkBlock359]
+      - [auto, databin, unkBlock282]
+      - [auto, databin, unkBlock358]
+      - [auto, databin, unkBlock321]
+      - [auto, databin, unkBlock355]
+      - [auto, databin, unkBlock340]
+      - [auto, databin, unkBlock341]
+      - [auto, databin, unkBlock342]
+      - [auto, databin, unkBlock343]
+      - [auto, databin, unkBlock344]
+      - [auto, databin, unkBlock345]
+      - [auto, databin, unkBlock346]
+      - [auto, databin, unkBlock347]
+      - [auto, databin, unkBlock348]
+      - [auto, databin, unkBlock349]
+      - [auto, databin, unkBlock159]
+      - [auto, databin, unkBlock160]
+      - [auto, databin, unkBlock161]
+      - [auto, databin, unkBlock162]
+      - [auto, databin, unkBlock163]
+      - [auto, databin, unkBlock164]
+      - [auto, databin, unkBlock165]
+      - [auto, databin, unkBlock166]
+      - [auto, databin, unkBlock167]
+      - [auto, databin, unkBlock168]
+      - [auto, databin, unkBlock0]
+      - [auto, databin, unkBlock1]
+      - [auto, databin, unkBlock2]
+      - [auto, databin, unkBlock3]
+      - [auto, databin, unkBlock4]
+      - [auto, databin, unkBlock5]
+      - [auto, databin, unkBlock6]
+      - [auto, databin, unkBlock7]
+      - [auto, databin, unkBlock274]
+      - [auto, databin, unkBlock275]
+      - [auto, databin, unkBlock192]
+      - [auto, databin, unkBlock193]
+      - [auto, databin, unkBlock276]
+      - [auto, databin, unkBlock277]
+      - [auto, databin, unkBlock278]
+      - [auto, databin, unkBlock279]
+      - [auto, databin, unkBlock8]
+      - [auto, databin, unkBlock9]
+      - [auto, databin, unkBlock195]
+      - [auto, databin, unkBlock196]
+      - [auto, databin, unkBlock16]
+      - [auto, databin, unkBlock17]
+      - [auto, databin, unkBlock18]
+      - [auto, databin, unkBlock19]
+      - [auto, databin, unkBlock20]
+      - [auto, databin, unkBlock21]
+      - [auto, databin, unkBlock11]
+      - [auto, databin, unkBlock12]
+      - [auto, databin, unkBlock13]
+      - [auto, databin, unkBlock10]
+      - [auto, databin, unkBlock253]
+      - [auto, databin, unkBlock254]
+      - [auto, databin, unkBlock255]
+      - [auto, databin, unkBlock256]
+      - [auto, databin, unkBlock257]
+      - [auto, databin, unkBlock258]
+      - [auto, databin, unkBlock259]
+      - [auto, databin, unkBlock260]
+      - [auto, databin, unkBlock261]
+      - [auto, databin, unkBlock262]
+      - [auto, databin, unkBlock263]
+      - [auto, databin, unkBlock264]
+      - [auto, databin, unkBlock265]
+      - [auto, databin, unkBlock266]
+      - [auto, databin, unkBlock267]
+      - [auto, databin, unkBlock268]
+      - [auto, databin, unkBlock29]
+      - [auto, databin, unkBlock176]
+      - [auto, databin, unkBlock177]
+      - [auto, databin, unkBlock188]
+      - [auto, databin, unkBlock189]
+      - [auto, databin, unkBlock186]
+      - [auto, databin, unkBlock187]
+      - [auto, databin, unkBlock184]
+      - [auto, databin, unkBlock185]
+      - [auto, databin, unkBlock180]
+      - [auto, databin, unkBlock181]
+      - [auto, databin, unkBlock182]
+      - [auto, databin, unkBlock183]
+      - [auto, databin, unkBlock28]
+      - [auto, databin, unkBlock178]
+      - [auto, databin, unkBlock179]
+      - [auto, databin, unkBlock330]
+      - [auto, databin, unkBlock15]
+      - [auto, databin, unkBlock234]
+      - [auto, databin, unkBlock235]
+      - [auto, databin, unkBlock236]
+      - [auto, databin, unkBlock237]
+      - [auto, databin, unkBlock238]
+      - [auto, databin, unkBlock239]
+      - [auto, databin, unkBlock309]
+      - [auto, databin, unkBlock310]
+      - [auto, databin, unkBlock200]
+      - [auto, databin, unkBlock201]
+      - [auto, databin, unkBlock351]
+      - [auto, databin, unkBlock352]
+      - [auto, databin, unkBlock249]
+      - [auto, databin, unkBlock250]
+      - [auto, databin, unkBlock251]
+      - [auto, databin, unkBlock252]
+      - [auto, databin, unkBlock325]
+      - [auto, databin, unkBlock326]
+      - [auto, databin, unkBlock232]
+      - [auto, databin, unkBlock233]
+      - [auto, databin, unkBlock273]
+      - [auto, databin, unkBlock269]
+      - [auto, databin, unkBlock364]
+      - [auto, databin, unkBlock270]
+      - [auto, databin, unkBlock369]
+      - [auto, databin, unkBlock370]
+      - [auto, databin, unkBlock331]
+      - [auto, databin, unkBlock332]
+      - [auto, databin, unkBlock333]
+      - [auto, databin, unkBlock334]
+      - [auto, databin, unkBlock365]
+      - [auto, databin, unkBlock366]
+      - [auto, databin, unkBlock367]
+      - [auto, databin, unkBlock368]
+      - [auto, databin, unkBlock307]
+      - [auto, databin, unkBlock308]
+      - [auto, databin, unkBlock335]
+      - [auto, databin, unkBlock336]
+      - [auto, databin, unkBlock14]
+      - [auto, databin, unkBlock174]
+      - [auto, databin, unkBlock152]
+      # - [0x00ABA360, databin, unkBlock156]
+      # - [0x00AF3D90, databin, unkBlock271]
+
+  - name: Seg5
+    type: code
+    subalign: 8
+    vram: 0x05000000
+    start: 0xAB5360
+    subsegments:
+    - [0xAB5360, databin, seg5Data] #ends at 0xABD990
+    - [0x00ABA360, databin, unkBlock156] #ends at 0xABD990
+
+  - name: Seg6
+    type: code
+    subalign: 8
+    vram: 0x06000000
+    start: 0xABD990
+    subsegments:
+    - [0xABD990, databin, seg6Data] #ends at 0xACBD90
+
+  - name: Seg7
+    type: code
+    subalign: 8
+    vram: 0x07000000
+    start: 0xACBD90
+    subsegments:
+    - [0xACBD90, databin, seg7Data] 
+    - [0x00AF3D90, databin, unkBlock271] #ends at 0xAF5690
+
+  - name: assets3
+    type: code
+    subalign: 8
+    start: 0xAF5690
+    subsegments:
+      - [auto, databin, unkBlock379]
+      - [auto, databin, unkBlock293]
+      - [auto, databin, unkBlock312]
+      - [auto, databin, unkBlock339]
+      - [auto, databin, unkBlock329]
+      - [auto, databin, unkBlock354]
+      - [auto, databin, unkBlock371]
+      - [auto, databin, unkBlock372]
+      - [auto, databin, unkBlock373]
+      - [auto, databin, unkBlock374]
+      - [auto, databin, unkBlock375]
+      - [auto, databin, unkBlock376]
+      - [auto, databin, unkBlock377]
+      - [auto, databin, unkBlock378]
+      - [auto, databin, unkBlock362]
+      - [auto, databin, unkBlock292]
+
+  - name: Seg8
+    type: code
+    subalign: 8
+    vram: 0x08000000
+    start: 0xAFC6B0
+    subsegments:
+    - [0xAFC6B0, databin, seg8Data] 
+    - [0x00B016B0, databin, unkBlock22] #ends at 0xB05290
+
+  - name: Seg9
+    type: code
+    subalign: 8
+    vram: 0x09000000
+    start: 0xB05290
+    subsegments:
+    - [0xB05290, databin, seg9Data] 
+    - [0x00B0A290, databin, unkBlock23] #ends at 0xB0DEB0
+
+  - name: SegA
+    type: code
+    subalign: 8
+    vram: 0x0A000000
+    start: 0xB0DEB0
+    subsegments:
+    - [0xB0DEB0, databin, segAData] 
+    - [0x00B12EB0, databin, unkBlock24] #ends at 0xB16A90
+
+  - name: SegB
+    type: code
+    subalign: 8
+    vram: 0x0B000000
+    start: 0xB16A90
+    subsegments:
+    - [0xB16A90, databin, segBData] 
+    - [0x00B1BA90, databin, unkBlock25] #ends at 0xB1FE00
+
+  - name: SegC
+    type: code
+    subalign: 8
+    vram: 0x0C000000
+    start: 0xB1FE00
+    subsegments:
+    - [0xB1FE00, databin, segCData] 
+    - [0x00B24E00, databin, unkBlock26] #ends at 0xB289F0
+
+  - name: SegD
+    type: code
+    subalign: 8
+    vram: 0x0D000000
+    start: 0xB289F0
+    subsegments:
+    - [0xB289F0, databin, segDData] 
+    - [0x00B2D9F0, databin, unkBlock27] #ends at 0xB315D0
+
+  - name: assets5
+    type: code
+    subalign: 8
+    start: 0xB315D0
+    subsegments:
+      - [0xB315D0, databin, ROM_PADDING]
+      - [0xC00000]
+
+
 
   # # from mainproc() piDMA size: 14AD0
   # - name: assets0
@@ -5563,6 +6033,3 @@ segments:
       
   # #     - {start: 0xB31508, type: mtx, name: restAssociate/restAssociate, data_only: True}
   # #     - {start: 0xB31548, type: gfxSeg, name: restAssociate/restAssociate, data_only: True}
-
-  - [0xB315D0, databin, ROM_PADDING]
-  - [0xC00000]
