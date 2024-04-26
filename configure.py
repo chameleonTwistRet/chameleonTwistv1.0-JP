@@ -46,7 +46,7 @@ LIB_COMPILE_CMD = (
     f"{LIB_CC_DIR} -c -B {LIB_CC_DIR}/ee- {INCLUDES} -O2 -G0"
 )
 
-LDFLGS = f"-T {LD_PATH} -Map {MAP_PATH} --no-check-sections"
+LDFLGS = f"-T {LD_PATH} -T undefined_syms.txt -Map {MAP_PATH} --no-check-sections"
 # LDFLGS = f"-T {LD_PATH} -T undefined_syms_auto.txt -Map {MAP_PATH} --no-check-sections"
 DEPENDENCY_GEN = f"cpp -w {INCLUDES} -nostdinc -MD -MF $out.d $in -o /dev/null"
 
