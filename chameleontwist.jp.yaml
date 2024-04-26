@@ -355,15 +355,15 @@ segments:
     vram: 0x02000000
     start: 0x87F640
     subsegments:
-    - [0x87F640, databin, seg2Data] #ends at 0x8C26A0
+    - [0x87F640, databin, seg2Data] 
+    - [auto, databin, unkBlock150] #ends at 0x8C26A0
 
 
   - name: assets2
     type: code
     subalign: 8
-    start: 0x8C0640
+    start: 0x8C26A0
     subsegments:
-      - [auto, databin, unkBlock150]
       - [auto, databin, unkBlock175]
       - [auto, databin, unkBlock363]
       - [auto, databin, unkBlock30]
@@ -732,7 +732,8 @@ segments:
     start: 0xAFC6B0
     subsegments:
     - [0xAFC6B0, databin, seg8Data] 
-    - [0x00B016B0, databin, unkBlock22] #ends at 0xB05290
+    - [0x00B016B0, databin, unkBlock22] 
+    - [0x00B05208, databin, seg8Data2] #(D_8008B58)ends at 0xB05290
 
   - name: Seg9
     type: code
