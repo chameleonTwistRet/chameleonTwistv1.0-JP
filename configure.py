@@ -36,7 +36,7 @@ ASFLAGS = f"{MIPS}-as -EB -mtune=vr4300 -march=vr4300 -mabi=32 {INCLUDES}"
 
 GAME_CC_DIR = f"{ASM_PROC} {ASM_PROC_FLAGS} {IDO_CC} --{ASFLAGS}"
 LIB_CC_DIR = GAME_CC_DIR
-DEFINES = "-D_LANGUAGE_C -DF3DEX_GBI -DNDEBUG"
+DEFINES = "-D_LANGUAGE_C -DF3DEX_GBI -DNDEBUG -DVER_JP"
 WARNINGS = f"-fullwarn -verbose -Xcpluscomm -signed -nostdinc -non_shared -Wab,-r4300_mul {DEFINES} -woff 649,838"
 CFLAGS = f"-G 0 {WARNINGS} {INCLUDES}" 
 GAME_COMPILE_CMD = (
@@ -46,7 +46,8 @@ LIB_COMPILE_CMD = (
     f"{LIB_CC_DIR} -c -B {LIB_CC_DIR}/ee- {INCLUDES} -O2 -G0"
 )
 
-LDFLGS = f"-T {LD_PATH} -T undefined_syms_auto.txt -T undefined_syms.txt -Map {MAP_PATH} --no-check-sections"
+# LDFLGS = f"-T {LD_PATH} -Map {MAP_PATH} --no-check-sections"
+LDFLGS = f"-T {LD_PATH} -T undefined_syms_auto.txt -Map {MAP_PATH} --no-check-sections"
 DEPENDENCY_GEN = f"cpp -w {INCLUDES} -nostdinc -MD -MF $out.d $in -o /dev/null"
 
 def clean():

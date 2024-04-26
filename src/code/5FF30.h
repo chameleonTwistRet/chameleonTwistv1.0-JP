@@ -666,5 +666,13 @@ extern s32 D_80101074;
 extern s32 D_80101078;
 extern Struct_800AB734 D_80105E08[];
 extern s32 D_8010875C;
+extern s32 D_80174980;
+
+void Battle_Init(void);
+void func_8002CE54(void);
+s32 SaveData_ReadFile(SaveFile*);
+void func_800C2820(u8, PlayerActor*, SaveFile*);
+void func_800C1510(s32, s32);
+void func_800B4574(u8*, s16*);
 
 #endif // _5FF30_H_
