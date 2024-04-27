@@ -70,7 +70,7 @@ class N64SegRoomSettings(CommonSegCodeSubsegment):
             lines.append("RoomSettings %s = {" % (sym.name))
 
         byteData = bytearray(sprite_data)
-        data = struct.unpack('>IIIIiiiiiififffiiifhhhhiiiifi', byteData)
+        data = struct.unpack('>IIIIiiiiiififffffffhhhhiiiiff', byteData)
         i = 0
         while i < len(data):
             v = data[i]

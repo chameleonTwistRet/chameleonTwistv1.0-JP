@@ -709,7 +709,7 @@ Gfx* func_8002B7BC(graphicStruct* arg0, Gfx* gfxPos) {
         switch (gActors[i].actorID) {
             case YELLOW_ANT:
                 gActors[i].unk_E8 = gActors[i].unk_134[5] - 40.0f;
-                gfxPos = func_8002B118(arg0, gfxPos, D_3057250, &gActors[i], 3.0f, 0, &sp178);
+                gfxPos = func_8002B118(arg0, gfxPos, AntLand_yellowAnt_gfx14_Gfx, &gActors[i], 3.0f, 0, &sp178);
                 break;
             case ANT_QUEEN:
                 gActors[i].unk_E8 = gActors[i].unk_134[5];
@@ -728,7 +728,7 @@ Gfx* func_8002B7BC(graphicStruct* arg0, Gfx* gfxPos) {
                 break;
             case CANNON:
                 gActors[i].unk_E8 = 0.0f;
-                gfxPos = func_8002B118(arg0, gfxPos, D_3043F60, &gActors[i], 4.0f, 0, &sp178);
+                gfxPos = func_8002B118(arg0, gfxPos, BombLand_unk74_Gfx, &gActors[i], 4.0f, 0, &sp178);
                 break;
             case UNK_1F:
                 gActors[i].unk_E8 = 0.0f;
