@@ -849,3 +849,531 @@ unsigned char extImages_Pad178[] = FILEPAD;
 unsigned char extImages_poleThing_ia8_PNG[] = {
 #include "build/assets/img/extImages/poleThing.ia8.png.inc.c"
 };
+unsigned char extImages_crown_ci8_PNG[] = {
+#include "build/assets/img/extImages/crown.ci8.png.inc.c"
+};
+unsigned char extImages_crown_ci8_PAL[] = {
+#include "build/assets/img/extImages/crown.ci8.pal.inc.c"
+};
+unsigned char extImages_redHeart_ci8_PNG[] = {
+#include "build/assets/img/extImages/redHeart.ci8.png.inc.c"
+};
+unsigned char extImages_redHeart_ci8_PAL[] = {
+#include "build/assets/img/extImages/redHeart.ci8.pal.inc.c"
+};
+unsigned char extImages_orangeHeart_ci8_PNG[] = {
+#include "build/assets/img/extImages/orangeHeart.ci8.png.inc.c"
+};
+unsigned char extImages_orangeHeart_ci8_PAL[] = {
+#include "build/assets/img/extImages/orangeHeart.ci8.pal.inc.c"
+};
+unsigned char extImages_yellowHeart_ci8_PNG[] = {
+#include "build/assets/img/extImages/yellowHeart.ci8.png.inc.c"
+};
+unsigned char extImages_yellowHeart_ci8_PAL[] = {
+#include "build/assets/img/extImages/yellowHeart.ci8.pal.inc.c"
+};
+unsigned char extImages_powerup1_ci8_PNG[] = {
+#include "build/assets/img/extImages/powerup1.ci8.png.inc.c"
+};
+unsigned char extImages_powerup1_ci8_PAL[] = {
+#include "build/assets/img/extImages/powerup1.ci8.pal.inc.c"
+};
+unsigned char extImages_powerup2_ci8_PNG[] = {
+#include "build/assets/img/extImages/powerup2.ci8.png.inc.c"
+};
+unsigned char extImages_powerup2_ci8_PAL[] = {
+#include "build/assets/img/extImages/powerup2.ci8.pal.inc.c"
+};
+unsigned char extImages_powerup3_ci8_PNG[] = {
+#include "build/assets/img/extImages/powerup3.ci8.png.inc.c"
+};
+unsigned char extImages_powerup3_ci8_PAL[] = {
+#include "build/assets/img/extImages/powerup3.ci8.pal.inc.c"
+};
+unsigned char extImages_powerup4_ci8_PNG[] = {
+#include "build/assets/img/extImages/powerup4.ci8.png.inc.c"
+};
+unsigned char extImages_powerup4_ci8_PAL[] = {
+#include "build/assets/img/extImages/powerup4.ci8.pal.inc.c"
+};
+unsigned char extImages_carrot_ci8_PNG[] = {
+#include "build/assets/img/extImages/carrot.ci8.png.inc.c"
+};
+unsigned char extImages_carrot_ci8_PAL[] = {
+#include "build/assets/img/extImages/carrot.ci8.pal.inc.c"
+};
+unsigned char extImages_stopWatch_ci8_PNG[] = {
+#include "build/assets/img/extImages/stopWatch.ci8.png.inc.c"
+};
+unsigned char extImages_stopWatch_ci8_PAL[] = {
+#include "build/assets/img/extImages/stopWatch.ci8.pal.inc.c"
+};
+unsigned char extImages_Pad179[] = FILEPAD;
+unsigned char extImages_boardTileable_ci4_PNG[] = {
+#include "build/assets/img/extImages/boardTileable.ci4.png.inc.c"
+};
+unsigned char extImages_Pad180[] = FILEPAD;
+unsigned char extImages_boardTileable_ci4_PAL[] = {
+#include "build/assets/img/extImages/boardTileable.ci4.pal.inc.c"
+};
+unsigned char extImages_Pad181[] = FILEPAD;
+unsigned char extImages_board_ci8_PNG[] = {
+#include "build/assets/img/extImages/board.ci8.png.inc.c"
+};
+unsigned char extImages_Pad182[] = FILEPAD;
+unsigned char extImages_board_ci8_PAL[] = {
+#include "build/assets/img/extImages/board.ci8.pal.inc.c"
+};
+unsigned char extImages_Pad183[] = FILEPAD;
+unsigned char extImages_chameleonUnused_ia8_PNG[] = {
+#include "build/assets/img/extImages/chameleonUnused.ia8.png.inc.c"
+};
+unsigned char extImages_Pad184[] = FILEPAD;
+unsigned char extImages_twistUnused_ia8_PNG[] = {
+#include "build/assets/img/extImages/twistUnused.ia8.png.inc.c"
+};
+unsigned char extImages_Pad185[] = FILEPAD;
+unsigned char extImages_gameOverTextUnused_ci8_PNG[] = {
+#include "build/assets/img/extImages/gameOverTextUnused.ci8.png.inc.c"
+};
+unsigned char extImages_Pad186[] = FILEPAD;
+unsigned char extImages_gameOverTextUnused_ci8_PAL[] = {
+#include "build/assets/img/extImages/gameOverTextUnused.ci8.pal.inc.c"
+};
+unsigned char extImages_Pad187[] = FILEPAD;
+unsigned char extImages_JungleLandIcon_ci8_PNG[] = {
+#include "build/assets/img/extImages/JungleLandIcon.ci8.png.inc.c"
+};
+unsigned char extImages_Pad188[] = FILEPAD;
+unsigned char extImages_JungleLandIcon_ci8_PAL[] = {
+#include "build/assets/img/extImages/JungleLandIcon.ci8.pal.inc.c"
+};
+unsigned char extImages_Pad189[] = FILEPAD;
+unsigned char extImages_BombLandIcon_ci8_PNG[] = {
+#include "build/assets/img/extImages/BombLandIcon.ci8.png.inc.c"
+};
+unsigned char extImages_Pad190[] = FILEPAD;
+unsigned char extImages_BombLandIcon_ci8_PAL[] = {
+#include "build/assets/img/extImages/BombLandIcon.ci8.pal.inc.c"
+};
+unsigned char extImages_Pad191[] = FILEPAD;
+unsigned char extImages_AntLandIcon_ci8_PNG[] = {
+#include "build/assets/img/extImages/AntLandIcon.ci8.png.inc.c"
+};
+unsigned char extImages_Pad192[] = FILEPAD;
+unsigned char extImages_AntLandIcon_ci8_PAL[] = {
+#include "build/assets/img/extImages/AntLandIcon.ci8.pal.inc.c"
+};
+unsigned char extImages_Pad193[] = FILEPAD;
+unsigned char extImages_DesertCastleIcon_ci8_PNG[] = {
+#include "build/assets/img/extImages/DesertCastleIcon.ci8.png.inc.c"
+};
+unsigned char extImages_Pad194[] = FILEPAD;
+unsigned char extImages_DesertCastleIcon_ci8_PAL[] = {
+#include "build/assets/img/extImages/DesertCastleIcon.ci8.pal.inc.c"
+};
+unsigned char extImages_Pad195[] = FILEPAD;
+unsigned char extImages_KidsLandIcon_ci8_PNG[] = {
+#include "build/assets/img/extImages/KidsLandIcon.ci8.png.inc.c"
+};
+unsigned char extImages_Pad196[] = FILEPAD;
+unsigned char extImages_KidsLandIcon_ci8_PAL[] = {
+#include "build/assets/img/extImages/KidsLandIcon.ci8.pal.inc.c"
+};
+unsigned char extImages_Pad197[] = FILEPAD;
+unsigned char extImages_GhostCastleIcon_ci8_PNG[] = {
+#include "build/assets/img/extImages/GhostCastleIcon.ci8.png.inc.c"
+};
+unsigned char extImages_Pad198[] = FILEPAD;
+unsigned char extImages_GhostCastleIcon_ci8_PAL[] = {
+#include "build/assets/img/extImages/GhostCastleIcon.ci8.pal.inc.c"
+};
+unsigned char extImages_Pad199[] = FILEPAD;
+unsigned char extImages_BossRushIcon_ci8_PNG[] = {
+#include "build/assets/img/extImages/BossRushIcon.ci8.png.inc.c"
+};
+unsigned char extImages_Pad200[] = FILEPAD;
+unsigned char extImages_BossRushIcon_ci8_PAL[] = {
+#include "build/assets/img/extImages/BossRushIcon.ci8.pal.inc.c"
+};
+unsigned char extImages_Pad201[] = FILEPAD;
+unsigned char extImages_pouseUnused_ci8_PNG[] = {
+#include "build/assets/img/extImages/pouseUnused.ci8.png.inc.c"
+};
+unsigned char extImages_Pad202[] = FILEPAD;
+unsigned char extImages_pouseUnused_ci8_PAL[] = {
+#include "build/assets/img/extImages/pouseUnused.ci8.pal.inc.c"
+};
+unsigned char extImages_Pad203[] = FILEPAD;
+unsigned char extImages_jss_ci8_PNG[] = {
+#include "build/assets/img/extImages/jss.ci8.png.inc.c"
+};
+unsigned char extImages_Pad204[] = FILEPAD;
+unsigned char extImages_jss_ci8_PAL[] = {
+#include "build/assets/img/extImages/jss.ci8.pal.inc.c"
+};
+unsigned char extImages_Pad205[] = FILEPAD;
+unsigned char extImages_jssCat_ia8_PNG[] = {
+#include "build/assets/img/extImages/jssCat.ia8.png.inc.c"
+};
+unsigned char extImages_Pad206[] = FILEPAD;
+unsigned char extImages_textBigger_ia4_PNG[] = {
+#include "build/assets/img/extImages/textBigger.ia4.png.inc.c"
+};
+unsigned char extImages_Pad207[] = FILEPAD;
+unsigned char extImages_battleIcon1_ci8_PNG[] = {
+#include "build/assets/img/extImages/battleIcon1.ci8.png.inc.c"
+};
+unsigned char extImages_Pad208[] = FILEPAD;
+unsigned char extImages_battleIcon1_ci8_PAL[] = {
+#include "build/assets/img/extImages/battleIcon1.ci8.pal.inc.c"
+};
+unsigned char extImages_Pad209[] = FILEPAD;
+unsigned char extImages_battleIcon2_ci8_PNG[] = {
+#include "build/assets/img/extImages/battleIcon2.ci8.png.inc.c"
+};
+unsigned char extImages_Pad210[] = FILEPAD;
+unsigned char extImages_battleIcon2_ci8_PAL[] = {
+#include "build/assets/img/extImages/battleIcon2.ci8.pal.inc.c"
+};
+unsigned char extImages_Pad211[] = FILEPAD;
+unsigned char extImages_battleIcon3_ci8_PNG[] = {
+#include "build/assets/img/extImages/battleIcon3.ci8.png.inc.c"
+};
+unsigned char extImages_Pad212[] = FILEPAD;
+unsigned char extImages_battleIcon3_ci8_PAL[] = {
+#include "build/assets/img/extImages/battleIcon3.ci8.pal.inc.c"
+};
+unsigned char extImages_Pad213[] = FILEPAD;
+unsigned char extImages_battleIcon4_ci8_PNG[] = {
+#include "build/assets/img/extImages/battleIcon4.ci8.png.inc.c"
+};
+unsigned char extImages_Pad214[] = FILEPAD;
+unsigned char extImages_battleIcon4_ci8_PAL[] = {
+#include "build/assets/img/extImages/battleIcon4.ci8.pal.inc.c"
+};
+unsigned char extImages_Pad215[] = FILEPAD;
+unsigned char extImages_battleIcon5_ci8_PNG[] = {
+#include "build/assets/img/extImages/battleIcon5.ci8.png.inc.c"
+};
+unsigned char extImages_Pad216[] = FILEPAD;
+unsigned char extImages_battleIcon5_ci8_PAL[] = {
+#include "build/assets/img/extImages/battleIcon5.ci8.pal.inc.c"
+};
+unsigned char extImages_Pad217[] = FILEPAD;
+unsigned char extImages_battleIcon6_ci8_PNG[] = {
+#include "build/assets/img/extImages/battleIcon6.ci8.png.inc.c"
+};
+unsigned char extImages_Pad218[] = FILEPAD;
+unsigned char extImages_battleIcon6_ci8_PAL[] = {
+#include "build/assets/img/extImages/battleIcon6.ci8.pal.inc.c"
+};
+unsigned char extImages_Pad219[] = FILEPAD;
+unsigned char extImages_battleIcon7_ci8_PNG[] = {
+#include "build/assets/img/extImages/battleIcon7.ci8.png.inc.c"
+};
+unsigned char extImages_Pad220[] = FILEPAD;
+unsigned char extImages_battleIcon7_ci8_PAL[] = {
+#include "build/assets/img/extImages/battleIcon7.ci8.pal.inc.c"
+};
+unsigned char extImages_Pad221[] = FILEPAD;
+unsigned char extImages_battleIcon8_ci8_PNG[] = {
+#include "build/assets/img/extImages/battleIcon8.ci8.png.inc.c"
+};
+unsigned char extImages_Pad222[] = FILEPAD;
+unsigned char extImages_battleIcon8_ci8_PAL[] = {
+#include "build/assets/img/extImages/battleIcon8.ci8.pal.inc.c"
+};
+unsigned char extImages_Pad223[] = FILEPAD;
+unsigned char extImages_arrow1_ia8_PNG[] = {
+#include "build/assets/img/extImages/arrow1.ia8.png.inc.c"
+};
+unsigned char extImages_Pad224[] = FILEPAD;
+unsigned char extImages_davyIcon_ci8_PNG[] = {
+#include "build/assets/img/extImages/davyIcon.ci8.png.inc.c"
+};
+unsigned char extImages_Pad225[] = FILEPAD;
+unsigned char extImages_davyIcon_ci8_PAL[] = {
+#include "build/assets/img/extImages/davyIcon.ci8.pal.inc.c"
+};
+unsigned char extImages_Pad226[] = FILEPAD;
+unsigned char extImages_jackIcon_ci8_PNG[] = {
+#include "build/assets/img/extImages/jackIcon.ci8.png.inc.c"
+};
+unsigned char extImages_Pad227[] = FILEPAD;
+unsigned char extImages_jackIcon_ci8_PAL[] = {
+#include "build/assets/img/extImages/jackIcon.ci8.pal.inc.c"
+};
+unsigned char extImages_Pad228[] = FILEPAD;
+unsigned char extImages_fredIcon_ci8_PNG[] = {
+#include "build/assets/img/extImages/fredIcon.ci8.png.inc.c"
+};
+unsigned char extImages_Pad229[] = FILEPAD;
+unsigned char extImages_fredIcon_ci8_PAL[] = {
+#include "build/assets/img/extImages/fredIcon.ci8.pal.inc.c"
+};
+unsigned char extImages_Pad230[] = FILEPAD;
+unsigned char extImages_lindaIcon_ci8_PNG[] = {
+#include "build/assets/img/extImages/lindaIcon.ci8.png.inc.c"
+};
+unsigned char extImages_Pad231[] = FILEPAD;
+unsigned char extImages_lindaIcon_ci8_PAL[] = {
+#include "build/assets/img/extImages/lindaIcon.ci8.pal.inc.c"
+};
+unsigned char extImages_Pad232[] = FILEPAD;
+unsigned char extImages_blackIcon_ci8_PNG[] = {
+#include "build/assets/img/extImages/blackIcon.ci8.png.inc.c"
+};
+unsigned char extImages_Pad233[] = FILEPAD;
+unsigned char extImages_blackIcon_ci8_PAL[] = {
+#include "build/assets/img/extImages/blackIcon.ci8.pal.inc.c"
+};
+unsigned char extImages_Pad234[] = FILEPAD;
+unsigned char extImages_whiteIcon_ci8_PNG[] = {
+#include "build/assets/img/extImages/whiteIcon.ci8.png.inc.c"
+};
+unsigned char extImages_Pad235[] = FILEPAD;
+unsigned char extImages_whiteIcon_ci8_PAL[] = {
+#include "build/assets/img/extImages/whiteIcon.ci8.pal.inc.c"
+};
+unsigned char extImages_Pad236[] = FILEPAD;
+unsigned char extImages_whiteIcon_ia8_PNG[] = {
+#include "build/assets/img/extImages/whiteIcon.ia8.png.inc.c"
+};
+unsigned char extImages_Pad237[] = FILEPAD;
+unsigned char extImages_crownIcon_ci4_PNG[] = {
+#include "build/assets/img/extImages/crownIcon.ci4.png.inc.c"
+};
+unsigned char extImages_Pad238[] = FILEPAD;
+unsigned char extImages_crownIcon_ci4_PAL[] = {
+#include "build/assets/img/extImages/crownIcon.ci4.pal.inc.c"
+};
+unsigned char extImages_Pad239[] = FILEPAD;
+unsigned char extImages_arrowAnim_ia4_PNG[] = {
+#include "build/assets/img/extImages/arrowAnim.ia4.png.inc.c"
+};
+unsigned char extImages_Pad240[] = FILEPAD;
+unsigned char extImages_TitleScreen_rgba16_PNG[] = {
+#include "build/assets/img/extImages/TitleScreen.rgba16.png.inc.c"
+};
+unsigned char extImages_Pad241[] = FILEPAD;
+unsigned char extImages_StageSelectBackground_rgba16_PNG[] = {
+#include "build/assets/img/extImages/StageSelectBackground.rgba16.png.inc.c"
+};
+unsigned char extImages_Pad242[] = FILEPAD;
+unsigned char extImages_JungleLandText_ia8_PNG[] = {
+#include "build/assets/img/extImages/JungleLandText.ia8.png.inc.c"
+};
+unsigned char extImages_Pad243[] = FILEPAD;
+unsigned char extImages_AntLandText_ia8_PNG[] = {
+#include "build/assets/img/extImages/AntLandText.ia8.png.inc.c"
+};
+unsigned char extImages_Pad244[] = FILEPAD;
+unsigned char extImages_BombLandText_ia8_PNG[] = {
+#include "build/assets/img/extImages/BombLandText.ia8.png.inc.c"
+};
+unsigned char extImages_Pad245[] = FILEPAD;
+unsigned char extImages_DesertCastleText_ia8_PNG[] = {
+#include "build/assets/img/extImages/DesertCastleText.ia8.png.inc.c"
+};
+unsigned char extImages_Pad246[] = FILEPAD;
+unsigned char extImages_KidsLandText_ia8_PNG[] = {
+#include "build/assets/img/extImages/KidsLandText.ia8.png.inc.c"
+};
+unsigned char extImages_Pad247[] = FILEPAD;
+unsigned char extImages_GhostCastleText_ia8_PNG[] = {
+#include "build/assets/img/extImages/GhostCastleText.ia8.png.inc.c"
+};
+unsigned char extImages_Pad248[] = FILEPAD;
+unsigned char extImages_JungleLandText2_ci8_PNG[] = {
+#include "build/assets/img/extImages/JungleLandText2.ci8.png.inc.c"
+};
+unsigned char extImages_Pad249[] = FILEPAD;
+unsigned char extImages_JungleLandText2_ci8_PAL[] = {
+#include "build/assets/img/extImages/JungleLandText2.ci8.pal.inc.c"
+};
+unsigned char extImages_Pad250[] = FILEPAD;
+unsigned char extImages_AntLandText2_ci8_PNG[] = {
+#include "build/assets/img/extImages/AntLandText2.ci8.png.inc.c"
+};
+unsigned char extImages_Pad251[] = FILEPAD;
+unsigned char extImages_AntLandText2_ci8_PAL[] = {
+#include "build/assets/img/extImages/AntLandText2.ci8.pal.inc.c"
+};
+unsigned char extImages_Pad252[] = FILEPAD;
+unsigned char extImages_BombLandText2_ci8_PNG[] = {
+#include "build/assets/img/extImages/BombLandText2.ci8.png.inc.c"
+};
+unsigned char extImages_Pad253[] = FILEPAD;
+unsigned char extImages_BombLandText2_ci8_PAL[] = {
+#include "build/assets/img/extImages/BombLandText2.ci8.pal.inc.c"
+};
+unsigned char extImages_Pad254[] = FILEPAD;
+unsigned char extImages_DesertCastleText2_ci8_PNG[] = {
+#include "build/assets/img/extImages/DesertCastleText2.ci8.png.inc.c"
+};
+unsigned char extImages_Pad255[] = FILEPAD;
+unsigned char extImages_DesertCastleText2_ci8_PAL[] = {
+#include "build/assets/img/extImages/DesertCastleText2.ci8.pal.inc.c"
+};
+unsigned char extImages_Pad256[] = FILEPAD;
+unsigned char extImages_KidsLandText2_ci8_PNG[] = {
+#include "build/assets/img/extImages/KidsLandText2.ci8.png.inc.c"
+};
+unsigned char extImages_Pad257[] = FILEPAD;
+unsigned char extImages_KidsLandText2_ci8_PAL[] = {
+#include "build/assets/img/extImages/KidsLandText2.ci8.pal.inc.c"
+};
+unsigned char extImages_Pad258[] = FILEPAD;
+unsigned char extImages_GhostCastleText2_ci8_PNG[] = {
+#include "build/assets/img/extImages/GhostCastleText2.ci8.png.inc.c"
+};
+unsigned char extImages_Pad259[] = FILEPAD;
+unsigned char extImages_GhostCastleText2_ci8_PAL[] = {
+#include "build/assets/img/extImages/GhostCastleText2.ci8.pal.inc.c"
+};
+unsigned char extImages_Pad260[] = FILEPAD;
+unsigned char extImages_quintellaDeadEye_ci8_PNG[] = {
+#include "build/assets/img/extImages/quintellaDeadEye.ci8.png.inc.c"
+};
+unsigned char extImages_Pad261[] = FILEPAD;
+unsigned char extImages_quintellaDeadEye_ci8_PAL[] = {
+#include "build/assets/img/extImages/quintellaDeadEye.ci8.pal.inc.c"
+};
+unsigned char extImages_Pad262[] = FILEPAD;
+unsigned char extImages_lizardKongDeadEyes_ci4_PNG[] = {
+#include "build/assets/img/extImages/lizardKongDeadEyes.ci4.png.inc.c"
+};
+unsigned char extImages_Pad263[] = FILEPAD;
+unsigned char extImages_lizardKongDeadEyes_ci4_PAL[] = {
+#include "build/assets/img/extImages/lizardKongDeadEyes.ci4.pal.inc.c"
+};
+unsigned char extImages_Pad264[] = FILEPAD;
+unsigned char extImages_armadilloDeadEyes_ci8_PNG[] = {
+#include "build/assets/img/extImages/armadilloDeadEyes.ci8.png.inc.c"
+};
+unsigned char extImages_Pad265[] = FILEPAD;
+unsigned char extImages_armadilloDeadEyes_ci8_PAL[] = {
+#include "build/assets/img/extImages/armadilloDeadEyes.ci8.pal.inc.c"
+};
+unsigned char extImages_Pad266[] = FILEPAD;
+unsigned char extImages_sunsoft_ia4_PNG[] = {
+#include "build/assets/img/extImages/sunsoft.ia4.png.inc.c"
+};
+unsigned char extImages_Pad267[] = FILEPAD;
+unsigned char extImages_battleRanking_ci8_PNG[] = {
+#include "build/assets/img/extImages/battleRanking.ci8.png.inc.c"
+};
+unsigned char extImages_Pad268[] = FILEPAD;
+unsigned char extImages_battleRanking_ci8_PAL[] = {
+#include "build/assets/img/extImages/battleRanking.ci8.pal.inc.c"
+};
+unsigned char extImages_Pad269[] = FILEPAD;
+unsigned char extImages_QuestionMark_ci8_PNG[] = {
+#include "build/assets/img/extImages/QuestionMark.ci8.png.inc.c"
+};
+unsigned char extImages_Pad270[] = FILEPAD;
+unsigned char extImages_QuestionMark_ci8_PAL[] = {
+#include "build/assets/img/extImages/QuestionMark.ci8.pal.inc.c"
+};
+unsigned char extImages_Pad271[] = FILEPAD;
+unsigned char extImages_battleSelect_ci8_PNG[] = {
+#include "build/assets/img/extImages/battleSelect.ci8.png.inc.c"
+};
+unsigned char extImages_Pad272[] = FILEPAD;
+unsigned char extImages_battleSelect_ci8_PAL[] = {
+#include "build/assets/img/extImages/battleSelect.ci8.pal.inc.c"
+};
+unsigned char extImages_bombSnakeParts_ci8_PNG[] = {
+#include "build/assets/img/extImages/bombSnakeParts.ci8.png.inc.c"
+};
+unsigned char extImages_bombSnakeParts_ci8_PAL[] = {
+#include "build/assets/img/extImages/bombSnakeParts.ci8.pal.inc.c"
+};
+unsigned char extImages_Pad273[] = FILEPAD;
+unsigned char extImages_ranking_ci8_PNG[] = {
+#include "build/assets/img/extImages/ranking.ci8.png.inc.c"
+};
+unsigned char extImages_Pad274[] = FILEPAD;
+unsigned char extImages_ranking_ci8_PAL[] = {
+#include "build/assets/img/extImages/ranking.ci8.pal.inc.c"
+};
+unsigned char extImages_Pad275[] = FILEPAD;
+unsigned char extImages_rankingNumbers_ia8_PNG[] = {
+#include "build/assets/img/extImages/rankingNumbers.ia8.png.inc.c"
+};
+unsigned char extImages_Pad276[] = FILEPAD;
+unsigned char extImages_rankingLevel_ia8_PNG[] = {
+#include "build/assets/img/extImages/rankingLevel.ia8.png.inc.c"
+};
+unsigned char extImages_Pad277[] = FILEPAD;
+unsigned char extImages_hexagon_ia8_PNG[] = {
+#include "build/assets/img/extImages/hexagon.ia8.png.inc.c"
+};
+unsigned char extImages_Pad278[] = FILEPAD;
+unsigned char extImages_square_ia4_PNG[] = {
+#include "build/assets/img/extImages/square.ia4.png.inc.c"
+};
+unsigned char extImages_Pad279[] = FILEPAD;
+unsigned char extImages_japanSystemSupplyC1997_ia4_PNG[] = {
+#include "build/assets/img/extImages/japanSystemSupplyC1997.ia4.png.inc.c"
+};
+unsigned char extImages_Pad280[] = FILEPAD;
+unsigned char extImages_theEnd_ia4_PNG[] = {
+#include "build/assets/img/extImages/theEnd.ia4.png.inc.c"
+};
+unsigned char extImages_Pad281[] = FILEPAD;
+unsigned char extImages_bowlingSquare_ia4_PNG[] = {
+#include "build/assets/img/extImages/bowlingSquare.ia4.png.inc.c"
+};
+unsigned char extImages_Pad282[] = FILEPAD;
+unsigned char extImages_bowlingNumbers_ia4_PNG[] = {
+#include "build/assets/img/extImages/bowlingNumbers.ia4.png.inc.c"
+};
+unsigned char extImages_Pad283[] = FILEPAD;
+unsigned char extImages_rabbitBowl_ia4_PNG[] = {
+#include "build/assets/img/extImages/rabbitBowl.ia4.png.inc.c"
+};
+unsigned char extImages_Pad284[] = FILEPAD;
+unsigned char extImages_bowlingLastSquare_ia4_PNG[] = {
+#include "build/assets/img/extImages/bowlingLastSquare.ia4.png.inc.c"
+};
+unsigned char extImages_Pad285[] = FILEPAD;
+unsigned char extImages_crownSmall_ci8_PNG[] = {
+#include "build/assets/img/extImages/crownSmall.ci8.png.inc.c"
+};
+unsigned char extImages_Pad286[] = FILEPAD;
+unsigned char extImages_crownSmall_ci8_PAL[] = {
+#include "build/assets/img/extImages/crownSmall.ci8.pal.inc.c"
+};
+unsigned char extImages_Pad287[] = FILEPAD;
+unsigned char extImages_carrotSmall_ci8_PNG[] = {
+#include "build/assets/img/extImages/carrotSmall.ci8.png.inc.c"
+};
+unsigned char extImages_Pad288[] = FILEPAD;
+unsigned char extImages_carrotSmall_ci8_PAL[] = {
+#include "build/assets/img/extImages/carrotSmall.ci8.pal.inc.c"
+};
+unsigned char extImages_Pad289[] = FILEPAD;
+unsigned char extImages_bossMeter_rgba16_PNG[] = {
+#include "build/assets/img/extImages/bossMeter.rgba16.png.inc.c"
+};
+unsigned char extImages_Pad290[] = FILEPAD;
+unsigned char extImages_bossHealth_rgba16_PNG[] = {
+#include "build/assets/img/extImages/bossHealth.rgba16.png.inc.c"
+};
+unsigned char extImages_Pad291[] = FILEPAD;
+unsigned char extImages_iDontKnow_ci4_PNG[] = {
+#include "build/assets/img/extImages/iDontKnow.ci4.png.inc.c"
+};
+unsigned char extImages_Pad292[] = FILEPAD;
+unsigned char extImages_iDontKnow_ci4_PAL[] = {
+#include "build/assets/img/extImages/iDontKnow.ci4.pal.inc.c"
+};
+unsigned char extImages_Pad293[] = FILEPAD;
+unsigned char extImages_menuOptions_ia8_PNG[] = {
+#include "build/assets/img/extImages/menuOptions.ia8.png.inc.c"
+};
+
+#include "build/assets/img/extImages/unkAnimData.inc.c"

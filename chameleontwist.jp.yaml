@@ -4085,21 +4085,6 @@ segments:
 
       - [0x9b2cd0, ia8, poleThing.ia8, 16, 64]
 
-  - start: 0x9B30D0
-    name: assets1
-    vram: 0x11000000 #SEGMENT 0x11
-    dir: img
-    subalign: 8
-    type: code
-    subsegments:
-    - [auto, c, assets1]
-    - name: assets1
-      dir: assets1
-      type: .data
-      subalign: 8
-      vram: 0x810F20E8
-      start: 0x9B30D0
-      subsegments:
       - [0x9B30D0, ci8, crown.ci8, 48, 40]
       - [0x9B3850, palette, crown.ci8]
 
@@ -4245,22 +4230,7 @@ segments:
 
       - [0x9e13f8, ia8, arrow1.ia8, 8, 16]
       - [0x9e1478] #B8000000
-
-  - start: 0x9e1480
-    name: assets2
-    vram: 0x12000000 #SEGMENT 0x12
-    dir: img
-    subalign: 8
-    type: code
-    subsegments:
-    - [auto, c, assets2]
-    - name: assets2
-      dir: assets2
-      type: .data
-      subalign: 8
-      vram: 0x811F20E8
-      start: 0x9e1480
-      subsegments:
+      
       - [0x9e1480, ci8, davyIcon.ci8, 16, 16]
       - [0x9E1580] #B8000000
       - [0x9E1588, palette, davyIcon.ci8]
@@ -5164,8 +5134,27 @@ segments:
       - [0xaf55c8, mtx, White/restAssociate/White_restAssociate]
       - [0xaf5608, gfxSeg, White/restAssociate/White_restAssociate]
 
-  #something[4][X]
-  - [0xAF5690, databin]
+  - name: assets3
+    type: code
+    subalign: 8
+    start: 0xAF5690
+    subsegments:
+      - [auto, databin, unkBlock379]
+      - [auto, databin, unkBlock293]
+      - [auto, databin, unkBlock312]
+      - [auto, databin, unkBlock339]
+      - [auto, databin, unkBlock329]
+      - [auto, databin, unkBlock354]
+      - [auto, databin, unkBlock371]
+      - [auto, databin, unkBlock372]
+      - [auto, databin, unkBlock373]
+      - [auto, databin, unkBlock374]
+      - [auto, databin, unkBlock375]
+      - [auto, databin, unkBlock376]
+      - [auto, databin, unkBlock377]
+      - [auto, databin, unkBlock378]
+      - [auto, databin, unkBlock362]
+      - [auto, databin, unkBlock292]
 
   - start: 0xAFC6B0
     name: Davy #The standard.
