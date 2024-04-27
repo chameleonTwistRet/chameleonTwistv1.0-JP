@@ -359,7 +359,6 @@ extern s16 sStageCrownTotals[];
 extern TimeVal D_80200B85[];
 extern s32 perfectCode;
 extern u8 D_800FE724[];
-extern s32 D_800F0674;
 extern s32 D_800F0B5C;
 extern u8 D_800FE748;
 extern Struct_80076EA0 D_800FE47C[];

@@ -776,17 +776,24 @@ void func_80088B7C(u8* arg0, u8* arg1, u8* arg2, u8* arg3, u8* arg4, u8* arg5) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800893C0.s")
 
+//story
 const char D_8010D840[] = "ＣＡＮＣＥＬ";
 const char D_8010D850[] = "ＳＡＶＥ";
 const char D_8010D85C[] = "ＳＴＡＧＥ  ＱＵＩＴ";
 const char D_8010D874[] = "ＥＸＩＴ";
+
+//training (during round)
 const char D_8010D880[] = "ＣＡＮＣＥＬ";
 const char D_8010D890[] = "ＲＥＳＴＡＲＴ";
 const char D_8010D8A0[] = "ＥＸＩＴ";
+
+//training (normal)
 const char D_8010D8AC[] = "ＣＡＮＣＥＬ";
 const char D_8010D8BC[] = "ＥＸＩＴ";
+
 const char D_8010D8C8[] = "ＹＥＳ";
 const char D_8010D8D0[] = "ＮＯ";
+
 const char D_8010D8D8[] = "ＹＥＳ";
 const char D_8010D8E0[] = "ＮＯ";
 
@@ -815,7 +822,7 @@ void PlayJungleExtSfxWrapper(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008A2EC.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008AD30.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/ManagePauseMenu.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008B458.s")
 
@@ -1014,7 +1021,7 @@ void func_8008C1C8(s32* arg0) {
         }
     }
 
-    func_8008AD30();
+    ManagePauseMenu();
     func_8008C094();
     func_8008A2EC();
     PlayJungleExtSfxWrapper();
@@ -1614,7 +1621,7 @@ CTTask* func_8008E9AC(s16 arg0, s16 arg1, s16 arg2, s16 arg3, s16* arg4) {
 CTTask* func_8008EA60(s16 arg0, s16 arg1, s16 arg2, s16 arg3, s16* arg4) {
     CTTask* task = CTTask_Alloc(1, 240, 0);
     if (task == NULL) {
-        DummiedPrintf("エラー\n");
+        DummiedPrintf("エラー\n"); // error
         while(1){}
     }
     task->unk_5C = -arg0;
@@ -1812,14 +1819,14 @@ void func_8008F16C(void) {
     Timing_StartProcess();
 }
 
-s32 func_8008F694(s32 arg0) {
+s32 DrawBackground(s32 arg0) {
     s32 var_a1;
     UnkBg* var_s0;
 
     var_s0 = D_800FFE58[arg0];
-    for (; var_s0->unk4 != -1; var_s0++) {
-            if (LoadSprite(var_s0->unk4) != 0) {
-                DummiedPrintf("ＢＧロードエラー %d\n", var_s0->unk4);
+    for (; var_s0->spriteID != -1; var_s0++) {
+            if (LoadSprite(var_s0->spriteID) != 0) {
+                DummiedPrintf("ＢＧロードエラー %d\n", var_s0->spriteID);
             }        
     }
     return 0;
@@ -1829,10 +1836,10 @@ void func_8008F710(CTTask* task) {
     UnkBg* var_s0;
     
     var_s0 = D_800FFE58[task->unk_04];
-    for (; var_s0->unk4 != -1; var_s0++) {
+    for (; var_s0->spriteID != -1; var_s0++) {
         s32 temp0 = var_s0->unk0;
         s32 temp1 = var_s0->unk2;
-        func_8005C454(temp0, temp1, 0.0f, var_s0->unk4);    
+        func_8005C454(temp0, temp1, 0.0f, var_s0->spriteID);    
     }
 }
 
@@ -4691,10 +4698,10 @@ void PrintPerfectCode(CTTask* task) {
 
 CTTask* func_800A20CC(void) {
     CTTask* task;
-    DummiedPrintf("マスタ作成\n");
+    DummiedPrintf("マスタ作成\n"); // Master creation
     task = CTTask_Alloc(1, 100, 0);
     if (!task) {
-        DummiedPrintf("エラー\n");
+        DummiedPrintf("エラー\n"); // error
         while(1){}
     }
     task->function = func_800A2164;
@@ -4780,14 +4787,14 @@ void Process_TitleMenu(void) {
         UseFixedRNGSeed = 0;
         func_8008BE14();
         func_80088198();
-        func_8008F694(2);
+        DrawBackground(BG_TITLESCREEN);
         func_8008F16C();
         break;
     case 1:
-        LoadSprite(SPRITE_BATTLE_BIGBOARD);
-        LoadSprite(SPRITE_BATTLE_STAGETITLEBOARD);
-        LoadSprite(79);
-        LoadSprite(80);
+        LoadSprite(SPRITE_BATTLE_BIGBOARD); // the bg for menu options
+        LoadSprite(SPRITE_BATTLE_STAGETITLEBOARD); // ?
+        LoadSprite(SPRITE_CHAMELEON); // CHAMELEON
+        LoadSprite(SPRITE_TWIST); // TWIST
         PlayBGM(BGM_TITLE);
         func_800A20CC();
         gGameModeState++;

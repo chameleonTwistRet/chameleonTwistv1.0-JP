@@ -2623,7 +2623,7 @@ s32 func_8004C110(s32 arg0, f32 arg1, f32 arg2) {
     s32 actorIndex;
     s32 i;
 
-    var_s2 = 0x05F5E100; //??
+    var_s2 = 100000000;
     actorIndex = -1;
     actorArray = gActors;
     for (i = 0; i < ARRAY_COUNT(gActors); i++, actorArray++) {

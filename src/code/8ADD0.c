@@ -245,7 +245,7 @@ void func_800B2070(s32 arg0) {
     rect.min.y = -155.0f;
     rect.max.y = -145.0f;
     rect.min.z = 450.0f;
-    rect.max.z = D_8010FB50;
+    rect.max.z = 1650.0f;
     vec.x = gPlayer->pos.x;
     vec.y = gPlayer->pos.y;
     vec.z = gPlayer->pos.z;

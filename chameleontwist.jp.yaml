@@ -130,6 +130,7 @@ segments:
       - [0xBAA80, c, audio/cspgettempo]
       - [0xBAAC0, c, audio/cseq]
       - [0xBB580, c, audio/cspsetseq]
+
       - [0xBB5C0, c, os/gettime]
       - [0xBB650, hasm, os/getcount]
       - [0xBB660, c, gu/ortho]
@@ -341,29 +342,29 @@ segments:
   #     - [0x102BE0, databin, gfx/spriteController] #gfx
 
   #     - [0x102FB8, ci8, img/health.ci8, 16, 16]
-  #     - [0x1030B8, databin]  #endDL command from rgb2c
+  #     - [0x1030B8] #B8000000
   #     - [0x1030C0, palette, img/health.ci8]
-  #     - [0x1032c0, databin]  #endDL command from rgb2c
+  #     - [0x1032c0] #B8000000
 
   #     - [0x1032C8, ci4, img/bar.ci4, 48, 16]
-  #     - [0x103448, databin]  #endDL command from rgb2c
+  #     - [0x103448] #B8000000
   #     - [0x103450, palette, img/bar.ci4]
-  #     - [0x103650, databin]  #endDL command from rgb2c
+  #     - [0x103650] #B8000000
 
   #     - [0x103658, ia8, img/textBig.ia8, 432, 48]
-  #     - [0x108758, databin]  #endDL command from rgb2c
+  #     - [0x108758] #B8000000
 
   #     - [0x108760, ia4, img/textSmall.ia4, 512, 176]
-  #     - [0x113760, databin]  #endDL command from rgb2c
+  #     - [0x113760] #B8000000
 
   #     - [0x113768, ia8, img/puff.ia8, 96, 32]
-  #     - [0x114368, databin]  #endDL command from rgb2c
+  #     - [0x114368] #B8000000
 
   #     - [0x114370, ia4, img/star2.ia4, 32, 32]
-  #     - [0x114570, databin]  #endDL command from rgb2c
+  #     - [0x114570] #B8000000
 
   #     - [0x114578, ia8, img/camera.ia8, 48, 32]
-  #     - [0x114B78, databin]  #endDL command from rgb2c
+  #     - [0x114B78] #B8000000
 
   #     - [0x114B80, ia4, img/explode.ia4, 40, 40]
 
@@ -372,7 +373,7 @@ segments:
   #     - [0x115088, mtx, mtx1] #mtx
   #     - [0x1150C8, databin, break] #break
   #     - [0x1150D0, ci4, img/sand.ci4, 64, 64]
-  #     - [0x1158D0, databin]  #endDL command from rgb2c
+  #     - [0x1158D0] #B8000000
   #     - [0x1158D8, palette, img/sand.ci4]
   #     - [0x115ad8, gfx, gfx/unk0] #gfx
   #     - [0x115d30, vtx, vtx2] #vtx
@@ -3547,867 +3548,897 @@ segments:
       - [0x8c269c, databin, zeroooo36] #pad 0x00000000
 
 
-  # - start: 0x8c26a0
-  #   name: extImages
-  #   type: code
-  #   subalign: 8
-  #   subsegments:
-  #   - [0x8c26a0, databin, databin/pad208] #endDL command from rgb2c
-
-  #   - [0x8c26a8, ia8, img/symbols.ia8, 464, 16]
-  #   - [0x8c43a8, databin] #endDL command from rgb2c
-
-  #   - [0x8c43b0, ci8, img/davyEyeR.ci8, 32, 32]
-  #   - [0x8c47b0, databin] #endDL command from rgb2c
-  #   - [0x8c47b8, palette, img/davyEyeR.ci8]
-  #   - [0x8c49b8, databin] #endDL command from rgb2c
-
-  #   - [0x8c49c0, ci8, img/davyClosedEyeR.ci8, 32, 32]
-  #   - [0x8c4dc0, databin] #endDL command from rgb2c
-  #   - [0x8c4dc8, palette, img/davyClosedEyeR.ci8]
-  #   - [0x8c4fc8, databin] #endDL command from rgb2c
-
-  #   - [0x8c4fd0, ci8, img/davySadEyeR.ci8, 32, 32]
-  #   - [0x8c53d0, databin] #endDL command from rgb2c
-  #   - [0x8c53d8, palette, img/davySadEyeR.ci8]
-  #   - [0x8c55d8, databin] #endDL command from rgb2c
-
-  #   - [0x8c55e0, ci8, img/davyHappyEyeR.ci8, 32, 32]
-  #   - [0x8c59e0, databin] #endDL command from rgb2c
-  #   - [0x8c59e8, palette, img/davyHappyEyeR.ci8]
-  #   - [0x8c5be8, databin] #endDL command from rgb2c
-
-  #   - [0x8c5bf0, ci8, img/davyHurtEyeR.ci8, 32, 32]
-  #   - [0x8c5ff0, databin] #endDL command from rgb2c
-  #   - [0x8c5ff8, palette, img/davyHurtEyeR.ci8]
-  #   - [0x8c61f8, databin] #endDL command from rgb2c
-
-  #   - [0x8c6200, ci8, img/davyEyeL.ci8, 32, 32]
-  #   - [0x8c6600, databin] #endDL command from rgb2c
-  #   - [0x8c6608, palette, img/davyEyeL.ci8]
-  #   - [0x8c6808, databin] #endDL command from rgb2c
-
-  #   - [0x8c6810, ci8, img/davyClosedEyeL.ci8, 32, 32]
-  #   - [0x8c6c10, databin] #endDL command from rgb2c
-  #   - [0x8c6c18, palette, img/davyClosedEyeL.ci8]
-  #   - [0x8c6e18, databin] #endDL command from rgb2c
-
-  #   - [0x8c6e20, ci8, img/davySadEyeL.ci8, 32, 32]
-  #   - [0x8c7220, databin] #endDL command from rgb2c
-  #   - [0x8c7228, palette, img/davySadEyeL.ci8]
-  #   - [0x8c7428, databin] #endDL command from rgb2c
-
-  #   - [0x8c7430, ci8, img/davyHappyEyeL.ci8, 32, 32]
-  #   - [0x8c7830, databin] #endDL command from rgb2c
-  #   - [0x8c7838, palette, img/davyHappyEyeL.ci8]
-  #   - [0x8c7a38, databin] #endDL command from rgb2c
-
-  #   - [0x8c7a40, ci8, img/davyHurtEyeL.ci8, 32, 32]
-  #   - [0x8c7e40, databin] #endDL command from rgb2c
-  #   - [0x8c7e48, palette, img/davyHurtEyeL.ci8]
-  #   - [0x8c8048, databin] #endDL command from rgb2c
-
-  #   - [0x8c8050, ci8, img/jackEyeR.ci8, 32, 32]
-  #   - [0x8c8450, databin] #endDL command from rgb2c
-  #   - [0x8c8458, palette, img/jackEyeR.ci8]
-  #   - [0x8c8658, databin] #endDL command from rgb2c
-
-  #   - [0x8c8660, ci8, img/jackClosedEyeR.ci8, 32, 32]
-  #   - [0x8c8a60, databin] #endDL command from rgb2c
-  #   - [0x8c8a68, palette, img/jackClosedEyeR.ci8]
-  #   - [0x8c8c68, databin] #endDL command from rgb2c
-
-  #   - [0x8c8c70, ci8, img/jackSadEyeR.ci8, 32, 32]
-  #   - [0x8c9070, databin] #endDL command from rgb2c
-  #   - [0x8c9078, palette, img/jackSadEyeR.ci8]
-  #   - [0x8c9278, databin] #endDL command from rgb2c
-
-  #   - [0x8c9280, ci8, img/jackHappyEyeR.ci8, 32, 32]
-  #   - [0x8c9680, databin] #endDL command from rgb2c
-  #   - [0x8c9688, palette, img/jackHappyEyeR.ci8]
-  #   - [0x8c9888, databin] #endDL command from rgb2c
-
-  #   - [0x8c9890, ci8, img/jackHurtEyeR.ci8, 32, 32]
-  #   - [0x8c9c90, databin] #endDL command from rgb2c
-  #   - [0x8c9c98, palette, img/jackHurtEyeR.ci8]
-  #   - [0x8c9e98, databin] #endDL command from rgb2c
-
-  #   - [0x8c9ea0, ci8, img/jackEyeL.ci8, 32, 32]
-  #   - [0x8ca2a0, databin] #endDL command from rgb2c
-  #   - [0x8ca2a8, palette, img/jackEyeL.ci8]
-  #   - [0x8ca4a8, databin] #endDL command from rgb2c
-
-  #   - [0x8ca4b0, ci8, img/jackClosedEyeL.ci8, 32, 32]
-  #   - [0x8ca8b0, databin] #endDL command from rgb2c
-  #   - [0x8ca8b8, palette, img/jackClosedEyeL.ci8]
-  #   - [0x8caab8, databin] #endDL command from rgb2c
-
-  #   - [0x8caac0, ci8, img/jackSadEyeL.ci8, 32, 32]
-  #   - [0x8caec0, databin] #endDL command from rgb2c
-  #   - [0x8caec8, palette, img/jackSadEyeL.ci8]
-  #   - [0x8cb0c8, databin] #endDL command from rgb2c
-
-  #   - [0x8cb0d0, ci8, img/jackHappyEyeL.ci8, 32, 32]
-  #   - [0x8cb4d0, databin] #endDL command from rgb2c
-  #   - [0x8cb4d8, palette, img/jackHappyEyeL.ci8]
-  #   - [0x8cb6d8, databin] #endDL command from rgb2c
-
-  #   - [0x8cb6e0, ci8, img/jackHurtEyeL.ci8, 32, 32]
-  #   - [0x8cbae0, databin] #endDL command from rgb2c
-  #   - [0x8cbae8, palette, img/jackHurtEyeL.ci8]
-  #   - [0x8cbce8, databin] #endDL command from rgb2c
-
-  #   - [0x8cbcf0, ci8, img/lindaEyeR.ci8, 32, 32]
-  #   - [0x8cc0f0, databin] #endDL command from rgb2c
-  #   - [0x8cc0f8, palette, img/lindaEyeR.ci8]
-  #   - [0x8cc2f8, databin] #endDL command from rgb2c
-
-  #   - [0x8cc300, ci8, img/lindaClosedEyeR.ci8, 32, 32]
-  #   - [0x8cc700, databin] #endDL command from rgb2c
-  #   - [0x8cc708, palette, img/lindaClosedEyeR.ci8]
-  #   - [0x8cc908, databin] #endDL command from rgb2c
-
-  #   - [0x8cc910, ci8, img/lindaSadEyeR.ci8, 32, 32]
-  #   - [0x8ccd10, databin] #endDL command from rgb2c
-  #   - [0x8ccd18, palette, img/lindaSadEyeR.ci8]
-  #   - [0x8ccf18, databin] #endDL command from rgb2c
-
-  #   - [0x8ccf20, ci8, img/lindaHappyEyeR.ci8, 32, 32]
-  #   - [0x8cd320, databin] #endDL command from rgb2c
-  #   - [0x8cd328, palette, img/lindaHappyEyeR.ci8]
-  #   - [0x8cd528, databin] #endDL command from rgb2c
-
-  #   - [0x8cd530, ci8, img/lindaHurtEyeR.ci8, 32, 32]
-  #   - [0x8cd930, databin] #endDL command from rgb2c
-  #   - [0x8cd938, palette, img/lindaHurtEyeR.ci8]
-  #   - [0x8cdb38, databin] #endDL command from rgb2c
-
-  #   - [0x8cdb40, ci8, img/lindaEyeL.ci8, 32, 32]
-  #   - [0x8cdf40, databin] #endDL command from rgb2c
-  #   - [0x8cdf48, palette, img/lindaEyeL.ci8]
-  #   - [0x8ce148, databin] #endDL command from rgb2c
-
-  #   - [0x8ce150, ci8, img/lindaClosedEyeL.ci8, 32, 32]
-  #   - [0x8ce550, databin] #endDL command from rgb2c
-  #   - [0x8ce558, palette, img/lindaClosedEyeL.ci8]
-  #   - [0x8ce758, databin] #endDL command from rgb2c
-
-  #   - [0x8ce760, ci8, img/lindaSadEyeL.ci8, 32, 32]
-  #   - [0x8ceb60, databin] #endDL command from rgb2c
-  #   - [0x8ceb68, palette, img/lindaSadEyeL.ci8]
-  #   - [0x8ced68, databin] #endDL command from rgb2c
-
-  #   - [0x8ced70, ci8, img/lindaHappyEyeL.ci8, 32, 32]
-  #   - [0x8cf170, databin] #endDL command from rgb2c
-  #   - [0x8cf178, palette, img/lindaHappyEyeL.ci8]
-  #   - [0x8cf378, databin] #endDL command from rgb2c
-
-  #   - [0x8cf380, ci8, img/lindaHurtEyeL.ci8, 32, 32]
-  #   - [0x8cf780, databin] #endDL command from rgb2c
-  #   - [0x8cf788, palette, img/lindaHurtEyeL.ci8]
-  #   - [0x8cf988, databin] #endDL command from rgb2c
-
-  #   - [0x8cf990, ci8, img/fredEyeR.ci8, 32, 32]
-  #   - [0x8cfd90, databin] #endDL command from rgb2c
-  #   - [0x8cfd98, palette, img/fredEyeR.ci8]
-  #   - [0x8cff98, databin] #endDL command from rgb2c
-
-  #   - [0x8cffa0, ci8, img/fredClosedEyeR.ci8, 32, 32]
-  #   - [0x8d03a0, databin] #endDL command from rgb2c
-  #   - [0x8d03a8, palette, img/fredClosedEyeR.ci8]
-  #   - [0x8d05a8, databin] #endDL command from rgb2c
-
-  #   - [0x8d05b0, ci8, img/fredSadEyeR.ci8, 32, 32]
-  #   - [0x8d09b0, databin] #endDL command from rgb2c
-  #   - [0x8d09b8, palette, img/fredSadEyeR.ci8]
-  #   - [0x8d0bb8, databin] #endDL command from rgb2c
-
-  #   - [0x8d0bc0, ci8, img/fredHappyEyeR.ci8, 32, 32]
-  #   - [0x8d0fc0, databin] #endDL command from rgb2c
-  #   - [0x8d0fc8, palette, img/fredHappyEyeR.ci8]
-  #   - [0x8d11c8, databin] #endDL command from rgb2c
-
-  #   - [0x8d11d0, ci8, img/fredHurtEyeR.ci8, 32, 32]
-  #   - [0x8d15d0, databin] #endDL command from rgb2c
-  #   - [0x8d15d8, palette, img/fredHurtEyeR.ci8]
-  #   - [0x8d17d8, databin] #endDL command from rgb2c
-
-  #   - [0x8d17e0, ci8, img/fredEyeL.ci8, 32, 32]
-  #   - [0x8d1be0, databin] #endDL command from rgb2c
-  #   - [0x8d1be8, palette, img/fredEyeL.ci8]
-  #   - [0x8d1de8, databin] #endDL command from rgb2c
-
-  #   - [0x8d1df0, ci8, img/fredClosedEyeL.ci8, 32, 32]
-  #   - [0x8d21f0, databin] #endDL command from rgb2c
-  #   - [0x8d21f8, palette, img/fredClosedEyeL.ci8]
-  #   - [0x8d23f8, databin] #endDL command from rgb2c
-
-  #   - [0x8d2400, ci8, img/fredSadEyeL.ci8, 32, 32]
-  #   - [0x8d2800, databin] #endDL command from rgb2c
-  #   - [0x8d2808, palette, img/fredSadEyeL.ci8]
-  #   - [0x8d2a08, databin] #endDL command from rgb2c
-
-  #   - [0x8d2a10, ci8, img/fredHappyEyeL.ci8, 32, 32]
-  #   - [0x8d2e10, databin] #endDL command from rgb2c
-  #   - [0x8d2e18, palette, img/fredHappyEyeL.ci8]
-  #   - [0x8d3018, databin] #endDL command from rgb2c
-
-  #   - [0x8d3020, ci8, img/fredHurtEyeL.ci8, 32, 32]
-  #   - [0x8d3420, databin] #endDL command from rgb2c
-  #   - [0x8d3428, palette, img/fredHurtEyeL.ci8]
-  #   - [0x8d3628, databin] #endDL command from rgb2c
-
-  #   - [0x8d3630, ci8, img/blackEyeR.ci8, 32, 32]
-  #   - [0x8d3a30, databin] #endDL command from rgb2c
-  #   - [0x8d3a38, palette, img/blackEyeR.ci8]
-  #   - [0x8d3c38, databin] #endDL command from rgb2c
-
-  #   - [0x8d3c40, ci8, img/blackClosedEyeR.ci8, 32, 32]
-  #   - [0x8d4040, databin] #endDL command from rgb2c
-  #   - [0x8d4048, palette, img/blackClosedEyeR.ci8]
-  #   - [0x8d4248, databin] #endDL command from rgb2c
-
-  #   - [0x8d4250, ci8, img/blackSadEyeR.ci8, 32, 32]
-  #   - [0x8d4650, databin] #endDL command from rgb2c
-  #   - [0x8d4658, palette, img/blackSadEyeR.ci8]
-  #   - [0x8d4858, databin] #endDL command from rgb2c
-
-  #   - [0x8d4860, ci8, img/blackHappyEyeR.ci8, 32, 32]
-  #   - [0x8d4c60, databin] #endDL command from rgb2c
-  #   - [0x8d4c68, palette, img/blackHappyEyeR.ci8]
-  #   - [0x8d4e68, databin] #endDL command from rgb2c
-
-  #   - [0x8d4e70, ci8, img/blackHurtEyeR.ci8, 32, 32]
-  #   - [0x8d5270, databin] #endDL command from rgb2c
-  #   - [0x8d5278, palette, img/blackHurtEyeR.ci8]
-  #   - [0x8d5478, databin] #endDL command from rgb2c
-
-  #   - [0x8d5480, ci8, img/blackEyeL.ci8, 32, 32]
-  #   - [0x8d5880, databin] #endDL command from rgb2c
-  #   - [0x8d5888, palette, img/blackEyeL.ci8]
-  #   - [0x8d5a88, databin] #endDL command from rgb2c
-
-  #   - [0x8d5a90, ci8, img/blackClosedEyeL.ci8, 32, 32]
-  #   - [0x8d5e90, databin] #endDL command from rgb2c
-  #   - [0x8d5e98, palette, img/blackClosedEyeL.ci8]
-  #   - [0x8d6098, databin] #endDL command from rgb2c
-
-  #   - [0x8d60a0, ci8, img/blackSadEyeL.ci8, 32, 32]
-  #   - [0x8d64a0, databin] #endDL command from rgb2c
-  #   - [0x8d64a8, palette, img/blackSadEyeL.ci8]
-  #   - [0x8d66a8, databin] #endDL command from rgb2c
-
-  #   - [0x8d66b0, ci8, img/blackHappyEyeL.ci8, 32, 32]
-  #   - [0x8d6ab0, databin] #endDL command from rgb2c
-  #   - [0x8d6ab8, palette, img/blackHappyEyeL.ci8]
-  #   - [0x8d6cb8, databin] #endDL command from rgb2c
-
-  #   - [0x8d6cc0, ci8, img/blackHurtEyeL.ci8, 32, 32]
-  #   - [0x8d70c0, databin] #endDL command from rgb2c
-  #   - [0x8d70c8, palette, img/blackHurtEyeL.ci8]
-  #   - [0x8d72c8, databin] #endDL command from rgb2c
-
-  #   - [0x8d72d0, ci8, img/whiteEyeR.ci8, 32, 32]
-  #   - [0x8d76d0, databin] #endDL command from rgb2c
-  #   - [0x8d76d8, palette, img/whiteEyeR.ci8]
-  #   - [0x8d78d8, databin] #endDL command from rgb2c
-
-  #   - [0x8d78e0, ci8, img/whiteClosedEyeR.ci8, 32, 32]
-  #   - [0x8d7ce0, databin] #endDL command from rgb2c
-  #   - [0x8d7ce8, palette, img/whiteClosedEyeR.ci8]
-  #   - [0x8d7ee8, databin] #endDL command from rgb2c
-
-  #   - [0x8d7ef0, ci8, img/whiteSadEyeR.ci8, 32, 32]
-  #   - [0x8d82f0, databin] #endDL command from rgb2c
-  #   - [0x8d82f8, palette, img/whiteSadEyeR.ci8]
-  #   - [0x8d84f8, databin] #endDL command from rgb2c
-
-  #   - [0x8d8500, ci8, img/whiteHappyEyeR.ci8, 32, 32]
-  #   - [0x8d8900, databin] #endDL command from rgb2c
-  #   - [0x8d8908, palette, img/whiteHappyEyeR.ci8]
-  #   - [0x8d8b08, databin] #endDL command from rgb2c
-
-  #   - [0x8d8b10, ci8, img/whiteHurtEyeR.ci8, 32, 32]
-  #   - [0x8d8f10, databin] #endDL command from rgb2c
-  #   - [0x8d8f18, palette, img/whiteHurtEyeR.ci8]
-  #   - [0x8d9118, databin] #endDL command from rgb2c
-
-  #   - [0x8d9120, ci8, img/whiteEyeL.ci8, 32, 32]
-  #   - [0x8d9520, databin] #endDL command from rgb2c
-  #   - [0x8d9528, palette, img/whiteEyeL.ci8]
-  #   - [0x8d9728, databin] #endDL command from rgb2c
-
-  #   - [0x8d9730, ci8, img/whiteClosedEyeL.ci8, 32, 32]
-  #   - [0x8d9b30, databin] #endDL command from rgb2c
-  #   - [0x8d9b38, palette, img/whiteClosedEyeL.ci8]
-  #   - [0x8d9d38, databin] #endDL command from rgb2c
-
-  #   - [0x8d9d40, ci8, img/whiteSadEyeL.ci8, 32, 32]
-  #   - [0x8da140, databin] #endDL command from rgb2c
-  #   - [0x8da148, palette, img/whiteSadEyeL.ci8]
-  #   - [0x8da348, databin] #endDL command from rgb2c
-
-  #   - [0x8da350, ci8, img/whiteHappyEyeL.ci8, 32, 32]
-  #   - [0x8da750, databin] #endDL command from rgb2c
-  #   - [0x8da758, palette, img/whiteHappyEyeL.ci8]
-  #   - [0x8da958, databin] #endDL command from rgb2c
-
-  #   - [0x8da960, ci8, img/whiteHurtEyeL.ci8, 32, 32]
-  #   - [0x8dad60, databin] #endDL command from rgb2c
-  #   - [0x8dad68, palette, img/whiteHurtEyeL.ci8]
-
-
-  #   - [0x8DAF68, ci8, img/fire.ci8, 256, 64]
-  #   - [0x8DEF68, palette, img/fire.ci8]
-  #   - [0x8df168, databin] #endDL command from rgb2c
-
-  #   - [0x8df170, ia4, img/antHole.ia4, 32, 32]
-  #   - [0x8df370, databin] #endDL command from rgb2c
-
-  #   - [0x8df378, ia4, img/sandCrabAppearUnused.ia4, 432, 40]
-  #   - [0x8e1538, databin] #endDL command from rgb2c
-
-  #   - [0x8e1540, ci4, img/cloud.ci4, 64, 32]
-  #   - [0x8e1940, databin] #endDL command from rgb2c
-  #   - [0x8e1948, palette, img/cloud.ci4]
-  #   - [0x8e1b48, databin] #endDL command from rgb2c
-
-  #   - [0x8e1b50, ci4, img/cloud2.ci4, 64, 32]
-  #   - [0x8e1f50, databin] #endDL command from rgb2c
-  #   - [0x8e1f58, palette, img/cloud2.ci4]
-  #   - [0x8e2158, databin] #endDL command from rgb2c
-
-  #   - [0x8e2160, ia8, img/twinkle.ia8, 24, 32]
-  #   - [0x8e2460, databin] #endDL command from rgb2c
-
-  #   - [0x8E2468, ia8, img/twinkle2.ia8, 24, 32]
-  #   - [0x8e2768, databin] #endDL command from rgb2c
-
-  #   - [0x8e2770, ia8, img/puff2.ia8, 32, 32]
-
-  #   - [0x8E2B70, ci8, img/caterpillarPart.ci8, 40, 40]
-  #   - [0x8e31b0, palette, img/caterpillarPart.ci8]
-  #   - [0x8e33b0, databin] #endDL command from rgb2c
-
-  #   - [0x8e33b8, ia4, img/blackBall.ia4, 32, 32]
-    
-  #   - [0x8E35B8, ci8, img/fern.ci8, 48, 40]
-  #   - [0x8E3D38, palette, img/fern.ci8]
-    
-  #   - [0x8e3f38, ci8, img/tree.ci8, 40, 48]
-  #   - [0x8E46B8, palette, img/tree.ci8]
-  #   - [0x8e48b8, databin] #endDL command from rgb2c
-
-  #   - [0x8e48c0, ia8, img/smokeCircle.ia8, 48, 48]
-  #   - [0x8e51c0, databin] #endDL command from rgb2c
-
-  #   - [0x8e51c8, ia4, img/tinyEye01.ia4, 16, 16]
-  #   - [0x8E5248, databin] #endDL command from rgb2c
-  #   - [0x8E5250, ia4, img/tinyEye02.ia4, 16, 16]
-  #   - [0x8E52D0, databin] #endDL command from rgb2c
-  #   - [0x8E52D8, ia4, img/tinyEye03.ia4, 16, 16]
-  #   - [0x8E5358, databin] #endDL command from rgb2c
-  #   - [0x8E5360, ia4, img/tinyEye04.ia4, 16, 16]
-  #   - [0x8E53E0, databin] #endDL command from rgb2c
-  #   - [0x8E53E8, ia4, img/tinyEye05.ia4, 16, 16]
-  #   - [0x8E5468, databin] #endDL command from rgb2c
-  #   - [0x8E5470, ia4, img/tinyEye06.ia4, 16, 16]
-  #   - [0x8E54F0, databin] #endDL command from rgb2c
-  #   - [0x8E54F8, ia4, img/tinyEye07.ia4, 16, 16]
-  #   - [0x8E5578, databin] #endDL command from rgb2c
-  #   - [0x8E5580, ia4, img/tinyEye08.ia4, 16, 16]
-  #   - [0x8E5600, databin] #endDL command from rgb2c
-  #   - [0x8E5608, ia4, img/tinyEye09.ia4, 16, 16]
-  #   - [0x8E5688, databin] #endDL command from rgb2c
-  #   - [0x8E5690, ia4, img/tinyEye10.ia4, 16, 16]
-  #   - [0x8E5710, databin] #endDL command from rgb2c
-  #   - [0x8E5718, ia4, img/tinyEye11.ia4, 16, 16]
-  #   - [0x8E5798, databin] #endDL command from rgb2c
-  #   - [0x8E57A0, ia4, img/tinyEye12.ia4, 16, 16]
-  #   - [0x8E5820, databin] #endDL command from rgb2c
-
-  #   - [0x8E5828, rgba16, img/eyeBlinkUnused.rgba16, 128, 32]
-  #   - [0x8e7828, databin] #endDL command from rgb2c
-
-  #   - [0x8e7830, rgba16, img/twirlEyeUnused.rgba16, 96, 32]
-  #   - [0x8e9030, databin] #endDL command from rgb2c
-
-  #   - [0x8e9038, rgba16, img/sexyEyeUnused.rgba16, 96, 32]
-
-  #   - [0x8ea838, ci8, img/grayAnt.ci8, 320, 120]
-  #   - [0x8f3e38, palette, img/grayAnt.ci8]
-
-  #   - [0x8f4038, ci8, img/greenAntBottom.ci8, 320, 160]
-  #   - [0x900838, palette, img/greenAntBottom.ci8]
-
-  #   - [0x900A38, ci8, img/greenAntTop.ci8, 80, 240]
-  #   - [0x905538, palette, img/greenAntTop.ci8]
-
-  #   - [0x905738, ci8, img/caterpillar.ci8, 160, 240]
-  #   - [0x90ed38, palette, img/caterpillar.ci8]
-
-  #   - [0x90ef38, ci8, img/mine.ci8, 120, 40]
-  #   - [0x9101f8, palette, img/mine.ci8]
-
-  #   - [0x9103f8, ci8, img/grenade.ci8, 240, 240]
-  #   - [0x91e4f8, palette, img/grenade.ci8]
-
-  #   - [0x91e6f8, ci8, img/missile.ci8, 80, 240]
-  #   - [0x9231f8, palette, img/missile.ci8]
-    
-  #   - [0x9233f8, ci8, img/bomb.ci8, 120, 40]
-  #   - [0x9246b8, palette, img/bomb.ci8]
-  #   - [0x9248b8, databin] #endDL command from rgb2c
-
-  #   - [0x9248c0, rgba16, img/bombSnakeEyes.rgba16, 64, 32]
-  #   - [0x9258c0, databin] #endDL command from rgb2c
-    
-  #   - [0x9258c8, rgba16, img/bombSnakePart.rgba16, 40, 40]
-  #   - [0x926548, databin] #endDL command from rgb2c
-
-  #   - [0x926550, rgba16, img/balloonUnused.rgba16, 80, 40]
-    
-  #   - [0x927E50, ci8, img/iceCreamSandwich.ci8, 160, 40]
-  #   - [0x929750, palette, img/iceCreamSandwich.ci8]
-    
-  #   - [0x929950, ci8, img/chocoKid.ci8, 320, 120]
-  #   - [0x932f50, palette, img/chocoKid.ci8]
-
-  #   - [0x933150, ci8, img/popcorn.ci8, 40, 40]
-  #   - [0x933790, palette, img/popcorn.ci8]
-
-  #   - [0x933990, ci8, img/sandCrab.ci8, 160, 240]
-  #   - [0x93cf90, palette, img/sandCrab.ci8]
-
-  #   - [0x93d190, ci8, img/sandCrabOut.ci8, 80, 240]
-  #   - [0x941c90, palette, img/sandCrabOut.ci8]
-    
-  #   - [0x941E90, ci8, img/condor.ci8, 240, 40]
-  #   - [0x944410, palette, img/condor.ci8]
-
-  #   - [0x944610, ci8, img/fireSprite.ci8, 240, 48]
-  #   - [0x947310, palette, img/fireSprite.ci8]
-
-  #   - [0x947510, ci8, img/litCandle.ci8, 96, 56]
-  #   - [0x948a10, palette, img/litCandle.ci8]
-  #   - [0x948c10, databin] #endDL command from rgb2c
-
-  #   - [0x948C18, rgba16, img/shoe.rgba16, 320, 240]
-  #   - [0x96e418, databin] #endDL command from rgb2c
-
-  #   - [0x96e420, rgba16, img/plate.rgba16, 40, 40]
-
-  #   - [0x96F0A0, ci8, img/porcupine.ci8, 160, 120]
-  #   - [0x973BA0, palette, img/porcupine.ci8]
-
-  #   - [0x973da0, ci8, img/spider.ci8, 384, 80]
-  #   - [0x97B5A0, palette, img/spider.ci8]
-
-  #   - [0x97B7A0, ci8, img/butterfly.ci8, 320, 240]
-  #   - [0x98e3a0, palette, img/butterfly.ci8]
-  #   - [0x98e5a0, databin] #endDL command from rgb2c
-
-  #   - [0x98e5a8, ia4, img/kettle.ia4, 120, 40]
-  #   - [0x98ef08, databin] #endDL command from rgb2c
-
-  #   - [0x98ef10, ia4, img/plate.ia4, 120, 40]
-  #   - [0x98f870, databin] #endDL command from rgb2c
-
-  #   - [0x98f878, ia4, img/ballNumbers.ia4, 360, 40]
-  #   - [0x991498, databin] #endDL command from rgb2c
-
-  #   - [0x9914A0, ia8, img/ball.ia8, 128, 64]
-  #   - [0x9934a0, databin] #endDL command from rgb2c
-
-  #   - [0x9934a8, ia4, img/candle.ia4, 32, 56]
-  #   - [0x993828, databin] #endDL command from rgb2c
-
-  #   - [0x993830, ci8, img/DCBG1.ci8, 64, 256]
-  #   - [0x997830, databin] #endDL command from rgb2c
-  #   - [0x997838, palette, img/DCBG1.ci8]
-  #   - [0x997A38, databin] #endDL command from rgb2c
-
-  #   - [0x997A40, ci8, img/DCBG2.ci8, 64, 256]
-  #   - [0x99BA40, databin] #endDL command from rgb2c
-  #   - [0x99BA48, palette, img/DCBG2.ci8]
-  #   - [0x99BC48, databin] #endDL command from rgb2c
-
-  #   - [0x99BC50, ci8, img/DCBG3.ci8, 64, 256]
-  #   - [0x99fc50, databin] #endDL command from rgb2c
-  #   - [0x99fc58, palette, img/DCBG3.ci8]
-  #   - [0x99fe58, databin] #endDL command from rgb2c
-
-  #   - [0x99fe60, ci8, img/DCBG4.ci8, 64, 256]
-  #   - [0x9A3E60, databin] #endDL command from rgb2c
-  #   - [0x9A3E68, palette, img/DCBG4.ci8]
-  #   - [0x9A4068, databin] #endDL command from rgb2c
-    
-  #   - [0x9A4070, ci8, img/DCBG5.ci8, 64, 256]
-  #   - [0x9A8070, databin] #endDL command from rgb2c
-  #   - [0x9A8078, palette, img/DCBG5.ci8]
-  #   - [0x9a8278, databin] #endDL command from rgb2c
-
-  #   - [0x9a8280, ci4, img/JLBG1.ci4, 64, 256]
-  #   - [0x9aa280, databin] #endDL command from rgb2c
-  #   - [0x9aa288, palette, img/JLBG1.ci4]
-  #   - [0x9AA488, databin] #endDL command from rgb2c
-
-  #   - [0x9AA490, ci4, img/JLBG2.ci4, 64, 256]
-  #   - [0x9AC490, databin] #endDL command from rgb2c
-  #   - [0x9AC498, palette, img/JLBG2.ci4]
-  #   - [0x9ac698, databin] #endDL command from rgb2c
-
-  #   - [0x9ac6A0, ci4, img/JLBG3.ci4, 64, 256]
-  #   - [0x9ae6a0, databin] #endDL command from rgb2c
-  #   - [0x9ae6a8, palette, img/JLBG3.ci4]
-  #   - [0x9ae8a8, databin] #endDL command from rgb2c
-
-  #   - [0x9ae8b0, ci4, img/JLBG4.ci4, 64, 256]
-  #   - [0x9b08b0, databin] #endDL command from rgb2c
-  #   - [0x9b08b8, palette, img/JLBG4.ci4]
-  #   - [0x9b0ab8, databin] #endDL command from rgb2c
-
-  #   - [0x9b0ac0, ci4, img/JLBG5.ci4, 64, 256]
-  #   - [0x9b2ac0, databin] #endDL command from rgb2c
-  #   - [0x9b2ac8, palette, img/JLBG5.ci4]
-  #   - [0x9b2cc8, databin] #endDL command from rgb2c
-
-  #   - [0x9b2cd0, ia8, img/poleThing.ia8, 16, 64]
-
-  # - name: assets1
-  #   type: code
-  #   subalign: 8
-  #   start: 0x9B30D0
-  #   subsegments:
-  #     #starts 
-  #   - [0x9B30D0, ci8, img/crown.ci8, 48, 40]
-  #   - [0x9B3850, palette, img/crown.ci8]
-
-  #   - [0x9B3A50, ci8, img/redHeart.ci8, 40, 40]
-  #   - [0x9B4090, palette, img/redHeart.ci8]
-
-  #   - [0x9B4290, ci8, img/orangeHeart.ci8, 40, 40]
-  #   - [0x9B48D0, palette, img/orangeHeart.ci8]
-
-  #   - [0x9B4AD0, ci8, img/yellowHeart.ci8, 40, 40]
-  #   - [0x9B5110, palette, img/yellowHeart.ci8]
-
-  #   - [0x9B5310, ci8, img/powerup1.ci8, 120, 40]
-  #   - [0x9b65d0, palette, img/powerup1.ci8]
-
-  #   - [0x9b67d0, ci8, img/powerup2.ci8, 120, 40]
-  #   - [0x9b7a90, palette, img/powerup2.ci8]
-
-  #   - [0x9b7c90, ci8, img/powerup3.ci8, 120, 40]
-  #   - [0x9b8f50, palette, img/powerup3.ci8]
-
-  #   - [0x9b9150, ci8, img/powerup4.ci8, 120, 40]
-  #   - [0x9ba410, palette, img/powerup4.ci8]
-
-  #   - [0x9BA610, ci8, img/carrot.ci8, 40, 40]
-  #   - [0x9BAC50, palette, img/carrot.ci8]
-
-  #   - [0x9bae50, ci8, img/stopWatch.ci8, 360, 80]
-  #   - [0x9c1ed0, palette, img/stopWatch.ci8]
-  #   - [0x9c20d0, databin] #endDL command from rgb2c
-
-  #   - [0x9c20d8, ci4, img/boardTileable.ci4, 288, 24]
-  #   - [0x9c2e58, databin] #endDL command from rgb2c
-  #   - [0x9c2e60, palette, img/boardTileable.ci4]
-  #   - [0x9c3060, databin] #endDL command from rgb2c
-
-  #   - [0x9c3068, ci8, img/board.ci8, 96, 32]
-  #   - [0x9c3c68, databin] #endDL command from rgb2c
-  #   - [0x9c3c70, palette, img/board.ci8]
-  #   - [0x9c3e70, databin] #endDL command from rgb2c
-
-  #   - [0x9c3e78, ia8, img/chameleonUnused.ia8, 224, 48]
-  #   - [0x9c6878, databin] #endDL command from rgb2c
-
-  #   - [0x9c6880, ia8, img/twistUnused.ia8, 120, 40]
-  #   - [0x9c7b40, databin] #endDL command from rgb2c
-
-  #   - [0x9c7b48, ci8, img/gameOverTextUnused.ci8, 224, 32]
-  #   - [0x9c9748, databin] #endDL command from rgb2c
-  #   - [0x9c9750, palette, img/gameOverTextUnused.ci8]
-  #   - [0x9C9950, databin] #endDL command from rgb2c
-
-  #   - [0x9C9958, ci8, img/JungleLandIcon.ci8, 64, 64]
-  #   - [0x9ca958, databin] #endDL command from rgb2c
-  #   - [0x9ca960, palette, img/JungleLandIcon.ci8]
-  #   - [0x9CAB60, databin] #endDL command from rgb2c
-
-  #   - [0x9CAB68, ci8, img/BombLandIcon.ci8, 64, 64]
-  #   - [0x9cbb68, databin] #endDL command from rgb2c
-  #   - [0x9cbb70, palette, img/BombLandIcon.ci8]
-  #   - [0x9CBD70, databin] #endDL command from rgb2c
-
-  #   - [0x9CBD78, ci8, img/AntLandIcon.ci8, 64, 64]
-  #   - [0x9ccd78, databin] #endDL command from rgb2c
-  #   - [0x9ccd80, palette, img/AntLandIcon.ci8]
-  #   - [0x9CCF80, databin] #endDL command from rgb2c
-
-  #   - [0x9CCF88, ci8, img/DesertCastleIcon.ci8, 64, 64]
-  #   - [0x9cdf88, databin] #endDL command from rgb2c
-  #   - [0x9cdf90, palette, img/DesertCastleIcon.ci8]
-  #   - [0x9CE190, databin] #endDL command from rgb2c
-
-  #   - [0x9CE198, ci8, img/KidsLandIcon.ci8, 64, 64]
-  #   - [0x9cf198, databin] #endDL command from rgb2c
-  #   - [0x9cf1A0, palette, img/KidsLandIcon.ci8]
-  #   - [0x9cf3a0, databin] #endDL command from rgb2c
-
-  #   - [0x9CF3A8, ci8, img/GhostCastleIcon.ci8, 64, 64]
-  #   - [0x9d03a8, databin]  #endDL command from rgb2c
-  #   - [0x9d03b0, palette, img/GhostCastleIcon.ci8]
-  #   - [0x9D05B0, databin]  #endDL command from rgb2c
-    
-  #   - [0x9D05B8, ci8, img/BossRushIcon.ci8, 32, 32]
-  #   - [0x9d09b8, databin]  #endDL command from rgb2c
-  #   - [0x9d09c0, palette, img/BossRushIcon.ci8]
-  #   - [0x9d0bc0, databin]  #endDL command from rgb2c
-
-  #   - [0x9D0bc8, ci8, img/pouseUnused.ci8, 192, 32]
-  #   - [0x9D23c8, databin]  #endDL command from rgb2c
-  #   - [0x9D23d0, palette, img/pouseUnused.ci8]
-  #   - [0x9D25D0, databin]  #endDL command from rgb2c
-
-  #   - [0x9D25D8, ci8, img/jss.ci8, 112, 72]
-  #   - [0x9D4558, databin]  #endDL command from rgb2c
-  #   - [0x9D4560, palette, img/jss.ci8]
-  #   - [0x9D4760, databin]  #endDL command from rgb2c
-
-  #   - [0x9D4768, ia8, img/jssCat.ia8, 448, 56]
-  #   - [0x9DA968, databin]  #endDL command from rgb2c
-
-  #   - [0x9DA970, ia4, img/textBigger.ia4, 320, 64]
-  #   - [0x9DD170, databin]  #endDL command from rgb2c
-
-  #   - [0x9DD178, ci8, img/battleIcon1.ci8, 40, 40]
-  #   - [0x9dd7b8, databin]  #endDL command from rgb2c
-  #   - [0x9dd7C0, palette, img/battleIcon1.ci8]
-  #   - [0x9dd9c0, databin]  #endDL command from rgb2c
-
-  #   - [0x9dd9c8, ci8, img/battleIcon2.ci8, 40, 40]
-  #   - [0x9DE008, databin]  #endDL command from rgb2c
-  #   - [0x9DE010, palette, img/battleIcon2.ci8]
-  #   - [0x9de210, databin]  #endDL command from rgb2c
-
-  #   - [0x9de218, ci8, img/battleIcon3.ci8, 40, 40]
-  #   - [0x9DE858, databin]  #endDL command from rgb2c
-  #   - [0x9DE860, palette, img/battleIcon3.ci8]
-  #   - [0x9dea60, databin]  #endDL command from rgb2c
-
-  #   - [0x9dea68, ci8, img/battleIcon4.ci8, 40, 40]
-  #   - [0x9DF0A8, databin]  #endDL command from rgb2c
-  #   - [0x9DF0B0, palette, img/battleIcon4.ci8]
-  #   - [0x9df2b0, databin]  #endDL command from rgb2c
-
-  #   - [0x9df2b8, ci8, img/battleIcon5.ci8, 40, 40]
-  #   - [0x9DF8F8, databin]  #endDL command from rgb2c
-  #   - [0x9DF900, palette, img/battleIcon5.ci8]
-  #   - [0x9dfb00, databin]  #endDL command from rgb2c
-
-  #   - [0x9dfb08, ci8, img/battleIcon6.ci8, 40, 40]
-  #   - [0x9E0148, databin]  #endDL command from rgb2c
-  #   - [0x9E0150, palette, img/battleIcon6.ci8]
-  #   - [0x9e0350, databin]  #endDL command from rgb2c
-
-  #   - [0x9e0358, ci8, img/battleIcon7.ci8, 40, 40]
-  #   - [0x9E0998, databin]  #endDL command from rgb2c
-  #   - [0x9E09A0, palette, img/battleIcon7.ci8]
-  #   - [0x9e0ba0, databin]  #endDL command from rgb2c
-
-  #   - [0x9e0ba8, ci8, img/battleIcon8.ci8, 40, 40]
-  #   - [0x9E11E8, databin]  #endDL command from rgb2c
-  #   - [0x9E11F0, palette, img/battleIcon8.ci8]
-  #   - [0x9e13f0, databin]  #endDL command from rgb2c
-
-  #   - [0x9e13f8, ia8, img/arrow1.ia8, 8, 16]
-  #   - [0x9e1478, databin]  #endDL command from rgb2c
-
-  # - name: assets2
-  #   type: code
-  #   subalign: 8
-  #   start: 0x9e1480
-  #   subsegments:
-  #   - [0x9e1480, ci8, img/davyIcon.ci8, 16, 16]
-  #   - [0x9E1580, databin]  #endDL command from rgb2c
-  #   - [0x9E1588, palette, img/davyIcon.ci8]
-  #   - [0x9e1788, databin]  #endDL command from rgb2c
-
-  #   - [0x9e1790, ci8, img/jackIcon.ci8, 16, 16]
-  #   - [0x9E1890, databin]  #endDL command from rgb2c
-  #   - [0x9E1898, palette, img/jackIcon.ci8]
-  #   - [0x9e1a98, databin]  #endDL command from rgb2c
-
-  #   - [0x9e1aA0, ci8, img/fredIcon.ci8, 16, 16]
-  #   - [0x9E1BA0, databin]  #endDL command from rgb2c
-  #   - [0x9E1BA8, palette, img/fredIcon.ci8]
-  #   - [0x9e1da8, databin]  #endDL command from rgb2c
-
-  #   - [0x9e1db0, ci8, img/lindaIcon.ci8, 16, 16]
-  #   - [0x9E1EB0, databin]  #endDL command from rgb2c
-  #   - [0x9E1EB8, palette, img/lindaIcon.ci8]
-  #   - [0x9e20b8, databin]  #endDL command from rgb2c
-
-  #   - [0x9e20C0, ci8, img/blackIcon.ci8, 16, 16]
-  #   - [0x9E21C0, databin]  #endDL command from rgb2c
-  #   - [0x9E21C8, palette, img/blackIcon.ci8]
-  #   - [0x9e23c8, databin]  #endDL command from rgb2c
-
-  #   - [0x9e23d0, ci8, img/whiteIcon.ci8, 16, 16]
-  #   - [0x9E24D0, databin]  #endDL command from rgb2c
-  #   - [0x9E24D8, palette, img/whiteIcon.ci8]
-  #   - [0x9e26d8, databin]  #endDL command from rgb2c
-
-  #   - [0x9e26E0, ia8, img/whiteIcon.ia8, 144, 16]
-  #   - [0x9E2FE0, databin]  #endDL command from rgb2c
-
-  #   - [0x9E2FE8, ci4, img/crownIcon.ci4, 16, 16]
-  #   - [0x9E3068, databin]  #endDL command from rgb2c
-  #   - [0x9E3070, palette, img/crownIcon.ci4]
-  #   - [0x9e3270, databin]  #endDL command from rgb2c
-
-  #   - [0x9E3278, ia4, img/arrowAnim.ia4, 288, 128]
-  #   - [0x9E7A78, databin]  #endDL command from rgb2c
-
-  #   - [0x9E7A80, rgba16, img/TitleScreen.rgba16, 320, 240]
-  #   - [0xA0D280, databin] #endDL command from rgb2c
-  #   - [0xA0D288, rgba16, img/StageSelectBackground.rgba16, 320, 240]
-  #   - [0xA32A88, databin] #endDL command from rgb2c
-  #   - [0xA32A90, ia8, img/JungleLandText.ia8, 104, 16]
-  #   - [0xA33110, databin] #endDL command from rgb2c
-  #   - [0xA33118, ia8, img/AntLandText.ia8, 104, 16]
-  #   - [0xA33798, databin] #endDL command from rgb2c
-  #   - [0xA337A0, ia8, img/BombLandText.ia8, 104, 16]
-  #   - [0xA33E20, databin] #endDL command from rgb2c
-  #   - [0xA33E28, ia8, img/DesertCastleText.ia8, 104, 16]
-  #   - [0xA344A8, databin] #endDL command from rgb2c
-  #   - [0xA344B0, ia8, img/KidsLandText.ia8, 104, 16]
-  #   - [0xA34B30, databin] #endDL command from rgb2c
-  #   - [0xA34B38, ia8, img/GhostCastleText.ia8, 104, 16]
-  #   - [0xA351B8, databin] #endDL command from rgb2c
-
-  #   - [0xA351C0, ci8, img/JungleLandText2.ci8, 112, 24]
-  #   - [0xA35C40, databin]  #endDL command from rgb2c
-  #   - [0xA35C48, palette, img/JungleLandText2.ci8]
-  #   - [0xA35E48, databin]  #endDL command from rgb2c
-  #   - [0xA35E50, ci8, img/AntLandText2.ci8, 112, 24]
-  #   - [0xA368D0, databin]  #endDL command from rgb2c
-  #   - [0xA368D8, palette, img/AntLandText2.ci8]
-  #   - [0xA36AD8, databin] #endDL command from rgb2c
-  #   - [0xA36ae0, ci8, img/BombLandText2.ci8, 112, 24]
-  #   - [0xA37560, databin]  #endDL command from rgb2c
-  #   - [0xA37568, palette, img/BombLandText2.ci8]
-  #   - [0xA37768, databin]  #endDL command from rgb2c
-  #   - [0xa37770, ci8, img/DesertCastleText2.ci8, 112, 24]
-  #   - [0xA381F0, databin]  #endDL command from rgb2c
-  #   - [0xA381F8, palette, img/DesertCastleText2.ci8]
-  #   - [0xA383f8, databin] #endDL command from rgb2c
-  #   - [0xA38400, ci8, img/KidsLandText2.ci8, 112, 24]
-  #   - [0xA38E80, databin]  #endDL command from rgb2c
-  #   - [0xA38E88, palette, img/KidsLandText2.ci8]
-  #   - [0xa39088, databin]  #endDL command from rgb2c
-  #   - [0xa39090, ci8, img/GhostCastleText2.ci8, 112, 24]
-  #   - [0xA39B10, databin]  #endDL command from rgb2c
-  #   - [0xA39B18, palette, img/GhostCastleText2.ci8]
-  #   - [0xa39d18, databin] #endDL command from rgb2c
-    
-  #   - [0xa39d20, ci8, img/quintellaDeadEye.ci8, 32, 32]
-  #   - [0xA3A120, databin]  #endDL command from rgb2c
-  #   - [0xA3A128, palette, img/quintellaDeadEye.ci8]
-  #   - [0xa3a328, databin]  #endDL command from rgb2c
-
-  #   - [0xa3a330, ci4, img/lizardKongDeadEyes.ci4, 64, 64]
-  #   - [0xA3AB30, databin]  #endDL command from rgb2c
-  #   - [0xA3AB38, palette, img/lizardKongDeadEyes.ci4]
-  #   - [0xa3ad38, databin] #endDL command from rgb2c
-
-  #   - [0xa3ad40, ci8, img/armadilloDeadEyes.ci8, 64, 32]
-  #   - [0xA3B540, databin]  #endDL command from rgb2c
-  #   - [0xA3B548, palette, img/armadilloDeadEyes.ci8]
-  #   - [0xa3b748, databin] #endDL command from rgb2c
-
-  #   - [0xa3b750, ia4, img/sunsoft.ia4, 192, 40]
-  #   - [0xa3c650, databin]  #endDL command from rgb2c
-
-  #   - [0xa3c658, ci8, img/battleRanking.ci8, 320, 240]
-  #   - [0xA4F258, databin] #endDL command from rgb2c
-  #   - [0xA4F260, palette, img/battleRanking.ci8]
-  #   - [0xa4f460, databin] #endDL command from rgb2c
-    
-  #   - [0xA4F468, ci8, img/QuestionMark.ci8, 112, 24] # "....?" image from file select
-  #   - [0xA4FEE8, databin] #endDL command from rgb2c
-  #   - [0xA4FEF0, palette, img/QuestionMark.ci8]
-  #   - [0xA500F0, databin] #endDL command from rgb2c
-
-  #   - [0xa500f8, ci8, img/battleSelect.ci8, 320, 240] # "....?" image from file select
-  #   - [0xA62CF8, databin] #endDL command from rgb2c
-  #   - [0xA62D00, palette, img/battleSelect.ci8]
-
-  #   - [0xa62f00, ci8, img/bombSnakeParts.ci8, 480, 40]
-  #   - [0xA67A00, palette, img/bombSnakeParts.ci8]
-  #   - [0xa67c00, databin] #endDL command from rgb2c
-
-  #   - [0xa67c08, ci8, img/ranking.ci8, 320, 240]
-  #   - [0xA7A808, databin] #endDL command from rgb2c
-  #   - [0xA7A810, palette, img/ranking.ci8]
-  #   - [0xa7aa10, databin] #endDL command from rgb2c
-
-  #   - [0xa7aa18, ia8, img/rankingNumbers.ia8, 96, 16]
-  #   - [0xA7B018, databin] #endDL command from rgb2c
-
-  #   - [0xA7B020, ia8, img/rankingLevel.ia8, 40, 12]
-  #   - [0xa7b200, databin] #endDL command from rgb2c
-
-  #   - [0xa7b208, ia8, img/hexagon.ia8, 64, 64]
-  #   - [0xA7C208, databin] #endDL command from rgb2c
-
-  #   - [0xA7C210, ia4, img/square.ia4, 48, 48]
-  #   - [0xa7c690, databin] #endDL command from rgb2c
-
-  #   - [0xa7c698, ia4, img/japanSystemSupplyC1997.ia4, 256, 16]
-  #   - [0xA7CE98, databin] #endDL command from rgb2c # loaded in func_800AAB0C to *D_80200C8C. 0x42B0 bytes
-
-  #   - [0xA7CEA0, ia4, img/theEnd.ia4, 128, 32]
-  #   - [0xA7D6A0, databin] #endDL command from rgb2c
-
-  #   - [0xa7d6a8, ia4, img/bowlingSquare.ia4, 24, 24]
-  #   - [0xa7d7c8, databin] #endDL command from rgb2c
-
-  #   - [0xa7d7D0, ia4, img/bowlingNumbers.ia4, 224, 16]
-  #   - [0xA7ded0, databin] #endDL command from rgb2c
-
-  #   - [0xA7DED8, ia4, img/rabbitBowl.ia4, 256, 144] #check sizes in game pls
-  #   - [0xA826D8, databin] #endDL command from rgb2c
-
-  #   - [0xA826E0, ia4, img/bowlingLastSquare.ia4, 40, 24] #check sizes in game pls
-  #   - [0xA828C0, databin] #endDL command from rgb2c
-
-  #   - [0xA828C8, ci8, img/crownSmall.ci8, 32, 24]
-  #   - [0xA82BC8, databin] #endDL command from rgb2c
-  #   - [0xA82BD0, palette, img/crownSmall.ci8]
-  #   - [0xa82dd0, databin] #endDL command from rgb2c
-
-  #   - [0xA82DD8, ci8, img/carrotSmall.ci8, 24, 24]
-  #   - [0xA83018, databin] #endDL command from rgb2c
-  #   - [0xA83020, palette, img/carrotSmall.ci8]
-  #   - [0xa83220, databin] #endDL command from rgb2c
-
-  #   - [0xa83228, rgba16, img/bossMeter.rgba16, 40, 16]
-  #   - [0xA83728, databin] #endDL command from rgb2c
-  #   - [0xA83730, rgba16, img/bossHealth.rgba16, 16, 16]
-  #   - [0xA83930, databin] #endDL command from rgb2c
-
-  #   - [0xa83938, ci4, img/iDontKnow.ci4, 352, 288]
-  #   - [0xA8FF38, databin] #endDL command from rgb2c
-  #   - [0xA8FF40, palette, img/iDontKnow.ci4]
-  #   - [0xa90140, databin] #endDL command from rgb2c
-
-  #   - [0xa90148, ia8, img/menuOptions.ia8, 128, 144]
-
-  #   - [0xA94948, databin, unkAnimData]
+  - start: 0x8c26a0
+    name: extImages
+    vram: 0x10000000 #SEGMENT 0x10
+    dir: img
+    subalign: 8
+    type: code
+    subsegments:
+    - [auto, c, extImages]
+    - name: extImages
+      dir: extImages
+      type: .data
+      subalign: 8
+      vram: 0x80FF20E8
+      start: 0x8c26a0
+      subsegments:
+      - [0x8c26a0] #B8000000
+
+      - [0x8c26a8, ia8, symbols.ia8, 464, 16]
+      - [0x8c43a8] #B8000000
+
+      - [0x8c43b0, ci8, davyEyeR.ci8, 32, 32]
+      - [0x8c47b0] #B8000000
+      - [0x8c47b8, palette, davyEyeR.ci8]
+      - [0x8c49b8] #B8000000
+
+      - [0x8c49c0, ci8, davyClosedEyeR.ci8, 32, 32]
+      - [0x8c4dc0] #B8000000
+      - [0x8c4dc8, palette, davyClosedEyeR.ci8]
+      - [0x8c4fc8] #B8000000
+
+      - [0x8c4fd0, ci8, davySadEyeR.ci8, 32, 32]
+      - [0x8c53d0] #B8000000
+      - [0x8c53d8, palette, davySadEyeR.ci8]
+      - [0x8c55d8] #B8000000
+
+      - [0x8c55e0, ci8, davyHappyEyeR.ci8, 32, 32]
+      - [0x8c59e0] #B8000000
+      - [0x8c59e8, palette, davyHappyEyeR.ci8]
+      - [0x8c5be8] #B8000000
+
+      - [0x8c5bf0, ci8, davyHurtEyeR.ci8, 32, 32]
+      - [0x8c5ff0] #B8000000
+      - [0x8c5ff8, palette, davyHurtEyeR.ci8]
+      - [0x8c61f8] #B8000000
+
+      - [0x8c6200, ci8, davyEyeL.ci8, 32, 32]
+      - [0x8c6600] #B8000000
+      - [0x8c6608, palette, davyEyeL.ci8]
+      - [0x8c6808] #B8000000
+
+      - [0x8c6810, ci8, davyClosedEyeL.ci8, 32, 32]
+      - [0x8c6c10] #B8000000
+      - [0x8c6c18, palette, davyClosedEyeL.ci8]
+      - [0x8c6e18] #B8000000
+
+      - [0x8c6e20, ci8, davySadEyeL.ci8, 32, 32]
+      - [0x8c7220] #B8000000
+      - [0x8c7228, palette, davySadEyeL.ci8]
+      - [0x8c7428] #B8000000
+
+      - [0x8c7430, ci8, davyHappyEyeL.ci8, 32, 32]
+      - [0x8c7830] #B8000000
+      - [0x8c7838, palette, davyHappyEyeL.ci8]
+      - [0x8c7a38] #B8000000
+
+      - [0x8c7a40, ci8, davyHurtEyeL.ci8, 32, 32]
+      - [0x8c7e40] #B8000000
+      - [0x8c7e48, palette, davyHurtEyeL.ci8]
+      - [0x8c8048] #B8000000
+
+      - [0x8c8050, ci8, jackEyeR.ci8, 32, 32]
+      - [0x8c8450] #B8000000
+      - [0x8c8458, palette, jackEyeR.ci8]
+      - [0x8c8658] #B8000000
+
+      - [0x8c8660, ci8, jackClosedEyeR.ci8, 32, 32]
+      - [0x8c8a60] #B8000000
+      - [0x8c8a68, palette, jackClosedEyeR.ci8]
+      - [0x8c8c68] #B8000000
+
+      - [0x8c8c70, ci8, jackSadEyeR.ci8, 32, 32]
+      - [0x8c9070] #B8000000
+      - [0x8c9078, palette, jackSadEyeR.ci8]
+      - [0x8c9278] #B8000000
+
+      - [0x8c9280, ci8, jackHappyEyeR.ci8, 32, 32]
+      - [0x8c9680] #B8000000
+      - [0x8c9688, palette, jackHappyEyeR.ci8]
+      - [0x8c9888] #B8000000
+
+      - [0x8c9890, ci8, jackHurtEyeR.ci8, 32, 32]
+      - [0x8c9c90] #B8000000
+      - [0x8c9c98, palette, jackHurtEyeR.ci8]
+      - [0x8c9e98] #B8000000
+
+      - [0x8c9ea0, ci8, jackEyeL.ci8, 32, 32]
+      - [0x8ca2a0] #B8000000
+      - [0x8ca2a8, palette, jackEyeL.ci8]
+      - [0x8ca4a8] #B8000000
+
+      - [0x8ca4b0, ci8, jackClosedEyeL.ci8, 32, 32]
+      - [0x8ca8b0] #B8000000
+      - [0x8ca8b8, palette, jackClosedEyeL.ci8]
+      - [0x8caab8] #B8000000
+
+      - [0x8caac0, ci8, jackSadEyeL.ci8, 32, 32]
+      - [0x8caec0] #B8000000
+      - [0x8caec8, palette, jackSadEyeL.ci8]
+      - [0x8cb0c8] #B8000000
+
+      - [0x8cb0d0, ci8, jackHappyEyeL.ci8, 32, 32]
+      - [0x8cb4d0] #B8000000
+      - [0x8cb4d8, palette, jackHappyEyeL.ci8]
+      - [0x8cb6d8] #B8000000
+
+      - [0x8cb6e0, ci8, jackHurtEyeL.ci8, 32, 32]
+      - [0x8cbae0] #B8000000
+      - [0x8cbae8, palette, jackHurtEyeL.ci8]
+      - [0x8cbce8] #B8000000
+
+      - [0x8cbcf0, ci8, lindaEyeR.ci8, 32, 32]
+      - [0x8cc0f0] #B8000000
+      - [0x8cc0f8, palette, lindaEyeR.ci8]
+      - [0x8cc2f8] #B8000000
+
+      - [0x8cc300, ci8, lindaClosedEyeR.ci8, 32, 32]
+      - [0x8cc700] #B8000000
+      - [0x8cc708, palette, lindaClosedEyeR.ci8]
+      - [0x8cc908] #B8000000
+
+      - [0x8cc910, ci8, lindaSadEyeR.ci8, 32, 32]
+      - [0x8ccd10] #B8000000
+      - [0x8ccd18, palette, lindaSadEyeR.ci8]
+      - [0x8ccf18] #B8000000
+
+      - [0x8ccf20, ci8, lindaHappyEyeR.ci8, 32, 32]
+      - [0x8cd320] #B8000000
+      - [0x8cd328, palette, lindaHappyEyeR.ci8]
+      - [0x8cd528] #B8000000
+
+      - [0x8cd530, ci8, lindaHurtEyeR.ci8, 32, 32]
+      - [0x8cd930] #B8000000
+      - [0x8cd938, palette, lindaHurtEyeR.ci8]
+      - [0x8cdb38] #B8000000
+
+      - [0x8cdb40, ci8, lindaEyeL.ci8, 32, 32]
+      - [0x8cdf40] #B8000000
+      - [0x8cdf48, palette, lindaEyeL.ci8]
+      - [0x8ce148] #B8000000
+
+      - [0x8ce150, ci8, lindaClosedEyeL.ci8, 32, 32]
+      - [0x8ce550] #B8000000
+      - [0x8ce558, palette, lindaClosedEyeL.ci8]
+      - [0x8ce758] #B8000000
+
+      - [0x8ce760, ci8, lindaSadEyeL.ci8, 32, 32]
+      - [0x8ceb60] #B8000000
+      - [0x8ceb68, palette, lindaSadEyeL.ci8]
+      - [0x8ced68] #B8000000
+
+      - [0x8ced70, ci8, lindaHappyEyeL.ci8, 32, 32]
+      - [0x8cf170] #B8000000
+      - [0x8cf178, palette, lindaHappyEyeL.ci8]
+      - [0x8cf378] #B8000000
+
+      - [0x8cf380, ci8, lindaHurtEyeL.ci8, 32, 32]
+      - [0x8cf780] #B8000000
+      - [0x8cf788, palette, lindaHurtEyeL.ci8]
+      - [0x8cf988] #B8000000
+
+      - [0x8cf990, ci8, fredEyeR.ci8, 32, 32]
+      - [0x8cfd90] #B8000000
+      - [0x8cfd98, palette, fredEyeR.ci8]
+      - [0x8cff98] #B8000000
+
+      - [0x8cffa0, ci8, fredClosedEyeR.ci8, 32, 32]
+      - [0x8d03a0] #B8000000
+      - [0x8d03a8, palette, fredClosedEyeR.ci8]
+      - [0x8d05a8] #B8000000
+
+      - [0x8d05b0, ci8, fredSadEyeR.ci8, 32, 32]
+      - [0x8d09b0] #B8000000
+      - [0x8d09b8, palette, fredSadEyeR.ci8]
+      - [0x8d0bb8] #B8000000
+
+      - [0x8d0bc0, ci8, fredHappyEyeR.ci8, 32, 32]
+      - [0x8d0fc0] #B8000000
+      - [0x8d0fc8, palette, fredHappyEyeR.ci8]
+      - [0x8d11c8] #B8000000
+
+      - [0x8d11d0, ci8, fredHurtEyeR.ci8, 32, 32]
+      - [0x8d15d0] #B8000000
+      - [0x8d15d8, palette, fredHurtEyeR.ci8]
+      - [0x8d17d8] #B8000000
+
+      - [0x8d17e0, ci8, fredEyeL.ci8, 32, 32]
+      - [0x8d1be0] #B8000000
+      - [0x8d1be8, palette, fredEyeL.ci8]
+      - [0x8d1de8] #B8000000
+
+      - [0x8d1df0, ci8, fredClosedEyeL.ci8, 32, 32]
+      - [0x8d21f0] #B8000000
+      - [0x8d21f8, palette, fredClosedEyeL.ci8]
+      - [0x8d23f8] #B8000000
+
+      - [0x8d2400, ci8, fredSadEyeL.ci8, 32, 32]
+      - [0x8d2800] #B8000000
+      - [0x8d2808, palette, fredSadEyeL.ci8]
+      - [0x8d2a08] #B8000000
+
+      - [0x8d2a10, ci8, fredHappyEyeL.ci8, 32, 32]
+      - [0x8d2e10] #B8000000
+      - [0x8d2e18, palette, fredHappyEyeL.ci8]
+      - [0x8d3018] #B8000000
+
+      - [0x8d3020, ci8, fredHurtEyeL.ci8, 32, 32]
+      - [0x8d3420] #B8000000
+      - [0x8d3428, palette, fredHurtEyeL.ci8]
+      - [0x8d3628] #B8000000
+
+      - [0x8d3630, ci8, blackEyeR.ci8, 32, 32]
+      - [0x8d3a30] #B8000000
+      - [0x8d3a38, palette, blackEyeR.ci8]
+      - [0x8d3c38] #B8000000
+
+      - [0x8d3c40, ci8, blackClosedEyeR.ci8, 32, 32]
+      - [0x8d4040] #B8000000
+      - [0x8d4048, palette, blackClosedEyeR.ci8]
+      - [0x8d4248] #B8000000
+
+      - [0x8d4250, ci8, blackSadEyeR.ci8, 32, 32]
+      - [0x8d4650] #B8000000
+      - [0x8d4658, palette, blackSadEyeR.ci8]
+      - [0x8d4858] #B8000000
+
+      - [0x8d4860, ci8, blackHappyEyeR.ci8, 32, 32]
+      - [0x8d4c60] #B8000000
+      - [0x8d4c68, palette, blackHappyEyeR.ci8]
+      - [0x8d4e68] #B8000000
+
+      - [0x8d4e70, ci8, blackHurtEyeR.ci8, 32, 32]
+      - [0x8d5270] #B8000000
+      - [0x8d5278, palette, blackHurtEyeR.ci8]
+      - [0x8d5478] #B8000000
+
+      - [0x8d5480, ci8, blackEyeL.ci8, 32, 32]
+      - [0x8d5880] #B8000000
+      - [0x8d5888, palette, blackEyeL.ci8]
+      - [0x8d5a88] #B8000000
+
+      - [0x8d5a90, ci8, blackClosedEyeL.ci8, 32, 32]
+      - [0x8d5e90] #B8000000
+      - [0x8d5e98, palette, blackClosedEyeL.ci8]
+      - [0x8d6098] #B8000000
+
+      - [0x8d60a0, ci8, blackSadEyeL.ci8, 32, 32]
+      - [0x8d64a0] #B8000000
+      - [0x8d64a8, palette, blackSadEyeL.ci8]
+      - [0x8d66a8] #B8000000
+
+      - [0x8d66b0, ci8, blackHappyEyeL.ci8, 32, 32]
+      - [0x8d6ab0] #B8000000
+      - [0x8d6ab8, palette, blackHappyEyeL.ci8]
+      - [0x8d6cb8] #B8000000
+
+      - [0x8d6cc0, ci8, blackHurtEyeL.ci8, 32, 32]
+      - [0x8d70c0] #B8000000
+      - [0x8d70c8, palette, blackHurtEyeL.ci8]
+      - [0x8d72c8] #B8000000
+
+      - [0x8d72d0, ci8, whiteEyeR.ci8, 32, 32]
+      - [0x8d76d0] #B8000000
+      - [0x8d76d8, palette, whiteEyeR.ci8]
+      - [0x8d78d8] #B8000000
+
+      - [0x8d78e0, ci8, whiteClosedEyeR.ci8, 32, 32]
+      - [0x8d7ce0] #B8000000
+      - [0x8d7ce8, palette, whiteClosedEyeR.ci8]
+      - [0x8d7ee8] #B8000000
+
+      - [0x8d7ef0, ci8, whiteSadEyeR.ci8, 32, 32]
+      - [0x8d82f0] #B8000000
+      - [0x8d82f8, palette, whiteSadEyeR.ci8]
+      - [0x8d84f8] #B8000000
+
+      - [0x8d8500, ci8, whiteHappyEyeR.ci8, 32, 32]
+      - [0x8d8900] #B8000000
+      - [0x8d8908, palette, whiteHappyEyeR.ci8]
+      - [0x8d8b08] #B8000000
+
+      - [0x8d8b10, ci8, whiteHurtEyeR.ci8, 32, 32]
+      - [0x8d8f10] #B8000000
+      - [0x8d8f18, palette, whiteHurtEyeR.ci8]
+      - [0x8d9118] #B8000000
+
+      - [0x8d9120, ci8, whiteEyeL.ci8, 32, 32]
+      - [0x8d9520] #B8000000
+      - [0x8d9528, palette, whiteEyeL.ci8]
+      - [0x8d9728] #B8000000
+
+      - [0x8d9730, ci8, whiteClosedEyeL.ci8, 32, 32]
+      - [0x8d9b30] #B8000000
+      - [0x8d9b38, palette, whiteClosedEyeL.ci8]
+      - [0x8d9d38] #B8000000
+
+      - [0x8d9d40, ci8, whiteSadEyeL.ci8, 32, 32]
+      - [0x8da140] #B8000000
+      - [0x8da148, palette, whiteSadEyeL.ci8]
+      - [0x8da348] #B8000000
+
+      - [0x8da350, ci8, whiteHappyEyeL.ci8, 32, 32]
+      - [0x8da750] #B8000000
+      - [0x8da758, palette, whiteHappyEyeL.ci8]
+      - [0x8da958] #B8000000
+
+      - [0x8da960, ci8, whiteHurtEyeL.ci8, 32, 32]
+      - [0x8dad60] #B8000000
+      - [0x8dad68, palette, whiteHurtEyeL.ci8]
+
+
+      - [0x8DAF68, ci8, fire.ci8, 256, 64]
+      - [0x8DEF68, palette, fire.ci8]
+      - [0x8df168] #B8000000
+
+      - [0x8df170, ia4, antHole.ia4, 32, 32]
+      - [0x8df370] #B8000000
+
+      - [0x8df378, ia4, sandCrabAppearUnused.ia4, 432, 40]
+      - [0x8e1538] #B8000000
+
+      - [0x8e1540, ci4, cloud.ci4, 64, 32]
+      - [0x8e1940] #B8000000
+      - [0x8e1948, palette, cloud.ci4]
+      - [0x8e1b48] #B8000000
+
+      - [0x8e1b50, ci4, cloud2.ci4, 64, 32]
+      - [0x8e1f50] #B8000000
+      - [0x8e1f58, palette, cloud2.ci4]
+      - [0x8e2158] #B8000000
+
+      - [0x8e2160, ia8, twinkle.ia8, 24, 32]
+      - [0x8e2460] #B8000000
+
+      - [0x8E2468, ia8, twinkle2.ia8, 24, 32]
+      - [0x8e2768] #B8000000
+
+      - [0x8e2770, ia8, puff2.ia8, 32, 32]
+
+      - [0x8E2B70, ci8, caterpillarPart.ci8, 40, 40]
+      - [0x8e31b0, palette, caterpillarPart.ci8]
+      - [0x8e33b0] #B8000000
+
+      - [0x8e33b8, ia4, blackBall.ia4, 32, 32]
+      
+      - [0x8E35B8, ci8, fern.ci8, 48, 40]
+      - [0x8E3D38, palette, fern.ci8]
+      
+      - [0x8e3f38, ci8, tree.ci8, 40, 48]
+      - [0x8E46B8, palette, tree.ci8]
+      - [0x8e48b8] #B8000000
+
+      - [0x8e48c0, ia8, smokeCircle.ia8, 48, 48]
+      - [0x8e51c0] #B8000000
+
+      - [0x8e51c8, ia4, tinyEye01.ia4, 16, 16]
+      - [0x8E5248] #B8000000
+      - [0x8E5250, ia4, tinyEye02.ia4, 16, 16]
+      - [0x8E52D0] #B8000000
+      - [0x8E52D8, ia4, tinyEye03.ia4, 16, 16]
+      - [0x8E5358] #B8000000
+      - [0x8E5360, ia4, tinyEye04.ia4, 16, 16]
+      - [0x8E53E0] #B8000000
+      - [0x8E53E8, ia4, tinyEye05.ia4, 16, 16]
+      - [0x8E5468] #B8000000
+      - [0x8E5470, ia4, tinyEye06.ia4, 16, 16]
+      - [0x8E54F0] #B8000000
+      - [0x8E54F8, ia4, tinyEye07.ia4, 16, 16]
+      - [0x8E5578] #B8000000
+      - [0x8E5580, ia4, tinyEye08.ia4, 16, 16]
+      - [0x8E5600] #B8000000
+      - [0x8E5608, ia4, tinyEye09.ia4, 16, 16]
+      - [0x8E5688] #B8000000
+      - [0x8E5690, ia4, tinyEye10.ia4, 16, 16]
+      - [0x8E5710] #B8000000
+      - [0x8E5718, ia4, tinyEye11.ia4, 16, 16]
+      - [0x8E5798] #B8000000
+      - [0x8E57A0, ia4, tinyEye12.ia4, 16, 16]
+      - [0x8E5820] #B8000000
+
+      - [0x8E5828, rgba16, eyeBlinkUnused.rgba16, 128, 32]
+      - [0x8e7828] #B8000000
+
+      - [0x8e7830, rgba16, twirlEyeUnused.rgba16, 96, 32]
+      - [0x8e9030] #B8000000
+
+      - [0x8e9038, rgba16, sexyEyeUnused.rgba16, 96, 32]
+
+      - [0x8ea838, ci8, grayAnt.ci8, 320, 120]
+      - [0x8f3e38, palette, grayAnt.ci8]
+
+      - [0x8f4038, ci8, greenAntBottom.ci8, 320, 160]
+      - [0x900838, palette, greenAntBottom.ci8]
+
+      - [0x900A38, ci8, greenAntTop.ci8, 80, 240]
+      - [0x905538, palette, greenAntTop.ci8]
+
+      - [0x905738, ci8, caterpillar.ci8, 160, 240]
+      - [0x90ed38, palette, caterpillar.ci8]
+
+      - [0x90ef38, ci8, mine.ci8, 120, 40]
+      - [0x9101f8, palette, mine.ci8]
+
+      - [0x9103f8, ci8, grenade.ci8, 240, 240]
+      - [0x91e4f8, palette, grenade.ci8]
+
+      - [0x91e6f8, ci8, missile.ci8, 80, 240]
+      - [0x9231f8, palette, missile.ci8]
+      
+      - [0x9233f8, ci8, bomb.ci8, 120, 40]
+      - [0x9246b8, palette, bomb.ci8]
+      - [0x9248b8] #B8000000
+
+      - [0x9248c0, rgba16, bombSnakeEyes.rgba16, 64, 32]
+      - [0x9258c0] #B8000000
+      
+      - [0x9258c8, rgba16, bombSnakePart.rgba16, 40, 40]
+      - [0x926548] #B8000000
+
+      - [0x926550, rgba16, balloonUnused.rgba16, 80, 40]
+      
+      - [0x927E50, ci8, iceCreamSandwich.ci8, 160, 40]
+      - [0x929750, palette, iceCreamSandwich.ci8]
+      
+      - [0x929950, ci8, chocoKid.ci8, 320, 120]
+      - [0x932f50, palette, chocoKid.ci8]
+
+      - [0x933150, ci8, popcorn.ci8, 40, 40]
+      - [0x933790, palette, popcorn.ci8]
+
+      - [0x933990, ci8, sandCrab.ci8, 160, 240]
+      - [0x93cf90, palette, sandCrab.ci8]
+
+      - [0x93d190, ci8, sandCrabOut.ci8, 80, 240]
+      - [0x941c90, palette, sandCrabOut.ci8]
+      
+      - [0x941E90, ci8, condor.ci8, 240, 40]
+      - [0x944410, palette, condor.ci8]
+
+      - [0x944610, ci8, fireSprite.ci8, 240, 48]
+      - [0x947310, palette, fireSprite.ci8]
+
+      - [0x947510, ci8, litCandle.ci8, 96, 56]
+      - [0x948a10, palette, litCandle.ci8]
+      - [0x948c10] #B8000000
+
+      - [0x948C18, rgba16, shoe.rgba16, 320, 240]
+      - [0x96e418] #B8000000
+
+      - [0x96e420, rgba16, plate.rgba16, 40, 40]
+
+      - [0x96F0A0, ci8, porcupine.ci8, 160, 120]
+      - [0x973BA0, palette, porcupine.ci8]
+
+      - [0x973da0, ci8, spider.ci8, 384, 80]
+      - [0x97B5A0, palette, spider.ci8]
+
+      - [0x97B7A0, ci8, butterfly.ci8, 320, 240]
+      - [0x98e3a0, palette, butterfly.ci8]
+      - [0x98e5a0] #B8000000
+
+      - [0x98e5a8, ia4, kettle.ia4, 120, 40]
+      - [0x98ef08] #B8000000
+
+      - [0x98ef10, ia4, plate.ia4, 120, 40]
+      - [0x98f870] #B8000000
+
+      - [0x98f878, ia4, ballNumbers.ia4, 360, 40]
+      - [0x991498] #B8000000
+
+      - [0x9914A0, ia8, ball.ia8, 128, 64]
+      - [0x9934a0] #B8000000
+
+      - [0x9934a8, ia4, candle.ia4, 32, 56]
+      - [0x993828] #B8000000
+
+      - [0x993830, ci8, DCBG1.ci8, 64, 256]
+      - [0x997830] #B8000000
+      - [0x997838, palette, DCBG1.ci8]
+      - [0x997A38] #B8000000
+
+      - [0x997A40, ci8, DCBG2.ci8, 64, 256]
+      - [0x99BA40] #B8000000
+      - [0x99BA48, palette, DCBG2.ci8]
+      - [0x99BC48] #B8000000
+
+      - [0x99BC50, ci8, DCBG3.ci8, 64, 256]
+      - [0x99fc50] #B8000000
+      - [0x99fc58, palette, DCBG3.ci8]
+      - [0x99fe58] #B8000000
+
+      - [0x99fe60, ci8, DCBG4.ci8, 64, 256]
+      - [0x9A3E60] #B8000000
+      - [0x9A3E68, palette, DCBG4.ci8]
+      - [0x9A4068] #B8000000
+      
+      - [0x9A4070, ci8, DCBG5.ci8, 64, 256]
+      - [0x9A8070] #B8000000
+      - [0x9A8078, palette, DCBG5.ci8]
+      - [0x9a8278] #B8000000
+
+      - [0x9a8280, ci4, JLBG1.ci4, 64, 256]
+      - [0x9aa280] #B8000000
+      - [0x9aa288, palette, JLBG1.ci4]
+      - [0x9AA488] #B8000000
+
+      - [0x9AA490, ci4, JLBG2.ci4, 64, 256]
+      - [0x9AC490] #B8000000
+      - [0x9AC498, palette, JLBG2.ci4]
+      - [0x9ac698] #B8000000
+
+      - [0x9ac6A0, ci4, JLBG3.ci4, 64, 256]
+      - [0x9ae6a0] #B8000000
+      - [0x9ae6a8, palette, JLBG3.ci4]
+      - [0x9ae8a8] #B8000000
+
+      - [0x9ae8b0, ci4, JLBG4.ci4, 64, 256]
+      - [0x9b08b0] #B8000000
+      - [0x9b08b8, palette, JLBG4.ci4]
+      - [0x9b0ab8] #B8000000
+
+      - [0x9b0ac0, ci4, JLBG5.ci4, 64, 256]
+      - [0x9b2ac0] #B8000000
+      - [0x9b2ac8, palette, JLBG5.ci4]
+      - [0x9b2cc8] #B8000000
+
+      - [0x9b2cd0, ia8, poleThing.ia8, 16, 64]
+
+  - start: 0x9B30D0
+    name: assets1
+    vram: 0x11000000 #SEGMENT 0x11
+    dir: img
+    subalign: 8
+    type: code
+    subsegments:
+    - [auto, c, assets1]
+    - name: assets1
+      dir: assets1
+      type: .data
+      subalign: 8
+      vram: 0x810F20E8
+      start: 0x9B30D0
+      subsegments:
+      - [0x9B30D0, ci8, crown.ci8, 48, 40]
+      - [0x9B3850, palette, crown.ci8]
+
+      - [0x9B3A50, ci8, redHeart.ci8, 40, 40]
+      - [0x9B4090, palette, redHeart.ci8]
+
+      - [0x9B4290, ci8, orangeHeart.ci8, 40, 40]
+      - [0x9B48D0, palette, orangeHeart.ci8]
+
+      - [0x9B4AD0, ci8, yellowHeart.ci8, 40, 40]
+      - [0x9B5110, palette, yellowHeart.ci8]
+
+      - [0x9B5310, ci8, powerup1.ci8, 120, 40]
+      - [0x9b65d0, palette, powerup1.ci8]
+
+      - [0x9b67d0, ci8, powerup2.ci8, 120, 40]
+      - [0x9b7a90, palette, powerup2.ci8]
+
+      - [0x9b7c90, ci8, powerup3.ci8, 120, 40]
+      - [0x9b8f50, palette, powerup3.ci8]
+
+      - [0x9b9150, ci8, powerup4.ci8, 120, 40]
+      - [0x9ba410, palette, powerup4.ci8]
+
+      - [0x9BA610, ci8, carrot.ci8, 40, 40]
+      - [0x9BAC50, palette, carrot.ci8]
+
+      - [0x9bae50, ci8, stopWatch.ci8, 360, 80]
+      - [0x9c1ed0, palette, stopWatch.ci8]
+      - [0x9c20d0] #B8000000
+
+      - [0x9c20d8, ci4, boardTileable.ci4, 288, 24]
+      - [0x9c2e58] #B8000000
+      - [0x9c2e60, palette, boardTileable.ci4]
+      - [0x9c3060] #B8000000
+
+      - [0x9c3068, ci8, board.ci8, 96, 32]
+      - [0x9c3c68] #B8000000
+      - [0x9c3c70, palette, board.ci8]
+      - [0x9c3e70] #B8000000
+
+      - [0x9c3e78, ia8, chameleonUnused.ia8, 224, 48]
+      - [0x9c6878] #B8000000
+
+      - [0x9c6880, ia8, twistUnused.ia8, 120, 40]
+      - [0x9c7b40] #B8000000
+
+      - [0x9c7b48, ci8, gameOverTextUnused.ci8, 224, 32]
+      - [0x9c9748] #B8000000
+      - [0x9c9750, palette, gameOverTextUnused.ci8]
+      - [0x9C9950] #B8000000
+
+      - [0x9C9958, ci8, JungleLandIcon.ci8, 64, 64]
+      - [0x9ca958] #B8000000
+      - [0x9ca960, palette, JungleLandIcon.ci8]
+      - [0x9CAB60] #B8000000
+
+      - [0x9CAB68, ci8, BombLandIcon.ci8, 64, 64]
+      - [0x9cbb68] #B8000000
+      - [0x9cbb70, palette, BombLandIcon.ci8]
+      - [0x9CBD70] #B8000000
+
+      - [0x9CBD78, ci8, AntLandIcon.ci8, 64, 64]
+      - [0x9ccd78] #B8000000
+      - [0x9ccd80, palette, AntLandIcon.ci8]
+      - [0x9CCF80] #B8000000
+
+      - [0x9CCF88, ci8, DesertCastleIcon.ci8, 64, 64]
+      - [0x9cdf88] #B8000000
+      - [0x9cdf90, palette, DesertCastleIcon.ci8]
+      - [0x9CE190] #B8000000
+
+      - [0x9CE198, ci8, KidsLandIcon.ci8, 64, 64]
+      - [0x9cf198] #B8000000
+      - [0x9cf1A0, palette, KidsLandIcon.ci8]
+      - [0x9cf3a0] #B8000000
+
+      - [0x9CF3A8, ci8, GhostCastleIcon.ci8, 64, 64]
+      - [0x9d03a8] #B8000000
+      - [0x9d03b0, palette, GhostCastleIcon.ci8]
+      - [0x9D05B0] #B8000000
+      
+      - [0x9D05B8, ci8, BossRushIcon.ci8, 32, 32]
+      - [0x9d09b8] #B8000000
+      - [0x9d09c0, palette, BossRushIcon.ci8]
+      - [0x9d0bc0] #B8000000
+
+      - [0x9D0bc8, ci8, pouseUnused.ci8, 192, 32]
+      - [0x9D23c8] #B8000000
+      - [0x9D23d0, palette, pouseUnused.ci8]
+      - [0x9D25D0] #B8000000
+
+      - [0x9D25D8, ci8, jss.ci8, 112, 72]
+      - [0x9D4558] #B8000000
+      - [0x9D4560, palette, jss.ci8]
+      - [0x9D4760] #B8000000
+
+      - [0x9D4768, ia8, jssCat.ia8, 448, 56]
+      - [0x9DA968] #B8000000
+
+      - [0x9DA970, ia4, textBigger.ia4, 320, 64]
+      - [0x9DD170] #B8000000
+
+      - [0x9DD178, ci8, battleIcon1.ci8, 40, 40]
+      - [0x9dd7b8] #B8000000
+      - [0x9dd7C0, palette, battleIcon1.ci8]
+      - [0x9dd9c0] #B8000000
+
+      - [0x9dd9c8, ci8, battleIcon2.ci8, 40, 40]
+      - [0x9DE008] #B8000000
+      - [0x9DE010, palette, battleIcon2.ci8]
+      - [0x9de210] #B8000000
+
+      - [0x9de218, ci8, battleIcon3.ci8, 40, 40]
+      - [0x9DE858] #B8000000
+      - [0x9DE860, palette, battleIcon3.ci8]
+      - [0x9dea60] #B8000000
+
+      - [0x9dea68, ci8, battleIcon4.ci8, 40, 40]
+      - [0x9DF0A8] #B8000000
+      - [0x9DF0B0, palette, battleIcon4.ci8]
+      - [0x9df2b0] #B8000000
+
+      - [0x9df2b8, ci8, battleIcon5.ci8, 40, 40]
+      - [0x9DF8F8] #B8000000
+      - [0x9DF900, palette, battleIcon5.ci8]
+      - [0x9dfb00] #B8000000
+
+      - [0x9dfb08, ci8, battleIcon6.ci8, 40, 40]
+      - [0x9E0148] #B8000000
+      - [0x9E0150, palette, battleIcon6.ci8]
+      - [0x9e0350] #B8000000
+
+      - [0x9e0358, ci8, battleIcon7.ci8, 40, 40]
+      - [0x9E0998] #B8000000
+      - [0x9E09A0, palette, battleIcon7.ci8]
+      - [0x9e0ba0] #B8000000
+
+      - [0x9e0ba8, ci8, battleIcon8.ci8, 40, 40]
+      - [0x9E11E8] #B8000000
+      - [0x9E11F0, palette, battleIcon8.ci8]
+      - [0x9e13f0] #B8000000
+
+      - [0x9e13f8, ia8, arrow1.ia8, 8, 16]
+      - [0x9e1478] #B8000000
+
+  - start: 0x9e1480
+    name: assets2
+    vram: 0x12000000 #SEGMENT 0x12
+    dir: img
+    subalign: 8
+    type: code
+    subsegments:
+    - [auto, c, assets2]
+    - name: assets2
+      dir: assets2
+      type: .data
+      subalign: 8
+      vram: 0x811F20E8
+      start: 0x9e1480
+      subsegments:
+      - [0x9e1480, ci8, davyIcon.ci8, 16, 16]
+      - [0x9E1580] #B8000000
+      - [0x9E1588, palette, davyIcon.ci8]
+      - [0x9e1788] #B8000000
+
+      - [0x9e1790, ci8, jackIcon.ci8, 16, 16]
+      - [0x9E1890] #B8000000
+      - [0x9E1898, palette, jackIcon.ci8]
+      - [0x9e1a98] #B8000000
+
+      - [0x9e1aA0, ci8, fredIcon.ci8, 16, 16]
+      - [0x9E1BA0] #B8000000
+      - [0x9E1BA8, palette, fredIcon.ci8]
+      - [0x9e1da8] #B8000000
+
+      - [0x9e1db0, ci8, lindaIcon.ci8, 16, 16]
+      - [0x9E1EB0] #B8000000
+      - [0x9E1EB8, palette, lindaIcon.ci8]
+      - [0x9e20b8] #B8000000
+
+      - [0x9e20C0, ci8, blackIcon.ci8, 16, 16]
+      - [0x9E21C0] #B8000000
+      - [0x9E21C8, palette, blackIcon.ci8]
+      - [0x9e23c8] #B8000000
+
+      - [0x9e23d0, ci8, whiteIcon.ci8, 16, 16]
+      - [0x9E24D0] #B8000000
+      - [0x9E24D8, palette, whiteIcon.ci8]
+      - [0x9e26d8] #B8000000
+
+      - [0x9e26E0, ia8, whiteIcon.ia8, 144, 16]
+      - [0x9E2FE0] #B8000000
+
+      - [0x9E2FE8, ci4, crownIcon.ci4, 16, 16]
+      - [0x9E3068] #B8000000
+      - [0x9E3070, palette, crownIcon.ci4]
+      - [0x9e3270] #B8000000
+
+      - [0x9E3278, ia4, arrowAnim.ia4, 288, 128]
+      - [0x9E7A78] #B8000000
+
+      - [0x9E7A80, rgba16, TitleScreen.rgba16, 320, 240]
+      - [0xA0D280] #B8000000
+      - [0xA0D288, rgba16, StageSelectBackground.rgba16, 320, 240]
+      - [0xA32A88] #B8000000
+      - [0xA32A90, ia8, JungleLandText.ia8, 104, 16]
+      - [0xA33110] #B8000000
+      - [0xA33118, ia8, AntLandText.ia8, 104, 16]
+      - [0xA33798] #B8000000
+      - [0xA337A0, ia8, BombLandText.ia8, 104, 16]
+      - [0xA33E20] #B8000000
+      - [0xA33E28, ia8, DesertCastleText.ia8, 104, 16]
+      - [0xA344A8] #B8000000
+      - [0xA344B0, ia8, KidsLandText.ia8, 104, 16]
+      - [0xA34B30] #B8000000
+      - [0xA34B38, ia8, GhostCastleText.ia8, 104, 16]
+      - [0xA351B8] #B8000000
+
+      - [0xA351C0, ci8, JungleLandText2.ci8, 112, 24]
+      - [0xA35C40] #B8000000
+      - [0xA35C48, palette, JungleLandText2.ci8]
+      - [0xA35E48] #B8000000
+      - [0xA35E50, ci8, AntLandText2.ci8, 112, 24]
+      - [0xA368D0] #B8000000
+      - [0xA368D8, palette, AntLandText2.ci8]
+      - [0xA36AD8] #B8000000
+      - [0xA36ae0, ci8, BombLandText2.ci8, 112, 24]
+      - [0xA37560] #B8000000
+      - [0xA37568, palette, BombLandText2.ci8]
+      - [0xA37768] #B8000000
+      - [0xa37770, ci8, DesertCastleText2.ci8, 112, 24]
+      - [0xA381F0] #B8000000
+      - [0xA381F8, palette, DesertCastleText2.ci8]
+      - [0xA383f8] #B8000000
+      - [0xA38400, ci8, KidsLandText2.ci8, 112, 24]
+      - [0xA38E80] #B8000000
+      - [0xA38E88, palette, KidsLandText2.ci8]
+      - [0xa39088] #B8000000
+      - [0xa39090, ci8, GhostCastleText2.ci8, 112, 24]
+      - [0xA39B10] #B8000000
+      - [0xA39B18, palette, GhostCastleText2.ci8]
+      - [0xa39d18] #B8000000
+      
+      - [0xa39d20, ci8, quintellaDeadEye.ci8, 32, 32]
+      - [0xA3A120] #B8000000
+      - [0xA3A128, palette, quintellaDeadEye.ci8]
+      - [0xa3a328] #B8000000
+
+      - [0xa3a330, ci4, lizardKongDeadEyes.ci4, 64, 64]
+      - [0xA3AB30] #B8000000
+      - [0xA3AB38, palette, lizardKongDeadEyes.ci4]
+      - [0xa3ad38] #B8000000
+
+      - [0xa3ad40, ci8, armadilloDeadEyes.ci8, 64, 32]
+      - [0xA3B540] #B8000000
+      - [0xA3B548, palette, armadilloDeadEyes.ci8]
+      - [0xa3b748] #B8000000
+
+      - [0xa3b750, ia4, sunsoft.ia4, 192, 40]
+      - [0xa3c650] #B8000000
+
+      - [0xa3c658, ci8, battleRanking.ci8, 320, 240]
+      - [0xA4F258] #B8000000
+      - [0xA4F260, palette, battleRanking.ci8]
+      - [0xa4f460] #B8000000
+      
+      - [0xA4F468, ci8, QuestionMark.ci8, 112, 24] # "....?" image from file select
+      - [0xA4FEE8] #B8000000
+      - [0xA4FEF0, palette, QuestionMark.ci8]
+      - [0xA500F0] #B8000000
+
+      - [0xa500f8, ci8, battleSelect.ci8, 320, 240] # "....?" image from file select
+      - [0xA62CF8] #B8000000
+      - [0xA62D00, palette, battleSelect.ci8]
+
+      - [0xa62f00, ci8, bombSnakeParts.ci8, 480, 40]
+      - [0xA67A00, palette, bombSnakeParts.ci8]
+      - [0xa67c00] #B8000000
+
+      - [0xa67c08, ci8, ranking.ci8, 320, 240]
+      - [0xA7A808] #B8000000
+      - [0xA7A810, palette, ranking.ci8]
+      - [0xa7aa10] #B8000000
+
+      - [0xa7aa18, ia8, rankingNumbers.ia8, 96, 16]
+      - [0xA7B018] #B8000000
+
+      - [0xA7B020, ia8, rankingLevel.ia8, 40, 12]
+      - [0xa7b200] #B8000000
+
+      - [0xa7b208, ia8, hexagon.ia8, 64, 64]
+      - [0xA7C208] #B8000000
+
+      - [0xA7C210, ia4, square.ia4, 48, 48]
+      - [0xa7c690] #B8000000
+
+      - [0xa7c698, ia4, japanSystemSupplyC1997.ia4, 256, 16] # loaded in func_800AAB0C to *D_80200C8C. 0x42B0 bytes
+      - [0xA7CE98] #B8000000
+
+      - [0xA7CEA0, ia4, theEnd.ia4, 128, 32]
+      - [0xA7D6A0] #B8000000
+
+      - [0xa7d6a8, ia4, bowlingSquare.ia4, 24, 24]
+      - [0xa7d7c8] #B8000000
+
+      - [0xa7d7D0, ia4, bowlingNumbers.ia4, 224, 16]
+      - [0xA7ded0] #B8000000
+
+      - [0xA7DED8, ia4, rabbitBowl.ia4, 256, 144] #check sizes in game pls
+      - [0xA826D8] #B8000000
+
+      - [0xA826E0, ia4, bowlingLastSquare.ia4, 40, 24] #check sizes in game pls
+      - [0xA828C0] #B8000000
+
+      - [0xA828C8, ci8, crownSmall.ci8, 32, 24]
+      - [0xA82BC8] #B8000000
+      - [0xA82BD0, palette, crownSmall.ci8]
+      - [0xa82dd0] #B8000000
+
+      - [0xA82DD8, ci8, carrotSmall.ci8, 24, 24]
+      - [0xA83018] #B8000000
+      - [0xA83020, palette, carrotSmall.ci8]
+      - [0xa83220] #B8000000
+
+      - [0xa83228, rgba16, bossMeter.rgba16, 40, 16]
+      - [0xA83728] #B8000000
+      - [0xA83730, rgba16, bossHealth.rgba16, 16, 16]
+      - [0xA83930] #B8000000
+
+      - [0xa83938, ci4, iDontKnow.ci4, 352, 288]
+      - [0xA8FF38] #B8000000
+      - [0xA8FF40, palette, iDontKnow.ci4]
+      - [0xa90140] #B8000000
+
+      - [0xa90148, ia8, menuOptions.ia8, 128, 144]
+
+      - [0xA94948, databin, unkAnimData]
+
   #   - [0xab10a8, databin, unk00]
 
 

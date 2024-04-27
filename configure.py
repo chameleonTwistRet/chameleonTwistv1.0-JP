@@ -41,14 +41,13 @@ VERSION = "VER_JP"
 
 DEFINES = f"-D_LANGUAGE_C -DF3DEX_GBI -DNDEBUG -D{VERSION}"
 
-WARNINGS = f"-fullwarn -verbose -Xcpluscomm -signed -nostdinc -non_shared -Wab,-r4300_mul {DEFINES} -woff 649,838"
-CFLAGS = f"-G 0 {WARNINGS} {INCLUDES}" 
-GAME_COMPILE_CMD = (
-    f"{GAME_CC_DIR} {INCLUDES} -- -c {CFLAGS} -mips2 -O2"
-)
-LIB_COMPILE_CMD = (
-    f"{LIB_CC_DIR} -c -B {LIB_CC_DIR}/ee- {INCLUDES} -O2 -G0"
-)
+WARNINGS = f"-fullwarn -verbose -Xcpluscomm -signed -nostdinc -non_shared -Wab,-r4300_mul -woff 649,838"
+
+CFLAGS = f"-G 0 {WARNINGS} {INCLUDES} {DEFINES}" 
+
+GAME_COMPILE_CMD = f"{GAME_CC_DIR} -- -c {CFLAGS} -mips2 -O2"
+
+#LIB_COMPILE_CMD = (f"{LIB_CC_DIR} -c -B {LIB_CC_DIR}/ee- {INCLUDES} -O2 -G0")
 
 LDFLGS = f"-T {LD_PATH} -T undefined_syms_auto.txt -T undefined_syms.txt -Map {MAP_PATH} --no-check-sections"
 DEPENDENCY_GEN = f"cpp -w {INCLUDES} -nostdinc -MD -MF $out.d $in -o /dev/null"
@@ -73,7 +72,7 @@ def clean():
 def write_permuter_settings():
     with open("permuter_settings.toml", "w") as f:
         f.write(
-            f"""compiler_command = "{GAME_COMPILE_CMD}"
+            f"""compiler_command = "{(GAME_COMPILE_CMD)}"
             assembler_command = "$ASFLAGS"
             compiler_type = "gcc"
 
@@ -83,6 +82,8 @@ def write_permuter_settings():
             f"{TOOLS_DIR}/ido_5.3/usr/lib/cc" = "ido_5.3"
             """
             )
+
+needsRecalculation = False
 
 def build_stuff(linker_entries: List[LinkerEntry]):
     built_objects: Set[Path] = set()
@@ -163,7 +164,7 @@ def build_stuff(linker_entries: List[LinkerEntry]):
     )
 
     #seperate this?
-    if not args.nonmatching:
+    if not needsRecalculation:
         ninja.rule(
             "make_z64",
             command=f"({MIPS}-objcopy -O binary $in $out) && (sha1sum -c {SHA1_PATH})",
@@ -246,7 +247,7 @@ def build_stuff(linker_entries: List[LinkerEntry]):
     import glob
     asset_files = []
     for file in glob.glob(f"src/**/*.c", recursive=True):
-        for custom in ["chameleons/", "levelGroup/"]:
+        for custom in ["chameleons/", "levelGroup/", "img/"]:
             if file.find(custom) != -1:
                 asset_files.append(file)
                 break
@@ -265,10 +266,17 @@ def build_stuff(linker_entries: List[LinkerEntry]):
             if line.find(".png.inc.c") != -1: #is image
                 if not imageOpt:
                     #generate image rules if any images used
-                    for imageType in ["ia4", "ia8", "i4", "i8", "rgba16", "rgba32", "ci4", "ci8", "palette"]:
+                    for imageType in ["ia4", "ia8", "i4", "i8", "rgba16", "rgba32", "ci4", "ci8", "palette16", "palette256"]:
+                        COMMAND = f"python3 {IMG_CONVERT} {imageType} $in $out"
+                        if imageType == "palette16":
+                            COMMAND += " --palSize 16"
+                        elif imageType == "palette256":
+                            COMMAND += " --palSize 256"
+                        if imageType.find("palette") != -1:
+                            COMMAND = COMMAND.replace(imageType, "palette")
                         ninja2.rule(
                             f'{imageType}_convert',
-                            command = f"python3 {IMG_CONVERT} {imageType} $in $out",
+                            command = COMMAND,
                             description = f"Converting {imageType}"
                         )
                     imageOpt = True
@@ -295,8 +303,15 @@ def build_stuff(linker_entries: List[LinkerEntry]):
                 ninja2.build(bin, type+"_convert", base)
                 ninja2.build(bin.replace(".bin", ".inc.c"), "bin_inc_c_d", bin)
                 if type.find("ci") != -1: #paletted
+                    size = type.split("ci")[-1]
+                    if size == "4":
+                        size = "16"
+                    elif size == "8":
+                        size = "256"
+
+
                     bin = "build/"+path.replace(".png",".pal")+".bin"
-                    ninja2.build(bin, "palette_convert", base)
+                    ninja2.build(bin, "palette"+size+"_convert", base)
                     ninja2.build(bin.replace(".bin", ".inc.c"), "bin_inc_c_d", bin)
             elif line.find(".inc.c") != -1 and line.find(".pal.inc.c") == -1: #is databin
                 if not binOpt2:
@@ -418,13 +433,29 @@ if __name__ == "__main__":
         help="Build a non-matching version of the game",
         action="store_true",
     )
+
+    parser.add_argument(
+        "-crc",
+        "--chckrecalc",
+        help="Build a checksum-recalculated version of the game",
+        action="store_true",
+    )
+
     args = parser.parse_args()
 
     if args.clean:
         clean()
     
-    if args.nonmatching:
+    needsRecalculation = args.nonmatching or args.chckrecalc
+
+    if needsRecalculation:
         subprocess.run(f"gcc {TOOLS_DIR}/n64crc/n64crc.c -o {TOOLS_DIR}/n64crc/n64crc.exe", shell = True, executable="/bin/bash")
+    
+    if args.nonmatching:
+        to = DEFINES + " -DNON_MATCHING"
+        CFLAGS = CFLAGS.replace(DEFINES, to)
+        GAME_COMPILE_CMD = GAME_COMPILE_CMD.replace(DEFINES, to)
+        DEFINES = to
         
 
     split.main([YAML_FILE], modes="all", verbose=False, use_cache=False)

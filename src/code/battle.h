@@ -49,7 +49,6 @@ void func_80073090(void);
 extern s32 D_800FE708;
 extern Camera* D_80176B78;
 extern s16 gSelectedBattleBGM;
-extern s32 D_800F0674;
 extern unkStruct16 D_800F0D90[];
 extern unkStruct16 D_800F0DE0[];
 extern Struct_80076EA0 D_800FE404[];

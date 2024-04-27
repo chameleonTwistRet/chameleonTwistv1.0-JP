@@ -34,11 +34,12 @@ def reversed_if(iterator, cond):
 
 
 class Converter():
-    def __init__(self, mode, infile, outfile, flip_y=False):
+    def __init__(self, mode, infile, outfile, flip_y=False, palette_size=-1):
         self.mode = mode
         self.infile = infile
         self.outfile = outfile
         self.flip_y = flip_y
+        self.palette_size = palette_size
 
         self.warned = False
 
@@ -73,6 +74,7 @@ class Converter():
     def _convert_palette(self, img):
         img.preamble(True)
         palette = img.palette(alpha="force")
+        bytes = 0
 
         for r, g, b, a in palette:
             if a not in (0, 0xFF):
@@ -80,6 +82,13 @@ class Converter():
 
             color = pack_color(r, g, b, a)
             self.outfile.write(color.to_bytes(2, byteorder="big"))
+            bytes += 1
+        if self.palette_size != -1:
+            while bytes < self.palette_size:
+                self.outfile.write((0).to_bytes(2, byteorder="big"))
+                bytes += 1
+
+        
 
     def _convert_ia4(self, img):
         for row in reversed_if(img.asRGBA()[2], self.flip_y):
@@ -206,7 +215,8 @@ if __name__ == "__main__":
     parser.add_argument("infile", help="input file", type=argparse.FileType("rb"))
     parser.add_argument("outfile", help="output file", type=argparse.FileType("wb"))
     parser.add_argument("--flip-y", help="flip y?", action="store_true")
+    parser.add_argument("--palSize", help="specific palette size", type=int, required=False)
     args = parser.parse_args()
 
-    converter = Converter(args.mode, args.infile, args.outfile, flip_y=args.flip_y)
+    converter = Converter(args.mode, args.infile, args.outfile, flip_y=args.flip_y, palette_size=args.palSize)
     converter.convert()

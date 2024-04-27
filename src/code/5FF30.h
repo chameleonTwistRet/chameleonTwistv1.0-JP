@@ -65,7 +65,7 @@ typedef struct StageSelectionData {
 typedef struct UnkBg {
     s16 unk0;
     s16 unk2;
-    s16 unk4;
+    s16 spriteID;
 } UnkBg;
 
 extern UnkBg* D_800FFE58[4];
@@ -222,7 +222,7 @@ void func_8008EFA0(CTTask*);
 CTTask* func_8008F050(s16 arg0, s16 arg1, s16 arg2, s16 arg3, s16* arg4);
 void func_8008F114(void);
 void func_8008F16C(void);
-s32 func_8008F694(s32 arg0);
+s32 DrawBackground(s32 arg0);
 void func_8008F710(CTTask* task);
 CTTask* func_8008F7A4(s16, s16);
 char* ParseIntToBase10(s32 useInt, char* result);

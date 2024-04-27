@@ -5192,7 +5192,7 @@ void Effect_TypeAM_Update(Effect* effect, Gfx** pGfxPos) {
             setPrimColor(255, 255, 255, 255);
             printUISprite(0.0f, 0.0f, 0.0f, 0.0f, 1, 320.0f, 240.0f, 0.0f, 0);
             Effect_TypeAI_Init(255, 1.0f, 32.0f, 1);
-            D_800F0674 = 2;
+            gIsGamePaused = PAUSEMODE_FROZEN;
             effect->spriteID++;
             if (effect->spriteID > 30) {
                 *data->unk_00 = 1;
@@ -6264,7 +6264,7 @@ void Effect_TypeAY_Update(Effect* effect, Gfx** pGfxPos) {
     
 
     if (D_800FE74C == 0) {
-        D_800F0674 = 0;
+        gIsGamePaused = PAUSEMODE_NOT_PAUSED;
         Effect_Free(effect);
         return;
     }
@@ -6315,7 +6315,7 @@ void Effect_TypeAY_Update(Effect* effect, Gfx** pGfxPos) {
             effect->lifeTime += data->unk_08;
             sp44 = 1.0f - effect->lifeTime;
             if (effect->lifeTime >= 1.0f) {
-                D_800F0674 = 0;
+                gIsGamePaused = PAUSEMODE_NOT_PAUSED;
                 D_800FE74C = 0;
                 Effect_Free(effect);
             }

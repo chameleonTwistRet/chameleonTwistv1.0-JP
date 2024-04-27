@@ -796,7 +796,7 @@ void Battle_Init(void) {
     Battle_Stage = BATTLE_STAGE_INIT;
     D_800F0B64 = BATTLE_STAGE_INVALID;
     Battle_TimeLeft = gTimeTrialDuration;
-    D_800F0674 = gIsMultiplayerPaused = FALSE;
+    gIsGamePaused = gIsMultiplayerPaused = PAUSEMODE_NOT_PAUSED;
     Battle_LastKnockOutTime = 999999999;
     Battle_FirstRankCount = 99;
     D_800FE74C = 0;
@@ -866,12 +866,12 @@ void Battle_Update(void) {
             if (gPlayerActors[i].active) {
                 if (!var_v1_2) {
                     if (func_80055F10(i, 0x1000) == 1) {
-                        D_800F0674 = 1;
+                        gIsGamePaused = PAUSEMODE_PAUSED;
                     }
                 }
                 if (gPlayerActors[i].exists && D_80168D78[i] == 0) {
                     if (func_80055F10(i, 0x1000) == 1) {
-                        D_800F0674 = 1;
+                        gIsGamePaused = PAUSEMODE_PAUSED;
                     }
                 }
             }
@@ -880,7 +880,7 @@ void Battle_Update(void) {
     
     switch (Battle_Stage) {
         case BATTLE_STAGE_INIT:
-            D_800F0674 = 2;
+            gIsGamePaused = PAUSEMODE_FROZEN;
             DisableInput();
             for (i = 0; i < 4; i++) {
                 if (gPlayerActors[i].active == TRUE) {
@@ -910,7 +910,7 @@ void Battle_Update(void) {
             break;
         case BATTLE_STAGE_AFTER_INIT:
             DisableInput();
-            D_800F0674 = 2;
+            gIsGamePaused = PAUSEMODE_FROZEN;
             Battle_Time++;
             if (Battle_Time > 45) {
                 Battle_Stage = BATTLE_STAGE_READY;
@@ -920,7 +920,7 @@ void Battle_Update(void) {
             break;
         case BATTLE_STAGE_READY:
             DisableInput();
-            D_800F0674 = 2;
+            gIsGamePaused = PAUSEMODE_FROZEN;
             Battle_Time++;
             Battle_PlayEnvSounds();
             Battle_PrintTextBig(80.0f, 100.0f, Battle_Time / 23.333334f, 17, 5, Battle_MsgReady, 1);
@@ -928,7 +928,7 @@ void Battle_Update(void) {
                 Effect_TypeAG_Init(8.0f, 90.0f, 0x5FFF);
             }
             if (Battle_Time > 70) {
-                D_800F0674 = 0;
+                gIsGamePaused = PAUSEMODE_NOT_PAUSED;
                 Battle_Stage = BATTLE_STAGE_GO;
                 Battle_Time = 0;
                 D_8017683C = PLAYSFX(64, 0, 0x10);
@@ -947,7 +947,7 @@ void Battle_Update(void) {
             }
             break;
         case BATTLE_STAGE_GAME:
-            if (!gIsMultiplayerPaused) {
+            if (gIsMultiplayerPaused) {
                 Battle_TimeLeft--;
                 Battle_Time++;
             }
@@ -1060,7 +1060,7 @@ void Battle_Update(void) {
             }
             break;
         case BATTLE_STAGE_END_ACTIONS:
-            D_800F0674 = 0;
+            gIsGamePaused = PAUSEMODE_NOT_PAUSED;
             Battle_Stage = BATTLE_STAGE_SHOW_WINNER;
             Battle_PlayEnvSounds();
             Battle_DrawPortraits();
@@ -1089,12 +1089,12 @@ void Battle_Update(void) {
             break;
         case BATTLE_STAGE_SHOW_WINNER:
             if (Battle_Time++ < 16) {
-                D_800F0674 = 0;
+                gIsGamePaused = PAUSEMODE_NOT_PAUSED;
                 Battle_DrawPortraits();
                 DisableInput();
                 break;
             }
-            D_800F0674 = 2;
+            gIsGamePaused = PAUSEMODE_FROZEN;
             DisableInput();
             Battle_DrawPortraits();
             func_80051F38();
@@ -1123,7 +1123,7 @@ void Battle_Update(void) {
         case BATTLE_STAGE_WAIT_BEFORE_EXIT:
             DisableInput();
             Battle_Time++;
-            D_800F0674 = 2;
+            gIsGamePaused = PAUSEMODE_FROZEN;
             Battle_PlayEnvSounds();
             Battle_DrawPortraits();
             func_80051F38();
@@ -1143,7 +1143,7 @@ void Battle_Update(void) {
         case BATTLE_STAGE_EXIT:
             Battle_Time = 0;
             Battle_Stage = BATTLE_STAGE_INIT;
-            D_800F0674 = 0;
+            gIsGamePaused = PAUSEMODE_NOT_PAUSED;
             D_800F0B54[0] = 0;
             EnableInput();
             SetProcessType(0x11);

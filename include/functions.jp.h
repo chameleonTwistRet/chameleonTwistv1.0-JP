@@ -380,7 +380,7 @@ void PlayJungleExtSfx(void);
 void Audio_RomCopy(u32 devAddr, void* vAddr, u32 size);
 void PlayJungleExtSfxWrapper(void);
 void func_8008A2EC(void);
-void func_8008AD30(void);
+void ManagePauseMenu(void);
 void func_8008D060(void);
 void Timing_WaitForNextFrame(void);
 s32 SaveData_UpdateRecords(void);
