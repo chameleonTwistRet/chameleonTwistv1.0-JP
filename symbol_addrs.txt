@@ -908,7 +908,6 @@ Shadows_Draw = 0x800cc2f4; // type:func rom:0xa76f4
 UnlockEyeChange = 0x8006ba24; // type:func rom:0x46e24
 SetBossDeadEyes = 0x8006d70c; // type:func rom:0x48b0c
 PrintNumberBowling = 0x8007f974; // type:func rom:0x5ad74
-RegistShutter = 0x800b101c; // type:func rom:0x8c41c
 moveModel = 0x800b39ec; // type:func rom:0x8edec
 Effect_PlayerEyes_Update = 0x8006ceec; // type:func rom:0x482ec
 gShadows = 0x80247910; //  size:0xc00
@@ -967,6 +966,25 @@ Battle_Init = 0x800546F0; // type:func
 Battle_Update = 0x80054864; // type:func
 DrawBackground = 0x8008F694; // type:func
 ManagePauseMenu = 0x8008ad30; // type:func
+
+//RoomObject funcs
+func_800B09C0 = 0x800B09C0; // type:func
+RegistShutter = 0x800b101c; // type:func rom:0x8c41c
+func_800B118C = 0x800B118C; // type:func
+func_800B0B20 = 0x800B0B20; // type:func
+func_800D8E04 = 0x800D8E04; // type:func
+func_800B088C = 0x800B088C; // type:func
+func_800B08C8 = 0x800B08C8; // type:func
+func_800B09E8 = 0x800B09E8; // type:func
+func_800D91D8 = 0x800D91D8; // type:func
+func_800D90B8 = 0x800D90B8; // type:func
+func_800AFB2C = 0x800AFB2C; // type:func
+func_800B06B0 = 0x800B06B0; // type:func
+func_800D8D58 = 0x800D8D58; // type:func rom:0xb4158
+func_800D8DBC = 0x800D8DBC; // type:func rom:0xb41bc
+func_800D8DE0 = 0x800D8DE0; // type:func
+func_800D8E28 = 0x800D8E28; // type:func
+func_800B0AA4 = 0x800B0AA4; // type:func
 
 
 Battle_Time = 0x800F0B50; // type:s32 size:0x4

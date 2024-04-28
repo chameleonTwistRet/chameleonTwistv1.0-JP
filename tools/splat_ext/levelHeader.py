@@ -83,7 +83,7 @@ class N64SegLevelHeader(CommonSegCodeSubsegment):
                     if ov: use = "&"+ov.name
                 elif i == 2: #pointers
                     pointers = self.retrieve_sym_type(symbols.all_symbols_dict, use, "Lvp")
-                    if pointers: use = "&"+pointers.name
+                    if pointers: use = "&"+pointers.name+"[0]"
                 elif i == len(data) - 1: #level scope
                     scopeSym = self.retrieve_sym_type(symbols.all_symbols_dict, use, "Lvlscope")
                     if scopeSym: use = "&"+scopeSym.name

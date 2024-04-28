@@ -24,19 +24,13 @@ typedef struct unkStruct20 {
     char unk_26[2];
 } unkStruct20;
 
+
+
+
 /* Functions */
 void func_800AF9D0(Collider* arg0, RoomObject* arg1);
-void func_800AFB2C(Collider* arg0, s32 arg1);
-void func_800B06B0(Collider* arg0);
 s32 CountShotActors(void);
 s32 func_800B07E4(void);
-void func_800B088C(Collider* arg0, RoomObject* arg1);
-void func_800B08C8(Collider* arg0);
-void func_800B09C0(Collider* arg0, RoomObject* arg1);
-void func_800B09E8(Collider* arg0, RoomObject* arg1);
-void func_800B0A30(Collider* arg0, RoomObject* arg1);
-void func_800B0AA4(Collider* collider);
-void RegistShutter(Collider* arg0, RoomObject* arg1);
 void func_800B1DA0(Collider* arg0, s32 arg1);
 void func_800B2070(s32 arg0);
 void func_800B2144(Collider* arg0, unkStruct14* arg1);

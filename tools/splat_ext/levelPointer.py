@@ -68,7 +68,7 @@ class N64SegLevelPointer(CommonSegCodeSubsegment):
                         symG = self.create_symbol(
                             addr=data[i], in_segment=True, type="Gfx", define=True
                         )
-                    pointersets[num].append("&"+symG.name)
+                    pointersets[num].append("&"+symG.name+"[0]")
                 elif i == 1: #Collision
                     symC = self.retrieve_sym_type(symbols.all_symbols_dict, data[i], "ColH")
                     if not symC:

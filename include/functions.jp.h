@@ -521,4 +521,24 @@ void Battle_Init(void);
 //funcs from 1050 that are called from other c's
 void func_8002CE54(void);
 
+//RoomObject funcs
+void func_800B09C0(Collider* arg0, RoomObject* arg1);
+void RegistShutter(Collider* arg0, RoomObject* arg1);
+void func_800B118C(Collider* arg0, RoomObject* arg1); //assumed
+void func_800B0B20(Collider* arg0, RoomObject* arg1); //assumed
+void func_800B088C(Collider* arg0, RoomObject* arg1);
+void func_800B08C8(Collider* arg0);
+void func_800B09E8(Collider* arg0, RoomObject* arg1);
+void func_800D91D8(Collider* arg0);
+void func_800D90B8(Collider* arg0);
+void func_800AFB2C(Collider* arg0, s32 arg1);
+void func_800B06B0(Collider* arg0);
+void func_800D8D58(Collider* arg0);
+void func_800D8DBC(Collider* arg0);
+void func_800D8DE0(Collider* arg0);
+void func_800B0A30(Collider* arg0, RoomObject* arg1);
+void func_800D8E04(Collider* arg0);
+void func_800D8E28(Collider* arg0);
+void func_800B0AA4(Collider* collider);
+
 #endif

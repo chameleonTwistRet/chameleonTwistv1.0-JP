@@ -3919,7 +3919,7 @@ segments:
       dir: KidsLand
       type: .data
       subalign: 8
-      vram: 0x81100000
+      vram: 0x81000000
       start: 0x51FB40
       subsegments:
       - [0x51FB40, databin, KidsLandPad]
@@ -3943,7 +3943,7 @@ segments:
       dir: JungleLand
       type: .data
       subalign: 8
-      vram: 0x81500000
+      vram: 0x81000000
       start: 0x6A8e20
       subsegments:
       - [0x6A8e20] #identity matrix
@@ -5744,13 +5744,14 @@ segments:
     dir: levelGroup
     subalign: 8
     type: code
+    exclusive_ram_id: "GLOBAL"
     subsegments:
     - [auto, c, Global]
     - name: Global
       dir: Global
       type: .data
       subalign: 8
-      vram: 0x809F20E8
+      vram: 0x81000000
       start: 0x87F640
       subsegments:
       - [0x87F640] #identity matrix
@@ -7551,13 +7552,14 @@ segments:
     dir: chameleons
     subalign: 8
     type: code
+    exclusive_ram_id: "BATTLE"
     subsegments:
     - [auto, c, Battle_Chameleons]
     - name: Battle_Chameleons
       dir: Battle_Chameleons
       type: .data
       subalign: 8
-      vram: 0x80C69F50
+      vram: 0x81000000
       start: 0xACBD90
       subsegments:
       - [0xACBD90, mtx, groupMtx]
@@ -8289,13 +8291,14 @@ segments:
     dir: chameleons
     subalign: 8
     type: code
+    exclusive_ram_id: "DAVY"
     subsegments:
     - [auto, c, Davy]
     - name: Davy
       dir: Davy
       type: .data
       subalign: 8
-      vram: 0x80D69F50
+      vram: 0x81000000
       start: 0xAFC6B0
       subsegments:
       - [0xAFC6B0, lights, light]
@@ -8428,13 +8431,14 @@ segments:
     dir: chameleons
     subalign: 8
     type: code
+    exclusive_ram_id: "JACK"
     subsegments:
     - [auto, c, Jack]
     - name: Jack
       dir: Jack
       type: .data
       subalign: 8
-      vram: 0x80D72B30
+      vram: 0x81000000
       start: 0xB05290
       subsegments:
       - [0xB05290, lights, light]
@@ -8567,13 +8571,14 @@ segments:
     dir: chameleons
     subalign: 8
     type: code
+    exclusive_ram_id: "FRED"
     subsegments:
     - [auto, c, Fred]
     - name: Fred
       dir: Fred
       type: .data
       subalign: 8
-      vram: 0x80D7B750
+      vram: 0x81000000
       start: 0xB0DEB0
       subsegments:
       - [0xB0DEB0, lights, light]
@@ -8706,13 +8711,14 @@ segments:
     dir: chameleons
     subalign: 8
     type: code
+    exclusive_ram_id: "LINDA"
     subsegments:
     - [auto, c, Linda]
     - name: Linda
       dir: Linda
       type: .data
       subalign: 8
-      vram: 0x80D84330
+      vram: 0x81000000
       start: 0xB16A90
       subsegments:
       - [0xB16A90, lights, light]
@@ -8849,13 +8855,14 @@ segments:
     dir: chameleons
     subalign: 8
     type: code
+    exclusive_ram_id: "WHITE"
     subsegments:
     - [auto, c, Black]
     - name: Black
       dir: Black
       type: .data
       subalign: 8
-      vram: 0x80D8D6A0
+      vram: 0x81000000
       start: 0xB1FE00
       subsegments:
       - [0xB1FE00, lights, light]
@@ -8988,13 +8995,14 @@ segments:
     dir: chameleons
     subalign: 8
     type: code
+    exclusive_ram_id: "WHITE"
     subsegments:
     - [auto, c, White]
     - name: White
       dir: White
       type: .data
       subalign: 8
-      vram: 0x80D96290
+      vram: 0x81000000
       start: 0xB289F0
       subsegments:
       - [0xB289F0, lights, light]

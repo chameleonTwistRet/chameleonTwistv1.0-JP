@@ -449,9 +449,11 @@ if __name__ == "__main__":
     needsRecalculation = args.nonmatching or args.chckrecalc
 
     if needsRecalculation:
+        print('checksum will be recalibrated when building!')
         subprocess.run(f"gcc {TOOLS_DIR}/n64crc/n64crc.c -o {TOOLS_DIR}/n64crc/n64crc.exe", shell = True, executable="/bin/bash")
     
     if args.nonmatching:
+        print('a nonmatching rom will be built!')
         to = DEFINES + " -DNON_MATCHING"
         CFLAGS = CFLAGS.replace(DEFINES, to)
         GAME_COMPILE_CMD = GAME_COMPILE_CMD.replace(DEFINES, to)

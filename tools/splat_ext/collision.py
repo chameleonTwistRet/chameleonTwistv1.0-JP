@@ -156,14 +156,14 @@ class N64SegCollision(CommonSegCodeSubsegment):
                         sym2 = self.create_symbol(
                             addr=self.vram_start, in_segment=True, type="ColV", define=True
                         )
-                    v = "&"+sym2.name
+                    v = "&"+sym2.name+"[0]"
                 elif i == 3:
                     sym2 = self.retrieve_sym_type(symbols.all_symbols_dict, v, "ColT")
                     if not sym2:
                         sym2 = self.create_symbol(
                             addr=self.vram_start, in_segment=True, type="ColT", define=True
                         )
-                    v = "&"+sym2.name
+                    v = "&"+sym2.name+"[0]"
                 elif i == 4:
                     sym2 = self.retrieve_sym_type(symbols.all_symbols_dict, v, "ColS")
                     if not sym2:

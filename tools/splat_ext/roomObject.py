@@ -111,6 +111,15 @@ class N64SegRoomObject(CommonSegCodeSubsegment):
                 #        elif enumLine.find("};") != -1: break
                 #        actorAt += 1
                 #    enum += 1
+            elif i in [24, 25]: #func RoomObject*
+                if i != 0:
+                    smsym = self.retrieve_sym_type(symbols.all_symbols_dict, data[i], "func")
+                    if not smsym:
+                        v = "NULL"
+                    else:
+                        v = "&"+smsym.name
+                else: v = "NULL"
+
             lines.append(f"    {v},")
             i += 1
 
