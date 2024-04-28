@@ -379,7 +379,7 @@ ParseIntToBase10 = 0x8008f974; // type:func rom:0x6ad74
 MakeSaveMaster = 0x8009aa08; // type:func rom:0x75e08
 MakeLoadMaster = 0x8009b6cc; // type:func rom:0x76acc
 GeneratePerfectCode = 0x800a7ad4; // type:func rom:0x82ed4
-InitDemo = 0x800a9ca0; // type:func rom:0x850a0
+InitGCDemo = 0x800a9ca0; // type:func rom:0x850a0
 PlayerInits_Copy = 0x800ab59c; // type:func rom:0x8699c
 LimitFloat = 0x800b2220; // type:func rom:0x8d620
 IsPickup = 0x800b2288; // type:func rom:0x8d688
@@ -966,6 +966,8 @@ Battle_Init = 0x800546F0; // type:func
 Battle_Update = 0x80054864; // type:func
 DrawBackground = 0x8008F694; // type:func
 ManagePauseMenu = 0x8008ad30; // type:func
+InitDemo = 0x800a988c; // type:func
+
 
 //RoomObject funcs
 func_800B09C0 = 0x800B09C0; // type:func
@@ -1002,6 +1004,7 @@ Battle_TimeLeft = 0x80176824; // type:s32 size:0x4
 Battle_FirstRankCount = 0x80176828; // type:s32 size:0x4
 Battle_NumRanks = 0x80176834; // type:s32 size:0x4
 Dialogue = 0x800F4E3C; // size:0x1E0
+gCurrentDemo = 0x801FCA18; // type:s16 size:0x2
 
 volBGM = 0x801FCA20;
 gIsNotInCave = 0x8020005A; //type:s16
@@ -7205,3 +7208,29 @@ BombLand_footer_Bin = 0x03043F80; // type:Bin rom:0x51FB30 defined:True
 
 //generated section KidsLand starting here
 KidsLand_KidsLandPad_Bin = 0x03000000; // type:Bin rom:0x51FB40 defined:True
+
+
+
+
+//generated section DemoData starting here
+DemoData_stageIntroJL_Demo = 0x0F000000; // type:Demo rom:0xAF5690 defined:True size:0x1DC
+DemoData_stageIntroAL_Demo = 0x0F0001DC; // type:Demo rom:0xAF586C defined:True size:0x1DC
+DemoData_stageIntroBL_Demo = 0x0F0003B8; // type:Demo rom:0xAF5A48 defined:True size:0x1DC
+DemoData_stageIntroDC_Demo = 0x0F000594; // type:Demo rom:0xAF5C24 defined:True size:0x1DC
+DemoData_stageIntroKL_Demo = 0x0F000770; // type:Demo rom:0xAF5E00 defined:True size:0x1DC
+DemoData_stageIntroGC_Demo = 0x0F00094C; // type:Demo rom:0xAF5FDC defined:True size:0x1DC
+DemoData_unusedStageIntro_Demo = 0x0F000B28; // type:Demo rom:0xAF61B8 defined:True size:0x25C
+DemoData_demo1_Demo = 0x0F000D84; // type:Demo rom:0xAF6414 defined:True size:0x95C
+DemoData_demo2_Demo = 0x0F0016E0; // type:Demo rom:0xAF6D70 defined:True size:0x95C
+DemoData_demo3_Demo = 0x0F00203C; // type:Demo rom:0xAF76CC defined:True size:0x95C
+DemoData_unusedDemo_Demo = 0x0F002998; // type:Demo rom:0xAF8028 defined:True size:0x95C
+DemoData_demo4_Demo = 0x0F0032F4; // type:Demo rom:0xAF8984 defined:True size:0x95C
+DemoData_demo5_Demo = 0x0F003C50; // type:Demo rom:0xAF92E0 defined:True size:0x95C
+DemoData_demo6_Demo = 0x0F0045A8; // type:Demo rom:0xAF9C38 defined:True size:0x95C
+DemoData_demo7_Demo = 0x0F004F04; // type:Demo rom:0xAFA594 defined:True size:0x95C
+DemoData_demo8_Demo = 0x0F005860; // type:Demo rom:0xAFAEF0 defined:True size:0x95C
+DemoData_gc_ending_Demo = 0x0F0061BC; // type:Demo rom:0xAFB84C defined:True size:0xE0C
+DemoData_frame_Demo = 0x0F006FC8; // type:Demo rom:0xAFC658 defined:True size:0x4
+DemoData_pointers_Demop = 0x0F006FCC; // type:Demop rom:0xAFC65C defined:True
+
+DemoData_creditsDemo = 0x100061BC; // type:Demo rom:0xAB10B0 defined:True size:0x42B0

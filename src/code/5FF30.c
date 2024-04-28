@@ -838,7 +838,7 @@ s32 LoadBGM(void) {
     BGMVolume* temp_t2;
     s32 anotherTemp;
 
-    if ((gGameModeCurrent == GAME_MODE_DEMO) || (gGameModeCurrent == GAME_MODE_DEMO_2)) {
+    if ((gGameModeCurrent == GAME_MODE_DEMO) || (gGameModeCurrent == GAME_MODE_CREDITS_DEMO)) {
         return 0;
     }
 
@@ -856,7 +856,7 @@ s32 LoadBGM(void) {
 
     if ((gIsPaused == 0) && (D_800FF604 != 0)) {
         if ((alCSPGetState(gBGMPlayerP) != AL_PLAYING) || (D_800FF608 != 0)) {
-            if ((gGameModeCurrent != GAME_MODE_DEMO) && (gGameModeCurrent != GAME_MODE_DEMO_2)) {
+            if ((gGameModeCurrent != GAME_MODE_DEMO) && (gGameModeCurrent != GAME_MODE_CREDITS_DEMO)) {
                 alCSPPlay(gBGMPlayerP);
             }
             alSeqpSetVol((ALSeqPlayer*)gBGMPlayerP, D_801FCA22);
@@ -967,7 +967,7 @@ s32 StopBGM(void) {
 
 s32 func_8008BF20(void) {
     volBGM = volumesBGM[currBGMIndex];
-    if ((gBGMPlayerP->state != AL_PLAYING) && (gGameModeCurrent != GAME_MODE_DEMO) && (gGameModeCurrent != GAME_MODE_DEMO_2)) {
+    if ((gBGMPlayerP->state != AL_PLAYING) && (gGameModeCurrent != GAME_MODE_DEMO) && (gGameModeCurrent != GAME_MODE_CREDITS_DEMO)) {
         alCSPPlay(gBGMPlayerP);
     }
     return 0;
@@ -5866,9 +5866,9 @@ void func_800A9728(CTTask* arg0) {
         gCurrentDemoTimer = D_801FCA08;
     }
     
-    if ((D_80100D64[D_801FCA18] + 0xA) >= gCurrentDemoTimer) {
+    if ((D_80100D64[gCurrentDemo] + 0xA) >= gCurrentDemoTimer) {
         arg0->unk_64 = 0;
-        if (gGameModeCurrent != GAME_MODE_DEMO_2) {
+        if (gGameModeCurrent != GAME_MODE_CREDITS_DEMO) {
             func_8008E9AC(0x20, 0, 0, 0, &arg0->unk_64);
         }
         arg0->function = &func_800A97E4;
@@ -5887,9 +5887,9 @@ void func_800A97E4(CTTask* arg0) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A988C.s")
-
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/InitDemo.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/InitGCDemo.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A9F84.s")
 
@@ -5970,6 +5970,8 @@ void func_800AAAC8(void) {
     gPlayerActors->pos.z = 600.0f;
 }
 
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800AAB0C.s")
+/*
 void func_800AAB0C(s32 arg0) {
     s32 dmaResult;
     s32 dmaSize;
@@ -6027,6 +6029,7 @@ void func_800AAB0C(s32 arg0) {
     func_800AAAC8();
     gPlayerActors->yAngle = 0.0f;
 }
+*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800AACFC.s")
 

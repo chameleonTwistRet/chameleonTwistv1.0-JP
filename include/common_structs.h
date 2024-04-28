@@ -834,6 +834,12 @@ typedef struct ContMain {
     f32 stickAngle;
 } ContMain; //sizeof 0x10
 
+typedef struct ContDemo {
+    u16 buttons;
+    s8 x;
+    s8 y;
+} ContDemo; //sizeof 0x4
+
 typedef struct EffectPart { 
     /* 0x00 */ Vec3f pos;
     /* 0x0C */ Vec3f vel;

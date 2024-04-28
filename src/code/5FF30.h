@@ -570,7 +570,7 @@ extern u8 D_800FF8E4;
 extern s32 perfectCode;
 extern OSContPad D_80175650[MAXCONTROLLERS];
 extern s32 D_801FCA08;
-extern s16 D_801FCA18;
+extern s16 gCurrentDemo;
 extern s16 D_80100D64[];
 extern f32 D_80108760;
 extern f32 D_80108764;

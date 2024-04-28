@@ -449,7 +449,7 @@ if __name__ == "__main__":
     needsRecalculation = args.nonmatching or args.chckrecalc
 
     if needsRecalculation:
-        print('checksum will be recalibrated when building!')
+        print('checksum will be recalculated when building!')
         subprocess.run(f"gcc {TOOLS_DIR}/n64crc/n64crc.c -o {TOOLS_DIR}/n64crc/n64crc.exe", shell = True, executable="/bin/bash")
     
     if args.nonmatching:
