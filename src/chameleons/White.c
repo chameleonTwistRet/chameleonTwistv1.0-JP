@@ -14,7 +14,6 @@ extern Mtx D_801299B0_White; //Lshoulder
 extern Mtx D_801299F0_White; //fist
 extern Mtx D_80129A30_White; //Lfist
 
-
 #include "assets/chameleons/White/light.light.inc.c"
 
 #include "assets/chameleons/White/body/body.vtx.inc.c"

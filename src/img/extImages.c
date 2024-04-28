@@ -1376,4 +1376,10 @@ unsigned char extImages_menuOptions_ia8_PNG[] = {
 #include "build/assets/img/extImages/menuOptions.ia8.png.inc.c"
 };
 
-#include "build/assets/img/extImages/unkAnimData.inc.c"
+#include "assets/img/extImages/anim/unk1Header.animH.inc.c"
+
+#include "assets/img/extImages/anim/unk1.animArr.inc.c"
+
+#include "assets/img/extImages/anim/unk2Header.animH.inc.c"
+
+#include "assets/img/extImages/anim/unk2.animArr.inc.c"

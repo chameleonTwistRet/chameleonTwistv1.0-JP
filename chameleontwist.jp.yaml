@@ -7519,32 +7519,148 @@ segments:
 
       - [0xa90148, ia8, menuOptions.ia8, 128, 144]
 
-      - [0xA94948, databin, unkAnimData]
+      - [0xA94948, animHeader, anim/unk1Header]
+      - [0xA94978, animArray, anim/unk1, 100, 13]
+      - [0xAA8E78, animHeader, anim/unk2Header]
+      - [0xAA8EA8, animArray, anim/unk2, 40, 13]
 
-  #   - [0xab10b0, databin, unk00] credits demo?
+      - [0xAB10A8]
 
 
 
-  #   - [0xAB5360, databin, rabbit] # ウサギ
-  - name: Seg5
-    type: code
+  - start: 0xab10b0
+    name: CreditsDemo
+    vram: 0x0F000000 #SEGMENT 0x0F
+    dir: img
     subalign: 8
-    vram: 0x05000000
-    start: 0xAB5360
+    type: code
+    exclusive_ram_id: "DEMO"
     subsegments:
-    - [0xAB5360, databin, seg5Data] #ends at 0xABD990 # ウサギ rabbit
-    - [0xABA360, databin, unkBlock156] #ends at 0xABD990
-  
+    - [auto, c, CreditsDemo]
+    - name: CreditsDemo
+      dir: CreditsDemo
+      type: .data
+      subalign: 8
+      vram: 0x81000000
+      start: 0xab10b0
+      subsegments:
+      - [0xab10b0, demoData, CreditsDemo] #120 frames
+
+  - start: 0xAB5360
+    name: Rabbit # ウサギ rabbit
+    vram: 0x05000000 #SEGMENT 0x05
+    dir: img
+    subalign: 8
+    type: code
+    exclusive_ram_id: "RABBIT"
+    subsegments:
+    - [auto, c, Rabbit]
+    - name: Rabbit
+      dir: Rabbit
+      type: .data
+      subalign: 8
+      vram: 0x81000000
+      start: 0xAB5360
+      subsegments:
+      - [0xAB5360, mtx, groupMtx]
+      - [0xab53a0, lights, grouplight]
+
+      - [0xab53b8, vtx, ear/ear]
+      - [0xab5498] #identity matrix
+      - [0xab54d8, gfxSeg, ear/ear]
+
+      - [0xab5610, vtx, earL/earL]
+      - [0xab56f0] #identity matrix
+      - [0xab5730, gfxSeg, earL/earL]
+
+      - [0xab5868, vtx, head/head]
+      - [0xab6078] #identity matrix
+      - [0xab60b8] #B8000000
+      - [0xab60c0, ci4,     head/eye.ci4, 32, 32]
+      - [0xAB62C0] #B8000000
+      - [0xAB62C8, palette, head/eye.ci4]
+      - [0xab64c8] #B8000000
+      - [0xab64d0, ci4,     head/mouth.ci4, 64, 64]
+      - [0xAB6CD0] #B8000000
+      - [0xAB6CD8, palette, head/mouth.ci4]
+      - [0xab6ed8, gfxSeg, head/head]
+
+      - [0xab76b0, vtx, foot/foot]
+      - [0xab7770] #identity matrix
+      - [0xab77b0, gfxSeg, foot/foot]
+
+      - [0xab78c8, vtx, footL/footL]
+      - [0xab7988] #identity matrix
+      - [0xab79c8, gfxSeg, footL/footL]
+
+      - [0xab7ae0, vtx, leg/leg]
+      - [0xab7cf0] #identity matrix
+      - [0xab7d30, gfxSeg, leg/leg]
+
+      - [0xab7f28, vtx, body/body]
+      - [0xab8368] #identity matrix
+      - [0xab83A8] #B8000000
+      - [0xab83B0, ci4,     body/tuxedo.ci4, 64, 64]
+      - [0xAB8BB0] #B8000000
+      - [0xAB8BB8, palette, body/tuxedo.ci4]
+      - [0xab8db8] #B8000000
+      - [0xab8dc0, ci4,     body/tuxedoTop.ci4, 64, 32]
+      - [0xAB91C0] #B8000000
+      - [0xAB91C8, palette, body/tuxedoTop.ci4]
+      - [0xab93c8, gfxSeg, body/body]
+
+      - [0xab98d8, vtx, legL/legL]
+      - [0xab9b38] #identity matrix
+      - [0xab9b78, gfxSeg, legL/legL]
+
+      - [0xab9d78, vtx, tail/tail]
+      - [0xab9e98] #identity matrix
+      - [0xab9eD8, gfxSeg, tail/tail]
+
+      - [0xaba058, vtx, watch/watch]
+      - [0xaba2b8] #identity matrix
+      - [0xaba2f8] #B8000000
+      - [0xaba300, ci4,     watch/watch.ci4, 64, 64]
+      - [0xABAB00] #B8000000
+      - [0xABAB08, palette, watch/watch.ci4]
+      - [0xabad08] #B8000000
+      - [0xabad10, ci4,     watch/watchColor.ci4, 16, 16]
+      - [0xABAD90] #B8000000
+      - [0xABAD98, palette, watch/watchColor.ci4]
+      - [0xabaf98, gfxSeg, watch/watch]
+
+      - [0xabb320, mtx, restassociate/restassociate]
+      - [0xabb360, gfxSeg, restassociate/restassociate]
+
+      - [0xabb3c8, animHeader, anim/unk1Header]
+      - [0xabb3f8, animArray, anim/unk1, 15, 10]
+      - [0xABD978, databin, anim/unk1Pointers]
+
   #animations
-  - name: Seg6
-    type: code
+  - start: 0xABD990
+    name: Animations # サブアニメ subanime
+    vram: 0x06000000 #SEGMENT 0x06
+    dir: anim
     subalign: 8
-    vram: 0x06000000
-    start: 0xABD990
+    type: code
+    exclusive_ram_id: "ANIM"
     subsegments:
-    - [0xABD990, databin, seg6Data] #ends at 0xACBD90 # サブアニメ subanime
+    - [auto, c, Animations]
+    - name: Animations
+      dir: Animations
+      type: .data
+      subalign: 8
+      vram: 0x81000000
+      start: 0xABD990
+      subsegments:
+      - [0xABD990, animHeader, unk1/unk1Header]
+      - [0xABD9C0, animArray, unk1/unk1, 30, 13]
+      - [0xAC3B40, animHeader, unk2/unk2Header]
+      - [0xAC3B70, animArray, unk2/unk2, 40, 13]
+      - [0xACBD70, databin, unk1/unk1Pointers]
+      - [0xACBD7C, databin, unk2/unk2Pointers]
 
-
+      
   - start: 0xACBD90
     name: Battle_Chameleons # 青, match
     vram: 0x07000000 #SEGMENT 0x07

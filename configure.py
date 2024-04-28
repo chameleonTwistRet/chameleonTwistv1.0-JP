@@ -248,7 +248,7 @@ def build_stuff(linker_entries: List[LinkerEntry]):
     import glob
     asset_files = []
     for file in glob.glob(f"src/**/*.c", recursive=True):
-        for custom in ["chameleons/", "levelGroup/", "img/"]:
+        for custom in ["chameleons/", "levelGroup/", "img/", "anim/"]:
             if file.find(custom) != -1:
                 asset_files.append(file)
                 break
