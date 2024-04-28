@@ -37,7 +37,7 @@ if args.make:
 baseimg = f"baserom.jp.z64"
 basemap = f"expected/build/chameleontwist.jp.map"
 
-myimg = f"build/chameleonTwistJP.z64"
+myimg = f"build/chameleontwist.jp.z64"
 mymap = f"build/chameleontwist.jp.map"
 
 if not os.path.isfile(baseimg):

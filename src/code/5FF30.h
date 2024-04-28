@@ -191,7 +191,7 @@ void CTTask_Unlink_2(CTTask* task);
 //still unsure
 void bzero32(CTTask*, s32, CTTask*, s16);
 CTTask* CTTask_Alloc(s16 setRunType, s16 arg1, CTTask* task);
-void func_8008D114(graphicStruct* arg0, s32 fbIndex);
+void func_8008D114(GraphicStruct* arg0, s32 fbIndex);
 Gfx* func_8008D168(Gfx* gfxPos, s32 arg1, s32 arg2);
 s32 func_8008D5DC(ContMain* controller);
 //this also came up as CTTask but it generates with buttons1 and buttons2 so i think thats more accurate
@@ -203,7 +203,7 @@ s32 func_8008D7FC(CTTask* task);
 s32 func_8008D950(CTTask* task);
 void func_8008DAB8(f32, f32, f32, f32, f32, s32, s16, s16);
 void func_8008DB24(f32, f32, f32, f32, f32, s16, s16, s16);
-void func_8008DB90(Gfx** pGfxPos, graphicStruct* arg1);
+void func_8008DB90(Gfx** pGfxPos, GraphicStruct* arg1);
 Gfx* func_8008E314(Gfx* gfxPos, Tongue* tongues, PlayerActor* players, Camera* cameras, s32 fbIndex);
 Gfx* func_8008E488(Gfx* gfxPos, Tongue* tongues, PlayerActor* players, Camera* cameras, s32 fbIndex);
 Gfx* setFrustum(Gfx* gfxPos, s32 fbIndex);
@@ -576,7 +576,7 @@ extern f32 D_80108760;
 extern f32 D_80108764;
 extern f32 D_80108768;
 extern s32 gFramebufferIndex;
-extern graphicStruct gGraphicsList[2];
+extern GraphicStruct gGraphicsList[2];
 extern unkStruct0 D_80101048;
 extern s32 D_800FF8E8;
 extern OSMesg gSchedMessageQueueMsgs[20];
@@ -664,5 +664,13 @@ extern s32 D_80101074;
 extern s32 D_80101078;
 extern Struct_800AB734 D_80105E08[];
 extern s32 D_8010875C;
+extern s32 D_80174980;
+
+void Battle_Init(void);
+void func_8002CE54(void);
+s32 SaveData_ReadFile(SaveFile*);
+void func_800C2820(u8, PlayerActor*, SaveFile*);
+void func_800C1510(s32, s32);
+void func_800B4574(u8*, s16*);
 
 #endif // _5FF30_H_

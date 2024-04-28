@@ -191,23 +191,22 @@ extern f64 D_80110120;
 extern char D_8011074C[];
 extern char D_8011077C[];
 extern OSThread gIdleThread; // thread1
-extern u64 gIdleThreadStack[1024]; // thread1
-extern OSThread gMainThread; // thread3
-extern u64 gMainThreadStack[1024]; // thread3
+// extern u64 gIdleThreadStack[1024]; // thread1
+// extern OSThread gMainThread; // thread3
+// extern u64 gMainThreadStack[1024]; // thread3
 extern OSThread D_80117FF0; //unused thread.
-extern u64 D_801181A0[512]; //unused Stack
+// extern u64 D_801181A0[512]; //unused Stack
 extern void* D_801191A0;
 extern OSMesgQueue gSyncMessageQueue;
-extern u64 D_80119320[128]; //D_800f04e0[].dram_stack
+// extern u64 D_80119320[128]; //D_800f04e0[].dram_stack
 extern u64 D_80119720[8192];//D_800f04e0[].output_buff
-extern Gfx D_80129720[10];
+// extern Gfx D_80129720[2];
 extern OSMesg gPiManMsgs[50];
 extern OSMesgQueue gPiManMgsQ;
 extern s32 gControllerNo;
 extern s32 D_80168D78[];
 extern s32 gActorCount;
 extern PlayerActor gPlayerActors[4];
-//extern s32 D_80168E5C;
 extern Tongue gTongues[4];
 extern Actor gActors[ACTORS_MAX]; //currently loaded actor structs
 extern pole D_80170968[64]; //currently loaded pole structs

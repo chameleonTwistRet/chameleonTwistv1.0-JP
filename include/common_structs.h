@@ -955,7 +955,7 @@ D_MTXSLOTB = 0x801299B0; // type:Mtx
 D_MTXSLOTC = 0x801299F0; // type:Mtx
 D_MTXSLOTD = 0x80129A30; // type:Mtx*/
 
-typedef struct graphicStruct {
+typedef struct GraphicStruct {
 /*0x0*/         Gfx dlist[0x1000];
 /*0x8000*/      Mtx perspective;
 /*0x8040*/      Mtx lookAt;
@@ -975,7 +975,7 @@ typedef struct graphicStruct {
 /*0x16880*/     Mtx colliderTransforms[128][3]; // may be wrong.
 /*0x1C880*/     s8 unk1c880[0x2000];
 /*0x1E880*/     Mtx unk1e880[74]; //may be used for "CTTask"s
-} graphicStruct; //sizeof 0x1FB00
+} GraphicStruct; //sizeof 0x1FB00
 
 typedef struct Shadow {
     u32 active;

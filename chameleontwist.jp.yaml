@@ -19,7 +19,7 @@ options:
   build_path: build
   gfx_ucode: f3dex
   extensions_path: tools/splat_ext
-  auto_all_sections: [".data", ".rodata", ".bss"]
+  # auto_all_sections: [".data", ".rodata", ".bss"]
   migrate_rodata_to_functions : True
   asm_function_macro: glabel
   asm_jtbl_label_macro: jlabel
@@ -283,7 +283,8 @@ segments:
       - [0xEC590, .rodata, audio/seq] #80111190
       - [0xEC5A0, .rodata, audio/reverb] #801111A0
       - [0xEC5D0, rodata, gspFast3DDataStart]
-      - {start: 0xED090, type: bss, vram: 0x80111C90, name: globalBSS } # This has the same rom address as below as bss isnt in the ROM
+      - {start: 0xED090, type: .bss, vram: 0x80111C90, name: code/1050 } # This has the same rom address as below as bss isnt in the ROM
+      - {start: 0xED090, type: bss, vram: 0x80168D70, name: globalBSS }
       - {start: 0xED090, type: .bss, vram: 0x801748A0, name: code/84E0 }
       - {start: 0xED090, type: .bss, vram: 0x80175620, name: code/298D0 }
       - {start: 0xED090, type: .bss, vram: 0x80175870, name: code/debug }
@@ -319,9 +320,17 @@ segments:
     follows_vram: main
     vram: 0x8024C510
     subsegments:
-      - [0xED090, databin, unkBlock0] #size of 0x14AD0
+      - [0xED090, databin, unkBlock0Assets0] #size of 0x14AD0
 
-  # # from mainproc() piDMA size: 45C00
+  - name: Seg1
+    type: code
+    subalign: 8
+    vram: 0x01000000
+    start: 0x101B60
+    subsegments:
+    - [0x101B60, databin, seg1Data] #ends at 0x147760
+
+# # from mainproc() piDMA size: 45C00
   # - name: static0
   #   type: data
   #   start: 0x101B60
@@ -422,6 +431,15 @@ segments:
 
   #     - [0x13BD60, databin]
 
+
+  - name: assets1
+    type: code
+    subalign: 8
+    start: 0x147760
+    subsegments:
+      - [0x147760, databin, alBankfile0] #size of 0x7B60 [ram 801C4940] 
+
+  
   # # Start of next part?
   # - [0x147760, databin, alBankfile0] #size of 0x7B60 [ram 801C4940] 
   # - [0x14F2C0, databin, alBankfile0Table] #unksize
@@ -7508,8 +7526,23 @@ segments:
 
 
   #   - [0xAB5360, databin, rabbit] # ウサギ
+  - name: Seg5
+    type: code
+    subalign: 8
+    vram: 0x05000000
+    start: 0xAB5360
+    subsegments:
+    - [0xAB5360, databin, seg5Data] #ends at 0xABD990 # ウサギ rabbit
+    - [0xABA360, databin, unkBlock156] #ends at 0xABD990
+  
   #animations
-  #   - [0xABD990, databin, subAnime] # サブアニメ
+  - name: Seg6
+    type: code
+    subalign: 8
+    vram: 0x06000000
+    start: 0xABD990
+    subsegments:
+    - [0xABD990, databin, seg6Data] #ends at 0xACBD90 # サブアニメ subanime
 
 
   - start: 0xACBD90
@@ -9109,5 +9142,10 @@ segments:
       - [0xB31508, mtx, restAssociate/restAssociate]
       - [0xB31548, gfxSeg, restAssociate/restAssociate]
 
-  - [0xB315D0, databin, ROM_PADDING]
-  - [0xC00000]
+  - name: assets5
+    type: code
+    subalign: 8
+    start: 0xB315D0
+    subsegments:
+      - [0xB315D0, databin, ROM_PADDING]
+      - [0xC00000]

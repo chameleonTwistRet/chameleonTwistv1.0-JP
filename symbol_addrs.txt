@@ -1244,6 +1244,16 @@ D_801749D8 = 0x801749D8; // size:0x78
 D_80248540 = 0x80248540; // size:0x368
 gIsGamePaused = 0x800F0674; // type:s32 size:0x04
 
+D_ED090 = 0xED090;
+D_101B60 = 0x101B60;
+D_147760 = 0x147760;
+D_14F2C0 = 0x14F2C0;
+D_282E80 = 0x282E80;
+D_2A29C0 = 0x2A29C0;
+D_2AB120 = 0x2AB120;
+D_8C26A0 = 0x8C26A0;
+D_AB10B0 = 0xAB10B0;
+D_AF5690 = 0xAF5690;
 //ASSETS
 //generated section Black starting here
 Black_light_Light = 0x0C000000; // type:Light rom:0xB1FE00 defined:True
