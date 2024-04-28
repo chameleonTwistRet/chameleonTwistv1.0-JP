@@ -1,5 +1,6 @@
 #include "5FF30.h"
 #include "sprite.h"
+#include "ld_addrs.h"
 
 /*const u8 D_800FEDC0[226][8] = {
 {104, 136, 1, 4, 1, 5, 25, 0},
