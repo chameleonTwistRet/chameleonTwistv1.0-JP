@@ -1296,9 +1296,9 @@ void CTTask_Unlink_2(CTTask* task) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008D060.s")
 
-void func_8008D114(graphicStruct* arg0, s32 fbIndex) {
+void func_8008D114(GraphicStruct* arg0, s32 fbIndex) {
     Video_SetTask(arg0, arg0->dlist, fbIndex);
-    osWritebackDCache(arg0, sizeof(graphicStruct));
+    osWritebackDCache(arg0, sizeof(GraphicStruct));
     Sched_SetGfxTask(&D_800F04E0[fbIndex], fbIndex);
 }
 
@@ -1392,7 +1392,7 @@ void func_8008DB24(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, s16 unused,
     func_8005747C(arg0, 180.0f - arg1, arg2 - 80.0f, arg3, arg4, arg6, arg7);
 }
 
-void func_8008DB90(Gfx** pGfxPos, graphicStruct* arg1) {
+void func_8008DB90(Gfx** pGfxPos, GraphicStruct* arg1) {
     CTTask* task;
     Mtx* var_a0;
     s32* var_t0;

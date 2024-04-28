@@ -17,8 +17,8 @@ void bootproc(void);
 void idleproc(void*);
 void mainproc(void*);
 void func_80025EE8(void);
-Gfx* func_8002C900(graphicStruct*, s32);
-Gfx* func_8002CCA0(graphicStruct*, s32);
+Gfx* func_8002C900(GraphicStruct*, s32);
+Gfx* func_8002CCA0(GraphicStruct*, s32);
 void func_8002CCDC(void);
 void func_8002CD04(void);
 void func_8002CD94(s32);
@@ -477,9 +477,9 @@ void func_800743BC(f32, f32, f32, f32, f32, f32, u32, u32, s32, u32*);
 s32 func_80082714(f32, f32, f32, s32);
 void func_8007E6BC(f32 arg0, f32 arg1, f32 arg2, f32 arg3, u8 arg4, u8 arg5, u8 arg6);
 //1050.c
-void DemoGfx_DrawFrame(Gfx* arg0, graphicStruct* arg1, s32 fbIndex);
+void DemoGfx_DrawFrame(Gfx* arg0, GraphicStruct* arg1, s32 fbIndex);
 void DemoGfx_SwapFB(s32 fbIndex);
-void Video_SetTask(graphicStruct* arg0, Gfx* arg1, s32 arg2);
+void Video_SetTask(GraphicStruct* arg0, Gfx* arg1, s32 arg2);
 //298D0.c
 void func_8004E784(ContMain* arg0, s32 arg1, s32* arg2, ContMain* arg3);
 //8ADD0.c

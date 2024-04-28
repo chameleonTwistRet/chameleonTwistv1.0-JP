@@ -2,6 +2,35 @@
 #include "battle.h"
 #include "sprite.h"
 
+char D_80111C90[8192];
+OSThread gIdleThread;
+char gIdleThreadStack[8192];
+OSThread gMainThread;
+char gMainThreadStack[8192];
+OSThread D_80117FF0;
+char D_801181A0[4096];
+void* D_801191A0;
+char D_801191A4[4]; //unused?
+OSMesg gPiManMsgs[50];
+OSMesgQueue gPiManMgsQ;
+OSMesg D_80119288;
+char D_8011928C[4]; //unused?
+OSMesgQueue D_80119290;
+OSMesg D_801192A8;
+OSMesg D_801192AC;
+OSMesg D_801192B0;
+char D_801192B4[4]; //unused?
+OSMesgQueue gAudioDoneMessageQueue;
+OSMesgQueue gFrameDrawnMessageQueue;
+OSMesgQueue gSyncMessageQueue;
+OSIoMesg D_80119300; //
+char D_80119318[8];
+char D_80119320[1024];
+u64 D_80119720[8192];
+Gfx D_80129720[2];
+Mtx D_80129730[1];
+GraphicStruct gGraphicsList[2];
+
 void bootproc(void) {
     __osInitialize_common();
     gControllerNo = 1;                            //gIdleThreadStack[1024]
@@ -241,7 +270,7 @@ s32 func_80026C78(Actor* actor) {
 }
 
 //adjustment for BL_BOSS_SEGMENT
-void func_80026CA8(graphicStruct *arg0, Mtx *arg1, u32 arg2, f32 arg3, s32 arg4) {
+void func_80026CA8(GraphicStruct *arg0, Mtx *arg1, u32 arg2, f32 arg3, s32 arg4) {
     f32 xPos = 0.0f;
     f32 yPos = 0.0f;
     f32 zPos = 0.0f;
@@ -254,7 +283,7 @@ void func_80026CA8(graphicStruct *arg0, Mtx *arg1, u32 arg2, f32 arg3, s32 arg4)
     func_80059254(arg1, gActors[arg2].pos.x + xPos, gActors[arg2].pos.y + yPos, gActors[arg2].pos.z + zPos, arg3, arg3, 0.0f, arg4);
 }
 
-void func_80026E30(graphicStruct *arg0, Mtx *arg1, u32 arg2, f32 arg3, s32 arg4) {
+void func_80026E30(GraphicStruct *arg0, Mtx *arg1, u32 arg2, f32 arg3, s32 arg4) {
     f32 xPos = 0.0f;
     f32 yPos = 0.0f;
     f32 zPos = 0.0f;
@@ -267,7 +296,7 @@ void func_80026E30(graphicStruct *arg0, Mtx *arg1, u32 arg2, f32 arg3, s32 arg4)
     func_800598C4(arg1, gActors[arg2].pos.x + xPos, gActors[arg2].pos.y + yPos, gActors[arg2].pos.z + zPos, arg3, arg3, 0.0f, arg4);
 }
 
-void func_80026FB8(graphicStruct *arg0, Mtx *arg1, u32 arg2, f32 arg3, f32 arg4, s32 arg5) {
+void func_80026FB8(GraphicStruct *arg0, Mtx *arg1, u32 arg2, f32 arg3, f32 arg4, s32 arg5) {
     f32 xPos, yPos, zPos;
     zPos = yPos = xPos = 0.0f;
     
@@ -373,10 +402,10 @@ s32 func_80027650(void) {       // GetHighestActivePlayerIndex
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/1050/func_80027694.s")
-void func_80027694(graphicStruct* arg0);
+void func_80027694(GraphicStruct* arg0);
 
 //draw player
-Gfx* func_8002A190(graphicStruct* arg0, Gfx* gfxPos, PlayerActor* player, Tongue* tongue, s32 playerIndex) {
+Gfx* func_8002A190(GraphicStruct* arg0, Gfx* gfxPos, PlayerActor* player, Tongue* tongue, s32 playerIndex) {
     f32 scaleX = 1.4f;
     f32 scaleY = player->yScale * 1.4f;    
     f32 scaleZ = 1.4f;
@@ -423,7 +452,7 @@ Gfx* func_8002A190(graphicStruct* arg0, Gfx* gfxPos, PlayerActor* player, Tongue
     return gfxPos;
 }
 
-Gfx* func_8002A4C4(graphicStruct* arg0, Gfx* gfxPos, PlayerActor* player, Tongue* tongue, s32 playerIndex) {
+Gfx* func_8002A4C4(GraphicStruct* arg0, Gfx* gfxPos, PlayerActor* player, Tongue* tongue, s32 playerIndex) {
     s32 i;
     
     for (i = 0; i < 6; i++) {
@@ -457,7 +486,7 @@ Gfx* func_8002A4C4(graphicStruct* arg0, Gfx* gfxPos, PlayerActor* player, Tongue
     return gfxPos;
 }
 
-Gfx* func_8002A824(graphicStruct* arg0, Gfx* gfxPos, PlayerActor* player, Tongue* tongue, s32 playerIndex) {
+Gfx* func_8002A824(GraphicStruct* arg0, Gfx* gfxPos, PlayerActor* player, Tongue* tongue, s32 playerIndex) {
     s32 i;
     s32 sp160 = FALSE;
     f32 f28 = 1.0f;
@@ -630,7 +659,7 @@ void func_8002AE3C(void) {
 
 }
 
-Gfx* func_8002B118(graphicStruct* arg0, Gfx* gfxPos, Gfx* dlist, Actor* actor, f32 scale, s32 arg5, s32* mtxIndex) {
+Gfx* func_8002B118(GraphicStruct* arg0, Gfx* gfxPos, Gfx* dlist, Actor* actor, f32 scale, s32 arg5, s32* mtxIndex) {
     Mtx sp300, sp2C0, sp280, sp240;
     Mtx sp200, sp1C0;
     Mtx sp180, sp140;
@@ -691,7 +720,7 @@ Gfx* func_8002B118(graphicStruct* arg0, Gfx* gfxPos, Gfx* dlist, Actor* actor, f
     return gfxPos;
 }
 
-Gfx* func_8002B7BC(graphicStruct* arg0, Gfx* gfxPos) {
+Gfx* func_8002B7BC(GraphicStruct* arg0, Gfx* gfxPos) {
     s32 i;
     s32 sp178 = 0;
     f32 scale1;
@@ -868,7 +897,7 @@ Gfx* func_8002B7BC(graphicStruct* arg0, Gfx* gfxPos) {
 }
 
 #ifdef NON_MATCHING
-Gfx* func_8002C280(graphicStruct* arg0, Gfx* gfxPos) {
+Gfx* func_8002C280(GraphicStruct* arg0, Gfx* gfxPos) {
     s32 i;
 
     gfxPos = func_8007B524(arg0, gfxPos, gCamera);
@@ -919,7 +948,7 @@ Gfx* func_8002C280(graphicStruct* arg0, Gfx* gfxPos) {
 }
 #else
 #pragma GLOBAL_ASM("asm/nonmatchings/code/1050/func_8002C280.s")
-Gfx* func_8002C280(graphicStruct* arg0, Gfx* gfxPos);
+Gfx* func_8002C280(GraphicStruct* arg0, Gfx* gfxPos);
 #endif
 
 #ifdef NON_MATCHING
@@ -968,7 +997,7 @@ Gfx* func_8002C4E8(Gfx* gfxPos, s32 arg1, s32 arg2) {
 Gfx* func_8002C4E8(Gfx* gfxPos, s32 arg1, s32 arg2);
 #endif
 
-Gfx* func_8002C900(graphicStruct* arg0, s32 arg1) {
+Gfx* func_8002C900(GraphicStruct* arg0, s32 arg1) {
     Gfx* gfxPos = arg0->dlist;
     s32 i;
 
@@ -998,7 +1027,7 @@ Gfx* func_8002C900(graphicStruct* arg0, s32 arg1) {
     return gfxPos;
 }
 
-Gfx* func_8002CAC8(graphicStruct* arg0, s32 arg1) {
+Gfx* func_8002CAC8(GraphicStruct* arg0, s32 arg1) {
     Gfx* gdl;
 
     gdl = func_8002C4E8(arg0->dlist, arg1, 1);
@@ -1007,7 +1036,7 @@ Gfx* func_8002CAC8(graphicStruct* arg0, s32 arg1) {
     return gdl;
 }
 
-void Video_SetTask(graphicStruct* arg0, Gfx* arg1, s32 arg2) {
+void Video_SetTask(GraphicStruct* arg0, Gfx* arg1, s32 arg2) {
     OSTask_t* task = &D_800F04E0[arg2].t;
     task->ucode_boot = (u64*)rspbootTextStart;
     task->ucode_boot_size =  ((s32)rspbootTextEnd - (s32)rspbootTextStart);
@@ -1019,14 +1048,14 @@ void Video_SetTask(graphicStruct* arg0, Gfx* arg1, s32 arg2) {
     task->data_size = (((s32)arg1 - (s32)arg0) >> 3) << 3;
 }
 
-void DemoGfx_DrawFrame(Gfx* arg0, graphicStruct* arg1, s32 fbIndex) {
+void DemoGfx_DrawFrame(Gfx* arg0, GraphicStruct* arg1, s32 fbIndex) {
 
     if (D_80174998 < 3) {
         arg0 = func_8002CAC8(arg1, fbIndex);
     }
     
     Video_SetTask(arg1, arg0, fbIndex);
-    osWritebackDCache(arg1, sizeof(graphicStruct));
+    osWritebackDCache(arg1, sizeof(GraphicStruct));
     Sched_SetGfxTask(&D_800F04E0[fbIndex], fbIndex);
 }
 
@@ -1046,7 +1075,7 @@ void DemoGfx_SwapFB(s32 fbIndex) {
 }
 
 //update framebuffer
-Gfx* func_8002CCA0(graphicStruct* arg0, s32 arg1) {
+Gfx* func_8002CCA0(GraphicStruct* arg0, s32 arg1) {
     Gfx* sp1C;
 
     if (D_80174998 > 2) {

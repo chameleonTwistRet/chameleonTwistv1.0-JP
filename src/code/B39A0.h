@@ -15,7 +15,6 @@ extern PlayerActor gPlayerActors[4];
 extern s32 D_801749A0;
 extern s32 D_801749A0;
 extern s32 D_801749A0;
-extern s32 D_80168E24;
 extern s32 D_801749A0;
 
 
