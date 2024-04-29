@@ -341,7 +341,7 @@ s32 func_80096748(u16);
 s32 CanAccessStage(s32 stageIndex);
 f32 func_80096898(u16 arg0);
 void func_80096964(CTTask* task);
-void func_80096A20(CTTask* task);
+void Stage_Select_ChameleonWalk(CTTask* task);
 void func_80096CA0(CTTask* task);
 void func_80096D40(s32);
 s32 func_80097414(s32 arg0, s32 arg1);
@@ -617,7 +617,6 @@ extern Mtx* D_800FF8D4;
 extern Unk_800FFB74* D_800FFB74[];
 extern Unk_800FFDDC* D_800FFDDC[];
 extern s32 D_800FFDEC;
-extern Gfx* D_800F0638[];
 extern f32* D_800FF610; //this probably isnt right but until we care roll with it
 extern s16 D_801FC9A4;
 extern s8 D_80200C08;

@@ -365,5 +365,6 @@ extern Collision gZoneCollisions[];
 extern s32 currentStageCrowns;
 extern char* Dialogue[6][20]; //sizeof 0x1E0
 extern s32 gIsGamePaused;
+extern Gfx* ChameleonGfxs[6];
 
 #endif

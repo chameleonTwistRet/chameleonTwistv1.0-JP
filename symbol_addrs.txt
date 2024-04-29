@@ -967,7 +967,7 @@ Battle_Update = 0x80054864; // type:func
 DrawBackground = 0x8008F694; // type:func
 ManagePauseMenu = 0x8008ad30; // type:func
 InitDemo = 0x800a988c; // type:func
-
+Stage_Select_ChameleonWalk = 0x80096a20; // type:func
 
 //RoomObject funcs
 func_800B09C0 = 0x800B09C0; // type:func
@@ -1005,6 +1005,8 @@ Battle_FirstRankCount = 0x80176828; // type:s32 size:0x4
 Battle_NumRanks = 0x80176834; // type:s32 size:0x4
 Dialogue = 0x800F4E3C; // size:0x1E0
 gCurrentDemo = 0x801FCA18; // type:s16 size:0x2
+chameleonEyeList = 0x800fe4ec; // size:0x60
+ChameleonGfxs = 0x800f0638; // size:18
 
 volBGM = 0x801FCA20;
 gIsNotInCave = 0x8020005A; //type:s16

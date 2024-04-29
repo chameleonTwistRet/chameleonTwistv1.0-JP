@@ -92,12 +92,6 @@ typedef struct struct_800FE4E4 {
     /* 0x1 */ u8 unk_01;
 } struct_800FE4E4; //sizeof 0x2
 
-typedef struct struct_800FE4EC {
-    u8* unk_00;
-    u8* unk_04;
-    u8* unk_08;
-    u8* unk_0C;
-} struct_800FE4EC;
 
 typedef struct struct_800FE54C {
     u8* unk_00;
@@ -292,7 +286,16 @@ typedef struct Effect_TypeBI_Data {
     /* 0x04 */ f32 size;
 } Effect_TypeBI_Data; //sizeof 0x08
 
+typedef struct chameleonEyeListEntry {
+  void* eyeR;
+  void* eyeL;
+  void* eyeRPalette;
+  void* eyeLPalette;
+} chameleonEyeListEntry;
+
+
 /* extern symbols */
+extern chameleonEyeListEntry chameleonEyeList[6];
 extern s32 D_80176960[];
 extern s32 D_80176980[];
 extern s32 gUnkRumbleArray[];
@@ -345,12 +348,10 @@ extern s32 Battle_GameType;
 extern struct_800FE4E4 D_800FE4E4[];
 extern f32 D_800FE6F4[];
 extern u8 D_800FE704[];
-extern struct_800FE4EC D_800FE4EC[];
 extern struct_800FE54C D_800FE54C[];
 extern s32 D_80174980;
 extern s16 D_800FFEBC;
 extern u8 D_800FE6F0;
-extern Gfx* D_800F0638[];
 extern s32 D_800FE708;
 extern u8 gLevelAccessBitfeild;
 extern Struct_800714C8 D_800FE70C;
@@ -405,6 +406,6 @@ Effect* Effect_Alloc(s32 numParts, s32 dataSize, void* fpUpdate);
 void* func_800745F8(void);
 void Effect_TypeBH_Init(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, RGBA32* arg5);
 void Effect_TypeBF_Init(f32 posX, f32 posY, f32 posZ, f32 velV, f32 yaw, f32 velH, f32 arg6, f32 duration, u8 colorR, u8 colorG, u8 colorB);
-void SetPlayerEyes(s32 arg0, s32 arg1, s32 arg2);
+void SetPlayerEyes(s32 spriteIndex, s32 whichEye, s32 eyeIndex);
 
 #endif //_SPRITE_H_

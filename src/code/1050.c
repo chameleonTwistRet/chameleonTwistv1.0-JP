@@ -441,7 +441,7 @@ Gfx* func_8002A190(GraphicStruct* arg0, Gfx* gfxPos, PlayerActor* player, Tongue
         Gfx* dlist = Davy_restAssociate_Gfx;
         if (gSelectedCharacters[playerIndex] <= CHARA_WHITE) {
             if (Battle_GameType == BATTLE_TYPE_UNK_0) {
-                dlist = D_800F0638[gSelectedCharacters[playerIndex]];
+                dlist = ChameleonGfxs[gSelectedCharacters[playerIndex]];
             } else {
                 dlist = D_800F0650[gSelectedCharacters[playerIndex]];
             }

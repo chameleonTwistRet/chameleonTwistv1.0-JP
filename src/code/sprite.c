@@ -3705,38 +3705,44 @@ void SetEyeTexture(u8* dest, u8* src, s32 size) {
     }
 }
 
-void SetPlayerEyes(s32 arg0, s32 arg1, s32 arg2) {
-    SpriteListing* sprite;
-    struct_800FE4EC* s1;
-    s32 size;
 
-    switch (arg1) {
-        case 0:
-            sprite = &gSpriteListings[arg0];
-            s1 = &D_800FE4EC[arg2];
-            size = sprite->width * sprite->height * sprite->tileCountX * sprite->tileCountY;
-            SetEyeTexture(s1->unk_00, sprite->bitmapP, size);
-            SetEyeTexture(s1->unk_08, sprite->palletteP, 0x200);
-            size = sprite[5].height * sprite[5].tileCountX * sprite[5].tileCountY * sprite[5].width;
-            SetEyeTexture(s1->unk_04, sprite[5].bitmapP, size);
-            SetEyeTexture(s1->unk_0C, sprite[5].palletteP, 0x200);
-            break;
-        case 1:
-            sprite = &gSpriteListings[arg0];
-            s1 = &D_800FE4EC[arg2];
-            size = sprite->width * sprite->height * sprite->tileCountX * sprite->tileCountY;
-            SetEyeTexture(s1->unk_00, sprite->bitmapP, size);
-            SetEyeTexture(s1->unk_08, sprite->palletteP, 0x200);
-            break;
-        case 2:
-            sprite = &gSpriteListings[arg0];
-            s1 = &D_800FE4EC[arg2];
-            size = sprite[5].height * sprite[5].tileCountX * sprite[5].tileCountY * sprite[5].width;
-            SetEyeTexture(s1->unk_04, sprite[5].bitmapP, size);
-            SetEyeTexture(s1->unk_0C, sprite[5].palletteP, 0x200);
-            break;
+void SetPlayerEyes(s32 spriteIndex, s32 whichEye, s32 eyeIndex) {
+    SpriteListing* sprite;
+    chameleonEyeListEntry* eye;
+    s32 size;
+    enum eye {
+        BOTH = 0,
+        RIGHT,
+        LEFT
+    };
+    switch (whichEye) {                                 /* irregular */
+    case BOTH:
+        sprite = &gSpriteListings[spriteIndex];
+        eye = &chameleonEyeList[eyeIndex];
+        size = sprite->width * sprite->height * sprite->tileCountX * sprite->tileCountY;
+        SetEyeTexture(eye->eyeR, sprite->bitmapP, size);
+        SetEyeTexture(eye->eyeRPalette, sprite->palletteP, 0x200);
+        size = sprite[5].height * sprite[5].tileCountX * sprite[5].tileCountY * sprite[5].width;
+        SetEyeTexture(eye->eyeL, sprite[5].bitmapP, size);
+        SetEyeTexture(eye->eyeLPalette, sprite[5].palletteP, 0x200);
+        break;
+    case RIGHT:
+        sprite = &gSpriteListings[spriteIndex];
+        eye = &chameleonEyeList[eyeIndex];
+        size = sprite->width * sprite->height * sprite->tileCountX * sprite->tileCountY;
+        SetEyeTexture(eye->eyeR, sprite->bitmapP, size);
+        SetEyeTexture(eye->eyeRPalette, sprite->palletteP, 0x200);
+        break;
+    case LEFT:
+        sprite = &gSpriteListings[spriteIndex];
+        eye = &chameleonEyeList[eyeIndex];
+        size = sprite[5].height * sprite[5].tileCountX * sprite[5].tileCountY * sprite[5].width;
+        SetEyeTexture(eye->eyeL, sprite[5].bitmapP, size);
+        SetEyeTexture(eye->eyeLPalette, sprite[5].palletteP, 0x200);
+        break;
     }
 }
+
 
 void Effect_PlayerEyes_Update(Effect* effect, Gfx** pGfxPos) {
 
@@ -4718,7 +4724,7 @@ void Effect_TypeAH_Init(u8* arg0, f32 posX, f32 posY, f32 posZ, f32 arg4, unkStr
     }
 
     data = (Effect_TypeAH_Data*)effect->data;
-    data->dlist = D_800F0638[arg6];
+    data->dlist = ChameleonGfxs[arg6];
     data->unk_A88 = arg5->unk0;
     data->unk_A8C = arg5->unk4;
     data->yaw = arg4;

@@ -1383,7 +1383,7 @@ s32 func_8008D5DC(ContMain* controller) {
 
 s32 func_8008D7B0(CTTask* task) {
     s32 funcResult = func_8008D7FC(task);
-    task->unk50 = D_800F0638[gSelectedCharacters[D_800FF8E8]];
+    task->unk50 = ChameleonGfxs[gSelectedCharacters[D_800FF8E8]];
     return funcResult;
 }
 
@@ -3313,7 +3313,7 @@ f32 func_80096898(u16 arg0) {
 void func_80096964(CTTask* task) {
     task->unk44 = 3;
     task->unk4E = 1;
-    task->function = func_80096A20;
+    task->function = Stage_Select_ChameleonWalk;
     task->scale.x = 0.6f;
     task->scale.y = 0.6f;
     task->scale.z = 0.6f;
@@ -3329,10 +3329,10 @@ void func_80096964(CTTask* task) {
     task->unk3C = 1.0f;
     task->rotA = 50.0f;
     func_8008D7FC(task);
-    task->unk50 = D_800F0638[gSelectedCharacters[D_800FF8E8]];
+    task->unk50 = ChameleonGfxs[gSelectedCharacters[D_800FF8E8]];
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80096A20.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/Stage_Select_ChameleonWalk.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80096CA0.s")
 
@@ -5069,7 +5069,7 @@ CTTask* func_800A4BCC(CTTask* task) {
 
 void func_800A4D0C(CTTask* arg0) {
     func_8008D7FC(arg0);
-    arg0->unk50 = D_800F0638[gSelectedCharacters[D_800FF8E8]];
+    arg0->unk50 = ChameleonGfxs[gSelectedCharacters[D_800FF8E8]];
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A4D58.s")
