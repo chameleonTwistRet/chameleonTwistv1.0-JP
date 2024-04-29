@@ -41,39 +41,61 @@ unk_80052094_8 Battle_MsgGo[3] = {
 
 s32 padding[3] = 0;
 
-//JL intro text
-char JL_IntroText[60] = "ここはジャングルランド。この不思";
-char D_800F0E7C[60] = "議の世界の入り口です。";
-char D_800F0EB0[60] = "　";
+#define TEXT_LINE_LENGTH 30
+//bc shorts
+#define TEXT_LINE_SIZE TEXT_LINE_LENGTH*2
+#define TEXT_LINES 3
+#define NULL_LINE "　"
+#define TERMINATE_TEXTBOX(x) char x[TEXT_LINE_SIZE] = ""; 
 
-char D_800F0EF4[60] = "舌や体の操作が出来るようになった";
-char D_800F0F30[60] = "ら、タイムアタックに行ってみると";
-char D_800F0F6C[60] = "いいですよ。";
+//JL intro text
+char JL_IntroText[2][TEXT_LINES][TEXT_LINE_SIZE] = {
+    {
+    "ここはジャングルランド。この不思",
+    "議の世界の入り口です。",
+    NULL_LINE
+    },
+    {
+    "舌や体の操作が出来るようになった",
+    "ら、タイムアタックに行ってみると",
+    "いいですよ。"
+    },
+};
 
 //stop
-char D_800F0FA8[60] = "";
+TERMINATE_TEXTBOX(pad0)
 
 //AL intro text (davy)
-char D_800F0FE4[60] = "アリ、アリ、アリの大行進。";
-char D_800F1020[60] = "ここは地中深くのアリのステージ。";
-char D_800F105C[60] = "　";
-
-char D_800F1098[60] = "数え切れないほどのアリたちが、";
-char D_800F10D4[60] = "デイビーの行く手をふさいで";
-char D_800F1110[60] = "います。";
+char D_800F0FE4[2][TEXT_LINES][TEXT_LINE_SIZE] = {
+    {
+    "アリ、アリ、アリの大行進。",
+    "ここは地中深くのアリのステージ。",
+    NULL_LINE
+    },
+    {
+    "数え切れないほどのアリたちが、",
+    "デイビーの行く手をふさいで",
+    "います。"
+    },
+};
 
 //stop
-char D_800F114C[60] = "";
+TERMINATE_TEXTBOX(pad1)
 
 //AL intro text (Jack)
-char D_800F1188[60] = "アリ、アリ、アリの大行進。";
-char D_800F11C4[60] = "ここは地中深くのアリのステージ。";
-char D_800F1200[60] = "　";
+char D_800F1188[2][TEXT_LINES][TEXT_LINE_SIZE] = {
+    {
+    "アリ、アリ、アリの大行進。",
+    "ここは地中深くのアリのステージ。",
+    NULL_LINE
+    },
+    {
+    "数え切れないほどのアリたちが、",
+    "ジャックの行く手をふさいで",
+    "います。"
+    },
+};
 
-char D_800F123C[60] = "数え切れないほどのアリたちが、";
-char D_800F1278[60] = "ジャックの行く手をふさいで";
-char D_800F12B4[60] = "います。";
-                            
 /*chameleonEyeListEntry chameleonEyeList[6] = {
 {&Davy_eyeR_ci8_PNG, &Davy_eyeL_ci8_PNG, &Davy_eyeR_ci8_PAL, &Davy_eyeL_ci8_PAL},
 {&Jack_eyeR_ci8_PNG, &Jack_eyeL_ci8_PNG, &Jack_eyeR_ci8_PAL, &Jack_eyeL_ci8_PAL},
