@@ -711,7 +711,7 @@ void func_80053FA0(s32 playerID) {
                   posX + sp80 * 300.0f, gPlayerActors[playerID].pos.y + 90.0f, gPlayerActors[playerID].pos.z - sp84 * 300.0f,
                   60.0f, 60.0f, 360.0f);
     Effect_TypeAH_Init(D_800F0B54, gPlayerActors[playerID].pos.x, gPlayerActors[playerID].pos.y - 20.0f, gPlayerActors[playerID].pos.z,
-                  gPlayerActors[playerID].yAngle, D_800F0DE0, gSelectedCharacters[playerID], 1, 2);
+                  gPlayerActors[playerID].yAngle, &D_800F0D90[4], gSelectedCharacters[playerID], 1, 2);
 }
 
 void func_8005423C(void) {

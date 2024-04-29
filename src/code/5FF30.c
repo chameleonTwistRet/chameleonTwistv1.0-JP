@@ -3336,6 +3336,8 @@ void func_80096964(CTTask* task) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80096CA0.s")
 
+
+
 const char D_8010DEA8[] = "ＪＵＮＧＬＥ　ＬＡＮＤ";
 const char D_8010DEC0[] = "　ＡＮＴ　ＬＡＮＤ";
 const char D_8010DED4[] = "　ＢＯＭＢ　ＬＡＮＤ";

@@ -286,11 +286,14 @@ typedef struct Effect_TypeBI_Data {
     /* 0x04 */ f32 size;
 } Effect_TypeBI_Data; //sizeof 0x08
 
+typedef unsigned char TImg;
+typedef unsigned char TLut;
+
 typedef struct chameleonEyeListEntry {
-  void* eyeR;
-  void* eyeL;
-  void* eyeRPalette;
-  void* eyeLPalette;
+  TImg* eyeR;
+  TImg* eyeL;
+  TLut* eyeRPalette;
+  TLut* eyeLPalette;
 } chameleonEyeListEntry;
 
 
@@ -355,7 +358,6 @@ extern u8 D_800FE6F0;
 extern s32 D_800FE708;
 extern u8 gLevelAccessBitfeild;
 extern Struct_800714C8 D_800FE70C;
-extern unkStruct16 D_800F0DE0[];
 extern s16 sStageCrownTotals[];
 extern TimeVal D_80200B85[];
 extern s32 perfectCode;

@@ -3,6 +3,89 @@
 #include "battle.h"
 #include "5FF30.h"
 
+extern u8 Animations_unk1Pointers_Bin[];
+extern u8 Animations_unk2Pointers_Bin[];
+extern u8 D_1045B70[];
+
+extern u8* D_800F0D3C;
+extern u8* D_800F0D58;
+extern u8* D_800F0D88;
+extern u8* D_800F0D8C;
+
+unkStruct16 D_800F0D90[5] = {
+{&Animations_unk2Pointers_Bin, &Animations_unk2Pointers_Bin,
+&D_800F0D3C, 28, -10.0f},
+{&D_1045B70, &D_1045B70,
+&D_800F0D58, 45, -30.0f},
+{&D_1045B70, &D_1045B70,
+&D_800F0D88, 1, -30.0f},
+{&Animations_unk2Pointers_Bin, &Animations_unk2Pointers_Bin,
+&D_800F0D8C, 1, -10.0f},
+{&Animations_unk1Pointers_Bin, &Animations_unk2Pointers_Bin,
+&D_800F0D3C, 28, 0.0f}
+};
+
+unk_80052094_8 Battle_MsgReady[5] = {
+    {0.0f, 2},
+    {2.0f, 0},
+    {0.0f, 0},
+    {1.0f, 0},
+    {3.0f, 2}
+};
+
+unk_80052094_8 Battle_MsgGo[3] = {
+    {3.0f, 0},
+    {8.0f, 0},
+    {4.0f, 2},
+};
+
+s32 padding[3] = 0;
+
+//JL intro text
+char JL_IntroText[60] = "ここはジャングルランド。この不思";
+char D_800F0E7C[60] = "議の世界の入り口です。";
+char D_800F0EB0[60] = "　";
+
+char D_800F0EF4[60] = "舌や体の操作が出来るようになった";
+char D_800F0F30[60] = "ら、タイムアタックに行ってみると";
+char D_800F0F6C[60] = "いいですよ。";
+
+//stop
+char D_800F0FA8[60] = "";
+
+//AL intro text (davy)
+char D_800F0FE4[60] = "アリ、アリ、アリの大行進。";
+char D_800F1020[60] = "ここは地中深くのアリのステージ。";
+char D_800F105C[60] = "　";
+
+char D_800F1098[60] = "数え切れないほどのアリたちが、";
+char D_800F10D4[60] = "デイビーの行く手をふさいで";
+char D_800F1110[60] = "います。";
+
+//stop
+char D_800F114C[60] = "";
+
+//AL intro text (Jack)
+char D_800F1188[60] = "アリ、アリ、アリの大行進。";
+char D_800F11C4[60] = "ここは地中深くのアリのステージ。";
+char D_800F1200[60] = "　";
+
+char D_800F123C[60] = "数え切れないほどのアリたちが、";
+char D_800F1278[60] = "ジャックの行く手をふさいで";
+char D_800F12B4[60] = "います。";
+                            
+/*chameleonEyeListEntry chameleonEyeList[6] = {
+{&Davy_eyeR_ci8_PNG, &Davy_eyeL_ci8_PNG, &Davy_eyeR_ci8_PAL, &Davy_eyeL_ci8_PAL},
+{&Jack_eyeR_ci8_PNG, &Jack_eyeL_ci8_PNG, &Jack_eyeR_ci8_PAL, &Jack_eyeL_ci8_PAL},
+{&Fred_eyeR_ci8_PNG, &Fred_eyeL_ci8_PNG, &Fred_eyeR_ci8_PAL, &Fred_eyeL_ci8_PAL},
+{&Linda_eyeR_ci8_PNG, &Linda_eyeL_ci8_PNG, &Linda_eyeR_ci8_PAL, &Linda_eyeL_ci8_PAL},
+{&Black_eyeR_ci8_PNG, &Black_eyeL_ci8_PNG, &Black_eyeR_ci8_PAL, &Black_eyeL_ci8_PAL},
+{&White_eyeR_ci8_PNG, &White_eyeL_ci8_PNG, &White_eyeR_ci8_PAL, &White_eyeL_ci8_PAL}
+};*/
+
+
+//s32 D_800FEDBC = 0;
+
 void DummiedPrintf2(char* arg0, ...) {
 
 }
@@ -3690,6 +3773,7 @@ void FreePlayerEyes(s32 arg0) {
     gLockContextEyes = 255;
 }
 
+//these are just image addresses, the only reason they are typed u8 is so it goes byte by byte
 void SetEyeTexture(u8* dest, u8* src, s32 size) {
     u8* destP;
     s32 i;
@@ -5071,7 +5155,7 @@ void Effect_TypeAL_Update(Effect* effect, Gfx** pGfxPos) {
                 if (a0 == a1 && gSelectedCharacters[0] <= 3) {
                     PLAYSFX(0x19, 0, 0x10);
                     Effect_TypeW_Init(260.0f, 9920.0f, 0.0f, 32.0f, 20, 16);
-                    Effect_TypeAH_Init(&effect->numParts, 260.0f, 9850.0f, 0.0f, -22.0f, D_800F0DE0, 5, 1, 1);
+                    Effect_TypeAH_Init(&effect->numParts, 260.0f, 9850.0f, 0.0f, -22.0f, &D_800F0D90[4], 5, 1, 1);
                 }
                 for (i = 0; i < 6; i++) {
                     s2 += RecordTime_ParseToSecs(&D_80200B85[i]);

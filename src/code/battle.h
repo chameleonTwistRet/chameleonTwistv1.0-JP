@@ -50,7 +50,6 @@ extern s32 D_800FE708;
 extern Camera* D_80176B78;
 extern s16 gSelectedBattleBGM;
 extern unkStruct16 D_800F0D90[];
-extern unkStruct16 D_800F0DE0[];
 extern Struct_80076EA0 D_800FE404[];
 extern RGBA32 D_800FE564[];
 extern s32 D_800FE74C;

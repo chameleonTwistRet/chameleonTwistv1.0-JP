@@ -1245,6 +1245,7 @@ D_80175590 = 0x80175590; // size:0x08
 D_801749D8 = 0x801749D8; // size:0x78
 D_80248540 = 0x80248540; // size:0x368
 gIsGamePaused = 0x800F0674; // type:s32 size:0x04
+JL_IntroText = 0x800F0E40; // size:0x1A4 rom:0xCC240
 
 D_ED090 = 0xED090;
 D_101B60 = 0x101B60;
