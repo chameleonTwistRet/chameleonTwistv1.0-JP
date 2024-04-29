@@ -46,7 +46,15 @@ s32 padding[3] = 0;
 #define TEXT_LINE_SIZE TEXT_LINE_LENGTH*2
 #define TEXT_LINES 3
 #define NULL_LINE "　"
-#define TERMINATE_TEXTBOX(x) char x[TEXT_LINE_SIZE] = ""; 
+#define TERMINATE_TEXTBOX(x) char x[TEXT_LINE_SIZE] = "";
+
+#define DAVY_JP "デイビー"
+#define JACK_JP "ジャック"
+#define LINDA_JP "リンダ"
+#define FRED_JP "フレッド"
+#define BLACK_JP "ブラック"
+#define WHITE_JP "ホワイト"
+
 
 //JL intro text
 char JL_IntroText[2][TEXT_LINES][TEXT_LINE_SIZE] = {
@@ -59,7 +67,7 @@ char JL_IntroText[2][TEXT_LINES][TEXT_LINE_SIZE] = {
     "舌や体の操作が出来るようになった",
     "ら、タイムアタックに行ってみると",
     "いいですよ。"
-    },
+    }
 };
 
 //stop
@@ -74,9 +82,9 @@ char D_800F0FE4[2][TEXT_LINES][TEXT_LINE_SIZE] = {
     },
     {
     "数え切れないほどのアリたちが、",
-    "デイビーの行く手をふさいで",
+    DAVY_JP"の行く手をふさいで",
     "います。"
-    },
+    }
 };
 
 //stop
@@ -91,10 +99,251 @@ char D_800F1188[2][TEXT_LINES][TEXT_LINE_SIZE] = {
     },
     {
     "数え切れないほどのアリたちが、",
-    "ジャックの行く手をふさいで",
+    JACK_JP"の行く手をふさいで",
+    "います。"
+    }
+};
+
+//stop
+TERMINATE_TEXTBOX(pad2)
+
+//AL intro text (Linda)
+char D_080F132C[2][TEXT_LINES][TEXT_LINE_SIZE] = {
+    {
+    "アリ、アリ、アリの大行進。",
+    "ここは地中深くのアリのステージ。",
+    NULL_LINE
+    },
+    {
+    "数え切れないほどのアリたちが、",
+    LINDA_JP"の行く手をふさいで",
+    "います。"
+    }
+};
+
+//stop
+TERMINATE_TEXTBOX(pad3)
+
+//AL intro text (Fred)
+char D_800F14D0[2][TEXT_LINES][TEXT_LINE_SIZE] = {
+    {
+    "アリ、アリ、アリの大行進。",
+    "ここは地中深くのアリのステージ。",
+    NULL_LINE
+    },
+    {
+    "数え切れないほどのアリたちが、",
+    FRED_JP"の行く手をふさいで",
+    "います。"
+    }
+};
+
+//stop
+TERMINATE_TEXTBOX(pad4)
+
+//AL intro text (Black) (Unused)
+char D_800F1674[2][TEXT_LINES][TEXT_LINE_SIZE] = {
+    {
+    "アリ、アリ、アリの大行進。",
+    "ここは地中深くのアリのステージ。",
+    NULL_LINE
+    },
+    {
+    "数え切れないほどのアリたちが、",
+    BLACK_JP"の行く手をふさいで",
+    "います。"
+    }
+};
+
+//stop
+TERMINATE_TEXTBOX(pad5)
+
+//AL intro text (White)
+char D_800F1818[2][TEXT_LINES][TEXT_LINE_SIZE] = {
+    {
+    "アリ、アリ、アリの大行進。",
+    "ここは地中深くのアリのステージ。",
+    NULL_LINE
+    },
+    {
+    "数え切れないほどのアリたちが、",
+    WHITE_JP"の行く手をふさいで",
+    "います。"
+    }
+};
+
+//stop
+TERMINATE_TEXTBOX(pad6)
+
+//BL intro text
+char D_800F19BC[2][TEXT_LINES][TEXT_LINE_SIZE] = {
+    {
+    "ドカーン！と、キケンなボムが",
+    "いっぱいです。のるとダメージの",
+    "床やこわれるブロック、"
+    },
+    {
+    "ボムはつながって大バクハツしたり",
+    "もします。",
+    "" // stop
+    }
+};
+
+//KL intro text
+char D_800F1B24[2][TEXT_LINES][TEXT_LINE_SIZE] = {
+    {
+    "チョコレートにクッキー、ウエハー",
+    "ス、おいしそうなお菓子でいっぱい",
+    "です。"
+    },
+    {
+    "でもそんなお菓子にだまされないで",
+    "下さい。高度なアクションやパズル",
+    "が待ってるようです。"
+    }
+};
+
+//stop
+TERMINATE_TEXTBOX(pad7)
+
+//DC intro text
+char D_800F1CC8[2][TEXT_LINES][TEXT_LINE_SIZE] = {
+    {
+    "砂漠にうもれた城のステージ。城に",
+    "は高い壁や、やりなどがまちうけて",
     "います。"
     },
+    {
+    "砂漠では流砂や落石などにも要注意",
+    "です。",
+    "" // stop
+    }
 };
+
+//GC intro text (Davy)
+char D_800F1E30[2][TEXT_LINES][TEXT_LINE_SIZE] = {
+    {
+    "とうとうここまで来ましたね、",
+    "ここが最後のステージのゴーストキ",
+    "ャッスルです。"
+    },
+    {
+    "この先、奇妙なゴーストたちがデイ",
+    "ビーの行く手をふさごうとする",
+    "でしょう。"
+    }
+};
+
+//stop
+TERMINATE_TEXTBOX(pad8)
+
+//GC intro text (Jack)
+char D_800F1FD4[2][TEXT_LINES][TEXT_LINE_SIZE] = {
+    {
+    "とうとうここまで来ましたね、",
+    "ここが最後のステージのゴーストキ",
+    "ャッスルです。"
+    },
+    {
+    "この先、奇妙なゴーストたちがジャ",
+    "ックの行く手をふさごうとする",
+    "でしょう。"
+    }
+};
+
+//stop
+TERMINATE_TEXTBOX(pad9)
+
+//GC intro text (Fred)
+char D_800F2178[2][TEXT_LINES][TEXT_LINE_SIZE] = {
+    {
+    "とうとうここまで来ましたね、",
+    "ここが最後のステージのゴーストキ",
+    "ャッスルです。"
+    },
+    {
+    "この先、奇妙なゴーストたちがフレ",
+    "ッドの行く手をふさごうとする",
+    "でしょう。"
+    }
+};
+
+//stop
+TERMINATE_TEXTBOX(padA)
+
+//GC intro text (Linda)
+char D_800F231C[2][TEXT_LINES][TEXT_LINE_SIZE] = {
+    {
+    "とうとうここまで来ましたね、",
+    "ここが最後のステージのゴーストキ",
+    "ャッスルです。"
+    },
+    {
+    "この先、奇妙なゴーストたちがリン",
+    "ダの行く手をふさごうとする",
+    "でしょう。"
+    }
+};
+
+//stop
+TERMINATE_TEXTBOX(padB)
+
+//GC intro text (Black) (unused)
+char D_800F24C0[2][TEXT_LINES][TEXT_LINE_SIZE] = {
+    {
+    "とうとうここまで来ましたね、",
+    "ここが最後のステージのゴーストキ",
+    "ャッスルです。"
+    },
+    {
+    "この先、奇妙なゴーストたちがブラ",
+    "ックの行く手をふさごうとする",
+    "でしょう。"
+    }
+};
+
+//stop
+TERMINATE_TEXTBOX(padC)
+
+//GC intro text (White)
+char D_800F2664[2][TEXT_LINES][TEXT_LINE_SIZE] = {
+    {
+    "とうとうここまで来ましたね、",
+    "ここが最後のステージのゴーストキ",
+    "ャッスルです。"
+    },
+    {
+    "この先、奇妙なゴーストたちがホワ",
+    "イトの行く手をふさごうとする",
+    "でしょう。"
+    }
+};
+
+//stop
+TERMINATE_TEXTBOX(padD)
+
+//Training intro text (Davy)
+char D_800F2808[3][TEXT_LINES][TEXT_LINE_SIZE] = {
+    {
+    "デイビー。",
+    "ここでは、あなたの舌テクニックを",
+    "試すことが出来ます。"
+    },
+    {
+    "１〜５の部屋でクリアするタイムを",
+    "きそって下さい。",
+    NULL_LINE
+    },
+    {
+    "くわしい説明はそれぞれの部屋で",
+    "しますね。がんばっていいタイムを",
+    "出してください。"
+    }
+};
+              
+//stop
+TERMINATE_TEXTBOX(padE)
+
 
 /*chameleonEyeListEntry chameleonEyeList[6] = {
 {&Davy_eyeR_ci8_PNG, &Davy_eyeL_ci8_PNG, &Davy_eyeR_ci8_PAL, &Davy_eyeL_ci8_PAL},
