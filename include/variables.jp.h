@@ -366,5 +366,9 @@ extern s32 currentStageCrowns;
 extern char* Dialogue[6][20]; //sizeof 0x1E0
 extern s32 gIsGamePaused;
 extern Gfx* ChameleonGfxs[6];
+extern char* D_800F686C;
+extern char* D_800F6870;
+extern char* D_800F6874;
+extern char* D_800F67A0[6];
 
 #endif

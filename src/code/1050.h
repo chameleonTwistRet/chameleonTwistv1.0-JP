@@ -91,8 +91,6 @@ extern Gfx* D_800F0650[];
 extern Gfx D_1015CB0[];
 extern Gfx D_1015BD0[];
 extern Gfx Global_unusedStructure_Gfx[];
-extern s32 D_800F686C;
-extern s32 D_800F6870;
 extern void* D_1045B70;
 extern void* D_1045B7C;
 extern void* D_1045B88;
