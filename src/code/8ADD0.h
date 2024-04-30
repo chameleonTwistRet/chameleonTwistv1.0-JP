@@ -175,9 +175,10 @@ void func_800C5564(PlayerActor* arg0);
 void Player_SetFromBoss(PlayerActor* player, f32 distance);
 void func_800C88AC(void);
 void func_800C88D0(void);
-
-
-
+void func_800CFDC8(PlayerActor*);
+void pickup_collide_func(s32);
+void func_800D69D0(s32, PlayerActor*, Tongue*, Camera*, Vec3f*, Vec3f*, s32);
+void func_800D3854(PlayerActor*, Tongue*, Camera*, Vec3f*, Vec3f*, s32);
 
 /* Ext Variables */
 extern collectableWrapper D_802019A8[];
