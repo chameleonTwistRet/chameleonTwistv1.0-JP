@@ -1301,11 +1301,81 @@ void enterBossRoom(void) {
 //draw collision
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C3B50.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C3DCC.s")
+void func_800C3DCC(Camera* arg0, Vec3f arg1, Vec3f arg4, f32 arg7) {
+    arg0->f5.x = arg0->f1.z = arg1.x;
+    arg0->f2.x = arg0->f5.y = arg1.y;
+    arg0->f2.z = arg7;
+    arg0->f2.y = arg1.z;
+    arg0->f5.z = arg1.z;
+    arg0->f3.x = arg4.x;
+    arg0->f4.x = arg4.x;
+    arg0->f3.y = arg4.y;
+    arg0->f4.y = arg0->f3.y;
+    arg0->f3.z = arg4.z;
+    arg0->f4.z = arg4.z;
+    arg0->f2.x -= gZoneCollisions[gCurrentZone].unkD0 * arg0->size1;
+    arg0->f3.y = arg0->f3.y - (gZoneCollisions[gCurrentZone].unkD0 * arg0->size1);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C3E94.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C4040.s")
+void func_800C4040(PlayerActor* arg0, Tongue* arg1, Camera* arg2, f32 arg3, f32 arg4) {
+    Vec3f sp54;
+    Vec3f sp48;
+    Collision* temp_v0;
+    f32 temp_f0;
+    f32 temp;
+    f32 temp_f0_8;
+    
+    temp_v0 = &gZoneCollisions[gCurrentZone];
+    if ((arg3 == 0.0) && (arg4 == 0.0)) {
+        arg3 = 1.0f;
+    }
+
+    temp_f0 = arg0->pos.x;
+    arg2->f1.z = temp_f0;
+    arg2->f5.x = temp_f0;
+    temp_f0 = (arg0->pos.y + (60.0 / arg2->size1));
+    arg2->f2.x = temp_f0;
+    arg2->f5.y = temp_f0;
+    arg2->f2.z = arg0->pos.y;
+    temp_f0 = arg0->pos.z;
+    arg2->f2.y = temp_f0;
+    arg2->f5.z = temp_f0;
+    temp_f0 = arg2->f1.z;
+    arg2->f3.x = temp_f0;
+    arg2->f4.x = temp_f0;
+    temp_f0 = arg0->pos.y + (600.0f * arg2->size1);
+    arg2->f3.y = temp_f0;
+    arg2->f4.y = temp_f0;
+    temp_f0 = arg2->f2.y;
+    arg2->f3.z = temp_f0;
+    arg2->f4.z = temp_f0;
+    
+    arg2->f5.y += gZoneCollisions[gCurrentZone].unkD0 * arg2->size1;
+    arg2->f4.y += gZoneCollisions[gCurrentZone].unkD0 * arg2->size1;
+    if (D_80236974 == 1) {
+        arg2->f4.z += (800.0f * arg2->size1);
+        arg2->f3.z += (800.0f * arg2->size1);
+        func_800D3854(arg0, arg1, arg2, &sp54, &sp48, 1);
+        func_800C3DCC(arg2, sp54, sp48, arg0->pos.y);
+        return;
+    }
+    temp_f0_8 = temp_v0->unk48;
+    temp = temp_v0->unk50;
+    arg3 *= 800.0f * arg2->size1;
+    arg4 *= 800.0f * arg2->size1;
+    LimitFloat(&arg3, -temp_f0_8, temp_f0_8);
+    LimitFloat(&arg4, -temp, temp);
+    arg2->f4.x += arg3;
+    arg2->f3.x += arg3;
+    arg2->f4.z += arg4;
+    arg2->f3.z += arg4;
+    if (arg2->unk0 == 1) {
+        func_800D69D0(gZoneCollisions[gCurrentZone].unk94, arg0, arg1, arg2, &sp54, &sp48, 1);
+        func_800C3DCC(arg2, sp54, sp48, arg0->pos.y);
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C43AC.s")
 

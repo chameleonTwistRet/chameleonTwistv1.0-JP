@@ -65,6 +65,9 @@ void func_800B5D68(Collider*, s32);
 void func_800B2E40(unkSpriteStruct5*);
 void EraseRoomItem(s32);
 void func_800C1204(s32, PlayerActor*, s32, s32, s32); 
+void func_800C3DCC(Camera*, Vec3f, Vec3f, f32);
+void func_800D69D0(s32, PlayerActor*, Tongue*, Camera*, Vec3f*, Vec3f*, s32);
+void func_800D3854(PlayerActor*, Tongue*, Camera*, Vec3f*, Vec3f*, s32);
 
 
 /* Ext Variables */

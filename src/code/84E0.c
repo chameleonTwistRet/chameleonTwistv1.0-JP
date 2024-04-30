@@ -1828,14 +1828,85 @@ void func_800410B4(Actor* arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/MinigameActors_PhysicsTick.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_MinigameActor.s")
+void ActorTick_MinigameActor(Actor* arg0) {
+    f32 temp_f16;
+    f32 temp_f6;
+
+    arg0->vel.x -= (arg0->vel.x * arg0->position._f32.y);
+    arg0->vel.z -= (arg0->vel.z * arg0->position._f32.y);
+    if (((arg0->vel.x * arg0->vel.x) + (arg0->vel.z * arg0->vel.z)) < 1.0f) {
+        arg0->vel.x = arg0->vel.z = 0.0f;
+    }
+    if (arg0->unk_98 != 0) {
+        if (arg0->vel.y == 0) {
+            PlaySoundEffect(0xA9, &arg0->pos.x, &arg0->pos.y, &arg0->pos.z, 0, 0);
+        }
+        if (arg0->pos.y > 0.0f) {
+            arg0->vel.y -= 3.2f + (arg0->vel.y * 0.05f);
+        } else {
+            arg0->vel.y -= 6.4f;
+        }
+    } else if (arg0->vel.y != 0) {
+        arg0->vel.y = 0;
+        arg0->unk_A0.unk_08 = 1;
+    }
+    if (arg0->unk_9C != 0) {
+        temp_f16 = (arg0->unk_B4 * arg0->unk_B4) + (arg0->unk_BC * arg0->unk_BC);
+        temp_f6 = (arg0->vel.x * arg0->unk_B4) + (arg0->vel.z * arg0->unk_BC);
+        arg0->vel.x -= ((2 * temp_f6 * arg0->unk_B4) / temp_f16);
+        arg0->vel.z -= ((2 * temp_f6 * arg0->unk_BC) / temp_f16);
+    }
+    if (((arg0->vel.x * arg0->vel.x) + (arg0->vel.z * arg0->vel.z) > 8.0f) && (gTimer % 60 == 0)) {
+        PlaySoundEffect(0xD9, &arg0->pos.x, &arg0->pos.y, &arg0->pos.z, 0, 0);
+    }
+}
 
 // Cue Ball Actor
 void ActorInit_CueBall(Actor* cueBallActor) {
     cueBallActor->unk_134[0] = cueBallActor->pos.y;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_CueBall.s")
+void ActorTick_CueBall(Actor* arg0) {
+    f32 temp_f0;
+    Actor* actor = arg0;
+    
+
+    if (arg0->tongueBumpSeg != 0) {
+        if ((gTongueOnePointer->segments == arg0->tongueBumpSeg) || gTongueOnePointer->segments == (arg0->tongueBumpSeg + 1)) {
+            if (gTongueOnePointer->vaulting == 0) {
+                temp_f0 = CalcAngleBetween2DPoints(gTongueOnePointer->tongueXs[gTongueOnePointer->segments - 1] + gCurrentActivePlayerPointer->pos.x, gTongueOnePointer->tongueZs[gTongueOnePointer->segments - 1] + gCurrentActivePlayerPointer->pos.z, arg0->pos.x, arg0->pos.z);
+                arg0->vel.x = __cosf(temp_f0 * 2 * 3.141592653589793 / 360.0) * arg0->position._f32.x;
+                arg0->vel.z = -__sinf(temp_f0 * 2 * 3.141592653589793 / 360.0) * arg0->position._f32.x;
+                PlaySoundEffect(0xA7, &arg0->pos.x, &arg0->pos.y, &arg0->pos.z, 0, 0);
+            }
+        }
+    }
+    
+    ActorTick_MinigameActor(arg0);
+    
+    if (arg0->pos.y < -arg0->unknownPositionThings[0].unk_10) {
+        arg0->unk_98 = 1;
+        arg0->pos.x = gCurrentActivePlayerPointer->pos.x;
+        arg0->pos.y = arg0->unk_134[0] + 1000.0f;
+        arg0->pos.z = gCurrentActivePlayerPointer->pos.z;
+        arg0->unk_A0.unk_08 = 0;
+        if (arg0->pos.x > 1800.0f) {
+            arg0->pos.x = 1800.0f;
+        }
+        if (arg0->pos.x < -1800.0f) {
+            arg0->pos.x = -1800.0f;
+        }
+        if (arg0->pos.z > 900.0f) {
+            arg0->pos.z = 900.0f;
+        }
+        if (arg0->pos.z < -900.0f) {
+            arg0->pos.z = -900.0f;
+        }
+        arg0->vel.z = 0.0f;
+        arg0->vel.y = 0.0f;
+        arg0->vel.x = 0.0f;
+    }
+}
 
 // Billiards Ball
 void ActorInit_BilliardBall(Actor* billiardsBallActor){

@@ -194,21 +194,23 @@ typedef struct Tongue { // at 80169268 (for p1)
 } Tongue; //sizeof 0x60C
 
 //struct names are based on offset into main struct, Collision which holds Rect3D
-
 typedef struct Collision {
     /* 0x00 */ s32 collisionType;
     /* 0x04 */ char pad4[0x14];                     /* maybe part of collisionType[6]? */
     /* 0x18 */ s32 unk18;
     /* 0x1C */ char pad1C[0x14];                    /* maybe part of unk18[6]? */
     /* 0x30 */ Rect3D rect_30;
-    /* 0x48 */ char pad48[0x18];
-    /* 0x60 */ s32 unk60;                           /* inferred */
-    /* 0x64 */ s32 unk64;                           /* inferred */
+    /* 0x48 */ f32 unk48;                           /* inferred */
+    /* 0x4C */ char pad4C[4];
+    /* 0x50 */ f32 unk50;                           /* inferred */
+    /* 0x54 */ char pad54[0xC];                     /* maybe part of unk50[4]? */
+    /* 0x60 */ s32 unk60;
+    /* 0x64 */ s32 unk64;
     /* 0x68 */ char pad68[0x10];                    /* maybe part of unk64[5]? */
     /* 0x78 */ s32 unk78;
     /* 0x7C */ s32 unk7C;
     /* 0x80 */ char pad80[4];
-    /* 0x84 */ s32 unk84;                           /* inferred */
+    /* 0x84 */ s32 unk84;
     /* 0x88 */ char pad88[4];
     /* 0x8C */ s32 unk8C;
     /* 0x90 */ char pad90[4];
@@ -222,7 +224,7 @@ typedef struct Collision {
     /* 0xB0 */ char padB0[0x20];                    /* maybe part of unkAC[9]? */
     /* 0xD0 */ f32 unkD0;
     /* 0xD4 */ char padD4[4];
-} Collision;
+} Collision;                                        /* size = 0xD8 */
 
 typedef struct unkItemStruct {
     s32 unk_00;
