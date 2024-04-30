@@ -18,7 +18,7 @@ extern Mtx D_80129A30_Davy; //Lfist
 #include "assets/chameleons/Davy/light.light.inc.c"
 
 #include "assets/chameleons/Davy/body/body.vtx.inc.c"
-Mtx_f Davy_IMtx1 = IDENTITY;
+Mtx Davy_IMtx1 = IDENTITY;
 unsigned char Davy_Pad1[] = FILEPAD;
 unsigned char Davy_backpackStrap_ci4_PNG[] = {
 #include "build/assets/chameleons/Davy/body/backpackStrap.ci4.png.inc.c"
@@ -51,7 +51,7 @@ unsigned char Davy_number_ci4_PAL[] = {
 #include "assets/chameleons/Davy/bodyAssociate/bodyAssociate.gfx.inc.c"
 
 #include "assets/chameleons/Davy/head/head.vtx.inc.c"
-Mtx_f Davy_IMtx2 = IDENTITY;
+Mtx Davy_IMtx2 = IDENTITY;
 unsigned char Davy_Pad7[] = FILEPAD;
 unsigned char Davy_eyeL_ci8_PNG[] = {
 #include "build/assets/chameleons/Davy/head/eyeL.ci8.png.inc.c"
@@ -80,7 +80,7 @@ unsigned char Davy_cheek_ci4_PAL[] = {
 #include "assets/chameleons/Davy/head/head.gfx.inc.c"
 
 #include "assets/chameleons/Davy/backpack/backpack.vtx.inc.c"
-Mtx_f Davy_IMtx3 = IDENTITY;
+Mtx Davy_IMtx3 = IDENTITY;
 unsigned char Davy_Pad13[] = FILEPAD;
 unsigned char Davy_backpack_ci8_PNG[] = {
 #include "build/assets/chameleons/Davy/backpack/backpack.ci8.png.inc.c"
@@ -93,7 +93,7 @@ unsigned char Davy_backpack_ci8_PAL[] = {
 #include "assets/chameleons/Davy/backpack/backpack.gfx.inc.c"
 
 #include "assets/chameleons/Davy/shoe/shoe.vtx.inc.c"
-Mtx_f Davy_IMtx4 = IDENTITY;
+Mtx Davy_IMtx4 = IDENTITY;
 unsigned char Davy_Pad15[] = FILEPAD;
 unsigned char Davy_shoe_ci4_PNG[] = {
 #include "build/assets/chameleons/Davy/shoe/shoe.ci4.png.inc.c"
@@ -106,12 +106,12 @@ unsigned char Davy_shoe_ci4_PAL[] = {
 #include "assets/chameleons/Davy/shoe/shoe.gfx.inc.c"
 
 #include "assets/chameleons/Davy/Lshoe/Lshoe.vtx.inc.c"
-Mtx_f Davy_IMtx5 = IDENTITY;
+Mtx Davy_IMtx5 = IDENTITY;
 
 #include "assets/chameleons/Davy/Lshoe/Lshoe.gfx.inc.c"
 
 #include "assets/chameleons/Davy/cuff/cuff.vtx.inc.c"
-Mtx_f Davy_IMtx6 = IDENTITY;
+Mtx Davy_IMtx6 = IDENTITY;
 unsigned char Davy_Pad17[] = FILEPAD;
 unsigned char Davy_color_ci4_PNG[] = {
 #include "build/assets/chameleons/Davy/cuff/color.ci4.png.inc.c"
@@ -124,12 +124,12 @@ unsigned char Davy_color_ci4_PAL[] = {
 #include "assets/chameleons/Davy/cuff/cuff.gfx.inc.c"
 
 #include "assets/chameleons/Davy/Lcuff/Lcuff.vtx.inc.c"
-Mtx_f Davy_IMtx7 = IDENTITY;
+Mtx Davy_IMtx7 = IDENTITY;
 
 #include "assets/chameleons/Davy/Lcuff/Lcuff.gfx.inc.c"
 
 #include "assets/chameleons/Davy/wrist/wrist.vtx.inc.c"
-Mtx_f Davy_IMtx8 = IDENTITY;
+Mtx Davy_IMtx8 = IDENTITY;
 unsigned char Davy_Pad19[] = FILEPAD;
 unsigned char Davy_wristColor_ci4_PNG[] = {
 #include "build/assets/chameleons/Davy/wrist/wristColor.ci4.png.inc.c"
@@ -150,22 +150,22 @@ unsigned char Davy_wrist_ci4_PAL[] = {
 #include "assets/chameleons/Davy/wrist/wrist.gfx.inc.c"
 
 #include "assets/chameleons/Davy/Lwrist/Lwrist.vtx.inc.c"
-Mtx_f Davy_IMtx9 = IDENTITY;
+Mtx Davy_IMtx9 = IDENTITY;
 
 #include "assets/chameleons/Davy/Lwrist/Lwrist.gfx.inc.c"
 
 #include "assets/chameleons/Davy/shoulder/shoulder.vtx.inc.c"
-Mtx_f Davy_IMtx10 = IDENTITY;
+Mtx Davy_IMtx10 = IDENTITY;
 
 #include "assets/chameleons/Davy/shoulder/shoulder.gfx.inc.c"
 
 #include "assets/chameleons/Davy/Lshoulder/Lshoulder.vtx.inc.c"
-Mtx_f Davy_IMtx11 = IDENTITY;
+Mtx Davy_IMtx11 = IDENTITY;
 
 #include "assets/chameleons/Davy/Lshoulder/Lshoulder.gfx.inc.c"
 
 #include "assets/chameleons/Davy/fist/fist.vtx.inc.c"
-Mtx_f Davy_IMtx12 = IDENTITY;
+Mtx Davy_IMtx12 = IDENTITY;
 unsigned char Davy_Pad23[] = FILEPAD;
 unsigned char Davy_fist1_ci4_PNG[] = {
 #include "build/assets/chameleons/Davy/fist/fist1.ci4.png.inc.c"
@@ -210,7 +210,7 @@ unsigned char Davy_fist4_ci4_PAL[] = {
 #include "assets/chameleons/Davy/fist/fist.gfx.inc.c"
 
 #include "assets/chameleons/Davy/Lfist/Lfist.vtx.inc.c"
-Mtx_f Davy_IMtx13 = IDENTITY;
+Mtx Davy_IMtx13 = IDENTITY;
 
 #include "assets/chameleons/Davy/Lfist/Lfist.gfx.inc.c"
 

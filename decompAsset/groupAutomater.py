@@ -173,7 +173,7 @@ def start(group, where):
 
                 if dataOnly:
                     if values["Type"] == "mtx": 
-                        newC.append("Mtx_f "+symbol+" = {")
+                        newC.append("Mtx "+symbol+" = {")
                     elif values["Type"] == "lights":
                         newC.append("Lights1 "+symbol+" =")
                     elif values["Type"] == "vtx":
@@ -228,7 +228,7 @@ def start(group, where):
                     
                     symbol = group+"_IMtx"+str(imtx)
 
-                    newC.append("Mtx_f "+symbol+" = IDENTITY;\n")
+                    newC.append("Mtx "+symbol+" = IDENTITY;\n")
                     
                     addr = line.split("[")[-1].split("]")[0].strip()
                     segmentAdr = (int(addr, 16) - baseAdr) + segmentId

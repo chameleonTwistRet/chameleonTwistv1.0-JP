@@ -320,7 +320,6 @@ extern s32 gSpriteFrameBuffer;
 extern Gfx D_10012A0[];
 extern Gfx D_1001300[];
 extern Gfx D_1001370[];
-extern Mtx D_800F69D0;
 extern Gfx D_800FE080[];
 extern SpriteListing D_80176F98[2][200];
 extern SpriteListing D_80182B18[2][200];

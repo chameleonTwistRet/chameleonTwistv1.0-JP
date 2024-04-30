@@ -18,7 +18,7 @@ extern Mtx D_80129A30_Jack; //Lfist
 #include "assets/chameleons/Jack/light.light.inc.c"
 
 #include "assets/chameleons/Jack/body/body.vtx.inc.c"
-Mtx_f Jack_IMtx1 = IDENTITY;
+Mtx Jack_IMtx1 = IDENTITY;
 unsigned char Jack_Pad1[] = FILEPAD;
 unsigned char Jack_backpackStrap_ci4_PNG[] = {
 #include "build/assets/chameleons/Jack/body/backpackStrap.ci4.png.inc.c"
@@ -51,7 +51,7 @@ unsigned char Jack_number_ci4_PAL[] = {
 #include "assets/chameleons/Jack/bodyAssociate/bodyAssociate.gfx.inc.c"
 
 #include "assets/chameleons/Jack/head/head.vtx.inc.c"
-Mtx_f Jack_IMtx2 = IDENTITY;
+Mtx Jack_IMtx2 = IDENTITY;
 unsigned char Jack_Pad7[] = FILEPAD;
 unsigned char Jack_eyeL_ci8_PNG[] = {
 #include "build/assets/chameleons/Jack/head/eyeL.ci8.png.inc.c"
@@ -80,7 +80,7 @@ unsigned char Jack_cheek_ci4_PAL[] = {
 #include "assets/chameleons/Jack/head/head.gfx.inc.c"
 
 #include "assets/chameleons/Jack/backpack/backpack.vtx.inc.c"
-Mtx_f Jack_IMtx3 = IDENTITY;
+Mtx Jack_IMtx3 = IDENTITY;
 unsigned char Jack_Pad13[] = FILEPAD;
 unsigned char Jack_backpack_ci8_PNG[] = {
 #include "build/assets/chameleons/Jack/backpack/backpack.ci8.png.inc.c"
@@ -93,7 +93,7 @@ unsigned char Jack_backpack_ci8_PAL[] = {
 #include "assets/chameleons/Jack/backpack/backpack.gfx.inc.c"
 
 #include "assets/chameleons/Jack/shoe/shoe.vtx.inc.c"
-Mtx_f Jack_IMtx4 = IDENTITY;
+Mtx Jack_IMtx4 = IDENTITY;
 unsigned char Jack_Pad15[] = FILEPAD;
 unsigned char Jack_shoe_ci4_PNG[] = {
 #include "build/assets/chameleons/Jack/shoe/shoe.ci4.png.inc.c"
@@ -106,12 +106,12 @@ unsigned char Jack_shoe_ci4_PAL[] = {
 #include "assets/chameleons/Jack/shoe/shoe.gfx.inc.c"
 
 #include "assets/chameleons/Jack/Lshoe/Lshoe.vtx.inc.c"
-Mtx_f Jack_IMtx5 = IDENTITY;
+Mtx Jack_IMtx5 = IDENTITY;
 
 #include "assets/chameleons/Jack/Lshoe/Lshoe.gfx.inc.c"
 
 #include "assets/chameleons/Jack/cuff/cuff.vtx.inc.c"
-Mtx_f Jack_IMtx6 = IDENTITY;
+Mtx Jack_IMtx6 = IDENTITY;
 unsigned char Jack_Pad17[] = FILEPAD;
 unsigned char Jack_color_ci4_PNG[] = {
 #include "build/assets/chameleons/Jack/cuff/color.ci4.png.inc.c"
@@ -124,12 +124,12 @@ unsigned char Jack_color_ci4_PAL[] = {
 #include "assets/chameleons/Jack/cuff/cuff.gfx.inc.c"
 
 #include "assets/chameleons/Jack/Lcuff/Lcuff.vtx.inc.c"
-Mtx_f Jack_IMtx7 = IDENTITY;
+Mtx Jack_IMtx7 = IDENTITY;
 
 #include "assets/chameleons/Jack/Lcuff/Lcuff.gfx.inc.c"
 
 #include "assets/chameleons/Jack/wrist/wrist.vtx.inc.c"
-Mtx_f Jack_IMtx8 = IDENTITY;
+Mtx Jack_IMtx8 = IDENTITY;
 unsigned char Jack_Pad19[] = FILEPAD;
 unsigned char Jack_wristColor_ci4_PNG[] = {
 #include "build/assets/chameleons/Jack/wrist/wristColor.ci4.png.inc.c"
@@ -150,22 +150,22 @@ unsigned char Jack_wrist_ci4_PAL[] = {
 #include "assets/chameleons/Jack/wrist/wrist.gfx.inc.c"
 
 #include "assets/chameleons/Jack/Lwrist/Lwrist.vtx.inc.c"
-Mtx_f Jack_IMtx9 = IDENTITY;
+Mtx Jack_IMtx9 = IDENTITY;
 
 #include "assets/chameleons/Jack/Lwrist/Lwrist.gfx.inc.c"
 
 #include "assets/chameleons/Jack/shoulder/shoulder.vtx.inc.c"
-Mtx_f Jack_IMtx10 = IDENTITY;
+Mtx Jack_IMtx10 = IDENTITY;
 
 #include "assets/chameleons/Jack/shoulder/shoulder.gfx.inc.c"
 
 #include "assets/chameleons/Jack/Lshoulder/Lshoulder.vtx.inc.c"
-Mtx_f Jack_IMtx11 = IDENTITY;
+Mtx Jack_IMtx11 = IDENTITY;
 
 #include "assets/chameleons/Jack/Lshoulder/Lshoulder.gfx.inc.c"
 
 #include "assets/chameleons/Jack/fist/fist.vtx.inc.c"
-Mtx_f Jack_IMtx12 = IDENTITY;
+Mtx Jack_IMtx12 = IDENTITY;
 unsigned char Jack_Pad23[] = FILEPAD;
 unsigned char Jack_fist1_ci4_PNG[] = {
 #include "build/assets/chameleons/Jack/fist/fist1.ci4.png.inc.c"
@@ -210,7 +210,7 @@ unsigned char Jack_fist4_ci4_PAL[] = {
 #include "assets/chameleons/Jack/fist/fist.gfx.inc.c"
 
 #include "assets/chameleons/Jack/Lfist/Lfist.vtx.inc.c"
-Mtx_f Jack_IMtx13 = IDENTITY;
+Mtx Jack_IMtx13 = IDENTITY;
 
 #include "assets/chameleons/Jack/Lfist/Lfist.gfx.inc.c"
 

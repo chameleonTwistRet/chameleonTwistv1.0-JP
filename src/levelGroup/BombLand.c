@@ -238,7 +238,7 @@ extern CollisionData BombLand_unk72_ColH;
 extern Gfx Global_pole_Gfx[];
 extern CollisionData Global_pole_ColH;
 
-Mtx_f BombLand_IMtx1 = IDENTITY;
+Mtx BombLand_IMtx1 = IDENTITY;
 
 #include "assets/levelGroup/BombLand/pointers.lvp.inc.c"
 
@@ -1905,12 +1905,12 @@ Mtx_f BombLand_IMtx1 = IDENTITY;
 #include "assets/levelGroup/BombLand/header.lvlHdr.inc.c"
 
 #include "build/assets/levelGroup/BombLand/headerPad.inc.c"
-Mtx_f BombLand_IMtx2 = IDENTITY;
+Mtx BombLand_IMtx2 = IDENTITY;
 
 #include "assets/levelGroup/BombLand/blScope.light.inc.c"
 
 #include "assets/levelGroup/BombLand/exit1/exit1.vtx.inc.c"
-Mtx_f BombLand_IMtx3 = IDENTITY;
+Mtx BombLand_IMtx3 = IDENTITY;
 unsigned char BombLand_Pad1[] = FILEPAD;
 unsigned char BombLand_shutters_ia4_PNG[] = {
 #include "build/assets/levelGroup/BombLand/exit1/shutters.ia4.png.inc.c"
@@ -1919,22 +1919,22 @@ unsigned char BombLand_shutters_ia4_PNG[] = {
 #include "assets/levelGroup/BombLand/exit1/exit1.gfx.inc.c"
 
 #include "assets/levelGroup/BombLand/exit2/exit2.vtx.inc.c"
-Mtx_f BombLand_IMtx4 = IDENTITY;
+Mtx BombLand_IMtx4 = IDENTITY;
 
 #include "assets/levelGroup/BombLand/exit2/exit2.gfx.inc.c"
 
 #include "assets/levelGroup/BombLand/exit3/exit3.vtx.inc.c"
-Mtx_f BombLand_IMtx5 = IDENTITY;
+Mtx BombLand_IMtx5 = IDENTITY;
 
 #include "assets/levelGroup/BombLand/exit3/exit3.gfx.inc.c"
 
 #include "assets/levelGroup/BombLand/exit4/exit4.vtx.inc.c"
-Mtx_f BombLand_IMtx6 = IDENTITY;
+Mtx BombLand_IMtx6 = IDENTITY;
 
 #include "assets/levelGroup/BombLand/exit4/exit4.gfx.inc.c"
 
 #include "assets/levelGroup/BombLand/room0/room0.vtx.inc.c"
-Mtx_f BombLand_IMtx7 = IDENTITY;
+Mtx BombLand_IMtx7 = IDENTITY;
 unsigned char BombLand_Pad2[] = FILEPAD;
 unsigned char BombLand_warning_ci4_PNG[] = {
 #include "build/assets/levelGroup/BombLand/room0/warning.ci4.png.inc.c"
@@ -1963,7 +1963,7 @@ unsigned char BombLand_grate_ia4_PNG[] = {
 #include "assets/levelGroup/BombLand/room0/room0.gfx.inc.c"
 
 #include "assets/levelGroup/BombLand/room1/room1.vtx.inc.c"
-Mtx_f BombLand_IMtx8 = IDENTITY;
+Mtx BombLand_IMtx8 = IDENTITY;
 unsigned char BombLand_Pad8[] = FILEPAD;
 unsigned char BombLand_wallFade_i8_PNG[] = {
 #include "build/assets/levelGroup/BombLand/room1/wallFade.i8.png.inc.c"
@@ -1972,7 +1972,7 @@ unsigned char BombLand_wallFade_i8_PNG[] = {
 #include "assets/levelGroup/BombLand/room1/room1.gfx.inc.c"
 
 #include "assets/levelGroup/BombLand/room2/room2.vtx.inc.c"
-Mtx_f BombLand_IMtx9 = IDENTITY;
+Mtx BombLand_IMtx9 = IDENTITY;
 unsigned char BombLand_Pad9[] = FILEPAD;
 unsigned char BombLand_wall_i8_PNG[] = {
 #include "build/assets/levelGroup/BombLand/room2/wall.i8.png.inc.c"
@@ -1989,7 +1989,7 @@ unsigned char BombLand_cheese_ci4_PAL[] = {
 #include "assets/levelGroup/BombLand/room2/room2.gfx.inc.c"
 
 #include "assets/levelGroup/BombLand/room3/room3.vtx.inc.c"
-Mtx_f BombLand_IMtx10 = IDENTITY;
+Mtx BombLand_IMtx10 = IDENTITY;
 unsigned char BombLand_Pad12[] = FILEPAD;
 unsigned char BombLand_hexcombFade_i4_PNG[] = {
 #include "build/assets/levelGroup/BombLand/room3/hexcombFade.i4.png.inc.c"
@@ -1998,7 +1998,7 @@ unsigned char BombLand_hexcombFade_i4_PNG[] = {
 #include "assets/levelGroup/BombLand/room3/room3.gfx.inc.c"
 
 #include "assets/levelGroup/BombLand/room4/room4.vtx.inc.c"
-Mtx_f BombLand_IMtx11 = IDENTITY;
+Mtx BombLand_IMtx11 = IDENTITY;
 unsigned char BombLand_Pad13[] = FILEPAD;
 unsigned char BombLand_plate_i8_PNG[] = {
 #include "build/assets/levelGroup/BombLand/room4/plate.i8.png.inc.c"
@@ -2007,7 +2007,7 @@ unsigned char BombLand_plate_i8_PNG[] = {
 #include "assets/levelGroup/BombLand/room4/room4.gfx.inc.c"
 
 #include "assets/levelGroup/BombLand/room5/room5.vtx.inc.c"
-Mtx_f BombLand_IMtx12 = IDENTITY;
+Mtx BombLand_IMtx12 = IDENTITY;
 unsigned char BombLand_Pad14[] = FILEPAD;
 unsigned char BombLand_plateFalloff_i4_PNG[] = {
 #include "build/assets/levelGroup/BombLand/room5/plateFalloff.i4.png.inc.c"
@@ -2016,17 +2016,17 @@ unsigned char BombLand_plateFalloff_i4_PNG[] = {
 #include "assets/levelGroup/BombLand/room5/room5.gfx.inc.c"
 
 #include "assets/levelGroup/BombLand/room6/room6.vtx.inc.c"
-Mtx_f BombLand_IMtx13 = IDENTITY;
+Mtx BombLand_IMtx13 = IDENTITY;
 
 #include "assets/levelGroup/BombLand/room6/room6.gfx.inc.c"
 
 #include "assets/levelGroup/BombLand/room7/room7.vtx.inc.c"
-Mtx_f BombLand_IMtx14 = IDENTITY;
+Mtx BombLand_IMtx14 = IDENTITY;
 
 #include "assets/levelGroup/BombLand/room7/room7.gfx.inc.c"
 
 #include "assets/levelGroup/BombLand/room8/room8.vtx.inc.c"
-Mtx_f BombLand_IMtx15 = IDENTITY;
+Mtx BombLand_IMtx15 = IDENTITY;
 unsigned char BombLand_Pad15[] = FILEPAD;
 unsigned char BombLand_hexcomb_i4_PNG[] = {
 #include "build/assets/levelGroup/BombLand/room8/hexcomb.i4.png.inc.c"
@@ -2035,32 +2035,32 @@ unsigned char BombLand_hexcomb_i4_PNG[] = {
 #include "assets/levelGroup/BombLand/room8/room8.gfx.inc.c"
 
 #include "assets/levelGroup/BombLand/room9/room9.vtx.inc.c"
-Mtx_f BombLand_IMtx16 = IDENTITY;
+Mtx BombLand_IMtx16 = IDENTITY;
 
 #include "assets/levelGroup/BombLand/room9/room9.gfx.inc.c"
 
 #include "assets/levelGroup/BombLand/room10/room10.vtx.inc.c"
-Mtx_f BombLand_IMtx17 = IDENTITY;
+Mtx BombLand_IMtx17 = IDENTITY;
 
 #include "assets/levelGroup/BombLand/room10/room10.gfx.inc.c"
 
 #include "assets/levelGroup/BombLand/room11/room11.vtx.inc.c"
-Mtx_f BombLand_IMtx18 = IDENTITY;
+Mtx BombLand_IMtx18 = IDENTITY;
 
 #include "assets/levelGroup/BombLand/room11/room11.gfx.inc.c"
 
 #include "assets/levelGroup/BombLand/room12/room12.vtx.inc.c"
-Mtx_f BombLand_IMtx19 = IDENTITY;
+Mtx BombLand_IMtx19 = IDENTITY;
 
 #include "assets/levelGroup/BombLand/room12/room12.gfx.inc.c"
 
 #include "assets/levelGroup/BombLand/room13/room13.vtx.inc.c"
-Mtx_f BombLand_IMtx20 = IDENTITY;
+Mtx BombLand_IMtx20 = IDENTITY;
 
 #include "assets/levelGroup/BombLand/room13/room13.gfx.inc.c"
 
 #include "assets/levelGroup/BombLand/room15Floor/room15Floor.vtx.inc.c"
-Mtx_f BombLand_IMtx21 = IDENTITY;
+Mtx BombLand_IMtx21 = IDENTITY;
 unsigned char BombLand_Pad16[] = FILEPAD;
 unsigned char BombLand_plate_fade_i8_PNG[] = {
 #include "build/assets/levelGroup/BombLand/room15Floor/plate_fade.i8.png.inc.c"
@@ -2069,7 +2069,7 @@ unsigned char BombLand_plate_fade_i8_PNG[] = {
 #include "assets/levelGroup/BombLand/room15Floor/room15Floor.gfx.inc.c"
 
 #include "assets/levelGroup/BombLand/room15/room15.vtx.inc.c"
-Mtx_f BombLand_IMtx22 = IDENTITY;
+Mtx BombLand_IMtx22 = IDENTITY;
 unsigned char BombLand_Pad17[] = FILEPAD;
 unsigned char BombLand_lego_i4_PNG[] = {
 #include "build/assets/levelGroup/BombLand/room15/lego.i4.png.inc.c"
@@ -2078,7 +2078,7 @@ unsigned char BombLand_lego_i4_PNG[] = {
 #include "assets/levelGroup/BombLand/room15/room15.gfx.inc.c"
 
 #include "assets/levelGroup/BombLand/room0Pipe/room0Pipe.vtx.inc.c"
-Mtx_f BombLand_IMtx23 = IDENTITY;
+Mtx BombLand_IMtx23 = IDENTITY;
 unsigned char BombLand_Pad18[] = FILEPAD;
 unsigned char BombLand_segment_i4_PNG[] = {
 #include "build/assets/levelGroup/BombLand/room0Pipe/segment.i4.png.inc.c"
@@ -2087,7 +2087,7 @@ unsigned char BombLand_segment_i4_PNG[] = {
 #include "assets/levelGroup/BombLand/room0Pipe/room0Pipe.gfx.inc.c"
 
 #include "assets/levelGroup/BombLand/room1Floor/room1Floor.vtx.inc.c"
-Mtx_f BombLand_IMtx24 = IDENTITY;
+Mtx BombLand_IMtx24 = IDENTITY;
 unsigned char BombLand_Pad19[] = FILEPAD;
 unsigned char BombLand_circle_ci4_PNG[] = {
 #include "build/assets/levelGroup/BombLand/room1Floor/circle.ci4.png.inc.c"
@@ -2108,107 +2108,107 @@ unsigned char BombLand_acid_ci4_PAL[] = {
 #include "assets/levelGroup/BombLand/room1Floor/room1Floor.gfx.inc.c"
 
 #include "assets/levelGroup/BombLand/block/block.vtx.inc.c"
-Mtx_f BombLand_IMtx25 = IDENTITY;
+Mtx BombLand_IMtx25 = IDENTITY;
 
 #include "assets/levelGroup/BombLand/block/block.gfx.inc.c"
 
 #include "assets/levelGroup/BombLand/breakableBlockSides/breakableBlockSides.vtx.inc.c"
-Mtx_f BombLand_IMtx26 = IDENTITY;
+Mtx BombLand_IMtx26 = IDENTITY;
 
 #include "assets/levelGroup/BombLand/breakableBlockSides/breakableBlockSides.gfx.inc.c"
 
 #include "assets/levelGroup/BombLand/room3Start/room3Start.vtx.inc.c"
-Mtx_f BombLand_IMtx27 = IDENTITY;
+Mtx BombLand_IMtx27 = IDENTITY;
 
 #include "assets/levelGroup/BombLand/room3Start/room3Start.gfx.inc.c"
 
 #include "assets/levelGroup/BombLand/room3End/room3End.vtx.inc.c"
-Mtx_f BombLand_IMtx28 = IDENTITY;
+Mtx BombLand_IMtx28 = IDENTITY;
 
 #include "assets/levelGroup/BombLand/room3End/room3End.gfx.inc.c"
 
 #include "assets/levelGroup/BombLand/block2Maybe/block2Maybe.vtx.inc.c"
-Mtx_f BombLand_IMtx29 = IDENTITY;
+Mtx BombLand_IMtx29 = IDENTITY;
 
 #include "assets/levelGroup/BombLand/block2Maybe/block2Maybe.gfx.inc.c"
 
 #include "assets/levelGroup/BombLand/unusedPlatformMaybe/unusedPlatformMaybe.vtx.inc.c"
-Mtx_f BombLand_IMtx30 = IDENTITY;
+Mtx BombLand_IMtx30 = IDENTITY;
 
 #include "assets/levelGroup/BombLand/unusedPlatformMaybe/unusedPlatformMaybe.gfx.inc.c"
 
 #include "assets/levelGroup/BombLand/wall/wall.vtx.inc.c"
-Mtx_f BombLand_IMtx31 = IDENTITY;
+Mtx BombLand_IMtx31 = IDENTITY;
 
 #include "assets/levelGroup/BombLand/wall/wall.gfx.inc.c"
 
 #include "assets/levelGroup/BombLand/room4End1/room4End1.vtx.inc.c"
-Mtx_f BombLand_IMtx32 = IDENTITY;
+Mtx BombLand_IMtx32 = IDENTITY;
 
 #include "assets/levelGroup/BombLand/room4End1/room4End1.gfx.inc.c"
 
 #include "assets/levelGroup/BombLand/room4End2/room4End2.vtx.inc.c"
-Mtx_f BombLand_IMtx33 = IDENTITY;
+Mtx BombLand_IMtx33 = IDENTITY;
 
 #include "assets/levelGroup/BombLand/room4End2/room4End2.gfx.inc.c"
 
 #include "assets/levelGroup/BombLand/room4Start/room4Start.vtx.inc.c"
-Mtx_f BombLand_IMtx34 = IDENTITY;
+Mtx BombLand_IMtx34 = IDENTITY;
 
 #include "assets/levelGroup/BombLand/room4Start/room4Start.gfx.inc.c"
 
 #include "assets/levelGroup/BombLand/room5Start/room5Start.vtx.inc.c"
-Mtx_f BombLand_IMtx35 = IDENTITY;
+Mtx BombLand_IMtx35 = IDENTITY;
 
 #include "assets/levelGroup/BombLand/room5Start/room5Start.gfx.inc.c"
 
 #include "assets/levelGroup/BombLand/room5End/room5End.vtx.inc.c"
-Mtx_f BombLand_IMtx36 = IDENTITY;
+Mtx BombLand_IMtx36 = IDENTITY;
 
 #include "assets/levelGroup/BombLand/room5End/room5End.gfx.inc.c"
 
 #include "assets/levelGroup/BombLand/breakableBlock/breakableBlock.vtx.inc.c"
-Mtx_f BombLand_IMtx37 = IDENTITY;
+Mtx BombLand_IMtx37 = IDENTITY;
 
 #include "assets/levelGroup/BombLand/breakableBlock/breakableBlock.gfx.inc.c"
 
 #include "assets/levelGroup/BombLand/breakableBlockStack/breakableBlockStack.vtx.inc.c"
-Mtx_f BombLand_IMtx38 = IDENTITY;
+Mtx BombLand_IMtx38 = IDENTITY;
 
 #include "assets/levelGroup/BombLand/breakableBlockStack/breakableBlockStack.gfx.inc.c"
 
 #include "assets/levelGroup/BombLand/room7Start/room7Start.vtx.inc.c"
-Mtx_f BombLand_IMtx39 = IDENTITY;
+Mtx BombLand_IMtx39 = IDENTITY;
 
 #include "assets/levelGroup/BombLand/room7Start/room7Start.gfx.inc.c"
 
 #include "assets/levelGroup/BombLand/room7End/room7End.vtx.inc.c"
-Mtx_f BombLand_IMtx40 = IDENTITY;
+Mtx BombLand_IMtx40 = IDENTITY;
 
 #include "assets/levelGroup/BombLand/room7End/room7End.gfx.inc.c"
 
 #include "assets/levelGroup/BombLand/breakableBlockSide1/breakableBlockSide1.vtx.inc.c"
-Mtx_f BombLand_IMtx41 = IDENTITY;
+Mtx BombLand_IMtx41 = IDENTITY;
 
 #include "assets/levelGroup/BombLand/breakableBlockSide1/breakableBlockSide1.gfx.inc.c"
 
 #include "assets/levelGroup/BombLand/breakableBlockSide2/breakableBlockSide2.vtx.inc.c"
-Mtx_f BombLand_IMtx42 = IDENTITY;
+Mtx BombLand_IMtx42 = IDENTITY;
 
 #include "assets/levelGroup/BombLand/breakableBlockSide2/breakableBlockSide2.gfx.inc.c"
 
 #include "assets/levelGroup/BombLand/breakableBlockSide3/breakableBlockSide3.vtx.inc.c"
-Mtx_f BombLand_IMtx43 = IDENTITY;
+Mtx BombLand_IMtx43 = IDENTITY;
 
 #include "assets/levelGroup/BombLand/breakableBlockSide3/breakableBlockSide3.gfx.inc.c"
 
 #include "assets/levelGroup/BombLand/breakableBlockSide4/breakableBlockSide4.vtx.inc.c"
-Mtx_f BombLand_IMtx44 = IDENTITY;
+Mtx BombLand_IMtx44 = IDENTITY;
 
 #include "assets/levelGroup/BombLand/breakableBlockSide4/breakableBlockSide4.gfx.inc.c"
 
 #include "assets/levelGroup/BombLand/blockPlatform/blockPlatform.vtx.inc.c"
-Mtx_f BombLand_IMtx45 = IDENTITY;
+Mtx BombLand_IMtx45 = IDENTITY;
 unsigned char BombLand_Pad23[] = FILEPAD;
 unsigned char BombLand_platebig_i8_PNG[] = {
 #include "build/assets/levelGroup/BombLand/blockPlatform/platebig.i8.png.inc.c"
@@ -2217,112 +2217,112 @@ unsigned char BombLand_platebig_i8_PNG[] = {
 #include "assets/levelGroup/BombLand/blockPlatform/blockPlatform.gfx.inc.c"
 
 #include "assets/levelGroup/BombLand/breakableBlock2/breakableBlock2.vtx.inc.c"
-Mtx_f BombLand_IMtx46 = IDENTITY;
+Mtx BombLand_IMtx46 = IDENTITY;
 
 #include "assets/levelGroup/BombLand/breakableBlock2/breakableBlock2.gfx.inc.c"
 
 #include "assets/levelGroup/BombLand/room8Start/room8Start.vtx.inc.c"
-Mtx_f BombLand_IMtx47 = IDENTITY;
+Mtx BombLand_IMtx47 = IDENTITY;
 
 #include "assets/levelGroup/BombLand/room8Start/room8Start.gfx.inc.c"
 
 #include "assets/levelGroup/BombLand/room8End/room8End.vtx.inc.c"
-Mtx_f BombLand_IMtx48 = IDENTITY;
+Mtx BombLand_IMtx48 = IDENTITY;
 
 #include "assets/levelGroup/BombLand/room8End/room8End.gfx.inc.c"
 
 #include "assets/levelGroup/BombLand/room9End1/room9End1.vtx.inc.c"
-Mtx_f BombLand_IMtx49 = IDENTITY;
+Mtx BombLand_IMtx49 = IDENTITY;
 
 #include "assets/levelGroup/BombLand/room9End1/room9End1.gfx.inc.c"
 
 #include "assets/levelGroup/BombLand/room9End2/room9End2.vtx.inc.c"
-Mtx_f BombLand_IMtx50 = IDENTITY;
+Mtx BombLand_IMtx50 = IDENTITY;
 
 #include "assets/levelGroup/BombLand/room9End2/room9End2.gfx.inc.c"
 
 #include "assets/levelGroup/BombLand/room9Start/room9Start.vtx.inc.c"
-Mtx_f BombLand_IMtx51 = IDENTITY;
+Mtx BombLand_IMtx51 = IDENTITY;
 
 #include "assets/levelGroup/BombLand/room9Start/room9Start.gfx.inc.c"
 
 #include "assets/levelGroup/BombLand/room10Floor/room10Floor.vtx.inc.c"
-Mtx_f BombLand_IMtx52 = IDENTITY;
+Mtx BombLand_IMtx52 = IDENTITY;
 
 #include "assets/levelGroup/BombLand/room10Floor/room10Floor.gfx.inc.c"
 
 #include "assets/levelGroup/BombLand/room10Platform/room10Platform.vtx.inc.c"
-Mtx_f BombLand_IMtx53 = IDENTITY;
+Mtx BombLand_IMtx53 = IDENTITY;
 
 #include "assets/levelGroup/BombLand/room10Platform/room10Platform.gfx.inc.c"
 
 #include "assets/levelGroup/BombLand/tallWallWithFloorOnTop/tallWallWithFloorOnTop.vtx.inc.c"
-Mtx_f BombLand_IMtx54 = IDENTITY;
+Mtx BombLand_IMtx54 = IDENTITY;
 
 #include "assets/levelGroup/BombLand/tallWallWithFloorOnTop/tallWallWithFloorOnTop.gfx.inc.c"
 
 #include "assets/levelGroup/BombLand/unkBlock/unkBlock.vtx.inc.c"
-Mtx_f BombLand_IMtx55 = IDENTITY;
+Mtx BombLand_IMtx55 = IDENTITY;
 
 #include "assets/levelGroup/BombLand/unkBlock/unkBlock.gfx.inc.c"
 
 #include "assets/levelGroup/BombLand/thinBreakableBlockSide1/thinBreakableBlockSide1.vtx.inc.c"
-Mtx_f BombLand_IMtx56 = IDENTITY;
+Mtx BombLand_IMtx56 = IDENTITY;
 
 #include "assets/levelGroup/BombLand/thinBreakableBlockSide1/thinBreakableBlockSide1.gfx.inc.c"
 
 #include "assets/levelGroup/BombLand/thinBreakableBlockSide2/thinBreakableBlockSide2.vtx.inc.c"
-Mtx_f BombLand_IMtx57 = IDENTITY;
+Mtx BombLand_IMtx57 = IDENTITY;
 
 #include "assets/levelGroup/BombLand/thinBreakableBlockSide2/thinBreakableBlockSide2.gfx.inc.c"
 
 #include "assets/levelGroup/BombLand/thinBreakableBlockSide3/thinBreakableBlockSide3.vtx.inc.c"
-Mtx_f BombLand_IMtx58 = IDENTITY;
+Mtx BombLand_IMtx58 = IDENTITY;
 
 #include "assets/levelGroup/BombLand/thinBreakableBlockSide3/thinBreakableBlockSide3.gfx.inc.c"
 
 #include "assets/levelGroup/BombLand/thinBreakableBlockSide4/thinBreakableBlockSide4.vtx.inc.c"
-Mtx_f BombLand_IMtx59 = IDENTITY;
+Mtx BombLand_IMtx59 = IDENTITY;
 
 #include "assets/levelGroup/BombLand/thinBreakableBlockSide4/thinBreakableBlockSide4.gfx.inc.c"
 
 #include "assets/levelGroup/BombLand/thinBreakableBlockSide5/thinBreakableBlockSide5.vtx.inc.c"
-Mtx_f BombLand_IMtx60 = IDENTITY;
+Mtx BombLand_IMtx60 = IDENTITY;
 
 #include "assets/levelGroup/BombLand/thinBreakableBlockSide5/thinBreakableBlockSide5.gfx.inc.c"
 
 #include "assets/levelGroup/BombLand/unkPlatform/unkPlatform.vtx.inc.c"
-Mtx_f BombLand_IMtx61 = IDENTITY;
+Mtx BombLand_IMtx61 = IDENTITY;
 
 #include "assets/levelGroup/BombLand/unkPlatform/unkPlatform.gfx.inc.c"
 
 #include "assets/levelGroup/BombLand/pipe1/pipe1.vtx.inc.c"
-Mtx_f BombLand_IMtx62 = IDENTITY;
+Mtx BombLand_IMtx62 = IDENTITY;
 
 #include "assets/levelGroup/BombLand/pipe1/pipe1.gfx.inc.c"
 
 #include "assets/levelGroup/BombLand/pipe2/pipe2.vtx.inc.c"
-Mtx_f BombLand_IMtx63 = IDENTITY;
+Mtx BombLand_IMtx63 = IDENTITY;
 
 #include "assets/levelGroup/BombLand/pipe2/pipe2.gfx.inc.c"
 
 #include "assets/levelGroup/BombLand/breakableBlockTop/breakableBlockTop.vtx.inc.c"
-Mtx_f BombLand_IMtx64 = IDENTITY;
+Mtx BombLand_IMtx64 = IDENTITY;
 
 #include "assets/levelGroup/BombLand/breakableBlockTop/breakableBlockTop.gfx.inc.c"
 
 #include "assets/levelGroup/BombLand/blockTop/blockTop.vtx.inc.c"
-Mtx_f BombLand_IMtx65 = IDENTITY;
+Mtx BombLand_IMtx65 = IDENTITY;
 
 #include "assets/levelGroup/BombLand/blockTop/blockTop.gfx.inc.c"
 
 #include "assets/levelGroup/BombLand/breakableBlockAgain/breakableBlockAgain.vtx.inc.c"
-Mtx_f BombLand_IMtx66 = IDENTITY;
+Mtx BombLand_IMtx66 = IDENTITY;
 
 #include "assets/levelGroup/BombLand/breakableBlockAgain/breakableBlockAgain.gfx.inc.c"
 
 #include "assets/levelGroup/BombLand/metalBridgeThing/metalBridgeThing.vtx.inc.c"
-Mtx_f BombLand_IMtx67 = IDENTITY;
+Mtx BombLand_IMtx67 = IDENTITY;
 unsigned char BombLand_Pad24[] = FILEPAD;
 unsigned char BombLand_apparentlyATexture_ci4_PNG[] = {
 #include "build/assets/levelGroup/BombLand/metalBridgeThing/apparentlyATexture.ci4.png.inc.c"
@@ -2335,7 +2335,7 @@ unsigned char BombLand_apparentlyATexture_ci4_PAL[] = {
 #include "assets/levelGroup/BombLand/metalBridgeThing/metalBridgeThing.gfx.inc.c"
 
 #include "assets/levelGroup/BombLand/longPipe/longPipe.vtx.inc.c"
-Mtx_f BombLand_IMtx68 = IDENTITY;
+Mtx BombLand_IMtx68 = IDENTITY;
 unsigned char BombLand_Pad26[] = FILEPAD;
 unsigned char BombLand_segment2_i8_PNG[] = {
 #include "build/assets/levelGroup/BombLand/longPipe/segment2.i8.png.inc.c"
@@ -2344,7 +2344,7 @@ unsigned char BombLand_segment2_i8_PNG[] = {
 #include "assets/levelGroup/BombLand/longPipe/longPipe.gfx.inc.c"
 
 #include "assets/levelGroup/BombLand/XResult/XResult.vtx.inc.c"
-Mtx_f BombLand_IMtx69 = IDENTITY;
+Mtx BombLand_IMtx69 = IDENTITY;
 unsigned char BombLand_Pad27[] = FILEPAD;
 unsigned char BombLand_x_ci4_PNG[] = {
 #include "build/assets/levelGroup/BombLand/XResult/x.ci4.png.inc.c"
@@ -2357,7 +2357,7 @@ unsigned char BombLand_x_ci4_PAL[] = {
 #include "assets/levelGroup/BombLand/XResult/XResult.gfx.inc.c"
 
 #include "assets/levelGroup/BombLand/OResult/OResult.vtx.inc.c"
-Mtx_f BombLand_IMtx70 = IDENTITY;
+Mtx BombLand_IMtx70 = IDENTITY;
 unsigned char BombLand_Pad29[] = FILEPAD;
 unsigned char BombLand_OResulto_ci4_PNG[] = {
 #include "build/assets/levelGroup/BombLand/OResulto.ci4.png.inc.c"
@@ -2370,22 +2370,22 @@ unsigned char BombLand_OResulto_ci4_PAL[] = {
 #include "assets/levelGroup/BombLand/OResult/OResult.gfx.inc.c"
 
 #include "assets/levelGroup/BombLand/grenadeShutters/grenadeShutters.vtx.inc.c"
-Mtx_f BombLand_IMtx71 = IDENTITY;
+Mtx BombLand_IMtx71 = IDENTITY;
 
 #include "assets/levelGroup/BombLand/grenadeShutters/grenadeShutters.gfx.inc.c"
 
 #include "assets/levelGroup/BombLand/doorWall/doorWall.vtx.inc.c"
-Mtx_f BombLand_IMtx72 = IDENTITY;
+Mtx BombLand_IMtx72 = IDENTITY;
 
 #include "assets/levelGroup/BombLand/doorWall/doorWall.gfx.inc.c"
 
 #include "assets/levelGroup/BombLand/doorPoles/doorPoles.vtx.inc.c"
-Mtx_f BombLand_IMtx73 = IDENTITY;
+Mtx BombLand_IMtx73 = IDENTITY;
 
 #include "assets/levelGroup/BombLand/doorPoles/doorPoles.gfx.inc.c"
 
 #include "assets/levelGroup/BombLand/unk72/unk72.vtx.inc.c"
-Mtx_f BombLand_IMtx74 = IDENTITY;
+Mtx BombLand_IMtx74 = IDENTITY;
 unsigned char BombLand_Pad31[] = FILEPAD;
 unsigned char BombLand_bars_ia4_PNG[] = {
 #include "build/assets/levelGroup/BombLand/unk72/bars.ia4.png.inc.c"
@@ -2978,7 +2978,7 @@ unsigned char BombLand_bars_ia4_PNG[] = {
 #include "assets/levelGroup/BombLand/blScope2.light.inc.c"
 
 #include "assets/levelGroup/BombLand/unk73/unk73.vtx.inc.c"
-Mtx_f BombLand_IMtx75 = IDENTITY;
+Mtx BombLand_IMtx75 = IDENTITY;
 unsigned char BombLand_Pad32[] = FILEPAD;
 unsigned char BombLand_cannon_rgba16_PNG[] = {
 #include "build/assets/levelGroup/BombLand/unk73/cannon.rgba16.png.inc.c"
@@ -2989,7 +2989,7 @@ unsigned char BombLand_cannonHole_rgba16_PNG[] = {
 };
 
 #include "assets/levelGroup/BombLand/unk73/unk73.gfx.inc.c"
-Mtx_f BombLand_IMtx76 = IDENTITY;
+Mtx BombLand_IMtx76 = IDENTITY;
 
 #include "assets/levelGroup/BombLand/unk74/unk74.gfx.inc.c"
 

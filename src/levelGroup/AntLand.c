@@ -239,7 +239,7 @@ extern Gfx Global_pole_Gfx[];
 extern CollisionData Global_pole_ColH;
 
 
-Mtx_f AntLand_IMtx1 = IDENTITY;
+Mtx AntLand_IMtx1 = IDENTITY;
 
 #include "assets/levelGroup/AntLand/pointers.lvp.inc.c"
 
@@ -1932,12 +1932,12 @@ Mtx_f AntLand_IMtx1 = IDENTITY;
 #include "assets/levelGroup/AntLand/scope.lvlScope.inc.c"
 
 #include "assets/levelGroup/AntLand/header.lvlHdr.inc.c"
-Mtx_f AntLand_IMtx2 = IDENTITY;
+Mtx AntLand_IMtx2 = IDENTITY;
 
 #include "assets/levelGroup/AntLand/alScope.light.inc.c"
 
 #include "assets/levelGroup/AntLand/exit2/exit2.vtx.inc.c"
-Mtx_f AntLand_IMtx3 = IDENTITY;
+Mtx AntLand_IMtx3 = IDENTITY;
 unsigned char AntLand_Pad1[] = FILEPAD;
 unsigned char AntLand_antWallw_i4_PNG[] = {
 #include "build/assets/levelGroup/AntLand/antWallw.i4.png.inc.c"
@@ -1946,17 +1946,17 @@ unsigned char AntLand_antWallw_i4_PNG[] = {
 #include "assets/levelGroup/AntLand/exit2/exit2.gfx.inc.c"
 
 #include "assets/levelGroup/AntLand/exit3/exit3.vtx.inc.c"
-Mtx_f AntLand_IMtx4 = IDENTITY;
+Mtx AntLand_IMtx4 = IDENTITY;
 
 #include "assets/levelGroup/AntLand/exit3/exit3.gfx.inc.c"
 
 #include "assets/levelGroup/AntLand/exit4/exit4.vtx.inc.c"
-Mtx_f AntLand_IMtx5 = IDENTITY;
+Mtx AntLand_IMtx5 = IDENTITY;
 
 #include "assets/levelGroup/AntLand/exit4/exit4.gfx.inc.c"
 
 #include "assets/levelGroup/AntLand/room0/room0.vtx.inc.c"
-Mtx_f AntLand_IMtx6 = IDENTITY;
+Mtx AntLand_IMtx6 = IDENTITY;
 unsigned char AntLand_Pad2[] = FILEPAD;
 unsigned char AntLand_antWallShine1_ci4_PNG[] = {
 #include "build/assets/levelGroup/AntLand/antWallShine1.ci4.png.inc.c"
@@ -1977,7 +1977,7 @@ unsigned char AntLand_antWallShine2_ci4_PAL[] = {
 #include "assets/levelGroup/AntLand/room0/room0.gfx.inc.c"
 
 #include "assets/levelGroup/AntLand/room1/room1.vtx.inc.c"
-Mtx_f AntLand_IMtx7 = IDENTITY;
+Mtx AntLand_IMtx7 = IDENTITY;
 unsigned char AntLand_Pad6[] = FILEPAD;
 unsigned char AntLand_antWalli4_i4_PNG[] = {
 #include "build/assets/levelGroup/AntLand/antWalli4.i4.png.inc.c"
@@ -1998,7 +1998,7 @@ unsigned char AntLand_AntshineWall3_ci8_PAL[] = {
 #include "assets/levelGroup/AntLand/room1/room1.gfx.inc.c"
 
 #include "assets/levelGroup/AntLand/room2/room2.vtx.inc.c"
-Mtx_f AntLand_IMtx8 = IDENTITY;
+Mtx AntLand_IMtx8 = IDENTITY;
 unsigned char AntLand_Pad10[] = FILEPAD;
 unsigned char AntLand_horror_i4_PNG[] = {
 #include "build/assets/levelGroup/AntLand/horror.i4.png.inc.c"
@@ -2011,7 +2011,7 @@ unsigned char AntLand_antMural1_i4_PNG[] = {
 #include "assets/levelGroup/AntLand/room2/room2.gfx.inc.c"
 
 #include "assets/levelGroup/AntLand/room14/room14.vtx.inc.c"
-Mtx_f AntLand_IMtx9 = IDENTITY;
+Mtx AntLand_IMtx9 = IDENTITY;
 unsigned char AntLand_Pad12[] = FILEPAD;
 unsigned char AntLand_AlShinewall2_ci8_PNG[] = {
 #include "build/assets/levelGroup/AntLand/AlShinewall2.ci8.png.inc.c"
@@ -2032,7 +2032,7 @@ unsigned char AntLand_wallawalwal_ci4_PAL[] = {
 #include "assets/levelGroup/AntLand/room14/room14.gfx.inc.c"
 
 #include "assets/levelGroup/AntLand/room4/room4.vtx.inc.c"
-Mtx_f AntLand_IMtx10 = IDENTITY;
+Mtx AntLand_IMtx10 = IDENTITY;
 unsigned char AntLand_Pad16[] = FILEPAD;
 unsigned char AntLand_ALWall2_ci8_PNG[] = {
 #include "build/assets/levelGroup/AntLand/ALWall2.ci8.png.inc.c"
@@ -2045,7 +2045,7 @@ unsigned char AntLand_ALWall2_ci8_PAL[] = {
 #include "assets/levelGroup/AntLand/room4/room4.gfx.inc.c"
 
 #include "assets/levelGroup/AntLand/room5/room5.vtx.inc.c"
-Mtx_f AntLand_IMtx11 = IDENTITY;
+Mtx AntLand_IMtx11 = IDENTITY;
 unsigned char AntLand_Pad18[] = FILEPAD;
 unsigned char AntLand_ALShinewall_ci8_PNG[] = {
 #include "build/assets/levelGroup/AntLand/ALShinewall.ci8.png.inc.c"
@@ -2058,7 +2058,7 @@ unsigned char AntLand_ALShinewall_ci8_PAL[] = {
 #include "assets/levelGroup/AntLand/room5/room5.gfx.inc.c"
 
 #include "assets/levelGroup/AntLand/room6/room6.vtx.inc.c"
-Mtx_f AntLand_IMtx12 = IDENTITY;
+Mtx AntLand_IMtx12 = IDENTITY;
 unsigned char AntLand_Pad20[] = FILEPAD;
 unsigned char AntLand_antfadeee_ci8_PNG[] = {
 #include "build/assets/levelGroup/AntLand/antfadeee.ci8.png.inc.c"
@@ -2075,47 +2075,47 @@ unsigned char AntLand_ALMural_i4_PNG[] = {
 #include "assets/levelGroup/AntLand/room6/room6.gfx.inc.c"
 
 #include "assets/levelGroup/AntLand/room7/room7.vtx.inc.c"
-Mtx_f AntLand_IMtx13 = IDENTITY;
+Mtx AntLand_IMtx13 = IDENTITY;
 
 #include "assets/levelGroup/AntLand/room7/room7.gfx.inc.c"
 
 #include "assets/levelGroup/AntLand/room8/room8.vtx.inc.c"
-Mtx_f AntLand_IMtx14 = IDENTITY;
+Mtx AntLand_IMtx14 = IDENTITY;
 
 #include "assets/levelGroup/AntLand/room8/room8.gfx.inc.c"
 
 #include "assets/levelGroup/AntLand/room9/room9.vtx.inc.c"
-Mtx_f AntLand_IMtx15 = IDENTITY;
+Mtx AntLand_IMtx15 = IDENTITY;
 
 #include "assets/levelGroup/AntLand/room9/room9.gfx.inc.c"
 
 #include "assets/levelGroup/AntLand/room10/room10.vtx.inc.c"
-Mtx_f AntLand_IMtx16 = IDENTITY;
+Mtx AntLand_IMtx16 = IDENTITY;
 
 #include "assets/levelGroup/AntLand/room10/room10.gfx.inc.c"
 
 #include "assets/levelGroup/AntLand/room11/room11.vtx.inc.c"
-Mtx_f AntLand_IMtx17 = IDENTITY;
+Mtx AntLand_IMtx17 = IDENTITY;
 
 #include "assets/levelGroup/AntLand/room11/room11.gfx.inc.c"
 
 #include "assets/levelGroup/AntLand/room12/room12.vtx.inc.c"
-Mtx_f AntLand_IMtx18 = IDENTITY;
+Mtx AntLand_IMtx18 = IDENTITY;
 
 #include "assets/levelGroup/AntLand/room12/room12.gfx.inc.c"
 
 #include "assets/levelGroup/AntLand/room13/room13.vtx.inc.c"
-Mtx_f AntLand_IMtx19 = IDENTITY;
+Mtx AntLand_IMtx19 = IDENTITY;
 
 #include "assets/levelGroup/AntLand/room13/room13.gfx.inc.c"
 
 #include "assets/levelGroup/AntLand/room3/room3.vtx.inc.c"
-Mtx_f AntLand_IMtx20 = IDENTITY;
+Mtx AntLand_IMtx20 = IDENTITY;
 
 #include "assets/levelGroup/AntLand/room3/room3.gfx.inc.c"
 
 #include "assets/levelGroup/AntLand/room17/room17.vtx.inc.c"
-Mtx_f AntLand_IMtx21 = IDENTITY;
+Mtx AntLand_IMtx21 = IDENTITY;
 unsigned char AntLand_Pad23[] = FILEPAD;
 unsigned char AntLand_ALwall_ci8_PNG[] = {
 #include "build/assets/levelGroup/AntLand/ALwall.ci8.png.inc.c"
@@ -2128,27 +2128,27 @@ unsigned char AntLand_ALwall_ci8_PAL[] = {
 #include "assets/levelGroup/AntLand/room17/room17.gfx.inc.c"
 
 #include "assets/levelGroup/AntLand/room15/room15.vtx.inc.c"
-Mtx_f AntLand_IMtx22 = IDENTITY;
+Mtx AntLand_IMtx22 = IDENTITY;
 
 #include "assets/levelGroup/AntLand/room15/room15.gfx.inc.c"
 
 #include "assets/levelGroup/AntLand/room18/room18.vtx.inc.c"
-Mtx_f AntLand_IMtx23 = IDENTITY;
+Mtx AntLand_IMtx23 = IDENTITY;
 
 #include "assets/levelGroup/AntLand/room18/room18.gfx.inc.c"
 
 #include "assets/levelGroup/AntLand/room16/room16.vtx.inc.c"
-Mtx_f AntLand_IMtx24 = IDENTITY;
+Mtx AntLand_IMtx24 = IDENTITY;
 
 #include "assets/levelGroup/AntLand/room16/room16.gfx.inc.c"
 
 #include "assets/levelGroup/AntLand/room20/room20.vtx.inc.c"
-Mtx_f AntLand_IMtx25 = IDENTITY;
+Mtx AntLand_IMtx25 = IDENTITY;
 
 #include "assets/levelGroup/AntLand/room20/room20.gfx.inc.c"
 
 #include "assets/levelGroup/AntLand/room21/room21.vtx.inc.c"
-Mtx_f AntLand_IMtx26 = IDENTITY;
+Mtx AntLand_IMtx26 = IDENTITY;
 unsigned char AntLand_Pad25[] = FILEPAD;
 unsigned char AntLand_murals_ci4_PNG[] = {
 #include "build/assets/levelGroup/AntLand/murals.ci4.png.inc.c"
@@ -2161,32 +2161,32 @@ unsigned char AntLand_murals_ci4_PAL[] = {
 #include "assets/levelGroup/AntLand/room21/room21.gfx.inc.c"
 
 #include "assets/levelGroup/AntLand/room4Platform/room4Platform.vtx.inc.c"
-Mtx_f AntLand_IMtx27 = IDENTITY;
+Mtx AntLand_IMtx27 = IDENTITY;
 
 #include "assets/levelGroup/AntLand/room4Platform/room4Platform.gfx.inc.c"
 
 #include "assets/levelGroup/AntLand/room4Floor/room4Floor.vtx.inc.c"
-Mtx_f AntLand_IMtx28 = IDENTITY;
+Mtx AntLand_IMtx28 = IDENTITY;
 
 #include "assets/levelGroup/AntLand/room4Floor/room4Floor.gfx.inc.c"
 
 #include "assets/levelGroup/AntLand/room6Floor/room6Floor.vtx.inc.c"
-Mtx_f AntLand_IMtx29 = IDENTITY;
+Mtx AntLand_IMtx29 = IDENTITY;
 
 #include "assets/levelGroup/AntLand/room6Floor/room6Floor.gfx.inc.c"
 
 #include "assets/levelGroup/AntLand/room8Floor/room8Floor.vtx.inc.c"
-Mtx_f AntLand_IMtx30 = IDENTITY;
+Mtx AntLand_IMtx30 = IDENTITY;
 
 #include "assets/levelGroup/AntLand/room8Floor/room8Floor.gfx.inc.c"
 
 #include "assets/levelGroup/AntLand/room17Floor/room17Floor.vtx.inc.c"
-Mtx_f AntLand_IMtx31 = IDENTITY;
+Mtx AntLand_IMtx31 = IDENTITY;
 
 #include "assets/levelGroup/AntLand/room17Floor/room17Floor.gfx.inc.c"
 
 #include "assets/levelGroup/AntLand/room10Floor/room10Floor.vtx.inc.c"
-Mtx_f AntLand_IMtx32 = IDENTITY;
+Mtx AntLand_IMtx32 = IDENTITY;
 unsigned char AntLand_Pad27[] = FILEPAD;
 unsigned char AntLand_hole_ci4_PNG[] = {
 #include "build/assets/levelGroup/AntLand/hole.ci4.png.inc.c"
@@ -2207,42 +2207,42 @@ unsigned char AntLand_metallurgic_ci4_PAL[] = {
 #include "assets/levelGroup/AntLand/room10Floor/room10Floor.gfx.inc.c"
 
 #include "assets/levelGroup/AntLand/room10Platform1/room10Platform1.vtx.inc.c"
-Mtx_f AntLand_IMtx33 = IDENTITY;
+Mtx AntLand_IMtx33 = IDENTITY;
 
 #include "assets/levelGroup/AntLand/room10Platform1/room10Platform1.gfx.inc.c"
 
 #include "assets/levelGroup/AntLand/room10Platform2/room10Platform2.vtx.inc.c"
-Mtx_f AntLand_IMtx34 = IDENTITY;
+Mtx AntLand_IMtx34 = IDENTITY;
 
 #include "assets/levelGroup/AntLand/room10Platform2/room10Platform2.gfx.inc.c"
 
 #include "assets/levelGroup/AntLand/room10Platform3/room10Platform3.vtx.inc.c"
-Mtx_f AntLand_IMtx35 = IDENTITY;
+Mtx AntLand_IMtx35 = IDENTITY;
 
 #include "assets/levelGroup/AntLand/room10Platform3/room10Platform3.gfx.inc.c"
 
 #include "assets/levelGroup/AntLand/room5Platform/room5Platform.vtx.inc.c"
-Mtx_f AntLand_IMtx36 = IDENTITY;
+Mtx AntLand_IMtx36 = IDENTITY;
 
 #include "assets/levelGroup/AntLand/room5Platform/room5Platform.gfx.inc.c"
 
 #include "assets/levelGroup/AntLand/room13Platform/room13Platform.vtx.inc.c"
-Mtx_f AntLand_IMtx37 = IDENTITY;
+Mtx AntLand_IMtx37 = IDENTITY;
 
 #include "assets/levelGroup/AntLand/room13Platform/room13Platform.gfx.inc.c"
 
 #include "assets/levelGroup/AntLand/room21Platform1/room21Platform1.vtx.inc.c"
-Mtx_f AntLand_IMtx38 = IDENTITY;
+Mtx AntLand_IMtx38 = IDENTITY;
 
 #include "assets/levelGroup/AntLand/room21Platform1/room21Platform1.gfx.inc.c"
 
 #include "assets/levelGroup/AntLand/room21Platform2/room21Platform2.vtx.inc.c"
-Mtx_f AntLand_IMtx39 = IDENTITY;
+Mtx AntLand_IMtx39 = IDENTITY;
 
 #include "assets/levelGroup/AntLand/room21Platform2/room21Platform2.gfx.inc.c"
 
 #include "assets/levelGroup/AntLand/room12Floor1/room12Floor1.vtx.inc.c"
-Mtx_f AntLand_IMtx40 = IDENTITY;
+Mtx AntLand_IMtx40 = IDENTITY;
 unsigned char AntLand_Pad31[] = FILEPAD;
 unsigned char AntLand_path_ci4_PNG[] = {
 #include "build/assets/levelGroup/AntLand/path.ci4.png.inc.c"
@@ -2263,57 +2263,57 @@ unsigned char AntLand_stone_ci4_PAL[] = {
 #include "assets/levelGroup/AntLand/room12Floor1/room12Floor1.gfx.inc.c"
 
 #include "assets/levelGroup/AntLand/room12Floor2/room12Floor2.vtx.inc.c"
-Mtx_f AntLand_IMtx41 = IDENTITY;
+Mtx AntLand_IMtx41 = IDENTITY;
 
 #include "assets/levelGroup/AntLand/room12Floor2/room12Floor2.gfx.inc.c"
 
 #include "assets/levelGroup/AntLand/room11Floor1/room11Floor1.vtx.inc.c"
-Mtx_f AntLand_IMtx42 = IDENTITY;
+Mtx AntLand_IMtx42 = IDENTITY;
 
 #include "assets/levelGroup/AntLand/room11Floor1/room11Floor1.gfx.inc.c"
 
 #include "assets/levelGroup/AntLand/room11Floor2/room11Floor2.vtx.inc.c"
-Mtx_f AntLand_IMtx43 = IDENTITY;
+Mtx AntLand_IMtx43 = IDENTITY;
 
 #include "assets/levelGroup/AntLand/room11Floor2/room11Floor2.gfx.inc.c"
 
 #include "assets/levelGroup/AntLand/room4Grate/room4Grate.vtx.inc.c"
-Mtx_f AntLand_IMtx44 = IDENTITY;
+Mtx AntLand_IMtx44 = IDENTITY;
 
 #include "assets/levelGroup/AntLand/room4Grate/room4Grate.gfx.inc.c"
 
 #include "assets/levelGroup/AntLand/room7Floor/room7Floor.vtx.inc.c"
-Mtx_f AntLand_IMtx45 = IDENTITY;
+Mtx AntLand_IMtx45 = IDENTITY;
 
 #include "assets/levelGroup/AntLand/room7Floor/room7Floor.gfx.inc.c"
 
 #include "assets/levelGroup/AntLand/room7Ceiling/room7Ceiling.vtx.inc.c"
-Mtx_f AntLand_IMtx46 = IDENTITY;
+Mtx AntLand_IMtx46 = IDENTITY;
 
 #include "assets/levelGroup/AntLand/room7Ceiling/room7Ceiling.gfx.inc.c"
 
 #include "assets/levelGroup/AntLand/room15Floor/room15Floor.vtx.inc.c"
-Mtx_f AntLand_IMtx47 = IDENTITY;
+Mtx AntLand_IMtx47 = IDENTITY;
 
 #include "assets/levelGroup/AntLand/room15Floor/room15Floor.gfx.inc.c"
 
 #include "assets/levelGroup/AntLand/room15Ceiling/room15Ceiling.vtx.inc.c"
-Mtx_f AntLand_IMtx48 = IDENTITY;
+Mtx AntLand_IMtx48 = IDENTITY;
 
 #include "assets/levelGroup/AntLand/room15Ceiling/room15Ceiling.gfx.inc.c"
 
 #include "assets/levelGroup/AntLand/room8Floor1/room8Floor1.vtx.inc.c"
-Mtx_f AntLand_IMtx49 = IDENTITY;
+Mtx AntLand_IMtx49 = IDENTITY;
 
 #include "assets/levelGroup/AntLand/room8Floor1/room8Floor1.gfx.inc.c"
 
 #include "assets/levelGroup/AntLand/room8Floor2/room8Floor2.vtx.inc.c"
-Mtx_f AntLand_IMtx50 = IDENTITY;
+Mtx AntLand_IMtx50 = IDENTITY;
 
 #include "assets/levelGroup/AntLand/room8Floor2/room8Floor2.gfx.inc.c"
 
 #include "assets/levelGroup/AntLand/room0doorPillar1/room0doorPillar1.vtx.inc.c"
-Mtx_f AntLand_IMtx51 = IDENTITY;
+Mtx AntLand_IMtx51 = IDENTITY;
 unsigned char AntLand_Pad35[] = FILEPAD;
 unsigned char AntLand_wallagain_i4_PNG[] = {
 #include "build/assets/levelGroup/AntLand/wallagain.i4.png.inc.c"
@@ -2322,12 +2322,12 @@ unsigned char AntLand_wallagain_i4_PNG[] = {
 #include "assets/levelGroup/AntLand/room0doorPillar1/room0doorPillar1.gfx.inc.c"
 
 #include "assets/levelGroup/AntLand/room0doorPillar2/room0doorPillar2.vtx.inc.c"
-Mtx_f AntLand_IMtx52 = IDENTITY;
+Mtx AntLand_IMtx52 = IDENTITY;
 
 #include "assets/levelGroup/AntLand/room0doorPillar2/room0doorPillar2.gfx.inc.c"
 
 #include "assets/levelGroup/AntLand/room0doorTop/room0doorTop.vtx.inc.c"
-Mtx_f AntLand_IMtx53 = IDENTITY;
+Mtx AntLand_IMtx53 = IDENTITY;
 unsigned char AntLand_Pad36[] = FILEPAD;
 unsigned char AntLand_wallsss_i4_PNG[] = {
 #include "build/assets/levelGroup/AntLand/wallsss.i4.png.inc.c"
@@ -2340,7 +2340,7 @@ unsigned char AntLand_wallSmall_i4_PNG[] = {
 #include "assets/levelGroup/AntLand/room0doorTop/room0doorTop.gfx.inc.c"
 
 #include "assets/levelGroup/AntLand/room0doorTorchStand1/room0doorTorchStand1.vtx.inc.c"
-Mtx_f AntLand_IMtx54 = IDENTITY;
+Mtx AntLand_IMtx54 = IDENTITY;
 unsigned char AntLand_Pad38[] = FILEPAD;
 unsigned char AntLand_muralllll_i4_PNG[] = {
 #include "build/assets/levelGroup/AntLand/muralllll.i4.png.inc.c"
@@ -2349,7 +2349,7 @@ unsigned char AntLand_muralllll_i4_PNG[] = {
 #include "assets/levelGroup/AntLand/room0doorTorchStand1/room0doorTorchStand1.gfx.inc.c"
 
 #include "assets/levelGroup/AntLand/room0doorTorchStand2/room0doorTorchStand2.vtx.inc.c"
-Mtx_f AntLand_IMtx55 = IDENTITY;
+Mtx AntLand_IMtx55 = IDENTITY;
 unsigned char AntLand_Pad39[] = FILEPAD;
 unsigned char AntLand_muralllll2_i4_PNG[] = {
 #include "build/assets/levelGroup/AntLand/muralllll2.i4.png.inc.c"
@@ -2358,12 +2358,12 @@ unsigned char AntLand_muralllll2_i4_PNG[] = {
 #include "assets/levelGroup/AntLand/room0doorTorchStand2/room0doorTorchStand2.gfx.inc.c"
 
 #include "assets/levelGroup/AntLand/room16Floor1/room16Floor1.vtx.inc.c"
-Mtx_f AntLand_IMtx56 = IDENTITY;
+Mtx AntLand_IMtx56 = IDENTITY;
 
 #include "assets/levelGroup/AntLand/room16Floor1/room16Floor1.gfx.inc.c"
 
 #include "assets/levelGroup/AntLand/room16Floor2/room16Floor2.vtx.inc.c"
-Mtx_f AntLand_IMtx57 = IDENTITY;
+Mtx AntLand_IMtx57 = IDENTITY;
 unsigned char AntLand_Pad40[] = FILEPAD;
 unsigned char AntLand_wallFade32_ci4_PNG[] = {
 #include "build/assets/levelGroup/AntLand/wallFade32.ci4.png.inc.c"
@@ -2376,12 +2376,12 @@ unsigned char AntLand_wallFade32_ci4_PAL[] = {
 #include "assets/levelGroup/AntLand/room16Floor2/room16Floor2.gfx.inc.c"
 
 #include "assets/levelGroup/AntLand/room16Grate/room16Grate.vtx.inc.c"
-Mtx_f AntLand_IMtx58 = IDENTITY;
+Mtx AntLand_IMtx58 = IDENTITY;
 
 #include "assets/levelGroup/AntLand/room16Grate/room16Grate.gfx.inc.c"
 
 #include "assets/levelGroup/AntLand/tiltPlatform/tiltPlatform.vtx.inc.c"
-Mtx_f AntLand_IMtx59 = IDENTITY;
+Mtx AntLand_IMtx59 = IDENTITY;
 unsigned char AntLand_Pad42[] = FILEPAD;
 unsigned char AntLand_the30thMural_i4_PNG[] = {
 #include "build/assets/levelGroup/AntLand/the30thMural.i4.png.inc.c"
@@ -2390,12 +2390,12 @@ unsigned char AntLand_the30thMural_i4_PNG[] = {
 #include "assets/levelGroup/AntLand/tiltPlatform/tiltPlatform.gfx.inc.c"
 
 #include "assets/levelGroup/AntLand/platform/platform.vtx.inc.c"
-Mtx_f AntLand_IMtx60 = IDENTITY;
+Mtx AntLand_IMtx60 = IDENTITY;
 
 #include "assets/levelGroup/AntLand/platform/platform.gfx.inc.c"
 
 #include "assets/levelGroup/AntLand/movingPlatform/movingPlatform.vtx.inc.c"
-Mtx_f AntLand_IMtx61 = IDENTITY;
+Mtx AntLand_IMtx61 = IDENTITY;
 unsigned char AntLand_Pad43[] = FILEPAD;
 unsigned char AntLand_anotherMural_i4_PNG[] = {
 #include "build/assets/levelGroup/AntLand/anotherMural.i4.png.inc.c"
@@ -2404,12 +2404,12 @@ unsigned char AntLand_anotherMural_i4_PNG[] = {
 #include "assets/levelGroup/AntLand/movingPlatform/movingPlatform.gfx.inc.c"
 
 #include "assets/levelGroup/AntLand/quad/quad.vtx.inc.c"
-Mtx_f AntLand_IMtx62 = IDENTITY;
+Mtx AntLand_IMtx62 = IDENTITY;
 
 #include "assets/levelGroup/AntLand/quad/quad.gfx.inc.c"
 
 #include "assets/levelGroup/AntLand/fixedCamPillar/fixedCamPillar.vtx.inc.c"
-Mtx_f AntLand_IMtx63 = IDENTITY;
+Mtx AntLand_IMtx63 = IDENTITY;
 
 #include "assets/levelGroup/AntLand/fixedCamPillar/fixedCamPillar.gfx.inc.c"
 
@@ -2902,12 +2902,12 @@ Mtx_f AntLand_IMtx63 = IDENTITY;
 #include "assets/levelGroup/AntLand/fixedCamPillar/fixedCamPillar.colH.inc.c"
 
 #include "build/assets/levelGroup/AntLand/ALPADD.inc.c"
-Mtx_f AntLand_IMtx64 = IDENTITY;
+Mtx AntLand_IMtx64 = IDENTITY;
 
 #include "assets/levelGroup/AntLand/alScope2.light.inc.c"
 
 #include "assets/levelGroup/AntLand/yellowAnt_vtx.vtx.inc.c"
-Mtx_f AntLand_IMtx65 = IDENTITY;
+Mtx AntLand_IMtx65 = IDENTITY;
 unsigned char AntLand_Pad44[] = FILEPAD;
 unsigned char AntLand_yellowAnt_yellowAntEye_ci8_PNG[] = {
 #include "build/assets/levelGroup/AntLand/yellowAnt_yellowAntEye.ci8.png.inc.c"
@@ -2928,65 +2928,65 @@ unsigned char AntLand_yellowAnt_yellowEyeColor_ci4_PAL[] = {
 #include "assets/levelGroup/AntLand/yellowAnt_gfx.gfx.inc.c"
 
 #include "assets/levelGroup/AntLand/yellowAnt_vtx2.vtx.inc.c"
-Mtx_f AntLand_IMtx66 = IDENTITY;
+Mtx AntLand_IMtx66 = IDENTITY;
 
 #include "assets/levelGroup/AntLand/yellowAnt_gfx2.gfx.inc.c"
 
 #include "assets/levelGroup/AntLand/yellowAnt_vtx3.vtx.inc.c"
-Mtx_f AntLand_IMtx67 = IDENTITY;
+Mtx AntLand_IMtx67 = IDENTITY;
 
 #include "assets/levelGroup/AntLand/yellowAnt_gfx3.gfx.inc.c"
 
 #include "assets/levelGroup/AntLand/yellowAnt_vtx4.vtx.inc.c"
-Mtx_f AntLand_IMtx68 = IDENTITY;
+Mtx AntLand_IMtx68 = IDENTITY;
 
 #include "assets/levelGroup/AntLand/yellowAnt_gfx4.gfx.inc.c"
 
 #include "assets/levelGroup/AntLand/yellowAnt_vtx5.vtx.inc.c"
-Mtx_f AntLand_IMtx69 = IDENTITY;
+Mtx AntLand_IMtx69 = IDENTITY;
 
 #include "assets/levelGroup/AntLand/yellowAnt_gfx5.gfx.inc.c"
 
 #include "assets/levelGroup/AntLand/yellowAnt_vtx6.vtx.inc.c"
-Mtx_f AntLand_IMtx70 = IDENTITY;
+Mtx AntLand_IMtx70 = IDENTITY;
 
 #include "assets/levelGroup/AntLand/yellowAnt_gfx6.gfx.inc.c"
 
 #include "assets/levelGroup/AntLand/yellowAnt_vtx7.vtx.inc.c"
-Mtx_f AntLand_IMtx71 = IDENTITY;
+Mtx AntLand_IMtx71 = IDENTITY;
 
 #include "assets/levelGroup/AntLand/yellowAnt_gfx7.gfx.inc.c"
 
 #include "assets/levelGroup/AntLand/yellowAnt_vtx8.vtx.inc.c"
-Mtx_f AntLand_IMtx72 = IDENTITY;
+Mtx AntLand_IMtx72 = IDENTITY;
 
 #include "assets/levelGroup/AntLand/yellowAnt_gfx8.gfx.inc.c"
 
 #include "assets/levelGroup/AntLand/yellowAnt_vtx9.vtx.inc.c"
-Mtx_f AntLand_IMtx73 = IDENTITY;
+Mtx AntLand_IMtx73 = IDENTITY;
 
 #include "assets/levelGroup/AntLand/yellowAnt_gfx9.gfx.inc.c"
 
 #include "assets/levelGroup/AntLand/yellowAnt_vtx10.vtx.inc.c"
-Mtx_f AntLand_IMtx74 = IDENTITY;
+Mtx AntLand_IMtx74 = IDENTITY;
 
 #include "assets/levelGroup/AntLand/yellowAnt_gfx10.gfx.inc.c"
 
 #include "assets/levelGroup/AntLand/yellowAnt_vtx11.vtx.inc.c"
-Mtx_f AntLand_IMtx75 = IDENTITY;
+Mtx AntLand_IMtx75 = IDENTITY;
 
 #include "assets/levelGroup/AntLand/yellowAnt_gfx11.gfx.inc.c"
 
 #include "assets/levelGroup/AntLand/yellowAnt_vtx12.vtx.inc.c"
-Mtx_f AntLand_IMtx76 = IDENTITY;
+Mtx AntLand_IMtx76 = IDENTITY;
 
 #include "assets/levelGroup/AntLand/yellowAnt_gfx12.gfx.inc.c"
 
 #include "assets/levelGroup/AntLand/yellowAnt_vtx13.vtx.inc.c"
-Mtx_f AntLand_IMtx77 = IDENTITY;
+Mtx AntLand_IMtx77 = IDENTITY;
 
 #include "assets/levelGroup/AntLand/yellowAnt_gfx13.gfx.inc.c"
-Mtx_f AntLand_IMtx78 = IDENTITY;
+Mtx AntLand_IMtx78 = IDENTITY;
 
 #include "assets/levelGroup/AntLand/yellowAnt_gfx14.gfx.inc.c"
 

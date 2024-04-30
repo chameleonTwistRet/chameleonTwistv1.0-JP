@@ -48,10 +48,7 @@
 
 //asset file related macros so we dont have to split useless files
 //identity matrix
-//see the end of common_structs.h for Mtx_f
-//building matricies is really weird
-#define IDENTITY_M {{1,0,0,0},{0,1,0,0},{0,0,1,0},{0,0,0,1}}
-#define IDENTITY {{1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1},{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}}
+#define IDENTITY {0x00010000, 0, 1, 0, 0, 0x00010000, 0, 1,    0, 0, 0, 0, 0, 0, 0, 0}
 //basic file padding
 #define FILEPAD {0xB8,0,0,0,0,0,0,0}
 

@@ -1165,7 +1165,19 @@ s32 D_800F68C0 = -1;
 s32 D_800F68C4[2] = {-1, 0};
 s32 D_800F68CC = 0;
 
+#define MTX_IDENTITY {0x00010000, 0, 1, 0, 0, 0x00010000, 0, 1,    0, 0, 0, 0, 0, 0, 0, 0}
+Mtx D_800F68D0[5] = {
+    {0, 0, 0, 0,
+    0, 0, 0, 0,
 
+    0, 0, 0, 0,
+    0, 0, 0, 0
+    },
+    MTX_IDENTITY,
+    MTX_IDENTITY,
+    MTX_IDENTITY,
+    MTX_IDENTITY
+};
 
 /*chameleonEyeListEntry chameleonEyeList[6] = {
 {&Davy_eyeR_ci8_PNG, &Davy_eyeL_ci8_PNG, &Davy_eyeR_ci8_PAL, &Davy_eyeL_ci8_PAL},
@@ -2578,7 +2590,7 @@ Gfx* func_8005CA44(Gfx* gfxPos) {
 
     func_800610B8();
     gSPDisplayList(gfxPos++, D_10012A0);
-    gSPMatrix(gfxPos++, &D_800F69D0, G_MTX_PUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    gSPMatrix(gfxPos++, &D_800F68D0[4], G_MTX_PUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
 
     tile = D_80176F98[gSpriteFrameBuffer];
     for (i = 0; i < D_800FDFA8[gSpriteFrameBuffer]; tile++, i++) {
@@ -2713,7 +2725,7 @@ Gfx* func_8005CA44(Gfx* gfxPos) {
         gSPDisplayList(gfxPos++, D_303D418);
     }
     gSPDisplayList(gfxPos++, D_10012A0);
-    gSPMatrix(gfxPos++, &D_800F69D0, G_MTX_PUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    gSPMatrix(gfxPos++, &D_800F68D0[4], G_MTX_PUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
 
     tile = D_8018E698[gSpriteFrameBuffer];
     for (i = 0; i < D_800FDFB8[gSpriteFrameBuffer]; tile++, i++) {
@@ -2795,7 +2807,7 @@ Gfx* func_8005F408(Gfx* gfxPos) {
 
     func_800610B8();
     gSPDisplayList(gfxPos++, D_10012A0);
-    gSPMatrix(gfxPos++, &D_800F69D0, G_MTX_PUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    gSPMatrix(gfxPos++, &D_800F68D0[4], G_MTX_PUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     gSPDisplayList(gfxPos++, D_800FE080);
     gDPSetRenderMode(gfxPos++, G_RM_OPA_SURF, G_RM_OPA_SURF2);
     gDPSetCombineLERP(gfxPos++, PRIMITIVE, 0, TEXEL0, 0, PRIMITIVE, 0, TEXEL0, 0, PRIMITIVE, 0, TEXEL0, 0, PRIMITIVE, 0, TEXEL0, 0);

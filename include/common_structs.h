@@ -1210,9 +1210,6 @@ typedef struct SpriteListing {
     /* 0x74 */ char unk_74[4];
 } SpriteListing; //sizeof 0x78
 
-/*'fixed' matrix for building
-if you can get the base Mtx to work with the splat_ext Mtx be my guest, its all set up
-building just REALLY does not like gbi Mtx*/
 typedef short Mtx_f[2][16];
 
 #endif

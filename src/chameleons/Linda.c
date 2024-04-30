@@ -18,7 +18,7 @@ extern Mtx D_80129A30_Linda; //Lfist
 #include "assets/chameleons/Linda/light.light.inc.c"
 
 #include "assets/chameleons/Linda/body/body.vtx.inc.c"
-Mtx_f Linda_IMtx1 = IDENTITY;
+Mtx Linda_IMtx1 = IDENTITY;
 unsigned char Linda_Pad1[] = FILEPAD;
 unsigned char Linda_backpackStrap_ci4_PNG[] = {
 #include "build/assets/chameleons/Linda/body/backpackStrap.ci4.png.inc.c"
@@ -51,7 +51,7 @@ unsigned char Linda_number_ci4_PAL[] = {
 #include "assets/chameleons/Linda/bodyAssociate/bodyAssociate.gfx.inc.c"
 
 #include "assets/chameleons/Linda/head/head.vtx.inc.c"
-Mtx_f Linda_IMtx2 = IDENTITY;
+Mtx Linda_IMtx2 = IDENTITY;
 unsigned char Linda_Pad7[] = FILEPAD;
 unsigned char Linda_eyeL_ci8_PNG[] = {
 #include "build/assets/chameleons/Linda/head/eyeL.ci8.png.inc.c"
@@ -88,7 +88,7 @@ unsigned char Linda_cheek_ci4_PAL[] = {
 #include "assets/chameleons/Linda/head/head.gfx.inc.c"
 
 #include "assets/chameleons/Linda/backpack/backpack.vtx.inc.c"
-Mtx_f Linda_IMtx3 = IDENTITY;
+Mtx Linda_IMtx3 = IDENTITY;
 unsigned char Linda_Pad15[] = FILEPAD;
 unsigned char Linda_backpack_ci8_PNG[] = {
 #include "build/assets/chameleons/Linda/backpack/backpack.ci8.png.inc.c"
@@ -101,7 +101,7 @@ unsigned char Linda_backpack_ci8_PAL[] = {
 #include "assets/chameleons/Linda/backpack/backpack.gfx.inc.c"
 
 #include "assets/chameleons/Linda/shoe/shoe.vtx.inc.c"
-Mtx_f Linda_IMtx4 = IDENTITY;
+Mtx Linda_IMtx4 = IDENTITY;
 unsigned char Linda_Pad17[] = FILEPAD;
 unsigned char Linda_shoe_ci4_PNG[] = {
 #include "build/assets/chameleons/Linda/shoe/shoe.ci4.png.inc.c"
@@ -114,12 +114,12 @@ unsigned char Linda_shoe_ci4_PAL[] = {
 #include "assets/chameleons/Linda/shoe/shoe.gfx.inc.c"
 
 #include "assets/chameleons/Linda/Lshoe/Lshoe.vtx.inc.c"
-Mtx_f Linda_IMtx5 = IDENTITY;
+Mtx Linda_IMtx5 = IDENTITY;
 
 #include "assets/chameleons/Linda/Lshoe/Lshoe.gfx.inc.c"
 
 #include "assets/chameleons/Linda/cuff/cuff.vtx.inc.c"
-Mtx_f Linda_IMtx6 = IDENTITY;
+Mtx Linda_IMtx6 = IDENTITY;
 unsigned char Linda_Pad19[] = FILEPAD;
 unsigned char Linda_color_ci4_PNG[] = {
 #include "build/assets/chameleons/Linda/cuff/color.ci4.png.inc.c"
@@ -132,12 +132,12 @@ unsigned char Linda_color_ci4_PAL[] = {
 #include "assets/chameleons/Linda/cuff/cuff.gfx.inc.c"
 
 #include "assets/chameleons/Linda/Lcuff/Lcuff.vtx.inc.c"
-Mtx_f Linda_IMtx7 = IDENTITY;
+Mtx Linda_IMtx7 = IDENTITY;
 
 #include "assets/chameleons/Linda/Lcuff/Lcuff.gfx.inc.c"
 
 #include "assets/chameleons/Linda/wrist/wrist.vtx.inc.c"
-Mtx_f Linda_IMtx8 = IDENTITY;
+Mtx Linda_IMtx8 = IDENTITY;
 unsigned char Linda_Pad21[] = FILEPAD;
 unsigned char Linda_wristColor_ci4_PNG[] = {
 #include "build/assets/chameleons/Linda/wrist/wristColor.ci4.png.inc.c"
@@ -158,22 +158,22 @@ unsigned char Linda_wrist_ci4_PAL[] = {
 #include "assets/chameleons/Linda/wrist/wrist.gfx.inc.c"
 
 #include "assets/chameleons/Linda/Lwrist/Lwrist.vtx.inc.c"
-Mtx_f Linda_IMtx9 = IDENTITY;
+Mtx Linda_IMtx9 = IDENTITY;
 
 #include "assets/chameleons/Linda/Lwrist/Lwrist.gfx.inc.c"
 
 #include "assets/chameleons/Linda/shoulder/shoulder.vtx.inc.c"
-Mtx_f Linda_IMtx10 = IDENTITY;
+Mtx Linda_IMtx10 = IDENTITY;
 
 #include "assets/chameleons/Linda/shoulder/shoulder.gfx.inc.c"
 
 #include "assets/chameleons/Linda/Lshoulder/Lshoulder.vtx.inc.c"
-Mtx_f Linda_IMtx11 = IDENTITY;
+Mtx Linda_IMtx11 = IDENTITY;
 
 #include "assets/chameleons/Linda/Lshoulder/Lshoulder.gfx.inc.c"
 
 #include "assets/chameleons/Linda/fist/fist.vtx.inc.c"
-Mtx_f Linda_IMtx12 = IDENTITY;
+Mtx Linda_IMtx12 = IDENTITY;
 unsigned char Linda_Pad25[] = FILEPAD;
 unsigned char Linda_fist1_ci4_PNG[] = {
 #include "build/assets/chameleons/Linda/fist/fist1.ci4.png.inc.c"
@@ -218,7 +218,7 @@ unsigned char Linda_fist4_ci4_PAL[] = {
 #include "assets/chameleons/Linda/fist/fist.gfx.inc.c"
 
 #include "assets/chameleons/Linda/Lfist/Lfist.vtx.inc.c"
-Mtx_f Linda_IMtx13 = IDENTITY;
+Mtx Linda_IMtx13 = IDENTITY;
 
 #include "assets/chameleons/Linda/Lfist/Lfist.gfx.inc.c"
 
