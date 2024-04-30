@@ -224,7 +224,7 @@ segments:
       - [0xC9690, data, code/1050] #800EE290 through 800F0B50
       - [0xCBF50, .data, code/battle] #800F0B50 through 800F0D90
       - [0xCC190, .data, code/sprite] #800F0D90 through 800FEDC0
-      - [0xD1E10, data, code/sprite] #800F0D90 through 800FEDC0
+      - [0xD1E50, data, code/sprite] #800F0D90 through 800FEDC0
       #- [0xCC190, data, code/sprite] #800F0D90 through 800FEDC0
       - [0xDA1C0, data, code/5FF30] #800FEDC0 through 80108B70
       - [0xE3F70, data, code/math] #80108B70 through 80109010

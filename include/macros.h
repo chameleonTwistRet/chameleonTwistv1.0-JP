@@ -49,6 +49,7 @@
 //asset file related macros so we dont have to split useless files
 //identity matrix
 #define IDENTITY {0x00010000, 0, 1, 0, 0, 0x00010000, 0, 1,    0, 0, 0, 0, 0, 0, 0, 0}
+#define ZERO_MTX {0, 0, 0, 0, 0, 0, 0, 0,    0, 0, 0, 0, 0, 0, 0, 0}
 //basic file padding
 #define FILEPAD {0xB8,0,0,0,0,0,0,0}
 
