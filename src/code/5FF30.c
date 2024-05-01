@@ -1,5 +1,6 @@
 #include "5FF30.h"
 #include "sprite.h"
+#include "ld_addrs.h"
 
 /*const u8 D_800FEDC0[226][8] = {
 {104, 136, 1, 4, 1, 5, 25, 0},
@@ -776,17 +777,24 @@ void func_80088B7C(u8* arg0, u8* arg1, u8* arg2, u8* arg3, u8* arg4, u8* arg5) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800893C0.s")
 
+//story
 const char D_8010D840[] = "ＣＡＮＣＥＬ";
 const char D_8010D850[] = "ＳＡＶＥ";
 const char D_8010D85C[] = "ＳＴＡＧＥ  ＱＵＩＴ";
 const char D_8010D874[] = "ＥＸＩＴ";
+
+//training (during round)
 const char D_8010D880[] = "ＣＡＮＣＥＬ";
 const char D_8010D890[] = "ＲＥＳＴＡＲＴ";
 const char D_8010D8A0[] = "ＥＸＩＴ";
+
+//training (normal)
 const char D_8010D8AC[] = "ＣＡＮＣＥＬ";
 const char D_8010D8BC[] = "ＥＸＩＴ";
+
 const char D_8010D8C8[] = "ＹＥＳ";
 const char D_8010D8D0[] = "ＮＯ";
+
 const char D_8010D8D8[] = "ＹＥＳ";
 const char D_8010D8E0[] = "ＮＯ";
 
@@ -815,7 +823,7 @@ void PlayJungleExtSfxWrapper(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008A2EC.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008AD30.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/ManagePauseMenu.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008B458.s")
 
@@ -831,7 +839,7 @@ s32 LoadBGM(void) {
     BGMVolume* temp_t2;
     s32 anotherTemp;
 
-    if ((gGameModeCurrent == GAME_MODE_DEMO) || (gGameModeCurrent == GAME_MODE_DEMO_2)) {
+    if ((gGameModeCurrent == GAME_MODE_DEMO) || (gGameModeCurrent == GAME_MODE_CREDITS_DEMO)) {
         return 0;
     }
 
@@ -849,7 +857,7 @@ s32 LoadBGM(void) {
 
     if ((gIsPaused == 0) && (D_800FF604 != 0)) {
         if ((alCSPGetState(gBGMPlayerP) != AL_PLAYING) || (D_800FF608 != 0)) {
-            if ((gGameModeCurrent != GAME_MODE_DEMO) && (gGameModeCurrent != GAME_MODE_DEMO_2)) {
+            if ((gGameModeCurrent != GAME_MODE_DEMO) && (gGameModeCurrent != GAME_MODE_CREDITS_DEMO)) {
                 alCSPPlay(gBGMPlayerP);
             }
             alSeqpSetVol((ALSeqPlayer*)gBGMPlayerP, D_801FCA22);
@@ -960,7 +968,7 @@ s32 StopBGM(void) {
 
 s32 func_8008BF20(void) {
     volBGM = volumesBGM[currBGMIndex];
-    if ((gBGMPlayerP->state != AL_PLAYING) && (gGameModeCurrent != GAME_MODE_DEMO) && (gGameModeCurrent != GAME_MODE_DEMO_2)) {
+    if ((gBGMPlayerP->state != AL_PLAYING) && (gGameModeCurrent != GAME_MODE_DEMO) && (gGameModeCurrent != GAME_MODE_CREDITS_DEMO)) {
         alCSPPlay(gBGMPlayerP);
     }
     return 0;
@@ -1014,7 +1022,7 @@ void func_8008C1C8(s32* arg0) {
         }
     }
 
-    func_8008AD30();
+    ManagePauseMenu();
     func_8008C094();
     func_8008A2EC();
     PlayJungleExtSfxWrapper();
@@ -1375,7 +1383,7 @@ s32 func_8008D5DC(ContMain* controller) {
 
 s32 func_8008D7B0(CTTask* task) {
     s32 funcResult = func_8008D7FC(task);
-    task->unk50 = D_800F0638[gSelectedCharacters[D_800FF8E8]];
+    task->unk50 = ChameleonGfxs[gSelectedCharacters[D_800FF8E8]];
     return funcResult;
 }
 
@@ -1614,7 +1622,7 @@ CTTask* func_8008E9AC(s16 arg0, s16 arg1, s16 arg2, s16 arg3, s16* arg4) {
 CTTask* func_8008EA60(s16 arg0, s16 arg1, s16 arg2, s16 arg3, s16* arg4) {
     CTTask* task = CTTask_Alloc(1, 240, 0);
     if (task == NULL) {
-        DummiedPrintf("エラー\n");
+        DummiedPrintf("エラー\n"); // error
         while(1){}
     }
     task->unk_5C = -arg0;
@@ -1631,55 +1639,48 @@ CTTask* func_8008EA60(s16 arg0, s16 arg1, s16 arg2, s16 arg3, s16* arg4) {
 }
 
 CTTask* func_8008EB08(s16 arg0, s16 arg1, s16 arg2, s16 arg3, s16* arg4, f32 arg5, f32 arg6, f32 arg7, f32 arg8, s16 arg9) {
-    CTTask* temp_v0;
-
-    temp_v0 = CTTask_Alloc(1, arg9, NULL);
-    if (temp_v0 == NULL) {
+    CTTask* newTask = CTTask_Alloc(1, arg9, NULL);
+    if (newTask == NULL) {
         DummiedPrintf("エラー\n");
-        while (1) {}
+        while(1){}
     }
     *arg4 = 0;
-    temp_v0->unk_5C = -arg0;
-    temp_v0->unk_64 = 0x117;
-    temp_v0->unk5E = arg1;
-    temp_v0->unk60 = arg2;
-    temp_v0->unk_62 = arg3;
-    temp_v0->unk7C = arg7;
-    temp_v0->unk80 = arg8;
-    temp_v0->pos.x = arg5;
-    temp_v0->pos.y = arg6;
-    temp_v0->pos.z = 0.0f;
-    temp_v0->function = func_8008E698;
-    temp_v0->unk58 = (CTTask*)arg4; //TODO: probably fix this
-    return temp_v0;
+    newTask->unk_5C = -arg0;
+    newTask->unk_64 = 279;
+    newTask->unk5E = arg1;
+    newTask->unk60 = arg2;
+    newTask->unk_62 = arg3;
+    newTask->unk7C = arg7;
+    newTask->unk80 = arg8;
+    newTask->pos.x = arg5;
+    newTask->pos.y = arg6;
+    newTask->pos.z = 0;
+    newTask->function = func_8008E698;
+    newTask->unk58 = arg4;
+    return newTask;
 }
 
-CTTask* func_8008EBCC(s16 arg0, s16 arg1, s16 arg2, s16 arg3, s16* arg4, f32 arg5, f32 arg6, f32 arg7, f32 arg8, s16 arg9) {
-    CTTask* temp_v0;
-
-    temp_v0 = CTTask_Alloc(1, arg9, NULL);
-    if (temp_v0 == NULL) {
+CTTask* func_8008EBCC(s16 arg0, s16 arg1, s16 arg2, s16 arg3, CTTask* arg4, f32 arg5, f32 arg6, f32 arg7, f32 arg8, s16 arg9) {
+    CTTask* newTask = CTTask_Alloc(1, arg9, NULL);
+    if (newTask == NULL) {
         DummiedPrintf("エラー\n");
-        while (1) {
-            
-        }
+        while(1){}
     }
-
-    *arg4 = 0;
-    temp_v0->unk_5C = arg0;
-    temp_v0->unk_64 = -0x17;
-    temp_v0->unk5E = arg1;
-    temp_v0->unk60 = arg2;
-    temp_v0->unk_62 = arg3;
-    temp_v0->unk7C = arg7;
-    temp_v0->unk80 = arg8;
-    temp_v0->pos.x = arg5;
-    temp_v0->pos.y = arg6;
-    temp_v0->pos.z = 0.0f;
-    temp_v0->function = func_8008E698;
-    temp_v0->unk58 = (CTTask*)arg4; //TODO: probably fix this
-    *arg4 = 0;
-    return temp_v0;
+    arg4->runType = 0;
+    newTask->unk_5C = arg0;
+    newTask->unk_64 = -23;
+    newTask->unk5E = arg1;
+    newTask->unk60 = arg2;
+    newTask->unk_62 = arg3;
+    newTask->unk7C = arg7;
+    newTask->unk80 = arg8;
+    newTask->pos.x = arg5;
+    newTask->pos.y = arg6;
+    newTask->pos.z = 0;
+    newTask->function = func_8008E698;
+    newTask->unk58 = arg4;
+    arg4->runType = 0;
+    return newTask;
 }
 
 s32 func_8008EC90(void) {
@@ -1819,14 +1820,14 @@ void func_8008F16C(void) {
     Timing_StartProcess();
 }
 
-s32 func_8008F694(s32 arg0) {
+s32 DrawBackground(s32 arg0) {
     s32 var_a1;
     UnkBg* var_s0;
 
     var_s0 = D_800FFE58[arg0];
-    for (; var_s0->unk4 != -1; var_s0++) {
-            if (LoadSprite(var_s0->unk4) != 0) {
-                DummiedPrintf("ＢＧロードエラー %d\n", var_s0->unk4);
+    for (; var_s0->spriteID != -1; var_s0++) {
+            if (LoadSprite(var_s0->spriteID) != 0) {
+                DummiedPrintf("ＢＧロードエラー %d\n", var_s0->spriteID);
             }        
     }
     return 0;
@@ -1836,10 +1837,10 @@ void func_8008F710(CTTask* task) {
     UnkBg* var_s0;
     
     var_s0 = D_800FFE58[task->unk_04];
-    for (; var_s0->unk4 != -1; var_s0++) {
+    for (; var_s0->spriteID != -1; var_s0++) {
         s32 temp0 = var_s0->unk0;
         s32 temp1 = var_s0->unk2;
-        func_8005C454(temp0, temp1, 0.0f, var_s0->unk4);    
+        func_8005C454(temp0, temp1, 0.0f, var_s0->spriteID);    
     }
 }
 
@@ -2082,13 +2083,13 @@ void MainLoop(void) {
             func_800AE4AC();
             continue;
         case 6:
-            func_800A2BDC();
+            Process_TitleMenu();
             continue;
         case 7:
             Process_BattleMenu();
             continue;
         case 8:
-            func_800A4320();
+            Process_OptionsMenu();
             continue;
         case 9:
             Process_GameOver();
@@ -2100,7 +2101,7 @@ void MainLoop(void) {
             Process_PreCredits();
             continue;
         case 12:
-            func_800A1D38();
+            Process_NewGameMenu();
             continue;
         case 13:
             func_800A6DD8();
@@ -2153,7 +2154,7 @@ s32 func_80090B10(s32 time, s32 stageID) {
 }
 
 void func_80090BC0(void) {
-    LoadSprite(0x6E);
+    LoadSprite(SPRITE_SPECIFIC_SYMBOLS);
     switch (gCurrentStage) {
     case 13:
         LoadSprite(113);
@@ -3312,7 +3313,7 @@ f32 func_80096898(u16 arg0) {
 void func_80096964(CTTask* task) {
     task->unk44 = 3;
     task->unk4E = 1;
-    task->function = func_80096A20;
+    task->function = Stage_Select_ChameleonWalk;
     task->scale.x = 0.6f;
     task->scale.y = 0.6f;
     task->scale.z = 0.6f;
@@ -3328,12 +3329,14 @@ void func_80096964(CTTask* task) {
     task->unk3C = 1.0f;
     task->rotA = 50.0f;
     func_8008D7FC(task);
-    task->unk50 = D_800F0638[gSelectedCharacters[D_800FF8E8]];
+    task->unk50 = ChameleonGfxs[gSelectedCharacters[D_800FF8E8]];
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80096A20.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/Stage_Select_ChameleonWalk.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80096CA0.s")
+
+
 
 const char D_8010DEA8[] = "ＪＵＮＧＬＥ　ＬＡＮＤ";
 const char D_8010DEC0[] = "　ＡＮＴ　ＬＡＮＤ";
@@ -3534,7 +3537,6 @@ void func_80098684(u8* arg0, u8* arg1, u8* arg2, u8* arg3, u8* arg4, u8* arg5) {
         *arg5 = (9 * temp_f0) + 1;
     }
 }
-
 
 //ty rain
 void func_80098F50(CTTask* task) {
@@ -4137,7 +4139,7 @@ void func_8009CFA8(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009D08C.s")
 
-//battle mode???
+//battle mode
 const char D_8010E60C[] = "ＤＡＶＹ";
 const char D_8010E618[] = "ＪＡＣＫ";
 const char D_8010E624[] = "ＦＲＥＤ";
@@ -4157,6 +4159,7 @@ void func_8009D19C(CTTask* task) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009D45C.s")
 
+//battle mode
 void func_8009D954(CTTask* task) {
     func_800610B8();
     SetTextGradient_TopBottom(70, 192, 235, 255, 0, 143, 36, 255);
@@ -4636,7 +4639,7 @@ void func_800A1CCC(CTTask* arg0) {
     }
 }
 
-void func_800A1D38(void) {
+void Process_NewGameMenu(void) {
     switch (gGameModeState) {
     case 0:
         D_800FFDF0 = 3;
@@ -4647,10 +4650,10 @@ void func_800A1D38(void) {
         DMAStruct_Print();
         func_8008F16C();
         func_800A0D90();
-        LoadSprite(77);
-        LoadSprite(78);
-        LoadSprite(110);
-        LoadSprite(103);
+        LoadSprite(SPRITE_BATTLE_BIGBOARD);
+        LoadSprite(SPRITE_BATTLE_STAGETITLEBOARD);
+        LoadSprite(SPRITE_SPECIFIC_SYMBOLS);
+        LoadSprite(SPRITE_BATTLE_OPTIONSARROWS);
         CTTaskList_Init();
         D_80168DA0 = 1;
         gGameModeState++;
@@ -4665,7 +4668,7 @@ void func_800A1D38(void) {
         func_8008F16C();
         break;
     case 1:
-        PlayBGM(23);
+        PlayBGM(BGM_TRAINING);
         func_800A18C8();
         gGameModeState++;
         func_8008F16C();
@@ -4698,10 +4701,10 @@ void PrintPerfectCode(CTTask* task) {
 
 CTTask* func_800A20CC(void) {
     CTTask* task;
-    DummiedPrintf("マスタ作成\n");
+    DummiedPrintf("マスタ作成\n"); // Master creation
     task = CTTask_Alloc(1, 100, 0);
     if (!task) {
-        DummiedPrintf("エラー\n");
+        DummiedPrintf("エラー\n"); // error
         while(1){}
     }
     task->function = func_800A2164;
@@ -4724,6 +4727,7 @@ const char D_8010E9B8[] = "６７";
 const char D_8010E9C0[] = "８９";
 const char D_8010E9C8[] = "ＡＢ";
 
+//title screen
 void func_800A250C(CTTask* task) {
     if (task->unk6A > 0) {
         SetTextGradient_TopBottom(110, 210, 255, 255, 0, 222, 0, 255);
@@ -4765,7 +4769,7 @@ void func_800A2B9C(CTTask* task) {
     }
 }
 
-void func_800A2BDC(void) {
+void Process_TitleMenu(void) {
     switch (gGameModeState) {
     case 0:
         func_80061394();
@@ -4778,7 +4782,7 @@ void func_800A2BDC(void) {
         DummiedPrintf("タイトルプロセス\n");
         DMAStruct_Print();
         func_800A1EC4();
-        LoadSprite(229);
+        LoadSprite(SPRITE_MENUOPTIONS);
         CTTaskList_Init();
         func_8008F16C();
         D_80168DA0 = 4;
@@ -4786,15 +4790,15 @@ void func_800A2BDC(void) {
         UseFixedRNGSeed = 0;
         func_8008BE14();
         func_80088198();
-        func_8008F694(2);
+        DrawBackground(BG_TITLESCREEN);
         func_8008F16C();
         break;
     case 1:
-        LoadSprite(77);
-        LoadSprite(78);
-        LoadSprite(79);
-        LoadSprite(80);
-        PlayBGM(25);
+        LoadSprite(SPRITE_BATTLE_BIGBOARD); // the bg for menu options
+        LoadSprite(SPRITE_BATTLE_STAGETITLEBOARD); // ?
+        LoadSprite(SPRITE_CHAMELEON); // CHAMELEON
+        LoadSprite(SPRITE_TWIST); // TWIST
+        PlayBGM(BGM_TITLE);
         func_800A20CC();
         gGameModeState++;
         func_8008F114();
@@ -4909,7 +4913,7 @@ void func_800A41C0(CTTask* task) {
     }
 }
 
-void func_800A4320(void) {
+void Process_OptionsMenu(void) {
     switch (gGameModeState) {
     case 0:
         D_800FFDF4 = 1;
@@ -4917,10 +4921,10 @@ void func_800A4320(void) {
         DMAStruct_Print();
         func_800A1EC4();
         UseFixedRNGSeed = 0;
-        LoadSprite(110);
-        LoadSprite(77);
-        LoadSprite(78);
-        LoadSprite(103);
+        LoadSprite(SPRITE_SPECIFIC_SYMBOLS);
+        LoadSprite(SPRITE_BATTLE_BIGBOARD);
+        LoadSprite(SPRITE_BATTLE_STAGETITLEBOARD);
+        LoadSprite(SPRITE_BATTLE_OPTIONSARROWS);
         LoadSprite(195);
         LoadSprite(14);
         CTTaskList_Init();
@@ -5067,7 +5071,7 @@ CTTask* func_800A4BCC(CTTask* task) {
 
 void func_800A4D0C(CTTask* arg0) {
     func_8008D7FC(arg0);
-    arg0->unk50 = D_800F0638[gSelectedCharacters[D_800FF8E8]];
+    arg0->unk50 = ChameleonGfxs[gSelectedCharacters[D_800FF8E8]];
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A4D58.s")
@@ -5083,7 +5087,7 @@ void Process_GameOver(void) {
             DMAStruct_Print();
             func_800A0D90();
             CTTaskList_Init();
-            LoadSprite(0x5E);
+            LoadSprite(SPRITE_TEXTBIGGER);
             D_80168DA0 = 4;
             gGameModeState++;
             UseFixedRNGSeed = 0;
@@ -5176,8 +5180,8 @@ void Process_JSSLogo(void) {
         DummiedPrintf("ロゴプロセス\n"); //Logo process
         DMAStruct_Print();
         func_800A1EC4();
-        LoadSprite(0x5C);
-        LoadSprite(0x5D);
+        LoadSprite(SPRITE_JSSLOGO_BG);
+        LoadSprite(SPRITE_JSSLOGO_CAT);
         CTTaskList_Init();
         D_80168DA0 = 4;
         UseFixedRNGSeed = 0;
@@ -5214,8 +5218,8 @@ void func_800A56D4(void) {
     Effect_Init();
     func_80084788();
     LoadSprite(D_80100EB4[D_801B317C]);
-    LoadSprite(0x4D);
-    LoadSprite(0x4E);
+    LoadSprite(SPRITE_BATTLE_BIGBOARD);
+    LoadSprite(SPRITE_BATTLE_STAGETITLEBOARD);
 }
 
 s32 func_800A5778(s32 arg0) {
@@ -5865,9 +5869,9 @@ void func_800A9728(CTTask* arg0) {
         gCurrentDemoTimer = D_801FCA08;
     }
     
-    if ((D_80100D64[D_801FCA18] + 0xA) >= gCurrentDemoTimer) {
+    if ((D_80100D64[gCurrentDemo] + 0xA) >= gCurrentDemoTimer) {
         arg0->unk_64 = 0;
-        if (gGameModeCurrent != GAME_MODE_DEMO_2) {
+        if (gGameModeCurrent != GAME_MODE_CREDITS_DEMO) {
             func_8008E9AC(0x20, 0, 0, 0, &arg0->unk_64);
         }
         arg0->function = &func_800A97E4;
@@ -5886,9 +5890,9 @@ void func_800A97E4(CTTask* arg0) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A988C.s")
-
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/InitDemo.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/InitGCDemo.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A9F84.s")
 
@@ -5969,6 +5973,8 @@ void func_800AAAC8(void) {
     gPlayerActors->pos.z = 600.0f;
 }
 
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800AAB0C.s")
+/*
 void func_800AAB0C(s32 arg0) {
     s32 dmaResult;
     s32 dmaSize;
@@ -6026,6 +6032,7 @@ void func_800AAB0C(s32 arg0) {
     func_800AAAC8();
     gPlayerActors->yAngle = 0.0f;
 }
+*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800AACFC.s")
 

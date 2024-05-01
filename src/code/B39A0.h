@@ -11,7 +11,6 @@ void func_800D887C(Collider* arg0, s32 arg1, s32 arg2);
 
 
 /* Ext Variables */
-extern PlayerActor gPlayerActors[4];
 extern s32 D_801749A0;
 extern s32 D_801749A0;
 extern s32 D_801749A0;

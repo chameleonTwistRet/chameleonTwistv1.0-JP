@@ -10,8 +10,7 @@ import re
 import struct
 from pathlib import Path
 from splat.util.log import error
-
-from splat.util import options
+from splat.util import options, symbols
 from splat.segtypes.common.codesubsegment import CommonSegCodeSubsegment
 
 
@@ -60,21 +59,25 @@ class N64SegSpriteActor(CommonSegCodeSubsegment):
 
         lines = []
 
-        sym = self.create_symbol(
-            addr=self.vram_start, in_segment=True, type="data", define=True
-        )
+        sym = self.retrieve_sym_type(symbols.all_symbols_dict, self.vram_start, "Sprite")
+        if not sym:
+            sym = self.create_symbol(
+                addr=self.vram_start, in_segment=True, type="Sprite", define=True
+            )
         if not self.data_only:
             lines.append('#include "common.h"')
             lines.append("")
-            if "/" in self.name:
-                lines.append("SpriteActor %s = {" % (self.name.split("/")[(len(self.name.split("/"))-1)]))
-            else:
-                lines.append("SpriteActor %s = {" % (self.name))
+            lines.append("SpriteActor %s = {" % (sym.name))
 
-        byteData = bytearray(sprite_data)
-        data = struct.unpack('>iiffffffiifiiiiiiiii', byteData)
-        for v in data: 
-            lines.append(f"    {v},")
+        data = struct.unpack('>iiffffffiifiiiiiiiii', sprite_data)
+        i = 0
+        while i < len(data):
+            use = data[i]
+            if i in [2, 5]: #Position
+                use = "{"+str(data[i])+","+str(data[i+1])+","+str(data[i+2])+"}"
+                i += 2
+            lines.append(f"    {use},")
+            i += 1
 
         if not self.data_only:
             lines.append("};")

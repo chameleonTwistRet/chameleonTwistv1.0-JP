@@ -10,10 +10,8 @@ import re
 import struct
 from pathlib import Path
 from splat.util.log import error
-
-from splat.util import options
+from splat.util import symbols, options
 from splat.segtypes.common.codesubsegment import CommonSegCodeSubsegment
-
 
 class N64SegCollectable(CommonSegCodeSubsegment):
     def __init__(
@@ -59,22 +57,45 @@ class N64SegCollectable(CommonSegCodeSubsegment):
             )
 
         lines = []
-
-        sym = self.create_symbol(
-            addr=self.vram_start, in_segment=True, type="data", define=True
-        )
+        
+        sym = self.retrieve_sym_type(symbols.all_symbols_dict, self.vram_start, "Clct")
+        if not sym:
+            sym = self.create_symbol(
+                addr=self.vram_start, in_segment=True, type="Clct", define=True
+            )
         if not self.data_only:
             lines.append('#include "common.h"')
             lines.append("")
-            if "/" in self.name:
-                lines.append("Collectable %s = {" % (self.name.split("/")[(len(self.name.split("/"))-1)]))
-            else:
-                lines.append("Collectable %s = {" % (self.name))
+            lines.append("Collectable %s = {" % (sym.name))
 
-        byteData = bytearray(sprite_data)
-        data = struct.unpack('>ifffiiii', byteData)
-        for v in data: 
-            lines.append(f"    {v},")
+        data = struct.unpack('>ifffIiii', sprite_data)
+        i = 0
+        while i < len(data):
+            use = data[i]
+            if i == 0: #Actor ID
+                enums = open("include/enums.h", "r", encoding="UTF-8").readlines()
+                enum = 0
+                actorAt = 0 #number in the actor enum
+                reading = False
+                while enum < len(enums):
+                    enumLine = enums[enum]
+                    if enumLine.find("actorIDs") != -1: reading = True
+                    elif reading:
+                        if enumLine.find("=") != -1: actorAt = int(enumLine.split("=")[-1].split("//")[0].replace(",", "").strip())
+                        if not enumLine.startswith("	"):
+                            enum += 1
+                            continue
+                        elif actorAt == use:
+                            use = enumLine.split(",")[0].split("	")[-1].split("//")[0].strip()
+                            if use.find("=") != -1: use = use.split("=")[0].split("//")[0].strip()
+                            break
+                        actorAt += 1
+                    enum += 1
+            elif i == 1: #Position
+                use = "{"+str(data[i])+","+str(data[i+1])+","+str(data[i+2])+"}"
+                i += 2
+            lines.append(f"    {use},")
+            i += 1
 
         if not self.data_only:
             lines.append("};")

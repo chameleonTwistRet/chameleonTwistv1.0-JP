@@ -27,11 +27,11 @@ If you are interested with helping with the decompilation see the [Developing](#
 
 4. put the JPv1.0 rom in the root of the repo and name it `baserom.z64` (make sure the SHA1 matches the one in the badge above)
 
-5. run `./configure && ninja` to build the rom
+5. run `./configure && ./ninja` to build the rom
 
-Now you can run `./configure && ninja` whenever you make changes to make sure the rom builds.
+Now you can run `./configure && ./ninja` whenever you make changes to make sure the rom builds.
 
-If you have made changes to files - for example: splitting a c file; making a function be asm instead of c (which generates a new file); etc. - you will need to run `make distclean && ./configure` again to make sure the build system doesn't attempt to use old files.
+If you have made changes to files - for example: splitting a c file; making a function be asm instead of c (which generates a new file); etc. - you will need to run `./configure --clean` again to make sure the build system doesn't attempt to use old files.
 
 A matching ROM will output an **"OK"** in the console when building.
 

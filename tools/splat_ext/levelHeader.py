@@ -10,8 +10,7 @@ import re
 import struct
 from pathlib import Path
 from splat.util.log import error
-
-from splat.util import options
+from splat.util import options, symbols
 from splat.segtypes.common.codesubsegment import CommonSegCodeSubsegment
 
 
@@ -60,21 +59,36 @@ class N64SegLevelHeader(CommonSegCodeSubsegment):
 
         lines = []
 
-        sym = self.create_symbol(
-            addr=self.vram_start, in_segment=True, type="data", define=True
-        )
+        sym = self.retrieve_sym_type(symbols.all_symbols_dict, self.vram_start, "Lvlhdr")
+        if not sym:
+            sym = self.create_symbol(
+                addr=self.vram_start, in_segment=True, type="Lvlhdr", define=True
+            )
         if not self.data_only:
             lines.append('#include "common.h"')
             lines.append("")
-            if "/" in self.name:
-                lines.append("LevelHeader %s = {" % (self.name.split("/")[(len(self.name.split("/"))-1)]))
-            else:
-                lines.append("LevelHeader %s = {" % (self.name))
+            lines.append("LevelHeader %s = {" % (sym.name))
 
         byteData = bytearray(sprite_data)
         data = struct.unpack('>IIIIIIII', byteData)
-        for v in data: 
-            lines.append(f"    {v},")
+        i = 0
+        while i < len(data):
+            use = data[i]
+            if use != 0:
+                if i == 0: #level map
+                    map = self.retrieve_sym_type(symbols.all_symbols_dict, use, "LvmH")
+                    if map: use = "&"+map.name
+                elif i == 1: #overworld rooms
+                    ov = self.retrieve_sym_type(symbols.all_symbols_dict, use, "Rmset")
+                    if ov: use = "&"+ov.name
+                elif i == 2: #pointers
+                    pointers = self.retrieve_sym_type(symbols.all_symbols_dict, use, "Lvp")
+                    if pointers: use = "&"+pointers.name+"[0]"
+                elif i == len(data) - 1: #level scope
+                    scopeSym = self.retrieve_sym_type(symbols.all_symbols_dict, use, "Lvlscope")
+                    if scopeSym: use = "&"+scopeSym.name
+            lines.append(f"    {use},")
+            i += 1
 
         if not self.data_only:
             lines.append("};")

@@ -92,12 +92,6 @@ typedef struct struct_800FE4E4 {
     /* 0x1 */ u8 unk_01;
 } struct_800FE4E4; //sizeof 0x2
 
-typedef struct struct_800FE4EC {
-    u8* unk_00;
-    u8* unk_04;
-    u8* unk_08;
-    u8* unk_0C;
-} struct_800FE4EC;
 
 typedef struct struct_800FE54C {
     u8* unk_00;
@@ -292,7 +286,19 @@ typedef struct Effect_TypeBI_Data {
     /* 0x04 */ f32 size;
 } Effect_TypeBI_Data; //sizeof 0x08
 
+typedef unsigned char TImg;
+typedef unsigned char TLut;
+
+typedef struct chameleonEyeListEntry {
+  TImg* eyeR;
+  TImg* eyeL;
+  TLut* eyeRPalette;
+  TLut* eyeLPalette;
+} chameleonEyeListEntry;
+
+
 /* extern symbols */
+extern chameleonEyeListEntry chameleonEyeList[6];
 extern s32 D_80176960[];
 extern s32 D_80176980[];
 extern s32 gUnkRumbleArray[];
@@ -306,7 +312,6 @@ extern s32 D_800FEDB8;
 extern Tongue* D_80176B70;
 extern PlayerActor* D_80176B74;
 extern Camera* D_80176B78;
-extern s32 currentStageCrowns;
 extern char D_8010CA1C[];
 extern char D_8010CA54[];
 extern Addr D_8C26A0;
@@ -315,7 +320,6 @@ extern s32 gSpriteFrameBuffer;
 extern Gfx D_10012A0[];
 extern Gfx D_1001300[];
 extern Gfx D_1001370[];
-extern Mtx D_800F69D0;
 extern Gfx D_800FE080[];
 extern SpriteListing D_80176F98[2][200];
 extern SpriteListing D_80182B18[2][200];
@@ -346,21 +350,17 @@ extern s32 Battle_GameType;
 extern struct_800FE4E4 D_800FE4E4[];
 extern f32 D_800FE6F4[];
 extern u8 D_800FE704[];
-extern struct_800FE4EC D_800FE4EC[];
 extern struct_800FE54C D_800FE54C[];
 extern s32 D_80174980;
 extern s16 D_800FFEBC;
 extern u8 D_800FE6F0;
-extern Gfx* D_800F0638[];
 extern s32 D_800FE708;
 extern u8 gLevelAccessBitfeild;
 extern Struct_800714C8 D_800FE70C;
-extern unkStruct16 D_800F0DE0[];
 extern s16 sStageCrownTotals[];
 extern TimeVal D_80200B85[];
 extern s32 perfectCode;
 extern u8 D_800FE724[];
-extern s32 D_800F0674;
 extern s32 D_800F0B5C;
 extern u8 D_800FE748;
 extern Struct_80076EA0 D_800FE47C[];
@@ -371,7 +371,12 @@ extern u8 sTextGradientPalettes[];
 extern s32 gCharacterPortraits[];
 extern u8 D_800FE790[];
 
+
+
+
+
 /* functions */
+void Memory_Free(void*);
 void func_80055C04(void);
 Effect* Effect_HealthBar_Init(s32, s32, s32*, s32*, u32, s32);
 Effect* func_800634D4(s32, s32, s32*, s32*, u32, s32);
@@ -406,5 +411,6 @@ Effect* Effect_Alloc(s32 numParts, s32 dataSize, void* fpUpdate);
 void* func_800745F8(void);
 void Effect_TypeBH_Init(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, RGBA32* arg5);
 void Effect_TypeBF_Init(f32 posX, f32 posY, f32 posZ, f32 velV, f32 yaw, f32 velH, f32 arg6, f32 duration, u8 colorR, u8 colorG, u8 colorB);
-
+void SetPlayerEyes(s32 spriteIndex, s32 whichEye, s32 eyeIndex);
+s32 printTextbox(f32, f32, char*);
 #endif //_SPRITE_H_

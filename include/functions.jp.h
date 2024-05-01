@@ -7,13 +7,17 @@ f32 tanf(f32);
 f32 __sinf(f32);
 f32 __sqrtf(f32);
 f32 __cosf(f32);
-void WrapDegrees(f32*);
-void Memory_Free(void*);
-
-void CartesianToSpherical(Vec3f, f32*, f32*, f32*);
+void CartesianToSpherical(Vec3f inputVec, f32* radius, f32* theta, f32* phi);
+Vec3f* SphericalToCartesian(Vec3f* inputVec, f32 radius, f32 theta, f32 phi);
 s32 Controller_Init(void);
-extern s32 osMotorInit(OSMesgQueue *, OSPfs *, int);
-void bootproc(void);
+
+//vector.c
+Vec3f* RotateVector3D(Vec3f*, Vec3f, f32, s32);
+void WrapAngle(f32* angle);
+
+//from motor.c
+s32 osMotorInit(OSMesgQueue* mq, OSPfs* pfs, int channel);
+
 void idleproc(void*);
 void mainproc(void*);
 void func_80025EE8(void);
@@ -313,9 +317,9 @@ void func_800AA3F0(void);
 void func_800ADE70(void);
 void func_800AE4AC(void);
 void CalculateBoundingRectFromVectors(Vec3f,Vec3f,Rect3D*);
-void func_800A2BDC(void);
+void Process_TitleMenu(void);
 void Process_BattleMenu(void);
-void func_800A4320(void);
+void Process_OptionsMenu(void);
 void Process_GameOver(void);
 void Process_JSSLogo(void);
 void Process_PreCredits(void);
@@ -361,7 +365,6 @@ char* parseIntToHex(s32, s32, char*);
 void SetProcessType(s32);
 void func_8008FDF8(void);
 void func_800C08B8(Vec3f*, PlayerActor*, Door*);
-void ChameleonFromDoor(PlayerActor*, s32, s32, s32, s32);
 void func_800D34CC(void);
 void func_800BFCD0(void);
 void func_800C0760(s32);
@@ -377,14 +380,12 @@ void PlayJungleExtSfx(void);
 void Audio_RomCopy(u32 devAddr, void* vAddr, u32 size);
 void PlayJungleExtSfxWrapper(void);
 void func_8008A2EC(void);
-void func_8008AD30(void);
+void ManagePauseMenu(void);
 void func_8008D060(void);
 void Timing_WaitForNextFrame(void);
 s32 SaveData_UpdateRecords(void);
 void DummiedPrintf(char* arg0, ...);
 s32 func_800A73EC(void*, void*, s32, s32);
-s32 func_800B3FFC(unkSpriteStruct5*, s32);
-void func_800B402C(unkSpriteStruct*, s32, s32);
 s32 DMA_Copy(void* romAddr, void* ramAddr, s32 size);
 s32 func_800A72E8(s32);
 void func_800AAAC8(void);
@@ -392,33 +393,19 @@ s32 AddSoundEffect(s32, f32*, f32*, f32*, s32, s32);
 void func_800A1EC4(void);
 void func_800A54EC(CTTask*);
 s32 DMAStruct_Print(void);
-
 s32 IfRectsIntersect(Rect3D* arg0, Rect3D* arg1);
-
-s32 IsBossID(s32);
-s32 func_800B2510(void);
-s32 func_800B34D0(s32);
 s32 func_800B3540(s32);
-void func_800B5600(void);
-void func_800B56D4(f32, f32);
-void func_800BE2C0(void);
 
 void InitField(void);
-void func_800C54F8(Vec2w*, s32*);
-void func_800C5508(PlayerActor*);
-void func_800C5538(PlayerActor*);
 void func_800C56D4(PlayerActor*);
-void func_800C88AC(void);
 s32 Random(s32, s32);
 f32 RandomF(void);
 f32 CalculateAngleOfVector(f32, f32);
 f32 InterpolateAndClampArcSin(f32);
 f32 AngleFromArcSin(f32);
-void func_800B35FC(s32);
 s32 IsPointInRect(Vec3f, Rect3D*);
 void AdjustRectToVec3(Rect3D* r, Vec3f vec);
 Vec3f* Vec3f_Lerp(Vec3f*, Vec3f, Vec3f, f32);
-f32 func_800B2308(f32, s32);
 void func_800C8F00(void);
 void func_800C9504(void);
 void CalcEnemyNextPosition(Actor*);
@@ -453,6 +440,26 @@ void Debug_ZeroInt(void);
 void PrintNumberWR(f32, f32, f32, f32, f32, s32, s32);
 void printNumber(f32, f32, f32, f32, f32, s32, s32);
 void func_800C1458(s32);
+
+//funcs that were in 8add0.h that are in other c's
+//84e0.c
+void func_800314E4(Actor*);
+void pickup_collide_func(s32 actorIndex);
+void func_80036D74(PlayerActor* arg0, Tongue* arg1);
+//poly.c
+void func_800CFDC8(PlayerActor*);
+void func_800D3854(PlayerActor*, Tongue*, Camera*, Vec3f*, Vec3f*, s32);
+void func_800D69D0(s32, PlayerActor*, Tongue*, Camera*, Vec3f*, Vec3f*, s32);
+void ClearPolygon(void);
+//sprite.c
+void func_8007633C(f32, f32, f32, f32);
+void func_80078294(f32, f32, f32, f32, s32);
+
+
+//funcs from 8add0 that are called from other c's
+//b39a0.c
+s32 func_800B34D0(s32);
+//5ff30.c & debug.c
 void func_800C29D8(s32);
 
 //funcs that were in 5ff30.h that are in other c's
@@ -491,5 +498,47 @@ void Effect_BossDeadEyes_Init(s32 arg0);
 //funcs from 5ff30 that are called from other c's
 //battle.c
 void func_800A0D90(void);
+//8ADD0.c & battle.c
+s32 func_8008BFE0(s32 arg0);
+//8ADD0.c
+void PlayStageBGM(s32 arg0);
+
+//funcs from sprite that are called from other c's
+//8ADD0.c
+void Effect_TypeW_Init(f32 posX, f32 posY, f32 posZ, f32 size, s32 duration, s32 arg5);
+Effect* Effect_TypeB_Init(f32 posX, f32 posY, f32 posZ, s32 numParts);
+//84e0.c
+void Effect_TypeA_Init2(f32 posX, f32 posY, f32 posZ, s32 numParts, s32 size);
+
+//funcs from vector that are called from other c's
+//8ADD0.c
+s32 CompareWrappedAngles(f32 angle1, f32 angle2);
+
+//funcs from battle that are called from other c's
+//5ff30.c
+void Battle_Init(void);
+
+//funcs from 1050 that are called from other c's
+void func_8002CE54(void);
+
+//RoomObject funcs
+void func_800B09C0(Collider* arg0, RoomObject* arg1);
+void RegistShutter(Collider* arg0, RoomObject* arg1);
+void func_800B118C(Collider* arg0, RoomObject* arg1); //assumed
+void func_800B0B20(Collider* arg0, RoomObject* arg1); //assumed
+void func_800B088C(Collider* arg0, RoomObject* arg1);
+void func_800B08C8(Collider* arg0);
+void func_800B09E8(Collider* arg0, RoomObject* arg1);
+void func_800D91D8(Collider* arg0);
+void func_800D90B8(Collider* arg0);
+void func_800AFB2C(Collider* arg0, s32 arg1);
+void func_800B06B0(Collider* arg0);
+void func_800D8D58(Collider* arg0);
+void func_800D8DBC(Collider* arg0);
+void func_800D8DE0(Collider* arg0);
+void func_800B0A30(Collider* arg0, RoomObject* arg1);
+void func_800D8E04(Collider* arg0);
+void func_800D8E28(Collider* arg0);
+void func_800B0AA4(Collider* collider);
 
 #endif

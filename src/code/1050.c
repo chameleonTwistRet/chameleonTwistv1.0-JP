@@ -438,10 +438,10 @@ Gfx* func_8002A190(GraphicStruct* arg0, Gfx* gfxPos, PlayerActor* player, Tongue
     gSPMatrix(gfxPos++, OS_K0_TO_PHYSICAL(&arg0->playerRotate[playerIndex]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
     gSPMatrix(gfxPos++, OS_K0_TO_PHYSICAL(&arg0->playerScale[playerIndex]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
     if (player->playerHURTSTATE != 3 || gTimer % 2 == 0) {
-        Gfx* dlist = D_8008B58;
+        Gfx* dlist = Davy_restAssociate_Gfx;
         if (gSelectedCharacters[playerIndex] <= CHARA_WHITE) {
             if (Battle_GameType == BATTLE_TYPE_UNK_0) {
-                dlist = D_800F0638[gSelectedCharacters[playerIndex]];
+                dlist = ChameleonGfxs[gSelectedCharacters[playerIndex]];
             } else {
                 dlist = D_800F0650[gSelectedCharacters[playerIndex]];
             }
@@ -551,7 +551,7 @@ Gfx* func_8002A824(GraphicStruct* arg0, Gfx* gfxPos, PlayerActor* player, Tongue
         gSPMatrix(gfxPos++, OS_K0_TO_PHYSICAL(&arg0->tongueTranslate[playerIndex][32]), G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
         gSPMatrix(gfxPos++, OS_K0_TO_PHYSICAL(&arg0->tongueRotate[playerIndex][32]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
         gSPMatrix(gfxPos++, OS_K0_TO_PHYSICAL(&arg0->tongueScale[playerIndex][32]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
-        gSPDisplayList(gfxPos++, D_2006160);
+        gSPDisplayList(gfxPos++, Global_unusedStructure_Gfx);
         gSPPopMatrix(gfxPos++, G_MTX_MODELVIEW);
     }
 
@@ -738,7 +738,7 @@ Gfx* func_8002B7BC(GraphicStruct* arg0, Gfx* gfxPos) {
         switch (gActors[i].actorID) {
             case YELLOW_ANT:
                 gActors[i].unk_E8 = gActors[i].unk_134[5] - 40.0f;
-                gfxPos = func_8002B118(arg0, gfxPos, D_3057250, &gActors[i], 3.0f, 0, &sp178);
+                gfxPos = func_8002B118(arg0, gfxPos, AntLand_yellowAnt_gfx14_Gfx, &gActors[i], 3.0f, 0, &sp178);
                 break;
             case ANT_QUEEN:
                 gActors[i].unk_E8 = gActors[i].unk_134[5];
@@ -757,7 +757,7 @@ Gfx* func_8002B7BC(GraphicStruct* arg0, Gfx* gfxPos) {
                 break;
             case CANNON:
                 gActors[i].unk_E8 = 0.0f;
-                gfxPos = func_8002B118(arg0, gfxPos, D_3043F60, &gActors[i], 4.0f, 0, &sp178);
+                gfxPos = func_8002B118(arg0, gfxPos, BombLand_unk74_Gfx, &gActors[i], 4.0f, 0, &sp178);
                 break;
             case UNK_1F:
                 gActors[i].unk_E8 = 0.0f;
@@ -834,16 +834,16 @@ Gfx* func_8002B7BC(GraphicStruct* arg0, Gfx* gfxPos) {
                 break;
             case GOLEM:
                 gActors[i].unk_E8 = 0.0f;
-                gfxPos = func_8002B118(arg0, gfxPos, D_3058750, &gActors[i], 4.0f, 0, &sp178);
+                gfxPos = func_8002B118(arg0, gfxPos, JungleLand_unkunk_Gfx, &gActors[i], 4.0f, 0, &sp178);
                 break;
             case SPIDER_SPAWNER:
                 gActors[i].unk_E8 = 0.0f;
-                gfxPos = func_8002B118(arg0, gfxPos, D_30595A8, &gActors[i], 2.0f, 0, &sp178);
+                gfxPos = func_8002B118(arg0, gfxPos, JungleLand_unkunk2_Gfx, &gActors[i], 2.0f, 0, &sp178);
                 break;
             case FISH:
                 gActors[i].unk_E8 = 0.0f;
-                gfxPos = func_8002B118(arg0, gfxPos, D_305A738, &gActors[i], 1.4f, 0, &sp178);
-                gfxPos = func_8002B118(arg0, gfxPos, D_305B528, &gActors[i], 1.4f, 1, &sp178);
+                gfxPos = func_8002B118(arg0, gfxPos, JungleLand_unkunk3_Gfx, &gActors[i], 1.4f, 0, &sp178);
+                gfxPos = func_8002B118(arg0, gfxPos, JungleLand_unkunk4_Gfx, &gActors[i], 1.4f, 1, &sp178);
                 break;
             case LIZARD_KONG_BOULDER:
                 gActors[i].unk_E8 = gActors[i].unknownPositionThings[0].unk_10 / 2;

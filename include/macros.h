@@ -13,8 +13,8 @@
 #define NORM_2(x,y) (sqrtf(SQ(x) + SQ(y)))
 #define NORM_3(x,y,z) (sqrtf(SQ(x) + SQ(y) + SQ(z)))
 #define sqrtf __sqrtf
-#define sinf __sinf 
-#define cosf __cosf 
+#define sinf __sinf
+#define cosf __cosf
 #define DEGREES_TO_RADIANS_2PI(x) ((x) * 2 * PI / 360.0)
 #define DEGREES_TO_RADIANS_PI(x) (x * PI / 180.0)
 #define ARRAY_COUNT(arr) (s32)(sizeof(arr) / sizeof(arr[0]))
@@ -45,5 +45,13 @@
 
 #define SCREEN_WIDTH  320
 #define SCREEN_HEIGHT 240
+
+//asset file related macros so we dont have to split useless files
+//identity matrix
+#define IDENTITY {0x00010000, 0, 1, 0, 0, 0x00010000, 0, 1,    0, 0, 0, 0, 0, 0, 0, 0}
+#define ZERO_MTX {0, 0, 0, 0, 0, 0, 0, 0,    0, 0, 0, 0, 0, 0, 0, 0}
+//basic file padding
+#define FILEPAD {0xB8,0,0,0,0,0,0,0}
+
 
 #endif

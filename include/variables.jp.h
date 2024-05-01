@@ -293,13 +293,11 @@ extern SaveFile gGameState; //data on current playthrough's progress.
 extern void* D_80200C8C;
 extern void* D_80200C94;
 extern Addr D_AB10B0;
-extern Addr D_F000000;
-extern Addr D_F0042B0;
 extern Camera gCamera[4];
 extern unk802000C84 D_80200C84;
 extern u8 gHasShadows[256]; //unset for actortypes like spawnners.
 extern Collider D_80236980[128];
-extern s32 gFeildCount;
+extern s32 gFieldCount;
 extern Door gDoors[16];
 extern unkIsChange isChange;
 extern s32 gDoorCount;
@@ -363,5 +361,14 @@ extern CTTask* gCTTaskHead;
 extern CTTask* gCTTaskTail;
 extern s32 sGameModeStart;
 extern char D_8010DB20[];
-extern CardinalDirection gCardinalDirections[5]; // including "NO_DIR"
+extern Collision gZoneCollisions[];
+extern s32 currentStageCrowns;
+extern char* Dialogue[6][20]; //sizeof 0x1E0
+extern s32 gIsGamePaused;
+extern Gfx* ChameleonGfxs[6];
+extern char* D_800F686C;
+extern char* D_800F6870;
+extern char* D_800F6874;
+extern char* D_800F67A0[6];
+
 #endif

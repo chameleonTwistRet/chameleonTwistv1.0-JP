@@ -3,6 +3,1782 @@
 #include "battle.h"
 #include "5FF30.h"
 
+extern u8 Animations_unk1Pointers_Bin[];
+extern u8 Animations_unk2Pointers_Bin[];
+extern u8 D_1045B70[];
+
+extern u8* D_800F0D3C;
+extern u8* D_800F0D58;
+extern u8* D_800F0D88;
+extern u8* D_800F0D8C;
+
+unkStruct16 D_800F0D90[5] = {
+{&Animations_unk2Pointers_Bin, &Animations_unk2Pointers_Bin,
+&D_800F0D3C, 28, -10.0f},
+{&D_1045B70, &D_1045B70,
+&D_800F0D58, 45, -30.0f},
+{&D_1045B70, &D_1045B70,
+&D_800F0D88, 1, -30.0f},
+{&Animations_unk2Pointers_Bin, &Animations_unk2Pointers_Bin,
+&D_800F0D8C, 1, -10.0f},
+{&Animations_unk1Pointers_Bin, &Animations_unk2Pointers_Bin,
+&D_800F0D3C, 28, 0.0f}
+};
+
+unk_80052094_8 Battle_MsgReady[5] = {
+    {0.0f, 2},
+    {2.0f, 0},
+    {0.0f, 0},
+    {1.0f, 0},
+    {3.0f, 2}
+};
+
+unk_80052094_8 Battle_MsgGo[3] = {
+    {3.0f, 0},
+    {8.0f, 0},
+    {4.0f, 2},
+};
+
+s32 padding[3] = 0;
+
+#define TEXT_LINE_LENGTH 30
+//bc shorts
+#define TEXT_LINE_SIZE TEXT_LINE_LENGTH*2
+#define TEXT_LINES 3
+#define NULL_LINE "　"
+#define TERMINATE_TEXTBOX(x) char x[TEXT_LINE_SIZE] = "";
+
+// JP chameleon names
+// Davy = "デイビー"
+// Jack = "ジャック"
+// Fred = "フレッド"
+// Linda = "リンダ"
+// V arent the actual word, they are treated as proper names
+// Black = "ブラック" 
+// White = "ホワイト" 
+
+/*
+Dialogue is usually formatted as such:
+Symbol[Messages][TEXT_LINES][TEXT_LINE_SIZE]
+TEXT_LINES and TEXT_LINE_SIZE are both arbitrary, but is the format the CT devs decided to use
+However, TEXT_LINE_SIZE is TEXT_LINE_LENGTH * 2, as the EUC-JP characters are stored as shorts. Make sure to edit that instead.
+*/
+
+//JL intro text
+char JL_IntroText[2][TEXT_LINES][TEXT_LINE_SIZE] = {
+    {
+    "ここはジャングルランド。この不思",
+    "議の世界の入り口です。",
+    NULL_LINE
+    },
+    {
+    "舌や体の操作が出来るようになった",
+    "ら、タイムアタックに行ってみると",
+    "いいですよ。"
+    }
+};
+
+//stop
+TERMINATE_TEXTBOX(pad0)
+
+//AL intro text (davy)
+char D_800F0FE4[2][TEXT_LINES][TEXT_LINE_SIZE] = {
+    {
+    "アリ、アリ、アリの大行進。",
+    "ここは地中深くのアリのステージ。",
+    NULL_LINE
+    },
+    {
+    "数え切れないほどのアリたちが、",
+    "デイビーの行く手をふさいで",
+    "います。"
+    }
+};
+
+//stop
+TERMINATE_TEXTBOX(pad1)
+
+//AL intro text (Jack)
+char D_800F1188[2][TEXT_LINES][TEXT_LINE_SIZE] = {
+    {
+    "アリ、アリ、アリの大行進。",
+    "ここは地中深くのアリのステージ。",
+    NULL_LINE
+    },
+    {
+    "数え切れないほどのアリたちが、",
+    "ジャックの行く手をふさいで",
+    "います。"
+    }
+};
+
+//stop
+TERMINATE_TEXTBOX(pad2)
+
+//AL intro text (Linda)
+char D_800F132C[2][TEXT_LINES][TEXT_LINE_SIZE] = {
+    {
+    "アリ、アリ、アリの大行進。",
+    "ここは地中深くのアリのステージ。",
+    NULL_LINE
+    },
+    {
+    "数え切れないほどのアリたちが、",
+    "リンダの行く手をふさいで",
+    "います。"
+    }
+};
+
+//stop
+TERMINATE_TEXTBOX(pad3)
+
+//AL intro text (Fred)
+char D_800F14D0[2][TEXT_LINES][TEXT_LINE_SIZE] = {
+    {
+    "アリ、アリ、アリの大行進。",
+    "ここは地中深くのアリのステージ。",
+    NULL_LINE
+    },
+    {
+    "数え切れないほどのアリたちが、",
+    "フレッドの行く手をふさいで",
+    "います。"
+    }
+};
+
+//stop
+TERMINATE_TEXTBOX(pad4)
+
+//AL intro text (Black) (Unused)
+char D_800F1674[2][TEXT_LINES][TEXT_LINE_SIZE] = {
+    {
+    "アリ、アリ、アリの大行進。",
+    "ここは地中深くのアリのステージ。",
+    NULL_LINE
+    },
+    {
+    "数え切れないほどのアリたちが、",
+    "ブラックの行く手をふさいで",
+    "います。"
+    }
+};
+
+//stop
+TERMINATE_TEXTBOX(pad5)
+
+//AL intro text (White)
+char D_800F1818[2][TEXT_LINES][TEXT_LINE_SIZE] = {
+    {
+    "アリ、アリ、アリの大行進。",
+    "ここは地中深くのアリのステージ。",
+    NULL_LINE
+    },
+    {
+    "数え切れないほどのアリたちが、",
+    "ホワイトの行く手をふさいで",
+    "います。"
+    }
+};
+
+//stop
+TERMINATE_TEXTBOX(pad6)
+
+//BL intro text
+char D_800F19BC[2][TEXT_LINES][TEXT_LINE_SIZE] = {
+    {
+    "ドカーン！と、キケンなボムが",
+    "いっぱいです。のるとダメージの",
+    "床やこわれるブロック、"
+    },
+    {
+    "ボムはつながって大バクハツしたり",
+    "もします。",
+    "" // stop
+    }
+};
+
+//KL intro text
+char D_800F1B24[2][TEXT_LINES][TEXT_LINE_SIZE] = {
+    {
+    "チョコレートにクッキー、ウエハー",
+    "ス、おいしそうなお菓子でいっぱい",
+    "です。"
+    },
+    {
+    "でもそんなお菓子にだまされないで",
+    "下さい。高度なアクションやパズル",
+    "が待ってるようです。"
+    }
+};
+
+//stop
+TERMINATE_TEXTBOX(pad7)
+
+//DC intro text
+char D_800F1CC8[2][TEXT_LINES][TEXT_LINE_SIZE] = {
+    {
+    "砂漠にうもれた城のステージ。城に",
+    "は高い壁や、やりなどがまちうけて",
+    "います。"
+    },
+    {
+    "砂漠では流砂や落石などにも要注意",
+    "です。",
+    "" // stop
+    }
+};
+
+//GC intro text (Davy)
+char D_800F1E30[2][TEXT_LINES][TEXT_LINE_SIZE] = {
+    {
+    "とうとうここまで来ましたね、",
+    "ここが最後のステージのゴーストキ",
+    "ャッスルです。"
+    },
+    {
+    "この先、奇妙なゴーストたちがデイ",
+    "ビーの行く手をふさごうとする",
+    "でしょう。"
+    }
+};
+
+//stop
+TERMINATE_TEXTBOX(pad8)
+
+//GC intro text (Jack)
+char D_800F1FD4[2][TEXT_LINES][TEXT_LINE_SIZE] = {
+    {
+    "とうとうここまで来ましたね、",
+    "ここが最後のステージのゴーストキ",
+    "ャッスルです。"
+    },
+    {
+    "この先、奇妙なゴーストたちがジャ",
+    "ックの行く手をふさごうとする",
+    "でしょう。"
+    }
+};
+
+//stop
+TERMINATE_TEXTBOX(pad9)
+
+//GC intro text (Fred)
+char D_800F2178[2][TEXT_LINES][TEXT_LINE_SIZE] = {
+    {
+    "とうとうここまで来ましたね、",
+    "ここが最後のステージのゴーストキ",
+    "ャッスルです。"
+    },
+    {
+    "この先、奇妙なゴーストたちがフレ",
+    "ッドの行く手をふさごうとする",
+    "でしょう。"
+    }
+};
+
+//stop
+TERMINATE_TEXTBOX(padA)
+
+//GC intro text (Linda)
+char D_800F231C[2][TEXT_LINES][TEXT_LINE_SIZE] = {
+    {
+    "とうとうここまで来ましたね、",
+    "ここが最後のステージのゴーストキ",
+    "ャッスルです。"
+    },
+    {
+    "この先、奇妙なゴーストたちがリン",
+    "ダの行く手をふさごうとする",
+    "でしょう。"
+    }
+};
+
+//stop
+TERMINATE_TEXTBOX(padB)
+
+//GC intro text (Black) (unused)
+char D_800F24C0[2][TEXT_LINES][TEXT_LINE_SIZE] = {
+    {
+    "とうとうここまで来ましたね、",
+    "ここが最後のステージのゴーストキ",
+    "ャッスルです。"
+    },
+    {
+    "この先、奇妙なゴーストたちがブラ",
+    "ックの行く手をふさごうとする",
+    "でしょう。"
+    }
+};
+
+//stop
+TERMINATE_TEXTBOX(padC)
+
+//GC intro text (White)
+char D_800F2664[2][TEXT_LINES][TEXT_LINE_SIZE] = {
+    {
+    "とうとうここまで来ましたね、",
+    "ここが最後のステージのゴーストキ",
+    "ャッスルです。"
+    },
+    {
+    "この先、奇妙なゴーストたちがホワ",
+    "イトの行く手をふさごうとする",
+    "でしょう。"
+    }
+};
+
+//stop
+TERMINATE_TEXTBOX(padD)
+
+//Training intro text (Davy)
+char D_800F2808[3][TEXT_LINES][TEXT_LINE_SIZE] = {
+    {
+    "デイビー。",
+    "ここでは、あなたの舌テクニックを",
+    "試すことが出来ます。"
+    },
+    {
+    "１〜５の部屋でクリアするタイムを",
+    "きそって下さい。",
+    NULL_LINE
+    },
+    {
+    "くわしい説明はそれぞれの部屋で",
+    "しますね。がんばっていいタイムを",
+    "出してください。"
+    }
+};
+              
+//stop
+TERMINATE_TEXTBOX(padE)
+
+//Training intro text (Jack)
+char D_800F2A60[3][TEXT_LINES][TEXT_LINE_SIZE] = {
+    {
+    "ジャック。",
+    "ここでは、あなたの舌テクニックを",
+    "試すことが出来ます。"
+    },
+    {
+    "１〜５の部屋でクリアするタイムを",
+    "きそって下さい。",
+    NULL_LINE
+    },
+    {
+    "くわしい説明はそれぞれの部屋で",
+    "しますね。がんばっていいタイムを",
+    "出してください。"
+    }
+};
+              
+//stop
+TERMINATE_TEXTBOX(padF)
+
+//Training intro text (Linda)
+char D_800F2CB8[3][TEXT_LINES][TEXT_LINE_SIZE] = {
+    {
+    "リンダ。",
+    "ここでは、あなたの舌テクニックを",
+    "試すことが出来ます。"
+    },
+    {
+    "１〜５の部屋でクリアするタイムを",
+    "きそって下さい。",
+    NULL_LINE
+    },
+    {
+    "くわしい説明はそれぞれの部屋で",
+    "しますね。がんばっていいタイムを",
+    "出してください。"
+    }
+};
+              
+//stop
+TERMINATE_TEXTBOX(pad10)
+
+//Training intro text (Fred)
+char D_800F2F10[3][TEXT_LINES][TEXT_LINE_SIZE] = {
+    {
+    "フレッド。",
+    "ここでは、あなたの舌テクニックを",
+    "試すことが出来ます。"
+    },
+    {
+    "１〜５の部屋でクリアするタイムを",
+    "きそって下さい。",
+    NULL_LINE
+    },
+    {
+    "くわしい説明はそれぞれの部屋で",
+    "しますね。がんばっていいタイムを",
+    "出してください。"
+    }
+};
+              
+//stop
+TERMINATE_TEXTBOX(pad11)
+
+//Training intro text (Black)
+char D_800F3168[3][TEXT_LINES][TEXT_LINE_SIZE] = {
+    {
+    "ブラック。",
+    "ここでは、あなたの舌テクニックを",
+    "試すことが出来ます。"
+    },
+    {
+    "１〜５の部屋でクリアするタイムを",
+    "きそって下さい。",
+    NULL_LINE
+    },
+    {
+    "くわしい説明はそれぞれの部屋で",
+    "しますね。がんばっていいタイムを",
+    "出してください。"
+    }
+};
+
+//stop
+TERMINATE_TEXTBOX(pad12)
+
+//Training intro text (White)
+char D_800F33C0[3][TEXT_LINES][TEXT_LINE_SIZE] = {
+    {
+    "ホワイト。",
+    "ここでは、あなたの舌テクニックを",
+    "試すことが出来ます。"
+    },
+    {
+    "１〜５の部屋でクリアするタイムを",
+    "きそって下さい。",
+    NULL_LINE
+    },
+    {
+    "くわしい説明はそれぞれの部屋で",
+    "しますね。がんばっていいタイムを",
+    "出してください。"
+    }
+};
+
+//stop
+TERMINATE_TEXTBOX(pad13)
+
+//Training Room 1
+char D_800F3618[2][TEXT_LINES][TEXT_LINE_SIZE] = {
+    {
+    "この部屋は、真ん中にいるチョコ",
+    "キッズをすべてやっつけるとクリア",
+    "です。Ｂボタンで舌をのばして"
+    },
+    {
+    "敵をからめます。そして",
+    "もう１度Ｂボタンを押すとマシン",
+    "ガンアタックをします。"
+    }
+};
+
+//stop
+TERMINATE_TEXTBOX(pad14)
+
+//Training Room 4
+char D_800F37BC[2][TEXT_LINES][TEXT_LINE_SIZE] = {
+    {
+    "ここは、クイック移動の部屋です。",
+    "Ｂボタンを押して杭をつかんで",
+    "下さい。"
+    },
+    {
+    "Ｂボタンを押しつづけると次の台に",
+    "移れます。落ちたら、またここに戻",
+    "ってきて始めてください。"
+    }
+};
+
+//stop
+TERMINATE_TEXTBOX(pad15)
+
+//Training Room 2
+char D_800F3960[2][TEXT_LINES][TEXT_LINE_SIZE] = {
+    {
+    "ここは、台の上にのって鬼火をボム",
+    "めがけてあてて下さい。すべてバク",
+    "ハツさせるとクリアです。"
+    },
+    {
+    "Ｒトリガーを押しながら３Ｄスティ",
+    "ックを動かすと、その場で回転する",
+    "のでねらいやすいですよ。"
+    }
+};
+              
+//stop
+TERMINATE_TEXTBOX(pad16)
+
+//Training Room 5
+char D_800F3B04[2][TEXT_LINES][TEXT_LINE_SIZE] = {
+    {
+    "さて、ここではクイック回転のタイ",
+    "ムアタック。Ｂボタンを押して杭",
+    "をつかんで下さい。"
+    },
+    {
+    "つかんだら回転したい方向に３Ｄス",
+    "ティックを動かし、Ａボタンをいっ",
+    "しょに押して下さい。"
+    }
+};
+     
+         
+//stop
+TERMINATE_TEXTBOX(pad17)
+
+//Training Room 3
+char D_800F3CA8[2][TEXT_LINES][TEXT_LINE_SIZE] = {
+    {
+    "この部屋では、舌高跳びを使って頂",
+    "上までのぼって下さい。歩きながら",
+    "Ｚトリガーを押すと、"
+    },
+    {
+    "逆立ちをします。タイミングよく",
+    "Ａボタンを押して高くジャンプ",
+    "して下さい。"
+    }
+};
+
+//stop
+TERMINATE_TEXTBOX(pad18)
+
+//JL Boss
+char D_800F3E4C[1][TEXT_LINES][TEXT_LINE_SIZE] = {
+    {
+    "もうすぐボスとの対戦です。",
+    "リザードコングは狂暴で、岩を",
+    "なげてきます。"
+    }
+};
+
+//stop
+TERMINATE_TEXTBOX(pad19)
+
+//AL BossTEXT_LINES
+char D_800F3F3C[2][TEXT_LINES][TEXT_LINE_SIZE] = {
+    {
+    "この先の部屋ではアントランドの",
+    "ボス、クインテラが待ちかまえて",
+    "います。"
+    },
+    {
+    "クインテラを怒らせると、",
+    "巨大なしっぽで回転攻撃をして",
+    "くるので、気をつけて下さい。"
+    }
+};
+
+//stop
+TERMINATE_TEXTBOX(pad1A)
+
+//BL Boss
+char D_800F40E0[2][TEXT_LINES][TEXT_LINE_SIZE] = {
+    {
+    "もうすぐボスの部屋です。",
+    "ボムドッカンは体当たりで",
+    "攻撃をしてきます。"
+    },
+    {
+    "ダメージをあたえていくと、",
+    "だんだん動きが速くなっていく",
+    "ので、注意して下さい。"
+    }
+};
+
+//stop
+TERMINATE_TEXTBOX(pad1B)
+
+//KL Boss
+char D_800F4284[1][TEXT_LINES][TEXT_LINE_SIZE] = {
+    {
+    "キッズランドのボスは、いちご",
+    "爆弾ではげしい攻撃をしてきます。",
+    "気をつけて下さいね。"
+    }
+};
+
+//stop
+TERMINATE_TEXTBOX(pad1C)
+
+//DC Boss
+char D_800F4374[1][TEXT_LINES][TEXT_LINE_SIZE] = {
+    {
+    "このステージのボスは、砂にもぐる",
+    "のが得意です。もぐる前にスナカリ",
+    "をぶつけて、やっつけましょう。"
+    }
+};
+
+//stop
+TERMINATE_TEXTBOX(pad1D)
+
+//GC Boss (Davy)
+char D_800F4464[2][TEXT_LINES][TEXT_LINE_SIZE] = {
+    {
+    "いよいよ最後のボスです。",
+    "とても強いですが、デイビーなら",
+    "きっと倒せるはずです。"
+    },
+    {
+    "がんばって下さいね。",
+    "では、私はひと足先に出口で待って",
+    "います。"
+    }
+};
+
+//stop
+TERMINATE_TEXTBOX(pad1E)
+
+//GC Boss (Jack)
+char D_800F4608[2][TEXT_LINES][TEXT_LINE_SIZE] = {
+    {
+    "いよいよ最後のボスです。",
+    "とても強いですが、ジャックなら",
+    "きっと倒せるはずです。"
+    },
+    {
+    "がんばって下さいね。",
+    "では、私はひと足先に出口で待って",
+    "います。"
+    }
+};
+
+//stop
+TERMINATE_TEXTBOX(pad1F)
+
+//GC Boss (Linda)
+char D_800F47AC[2][TEXT_LINES][TEXT_LINE_SIZE] = {
+    {
+    "いよいよ最後のボスです。",
+    "とても強いですが、リンダなら",
+    "きっと倒せるはずです。"
+    },
+    {
+    "がんばって下さいね。",
+    "では、私はひと足先に出口で待って",
+    "います。"
+    }
+};
+
+//stop
+TERMINATE_TEXTBOX(pad20)
+
+//GC Boss (Fred)
+char D_800F4950[2][TEXT_LINES][TEXT_LINE_SIZE] = {
+    {
+    "いよいよ最後のボスです。",
+    "とても強いですが、フレッドなら",
+    "きっと倒せるはずです。"
+    },
+    {
+    "がんばって下さいね。",
+    "では、私はひと足先に出口で待って",
+    "います。"
+    }
+};
+
+//stop
+TERMINATE_TEXTBOX(pad21)
+
+//GC Boss (Black) (unused)
+char D_800F4AF4[2][TEXT_LINES][TEXT_LINE_SIZE] = {
+    {
+    "いよいよ最後のボスです。",
+    "とても強いですが、ブラックなら",
+    "きっと倒せるはずです。"
+    },
+    {
+    "がんばって下さいね。",
+    "では、私はひと足先に出口で待って",
+    "います。"
+    }
+};
+
+//stop
+TERMINATE_TEXTBOX(pad22)
+
+//GC Boss (White)
+char D_800F4C98[2][TEXT_LINES][TEXT_LINE_SIZE] = {
+    {
+    "いよいよ最後のボスです。",
+    "とても強いですが、ホワイトなら",
+    "きっと倒せるはずです。"
+    },
+    {
+    "がんばって下さいね。",
+    "では、私はひと足先に出口で待って",
+    "います。"
+    }
+};
+
+//stop
+TERMINATE_TEXTBOX(pad23)
+
+
+char* Dialogue[6][20] = {
+    //Davy
+    {
+    &JL_IntroText[0][0][0],
+    &D_800F0FE4[0][0][0],
+    &D_800F19BC[0][0][0],
+    &D_800F1B24[0][0][0],
+    &D_800F1CC8[0][0][0],
+    &D_800F1E30[0][0][0],
+    &D_800F2808[0][0][0],
+    &D_800F3618[0][0][0],
+    &D_800F37BC[0][0][0],
+    &D_800F3960[0][0][0],
+    &D_800F3B04[0][0][0],
+    &D_800F3CA8[0][0][0],
+    &D_800F3E4C[0][0][0],
+    &D_800F3F3C[0][0][0],
+    &D_800F40E0[0][0][0],
+    &D_800F4284[0][0][0],
+    &D_800F4374[0][0][0],
+    &D_800F4464[0][0][0],
+    NULL, NULL
+    },
+    //Jack
+    {
+    &JL_IntroText[0][0][0],
+    &D_800F1188[0][0][0],
+    &D_800F19BC[0][0][0],
+    &D_800F1B24[0][0][0],
+    &D_800F1CC8[0][0][0],
+    &D_800F1FD4[0][0][0],
+    &D_800F2A60[0][0][0],
+    &D_800F3618[0][0][0],
+    &D_800F37BC[0][0][0],
+    &D_800F3960[0][0][0],
+    &D_800F3B04[0][0][0],
+    &D_800F3CA8[0][0][0],
+    &D_800F3E4C[0][0][0],
+    &D_800F3F3C[0][0][0],
+    &D_800F40E0[0][0][0],
+    &D_800F4284[0][0][0],
+    &D_800F4374[0][0][0],
+    &D_800F4608[0][0][0],
+    NULL, NULL
+    },
+    //Fred
+    {
+    &JL_IntroText[0][0][0],
+    &D_800F14D0[0][0][0],
+    &D_800F19BC[0][0][0],
+    &D_800F1B24[0][0][0],
+    &D_800F1CC8[0][0][0],
+    &D_800F2178[0][0][0],
+    &D_800F2F10[0][0][0],
+    &D_800F3618[0][0][0],
+    &D_800F37BC[0][0][0],
+    &D_800F3960[0][0][0],
+    &D_800F3B04[0][0][0],
+    &D_800F3CA8[0][0][0],
+    &D_800F3E4C[0][0][0],
+    &D_800F3F3C[0][0][0],
+    &D_800F40E0[0][0][0],
+    &D_800F4284[0][0][0],
+    &D_800F4374[0][0][0],
+    &D_800F4950[0][0][0],
+    NULL, NULL
+    },
+    //Linda
+    {
+    &JL_IntroText[0][0][0],
+    &D_800F132C[0][0][0],
+    &D_800F19BC[0][0][0],
+    &D_800F1B24[0][0][0],
+    &D_800F1CC8[0][0][0],
+    &D_800F231C[0][0][0],
+    &D_800F2CB8[0][0][0],
+    &D_800F3618[0][0][0],
+    &D_800F37BC[0][0][0],
+    &D_800F3960[0][0][0],
+    &D_800F3B04[0][0][0],
+    &D_800F3CA8[0][0][0],
+    &D_800F3E4C[0][0][0],
+    &D_800F3F3C[0][0][0],
+    &D_800F40E0[0][0][0],
+    &D_800F4284[0][0][0],
+    &D_800F4374[0][0][0],
+    &D_800F47AC[0][0][0],
+    NULL, NULL
+    },
+    //Black
+    {
+    &JL_IntroText[0][0][0],
+    &D_800F1674[0][0][0],
+    &D_800F19BC[0][0][0],
+    &D_800F1B24[0][0][0],
+    &D_800F1CC8[0][0][0],
+    &D_800F24C0[0][0][0],
+    &D_800F3168[0][0][0],
+    &D_800F3618[0][0][0],
+    &D_800F37BC[0][0][0],
+    &D_800F3960[0][0][0],
+    &D_800F3B04[0][0][0],
+    &D_800F3CA8[0][0][0],
+    &D_800F3E4C[0][0][0],
+    &D_800F3F3C[0][0][0],
+    &D_800F40E0[0][0][0],
+    &D_800F4284[0][0][0],
+    &D_800F4374[0][0][0],
+    &D_800F4AF4[0][0][0],
+    NULL, NULL
+    },
+    //White
+    {
+    &JL_IntroText[0][0][0],
+    &D_800F1818[0][0][0],
+    &D_800F19BC[0][0][0],
+    &D_800F1B24[0][0][0],
+    &D_800F1CC8[0][0][0],
+    &D_800F2664[0][0][0],
+    &D_800F33C0[0][0][0],
+    &D_800F3618[0][0][0],
+    &D_800F37BC[0][0][0],
+    &D_800F3960[0][0][0],
+    &D_800F3B04[0][0][0],
+    &D_800F3CA8[0][0][0],
+    &D_800F3E4C[0][0][0],
+    &D_800F3F3C[0][0][0],
+    &D_800F40E0[0][0][0],
+    &D_800F4284[0][0][0],
+    &D_800F4374[0][0][0],
+    &D_800F4C98[0][0][0],
+    NULL, NULL
+    }
+};
+
+//Intro Movie
+char D_800F501C[1][17][TEXT_LINE_SIZE] = {
+    {
+    "　　　今日もいい天気です。　　　",
+    "",
+
+    "「いそがしい、　あーいそがしい」",
+    "",
+
+    "「これでは、時間に間に合わない」",
+    "",
+
+    "　何に間に合わないのでしょう？　",
+    "",
+
+    "　　好奇心の強いカメレオンは、　",
+    "　追いかけて行くことにしました。",
+    "",
+
+    "　　おやっ、カメレオンの体が　　",
+    "　　　変身してしまいました。　　",
+    "",
+    
+    "　ところで、あのうさぎはどこに　",
+    "　　　　行ったのでしょう。　　　",
+    ""                    
+    } 
+};
+
+//Ending Movie
+char D_800F5418[1][24][TEXT_LINE_SIZE] = {
+    {
+    //Davy
+    "　　　　やあ、デイビー。",
+    "　　どうでしたか？この世界は。",
+    "",                       
+    //Jack
+    "　　　　やあ、ジャック。",
+    "　　どうでしたか？この世界は。",
+    "",
+    //Fred
+    "　　　　やあ、フレッド。",
+    "　　どうでしたか？この世界は。",
+    "",
+    //Linda
+    "　　　　やあ、リンダ。",
+    "　　どうでしたか？この世界は。",
+    "",
+    //Black
+    "　　　　やあ、ブラック。",
+    "　　どうでしたか？この世界は。",
+    "",
+    //White
+    "　　　　やあ、ホワイト。",
+    "　　どうでしたか？この世界は。",
+    "",
+    //Rest is normal
+    "　　　　楽しかったですか？",
+    "　　また、遊びに来て下さいね。",
+    "",
+    "　いつでもお待ちしております。",
+    "　　　　それでは．．．",
+    "",
+    } 
+};
+
+char* D_800F59B8[7][20] = {
+    //Davy
+    {
+    &D_800F501C[0][0][0],
+    &D_800F501C[0][2][0],
+    &D_800F501C[0][4][0],
+    &D_800F501C[0][6][0],
+    &D_800F501C[0][8][0],
+
+    &D_800F5418[0][0][0],
+    &D_800F5418[0][18][0],
+    &D_800F5418[0][21][0],
+    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL
+    },
+    //Jack
+    {
+    &D_800F501C[0][0][0],
+    &D_800F501C[0][2][0],
+    &D_800F501C[0][4][0],
+    &D_800F501C[0][6][0],
+    &D_800F501C[0][8][0],
+
+    &D_800F5418[0][3][0],
+    &D_800F5418[0][18][0],
+    &D_800F5418[0][21][0],
+    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL
+    },
+    //Fred
+    {
+    &D_800F501C[0][0][0],
+    &D_800F501C[0][2][0],
+    &D_800F501C[0][4][0],
+    &D_800F501C[0][6][0],
+    &D_800F501C[0][8][0],
+
+    &D_800F5418[0][6][0],
+    &D_800F5418[0][18][0],
+    &D_800F5418[0][21][0],
+    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL
+    },
+    //Linda
+    {
+    &D_800F501C[0][0][0],
+    &D_800F501C[0][2][0],
+    &D_800F501C[0][4][0],
+    &D_800F501C[0][6][0],
+    &D_800F501C[0][8][0],
+
+    &D_800F5418[0][9][0],
+    &D_800F5418[0][18][0],
+    &D_800F5418[0][21][0],
+    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL
+    },
+    //Black (?)
+    {
+    &D_800F501C[0][0][0],
+    &D_800F501C[0][2][0],
+    &D_800F501C[0][4][0],
+    &D_800F501C[0][6][0],
+    &D_800F501C[0][8][0],
+
+    &D_800F5418[0][9][0],
+    &D_800F5418[0][18][0],
+    &D_800F5418[0][21][0],
+    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL
+    },
+    //White
+    {
+    &D_800F501C[0][0][0],
+    &D_800F501C[0][2][0],
+    &D_800F501C[0][4][0],
+    &D_800F501C[0][6][0],
+    &D_800F501C[0][8][0],
+
+    &D_800F5418[0][15][0],
+    &D_800F5418[0][18][0],
+    &D_800F5418[0][21][0],
+    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL
+    },
+    //????????? blank??? default????? what????? is this black for real????
+    {
+    &D_800F501C[0][0][0],
+    &D_800F501C[0][2][0],
+    &D_800F501C[0][4][0],
+    &D_800F501C[0][6][0],
+    &D_800F501C[0][8][0],
+
+    &D_800F5418[0][12][0],
+    &D_800F5418[0][18][0],
+    &D_800F5418[0][21][0],
+    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL
+    },
+};
+
+//
+char D_800F5BE8[3][TEXT_LINES][TEXT_LINE_SIZE] = {
+    {
+    "この扉を開くにはキャロットが",
+    "４個必要です。",
+    "　"
+    },
+    {
+    "よく集めましたね。この部屋では",
+    "ビリヤードが遊べます。",
+    "　"
+    },
+    {
+    "玉を全部ポケットに入れると、",
+    "クラウンがもらえますよ。",
+    //stop
+    ""
+    } 
+};
+
+char D_800F5E04[2][TEXT_LINES][TEXT_LINE_SIZE] = {
+    {
+    "この扉を開くにはキャロットが",
+    "４個必要です。",
+    "　"
+    },
+    {
+    "キャロットを４個集めてから。",
+    "また来て下さい。",
+    "　"
+    } 
+};
+
+//stop
+TERMINATE_TEXTBOX(pad24)
+
+char D_800F5FA8[3][TEXT_LINES][TEXT_LINE_SIZE] = {
+    {
+    "この扉を開くにはキャロットが",
+    "２個必要です。",
+    "　"
+    },
+    {
+    "よく集めましたね。",
+    "この部屋ではボーリングで遊ぶ",
+    "ことが出来ます。"
+    },
+    {
+    "２００点以上得点をとると",
+    "クラウンがもらえますよ。",
+    "がんばって下さい。"
+    } 
+};
+
+//stop
+TERMINATE_TEXTBOX(pad25)
+
+char D_800F6200[2][TEXT_LINES][TEXT_LINE_SIZE] = {
+    {
+    "この扉を開くにはキャロットが",
+    "２個必要です。",
+    "　"
+    },
+    {
+    "また集めてから来て下さい。",
+    "キャロットはこの世界に",
+    "５つかくされていますよ。"
+    }
+};
+
+//stop
+TERMINATE_TEXTBOX(pad26)
+
+char D_800F63A4[3][TEXT_LINES][TEXT_LINE_SIZE] = {
+    {
+    "この扉を開くにはキャロットが",
+    "５個必要です。",
+    "　"
+    },
+    {
+    "キャロットを全部集めたのですね。",
+    "すごいですね。",
+    "さあ、部屋にお入り下さい。"
+    },
+    {
+    "この部屋では、強敵があなたを",
+    "待っています。",
+    "　"
+    }
+};
+
+//stop
+TERMINATE_TEXTBOX(pad27)
+                                    
+char D_800F65FC[2][TEXT_LINES][TEXT_LINE_SIZE] = {
+    {
+    "この扉を開くにはキャロットが",
+    "５個必要です。",
+    "　"
+    },
+    {
+    "また集めてから来て下さい。",
+    "キャロットはこの世界に",
+    "５つかくされていますよ。"
+    }
+};
+
+//stop
+TERMINATE_TEXTBOX(pad28)
+
+char* D_800F67A0[6] = {
+    &D_800F5BE8[0][0][0],
+    &D_800F5E04[0][0][0],
+    &D_800F5FA8[0][0][0],
+    &D_800F6200[0][0][0],
+    &D_800F63A4[0][0][0],
+    &D_800F65FC[0][0][0]
+};
+
+char D_800F67B8[1][TEXT_LINES][TEXT_LINE_SIZE] = {
+    {
+    "この扉を開くには５０個の",
+    "コレクトアイテムが必要です。",
+    ""
+    }
+};
+char* D_800F686C = &D_800F501C[0][11][0];
+char* D_800F6870 = &D_800F501C[0][14][0];
+char* D_800F6874 = &D_800F67B8[0][0][0];
+
+s32 D_800F6878 = 0;
+s32 D_800F687C = 1;
+
+s32 D_800F6880 = 0;
+
+s32 rngSeed = 0xA6B99CD;
+
+s32 gPrevButtons[4] = {-1, -1, -1, -1};
+s32 gButtons[4] = {-1, -1, -1, -1};
+
+s32 D_800F68A8 = 1;
+s32 D_800F68AC = 0;
+
+s32 D_800F68B0[4] = {0,0,0,0};
+
+s32 D_800F68C0 = -1;
+s32 D_800F68C4[2] = {-1, 0};
+s32 D_800F68CC = 0;
+
+Mtx D_800F68D0[5] = {
+    ZERO_MTX,
+    IDENTITY,
+    IDENTITY,
+    IDENTITY,
+    IDENTITY
+};
+
+u8 D_800F6A10[64] = {
+ 0, 1, 2, 3, 4, 5, 6, 7,
+ 8, 9,10,11,12,13,14,15,
+16,17,18,19,20,21,22,23,
+24,25,26,27,28,29,30,31,
+32,33,34,35,36,37,38,39,
+40,41, 0, 0, 0, 1, 2, 1,
+ 0, 1, 2, 3, 4, 5, 2, 3,
+ 4, 5, 2, 3, 4, 5, 0, 0
+};
+
+//eng symbol test?
+char D_800F6A50[112] = "　ＡＢＣＤＥＦＧＨＩＪＫＬＭＮＯＰＱＲＳＴＵＶＷＸＹＺ０１２３４５６７８９？！＆’”：（）／＋Ｘ＠〜ｘ−ｃ　";
+
+//general symbol test?
+char D_800F6AC0[708] = "　アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲンァィゥェォャュョガギグゲゴザジズゼゾダヂヅデドバビブベボパピプペポあいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをんぁぃぅぇぉゃゅょがぎぐげござじずぜぞだぢづでどばびぶべぼぱぴぷぺぽ０１２３４５６７８９？！＆”：（）．，−＋×÷＝「」〜ＡＢＣＤＥＦＧＨＩＪＫＬＭＮＯＰＱＲＳＴＵＶＷＸＹＺッっー続接状異動振下正用切源電技部屋上説明出真中舌敵度押匹台鬼火場回転高跳使頂歩逆立移杭次落戻始方向不思議世界入口体操作練習行床大菓子来最後奇妙手私足先’、。進地深数砂漠城通壁待受流落石要注意今日天気時間合何好心強追変身遊対戦狂暴怒攻撃当速得爆倒点全試玉以個持扉開必集巨岩弾楽前挿";
+
+char D_800F6D84[60] = "ＡＢＣＤＥＦＧＨＩＪＫＬＭＮＯＰＱＲＳＴＵＶＷＸＹＺ４６　";
+
+u8 D_800F6DC0[4] = {0, 1, 2, 3};
+
+u8 D_800F6DC4[4] = {0, 0, 0, 0};
+
+u8 D_800F6DC8[4] = {0, 1, 0, 0};
+
+u8 D_800F6DCC[4] = {0, 0, 0, 0};
+
+u8 D_800F6DD0[4] = {0, 0, 0, 0};
+
+u8 D_800F6DD4[16] = {0, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 7, 8, 0};
+
+u8 D_800F6DE4[4] = {0, 1, 2, 3};
+
+u8 D_800F6DE8[4] = {0, 0, 0, 0};
+
+u8 D_800F6DEC[4] = {0, 1, 2, 0};
+
+u8 D_800F6DF0[4] = {0, 0, 0, 0};
+
+u8 D_800F6DF4[4] = {0, 0, 0, 0};
+
+u8 D_800F6DF8[4] = {0, 0, 0, 0};
+
+u8 D_800F6DFC[4] = {0, 0, 0, 0};
+
+u8 D_800F6E00[20] = {0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 2, 2, 2, 2, 1, 0, 0, 0};
+
+u8 D_800F6E14[20] = {0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 2, 2, 2, 2, 1, 0, 0, 0};
+
+u8 D_800F6E28[8] = {2, 2, 1, 0, 0, 1, 0, 0};
+
+u8 D_800F6E30[8] = {2, 2, 1, 0, 0, 1, 0, 0};
+
+u8 D_800F6E38[4] = {0, 0, 0, 0};
+
+u8 D_800F6E3C[20] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 0, 0};
+
+u8 D_800F6E50[8] = {0, 1, 2, 3, 2, 1, 0, 0};
+
+u8 D_800F6E58[4] = {0, 1, 2, 0};
+
+u8 D_800F6E5C[4] = {0, 1, 2, 0};
+
+u8 D_800F6E60[4] = {0, 1, 2, 0};
+
+u8 D_800F6E64[4] = {0, 1, 2, 1};
+
+u8 D_800F6E68[4] = {0, 0, 0, 0};
+
+u8 D_800F6E6C[4] = {0, 1, 2, 1};
+
+u8 D_800F6E70[4] = {0, 1, 0, 0};
+
+u8 D_800F6E74[4] = {0, 1, 0, 0};
+
+u8 D_800F6E78[8] = {1, 2, 1, 2, 1, 0, 1, 3};
+
+u8 D_800F6E80[4] = {0, 1, 2, 3};
+
+u8 D_800F6E84[4] = {0, 0, 0, 0};
+
+u8 D_800F6E88[4] = {0, 0, 0, 0};
+
+u8 D_800F6E8C[4] = {0, 0, 0, 0};
+
+u8 D_800F6E90[4] = {0, 0, 0, 0};
+
+u8 D_800F6E94[4] = {0, 1, 0, 0};
+
+u8 D_800F6E98[4] = {0, 0, 0, 0};
+
+u8 D_800F6E9C[4] = {0, 1, 2, 0};
+
+u8 D_800F6EA0[8] = {0, 1, 2, 3, 4, 5, 0, 0};
+
+u8 D_800F6EA8[4] = {0, 1, 2, 1};
+
+u8 D_800F6EAC[4] = {0, 1, 2, 1};
+
+u8 D_800F6EB0[12] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 0, 0, 0};
+
+u8 D_800F6EBC[4] = {0, 1, 0, 0};
+
+u8 D_800F6EC0[4] = {0, 0, 0, 0};
+
+u8 D_800F6EC4[4] = {0, 1, 2, 0};
+
+u8 D_800F6EC8[4] = {0, 0, 0, 0};
+
+u8 D_800F6ECC[4] = {0, 1, 0, 0};
+
+u8 D_800F6ED0[4] = {0, 1, 2, 3};
+
+u8 D_800F6ED4[8] = {0, 1, 2, 3, 1, 0, 0, 0};
+
+u8 D_800F6EDC[4] = {0, 0, 0, 0};
+
+u8 D_800F6EE0[4] = {0, 0, 0, 0};
+
+u8 D_800F6EE4[4] = {0, 0, 0, 0};
+
+u8 D_800F6EE8[4] = {0, 0, 0, 0};
+
+u8 D_800F6EEC[4] = {0, 0, 0, 0};
+
+u8 D_800F6EF0[4] = {0, 0, 0, 0};
+
+u8 D_800F6EF4[4] = {0, 0, 0, 0};
+
+u8 D_800F6EF8[4] = {0, 0, 0, 0};
+
+u8 D_800F6EFC[4] = {0, 0, 0, 0};
+
+u8 D_800F6F00[4] = {0, 0, 0, 0};
+
+u8 D_800F6F04[48] = {
+    0, 1, 2, 3,
+    4, 5, 6, 7,
+    0, 1, 2, 6,
+    7, 5, 6, 7,
+    0, 1, 2, 3,
+    4, 5, 6, 7,
+    0, 1, 2, 6,
+    7, 5, 6, 7,
+    0, 1, 2, 3,
+    4, 5, 0, 1,
+    2, 3, 4, 5,
+    6, 7, 0, 0
+};
+
+u8 D_800F6F34[4] = {0, 0, 0, 0};
+
+u8 D_800F6F38[4] = {0, 0, 0, 0};
+
+u8 D_800F6F3C[4] = {0, 0, 0, 0};
+
+u8 D_800F6F40[4] = {0, 0, 0, 0};
+
+u8 D_800F6F44[4] = {0, 0, 0, 0};
+
+u8 D_800F6F48[4] = {0, 0, 0, 0};
+
+u8 D_800F6F4C[12] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 0, 0, 0};
+
+u8 D_800F6F58[4] = {0, 1, 2, 0};
+
+u8 D_800F6F5C[8] = {0, 1, 2, 3, 4, 5, 6, 0};
+
+u8 D_800F6F64[4] = {0, 1, 2, 0};
+
+u8 D_800F6F68[4] = {0, 0, 0, 0};
+
+u8 D_800F6F6C[4] = {0, 0, 0, 0};
+
+u8 D_800F6F70[4] = {0, 0, 0, 0};
+
+u8 D_800F6F74[4] = {0, 1, 0, 0};
+
+u8 D_800F6F78[4] = {0, 1, 0, 0};
+
+u8 D_800F6F7C[4] = {0, 1, 0, 0};
+
+u8 D_800F6F80[4] = {0, 1, 0, 0};
+
+u8 D_800F6F84[4] = {0, 1, 0, 0};
+
+u8 D_800F6F88[4] = {0, 1, 0, 0};
+
+u8 D_800F6F8C[4] = {0, 0, 0, 0};
+
+u8 D_800F6F90[4] = {0, 0, 0, 0};
+
+u8 D_800F6F94[8] = {0, 1, 2, 3, 4, 5, 6, 0};
+
+u8 D_800F6F9C[8] = {0, 1, 2, 3, 4, 5, 6, 0};
+
+u8 D_800F6FA4[40] = {
+    0, 1, 2, 3,
+    4, 5, 6, 7,
+    8, 9,10,11,
+    12,13,14,15,
+    16,17,18,19,
+    20,21,22,23,
+    24,25,26,27,
+    28,29,30,31,
+    32,33,34,35,
+    36,37,38,39
+};
+
+u8 D_800F6FCC[4] = {0, 0, 0, 0};
+
+u8 D_800F6FD0[4] = {0, 0, 0, 0};
+
+u8 D_800F6FD4[4] = {0, 0, 0, 0};
+
+u8 D_800F6FD8[4] = {0, 0, 0, 0};
+
+u8 D_800F6FDC[4] = {0, 0, 0, 0};
+
+u8 D_800F6FE0[4] = {0, 0, 0, 0};
+
+u8 D_800F6FE4[4] = {0, 0, 0, 0};
+
+u8 D_800F6FE8[4] = {0, 0, 0, 0};
+
+u8 D_800F6FEC[4] = {0, 0, 0, 0};
+
+u8 D_800F6FF0[4] = {0, 0, 0, 0};
+
+u8 D_800F6FF4[4] = {0, 0, 0, 0};
+
+u8 D_800F6FF8[4] = {0, 0, 0, 0};
+
+u8 D_800F6FFC[4] = {0, 0, 0, 0};
+
+u8 D_800F7000[4] = {0, 0, 0, 0};
+
+u8 D_800F7004[4] = {0, 0, 0, 0};
+
+u8 D_800F7008[12] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 0, 0, 0};
+
+u8 D_800F7014[4] = {0, 0, 0, 0};
+
+u8 D_800F7018[4] = {0, 0, 0, 0};
+
+u8 D_800F701C[4] = {0, 0, 0, 0};
+
+u8 D_800F7020[4] = {0, 0, 0, 0};
+
+u8 D_800F7024[4] = {0, 0, 0, 0};
+
+u8 D_800F7028[4] = {0, 0, 0, 0};
+
+u8 D_800F702C[4] = {0, 0, 0, 0};
+
+u8 D_800F7030[4] = {0, 0, 0, 0};
+
+u8 D_800F7034[4] = {0, 0, 0, 0};
+
+u8 D_800F7038[4] = {0, 0, 0, 0};
+
+u8 D_800F703C[4] = {0, 0, 0, 0};
+
+u8 D_800F7040[4] = {0, 0, 0, 0};
+
+u8 D_800F7044[4] = {0, 0, 0, 0};
+
+u8 D_800F7048[4] = {0, 0, 0, 0};
+
+u8 D_800F704C[4] = {0, 0, 0, 0};
+
+u8 D_800F7050[4] = {0, 0, 0, 0};
+
+u8 D_800F7054[4] = {0, 0, 0, 0};
+
+u8 D_800F7058[4] = {0, 0, 0, 0};
+
+u8 D_800F705C[4] = {0, 0, 0, 0};
+
+u8 D_800F7060[4] = {0, 0, 0, 0};
+
+u8 D_800F7064[4] = {0, 0, 0, 0};
+
+u8 D_800F7068[4] = {0, 0, 0, 0};
+
+u8 D_800F706C[4] = {0, 0, 0, 0};
+
+u8 D_800F7070[4] = {0, 0, 0, 0};
+
+u8 D_800F7074[4] = {0, 0, 0, 0};
+
+u8 D_800F7078[4] = {0, 0, 0, 0};
+
+u8 D_800F707C[4] = {0, 0, 0, 0};
+
+u8 D_800F7080[4] = {0, 0, 0, 0};
+
+u8 D_800F7084[4] = {0, 0, 0, 0};
+
+u8 D_800F7088[4] = {0, 0, 0, 0};
+
+u8 D_800F708C[4] = {0, 0, 0, 0};
+
+u8 D_800F7090[4] = {0, 0, 0, 0};
+
+u8 D_800F7094[4] = {0, 0, 0, 0};
+
+u8 D_800F7098[4] = {0, 0, 0, 0};
+
+u8 D_800F709C[4] = {0, 0, 0, 0};
+
+u8 D_800F70A0[4] = {0, 0, 0, 0};
+
+u8 D_800F70A4[4] = {0, 0, 0, 0};
+
+u8 D_800F70A8[4] = {0, 0, 0, 0};
+
+u8 D_800F70AC[4] = {0, 0, 0, 0};
+
+u8 D_800F70B0[4] = {0, 0, 0, 0};
+
+u8 D_800F70B4[4] = {0, 0, 0, 0};
+
+u8 D_800F70B8[4] = {0, 0, 0, 0};
+
+u8 D_800F70BC[4] = {0, 0, 0, 0};
+
+u8 D_800F70C0[4] = {0, 0, 0, 0};
+
+u8 D_800F70C4[4] = {0, 0, 0, 0};
+
+u8 D_800F70C8[4] = {0, 0, 0, 0};
+
+u8 D_800F70CC[4] = {0, 0, 0, 0};
+
+u8 D_800F70D0[4] = {0, 0, 0, 0};
+
+u8 D_800F70D4[4] = {0, 0, 0, 0};
+
+u8 D_800F70D8[4] = {0, 0, 0, 0};
+
+u8 D_800F70DC[4] = {0, 0, 0, 0};
+
+u8 D_800F70E0[4] = {0, 0, 0, 0};
+
+u8 D_800F70E4[4] = {0, 0, 0, 0};
+
+u8 D_800F70E8[4] = {0, 0, 0, 0};
+
+u8 D_800F70EC[4] = {0, 0, 0, 0};
+
+u8 D_800F70F0[4] = {0, 0, 0, 0};
+
+u8 D_800F70F4[4] = {0, 0, 0, 0};
+
+u8 D_800F70F8[4] = {0, 0, 0, 0};
+
+u8 D_800F70FC[4] = {0, 0, 0, 0};
+
+u8 D_800F7100[4] = {0, 0, 0, 0};
+
+u8 D_800F7104[4] = {0, 0, 0, 0};
+
+u8 D_800F7108[4] = {0, 0, 0, 0};
+
+u8 D_800F710C[4] = {0, 0, 0, 0};
+
+u8 D_800F7110[4] = {0, 0, 0, 0};
+
+u8 D_800F7114[4] = {0, 0, 0, 0};
+
+u8 D_800F7118[4] = {0, 0, 0, 0};
+
+u8 D_800F711C[4] = {0, 0, 0, 0};
+
+u8 D_800F7120[4] = {0, 0, 0, 0};
+
+u8 D_800F7124[4] = {0, 0, 0, 0};
+
+u8 D_800F7128[4] = {0, 0, 0, 0};
+
+u8 D_800F712C[4] = {0, 0, 0, 0};
+
+u8 D_800F7130[4] = {0, 0, 0, 0};
+
+u8 D_800F7134[4] = {0, 0, 0, 0};
+
+u8 D_800F7138[4] = {0, 0, 0, 0};
+
+u8 D_800F713C[4] = {0, 0, 0, 0};
+
+u8 D_800F7140[4] = {0, 1, 2, 0};
+
+u8 D_800F7144[8] = {0, 1, 2, 3, 4, 5, 6, 7};
+
+u8 D_800F714C[8] = {0, 1, 2, 3, 4, 5, 6, 7};
+
+u8 D_800F7154[4] = {0, 0, 0, 0};
+
+u8 D_800F7158[4] = {0, 0, 0, 0};
+
+u8 D_800F715C[4] = {0, 0, 0, 0};
+
+u8 D_800F7160[4] = {0, 0, 0, 0};
+
+u8 D_800F7164[4] = {0, 0, 0, 0};
+
+u8 D_800F7168[4] = {0, 0, 0, 0};
+
+u8 D_800F716C[4] = {0, 1, 0, 0};
+
+u8 D_800F7170[4] = {0, 1, 0, 0};
+
+u8 D_800F7174[4] = {0, 1, 0, 0};
+
+u8 D_800F7178[4] = {0, 1, 0, 0};
+
+u8 D_800F717C[4] = {0, 1, 0, 0};
+
+u8 D_800F7180[4] = {0, 1, 0, 0};
+
+u8 D_800F7184[4] = {0, 0, 0, 0};
+
+u8 D_800F7188[4] = {0, 0, 0, 0};
+
+u8 D_800F718C[4] = {0, 0, 0, 0};
+
+u8 D_800F7190[4] = {0, 1, 0, 0};
+
+u8 D_800F7194[8] = {0, 1, 2, 3, 4, 5, 0, 0};
+
+u8 D_800F719C[48] = {
+    0, 1, 2, 3,
+    4, 5, 6, 7,
+    8, 9,10,11,
+    12,13,14,15,
+    16,17,18,19,
+    20,21,22,23,
+    24,25,26,27,
+    28,29,30,31,
+    32,33,34,35,
+    36,37,38,39,
+    40,41,42,43,
+    44,45,46,47
+};
+
+u8 D_800F71CC[4] = {0, 1, 0, 0};
+
+u8 D_800F71D0[48] = {
+    0, 1, 2, 3,
+    4, 5, 6, 7,
+    8, 9,10,11,
+    12,13,14,15,
+    16,17,18,19,
+    20,21,22,23,
+    24,25,26,27,
+    28,29,30,31,
+    32,33,34,35,
+    36,37,38,39,
+    40,41,42,43,
+    44,45,46,47
+};
+
+u8 D_800F7200[12] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11};
+
+
+u8 D_800F720C[48] = {
+    0, 1, 2, 3,
+    4, 5, 6, 7,
+    8, 9,10,11,
+    12,13,14,15,
+    16,17,18,19,
+    20,21,22,23,
+    24,25,26,27,
+    28,29,30,31,
+    32,33,34,35,
+    36,37,38,39,
+    40,41,42,43,
+    44,45,46,47
+};
+
+u8 D_800F723C[4] = {0, 1, 2, 3};
+
+u8 D_800F7240[4] = {0, 0, 0, 0};
+
+u8 D_800F7244[4] = {0, 0, 0, 0};
+
+u8 D_800F7248[4] = {0, 0, 0, 0};
+
+u8 D_800F724C[4] = {0, 1, 2, 3};
+
+u8 D_800F7250[4] = {0, 0, 0, 0};
+
+u8 D_800F7254[4] = {0, 0, 0, 0};
+
+u8 D_800F7258[4] = {0, 0, 0, 0};
+
+u8 D_800F725C[16] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 0, 0};
+
+u8 D_800F726C[116] = {
+    0, 0, 0, 1,
+    1, 2, 3, 4,
+    5, 6, 7, 8,
+    9,10,11, 1,
+    1, 0, 0, 0,
+    0, 0, 1, 1,
+    0, 0, 1, 1,
+    0, 0,11,10,
+    9, 8, 7, 6,
+    5, 4, 3, 2,
+    1, 1, 0, 0,
+    0, 0, 0, 0,
+    2, 2, 2, 3,
+    3, 3, 4, 4,
+    4, 5, 5, 5,
+    6, 6, 6, 7,
+    7, 7, 8, 8,
+    8, 9, 9, 9,
+   10,10,10,11,
+   11,11, 1, 1,
+    1, 2, 4, 6,
+    8,10, 3, 5,
+    7, 9,11, 2,
+    4, 6, 8,10,
+    3, 5, 7, 9,
+   11, 2, 4, 6,
+    8,10, 3, 5,
+    7, 9,11, 0,
+    0, 0, 0, 0
+};
+
+u8 D_800F72E0[4] = {0, 0, 0, 0};
+
+u8 D_800F72E4[4] = {0, 0, 0, 0};
+
+u8 D_800F72E8[4] = {0, 0, 0, 0};
+
+u8 D_800F72EC[4] = {0, 0, 0, 0};
+
+u8 D_800F72F0[4] = {0, 0, 0, 0};
+
+u8 D_800F72F4[172] = {
+    0, 0, 0, 0,
+    1, 2, 3, 4,
+    5, 6, 7, 8,
+    9,10, 0, 1,
+    2, 3, 4, 5,
+    6, 7, 8, 9,
+   10, 0, 1, 2,
+    3, 4, 5, 6,
+    7, 8, 9,10,
+    0, 1, 2, 3,
+    4, 5, 6, 7,
+    8, 9,10, 0,
+    1, 2, 3, 4,
+    5, 6, 7, 8,
+    9,10, 0, 1,
+    2, 3, 4, 5,
+    6, 7, 8, 9,
+   10, 0, 0, 0,
+    0, 0, 0,11,
+   12,13,14,15,
+   16,17,18,19,
+   20,21,22,23,
+   24,25,26,27,
+   28,29,30,30,
+   30,30,30,30,
+   30,30,30,30,
+   30,30,31,32,
+   33,34,35,35,
+   35,34,33,32,
+   31,31,31,31,
+   32,33,34,35,
+   35,35,34,33,
+   32,31,31,31,
+   32,33,34,35,
+   35,35,34,33,
+   32,31,31,31,
+   32,33,34,35,
+   35,35,34,33,
+   32,31,31,31,
+   31,31,30,28,
+   26,24,22,20,
+   18,16,14,12,
+    0, 0, 0, 0
+};
+
+//cool hex string bro
+//char D_800F73A0[40] = "０１２３４５６７８９ＡＢＣＤＥＦＧ";
+
+
+//SpriteListing gSpriteListings[2]
+
+
+/*chameleonEyeListEntry chameleonEyeList[6] = {
+{&Davy_eyeR_ci8_PNG, &Davy_eyeL_ci8_PNG, &Davy_eyeR_ci8_PAL, &Davy_eyeL_ci8_PAL},
+{&Jack_eyeR_ci8_PNG, &Jack_eyeL_ci8_PNG, &Jack_eyeR_ci8_PAL, &Jack_eyeL_ci8_PAL},
+{&Fred_eyeR_ci8_PNG, &Fred_eyeL_ci8_PNG, &Fred_eyeR_ci8_PAL, &Fred_eyeL_ci8_PAL},
+{&Linda_eyeR_ci8_PNG, &Linda_eyeL_ci8_PNG, &Linda_eyeR_ci8_PAL, &Linda_eyeL_ci8_PAL},
+{&Black_eyeR_ci8_PNG, &Black_eyeL_ci8_PNG, &Black_eyeR_ci8_PAL, &Black_eyeL_ci8_PAL},
+{&White_eyeR_ci8_PNG, &White_eyeL_ci8_PNG, &White_eyeR_ci8_PAL, &White_eyeL_ci8_PAL}
+};*/
+
+
+//s32 D_800FEDBC = 0;
+
 void DummiedPrintf2(char* arg0, ...) {
 
 }
@@ -1388,7 +3164,7 @@ void func_8005C9B8(void) {
     LoadSprite(SPRITE_HEARTRED);
     LoadSprite(SPRITE_HEARTORANGE);
     LoadSprite(SPRITE_HEARTYELLOW);
-    LoadSprite(0x1A);
+    LoadSprite(26);
 }
 
 void func_8005CA38(void) {
@@ -1402,7 +3178,7 @@ Gfx* func_8005CA44(Gfx* gfxPos) {
 
     func_800610B8();
     gSPDisplayList(gfxPos++, D_10012A0);
-    gSPMatrix(gfxPos++, &D_800F69D0, G_MTX_PUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    gSPMatrix(gfxPos++, &D_800F68D0[4], G_MTX_PUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
 
     tile = D_80176F98[gSpriteFrameBuffer];
     for (i = 0; i < D_800FDFA8[gSpriteFrameBuffer]; tile++, i++) {
@@ -1537,7 +3313,7 @@ Gfx* func_8005CA44(Gfx* gfxPos) {
         gSPDisplayList(gfxPos++, D_303D418);
     }
     gSPDisplayList(gfxPos++, D_10012A0);
-    gSPMatrix(gfxPos++, &D_800F69D0, G_MTX_PUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    gSPMatrix(gfxPos++, &D_800F68D0[4], G_MTX_PUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
 
     tile = D_8018E698[gSpriteFrameBuffer];
     for (i = 0; i < D_800FDFB8[gSpriteFrameBuffer]; tile++, i++) {
@@ -1619,7 +3395,7 @@ Gfx* func_8005F408(Gfx* gfxPos) {
 
     func_800610B8();
     gSPDisplayList(gfxPos++, D_10012A0);
-    gSPMatrix(gfxPos++, &D_800F69D0, G_MTX_PUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    gSPMatrix(gfxPos++, &D_800F68D0[4], G_MTX_PUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     gSPDisplayList(gfxPos++, D_800FE080);
     gDPSetRenderMode(gfxPos++, G_RM_OPA_SURF, G_RM_OPA_SURF2);
     gDPSetCombineLERP(gfxPos++, PRIMITIVE, 0, TEXEL0, 0, PRIMITIVE, 0, TEXEL0, 0, PRIMITIVE, 0, TEXEL0, 0, PRIMITIVE, 0, TEXEL0, 0);
@@ -3400,6 +5176,7 @@ Effect* Effect_TypeS_Init(f32 delay, f32 duration) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80068BFC.s")
 
+//manage rabbit functionality
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80068DB4.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80069734.s")
@@ -3637,7 +5414,7 @@ void Effect_TypeW_Update(Effect* effect, Gfx** pGfxPos) {
 
         effect->lifeTime += effect->duration;
         if (effect->lifeTime >= 1.0f) {
-            FreeSprite(0x48);
+            FreeSprite(72);
             Effect_Free(effect);
         }
     }
@@ -3662,7 +5439,7 @@ void Effect_TypeW_Init(f32 posX, f32 posY, f32 posZ, f32 size, s32 duration, s32
     effect->sizeY = duration;    
     effect->lifeTime = 0.0f;
     effect->duration = 1.0f / (duration + 20);
-    LoadSprite(0x48);
+    LoadSprite(72);
 }
 
 void LoadPlayerEyes(s32 arg0) {
@@ -3689,6 +5466,7 @@ void FreePlayerEyes(s32 arg0) {
     gLockContextEyes = 255;
 }
 
+//these are just image addresses, the only reason they are typed u8 is so it goes byte by byte
 void SetEyeTexture(u8* dest, u8* src, s32 size) {
     u8* destP;
     s32 i;
@@ -3704,38 +5482,44 @@ void SetEyeTexture(u8* dest, u8* src, s32 size) {
     }
 }
 
-void SetPlayerEyes(s32 arg0, s32 arg1, s32 arg2) {
-    SpriteListing* sprite;
-    struct_800FE4EC* s1;
-    s32 size;
 
-    switch (arg1) {
-        case 0:
-            sprite = &gSpriteListings[arg0];
-            s1 = &D_800FE4EC[arg2];
-            size = sprite->width * sprite->height * sprite->tileCountX * sprite->tileCountY;
-            SetEyeTexture(s1->unk_00, sprite->bitmapP, size);
-            SetEyeTexture(s1->unk_08, sprite->palletteP, 0x200);
-            size = sprite[5].height * sprite[5].tileCountX * sprite[5].tileCountY * sprite[5].width;
-            SetEyeTexture(s1->unk_04, sprite[5].bitmapP, size);
-            SetEyeTexture(s1->unk_0C, sprite[5].palletteP, 0x200);
-            break;
-        case 1:
-            sprite = &gSpriteListings[arg0];
-            s1 = &D_800FE4EC[arg2];
-            size = sprite->width * sprite->height * sprite->tileCountX * sprite->tileCountY;
-            SetEyeTexture(s1->unk_00, sprite->bitmapP, size);
-            SetEyeTexture(s1->unk_08, sprite->palletteP, 0x200);
-            break;
-        case 2:
-            sprite = &gSpriteListings[arg0];
-            s1 = &D_800FE4EC[arg2];
-            size = sprite[5].height * sprite[5].tileCountX * sprite[5].tileCountY * sprite[5].width;
-            SetEyeTexture(s1->unk_04, sprite[5].bitmapP, size);
-            SetEyeTexture(s1->unk_0C, sprite[5].palletteP, 0x200);
-            break;
+void SetPlayerEyes(s32 spriteIndex, s32 whichEye, s32 eyeIndex) {
+    SpriteListing* sprite;
+    chameleonEyeListEntry* eye;
+    s32 size;
+    enum eye {
+        BOTH = 0,
+        RIGHT,
+        LEFT
+    };
+    switch (whichEye) {                                 /* irregular */
+    case BOTH:
+        sprite = &gSpriteListings[spriteIndex];
+        eye = &chameleonEyeList[eyeIndex];
+        size = sprite->width * sprite->height * sprite->tileCountX * sprite->tileCountY;
+        SetEyeTexture(eye->eyeR, sprite->bitmapP, size);
+        SetEyeTexture(eye->eyeRPalette, sprite->palletteP, 0x200);
+        size = sprite[5].height * sprite[5].tileCountX * sprite[5].tileCountY * sprite[5].width;
+        SetEyeTexture(eye->eyeL, sprite[5].bitmapP, size);
+        SetEyeTexture(eye->eyeLPalette, sprite[5].palletteP, 0x200);
+        break;
+    case RIGHT:
+        sprite = &gSpriteListings[spriteIndex];
+        eye = &chameleonEyeList[eyeIndex];
+        size = sprite->width * sprite->height * sprite->tileCountX * sprite->tileCountY;
+        SetEyeTexture(eye->eyeR, sprite->bitmapP, size);
+        SetEyeTexture(eye->eyeRPalette, sprite->palletteP, 0x200);
+        break;
+    case LEFT:
+        sprite = &gSpriteListings[spriteIndex];
+        eye = &chameleonEyeList[eyeIndex];
+        size = sprite[5].height * sprite[5].tileCountX * sprite[5].tileCountY * sprite[5].width;
+        SetEyeTexture(eye->eyeL, sprite[5].bitmapP, size);
+        SetEyeTexture(eye->eyeLPalette, sprite[5].palletteP, 0x200);
+        break;
     }
 }
+
 
 void Effect_PlayerEyes_Update(Effect* effect, Gfx** pGfxPos) {
 
@@ -3869,13 +5653,13 @@ void Effect_BossDeadEyes_Update(Effect* effect, Gfx** pGfxPos) {
     SetBossDeadEyes(effect->spriteID);
     switch(effect->spriteID) {
         case 75:
-            FreeSprite(202);
+            FreeSprite(SPRITE_EYESDAEADLIZARDKONG);
             break;
         case 7:
-            FreeSprite(201);
+            FreeSprite(SPRITE_EYESDEADQUINTELLA);
             break;        
         case 30:
-            FreeSprite(203);
+            FreeSprite(SPRITE_EYESDEADARMADILLO);
             break;        
     }
     Effect_Free(effect);
@@ -3887,13 +5671,13 @@ void Effect_BossDeadEyes_Init(s32 arg0) {
 
     switch(arg0) {
         case 75:
-            ret = LoadSprite(202);
+            ret = LoadSprite(SPRITE_EYESDAEADLIZARDKONG);
             break;
         case 7:
-            ret = LoadSprite(201);
+            ret = LoadSprite(SPRITE_EYESDEADQUINTELLA);
             break;        
         case 30:
-            ret = LoadSprite(203);
+            ret = LoadSprite(SPRITE_EYESDEADARMADILLO);
             break;
         default:
             return;
@@ -4717,7 +6501,7 @@ void Effect_TypeAH_Init(u8* arg0, f32 posX, f32 posY, f32 posZ, f32 arg4, unkStr
     }
 
     data = (Effect_TypeAH_Data*)effect->data;
-    data->dlist = D_800F0638[arg6];
+    data->dlist = ChameleonGfxs[arg6];
     data->unk_A88 = arg5->unk0;
     data->unk_A8C = arg5->unk4;
     data->yaw = arg4;
@@ -4971,12 +6755,12 @@ void Effect_GameResults_Update(Effect* effect, Gfx** pGfxPos) {
 
     effect->lifeTime += effect->duration;
     if (effect->lifeTime >= 1.0f) {
-        FreeSprite(189);
-        FreeSprite(190);
-        FreeSprite(191);
-        FreeSprite(192);
-        FreeSprite(193);
-        FreeSprite(194);
+        FreeSprite(SPRITE_RANKING_TEXT_JL);
+        FreeSprite(SPRITE_RANKING_TEXT_AL);
+        FreeSprite(SPRITE_RANKING_TEXT_BL);
+        FreeSprite(SPRITE_RANKING_TEXT_DC);
+        FreeSprite(SPRITE_RANKING_TEXT_KL);
+        FreeSprite(SPRITE_RANKING_TEXT_GC);
         FreeSprite(224);
         FreeSprite(225);
         Effect_Free(effect);
@@ -4994,12 +6778,12 @@ void Effect_GameResults_Init() {
     effect->spriteID = 0;
     effect->lifeTime = 0;
     effect->duration = 1.0f / 272.0f;
-    LoadSprite(189);
-    LoadSprite(190);
-    LoadSprite(191);
-    LoadSprite(192);
-    LoadSprite(193);
-    LoadSprite(194);
+    LoadSprite(SPRITE_RANKING_TEXT_JL);
+    LoadSprite(SPRITE_RANKING_TEXT_AL);
+    LoadSprite(SPRITE_RANKING_TEXT_BL);
+    LoadSprite(SPRITE_RANKING_TEXT_DC);
+    LoadSprite(SPRITE_RANKING_TEXT_KL);
+    LoadSprite(SPRITE_RANKING_TEXT_GC);
     LoadSprite(224);
     LoadSprite(225);
     setPrimColor(0, 0, 0, 255);
@@ -5064,7 +6848,7 @@ void Effect_TypeAL_Update(Effect* effect, Gfx** pGfxPos) {
                 if (a0 == a1 && gSelectedCharacters[0] <= 3) {
                     PLAYSFX(0x19, 0, 0x10);
                     Effect_TypeW_Init(260.0f, 9920.0f, 0.0f, 32.0f, 20, 16);
-                    Effect_TypeAH_Init(&effect->numParts, 260.0f, 9850.0f, 0.0f, -22.0f, D_800F0DE0, 5, 1, 1);
+                    Effect_TypeAH_Init(&effect->numParts, 260.0f, 9850.0f, 0.0f, -22.0f, &D_800F0D90[4], 5, 1, 1);
                 }
                 for (i = 0; i < 6; i++) {
                     s2 += RecordTime_ParseToSecs(&D_80200B85[i]);
@@ -5191,7 +6975,7 @@ void Effect_TypeAM_Update(Effect* effect, Gfx** pGfxPos) {
             setPrimColor(255, 255, 255, 255);
             printUISprite(0.0f, 0.0f, 0.0f, 0.0f, 1, 320.0f, 240.0f, 0.0f, 0);
             Effect_TypeAI_Init(255, 1.0f, 32.0f, 1);
-            D_800F0674 = 2;
+            gIsGamePaused = PAUSEMODE_FROZEN;
             effect->spriteID++;
             if (effect->spriteID > 30) {
                 *data->unk_00 = 1;
@@ -6263,7 +8047,7 @@ void Effect_TypeAY_Update(Effect* effect, Gfx** pGfxPos) {
     
 
     if (D_800FE74C == 0) {
-        D_800F0674 = 0;
+        gIsGamePaused = PAUSEMODE_NOT_PAUSED;
         Effect_Free(effect);
         return;
     }
@@ -6314,7 +8098,7 @@ void Effect_TypeAY_Update(Effect* effect, Gfx** pGfxPos) {
             effect->lifeTime += data->unk_08;
             sp44 = 1.0f - effect->lifeTime;
             if (effect->lifeTime >= 1.0f) {
-                D_800F0674 = 0;
+                gIsGamePaused = PAUSEMODE_NOT_PAUSED;
                 D_800FE74C = 0;
                 Effect_Free(effect);
             }
@@ -7132,7 +8916,7 @@ void func_8007CDBC(void) {
 void func_8007DFDC(f32 arg0, f32 arg1, f32 arg2, f32 arg3) {
 
 }
-//prints textbox. arg2= char[3][60]*
+//prints textbox. arg2= char[3][30]*
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/printTextbox.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8007E5E8.s")

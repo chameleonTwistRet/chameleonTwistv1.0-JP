@@ -26,7 +26,7 @@ tools/cli.ini
 --no-check-sections
 .ninja_deps
 .ninja_log
-build.ninja
+*.ninja
 undefined_funcs_auto.txt
 undefined_syms_auto.txt
 ctx.c

@@ -4,6 +4,7 @@
 #include "common.h"
 
 /* Functions */
+void bootproc(void);
 void func_80025EF0(PlayerActor* player, Tongue* tongue, s32 arg2);
 void func_8002CDBC(ContMain*);
 void func_8004BC48(ContMain*);
@@ -16,7 +17,6 @@ void Timing_StartProcess(void);
 void Timing_StopProcess(void);
 void func_8008C554(void);
 void osViSwapBuffer(void* frameBufPtr);
-s32 Controller_Init(void);
 void Sched_StartThread(void);
 void Audio_StartThread(void);
 s32 func_800AF604(f32, f32, f32, f32);
@@ -56,11 +56,11 @@ extern s16 D_800FFEC0;
 extern Gfx D_1015A70[];
 extern Gfx D_1015AB8[];
 extern Gfx D_1015AE8[];
-extern Gfx D_3057250[];
+extern Gfx AntLand_yellowAnt_gfx14_Gfx[];
 extern Gfx D_300EFC0[];
 extern Gfx D_3007EA0[];
 extern Gfx D_3008428[];
-extern Gfx D_3043F60[];
+extern Gfx BombLand_unk74_Gfx[];
 extern Gfx D_3012460[];
 extern Gfx D_3053ED0[];
 extern Gfx D_30081F8[];
@@ -78,22 +78,19 @@ extern Gfx D_30708F0[];
 extern Gfx D_30740B0[];
 extern Gfx D_3010220[];
 extern Gfx D_3013390[];
-extern Gfx D_3058750[];
-extern Gfx D_30595A8[];
-extern Gfx D_305A738[];
-extern Gfx D_305B528[];
+extern Gfx JungleLand_unkunk_Gfx[];
+extern Gfx JungleLand_unkunk2_Gfx[];
+extern Gfx JungleLand_unkunk3_Gfx[];
+extern Gfx JungleLand_unkunk4_Gfx[];
 extern Gfx D_3011318[];
 extern Gfx D_300DB48[];
 extern void* D_3025DA8;
 extern s32 D_800FE400;
-extern Gfx D_8008B58[];
-extern Gfx* D_800F0638[];
+extern Gfx Davy_restAssociate_Gfx[];
 extern Gfx* D_800F0650[];
 extern Gfx D_1015CB0[];
 extern Gfx D_1015BD0[];
-extern Gfx D_2006160[];
-extern s32 D_800F686C;
-extern s32 D_800F6870;
+extern Gfx Global_unusedStructure_Gfx[];
 extern void* D_1045B70;
 extern void* D_1045B7C;
 extern void* D_1045B88;
@@ -106,5 +103,12 @@ extern void* D_1045BDC;
 extern void* D_1045BE8;
 extern void* D_1045BF4;
 extern s32 D_800F0560;
+
+extern AnimPointer JungleLand_spiderRockInitPointers_Bin;
+extern AnimPointer JungleLand_golemSleepPointers_Bin;
+extern AnimPointer JungleLand_golemAttackPointers_Bin;
+extern AnimPointer JungleLand_fishHeadInitPointers_Bin;
+extern AnimPointer JungleLand_fishTailInitPointers_Bin;
+
 
 #endif // _1050_H_

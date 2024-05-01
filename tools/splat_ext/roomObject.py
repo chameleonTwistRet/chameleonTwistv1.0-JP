@@ -8,10 +8,10 @@ Modified for Room Object struct: Nathan R.
 
 import re
 import struct
+from math import degrees
 from pathlib import Path
 from splat.util.log import error
-
-from splat.util import options
+from splat.util import options, symbols
 from splat.segtypes.common.codesubsegment import CommonSegCodeSubsegment
 
 
@@ -60,21 +60,68 @@ class N64SegRoomObject(CommonSegCodeSubsegment):
 
         lines = []
 
-        sym = self.create_symbol(
-            addr=self.vram_start, in_segment=True, type="data", define=True
-        )
+        sym = self.retrieve_sym_type(symbols.all_symbols_dict, self.vram_start, "Roomobj")
+        if not sym:
+            sym = self.create_symbol(
+                addr=self.vram_start, in_segment=True, type="Roomobj", define=True
+            )
         if not self.data_only:
             lines.append('#include "common.h"')
             lines.append("")
-            if "/" in self.name:
-                lines.append("RoomObject %s = {" % (self.name.split("/")[(len(self.name.split("/"))-1)]))
-            else:
-                lines.append("RoomObject %s = {" % (self.name))
+            lines.append("RoomObject %s = {" % (sym.name))
 
         byteData = bytearray(sprite_data)
-        data = struct.unpack('>ffffffiiiifffiiiiiiiiiiiiIiiiiiiiii', byteData)
-        for v in data: 
+        data = struct.unpack('>ffffffiiiiffffiiiiiiiiiiIIiiiiiiiii', byteData)
+        enums = open("include/enums.h", "r", encoding="UTF-8").readlines()
+        i = 0
+        while i < len(data):
+            v = data[i]
+            if i in [0, 3]:
+                v = "{"+str(data[i])+","+str(data[i+1])+","+str(data[i+2])+"}"
+                i += 2
+            elif i == 6: #rotationMode
+                pass
+                #enum = 0
+                #actorAt = 0 #number in the actor enum
+                #reading = False
+                #while enum < len(enums):
+                #    enumLine = enums[enum]
+                #    if enumLine.find("RotationMode") != -1: reading = True
+                #    elif reading:
+                #        if actorAt == v:
+                #            v = enumLine.split(",")[0].split("	")[-1].strip()
+                #            break
+                #        elif enumLine.find("};") != -1: break
+                #        actorAt += 1
+                #    enum += 1
+            elif i == 7:
+                v = "DEGREES_TO_RADIANS_2PI("+str(degrees(v))+")"
+            elif i == 14: #exitDirection
+                pass
+                #enum = 0
+                #actorAt = 0 #number in the actor enum
+                #reading = False
+                #while enum < len(enums):
+                #    enumLine = enums[enum]
+                #    if enumLine.find("ExitDirection") != -1: reading = True
+                #    elif reading:
+                #        if actorAt == v:
+                #            v = enumLine.split(",")[0].split("	")[-1].strip()
+                #            break
+                #        elif enumLine.find("};") != -1: break
+                #        actorAt += 1
+                #    enum += 1
+            elif i in [24, 25]: #func RoomObject*
+                if i != 0:
+                    smsym = self.retrieve_sym_type(symbols.all_symbols_dict, data[i], "func")
+                    if not smsym:
+                        v = "NULL"
+                    else:
+                        v = "&"+smsym.name
+                else: v = "NULL"
+
             lines.append(f"    {v},")
+            i += 1
 
         if not self.data_only:
             lines.append("};")

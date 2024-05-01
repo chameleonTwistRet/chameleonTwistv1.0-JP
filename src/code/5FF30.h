@@ -65,7 +65,7 @@ typedef struct StageSelectionData {
 typedef struct UnkBg {
     s16 unk0;
     s16 unk2;
-    s16 unk4;
+    s16 spriteID;
 } UnkBg;
 
 extern UnkBg* D_800FFE58[4];
@@ -160,12 +160,10 @@ s32 func_8008BE14(void);
 s32 StopBGM(void);
 s32 func_8008BF20(void);
 s32 func_8008BFA8(s32 vol);
-s32 func_8008BFE0(s32 arg0);
 s32 alCSPGetTempoWrapper(void);
 s32 func_8008C040(s32 arg0);
 void func_8008C070(s32 arg0);
 void func_8008C1C8(s32* arg0);
-void PlayStageBGM(s32 arg0);
 void func_8008C35C(Gfx** arg0);
 s32 Actor_PlaySound(Actor* actor, s32 sfxID, s32 unused1, s32 unused2);
 void func_8008C3F0(Actor* actor, s32 sfxID, s32 unused);
@@ -216,14 +214,15 @@ void func_8008E840(CTTask*);
 CTTask* func_8008E9AC(s16 arg0, s16 arg1, s16 arg2, s16 arg3, s16* arg4);
 CTTask* func_8008EA60(s16 arg0, s16 arg1, s16 arg2, s16 arg3, s16* arg4);
 //s16 might be CTTask??
-CTTask* func_8008EB08(s16 arg0, s16 arg1, s16 arg2, s16 arg3, s16* arg4, f32 arg5, f32 arg6, f32 arg7, f32 arg8, s16 arg9);
+CTTask* func_8008EB08(s16, s16, s16, s16, s16*, f32, f32, f32, f32, s16);
+CTTask* func_8008EBCC(s16, s16, s16, s16, CTTask*, f32, f32, f32, f32, s16);
 s32 func_8008EC90(void);
 void func_8008EF78(CTTask* task);
 void func_8008EFA0(CTTask*);
 CTTask* func_8008F050(s16 arg0, s16 arg1, s16 arg2, s16 arg3, s16* arg4);
 void func_8008F114(void);
 void func_8008F16C(void);
-s32 func_8008F694(s32 arg0);
+s32 DrawBackground(s32 arg0);
 void func_8008F710(CTTask* task);
 CTTask* func_8008F7A4(s16, s16);
 char* ParseIntToBase10(s32 useInt, char* result);
@@ -342,7 +341,7 @@ s32 func_80096748(u16);
 s32 CanAccessStage(s32 stageIndex);
 f32 func_80096898(u16 arg0);
 void func_80096964(CTTask* task);
-void func_80096A20(CTTask* task);
+void Stage_Select_ChameleonWalk(CTTask* task);
 void func_80096CA0(CTTask* task);
 void func_80096D40(s32);
 s32 func_80097414(s32 arg0, s32 arg1);
@@ -441,7 +440,7 @@ void func_800A191C(CTTask* task);
 void func_800A1CCC(CTTask* arg0);
 //white perfect code related???
 void func_800A1B34(CTTask* task);
-void func_800A1D38(void);
+void Process_NewGameMenu(void);
 void func_800A1EC4(void);
 void PrintPerfectCode(CTTask* task);
 CTTask* func_800A20CC(void);
@@ -452,7 +451,6 @@ void func_800A25F0(CTTask* task, f32 arg0);
 void func_800A272C(CTTask* task);
 void func_800A28B8(CTTask* task);
 void func_800A2B9C(CTTask* task);
-void func_800A2BDC(void);
 CTTask* func_800A2D84(void);
 void func_800A2E18(CTTask*);
 //options draw??
@@ -467,7 +465,6 @@ void PrintDataClearConfirm(void);
 
 
 void func_800A41C0(CTTask* task);
-void func_800A4320(void);
 CTTask* func_800A4484(void);
 void func_800A44D8(CTTask* arg0);
 void GameOverMaster(CTTask* task);
@@ -545,10 +542,12 @@ void AdjustRectToVec3(Rect3D* r, Vec3f vec);
 void Rect_Expand(Rect3D* r, f32 s);
 void OrderRectBounds(Rect3D *rect);
 s32 IfRectsIntersect(Rect3D* rectA, Rect3D* rectB);
-s32 IsPointInRect(Vec3f point, Rect3D* rect);
 void CalculateBoundingRectFromVectors(Vec3f vecA, Vec3f vecB, Rect3D* rect);
 //////
 
+void func_8009CB14(void);
+void func_8009D0EC(void);
+void func_8009EE44(void);
 
 /* Ext Variables */
 extern ContMain D_801FC9B8;
@@ -571,7 +570,7 @@ extern u8 D_800FF8E4;
 extern s32 perfectCode;
 extern OSContPad D_80175650[MAXCONTROLLERS];
 extern s32 D_801FCA08;
-extern s16 D_801FCA18;
+extern s16 gCurrentDemo;
 extern s16 D_80100D64[];
 extern f32 D_80108760;
 extern f32 D_80108764;
@@ -618,7 +617,6 @@ extern Mtx* D_800FF8D4;
 extern Unk_800FFB74* D_800FFB74[];
 extern Unk_800FFDDC* D_800FFDDC[];
 extern s32 D_800FFDEC;
-extern Gfx* D_800F0638[];
 extern f32* D_800FF610; //this probably isnt right but until we care roll with it
 extern s16 D_801FC9A4;
 extern s8 D_80200C08;
@@ -627,7 +625,6 @@ extern s16 D_800FFEBC;
 extern s32 D_802023E0;
 extern s32 D_80202420; //unk type
 extern s32 D_8020D8A8;
-extern s32 currentStageCrowns;
 extern s16 D_80100E10;
 extern s16 sStageCrownTotals[6];
 extern s32 D_80247904;
