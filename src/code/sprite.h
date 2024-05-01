@@ -371,6 +371,10 @@ extern u8 sTextGradientPalettes[];
 extern s32 gCharacterPortraits[];
 extern u8 D_800FE790[];
 
+
+
+
+
 /* functions */
 void Memory_Free(void*);
 void func_80055C04(void);

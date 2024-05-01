@@ -808,7 +808,7 @@ void Battle_Init(void) {
         Battle_PlayerData[i].rank = 99;
         Battle_PlayerData[i].rankTimer = 0.0f;
     }
-    LoadSprite(SPRITE_BATTLE_STARS);
+    LoadSprite(SPRITE_SPECIFIC_SYMBOLS);
     LoadSprite(SPRITE_TEXTBIGGER);
     LoadSprite(SPRITE_ORDINALS);
     LockEyeChange();
@@ -1172,7 +1172,7 @@ void Process_Ranking(void) {
         LoadSprite(SPRITE_PORTRAITLINDA);
         LoadSprite(SPRITE_PORTRAITBLACK);
         LoadSprite(SPRITE_PORTRAITWHITE);
-        LoadSprite(SPRITE_BATTLE_STARS);
+        LoadSprite(SPRITE_SPECIFIC_SYMBOLS);
         LoadSprite(SPRITE_RANKING_TEXT_JL);
         LoadSprite(SPRITE_RANKING_TEXT_AL);
         LoadSprite(SPRITE_RANKING_TEXT_BL);
@@ -1220,7 +1220,7 @@ void func_800557F8(void) {
         }
 
         LoadSprite(SPRITE_RANKINGBACKGROUND);
-        LoadSprite(SPRITE_BATTLE_STARS);
+        LoadSprite(SPRITE_SPECIFIC_SYMBOLS);
         LoadSprite(SPRITE_ORDINALS);
         LoadPlayerEyes(CHARA_DAVY);
         LoadPlayerEyes(CHARA_JACK);

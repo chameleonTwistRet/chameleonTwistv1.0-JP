@@ -2154,7 +2154,7 @@ s32 func_80090B10(s32 time, s32 stageID) {
 }
 
 void func_80090BC0(void) {
-    LoadSprite(SPRITE_BATTLE_STARS);
+    LoadSprite(SPRITE_SPECIFIC_SYMBOLS);
     switch (gCurrentStage) {
     case 13:
         LoadSprite(113);
@@ -4652,7 +4652,7 @@ void Process_NewGameMenu(void) {
         func_800A0D90();
         LoadSprite(SPRITE_BATTLE_BIGBOARD);
         LoadSprite(SPRITE_BATTLE_STAGETITLEBOARD);
-        LoadSprite(SPRITE_BATTLE_STARS);
+        LoadSprite(SPRITE_SPECIFIC_SYMBOLS);
         LoadSprite(SPRITE_BATTLE_OPTIONSARROWS);
         CTTaskList_Init();
         D_80168DA0 = 1;
@@ -4921,7 +4921,7 @@ void Process_OptionsMenu(void) {
         DMAStruct_Print();
         func_800A1EC4();
         UseFixedRNGSeed = 0;
-        LoadSprite(SPRITE_BATTLE_STARS);
+        LoadSprite(SPRITE_SPECIFIC_SYMBOLS);
         LoadSprite(SPRITE_BATTLE_BIGBOARD);
         LoadSprite(SPRITE_BATTLE_STAGETITLEBOARD);
         LoadSprite(SPRITE_BATTLE_OPTIONSARROWS);
