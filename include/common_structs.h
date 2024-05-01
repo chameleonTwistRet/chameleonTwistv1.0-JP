@@ -317,7 +317,7 @@ typedef struct RoomObject {
     s32 unk54;
     s32 unk58;
     s32 unk5C;
-    void (*func1)(struct Collider*);
+    void (*func1)(struct Collider*, struct RoomObject*);
     void (*func2)(struct Collider*);
     s32 unk68;
     s32 unk6C;

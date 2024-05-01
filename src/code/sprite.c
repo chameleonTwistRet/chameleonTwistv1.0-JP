@@ -7,22 +7,22 @@ extern u8 Animations_unk1Pointers_Bin[];
 extern u8 Animations_unk2Pointers_Bin[];
 extern u8 D_1045B70[];
 
-extern u8* D_800F0D3C;
-extern u8* D_800F0D58;
-extern u8* D_800F0D88;
-extern u8* D_800F0D8C;
+extern u8 D_800F0D3C[];
+extern u8 D_800F0D58[];
+extern u8 D_800F0D88[];
+extern u8 D_800F0D8C[];
 
 unkStruct16 D_800F0D90[5] = {
 {&Animations_unk2Pointers_Bin, &Animations_unk2Pointers_Bin,
-&D_800F0D3C, 28, -10.0f},
+D_800F0D3C, 28, -10.0f},
 {&D_1045B70, &D_1045B70,
-&D_800F0D58, 45, -30.0f},
+D_800F0D58, 45, -30.0f},
 {&D_1045B70, &D_1045B70,
-&D_800F0D88, 1, -30.0f},
+D_800F0D88, 1, -30.0f},
 {&Animations_unk2Pointers_Bin, &Animations_unk2Pointers_Bin,
-&D_800F0D8C, 1, -10.0f},
+D_800F0D8C, 1, -10.0f},
 {&Animations_unk1Pointers_Bin, &Animations_unk2Pointers_Bin,
-&D_800F0D3C, 28, 0.0f}
+D_800F0D3C, 28, 0.0f}
 };
 
 unk_80052094_8 Battle_MsgReady[5] = {
@@ -39,7 +39,7 @@ unk_80052094_8 Battle_MsgGo[3] = {
     {4.0f, 2},
 };
 
-s32 padding[3] = 0;
+s32 padding[3] = {0, 0, 0};
 
 #define TEXT_LINE_LENGTH 30
 //bc shorts
@@ -6791,7 +6791,7 @@ void Effect_GameResults_Init() {
 }
 
 #ifdef NON_MATCHING
-void func_80071A48(u32 arg0, u8* str) {
+void func_80071A48(u32 arg0, s8* str) {
     s32 shift;
 
     for (shift = 28; shift >= 0; shift -= 4) {
@@ -6804,7 +6804,7 @@ void func_80071A48(u32 arg0, u8* str) {
 }
 #else
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80071A48.s")
-void func_80071A48(u32 arg0, u8* str);
+void func_80071A48(u32 arg0, s8* str);
 #endif
 
 void Effect_TypeAL_Update(Effect* effect, Gfx** pGfxPos) {

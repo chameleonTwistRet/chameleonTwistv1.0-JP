@@ -44,7 +44,7 @@ void func_800AF9D0(Collider* arg0, RoomObject* arg1) {
     D_802023D4 = -1;
 }
 
-void func_800AFB2C(Collider* arg0, s32 arg1) {
+void func_800AFB2C(Collider* arg0, RoomObject* arg1) {
     arg0->unk_5C = 2;
     arg0->unkA4 = 0;
     func_800B402C(arg0, 0, 2);

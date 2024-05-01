@@ -439,22 +439,24 @@ void Battle_PrintTextBig(f32 posX, f32 posY, f32 scaleX, s32 palette, u8 length,
     }
 }
 
-void func_800522A4(f32 posX, f32 posY, f32 scaleX, f32 scaleY, s32 arg4, s32 palette) {
-    s32 unused;
+void func_800522A4(f32 arg0, f32 arg1, f32 arg2, f32 arg3, void* arg4, s32 arg5) { //TODO: fix typing
+    s32 var_s0;
     s32 sp90;
-    s32 sp8C;
-    s32 i;
+    s32 sp8C;    
+    s32 var_s1;
+    s32 temp = (s32)arg4;
 
-    i = 0;
-    while (arg4 != 0) {
-        if (func_80080318(SPRITE_TEXTBIG, arg4, &sp90, &sp8C) == 0) {
-            SetTextGradientFromPalette(palette);
+    var_s0 = temp;
+    var_s1 = 0;
+    while (temp != 0) {
+        if (func_80080318(1, (void*)temp, &sp90, &sp8C) == 0) {
+            SetTextGradientFromPalette(arg5);
             func_800612F0(sp8C);
-            func_80059F28(posX + 16.0f * scaleX * i, posY, 0, 0, 1.0f, 16 * scaleX, 24.0f * scaleY, sp90, SPRITE_TEXTBIG);
+            func_80059F28(arg0 + 16.0f * arg2 * var_s1, arg1, 0, 0, 1.0f, 16 * arg2, 24.0f * arg3, sp90, 1);
         }
         
-        arg4 += 2;
-        i++;
+        temp += 2;
+        var_s1 += 1;
     }
 }
 

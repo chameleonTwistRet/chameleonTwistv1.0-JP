@@ -160,7 +160,7 @@ typedef struct Struct_800714C8 {
 } Struct_800714C8;
 
 typedef struct Effect_TypeAL_Data {
-    /* 0x00 */ u8 unk_00[0x10];
+    /* 0x00 */ s8 unk_00[0x10];
     /* 0x10 */ u8 unk_10;
 } Effect_TypeAL_Data; //sizeof 0x11
 
@@ -413,4 +413,5 @@ void Effect_TypeBH_Init(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, RGBA32
 void Effect_TypeBF_Init(f32 posX, f32 posY, f32 posZ, f32 velV, f32 yaw, f32 velH, f32 arg6, f32 duration, u8 colorR, u8 colorG, u8 colorB);
 void SetPlayerEyes(s32 spriteIndex, s32 whichEye, s32 eyeIndex);
 s32 printTextbox(f32, f32, char*);
+void WrapDegrees(f32* theta_ptr);
 #endif //_SPRITE_H_

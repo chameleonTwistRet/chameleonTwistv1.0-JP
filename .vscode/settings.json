@@ -35,6 +35,7 @@
         "battle.h": "c",
         "30a4c.h": "c",
         "limits": "c",
-        "functions.jp.h": "c"
+        "functions.jp.h": "c",
+        "8add0.h": "c"
     }
 }
