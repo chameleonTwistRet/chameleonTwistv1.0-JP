@@ -54,13 +54,14 @@ void idleproc(void *arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/1050/mainproc.s")
 
+//animates the player
 #ifdef NON_MATCHING
 void func_80025EF0(PlayerActor* arg0, Tongue* arg1, s32 arg2) {
     s32 sp124;
     s32 sp120 = arg0->globalTimer * 0.8f;
-    s32 sp11C;
-    s32 sp118;
-    Mtx* sp114 = NULL;
+    s32 animObjects;
+    s32 animFrames;
+    Mtx* anim = NULL;
     Mtx* sp110 = D_800FF8D4;
 
     func_8007AC2C(&sp120);
@@ -78,42 +79,42 @@ void func_80025EF0(PlayerActor* arg0, Tongue* arg1, s32 arg2) {
             Effect_TypeT_Init(22.0f, 154.0f, 60, D_800F6870);
         }
     } else if (arg0->playerHURTSTATE == 4) {
-        func_80027138(&D_1045BF4, &sp11C, &sp118, &sp114);
+        func_80027138(&static0_chameleonAnimPointers_Animp[10], &animObjects, &animFrames, &anim);
         sp124 = arg0->playerHURTTIMER;
-        if (sp124 >= sp118) {
-            sp124 = sp118 - 1;
+        if (sp124 >= animFrames) {
+            sp124 = animFrames - 1;
         }
-        func_80027240(&D_800FF8D4, sp114, sp124, sp11C);
+        func_80027240(&D_800FF8D4, anim, sp124, animObjects);
     } else if (arg0->amountLeftToShoot != 0) {
-        func_80027138(&D_1045BAC, &sp11C, &sp118, &sp114);
+        func_80027138(&static0_chameleonAnimPointers_Animp[4], &animObjects, &animFrames, &anim);
         sp124 = arg0->amountLeftToShoot;
-        if (sp124 >= sp118) {
-            sp124 = sp118 - 1;
+        if (sp124 >= animFrames) {
+            sp124 = animFrames - 1;
         }
-        func_80027240(&D_800FF8D4, sp114, sp124, sp11C);
+        func_80027240(&D_800FF8D4, anim, sp124, animObjects);
     } else if (arg0->vaultFall != 0) {
-        func_80027138(&D_1045BB8, &sp11C, &sp118, &sp114);
-        func_80027240(&D_800FF8D4, sp114, sp118 - arg0->vaultFall, sp11C);
+        func_80027138(&static0_chameleonAnimPointers_Animp[5], &animObjects, &animFrames, &anim);
+        func_80027240(&D_800FF8D4, anim, animFrames - arg0->vaultFall, animObjects);
     } else if (arg0->playerHURTSTATE == 1) {
         sp124 = arg0->playerHURTTIMER - 10;
-        func_80027138(&D_1045BDC, &sp11C, &sp118, &sp114);
+        func_80027138(&static0_chameleonAnimPointers_Animp[8], &animObjects, &animFrames, &anim);
         if (sp124 < 0) {
             sp124 = 0;
-        } else if (sp124 >= sp118) {
-            sp124 = sp118 - 1;
+        } else if (sp124 >= animFrames) {
+            sp124 = animFrames - 1;
         }
-        func_80027240(&D_800FF8D4, sp114, sp124, sp11C);
+        func_80027240(&D_800FF8D4, anim, sp124, animObjects);
     } else if (arg0->playerHURTSTATE == 2) {
         if (arg0->hp > 0) {
             sp124 = arg0->playerHURTTIMER;
         } else {
             sp124 = arg0->playerHURTTIMER / 3;
         }       
-        func_80027138(&D_1045BE8, &sp11C, &sp118, &sp114);
-        if (sp124 >= sp118) {
-            sp124 = sp118 - 1;
+        func_80027138(&static0_chameleonAnimPointers_Animp[9], &animObjects, &animFrames, &anim);
+        if (sp124 >= animFrames) {
+            sp124 = animFrames - 1;
         }
-        func_80027240(&D_800FF8D4, sp114, sp124, sp11C);
+        func_80027240(&D_800FF8D4, anim, sp124, animObjects);
     } else if (arg1->tongueMode != 0) {
         switch (arg1->tongueMode) {
             case 1:
@@ -123,28 +124,28 @@ void func_80025EF0(PlayerActor* arg0, Tongue* arg1, s32 arg2) {
                 if (sp124 > 3) {
                     sp124 = 3;
                 }
-                func_80027138(&D_1045BAC, &sp11C, &sp118, &sp114);
-                func_80027240(&D_800FF8D4, sp114, sp124, sp11C);
+                func_80027138(&static0_chameleonAnimPointers_Animp[4], &animObjects, &animFrames, &anim);
+                func_80027240(&D_800FF8D4, anim, sp124, animObjects);
                 break;
             case 4:
                 sp124 = arg1->timer % 2 + 4;
-                func_80027138(&D_1045BAC, &sp11C, &sp118, &sp114);
-                func_80027240(&D_800FF8D4, sp114, sp124, sp11C);
+                func_80027138(&static0_chameleonAnimPointers_Animp[4], &animObjects, &animFrames, &anim);
+                func_80027240(&D_800FF8D4, anim, sp124, animObjects);
                 break;
             case 5:
                 sp124 = arg1->poleSegmentAt % 6 + 6;
-                func_80027138(&D_1045BAC, &sp11C, &sp118, &sp114);
-                func_80027240(&D_800FF8D4, sp114, sp124, sp11C);
+                func_80027138(&static0_chameleonAnimPointers_Animp[4], &animObjects, &animFrames, &anim);
+                func_80027240(&D_800FF8D4, anim, sp124, animObjects);
                 break;
             case 6:
             case 7:
-                func_80027138(&D_1045BAC, &sp11C, &sp118, &sp114);
-                func_80027240(&D_800FF8D4, sp114, arg1->timer + 12, sp11C);
+                func_80027138(&static0_chameleonAnimPointers_Animp[4], &animObjects, &animFrames, &anim);
+                func_80027240(&D_800FF8D4, anim, arg1->timer + 12, animObjects);
                 break;
             case 8:
             case 9:
-                func_80027138(&D_1045BB8, &sp11C, &sp118, &sp114);
-                func_80027240(&D_800FF8D4, sp114, arg1->segments, sp11C);
+                func_80027138(&static0_chameleonAnimPointers_Animp[5], &animObjects, &animFrames, &anim);
+                func_80027240(&D_800FF8D4, anim, arg1->segments, animObjects);
                 break;
             case 11:
                 sp124 = arg1->timer;
@@ -152,30 +153,30 @@ void func_80025EF0(PlayerActor* arg0, Tongue* arg1, s32 arg2) {
                     sp124 = (sp124 - 7) % 7 + 7;
                 }
                 if (arg0->unkBC > 0) {
-                    func_80027138(&D_1045BD0, &sp11C, &sp118, &sp114);
-                    if (sp124 >= sp118) {
-                        sp124 = sp118 - 1;
+                    func_80027138(&static0_chameleonAnimPointers_Animp[7], &animObjects, &animFrames, &anim);
+                    if (sp124 >= animFrames) {
+                        sp124 = animFrames - 1;
                     }
-                    func_80027240(&D_800FF8D4, sp114, sp124, sp11C);
+                    func_80027240(&D_800FF8D4, anim, sp124, animObjects);
                 } else {
-                    func_80027138(&D_1045BC4, &sp11C, &sp118, &sp114);
-                    if (sp124 >= sp118) {
-                        sp124 = sp118 - 1;
+                    func_80027138(&static0_chameleonAnimPointers_Animp[6], &animObjects, &animFrames, &anim);
+                    if (sp124 >= animFrames) {
+                        sp124 = animFrames - 1;
                     }
-                    func_80027240(&D_800FF8D4, sp114, sp124, sp11C);
+                    func_80027240(&D_800FF8D4, anim, sp124, animObjects);
                 }
                 break;
             default:
-                func_80027138(&D_1045B70, &sp11C, &sp118, &sp114);
-                func_80027240(&D_800FF8D4, sp114, (s32)arg0->globalTimer % sp118, sp11C);
+                func_80027138(&static0_chameleonAnimPointers_Animp[0], &animObjects, &animFrames, &anim);
+                func_80027240(&D_800FF8D4, anim, (s32)arg0->globalTimer % animFrames, animObjects);
                 break;
         }
     } else if (arg0->canJump != 0) {
         if (arg0->vel.y > 0.0f) {
-            func_80027138(&D_1045BA0, &sp11C, &sp118, &sp114);
-            func_80027240(&D_800FF8D4, sp114, 0, sp11C);
+            func_80027138(&static0_chameleonAnimPointers_Animp[3], &animObjects, &animFrames, &anim);
+            func_80027240(&D_800FF8D4, anim, 0, animObjects);
         } else {
-            func_80027138(&D_1045BA0, &sp11C, &sp118, &sp114);
+            func_80027138(&static0_chameleonAnimPointers_Animp[3], &animObjects, &animFrames, &anim);
             if (-arg0->vel.y * 8.0f < arg0->pos.y - arg0->yCounter) {
                 arg0->jumpAnimFrame %= 10;
                 sp124 = arg0->jumpAnimFrame / 2 + 4;
@@ -184,26 +185,26 @@ void func_80025EF0(PlayerActor* arg0, Tongue* arg1, s32 arg2) {
                     arg0->jumpAnimFrame = 9;
                 }
                 sp124 = arg0->jumpAnimFrame;
-                if (sp124 >= sp118) {
-                    sp124 = sp118 - 1;
+                if (sp124 >= animFrames) {
+                    sp124 = animFrames - 1;
                 }
             }
-            func_80027240(&D_800FF8D4, sp114, sp124, sp11C);
+            func_80027240(&D_800FF8D4, anim, sp124, animObjects);
         }
     } else if (arg0->groundMovement == 0) {
-        func_80027138(&D_1045B70, &sp11C, &sp118, &sp114);
-        func_80027240(&D_800FF8D4, sp114, (s32)arg0->globalTimer % sp118, sp11C);
+        func_80027138(&static0_chameleonAnimPointers_Animp[0], &animObjects, &animFrames, &anim);
+        func_80027240(&D_800FF8D4, anim, (s32)arg0->globalTimer % animFrames, animObjects);
     } else if (arg0->groundMovement == 1) {
-        func_80027138(&D_1045B7C, &sp11C, &sp118, &sp114);
-        func_80027240(&D_800FF8D4, sp114, sp120 % sp118, sp11C);
-        if (D_800F0560 == 0 && sp120 % sp118 >= 3 && sp120 % sp118 <= 12) {
+        func_80027138(&static0_chameleonAnimPointers_Animp[1], &animObjects, &animFrames, &anim);
+        func_80027240(&D_800FF8D4, anim, sp120 % animFrames, animObjects);
+        if (D_800F0560 == 0 && sp120 % animFrames >= 3 && sp120 % animFrames <= 12) {
             if (arg0->inWater == 1) {
                 PLAYSFXAT(2, arg0->pos, 0, 0);
             } else {
                 PLAYSFXAT(0, arg0->pos, 0, 0);
             }
             D_800F0560 = 1;
-        } else if (D_800F0560 == 1 && sp120 % sp118 > 12) {
+        } else if (D_800F0560 == 1 && sp120 % animFrames > 12) {
             if (arg0->inWater == 1) {
                 PLAYSFXAT(3, arg0->pos, 0, 0);
             } else {
@@ -212,16 +213,16 @@ void func_80025EF0(PlayerActor* arg0, Tongue* arg1, s32 arg2) {
             D_800F0560 = 0;
         }
     } else {
-        func_80027138(&D_1045B88, &sp11C, &sp118, &sp114);
-        func_80027240(&D_800FF8D4, sp114, sp120 % sp118, sp11C);
-        if (D_800F0560 == 0 && sp120 % sp118 >= 0 && sp120 % sp118 <= 9) {
+        func_80027138(&static0_chameleonAnimPointers_Animp[2], &animObjects, &animFrames, &anim);
+        func_80027240(&D_800FF8D4, anim, sp120 % animFrames, animObjects);
+        if (D_800F0560 == 0 && sp120 % animFrames >= 0 && sp120 % animFrames <= 9) {
             if (arg0->inWater == 1) {
                 PLAYSFXAT(2, arg0->pos, 0, 0);
             } else {
                 PLAYSFXAT(0, arg0->pos, 0, 0);
             }
             D_800F0560 = 1;
-        } else if (D_800F0560 == 1 && sp120 % sp118 > 9) {
+        } else if (D_800F0560 == 1 && sp120 % animFrames > 9) {
             if (arg0->inWater == 1) {
                 PLAYSFXAT(3, arg0->pos, 0, 0);
             } else {
@@ -307,36 +308,49 @@ void func_80026FB8(GraphicStruct *arg0, Mtx *arg1, u32 arg2, f32 arg3, f32 arg4,
     func_8005747C(gActors[arg2].pos.x + xPos, gActors[arg2].pos.y + yPos + arg4, gActors[arg2].pos.z + zPos, arg3, arg3, 0.0f, arg5);
 }
 
-void func_80027138(void* arg0, s32* arg1, s32* arg2, Mtx** arg3) {
-    void* var_a2;
-    s32* var_v1;
+
+//WriteAnimationData
+/**
+ * @brief Writes the animation data of a given Animation set (through AnimPointer) to a requested place in ram.
+ * @param pointer: The AnimPointer in which to read data
+ * @param ramObjects: The location in ram in which to write pointer->noObjects
+ * @param ramFrames: The location in ram in which to write pointer->noFrames
+ * @param ramAnim: The location in ram in which to write pointer->animation (as a pointer)
+ */
+void func_80027138(AnimPointer* pointer, s32* ramObjects, s32* ramFrames, Mtx** ramAnim) {
+    s32* newInt;
+    AnimPointer* realPointer;
 
     //this is required to be 1 line or codegen breaks
-    if (!IS_SEGMENTED(arg0)) {var_v1 = arg0;} else {var_v1 = SEGMENTED_TO_VIRTUAL(arg0);}
+    if (!IS_SEGMENTED(pointer)) {realPointer = pointer;} else {realPointer = SEGMENTED_TO_VIRTUAL(pointer);}
     
-    if (!IS_SEGMENTED(var_v1[1])) {
-        var_a2 = (s32*)var_v1[1];
+    if (!IS_SEGMENTED(realPointer->noObjects)) {
+        newInt = realPointer->noObjects;
     } else {
-        var_a2 = SEGMENTED_TO_VIRTUAL(var_v1[1]);
+        newInt = SEGMENTED_TO_VIRTUAL(realPointer->noObjects);
     }
     
-    *arg1 = *(s32*)var_a2;
+    *ramObjects = *newInt;
     
-    if (!IS_SEGMENTED(var_v1[0])) {
-        var_a2 = (s32*)var_v1[0];
+    if (!IS_SEGMENTED(realPointer->noFrames)) {
+        newInt = realPointer->noFrames;
     } else {
-        var_a2 = SEGMENTED_TO_VIRTUAL(var_v1[0]);
+        newInt = SEGMENTED_TO_VIRTUAL(realPointer->noFrames);
     }
 
-    *arg2 = *(s32*)var_a2;
+    *ramFrames = *newInt;
     
-    if (!IS_SEGMENTED(var_v1[2])) {
-        *arg3 = (Mtx*)var_v1[2];
+    if (!IS_SEGMENTED(realPointer->animation)) {
+        *ramAnim = realPointer->animation;
     } else {
-        *arg3 = (Mtx*)SEGMENTED_TO_VIRTUAL(var_v1[2]);
+        *ramAnim = SEGMENTED_TO_VIRTUAL(realPointer->animation);
     }
 }
 
+extern Mtx D_80147FF0[];
+extern Mtx D_80167AF0[];
+
+//arg0 == write to, arg1 == read from, arg2 == frames(?), arg3 == objects
 void func_80027240(Mtx** arg0, Mtx* arg1, s32 arg2, s32 arg3) {
     Mtx* mtxPtr = *arg0;
     s32 i;
@@ -479,7 +493,7 @@ Gfx* func_8002A4C4(GraphicStruct* arg0, Gfx* gfxPos, PlayerActor* player, Tongue
         } else {
             gDPSetPrimColor(gfxPos++, 0, 0, 0, 255, 255, 255);
         }
-        gSPDisplayList(gfxPos++, D_1015CB0);
+        gSPDisplayList(gfxPos++, static0_gfx6_Gfx);
         gSPPopMatrix(gfxPos++, G_MTX_MODELVIEW);
     }
 
@@ -537,7 +551,7 @@ Gfx* func_8002A824(GraphicStruct* arg0, Gfx* gfxPos, PlayerActor* player, Tongue
             }
         }
 
-        gSPDisplayList(gfxPos++, D_1015BD0);
+        gSPDisplayList(gfxPos++, static0_gfx5_Gfx);
         gSPPopMatrix(gfxPos++, G_MTX_MODELVIEW);
     }
 

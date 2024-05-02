@@ -1121,9 +1121,9 @@ typedef struct Anim {
 } Anim;
 
 typedef struct AnimPointer {
-    s32* unk1;
-    s32* unk2;
-    Mtx* animation;
+    s32* noFrames; // number of frames
+    s32* noObjects; // number of objects
+    Mtx* animation; // the Mtx data for the animation
 } AnimPointer;
 
 typedef struct unk80174880 {
