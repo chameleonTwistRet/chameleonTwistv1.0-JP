@@ -35,14 +35,19 @@ segments:
     type: databin
     start: 0x40
 
-  # Segment: Code
-  - name: main
+  - name: entry
     type: code
     start: 0x1000
     vram: 0x80025C00
-    bss_size: 0x13A880
     subsegments:
       - [0x1000, hasm]            # ENTRY (should split these some time)
+
+  - name: main
+    type: code
+    start: 0x1050
+    vram: 0x80025C50
+    bss_size: 0x13A880
+    subsegments:
       - [0x1050, c, code/1050]    # CODE
       - [0x84E0, c, code/84E0]
       - [0x298D0, c, code/298D0]
@@ -226,7 +231,8 @@ segments:
       - [0xCC190, .data, code/sprite] #800F0D90 through 800FEDC0
       - [0xD27A0, data, code/sprite] #800F0D90 through 800FEDC0
       #- [0xCC190, data, code/sprite] #800F0D90 through 800FEDC0
-      - [0xDA1C0, data, code/5FF30] #800FEDC0 through 80108B70
+      - [0xDA1C0, .data, code/5FF30] #800FEDC0 through 80108B70
+      - [0xDB770, data, code/5FF30_2] #80100370 fake split for migrating data
       - [0xE3BA0, .data, code/8ADD0] #801087A0 through 80108B70
       - [0xE3F70, data, code/math] #80108B70 through 80109010
       - [0xE4410, .data, os/initialize] #80109010 through 80109030

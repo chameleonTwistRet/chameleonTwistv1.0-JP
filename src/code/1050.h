@@ -12,7 +12,7 @@ void func_8004CD9C(s32, void*);
 void Battle_Update(void);
 Gfx* func_8007A2D8(Gfx*, Camera*);
 void func_8007AC60(Camera*, PlayerActor*);
-void func_8008C1C8(Gfx**);
+void func_8008C1C8(s32*); //void func_8008C1C8(Gfx**);
 void Timing_StartProcess(void);
 void Timing_StopProcess(void);
 void func_8008C554(void);
