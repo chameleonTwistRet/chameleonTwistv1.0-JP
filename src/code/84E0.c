@@ -651,7 +651,7 @@ void func_8002E5DC(UnkTempStruct arg0) {
 
     D_80174860->size1 = D_80174860->size1 + ((D_80174860->size2 - D_80174860->size1) * 0.200000003f);
     if (D_801749A8 == 0) {
-        if (((gCurrentStage == 4) && (gCurrentZone == 0xF)) || ((gCurrentStage == 5) && (gCurrentZone == 0xE))) {
+        if (((gCurrentStage == STAGE_KIDS) && (gCurrentZone == STAGE_BOSSRUSH)) || ((gCurrentStage == STAGE_GHOST) && (gCurrentZone == STAGE_GHOSTBOSS))) {
             if (D_80174860->unk0 == 1) {
                 PLAYSFX(0x2C, 0, 0x10);
                 D_80174860->unk0 = 0;

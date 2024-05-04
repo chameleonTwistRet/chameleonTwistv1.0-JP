@@ -237,7 +237,7 @@ void func_800CFF7C(Vec3f* arg0) {
     Rect3D* temp_v0;
 
     if (D_80236974 != 1) {
-        if ((gCurrentStage == 1) && ((gCurrentZone == 7) || (gCurrentZone == 0xF)) && (levelFlags[0] != 0)) {
+        if ((gCurrentStage == STAGE_ANT) && ((gCurrentZone == STAGE_VS) || (gCurrentZone == STAGE_BOSSRUSH)) && (levelFlags[0] != 0)) {
             temp_f14 = SUM_OF_SQUARES(arg0->x, arg0->z);
             if (810000.0 < temp_f14) {
                 temp_f0_2 = sqrtf((f32) (810000.0 / temp_f14));
@@ -394,7 +394,7 @@ void SetCameraParameters(void) {
     Vec3f sp3C;
     Vec3f sp30;
 
-    if ((gCurrentStage == STAGE_GHOST) && (gCurrentZone == 0xE)) { //billiard room?
+    if ((gCurrentStage == STAGE_GHOST) && (gCurrentZone == STAGE_GHOSTBOSS)) { //billiard room?
         func_800D6864(gPlayerActors, gTongues, gCamera, &sp3C, &sp30);
     } else if ((D_80236974 == 1) && (D_8020D8F4 == 0)) {
         func_800D3854(gPlayerActors, gTongues, gCamera, &sp3C, &sp30, 0);
