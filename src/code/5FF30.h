@@ -628,11 +628,11 @@ extern s16 D_80100E10;
 extern s16 sStageCrownTotals[6];
 extern s32 D_80247904;
 
-extern s16 D_80100258[7];
+extern s16 D_80100258[12]; //should be 7?
 extern s16 D_80100318[7];
 extern s16 gStageCrownRecords[];
 extern s32 D_800FF8EC;
-extern s16 D_80100348;
+extern s16 D_80100348[];
 extern f32 D_800FFEE8;
 extern s16 D_800FFEEC[];
 extern s8 D_80200B30;
