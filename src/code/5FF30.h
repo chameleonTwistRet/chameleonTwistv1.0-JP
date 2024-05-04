@@ -68,7 +68,7 @@ typedef struct UnkBg {
     s16 spriteID;
 } UnkBg;
 
-extern UnkBg* D_800FFE58[4];
+extern UnkBg* D_800FFE58[];
 
 /*what is this used for???
 typedef struct unk80097CF8_2 {
@@ -593,7 +593,7 @@ typedef u32 uintptr_t;
 extern char D_8010D97C[];
 extern char D_8010D98C[];
 extern char D_8010D990[];
-extern StageSelectionData D_8010026E[];
+extern s16 D_8010026E[];// extern StageSelectionData D_8010026E[];
 extern u8 D_80200B68;
 //extern u8 gLevelAccessBitfeild;
 extern s16 sDebugLevelAccess;
@@ -603,7 +603,6 @@ extern s16 gSFXMute;
 extern UnkPlaySoundEffect* D_80200A90;
 extern f32 D_8010F2FC;
 extern s16 D_800FFEC0;
-extern char D_800FFEC4;
 extern Gfx D_1015A70[];
 extern Gfx D_1015AB8[];
 extern Gfx D_1015AE8[];
@@ -633,7 +632,6 @@ extern s16 D_80100258[7];
 extern s16 D_80100318[7];
 extern s16 gStageCrownRecords[];
 extern s32 D_800FF8EC;
-extern char D_800FFE78;
 extern s16 D_80100348;
 extern f32 D_800FFEE8;
 extern s16 D_800FFEEC[];
