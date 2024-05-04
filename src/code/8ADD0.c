@@ -14,6 +14,87 @@ Vec3f D_80201950;
 
 f32 D_80201960;*/
 
+extern CardinalDirection gCardinalDirections[5];
+
+typedef struct UnkFunctionStructs {
+    s32 id;
+    void* func1;
+    void* func2;
+} UnkFunctionStructs;
+
+typedef struct UnkData {
+    s32 unk0;
+    f32 unk4;
+    f32 unk8;
+    f32 unkC;
+} UnkData;
+
+
+s32 D_801087A0[] = {0, 1, 2, 3, 4, 5, 6, 7};
+s32 sBossIDs[] = {0x4B, 7, 0x13, 0x1E, 0x26, 0x3D};
+Vec3w D_801087D8[] = {{0, 3, 0}, {1, 0xC, 2}, {2, 0x30, 4}, {3, 0x40, 6}, {4, 0x80, 7}};
+s32 D_80108814 = 0; //padding?
+s32 D_80108818 = 0;
+f32 D_8010881C = 1.0f;
+f32 D_80108820 = 1.0f;
+s32 D_80108824[] = {-1, 0x30, 0x32, 0x34, 0x36};
+s32 D_80108838[] = {-1, 0x31, 0x33, 0x35, 0x37};
+s32 D_8010884C[] = {2, 5, 8, 0xB, 0xE, 0x11, 0x14, 0x17};
+s32 D_8010886C[] = {-1, 0x30, 0x32, 0x34, 0x36};
+s32 D_80108880[] = {-1, 0x31, 0x33, 0x35, 0x37};
+
+UnkFunctionStructs D_80108894[] = {
+{0x00000000, func_800B6054, func_800B6078},
+{0x00000001, func_800B6054, func_800B6078},
+{0x00000002, func_800B6054, func_800B6078},
+{0x00000003, func_800B6054, func_800B6078},
+{0x00000004, func_800B6054, func_800B6078},
+{0x00000005, func_800B6098, func_800B61FC},
+{0x00000006, func_800B67D8, func_800B691C},
+{0x00000007, func_800B6B14, func_800B6078},
+{0x00000008, func_800B6B4C, func_800B6C34},
+{0x00000009, func_800B6CD8, func_800B6D24},
+{0x0000000A, func_800B6D44, func_800B6DF4},
+{0x0000000B, func_800B7208, func_800B7328},
+{0x0000000C, func_800B7860, func_800B78F8},
+{0x0000000D, func_800B81B4, func_800B81FC},
+{0x0000000E, func_800B8634, func_800B87A0},
+{0x0000000F, func_800B9298, func_800B9390},
+{0x00000010, func_800B942C, func_800B9514},
+{0x00000011, func_800B9750, func_800B97F0},
+{0x00000012, func_800B9E8C, func_800B9FA8},
+{0x00000013, func_800BA2D0, func_800BA35C},
+{0x00000014, func_800BA89C, func_800BA900},
+{0x00000015, func_800BA89C, func_800BA900},
+{0x00000016, func_800BA89C, func_800BA900},
+{0x00000017, func_800BA92C, func_800BAA28},
+{0x00000018, func_800B6054, func_800B6078},
+{0x00000019, func_800BB038, func_800BB178},
+{0x0000001A, func_800BB254, func_800BB5DC},
+{0x0000001B, func_800BB988, func_800BBA80},
+{0x0000001C, func_800BBC88, func_800BBCE4},
+{0x0000001D, func_800BBF80, func_800BC284},
+{0x0000001E, func_800BCC04, func_800BCD10},
+{0x0000001F, func_800BD1EC, func_800BD2AC},
+{0x00000020, func_800BD55C, func_800BD608},
+{0x00000021, func_800B6054, func_800B6078},
+{0x00000022, func_800BD718, func_800BD938},
+{0x00000023, func_800BDF2C, func_800BE000},
+{0x00000024, func_800BE0D4, func_800BE1C4},
+{0x00000025, func_800B6054, func_800B6078},
+};
+
+UnkData D_80108A5C[] = {
+    {0, 1.0f, 0.0f, 0.0f},
+    {0x19, 1.0f, 0.0f, 0.0f},
+    {0, 1.0f, 0.0f, 0.0f},
+    {0, 1.0f, 0.0f, 0.0f},
+    {0, 1.0f, 0.0f, 0.0f},
+    {0x30, 1.0f, 0.0f, 0.0f},
+    {0, 1.0f, 0.0f, 0.0f},
+    {0, 1.0f, 0.0f, 0.0f},
+    {0, 1.0f, 0.0f, 0.0f}
+};
 
 void func_800AF9D0(Collider* arg0, RoomObject* arg1) {
     arg0->unk_5C = 2;
@@ -87,9 +168,8 @@ s32 func_800B07E4(void) {
     Actor* actor;
     s32 count;
     count = 0;
-    for(i = 0, actor = &gActors[0];
-        i != 0x40; actor++, i++){
-        if ((actor->actorID == 0xD) && (actor->actorState == 0)) {
+    for(i = 0, actor = &gActors[0]; i != ACTORS_MAX; actor++, i++){
+        if ((actor->actorID == WHITE_BOMB) && (actor->actorState == 0)) {
             count++;
         }
     }
@@ -1115,7 +1195,7 @@ void func_800B6CD8(Collider* arg0, RoomObject* arg1) {
     arg0->unk_94 = arg1->unk30;
 }
 
-void func_800B6D24(tempStruct* arg0) {
+void func_800B6D24(Collider* arg0) {
     Vec3f_Zero(&arg0->unk_3C);
 }
 
@@ -1189,7 +1269,7 @@ void func_800BA89C(Collider* arg0, RoomObject* arg1) {
     arg0->unk_114 = 16;
 }
 
-void func_800BA900(tempStruct* arg0) {
+void func_800BA900(Collider* arg0) {
     Vec3f_Zero(&arg0->unk_3C);
     func_800B5C60(arg0);
 }
@@ -1247,7 +1327,7 @@ void func_800BBC88(Collider* arg0, RoomObject* arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BD55C.s")
 
-void func_800BD608(tempStruct* arg0) {
+void func_800BD608(Collider* arg0) {
     Vec3f_Zero(&arg0->unk_3C);
     func_800B5C60(arg0);
 }
@@ -1259,7 +1339,7 @@ void func_800BD608(tempStruct* arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BD938.s")
 
-void func_800BDF2C(Collider* arg0, s32 arg1) {
+void func_800BDF2C(Collider* arg0, RoomObject* arg1) {
     func_800B402C(arg0, 0, 2);
     func_800B402C(arg0, 1, 2);
     if (arg0->unk_50 != 1.0 || arg0->unk_54 != 1.0 || arg0->unk_58 != 1.0) {
@@ -2097,8 +2177,17 @@ void func_800C88D0(void) {
     func_800C56D4(&gPlayerActors[0]);
 }
 
-const char D_8010FA44[] = "NO_DIR";
-const char D_8010FA4C[] = "NORTH";
-const char D_8010FA54[] = "EAST";
-const char D_8010FA5C[] = "SOUTH";
-const char D_8010FA64[] = "WEST";
+CardinalDirection gCardinalDirections[] = {
+    {0, 0, 0, "NO_DIR", 0},
+    {0, -1, 3, "NORTH", 180.0f},
+    {1, 0, 4, "EAST", 90.0f},
+    {0, 1, 1, "SOUTH", 0.0f},
+    {-1, 0, 2, "WEST", 270.0f},
+};
+
+f32 unused_data[] = {
+    292.5f, 247.5f, 202.5f, 157.5f, 112.5f, 67.5f
+};
+
+s32 D_80108B68 = 0;
+s32 D_80108B6C = 0; //padding?

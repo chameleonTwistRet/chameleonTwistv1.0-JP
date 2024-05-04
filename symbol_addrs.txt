@@ -1,3 +1,4 @@
+D_80108894 = 0x80108894; //size:0x1C8
 RDRAM_CONFIG = 0xa3f00000; // type:u32 size:0x4
 RDRAM_DEVICE_ID = 0xa3f00004; //  type:u32 size:0x4
 RDRAM_DELAY = 0xa3f00008; //  type:u32 size:0x4

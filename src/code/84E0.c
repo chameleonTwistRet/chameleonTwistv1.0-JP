@@ -364,7 +364,7 @@ void Actors_Init(s32 actorIndex, s32 actorID, f32 arg2, f32 arg3, f32 arg4, f32 
     case ANT_QUEEN_ANT:
         ActorInit_AntQueenDrone(actorInstance);
         return;
-    case WHITE_BOMB_SNAKE:
+    case WHITE_BOMB:
         ActorInit_WhiteBombSnake(actorInstance);
         return;
     case GRENADE:
@@ -1139,7 +1139,7 @@ void func_80036D74(PlayerActor* arg0, Tongue* arg1) {
 
 s32 isExplodingActor(s32 actorIndex) {
     s32 actorID = gActors[actorIndex].actorID;
-    if ((actorID == WHITE_BOMB_SNAKE) || (actorID == GRENADE) ||
+    if ((actorID == WHITE_BOMB) || (actorID == GRENADE) ||
         (actorID == MISSILE) || (actorID == CANNONBALL) || (actorID == BL_BOSS_BOMBS)) {
         return 1;
     }

@@ -227,6 +227,7 @@ segments:
       - [0xD27A0, data, code/sprite] #800F0D90 through 800FEDC0
       #- [0xCC190, data, code/sprite] #800F0D90 through 800FEDC0
       - [0xDA1C0, data, code/5FF30] #800FEDC0 through 80108B70
+      - [0xE3BA0, .data, code/8ADD0] #801087A0 through 80108B70
       - [0xE3F70, data, code/math] #80108B70 through 80109010
       - [0xE4410, .data, os/initialize] #80109010 through 80109030
       - [0xE4430, .data, io/vimgr] # 80109030 through 80109050
