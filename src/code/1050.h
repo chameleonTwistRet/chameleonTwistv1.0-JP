@@ -31,7 +31,7 @@ void func_80080C28(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, u
 void func_80058044(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, s32 arg7);
 void Effect_TypeT_Init(f32, f32, s32, s32);
 void func_80027240(Mtx** arg0, Mtx* arg1, s32 arg2, s32 arg3);
-void func_80027138(void* arg0, s32* arg1, s32* arg2, Mtx** arg3);
+void func_80027138(AnimPointer* arg0, s32* arg1, s32* arg2, Mtx** arg3);
 void Effect_TypeAF_Init(f32* arg0, f32* arg1, f32* arg2, f32 arg3, f32 arg4, f32 arg5, s32 arg6, s32 arg7, s32 arg8);
 
 /* Ext Variables */
@@ -62,12 +62,12 @@ extern Gfx D_3007EA0[];
 extern Gfx D_3008428[];
 extern Gfx BombLand_unk74_Gfx[];
 extern Gfx D_3012460[];
-extern Gfx D_3053ED0[];
+extern Gfx KidsLand_actorModel9_Gfx[];
 extern Gfx D_30081F8[];
 extern Gfx D_30093A8[];
 extern Gfx D_300A9E0[];
-extern Gfx D_30545C8[];
-extern Gfx D_3056428[];
+extern Gfx KidsLand_actorModel10_Gfx[];
+extern Gfx KidsLand_actorModel12_Gfx[];
 extern Gfx D_3044498[];
 extern Gfx D_30466C8[];
 extern Gfx D_3049EB0[];
@@ -88,20 +88,11 @@ extern void* D_3025DA8;
 extern s32 D_800FE400;
 extern Gfx Davy_restAssociate_Gfx[];
 extern Gfx* D_800F0650[];
-extern Gfx D_1015CB0[];
-extern Gfx D_1015BD0[];
+extern Gfx static0_gfx6_Gfx[];
+extern Gfx static0_gfx5_Gfx[];
 extern Gfx Global_unusedStructure_Gfx[];
-extern void* D_1045B70;
-extern void* D_1045B7C;
-extern void* D_1045B88;
-extern void* D_1045BA0;
-extern void* D_1045BAC;
-extern void* D_1045BB8;
-extern void* D_1045BC4;
-extern void* D_1045BD0;
-extern void* D_1045BDC;
-extern void* D_1045BE8;
-extern void* D_1045BF4;
+
+
 extern s32 D_800F0560;
 
 extern AnimPointer JungleLand_spiderRockInitPointers_Bin;

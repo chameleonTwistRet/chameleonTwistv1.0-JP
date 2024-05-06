@@ -371,4 +371,6 @@ extern char* D_800F6870;
 extern char* D_800F6874;
 extern char* D_800F67A0[6];
 
+extern AnimPointer static0_chameleonAnimPointers_Animp[12];
+
 #endif

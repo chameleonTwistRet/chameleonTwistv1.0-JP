@@ -5,7 +5,6 @@
 
 extern u8 Animations_unk1Pointers_Bin[];
 extern u8 Animations_unk2Pointers_Bin[];
-extern u8 D_1045B70[];
 
 extern u8 D_800F0D3C[];
 extern u8 D_800F0D58[];
@@ -15,9 +14,9 @@ extern u8 D_800F0D8C[];
 unkStruct16 D_800F0D90[5] = {
 {&Animations_unk2Pointers_Bin, &Animations_unk2Pointers_Bin,
 D_800F0D3C, 28, -10.0f},
-{&D_1045B70, &D_1045B70,
+{&static0_chameleonAnimPointers_Animp[0], &static0_chameleonAnimPointers_Animp[0],
 D_800F0D58, 45, -30.0f},
-{&D_1045B70, &D_1045B70,
+{&static0_chameleonAnimPointers_Animp[0], &static0_chameleonAnimPointers_Animp[0],
 D_800F0D88, 1, -30.0f},
 {&Animations_unk2Pointers_Bin, &Animations_unk2Pointers_Bin,
 D_800F0D8C, 1, -10.0f},
@@ -3305,12 +3304,12 @@ Gfx* func_8005CA44(Gfx* gfxPos) {
     }
 
     if (gGameModeCurrent != 2 && gCurrentStage == STAGE_KIDS && gCurrentZone == 15) {
-        gSPDisplayList(gfxPos++, D_303AD50);
-        gSPDisplayList(gfxPos++, D_303F300);
-        gSPDisplayList(gfxPos++, D_303F1A0);
+        gSPDisplayList(gfxPos++, KidsLand_model56_Gfx);
+        gSPDisplayList(gfxPos++, KidsLand_model66_Gfx);
+        gSPDisplayList(gfxPos++, KidsLand_model65_Gfx);
     }
     if (gGameModeCurrent != 2 && gCurrentStage == STAGE_KIDS && gCurrentZone == 10) {
-        gSPDisplayList(gfxPos++, D_303D418);
+        gSPDisplayList(gfxPos++, KidsLand_model61_Gfx);
     }
     gSPDisplayList(gfxPos++, D_10012A0);
     gSPMatrix(gfxPos++, &D_800F68D0[4], G_MTX_PUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
@@ -4639,7 +4638,7 @@ Effect* Effect_TypeG_Init(f32 posX, f32 posY, f32 posZ, f32 velX, f32 velY, f32 
     data->scale.x = scaleX;
     data->scale.y = scaleY;
     data->scale.z = scaleZ;
-    data->dlist = D_1013F78;
+    data->dlist = static0_gfx1_Gfx;
 
     effect->pos.x = posX;
     effect->pos.y = posY;
@@ -4703,7 +4702,7 @@ Effect* Effect_TypeH_Init(f32 posX, f32 posY, f32 posZ, f32 velX, f32 velY, f32 
     data->scale.x = scaleX;
     data->scale.y = scaleY;
     data->scale.z = scaleZ;
-    data->dlist = D_10149D0;
+    data->dlist = static0_gfx2_Gfx;
     data->angle = angle;
     data->mtxIndex = 0;
 
@@ -7926,7 +7925,7 @@ void Effect_TypeAW_Init(f32 posX, f32 posY, f32 posZ, f32 arg3, f32 arg4, f32 ar
     data->unk_80 = arg3 / 100.0f;
     data->unk_84 = (arg4 - arg3) / 100.0f;
     data->unk_88 = arg5;
-    data->dlist = D_1014F28;
+    data->dlist = static0_gfx3_Gfx;
     data->yaw = yaw;
     data->mtxIndex = 0;
     data->finished = FALSE;    
