@@ -35,7 +35,7 @@ def start(group, where):
                 parse = line.split("return")[-1].strip().split('{self.name}.')[-1]\
                 .split(".inc.c")[0].strip()
                 break
-        segtype = ext.split("splat_ext\\")[-1].split(".py")[0].strip()
+        segtype = ext.split("/")[-1].split(".py")[0].strip()
         splat_exts[segtype] = parse
 
     symbolsPath = "symbol_addrs.txt"
@@ -144,11 +144,16 @@ def start(group, where):
 
                 segmentAdr = (int(values["Address"], 16) - baseAdr) + segmentId
                 #symbol creation
-                if values["Type"] in ["mtx", "vtx", "gfx"]: customType = values["Type"].capitalize()
-                elif values["Type"] in buildFolder and values["Type"] != "bin": customType = incExt[values["Type"]].upper()
-                elif values["Type"] in list(incExt.keys()): customType = incExt[values["Type"]].capitalize()
-                elif values["Type"] in list(splat_exts.keys()): customType = splat_exts[values["Type"]].capitalize()
-                else: customType = values["Type"].capitalize()
+                if values["Type"] in ["mtx", "vtx", "gfx"]:
+                    customType = values["Type"].capitalize()
+                elif values["Type"] in buildFolder and values["Type"] != "bin":
+                    customType = incExt[values["Type"]].upper()
+                elif values["Type"] in list(incExt.keys()):
+                    customType = incExt[values["Type"]].capitalize()
+                elif values["Type"] in list(splat_exts.keys()):
+                    customType = splat_exts[values["Type"]].capitalize()
+                else:
+                    customType = values["Type"].capitalize()
 
                 if values["Type"] in ["levelMap", "collision"]: #arg'd segtypes
                     customType = useType.capitalize()
@@ -257,6 +262,6 @@ if __name__ == "__main__":
     try:
         args = parser.parse_args()
     except SystemExit:
-        start("extImages", "img/extImages")
+        start("KidsLand", "levelGroup/KidsLand")
         exit()
     start(args.group, args.outfileName)

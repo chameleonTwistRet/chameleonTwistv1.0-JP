@@ -93,7 +93,6 @@ void func_800B5C60(Collider* arg0);
 void func_800AF9D0(Collider* arg0, RoomObject* arg1);
 s32 CountShotActors(void);
 s32 func_800B07E4(void);
-void func_800B1DA0(Collider* arg0, s32 arg1);
 void func_800B2070(s32 arg0);
 void func_800B2144(Collider* arg0, unkStruct14* arg1);
 void func_800B216C(Collider* arg0);

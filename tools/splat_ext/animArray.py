@@ -15,7 +15,7 @@ from splat.segtypes.common.codesubsegment import CommonSegCodeSubsegment
 
 
 class N64SegAnimArray(CommonSegCodeSubsegment):
-    trueResult = True
+    trueResult = False
     def __init__(
         self,
         rom_start,
@@ -64,19 +64,26 @@ class N64SegAnimArray(CommonSegCodeSubsegment):
 
         lines = []
 
-        if self.trueResult:
-            s = []
-            word_length = 2
-            word_count = 16
-            for i in range(0x20):
-                s.append(int.from_bytes(rom_bytes[(i*2):(i*2)+2], "big"))
-            short = []
-            for i in s:
-                short.append(str(i))
-                if len(short)%word_count == 0 and len(short)>=0:
-                    lines.append("{"+",".join(short)+"},")
-                    short = []
-            #lines[-1] = lines[-1][:-1]
+        if not self.trueResult:
+            data = list(struct.unpack('>IIIIIIIIIIIIIIII', rom_bytes))
+            i = 0
+            while i < len(data):
+                data[i] = hex(data[i]).upper().replace("0X", "0x")
+                #pad
+                while len(data[i]) < 8 + 2:
+                    data[i] = data[i].replace("0x", "0x0")
+                i += 1
+            lines = [
+                f"""   {{ {data[0]}, {data[1]},""",
+                f"""   {data[2]}, {data[3]},""",
+                f"""   {data[4]}, {data[5]},""",
+                f"""   {data[6]}, {data[7]},""",
+                "",
+                f"""   {data[8]}, {data[9]},""",
+                f"""   {data[10]}, {data[11]},""",
+                f"""   {data[12]}, {data[13]},""",
+                f"""   {data[14]}, {data[15]} }}""",
+            ]
         else:
             s15 = []
             s16 = []
@@ -136,9 +143,7 @@ class N64SegAnimArray(CommonSegCodeSubsegment):
         if not self.data_only:
             lines.append('#include "common.h"')
             lines.append("")
-            type = "Mtx_f" if self.trueResult else "Mtx"
-            bounds = "" if self.trueResult else "[4][4]"
-            lines.append(f"{type} {sym2.name}[{Aoframes}][{Aoobjects}]{bounds} = {{")
+            lines.append(f"Mtx {sym2.name}[{Aoframes}][{Aoobjects}] = {{")
         
 
 
