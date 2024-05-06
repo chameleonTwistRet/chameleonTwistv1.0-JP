@@ -736,7 +736,7 @@ extern const char D_8010DD38[];
 
 segTableEntry gSegTable[16] = {
     {D_8010DCB8, main_ROM_START, main_ROM_END, main_VRAM, main_VRAM_END},
-    {D_8010DCC0, Seg1_ROM_START, Seg1_ROM_END, Seg1_VRAM, Seg1_VRAM_END},
+    {D_8010DCC0, static0_ROM_START, static0_ROM_END, static0_VRAM, static0_VRAM_END},
     {D_8010DCD0, Global_ROM_START, Global_ROM_END, Global_VRAM, Global_VRAM_END},
     {D_8010DCD8, 0x00000000, 0x00000000, 0x00000000, 0x00000000},
     {D_8010DCE4, 0x00000000, 0x00000000, 0x00000000, 0x00000000},
