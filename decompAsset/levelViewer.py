@@ -18,7 +18,7 @@ actorDir = {
 	"Ant_Trio_Spawner": [1],
 	"Bullet_Hell_Ant_Spawner": [1],
 	"Red_Ant_Spawner": [1],
-	"White_Bomb_Snake": [["/assets/img/caterpillar.ci8", [40, 40], 1, 3]],
+	"WHITE_BOMB": [["/assets/img/caterpillar.ci8", [40, 40], 1, 3]],
 	"Grenade": [["/assets/img/grenade.ci8", [40, 40], 12, 3]],
 	"Missile_Spawner": [1],
 	"Missile": [["/assets/img/missile.ci8", [40, 40], 12, 1]],

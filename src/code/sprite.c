@@ -1184,12 +1184,12 @@ u8 D_800F6A10[64] = {
 };
 
 //eng symbol test?
-char D_800F6A50[112] = "　ＡＢＣＤＥＦＧＨＩＪＫＬＭＮＯＰＱＲＳＴＵＶＷＸＹＺ０１２３４５６７８９？！＆’”：（）／＋Ｘ＠〜ｘ−ｃ　";
+char D_800F6A50[] = "　ＡＢＣＤＥＦＧＨＩＪＫＬＭＮＯＰＱＲＳＴＵＶＷＸＹＺ０１２３４５６７８９？！＆’”：（）／＋Ｘ＠〜ｘ−ｃ　";
 
 //general symbol test?
-char D_800F6AC0[708] = "　アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲンァィゥェォャュョガギグゲゴザジズゼゾダヂヅデドバビブベボパピプペポあいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをんぁぃぅぇぉゃゅょがぎぐげござじずぜぞだぢづでどばびぶべぼぱぴぷぺぽ０１２３４５６７８９？！＆”：（）．，−＋×÷＝「」〜ＡＢＣＤＥＦＧＨＩＪＫＬＭＮＯＰＱＲＳＴＵＶＷＸＹＺッっー続接状異動振下正用切源電技部屋上説明出真中舌敵度押匹台鬼火場回転高跳使頂歩逆立移杭次落戻始方向不思議世界入口体操作練習行床大菓子来最後奇妙手私足先’、。進地深数砂漠城通壁待受流落石要注意今日天気時間合何好心強追変身遊対戦狂暴怒攻撃当速得爆倒点全試玉以個持扉開必集巨岩弾楽前挿";
+char D_800F6AC0[] = "　アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲンァィゥェォャュョガギグゲゴザジズゼゾダヂヅデドバビブベボパピプペポあいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをんぁぃぅぇぉゃゅょがぎぐげござじずぜぞだぢづでどばびぶべぼぱぴぷぺぽ０１２３４５６７８９？！＆”：（）．，−＋×÷＝「」〜ＡＢＣＤＥＦＧＨＩＪＫＬＭＮＯＰＱＲＳＴＵＶＷＸＹＺッっー続接状異動振下正用切源電技部屋上説明出真中舌敵度押匹台鬼火場回転高跳使頂歩逆立移杭次落戻始方向不思議世界入口体操作練習行床大菓子来最後奇妙手私足先’、。進地深数砂漠城通壁待受流落石要注意今日天気時間合何好心強追変身遊対戦狂暴怒攻撃当速得爆倒点全試玉以個持扉開必集巨岩弾楽前挿";
 
-char D_800F6D84[60] = "ＡＢＣＤＥＦＧＨＩＪＫＬＭＮＯＰＱＲＳＴＵＶＷＸＹＺ４６　";
+char D_800F6D84[] = "ＡＢＣＤＥＦＧＨＩＪＫＬＭＮＯＰＱＲＳＴＵＶＷＸＹＺ４６　";
 
 u8 D_800F6DC0[4] = {0, 1, 2, 3};
 
@@ -3303,12 +3303,12 @@ Gfx* func_8005CA44(Gfx* gfxPos) {
         gSP1Triangle(gfxPos++, 3, 2, 1, 0);
     }
 
-    if (gGameModeCurrent != 2 && gCurrentStage == 4 && gCurrentZone == 15) {
+    if (gGameModeCurrent != 2 && gCurrentStage == STAGE_KIDS && gCurrentZone == 15) {
         gSPDisplayList(gfxPos++, KidsLand_model56_Gfx);
         gSPDisplayList(gfxPos++, KidsLand_model66_Gfx);
         gSPDisplayList(gfxPos++, KidsLand_model65_Gfx);
     }
-    if (gGameModeCurrent != 2 && gCurrentStage == 4 && gCurrentZone == 10) {
+    if (gGameModeCurrent != 2 && gCurrentStage == STAGE_KIDS && gCurrentZone == 10) {
         gSPDisplayList(gfxPos++, KidsLand_model61_Gfx);
     }
     gSPDisplayList(gfxPos++, D_10012A0);
@@ -4119,7 +4119,7 @@ void func_80063160(Effect* effect, Gfx** pGfxPos) {
     Effect_HealthBar_Data* data = (Effect_HealthBar_Data*)effect->data;
     s32 i;
 
-    if (D_800FE164 == TRUE || gCurrentStage == 8) {
+    if (D_800FE164 == TRUE || gCurrentStage == STAGE_TRAINING) {
         return;
     }
     if (gCurrentStage != 0 &&
@@ -5897,7 +5897,7 @@ void Effect_TypeZ_Create(f32 posX, f32 posY, f32 posZ, f32 arg3, f32 arg4, s32 a
     f32 x1, y1, z1;
     u8 r,g,b;    
 
-    if (Battle_GameType != 0 || gCurrentStage == 8) {
+    if (Battle_GameType != 0 || gCurrentStage == STAGE_TRAINING) {
         return;
     }   
 
@@ -9004,7 +9004,7 @@ void func_80084788(void) {
 }
 
 Gfx* func_80084884(Gfx* arg0) {
-    if (gCurrentStage == 8) {
+    if (gCurrentStage == STAGE_TRAINING) {
         func_8007CDEC();
     }
     if ((D_80168DA0 == 1) && (D_800FEDB4 == 1) && (D_80236974 == 0) && (gGameModeCurrent == 0)) {

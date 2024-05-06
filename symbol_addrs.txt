@@ -1,3 +1,7 @@
+D_80108894 = 0x80108894; // size:0x1C8
+D_8010035C = 0x8010035C; // rom:0xDB75C
+D_80100328 = 0x80100328; //rom:0xDB728
+D_80105E18 = 0x80105E18; //rom:0xE1218 size:0x26
 RDRAM_CONFIG = 0xa3f00000; // type:u32 size:0x4
 RDRAM_DEVICE_ID = 0xa3f00004; //  type:u32 size:0x4
 RDRAM_DELAY = 0xa3f00008; //  type:u32 size:0x4

@@ -2243,7 +2243,7 @@ void func_800910E4(CTTask* task) {
 void func_800911D0(CTTask* task) {
     CTTask* temp_v0 = task->unk58;
 
-    if (((gCurrentStage == 10) && (temp_v0->unk54 == 1)) || (temp_v0->unk54 == 7)) {
+    if (((gCurrentStage == STAGE_ANTBOSS) && (temp_v0->unk54 == 1)) || (temp_v0->unk54 == 7)) {
         task->function = func_8009131C;
         task->unk4E = 1;
         task->unk88 = 110;
@@ -2254,8 +2254,7 @@ void func_800911D0(CTTask* task) {
         task->rotA = -60;
         func_8008D7B0(task);
         PLAYSFX(SFX_ChameleonJump, 0, 16);
-    }
-    else if (temp_v0->unk54 == 7) {
+    } else if (temp_v0->unk54 == 7) {
         task->unk4E = 1;
         task->function = func_80091694;
         task->unk60 = 8;

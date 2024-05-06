@@ -577,11 +577,6 @@ typedef struct frameBufferData {
     /* 0x00 */ char data[0x25800]; // h*W*colDepth
 } frameBufferData; //sizeof 0x25800
 
-typedef struct tempStruct {
-    /* 0x00 */ char unk_00[60];
-    /* 0x3C */ Vec3f unk_3C;
-} tempStruct; //sizeof 0x48
-
 typedef struct CTTask {
     /* 0x00 */ s16 runType;
     /* 0x02 */ s16 taskID;
