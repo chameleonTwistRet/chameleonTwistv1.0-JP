@@ -540,5 +540,9 @@ void func_800B0A30(Collider* arg0, RoomObject* arg1);
 void func_800D8E04(Collider* arg0);
 void func_800D8E28(Collider* arg0);
 void func_800B0AA4(Collider* collider);
+void func_800B1DA0(Collider* arg0, s32 arg1);
+void func_800B12B4(Collider* arg0, RoomObject* arg1); // assumed
+void func_800B1538(Collider* arg0, RoomObject* arg1); // assumed
+void func_800D90E0(Collider* arg0);
 
 #endif

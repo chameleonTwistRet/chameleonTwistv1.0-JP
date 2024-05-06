@@ -328,7 +328,7 @@ typedef struct RoomObject {
     s32 unk80;
     s32 unk84;
     s32 unk88;
-} RoomObject;
+} RoomObject; //sizeof 0x8C
 
 typedef struct RoomActor {
     s32 id;
@@ -353,7 +353,7 @@ typedef struct RoomActor {
     s32 unk54;
     s32 unk58;
     s32 unk5C;
-} RoomActor;
+} RoomActor; //sizeof 0x60
 
 typedef struct Collectable {
     s32 id;
@@ -1013,15 +1013,17 @@ typedef struct ModelData{
     Vec3f* tris;
     Rect3D* modelBox;
 } ModelData; //sizeof 0x14*/
+
+//platform move point
 typedef struct UnkType1 {
-    Vec3f unk0;
+    Vec3f position; //position
     s32 unkC;
-    s32 unk10;
+    s32 unk10; // total move time
     s32 unk14;
-    s32 unk18;
-    s32 unk1C;
-    s32 unk20;
-} UnkType1;
+    s32 unk18; // come back hold
+    s32 unk1C; // go to next hold
+    s32 unk20; // be here by when in the object's moving timer (generally equal total move time + all previous steps)
+} UnkType1; //sizeof 0x24
 
 typedef struct UnkType2 {
     f32 unk0;
@@ -1030,7 +1032,7 @@ typedef struct UnkType2 {
     f32 unkC;
     f32 unk10;
     f32 unk14;
-} UnkType2;
+} UnkType2; //sizeof 0x18
 
 typedef struct RoomSettings {
     RoomObject* RoomObjectsPointer;

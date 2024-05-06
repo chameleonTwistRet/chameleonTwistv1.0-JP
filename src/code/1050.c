@@ -779,7 +779,7 @@ Gfx* func_8002B7BC(GraphicStruct* arg0, Gfx* gfxPos) {
                 break;
             case POGO:
                 gActors[i].unk_E8 = 0.0f;
-                gfxPos = func_8002B118(arg0, gfxPos, D_3053ED0, &gActors[i], 3.0f, 0, &sp178);
+                gfxPos = func_8002B118(arg0, gfxPos, KidsLand_actorModel9_Gfx, &gActors[i], 3.0f, 0, &sp178);
                 break;
             case CAKE_BOSS:
                 gActors[i].unk_E8 = 0.0f;
@@ -798,9 +798,9 @@ Gfx* func_8002B7BC(GraphicStruct* arg0, Gfx* gfxPos) {
                 break;
             case BOWLING_PINS:
                 if (D_800FE400 == 0) {
-                    gfx1 = D_30545C8;
+                    gfx1 = KidsLand_actorModel10_Gfx;
                 } else {
-                    gfx1 = D_3056428;
+                    gfx1 = KidsLand_actorModel12_Gfx;
                 }
                 gActors[i].unk_E8 = 0.0f;
                 gfxPos = func_8002B118(arg0, gfxPos, gfx1, &gActors[i], 3.0f, 0, &sp178);

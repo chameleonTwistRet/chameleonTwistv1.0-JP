@@ -3304,12 +3304,12 @@ Gfx* func_8005CA44(Gfx* gfxPos) {
     }
 
     if (gGameModeCurrent != 2 && gCurrentStage == 4 && gCurrentZone == 15) {
-        gSPDisplayList(gfxPos++, D_303AD50);
-        gSPDisplayList(gfxPos++, D_303F300);
-        gSPDisplayList(gfxPos++, D_303F1A0);
+        gSPDisplayList(gfxPos++, KidsLand_model56_Gfx);
+        gSPDisplayList(gfxPos++, KidsLand_model66_Gfx);
+        gSPDisplayList(gfxPos++, KidsLand_model65_Gfx);
     }
     if (gGameModeCurrent != 2 && gCurrentStage == 4 && gCurrentZone == 10) {
-        gSPDisplayList(gfxPos++, D_303D418);
+        gSPDisplayList(gfxPos++, KidsLand_model61_Gfx);
     }
     gSPDisplayList(gfxPos++, D_10012A0);
     gSPMatrix(gfxPos++, &D_800F68D0[4], G_MTX_PUSH | G_MTX_LOAD | G_MTX_MODELVIEW);

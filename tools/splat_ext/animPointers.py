@@ -90,13 +90,16 @@ class N64SegAnimPointers(CommonSegCodeSubsegment):
         if not self.data_only:
             lines.append('#include "common.h"')
             lines.append("")
-            lines.append("AnimPointer  "+sym.name+"["+str(num)+"] = {")
+            lines.append("AnimPointer "+sym.name+"["+str(num)+"] = {")
 
         for set in pointersets:
             currLine = "{"
-            for v in set: currLine += v+", "
+            for v in set:
+                currLine += v+", "
+            currLine = currLine[:-2]
             currLine += "},"
             lines.append(currLine)
+        lines[-1] = lines[-1][:-1]
 
         if not self.data_only:
             lines.append("};")
