@@ -2870,8 +2870,8 @@ Mtx JungleLand_IMtx86 = IDENTITY;
 #include "assets/levelGroup/JungleLand/water2/water2.colS.inc.c"
 
 #include "assets/levelGroup/JungleLand/water2/water2.colH.inc.c"
+s32 alignment_Pad_JL[] = {0, 0};
 
-#include "build/assets/levelGroup/JungleLand/whaermrr.inc.c"
 Mtx JungleLand_IMtx87 = IDENTITY;
 
 #include "assets/levelGroup/JungleLand/jlScope2/jlScope2.light.inc.c"
@@ -3003,38 +3003,30 @@ Mtx JungleLand_IMtx102 = IDENTITY;
 
 #include "assets/levelGroup/JungleLand/anim/actors/golem/golemSleep.animArr.inc.c"
 
-#include "build/assets/levelGroup/JungleLand/anim/actors/golem/golemSleepPointers.inc.c"
+#include "assets/levelGroup/JungleLand/anim/actors/golem/golemSleepPointers.animP.inc.c"
 
 #include "assets/levelGroup/JungleLand/anim/actors/golem/golemAttack.animH.inc.c"
 
-#include "build/assets/levelGroup/JungleLand/golemAttackPad.inc.c"
-
 #include "assets/levelGroup/JungleLand/anim/actors/golem/golemAttack.animArr.inc.c"
 
-#include "build/assets/levelGroup/JungleLand/anim/actors/golem/golemAttackPointers.inc.c"
+#include "assets/levelGroup/JungleLand/anim/actors/golem/golemAttackPointers.animP.inc.c"
 
 #include "assets/levelGroup/JungleLand/anim/actors/spiderRock/spiderRockInit.animH.inc.c"
 
-#include "build/assets/levelGroup/JungleLand/spiderRockPad.inc.c"
-
 #include "assets/levelGroup/JungleLand/anim/actors/spiderRock/spiderRockInit.animArr.inc.c"
 
-#include "build/assets/levelGroup/JungleLand/anim/actors/spiderRock/spiderRockInitPointers.inc.c"
+#include "assets/levelGroup/JungleLand/anim/actors/spiderRock/spiderRockInitPointers.animP.inc.c"
 
 #include "assets/levelGroup/JungleLand/anim/actors/fish/fishHeadInit.animH.inc.c"
 
-#include "build/assets/levelGroup/JungleLand/fishHeadPad.inc.c"
-
 #include "assets/levelGroup/JungleLand/anim/actors/fish/fishHeadInit.animArr.inc.c"
 
-#include "build/assets/levelGroup/JungleLand/anim/actors/fish/fishHeadInitPointers.inc.c"
+#include "assets/levelGroup/JungleLand/anim/actors/fish/fishHeadInitPointers.animP.inc.c"
 
 #include "assets/levelGroup/JungleLand/anim/actors/fish/fishTailInit.animH.inc.c"
 
-#include "build/assets/levelGroup/JungleLand/fishTailPad.inc.c"
-
 #include "assets/levelGroup/JungleLand/anim/actors/fish/fishTailInit.animArr.inc.c"
 
-#include "build/assets/levelGroup/JungleLand/anim/actors/fish/fishTailInitPointers.inc.c"
+#include "assets/levelGroup/JungleLand/anim/actors/fish/fishTailInitPointers.animP.inc.c"
 
-#include "build/assets/levelGroup/JungleLand/levelFileBreak.inc.c"
+s32 alignment_Pad_JL2[] = {0, 0};

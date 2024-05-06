@@ -3,8 +3,8 @@
 #include "battle.h"
 #include "5FF30.h"
 
-extern u8 Animations_unk1Pointers_Bin[];
-extern u8 Animations_unk2Pointers_Bin[];
+extern u8 Animations_unk1Pointers_Animp[];
+extern u8 Animations_unk2Pointers_Animp[];
 
 extern u8 D_800F0D3C[];
 extern u8 D_800F0D58[];
@@ -12,15 +12,15 @@ extern u8 D_800F0D88[];
 extern u8 D_800F0D8C[];
 
 unkStruct16 D_800F0D90[5] = {
-{&Animations_unk2Pointers_Bin, &Animations_unk2Pointers_Bin,
+{&Animations_unk2Pointers_Animp, &Animations_unk2Pointers_Animp,
 D_800F0D3C, 28, -10.0f},
 {&static0_chameleonAnimPointers_Animp[0], &static0_chameleonAnimPointers_Animp[0],
 D_800F0D58, 45, -30.0f},
 {&static0_chameleonAnimPointers_Animp[0], &static0_chameleonAnimPointers_Animp[0],
 D_800F0D88, 1, -30.0f},
-{&Animations_unk2Pointers_Bin, &Animations_unk2Pointers_Bin,
+{&Animations_unk2Pointers_Animp, &Animations_unk2Pointers_Animp,
 D_800F0D8C, 1, -10.0f},
-{&Animations_unk1Pointers_Bin, &Animations_unk2Pointers_Bin,
+{&Animations_unk1Pointers_Animp, &Animations_unk2Pointers_Animp,
 D_800F0D3C, 28, 0.0f}
 };
 
