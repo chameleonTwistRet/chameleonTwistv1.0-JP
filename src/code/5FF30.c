@@ -1868,7 +1868,7 @@ Gfx* func_8008D168(Gfx* gfxPos, s32 arg1, s32 arg2) {
     s32 i;
 
     gSPSegment(gfxPos++, 0x00, 0);
-    gSPSegment(gfxPos++, 0x01, OS_K0_TO_PHYSICAL(_ALIGN((u32)D_803B5000 - (u32)D_1045C00 + (u32)D_1000000, 16)));
+    gSPSegment(gfxPos++, 0x01, OS_K0_TO_PHYSICAL(_ALIGN((u32)D_803B5000 - (u32)static0_VRAM_END + (u32)static0_VRAM, 16)));
 
     for (i = 2; i < 16; i++) {
         if (D_80100F50[i].base_address != NULL) {
@@ -3792,7 +3792,7 @@ u32 func_80096128(s32 stageToLoad, s32 inpAddr) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/LoadStageByIndex.s")
 
 void func_800966E0(void) {
-    D_80100F50[1].base_address = (u32)&D_803B5000 - _ALIGN((u32)&D_1045C00 - (u32)&D_1000000, 16);
+    D_80100F50[1].base_address = (u32)&D_803B5000 - _ALIGN((u32)static0_VRAM_END - (u32)static0_VRAM, 16);
     D_80100F50[1].unk4 = (u32)&D_803B5000;
     D_801FFB78 = func_8009603C(gSelectedCharacters[0] + 8, D_80100F50[1].base_address);
 }
@@ -5236,7 +5236,7 @@ void Process_NewGameMenu(void) {
 }
 
 void func_800A1EC4(void) {
-    D_80100F50[1].base_address = (u32)D_803B5000 - (u32)_ALIGN(((u32)D_1045C00 - (u32)D_1000000), 16);
+    D_80100F50[1].base_address = (u32)D_803B5000 - (u32)_ALIGN(((u32)static0_VRAM_END - (u32)static0_VRAM), 16);
     D_80100F50[1].unk4 = (u32)D_803B5000;
     D_801FFB78 = D_80100F50[1].base_address;
     func_80056EB4();
@@ -5764,7 +5764,7 @@ void Process_JSSLogo(void) {
 }
 
 void func_800A56D4(void) {
-    D_80100F50[1].base_address = (u32)&D_803B5000 - _ALIGN((u32)&D_1045C00 - (u32)&D_1000000, 16);
+    D_80100F50[1].base_address = (u32)&D_803B5000 - _ALIGN((u32)static0_VRAM_END - (u32)static0_VRAM, 16);
     D_80100F50[1].unk4 = (u32)&D_803B5000;
     D_801FFB78 = D_80100F50[1].base_address;
     func_80056EB4();
@@ -6565,7 +6565,7 @@ void func_800AAB0C(s32 arg0) {
         //"バッファがない\n"("no buffer")
         osSyncPrintf("バッファがない\n", D_80200C8C);
     } else {
-        dmaResult = DMA_Copy(&D_AB10B0, D_80200C8C, dmaSize);
+        dmaResult = DMA_Copy(CreditsDemo_ROM_START, D_80200C8C, dmaSize);
         if (dmaResult < 0) {
             //"データ読み込み失敗\n" ("data read failure")
             osSyncPrintf("データ読み込み失敗\n");

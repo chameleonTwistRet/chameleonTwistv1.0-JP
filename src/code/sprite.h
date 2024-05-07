@@ -314,7 +314,6 @@ extern PlayerActor* D_80176B74;
 extern Camera* D_80176B78;
 extern char D_8010CA1C[];
 extern char D_8010CA54[];
-extern Addr D_8C26A0;
 extern unkStruct02* D_80176F4C;
 extern s32 gSpriteFrameBuffer;
 extern Gfx D_10012A0[];

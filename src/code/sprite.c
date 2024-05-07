@@ -2059,10 +2059,10 @@ s32 LoadSprite(s32 arg0) {
         return -1;
     }
     
-    dmaResult = DMA_Copy(&D_8C26A0[temp_s1->bitmapRom & 0xFFFFFF], temp_s1->bitmapP, dmaSize);
+    dmaResult = DMA_Copy(&extImages_ROM_START[temp_s1->bitmapRom & 0xFFFFFF], temp_s1->bitmapP, dmaSize);
 
     while (dmaResult < 0) {
-        dmaResult = DMA_Copy(&D_8C26A0[temp_s1->bitmapRom & 0xFFFFFF], temp_s1->bitmapP, dmaSize);
+        dmaResult = DMA_Copy(&extImages_ROM_START[temp_s1->bitmapRom & 0xFFFFFF], temp_s1->bitmapP, dmaSize);
     }
     
     while (func_800A72E8(dmaResult) == 0);
@@ -2075,10 +2075,10 @@ s32 LoadSprite(s32 arg0) {
             return -1;
         }
         
-        dmaResult = DMA_Copy(&D_8C26A0[temp_s1->paletteRom & 0xFFFFFF], temp_s1->palletteP, 0x200);
+        dmaResult = DMA_Copy(&extImages_ROM_START[temp_s1->paletteRom & 0xFFFFFF], temp_s1->palletteP, 0x200);
 
         while (dmaResult < 0) {
-            dmaResult = DMA_Copy(&D_8C26A0[temp_s1->paletteRom & 0xFFFFFF], temp_s1->palletteP, 0x200);
+            dmaResult = DMA_Copy(&extImages_ROM_START[temp_s1->paletteRom & 0xFFFFFF], temp_s1->palletteP, 0x200);
         }
         
         while (func_800A72E8(dmaResult) == 0);

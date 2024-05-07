@@ -452,9 +452,32 @@ segments:
     subalign: 8
     start: 0x147760
     subsegments:
-      - [0x147760, databin, alBankfile0] #size of 0x7B60 [ram 801C4940] 
+      - [0x147760, databin, alBankfile0] #size of 0x7B60 [ram 801C4940]
 
-  
+  - name: assets2
+    type: code
+    start: 0x14F2C0
+    subsegments:
+      - [0x14F2C0, databin, alBankChunk] #not split data, random chunk of data from the rom currently
+
+  - name: assets3
+    type: code
+    start: 0x282E80
+    subsegments:
+      - [0x282E80, databin, alBankChunk2] #not split data, random chunk of data from the rom currently
+
+  - name: assets4
+    type: code
+    start: 0x2A29C0
+    subsegments:
+      - [0x2A29C0, databin, sound/ctl] #size of 0x8760
+
+  - name: assets5
+    type: code
+    start: 0x2AB120
+    subsegments:
+      - [0x2AB120, databin, sound/tbl] #sfxs #unkSize
+
   # # Start of next part?
   # - [0x147760, databin, alBankfile0] #size of 0x7B60 [ram 801C4940] 
   # - [0x14F2C0, databin, alBankfile0Table] #unksize
@@ -10973,7 +10996,7 @@ segments:
       - [0xB31508, mtx, restAssociate/restAssociate]
       - [0xB31548, gfxSeg, restAssociate/restAssociate]
 
-  - name: assets5
+  - name: assets6
     type: code
     subalign: 8
     start: 0xB315D0

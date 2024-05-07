@@ -970,7 +970,7 @@ Gfx* func_8002C4E8(Gfx* gfxPos, s32 arg1, s32 arg2) {
     s32 i;
 
     gSPSegment(gfxPos++, 0x00, 0);
-    gSPSegment(gfxPos++, 0x01, OS_K0_TO_PHYSICAL(_ALIGN((u32)D_803B5000 - (u32)D_1045C00 + (u32)D_1000000, 0x10)));
+    gSPSegment(gfxPos++, 0x01, OS_K0_TO_PHYSICAL(_ALIGN((u32)D_803B5000 - (u32)static0_VRAM_END + (u32)static0_VRAM, 0x10)));
 
     for (i = 2; i < 16; i++) {
         if (D_80100F50[i].base_address != NULL) {

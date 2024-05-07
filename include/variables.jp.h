@@ -292,7 +292,6 @@ extern ALCMidiHdr* D_801FD550;
 extern SaveFile gGameState; //data on current playthrough's progress.
 extern void* D_80200C8C;
 extern void* D_80200C94;
-extern Addr D_AB10B0;
 extern Camera gCamera[4];
 extern unk802000C84 D_80200C84;
 extern u8 gHasShadows[256]; //unset for actortypes like spawnners.
@@ -354,7 +353,6 @@ extern u8 D_800FF64C;
 extern u8 D_800FF650;
 extern ALSndPlayer* gSFXPlayerP;
 extern frameBufferData D_803B5000[2];
-extern Addr D_1000000;
 extern Addr D_1045C00;
 extern unk80100F50 D_80100F50[];
 extern CTTask* gCTTaskHead;

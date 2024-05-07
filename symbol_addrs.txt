@@ -1263,16 +1263,16 @@ JL_IntroText = 0x800F0E40; // size:0x1A4 rom:0xCC240
 D_800F67A0 = 0x800F67A0; // size:0x18
 D_800F68C4 = 0x800F68C4; // size:0x8
 
-D_ED090 = 0xED090;
-D_101B60 = 0x101B60;
-D_147760 = 0x147760;
-D_14F2C0 = 0x14F2C0;
-D_282E80 = 0x282E80;
-D_2A29C0 = 0x2A29C0;
-D_2AB120 = 0x2AB120;
-D_8C26A0 = 0x8C26A0;
-D_AB10B0 = 0xAB10B0;
-D_AF5690 = 0xAF5690;
+assets0_ROM_START = 0xED090; // defined:True
+static0_ROM_START = 0x101B60; // defined:True
+assets1_ROM_START = 0x147760; // defined:True
+assets1_ROM_END = 0x14F2C0; // defined:True
+assets3_ROM_START = 0x282E80; // defined:True
+assets4_ROM_START = 0x2A29C0; // defined:True
+assets4_ROM_END = 0x2AB120; // defined:True
+extImages_ROM_START = 0x8C26A0; // defined:True
+CreditsDemo_ROM_START = 0xAB10B0; // defined:True
+DemoData_ROM_START = 0xAF5690; // defined:True
 //ASSETS
 //generated section Black starting here
 Black_light_Light = 0x0C000000; // type:Light rom:0xB1FE00 defined:True
@@ -7320,10 +7320,6 @@ extImages_unk1Header_Animh = 0x101D22A8; // type:Animh rom:0xA94948 defined:True
 extImages_unk1_Animarr = 0x101D22D8; // type:Animarr rom:0xA94978 defined:True
 extImages_unk2Header_Animh = 0x101E67D8; // type:Animh rom:0xAA8E78 defined:True
 extImages_unk2_Animarr = 0x101E6808; // type:Animarr rom:0xAA8EA8 defined:True
-
-D_1000000 = 0x01000000;
-
-
 
 //generated section static0 starting here
 static0_mtx00_Mtx = 0x01000000; // type:Mtx rom:0x101B60 defined:True
