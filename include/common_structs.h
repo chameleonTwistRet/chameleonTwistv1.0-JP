@@ -951,7 +951,10 @@ D_MTXSLOTC = 0x801299F0; // type:Mtx
 D_MTXSLOTD = 0x80129A30; // type:Mtx*/
 
 typedef struct GraphicStruct {
-/*0x0*/         Gfx dlist[0x1000];
+    union { //something very strange is up with these
+        Gfx dlist[0x1000];
+        Mtx mtx[0x200];
+    } UnkGroup;
 /*0x8000*/      Mtx perspective;
 /*0x8040*/      Mtx lookAt;
 /*0x8080*/      Mtx playerTranslate[4];

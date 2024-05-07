@@ -31,49 +31,49 @@ def fix_gfx_syms():
     find_and_replace(directory_to_search, file_extension, regex_pattern, replacement_string)
 
     regex_pattern = r'D_80129770_([^,]+)'
-    replacement_string = "gGraphicsList[0].dlist[0]" 
+    replacement_string = "gGraphicsList[0].UnkGroup.mtx[0]" 
     find_and_replace(directory_to_search, file_extension, regex_pattern, replacement_string)
 
     regex_pattern = r'D_801297B0_([^,]+)'
-    replacement_string = "gGraphicsList[0].dlist[8]" 
+    replacement_string = "gGraphicsList[0].UnkGroup.mtx[1]" 
     find_and_replace(directory_to_search, file_extension, regex_pattern, replacement_string)
 
     regex_pattern = r'D_801297F0_([^,]+)'
-    replacement_string = "gGraphicsList[0].dlist[16]" 
+    replacement_string = "gGraphicsList[0].UnkGroup.mtx[2]" 
     find_and_replace(directory_to_search, file_extension, regex_pattern, replacement_string)
 
     regex_pattern = r'D_80129830_([^,]+)'
-    replacement_string = "gGraphicsList[0].dlist[24]" 
+    replacement_string = "gGraphicsList[0].UnkGroup.mtx[3]" 
     find_and_replace(directory_to_search, file_extension, regex_pattern, replacement_string)
 
     regex_pattern = r'D_80129870_([^,]+)'
-    replacement_string = "gGraphicsList[0].dlist[32]" 
+    replacement_string = "gGraphicsList[0].UnkGroup.mtx[4]" 
     find_and_replace(directory_to_search, file_extension, regex_pattern, replacement_string)
 
     regex_pattern = r'D_801298B0_([^,]+)'
-    replacement_string = "gGraphicsList[0].dlist[40]" 
+    replacement_string = "gGraphicsList[0].UnkGroup.mtx[5]" 
     find_and_replace(directory_to_search, file_extension, regex_pattern, replacement_string)
 
     regex_pattern = r'D_801298F0_([^,]+)'
-    replacement_string = "gGraphicsList[0].dlist[48]" 
+    replacement_string = "gGraphicsList[0].UnkGroup.mtx[6]" 
     find_and_replace(directory_to_search, file_extension, regex_pattern, replacement_string)
 
     regex_pattern = r'D_80129930_([^,]+)'
-    replacement_string = "gGraphicsList[0].dlist[56]" 
+    replacement_string = "gGraphicsList[0].UnkGroup.mtx[7]" 
     find_and_replace(directory_to_search, file_extension, regex_pattern, replacement_string)
 
     regex_pattern = r'D_80129970_([^,]+)'
-    replacement_string = "gGraphicsList[0].dlist[64]" 
+    replacement_string = "gGraphicsList[0].UnkGroup.mtx[8]" 
     find_and_replace(directory_to_search, file_extension, regex_pattern, replacement_string)
 
     regex_pattern = r'D_801299B0_([^,]+)'
-    replacement_string = "gGraphicsList[0].dlist[72]" 
+    replacement_string = "gGraphicsList[0].UnkGroup.mtx[9]" 
     find_and_replace(directory_to_search, file_extension, regex_pattern, replacement_string)
 
     regex_pattern = r'D_801299F0_([^,]+)'
-    replacement_string = "gGraphicsList[0].dlist[80]" 
+    replacement_string = "gGraphicsList[0].UnkGroup.mtx[10]" 
     find_and_replace(directory_to_search, file_extension, regex_pattern, replacement_string)
 
     regex_pattern = r'D_80129A30_([^,]+)'
-    replacement_string = "gGraphicsList[0].dlist[88]" 
+    replacement_string = "gGraphicsList[0].UnkGroup.mtx[11]" 
     find_and_replace(directory_to_search, file_extension, regex_pattern, replacement_string)

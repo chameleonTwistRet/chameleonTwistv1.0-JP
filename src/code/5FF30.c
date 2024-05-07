@@ -1859,7 +1859,7 @@ void CTTask_Unlink_2(CTTask* task) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008D060.s")
 
 void func_8008D114(GraphicStruct* arg0, s32 fbIndex) {
-    Video_SetTask(arg0, arg0->dlist, fbIndex);
+    Video_SetTask(arg0, arg0->UnkGroup.dlist, fbIndex);
     osWritebackDCache(arg0, sizeof(GraphicStruct));
     Sched_SetGfxTask(&D_800F04E0[fbIndex], fbIndex);
 }
@@ -2305,7 +2305,7 @@ void func_8008F114(void){
 void func_8008F16C(void) {
     if (D_800FFDF0 != 0) {
         osRecvMesg(&gSyncMessageQueue, NULL, OS_MESG_NOBLOCK);
-        gMainGfxPos = gGraphicsList[gFramebufferIndex].dlist;
+        gMainGfxPos = gGraphicsList[gFramebufferIndex].UnkGroup.dlist;
         gMainGfxPos = func_8008D168(gMainGfxPos, gFramebufferIndex, D_800FFDF0);
         func_8005CA38();
         if (D_800FFDF0 == 3) {
@@ -2331,7 +2331,7 @@ void func_8008F16C(void) {
         func_8005CA38();
         func_80056F48(0, gTongues, gPlayerActors, gCamera);
         func_8008D114(&gGraphicsList[1 - gFramebufferIndex], 1 - gFramebufferIndex);
-        gMainGfxPos = gGraphicsList[gFramebufferIndex].dlist;
+        gMainGfxPos = gGraphicsList[gFramebufferIndex].UnkGroup.dlist;
         gMainGfxPos = func_8008D168(gMainGfxPos, gFramebufferIndex, D_800FFDF0);
         func_8004E784(gContMain, 4, 0, 0);
         Controller_ParseJoystick(gContMain);

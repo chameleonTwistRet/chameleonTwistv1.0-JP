@@ -1012,10 +1012,10 @@ Gfx* func_8002C4E8(Gfx* gfxPos, s32 arg1, s32 arg2);
 #endif
 
 Gfx* func_8002C900(GraphicStruct* arg0, s32 arg1) {
-    Gfx* gfxPos = arg0->dlist;
+    Gfx* gfxPos = arg0->UnkGroup.dlist;
     s32 i;
 
-    gfxPos = func_8002C4E8(arg0->dlist, arg1, 0);
+    gfxPos = func_8002C4E8(arg0->UnkGroup.dlist, arg1, 0);
     gSPDisplayList(gfxPos++, D_1015B18);
     gDPSetColorImage(gfxPos++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 320, OS_K0_TO_PHYSICAL(&D_803B5000[arg1]));
     gfxPos = func_8002C280(arg0, gfxPos);
@@ -1044,7 +1044,7 @@ Gfx* func_8002C900(GraphicStruct* arg0, s32 arg1) {
 Gfx* func_8002CAC8(GraphicStruct* arg0, s32 arg1) {
     Gfx* gdl;
 
-    gdl = func_8002C4E8(arg0->dlist, arg1, 1);
+    gdl = func_8002C4E8(arg0->UnkGroup.dlist, arg1, 1);
     gDPFullSync(gdl++);
     gSPEndDisplayList(gdl++);
     return gdl;
