@@ -1263,6 +1263,11 @@ JL_IntroText = 0x800F0E40; // size:0x1A4 rom:0xCC240
 D_800F67A0 = 0x800F67A0; // size:0x18
 D_800F68C4 = 0x800F68C4; // size:0x8
 
+D_80129730 = 0x80129730;
+
+D_80111C90 = 0x80111C90; //size:0x2000
+__osException = 0x800E1940;
+
 assets0_ROM_START = 0xED090; // defined:True
 static0_ROM_START = 0x101B60; // defined:True
 assets1_ROM_START = 0x147760; // defined:True
@@ -1273,6 +1278,7 @@ assets4_ROM_END = 0x2AB120; // defined:True
 extImages_ROM_START = 0x8C26A0; // defined:True
 CreditsDemo_ROM_START = 0xAB10B0; // defined:True
 DemoData_ROM_START = 0xAF5690; // defined:True
+
 //ASSETS
 //generated section Black starting here
 Black_light_Light = 0x0C000000; // type:Light rom:0xB1FE00 defined:True
