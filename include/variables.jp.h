@@ -293,6 +293,8 @@ extern SaveFile gGameState; //data on current playthrough's progress.
 extern void* D_80200C8C;
 extern void* D_80200C94;
 extern Camera gCamera[4];
+extern Mtx D_80129730[1];
+extern GraphicStruct gGraphicsList[2];
 extern unk802000C84 D_80200C84;
 extern u8 gHasShadows[256]; //unset for actortypes like spawnners.
 extern Collider D_80236980[128];

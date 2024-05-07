@@ -38,7 +38,6 @@ void Effect_TypeAF_Init(f32* arg0, f32* arg1, f32* arg2, f32 arg3, f32 arg4, f32
 extern f32 D_80168D88;
 extern f32 D_80168D8C;
 extern f32 D_80168D90;
-extern GraphicStruct gGraphicsList[2];
 extern s32 gFramebufferIndex;
 extern s32 D_800F066C;
 extern s32 sDebugMultiplayer;
