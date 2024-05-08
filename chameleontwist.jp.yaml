@@ -330,7 +330,10 @@ segments:
     follows_vram: main
     vram: 0x8024C510
     subsegments:
-      - [0xED090, databin, unkBlock0Assets0] #size of 0x14AD0
+      - [0xED090, c, unkBlock0Assets0] #size of 0x14AD0
+      #- [0xF0130, c, unkBlock1Assets0] #8024F5B0
+      #- [0xF3330, databin, unkBlock2Assets0] #802527B0
+      #- [0xF0130, databin, unkBlock1Assets0]
 
 # # from mainproc() piDMA size: 45C00
   - start: 0x101B60

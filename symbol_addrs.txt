@@ -1493,6 +1493,8 @@ static0_VRAM_END = 0x01045C00; // defined:True
 assets0_VRAM = 0x8024C510; // defined:True
 assets0_VRAM_END = 0x80260FE0;
 
+D_8024F600 = 0x8024F600; //size:0x50
+
 D_800FE8C8_Global = 0x800FE8C8; //rom:0xD9CC8 defined:True
 
 D_800FE7D8_Global = 0x800FE7D8; //rom:0xD9BD8
