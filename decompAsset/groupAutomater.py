@@ -262,6 +262,6 @@ if __name__ == "__main__":
     try:
         args = parser.parse_args()
     except SystemExit:
-        start("static0", "img/static0")
+        start("Quintella", "levelGroup/Quintella")
         exit()
     start(args.group, args.outfileName)

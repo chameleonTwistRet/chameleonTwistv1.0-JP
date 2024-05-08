@@ -11021,3 +11021,43 @@ static0_GetupFromKnockback_Animarr = 0x01038800; // type:Animarr rom:0x13A360 de
 static0_unk3_Animh = 0x0103C900; // type:Animh rom:0x13E460 defined:True
 static0_unk3_Animarr = 0x0103C930; // type:Animarr rom:0x13E490 defined:True
 static0_chameleonAnimPointers_Animp = 0x01045B70; // type:Animp rom:0x1476D0 defined:True
+
+
+//generated section BombSnake starting here
+BombSnake_BombSnake_data_Bin = 0x03000000; // type:Bin rom:0x7A72B0 defined:True
+
+
+//generated section GhostCastle starting here
+GhostCastle_GhostCastle_data_Bin = 0x03000000; // type:Bin rom:0x6344C0 defined:True
+
+
+//generated section PileOfBooks starting here
+PileOfBooks_PileOfBooks_data_Bin = 0x03000000; // type:Bin rom:0x7FD3B0 defined:True
+
+
+//generated section Armadillo starting here
+Armadillo_Armadillo_data_Bin = 0x03000000; // type:Bin rom:0x7D22B0 defined:True
+
+
+//generated section GiantCake starting here
+GiantCake_GiantCake_data_Bin = 0x03000000; // type:Bin rom:0x7AF730 defined:True
+
+
+//generated section BattleMode starting here
+BattleMode_BattleMode_data_Bin = 0x03000000; // type:Bin rom:0x849930 defined:True
+
+
+//generated section Training starting here
+Training_Training_data_Bin = 0x03000000; // type:Bin rom:0x85C970 defined:True
+
+
+//generated section BossRush starting here
+BossRush_BossRush_data_Bin = 0x03000000; // type:Bin rom:0x8788B0 defined:True
+
+
+//generated section LizardKong starting here
+LizardKong_LizardKong_data_Bin = 0x03000000; // type:Bin rom:0x70DB70 defined:True
+
+
+//generated section Quintella starting here
+Quintella_Quintella_data_Bin = 0x03000000; // type:Bin rom:0x7477F0 defined:True

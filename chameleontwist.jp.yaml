@@ -8407,7 +8407,23 @@ segments:
       - [0x6344B0, animPointers, anim/unk19Pointers]
       - [0x6344BC] #eof
 
-  - [0x6344c0, databin, Level/GhostCastle]
+  - start: 0x6344c0
+    name: GhostCastle
+    vram: 0x03000000 #SEGMENT 0x03
+    dir: levelGroup
+    subalign: 8
+    type: code
+    exclusive_ram_id: "LEVELGROUP"
+    subsegments:
+    - [auto, c, GhostCastle]
+    - name: GhostCastle
+      dir: GhostCastle
+      type: .data
+      subalign: 8
+      vram: 0x81000000
+      start: 0x6344c0
+      subsegments:
+      - [0x6344c0, databin, GhostCastle_data]
 
   - start: 0x6A8e20
     name: JungleLand
@@ -10021,8 +10037,59 @@ segments:
       - [0x70db58, animPointers, anim/actors/fish/fishTailInitPointers]
       - [0x70db64]
 
-  - [0x70db70, databin, Level/LizardKong]
-  - [0x7477f0, databin, Level/Quintella]
+  - start: 0x70db70
+    name: LizardKong
+    vram: 0x03000000 #SEGMENT 0x03
+    dir: levelGroup
+    subalign: 8
+    type: code
+    exclusive_ram_id: "LEVELGROUP"
+    subsegments:
+    - [auto, c, LizardKong]
+    - name: LizardKong
+      dir: LizardKong
+      type: .data
+      subalign: 8
+      vram: 0x81000000
+      start: 0x70db70
+      subsegments:
+      - [0x70db70, databin, LizardKong_data]
+
+  - start: 0x7477f0
+    name: Quintella
+    vram: 0x03000000 #SEGMENT 0x03
+    dir: levelGroup
+    subalign: 8
+    type: code
+    exclusive_ram_id: "LEVELGROUP"
+    subsegments:
+    - [auto, c, Quintella]
+    - name: Quintella
+      dir: Quintella
+      type: .data
+      subalign: 8
+      vram: 0x81000000
+      start: 0x7477f0
+      subsegments:
+      - [0x7477f0, databin, Quintella_data]
+
+  - start: 0x7A72B0
+    name: BombSnake
+    vram: 0x03000000 #SEGMENT 0x03
+    dir: levelGroup
+    subalign: 8
+    type: code
+    exclusive_ram_id: "LEVELGROUP"
+    subsegments:
+    - [auto, c, BombSnake]
+    - name: BombSnake
+      dir: BombSnake
+      type: .data
+      subalign: 8
+      vram: 0x81000000
+      start: 0x7A72B0
+      subsegments:
+      - [0x7A72B0, databin, BombSnake_data]
 
   # - start: 0x7A72B0
   #   name: BombSnake
@@ -10163,12 +10230,113 @@ segments:
   #     - [0x7af6f8, databin, animPointers]
   #     #eof
 
-  - [0x7af730, databin, Level/GiantCake]
-  - [0x7d22b0, databin, Level/Armadillo]
-  - [0x7fd3b0, databin, Level/PileOfBooks]
-  - [0x849930, databin, Level/BattleMode]
-  - [0x85c970, databin, Level/Training]
-  - [0x878870, databin, Level/BossRush]
+  - start: 0x7af730
+    name: GiantCake
+    vram: 0x03000000 #SEGMENT 0x03
+    dir: levelGroup
+    subalign: 8
+    type: code
+    exclusive_ram_id: "LEVELGROUP"
+    subsegments:
+    - [auto, c, GiantCake]
+    - name: GiantCake
+      dir: GiantCake
+      type: .data
+      subalign: 8
+      vram: 0x81000000
+      start: 0x7af730
+      subsegments:
+      - [0x7af730, databin, GiantCake_data]
+
+  - start: 0x7d22b0
+    name: Armadillo
+    vram: 0x03000000 #SEGMENT 0x03
+    dir: levelGroup
+    subalign: 8
+    type: code
+    exclusive_ram_id: "LEVELGROUP"
+    subsegments:
+    - [auto, c, Armadillo]
+    - name: Armadillo
+      dir: Armadillo
+      type: .data
+      subalign: 8
+      vram: 0x81000000
+      start: 0x7d22b0
+      subsegments:
+      - [0x7d22b0, databin, Armadillo_data]
+
+  - start: 0x7fd3b0
+    name: PileOfBooks
+    vram: 0x03000000 #SEGMENT 0x03
+    dir: levelGroup
+    subalign: 8
+    type: code
+    exclusive_ram_id: "LEVELGROUP"
+    subsegments:
+    - [auto, c, PileOfBooks]
+    - name: PileOfBooks
+      dir: PileOfBooks
+      type: .data
+      subalign: 8
+      vram: 0x81000000
+      start: 0x7fd3b0
+      subsegments:
+      - [0x7fd3b0, databin, PileOfBooks_data]
+
+  - start: 0x849930
+    name: BattleMode
+    vram: 0x03000000 #SEGMENT 0x03
+    dir: levelGroup
+    subalign: 8
+    type: code
+    exclusive_ram_id: "LEVELGROUP"
+    subsegments:
+    - [auto, c, BattleMode]
+    - name: BattleMode
+      dir: BattleMode
+      type: .data
+      subalign: 8
+      vram: 0x81000000
+      start: 0x849930
+      subsegments:
+      - [0x849930, databin, BattleMode_data]
+
+  - start: 0x85c970
+    name: Training
+    vram: 0x03000000 #SEGMENT 0x03
+    dir: levelGroup
+    subalign: 8
+    type: code
+    exclusive_ram_id: "LEVELGROUP"
+    subsegments:
+    - [auto, c, Training]
+    - name: Training
+      dir: Training
+      type: .data
+      subalign: 8
+      vram: 0x81000000
+      start: 0x85c970
+      subsegments:
+      - [0x85c970, databin, Training_data]
+
+  - start: 0x8788B0
+    name: BossRush
+    vram: 0x03000000 #SEGMENT 0x03
+    dir: levelGroup
+    subalign: 8
+    type: code
+    exclusive_ram_id: "LEVELGROUP"
+    subsegments:
+    - [auto, c, BossRush]
+    - name: BossRush
+      dir: BossRush
+      type: .data
+      subalign: 8
+      vram: 0x81000000
+      start: 0x8788B0
+      subsegments:
+      - [0x8788B0, databin, BossRush_data]
 
   # # - start: 0x87F600
   # #   name: failMtx
