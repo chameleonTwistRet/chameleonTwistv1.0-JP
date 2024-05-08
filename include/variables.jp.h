@@ -355,7 +355,6 @@ extern u8 D_800FF64C;
 extern u8 D_800FF650;
 extern ALSndPlayer* gSFXPlayerP;
 extern frameBufferData D_803B5000[2];
-extern Addr D_1045C00;
 extern unk80100F50 D_80100F50[];
 extern CTTask* gCTTaskHead;
 extern CTTask* gCTTaskTail;

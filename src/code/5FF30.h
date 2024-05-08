@@ -637,7 +637,11 @@ extern s8 D_80200B30;
 extern s16 sDebugBitfeild;
 extern s8 D_80200B28[];
 extern chameleonLetter* D_801005F8[6];
-extern s16 D_801003DC;
+typedef struct stuff {
+    s16 unk0[3];
+    u8 unk6[6];
+} stuff;
+extern stuff D_801003DC;
 extern s16 D_80200B1A;
 extern s16 D_80200B1C;
 extern s16 gSelectedBattleBGM;

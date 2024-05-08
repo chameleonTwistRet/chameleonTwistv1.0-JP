@@ -8,6 +8,7 @@ unsigned char static0_star_rgba32_PNG[] = {
 };
 
 #include "build/assets/img/static0/spriteController.inc.c"
+#include "build/assets/img/static0/unkDL0.inc.c"
 unsigned char static0_health_ci8_PNG[] = {
 #include "build/assets/img/static0/health.ci8.png.inc.c"
 };

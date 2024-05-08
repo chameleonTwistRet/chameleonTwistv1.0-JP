@@ -1268,6 +1268,15 @@ D_80129730 = 0x80129730;
 D_80111C90 = 0x80111C90; //size:0x2000
 __osException = 0x800E1940;
 
+static0_VRAM = 0x01000000; // defined:True
+static0_VRAM_END = 0x01045C00; // defined:True
+
+assets0_VRAM = 0x8024C510; // defined:True
+assets0_VRAM_END = 0x80260FE0;
+
+D_800FE7D8_Global = 0x800FE7D8;
+D_80100370 = 0x80100370; // type:s32 rom:0xDB770
+
 assets0_ROM_START = 0xED090; // defined:True
 static0_ROM_START = 0x101B60; // defined:True
 assets1_ROM_START = 0x147760; // defined:True

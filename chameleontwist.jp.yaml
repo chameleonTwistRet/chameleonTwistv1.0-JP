@@ -232,7 +232,8 @@ segments:
       - [0xD27A0, data, code/sprite] #800F0D90 through 800FEDC0
       #- [0xCC190, data, code/sprite] #800F0D90 through 800FEDC0
       - [0xDA1C0, .data, code/5FF30] #800FEDC0 through 80108B70
-      - [0xDB770, data, code/5FF30_2] #80100370 fake split for migrating data
+      #- [0xDB770, data, code/5FF30_2] #80100370 fake split for migrating data
+      - [0xDB840, data, code/5FF30_2] #starts at 80100440
       - [0xE3BA0, .data, code/8ADD0] #801087A0 through 80108B70
       - [0xE3F70, data, code/math] #80108B70 through 80109010
       - [0xE4410, .data, os/initialize] #80109010 through 80109030
@@ -352,7 +353,7 @@ segments:
       - [0x101ba0, mtx, mtx01] #mtx
       - [0x101BE0, rgba32, star.rgba32, 32, 32]
       - [0x102BE0, databin, spriteController] #gfx
-
+      - [0x102EE0, databin, unkDL0] #gfx
       - [0x102FB8, ci8, health.ci8, 16, 16]
       - [0x1030B8] #B8000000
       - [0x1030C0, palette, health.ci8]

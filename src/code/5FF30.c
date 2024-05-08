@@ -785,6 +785,72 @@ extern const char D_8010E0E4[];
 char* D_8010035C[] = {D_8010E0CC, D_8010E0D4, D_8010E0DC, D_8010E0E4, 0x00000000};
 
 
+s32 D_80100370[] = {0x002C0040, 0x00BC0040, 0x002C0088, 0x00BC0088};
+
+
+//????
+extern const char D_8010E0EC[];
+extern const char D_8010E0FC[];
+extern const char D_8010E10C[];
+extern const char D_8010E118[];
+//???? part 2
+extern const char D_8010E128[];
+extern const char D_8010E138[];
+extern const char D_8010E148[];
+extern const char D_8010E154[];
+//???? part 3
+extern const char D_8010E164[];
+extern const char D_8010E174[];
+extern const char D_8010E184[];
+extern const char D_8010E190[];
+//???? part 4
+extern const char D_8010E1A0[];
+extern const char D_8010E1B0[];
+extern const char D_8010E1BC[];
+extern const char D_8010E1CC[];
+extern const char D_8010E1DC[];
+extern const char D_8010E1E8[];
+
+const char* D_80100380[] = {
+    D_8010E0EC, D_8010E0FC, D_8010E10C, D_8010E118,
+    D_8010E128, D_8010E138, D_8010E148, D_8010E154,
+    D_8010E164, D_8010E174, D_8010E184, D_8010E190,
+    D_8010E1A0, D_8010E1B0, D_8010E1BC, D_8010E1CC,
+    D_8010E1DC, D_8010E1E8, 0
+};
+
+s16 D_801003CC[] = {0x68, 0x69, 0x6A, 0x6B, 0x6C, 0x6D};
+s16 gSelectedBattleBGM = -1;
+
+//very unsure how this is supposed to be typed
+stuff D_801003DC = {
+    {2, 0, 0x0100},
+    {0, 0, 0, 0, 0, 0}
+};
+s32 D_801003E8[] = {0x00400080, 0x00800080, 0x00C00080, 0x01000080};
+s16 D_801003F8[] = {0x0044, 0x0080, 0x0080, 0x0080, 0x00BE, 0x0080, 0x00FC, 0x0080};
+
+typedef struct unkStruct5FF30 {
+    s32 unk0;
+    const char* name;
+} unkStruct5FF30;
+
+//battle mode
+extern const char D_8010E60C[];
+extern const char D_8010E618[];
+extern const char D_8010E624[];
+extern const char D_8010E630[];
+extern const char D_8010E63C[];
+extern const char D_8010E648[];
+
+unkStruct5FF30 D_80100408[] = {
+    {0xFFF00060, D_8010E60C},
+    {0xFFF00060, D_8010E618},
+    {0xFFF00060, D_8010E624},
+    {0xFFEC0060, D_8010E630},
+    {0xFFEC0060, D_8010E63C},
+    {0xFFEC0060, D_8010E648},
+};
 
 void schedproc(s32 arg0) {
     s32 var_s2;
@@ -4966,7 +5032,7 @@ void func_8009F7F4(CTTask* task) {
         task->unk66 = gSelectedBattleBGM + 1;
         task->unk_62 = D_80200B1A;
         task->unk_68 = D_80200B1C;
-        task->unk6A = D_801003DC;
+        task->unk6A = D_801003DC.unk0[0];
         task->unk_64 = 0;
         func_8008EA60(32, 0, 0, 0, &task->unk_64);
     }
@@ -4993,7 +5059,7 @@ void func_800A02C4(CTTask* task) {
         D_80200B1A = task->unk_62;
         gSelectedBattleBGM = task->unk66 - 1;
         D_80200B1C = task->unk_68;
-        D_801003DC = task->unk6A;
+        D_801003DC.unk0[0] = task->unk6A;
         func_8008E9AC(32, 0, 0, 0, &task->unk_64);
         task->function = func_800A0354;
     }
@@ -5058,7 +5124,7 @@ void func_800A03B8(CTTask* task) {
                         PLAYSFX(42, 0, 0x10);
                         newTask->unk_68++;
                         if (D_80200B1E < newTask->unk_68) {
-                            newTask->unk_68 = *(&D_801003E3 + -D_80200B1E);
+                            newTask->unk_68 = D_801003DC.unk6[-D_80200B1E + 1];
                         }
                     }
                 }
@@ -5083,7 +5149,7 @@ void func_800A03B8(CTTask* task) {
                         PLAYSFX(42, 0, 0x10);
                     } else if (newTask->unk60 == 2) {
                         newTask->unk_68--;
-                        if (newTask->unk_68 < *(&D_801003E3 + -D_80200B1E)) {
+                        if (newTask->unk_68 < D_801003DC.unk6[-D_80200B1E + 1]) {
                             newTask->unk_68 = D_80200B1E;
                         }
                         PLAYSFX(42, 0, 0x10);
@@ -5102,7 +5168,21 @@ void func_800A07E0(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/Process_BattleMenu.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A0D90.s")
+void func_800A0D90(void) {
+    s32 i;
+    s32 address;
+    D_80100F50[1].base_address = (u32)D_803B5000 - ALIGN16((u32)static0_VRAM_END - (u32)static0_VRAM);
+    D_80100F50[1].unk4 = D_803B5000;
+    address = D_80100F50[1].base_address;
+    for (i = 8; i < 14; i++){
+        address = func_8009603C(i, address);
+    }
+    D_801FFB78 = address;
+    func_80056EB4();
+    Effect_Init();
+    func_8005C9B8();
+    func_80084788();
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A0E3C.s")
 
