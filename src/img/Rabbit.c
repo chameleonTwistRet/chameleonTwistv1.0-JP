@@ -120,4 +120,4 @@ unsigned char Rabbit_watchColor_ci4_PAL[] = {
 
 #include "assets/img/Rabbit/anim/unk1.animArr.inc.c"
 
-#include "build/assets/img/Rabbit/anim/unk1Pointers.inc.c"
+#include "assets/img/Rabbit/anim/unk1Pointers.animP.inc.c"

@@ -68,9 +68,9 @@ extern Gfx D_30093A8[];
 extern Gfx D_300A9E0[];
 extern Gfx KidsLand_actorModel10_Gfx[];
 extern Gfx KidsLand_actorModel12_Gfx[];
-extern Gfx D_3044498[];
-extern Gfx D_30466C8[];
-extern Gfx D_3049EB0[];
+extern Gfx DesertCastle_actorModel4_Gfx[];
+extern Gfx DesertCastle_actorModel19_Gfx[];
+extern Gfx DesertCastle_actorModel21_Gfx[];
 extern Gfx D_300CED0[];
 extern Gfx D_306DDC0[];
 extern Gfx D_306F3C8[];
@@ -95,11 +95,11 @@ extern Gfx Global_unusedStructure_Gfx[];
 
 extern s32 D_800F0560;
 
-extern AnimPointer JungleLand_spiderRockInitPointers_Bin;
-extern AnimPointer JungleLand_golemSleepPointers_Bin;
-extern AnimPointer JungleLand_golemAttackPointers_Bin;
-extern AnimPointer JungleLand_fishHeadInitPointers_Bin;
-extern AnimPointer JungleLand_fishTailInitPointers_Bin;
+extern AnimPointer JungleLand_spiderRockInitPointers_Animp;
+extern AnimPointer JungleLand_golemSleepPointers_Animp;
+extern AnimPointer JungleLand_golemAttackPointers_Animp;
+extern AnimPointer JungleLand_fishHeadInitPointers_Animp;
+extern AnimPointer JungleLand_fishTailInitPointers_Animp;
 
 
 #endif // _1050_H_
