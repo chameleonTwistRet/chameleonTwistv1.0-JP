@@ -1,4 +1,3 @@
-D_80100258 = 0x80100258; //size:0xE
 D_800FEDC0 = 0x800FEDC0; //size:0x710
 D_80108894 = 0x80108894; // size:0x1C8
 D_8010035C = 0x8010035C; // rom:0xDB75C
@@ -1274,8 +1273,16 @@ static0_VRAM_END = 0x01045C00; // defined:True
 assets0_VRAM = 0x8024C510; // defined:True
 assets0_VRAM_END = 0x80260FE0;
 
-D_800FE7D8_Global = 0x800FE7D8;
+D_800FE8C8_Global = 0x800FE8C8; //rom:0xD9CC8 defined:True
+
+D_800FE7D8_Global = 0x800FE7D8; //rom:0xD9BD8
 D_80100370 = 0x80100370; // type:s32 rom:0xDB770
+
+D_800FE4E4 = 0x800FE4E4; //size:0x08 rom:0xD98E4
+D_801003E8 = 0x801003E8; //size:0x10
+
+StageSelect = 0x80100258; //size:0xC0
+
 
 assets0_ROM_START = 0xED090; // defined:True
 static0_ROM_START = 0x101B60; // defined:True

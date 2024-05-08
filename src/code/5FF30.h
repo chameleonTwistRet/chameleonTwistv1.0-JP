@@ -626,7 +626,7 @@ extern s16 D_80100E10;
 extern s16 sStageCrownTotals[6];
 extern s32 D_80247904;
 
-extern s16 D_80100258[12]; //should be 7?
+extern s16 D_80100258[7]; //should be 7?
 extern s16 D_80100318[7];
 extern s16 gStageCrownRecords[];
 extern s32 D_800FF8EC;
@@ -652,7 +652,6 @@ extern s16 D_80200B18;
 extern f32 D_80108784;
 extern f32 D_80108788;
 extern f32 D_8010878C;
-extern u8 D_801003E3;
 extern s16 D_80200B1E;
 extern chameleonLetter* D_80100F28[10]; // coords and text for stage names
 extern chameleonLetter* D_80100DA0[];

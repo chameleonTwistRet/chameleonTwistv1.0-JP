@@ -346,7 +346,7 @@ extern Gfx static0_gfx1_Gfx[];
 extern Gfx static0_gfx2_Gfx[];
 extern Effect* D_800FE1A0;
 extern s32 Battle_GameType;
-extern struct_800FE4E4 D_800FE4E4[];
+extern struct_800FE4E4 D_800FE4E4[4];
 extern f32 D_800FE6F4[];
 extern u8 D_800FE704[];
 extern struct_800FE54C D_800FE54C[];
