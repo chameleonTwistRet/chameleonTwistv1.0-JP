@@ -726,19 +726,19 @@ segTableEntry gStageLoadData[] = { //this should be StageLoadData
 0x030135B0, JungleLand_ROM_START, JungleLand_VRAM, JungleLand_VRAM_END, 0x00000000,
 0x030170A0, AntLand_ROM_START, AntLand_VRAM, AntLand_VRAM_END, 0x00000001,
 0x0301A724, BombLand_ROM_START, BombLand_VRAM, BombLand_VRAM_END, 0x00000002,
-0x0300E490, Level_DesertCastle_ROM_START, Level_DesertCastle_VRAM, Level_DesertCastle_VRAM_END, 0x00000003,
+0x0300E490, DesertCastle_ROM_START, DesertCastle_VRAM, DesertCastle_VRAM_END, 0x00000003,
 0x03015D80, KidsLand_ROM_START, KidsLand_VRAM, KidsLand_VRAM_END, 0x00000004,
-0x03011F2C, Level_GhostCastle_ROM_START, Level_GhostCastle_VRAM, Level_GhostCastle_VRAM_END, 0x00000005,
-0x03008CD8, Level_IntroOutro_ROM_START, Level_IntroOutro_VRAM, Level_IntroOutro_VRAM_END, 0x00000006,
-0x03006358, Level_BattleMode_ROM_START, Level_BattleMode_VRAM, Level_BattleMode_VRAM_END, 0x00000007,
-0x03005F44, Level_Training_ROM_START, Level_Training_VRAM, Level_Training_VRAM_END, 0x00000008,
-0x030011F0, Level_LizardKong_ROM_START, Level_LizardKong_VRAM, Level_LizardKong_VRAM_END, 0x00000009,
-0x03001454, Level_Quintella_ROM_START, Level_Quintella_VRAM, Level_Quintella_VRAM_END, 0x0000000A,
-0x03001464, Level_BombSnake_ROM_START, Level_BombSnake_VRAM, 0x030087A0, 0x0000000B, //Level_BombSnake_VRAM_END isn't correct here?
-0x030013C4, Level_Armadillo_ROM_START, Level_Armadillo_VRAM, Level_Armadillo_VRAM_END, 0x0000000C,
-0x03001300, Level_GiantCake_ROM_START, Level_GiantCake_VRAM, Level_GiantCake_VRAM_END, 0x0000000D,
-0x03002674, Level_PileOfBooks_ROM_START, Level_PileOfBooks_VRAM, Level_PileOfBooks_VRAM_END, 0x0000000E,
-0x030031F0, Level_BossRush_ROM_START, Level_BossRush_VRAM, Level_BossRush_VRAM_END, 0x0000000F,
+0x03011F2C, GhostCastle_ROM_START, GhostCastle_VRAM, GhostCastle_VRAM_END, 0x00000005,
+0x03008CD8, IntroOutro_ROM_START, IntroOutro_VRAM, IntroOutro_VRAM_END, 0x00000006,
+0x03006358, BattleMode_ROM_START, BattleMode_VRAM, BattleMode_VRAM_END, 0x00000007,
+0x03005F44, Training_ROM_START, Training_VRAM, Training_VRAM_END, 0x00000008,
+0x030011F0, LizardKong_ROM_START, LizardKong_VRAM, LizardKong_VRAM_END, 0x00000009,
+0x03001454, Quintella_ROM_START, Quintella_VRAM, Quintella_VRAM_END, 0x0000000A,
+0x03001464, BombSnake_ROM_START, BombSnake_VRAM, 0x030087A0, 0x0000000B, //BombSnake_VRAM_END isn't correct here?
+0x030013C4, Armadillo_ROM_START, Armadillo_VRAM, Armadillo_VRAM_END, 0x0000000C,
+0x03001300, GiantCake_ROM_START, GiantCake_VRAM, GiantCake_VRAM_END, 0x0000000D,
+0x03002674, PileOfBooks_ROM_START, PileOfBooks_VRAM, PileOfBooks_VRAM_END, 0x0000000E,
+0x030031F0, BossRush_ROM_START, BossRush_VRAM, BossRush_VRAM_END, 0x0000000F,
 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0xFFFFFFFF,
 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0xFFFFFFFF,
 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0xFFFFFFFF,
@@ -2734,7 +2734,6 @@ void func_8008FEA8(s32 arg0, s32 arg1) {
 
 void MainLoop(void) {
     func_8002D080();
-    DMA_Copy(PracticeRom_ROM_START, PracticeRom_VRAM, PracticeRom_VRAM_END - PracticeRom_VRAM);
     if (sGameModeStart != -1) {
         gGameModeCurrent = sGameModeStart;
     }
@@ -2746,9 +2745,7 @@ void MainLoop(void) {
     }
     gIsStero = gGameRecords.flags[1] & 1;
     osRecvMesg(&gSyncMessageQueue, NULL, OS_MESG_BLOCK);
-    
     while(1){
-        SetPlayerHealthMax();
         switch (gGameModeCurrent) {
         case 0:
             Porocess_Mode0();
@@ -5946,20 +5943,20 @@ s32 func_800A5778(s32 arg0) {
 
 //feel free to copy back all the suffixes if you want
 //i just dont enjoy having 5 copies of the same word
-#define level_land "ＬＡＮＤ"
-#define level_castle "ＣＡＳＴＬＥ"
+#define land "ＬＡＮＤ"
+#define castle "ＣＡＳＴＬＥ"
 const char D_8010EBA4[] = "ＪＵＮＧＬＥ";
-const char D_8010EBB4[] = level_land;
+const char D_8010EBB4[] = land;
 const char D_8010EBC0[] = "ＡＮＴ";
-const char D_8010EBC8[] = level_land;
+const char D_8010EBC8[] = land;
 const char D_8010EBD4[] = "ＢＯＭＢ";
-const char D_8010EBE0[] = level_land;
+const char D_8010EBE0[] = land;
 const char D_8010EBEC[] = "ＤＥＳＥＲＴ";
-const char D_8010EBFC[] = level_castle;
+const char D_8010EBFC[] = castle;
 const char D_8010EC0C[] = "ＫＩＤＳ";
-const char D_8010EC18[] = level_land;
+const char D_8010EC18[] = land;
 const char D_8010EC24[] = "ＧＨＯＳＴ";
-const char D_8010EC30[] = level_castle;
+const char D_8010EC30[] = castle;
 
 //https://decomp.me/scratch/8wPlV
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/PrintSelectedStageInfo.s")

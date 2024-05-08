@@ -333,13 +333,6 @@ segments:
     subsegments:
       - [0xED090, c, unkBlock0Assets0] #size of 0x14AD0
       - {start: 0x101B60, type: bss, name: assets0Bss}
-  - name: PracticeRom
-    type: code
-    subalign: 8
-    start: auto
-    follows_vram: assets0
-    subsegments:
-    - [auto, c, code/test]
 
 # # from mainproc() piDMA size: 45C00
   - start: 0x101B60
@@ -5703,7 +5696,8 @@ segments:
       - [0x5787f4]
       - [0x5787f8, animArray, anim/unk2, 1, 1]
       - [0x578838, animPointers, anim/unk2Pointers]
-      - [0x578844]
+      - [0x578844, databin, alignment3]
+
 
   - start: 0x578850
     name: DesertCastle
@@ -8311,9 +8305,6 @@ segments:
       - [0x603bb8] #identity matrix
       - [0x603bf8, gfxSeg, whiteChameleon/whiteChameleon]
 
-  - {start: 0x578850, type: databin, vram: 0x03000000, name: Level/DesertCastle }
-  - {start: 0x5C3B20, type: databin, vram: 0x03000000, name: Level/IntroOutro }
-  - {start: 0x6344c0, type: databin, vram: 0x03000000, name: Level/GhostCastle }
 
       #rabbit
       - [0x603c98, vtx, rabbitCutscene/rabbitCutscene_ear]
@@ -10133,145 +10124,6 @@ segments:
       subsegments:
       - [0x7A72B0, databin, BombSnake_data]
 
-  # - start: 0x7A72B0
-  #   name: BombSnake
-  #   vram: 0x03000000 #SEGMENT 0x03
-  #   dir: levelGroup
-  #   subalign: 8
-  #   type: code
-  #   exclusive_ram_id: "LEVELGROUP"
-  #   subsegments:
-  #   - [auto, c, BombSnake]
-  #   - name: BombSnake
-  #     dir: BombSnake
-  #     type: .data
-  #     subalign: 8
-  #     vram: 0x8031B020
-  #     start: 0x7A72B0
-  #     subsegments:
-  #     - [0x7A72B0] #identity matrix
-  #     - [0x7A72F0, levelPointer, pointers]
-  #     - [0x7A7a70, databin, rabObjects]
-
-  #     - [0x7a7bd4, roomObject, roomObjects/roomObj1]
-  #     - [0x7a7c60, roomObject, roomObjects/roomObj2]
-  #     - [0x7a7cec, roomObject, roomObjects/roomObj3]
-  #     - [0x7a7d78, roomObject, roomObjects/roomObj4]
-  #     - [0x7a7e04, roomObject, roomObjects/roomObj5]
-  #     - [0x7a7e90, roomObject, roomObjects/roomObj6]
-  #     - [0x7a7f1c, roomObject, roomObjects/roomObj7]
-  #     - [0x7a7fa8, roomObject, roomObjects/roomObj8]
-  #     - [0x7a8034, roomObject, roomObjects/roomObj9]
-  #     - [0x7a80c0, roomObject, roomObjects/roomObj10]
-  #     - [0x7a814c, roomObject, roomObjects/roomObj11]
-  #     - [0x7a81d8, roomObject, roomObjects/roomObj12]
-  #     - [0x7a8264, roomObject, roomObjects/roomObjN1]
-
-  #     - [0x7a82f0, roomActor, roomActors/roomAct1]
-  #     - [0x7a8350, roomActor, roomActors/roomActN1]
-  #     - [0x7a83B0, roomActor, roomActors/roomAct2]
-  #     - [0x7a8410, roomActor, roomActors/roomActN2]
-
-  #     - [0x7a8470, databin, spriteLib]
-  #     - [0x7a8530, roomSettings, room1]
-  #     - [0x7a859c, roomSettings, room2]
-  #     - [0x7a8608, roomSettings, nullRoom]
-  #     - {start: 0x7a8674, type: levelMap, name: map, args: Map}
-  #     - {start: 0x7a8680, type: levelMap, name: map, args: Header}
-  #     - [0x7a8690, roomSettings, nullOWRoom]
-  #     - [0x7A86FC, levelScope, scope]
-  #     - [0x7A8714, levelHeader, header]
-  #     - [0x7a8734, databin, headerPad] # i guess just so the rest is 16 aligned??????
-
-  #     - [0x7a8740] #identity matrix
-  #     - [0x7a8780, lights, bsScope] # set Lights 1 for alot of bs assets
-
-  #     - [0x7a8798, vtx, arenaWalls/arenaWalls]
-  #     - [0x7a89b8] #identity matrix
-  #     - [0x7a89f8, gfxSeg, arenaWalls/arenaWalls]
-
-  #     - [0x7a8d90, vtx, arenaFloor/arenaFloor]
-  #     - [0x7a8f10] #identity matrix
-  #     - [0x7a8f50] #B8000000
-  #     - [0x7a8f58, i4, arenaFloor/arenaFloor.i4, 64, 32]
-  #     - [0x7A9358, gfxSeg, arenaFloor/arenaFloor]
-      
-  #     - {start: 0x7A9600, type: collision, name: arenaWalls/arenaWalls, args: "Verts"}
-  #     - {start: 0x7a96d8, type: collision, name: arenaWalls/arenaWalls, args: "Tris"}
-  #     - {start: 0x7a97f8, type: collision, name: arenaWalls/arenaWalls, args: "Settings"}
-  #     - {start: 0x7a9810, type: collision, name: arenaWalls/arenaWalls, args: "Header"}
-  #     - {start: 0x7a9824, type: collision, name: arenaFloor/arenaFloor, args: "Verts"}
-  #     - {start: 0x7a98b4, type: collision, name: arenaFloor/arenaFloor, args: "Tris"}
-  #     - {start: 0x7a9974, type: collision, name: arenaFloor/arenaFloor, args: "Settings"}
-  #     - {start: 0x7a998c, type: collision, name: arenaFloor/arenaFloor, args: "Header"}
-
-  #     - [0x7a99a0] #identity matrix
-
-  #     - [0x7a99e0, animHeader, model/unk5/unk5]
-  #     - [0x7a9a10, animArray, model/unk5/unk5, 2, 6]
-  #     - [0x7a9d10, animHeader, model/unk6/unk6]
-  #     - [0x7a9d40, animArray, model/unk6/unk6, 2, 1]
-  #     - [0x7a9dc0, animHeader, model/unk7/unk7]
-  #     - [0x7a9df0, animArray, model/unk7/unk7, 15, 1]
-  #     - [0x7aa1b0, animHeader, model/unk8/unk8]
-  #     - [0x7aa1e0, animArray, model/unk8/unk8, 15, 1]
-
-  #     - [0x7aa5a0, lights, bsScope2] # set Lights 1 for alot of bs objects
-
-  #     - [0x7aa5b8, vtx, bombSnakeHead/bombSnakeHead]
-  #     - [0x7ab208] #identity matrix
-  #     - [0x7ab248] #B8000000
-  #     - [0x7ab250, ci4, bombSnakeHead/cannonClone.ci4, 32, 16]
-  #     - [0x7AB350] #B8000000
-  #     - [0x7AB358, palette, bombSnakeHead/cannonClone.ci4]
-  #     - [0x7ab558] #B8000000
-  #     - [0x7ab560, ci4, bombSnakeHead/color.ci4, 16, 16]
-  #     - [0x7AB5E0] #B8000000
-  #     - [0x7AB5E8, palette, bombSnakeHead/color.ci4]
-  #     - [0x7ab7e8, gfxSeg, bombSnakeHead/bombSnakeHead]
-
-  #     - [0x7AC0A0, vtx, bombSnakeHeadSpike/bombSnakeHeadSpike]
-  #     - [0x7Ac300] #identity matrix
-  #     - [0x7Ac340] #B8000000
-  #     - [0x7Ac348, ci4, bombSnakeHeadSpike/bombSnakeHeadSpike.ci4, 32, 16]
-  #     - [0x7AC448] #B8000000
-  #     - [0x7AC450, palette, bombSnakeHeadSpike/bombSnakeHeadSpike.ci4]
-  #     - [0x7ac650, gfxSeg, bombSnakeHeadSpike/bombSnakeHeadSpike]
-
-  #     - [0x7AC948, vtx, bombSnakeHeadGem/bombSnakeHeadGem]
-  #     - [0x7acf48] #identity matrix
-  #     - [0x7acf88] #B8000000
-  #     - [0x7acf90, ci8, bombSnakeHeadGem/bombSnakeHeadGem.ci8, 32, 48]
-  #     - [0x7AD590] #B8000000
-  #     - [0x7AD598, palette, bombSnakeHeadGem/bombSnakeHeadGem.ci8]
-  #     - [0x7ad798, gfxSeg, bombSnakeHeadGem/bombSnakeHeadGem]
-
-  #     - [0x7ad9e0, vtx, bombSnakeEars/bombSnakeEars]
-  #     - [0x7add60] #identity matrix
-  #     - [0x7adda0] #B8000000
-  #     - [0x7adda8, rgba16, bombSnakeEars/bombSnakeEars.rgba16, 41, 41]
-  #     - [0x7AEAD0, gfxSeg, bombSnakeEars/bombSnakeEars]
-
-  #     - [0x7aef20, vtx, unkD/unkD]
-  #     - [0x7aef60] #identity matrix
-  #     - [0x7aefa0, gfxSeg, unkD/unkD]
-
-  #     - [0x7af018, vtx, unkE/unkE]
-  #     - [0x7af058] #identity matrix
-  #     - [0x7af098, gfxSeg, unkE/unkE]
-
-  #     - [0x7af110] #identity matrix
-  #     - [0x7af150, gfxSeg, unkF/unkF]
-
-  #     - [0x7af198, vtx, bombSnakeTail/bombSnakeTail]
-  #     - [0x7af398] #identity matrix
-  #     - [0x7af3d8, gfxSeg, bombSnakeTail/bombSnakeTail]
-
-  #     - [0x7af698] #identity matrix
-  #     - [0x7af6d8, gfxSeg, unk11/unk11]
-  #     - [0x7af6f8, databin, animPointers]
-  #     #eof
-
   - start: 0x7af730
     name: GiantCake
     vram: 0x03000000 #SEGMENT 0x03
@@ -10380,6 +10232,8 @@ segments:
       subsegments:
       - [0x8788B0, databin, BossRush_data]
 
+  # - [0x878870, databin]
+  
   # # - start: 0x87F600
   # #   name: failMtx
   # #   type: data
