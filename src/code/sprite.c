@@ -1759,24 +1759,473 @@ u8 D_800F72F4[172] = {
     0, 0, 0, 0
 };
 
-//cool hex string bro
-//char D_800F73A0[40] = "０１２３４５６７８９ＡＢＣＤＥＦＧ";
+char D_800F73A0[40] = "０１２３４５６７８９ＡＢＣＤＥＦＧ";
 
+#include "gSpriteListings.c"
 
-//SpriteListing gSpriteListings[2]
+s32 D_800FDF98 = 0;
 
+f32 D_800FDF9C = 218;
 
-/*chameleonEyeListEntry chameleonEyeList[6] = {
+s32 D_800FDFA0 = 0;
+
+s32 gSpriteFrameBuffer = 0;
+
+s32 D_800FDFA8[2] = {0, 0};
+
+s32 D_800FDFB0[2] = {0, 0};
+
+s32 D_800FDFB8[2] = {0, 0};
+
+s32 D_800FDFC0[2] = {0, 0};
+
+s32 D_800FDFC8[2] = {0, 0};
+
+u8 gPrimRed = 255;
+
+u8 gPrimGreen = 255;
+
+u8 gPrimBlue = 255;
+
+u8 gPrimAlpha = 255;
+
+u8 D_800FDFE0 = 0;
+
+u8 D_800FDFE4 = 0;
+
+s32 D_800FDFE8 = 0;
+
+s32 D_800FDFEC = 1;
+
+f32 D_800FDFF0 = 1;
+f32 D_800FDFF4 = 0;
+f32 D_800FDFF8 = 0;
+f32 D_800FDFFC = 0;
+s32 D_800FE000 = 0;
+f32 D_800FE004 = 0;
+f32 D_800FE008 = 0;
+f32 D_800FE00C = 0;
+f32 D_800FE010 = 0;
+f32 D_800FE014 = 0;
+f32 D_800FE018 = 0;
+f32 D_800FE01C = 0;
+f32 D_800FE020 = 0;
+f32 D_800FE024 = 0;
+f32 D_800FE028 = 0;
+f32 D_800FE02C = 0;
+f32 D_800FE030 = 0;
+f32 D_800FE034 = 0;
+f32 D_800FE038 = 0;
+f32 D_800FE03C = 0;
+f32 D_800FE040 = 0;
+f32 D_800FE044 = 0;
+f32 D_800FE048 = 0;
+f32 D_800FE04C = 0;
+f32 D_800FE050 = 0;
+f32 D_800FE054 = 0;
+f32 D_800FE058 = 0;
+f32 D_800FE05C = 0;
+
+f32 D_800FE060 = 1.333333373;
+f32 D_800FE064 = 1;
+f32 D_800FE068 = 0.5;
+f32 D_800FE06C = 0;
+f32 D_800FE070 = 0;
+f32 D_800FE074 = 0.5;
+f32 D_800FE078 = 1;
+f32 D_800FE07C = 0;
+
+//translate these pls
+Gfx D_800FE080[] = {
+0xE7000000,
+0x00000000,
+0xBA001402,
+0x00000000,
+0xBB000001,
+0x80008000,
+0xB9000002,
+0x00000000,
+0xBA001301,
+0x00000000,
+0xBA000C02,
+0x00002000,
+0xBA000903,
+0x00000C00,
+0xBA001102,
+0x00000000,
+0xBA001001,
+0x00000000,
+0xBA000E02,
+0x00000000,
+0xB900031D,
+0x0F0A7008,
+0xFA000000,
+0xFFFFFFFF,
+0xFC119623,
+0xFF2FFFFF,
+0xB8000000,
+0x00000000
+};
+
+Gfx D_800FE0F0[] = {
+0xBB000000,
+0x80008000,
+0xFCFFFFFF,
+0xFFFE793C,
+0xB900031D,
+0x0F0A4000,
+0xB9000002,
+0x00000000,
+0xB8000000,
+0x00000000
+};
+
+Mtx D_800FE118 = IDENTITY;
+
+s32 gEffectListCount = 0;
+
+s32 D_800FE15C = 0;
+
+s32 D_800FE160 = 0;
+
+s32 D_800FE164 = 0;
+
+//lookup table???
+s32 D_800FE168[8] = {
+1,
+10,
+100,
+1000,
+10000,
+100000,
+1000000,
+10000000
+};
+
+s32 D_800FE188 = 0;
+
+//copies of gPrimRed, gPrimGreen, gPrimBlue and gPrimAlpha?
+u8 D_800FE18C = 255;
+
+u8 D_800FE190 = 255;
+
+u8 D_800FE194 = 255;
+
+u8 D_800FE198 = 255;
+
+s32 D_800FE19C = 0;
+
+Effect* D_800FE1A0 = NULL;
+
+s32 D_800FE1A4 = 0;
+
+s32 D_800FE1A8 = 0;
+
+f32 D_800FE1AC = 0;
+
+f32 D_800FE1B0 = 0;
+f32 D_800FE1B4 = 0;
+f32 D_800FE1B8 = 0;
+
+f32 D_800FE1BC = 1;
+f32 D_800FE1C0 = 0;
+f32 D_800FE1C4 = -90;
+f32 D_800FE1C8 = 2;
+f32 D_800FE1CC = 6;
+f32 D_800FE1D0 = 30;
+f32 D_800FE1D4 = 0;
+f32 D_800FE1D8 = 0;
+f32 D_800FE1DC = 0;
+f32 D_800FE1E0 = 0;
+f32 D_800FE1E4 = 0;
+f32 D_800FE1E8 = 600;
+f32 D_800FE1EC = 0;
+f32 D_800FE1F0 = 0;
+f32 D_800FE1F4 = 0;
+
+f32 D_800FE1F8 = 1;
+f32 D_800FE1FC = 0;
+f32 D_800FE200 = -90;
+f32 D_800FE204 = 2;
+f32 D_800FE208 = 9;
+f32 D_800FE20C = 30;
+f32 D_800FE210 = 0;
+f32 D_800FE214 = 0;
+f32 D_800FE218 = 0;
+f32 D_800FE21C = 0;
+f32 D_800FE220 = 0;
+f32 D_800FE224 = 600;
+f32 D_800FE228 = 0;
+f32 D_800FE22C = 0;
+f32 D_800FE230 = 0;
+
+f32 D_800FE234 = 1;
+f32 D_800FE238 = 0;
+f32 D_800FE23C = -90;
+f32 D_800FE240 = 2;
+f32 D_800FE244 = 9;
+f32 D_800FE248 = 30;
+f32 D_800FE24C = 0;
+f32 D_800FE250 = 0;
+f32 D_800FE254 = 0;
+f32 D_800FE258 = 0;
+f32 D_800FE25C = 0;
+f32 D_800FE260 = 600;
+f32 D_800FE264 = 0;
+f32 D_800FE268 = 0;
+f32 D_800FE26C = 0;
+
+f32 D_800FE270 = 0;
+f32 D_800FE274 = 0;
+f32 D_800FE278 = 0;
+f32 D_800FE27C = 0;
+f32 D_800FE280 = 0;
+f32 D_800FE284 = 0;
+f32 D_800FE288 = 0;
+f32 D_800FE28C = 0;
+f32 D_800FE290 = 0;
+f32 D_800FE294 = 0;
+f32 D_800FE298 = 0;
+f32 D_800FE29C = 0;
+
+s32 D_800FE2A0 = 0;
+s32 D_800FE2A4 = 0;
+s32 D_800FE2A8 = 0;
+s32 D_800FE2AC = -1;
+
+Vtx D_800FE2B0[10] = {
+ { { { 200, 0, -200 }, 0, { 8160, -32 }, { 255, 55, 55, 255 } } },
+ { { { 200, 0,  200 }, 0, { 8160,12256}, { 255, 55, 55, 255 } } },
+ { { { 100, 0,  200 }, 0, { 6112,12256}, { 255, 55, 55, 255 } } },
+ { { { 100, 0, -200 }, 0, { 6112, -32 }, { 255, 55, 55, 255 } } },
+ { { {-200, 0,  200 }, 0, { -32 ,12256}, { 255, 55, 55, 255 } } },
+ { { {   0, 0,  200 }, 0, { 4064,12256}, { 255, 55, 55, 255 } } },
+ { { {   0, 0, -200 }, 0, { 4064, -32 }, { 255, 55, 55, 255 } } },
+ { { {-100, 0,  200 }, 0, { 2016,12256}, { 255, 55, 55, 255 } } },
+ { { {-200, 0, -200 }, 0, { -32 , -32 }, { 255, 55, 55, 255 } } },
+ { { {-100, 0, -200 }, 0, { 2016, -32 }, { 255, 55, 55, 255 } } },
+};
+
+Vtx D_800FE350[10] = {
+ { { { 200, 0, -200 }, 0, { 8160, -32 }, { 255, 55, 55, 255 } } },
+ { { { 200, 0,  200 }, 0, { 8160,12256}, { 255, 55, 55, 255 } } },
+ { { { 100, 0,  200 }, 0, { 6112,12256}, { 255, 55, 55, 255 } } },
+ { { { 100, 0, -200 }, 0, { 6112, -32 }, { 255, 55, 55, 255 } } },
+ { { {-200, 0,  200 }, 0, { -32 ,12256}, { 255, 55, 55, 255 } } },
+ { { {   0, 0,  200 }, 0, { 4064,12256}, { 255, 55, 55, 255 } } },
+ { { {   0, 0, -200 }, 0, { 4064, -32 }, { 255, 55, 55, 255 } } },
+ { { {-100, 0,  200 }, 0, { 2016,12256}, { 255, 55, 55, 255 } } },
+ { { {-200, 0, -200 }, 0, { -32 , -32 }, { 255, 55, 55, 255 } } },
+ { { {-100, 0, -200 }, 0, { 2016, -32 }, { 255, 55, 55, 255 } } },
+};
+
+s32 D_800FE3F0 = 0;
+s32 D_800FE3F4 = 0;
+s32 D_800FE3F8 = 0;
+s32 D_800FE3FC = 0;
+s32 D_800FE400 = 0;
+
+extern const char D_8010CABC[];
+extern const char D_8010CADC[];
+extern const char D_8010CACC[];
+extern const char D_8010CAF8[];
+extern const char D_8010CB14[];
+extern const char D_8010CB20[];
+extern const char D_8010CB2C[];
+extern const char D_8010CB48[];
+extern const char D_8010CB64[];
+
+Struct_80076EA0 D_800FE404[9] = {
+    {114, 44, 1, 0, &D_8010CABC, 1},
+    {116, 86, 1, 1, &D_8010CACC, 1},
+    {64, 118, 1, 1, &D_8010CADC, 1},
+    {64, 150, 1, 1, &D_8010CAF8, 1},
+    {128,182, 1, 1, &D_8010CB14, 1},
+    {114, 70, 1, 1, &D_8010CB20, 1},
+    {64, 102, 1, 1, &D_8010CB2C, 1},
+    {64, 134, 1, 1, &D_8010CB48, 1},
+    {120,166, 1, 1, &D_8010CB64, 1}
+};
+
+u8 gDontChangeEyes = 0;
+s32 D_800FE4E0 = 0;
+struct_800FE4E4 D_800FE4E4[2] = {
+    {0, 0},
+    {0, 0}
+};
+struct_800FE4E4 D_800FE4E8[2] = {
+    {0, 0},
+    {0, 0}
+};
+
+extern TImg Davy_eyeR_ci8_PNG;
+extern TImg Davy_eyeL_ci8_PNG;
+extern TLut Davy_eyeR_ci8_PAL;
+extern TLut Davy_eyeL_ci8_PAL;
+extern TImg Jack_eyeR_ci8_PNG;
+extern TImg Jack_eyeL_ci8_PNG;
+extern TLut Jack_eyeR_ci8_PAL;
+extern TLut Jack_eyeL_ci8_PAL;
+extern TImg Fred_eyeR_ci8_PNG;
+extern TImg Fred_eyeL_ci8_PNG;
+extern TLut Fred_eyeR_ci8_PAL;
+extern TLut Fred_eyeL_ci8_PAL;
+extern TImg Linda_eyeR_ci8_PNG;
+extern TImg Linda_eyeL_ci8_PNG;
+extern TLut Linda_eyeR_ci8_PAL;
+extern TLut Linda_eyeL_ci8_PAL;
+extern TImg Black_eyeR_ci8_PNG;
+extern TImg Black_eyeL_ci8_PNG;
+extern TLut Black_eyeR_ci8_PAL;
+extern TLut Black_eyeL_ci8_PAL;
+extern TImg White_eyeR_ci8_PNG;
+extern TImg White_eyeL_ci8_PNG;
+extern TLut White_eyeR_ci8_PAL;
+extern TLut White_eyeL_ci8_PAL;
+
+chameleonEyeListEntry chameleonEyeList[6] = {
 {&Davy_eyeR_ci8_PNG, &Davy_eyeL_ci8_PNG, &Davy_eyeR_ci8_PAL, &Davy_eyeL_ci8_PAL},
 {&Jack_eyeR_ci8_PNG, &Jack_eyeL_ci8_PNG, &Jack_eyeR_ci8_PAL, &Jack_eyeL_ci8_PAL},
 {&Fred_eyeR_ci8_PNG, &Fred_eyeL_ci8_PNG, &Fred_eyeR_ci8_PAL, &Fred_eyeL_ci8_PAL},
 {&Linda_eyeR_ci8_PNG, &Linda_eyeL_ci8_PNG, &Linda_eyeR_ci8_PAL, &Linda_eyeL_ci8_PAL},
 {&Black_eyeR_ci8_PNG, &Black_eyeL_ci8_PNG, &Black_eyeR_ci8_PAL, &Black_eyeL_ci8_PAL},
 {&White_eyeR_ci8_PNG, &White_eyeL_ci8_PNG, &White_eyeR_ci8_PAL, &White_eyeL_ci8_PAL}
-};*/
+};
 
+//TODO: fix
+struct_800FE54C D_800FE54C[3] = {
+    {0x03004D90, 0x03005598},
+    {0x03006FE0, 0x030073E8},
+    {0x03006A20, 0x03007228}
+};
 
-//s32 D_800FEDBC = 0;
+//basic color lookup table?
+RGBA32 D_800FE564[10] = {
+    {  0, 144, 192, 255},
+    { 64, 192,  41, 255},
+    {192, 128,   0, 255},
+    {192,  64, 161, 255},
+    { 84,  54, 145, 255},
+    {255, 255, 255, 255},
+    {255, 255, 255, 255},
+    {  0, 255, 255, 255},
+    {255,   0, 255, 255},
+    {255, 255,   0, 255}
+};
+
+u8 sTextGradientPalettes[] = {
+0, 0, 0, 192,
+0, 0, 0, 0xC0,
+0, 0, 0, 0xC0,
+0, 0, 0, 0xC0,
+
+255, 255, 255, 255,
+255, 255, 0, 255,
+255, 255, 255, 255,
+255, 255, 0, 255,
+
+0x16, 0xC8, 10, 255,
+0xDC, 0xDC, 1, 255,
+0x16, 0xC8, 10, 255,
+0xDC, 0xDC, 1, 255,
+
+0x7F, 0x7F, 0x3C, 255,
+0x1E, 0x1E, 0x14, 255,
+0x7F, 0x7F, 0x3C, 255,
+0x1E, 0x1E, 0x14, 255,
+
+255, 10, 10, 255,
+0xC8, 0xC8, 0, 255,
+255, 10, 10, 255,
+0xC8, 0xC8, 0, 255,
+
+0xF0, 0xDC, 10, 255,
+0x14, 0x64, 1, 255,
+0xF0, 0xDC, 10, 255,
+0x14, 0x64, 1, 255,
+
+0xF0, 0xDC, 0, 255,
+0x14, 0x64, 1, 255,
+0xF0, 0xDC, 0, 255,
+0x14, 0x64, 1, 255,
+
+0xC0, 0x40, 0, 255,
+255, 5, 0, 255,
+0xC0, 0x40, 0, 255,
+255, 5, 0, 255,
+
+0xB4, 0xFA, 255, 255,
+0, 5, 255, 255,
+0xB4, 0xFA, 255, 255,
+0, 5, 255, 255,
+
+0xFC, 0xFA, 0x5E, 255,
+0xC8, 0x3C, 1, 255,
+0xC8, 0x3C, 1, 255,
+0xFC, 0x99, 0x28, 255,
+
+0xFA, 0xFA, 0xFA, 255,
+0x28, 0x28, 0x28, 255,
+0x1E, 0x1E, 0x1E, 255,
+0xB4, 0xB4, 0xB4, 255,
+
+0xD9, 0xA7, 0xA7, 255,
+0x68, 0x19, 0x19, 255,
+0x68, 0x19, 0x19, 255,
+0x87, 0x56, 0x56, 255,
+
+0xF5, 0xF8, 0xE7, 255,
+0x8E, 0, 0x1B, 255,
+0x8E, 0, 0x1B, 255,
+0xC5, 0x93, 0xBB, 255,
+
+255, 255, 255, 255,
+0x64, 255, 255, 255,
+0x64, 255, 255, 255,
+0x64, 255, 255, 255,
+
+255, 255, 255, 255,
+0x52, 255, 0x32, 255,
+0x52, 255, 0x32, 255,
+0x52, 255, 0x32, 255,
+
+255, 255, 255, 255,
+255, 255, 0, 255,
+255, 255, 0, 255,
+255, 255, 0, 255,
+
+255, 255, 255, 255,
+255, 0x60, 0, 255,
+255, 0x60, 0, 255,
+255, 0x60, 0, 255,
+
+0, 0xC0, 255, 255,
+255, 255, 255, 255,
+0, 0xC0, 255, 255,
+255, 255, 255, 255,
+
+255, 255, 255, 255,
+255, 0xC0, 0, 0xD4,
+255, 255, 255, 255,
+255, 0xC0, 0, 255,
+
+255, 0x80, 0, 255,
+255, 255, 0x80, 255,
+255, 0x80, 0, 255,
+255, 255, 0x80, 255,
+
+255, 255, 0x80, 255,
+255, 0xC0, 0, 0xD4,
+255, 255, 0x80, 255,
+255, 0xC0, 0, 255,
+
+255, 255, 0, 255,
+255, 255, 0, 255,
+255, 255, 0, 255,
+255, 255, 0, 255,
+};
+
+u8 gLockContextEyes = 1;
 
 void DummiedPrintf2(char* arg0, ...) {
 
@@ -7107,7 +7556,7 @@ void Effect_TypeAO_Update(Effect* effect, Gfx** pGfxPos) {
                 }
                 if (gPlayerActors[i].active && D_80168D78[i] != 1) {
                     if (func_80055F10(i, 0x8000) == 1 || func_80055F10(i, 0x1000) == 1) {
-                        Effect_TypeAY_Init(D_800FE47C, 1.0f, 1.0f, 0, 4, &effect->spriteID, 54.0f, 56.0f, 212.0f, 148.0f);
+                        Effect_TypeAY_Init(&D_800FE404[5], 1.0f, 1.0f, 0, 4, &effect->spriteID, 54.0f, 56.0f, 212.0f, 148.0f);
                     }
                     if (1) {} // required to match
                 }

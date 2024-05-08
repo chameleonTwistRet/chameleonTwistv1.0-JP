@@ -363,7 +363,6 @@ extern s32 perfectCode;
 extern u8 D_800FE724[];
 extern s32 D_800F0B5C;
 extern u8 D_800FE748;
-extern Struct_80076EA0 D_800FE47C[];
 extern s32 RumblePakError;
 extern unk_80052094_8 D_800FE750[];
 extern Gfx static0_gfx3_Gfx[];
