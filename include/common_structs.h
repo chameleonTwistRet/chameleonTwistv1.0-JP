@@ -1093,7 +1093,7 @@ typedef struct LevelHeader {
 } LevelHeader;
 
 typedef struct segTableEntry {
-    char* name;
+    const char* name;
     void* romAddrStart;
     void* romAddrEnd;
     void* ramAddrStart;

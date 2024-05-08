@@ -714,79 +714,71 @@ char D_800FFEC4[] = "ＣＯＮＧＲＡＴＵＬＡＴＩＯＮＳ！";
 f32 D_800FFEE8 = 0.0f;
 s16 D_800FFEEC[] = {0x18, 0x19, 0x1A, 0x1B, 0xFFFF, 0x0000};
 
-typedef struct StageLoadData {
-    void* segPtr0;
-    void* romStart;
-    void* ramStart;
-    void* ramEnd;
-    s32 unk_10;
-};
-
-segTableEntry gStageLoadData[] = { //this should be StageLoadData
-0x030135B0, JungleLand_ROM_START, JungleLand_VRAM, JungleLand_VRAM_END, 0x00000000,
-0x030170A0, AntLand_ROM_START, AntLand_VRAM, AntLand_VRAM_END, 0x00000001,
-0x0301A724, BombLand_ROM_START, BombLand_VRAM, BombLand_VRAM_END, 0x00000002,
-0x0300E490, DesertCastle_ROM_START, DesertCastle_VRAM, DesertCastle_VRAM_END, 0x00000003,
-0x03015D80, KidsLand_ROM_START, KidsLand_VRAM, KidsLand_VRAM_END, 0x00000004,
-0x03011F2C, GhostCastle_ROM_START, GhostCastle_VRAM, GhostCastle_VRAM_END, 0x00000005,
-0x03008CD8, IntroOutro_ROM_START, IntroOutro_VRAM, IntroOutro_VRAM_END, 0x00000006,
-0x03006358, BattleMode_ROM_START, BattleMode_VRAM, BattleMode_VRAM_END, 0x00000007,
-0x03005F44, Training_ROM_START, Training_VRAM, Training_VRAM_END, 0x00000008,
-0x030011F0, LizardKong_ROM_START, LizardKong_VRAM, LizardKong_VRAM_END, 0x00000009,
-0x03001454, Quintella_ROM_START, Quintella_VRAM, Quintella_VRAM_END, 0x0000000A,
-0x03001464, BombSnake_ROM_START, BombSnake_VRAM, 0x030087A0, 0x0000000B, //BombSnake_VRAM_END isn't correct here?
-0x030013C4, Armadillo_ROM_START, Armadillo_VRAM, Armadillo_VRAM_END, 0x0000000C,
-0x03001300, GiantCake_ROM_START, GiantCake_VRAM, GiantCake_VRAM_END, 0x0000000D,
-0x03002674, PileOfBooks_ROM_START, PileOfBooks_VRAM, PileOfBooks_VRAM_END, 0x0000000E,
-0x030031F0, BossRush_ROM_START, BossRush_VRAM, BossRush_VRAM_END, 0x0000000F,
-0x00000000, 0x00000000, 0x00000000, 0x00000000, 0xFFFFFFFF,
-0x00000000, 0x00000000, 0x00000000, 0x00000000, 0xFFFFFFFF,
-0x00000000, 0x00000000, 0x00000000, 0x00000000, 0xFFFFFFFF,
-0x00000000, 0x00000000, 0x00000000, 0x00000000, 0xFFFFFFFF,
-0x00000000, 0x00000000, 0x00000000, 0x00000000, 0xFFFFFFFF,
-0x00000000, 0x00000000, 0x00000000, 0x00000000, 0xFFFFFFFF,
-0x00000000, 0x00000000, 0x00000000, 0x00000000, 0xFFFFFFFF,
-0x00000000, 0x00000000, 0x00000000, 0x00000000, 0xFFFFFFFF,
-0x00000000, 0x00000000, 0x00000000, 0x00000000, 0xFFFFFFFF,
-0x00000000, 0x00000000, 0x00000000, 0x00000000, 0xFFFFFFFF,
-0x00000000, 0x00000000, 0x00000000, 0x00000000, 0xFFFFFFFF
+StageLoadData gStageLoadData[] = { //this should be StageLoadData
+    {0x030135B0, JungleLand_ROM_START, JungleLand_VRAM, JungleLand_VRAM_END, 0x00000000},
+    {0x030170A0, AntLand_ROM_START, AntLand_VRAM, AntLand_VRAM_END, 0x00000001},
+    {0x0301A724, BombLand_ROM_START, BombLand_VRAM, BombLand_VRAM_END, 0x00000002},
+    {0x0300E490, DesertCastle_ROM_START, DesertCastle_VRAM, DesertCastle_VRAM_END, 0x00000003},
+    {0x03015D80, KidsLand_ROM_START, KidsLand_VRAM, KidsLand_VRAM_END, 0x00000004},
+    {0x03011F2C, GhostCastle_ROM_START, GhostCastle_VRAM, GhostCastle_VRAM_END, 0x00000005},
+    {0x03008CD8, IntroOutro_ROM_START, IntroOutro_VRAM, IntroOutro_VRAM_END, 0x00000006},
+    {0x03006358, BattleMode_ROM_START, BattleMode_VRAM, BattleMode_VRAM_END, 0x00000007},
+    {0x03005F44, Training_ROM_START, Training_VRAM, Training_VRAM_END, 0x00000008},
+    {0x030011F0, LizardKong_ROM_START, LizardKong_VRAM, LizardKong_VRAM_END, 0x00000009},
+    {0x03001454, Quintella_ROM_START, Quintella_VRAM, Quintella_VRAM_END, 0x0000000A},
+    {0x03001464, BombSnake_ROM_START, BombSnake_VRAM, 0x030087A0, 0x0000000B},
+    {0x030013C4, Armadillo_ROM_START, Armadillo_VRAM, Armadillo_VRAM_END, 0x0000000C},
+    {0x03001300, GiantCake_ROM_START, GiantCake_VRAM, GiantCake_VRAM_END, 0x0000000D},
+    {0x03002674, PileOfBooks_ROM_START, PileOfBooks_VRAM, PileOfBooks_VRAM_END, 0x0000000E},
+    {0x030031F0, BossRush_ROM_START, BossRush_VRAM, BossRush_VRAM_END, 0x0000000F},
+    {0x00000000, 0x00000000, 0x00000000, 0x00000000, 0xFFFFFFFF},
+    {0x00000000, 0x00000000, 0x00000000, 0x00000000, 0xFFFFFFFF},
+    {0x00000000, 0x00000000, 0x00000000, 0x00000000, 0xFFFFFFFF},
+    {0x00000000, 0x00000000, 0x00000000, 0x00000000, 0xFFFFFFFF},
+    {0x00000000, 0x00000000, 0x00000000, 0x00000000, 0xFFFFFFFF},
+    {0x00000000, 0x00000000, 0x00000000, 0x00000000, 0xFFFFFFFF},
+    {0x00000000, 0x00000000, 0x00000000, 0x00000000, 0xFFFFFFFF},
+    {0x00000000, 0x00000000, 0x00000000, 0x00000000, 0xFFFFFFFF},
+    {0x00000000, 0x00000000, 0x00000000, 0x00000000, 0xFFFFFFFF},
+    {0x00000000, 0x00000000, 0x00000000, 0x00000000, 0xFFFFFFFF},
+    {0x00000000, 0x00000000, 0x00000000, 0x00000000, 0xFFFFFFFF}
 };
 s32 gStageToLoad = -1;
 
-extern const char D_8010DCB8[];
-extern const char D_8010DCC0[];
-extern const char D_8010DCD0[];
-extern const char D_8010DCD8[];
-extern const char D_8010DCE4[];
-extern const char D_8010DCF4[];
-extern const char D_8010DCFC[];
-extern const char D_8010DD08[];
-extern const char D_8010DD10[];
-extern const char D_8010DD14[];
-extern const char D_8010DD18[];
-extern const char D_8010DD20[];
-extern const char D_8010DD28[];
-extern const char D_8010DD2C[];
-extern const char D_8010DD30[];
-extern const char D_8010DD38[];
+extern const char segNameCode[];
+extern const char segNameStatic[];
+extern const char segNameCommon[];
+extern const char segNameFieldOfPlay[];
+extern const char segNameFieldCommon[];
+extern const char segNameRabbit[];
+extern const char segNameSubAnimation[];
+extern const char segNameCompetition[];
+extern const char segNameBlue[];
+extern const char segNameGreen[];
+extern const char segNameYellow[];
+extern const char segNamePink[];
+extern const char segNameBlack[];
+extern const char segNameWhite[];
+extern const char segNameSpace[];
+extern const char segNameDemo[];
 
 segTableEntry gSegTable[16] = {
-    {D_8010DCB8, main_ROM_START, main_ROM_END, main_VRAM, main_VRAM_END},
-    {D_8010DCC0, static0_ROM_START, static0_ROM_END, static0_VRAM, static0_VRAM_END},
-    {D_8010DCD0, Global_ROM_START, Global_ROM_END, Global_VRAM, Global_VRAM_END},
-    {D_8010DCD8, 0x00000000, 0x00000000, 0x00000000, 0x00000000},
-    {D_8010DCE4, 0x00000000, 0x00000000, 0x00000000, 0x00000000},
-    {D_8010DCF4, Rabbit_ROM_START, Rabbit_ROM_END, Rabbit_VRAM, Rabbit_VRAM_END},
-    {D_8010DCFC, Animations_ROM_START, Animations_ROM_END, Animations_VRAM, Animations_VRAM_END},
-    {D_8010DD08, Battle_Chameleons_ROM_START, Battle_Chameleons_ROM_END, Battle_Chameleons_VRAM, Battle_Chameleons_VRAM_END},
-    {D_8010DD10, Davy_ROM_START, Davy_ROM_END, Davy_VRAM, Davy_VRAM_END},
-    {D_8010DD14, Jack_ROM_START, Jack_ROM_END, Jack_VRAM, Jack_VRAM_END},
-    {D_8010DD18, Fred_ROM_START, Fred_ROM_END, Fred_VRAM, Fred_VRAM_END},
-    {D_8010DD20, Linda_ROM_START, Linda_ROM_END, Linda_VRAM, Linda_VRAM_END},
-    {D_8010DD28, Black_ROM_START, Black_ROM_END, Black_VRAM, Black_VRAM_END},
-    {D_8010DD2C, White_ROM_START, White_ROM_END, White_VRAM, White_VRAM_END},
-    {D_8010DD30, 0x00000000, 0x00000000, 0x00000000, 0x00000000},
-    {D_8010DD38, 0x00000000, 0x00000000, 0x00000000, 0x00000000}
+    {segNameCode, main_ROM_START, main_ROM_END, main_VRAM, main_VRAM_END},
+    {segNameStatic, static0_ROM_START, static0_ROM_END, static0_VRAM, static0_VRAM_END},
+    {segNameCommon, Global_ROM_START, Global_ROM_END, Global_VRAM, Global_VRAM_END},
+    {segNameFieldOfPlay, 0x00000000, 0x00000000, 0x00000000, 0x00000000},
+    {segNameFieldCommon, 0x00000000, 0x00000000, 0x00000000, 0x00000000},
+    {segNameRabbit, Rabbit_ROM_START, Rabbit_ROM_END, Rabbit_VRAM, Rabbit_VRAM_END},
+    {segNameSubAnimation, Animations_ROM_START, Animations_ROM_END, Animations_VRAM, Animations_VRAM_END},
+    {segNameCompetition, Battle_Chameleons_ROM_START, Battle_Chameleons_ROM_END, Battle_Chameleons_VRAM, Battle_Chameleons_VRAM_END},
+    {segNameBlue, Davy_ROM_START, Davy_ROM_END, Davy_VRAM, Davy_VRAM_END},
+    {segNameGreen, Jack_ROM_START, Jack_ROM_END, Jack_VRAM, Jack_VRAM_END},
+    {segNameYellow, Fred_ROM_START, Fred_ROM_END, Fred_VRAM, Fred_VRAM_END},
+    {segNamePink, Linda_ROM_START, Linda_ROM_END, Linda_VRAM, Linda_VRAM_END},
+    {segNameBlack, Black_ROM_START, Black_ROM_END, Black_VRAM, Black_VRAM_END},
+    {segNameWhite, White_ROM_START, White_ROM_END, White_VRAM, White_VRAM_END},
+    {segNameSpace, 0x00000000, 0x00000000, 0x00000000, 0x00000000},
+    {segNameDemo, 0x00000000, 0x00000000, 0x00000000, 0x00000000}
 };
 
 typedef struct StageSelectData {
@@ -826,16 +818,16 @@ s16 NameSpriteIDs[] = {
     SPRITE_BOSS_RUSH_LABEL
 };
 
-extern const char D_8010DEA8[];
-extern const char D_8010DEC0[];
-extern const char D_8010DED4[];
-extern const char D_8010DEEC[];
-extern const char D_8010DF08[];
-extern const char D_8010DF20[];
-extern const char D_8010DF3C[];
-extern const char D_8010DF50[];
+extern const char stageNameJungleLand[];
+extern const char stageNameAntLand[];
+extern const char stageNameBombLand[];
+extern const char stageNameDesertCastle[];
+extern const char stageNameKidsLand[];
+extern const char stageNameGhostCastle[];
+extern const char stageNameSecret[];
+extern const char stageNamePadding[];
 
-char* D_80100328[] = {D_8010DEA8, D_8010DEC0, D_8010DED4, D_8010DEEC, D_8010DF08, D_8010DF20, D_8010DF3C, D_8010DF50};
+const char* stageNames[] = {stageNameJungleLand, stageNameAntLand, stageNameBombLand, stageNameDesertCastle, stageNameKidsLand, stageNameGhostCastle, stageNameSecret, stageNamePadding};
 
 // s16 D_80100348 = -1;
 s16 D_80100348[] = {-1, 0x800, 0x900, 0x100, 0x500, 0x400, 0x600, 0x200, 0xA00, 0x000};
@@ -2710,10 +2702,10 @@ void func_8008FEA8(s32 arg0, s32 arg1) {
         }
 
         // set to the virtual base address of the stage
-        if (!IS_SEGMENTED(gStageLoadData[arg0].name)) {
-            var_a0 = (s32*)gStageLoadData[arg0].name;
+        if (!IS_SEGMENTED(gStageLoadData[arg0].stagePtr)) {
+            var_a0 = (s32*)gStageLoadData[arg0].stagePtr;
         } else {
-            var_a0 = (s32*)SEGMENTED_TO_VIRTUAL2(gStageLoadData[arg0].name);
+            var_a0 = (s32*)SEGMENTED_TO_VIRTUAL2(gStageLoadData[arg0].stagePtr);
         }
         
 
@@ -3866,23 +3858,24 @@ void func_80095500(CTTask* task) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80095EC8.s")
 
-const char D_8010DCB8[] = "コード";
-const char D_8010DCC0[] = "スタティック";
-const char D_8010DCD0[] = "共通";
-const char D_8010DCD8[] = "フィールド";
-const char D_8010DCE4[] = "フィールド共通";
-const char D_8010DCF4[] = "ウサギ";
-const char D_8010DCFC[] = "サブアニメ";
-const char D_8010DD08[] = "対戦";
-const char D_8010DD10[] = "青";
-const char D_8010DD14[] = "緑";
-const char D_8010DD18[] = "黄色";
-const char D_8010DD20[] = "ピンク";
-const char D_8010DD28[] = "黒";
-const char D_8010DD2C[] = "白";
-const char D_8010DD30[] = "スペ";
-const char D_8010DD38[] = "デモ";
+const char segNameCode[] = "コード";
+const char segNameStatic[] = "スタティック";
+const char segNameCommon[] = "共通";
+const char segNameFieldOfPlay[] = "フィールド";
+const char segNameFieldCommon[] = "フィールド共通";
+const char segNameRabbit[] = "ウサギ";
+const char segNameSubAnimation[] = "サブアニメ";
+const char segNameCompetition[] = "対戦";
+const char segNameBlue[] = "青";
+const char segNameGreen[] = "緑";
+const char segNameYellow[] = "黄色";
+const char segNamePink[] = "ピンク";
+const char segNameBlack[] = "黒";
+const char segNameWhite[] = "白";
+const char segNameSpace[] = "スペ";
+const char segNameDemo[] = "デモ";
 
+/* Segment Loading? */
 s32 func_8009603C(s32 segmentID, s32 arg1) {
     s32 temp_s0;
     s32 size;
@@ -3905,14 +3898,15 @@ s32 func_8009603C(s32 segmentID, s32 arg1) {
     return (s32) temp_s3->base_address;
 }
 
+/* Stage Loading? */
 u32 func_80096128(s32 stageToLoad, s32 inpAddr) {
-    segTableEntry* segData = &gStageLoadData[stageToLoad];
-    s32 size = (u32) segData->ramAddrStart - (u32) segData->romAddrEnd;
+    StageLoadData* stageData = &gStageLoadData[stageToLoad];
+    s32 size = (u32) stageData->ramEnd - (u32) stageData->ramStart;
     s32 dmaResult;
     
     D_80100F50[0x3].base_address = inpAddr - size;
     D_80100F50[0x3].unk4 = D_80100F50[0x3].base_address + size;
-    dmaResult = DMA_Copy(segData->romAddrStart, (void*)D_80100F50[0x3].base_address, size);
+    dmaResult = DMA_Copy(stageData->romStart, (void*)D_80100F50[0x3].base_address, size);
     if (dmaResult < 0) {
         DummiedPrintf("エラー %d\n", dmaResult);    //Error
         return 0;
@@ -4029,14 +4023,14 @@ void func_80096964(CTTask* task) {
 
 
 
-const char D_8010DEA8[] = "ＪＵＮＧＬＥ　ＬＡＮＤ";
-const char D_8010DEC0[] = "　ＡＮＴ　ＬＡＮＤ";
-const char D_8010DED4[] = "　ＢＯＭＢ　ＬＡＮＤ";
-const char D_8010DEEC[] = "ＤＥＳＥＲＴ　ＣＡＳＴＬＥ";
-const char D_8010DF08[] = "　ＫＩＤＳ　ＬＡＮＤ";
-const char D_8010DF20[] = "ＧＨＯＳＴ　ＣＡＳＴＬＥ";
-const char D_8010DF3C[] = "　　ＳＥＣＲＥＴ";
-const char D_8010DF50[] = "\0\0\0";
+const char stageNameJungleLand[] = "ＪＵＮＧＬＥ　ＬＡＮＤ";
+const char stageNameAntLand[] = "　ＡＮＴ　ＬＡＮＤ";
+const char stageNameBombLand[] = "　ＢＯＭＢ　ＬＡＮＤ";
+const char stageNameDesertCastle[] = "ＤＥＳＥＲＴ　ＣＡＳＴＬＥ";
+const char stageNameKidsLand[] = "　ＫＩＤＳ　ＬＡＮＤ";
+const char stageNameGhostCastle[] = "ＧＨＯＳＴ　ＣＡＳＴＬＥ";
+const char stageNameSecret[] = "　　ＳＥＣＲＥＴ";
+const char stageNamePadding[] = "\0\0\0";
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80096D40.s")
 

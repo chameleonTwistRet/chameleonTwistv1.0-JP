@@ -110,6 +110,14 @@ typedef struct Struct_800AB734 {
     /* 0x10 */ EffectTypeAQArg7 unk_10[7][24];
 } Struct_800AB734; //sizeof 0x160
 
+typedef struct StageLoadData {
+    void* stagePtr;
+    void* romStart;
+    void* ramStart;
+    void* ramEnd;
+    s32 stageId;
+} StageLoadData;
+
 //from ll.c
 //used in AT LEAST SaveData_Wait
 //with SaveData_Wait, just use the last half of the u64's
@@ -562,7 +570,7 @@ extern SaveFile gSaveFile;
 extern SaveFile* gSaveFiles;
 //used to be StageSegData even though its the same but renamed segTableEntry?
 //its even casted to segTableEntry anyways
-extern segTableEntry gStageLoadData[];
+extern StageLoadData gStageLoadData[];
 extern s16 D_80200058;
 extern u8 D_800FF8DC;
 extern u8 D_800FF8E0;

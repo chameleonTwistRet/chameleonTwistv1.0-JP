@@ -221,8 +221,35 @@ NameSpriteIDs = 0x80100318;
 D_800FEDC0 = 0x800FEDC0; //size:0x710
 D_80108894 = 0x80108894; // size:0x1C8
 D_8010035C = 0x8010035C; // rom:0xDB75C
-D_80100328 = 0x80100328; //rom:0xDB728
+stageNames = 0x80100328; //rom:0xDB728
 D_80105E18 = 0x80105E18; //rom:0xE1218 size:0x26
+
+segNameCode = 0x8010DCB8; //type:char* size:0x8
+segNameStatic = 0x8010DCC0; //type:char* size:0x10
+segNameCommon = 0x8010DCD0; //type:char* size:0x8
+segNameFieldOfPlay = 0x8010DCD8; //type:char* size:0xC
+segNameFieldCommon = 0x8010DCE4; //type:char* size:0x10
+segNameRabbit = 0x8010DCF4; //type:char* size:0x8
+segNameSubAnimation = 0x8010DCFC; //type:char* size:0xC
+segNameCompetition = 0x8010DD08; //type:char* size:0x8
+segNameBlue = 0x8010DD10; //type:char* size:0x4
+segNameGreen = 0x8010DD14; //type:char* size:0x4
+segNameYellow = 0x8010DD18; //type:char* size:0x8
+segNamePink = 0x8010DD20; //type:char* size:0x8
+segNameBlack = 0x8010DD28; //type:char* size:0x4
+segNameWhite = 0x8010DD2C; //type:char* size:0x4
+segNameSpace = 0x8010DD30; //type:char* size:0x4
+segNameDemo = 0x8010DD38; //type:char* size:0x8
+
+stageNameJungleLand = 0x8010DEA8; //type:char*
+stageNameAntLand = 0x8010DEC0; //type:char*
+stageNameBombLand = 0x8010DED4; //type:char*
+stageNameDesertCastle = 0x8010DEEC; //type:char*
+stageNameKidsLand = 0x8010DF08; //type:char*
+stageNameGhostCastle = 0x8010DF20; //type:char*
+stageNameSecret = 0x8010DF3C; //type:char*
+stageNamePadding = 0x8010DF50; //type:char*
+
 D_800FFE90 = 0x800FFE90; //rom:0xDB290 size:0x24 type:s32
 D_800FFE78 = 0x800FFE78; //rom:0xDB278 size:0x18 type:s32
 RDRAM_CONFIG = 0xa3f00000; // type:u32 size:0x4
