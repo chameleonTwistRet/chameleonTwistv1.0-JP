@@ -5683,10 +5683,63 @@ segments:
       - [0x578838, animPointers, anim/unk2Pointers]
       - [0x578844, databin, alignment3]
 
+  - {start: 0x578850, type: databin, vram: 0x03000000, name: Level/DesertCastle }
+  - {start: 0x5C3B20, type: databin, vram: 0x03000000, name: Level/IntroOutro }
+  - {start: 0x6344c0, type: databin, vram: 0x03000000, name: Level/GhostCastle }
 
-  - [0x578850, databin, Level/DesertCastle]
-  - [0x5C3B20, databin, Level/IntroOutro]
-  - [0x6344c0, databin, Level/GhostCastle]
+  # - start: 0x578850
+  #   name: DesertCastle
+  #   vram: 0x03000000 #SEGMENT 0x03
+  #   dir: levelGroup
+  #   subalign: 8
+  #   type: code
+  #   exclusive_ram_id: "LEVELGROUP"
+  #   subsegments:
+  #   - [auto, c, DesertCastle]
+  #   - name: DesertCastle
+  #     dir: DesertCastle
+  #     type: .data
+  #     subalign: 8
+  #     vram: 0x81000000
+  #     start: 0x578850
+  #     subsegments:
+  #       - [0x578850, databin, DesertCastleBin]
+
+  # - start: 0x5C3B20
+  #   name: IntroOutro
+  #   vram: 0x03000000 #SEGMENT 0x03
+  #   dir: levelGroup
+  #   subalign: 8
+  #   type: code
+  #   exclusive_ram_id: "LEVELGROUP"
+  #   subsegments:
+  #   - [auto, c, IntroOutro]
+  #   - name: IntroOutro
+  #     dir: IntroOutro
+  #     type: .data
+  #     subalign: 8
+  #     vram: 0x81000000
+  #     start: 0x5C3B20
+  #     subsegments:
+  #       - [0x5C3B20, databin, IntroOutroBin]
+
+  # - start: 0x6344c0
+  #   name: GhostCastle
+  #   vram: 0x03000000 #SEGMENT 0x03
+  #   dir: levelGroup
+  #   subalign: 8
+  #   type: code
+  #   exclusive_ram_id: "LEVELGROUP"
+  #   subsegments:
+  #   - [auto, c, GhostCastle]
+  #   - name: GhostCastle
+  #     dir: GhostCastle
+  #     type: .data
+  #     subalign: 8
+  #     vram: 0x81000000
+  #     start: 0x6344c0
+  #     subsegments:
+  #       - [0x6344c0, databin, Level/GhostCastleBin]
 
   - start: 0x6A8e20
     name: JungleLand
@@ -7300,8 +7353,10 @@ segments:
       - [0x70db58, databin, anim/actors/fish/fishTailInitPointers]
       - [0x70db64, databin, levelFileBreak] #file break
 
-  - [0x70db70, databin, Level/LizardKong]
-  - [0x7477f0, databin, Level/Quintella]
+  - {start: 0x70db70, type: databin, vram: 0x03000000, name: Level/LizardKong }
+  - {start: 0x7477f0, type: databin, vram: 0x03000000, name: Level/Quintella }
+  - {start: 0x7A72B0, type: databin, vram: 0x03000000, name: Level/BombSnake }
+  #- {start: 0x7AFA50, type: databin, vram: 0x03000000, name: Level/UnkBossData }
 
   # - start: 0x7A72B0
   #   name: BombSnake
@@ -7442,12 +7497,12 @@ segments:
   #     - [0x7af6f8, databin, animPointers]
   #     #eof
 
-  - [0x7af730, databin, Level/GiantCake]
-  - [0x7d22b0, databin, Level/Armadillo]
-  - [0x7fd3b0, databin, Level/PileOfBooks]
-  - [0x849930, databin, Level/BattleMode]
-  - [0x85c970, databin, Level/Training]
-  - [0x878870, databin, Level/BossRush]
+  - {start: 0x7af730, type: databin, vram: 0x03000000, name: Level/GiantCake }
+  - {start: 0x7d22b0, type: databin, vram: 0x03000000, name: Level/Armadillo }
+  - {start: 0x7fd3b0, type: databin, vram: 0x03000000, name: Level/PileOfBooks }
+  - {start: 0x849930, type: databin, vram: 0x03000000, name: Level/BattleMode }
+  - {start: 0x85c970, type: databin, vram: 0x03000000, name: Level/Training }
+  - {start: 0x8788B0, type: databin, vram: 0x03000000, name: Level/BossRush }
 
   # - [0x878870, databin]
   

@@ -627,7 +627,7 @@ extern s16 sStageCrownTotals[6];
 extern s32 D_80247904;
 
 extern s16 D_80100258[7]; //should be 7?
-extern s16 D_80100318[7];
+extern s16 NameSpriteIDs[7];
 extern s16 gStageCrownRecords[];
 extern s32 D_800FF8EC;
 extern s16 D_80100348[];
