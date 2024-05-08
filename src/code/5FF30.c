@@ -2734,6 +2734,7 @@ void func_8008FEA8(s32 arg0, s32 arg1) {
 
 void MainLoop(void) {
     func_8002D080();
+    DMA_Copy(PracticeRom_ROM_START, PracticeRom_VRAM, PracticeRom_VRAM_END - PracticeRom_VRAM);
     if (sGameModeStart != -1) {
         gGameModeCurrent = sGameModeStart;
     }
@@ -2745,7 +2746,9 @@ void MainLoop(void) {
     }
     gIsStero = gGameRecords.flags[1] & 1;
     osRecvMesg(&gSyncMessageQueue, NULL, OS_MESG_BLOCK);
+    
     while(1){
+        SetPlayerHealthMax();
         switch (gGameModeCurrent) {
         case 0:
             Porocess_Mode0();
