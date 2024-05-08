@@ -807,16 +807,16 @@ Gfx* func_8002B7BC(GraphicStruct* arg0, Gfx* gfxPos) {
                 break;
             case ARROWS:
                 gActors[i].unk_E8 = 50.0f;
-                gfxPos = func_8002B118(arg0, gfxPos, D_3044498, &gActors[i], 3.0f, 0, &sp178);
+                gfxPos = func_8002B118(arg0, gfxPos, DesertCastle_actorModel4_Gfx, &gActors[i], 3.0f, 0, &sp178);
                 break;
             case CHOMPER:
                 scale1 = gActors[i].unk_164 * 6.0f;
                 gActors[i].unk_E8 = 0.0f;
-                gfxPos = func_8002B118(arg0, gfxPos, D_30466C8, &gActors[i], scale1, 0, &sp178);
+                gfxPos = func_8002B118(arg0, gfxPos, DesertCastle_actorModel19_Gfx, &gActors[i], scale1, 0, &sp178);
                 break;
             case BOULDER:
                 gActors[i].unk_E8 = 0.0f;
-                gfxPos = func_8002B118(arg0, gfxPos, D_3049EB0, &gActors[i], 2.0f, 0, &sp178);
+                gfxPos = func_8002B118(arg0, gfxPos, DesertCastle_actorModel21_Gfx, &gActors[i], 2.0f, 0, &sp178);
                 break;
             case ARMADILLO:
                 gActors[i].unk_E8 = gActors[i].unk_134[4];

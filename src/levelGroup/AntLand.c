@@ -1932,6 +1932,7 @@ Mtx AntLand_IMtx1 = IDENTITY;
 #include "assets/levelGroup/AntLand/scope.lvlScope.inc.c"
 
 #include "assets/levelGroup/AntLand/header.lvlHdr.inc.c"
+
 Mtx AntLand_IMtx2 = IDENTITY;
 
 #include "assets/levelGroup/AntLand/alScope.light.inc.c"
@@ -2901,7 +2902,8 @@ Mtx AntLand_IMtx63 = IDENTITY;
 
 #include "assets/levelGroup/AntLand/fixedCamPillar/fixedCamPillar.colH.inc.c"
 
-#include "build/assets/levelGroup/AntLand/ALPADD.inc.c"
+s32 alignment_Pad[] = {0, 0};
+
 Mtx AntLand_IMtx64 = IDENTITY;
 
 #include "assets/levelGroup/AntLand/alScope2.light.inc.c"
@@ -2994,4 +2996,4 @@ Mtx AntLand_IMtx78 = IDENTITY;
 
 #include "assets/levelGroup/AntLand/yellowAntAnim/yellowAntAnim.animArr.inc.c"
 
-#include "build/assets/levelGroup/AntLand/yellowAntAnim/yellowAntAnimPointers.inc.c"
+#include "assets/levelGroup/AntLand/yellowAntAnim/yellowAntAnimPointers.animP.inc.c"

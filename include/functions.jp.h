@@ -545,4 +545,12 @@ void func_800B12B4(Collider* arg0, RoomObject* arg1); // assumed
 void func_800B1538(Collider* arg0, RoomObject* arg1); // assumed
 void func_800D90E0(Collider* arg0);
 
+void func_800D8F3C(Collider* arg0);
+void func_800D8F9C(Collider* arg0);
+void func_800D8FFC(Collider* arg0);
+void func_800D9058(Collider* arg0);
+void func_800D8E70(Collider* arg0);
+void func_800D8ED4(Collider* arg0);
+
+
 #endif

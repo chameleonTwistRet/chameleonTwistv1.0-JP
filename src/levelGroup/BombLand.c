@@ -1903,8 +1903,8 @@ Mtx BombLand_IMtx1 = IDENTITY;
 #include "assets/levelGroup/BombLand/scope.lvlScope.inc.c"
 
 #include "assets/levelGroup/BombLand/header.lvlHdr.inc.c"
+s32 alignment_Pad_BL[] = {0, 0, 0};
 
-#include "build/assets/levelGroup/BombLand/headerPad.inc.c"
 Mtx BombLand_IMtx2 = IDENTITY;
 
 #include "assets/levelGroup/BombLand/blScope.light.inc.c"
@@ -2993,4 +2993,4 @@ Mtx BombLand_IMtx76 = IDENTITY;
 
 #include "assets/levelGroup/BombLand/unk74/unk74.gfx.inc.c"
 
-#include "build/assets/levelGroup/BombLand/footer.inc.c"
+#include "assets/levelGroup/BombLand/anim/unkPointers.animP.inc.c"

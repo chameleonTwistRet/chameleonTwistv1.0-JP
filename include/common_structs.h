@@ -393,7 +393,7 @@ typedef struct SpriteActor {
     s32 unk38;
     s32 unk3C;
     Color128 color;
-} SpriteActor;
+} SpriteActor; // sizeof 0x50
 
 //this isnt JUST collision, its also a variation of RoomSettings
 //you can tell because of the 4 pointers at the start
@@ -1062,7 +1062,7 @@ typedef struct RoomSettings {
     s32 unk60;
     f32 unk64;
     f32 unk68;
-} RoomSettings;
+} RoomSettings; //sizeof 0x6C
 
 typedef struct LevelMap {
     //s32* rooms; //1 dimensional array that's actually 2 dimensional. the player navigates with axiis on doors that move them on the x or y.

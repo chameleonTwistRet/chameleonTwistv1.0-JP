@@ -8,6 +8,6 @@
 
 #include "assets/anim/Animations/unk2/unk2.animArr.inc.c"
 
-#include "build/assets/anim/Animations/unk1/unk1Pointers.inc.c"
+#include "assets/anim/Animations/unk1/unk1Pointers.animP.inc.c"
 
-#include "build/assets/anim/Animations/unk2/unk2Pointers.inc.c"
+#include "assets/anim/Animations/unk2/unk2Pointers.animP.inc.c"

@@ -3141,8 +3141,8 @@ unsigned char KidsLand_bigWaferGlove2_ci4_PAL[] = {
 #include "assets/levelGroup/KidsLand/unkCol81/unkCol81.colS.inc.c"
 
 #include "assets/levelGroup/KidsLand/unkCol81/unkCol81.colH.inc.c"
+s32 alignment_Pad_KL[] = {0, 0};
 
-#include "build/assets/levelGroup/KidsLand/alignment1.inc.c"
 Mtx KidsLand_IMtx84 = IDENTITY;
 
 #include "assets/levelGroup/KidsLand/klScope2.light.inc.c"
@@ -3275,10 +3275,6 @@ Mtx KidsLand_IMtx96 = IDENTITY;
 
 #include "assets/levelGroup/KidsLand/anim/unk2Header.animH.inc.c"
 
-#include "build/assets/levelGroup/KidsLand/alignment2.inc.c"
-
 #include "assets/levelGroup/KidsLand/anim/unk2.animArr.inc.c"
 
 #include "assets/levelGroup/KidsLand/anim/unk2Pointers.animP.inc.c"
-
-#include "build/assets/levelGroup/KidsLand/alignment3.inc.c"

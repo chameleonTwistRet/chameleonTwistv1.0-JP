@@ -868,8 +868,6 @@ Mtx Global_IMtx7 = IDENTITY;
 
 #include "assets/levelGroup/Global/fallbackCube/fallbackCube.colH.inc.c"
 
-#include "build/assets/levelGroup/Global/zeroooo.inc.c"
-
 #include "assets/levelGroup/Global/exitShadowSouth/exitShadowSouth.vtx.inc.c"
 Mtx Global_IMtx8 = IDENTITY;
 
@@ -882,8 +880,6 @@ Mtx Global_IMtx8 = IDENTITY;
 #include "assets/levelGroup/Global/exitShadowSouth/exitShadowSouth.colS.inc.c"
 
 #include "assets/levelGroup/Global/exitShadowSouth/exitShadowSouth.colH.inc.c"
-
-#include "build/assets/levelGroup/Global/zeroooo2.inc.c"
 
 #include "assets/levelGroup/Global/exitShadowNorth/exitShadowNorth.vtx.inc.c"
 Mtx Global_IMtx9 = IDENTITY;
@@ -898,8 +894,6 @@ Mtx Global_IMtx9 = IDENTITY;
 
 #include "assets/levelGroup/Global/exitShadowNorth/exitShadowNorth.colH.inc.c"
 
-#include "build/assets/levelGroup/Global/zeroooo3.inc.c"
-
 #include "assets/levelGroup/Global/exitShadowEast/exitShadowEast.vtx.inc.c"
 Mtx Global_IMtx10 = IDENTITY;
 
@@ -912,8 +906,6 @@ Mtx Global_IMtx10 = IDENTITY;
 #include "assets/levelGroup/Global/exitShadowEast/exitShadowEast.colS.inc.c"
 
 #include "assets/levelGroup/Global/exitShadowEast/exitShadowEast.colH.inc.c"
-
-#include "build/assets/levelGroup/Global/zeroooo4.inc.c"
 
 #include "assets/levelGroup/Global/exitShadowWest/exitShadowWest.vtx.inc.c"
 Mtx Global_IMtx11 = IDENTITY;
@@ -928,8 +920,6 @@ Mtx Global_IMtx11 = IDENTITY;
 
 #include "assets/levelGroup/Global/exitShadowWest/exitShadowWest.colH.inc.c"
 
-#include "build/assets/levelGroup/Global/zeroooo5.inc.c"
-
 #include "assets/levelGroup/Global/ALBLExit/ALBLExit.vtx.inc.c"
 Mtx Global_IMtx12 = IDENTITY;
 
@@ -943,7 +933,6 @@ Mtx Global_IMtx12 = IDENTITY;
 
 #include "assets/levelGroup/Global/ALBLExit/ALBLExit.colH.inc.c"
 
-#include "build/assets/levelGroup/Global/zeroooo6.inc.c"
 Mtx Global_IMtx13 = IDENTITY;
 
 #include "assets/levelGroup/Global/unk3/unk3.gfx.inc.c"
@@ -969,8 +958,6 @@ Mtx Global_IMtx14 = IDENTITY;
 
 #include "assets/levelGroup/Global/BossBridge/BossBridge.colH.inc.c"
 
-#include "build/assets/levelGroup/Global/zeroooo7.inc.c"
-
 #include "assets/levelGroup/Global/ALPole/ALPole.vtx.inc.c"
 Mtx Global_IMtx15 = IDENTITY;
 unsigned char Global_Pad195[] = FILEPAD;
@@ -992,8 +979,6 @@ unsigned char Global_topper_i4_PNG[] = {
 
 #include "assets/levelGroup/Global/ALPole/ALPole.colH.inc.c"
 
-#include "build/assets/levelGroup/Global/zeroooo8.inc.c"
-
 #include "assets/levelGroup/Global/ALBLDoor/ALBLDoor.vtx.inc.c"
 Mtx Global_IMtx16 = IDENTITY;
 unsigned char Global_Pad197[] = FILEPAD;
@@ -1010,8 +995,6 @@ unsigned char Global_ALBLDoor_i4_PNG[] = {
 #include "assets/levelGroup/Global/ALBLDoor/ALBLDoor.colS.inc.c"
 
 #include "assets/levelGroup/Global/ALBLDoor/ALBLDoor.colH.inc.c"
-
-#include "build/assets/levelGroup/Global/zeroooo9.inc.c"
 
 #include "assets/levelGroup/Global/ALSpinDoor/ALSpinDoor.vtx.inc.c"
 Mtx Global_IMtx17 = IDENTITY;
@@ -1034,8 +1017,6 @@ unsigned char Global_ALSpinDoor_ci4_PAL[] = {
 
 #include "assets/levelGroup/Global/ALSpinDoor/ALSpinDoor.colH.inc.c"
 
-#include "build/assets/levelGroup/Global/zeroooo10.inc.c"
-
 #include "assets/levelGroup/Global/BLLavaFloor/BLLavaFloor.vtx.inc.c"
 Mtx Global_IMtx18 = IDENTITY;
 
@@ -1048,8 +1029,6 @@ Mtx Global_IMtx18 = IDENTITY;
 #include "assets/levelGroup/Global/BLLavaFloor/BLLavaFloor.colS.inc.c"
 
 #include "assets/levelGroup/Global/BLLavaFloor/BLLavaFloor.colH.inc.c"
-
-#include "build/assets/levelGroup/Global/zeroooo11.inc.c"
 
 #include "assets/levelGroup/Global/BLLava/BLLava.vtx.inc.c"
 Mtx Global_IMtx19 = IDENTITY;
@@ -1072,8 +1051,6 @@ unsigned char Global_BLLava_ci4_PAL[] = {
 
 #include "assets/levelGroup/Global/BLLava/BLLava.colH.inc.c"
 
-#include "build/assets/levelGroup/Global/zeroooo12.inc.c"
-
 #include "assets/levelGroup/Global/BLLava2/BLLava2.vtx.inc.c"
 Mtx Global_IMtx20 = IDENTITY;
 unsigned char Global_Pad202[] = FILEPAD;
@@ -1094,8 +1071,6 @@ unsigned char Global_BLLava2_ci4_PAL[] = {
 #include "assets/levelGroup/Global/BLLava2/BLLava2.colS.inc.c"
 
 #include "assets/levelGroup/Global/BLLava2/BLLava2.colH.inc.c"
-
-#include "build/assets/levelGroup/Global/zeroooo13.inc.c"
 
 #include "assets/levelGroup/Global/BLLava3/BLLava3.vtx.inc.c"
 Mtx Global_IMtx21 = IDENTITY;
@@ -1118,8 +1093,6 @@ unsigned char Global_BLLava3_ci4_PAL[] = {
 
 #include "assets/levelGroup/Global/BLLava3/BLLava3.colH.inc.c"
 
-#include "build/assets/levelGroup/Global/zeroooo14.inc.c"
-
 #include "assets/levelGroup/Global/BLLava4/BLLava4.vtx.inc.c"
 Mtx Global_IMtx22 = IDENTITY;
 unsigned char Global_Pad206[] = FILEPAD;
@@ -1140,8 +1113,6 @@ unsigned char Global_BLLava4_ci4_PAL[] = {
 #include "assets/levelGroup/Global/BLLava4/BLLava4.colS.inc.c"
 
 #include "assets/levelGroup/Global/BLLava4/BLLava4.colH.inc.c"
-
-#include "build/assets/levelGroup/Global/zeroooo15.inc.c"
 
 #include "assets/levelGroup/Global/BLLava5/BLLava5.vtx.inc.c"
 Mtx Global_IMtx23 = IDENTITY;
@@ -1164,8 +1135,6 @@ unsigned char Global_BLLava5_ci4_PAL[] = {
 
 #include "assets/levelGroup/Global/BLLava5/BLLava5.colH.inc.c"
 
-#include "build/assets/levelGroup/Global/zeroooo16.inc.c"
-
 #include "assets/levelGroup/Global/BLLava6/BLLava6.vtx.inc.c"
 Mtx Global_IMtx24 = IDENTITY;
 unsigned char Global_Pad210[] = FILEPAD;
@@ -1186,8 +1155,6 @@ unsigned char Global_BLLava6_ci4_PAL[] = {
 #include "assets/levelGroup/Global/BLLava6/BLLava6.colS.inc.c"
 
 #include "assets/levelGroup/Global/BLLava6/BLLava6.colH.inc.c"
-
-#include "build/assets/levelGroup/Global/zeroooo17.inc.c"
 
 #include "assets/levelGroup/Global/BLLava7/BLLava7.vtx.inc.c"
 Mtx Global_IMtx25 = IDENTITY;
@@ -1210,8 +1177,6 @@ unsigned char Global_BLLava7_ci4_PAL[] = {
 
 #include "assets/levelGroup/Global/BLLava7/BLLava7.colH.inc.c"
 
-#include "build/assets/levelGroup/Global/zeroooo18.inc.c"
-
 #include "assets/levelGroup/Global/BLLava8/BLLava8.vtx.inc.c"
 Mtx Global_IMtx26 = IDENTITY;
 unsigned char Global_Pad214[] = FILEPAD;
@@ -1233,8 +1198,6 @@ unsigned char Global_BLLava8_ci4_PAL[] = {
 
 #include "assets/levelGroup/Global/BLLava8/BLLava8.colH.inc.c"
 
-#include "build/assets/levelGroup/Global/zeroooo19.inc.c"
-
 #include "assets/levelGroup/Global/BLDestructableTop/BLDestructableTop.vtx.inc.c"
 Mtx Global_IMtx27 = IDENTITY;
 
@@ -1247,8 +1210,6 @@ Mtx Global_IMtx27 = IDENTITY;
 #include "assets/levelGroup/Global/BLDestructableTop/BLDestructableTop.colS.inc.c"
 
 #include "assets/levelGroup/Global/BLDestructableTop/BLDestructableTop.colH.inc.c"
-
-#include "build/assets/levelGroup/Global/zeroooo20.inc.c"
 
 #include "assets/levelGroup/Global/BLMetalBridge/BLMetalBridge.vtx.inc.c"
 Mtx Global_IMtx28 = IDENTITY;
@@ -1263,8 +1224,6 @@ Mtx Global_IMtx28 = IDENTITY;
 
 #include "assets/levelGroup/Global/BLMetalBridge/BLMetalBridge.colH.inc.c"
 
-#include "build/assets/levelGroup/Global/zeroooo21.inc.c"
-
 #include "assets/levelGroup/Global/KLExit/KLExit.vtx.inc.c"
 Mtx Global_IMtx29 = IDENTITY;
 
@@ -1277,8 +1236,6 @@ Mtx Global_IMtx29 = IDENTITY;
 #include "assets/levelGroup/Global/KLExit/KLExit.colS.inc.c"
 
 #include "assets/levelGroup/Global/KLExit/KLExit.colH.inc.c"
-
-#include "build/assets/levelGroup/Global/zeroooo22.inc.c"
 
 #include "assets/levelGroup/Global/KLDoor/KLDoor.vtx.inc.c"
 Mtx Global_IMtx30 = IDENTITY;
@@ -1301,8 +1258,6 @@ unsigned char Global_KLDoor_ci4_PAL[] = {
 
 #include "assets/levelGroup/Global/KLDoor/KLDoor.colH.inc.c"
 
-#include "build/assets/levelGroup/Global/zeroooo23.inc.c"
-
 #include "assets/levelGroup/Global/DCExit/DCExit.vtx.inc.c"
 Mtx Global_IMtx31 = IDENTITY;
 
@@ -1315,8 +1270,6 @@ Mtx Global_IMtx31 = IDENTITY;
 #include "assets/levelGroup/Global/DCExit/DCExit.colS.inc.c"
 
 #include "assets/levelGroup/Global/DCExit/DCExit.colH.inc.c"
-
-#include "build/assets/levelGroup/Global/zeroooo24.inc.c"
 
 #include "assets/levelGroup/Global/TallExitShadow1/TallExitShadow1.vtx.inc.c"
 Mtx Global_IMtx32 = IDENTITY;
@@ -1331,8 +1284,6 @@ Mtx Global_IMtx32 = IDENTITY;
 
 #include "assets/levelGroup/Global/TallExitShadow1/TallExitShadow1.colH.inc.c"
 
-#include "build/assets/levelGroup/Global/zeroooo25.inc.c"
-
 #include "assets/levelGroup/Global/TallExitShadow2/TallExitShadow2.vtx.inc.c"
 Mtx Global_IMtx33 = IDENTITY;
 
@@ -1345,8 +1296,6 @@ Mtx Global_IMtx33 = IDENTITY;
 #include "assets/levelGroup/Global/TallExitShadow2/TallExitShadow2.colS.inc.c"
 
 #include "assets/levelGroup/Global/TallExitShadow2/TallExitShadow2.colH.inc.c"
-
-#include "build/assets/levelGroup/Global/zeroooo26.inc.c"
 
 #include "assets/levelGroup/Global/GCExit1/GCExit1.vtx.inc.c"
 Mtx Global_IMtx34 = IDENTITY;
@@ -1361,8 +1310,6 @@ Mtx Global_IMtx34 = IDENTITY;
 
 #include "assets/levelGroup/Global/GCExit1/GCExit1.colH.inc.c"
 
-#include "build/assets/levelGroup/Global/zeroooo27.inc.c"
-
 #include "assets/levelGroup/Global/GCExit2/GCExit2.vtx.inc.c"
 Mtx Global_IMtx35 = IDENTITY;
 
@@ -1375,8 +1322,6 @@ Mtx Global_IMtx35 = IDENTITY;
 #include "assets/levelGroup/Global/GCExit2/GCExit2.colS.inc.c"
 
 #include "assets/levelGroup/Global/GCExit2/GCExit2.colH.inc.c"
-
-#include "build/assets/levelGroup/Global/zeroooo28.inc.c"
 
 #include "assets/levelGroup/Global/trainingRoomLight/trainingRoomLight.vtx.inc.c"
 Mtx Global_IMtx36 = IDENTITY;
@@ -1391,8 +1336,6 @@ Mtx Global_IMtx36 = IDENTITY;
 
 #include "assets/levelGroup/Global/trainingRoomLight/trainingRoomLight.colH.inc.c"
 
-#include "build/assets/levelGroup/Global/zeroooo29.inc.c"
-
 #include "assets/levelGroup/Global/JLCaveExit1/JLCaveExit1.vtx.inc.c"
 Mtx Global_IMtx37 = IDENTITY;
 
@@ -1405,8 +1348,6 @@ Mtx Global_IMtx37 = IDENTITY;
 #include "assets/levelGroup/Global/JLCaveExit1/JLCaveExit1.colS.inc.c"
 
 #include "assets/levelGroup/Global/JLCaveExit1/JLCaveExit1.colH.inc.c"
-
-#include "build/assets/levelGroup/Global/zeroooo30.inc.c"
 
 #include "assets/levelGroup/Global/JLCaveExit2/JLCaveExit2.vtx.inc.c"
 Mtx Global_IMtx38 = IDENTITY;
@@ -1421,8 +1362,6 @@ Mtx Global_IMtx38 = IDENTITY;
 
 #include "assets/levelGroup/Global/JLCaveExit2/JLCaveExit2.colH.inc.c"
 
-#include "build/assets/levelGroup/Global/zeroooo31.inc.c"
-
 #include "assets/levelGroup/Global/JLCaveExit3/JLCaveExit3.vtx.inc.c"
 Mtx Global_IMtx39 = IDENTITY;
 
@@ -1435,8 +1374,6 @@ Mtx Global_IMtx39 = IDENTITY;
 #include "assets/levelGroup/Global/JLCaveExit3/JLCaveExit3.colS.inc.c"
 
 #include "assets/levelGroup/Global/JLCaveExit3/JLCaveExit3.colH.inc.c"
-
-#include "build/assets/levelGroup/Global/zeroooo32.inc.c"
 
 #include "assets/levelGroup/Global/JLCaveExit4/JLCaveExit4.vtx.inc.c"
 Mtx Global_IMtx40 = IDENTITY;
@@ -1451,8 +1388,6 @@ Mtx Global_IMtx40 = IDENTITY;
 
 #include "assets/levelGroup/Global/JLCaveExit4/JLCaveExit4.colH.inc.c"
 
-#include "build/assets/levelGroup/Global/zeroooo33.inc.c"
-
 #include "assets/levelGroup/Global/JLOutsideEntrance/JLOutsideEntrance.vtx.inc.c"
 Mtx Global_IMtx41 = IDENTITY;
 
@@ -1465,8 +1400,6 @@ Mtx Global_IMtx41 = IDENTITY;
 #include "assets/levelGroup/Global/JLOutsideEntrance/JLOutsideEntrance.colS.inc.c"
 
 #include "assets/levelGroup/Global/JLOutsideEntrance/JLOutsideEntrance.colH.inc.c"
-
-#include "build/assets/levelGroup/Global/zeroooo34.inc.c"
 
 #include "assets/levelGroup/Global/JLFxCamPillar/JLFxCamPillar.vtx.inc.c"
 Mtx Global_IMtx42 = IDENTITY;
@@ -1481,8 +1414,6 @@ Mtx Global_IMtx42 = IDENTITY;
 
 #include "assets/levelGroup/Global/JLFxCamPillar/JLFxCamPillar.colH.inc.c"
 
-#include "build/assets/levelGroup/Global/zeroooo35.inc.c"
-
 #include "assets/levelGroup/Global/JLCaveDoor/JLCaveDoor.vtx.inc.c"
 Mtx Global_IMtx43 = IDENTITY;
 
@@ -1496,4 +1427,3 @@ Mtx Global_IMtx43 = IDENTITY;
 
 #include "assets/levelGroup/Global/JLCaveDoor/JLCaveDoor.colH.inc.c"
 
-#include "build/assets/levelGroup/Global/zeroooo36.inc.c"
