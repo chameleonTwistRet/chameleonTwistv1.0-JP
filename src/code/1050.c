@@ -970,7 +970,7 @@ Gfx* func_8002C4E8(Gfx* gfxPos, s32 arg1, s32 arg2) {
     s32 i;
 
     gSPSegment(gfxPos++, 0x00, 0);
-    gSPSegment(gfxPos++, 0x01, OS_K0_TO_PHYSICAL(_ALIGN((u32)D_803B5000 - (u32)static0_VRAM_END + (u32)static0_VRAM, 0x10)));
+    gSPSegment(gfxPos++, 0x01, OS_K0_TO_PHYSICAL(_ALIGN((u32)gFrameBuffers - (u32)static0_VRAM_END + (u32)static0_VRAM, 0x10)));
 
     for (i = 2; i < 16; i++) {
         if (D_80100F50[i].base_address != NULL) {
@@ -988,14 +988,14 @@ Gfx* func_8002C4E8(Gfx* gfxPos, s32 arg1, s32 arg2) {
     if (D_800FFEC0 != 0) {
         gDPSetCycleType(gfxPos++, G_CYC_FILL);
         gDPSetRenderMode(gfxPos++, G_RM_NOOP, G_RM_NOOP2);
-        gDPSetColorImage(gfxPos++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 320, OS_K0_TO_PHYSICAL(&D_803B5000[arg1]));
+        gDPSetColorImage(gfxPos++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 320, OS_K0_TO_PHYSICAL(&gFrameBuffers[arg1]));
         gDPSetFillColor(gfxPos++, PACK_FILL_COLOR(0, 0, 0, 1));
         gDPFillRectangle(gfxPos++, 0, 0, 319, 239);
         gDPPipeSync(gfxPos++);
     } else {
         gDPSetCycleType(gfxPos++, G_CYC_FILL);
         gDPSetRenderMode(gfxPos++, G_RM_NOOP, G_RM_NOOP2);
-        gDPSetColorImage(gfxPos++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 320, OS_K0_TO_PHYSICAL(&D_803B5000[arg1]));
+        gDPSetColorImage(gfxPos++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 320, OS_K0_TO_PHYSICAL(&gFrameBuffers[arg1]));
         gDPSetFillColor(gfxPos++, PACK_FILL_COLOR(D_800FF8DC, D_800FF8E0, D_800FF8E4, 1));
         gDPFillRectangle(gfxPos++, 18, 16, 301, 223);
         gDPPipeSync(gfxPos++);
@@ -1017,7 +1017,7 @@ Gfx* func_8002C900(GraphicStruct* arg0, s32 arg1) {
 
     gfxPos = func_8002C4E8(arg0->UnkGroup.dlist, arg1, 0);
     gSPDisplayList(gfxPos++, D_1015B18);
-    gDPSetColorImage(gfxPos++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 320, OS_K0_TO_PHYSICAL(&D_803B5000[arg1]));
+    gDPSetColorImage(gfxPos++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 320, OS_K0_TO_PHYSICAL(&gFrameBuffers[arg1]));
     gfxPos = func_8002C280(arg0, gfxPos);
     D_800FF8D4 = arg0->unk1e880;
 
@@ -1076,7 +1076,7 @@ void DemoGfx_DrawFrame(Gfx* arg0, GraphicStruct* arg1, s32 fbIndex) {
 void DemoGfx_SwapFB(s32 fbIndex) {
     Timing_StopProcess();
     osRecvMesg(&gFrameDrawnMessageQueue, NULL, OS_MESG_BLOCK);
-    osViSwapBuffer(&D_803B5000[fbIndex].data);
+    osViSwapBuffer(&gFrameBuffers[fbIndex].data);
     osViSetSpecialFeatures(OS_VI_GAMMA_ON|OS_VI_GAMMA_DITHER_ON);
     
     if (MQ_IS_FULL(&gSyncMessageQueue)) {

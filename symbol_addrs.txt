@@ -1481,8 +1481,10 @@ gIsGamePaused = 0x800F0674; // type:s32 size:0x04
 JL_IntroText = 0x800F0E40; // size:0x1A4 rom:0xCC240
 D_800F67A0 = 0x800F67A0; // size:0x18
 D_800F68C4 = 0x800F68C4; // size:0x8
-
+D_8025C348 = 0x8025C348; // size:0xA0
 D_80129730 = 0x80129730;
+D_801003DC = 0x801003DC; //size:0x0C
+gFrameBuffers = 0x803B5000; //size:0x4B000
 
 D_80111C90 = 0x80111C90; //size:0x2000
 __osException = 0x800E1940;
