@@ -1493,7 +1493,6 @@ static0_VRAM = 0x01000000; // defined:True
 static0_VRAM_END = 0x01045C00; // defined:True
 
 assets0_VRAM = 0x8024C510; // defined:True
-assets0_VRAM_END = 0x80260FE0;
 
 D_8024F600 = 0x8024F600; //size:0x50
 

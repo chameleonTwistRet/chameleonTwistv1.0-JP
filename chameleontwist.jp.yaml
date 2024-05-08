@@ -329,8 +329,11 @@ segments:
     start: 0xED090
     follows_vram: main
     vram: 0x8024C510
+    bss_size: 0x19F020
     subsegments:
       - [0xED090, c, unkBlock0Assets0] #size of 0x14AD0
+      - {start: 0x101B60, type: bss, name: assets0Bss}
+      #- {start: 0x101B60, type: bss, name: gFrameBuffers}
       #- [0xF0130, c, unkBlock1Assets0] #8024F5B0
       #- [0xF3330, databin, unkBlock2Assets0] #802527B0
       #- [0xF0130, databin, unkBlock1Assets0]
