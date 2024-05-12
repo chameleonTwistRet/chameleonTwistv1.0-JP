@@ -298,14 +298,15 @@ s16 D_800FF604 = 0;
 s16 D_800FF608 = 0;
 // s16 D_800FF60A = 0; //unused
 u8 gGfxTaskYielded = 0;
-Camera* gCameraP = &gCamera;
+Camera* gCameraP = gCamera;
 
- extern char gBGMPlayer[0x7C]; //unknown struct, size 0x7C
- extern char gBGMSeq[0xF8];
- extern char gSFXPlayer[0x54];
-ALCSPlayer* gBGMPlayerP = gBGMPlayer;
-ALCSeq* gBGMSeqP = gBGMSeq;
-ALSndPlayer* gSFXPlayerP = gSFXPlayer;
+extern ALCSPlayer gBGMPlayer;
+extern ALCSeq gBGMSeq;
+extern ALSndPlayer gSFXPlayer;
+
+ALCSPlayer* gBGMPlayerP = &gBGMPlayer;
+ALCSeq* gBGMSeqP = &gBGMSeq;
+ALSndPlayer* gSFXPlayerP = &gSFXPlayer;
 s32 currLoadingBGM = -1;
 s32 currBGMIndex = -1;
 s16 D_800FF628[] = {0, 0, 0, 0};
@@ -384,7 +385,7 @@ Unk800FF764 D_800FF818[] = {
 };
 
 Unk800FF764* D_800FF83C[] = {D_800FF764, D_800FF7D0, D_800FF7A0};
-Unk800FF764 D_800FF848[] = {D_800FF7F4, D_800FF818, 0};
+Unk800FF764* D_800FF848[] = {D_800FF7F4, D_800FF818, 0};
 
 s16 sStageBGMs[] = {0, 2, 3, 4, 5, 6, 0x1B, 7, 0x17, 0x0C, 0x0B, 0x0D, 0x0C, 0x0E, 0x11, 7, 7, 7, 7, 0};
 s16 D_800FF87C[] = {0, 0, 0, 0};
@@ -432,7 +433,7 @@ typedef struct Unk800FF908 {
     s32 unk_10;
 } Unk800FF908;
 
-Unk800FF908 D_800FF908 = {
+Unk_800FFB74 D_800FF908 = {
 (void*)0x01038800,
 Davy_restAssociate_Gfx,
 (void*)0x010387FC,
@@ -440,7 +441,7 @@ Davy_restAssociate_Gfx,
 0xFFFF0000,
 };
 
-Unk800FF908 D_800FF91C = {
+Unk_800FFB74 D_800FF91C = {
 (void*)0x01038800,
 Davy_restAssociate_Gfx,
 (void*)0x010387FC,
@@ -448,7 +449,7 @@ Davy_restAssociate_Gfx,
 0xFFFF0000,
 };
 
-Unk800FF908 D_800FF930 = {
+Unk_800FFB74 D_800FF930 = {
 (void*)0x01015DA0,
 Davy_restAssociate_Gfx,
 (void*)0x01015D9C,
@@ -456,7 +457,7 @@ Davy_restAssociate_Gfx,
 0x00000000,
 };
 
-Unk800FF908 D_800FF944 = {
+Unk_800FFB74 D_800FF944 = {
 (void*)0x010191D0,
 Davy_restAssociate_Gfx,
 (void*)0x010191CC,
@@ -464,7 +465,7 @@ Davy_restAssociate_Gfx,
 0x00000000,
 };
 
-Unk800FF908 D_800FF958 = {
+Unk_800FFB74 D_800FF958 = {
 (void*)0x0101D300,
 Davy_restAssociate_Gfx,
 (void*)0x0101D2FC,
@@ -472,7 +473,7 @@ Davy_restAssociate_Gfx,
 0x00000000,
 };
 
-Unk800FF908 D_800FF96C = {
+Unk_800FFB74 D_800FF96C = {
 (void*)0x010346D0,
 Davy_restAssociate_Gfx,
 (void*)0x010346CC,
@@ -480,7 +481,7 @@ Davy_restAssociate_Gfx,
 0xFFFF0000,
 };
 
-Unk800FF908 D_800FF980 = {
+Unk_800FFB74 D_800FF980 = {
 (void*)0x01024520,
 Davy_restAssociate_Gfx,
 (void*)0x0102451C,
@@ -488,7 +489,7 @@ Davy_restAssociate_Gfx,
 0xFFFF0000,
 };
 
-Unk800FF908 D_800FF994 = {
+Unk_800FFB74 D_800FF994 = {
 (void*)0x01024520,
 Davy_restAssociate_Gfx,
 (void*)0x0102451C,
@@ -496,7 +497,7 @@ Davy_restAssociate_Gfx,
 0xFFFF0000,
 };
 
-Unk800FF908 D_800FF9A8 = {
+Unk_800FFB74 D_800FF9A8 = {
 (void*)0x06000030,
 Davy_restAssociate_Gfx,
 (void*)0x0600002C,
@@ -504,7 +505,7 @@ Davy_restAssociate_Gfx,
 0xFFFF0000,
 };
 
-Unk800FF908 D_800FF9BC = {
+Unk_800FFB74 D_800FF9BC = {
 (void*)0x060061E0,
 Davy_restAssociate_Gfx,
 (void*)0x060061DC,
@@ -512,7 +513,7 @@ Davy_restAssociate_Gfx,
 0xFFFF0000,
 };
 
-Unk800FF908 D_800FF9D0 = {
+Unk_800FFB74 D_800FF9D0 = {
 (void*)0x03002760,
 D_3007EA0,
 (void*)0x0300275C,
@@ -520,7 +521,7 @@ D_3007EA0,
 0xFFFF0000,
 };
 
-Unk800FF908 D_800FF9E4 = {
+Unk_800FFB74 D_800FF9E4 = {
 (void*)0x03002A90,
 D_3008428,
 (void*)0x03002A8C,
@@ -528,7 +529,7 @@ D_3008428,
 0xFFFF0000,
 };
 
-Unk800FF908 D_800FF9F8 = {
+Unk_800FFB74 D_800FF9F8 = {
 (void*)0x03002B40,
 D_3008428,
 (void*)0x03002B3C,
@@ -536,7 +537,7 @@ D_3008428,
 0xFFFF0000,
 };
 
-Unk800FF908 D_800FFA0C = {
+Unk_800FFB74 D_800FFA0C = {
 (void*)0x03002F30,
 D_3008428,
 (void*)0x03002F2C,
@@ -544,7 +545,7 @@ D_3008428,
 0xFFFF0000,
 };
 
-Unk800FF908 D_800FFA20 = {
+Unk_800FFB74 D_800FFA20 = {
 (void*)0x030458F0,
 D_300EFC0,
 (void*)0x030458EC,
@@ -552,7 +553,7 @@ D_300EFC0,
 0xFFFF0000,
 };
 
-Unk800FF908 D_800FFA34 = {
+Unk_800FFB74 D_800FFA34 = {
 (void*)0x030465E0,
 D_300EFC0,
 (void*)0x030465DC,
@@ -560,7 +561,7 @@ D_300EFC0,
 0x00000000,
 };
 
-Unk800FF908 D_800FFA48 = {
+Unk_800FFB74 D_800FFA48 = {
 (void*)0x03047B50,
 D_300EFC0,
 (void*)0x03047B4C,
@@ -568,7 +569,7 @@ D_300EFC0,
 0xFFFF0000,
 };
 
-Unk800FF908 D_800FFA5C = {
+Unk_800FFB74 D_800FFA5C = {
 (void*)0x0304FB00,
 D_300EFC0,
 (void*)0x0304FAFC,
@@ -576,7 +577,7 @@ D_300EFC0,
 0xFFFF0000,
 };
 
-Unk800FF908 D_800FFA70 = {
+Unk_800FFB74 D_800FFA70 = {
 (void*)0x0305E4F0,
 D_300EFC0,
 (void*)0x0305E4EC,
@@ -584,7 +585,7 @@ D_300EFC0,
 0xFFFF0000,
 };
 
-Unk800FF908 D_800FFA84 = {
+Unk_800FFB74 D_800FFA84 = {
 (void*)0x0302CC68,
 D_300DB48,
 (void*)0x0302CC60,
@@ -592,7 +593,7 @@ D_300DB48,
 0xFFFF0000,
 };
 
-Unk800FF908 D_800FFA98 = {
+Unk_800FFB74 D_800FFA98 = {
 (void*)0x0302DA68,
 D_300DB48,
 (void*)0x0302DA60,
@@ -600,7 +601,7 @@ D_300DB48,
 0xFFFF0000,
 };
 
-Unk800FF908 D_800FFAAC = {
+Unk_800FFB74 D_800FFAAC = {
 (void*)0x030303E8,
 D_300DB48,
 (void*)0x030303E0,
@@ -608,7 +609,7 @@ D_300DB48,
 0xFFFF0000,
 };
 
-Unk800FF908 D_800FFAC0 = {
+Unk_800FFB74 D_800FFAC0 = {
 (void*)0x030311E8,
 D_300DB48,
 (void*)0x030311E0,
@@ -616,7 +617,7 @@ D_300DB48,
 0xFFFF0000,
 };
 
-Unk800FF908 D_800FFAD4 = {
+Unk_800FFB74 D_800FFAD4 = {
 (void*)0x03034928,
 D_3011318,
 (void*)0x03034920,
@@ -624,7 +625,7 @@ D_3011318,
 0xFFFF0000,
 };
 
-Unk800FF908 D_800FFAE8 = {
+Unk_800FFB74 D_800FFAE8 = {
 (void*)0x0301B630,
 D_300CED0,
 (void*)0x0301B62C,
@@ -632,7 +633,7 @@ D_300CED0,
 0xFFFF0000,
 };
 
-Unk800FF908 D_800FFAFC = {
+Unk_800FFB74 D_800FFAFC = {
 (void*)0x0301E870,
 D_300CED0,
 (void*)0x0301E868,
@@ -640,7 +641,7 @@ D_300CED0,
 0xFFFF0000,
 };
 
-Unk800FF908 D_800FFB10 = {
+Unk_800FFB74 D_800FFB10 = {
 (void*)0x03021AB0,
 D_300CED0,
 (void*)0x03021AA8,
@@ -648,7 +649,7 @@ D_300CED0,
 0xFFFF0000,
 };
 
-Unk800FF908 D_800FFB24 = {
+Unk_800FFB74 D_800FFB24 = {
 (void*)0x030265F0,
 D_300CED0,
 (void*)0x030265E8,
@@ -656,7 +657,7 @@ D_300CED0,
 0xFFFF0000,
 };
 
-Unk800FF908 D_800FFB38 = {
+Unk_800FFB74 D_800FFB38 = {
 (void*)0x0301E2E8,
 (void*)0x03013708,
 (void*)0x0301E2E0,
@@ -664,7 +665,7 @@ Unk800FF908 D_800FFB38 = {
 0xFFFF0000,
 };
 
-Unk800FF908 D_800FFB4C = {
+Unk_800FFB74 D_800FFB4C = {
 (void*)0x0301E268,
 D_300A9E0,
 (void*)0x0301E260,
@@ -672,7 +673,7 @@ D_300A9E0,
 0xFFFF0000,
 };
 
-Unk800FF908 D_800FFB60 = {
+Unk_800FFB74 D_800FFB60 = {
 (void*)0x030222E8,
 (void*)0x0301C198,
 (void*)0x030222E0,
@@ -689,16 +690,58 @@ s32 D_800FFC88[] = {0x00010000, 0x00000000, 0x00270001, 0x00010000, 0x00000027, 
 s32 D_800FFCBC[] = {0x00010000, 0x00000000, 0x00270001, 0x00010000, 0x00000027, 0x00010002, 0x00000000, 0x00270001, 0x00030000, 0x00000027, 0xFFFE0000, 0x00000000, 0x00000000};
 s32 D_800FFCF0[] = {0x003C0000, 0x00800048, 0x005D0002, 0x0001007C, 0x0046005D, 0x00020002, 0x007C004C, 0x005D0002, 0x00020075, 0x0049005D, 0x00020003, 0x006C0042, 0x005D0002, 0x00030068, 0x003B005D, 0x00020004, 0x006B0034, 0x005D0002, 0x00040074, 0x002F005D, 0x00020005, 0x007F0035, 0x005D0002, 0x00050088, 0x003E005D, 0x00020006, 0x008A0042, 0x005D0002, 0x00060083, 0x0046005D, 0x001E0000, 0x00800048, 0x005DFFFF, 0x00000000, 0x00000000};
 s32* D_800FFD7C[] = {NULL, D_800FFCF0, D_800FFBF8, D_800FFC2C, D_800FFC60, D_800FFC88, D_800FFCBC, 0};
-s32 D_800FFD9C[] = {0x00050000, 0x00000006, 0x00240004, 0x00000000, 0x00060024, 0xFFFF0000, 0x00000000, 0x00000000};
-s32 D_800FFDBC[] = {0x00050000, 0x00000006, 0x001C0004, 0xFFF40000, 0x0006001D, 0xFFFF0000, 0x00000000, 0x00000000};
+//unknown what these are supposed to be
+Unk_800FFDDC D_800FFD9C[] = {
+    {0x0005, 0x0000, 0x0000, 0x0006, 0x0024},
+    {0x0004, 0x0000, 0x0000, 0x0006, 0x0024},
+    {0xFFFF, 0x0000, 0x0000, 0x0000, 0x0000},
+};
+Unk_800FFDDC D_800FFDBC[] = {
+    {0x0005, 0x0000, 0x0000, 0x0006, 0x001C},
+    {0x0004, 0xFFF4, 0x0000, 0x0006, 0x001D},
+    {0xFFFF, 0x0000, 0x0000, 0x0000, 0x0000},
+};
+
 Unk_800FFDDC* D_800FFDDC[] = {0, D_800FFD9C, D_800FFDBC, 0};
 s32 D_800FFDEC = 0;
 s16 D_800FFDF0 = 3;
 s16 D_800FFDF4 = 1;
-s32 D_800FFDF8[] = {0x0000FFE0, 0x00400040, 0xFFE00041, 0x0080FFE0, 0x004200C0, 0xFFE00043, 0x0100FFE0, 0x00440000, 0x0000FFFF};
-s32 D_800FFE1C[] = {0x0000FFE0, 0x003B0040, 0xFFE0003C, 0x0080FFE0, 0x003D00C0, 0xFFE0003E, 0x0100FFE0, 0x003F0000, 0x0000FFFF};
-s32 D_800FFE40[] = {0, 0x00BB0000, 0x0000FFFF};
-s32 D_800FFE4C[] = {0, 0x00BC0000, 0x0000FFFF};
+
+/*
+typedef struct UnkBg {
+    s16 unk0;
+    s16 unk2;
+    s16 spriteID;
+} UnkBg;
+*/
+UnkBg D_800FFDF8[] = {
+    {0x0000, 0xFFE0, 0x0040},
+    {0x0040, 0xFFE0, 0x0041},
+    {0x0080, 0xFFE0, 0x0042},
+    {0x00C0, 0xFFE0, 0x0043},
+    {0x0100, 0xFFE0, 0x0044},
+    {0x0000, 0x0000, 0xFFFF}
+};
+
+UnkBg D_800FFE1C[] = {
+    {0x0000, 0xFFE0, 0x003B},
+    {0x0040, 0xFFE0, 0x003C},
+    {0x0080, 0xFFE0, 0x003D},
+    {0x00C0, 0xFFE0, 0x003E},
+    {0x0100, 0xFFE0, 0x003F},
+    {0x0000, 0x0000, 0xFFFF}
+};
+
+UnkBg D_800FFE40[] = {
+    {0x0000, 0x0000, 0x00BB},
+    {0x0000, 0x0000, 0xFFFF}
+};
+
+UnkBg D_800FFE4C[] = {
+    {0x0000, 0x0000, 0x00BC},
+    {0x0000, 0x0000, 0xFFFF}
+};
+
 UnkBg* D_800FFE58[] = {D_800FFDF8, D_800FFE1C, D_800FFE40, D_800FFE4C, NULL, NULL};
 s32 D_800FFE70 = 0;
 s32 D_800FFE74 = 0;
@@ -714,23 +757,24 @@ char D_800FFEC4[] = "ＣＯＮＧＲＡＴＵＬＡＴＩＯＮＳ！";
 f32 D_800FFEE8 = 0.0f;
 s16 D_800FFEEC[] = {0x18, 0x19, 0x1A, 0x1B, 0xFFFF, 0x0000};
 
+//TODO: fix the segmented pointers here
 StageLoadData gStageLoadData[] = { //this should be StageLoadData
-    {0x030135B0, JungleLand_ROM_START, JungleLand_VRAM, JungleLand_VRAM_END, 0x00000000},
-    {0x030170A0, AntLand_ROM_START, AntLand_VRAM, AntLand_VRAM_END, 0x00000001},
-    {0x0301A724, BombLand_ROM_START, BombLand_VRAM, BombLand_VRAM_END, 0x00000002},
-    {0x0300E490, DesertCastle_ROM_START, DesertCastle_VRAM, DesertCastle_VRAM_END, 0x00000003},
-    {0x03015D80, KidsLand_ROM_START, KidsLand_VRAM, KidsLand_VRAM_END, 0x00000004},
-    {0x03011F2C, GhostCastle_ROM_START, GhostCastle_VRAM, GhostCastle_VRAM_END, 0x00000005},
-    {0x03008CD8, IntroOutro_ROM_START, IntroOutro_VRAM, IntroOutro_VRAM_END, 0x00000006},
-    {0x03006358, BattleMode_ROM_START, BattleMode_VRAM, BattleMode_VRAM_END, 0x00000007},
-    {0x03005F44, Training_ROM_START, Training_VRAM, Training_VRAM_END, 0x00000008},
-    {0x030011F0, LizardKong_ROM_START, LizardKong_VRAM, LizardKong_VRAM_END, 0x00000009},
-    {0x03001454, Quintella_ROM_START, Quintella_VRAM, Quintella_VRAM_END, 0x0000000A},
-    {0x03001464, BombSnake_ROM_START, BombSnake_VRAM, 0x030087A0, 0x0000000B},
-    {0x030013C4, Armadillo_ROM_START, Armadillo_VRAM, Armadillo_VRAM_END, 0x0000000C},
-    {0x03001300, GiantCake_ROM_START, GiantCake_VRAM, GiantCake_VRAM_END, 0x0000000D},
-    {0x03002674, PileOfBooks_ROM_START, PileOfBooks_VRAM, PileOfBooks_VRAM_END, 0x0000000E},
-    {0x030031F0, BossRush_ROM_START, BossRush_VRAM, BossRush_VRAM_END, 0x0000000F},
+    {(void*)0x030135B0, JungleLand_ROM_START, JungleLand_VRAM, JungleLand_VRAM_END, 0x00000000},
+    {(void*)0x030170A0, AntLand_ROM_START, AntLand_VRAM, AntLand_VRAM_END, 0x00000001},
+    {(void*)0x0301A724, BombLand_ROM_START, BombLand_VRAM, BombLand_VRAM_END, 0x00000002},
+    {(void*)0x0300E490, DesertCastle_ROM_START, DesertCastle_VRAM, DesertCastle_VRAM_END, 0x00000003},
+    {(void*)0x03015D80, KidsLand_ROM_START, KidsLand_VRAM, KidsLand_VRAM_END, 0x00000004},
+    {(void*)0x03011F2C, GhostCastle_ROM_START, GhostCastle_VRAM, GhostCastle_VRAM_END, 0x00000005},
+    {(void*)0x03008CD8, IntroOutro_ROM_START, IntroOutro_VRAM, IntroOutro_VRAM_END, 0x00000006},
+    {(void*)0x03006358, BattleMode_ROM_START, BattleMode_VRAM, BattleMode_VRAM_END, 0x00000007},
+    {(void*)0x03005F44, Training_ROM_START, Training_VRAM, Training_VRAM_END, 0x00000008},
+    {(void*)0x030011F0, LizardKong_ROM_START, LizardKong_VRAM, LizardKong_VRAM_END, 0x00000009},
+    {(void*)0x03001454, Quintella_ROM_START, Quintella_VRAM, Quintella_VRAM_END, 0x0000000A},
+    {(void*)0x03001464, BombSnake_ROM_START, BombSnake_VRAM, (void*)0x030087A0, 0x0000000B},
+    {(void*)0x030013C4, Armadillo_ROM_START, Armadillo_VRAM, Armadillo_VRAM_END, 0x0000000C},
+    {(void*)0x03001300, GiantCake_ROM_START, GiantCake_VRAM, GiantCake_VRAM_END, 0x0000000D},
+    {(void*)0x03002674, PileOfBooks_ROM_START, PileOfBooks_VRAM, PileOfBooks_VRAM_END, 0x0000000E},
+    {(void*)0x030031F0, BossRush_ROM_START, BossRush_VRAM, BossRush_VRAM_END, 0x0000000F},
     {0x00000000, 0x00000000, 0x00000000, 0x00000000, 0xFFFFFFFF},
     {0x00000000, 0x00000000, 0x00000000, 0x00000000, 0xFFFFFFFF},
     {0x00000000, 0x00000000, 0x00000000, 0x00000000, 0xFFFFFFFF},
@@ -838,7 +882,7 @@ extern const char D_8010E0D4[];
 extern const char D_8010E0DC[];
 extern const char D_8010E0E4[];
 
-char* D_8010035C[] = {D_8010E0CC, D_8010E0D4, D_8010E0DC, D_8010E0E4, 0x00000000};
+const char* D_8010035C[] = {D_8010E0CC, D_8010E0D4, D_8010E0DC, D_8010E0E4, 0x00000000};
 
 s16 LoadFilePositions[] = {
     //X, Y
@@ -1691,8 +1735,8 @@ void func_8008C070(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008C094.s")
 
-void func_8008C1C8(s32* arg0) {
-    s32 sp4C = *arg0;
+void func_8008C1C8(Gfx** arg0) {
+    Gfx* sp4C = *arg0;
 
     if ((gSelectedCharacters[0] == CHARA_WHITE) && (gGameModeCurrent == 0)) {
         if ((D_80176F58[0] == 0) && (gOneRun != 0)) {
@@ -2337,7 +2381,7 @@ CTTask* func_8008EB08(s16 arg0, s16 arg1, s16 arg2, s16 arg3, s16* arg4, f32 arg
     newTask->pos.y = arg6;
     newTask->pos.z = 0;
     newTask->function = func_8008E698;
-    newTask->unk58 = arg4;
+    newTask->unk58 = (CTTask*)arg4; //TODO: figure out the type problem here
     return newTask;
 }
 
@@ -5230,7 +5274,7 @@ void func_800A0D90(void) {
     s32 i;
     s32 address;
     D_80100F50[1].base_address = (u32)gFrameBuffers - ALIGN16((u32)static0_VRAM_END - (u32)static0_VRAM);
-    D_80100F50[1].unk4 = gFrameBuffers;
+    D_80100F50[1].unk4 = (u32)gFrameBuffers; //TODO: is the a singular frame buffer or both?
     address = D_80100F50[1].base_address;
     for (i = 8; i < 14; i++){
         address = func_8009603C(i, address);

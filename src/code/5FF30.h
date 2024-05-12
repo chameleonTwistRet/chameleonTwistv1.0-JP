@@ -88,11 +88,11 @@ typedef struct UnkPlaySoundEffect {
 } UnkPlaySoundEffect;
 
 typedef struct Unk_800FFB74 {
-    /* 0x00 */ Mtx* unk_00;
-    /* 0x04 */ s32 unk_04;
-    /* 0x08 */ s32* unk_08;
-    /* 0x0C */ s32 unk_0C;
-    /* 0x10 */ s32 unk_10;
+    Mtx* unk_00;
+    void* unk_04;
+    void* unk_08;
+    void* unk_0C;
+    s32 unk_10;
 } Unk_800FFB74; // size 0x14
 
 typedef struct Unk_800FFDDC {
@@ -171,7 +171,7 @@ s32 func_8008BFA8(s32 vol);
 s32 alCSPGetTempoWrapper(void);
 s32 func_8008C040(s32 arg0);
 void func_8008C070(s32 arg0);
-void func_8008C1C8(s32* arg0);
+void func_8008C1C8(Gfx** arg0);
 void func_8008C35C(Gfx** arg0);
 s32 Actor_PlaySound(Actor* actor, s32 sfxID, s32 unused1, s32 unused2);
 void func_8008C3F0(Actor* actor, s32 sfxID, s32 unused);

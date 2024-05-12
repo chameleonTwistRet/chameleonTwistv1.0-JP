@@ -317,8 +317,12 @@ typedef struct RoomObject {
     s32 unk54;
     s32 unk58;
     s32 unk5C;
-    void (*func1)(struct Collider*, struct RoomObject*);
-    void (*func2)(struct Collider*);
+    //many type issues with this to fix in generation
+    //so for now, they are void* to avoid a million warnings
+    void* func1;
+    void* func2;
+    // void (*func1)(struct Collider*, struct RoomObject*);
+    // void (*func2)(struct Collider*);
     s32 unk68;
     s32 unk6C;
     s32 unk70;
