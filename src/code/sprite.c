@@ -3303,6 +3303,7 @@ Gfx* func_8005CA44(Gfx* gfxPos) {
         gSP1Triangle(gfxPos++, 3, 2, 1, 0);
     }
 
+    //@bug game draws the glass wall boxes on file select if player quits while in the room
     if (gGameModeCurrent != GAME_MODE_SAVE_MENU && gCurrentStage == STAGE_KIDS && gCurrentZone == ZONE_GLASS_WALL_2) {
         gSPDisplayList(gfxPos++, KidsLand_model56_Gfx);
         gSPDisplayList(gfxPos++, KidsLand_model66_Gfx);
