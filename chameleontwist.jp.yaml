@@ -228,10 +228,11 @@ segments:
       - [0xC95C0, data, rspBootText]
       - [0xC9690, data, gspFast3DTextStart]
       - [0xC9690, data, code/1050] #800EE290 through 800F0B50
-      - [0xCBF50, .data, code/battle] #800F0B50 through 800F0D90
-      - [0xCC190, .data, code/sprite] #800F0D90 through 800FEDC0
-      - [0xD27A0, data, code/sprite] #800F0D90 through 800FEDC0
-      #- [0xCC190, data, code/sprite] #800F0D90 through 800FEDC0
+      - [0xCBAA0, data, code/debug] #800F0B50 through 800F0B50
+      - [0xCBF50, .data, code/battle]
+      - [0xCC190, .data, code/sprite]
+      - [0xD27A0, data, code/sprite]
+      #- [0xCC190, data, code/sprite]
       - [0xDA1C0, .data, code/5FF30] #800FEDC0 through 80108B70
       #- [0xDB770, data, code/5FF30_2] #80100370 fake split for migrating data
       - [0xDB840, data, code/5FF30_2] #starts at 80100440

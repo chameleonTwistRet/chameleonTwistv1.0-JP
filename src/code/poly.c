@@ -27,7 +27,7 @@ extern Vec3f D_802489C8[8];
 
 /* Migrated BSS */
 //TODO: type this data correctly
-char gShadows[0xC00];
+Shadow gShadows[64];
 s32 gShadowCount;
 Vec3f D_80248518;
 char D_80248528[0x18];
