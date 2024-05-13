@@ -2835,7 +2835,7 @@ void Porocess_Mode0(void) {
         }
         
         D_80174878 = LoadStageByIndex(D_80174878);
-        if (gCurrentStage == 7) {
+        if (gCurrentStage == STAGE_VS) {
             D_80168DA0 = gControllerNo;
             Battle_GameType = 2;
         } else {
@@ -2861,23 +2861,23 @@ void Porocess_Mode0(void) {
         func_80084788();
         
         D_80174980 = 0;
-        if (gCurrentStage == 7) {
+        if (gCurrentStage == STAGE_VS) {
             Battle_Init();
         } else {
             func_8008FE00();
         }
-        if (gCurrentStage == 2) {
+        if (gCurrentStage == STAGE_BOMB) {
             LoadPlayerEyes(4);
             SetPlayerContextEyes(4, 0, 0);
             FreePlayerEyes(4);
         }
         CTTaskList_Init();
-        if ((gCurrentStage == 0xF) || (gCurrentStage == 8)) {
+        if ((gCurrentStage == STAGE_BOSSRUSH) || (gCurrentStage == STAGE_TRAINING)) {
             func_800C1458(0);
         }
         func_8008BE14();
         func_8008800C(8);
-        gGameModeState += 1;
+        gGameModeState++;
         func_8008F114();
         gCurrentStageTime = 0;
         return;
@@ -2893,7 +2893,7 @@ void Porocess_Mode0(void) {
         sp28 = currentStageCrowns;
         sp24 = D_80247904;
         DMAStruct_Print();
-        D_80174878 += 1;
+        D_80174878++;
         if (D_800F06EC >= 0) {
             D_80174878 = D_800F06EC;
         }
@@ -2916,7 +2916,7 @@ void Porocess_Mode0(void) {
         currentStageCrowns = sp28;
         D_80247904 = sp24;
         func_8008FE00();
-        if (gCurrentStage == 2) {
+        if (gCurrentStage == STAGE_BOMB) {
             LoadPlayerEyes(4);
             SetPlayerContextEyes(4, 0, 0);
             FreePlayerEyes(4);
@@ -2943,7 +2943,7 @@ void Porocess_Mode0(void) {
         func_8008FD68();
         SaveData_ReadFile(&gGameState);
         if (D_80236974 == 1) {
-            if (gCurrentStage == 0) {
+            if (gCurrentStage == STAGE_JUNGLE) {
                 D_80236978 = 1;
             }
             func_800C2820(gGameState.gCurrentZone, &gPlayerActors[0], &gGameState);
@@ -2959,7 +2959,7 @@ void Porocess_Mode0(void) {
         gGameModeState = 1;
         func_8008F114();
         func_8008FE00();
-        if (gCurrentStage == 2) {
+        if (gCurrentStage == STAGE_BOMB) {
             LoadPlayerEyes(4);
             SetPlayerContextEyes(4, 0, 0);
             FreePlayerEyes(4);
@@ -2987,7 +2987,7 @@ void Porocess_Mode0(void) {
         func_8008FD68();
         SaveData_ReadFile(&gSaveFile);
         if (D_80236974 == 1) {
-            if (gCurrentStage == 0) {
+            if (gCurrentStage == STAGE_JUNGLE) {
                 D_80236978 = 1;
             }
             func_800C2820(gSaveFile.gCurrentZone, &gPlayerActors[0], &gSaveFile);
@@ -3002,7 +3002,7 @@ void Porocess_Mode0(void) {
         gGameModeState = 1;
         func_8008F114();
         func_8008FE00();
-        if (gCurrentStage == 2) {
+        if (gCurrentStage == STAGE_BOMB) {
             LoadPlayerEyes(4);
             SetPlayerContextEyes(4, 0, 0);
             FreePlayerEyes(4);

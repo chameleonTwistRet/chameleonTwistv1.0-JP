@@ -3303,12 +3303,12 @@ Gfx* func_8005CA44(Gfx* gfxPos) {
         gSP1Triangle(gfxPos++, 3, 2, 1, 0);
     }
 
-    if (gGameModeCurrent != 2 && gCurrentStage == STAGE_KIDS && gCurrentZone == 15) {
+    if (gGameModeCurrent != GAME_MODE_SAVE_MENU && gCurrentStage == STAGE_KIDS && gCurrentZone == ZONE_GLASS_WALL_2) {
         gSPDisplayList(gfxPos++, KidsLand_model56_Gfx);
         gSPDisplayList(gfxPos++, KidsLand_model66_Gfx);
         gSPDisplayList(gfxPos++, KidsLand_model65_Gfx);
     }
-    if (gGameModeCurrent != 2 && gCurrentStage == STAGE_KIDS && gCurrentZone == 10) {
+    if (gGameModeCurrent != GAME_MODE_SAVE_MENU && gCurrentStage == STAGE_KIDS && gCurrentZone == ZONE_GLASS_WALL_1) {
         gSPDisplayList(gfxPos++, KidsLand_model61_Gfx);
     }
     gSPDisplayList(gfxPos++, static0_spriteController7_Gfx);
@@ -8905,8 +8905,8 @@ s32 func_8007C500(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8007C7FC.s")
 
 void func_8007CDBC(void) {
-    levelFlags[1] = 0;
-    levelFlags[2] = 0;
+    StageFlags[1] = 0;
+    StageFlags[2] = 0;
     PlayBGM(BGM_TRAINING);
 }
 

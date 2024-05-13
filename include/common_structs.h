@@ -399,9 +399,7 @@ typedef struct SpriteActor {
     Color128 color;
 } SpriteActor; // sizeof 0x50
 
-//this isnt JUST collision, its also a variation of RoomSettings
-//you can tell because of the 4 pointers at the start
-typedef struct Collision {
+typedef struct Field {
     /* 0x00 */ RoomObject* roomObjects;
     //pointer of levelData roomObjects
     //0 for none
@@ -459,7 +457,7 @@ typedef struct Collision {
     /* 0xCC */ f32 unkCC;                           /* inferred */
     /* 0xD0 */ f32 unkD0;
     /* 0xD4 */ char padD4[4];
-} Collision;                                        /* size = 0xD8 */
+} Field;                                        /* size = 0xD8 */
 
 
 typedef struct CardinalDirection {

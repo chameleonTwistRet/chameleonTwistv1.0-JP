@@ -651,7 +651,8 @@ void func_8002E5DC(UnkTempStruct arg0) {
 
     D_80174860->size1 = D_80174860->size1 + ((D_80174860->size2 - D_80174860->size1) * 0.200000003f);
     if (D_801749A8 == 0) {
-        if (((gCurrentStage == STAGE_KIDS) && (gCurrentZone == STAGE_BOSSRUSH)) || ((gCurrentStage == STAGE_GHOST) && (gCurrentZone == STAGE_GHOSTBOSS))) {
+        //if room is cycle 4 in kids land, or billiards in ghost castle, force free cam
+        if (((gCurrentStage == STAGE_KIDS) && (gCurrentZone == ZONE_GLASS_WALL_2)) || ((gCurrentStage == STAGE_GHOST) && (gCurrentZone == ZONE_BILLIARDS))) {
             if (D_80174860->unk0 == 1) {
                 PLAYSFX(0x2C, 0, 0x10);
                 D_80174860->unk0 = 0;
@@ -896,7 +897,7 @@ void func_800313BC(s32 arg0, f32 arg1) {
     gActors[arg0].vel.x = cosf(DEGREES_TO_RADIANS_2PI(arg1)) * 12.0f;
     gActors[arg0].vel.z = -sinf(DEGREES_TO_RADIANS_2PI(arg1)) * 12.0f;
     if (gActors[arg0].actorID == SPIDER_SPAWNER) {
-        levelFlags[(s32)gActors[arg0].unk_164] = 1;
+        StageFlags[(s32)gActors[arg0].unk_164] = 1;
     }
 }
 
@@ -2323,7 +2324,7 @@ void func_8004769C(Actor* golemRoomSpiderSpawnerActor){
 }
 
 void ActorTick_GolemSpiderSpawner(Actor* Actor) {
-    if (levelFlags[Actor->unk_124] != 0) {
+    if (StageFlags[Actor->unk_124] != 0) {
         if (gActorCount < (s32) Actor->unk_160) {
             Actor->userVariables[0] += 1;
             if (Actor->unk_130 < Actor->userVariables[0]) {

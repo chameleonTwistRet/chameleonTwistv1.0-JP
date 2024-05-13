@@ -214,7 +214,7 @@ extern unkStruct D_80172E88[]; //used by Red ants.
 extern s32 D_80174758[];
 extern s32 D_80174864;
 extern s32 D_80174878;                  // Level/Stage ID | LoadStageByIndex()
-extern s32 levelFlags[32]; //contextual-per-level flags
+extern s32 StageFlags[32]; //contextual-per-level flags
 
 extern s32 D_801748A0;
 extern s32 D_80174998;
@@ -302,7 +302,7 @@ extern s32 gFieldCount;
 extern Door gDoors[16];
 extern unkIsChange isChange;
 extern s32 gDoorCount;
-extern Collision D_80240D6C[];
+extern Field D_80240D6C[];
 extern u8 gCarrotBitfield;
 extern s8 D_801B313D;
 extern SaveRecord gGameRecords;
@@ -360,7 +360,7 @@ extern CTTask* gCTTaskHead;
 extern CTTask* gCTTaskTail;
 extern s32 sGameModeStart;
 extern char D_8010DB20[];
-extern Collision gZoneCollisions[];
+extern Field gZoneFields[];
 extern s32 currentStageCrowns;
 extern char* Dialogue[6][20]; //sizeof 0x1E0
 extern s32 gIsGamePaused;

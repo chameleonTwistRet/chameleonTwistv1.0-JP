@@ -718,6 +718,27 @@ enum SFX {
     SFX_Decline = 196
 };
 
+enum JungleLandZones {
+    Zone0
+};
+
+enum KidsLandZones {
+    ZONE_GLASS_WALL_1 = 10,
+    ZONE_GLASS_WALL_2 = 15
+};
+
+enum AntLandZones {
+    ZONE_SPIN_ROOM_1 = 7
+};
+
+enum GhostCastleZones {
+    ZONE_BILLIARDS = 14
+};
+
+enum AntLandStageFlags {
+    SF_SPIN_ROOM_1_COMPLETED = 0
+};
+
 
 /*
 enum JLFlags {
