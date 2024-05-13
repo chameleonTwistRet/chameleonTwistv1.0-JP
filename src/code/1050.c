@@ -1050,12 +1050,11 @@ Gfx* func_8002CAC8(GraphicStruct* arg0, s32 arg1) {
     return gdl;
 }
 
-void Video_SetTask(GraphicStruct* arg0, Gfx* arg1, s32 arg2) {
+void Video_SetTask(GraphicStruct* arg0, Gfx* arg1, s32 arg2) { //TODO: fix up symbols
     OSTask_t* task = &D_800F04E0[arg2].t;
-    task->ucode_boot = (u64*)rspbootTextStart;
-    task->ucode_boot_size =  ((s32)rspbootTextEnd - (s32)rspbootTextStart);
-    //TODO: fix &rspbootTextStart[208 / 8]
-    task->ucode = (u64*)&rspbootTextStart[208 / 8]; //?
+    task->ucode_boot = (u64*)rspBootText_data__s;
+    task->ucode_boot_size =  ((s32)gspFast3DTextStart_data__s - (s32)rspBootText_data__s); //should be rspBootText_data__s_end - rspBootText_data__s_start
+    task->ucode = (u64*)gspFast3DTextStart;
     task->ucode_data = (u64*)gspFast3DDataStart;
     task->output_buff_size = (u64*)D_80129720;
     task->data_ptr = (u64*)arg0;

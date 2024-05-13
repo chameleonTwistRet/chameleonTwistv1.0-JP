@@ -36,6 +36,8 @@
         "30a4c.h": "c",
         "limits": "c",
         "functions.jp.h": "c",
-        "8add0.h": "c"
+        "8add0.h": "c",
+        "sprite.h": "c",
+        "5ff30.h": "c"
     }
 }

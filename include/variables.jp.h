@@ -265,7 +265,7 @@ extern OSMesgQueue D_801FCA50[50];
 typedef u8 Addr[];
 extern char D_8010F1EC[];
 extern char D_8010F1FC[];
-extern u32 D_80168DA0;
+extern s32 D_80168DA0;
 //extern f32 D_80168DE4;
 extern char D_8010ECF8[];
 extern char D_8010ED04[];

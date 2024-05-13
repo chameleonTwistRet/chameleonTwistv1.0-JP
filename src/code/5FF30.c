@@ -1400,7 +1400,7 @@ s32 PlaySoundEffect(s32 id, f32* posX, f32* posY, f32* posZ, s32 arg4, s32 flag)
     else if (gIsPaused == 1) {
         return -1;
     }
-    if ((s32) D_80168DA0 >= 2) {
+    if (D_80168DA0 >= 2) {
         flag |= 0x10;
     }
     return AddSoundEffect(id, posX, posY, posZ, arg4, flag);
@@ -1519,7 +1519,7 @@ void func_80088B7C(u8* arg0, u8* arg1, u8* arg2, u8* arg3, u8* arg4, u8* arg5) {
     temp_v0 = D_80174998 & 7;
     temp_t6 = (D_80174998 & 0x18) / 8;
     if (temp_t6 == 0) {
-        temp_f0 = (ABS2(temp_v0)) / (notEight);
+        temp_f0 = (ABS2(temp_v0)) / (Eight);
         *arg0 = (0 * temp_f0) + 255;
         *arg1 = (-175 * (temp_f0)) + 255;
         *arg2 = 0 * temp_f0;
@@ -1527,7 +1527,7 @@ void func_80088B7C(u8* arg0, u8* arg1, u8* arg2, u8* arg3, u8* arg4, u8* arg5) {
         *arg4 = 0xFF;
         *arg5 = 0;
     } else if (temp_t6 == 1) {
-        temp_f0 = (ABS2(temp_v0)) / (notEight);
+        temp_f0 = (ABS2(temp_v0)) / (Eight);
         *arg0 = 0xFF;
         *arg1 = 0x50;
         *arg2 = 0;
@@ -1535,7 +1535,7 @@ void func_80088B7C(u8* arg0, u8* arg1, u8* arg2, u8* arg3, u8* arg4, u8* arg5) {
         *arg4 = (-175 * temp_f0) + 255;
         *arg5 = 0 * temp_f0;
     } else if (temp_t6 == 2) {
-        temp_f0 = (8 - (ABS2(temp_v0))) / (notEight);
+        temp_f0 = (8 - (ABS2(temp_v0))) / (Eight);
         *arg0 = (0 * temp_f0) + 255;
         *arg1 = (-175 * temp_f0) + 255;
         *arg2 = 0 * temp_f0;
@@ -1543,7 +1543,7 @@ void func_80088B7C(u8* arg0, u8* arg1, u8* arg2, u8* arg3, u8* arg4, u8* arg5) {
         *arg4 = 0x50;
         *arg5 = 0;
     } else {
-        temp_f0 = (8 - (ABS2(temp_v0))) / (notEight);
+        temp_f0 = (8 - (ABS2(temp_v0))) / (Eight);
         *arg0 = 0xFF;
         *arg1 = 0xFF;
         *arg2 = 0;
@@ -2818,8 +2818,198 @@ void func_8008FEA8(s32 arg0, s32 arg1) {
     }
 }
 
-//needs bss support https://decomp.me/scratch/hFrp7
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/Porocess_Mode0.s")
+void Porocess_Mode0(void) {
+    u32 temp_s0;
+    s32 sp28;
+    s32 sp24;
+    s32 i;
+
+    switch (gGameModeState) {
+    case 0:
+        D_800FFDF0 = 3;
+        DMAStruct_Print();
+        D_80174878 += 1;
+        
+        if (D_800F06EC >= 0) {
+            D_80174878 = D_800F06EC;
+        }
+        
+        D_80174878 = LoadStageByIndex(D_80174878);
+        if (gCurrentStage == 7) {
+            D_80168DA0 = gControllerNo;
+            Battle_GameType = 2;
+        } else {
+            Battle_GameType = 0;
+            D_80168DA0 = 1;
+        }
+
+        //required 1 liner to match
+        for (i = 0; i < D_80168DA0; i++) {gPlayerActors[i].active = 1;}
+
+        for (; i < 4; i++) {
+            gPlayerActors[i].active = 0;
+        }            
+        for (i = 0; i < 4; i++) {
+            _bzero(&gTongues[i], sizeof(Tongue));
+        }
+    
+        func_8002E0CC();
+        InitField();
+        func_80056EB4();
+        Effect_Init();
+        func_8005C9B8();
+        func_80084788();
+        
+        D_80174980 = 0;
+        if (gCurrentStage == 7) {
+            Battle_Init();
+        } else {
+            func_8008FE00();
+        }
+        if (gCurrentStage == 2) {
+            LoadPlayerEyes(4);
+            SetPlayerContextEyes(4, 0, 0);
+            FreePlayerEyes(4);
+        }
+        CTTaskList_Init();
+        if ((gCurrentStage == 0xF) || (gCurrentStage == 8)) {
+            func_800C1458(0);
+        }
+        func_8008BE14();
+        func_8008800C(8);
+        gGameModeState += 1;
+        func_8008F114();
+        gCurrentStageTime = 0;
+        return;
+    case 1:
+        func_8002CE54();
+        return;
+    case 2:
+        gGameModeState = 1;
+        return;
+    case 3:
+        Battle_GameType = 0;
+        temp_s0 = gPlayerActors->hp;
+        sp28 = currentStageCrowns;
+        sp24 = D_80247904;
+        DMAStruct_Print();
+        D_80174878 += 1;
+        if (D_800F06EC >= 0) {
+            D_80174878 = D_800F06EC;
+        }
+        D_80174878 = LoadStageByIndex(D_80174878);
+        func_8002E0CC();
+        InitField();
+        gPlayerActors->hp = temp_s0;
+        func_80056EB4();
+        Effect_Init();
+        func_8005C9B8();
+        func_80084788();
+        CTTaskList_Init();
+        if (D_800FFEBC != 0) {
+            func_800C1458(1);
+        } else {
+            func_800C1458(0);
+        }
+        gGameModeState = 1;
+        func_8008F114();
+        currentStageCrowns = sp28;
+        D_80247904 = sp24;
+        func_8008FE00();
+        if (gCurrentStage == 2) {
+            LoadPlayerEyes(4);
+            SetPlayerContextEyes(4, 0, 0);
+            FreePlayerEyes(4);
+            return;
+        }
+    default:
+        return;
+    case 4:
+        for (i = 0; i < 4; i++) {
+            _bzero(&gTongues[i], sizeof(Tongue));
+        }
+        
+        gPlayerActors[0].active = 1;
+        for (i = 1; i < 4; i++) {
+            gPlayerActors[i].active = 0;
+        }
+        
+        gNoHit = 0;
+        gOneRun = 0;
+        D_80200B38 = 0;
+        Battle_GameType = 0;
+        SaveData_ReadFile(&gGameState);
+        D_80174878 = gCurrentStage - 1;
+        func_8008FD68();
+        SaveData_ReadFile(&gGameState);
+        if (D_80236974 == 1) {
+            if (gCurrentStage == 0) {
+                D_80236978 = 1;
+            }
+            func_800C2820(gGameState.gCurrentZone, &gPlayerActors[0], &gGameState);
+        } else {
+            D_80236978 = 0;
+            func_800C1510(gGameState.gCurrentZone, gGameState.unk33);
+            func_800B4574(&gGameState.unk2, &gGameState.UNK_22);
+            func_800C0760(gGameState.gCurrentZone);
+        }
+        currentStageCrowns = (s32) gGameState.stageCrowns;
+        DummiedPrintf("\n");
+        func_8008FEA8(gCurrentStage, gGameState.gCurrentZone);
+        gGameModeState = 1;
+        func_8008F114();
+        func_8008FE00();
+        if (gCurrentStage == 2) {
+            LoadPlayerEyes(4);
+            SetPlayerContextEyes(4, 0, 0);
+            FreePlayerEyes(4);
+        }
+        func_8008800C(8);
+        return;
+    case 5:
+        SetProcessType(1);
+        func_8008F114();
+        return;
+    case 6:
+        SetProcessType(6);
+        return;
+    case 7:
+        gNoHit = 0;
+        gOneRun = 0;
+        D_80200B38 = 0;
+        D_80168DA0 = 1;
+        Battle_GameType = 0;
+        SaveData_ReadFile(&gSaveFile);
+        D_80174878 = gCurrentStage - 1;
+        for (i = 0; i < 4; i++) {
+            _bzero(&gTongues[i], sizeof(Tongue));
+        }
+        func_8008FD68();
+        SaveData_ReadFile(&gSaveFile);
+        if (D_80236974 == 1) {
+            if (gCurrentStage == 0) {
+                D_80236978 = 1;
+            }
+            func_800C2820(gSaveFile.gCurrentZone, &gPlayerActors[0], &gSaveFile);
+        } else {
+            D_80236978 = 0;
+            func_800C1510(gSaveFile.gCurrentZone, gSaveFile.unk33);
+            func_800B4574(&gSaveFile.unk2, &gSaveFile.UNK_22);
+            func_800C0760(gSaveFile.gCurrentZone);
+        }
+        func_8008FEA8(gCurrentStage, gSaveFile.gCurrentZone);
+        currentStageCrowns = (s32) gSaveFile.stageCrowns;
+        gGameModeState = 1;
+        func_8008F114();
+        func_8008FE00();
+        if (gCurrentStage == 2) {
+            LoadPlayerEyes(4);
+            SetPlayerContextEyes(4, 0, 0);
+            FreePlayerEyes(4);
+        }
+        break;
+    }
+}
 
 void MainLoop(void) {
     func_8002D080();
@@ -4279,7 +4469,7 @@ void func_80098684(u8* arg0, u8* arg1, u8* arg2, u8* arg3, u8* arg4, u8* arg5) {
     temp_v0 = D_80174998 & 7;
     temp_t6 = (D_80174998 & 0x18) / 8;
     if (temp_t6 == 0) {
-        temp_f0 = (ABS2(temp_v0)) / (notEight);
+        temp_f0 = (ABS2(temp_v0)) / (Eight);
         *arg0 = (-198 * temp_f0) + 220;
         *arg1 = (-20 * temp_f0) + 220;
         *arg2 = (9 * temp_f0) + 1;
@@ -4287,7 +4477,7 @@ void func_80098684(u8* arg0, u8* arg1, u8* arg2, u8* arg3, u8* arg4, u8* arg5) {
         *arg4 = 220;
         *arg5 = 1;
     } else if (temp_t6 == 1) {
-         temp_f0 = (ABS2(temp_v0)) / (notEight);
+         temp_f0 = (ABS2(temp_v0)) / (Eight);
         *arg0 = 22;
         *arg1 = 200;
         *arg2 = 10;
@@ -4295,7 +4485,7 @@ void func_80098684(u8* arg0, u8* arg1, u8* arg2, u8* arg3, u8* arg4, u8* arg5) {
         *arg4 = (-20 * temp_f0) + 220;
         *arg5 = (9 * temp_f0) + 1;
     } else if (temp_t6 == 2) {
-        temp_f0 = (8 - (ABS2(temp_v0))) / (notEight);
+        temp_f0 = (8 - (ABS2(temp_v0))) / (Eight);
         *arg0 = (-198 * temp_f0) + 220;
         *arg1 = (-20 * temp_f0) + 220;
         *arg2 = (9 * temp_f0) + 1;
@@ -4303,7 +4493,7 @@ void func_80098684(u8* arg0, u8* arg1, u8* arg2, u8* arg3, u8* arg4, u8* arg5) {
         *arg4 = 200;
         *arg5 = 10;
     } else{
-        temp_f0 = (8 - (ABS2(temp_v0))) / (notEight);
+        temp_f0 = (8 - (ABS2(temp_v0))) / (Eight);
         *arg0 = 220;
         *arg1 = 220;
         *arg2 = 1;

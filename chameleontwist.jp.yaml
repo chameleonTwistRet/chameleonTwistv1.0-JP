@@ -226,6 +226,7 @@ segments:
       - [0xC87E0, c, audio/reverb]
       - [0xC9430, c, libc/ldiv]
       - [0xC95C0, data, rspBootText]
+      - [0xC9690, data, gspFast3DTextStart]
       - [0xC9690, data, code/1050] #800EE290 through 800F0B50
       - [0xCBF50, .data, code/battle] #800F0B50 through 800F0D90
       - [0xCC190, .data, code/sprite] #800F0D90 through 800FEDC0

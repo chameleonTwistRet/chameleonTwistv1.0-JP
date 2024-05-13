@@ -8994,7 +8994,7 @@ void func_80084788(void) {
     D_80176B70 = gTongues;
     D_80176B74 = gPlayerActors;
     D_80176B78 = gCamera;
-    if ((gGameModeCurrent == 0) && (D_80168DA0 == 1)) {
+    if ((gGameModeCurrent == 0) && ((u32)D_80168DA0 == 1)) {
         Effect_HealthBar_Init(0x10, 0x10, &gPlayerActors[0].hp, &D_800FEDB8, gPlayerActors[0].hp, 0);
         func_800634D4(0xF0, 0x10, &currentStageCrowns, &D_800FEDB8, 2, 0);
     }
@@ -9007,7 +9007,7 @@ Gfx* func_80084884(Gfx* arg0) {
     if (gCurrentStage == STAGE_TRAINING) {
         func_8007CDEC();
     }
-    if ((D_80168DA0 == 1) && (D_800FEDB4 == 1) && (D_80236974 == 0) && (gGameModeCurrent == 0)) {
+    if (((u32)D_80168DA0 == 1) && (D_800FEDB4 == 1) && (D_80236974 == 0) && (gGameModeCurrent == 0)) {
         if ((u32)D_80176B78->unk0 == 1) {
             func_800612F0(1);
             printUISprite(24.0f, 208.0f, 0.0f, 0.0f, 1.0f, 24.0f, 16.0f, 0.0f, 0xCC);

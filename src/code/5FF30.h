@@ -5,7 +5,7 @@
 #include "mod.h" //used to DMA mod stuff in if needed
 
 //used in func_80098684 and func_80088B7C
-#define notEight 8.0f+0
+#define Eight 8.0f+0
 
 //migrate these to macros.h or something, since other c's can do stuff like this
 //when the top half is copied to the bottom half
@@ -82,6 +82,8 @@ typedef struct unk80097CF8 {
 } unk80097CF8;
 */
 
+extern s16 D_80200B38;
+extern s32 D_80236978;
 typedef struct UnkPlaySoundEffect {
     char unk_00[0x0E];
     s16 unk_0E;

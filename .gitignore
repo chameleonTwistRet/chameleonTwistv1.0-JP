@@ -3,8 +3,6 @@ __pycache__/
 .pyc
 .DS_Store
 
-include/ld_addrs.h
-
 # Project-specific ignores
 *.bin
 *.ld
