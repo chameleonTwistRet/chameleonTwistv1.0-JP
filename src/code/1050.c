@@ -10,25 +10,22 @@ char gMainThreadStack[8192];
 OSThread D_80117FF0;
 char D_801181A0[4096];
 void* D_801191A0;
-char D_801191A4[4]; //unused?
 OSMesg gPiManMsgs[50];
 OSMesgQueue gPiManMgsQ;
 OSMesg D_80119288;
-char D_8011928C[4]; //unused?
 OSMesgQueue D_80119290;
 OSMesg D_801192A8;
 OSMesg D_801192AC;
 OSMesg D_801192B0;
-char D_801192B4[4]; //unused?
 OSMesgQueue gAudioDoneMessageQueue;
 OSMesgQueue gFrameDrawnMessageQueue;
 OSMesgQueue gSyncMessageQueue;
 OSIoMesg D_80119300; //
 char D_80119318[8];
-char D_80119320[1024];
-u64 D_80119720[8192];
+Mtx D_80119320[16];
+Gfx D_80119720[8192];
 Gfx D_80129720[2];
-Mtx D_80129730[1];
+Mtx D_80129730;
 GraphicStruct gGraphicsList[2];
 
 void bootproc(void) {

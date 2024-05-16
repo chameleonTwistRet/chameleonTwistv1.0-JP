@@ -796,8 +796,7 @@ UnkBg D_800FFE4C[] = {
 };
 
 UnkBg* D_800FFE58[] = {D_800FFDF8, D_800FFE1C, D_800FFE40, D_800FFE4C, NULL, NULL};
-s32 D_800FFE70 = 0;
-s32 D_800FFE74 = 0;
+u64 D_800FFE70 = 0;
 char D_800FFE78[] = "０１２３４５６７８９";
 char D_800FFE90[] = "０１２３４５６７８９ＡＢＣＤＥＦ";
 
@@ -1918,7 +1917,7 @@ s32 PutDList(Mtx** arg0, Gfx** arg1, Gfx* arg2) {
     Gfx* sp60;
     s32 var_s2;
     Gfx* var_v1;
-    s32 temp_t9;
+    s32 mtxArrayIndex;
 
     sp64 = *arg0;
     var_s2 = 1;
@@ -1939,8 +1938,10 @@ s32 PutDList(Mtx** arg0, Gfx** arg1, Gfx* arg2) {
                 gSPDisplayList(sp60++, arg2);
                 break;
             case G_MTX:
-                temp_t9 = (var_v1->words.w1 - (u32)D_80129730) / sizeof(Mtx);
-                if ((temp_t9 >= 0) && (((temp_t9 < 40)))) {
+                //this calculation is bizzare...var_v1->words.w1 can be a segmented addr -
+                //and D_80129730 points
+                mtxArrayIndex = (var_v1->words.w1 - (u32)AnimationSlots) / sizeof(Mtx);
+                if ((mtxArrayIndex >= 0) && (mtxArrayIndex < 40)) {
                     gSPMatrix(sp60++, sp64, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
                     sp64++;
                 } else {

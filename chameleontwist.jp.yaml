@@ -337,6 +337,15 @@ segments:
       - [0xED090, c, unkBlock0Assets0] #size of 0x14AD0
       - {start: 0x101B60, type: bss, name: assets0Bss}
 
+  #this segment is fake, but the original game seems to have an old overlay compiled in
+  - name: AnimationMatrixSlots
+    type: code
+    vram: 0x80129730
+    start: 0x101B60
+    subsegments:
+    - [0x101B60, c, code/AnimSlots]
+    - [0x101B60, .bss, code/AnimSlots]
+
 # # from mainproc() piDMA size: 45C00
   - start: 0x101B60
     name: static0
