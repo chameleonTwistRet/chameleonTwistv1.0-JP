@@ -91,6 +91,15 @@ extern Gfx Fred_restAssociate_Gfx[];
 extern Gfx Linda_restAssociate_Gfx[];
 extern Gfx Black_restAssociate_Gfx[];
 extern Gfx White_restAssociate_Gfx[];
+
+extern Gfx Battle_Chameleons_Davy_restAssociate_Gfx[];
+extern Gfx Battle_Chameleons_Jack_restAssociate_Gfx[];
+extern Gfx Battle_Chameleons_Fred_restAssociate_Gfx[];
+extern Gfx Battle_Chameleons_Linda_restAssociate_Gfx[];
+extern Gfx Battle_Chameleons_Black_restAssociate_Gfx[];
+extern Gfx Battle_Chameleons_White_restAssociate_Gfx[];
+
+
 extern Gfx* D_800F0650[];
 extern Gfx static0_gfx6_Gfx[];
 extern Gfx static0_gfx5_Gfx[];

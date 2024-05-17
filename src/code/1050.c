@@ -91,6 +91,19 @@ Gfx* ChameleonGfxs[6] = {
     White_restAssociate_Gfx
 };
 
+Gfx* D_800F0650[6] = {
+Battle_Chameleons_Davy_restAssociate_Gfx,
+Battle_Chameleons_Jack_restAssociate_Gfx,
+Battle_Chameleons_Fred_restAssociate_Gfx,
+Battle_Chameleons_Linda_restAssociate_Gfx,
+Battle_Chameleons_Black_restAssociate_Gfx,
+Battle_Chameleons_White_restAssociate_Gfx
+};
+
+s32 gFramebufferIndex = 0;
+
+s32 D_800F066C = 0;
+
 void bootproc(void) {
     __osInitialize_common();
     gControllerNo = 1;                            //gIdleThreadStack[1024]

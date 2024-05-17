@@ -611,12 +611,12 @@ unsigned char Battle_Chameleons_Linda_eye2_ci8_PAL[] = {
 #include "build/assets/chameleons/Battle_Chameleons/Linda/head/Linda_eye2.ci8.pal.inc.c"
 };
 unsigned char Battle_Chameleons_Pad95[] = FILEPAD;
-unsigned char Battle_Chameleons_bow_ci4_PNG[] = {
-#include "build/assets/chameleons/Battle_Chameleons/head/bow.ci4.png.inc.c"
+unsigned char Battle_Chameleons_Linda_bow_ci4_PNG[] = {
+#include "build/assets/chameleons/Battle_Chameleons/Linda/head/Linda_bow.ci4.png.inc.c"
 };
 unsigned char Battle_Chameleons_Pad96[] = FILEPAD;
-unsigned char Battle_Chameleons_bow_ci4_PAL[] = {
-#include "build/assets/chameleons/Battle_Chameleons/head/bow.ci4.pal.inc.c"
+unsigned char Battle_Chameleons_Linda_bow_ci4_PAL[] = {
+#include "build/assets/chameleons/Battle_Chameleons/Linda/head/Linda_bow.ci4.pal.inc.c"
 };
 unsigned char Battle_Chameleons_Pad97[] = FILEPAD;
 unsigned char Battle_Chameleons_Linda_cheek_ci4_PNG[] = {

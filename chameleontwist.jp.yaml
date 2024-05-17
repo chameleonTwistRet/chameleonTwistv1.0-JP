@@ -229,7 +229,7 @@ segments:
       - [0xC9690, data, gspFast3DTextStart]
       - [0xCAAC0, data, aspMainTextStart]
       - [0xCB8E0, .data, code/1050] #800EE290 through 800F0B50
-      - [0xCBA50, data, code/1050] #800EE290 through 800F0B50
+      - [0xCBA70, data, code/1050] #800EE290 through 800F0B50
       - [0xCBAA0, data, code/debug] #800F0B50 through 800F0B50
       - [0xCBF50, .data, code/battle]
       - [0xCC190, .data, code/sprite]
@@ -12595,9 +12595,9 @@ segments:
       - [0xae2290] #B8000000
       - [0xae2298, palette, Linda/head/Linda_eye2.ci8]
       - [0xae2498] #B8000000
-      - [0xae24A0, ci4, head/bow.ci4, 64, 32]
+      - [0xae24A0, ci4, Linda/head/Linda_bow.ci4, 64, 32]
       - [0xae28a0] #B8000000
-      - [0xae28a8, palette, head/bow.ci4]
+      - [0xae28a8, palette, Linda/head/Linda_bow.ci4]
       - [0xae2aa8] #B8000000
       - [0xae2ab0, ci4, Linda/head/Linda_cheek.ci4, 32, 32]
       - [0xae2cb0] #B8000000
