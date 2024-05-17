@@ -28,6 +28,69 @@ Gfx D_80129720[2];
 Mtx D_80129730;
 GraphicStruct gGraphicsList[2];
 
+extern u64* D_80200CB0;
+//if you can get the pointers to build be my guest
+OSTask D_800F04E0[2] = {
+{
+    1,
+    0,
+    NULL,
+    0,
+    NULL,
+    0x1000,
+    NULL,
+    0x800,
+    0x80119320,
+    0x400,
+    0x80119720,
+    NULL,
+    NULL,
+    0,
+    0x80200CB0,
+    0xC00
+},
+{
+    1,
+    0,
+    NULL,
+    0,
+    NULL,
+    0x1000,
+    NULL,
+    0x800,
+    0x80119320,
+    0x400,
+    0x80119720,
+    NULL,
+    NULL,
+    0,
+    0x80200CB0,
+    0xC00
+}};
+
+
+s32 D_800F0560 = 0;
+//levelGroup segmented pointers
+u32 D_800F0564[2] = {0x0301B5E8, 0x0301B5F4};
+
+s32 D_800F056C[6] = {7, 170, 5, 135, 180, 98};
+s32 D_800F0584[6] = {49, 5, 180, 5, 170, 81};
+s32 D_800F059C[6] = {96, 39, 20, 97, 80, 144};
+
+f32 D_800F05B4[11] = {10, -30, 80, -30, 45, -23, 0, 70, -65, 33, 10};
+f32 D_800F05E0[11] = {-70, -50, -70, 20, 35, 0, 80, 35, -46, 21, -70};
+f32 D_800F060C[11] = {90, 65, -40, 10, -10, -73, 0, 45, -35, -73, -50};
+
+
+Gfx* ChameleonGfxs[6] = {
+    Davy_restAssociate_Gfx,
+    Jack_restAssociate_Gfx,
+    Fred_restAssociate_Gfx,
+    Linda_restAssociate_Gfx,
+    Black_restAssociate_Gfx,
+    White_restAssociate_Gfx
+};
+
 void bootproc(void) {
     __osInitialize_common();
     gControllerNo = 1;                            //gIdleThreadStack[1024]

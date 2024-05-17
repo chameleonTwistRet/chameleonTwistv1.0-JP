@@ -631,6 +631,7 @@ extern Addr chameleons_Fred_Fred_c;
 extern Addr chameleons_Jack_Jack_c;
 extern Addr chameleons_Linda_Linda_c;
 extern Addr chameleons_White_White_c;
+extern Addr code_1050_c;
 extern Addr code_1050_data__s;
 extern Addr code_298D0_c;
 extern Addr code_5FEB0_c;
