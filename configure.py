@@ -379,6 +379,8 @@ def build_stuff(linker_entries: List[LinkerEntry]):
 
     o_files = []
     for c_file in c_files:
+        if os.path.dirname(c_file) == "src/code":
+            continue
         o_file = "build/"+c_file+".o"
         o_files.append(o_file)
 
