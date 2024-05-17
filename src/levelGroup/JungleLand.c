@@ -1,14 +1,5 @@
 #include "common.h"
 
-extern Mtx D_80129730_JungleLand; //golem
-extern Mtx D_80129770_JungleLand; //golem leg
-extern Mtx D_801297B0_JungleLand; //golem arm
-extern Mtx D_801297F0_JungleLand; //golem leg2
-extern Mtx D_80129830_JungleLand; //golem body
-extern Mtx D_80129870_JungleLand; //golem leg3
-extern Mtx D_801298B0_JungleLand; //golem elbow
-extern Mtx D_801298F0_JungleLand; //golem arm2
-
 extern unsigned char Global_jllogTop_ci4_PAL[];
 extern unsigned char Global_jllogTop_ci4_PNG[];
 extern unsigned char Global_jlLog_ci4_PAL[];

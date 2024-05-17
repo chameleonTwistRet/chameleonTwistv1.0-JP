@@ -1,19 +1,5 @@
 #include "common.h"
 
-extern Mtx D_80129730_Battle_Chameleons;
-extern Mtx D_80129770_Battle_Chameleons;
-extern Mtx D_801297B0_Battle_Chameleons;
-extern Mtx D_80129830_Battle_Chameleons;
-extern Mtx D_801297F0_Battle_Chameleons;
-extern Mtx D_801298B0_Battle_Chameleons;
-extern Mtx D_80129870_Battle_Chameleons;
-extern Mtx D_80129930_Battle_Chameleons;
-extern Mtx D_801298F0_Battle_Chameleons;
-extern Mtx D_801299B0_Battle_Chameleons;
-extern Mtx D_80129970_Battle_Chameleons;
-extern Mtx D_801299F0_Battle_Chameleons;
-extern Mtx D_80129A30_Battle_Chameleons;
-
 #include "assets/chameleons/Battle_Chameleons/groupMtx.mtx.inc.c"
 
 #include "assets/chameleons/Battle_Chameleons/grouplight.light.inc.c"

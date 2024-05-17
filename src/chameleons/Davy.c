@@ -1,19 +1,4 @@
 #include "common.h"
-//these are probably used in ram specifically so they can be animated
-extern Mtx D_80129730_Davy; //body
-extern Mtx D_80129770_Davy; //head
-extern Mtx D_801297B0_Davy; //backpack
-extern Mtx D_801297F0_Davy; //shoe
-extern Mtx D_80129830_Davy; //Lshoe
-extern Mtx D_80129870_Davy; //cuff
-extern Mtx D_801298B0_Davy; //Lcuff
-extern Mtx D_801298F0_Davy; //wrist
-extern Mtx D_80129930_Davy; //Lwrist
-extern Mtx D_80129970_Davy; //shoulder
-extern Mtx D_801299B0_Davy; //Lshoulder
-extern Mtx D_801299F0_Davy; //fist
-extern Mtx D_80129A30_Davy; //Lfist
-
 
 #include "assets/chameleons/Davy/light.light.inc.c"
 

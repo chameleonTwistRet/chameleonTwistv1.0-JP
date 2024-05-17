@@ -1,21 +1,6 @@
 #include "common.h"
 extern Vtx D_800FE2B0_DesertCastle[];
 
-extern Mtx D_80129730_DesertCastle;
-extern Mtx D_80129770_DesertCastle;
-extern Mtx D_801297B0_DesertCastle;
-extern Mtx D_801297F0_DesertCastle;
-extern Mtx D_80129830_DesertCastle;
-extern Mtx D_80129870_DesertCastle;
-extern Mtx D_801298B0_DesertCastle;
-extern Mtx D_801298F0_DesertCastle;
-extern Mtx D_80129930_DesertCastle;
-extern Mtx D_80129970_DesertCastle;
-extern Mtx D_801299B0_DesertCastle;
-extern Mtx D_801299F0_DesertCastle;
-extern Mtx D_80129A30_DesertCastle;
-extern Mtx D_80129A70_DesertCastle;
-
 extern unsigned char Global_sandAgain_ci4_PNG[];
 extern unsigned char Global_sandAgain_ci4_PAL[];
 extern unsigned char Global_DCSmallTiles_ci4_PNG[];

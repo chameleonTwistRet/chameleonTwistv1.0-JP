@@ -1,19 +1,4 @@
 #include "common.h"
-//these are probably used in ram specifically so they can be animated
-extern Mtx D_80129730_Fred; //body
-extern Mtx D_80129770_Fred; //head
-extern Mtx D_801297B0_Fred; //backpack
-extern Mtx D_801297F0_Fred; //shoe
-extern Mtx D_80129830_Fred; //Lshoe
-extern Mtx D_80129870_Fred; //cuff
-extern Mtx D_801298B0_Fred; //Lcuff
-extern Mtx D_801298F0_Fred; //wrist
-extern Mtx D_80129930_Fred; //Lwrist
-extern Mtx D_80129970_Fred; //shoulder
-extern Mtx D_801299B0_Fred; //Lshoulder
-extern Mtx D_801299F0_Fred; //fist
-extern Mtx D_80129A30_Fred; //Lfist
-
 
 #include "assets/chameleons/Fred/light.light.inc.c"
 

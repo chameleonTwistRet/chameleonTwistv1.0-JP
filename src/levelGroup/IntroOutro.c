@@ -1,23 +1,5 @@
 #include "common.h"
 
-extern Mtx D_80129730_IntroOutro;
-extern Mtx D_80129770_IntroOutro;
-extern Mtx D_801297B0_IntroOutro;
-extern Mtx D_801297F0_IntroOutro;
-extern Mtx D_80129830_IntroOutro;
-extern Mtx D_80129870_IntroOutro;
-extern Mtx D_801298B0_IntroOutro;
-extern Mtx D_801298F0_IntroOutro;
-extern Mtx D_80129930_IntroOutro;
-extern Mtx D_80129970_IntroOutro;
-extern Mtx D_801299B0_IntroOutro;
-extern Mtx D_801299F0_IntroOutro;
-extern Mtx D_80129A30_IntroOutro;
-extern Mtx D_80129A70_IntroOutro;
-extern Mtx D_80129AB0_IntroOutro;
-extern Mtx D_80129AF0_IntroOutro;
-extern Mtx D_80129B30_IntroOutro;
-
 extern unsigned char Global_bigLog_ci4_PNG[];
 extern unsigned char Global_bigLog_ci4_PAL[];
 extern unsigned char Global_jlText3_ci4_PNG[];

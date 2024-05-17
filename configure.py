@@ -5,7 +5,6 @@ import os
 import shutil
 import subprocess
 import sys
-import fix_gfx_inc
 
 from pathlib import Path
 from typing import Dict, List, Set, Union
@@ -464,8 +463,6 @@ if __name__ == "__main__":
         
 
     split.main([YAML_FILE], modes="all", verbose=False, use_cache=False)
-
-    fix_gfx_inc.fix_gfx_syms()
 
     linker_entries = split.linker_writer.entries
 

@@ -1,5 +1,4 @@
 #include "common.h"
-extern Mtx D_80129730_BombLand; //s
 
 extern unsigned char Global_metalPlate_i4_PNG[];
 extern unsigned char Global_steelPlate_i4_PNG[];

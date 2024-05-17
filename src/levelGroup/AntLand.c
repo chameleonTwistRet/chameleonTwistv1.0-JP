@@ -1,17 +1,4 @@
 #include "common.h"
-extern Mtx D_80129730_AntLand; //s
-extern Mtx D_80129770_AntLand; //s
-extern Mtx D_801297B0_AntLand; //s
-extern Mtx D_801297F0_AntLand; //s
-extern Mtx D_80129830_AntLand; //s
-extern Mtx D_80129870_AntLand; //s
-extern Mtx D_801298B0_AntLand; //s
-extern Mtx D_801298F0_AntLand; //s
-extern Mtx D_80129930_AntLand; //s
-extern Mtx D_80129970_AntLand; //s
-extern Mtx D_801299B0_AntLand; //s
-extern Mtx D_801299F0_AntLand; //s
-extern Mtx D_80129A30_AntLand; //s
 
 extern unsigned char Global_brickWall_i4_PNG[];
 extern unsigned char Global_brownBrickWall_ci4_PAL[];
