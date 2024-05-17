@@ -9457,7 +9457,7 @@ Gfx* func_80084884(Gfx* arg0) {
     if (gCurrentStage == STAGE_TRAINING) {
         func_8007CDEC();
     }
-    if (((u32)D_80168DA0 == 1) && (D_800FEDB4 == 1) && (D_80236974 == 0) && (gGameModeCurrent == 0)) {
+    if (((u32)D_80168DA0 == 1) && (D_800FEDB4 == 1) && (isInOverworld == FALSE) && (gGameModeCurrent == 0)) {
         if ((u32)D_80176B78->unk0 == 1) {
             func_800612F0(1);
             printUISprite(24.0f, 208.0f, 0.0f, 0.0f, 1.0f, 24.0f, 16.0f, 0.0f, 0xCC);

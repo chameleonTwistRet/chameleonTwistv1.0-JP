@@ -1,10 +1,8 @@
-#include "5FF30.h"
-#include "sprite.h"
-#include "ld_addrs.h"
-
 #include "common.h"
 #include "5FF30.h"
 #include "1050.h"
+#include "sprite.h"
+#include "ld_addrs.h"
 
 u8 D_800FEDC0[226][8] = {
 {104, 136, 1, 4, 1, 5, 25, 0},
@@ -387,7 +385,28 @@ Unk800FF764 D_800FF818[] = {
 Unk800FF764* D_800FF83C[] = {D_800FF764, D_800FF7D0, D_800FF7A0};
 Unk800FF764* D_800FF848[] = {D_800FF7F4, D_800FF818, 0};
 
-s16 sStageBGMs[] = {0, 2, 3, 4, 5, 6, 0x1B, 7, 0x17, 0x0C, 0x0B, 0x0D, 0x0C, 0x0E, 0x11, 7, 7, 7, 7, 0};
+s16 sStageBGMs[] = {
+    BGM_JUNGLE_EXT,
+    BGM_ANT,
+    BGM_BOMB,
+    BGM_DESERT,
+    BGM_KIDS,
+    BGM_GHOST,
+    BGM_INTRO,
+    BGM_BATTLE1,
+    BGM_TRAINING,
+    BGM_BOSS1,
+    BGM_ANTBOSS,
+    BGM_BOSS2,
+    BGM_BOSS1,
+    BGM_KIDSBOSS,
+    BGM_GHOSTBOSS1,
+    BGM_BATTLE1,
+    BGM_BATTLE1,
+    BGM_BATTLE1,
+    BGM_BATTLE1,
+};
+
 s16 D_800FF87C[] = {0, 0, 0, 0};
 u32 D_800FF884 = 0;
 s32 Timing_DelayAudioInterval = 0;
@@ -433,85 +452,117 @@ typedef struct Unk800FF908 {
     s32 unk_10;
 } Unk800FF908;
 
+extern Mtx static0_GetupFromKnockback_Animarr[];
+extern Anim static0_GetupFromKnockback_Animh;
+
 Unk_800FFB74 D_800FF908 = {
-(void*)0x01038800,
+static0_GetupFromKnockback_Animarr,
 Davy_restAssociate_Gfx,
-(void*)0x010387FC,
-(void*)0x010387F8,
+&static0_GetupFromKnockback_Animh.objects,
+&static0_GetupFromKnockback_Animh.frames,
 0xFFFF0000,
 };
 
 Unk_800FFB74 D_800FF91C = {
-(void*)0x01038800,
+static0_GetupFromKnockback_Animarr,
 Davy_restAssociate_Gfx,
-(void*)0x010387FC,
-(void*)0x010387F8,
+&static0_GetupFromKnockback_Animh.objects,
+&static0_GetupFromKnockback_Animh.frames,
 0xFFFF0000,
 };
+
+
+extern Mtx static0_Idle_Animarr[];
+extern Anim static0_Idle_Animh;
 
 Unk_800FFB74 D_800FF930 = {
-(void*)0x01015DA0,
+static0_Idle_Animarr,
 Davy_restAssociate_Gfx,
-(void*)0x01015D9C,
-(void*)0x01015D98,
+&static0_Idle_Animh.objects,
+&static0_Idle_Animh.frames,
 0x00000000,
 };
+
+
+extern Mtx static0_Walk_Animarr[];
+extern Anim static0_Walk_Animh;
 
 Unk_800FFB74 D_800FF944 = {
-(void*)0x010191D0,
+static0_Walk_Animarr,
 Davy_restAssociate_Gfx,
-(void*)0x010191CC,
-(void*)0x010191C8,
+&static0_Walk_Animh.objects,
+&static0_Walk_Animh.frames,
 0x00000000,
 };
+
+
+extern Mtx static0_Run_Animarr[];
+extern Anim static0_Run_Animh;
 
 Unk_800FFB74 D_800FF958 = {
-(void*)0x0101D300,
+static0_Run_Animarr,
 Davy_restAssociate_Gfx,
-(void*)0x0101D2FC,
-(void*)0x0101D2F8,
+&static0_Run_Animh.objects,
+&static0_Run_Animh.frames,
 0x00000000,
 };
 
+
+extern Mtx static0_LandFromKnockback_Animarr[];
+extern Anim static0_LandFromKnockback_Animh;
+
 Unk_800FFB74 D_800FF96C = {
-(void*)0x010346D0,
+static0_LandFromKnockback_Animarr,
 Davy_restAssociate_Gfx,
-(void*)0x010346CC,
-(void*)0x010346C8,
+&static0_LandFromKnockback_Animh.objects,
+&static0_LandFromKnockback_Animh.frames,
 0xFFFF0000,
 };
 
+
+extern Mtx static0_Jump_Animarr[];
+extern Anim static0_Jump_Animh;
+
 Unk_800FFB74 D_800FF980 = {
-(void*)0x01024520,
+static0_Jump_Animarr,
 Davy_restAssociate_Gfx,
-(void*)0x0102451C,
-(void*)0x01024518,
+&static0_Jump_Animh.objects,
+&static0_Jump_Animh.frames,
 0xFFFF0000,
 };
 
 Unk_800FFB74 D_800FF994 = {
-(void*)0x01024520,
+static0_Jump_Animarr,
 Davy_restAssociate_Gfx,
-(void*)0x0102451C,
-(void*)0x01024518,
+&static0_Jump_Animh.objects,
+&static0_Jump_Animh.frames,
 0xFFFF0000,
 };
+
+
+extern Mtx Animations_unk1_Animarr[];
+extern Anim Animations_unk1Header_Animh;
 
 Unk_800FFB74 D_800FF9A8 = {
-(void*)0x06000030,
+Animations_unk1_Animarr,
 Davy_restAssociate_Gfx,
-(void*)0x0600002C,
-(void*)0x06000028,
+&Animations_unk1Header_Animh.objects,
+&Animations_unk1Header_Animh.frames,
 0xFFFF0000,
 };
 
+
+extern Mtx Animations_unk2_Animarr[];
+extern Anim Animations_unk2Header_Animh;
+
 Unk_800FFB74 D_800FF9BC = {
-(void*)0x060061E0,
+Animations_unk2_Animarr,
 Davy_restAssociate_Gfx,
-(void*)0x060061DC,
-(void*)0x060061D8,
+&Animations_unk2Header_Animh.objects,
+&Animations_unk2Header_Animh.frames,
 0xFFFF0000,
 };
+
 
 Unk_800FFB74 D_800FF9D0 = {
 (void*)0x03002760,
@@ -809,35 +860,45 @@ char D_800FFEC4[] = "ＣＯＮＧＲＡＴＵＬＡＴＩＯＮＳ！";
 f32 D_800FFEE8 = 0.0f;
 s16 D_800FFEEC[] = {0x18, 0x19, 0x1A, 0x1B, -1};
 
+extern LevelHeader JungleLand_header_Lvlhdr;
+extern LevelHeader AntLand_header_Lvlhdr;
+extern LevelHeader BombLand_header_Lvlhdr;
+extern LevelHeader DesertCastle_header_Lvlhdr;
+extern LevelHeader KidsLand_header_Lvlhdr;
+//extern LevelHeader IntroOutro_header_Lvlhdr;
+extern LevelHeader IntroOutro_header_Lvlhdr;
+
+
+
 //TODO: fix the segmented pointers here
 StageLoadData gStageLoadData[] = {
-    {(void*)0x030135B0, JungleLand_ROM_START, JungleLand_VRAM, JungleLand_VRAM_END, 0x00000000},
-    {(void*)0x030170A0, AntLand_ROM_START, AntLand_VRAM, AntLand_VRAM_END, 0x00000001},
-    {(void*)0x0301A724, BombLand_ROM_START, BombLand_VRAM, BombLand_VRAM_END, 0x00000002},
-    {(void*)0x0300E490, DesertCastle_ROM_START, DesertCastle_VRAM, DesertCastle_VRAM_END, 0x00000003},
-    {(void*)0x03015D80, KidsLand_ROM_START, KidsLand_VRAM, KidsLand_VRAM_END, 0x00000004},
-    {(void*)0x03011F2C, GhostCastle_ROM_START, GhostCastle_VRAM, GhostCastle_VRAM_END, 0x00000005},
-    {(void*)0x03008CD8, IntroOutro_ROM_START, IntroOutro_VRAM, IntroOutro_VRAM_END, 0x00000006},
-    {(void*)0x03006358, BattleMode_ROM_START, BattleMode_VRAM, BattleMode_VRAM_END, 0x00000007},
-    {(void*)0x03005F44, Training_ROM_START, Training_VRAM, Training_VRAM_END, 0x00000008},
-    {(void*)0x030011F0, LizardKong_ROM_START, LizardKong_VRAM, LizardKong_VRAM_END, 0x00000009},
-    {(void*)0x03001454, Quintella_ROM_START, Quintella_VRAM, Quintella_VRAM_END, 0x0000000A},
-    {(void*)0x03001464, BombSnake_ROM_START, BombSnake_VRAM, (void*)0x030087A0, 0x0000000B},
-    {(void*)0x030013C4, Armadillo_ROM_START, Armadillo_VRAM, Armadillo_VRAM_END, 0x0000000C},
-    {(void*)0x03001300, GiantCake_ROM_START, GiantCake_VRAM, GiantCake_VRAM_END, 0x0000000D},
-    {(void*)0x03002674, PileOfBooks_ROM_START, PileOfBooks_VRAM, PileOfBooks_VRAM_END, 0x0000000E},
-    {(void*)0x030031F0, BossRush_ROM_START, BossRush_VRAM, BossRush_VRAM_END, 0x0000000F},
-    {0x00000000, 0x00000000, 0x00000000, 0x00000000, 0xFFFFFFFF},
-    {0x00000000, 0x00000000, 0x00000000, 0x00000000, 0xFFFFFFFF},
-    {0x00000000, 0x00000000, 0x00000000, 0x00000000, 0xFFFFFFFF},
-    {0x00000000, 0x00000000, 0x00000000, 0x00000000, 0xFFFFFFFF},
-    {0x00000000, 0x00000000, 0x00000000, 0x00000000, 0xFFFFFFFF},
-    {0x00000000, 0x00000000, 0x00000000, 0x00000000, 0xFFFFFFFF},
-    {0x00000000, 0x00000000, 0x00000000, 0x00000000, 0xFFFFFFFF},
-    {0x00000000, 0x00000000, 0x00000000, 0x00000000, 0xFFFFFFFF},
-    {0x00000000, 0x00000000, 0x00000000, 0x00000000, 0xFFFFFFFF},
-    {0x00000000, 0x00000000, 0x00000000, 0x00000000, 0xFFFFFFFF},
-    {0x00000000, 0x00000000, 0x00000000, 0x00000000, 0xFFFFFFFF}
+    {&JungleLand_header_Lvlhdr, JungleLand_ROM_START, JungleLand_VRAM, JungleLand_VRAM_END, 0},
+    {&AntLand_header_Lvlhdr, AntLand_ROM_START, AntLand_VRAM, AntLand_VRAM_END, 1},
+    {&BombLand_header_Lvlhdr, BombLand_ROM_START, BombLand_VRAM, BombLand_VRAM_END, 2},
+    {&DesertCastle_header_Lvlhdr, DesertCastle_ROM_START, DesertCastle_VRAM, DesertCastle_VRAM_END, 3},
+    {&KidsLand_header_Lvlhdr, KidsLand_ROM_START, KidsLand_VRAM, KidsLand_VRAM_END, 4},
+    {(void*)0x03011F2C, GhostCastle_ROM_START, GhostCastle_VRAM, GhostCastle_VRAM_END, 5},
+    {&IntroOutro_header_Lvlhdr, IntroOutro_ROM_START, IntroOutro_VRAM, IntroOutro_VRAM_END, 6},
+    {(void*)0x03006358, BattleMode_ROM_START, BattleMode_VRAM, BattleMode_VRAM_END, 7},
+    {(void*)0x03005F44, Training_ROM_START, Training_VRAM, Training_VRAM_END, 8},
+    {(void*)0x030011F0, LizardKong_ROM_START, LizardKong_VRAM, LizardKong_VRAM_END, 9},
+    {(void*)0x03001454, Quintella_ROM_START, Quintella_VRAM, Quintella_VRAM_END, 10},
+    {(void*)0x03001464, BombSnake_ROM_START, BombSnake_VRAM, (void*)0x030087A0, 11},
+    {(void*)0x030013C4, Armadillo_ROM_START, Armadillo_VRAM, Armadillo_VRAM_END, 12},
+    {(void*)0x03001300, GiantCake_ROM_START, GiantCake_VRAM, GiantCake_VRAM_END, 13},
+    {(void*)0x03002674, PileOfBooks_ROM_START, PileOfBooks_VRAM, PileOfBooks_VRAM_END, 14},
+    {(void*)0x030031F0, BossRush_ROM_START, BossRush_VRAM, BossRush_VRAM_END, 15},
+    {0, 0, 0, 0, -1},
+    {0, 0, 0, 0, -1},
+    {0, 0, 0, 0, -1},
+    {0, 0, 0, 0, -1},
+    {0, 0, 0, 0, -1},
+    {0, 0, 0, 0, -1},
+    {0, 0, 0, 0, -1},
+    {0, 0, 0, 0, -1},
+    {0, 0, 0, 0, -1},
+    {0, 0, 0, 0, -1},
+    {0, 0, 0, 0, -1}
 };
 s32 gStageToLoad = -1;
 
@@ -893,15 +954,26 @@ typedef struct StageSelectData {
 /* 0x17 */ u8 unk_17; //padding?
 } StageSelectData; //sizeof 0x18
 
+enum StageSelectStages{
+    //SELECT_NONE = -1,
+    SELECT_JL = 0,
+    SELECT_AL, // 1
+    SELECT_BL, // 2
+    SELECT_DC, // 3
+    SELECT_KL, // 4
+    SELECT_GC, // 5
+    SELECT_BOSSRUSH // 6
+};
+
 StageSelectData StageSelect[] = {
-    {56, 192, SPRITE_JL_ICON, 0x06, 0x1, 0x2, 0x2, -1, -1, -1, -1, 0xFF, 0},
-    {108, 112, SPRITE_AL_ICON, -1, 3, 3, 4, 2, 0, 6, -1, 0x1D, 0x00},
-    {148, 184, SPRITE_BL_ICON, 0x0003, 0x0003, 0x0004, 0x0004, 0xFFFF, 0x0000, 0x0000, 0x0001, 0x1B, 0x00},
-    {186, 80, SPRITE_DC_ICON, 0xFFFF, 0x0005, 0x0005, 0x0004, 0x0004, 0x0002, 0x0001, 0xFFFF, 0x36, 0x00},
-    {228, 152, SPRITE_KL_ICON, 0x0003, 0x0005, 0xFFFF, 0xFFFF, 0xFFFF, 0x0002, 0x0002, 0x0001, 0x2E, 0x00},
-    {258, 56, SPRITE_GC_ICON, 0xFFFF, 0xFFFF, 0xFFFF, 0x0004, 0x0004, 0x0004, 0x0003, 0xFFFF, 0x18, 0x00},
-    {56, 110, SPRITE_BOSSRUSH_ICON, 0xFFFF, 0xFFFF, 0x0001, 0xFFFF, 0x0000, 0xFFFF, 0xFFFF, 0xFFFF, 0x00, 0x00},
-    {0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x00, 0x00},
+    { 56, 192,       SPRITE_JL_ICON, SELECT_BOSSRUSH, SELECT_AL, SELECT_BL, SELECT_BL,        -1,        -1,               -1,         -1, -1, 0},
+    {108, 112,       SPRITE_AL_ICON,              -1, SELECT_DC, SELECT_DC, SELECT_KL, SELECT_BL, SELECT_JL,  SELECT_BOSSRUSH,         -1, 29, 0},
+    {148, 184,       SPRITE_BL_ICON,       SELECT_DC, SELECT_DC, SELECT_KL, SELECT_KL,        -1, SELECT_JL,        SELECT_JL,  SELECT_AL, 27, 0},
+    {186,  80,       SPRITE_DC_ICON,              -1, SELECT_GC, SELECT_GC, SELECT_KL, SELECT_KL, SELECT_BL,        SELECT_AL,         -1, 54, 0},
+    {228, 152,       SPRITE_KL_ICON,       SELECT_DC, SELECT_GC,        -1,        -1,        -1, SELECT_BL,        SELECT_BL,  SELECT_AL, 46, 0},
+    {258,  56,       SPRITE_GC_ICON,              -1,        -1,        -1, SELECT_KL, SELECT_KL, SELECT_KL,        SELECT_DC,         -1, 24, 0},
+    { 56, 110, SPRITE_BOSSRUSH_ICON,              -1,        -1, SELECT_AL,        -1, SELECT_JL,        -1,               -1,         -1,  0, 0},
+    {  0,   0,                    0,               0,         0,         0,         0,         0,         0,                0,          0,  0, 0},
 };
 
 s16 NameSpriteIDs[] = {
@@ -937,10 +1009,10 @@ extern const char D_8010E0E4[];
 const char* D_8010035C[] = {D_8010E0CC, D_8010E0D4, D_8010E0DC, D_8010E0E4, 0x00000000};
 
 s16 LoadFilePositions[] = {
-    //X, Y
-    44, 64,
-    188, 64,
-    44, 136,
+    //X,   Y
+     44,  64,
+    188,  64,
+     44, 136,
     188, 136
 };
 
@@ -1582,14 +1654,14 @@ const char D_8010D8E0[] = "ＮＯ";
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80089E24.s")
 
 void PlayJungleExtSfx(void) {
-    if (D_80236974 == 0) {
+    if (isInOverworld == FALSE) {
         if (gIsNotInCave == 1) {
-            PlayBGM(BGM_JUNGLE_EXT);
+            PlayBGM(BGM_JUNGLE_INT);
         }
     } else if (((s32) gTimer % 300) == 299) {
         PLAYSFX(Random(0, 5) + SFX_4F_unkSnd, 1, 0x10);
     }
-    gIsNotInCave = D_80236974;
+    gIsNotInCave = isInOverworld;
 }
 
 void PlayJungleExtSfxWrapper(void) {
@@ -2943,7 +3015,7 @@ void Porocess_Mode0(void) {
         D_80174878 = gCurrentStage - 1;
         func_8008FD68();
         SaveData_ReadFile(&gGameState);
-        if (D_80236974 == 1) {
+        if (isInOverworld == TRUE) {
             if (gCurrentStage == STAGE_JUNGLE) {
                 D_80236978 = 1;
             }
@@ -2987,7 +3059,7 @@ void Porocess_Mode0(void) {
         }
         func_8008FD68();
         SaveData_ReadFile(&gSaveFile);
-        if (D_80236974 == 1) {
+        if (isInOverworld == TRUE) {
             if (gCurrentStage == STAGE_JUNGLE) {
                 D_80236978 = 1;
             }

@@ -1824,7 +1824,7 @@ void func_800C2A00(void) {
 
     func_800CFDC8(gPlayerActors);
     if (D_80236978 != 0) {
-        D_80236974 = 0;
+        isInOverworld = FALSE;
         isChange.unk4C = gPlayerActors->pos.x;
         isChange.unk50 = gPlayerActors->pos.y;
         isChange.unk54 = gPlayerActors->pos.z;
@@ -1884,7 +1884,7 @@ void enterBossRoom(void) {
     int new_var;
     func_800CFDC8(gPlayerActors);
 
-    if (D_80236974 == 0) {
+    if (isInOverworld == FALSE) {
         func_800C2A00();
     } else {
         new_var = 3;
@@ -1958,7 +1958,7 @@ void func_800C4040(PlayerActor* arg0, Tongue* arg1, Camera* camera, f32 arg3, f3
     camera->f4.z = camera->f3.z = camera->f2.y;
     camera->f5.y += gZoneFields[gCurrentZone].unkD0 * camera->size1;
     camera->f4.y += gZoneFields[gCurrentZone].unkD0 * camera->size1;
-    if (D_80236974 == 1) {
+    if (isInOverworld == TRUE) {
         camera->f4.z += 800 * camera->size1;
         camera->f3.z += 800 * camera->size1;
         func_800D3854(arg0, arg1, camera, &sp54, &sp48, 1);

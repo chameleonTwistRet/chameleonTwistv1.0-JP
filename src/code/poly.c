@@ -4,7 +4,6 @@
 extern char D_801103D0[];
 
 extern f64 D_801104F8;
-extern s32 D_80236974;
 extern Collider D_80236980[128];
 extern s32 D_8020D8F4;
 extern f64 D_801106A0;
@@ -236,7 +235,7 @@ void func_800CFF7C(Vec3f* arg0) {
     f32 temp_f14;
     Rect3D* temp_v0;
 
-    if (D_80236974 != 1) {
+    if (isInOverworld != TRUE) {
         if ((gCurrentStage == STAGE_ANT) && ((gCurrentZone == ZONE_SPIN_ROOM_1) || (gCurrentZone == STAGE_BOSSRUSH)) && (StageFlags[SF_SPIN_ROOM_1_COMPLETED] != 0)) {
             temp_f14 = SUM_OF_SQUARES(arg0->x, arg0->z);
             if (810000.0 < temp_f14) {
@@ -396,7 +395,7 @@ void SetCameraParameters(void) {
 
     if ((gCurrentStage == STAGE_GHOST) && (gCurrentZone == ZONE_BILLIARDS)) {
         func_800D6864(gPlayerActors, gTongues, gCamera, &sp3C, &sp30);
-    } else if ((D_80236974 == 1) && (D_8020D8F4 == 0)) {
+    } else if ((isInOverworld == TRUE) && (D_8020D8F4 == 0)) {
         func_800D3854(gPlayerActors, gTongues, gCamera, &sp3C, &sp30, 0);
     } else if (gCamera[0].unk0 == 1) {
         func_800D69D0(temp->cameraMode, gPlayerActors, gTongues, gCamera, &sp3C, &sp30, 0);

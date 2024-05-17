@@ -980,6 +980,7 @@ sGameModeStart = 0x800f06e8; // type:u32 size:0x4 rom:0xcbae8
 sTextGradientPalettes = 0x800fe58c; //  size:0x160 rom:0xd998c
 sDebugBitfeild = 0x800f06ac; // type:u16 size:0x2 rom:0xcbaac
 sDebugLevelAccess = 0x800f06a8; // type:s16 size:0x2 rom:0xcbaa8
+isInOverworld = 0x80236974; // type:s32 size:0x4
 //bots???
 sDebugMultiplayer = 0x800f06a4; // type:s32 size:0x4 rom:0xcbaa4
 sDebugPerfectCodeFlag = 0x800f06a0; // type:s16 size:0x2 rom:0xcbaa0

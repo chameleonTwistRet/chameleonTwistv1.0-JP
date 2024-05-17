@@ -349,7 +349,7 @@ extern s16 gIsStero;
 extern s16 D_801FCA48;
 extern ALCSeq* gBGMSeqP;
 extern s16 gIsNotInCave;
-extern s32 D_80236974;
+extern s32 isInOverworld;
 extern char D_8010D834[];
 extern u8 D_80200A98[];
 extern u8 D_800FF64C;

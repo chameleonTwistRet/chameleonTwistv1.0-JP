@@ -92,8 +92,8 @@ typedef struct UnkPlaySoundEffect {
 typedef struct Unk_800FFB74 {
     Mtx* unk_00;
     void* unk_04;
-    void* unk_08;
-    void* unk_0C;
+    s32* unk_08;
+    s32* unk_0C;
     s32 unk_10;
 } Unk_800FFB74; // size 0x14
 
@@ -113,7 +113,7 @@ typedef struct Struct_800AB734 {
 } Struct_800AB734; //sizeof 0x160
 
 typedef struct StageLoadData {
-    void* stagePtr;
+    LevelHeader* stagePtr;
     void* romStart;
     void* ramStart;
     void* ramEnd;

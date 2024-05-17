@@ -191,8 +191,8 @@ enum ColorModes{
 };
 
 enum BGM {
-    BGM_JUNGLE_INT = 0,
-    BGM_JUNGLE_EXT = 1,
+    BGM_JUNGLE_EXT = 0,
+    BGM_JUNGLE_INT = 1,
     BGM_ANT = 2,
     BGM_BOMB = 3,
     BGM_DESERT = 4,
@@ -207,8 +207,8 @@ enum BGM {
     BGM_BOSS2 = 13,
     BGM_KIDSBOSS = 14,
     BGM_BOSSINTRO = 15,
-    BGM_GHOSTBOSS1 = 16,
-    BGM_GHOSTBOSS2 = 17,
+    BGM_GHOSTBOSS2 = 16,
+    BGM_GHOSTBOSS1 = 17,
     BGM_STAGESELECT = 18,
     BGM_STAGESELECT2 = 19,
     BGM_STAGEWIN = 20,
@@ -219,8 +219,8 @@ enum BGM {
     BGM_TITLE = 25,
     BGM_ENDINGUNUSED = 26,
     BGM_INTRO = 27,
-    BGM_STAGESELECTREPRISE = 28,
-    BGM_TACET = -1
+    BGM_STAGESELECTREPRISE = 28
+    //BGM_TACET = -1 ????
 };
 
 

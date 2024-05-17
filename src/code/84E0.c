@@ -645,7 +645,7 @@ void func_8002E5DC(UnkTempStruct arg0) {
     s32 sp2C;
 
     sp2C = -2;
-    if (1 == D_80236974) {
+    if (TRUE == isInOverworld) {
         sp2C = -1;
     }
 
@@ -663,7 +663,7 @@ void func_8002E5DC(UnkTempStruct arg0) {
                 }
                 func_800D34CC();
             }
-        } else if ((Battle_GameType == 0) && (1 != D_80236974) && (arg0.unk_02 & 0x20)) {
+        } else if ((Battle_GameType == 0) && (TRUE != isInOverworld) && (arg0.unk_02 & 0x20)) {
             PLAYSFX(0x2C, 0, 0x10);
             if (D_80174860->unk0 == 0) {
                 D_80174860->unk0 = 1;
