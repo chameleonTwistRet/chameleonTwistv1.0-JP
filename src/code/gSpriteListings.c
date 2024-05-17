@@ -394,7 +394,7 @@ extern void* extImages_whiteIcon_ci8_PNG; // for spriteListing 109
 extern void* extImages_whiteIcon_ci8_PAL; // for spriteListing 109
 
 extern Gfx static0_spriteController_Gfx[]; // for spriteListing 110
-extern void* extImages_whiteIcon_ia8_PNG; // for spriteListing 110
+extern void* extImages_symbols2_ia8_PNG; // for spriteListing 110
 
 extern Gfx static0_spriteController_Gfx[]; // for spriteListing 111
 extern void* extImages_smokeCircle_ia8_PNG; // for spriteListing 111
@@ -14032,7 +14032,7 @@ SpriteListing gSpriteListings[230] = {
  },
 {
  static0_spriteController_Gfx,
- &extImages_whiteIcon_ia8_PNG-0x800000,
+ &extImages_symbols2_ia8_PNG-0x800000,
  NULL,
  2,
  &D_800F7008[0],

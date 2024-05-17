@@ -11908,7 +11908,7 @@ segments:
       - [0x9E24D8, palette, whiteIcon.ci8]
       - [0x9e26d8] #B8000000
 
-      - [0x9e26E0, ia8, whiteIcon.ia8, 144, 16]
+      - [0x9e26E0, ia8, symbols2.ia8, 144, 16]
       - [0x9E2FE0] #B8000000
 
       - [0x9E2FE8, ci4, crownIcon.ci4, 16, 16]

@@ -1138,8 +1138,8 @@ unsigned char extImages_whiteIcon_ci8_PAL[] = {
 #include "build/assets/img/extImages/whiteIcon.ci8.pal.inc.c"
 };
 unsigned char extImages_Pad236[] = FILEPAD;
-unsigned char extImages_whiteIcon_ia8_PNG[] = {
-#include "build/assets/img/extImages/whiteIcon.ia8.png.inc.c"
+unsigned char extImages_symbols2_ia8_PNG[] = {
+#include "build/assets/img/extImages/symbols2.ia8.png.inc.c"
 };
 unsigned char extImages_Pad237[] = FILEPAD;
 unsigned char extImages_crownIcon_ci4_PNG[] = {
