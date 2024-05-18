@@ -1,8 +1,10 @@
+#include "common.h"
 #include "5FF30.h"
+#include "1050.h"
 #include "sprite.h"
 #include "ld_addrs.h"
 
-/*const u8 D_800FEDC0[226][8] = {
+u8 D_800FEDC0[226][8] = {
 {104, 136, 1, 4, 1, 5, 25, 0},
 {104, 136, 1, 4, 1, 5, 25, 0},
 {72, 136, 1, 4, 1, 5, 25, 0},
@@ -228,9 +230,856 @@
 {79, 255, 1, 1, 0, 0, 25, 0},
 {79, 255, 1, 1, 0, 0, 25, 0},
 {79, 255, 1, 1, 0, 0, 25, 0},
-{79, 255, 1, 1, 0, 0, 25, 0}};*/
+{79, 255, 1, 1, 0, 0, 25, 0}};
 
 
+BGMVolume volumesBGM[] = {
+{0x00005AFF, 0x00000000},
+{0x00006555, 0x00000000},
+{0x00005FFF, 0x00000000},
+{0x00005FFF, 0x00000000},
+{0x00005FFF, 0x00000000},
+{0x000058FF, 0x00000000},
+{0x00005FFF, 0x00000000},
+{0x000053FF, 0x00000000},
+{0x00005FFF, 0x00000000},
+{0x000058FF, 0x00000000},
+{0x000053FF, 0x00000000},
+{0x00006FFF, 0x00000000},
+{0x000053FF, 0x00000000},
+{0x000053FF, 0x00000000},
+{0x000051FF, 0x00000000},
+{0x00006000, 0x00000000},
+{0x000058FF, 0x00000000},
+{0x00005000, 0x00000000},
+{0x000063FF, 0x00000000},
+{0x000063FF, 0x00000000},
+{0x000063FF, 0x00000000},
+{0x000063FF, 0x00000000},
+{0x000063FF, 0x00000000},
+{0x00007FFF, 0x00000000},
+{0x00007FFF, 0x00000000},
+{0x000063FF, 0x00000000},
+{0x00006FFF, 0x00000000},
+{0x000063FF, 0x00000000},
+{0x000063FF, 0x00000000},
+{0x000053FF, 0x00000000}
+};
+
+s32 D_800FF5C0 = 0; //padding?
+
+s16 gSchedReset = 0;
+s32 gGfxTaskPending = 0;
+s16 D_800FF5CC = 3;
+s32 D_800FF5D0 = -1;
+s16 D_800FF5D4 = 0;
+s16 gGfxTaskStarted = 1;
+s16 D_800FF5DC[2] = {-1, -1};
+s16 D_800FF5E0 = 0;
+s32 D_800FF5E4 = 0;
+s32 D_800FF5E8 = 0;
+s16 gGfxTaskRunning = 0;
+// s16 D_800FF5EE = 0; //padding?
+
+s16 gAudioTaskState = 0;
+// s16 D_800FF5F2 = 0; //unused
+s16 D_800FF5F4 = 0;
+// s16 D_800FF5F6 = 0; //unused
+s16 gIsPaused = 0;
+// s16 D_800FF5FA = 0; //unused
+s16 gIsStero = 1;
+// s16 D_800FF5FE = 0; //unused
+s16 gSFXMute = -1;
+// s16 D_800FF602 = 0; //unused
+s16 D_800FF604 = 0;
+// s16 D_800FF606 = 0; //unused
+s16 D_800FF608 = 0;
+// s16 D_800FF60A = 0; //unused
+u8 gGfxTaskYielded = 0;
+Camera* gCameraP = gCamera;
+
+extern ALCSPlayer gBGMPlayer;
+extern ALCSeq gBGMSeq;
+extern ALSndPlayer gSFXPlayer;
+
+ALCSPlayer* gBGMPlayerP = &gBGMPlayer;
+ALCSeq* gBGMSeqP = &gBGMSeq;
+ALSndPlayer* gSFXPlayerP = &gSFXPlayer;
+s32 currLoadingBGM = -1;
+s32 currBGMIndex = -1;
+s16 D_800FF628[] = {0, 0, 0, 0};
+s32 D_800FF630 = 3;
+s32 gAudioIOMsgIndex = 0;
+s32 D_800FF638 = 0; //padding?
+s32 D_800FF63C = 0;
+s32 D_800FF640 = 0; //padding?
+s32 D_800FF644 = 0;
+s32 D_800FF648 = 1;
+u8 D_800FF64C = 0;
+u8 D_800FF650 = 0;
+s32 D_800FF654[] = {0x00000008, 0x000032C8, 0x00000000, 0x00000140, 0x00000000, 0xFFFFD99A, 0x00000E10, 0x000007D0, 0x00001388, 0x00000000, 0x00000140, 0x000001E0, 0x00002666, 0xFFFFD99A, 0x00002B84, 0x000007D0, 0x00001388, 0x00005000, 0x00000668, 0x00001400, 0x00004000, 0xFFFFC000, 0x000011EB, 0x0000094C, 0x00001388, 0x00000000, 0x00000708, 0x00001018, 0x00002000, 0xFFFFE000, 0x00000000, 0x0000094C, 0x00001388, 0x00000000, 0x00001950, 0x00002C10, 0x00004000, 0xFFFFC000, 0x000011EB, 0x0000094C, 0x00001388, 0x00006000, 0x000019F0, 0x00002530, 0x00002000, 0xFFFFE000, 0x00000000, 0x0000094C, 0x00001388, 0x00000000, 0x00002530, 0x000029E0, 0x00002000, 0xFFFFE000, 0x00000000, 0x0000094C, 0x00001388, 0x00000000, 0x00000000, 0x00002EB8, 0x00004650, 0x00000000, 0x00000000, 0x0000094C, 0x00001388, 0x00007000};
+s32 D_800FF75C = 1;
+s32 D_800FF760 = 0x40;
+
+
+typedef struct Unk800FF764 {
+    s32 unk_00;
+    s32 unk_04;
+    const char* unk_08;
+} Unk800FF764;
+
+//story
+extern const char D_8010D840[];
+extern const char D_8010D850[];
+extern const char D_8010D85C[];
+extern const char D_8010D874[];
+
+Unk800FF764 D_800FF764[] = {
+    {0x00700058, 0, D_8010D840},
+    {0x00800078, 0x00020000, D_8010D850},
+    {0x00500098, 0x00010000, D_8010D85C},
+    {0x008000B8, 0x00070000, D_8010D874},
+    {0, 0, 0}
+};
+
+//training (during round)
+extern const char D_8010D880[];
+extern const char D_8010D890[];
+extern const char D_8010D8A0[];
+
+Unk800FF764 D_800FF7A0[] = {
+    {0x00700058, 0, D_8010D880},
+    {0x00680078, 0x00060000, D_8010D890},
+    {0x00800098, 0x00070000, D_8010D8A0},
+    {0, 0, 0},
+};
+
+//training (normal)
+extern const char D_8010D8AC[];
+extern const char D_8010D8BC[];
+
+Unk800FF764 D_800FF7D0[] = {
+    {0x00700058, 0, D_8010D8AC},
+    {0x00800078, 0x00070000, D_8010D8BC},
+    {0, 0, 0}
+};
+
+extern const char D_8010D8C8[];
+extern const char D_8010D8D0[];
+
+Unk800FF764 D_800FF7F4[] = {
+    {0x00880068, 0x00090000, D_8010D8C8},
+    {0x008E0088, 0x00080000, D_8010D8D0},
+    {0, 0, 0}
+};
+
+extern const char D_8010D8D8[];
+extern const char D_8010D8E0[];
+
+Unk800FF764 D_800FF818[] = {
+    {0x00880058, 0x00010000, D_8010D8D8},
+    {0x008E0078, 0x00080000, D_8010D8E0},
+    {0, 0, 0}
+};
+
+Unk800FF764* D_800FF83C[] = {D_800FF764, D_800FF7D0, D_800FF7A0};
+Unk800FF764* D_800FF848[] = {D_800FF7F4, D_800FF818, 0};
+
+s16 sStageBGMs[] = {
+    BGM_JUNGLE_EXT,
+    BGM_ANT,
+    BGM_BOMB,
+    BGM_DESERT,
+    BGM_KIDS,
+    BGM_GHOST,
+    BGM_INTRO,
+    BGM_BATTLE1,
+    BGM_TRAINING,
+    BGM_BOSS1,
+    BGM_ANTBOSS,
+    BGM_BOSS2,
+    BGM_BOSS1,
+    BGM_KIDSBOSS,
+    BGM_GHOSTBOSS1,
+    BGM_BATTLE1,
+    BGM_BATTLE1,
+    BGM_BATTLE1,
+    BGM_BATTLE1,
+};
+
+s16 D_800FF87C[] = {0, 0, 0, 0};
+u32 D_800FF884 = 0;
+s32 Timing_DelayAudioInterval = 0;
+u32 Timing_StartAudioTime = 0;
+s32 D_800FF890[] = {0, 0};
+s32 Timing_StopGfxTime = 0;
+u32 Timing_StartGfxTime = 0;
+u32 Timing_EndFrameTime = 0;
+s32 Timing_StopProcessTime = 0;
+s32 Timing_StartProcessTime = 0;
+s32 D_800FF8AC = 0;
+s32 D_800FF8B0 = 0;
+s32 D_800FF8B4 = 0;
+u32 D_800FF8B8 = 0;
+s16 D_800FF8BC[] = {0, 0, 0x3737, 0x3700, 0x00FF, 0x00FF, 0xFFFF, 0xFF00, 0xFF00, 0xFFFF, 0xFFFF};
+//s16 D_800FF8BE[] = {0x3737, 0x3700, 0x00FF, 0x00FF, 0xFFFF, 0xFF00, 0xFF00, 0xFFFF, 0xFFFF, 0x0000};
+Mtx* D_800FF8D4 = NULL;
+s32 D_800FF8D8 = 0;
+u8 D_800FF8DC = 0;
+u8 D_800FF8E0 = 0;
+u8 D_800FF8E4 = 0;
+s32 D_800FF8E8 = 0;
+s32 D_800FF8EC = 0;
+
+typedef struct Unk800FF8F0 {
+    s32 unk_00;
+    void* unk_04;
+    void* unk_08;
+    void* unk_0C;
+    void* unk_10;
+    s32 unk_14;
+} Unk800FF8F0;
+
+void func_8009DC40(CTTask*);
+
+Unk800FF8F0 D_800FF8F0 = {0, CTTask_Run, func_8009DC40, CTTask_Run, func_800A0E3C, 0x00000000};
+
+typedef struct Unk800FF908 {
+    void* unk_00;
+    void* unk_04;
+    void* unk_08;
+    void* unk_0C;
+    s32 unk_10;
+} Unk800FF908;
+
+extern Mtx static0_GetupFromKnockback_Animarr[];
+extern Anim static0_GetupFromKnockback_Animh;
+
+Unk_800FFB74 D_800FF908 = {
+static0_GetupFromKnockback_Animarr,
+Davy_restAssociate_Gfx,
+&static0_GetupFromKnockback_Animh.objects,
+&static0_GetupFromKnockback_Animh.frames,
+0xFFFF0000,
+};
+
+Unk_800FFB74 D_800FF91C = {
+static0_GetupFromKnockback_Animarr,
+Davy_restAssociate_Gfx,
+&static0_GetupFromKnockback_Animh.objects,
+&static0_GetupFromKnockback_Animh.frames,
+0xFFFF0000,
+};
+
+
+extern Mtx static0_Idle_Animarr[];
+extern Anim static0_Idle_Animh;
+
+Unk_800FFB74 D_800FF930 = {
+static0_Idle_Animarr,
+Davy_restAssociate_Gfx,
+&static0_Idle_Animh.objects,
+&static0_Idle_Animh.frames,
+0x00000000,
+};
+
+
+extern Mtx static0_Walk_Animarr[];
+extern Anim static0_Walk_Animh;
+
+Unk_800FFB74 D_800FF944 = {
+static0_Walk_Animarr,
+Davy_restAssociate_Gfx,
+&static0_Walk_Animh.objects,
+&static0_Walk_Animh.frames,
+0x00000000,
+};
+
+
+extern Mtx static0_Run_Animarr[];
+extern Anim static0_Run_Animh;
+
+Unk_800FFB74 D_800FF958 = {
+static0_Run_Animarr,
+Davy_restAssociate_Gfx,
+&static0_Run_Animh.objects,
+&static0_Run_Animh.frames,
+0x00000000,
+};
+
+
+extern Mtx static0_LandFromKnockback_Animarr[];
+extern Anim static0_LandFromKnockback_Animh;
+
+Unk_800FFB74 D_800FF96C = {
+static0_LandFromKnockback_Animarr,
+Davy_restAssociate_Gfx,
+&static0_LandFromKnockback_Animh.objects,
+&static0_LandFromKnockback_Animh.frames,
+0xFFFF0000,
+};
+
+
+extern Mtx static0_Jump_Animarr[];
+extern Anim static0_Jump_Animh;
+
+Unk_800FFB74 D_800FF980 = {
+static0_Jump_Animarr,
+Davy_restAssociate_Gfx,
+&static0_Jump_Animh.objects,
+&static0_Jump_Animh.frames,
+0xFFFF0000,
+};
+
+Unk_800FFB74 D_800FF994 = {
+static0_Jump_Animarr,
+Davy_restAssociate_Gfx,
+&static0_Jump_Animh.objects,
+&static0_Jump_Animh.frames,
+0xFFFF0000,
+};
+
+
+extern Mtx Animations_unk1_Animarr[];
+extern Anim Animations_unk1Header_Animh;
+
+Unk_800FFB74 D_800FF9A8 = {
+Animations_unk1_Animarr,
+Davy_restAssociate_Gfx,
+&Animations_unk1Header_Animh.objects,
+&Animations_unk1Header_Animh.frames,
+0xFFFF0000,
+};
+
+
+extern Mtx Animations_unk2_Animarr[];
+extern Anim Animations_unk2Header_Animh;
+
+Unk_800FFB74 D_800FF9BC = {
+Animations_unk2_Animarr,
+Davy_restAssociate_Gfx,
+&Animations_unk2Header_Animh.objects,
+&Animations_unk2Header_Animh.frames,
+0xFFFF0000,
+};
+
+
+Unk_800FFB74 D_800FF9D0 = {
+(void*)0x03002760,
+D_3007EA0,
+(void*)0x0300275C,
+(void*)0x03002758,
+0xFFFF0000,
+};
+
+Unk_800FFB74 D_800FF9E4 = {
+(void*)0x03002A90,
+D_3008428,
+(void*)0x03002A8C,
+(void*)0x03002A88,
+0xFFFF0000,
+};
+
+Unk_800FFB74 D_800FF9F8 = {
+(void*)0x03002B40,
+D_3008428,
+(void*)0x03002B3C,
+(void*)0x03002B38,
+0xFFFF0000,
+};
+
+Unk_800FFB74 D_800FFA0C = {
+(void*)0x03002F30,
+D_3008428,
+(void*)0x03002F2C,
+(void*)0x03002F28,
+0xFFFF0000,
+};
+
+Unk_800FFB74 D_800FFA20 = {
+(void*)0x030458F0,
+D_300EFC0,
+(void*)0x030458EC,
+(void*)0x030458E8,
+0xFFFF0000,
+};
+
+Unk_800FFB74 D_800FFA34 = {
+(void*)0x030465E0,
+D_300EFC0,
+(void*)0x030465DC,
+(void*)0x030465D8,
+0x00000000,
+};
+
+Unk_800FFB74 D_800FFA48 = {
+(void*)0x03047B50,
+D_300EFC0,
+(void*)0x03047B4C,
+(void*)0x03047B48,
+0xFFFF0000,
+};
+
+Unk_800FFB74 D_800FFA5C = {
+(void*)0x0304FB00,
+D_300EFC0,
+(void*)0x0304FAFC,
+(void*)0x0304FAF8,
+0xFFFF0000,
+};
+
+Unk_800FFB74 D_800FFA70 = {
+(void*)0x0305E4F0,
+D_300EFC0,
+(void*)0x0305E4EC,
+(void*)0x0305E4E8,
+0xFFFF0000,
+};
+
+Unk_800FFB74 D_800FFA84 = {
+(void*)0x0302CC68,
+D_300DB48,
+(void*)0x0302CC60,
+(void*)0x0302CC5C,
+0xFFFF0000,
+};
+
+Unk_800FFB74 D_800FFA98 = {
+(void*)0x0302DA68,
+D_300DB48,
+(void*)0x0302DA60,
+(void*)0x0302DA5C,
+0xFFFF0000,
+};
+
+Unk_800FFB74 D_800FFAAC = {
+(void*)0x030303E8,
+D_300DB48,
+(void*)0x030303E0,
+(void*)0x030303DC,
+0xFFFF0000,
+};
+
+Unk_800FFB74 D_800FFAC0 = {
+(void*)0x030311E8,
+D_300DB48,
+(void*)0x030311E0,
+(void*)0x030311DC,
+0xFFFF0000,
+};
+
+Unk_800FFB74 D_800FFAD4 = {
+(void*)0x03034928,
+D_3011318,
+(void*)0x03034920,
+(void*)0x0303491C,
+0xFFFF0000,
+};
+
+Unk_800FFB74 D_800FFAE8 = {
+(void*)0x0301B630,
+D_300CED0,
+(void*)0x0301B62C,
+(void*)0x0301B628,
+0xFFFF0000,
+};
+
+Unk_800FFB74 D_800FFAFC = {
+(void*)0x0301E870,
+D_300CED0,
+(void*)0x0301E868,
+(void*)0x0301E864,
+0xFFFF0000,
+};
+
+Unk_800FFB74 D_800FFB10 = {
+(void*)0x03021AB0,
+D_300CED0,
+(void*)0x03021AA8,
+(void*)0x03021AA4,
+0xFFFF0000,
+};
+
+Unk_800FFB74 D_800FFB24 = {
+(void*)0x030265F0,
+D_300CED0,
+(void*)0x030265E8,
+(void*)0x030265E4,
+0xFFFF0000,
+};
+
+Unk_800FFB74 D_800FFB38 = {
+(void*)0x0301E2E8,
+(void*)0x03013708,
+(void*)0x0301E2E0,
+(void*)0x0301E2DC,
+0xFFFF0000,
+};
+
+Unk_800FFB74 D_800FFB4C = {
+(void*)0x0301E268,
+D_300A9E0,
+(void*)0x0301E260,
+(void*)0x0301E25C,
+0xFFFF0000,
+};
+
+Unk_800FFB74 D_800FFB60 = {
+(void*)0x030222E8,
+(void*)0x0301C198,
+(void*)0x030222E0,
+(void*)0x030222DC,
+0xFFFF0000,
+};
+
+Unk_800FFB74* D_800FFB74[] = {
+    NULL, &D_800FF91C, &D_800FF930, &D_800FF944,
+    &D_800FF958, &D_800FF96C, &D_800FF994, &D_800FF980,
+    &D_800FF9A8, &D_800FF9BC, &D_800FFA20, &D_800FFA34,
+    &D_800FFA48, &D_800FFA5C, &D_800FFA70, &D_800FF9D0,
+    &D_800FF9E4, &D_800FF9F8, &D_800FFA0C, &D_800FFA84,
+    &D_800FFA98, &D_800FFAAC, &D_800FFAC0, &D_800FFAD4,
+    &D_800FFAE8, &D_800FFAFC, &D_800FFB10, &D_800FFB24,
+    &D_800FFB38, &D_800FFB4C, &D_800FFB60, &D_800FF908,
+    NULL
+};
+//unknown what these are supposed to be
+Unk_800FFDDC D_800FFBF8[] = {
+    {0x0001, 0x0000, 0x0000, 0x0000, 0x000E},
+    {0x0001, 0x0001, 0x0000, 0x0000, 0x000E},
+    {0x0001, 0x0002, 0x0000, 0x0000, 0x000E},
+    {0x0001, 0x0003, 0x0000, 0x0000, 0x000E},
+    {-2, 0x0000, 0x0000, 0x0000, 0x0000},
+};
+
+Unk_800FFDDC D_800FFC2C[] = {
+    {0x0001, 0x0000, 0x0000, 0x0000, 0x000E},
+    {0x0001, 0x0001, 0x0000, 0x0000, 0x000E},
+    {0x0001, 0x0002, 0x0000, 0x0000, 0x000E},
+    {0x0001, 0x0003, 0x0000, 0x0000, 0x000E},
+    {-2, 0x0000, 0x0000, 0x0000, 0x0000},
+};
+
+Unk_800FFDDC D_800FFC60[] = {
+    {0x0001, 0x0000, 0x0000, 0x0000, 0x004A},
+    {0x0001, 0x0001, 0x0000, 0x0000, 0x004A},
+    {0x0001, 0x0002, 0x0000, 0x0000, 0x004A},
+    {-1, 0x0000, 0x0000, 0x0000, 0x0000}
+};
+Unk_800FFDDC D_800FFC88[] = {
+    {0x0001, 0x0000, 0x0000, 0x0000, 0x0027},
+    {0x0001, 0x0001, 0x0000, 0x0000, 0x0027},
+    {0x0001, 0x0002, 0x0000, 0x0000, 0x0027},
+    {0x0001, 0x0003, 0x0000, 0x0000, 0x0027},
+    {-2, 0x0000, 0x0000, 0x0000, 0x0000},
+};
+Unk_800FFDDC D_800FFCBC[] = {
+    {0x0001, 0x0000, 0x0000, 0x0000, 0x0027},
+    {0x0001, 0x0001, 0x0000, 0x0000, 0x0027},
+    {0x0001, 0x0002, 0x0000, 0x0000, 0x0027},
+    {0x0001, 0x0003, 0x0000, 0x0000, 0x0027},
+    {-2, 0x0000, 0x0000, 0x0000, 0x0000},
+};
+Unk_800FFDDC D_800FFCF0[] = {
+    {0x003C, 0x0000, 0x0080, 0x0048, 0x005D},
+    {0x0002, 0x0001, 0x007C, 0x0046, 0x005D},
+    {0x0002, 0x0002, 0x007C, 0x004C, 0x005D},
+    {0x0002, 0x0002, 0x0075, 0x0049, 0x005D},
+    {0x0002, 0x0003, 0x006C, 0x0042, 0x005D},
+    {0x0002, 0x0003, 0x0068, 0x003B, 0x005D},
+    {0x0002, 0x0004, 0x006B, 0x0034, 0x005D},
+    {0x0002, 0x0004, 0x0074, 0x002F, 0x005D},
+    {0x0002, 0x0005, 0x007F, 0x0035, 0x005D},
+    {0x0002, 0x0005, 0x0088, 0x003E, 0x005D},
+    {0x0002, 0x0006, 0x008A, 0x0042, 0x005D},
+    {0x0002, 0x0006, 0x0083, 0x0046, 0x005D},
+    {0x001E, 0x0000, 0x0080, 0x0048, 0x005D},
+    {-1, 0x0000, 0x0000, 0x0000, 0x0000}
+};
+
+Unk_800FFDDC* D_800FFD7C[] = {
+    NULL, D_800FFCF0, D_800FFBF8, D_800FFC2C,
+    D_800FFC60, D_800FFC88, D_800FFCBC, NULL
+};
+
+Unk_800FFDDC D_800FFD9C[] = {
+    {0x0005, 0x0000, 0x0000, 0x0006, 0x0024},
+    {0x0004, 0x0000, 0x0000, 0x0006, 0x0024},
+    {-1, 0x0000, 0x0000, 0x0000, 0x0000},
+};
+Unk_800FFDDC D_800FFDBC[] = {
+    {0x0005, 0x0000, 0x0000, 0x0006, 0x001C},
+    {0x0004, 0xFFF4, 0x0000, 0x0006, 0x001D},
+    {-1, 0x0000, 0x0000, 0x0000, 0x0000},
+};
+
+Unk_800FFDDC* D_800FFDDC[] = {0, D_800FFD9C, D_800FFDBC, 0};
+s32 D_800FFDEC = 0;
+s16 D_800FFDF0 = 3;
+s16 D_800FFDF4 = 1;
+
+UnkBg D_800FFDF8[] = {
+    {0x0000, 0xFFE0, 0x0040},
+    {0x0040, 0xFFE0, 0x0041},
+    {0x0080, 0xFFE0, 0x0042},
+    {0x00C0, 0xFFE0, 0x0043},
+    {0x0100, 0xFFE0, 0x0044},
+    {0x0000, 0x0000, -1}
+};
+
+UnkBg D_800FFE1C[] = {
+    {0x0000, 0xFFE0, 0x003B},
+    {0x0040, 0xFFE0, 0x003C},
+    {0x0080, 0xFFE0, 0x003D},
+    {0x00C0, 0xFFE0, 0x003E},
+    {0x0100, 0xFFE0, 0x003F},
+    {0x0000, 0x0000, -1}
+};
+
+UnkBg D_800FFE40[] = {
+    {0x0000, 0x0000, 0x00BB},
+    {0x0000, 0x0000, -1}
+};
+
+UnkBg D_800FFE4C[] = {
+    {0x0000, 0x0000, 0x00BC},
+    {0x0000, 0x0000, -1}
+};
+
+UnkBg* D_800FFE58[] = {D_800FFDF8, D_800FFE1C, D_800FFE40, D_800FFE4C, NULL, NULL};
+u64 D_800FFE70 = 0;
+char D_800FFE78[] = "０１２３４５６７８９";
+char D_800FFE90[] = "０１２３４５６７８９ＡＢＣＤＥＦ";
+
+s32 gGameModeCurrent = 0;
+s32 gGameModeState = 0;
+s16 D_800FFEBC = 0;
+s16 D_800FFEC0 = 2;
+
+char D_800FFEC4[] = "ＣＯＮＧＲＡＴＵＬＡＴＩＯＮＳ！";
+f32 D_800FFEE8 = 0.0f;
+s16 D_800FFEEC[] = {0x18, 0x19, 0x1A, 0x1B, -1};
+
+extern LevelHeader JungleLand_header_Lvlhdr;
+extern LevelHeader AntLand_header_Lvlhdr;
+extern LevelHeader BombLand_header_Lvlhdr;
+extern LevelHeader DesertCastle_header_Lvlhdr;
+extern LevelHeader KidsLand_header_Lvlhdr;
+//extern LevelHeader IntroOutro_header_Lvlhdr;
+extern LevelHeader IntroOutro_header_Lvlhdr;
+
+
+
+//TODO: fix the segmented pointers here
+StageLoadData gStageLoadData[] = {
+    {&JungleLand_header_Lvlhdr, JungleLand_ROM_START, JungleLand_VRAM, JungleLand_VRAM_END, 0},
+    {&AntLand_header_Lvlhdr, AntLand_ROM_START, AntLand_VRAM, AntLand_VRAM_END, 1},
+    {&BombLand_header_Lvlhdr, BombLand_ROM_START, BombLand_VRAM, BombLand_VRAM_END, 2},
+    {&DesertCastle_header_Lvlhdr, DesertCastle_ROM_START, DesertCastle_VRAM, DesertCastle_VRAM_END, 3},
+    {&KidsLand_header_Lvlhdr, KidsLand_ROM_START, KidsLand_VRAM, KidsLand_VRAM_END, 4},
+    {(void*)0x03011F2C, GhostCastle_ROM_START, GhostCastle_VRAM, GhostCastle_VRAM_END, 5},
+    {&IntroOutro_header_Lvlhdr, IntroOutro_ROM_START, IntroOutro_VRAM, IntroOutro_VRAM_END, 6},
+    {(void*)0x03006358, BattleMode_ROM_START, BattleMode_VRAM, BattleMode_VRAM_END, 7},
+    {(void*)0x03005F44, Training_ROM_START, Training_VRAM, Training_VRAM_END, 8},
+    {(void*)0x030011F0, LizardKong_ROM_START, LizardKong_VRAM, LizardKong_VRAM_END, 9},
+    {(void*)0x03001454, Quintella_ROM_START, Quintella_VRAM, Quintella_VRAM_END, 10},
+    {(void*)0x03001464, BombSnake_ROM_START, BombSnake_VRAM, (void*)0x030087A0, 11},
+    {(void*)0x030013C4, Armadillo_ROM_START, Armadillo_VRAM, Armadillo_VRAM_END, 12},
+    {(void*)0x03001300, GiantCake_ROM_START, GiantCake_VRAM, GiantCake_VRAM_END, 13},
+    {(void*)0x03002674, PileOfBooks_ROM_START, PileOfBooks_VRAM, PileOfBooks_VRAM_END, 14},
+    {(void*)0x030031F0, BossRush_ROM_START, BossRush_VRAM, BossRush_VRAM_END, 15},
+    {0, 0, 0, 0, -1},
+    {0, 0, 0, 0, -1},
+    {0, 0, 0, 0, -1},
+    {0, 0, 0, 0, -1},
+    {0, 0, 0, 0, -1},
+    {0, 0, 0, 0, -1},
+    {0, 0, 0, 0, -1},
+    {0, 0, 0, 0, -1},
+    {0, 0, 0, 0, -1},
+    {0, 0, 0, 0, -1},
+    {0, 0, 0, 0, -1}
+};
+s32 gStageToLoad = -1;
+
+extern const char segNameCode[];
+extern const char segNameStatic[];
+extern const char segNameCommon[];
+extern const char segNameFieldOfPlay[];
+extern const char segNameFieldCommon[];
+extern const char segNameRabbit[];
+extern const char segNameSubAnimation[];
+extern const char segNameCompetition[];
+extern const char segNameBlue[];
+extern const char segNameGreen[];
+extern const char segNameYellow[];
+extern const char segNamePink[];
+extern const char segNameBlack[];
+extern const char segNameWhite[];
+extern const char segNameSpace[];
+extern const char segNameDemo[];
+
+segTableEntry gSegTable[16] = {
+    {segNameCode, main_ROM_START, main_ROM_END, main_VRAM, main_VRAM_END},
+    {segNameStatic, static0_ROM_START, static0_ROM_END, static0_VRAM, static0_VRAM_END},
+    {segNameCommon, Global_ROM_START, Global_ROM_END, Global_VRAM, Global_VRAM_END},
+    {segNameFieldOfPlay, 0x00000000, 0x00000000, 0x00000000, 0x00000000},
+    {segNameFieldCommon, 0x00000000, 0x00000000, 0x00000000, 0x00000000},
+    {segNameRabbit, Rabbit_ROM_START, Rabbit_ROM_END, Rabbit_VRAM, Rabbit_VRAM_END},
+    {segNameSubAnimation, Animations_ROM_START, Animations_ROM_END, Animations_VRAM, Animations_VRAM_END},
+    {segNameCompetition, Battle_Chameleons_ROM_START, Battle_Chameleons_ROM_END, Battle_Chameleons_VRAM, Battle_Chameleons_VRAM_END},
+    {segNameBlue, Davy_ROM_START, Davy_ROM_END, Davy_VRAM, Davy_VRAM_END},
+    {segNameGreen, Jack_ROM_START, Jack_ROM_END, Jack_VRAM, Jack_VRAM_END},
+    {segNameYellow, Fred_ROM_START, Fred_ROM_END, Fred_VRAM, Fred_VRAM_END},
+    {segNamePink, Linda_ROM_START, Linda_ROM_END, Linda_VRAM, Linda_VRAM_END},
+    {segNameBlack, Black_ROM_START, Black_ROM_END, Black_VRAM, Black_VRAM_END},
+    {segNameWhite, White_ROM_START, White_ROM_END, White_VRAM, White_VRAM_END},
+    {segNameSpace, 0x00000000, 0x00000000, 0x00000000, 0x00000000},
+    {segNameDemo, 0x00000000, 0x00000000, 0x00000000, 0x00000000}
+};
+
+typedef struct StageSelectData {
+/* 0x00 */ s16 xPos;
+/* 0x02 */ s16 yPos;
+/* 0x04 */ s16 spriteID;
+/* 0x06 */ s16 upPathID;
+/* 0x08 */ s16 upRightPathID;
+/* 0x0A */ s16 rightPathID;
+/* 0x0C */ s16 downRightPathID;
+/* 0x0E */ s16 downPathID;
+/* 0x10 */ s16 downLeftPathID;
+/* 0x12 */ s16 leftPathID;
+/* 0x14 */ s16 upLeftPathID;
+/* 0x16 */ u8 unk_16;
+/* 0x17 */ u8 unk_17; //padding?
+} StageSelectData; //sizeof 0x18
+
+enum StageSelectStages{
+    //SELECT_NONE = -1,
+    SELECT_JL = 0,
+    SELECT_AL, // 1
+    SELECT_BL, // 2
+    SELECT_DC, // 3
+    SELECT_KL, // 4
+    SELECT_GC, // 5
+    SELECT_BOSSRUSH // 6
+};
+
+StageSelectData StageSelect[] = {
+    { 56, 192,       SPRITE_JL_ICON, SELECT_BOSSRUSH, SELECT_AL, SELECT_BL, SELECT_BL,        -1,        -1,               -1,         -1, -1, 0},
+    {108, 112,       SPRITE_AL_ICON,              -1, SELECT_DC, SELECT_DC, SELECT_KL, SELECT_BL, SELECT_JL,  SELECT_BOSSRUSH,         -1, 29, 0},
+    {148, 184,       SPRITE_BL_ICON,       SELECT_DC, SELECT_DC, SELECT_KL, SELECT_KL,        -1, SELECT_JL,        SELECT_JL,  SELECT_AL, 27, 0},
+    {186,  80,       SPRITE_DC_ICON,              -1, SELECT_GC, SELECT_GC, SELECT_KL, SELECT_KL, SELECT_BL,        SELECT_AL,         -1, 54, 0},
+    {228, 152,       SPRITE_KL_ICON,       SELECT_DC, SELECT_GC,        -1,        -1,        -1, SELECT_BL,        SELECT_BL,  SELECT_AL, 46, 0},
+    {258,  56,       SPRITE_GC_ICON,              -1,        -1,        -1, SELECT_KL, SELECT_KL, SELECT_KL,        SELECT_DC,         -1, 24, 0},
+    { 56, 110, SPRITE_BOSSRUSH_ICON,              -1,        -1, SELECT_AL,        -1, SELECT_JL,        -1,               -1,         -1,  0, 0},
+    {  0,   0,                    0,               0,         0,         0,         0,         0,         0,                0,          0,  0, 0},
+};
+
+s16 NameSpriteIDs[] = {
+    SPRITE_TEXT_JL2,
+    SPRITE_TEXT_AL2,
+    SPRITE_TEXT_BL2,
+    SPRITE_TEXT_DC2,
+    SPRITE_TEXT_KL2,
+    SPRITE_TEXT_GC2,
+    SPRITE_BOSS_RUSH_LABEL
+};
+
+extern const char stageNameJungleLand[];
+extern const char stageNameAntLand[];
+extern const char stageNameBombLand[];
+extern const char stageNameDesertCastle[];
+extern const char stageNameKidsLand[];
+extern const char stageNameGhostCastle[];
+extern const char stageNameSecret[];
+extern const char stageNamePadding[];
+
+const char* stageNames[] = {stageNameJungleLand, stageNameAntLand, stageNameBombLand, stageNameDesertCastle, stageNameKidsLand, stageNameGhostCastle, stageNameSecret, stageNamePadding};
+
+// s16 D_80100348 = -1;
+s16 D_80100348[] = {-1, 0x800, 0x900, 0x100, 0x500, 0x400, 0x600, 0x200, 0xA00, 0x000};
+
+//save
+extern const char D_8010E0CC[];
+extern const char D_8010E0D4[];
+extern const char D_8010E0DC[];
+extern const char D_8010E0E4[];
+
+const char* D_8010035C[] = {D_8010E0CC, D_8010E0D4, D_8010E0DC, D_8010E0E4, 0x00000000};
+
+s16 LoadFilePositions[] = {
+    //X,   Y
+     44,  64,
+    188,  64,
+     44, 136,
+    188, 136
+};
+
+//????
+extern const char D_8010E0EC[];
+extern const char D_8010E0FC[];
+extern const char D_8010E10C[];
+extern const char D_8010E118[];
+//???? part 2
+extern const char D_8010E128[];
+extern const char D_8010E138[];
+extern const char D_8010E148[];
+extern const char D_8010E154[];
+//???? part 3
+extern const char D_8010E164[];
+extern const char D_8010E174[];
+extern const char D_8010E184[];
+extern const char D_8010E190[];
+//???? part 4
+extern const char D_8010E1A0[];
+extern const char D_8010E1B0[];
+extern const char D_8010E1BC[];
+extern const char D_8010E1CC[];
+extern const char D_8010E1DC[];
+extern const char D_8010E1E8[];
+
+const char* D_80100380[] = {
+    D_8010E0EC, D_8010E0FC, D_8010E10C, D_8010E118,
+    D_8010E128, D_8010E138, D_8010E148, D_8010E154,
+    D_8010E164, D_8010E174, D_8010E184, D_8010E190,
+    D_8010E1A0, D_8010E1B0, D_8010E1BC, D_8010E1CC,
+    D_8010E1DC, D_8010E1E8, 0
+};
+
+s16 D_801003CC[] = {0x68, 0x69, 0x6A, 0x6B, 0x6C, 0x6D};
+s16 gSelectedBattleBGM = -1;
+
+//very unsure how this is supposed to be typed
+stuff D_801003DC = {
+    {2, 0, 0x0100},
+    {0, 0, 0, 0, 0, 0}
+};
+
+s32 D_801003E8[] = {0x00400080, 0x00800080, 0x00C00080, 0x01000080};
+s16 D_801003F8[] = {0x0044, 0x0080, 0x0080, 0x0080, 0x00BE, 0x0080, 0x00FC, 0x0080};
+
+typedef struct unkStruct5FF30 {
+    s32 unk0;
+    const char* name;
+} unkStruct5FF30;
+
+//battle mode
+extern const char D_8010E60C[];
+extern const char D_8010E618[];
+extern const char D_8010E624[];
+extern const char D_8010E630[];
+extern const char D_8010E63C[];
+extern const char D_8010E648[];
+
+unkStruct5FF30 D_80100408[] = {
+    {0xFFF00060, D_8010E60C},
+    {0xFFF00060, D_8010E618},
+    {0xFFF00060, D_8010E624},
+    {0xFFEC0060, D_8010E630},
+    {0xFFEC0060, D_8010E63C},
+    {0xFFEC0060, D_8010E648},
+};
 
 void schedproc(s32 arg0) {
     s32 var_s2;
@@ -603,7 +1452,7 @@ void func_80087E60(f32* arg0, f32* arg1, f32* arg2, f32* arg3) {
     *arg0 = gPlayerActors[D_800FF8E8].pos.x;
     *arg1 = gPlayerActors[D_800FF8E8].pos.y;
     *arg2 = gPlayerActors[D_800FF8E8].pos.z;
-    *arg3 = D_800FF610[2];
+    *arg3 = gCameraP->f1.y;
 }
 
 s32 PlaySoundEffect(s32 id, f32* posX, f32* posY, f32* posZ, s32 arg4, s32 flag) {
@@ -622,7 +1471,7 @@ s32 PlaySoundEffect(s32 id, f32* posX, f32* posY, f32* posZ, s32 arg4, s32 flag)
     else if (gIsPaused == 1) {
         return -1;
     }
-    if ((s32) D_80168DA0 >= 2) {
+    if (D_80168DA0 >= 2) {
         flag |= 0x10;
     }
     return AddSoundEffect(id, posX, posY, posZ, arg4, flag);
@@ -741,7 +1590,7 @@ void func_80088B7C(u8* arg0, u8* arg1, u8* arg2, u8* arg3, u8* arg4, u8* arg5) {
     temp_v0 = D_80174998 & 7;
     temp_t6 = (D_80174998 & 0x18) / 8;
     if (temp_t6 == 0) {
-        temp_f0 = (ABS2(temp_v0)) / (notEight);
+        temp_f0 = (ABS2(temp_v0)) / (Eight);
         *arg0 = (0 * temp_f0) + 255;
         *arg1 = (-175 * (temp_f0)) + 255;
         *arg2 = 0 * temp_f0;
@@ -749,7 +1598,7 @@ void func_80088B7C(u8* arg0, u8* arg1, u8* arg2, u8* arg3, u8* arg4, u8* arg5) {
         *arg4 = 0xFF;
         *arg5 = 0;
     } else if (temp_t6 == 1) {
-        temp_f0 = (ABS2(temp_v0)) / (notEight);
+        temp_f0 = (ABS2(temp_v0)) / (Eight);
         *arg0 = 0xFF;
         *arg1 = 0x50;
         *arg2 = 0;
@@ -757,7 +1606,7 @@ void func_80088B7C(u8* arg0, u8* arg1, u8* arg2, u8* arg3, u8* arg4, u8* arg5) {
         *arg4 = (-175 * temp_f0) + 255;
         *arg5 = 0 * temp_f0;
     } else if (temp_t6 == 2) {
-        temp_f0 = (8 - (ABS2(temp_v0))) / (notEight);
+        temp_f0 = (8 - (ABS2(temp_v0))) / (Eight);
         *arg0 = (0 * temp_f0) + 255;
         *arg1 = (-175 * temp_f0) + 255;
         *arg2 = 0 * temp_f0;
@@ -765,7 +1614,7 @@ void func_80088B7C(u8* arg0, u8* arg1, u8* arg2, u8* arg3, u8* arg4, u8* arg5) {
         *arg4 = 0x50;
         *arg5 = 0;
     } else {
-        temp_f0 = (8 - (ABS2(temp_v0))) / (notEight);
+        temp_f0 = (8 - (ABS2(temp_v0))) / (Eight);
         *arg0 = 0xFF;
         *arg1 = 0xFF;
         *arg2 = 0;
@@ -805,14 +1654,14 @@ const char D_8010D8E0[] = "ＮＯ";
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80089E24.s")
 
 void PlayJungleExtSfx(void) {
-    if (D_80236974 == 0) {
+    if (isInOverworld == FALSE) {
         if (gIsNotInCave == 1) {
-            PlayBGM(BGM_JUNGLE_EXT);
+            PlayBGM(BGM_JUNGLE_INT);
         }
     } else if (((s32) gTimer % 300) == 299) {
         PLAYSFX(Random(0, 5) + SFX_4F_unkSnd, 1, 0x10);
     }
-    gIsNotInCave = D_80236974;
+    gIsNotInCave = isInOverworld;
 }
 
 void PlayJungleExtSfxWrapper(void) {
@@ -1010,8 +1859,8 @@ void func_8008C070(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008C094.s")
 
-void func_8008C1C8(s32* arg0) {
-    s32 sp4C = *arg0;
+void func_8008C1C8(Gfx** arg0) {
+    Gfx* sp4C = *arg0;
 
     if ((gSelectedCharacters[0] == CHARA_WHITE) && (gGameModeCurrent == 0)) {
         if ((D_80176F58[0] == 0) && (gOneRun != 0)) {
@@ -1121,7 +1970,7 @@ void Timing_StartAudio(void) {
 }
 
 void Timing_StopAudio(void) {
-    D_800FF890[D_800FF8BC] = osGetCount() - Timing_StartAudioTime;
+    D_800FF890[D_800FF8BC[0]] = osGetCount() - Timing_StartAudioTime;
 }
 
 // not used
@@ -1140,7 +1989,7 @@ s32 PutDList(Mtx** arg0, Gfx** arg1, Gfx* arg2) {
     Gfx* sp60;
     s32 var_s2;
     Gfx* var_v1;
-    s32 temp_t9;
+    s32 mtxArrayIndex;
 
     sp64 = *arg0;
     var_s2 = 1;
@@ -1161,8 +2010,10 @@ s32 PutDList(Mtx** arg0, Gfx** arg1, Gfx* arg2) {
                 gSPDisplayList(sp60++, arg2);
                 break;
             case G_MTX:
-                temp_t9 = (var_v1->words.w1 - (u32)D_80129730) / sizeof(Mtx);
-                if ((temp_t9 >= 0) && (((temp_t9 < 40)))) {
+                //this calculation is bizzare...var_v1->words.w1 can be a segmented addr -
+                //and D_80129730 points
+                mtxArrayIndex = (var_v1->words.w1 - (u32)AnimationSlots) / sizeof(Mtx);
+                if ((mtxArrayIndex >= 0) && (mtxArrayIndex < 40)) {
                     gSPMatrix(sp60++, sp64, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
                     sp64++;
                 } else {
@@ -1305,7 +2156,7 @@ void CTTask_Unlink_2(CTTask* task) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008D060.s")
 
 void func_8008D114(GraphicStruct* arg0, s32 fbIndex) {
-    Video_SetTask(arg0, arg0->dlist, fbIndex);
+    Video_SetTask(arg0, arg0->UnkGroup.dlist, fbIndex);
     osWritebackDCache(arg0, sizeof(GraphicStruct));
     Sched_SetGfxTask(&D_800F04E0[fbIndex], fbIndex);
 }
@@ -1314,7 +2165,7 @@ Gfx* func_8008D168(Gfx* gfxPos, s32 arg1, s32 arg2) {
     s32 i;
 
     gSPSegment(gfxPos++, 0x00, 0);
-    gSPSegment(gfxPos++, 0x01, OS_K0_TO_PHYSICAL(_ALIGN((u32)D_803B5000 - (u32)D_1045C00 + (u32)D_1000000, 16)));
+    gSPSegment(gfxPos++, 0x01, OS_K0_TO_PHYSICAL(_ALIGN((u32)gFrameBuffers - (u32)static0_VRAM_END + (u32)static0_VRAM, 16)));
 
     for (i = 2; i < 16; i++) {
         if (D_80100F50[i].base_address != NULL) {
@@ -1332,14 +2183,14 @@ Gfx* func_8008D168(Gfx* gfxPos, s32 arg1, s32 arg2) {
     if (D_800FFEC0 != 0) {
         gDPSetCycleType(gfxPos++, G_CYC_FILL);
         gDPSetRenderMode(gfxPos++, G_RM_NOOP, G_RM_NOOP2);
-        gDPSetColorImage(gfxPos++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 320, OS_K0_TO_PHYSICAL(&D_803B5000[arg1]));
+        gDPSetColorImage(gfxPos++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 320, OS_K0_TO_PHYSICAL(&gFrameBuffers[arg1]));
         gDPSetFillColor(gfxPos++, PACK_FILL_COLOR(D_800FF8DC, D_800FF8E0, D_800FF8E4, 1));
         gDPFillRectangle(gfxPos++, 0, 0, 319, 239);
         gDPPipeSync(gfxPos++);
     } else {
         gDPSetCycleType(gfxPos++, G_CYC_FILL);
         gDPSetRenderMode(gfxPos++, G_RM_NOOP, G_RM_NOOP2);
-        gDPSetColorImage(gfxPos++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 320, OS_K0_TO_PHYSICAL(&D_803B5000[arg1]));
+        gDPSetColorImage(gfxPos++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 320, OS_K0_TO_PHYSICAL(&gFrameBuffers[arg1]));
         gDPSetFillColor(gfxPos++, PACK_FILL_COLOR(D_800FF8DC, D_800FF8E0, D_800FF8E4, 1));
         gDPFillRectangle(gfxPos++, 18, 16, 337, 247);
         gDPPipeSync(gfxPos++);
@@ -1349,7 +2200,7 @@ Gfx* func_8008D168(Gfx* gfxPos, s32 arg1, s32 arg2) {
         D_800FFEC0--;
     }
     gSPDisplayList(gfxPos++, D_1015B18);
-    gDPSetColorImage(gfxPos++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 320, OS_K0_TO_PHYSICAL(&D_803B5000[arg1]));
+    gDPSetColorImage(gfxPos++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 320, OS_K0_TO_PHYSICAL(&gFrameBuffers[arg1]));
     return gfxPos;
 }
 
@@ -1656,7 +2507,7 @@ CTTask* func_8008EB08(s16 arg0, s16 arg1, s16 arg2, s16 arg3, s16* arg4, f32 arg
     newTask->pos.y = arg6;
     newTask->pos.z = 0;
     newTask->function = func_8008E698;
-    newTask->unk58 = arg4;
+    newTask->unk58 = (CTTask*)arg4; //TODO: figure out the type problem here
     return newTask;
 }
 
@@ -1751,7 +2602,7 @@ void func_8008F114(void){
 void func_8008F16C(void) {
     if (D_800FFDF0 != 0) {
         osRecvMesg(&gSyncMessageQueue, NULL, OS_MESG_NOBLOCK);
-        gMainGfxPos = gGraphicsList[gFramebufferIndex].dlist;
+        gMainGfxPos = gGraphicsList[gFramebufferIndex].UnkGroup.dlist;
         gMainGfxPos = func_8008D168(gMainGfxPos, gFramebufferIndex, D_800FFDF0);
         func_8005CA38();
         if (D_800FFDF0 == 3) {
@@ -1777,7 +2628,7 @@ void func_8008F16C(void) {
         func_8005CA38();
         func_80056F48(0, gTongues, gPlayerActors, gCamera);
         func_8008D114(&gGraphicsList[1 - gFramebufferIndex], 1 - gFramebufferIndex);
-        gMainGfxPos = gGraphicsList[gFramebufferIndex].dlist;
+        gMainGfxPos = gGraphicsList[gFramebufferIndex].UnkGroup.dlist;
         gMainGfxPos = func_8008D168(gMainGfxPos, gFramebufferIndex, D_800FFDF0);
         func_8004E784(gContMain, 4, 0, 0);
         Controller_ParseJoystick(gContMain);
@@ -1806,7 +2657,7 @@ void func_8008F16C(void) {
     osRecvMesg(&gFrameDrawnMessageQueue, NULL, OS_MESG_BLOCK);
     gFramebufferIndex = 1 - gFramebufferIndex;
     if (D_800FFDF0 == 0) {
-        osViSwapBuffer(D_803B5000[gFramebufferIndex].data);
+        osViSwapBuffer(gFrameBuffers[gFramebufferIndex].data);
     }
     osViSetSpecialFeatures(OS_VI_GAMMA_ON|OS_VI_GAMMA_DITHER_ON);
     if (D_800FFDF0 != 0) {
@@ -2021,10 +2872,10 @@ void func_8008FEA8(s32 arg0, s32 arg1) {
         }
 
         // set to the virtual base address of the stage
-        if (!IS_SEGMENTED(gStageLoadData[arg0].name)) {
-            var_a0 = (s32*)gStageLoadData[arg0].name;
+        if (!IS_SEGMENTED(gStageLoadData[arg0].stagePtr)) {
+            var_a0 = (s32*)gStageLoadData[arg0].stagePtr;
         } else {
-            var_a0 = (s32*)SEGMENTED_TO_VIRTUAL2(gStageLoadData[arg0].name);
+            var_a0 = (s32*)SEGMENTED_TO_VIRTUAL2(gStageLoadData[arg0].stagePtr);
         }
         
 
@@ -2040,8 +2891,198 @@ void func_8008FEA8(s32 arg0, s32 arg1) {
     }
 }
 
-//needs bss support https://decomp.me/scratch/hFrp7
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/Porocess_Mode0.s")
+void Porocess_Mode0(void) {
+    u32 temp_s0;
+    s32 sp28;
+    s32 sp24;
+    s32 i;
+
+    switch (gGameModeState) {
+    case 0:
+        D_800FFDF0 = 3;
+        DMAStruct_Print();
+        D_80174878 += 1;
+        
+        if (D_800F06EC >= 0) {
+            D_80174878 = D_800F06EC;
+        }
+        
+        D_80174878 = LoadStageByIndex(D_80174878);
+        if (gCurrentStage == STAGE_VS) {
+            D_80168DA0 = gControllerNo;
+            Battle_GameType = 2;
+        } else {
+            Battle_GameType = 0;
+            D_80168DA0 = 1;
+        }
+
+        //required 1 liner to match
+        for (i = 0; i < D_80168DA0; i++) {gPlayerActors[i].active = 1;}
+
+        for (; i < 4; i++) {
+            gPlayerActors[i].active = 0;
+        }            
+        for (i = 0; i < 4; i++) {
+            _bzero(&gTongues[i], sizeof(Tongue));
+        }
+    
+        func_8002E0CC();
+        InitField();
+        func_80056EB4();
+        Effect_Init();
+        func_8005C9B8();
+        func_80084788();
+        
+        D_80174980 = 0;
+        if (gCurrentStage == STAGE_VS) {
+            Battle_Init();
+        } else {
+            func_8008FE00();
+        }
+        if (gCurrentStage == STAGE_BOMB) {
+            LoadPlayerEyes(4);
+            SetPlayerContextEyes(4, 0, 0);
+            FreePlayerEyes(4);
+        }
+        CTTaskList_Init();
+        if ((gCurrentStage == STAGE_BOSSRUSH) || (gCurrentStage == STAGE_TRAINING)) {
+            func_800C1458(0);
+        }
+        func_8008BE14();
+        func_8008800C(8);
+        gGameModeState++;
+        func_8008F114();
+        gCurrentStageTime = 0;
+        return;
+    case 1:
+        func_8002CE54();
+        return;
+    case 2:
+        gGameModeState = 1;
+        return;
+    case 3:
+        Battle_GameType = 0;
+        temp_s0 = gPlayerActors->hp;
+        sp28 = currentStageCrowns;
+        sp24 = D_80247904;
+        DMAStruct_Print();
+        D_80174878++;
+        if (D_800F06EC >= 0) {
+            D_80174878 = D_800F06EC;
+        }
+        D_80174878 = LoadStageByIndex(D_80174878);
+        func_8002E0CC();
+        InitField();
+        gPlayerActors->hp = temp_s0;
+        func_80056EB4();
+        Effect_Init();
+        func_8005C9B8();
+        func_80084788();
+        CTTaskList_Init();
+        if (D_800FFEBC != 0) {
+            func_800C1458(1);
+        } else {
+            func_800C1458(0);
+        }
+        gGameModeState = 1;
+        func_8008F114();
+        currentStageCrowns = sp28;
+        D_80247904 = sp24;
+        func_8008FE00();
+        if (gCurrentStage == STAGE_BOMB) {
+            LoadPlayerEyes(4);
+            SetPlayerContextEyes(4, 0, 0);
+            FreePlayerEyes(4);
+            return;
+        }
+    default:
+        return;
+    case 4:
+        for (i = 0; i < 4; i++) {
+            _bzero(&gTongues[i], sizeof(Tongue));
+        }
+        
+        gPlayerActors[0].active = 1;
+        for (i = 1; i < 4; i++) {
+            gPlayerActors[i].active = 0;
+        }
+        
+        gNoHit = 0;
+        gOneRun = 0;
+        D_80200B38 = 0;
+        Battle_GameType = 0;
+        SaveData_ReadFile(&gGameState);
+        D_80174878 = gCurrentStage - 1;
+        func_8008FD68();
+        SaveData_ReadFile(&gGameState);
+        if (isInOverworld == TRUE) {
+            if (gCurrentStage == STAGE_JUNGLE) {
+                D_80236978 = 1;
+            }
+            func_800C2820(gGameState.gCurrentZone, &gPlayerActors[0], &gGameState);
+        } else {
+            D_80236978 = 0;
+            func_800C1510(gGameState.gCurrentZone, gGameState.unk33);
+            func_800B4574(&gGameState.unk2, &gGameState.UNK_22);
+            func_800C0760(gGameState.gCurrentZone);
+        }
+        currentStageCrowns = (s32) gGameState.stageCrowns;
+        DummiedPrintf("\n");
+        func_8008FEA8(gCurrentStage, gGameState.gCurrentZone);
+        gGameModeState = 1;
+        func_8008F114();
+        func_8008FE00();
+        if (gCurrentStage == STAGE_BOMB) {
+            LoadPlayerEyes(4);
+            SetPlayerContextEyes(4, 0, 0);
+            FreePlayerEyes(4);
+        }
+        func_8008800C(8);
+        return;
+    case 5:
+        SetProcessType(1);
+        func_8008F114();
+        return;
+    case 6:
+        SetProcessType(6);
+        return;
+    case 7:
+        gNoHit = 0;
+        gOneRun = 0;
+        D_80200B38 = 0;
+        D_80168DA0 = 1;
+        Battle_GameType = 0;
+        SaveData_ReadFile(&gSaveFile);
+        D_80174878 = gCurrentStage - 1;
+        for (i = 0; i < 4; i++) {
+            _bzero(&gTongues[i], sizeof(Tongue));
+        }
+        func_8008FD68();
+        SaveData_ReadFile(&gSaveFile);
+        if (isInOverworld == TRUE) {
+            if (gCurrentStage == STAGE_JUNGLE) {
+                D_80236978 = 1;
+            }
+            func_800C2820(gSaveFile.gCurrentZone, &gPlayerActors[0], &gSaveFile);
+        } else {
+            D_80236978 = 0;
+            func_800C1510(gSaveFile.gCurrentZone, gSaveFile.unk33);
+            func_800B4574(&gSaveFile.unk2, &gSaveFile.UNK_22);
+            func_800C0760(gSaveFile.gCurrentZone);
+        }
+        func_8008FEA8(gCurrentStage, gSaveFile.gCurrentZone);
+        currentStageCrowns = (s32) gSaveFile.stageCrowns;
+        gGameModeState = 1;
+        func_8008F114();
+        func_8008FE00();
+        if (gCurrentStage == STAGE_BOMB) {
+            LoadPlayerEyes(4);
+            SetPlayerContextEyes(4, 0, 0);
+            FreePlayerEyes(4);
+        }
+        break;
+    }
+}
 
 void MainLoop(void) {
     func_8002D080();
@@ -3177,23 +4218,24 @@ void func_80095500(CTTask* task) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80095EC8.s")
 
-const char D_8010DCB8[] = "コード";
-const char D_8010DCC0[] = "スタティック";
-const char D_8010DCD0[] = "共通";
-const char D_8010DCD8[] = "フィールド";
-const char D_8010DCE4[] = "フィールド共通";
-const char D_8010DCF4[] = "ウサギ";
-const char D_8010DCFC[] = "サブアニメ";
-const char D_8010DD08[] = "対戦";
-const char D_8010DD10[] = "青";
-const char D_8010DD14[] = "緑";
-const char D_8010DD18[] = "黄色";
-const char D_8010DD20[] = "ピンク";
-const char D_8010DD28[] = "黒";
-const char D_8010DD2C[] = "白";
-const char D_8010DD30[] = "スペ";
-const char D_8010DD38[] = "デモ";
+const char segNameCode[] = "コード";
+const char segNameStatic[] = "スタティック";
+const char segNameCommon[] = "共通";
+const char segNameFieldOfPlay[] = "フィールド";
+const char segNameFieldCommon[] = "フィールド共通";
+const char segNameRabbit[] = "ウサギ";
+const char segNameSubAnimation[] = "サブアニメ";
+const char segNameCompetition[] = "対戦";
+const char segNameBlue[] = "青";
+const char segNameGreen[] = "緑";
+const char segNameYellow[] = "黄色";
+const char segNamePink[] = "ピンク";
+const char segNameBlack[] = "黒";
+const char segNameWhite[] = "白";
+const char segNameSpace[] = "スペ";
+const char segNameDemo[] = "デモ";
 
+/* Segment Loading? */
 s32 func_8009603C(s32 segmentID, s32 arg1) {
     s32 temp_s0;
     s32 size;
@@ -3216,14 +4258,15 @@ s32 func_8009603C(s32 segmentID, s32 arg1) {
     return (s32) temp_s3->base_address;
 }
 
+/* Stage Loading? */
 u32 func_80096128(s32 stageToLoad, s32 inpAddr) {
-    segTableEntry* segData = &gStageLoadData[stageToLoad];
-    s32 size = (u32) segData->ramAddrStart - (u32) segData->romAddrEnd;
+    StageLoadData* stageData = &gStageLoadData[stageToLoad];
+    s32 size = (u32) stageData->ramEnd - (u32) stageData->ramStart;
     s32 dmaResult;
     
     D_80100F50[0x3].base_address = inpAddr - size;
     D_80100F50[0x3].unk4 = D_80100F50[0x3].base_address + size;
-    dmaResult = DMA_Copy(segData->romAddrStart, (void*)D_80100F50[0x3].base_address, size);
+    dmaResult = DMA_Copy(stageData->romStart, (void*)D_80100F50[0x3].base_address, size);
     if (dmaResult < 0) {
         DummiedPrintf("エラー %d\n", dmaResult);    //Error
         return 0;
@@ -3238,45 +4281,48 @@ u32 func_80096128(s32 stageToLoad, s32 inpAddr) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/LoadStageByIndex.s")
 
 void func_800966E0(void) {
-    D_80100F50[1].base_address = (u32)&D_803B5000 - _ALIGN((u32)&D_1045C00 - (u32)&D_1000000, 16);
-    D_80100F50[1].unk4 = (u32)&D_803B5000;
+    D_80100F50[1].base_address = (u32)&gFrameBuffers - _ALIGN((u32)static0_VRAM_END - (u32)static0_VRAM, 16);
+    D_80100F50[1].unk4 = (u32)&gFrameBuffers;
     D_801FFB78 = func_8009603C(gSelectedCharacters[0] + 8, D_80100F50[1].base_address);
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80096748.s")
 
-s32 CanAccessStage(s32 stageIndex) {
-    s32 trueBits;
-    u8 temp_v0;
-    s32 var;
-    
-    temp_v0 = D_8010026E[stageIndex].temp0;
-    if (stageIndex == 0) {
-        return 1;
-    }
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/CanAccessStage.s")
 
-    if (temp_v0 == 0) {
-        int i = 0;
-        trueBits = 0;
-        for (i = 0; i < 6; i++) {
-            if (D_80200B68 & (1 << i)) {
-                trueBits++;
-            }
-        }
-        if (trueBits >= 6) {
-            return TRUE;
-        }
-        if (sDebugLevelAccess >= 0) {
-            return TRUE;
-        }
-        return FALSE;
-    }
+//need to fix type of D_8010026E
+// s32 CanAccessStage(s32 stageIndex) {
+//     s32 trueBits;
+//     u8 temp_v0;
+//     s32 var;
     
-    if (gGameState.stageAccess & temp_v0) {
-        return TRUE;
-    }
-    return FALSE;
-}
+//     temp_v0 = D_8010026E[stageIndex].temp0;
+//     if (stageIndex == 0) {
+//         return 1;
+//     }
+
+//     if (temp_v0 == 0) {
+//         int i = 0;
+//         trueBits = 0;
+//         for (i = 0; i < 6; i++) {
+//             if (D_80200B68 & (1 << i)) {
+//                 trueBits++;
+//             }
+//         }
+//         if (trueBits >= 6) {
+//             return TRUE;
+//         }
+//         if (sDebugLevelAccess >= 0) {
+//             return TRUE;
+//         }
+//         return FALSE;
+//     }
+    
+//     if (gGameState.stageAccess & temp_v0) {
+//         return TRUE;
+//     }
+//     return FALSE;
+// }
 
 f32 func_80096898(u16 arg0) {
     f32 floatVar = 0.0f;
@@ -3337,34 +4383,27 @@ void func_80096964(CTTask* task) {
 
 
 
-const char D_8010DEA8[] = "ＪＵＮＧＬＥ　ＬＡＮＤ";
-const char D_8010DEC0[] = "　ＡＮＴ　ＬＡＮＤ";
-const char D_8010DED4[] = "　ＢＯＭＢ　ＬＡＮＤ";
-const char D_8010DEEC[] = "ＤＥＳＥＲＴ　ＣＡＳＴＬＥ";
-const char D_8010DF08[] = "　ＫＩＤＳ　ＬＡＮＤ";
-const char D_8010DF20[] = "ＧＨＯＳＴ　ＣＡＳＴＬＥ";
-const char D_8010DF3C[] = "　　ＳＥＣＲＥＴ";
-
-//single .word padding??? idk how youd represent that
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_8010DF50.s")
+const char stageNameJungleLand[] = "ＪＵＮＧＬＥ　ＬＡＮＤ";
+const char stageNameAntLand[] = "　ＡＮＴ　ＬＡＮＤ";
+const char stageNameBombLand[] = "　ＢＯＭＢ　ＬＡＮＤ";
+const char stageNameDesertCastle[] = "ＤＥＳＥＲＴ　ＣＡＳＴＬＥ";
+const char stageNameKidsLand[] = "　ＫＩＤＳ　ＬＡＮＤ";
+const char stageNameGhostCastle[] = "ＧＨＯＳＴ　ＣＡＳＴＬＥ";
+const char stageNameSecret[] = "　　ＳＥＣＲＥＴ";
+const char stageNamePadding[] = "\0\0\0";
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80096D40.s")
 
-//thanks rain
 s32 func_80097414(s32 arg0, s32 arg1) {
     s32 result = -1;
     s32 i;
-    s16* var_a2;
-    s16 temp_a0;
-    s16 temp_a1;
+    s16 xPos;
+    s16 yPos;
 
-    for(i = 0, var_a2 = D_80100258;
-        i != 6;
-        i++, var_a2+=12)
-    {
-        temp_a0 = var_a2[0];
-        temp_a1 = var_a2[1];
-        if ((arg0 >= (temp_a0 - 0x10)) && ((temp_a0 + 0x10) >= arg0) && (arg1 >= (temp_a1 - 0x18)) && ((temp_a1 + 0x18) >= arg1)) {
+    for(i = 0; i != 6; i++) {
+        xPos = StageSelect[i].xPos;
+        yPos = StageSelect[i].yPos;
+        if ((arg0 >= (xPos - 0x10)) && ((xPos + 0x10) >= arg0) && (arg1 >= (yPos - 0x18)) && ((yPos + 0x18) >= arg1)) {
             result = i;
             break;
         }
@@ -3503,7 +4542,7 @@ void func_80098684(u8* arg0, u8* arg1, u8* arg2, u8* arg3, u8* arg4, u8* arg5) {
     temp_v0 = D_80174998 & 7;
     temp_t6 = (D_80174998 & 0x18) / 8;
     if (temp_t6 == 0) {
-        temp_f0 = (ABS2(temp_v0)) / (notEight);
+        temp_f0 = (ABS2(temp_v0)) / (Eight);
         *arg0 = (-198 * temp_f0) + 220;
         *arg1 = (-20 * temp_f0) + 220;
         *arg2 = (9 * temp_f0) + 1;
@@ -3511,7 +4550,7 @@ void func_80098684(u8* arg0, u8* arg1, u8* arg2, u8* arg3, u8* arg4, u8* arg5) {
         *arg4 = 220;
         *arg5 = 1;
     } else if (temp_t6 == 1) {
-         temp_f0 = (ABS2(temp_v0)) / (notEight);
+         temp_f0 = (ABS2(temp_v0)) / (Eight);
         *arg0 = 22;
         *arg1 = 200;
         *arg2 = 10;
@@ -3519,7 +4558,7 @@ void func_80098684(u8* arg0, u8* arg1, u8* arg2, u8* arg3, u8* arg4, u8* arg5) {
         *arg4 = (-20 * temp_f0) + 220;
         *arg5 = (9 * temp_f0) + 1;
     } else if (temp_t6 == 2) {
-        temp_f0 = (8 - (ABS2(temp_v0))) / (notEight);
+        temp_f0 = (8 - (ABS2(temp_v0))) / (Eight);
         *arg0 = (-198 * temp_f0) + 220;
         *arg1 = (-20 * temp_f0) + 220;
         *arg2 = (9 * temp_f0) + 1;
@@ -3527,7 +4566,7 @@ void func_80098684(u8* arg0, u8* arg1, u8* arg2, u8* arg3, u8* arg4, u8* arg5) {
         *arg4 = 200;
         *arg5 = 10;
     } else{
-        temp_f0 = (8 - (ABS2(temp_v0))) / (notEight);
+        temp_f0 = (8 - (ABS2(temp_v0))) / (Eight);
         *arg0 = 220;
         *arg1 = 220;
         *arg2 = 1;
@@ -4411,7 +5450,7 @@ void func_8009F7F4(CTTask* task) {
         task->unk66 = gSelectedBattleBGM + 1;
         task->unk_62 = D_80200B1A;
         task->unk_68 = D_80200B1C;
-        task->unk6A = D_801003DC;
+        task->unk6A = D_801003DC.unk0[0];
         task->unk_64 = 0;
         func_8008EA60(32, 0, 0, 0, &task->unk_64);
     }
@@ -4438,7 +5477,7 @@ void func_800A02C4(CTTask* task) {
         D_80200B1A = task->unk_62;
         gSelectedBattleBGM = task->unk66 - 1;
         D_80200B1C = task->unk_68;
-        D_801003DC = task->unk6A;
+        D_801003DC.unk0[0] = task->unk6A;
         func_8008E9AC(32, 0, 0, 0, &task->unk_64);
         task->function = func_800A0354;
     }
@@ -4503,7 +5542,7 @@ void func_800A03B8(CTTask* task) {
                         PLAYSFX(42, 0, 0x10);
                         newTask->unk_68++;
                         if (D_80200B1E < newTask->unk_68) {
-                            newTask->unk_68 = *(&D_801003E3 + -D_80200B1E);
+                            newTask->unk_68 = D_801003DC.unk6[-D_80200B1E + 1];
                         }
                     }
                 }
@@ -4528,7 +5567,7 @@ void func_800A03B8(CTTask* task) {
                         PLAYSFX(42, 0, 0x10);
                     } else if (newTask->unk60 == 2) {
                         newTask->unk_68--;
-                        if (newTask->unk_68 < *(&D_801003E3 + -D_80200B1E)) {
+                        if (newTask->unk_68 < D_801003DC.unk6[-D_80200B1E + 1]) {
                             newTask->unk_68 = D_80200B1E;
                         }
                         PLAYSFX(42, 0, 0x10);
@@ -4547,7 +5586,21 @@ void func_800A07E0(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/Process_BattleMenu.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A0D90.s")
+void func_800A0D90(void) {
+    s32 i;
+    s32 address;
+    D_80100F50[1].base_address = (u32)gFrameBuffers - ALIGN16((u32)static0_VRAM_END - (u32)static0_VRAM);
+    D_80100F50[1].unk4 = (u32)gFrameBuffers; //TODO: is the a singular frame buffer or both?
+    address = D_80100F50[1].base_address;
+    for (i = 8; i < 14; i++){
+        address = func_8009603C(i, address);
+    }
+    D_801FFB78 = address;
+    func_80056EB4();
+    Effect_Init();
+    func_8005C9B8();
+    func_80084788();
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A0E3C.s")
 
@@ -4681,8 +5734,8 @@ void Process_NewGameMenu(void) {
 }
 
 void func_800A1EC4(void) {
-    D_80100F50[1].base_address = (u32)D_803B5000 - (u32)_ALIGN(((u32)D_1045C00 - (u32)D_1000000), 16);
-    D_80100F50[1].unk4 = (u32)D_803B5000;
+    D_80100F50[1].base_address = (u32)gFrameBuffers - (u32)_ALIGN(((u32)static0_VRAM_END - (u32)static0_VRAM), 16);
+    D_80100F50[1].unk4 = (u32)gFrameBuffers;
     D_801FFB78 = D_80100F50[1].base_address;
     func_80056EB4();
     Effect_Init();
@@ -5209,8 +6262,8 @@ void Process_JSSLogo(void) {
 }
 
 void func_800A56D4(void) {
-    D_80100F50[1].base_address = (u32)&D_803B5000 - _ALIGN((u32)&D_1045C00 - (u32)&D_1000000, 16);
-    D_80100F50[1].unk4 = (u32)&D_803B5000;
+    D_80100F50[1].base_address = (u32)&gFrameBuffers - _ALIGN((u32)static0_VRAM_END - (u32)static0_VRAM, 16);
+    D_80100F50[1].unk4 = (u32)&gFrameBuffers;
     D_801FFB78 = D_80100F50[1].base_address;
     func_80056EB4();
     func_8005C9B8();
@@ -5244,20 +6297,20 @@ s32 func_800A5778(s32 arg0) {
 
 //feel free to copy back all the suffixes if you want
 //i just dont enjoy having 5 copies of the same word
-#define level_land "ＬＡＮＤ"
-#define level_castle "ＣＡＳＴＬＥ"
+#define land "ＬＡＮＤ"
+#define castle "ＣＡＳＴＬＥ"
 const char D_8010EBA4[] = "ＪＵＮＧＬＥ";
-const char D_8010EBB4[] = level_land;
+const char D_8010EBB4[] = land;
 const char D_8010EBC0[] = "ＡＮＴ";
-const char D_8010EBC8[] = level_land;
+const char D_8010EBC8[] = land;
 const char D_8010EBD4[] = "ＢＯＭＢ";
-const char D_8010EBE0[] = level_land;
+const char D_8010EBE0[] = land;
 const char D_8010EBEC[] = "ＤＥＳＥＲＴ";
-const char D_8010EBFC[] = level_castle;
+const char D_8010EBFC[] = castle;
 const char D_8010EC0C[] = "ＫＩＤＳ";
-const char D_8010EC18[] = level_land;
+const char D_8010EC18[] = land;
 const char D_8010EC24[] = "ＧＨＯＳＴ";
-const char D_8010EC30[] = level_castle;
+const char D_8010EC30[] = castle;
 
 //https://decomp.me/scratch/8wPlV
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/PrintSelectedStageInfo.s")
@@ -6010,7 +7063,7 @@ void func_800AAB0C(s32 arg0) {
         //"バッファがない\n"("no buffer")
         osSyncPrintf("バッファがない\n", D_80200C8C);
     } else {
-        dmaResult = DMA_Copy(&D_AB10B0, D_80200C8C, dmaSize);
+        dmaResult = DMA_Copy(CreditsDemo_ROM_START, D_80200C8C, dmaSize);
         if (dmaResult < 0) {
             //"データ読み込み失敗\n" ("data read failure")
             osSyncPrintf("データ読み込み失敗\n");

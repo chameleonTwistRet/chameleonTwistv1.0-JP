@@ -191,8 +191,8 @@ enum ColorModes{
 };
 
 enum BGM {
-    BGM_JUNGLE_INT = 0,
-    BGM_JUNGLE_EXT = 1,
+    BGM_JUNGLE_EXT = 0,
+    BGM_JUNGLE_INT = 1,
     BGM_ANT = 2,
     BGM_BOMB = 3,
     BGM_DESERT = 4,
@@ -207,8 +207,8 @@ enum BGM {
     BGM_BOSS2 = 13,
     BGM_KIDSBOSS = 14,
     BGM_BOSSINTRO = 15,
-    BGM_GHOSTBOSS1 = 16,
-    BGM_GHOSTBOSS2 = 17,
+    BGM_GHOSTBOSS2 = 16,
+    BGM_GHOSTBOSS1 = 17,
     BGM_STAGESELECT = 18,
     BGM_STAGESELECT2 = 19,
     BGM_STAGEWIN = 20,
@@ -219,8 +219,8 @@ enum BGM {
     BGM_TITLE = 25,
     BGM_ENDINGUNUSED = 26,
     BGM_INTRO = 27,
-    BGM_STAGESELECTREPRISE = 28,
-    BGM_TACET = -1
+    BGM_STAGESELECTREPRISE = 28
+    //BGM_TACET = -1 ????
 };
 
 
@@ -716,6 +716,27 @@ enum SFX {
     SFX_C2_unkSnd = 194,
     SFX_C3_unkSnd = 195,
     SFX_Decline = 196
+};
+
+enum JungleLandZones {
+    Zone0
+};
+
+enum KidsLandZones {
+    ZONE_GLASS_WALL_1 = 10,
+    ZONE_GLASS_WALL_2 = 15
+};
+
+enum AntLandZones {
+    ZONE_SPIN_ROOM_1 = 7
+};
+
+enum GhostCastleZones {
+    ZONE_BILLIARDS = 14
+};
+
+enum AntLandStageFlags {
+    SF_SPIN_ROOM_1_COMPLETED = 0
 };
 
 

@@ -4,7 +4,6 @@
 extern char D_801103D0[];
 
 extern f64 D_801104F8;
-extern s32 D_80236974;
 extern Collider D_80236980[128];
 extern s32 D_8020D8F4;
 extern f64 D_801106A0;
@@ -27,7 +26,7 @@ extern Vec3f D_802489C8[8];
 
 /* Migrated BSS */
 //TODO: type this data correctly
-char gShadows[0xC00];
+Shadow gShadows[64];
 s32 gShadowCount;
 Vec3f D_80248518;
 char D_80248528[0x18];
@@ -236,8 +235,8 @@ void func_800CFF7C(Vec3f* arg0) {
     f32 temp_f14;
     Rect3D* temp_v0;
 
-    if (D_80236974 != 1) {
-        if ((gCurrentStage == STAGE_ANT) && ((gCurrentZone == STAGE_VS) || (gCurrentZone == STAGE_BOSSRUSH)) && (levelFlags[0] != 0)) {
+    if (isInOverworld != TRUE) {
+        if ((gCurrentStage == STAGE_ANT) && ((gCurrentZone == ZONE_SPIN_ROOM_1) || (gCurrentZone == STAGE_BOSSRUSH)) && (StageFlags[SF_SPIN_ROOM_1_COMPLETED] != 0)) {
             temp_f14 = SUM_OF_SQUARES(arg0->x, arg0->z);
             if (810000.0 < temp_f14) {
                 temp_f0_2 = sqrtf((f32) (810000.0 / temp_f14));
@@ -245,7 +244,7 @@ void func_800CFF7C(Vec3f* arg0) {
                 arg0->z = arg0->z * temp_f0_2;
             }
         } else {
-            temp_v0 = &gZoneCollisions[gCurrentZone].roomBounds;
+            temp_v0 = &gZoneFields[gCurrentZone].roomBounds;
             
             if (temp_v0->min.x > arg0->x ) {
                 arg0->x = temp_v0->min.x;
@@ -333,7 +332,7 @@ void func_800D34CC(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800D44C8.s")
 
 void func_800D4550(s32 arg0, s32 arg1, Poly* arg2, Vec3f* arg3, Vec3f* arg4) {
-    Collision* temp_v0 = &gZoneCollisions[gCurrentZone];
+    Field* temp_v0 = &gZoneFields[gCurrentZone];
 
     arg3->x = temp_v0->unkA4;
     arg3->y = temp_v0->unkA8 + (temp_v0->unkD0 * arg2->unkVectorStruct.vec1.x);
@@ -356,9 +355,9 @@ void func_800D4550(s32 arg0, s32 arg1, Poly* arg2, Vec3f* arg3, Vec3f* arg4) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800D5394.s")
 
 void func_800D6864(PlayerActor* arg0, Tongue* arg1, Camera* arg2, Vec3f* arg3, Vec3f* arg4) {
-    Collision* collider;
+    Field* collider;
 
-    collider = &gZoneCollisions[gCurrentZone];
+    collider = &gZoneFields[gCurrentZone];
     arg3->x = arg2->f1.z;
     arg3->y = arg2->f2.x + (collider->unkD0 * arg2->size1);
     arg3->z = arg2->f2.y;
@@ -387,16 +386,16 @@ void ApplyRotationToVector(Vec3f* vecA, Vec3f* vecB, f32 degreesAngle) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800D69D0.s")
 
 void SetCameraParameters(void) {
-    Collision* temp = &gZoneCollisions[gCurrentZone];
+    Field* temp = &gZoneFields[gCurrentZone];
     Camera* cam;
     s32 pad;
     s32 i;
     Vec3f sp3C;
     Vec3f sp30;
 
-    if ((gCurrentStage == STAGE_GHOST) && (gCurrentZone == STAGE_GHOSTBOSS)) { //billiard room?
+    if ((gCurrentStage == STAGE_GHOST) && (gCurrentZone == ZONE_BILLIARDS)) {
         func_800D6864(gPlayerActors, gTongues, gCamera, &sp3C, &sp30);
-    } else if ((D_80236974 == 1) && (D_8020D8F4 == 0)) {
+    } else if ((isInOverworld == TRUE) && (D_8020D8F4 == 0)) {
         func_800D3854(gPlayerActors, gTongues, gCamera, &sp3C, &sp30, 0);
     } else if (gCamera[0].unk0 == 1) {
         func_800D69D0(temp->cameraMode, gPlayerActors, gTongues, gCamera, &sp3C, &sp30, 0);
@@ -406,7 +405,7 @@ void SetCameraParameters(void) {
     
     cam = &gCamera[0];
     
-    for (i = 0; i < 4; i++, cam++) {
+    for (i = 0; i < ARRAY_COUNT(gCamera); i++, cam++) {
         cam->f5.x = sp3C.x;
         cam->f5.y = sp3C.y;
         cam->f5.z = sp3C.z;

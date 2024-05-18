@@ -1,14 +1,4 @@
 #include "common.h"
-extern Mtx D_80129730_Rabbit; // ear
-extern Mtx D_80129770_Rabbit; // earL
-extern Mtx D_801297B0_Rabbit; // head
-extern Mtx D_801297F0_Rabbit; // foot
-extern Mtx D_80129830_Rabbit; // footL
-extern Mtx D_80129870_Rabbit; // leg
-extern Mtx D_801298B0_Rabbit; // body
-extern Mtx D_801298F0_Rabbit; // legL
-extern Mtx D_80129930_Rabbit; // tail
-extern Mtx D_80129970_Rabbit; // watch
 
 #include "assets/img/Rabbit/groupMtx.mtx.inc.c"
 

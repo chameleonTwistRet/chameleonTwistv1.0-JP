@@ -5,7 +5,7 @@
 #include "mod.h" //used to DMA mod stuff in if needed
 
 //used in func_80098684 and func_80088B7C
-#define notEight 8.0f+0
+#define Eight 8.0f+0
 
 //migrate these to macros.h or something, since other c's can do stuff like this
 //when the top half is copied to the bottom half
@@ -68,7 +68,7 @@ typedef struct UnkBg {
     s16 spriteID;
 } UnkBg;
 
-extern UnkBg* D_800FFE58[4];
+extern UnkBg* D_800FFE58[];
 
 /*what is this used for???
 typedef struct unk80097CF8_2 {
@@ -82,17 +82,19 @@ typedef struct unk80097CF8 {
 } unk80097CF8;
 */
 
+extern s16 D_80200B38;
+extern s32 D_80236978;
 typedef struct UnkPlaySoundEffect {
     char unk_00[0x0E];
     s16 unk_0E;
 } UnkPlaySoundEffect;
 
 typedef struct Unk_800FFB74 {
-    /* 0x00 */ Mtx* unk_00;
-    /* 0x04 */ s32 unk_04;
-    /* 0x08 */ s32* unk_08;
-    /* 0x0C */ s32 unk_0C;
-    /* 0x10 */ s32 unk_10;
+    Mtx* unk_00;
+    void* unk_04;
+    s32* unk_08;
+    s32* unk_0C;
+    s32 unk_10;
 } Unk_800FFB74; // size 0x14
 
 typedef struct Unk_800FFDDC {
@@ -109,6 +111,14 @@ typedef struct Struct_800AB734 {
     /* 0x08 */ char pad_08[8];
     /* 0x10 */ EffectTypeAQArg7 unk_10[7][24];
 } Struct_800AB734; //sizeof 0x160
+
+typedef struct StageLoadData {
+    LevelHeader* stagePtr;
+    void* romStart;
+    void* ramStart;
+    void* ramEnd;
+    s32 stageId;
+} StageLoadData;
 
 //from ll.c
 //used in AT LEAST SaveData_Wait
@@ -163,7 +173,7 @@ s32 func_8008BFA8(s32 vol);
 s32 alCSPGetTempoWrapper(void);
 s32 func_8008C040(s32 arg0);
 void func_8008C070(s32 arg0);
-void func_8008C1C8(s32* arg0);
+void func_8008C1C8(Gfx** arg0);
 void func_8008C35C(Gfx** arg0);
 s32 Actor_PlaySound(Actor* actor, s32 sfxID, s32 unused1, s32 unused2);
 void func_8008C3F0(Actor* actor, s32 sfxID, s32 unused);
@@ -562,7 +572,7 @@ extern SaveFile gSaveFile;
 extern SaveFile* gSaveFiles;
 //used to be StageSegData even though its the same but renamed segTableEntry?
 //its even casted to segTableEntry anyways
-extern segTableEntry gStageLoadData[];
+extern StageLoadData gStageLoadData[];
 extern s16 D_80200058;
 extern u8 D_800FF8DC;
 extern u8 D_800FF8E0;
@@ -576,7 +586,6 @@ extern f32 D_80108760;
 extern f32 D_80108764;
 extern f32 D_80108768;
 extern s32 gFramebufferIndex;
-extern GraphicStruct gGraphicsList[2];
 extern unkStruct0 D_80101048;
 extern s32 D_800FF8E8;
 extern OSMesg gSchedMessageQueueMsgs[20];
@@ -588,12 +597,11 @@ extern s32 gGfxTaskPending;
 extern s16 D_800FF5CC;
 extern s16 gGfxTaskStarted;
 extern OSMesgQueue gSyncAudioMessageQueue;
-extern Mtx D_80129730[];
 typedef u32 uintptr_t;
 extern char D_8010D97C[];
 extern char D_8010D98C[];
 extern char D_8010D990[];
-extern StageSelectionData D_8010026E[];
+extern s16 D_8010026E[];// extern StageSelectionData D_8010026E[];
 extern u8 D_80200B68;
 //extern u8 gLevelAccessBitfeild;
 extern s16 sDebugLevelAccess;
@@ -603,7 +611,6 @@ extern s16 gSFXMute;
 extern UnkPlaySoundEffect* D_80200A90;
 extern f32 D_8010F2FC;
 extern s16 D_800FFEC0;
-extern char D_800FFEC4;
 extern Gfx D_1015A70[];
 extern Gfx D_1015AB8[];
 extern Gfx D_1015AE8[];
@@ -629,19 +636,22 @@ extern s16 D_80100E10;
 extern s16 sStageCrownTotals[6];
 extern s32 D_80247904;
 
-extern s16 D_80100258[7];
-extern s16 D_80100318[7];
+extern s16 D_80100258[7]; //should be 7?
+extern s16 NameSpriteIDs[7];
 extern s16 gStageCrownRecords[];
 extern s32 D_800FF8EC;
-extern char D_800FFE78;
-extern s16 D_80100348;
+extern s16 D_80100348[];
 extern f32 D_800FFEE8;
 extern s16 D_800FFEEC[];
 extern s8 D_80200B30;
 extern s16 sDebugBitfeild;
 extern s8 D_80200B28[];
 extern chameleonLetter* D_801005F8[6];
-extern s16 D_801003DC;
+typedef struct stuff {
+    s16 unk0[3];
+    u8 unk6[6];
+} stuff;
+extern stuff D_801003DC;
 extern s16 D_80200B1A;
 extern s16 D_80200B1C;
 extern s16 gSelectedBattleBGM;
@@ -652,7 +662,6 @@ extern s16 D_80200B18;
 extern f32 D_80108784;
 extern f32 D_80108788;
 extern f32 D_8010878C;
-extern u8 D_801003E3;
 extern s16 D_80200B1E;
 extern chameleonLetter* D_80100F28[10]; // coords and text for stage names
 extern chameleonLetter* D_80100DA0[];

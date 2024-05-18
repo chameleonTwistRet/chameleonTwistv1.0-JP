@@ -12,7 +12,7 @@ s32 D_80174984;
 s32 D_80174988;
 s32 D_8017498C;
 s32 D_80174990;
-s32 D_80174994;
+f32 D_80174994;
 s32 D_80174998;
 s32 gTimer;
 s32 D_801749A0;
@@ -645,13 +645,14 @@ void func_8002E5DC(UnkTempStruct arg0) {
     s32 sp2C;
 
     sp2C = -2;
-    if (1 == D_80236974) {
+    if (TRUE == isInOverworld) {
         sp2C = -1;
     }
 
     D_80174860->size1 = D_80174860->size1 + ((D_80174860->size2 - D_80174860->size1) * 0.200000003f);
     if (D_801749A8 == 0) {
-        if (((gCurrentStage == STAGE_KIDS) && (gCurrentZone == STAGE_BOSSRUSH)) || ((gCurrentStage == STAGE_GHOST) && (gCurrentZone == STAGE_GHOSTBOSS))) {
+        //if room is cycle 4 in kids land, or billiards in ghost castle, force free cam
+        if (((gCurrentStage == STAGE_KIDS) && (gCurrentZone == ZONE_GLASS_WALL_2)) || ((gCurrentStage == STAGE_GHOST) && (gCurrentZone == ZONE_BILLIARDS))) {
             if (D_80174860->unk0 == 1) {
                 PLAYSFX(0x2C, 0, 0x10);
                 D_80174860->unk0 = 0;
@@ -662,7 +663,7 @@ void func_8002E5DC(UnkTempStruct arg0) {
                 }
                 func_800D34CC();
             }
-        } else if ((Battle_GameType == 0) && (1 != D_80236974) && (arg0.unk_02 & 0x20)) {
+        } else if ((Battle_GameType == 0) && (TRUE != isInOverworld) && (arg0.unk_02 & 0x20)) {
             PLAYSFX(0x2C, 0, 0x10);
             if (D_80174860->unk0 == 0) {
                 D_80174860->unk0 = 1;
@@ -701,8 +702,118 @@ void func_8002E5DC(UnkTempStruct arg0) {
 //https://decomp.me/scratch/tpjwG
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8002E9F4.s")
 
-//camera follow player
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8002ECCC.s")
+void func_8002ECCC(s32 arg0) {
+    f32 sp4C;
+    f32 sp48;
+    f32 sp44;
+    f32 sp40;
+    f32 sp3C;
+    f32 var_f18;
+    s32 sp34;
+    f32 var_f2;
+    f32 temp;
+
+    sp4C = D_80174860->size1 * 800.0f;
+    sp48 = D_80174860->size1 * 600.0f;
+    if (D_80174860->pushHoriz > 0) {
+        D_80174860->pushHoriz = D_80174860->pushHoriz - 1;
+        D_80174860->f1.x += 5.0f;
+        WrapDegrees(&D_80174860->f1.x);
+        arg0 = 1;
+    } else if (D_80174860->pushHoriz < 0) {
+        D_80174860->pushHoriz = D_80174860->pushHoriz + 1;
+        D_80174860->f1.x -= 5.0f;
+        WrapDegrees(&D_80174860->f1.x);
+        arg0 = 1;
+    }
+    if (D_80174860->unk58 != 0) {
+        D_80174860->f3.x = D_80174860->unk5C;
+        D_80174860->f3.y = D_80174860->unk60;
+        D_80174860->f3.z = D_80174860->unk64;
+        func_8002E9F4();
+    } else {
+        if (arg0 != 0) {
+            D_80174860->untouchedTimer = 0;
+            if (gTongueOnePointer->tongueMode != 0) {
+                sp44 = 180.0f - D_80174860->f1.x;
+                WrapDegrees(&sp44);
+                gTongueOnePointer->trueAngle = sp44 - gTongueOnePointer->controlAngle;
+                WrapDegrees(&gTongueOnePointer->trueAngle);
+                if (gTongueOnePointer->trueAngle > 180.0f) {
+                    gTongueOnePointer->trueAngle = 360.0f - gTongueOnePointer->trueAngle;
+                }
+                func_8002E9F4();
+                if (gTongueOnePointer->trueAngle > 90.0f) {
+                    temp = -(90.0f - gTongueOnePointer->trueAngle);
+                    
+                } else {
+                    temp = (90.0f - gTongueOnePointer->trueAngle);
+                }
+                var_f18 = 90.0f - temp;
+                sp4C = (sp4C * 1.0f) * (1.0f + ((gTongueOnePointer->length * (1.0f + ((var_f18 * var_f18) / 3000.0f))) / 10000.0f));
+                sp48 *= 1.0f + ((gTongueOnePointer->length * (1.0f + ( SQ(var_f18) / 8000.0f))) / 10000.0f);
+                D_80174860->f3.x = (__cosf((((D_80174860->f1.x * 2) * PI) / 360.0)) * sp4C) + D_80174860->f1.z;
+                D_80174860->f3.z = D_80174860->f2.y - (__sinf((((D_80174860->f1.x * 2) * PI) / 360.0)) * sp4C);
+            } else {
+                func_8002E9F4();
+                D_80174860->f3.x = (__cosf((((D_80174860->f1.x * 2) * PI) / 360.0)) * sp4C) + D_80174860->f1.z;
+                D_80174860->f3.z = D_80174860->f2.y - (__sinf((((D_80174860->f1.x * 2) * PI) / 360.0)) * sp4C);
+            }
+        } else {
+            sp3C = gCurrentActivePlayerPointer->yAngle + D_80174860->unk50;
+            D_80174860->untouchedTimer++;
+            sp34 = D_80174860->untouchedTimer;
+            WrapDegrees(&sp3C);
+            if (D_80174860->f1.x < 180.0f) {
+                if ((D_80174860->f1.x + 180.0f) < sp3C) {
+                    var_f2 = (-360.0f - D_80174860->f1.x) + sp3C;
+                } else {
+                    var_f2 = sp3C - D_80174860->f1.x;
+                }
+            } else if (sp3C < (D_80174860->f1.x - 180.0f)) {
+                var_f2 = (360.0f - D_80174860->f1.x) + sp3C;
+            } else {
+                var_f2 = sp3C - D_80174860->f1.x;
+            }
+            if (sp34 >= 61) {
+                sp34 = 0x3C;
+            }
+            if (sp34 >= 20) {
+                D_80174860->f1.x = D_80174860->f1.x + (((var_f2 * (sp34 - 0x13)) / 41.0f) * 0.02999999933f);
+            }
+            WrapDegrees(&D_80174860->f1.x);
+            func_8002E9F4();
+            D_80174860->f3.x = (__cosf( (((D_80174860->f1.x * 2) * PI) / 360.0)) * sp4C) + D_80174860->f1.z;
+            D_80174860->f3.z = D_80174860->f2.y - (__sinf((((D_80174860->f1.x * 2) * PI) / 360.0)) * sp4C);
+        }
+        if ((gTongueOnePointer->tongueMode == 4) || (gTongueOnePointer->tongueMode == 5) || (gTongueOnePointer->tongueMode == 0xB)) {
+            D_80174860->f2.z = (D_80174860->f2.z + ((gCurrentActivePlayerPointer->pos2.y - D_80174860->f2.z) * 0.0500000000000000028));
+        } else {
+            D_80174860->f2.z = (D_80174860->f2.z + ((gCurrentActivePlayerPointer->yCounter - D_80174860->f2.z) * 0.0500000000000000028));
+        }
+
+        if (D_80174860->f2.z + sp48 < gCurrentActivePlayerPointer->pos2.y) {
+            D_80174860->f3.y = gCurrentActivePlayerPointer->pos2.y;
+        } else {
+            D_80174860->f3.y = D_80174860->f2.z + sp48;
+        }
+        if (D_80174860->f3.y < D_80174994) {
+            D_80174860->f3.y = D_80174994;
+        }
+    }
+    
+    SetCameraParameters();
+    if (D_800FEA30 >= 2) {
+        D_80174860->f4.x = D_80174860->f3.x;
+        D_80174860->f4.y = D_80174860->f3.y;
+        D_80174860->f4.z = D_80174860->f3.z;
+        D_80174860->f5.x = D_80174860->f1.z;
+        D_80174860->f5.y = D_80174860->f2.x;
+        D_80174860->f5.z = D_80174860->f2.y;
+    }
+    
+    D_80174860->f1.y = CalculateAngleOfVector(D_80174860->f4.x - D_80174860->f5.x, -(D_80174860->f4.z - D_80174860->f5.z));
+}
 
 //related to animation
 void func_8002F3D4(void) {
@@ -896,7 +1007,7 @@ void func_800313BC(s32 arg0, f32 arg1) {
     gActors[arg0].vel.x = cosf(DEGREES_TO_RADIANS_2PI(arg1)) * 12.0f;
     gActors[arg0].vel.z = -sinf(DEGREES_TO_RADIANS_2PI(arg1)) * 12.0f;
     if (gActors[arg0].actorID == SPIDER_SPAWNER) {
-        levelFlags[(s32)gActors[arg0].unk_164] = 1;
+        StageFlags[(s32)gActors[arg0].unk_164] = 1;
     }
 }
 
@@ -2323,7 +2434,7 @@ void func_8004769C(Actor* golemRoomSpiderSpawnerActor){
 }
 
 void ActorTick_GolemSpiderSpawner(Actor* Actor) {
-    if (levelFlags[Actor->unk_124] != 0) {
+    if (StageFlags[Actor->unk_124] != 0) {
         if (gActorCount < (s32) Actor->unk_160) {
             Actor->userVariables[0] += 1;
             if (Actor->unk_130 < Actor->userVariables[0]) {

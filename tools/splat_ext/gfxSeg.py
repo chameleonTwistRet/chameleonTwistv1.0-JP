@@ -7,6 +7,9 @@ this custom segtype aims to fix that.
 At least by fixing vtx's.
 """
 
+rangeStarter = 0x80129730
+animSlots = 40
+
 import re
 from typing import Optional
 
@@ -216,6 +219,21 @@ class N64SegGfxSeg(N64SegGfx):
                 )
 
         gfxd_printf(self.format_sym_name(sym))
+        return 1
+
+    def mtx_handler(self, addr):
+        use = ""
+        sym = self.retrieve_sym_type(symbols.all_symbols_dict, addr, "Mtx")
+        if not sym:
+            #animslot check
+            if addr >= rangeStarter and addr < rangeStarter + (animSlots * 0x40):
+                index = int((addr - rangeStarter)/0x40)
+                use = f"&AnimationSlots[{index}]"
+            else:
+                print("guh")
+        else:
+            use = f"&{self.format_sym_name(sym)}"
+        gfxd_printf(use)
         return 1
     
     def vtx_handler(self, addr, count):

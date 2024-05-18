@@ -1,19 +1,5 @@
 #include "common.h"
 
-extern Mtx D_80129730_Battle_Chameleons;
-extern Mtx D_80129770_Battle_Chameleons;
-extern Mtx D_801297B0_Battle_Chameleons;
-extern Mtx D_80129830_Battle_Chameleons;
-extern Mtx D_801297F0_Battle_Chameleons;
-extern Mtx D_801298B0_Battle_Chameleons;
-extern Mtx D_80129870_Battle_Chameleons;
-extern Mtx D_80129930_Battle_Chameleons;
-extern Mtx D_801298F0_Battle_Chameleons;
-extern Mtx D_801299B0_Battle_Chameleons;
-extern Mtx D_80129970_Battle_Chameleons;
-extern Mtx D_801299F0_Battle_Chameleons;
-extern Mtx D_80129A30_Battle_Chameleons;
-
 #include "assets/chameleons/Battle_Chameleons/groupMtx.mtx.inc.c"
 
 #include "assets/chameleons/Battle_Chameleons/grouplight.light.inc.c"
@@ -625,12 +611,12 @@ unsigned char Battle_Chameleons_Linda_eye2_ci8_PAL[] = {
 #include "build/assets/chameleons/Battle_Chameleons/Linda/head/Linda_eye2.ci8.pal.inc.c"
 };
 unsigned char Battle_Chameleons_Pad95[] = FILEPAD;
-unsigned char Battle_Chameleons_bow_ci4_PNG[] = {
-#include "build/assets/chameleons/Battle_Chameleons/head/bow.ci4.png.inc.c"
+unsigned char Battle_Chameleons_Linda_bow_ci4_PNG[] = {
+#include "build/assets/chameleons/Battle_Chameleons/Linda/head/Linda_bow.ci4.png.inc.c"
 };
 unsigned char Battle_Chameleons_Pad96[] = FILEPAD;
-unsigned char Battle_Chameleons_bow_ci4_PAL[] = {
-#include "build/assets/chameleons/Battle_Chameleons/head/bow.ci4.pal.inc.c"
+unsigned char Battle_Chameleons_Linda_bow_ci4_PAL[] = {
+#include "build/assets/chameleons/Battle_Chameleons/Linda/head/Linda_bow.ci4.pal.inc.c"
 };
 unsigned char Battle_Chameleons_Pad97[] = FILEPAD;
 unsigned char Battle_Chameleons_Linda_cheek_ci4_PNG[] = {

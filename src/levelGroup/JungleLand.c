@@ -1,14 +1,5 @@
 #include "common.h"
 
-extern Mtx D_80129730_JungleLand; //golem
-extern Mtx D_80129770_JungleLand; //golem leg
-extern Mtx D_801297B0_JungleLand; //golem arm
-extern Mtx D_801297F0_JungleLand; //golem leg2
-extern Mtx D_80129830_JungleLand; //golem body
-extern Mtx D_80129870_JungleLand; //golem leg3
-extern Mtx D_801298B0_JungleLand; //golem elbow
-extern Mtx D_801298F0_JungleLand; //golem arm2
-
 extern unsigned char Global_jllogTop_ci4_PAL[];
 extern unsigned char Global_jllogTop_ci4_PNG[];
 extern unsigned char Global_jlLog_ci4_PAL[];
@@ -623,7 +614,7 @@ Mtx JungleLand_IMtx1 = IDENTITY;
 #include "assets/levelGroup/JungleLand/roomObjects/eroom5_objLilypad2.roomObj.inc.c"
 
 #include "assets/levelGroup/JungleLand/roomObjects/eroom5_objLilypad3.roomObj.inc.c"
-
+extern Vtx JungleLand_water_Vtx[];
 #include "assets/levelGroup/JungleLand/roomObjects/eroom5_objSwampWater.roomObj.inc.c"
 
 #include "assets/levelGroup/JungleLand/roomObjects/eroom5_objSTOP.roomObj.inc.c"
@@ -653,7 +644,7 @@ Mtx JungleLand_IMtx1 = IDENTITY;
 #include "assets/levelGroup/JungleLand/roomObjects/eroom6_objLilypad3.roomObj.inc.c"
 
 #include "assets/levelGroup/JungleLand/roomObjects/eroom6_objPole4.roomObj.inc.c"
-
+extern Vtx JungleLand_water2_Vtx[];
 #include "assets/levelGroup/JungleLand/roomObjects/eroom6_objSwampWater.roomObj.inc.c"
 
 #include "assets/levelGroup/JungleLand/roomObjects/eroom6_objSTOP.roomObj.inc.c"
@@ -743,7 +734,7 @@ Mtx JungleLand_IMtx1 = IDENTITY;
 #include "assets/levelGroup/JungleLand/roomActors/eroomUnk3_actSTOP.roomAct.inc.c"
 
 #include "assets/levelGroup/JungleLand/roomObjects/eroom10_objLand.roomObj.inc.c"
-
+extern Vtx JungleLand_waterfall_Vtx[];
 #include "assets/levelGroup/JungleLand/roomObjects/eroom10_objWaterfall.roomObj.inc.c"
 
 #include "assets/levelGroup/JungleLand/roomObjects/eroom10_objWaterfallGround.roomObj.inc.c"
@@ -875,7 +866,7 @@ Mtx JungleLand_IMtx1 = IDENTITY;
 #include "assets/levelGroup/JungleLand/roomActors/room8_actSTOP.roomAct.inc.c"
 
 #include "assets/levelGroup/JungleLand/roomObjects/room0_objWalls.roomObj.inc.c"
-
+extern Vtx JungleLand_roomZeroLava_Vtx[];
 #include "assets/levelGroup/JungleLand/roomObjects/room0_objLava0.roomObj.inc.c"
 
 #include "assets/levelGroup/JungleLand/roomObjects/room0_objRail.roomObj.inc.c"
@@ -1471,7 +1462,7 @@ Mtx JungleLand_IMtx1 = IDENTITY;
 #include "assets/levelGroup/JungleLand/roomObjects/room5_objSTOP.roomObj.inc.c"
 
 #include "assets/levelGroup/JungleLand/roomObjects/room6_objWalls.roomObj.inc.c"
-
+extern Vtx JungleLand_roomSevenLava_Vtx[];
 #include "assets/levelGroup/JungleLand/roomObjects/room6_objLava6.roomObj.inc.c"
 
 #include "assets/levelGroup/JungleLand/roomObjects/room6_objFloor.roomObj.inc.c"
@@ -1546,7 +1537,7 @@ Mtx JungleLand_IMtx1 = IDENTITY;
 
 #include "assets/levelGroup/JungleLand/spriteActors/room0_sprSTOP.sprite.inc.c"
 
-#include "build/assets/levelGroup/JungleLand/spriteLib.inc.c"
+#include "assets/levelGroup/JungleLand/spriteLib.sprLib.inc.c"
 
 #include "assets/levelGroup/JungleLand/rooms/room0.rmSet.inc.c"
 

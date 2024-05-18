@@ -1,5 +1,4 @@
 #include "common.h"
-extern Mtx D_80129730_BombLand; //s
 
 extern unsigned char Global_metalPlate_i4_PNG[];
 extern unsigned char Global_steelPlate_i4_PNG[];
@@ -1858,7 +1857,7 @@ Mtx BombLand_IMtx1 = IDENTITY;
 
 #include "assets/levelGroup/BombLand/collectables/room15_clctSTOP.clct.inc.c"
 
-#include "build/assets/levelGroup/BombLand/spriteLib.inc.c"
+#include "assets/levelGroup/BombLand/spriteLib.sprLib.inc.c"
 
 #include "assets/levelGroup/BombLand/rooms/room0.rmSet.inc.c"
 

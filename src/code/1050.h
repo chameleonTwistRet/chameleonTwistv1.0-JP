@@ -12,7 +12,7 @@ void func_8004CD9C(s32, void*);
 void Battle_Update(void);
 Gfx* func_8007A2D8(Gfx*, Camera*);
 void func_8007AC60(Camera*, PlayerActor*);
-void func_8008C1C8(Gfx**);
+void func_8008C1C8(Gfx**); //void func_8008C1C8(Gfx**);
 void Timing_StartProcess(void);
 void Timing_StopProcess(void);
 void func_8008C554(void);
@@ -29,7 +29,6 @@ Gfx* func_800C3B50(GraphicStruct*, Gfx*);
 s32 PutDList(Mtx** arg0, Gfx** arg1, Gfx* arg2);
 void func_80080C28(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, u8 arg6, u8 arg7, u8 arg8, u8 arg9);
 void func_80058044(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, s32 arg7);
-void Effect_TypeT_Init(f32, f32, s32, s32);
 void func_80027240(Mtx** arg0, Mtx* arg1, s32 arg2, s32 arg3);
 void func_80027138(AnimPointer* arg0, s32* arg1, s32* arg2, Mtx** arg3);
 void Effect_TypeAF_Init(f32* arg0, f32* arg1, f32* arg2, f32 arg3, f32 arg4, f32 arg5, s32 arg6, s32 arg7, s32 arg8);
@@ -38,7 +37,6 @@ void Effect_TypeAF_Init(f32* arg0, f32* arg1, f32* arg2, f32 arg3, f32 arg4, f32
 extern f32 D_80168D88;
 extern f32 D_80168D8C;
 extern f32 D_80168D90;
-extern GraphicStruct gGraphicsList[2];
 extern s32 gFramebufferIndex;
 extern s32 D_800F066C;
 extern s32 sDebugMultiplayer;
@@ -92,6 +90,15 @@ extern Gfx Fred_restAssociate_Gfx[];
 extern Gfx Linda_restAssociate_Gfx[];
 extern Gfx Black_restAssociate_Gfx[];
 extern Gfx White_restAssociate_Gfx[];
+
+extern Gfx Battle_Chameleons_Davy_restAssociate_Gfx[];
+extern Gfx Battle_Chameleons_Jack_restAssociate_Gfx[];
+extern Gfx Battle_Chameleons_Fred_restAssociate_Gfx[];
+extern Gfx Battle_Chameleons_Linda_restAssociate_Gfx[];
+extern Gfx Battle_Chameleons_Black_restAssociate_Gfx[];
+extern Gfx Battle_Chameleons_White_restAssociate_Gfx[];
+
+
 extern Gfx* D_800F0650[];
 extern Gfx static0_gfx6_Gfx[];
 extern Gfx static0_gfx5_Gfx[];

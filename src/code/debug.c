@@ -61,7 +61,7 @@ void Debug_ChangeRoom(void) {
     }
     //@bug variable could be uninitialized
     if (shouldChangeRoom == 1) {
-        if (D_80236974 == 0) {
+        if (isInOverworld == FALSE) {
             func_800C1458(gCurrentZone);
             return;
         }

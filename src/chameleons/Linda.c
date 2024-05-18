@@ -1,18 +1,4 @@
 #include "common.h"
-//these are probably used in ram specifically so they can be animated
-extern Mtx D_80129730_Linda; //body
-extern Mtx D_80129770_Linda; //head
-extern Mtx D_801297B0_Linda; //backpack
-extern Mtx D_801297F0_Linda; //shoe
-extern Mtx D_80129830_Linda; //Lshoe
-extern Mtx D_80129870_Linda; //cuff
-extern Mtx D_801298B0_Linda; //Lcuff
-extern Mtx D_801298F0_Linda; //wrist
-extern Mtx D_80129930_Linda; //Lwrist
-extern Mtx D_80129970_Linda; //shoulder
-extern Mtx D_801299B0_Linda; //Lshoulder
-extern Mtx D_801299F0_Linda; //fist
-extern Mtx D_80129A30_Linda; //Lfist
 
 
 #include "assets/chameleons/Linda/light.light.inc.c"

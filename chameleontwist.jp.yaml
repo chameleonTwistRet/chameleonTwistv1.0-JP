@@ -35,14 +35,19 @@ segments:
     type: databin
     start: 0x40
 
-  # Segment: Code
-  - name: main
+  - name: entry
     type: code
     start: 0x1000
     vram: 0x80025C00
-    bss_size: 0x13A880
     subsegments:
       - [0x1000, hasm]            # ENTRY (should split these some time)
+
+  - name: main
+    type: code
+    start: 0x1050
+    vram: 0x80025C50
+    bss_size: 0x13A880
+    subsegments:
       - [0x1050, c, code/1050]    # CODE
       - [0x84E0, c, code/84E0]
       - [0x298D0, c, code/298D0]
@@ -221,13 +226,16 @@ segments:
       - [0xC87E0, c, audio/reverb]
       - [0xC9430, c, libc/ldiv]
       - [0xC95C0, data, rspBootText]
-      - [0xC9690, .data, code/1050] #800EE290 through 800F0B50
-      - [0xCBA50, data, code/1050] #800EE290 through 800F0B50
-      - [0xCBF50, .data, code/battle] #800F0B50 through 800F0D90
-      - [0xCC190, .data, code/sprite] #800F0D90 through 800FEDC0
-      - [0xD9AF0, data, code/sprite] #800F0D90 through 800FEDC0
-      #- [0xCC190, data, code/sprite] #800F0D90 through 800FEDC0
-      - [0xDA1C0, data, code/5FF30] #800FEDC0 through 80108B70
+      - [0xC9690, data, gspFast3DTextStart]
+      - [0xCAAC0, data, aspMainTextStart]
+      - [0xCB8E0, .data, code/1050] #800EE290 through 800F0B50
+      - [0xCBA70, data, code/1050] #800EE290 through 800F0B50
+      - [0xCBAA0, data, code/debug] #800F0B50 through 800F0B50
+      - [0xCBF50, .data, code/battle]
+      - [0xCC190, .data, code/sprite]
+      - [0xDA1C0, .data, code/5FF30] #800FEDC0 through 80108B70
+      #- [0xDB770, data, code/5FF30_2] #80100370 fake split for migrating data
+      - [0xDB840, data, code/5FF30_2] #starts at 80100440
       - [0xE3BA0, .data, code/8ADD0] #801087A0 through 80108B70
       - [0xE3F70, data, code/math] #80108B70 through 80109010
       - [0xE4410, .data, os/initialize] #80109010 through 80109030
@@ -323,8 +331,21 @@ segments:
     start: 0xED090
     follows_vram: main
     vram: 0x8024C510
+    bss_size: 0x19F020
     subsegments:
-      - [0xED090, databin, unkBlock0Assets0] #size of 0x14AD0
+      - [0xED090, c, unkBlock0Assets0] #size of 0x14AD0
+      - {start: 0x101B60, type: bss, name: assets0Bss}
+      #-[0x0F018C, cameraFunctions]
+      #-[0x0F33DC]
+
+  #this segment is fake, but the original game seems to have an old overlay compiled in
+  - name: AnimationMatrixSlots
+    type: code
+    vram: 0x80129730
+    start: 0x101B60
+    subsegments:
+    - [0x101B60, c, code/AnimSlots]
+    - [0x101B60, .bss, code/AnimSlots]
 
 # # from mainproc() piDMA size: 45C00
   - start: 0x101B60
@@ -459,9 +480,32 @@ segments:
     subalign: 8
     start: 0x147760
     subsegments:
-      - [0x147760, databin, alBankfile0] #size of 0x7B60 [ram 801C4940] 
+      - [0x147760, databin, alBankfile0] #size of 0x7B60 [ram 801C4940]
 
-  
+  - name: assets2
+    type: code
+    start: 0x14F2C0
+    subsegments:
+      - [0x14F2C0, databin, alBankChunk] #not split data, random chunk of data from the rom currently
+
+  - name: assets3
+    type: code
+    start: 0x282E80
+    subsegments:
+      - [0x282E80, databin, alBankChunk2] #not split data, random chunk of data from the rom currently
+
+  - name: assets4
+    type: code
+    start: 0x2A29C0
+    subsegments:
+      - [0x2A29C0, databin, sound/ctl] #size of 0x8760
+
+  - name: assets5
+    type: code
+    start: 0x2AB120
+    subsegments:
+      - [0x2AB120, databin, sound/tbl] #sfxs #unkSize
+
   # # Start of next part?
   # - [0x147760, databin, alBankfile0] #size of 0x7B60 [ram 801C4940] 
   # - [0x14F2C0, databin, alBankfile0Table] #unksize
@@ -1383,7 +1427,7 @@ segments:
       - [0x491058, roomActor, roomActors/room19_act1]
       - [0x4910b8, roomActor, roomActors/room19_actSTOP]
 
-      - [0x491118, databin, spriteLib]
+      - [0x491118, spriteLib, spriteLib]
 
       - [0x4912d8, spriteActor, spriteActors/room0_spr1]
       - [0x491328, spriteActor, spriteActors/room0_spr2]
@@ -3262,7 +3306,7 @@ segments:
       - [0x4f5934, collectable, collectables/room15_clct1]
       - [0x4f5954, collectable, collectables/room15_clctSTOP]
 
-      - [0x4f5974, databin, spriteLib]
+      - [0x4f5974, spriteLib, spriteLib]
 
       - [0x4f5ab4, roomSettings, rooms/room0]
       - [0x4f5b20, roomSettings, rooms/room1]
@@ -4733,7 +4777,7 @@ segments:
       - [0x5346fc, roomActor, roomActors/room18_act1]
       - [0x53475c, roomActor, roomActors/room18_actSTOP]
 
-      - [0x5347bc, databin, spriteLib]
+      - [0x5347bc, spriteLib, spriteLib]
 
       - [0x53487c, collectable, collectables/room1_clct1]
       - [0x53489c, collectable, collectables/room1_clct2]
@@ -5665,7 +5709,8 @@ segments:
       - [0x5787f4]
       - [0x5787f8, animArray, anim/unk2, 1, 1]
       - [0x578838, animPointers, anim/unk2Pointers]
-      - [0x578844]
+      - [0x578844, databin, alignment3]
+
 
   - start: 0x578850
     name: DesertCastle
@@ -6116,7 +6161,7 @@ segments:
 
       - [0x58504c, roomActor, roomActors/roomMulti2_actSTOP]
 
-      - [0x5850ac, databin, spriteLib]
+      - [0x5850ac, spriteLib, spriteLib]
 
       - [0x58516c, collectable, collectables/room4_clct1]
       - [0x58518c, collectable, collectables/room4_clctSTOP]
@@ -7384,7 +7429,7 @@ segments:
       - [0x5cb408, roomObject, roomObjects/roomMulti_obj2]
       - [0x5cb494, roomObject, roomObjects/roomMulti_objSTOP]
 
-      - [0x5cb520, databin, spriteLib]
+      - [0x5cb520, spriteLib, spriteLib]
 
       - [0x5cb5a0, roomSettings, rooms/fakeRoom]
       - [0x5CB60C, roomSettings, rooms/fakeRoomSTOP]
@@ -9142,7 +9187,7 @@ segments:
       - [0x6bb69c, spriteActor, spriteActors/room0_sprLavaFlame7]
       - [0x6bb6ec, spriteActor, spriteActors/room0_sprSTOP]
 
-      - [0x6bb73c, databin, spriteLib]
+      - [0x6bb73c, spriteLib, spriteLib]
       - [0x6bb8bc, roomSettings, rooms/room0]
       - [0x6bb928, roomSettings, rooms/room1]
       - [0x6bb994, roomSettings, rooms/room2]
@@ -10092,145 +10137,6 @@ segments:
       subsegments:
       - [0x7A72B0, databin, BombSnake_data]
 
-  # - start: 0x7A72B0
-  #   name: BombSnake
-  #   vram: 0x03000000 #SEGMENT 0x03
-  #   dir: levelGroup
-  #   subalign: 8
-  #   type: code
-  #   exclusive_ram_id: "LEVELGROUP"
-  #   subsegments:
-  #   - [auto, c, BombSnake]
-  #   - name: BombSnake
-  #     dir: BombSnake
-  #     type: .data
-  #     subalign: 8
-  #     vram: 0x8031B020
-  #     start: 0x7A72B0
-  #     subsegments:
-  #     - [0x7A72B0] #identity matrix
-  #     - [0x7A72F0, levelPointer, pointers]
-  #     - [0x7A7a70, databin, rabObjects]
-
-  #     - [0x7a7bd4, roomObject, roomObjects/roomObj1]
-  #     - [0x7a7c60, roomObject, roomObjects/roomObj2]
-  #     - [0x7a7cec, roomObject, roomObjects/roomObj3]
-  #     - [0x7a7d78, roomObject, roomObjects/roomObj4]
-  #     - [0x7a7e04, roomObject, roomObjects/roomObj5]
-  #     - [0x7a7e90, roomObject, roomObjects/roomObj6]
-  #     - [0x7a7f1c, roomObject, roomObjects/roomObj7]
-  #     - [0x7a7fa8, roomObject, roomObjects/roomObj8]
-  #     - [0x7a8034, roomObject, roomObjects/roomObj9]
-  #     - [0x7a80c0, roomObject, roomObjects/roomObj10]
-  #     - [0x7a814c, roomObject, roomObjects/roomObj11]
-  #     - [0x7a81d8, roomObject, roomObjects/roomObj12]
-  #     - [0x7a8264, roomObject, roomObjects/roomObjN1]
-
-  #     - [0x7a82f0, roomActor, roomActors/roomAct1]
-  #     - [0x7a8350, roomActor, roomActors/roomActN1]
-  #     - [0x7a83B0, roomActor, roomActors/roomAct2]
-  #     - [0x7a8410, roomActor, roomActors/roomActN2]
-
-  #     - [0x7a8470, databin, spriteLib]
-  #     - [0x7a8530, roomSettings, room1]
-  #     - [0x7a859c, roomSettings, room2]
-  #     - [0x7a8608, roomSettings, nullRoom]
-  #     - {start: 0x7a8674, type: levelMap, name: map, args: Map}
-  #     - {start: 0x7a8680, type: levelMap, name: map, args: Header}
-  #     - [0x7a8690, roomSettings, nullOWRoom]
-  #     - [0x7A86FC, levelScope, scope]
-  #     - [0x7A8714, levelHeader, header]
-  #     - [0x7a8734, databin, headerPad] # i guess just so the rest is 16 aligned??????
-
-  #     - [0x7a8740] #identity matrix
-  #     - [0x7a8780, lights, bsScope] # set Lights 1 for alot of bs assets
-
-  #     - [0x7a8798, vtx, arenaWalls/arenaWalls]
-  #     - [0x7a89b8] #identity matrix
-  #     - [0x7a89f8, gfxSeg, arenaWalls/arenaWalls]
-
-  #     - [0x7a8d90, vtx, arenaFloor/arenaFloor]
-  #     - [0x7a8f10] #identity matrix
-  #     - [0x7a8f50] #B8000000
-  #     - [0x7a8f58, i4, arenaFloor/arenaFloor.i4, 64, 32]
-  #     - [0x7A9358, gfxSeg, arenaFloor/arenaFloor]
-      
-  #     - {start: 0x7A9600, type: collision, name: arenaWalls/arenaWalls, args: "Verts"}
-  #     - {start: 0x7a96d8, type: collision, name: arenaWalls/arenaWalls, args: "Tris"}
-  #     - {start: 0x7a97f8, type: collision, name: arenaWalls/arenaWalls, args: "Settings"}
-  #     - {start: 0x7a9810, type: collision, name: arenaWalls/arenaWalls, args: "Header"}
-  #     - {start: 0x7a9824, type: collision, name: arenaFloor/arenaFloor, args: "Verts"}
-  #     - {start: 0x7a98b4, type: collision, name: arenaFloor/arenaFloor, args: "Tris"}
-  #     - {start: 0x7a9974, type: collision, name: arenaFloor/arenaFloor, args: "Settings"}
-  #     - {start: 0x7a998c, type: collision, name: arenaFloor/arenaFloor, args: "Header"}
-
-  #     - [0x7a99a0] #identity matrix
-
-  #     - [0x7a99e0, animHeader, model/unk5/unk5]
-  #     - [0x7a9a10, animArray, model/unk5/unk5, 2, 6]
-  #     - [0x7a9d10, animHeader, model/unk6/unk6]
-  #     - [0x7a9d40, animArray, model/unk6/unk6, 2, 1]
-  #     - [0x7a9dc0, animHeader, model/unk7/unk7]
-  #     - [0x7a9df0, animArray, model/unk7/unk7, 15, 1]
-  #     - [0x7aa1b0, animHeader, model/unk8/unk8]
-  #     - [0x7aa1e0, animArray, model/unk8/unk8, 15, 1]
-
-  #     - [0x7aa5a0, lights, bsScope2] # set Lights 1 for alot of bs objects
-
-  #     - [0x7aa5b8, vtx, bombSnakeHead/bombSnakeHead]
-  #     - [0x7ab208] #identity matrix
-  #     - [0x7ab248] #B8000000
-  #     - [0x7ab250, ci4, bombSnakeHead/cannonClone.ci4, 32, 16]
-  #     - [0x7AB350] #B8000000
-  #     - [0x7AB358, palette, bombSnakeHead/cannonClone.ci4]
-  #     - [0x7ab558] #B8000000
-  #     - [0x7ab560, ci4, bombSnakeHead/color.ci4, 16, 16]
-  #     - [0x7AB5E0] #B8000000
-  #     - [0x7AB5E8, palette, bombSnakeHead/color.ci4]
-  #     - [0x7ab7e8, gfxSeg, bombSnakeHead/bombSnakeHead]
-
-  #     - [0x7AC0A0, vtx, bombSnakeHeadSpike/bombSnakeHeadSpike]
-  #     - [0x7Ac300] #identity matrix
-  #     - [0x7Ac340] #B8000000
-  #     - [0x7Ac348, ci4, bombSnakeHeadSpike/bombSnakeHeadSpike.ci4, 32, 16]
-  #     - [0x7AC448] #B8000000
-  #     - [0x7AC450, palette, bombSnakeHeadSpike/bombSnakeHeadSpike.ci4]
-  #     - [0x7ac650, gfxSeg, bombSnakeHeadSpike/bombSnakeHeadSpike]
-
-  #     - [0x7AC948, vtx, bombSnakeHeadGem/bombSnakeHeadGem]
-  #     - [0x7acf48] #identity matrix
-  #     - [0x7acf88] #B8000000
-  #     - [0x7acf90, ci8, bombSnakeHeadGem/bombSnakeHeadGem.ci8, 32, 48]
-  #     - [0x7AD590] #B8000000
-  #     - [0x7AD598, palette, bombSnakeHeadGem/bombSnakeHeadGem.ci8]
-  #     - [0x7ad798, gfxSeg, bombSnakeHeadGem/bombSnakeHeadGem]
-
-  #     - [0x7ad9e0, vtx, bombSnakeEars/bombSnakeEars]
-  #     - [0x7add60] #identity matrix
-  #     - [0x7adda0] #B8000000
-  #     - [0x7adda8, rgba16, bombSnakeEars/bombSnakeEars.rgba16, 41, 41]
-  #     - [0x7AEAD0, gfxSeg, bombSnakeEars/bombSnakeEars]
-
-  #     - [0x7aef20, vtx, unkD/unkD]
-  #     - [0x7aef60] #identity matrix
-  #     - [0x7aefa0, gfxSeg, unkD/unkD]
-
-  #     - [0x7af018, vtx, unkE/unkE]
-  #     - [0x7af058] #identity matrix
-  #     - [0x7af098, gfxSeg, unkE/unkE]
-
-  #     - [0x7af110] #identity matrix
-  #     - [0x7af150, gfxSeg, unkF/unkF]
-
-  #     - [0x7af198, vtx, bombSnakeTail/bombSnakeTail]
-  #     - [0x7af398] #identity matrix
-  #     - [0x7af3d8, gfxSeg, bombSnakeTail/bombSnakeTail]
-
-  #     - [0x7af698] #identity matrix
-  #     - [0x7af6d8, gfxSeg, unk11/unk11]
-  #     - [0x7af6f8, databin, animPointers]
-  #     #eof
-
   - start: 0x7af730
     name: GiantCake
     vram: 0x03000000 #SEGMENT 0x03
@@ -10339,6 +10245,8 @@ segments:
       subsegments:
       - [0x8788B0, databin, BossRush_data]
 
+  # - [0x878870, databin]
+  
   # # - start: 0x87F600
   # #   name: failMtx
   # #   type: data
@@ -12000,7 +11908,7 @@ segments:
       - [0x9E24D8, palette, whiteIcon.ci8]
       - [0x9e26d8] #B8000000
 
-      - [0x9e26E0, ia8, whiteIcon.ia8, 144, 16]
+      - [0x9e26E0, ia8, symbols2.ia8, 144, 16]
       - [0x9E2FE0] #B8000000
 
       - [0x9E2FE8, ci4, crownIcon.ci4, 16, 16]
@@ -12687,9 +12595,9 @@ segments:
       - [0xae2290] #B8000000
       - [0xae2298, palette, Linda/head/Linda_eye2.ci8]
       - [0xae2498] #B8000000
-      - [0xae24A0, ci4, head/bow.ci4, 64, 32]
+      - [0xae24A0, ci4, Linda/head/Linda_bow.ci4, 64, 32]
       - [0xae28a0] #B8000000
-      - [0xae28a8, palette, head/bow.ci4]
+      - [0xae28a8, palette, Linda/head/Linda_bow.ci4]
       - [0xae2aa8] #B8000000
       - [0xae2ab0, ci4, Linda/head/Linda_cheek.ci4, 32, 32]
       - [0xae2cb0] #B8000000
@@ -13887,7 +13795,7 @@ segments:
       - [0xB31508, mtx, restAssociate/restAssociate]
       - [0xB31548, gfxSeg, restAssociate/restAssociate]
 
-  - name: assets5
+  - name: assets6
     type: code
     subalign: 8
     start: 0xB315D0

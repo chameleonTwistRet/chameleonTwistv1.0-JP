@@ -199,7 +199,7 @@ extern OSThread D_80117FF0; //unused thread.
 extern void* D_801191A0;
 extern OSMesgQueue gSyncMessageQueue;
 // extern u64 D_80119320[128]; //D_800f04e0[].dram_stack
-extern u64 D_80119720[8192];//D_800f04e0[].output_buff
+extern Gfx D_80119720[8192];//D_800f04e0[].output_buff
 // extern Gfx D_80129720[2];
 extern OSMesg gPiManMsgs[50];
 extern OSMesgQueue gPiManMgsQ;
@@ -214,7 +214,7 @@ extern unkStruct D_80172E88[]; //used by Red ants.
 extern s32 D_80174758[];
 extern s32 D_80174864;
 extern s32 D_80174878;                  // Level/Stage ID | LoadStageByIndex()
-extern s32 levelFlags[32]; //contextual-per-level flags
+extern s32 StageFlags[32]; //contextual-per-level flags
 
 extern s32 D_801748A0;
 extern s32 D_80174998;
@@ -265,7 +265,7 @@ extern OSMesgQueue D_801FCA50[50];
 typedef u8 Addr[];
 extern char D_8010F1EC[];
 extern char D_8010F1FC[];
-extern u32 D_80168DA0;
+extern s32 D_80168DA0;
 //extern f32 D_80168DE4;
 extern char D_8010ECF8[];
 extern char D_8010ED04[];
@@ -292,8 +292,10 @@ extern ALCMidiHdr* D_801FD550;
 extern SaveFile gGameState; //data on current playthrough's progress.
 extern void* D_80200C8C;
 extern void* D_80200C94;
-extern Addr D_AB10B0;
 extern Camera gCamera[4];
+extern Mtx D_80129730;
+extern Mtx AnimationSlots[40];
+extern GraphicStruct gGraphicsList[2];
 extern unk802000C84 D_80200C84;
 extern u8 gHasShadows[256]; //unset for actortypes like spawnners.
 extern Collider D_80236980[128];
@@ -301,7 +303,7 @@ extern s32 gFieldCount;
 extern Door gDoors[16];
 extern unkIsChange isChange;
 extern s32 gDoorCount;
-extern Collision D_80240D6C[];
+extern Field D_80240D6C[];
 extern u8 gCarrotBitfield;
 extern s8 D_801B313D;
 extern SaveRecord gGameRecords;
@@ -328,7 +330,7 @@ extern char D_8010D968[];
 extern s32 Timing_DelayAudioInterval;
 extern u32 Timing_StartAudioTime;
 extern s32 D_800FF890[];
-extern s16 D_800FF8BC;
+extern s16 D_800FF8BC[];
 extern s32 Timing_StartProcessTime;
 extern s32 D_800FF8B4;
 extern u32 D_800FF8B8;
@@ -347,21 +349,19 @@ extern s16 gIsStero;
 extern s16 D_801FCA48;
 extern ALCSeq* gBGMSeqP;
 extern s16 gIsNotInCave;
-extern s32 D_80236974;
+extern s32 isInOverworld;
 extern char D_8010D834[];
 extern u8 D_80200A98[];
 extern u8 D_800FF64C;
 extern u8 D_800FF650;
 extern ALSndPlayer* gSFXPlayerP;
-extern frameBufferData D_803B5000[2];
-extern Addr D_1000000;
-extern Addr D_1045C00;
+extern frameBufferData gFrameBuffers[2];
 extern unk80100F50 D_80100F50[];
 extern CTTask* gCTTaskHead;
 extern CTTask* gCTTaskTail;
 extern s32 sGameModeStart;
 extern char D_8010DB20[];
-extern Collision gZoneCollisions[];
+extern Field gZoneFields[];
 extern s32 currentStageCrowns;
 extern char* Dialogue[6][20]; //sizeof 0x1E0
 extern s32 gIsGamePaused;

@@ -1,19 +1,4 @@
 #include "common.h"
-//these are probably used in ram specifically so they can be animated
-extern Mtx D_80129730_Jack; //body
-extern Mtx D_80129770_Jack; //head
-extern Mtx D_801297B0_Jack; //backpack
-extern Mtx D_801297F0_Jack; //shoe
-extern Mtx D_80129830_Jack; //Lshoe
-extern Mtx D_80129870_Jack; //cuff
-extern Mtx D_801298B0_Jack; //Lcuff
-extern Mtx D_801298F0_Jack; //wrist
-extern Mtx D_80129930_Jack; //Lwrist
-extern Mtx D_80129970_Jack; //shoulder
-extern Mtx D_801299B0_Jack; //Lshoulder
-extern Mtx D_801299F0_Jack; //fist
-extern Mtx D_80129A30_Jack; //Lfist
-
 
 #include "assets/chameleons/Jack/light.light.inc.c"
 

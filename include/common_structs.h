@@ -247,7 +247,7 @@ typedef struct Collider {
     /* 0x0A4 */ f32 unkA4;
     /* 0x0A8 */ f32 unkA8;
     /* 0x0AC */ s32 unk_AC;
-    /* 0x0B0 */ s32 unk_B0;
+    /* 0x0B0 */ s32 unk_B0; // Vtx*?
     /* 0x0B4 */ s32 unk_B4;
     /* 0x0B8 */ s32 unk_B8;
     /* 0x0BC */ s32 unk_BC;
@@ -300,14 +300,14 @@ typedef struct RoomObject {
     Vec3f position;
     Vec3f scale;
     s32 unk18;
-    s32 damages;
+    f32 damages;
     s32 unk20;
     s32 unk24;
     f32 unk28;
     f32 unk2C;
     f32 unk30;
     f32 unk34;
-    s32 unk38;
+    s32 unk38; // uservariable???
     s32 unk3C;
     s32 unk40;
     s32 unk44;
@@ -317,8 +317,12 @@ typedef struct RoomObject {
     s32 unk54;
     s32 unk58;
     s32 unk5C;
-    void (*func1)(struct Collider*, struct RoomObject*);
-    void (*func2)(struct Collider*);
+    //many type issues with this to fix in generation
+    //so for now, they are void* to avoid a million warnings
+    void* func1;
+    void* func2;
+    // void (*func1)(struct Collider*, struct RoomObject*);
+    // void (*func2)(struct Collider*);
     s32 unk68;
     s32 unk6C;
     s32 unk70;
@@ -395,9 +399,7 @@ typedef struct SpriteActor {
     Color128 color;
 } SpriteActor; // sizeof 0x50
 
-//this isnt JUST collision, its also a variation of RoomSettings
-//you can tell because of the 4 pointers at the start
-typedef struct Collision {
+typedef struct Field {
     /* 0x00 */ RoomObject* roomObjects;
     //pointer of levelData roomObjects
     //0 for none
@@ -455,7 +457,7 @@ typedef struct Collision {
     /* 0xCC */ f32 unkCC;                           /* inferred */
     /* 0xD0 */ f32 unkD0;
     /* 0xD4 */ char padD4[4];
-} Collision;                                        /* size = 0xD8 */
+} Field;                                        /* size = 0xD8 */
 
 
 typedef struct CardinalDirection {
@@ -951,7 +953,10 @@ D_MTXSLOTC = 0x801299F0; // type:Mtx
 D_MTXSLOTD = 0x80129A30; // type:Mtx*/
 
 typedef struct GraphicStruct {
-/*0x0*/         Gfx dlist[0x1000];
+    union { //something very strange is up with these
+        Gfx dlist[0x1000];
+        Mtx mtx[0x200];
+    } UnkGroup;
 /*0x8000*/      Mtx perspective;
 /*0x8040*/      Mtx lookAt;
 /*0x8080*/      Mtx playerTranslate[4];
@@ -973,17 +978,17 @@ typedef struct GraphicStruct {
 } GraphicStruct; //sizeof 0x1FB00
 
 typedef struct Shadow {
-    u32 active;
-    Vec3f pos;
-    f32 rotY;
-    f32 rotX;
-    f32 scale;
-    f32 unk1c;
-    f32 rotYArrow;
-    u32 dlist;
-    u32 actorID;
-    Actor* actor;
-} Shadow;
+/* 0x00 */ u32 active;
+/* 0x04 */ Vec3f pos;
+/* 0x10 */ f32 rotY;
+/* 0x14 */ f32 rotX;
+/* 0x18 */ f32 scale;
+/* 0x1C */ f32 unk1c;
+/* 0x20 */ f32 rotYArrow;
+/* 0x24 */ u32 dlist;
+/* 0x28 */ u32 actorID;
+/* 0x2C */ Actor* actor;
+} Shadow; //sizeof 0x30
 
 typedef struct Door {
     s32 index;
@@ -1082,15 +1087,16 @@ typedef struct LevelHeader {
     LevelMap* Map;
     RoomSettings* OWRooms;
     LevelPointer* Pointers;
-    u32 unkC;
+    u16 levelPointerCount; //the amount of objects stored in ^
+    u16 unkC;
     u32 RoomObjects;
     u32 unk14;
-    u32 SpriteLib;
+    s32* SpriteLib;
     LevelScope* Scope;
 } LevelHeader;
 
 typedef struct segTableEntry {
-    char* name;
+    const char* name;
     void* romAddrStart;
     void* romAddrEnd;
     void* ramAddrStart;
@@ -1207,6 +1213,60 @@ typedef struct SpriteListing {
     /* 0x74 */ char unk_74[4];
 } SpriteListing; //sizeof 0x78
 
-typedef short Mtx_f[2][16];
+typedef struct cutsceneCamera{
+    u32 unk0; //unktype
+    f32 unk4;
+    f32 unk8;
+    f32 unkC;
+    u32 unk10; //unktype
+    u32 unk14; //unktype
+    u32 unk18; //unktype
+    u32 unk1C; //unktype
+    u32 unk20; //unktype
+    u32 unk24; //unktype
+    u32 unk28; //unktype
+    u32 unk2C; //unktype
+    u32 unk30; //unktype
+    u32 unk34; //unktype
+    f32 unk38;
+} cutsceneCamera; //sizeof 0x3C
+
+enum CutsceneUses {
+    CUTSCENE_REALCHAMELEON = 1,
+    CUTSCENE_REALCHAMELEON_WITH_BACKPACK, //2
+    CUTSCENE_REALCHAMELEON_JACK_UNUSED, //3
+    CUTSCENE_REALCHAMELEON_LINDA_UNUSED, //4
+    CUTSCENE_REALCHAMELEON_FRED_UNUSED, //5
+    CUTSCENE_RABBIT_UNUSED, //6 actually check if unused
+    CUTSCENE_RABBIT_INTROOUTRO, //7
+    CUTSCENE_SET_STUFF, //8 find out what "stuff" is
+    //D_80176F90 = cutsceneFunction->unk10;
+    //D_80176F94 = cutsceneFunction->unk18;
+    CUTSCENE_ADD_POTEFFECT, //8 find out what "stuff" is
+    CUTSCENE_MODELADD //10
+};
+
+//24fb00
+//also after cutsceneCamera's in assets0
+typedef struct cutsceneFunction{
+/* 0x00 */ s32 unk0;
+/* 0x04 */ u32 unk4; //unktype s32?
+/* 0x08 */ u32 unk8; //unktype s32?
+/* 0x0C */ s32 useCase; // enum
+/* 0x10 */ cutsceneCamera* unk10;
+/* 0x14 */ s32 flag1; // ram stuff
+/* 0x18 */ cutsceneCamera* unk18;
+/* 0x1C */ Vec3f toPlacePos; //might be more usecases idk
+/* 0x28 */ Gfx* toPlace; //segmented, if use case 0xA
+/* 0x2C */ s32 flag2; // ram stuff 2
+/* 0x30 */ u32 unk30; //unktype
+/* 0x34 */ u32 unk34; //unktype
+/* 0x38 */ f32 unk38;
+/* 0x3C */ f32 unk3C;
+/* 0x40 */ f32 unk40;
+/* 0x44 */ u32 unk44; //unktype
+/* 0x48 */ f32 unk48;
+/* 0x4C */ u32 unk4C; //unktype
+} cutsceneFunction; //sizeof 0x50
 
 #endif

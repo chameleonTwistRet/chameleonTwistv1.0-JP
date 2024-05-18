@@ -314,7 +314,6 @@ extern PlayerActor* D_80176B74;
 extern Camera* D_80176B78;
 extern char D_8010CA1C[];
 extern char D_8010CA54[];
-extern Addr D_8C26A0;
 extern unkStruct02* D_80176F4C;
 extern s32 gSpriteFrameBuffer;
 extern Gfx static0_spriteController7_Gfx[];
@@ -347,7 +346,8 @@ extern Gfx static0_gfx1_Gfx[];
 extern Gfx static0_gfx2_Gfx[];
 extern Effect* D_800FE1A0;
 extern s32 Battle_GameType;
-extern struct_800FE4E4 D_800FE4E4[];
+extern struct_800FE4E4 D_800FE4E4[2];
+extern struct_800FE4E4 D_800FE4E8[2];
 extern f32 D_800FE6F4[];
 extern u8 D_800FE704[];
 extern struct_800FE54C D_800FE54C[];
@@ -369,9 +369,26 @@ extern Gfx static0_gfx3_Gfx[];
 extern u8 sTextGradientPalettes[];
 extern s32 gCharacterPortraits[];
 extern u8 D_800FE790[];
+extern s32 D_800FE74C;
 
+extern char* D_800F59B8[7][20];
+extern s32 cutsceneSwitch;
+extern s32 D_800FED10;
+extern f32 D_800FED14;
+extern f32 D_800FED18;
+extern f32 D_800FED1C;
+extern f32 D_800FED20;
+extern f32 D_800FED24;
+extern f32 D_800FED28;
+extern f32 D_800FED2C;
+extern s32 D_800FED30;
+extern s32 D_800FED34;
 
-
+extern Gfx* D_800FED38[];
+extern Gfx* D_800FED50[];
+extern Gfx* D_800FED68[];
+extern Gfx* D_800FED80[];
+extern s32 D_800FF8E8;
 
 
 /* functions */
@@ -413,4 +430,17 @@ void Effect_TypeBF_Init(f32 posX, f32 posY, f32 posZ, f32 velV, f32 yaw, f32 vel
 void SetPlayerEyes(s32 spriteIndex, s32 whichEye, s32 eyeIndex);
 s32 printTextbox(f32, f32, char*);
 void WrapDegrees(f32* theta_ptr);
+
+
+void Effect_GameResults_Init(void);
+void Effect_TypeAL_Init(void);
+void Effect_TypeAX_Init(f32 posX, f32 posY, f32 posZ, f32 arg3, f32 duration);
+Effect* Effect_TypeL_Init(f32 duration, f32 arg1, f32 arg2);
+Effect* Effect_TypeM_Init(f32 posX, f32 posY, f32 posZ, s32* finishPtr, Gfx* dlist);
+Effect* Effect_TypeM_Init2(f32 posX, f32 posY, f32 posZ, f32 scaleX, f32 scaleY, f32 scaleZ, f32 rotX, f32 rotY, f32 rotZ, s32* finishPtr, Gfx* dlist);
+Effect* Effect_TypeQ_Init(u8 colorR, u8 colorG, u8 colorB, s32 delay, s32 duration);
+Effect* Effect_TypeR_Init(u8 colorR, u8 colorG, u8 colorB, s32 delay, s32 duration);
+void Effect_TypeU_Init(f32 posX, f32 posY, f32 posZ, f32 targetX, f32 targetY, f32 targetZ, f32 duration, s32 colorMode, f32 sizeX, f32 sizeY);
+void func_80056BFC(s32 arg0, s32 arg1, f32 arg2, f32* arg3, f32* arg4, f32* arg5, f32* arg6);
+
 #endif //_SPRITE_H_

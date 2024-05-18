@@ -394,7 +394,7 @@ extern void* extImages_whiteIcon_ci8_PNG; // for spriteListing 109
 extern void* extImages_whiteIcon_ci8_PAL; // for spriteListing 109
 
 extern Gfx static0_spriteController_Gfx[]; // for spriteListing 110
-extern void* extImages_whiteIcon_ia8_PNG; // for spriteListing 110
+extern void* extImages_symbols2_ia8_PNG; // for spriteListing 110
 
 extern Gfx static0_spriteController_Gfx[]; // for spriteListing 111
 extern void* extImages_smokeCircle_ia8_PNG; // for spriteListing 111
@@ -831,7 +831,7 @@ extern void* extImages_menuOptions_ia8_PNG; // for spriteListing 229
 
 SpriteListing gSpriteListings[230] = {
 {
- &static0_spriteController6_Gfx,
+ static0_spriteController6_Gfx,
  NULL,
  NULL,
  8,
@@ -951,7 +951,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController_Gfx,
+ static0_spriteController_Gfx,
  &static0_textBig_ia8_PNG,
  NULL,
  2,
@@ -1071,7 +1071,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController6_Gfx,
+ static0_spriteController6_Gfx,
  NULL,
  NULL,
  8,
@@ -1191,7 +1191,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &static0_textSmall_ia4_PNG,
  NULL,
  1,
@@ -1311,7 +1311,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController_Gfx,
+ static0_spriteController_Gfx,
  &extImages_symbols_ia8_PNG-0x800000,
  NULL,
  2,
@@ -1431,7 +1431,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController_Gfx,
+ static0_spriteController_Gfx,
  &extImages_greenAntBottom_ci8_PNG-0x800000,
  &extImages_greenAntBottom_ci8_PAL-0x800000,
  5,
@@ -1551,7 +1551,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController_Gfx,
+ static0_spriteController_Gfx,
  &extImages_greenAntTop_ci8_PNG-0x800000,
  &extImages_greenAntTop_ci8_PAL-0x800000,
  5,
@@ -1671,7 +1671,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController_Gfx,
+ static0_spriteController_Gfx,
  &extImages_caterpillar_ci8_PNG-0x800000,
  &extImages_caterpillar_ci8_PAL-0x800000,
  5,
@@ -1791,7 +1791,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController_Gfx,
+ static0_spriteController_Gfx,
  &extImages_caterpillarPart_ci8_PNG-0x800000,
  &extImages_caterpillarPart_ci8_PAL-0x800000,
  5,
@@ -1911,7 +1911,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController6_Gfx,
+ static0_spriteController6_Gfx,
  NULL,
  NULL,
  8,
@@ -2031,7 +2031,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController6_Gfx,
+ static0_spriteController6_Gfx,
  NULL,
  NULL,
  8,
@@ -2151,7 +2151,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController6_Gfx,
+ static0_spriteController6_Gfx,
  NULL,
  NULL,
  8,
@@ -2271,7 +2271,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController_Gfx,
+ static0_spriteController_Gfx,
  &extImages_antHole_ia4_PNG-0x800000,
  NULL,
  1,
@@ -2391,7 +2391,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_sandCrabAppearUnused_ia4_PNG-0x800000,
  NULL,
  1,
@@ -2511,7 +2511,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController_Gfx,
+ static0_spriteController_Gfx,
  &extImages_grayAnt_ci8_PNG-0x800000,
  &extImages_grayAnt_ci8_PAL-0x800000,
  5,
@@ -2631,7 +2631,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &static0_health_ci8_PNG,
  &static0_health_ci8_PAL,
  5,
@@ -2751,7 +2751,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &static0_bar_ci4_PNG,
  &static0_bar_ci4_PAL,
  4,
@@ -2871,7 +2871,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController6_Gfx,
+ static0_spriteController6_Gfx,
  NULL,
  NULL,
  8,
@@ -2991,7 +2991,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController_Gfx,
+ static0_spriteController_Gfx,
  &extImages_crown_ci8_PNG-0x800000,
  &extImages_crown_ci8_PAL-0x800000,
  5,
@@ -3111,7 +3111,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController_Gfx,
+ static0_spriteController_Gfx,
  &extImages_redHeart_ci8_PNG-0x800000,
  &extImages_redHeart_ci8_PAL-0x800000,
  5,
@@ -3231,7 +3231,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController_Gfx,
+ static0_spriteController_Gfx,
  &extImages_orangeHeart_ci8_PNG-0x800000,
  &extImages_orangeHeart_ci8_PAL-0x800000,
  5,
@@ -3351,7 +3351,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController_Gfx,
+ static0_spriteController_Gfx,
  &extImages_yellowHeart_ci8_PNG-0x800000,
  &extImages_yellowHeart_ci8_PAL-0x800000,
  5,
@@ -3471,7 +3471,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController_Gfx,
+ static0_spriteController_Gfx,
  &extImages_powerup1_ci8_PNG-0x800000,
  &extImages_powerup1_ci8_PAL-0x800000,
  5,
@@ -3591,7 +3591,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController_Gfx,
+ static0_spriteController_Gfx,
  &extImages_powerup2_ci8_PNG-0x800000,
  &extImages_powerup2_ci8_PAL-0x800000,
  5,
@@ -3711,7 +3711,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController_Gfx,
+ static0_spriteController_Gfx,
  &extImages_powerup3_ci8_PNG-0x800000,
  &extImages_powerup3_ci8_PAL-0x800000,
  5,
@@ -3831,7 +3831,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_powerup4_ci8_PNG-0x800000,
  &extImages_powerup4_ci8_PAL-0x800000,
  5,
@@ -3951,7 +3951,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_carrot_ci8_PNG-0x800000,
  &extImages_carrot_ci8_PAL-0x800000,
  5,
@@ -4071,7 +4071,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_stopWatch_ci8_PNG-0x800000,
  &extImages_stopWatch_ci8_PAL-0x800000,
  5,
@@ -4191,7 +4191,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController_Gfx,
+ static0_spriteController_Gfx,
  &extImages_eyeBlinkUnused_rgba16_PNG-0x800000,
  NULL,
  6,
@@ -4311,7 +4311,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController_Gfx,
+ static0_spriteController_Gfx,
  &extImages_twirlEyeUnused_rgba16_PNG-0x800000,
  NULL,
  6,
@@ -4431,7 +4431,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController6_Gfx,
+ static0_spriteController6_Gfx,
  NULL,
  NULL,
  8,
@@ -4551,7 +4551,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController_Gfx,
+ static0_spriteController_Gfx,
  &extImages_sexyEyeUnused_rgba16_PNG-0x800000,
  NULL,
  6,
@@ -4671,7 +4671,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController_Gfx,
+ static0_spriteController_Gfx,
  &extImages_mine_ci8_PNG-0x800000,
  &extImages_mine_ci8_PAL-0x800000,
  5,
@@ -4791,7 +4791,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController_Gfx,
+ static0_spriteController_Gfx,
  &extImages_grenade_ci8_PNG-0x800000,
  &extImages_grenade_ci8_PAL-0x800000,
  5,
@@ -4911,7 +4911,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController_Gfx,
+ static0_spriteController_Gfx,
  &extImages_missile_ci8_PNG-0x800000,
  &extImages_missile_ci8_PAL-0x800000,
  5,
@@ -5031,7 +5031,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_bomb_ci8_PNG-0x800000,
  &extImages_bomb_ci8_PAL-0x800000,
  5,
@@ -5151,7 +5151,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_bombSnakeEyes_rgba16_PNG-0x800000,
  NULL,
  6,
@@ -5271,7 +5271,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController_Gfx,
+ static0_spriteController_Gfx,
  &extImages_balloonUnused_rgba16_PNG-0x800000,
  NULL,
  6,
@@ -5391,7 +5391,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController_Gfx,
+ static0_spriteController_Gfx,
  &extImages_iceCreamSandwich_ci8_PNG-0x800000,
  &extImages_iceCreamSandwich_ci8_PAL-0x800000,
  5,
@@ -5511,7 +5511,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController_Gfx,
+ static0_spriteController_Gfx,
  &extImages_chocoKid_ci8_PNG-0x800000,
  &extImages_chocoKid_ci8_PAL-0x800000,
  5,
@@ -5631,7 +5631,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController_Gfx,
+ static0_spriteController_Gfx,
  &extImages_popcorn_ci8_PNG-0x800000,
  &extImages_popcorn_ci8_PAL-0x800000,
  5,
@@ -5751,7 +5751,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_cloud_ci4_PNG-0x800000,
  &extImages_cloud_ci4_PAL-0x800000,
  4,
@@ -5871,7 +5871,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_cloud2_ci4_PNG-0x800000,
  &extImages_cloud2_ci4_PAL-0x800000,
  4,
@@ -5991,7 +5991,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController_Gfx,
+ static0_spriteController_Gfx,
  &extImages_bombSnakePart_rgba16_PNG-0x800000,
  NULL,
  6,
@@ -6111,7 +6111,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController_Gfx,
+ static0_spriteController_Gfx,
  &extImages_sandCrab_ci8_PNG-0x800000,
  &extImages_sandCrab_ci8_PAL-0x800000,
  5,
@@ -6231,7 +6231,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController_Gfx,
+ static0_spriteController_Gfx,
  &extImages_sandCrabOut_ci8_PNG-0x800000,
  &extImages_sandCrabOut_ci8_PAL-0x800000,
  5,
@@ -6351,7 +6351,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController_Gfx,
+ static0_spriteController_Gfx,
  &extImages_condor_ci8_PNG-0x800000,
  &extImages_condor_ci8_PAL-0x800000,
  5,
@@ -6471,7 +6471,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController_Gfx,
+ static0_spriteController_Gfx,
  &extImages_fireSprite_ci8_PNG-0x800000,
  &extImages_fireSprite_ci8_PAL-0x800000,
  5,
@@ -6591,7 +6591,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController_Gfx,
+ static0_spriteController_Gfx,
  &extImages_kettle_ia4_PNG-0x800000,
  NULL,
  1,
@@ -6711,7 +6711,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController_Gfx,
+ static0_spriteController_Gfx,
  &extImages_plate_ia4_PNG-0x800000,
  NULL,
  1,
@@ -6831,7 +6831,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController_Gfx,
+ static0_spriteController_Gfx,
  &extImages_ballNumbers_ia4_PNG-0x800000,
  NULL,
  1,
@@ -6951,7 +6951,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController_Gfx,
+ static0_spriteController_Gfx,
  &extImages_ball_ia8_PNG-0x800000,
  NULL,
  2,
@@ -7071,7 +7071,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController_Gfx,
+ static0_spriteController_Gfx,
  &extImages_candle_ia4_PNG-0x800000,
  NULL,
  1,
@@ -7191,7 +7191,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController_Gfx,
+ static0_spriteController_Gfx,
  &extImages_litCandle_ci8_PNG-0x800000,
  &extImages_litCandle_ci8_PAL-0x800000,
  5,
@@ -7311,7 +7311,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController6_Gfx,
+ static0_spriteController6_Gfx,
  NULL,
  NULL,
  8,
@@ -7431,7 +7431,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController_Gfx,
+ static0_spriteController_Gfx,
  &extImages_plate_rgba16_PNG-0x800000,
  NULL,
  6,
@@ -7551,7 +7551,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController_Gfx,
+ static0_spriteController_Gfx,
  &extImages_porcupine_ci8_PNG-0x800000,
  &extImages_porcupine_ci8_PAL-0x800000,
  5,
@@ -7671,7 +7671,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController_Gfx,
+ static0_spriteController_Gfx,
  &extImages_spider_ci8_PNG-0x800000,
  &extImages_spider_ci8_PAL-0x800000,
  5,
@@ -7791,7 +7791,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController_Gfx,
+ static0_spriteController_Gfx,
  &extImages_butterfly_ci8_PNG-0x800000,
  &extImages_butterfly_ci8_PAL-0x800000,
  5,
@@ -7911,7 +7911,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_DCBG1_ci8_PNG-0x800000,
  &extImages_DCBG1_ci8_PAL-0x800000,
  5,
@@ -8031,7 +8031,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_DCBG2_ci8_PNG-0x800000,
  &extImages_DCBG2_ci8_PAL-0x800000,
  5,
@@ -8151,7 +8151,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_DCBG3_ci8_PNG-0x800000,
  &extImages_DCBG3_ci8_PAL-0x800000,
  5,
@@ -8271,7 +8271,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_DCBG4_ci8_PNG-0x800000,
  &extImages_DCBG4_ci8_PAL-0x800000,
  5,
@@ -8391,7 +8391,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_DCBG5_ci8_PNG-0x800000,
  &extImages_DCBG5_ci8_PAL-0x800000,
  5,
@@ -8511,7 +8511,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_JLBG1_ci4_PNG-0x800000,
  &extImages_JLBG1_ci4_PAL-0x800000,
  4,
@@ -8631,7 +8631,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_JLBG2_ci4_PNG-0x800000,
  &extImages_JLBG2_ci4_PAL-0x800000,
  4,
@@ -8751,7 +8751,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_JLBG3_ci4_PNG-0x800000,
  &extImages_JLBG3_ci4_PAL-0x800000,
  4,
@@ -8871,7 +8871,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_JLBG4_ci4_PNG-0x800000,
  &extImages_JLBG4_ci4_PAL-0x800000,
  4,
@@ -8991,7 +8991,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_JLBG5_ci4_PNG-0x800000,
  &extImages_JLBG5_ci4_PAL-0x800000,
  4,
@@ -9111,7 +9111,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController_Gfx,
+ static0_spriteController_Gfx,
  &extImages_fire_ci8_PNG-0x800000,
  &extImages_fire_ci8_PAL-0x800000,
  5,
@@ -9231,7 +9231,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController6_Gfx,
+ static0_spriteController6_Gfx,
  NULL,
  NULL,
  8,
@@ -9351,7 +9351,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_poleThing_ia8_PNG-0x800000,
  NULL,
  2,
@@ -9471,7 +9471,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController_Gfx,
+ static0_spriteController_Gfx,
  &extImages_twinkle_ia8_PNG-0x800000,
  NULL,
  2,
@@ -9591,7 +9591,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController_Gfx,
+ static0_spriteController_Gfx,
  &extImages_twinkle2_ia8_PNG-0x800000,
  NULL,
  2,
@@ -9711,7 +9711,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &static0_puff_ia8_PNG,
  NULL,
  2,
@@ -9831,7 +9831,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &static0_star2_ia4_PNG,
  NULL,
  1,
@@ -9951,7 +9951,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController_Gfx,
+ static0_spriteController_Gfx,
  &extImages_blackBall_ia4_PNG-0x800000,
  NULL,
  1,
@@ -10071,7 +10071,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_boardTileable_ci4_PNG-0x800000,
  &extImages_boardTileable_ci4_PAL-0x800000,
  4,
@@ -10191,7 +10191,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_board_ci8_PNG-0x800000,
  &extImages_board_ci8_PAL-0x800000,
  5,
@@ -10311,7 +10311,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController_Gfx,
+ static0_spriteController_Gfx,
  &extImages_chameleonUnused_ia8_PNG-0x800000,
  NULL,
  2,
@@ -10431,7 +10431,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController_Gfx,
+ static0_spriteController_Gfx,
  &extImages_twistUnused_ia8_PNG-0x800000,
  NULL,
  2,
@@ -10551,7 +10551,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_gameOverTextUnused_ci8_PNG-0x800000,
  &extImages_gameOverTextUnused_ci8_PAL-0x800000,
  5,
@@ -10671,7 +10671,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController_Gfx,
+ static0_spriteController_Gfx,
  &extImages_fern_ci8_PNG-0x800000,
  &extImages_fern_ci8_PAL-0x800000,
  5,
@@ -10791,7 +10791,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController_Gfx,
+ static0_spriteController_Gfx,
  &extImages_tree_ci8_PNG-0x800000,
  &extImages_tree_ci8_PAL-0x800000,
  5,
@@ -10911,7 +10911,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_JungleLandIcon_ci8_PNG-0x800000,
  &extImages_JungleLandIcon_ci8_PAL-0x800000,
  5,
@@ -11031,7 +11031,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_BombLandIcon_ci8_PNG-0x800000,
  &extImages_BombLandIcon_ci8_PAL-0x800000,
  5,
@@ -11151,7 +11151,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_AntLandIcon_ci8_PNG-0x800000,
  &extImages_AntLandIcon_ci8_PAL-0x800000,
  5,
@@ -11271,7 +11271,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_DesertCastleIcon_ci8_PNG-0x800000,
  &extImages_DesertCastleIcon_ci8_PAL-0x800000,
  5,
@@ -11391,7 +11391,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_KidsLandIcon_ci8_PNG-0x800000,
  &extImages_KidsLandIcon_ci8_PAL-0x800000,
  5,
@@ -11511,7 +11511,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_GhostCastleIcon_ci8_PNG-0x800000,
  &extImages_GhostCastleIcon_ci8_PAL-0x800000,
  5,
@@ -11631,7 +11631,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_BossRushIcon_ci8_PNG-0x800000,
  &extImages_BossRushIcon_ci8_PAL-0x800000,
  5,
@@ -11751,7 +11751,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_pouseUnused_ci8_PNG-0x800000,
  &extImages_pouseUnused_ci8_PAL-0x800000,
  5,
@@ -11871,7 +11871,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_jss_ci8_PNG-0x800000,
  &extImages_jss_ci8_PAL-0x800000,
  5,
@@ -11991,7 +11991,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController_Gfx,
+ static0_spriteController_Gfx,
  &extImages_jssCat_ia8_PNG-0x800000,
  NULL,
  2,
@@ -12111,7 +12111,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_textBigger_ia4_PNG-0x800000,
  NULL,
  1,
@@ -12231,7 +12231,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_battleIcon1_ci8_PNG-0x800000,
  &extImages_battleIcon1_ci8_PAL-0x800000,
  5,
@@ -12351,7 +12351,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_battleIcon2_ci8_PNG-0x800000,
  &extImages_battleIcon2_ci8_PAL-0x800000,
  5,
@@ -12471,7 +12471,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_battleIcon3_ci8_PNG-0x800000,
  &extImages_battleIcon3_ci8_PAL-0x800000,
  5,
@@ -12591,7 +12591,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_battleIcon4_ci8_PNG-0x800000,
  &extImages_battleIcon4_ci8_PAL-0x800000,
  5,
@@ -12711,7 +12711,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_battleIcon5_ci8_PNG-0x800000,
  &extImages_battleIcon5_ci8_PAL-0x800000,
  5,
@@ -12831,7 +12831,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_battleIcon6_ci8_PNG-0x800000,
  &extImages_battleIcon6_ci8_PAL-0x800000,
  5,
@@ -12951,7 +12951,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_battleIcon7_ci8_PNG-0x800000,
  &extImages_battleIcon7_ci8_PAL-0x800000,
  5,
@@ -13071,7 +13071,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_battleIcon8_ci8_PNG-0x800000,
  &extImages_battleIcon8_ci8_PAL-0x800000,
  5,
@@ -13191,7 +13191,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController_Gfx,
+ static0_spriteController_Gfx,
  &extImages_arrow1_ia8_PNG-0x800000,
  NULL,
  2,
@@ -13311,7 +13311,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_davyIcon_ci8_PNG-0x800000,
  &extImages_davyIcon_ci8_PAL-0x800000,
  5,
@@ -13431,7 +13431,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_jackIcon_ci8_PNG-0x800000,
  &extImages_jackIcon_ci8_PAL-0x800000,
  5,
@@ -13551,7 +13551,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_fredIcon_ci8_PNG-0x800000,
  &extImages_fredIcon_ci8_PAL-0x800000,
  5,
@@ -13671,7 +13671,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_lindaIcon_ci8_PNG-0x800000,
  &extImages_lindaIcon_ci8_PAL-0x800000,
  5,
@@ -13791,7 +13791,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_blackIcon_ci8_PNG-0x800000,
  &extImages_blackIcon_ci8_PAL-0x800000,
  5,
@@ -13911,7 +13911,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_whiteIcon_ci8_PNG-0x800000,
  &extImages_whiteIcon_ci8_PAL-0x800000,
  5,
@@ -14031,8 +14031,8 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController_Gfx,
- &extImages_whiteIcon_ia8_PNG-0x800000,
+ static0_spriteController_Gfx,
+ &extImages_symbols2_ia8_PNG-0x800000,
  NULL,
  2,
  &D_800F7008[0],
@@ -14151,7 +14151,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController_Gfx,
+ static0_spriteController_Gfx,
  &extImages_smokeCircle_ia8_PNG-0x800000,
  NULL,
  2,
@@ -14271,7 +14271,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_crownIcon_ci4_PNG-0x800000,
  &extImages_crownIcon_ci4_PAL-0x800000,
  4,
@@ -14391,7 +14391,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController_Gfx,
+ static0_spriteController_Gfx,
  &extImages_puff2_ia8_PNG-0x800000,
  NULL,
  2,
@@ -14511,7 +14511,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_davyEyeR_ci8_PNG-0x800000,
  &extImages_davyEyeR_ci8_PAL-0x800000,
  5,
@@ -14631,7 +14631,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_davyClosedEyeR_ci8_PNG-0x800000,
  &extImages_davyClosedEyeR_ci8_PAL-0x800000,
  5,
@@ -14751,7 +14751,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_davySadEyeR_ci8_PNG-0x800000,
  &extImages_davySadEyeR_ci8_PAL-0x800000,
  5,
@@ -14871,7 +14871,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_davyHappyEyeR_ci8_PNG-0x800000,
  &extImages_davyHappyEyeR_ci8_PAL-0x800000,
  5,
@@ -14991,7 +14991,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_davyHurtEyeR_ci8_PNG-0x800000,
  &extImages_davyHurtEyeR_ci8_PAL-0x800000,
  5,
@@ -15111,7 +15111,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_davyEyeL_ci8_PNG-0x800000,
  &extImages_davyEyeL_ci8_PAL-0x800000,
  5,
@@ -15231,7 +15231,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_davyClosedEyeL_ci8_PNG-0x800000,
  &extImages_davyClosedEyeL_ci8_PAL-0x800000,
  5,
@@ -15351,7 +15351,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_davySadEyeL_ci8_PNG-0x800000,
  &extImages_davySadEyeL_ci8_PAL-0x800000,
  5,
@@ -15471,7 +15471,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_davyHappyEyeL_ci8_PNG-0x800000,
  &extImages_davyHappyEyeL_ci8_PAL-0x800000,
  5,
@@ -15591,7 +15591,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_davyHurtEyeL_ci8_PNG-0x800000,
  &extImages_davyHurtEyeL_ci8_PAL-0x800000,
  5,
@@ -15711,7 +15711,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_jackEyeR_ci8_PNG-0x800000,
  &extImages_jackEyeR_ci8_PAL-0x800000,
  5,
@@ -15831,7 +15831,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_jackClosedEyeR_ci8_PNG-0x800000,
  &extImages_jackClosedEyeR_ci8_PAL-0x800000,
  5,
@@ -15951,7 +15951,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_jackSadEyeR_ci8_PNG-0x800000,
  &extImages_jackSadEyeR_ci8_PAL-0x800000,
  5,
@@ -16071,7 +16071,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_jackHappyEyeR_ci8_PNG-0x800000,
  &extImages_jackHappyEyeR_ci8_PAL-0x800000,
  5,
@@ -16191,7 +16191,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_jackHurtEyeR_ci8_PNG-0x800000,
  &extImages_jackHurtEyeR_ci8_PAL-0x800000,
  5,
@@ -16311,7 +16311,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_jackEyeL_ci8_PNG-0x800000,
  &extImages_jackEyeL_ci8_PAL-0x800000,
  5,
@@ -16431,7 +16431,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_jackClosedEyeL_ci8_PNG-0x800000,
  &extImages_jackClosedEyeL_ci8_PAL-0x800000,
  5,
@@ -16551,7 +16551,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_jackSadEyeL_ci8_PNG-0x800000,
  &extImages_jackSadEyeL_ci8_PAL-0x800000,
  5,
@@ -16671,7 +16671,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_jackHappyEyeL_ci8_PNG-0x800000,
  &extImages_jackHappyEyeL_ci8_PAL-0x800000,
  5,
@@ -16791,7 +16791,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_jackHurtEyeL_ci8_PNG-0x800000,
  &extImages_jackHurtEyeL_ci8_PAL-0x800000,
  5,
@@ -16911,7 +16911,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_fredEyeR_ci8_PNG-0x800000,
  &extImages_fredEyeR_ci8_PAL-0x800000,
  5,
@@ -17031,7 +17031,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_fredClosedEyeR_ci8_PNG-0x800000,
  &extImages_fredClosedEyeR_ci8_PAL-0x800000,
  5,
@@ -17151,7 +17151,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_fredSadEyeR_ci8_PNG-0x800000,
  &extImages_fredSadEyeR_ci8_PAL-0x800000,
  5,
@@ -17271,7 +17271,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_fredHappyEyeR_ci8_PNG-0x800000,
  &extImages_fredHappyEyeR_ci8_PAL-0x800000,
  5,
@@ -17391,7 +17391,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_fredHurtEyeR_ci8_PNG-0x800000,
  &extImages_fredHurtEyeR_ci8_PAL-0x800000,
  5,
@@ -17511,7 +17511,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_fredEyeL_ci8_PNG-0x800000,
  &extImages_fredEyeL_ci8_PAL-0x800000,
  5,
@@ -17631,7 +17631,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_fredClosedEyeL_ci8_PNG-0x800000,
  &extImages_fredClosedEyeL_ci8_PAL-0x800000,
  5,
@@ -17751,7 +17751,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_fredSadEyeL_ci8_PNG-0x800000,
  &extImages_fredSadEyeL_ci8_PAL-0x800000,
  5,
@@ -17871,7 +17871,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_fredHappyEyeL_ci8_PNG-0x800000,
  &extImages_fredHappyEyeL_ci8_PAL-0x800000,
  5,
@@ -17991,7 +17991,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_fredHurtEyeL_ci8_PNG-0x800000,
  &extImages_fredHurtEyeL_ci8_PAL-0x800000,
  5,
@@ -18111,7 +18111,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_lindaEyeR_ci8_PNG-0x800000,
  &extImages_lindaEyeR_ci8_PAL-0x800000,
  5,
@@ -18231,7 +18231,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_lindaClosedEyeR_ci8_PNG-0x800000,
  &extImages_lindaClosedEyeR_ci8_PAL-0x800000,
  5,
@@ -18351,7 +18351,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_lindaSadEyeR_ci8_PNG-0x800000,
  &extImages_lindaSadEyeR_ci8_PAL-0x800000,
  5,
@@ -18471,7 +18471,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_lindaHappyEyeR_ci8_PNG-0x800000,
  &extImages_lindaHappyEyeR_ci8_PAL-0x800000,
  5,
@@ -18591,7 +18591,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_lindaHurtEyeR_ci8_PNG-0x800000,
  &extImages_lindaHurtEyeR_ci8_PAL-0x800000,
  5,
@@ -18711,7 +18711,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_lindaEyeL_ci8_PNG-0x800000,
  &extImages_lindaEyeL_ci8_PAL-0x800000,
  5,
@@ -18831,7 +18831,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_lindaClosedEyeL_ci8_PNG-0x800000,
  &extImages_lindaClosedEyeL_ci8_PAL-0x800000,
  5,
@@ -18951,7 +18951,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_lindaSadEyeL_ci8_PNG-0x800000,
  &extImages_lindaSadEyeL_ci8_PAL-0x800000,
  5,
@@ -19071,7 +19071,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_lindaHappyEyeL_ci8_PNG-0x800000,
  &extImages_lindaHappyEyeL_ci8_PAL-0x800000,
  5,
@@ -19191,7 +19191,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_lindaHurtEyeL_ci8_PNG-0x800000,
  &extImages_lindaHurtEyeL_ci8_PAL-0x800000,
  5,
@@ -19311,7 +19311,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_blackEyeR_ci8_PNG-0x800000,
  &extImages_blackEyeR_ci8_PAL-0x800000,
  5,
@@ -19431,7 +19431,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_blackClosedEyeR_ci8_PNG-0x800000,
  &extImages_blackClosedEyeR_ci8_PAL-0x800000,
  5,
@@ -19551,7 +19551,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_blackSadEyeR_ci8_PNG-0x800000,
  &extImages_blackSadEyeR_ci8_PAL-0x800000,
  5,
@@ -19671,7 +19671,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_blackHappyEyeR_ci8_PNG-0x800000,
  &extImages_blackHappyEyeR_ci8_PAL-0x800000,
  5,
@@ -19791,7 +19791,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_blackHurtEyeR_ci8_PNG-0x800000,
  &extImages_blackHurtEyeR_ci8_PAL-0x800000,
  5,
@@ -19911,7 +19911,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_blackEyeL_ci8_PNG-0x800000,
  &extImages_blackEyeL_ci8_PAL-0x800000,
  5,
@@ -20031,7 +20031,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_blackClosedEyeL_ci8_PNG-0x800000,
  &extImages_blackClosedEyeL_ci8_PAL-0x800000,
  5,
@@ -20151,7 +20151,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_blackSadEyeL_ci8_PNG-0x800000,
  &extImages_blackSadEyeL_ci8_PAL-0x800000,
  5,
@@ -20271,7 +20271,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_blackHappyEyeL_ci8_PNG-0x800000,
  &extImages_blackHappyEyeL_ci8_PAL-0x800000,
  5,
@@ -20391,7 +20391,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_blackHurtEyeL_ci8_PNG-0x800000,
  &extImages_blackHurtEyeL_ci8_PAL-0x800000,
  5,
@@ -20511,7 +20511,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_whiteEyeR_ci8_PNG-0x800000,
  &extImages_whiteEyeR_ci8_PAL-0x800000,
  5,
@@ -20631,7 +20631,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_whiteClosedEyeR_ci8_PNG-0x800000,
  &extImages_whiteClosedEyeR_ci8_PAL-0x800000,
  5,
@@ -20751,7 +20751,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_whiteSadEyeR_ci8_PNG-0x800000,
  &extImages_whiteSadEyeR_ci8_PAL-0x800000,
  5,
@@ -20871,7 +20871,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_whiteHappyEyeR_ci8_PNG-0x800000,
  &extImages_whiteHappyEyeR_ci8_PAL-0x800000,
  5,
@@ -20991,7 +20991,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_whiteHurtEyeR_ci8_PNG-0x800000,
  &extImages_whiteHurtEyeR_ci8_PAL-0x800000,
  5,
@@ -21111,7 +21111,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_whiteEyeL_ci8_PNG-0x800000,
  &extImages_whiteEyeL_ci8_PAL-0x800000,
  5,
@@ -21231,7 +21231,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_whiteClosedEyeL_ci8_PNG-0x800000,
  &extImages_whiteClosedEyeL_ci8_PAL-0x800000,
  5,
@@ -21351,7 +21351,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_whiteSadEyeL_ci8_PNG-0x800000,
  &extImages_whiteSadEyeL_ci8_PAL-0x800000,
  5,
@@ -21471,7 +21471,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_whiteHappyEyeL_ci8_PNG-0x800000,
  &extImages_whiteHappyEyeL_ci8_PAL-0x800000,
  5,
@@ -21591,7 +21591,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_whiteHurtEyeL_ci8_PNG-0x800000,
  &extImages_whiteHurtEyeL_ci8_PAL-0x800000,
  5,
@@ -21711,7 +21711,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_tinyEye01_ia4_PNG-0x800000,
  NULL,
  0,
@@ -21831,7 +21831,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_tinyEye02_ia4_PNG-0x800000,
  NULL,
  0,
@@ -21951,7 +21951,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_tinyEye03_ia4_PNG-0x800000,
  NULL,
  0,
@@ -22071,7 +22071,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_tinyEye04_ia4_PNG-0x800000,
  NULL,
  0,
@@ -22191,7 +22191,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_tinyEye05_ia4_PNG-0x800000,
  NULL,
  0,
@@ -22311,7 +22311,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_tinyEye06_ia4_PNG-0x800000,
  NULL,
  0,
@@ -22431,7 +22431,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_tinyEye07_ia4_PNG-0x800000,
  NULL,
  0,
@@ -22551,7 +22551,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_tinyEye08_ia4_PNG-0x800000,
  NULL,
  0,
@@ -22671,7 +22671,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_tinyEye09_ia4_PNG-0x800000,
  NULL,
  0,
@@ -22791,7 +22791,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_tinyEye10_ia4_PNG-0x800000,
  NULL,
  0,
@@ -22911,7 +22911,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_tinyEye11_ia4_PNG-0x800000,
  NULL,
  0,
@@ -23031,7 +23031,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_tinyEye12_ia4_PNG-0x800000,
  NULL,
  0,
@@ -23151,7 +23151,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_arrowAnim_ia4_PNG-0x800000,
  NULL,
  1,
@@ -23271,7 +23271,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_TitleScreen_rgba16_PNG-0x800000,
  NULL,
  6,
@@ -23391,7 +23391,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_StageSelectBackground_rgba16_PNG-0x800000,
  NULL,
  6,
@@ -23511,7 +23511,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController_Gfx,
+ static0_spriteController_Gfx,
  &extImages_JungleLandText_ia8_PNG-0x800000,
  NULL,
  2,
@@ -23631,7 +23631,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController_Gfx,
+ static0_spriteController_Gfx,
  &extImages_AntLandText_ia8_PNG-0x800000,
  NULL,
  2,
@@ -23751,7 +23751,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController_Gfx,
+ static0_spriteController_Gfx,
  &extImages_BombLandText_ia8_PNG-0x800000,
  NULL,
  2,
@@ -23871,7 +23871,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController_Gfx,
+ static0_spriteController_Gfx,
  &extImages_DesertCastleText_ia8_PNG-0x800000,
  NULL,
  2,
@@ -23991,7 +23991,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController_Gfx,
+ static0_spriteController_Gfx,
  &extImages_KidsLandText_ia8_PNG-0x800000,
  NULL,
  2,
@@ -24111,7 +24111,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController_Gfx,
+ static0_spriteController_Gfx,
  &extImages_GhostCastleText_ia8_PNG-0x800000,
  NULL,
  2,
@@ -24231,7 +24231,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_JungleLandText2_ci8_PNG-0x800000,
  &extImages_JungleLandText2_ci8_PAL-0x800000,
  5,
@@ -24351,7 +24351,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_AntLandText2_ci8_PNG-0x800000,
  &extImages_AntLandText2_ci8_PAL-0x800000,
  5,
@@ -24471,7 +24471,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_BombLandText2_ci8_PNG-0x800000,
  &extImages_BombLandText2_ci8_PAL-0x800000,
  5,
@@ -24591,7 +24591,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_DesertCastleText2_ci8_PNG-0x800000,
  &extImages_DesertCastleText2_ci8_PAL-0x800000,
  5,
@@ -24711,7 +24711,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_KidsLandText2_ci8_PNG-0x800000,
  &extImages_KidsLandText2_ci8_PAL-0x800000,
  5,
@@ -24831,7 +24831,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_GhostCastleText2_ci8_PNG-0x800000,
  &extImages_GhostCastleText2_ci8_PAL-0x800000,
  5,
@@ -24951,7 +24951,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_quintellaDeadEye_ci8_PNG-0x800000,
  &extImages_quintellaDeadEye_ci8_PAL-0x800000,
  5,
@@ -25071,7 +25071,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_lizardKongDeadEyes_ci4_PNG-0x800000,
  &extImages_lizardKongDeadEyes_ci4_PAL-0x800000,
  4,
@@ -25191,7 +25191,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_armadilloDeadEyes_ci8_PNG-0x800000,
  &extImages_armadilloDeadEyes_ci8_PAL-0x800000,
  5,
@@ -25311,7 +25311,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController_Gfx,
+ static0_spriteController_Gfx,
  &static0_camera_ia8_PNG,
  NULL,
  2,
@@ -25431,7 +25431,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_sunsoft_ia4_PNG-0x800000,
  NULL,
  1,
@@ -25551,7 +25551,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_battleRanking_ci8_PNG-0x800000,
  &extImages_battleRanking_ci8_PAL-0x800000,
  5,
@@ -25911,7 +25911,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_QuestionMark_ci8_PNG-0x800000,
  &extImages_QuestionMark_ci8_PAL-0x800000,
  5,
@@ -26031,7 +26031,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_battleSelect_ci8_PNG-0x800000,
  &extImages_battleSelect_ci8_PAL-0x800000,
  5,
@@ -26151,7 +26151,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController_Gfx,
+ static0_spriteController_Gfx,
  &extImages_bombSnakeParts_ci8_PNG-0x800000,
  &extImages_bombSnakeParts_ci8_PAL-0x800000,
  5,
@@ -26271,7 +26271,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_ranking_ci8_PNG-0x800000,
  &extImages_ranking_ci8_PAL-0x800000,
  5,
@@ -26391,7 +26391,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController_Gfx,
+ static0_spriteController_Gfx,
  &extImages_rankingNumbers_ia8_PNG-0x800000,
  NULL,
  2,
@@ -26511,7 +26511,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController_Gfx,
+ static0_spriteController_Gfx,
  &extImages_rankingLevel_ia8_PNG-0x800000,
  NULL,
  2,
@@ -26631,7 +26631,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_hexagon_ia8_PNG-0x800000,
  NULL,
  2,
@@ -26751,7 +26751,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_square_ia4_PNG-0x800000,
  NULL,
  1,
@@ -26871,7 +26871,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_japanSystemSupplyC1997_ia4_PNG-0x800000,
  NULL,
  1,
@@ -26991,7 +26991,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_theEnd_ia4_PNG-0x800000,
  NULL,
  1,
@@ -27111,7 +27111,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &static0_explode_ia4_PNG,
  NULL,
  1,
@@ -27231,7 +27231,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController_Gfx,
+ static0_spriteController_Gfx,
  &extImages_bowlingSquare_ia4_PNG-0x800000,
  NULL,
  1,
@@ -27351,7 +27351,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_bowlingNumbers_ia4_PNG-0x800000,
  NULL,
  1,
@@ -27471,7 +27471,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_rabbitBowl_ia4_PNG-0x800000,
  NULL,
  1,
@@ -27591,7 +27591,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_bowlingLastSquare_ia4_PNG-0x800000,
  NULL,
  1,
@@ -27711,7 +27711,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_crownSmall_ci8_PNG-0x800000,
  &extImages_crownSmall_ci8_PAL-0x800000,
  5,
@@ -27831,7 +27831,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_carrotSmall_ci8_PNG-0x800000,
  &extImages_carrotSmall_ci8_PAL-0x800000,
  5,
@@ -27951,7 +27951,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_bossMeter_rgba16_PNG-0x800000,
  NULL,
  6,
@@ -28071,7 +28071,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_bossHealth_rgba16_PNG-0x800000,
  NULL,
  6,
@@ -28191,7 +28191,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController2_Gfx,
+ static0_spriteController2_Gfx,
  &extImages_iDontKnow_ci4_PNG-0x800000,
  &extImages_iDontKnow_ci4_PAL-0x800000,
  4,
@@ -28311,7 +28311,7 @@ SpriteListing gSpriteListings[230] = {
  }
  },
 {
- &static0_spriteController_Gfx,
+ static0_spriteController_Gfx,
  &extImages_menuOptions_ia8_PNG-0x800000,
  NULL,
  2,

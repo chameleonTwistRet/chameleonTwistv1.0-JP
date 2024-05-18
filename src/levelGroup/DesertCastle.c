@@ -1,21 +1,6 @@
 #include "common.h"
 extern Vtx D_800FE2B0_DesertCastle[];
 
-extern Mtx D_80129730_DesertCastle;
-extern Mtx D_80129770_DesertCastle;
-extern Mtx D_801297B0_DesertCastle;
-extern Mtx D_801297F0_DesertCastle;
-extern Mtx D_80129830_DesertCastle;
-extern Mtx D_80129870_DesertCastle;
-extern Mtx D_801298B0_DesertCastle;
-extern Mtx D_801298F0_DesertCastle;
-extern Mtx D_80129930_DesertCastle;
-extern Mtx D_80129970_DesertCastle;
-extern Mtx D_801299B0_DesertCastle;
-extern Mtx D_801299F0_DesertCastle;
-extern Mtx D_80129A30_DesertCastle;
-extern Mtx D_80129A70_DesertCastle;
-
 extern unsigned char Global_sandAgain_ci4_PNG[];
 extern unsigned char Global_sandAgain_ci4_PAL[];
 extern unsigned char Global_DCSmallTiles_ci4_PNG[];
@@ -606,7 +591,7 @@ Mtx DesertCastle_IMtx1 = IDENTITY;
 #include "assets/levelGroup/DesertCastle/roomObjects/room15_obj1.roomObj.inc.c"
 
 #include "assets/levelGroup/DesertCastle/roomObjects/room15_obj2.roomObj.inc.c"
-
+extern Vtx DesertCastle_model26_Vtx[];
 #include "assets/levelGroup/DesertCastle/roomObjects/room15_obj3.roomObj.inc.c"
 
 #include "assets/levelGroup/DesertCastle/roomObjects/room15_objSTOP.roomObj.inc.c"
@@ -616,7 +601,7 @@ Mtx DesertCastle_IMtx1 = IDENTITY;
 #include "assets/levelGroup/DesertCastle/roomObjects/room16_obj2.roomObj.inc.c"
 
 #include "assets/levelGroup/DesertCastle/roomObjects/room16_obj3.roomObj.inc.c"
-
+extern Vtx DesertCastle_model27_Vtx[];
 #include "assets/levelGroup/DesertCastle/roomObjects/room16_obj4.roomObj.inc.c"
 
 #include "assets/levelGroup/DesertCastle/roomObjects/room16_obj5.roomObj.inc.c"
@@ -624,7 +609,7 @@ Mtx DesertCastle_IMtx1 = IDENTITY;
 #include "assets/levelGroup/DesertCastle/roomObjects/room16_obj6.roomObj.inc.c"
 
 #include "assets/levelGroup/DesertCastle/roomObjects/room16_objSTOP.roomObj.inc.c"
-
+extern Vtx DesertCastle_model28_Vtx[];
 #include "assets/levelGroup/DesertCastle/roomObjects/room17_obj1.roomObj.inc.c"
 
 #include "assets/levelGroup/DesertCastle/roomObjects/room17_obj2.roomObj.inc.c"
@@ -646,11 +631,11 @@ Mtx DesertCastle_IMtx1 = IDENTITY;
 #include "assets/levelGroup/DesertCastle/roomObjects/room17_objSTOP.roomObj.inc.c"
 
 #include "assets/levelGroup/DesertCastle/roomObjects/room18_obj1.roomObj.inc.c"
-
+extern Vtx DesertCastle_model29_Vtx[];
 #include "assets/levelGroup/DesertCastle/roomObjects/room18_obj2.roomObj.inc.c"
 
 #include "assets/levelGroup/DesertCastle/roomObjects/room18_objSTOP.roomObj.inc.c"
-
+extern Vtx DesertCastle_model30_Vtx[];
 #include "assets/levelGroup/DesertCastle/roomObjects/room19_obj1.roomObj.inc.c"
 
 #include "assets/levelGroup/DesertCastle/roomObjects/room19_obj2.roomObj.inc.c"
@@ -666,7 +651,7 @@ Mtx DesertCastle_IMtx1 = IDENTITY;
 #include "assets/levelGroup/DesertCastle/roomObjects/room19_objSTOP.roomObj.inc.c"
 
 #include "assets/levelGroup/DesertCastle/roomObjects/room20_obj1.roomObj.inc.c"
-
+extern Vtx DesertCastle_model31_Vtx[];
 #include "assets/levelGroup/DesertCastle/roomObjects/room20_obj2.roomObj.inc.c"
 
 #include "assets/levelGroup/DesertCastle/roomObjects/room20_objSTOP.roomObj.inc.c"
@@ -810,7 +795,7 @@ Mtx DesertCastle_IMtx1 = IDENTITY;
 #include "assets/levelGroup/DesertCastle/roomObjects/room26_obj10.roomObj.inc.c"
 
 #include "assets/levelGroup/DesertCastle/roomObjects/room26_obj11.roomObj.inc.c"
-
+extern Vtx DesertCastle_model69_Vtx[];
 #include "assets/levelGroup/DesertCastle/roomObjects/room26_obj12.roomObj.inc.c"
 
 #include "assets/levelGroup/DesertCastle/roomObjects/room26_objSTOP.roomObj.inc.c"
@@ -836,7 +821,7 @@ Mtx DesertCastle_IMtx1 = IDENTITY;
 #include "assets/levelGroup/DesertCastle/roomObjects/room27_obj10.roomObj.inc.c"
 
 #include "assets/levelGroup/DesertCastle/roomObjects/room27_obj11.roomObj.inc.c"
-
+extern Vtx DesertCastle_model71_Vtx[];
 #include "assets/levelGroup/DesertCastle/roomObjects/room27_obj12.roomObj.inc.c"
 
 #include "assets/levelGroup/DesertCastle/roomObjects/room27_objSTOP.roomObj.inc.c"
@@ -1010,15 +995,15 @@ Mtx DesertCastle_IMtx1 = IDENTITY;
 #include "assets/levelGroup/DesertCastle/roomObjects/room32_objSTOP.roomObj.inc.c"
 
 #include "assets/levelGroup/DesertCastle/roomObjects/room33_obj1.roomObj.inc.c"
-
+extern Vtx DesertCastle_model80_Vtx[];
 #include "assets/levelGroup/DesertCastle/roomObjects/room33_obj2.roomObj.inc.c"
-
+extern Vtx DesertCastle_model81_Vtx[];
 #include "assets/levelGroup/DesertCastle/roomObjects/room33_obj3.roomObj.inc.c"
 
 #include "assets/levelGroup/DesertCastle/roomObjects/room33_objSTOP.roomObj.inc.c"
 
 #include "assets/levelGroup/DesertCastle/roomObjects/room34_obj1.roomObj.inc.c"
-
+extern Vtx DesertCastle_model79_Vtx[];
 #include "assets/levelGroup/DesertCastle/roomObjects/room34_obj2.roomObj.inc.c"
 
 #include "assets/levelGroup/DesertCastle/roomObjects/room34_objSTOP.roomObj.inc.c"
@@ -1055,7 +1040,7 @@ Mtx DesertCastle_IMtx1 = IDENTITY;
 
 #include "assets/levelGroup/DesertCastle/roomActors/roomMulti2_actSTOP.roomAct.inc.c"
 
-#include "build/assets/levelGroup/DesertCastle/spriteLib.inc.c"
+#include "assets/levelGroup/DesertCastle/spriteLib.sprLib.inc.c"
 
 #include "assets/levelGroup/DesertCastle/collectables/room4_clct1.clct.inc.c"
 

@@ -499,7 +499,6 @@ Vec3f* func_800B2470(Vec3f* vecA, Vec3f vecB, Vec3f vecC, f32 a, s32 b) {
 }
 
 s32 func_800B2510(void) {
-    PlayerActor* player = &gPlayerActors[0];
     s32 ret = 0;
     s32 i;
     
@@ -639,7 +638,7 @@ s32* func_800B3424(s32 arg0) {
     } else {
         var_v0 = 0;
     }
-    return (var_v0 != 0) ? &gZoneCollisions[(u8)arg0].unk68 : &levelFlags[(u8)arg0];
+    return (var_v0 != 0) ? &gZoneFields[(u8)arg0].unk68 : &StageFlags[(u8)arg0];
 }
 
 s32* func_800B3484(s32 arg0) {
@@ -1006,8 +1005,8 @@ void setCrownPositionsForRoom(s32 arg0) {
     collectableWrapper* var_s0;
     Collectable* new_var;
     
-    limit = gZoneCollisions[arg0].clctCount;
-    var_s0 = &D_802019A8[gZoneCollisions[arg0].unk78];
+    limit = gZoneFields[arg0].clctCount;
+    var_s0 = &D_802019A8[gZoneFields[arg0].unk78];
     
     for (i = 0; i < limit; i++, var_s0++) {
         new_var = var_s0->levelDataCollectable;
@@ -1154,8 +1153,8 @@ void func_800B6098(Collider* arg0, RoomObject* arg1) {
     arg0->unkC4 = 0;
     arg0->unkC8 = 0;
     if (arg0->unk_AC < 0 && arg0->unk_B4 < 0) {
-        arg0->unkC4 = arg0->unkC8 = levelFlags[arg0->unk10C];
-        if (levelFlags[arg0->unk10C]) {
+        arg0->unkC4 = arg0->unkC8 = StageFlags[arg0->unk10C];
+        if (StageFlags[arg0->unk10C]) {
             arg0->unk_30.x = arg0->unk_98;
             arg0->unk_30.y = arg0->unk_9C;
             arg0->unk_30.z = arg0->unk_A0;
@@ -1392,7 +1391,7 @@ void func_800BE2C0(void) {
 }
 
 void func_800BE370(s32 room) {
-    Rect3D* rectTemp = &gZoneCollisions[room].roomBounds;
+    Rect3D* rectTemp = &gZoneFields[room].roomBounds;
     Actor* actorList;
     s32 i;
     for (i = 0, actorList = gActors; i < MAX_ACTORS; i++, actorList++) {
@@ -1478,8 +1477,7 @@ void func_800BE7BC(void) {
 void func_800BF268(s32 arg0) {
     Collider** currentCollider;
     s32 i;
-    for(i = 0, currentCollider = &D_80240898;
-        i < gFieldCount; i++, currentCollider++){
+    for(i = 0, currentCollider = &D_80240898; i < gFieldCount; i++, currentCollider++){
         if (arg0 == (*currentCollider)->unk_08) {
             EraseField(*currentCollider);
             //must be this way
@@ -1504,7 +1502,7 @@ void RegistDoor(RoomObject* obj, s32 arg1, s32 arg2) {
         door->rect.max.z = obj->unk2C;
         door->direction = obj->unk38;
         door->unk34 = obj->unk3C;
-        gDoorCount += 1;
+        gDoorCount++;
     }
 }
 
@@ -1528,31 +1526,25 @@ void func_800BF524(s32 inzone) {
 }
 
 void func_800BF5A4(void) {
-    func_8004BA5C(gZoneCollisions[gCurrentZone].unk8C);
+    func_8004BA5C(gZoneFields[gCurrentZone].unk8C);
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BF5E8.s")
 
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BF84C.s")
-
-//something about gZoneCollisions[room].unk84 != actor->id isnt building????
-/*void func_800BF84C(s32 room) {
+void func_800BF84C(s32 room) {
     s32 i;
-    s32 limit = gZoneCollisions[room].unk14;
-    RoomActor* actor = gZoneCollisions[room].roomActors;
-    for (i = 0; i < limit; i++){
-        if (actor->id == 13 || actor->id == 45 || 0 == gZoneCollisions[room].unk68 || actor->id != gZoneCollisions[room].unk84){
+    Field* zone = &gZoneFields[room];
+    s32 limit = zone->rmActCount;
+    RoomActor* actor = zone->roomActors;
+    
+    for (i = 0; i < limit; i++, actor++){
+        if (actor->id == 13 || actor->id == 45 || zone->unk68 == 0 || actor->id != zone->unk84){
             if(!IsBossStage() || !IsBossID(actor->id)) {
                 func_800BF5E8(actor);
             }
         }
-        actor++;
-        
     }
 }
-*/
-
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/InitFieldSub.s")
 
@@ -1619,7 +1611,7 @@ void func_800C0AEC(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C0B74.s")
 
 void func_800C0CDC(PlayerActor* arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4) {
-    if (gZoneCollisions[arg1].unk7C != 0) {
+    if (gZoneFields[arg1].unk7C != 0) {
         gGameModeState = 3;
         switch (gCurrentStage) {                    /* switch 1 */
         case 0:                                     /* switch 1 */
@@ -1675,17 +1667,17 @@ void func_800C0E78(s32 arg0) {
     s32 i;
     s32 temp = arg0;
 
-    if (gZoneCollisions[arg0].unk60 != 0) {
+    if (gZoneFields[arg0].unk60 != 0) {
         temp = 1;
         for (i = 0; i < ARRAY_COUNT(gActors); i++) {
-            if ((gActors[i].actorID != 0) && (gZoneCollisions[arg0].unk84 == gActors[i].actorID) && (gActors[i].actorState == 0)) {
+            if ((gActors[i].actorID != 0) && (gZoneFields[arg0].unk84 == gActors[i].actorID) && (gActors[i].actorState == 0)) {
                 temp = 0;
                 break;
             }
         }
         
         if (temp != 0) {
-            gZoneCollisions[arg0].unk64 = 0;
+            gZoneFields[arg0].unk64 = 0;
         }
     }
     EraseRoomItem(arg0);
@@ -1736,7 +1728,7 @@ s32 func_800C1550(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/InitFieldSubScroll.s")
 
-void func_800C198C(s32 arg0, Collision* room) {
+void func_800C198C(s32 arg0, Field* room) {
     s32 flag;
     Collider** var_a2;
     s32 i;
@@ -1783,19 +1775,19 @@ void func_800C198C(s32 arg0, Collision* room) {
 }
 
 void func_800C1B70(void) {
-    if (gZoneCollisions[gCurrentZone].unkCC != -1.0) {
-        D_80174994 = gZoneCollisions[gCurrentZone].unkCC;
+    if (gZoneFields[gCurrentZone].unkCC != -1.0) {
+        D_80174994 = gZoneFields[gCurrentZone].unkCC;
     } else {
-        D_80174994 = gZoneCollisions[gCurrentZone].roomBounds.min.y - 500.0;
+        D_80174994 = gZoneFields[gCurrentZone].roomBounds.min.y - 500.0;
     }
 }
 
 void func_800C1BF0(s32 arg0) {
     s8 pad;
     if (func_800C1550(arg0)) {
-        InitFieldSubScroll(arg0, &gZoneCollisions[arg0], D_801B3178->unk8, D_801B3178->unk10);
+        InitFieldSubScroll(arg0, &gZoneFields[arg0], D_801B3178->unk8, D_801B3178->unk10);
         func_800B3364(1);
-        func_800C198C(arg0, &gZoneCollisions[arg0]);
+        func_800C198C(arg0, &gZoneFields[arg0]);
     }
 }
 
@@ -1825,14 +1817,14 @@ void func_800C29D8(s32 arg0) {
 }
 
 void func_800C2A00(void) {
-    Collision* pad;
-    Collision* pad2;
+    Field* pad;
+    Field* pad2;
     s32 sp24;
     s32 var_v1;
 
     func_800CFDC8(gPlayerActors);
     if (D_80236978 != 0) {
-        D_80236974 = 0;
+        isInOverworld = FALSE;
         isChange.unk4C = gPlayerActors->pos.x;
         isChange.unk50 = gPlayerActors->pos.y;
         isChange.unk54 = gPlayerActors->pos.z;
@@ -1873,9 +1865,9 @@ void func_800C2A00(void) {
             }
             isChange.unk24 = var_v1;
         }
-        isChange.unk64 = gZoneCollisions[gCurrentZone].unk7C;
+        isChange.unk64 = gZoneFields[gCurrentZone].unk7C;
         isChange.unk74 = 1;
-        isChange.unkCC = gZoneCollisions[gCurrentZone].unk80;
+        isChange.unkCC = gZoneFields[gCurrentZone].unk80;
         D_80236978 = 0;
     } else {
         func_800C0E78(isChange.unk_08);
@@ -1892,7 +1884,7 @@ void enterBossRoom(void) {
     int new_var;
     func_800CFDC8(gPlayerActors);
 
-    if (D_80236974 == 0) {
+    if (isInOverworld == FALSE) {
         func_800C2A00();
     } else {
         new_var = 3;
@@ -1939,8 +1931,8 @@ void func_800C3DCC(Camera* camera, Vec3f arg1, Vec3f arg4, f32 arg7) {
     camera->f4.y = camera->f3.y;
     camera->f3.z = arg4.z;
     camera->f4.z = arg4.z;
-    camera->f2.x -= gZoneCollisions[gCurrentZone].unkD0 * camera->size1;
-    camera->f3.y -= gZoneCollisions[gCurrentZone].unkD0 * camera->size1;
+    camera->f2.x -= gZoneFields[gCurrentZone].unkD0 * camera->size1;
+    camera->f3.y -= gZoneFields[gCurrentZone].unkD0 * camera->size1;
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C3E94.s")
@@ -1948,11 +1940,11 @@ void func_800C3DCC(Camera* camera, Vec3f arg1, Vec3f arg4, f32 arg7) {
 void func_800C4040(PlayerActor* arg0, Tongue* arg1, Camera* camera, f32 arg3, f32 arg4) {
     Vec3f sp54;
     Vec3f sp48;
-    Collision* temp_v0;
+    Field* temp_v0;
     f32 temp_f0_8;
     f32 temp_f12;
 
-    temp_v0 = &gZoneCollisions[gCurrentZone];
+    temp_v0 = &gZoneFields[gCurrentZone];
     if (arg3 == 0.0 && arg4 == 0.0) {
         arg3 = 1;
     }
@@ -1964,9 +1956,9 @@ void func_800C4040(PlayerActor* arg0, Tongue* arg1, Camera* camera, f32 arg3, f3
     camera->f4.x = camera->f3.x = camera->f1.z;
     camera->f4.y = camera->f3.y = arg0->pos.y + 600 * camera->size1;
     camera->f4.z = camera->f3.z = camera->f2.y;
-    camera->f5.y += gZoneCollisions[gCurrentZone].unkD0 * camera->size1;
-    camera->f4.y += gZoneCollisions[gCurrentZone].unkD0 * camera->size1;
-    if (D_80236974 == 1) {
+    camera->f5.y += gZoneFields[gCurrentZone].unkD0 * camera->size1;
+    camera->f4.y += gZoneFields[gCurrentZone].unkD0 * camera->size1;
+    if (isInOverworld == TRUE) {
         camera->f4.z += 800 * camera->size1;
         camera->f3.z += 800 * camera->size1;
         func_800D3854(arg0, arg1, camera, &sp54, &sp48, 1);
@@ -1984,7 +1976,7 @@ void func_800C4040(PlayerActor* arg0, Tongue* arg1, Camera* camera, f32 arg3, f3
     camera->f4.z += arg4;
     camera->f3.z += arg4;
     if (camera->unk0 == 1) {
-        func_800D69D0(gZoneCollisions[gCurrentZone].cameraMode, arg0, arg1, camera, &sp54, &sp48, 1);
+        func_800D69D0(gZoneFields[gCurrentZone].cameraMode, arg0, arg1, camera, &sp54, &sp48, 1);
         func_800C3DCC(camera, sp54, sp48, arg0->pos.y);
     }
 }
@@ -2066,7 +2058,7 @@ void func_800C5304(Camera* camera, f32 weight) {
     SphericalToCartesian(&sp48, radius, theta, phi);
     sp54.x = sp30.x + sp48.x;
     sp54.y = sp30.y + sp48.y; sp54.z = sp30.z + sp48.z;
-    sp30.y += gZoneCollisions[gCurrentZone].unkD0 * camera->size1;
+    sp30.y += gZoneFields[gCurrentZone].unkD0 * camera->size1;
     func_800C3DCC(camera, sp30, sp54, D_80201960);
 }
 
