@@ -71,7 +71,7 @@ class N64SegRoomObject(CommonSegCodeSubsegment):
             lines.append("RoomObject %s = {" % (sym.name))
 
         byteData = bytearray(sprite_data)
-        data = struct.unpack('>ffffffiiiiffffiiiiiiiiiiIIiiiiiiiii', byteData)
+        data = struct.unpack('>ffffffifiiffffiiiiiiiiiiIIiiiiiiiii', byteData)
         enums = open("include/enums.h", "r", encoding="UTF-8").readlines()
         i = 0
         while i < len(data):

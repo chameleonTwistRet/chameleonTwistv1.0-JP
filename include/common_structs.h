@@ -300,7 +300,7 @@ typedef struct RoomObject {
     Vec3f position;
     Vec3f scale;
     s32 unk18;
-    s32 damages;
+    f32 damages;
     s32 unk20;
     s32 unk24;
     f32 unk28;
