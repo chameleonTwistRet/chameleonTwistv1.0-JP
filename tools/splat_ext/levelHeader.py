@@ -70,7 +70,7 @@ class N64SegLevelHeader(CommonSegCodeSubsegment):
             lines.append("LevelHeader %s = {" % (sym.name))
 
         byteData = bytearray(sprite_data)
-        data = struct.unpack('>IIIIIIII', byteData)
+        data = struct.unpack('>IIIHHIIII', byteData)
         i = 0
         while i < len(data):
             use = data[i]
@@ -85,7 +85,7 @@ class N64SegLevelHeader(CommonSegCodeSubsegment):
                     pointers = self.retrieve_sym_type(symbols.all_symbols_dict, use, "Lvp")
                     if pointers: use = "&"+pointers.name+"[0]"
                 #rabObjects would go here but i still dont know what it does
-                elif i == 6: #spriteLib
+                elif i == 7: #spriteLib
                     sprLib = self.retrieve_sym_type(symbols.all_symbols_dict, use, "Sprlib")
                     if sprLib: use = "&"+sprLib.name+"[0]"
                 elif i == len(data) - 1: #level scope

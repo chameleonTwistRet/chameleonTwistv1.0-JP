@@ -1087,7 +1087,8 @@ typedef struct LevelHeader {
     LevelMap* Map;
     RoomSettings* OWRooms;
     LevelPointer* Pointers;
-    u32 unkC;
+    u16 levelPointerCount; //the amount of objects stored in ^
+    u16 unkC;
     u32 RoomObjects;
     u32 unk14;
     s32* SpriteLib;
