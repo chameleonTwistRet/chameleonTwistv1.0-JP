@@ -96,7 +96,18 @@ class N64SegRoomObject(CommonSegCodeSubsegment):
                 #    enum += 1
             elif i == 7:
                 v = "DEGREES_TO_RADIANS_2PI("+str(degrees(v))+")"
-            elif i == 14: #exitDirection
+            elif i == 14: #uservariable symbol
+                if hex(v).startswith("0x3") and len(hex(v)) == 7 + 2:
+                    #CAN BE:
+                        #uservariable symbol
+                        #exitDirection
+                    #TODO: what the hell is 4DD0D8 - 4dd1f4 in bombland. it is referenced with this slot but i have no idea what it is
+                    #ive had to make a workaround for now but this is the first appearance of anything relating to this
+                    sym2 = self.create_symbol(
+                        addr=v, in_segment=True, type="data", define=True
+                    )
+                    if not sym2.name.startswith("D_"):
+                        v = "&"+sym2.name
                 pass
                 #enum = 0
                 #actorAt = 0 #number in the actor enum

@@ -247,7 +247,7 @@ typedef struct Collider {
     /* 0x0A4 */ f32 unkA4;
     /* 0x0A8 */ f32 unkA8;
     /* 0x0AC */ s32 unk_AC;
-    /* 0x0B0 */ s32 unk_B0;
+    /* 0x0B0 */ s32 unk_B0; // Vtx*?
     /* 0x0B4 */ s32 unk_B4;
     /* 0x0B8 */ s32 unk_B8;
     /* 0x0BC */ s32 unk_BC;
@@ -307,7 +307,7 @@ typedef struct RoomObject {
     f32 unk2C;
     f32 unk30;
     f32 unk34;
-    s32 unk38;
+    s32 unk38; // uservariable???
     s32 unk3C;
     s32 unk40;
     s32 unk44;
