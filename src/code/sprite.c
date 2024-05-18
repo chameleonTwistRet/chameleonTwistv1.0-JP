@@ -921,6 +921,8 @@ char D_800F5418[1][24][TEXT_LINE_SIZE] = {
     } 
 };
 
+//unique dialogue, intro/outro
+//notice how only the first &D_800F5418 changes ..
 char* D_800F59B8[7][20] = {
     //Davy
     {
@@ -2226,6 +2228,266 @@ u8 sTextGradientPalettes[] = {
 };
 
 u8 gLockContextEyes = 1;
+
+u8 D_800FE6F0 = 0;
+f32 D_800FE6F4[4] = {0, 0, 0, 0};
+u8 D_800FE704[4] = {0, 0, 0, 0};
+s32 D_800FE708 = 1;
+
+//what
+Struct_800714C8 D_800FE70C = {{-1, -1, -1, -1, -1, -1}};
+
+u8 D_800FE724[] = {
+0xA3, 0xB0, 0xA3, 0xB1,
+0xA3, 0xB2, 0xA3, 0xB3,
+0xA3, 0xB4, 0xA3, 0xB5,
+0xA3, 0xB6, 0xA3, 0xB7,
+0xA3, 0xB8, 0xA3, 0xB9,
+0xA3, 0xC1, 0xA3, 0xC2,
+0xA3, 0xC3, 0xA3, 0xC4,
+0xA3, 0xC5, 0xA3, 0xC6,
+0x00, 0x00, 0x00, 0x00
+};
+
+u8 D_800FE748 = 0;
+
+s32 D_800FE74C = 0;
+
+unk_80052094_8 D_800FE750[] = {
+{2, 2},
+{0, 0},
+{0, 2},
+{7, 0},
+{4, 0},
+{7, 0},
+{3, 0},
+{4, 2}
+};
+
+u8 D_800FE790[] = {
+0x00, 0x00, 0x0D, 0x00,
+0x00, 0x0E, 0x00, 0x00,
+0xF6, 0x3C, 0x0B, 0xB8,
+0xF6, 0x3C, 0x00, 0x00,
+0xFF, 0xE0, 0xFF, 0xE0,
+0xFF, 0xFF, 0xFF, 0xFF,
+0x09, 0xC4, 0x0B, 0xB8,
+0xF6, 0x3C, 0x00, 0x00,
+0x0F, 0xE0, 0xFF, 0xE0,
+0xFF, 0xFF, 0xFF, 0xFF,
+0xF6, 0x3C, 0x0B, 0xB8,
+0x09, 0xC4, 0x00, 0x00,
+0xFF, 0xE0, 0x0F, 0xE0,
+0xFF, 0xFF, 0xFF, 0xFF,
+0x09, 0xC4, 0x0B, 0xB8,
+0x09, 0xC4, 0x00, 0x00,
+0x0F, 0xE0, 0x0F, 0xE0,
+0xFF, 0xFF, 0xFF, 0xFF
+};
+
+Vtx D_800FE7D8_Global[15] = {
+ { { { -50, 0, -30 }, 0, { -32, 4064 }, { 47, 117, 0, 255 } } },
+ { { { 0, -20, 0 }, 0, { 8160, 8160 }, { 47, 117, 0, 255 } } },
+ { { { -50, 0, 30 }, 0, { -32, 12256 }, { 47, 117, 0, 255 } } },
+ { { { 0, 0, -60 }, 0, { 8159, -32 }, { 23, 118, 39, 255 } } },
+ { { { 0, -20, 0 }, 0, { 8160, 8160 }, { 23, 118, 39, 255 } } },
+ { { { -50, 0, -30 }, 0, { -32, 4064 }, { 23, 118, 39, 255 } } },
+ { { { 50, 0, -30 }, 0, { 16352, 4064 }, { 232, 118, 39, 255 } } },
+ { { { 0, -20, 0 }, 0, { 8160, 8160 }, { 232, 118, 39, 255 } } },
+ { { { 0, 0, -60 }, 0, { 8159, -32 }, { 232, 118, 39, 255 } } },
+ { { { 50, 0, 30 }, 0, { 16352, 12256 }, { 208, 117, 0, 255 } } },
+ { { { 0, -20, 0 }, 0, { 8160, 8160 }, { 208, 117, 0, 255 } } },
+ { { { 50, 0, -30 }, 0, { 16352, 4064 }, { 208, 117, 0, 255 } } },
+ { { { 0, 0, 60 }, 0, { 8160, 16352 }, { 232, 118, 216, 255 } } },
+ { { { 0, -20, 0 }, 0, { 8160, 8160 }, { 232, 118, 216, 255 } } },
+ { { { 50, 0, 30 }, 0, { 16352, 12256 }, { 232, 118, 216, 255 } } }
+};
+
+Vtx D_800FE8C8_Global[21] = {
+ { { { -50, 0, 30 }, 0, { -32, 12256 }, { 23, 118, 216, 255 } } },
+ { { { 0, -20, 0 }, 0, { 8160, 8160 }, { 23, 118, 216, 255 } } },
+ { { { 0, 0, 60 }, 0, { 8160, 16352 }, { 23, 118, 216, 255 } } },
+ { { { -50, 0, -30 }, 0, { -32, 2016 }, { 47, 117, 0, 255 } } },
+ { { { 0, -20, 0 }, 0, { 4064, 4064 }, { 47, 117, 0, 255 } } },
+ { { { -50, 0, 30 }, 0, { -32, 6112 }, { 47, 117, 0, 255 } } },
+ { { { 0, 0, -60 }, 0, { 4063, -32 }, { 23, 118, 39, 255 } } },
+ { { { 0, -20, 0 }, 0, { 4064, 4064 }, { 23, 118, 39, 255 } } },
+ { { { -50, 0, -30 }, 0, { -32, 2016 }, { 23, 118, 39, 255 } } },
+ { { { 50, 0, -30 }, 0, { 8160, 2016 }, { 232, 118, 39, 255 } } },
+ { { { 0, -20, 0 }, 0, { 4064, 4064 }, { 232, 118, 39, 255 } } },
+ { { { 0, 0, -60 }, 0, { 4063, -32 }, { 232, 118, 39, 255 } } },
+ { { { 50, 0, 30 }, 0, { 8160, 6112 }, { 208, 117, 0, 255 } } },
+ { { { 0, -20, 0 }, 0, { 4064, 4064 }, { 208, 117, 0, 255 } } },
+ { { { 50, 0, -30 }, 0, { 8160, 2016 }, { 208, 117, 0, 255 } } },
+ { { { 0, 0, 60 }, 0, { 4064, 8160 }, { 232, 118, 216, 255 } } },
+ { { { 0, -20, 0 }, 0, { 4064, 4064 }, { 232, 118, 216, 255 } } },
+ { { { 50, 0, 30 }, 0, { 8160, 6112 }, { 232, 118, 216, 255 } } },
+ { { { -50, 0, 30 }, 0, { -32, 6112 }, { 23, 118, 216, 255 } } },
+ { { { 0, -20, 0 }, 0, { 4064, 4064 }, { 23, 118, 216, 255 } } },
+ { { { 0, 0, 60 }, 0, { 4064, 8160 }, { 23, 118, 216, 255 } } }
+};
+
+f32 D_800FEA18 = 0;
+f32 D_800FEA1C = 0;
+f32 D_800FEA20 = 0;
+f32 D_800FEA24 = 0;
+f32 D_800FEA28 = -1;
+f32 D_800FEA2C = 0;
+s32 D_800FEA30 = 0;
+s32 D_800FEA34 = 0;
+s32 D_800FEA38 = 1;
+f32 D_800FEA3C = 0;
+f32 D_800FEA40 = 0;
+f32 D_800FEA44 = 0;
+f32 D_800FEA48 = 0;
+
+s32 gTrainingState = 0;
+
+s32 D_800FEA50[] = {
+0x186,
+0x258,
+0x258,
+0x1C2,
+0x258
+};
+
+f32 D_800FEA64[] = {
+0, 0, 0, 30, 0, -90, 1.399999976, 6,
+30, 1, 0, 0, 0, 0, 150, 0, 0, 0, 38,
+1, -90, 1.399999976, 6, 40, 1, 0, 0,
+0, 40, 100, 0, 0, 0, 120, 1, -90,
+1.399999976, 6, 40, 1, 0, 0, 0, -39,
+100, 0, 0, 0, 1, 1, -90, 1.399999976,
+6, 40, 1, 0, 0, 0, -39, 100, 0, 0, 0,
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+};
+
+s32 gTrainingRoomTimer = 0;
+s32 gTrainingStateTmer = 0;
+s32 D_800FEB98 = 1;
+s32 D_800FEB9C = -1;
+u32 TraningRoomTimeToBeat = 0;
+u32 sTextboxCurrentLine = 0;
+s32 D_800FEBA8 = 0;
+s32 D_800FEBAC = 0;
+s32 D_800FEBB0 = 0;
+f32 D_800FEBB4 = 0;
+f32 D_800FEBB8 = 0;
+f32 D_800FEBBC = 0;
+f32 D_800FEBC0 = 0;
+
+u8 D_800FEBC4 = 0;
+u8 D_800FEBC8 = 0;
+u8 D_800FEBCC = 0;
+
+f32 D_800FEBD0 = -1;
+
+Vec4f D_800FEBD4 = {0, 0, 0, 0};
+
+s32 D_800FEBE4[] = {
+1,
+10,
+100,
+1000,
+10000,
+100000,
+1000000,
+10000000,
+};
+
+s32 D_800FEC04[] = {
+1,
+10,
+100,
+1000,
+10000,
+100000,
+1000000,
+10000000,
+};
+
+s32 D_800FEC24[] = {
+1,
+10,
+100,
+1000,
+10000,
+100000,
+1000000,
+10000000,
+};
+
+Mtx D_800FEC48 = IDENTITY;
+Mtx D_800FEC88 = IDENTITY;
+Mtx D_800FECC8 = IDENTITY;
+
+s32 D_800FED08 = 0;
+s32 cutsceneSwitch = 0;
+s32 D_800FED10 = 0;
+f32 D_800FED14 = 0;
+f32 D_800FED18 = 0;
+f32 D_800FED1C = 0;
+f32 D_800FED20 = 0;
+f32 D_800FED24 = 0;
+f32 D_800FED28 = 0;
+f32 D_800FED2C = 0;
+
+s32 D_800FED30 = 0;
+s32 D_800FED34 = 0;
+
+extern Gfx IntroOutro_davyChameleon_Gfx[];
+extern Gfx IntroOutro_jackChameleon_Gfx[];
+extern Gfx IntroOutro_fredChameleon_Gfx[];
+extern Gfx IntroOutro_lindaChameleon_Gfx[];
+extern Gfx IntroOutro_davyChameleon_Gfx[];
+extern Gfx IntroOutro_whiteChameleon_Gfx[];
+
+//real chameleon gfxs
+Gfx* D_800FED38[] = {
+    IntroOutro_davyChameleon_Gfx,
+    IntroOutro_jackChameleon_Gfx,
+    IntroOutro_fredChameleon_Gfx,
+    IntroOutro_lindaChameleon_Gfx,
+    IntroOutro_davyChameleon_Gfx,
+    IntroOutro_whiteChameleon_Gfx
+};
+//copies???? wtf
+Gfx* D_800FED50[] = {
+    IntroOutro_jackChameleon_Gfx,
+    IntroOutro_davyChameleon_Gfx,
+    IntroOutro_jackChameleon_Gfx,
+    IntroOutro_jackChameleon_Gfx,
+    IntroOutro_davyChameleon_Gfx,
+    IntroOutro_whiteChameleon_Gfx
+};
+Gfx* D_800FED68[] = {
+    IntroOutro_lindaChameleon_Gfx,
+    IntroOutro_lindaChameleon_Gfx,
+    IntroOutro_davyChameleon_Gfx,
+    IntroOutro_davyChameleon_Gfx,
+    IntroOutro_davyChameleon_Gfx,
+    IntroOutro_whiteChameleon_Gfx
+};
+Gfx* D_800FED80[] = {
+    IntroOutro_fredChameleon_Gfx,
+    IntroOutro_fredChameleon_Gfx,
+    IntroOutro_lindaChameleon_Gfx,
+    IntroOutro_fredChameleon_Gfx,
+    IntroOutro_davyChameleon_Gfx,
+    IntroOutro_whiteChameleon_Gfx
+};
+
+s32 D_800FED98 = 0;
+s32 D_800FED9C = 0;
+s32 D_800FEDA0 = 0;
+s32 D_800FEDA4 = 0;
+s32 D_800FEDA8 = 0;
+s32 D_800FEDAC = 0;
+s32 D_800FEDB0 = 0;
+u32 D_800FEDB4 = 0;
+s32 D_800FEDB8 = 1;
+s32 D_800FEDBC = 0;
+
 
 void DummiedPrintf2(char* arg0, ...) {
 

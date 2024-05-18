@@ -648,7 +648,6 @@ extern Addr code_debug_data__s;
 extern Addr code_math_data__s;
 extern Addr code_poly_c;
 extern Addr code_sprite_c;
-extern Addr code_sprite_data__s;
 extern Addr code_vector_c;
 extern Addr entry_BSS_END;
 extern Addr entry_BSS_SIZE;
