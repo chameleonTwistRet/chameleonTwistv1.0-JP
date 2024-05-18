@@ -1537,7 +1537,7 @@ extern Vtx JungleLand_roomSevenLava_Vtx[];
 
 #include "assets/levelGroup/JungleLand/spriteActors/room0_sprSTOP.sprite.inc.c"
 
-#include "build/assets/levelGroup/JungleLand/spriteLib.inc.c"
+#include "assets/levelGroup/JungleLand/spriteLib.sprLib.inc.c"
 
 #include "assets/levelGroup/JungleLand/rooms/room0.rmSet.inc.c"
 

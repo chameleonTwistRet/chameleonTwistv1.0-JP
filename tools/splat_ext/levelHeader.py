@@ -84,6 +84,10 @@ class N64SegLevelHeader(CommonSegCodeSubsegment):
                 elif i == 2: #pointers
                     pointers = self.retrieve_sym_type(symbols.all_symbols_dict, use, "Lvp")
                     if pointers: use = "&"+pointers.name+"[0]"
+                #rabObjects would go here but i still dont know what it does
+                elif i == 6: #spriteLib
+                    sprLib = self.retrieve_sym_type(symbols.all_symbols_dict, use, "Sprlib")
+                    if sprLib: use = "&"+sprLib.name+"[0]"
                 elif i == len(data) - 1: #level scope
                     scopeSym = self.retrieve_sym_type(symbols.all_symbols_dict, use, "Lvlscope")
                     if scopeSym: use = "&"+scopeSym.name

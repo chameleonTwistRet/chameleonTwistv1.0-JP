@@ -1427,7 +1427,7 @@ segments:
       - [0x491058, roomActor, roomActors/room19_act1]
       - [0x4910b8, roomActor, roomActors/room19_actSTOP]
 
-      - [0x491118, databin, spriteLib]
+      - [0x491118, spriteLib, spriteLib]
 
       - [0x4912d8, spriteActor, spriteActors/room0_spr1]
       - [0x491328, spriteActor, spriteActors/room0_spr2]
@@ -3306,7 +3306,7 @@ segments:
       - [0x4f5934, collectable, collectables/room15_clct1]
       - [0x4f5954, collectable, collectables/room15_clctSTOP]
 
-      - [0x4f5974, databin, spriteLib]
+      - [0x4f5974, spriteLib, spriteLib]
 
       - [0x4f5ab4, roomSettings, rooms/room0]
       - [0x4f5b20, roomSettings, rooms/room1]
@@ -4777,7 +4777,7 @@ segments:
       - [0x5346fc, roomActor, roomActors/room18_act1]
       - [0x53475c, roomActor, roomActors/room18_actSTOP]
 
-      - [0x5347bc, databin, spriteLib]
+      - [0x5347bc, spriteLib, spriteLib]
 
       - [0x53487c, collectable, collectables/room1_clct1]
       - [0x53489c, collectable, collectables/room1_clct2]
@@ -6161,7 +6161,7 @@ segments:
 
       - [0x58504c, roomActor, roomActors/roomMulti2_actSTOP]
 
-      - [0x5850ac, databin, spriteLib]
+      - [0x5850ac, spriteLib, spriteLib]
 
       - [0x58516c, collectable, collectables/room4_clct1]
       - [0x58518c, collectable, collectables/room4_clctSTOP]
@@ -7429,7 +7429,7 @@ segments:
       - [0x5cb408, roomObject, roomObjects/roomMulti_obj2]
       - [0x5cb494, roomObject, roomObjects/roomMulti_objSTOP]
 
-      - [0x5cb520, databin, spriteLib]
+      - [0x5cb520, spriteLib, spriteLib]
 
       - [0x5cb5a0, roomSettings, rooms/fakeRoom]
       - [0x5CB60C, roomSettings, rooms/fakeRoomSTOP]
@@ -9187,7 +9187,7 @@ segments:
       - [0x6bb69c, spriteActor, spriteActors/room0_sprLavaFlame7]
       - [0x6bb6ec, spriteActor, spriteActors/room0_sprSTOP]
 
-      - [0x6bb73c, databin, spriteLib]
+      - [0x6bb73c, spriteLib, spriteLib]
       - [0x6bb8bc, roomSettings, rooms/room0]
       - [0x6bb928, roomSettings, rooms/room1]
       - [0x6bb994, roomSettings, rooms/room2]

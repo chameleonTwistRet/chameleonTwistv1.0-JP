@@ -1723,7 +1723,7 @@ Mtx KidsLand_IMtx1 = IDENTITY;
 
 #include "assets/levelGroup/KidsLand/roomActors/room18_actSTOP.roomAct.inc.c"
 
-#include "build/assets/levelGroup/KidsLand/spriteLib.inc.c"
+#include "assets/levelGroup/KidsLand/spriteLib.sprLib.inc.c"
 
 #include "assets/levelGroup/KidsLand/collectables/room1_clct1.clct.inc.c"
 

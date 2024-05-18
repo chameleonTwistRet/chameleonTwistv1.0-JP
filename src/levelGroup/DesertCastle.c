@@ -1040,7 +1040,7 @@ extern Vtx DesertCastle_model79_Vtx[];
 
 #include "assets/levelGroup/DesertCastle/roomActors/roomMulti2_actSTOP.roomAct.inc.c"
 
-#include "build/assets/levelGroup/DesertCastle/spriteLib.inc.c"
+#include "assets/levelGroup/DesertCastle/spriteLib.sprLib.inc.c"
 
 #include "assets/levelGroup/DesertCastle/collectables/room4_clct1.clct.inc.c"
 

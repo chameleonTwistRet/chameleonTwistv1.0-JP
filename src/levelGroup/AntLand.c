@@ -1210,7 +1210,7 @@ Mtx AntLand_IMtx1 = IDENTITY;
 
 #include "assets/levelGroup/AntLand/roomActors/room19_actSTOP.roomAct.inc.c"
 
-#include "build/assets/levelGroup/AntLand/spriteLib.inc.c"
+#include "assets/levelGroup/AntLand/spriteLib.sprLib.inc.c"
 
 #include "assets/levelGroup/AntLand/spriteActors/room0_spr1.sprite.inc.c"
 

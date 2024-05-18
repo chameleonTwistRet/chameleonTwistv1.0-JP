@@ -581,7 +581,7 @@ Mtx IntroOutro_IMtx1 = IDENTITY;
 
 #include "assets/levelGroup/IntroOutro/roomObjects/roomMulti_objSTOP.roomObj.inc.c"
 
-#include "build/assets/levelGroup/IntroOutro/spriteLib.inc.c"
+#include "assets/levelGroup/IntroOutro/spriteLib.sprLib.inc.c"
 
 #include "assets/levelGroup/IntroOutro/rooms/fakeRoom.rmSet.inc.c"
 

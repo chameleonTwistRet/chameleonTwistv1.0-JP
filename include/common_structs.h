@@ -1090,7 +1090,7 @@ typedef struct LevelHeader {
     u32 unkC;
     u32 RoomObjects;
     u32 unk14;
-    u32 SpriteLib;
+    s32* SpriteLib;
     LevelScope* Scope;
 } LevelHeader;
 
