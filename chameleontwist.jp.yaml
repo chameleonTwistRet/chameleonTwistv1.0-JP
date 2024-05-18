@@ -335,6 +335,8 @@ segments:
     subsegments:
       - [0xED090, c, unkBlock0Assets0] #size of 0x14AD0
       - {start: 0x101B60, type: bss, name: assets0Bss}
+      #-[0x0F018C, cameraFunctions]
+      #-[0x0F33DC]
 
   #this segment is fake, but the original game seems to have an old overlay compiled in
   - name: AnimationMatrixSlots

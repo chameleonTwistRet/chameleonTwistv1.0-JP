@@ -2451,7 +2451,7 @@ Gfx* D_800FED38[] = {
     IntroOutro_davyChameleon_Gfx,
     IntroOutro_whiteChameleon_Gfx
 };
-//copies???? wtf
+//presumably leftovers, only used in func_80082714 the same way as ^
 Gfx* D_800FED50[] = {
     IntroOutro_jackChameleon_Gfx,
     IntroOutro_davyChameleon_Gfx,

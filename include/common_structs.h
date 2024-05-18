@@ -1212,6 +1212,60 @@ typedef struct SpriteListing {
     /* 0x74 */ char unk_74[4];
 } SpriteListing; //sizeof 0x78
 
-typedef short Mtx_f[2][16];
+typedef struct cutsceneCamera{
+    u32 unk0; //unktype
+    f32 unk4;
+    f32 unk8;
+    f32 unkC;
+    u32 unk10; //unktype
+    u32 unk14; //unktype
+    u32 unk18; //unktype
+    u32 unk1C; //unktype
+    u32 unk20; //unktype
+    u32 unk24; //unktype
+    u32 unk28; //unktype
+    u32 unk2C; //unktype
+    u32 unk30; //unktype
+    u32 unk34; //unktype
+    f32 unk38;
+} cutsceneCamera; //sizeof 0x3C
+
+enum CutsceneUses {
+    CUTSCENE_REALCHAMELEON = 1,
+    CUTSCENE_REALCHAMELEON_WITH_BACKPACK, //2
+    CUTSCENE_REALCHAMELEON_JACK_UNUSED, //3
+    CUTSCENE_REALCHAMELEON_LINDA_UNUSED, //4
+    CUTSCENE_REALCHAMELEON_FRED_UNUSED, //5
+    CUTSCENE_RABBIT_UNUSED, //6 actually check if unused
+    CUTSCENE_RABBIT_INTROOUTRO, //7
+    CUTSCENE_SET_STUFF, //8 find out what "stuff" is
+    //D_80176F90 = cutsceneFunction->unk10;
+    //D_80176F94 = cutsceneFunction->unk18;
+    CUTSCENE_ADD_POTEFFECT, //8 find out what "stuff" is
+    CUTSCENE_MODELADD //10
+};
+
+//24fb00
+//also after cutsceneCamera's in assets0
+typedef struct cutsceneFunction{
+/* 0x00 */ s32 unk0;
+/* 0x04 */ u32 unk4; //unktype s32?
+/* 0x08 */ u32 unk8; //unktype s32?
+/* 0x0C */ s32 useCase; // enum
+/* 0x10 */ cutsceneCamera* unk10;
+/* 0x14 */ s32 flag1; // ram stuff
+/* 0x18 */ cutsceneCamera* unk18;
+/* 0x1C */ Vec3f toPlacePos; //might be more usecases idk
+/* 0x28 */ Gfx* toPlace; //segmented, if use case 0xA
+/* 0x2C */ s32 flag2; // ram stuff 2
+/* 0x30 */ u32 unk30; //unktype
+/* 0x34 */ u32 unk34; //unktype
+/* 0x38 */ f32 unk38;
+/* 0x3C */ f32 unk3C;
+/* 0x40 */ f32 unk40;
+/* 0x44 */ u32 unk44; //unktype
+/* 0x48 */ f32 unk48;
+/* 0x4C */ u32 unk4C; //unktype
+} cutsceneFunction; //sizeof 0x50
 
 #endif
