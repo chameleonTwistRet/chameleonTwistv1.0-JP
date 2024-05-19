@@ -30,3 +30,4 @@ tools/cli.ini
 undefined_funcs_auto.txt
 undefined_syms_auto.txt
 ctx.c
+include/ld_addrs.h
