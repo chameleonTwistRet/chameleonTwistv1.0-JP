@@ -25,7 +25,7 @@ options:
   asm_jtbl_label_macro: jlabel
   asm_data_macro: dlabel
   create_undefined_funcs_auto: no
-  asm_emit_size_directive: false
+  asm_emit_size_directive: true
 segments:
   - name: header
     type: databin
@@ -378,30 +378,39 @@ segments:
       - [0x102E60, gfxSeg, spriteController8]
       - [0x102ED0, gfxSeg, spriteController9]
       - [0x102f40, gfxSeg, spriteController10]
+      - [0x102FB0] #B8000000
 
       - [0x102FB8, ci8, health.ci8, 16, 16]
+      - [0x1030B8] #B8000000
       - [0x1030C0, palette, health.ci8]
       - [0x1032c0] #B8000000
 
       - [0x1032C8, ci4, bar.ci4, 48, 16]
+      - [0x103448] #B8000000
       - [0x103450, palette, bar.ci4]
       - [0x103650] #B8000000
 
       - [0x103658, ia8, textBig.ia8, 432, 48]
+      - [0x108758] #B8000000
 
       - [0x108760, ia4, textSmall.ia4, 512, 176]
+      - [0x113760] #B8000000
 
       - [0x113768, ia8, puff.ia8, 96, 32]
+      - [0x114368] #B8000000
 
       - [0x114370, ia4, star2.ia4, 32, 32]
+      - [0x114570] #B8000000
 
       - [0x114578, ia8, camera.ia8, 48, 32]
+      - [0x114B78] #B8000000
 
       - [0x114B80, ia4, explode.ia4, 40, 40]
 
       - [0x114ea0, lights, groupLights] #lights
       - [0x114eb8, vtx, vtx1] #vtx
       - [0x115088, mtx, mtx1] #mtx
+      - [0x1150C8] #B8000000
       - [0x1150D0, ci4, sand.ci4, 64, 64]
       - [0x1158D0] #B8000000
       - [0x1158D8, palette, sand.ci4]
@@ -416,6 +425,7 @@ segments:
       - [0x116a88, gfxSeg, gfx3] #gfx
       - [0x116b60, vtx, vtx4] #vtx
       - [0x116c60, mtx, mtx4] #mtx
+      - [0x116ca0] #B8000000
       - [0x116ca8, ia8, fogFade.ia8, 16, 96]
       - [0x1172a8, gfxSeg, gfx4] #gfx
       - [0x1175C0, databin, gfxNew] #old portion of ^???
@@ -1813,6 +1823,7 @@ segments:
 
       - [0x4978B8, vtx, exit2/exit2]
       - [0x497958] #identity matrix
+      - [0x497998] #B8000000
       - [0x4979A0, i4, antWallw.i4, 32, 32]
       - [0x497BA0, gfxSeg, exit2/exit2]
 
@@ -1826,6 +1837,7 @@ segments:
 
       - [0x498258, vtx, room0/room0]
       - [0x4987A8] #identity matrix
+      - [0x4987e8] #B8000000
       - [0x4987F0, ci4,     antWallShine1.ci4, 64, 64]
       - [0x498FF0] #B8000000
       - [0x498FF8, palette, antWallShine1.ci4]
@@ -1837,8 +1849,11 @@ segments:
 
       - [0x49A778, vtx, room1/room1]
       - [0x49AE08] #identity matrix
+      - [0x49AE48] #B8000000
       - [0x49AE50, i4, antWalli4.i4, 24, 32]
+      - [0x49AFD0] #B8000000
       - [0x49AFD8, i4, gooinga.i4, 32, 32]
+      - [0x49B1D8] #B8000000
       - [0x49B1E0, ci8,     AntshineWall3.ci8, 32, 32]
       - [0x49B5E0] #B8000000
       - [0x49B5E8, palette, AntshineWall3.ci8]
@@ -1846,12 +1861,15 @@ segments:
 
       - [0x49C3A0, vtx, room2/room2]
       - [0x49CAB0] #identity matrix
+      - [0x49CAF0] #B8000000
       - [0x49CAF8, i4, horror.i4, 32, 32]
+      - [0x49CCF8] #B8000000
       - [0x49CD00, i4, antMural1.i4, 64, 64]
       - [0x49d500, gfxSeg, room2/room2]
 
       - [0x49E1B0, vtx, room14/room14]
       - [0x49EAE0] #identity matrix
+      - [0x49EB20] #B8000000
       - [0x49EB28, ci8,     AlShinewall2.ci8, 32, 32]
       - [0x49EF28] #B8000000
       - [0x49EF30, palette, AlShinewall2.ci8]
@@ -1863,6 +1881,7 @@ segments:
 
       - [0x4A03E0, vtx, room4/room4]
       - [0x4A0A80] #identity matrix
+      - [0x4A0AC0] #B8000000
       - [0x4A0AC8, ci8,     ALWall2.ci8, 32, 64]
       - [0x4A12C8] #B8000000
       - [0x4A12D0, palette, ALWall2.ci8]
@@ -1870,6 +1889,7 @@ segments:
 
       - [0x4A2408, vtx, room5/room5]
       - [0x4A2A68] #identity matrix
+      - [0x4A2AA8] #B8000000
       - [0x4A2AB0, ci8,     ALShinewall.ci8, 32, 32]
       - [0x4A2EB0] #B8000000
       - [0x4A2EB8, palette, ALShinewall.ci8]
@@ -1877,6 +1897,7 @@ segments:
 
       - [0x4A3D50, vtx, room6/room6]
       - [0x4A46D0] #identity matrix
+      - [0x4A4710] #B8000000
       - [0x4A4718, ci8,     antfadeee.ci8, 32, 64]
       - [0x4A4F18] #B8000000
       - [0x4A4F20, palette, antfadeee.ci8]
@@ -1918,6 +1939,7 @@ segments:
 
       - [0x4B11C8, vtx, room17/room17]
       - [0x4B1A48] #identity matrix
+      - [0x4B1A88] #B8000000
       - [0x4B1A90, ci8,     ALwall.ci8, 32, 64]
       - [0x4B2290] #B8000000
       - [0x4B2298, palette, ALwall.ci8]
@@ -1941,6 +1963,7 @@ segments:
 
       - [0x4B6CF0, vtx, room21/room21]
       - [0x4B7090] #identity matrix
+      - [0x4B70D0] #B8000000
       - [0x4B70D8, ci4,     murals.ci4, 64, 64]
       - [0x4B78d8] #B8000000
       - [0x4B78E0, palette, murals.ci4]
@@ -1968,6 +1991,7 @@ segments:
 
       - [0x4BAF08, vtx, room10Floor/room10Floor]
       - [0x4BB728] #identity matrix
+      - [0x4BB768] #B8000000
       - [0x4BB770, ci4,     hole.ci4, 32, 32]
       - [0x4BB970] #B8000000
       - [0x4BB978, palette, hole.ci4]
@@ -2007,6 +2031,7 @@ segments:
 
       - [0x4BEC90, vtx, room12Floor1/room12Floor1]
       - [0x4BF5B0] #identity matrix
+      - [0x4BF5F0] #B8000000
       - [0x4BF5F8, ci4,     path.ci4, 32, 32]
       - [0x4BF7f8] #B8000000
       - [0x4BF800, palette, path.ci4]
@@ -2058,6 +2083,7 @@ segments:
 
       - [0x4C2C98, vtx, room0doorPillar1/room0doorPillar1]
       - [0x4C2D18] #identity matrix
+      - [0x4C2D58] #B8000000
       - [0x4C2D60, i4, wallagain.i4, 32, 64]
       - [0x4C3160, gfxSeg, room0doorPillar1/room0doorPillar1]
 
@@ -2067,17 +2093,21 @@ segments:
 
       - [0x4C3550, vtx, room0doorTop/room0doorTop]
       - [0x4C3690] #identity matrix
+      - [0x4C36D0] #B8000000
       - [0x4C36D8, i4, wallsss.i4, 64, 32]
+      - [0x4C3AD8] #B8000000
       - [0x4C3AE0, i4, wallSmall.i4, 32, 16]
       - [0x4C3BE0, gfxSeg, room0doorTop/room0doorTop]
 
       - [0x4C3F08, vtx, room0doorTorchStand1/room0doorTorchStand1]
       - [0x4C3FC8] #identity matrix
+      - [0x4C4008] #B8000000
       - [0x4C4010, i4, muralllll.i4, 32, 64]
       - [0x4C4410, gfxSeg, room0doorTorchStand1/room0doorTorchStand1]
 
       - [0x4C4668, vtx, room0doorTorchStand2/room0doorTorchStand2]
       - [0x4C4728] #identity matrix
+      - [0x4C4768] #B8000000
       - [0x4C4770, i4, muralllll2.i4, 32, 64]
       - [0x4C4B70, gfxSeg, room0doorTorchStand2/room0doorTorchStand2]
 
@@ -2087,6 +2117,7 @@ segments:
 
       - [0x4C6618, vtx, room16Floor2/room16Floor2]
       - [0x4C6778] #identity matrix
+      - [0x4C67b8] #B8000000
       - [0x4C67C0, ci4,     wallFade32.ci4, 32, 64]
       - [0x4C6BC0] #B8000000
       - [0x4C6BC8, palette, wallFade32.ci4]
@@ -2098,6 +2129,7 @@ segments:
 
       - [0x4C72F8, vtx, tiltPlatform/tiltPlatform]
       - [0x4C7478] #identity matrix
+      - [0x4C74b8] #B8000000
       - [0x4C74C0, i4, the30thMural.i4, 64, 64]
       - [0x4C7CC0, gfxSeg, tiltPlatform/tiltPlatform]
 
@@ -2107,6 +2139,7 @@ segments:
 
       - [0x4C85A0, vtx, movingPlatform/movingPlatform]
       - [0x4C8720] #identity matrix
+      - [0x4C8760] #B8000000
       - [0x4C8768, i4, anotherMural.i4, 64, 64]
       - [0x4C8F68, gfxSeg, movingPlatform/movingPlatform]
 
@@ -2371,6 +2404,7 @@ segments:
 
       - [0x4D5788, vtx, yellowAnt_vtx]
       - [0x4D59D8] #identity matrix
+      - [0x4D5A18] #B8000000
       - [0x4D5A20, ci8,     yellowAnt_yellowAntEye.ci8, 48, 32]
       - [0x4D6020] #B8000000
       - [0x4D6028, palette, yellowAnt_yellowAntEye.ci8]
@@ -3303,6 +3337,7 @@ segments:
 
       - [0x4F6358, vtx, exit1/exit1]
       - [0x4F63F8] #identity matrix
+      - [0x4F6438] #B8000000
       - [0x4F6440, ia4, exit1/shutters.ia4, 32, 32]
       - [0x4F6640, gfxSeg, exit1/exit1]
 
@@ -3320,6 +3355,7 @@ segments:
 
       - [0x4F6F40, vtx, room0/room0]
       - [0x4F7600] #identity matrix
+      - [0x4F7640] #B8000000
       - [0x4F7648, ci4,     room0/warning.ci4, 32, 32]
       - [0x4F7848] #B8000000
       - [0x4F7850, palette, room0/warning.ci4]
@@ -3329,17 +3365,21 @@ segments:
       - [0x4F7E60, palette, room0/warnBlock.ci8]
       - [0x4F8060] #B8000000
       - [0x4F8068, i4, room0/holeblock.i4, 16, 16]
+      - [0x4F80e8] #B8000000
       - [0x4F80F0, ia4, room0/grate.ia4, 32, 32]
       - [0x4F82F0, gfxSeg, room0/room0]
 
       - [0x4F9148, vtx, room1/room1]
       - [0x4F9678] #identity matrix
+      - [0x4F96b8] #B8000000
       - [0x4F96C0, i8, room1/wallFade.i8, 32, 64]
       - [0x4F9EC0, gfxSeg, room1/room1]
 
       - [0x4FA618, vtx, room2/room2]
       - [0x4FAA78] #identity matrix
+      - [0x4FAAb8] #B8000000
       - [0x4FAAC0, i8, room2/wall.i8, 32, 64]
+      - [0x4FB2C0] #B8000000
       - [0x4FB2C8, ci4,     room2/cheese.ci4, 32, 32]
       - [0x4FB4c8] #B8000000
       - [0x4FB4D0, palette, room2/cheese.ci4]
@@ -3347,16 +3387,19 @@ segments:
 
       - [0x4FBCC0, vtx, room3/room3]
       - [0x4FC180] #identity matrix
+      - [0x4FC1C0] #B8000000
       - [0x4FC1C8, i4, room3/hexcombFade.i4, 32, 64]
       - [0x4FC5C8, gfxSeg, room3/room3]
 
       - [0x4FCCF0, vtx, room4/room4]
       - [0x4FD180] #identity matrix
+      - [0x4FD1C0] #B8000000
       - [0x4FD1C8, i8, room4/plate.i8, 32, 32]
       - [0x4FD5C8, gfxSeg, room4/room4]
 
       - [0x4FDC60, vtx, room5/room5]
       - [0x4FE090] #identity matrix
+      - [0x4FE0D0] #B8000000
       - [0x4FE0D8, i4, room5/plateFalloff.i4, 32, 64]
       - [0x4FE4D8, gfxSeg, room5/room5]
 
@@ -3370,6 +3413,7 @@ segments:
 
       - [0x500050, vtx, room8/room8]
       - [0x500450] #identity matrix
+      - [0x500490] #B8000000
       - [0x500498, i4, room8/hexcomb.i4, 32, 32]
       - [0x500698, gfxSeg, room8/room8]
 
@@ -3395,21 +3439,25 @@ segments:
 
       - [0x5044B0, vtx, room15Floor/room15Floor]
       - [0x5045F0] #identity matrix
+      - [0x504630] #B8000000
       - [0x504638, i8, room15Floor/plate_fade.i8, 64, 64]
       - [0x505638, gfxSeg, room15Floor/room15Floor]
 
       - [0x505960, vtx, room15/room15]
       - [0x505C00] #identity matrix
+      - [0x505C40] #B8000000
       - [0x505C48, i4, room15/lego.i4, 32, 32]
       - [0x505E48, gfxSeg, room15/room15]
 
       - [0x5063F0, vtx, room0Pipe/room0Pipe]
       - [0x5065D0] #identity matrix
+      - [0x506610] #B8000000
       - [0x506618, i4, room0Pipe/segment.i4, 64, 32]
       - [0x506A18, gfxSeg, room0Pipe/room0Pipe]
 
       - [0x506D60, vtx, room1Floor/room1Floor]
       - [0x507770] #identity matrix
+      - [0x5077B0] #B8000000
       - [0x5077B8, ci4,     room1Floor/circle.ci4, 16, 16]
       - [0x507838] #B8000000
       - [0x507840, palette, room1Floor/circle.ci4]
@@ -3501,6 +3549,7 @@ segments:
 
       - [0x50D8A8, vtx, blockPlatform/blockPlatform]
       - [0x50D9E8] #identity matrix
+      - [0x50Da28] #B8000000
       - [0x50DA30, i8, blockPlatform/platebig.i8, 64, 64]
       - [0x50EA30, gfxSeg, blockPlatform/blockPlatform]
 
@@ -3590,6 +3639,7 @@ segments:
 
       - [0x5131C0, vtx, metalBridgeThing/metalBridgeThing]
       - [0x513280] #identity matrix
+      - [0x5132C0] #B8000000
       - [0x5132C8, ci4,     metalBridgeThing/apparentlyATexture.ci4, 16, 16]
       - [0x513348] #B8000000
       - [0x513350, palette, metalBridgeThing/apparentlyATexture.ci4]
@@ -3597,11 +3647,13 @@ segments:
 
       - [0x513728, vtx, longPipe/longPipe]
       - [0x513868] #identity matrix
+      - [0x5138a8] #B8000000
       - [0x5138B0, i8, longPipe/segment2.i8, 64, 32]
       - [0x5140B0, gfxSeg, longPipe/longPipe]
 
       - [0x514280, vtx, XResult/XResult]
       - [0x5142C0] #identity matrix
+      - [0x514300] #B8000000
       - [0x514308, ci4,     XResult/x.ci4, 64, 64]
       - [0x514B08] #B8000000
       - [0x514B10, palette, XResult/x.ci4]
@@ -3609,6 +3661,7 @@ segments:
 
       - [0x514E18, vtx, OResult/OResult]
       - [0x514E58] #identity matrix
+      - [0x514E98] #B8000000
       - [0x514EA0, ci4,     OResulto.ci4, 64, 64]
       - [0x5156A0] #B8000000
       - [0x5156A8, palette, OResulto.ci4]
@@ -3628,6 +3681,7 @@ segments:
 
       - [0x516048, vtx, unk72/unk72]
       - [0x516148] #identity matrix
+      - [0x516188] #B8000000
       - [0x516190, ia4, unk72/bars.ia4, 64, 16]
       - [0x516390, gfxSeg, unk72/unk72]
 
@@ -3927,7 +3981,9 @@ segments:
 
       - [0x51DF78, vtx, unk73/unk73]
       - [0x51E078] #identity matrix
+      - [0x51E0b8] #B8000000
       - [0x51E0C0, rgba16, unk73/cannon.rgba16, 32, 64]
+      - [0x51F0C0] #B8000000
       - [0x51F0C8, rgba16, unk73/cannonHole.rgba16, 32, 32]
       - [0x51F8C8, gfxSeg, unk73/unk73]
 
@@ -4831,6 +4887,7 @@ segments:
 
       - [0x536a08, vtx, model5/model5]
       - [0x536d88] #identity matrix
+      - [0x536dc8] #B8000000
       - [0x536dd0, ci4, model5/bubbleWall.ci4, 64, 64]
       - [0x5375D0] #B8000000
       - [0x5375D8, palette, model5/bubbleWall.ci4]
@@ -4842,6 +4899,7 @@ segments:
 
       - [0x5381a8, vtx, model6/model6]
       - [0x538568] #identity matrix
+      - [0x5385a8] #B8000000
       - [0x5385b0, ci4, model6/pattern.ci4, 32, 32]
       - [0x5387B0] #B8000000
       - [0x5387B8, palette, model6/pattern.ci4]
@@ -4857,6 +4915,7 @@ segments:
 
       - [0x53a4b0, vtx, model7/model7]
       - [0x53b010] #identity matrix
+      - [0x53b050] #B8000000
       - [0x53b058, ci4, model7/tile.ci4, 32, 32]
       - [0x53B258] #B8000000
       - [0x53B260, palette, model7/tile.ci4]
@@ -4864,6 +4923,7 @@ segments:
 
       - [0x53c7c8, vtx, model8/model8]
       - [0x53cea8] #identity matrix
+      - [0x53cee8] #B8000000
       - [0x53cef0, ci4, model8/puzzle.ci4, 64, 64]
       - [0x53D6F0] #B8000000
       - [0x53D6F8, palette, model8/puzzle.ci4]
@@ -4875,6 +4935,7 @@ segments:
 
       - [0x53f310, vtx, model10/model10]
       - [0x53f690] #identity matrix
+      - [0x53f6d0] #B8000000
       - [0x53f6d8, ci4, model10/smallArrow.ci4, 32, 32]
       - [0x53F8d8] #B8000000
       - [0x53F8E0, palette, model10/smallArrow.ci4]
@@ -4930,6 +4991,7 @@ segments:
 
       - [0x54d188, vtx, model23/model23]
       - [0x54dc68] #identity matrix
+      - [0x54dca8] #B8000000
       - [0x54dcb0, ci4, model23/bowlingLane.ci4, 64, 64]
       - [0x54E4B0] #B8000000
       - [0x54E4B8, palette, model23/bowlingLane.ci4]
@@ -4949,6 +5011,7 @@ segments:
 
       - [0x551268, vtx, model24/model24]
       - [0x5513e8] #identity matrix
+      - [0x551428] #B8000000
       - [0x551430, ci4, model24/brownThing.ci4, 16, 16]
       - [0x5514B0] #B8000000
       - [0x5514B8, palette, model24/brownThing.ci4]
@@ -4972,6 +5035,7 @@ segments:
 
       - [0x553350, vtx, model28/model28]
       - [0x5534d0] #identity matrix
+      - [0x553510] #B8000000
       - [0x553518, ci4, model24/waferSide.ci4, 32, 64]
       - [0x553918] #B8000000
       - [0x553920, palette, model24/waferSide.ci4]
@@ -5103,6 +5167,7 @@ segments:
 
       - [0x55b4c8, vtx, model59/model59]
       - [0x55b608] #identity matrix
+      - [0x55b648] #B8000000
       - [0x55b650, ci4, model59/tornWrapper.ci4, 32, 16]
       - [0x55B750] #B8000000
       - [0x55B758, palette, model59/tornWrapper.ci4]
@@ -5134,6 +5199,7 @@ segments:
 
       - [0x55d550, vtx, model63/model63]
       - [0x55d790] #identity matrix
+      - [0x55d7d0] #B8000000
       - [0x55d7d8, ci4, model63/chocoKidsLabel.ci4, 128, 16]
       - [0x55DBd8] #B8000000
       - [0x55DBE0, palette, model63/chocoKidsLabel.ci4]
@@ -5161,6 +5227,7 @@ segments:
 
       - [0x55f9b0, vtx, model69/model69]
       - [0x55f9f0] #identity matrix
+      - [0x55fa30] #B8000000
       - [0x55fa38, ia8, model69/traingle.ia8, 32, 32]
       - [0x55fe38, gfxSeg, model69/model69]
 
@@ -5174,6 +5241,7 @@ segments:
 
       - [0x5601f0, vtx, model72/model72]
       - [0x560230] #identity matrix
+      - [0x560270] #B8000000
       - [0x560278, ia8, model72/bigWaferEye.ia8, 48, 40]
       - [0x5609F8, gfxSeg, model72/model72]
 
@@ -5199,6 +5267,7 @@ segments:
 
       - [0x561ae8, vtx, model78/model78]
       - [0x561d08] #identity matrix
+      - [0x561d48] #B8000000
       - [0x561d50, ci4, model78/bigWaferTarget.ci4, 32, 32]
       - [0x561F50] #B8000000
       - [0x561F58, palette, model78/bigWaferTarget.ci4]
@@ -5214,6 +5283,7 @@ segments:
 
       - [0x562df0, vtx, model81/model81]
       - [0x563300] #identity matrix
+      - [0x563340] #B8000000
       - [0x563348, ci4, model81/bigWaferGlove1.ci4, 64, 64]
       - [0x563B48] #B8000000
       - [0x563B50, palette, model81/bigWaferGlove1.ci4]
@@ -5562,6 +5632,7 @@ segments:
 
       - [0x570868, vtx, actorModel3/actorModel3]
       - [0x5709a8] #identity matrix
+      - [0x5709e8] #B8000000
       - [0x5709f0, ci4, actorModel3/hopperGlove1.ci4, 40, 40]
       - [0x570D10] #B8000000
       - [0x570D18, palette, actorModel3/hopperGlove1.ci4]
@@ -5577,6 +5648,7 @@ segments:
 
       - [0x571bb8, vtx, actorModel5/actorModel5]
       - [0x572378] #identity matrix
+      - [0x5723b8] #B8000000
       - [0x5723c0, ci4, actorModel5/hopperEye.ci4, 40, 40] #could honestly be i4
       - [0x5726E0] #B8000000
       - [0x5726E8, palette, actorModel5/hopperEye.ci4]
@@ -5603,6 +5675,7 @@ segments:
 
       - [0x573a68, vtx, actorModel10/actorModel10]
       - [0x573bb8] #identity matrix
+      - [0x573bf8] #B8000000
       - [0x573c00, ci4, actorModel10/bowlingPin.ci4, 32, 48]
       - [0x573F00] #B8000000
       - [0x573F08, palette, actorModel10/bowlingPin.ci4]
@@ -5610,6 +5683,7 @@ segments:
 
       - [0x574350, vtx, actorModel11/actorModel11]
       - [0x574770] #identity matrix
+      - [0x5747b0] #B8000000
       - [0x5747b8, ci4, actorModel11/davyBowlingPin1.ci4, 32, 64]
       - [0x574Bb8] #B8000000
       - [0x574BC0, palette, actorModel11/davyBowlingPin1.ci4]
@@ -6241,8 +6315,11 @@ segments:
 
       - [0x586d58, vtx, model1/model1]
       - [0x586fb8] #identity matrix
+      - [0x586ff8] #B8000000
       - [0x587000, i4, model1/brick1.i4, 32, 32]
+      - [0x587200] #B8000000
       - [0x587208, i4, model1/brick2.i4, 32, 32]
+      - [0x587408] #B8000000
       - [0x587410, i4, model1/brick3.i4, 128, 64]
       - [0x588410, gfxSeg, model1/model1]
 
@@ -6252,6 +6329,7 @@ segments:
 
       - [0x5892f0, vtx, model3/model3]
       - [0x589580] #identity matrix
+      - [0x5895c0] #B8000000
       - [0x5895c8, ci4, model3/brickColor.ci4, 32, 32]
       - [0x5897c8] #B8000000
       - [0x5897D0, palette, model3/brickColor.ci4]
@@ -6263,6 +6341,7 @@ segments:
 
       - [0x58b5c0, vtx, model5/model5]
       - [0x58bad0] #identity matrix
+      - [0x58bb10] #B8000000
       - [0x58bb18, ci4, model5/brickColor2.ci4, 32, 32]
       - [0x58BD18] #B8000000
       - [0x58BD20, palette, model5/brickColor2.ci4]
@@ -6282,6 +6361,7 @@ segments:
 
       - [0x58e680, vtx, model9/model9]
       - [0x58eb20] #identity matrix
+      - [0x58eb60] #B8000000
       - [0x58eb68, ci4, model9/spikeHole.ci4, 32, 32]
       - [0x58ED68] #B8000000
       - [0x58ED70, palette, model9/spikeHole.ci4]
@@ -6293,6 +6373,7 @@ segments:
 
       - [0x5905c8, vtx, model11/model11]
       - [0x5909b8] #identity matrix
+      - [0x5909f8] #B8000000
       - [0x590a00, ci4, model11/woodThing.ci4, 16, 16]
       - [0x590A80] #B8000000
       - [0x590A88, palette, model11/woodThing.ci4]
@@ -6444,6 +6525,7 @@ segments:
 
       - [0x5a2730, vtx, model47/model47]
       - [0x5a27d0] #identity matrix
+      - [0x5a2810] #B8000000
       - [0x5a2818, rgba32, model47/spike.rgba32, 16, 32]
       - [0x5A3018, gfxSeg, model47/model47]
 
@@ -7029,6 +7111,7 @@ segments:
 
       - [0x5bd408, vtx, actorModel11/actorModel11]
       - [0x5bd6c8] #identity matrix
+      - [0x5bd708] #B8000000
       - [0x5bd710, ci4, actorModel11/red.ci4, 8, 8]
       - [0x5BD730] #B8000000
       - [0x5BD738, palette, actorModel11/red.ci4]
@@ -7036,6 +7119,7 @@ segments:
 
       - [0x5bdc28, vtx, actorModel12/actorModel12]
       - [0x5bdf08] #identity matrix
+      - [0x5bdf48] #B8000000
       - [0x5bdf50, ci4, actorModel12/chomperEye.ci4, 32, 32]
       - [0x5BE150] #B8000000
       - [0x5BE158, palette, actorModel12/chomperEye.ci4]
@@ -7070,6 +7154,7 @@ segments:
 
       - [0x5befa0, vtx, actorModel20/actorModel20]
       - [0x5bf300] #identity matrix
+      - [0x5bf340] #B8000000
       - [0x5bf348, ci8, actorModel12/boulder.ci8, 64, 64]
       - [0x5C0348] #B8000000
       - [0x5C0350, palette, actorModel12/boulder.ci8]
@@ -7399,6 +7484,7 @@ segments:
 
       - [0x5cc878, vtx, model1/model1]
       - [0x5cc978] #identity matrix
+      - [0x5cc9b8] #B8000000
       - [0x5cc9c0, ci8,     model1/fadeWood.ci8, 32, 16]
       - [0x5CCBC0] #B8000000
       - [0x5CCBC8, palette, model1/fadeWood.ci8]
@@ -7410,6 +7496,7 @@ segments:
 
       - [0x5cda50, vtx, model2/model2]
       - [0x5cdb50] #identity matrix
+      - [0x5cdb90] #B8000000
       - [0x5cdb98, ci8,     model2/fadeWood2.ci8, 32, 16]
       - [0x5CDD98] #B8000000
       - [0x5CDDA0, palette, model2/fadeWood2.ci8]
@@ -7417,6 +7504,7 @@ segments:
 
       - [0x5ce218, vtx, model3/model3]
       - [0x5ce598] #identity matrix
+      - [0x5ce5d8] #B8000000
       - [0x5ce5e0, ci4,     model3/woodTopper.ci4, 64, 64]
       - [0x5CEDE0] #B8000000
       - [0x5CEDE8, palette, model3/woodTopper.ci4]
@@ -7428,6 +7516,7 @@ segments:
 
       - [0x5d02d8, vtx, model5/model5]
       - [0x5d04f8] #identity matrix
+      - [0x5d0538] #B8000000
       - [0x5d0540, ci4,     model5/woodSide.ci4, 64, 16]
       - [0x5D0740] #B8000000
       - [0x5D0748, palette, model5/woodSide.ci4]
@@ -7443,6 +7532,7 @@ segments:
 
       - [0x5d1630, vtx, model6/model6]
       - [0x5d1770] #identity matrix
+      - [0x5d17b0] #B8000000
       - [0x5d17b8, ci4,     model6/woodBlocks.ci4, 64, 16]
       - [0x5D19b8] #B8000000
       - [0x5D19C0, palette, model6/woodBlocks.ci4]
@@ -7466,6 +7556,7 @@ segments:
 
       - [0x5d39f8, vtx, model9/model9]
       - [0x5d3b78] #identity matrix
+      - [0x5d3bb8] #B8000000
       - [0x5d3bc0, ci4,     model9/woodNoRopeBridge.ci4, 64, 64]
       - [0x5D43C0] #B8000000
       - [0x5D43C8, palette, model9/woodNoRopeBridge.ci4]
@@ -7473,6 +7564,7 @@ segments:
 
       - [0x5d4a00, vtx, model10/model10]
       - [0x5d4b80] #identity matrix
+      - [0x5d4bc0] #B8000000
       - [0x5d4bc8, ci4,     model10/standardPlanks.ci4, 64, 64]
       - [0x5D53c8] #B8000000
       - [0x5D53D0, palette, model10/standardPlanks.ci4]
@@ -7480,6 +7572,7 @@ segments:
 
       - [0x5d5a08, vtx, model11/model11]
       - [0x5d5b48] #identity matrix
+      - [0x5d5b88] #B8000000
       - [0x5d5b90, ci4,     model11/singleRopePlank.ci4, 64, 16]
       - [0x5D5D90] #B8000000
       - [0x5D5D98, palette, model11/singleRopePlank.ci4]
@@ -7491,6 +7584,7 @@ segments:
 
       - [0x5d6958, vtx, model13/model13]
       - [0x5d6c58] #identity matrix
+      - [0x5d6c98] #B8000000
       - [0x5d6ca0, ci8,     model13/darkwoodFade.ci8, 32, 16]
       - [0x5D6EA0] #B8000000
       - [0x5D6EA8, palette, model13/darkwoodFade.ci8]
@@ -7510,6 +7604,7 @@ segments:
 
       - [0x5d8f70, vtx, model14/model14]
       - [0x5d9250] #identity matrix
+      - [0x5d9290] #B8000000
       - [0x5d9298, ci8,     model14/boxFade.ci8, 64, 32]
       - [0x5D9A98] #B8000000
       - [0x5D9AA0, palette, model14/boxFade.ci8]
@@ -7517,6 +7612,7 @@ segments:
 
       - [0x5da2d8, vtx, model15/model15]
       - [0x5da458] #identity matrix
+      - [0x5da498] #B8000000
       - [0x5da4a0, ci8,     model15/longBoxFade.ci8, 128, 16]
       - [0x5DACA0] #B8000000
       - [0x5DACA8, palette, model15/longBoxFade.ci8]
@@ -7574,18 +7670,23 @@ segments:
 
       - [0x5dd2c0, vtx, model27/model27]
       - [0x5dd750] #identity matrix
+      - [0x5dd790] #B8000000
       - [0x5dd798, rgba16,     model27/mountains1.rgba16, 64, 32]
+      - [0x5DE798] #B8000000
       - [0x5DE7a0, rgba16, model27/mountains2.rgba16, 64, 32]
+      - [0x5DF7A0] #B8000000
       - [0x5DF7A8, rgba16, model27/mountains3.rgba16, 64, 32]
       - [0x5E07A8, gfxSeg, model27/model27]
 
       - [0x5e15c8, vtx, model28/model28]
       - [0x5e1908] #identity matrix
+      - [0x5e1948] #B8000000
       - [0x5e1950, ci4,     model28/sky.ci4, 64, 64]
       - [0x5E2150] #B8000000
       - [0x5E2158, palette, model28/sky.ci4]
       - [0x5E2358] #B8000000
       - [0x5E2360, rgba16,     model28/sun.rgba16, 32, 32]
+      - [0x5E2B60] #B8000000
       - [0x5E2B68, ci8,     model28/realisticMountain.ci8, 64, 32]
       - [0x5E3368] #B8000000
       - [0x5E3370, palette, model28/realisticMountain.ci8]
@@ -7601,6 +7702,7 @@ segments:
 
       - [0x5e4bc0, vtx, model30/model30]
       - [0x5e4cc0] #identity matrix
+      - [0x5e4d00] #B8000000
       - [0x5e4d08, rgba16,     model30/introPlant.rgba16, 32, 64]
       - [0x5E5D08, gfxSeg, model30/model30]
 
@@ -7630,6 +7732,7 @@ segments:
 
       - [0x5e80a8, vtx, model37/model37]
       - [0x5e8a88] #identity matrix
+      - [0x5e8ac8] #B8000000
       - [0x5e8ad0, ci4,     model37/pot1.ci4, 64, 64]
       - [0x5E92D0] #B8000000
       - [0x5E92D8, palette,     model37/pot1.ci4]
@@ -7807,6 +7910,7 @@ segments:
 
       - [0x5f29a8, vtx, davyChameleon/davyChameleon_topRightFoot]
       - [0x5f2a18] #identity matrix
+      - [0x5f2a58] #B8000000
       - [0x5f2a60, ci4,     davyChameleon/davyBlue.ci4, 8, 8]
       - [0x5F2A80] #B8000000
       - [0x5F2A88, palette, davyChameleon/davyBlue.ci4]
@@ -7838,6 +7942,7 @@ segments:
 
       - [0x5f3a80, vtx, davyChameleon/davyChameleon_eyeR]
       - [0x5f3bd0] #identity matrix
+      - [0x5f3c10] #B8000000
       - [0x5f3c18, ia4,     davyChameleon/tinyEye1.ia4, 16, 16]
       - [0x5F3C98, gfxSeg, davyChameleon/davyChameleon_eyeR]
 
@@ -7867,6 +7972,7 @@ segments:
 
       - [0x5f5430, vtx, davyChameleon/davyChameleon_backpack1]
       - [0x5f5520] #identity matrix
+      - [0x5f5560] #B8000000
       - [0x5f5568, ci4,     davyChameleon/davyBackpack.ci4, 8, 8]
       - [0x5F5588] #B8000000
       - [0x5F5590, palette, davyChameleon/davyBackpack.ci4]
@@ -7886,6 +7992,7 @@ segments:
       #jack
       - [0x5f6088, vtx, jackChameleon/jackChameleon_topRightFoot]
       - [0x5f60f8] #identity matrix
+      - [0x5f6138] #B8000000
       - [0x5f6140, ci4,     jackChameleon/jackGreen.ci4, 8, 8]
       - [0x5f6160] #B8000000
       - [0x5f6168, palette, jackChameleon/jackGreen.ci4]
@@ -7917,6 +8024,7 @@ segments:
 
       - [0x5f7160, vtx, jackChameleon/jackChameleon_eyeR]
       - [0x5f72b0] #identity matrix
+      - [0x5f72f0] #B8000000
       - [0x5f72f8, ia4,     jackChameleon/tinyEye2.ia4, 16, 16]
       - [0x5f7378, gfxSeg, jackChameleon/jackChameleon_eyeR]
 
@@ -7946,6 +8054,7 @@ segments:
 
       - [0x5f8b10, vtx, jackChameleon/jackChameleon_backpack1]
       - [0x5f8c00] #identity matrix
+      - [0x5f8c40] #B8000000
       - [0x5f8c48, ci4,     jackChameleon/jackBackpack.ci4, 8, 8]
       - [0x5f8c68] #B8000000
       - [0x5f8c70, palette, jackChameleon/jackBackpack.ci4]
@@ -7965,6 +8074,7 @@ segments:
       #fred
       - [0x5f9768, vtx, fredChameleon/fredChameleon_topRightFoot]
       - [0x5f97d8] #identity matrix
+      - [0x5f9818] #B8000000
       - [0x5f9820, ci4,     fredChameleon/fredOrange.ci4, 8, 8]
       - [0x5f9840] #B8000000
       - [0x5f9848, palette, fredChameleon/fredOrange.ci4]
@@ -7996,6 +8106,7 @@ segments:
 
       - [0x5fa840, vtx, fredChameleon/fredChameleon_eyeR]
       - [0x5fa990] #identity matrix
+      - [0x5fa9d0] #B8000000
       - [0x5fa9d8, ia4,     fredChameleon/tinyEye3.ia4, 16, 16]
       - [0x5faa58, gfxSeg, fredChameleon/fredChameleon_eyeR]
 
@@ -8025,6 +8136,7 @@ segments:
 
       - [0x5FC238, vtx, fredChameleon/fredChameleon_backpack1]
       - [0x5FC328] #identity matrix
+      - [0x5FC368] #B8000000
       - [0x5FC370, ci4,     fredChameleon/fredBackpack.ci4, 8, 8]
       - [0x5FC390] #B8000000
       - [0x5FC398, palette, fredChameleon/fredBackpack.ci4]
@@ -8044,6 +8156,7 @@ segments:
       #linda
       - [0x5fce90, vtx, lindaChameleon/lindaChameleon_topRightFoot]
       - [0x5fcf00] #identity matrix
+      - [0x5fcf40] #B8000000
       - [0x5fcf48, ci4,     lindaChameleon/lindaPink.ci4, 8, 8]
       - [0x5fcf68] #B8000000
       - [0x5fcf70, palette, lindaChameleon/lindaPink.ci4]
@@ -8075,6 +8188,7 @@ segments:
 
       - [0x5fdf68, vtx, lindaChameleon/lindaChameleon_eyeR]
       - [0x5fe0b8] #identity matrix
+      - [0x5fe0f8] #B8000000
       - [0x5fe100, ia4,     lindaChameleon/tinyEye4.ia4, 16, 16]
       - [0x5fe180, gfxSeg, lindaChameleon/lindaChameleon_eyeR]
 
@@ -8104,6 +8218,7 @@ segments:
 
       - [0x5ff918, vtx, lindaChameleon/lindaChameleon_backpack1]
       - [0x5ffa08] #identity matrix
+      - [0x5ffa48] #B8000000
       - [0x5ffa50, ci4,     lindaChameleon/lindaBackpack.ci4, 8, 8]
       - [0x5ffa70] #B8000000
       - [0x5ffa78, palette, lindaChameleon/lindaBackpack.ci4]
@@ -8123,6 +8238,7 @@ segments:
       #white
       - [0x600570, vtx, whiteChameleon/whiteChameleon_topRightFoot]
       - [0x6005e0] #identity matrix
+      - [0x600620] #B8000000
       - [0x600628, ci4,     whiteChameleon/whiteWhite.ci4, 8, 8]
       - [0x600648] #B8000000
       - [0x600650, palette, whiteChameleon/whiteWhite.ci4]
@@ -8154,6 +8270,7 @@ segments:
 
       - [0x601648, vtx, whiteChameleon/whiteChameleon_eyeR]
       - [0x601798] #identity matrix
+      - [0x6017d8] #B8000000
       - [0x6017e0, ia4,     whiteChameleon/tinyEye5.ia4, 16, 16]
       - [0x601860, gfxSeg, whiteChameleon/whiteChameleon_eyeR]
 
@@ -8183,6 +8300,7 @@ segments:
 
       - [0x603040, vtx, whiteChameleon/whiteChameleon_backpack1]
       - [0x603130] #identity matrix
+      - [0x603170] #B8000000
       - [0x603178, ci4,     whiteChameleon/whiteBackpack.ci4, 8, 8]
       - [0x603198] #B8000000
       - [0x6031a0, palette, whiteChameleon/whiteBackpack.ci4]
@@ -8203,6 +8321,7 @@ segments:
       #rabbit
       - [0x603c98, vtx, rabbitCutscene/rabbitCutscene_ear]
       - [0x603e18] #identity matrix
+      - [0x603e58] #B8000000
       - [0x603e60, ci4,     rabbitCutscene/rabbitCutscene_ear1.ci4, 32, 32]
       - [0x604060] #B8000000
       - [0x604068, palette, rabbitCutscene/rabbitCutscene_ear1.ci4]
@@ -8218,6 +8337,7 @@ segments:
 
       - [0x604ea8, vtx, rabbitCutscene/rabbitCutscene_head]
       - [0x605628] #identity matrix
+      - [0x605668] #B8000000
       - [0x605670, ci4,     rabbitCutscene/rabbitCutscene_eye.ci4, 32, 32]
       - [0x605870] #B8000000
       - [0x605878, palette, rabbitCutscene/rabbitCutscene_eye.ci4]
@@ -8241,6 +8361,7 @@ segments:
 
       - [0x6074e0, vtx, rabbitCutscene/rabbitCutscene_body]
       - [0x607720] #identity matrix
+      - [0x607760] #B8000000
       - [0x607768, ci4,     rabbitCutscene/rabbitCutscene_tuxedo.ci4, 64, 64]
       - [0x607F68] #B8000000
       - [0x607F70, palette, rabbitCutscene/rabbitCutscene_tuxedo.ci4]
@@ -8260,6 +8381,7 @@ segments:
 
       - [0x609320, vtx, rabbitCutscene/rabbitCutscene_watch]
       - [0x609580] #identity matrix
+      - [0x6095c0] #B8000000
       - [0x6095c8, ci4,     rabbitCutscene/rabbitCutscene_watch.ci4, 64, 64]
       - [0x609Dc8] #B8000000
       - [0x609DD0, palette, rabbitCutscene/rabbitCutscene_watch.ci4]
@@ -9100,6 +9222,7 @@ segments:
 
       - [0x6BC448, vtx, lilypad/lilypad]
       - [0x6BC4C8] #identity matrix
+      - [0x6BC508] #B8000000
       - [0x6BC510, ci4,     lilypad.ci4, 64, 64]
       - [0x6BCD10] #B8000000
       - [0x6BCD18, palette, lilypad.ci4]
@@ -9121,6 +9244,7 @@ segments:
 
       - [0x6BE388, vtx, fallenLogStump/fallenLogStump]
       - [0x6be4a8] #identity matrix
+      - [0x6be4e8] #B8000000
       - [0x6BE4F0, ci8,     fallenLogStump.ci8, 64, 32]
       - [0x6BECF0] #B8000000
       - [0x6BECF8, palette, fallenLogStump.ci8]
@@ -9146,6 +9270,7 @@ segments:
 
       - [0x6C15B8, vtx, ctCrate/ctCrate]
       - [0x6C16F8] #identity matrix
+      - [0x6C1738] #B8000000
       - [0x6C1740, ci4,     ctCrate1.ci4, 32, 32]
       - [0x6c1940] #B8000000
       - [0x6C1948, palette, ctCrate1.ci4]
@@ -9203,6 +9328,7 @@ segments:
 
       - [0x6C6CD0, vtx, roomSevenLava/roomSevenLava]
       - [0x6C6D90] #identity matrix
+      - [0x6C6DD0] #B8000000
       - [0x6C6DD8, ci8,     lava.ci8, 32, 32]
       - [0x6C71D8] #B8000000
       - [0x6C71E0, palette, lava.ci8]
@@ -9222,6 +9348,7 @@ segments:
 
       - [0x6C80A0, vtx, roomSixCrownEdgePlatform/roomSixCrownEdgePlatform]
       - [0x6C82E0] #identity matrix
+      - [0x6C8320] #B8000000
       - [0x6C8328, ci8,     roomSixCrownEdgePlatform.ci8, 16, 128]
       - [0x6C8B28] #B8000000
       - [0x6C8B30, palette, roomSixCrownEdgePlatform.ci8]
@@ -9237,11 +9364,13 @@ segments:
 
       - [0x6CA340, vtx, ropes/ropes]
       - [0x6CA380] #identity matrix
+      - [0x6CA3C0] #B8000000
       - [0x6CA3C8, rgba16, rope.rgba16, 32, 64]
       - [0x6CB3C8, gfxSeg, ropes/ropes]
 
       - [0x6CB4B0, vtx, railOne/railOne]
       - [0x6CB670] #identity matrix
+      - [0x6CB6B0] #B8000000
       - [0x6CB6B8, ci4,     railColor.ci4, 16, 16]
       - [0x6CB738] #B8000000
       - [0x6CB740, palette, railColor.ci4]
@@ -9309,6 +9438,7 @@ segments:
 
       - [0x6D03E0, vtx, extThree/extThree]
       - [0x6D0AD0] #identity matrix
+      - [0x6D0B10] #B8000000
       - [0x6D0B18, ci8,     ext3Wall.ci8, 64, 32]
       - [0x6D1318] #B8000000
       - [0x6D1320, palette, ext3Wall.ci8]
@@ -9380,6 +9510,7 @@ segments:
 
       - [0x6DCEC8, vtx, intZero/intZero]
       - [0x6DD408] #identity matrix
+      - [0x6DD448] #B8000000
       - [0x6DD450, ci8,     lavaWall.ci8, 32, 64]
       - [0x6DDC50] #B8000000
       - [0x6DDC58, palette, lavaWall.ci8]
@@ -9457,6 +9588,7 @@ segments:
 
       - [0x6E8108, vtx, minecart/minecart]
       - [0x6E8708] #identity matrix
+      - [0x6E8748] #B8000000
       - [0x6E8750, ci4,     planks.ci4, 64, 64]
       - [0x6E8F50] #B8000000
       - [0x6E8F58, palette, planks.ci4]
@@ -9466,6 +9598,7 @@ segments:
 
       - [0x6E9E28, vtx, doorFrame/doorFrame]
       - [0x6EA1E8] #identity matrix
+      - [0x6EA228] #B8000000
       - [0x6EA230, rgba16, topper.rgba16, 32, 32]
       - [0x6EAA30, gfxSeg, doorFrame/doorFrame]
 
@@ -9481,6 +9614,7 @@ segments:
 
       - [0x6EC928, vtx, waterfall/waterfall]
       - [0x6EC9C8] #identity matrix
+      - [0x6ECA08] #B8000000
       - [0x6ECA10, ci4,     water.ci4, 64, 64]
       - [0x6ED210] #B8000000
       - [0x6ED218, palette, water.ci4]
@@ -9488,6 +9622,7 @@ segments:
 
       - [0x6ED550, vtx, water/water]
       - [0x6ED5A0] #identity matrix
+      - [0x6ED5E0] #B8000000
       - [0x6ED5E8, ci4,     swampWater.ci4, 64, 64]
       - [0x6EDDE8] #B8000000
       - [0x6EDDF0, palette, swampWater.ci4]
