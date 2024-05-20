@@ -25,7 +25,7 @@ options:
   asm_jtbl_label_macro: jlabel
   asm_data_macro: dlabel
   create_undefined_funcs_auto: no
-  asm_emit_size_directive: true
+  asm_emit_size_directive: false
 segments:
   - name: header
     type: databin
@@ -228,13 +228,12 @@ segments:
       - [0xC95C0, data, rspBootText]
       - [0xC9690, data, gspFast3DTextStart]
       - [0xCAAC0, data, aspMainTextStart]
-      - [0xCB8E0, data, code/1050] #800EE290 through 800F0B50
+      - [0xCB8E0, .data, code/1050] #800EE290 through 800F0B50
       - [0xCBAA0, data, code/debug] #800F0B50 through 800F0B50
       - [0xCBF50, .data, code/battle]
       - [0xCC190, .data, code/sprite]
       - [0xDA1C0, .data, code/5FF30] #800FEDC0 through 80108B70
-      #- [0xDB770, data, code/5FF30_2] #80100370 fake split for migrating data
-      - [0xDB840, data, code/5FF30_2] #starts at 80100440
+      - [0xDB840, data, code/5FF30] #starts at 80100440
       - [0xE3BA0, .data, code/8ADD0] #801087A0 through 80108B70
       - [0xE3F70, data, code/math] #80108B70 through 80109010
       - [0xE4410, .data, os/initialize] #80109010 through 80109030

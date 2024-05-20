@@ -2,7 +2,6 @@
 #include "battle.h"
 #include "sprite.h"
 
-//.bss
 char D_80111C90[8192];
 OSThread gIdleThread;
 char gIdleThreadStack[8192];
@@ -29,87 +28,88 @@ Gfx D_80129720[2];
 Mtx D_80129730;
 GraphicStruct gGraphicsList[2];
 
-extern char D_80200CB0[0xC00];
-// //if you can get the pointers to build be my guest
-// OSTask D_800F04E0[2] = {
-// {
-//     1,
-//     0,
-//     NULL,
-//     0,
-//     NULL,
-//     4096,
-//     NULL,
-//     2048,
-//     0x80119320,
-//     sizeof(D_80119320),
-//     0x80119720,
-//     NULL,
-//     NULL,
-//     0,
-//     D_80200CB0,
-//     sizeof(D_80200CB0)
-// },
-// {
-//     1,
-//     0,
-//     NULL,
-//     0,
-//     NULL,
-//     0x1000,
-//     NULL,
-//     0x800,
-//     0x80119320,
-//     0x400,
-//     0x80119720,
-//     NULL,
-//     NULL,
-//     0,
-//     D_80200CB0,
-//     sizeof(D_80200CB0)
-// }};
-
-// //.data
-// s32 D_800F0560 = 0;
-// //levelGroup segmented pointers
-// u32 D_800F0564[2] = {0x0301B5E8, 0x0301B5F4};
-
-// s32 D_800F056C[6] = {7, 170, 5, 135, 180, 98};
-// s32 D_800F0584[6] = {49, 5, 180, 5, 170, 81};
-// s32 D_800F059C[6] = {96, 39, 20, 97, 80, 144};
-
-// f32 D_800F05B4[11] = {10, -30, 80, -30, 45, -23, 0, 70, -65, 33, 10};
-// f32 D_800F05E0[11] = {-70, -50, -70, 20, 35, 0, 80, 35, -46, 21, -70};
-// f32 D_800F060C[11] = {90, 65, -40, 10, -10, -73, 0, 45, -35, -73, -50};
+extern u64* D_80200CB0;
+//if you can get the pointers to build be my guest
+OSTask D_800F04E0[2] = {
+{
+    1,
+    0,
+    NULL,
+    0,
+    NULL,
+    0x1000,
+    NULL,
+    0x800,
+    0x80119320,
+    0x400,
+    0x80119720,
+    NULL,
+    NULL,
+    0,
+    0x80200CB0,
+    0xC00
+},
+{
+    1,
+    0,
+    NULL,
+    0,
+    NULL,
+    0x1000,
+    NULL,
+    0x800,
+    0x80119320,
+    0x400,
+    0x80119720,
+    NULL,
+    NULL,
+    0,
+    0x80200CB0,
+    0xC00
+}};
 
 
-// Gfx* ChameleonGfxs[6] = {
-//     Davy_restAssociate_Gfx,
-//     Jack_restAssociate_Gfx,
-//     Fred_restAssociate_Gfx,
-//     Linda_restAssociate_Gfx,
-//     Black_restAssociate_Gfx,
-//     White_restAssociate_Gfx
-// };
+s32 D_800F0560 = 0;
+//levelGroup segmented pointers
+u32 D_800F0564[2] = {0x0301B5E8, 0x0301B5F4};
 
-// Gfx* D_800F0650[6] = {
-// Battle_Chameleons_Davy_restAssociate_Gfx,
-// Battle_Chameleons_Jack_restAssociate_Gfx,
-// Battle_Chameleons_Fred_restAssociate_Gfx,
-// Battle_Chameleons_Linda_restAssociate_Gfx,
-// Battle_Chameleons_Black_restAssociate_Gfx,
-// Battle_Chameleons_White_restAssociate_Gfx
-// };
+s32 D_800F056C[6] = {7, 170, 5, 135, 180, 98};
+s32 D_800F0584[6] = {49, 5, 180, 5, 170, 81};
+s32 D_800F059C[6] = {96, 39, 20, 97, 80, 144};
 
-// s32 gFramebufferIndex = 0;
-// s32 D_800F066C = 0;
-// s32 D_800F0670 = 0;
-// s32 gIsGamePaused = 0;
-// s32 D_800F0678 = 0;
-// char D_800F067C[] = "BH";
-// s32 D_800F0680[4] = {0, 0, 0, 0};
-// s32 RumblePakError = 0;
-// s32 D_800F0694[3] = {0, 0, 0};
+f32 D_800F05B4[11] = {10, -30, 80, -30, 45, -23, 0, 70, -65, 33, 10};
+f32 D_800F05E0[11] = {-70, -50, -70, 20, 35, 0, 80, 35, -46, 21, -70};
+f32 D_800F060C[11] = {90, 65, -40, 10, -10, -73, 0, 45, -35, -73, -50};
+
+
+Gfx* ChameleonGfxs[6] = {
+    Davy_restAssociate_Gfx,
+    Jack_restAssociate_Gfx,
+    Fred_restAssociate_Gfx,
+    Linda_restAssociate_Gfx,
+    Black_restAssociate_Gfx,
+    White_restAssociate_Gfx
+};
+
+Gfx* D_800F0650[6] = {
+Battle_Chameleons_Davy_restAssociate_Gfx,
+Battle_Chameleons_Jack_restAssociate_Gfx,
+Battle_Chameleons_Fred_restAssociate_Gfx,
+Battle_Chameleons_Linda_restAssociate_Gfx,
+Battle_Chameleons_Black_restAssociate_Gfx,
+Battle_Chameleons_White_restAssociate_Gfx
+};
+
+s32 gFramebufferIndex = 0;
+
+s32 D_800F066C = 0;
+s32 D_800F0670 = 0;
+s32 gIsGamePaused = 0;
+s32 D_800F0678 = 0;
+char D_800F067C[] = "BH";
+s32 D_800F0680[4] = {0, 0, 0, 0};
+s32 RumblePakError = 0;
+s32 D_800F0694[3] = {0, 0, 0};
 
 void bootproc(void) {
     __osInitialize_common();

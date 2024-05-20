@@ -1045,7 +1045,7 @@ typedef struct RoomSettings {
     s32 unk1C;
     s32 unk20;
     s32 unk24;
-    f32 unk28;
+    f32 cameraRot; //basically how top-down you want the room to be. mostly for extRooms
     s32 unk2C;
     f32 unk30;
     f32 unk34;
