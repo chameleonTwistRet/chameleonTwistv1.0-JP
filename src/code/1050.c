@@ -904,19 +904,19 @@ Gfx* func_8002B7BC(GraphicStruct* arg0, Gfx* gfxPos) {
                 break;
             case SANDAL:
                 gActors[i].unk_E8 = 0.0f;
-                gfxPos = func_8002B118(arg0, gfxPos, D_306DDC0, &gActors[i], 2.0f, 0, &sp178);
+                gfxPos = func_8002B118(arg0, gfxPos, GhostCastle_model78_Gfx, &gActors[i], 2.0f, 0, &sp178);
                 break;
             case METAL_SHEET:
                 gActors[i].unk_E8 = 0.0f;
-                gfxPos = func_8002B118(arg0, gfxPos, D_306F3C8, &gActors[i], 2.0f, 0, &sp178);
+                gfxPos = func_8002B118(arg0, gfxPos, GhostCastle_model80_Gfx, &gActors[i], 2.0f, 0, &sp178);
                 break;
             case SCROLL:
                 gActors[i].unk_E8 = 0.0f;
-                gfxPos = func_8002B118(arg0, gfxPos, D_30708F0, &gActors[i], 3.0f, 0, &sp178);
+                gfxPos = func_8002B118(arg0, gfxPos, GhostCastle_model88_Gfx, &gActors[i], 3.0f, 0, &sp178);
                 break;
             case FIRE_SPITTER:
                 gActors[i].unk_E8 = gActors[i].unknownPositionThings[0].unk_10 / 2;
-                gfxPos = func_8002B118(arg0, gfxPos, D_30740B0, &gActors[i], 2.0f, 0, &sp178);
+                gfxPos = func_8002B118(arg0, gfxPos, GhostCastle_model83_Gfx, &gActors[i], 2.0f, 0, &sp178);
                 break;
             case PILE_OF_BOOKS:
                 gActors[i].unk_E8 = -60.0f;

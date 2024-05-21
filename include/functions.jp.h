@@ -555,5 +555,13 @@ void func_800D8E70(Collider* arg0);
 void func_800D8ED4(Collider* arg0);
 
 
+void func_800D9128(Collider* arg0);
+void func_800B2070(s32 arg0);
+void func_800D9104(Collider* arg0);
+void func_800D9190(Collider* arg0);
+void func_800D914C(Collider* arg0);
+void func_800B2144(Collider* arg0, unkStruct14* arg1);
+void func_800B216C(Collider* arg0);
+void func_800D91B4(Collider* arg0);
 
 #endif
