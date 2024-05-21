@@ -564,37 +564,53 @@ Davy_restAssociate_Gfx,
 };
 
 
+extern Gfx BombSnake_unkF_Gfx[];
+extern Mtx BombSnake_unk1_Animarr[];
+extern Anim BombSnake_unk1Header_Animh;
+
 Unk_800FFB74 D_800FF9D0 = {
-(void*)0x03002760,
-D_3007EA0,
-(void*)0x0300275C,
-(void*)0x03002758,
+BombSnake_unk1_Animarr,
+BombSnake_unkF_Gfx,
+&BombSnake_unk1Header_Animh.objects,
+&BombSnake_unk1Header_Animh.frames,
 0xFFFF0000,
 };
+
+
+extern Gfx BombSnake_unk11_Gfx[];
+extern Mtx BombSnake_unk2_Animarr[];
+extern Anim BombSnake_unk2Header_Animh;
 
 Unk_800FFB74 D_800FF9E4 = {
-(void*)0x03002A90,
-D_3008428,
-(void*)0x03002A8C,
-(void*)0x03002A88,
+BombSnake_unk2_Animarr,
+BombSnake_unk11_Gfx,
+&BombSnake_unk2Header_Animh.objects,
+&BombSnake_unk2Header_Animh.frames,
 0xFFFF0000,
 };
+
+extern Mtx BombSnake_unk3_Animarr[];
+extern Anim BombSnake_unk3Header_Animh;
 
 Unk_800FFB74 D_800FF9F8 = {
-(void*)0x03002B40,
-D_3008428,
-(void*)0x03002B3C,
-(void*)0x03002B38,
+BombSnake_unk3_Animarr,
+BombSnake_unk11_Gfx,
+&BombSnake_unk3Header_Animh.objects,
+&BombSnake_unk3Header_Animh.frames,
 0xFFFF0000,
 };
 
+extern Mtx BombSnake_unk4_Animarr[];
+extern Anim BombSnake_unk4Header_Animh;
+
 Unk_800FFB74 D_800FFA0C = {
-(void*)0x03002F30,
-D_3008428,
-(void*)0x03002F2C,
-(void*)0x03002F28,
+BombSnake_unk4_Animarr,
+BombSnake_unk11_Gfx,
+&BombSnake_unk4Header_Animh.objects,
+&BombSnake_unk4Header_Animh.frames,
 0xFFFF0000,
 };
+
 
 extern Gfx Quintella_a_model18_Gfx[];
 extern Mtx Quintella_unk7_Animarr[];
@@ -697,8 +713,6 @@ LizardKong_a_model12_Gfx,
 &LizardKong_unk8Header_Animh.frames,
 0xFFFF0000,
 };
-
-
 
 extern Mtx LizardKong_unk9_Animarr[];
 extern Anim LizardKong_unk9Header_Animh;

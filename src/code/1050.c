@@ -842,10 +842,10 @@ Gfx* func_8002B7BC(GraphicStruct* arg0, Gfx* gfxPos) {
                 if (gActors[i].globalTimer >= 100) {
                     if (gActors[i].userVariables[3] == 0) {
                         gActors[i].unk_E8 = 0.0f;
-                        gfxPos = func_8002B118(arg0, gfxPos, D_3007EA0, &gActors[i], 10.0f, 0, &sp178);
+                        gfxPos = func_8002B118(arg0, gfxPos, BombSnake_unkF_Gfx, &gActors[i], 10.0f, 0, &sp178);
                     } else if (gActors[i].userVariables[3] == 10) {
                         gActors[i].unk_E8 = 0;
-                        gfxPos = func_8002B118(arg0, gfxPos, D_3008428, &gActors[i], 10.0f, 0, &sp178);
+                        gfxPos = func_8002B118(arg0, gfxPos, BombSnake_unk11_Gfx, &gActors[i], 10.0f, 0, &sp178);
                     }
                 }
                 break;
