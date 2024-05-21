@@ -596,43 +596,59 @@ D_3008428,
 0xFFFF0000,
 };
 
+extern Gfx Quintella_a_model18_Gfx[];
+extern Mtx Quintella_unk7_Animarr[];
+extern Anim Quintella_unk7Header_Animh;
+
 Unk_800FFB74 D_800FFA20 = {
-(void*)0x030458F0,
-D_300EFC0,
-(void*)0x030458EC,
-(void*)0x030458E8,
+Quintella_unk7_Animarr,
+Quintella_a_model18_Gfx,
+&Quintella_unk7Header_Animh.objects,
+&Quintella_unk7Header_Animh.frames,
 0xFFFF0000,
 };
 
+extern Mtx Quintella_unk8_Animarr[];
+extern Anim Quintella_unk8Header_Animh;
+
 Unk_800FFB74 D_800FFA34 = {
-(void*)0x030465E0,
-D_300EFC0,
-(void*)0x030465DC,
-(void*)0x030465D8,
+Quintella_unk8_Animarr,
+Quintella_a_model18_Gfx,
+&Quintella_unk8Header_Animh.objects,
+&Quintella_unk8Header_Animh.frames,
 0x00000000,
 };
 
+extern Mtx Quintella_unk9_Animarr[];
+extern Anim Quintella_unk9Header_Animh;
+
 Unk_800FFB74 D_800FFA48 = {
-(void*)0x03047B50,
-D_300EFC0,
-(void*)0x03047B4C,
-(void*)0x03047B48,
+Quintella_unk9_Animarr,
+Quintella_a_model18_Gfx,
+&Quintella_unk9Header_Animh.objects,
+&Quintella_unk9Header_Animh.frames,
 0xFFFF0000,
 };
+
+extern Mtx Quintella_unk10_Animarr[];
+extern Anim Quintella_unk10Header_Animh;
 
 Unk_800FFB74 D_800FFA5C = {
-(void*)0x0304FB00,
-D_300EFC0,
-(void*)0x0304FAFC,
-(void*)0x0304FAF8,
+Quintella_unk10_Animarr,
+Quintella_a_model18_Gfx,
+&Quintella_unk10Header_Animh.objects,
+&Quintella_unk10Header_Animh.frames,
 0xFFFF0000,
 };
 
+extern Mtx Quintella_unk11_Animarr[];
+extern Anim Quintella_unk11Header_Animh;
+
 Unk_800FFB74 D_800FFA70 = {
-(void*)0x0305E4F0,
-D_300EFC0,
-(void*)0x0305E4EC,
-(void*)0x0305E4E8,
+Quintella_unk11_Animarr,
+Quintella_a_model18_Gfx,
+&Quintella_unk11Header_Animh.objects,
+&Quintella_unk11Header_Animh.frames,
 0xFFFF0000,
 };
 
@@ -640,7 +656,6 @@ D_300EFC0,
 extern Gfx LizardKong_a_model12_Gfx[];
 extern Mtx LizardKong_unk5_Animarr[];
 extern Anim LizardKong_unk5Header_Animh;
-
 
 Unk_800FFB74 D_800FFA84 = {
 LizardKong_unk5_Animarr,

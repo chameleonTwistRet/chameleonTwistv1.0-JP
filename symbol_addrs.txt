@@ -11300,31 +11300,6 @@ static0_unk3_Animh = 0x0103C900; // type:Animh rom:0x13E460 defined:True
 static0_unk3_Animarr = 0x0103C930; // type:Animarr rom:0x13E490 defined:True
 static0_chameleonAnimPointers_Animp = 0x01045B70; // type:Animp rom:0x1476D0 defined:True
 
-//generated section BombSnake starting here
-BombSnake_BombSnake_data_Bin = 0x03000000; // type:Bin rom:0x7A72B0 defined:True
-
-//generated section PileOfBooks starting here
-PileOfBooks_PileOfBooks_data_Bin = 0x03000000; // type:Bin rom:0x7FD3B0 defined:True
-
-//generated section Armadillo starting here
-Armadillo_Armadillo_data_Bin = 0x03000000; // type:Bin rom:0x7D22B0 defined:True
-
-//generated section GiantCake starting here
-GiantCake_GiantCake_data_Bin = 0x03000000; // type:Bin rom:0x7AF730 defined:True
-
-//generated section BattleMode starting here
-BattleMode_BattleMode_data_Bin = 0x03000000; // type:Bin rom:0x849930 defined:True
-
-//generated section Training starting here
-Training_Training_data_Bin = 0x03000000; // type:Bin rom:0x85C970 defined:True
-
-//generated section BossRush starting here
-BossRush_BossRush_data_Bin = 0x03000000; // type:Bin rom:0x8788B0 defined:True
-
-//generated section Quintella starting here
-Quintella_Quintella_data_Bin = 0x03000000; // type:Bin rom:0x7477F0 defined:True
-
-
 //generated section GhostCastle starting here
 GhostCastle_IMtx1 = 0x03000000; // type:Mtx rom:0x6344C0 defined:True
 GhostCastle_pointers_Lvp = 0x03000040; // type:Lvp rom:0x634500 defined:True
@@ -12600,6 +12575,26 @@ GhostCastle_unk4Header_Animh = 0x03074414; // type:Animh rom:0x6A88D4 defined:Tr
 GhostCastle_unk4_Animarr = 0x03074448; // type:Animarr rom:0x6A8908 defined:True
 GhostCastle_unk4Pointer_Animp = 0x03074948; // type:Animp rom:0x6A8E08 defined:True
 
+//generated section BombSnake starting here
+BombSnake_BombSnake_data_Bin = 0x03000000; // type:Bin rom:0x7A72B0 defined:True
+
+//generated section PileOfBooks starting here
+PileOfBooks_PileOfBooks_data_Bin = 0x03000000; // type:Bin rom:0x7FD3B0 defined:True
+
+//generated section Armadillo starting here
+Armadillo_Armadillo_data_Bin = 0x03000000; // type:Bin rom:0x7D22B0 defined:True
+
+//generated section GiantCake starting here
+GiantCake_GiantCake_data_Bin = 0x03000000; // type:Bin rom:0x7AF730 defined:True
+
+//generated section BattleMode starting here
+BattleMode_BattleMode_data_Bin = 0x03000000; // type:Bin rom:0x849930 defined:True
+
+//generated section Training starting here
+Training_Training_data_Bin = 0x03000000; // type:Bin rom:0x85C970 defined:True
+
+//generated section BossRush starting here
+BossRush_BossRush_data_Bin = 0x03000000; // type:Bin rom:0x8788B0 defined:True
 
 //generated section LizardKong starting here
 LizardKong_IMtx1 = 0x03000000; // type:Mtx rom:0x70DB70 defined:True
@@ -12622,7 +12617,7 @@ LizardKong_room1_act1_Roomact = 0x03000E54; // type:Roomact rom:0x70E9C4 defined
 LizardKong_room1_act2_Roomact = 0x03000EB4; // type:Roomact rom:0x70EA24 defined:True
 LizardKong_room1_act3_Roomact = 0x03000F14; // type:Roomact rom:0x70EA84 defined:True
 LizardKong_room1_actSTOP_Roomact = 0x03000F74; // type:Roomact rom:0x70EAE4 defined:True
-LizardKong_spriteLib_Bin = 0x03000FD4; // type:Bin rom:0x70EB44 defined:True
+LizardKong_spriteLib_Sprlib = 0x03000FD4; // type:Sprlib rom:0x70EB44 defined:True
 LizardKong_room0_Rmset = 0x03001054; // type:Rmset rom:0x70EBC4 defined:True
 LizardKong_room1_Rmset = 0x030010C0; // type:Rmset rom:0x70EC30 defined:True
 LizardKong_roomSTOP_Rmset = 0x0300112C; // type:Rmset rom:0x70EC9C defined:True
@@ -12749,3 +12744,169 @@ LizardKong_unk10Pointers_Animp = 0x030372E8; // type:Animp rom:0x744E58 defined:
 LizardKong_unk11Header_Animh = 0x030372F4; // type:Animh rom:0x744E64 defined:True
 LizardKong_unk11_Animarr = 0x03037328; // type:Animarr rom:0x744E98 defined:True
 LizardKong_unk11Pointers_Animp = 0x03039C68; // type:Animp rom:0x7477D8 defined:True
+
+
+//generated section Quintella starting here
+Quintella_IMtx1 = 0x03000000; // type:Mtx rom:0x7477F0 defined:True
+Quintella_pointers_Lvp = 0x03000040; // type:Lvp rom:0x747830 defined:True
+Quintella_rabObjects_Bin = 0x030007C0; // type:Bin rom:0x747FB0 defined:True
+Quintella_spriteLib_Sprlib = 0x030007E8; // type:Sprlib rom:0x747FD8 defined:True
+Quintella_roomUnk_clct1_Clct = 0x03000868; // type:Clct rom:0x748058 defined:True
+Quintella_roomUnk_clct2_Clct = 0x03000888; // type:Clct rom:0x748078 defined:True
+Quintella_roomUnk_clct3_Clct = 0x030008A8; // type:Clct rom:0x748098 defined:True
+Quintella_roomUnk_clct4_Clct = 0x030008C8; // type:Clct rom:0x7480B8 defined:True
+Quintella_roomUnk_clct5_Clct = 0x030008E8; // type:Clct rom:0x7480D8 defined:True
+Quintella_roomUnk_clct6_Clct = 0x03000908; // type:Clct rom:0x7480F8 defined:True
+Quintella_roomUnk_clctSTOP_Clct = 0x03000928; // type:Clct rom:0x748118 defined:True
+Quintella_roomMulti_obj1_Roomobj = 0x03000948; // type:Roomobj rom:0x748138 defined:True
+Quintella_roomMulti_obj2_Roomobj = 0x030009D4; // type:Roomobj rom:0x7481C4 defined:True
+Quintella_roomMulti_obj3_Roomobj = 0x03000A60; // type:Roomobj rom:0x748250 defined:True
+Quintella_roomMulti_obj4_Roomobj = 0x03000AEC; // type:Roomobj rom:0x7482DC defined:True
+Quintella_roomMulti_obj5_Roomobj = 0x03000B78; // type:Roomobj rom:0x748368 defined:True
+Quintella_roomMulti_obj6_Roomobj = 0x03000C04; // type:Roomobj rom:0x7483F4 defined:True
+Quintella_roomMulti_obj7_Roomobj = 0x03000C90; // type:Roomobj rom:0x748480 defined:True
+Quintella_roomMulti_obj8_Roomobj = 0x03000D1C; // type:Roomobj rom:0x74850C defined:True
+Quintella_roomMulti_obj9_Roomobj = 0x03000DA8; // type:Roomobj rom:0x748598 defined:True
+Quintella_roomMulti_obj10_Roomobj = 0x03000E34; // type:Roomobj rom:0x748624 defined:True
+Quintella_roomMulti_obj11_Roomobj = 0x03000EC0; // type:Roomobj rom:0x7486B0 defined:True
+Quintella_roomMulti_obj12_Roomobj = 0x03000F4C; // type:Roomobj rom:0x74873C defined:True
+Quintella_roomMulti_obj13_Roomobj = 0x03000FD8; // type:Roomobj rom:0x7487C8 defined:True
+Quintella_roomMulti_objSTOP_Roomobj = 0x03001064; // type:Roomobj rom:0x748854 defined:True
+Quintella_room0_act1_Roomact = 0x030010F0; // type:Roomact rom:0x7488E0 defined:True
+Quintella_room0_actSTOP_Roomact = 0x03001150; // type:Roomact rom:0x748940 defined:True
+Quintella_room1_act1_Roomact = 0x030011B0; // type:Roomact rom:0x7489A0 defined:True
+Quintella_room1_actSTOP_Roomact = 0x03001210; // type:Roomact rom:0x748A00 defined:True
+Quintella_room0_Rmset = 0x03001270; // type:Rmset rom:0x748A60 defined:True
+Quintella_room1_Rmset = 0x030012DC; // type:Rmset rom:0x748ACC defined:True
+Quintella_roomSTOP_Rmset = 0x03001348; // type:Rmset rom:0x748B38 defined:True
+Quintella_map_LvmM = 0x030013B4; // type:LvmM rom:0x748BA4 defined:True
+Quintella_map_LvmH = 0x030013C0; // type:LvmH rom:0x748BB0 defined:True
+Quintella_nullOWRoom_Rmset = 0x030013D0; // type:Rmset rom:0x748BC0 defined:True
+Quintella_scope_Lvlscope = 0x0300143C; // type:Lvlscope rom:0x748C2C defined:True
+Quintella_header_Lvlhdr = 0x03001454; // type:Lvlhdr rom:0x748C44 defined:True
+Quintella_IMtx2 = 0x03001480; // type:Mtx rom:0x748C70 defined:True
+Quintella_qtScope_Light = 0x030014C0; // type:Light rom:0x748CB0 defined:True
+Quintella_model1_Vtx = 0x030014D8; // type:Vtx rom:0x748CC8 defined:True
+Quintella_IMtx3 = 0x03001AF8; // type:Mtx rom:0x7492E8 defined:True
+Quintella_mural_i4_PNG = 0x03001B40; // type:TImg rom:0x749330 defined:True
+Quintella_wallFade_ci8_PNG = 0x03002E08; // type:TImg rom:0x74A5F8 defined:True
+Quintella_wallFade_ci8_PAL = 0x03003610; // type:TLut rom:0x74AE00 defined:True
+Quintella_model1_Gfx = 0x03003810; // type:Gfx rom:0x74B000 defined:True
+Quintella_model2_Vtx = 0x03004450; // type:Vtx rom:0x74BC40 defined:True
+Quintella_IMtx4 = 0x03004660; // type:Mtx rom:0x74BE50 defined:True
+Quintella_model2_Gfx = 0x030046A0; // type:Gfx rom:0x74BE90 defined:True
+Quintella_unkCol1_ColV = 0x03004B70; // type:ColV rom:0x74C360 defined:True
+Quintella_unkCol1_ColT = 0x03004D08; // type:ColT rom:0x74C4F8 defined:True
+Quintella_unkCol1_ColS = 0x03004FD8; // type:ColS rom:0x74C7C8 defined:True
+Quintella_unkCol1_ColH = 0x03004FF0; // type:ColH rom:0x74C7E0 defined:True
+Quintella_unkCol2_ColV = 0x03005004; // type:ColV rom:0x74C7F4 defined:True
+Quintella_unkCol2_ColT = 0x030050D0; // type:ColT rom:0x74C8C0 defined:True
+Quintella_unkCol2_ColS = 0x030051F0; // type:ColS rom:0x74C9E0 defined:True
+Quintella_unkCol2_ColH = 0x03005208; // type:ColH rom:0x74C9F8 defined:True
+Quintella_IMtx5 = 0x03005220; // type:Mtx rom:0x74CA10 defined:True
+Quintella_qtScope2_Light = 0x03005260; // type:Light rom:0x74CA50 defined:True
+Quintella_a_model1_Vtx = 0x03005278; // type:Vtx rom:0x74CA68 defined:True
+Quintella_IMtx6 = 0x03005368; // type:Mtx rom:0x74CB58 defined:True
+Quintella_a_model1_Gfx = 0x030053A8; // type:Gfx rom:0x74CB98 defined:True
+Quintella_a_model2_Vtx = 0x03005500; // type:Vtx rom:0x74CCF0 defined:True
+Quintella_IMtx7 = 0x030059C0; // type:Mtx rom:0x74D1B0 defined:True
+Quintella_color_ci4_PNG = 0x03005A08; // type:TImg rom:0x74D1F8 defined:True
+Quintella_color_ci4_PAL = 0x03005A90; // type:TLut rom:0x74D280 defined:True
+Quintella_color2_ci4_PNG = 0x03005C98; // type:TImg rom:0x74D488 defined:True
+Quintella_color2_ci4_PAL = 0x03005D20; // type:TLut rom:0x74D510 defined:True
+Quintella_gaster_ci4_PNG = 0x03005F28; // type:TImg rom:0x74D718 defined:True
+Quintella_gaster_ci4_PAL = 0x03006330; // type:TLut rom:0x74DB20 defined:True
+Quintella_a_model2_Gfx = 0x03006530; // type:Gfx rom:0x74DD20 defined:True
+Quintella_a_model3_Vtx = 0x03006AE8; // type:Vtx rom:0x74E2D8 defined:True
+Quintella_IMtx8 = 0x03006F98; // type:Mtx rom:0x74E788 defined:True
+Quintella_eye_ci8_PNG = 0x03006FE0; // type:TImg rom:0x74E7D0 defined:True
+Quintella_eye_ci8_PAL = 0x030073E8; // type:TLut rom:0x74EBD8 defined:True
+Quintella_color3_ci4_PNG = 0x030075F0; // type:TImg rom:0x74EDE0 defined:True
+Quintella_color3_ci4_PAL = 0x03007678; // type:TLut rom:0x74EE68 defined:True
+Quintella_a_model3_Gfx = 0x03007878; // type:Gfx rom:0x74F068 defined:True
+Quintella_a_model4_Vtx = 0x03007E18; // type:Vtx rom:0x74F608 defined:True
+Quintella_IMtx9 = 0x03008008; // type:Mtx rom:0x74F7F8 defined:True
+Quintella_shoulder_ci4_PNG = 0x03008050; // type:TImg rom:0x74F840 defined:True
+Quintella_shoulder_ci4_PAL = 0x030082D8; // type:TLut rom:0x74FAC8 defined:True
+Quintella_a_model4_Gfx = 0x030084D8; // type:Gfx rom:0x74FCC8 defined:True
+Quintella_a_model5_Vtx = 0x03008898; // type:Vtx rom:0x750088 defined:True
+Quintella_IMtx10 = 0x03008948; // type:Mtx rom:0x750138 defined:True
+Quintella_a_model5_Gfx = 0x03008988; // type:Gfx rom:0x750178 defined:True
+Quintella_a_model6_Vtx = 0x03008B30; // type:Vtx rom:0x750320 defined:True
+Quintella_IMtx11 = 0x03008BE0; // type:Mtx rom:0x7503D0 defined:True
+Quintella_a_model6_Gfx = 0x03008C20; // type:Gfx rom:0x750410 defined:True
+Quintella_a_model7_Vtx = 0x03008DC8; // type:Vtx rom:0x7505B8 defined:True
+Quintella_IMtx12 = 0x03008FF8; // type:Mtx rom:0x7507E8 defined:True
+Quintella_a_model7_Gfx = 0x03009038; // type:Gfx rom:0x750828 defined:True
+Quintella_a_model8_Vtx = 0x03009400; // type:Vtx rom:0x750BF0 defined:True
+Quintella_IMtx13 = 0x03009500; // type:Mtx rom:0x750CF0 defined:True
+Quintella_a_model8_Gfx = 0x03009540; // type:Gfx rom:0x750D30 defined:True
+Quintella_a_model9_Vtx = 0x03009738; // type:Vtx rom:0x750F28 defined:True
+Quintella_IMtx14 = 0x030097C8; // type:Mtx rom:0x750FB8 defined:True
+Quintella_a_model9_Gfx = 0x03009808; // type:Gfx rom:0x750FF8 defined:True
+Quintella_a_model10_Vtx = 0x03009990; // type:Vtx rom:0x751180 defined:True
+Quintella_IMtx15 = 0x03009A50; // type:Mtx rom:0x751240 defined:True
+Quintella_a_model10_Gfx = 0x03009A90; // type:Gfx rom:0x751280 defined:True
+Quintella_a_model11_Vtx = 0x03009C48; // type:Vtx rom:0x751438 defined:True
+Quintella_IMtx16 = 0x03009CD8; // type:Mtx rom:0x7514C8 defined:True
+Quintella_a_model11_Gfx = 0x03009D18; // type:Gfx rom:0x751508 defined:True
+Quintella_a_model12_Vtx = 0x03009EA0; // type:Vtx rom:0x751690 defined:True
+Quintella_IMtx17 = 0x03009F60; // type:Mtx rom:0x751750 defined:True
+Quintella_a_model12_Gfx = 0x03009FA0; // type:Gfx rom:0x751790 defined:True
+Quintella_a_model13_Vtx = 0x0300A158; // type:Vtx rom:0x751948 defined:True
+Quintella_IMtx18 = 0x0300A4D8; // type:Mtx rom:0x751CC8 defined:True
+Quintella_dressTop_ci4_PNG = 0x0300A520; // type:TImg rom:0x751D10 defined:True
+Quintella_dressTop_ci4_PAL = 0x0300A628; // type:TLut rom:0x751E18 defined:True
+Quintella_dressUncompressed_rgba16_PNG = 0x0300A830; // type:TImg rom:0x752020 defined:True
+Quintella_dress_ci4_PNG = 0x0300C838; // type:TImg rom:0x754028 defined:True
+Quintella_dress_ci4_PAL = 0x0300D040; // type:TLut rom:0x754830 defined:True
+Quintella_a_model13_Gfx = 0x0300D240; // type:Gfx rom:0x754A30 defined:True
+Quintella_a_model14_Vtx = 0x0300D928; // type:Vtx rom:0x755118 defined:True
+Quintella_IMtx19 = 0x0300DB28; // type:Mtx rom:0x755318 defined:True
+Quintella_a_model14_Gfx = 0x0300DB68; // type:Gfx rom:0x755358 defined:True
+Quintella_a_model15_Vtx = 0x0300DDE0; // type:Vtx rom:0x7555D0 defined:True
+Quintella_IMtx20 = 0x0300DEE0; // type:Mtx rom:0x7556D0 defined:True
+Quintella_a_model15_Gfx = 0x0300DF20; // type:Gfx rom:0x755710 defined:True
+Quintella_a_model16_Vtx = 0x0300E118; // type:Vtx rom:0x755908 defined:True
+Quintella_IMtx21 = 0x0300E2D8; // type:Mtx rom:0x755AC8 defined:True
+Quintella_fan_ci4_PNG = 0x0300E320; // type:TImg rom:0x755B10 defined:True
+Quintella_fan_ci4_PAL = 0x0300E528; // type:TLut rom:0x755D18 defined:True
+Quintella_a_model16_Gfx = 0x0300E728; // type:Gfx rom:0x755F18 defined:True
+Quintella_a_model17_Vtx = 0x0300EAB8; // type:Vtx rom:0x7562A8 defined:True
+Quintella_IMtx22 = 0x0300ECC8; // type:Mtx rom:0x7564B8 defined:True
+Quintella_a_model17_Gfx = 0x0300ED08; // type:Gfx rom:0x7564F8 defined:True
+Quintella_IMtx23 = 0x0300EF80; // type:Mtx rom:0x756770 defined:True
+Quintella_a_model18_Gfx = 0x0300EFC0; // type:Gfx rom:0x7567B0 defined:True
+Quintella_unk1Header_Animh = 0x0300F060; // type:Animh rom:0x756850 defined:True
+Quintella_unk1_Animarr = 0x0300F090; // type:Animarr rom:0x756880 defined:True
+Quintella_unk2Header_Animh = 0x03019A90; // type:Animh rom:0x761280 defined:True
+Quintella_unk2_Animarr = 0x03019AC0; // type:Animarr rom:0x7612B0 defined:True
+Quintella_unk3Header_Animh = 0x03021A40; // type:Animh rom:0x769230 defined:True
+Quintella_unk3_Animarr = 0x03021A70; // type:Animarr rom:0x769260 defined:True
+Quintella_unk4Header_Animh = 0x03025A30; // type:Animh rom:0x76D220 defined:True
+Quintella_unk4_Animarr = 0x03025A60; // type:Animarr rom:0x76D250 defined:True
+Quintella_unk5Header_Animh = 0x0302AF60; // type:Animh rom:0x772750 defined:True
+Quintella_unk5_Animarr = 0x0302AF90; // type:Animarr rom:0x772780 defined:True
+Quintella_unk6Header_Animh = 0x03035990; // type:Animh rom:0x77D180 defined:True
+Quintella_unk6_Animarr = 0x030359C0; // type:Animarr rom:0x77D1B0 defined:True
+Quintella_unk7Header_Animh = 0x030458C0; // type:Animh rom:0x78D0B0 defined:True
+Quintella_unk7_Animarr = 0x030458F0; // type:Animarr rom:0x78D0E0 defined:True
+Quintella_unk8Header_Animh = 0x030465B0; // type:Animh rom:0x78DDA0 defined:True
+Quintella_unk8_Animarr = 0x030465E0; // type:Animarr rom:0x78DDD0 defined:True
+Quintella_unk9Header_Animh = 0x03047B20; // type:Animh rom:0x78F310 defined:True
+Quintella_unk9_Animarr = 0x03047B50; // type:Animarr rom:0x78F340 defined:True
+Quintella_unk10Header_Animh = 0x0304FAD0; // type:Animh rom:0x7972C0 defined:True
+Quintella_unk10_Animarr = 0x0304FB00; // type:Animarr rom:0x7972F0 defined:True
+Quintella_unk11Header_Animh = 0x0305E4C0; // type:Animh rom:0x7A5CB0 defined:True
+Quintella_unk11_Animarr = 0x0305E4F0; // type:Animarr rom:0x7A5CE0 defined:True
+Quintella_unk1Pointers_Animp = 0x0305FA30; // type:Animp rom:0x7A7220 defined:True
+Quintella_unk2Pointers_Animp = 0x0305FA3C; // type:Animp rom:0x7A722C defined:True
+Quintella_unk3Pointers_Animp = 0x0305FA48; // type:Animp rom:0x7A7238 defined:True
+Quintella_unk4Pointers_Animp = 0x0305FA54; // type:Animp rom:0x7A7244 defined:True
+Quintella_unk5Pointers_Animp = 0x0305FA60; // type:Animp rom:0x7A7250 defined:True
+Quintella_unk6Pointers_Animp = 0x0305FA6C; // type:Animp rom:0x7A725C defined:True
+Quintella_unk7Pointers_Animp = 0x0305FA78; // type:Animp rom:0x7A7268 defined:True
+Quintella_unk8Pointers_Animp = 0x0305FA84; // type:Animp rom:0x7A7274 defined:True
+Quintella_unk9Pointers_Animp = 0x0305FA90; // type:Animp rom:0x7A7280 defined:True
+Quintella_unk10Pointers_Animp = 0x0305FA9C; // type:Animp rom:0x7A728C defined:True
+Quintella_unk11Pointers_Animp = 0x0305FAA8; // type:Animp rom:0x7A7298 defined:True

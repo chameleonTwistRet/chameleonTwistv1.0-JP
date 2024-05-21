@@ -11638,7 +11638,7 @@ segments:
       - [0x70EA84, roomActor, roomActors/room1_act3]
       - [0x70EAE4, roomActor, roomActors/room1_actSTOP]
 
-      - [0x70eb44, databin, spriteLib]
+      - [0x70eb44, spriteLib, spriteLib]
 
       - [0x70ebc4, roomSettings, rooms/room0]
       - [0x70ec30, roomSettings, rooms/room1]
@@ -11838,8 +11838,6 @@ segments:
       - [0x7477D8, animPointers, anim/unk11Pointers]
       - [0x7477e4] #eof
 
-      
-
   - start: 0x7477f0
     name: Quintella
     vram: 0x03000000 #SEGMENT 0x03
@@ -11856,7 +11854,234 @@ segments:
       vram: 0x81000000
       start: 0x7477f0
       subsegments:
-      - [0x7477f0, databin, Quintella_data]
+      - [0x7477f0] #identity matrix
+      - [0x747830, levelPointer, pointers]
+      - [0x747fb0, databin, rabObjects]
+
+      - [0x747fd8, spriteLib, spriteLib]
+
+      - [0x748058, collectable, collectables/roomUnk_clct1]
+      - [0x748078, collectable, collectables/roomUnk_clct2]
+      - [0x748098, collectable, collectables/roomUnk_clct3]
+      - [0x7480B8, collectable, collectables/roomUnk_clct4]
+      - [0x7480D8, collectable, collectables/roomUnk_clct5]
+      - [0x7480F8, collectable, collectables/roomUnk_clct6]
+      - [0x748118, collectable, collectables/roomUnk_clctSTOP]
+
+      - [0x748138, roomObject, roomObjects/roomMulti_obj1]
+      - [0x7481c4, roomObject, roomObjects/roomMulti_obj2]
+      - [0x748250, roomObject, roomObjects/roomMulti_obj3]
+      - [0x7482dc, roomObject, roomObjects/roomMulti_obj4]
+      - [0x748368, roomObject, roomObjects/roomMulti_obj5]
+      - [0x7483f4, roomObject, roomObjects/roomMulti_obj6]
+      - [0x748480, roomObject, roomObjects/roomMulti_obj7]
+      - [0x74850c, roomObject, roomObjects/roomMulti_obj8]
+      - [0x748598, roomObject, roomObjects/roomMulti_obj9]
+      - [0x748624, roomObject, roomObjects/roomMulti_obj10]
+      - [0x7486b0, roomObject, roomObjects/roomMulti_obj11]
+      - [0x74873c, roomObject, roomObjects/roomMulti_obj12]
+      - [0x7487c8, roomObject, roomObjects/roomMulti_obj13]
+      - [0x748854, roomObject, roomObjects/roomMulti_objSTOP]
+      - [0x7488e0, roomActor, roomActors/room0_act1]
+      - [0x748940, roomActor, roomActors/room0_actSTOP]
+      - [0x7489a0, roomActor, roomActors/room1_act1]
+      - [0x748a00, roomActor, roomActors/room1_actSTOP]
+
+
+      - [0x748a60, roomSettings, rooms/room0]
+      - [0x748acc, roomSettings, rooms/room1]
+      - [0x748b38, roomSettings, rooms/roomSTOP]
+      - {start: 0x748ba4, type: levelMap, name: map, args: Map}
+      - {start: 0x748bb0, type: levelMap, name: map, args: Header}
+      - [0x748bc0, roomSettings, nullOWRoom] #THIS IS A GUESS. VERIFY YOURSELF PLS
+      - [0x748c2c, levelScope, scope]
+      - [0x748c44, levelHeader, header]
+      - [0x748c64] #alignment
+
+      - [0x748c70] #identity matrix
+      - [0x748cb0, lights, qtScope/qtScope]
+
+      - [0x748cc8, vtx, model1/model1]
+      - [0x7492e8] #identity matrix
+      - [0x749328] #B8000000
+      - [0x749330, i4,      img/mural.i4, 80, 120]
+      - [0x74A5F0] #B8000000
+      - [0x74A5F8, ci8,     img/wallFade.ci8, 32, 64]
+      - [0x74Adf8] #B8000000
+      - [0x74AE00, palette, img/wallFade.ci8]
+      - [0x74b000, gfxSeg, model1/model1]
+
+      - [0x74bc40, vtx, model2/model2]
+      - [0x74be50] #identity matrix
+      - [0x74be90, gfxSeg, model2/model2]
+
+      - {start: 0x74c360, type: collision, name: unkCol1/unkCol1, args: "Verts"}
+      - {start: 0x74c4f8, type: collision, name: unkCol1/unkCol1, args: "Tris"}
+      - {start: 0x74c7c8, type: collision, name: unkCol1/unkCol1, args: "Settings"}
+      - {start: 0x74c7e0, type: collision, name: unkCol1/unkCol1, args: "Header"}
+      - {start: 0x74c7f4, type: collision, name: unkCol2/unkCol2, args: "Verts"}
+      - {start: 0x74c8c0, type: collision, name: unkCol2/unkCol2, args: "Tris"}
+      - {start: 0x74c9e0, type: collision, name: unkCol2/unkCol2, args: "Settings"}
+      - {start: 0x74c9f8, type: collision, name: unkCol2/unkCol2, args: "Header"}
+      - [0x74ca0c] #alignment
+
+      - [0x74ca10] #identity matrix
+      - [0x74ca50, lights, qtScope2/qtScope2]
+
+      - [0x74ca68, vtx, a_model1/a_model1]
+      - [0x74cb58] #identity matrix
+      - [0x74cb98, gfxSeg, a_model1/a_model1]
+
+      - [0x74ccf0, vtx, a_model2/a_model2]
+      - [0x74d1b0] #identity matrix
+      - [0x74d1f0] #B8000000
+      - [0x74d1f8, ci4,     img/color.ci4, 16, 16]
+      - [0x74D278] #B8000000
+      - [0x74D280, palette, img/color.ci4]
+      - [0x74D480] #B8000000
+      - [0x74D488, ci4,     img/color2.ci4, 16, 16]
+      - [0x74D508] #B8000000
+      - [0x74D510, palette, img/color2.ci4]
+      - [0x74D710] #B8000000
+      - [0x74D718, ci4,     img/gaster.ci4, 64, 32]
+      - [0x74DB18] #B8000000
+      - [0x74DB20, palette, img/gaster.ci4]
+      - [0x74Dd20, gfxSeg, a_model2/a_model2]
+
+      - [0x74e2d8, vtx, a_model3/a_model3]
+      - [0x74e788] #identity matrix
+      - [0x74e7C8] #B8000000
+      - [0x74e7d0, ci8,     img/eye.ci8, 32, 32]
+      - [0x74EBD0] #B8000000
+      - [0x74EBD8, palette, img/eye.ci8]
+      - [0x74EDD8] #B8000000
+      - [0x74EDe0, ci4,     img/color3.ci4, 16, 16]
+      - [0x74EE60] #B8000000
+      - [0x74EE68, palette, img/color3.ci4]
+      - [0x74f068, gfxSeg, a_model3/a_model3]
+
+      - [0x74f608, vtx, a_model4/a_model4]
+      - [0x74f7f8] #identity matrix
+      - [0x74f838] #B8000000
+      - [0x74f840, ci4,     img/shoulder.ci4, 32, 40]
+      - [0x74FAC0] #B8000000
+      - [0x74FAC8, palette, img/shoulder.ci4]
+      - [0x74FcC8, gfxSeg, a_model4/a_model4]
+
+      - [0x750088, vtx, a_model5/a_model5]
+      - [0x750138] #identity matrix
+      - [0x750178, gfxSeg, a_model5/a_model5]
+
+      - [0x750320, vtx, a_model6/a_model6]
+      - [0x7503d0] #identity matrix
+      - [0x750410, gfxSeg, a_model6/a_model6]
+
+      - [0x7505b8, vtx, a_model7/a_model7]
+      - [0x7507e8] #identity matrix
+      - [0x750828, gfxSeg, a_model7/a_model7]
+
+      - [0x750bf0, vtx, a_model8/a_model8]
+      - [0x750cf0] #identity matrix
+      - [0x750d30, gfxSeg, a_model8/a_model8]
+
+      - [0x750f28, vtx, a_model9/a_model9]
+      - [0x750fb8] #identity matrix
+      - [0x750ff8, gfxSeg, a_model9/a_model9]
+
+      - [0x751180, vtx, a_model10/a_model10]
+      - [0x751240] #identity matrix
+      - [0x751280, gfxSeg, a_model10/a_model10]
+
+      - [0x751438, vtx, a_model11/a_model11]
+      - [0x7514c8] #identity matrix
+      - [0x751508, gfxSeg, a_model11/a_model11]
+
+      - [0x751690, vtx, a_model12/a_model12]
+      - [0x751750] #identity matrix
+      - [0x751790, gfxSeg, a_model12/a_model12]
+
+      - [0x751948, vtx, a_model13/a_model13]
+      - [0x751cc8] #identity matrix
+      - [0x751d08] #B8000000
+      - [0x751d10, ci4,     img/dressTop.ci4, 32, 16]
+      - [0x751E10] #B8000000
+      - [0x751E18, palette, img/dressTop.ci4]
+      - [0x752018] #B8000000
+      - [0x752020, rgba16,     img/dressUncompressed.rgba16, 64, 64]
+      - [0x754020] #B8000000
+      - [0x754028, ci4,     img/dress.ci4, 64, 64]
+      - [0x754828] #B8000000
+      - [0x754830, palette, img/dress.ci4]
+      - [0x754a30, gfxSeg, a_model13/a_model13]
+
+      - [0x755118, vtx, a_model14/a_model14]
+      - [0x755318] #identity matrix
+      - [0x755358, gfxSeg, a_model14/a_model14]
+
+      - [0x7555d0, vtx, a_model15/a_model15]
+      - [0x7556d0] #identity matrix
+      - [0x755710, gfxSeg, a_model15/a_model15]
+
+      - [0x755908, vtx, a_model16/a_model16]
+      - [0x755ac8] #identity matrix
+      - [0x755b08] #B8000000
+      - [0x755b10, ci4,     img/fan.ci4, 32, 32]
+      - [0x755D10] #B8000000
+      - [0x755D18, palette, img/fan.ci4]
+      - [0x755f18, gfxSeg, a_model16/a_model16]
+
+      - [0x7562a8, vtx, a_model17/a_model17]
+      - [0x7564b8] #identity matrix
+      - [0x7564f8, gfxSeg, a_model17/a_model17]
+
+      - [0x756770] #identity matrix
+      - [0x7567b0, gfxSeg, a_model18/a_model18] #rest associate
+      
+      - [0x756850, animHeader, anim/unk1Header]
+      - [0x756880, animArray, anim/unk1, 40, 17]
+
+      - [0x761280, animHeader, anim/unk2Header]
+      - [0x7612B0, animArray, anim/unk2, 30, 17]
+
+      - [0x769230, animHeader, anim/unk3Header]
+      - [0x769260, animArray, anim/unk3, 15, 17]
+
+      - [0x76D220, animHeader, anim/unk4Header]
+      - [0x76D250, animArray, anim/unk4, 20, 17]
+
+      - [0x772750, animHeader, anim/unk5Header]
+      - [0x772780, animArray, anim/unk5, 40, 17]
+
+      - [0x77D180, animHeader, anim/unk6Header]
+      - [0x77D1B0, animArray, anim/unk6, 60, 17]
+
+      - [0x78D0B0, animHeader, anim/unk7Header]
+      - [0x78D0E0, animArray, anim/unk7, 3, 17]
+
+      - [0x78DDA0, animHeader, anim/unk8Header]
+      - [0x78DDD0, animArray, anim/unk8, 5, 17]
+
+      - [0x78F310, animHeader, anim/unk9Header]
+      - [0x78F340, animArray, anim/unk9, 30, 17]
+
+      - [0x7972C0, animHeader, anim/unk10Header]
+      - [0x7972F0, animArray, anim/unk10, 55, 17]
+
+      - [0x7A5CB0, animHeader, anim/unk11Header]
+      - [0x7A5CE0, animArray, anim/unk11, 5, 17]
+
+      - [0x7A7220, animPointers, anim/unk1Pointers]
+      - [0x7A722C, animPointers, anim/unk2Pointers]
+      - [0x7A7238, animPointers, anim/unk3Pointers]
+      - [0x7A7244, animPointers, anim/unk4Pointers]
+      - [0x7A7250, animPointers, anim/unk5Pointers]
+      - [0x7A725C, animPointers, anim/unk6Pointers]
+      - [0x7A7268, animPointers, anim/unk7Pointers]
+      - [0x7A7274, animPointers, anim/unk8Pointers]
+      - [0x7A7280, animPointers, anim/unk9Pointers]
+      - [0x7A728C, animPointers, anim/unk10Pointers]
+      - [0x7A7298, animPointers, anim/unk11Pointers]
+      - [0x7A72A4] #eof
 
   - start: 0x7A72B0
     name: BombSnake

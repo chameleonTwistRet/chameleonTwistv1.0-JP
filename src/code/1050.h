@@ -55,7 +55,7 @@ extern Gfx D_1015A70[];
 extern Gfx D_1015AB8[];
 extern Gfx D_1015AE8[];
 extern Gfx AntLand_yellowAnt_gfx14_Gfx[];
-extern Gfx D_300EFC0[];
+extern Gfx Quintella_a_model18_Gfx[];
 extern Gfx D_3007EA0[];
 extern Gfx D_3008428[];
 extern Gfx BombLand_unk74_Gfx[];

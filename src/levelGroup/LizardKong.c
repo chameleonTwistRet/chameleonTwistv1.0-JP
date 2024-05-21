@@ -1,5 +1,6 @@
 #include "common.h"
 
+
 extern unsigned char Global_JLCaveFadeTop_ci8_PAL[];
 extern unsigned char Global_JLCaveFadeTop_ci8_PNG[];
 extern unsigned char Global_JLCaveFade_ci8_PAL[];
@@ -88,7 +89,6 @@ extern CollisionData LizardKong_unkCol2_ColH;
 extern Gfx Global_pole_Gfx[];
 extern CollisionData Global_pole_ColH;
 
-
 Mtx LizardKong_IMtx1 = IDENTITY;
 
 #include "assets/levelGroup/LizardKong/pointers.lvp.inc.c"
@@ -129,7 +129,7 @@ Mtx LizardKong_IMtx1 = IDENTITY;
 
 #include "assets/levelGroup/LizardKong/roomActors/room1_actSTOP.roomAct.inc.c"
 
-#include "build/assets/levelGroup/LizardKong/spriteLib.inc.c"
+#include "assets/levelGroup/LizardKong/spriteLib.sprLib.inc.c"
 
 #include "assets/levelGroup/LizardKong/rooms/room0.rmSet.inc.c"
 

@@ -836,7 +836,7 @@ Gfx* func_8002B7BC(GraphicStruct* arg0, Gfx* gfxPos) {
                 break;
             case ANT_QUEEN:
                 gActors[i].unk_E8 = gActors[i].unk_134[5];
-                gfxPos = func_8002B118(arg0, gfxPos, D_300EFC0, &gActors[i], 4.0f, 0, &sp178);
+                gfxPos = func_8002B118(arg0, gfxPos, Quintella_a_model18_Gfx, &gActors[i], 4.0f, 0, &sp178);
                 break;
             case BL_BOSS_SEGMENT:
                 if (gActors[i].globalTimer >= 100) {
