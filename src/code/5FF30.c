@@ -421,8 +421,8 @@ s32 D_800FF8AC = 0;
 s32 D_800FF8B0 = 0;
 s32 D_800FF8B4 = 0;
 u32 D_800FF8B8 = 0;
-s16 D_800FF8BC[] = {0, 0, 0x3737, 0x3700, 0x00FF, 0x00FF, 0xFFFF, 0xFF00, 0xFF00, 0xFFFF, 0xFFFF};
-//s16 D_800FF8BE[] = {0x3737, 0x3700, 0x00FF, 0x00FF, 0xFFFF, 0xFF00, 0xFF00, 0xFFFF, 0xFFFF, 0x0000};
+s16 D_800FF8BC = 0;
+s16 D_800FF8C0[] = {0x3737, 0x3700, 0x00FF, 0x00FF, 0xFFFF, 0xFF00, 0xFF00, 0xFFFF, 0xFFFF};
 Mtx* D_800FF8D4 = NULL;
 s32 D_800FF8D8 = 0;
 u8 D_800FF8DC = 0;
@@ -456,19 +456,19 @@ extern Mtx static0_GetupFromKnockback_Animarr[];
 extern Anim static0_GetupFromKnockback_Animh;
 
 Unk_800FFB74 D_800FF908 = {
-static0_GetupFromKnockback_Animarr,
-Davy_restAssociate_Gfx,
-&static0_GetupFromKnockback_Animh.objects,
-&static0_GetupFromKnockback_Animh.frames,
-0xFFFF0000,
+    static0_GetupFromKnockback_Animarr,
+    Davy_restAssociate_Gfx,
+    &static0_GetupFromKnockback_Animh.objects,
+    &static0_GetupFromKnockback_Animh.frames,
+    -1,
 };
 
 Unk_800FFB74 D_800FF91C = {
-static0_GetupFromKnockback_Animarr,
-Davy_restAssociate_Gfx,
-&static0_GetupFromKnockback_Animh.objects,
-&static0_GetupFromKnockback_Animh.frames,
-0xFFFF0000,
+    static0_GetupFromKnockback_Animarr,
+    Davy_restAssociate_Gfx,
+    &static0_GetupFromKnockback_Animh.objects,
+    &static0_GetupFromKnockback_Animh.frames,
+    -1,
 };
 
 
@@ -476,11 +476,11 @@ extern Mtx static0_Idle_Animarr[];
 extern Anim static0_Idle_Animh;
 
 Unk_800FFB74 D_800FF930 = {
-static0_Idle_Animarr,
-Davy_restAssociate_Gfx,
-&static0_Idle_Animh.objects,
-&static0_Idle_Animh.frames,
-0x00000000,
+    static0_Idle_Animarr,
+    Davy_restAssociate_Gfx,
+    &static0_Idle_Animh.objects,
+    &static0_Idle_Animh.frames,
+    0,
 };
 
 
@@ -488,11 +488,11 @@ extern Mtx static0_Walk_Animarr[];
 extern Anim static0_Walk_Animh;
 
 Unk_800FFB74 D_800FF944 = {
-static0_Walk_Animarr,
-Davy_restAssociate_Gfx,
-&static0_Walk_Animh.objects,
-&static0_Walk_Animh.frames,
-0x00000000,
+    static0_Walk_Animarr,
+    Davy_restAssociate_Gfx,
+    &static0_Walk_Animh.objects,
+    &static0_Walk_Animh.frames,
+    0,
 };
 
 
@@ -500,11 +500,11 @@ extern Mtx static0_Run_Animarr[];
 extern Anim static0_Run_Animh;
 
 Unk_800FFB74 D_800FF958 = {
-static0_Run_Animarr,
-Davy_restAssociate_Gfx,
-&static0_Run_Animh.objects,
-&static0_Run_Animh.frames,
-0x00000000,
+    static0_Run_Animarr,
+    Davy_restAssociate_Gfx,
+    &static0_Run_Animh.objects,
+    &static0_Run_Animh.frames,
+    0,
 };
 
 
@@ -512,11 +512,11 @@ extern Mtx static0_LandFromKnockback_Animarr[];
 extern Anim static0_LandFromKnockback_Animh;
 
 Unk_800FFB74 D_800FF96C = {
-static0_LandFromKnockback_Animarr,
-Davy_restAssociate_Gfx,
-&static0_LandFromKnockback_Animh.objects,
-&static0_LandFromKnockback_Animh.frames,
-0xFFFF0000,
+    static0_LandFromKnockback_Animarr,
+    Davy_restAssociate_Gfx,
+    &static0_LandFromKnockback_Animh.objects,
+    &static0_LandFromKnockback_Animh.frames,
+    -1,
 };
 
 
@@ -524,19 +524,19 @@ extern Mtx static0_Jump_Animarr[];
 extern Anim static0_Jump_Animh;
 
 Unk_800FFB74 D_800FF980 = {
-static0_Jump_Animarr,
-Davy_restAssociate_Gfx,
-&static0_Jump_Animh.objects,
-&static0_Jump_Animh.frames,
-0xFFFF0000,
+    static0_Jump_Animarr,
+    Davy_restAssociate_Gfx,
+    &static0_Jump_Animh.objects,
+    &static0_Jump_Animh.frames,
+    -1,
 };
 
 Unk_800FFB74 D_800FF994 = {
-static0_Jump_Animarr,
-Davy_restAssociate_Gfx,
-&static0_Jump_Animh.objects,
-&static0_Jump_Animh.frames,
-0xFFFF0000,
+    static0_Jump_Animarr,
+    Davy_restAssociate_Gfx,
+    &static0_Jump_Animh.objects,
+    &static0_Jump_Animh.frames,
+    -1,
 };
 
 
@@ -544,11 +544,11 @@ extern Mtx Animations_unk1_Animarr[];
 extern Anim Animations_unk1Header_Animh;
 
 Unk_800FFB74 D_800FF9A8 = {
-Animations_unk1_Animarr,
-Davy_restAssociate_Gfx,
-&Animations_unk1Header_Animh.objects,
-&Animations_unk1Header_Animh.frames,
-0xFFFF0000,
+    Animations_unk1_Animarr,
+    Davy_restAssociate_Gfx,
+    &Animations_unk1Header_Animh.objects,
+    &Animations_unk1Header_Animh.frames,
+    -1,
 };
 
 
@@ -556,180 +556,180 @@ extern Mtx Animations_unk2_Animarr[];
 extern Anim Animations_unk2Header_Animh;
 
 Unk_800FFB74 D_800FF9BC = {
-Animations_unk2_Animarr,
-Davy_restAssociate_Gfx,
-&Animations_unk2Header_Animh.objects,
-&Animations_unk2Header_Animh.frames,
-0xFFFF0000,
+    Animations_unk2_Animarr,
+    Davy_restAssociate_Gfx,
+    &Animations_unk2Header_Animh.objects,
+    &Animations_unk2Header_Animh.frames,
+    -1,
 };
 
 
 Unk_800FFB74 D_800FF9D0 = {
-(void*)0x03002760,
-D_3007EA0,
-(void*)0x0300275C,
-(void*)0x03002758,
-0xFFFF0000,
+    (void*)0x03002760,
+    D_3007EA0,
+    (void*)0x0300275C,
+    (void*)0x03002758,
+    -1,
 };
 
 Unk_800FFB74 D_800FF9E4 = {
-(void*)0x03002A90,
-D_3008428,
-(void*)0x03002A8C,
-(void*)0x03002A88,
-0xFFFF0000,
+    (void*)0x03002A90,
+    D_3008428,
+    (void*)0x03002A8C,
+    (void*)0x03002A88,
+    -1,
 };
 
 Unk_800FFB74 D_800FF9F8 = {
-(void*)0x03002B40,
-D_3008428,
-(void*)0x03002B3C,
-(void*)0x03002B38,
-0xFFFF0000,
+    (void*)0x03002B40,
+    D_3008428,
+    (void*)0x03002B3C,
+    (void*)0x03002B38,
+    -1,
 };
 
 Unk_800FFB74 D_800FFA0C = {
-(void*)0x03002F30,
-D_3008428,
-(void*)0x03002F2C,
-(void*)0x03002F28,
-0xFFFF0000,
+    (void*)0x03002F30,
+    D_3008428,
+    (void*)0x03002F2C,
+    (void*)0x03002F28,
+    -1,
 };
 
 Unk_800FFB74 D_800FFA20 = {
-(void*)0x030458F0,
-D_300EFC0,
-(void*)0x030458EC,
-(void*)0x030458E8,
-0xFFFF0000,
+    (void*)0x030458F0,
+    D_300EFC0,
+    (void*)0x030458EC,
+    (void*)0x030458E8,
+    -1,
 };
 
 Unk_800FFB74 D_800FFA34 = {
-(void*)0x030465E0,
-D_300EFC0,
-(void*)0x030465DC,
-(void*)0x030465D8,
-0x00000000,
+    (void*)0x030465E0,
+    D_300EFC0,
+    (void*)0x030465DC,
+    (void*)0x030465D8,
+    0,
 };
 
 Unk_800FFB74 D_800FFA48 = {
-(void*)0x03047B50,
-D_300EFC0,
-(void*)0x03047B4C,
-(void*)0x03047B48,
-0xFFFF0000,
+    (void*)0x03047B50,
+    D_300EFC0,
+    (void*)0x03047B4C,
+    (void*)0x03047B48,
+    -1,
 };
 
 Unk_800FFB74 D_800FFA5C = {
-(void*)0x0304FB00,
-D_300EFC0,
-(void*)0x0304FAFC,
-(void*)0x0304FAF8,
-0xFFFF0000,
+    (void*)0x0304FB00,
+    D_300EFC0,
+    (void*)0x0304FAFC,
+    (void*)0x0304FAF8,
+    -1,
 };
 
 Unk_800FFB74 D_800FFA70 = {
-(void*)0x0305E4F0,
-D_300EFC0,
-(void*)0x0305E4EC,
-(void*)0x0305E4E8,
-0xFFFF0000,
+    (void*)0x0305E4F0,
+    D_300EFC0,
+    (void*)0x0305E4EC,
+    (void*)0x0305E4E8,
+    -1,
 };
 
 Unk_800FFB74 D_800FFA84 = {
-(void*)0x0302CC68,
-D_300DB48,
-(void*)0x0302CC60,
-(void*)0x0302CC5C,
-0xFFFF0000,
+    (void*)0x0302CC68,
+    D_300DB48,
+    (void*)0x0302CC60,
+    (void*)0x0302CC5C,
+    -1,
 };
 
 Unk_800FFB74 D_800FFA98 = {
-(void*)0x0302DA68,
-D_300DB48,
-(void*)0x0302DA60,
-(void*)0x0302DA5C,
-0xFFFF0000,
+    (void*)0x0302DA68,
+    D_300DB48,
+    (void*)0x0302DA60,
+    (void*)0x0302DA5C,
+    -1,
 };
 
 Unk_800FFB74 D_800FFAAC = {
-(void*)0x030303E8,
-D_300DB48,
-(void*)0x030303E0,
-(void*)0x030303DC,
-0xFFFF0000,
+    (void*)0x030303E8,
+    D_300DB48,
+    (void*)0x030303E0,
+    (void*)0x030303DC,
+    -1,
 };
 
 Unk_800FFB74 D_800FFAC0 = {
-(void*)0x030311E8,
-D_300DB48,
-(void*)0x030311E0,
-(void*)0x030311DC,
-0xFFFF0000,
+    (void*)0x030311E8,
+    D_300DB48,
+    (void*)0x030311E0,
+    (void*)0x030311DC,
+    -1,
 };
 
 Unk_800FFB74 D_800FFAD4 = {
-(void*)0x03034928,
-D_3011318,
-(void*)0x03034920,
-(void*)0x0303491C,
-0xFFFF0000,
+    (void*)0x03034928,
+    D_3011318,
+    (void*)0x03034920,
+    (void*)0x0303491C,
+    -1,
 };
 
 Unk_800FFB74 D_800FFAE8 = {
-(void*)0x0301B630,
-D_300CED0,
-(void*)0x0301B62C,
-(void*)0x0301B628,
-0xFFFF0000,
+    (void*)0x0301B630,
+    D_300CED0,
+    (void*)0x0301B62C,
+    (void*)0x0301B628,
+    -1,
 };
 
 Unk_800FFB74 D_800FFAFC = {
-(void*)0x0301E870,
-D_300CED0,
-(void*)0x0301E868,
-(void*)0x0301E864,
-0xFFFF0000,
+    (void*)0x0301E870,
+    D_300CED0,
+    (void*)0x0301E868,
+    (void*)0x0301E864,
+    -1,
 };
 
 Unk_800FFB74 D_800FFB10 = {
-(void*)0x03021AB0,
-D_300CED0,
-(void*)0x03021AA8,
-(void*)0x03021AA4,
-0xFFFF0000,
+    (void*)0x03021AB0,
+    D_300CED0,
+    (void*)0x03021AA8,
+    (void*)0x03021AA4,
+    -1,
 };
 
 Unk_800FFB74 D_800FFB24 = {
-(void*)0x030265F0,
-D_300CED0,
-(void*)0x030265E8,
-(void*)0x030265E4,
-0xFFFF0000,
+    (void*)0x030265F0,
+    D_300CED0,
+    (void*)0x030265E8,
+    (void*)0x030265E4,
+    -1,
 };
 
 Unk_800FFB74 D_800FFB38 = {
-(void*)0x0301E2E8,
-(void*)0x03013708,
-(void*)0x0301E2E0,
-(void*)0x0301E2DC,
-0xFFFF0000,
+    (void*)0x0301E2E8,
+    (void*)0x03013708,
+    (void*)0x0301E2E0,
+    (void*)0x0301E2DC,
+    -1,
 };
 
 Unk_800FFB74 D_800FFB4C = {
-(void*)0x0301E268,
-D_300A9E0,
-(void*)0x0301E260,
-(void*)0x0301E25C,
-0xFFFF0000,
+    (void*)0x0301E268,
+    D_300A9E0,
+    (void*)0x0301E260,
+    (void*)0x0301E25C,
+    -1,
 };
 
 Unk_800FFB74 D_800FFB60 = {
-(void*)0x030222E8,
-(void*)0x0301C198,
-(void*)0x030222E0,
-(void*)0x030222DC,
-0xFFFF0000,
+    (void*)0x030222E8,
+    (void*)0x0301C198,
+    (void*)0x030222E0,
+    (void*)0x030222DC,
+    -1,
 };
 
 Unk_800FFB74* D_800FFB74[] = {
@@ -813,7 +813,7 @@ Unk_800FFDDC D_800FFDBC[] = {
     {-1, 0x0000, 0x0000, 0x0000, 0x0000},
 };
 
-Unk_800FFDDC* D_800FFDDC[] = {0, D_800FFD9C, D_800FFDBC, 0};
+Unk_800FFDDC* D_800FFDDC[] = {0, D_800FFD9C, D_800FFDBC, NULL};
 s32 D_800FFDEC = 0;
 s16 D_800FFDF0 = 3;
 s16 D_800FFDF4 = 1;
@@ -998,7 +998,7 @@ extern const char stageNamePadding[];
 const char* stageNames[] = {stageNameJungleLand, stageNameAntLand, stageNameBombLand, stageNameDesertCastle, stageNameKidsLand, stageNameGhostCastle, stageNameSecret, stageNamePadding};
 
 // s16 D_80100348 = -1;
-s16 D_80100348[] = {-1, 0x800, 0x900, 0x100, 0x500, 0x400, 0x600, 0x200, 0xA00, 0x000};
+s16 D_80100348[] = {-1, 0x800, 0x900, 0x100, 0x500, 0x400, 0x600, 0x200, 0xA00};
 
 //save
 extern const char D_8010E0CC[];
@@ -1006,7 +1006,7 @@ extern const char D_8010E0D4[];
 extern const char D_8010E0DC[];
 extern const char D_8010E0E4[];
 
-const char* D_8010035C[] = {D_8010E0CC, D_8010E0D4, D_8010E0DC, D_8010E0E4, 0x00000000};
+const char* D_8010035C[] = {D_8010E0CC, D_8010E0D4, D_8010E0DC, D_8010E0E4, NULL};
 
 s16 LoadFilePositions[] = {
     //X,   Y
@@ -1044,7 +1044,7 @@ const char* D_80100380[] = {
     D_8010E128, D_8010E138, D_8010E148, D_8010E154,
     D_8010E164, D_8010E174, D_8010E184, D_8010E190,
     D_8010E1A0, D_8010E1B0, D_8010E1BC, D_8010E1CC,
-    D_8010E1DC, D_8010E1E8, 0
+    D_8010E1DC, D_8010E1E8, NULL
 };
 
 s16 D_801003CC[] = {0x68, 0x69, 0x6A, 0x6B, 0x6C, 0x6D};
@@ -1056,7 +1056,7 @@ stuff D_801003DC = {
     {0, 0, 0, 0, 0, 0}
 };
 
-s32 D_801003E8[] = {0x00400080, 0x00800080, 0x00C00080, 0x01000080};
+s16 D_801003E8[] = {0x0040, 0x0080, 0x0080, 0x0080, 0x00C0, 0x0080, 0x0100, 0x0080};
 s16 D_801003F8[] = {0x0044, 0x0080, 0x0080, 0x0080, 0x00BE, 0x0080, 0x00FC, 0x0080};
 
 typedef struct unkStruct5FF30 {
@@ -1970,7 +1970,7 @@ void Timing_StartAudio(void) {
 }
 
 void Timing_StopAudio(void) {
-    D_800FF890[D_800FF8BC[0]] = osGetCount() - Timing_StartAudioTime;
+    D_800FF890[D_800FF8BC] = osGetCount() - Timing_StartAudioTime;
 }
 
 // not used

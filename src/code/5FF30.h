@@ -94,7 +94,7 @@ typedef struct Unk_800FFB74 {
     void* unk_04;
     s32* unk_08;
     s32* unk_0C;
-    s32 unk_10;
+    s16 unk_10;
 } Unk_800FFB74; // size 0x14
 
 typedef struct Unk_800FFDDC {

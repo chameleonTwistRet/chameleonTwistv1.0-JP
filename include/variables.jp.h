@@ -330,7 +330,7 @@ extern char D_8010D968[];
 extern s32 Timing_DelayAudioInterval;
 extern u32 Timing_StartAudioTime;
 extern s32 D_800FF890[];
-extern s16 D_800FF8BC[];
+extern s16 D_800FF8BC;
 extern s32 Timing_StartProcessTime;
 extern s32 D_800FF8B4;
 extern u32 D_800FF8B8;
