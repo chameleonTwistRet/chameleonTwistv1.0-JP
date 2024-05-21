@@ -279,22 +279,13 @@ s16 D_800FF5E0 = 0;
 s32 D_800FF5E4 = 0;
 s32 D_800FF5E8 = 0;
 s16 gGfxTaskRunning = 0;
-// s16 D_800FF5EE = 0; //padding?
-
 s16 gAudioTaskState = 0;
-// s16 D_800FF5F2 = 0; //unused
 s16 D_800FF5F4 = 0;
-// s16 D_800FF5F6 = 0; //unused
 s16 gIsPaused = 0;
-// s16 D_800FF5FA = 0; //unused
 s16 gIsStero = 1;
-// s16 D_800FF5FE = 0; //unused
 s16 gSFXMute = -1;
-// s16 D_800FF602 = 0; //unused
 s16 D_800FF604 = 0;
-// s16 D_800FF606 = 0; //unused
 s16 D_800FF608 = 0;
-// s16 D_800FF60A = 0; //unused
 u8 gGfxTaskYielded = 0;
 Camera* gCameraP = gCamera;
 
@@ -323,8 +314,10 @@ s32 D_800FF760 = 0x40;
 
 
 typedef struct Unk800FF764 {
-    s32 unk_00;
-    s32 unk_04;
+    s16 unk_00;
+    s16 unk_02;
+    s16 unk_04;
+    s16 unk_06;
     const char* unk_08;
 } Unk800FF764;
 
@@ -335,10 +328,10 @@ extern const char D_8010D85C[];
 extern const char D_8010D874[];
 
 Unk800FF764 D_800FF764[] = {
-    {0x00700058, 0, D_8010D840},
-    {0x00800078, 0x00020000, D_8010D850},
-    {0x00500098, 0x00010000, D_8010D85C},
-    {0x008000B8, 0x00070000, D_8010D874},
+    {0x0070, 0x0058, 0, 0, D_8010D840},
+    {0x0080, 0x0078, 0x0002, 0x0000, D_8010D850},
+    {0x0050, 0x0098, 0x0001, 0x0000, D_8010D85C},
+    {0x0080, 0x00B8, 0x0007, 0x0000, D_8010D874},
     {0, 0, 0}
 };
 
@@ -348,9 +341,9 @@ extern const char D_8010D890[];
 extern const char D_8010D8A0[];
 
 Unk800FF764 D_800FF7A0[] = {
-    {0x00700058, 0, D_8010D880},
-    {0x00680078, 0x00060000, D_8010D890},
-    {0x00800098, 0x00070000, D_8010D8A0},
+    {0x0070, 0x0058, 0, 0, D_8010D880},
+    {0x0068, 0x0078, 0x0006, 0x0000, D_8010D890},
+    {0x0080, 0x0098, 0x0007, 0x0000, D_8010D8A0},
     {0, 0, 0},
 };
 
@@ -359,8 +352,8 @@ extern const char D_8010D8AC[];
 extern const char D_8010D8BC[];
 
 Unk800FF764 D_800FF7D0[] = {
-    {0x00700058, 0, D_8010D8AC},
-    {0x00800078, 0x00070000, D_8010D8BC},
+    {0x0070, 0x0058, 0, 0, D_8010D8AC},
+    {0x0080, 0x0078, 0x0007, 0x0000, D_8010D8BC},
     {0, 0, 0}
 };
 
@@ -368,8 +361,8 @@ extern const char D_8010D8C8[];
 extern const char D_8010D8D0[];
 
 Unk800FF764 D_800FF7F4[] = {
-    {0x00880068, 0x00090000, D_8010D8C8},
-    {0x008E0088, 0x00080000, D_8010D8D0},
+    {0x0088, 0x0068, 0x0009, 0x0000, D_8010D8C8},
+    {0x008E, 0x0088, 0x0008, 0x0000, D_8010D8D0},
     {0, 0, 0}
 };
 
@@ -377,13 +370,13 @@ extern const char D_8010D8D8[];
 extern const char D_8010D8E0[];
 
 Unk800FF764 D_800FF818[] = {
-    {0x00880058, 0x00010000, D_8010D8D8},
-    {0x008E0078, 0x00080000, D_8010D8E0},
+    {0x0088, 0x0058, 0x0001, 0x0000, D_8010D8D8},
+    {0x008E, 0x0078, 0x0008, 0x0000, D_8010D8E0},
     {0, 0, 0}
 };
 
 Unk800FF764* D_800FF83C[] = {D_800FF764, D_800FF7D0, D_800FF7A0};
-Unk800FF764* D_800FF848[] = {D_800FF7F4, D_800FF818, 0};
+Unk800FF764* D_800FF848[] = {D_800FF7F4, D_800FF818, NULL};
 
 s16 sStageBGMs[] = {
     BGM_JUNGLE_EXT,
@@ -421,8 +414,8 @@ s32 D_800FF8AC = 0;
 s32 D_800FF8B0 = 0;
 s32 D_800FF8B4 = 0;
 u32 D_800FF8B8 = 0;
-s16 D_800FF8BC[] = {0, 0, 0x3737, 0x3700, 0x00FF, 0x00FF, 0xFFFF, 0xFF00, 0xFF00, 0xFFFF, 0xFFFF};
-//s16 D_800FF8BE[] = {0x3737, 0x3700, 0x00FF, 0x00FF, 0xFFFF, 0xFF00, 0xFF00, 0xFFFF, 0xFFFF, 0x0000};
+s16 D_800FF8BC = 0;
+s16 D_800FF8C0[] = {0x3737, 0x3700, 0x00FF, 0x00FF, 0xFFFF, 0xFF00, 0xFF00, 0xFFFF, 0xFFFF};
 Mtx* D_800FF8D4 = NULL;
 s32 D_800FF8D8 = 0;
 u8 D_800FF8DC = 0;
@@ -456,19 +449,19 @@ extern Mtx static0_GetupFromKnockback_Animarr[];
 extern Anim static0_GetupFromKnockback_Animh;
 
 Unk_800FFB74 D_800FF908 = {
-static0_GetupFromKnockback_Animarr,
-Davy_restAssociate_Gfx,
-&static0_GetupFromKnockback_Animh.objects,
-&static0_GetupFromKnockback_Animh.frames,
-0xFFFF0000,
+    static0_GetupFromKnockback_Animarr,
+    Davy_restAssociate_Gfx,
+    &static0_GetupFromKnockback_Animh.objects,
+    &static0_GetupFromKnockback_Animh.frames,
+    LIST_END,
 };
 
 Unk_800FFB74 D_800FF91C = {
-static0_GetupFromKnockback_Animarr,
-Davy_restAssociate_Gfx,
-&static0_GetupFromKnockback_Animh.objects,
-&static0_GetupFromKnockback_Animh.frames,
-0xFFFF0000,
+    static0_GetupFromKnockback_Animarr,
+    Davy_restAssociate_Gfx,
+    &static0_GetupFromKnockback_Animh.objects,
+    &static0_GetupFromKnockback_Animh.frames,
+    LIST_END,
 };
 
 
@@ -476,11 +469,11 @@ extern Mtx static0_Idle_Animarr[];
 extern Anim static0_Idle_Animh;
 
 Unk_800FFB74 D_800FF930 = {
-static0_Idle_Animarr,
-Davy_restAssociate_Gfx,
-&static0_Idle_Animh.objects,
-&static0_Idle_Animh.frames,
-0x00000000,
+    static0_Idle_Animarr,
+    Davy_restAssociate_Gfx,
+    &static0_Idle_Animh.objects,
+    &static0_Idle_Animh.frames,
+    0,
 };
 
 
@@ -488,11 +481,11 @@ extern Mtx static0_Walk_Animarr[];
 extern Anim static0_Walk_Animh;
 
 Unk_800FFB74 D_800FF944 = {
-static0_Walk_Animarr,
-Davy_restAssociate_Gfx,
-&static0_Walk_Animh.objects,
-&static0_Walk_Animh.frames,
-0x00000000,
+    static0_Walk_Animarr,
+    Davy_restAssociate_Gfx,
+    &static0_Walk_Animh.objects,
+    &static0_Walk_Animh.frames,
+    0,
 };
 
 
@@ -500,11 +493,11 @@ extern Mtx static0_Run_Animarr[];
 extern Anim static0_Run_Animh;
 
 Unk_800FFB74 D_800FF958 = {
-static0_Run_Animarr,
-Davy_restAssociate_Gfx,
-&static0_Run_Animh.objects,
-&static0_Run_Animh.frames,
-0x00000000,
+    static0_Run_Animarr,
+    Davy_restAssociate_Gfx,
+    &static0_Run_Animh.objects,
+    &static0_Run_Animh.frames,
+    0,
 };
 
 
@@ -512,11 +505,11 @@ extern Mtx static0_LandFromKnockback_Animarr[];
 extern Anim static0_LandFromKnockback_Animh;
 
 Unk_800FFB74 D_800FF96C = {
-static0_LandFromKnockback_Animarr,
-Davy_restAssociate_Gfx,
-&static0_LandFromKnockback_Animh.objects,
-&static0_LandFromKnockback_Animh.frames,
-0xFFFF0000,
+    static0_LandFromKnockback_Animarr,
+    Davy_restAssociate_Gfx,
+    &static0_LandFromKnockback_Animh.objects,
+    &static0_LandFromKnockback_Animh.frames,
+    LIST_END,
 };
 
 
@@ -524,19 +517,19 @@ extern Mtx static0_Jump_Animarr[];
 extern Anim static0_Jump_Animh;
 
 Unk_800FFB74 D_800FF980 = {
-static0_Jump_Animarr,
-Davy_restAssociate_Gfx,
-&static0_Jump_Animh.objects,
-&static0_Jump_Animh.frames,
-0xFFFF0000,
+    static0_Jump_Animarr,
+    Davy_restAssociate_Gfx,
+    &static0_Jump_Animh.objects,
+    &static0_Jump_Animh.frames,
+    LIST_END,
 };
 
 Unk_800FFB74 D_800FF994 = {
-static0_Jump_Animarr,
-Davy_restAssociate_Gfx,
-&static0_Jump_Animh.objects,
-&static0_Jump_Animh.frames,
-0xFFFF0000,
+    static0_Jump_Animarr,
+    Davy_restAssociate_Gfx,
+    &static0_Jump_Animh.objects,
+    &static0_Jump_Animh.frames,
+    LIST_END,
 };
 
 
@@ -544,11 +537,11 @@ extern Mtx Animations_unk1_Animarr[];
 extern Anim Animations_unk1Header_Animh;
 
 Unk_800FFB74 D_800FF9A8 = {
-Animations_unk1_Animarr,
-Davy_restAssociate_Gfx,
-&Animations_unk1Header_Animh.objects,
-&Animations_unk1Header_Animh.frames,
-0xFFFF0000,
+    Animations_unk1_Animarr,
+    Davy_restAssociate_Gfx,
+    &Animations_unk1Header_Animh.objects,
+    &Animations_unk1Header_Animh.frames,
+    LIST_END,
 };
 
 
@@ -556,180 +549,180 @@ extern Mtx Animations_unk2_Animarr[];
 extern Anim Animations_unk2Header_Animh;
 
 Unk_800FFB74 D_800FF9BC = {
-Animations_unk2_Animarr,
-Davy_restAssociate_Gfx,
-&Animations_unk2Header_Animh.objects,
-&Animations_unk2Header_Animh.frames,
-0xFFFF0000,
+    Animations_unk2_Animarr,
+    Davy_restAssociate_Gfx,
+    &Animations_unk2Header_Animh.objects,
+    &Animations_unk2Header_Animh.frames,
+    LIST_END,
 };
 
 
 Unk_800FFB74 D_800FF9D0 = {
-(void*)0x03002760,
-D_3007EA0,
-(void*)0x0300275C,
-(void*)0x03002758,
-0xFFFF0000,
+    (void*)0x03002760,
+    D_3007EA0,
+    (void*)0x0300275C,
+    (void*)0x03002758,
+    LIST_END,
 };
 
 Unk_800FFB74 D_800FF9E4 = {
-(void*)0x03002A90,
-D_3008428,
-(void*)0x03002A8C,
-(void*)0x03002A88,
-0xFFFF0000,
+    (void*)0x03002A90,
+    D_3008428,
+    (void*)0x03002A8C,
+    (void*)0x03002A88,
+    LIST_END,
 };
 
 Unk_800FFB74 D_800FF9F8 = {
-(void*)0x03002B40,
-D_3008428,
-(void*)0x03002B3C,
-(void*)0x03002B38,
-0xFFFF0000,
+    (void*)0x03002B40,
+    D_3008428,
+    (void*)0x03002B3C,
+    (void*)0x03002B38,
+    LIST_END,
 };
 
 Unk_800FFB74 D_800FFA0C = {
-(void*)0x03002F30,
-D_3008428,
-(void*)0x03002F2C,
-(void*)0x03002F28,
-0xFFFF0000,
+    (void*)0x03002F30,
+    D_3008428,
+    (void*)0x03002F2C,
+    (void*)0x03002F28,
+    LIST_END,
 };
 
 Unk_800FFB74 D_800FFA20 = {
-(void*)0x030458F0,
-D_300EFC0,
-(void*)0x030458EC,
-(void*)0x030458E8,
-0xFFFF0000,
+    (void*)0x030458F0,
+    D_300EFC0,
+    (void*)0x030458EC,
+    (void*)0x030458E8,
+    LIST_END,
 };
 
 Unk_800FFB74 D_800FFA34 = {
-(void*)0x030465E0,
-D_300EFC0,
-(void*)0x030465DC,
-(void*)0x030465D8,
-0x00000000,
+    (void*)0x030465E0,
+    D_300EFC0,
+    (void*)0x030465DC,
+    (void*)0x030465D8,
+    0,
 };
 
 Unk_800FFB74 D_800FFA48 = {
-(void*)0x03047B50,
-D_300EFC0,
-(void*)0x03047B4C,
-(void*)0x03047B48,
-0xFFFF0000,
+    (void*)0x03047B50,
+    D_300EFC0,
+    (void*)0x03047B4C,
+    (void*)0x03047B48,
+    LIST_END,
 };
 
 Unk_800FFB74 D_800FFA5C = {
-(void*)0x0304FB00,
-D_300EFC0,
-(void*)0x0304FAFC,
-(void*)0x0304FAF8,
-0xFFFF0000,
+    (void*)0x0304FB00,
+    D_300EFC0,
+    (void*)0x0304FAFC,
+    (void*)0x0304FAF8,
+    LIST_END,
 };
 
 Unk_800FFB74 D_800FFA70 = {
-(void*)0x0305E4F0,
-D_300EFC0,
-(void*)0x0305E4EC,
-(void*)0x0305E4E8,
-0xFFFF0000,
+    (void*)0x0305E4F0,
+    D_300EFC0,
+    (void*)0x0305E4EC,
+    (void*)0x0305E4E8,
+    LIST_END,
 };
 
 Unk_800FFB74 D_800FFA84 = {
-(void*)0x0302CC68,
-D_300DB48,
-(void*)0x0302CC60,
-(void*)0x0302CC5C,
-0xFFFF0000,
+    (void*)0x0302CC68,
+    D_300DB48,
+    (void*)0x0302CC60,
+    (void*)0x0302CC5C,
+    LIST_END,
 };
 
 Unk_800FFB74 D_800FFA98 = {
-(void*)0x0302DA68,
-D_300DB48,
-(void*)0x0302DA60,
-(void*)0x0302DA5C,
-0xFFFF0000,
+    (void*)0x0302DA68,
+    D_300DB48,
+    (void*)0x0302DA60,
+    (void*)0x0302DA5C,
+    LIST_END,
 };
 
 Unk_800FFB74 D_800FFAAC = {
-(void*)0x030303E8,
-D_300DB48,
-(void*)0x030303E0,
-(void*)0x030303DC,
-0xFFFF0000,
+    (void*)0x030303E8,
+    D_300DB48,
+    (void*)0x030303E0,
+    (void*)0x030303DC,
+    LIST_END,
 };
 
 Unk_800FFB74 D_800FFAC0 = {
-(void*)0x030311E8,
-D_300DB48,
-(void*)0x030311E0,
-(void*)0x030311DC,
-0xFFFF0000,
+    (void*)0x030311E8,
+    D_300DB48,
+    (void*)0x030311E0,
+    (void*)0x030311DC,
+    LIST_END,
 };
 
 Unk_800FFB74 D_800FFAD4 = {
-(void*)0x03034928,
-D_3011318,
-(void*)0x03034920,
-(void*)0x0303491C,
-0xFFFF0000,
+    (void*)0x03034928,
+    D_3011318,
+    (void*)0x03034920,
+    (void*)0x0303491C,
+    LIST_END,
 };
 
 Unk_800FFB74 D_800FFAE8 = {
-(void*)0x0301B630,
-D_300CED0,
-(void*)0x0301B62C,
-(void*)0x0301B628,
-0xFFFF0000,
+    (void*)0x0301B630,
+    D_300CED0,
+    (void*)0x0301B62C,
+    (void*)0x0301B628,
+    LIST_END,
 };
 
 Unk_800FFB74 D_800FFAFC = {
-(void*)0x0301E870,
-D_300CED0,
-(void*)0x0301E868,
-(void*)0x0301E864,
-0xFFFF0000,
+    (void*)0x0301E870,
+    D_300CED0,
+    (void*)0x0301E868,
+    (void*)0x0301E864,
+    LIST_END,
 };
 
 Unk_800FFB74 D_800FFB10 = {
-(void*)0x03021AB0,
-D_300CED0,
-(void*)0x03021AA8,
-(void*)0x03021AA4,
-0xFFFF0000,
+    (void*)0x03021AB0,
+    D_300CED0,
+    (void*)0x03021AA8,
+    (void*)0x03021AA4,
+    LIST_END,
 };
 
 Unk_800FFB74 D_800FFB24 = {
-(void*)0x030265F0,
-D_300CED0,
-(void*)0x030265E8,
-(void*)0x030265E4,
-0xFFFF0000,
+    (void*)0x030265F0,
+    D_300CED0,
+    (void*)0x030265E8,
+    (void*)0x030265E4,
+    LIST_END,
 };
 
 Unk_800FFB74 D_800FFB38 = {
-(void*)0x0301E2E8,
-(void*)0x03013708,
-(void*)0x0301E2E0,
-(void*)0x0301E2DC,
-0xFFFF0000,
+    (void*)0x0301E2E8,
+    (void*)0x03013708,
+    (void*)0x0301E2E0,
+    (void*)0x0301E2DC,
+    LIST_END,
 };
 
 Unk_800FFB74 D_800FFB4C = {
-(void*)0x0301E268,
-D_300A9E0,
-(void*)0x0301E260,
-(void*)0x0301E25C,
-0xFFFF0000,
+    (void*)0x0301E268,
+    D_300A9E0,
+    (void*)0x0301E260,
+    (void*)0x0301E25C,
+    LIST_END,
 };
 
 Unk_800FFB74 D_800FFB60 = {
-(void*)0x030222E8,
-(void*)0x0301C198,
-(void*)0x030222E0,
-(void*)0x030222DC,
-0xFFFF0000,
+    (void*)0x030222E8,
+    (void*)0x0301C198,
+    (void*)0x030222E0,
+    (void*)0x030222DC,
+    LIST_END,
 };
 
 Unk_800FFB74* D_800FFB74[] = {
@@ -813,7 +806,7 @@ Unk_800FFDDC D_800FFDBC[] = {
     {-1, 0x0000, 0x0000, 0x0000, 0x0000},
 };
 
-Unk_800FFDDC* D_800FFDDC[] = {0, D_800FFD9C, D_800FFDBC, 0};
+Unk_800FFDDC* D_800FFDDC[] = {0, D_800FFD9C, D_800FFDBC, NULL};
 s32 D_800FFDEC = 0;
 s16 D_800FFDF0 = 3;
 s16 D_800FFDF4 = 1;
@@ -824,7 +817,7 @@ UnkBg D_800FFDF8[] = {
     {0x0080, 0xFFE0, 0x0042},
     {0x00C0, 0xFFE0, 0x0043},
     {0x0100, 0xFFE0, 0x0044},
-    {0x0000, 0x0000, -1}
+    {0x0000, 0x0000, LIST_END}
 };
 
 UnkBg D_800FFE1C[] = {
@@ -833,17 +826,17 @@ UnkBg D_800FFE1C[] = {
     {0x0080, 0xFFE0, 0x003D},
     {0x00C0, 0xFFE0, 0x003E},
     {0x0100, 0xFFE0, 0x003F},
-    {0x0000, 0x0000, -1}
+    {0x0000, 0x0000, LIST_END}
 };
 
 UnkBg D_800FFE40[] = {
     {0x0000, 0x0000, 0x00BB},
-    {0x0000, 0x0000, -1}
+    {0x0000, 0x0000, LIST_END}
 };
 
 UnkBg D_800FFE4C[] = {
     {0x0000, 0x0000, 0x00BC},
-    {0x0000, 0x0000, -1}
+    {0x0000, 0x0000, LIST_END}
 };
 
 UnkBg* D_800FFE58[] = {D_800FFDF8, D_800FFE1C, D_800FFE40, D_800FFE4C, NULL, NULL};
@@ -858,7 +851,7 @@ s16 D_800FFEC0 = 2;
 
 char D_800FFEC4[] = "ＣＯＮＧＲＡＴＵＬＡＴＩＯＮＳ！";
 f32 D_800FFEE8 = 0.0f;
-s16 D_800FFEEC[] = {0x18, 0x19, 0x1A, 0x1B, -1};
+s16 D_800FFEEC[] = {0x18, 0x19, 0x1A, 0x1B, LIST_END};
 
 extern LevelHeader JungleLand_header_Lvlhdr;
 extern LevelHeader AntLand_header_Lvlhdr;
@@ -951,29 +944,28 @@ typedef struct StageSelectData {
 /* 0x12 */ s16 leftPathID;
 /* 0x14 */ s16 upLeftPathID;
 /* 0x16 */ u8 unk_16;
-/* 0x17 */ u8 unk_17; //padding?
-} StageSelectData; //sizeof 0x18
+} StageSelectData; //sizeof 0x18 (with padding)
 
 enum StageSelectStages{
-    //SELECT_NONE = -1,
-    SELECT_JL = 0,
-    SELECT_AL, // 1
-    SELECT_BL, // 2
-    SELECT_DC, // 3
-    SELECT_KL, // 4
-    SELECT_GC, // 5
-    SELECT_BOSSRUSH // 6
+    NONE = -1,
+    JL = 0,
+    AL, // 1
+    BL, // 2
+    DC, // 3
+    KL, // 4
+    GC, // 5
+    BOSSRUSH // 6
 };
 
-StageSelectData StageSelect[] = {
-    { 56, 192,       SPRITE_JL_ICON, SELECT_BOSSRUSH, SELECT_AL, SELECT_BL, SELECT_BL,        -1,        -1,               -1,         -1, -1, 0},
-    {108, 112,       SPRITE_AL_ICON,              -1, SELECT_DC, SELECT_DC, SELECT_KL, SELECT_BL, SELECT_JL,  SELECT_BOSSRUSH,         -1, 29, 0},
-    {148, 184,       SPRITE_BL_ICON,       SELECT_DC, SELECT_DC, SELECT_KL, SELECT_KL,        -1, SELECT_JL,        SELECT_JL,  SELECT_AL, 27, 0},
-    {186,  80,       SPRITE_DC_ICON,              -1, SELECT_GC, SELECT_GC, SELECT_KL, SELECT_KL, SELECT_BL,        SELECT_AL,         -1, 54, 0},
-    {228, 152,       SPRITE_KL_ICON,       SELECT_DC, SELECT_GC,        -1,        -1,        -1, SELECT_BL,        SELECT_BL,  SELECT_AL, 46, 0},
-    {258,  56,       SPRITE_GC_ICON,              -1,        -1,        -1, SELECT_KL, SELECT_KL, SELECT_KL,        SELECT_DC,         -1, 24, 0},
-    { 56, 110, SPRITE_BOSSRUSH_ICON,              -1,        -1, SELECT_AL,        -1, SELECT_JL,        -1,               -1,         -1,  0, 0},
-    {  0,   0,                    0,               0,         0,         0,         0,         0,         0,                0,          0,  0, 0},
+StageSelectData StageSelect[] = {                                                                               //?        
+    { 56, 192, SPRITE_JL_ICON,          BOSSRUSH,   AL,     BL,     BL,     NONE,   NONE,   NONE,       NONE,   NONE},
+    {108, 112, SPRITE_AL_ICON,          NONE,       DC,     DC,     KL,     BL,     JL,     BOSSRUSH,   NONE,   29},
+    {148, 184, SPRITE_BL_ICON,          DC,         DC,     KL,     KL,     NONE,   JL,     JL,         AL,     27},
+    {186,  80, SPRITE_DC_ICON,          NONE,       GC,     GC,     KL,     KL,     BL,     AL,         NONE,   54},
+    {228, 152, SPRITE_KL_ICON,          DC,         GC,     NONE,   NONE,   NONE,   BL,     BL,         AL,     46},
+    {258,  56, SPRITE_GC_ICON,          NONE,       NONE,   NONE,   KL,     KL,     KL,     DC,         NONE,   24},
+    { 56, 110, SPRITE_BOSSRUSH_ICON,    NONE,       NONE,   AL,     NONE,   JL,     NONE,   NONE,       NONE,   0},
+    {  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
 };
 
 s16 NameSpriteIDs[] = {
@@ -997,8 +989,7 @@ extern const char stageNamePadding[];
 
 const char* stageNames[] = {stageNameJungleLand, stageNameAntLand, stageNameBombLand, stageNameDesertCastle, stageNameKidsLand, stageNameGhostCastle, stageNameSecret, stageNamePadding};
 
-// s16 D_80100348 = -1;
-s16 D_80100348[] = {-1, 0x800, 0x900, 0x100, 0x500, 0x400, 0x600, 0x200, 0xA00, 0x000};
+s16 D_80100348[] = {-1, 0x800, 0x900, 0x100, 0x500, 0x400, 0x600, 0x200, 0xA00};
 
 //save
 extern const char D_8010E0CC[];
@@ -1006,7 +997,7 @@ extern const char D_8010E0D4[];
 extern const char D_8010E0DC[];
 extern const char D_8010E0E4[];
 
-const char* D_8010035C[] = {D_8010E0CC, D_8010E0D4, D_8010E0DC, D_8010E0E4, 0x00000000};
+const char* D_8010035C[] = {D_8010E0CC, D_8010E0D4, D_8010E0DC, D_8010E0E4, NULL};
 
 s16 LoadFilePositions[] = {
     //X,   Y
@@ -1044,7 +1035,7 @@ const char* D_80100380[] = {
     D_8010E128, D_8010E138, D_8010E148, D_8010E154,
     D_8010E164, D_8010E174, D_8010E184, D_8010E190,
     D_8010E1A0, D_8010E1B0, D_8010E1BC, D_8010E1CC,
-    D_8010E1DC, D_8010E1E8, 0
+    D_8010E1DC, D_8010E1E8, NULL
 };
 
 s16 D_801003CC[] = {0x68, 0x69, 0x6A, 0x6B, 0x6C, 0x6D};
@@ -1056,7 +1047,7 @@ stuff D_801003DC = {
     {0, 0, 0, 0, 0, 0}
 };
 
-s32 D_801003E8[] = {0x00400080, 0x00800080, 0x00C00080, 0x01000080};
+s16 D_801003E8[] = {0x0040, 0x0080, 0x0080, 0x0080, 0x00C0, 0x0080, 0x0100, 0x0080};
 s16 D_801003F8[] = {0x0044, 0x0080, 0x0080, 0x0080, 0x00BE, 0x0080, 0x00FC, 0x0080};
 
 typedef struct unkStruct5FF30 {
@@ -1970,7 +1961,7 @@ void Timing_StartAudio(void) {
 }
 
 void Timing_StopAudio(void) {
-    D_800FF890[D_800FF8BC[0]] = osGetCount() - Timing_StartAudioTime;
+    D_800FF890[D_800FF8BC] = osGetCount() - Timing_StartAudioTime;
 }
 
 // not used

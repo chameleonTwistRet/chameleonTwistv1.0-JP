@@ -53,5 +53,7 @@
 //basic file padding
 #define FILEPAD {0xB8,0,0,0,0,0,0,0}
 
+#define LIST_END -1
+
 
 #endif
