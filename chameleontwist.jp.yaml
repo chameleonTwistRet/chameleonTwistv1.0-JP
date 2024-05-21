@@ -11614,7 +11614,231 @@ segments:
       vram: 0x81000000
       start: 0x70db70
       subsegments:
-      - [0x70db70, databin, LizardKong_data]
+      - [0x70db70] #identity matrix
+      - [0x70dbb0, levelPointer, pointers]
+      - [0x70e330, databin, rabObjects]
+
+      - [0x70e358, roomObject, roomObjects/room0_obj1]
+      - [0x70e3e4, roomObject, roomObjects/room0_obj2]
+      - [0x70e470, roomObject, roomObjects/room0_obj3]
+      - [0x70e4fc, roomObject, roomObjects/room0_obj4]
+      - [0x70e588, roomObject, roomObjects/room0_obj5]
+      - [0x70e614, roomObject, roomObjects/room0_obj6]
+      - [0x70e6a0, roomObject, roomObjects/room0_obj7]
+      - [0x70e72c, roomObject, roomObjects/room0_obj8]
+      - [0x70e7b8, roomObject, roomObjects/room0_objSTOP]
+
+      - [0x70e844, roomActor, roomActors/room0_act1]
+      - [0x70E8A4, roomActor, roomActors/room0_act2]
+      - [0x70E904, roomActor, roomActors/room0_act3]
+      - [0x70E964, roomActor, roomActors/room0_actSTOP]
+
+      - [0x70e9c4, roomActor, roomActors/room1_act1]
+      - [0x70EA24, roomActor, roomActors/room1_act2]
+      - [0x70EA84, roomActor, roomActors/room1_act3]
+      - [0x70EAE4, roomActor, roomActors/room1_actSTOP]
+
+      - [0x70eb44, databin, spriteLib]
+
+      - [0x70ebc4, roomSettings, rooms/room0]
+      - [0x70ec30, roomSettings, rooms/room1]
+      - [0x70ec9c, roomSettings, rooms/roomSTOP]
+      
+      - {start: 0x70ed08, type: levelMap, name: map, args: Map}
+      - {start: 0x70ed38, type: levelMap, name: map, args: Header}
+
+      - [0x70ed48, levelScope, scope]
+      - [0x70ed60, levelHeader, header]
+
+      - [0x70ed80] #identity matrix
+      - [0x70edc0, lights, lkScope/lkScope]
+
+      - [0x70edd8, vtx, model1/model1]
+      - [0x70f128] #identity matrix
+      - [0x70f168] #B8000000
+      - [0x70f170, ci4,     img/caveFade.ci4, 32, 64]
+      - [0x70F570] #B8000000
+      - [0x70F578, palette, img/caveFade.ci4]
+      - [0x70F778, gfxSeg, model1/model1]
+
+      - [0x70ffb8, vtx, model2/model2]
+      - [0x7100f8] #identity matrix
+      - [0x710138, gfxSeg, model2/model2]
+
+      - {start: 0x710390, type: collision, name: unkCol1/unkCol1, args: "Verts"}
+      - {start: 0x7104d4, type: collision, name: unkCol1/unkCol1, args: "Tris"}
+      - {start: 0x710660, type: collision, name: unkCol1/unkCol1, args: "Settings"}
+      - {start: 0x710678, type: collision, name: unkCol1/unkCol1, args: "Header"}
+      - {start: 0x71068c, type: collision, name: unkCol2/unkCol2, args: "Verts"}
+      - {start: 0x710734, type: collision, name: unkCol2/unkCol2, args: "Tris"}
+      - {start: 0x7107f4, type: collision, name: unkCol2/unkCol2, args: "Settings"}
+      - {start: 0x71080c, type: collision, name: unkCol2/unkCol2, args: "Header"}
+
+      - [0x710820] #identity matrix
+      - [0x710860, lights, lkScope2/lkScope2]
+
+      - [0x710878, vtx, a_model1/a_model1]
+      - [0x711178] #identity matrix
+      - [0x7111b8] #B8000000
+      - [0x7111c0, ci8,     img/hair1.ci8, 32, 32]
+      - [0x7115C0] #B8000000
+      - [0x7115C8, palette, img/hair1.ci8]
+      - [0x7117C8] #B8000000
+      - [0x7117d0, ci4,     img/color.ci4, 16, 16]
+      - [0x711850] #B8000000
+      - [0x711858, palette, img/color.ci4]
+      - [0x711A58] #B8000000
+      - [0x711A60, ci4,     img/ear.ci4, 32, 40]
+      - [0x711CE0] #B8000000
+      - [0x711CE8, palette, img/ear.ci4]
+      - [0x711EE8] #B8000000
+      - [0x711EF0, ci8,     img/hair2.ci8, 64, 32]
+      - [0x7126F0] #B8000000
+      - [0x7126F8, palette, img/hair2.ci8]
+      - [0x7128F8] #B8000000
+      - [0x712900, ci4,     img/face.ci4, 64, 64]
+      - [0x713100] #B8000000
+      - [0x713108, palette, img/face.ci4]
+      - [0x713308, gfxSeg, a_model1/a_model1]
+
+      - [0x713f30, vtx, a_model2/a_model2]
+      - [0x714290] #identity matrix
+      - [0x7142D0] #B8000000
+      - [0x7142D8, ci4,     img/fur.ci4, 32, 32]
+      - [0x7144d8] #B8000000
+      - [0x7144E0, palette, img/fur.ci4]
+      - [0x7146E0] #B8000000
+      - [0x7146E8, ci4,     img/arm.ci4, 32, 64]
+      - [0x714Ae8] #B8000000
+      - [0x714AF0, palette, img/arm.ci4]
+      - [0x714CF0, gfxSeg, a_model2/a_model2]
+
+      - [0x715578, vtx, a_model3/a_model3]
+      - [0x715798] #identity matrix
+      - [0x7157d8, gfxSeg, a_model3/a_model3]
+
+      - [0x715be8, vtx, a_model4/a_model4]
+      - [0x715d08] #identity matrix
+      - [0x715d48, gfxSeg, a_model4/a_model4]
+
+      - [0x715fc0, vtx, a_model5/a_model5]
+      - [0x7160e0] #identity matrix
+      - [0x716120, gfxSeg, a_model5/a_model5]
+
+      - [0x716398, vtx, a_model6/a_model6]
+      - [0x7166b8] #identity matrix
+      - [0x7166f8, gfxSeg, a_model6/a_model6]
+
+      - [0x716d08, vtx, a_model7/a_model7]
+      - [0x717138] #identity matrix
+      - [0x717178] #B8000000
+      - [0x717180, ci4,     img/fist1.ci4, 32, 32]
+      - [0x717380] #B8000000
+      - [0x717388, palette, img/fist1.ci4]
+      - [0x717588] #B8000000
+      - [0x717590, ci4,     img/fist2.ci4, 32, 32]
+      - [0x717790] #B8000000
+      - [0x717798, palette, img/fist2.ci4]
+      - [0x717998] #B8000000
+      - [0x7179a0, ci4,     img/fist3.ci4, 32, 32]
+      - [0x717BA0] #B8000000
+      - [0x717BA8, palette, img/fist3.ci4]
+      - [0x717dA8] #B8000000
+      - [0x717db0, ci4,     img/fist4.ci4, 32, 32]
+      - [0x717FB0] #B8000000
+      - [0x717FB8, palette, img/fist4.ci4]
+      - [0x7181B8, gfxSeg, a_model7/a_model7]
+
+      - [0x718ba0, vtx, a_model8/a_model8]
+      - [0x718f00] #identity matrix
+      - [0x718f40, gfxSeg, a_model8/a_model8]
+
+      - [0x719528, vtx, a_model9/a_model9]
+      - [0x719958] #identity matrix
+      - [0x719998, gfxSeg, a_model9/a_model9]
+
+      - [0x71a380, vtx, a_model10/a_model10]
+      - [0x71a6a0] #identity matrix
+      - [0x71a6e0, gfxSeg, a_model10/a_model10]
+
+      - [0x71acf0, vtx, a_model11/a_model11]
+      - [0x71b050] #identity matrix
+      - [0x71b090, gfxSeg, a_model11/a_model11]
+
+      - [0x71b678] #identity matrix
+      - [0x71b6b8, gfxSeg, a_model12/a_model12] #restassociate
+
+      - [0x71b728, vtx, a_model13/a_model13]
+      - [0x71ba88] #identity matrix
+      - [0x71bac8] #B8000000
+      - [0x71bad0, ci8,     img/boulder.ci8, 64, 64]
+      - [0x71CAD0] #B8000000
+      - [0x71CAD8, palette, img/boulder.ci8]
+      - [0x71CcD8] #B8000000
+      - [0x71Cce0, ci8,     img/boulder2.ci8, 64, 64]
+      - [0x71DCE0] #B8000000
+      - [0x71DCE8, palette, img/boulder2.ci8]
+      - [0x71DeE8, gfxSeg, a_model13/a_model13]
+
+      - [0x71ee48] #identity matrix
+      - [0x71ee88, gfxSeg, a_model14/a_model14] #restassociate
+      
+      - [0x71eea8, animHeader, anim/unk1Header]
+      - [0x71eed8, animArray, anim/unk1, 80, 11]
+      - [0x72CAD8, animPointers, anim/unk1Pointers]
+      
+      - [0x72cae4, animHeader, anim/unk2Header]
+      - [0x72cb14] #alignment
+      - [0x72cb18, animArray, anim/unk2, 40, 11]
+      - [0x733918, animPointers, anim/unk2Pointers]
+      
+      - [0x733924, animHeader, anim/unk3Header]
+      - [0x733954] #alignment
+      - [0x733958, animArray, anim/unk3, 30, 11]
+      - [0x738BD8, animPointers, anim/unk3Pointers]
+      
+      - [0x738Be4, animHeader, anim/unk4Header]
+      - [0x738c14] #alignment
+      - [0x738c18, animArray, anim/unk4, 10, 11]
+      - [0x73A798, animPointers, anim/unk4Pointers]
+      
+      - [0x73A7a4, animHeader, anim/unk5Header]
+      - [0x73A7d4] #alignment
+      - [0x73A7d8, animArray, anim/unk5, 5, 11]
+      - [0x73B598, animPointers, anim/unk5Pointers]
+      
+      - [0x73B5a4, animHeader, anim/unk6Header]
+      - [0x73B5d4] #alignment
+      - [0x73B5d8, animArray, anim/unk6, 15, 11]
+      - [0x73DF18, animPointers, anim/unk6Pointers]
+      
+      - [0x73DF24, animHeader, anim/unk7Header]
+      - [0x73DF54] #alignment
+      - [0x73DF58, animArray, anim/unk7, 5, 11]
+      - [0x73ED18, animPointers, anim/unk7Pointers]
+      
+      - [0x73ED24, animHeader, anim/unk8Header]
+      - [0x73ED54] #alignment
+      - [0x73ED58, animArray, anim/unk8, 20, 11]
+      - [0x742458, animPointers, anim/unk8Pointers]
+      
+      - [0x742464, animHeader, anim/unk9Header]
+      - [0x742494] #alignment
+      - [0x742498, animArray, anim/unk9, 1, 1]
+      - [0x7424d8, animPointers, anim/unk9Pointers]
+      
+      - [0x7424e4, animHeader, anim/unk10Header]
+      - [0x742514] #alignment
+      - [0x742518, animArray, anim/unk10, 15, 11]
+      - [0x744E58, animPointers, anim/unk10Pointers]
+      
+      - [0x744E64, animHeader, anim/unk11Header]
+      - [0x744E94] #alignment
+      - [0x744E98, animArray, anim/unk11, 15, 11]
+      - [0x7477D8, animPointers, anim/unk11Pointers]
+      - [0x7477e4] #eof
+
+      
 
   - start: 0x7477f0
     name: Quintella

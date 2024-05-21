@@ -941,11 +941,11 @@ Gfx* func_8002B7BC(GraphicStruct* arg0, Gfx* gfxPos) {
                 break;
             case LIZARD_KONG_BOULDER:
                 gActors[i].unk_E8 = gActors[i].unknownPositionThings[0].unk_10 / 2;
-                gfxPos = func_8002B118(arg0, gfxPos, D_3011318, &gActors[i], 2.0f, 0, &sp178);
+                gfxPos = func_8002B118(arg0, gfxPos, LizardKong_a_model14_Gfx, &gActors[i], 2.0f, 0, &sp178);
                 break;
             case LIZARD_KONG:
                 gActors[i].unk_E8 = 0.0f;
-                gfxPos = func_8002B118(arg0, gfxPos, D_300DB48, &gActors[i], 3.0f, 0, &sp178);
+                gfxPos = func_8002B118(arg0, gfxPos, LizardKong_a_model12_Gfx, &gActors[i], 3.0f, 0, &sp178);
                 if (gActors[i].unk_EC == 1 && gActors[i].unk_F0 > 25 && gActors[i].unk_F0 < 62) {
                     s32 unused;
                     Mtx* sp168;
@@ -959,7 +959,7 @@ Gfx* func_8002B7BC(GraphicStruct* arg0, Gfx* gfxPos) {
 
                     sp168 = NULL;
                     guRotate(&spE8, gActors[i].unk_90 + 90.0f, 0, 1.0f, 0);
-                    func_80027138(&D_3025DA8, &spA4, &spA0, &sp168);
+                    func_80027138(&LizardKong_unk2Pointers_Animp, &spA4, &spA0, &sp168);
 
                     sp128 = sp168[6 + (gActors[i].unk_F0 / 2) * spA4];
                     guMtxCatL(&sp128, &spE8, &spA8);
@@ -976,7 +976,7 @@ Gfx* func_8002B7BC(GraphicStruct* arg0, Gfx* gfxPos) {
                     gSPMatrix(gfxPos++, OS_K0_TO_PHYSICAL(&arg0->actorTranslate[sp178]), G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
                     gSPMatrix(gfxPos++, OS_K0_TO_PHYSICAL(&arg0->actorRotate[sp178]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
                     gSPMatrix(gfxPos++, OS_K0_TO_PHYSICAL(&arg0->actorScale[sp178]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
-                    PutDList(&D_800FF8D4, &gfxPos, D_3011318);
+                    PutDList(&D_800FF8D4, &gfxPos, LizardKong_a_model14_Gfx);
                     gSPPopMatrix(gfxPos++, G_MTX_MODELVIEW);
                 }
                 break;
