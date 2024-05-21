@@ -842,22 +842,22 @@ s32 GetCollectableCount(Collectable* clct) {
 }
 
 /**
- * @brief This function returns a boolean value based on whether the RoomSettings passed is valid.
+ * @brief This function returns a boolean value based on whether the RoomInstance passed is valid.
  * 
- * @param room: The RoomSettings to check if valid.
+ * @param room: The RoomInstance to check if valid.
  * @return true if the room is invalid, false otherwise.
  */
-s32 IsRoomInvalid(RoomSettings* room) {
+s32 IsRoomInvalid(RoomInstance* room) {
     return (room->RoomObjectsPointer == NULL) ? TRUE : FALSE;
 }
 
 /**
- * @brief This function returns a int value of how many RoomSettings are in an array.
+ * @brief This function returns a int value of how many RoomInstance are in an array.
  * 
- * @param room: The RoomSettings to start iterating from.
- * @return the amount of valid RoomSettings in the array.
+ * @param room: The RoomInstance to start iterating from.
+ * @return the amount of valid RoomInstance in the array.
  */
-s32 GetRoomCount(RoomSettings* room) {
+s32 GetRoomCount(RoomInstance* room) {
     s32 i;
     if (room == NULL) {
         return 0;

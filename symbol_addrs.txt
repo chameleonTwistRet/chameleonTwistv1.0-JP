@@ -4351,7 +4351,7 @@ JungleLand_fishTailInitPointers_Animp = 0x03064D38; // type:Animp rom:0x70DB58 d
 
 //generated section AntLand starting here
 AntLand_IMtx1 = 0x03000000; // type:Mtx rom:0x4807A0 defined:True
-AntLand_pointers_Lvp = 0x03000040; // type:Lvp rom:0x4807E0 defined:True
+AntLand_stageModels = 0x03000040; // type:Lvp rom:0x4807E0 defined:True
 AntLand_rabobjects_Bin = 0x030012D0; // type:Bin rom:0x481A70 defined:True
 AntLand_room0_obj0_Roomobj = 0x030012F8; // type:Roomobj rom:0x481A98 defined:True
 AntLand_room0_obj1_Roomobj = 0x03001384; // type:Roomobj rom:0x481B24 defined:True
@@ -5428,7 +5428,7 @@ AntLand_fixedCamPillar_Gfx = 0x03048DD8; // type:Gfx rom:0x4C9578 defined:True
 AntLand_exit2_ColV = 0x03049040; // type:ColV rom:0x4C97E0 defined:True
 AntLand_exit2_ColT = 0x03049088; // type:ColT rom:0x4C9828 defined:True
 AntLand_exit2_ColS = 0x030490B8; // type:ColS rom:0x4C9858 defined:True
-AntLand_exit2_ColH = 0x030490D0; // type:ColH rom:0x4C9870 defined:True
+AntLand_exit2_collision = 0x030490D0; // type:ColH rom:0x4C9870 defined:True
 AntLand_exit3_ColV = 0x030490E4; // type:ColV rom:0x4C9884 defined:True
 AntLand_exit3_ColT = 0x0304912C; // type:ColT rom:0x4C98CC defined:True
 AntLand_exit3_ColS = 0x0304915C; // type:ColS rom:0x4C98FC defined:True

@@ -205,13 +205,13 @@ typedef struct Tongue { // at 80169268 (for p1)
 } Tongue; //sizeof 0x60C
 
 
-typedef struct CollisionData{
+typedef struct ModelCollision{
     s32 aOVerts;
     s32 aOTris;
     Vec3f* vertsStart; //segmented
     Vec3w* trisStart; //segmented
     Rect3D* settingsStart; //segmented
-} CollisionData;
+} ModelCollision;
 
 
 typedef struct Collider {
@@ -256,7 +256,7 @@ typedef struct Collider {
     /* 0x0C8 */ s32 unkC8;
     /* 0x0CC */ Rect3D unk_CC;
     /* 0x0E4 */ void* unk_E4;
-    /* 0x0E8 */ CollisionData* collisionData;
+    /* 0x0E8 */ ModelCollision* collisionData;
     /* 0x0EC */ Gfx* gfx;
     /* 0x0F0 */ char padF0[4];
     /* 0x0F4 */ void* unkF4;                        /* inferred */
@@ -519,11 +519,11 @@ typedef struct actorSubArray { //starts at 0x40
     /* 0x10 */ f32 unk_10;
 } actorSubArray; //sizeof 0x14
 
-typedef struct LevelPointer{
+typedef struct StageModel{
     Gfx* Graphics; //type Gfx*, but it throws 3000 errors. wtf???
-    CollisionData* Collisions;
+    ModelCollision* Collisions;
     char pad[0x28];
-} LevelPointer;
+} StageModel;
 
 typedef struct DMAStruct {
     /* 0x00 */ OSIoMesg ioMsg;
@@ -1005,7 +1005,7 @@ typedef struct Door {
     s32 unk48; 
 } Door; //sizeof 0x4C (?)
 
-/*Dupe of CollisionData???
+/*Dupe of ModelCollision???
 typedef struct ModelData{
     s32 vertCount;
     s32 triCount;
@@ -1034,7 +1034,7 @@ typedef struct UnkType2 {
     f32 unk14;
 } UnkType2; //sizeof 0x18
 
-typedef struct RoomSettings {
+typedef struct RoomInstance {
     RoomObject* RoomObjectsPointer;
     RoomActor* RoomActorPointer;
     Collectable* CollectablePointer;
@@ -1064,13 +1064,13 @@ typedef struct RoomSettings {
     s32 unk60;
     f32 unk64;
     f32 unk68;
-} RoomSettings; //sizeof 0x6C
+} RoomInstance; //sizeof 0x6C
 
 typedef struct LevelMap {
     //s32* rooms; //1 dimensional array that's actually 2 dimensional. the player navigates with axiis on doors that move them on the x or y.
     s32 width; // width for ^
     s32 height; // height for ^^
-    RoomSettings* dungeonRooms; //pointer to the array of RoomSettings for the dungeon.
+    RoomInstance* dungeonRooms; //pointer to the array of RoomInstance for the dungeon.
     s32* roomsPointer; //pointer to the array of rooms for this map. is usually directly above the width/this struct.
 } LevelMap;
 
@@ -1085,8 +1085,8 @@ typedef struct LevelScope {
 
 typedef struct LevelHeader {
     LevelMap* Map;
-    RoomSettings* OWRooms;
-    LevelPointer* Pointers;
+    RoomInstance* OWRooms;
+    StageModel* Pointers;
     u16 levelPointerCount; //the amount of objects stored in ^
     u16 unkC;
     u32 RoomObjects;

@@ -137,7 +137,7 @@ class N64SegCollision(CommonSegCodeSubsegment):
             if not self.data_only:
                 lines.append('#include "common.h"')
                 lines.append("")
-                typer = "CollisionData"
+                typer = "ModelCollision"
                 lines.append(f"{typer} {sym.name} = {{")
             
             #see common_structs.h

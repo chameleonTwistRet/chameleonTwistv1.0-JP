@@ -313,7 +313,7 @@ while i < len(overworldRoomsFiles):
     i += 1
 oRD = []
 for i in overworldRoomsFiles:
-    oRD.append(cStructToUnpackString("RoomSettings", common_structs, i, True))
+    oRD.append(cStructToUnpackString("RoomInstance", common_structs, i, True))
 
 
 OVROOMS = []
