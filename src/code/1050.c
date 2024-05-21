@@ -863,9 +863,9 @@ Gfx* func_8002B7BC(GraphicStruct* arg0, Gfx* gfxPos) {
                 break;
             case CAKE_BOSS:
                 gActors[i].unk_E8 = 0.0f;
-                gfxPos = func_8002B118(arg0, gfxPos, D_30081F8, &gActors[i], 8.0f, 0, &sp178);
+                gfxPos = func_8002B118(arg0, gfxPos, GiantCake_a_model9_Gfx, &gActors[i], 8.0f, 0, &sp178);
                 gActors[i].unk_E8 = 0.0f;
-                gfxPos = func_8002B118(arg0, gfxPos, D_30093A8, &gActors[i], 8.0f, 1, &sp178);
+                gfxPos = func_8002B118(arg0, gfxPos, GiantCake_a_model13_Gfx, &gActors[i], 8.0f, 1, &sp178);
                 break;
             case CAKE_BOSS_STRAWBERRY:
                 if (gActors[i].unk_128 == 6) {
@@ -874,7 +874,7 @@ Gfx* func_8002B7BC(GraphicStruct* arg0, Gfx* gfxPos) {
                     scale1 = 8.0f;
                 }
                 gActors[i].unk_E8 = 0.0f;
-                gfxPos = func_8002B118(arg0, gfxPos, D_300A9E0, &gActors[i], scale1, 0, &sp178);
+                gfxPos = func_8002B118(arg0, gfxPos, GiantCake_a_model15_Gfx, &gActors[i], scale1, 0, &sp178);
                 break;
             case BOWLING_PINS:
                 if (D_800FE400 == 0) {

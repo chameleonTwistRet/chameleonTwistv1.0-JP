@@ -766,13 +766,19 @@ Unk_800FFB74 D_800FFB38 = {
 0xFFFF0000,
 };
 
+
+extern Gfx GiantCake_a_model15_Gfx[];
+extern Mtx GiantCake_unk3_Animarr[];
+extern Anim GiantCake_unk3Header_Animh;
+
 Unk_800FFB74 D_800FFB4C = {
-(void*)0x0301E268,
-D_300A9E0,
-(void*)0x0301E260,
-(void*)0x0301E25C,
+GiantCake_unk3_Animarr,
+GiantCake_a_model15_Gfx,
+&GiantCake_unk3Header_Animh.objects,
+&GiantCake_unk3Header_Animh.frames,
 0xFFFF0000,
 };
+
 
 Unk_800FFB74 D_800FFB60 = {
 (void*)0x030222E8,

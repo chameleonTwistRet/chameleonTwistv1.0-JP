@@ -262,6 +262,6 @@ if __name__ == "__main__":
     try:
         args = parser.parse_args()
     except SystemExit:
-        start("BombSnake", "levelGroup/BombSnake")
+        start("GiantCake", "levelGroup/GiantCake")
         exit()
     start(args.group, args.outfileName)
