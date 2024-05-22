@@ -14010,6 +14010,7 @@ segments:
 
       - [0x878870] #identity matrix
       #eof
+
   - start: 0x8788B0
     name: BossRush
     vram: 0x03000000 #SEGMENT 0x03
@@ -14026,17 +14027,179 @@ segments:
       vram: 0x81000000
       start: 0x8788B0
       subsegments:
-      - [0x8788B0, databin, BossRush_data]
+      - [0x8788B0] #identity matrix
+      - [0x8788f0, levelPointer, pointers]
+      - [0x8791c0, databin, rabObjects]
+      
+      - [0x8791e8, roomObject, roomObjects/room0_obj1]
+      - [0x879274, roomObject, roomObjects/room0_obj2]
+      - [0x879300, roomObject, roomObjects/room0_obj3]
+      - [0x87938c, roomObject, roomObjects/room0_obj4]
+      - [0x879418, roomObject, roomObjects/room0_obj5]
+      - [0x8794a4, roomObject, roomObjects/room0_obj6]
+      - [0x879530, roomObject, roomObjects/room0_obj7]
+      - [0x8795bc, roomObject, roomObjects/room0_obj8]
+      - [0x879648, roomObject, roomObjects/room0_obj9]
+      - [0x8796d4, roomObject, roomObjects/room0_obj10]
+      - [0x879760, roomObject, roomObjects/room0_obj11]
+      - [0x8797ec, roomObject, roomObjects/room0_obj12]
+      - [0x879878, roomObject, roomObjects/room0_obj13]
+      - [0x879904, roomObject, roomObjects/room0_obj14]
+      - [0x879990, roomObject, roomObjects/room0_obj15]
+      - [0x879a1c, roomObject, roomObjects/room0_obj16]
+      - [0x879aa8, roomObject, roomObjects/room0_obj17]
+      - [0x879b34, roomObject, roomObjects/room0_obj18]
+      - [0x879bc0, roomObject, roomObjects/room0_obj19]
+      - [0x879c4c, roomObject, roomObjects/room0_obj20]
+      - [0x879cd8, roomObject, roomObjects/room0_obj21]
+      - [0x879d64, roomObject, roomObjects/room0_obj22]
+      - [0x879df0, roomObject, roomObjects/room0_obj23]
+      - [0x879e7c, roomObject, roomObjects/room0_obj24]
+      - [0x879f08, roomObject, roomObjects/room0_obj25]
+      - [0x879f94, roomObject, roomObjects/room0_obj26]
+      - [0x87a020, roomObject, roomObjects/room0_obj27]
+      - [0x87a0ac, roomObject, roomObjects/room0_obj28]
+      - [0x87a138, roomObject, roomObjects/room0_obj29]
+      - [0x87a1c4, roomObject, roomObjects/room0_obj30]
+      - [0x87a250, roomObject, roomObjects/room0_obj31]
+      - [0x87a2dc, roomObject, roomObjects/room0_obj32]
+      - [0x87a368, roomObject, roomObjects/room0_obj33]
+      - [0x87a3f4, roomObject, roomObjects/room0_obj34]
+      - [0x87a480, roomObject, roomObjects/room0_obj35]
+      - [0x87a50c, roomObject, roomObjects/room0_obj36]
+      - [0x87a598, roomObject, roomObjects/room0_obj37]
+      - [0x87a624, roomObject, roomObjects/room0_obj38]
+      - [0x87a6b0, roomObject, roomObjects/room0_obj39]
+      - [0x87a73c, roomObject, roomObjects/room0_obj40]
+      - [0x87a7c8, roomObject, roomObjects/room0_obj41]
+      - [0x87a854, roomObject, roomObjects/room0_obj42]
+      - [0x87a8e0, roomObject, roomObjects/room0_obj43]
+      - [0x87a96c, roomObject, roomObjects/room0_objSTOP]
 
-  # # - start: 0x87F600
-  # #   name: failMtx
-  # #   type: data
-  # #   vram: 0x80323740 #temp
-  # #   subalign: 8
-  # #   subsegments:
-  # #   - {start: 0x87F600, type: mtx, name: model/Fail/mtx}
-  # #apparently ^ this mtx isnt a part of Global???? if it was the start addr would be wrong somehow. weird.
-  # #also why do i have to make an entire group for this to work :skull:
+      - [0x87a9f8, spriteActor, spriteActors/roomMulti_spr1]
+      - [0x87aa48, spriteActor, spriteActors/roomMulti_spr2]
+      - [0x87aa98, spriteActor, spriteActors/roomMulti_spr3]
+      - [0x87aae8, spriteActor, spriteActors/roomMulti_spr4]
+      - [0x87ab38, spriteActor, spriteActors/roomMulti_spr5]
+      - [0x87ab88, spriteActor, spriteActors/roomMulti_spr6]
+      - [0x87abd8, spriteActor, spriteActors/roomMulti_sprSTOP]
+
+      - [0x87ac28, roomObject, roomObjects/room1_obj1]
+      - [0x87acb4, roomObject, roomObjects/room1_obj2]
+      - [0x87ad40, roomObject, roomObjects/room1_obj3]
+      - [0x87adcc, roomObject, roomObjects/room1_objSTOP]
+
+      - [0x87ae58, roomObject, roomObjects/roomMulti2_obj1]
+      - [0x87aee4, roomObject, roomObjects/roomMulti2_obj2]
+      - [0x87af70, roomObject, roomObjects/roomMulti2_obj3]
+      - [0x87affc, roomObject, roomObjects/roomMulti2_objSTOP]
+
+      - [0x87b088, roomObject, roomObjects/roomMulti3_obj1]
+      - [0x87b114, roomObject, roomObjects/roomMulti3_obj2]
+      - [0x87b1a0, roomObject, roomObjects/roomMulti3_obj3]
+      - [0x87b22c, roomObject, roomObjects/roomMulti3_objSTOP]
+      
+      - [0x87b2b8, roomObject, roomObjects/roomMulti4_obj1]
+      - [0x87b344, roomObject, roomObjects/roomMulti4_obj2]
+      - [0x87b3d0, roomObject, roomObjects/roomMulti4_obj3]
+      - [0x87b45c, roomObject, roomObjects/roomMulti4_objSTOP]
+
+      - [0x87b4e8, spriteLib, spriteLib]
+      - [0x87b528, roomSettings, rooms/room0]
+      - [0x87b594, roomSettings, rooms/room1]
+      - [0x87b600, roomSettings, rooms/room2]
+      - [0x87b66c, roomSettings, rooms/room3]
+      - [0x87b6d8, roomSettings, rooms/room4]
+      - [0x87b744, roomSettings, rooms/room5]
+      - [0x87b7b0, roomSettings, rooms/room6]
+      - [0x87b81c, roomSettings, rooms/room7]
+      - [0x87b888, roomSettings, rooms/room8]
+      - [0x87b8f4, roomSettings, rooms/roomSTOP]
+      - {start: 0x87b960, type: levelMap, name: map, args: Map}
+      - {start: 0x87b9a0, type: levelMap, name: map, args: Header}
+      - [0x87b9b0, roomSettings, extRooms/roomUnk] #???
+      - [0x87ba1c, roomSettings, nullOWRoom] #THIS IS A GUESS. VERIFY YOURSELF PLS
+      - [0x87ba88, levelScope, scope]
+      - [0x87baa0, levelHeader, header]
+
+      - [0x87bac0] #identity matrix
+      - [0x87bb00, lights, bossScope1/bossScope1]
+      
+      - [0x87bb18, vtx, model1/model1]
+      - [0x87c158] #identity matrix
+      - [0x87c198, gfxSeg, model1/model1]
+      
+      - [0x87c930, vtx, model2/model2]
+      - [0x87ca70] #identity matrix
+      - [0x87cab0, gfxSeg, model2/model2]
+      
+      - [0x87ceb8, vtx, model3/model3]
+      - [0x87cfb8] #identity matrix
+      - [0x87cff8, gfxSeg, model3/model3]
+      
+      - [0x87d0e0, vtx, model4/model4]
+      - [0x87d1e0] #identity matrix
+      - [0x87d220, gfxSeg, model4/model4]
+      
+      - [0x87d308, vtx, model5/model5]
+      - [0x87d3c8] #identity matrix
+      - [0x87d408, gfxSeg, model5/model5]
+      
+      - [0x87d5e0, vtx, model6/model6]
+      - [0x87d740] #identity matrix
+      - [0x87d780, gfxSeg, model6/model6]
+      
+      - [0x87dab8, vtx, model7/model7]
+      - [0x87ddb8] #identity matrix
+      - [0x87ddf8, gfxSeg, model7/model7]
+      
+      - [0x87e1d0, vtx, model8/model8]
+      - [0x87e350] #identity matrix
+      - [0x87e390, gfxSeg, model8/model8]
+      
+      - [0x87e5a8, vtx, model9/model9]
+      - [0x87e648] #identity matrix
+      - [0x87e688, gfxSeg, model9/model9]
+
+      - {start: 0x87e820, type: collision, name: unkCol1/unkCol1, args: "Verts"}
+      - {start: 0x87e9a0, type: collision, name: unkCol1/unkCol1, args: "Tris"}
+      - {start: 0x87ec28, type: collision, name: unkCol1/unkCol1, args: "Settings"}
+      - {start: 0x87ec40, type: collision, name: unkCol1/unkCol1, args: "Header"}
+      - {start: 0x87ec54, type: collision, name: unkCol2/unkCol2, args: "Verts"}
+      - {start: 0x87eccc, type: collision, name: unkCol2/unkCol2, args: "Tris"}
+      - {start: 0x87ed44, type: collision, name: unkCol2/unkCol2, args: "Settings"}
+      - {start: 0x87ed5c, type: collision, name: unkCol2/unkCol2, args: "Header"}
+      - {start: 0x87ed70, type: collision, name: unkCol3/unkCol3, args: "Verts"}
+      - {start: 0x87ee00, type: collision, name: unkCol3/unkCol3, args: "Tris"}
+      - {start: 0x87ee60, type: collision, name: unkCol3/unkCol3, args: "Settings"}
+      - {start: 0x87ee78, type: collision, name: unkCol3/unkCol3, args: "Header"}
+      - {start: 0x87ee8c, type: collision, name: unkCol4/unkCol4, args: "Verts"}
+      - {start: 0x87ef1c, type: collision, name: unkCol4/unkCol4, args: "Tris"}
+      - {start: 0x87ef7c, type: collision, name: unkCol4/unkCol4, args: "Settings"}
+      - {start: 0x87ef94, type: collision, name: unkCol4/unkCol4, args: "Header"}
+      - {start: 0x87efa8, type: collision, name: unkCol5/unkCol5, args: "Verts"}
+      - {start: 0x87f008, type: collision, name: unkCol5/unkCol5, args: "Tris"}
+      - {start: 0x87f050, type: collision, name: unkCol5/unkCol5, args: "Settings"}
+      - {start: 0x87f068, type: collision, name: unkCol5/unkCol5, args: "Header"}
+      - {start: 0x87f07c, type: collision, name: unkCol6/unkCol6, args: "Verts"}
+      - {start: 0x87f0dc, type: collision, name: unkCol6/unkCol6, args: "Tris"}
+      - {start: 0x87f13c, type: collision, name: unkCol6/unkCol6, args: "Settings"}
+      - {start: 0x87f154, type: collision, name: unkCol6/unkCol6, args: "Header"}
+      - {start: 0x87f168, type: collision, name: unkCol7/unkCol7, args: "Verts"}
+      - {start: 0x87f228, type: collision, name: unkCol7/unkCol7, args: "Tris"}
+      - {start: 0x87f2e8, type: collision, name: unkCol7/unkCol7, args: "Settings"}
+      - {start: 0x87f300, type: collision, name: unkCol7/unkCol7, args: "Header"}
+      - {start: 0x87f314, type: collision, name: unkCol8/unkCol8, args: "Verts"}
+      - {start: 0x87f434, type: collision, name: unkCol8/unkCol8, args: "Tris"}
+      - {start: 0x87f524, type: collision, name: unkCol8/unkCol8, args: "Settings"}
+      - {start: 0x87f53c, type: collision, name: unkCol8/unkCol8, args: "Header"}
+      - {start: 0x87f550, type: collision, name: unkCol9/unkCol9, args: "Verts"}
+      - {start: 0x87f598, type: collision, name: unkCol9/unkCol9, args: "Tris"}
+      - {start: 0x87f5c8, type: collision, name: unkCol9/unkCol9, args: "Settings"}
+      - {start: 0x87f5e0, type: collision, name: unkCol9/unkCol9, args: "Header"}
+      - [0x87F5f4] #alignment
+
+      - [0x87F600] #identity matrix
 
   - start: 0x87F640
     name: Global
