@@ -12569,7 +12569,210 @@ segments:
       vram: 0x81000000
       start: 0x7d22b0
       subsegments:
-      - [0x7d22b0, databin, Armadillo_data]
+      - [0x7d22b0] #identity matrix
+
+      - [0x7d22f0, levelPointer, pointers]
+      - [0x7d2a70, databin, rabObjects]
+
+      - [0x7d2a98, roomObject, roomObjects/roomMulti_obj1]
+      - [0x7d2b24, roomObject, roomObjects/roomMulti_obj2]
+      - [0x7d2bb0, roomObject, roomObjects/roomMulti_obj3]
+      - [0x7d2c3c, roomObject, roomObjects/roomMulti_obj4]
+      - [0x7d2cc8, roomObject, roomObjects/roomMulti_obj5]
+      - [0x7d2d54, roomObject, roomObjects/roomMulti_obj6]
+      - [0x7d2de0, roomObject, roomObjects/roomMulti_obj7]
+      - [0x7d2e6c, roomObject, roomObjects/roomMulti_obj8]
+      - [0x7d2ef8, roomObject, roomObjects/roomMulti_obj9]
+      - [0x7d2f84, roomObject, roomObjects/roomMulti_obj10]
+      - [0x7d3010, roomObject, roomObjects/roomMulti_obj11]
+      - [0x7d309c, roomObject, roomObjects/roomMulti_obj12]
+      - [0x7d3128, roomObject, roomObjects/roomMulti_obj13]
+      - [0x7d31b4, roomObject, roomObjects/roomMulti_objSTOP]
+
+      - [0x7d3240, roomActor, roomActors/room0_act1]
+      - [0x7D32A0, roomActor, roomActors/room0_actSTOP]
+
+      - [0x7d3300, roomActor, roomActors/room1_act1]
+      - [0x7D3360, roomActor, roomActors/room1_actSTOP]
+
+      - [0x7d33c0, spriteLib, spriteLib]
+
+      - [0x7d3480, roomSettings, rooms/room0]
+      - [0x7d34ec, roomSettings, rooms/room1]
+      - [0x7d3558, roomSettings, rooms/roomSTOP]
+      - {start: 0x7d35c4, type: levelMap, name: map, args: Map}
+      - {start: 0x7d35e0, type: levelMap, name: map, args: Header}
+      - [0x7d35f0, roomSettings, nullOWRoom] #THIS IS A GUESS. VERIFY YOURSELF PLS
+      - [0x7d365c, levelScope, scope]
+      - [0x7d3674, levelHeader, header]
+      - [0x7d3694]
+
+      - [0x7d36a0] #identity matrix
+      - [0x7d36e0, lights, adScope1/adScope1]
+
+      - [0x7d36f8, vtx, model1/model1]
+      - [0x7d3a08] #identity matrix
+      - [0x7d3a48, gfxSeg, model1/model1]
+
+      - [0x7d4190, vtx, model2/model2]
+      - [0x7d4330] #identity matrix
+      - [0x7d4370, gfxSeg, model2/model2]
+
+      - {start: 0x7d4928, type: collision, name: unkCol1/unkCol1, args: "Verts"}
+      - {start: 0x7d4a3c, type: collision, name: unkCol1/unkCol1, args: "Tris"}
+      - {start: 0x7d4bd4, type: collision, name: unkCol1/unkCol1, args: "Settings"}
+      - {start: 0x7d4bec, type: collision, name: unkCol1/unkCol1, args: "Header"}
+      - {start: 0x7d4c00, type: collision, name: unkCol2/unkCol2, args: "Verts"}
+      - {start: 0x7d4c78, type: collision, name: unkCol2/unkCol2, args: "Tris"}
+      - {start: 0x7d4d08, type: collision, name: unkCol2/unkCol2, args: "Settings"}
+      - {start: 0x7d4d20, type: collision, name: unkCol2/unkCol2, args: "Header"}
+      - [0x7d4d34] #alignment
+
+      - [0x7d4d40] #identity matrix
+      - [0x7d4d80, lights, adScope2/adScope2]
+
+      - [0x7d4d98, vtx, a_model1/a_model1]
+      - [0x7d4fe8] #identity matrix
+      - [0x7d5028] #B8000000
+      - [0x7d5030, ci8,     img/skin.ci8, 64, 32]
+      - [0x7D5830] #B8000000
+      - [0x7D5838, palette, img/skin.ci8]
+      - [0x7D5a38] #B8000000
+      - [0x7D5a40, ci8,     img/shell.ci8, 64, 32]
+      - [0x7D6240] #B8000000
+      - [0x7D6248, palette, img/shell.ci8]
+      - [0x7D6448, gfxSeg, a_model1/a_model1]
+
+      - [0x7d67c0, vtx, a_model2/a_model2]
+      - [0x7d6a10] #identity matrix
+      - [0x7d6a50, gfxSeg, a_model2/a_model2]
+
+      - [0x7d6dc8, vtx, a_model3/a_model3]
+      - [0x7d7018] #identity matrix
+      - [0x7d7058, gfxSeg, a_model3/a_model3]
+
+      - [0x7d73d0, vtx, a_model4/a_model4]
+      - [0x7d7620] #identity matrix
+      - [0x7d7660, gfxSeg, a_model4/a_model4]
+
+      - [0x7d79d8, vtx, a_model5/a_model5]
+      - [0x7d7c48] #identity matrix
+      - [0x7d7c88, gfxSeg, a_model5/a_model5]
+
+      - [0x7d8020, vtx, a_model6/a_model6]
+      - [0x7d83d0] #identity matrix
+      - [0x7d8410, gfxSeg, a_model6/a_model6]
+
+      - [0x7d8878, vtx, a_model7/a_model7]
+      - [0x7d8c88] #identity matrix
+      - [0x7d8cc8] #B8000000
+      - [0x7d8cd0, ci8,     img/face.ci8, 64, 32]
+      - [0x7D94D0] #B8000000
+      - [0x7D94D8, palette, img/face.ci8]
+      - [0x7D96D8] #B8000000
+      - [0x7D96e0, ci8,     img/skin2.ci8, 32, 32]
+      - [0x7D9AE0] #B8000000
+      - [0x7D9AE8, palette, img/skin2.ci8]
+      - [0x7D9cE8] #B8000000
+      - [0x7D9cf0, ci8,     img/shineThing.ci8, 32, 40]
+      - [0x7DA1F0] #B8000000
+      - [0x7DA1F8, palette, img/shineThing.ci8]
+      - [0x7DA3F8, gfxSeg, a_model7/a_model7]
+
+      - [0x7da930, vtx, a_model8/a_model8]
+      - [0x7daa90] #identity matrix
+      - [0x7daad0] #B8000000
+      - [0x7daad8, ci8,     img/foot.ci8, 32, 32]
+      - [0x7DAEd8] #B8000000
+      - [0x7DAEE0, palette, img/foot.ci8]
+      - [0x7Db0E0, gfxSeg, a_model8/a_model8]
+
+      - [0x7db478, vtx, a_model9/a_model9]
+      - [0x7db628] #identity matrix
+      - [0x7db668] #B8000000
+      - [0x7db670, ci4,     img/skin2Compressed.ci4, 32, 32]
+      - [0x7DB870] #B8000000
+      - [0x7DB878, palette, img/skin2Compressed.ci4]
+      - [0x7DBa78, gfxSeg, a_model9/a_model9]
+
+      - [0x7dbcc0, vtx, a_model10/a_model10]
+      - [0x7dbe60] #identity matrix
+      - [0x7dbea0, gfxSeg, a_model10/a_model10]
+
+      - [0x7dc0e8, vtx, a_model11/a_model11]
+      - [0x7dc248] #identity matrix
+      - [0x7dc288, gfxSeg, a_model11/a_model11]
+
+      - [0x7dc620, vtx, a_model12/a_model12]
+      - [0x7dc7c0] #identity matrix
+      - [0x7dc800, gfxSeg, a_model12/a_model12]
+
+      - [0x7dca48, vtx, a_model13/a_model13]
+      - [0x7dcbc8] #identity matrix
+      - [0x7dcc08, gfxSeg, a_model13/a_model13]
+
+      - [0x7dce50, vtx, a_model14/a_model14]
+      - [0x7dcfb0] #identity matrix
+      - [0x7dcff0, gfxSeg, a_model14/a_model14]
+
+      - [0x7dd388, vtx, a_model15/a_model15]
+      - [0x7dd4f8] #identity matrix
+      - [0x7dd538, gfxSeg, a_model15/a_model15]
+
+      - [0x7dd780, vtx, a_model16/a_model16]
+      - [0x7dd910] #identity matrix
+      - [0x7dd950, gfxSeg, a_model16/a_model16]
+
+      - [0x7ddb98, vtx, a_model17/a_model17]
+      - [0x7ddcf8] #identity matrix
+      - [0x7ddd38, gfxSeg, a_model17/a_model17]
+
+      - [0x7de0d0, vtx, a_model18/a_model18]
+      - [0x7de260] #identity matrix
+      - [0x7de2a0, gfxSeg, a_model18/a_model18]
+
+      - [0x7de4e8, vtx, a_model19/a_model19]
+      - [0x7de698] #identity matrix
+      - [0x7de6d8, gfxSeg, a_model19/a_model19]
+
+      - [0x7de920, vtx, a_model20/a_model20]
+      - [0x7dec90] #identity matrix
+      - [0x7decd0, gfxSeg, a_model20/a_model20]
+
+      - [0x7df140] #identity matrix
+      - [0x7df180, gfxSeg, a_model21/a_model21] #rest associate
+
+
+      - [0x7df238, animHeader, anim/unk1Header]
+      - [0x7df268, animArray, anim/unk1, 25, 20]
+
+      - [0x7E6F68, animHeader, anim/unk2Header]
+      - [0x7E6F98, animArray, anim/unk2, 21, 20]
+
+      - [0x7ED898, animPointers, anim/unk1Pointers]
+      - [0x7ED8a4, animPointers, anim/unk2Pointers]
+
+      - [0x7ED8b0, animHeader, anim/unk3Header]
+      - [0x7ED8e0, animArray, anim/unk3, 10, 20]
+      - [0x7F0AE0, animPointers, anim/unk3Pointers]
+
+      - [0x7F0AEc, animHeader, anim/unk4Header]
+      - [0x7F0b1c] #alignment
+      - [0x7F0b20, animArray, anim/unk4, 10, 20]
+      - [0x7F3D20, animPointers, anim/unk4Pointers]
+
+      - [0x7F3D2C, animHeader, anim/unk5Header]
+      - [0x7F3D5C] #alignment
+      - [0x7F3D60, animArray, anim/unk5, 15, 20]
+      - [0x7F8860, animPointers, anim/unk5Pointers]
+
+      - [0x7F886C, animHeader, anim/unk6Header]
+      - [0x7F889C] #alignment
+      - [0x7F88A0, animArray, anim/unk6, 15, 20]
+      - [0x7FD3A0, animPointers, anim/unk6Pointers]
+      - [0x7FD3AC] #eof
+
+
 
   - start: 0x7fd3b0
     name: PileOfBooks

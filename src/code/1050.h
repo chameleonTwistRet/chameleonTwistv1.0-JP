@@ -69,7 +69,7 @@ extern Gfx KidsLand_actorModel12_Gfx[];
 extern Gfx DesertCastle_actorModel4_Gfx[];
 extern Gfx DesertCastle_actorModel19_Gfx[];
 extern Gfx DesertCastle_actorModel21_Gfx[];
-extern Gfx D_300CED0[];
+extern Gfx Armadillo_a_model21_Gfx[];
 extern Gfx GhostCastle_model78_Gfx[];
 extern Gfx GhostCastle_model80_Gfx[];
 extern Gfx GhostCastle_model88_Gfx[];
