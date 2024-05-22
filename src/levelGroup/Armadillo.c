@@ -143,7 +143,7 @@ Mtx Armadillo_IMtx1 = IDENTITY;
 #include "assets/levelGroup/Armadillo/scope.lvlScope.inc.c"
 
 #include "assets/levelGroup/Armadillo/header.lvlHdr.inc.c"
-s32 fuckOff[3] = 0;
+s32 armadillo_pad[3] = 0;
 Mtx Armadillo_IMtx2 = IDENTITY;
 
 #include "assets/levelGroup/Armadillo/adScope1/adScope1.light.inc.c"
@@ -173,7 +173,7 @@ Mtx Armadillo_IMtx4 = IDENTITY;
 #include "assets/levelGroup/Armadillo/unkCol2/unkCol2.colS.inc.c"
 
 #include "assets/levelGroup/Armadillo/unkCol2/unkCol2.colH.inc.c"
-s32 bitch[3] = 0;
+s32 armadillo_pad2[3] = 0;
 Mtx Armadillo_IMtx5 = IDENTITY;
 
 #include "assets/levelGroup/Armadillo/adScope2/adScope2.light.inc.c"

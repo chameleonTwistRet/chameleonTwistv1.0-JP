@@ -920,11 +920,11 @@ Gfx* func_8002B7BC(GraphicStruct* arg0, Gfx* gfxPos) {
                 break;
             case PILE_OF_BOOKS:
                 gActors[i].unk_E8 = -60.0f;
-                gfxPos = func_8002B118(arg0, gfxPos, D_3010220, &gActors[i], 6.0f, 0, &sp178);
+                gfxPos = func_8002B118(arg0, gfxPos, PileOfBooks_a_model15_Gfx, &gActors[i], 6.0f, 0, &sp178);
                 break;
             case PILE_OF_BOOKS_ARM_SPITTER:
                 gActors[i].unk_E8 = gActors[i].unknownPositionThings[0].unk_10 / 2;
-                gfxPos = func_8002B118(arg0, gfxPos, D_3013390, &gActors[i], 3.0f, 0, &sp178);
+                gfxPos = func_8002B118(arg0, gfxPos, PileOfBooks_a_model18_Gfx, &gActors[i], 3.0f, 0, &sp178);
                 break;
             case GOLEM:
                 gActors[i].unk_E8 = 0.0f;
