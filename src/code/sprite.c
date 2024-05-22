@@ -6403,14 +6403,12 @@ void Effect_BossDeadEyes_Init(s32 arg0) {
     }
 }
 
-#ifdef NON_MATCHING
 void SetBossDeadEyes(s32 arg0) {
-    s32 sp28;
-    s32 sp24;
-    s32 size;
+    s32 sp20 = 1;
     SpriteListing* sp1C;
-    struct_800FE54C* sp18;
-    s32 sp20 = 1;    
+    s32 size;
+    s32 sp28;
+    s32 sp24;    
 
     switch(arg0) {
         case 75:
@@ -6419,24 +6417,18 @@ void SetBossDeadEyes(s32 arg0) {
             sp28 = 0;
             break;
         case 7:
-            sp24 = 201;
-            sp28 = 1;            
+            sp24 = 201; sp28 = 1;
             break;       
         case 30:
-            sp24 = 203;
-            sp28 = 2;
+            sp24 = 203; sp28 = 2;
             break;
     }
 
     sp1C = &gSpriteListings[sp24];
-    sp18 = &D_800FE54C[sp28];
     size = sp1C->width * sp1C->height * sp1C->tileCountX * sp1C->tileCountY / sp20;
-    SetEyeTexture(sp18->unk_00, sp1C->bitmapP, size);
-    SetEyeTexture(sp18->unk_04, sp1C->palletteP, 0x200);
+    SetEyeTexture(D_800FE54C[sp28].unk_00, sp1C->bitmapP, size);
+    SetEyeTexture(D_800FE54C[sp28].unk_04, sp1C->palletteP, 0x200);
 }
-#else
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/SetBossDeadEyes.s")
-#endif
 
 void Effect_TypeX_Update(Effect* effect, Gfx** pGfxPos) {
     Effect_TypeX_Data* data = (Effect_TypeX_Data*)effect->data;
