@@ -262,6 +262,6 @@ if __name__ == "__main__":
     try:
         args = parser.parse_args()
     except SystemExit:
-        start("BattleMode", "levelGroup/BattleMode")
+        start("Training", "levelGroup/Training")
         exit()
     start(args.group, args.outfileName)

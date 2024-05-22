@@ -555,6 +555,7 @@ void func_800D8E70(Collider* arg0);
 void func_800D8ED4(Collider* arg0);
 
 
+void func_800B21CC(s32 arg0, s32 arg1);
 void func_800D9128(Collider* arg0);
 void func_800B2070(s32 arg0);
 void func_800D9104(Collider* arg0);
