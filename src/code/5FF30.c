@@ -928,8 +928,17 @@ extern LevelHeader AntLand_header_Lvlhdr;
 extern LevelHeader BombLand_header_Lvlhdr;
 extern LevelHeader DesertCastle_header_Lvlhdr;
 extern LevelHeader KidsLand_header_Lvlhdr;
-//extern LevelHeader IntroOutro_header_Lvlhdr;
+extern LevelHeader GhostCastle_header_Lvlhdr;
 extern LevelHeader IntroOutro_header_Lvlhdr;
+extern LevelHeader BattleMode_header_Lvlhdr;
+extern LevelHeader Training_header_Lvlhdr;
+extern LevelHeader LizardKong_header_Lvlhdr;
+extern LevelHeader Quintella_header_Lvlhdr;
+extern LevelHeader BombSnake_header_Lvlhdr;
+extern LevelHeader Armadillo_header_Lvlhdr;
+extern LevelHeader GiantCake_header_Lvlhdr;
+extern LevelHeader PileOfBooks_header_Lvlhdr;
+extern LevelHeader BossRush_header_Lvlhdr;
 
 
 
@@ -940,17 +949,17 @@ StageLoadData gStageLoadData[] = {
     {&BombLand_header_Lvlhdr, BombLand_ROM_START, BombLand_VRAM, BombLand_VRAM_END, 2},
     {&DesertCastle_header_Lvlhdr, DesertCastle_ROM_START, DesertCastle_VRAM, DesertCastle_VRAM_END, 3},
     {&KidsLand_header_Lvlhdr, KidsLand_ROM_START, KidsLand_VRAM, KidsLand_VRAM_END, 4},
-    {(void*)0x03011F2C, GhostCastle_ROM_START, GhostCastle_VRAM, GhostCastle_VRAM_END, 5},
+    {&GhostCastle_header_Lvlhdr, GhostCastle_ROM_START, GhostCastle_VRAM, GhostCastle_VRAM_END, 5},
     {&IntroOutro_header_Lvlhdr, IntroOutro_ROM_START, IntroOutro_VRAM, IntroOutro_VRAM_END, 6},
-    {(void*)0x03006358, BattleMode_ROM_START, BattleMode_VRAM, BattleMode_VRAM_END, 7},
-    {(void*)0x03005F44, Training_ROM_START, Training_VRAM, Training_VRAM_END, 8},
-    {(void*)0x030011F0, LizardKong_ROM_START, LizardKong_VRAM, LizardKong_VRAM_END, 9},
-    {(void*)0x03001454, Quintella_ROM_START, Quintella_VRAM, Quintella_VRAM_END, 10},
-    {(void*)0x03001464, BombSnake_ROM_START, BombSnake_VRAM, (void*)0x030087A0, 11},
-    {(void*)0x030013C4, Armadillo_ROM_START, Armadillo_VRAM, Armadillo_VRAM_END, 12},
-    {(void*)0x03001300, GiantCake_ROM_START, GiantCake_VRAM, GiantCake_VRAM_END, 13},
-    {(void*)0x03002674, PileOfBooks_ROM_START, PileOfBooks_VRAM, PileOfBooks_VRAM_END, 14},
-    {(void*)0x030031F0, BossRush_ROM_START, BossRush_VRAM, BossRush_VRAM_END, 15},
+    {&BattleMode_header_Lvlhdr, BattleMode_ROM_START, BattleMode_VRAM, BattleMode_VRAM_END, 7},
+    {&Training_header_Lvlhdr, Training_ROM_START, Training_VRAM, Training_VRAM_END, 8},
+    {&LizardKong_header_Lvlhdr, LizardKong_ROM_START, LizardKong_VRAM, LizardKong_VRAM_END, 9},
+    {&Quintella_header_Lvlhdr, Quintella_ROM_START, Quintella_VRAM, Quintella_VRAM_END, 10},
+    {&BombSnake_header_Lvlhdr, BombSnake_ROM_START, BombSnake_VRAM, BombSnake_VRAM_END+0x320, 11},
+    {&Armadillo_header_Lvlhdr, Armadillo_ROM_START, Armadillo_VRAM, Armadillo_VRAM_END, 12},
+    {&GiantCake_header_Lvlhdr, GiantCake_ROM_START, GiantCake_VRAM, GiantCake_VRAM_END, 13},
+    {&PileOfBooks_header_Lvlhdr, PileOfBooks_ROM_START, PileOfBooks_VRAM, PileOfBooks_VRAM_END, 14},
+    {&BossRush_header_Lvlhdr, BossRush_ROM_START, BossRush_VRAM, BossRush_VRAM_END, 15},
     {0, 0, 0, 0, -1},
     {0, 0, 0, 0, -1},
     {0, 0, 0, 0, -1},
