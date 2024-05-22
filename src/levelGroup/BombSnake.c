@@ -280,3 +280,5 @@ Mtx BombSnake_IMtx14 = IDENTITY;
 #include "assets/levelGroup/BombSnake/anim/unk3Pointers.animP.inc.c"
 
 #include "assets/levelGroup/BombSnake/anim/unk4Pointers.animP.inc.c"
+
+char SomeBSS[0x320];
