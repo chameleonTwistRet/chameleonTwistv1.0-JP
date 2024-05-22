@@ -876,7 +876,7 @@ StageLoadData gStageLoadData[] = {
     {(void*)0x03005F44, Training_ROM_START, Training_VRAM, Training_VRAM_END, 8},
     {(void*)0x030011F0, LizardKong_ROM_START, LizardKong_VRAM, LizardKong_VRAM_END, 9},
     {(void*)0x03001454, Quintella_ROM_START, Quintella_VRAM, Quintella_VRAM_END, 10},
-    {(void*)0x03001464, BombSnake_ROM_START, BombSnake_VRAM, (void*)0x030087A0, 11},
+    {(void*)0x03001464, BombSnake_ROM_START, BombSnake_VRAM, BombSnake_VRAM_END, 11},
     {(void*)0x030013C4, Armadillo_ROM_START, Armadillo_VRAM, Armadillo_VRAM_END, 12},
     {(void*)0x03001300, GiantCake_ROM_START, GiantCake_VRAM, GiantCake_VRAM_END, 13},
     {(void*)0x03002674, PileOfBooks_ROM_START, PileOfBooks_VRAM, PileOfBooks_VRAM_END, 14},

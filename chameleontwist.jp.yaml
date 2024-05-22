@@ -10125,6 +10125,7 @@ segments:
     subalign: 8
     type: code
     exclusive_ram_id: "LEVELGROUP"
+    bss_size: 0x320
     subsegments:
     - [auto, c, BombSnake]
     - name: BombSnake
