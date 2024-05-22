@@ -848,7 +848,7 @@ s32 GetCollectableCount(Collectable* clct) {
  * @return true if the room is invalid, false otherwise.
  */
 s32 IsRoomInvalid(RoomInstance* room) {
-    return (room->RoomObjectsPointer == NULL) ? TRUE : FALSE;
+    return (room->objects == NULL) ? TRUE : FALSE;
 }
 
 /**
@@ -1535,7 +1535,7 @@ void func_800BF84C(s32 room) {
     s32 i;
     Field* zone = &gZoneFields[room];
     s32 limit = zone->rmActCount;
-    RoomActor* actor = zone->roomActors;
+    RoomActor* actor = zone->actors;
     
     for (i = 0; i < limit; i++, actor++){
         if (actor->id == 13 || actor->id == 45 || zone->unk68 == 0 || actor->id != zone->unk84){

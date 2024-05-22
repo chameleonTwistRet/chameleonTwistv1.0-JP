@@ -860,20 +860,17 @@ char D_800FFEC4[] = "ＣＯＮＧＲＡＴＵＬＡＴＩＯＮＳ！";
 f32 D_800FFEE8 = 0.0f;
 s16 D_800FFEEC[] = {0x18, 0x19, 0x1A, 0x1B, -1};
 
-extern LevelHeader JungleLand_header_Lvlhdr;
-extern LevelHeader AntLand_header_Lvlhdr;
-extern LevelHeader BombLand_header_Lvlhdr;
-extern LevelHeader DesertCastle_header_Lvlhdr;
-extern LevelHeader KidsLand_header_Lvlhdr;
-//extern LevelHeader IntroOutro_header_Lvlhdr;
-extern LevelHeader IntroOutro_header_Lvlhdr;
-
-
+extern StageData JungleLand_header_Lvlhdr;
+extern StageData AntLand_stageData;
+extern StageData BombLand_header_Lvlhdr;
+extern StageData DesertCastle_header_Lvlhdr;
+extern StageData KidsLand_header_Lvlhdr;
+extern StageData IntroOutro_header_Lvlhdr;
 
 //TODO: fix the segmented pointers here
-StageLoadData gStageLoadData[] = {
+StageSegData gStageSegData[] = {
     {&JungleLand_header_Lvlhdr, JungleLand_ROM_START, JungleLand_VRAM, JungleLand_VRAM_END, 0},
-    {&AntLand_header_Lvlhdr, AntLand_ROM_START, AntLand_VRAM, AntLand_VRAM_END, 1},
+    {&AntLand_stageData, AntLand_ROM_START, AntLand_VRAM, AntLand_VRAM_END, 1},
     {&BombLand_header_Lvlhdr, BombLand_ROM_START, BombLand_VRAM, BombLand_VRAM_END, 2},
     {&DesertCastle_header_Lvlhdr, DesertCastle_ROM_START, DesertCastle_VRAM, DesertCastle_VRAM_END, 3},
     {&KidsLand_header_Lvlhdr, KidsLand_ROM_START, KidsLand_VRAM, KidsLand_VRAM_END, 4},
@@ -2872,10 +2869,10 @@ void func_8008FEA8(s32 arg0, s32 arg1) {
         }
 
         // set to the virtual base address of the stage
-        if (!IS_SEGMENTED(gStageLoadData[arg0].stagePtr)) {
-            var_a0 = (s32*)gStageLoadData[arg0].stagePtr;
+        if (!IS_SEGMENTED(gStageSegData[arg0].stageData)) {
+            var_a0 = (s32*)gStageSegData[arg0].stageData;
         } else {
-            var_a0 = (s32*)SEGMENTED_TO_VIRTUAL2(gStageLoadData[arg0].stagePtr);
+            var_a0 = (s32*)SEGMENTED_TO_VIRTUAL2(gStageSegData[arg0].stageData);
         }
         
 
@@ -4260,7 +4257,7 @@ s32 func_8009603C(s32 segmentID, s32 arg1) {
 
 /* Stage Loading? */
 u32 func_80096128(s32 stageToLoad, s32 inpAddr) {
-    StageLoadData* stageData = &gStageLoadData[stageToLoad];
+    StageSegData* stageData = &gStageSegData[stageToLoad];
     s32 size = (u32) stageData->ramEnd - (u32) stageData->ramStart;
     s32 dmaResult;
     

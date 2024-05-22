@@ -286,7 +286,7 @@ def pointerRead(pointerPointer):
 yamler = decompAsset + "../chameleontwist.jp.yaml"
 level = decompAsset + "../assets/model/JungleLand/"
 common_structs = decompAsset + "../include/common_structs.h"
-headerData = cStructToUnpackString("LevelHeader", common_structs, level + "header.lvlHdr.inc.c", True)
+headerData = cStructToUnpackString("StageData", common_structs, level + "header.lvlHdr.inc.c", True)
 pointers = pointerRead(level + "pointers.bin")
 banks = {
     "03": ["JungleLand", int(getAddrFromSegName("JungleLand", yamler))],
@@ -326,7 +326,7 @@ for data in oRD:
 
 	}
 
-    roomAdrVal = int(data["RoomObjectsPointer"].replace("0x3", "", 1), 16)
+    roomAdrVal = int(data["objects"].replace("0x3", "", 1), 16)
     if roomAdrVal != 0:
         find = hex(banks["03"][1] + roomAdrVal)
         returndata = getFileFromSegAddr(find, yamler)
