@@ -59,7 +59,7 @@ extern Gfx Quintella_a_model18_Gfx[];
 extern Gfx BombSnake_unkF_Gfx[];
 extern Gfx BombSnake_unk11_Gfx[];
 extern Gfx BombLand_unk74_Gfx[];
-extern Gfx D_3012460[];
+extern Gfx BattleMode_a_model1_Gfx[];
 extern Gfx KidsLand_actorModel9_Gfx[];
 extern Gfx GiantCake_a_model9_Gfx[];
 extern Gfx GiantCake_a_model13_Gfx[];

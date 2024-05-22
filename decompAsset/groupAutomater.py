@@ -262,6 +262,6 @@ if __name__ == "__main__":
     try:
         args = parser.parse_args()
     except SystemExit:
-        start("GiantCake", "levelGroup/GiantCake")
+        start("BattleMode", "levelGroup/BattleMode")
         exit()
     start(args.group, args.outfileName)

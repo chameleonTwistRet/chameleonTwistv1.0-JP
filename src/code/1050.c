@@ -855,7 +855,7 @@ Gfx* func_8002B7BC(GraphicStruct* arg0, Gfx* gfxPos) {
                 break;
             case UNK_1F:
                 gActors[i].unk_E8 = 0.0f;
-                gfxPos = func_8002B118(arg0, gfxPos, D_3012460, &gActors[i], 2.0f, 0, &sp178);
+                gfxPos = func_8002B118(arg0, gfxPos, BattleMode_a_model1_Gfx, &gActors[i], 2.0f, 0, &sp178);
                 break;
             case POGO:
                 gActors[i].unk_E8 = 0.0f;
@@ -982,7 +982,7 @@ Gfx* func_8002B7BC(GraphicStruct* arg0, Gfx* gfxPos) {
                 break;
             case POPCORN_BUCKET:
                 gActors[i].unk_E8 = 0.0f;
-                gfxPos = func_8002B118(arg0, gfxPos, D_3012460, &gActors[i], 2.0f, 0, &sp178);
+                gfxPos = func_8002B118(arg0, gfxPos, BattleMode_a_model1_Gfx, &gActors[i], 2.0f, 0, &sp178);
                 break;
         }
     }
