@@ -2002,7 +2002,6 @@ s32 PutDList(Mtx** arg0, Gfx** arg1, Gfx* arg2) {
                 break;
             case G_MTX:
                 //this calculation is bizzare...var_v1->words.w1 can be a segmented addr -
-                //and D_80129730 points
                 mtxArrayIndex = (var_v1->words.w1 - (u32)AnimationSlots) / sizeof(Mtx);
                 if ((mtxArrayIndex >= 0) && (mtxArrayIndex < 40)) {
                     gSPMatrix(sp60++, sp64, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);

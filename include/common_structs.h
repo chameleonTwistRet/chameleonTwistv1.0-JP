@@ -1192,8 +1192,8 @@ extern unk80170E68 D_80170E68[];
 /* structs */
 typedef struct SpriteListing {
     /* 0x00 */ Gfx* unk_00;
-    /* 0x04 */ void* bitmapP; // "malloc'd" after size calc.
-    /* 0x08 */ void* palletteP; //palette? both this and above start with devAddr+0XD73D960
+    /* 0x04 */ void* raster; // "malloc'd" after size calc.
+    /* 0x08 */ void* palette; //palette? both this and above start with devAddr+0XD73D960
     /* 0x0C */ s32 type; // use "COLORMODE_*" enum
     /* 0x10 */ u8* unk10;
     /* 0x14 */ u8 unk14;
