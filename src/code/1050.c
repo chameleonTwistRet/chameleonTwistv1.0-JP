@@ -151,7 +151,7 @@ void func_80025EF0(PlayerActor* arg0, Tongue* arg1, s32 arg2) {
     }
 
     if (D_80174980 == 5) {
-        func_80027240(&D_800FF8D4, gSpriteListings[207].bitmapP, gTimer / 2, gSpriteListings[207].tileCountY);
+        func_80027240(&D_800FF8D4, gSpriteListings[207].raster, gTimer / 2, gSpriteListings[207].tileCountY);
         if (gTimer == 20) {
             Effect_TypeT_Init(22.0f, 154.0f, 60, D_800F686C);
         }
