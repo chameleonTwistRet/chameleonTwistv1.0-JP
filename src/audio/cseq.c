@@ -17,7 +17,7 @@ void alCSeqNew(ALCSeq *seq, u8 *ptr)
     seq->lastTicks = 0;
     seq->deltaFlag = 1;
 
-    for(i = 0; i < 16; i++)
+    for (i = 0; i < 16; i++)
     {
         seq->lastStatus[i] = 0;
         seq->curBUPtr[i] = 0;
@@ -52,7 +52,7 @@ void alCSeqNextEvent(ALCSeq *seq,ALEvent *evt)
 #endif
     
 
-    for(i = 0; i < 16 ; i++)
+    for (i = 0; i < 16 ; i++)
     {
 	if((seq->validTracks >> i) & 1)
         {
@@ -92,7 +92,7 @@ char __alCSeqNextDelta(ALCSeq *seq, s32 *pDeltaTicks)
     if (!seq->validTracks)
 	return FALSE;
 
-    for(i = 0; i < 16 ; i++)
+    for (i = 0; i < 16 ; i++)
     {
 	if((seq->validTracks >> i) & 1)
         {
@@ -253,7 +253,7 @@ void alCSeqNewMarker(ALCSeq *seq, ALCSeqMarker *m, u32 ticks)
         m->lastTicks      = tempSeq.lastTicks;
         m->lastDeltaTicks = tempSeq.lastDeltaTicks;
         
-        for(i=0;i<16;i++)
+        for (i=0;i<16;i++)
         {
             m->curLoc[i]        = tempSeq.curLoc[i];
             m->curBUPtr[i]      = tempSeq.curBUPtr[i];
@@ -279,7 +279,7 @@ void alCSeqSetLoc(ALCSeq *seq, ALCSeqMarker *m)
     seq->lastTicks      = m->lastTicks;
     seq->lastDeltaTicks = m->lastDeltaTicks;
 
-    for(i=0;i<16;i++)
+    for (i=0;i<16;i++)
     {
         seq->curLoc[i]        = m->curLoc[i];
         seq->curBUPtr[i]      = m->curBUPtr[i];
@@ -297,7 +297,7 @@ void alCSeqGetLoc(ALCSeq *seq, ALCSeqMarker *m)
     m->lastTicks      = seq->lastTicks;
     m->lastDeltaTicks = seq->lastDeltaTicks;
 
-    for(i=0;i<16;i++)
+    for (i=0;i<16;i++)
     {
         m->curLoc[i]        = seq->curLoc[i];
         m->curBUPtr[i]      = seq->curBUPtr[i];

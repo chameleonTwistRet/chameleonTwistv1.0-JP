@@ -1114,7 +1114,7 @@ void __initFromBank(ALSeqPlayer *seqp, ALBank *b)
     ALInstrument *inst = 0;
     
     /* set to the first available instrument. */
-    for(i = 0; !inst ; i++)
+    for (i = 0; !inst ; i++)
       inst = b->instArray[i];
     
     /* sct 11/6/95 - Setup the channel state for the given instrument. */

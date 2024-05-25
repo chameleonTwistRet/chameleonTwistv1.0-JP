@@ -225,7 +225,7 @@ void func_800D3854(PlayerActor*, Tongue*, Camera*, Vec3f*, Vec3f*, s32);
 void func_800B5D68(Collider* arg0, s32 arg1);
 
 /* Ext Variables */
-extern collectableWrapper D_802019A8[];
+extern CollectableWrapper D_802019A8[];
 extern CardinalDirection gCardinalDirections[5]; // including "NO_DIR"
 extern s32 sBossIDs[6];
 extern unk801B3178* D_801B3178;

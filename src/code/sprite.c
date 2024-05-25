@@ -2097,7 +2097,7 @@ chameleonEyeListEntry chameleonEyeList[6] = {
 };
 
 //TODO: fix
-struct_800FE54C D_800FE54C[3] = {
+struct_800FE54C BossDeadEyes[3] = {
     {0x03004D90, 0x03005598},
     {0x03006FE0, 0x030073E8},
     {0x03006A20, 0x03007228}
@@ -2736,8 +2736,8 @@ s32 LoadSprite(s32 arg0) {
     SpriteListing* temp_s1;
 
     temp_s1 = &gSpriteListings[arg0];
-    if ((temp_s1->type == 8) || (arg0 < 0) || (arg0 >= 0xE6)) {
-        return 0;
+    if ((temp_s1->type == 8) || (arg0 < 0) || (arg0 >= ARRAY_COUNT(gSpriteListings))) {
+        return SPRITE_LOAD_SUCCESS; //TODO: This is a bit confusing...need more info on temp_s1->type
     }
     switch (temp_s1->type) {
     case 7:
@@ -2769,7 +2769,7 @@ s32 LoadSprite(s32 arg0) {
     
     if (temp_s1->raster == NULL) {
         DummiedPrintf2(" sprite.c : sprite on mem err!(size=%d SPRITE3ID=%d)\n", dmaSize, arg0);
-        return -1;
+        return SPRITE_LOAD_ERROR;
     }
     
     dmaResult = DMA_Copy(&extImages_ROM_START[temp_s1->bitmapRom & 0xFFFFFF], temp_s1->raster, dmaSize);
@@ -2785,7 +2785,7 @@ s32 LoadSprite(s32 arg0) {
         if (temp_s1->palette == NULL) {
             DummiedPrintf2(" sprite.c : sprite on mem err! (size = %d)\n", CI8_PAL_SIZE);
             Free(temp_s1->raster);
-            return -1;
+            return SPRITE_LOAD_ERROR;
         }
         
         dmaResult = DMA_Copy(&extImages_ROM_START[temp_s1->paletteRom & 0xFFFFFF], temp_s1->palette, CI8_PAL_SIZE);
@@ -2796,7 +2796,7 @@ s32 LoadSprite(s32 arg0) {
         
         while (func_800A72E8(dmaResult) == 0);
     }
-    return 0;
+    return SPRITE_LOAD_SUCCESS;
 }
 
 void FreeSprite(s32 arg0) {
@@ -2811,7 +2811,7 @@ void FreeSprite(s32 arg0) {
     }
 }
 
-void printReset(void) {
+void PrintReset(void) {
     s32 i;
 
     if (D_800FE000 == 0) {
@@ -2830,7 +2830,7 @@ void printReset(void) {
         D_800FE00C = 0.0f;
         D_800FE010 = 0.0f;
 
-        for (i = 0; i < 16; i++) {
+        for (i = 0; i < ARRAY_COUNT(gTextGradient); i++) {
             gTextGradient[i] = -1;
         }
     }
@@ -2843,7 +2843,7 @@ void func_8005747C(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, s
     SpriteListing* tile;
 
     if (D_800FDFA8[gSpriteFrameBuffer] >= 200) {
-        printReset();
+        PrintReset();
         return;
     }
 
@@ -2901,7 +2901,7 @@ void func_8005747C(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, s
         tile->prim.b = gPrimBlue;
         tile->prim.a = gPrimAlpha;
     }
-    printReset();
+    PrintReset();
 }
 
 void func_80057A68(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, s32 arg6) {
@@ -2911,7 +2911,7 @@ void func_80057A68(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, s
     SpriteListing* tile;
 
     if (D_800FDFA8[gSpriteFrameBuffer] >= 200) {
-        printReset();
+        PrintReset();
         return;
     }
 
@@ -2969,7 +2969,7 @@ void func_80057A68(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, s
         tile->prim.b = gPrimBlue;
         tile->prim.a = gPrimAlpha;
     }
-    printReset();
+    PrintReset();
 }
 
 void func_80058044(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, s32 arg7) {
@@ -2980,7 +2980,7 @@ void func_80058044(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f
     SpriteListing* tile;    
 
     if (D_800FDFA8[gSpriteFrameBuffer] >= 200) {
-        printReset();
+        PrintReset();
         return;
     }
 
@@ -3053,7 +3053,7 @@ void func_80058044(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f
         tile->prim.b = gPrimBlue;
         tile->prim.a = gPrimAlpha;
     }
-    printReset();
+    PrintReset();
 }
 
 void func_80058748(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7, f32 arg8, f32 arg9, f32 argA, f32 argB, f32 argC, f32 argD, f32 argE, s32 argF) {
@@ -3064,7 +3064,7 @@ void func_80058748(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f
     SpriteListing* tile;    
 
     if (D_800FDFB0[gSpriteFrameBuffer] >= 200) {
-        printReset();
+        PrintReset();
         return;
     }
 
@@ -3110,7 +3110,7 @@ void func_80058748(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f
     tile->quad[3].v.tc[0] = (s16)(sp48 + tile->width - 1) << 6;
     tile->quad[3].v.tc[1] = (s16)(sp44 + tile->height - 1) << 6;
 
-    printReset();
+    PrintReset();
 }
 
 void func_80058BE4(Mtx* arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, s32 arg7) {
@@ -3121,7 +3121,7 @@ void func_80058BE4(Mtx* arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, 
     SpriteListing* tile;    
 
     if (D_800FDFB0[gSpriteFrameBuffer] >= 200) {
-        printReset();
+        PrintReset();
         return;
     }
 
@@ -3189,7 +3189,7 @@ void func_80058BE4(Mtx* arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, 
     tile->quad[3].v.tc[0] = (s16)(sp48 + tile->width - 1) << 6;
     tile->quad[3].v.tc[1] = (s16)(sp44 + tile->height - 1) << 6;
 
-    printReset();
+    PrintReset();
 }
 
 void func_80059254(Mtx* arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, s32 arg7) {
@@ -3200,7 +3200,7 @@ void func_80059254(Mtx* arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, 
     SpriteListing* tile;    
 
     if (D_800FDFB0[gSpriteFrameBuffer] >= 200) {
-        printReset();
+        PrintReset();
         return;
     }
 
@@ -3268,7 +3268,7 @@ void func_80059254(Mtx* arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, 
     tile->quad[3].v.tc[0] = (s16)(sp48 + tile->width - 1) << 6;
     tile->quad[3].v.tc[1] = (s16)(sp44 + tile->height - 1) << 6;
 
-    printReset();
+    PrintReset();
 }
 
 void func_800598C4(Mtx* arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, s32 arg7) {
@@ -3279,7 +3279,7 @@ void func_800598C4(Mtx* arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, 
     SpriteListing* tile;    
 
     if (D_800FDFB0[gSpriteFrameBuffer] >= 200) {
-        printReset();
+        PrintReset();
         return;
     }
 
@@ -3347,7 +3347,7 @@ void func_800598C4(Mtx* arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, 
     tile->quad[3].v.tc[0] = (s16)(sp48 + tile->width - 1) << 6;
     tile->quad[3].v.tc[1] = (s16)(sp44 + tile->height - 1) << 6;
 
-    printReset();
+    PrintReset();
 }
 
 void func_80059F28(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7, s32 arg8) {
@@ -3360,7 +3360,7 @@ void func_80059F28(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f
     SpriteListing* tile;
 
     if (D_800FDFC8[gSpriteFrameBuffer] >= 200) {
-        printReset();
+        PrintReset();
         return;
     }
 
@@ -3439,7 +3439,7 @@ void func_80059F28(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f
         tile->prim.b = gPrimBlue;
         tile->prim.a = gPrimAlpha;
     }
-    printReset();
+    PrintReset();
 }
 
 void func_8005A7CC(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, s32 arg7) {
@@ -3458,7 +3458,7 @@ void func_8005A7CC(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f
     for (i = 0; i < gSpriteListings[arg7].tileCountX; i++) {
         for (j = 0; j < gSpriteListings[arg7].tileCountY; j++) {
             if (D_800FDFC8[gSpriteFrameBuffer] >= 200) {
-                printReset();
+                PrintReset();
                 return;
             }
 
@@ -3532,11 +3532,11 @@ void func_8005A7CC(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f
             }
         }
     }
-    printReset();
+    PrintReset();
 }
 
 void func_8005AFA4(f32 arg0, f32 arg1, f32 arg2, f32 arg3) {
-    printReset();
+    PrintReset();
 }
 
 void printUISprite(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7, s32 arg8) {
@@ -3549,7 +3549,7 @@ void printUISprite(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f
     SpriteListing* tile;
 
     if (D_800FDFB8[gSpriteFrameBuffer] >= 200) {
-        printReset();
+        PrintReset();
         return;
     }
 
@@ -3628,7 +3628,7 @@ void printUISprite(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f
         tile->prim.b = gPrimBlue;
         tile->prim.a = gPrimAlpha;
     }
-    printReset();
+    PrintReset();
 }
 
 void func_8005B874(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, s32 arg7) {
@@ -3647,7 +3647,7 @@ void func_8005B874(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f
     for (i = 0; i < gSpriteListings[arg7].tileCountX; i++) {
         for (j = 0; j < gSpriteListings[arg7].tileCountY; j++) {
             if (D_800FDFB8[gSpriteFrameBuffer] >= 200) {
-                printReset();
+                PrintReset();
                 return;
             }
 
@@ -3721,7 +3721,7 @@ void func_8005B874(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f
             }
         }
     }
-    printReset();
+    PrintReset();
 }
 
 #ifdef NON_MATCHING
@@ -3729,7 +3729,7 @@ void func_8005C04C(f32 arg0, f32 arg1, f32 arg2, f32 arg3, s32 arg4) {
     SpriteListing* tile;
 
     if (D_800FDFC0[gSpriteFrameBuffer] >= 200) {
-        printReset();
+        PrintReset();
         return;
     }
 
@@ -3753,7 +3753,7 @@ void func_8005C04C(f32 arg0, f32 arg1, f32 arg2, f32 arg3, s32 arg4) {
 
     if (tile->quad[1].v.ob[0] < 0 || tile->quad[0].v.ob[0] > SCREEN_WIDTH * 4 ||
         tile->quad[1].v.ob[1] < 0 || tile->quad[0].v.ob[1] > SCREEN_HEIGHT * 4) {
-        printReset();
+        PrintReset();
         return;
     }
 
@@ -3767,7 +3767,7 @@ void func_8005C04C(f32 arg0, f32 arg1, f32 arg2, f32 arg3, s32 arg4) {
         tile->prim.a = gPrimAlpha;
     }
     D_800FDFC0[gSpriteFrameBuffer]++;
-    printReset();
+    PrintReset();
 }
 #else
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8005C04C.s")
@@ -3780,7 +3780,7 @@ void func_8005C454(f32 arg0, f32 arg1, f32 arg2, s32 arg3) {
     for (i = 0; i < gSpriteListings[arg3].tileCountX; i++) {
         for (j = 0; j < gSpriteListings[arg3].tileCountY; j++) {
             if (D_800FDFC0[gSpriteFrameBuffer] >= 200) {
-                printReset();
+                PrintReset();
                 return;
             }
 
@@ -3814,7 +3814,7 @@ void func_8005C454(f32 arg0, f32 arg1, f32 arg2, s32 arg3) {
             D_800FDFC0[gSpriteFrameBuffer]++;
         }
     }
-    printReset();
+    PrintReset();
 }
 
 void func_8005C6FC(f32 arg0, f32 arg1, f32 arg2, s32 arg3) {
@@ -3824,7 +3824,7 @@ void func_8005C6FC(f32 arg0, f32 arg1, f32 arg2, s32 arg3) {
     for (i = 0; i < gSpriteListings[arg3].tileCountX; i++) {
         for (j = gSpriteListings[arg3].tileCountY / 2; j < gSpriteListings[arg3].tileCountY; j++) {
             if (D_800FDFC0[gSpriteFrameBuffer] >= 200) {
-                printReset();
+                PrintReset();
                 return;
             }
 
@@ -3858,7 +3858,7 @@ void func_8005C6FC(f32 arg0, f32 arg1, f32 arg2, s32 arg3) {
             D_800FDFC0[gSpriteFrameBuffer]++;
         }
     }
-    printReset();
+    PrintReset();
 }
 
 void func_8005C9B8(void) {
@@ -3876,7 +3876,7 @@ void func_8005C9B8(void) {
     LoadSprite(SPRITE_HEARTRED);
     LoadSprite(SPRITE_HEARTORANGE);
     LoadSprite(SPRITE_HEARTYELLOW);
-    LoadSprite(26);
+    LoadSprite(SPRITE_CARROT);
 }
 
 void func_8005CA38(void) {
@@ -4097,7 +4097,7 @@ Gfx* func_8005CA44(Gfx* gfxPos) {
     D_800FDFA8[gSpriteFrameBuffer] = 0;
     D_800FDFB0[gSpriteFrameBuffer] = 0;
     D_800FDFB8[gSpriteFrameBuffer] = 0;    
-    printReset();
+    PrintReset();
     return gfxPos;
 }
 
@@ -4238,7 +4238,7 @@ Gfx* func_8005F408(Gfx* gfxPos) {
     gSPPopMatrix(gfxPos++, G_MTX_MODELVIEW);
     D_800FDFC0[gSpriteFrameBuffer] = 0;
     D_800FDFC8[gSpriteFrameBuffer] = 0;
-    printReset();
+    PrintReset();
     return gfxPos;
 }
 
@@ -4249,7 +4249,7 @@ void func_800610A8(void) {
 
 void func_800610B8(void) {
     D_800FE000 = 0;
-    printReset();
+    PrintReset();
     func_8007E5E8();
 }
 
@@ -4324,12 +4324,12 @@ void SetTextGradient(u8 arg0, u8 arg1, u8 arg2, u8 arg3, u8 arg4, u8 arg5, u8 ar
     gTextGradient[7] = arg7;
     gTextGradient[8] = arg8;
     gTextGradient[9] = arg9;
-    gTextGradient[0xA] = argA;
-    gTextGradient[0xB] = argB;
-    gTextGradient[0xC] = argC;
-    gTextGradient[0xD] = argD;
-    gTextGradient[0xE] = argE;
-    gTextGradient[0xF] = argF;
+    gTextGradient[10] = argA;
+    gTextGradient[11] = argB;
+    gTextGradient[12] = argC;
+    gTextGradient[13] = argD;
+    gTextGradient[14] = argE;
+    gTextGradient[15] = argF;
 }
 
 void func_80061394(void) {
@@ -4337,7 +4337,7 @@ void func_80061394(void) {
     D_800FDFC0[1] = 0;
     D_800FDFC8[0] = 0;
     D_800FDFC8[1] = 0;
-    printReset();
+    PrintReset();
 }
 
 void Effect_ResetListEntry(Effect* effect) {
@@ -4478,7 +4478,7 @@ void Effect_TypeA_Init(f32 posX, f32 posY, f32 posZ, s32 numParts, s32 size) {
     effect->pos.y = posY;
     effect->pos.z = posZ;
     effect->duration = size * 3;
-    effect->unk8 = PLAYSFXAT(0xC3, effect->pos, 0, 0x20);
+    effect->unk8 = PLAY_SFX_AT(0xC3, effect->pos, 0, 0x20);
 
     for (parts = effect->parts, i = 0; i < numParts; i++) {
         parts[i].pos.x = posX + RANDOM(-size, size);
@@ -4505,7 +4505,7 @@ void Effect_TypeA_Init2(f32 posX, f32 posY, f32 posZ, s32 numParts, s32 size) {
     effect->pos.y = posY;
     effect->pos.z = posZ;
     effect->duration = size * 3;
-    effect->unk8 = PLAYSFXAT(0xC3, effect->pos, 10, 0x20);
+    effect->unk8 = PLAY_SFX_AT(0xC3, effect->pos, 10, 0x20);
 
     for (parts = effect->parts, i = 0; i < numParts; i++) {
         parts[i].pos.x = posX + RANDOM(-size, size);
@@ -4740,7 +4740,7 @@ void Effect_HealthBar_Update(Effect* effect, Gfx** pGfxPos) {
             }
             break;
         case 1:
-            func_8006122C(0.0f, sinf(data->movePhase * 3.14156 / 2) * 50.0f - 50.0f);
+            func_8006122C(0.0f, sinf(data->movePhase * PI_SHORT / 2) * 50.0f - 50.0f);
             func_80062684(effect);
             func_80061240();
             data->movePhase += 1.0f / 8.0f;
@@ -4757,7 +4757,7 @@ void Effect_HealthBar_Update(Effect* effect, Gfx** pGfxPos) {
             }
             break;
         case 3:
-            func_8006122C(0.0f, sinf(data->movePhase * 3.14156 / 2) * 50.0f - 50.0f);
+            func_8006122C(0.0f, sinf(data->movePhase * PI_SHORT / 2) * 50.0f - 50.0f);
             func_80062684(effect);
             func_80061240();
             data->movePhase -= 1.0f / 15.0f;
@@ -4890,7 +4890,7 @@ void func_80063160(Effect* effect, Gfx** pGfxPos) {
             }
             break;
         case 1:
-            func_8006122C(0.0f, sinf(data->movePhase * 3.14156 / 2) * 50.0f - 50.0f);
+            func_8006122C(0.0f, sinf(data->movePhase * PI_SHORT / 2) * 50.0f - 50.0f);
             func_80062E18(effect);
             func_80061240();
             data->movePhase += 1.0f / 8.0f;
@@ -4908,7 +4908,7 @@ void func_80063160(Effect* effect, Gfx** pGfxPos) {
             }
             break;
         case 3:
-            func_8006122C(0.0f, sinf(data->movePhase * 3.14156 / 2) * 50.0f - 50.0f);
+            func_8006122C(0.0f, sinf(data->movePhase * PI_SHORT / 2) * 50.0f - 50.0f);
             func_80062E18(effect);
             func_80061240();
             data->movePhase -= 1.0f / 15.0f;
@@ -5149,7 +5149,7 @@ Effect* Effect_TypeD_Init(f32 posX, f32 posY, f32 posZ, f32 targetX, f32 targetY
     effect->duration = 30.0f;
     effect->lifeTime = 0.0f;
 
-    PLAYSFXAT(0xE0, effect->pos, 0, 0x20);
+    PLAY_SFX_AT(0xE0, effect->pos, 0, 0x20);
 
     for (parts = effect->parts, i = 0; i < effect->numParts; i++) {
         parts[i].lifeTime = 0;
@@ -5255,7 +5255,7 @@ Effect* Effect_TypeE_Init(f32 posX, f32 posY, f32 posZ, f32 dirX, f32 dirY, f32 
 
 void Effect_TypeF_Update(Effect* effect, Gfx** pGfxPos) {
     Effect_TypeF_Data* data = (Effect_TypeF_Data*)effect->data;
-    f32 alpha = 255.0f * sinf(effect->lifeTime * 1.57078);
+    f32 alpha = 255.0f * sinf(effect->lifeTime * PI_HALF);
     EffectPart* parts = effect->parts;
     
     if (alpha > 254.0) {
@@ -5380,7 +5380,7 @@ void Effect_TypeH_Update(Effect* effect, Gfx** pGfxPos) {
     guScale(&data->mtx[data->mtxIndex], effect->lifeTime * data->scale.x, effect->lifeTime * data->scale.y, effect->lifeTime * data->scale.z);
     guRotate(&mtxRotate, data->angle, 0.0f, 1.0f, 0.0f);
     guMtxCatL(&data->mtx[data->mtxIndex], &mtxRotate, &data->mtx[data->mtxIndex]);
-    guTranslate(&mtxRotate, effect->pos.x, effect->pos.y + sinf(effect->lifeTime * 3.14156) * 30.0f * data->scale.y, effect->pos.z);
+    guTranslate(&mtxRotate, effect->pos.x, effect->pos.y + sinf(effect->lifeTime * PI_SHORT) * 30.0f * data->scale.y, effect->pos.z);
     guMtxCatL(&data->mtx[data->mtxIndex], &mtxRotate, &data->mtx[data->mtxIndex]);
     gSPMatrix(gfxPos++, OS_K0_TO_PHYSICAL(&data->mtx[data->mtxIndex]), G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
     gSPDisplayList(gfxPos++, data->dlist);
@@ -5927,19 +5927,19 @@ void Effect_TypeU_Update(Effect* effect, Gfx** pGfxPos) {
     func_800610B8();
     switch(effect->spriteID) {
         case 0:
-            setPrimColor(255, 255, 150, 80.0f * sinf(effect->lifeTime * 3.14156));
+            setPrimColor(255, 255, 150, 80.0f * sinf(effect->lifeTime * PI_SHORT));
             break;
         case 1:
-            setPrimColor(150, 255, 255, 80.0f * sinf(effect->lifeTime * 3.14156));
+            setPrimColor(150, 255, 255, 80.0f * sinf(effect->lifeTime * PI_SHORT));
             break;
         case 2:
-            setPrimColor(255, 200, 255, 80.0f * sinf(effect->lifeTime * 3.14156));
+            setPrimColor(255, 200, 255, 80.0f * sinf(effect->lifeTime * PI_SHORT));
             break;
         case 3:
-            setPrimColor(255, 220, 200, 80.0f * sinf(effect->lifeTime * 3.14156));
+            setPrimColor(255, 220, 200, 80.0f * sinf(effect->lifeTime * PI_SHORT));
             break;
         case 4:
-            setPrimColor(200, 255, 220, 80.0f * sinf(effect->lifeTime * 3.14156));
+            setPrimColor(200, 255, 220, 80.0f * sinf(effect->lifeTime * PI_SHORT));
             break;
         case 5:
             setPrimColor(200, 255, 255, 140);
@@ -6127,7 +6127,7 @@ void Effect_TypeW_Update(Effect* effect, Gfx** pGfxPos) {
 
         effect->lifeTime += effect->duration;
         if (effect->lifeTime >= 1.0f) {
-            FreeSprite(72);
+            FreeSprite(SPRITE_TWINKLE);
             Effect_Free(effect);
         }
     }
@@ -6152,19 +6152,19 @@ void Effect_TypeW_Init(f32 posX, f32 posY, f32 posZ, f32 size, s32 duration, s32
     effect->sizeY = duration;    
     effect->lifeTime = 0.0f;
     effect->duration = 1.0f / (duration + 20);
-    LoadSprite(72);
+    LoadSprite(SPRITE_TWINKLE);
 }
 
 void LoadPlayerEyes(s32 arg0) {
     s32 i;
     s32 var_s0 = (arg0 * 10) + 114;
     
-    for(i = 0; i != 10; i++){
+    for (i = 0; i != 10; i++){
         gLockContextEyes = LoadSprite(var_s0);
         if ((gLockContextEyes) > 0) {
             break;
         }
-        var_s0 += 1;
+        var_s0++;
     }
 }
 
@@ -6172,7 +6172,7 @@ void FreePlayerEyes(s32 arg0) {
     s32 i;
     s32 var_s0 = (arg0 * 10) + 114;
 
-    for(i = 0; i != 10; i++){
+    for (i = 0; i != 10; i++){
         FreeSprite(var_s0);
         var_s0 += 1;
     }
@@ -6366,13 +6366,13 @@ void Effect_BossDeadEyes_Update(Effect* effect, Gfx** pGfxPos) {
     SetBossDeadEyes(effect->spriteID);
     switch(effect->spriteID) {
         case 75:
-            FreeSprite(SPRITE_EYESDAEADLIZARDKONG);
+            FreeSprite(SPRITE_EYES_DEAD_LIZARD_KONG);
             break;
         case 7:
-            FreeSprite(SPRITE_EYESDEADQUINTELLA);
+            FreeSprite(SPRITE_EYES_DEAD_QUINTELLA);
             break;        
         case 30:
-            FreeSprite(SPRITE_EYESDEADARMADILLO);
+            FreeSprite(SPRITE_EYES_DEAD_ARMADILLO);
             break;        
     }
     Effect_Free(effect);
@@ -6384,13 +6384,13 @@ void Effect_BossDeadEyes_Init(s32 arg0) {
 
     switch(arg0) {
         case 75:
-            ret = LoadSprite(SPRITE_EYESDAEADLIZARDKONG);
+            ret = LoadSprite(SPRITE_EYES_DEAD_LIZARD_KONG);
             break;
         case 7:
-            ret = LoadSprite(SPRITE_EYESDEADQUINTELLA);
+            ret = LoadSprite(SPRITE_EYES_DEAD_QUINTELLA);
             break;        
         case 30:
-            ret = LoadSprite(SPRITE_EYESDEADARMADILLO);
+            ret = LoadSprite(SPRITE_EYES_DEAD_ARMADILLO);
             break;
         default:
             return;
@@ -6407,29 +6407,33 @@ void Effect_BossDeadEyes_Init(s32 arg0) {
 
 void SetBossDeadEyes(s32 arg0) {
     s32 sp20 = 1;
-    SpriteListing* sp1C;
+    SpriteListing* sprite;
     s32 rasterSize;
-    s32 sp28;
-    s32 sp24;    
+    s32 eyesIndex;
+    s32 spriteIndex;    
 
     switch(arg0) {
         case 75:
-            sp24 = 202;
+            spriteIndex = SPRITE_EYES_DEAD_LIZARD_KONG;
             sp20 = 2;
-            sp28 = 0;
+            eyesIndex = 0;
             break;
         case 7:
-            sp24 = 201; sp28 = 1;
+            //same line required
+            spriteIndex = SPRITE_EYES_DEAD_QUINTELLA;\
+            eyesIndex = 1;
             break;       
         case 30:
-            sp24 = 203; sp28 = 2;
+            //same line required
+            spriteIndex = SPRITE_EYES_DEAD_ARMADILLO;\
+            eyesIndex = 2;
             break;
     }
 
-    sp1C = &gSpriteListings[sp24];
-    rasterSize = sp1C->width * sp1C->height * sp1C->tileCountX * sp1C->tileCountY / sp20;
-    SetEyeTexture(D_800FE54C[sp28].unk_00, sp1C->raster, rasterSize);
-    SetEyeTexture(D_800FE54C[sp28].unk_04, sp1C->palette, CI8_PAL_SIZE);
+    sprite = &gSpriteListings[spriteIndex];
+    rasterSize = sprite->width * sprite->height * sprite->tileCountX * sprite->tileCountY / sp20;
+    SetEyeTexture(BossDeadEyes[eyesIndex].unk_00, sprite->raster, rasterSize);
+    SetEyeTexture(BossDeadEyes[eyesIndex].unk_04, sprite->palette, CI8_PAL_SIZE);
 }
 
 void Effect_TypeX_Update(Effect* effect, Gfx** pGfxPos) {
@@ -6437,14 +6441,14 @@ void Effect_TypeX_Update(Effect* effect, Gfx** pGfxPos) {
     f32 f2;
     f32 sp34;
     f32 sinAngle;
-    f32 q;    
+    f32 q;
     f32 unused2[2];
     u8 temp;
     
-
-    sp34 = cosf(effect->lifeTime * 1.57078);
-    sinAngle = sinf(effect->lifeTime * 1.57078);
+    sp34 = cosf(effect->lifeTime * PI_HALF);
+    sinAngle = sinf(effect->lifeTime * PI_HALF);
     q = 128.0f * sinAngle;
+
     if (D_800F687C > 0) {
         data->unk_00.x = effect->pos.x + effect->vel.x * sinAngle;
         data->unk_00.y = effect->pos.y + effect->vel.y * sinAngle;
@@ -6456,6 +6460,7 @@ void Effect_TypeX_Update(Effect* effect, Gfx** pGfxPos) {
             return;
         }
     }
+
     f2 = ABS2(effect->lifeTime - 0.5f);
     temp = f2 * 255.0f;
     setPrimColor(255.0f * sp34, 255.0f * sp34, 255.0f * sp34, 255 - temp);
@@ -6538,7 +6543,7 @@ void Effect_TypeZ_Update(Effect* effect, Gfx** pGfxPos) {
     f32 sp40 = 255.0f;
     f32 f0;
 
-    f0 = sinf(effect->lifeTime * 1.57078);
+    f0 = sinf(effect->lifeTime * PI_HALF);
 
     if (D_800F687C > 0) {
         data->angle += 30;
@@ -6753,7 +6758,7 @@ void Effect_TypeAB_Update(Effect* effect, Gfx** pGfxPos) {
     f32 size;
     u8 alpha;
 
-    size = sinf(effect->lifeTime * 1.57078);
+    size = sinf(effect->lifeTime * PI_HALF);
     if (effect->lifeTime < 0.6f) {
         alpha = 255;
     } else {
@@ -7122,7 +7127,7 @@ void Effect_TypeAG_Init(f32 arg0, f32 arg1, s32 arg2) {
         return;
     }
 
-    effect->spriteID = PLAYSFX(0x3F, 0, 0x10);
+    effect->spriteID = PLAY_SFX(0x3F, 0, 0x10);
     func_800882D0(effect->spriteID, 11);
     func_80088474(effect->spriteID, 0);
     effect->pos.x = 1.0f / arg0;
@@ -7230,7 +7235,7 @@ void Effect_TypeAI_Update(Effect* effect, Gfx** pGfxPos) {
 
     effect->lifeTime += effect->duration;
     if (effect->lifeTime <= 1.0f) {
-        alpha = sinf(effect->lifeTime * 1.57078);
+        alpha = sinf(effect->lifeTime * PI_HALF);
     } else {
         alpha = 1.0f;
 
@@ -7273,7 +7278,7 @@ void Effect_TypeAJ_Update(Effect* effect, Gfx** pGfxPos) {
         alpha = 1.0f;
     } else {
         effect->lifeTime += effect->duration;
-        alpha = cosf(effect->lifeTime * 1.57078);
+        alpha = cosf(effect->lifeTime * PI_HALF);
         if (effect->lifeTime >= 1.0f) {
             Effect_Free(effect);
             return;
@@ -7306,7 +7311,7 @@ s32 func_8007101C(void) {
     s32 i;
 
     if (func_80055EEC(0x800) % 20 == 1) {
-        PLAYSFX(0x2A, 0, 0x10);
+        PLAY_SFX(0x2A, 0, 0x10);
         if (D_800FE708 == 0) {
             D_800FE708 = 5;
         } else {
@@ -7314,7 +7319,7 @@ s32 func_8007101C(void) {
         }
     }
     if (func_80055EEC(0x400) % 20 == 1) {
-        PLAYSFX(0x2A, 0, 0x10);
+        PLAY_SFX(0x2A, 0, 0x10);
         if (D_800FE708 == 5) {
             D_800FE708 = 0;
         } else {
@@ -7348,7 +7353,7 @@ void Effect_TypeAK_Update(Effect* effect, Gfx** pGfxPos) {
             return;
         case 1:
             effect->lifeTime += effect->vel.x;
-            alpha = sinf(effect->lifeTime * 1.57078);
+            alpha = sinf(effect->lifeTime * PI_HALF);
             sp38 = alpha * 104.0f;
             if (effect->lifeTime >= 1.0f) {
                 sp38 = 104.0f;
@@ -7368,7 +7373,7 @@ void Effect_TypeAK_Update(Effect* effect, Gfx** pGfxPos) {
             break;
         case 3:
             sp38 = 104.0f;
-            alpha = cosf(effect->lifeTime * 1.57078);
+            alpha = cosf(effect->lifeTime * PI_HALF);
             effect->lifeTime += effect->vel.z;
             if (effect->lifeTime >= 1.0f) {
                 Effect_Free(effect);
@@ -7528,7 +7533,7 @@ void Effect_TypeAL_Update(Effect* effect, Gfx** pGfxPos) {
     switch (effect->unk5) {
         case 0:
             effect->lifeTime += effect->pos.x;
-            sp64 = sinf(effect->lifeTime * 1.57078);
+            sp64 = sinf(effect->lifeTime * PI_HALF);
             sp60 = 0.0f;
             if (effect->lifeTime >= 1.0f) {
                 effect->unk5 = 1;
@@ -7537,7 +7542,7 @@ void Effect_TypeAL_Update(Effect* effect, Gfx** pGfxPos) {
             break;
         case 1:
             sp64 = 1.0f;
-            sp60 = sinf(effect->vel.z * 1.57078);
+            sp60 = sinf(effect->vel.z * PI_HALF);
             s2 = 0;
             effect->vel.z += effect->pos.y;
             a0 = 0;
@@ -7551,7 +7556,7 @@ void Effect_TypeAL_Update(Effect* effect, Gfx** pGfxPos) {
                     a1 += sStageCrownTotals[i];
                 }
                 if (a0 == a1 && gSelectedCharacters[0] <= 3) {
-                    PLAYSFX(0x19, 0, 0x10);
+                    PLAY_SFX(0x19, 0, 0x10);
                     Effect_TypeW_Init(260.0f, 9920.0f, 0.0f, 32.0f, 20, 16);
                     Effect_TypeAH_Init(&effect->numParts, 260.0f, 9850.0f, 0.0f, -22.0f, &D_800F0D90[4], 5, 1, 1);
                 }
@@ -7568,14 +7573,14 @@ void Effect_TypeAL_Update(Effect* effect, Gfx** pGfxPos) {
             SetTextGradientFromPalette(5);
             PrintTextWrapper(64.0f, 48.0f, 0.0f, .6f, "ＴＯＴＡＬ　ＴＩＭＥ", 1);
             if (gSelectedCharacters[0] == 5 && gNoHit && gOneRun) {
-                sp68 = 100.0f - sinf(effect->lifeTime * 1.57078) * 22.0f;
+                sp68 = 100.0f - sinf(effect->lifeTime * PI_HALF) * 22.0f;
             }
             effect->lifeTime += effect->vel.x;
             if (effect->lifeTime >= 1.0f) {
                 effect->lifeTime = 1.0f;
                 if (gSelectedCharacters[0] == 5 && gNoHit && gOneRun) {
                     if (effect->spriteID == 1) {
-                        PLAYSFX(0x38, 0, 0x10);
+                        PLAY_SFX(0x38, 0, 0x10);
                         effect->spriteID = 0;
                     }
                     SetTextGradientFromPalette(5);
@@ -8049,9 +8054,9 @@ void Effect_TypeAQ_Update(Effect* effect, Gfx** pGfxPos) {
             break;
         case 1:
             effect->lifeTime += data->unk_00;
-            sinAngle = sinf(effect->lifeTime * 1.57078);
+            sinAngle = sinf(effect->lifeTime * PI_HALF);
             parts[data->unk_1C].pos.x = data->unk_0C * sinAngle;
-            parts[data->unk_1C].pos.y = data->unk_10 + cosf(effect->lifeTime * 1.57078) * 180.0f;
+            parts[data->unk_1C].pos.y = data->unk_10 + cosf(effect->lifeTime * PI_HALF) * 180.0f;
             parts[data->unk_1C].lifeTime = sinAngle;
 
             if (effect->lifeTime >= 1.0f) {
@@ -8075,7 +8080,7 @@ void Effect_TypeAQ_Update(Effect* effect, Gfx** pGfxPos) {
         case 3:
             effect->lifeTime += data->unk_04;
             for (i = 0; i < effect->numParts; i++) {
-                parts[i].lifeTime = cosf(effect->lifeTime * 1.57078);
+                parts[i].lifeTime = cosf(effect->lifeTime * PI_HALF);
             }
             if (effect->lifeTime >= 1.0f) {
                 Effect_Free(effect);
@@ -8203,7 +8208,7 @@ void Effect_TypeAR_Update(Effect* effect, Gfx** pGfxPos) {
             break;
         case 2:
             effect->lifeTime += data->unk_04;
-            nv = effect->lifeTime * 1.57078;
+            nv = effect->lifeTime * PI_HALF;
             effect->vel.z = cosf(nv);
             if (effect->lifeTime >= 1.0f) {
                 Effect_Free(effect);
@@ -8303,7 +8308,7 @@ void Effect_TypeAS_Update(Effect* effect, Gfx** pGfxPos) {
             break;
         case 3:
             effect->lifeTime += effect->vel.z;
-            cosf(effect->lifeTime * 1.57078); // ???
+            cosf(effect->lifeTime * PI_HALF); // ???
             if (effect->lifeTime >= 1.0f) {
                 Effect_Free(effect);
                 return;
@@ -8315,12 +8320,12 @@ void Effect_TypeAS_Update(Effect* effect, Gfx** pGfxPos) {
         if (i == data->unk_0C && effect->unk5 <= 1) {
             offsetX = effect->sizeX - effect->lifeTime * effect->sizeX;
             sizeX = sp6C * effect->sizeX;
-            alpha = sinf(effect->lifeTime * 1.57078);
+            alpha = sinf(effect->lifeTime * PI_HALF);
         } else {
             do { offsetX = effect->sizeX - effect->sizeX; } while (0);
             if (effect->unk5 == 3) {
                 sizeX = effect->sizeX;
-                alpha = cosf(effect->lifeTime * 1.57078);                
+                alpha = cosf(effect->lifeTime * PI_HALF);                
             } else {
                 sizeX = effect->sizeX;
                 alpha = 1.0f;
@@ -8416,7 +8421,7 @@ void Effect_TypeAT_Update(Effect* effect, Gfx** pGfxPos) {
                 alpha = 1.0f;
                 effect->lifeTime = 0.0f;
             } else if (effect->unk5 == 1) {
-                alpha = sinf(effect->lifeTime * 1.57078);
+                alpha = sinf(effect->lifeTime * PI_HALF);
                 effect->lifeTime += effect->vel.y;
             } else {
                 alpha = 1.0f;
@@ -8428,7 +8433,7 @@ void Effect_TypeAT_Update(Effect* effect, Gfx** pGfxPos) {
                 Effect_Free(effect);
                 return;
             } 
-            alpha = cosf(effect->lifeTime * 1.57078);
+            alpha = cosf(effect->lifeTime * PI_HALF);
             effect->lifeTime += effect->vel.z;
             break;
     }
@@ -8470,7 +8475,7 @@ void Effect_TypeAU_Update(Effect* effect, Gfx** pGfxPos) {
         case 0:
         case 1:
             if (effect->unk5 == 0) {
-                alpha = sinf(effect->lifeTime * 1.57078);
+                alpha = sinf(effect->lifeTime * PI_HALF);
                 effect->lifeTime += effect->pos.z;
             } else {
                 alpha = 1.0f;
@@ -8483,7 +8488,7 @@ void Effect_TypeAU_Update(Effect* effect, Gfx** pGfxPos) {
             } 
             break;
         case 2:            
-            alpha = cosf(effect->lifeTime * 1.57078);
+            alpha = cosf(effect->lifeTime * PI_HALF);
             effect->lifeTime += effect->vel.z;
             if (effect->lifeTime >= 1.0f) {
                 Effect_Free(effect);
@@ -8775,24 +8780,24 @@ void Effect_TypeAY_Update(Effect* effect, Gfx** pGfxPos) {
                 if (gPlayerActors[i].active && D_80168D78[i] == 0) {
                     if ((func_80055F10(i, 0x800) % 8) == 1) {
                         if (effect->spriteID > 0 && data->unk_00[effect->spriteID - 1].unk_0C == 1) {
-                            PLAYSFX(SFX_2A_unkSnd, 0, 0x50);
+                            PLAY_SFX(SFX_2A_unkSnd, 0, 0x50);
                             effect->spriteID--;
                         }
                     }
                     if ((func_80055F10(i, 0x400) % 8) == 1) {
                         if (effect->spriteID < data->unk_14 - 1 && data->unk_00[effect->spriteID + 1].unk_0C == 1) {
-                            PLAYSFX(SFX_2A_unkSnd, 0, 0x50);
+                            PLAY_SFX(SFX_2A_unkSnd, 0, 0x50);
                             effect->spriteID++;
                         }
                     }
                     if (func_80055F10(i, 0x8000) == 1 || func_80055F10(i, 0x1000) == 1) {
                         *data->unk_18 = effect->spriteID;
-                        PLAYSFX(SFX_Select, 0, 0x50);
+                        PLAY_SFX(SFX_Select, 0, 0x50);
                         data->unk_10 = 2;
                     }
                     if (func_80055F10(i, 0x4000) == 1) {
                         *data->unk_18 = -2;
-                        PLAYSFX(SFX_Decline, 0, 0x50);
+                        PLAY_SFX(SFX_Decline, 0, 0x50);
                         data->unk_10 = 2;
                     }
                 }
@@ -8829,7 +8834,7 @@ void Effect_TypeAY_Init(Struct_80076EA0* arg0, f32 arg1, f32 arg2, s32 arg3, s32
     }
 
     if (gIsMultiplayerPaused == 1) {
-        PLAYSFX(SFX_C1_unkSnd, 0, 0x50);
+        PLAY_SFX(SFX_C1_unkSnd, 0, 0x50);
     }
 
     data = (Effect_TypeAY_Data*)effect->data;
@@ -9062,7 +9067,7 @@ void Effect_TypeBA_Create(f32 posX, f32 posY, f32 posZ, f32 size, u8 count) {
 
 void Effect_TypeBB_Update(Effect* effect, Gfx** pGfxPos) {
     Effect_TypeBB_Data* data = (Effect_TypeBB_Data*)effect->data;
-    f32 f0 = sinf(effect->lifeTime * 1.57078);
+    f32 f0 = sinf(effect->lifeTime * PI_HALF);
     Mtx mtx1;
     Mtx mtx2;
     char unused[4];

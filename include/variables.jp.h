@@ -209,7 +209,7 @@ extern s32 gActorCount;
 extern PlayerActor gPlayerActors[4];
 extern Tongue gTongues[4];
 extern Actor gActors[ACTORS_MAX]; //currently loaded actor structs
-extern pole D_80170968[64]; //currently loaded pole structs
+extern Pole Poles[64]; //currently loaded pole structs
 extern unkStruct D_80172E88[]; //used by Red ants.
 extern s32 D_80174758[];
 extern s32 D_80174864;
