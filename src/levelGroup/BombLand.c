@@ -28,8 +28,8 @@ extern Gfx Global_exitShadowWest_Gfx[];
 extern ModelCollision Global_exitShadowWest_ColH;
 extern Gfx Global_ALBLExit_Gfx[];
 extern ModelCollision Global_ALBLExit_ColH;
-extern Gfx Global_unk3_Gfx[];
-extern ModelCollision Global_unk3_ColH;
+extern Gfx Global_sandPit_Gfx[];
+extern ModelCollision Global_sandPit_ColH;
 extern Gfx Global_BossBridge_Gfx[];
 extern ModelCollision Global_BossBridge_ColH;
 extern Gfx Global_ALPole_Gfx[];
@@ -239,1669 +239,1247 @@ extern ModelCollision Global_pole_ColH;
 
 Mtx BombLand_IMtx1 = IDENTITY;
 
-#include "assets/levelGroup/BombLand/pointers.lvp.inc.c"
+enum BombLand_Models {
+    BL_FALLBACK_CUBE_MODEL,
+    BL_EXIT_SHADOW_SOUTH_MODEL,
+    BL_EXIT_SHADOW_NORTH_MODEL,
+    BL_EXIT_SHADOW_EAST_MODEL,
+    BL_EXIT_SHADOW_WEST_MODEL,
+    BL_ALBL_EXIT_MODEL,
+    BL_SANDPIT_MODEL,
+    BL_BOSS_BRIDGE_MODEL,
+    BL_AL_POLE_MODEL,
+    BL_ALBL_DOOR_MODEL,
+    BL_AL_SPIN_DOOR_MODEL,
+    BL_BL_LAVA_FLOOR_MODEL,
+    BL_BL_LAVA_MODEL,
+    BL_BL_LAVA2_MODEL,
+    BL_BL_LAVA3_MODEL,
+    BL_BL_LAVA4_MODEL,
+    BL_BL_LAVA5_MODEL,
+    BL_BL_LAVA6_MODEL,
+    BL_BL_LAVA7_MODEL,
+    BL_BL_LAVA8_MODEL,
+    BL_BL_DESTRUCTABLE_TOP_MODEL,
+    BL_BL_METAL_BRIDGE_MODEL,
+    BL_KL_EXIT_MODEL,
+    BL_KL_DOOR_MODEL,
+    BL_DC_EXIT_MODEL,
+    BL_TALL_EXIT_SHADOW1_MODEL,
+    BL_TALL_EXIT_SHADOW2_MODEL,
+    BL_GC_EXIT1_MODEL,
+    BL_GC_EXIT2_MODEL,
+    BL_TRAINING_ROOM_LIGHT_MODEL,
+    BL_JL_CAVE_EXIT1_MODEL,
+    BL_JL_CAVE_EXIT2_MODEL,
+    BL_JL_CAVE_EXIT3_MODEL,
+    BL_JL_CAVE_EXIT4_MODEL,
+    BL_JL_OUTSIDE_ENTRANCE_MODEL,
+    BL_JL_FX_CAM_PILLAR_MODEL,
+    BL_JL_CAVE_DOOR_MODEL,
+    BL_EXIT1_MODEL,
+    BL_EXIT2_MODEL,
+    BL_EXIT3_MODEL,
+    BL_EXIT4_MODEL,
+    BL_ROOM0_MODEL,
+    BL_ROOM1_MODEL,
+    BL_ROOM2_MODEL,
+    BL_ROOM3_MODEL,
+    BL_ROOM4_MODEL,
+    BL_ROOM5_MODEL,
+    BL_ROOM6_MODEL,
+    BL_ROOM7_MODEL,
+    BL_ROOM8_MODEL,
+    BL_ROOM9_MODEL,
+    BL_ROOM10_MODEL,
+    BL_ROOM11_MODEL,
+    BL_ROOM12_MODEL,
+    BL_ROOM13_MODEL,
+    BL_ROOM15_FLOOR_MODEL,
+    BL_ROOM15_MODEL,
+    BL_ROOM0_PIPE_MODEL,
+    BL_ROOM1_FLOOR_MODEL,
+    BL_BLOCK_MODEL,
+    BL_BREAKABLE_BLOCK_SIDES_MODEL,
+    BL_ROOM3_START_MODEL,
+    BL_ROOM3_END_MODEL,
+    BL_BLOCK2_MAYBE_MODEL,
+    BL_UNUSED_PLATFORM_MAYBE_MODEL,
+    BL_WALL_MODEL,
+    BL_ROOM4_END1_MODEL,
+    BL_ROOM4_END2_MODEL,
+    BL_ROOM4_START_MODEL,
+    BL_ROOM5_START_MODEL,
+    BL_ROOM5_END_MODEL,
+    BL_BREAKABLE_BLOCK_MODEL,
+    BL_BREAKABLE_BLOCK_STACK_MODEL,
+    BL_ROOM7_START_MODEL,
+    BL_ROOM7_END_MODEL,
+    BL_BREAKABLE_BLOCK_SIDE1_MODEL,
+    BL_BREAKABLE_BLOCK_SIDE2_MODEL,
+    BL_BREAKABLE_BLOCK_SIDE3_MODEL,
+    BL_BREAKABLE_BLOCK_SIDE4_MODEL,
+    BL_BLOCK_PLATFORM_MODEL,
+    BL_BREAKABLE_BLOCK2_MODEL,
+    BL_ROOM8_START_MODEL,
+    BL_ROOM8_END_MODEL,
+    BL_ROOM9_END1_MODEL,
+    BL_ROOM9_END2_MODEL,
+    BL_ROOM9_START_MODEL,
+    BL_ROOM10_FLOOR_MODEL,
+    BL_ROOM10_PLATFORM_MODEL,
+    BL_TALL_WALL_WITH_FLOOR_ON_TOP_MODEL,
+    BL_UNK_BLOCK_MODEL,
+    BL_THIN_BREAKABLE_BLOCK_SIDE1_MODEL,
+    BL_THIN_BREAKABLE_BLOCK_SIDE2_MODEL,
+    BL_THIN_BREAKABLE_BLOCK_SIDE3_MODEL,
+    BL_THIN_BREAKABLE_BLOCK_SIDE4_MODEL,
+    BL_THIN_BREAKABLE_BLOCK_SIDE5_MODEL,
+    BL_UNK_PLATFORM_MODEL,
+    BL_PIPE1_MODEL,
+    BL_PIPE2_MODEL,
+    BL_BREAKABLE_BLOCK_TOP_MODEL,
+    BL_BLOCK_TOP_MODEL,
+    BL_BREAKABLE_BLOCK_AGAIN_MODEL,
+    BL_METAL_BRIDGE_THING_MODEL,
+    BL_LONG_PIPE_MODEL,
+    BL_X_RESULT_MODEL,
+    BL_O_RESULT_MODEL,
+    BL_GRENADE_SHUTTERS_MODEL,
+    BL_DOOR_WALL_MODEL,
+    BL_DOOR_POLES_MODEL,
+    BL_UNK72_MODEL,
+    BL_POLE_MODEL
+};
+
+StageModel  BombLand_stageModels[110] = {
+    {&Global_fallbackCube_Gfx[0], &Global_fallbackCube_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_exitShadowSouth_Gfx[0], &Global_exitShadowSouth_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_exitShadowNorth_Gfx[0], &Global_exitShadowNorth_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_exitShadowEast_Gfx[0], &Global_exitShadowEast_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_exitShadowWest_Gfx[0], &Global_exitShadowWest_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_ALBLExit_Gfx[0], &Global_ALBLExit_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_sandPit_Gfx[0], &Global_sandPit_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_BossBridge_Gfx[0], &Global_BossBridge_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_ALPole_Gfx[0], &Global_ALPole_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_ALBLDoor_Gfx[0], &Global_ALBLDoor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_ALSpinDoor_Gfx[0], &Global_ALSpinDoor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_BLLavaFloor_Gfx[0], &Global_BLLavaFloor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_BLLava_Gfx[0], &Global_BLLava_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_BLLava2_Gfx[0], &Global_BLLava2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_BLLava3_Gfx[0], &Global_BLLava3_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_BLLava4_Gfx[0], &Global_BLLava4_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_BLLava5_Gfx[0], &Global_BLLava5_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_BLLava6_Gfx[0], &Global_BLLava6_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_BLLava7_Gfx[0], &Global_BLLava7_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_BLLava8_Gfx[0], &Global_BLLava8_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_BLDestructableTop_Gfx[0], &Global_BLDestructableTop_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_BLMetalBridge_Gfx[0], &Global_BLMetalBridge_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_KLExit_Gfx[0], &Global_KLExit_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_KLDoor_Gfx[0], &Global_KLDoor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_DCExit_Gfx[0], &Global_DCExit_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_TallExitShadow1_Gfx[0], &Global_TallExitShadow1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_TallExitShadow2_Gfx[0], &Global_TallExitShadow2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_GCExit1_Gfx[0], &Global_GCExit1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_GCExit2_Gfx[0], &Global_GCExit2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_trainingRoomLight_Gfx[0], &Global_trainingRoomLight_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_JLCaveExit1_Gfx[0], &Global_JLCaveExit1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_JLCaveExit2_Gfx[0], &Global_JLCaveExit2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_JLCaveExit3_Gfx[0], &Global_JLCaveExit3_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_JLCaveExit4_Gfx[0], &Global_JLCaveExit4_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_JLOutsideEntrance_Gfx[0], &Global_JLOutsideEntrance_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_JLFxCamPillar_Gfx[0], &Global_JLFxCamPillar_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_JLCaveDoor_Gfx[0], &Global_JLCaveDoor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&BombLand_exit1_Gfx[0], &BombLand_exit1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&BombLand_exit2_Gfx[0], &BombLand_exit2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&BombLand_exit3_Gfx[0], &BombLand_exit3_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&BombLand_exit4_Gfx[0], &BombLand_exit4_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&BombLand_room0_Gfx[0], &BombLand_room0_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&BombLand_room1_Gfx[0], &BombLand_room1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&BombLand_room2_Gfx[0], &BombLand_room2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&BombLand_room3_Gfx[0], &BombLand_room3_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&BombLand_room4_Gfx[0], &BombLand_room4_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&BombLand_room5_Gfx[0], &BombLand_room5_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&BombLand_room6_Gfx[0], &BombLand_room6_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&BombLand_room7_Gfx[0], &BombLand_room7_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&BombLand_room8_Gfx[0], &BombLand_room8_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&BombLand_room9_Gfx[0], &BombLand_room9_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&BombLand_room10_Gfx[0], &BombLand_room10_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&BombLand_room11_Gfx[0], &BombLand_room11_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&BombLand_room12_Gfx[0], &BombLand_room12_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&BombLand_room13_Gfx[0], &BombLand_room13_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&BombLand_room15Floor_Gfx[0], &BombLand_room15Floor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&BombLand_room15_Gfx[0], &BombLand_room15_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&BombLand_room0Pipe_Gfx[0], &BombLand_room0Pipe_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&BombLand_room1Floor_Gfx[0], &BombLand_room1Floor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&BombLand_block_Gfx[0], &BombLand_block_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&BombLand_breakableBlockSides_Gfx[0], &BombLand_breakableBlockSides_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&BombLand_room3Start_Gfx[0], &BombLand_room3Start_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&BombLand_room3End_Gfx[0], &BombLand_room3End_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&BombLand_block2Maybe_Gfx[0], &BombLand_block2Maybe_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&BombLand_unusedPlatformMaybe_Gfx[0], &BombLand_unusedPlatformMaybe_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&BombLand_wall_Gfx[0], &BombLand_wall_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&BombLand_room4End1_Gfx[0], &BombLand_room4End1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&BombLand_room4End2_Gfx[0], &BombLand_room4End2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&BombLand_room4Start_Gfx[0], &BombLand_room4Start_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&BombLand_room5Start_Gfx[0], &BombLand_room5Start_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&BombLand_room5End_Gfx[0], &BombLand_room5End_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&BombLand_breakableBlock_Gfx[0], &BombLand_breakableBlock_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&BombLand_breakableBlockStack_Gfx[0], &BombLand_breakableBlockStack_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&BombLand_room7Start_Gfx[0], &BombLand_room7Start_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&BombLand_room7End_Gfx[0], &BombLand_room7End_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&BombLand_breakableBlockSide1_Gfx[0], &BombLand_breakableBlockSide1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&BombLand_breakableBlockSide2_Gfx[0], &BombLand_breakableBlockSide2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&BombLand_breakableBlockSide3_Gfx[0], &BombLand_breakableBlockSide3_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&BombLand_breakableBlockSide4_Gfx[0], &BombLand_breakableBlockSide4_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&BombLand_blockPlatform_Gfx[0], &BombLand_blockPlatform_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&BombLand_breakableBlock2_Gfx[0], &BombLand_breakableBlock2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&BombLand_room8Start_Gfx[0], &BombLand_room8Start_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&BombLand_room8End_Gfx[0], &BombLand_room8End_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&BombLand_room9End1_Gfx[0], &BombLand_room9End1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&BombLand_room9End2_Gfx[0], &BombLand_room9End2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&BombLand_room9Start_Gfx[0], &BombLand_room9Start_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&BombLand_room10Floor_Gfx[0], &BombLand_room10Floor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&BombLand_room10Platform_Gfx[0], &BombLand_room10Platform_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&BombLand_tallWallWithFloorOnTop_Gfx[0], &BombLand_tallWallWithFloorOnTop_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&BombLand_unkBlock_Gfx[0], &BombLand_unkBlock_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&BombLand_thinBreakableBlockSide1_Gfx[0], &BombLand_thinBreakableBlockSide1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&BombLand_thinBreakableBlockSide2_Gfx[0], &BombLand_thinBreakableBlockSide2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&BombLand_thinBreakableBlockSide3_Gfx[0], &BombLand_thinBreakableBlockSide3_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&BombLand_thinBreakableBlockSide4_Gfx[0], &BombLand_thinBreakableBlockSide4_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&BombLand_thinBreakableBlockSide5_Gfx[0], &BombLand_thinBreakableBlockSide5_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&BombLand_unkPlatform_Gfx[0], &BombLand_unkPlatform_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&BombLand_pipe1_Gfx[0], &BombLand_pipe1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&BombLand_pipe2_Gfx[0], &BombLand_pipe2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&BombLand_breakableBlockTop_Gfx[0], &BombLand_breakableBlockTop_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&BombLand_blockTop_Gfx[0], &BombLand_blockTop_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&BombLand_breakableBlockAgain_Gfx[0], &BombLand_breakableBlockAgain_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&BombLand_metalBridgeThing_Gfx[0], &BombLand_metalBridgeThing_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&BombLand_longPipe_Gfx[0], &BombLand_longPipe_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&BombLand_XResult_Gfx[0], &BombLand_XResult_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&BombLand_OResult_Gfx[0], &BombLand_OResult_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&BombLand_grenadeShutters_Gfx[0], &BombLand_grenadeShutters_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&BombLand_doorWall_Gfx[0], &BombLand_doorWall_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&BombLand_doorPoles_Gfx[0], &BombLand_doorPoles_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&BombLand_unk72_Gfx[0], &BombLand_unk72_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_pole_Gfx[0], &Global_pole_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, }
+};
+
 
 #include "build/assets/levelGroup/BombLand/rabObjects.inc.c"
 
-#include "assets/levelGroup/BombLand/spriteActors/room0_spr1.sprite.inc.c"
-
-#include "assets/levelGroup/BombLand/spriteActors/room0_sprSTOP.sprite.inc.c"
-
-#include "assets/levelGroup/BombLand/spriteActors/room12_spr1.sprite.inc.c"
-
-#include "assets/levelGroup/BombLand/spriteActors/room12_sprSTOP.sprite.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room0_obj1.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room0_obj2.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room0_obj3.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room0_obj4.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room0_obj5.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room0_obj6.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room0_obj7.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room0_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room0_actSTOP.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/collectables/room0_clct1.clct.inc.c"
-
-#include "assets/levelGroup/BombLand/collectables/room0_clctSTOP.clct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room1_obj1.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room1_obj2.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room1_obj3.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room1_obj4.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room1_obj5.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room1_obj6.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room1_obj7.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room1_obj8.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room1_obj9.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room1_obj10.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room1_obj11.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room1_obj12.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room1_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room1_act1.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room1_act2.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room1_act3.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room1_act4.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room1_act5.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room1_act6.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room1_act7.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room1_act8.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room1_act9.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room1_act10.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room1_act11.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room1_act12.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room1_act13.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room1_act14.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room1_act15.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room1_act16.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room1_act17.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room1_act18.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room1_act19.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room1_actSTOP.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/collectables/room1_clct1.clct.inc.c"
-
-#include "assets/levelGroup/BombLand/collectables/room1_clct2.clct.inc.c"
-
-#include "assets/levelGroup/BombLand/collectables/room1_clct3.clct.inc.c"
-
-#include "assets/levelGroup/BombLand/collectables/room1_clct4.clct.inc.c"
-
-#include "assets/levelGroup/BombLand/collectables/room1_clct5.clct.inc.c"
-
-#include "assets/levelGroup/BombLand/collectables/room1_clctSTOP.clct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room2_obj1.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room2_obj2.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room2_obj3.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room2_obj4.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room2_obj5.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room2_obj6.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room2_obj7.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room2_obj8.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room2_obj9.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room2_obj10.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room2_obj11.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room2_obj12.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room2_obj13.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room2_obj14.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room2_obj15.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room2_obj16.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room2_obj17.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room2_obj18.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room2_obj19.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room2_obj20.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room2_obj21.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room2_obj22.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room2_obj23.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room2_obj24.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room2_obj25.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room2_obj26.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room2_obj27.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room2_obj28.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room2_obj29.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room2_obj30.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room2_obj31.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room2_obj32.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room2_obj33.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room2_obj34.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room2_obj35.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room2_obj36.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room2_obj37.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room2_obj38.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room2_obj39.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room2_obj40.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room2_obj41.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room2_obj42.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room2_obj43.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room2_obj44.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room2_obj45.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room2_obj46.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room2_obj47.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room2_obj48.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room2_obj49.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room2_obj50.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room2_obj51.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room2_obj52.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room2_obj53.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room2_obj54.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room2_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room2_act1.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room2_act2.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room2_actSTOP.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/collectables/room2_clct1.clct.inc.c"
-
-#include "assets/levelGroup/BombLand/collectables/room2_clct2.clct.inc.c"
-
-#include "assets/levelGroup/BombLand/collectables/room2_clctSTOP.clct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room3_obj1.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room3_obj2.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room3_obj3.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room3_obj4.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room3_obj5.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room3_obj6.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room3_obj7.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room3_obj8.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room3_obj9.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room3_obj10.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room3_obj11.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room3_obj12.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room3_obj13.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room3_obj14.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room3_obj15.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room3_obj16.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room3_obj17.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room3_obj18.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room3_obj19.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room3_obj20.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room3_obj21.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room3_obj22.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room3_obj23.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room3_obj24.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room3_obj25.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room3_obj26.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room3_obj27.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room3_obj28.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room3_obj29.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room3_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room3_act1.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room3_act2.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room3_act3.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room3_act4.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room3_act5.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room3_act6.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room3_act7.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room3_actSTOP.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room4_obj1.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room4_obj2.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room4_obj3.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room4_obj4.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room4_obj5.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room4_obj6.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room4_obj7.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room4_obj8.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room4_obj9.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room4_obj10.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room4_obj11.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room4_obj12.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room4_obj13.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room4_obj14.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room4_obj15.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room4_obj16.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room4_obj17.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room4_obj18.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room4_obj19.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room4_obj20.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room4_obj21.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room4_obj22.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room4_obj23.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room4_obj24.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room4_obj25.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room4_obj26.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room4_obj27.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room4_obj28.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room4_obj29.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room4_obj30.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room4_obj31.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room4_obj32.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room4_obj33.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room4_obj34.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room4_obj35.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room4_obj36.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room4_obj37.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room4_obj38.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room4_obj39.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room4_obj40.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room4_obj41.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room4_obj42.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room4_obj43.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room4_obj44.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room4_obj45.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room4_obj46.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room4_obj47.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room4_obj48.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room4_obj49.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room4_obj50.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room4_obj51.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room4_obj52.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room4_obj53.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room4_obj54.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room4_obj55.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room4_obj56.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room4_obj57.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room4_obj58.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room4_obj59.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room4_obj60.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room4_obj61.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room4_obj62.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room4_obj63.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room4_obj64.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room4_obj65.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room4_obj66.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room4_obj67.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room4_obj68.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room4_obj69.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room4_obj70.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room4_obj71.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room4_obj72.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room4_obj73.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room4_obj74.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room4_obj75.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room4_obj76.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room4_obj77.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room4_obj78.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room4_obj79.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room4_obj80.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room4_obj81.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room4_obj82.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room4_obj83.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room4_obj84.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room4_obj85.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room4_obj86.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room4_obj87.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room4_obj88.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room4_obj89.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room4_obj90.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room4_obj91.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room4_obj92.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room4_obj93.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room4_obj94.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room4_obj95.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room4_obj96.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room4_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room4_act1.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room4_act2.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room4_act3.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room4_act4.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room4_act5.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room4_act6.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room4_act7.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room4_act8.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room4_act9.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room4_actSTOP.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/collectables/room4_clct1.clct.inc.c"
-
-#include "assets/levelGroup/BombLand/collectables/room4_clctSTOP.clct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room5_obj1.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room5_obj2.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room5_obj3.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room5_obj4.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room5_obj5.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room5_obj6.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room5_obj7.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room5_obj8.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room5_obj9.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room5_obj10.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room5_obj11.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room5_obj12.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room5_obj13.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room5_obj14.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room5_obj15.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room5_obj16.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room5_obj17.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room5_obj18.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room5_obj19.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room5_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/spriteActors/room5_spr1.sprite.inc.c"
-
-#include "assets/levelGroup/BombLand/spriteActors/room5_sprSTOP.sprite.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room5_actSTOP.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/collectables/room5_clct1.clct.inc.c"
-
-#include "assets/levelGroup/BombLand/collectables/room5_clct2.clct.inc.c"
-
-#include "assets/levelGroup/BombLand/collectables/room5_clctSTOP.clct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room6_obj1.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room6_obj2.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room6_obj3.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room6_obj4.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room6_obj5.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room6_obj6.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room6_obj7.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room6_obj8.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room6_obj9.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room6_obj10.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room6_obj11.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room6_obj12.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room6_obj13.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room6_obj14.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room6_obj15.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room6_obj16.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room6_obj17.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room6_obj18.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room6_obj19.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room6_obj20.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room6_obj21.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room6_obj22.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room6_obj23.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room6_obj24.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room6_obj25.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room6_obj26.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room6_obj27.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room6_obj28.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room6_obj29.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room6_obj30.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room6_obj31.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room6_obj32.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room6_obj33.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room6_obj34.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room6_obj35.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room6_obj36.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room6_obj37.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room6_obj38.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room6_obj39.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room6_obj40.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room6_obj41.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room6_obj42.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room6_obj43.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room6_obj44.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room6_obj45.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room6_obj46.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room6_obj47.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room6_obj48.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room6_obj49.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room6_obj50.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room6_obj51.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room6_obj52.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room6_obj53.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room6_obj54.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room6_obj55.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room6_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room6_act1.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room6_act2.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room6_act3.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room6_actSTOP.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room7_obj1.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room7_obj2.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room7_obj3.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room7_obj4.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room7_obj5.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room7_obj6.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room7_obj7.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room7_obj8.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room7_obj9.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room7_obj10.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room7_obj11.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room7_obj12.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room7_obj13.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room7_obj14.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room7_obj15.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room7_obj16.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room7_obj17.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room7_obj18.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room7_obj19.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room7_obj20.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room7_obj21.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room7_obj22.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room7_obj23.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room7_obj24.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room7_obj25.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room7_obj26.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room7_obj27.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room7_obj28.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room7_obj29.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room7_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room7_act1.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room7_act2.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room7_actSTOP.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room8_obj1.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room8_obj2.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room8_obj3.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room8_obj4.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room8_obj5.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room8_obj6.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room8_obj7.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room8_obj8.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room8_obj9.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room8_obj10.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room8_obj11.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room8_obj12.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room8_obj13.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room8_obj14.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room8_obj15.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room8_obj16.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room8_obj17.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room8_obj18.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room8_obj19.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room8_obj20.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room8_obj21.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room8_obj22.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room8_obj23.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room8_obj24.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room8_obj25.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room8_obj26.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room8_obj27.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room8_obj28.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room8_obj29.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room8_obj30.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room8_obj31.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room8_obj32.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room8_obj33.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room8_obj34.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room8_obj35.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room8_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room8_act1.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room8_act2.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room8_act3.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room8_act4.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room8_act5.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room8_act6.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room8_act7.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room8_actSTOP.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/collectables/room8_clct1.clct.inc.c"
-
-#include "assets/levelGroup/BombLand/collectables/room8_clct2.clct.inc.c"
-
-#include "assets/levelGroup/BombLand/collectables/room8_clct3.clct.inc.c"
-
-#include "assets/levelGroup/BombLand/collectables/room8_clct4.clct.inc.c"
-
-#include "assets/levelGroup/BombLand/collectables/room8_clct5.clct.inc.c"
-
-#include "assets/levelGroup/BombLand/collectables/room8_clct6.clct.inc.c"
-
-#include "assets/levelGroup/BombLand/collectables/room8_clctSTOP.clct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room9_obj1.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room9_obj2.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room9_obj3.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room9_obj4.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room9_obj5.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room9_obj6.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room9_obj7.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room9_obj8.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room9_obj9.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room9_obj10.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room9_obj11.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room9_obj12.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room9_obj13.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room9_obj14.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room9_obj15.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room9_obj16.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room9_obj17.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room9_obj18.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room9_obj19.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room9_obj20.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room9_obj21.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room9_obj22.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room9_obj23.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room9_obj24.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room9_obj25.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room9_obj26.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room9_obj27.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room9_obj28.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room9_obj29.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room9_obj30.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room9_obj31.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room9_obj32.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room9_obj33.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room9_obj34.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room9_obj35.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room9_obj36.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room9_obj37.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room9_obj38.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room9_obj39.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room9_obj40.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room9_obj41.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room9_obj42.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room9_obj43.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room9_obj44.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room9_obj45.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room9_obj46.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room9_obj47.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room9_obj48.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room9_obj49.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room9_obj50.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room9_obj51.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room9_obj52.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room9_obj53.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room9_obj54.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room9_obj55.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room9_obj56.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room9_obj57.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room9_obj58.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room9_obj59.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room9_obj60.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room9_obj61.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room9_obj62.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room9_obj63.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room9_obj64.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room9_obj65.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room9_obj66.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room9_obj67.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room9_obj68.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room9_obj69.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room9_obj70.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room9_obj71.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room9_obj72.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room9_obj73.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room9_obj74.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room9_obj75.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room9_obj76.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room9_obj77.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room9_obj78.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room9_obj79.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room9_obj80.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room9_obj81.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room9_obj82.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room9_obj83.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room9_obj84.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room9_obj85.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room9_obj86.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room9_obj87.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room9_obj88.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room9_obj89.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room9_obj90.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room9_obj91.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room9_obj92.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room9_obj93.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room9_obj94.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room9_obj95.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room9_obj96.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room9_obj97.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room9_obj98.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room9_obj99.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room9_obj100.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room9_obj101.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room9_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room9_act1.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room9_act2.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room9_act3.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room9_act4.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room9_act5.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room9_act6.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room9_act7.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room9_act8.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room9_act9.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room9_actSTOP.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/collectables/room9_clct1.clct.inc.c"
-
-#include "assets/levelGroup/BombLand/collectables/room9_clctSTOP.clct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room10_obj1.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room10_obj2.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room10_obj3.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room10_obj4.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room10_obj5.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room10_obj6.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room10_obj7.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room10_obj8.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room10_obj9.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room10_obj10.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room10_obj11.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room10_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/collectables/room10_clct1.clct.inc.c"
-
-#include "assets/levelGroup/BombLand/collectables/room10_clctSTOP.clct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room10_act1.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room10_act2.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room10_act3.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room10_act4.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room10_act5.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room10_act6.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room10_act7.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room10_act8.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room10_act9.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room10_act10.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room10_act11.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room10_act12.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room10_act13.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room10_act14.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room10_act15.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room10_act16.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room10_act17.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room10_act18.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room10_act19.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room10_act20.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room10_act21.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room10_act22.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room10_act23.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room10_act24.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room10_act25.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room10_act26.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room10_act27.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room10_act28.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room10_act29.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room10_act30.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room10_act31.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room10_act32.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room10_act33.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room10_act34.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room10_act35.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room10_act36.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room10_act37.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room10_act38.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room10_act39.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room10_actSTOP.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room11_obj1.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room11_obj2.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room11_obj3.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room11_obj4.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room11_obj5.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room11_obj6.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room11_obj7.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room11_obj8.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room11_obj9.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room11_obj10.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room11_obj11.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room11_obj12.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room11_obj13.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room11_obj14.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room11_obj15.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room11_obj16.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room11_obj17.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room11_obj18.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room11_obj19.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room11_obj20.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room11_obj21.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room11_obj22.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room11_obj23.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room11_obj24.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room11_obj25.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room11_obj26.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room11_obj27.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room11_obj28.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room11_obj29.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room11_obj30.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room11_obj31.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room11_obj32.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room11_obj33.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room11_obj34.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room11_obj35.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room11_obj36.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room11_obj37.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room11_obj38.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room11_obj39.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room11_obj40.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room11_obj41.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room11_obj42.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room11_obj43.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room11_obj44.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room11_obj45.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room11_obj46.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room11_obj47.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room11_obj48.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room11_obj49.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room11_obj50.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room11_obj51.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room11_obj52.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room11_obj53.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room11_obj54.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room11_obj55.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room11_obj56.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room11_obj57.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room11_obj58.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room11_obj59.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room11_obj60.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room11_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room11_act1.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room11_act2.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room11_act3.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room11_actSTOP.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room12_obj1.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room12_obj2.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room12_obj3.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room12_obj4.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room12_obj5.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room12_obj6.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room12_obj7.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room12_obj8.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room12_obj9.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room12_obj10.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room12_obj11.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room12_obj12.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room12_obj13.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room12_obj14.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room12_obj15.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room12_obj16.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room12_obj17.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room12_obj18.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room12_obj19.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room12_obj20.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room12_obj21.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room12_obj22.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room12_obj23.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room12_obj24.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room12_obj25.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room12_obj26.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room12_obj27.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room12_obj28.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room12_obj29.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room12_obj30.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room12_obj31.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room12_obj32.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room12_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room12_act1.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room12_act2.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room12_act3.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room12_act4.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room12_actSTOP.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room13_obj1.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room13_obj2.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room13_obj3.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room13_obj4.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room13_obj5.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room13_obj6.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room13_obj7.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room13_obj8.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room13_obj9.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room13_obj10.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room13_obj11.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room13_obj12.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room13_obj13.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room13_obj14.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room13_obj15.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room13_obj16.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room13_obj17.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room13_obj18.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room13_obj19.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room13_obj20.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room13_obj21.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room13_obj22.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room13_obj23.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room13_obj24.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room13_obj25.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room13_obj26.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room13_obj27.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room13_obj28.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room13_obj29.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room13_obj30.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room13_obj31.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room13_obj32.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room13_obj33.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room13_obj34.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room13_obj35.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room13_obj36.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room13_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room13_act1.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room13_act2.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room13_act3.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room13_act4.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room13_act5.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room13_act6.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room13_act7.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room13_act8.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room13_act9.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room13_act10.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room13_actSTOP.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room14_obj1.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room14_obj2.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room14_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room14_act1.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room14_actSTOP.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room15_obj1.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room15_obj2.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room15_obj3.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room15_obj4.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room15_obj5.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room15_obj6.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room15_obj7.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room15_obj8.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room15_obj9.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room15_obj10.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room15_obj11.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room15_obj12.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room15_obj13.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room15_obj14.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomObjects/room15_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room15_act1.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/roomActors/room15_actSTOP.roomAct.inc.c"
-
-#include "assets/levelGroup/BombLand/collectables/room3_clct1.clct.inc.c"
-
-#include "assets/levelGroup/BombLand/collectables/room3_clct2.clct.inc.c"
-
-#include "assets/levelGroup/BombLand/collectables/room3_clct3.clct.inc.c"
-
-#include "assets/levelGroup/BombLand/collectables/room3_clct4.clct.inc.c"
-
-#include "assets/levelGroup/BombLand/collectables/room3_clct5.clct.inc.c"
-
-#include "assets/levelGroup/BombLand/collectables/room3_clctSTOP.clct.inc.c"
-
-#include "assets/levelGroup/BombLand/collectables/room6_clct1.clct.inc.c"
-
-#include "assets/levelGroup/BombLand/collectables/room6_clctSTOP.clct.inc.c"
-
-#include "assets/levelGroup/BombLand/collectables/room7_clct1.clct.inc.c"
-
-#include "assets/levelGroup/BombLand/collectables/room7_clct2.clct.inc.c"
-
-#include "assets/levelGroup/BombLand/collectables/room7_clct3.clct.inc.c"
-
-#include "assets/levelGroup/BombLand/collectables/room7_clct4.clct.inc.c"
-
-#include "assets/levelGroup/BombLand/collectables/room7_clct5.clct.inc.c"
-
-#include "assets/levelGroup/BombLand/collectables/room7_clct6.clct.inc.c"
-
-#include "assets/levelGroup/BombLand/collectables/room7_clctSTOP.clct.inc.c"
-
-#include "assets/levelGroup/BombLand/collectables/room11_clct1.clct.inc.c"
-
-#include "assets/levelGroup/BombLand/collectables/room11_clct2.clct.inc.c"
-
-#include "assets/levelGroup/BombLand/collectables/room11_clct3.clct.inc.c"
-
-#include "assets/levelGroup/BombLand/collectables/room11_clctSTOP.clct.inc.c"
-
-#include "assets/levelGroup/BombLand/collectables/room12_clct1.clct.inc.c"
-
-#include "assets/levelGroup/BombLand/collectables/room12_clct2.clct.inc.c"
-
-#include "assets/levelGroup/BombLand/collectables/room12_clct3.clct.inc.c"
-
-#include "assets/levelGroup/BombLand/collectables/room12_clct4.clct.inc.c"
-
-#include "assets/levelGroup/BombLand/collectables/room12_clct5.clct.inc.c"
-
-#include "assets/levelGroup/BombLand/collectables/room12_clct6.clct.inc.c"
-
-#include "assets/levelGroup/BombLand/collectables/room12_clct7.clct.inc.c"
-
-#include "assets/levelGroup/BombLand/collectables/room12_clctSTOP.clct.inc.c"
-
-#include "assets/levelGroup/BombLand/collectables/room13_clct1.clct.inc.c"
-
-#include "assets/levelGroup/BombLand/collectables/room13_clct2.clct.inc.c"
-
-#include "assets/levelGroup/BombLand/collectables/room13_clct3.clct.inc.c"
-
-#include "assets/levelGroup/BombLand/collectables/room13_clct4.clct.inc.c"
-
-#include "assets/levelGroup/BombLand/collectables/room13_clctSTOP.clct.inc.c"
-
-#include "assets/levelGroup/BombLand/collectables/room15_clct1.clct.inc.c"
-
-#include "assets/levelGroup/BombLand/collectables/room15_clctSTOP.clct.inc.c"
+SpriteActor BombLand_room0_sprites[2] = {
+    {18, 0, {-433.0,0.0,386.0}, {100.0,200.0,200.0}, 1, 0, 60.0, 0, 0, 0, 0, 0, {30, 2, 0, 0}},
+    {-1, 0, {-1.0,-1.0,-1.0}, {-1.0,32.0,32.0}, 1, 0, 0.0, 0, 0, 0, 0, 0, {-1, -1, 0, 0}}
+};
+
+SpriteActor BombLand_room12_sprites[2] = {
+    {18, 0, {1900.0,0.0,-500.0}, {100.0,200.0,200.0}, 1, 0, 60.0, 0, 0, 0, 0, 0, {31, 14, 0, 0}},
+    {-1, 0, {-1.0,-1.0,-1.0}, {-1.0,32.0,32.0}, 1, 0, 0.0, 0, 0, 0, 0, 0, {-1, -1, 0, 0}}
+};
+
+RoomObject BombLand_room0_objects[8] = {
+    {{0.0,0.0,200.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, BL_ROOM0_PIPE_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, BL_METAL_BRIDGE_THING_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, BL_ROOM0_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{1200.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, BL_EXIT2_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{1200.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, BL_EXIT_SHADOW_NORTH_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{1200.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 256, 0, 400.0, 400.0, 0.0, 0.0, 2, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 2, -1, 1, 0, -1, 0, 0},
+    {{1200.0,0.0,0.0}, {4.0,4.0,4.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, 0, 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomActor BombLand_room0_actors[1] = {
+    {ACTOR_NULL, {0.0,0.0,0.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+Collectable BombLand_room0_collectables[2] = {
+    {CROWN, {122.0,700.0,190.0}, 4294967295, 0, 0, 0},
+    {ACTOR_NULL, {0.0,0.0,0.0}, 4294967295, 0, 0, 0}
+};
+
+RoomObject BombLand_room1_objects[13] = {
+    {{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, BL_ROOM1_FLOOR_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, BL_PIPE1_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, BL_PIPE2_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{-1700.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, BL_EXIT1_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{-1700.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, BL_EXIT_SHADOW_SOUTH_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{-1700.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 256, 0, 400.0, 400.0, 0.0, 0.0, 4, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 2, -1, 1, 0, -1, 0, 0},
+    {{-1700.0,0.0,0.0}, {4.0,4.0,4.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, BL_ROOM1_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{1700.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, BL_EXIT2_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{1700.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, BL_EXIT_SHADOW_NORTH_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{1700.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 256, 0, 400.0, 400.0, 0.0, 0.0, 2, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 2, -1, 1, 0, -1, 0, 0},
+    {{1700.0,0.0,0.0}, {4.0,4.0,4.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, 0, 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomActor BombLand_room1_actors[20] = {
+    {WHITE_BOMB, {50.0,0.0,-1400.0}, 0.0, -5000.0, 5000.0, 0, 0.0, -5000.0, 5000.0, 1, 50.0, -1300.0, 4.0, 90.0, 0, 0, 0, 0, 1084227584, 1101004800, 0, 0},
+    {WHITE_BOMB, {0.0,0.0,-1200.0}, 0.0, -5000.0, 5000.0, 0, 0.0, -5000.0, 5000.0, 1, 100.0, -1200.0, 4.0, 90.0, 0, 0, 0, 0, 1084227584, 1092616192, 0, 0},
+    {WHITE_BOMB, {0.0,0.0,-1050.0}, 0.0, -5000.0, 5000.0, 0, 0.0, -5000.0, 5000.0, 1, 100.0, -1050.0, 4.0, 90.0, 0, 0, 0, 0, 1084227584, 1065353216, 0, 0},
+    {WHITE_BOMB, {200.0,0.0,-1400.0}, 0.0, -5000.0, 5000.0, 0, 0.0, -5000.0, 5000.0, 1, 200.0, -1300.0, 4.0, 90.0, 0, 0, 0, 0, 1084227584, 1106247680, 0, 0},
+    {WHITE_BOMB, {350.0,0.0,-1400.0}, 0.0, -5000.0, 5000.0, 0, 0.0, -5000.0, 5000.0, 1, 350.0, -1300.0, 4.0, 90.0, 0, 0, 0, 0, 1084227584, 1109393408, 0, 0},
+    {WHITE_BOMB, {500.0,0.0,-1400.0}, 0.0, -5000.0, 5000.0, 0, 0.0, -5000.0, 5000.0, 1, 500.0, -1300.0, 4.0, 90.0, 0, 0, 0, 0, 1084227584, 1112014848, 0, 0},
+    {WHITE_BOMB, {650.0,0.0,-1400.0}, 0.0, -5000.0, 5000.0, 0, 0.0, -5000.0, 5000.0, 1, 650.0, -1300.0, 4.0, 90.0, 0, 0, 0, 0, 1084227584, 1114636288, 0, 0},
+    {WHITE_BOMB, {800.0,0.0,-1400.0}, 0.0, -5000.0, 5000.0, 0, 0.0, -5000.0, 5000.0, 1, 800.0, -1300.0, 4.0, 90.0, 0, 0, 0, 0, 1084227584, 1116471296, 0, 0},
+    {WHITE_BOMB, {950.0,0.0,-1400.0}, 0.0, -5000.0, 5000.0, 0, 0.0, -5000.0, 5000.0, 1, 950.0, -1300.0, 4.0, 90.0, 0, 0, 0, 0, 1084227584, 1117782016, 0, 0},
+    {WHITE_BOMB, {1100.0,0.0,-1400.0}, 0.0, -5000.0, 5000.0, 0, 0.0, -5000.0, 5000.0, 1, 1100.0, -1300.0, 4.0, 90.0, 0, 0, 0, 0, 1084227584, 1119092736, 0, 0},
+    {WHITE_BOMB, {1250.0,0.0,-1400.0}, 0.0, -5000.0, 5000.0, 0, 0.0, -5000.0, 5000.0, 1, 1250.0, -1300.0, 4.0, 90.0, 0, 0, 0, 0, 1084227584, 1120403456, 0, 0},
+    {WHITE_BOMB, {0.0,0.0,400.0}, 0.0, -5000.0, 5000.0, 0, 0.0, -5000.0, 5000.0, 1, 0.0, 500.0, 4.0, 90.0, 0, 0, 0, 0, 1084227584, 1065353216, 0, 0},
+    {WHITE_BOMB, {-150.0,0.0,400.0}, 0.0, -5000.0, 5000.0, 0, 0.0, -5000.0, 5000.0, 1, -150.0, 500.0, 4.0, 90.0, 0, 0, 0, 0, 1084227584, 1092616192, 0, 0},
+    {WHITE_BOMB, {-300.0,0.0,400.0}, 0.0, -5000.0, 5000.0, 0, 0.0, -5000.0, 5000.0, 1, -300.0, 500.0, 4.0, 90.0, 0, 0, 0, 0, 1084227584, 1101004800, 0, 0},
+    {WHITE_BOMB, {-450.0,0.0,400.0}, 0.0, -5000.0, 5000.0, 0, 0.0, -5000.0, 5000.0, 1, -450.0, 500.0, 4.0, 90.0, 0, 0, 0, 0, 1084227584, 1106247680, 0, 0},
+    {WHITE_BOMB, {-600.0,0.0,400.0}, 0.0, -5000.0, 5000.0, 0, 0.0, -5000.0, 5000.0, 1, -600.0, 500.0, 4.0, 90.0, 0, 0, 0, 0, 1084227584, 1109393408, 0, 0},
+    {MISSILE_SPAWNER, {-800.0,80.0,-500.0}, 0.0, -1300.0, -700.0, -1027080192, 1000.0, -1000.0, 1000.0, 0, 1.0, 10.0, 5.0, 5.0, 1086324736, 1223639552, 0, 0, 1106247680, 1109393408, 1065353216, 0},
+    {MISSILE_SPAWNER, {100.0,80.0,1100.0}, 0.0, -300.0, 400.0, -1027080192, 1000.0, -200.0, 1400.0, 0, 1.0, 10.0, 5.0, 5.0, 1086324736, 1223639552, 0, 0, 1106247680, 1109393408, 1065353216, 0},
+    {MISSILE_SPAWNER, {1200.0,80.0,-200.0}, 0.0, 900.0, 1500.0, -1021968384, 1000.0, -1400.0, 400.0, 0, 1.0, 10.0, 5.0, 5.0, 1086324736, 1223639552, 0, 0, 1106247680, 1109393408, 1065353216, 0},
+    {ACTOR_NULL, {0.0,0.0,0.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+Collectable BombLand_room1_collectables[6] = {
+    {R_HEART, {0.0,0.0,1300.0}, 4294967295, 0, 0, 0},
+    {R_HEART, {400.0,0.0,1300.0}, 4294967295, 0, 0, 0},
+    {CROWN, {-1328.0,0.0,-548.0}, 4294967295, 0, 0, 0},
+    {CROWN, {-979.0,0.0,-573.0}, 4294967295, 0, 0, 0},
+    {CROWN, {0.0,0.0,0.0}, 4, 0, 0, 0},
+    {ACTOR_NULL, {0.0,0.0,0.0}, 4294967295, 0, 0, 0}
+};
+
+RoomObject BombLand_room2_objects[55] = {
+    {{-900.0,0.0,-900.0}, {0.5,1.0,0.5}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, BL_DOOR_POLES_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 34, 4, 4, 0, -1, 0, 0},
+    {{-800.0,0.0,1005.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(180.00000500895632), 7, 28, 90.0, 0.0, 0.0, 0.0, 4, 0, 0, 0, 0, 0, BL_GRENADE_SHUTTERS_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{-400.0,0.0,1005.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(180.00000500895632), 7, 28, 90.0, 0.0, 0.0, 0.0, 4, 0, 0, 0, 0, 0, BL_GRENADE_SHUTTERS_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,1005.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(180.00000500895632), 7, 28, 90.0, 0.0, 0.0, 0.0, 4, 0, 0, 0, 0, 0, BL_GRENADE_SHUTTERS_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{400.0,0.0,1005.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(180.00000500895632), 7, 28, 90.0, 0.0, 0.0, 0.0, 4, 0, 0, 0, 0, 0, BL_GRENADE_SHUTTERS_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{800.0,0.0,1005.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(180.00000500895632), 7, 28, 90.0, 0.0, 0.0, 0.0, 4, 0, 0, 0, 0, 0, BL_GRENADE_SHUTTERS_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{-800.0,0.0,-1005.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(360.00001001791264), 7, 28, 270.0, 0.0, 0.0, 0.0, 4, 0, 0, 0, 0, 0, BL_GRENADE_SHUTTERS_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{-400.0,0.0,-1005.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(360.00001001791264), 7, 28, 270.0, 0.0, 0.0, 0.0, 4, 0, 0, 0, 0, 0, BL_GRENADE_SHUTTERS_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,-1005.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(360.00001001791264), 7, 28, 270.0, 0.0, 0.0, 0.0, 4, 0, 0, 0, 0, 0, BL_GRENADE_SHUTTERS_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{400.0,0.0,-1005.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(360.00001001791264), 7, 28, 270.0, 0.0, 0.0, 0.0, 4, 0, 0, 0, 0, 0, BL_GRENADE_SHUTTERS_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{800.0,0.0,-1005.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(360.00001001791264), 7, 28, 270.0, 0.0, 0.0, 0.0, 4, 0, 0, 0, 0, 0, BL_GRENADE_SHUTTERS_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{1005.0,0.0,-800.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(270.00000068324533), 7, 28, 180.0, 0.0, 0.0, 0.0, 4, 0, 0, 0, 0, 0, BL_GRENADE_SHUTTERS_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{1005.0,0.0,-400.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(270.00000068324533), 7, 28, 180.0, 0.0, 0.0, 0.0, 4, 0, 0, 0, 0, 0, BL_GRENADE_SHUTTERS_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{1005.0,0.0,400.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(270.00000068324533), 7, 28, 180.0, 0.0, 0.0, 0.0, 4, 0, 0, 0, 0, 0, BL_GRENADE_SHUTTERS_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{1005.0,0.0,800.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(270.00000068324533), 7, 28, 180.0, 0.0, 0.0, 0.0, 4, 0, 0, 0, 0, 0, BL_GRENADE_SHUTTERS_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{-1005.0,0.0,-800.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(90.00000250447816), 7, 28, 0.0, 0.0, 0.0, 0.0, 4, 0, 0, 0, 0, 0, BL_GRENADE_SHUTTERS_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{-1005.0,0.0,-400.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(90.00000250447816), 7, 28, 0.0, 0.0, 0.0, 0.0, 4, 0, 0, 0, 0, 0, BL_GRENADE_SHUTTERS_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{-1005.0,0.0,400.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(90.00000250447816), 7, 28, 0.0, 0.0, 0.0, 0.0, 4, 0, 0, 0, 0, 0, BL_GRENADE_SHUTTERS_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{-1005.0,0.0,800.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(90.00000250447816), 7, 28, 0.0, 0.0, 0.0, 0.0, 4, 0, 0, 0, 0, 0, BL_GRENADE_SHUTTERS_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{900.0,0.0,0.0}, {0.75,0.800000011920929,0.75}, 0, 0, 7, 14, 0.0, 0.0, 0.0, 0.0, 0, 0, 60, 2, 2, 0, BL_BREAKABLE_BLOCK_AGAIN_MODEL, -1, -1, -1, NULL, NULL, -2146725768, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{-1200.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.30000001192092896, 1.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, BL_EXIT1_MODEL, -1, -1, -1, &func_800B09C0, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{-1200.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, BL_EXIT_SHADOW_SOUTH_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{-1200.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 256, 0, 400.0, 400.0, 0.0, 0.0, 4, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 2, -1, 1, 0, -1, 0, 0},
+    {{-1200.0,0.0,0.0}, {4.0,4.0,4.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+    {{800.0,0.0,800.0}, {4.0,1.0,4.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337228, 5, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{400.0,0.0,800.0}, {4.0,1.0,4.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337228, 5, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,800.0}, {4.0,1.0,4.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337228, 5, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-400.0,0.0,800.0}, {4.0,1.0,4.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337228, 5, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-800.0,0.0,800.0}, {4.0,1.0,4.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337228, 5, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{800.0,0.0,400.0}, {4.0,1.0,4.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337228, 5, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{400.0,0.0,400.0}, {4.0,1.0,4.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337228, 5, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,400.0}, {4.0,1.0,4.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337228, 5, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-400.0,0.0,400.0}, {4.0,1.0,4.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337228, 5, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-800.0,0.0,400.0}, {4.0,1.0,4.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337228, 5, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{800.0,0.0,0.0}, {4.0,1.0,4.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337228, 5, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{400.0,0.0,0.0}, {4.0,1.0,4.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337228, 5, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {4.0,1.0,4.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337228, 5, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-400.0,0.0,0.0}, {4.0,1.0,4.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337228, 5, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-800.0,0.0,0.0}, {4.0,1.0,4.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337228, 5, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{800.0,0.0,-400.0}, {4.0,1.0,4.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337228, 5, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{400.0,0.0,-400.0}, {4.0,1.0,4.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337228, 5, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,-400.0}, {4.0,1.0,4.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337228, 5, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-400.0,0.0,-400.0}, {4.0,1.0,4.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337228, 5, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-800.0,0.0,-400.0}, {4.0,1.0,4.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337228, 5, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{800.0,0.0,-800.0}, {4.0,1.0,4.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337228, 5, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{400.0,0.0,-800.0}, {4.0,1.0,4.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337228, 5, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,-800.0}, {4.0,1.0,4.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337228, 5, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-400.0,0.0,-800.0}, {4.0,1.0,4.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337228, 5, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-800.0,0.0,-800.0}, {4.0,1.0,4.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337228, 5, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 100.0, 0.0, 0.0, 0.0, 180, 10, 50, 10, -1, 2, BL_ROOM2_MODEL, -1, -1, -1, &RegistShutter, &func_800B118C, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{1200.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, BL_EXIT2_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{1200.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, BL_EXIT_SHADOW_NORTH_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{1200.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 256, 0, 400.0, 400.0, 0.0, 0.0, 2, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 2, -1, 1, 0, -1, 0, 0},
+    {{1200.0,0.0,0.0}, {4.0,4.0,4.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, 0, 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomActor BombLand_room2_actors[3] = {
+    {MISSILE_SPAWNER, {400.0,50.0,-300.0}, 0.0, -800.0, 800.0, 0, 1000.0, -800.0, 800.0, 0, 1.0, 10.0, 5.0, 5.0, 1086324736, 1223639552, 0, 0, 1106247680, 1109393408, 1065353216, 0},
+    {MISSILE_SPAWNER, {400.0,50.0,300.0}, 0.0, -800.0, 800.0, 0, 1000.0, -800.0, 800.0, 0, 1.0, 10.0, 5.0, 5.0, 1086324736, 1223639552, 0, 0, 1106247680, 1109393408, 1065353216, 0},
+    {ACTOR_NULL, {0.0,0.0,0.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+Collectable BombLand_room2_collectables[3] = {
+    {R_HEART, {850.0,300.0,0.0}, 4294967295, 0, 0, 0},
+    {CROWN, {850.0,0.0,0.0}, 4294967295, 0, 0, 0},
+    {ACTOR_NULL, {0.0,0.0,0.0}, 4294967295, 0, 0, 0}
+};
+
+RoomObject BombLand_room3_objects[30] = {
+    {{-1150.0,300.0,950.0}, {1.0,1.0,1.0}, 0, 0, 7, 14, 0.0, 0.0, 0.0, 0.0, 0, 0, 100, -1, -1, 0, BL_BREAKABLE_BLOCK_AGAIN_MODEL, -1, -1, -1, NULL, NULL, -2146725768, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-1150.0,0.0,950.0}, {1.0,1.0,1.0}, 0, 0, 7, 14, 0.0, 0.0, 0.0, 0.0, -1, 0, 100, -1, -1, 0, BL_BREAKABLE_BLOCK_AGAIN_MODEL, -1, -1, -1, NULL, NULL, -2146725768, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-1150.0,0.0,950.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, BL_BLOCK_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{-400.0,300.0,950.0}, {1.0,1.0,1.0}, 0, 0, 7, 14, 0.0, 0.0, 0.0, 0.0, 0, 0, 100, -1, -1, 0, BL_BREAKABLE_BLOCK_AGAIN_MODEL, -1, -1, -1, NULL, NULL, -2146725768, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-400.0,0.0,950.0}, {1.0,1.0,1.0}, 0, 0, 7, 14, 0.0, 0.0, 0.0, 0.0, -1, 0, 100, -1, -1, 0, BL_BREAKABLE_BLOCK_AGAIN_MODEL, -1, -1, -1, NULL, NULL, -2146725768, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-400.0,0.0,950.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, BL_BLOCK_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{350.0,300.0,950.0}, {1.0,1.0,1.0}, 0, 0, 7, 14, 0.0, 0.0, 0.0, 0.0, 0, 0, 100, -1, -1, 0, BL_BREAKABLE_BLOCK_AGAIN_MODEL, -1, -1, -1, NULL, NULL, -2146725768, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{350.0,0.0,950.0}, {1.0,1.0,1.0}, 0, 0, 7, 14, 0.0, 0.0, 0.0, 0.0, -1, 0, 100, -1, -1, 0, BL_BREAKABLE_BLOCK_AGAIN_MODEL, -1, -1, -1, NULL, NULL, -2146725768, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{350.0,0.0,950.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, BL_BLOCK_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{1100.0,600.0,950.0}, {1.0,1.0,1.0}, 0, 0, 7, 14, 0.0, 0.0, 0.0, 0.0, 0, 0, 100, -1, -1, 0, BL_BREAKABLE_BLOCK_AGAIN_MODEL, -1, -1, -1, NULL, NULL, -2146725768, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{1100.0,300.0,950.0}, {1.0,1.0,1.0}, 0, 0, 7, 14, 0.0, 0.0, 0.0, 0.0, -1, 0, 100, -1, -1, 0, BL_BREAKABLE_BLOCK_AGAIN_MODEL, -1, -1, -1, NULL, NULL, -2146725768, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{1100.0,0.0,950.0}, {1.0,1.0,1.0}, 0, 0, 7, 14, 0.0, 0.0, 0.0, 0.0, -1, 0, 100, -1, -1, 0, BL_BREAKABLE_BLOCK_AGAIN_MODEL, -1, -1, -1, NULL, NULL, -2146725768, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{1100.0,0.0,950.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, BL_BLOCK_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{1100.0,0.0,-950.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, BL_BLOCK_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{250.0,0.0,-950.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, BL_BLOCK_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{250.0,0.0,-950.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, BL_POLE_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-1400.0,0.0,-1400.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, BL_POLE_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-1500.0,0.0,-1500.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, BL_BLOCK_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-1700.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, BL_EXIT1_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{-1700.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, BL_EXIT_SHADOW_SOUTH_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{-1700.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 256, 0, 400.0, 400.0, 0.0, 0.0, 4, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 2, -1, 1, 0, -1, 0, 0},
+    {{-1700.0,0.0,0.0}, {4.0,4.0,4.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1.0, 0.20000000298023224, 0.0, 0.0, 0, 0, 0, 0, 0, 0, BL_ROOM3_MODEL, -1, -1, -1, &func_800B09C0, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{1700.0,900.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, BL_EXIT2_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{1700.0,900.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, BL_EXIT_SHADOW_NORTH_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{1700.0,900.0,0.0}, {1.0,1.0,1.0}, 0, 0, 256, 0, 400.0, 400.0, 0.0, 0.0, 2, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 2, -1, 1, 0, -1, 0, 0},
+    {{1700.0,900.0,0.0}, {4.0,4.0,4.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, BL_ROOM3_START_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, BL_ROOM3_END_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, 0, 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomActor BombLand_room3_actors[8] = {
+    {MISSILE_SPAWNER, {-959.0,100.0,-870.0}, 0.0, -800.0, 1000.0, -1007026176, 1500.0, -600.0, 600.0, 0, 1.0, 10.0, 5.0, 5.0, 1086324736, 1226588160, 0, 0, 1101004800, 1109393408, 1065353216, 0},
+    {MISSILE_SPAWNER, {-259.0,100.0,-870.0}, 0.0, -800.0, 1000.0, -1007026176, 1500.0, -600.0, 600.0, 0, 1.0, 10.0, 5.0, 5.0, 1086324736, 1226588160, 0, 0, 1101004800, 1109393408, 1065353216, 0},
+    {MISSILE_SPAWNER, {-259.0,100.0,30.0}, 0.0, -800.0, 1000.0, -1007026176, 1500.0, -600.0, 600.0, 0, 1.0, 10.0, 5.0, 5.0, 1086324736, 1226588160, 0, 0, 1101004800, 1109393408, 1065353216, 0},
+    {MISSILE_SPAWNER, {212.0,300.0,403.0}, 0.0, -800.0, 1000.0, -1007026176, 1500.0, -600.0, 600.0, 0, 1.0, 10.0, 5.0, 4.0, 1084227584, 1226588160, 0, 0, 1101004800, 1109393408, 1065353216, 0},
+    {MISSILE_SPAWNER, {212.0,300.0,-97.0}, 0.0, -800.0, 1000.0, -1007026176, 1500.0, -600.0, 600.0, 0, 1.0, 10.0, 5.0, 4.0, 1084227584, 1226588160, 0, 0, 1101004800, 1109393408, 1065353216, 0},
+    {MISSILE_SPAWNER, {113.0,900.0,460.0}, 0.0, -800.0, 1000.0, -1007026176, 1500.0, -600.0, 600.0, 0, 1.0, 10.0, 5.0, 4.0, 1084227584, 1226588160, 0, 0, 1101004800, 1109393408, 1065353216, 0},
+    {MISSILE_SPAWNER, {113.0,900.0,-40.0}, 0.0, -800.0, 1000.0, -1007026176, 1500.0, -600.0, 600.0, 0, 1.0, 10.0, 5.0, 4.0, 1084227584, 1226588160, 0, 0, 1101004800, 1109393408, 1065353216, 0},
+    {ACTOR_NULL, {0.0,0.0,0.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomObject BombLand_room4_objects[97] = {
+    {{1900.0,1210.0,-1000.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{1900.0,1210.0,-800.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{1900.0,1210.0,-600.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{1900.0,1210.0,-400.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{1900.0,1210.0,-200.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{1700.0,1210.0,-1000.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{1700.0,1210.0,-800.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{1700.0,1210.0,-600.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{1700.0,1210.0,-400.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{1700.0,1210.0,-200.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{1500.0,1210.0,-1000.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{1500.0,1210.0,-800.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{1500.0,1210.0,-600.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{1500.0,1210.0,-400.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{1500.0,1210.0,-200.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{1500.0,1210.0,0.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{1500.0,1210.0,200.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{1500.0,1210.0,400.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{1500.0,1210.0,600.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{1300.0,1210.0,-1000.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{1300.0,1210.0,-800.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{1300.0,1210.0,-600.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{1300.0,1210.0,-400.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{1300.0,1210.0,-200.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{1300.0,1210.0,0.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{1300.0,1210.0,200.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{1300.0,1210.0,400.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{1300.0,1210.0,600.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{1100.0,1210.0,-1000.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{1100.0,1210.0,-800.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{1100.0,1210.0,-600.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{1100.0,1210.0,-400.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{1100.0,1210.0,-200.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{1100.0,1210.0,0.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{1100.0,1210.0,200.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{1100.0,1210.0,400.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{1100.0,1210.0,600.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{900.0,1210.0,-1000.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{900.0,1210.0,-800.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{900.0,1210.0,-600.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{900.0,1210.0,-400.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{900.0,1210.0,-200.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{900.0,1210.0,0.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{900.0,1210.0,200.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{900.0,1210.0,400.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{900.0,1210.0,600.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{700.0,1210.0,-1000.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{700.0,1210.0,-800.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{700.0,1210.0,-600.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{700.0,1210.0,-400.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{700.0,1210.0,-200.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{700.0,1210.0,0.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{700.0,1210.0,200.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{700.0,1210.0,400.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{700.0,1210.0,600.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{500.0,1210.0,-1000.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{500.0,1210.0,-800.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{500.0,1210.0,-600.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{500.0,1210.0,-400.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{500.0,1210.0,-200.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{500.0,1210.0,0.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{500.0,1210.0,200.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{500.0,1210.0,400.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{500.0,1210.0,600.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{300.0,1210.0,-1000.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{300.0,1210.0,-800.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{300.0,1210.0,-600.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{300.0,1210.0,-400.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{300.0,1210.0,-200.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{300.0,1210.0,0.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{300.0,1210.0,200.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{300.0,1210.0,400.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{300.0,1210.0,600.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{100.0,1210.0,-1000.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{100.0,1210.0,-800.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{100.0,1210.0,-600.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{100.0,1210.0,-400.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{100.0,1210.0,-200.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{100.0,1210.0,0.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{100.0,1210.0,200.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{100.0,1210.0,400.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{100.0,1210.0,600.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-300.0,1200.0,-200.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, BL_POLE_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 6, 4, 4, 0, -1, 0, 0},
+    {{0.0,1200.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, BL_WALL_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{0.0,1200.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, BL_ROOM4_END1_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{0.0,1200.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, BL_ROOM4_END2_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{0.0,1200.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, BL_ROOM4_START_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{-2200.0,1200.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, BL_EXIT1_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{-2200.0,1200.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, BL_EXIT_SHADOW_SOUTH_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{-2200.0,1200.0,0.0}, {1.0,1.0,1.0}, 0, 0, 256, 0, 400.0, 400.0, 0.0, 0.0, 4, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 2, -1, 1, 0, -1, 0, 0},
+    {{-2200.0,1200.0,0.0}, {4.0,4.0,4.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+    {{0.0,1200.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 28, 5, 0, 0, 0, 0, BL_ROOM4_MODEL, -1, -1, -1, &func_800B088C, &func_800B08C8, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{1000.0,1900.0,1200.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, BL_EXIT3_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{1000.0,1900.0,1200.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, BL_EXIT_SHADOW_EAST_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{1000.0,1900.0,1200.0}, {1.0,1.0,1.0}, 0, 0, 256, 0, 400.0, 400.0, 0.0, 0.0, 3, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 2, -1, 1, 0, -1, 0, 0},
+    {{1000.0,1900.0,1200.0}, {4.0,4.0,4.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, 0, 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomActor BombLand_room4_actors[10] = {
+    {WHITE_BOMB, {350.0,1210.0,450.0}, 0.0, -5000.0, 5000.0, 0, 0.0, -5000.0, 5000.0, 1, 350.0, -450.0, 16.0, 90.0, 0, 0, 0, 0, 1082130432, 1065353216, 0, 0},
+    {WHITE_BOMB, {500.0,1210.0,-450.0}, 0.0, -5000.0, 5000.0, 0, 0.0, -5000.0, 5000.0, 1, 500.0, 450.0, 16.0, 90.0, 0, 0, 0, 0, 1082130432, 1065353216, 0, 0},
+    {WHITE_BOMB, {650.0,1210.0,450.0}, 0.0, -5000.0, 5000.0, 0, 0.0, -5000.0, 5000.0, 1, 650.0, -450.0, 16.0, 90.0, 0, 0, 0, 0, 1082130432, 1092616192, 0, 0},
+    {WHITE_BOMB, {800.0,1210.0,-450.0}, 0.0, -5000.0, 5000.0, 0, 0.0, -5000.0, 5000.0, 1, 800.0, 450.0, 16.0, 90.0, 0, 0, 0, 0, 1082130432, 1092616192, 0, 0},
+    {WHITE_BOMB, {950.0,1210.0,450.0}, 0.0, -5000.0, 5000.0, 0, 0.0, -5000.0, 5000.0, 1, 950.0, -450.0, 16.0, 90.0, 0, 0, 0, 0, 1082130432, 1101004800, 0, 0},
+    {WHITE_BOMB, {1100.0,1210.0,-450.0}, 0.0, -5000.0, 5000.0, 0, 0.0, -5000.0, 5000.0, 1, 1100.0, 450.0, 16.0, 90.0, 0, 0, 0, 0, 1082130432, 1101004800, 0, 0},
+    {WHITE_BOMB, {1250.0,1210.0,450.0}, 0.0, -5000.0, 5000.0, 0, 0.0, -5000.0, 5000.0, 1, 1250.0, -450.0, 16.0, 90.0, 0, 0, 0, 0, 1082130432, 1106247680, 0, 0},
+    {WHITE_BOMB, {1400.0,1210.0,-450.0}, 0.0, -5000.0, 5000.0, 0, 0.0, -5000.0, 5000.0, 1, 1400.0, 450.0, 16.0, 90.0, 0, 0, 0, 0, 1082130432, 1106247680, 0, 0},
+    {MISSILE_SPAWNER, {0.0,1250.0,-700.0}, 0.0, -10000.0, 10000.0, -971227136, 10000.0, -10000.0, 10000.0, 0, 1.5, 20.0, 5.0, 5.0, 1086324736, 1232348160, 1077936128, 0, 1106247680, 1109393408, 1065353216, 0},
+    {ACTOR_NULL, {0.0,0.0,0.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+Collectable BombLand_room4_collectables[2] = {
+    {CROWN, {1700.0,1550.0,250.0}, 5, 0, 0, 0},
+    {ACTOR_NULL, {0.0,0.0,0.0}, 4294967295, 0, 0, 0}
+};
+
+RoomObject BombLand_room5_objects[20] = {
+    {{0.0,1900.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, BL_POLE_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 6, 4, 4, 0, -1, 0, 0},
+    {{0.0,1900.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, BL_ROOM5_START_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{0.0,1900.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, BL_ROOM5_END_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{0.0,1900.0,-1200.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, BL_EXIT4_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{0.0,1900.0,-1200.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, BL_EXIT_SHADOW_WEST_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{0.0,1900.0,-1200.0}, {1.0,1.0,1.0}, 0, 0, 256, 0, 400.0, 400.0, 0.0, 0.0, 1, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 2, -1, 1, 0, -1, 0, 0},
+    {{0.0,1900.0,-1200.0}, {4.0,4.0,4.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+    {{0.0,1900.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, BL_ROOM5_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{-1200.0,1900.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, BL_EXIT1_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{-1200.0,1900.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, BL_EXIT_SHADOW_SOUTH_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{-1200.0,1900.0,0.0}, {1.0,1.0,1.0}, 0, 0, 256, 0, 400.0, 400.0, 0.0, 0.0, 4, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 2, -1, 1, 0, -1, 0, 0},
+    {{-1200.0,1900.0,0.0}, {4.0,4.0,4.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+    {{1200.0,1900.0,-400.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, BL_EXIT2_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{1200.0,1900.0,-400.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, BL_EXIT_SHADOW_NORTH_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{1200.0,1900.0,-400.0}, {1.0,1.0,1.0}, 0, 0, 256, 0, 400.0, 400.0, 0.0, 0.0, 2, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 2, -1, 1, 0, -1, 0, 0},
+    {{1200.0,1900.0,-400.0}, {4.0,4.0,4.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+    {{1050.0,1900.0,-400.0}, {1.0,1.0,0.125}, 2, DEGREES_TO_RADIANS_2PI(90.00000250447816), 7, 11, 1050.0, 2300.0, -400.0, 0.0, 2, 20, -1, 40, 0, 0, BL_UNK72_MODEL, -1, -1, 8, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{0.0,2500.0,500.0}, {1.0,1.0,1.0}, 2, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, BL_LONG_PIPE_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{500.0,2500.0,0.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(90.00000250447816), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, BL_LONG_PIPE_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, 0, 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+SpriteActor BombLand_room5_sprites[2] = {
+    {19, 0, {800.0,1900.0,-600.0}, {100.0,200.0,200.0}, 1, 0, 60.0, 0, 0, 0, 0, 0, {8, 9, 5, 2}},
+    {-1, 0, {-1.0,-1.0,-1.0}, {-1.0,32.0,32.0}, 1, 0, 0.0, 0, 0, 0, 0, 0, {-1, -1, 0, 0}}
+};
+
+RoomActor BombLand_room5_actors[1] = {
+    {ACTOR_NULL, {0.0,0.0,0.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+Collectable BombLand_room5_collectables[3] = {
+    {CROWN, {487.0,2550.0,-764.0}, 4294967295, 0, 0, 0},
+    {CROWN, {-713.0,2550.0,480.0}, 4294967295, 0, 0, 0},
+    {ACTOR_NULL, {0.0,0.0,0.0}, 4294967295, 0, 0, 0}
+};
+
+RoomObject BombLand_room6_objects[56] = {
+    {{900.0,0.0,-900.0}, {0.5,1.0,0.5}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, BL_DOOR_POLES_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 34, 4, 4, 0, -1, 0, 0},
+    {{-800.0,0.0,1005.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(180.00000500895632), 7, 28, 90.0, 0.0, 0.0, 0.0, 4, 0, 0, 0, 0, 0, BL_GRENADE_SHUTTERS_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{-400.0,0.0,1005.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(180.00000500895632), 7, 28, 90.0, 0.0, 0.0, 0.0, 4, 0, 0, 0, 0, 0, BL_GRENADE_SHUTTERS_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,1005.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(180.00000500895632), 7, 28, 90.0, 0.0, 0.0, 0.0, 4, 0, 0, 0, 0, 0, BL_GRENADE_SHUTTERS_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{400.0,0.0,1005.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(180.00000500895632), 7, 28, 90.0, 0.0, 0.0, 0.0, 4, 0, 0, 0, 0, 0, BL_GRENADE_SHUTTERS_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{800.0,0.0,1005.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(180.00000500895632), 7, 28, 90.0, 0.0, 0.0, 0.0, 4, 0, 0, 0, 0, 0, BL_GRENADE_SHUTTERS_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{-800.0,0.0,-1005.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(360.00001001791264), 7, 28, 270.0, 0.0, 0.0, 0.0, 4, 0, 0, 0, 0, 0, BL_GRENADE_SHUTTERS_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{-400.0,0.0,-1005.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(360.00001001791264), 7, 28, 270.0, 0.0, 0.0, 0.0, 4, 0, 0, 0, 0, 0, BL_GRENADE_SHUTTERS_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,-1005.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(360.00001001791264), 7, 28, 270.0, 0.0, 0.0, 0.0, 4, 0, 0, 0, 0, 0, BL_GRENADE_SHUTTERS_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{400.0,0.0,-1005.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(360.00001001791264), 7, 28, 270.0, 0.0, 0.0, 0.0, 4, 0, 0, 0, 0, 0, BL_GRENADE_SHUTTERS_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{800.0,0.0,-1005.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(360.00001001791264), 7, 28, 270.0, 0.0, 0.0, 0.0, 4, 0, 0, 0, 0, 0, BL_GRENADE_SHUTTERS_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{1005.0,0.0,-800.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(270.00000068324533), 7, 28, 180.0, 0.0, 0.0, 0.0, 4, 0, 0, 0, 0, 0, BL_GRENADE_SHUTTERS_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{1005.0,0.0,-400.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(270.00000068324533), 7, 28, 180.0, 0.0, 0.0, 0.0, 4, 0, 0, 0, 0, 0, BL_GRENADE_SHUTTERS_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{1005.0,0.0,400.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(270.00000068324533), 7, 28, 180.0, 0.0, 0.0, 0.0, 4, 0, 0, 0, 0, 0, BL_GRENADE_SHUTTERS_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{1005.0,0.0,800.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(270.00000068324533), 7, 28, 180.0, 0.0, 0.0, 0.0, 4, 0, 0, 0, 0, 0, BL_GRENADE_SHUTTERS_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{-1005.0,0.0,-800.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(90.00000250447816), 7, 28, 0.0, 0.0, 0.0, 0.0, 4, 0, 0, 0, 0, 0, BL_GRENADE_SHUTTERS_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{-1005.0,0.0,-400.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(90.00000250447816), 7, 28, 0.0, 0.0, 0.0, 0.0, 4, 0, 0, 0, 0, 0, BL_GRENADE_SHUTTERS_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{-1005.0,0.0,400.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(90.00000250447816), 7, 28, 0.0, 0.0, 0.0, 0.0, 4, 0, 0, 0, 0, 0, BL_GRENADE_SHUTTERS_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{-1005.0,0.0,800.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(90.00000250447816), 7, 28, 0.0, 0.0, 0.0, 0.0, 4, 0, 0, 0, 0, 0, BL_GRENADE_SHUTTERS_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{800.0,0.0,800.0}, {4.0,1.0,4.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337228, 5, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{400.0,0.0,800.0}, {4.0,1.0,4.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337228, 5, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,800.0}, {4.0,1.0,4.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337228, 5, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-400.0,0.0,800.0}, {4.0,1.0,4.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337228, 5, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-800.0,0.0,800.0}, {4.0,1.0,4.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337228, 5, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{800.0,0.0,400.0}, {4.0,1.0,4.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337228, 5, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{400.0,0.0,400.0}, {4.0,1.0,4.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337228, 5, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,400.0}, {4.0,1.0,4.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337228, 5, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-400.0,0.0,400.0}, {4.0,1.0,4.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337228, 5, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-800.0,0.0,400.0}, {4.0,1.0,4.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337228, 5, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{800.0,0.0,0.0}, {4.0,1.0,4.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337228, 5, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{400.0,0.0,0.0}, {4.0,1.0,4.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337228, 5, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{0.0,10.0,0.0}, {2.0,1.0,1.3333333730697632}, 0, 0, 7, 14, 0.0, 0.0, 0.0, 0.0, 0, 0, 20, 10, 10, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146725768, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{0.0,-10.0,0.0}, {4.0,1.0,4.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, BL_O_RESULT_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-400.0,0.0,0.0}, {4.0,1.0,4.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337228, 5, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-800.0,0.0,0.0}, {4.0,1.0,4.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337228, 5, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{800.0,0.0,-400.0}, {4.0,1.0,4.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337228, 5, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{400.0,0.0,-400.0}, {4.0,1.0,4.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337228, 5, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,-400.0}, {4.0,1.0,4.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337228, 5, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-400.0,0.0,-400.0}, {4.0,1.0,4.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337228, 5, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-800.0,0.0,-400.0}, {4.0,1.0,4.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337228, 5, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{800.0,0.0,-800.0}, {4.0,1.0,4.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337228, 5, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{400.0,0.0,-800.0}, {4.0,1.0,4.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337228, 5, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,-800.0}, {4.0,1.0,4.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337228, 5, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-400.0,0.0,-800.0}, {4.0,1.0,4.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337228, 5, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-800.0,0.0,-800.0}, {4.0,1.0,4.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337228, 5, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-1050.0,0.0,0.0}, {0.20000000298023224,1.0,1.0}, 0, 0, 7, 11, -1050.0, 500.0, 0.0, 0.0, 1, 20, 1, 40, 0, 0, BL_UNK72_MODEL, -1, -1, 10, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{1200.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.30000001192092896, 1.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, BL_EXIT2_MODEL, -1, -1, -1, &func_800B09C0, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{1200.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 10, 0, 0, 0, 0, 0, BL_EXIT_SHADOW_NORTH_MODEL, -1, -1, -1, &func_800B09E8, &func_800D91D8, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{1200.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 256, 0, 400.0, 400.0, 0.0, 0.0, 2, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 2, -1, 1, 0, -1, 0, 0},
+    {{1200.0,0.0,0.0}, {4.0,4.0,4.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 100.0, 0.0, 0.0, 0.0, 180, 10, 50, 10, -1, 10, BL_ROOM6_MODEL, -1, -1, -1, &RegistShutter, &func_800B118C, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{-1200.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, BL_EXIT1_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{-1200.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, BL_EXIT_SHADOW_SOUTH_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{-1200.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 256, 0, 400.0, 400.0, 0.0, 0.0, 4, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 2, -1, 1, 0, -1, 0, 0},
+    {{-1200.0,0.0,0.0}, {4.0,4.0,4.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, 0, 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomActor BombLand_room6_actors[4] = {
+    {GRENADE, {0.0,10.0,0.0}, 1.0, -200.0, 200.0, 0, 0.0, -200.0, 200.0, 0, 3.0, 5.0, 0.0, 0.0, 0, 0, 0, 0, 1129447424, 1092616192, 0, 0},
+    {MISSILE_SPAWNER, {0.0,50.0,-700.0}, 0.0, -800.0, 800.0, 0, 1000.0, -800.0, 800.0, 0, 1.0, 10.0, 5.0, 5.0, 1082130432, 1232348160, 0, 0, 1101004800, 1109393408, 1065353216, 0},
+    {MISSILE_SPAWNER, {0.0,50.0,700.0}, 0.0, -800.0, 800.0, 0, 1000.0, -800.0, 800.0, 0, 1.0, 10.0, 5.0, 5.0, 1082130432, 1232348160, 0, 0, 1101004800, 1109393408, 1065353216, 0},
+    {ACTOR_NULL, {0.0,0.0,0.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+RoomObject BombLand_room7_objects[30] = {
+    {{0.0,-50.0,450.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, BL_LONG_PIPE_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 0, 4, 4, 0, -1, 0, 0},
+    {{0.0,-50.0,-450.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, BL_LONG_PIPE_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 0, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, BL_ROOM7_START_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, BL_ROOM7_END_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{-1500.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 18, 0.0, 0.0, 0.0, 0.0, 1, 1, 126, -1, 30, 0, BL_DOOR_WALL_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{-1300.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 18, 0.0, 0.0, 0.0, 0.0, 1, 1, 126, -1, 30, 0, BL_DOOR_WALL_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{-1100.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 18, 0.0, 0.0, 0.0, 0.0, 1, 1, 126, -1, 30, 0, BL_DOOR_WALL_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{-900.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 18, 0.0, 0.0, 0.0, 0.0, 1, 1, 126, -1, 30, 0, BL_DOOR_WALL_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{-700.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 18, 0.0, 0.0, 0.0, 0.0, 1, 1, 126, -1, 30, 0, BL_DOOR_WALL_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{-500.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 18, 0.0, 0.0, 0.0, 0.0, 1, 1, 126, -1, 30, 0, BL_DOOR_WALL_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{-300.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 18, 0.0, 0.0, 0.0, 0.0, 1, 1, 126, -1, 30, 0, BL_DOOR_WALL_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{-100.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 18, 0.0, 0.0, 0.0, 0.0, 1, 1, 126, -1, 30, 0, BL_DOOR_WALL_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{100.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 18, 0.0, 0.0, 0.0, 0.0, 1, 1, 126, -1, 30, 0, BL_DOOR_WALL_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{300.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 18, 0.0, 0.0, 0.0, 0.0, 1, 1, 126, -1, 30, 0, BL_DOOR_WALL_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{500.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 18, 0.0, 0.0, 0.0, 0.0, 1, 1, 126, -1, 30, 0, BL_DOOR_WALL_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{700.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 18, 0.0, 0.0, 0.0, 0.0, 1, 1, 126, -1, 30, 0, BL_DOOR_WALL_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{900.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 18, 0.0, 0.0, 0.0, 0.0, 1, 1, 126, -1, 30, 0, BL_DOOR_WALL_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{1100.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 18, 0.0, 0.0, 0.0, 0.0, 1, 1, 126, -1, 30, 0, BL_DOOR_WALL_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{1300.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 18, 0.0, 0.0, 0.0, 0.0, 1, 1, 126, -1, 30, 0, BL_DOOR_WALL_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{1500.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 18, 0.0, 0.0, 0.0, 0.0, 1, 1, 126, -1, 30, 0, BL_DOOR_WALL_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{2200.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, BL_EXIT2_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{2200.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, BL_EXIT_SHADOW_NORTH_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{2200.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 256, 0, 400.0, 400.0, 0.0, 0.0, 2, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 2, -1, 1, 0, -1, 0, 0},
+    {{2200.0,0.0,0.0}, {4.0,4.0,4.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, BL_ROOM7_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{-2200.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, BL_EXIT1_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{-2200.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, BL_EXIT_SHADOW_SOUTH_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{-2200.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 256, 0, 400.0, 400.0, 0.0, 0.0, 4, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 2, -1, 1, 0, -1, 0, 0},
+    {{-2200.0,0.0,0.0}, {4.0,4.0,4.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, 0, 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomActor BombLand_room7_actors[3] = {
+    {CANNON, {500.0,200.0,1000.0}, 90.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0, 500.0, 0.0, 0.0, 26.0, 1133903872, 1145569280, 0, 0, 0, 0, 0, 0},
+    {CANNON, {-500.0,200.0,1000.0}, 90.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0, -500.0, 0.0, 0.0, 26.0, 1133903872, 1145569280, 0, 0, 0, 0, 0, 0},
+    {ACTOR_NULL, {0.0,0.0,0.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomObject BombLand_room8_objects[36] = {
+    {{1000.0,600.0,950.0}, {1.0,1.0,1.0}, 0, 0, 7, 14, 0.0, 0.0, 0.0, 0.0, 0, 0, 100, -1, -1, 0, BL_BREAKABLE_BLOCK_AGAIN_MODEL, -1, -1, -1, NULL, NULL, -2146725768, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{1000.0,300.0,950.0}, {1.0,1.0,1.0}, 0, 0, 7, 14, 0.0, 0.0, 0.0, 0.0, -1, 0, 100, -1, -1, 0, BL_BREAKABLE_BLOCK_AGAIN_MODEL, -1, -1, -1, NULL, NULL, -2146725768, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{1000.0,0.0,950.0}, {1.0,1.0,1.0}, 0, 0, 7, 14, 0.0, 0.0, 0.0, 0.0, -1, 0, 100, -1, -1, 0, BL_BREAKABLE_BLOCK_AGAIN_MODEL, -1, -1, -1, NULL, NULL, -2146725768, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{1000.0,0.0,950.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, BL_BLOCK_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{250.0,300.0,1250.0}, {1.0,1.0,1.0}, 0, 0, 7, 14, 0.0, 0.0, 0.0, 0.0, 0, 0, 100, -1, -1, 0, BL_BREAKABLE_BLOCK_AGAIN_MODEL, -1, -1, -1, NULL, NULL, -2146725768, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{250.0,0.0,1250.0}, {1.0,1.0,1.0}, 0, 0, 7, 14, 0.0, 0.0, 0.0, 0.0, -1, 0, 100, -1, -1, 0, BL_BREAKABLE_BLOCK_AGAIN_MODEL, -1, -1, -1, NULL, NULL, -2146725768, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{250.0,0.0,1250.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, BL_BLOCK_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{-500.0,900.0,1250.0}, {1.0,1.0,1.0}, 0, 0, 7, 14, 0.0, 0.0, 0.0, 0.0, -1, 0, 100, -1, -1, 0, BL_BREAKABLE_BLOCK_AGAIN_MODEL, -1, -1, -1, NULL, NULL, -2146725768, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-500.0,600.0,1250.0}, {1.0,1.0,1.0}, 0, 0, 7, 14, 0.0, 0.0, 0.0, 0.0, -1, 0, 100, -1, -1, 0, BL_BREAKABLE_BLOCK_AGAIN_MODEL, -1, -1, -1, NULL, NULL, -2146725768, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-500.0,300.0,1250.0}, {1.0,1.0,1.0}, 0, 0, 7, 14, 0.0, 0.0, 0.0, 0.0, -1, 0, 100, -1, -1, 0, BL_BREAKABLE_BLOCK_AGAIN_MODEL, -1, -1, -1, NULL, NULL, -2146725768, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-500.0,0.0,1250.0}, {1.0,1.0,1.0}, 0, 0, 7, 14, 0.0, 0.0, 0.0, 0.0, -1, 0, 100, -1, -1, 0, BL_BREAKABLE_BLOCK_AGAIN_MODEL, -1, -1, -1, NULL, NULL, -2146725768, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-500.0,0.0,1250.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, BL_BLOCK_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{-1250.0,1500.0,850.0}, {1.0,1.0,1.0}, 0, 0, 7, 14, 0.0, 0.0, 0.0, 0.0, 0, 0, 100, -1, -1, 0, BL_BREAKABLE_BLOCK_AGAIN_MODEL, -1, -1, -1, NULL, NULL, -2146725768, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-1250.0,1200.0,850.0}, {1.0,1.0,1.0}, 0, 0, 7, 14, 0.0, 0.0, 0.0, 0.0, -1, 0, 100, -1, -1, 0, BL_BREAKABLE_BLOCK_AGAIN_MODEL, -1, -1, -1, NULL, NULL, -2146725768, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-1250.0,900.0,850.0}, {1.0,1.0,1.0}, 0, 0, 7, 14, 0.0, 0.0, 0.0, 0.0, -1, 0, 100, -1, -1, 0, BL_BREAKABLE_BLOCK_AGAIN_MODEL, -1, -1, -1, NULL, NULL, -2146725768, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-1250.0,600.0,850.0}, {1.0,1.0,1.0}, 0, 0, 7, 14, 0.0, 0.0, 0.0, 0.0, -1, 0, 100, -1, -1, 0, BL_BREAKABLE_BLOCK_AGAIN_MODEL, -1, -1, -1, NULL, NULL, -2146725768, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-1250.0,300.0,850.0}, {1.0,1.0,1.0}, 0, 0, 7, 14, 0.0, 0.0, 0.0, 0.0, -1, 0, 100, -1, -1, 0, BL_BREAKABLE_BLOCK_AGAIN_MODEL, -1, -1, -1, NULL, NULL, -2146725768, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-1250.0,0.0,850.0}, {1.0,1.0,1.0}, 0, 0, 7, 14, 0.0, 0.0, 0.0, 0.0, -1, 0, 100, -1, -1, 0, BL_BREAKABLE_BLOCK_AGAIN_MODEL, -1, -1, -1, NULL, NULL, -2146725768, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-1250.0,0.0,850.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, BL_BLOCK_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{-1250.0,0.0,-850.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, BL_BLOCK_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{-200.0,0.0,-1250.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, BL_BLOCK_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{-200.0,0.0,-1250.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, BL_POLE_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{1400.0,0.0,-1400.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, BL_POLE_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{1500.0,0.0,-1500.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, BL_BLOCK_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, BL_ROOM8_START_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, BL_ROOM8_END_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{1700.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, BL_EXIT2_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{1700.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, BL_EXIT_SHADOW_NORTH_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{1700.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 256, 0, 400.0, 400.0, 0.0, 0.0, 2, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 2, -1, 1, 0, -1, 0, 0},
+    {{1700.0,0.0,0.0}, {4.0,4.0,4.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1.0, 0.20000000298023224, 0.0, 0.0, 0, 0, 0, 0, 0, 0, BL_ROOM8_MODEL, -1, -1, -1, &func_800B09C0, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{-1700.0,1500.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, BL_EXIT1_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{-1700.0,1500.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, BL_EXIT_SHADOW_SOUTH_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{-1700.0,1500.0,0.0}, {1.0,1.0,1.0}, 0, 0, 256, 0, 400.0, 400.0, 0.0, 0.0, 4, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 2, -1, 1, 0, -1, 0, 0},
+    {{-1700.0,1500.0,0.0}, {4.0,4.0,4.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, 0, 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomActor BombLand_room8_actors[8] = {
+    {MISSILE_SPAWNER, {1201.0,50.0,-818.0}, 0.0, -900.0, 700.0, 0, 1500.0, -800.0, 800.0, 0, 3.0, 10.0, 2.0, 4.0, 1084227584, 1226588160, 0, 0, 1092616192, 1101004800, 1065353216, 0},
+    {MISSILE_SPAWNER, {301.0,50.0,-818.0}, 0.0, -900.0, 700.0, 0, 1500.0, -800.0, 800.0, 0, 3.0, 10.0, 2.0, 4.0, 1084227584, 1226588160, 0, 0, 1092616192, 1101004800, 1065353216, 0},
+    {MISSILE_SPAWNER, {301.0,50.0,-18.0}, 0.0, -900.0, 700.0, 0, 1500.0, -800.0, 800.0, 0, 3.0, 10.0, 2.0, 4.0, 1084227584, 1226588160, 0, 0, 1092616192, 1101004800, 1065353216, 0},
+    {MISSILE_SPAWNER, {-399.0,600.0,182.0}, 0.0, -900.0, 700.0, -1007026176, 1500.0, -800.0, 800.0, 0, 3.0, 10.0, 2.0, 4.0, 1084227584, 1226588160, 0, 0, 1092616192, 1101004800, 1065353216, 0},
+    {MISSILE_SPAWNER, {-400.0,900.0,700.0}, 0.0, -900.0, 700.0, -1007026176, 1500.0, -800.0, 800.0, 0, 3.0, 10.0, 2.0, 4.0, 1084227584, 1236256768, 0, 0, 1092616192, 1101004800, 1065353216, 0},
+    {MISSILE_SPAWNER, {-864.0,900.0,186.0}, 0.0, -900.0, 700.0, 0, 1500.0, -800.0, 800.0, 0, 3.0, 10.0, 2.0, 4.0, 1084227584, 1236256768, 0, 0, 1092616192, 1101004800, 1065353216, 0},
+    {MISSILE_SPAWNER, {-394.0,1000.0,-48.0}, 0.0, -900.0, 700.0, 0, 1500.0, -800.0, 800.0, 0, 3.0, 10.0, 2.0, 4.0, 1084227584, 1236256768, 0, 0, 1092616192, 1101004800, 1065353216, 0},
+    {ACTOR_NULL, {0.0,0.0,0.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+Collectable BombLand_room8_collectables[7] = {
+    {CROWN, {-1250.0,0.0,-850.0}, 4294967295, 0, 0, 0},
+    {CROWN, {-500.0,0.0,1200.0}, 4294967295, 0, 0, 0},
+    {CARROT, {-1245.0,0.0,840.0}, 4294967295, 0, 0, 0},
+    {R_HEART, {1003.0,300.0,929.0}, 4294967295, 0, 0, 0},
+    {R_HEART, {-469.0,900.0,1220.0}, 4294967295, 0, 0, 0},
+    {O_HEART, {-1290.0,1500.0,-3.0}, 4294967295, 0, 0, 0},
+    {ACTOR_NULL, {0.0,0.0,0.0}, 4294967295, 0, 0, 0}
+};
+
+RoomObject BombLand_room9_objects[102] = {
+    {{-100.0,10.0,-1000.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-100.0,10.0,-800.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-100.0,10.0,-600.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-100.0,10.0,-400.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-100.0,10.0,-200.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-100.0,10.0,0.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-100.0,10.0,200.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-100.0,10.0,400.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-100.0,10.0,600.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-300.0,10.0,-1000.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-300.0,10.0,-800.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-300.0,10.0,-600.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-300.0,10.0,-400.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-300.0,10.0,-200.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-300.0,10.0,0.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-300.0,10.0,200.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-300.0,10.0,400.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-300.0,10.0,600.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-500.0,10.0,-1000.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-500.0,10.0,-800.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-500.0,10.0,-600.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-500.0,10.0,-400.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-500.0,10.0,-200.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-500.0,10.0,0.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-500.0,10.0,200.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-500.0,10.0,400.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-500.0,10.0,600.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-700.0,10.0,-1000.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-700.0,10.0,-800.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-700.0,10.0,-600.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-700.0,10.0,-400.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-700.0,10.0,-200.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-700.0,10.0,0.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-700.0,10.0,200.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-700.0,10.0,400.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-700.0,10.0,600.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-900.0,10.0,-1000.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-900.0,10.0,-800.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-900.0,10.0,-600.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-900.0,10.0,-400.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-900.0,10.0,-200.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-900.0,10.0,0.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-900.0,10.0,200.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-900.0,10.0,400.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-900.0,10.0,600.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-1100.0,10.0,-1000.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-1100.0,10.0,-800.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-1100.0,10.0,-600.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-1100.0,10.0,-400.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-1100.0,10.0,-200.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-1100.0,10.0,0.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-1100.0,10.0,200.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-1100.0,10.0,400.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-1100.0,10.0,600.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-1300.0,10.0,-1000.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-1300.0,10.0,-800.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-1300.0,10.0,-600.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-1300.0,10.0,-400.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-1300.0,10.0,-200.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-1300.0,10.0,0.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-1300.0,10.0,200.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-1300.0,10.0,400.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-1300.0,10.0,600.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-1500.0,10.0,-1000.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-1500.0,10.0,-800.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-1500.0,10.0,-600.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-1500.0,10.0,-400.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-1500.0,10.0,-200.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-1500.0,10.0,0.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-1500.0,10.0,200.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-1500.0,10.0,400.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-1500.0,10.0,600.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-1700.0,10.0,-1000.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-1700.0,10.0,-800.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-1700.0,10.0,-600.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-1700.0,10.0,-400.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-1700.0,10.0,-200.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-1700.0,10.0,0.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-1700.0,10.0,200.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-1700.0,10.0,400.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-1900.0,10.0,-1000.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-1900.0,10.0,-800.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-1900.0,10.0,-600.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-1900.0,10.0,-400.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-1900.0,10.0,-200.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-1900.0,10.0,0.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-1900.0,10.0,200.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-1900.0,10.0,400.0}, {2.0,1.0,2.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337064, 2, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{400.0,0.0,-200.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, BL_POLE_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 6, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, BL_ROOM9_END1_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, BL_ROOM9_END2_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, BL_ROOM9_START_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{2200.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, BL_EXIT2_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{2200.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, BL_EXIT_SHADOW_NORTH_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{2200.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 256, 0, 400.0, 400.0, 0.0, 0.0, 2, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 2, -1, 1, 0, -1, 0, 0},
+    {{2200.0,0.0,0.0}, {4.0,4.0,4.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 29, 6, 0, 0, 0, 0, BL_ROOM9_MODEL, -1, -1, -1, &func_800B088C, &func_800B08C8, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{-1000.0,700.0,1200.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, BL_EXIT3_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{-1000.0,700.0,1200.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, BL_EXIT_SHADOW_EAST_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{-1000.0,700.0,1200.0}, {1.0,1.0,1.0}, 0, 0, 256, 0, 400.0, 400.0, 0.0, 0.0, 3, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 2, -1, 1, 0, -1, 0, 0},
+    {{-1000.0,700.0,1200.0}, {4.0,4.0,4.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, 0, 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomActor BombLand_room9_actors[10] = {
+    {WHITE_BOMB, {-1370.0,10.0,0.0}, 0.0, -5000.0, 5000.0, 0, 0.0, -5000.0, 5000.0, 1, -1370.0, 0.0, 0.0, 90.0, 0, 0, 0, 0, 1082130432, 1065353216, 0, 0},
+    {WHITE_BOMB, {-1220.0,10.0,140.0}, 0.0, -5000.0, 5000.0, 0, 0.0, -5000.0, 5000.0, 1, -1220.0, -140.0, 8.0, 90.0, 0, 0, 0, 0, 1082130432, 1065353216, 0, 0},
+    {WHITE_BOMB, {-1070.0,10.0,260.0}, 0.0, -5000.0, 5000.0, 0, 0.0, -5000.0, 5000.0, 1, -1070.0, -260.0, 15.0, 90.0, 0, 0, 0, 0, 1082130432, 1065353216, 0, 0},
+    {WHITE_BOMB, {-920.0,10.0,400.0}, 0.0, -5000.0, 5000.0, 0, 0.0, -5000.0, 5000.0, 1, -920.0, -400.0, 20.0, 90.0, 0, 0, 0, 0, 1082130432, 1065353216, 0, 0},
+    {WHITE_BOMB, {-770.0,10.0,400.0}, 0.0, -5000.0, 5000.0, 0, 0.0, -5000.0, 5000.0, 1, -770.0, -400.0, 20.0, 90.0, 0, 0, 0, 0, 1082130432, 1065353216, 0, 0},
+    {WHITE_BOMB, {-620.0,10.0,260.0}, 0.0, -5000.0, 5000.0, 0, 0.0, -5000.0, 5000.0, 1, -620.0, -260.0, 15.0, 90.0, 0, 0, 0, 0, 1082130432, 1065353216, 0, 0},
+    {WHITE_BOMB, {-470.0,10.0,140.0}, 0.0, -5000.0, 5000.0, 0, 0.0, -5000.0, 5000.0, 1, -470.0, -140.0, 8.0, 90.0, 0, 0, 0, 0, 1082130432, 1065353216, 0, 0},
+    {WHITE_BOMB, {-320.0,10.0,0.0}, 0.0, -5000.0, 5000.0, 0, 0.0, -5000.0, 5000.0, 1, -320.0, 0.0, 0.0, 90.0, 0, 0, 0, 0, 1082130432, 1065353216, 0, 0},
+    {MISSILE_SPAWNER, {0.0,0.0,700.0}, 0.0, -1800.0, 1300.0, 0, 1000.0, -800.0, 800.0, 0, 1.0, 10.0, 5.0, 5.0, 1086324736, 1223639552, 0, 0, 1106247680, 1109393408, 1065353216, 0},
+    {ACTOR_NULL, {0.0,0.0,0.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+Collectable BombLand_room9_collectables[2] = {
+    {CROWN, {-1711.0,350.0,237.0}, 6, 0, 0, 0},
+    {ACTOR_NULL, {0.0,0.0,0.0}, 4294967295, 0, 0, 0}
+};
+
+RoomObject BombLand_room10_objects[12] = {
+    {{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, BL_ROOM10_FLOOR_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, BL_ROOM10_PLATFORM_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,-1200.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, BL_EXIT4_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,-1200.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, BL_EXIT_SHADOW_WEST_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,-1200.0}, {1.0,1.0,1.0}, 0, 0, 256, 0, 400.0, 400.0, 0.0, 0.0, 1, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 2, -1, 1, 0, -1, 0, 0},
+    {{0.0,0.0,-1200.0}, {4.0,4.0,4.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, BL_ROOM10_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{1200.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, BL_EXIT2_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{1200.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, BL_EXIT_SHADOW_NORTH_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{1200.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 256, 0, 400.0, 400.0, 0.0, 0.0, 2, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 2, -1, 1, 0, -1, 0, 0},
+    {{1200.0,0.0,0.0}, {4.0,4.0,4.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, 0, 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+Collectable BombLand_room10_collectables[2] = {
+    {CROWN, {-500.0,400.0,500.0}, 7, 0, 0, 0},
+    {ACTOR_NULL, {0.0,0.0,0.0}, 4294967295, 0, 0, 0}
+};
+
+RoomActor BombLand_room10_actors[40] = {
+    {WHITE_BOMB, {-185.0,800.0,850.0}, 0.0, -5000.0, 5000.0, 0, 0.0, -5000.0, 5000.0, 1, -200.0, 850.0, 5.0, 90.0, 0, 0, 0, 0, 1084227584, 1101004800, 0, 0},
+    {WHITE_BOMB, {-185.0,700.0,850.0}, 0.0, -5000.0, 5000.0, 0, 0.0, -5000.0, 5000.0, 1, -200.0, 850.0, 5.0, 90.0, 0, 0, 0, 0, 1084227584, 1101004800, 0, 0},
+    {WHITE_BOMB, {-185.0,600.0,850.0}, 0.0, -5000.0, 5000.0, 0, 0.0, -5000.0, 5000.0, 1, -200.0, 850.0, 5.0, 90.0, 0, 0, 0, 0, 1084227584, 1101004800, 0, 0},
+    {WHITE_BOMB, {-185.0,500.0,850.0}, 0.0, -5000.0, 5000.0, 0, 0.0, -5000.0, 5000.0, 1, -200.0, 850.0, 5.0, 90.0, 0, 0, 0, 0, 1084227584, 1101004800, 0, 0},
+    {WHITE_BOMB, {-185.0,400.0,850.0}, 0.0, -5000.0, 5000.0, 0, 0.0, -5000.0, 5000.0, 1, -200.0, 850.0, 5.0, 90.0, 0, 0, 0, 0, 1084227584, 1101004800, 0, 0},
+    {WHITE_BOMB, {-290.0,600.0,850.0}, 0.0, -5000.0, 5000.0, 0, 0.0, -5000.0, 5000.0, 1, -300.0, 850.0, 5.0, 90.0, 0, 0, 0, 0, 1084227584, 1101004800, 0, 0},
+    {WHITE_BOMB, {-290.0,400.0,850.0}, 0.0, -5000.0, 5000.0, 0, 0.0, -5000.0, 5000.0, 1, -300.0, 850.0, 5.0, 90.0, 0, 0, 0, 0, 1084227584, 1101004800, 0, 0},
+    {WHITE_BOMB, {-290.0,800.0,850.0}, 0.0, -5000.0, 5000.0, 0, 0.0, -5000.0, 5000.0, 1, -300.0, 850.0, 5.0, 90.0, 0, 0, 0, 0, 1084227584, 1101004800, 0, 0},
+    {WHITE_BOMB, {-395.0,800.0,850.0}, 0.0, -5000.0, 5000.0, 0, 0.0, -5000.0, 5000.0, 1, -400.0, 850.0, 5.0, 90.0, 0, 0, 0, 0, 1084227584, 1101004800, 0, 0},
+    {WHITE_BOMB, {-395.0,600.0,850.0}, 0.0, -5000.0, 5000.0, 0, 0.0, -5000.0, 5000.0, 1, -400.0, 850.0, 5.0, 90.0, 0, 0, 0, 0, 1084227584, 1101004800, 0, 0},
+    {WHITE_BOMB, {-395.0,400.0,850.0}, 0.0, -5000.0, 5000.0, 0, 0.0, -5000.0, 5000.0, 1, -400.0, 850.0, 5.0, 90.0, 0, 0, 0, 0, 1084227584, 1101004800, 0, 0},
+    {WHITE_BOMB, {-500.0,500.0,850.0}, 0.0, -5000.0, 5000.0, 0, 0.0, -5000.0, 5000.0, 1, -500.0, 850.0, 5.0, 90.0, 0, 0, 0, 0, 1084227584, 1101004800, 0, 0},
+    {WHITE_BOMB, {-500.0,700.0,850.0}, 0.0, -5000.0, 5000.0, 0, 0.0, -5000.0, 5000.0, 1, -500.0, 850.0, 5.0, 90.0, 0, 0, 0, 0, 1084227584, 1101004800, 0, 0},
+    {WHITE_BOMB, {-900.0,400.0,850.0}, 0.0, -5000.0, 5000.0, 0, 0.0, -5000.0, 5000.0, 1, -900.0, 850.0, 5.0, 90.0, 0, 0, 0, 0, 1084227584, 1101004800, 0, 0},
+    {WHITE_BOMB, {-795.0,400.0,850.0}, 0.0, -5000.0, 5000.0, 0, 0.0, -5000.0, 5000.0, 1, -800.0, 850.0, 5.0, 90.0, 0, 0, 0, 0, 1084227584, 1101004800, 0, 0},
+    {WHITE_BOMB, {-690.0,500.0,850.0}, 0.0, -5000.0, 5000.0, 0, 0.0, -5000.0, 5000.0, 1, -700.0, 850.0, 5.0, 90.0, 0, 0, 0, 0, 1084227584, 1101004800, 0, 0},
+    {WHITE_BOMB, {-690.0,600.0,850.0}, 0.0, -5000.0, 5000.0, 0, 0.0, -5000.0, 5000.0, 1, -700.0, 850.0, 5.0, 90.0, 0, 0, 0, 0, 1084227584, 1101004800, 0, 0},
+    {WHITE_BOMB, {-690.0,700.0,850.0}, 0.0, -5000.0, 5000.0, 0, 0.0, -5000.0, 5000.0, 1, -700.0, 850.0, 5.0, 90.0, 0, 0, 0, 0, 1084227584, 1101004800, 0, 0},
+    {WHITE_BOMB, {-795.0,800.0,850.0}, 0.0, -5000.0, 5000.0, 0, 0.0, -5000.0, 5000.0, 1, -800.0, 850.0, 5.0, 90.0, 0, 0, 0, 0, 1084227584, 1101004800, 0, 0},
+    {WHITE_BOMB, {-900.0,800.0,850.0}, 0.0, -5000.0, 5000.0, 0, 0.0, -5000.0, 5000.0, 1, -900.0, 850.0, 5.0, 90.0, 0, 0, 0, 0, 1084227584, 1101004800, 0, 0},
+    {WHITE_BOMB, {-900.0,800.0,745.0}, 0.0, -5000.0, 5000.0, 0, 0.0, -5000.0, 5000.0, 1, -900.0, 750.0, 5.0, 90.0, 0, 0, 0, 0, 1084227584, 1101004800, 0, 0},
+    {WHITE_BOMB, {-900.0,700.0,640.0}, 0.0, -5000.0, 5000.0, 0, 0.0, -5000.0, 5000.0, 1, -900.0, 650.0, 5.0, 90.0, 0, 0, 0, 0, 1084227584, 1101004800, 0, 0},
+    {WHITE_BOMB, {-900.0,600.0,640.0}, 0.0, -5000.0, 5000.0, 0, 0.0, -5000.0, 5000.0, 1, -900.0, 650.0, 5.0, 90.0, 0, 0, 0, 0, 1084227584, 1101004800, 0, 0},
+    {WHITE_BOMB, {-900.0,500.0,640.0}, 0.0, -5000.0, 5000.0, 0, 0.0, -5000.0, 5000.0, 1, -900.0, 650.0, 5.0, 90.0, 0, 0, 0, 0, 1084227584, 1101004800, 0, 0},
+    {WHITE_BOMB, {-900.0,400.0,745.0}, 0.0, -5000.0, 5000.0, 0, 0.0, -5000.0, 5000.0, 1, -900.0, 750.0, 5.0, 90.0, 0, 0, 0, 0, 1084227584, 1101004800, 0, 0},
+    {WHITE_BOMB, {-900.0,800.0,450.0}, 0.0, -5000.0, 5000.0, 0, 0.0, -5000.0, 5000.0, 1, -900.0, 450.0, 5.0, 90.0, 0, 0, 0, 0, 1084227584, 1101004800, 0, 0},
+    {WHITE_BOMB, {-900.0,700.0,450.0}, 0.0, -5000.0, 5000.0, 0, 0.0, -5000.0, 5000.0, 1, -900.0, 450.0, 5.0, 90.0, 0, 0, 0, 0, 1084227584, 1101004800, 0, 0},
+    {WHITE_BOMB, {-900.0,600.0,450.0}, 0.0, -5000.0, 5000.0, 0, 0.0, -5000.0, 5000.0, 1, -900.0, 450.0, 5.0, 90.0, 0, 0, 0, 0, 1084227584, 1101004800, 0, 0},
+    {WHITE_BOMB, {-900.0,500.0,450.0}, 0.0, -5000.0, 5000.0, 0, 0.0, -5000.0, 5000.0, 1, -900.0, 450.0, 5.0, 90.0, 0, 0, 0, 0, 1084227584, 1101004800, 0, 0},
+    {WHITE_BOMB, {-900.0,400.0,450.0}, 0.0, -5000.0, 5000.0, 0, 0.0, -5000.0, 5000.0, 1, -900.0, 450.0, 5.0, 90.0, 0, 0, 0, 0, 1084227584, 1101004800, 0, 0},
+    {WHITE_BOMB, {-900.0,700.0,345.0}, 0.0, -5000.0, 5000.0, 0, 0.0, -5000.0, 5000.0, 1, -900.0, 350.0, 5.0, 90.0, 0, 0, 0, 0, 1084227584, 1101004800, 0, 0},
+    {WHITE_BOMB, {-900.0,600.0,240.0}, 0.0, -5000.0, 5000.0, 0, 0.0, -5000.0, 5000.0, 1, -900.0, 250.0, 5.0, 90.0, 0, 0, 0, 0, 1084227584, 1101004800, 0, 0},
+    {WHITE_BOMB, {-900.0,700.0,135.0}, 0.0, -5000.0, 5000.0, 0, 0.0, -5000.0, 5000.0, 1, -900.0, 150.0, 5.0, 90.0, 0, 0, 0, 0, 1084227584, 1101004800, 0, 0},
+    {WHITE_BOMB, {-900.0,800.0,30.0}, 0.0, -5000.0, 5000.0, 0, 0.0, -5000.0, 5000.0, 1, -900.0, 50.0, 5.0, 90.0, 0, 0, 0, 0, 1084227584, 1101004800, 0, 0},
+    {WHITE_BOMB, {-900.0,700.0,30.0}, 0.0, -5000.0, 5000.0, 0, 0.0, -5000.0, 5000.0, 1, -900.0, 50.0, 5.0, 90.0, 0, 0, 0, 0, 1084227584, 1101004800, 0, 0},
+    {WHITE_BOMB, {-900.0,600.0,30.0}, 0.0, -5000.0, 5000.0, 0, 0.0, -5000.0, 5000.0, 1, -900.0, 50.0, 5.0, 90.0, 0, 0, 0, 0, 1084227584, 1101004800, 0, 0},
+    {WHITE_BOMB, {-900.0,500.0,30.0}, 0.0, -5000.0, 5000.0, 0, 0.0, -5000.0, 5000.0, 1, -900.0, 50.0, 5.0, 90.0, 0, 0, 0, 0, 1084227584, 1101004800, 0, 0},
+    {WHITE_BOMB, {-900.0,400.0,30.0}, 0.0, -5000.0, 5000.0, 0, 0.0, -5000.0, 5000.0, 1, -900.0, 50.0, 5.0, 90.0, 0, 0, 0, 0, 1084227584, 1101004800, 0, 0},
+    {MISSILE_SPAWNER, {100.0,450.0,-100.0}, 0.0, -800.0, 800.0, 0, 850.0, -800.0, 800.0, 0, 1.0, 10.0, 3.0, 3.0, 1082130432, 1226588160, 0, 0, 1101004800, 1109393408, 1065353216, 0},
+    {ACTOR_NULL, {0.0,0.0,0.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomObject BombLand_room11_objects[61] = {
+    {{-400.0,0.0,400.0}, {0.800000011920929,0.5,0.800000011920929}, 0, 0, 7, 14, 1400.0, 1000.0, -1000.0, 0.0, 0, 0, 60, -1, 11, 0, BL_BREAKABLE_BLOCK_AGAIN_MODEL, -1, -1, -1, NULL, NULL, -2146725768, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{400.0,0.0,-400.0}, {0.800000011920929,0.5,0.800000011920929}, 0, 0, 7, 14, 1400.0, 1000.0, -1000.0, 0.0, 0, 0, 60, -1, 11, 0, BL_BREAKABLE_BLOCK_AGAIN_MODEL, -1, -1, -1, NULL, NULL, -2146725768, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{400.0,0.0,400.0}, {0.800000011920929,0.5,0.800000011920929}, 0, 0, 7, 14, 1400.0, 1000.0, -1000.0, 0.0, 0, 0, 60, -1, 11, 0, BL_BREAKABLE_BLOCK_AGAIN_MODEL, -1, -1, -1, NULL, NULL, -2146725768, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{400.0,0.0,400.0}, {2.0,1.0,1.3333333730697632}, 0, 0, 7, 14, 0.0, 0.0, 0.0, 0.0, 0, 0, 20, 11, 11, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146725768, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{400.0,0.0,-400.0}, {2.0,1.0,1.3333333730697632}, 0, 0, 7, 14, 0.0, 0.0, 0.0, 0.0, 0, 0, 20, -1, 11, 2, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146725768, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-400.0,0.0,400.0}, {2.0,1.0,1.3333333730697632}, 0, 0, 7, 14, 0.0, 0.0, 0.0, 0.0, 0, 0, 20, -1, 11, 2, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146725768, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{400.0,-10.0,400.0}, {4.0,1.0,4.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, BL_O_RESULT_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{400.0,-10.0,-400.0}, {4.0,1.0,4.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, BL_X_RESULT_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-400.0,-10.0,400.0}, {4.0,1.0,4.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, BL_X_RESULT_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-1200.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 3, 104, 11, 0, 0, 0, BL_EXIT_SHADOW_SOUTH_MODEL, -1, -1, -1, &func_800B0B20, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{-1200.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.30000001192092896, 1.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, BL_EXIT1_MODEL, -1, -1, -1, &func_800B09C0, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{-1200.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 256, 0, 400.0, 400.0, 0.0, 0.0, 4, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 2, -1, 1, 0, -1, 0, 0},
+    {{-1200.0,0.0,0.0}, {4.0,4.0,4.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+    {{-800.0,0.0,1005.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(180.00000500895632), 7, 28, 90.0, 0.0, 0.0, 0.0, 4, 0, 0, 0, 0, 0, BL_GRENADE_SHUTTERS_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{-400.0,0.0,1005.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(180.00000500895632), 7, 28, 90.0, 0.0, 0.0, 0.0, 4, 0, 0, 0, 0, 0, BL_GRENADE_SHUTTERS_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,1005.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(180.00000500895632), 7, 28, 90.0, 0.0, 0.0, 0.0, 4, 0, 0, 0, 0, 0, BL_GRENADE_SHUTTERS_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{400.0,0.0,1005.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(180.00000500895632), 7, 28, 90.0, 0.0, 0.0, 0.0, 4, 0, 0, 0, 0, 0, BL_GRENADE_SHUTTERS_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{800.0,0.0,1005.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(180.00000500895632), 7, 28, 90.0, 0.0, 0.0, 0.0, 4, 0, 0, 0, 0, 0, BL_GRENADE_SHUTTERS_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{-800.0,0.0,-1005.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(360.00001001791264), 7, 28, 270.0, 0.0, 0.0, 0.0, 4, 0, 0, 0, 0, 0, BL_GRENADE_SHUTTERS_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{-400.0,0.0,-1005.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(360.00001001791264), 7, 28, 270.0, 0.0, 0.0, 0.0, 4, 0, 0, 0, 0, 0, BL_GRENADE_SHUTTERS_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,-1005.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(360.00001001791264), 7, 28, 270.0, 0.0, 0.0, 0.0, 4, 0, 0, 0, 0, 0, BL_GRENADE_SHUTTERS_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{400.0,0.0,-1005.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(360.00001001791264), 7, 28, 270.0, 0.0, 0.0, 0.0, 4, 0, 0, 0, 0, 0, BL_GRENADE_SHUTTERS_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{800.0,0.0,-1005.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(360.00001001791264), 7, 28, 270.0, 0.0, 0.0, 0.0, 4, 0, 0, 0, 0, 0, BL_GRENADE_SHUTTERS_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{1005.0,0.0,-800.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(270.00000068324533), 7, 28, 180.0, 0.0, 0.0, 0.0, 4, 0, 0, 0, 0, 0, BL_GRENADE_SHUTTERS_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{1005.0,0.0,-400.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(270.00000068324533), 7, 28, 180.0, 0.0, 0.0, 0.0, 4, 0, 0, 0, 0, 0, BL_GRENADE_SHUTTERS_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{1005.0,0.0,400.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(270.00000068324533), 7, 28, 180.0, 0.0, 0.0, 0.0, 4, 0, 0, 0, 0, 0, BL_GRENADE_SHUTTERS_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{1005.0,0.0,800.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(270.00000068324533), 7, 28, 180.0, 0.0, 0.0, 0.0, 4, 0, 0, 0, 0, 0, BL_GRENADE_SHUTTERS_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{-1005.0,0.0,-800.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(90.00000250447816), 7, 28, 0.0, 0.0, 0.0, 0.0, 4, 0, 0, 0, 0, 0, BL_GRENADE_SHUTTERS_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{-1005.0,0.0,-400.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(90.00000250447816), 7, 28, 0.0, 0.0, 0.0, 0.0, 4, 0, 0, 0, 0, 0, BL_GRENADE_SHUTTERS_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{-1005.0,0.0,400.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(90.00000250447816), 7, 28, 0.0, 0.0, 0.0, 0.0, 4, 0, 0, 0, 0, 0, BL_GRENADE_SHUTTERS_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{-1005.0,0.0,800.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(90.00000250447816), 7, 28, 0.0, 0.0, 0.0, 0.0, 4, 0, 0, 0, 0, 0, BL_GRENADE_SHUTTERS_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{800.0,0.0,800.0}, {4.0,1.0,4.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337228, 5, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{400.0,0.0,800.0}, {4.0,1.0,4.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337228, 5, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,800.0}, {4.0,1.0,4.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337228, 5, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-400.0,0.0,800.0}, {4.0,1.0,4.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337228, 5, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-800.0,0.0,800.0}, {4.0,1.0,4.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337228, 5, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{800.0,0.0,400.0}, {4.0,1.0,4.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337228, 5, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,400.0}, {4.0,1.0,4.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337228, 5, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-800.0,0.0,400.0}, {4.0,1.0,4.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337228, 5, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{800.0,0.0,0.0}, {4.0,1.0,4.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337228, 5, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{400.0,0.0,0.0}, {4.0,1.0,4.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337228, 5, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {4.0,1.0,4.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337228, 5, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-400.0,0.0,0.0}, {4.0,1.0,4.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337228, 5, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-800.0,0.0,0.0}, {4.0,1.0,4.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337228, 5, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{800.0,0.0,-400.0}, {4.0,1.0,4.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337228, 5, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,-400.0}, {4.0,1.0,4.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337228, 5, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-400.0,0.0,-400.0}, {4.0,1.0,4.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337228, 5, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-800.0,0.0,-400.0}, {4.0,1.0,4.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337228, 5, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{800.0,0.0,-800.0}, {4.0,1.0,4.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337228, 5, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{400.0,0.0,-800.0}, {4.0,1.0,4.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337228, 5, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,-800.0}, {4.0,1.0,4.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337228, 5, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-400.0,0.0,-800.0}, {4.0,1.0,4.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337228, 5, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-800.0,0.0,-800.0}, {4.0,1.0,4.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337228, 5, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{1050.0,0.0,0.0}, {0.20000000298023224,1.0,1.0}, 0, 0, 7, 11, 1050.0, 500.0, 0.0, 0.0, 1, 20, 1, 40, 0, 0, BL_UNK72_MODEL, -1, -1, 11, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 100.0, 0.0, 0.0, 0.0, 180, 10, 50, 10, -1, 11, BL_ROOM11_MODEL, -1, -1, -1, &RegistShutter, &func_800B118C, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{1200.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 11, 0, 0, 0, 0, 0, BL_EXIT2_MODEL, -1, -1, -1, &func_800B09E8, &func_800D91D8, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{1200.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, BL_EXIT_SHADOW_NORTH_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{1200.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 256, 0, 400.0, 400.0, 0.0, 0.0, 2, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 2, -1, 1, 0, -1, 0, 0},
+    {{1200.0,0.0,0.0}, {4.0,4.0,4.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+    {{-900.0,0.0,-900.0}, {0.5,1.0,0.5}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, BL_DOOR_POLES_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 34, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, 0, 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomActor BombLand_room11_actors[4] = {
+    {MISSILE_SPAWNER, {-100.0,300.0,0.0}, 0.0, -800.0, 800.0, 0, 1000.0, -800.0, 800.0, 0, 1.0, 10.0, 5.0, 5.0, 1084227584, 1232348160, 0, 0, 1101004800, 1109393408, 1065353216, 0},
+    {MISSILE_SPAWNER, {0.0,300.0,-700.0}, 0.0, -800.0, 800.0, 0, 1000.0, -800.0, 800.0, 0, 1.0, 10.0, 5.0, 5.0, 1084227584, 1232348160, 0, 0, 1101004800, 1109393408, 1065353216, 0},
+    {MISSILE_SPAWNER, {0.0,300.0,700.0}, 0.0, -800.0, 800.0, 0, 1000.0, -800.0, 800.0, 0, 1.0, 10.0, 5.0, 5.0, 1084227584, 1232348160, 0, 0, 1101004800, 1109393408, 1065353216, 0},
+    {ACTOR_NULL, {0.0,0.0,0.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomObject BombLand_room12_objects[33] = {
+    {{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, BL_ROOM7_START_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, BL_ROOM7_END_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{0.0,-50.0,450.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, BL_LONG_PIPE_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 0, 4, 4, 0, -1, 0, 0},
+    {{0.0,-50.0,-450.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, BL_LONG_PIPE_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 0, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, BL_ROOM7_START_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, BL_ROOM7_END_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{-1500.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 18, 0.0, 0.0, 0.0, 0.0, 1, 1, 126, -1, 30, 0, BL_DOOR_WALL_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{-1300.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 18, 0.0, 0.0, 0.0, 0.0, 1, 1, 126, -1, 30, 0, BL_DOOR_WALL_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{-1100.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 18, 0.0, 0.0, 0.0, 0.0, 1, 1, 126, -1, 30, 0, BL_DOOR_WALL_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{-900.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 18, 0.0, 0.0, 0.0, 0.0, 1, 1, 126, -1, 30, 0, BL_DOOR_WALL_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{-700.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 18, 0.0, 0.0, 0.0, 0.0, 1, 1, 126, -1, 30, 0, BL_DOOR_WALL_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{-500.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 18, 0.0, 0.0, 0.0, 0.0, 1, 1, 126, -1, 30, 0, BL_DOOR_WALL_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{-300.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 18, 0.0, 0.0, 0.0, 0.0, 1, 1, 126, -1, 30, 0, BL_DOOR_WALL_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{-100.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 18, 0.0, 0.0, 0.0, 0.0, 1, 1, 126, -1, 30, 0, BL_DOOR_WALL_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{100.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 18, 0.0, 0.0, 0.0, 0.0, 1, 1, 126, -1, 30, 0, BL_DOOR_WALL_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{300.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 18, 0.0, 0.0, 0.0, 0.0, 1, 1, 126, -1, 30, 0, BL_DOOR_WALL_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{500.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 18, 0.0, 0.0, 0.0, 0.0, 1, 1, 126, -1, 30, 0, BL_DOOR_WALL_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{700.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 18, 0.0, 0.0, 0.0, 0.0, 1, 1, 126, -1, 30, 0, BL_DOOR_WALL_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{900.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 18, 0.0, 0.0, 0.0, 0.0, 1, 1, 126, -1, 30, 0, BL_DOOR_WALL_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{1100.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 18, 0.0, 0.0, 0.0, 0.0, 1, 1, 126, -1, 30, 0, BL_DOOR_WALL_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{1300.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 18, 0.0, 0.0, 0.0, 0.0, 1, 1, 126, -1, 30, 0, BL_DOOR_WALL_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{1500.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 18, 0.0, 0.0, 0.0, 0.0, 1, 1, 126, -1, 30, 0, BL_DOOR_WALL_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{-2200.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, BL_EXIT1_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{-2200.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, BL_EXIT_SHADOW_SOUTH_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{-2200.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 256, 0, 400.0, 400.0, 0.0, 0.0, 4, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 2, -1, 1, 0, -1, 0, 0},
+    {{-2200.0,0.0,0.0}, {4.0,4.0,4.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, BL_ROOM12_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{2200.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, BL_EXIT2_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{2200.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, BL_EXIT_SHADOW_NORTH_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{2200.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 256, 0, 400.0, 400.0, 0.0, 0.0, 2, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 2, -1, 1, 0, -1, 0, 0},
+    {{2200.0,0.0,0.0}, {4.0,4.0,4.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+    {{0.0,0.0,-900.0}, {2.0,1.0,0.4000000059604645}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, BL_BLOCK_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, 0, 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomActor BombLand_room12_actors[5] = {
+    {CANNON, {700.0,200.0,1000.0}, 90.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0, 700.0, 0.0, 150.0, 26.0, 1128792064, 1145569280, 0, 0, 0, 0, 0, 0},
+    {CANNON, {300.0,200.0,1000.0}, 90.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0, 300.0, 0.0, -150.0, 26.0, 1128792064, 1145569280, 0, 0, 0, 0, 0, 0},
+    {CANNON, {-300.0,200.0,1000.0}, 90.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0, -300.0, 0.0, 150.0, 26.0, 1128792064, 1145569280, 0, 0, 0, 0, 0, 0},
+    {CANNON, {-700.0,200.0,1000.0}, 90.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0, -700.0, 0.0, -150.0, 26.0, 1128792064, 1145569280, 0, 0, 0, 0, 0, 0},
+    {ACTOR_NULL, {0.0,0.0,0.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomObject BombLand_room13_objects[37] = {
+    {{-1300.0,0.0,-1300.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, BL_DOOR_POLES_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 34, 4, 4, 0, -1, 0, 0},
+    {{1550.0,0.0,0.0}, {0.20000000298023224,1.0,1.0}, 0, 0, 7, 11, 1550.0, 500.0, 0.0, 0.0, 1, 20, 1, 40, 0, 0, BL_UNK72_MODEL, -1, -1, 3, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{1200.0,10.0,1200.0}, {6.0,1.0,6.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337228, 5, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{600.0,10.0,1200.0}, {6.0,1.0,6.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337228, 5, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{0.0,10.0,1200.0}, {6.0,1.0,6.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337228, 5, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-600.0,10.0,1200.0}, {6.0,1.0,6.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337228, 5, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-1200.0,10.0,1200.0}, {6.0,1.0,6.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337228, 5, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{1200.0,10.0,600.0}, {6.0,1.0,6.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337228, 5, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{600.0,10.0,600.0}, {6.0,1.0,6.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337228, 5, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{0.0,10.0,600.0}, {6.0,1.0,6.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337228, 5, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-600.0,10.0,600.0}, {6.0,1.0,6.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337228, 5, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-1200.0,10.0,600.0}, {6.0,1.0,6.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337228, 5, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{1200.0,10.0,0.0}, {6.0,1.0,6.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337228, 5, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{600.0,10.0,0.0}, {6.0,1.0,6.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337228, 5, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{0.0,10.0,0.0}, {6.0,1.0,6.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337228, 5, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-600.0,10.0,0.0}, {6.0,1.0,6.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337228, 5, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-1200.0,10.0,0.0}, {6.0,1.0,6.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337228, 5, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{1200.0,10.0,-600.0}, {6.0,1.0,6.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337228, 5, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{600.0,10.0,-600.0}, {6.0,1.0,6.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337228, 5, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{0.0,10.0,-600.0}, {6.0,1.0,6.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337228, 5, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-600.0,10.0,-600.0}, {6.0,1.0,6.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337228, 5, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-1200.0,10.0,-600.0}, {6.0,1.0,6.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337228, 5, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{1200.0,10.0,-1200.0}, {6.0,1.0,6.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337228, 5, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{600.0,10.0,-1200.0}, {6.0,1.0,6.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337228, 5, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{0.0,10.0,-1200.0}, {6.0,1.0,6.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337228, 5, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-600.0,10.0,-1200.0}, {6.0,1.0,6.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337228, 5, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-1200.0,10.0,-1200.0}, {6.0,1.0,6.0}, 0, 0, 7, 13, 0.0, 0.0, 0.0, 0.0, 50337228, 5, 0, 0, 0, 0, BL_BL_DESTRUCTABLE_TOP_MODEL, -1, -1, -1, NULL, NULL, -2146729000, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-1700.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.30000001192092896, 1.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, BL_EXIT1_MODEL, -1, -1, -1, &func_800B09C0, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{-1700.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, BL_EXIT_SHADOW_SOUTH_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{-1700.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 256, 0, 400.0, 400.0, 0.0, 0.0, 4, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 2, -1, 1, 0, -1, 0, 0},
+    {{-1700.0,0.0,0.0}, {4.0,4.0,4.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, BL_ROOM13_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{1700.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, BL_EXIT2_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{1700.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, BL_EXIT_SHADOW_NORTH_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{1700.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 256, 0, 400.0, 400.0, 0.0, 0.0, 2, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 2, -1, 1, 0, -1, 0, 0},
+    {{1700.0,0.0,0.0}, {4.0,4.0,4.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, 0, 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomActor BombLand_room13_actors[11] = {
+    {GRENADE, {1000.0,10.0,1000.0}, 1.0, -2500.0, 500.0, 0, 0.0, -2500.0, 500.0, 1, 4.0, 5.0, 0.0, 0.0, 0, 0, 0, 0, 1129447424, 1114636288, 0, 0},
+    {GRENADE, {1000.0,10.0,-1000.0}, 1.0, -2500.0, 500.0, 0, 0.0, 2500.0, -500.0, 1, 4.0, 5.0, 0.0, 0.0, 0, 0, 0, 0, 1125515264, 1112014848, 0, 0},
+    {GRENADE, {0.0,10.0,-1000.0}, 1.0, -1500.0, 1500.0, 0, 0.0, -500.0, 2500.0, 1, 4.0, 5.0, 0.0, 0.0, 0, 0, 0, 0, 1123024896, 1109393408, 0, 0},
+    {GRENADE, {0.0,10.0,1000.0}, 1.0, -1500.0, 1500.0, 0, 0.0, -2500.0, 500.0, 1, 4.0, 5.0, 0.0, 0.0, 0, 0, 0, 0, 1127481344, 1106247680, 0, 0},
+    {MISSILE_SPAWNER, {0.0,200.0,-300.0}, 0.0, -1300.0, 1300.0, 0, 1500.0, -1300.0, 1300.0, 0, 1.0, 10.0, 5.0, 5.0, 1086324736, 1223639552, 0, 0, 1106247680, 1109393408, 1065353216, 0},
+    {MISSILE_SPAWNER, {0.0,200.0,-700.0}, 0.0, -1300.0, 1300.0, 0, 1500.0, -1300.0, 1300.0, 0, 1.0, 10.0, 5.0, 5.0, 1086324736, 1223639552, 0, 0, 1106247680, 1109393408, 1065353216, 0},
+    {MISSILE_SPAWNER, {0.0,200.0,700.0}, 0.0, -1300.0, 1300.0, 0, 1500.0, -1300.0, 1300.0, 0, 1.0, 10.0, 5.0, 5.0, 1086324736, 1223639552, 0, 0, 1106247680, 1109393408, 1065353216, 0},
+    {MISSILE_SPAWNER, {-700.0,200.0,0.0}, 0.0, -1300.0, 1300.0, 0, 1500.0, -1300.0, 1300.0, 0, 1.0, 10.0, 5.0, 5.0, 1086324736, 1223639552, 0, 0, 1106247680, 1109393408, 1065353216, 0},
+    {MISSILE_SPAWNER, {700.0,200.0,0.0}, 0.0, -1300.0, 1300.0, 0, 1500.0, -1300.0, 1300.0, 0, 1.0, 10.0, 5.0, 5.0, 1086324736, 1223639552, 0, 0, 1106247680, 1109393408, 1065353216, 0},
+    {MISSILE_SPAWNER, {0.0,200.0,0.0}, 0.0, -1300.0, 1300.0, 0, 1500.0, -1300.0, 1300.0, 0, 1.0, 10.0, 5.0, 5.0, 1086324736, 1223639552, 0, 0, 1106247680, 1109393408, 1065353216, 0},
+    {ACTOR_NULL, {0.0,0.0,0.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+RoomObject BombLand_room14_objects[3] = {
+    {{0.0,0.0,0.0}, {5.0,1.0,5.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, BL_ROOM0_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 2, 0, 4, 0, -1, 0, 0},
+    {{900.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 14, 0.0, 0.0, 0.0, 0.0, 0, 0, 100, -1, -1, 0, BL_BREAKABLE_BLOCK_AGAIN_MODEL, -1, -1, -1, NULL, NULL, -2146725768, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, 0, 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomActor BombLand_room14_actors[2] = {
+    {MISSILE, {300.0,0.0,0.0}, 0.0, -1300.0, 1300.0, 0, 1500.0, -1300.0, 1300.0, 0, 2.0, 20.0, 16.0, 4.0, 1094713344, 1242125376, 0, 0, 1112014848, 1101004800, 1065353216, 0},
+    {ACTOR_NULL, {0.0,0.0,0.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomObject BombLand_room15_objects[15] = {
+    {{-2300.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 5, -2300.0, -20000.0, 0.0, 0.0, 15, 300, -2, 0, 0, 0, BL_BL_METAL_BRIDGE_MODEL, -1, -1, 0, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{-2100.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 5, -2100.0, -20000.0, 0.0, 0.0, 20, 300, -2, 0, 0, 0, BL_BL_METAL_BRIDGE_MODEL, -1, -1, 0, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{-1900.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 5, -1900.0, -20000.0, 0.0, 0.0, 25, 300, -2, 0, 0, 0, BL_BL_METAL_BRIDGE_MODEL, -1, -1, 0, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{-1700.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 5, -1700.0, -20000.0, 0.0, 0.0, 30, 300, -2, 0, 0, 0, BL_BL_METAL_BRIDGE_MODEL, -1, -1, 0, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{-1500.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 5, -1500.0, -20000.0, 0.0, 0.0, 35, 300, -2, 0, 0, 0, BL_BL_METAL_BRIDGE_MODEL, -1, -1, 0, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{-1300.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 5, -1300.0, -20000.0, 0.0, 0.0, 40, 300, -2, 0, 0, 0, BL_BL_METAL_BRIDGE_MODEL, -1, -1, 0, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{-1100.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 5, -1100.0, -20000.0, 0.0, 0.0, 45, 300, -2, 0, 0, 0, BL_BL_METAL_BRIDGE_MODEL, -1, -1, 0, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, BL_ROOM15_FLOOR_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 12, 0, 0, 0, 0, 0, BL_ROOM15_MODEL, -1, -1, -1, &func_800B0A30, &func_800B0AA4, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{-2600.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, BL_EXIT1_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{-2600.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, BL_EXIT_SHADOW_SOUTH_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{-2600.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 256, 0, 400.0, 400.0, 0.0, 0.0, 4, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 2, -1, 1, 0, -1, 0, 0},
+    {{-2600.0,0.0,0.0}, {4.0,4.0,4.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+    {{0.0,1000.0,0.0}, {2.0,1.0,2.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, BL_ROOM15_FLOOR_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 0, 0, 4, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, 0, 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomActor BombLand_room15_actors[2] = {
+    {BLACK_CHAMELEON_PROJECTILE_SPAWNER, {0.0,0.0,0.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0, 2000.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 1090519040, 1125515264, 1109393408, 0},
+    {ACTOR_NULL, {0.0,0.0,0.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+Collectable BombLand_room3_collectables[6] = {
+    {CROWN, {1100.0,0.0,-950.0}, 4294967295, 0, 0, 0},
+    {CROWN, {1050.0,0.0,950.0}, 4294967295, 0, 0, 0},
+    {R_HEART, {-1150.0,0.0,950.0}, 4294967295, 0, 0, 0},
+    {R_HEART, {-400.0,300.0,950.0}, 4294967295, 0, 0, 0},
+    {R_HEART, {350.0,600.0,950.0}, 4294967295, 0, 0, 0},
+    {ACTOR_NULL, {0.0,0.0,0.0}, 4294967295, 0, 0, 0}
+};
+
+Collectable BombLand_room6_collectables[2] = {
+    {R_HEART, {20.0,10.0,39.0}, 4294967295, 0, 0, 0},
+    {ACTOR_NULL, {0.0,0.0,0.0}, 4294967295, 0, 0, 0}
+};
+
+Collectable BombLand_room7_collectables[7] = {
+    {CROWN, {150.0,0.0,0.0}, 4294967295, 0, 0, 0},
+    {CROWN, {-750.0,0.0,0.0}, 4294967295, 0, 0, 0},
+    {SHRINK_POWER_UP, {1800.0,0.0,-800.0}, 4294967295, 0, -1, 300},
+    {R_HEART, {1800.0,0.0,800.0}, 4294967295, 0, 0, 0},
+    {R_HEART, {-1800.0,0.0,-880.0}, 4294967295, 0, 0, 0},
+    {R_HEART, {-1800.0,0.0,880.0}, 4294967295, 0, 0, 0},
+    {ACTOR_NULL, {0.0,0.0,0.0}, 4294967295, 0, 0, 0}
+};
+
+Collectable BombLand_room11_collectables[4] = {
+    {R_HEART, {-382.0,300.0,387.0}, 4294967295, 0, 0, 0},
+    {R_HEART, {449.0,300.0,-379.0}, 4294967295, 0, 0, 0},
+    {R_HEART, {383.0,300.0,404.0}, 4294967295, 0, 0, 0},
+    {ACTOR_NULL, {0.0,0.0,0.0}, 4294967295, 0, 0, 0}
+};
+
+Collectable BombLand_room12_collectables[8] = {
+    {CROWN, {0.0,0.0,-900.0}, 4294967295, 0, 0, 0},
+    {CROWN, {-700.0,0.0,0.0}, 4294967295, 0, 0, 0},
+    {CROWN, {500.0,0.0,0.0}, 4294967295, 0, 0, 0},
+    {R_HEART, {-1800.0,0.0,-880.0}, 4294967295, 0, 0, 0},
+    {R_HEART, {-1800.0,0.0,880.0}, 4294967295, 0, 0, 0},
+    {R_HEART, {300.0,0.0,-900.0}, 4294967295, 0, 0, 0},
+    {R_HEART, {-300.0,0.0,-900.0}, 4294967295, 0, 0, 0},
+    {ACTOR_NULL, {0.0,0.0,0.0}, 4294967295, 0, 0, 0}
+};
+
+Collectable BombLand_room13_collectables[5] = {
+    {CROWN, {0.0,0.0,0.0}, -1, 0, 0, 0},
+    {R_HEART, {1000.0,10.0,-500.0}, -1, 0, 0, 0},
+    {R_HEART, {1000.0,10.0,500.0}, -1, 0, 0, 0},
+    {TIME_STOP_POWER_UP, {1300.0,10.0,0.0}, -1, 1092616192, -1, 300},
+    {ACTOR_NULL, {0.0,0.0,0.0}, -1, 0, 0, 0}
+};
+
+Collectable BombLand_room15_collectables[2] = {
+    {CROWN, {0.0,500.0,0.0}, 12, 0, 0, 0},
+    {ACTOR_NULL, {0.0,0.0,0.0}, -1, 0, 0, 0}
+};
 
 #include "assets/levelGroup/BombLand/spriteLib.sprLib.inc.c"
 
-#include "assets/levelGroup/BombLand/rooms/room0.rmSet.inc.c"
+RoomInstance BombLand_room_instances[17] = {
+    {BombLand_room0_objects, BombLand_room0_actors, BombLand_room0_collectables, BombLand_room0_sprites, 0, 0, 0, 0, -1, 0, 0.0, 1, -800.0, 500.0, -700.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+    {BombLand_room1_objects, BombLand_room1_actors, BombLand_room1_collectables, 0, 0, 0, 0, 13, 4, 0, 0.0, 1, -1400.0, 700.0, -1400.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+    {BombLand_room2_objects, BombLand_room2_actors, BombLand_room2_collectables, 0, 0, 0, 0, 0, -1, 0, 0.0, 10, -900.0, 500.0, -900.0, 0.0, 0.0, 0.0, 2.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+    {BombLand_room3_objects, BombLand_room3_actors, BombLand_room3_collectables, 0, 0, 0, 0, 0, -1, 0, 0.0, 1, -600.0, 800.0, -1200.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+    {BombLand_room4_objects, BombLand_room4_actors, BombLand_room4_collectables, 0, 0, 0, 0, 0, -1, 0, 0.0, 1, -1900.0, 1600.0, -400.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+    {BombLand_room5_objects, BombLand_room5_actors, BombLand_room5_collectables, BombLand_room5_sprites, 0, 0, 0, 0, -1, 0, 0.0, 2, -900.0, 2700.0, -900.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+    {BombLand_room6_objects, BombLand_room6_actors, BombLand_room6_collectables, 0, 0, 0, 0, 0, -1, 0, 0.0, 2, 900.0, 800.0, -900.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+    {BombLand_room7_objects, BombLand_room7_actors, BombLand_room7_collectables, 0, 0, 0, 1, 0, -1, 0, 0.0, 12, 1500.0, 500.0, -900.0, -1500.0, 500.0, -900.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+    {BombLand_room8_objects, BombLand_room8_actors, BombLand_room8_collectables, 0, 0, 0, 0, 0, -1, 0, 0.0, 10, 1200.0, 1000.0, -1200.0, 0.0, 0.0, 0.0, 2.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+    {BombLand_room9_objects, BombLand_room9_actors, BombLand_room9_collectables, 0, 0, 0, 0, 0, -1, 0, 0.0, 1, 1900.0, 400.0, -600.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+    {BombLand_room10_objects, BombLand_room10_actors, BombLand_room10_collectables, 0, 0, 0, 0, 13, 7, 0, 0.0, 10, 900.0, 700.0, -900.0, 0.0, 0.0, 0.0, 2.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+    {BombLand_room11_objects, BombLand_room11_actors, BombLand_room11_collectables, 0, 1, 0, 0, 0, -1, 0, 0.0, 2, -900.0, 800.0, -900.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+    {BombLand_room12_objects, BombLand_room12_actors, BombLand_room12_collectables, BombLand_room12_sprites, 0, 0, 0, 0, -1, 0, 0.0, 1, -1500.0, 500.0, -900.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+    {BombLand_room13_objects, BombLand_room13_actors, BombLand_room13_collectables, 0, 0, 0, 2, 14, 3, 0, 0.0, 1, -1350.0, 1000.0, -1350.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+    {BombLand_room14_objects, BombLand_room14_actors, 0, 0, 0, 1, 0, 0, -1, 0, 0.0, 2, 0.0, 800.0, 1000.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+    {BombLand_room15_objects, BombLand_room15_actors, BombLand_room15_collectables, 0, 0, 0, 0, 0, -1, 0, 0.0, 10, -1400.0, 1200.0, 800.0, 0.0, 0.0, 0.0, 2.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+    {0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0}
+};
 
-#include "assets/levelGroup/BombLand/rooms/room1.rmSet.inc.c"
+s32 BombLand_rooms_map[3][8] = {
+    {-1,  0,  1,  2,  3,  4, -1, -1},
+    {-1,  9,  8,  7,  6,  5, 15, -1}, 
+    {-1, 10, 11, 12, 13, 14, -1, -1} 
+};
 
-#include "assets/levelGroup/BombLand/rooms/room2.rmSet.inc.c"
+StageMapData BombLand_map_data = {
+    8, 3, BombLand_room_instances, BombLand_rooms_map, 
+};
 
-#include "assets/levelGroup/BombLand/rooms/room3.rmSet.inc.c"
+RoomInstance BombLand_nullOWRoom_Rmset = {
+    0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0
+};
 
-#include "assets/levelGroup/BombLand/rooms/room4.rmSet.inc.c"
+LevelScope BombLand_scope_Lvlscope = {
+    0,
+    0,
+    0,
+    255,
+    25000,
+    60,
+};
 
-#include "assets/levelGroup/BombLand/rooms/room5.rmSet.inc.c"
+StageData BombLand_header_Lvlhdr = {
+    &BombLand_map_data,
+    0,
+    &BombLand_stageModels[0],
+    110,
+    0,
+    50336992,
+    131072,
+    &BombLand_spriteLib_Sprlib[0],
+    &BombLand_scope_Lvlscope,
+};
 
-#include "assets/levelGroup/BombLand/rooms/room6.rmSet.inc.c"
-
-#include "assets/levelGroup/BombLand/rooms/room7.rmSet.inc.c"
-
-#include "assets/levelGroup/BombLand/rooms/room8.rmSet.inc.c"
-
-#include "assets/levelGroup/BombLand/rooms/room9.rmSet.inc.c"
-
-#include "assets/levelGroup/BombLand/rooms/room10.rmSet.inc.c"
-
-#include "assets/levelGroup/BombLand/rooms/room11.rmSet.inc.c"
-
-#include "assets/levelGroup/BombLand/rooms/room12.rmSet.inc.c"
-
-#include "assets/levelGroup/BombLand/rooms/room13.rmSet.inc.c"
-
-#include "assets/levelGroup/BombLand/rooms/room14.rmSet.inc.c"
-
-#include "assets/levelGroup/BombLand/rooms/room15.rmSet.inc.c"
-
-#include "assets/levelGroup/BombLand/rooms/roomSTOP.rmSet.inc.c"
-
-#include "assets/levelGroup/BombLand/map.lvmM.inc.c"
-
-#include "assets/levelGroup/BombLand/map.lvmH.inc.c"
-
-#include "assets/levelGroup/BombLand/nullOWRoom.rmSet.inc.c"
-
-#include "assets/levelGroup/BombLand/scope.lvlScope.inc.c"
-
-#include "assets/levelGroup/BombLand/header.lvlHdr.inc.c"
 s32 alignment_Pad_BL[] = {0, 0, 0};
 
 Mtx BombLand_IMtx2 = IDENTITY;

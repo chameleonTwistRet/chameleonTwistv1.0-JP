@@ -307,7 +307,7 @@ typedef struct RoomObject {
     f32 unk2C;
     f32 unk30;
     f32 unk34;
-    s32 unk38; // uservariable???
+    s32 keyframes;
     s32 unk3C;
     s32 unk40;
     s32 unk44;
