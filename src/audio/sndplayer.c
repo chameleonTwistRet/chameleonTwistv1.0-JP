@@ -22,7 +22,7 @@ void alSndpNew(ALSndPlayer *sndp, ALSndpConfig *c)
     sState = (ALSoundState*)alHeapDBAlloc(NULL, 0, c->heap, 1, c->maxSounds * sizeof(ALSoundState));
     sndp->sndState = sState;
 
-    for(i = 0; i < c->maxSounds; i++)
+    for (i = 0; i < c->maxSounds; i++)
 	sState[i].sound = 0;
 
     /*

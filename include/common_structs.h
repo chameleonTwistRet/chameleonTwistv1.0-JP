@@ -368,13 +368,13 @@ typedef struct Collectable {
     s32 unk1C;
 } Collectable;
 
-typedef struct collectableWrapper {
+typedef struct CollectableWrapper {
     Collectable* levelDataCollectable;
     s32 unk_04;
     s32 unk_08;
     s32 bitfield;
     s32 actorIndex;
-} collectableWrapper;
+} CollectableWrapper;
 
 typedef struct Color128 {
     u32 r;
@@ -927,11 +927,11 @@ typedef struct unk0 {
     /* 0x54 */ struct unk0* unk54;
 } unk0;                                             /* size = 0x58 */
 
-typedef struct pole{
+typedef struct Pole {
     /* 0x00 */ s32 mode;
     /* 0x04 */ Vec3f pos;
     /* 0x10 */ f32 yStretch;
-} pole; //sizeof 0x14
+} Pole; //sizeof 0x14
 
 struct UnkList {
     /* 0x00 */ struct UnkList* unk0;

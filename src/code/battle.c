@@ -255,7 +255,7 @@ f32 Battle_CalcTableColumnWidths(u8 numColumns, f32* arg1, f32 xMin, f32 xMax) {
 
 void Battle_PlayEnvSounds(void) {
     if (gCurrentZone == 6 && (Battle_Time % 60) == 0) {
-        PLAYSFX(137, 0, 0x10);
+        PLAY_SFX(137, 0, 0x10);
     }
 }
 
@@ -917,7 +917,7 @@ void Battle_Update(void) {
             if (Battle_Time > 45) {
                 Battle_Stage = BATTLE_STAGE_READY;
                 Battle_Time = 0;
-                PLAYSFX(62, 0, 0x10);
+                PLAY_SFX(62, 0, 0x10);
             }
             break;
         case BATTLE_STAGE_READY:
@@ -933,7 +933,7 @@ void Battle_Update(void) {
                 gIsGamePaused = PAUSEMODE_NOT_PAUSED;
                 Battle_Stage = BATTLE_STAGE_GO;
                 Battle_Time = 0;
-                D_8017683C = PLAYSFX(64, 0, 0x10);
+                D_8017683C = PLAY_SFX(64, 0, 0x10);
                 PlayBGM(gMultiplayerBGM);
                 EnableInput();
             }
