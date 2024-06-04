@@ -2119,7 +2119,7 @@ segments:
       - [0x4C9578, gfxSeg, fixedCamPillar/fixedCamPillar]
 
     
- - {start: 0x4C97E0, type: collision, name: exit2/exit2, args: "Verts", data_only: True}
+      - {start: 0x4C97E0, type: collision, name: exit2/exit2, args: "Verts", data_only: True}
       - {start: 0x4C9828, type: collision, name: exit2/exit2, args: "Tris", data_only: True}
       - {start: 0x4C9858, type: collision, name: exit2/exit2, args: "Settings"}
       - {start: 0x4C9870, type: collision, name: exit2/exit2, args: "Header"}
