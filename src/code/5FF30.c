@@ -923,8 +923,8 @@ char D_800FFEC4[] = "ＣＯＮＧＲＡＴＵＬＡＴＩＯＮＳ！";
 f32 D_800FFEE8 = 0.0f;
 s16 D_800FFEEC[] = {0x18, 0x19, 0x1A, 0x1B, LIST_END};
 
-extern LevelHeader JungleLand_header_Lvlhdr;
-extern LevelHeader AntLand_header_Lvlhdr;
+extern LevelHeader JungleLand_stageData;
+extern LevelHeader AntLand_stageData;
 extern LevelHeader BombLand_header_Lvlhdr;
 extern LevelHeader DesertCastle_header_Lvlhdr;
 extern LevelHeader KidsLand_header_Lvlhdr;
@@ -940,12 +940,10 @@ extern LevelHeader GiantCake_header_Lvlhdr;
 extern LevelHeader PileOfBooks_header_Lvlhdr;
 extern LevelHeader BossRush_header_Lvlhdr;
 
-
-
 //TODO: fix the segmented pointers here
 StageLoadData gStageLoadData[] = {
-    {&JungleLand_header_Lvlhdr, JungleLand_ROM_START, JungleLand_VRAM, JungleLand_VRAM_END, 0},
-    {&AntLand_header_Lvlhdr, AntLand_ROM_START, AntLand_VRAM, AntLand_VRAM_END, 1},
+    {&JungleLand_stageData, JungleLand_ROM_START, JungleLand_VRAM, JungleLand_VRAM_END, 0},
+    {&AntLand_stageData, AntLand_ROM_START, AntLand_VRAM, AntLand_VRAM_END, 1},
     {&BombLand_header_Lvlhdr, BombLand_ROM_START, BombLand_VRAM, BombLand_VRAM_END, 2},
     {&DesertCastle_header_Lvlhdr, DesertCastle_ROM_START, DesertCastle_VRAM, DesertCastle_VRAM_END, 3},
     {&KidsLand_header_Lvlhdr, KidsLand_ROM_START, KidsLand_VRAM, KidsLand_VRAM_END, 4},
@@ -1731,7 +1729,7 @@ void PlayJungleExtSfx(void) {
             PlayBGM(BGM_JUNGLE_INT);
         }
     } else if (((s32) gTimer % 300) == 299) {
-        PLAYSFX(Random(0, 5) + SFX_4F_unkSnd, 1, 0x10);
+        PLAY_SFX(Random(0, 5) + SFX_4F_unkSnd, 1, 0x10);
     }
     gIsNotInCave = isInOverworld;
 }
@@ -1964,15 +1962,15 @@ s32 Actor_PlaySound(Actor* actor, s32 sfxID, s32 unused1, s32 unused2) {
     s32 ret;
 
     if (gGameModeCurrent == GAME_MODE_BATTLE_MENU) {
-        ret = PLAYSFX(sfxID, 1, 0x10);
+        ret = PLAY_SFX(sfxID, 1, 0x10);
     } else {
-        ret = PLAYSFXAT(sfxID, actor->pos, 0, 0);
+        ret = PLAY_SFX_AT(sfxID, actor->pos, 0, 0);
     }
     return ret;
 }
 
 void func_8008C3F0(Actor* actor, s32 sfxID, s32 unused) {
-    PLAYSFXAT(sfxID, actor->pos, 1, 0);
+    PLAY_SFX_AT(sfxID, actor->pos, 1, 0);
 }
 
 s32 func_8008C438(void) {
@@ -2083,7 +2081,6 @@ s32 PutDList(Mtx** arg0, Gfx** arg1, Gfx* arg2) {
                 break;
             case G_MTX:
                 //this calculation is bizzare...var_v1->words.w1 can be a segmented addr -
-                //and D_80129730 points
                 mtxArrayIndex = (var_v1->words.w1 - (u32)AnimationSlots) / sizeof(Mtx);
                 if ((mtxArrayIndex >= 0) && (mtxArrayIndex < 40)) {
                     gSPMatrix(sp60++, sp64, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
@@ -2944,10 +2941,10 @@ void func_8008FEA8(s32 arg0, s32 arg1) {
         }
 
         // set to the virtual base address of the stage
-        if (!IS_SEGMENTED(gStageLoadData[arg0].stagePtr)) {
-            var_a0 = (s32*)gStageLoadData[arg0].stagePtr;
+        if (!IS_SEGMENTED(gStageLoadData[arg0].stageData)) {
+            var_a0 = (s32*)gStageLoadData[arg0].stageData;
         } else {
-            var_a0 = (s32*)SEGMENTED_TO_VIRTUAL2(gStageLoadData[arg0].stagePtr);
+            var_a0 = (s32*)SEGMENTED_TO_VIRTUAL2(gStageLoadData[arg0].stageData);
         }
         
 
@@ -2991,10 +2988,10 @@ void Porocess_Mode0(void) {
         //required 1 liner to match
         for (i = 0; i < D_80168DA0; i++) {gPlayerActors[i].active = 1;}
 
-        for (; i < 4; i++) {
+        for (; i < ARRAY_COUNT(gPlayerActors); i++) {
             gPlayerActors[i].active = 0;
         }            
-        for (i = 0; i < 4; i++) {
+        for (i = 0; i < ARRAY_COUNT(gTongues); i++) {
             _bzero(&gTongues[i], sizeof(Tongue));
         }
     
@@ -3075,7 +3072,7 @@ void Porocess_Mode0(void) {
         }
         
         gPlayerActors[0].active = 1;
-        for (i = 1; i < 4; i++) {
+        for (i = 1; i < ARRAY_COUNT(gPlayerActors); i++) {
             gPlayerActors[i].active = 0;
         }
         
@@ -3126,7 +3123,7 @@ void Porocess_Mode0(void) {
         Battle_GameType = 0;
         SaveData_ReadFile(&gSaveFile);
         D_80174878 = gCurrentStage - 1;
-        for (i = 0; i < 4; i++) {
+        for (i = 0; i < ARRAY_COUNT(gTongues); i++) {
             _bzero(&gTongues[i], sizeof(Tongue));
         }
         func_8008FD68();
@@ -3269,21 +3266,21 @@ s32 func_80090B10(s32 time, s32 stageID) {
 void func_80090BC0(void) {
     LoadSprite(SPRITE_SPECIFIC_SYMBOLS);
     switch (gCurrentStage) {
-    case 13:
-        LoadSprite(113);
-        LoadSprite(39);
+    case STAGE_KIDSBOSS:
+        LoadSprite(SPRITE_PUFF2);
+        LoadSprite(SPRITE_CHOCOKID);
         break;
-    case 10:
-        LoadSprite(14);
+    case STAGE_ANTBOSS:
+        LoadSprite(SPRITE_GRAYANT);
         break;
-    case 11:
-        LoadSprite(43);
-        LoadSprite(36);
-        LoadSprite(28);
-        LoadSprite(29);
+    case STAGE_BOMBBOSS:
+        LoadSprite(SPRITE_BOMBDOKKAN_PART);
+        LoadSprite(SPRITE_BOMBDOKKAN_EYE);
+        LoadSprite(SPRITE_EYEBLINK_UNUSED);
+        LoadSprite(SPRITE_EYETWIRL_UNUSED);
     default:
-    case 9:
-    case 12:
+    case STAGE_JUNGLEBOSS:
+    case STAGE_DESERTBOSS:
         break;
     }
 }
@@ -3340,13 +3337,13 @@ void func_800910E4(CTTask* task) {
     task->unk84 = 1.5f;
     task->unk7C = -20;
     switch (gCurrentStage) {
-    case 9:
+    case STAGE_JUNGLEBOSS:
         task->unk88 = 95;
         break;
-    case 11:
+    case STAGE_BOMBBOSS:
         task->unk88 = 102;
         break;
-    case 12:
+    case STAGE_DESERTBOSS:
         task->unk88 = 90;
         break;
     }
@@ -3366,7 +3363,7 @@ void func_800911D0(CTTask* task) {
         task->unk84 = 3;
         task->rotA = -60;
         func_8008D7B0(task);
-        PLAYSFX(SFX_ChameleonJump, 0, 16);
+        PLAY_SFX(SFX_ChameleonJump, 0, 16);
     } else if (temp_v0->unk54 == 7) {
         task->unk4E = 1;
         task->function = func_80091694;
@@ -3610,7 +3607,7 @@ void func_800927E8(CTTask* task) {
     if ((task->unk54 != 0) && (task->unk54 == 1)) {
         task->function = func_80092864;
         task->unk44 = 22;
-        PLAYSFX(SFX_Lizard_Kong_Hit, 0, 16);
+        PLAY_SFX(SFX_Lizard_Kong_Hit, 0, 16);
         task->unk60 = 15;
         func_8008D7FC(task);
     }
@@ -3858,7 +3855,7 @@ void func_80093500(CTTask* task) {
     }
     else{
         if ((gTimer % 28) == 0) {
-            PLAYSFX(SFX_Bomb_Caterpillar_Slither, 0, 16);
+            PLAY_SFX(SFX_Bomb_Caterpillar_Slither, 0, 16);
         }
         //must be like this
         task->rotA = task->unk90 + task->rotA;
@@ -3943,7 +3940,7 @@ void func_80093FC8(CTTask* task) {
         task->unk54 = 3;
         task->function = func_8009403C;
         task->unk60 = 30;
-        PLAYSFX(SFX_Yellow_Ant_Fall, 0, 16);
+        PLAY_SFX(SFX_Yellow_Ant_Fall, 0, 16);
     }
 }
 
@@ -3968,7 +3965,7 @@ void func_800940B8(CTTask* task) {
     func_8008D7FC(task);
     if (func_80090CB0(task) != 0) {
         task->function = func_80094120;
-        PLAYSFX(SFX_Standard_Bounce, 0, 16);
+        PLAY_SFX(SFX_Standard_Bounce, 0, 16);
         task->unk44 = 12;
     }
 }
@@ -3978,10 +3975,10 @@ void func_80094120(CTTask* task) {
         task->unk60 = 15;
         task->function = func_800941C0;
         task->unk44 = 13;
-        PLAYSFX(SFX_Standard_Bounce, 0, 16);
+        PLAY_SFX(SFX_Standard_Bounce, 0, 16);
     }
     if (task->unk40 == 16) {
-        PLAYSFX(SFX_Standard_Bounce, 0, 16);
+        PLAY_SFX(SFX_Standard_Bounce, 0, 16);
     }
 }
 
@@ -4021,7 +4018,7 @@ void func_80094228(CTTask* task) {
 void func_8009430C(CTTask* task) {
     task->rotA += task->unk_5C;
     if (func_80090CB0(task) != 0) {
-        PLAYSFX(SFX_Standard_Bounce, 0, 16);
+        PLAY_SFX(SFX_Standard_Bounce, 0, 16);
         task->unk7C = -14;
     }
     if (task->pos.x < 40) {
@@ -4040,7 +4037,7 @@ void func_8009430C(CTTask* task) {
 void func_80094410(CTTask* task) {
     task->rotA += task->unk_5C;
     if (func_80090CB0(task) != 0) {
-        PLAYSFX(SFX_Standard_Bounce, 0, 16);
+        PLAY_SFX(SFX_Standard_Bounce, 0, 16);
         task->unk7C *= -0.8;
         task->unk80 = 0;
         if (task->unk60 != 0) {
@@ -4055,7 +4052,7 @@ void func_80094410(CTTask* task) {
 void func_800944C0(CTTask* task) {
     task->rotA += task->unk_5C;
     if (func_80090CB0(task) != 0) {
-        PLAYSFX(SFX_Standard_Bounce, 0, 16);
+        PLAY_SFX(SFX_Standard_Bounce, 0, 16);
         task->unk60 = 0;
         task->function = func_80094540;
         task->rotA = 0;
@@ -4472,7 +4469,7 @@ s32 func_80097414(s32 arg0, s32 arg1) {
     s16 xPos;
     s16 yPos;
 
-    for(i = 0; i != 6; i++) {
+    for (i = 0; i != 6; i++) {
         xPos = StageSelect[i].xPos;
         yPos = StageSelect[i].yPos;
         if ((arg0 >= (xPos - 0x10)) && ((xPos + 0x10) >= arg0) && (arg1 >= (yPos - 0x18)) && ((yPos + 0x18) >= arg1)) {
@@ -4552,7 +4549,7 @@ void func_80097D1C(CTTask* task) {
     func_800610B8();
     printUISprite(80, 16, 0, 0, 1, 0, 0, 0, 0x4E);
     printUISprite(208, 16, 0, 0, 1, 0, 0, 2, 0x4E);
-    for(i = 0x70; i < 0xB1; i += 0x20){
+    for (i = 0x70; i < 0xB1; i += 0x20){
         printUISprite(i, 16, 0, 0, 1, 0, 0, 1, 0x4E);
     }
     func_800610A8();
@@ -4599,7 +4596,7 @@ void func_800983C8(CTTask* task) {
     func_80059F28(x + 96, y, 0, 0, 1, 0, 0, 2, 0x4D);
     func_80059F28(x + 96, y + 24, 0, 0, 1, 0, 0, 5, 0x4D);
     func_80059F28(x + 96, y + 40, 0, 0, 1, 0, 0, 8, 0x4D);
-    for(i = x + 32; i <= x + 64; i += 32){
+    for (i = x + 32; i <= x + 64; i += 32){
         func_80059F28(i, y, 0, 0, 1, 0, 0, 1, 0x4D);
         func_80059F28(i, y + 24, 0, 0, 1, 0, 0, 4, 0x4D);
         func_80059F28(i, y + 40, 0, 0, 1, 0, 0, 7, 0x4D);
@@ -4748,10 +4745,10 @@ void func_8009A57C(CTTask* task) {
     } else if (temp_v1->unk54 == 0) {
         if (gContMain[task->unk_62].buttons2 & 0x8000) {
             temp_v1->unk54 = 1;
-            PLAYSFX(SFX_Select, 0, 80);
+            PLAY_SFX(SFX_Select, 0, 80);
         } else if (gContMain[task->unk_62].buttons2 & 0x4000) {
             temp_v1->unk54 = 3;
-            PLAYSFX(SFX_Decline, 0, 80);
+            PLAY_SFX(SFX_Decline, 0, 80);
         } else {
             func_800998DC(task);
         }
@@ -4765,11 +4762,11 @@ void func_8009A64C(CTTask* task) {
     } else if (gContMain[task->unk_62].buttons2 & 0x8000) {
         newTask->unk54 = 2;
         task->function = func_8009A57C;
-        PLAYSFX(SFX_Select, 0, 80);
+        PLAY_SFX(SFX_Select, 0, 80);
     } else if (gContMain[task->unk_62].buttons2 & 0x4000) {
         newTask->unk54 = 0;
         task->function = func_8009A57C;
-        PLAYSFX(SFX_Decline, 0, 80);
+        PLAY_SFX(SFX_Decline, 0, 80);
     }
 }
 
@@ -4897,35 +4894,35 @@ void func_8009B464(CTTask* task) {
         if (gSaveFiles[newTask->unk6A].flags & 2) {
             newTask->unk54 = 6;
             task->function = func_8009B45C;
-            PLAYSFX(SFX_Select, 0, 80);
+            PLAY_SFX(SFX_Select, 0, 80);
             return;
         }
         else{
-            PLAYSFX(SFX_Save_Delete_Decline, 0, 80);
+            PLAY_SFX(SFX_Save_Delete_Decline, 0, 80);
         }
     }
     if (gContMain[task->unk_62].buttons2 & 0x4000) {
         newTask->unk54 = 7;
         task->function = func_8009B45C;
-        PLAYSFX(SFX_Decline, 0, 80);
+        PLAY_SFX(SFX_Decline, 0, 80);
     }
     else if (gContMain[task->unk_62].buttons2 & 0x20) {
         if (!(gSaveFiles[newTask->unk6A].flags & 2)) {
-            PLAYSFX(SFX_Save_Delete_Decline, 0, 80);
+            PLAY_SFX(SFX_Save_Delete_Decline, 0, 80);
         } else{
             newTask->unk54 = 9;
             task->function = func_8009BEC4;
-            PLAYSFX(SFX_Select, 0, 80);
+            PLAY_SFX(SFX_Select, 0, 80);
         }
     }
     else if (gContMain[task->unk_62].buttons2 & 0x10) {
         if (!(gSaveFiles[newTask->unk6A].flags & 2)) {
-            PLAYSFX(SFX_Save_Delete_Decline, 0, 80);
+            PLAY_SFX(SFX_Save_Delete_Decline, 0, 80);
         } else {
             newTask->unk54 = 0xD;
             task->function = func_8009C74C;
             newTask->unk_64 = newTask->unk6A;
-            PLAYSFX(SFX_Select, 0, 80);
+            PLAY_SFX(SFX_Select, 0, 80);
         }
     }
     else{
@@ -5036,11 +5033,11 @@ void func_8009BEC4(CTTask* task) {
     }  else if (gContMain[task->unk_62].buttons2 & 0x8000) {
         newTask->unk54 = 10;
         task->function = func_8009C278;
-        PLAYSFX(SFX_Select, 0, 80);
+        PLAY_SFX(SFX_Select, 0, 80);
     } else if (gContMain[task->unk_62].buttons2 & 0x4000) {
         newTask->unk54 = 4;
         task->function = func_8009C278;
-        PLAYSFX(SFX_Decline, 0, 80);
+        PLAY_SFX(SFX_Decline, 0, 80);
     }
 }
 
@@ -5070,11 +5067,11 @@ void func_8009C19C(CTTask* task) {
     } else if (gContMain[task->unk_62].buttons2 & 0x8000) {
         newTask->unk54 = 19;
         task->function = func_8009C278;
-        PLAYSFX(SFX_Select, 0, 80);
+        PLAY_SFX(SFX_Select, 0, 80);
     } else if (gContMain[task->unk_62].buttons2 & 0x4000) {
         newTask->unk54 = 4;
         task->function = func_8009C278;
-        PLAYSFX(SFX_Decline, 0, 80);
+        PLAY_SFX(SFX_Decline, 0, 80);
     }
 }
 
@@ -5105,7 +5102,7 @@ void func_8009C394(CTTask* task) {
     CTTask* newTask;
     CTTask* next;
 
-    for(newTask = gCTTaskHead, next = newTask->next;
+    for (newTask = gCTTaskHead, next = newTask->next;
     next != NULL; newTask = next, next = next->next){
         if (newTask->runType == 3) {
             if (task->unk_64 == newTask->unk_62) {
@@ -5135,7 +5132,7 @@ void func_8009C644(CTTask* task) {
     CTTask* at;
     CTTask* next;
 
-    for(at = gCTTaskHead, next = at->next;
+    for (at = gCTTaskHead, next = at->next;
         next != NULL;
         at = next, next = next->next){
         if ((at->runType == 3) && (task->unk6A == at->unk_62)) {
@@ -5172,11 +5169,11 @@ void func_8009C74C(CTTask* task) {
         if (gContMain[task->unk_62].buttons2 & 0x8000) {
             newTask->unk54 = 15;
             task->function = func_8009C828;
-            PLAYSFX(SFX_Select, 0, 80);
+            PLAY_SFX(SFX_Select, 0, 80);
         } else if (gContMain[task->unk_62].buttons2 & 0x4000) {
             newTask->unk54 = 14;
             task->function = func_8009B464;
-            PLAYSFX(SFX_Decline, 0, 80);
+            PLAY_SFX(SFX_Decline, 0, 80);
         } else {
             func_800998DC(task);
         }
@@ -5190,11 +5187,11 @@ void func_8009C828(CTTask* task) {
     } else if (gContMain[task->unk_62].buttons2 & 0x8000) {
         newTask->unk54 = 16;
         task->function = func_8009C278;
-        PLAYSFX(SFX_Select, 0, 80);
+        PLAY_SFX(SFX_Select, 0, 80);
     } else if (gContMain[task->unk_62].buttons2 & 0x4000) {
         newTask->unk54 = 4;
         task->function = func_8009C278;
-        PLAYSFX(SFX_Decline, 0, 80);
+        PLAY_SFX(SFX_Decline, 0, 80);
     }
 }
 
@@ -5209,7 +5206,7 @@ void func_8009CBC0(void) {
     func_80059F28(0, 0, 0, 0, 1, 320, 240, 0, 0);
     func_800610B8();
     func_80059F28(48, 16, 0, 0, 1, 32, 32, 0, 78);
-    for(i = 80; i < 209; i += 0x20){
+    for (i = 80; i < 209; i += 0x20){
         func_80059F28(i, 16, 0, 0, 1, 32, 32, 1, 78);
     }
     func_80059F28(240, 16, 0, 0, 1, 32, 32, 2, 78);
@@ -5217,20 +5214,20 @@ void func_8009CBC0(void) {
     func_80059F28(256, 56, 0, 0, 1, 32, 24, 2, 77);
     func_80059F28(32, 200, 0, 0, 1, 32, 24, 6, 77);
     func_80059F28(256, 200, 0, 0, 1, 32, 24, 8, 77);
-    for(i = 0x40; i < 225; i += 0x20){
+    for (i = 0x40; i < 225; i += 0x20){
         func_80059F28(i, 56, 0, 0, 1, 32, 24, 1, 77);
     }
-    for(i = 0x40; i != 0x100; i += 0x20){
+    for (i = 0x40; i != 0x100; i += 0x20){
         func_80059F28(i, 200, 0, 0, 1, 32, 24, 7, 77);
     }
-    for(j = 80; j < 177; j += 0x18){
+    for (j = 80; j < 177; j += 0x18){
         func_80059F28(32, j, 0, 0, 1, 32, 24, 3, 77);
     }
-    for(j = 80; j != 200; j += 0x18){
+    for (j = 80; j != 200; j += 0x18){
         func_80059F28(256, j, 0, 0, 1, 32, 24, 5, 77);
     }
-    for(i = 0x40; i != 0x100; i += 0x20){
-        for(j = 80; j != 200; j += 0x18){
+    for (i = 0x40; i != 0x100; i += 0x20){
+        for (j = 80; j != 200; j += 0x18){
             func_80059F28(i, j, 0, 0, 1, 32, 24, 4, 77);
         }
     }
@@ -5239,8 +5236,8 @@ void func_8009CBC0(void) {
 void func_8009CFA8(void) {
     s32 i, j;
     func_800610B8();
-    for(i = 0; i != 5; i++){
-        for(j = 0; j != 8; j++){
+    for (i = 0; i != 5; i++){
+        for (j = 0; j != 8; j++){
             func_800612F0(i);
             func_80059F28(j * 40, i * 48, 0, 0, 1, 0, 0, j, 210);
         }
@@ -5335,11 +5332,11 @@ void func_8009DE1C(CTTask* task) {
         task->function = func_8009E24C;
         task->unk60 = 8;
         temp_t1->unk94[task->unk_5C] = task->unk_62;
-        PLAYSFX(0x28, 0, 0x10);
+        PLAY_SFX(0x28, 0, 0x10);
     }
     if (gContMain[task->unk_62].buttons2 & 0x4000) {
         temp_t1->unk54 = 15;
-        PLAYSFX(0xC4, 0, 0x10);
+        PLAY_SFX(0xC4, 0, 0x10);
         return;
     }
     if (result == 0) return;
@@ -5354,7 +5351,7 @@ void func_8009DE1C(CTTask* task) {
         if ((task->unk_5C == 4) && (D_80200B2C == 0)) {
             task->unk_5C--;
         }
-        PLAYSFX(0x2A, 0, 0x10);
+        PLAY_SFX(0x2A, 0, 0x10);
         while (temp_t1->unk94[task->unk_5C] != 0xFF){
             task->unk_5C--;
             if (task->unk_5C < 0) {
@@ -5379,7 +5376,7 @@ void func_8009DE1C(CTTask* task) {
         if (task->unk_5C >= 6) {
             task->unk_5C = 0;
         }
-        PLAYSFX(0x2A, 0, 0x10);
+        PLAY_SFX(0x2A, 0, 0x10);
         while (temp_t1->unk94[task->unk_5C] != 0xFF){
             task->unk_5C++;
             if ((task->unk_5C == 4) && (D_80200B2C == 0)) {
@@ -5476,33 +5473,33 @@ void func_8009F314(CTTask* task) {
             funcResult = func_8009DDEC(task);
             if ((gContMain[task->unk_62].buttons2 & 0x1000) || (gContMain[task->unk_62].buttons2 & 0x8000)) {
                 newTask->unk54 = 14;
-                PLAYSFX(40, 0, 0x10);
+                PLAY_SFX(40, 0, 0x10);
             } else if (gContMain[task->unk_62].buttons2 & 0x4000) {
                 newTask->unk54 = 8;
-                PLAYSFX(196, 0, 0x10);
+                PLAY_SFX(196, 0, 0x10);
             } else if (gContMain[task->unk_62].buttons2 & 0x0010) {
                 newTask->unk54 = 9;
-                PLAYSFX(40, 0, 0x10);
+                PLAY_SFX(40, 0, 0x10);
             } else if (funcResult != 0) {
                 if (funcResult & 0x400) {
                     if (newTask->unk5E < 4) {
                         newTask->unk5E += 4;
-                        PLAYSFX(42, 0, 0x10);
+                        PLAY_SFX(42, 0, 0x10);
                     }
                 } else if (funcResult & 0x800) {
                     if (newTask->unk5E >= 4) {
                         newTask->unk5E -= 4;
-                        PLAYSFX(42, 0, 0x10);
+                        PLAY_SFX(42, 0, 0x10);
                     }
                 } else if (funcResult & 0x100) {
                     newTask->unk5E++;
-                    PLAYSFX(42, 0, 0x10);
+                    PLAY_SFX(42, 0, 0x10);
                     if ((newTask->unk5E == 4) || (newTask->unk5E == 8)) {
                         newTask->unk5E -= 4;
                     }
                 } else if (funcResult & 0x200) {
                     newTask->unk5E--;
-                    PLAYSFX(42, 0, 0x10);
+                    PLAY_SFX(42, 0, 0x10);
                     if ((newTask->unk5E == -1) || (newTask->unk5E == 3)) {
                         newTask->unk5E += 4;
                     }
@@ -5574,7 +5571,7 @@ void func_800A03B8(CTTask* task) {
         if ((gContMain[task->unk_62].buttons2 & 0x1000) || (gContMain[task->unk_62].buttons2 & 0x8000)) {
             if (newTask->unk60 == 4) {
                 newTask->unk54 = 12;
-                PLAYSFX(40, 0, 0x10);
+                PLAY_SFX(40, 0, 0x10);
                 task->function = func_8009F314;
             }
         } else if (funcResult != 0) {
@@ -5583,13 +5580,13 @@ void func_800A03B8(CTTask* task) {
                 if (newTask->unk60 >= 5) {
                     newTask->unk60 = 0;
                 }
-                PLAYSFX(42, 0, 0x10);
+                PLAY_SFX(42, 0, 0x10);
             } else if (funcResult & 0x800) {
                 newTask->unk60--;
                 if (newTask->unk60 < 0) {
                     newTask->unk60 = 4;
                 }
-                PLAYSFX(42, 0, 0x10);
+                PLAY_SFX(42, 0, 0x10);
             } else {
                 if (funcResult & 0x100) {
                     if (newTask->unk60 == 3) {
@@ -5597,21 +5594,21 @@ void func_800A03B8(CTTask* task) {
                         if (newTask->unk6A >= 5) {
                             newTask->unk6A = 0;
                         }
-                        PLAYSFX(42, 0, 0x10);
+                        PLAY_SFX(42, 0, 0x10);
                     } else if (newTask->unk60 == 0) {
                         newTask->unk66++;
                         if (newTask->unk66 >= 4) {
                             newTask->unk66 = 0;
                         }
-                        PLAYSFX(42, 0, 0x10);
+                        PLAY_SFX(42, 0, 0x10);
                     } else if (newTask->unk60 == 1) {
                         newTask->unk_62++;
                         if (newTask->unk_62 >= 9) {
                             newTask->unk_62 = 0;
                         }
-                        PLAYSFX(42, 0, 0x10);
+                        PLAY_SFX(42, 0, 0x10);
                     } else if (newTask->unk60 == 2) {
-                        PLAYSFX(42, 0, 0x10);
+                        PLAY_SFX(42, 0, 0x10);
                         newTask->unk_68++;
                         if (D_80200B1E < newTask->unk_68) {
                             newTask->unk_68 = D_801003DC.unk6[-D_80200B1E + 1];
@@ -5624,25 +5621,25 @@ void func_800A03B8(CTTask* task) {
                         if (newTask->unk6A < 0) {
                             newTask->unk6A = 4;
                         }
-                        PLAYSFX(42, 0, 0x10);
+                        PLAY_SFX(42, 0, 0x10);
                     } else if (newTask->unk60 == 0) {
                         newTask->unk66--;
                         if (newTask->unk66 < 0) {
                             newTask->unk66 = 3;
                         }
-                        PLAYSFX(42, 0, 0x10);
+                        PLAY_SFX(42, 0, 0x10);
                     } else if (newTask->unk60 == 1) {
                         newTask->unk_62--;
                         if (newTask->unk_62 < 0) {
                             newTask->unk_62 = 8;
                         }
-                        PLAYSFX(42, 0, 0x10);
+                        PLAY_SFX(42, 0, 0x10);
                     } else if (newTask->unk60 == 2) {
                         newTask->unk_68--;
                         if (newTask->unk_68 < D_801003DC.unk6[-D_80200B1E + 1]) {
                             newTask->unk_68 = D_80200B1E;
                         }
-                        PLAYSFX(42, 0, 0x10);
+                        PLAY_SFX(42, 0, 0x10);
                     }
                 }
             }
@@ -6953,7 +6950,7 @@ const char D_8010F06C[] = "10";
 void func_800A93AC(ContMain* arg0) {
     s32 i;
 
-    for (i = 0; i < PLAYERS_MAX; i++) {
+    for (i = 0; i < ARRAY_COUNT(gPlayerActors); i++) {
         if (gPlayerActors[i].active == FALSE) {
             continue;
         }

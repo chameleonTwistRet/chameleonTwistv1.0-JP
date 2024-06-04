@@ -1,5 +1,6 @@
 #include "common.h"
 
+<<<<<<< HEAD
 extern unsigned char Global_hexComb_i4_PNG[];
 extern unsigned char Global_fraMEd_ia4_PNG[];
 extern unsigned char Global_hexCombFade_i8_PNG[];
@@ -282,3 +283,9 @@ Mtx BombSnake_IMtx14 = IDENTITY;
 #include "assets/levelGroup/BombSnake/anim/unk4Pointers.animP.inc.c"
 
 char SomeBSS[0x320];
+=======
+#include "build/assets/levelGroup/BombSnake/BombSnake_data.inc.c"
+
+//Unsure on this, but the VRAM_END of this segment suggest this is correct
+char SomeBSS[0x320];
+>>>>>>> f8e7a997af3509508d26afbb71d08e7ec79dc365

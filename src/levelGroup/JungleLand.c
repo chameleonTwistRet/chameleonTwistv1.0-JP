@@ -35,253 +35,501 @@ extern unsigned char Global_JLCaveFadeTop_ci8_PAL[];
 extern unsigned char Global_JLCaveFadeTop_ci8_PNG[];
 
 extern Gfx Global_fallbackCube_Gfx[];
-extern CollisionData Global_fallbackCube_ColH;
+extern ModelCollision Global_fallbackCube_ColH;
 extern Gfx Global_exitShadowSouth_Gfx[];
-extern CollisionData Global_exitShadowSouth_ColH;
+extern ModelCollision Global_exitShadowSouth_ColH;
 extern Gfx Global_exitShadowNorth_Gfx[];
-extern CollisionData Global_exitShadowNorth_ColH;
+extern ModelCollision Global_exitShadowNorth_ColH;
 extern Gfx Global_exitShadowEast_Gfx[];
-extern CollisionData Global_exitShadowEast_ColH;
+extern ModelCollision Global_exitShadowEast_ColH;
 extern Gfx Global_exitShadowWest_Gfx[];
-extern CollisionData Global_exitShadowWest_ColH;
+extern ModelCollision Global_exitShadowWest_ColH;
 extern Gfx Global_ALBLExit_Gfx[];
-extern CollisionData Global_ALBLExit_ColH;
-extern Gfx Global_unk3_Gfx[];
-extern CollisionData Global_unk3_ColH;
+extern ModelCollision Global_ALBLExit_ColH;
+extern Gfx Global_sandPit_Gfx[];
+extern ModelCollision Global_sandPit_ColH;
 extern Gfx Global_BossBridge_Gfx[];
-extern CollisionData Global_BossBridge_ColH;
+extern ModelCollision Global_BossBridge_ColH;
 extern Gfx Global_ALPole_Gfx[];
-extern CollisionData Global_ALPole_ColH;
+extern ModelCollision Global_ALPole_ColH;
 extern Gfx Global_ALBLDoor_Gfx[];
-extern CollisionData Global_ALBLDoor_ColH;
+extern ModelCollision Global_ALBLDoor_ColH;
 extern Gfx Global_ALSpinDoor_Gfx[];
-extern CollisionData Global_ALSpinDoor_ColH;
+extern ModelCollision Global_ALSpinDoor_ColH;
 extern Gfx Global_BLLavaFloor_Gfx[];
-extern CollisionData Global_BLLavaFloor_ColH;
+extern ModelCollision Global_BLLavaFloor_ColH;
 extern Gfx Global_BLLava_Gfx[];
-extern CollisionData Global_BLLava_ColH;
+extern ModelCollision Global_BLLava_ColH;
 extern Gfx Global_BLLava2_Gfx[];
-extern CollisionData Global_BLLava2_ColH;
+extern ModelCollision Global_BLLava2_ColH;
 extern Gfx Global_BLLava3_Gfx[];
-extern CollisionData Global_BLLava3_ColH;
+extern ModelCollision Global_BLLava3_ColH;
 extern Gfx Global_BLLava4_Gfx[];
-extern CollisionData Global_BLLava4_ColH;
+extern ModelCollision Global_BLLava4_ColH;
 extern Gfx Global_BLLava5_Gfx[];
-extern CollisionData Global_BLLava5_ColH;
+extern ModelCollision Global_BLLava5_ColH;
 extern Gfx Global_BLLava6_Gfx[];
-extern CollisionData Global_BLLava6_ColH;
+extern ModelCollision Global_BLLava6_ColH;
 extern Gfx Global_BLLava7_Gfx[];
-extern CollisionData Global_BLLava7_ColH;
+extern ModelCollision Global_BLLava7_ColH;
 extern Gfx Global_BLLava8_Gfx[];
-extern CollisionData Global_BLLava8_ColH;
+extern ModelCollision Global_BLLava8_ColH;
 extern Gfx Global_BLDestructableTop_Gfx[];
-extern CollisionData Global_BLDestructableTop_ColH;
+extern ModelCollision Global_BLDestructableTop_ColH;
 extern Gfx Global_BLMetalBridge_Gfx[];
-extern CollisionData Global_BLMetalBridge_ColH;
+extern ModelCollision Global_BLMetalBridge_ColH;
 extern Gfx Global_KLExit_Gfx[];
-extern CollisionData Global_KLExit_ColH;
+extern ModelCollision Global_KLExit_ColH;
 extern Gfx Global_KLDoor_Gfx[];
-extern CollisionData Global_KLDoor_ColH;
+extern ModelCollision Global_KLDoor_ColH;
 extern Gfx Global_DCExit_Gfx[];
-extern CollisionData Global_DCExit_ColH;
+extern ModelCollision Global_DCExit_ColH;
 extern Gfx Global_TallExitShadow1_Gfx[];
-extern CollisionData Global_TallExitShadow1_ColH;
+extern ModelCollision Global_TallExitShadow1_ColH;
 extern Gfx Global_TallExitShadow2_Gfx[];
-extern CollisionData Global_TallExitShadow2_ColH;
+extern ModelCollision Global_TallExitShadow2_ColH;
 extern Gfx Global_GCExit1_Gfx[];
-extern CollisionData Global_GCExit1_ColH;
+extern ModelCollision Global_GCExit1_ColH;
 extern Gfx Global_GCExit2_Gfx[];
-extern CollisionData Global_GCExit2_ColH;
+extern ModelCollision Global_GCExit2_ColH;
 extern Gfx Global_trainingRoomLight_Gfx[];
-extern CollisionData Global_trainingRoomLight_ColH;
+extern ModelCollision Global_trainingRoomLight_ColH;
 extern Gfx Global_JLCaveExit1_Gfx[];
-extern CollisionData Global_JLCaveExit1_ColH;
+extern ModelCollision Global_JLCaveExit1_ColH;
 extern Gfx Global_JLCaveExit2_Gfx[];
-extern CollisionData Global_JLCaveExit2_ColH;
+extern ModelCollision Global_JLCaveExit2_ColH;
 extern Gfx Global_JLCaveExit3_Gfx[];
-extern CollisionData Global_JLCaveExit3_ColH;
+extern ModelCollision Global_JLCaveExit3_ColH;
 extern Gfx Global_JLCaveExit4_Gfx[];
-extern CollisionData Global_JLCaveExit4_ColH;
+extern ModelCollision Global_JLCaveExit4_ColH;
 extern Gfx Global_JLOutsideEntrance_Gfx[];
-extern CollisionData Global_JLOutsideEntrance_ColH;
+extern ModelCollision Global_JLOutsideEntrance_ColH;
 extern Gfx Global_JLFxCamPillar_Gfx[];
-extern CollisionData Global_JLFxCamPillar_ColH;
+extern ModelCollision Global_JLFxCamPillar_ColH;
 extern Gfx Global_JLCaveDoor_Gfx[];
-extern CollisionData Global_JLCaveDoor_ColH;
+extern ModelCollision Global_JLCaveDoor_ColH;
 extern Gfx JungleLand_lilypad_Gfx[];
-extern CollisionData JungleLand_lilypad_ColH;
+extern ModelCollision JungleLand_lilypad_ColH;
 extern Gfx JungleLand_vine_Gfx[];
-extern CollisionData JungleLand_vine_ColH;
+extern ModelCollision JungleLand_vine_ColH;
 extern Gfx JungleLand_fallenCrownLog_Gfx[];
-extern CollisionData JungleLand_fallenCrownLog_ColH;
+extern ModelCollision JungleLand_fallenCrownLog_ColH;
 extern Gfx JungleLand_unkLog_Gfx[];
-extern CollisionData JungleLand_unkLog_ColH;
+extern ModelCollision JungleLand_unkLog_ColH;
 extern Gfx JungleLand_fallenLogStump_Gfx[];
-extern CollisionData JungleLand_fallenLogStump_ColH;
+extern ModelCollision JungleLand_fallenLogStump_ColH;
 extern Gfx JungleLand_logTunnel_Gfx[];
-extern CollisionData JungleLand_logTunnel_ColH;
+extern ModelCollision JungleLand_logTunnel_ColH;
 extern Gfx JungleLand_waterfallRock_Gfx[];
-extern CollisionData JungleLand_waterfallRock_ColH;
+extern ModelCollision JungleLand_waterfallRock_ColH;
 extern Gfx JungleLand_extEntranceDoorFrame_Gfx[];
-extern CollisionData JungleLand_extEntranceDoorFrame_ColH;
+extern ModelCollision JungleLand_extEntranceDoorFrame_ColH;
 extern Gfx JungleLand_fallBridge_Gfx[];
-extern CollisionData JungleLand_fallBridge_ColH;
+extern ModelCollision JungleLand_fallBridge_ColH;
 extern Gfx JungleLand_ctCrate_Gfx[];
-extern CollisionData JungleLand_ctCrate_ColH;
+extern ModelCollision JungleLand_ctCrate_ColH;
 extern Gfx JungleLand_ctCrate2_Gfx[];
-extern CollisionData JungleLand_ctCrate2_ColH;
+extern ModelCollision JungleLand_ctCrate2_ColH;
 extern Gfx JungleLand_walkingPlank_Gfx[];
-extern CollisionData JungleLand_walkingPlank_ColH;
+extern ModelCollision JungleLand_walkingPlank_ColH;
 extern Gfx JungleLand_walkingPlank2_Gfx[];
-extern CollisionData JungleLand_walkingPlank2_ColH;
+extern ModelCollision JungleLand_walkingPlank2_ColH;
 extern Gfx JungleLand_walkingPlank3_Gfx[];
-extern CollisionData JungleLand_walkingPlank3_ColH;
+extern ModelCollision JungleLand_walkingPlank3_ColH;
 extern Gfx JungleLand_walkingPlank4_Gfx[];
-extern CollisionData JungleLand_walkingPlank4_ColH;
+extern ModelCollision JungleLand_walkingPlank4_ColH;
 extern Gfx JungleLand_singularPlank_Gfx[];
-extern CollisionData JungleLand_singularPlank_ColH;
+extern ModelCollision JungleLand_singularPlank_ColH;
 extern Gfx JungleLand_roomSixStartPlatform_Gfx[];
-extern CollisionData JungleLand_roomSixStartPlatform_ColH;
+extern ModelCollision JungleLand_roomSixStartPlatform_ColH;
 extern Gfx JungleLand_cavePlatform_Gfx[];
-extern CollisionData JungleLand_cavePlatform_ColH;
+extern ModelCollision JungleLand_cavePlatform_ColH;
 extern Gfx JungleLand_roomSixCrownPlatform_Gfx[];
-extern CollisionData JungleLand_roomSixCrownPlatform_ColH;
+extern ModelCollision JungleLand_roomSixCrownPlatform_ColH;
 extern Gfx JungleLand_roomSixSidePlatform_Gfx[];
-extern CollisionData JungleLand_roomSixSidePlatform_ColH;
+extern ModelCollision JungleLand_roomSixSidePlatform_ColH;
 extern Gfx JungleLand_roomSevenLava_Gfx[];
-extern CollisionData JungleLand_roomSevenLava_ColH;
+extern ModelCollision JungleLand_roomSevenLava_ColH;
 extern Gfx JungleLand_roomSevenFloor_Gfx[];
-extern CollisionData JungleLand_roomSevenFloor_ColH;
+extern ModelCollision JungleLand_roomSevenFloor_ColH;
 extern Gfx JungleLand_roomZeroLava_Gfx[];
-extern CollisionData JungleLand_roomZeroLava_ColH;
+extern ModelCollision JungleLand_roomZeroLava_ColH;
 extern Gfx JungleLand_roomOnePlatform_Gfx[];
-extern CollisionData JungleLand_roomOnePlatform_ColH;
+extern ModelCollision JungleLand_roomOnePlatform_ColH;
 extern Gfx JungleLand_roomSixCrownEdgePlatform_Gfx[];
-extern CollisionData JungleLand_roomSixCrownEdgePlatform_ColH;
+extern ModelCollision JungleLand_roomSixCrownEdgePlatform_ColH;
 extern Gfx JungleLand_roomSevenSpinRing_Gfx[];
-extern CollisionData JungleLand_roomSevenSpinRing_ColH;
+extern ModelCollision JungleLand_roomSevenSpinRing_ColH;
 extern Gfx JungleLand_woodBlock_Gfx[];
-extern CollisionData JungleLand_woodBlock_ColH;
+extern ModelCollision JungleLand_woodBlock_ColH;
 extern Gfx JungleLand_ropes_Gfx[];
-extern CollisionData JungleLand_ropes_ColH;
+extern ModelCollision JungleLand_ropes_ColH;
 extern Gfx JungleLand_railOne_Gfx[];
-extern CollisionData JungleLand_railOne_ColH;
+extern ModelCollision JungleLand_railOne_ColH;
 extern Gfx JungleLand_railTwo_Gfx[];
-extern CollisionData JungleLand_railTwo_ColH;
+extern ModelCollision JungleLand_railTwo_ColH;
 extern Gfx JungleLand_railThree_Gfx[];
-extern CollisionData JungleLand_railThree_ColH;
+extern ModelCollision JungleLand_railThree_ColH;
 extern Gfx JungleLand_railFour_Gfx[];
-extern CollisionData JungleLand_railFour_ColH;
+extern ModelCollision JungleLand_railFour_ColH;
 extern Gfx JungleLand_railFive_Gfx[];
-extern CollisionData JungleLand_railFive_ColH;
+extern ModelCollision JungleLand_railFive_ColH;
 extern Gfx JungleLand_railSix_Gfx[];
-extern CollisionData JungleLand_railSix_ColH;
+extern ModelCollision JungleLand_railSix_ColH;
 extern Gfx JungleLand_rail_Gfx[];
-extern CollisionData JungleLand_rail_ColH;
+extern ModelCollision JungleLand_rail_ColH;
 extern Gfx JungleLand_ctCrate3_Gfx[];
-extern CollisionData JungleLand_ctCrate3_ColH;
+extern ModelCollision JungleLand_ctCrate3_ColH;
 extern Gfx JungleLand_logOne_Gfx[];
-extern CollisionData JungleLand_logOne_ColH;
+extern ModelCollision JungleLand_logOne_ColH;
 extern Gfx JungleLand_fallBridgeSmall2_Gfx[];
-extern CollisionData JungleLand_fallBridgeSmall2_ColH;
+extern ModelCollision JungleLand_fallBridgeSmall2_ColH;
 extern Gfx JungleLand_logSetPiece_Gfx[];
-extern CollisionData JungleLand_logSetPiece_ColH;
+extern ModelCollision JungleLand_logSetPiece_ColH;
 extern Gfx JungleLand_holeLog_Gfx[];
-extern CollisionData JungleLand_holeLog_ColH;
+extern ModelCollision JungleLand_holeLog_ColH;
 extern Gfx JungleLand_waterfallGroundCollision_Gfx[];
-extern CollisionData JungleLand_waterfallGroundCollision_ColH;
+extern ModelCollision JungleLand_waterfallGroundCollision_ColH;
 extern Gfx JungleLand_waterfallBacksideCollision_Gfx[];
-extern CollisionData JungleLand_waterfallBacksideCollision_ColH;
+extern ModelCollision JungleLand_waterfallBacksideCollision_ColH;
 extern Gfx JungleLand_groundCollision_Gfx[];
-extern CollisionData JungleLand_groundCollision_ColH;
+extern ModelCollision JungleLand_groundCollision_ColH;
 extern Gfx JungleLand_holeLogBottom_Gfx[];
-extern CollisionData JungleLand_holeLogBottom_ColH;
+extern ModelCollision JungleLand_holeLogBottom_ColH;
 extern Gfx JungleLand_extThree_Gfx[];
-extern CollisionData JungleLand_extThree_ColH;
+extern ModelCollision JungleLand_extThree_ColH;
 extern Gfx JungleLand_extFour_Gfx[];
-extern CollisionData JungleLand_extFour_ColH;
+extern ModelCollision JungleLand_extFour_ColH;
 extern Gfx JungleLand_extZero_Gfx[];
-extern CollisionData JungleLand_extZero_ColH;
+extern ModelCollision JungleLand_extZero_ColH;
 extern Gfx JungleLand_extOne_Gfx[];
-extern CollisionData JungleLand_extOne_ColH;
+extern ModelCollision JungleLand_extOne_ColH;
 extern Gfx JungleLand_extTwo_Gfx[];
-extern CollisionData JungleLand_extTwo_ColH;
+extern ModelCollision JungleLand_extTwo_ColH;
 extern Gfx JungleLand_rockFloor_Gfx[];
-extern CollisionData JungleLand_rockFloor_ColH;
+extern ModelCollision JungleLand_rockFloor_ColH;
 extern Gfx JungleLand_rockFloor2_Gfx[];
-extern CollisionData JungleLand_rockFloor2_ColH;
+extern ModelCollision JungleLand_rockFloor2_ColH;
 extern Gfx JungleLand_extFive_Gfx[];
-extern CollisionData JungleLand_extFive_ColH;
+extern ModelCollision JungleLand_extFive_ColH;
 extern Gfx JungleLand_extThreePartTwo_Gfx[];
-extern CollisionData JungleLand_extThreePartTwo_ColH;
+extern ModelCollision JungleLand_extThreePartTwo_ColH;
 extern Gfx JungleLand_extFivePartTwo_Gfx[];
-extern CollisionData JungleLand_extFivePartTwo_ColH;
+extern ModelCollision JungleLand_extFivePartTwo_ColH;
 extern Gfx JungleLand_extSix_Gfx[];
-extern CollisionData JungleLand_extSix_ColH;
+extern ModelCollision JungleLand_extSix_ColH;
 extern Gfx JungleLand_extSeven_Gfx[];
-extern CollisionData JungleLand_extSeven_ColH;
+extern ModelCollision JungleLand_extSeven_ColH;
 extern Gfx JungleLand_extEight_Gfx[];
-extern CollisionData JungleLand_extEight_ColH;
+extern ModelCollision JungleLand_extEight_ColH;
 extern Gfx JungleLand_extEightBridge_Gfx[];
-extern CollisionData JungleLand_extEightBridge_ColH;
+extern ModelCollision JungleLand_extEightBridge_ColH;
 extern Gfx JungleLand_extNine_Gfx[];
-extern CollisionData JungleLand_extNine_ColH;
+extern ModelCollision JungleLand_extNine_ColH;
 extern Gfx JungleLand_extTen_Gfx[];
-extern CollisionData JungleLand_extTen_ColH;
+extern ModelCollision JungleLand_extTen_ColH;
 extern Gfx JungleLand_extEleven_Gfx[];
-extern CollisionData JungleLand_extEleven_ColH;
+extern ModelCollision JungleLand_extEleven_ColH;
 extern Gfx JungleLand_intZero_Gfx[];
-extern CollisionData JungleLand_intZero_ColH;
+extern ModelCollision JungleLand_intZero_ColH;
 extern Gfx JungleLand_intOne_Gfx[];
-extern CollisionData JungleLand_intOne_ColH;
+extern ModelCollision JungleLand_intOne_ColH;
 extern Gfx JungleLand_intTwo_Gfx[];
-extern CollisionData JungleLand_intTwo_ColH;
+extern ModelCollision JungleLand_intTwo_ColH;
 extern Gfx JungleLand_intThree_Gfx[];
-extern CollisionData JungleLand_intThree_ColH;
+extern ModelCollision JungleLand_intThree_ColH;
 extern Gfx JungleLand_intFour_Gfx[];
-extern CollisionData JungleLand_intFour_ColH;
+extern ModelCollision JungleLand_intFour_ColH;
 extern Gfx JungleLand_intSix_Gfx[];
-extern CollisionData JungleLand_intSix_ColH;
+extern ModelCollision JungleLand_intSix_ColH;
 extern Gfx JungleLand_intSeven_Gfx[];
-extern CollisionData JungleLand_intSeven_ColH;
+extern ModelCollision JungleLand_intSeven_ColH;
 extern Gfx JungleLand_intFive_Gfx[];
-extern CollisionData JungleLand_intFive_ColH;
+extern ModelCollision JungleLand_intFive_ColH;
 extern Gfx JungleLand_railFloorOne_Gfx[];
-extern CollisionData JungleLand_railFloorOne_ColH;
+extern ModelCollision JungleLand_railFloorOne_ColH;
 extern Gfx JungleLand_singleRailTrack_Gfx[];
-extern CollisionData JungleLand_singleRailTrack_ColH;
+extern ModelCollision JungleLand_singleRailTrack_ColH;
 extern Gfx JungleLand_singleRailTrack2_Gfx[];
-extern CollisionData JungleLand_singleRailTrack2_ColH;
+extern ModelCollision JungleLand_singleRailTrack2_ColH;
 extern Gfx JungleLand_branchRail_Gfx[];
-extern CollisionData JungleLand_branchRail_ColH;
+extern ModelCollision JungleLand_branchRail_ColH;
 extern Gfx JungleLand_turnRail_Gfx[];
-extern CollisionData JungleLand_turnRail_ColH;
+extern ModelCollision JungleLand_turnRail_ColH;
 extern Gfx JungleLand_singleRailTrack3_Gfx[];
-extern CollisionData JungleLand_singleRailTrack3_ColH;
+extern ModelCollision JungleLand_singleRailTrack3_ColH;
 extern Gfx JungleLand_brokenMinecartRail_Gfx[];
-extern CollisionData JungleLand_brokenMinecartRail_ColH;
+extern ModelCollision JungleLand_brokenMinecartRail_ColH;
 extern Gfx JungleLand_brokenMinecartRail2_Gfx[];
-extern CollisionData JungleLand_brokenMinecartRail2_ColH;
+extern ModelCollision JungleLand_brokenMinecartRail2_ColH;
 extern Gfx JungleLand_minecart_Gfx[];
-extern CollisionData JungleLand_minecart_ColH;
+extern ModelCollision JungleLand_minecart_ColH;
 extern Gfx JungleLand_doorFrame_Gfx[];
-extern CollisionData JungleLand_doorFraMEd_ColH;
+extern ModelCollision JungleLand_doorFraMEd_ColH;
 extern Gfx JungleLand_doorFrame2_Gfx[];
-extern CollisionData JungleLand_doorFrame2_ColH;
+extern ModelCollision JungleLand_doorFrame2_ColH;
 extern Gfx JungleLand_fernPlant_Gfx[];
-extern CollisionData JungleLand_fernPlant_ColH;
+extern ModelCollision JungleLand_fernPlant_ColH;
 extern Gfx JungleLand_waterfall_Gfx[];
-extern CollisionData JungleLand_waterfall_ColH;
+extern ModelCollision JungleLand_waterfall_ColH;
 extern Gfx JungleLand_water_Gfx[];
-extern CollisionData JungleLand_water_ColH;
+extern ModelCollision JungleLand_water_ColH;
 extern Gfx JungleLand_water2_Gfx[];
-extern CollisionData JungleLand_water2_ColH;
+extern ModelCollision JungleLand_water2_ColH;
 extern Gfx Global_pole_Gfx[];
-extern CollisionData Global_pole_ColH;
+extern ModelCollision Global_pole_ColH;
 
 Mtx JungleLand_IMtx1 = IDENTITY;
 
-#include "assets/levelGroup/JungleLand/pointers.lvp.inc.c"
+enum JungleLand_Models {
+    G_FALLBACK_CUBE_MODEL = 0,
+    G_EXIT_SHADOW_SOUTH_MODEL,
+    G_EXIT_SHADOW_NORTH_MODEL,
+    G_EXIT_SHADOW_EAST_MODEL,
+    G_EXIT_SHADOW_WEST_MODEL,
+    G_ALBL_EXIT_MODEL,
+    G_SANDPIT_MODEL,
+    G_BOSS_BRIDGE_MODEL,
+    G_AL_POLE_MODEL,
+    G_ALBL_DOOR_MODEL,
+    G_AL_SPIN_DOOR_MODEL,
+    G_BL_LAVA_FLOOR_MODEL,
+    G_BL_LAVA_MODEL,
+    G_BL_LAVA2_MODEL,
+    G_BL_LAVA3_MODEL,
+    G_BL_LAVA4_MODEL,
+    G_BL_LAVA5_MODEL,
+    G_BL_LAVA6_MODEL,
+    G_BL_LAVA7_MODEL,
+    G_BL_LAVA8_MODEL,
+    G_BL_DESTRUCTABLE_TOP_MODEL,
+    G_BL_METAL_BRIDGE_MODEL,
+    G_KL_EXIT_MODEL,
+    G_KL_DOOR_MODEL,
+    G_DC_EXIT_MODEL,
+    G_TALL_EXIT_SHADOW1_MODEL,
+    G_TALL_EXIT_SHADOW2_MODEL,
+    G_GC_EXIT1_MODEL,
+    G_GC_EXIT2_MODEL,
+    G_TRAINING_ROOM_LIGHT_MODEL,
+    G_JL_CAVE_EXIT1_MODEL,
+    G_JL_CAVE_EXIT2_MODEL,
+    G_JL_CAVE_EXIT3_MODEL,
+    G_JL_CAVE_EXIT4_MODEL,
+    G_JL_OUTSIDE_ENTRANCE_MODEL,
+    G_JL_FX_CAM_PILLAR_MODEL,
+    G_JL_CAVE_DOOR_MODEL,
+    JL_LILYPAD_MODEL,
+    JL_VINE_MODEL,
+    JL_FALLEN_CROWN_LOG_MODEL,
+    JL_UNK_LOG_MODEL,
+    JL_FALLEN_LOG_STUMP_MODEL,
+    JL_LOG_TUNNEL_MODEL,
+    JL_WATERFALL_ROCK_MODEL,
+    JL_EXT_ENTRANCE_DOOR_FRAME_MODEL,
+    JL_FALL_BRIDGE_MODEL,
+    JL_CT_CRATE_MODEL,
+    JL_CT_CRATE2_MODEL,
+    JL_WALKING_PLANK_MODEL,
+    JL_WALKING_PLANK2_MODEL,
+    JL_WALKING_PLANK3_MODEL,
+    JL_WALKING_PLANK4_MODEL,
+    JL_SINGULAR_PLANK_MODEL,
+    JL_ROOM_SIX_START_PLATFORM_MODEL,
+    JL_CAVE_PLATFORM_MODEL,
+    JL_ROOM_SIX_CROWN_PLATFORM_MODEL,
+    JL_ROOM_SIX_SIDE_PLATFORM_MODEL,
+    JL_ROOM_SEVEN_LAVA_MODEL,
+    JL_ROOM_SEVEN_FLOOR_MODEL,
+    JL_ROOM_ZERO_LAVA_MODEL,
+    JL_ROOM_ONE_PLATFORM_MODEL,
+    JL_ROOM_SIX_CROWN_EDGE_PLATFORM_MODEL,
+    JL_ROOM_SEVEN_SPIN_RING_MODEL,
+    JL_WOOD_BLOCK_MODEL,
+    JL_ROPES_MODEL,
+    JL_RAIL_ONE_MODEL,
+    JL_RAIL_TWO_MODEL,
+    JL_RAIL_THREE_MODEL,
+    JL_RAIL_FOUR_MODEL,
+    JL_RAIL_FIVE_MODEL,
+    JL_RAIL_SIX_MODEL,
+    JL_RAIL_MODEL,
+    JL_CT_CRATE3_MODEL,
+    JL_LOG_ONE_MODEL,
+    JL_FALL_BRIDGE_SMALL2_MODEL,
+    JL_LOG_SET_PIECE_MODEL,
+    JL_HOLE_LOG_MODEL,
+    JL_WATERFALL_GROUND_COLLISION_MODEL,
+    JL_WATERFALL_BACKSIDE_COLLISION_MODEL,
+    JL_GROUND_COLLISION_MODEL,
+    JL_HOLE_LOG_BOTTOM_MODEL,
+    JL_EXT_THREE_MODEL,
+    JL_EXT_FOUR_MODEL,
+    JL_EXT_ZERO_MODEL,
+    JL_EXT_ONE_MODEL,
+    JL_EXT_TWO_MODEL,
+    JL_ROCK_FLOOR_MODEL,
+    JL_ROCK_FLOOR2_MODEL,
+    JL_EXT_FIVE_MODEL,
+    JL_EXT_THREE_PART_TWO_MODEL,
+    JL_EXT_FIVE_PART_TWO_MODEL,
+    JL_EXT_SIX_MODEL,
+    JL_EXT_SEVEN_MODEL,
+    JL_EXT_EIGHT_MODEL,
+    JL_EXT_EIGHT_BRIDGE_MODEL,
+    JL_EXT_NINE_MODEL,
+    JL_EXT_TEN_MODEL,
+    JL_EXT_ELEVEN_MODEL,
+    JL_INT_ZERO_MODEL,
+    JL_INT_ONE_MODEL,
+    JL_INT_TWO_MODEL,
+    JL_INT_THREE_MODEL,
+    JL_INT_FOUR_MODEL,
+    JL_INT_SIX_MODEL,
+    JL_INT_SEVEN_MODEL,
+    JL_INT_FIVE_MODEL, 
+    JL_RAIL_FLOOR_ONE_MODEL,
+    JL_SINGLE_RAIL_TRACK_MODEL,
+    JL_SINGLE_RAIL_TRACK2_MODEL,
+    JL_BRANCH_RAIL_MODEL,
+    JL_TURN_RAIL_MODEL,
+    JL_SINGLE_RAIL_TRACK3_MODEL,
+    JL_BROKEN_MINECART_RAIL_MODEL,
+    JL_BROKEN_MINECART_RAIL2_MODEL,
+    JL_MINECART_MODEL,
+    JL_DOOR_FRAME_MODEL,
+    JL_DOOR_FRAME2_MODEL,
+    JL_FERN_PLANT_MODEL,
+    JL_WATERFALL_MODEL,
+    JL_WATER_MODEL,
+    JL_WATER2_MODEL,
+    G_POLE_MODEL
+};
+
+StageModel  JungleLand_stageModels[122] = {
+    {&Global_fallbackCube_Gfx[0], &Global_fallbackCube_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_exitShadowSouth_Gfx[0], &Global_exitShadowSouth_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_exitShadowNorth_Gfx[0], &Global_exitShadowNorth_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_exitShadowEast_Gfx[0], &Global_exitShadowEast_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_exitShadowWest_Gfx[0], &Global_exitShadowWest_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_ALBLExit_Gfx[0], &Global_ALBLExit_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_sandPit_Gfx[0], &Global_sandPit_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_BossBridge_Gfx[0], &Global_BossBridge_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_ALPole_Gfx[0], &Global_ALPole_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_ALBLDoor_Gfx[0], &Global_ALBLDoor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_ALSpinDoor_Gfx[0], &Global_ALSpinDoor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_BLLavaFloor_Gfx[0], &Global_BLLavaFloor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_BLLava_Gfx[0], &Global_BLLava_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_BLLava2_Gfx[0], &Global_BLLava2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_BLLava3_Gfx[0], &Global_BLLava3_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_BLLava4_Gfx[0], &Global_BLLava4_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_BLLava5_Gfx[0], &Global_BLLava5_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_BLLava6_Gfx[0], &Global_BLLava6_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_BLLava7_Gfx[0], &Global_BLLava7_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_BLLava8_Gfx[0], &Global_BLLava8_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_BLDestructableTop_Gfx[0], &Global_BLDestructableTop_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_BLMetalBridge_Gfx[0], &Global_BLMetalBridge_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_KLExit_Gfx[0], &Global_KLExit_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_KLDoor_Gfx[0], &Global_KLDoor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_DCExit_Gfx[0], &Global_DCExit_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_TallExitShadow1_Gfx[0], &Global_TallExitShadow1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_TallExitShadow2_Gfx[0], &Global_TallExitShadow2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_GCExit1_Gfx[0], &Global_GCExit1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_GCExit2_Gfx[0], &Global_GCExit2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_trainingRoomLight_Gfx[0], &Global_trainingRoomLight_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_JLCaveExit1_Gfx[0], &Global_JLCaveExit1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_JLCaveExit2_Gfx[0], &Global_JLCaveExit2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_JLCaveExit3_Gfx[0], &Global_JLCaveExit3_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_JLCaveExit4_Gfx[0], &Global_JLCaveExit4_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_JLOutsideEntrance_Gfx[0], &Global_JLOutsideEntrance_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_JLFxCamPillar_Gfx[0], &Global_JLFxCamPillar_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_JLCaveDoor_Gfx[0], &Global_JLCaveDoor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&JungleLand_lilypad_Gfx[0], &JungleLand_lilypad_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&JungleLand_vine_Gfx[0], &JungleLand_vine_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&JungleLand_fallenCrownLog_Gfx[0], &JungleLand_fallenCrownLog_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&JungleLand_unkLog_Gfx[0], &JungleLand_unkLog_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&JungleLand_fallenLogStump_Gfx[0], &JungleLand_fallenLogStump_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&JungleLand_logTunnel_Gfx[0], &JungleLand_logTunnel_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&JungleLand_waterfallRock_Gfx[0], &JungleLand_waterfallRock_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&JungleLand_extEntranceDoorFrame_Gfx[0], &JungleLand_extEntranceDoorFrame_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&JungleLand_fallBridge_Gfx[0], &JungleLand_fallBridge_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&JungleLand_ctCrate_Gfx[0], &JungleLand_ctCrate_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&JungleLand_ctCrate2_Gfx[0], &JungleLand_ctCrate2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&JungleLand_walkingPlank_Gfx[0], &JungleLand_walkingPlank_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&JungleLand_walkingPlank2_Gfx[0], &JungleLand_walkingPlank2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&JungleLand_walkingPlank3_Gfx[0], &JungleLand_walkingPlank3_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&JungleLand_walkingPlank4_Gfx[0], &JungleLand_walkingPlank4_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&JungleLand_singularPlank_Gfx[0], &JungleLand_singularPlank_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&JungleLand_roomSixStartPlatform_Gfx[0], &JungleLand_roomSixStartPlatform_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&JungleLand_cavePlatform_Gfx[0], &JungleLand_cavePlatform_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&JungleLand_roomSixCrownPlatform_Gfx[0], &JungleLand_roomSixCrownPlatform_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&JungleLand_roomSixSidePlatform_Gfx[0], &JungleLand_roomSixSidePlatform_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&JungleLand_roomSevenLava_Gfx[0], &JungleLand_roomSevenLava_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&JungleLand_roomSevenFloor_Gfx[0], &JungleLand_roomSevenFloor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&JungleLand_roomZeroLava_Gfx[0], &JungleLand_roomZeroLava_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&JungleLand_roomOnePlatform_Gfx[0], &JungleLand_roomOnePlatform_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&JungleLand_roomSixCrownEdgePlatform_Gfx[0], &JungleLand_roomSixCrownEdgePlatform_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&JungleLand_roomSevenSpinRing_Gfx[0], &JungleLand_roomSevenSpinRing_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&JungleLand_woodBlock_Gfx[0], &JungleLand_woodBlock_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&JungleLand_ropes_Gfx[0], &JungleLand_ropes_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&JungleLand_railOne_Gfx[0], &JungleLand_railOne_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&JungleLand_railTwo_Gfx[0], &JungleLand_railTwo_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&JungleLand_railThree_Gfx[0], &JungleLand_railThree_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&JungleLand_railFour_Gfx[0], &JungleLand_railFour_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&JungleLand_railFive_Gfx[0], &JungleLand_railFive_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&JungleLand_railSix_Gfx[0], &JungleLand_railSix_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&JungleLand_rail_Gfx[0], &JungleLand_rail_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&JungleLand_ctCrate3_Gfx[0], &JungleLand_ctCrate3_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&JungleLand_logOne_Gfx[0], &JungleLand_logOne_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&JungleLand_fallBridgeSmall2_Gfx[0], &JungleLand_fallBridgeSmall2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&JungleLand_logSetPiece_Gfx[0], &JungleLand_logSetPiece_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&JungleLand_holeLog_Gfx[0], &JungleLand_holeLog_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&JungleLand_waterfallGroundCollision_Gfx[0], &JungleLand_waterfallGroundCollision_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&JungleLand_waterfallBacksideCollision_Gfx[0], &JungleLand_waterfallBacksideCollision_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&JungleLand_groundCollision_Gfx[0], &JungleLand_groundCollision_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&JungleLand_holeLogBottom_Gfx[0], &JungleLand_holeLogBottom_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&JungleLand_extThree_Gfx[0], &JungleLand_extThree_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&JungleLand_extFour_Gfx[0], &JungleLand_extFour_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&JungleLand_extZero_Gfx[0], &JungleLand_extZero_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&JungleLand_extOne_Gfx[0], &JungleLand_extOne_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&JungleLand_extTwo_Gfx[0], &JungleLand_extTwo_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&JungleLand_rockFloor_Gfx[0], &JungleLand_rockFloor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&JungleLand_rockFloor2_Gfx[0], &JungleLand_rockFloor2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&JungleLand_extFive_Gfx[0], &JungleLand_extFive_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&JungleLand_extThreePartTwo_Gfx[0], &JungleLand_extThreePartTwo_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&JungleLand_extFivePartTwo_Gfx[0], &JungleLand_extFivePartTwo_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&JungleLand_extSix_Gfx[0], &JungleLand_extSix_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&JungleLand_extSeven_Gfx[0], &JungleLand_extSeven_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&JungleLand_extEight_Gfx[0], &JungleLand_extEight_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&JungleLand_extEightBridge_Gfx[0], &JungleLand_extEightBridge_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&JungleLand_extNine_Gfx[0], &JungleLand_extNine_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&JungleLand_extTen_Gfx[0], &JungleLand_extTen_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&JungleLand_extEleven_Gfx[0], &JungleLand_extEleven_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&JungleLand_intZero_Gfx[0], &JungleLand_intZero_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&JungleLand_intOne_Gfx[0], &JungleLand_intOne_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&JungleLand_intTwo_Gfx[0], &JungleLand_intTwo_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&JungleLand_intThree_Gfx[0], &JungleLand_intThree_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&JungleLand_intFour_Gfx[0], &JungleLand_intFour_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&JungleLand_intSix_Gfx[0], &JungleLand_intSix_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&JungleLand_intSeven_Gfx[0], &JungleLand_intSeven_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&JungleLand_intFive_Gfx[0], &JungleLand_intFive_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&JungleLand_railFloorOne_Gfx[0], &JungleLand_railFloorOne_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&JungleLand_singleRailTrack_Gfx[0], &JungleLand_singleRailTrack_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&JungleLand_singleRailTrack2_Gfx[0], &JungleLand_singleRailTrack2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&JungleLand_branchRail_Gfx[0], &JungleLand_branchRail_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&JungleLand_turnRail_Gfx[0], &JungleLand_turnRail_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&JungleLand_singleRailTrack3_Gfx[0], &JungleLand_singleRailTrack3_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&JungleLand_brokenMinecartRail_Gfx[0], &JungleLand_brokenMinecartRail_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&JungleLand_brokenMinecartRail2_Gfx[0], &JungleLand_brokenMinecartRail2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&JungleLand_minecart_Gfx[0], &JungleLand_minecart_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&JungleLand_doorFrame_Gfx[0], &JungleLand_doorFraMEd_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&JungleLand_doorFrame2_Gfx[0], &JungleLand_doorFrame2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&JungleLand_fernPlant_Gfx[0], &JungleLand_fernPlant_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&JungleLand_waterfall_Gfx[0], &JungleLand_waterfall_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&JungleLand_water_Gfx[0], &JungleLand_water_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&JungleLand_water2_Gfx[0], &JungleLand_water2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_pole_Gfx[0], &Global_pole_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, }
+};
 
 #include "build/assets/levelGroup/JungleLand/rabObjects.inc.c"
 
@@ -365,167 +613,143 @@ Mtx JungleLand_IMtx1 = IDENTITY;
 
 #include "assets/levelGroup/JungleLand/spriteActors/eroom12_sprSTOP.sprite.inc.c"
 
-#include "assets/levelGroup/JungleLand/collectables/eroom0_clctCrown.clct.inc.c"
-
-#include "assets/levelGroup/JungleLand/collectables/eroom0_clctCrown2.clct.inc.c"
-
-#include "assets/levelGroup/JungleLand/collectables/eroom0_clctSTOP.clct.inc.c"
-
-#include "assets/levelGroup/JungleLand/collectables/eroom1_clctOHeart.clct.inc.c"
-
-#include "assets/levelGroup/JungleLand/collectables/eroom1_clctSTOP.clct.inc.c"
-
-#include "assets/levelGroup/JungleLand/collectables/eroom2_clctCrown.clct.inc.c"
-
-#include "assets/levelGroup/JungleLand/collectables/eroom2_clctSTOP.clct.inc.c"
-
-#include "assets/levelGroup/JungleLand/collectables/eroom3to4_clctSTOP.clct.inc.c"
-
-#include "assets/levelGroup/JungleLand/collectables/eroom5_clctRHeart.clct.inc.c"
-
-#include "assets/levelGroup/JungleLand/collectables/eroom5_clctSTOP.clct.inc.c"
-
-#include "assets/levelGroup/JungleLand/collectables/eroom6_clctCrown.clct.inc.c"
-
-#include "assets/levelGroup/JungleLand/collectables/eroom6_clctSTOP.clct.inc.c"
-
-#include "assets/levelGroup/JungleLand/collectables/eroom7_clctRHeart.clct.inc.c"
-
-#include "assets/levelGroup/JungleLand/collectables/eroom7_clctSTOP.clct.inc.c"
-
-#include "assets/levelGroup/JungleLand/collectables/room0_clctRHeart.clct.inc.c"
-
-#include "assets/levelGroup/JungleLand/collectables/room0_clctCrown.clct.inc.c"
-
-#include "assets/levelGroup/JungleLand/collectables/room0_clctRHeart2.clct.inc.c"
-
-#include "assets/levelGroup/JungleLand/collectables/room0_clctSTOP.clct.inc.c"
-
-#include "assets/levelGroup/JungleLand/collectables/room1_clctCrown.clct.inc.c"
-
-#include "assets/levelGroup/JungleLand/collectables/room1_clctSTOP.clct.inc.c"
-
-#include "assets/levelGroup/JungleLand/collectables/room2_clctBigHead.clct.inc.c"
-
-#include "assets/levelGroup/JungleLand/collectables/room2_clctCrown.clct.inc.c"
-
-#include "assets/levelGroup/JungleLand/collectables/room2_clctCrown2.clct.inc.c"
-
-#include "assets/levelGroup/JungleLand/collectables/room2_clctCrown3.clct.inc.c"
-
-#include "assets/levelGroup/JungleLand/collectables/room2_clctCrown4.clct.inc.c"
-
-#include "assets/levelGroup/JungleLand/collectables/room2_clctRHeart.clct.inc.c"
-
-#include "assets/levelGroup/JungleLand/collectables/room2_clctSTOP.clct.inc.c"
-
-#include "assets/levelGroup/JungleLand/collectables/room3_clctRHeart.clct.inc.c"
-
-#include "assets/levelGroup/JungleLand/collectables/room3_clctCarrot.clct.inc.c"
-
-#include "assets/levelGroup/JungleLand/collectables/room3_clctCrown.clct.inc.c"
-
-#include "assets/levelGroup/JungleLand/collectables/room3_clctSTOP.clct.inc.c"
-
-#include "assets/levelGroup/JungleLand/collectables/room4_clctRHeart.clct.inc.c"
-
-#include "assets/levelGroup/JungleLand/collectables/room4_clctRHeart2.clct.inc.c"
-
-#include "assets/levelGroup/JungleLand/collectables/room4_clctCrown.clct.inc.c"
-
-#include "assets/levelGroup/JungleLand/collectables/room4_clctCrown2.clct.inc.c"
-
-#include "assets/levelGroup/JungleLand/collectables/room5_clctTimeStop.clct.inc.c"
-
-#include "assets/levelGroup/JungleLand/collectables/room4_clctSTOP.clct.inc.c"
-
-#include "assets/levelGroup/JungleLand/collectables/room5_clctCrown.clct.inc.c"
-
-#include "assets/levelGroup/JungleLand/collectables/room5_clctCrown2.clct.inc.c"
-
-#include "assets/levelGroup/JungleLand/collectables/room5_clctRHeart.clct.inc.c"
-
-#include "assets/levelGroup/JungleLand/collectables/room5_clctRHeart2.clct.inc.c"
-
-#include "assets/levelGroup/JungleLand/collectables/room5_clctRHeart3.clct.inc.c"
-
-#include "assets/levelGroup/JungleLand/collectables/room5_clctSTOP.clct.inc.c"
-
-#include "assets/levelGroup/JungleLand/collectables/room6_clctCrown.clct.inc.c"
-
-#include "assets/levelGroup/JungleLand/collectables/room6_clctOHeart.clct.inc.c"
-
-#include "assets/levelGroup/JungleLand/collectables/room6_clctSTOP.clct.inc.c"
-
-#include "assets/levelGroup/JungleLand/collectables/roomUnk_clctRHeart.clct.inc.c"
-
-#include "assets/levelGroup/JungleLand/collectables/roomUnk_clctRHeart2.clct.inc.c"
-
-#include "assets/levelGroup/JungleLand/collectables/roomUnk_clctRHeart3.clct.inc.c"
-
-#include "assets/levelGroup/JungleLand/collectables/roomUnk_clctRHeart4.clct.inc.c"
-
-#include "assets/levelGroup/JungleLand/collectables/roomUnk_clctOHeart.clct.inc.c"
-
-#include "assets/levelGroup/JungleLand/collectables/roomUnk_clctSTOP.clct.inc.c"
-
-#include "assets/levelGroup/JungleLand/collectables/room8_clctCrown.clct.inc.c"
-
-#include "assets/levelGroup/JungleLand/collectables/room8_clctRHeart.clct.inc.c"
-
-#include "assets/levelGroup/JungleLand/collectables/room8_clctYHeart.clct.inc.c"
-
-#include "assets/levelGroup/JungleLand/collectables/room8_clctSTOP.clct.inc.c"
-
-#include "assets/levelGroup/JungleLand/roomObjects/eroom0_objLand.roomObj.inc.c"
-
-#include "assets/levelGroup/JungleLand/roomObjects/eroom0_objPlant.roomObj.inc.c"
-
-#include "assets/levelGroup/JungleLand/roomObjects/eroom0_objPlant2.roomObj.inc.c"
-
-#include "assets/levelGroup/JungleLand/roomObjects/eroom0_objPlant3.roomObj.inc.c"
-
-#include "assets/levelGroup/JungleLand/roomObjects/eroom0_objPlant4.roomObj.inc.c"
-
-#include "assets/levelGroup/JungleLand/roomObjects/eroom0_objPlant5.roomObj.inc.c"
-
-#include "assets/levelGroup/JungleLand/roomObjects/eroom0_objPlant6.roomObj.inc.c"
-
-#include "assets/levelGroup/JungleLand/roomObjects/eroom0_objPlant7.roomObj.inc.c"
-
-#include "assets/levelGroup/JungleLand/roomObjects/eroom0_objPlant8.roomObj.inc.c"
-
-#include "assets/levelGroup/JungleLand/roomObjects/eroom0_objPlant9.roomObj.inc.c"
-
-#include "assets/levelGroup/JungleLand/roomObjects/eroom0_objPlant10.roomObj.inc.c"
-
-#include "assets/levelGroup/JungleLand/roomObjects/eroom0_objPlant11.roomObj.inc.c"
-
-#include "assets/levelGroup/JungleLand/roomObjects/eroom0_objPlant12.roomObj.inc.c"
-
-#include "assets/levelGroup/JungleLand/roomObjects/eroom0_objPlant13.roomObj.inc.c"
-
-#include "assets/levelGroup/JungleLand/roomObjects/eroom0_objPlant14.roomObj.inc.c"
-
-#include "assets/levelGroup/JungleLand/roomObjects/eroom0_objPlant15.roomObj.inc.c"
-
-#include "assets/levelGroup/JungleLand/roomObjects/eroom0_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/JungleLand/roomObjects/eroom1_objLand.roomObj.inc.c"
-
-#include "assets/levelGroup/JungleLand/roomObjects/eroom1_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/JungleLand/roomObjects/eroom2_objLog.roomObj.inc.c"
-
-#include "assets/levelGroup/JungleLand/roomObjects/eroom2_objLand.roomObj.inc.c"
-
-#include "assets/levelGroup/JungleLand/roomObjects/eroom2_objPlant.roomObj.inc.c"
-
-#include "assets/levelGroup/JungleLand/roomObjects/eroom2_objPlant2.roomObj.inc.c"
-
-#include "assets/levelGroup/JungleLand/roomObjects/eroom2_objPlant3.roomObj.inc.c"
-
-#include "assets/levelGroup/JungleLand/roomObjects/eroom2_objSTOP.roomObj.inc.c"
+Collectable JungleLand_ext_room0_collectables[3] = {
+    {CROWN, {-400.0,0.0,-1400.0}, 4294967295, 0, 0, 0},
+    {CROWN, {-1298.0,0.0,10.0}, 4294967295, 0, 0, 0},
+    {ACTOR_NULL, {0.0,0.0,0.0}, 4294967295, 0, 0, 0}
+};
+
+Collectable JungleLand_ext_room1_collectables[2] = {
+    {O_HEART, {-1291.0,500.0,-3485.0}, 4294967295, 0, 0, 0},
+    {ACTOR_NULL, {0.0,0.0,0.0}, 4294967295, 0, 0, 0}
+};
+
+Collectable JungleLand_ext_room2_collectables[2] = {
+    {CROWN, {-4300.0,600.0,-6800.0}, 4294967295, 0, 0, 0},
+    {ACTOR_NULL, {0.0,0.0,0.0}, 4294967295, 0, 0, 0}
+};
+
+Collectable JungleLand_ext_room3_collectables[1] = {
+    {ACTOR_NULL, {0.0,0.0,0.0}, 4294967295, 0, 0, 0}
+};
+
+Collectable JungleLand_ext_room5_collectables[2] = {
+    {R_HEART, {3500.0,420.0,-16200.0}, 4294967295, 0, 0, 0},
+    {ACTOR_NULL, {0.0,0.0,0.0}, 4294967295, 0, 0, 0}
+};
+
+Collectable JungleLand_ext_room6_collectables[2] = {
+    {CROWN, {5654.0,420.0,-17919.0}, 4294967295, 0, 0, 0},
+    {ACTOR_NULL, {0.0,0.0,0.0}, 4294967295, 0, 0, 0}
+};
+
+Collectable JungleLand_ext_room7_collectables[2] = {
+    {R_HEART, {8398.0,600.0,-19791.0}, 4294967295, 0, 0, 0},
+    {ACTOR_NULL, {0.0,0.0,0.0}, 4294967295, 0, 0, 0}
+};
+
+Collectable JungleLand_room0_collectables[4] = {
+    {R_HEART, {-900.0,200.0,1800.0}, 4294967295, 0, 0, 0},
+    {CROWN, {-1266.0,-350.0,1044.0}, 4294967295, 0, 0, 0},
+    {R_HEART, {1421.0,5.0,2114.0}, 4294967295, 0, 0, 0},
+    {ACTOR_NULL, {0.0,0.0,0.0}, 4294967295, 0, 0, 0}
+};
+
+Collectable JungleLand_room1_collectables[2] = {
+    {CROWN, {220.0,0.0,-580.0}, 4294967295, 0, 0, 0},
+    {ACTOR_NULL, {0.0,0.0,0.0}, 4294967295, 0, 0, 0}
+};
+
+Collectable JungleLand_room2_collectables[7] = {
+    {BIG_HEAD_POWER_UP, {0.0,0.0,0.0}, 4294967295, 0, -1, 900},
+    {CROWN, {-400.0,200.0,-800.0}, 3, 0, 0, 0},
+    {CROWN, {-400.0,200.0,800.0}, 4, 0, 0, 0},
+    {CROWN, {500.0,200.0,-800.0}, 5, 0, 0, 0},
+    {CROWN, {500.0,200.0,800.0}, 6, 0, 0, 0},
+    {R_HEART, {749.0,300.0,1400.0}, 4294967295, 0, 0, 0},
+    {ACTOR_NULL, {0.0,0.0,0.0}, 4294967295, 0, 0, 0}
+};
+
+Collectable JungleLand_room3_collectables[4] = {
+    {R_HEART, {-705.0,0.0,704.0}, 4294967295, 0, 0, 0},
+    {CARROT, {-1850.0,0.0,200.0}, 4294967295, 0, 0, 0},
+    {CROWN, {1661.0,100.0,-976.0}, 4294967295, 0, 0, 0},
+    {0, {0.0,0.0,0.0}, 4294967295, 0, 0, 0}
+};
+
+Collectable JungleLand_room4_collectables[6] = {
+    {R_HEART, {1396.0,0.0,-33.0}, 4294967295, 0, 0, 0},
+    {R_HEART, {-1372.0,0.0,95.0}, 4294967295, 0, 0, 0},
+    {CROWN, {-572.0,0.0,-800.0}, 4294967295, 0, 0, 0},
+    {CROWN, {537.0,0.0,-800.0}, 4294967295, 0, 0, 0},
+    {TIME_STOP_POWER_UP, {0.0,0.0,-1500.0}, 4294967295, 0, -1, 180},
+    {0, {0.0,0.0,0.0}, 4294967295, 0, 0, 0}
+};
+
+Collectable JungleLand_room5_collectables[6] = {
+    {CROWN, {1182.0,1000.0,3697.0}, 4294967295, 0, 0, 0},
+    {CROWN, {-1050.0,800.0,-3500.0}, 4294967295, 0, 0, 0},
+    {R_HEART, {1951.0,671.0,2064.0}, 4294967295, 0, 0, 0},
+    {R_HEART, {-1550.0,1150.0,-1565.0}, 4294967295, 0, 0, 0},
+    {R_HEART, {-650.0,700.0,600.0}, 4294967295, 0, 0, 0},
+    {0, {0.0,0.0,0.0}, 4294967295, 0, 0, 0}
+};
+
+Collectable JungleLand_room6_collectables[3] = {
+    {CROWN, {-6.0,5.0,-1651.0}, 4294967295, 0, 0, 0},
+    {O_HEART, {-15.0,5.0,-1015.0}, 4294967295, 0, 0, 0},
+    {0, {0.0,0.0,0.0}, 4294967295, 0, 0, 0}
+};
+
+Collectable JungleLand_room7_collectables[6] = {
+    {R_HEART, {800.0,0.0,1840.0}, 4294967295, 0, 0, 0},
+    {R_HEART, {1400.0,0.0,340.0}, 4294967295, 0, 0, 0},
+    {R_HEART, {-1200.0,0.0,340.0}, 4294967295, 0, 0, 0},
+    {R_HEART, {-800.0,0.0,-1560.0}, 4294967295, 0, 0, 0},
+    {O_HEART, {800.0,0.0,-1460.0}, 4294967295, 0, 0, 0},
+    {0, {0.0,0.0,0.0}, 4294967295, 0, 0, 0}
+};
+
+Collectable JungleLand_room8_collectables[4] = {
+    {CROWN, {-1380.0,0.0,3.0}, 4294967295, 0, 0, 0},
+    {R_HEART, {1316.0,0.0,-4.0}, 4294967295, 0, 0, 0},
+    {Y_HEART, {-1332.0,-400.0,768.0}, 4294967295, 0, 0, 0},
+    {0, {0.0,0.0,0.0}, 4294967295, 0, 0, 0}
+};
+
+RoomObject JungleLand_ext_room1_objects[17] = {
+    {{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, JL_EXT_ZERO_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{200.0,-10.0,-1200.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, JL_FERN_PLANT_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 0, 4, 4, 0, -1, 0, 0},
+    {{-100.0,-5.0,-1200.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, JL_FERN_PLANT_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 0, 4, 4, 0, -1, 0, 0},
+    {{-500.0,-5.0,-1100.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, JL_FERN_PLANT_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 0, 4, 4, 0, -1, 0, 0},
+    {{-700.0,0.0,-900.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, JL_FERN_PLANT_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 0, 4, 4, 0, -1, 0, 0},
+    {{-1000.0,-5.0,-1000.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, JL_FERN_PLANT_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 0, 4, 4, 0, -1, 0, 0},
+    {{-1100.0,0.0,-800.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, JL_FERN_PLANT_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 0, 4, 4, 0, -1, 0, 0},
+    {{-900.0,-10.0,-700.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, JL_FERN_PLANT_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 0, 4, 4, 0, -1, 0, 0},
+    {{-1200.0,-5.0,-600.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, JL_FERN_PLANT_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 0, 4, 4, 0, -1, 0, 0},
+    {{-866.0,0.0,-1185.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, JL_FERN_PLANT_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 0, 4, 4, 0, -1, 0, 0},
+    {{-589.0,-10.0,-1346.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, JL_FERN_PLANT_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 0, 4, 4, 0, -1, 0, 0},
+    {{-189.0,0.0,-1446.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, JL_FERN_PLANT_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 0, 4, 4, 0, -1, 0, 0},
+    {{-789.0,-5.0,-1546.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, JL_FERN_PLANT_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 0, 4, 4, 0, -1, 0, 0},
+    {{111.0,0.0,-1346.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, JL_FERN_PLANT_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 0, 4, 4, 0, -1, 0, 0},
+    {{-489.0,0.0,-1646.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, JL_FERN_PLANT_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 0, 4, 4, 0, -1, 0, 0},
+    {{-89.0,-5.0,-1546.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, JL_FERN_PLANT_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 0, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, 0, 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, G_FALLBACK_CUBE_MODEL, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomObject JungleLand_ext_room2_objects[2] = {
+    {{-1500.0,0.0,-3500.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, JL_EXT_ONE_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, 0, 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, G_FALLBACK_CUBE_MODEL, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomObject JungleLand_ext_room3_objects[6] = {
+    {{-3000.0,600.0,-7000.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, JL_LOG_ONE_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-3000.0,600.0,-7000.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, JL_EXT_TWO_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-4200.0,596.0,-7000.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, JL_FERN_PLANT_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 0, 4, 4, 0, -1, 0, 0},
+    {{-4100.0,606.0,-6800.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, JL_FERN_PLANT_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 0, 4, 4, 0, -1, 0, 0},
+    {{-4200.0,596.0,-6500.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, JL_FERN_PLANT_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 0, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, 0, 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, G_FALLBACK_CUBE_MODEL, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
 
 #include "assets/levelGroup/JungleLand/roomActors/eroom7_actHedgehog.roomAct.inc.c"
 
@@ -561,27 +785,19 @@ Mtx JungleLand_IMtx1 = IDENTITY;
 
 #include "assets/levelGroup/JungleLand/roomActors/eroom2_actSTOP.roomAct.inc.c"
 
-#include "assets/levelGroup/JungleLand/roomObjects/eroom3_objPole.roomObj.inc.c"
-
-#include "assets/levelGroup/JungleLand/roomObjects/eroom3_objPole2.roomObj.inc.c"
-
-#include "assets/levelGroup/JungleLand/roomObjects/eroom3_objPole3.roomObj.inc.c"
-
-#include "assets/levelGroup/JungleLand/roomObjects/eroom3_objPole4.roomObj.inc.c"
-
-#include "assets/levelGroup/JungleLand/roomObjects/eroom3_objPole5.roomObj.inc.c"
-
-#include "assets/levelGroup/JungleLand/roomObjects/eroom3_objPole6.roomObj.inc.c"
-
-#include "assets/levelGroup/JungleLand/roomObjects/eroom3_objPole7.roomObj.inc.c"
-
-#include "assets/levelGroup/JungleLand/roomObjects/eroom3_objPole8.roomObj.inc.c"
-
-#include "assets/levelGroup/JungleLand/roomObjects/eroom3_objLand.roomObj.inc.c"
-
-#include "assets/levelGroup/JungleLand/roomObjects/eroom3_objLand2.roomObj.inc.c"
-
-#include "assets/levelGroup/JungleLand/roomObjects/eroom3_objSTOP.roomObj.inc.c"
+RoomObject JungleLand_ext_room4_objects[11] = {
+    {{-200.0,600.0,-12300.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, G_POLE_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{300.0,600.0,-12100.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, G_POLE_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-800.0,600.0,-11400.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, G_POLE_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-500.0,600.0,-11100.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, G_POLE_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-1600.0,600.0,-10600.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, G_POLE_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-1300.0,600.0,-10300.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, G_POLE_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-2500.0,600.0,-9800.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, G_POLE_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-2100.0,600.0,-9400.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, G_POLE_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-1500.0,600.0,-11000.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, JL_EXT_THREE_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-1500.0,600.0,-11000.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, JL_EXT_THREE_PART_TWO_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, 0, 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, G_FALLBACK_CUBE_MODEL, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
 
 #include "assets/levelGroup/JungleLand/roomActors/eroom3_actHedgehog.roomAct.inc.c"
 
@@ -591,33 +807,26 @@ Mtx JungleLand_IMtx1 = IDENTITY;
 
 #include "assets/levelGroup/JungleLand/roomActors/eroom3_actSTOP.roomAct.inc.c"
 
-#include "assets/levelGroup/JungleLand/roomObjects/eroom4_objLand.roomObj.inc.c"
+RoomObject JungleLand_ext_room5_objects[4] = {
+    {{2500.0,600.0,-13500.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, JL_EXT_FOUR_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{1800.0,600.0,-13250.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, G_POLE_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{2900.0,600.0,-13250.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, G_POLE_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, 0, 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, G_FALLBACK_CUBE_MODEL, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
 
-#include "assets/levelGroup/JungleLand/roomObjects/eroom4_objPole.roomObj.inc.c"
-
-#include "assets/levelGroup/JungleLand/roomObjects/eroom4_objPole2.roomObj.inc.c"
-
-#include "assets/levelGroup/JungleLand/roomObjects/eroom4_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/JungleLand/roomObjects/eroom5_objLand.roomObj.inc.c"
-
-#include "assets/levelGroup/JungleLand/roomObjects/eroom5_objRockFloor.roomObj.inc.c"
-
-#include "assets/levelGroup/JungleLand/roomObjects/eroom5_objPole.roomObj.inc.c"
-
-#include "assets/levelGroup/JungleLand/roomObjects/eroom5_objPole2.roomObj.inc.c"
-
-#include "assets/levelGroup/JungleLand/roomObjects/eroom5_objPole3.roomObj.inc.c"
-
-#include "assets/levelGroup/JungleLand/roomObjects/eroom5_objLilypad.roomObj.inc.c"
-
-#include "assets/levelGroup/JungleLand/roomObjects/eroom5_objLilypad2.roomObj.inc.c"
-
-#include "assets/levelGroup/JungleLand/roomObjects/eroom5_objLilypad3.roomObj.inc.c"
 extern Vtx JungleLand_water_Vtx[];
-#include "assets/levelGroup/JungleLand/roomObjects/eroom5_objSwampWater.roomObj.inc.c"
-
-#include "assets/levelGroup/JungleLand/roomObjects/eroom5_objSTOP.roomObj.inc.c"
+RoomObject JungleLand_ext_room6_objects[10] = {
+    {{4500.0,600.0,-17000.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, JL_EXT_FIVE_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{4500.0,630.0,-17000.0}, {1.2000000476837158,1.0,1.2000000476837158}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, JL_ROCK_FLOOR_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 2, 0, 4, 0, -1, 0, 0},
+    {{5000.0,430.0,-16800.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, G_POLE_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{4500.0,430.0,-15800.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, G_POLE_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{3400.0,430.0,-16200.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, G_POLE_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{5000.0,430.0,-16800.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, JL_LILYPAD_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{4500.0,430.0,-15800.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, JL_LILYPAD_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{3400.0,430.0,-16200.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, JL_LILYPAD_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{4500.0,670.0,-17000.0}, {1.0,1.0,1.0}, 0, 0, 7, 20, 0.0, 0.0, 0.0, 0.5, &JungleLand_water_Vtx, -2, -2, 5, 9312, 10102, JL_WATER_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, 0, 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, G_FALLBACK_CUBE_MODEL, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
 
 #include "assets/levelGroup/JungleLand/spriteActors/eroom5_sprLilyWave.sprite.inc.c"
 
@@ -627,27 +836,20 @@ extern Vtx JungleLand_water_Vtx[];
 
 #include "assets/levelGroup/JungleLand/spriteActors/eroom5_sprSTOP.sprite.inc.c"
 
-#include "assets/levelGroup/JungleLand/roomObjects/eroom6_objLand.roomObj.inc.c"
-
-#include "assets/levelGroup/JungleLand/roomObjects/eroom6_objRockFloor.roomObj.inc.c"
-
-#include "assets/levelGroup/JungleLand/roomObjects/eroom6_objPole.roomObj.inc.c"
-
-#include "assets/levelGroup/JungleLand/roomObjects/eroom6_objPole2.roomObj.inc.c"
-
-#include "assets/levelGroup/JungleLand/roomObjects/eroom6_objPole3.roomObj.inc.c"
-
-#include "assets/levelGroup/JungleLand/roomObjects/eroom6_objLilypad.roomObj.inc.c"
-
-#include "assets/levelGroup/JungleLand/roomObjects/eroom6_objLilypad2.roomObj.inc.c"
-
-#include "assets/levelGroup/JungleLand/roomObjects/eroom6_objLilypad3.roomObj.inc.c"
-
-#include "assets/levelGroup/JungleLand/roomObjects/eroom6_objPole4.roomObj.inc.c"
 extern Vtx JungleLand_water2_Vtx[];
-#include "assets/levelGroup/JungleLand/roomObjects/eroom6_objSwampWater.roomObj.inc.c"
-
-#include "assets/levelGroup/JungleLand/roomObjects/eroom6_objSTOP.roomObj.inc.c"
+RoomObject JungleLand_ext_room7_objects[11] = {
+    {{4500.0,600.0,-17000.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, JL_EXT_FIVE_PART_TWO_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{4500.0,630.0,-17000.0}, {1.2000000476837158,1.0,1.2000000476837158}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, JL_ROCK_FLOOR2_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 2, 0, 4, 0, -1, 0, 0},
+    {{5500.0,430.0,-17900.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, G_POLE_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{4400.0,430.0,-18400.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, G_POLE_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{3600.0,430.0,-17500.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, G_POLE_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{5500.0,430.0,-17900.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, JL_LILYPAD_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{4400.0,430.0,-18400.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, JL_LILYPAD_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{3600.0,430.0,-17500.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, JL_LILYPAD_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{5911.0,430.0,-18824.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, G_POLE_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{4500.0,670.0,-17000.0}, {1.0,1.0,1.0}, 0, 0, 7, 20, 0.0, 0.0, 0.0, 0.5, &JungleLand_water2_Vtx, -2, -2, 5, 2414, 495, JL_WATER2_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, 0, 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, G_FALLBACK_CUBE_MODEL, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
 
 #include "assets/levelGroup/JungleLand/spriteActors/eroom6_sprLilyWave.sprite.inc.c"
 
@@ -657,11 +859,11 @@ extern Vtx JungleLand_water2_Vtx[];
 
 #include "assets/levelGroup/JungleLand/spriteActors/eroom6_sprSTOP.sprite.inc.c"
 
-#include "assets/levelGroup/JungleLand/roomObjects/eroom7_objLand.roomObj.inc.c"
-
-#include "assets/levelGroup/JungleLand/roomObjects/eroom7_objLog.roomObj.inc.c"
-
-#include "assets/levelGroup/JungleLand/roomObjects/eroom7_objSTOP.roomObj.inc.c"
+RoomObject JungleLand_ext_room8_objects[3] = {
+    {{7900.0,600.0,-19500.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, JL_EXT_SIX_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{7900.0,600.0,-19500.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, JL_LOG_SET_PIECE_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, 0, 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
 
 #include "assets/levelGroup/JungleLand/roomActors/eroomUnk_actFish.roomAct.inc.c"
 
@@ -673,57 +875,49 @@ extern Vtx JungleLand_water2_Vtx[];
 
 #include "assets/levelGroup/JungleLand/roomActors/eroomUnk2_actSTOP.roomAct.inc.c"
 
-#include "assets/levelGroup/JungleLand/roomObjects/eroom8_objLogBottom.roomObj.inc.c"
+RoomObject JungleLand_ext_room9_objects[8] = {
+    {{12500.0,600.0,-17800.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, JL_UNK_LOG_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{12700.0,600.0,-17800.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, JL_FALLEN_LOG_STUMP_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{11250.0,1000.0,-18800.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(-90), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, JL_FALLEN_CROWN_LOG_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{13200.0,350.0,-17400.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(230), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, JL_LOG_TUNNEL_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{13200.0,350.0,-17400.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(230), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, JL_HOLE_LOG_BOTTOM_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{13210.0,350.0,-17420.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(230), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, JL_HOLE_LOG_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 2, 0, 4, 0, -1, 0, 0},
+    {{12500.0,600.0,-17800.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, JL_EXT_SEVEN_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, 0, 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
 
-#include "assets/levelGroup/JungleLand/roomObjects/eroom8_objLogPlate.roomObj.inc.c"
+RoomObject JungleLand_ext_room10_objects[4] = {
+    {{16500.0,200.0,-15100.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, JL_EXT_EIGHT_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{16500.0,200.0,-15100.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, JL_EXT_EIGHT_BRIDGE_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{16300.0,200.0,-15250.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, G_POLE_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, 0, 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
 
-#include "assets/levelGroup/JungleLand/roomObjects/eroom8_objLogTop.roomObj.inc.c"
+Collectable JungleLand_ext_room8_collectables[4] = {
+    {CROWN, {13536.0,280.0,-17087.0}, 4294967295, 0, 0, 0},
+    {CROWN, {10421.0,1493.0,-18825.0}, 4294967295, 0, 0, 0},
+    {R_HEART, {12278.0,700.0,-18803.0}, 4294967295, 0, 0, 0},
+    {ACTOR_NULL, {0.0,0.0,0.0}, 4294967295, 0, 0, 0}
+};
 
-#include "assets/levelGroup/JungleLand/roomObjects/eroom8_objHoleLogTop.roomObj.inc.c"
+Collectable JungleLand_ext_room9_collectables[2] = {
+    {CROWN, {16235.0,-100.0,-15139.0}, 4294967295, 0, 0, 0},
+    {ACTOR_NULL, {0.0,0.0,0.0}, 4294967295, 0, 0, 0}
+};
 
-#include "assets/levelGroup/JungleLand/roomObjects/eroom8_objHoleLogBottom.roomObj.inc.c"
+Collectable JungleLand_ext_room10_collectables[3] = {
+    {CROWN, {19815.0,100.0,-13800.0}, 4294967295, 0, 0, 0},
+    {CROWN, {20550.0,100.0,-13084.0}, 4294967295, 0, 0, 0},
+    {ACTOR_NULL, {0.0,0.0,0.0}, 4294967295, 0, 0, 0}
+};
 
-#include "assets/levelGroup/JungleLand/roomObjects/eroom8_objHoleLogCollision.roomObj.inc.c"
-
-#include "assets/levelGroup/JungleLand/roomObjects/eroom8_objLand.roomObj.inc.c"
-
-#include "assets/levelGroup/JungleLand/roomObjects/eroom8_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/JungleLand/roomObjects/eroom9_objLand.roomObj.inc.c"
-
-#include "assets/levelGroup/JungleLand/roomObjects/eroom9_objBridge.roomObj.inc.c"
-
-#include "assets/levelGroup/JungleLand/roomObjects/eroom9_objPole.roomObj.inc.c"
-
-#include "assets/levelGroup/JungleLand/roomObjects/eroom9_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/JungleLand/collectables/eroom8_clctCrown.clct.inc.c"
-
-#include "assets/levelGroup/JungleLand/collectables/eroom8_clctCrown2.clct.inc.c"
-
-#include "assets/levelGroup/JungleLand/collectables/eroom8_clctRHeart.clct.inc.c"
-
-#include "assets/levelGroup/JungleLand/collectables/eroom8_clctSTOP.clct.inc.c"
-
-#include "assets/levelGroup/JungleLand/collectables/eroom9_clctCrown.clct.inc.c"
-
-#include "assets/levelGroup/JungleLand/collectables/eroom9_clctSTOP.clct.inc.c"
-
-#include "assets/levelGroup/JungleLand/collectables/eroom10_clctCrown.clct.inc.c"
-
-#include "assets/levelGroup/JungleLand/collectables/eroom10_clctCrown2.clct.inc.c"
-
-#include "assets/levelGroup/JungleLand/collectables/eroom10_clctSTOP.clct.inc.c"
-
-#include "assets/levelGroup/JungleLand/collectables/eroom11_clctCrown.clct.inc.c"
-
-#include "assets/levelGroup/JungleLand/collectables/eroom12_clctRHeart.clct.inc.c"
-
-#include "assets/levelGroup/JungleLand/collectables/eroom11_clctCrown2.clct.inc.c"
-
-#include "assets/levelGroup/JungleLand/collectables/eroom12_clctCrown.clct.inc.c"
-
-#include "assets/levelGroup/JungleLand/collectables/eroom11to12_clctSTOP.clct.inc.c"
+Collectable JungleLand_ext_room11_collectables[5] = {
+    {CROWN, {23745.0,800.0,-12445.0}, 4294967295, 0, 0, 0},
+    {R_HEART, {25545.0,1900.0,-12245.0}, 4294967295, 0, 0, 0},
+    {CROWN, {22915.0,1600.0,-12615.0}, 4294967295, 0, 0, 0},
+    {CROWN, {24559.0,0.0,-12014.0}, 4294967295, 0, 0, 0},
+    {ACTOR_NULL, {0.0,0.0,0.0}, 4294967295, 0, 0, 0}
+};
 
 #include "assets/levelGroup/JungleLand/roomActors/eroom10_actFish.roomAct.inc.c"
 
@@ -733,39 +927,32 @@ extern Vtx JungleLand_water2_Vtx[];
 
 #include "assets/levelGroup/JungleLand/roomActors/eroomUnk3_actSTOP.roomAct.inc.c"
 
-#include "assets/levelGroup/JungleLand/roomObjects/eroom10_objLand.roomObj.inc.c"
 extern Vtx JungleLand_waterfall_Vtx[];
-#include "assets/levelGroup/JungleLand/roomObjects/eroom10_objWaterfall.roomObj.inc.c"
+RoomObject JungleLand_ext_room11_objects[9] = {
+    {{19300.0,200.0,-12400.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, JL_EXT_NINE_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 0, 4, 4, 0, -1, 0, 0},
+    {{19300.0,200.0,-12400.0}, {1.0,1.0,1.0}, 0, 0, 7, 20, -3.0, 0.0, 3.0, 0.5, &JungleLand_waterfall_Vtx, 0, -32, 10, 159, 9822, JL_WATERFALL_MODEL, -1, -1, -1, NULL, &func_800D8D58, 0, 0, 0, 4, 4, 0, -1, 0, 0},
+    {{19300.0,200.0,-12400.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, JL_WATERFALL_GROUND_COLLISION_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 2, 0, 4, 0, -1, 0, 0},
+    {{19300.0,200.0,-12400.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, JL_WATERFALL_BACKSIDE_COLLISION_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 2, 0, 4, 0, -1, 0, 0},
+    {{19300.0,200.0,-12400.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, JL_GROUND_COLLISION_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 2, 0, 4, 0, -1, 0, 0},
+    {{19168.0,100.0,-13400.0}, {1.5,1.0,1.5}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, JL_WATERFALL_ROCK_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{19470.0,100.0,-12700.0}, {1.5,1.0,1.5}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, JL_WATERFALL_ROCK_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{19875.0,100.0,-12400.0}, {1.5,1.0,1.5}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, JL_WATERFALL_ROCK_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, 0, 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, G_FALLBACK_CUBE_MODEL, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
 
-#include "assets/levelGroup/JungleLand/roomObjects/eroom10_objWaterfallGround.roomObj.inc.c"
+RoomObject JungleLand_ext_room12_objects[2] = {
+    {{24000.0,200.0,-12700.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, JL_EXT_TEN_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, 0, 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
 
-#include "assets/levelGroup/JungleLand/roomObjects/eroom10_objWaterfallBack.roomObj.inc.c"
-
-#include "assets/levelGroup/JungleLand/roomObjects/eroom10_objGroundCollision.roomObj.inc.c"
-
-#include "assets/levelGroup/JungleLand/roomObjects/eroom10_objWaterRock.roomObj.inc.c"
-
-#include "assets/levelGroup/JungleLand/roomObjects/eroom10_objWaterRock2.roomObj.inc.c"
-
-#include "assets/levelGroup/JungleLand/roomObjects/eroom10_objWaterRock3.roomObj.inc.c"
-
-#include "assets/levelGroup/JungleLand/roomObjects/eroom10_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/JungleLand/roomObjects/eroom11_objLand.roomObj.inc.c"
-
-#include "assets/levelGroup/JungleLand/roomObjects/eroom11_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/JungleLand/roomObjects/eroom12_objLand.roomObj.inc.c"
-
-#include "assets/levelGroup/JungleLand/roomObjects/eroom12_objFrame.roomObj.inc.c"
-
-#include "assets/levelGroup/JungleLand/roomObjects/eroom12_objEntrance.roomObj.inc.c"
-
-#include "assets/levelGroup/JungleLand/roomObjects/eroom12_objLoadingZone.roomObj.inc.c"
-
-#include "assets/levelGroup/JungleLand/roomObjects/eroom12_objSomethingElseDoorRelated.roomObj.inc.c"
-
-#include "assets/levelGroup/JungleLand/roomObjects/eroom12_objSTOP.roomObj.inc.c"
+RoomObject JungleLand_ext_room13_objects[6] = {
+    {{24000.0,200.0,-12700.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, JL_EXT_ELEVEN_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{24000.0,200.0,-12700.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, JL_EXT_ENTRANCE_DOOR_FRAME_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{25500.0,1900.0,-12900.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, G_JL_OUTSIDE_ENTRANCE_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{25500.0,1900.0,-12900.0}, {1.0,1.0,1.0}, 0, 0, 256, 0, 600.0, 400.0, 0.0, 0.0, 1, 1, 0, 0, 0, 0, G_FALLBACK_CUBE_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 2, -1, 1, 0, -1, 0, 0},
+    {{25500.0,1900.0,-12900.0}, {4.0,4.0,4.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, G_FALLBACK_CUBE_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, 0, 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
 
 #include "assets/levelGroup/JungleLand/roomObjects/room8_objWalls.roomObj.inc.c"
 
@@ -1513,9 +1700,10 @@ extern Vtx JungleLand_roomSevenLava_Vtx[];
 
 #include "assets/levelGroup/JungleLand/roomActors/room6_actSTOP.roomAct.inc.c"
 
-#include "assets/levelGroup/JungleLand/roomObjects/roomFallback_objPole.roomObj.inc.c"
-
-#include "assets/levelGroup/JungleLand/roomObjects/roomFallback_objSTOP.roomObj.inc.c"
+RoomObject JungleLand_cutscene_room_objects[2] = {
+    {{-7000.0,8820.0,0.0}, {500.0,1.0,500.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, G_POLE_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 0, 4, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, 0, 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, G_FALLBACK_CUBE_MODEL, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
 
 #include "assets/levelGroup/JungleLand/roomActors/roomUnk_actSpiderSpawner.roomAct.inc.c"
 
@@ -1539,63 +1727,72 @@ extern Vtx JungleLand_roomSevenLava_Vtx[];
 
 #include "assets/levelGroup/JungleLand/spriteLib.sprLib.inc.c"
 
-#include "assets/levelGroup/JungleLand/rooms/room0.rmSet.inc.c"
+RoomInstance JungleLand_room_instances[10] = {
+    {&JungleLand_room0_objWalls_Roomobj, &JungleLand_room0_actHedgehog_Roomact, JungleLand_room0_collectables, &JungleLand_room0_sprLavaFlame_Sprite, 0, 0, 2, 0, -1, 0, 0.0, 10, 1296.0, 400.0, -260.0, 0.0, 0.0, 0.0, 1.5, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+    {&JungleLand_room1_objWalls_Roomobj, &JungleLand_room1_actSpiderSpawner_Roomact, JungleLand_room1_collectables, 0, 0, 0, 1, 0, -1, 0, 0.0, 10, 650.0, 500.0, 1800.0, 0.0, 0.0, 0.0, 1.5, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+    {&JungleLand_room2_objWalls_Roomobj, &JungleLand_room2_actSpiderSpawner_Roomact, JungleLand_room2_collectables, 0, 0, 0, 4, 0, -1, 0, 0.0, 10, 2000.0, 1805.0, 1230.0, 0.0, 0.0, 0.0, 1.5, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+    {&JungleLand_room3_objFrame_Roomobj, &JungleLand_room3_actSpiderTrio_Roomact, JungleLand_room3_collectables, 0, 0, 0, 1, 0, -1, 0, 0.0, 10, 2300.0, 1050.0, 1340.0, 0.0, 0.0, 0.0, 1.2999999523162842, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+    {&JungleLand_room4_objWalls_Roomobj, &JungleLand_room4_actGolem_Roomact, JungleLand_room4_collectables, 0, 0, 0, 5, 68, 0, 0, 0.0, 1, 1000.0, 0.0, 1600.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+    {&JungleLand_room5_objWalls_Roomobj, 0, JungleLand_room5_collectables, 0, 0, 0, 1, 0, -1, 0, 0.0, 10, -1050.0, 2000.0, 1542.0, 0.0, 0.0, 0.0, 1.600000023841858, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+    {&JungleLand_room6_objWalls_Roomobj, &JungleLand_room6_actHedgehog_Roomact, JungleLand_room6_collectables, &JungleLand_room6_sprRabbit_Sprite, 0, 0, 1, 0, -1, 0, 0.0, 1, -500.0, 1500.0, 1240.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1000.0, 0.0},
+    {JungleLand_cutscene_room_objects, 0, 0, 0, 0, 1, 0, 0, -1, 0, 0.0, 5, 1500.0, 1200.0, -1500.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+    {&JungleLand_room8_objWalls_Roomobj, &JungleLand_room8_actHedgehog_Roomact, JungleLand_room8_collectables, 0, 0, 0, 1, 0, -1, 0, 0.0, 10, 938.0, 0.0, 1888.0, 0.0, 0.0, 0.0, 1.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+    {0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0}
+};
 
-#include "assets/levelGroup/JungleLand/rooms/room1.rmSet.inc.c"
+s32 JungleLand_rooms_map[8][3] = {
+    {-1, -1, -1},
+    { 7, -1, -1},
+    { 6, -1, -1},
+    { 5, -1, -1},
+    { 8, -1, -1},
+    { 4, -1, -1},
+    { 3,  2,  1},
+    {-1, -1,  0} 
+};
 
-#include "assets/levelGroup/JungleLand/rooms/room2.rmSet.inc.c"
+StageMapData JungleLand_map_data = {
+    3, 8, JungleLand_room_instances, JungleLand_rooms_map, 
+};
 
-#include "assets/levelGroup/JungleLand/rooms/room3.rmSet.inc.c"
+RoomInstance JungleLand_ext_room_instances[15] = {
+    {JungleLand_cutscene_room_objects, &JungleLand_roomUnk_actSpiderSpawner_Roomact, 0, 0, 0, 1, 3, 0, 0, 0, 20.0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -7000, 9000, 0, 0, 0, 0, 0, 0, -1.0, 0.0}, // Intro Room
+    {JungleLand_ext_room1_objects, 0, JungleLand_ext_room0_collectables, &JungleLand_eroom0_sprRabbit_Sprite, 0, 0, 2, 0, 0, 0, 30.0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+    {JungleLand_ext_room2_objects, 0, JungleLand_ext_room1_collectables, &JungleLand_eroom1_sprFern_Sprite, 0, 0, 2, 0, 0, 0, 40.0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -430, 100, -2464, 0, 0, 0, 0, 0, -1.0, 0.0},
+    {JungleLand_ext_room3_objects, &JungleLand_eroom2_actHedgehog_Roomact, JungleLand_ext_room2_collectables, 0, 0, 0, 2, 0, 0, 0, 45.0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -2964, 950, -5398, 0, 0, 0, 0, 0, -1.0, 0.0},
+    {JungleLand_ext_room4_objects, &JungleLand_eroom3_actHedgehog_Roomact, JungleLand_ext_room3_collectables, &JungleLand_eroom3_sprFern_Sprite, 0, 0, 2, 0, 0, 0, 45.0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -2535, 600, -9371, 0, 0, 0, 0, 0, -1500.0, 0.0},
+    {JungleLand_ext_room5_objects, 0, 0, 0, 0, 0, 2, 0, 0, 0, 45.0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 365, 600, -13071, 0, 0, 0, 0, 0, -1500.0, 0.0},
+    {JungleLand_ext_room6_objects, 0, JungleLand_ext_room5_collectables, &JungleLand_eroom5_sprLilyWave_Sprite, 0, 0, 2, 0, 0, 0, 45.0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 4078, 600, -14412, 0, 0, 0, 0, 0, -1600.0, 0.0},
+    {JungleLand_ext_room7_objects, 0, JungleLand_ext_room6_collectables, &JungleLand_eroom6_sprLilyWave_Sprite, 0, 0, 2, 0, 0, 0, 45.0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 4495, 300, -17150, 0, 0, 0, 0, 0, -1700.0, 0.0},
+    {JungleLand_ext_room8_objects, &JungleLand_eroom7_actHedgehog_Roomact, JungleLand_ext_room7_collectables, &JungleLand_eroom7_sprFern_Sprite, 0, 0, 2, 0, 0, 0, 45.0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 6909, 600, -19080, 0, 0, 0, 0, 0, -1800.0, 0.0},
+    {JungleLand_ext_room9_objects, 0, JungleLand_ext_room8_collectables, 0, 0, 0, 2, 0, 0, 0, 45.0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 9955, 600, -18890, 0, 0, 0, 0, 0, -1900.0, 0.0},
+    {JungleLand_ext_room10_objects, &JungleLand_eroom9_actHedgehog_Roomact, JungleLand_ext_room9_collectables, 0, 0, 0, 2, 0, 0, 0, 45.0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 15528, 600, -15000, 0, 0, 0, 0, 0, -1900.0, 0.0},
+    {JungleLand_ext_room11_objects, &JungleLand_eroom10_actFish_Roomact, JungleLand_ext_room10_collectables, 0, 0, 0, 2, 0, 0, 0, 45.0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 18441, 200, -13972, 0, 0, 0, 0, 0, -2000.0, 0.0},
+    {JungleLand_ext_room12_objects, 0, JungleLand_ext_room11_collectables, 0, 0, 0, 2, 0, 0, 0, 45.0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 21447, 200, -12195, 0, 0, 0, 0, 0, -2000.0, 0.0},
+    {JungleLand_ext_room13_objects, 0, 0, &JungleLand_eroom12_sprFern_Sprite, 0, 0, 2, 0, 0, 0, 45.0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 24240, 1200, -12524, 0, 0, 0, 0, 0, -2000.0, 0.0},
+    {0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0}
+};
 
-#include "assets/levelGroup/JungleLand/rooms/room4.rmSet.inc.c"
+LevelScope JungleLand_scope_Lvlscope = {
+    0,
+    0,
+    0,
+    -1,
+    25000,
+    60,
+};
 
-#include "assets/levelGroup/JungleLand/rooms/room5.rmSet.inc.c"
-
-#include "assets/levelGroup/JungleLand/rooms/room6.rmSet.inc.c"
-
-#include "assets/levelGroup/JungleLand/rooms/room7.rmSet.inc.c"
-
-#include "assets/levelGroup/JungleLand/rooms/room8.rmSet.inc.c"
-
-#include "assets/levelGroup/JungleLand/rooms/roomSTOP.rmSet.inc.c"
-
-#include "assets/levelGroup/JungleLand/map.lvmM.inc.c"
-
-#include "assets/levelGroup/JungleLand/map.lvmH.inc.c"
-
-#include "assets/levelGroup/JungleLand/rooms/fallBack.rmSet.inc.c"
-
-#include "assets/levelGroup/JungleLand/extRooms/extRoom0.rmSet.inc.c"
-
-#include "assets/levelGroup/JungleLand/extRooms/extRoom1.rmSet.inc.c"
-
-#include "assets/levelGroup/JungleLand/extRooms/extRoom2.rmSet.inc.c"
-
-#include "assets/levelGroup/JungleLand/extRooms/extRoom3.rmSet.inc.c"
-
-#include "assets/levelGroup/JungleLand/extRooms/extRoom4.rmSet.inc.c"
-
-#include "assets/levelGroup/JungleLand/extRooms/extRoom5.rmSet.inc.c"
-
-#include "assets/levelGroup/JungleLand/extRooms/extRoom6.rmSet.inc.c"
-
-#include "assets/levelGroup/JungleLand/extRooms/extRoom7.rmSet.inc.c"
-
-#include "assets/levelGroup/JungleLand/extRooms/extRoom8.rmSet.inc.c"
-
-#include "assets/levelGroup/JungleLand/extRooms/extRoom9.rmSet.inc.c"
-
-#include "assets/levelGroup/JungleLand/extRooms/extRoom10.rmSet.inc.c"
-
-#include "assets/levelGroup/JungleLand/extRooms/extRoom11.rmSet.inc.c"
-
-#include "assets/levelGroup/JungleLand/extRooms/extRoom12.rmSet.inc.c"
-
-#include "assets/levelGroup/JungleLand/extRooms/extRoomSTOP.rmSet.inc.c"
-
-#include "assets/levelGroup/JungleLand/scope.lvlScope.inc.c"
-
-#include "assets/levelGroup/JungleLand/header.lvlHdr.inc.c"
+StageData JungleLand_stageData = {
+    &JungleLand_map_data,
+    JungleLand_ext_room_instances,     // Exterior Rooms don't use a map
+    &JungleLand_stageModels[0],
+    122,
+    0,
+    50337568,
+    131072,
+    &JungleLand_spriteLib_Sprlib[0],
+    &JungleLand_scope_Lvlscope,
+};
 Mtx JungleLand_IMtx2 = IDENTITY;
 
 #include "assets/levelGroup/JungleLand/jlScope/jlScope.light.inc.c"

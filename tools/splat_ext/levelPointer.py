@@ -90,7 +90,7 @@ class N64SegLevelPointer(CommonSegCodeSubsegment):
         if not self.data_only:
             lines.append('#include "common.h"')
             lines.append("")
-            lines.append("LevelPointer  "+sym.name+"["+str(num)+"] = {")
+            lines.append("StageModel  "+sym.name+"["+str(num)+"] = {")
 
         for set in pointersets:
             currLine = "{"

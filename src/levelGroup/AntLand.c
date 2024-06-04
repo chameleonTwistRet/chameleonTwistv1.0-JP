@@ -1,4 +1,5 @@
 #include "common.h"
+#include "PR/gu.h"
 
 extern unsigned char Global_brickWall_i4_PNG[];
 extern unsigned char Global_brownBrickWall_ci4_PAL[];
@@ -27,1899 +28,1658 @@ extern unsigned char Global_gateGray_ia4_PNG[];
 extern unsigned char Global_wall_i4_PNG[];
 
 extern Gfx Global_fallbackCube_Gfx[];
-extern CollisionData Global_fallbackCube_ColH;
+extern ModelCollision Global_fallbackCube_ColH;
 extern Gfx Global_exitShadowSouth_Gfx[];
-extern CollisionData Global_exitShadowSouth_ColH;
+extern ModelCollision Global_exitShadowSouth_ColH;
 extern Gfx Global_exitShadowNorth_Gfx[];
-extern CollisionData Global_exitShadowNorth_ColH;
+extern ModelCollision Global_exitShadowNorth_ColH;
 extern Gfx Global_exitShadowEast_Gfx[];
-extern CollisionData Global_exitShadowEast_ColH;
+extern ModelCollision Global_exitShadowEast_ColH;
 extern Gfx Global_exitShadowWest_Gfx[];
-extern CollisionData Global_exitShadowWest_ColH;
+extern ModelCollision Global_exitShadowWest_ColH;
 extern Gfx Global_ALBLExit_Gfx[];
-extern CollisionData Global_ALBLExit_ColH;
-extern Gfx Global_unk3_Gfx[];
-extern CollisionData Global_unk3_ColH;
+extern ModelCollision Global_ALBLExit_ColH;
+extern Gfx Global_sandPit_Gfx[];
+extern ModelCollision Global_sandPit_ColH;
 extern Gfx Global_BossBridge_Gfx[];
-extern CollisionData Global_BossBridge_ColH;
+extern ModelCollision Global_BossBridge_ColH;
 extern Gfx Global_ALPole_Gfx[];
-extern CollisionData Global_ALPole_ColH;
+extern ModelCollision Global_ALPole_ColH;
 extern Gfx Global_ALBLDoor_Gfx[];
-extern CollisionData Global_ALBLDoor_ColH;
+extern ModelCollision Global_ALBLDoor_ColH;
 extern Gfx Global_ALSpinDoor_Gfx[];
-extern CollisionData Global_ALSpinDoor_ColH;
+extern ModelCollision Global_ALSpinDoor_ColH;
 extern Gfx Global_BLLavaFloor_Gfx[];
-extern CollisionData Global_BLLavaFloor_ColH;
+extern ModelCollision Global_BLLavaFloor_ColH;
 extern Gfx Global_BLLava_Gfx[];
-extern CollisionData Global_BLLava_ColH;
+extern ModelCollision Global_BLLava_ColH;
 extern Gfx Global_BLLava2_Gfx[];
-extern CollisionData Global_BLLava2_ColH;
+extern ModelCollision Global_BLLava2_ColH;
 extern Gfx Global_BLLava3_Gfx[];
-extern CollisionData Global_BLLava3_ColH;
+extern ModelCollision Global_BLLava3_ColH;
 extern Gfx Global_BLLava4_Gfx[];
-extern CollisionData Global_BLLava4_ColH;
+extern ModelCollision Global_BLLava4_ColH;
 extern Gfx Global_BLLava5_Gfx[];
-extern CollisionData Global_BLLava5_ColH;
+extern ModelCollision Global_BLLava5_ColH;
 extern Gfx Global_BLLava6_Gfx[];
-extern CollisionData Global_BLLava6_ColH;
+extern ModelCollision Global_BLLava6_ColH;
 extern Gfx Global_BLLava7_Gfx[];
-extern CollisionData Global_BLLava7_ColH;
+extern ModelCollision Global_BLLava7_ColH;
 extern Gfx Global_BLLava8_Gfx[];
-extern CollisionData Global_BLLava8_ColH;
+extern ModelCollision Global_BLLava8_ColH;
 extern Gfx Global_BLDestructableTop_Gfx[];
-extern CollisionData Global_BLDestructableTop_ColH;
+extern ModelCollision Global_BLDestructableTop_ColH;
 extern Gfx Global_BLMetalBridge_Gfx[];
-extern CollisionData Global_BLMetalBridge_ColH;
+extern ModelCollision Global_BLMetalBridge_ColH;
 extern Gfx Global_KLExit_Gfx[];
-extern CollisionData Global_KLExit_ColH;
+extern ModelCollision Global_KLExit_ColH;
 extern Gfx Global_KLDoor_Gfx[];
-extern CollisionData Global_KLDoor_ColH;
+extern ModelCollision Global_KLDoor_ColH;
 extern Gfx Global_DCExit_Gfx[];
-extern CollisionData Global_DCExit_ColH;
+extern ModelCollision Global_DCExit_ColH;
 extern Gfx Global_TallExitShadow1_Gfx[];
-extern CollisionData Global_TallExitShadow1_ColH;
+extern ModelCollision Global_TallExitShadow1_ColH;
 extern Gfx Global_TallExitShadow2_Gfx[];
-extern CollisionData Global_TallExitShadow2_ColH;
+extern ModelCollision Global_TallExitShadow2_ColH;
 extern Gfx Global_GCExit1_Gfx[];
-extern CollisionData Global_GCExit1_ColH;
+extern ModelCollision Global_GCExit1_ColH;
 extern Gfx Global_GCExit2_Gfx[];
-extern CollisionData Global_GCExit2_ColH;
+extern ModelCollision Global_GCExit2_ColH;
 extern Gfx Global_trainingRoomLight_Gfx[];
-extern CollisionData Global_trainingRoomLight_ColH;
+extern ModelCollision Global_trainingRoomLight_ColH;
 extern Gfx Global_JLCaveExit1_Gfx[];
-extern CollisionData Global_JLCaveExit1_ColH;
+extern ModelCollision Global_JLCaveExit1_ColH;
 extern Gfx Global_JLCaveExit2_Gfx[];
-extern CollisionData Global_JLCaveExit2_ColH;
+extern ModelCollision Global_JLCaveExit2_ColH;
 extern Gfx Global_JLCaveExit3_Gfx[];
-extern CollisionData Global_JLCaveExit3_ColH;
+extern ModelCollision Global_JLCaveExit3_ColH;
 extern Gfx Global_JLCaveExit4_Gfx[];
-extern CollisionData Global_JLCaveExit4_ColH;
+extern ModelCollision Global_JLCaveExit4_ColH;
 extern Gfx Global_JLOutsideEntrance_Gfx[];
-extern CollisionData Global_JLOutsideEntrance_ColH;
+extern ModelCollision Global_JLOutsideEntrance_ColH;
 extern Gfx Global_JLFxCamPillar_Gfx[];
-extern CollisionData Global_JLFxCamPillar_ColH;
+extern ModelCollision Global_JLFxCamPillar_ColH;
 extern Gfx Global_JLCaveDoor_Gfx[];
-extern CollisionData Global_JLCaveDoor_ColH;
+extern ModelCollision Global_JLCaveDoor_ColH;
 extern Gfx AntLand_exit2_Gfx[];
-extern CollisionData AntLand_exit2_ColH;
+extern ModelCollision AntLand_exit2_collision;
 extern Gfx AntLand_exit3_Gfx[];
-extern CollisionData AntLand_exit3_ColH;
+extern ModelCollision AntLand_exit3_collision;
 extern Gfx AntLand_exit4_Gfx[];
-extern CollisionData AntLand_exit4_ColH;
+extern ModelCollision AntLand_exit4_ColH;
 extern Gfx AntLand_room0_Gfx[];
-extern CollisionData AntLand_room0_ColH;
+extern ModelCollision AntLand_room0_ColH;
 extern Gfx AntLand_room1_Gfx[];
-extern CollisionData AntLand_room1_ColH;
+extern ModelCollision AntLand_room1_ColH;
 extern Gfx AntLand_room2_Gfx[];
-extern CollisionData AntLand_room2_ColH;
+extern ModelCollision AntLand_room2_ColH;
 extern Gfx AntLand_room14_Gfx[];
-extern CollisionData AntLand_room14_ColH;
+extern ModelCollision AntLand_room14_ColH;
 extern Gfx AntLand_room4_Gfx[];
-extern CollisionData AntLand_room4_ColH;
+extern ModelCollision AntLand_room4_ColH;
 extern Gfx AntLand_room5_Gfx[];
-extern CollisionData AntLand_room5_ColH;
+extern ModelCollision AntLand_room5_collision;
 extern Gfx AntLand_room6_Gfx[];
-extern CollisionData AntLand_room6_ColH;
+extern ModelCollision AntLand_room6_collision;
 extern Gfx AntLand_room7_Gfx[];
-extern CollisionData AntLand_room7_ColH;
+extern ModelCollision AntLand_room7_collision;
 extern Gfx AntLand_room8_Gfx[];
-extern CollisionData AntLand_room8_ColH;
+extern ModelCollision AntLand_room8_collision;
 extern Gfx AntLand_room9_Gfx[];
-extern CollisionData AntLand_room9_ColH;
+extern ModelCollision AntLand_room9_collision;
 extern Gfx AntLand_room10_Gfx[];
-extern CollisionData AntLand_room10_ColH;
+extern ModelCollision AntLand_room10_ColH;
 extern Gfx AntLand_room11_Gfx[];
-extern CollisionData AntLand_room11_ColH;
+extern ModelCollision AntLand_room11_ColH;
 extern Gfx AntLand_room12_Gfx[];
-extern CollisionData AntLand_room12_ColH;
+extern ModelCollision AntLand_room12_ColH;
 extern Gfx AntLand_room13_Gfx[];
-extern CollisionData AntLand_room13_ColH;
+extern ModelCollision AntLand_room13_ColH;
 extern Gfx AntLand_room3_Gfx[];
-extern CollisionData AntLand_room3_ColH;
+extern ModelCollision AntLand_room3_ColH;
 extern Gfx AntLand_room17_Gfx[];
-extern CollisionData AntLand_room17_ColH;
+extern ModelCollision AntLand_room17_ColH;
 extern Gfx AntLand_room15_Gfx[];
-extern CollisionData AntLand_room15_ColH;
+extern ModelCollision AntLand_room15_ColH;
 extern Gfx AntLand_room18_Gfx[];
-extern CollisionData AntLand_room18_ColH;
+extern ModelCollision AntLand_room18_ColH;
 extern Gfx AntLand_room16_Gfx[];
-extern CollisionData AntLand_room16_ColH;
+extern ModelCollision AntLand_room16_ColH;
 extern Gfx AntLand_room20_Gfx[];
-extern CollisionData AntLand_room20_ColH;
+extern ModelCollision AntLand_room20_ColH;
 extern Gfx AntLand_room21_Gfx[];
-extern CollisionData AntLand_room21_ColH;
+extern ModelCollision AntLand_room21_ColH;
 extern Gfx AntLand_room4Platform_Gfx[];
-extern CollisionData AntLand_room4Platform_ColH;
+extern ModelCollision AntLand_room4Platform_ColH;
 extern Gfx AntLand_room4Floor_Gfx[];
-extern CollisionData AntLand_room4Floor_ColH;
+extern ModelCollision AntLand_room4Floor_ColH;
 extern Gfx AntLand_room6Floor_Gfx[];
-extern CollisionData AntLand_room6Floor_ColH;
+extern ModelCollision AntLand_room6Floor_ColH;
 extern Gfx AntLand_room8Floor_Gfx[];
-extern CollisionData AntLand_room8Floor_ColH;
+extern ModelCollision AntLand_room8Floor_ColH;
 extern Gfx AntLand_room17Floor_Gfx[];
-extern CollisionData AntLand_room17Floor_ColH;
+extern ModelCollision AntLand_room17Floor_ColH;
 extern Gfx AntLand_room10Floor_Gfx[];
-extern CollisionData AntLand_room10Floor_ColH;
+extern ModelCollision AntLand_room10Floor_ColH;
 extern Gfx AntLand_room10Platform1_Gfx[];
-extern CollisionData AntLand_room10Platform1_ColH;
+extern ModelCollision AntLand_room10Platform1_ColH;
 extern Gfx AntLand_room10Platform2_Gfx[];
-extern CollisionData AntLand_room10Platform2_ColH;
+extern ModelCollision AntLand_room10Platform2_ColH;
 extern Gfx AntLand_room10Platform3_Gfx[];
-extern CollisionData AntLand_room10Platform3_ColH;
+extern ModelCollision AntLand_room10Platform3_ColH;
 extern Gfx AntLand_room5Platform_Gfx[];
-extern CollisionData AntLand_room5Platform_ColH;
+extern ModelCollision AntLand_room5Platform_ColH;
 extern Gfx AntLand_room13Platform_Gfx[];
-extern CollisionData AntLand_room13Platform_ColH;
+extern ModelCollision AntLand_room13Platform_ColH;
 extern Gfx AntLand_room21Platform1_Gfx[];
-extern CollisionData AntLand_room21Platform1_ColH;
+extern ModelCollision AntLand_room21Platform1_ColH;
 extern Gfx AntLand_room21Platform2_Gfx[];
-extern CollisionData AntLand_room21Platform2_ColH;
+extern ModelCollision AntLand_room21Platform2_ColH;
 extern Gfx AntLand_room12Floor1_Gfx[];
-extern CollisionData AntLand_room12Floor1_ColH;
+extern ModelCollision AntLand_room12Floor1_ColH;
 extern Gfx AntLand_room12Floor2_Gfx[];
-extern CollisionData AntLand_room12Floor2_ColH;
+extern ModelCollision AntLand_room12Floor2_ColH;
 extern Gfx AntLand_room11Floor1_Gfx[];
-extern CollisionData AntLand_room11Floor1_ColH;
+extern ModelCollision AntLand_room11Floor1_ColH;
 extern Gfx AntLand_room11Floor2_Gfx[];
-extern CollisionData AntLand_room11Floor2_ColH;
+extern ModelCollision AntLand_room11Floor2_ColH;
 extern Gfx AntLand_room4Grate_Gfx[];
-extern CollisionData AntLand_room4Grate_ColH;
+extern ModelCollision AntLand_room4Grate_ColH;
 extern Gfx AntLand_room7Floor_Gfx[];
-extern CollisionData AntLand_room7Floor_ColH;
+extern ModelCollision AntLand_room7Floor_ColH;
 extern Gfx AntLand_room7Ceiling_Gfx[];
-extern CollisionData AntLand_room7Ceiling_ColH;
+extern ModelCollision AntLand_room7Ceiling_ColH;
 extern Gfx AntLand_room15Floor_Gfx[];
-extern CollisionData AntLand_room15Floor_ColH;
+extern ModelCollision AntLand_room15Floor_ColH;
 extern Gfx AntLand_room15Ceiling_Gfx[];
-extern CollisionData AntLand_room15Ceiling_ColH;
+extern ModelCollision AntLand_room15Ceiling_ColH;
 extern Gfx AntLand_room8Floor1_Gfx[];
-extern CollisionData AntLand_room8Floor1_ColH;
+extern ModelCollision AntLand_room8Floor1_ColH;
 extern Gfx AntLand_room8Floor2_Gfx[];
-extern CollisionData AntLand_room8Floor2_ColH;
+extern ModelCollision AntLand_room8Floor2_ColH;
 extern Gfx AntLand_room0doorPillar1_Gfx[];
-extern CollisionData AntLand_room0doorPillar1_ColH;
+extern ModelCollision AntLand_room0doorPillar1_ColH;
 extern Gfx AntLand_room0doorPillar2_Gfx[];
-extern CollisionData AntLand_room0doorPillar2_ColH;
+extern ModelCollision AntLand_room0doorPillar2_ColH;
 extern Gfx AntLand_room0doorTop_Gfx[];
-extern CollisionData AntLand_room0doorTop_ColH;
+extern ModelCollision AntLand_room0doorTop_ColH;
 extern Gfx AntLand_room0doorTorchStand1_Gfx[];
-extern CollisionData AntLand_room0doorTorchStand1_ColH;
+extern ModelCollision AntLand_room0doorTorchStand1_ColH;
 extern Gfx AntLand_room0doorTorchStand2_Gfx[];
-extern CollisionData AntLand_room0doorTorchStand2_ColH;
+extern ModelCollision AntLand_room0doorTorchStand2_ColH;
 extern Gfx AntLand_room16Floor1_Gfx[];
-extern CollisionData AntLand_room16Floor1_ColH;
+extern ModelCollision AntLand_room16Floor1_ColH;
 extern Gfx AntLand_room16Floor2_Gfx[];
-extern CollisionData AntLand_room16Floor2_ColH;
+extern ModelCollision AntLand_room16Floor2_ColH;
 extern Gfx AntLand_room16Grate_Gfx[];
-extern CollisionData AntLand_room16Grate_ColH;
+extern ModelCollision AntLand_room16Grate_ColH;
 extern Gfx AntLand_tiltPlatform_Gfx[];
-extern CollisionData AntLand_tiltPlatform_ColH;
+extern ModelCollision AntLand_tiltPlatform_ColH;
 extern Gfx AntLand_platform_Gfx[];
-extern CollisionData AntLand_platform_ColH;
+extern ModelCollision AntLand_platform_ColH;
 extern Gfx AntLand_movingPlatform_Gfx[];
-extern CollisionData AntLand_movingPlatform_ColH;
+extern ModelCollision AntLand_movingPlatform_ColH;
 extern Gfx AntLand_quad_Gfx[];
-extern CollisionData AntLand_quad_ColH;
+extern ModelCollision AntLand_quad_ColH;
 extern Gfx AntLand_fixedCamPillar_Gfx[];
-extern CollisionData AntLand_fixedCamPillar_ColH;
+extern ModelCollision AntLand_fixedCamPillar_ColH;
 extern Gfx Global_pole_Gfx[];
-extern CollisionData Global_pole_ColH;
+extern ModelCollision Global_pole_ColH;
 
 
 Mtx AntLand_IMtx1 = IDENTITY;
 
-#include "assets/levelGroup/AntLand/pointers.lvp.inc.c"
-
-#include "build/assets/levelGroup/AntLand/rabobjects.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room0_obj0.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room0_obj1.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room0_obj2.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room0_obj3.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room0_obj4.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room0_obj5.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room0_obj6.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room0_obj7.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room0_obj8.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room0_obj9.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room0_obj10.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room0_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomActors/room0_actSTOP.roomAct.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room1_obj1.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room1_obj2.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room1_obj3.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room1_obj4.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room1_obj5.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room1_obj6.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room1_obj7.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room1_obj8.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room1_obj9.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room1_obj10.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room1_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomActors/room1_act1.roomAct.inc.c"
-
-#include "assets/levelGroup/AntLand/roomActors/room1_act2.roomAct.inc.c"
-
-#include "assets/levelGroup/AntLand/roomActors/room1_act3.roomAct.inc.c"
-
-#include "assets/levelGroup/AntLand/roomActors/room1_actSTOP.roomAct.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room2_obj1.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room2_obj2.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room2_obj3.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room2_obj4.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room2_obj5.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room2_obj6.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room2_obj7.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room2_obj8.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room2_obj9.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room2_obj10.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room2_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomActors/room2_act1.roomAct.inc.c"
-
-#include "assets/levelGroup/AntLand/roomActors/room2_act2.roomAct.inc.c"
-
-#include "assets/levelGroup/AntLand/roomActors/room2_act3.roomAct.inc.c"
-
-#include "assets/levelGroup/AntLand/roomActors/room2_act4.roomAct.inc.c"
-
-#include "assets/levelGroup/AntLand/roomActors/room2_actSTOP.roomAct.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room3_obj1.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room3_obj2.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room3_obj3.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room3_obj4.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room3_obj5.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room3_obj6.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room3_obj7.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room3_obj8.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room3_obj9.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room3_obj10.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room3_obj11.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room3_obj12.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room3_obj13.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room3_obj14.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room3_obj15.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room3_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomActors/room3_act1.roomAct.inc.c"
-
-#include "assets/levelGroup/AntLand/roomActors/room3_act2.roomAct.inc.c"
-
-#include "assets/levelGroup/AntLand/roomActors/room3_act3.roomAct.inc.c"
-
-#include "assets/levelGroup/AntLand/roomActors/room3_act4.roomAct.inc.c"
-
-#include "assets/levelGroup/AntLand/roomActors/room3_act5.roomAct.inc.c"
-
-#include "assets/levelGroup/AntLand/roomActors/room3_act6.roomAct.inc.c"
-
-#include "assets/levelGroup/AntLand/roomActors/room3_act7.roomAct.inc.c"
-
-#include "assets/levelGroup/AntLand/roomActors/room3_actSTOP.roomAct.inc.c"
-
-#include "assets/levelGroup/AntLand/newType/g1.ut1.inc.c"
-
-#include "assets/levelGroup/AntLand/newType/g2.ut1.inc.c"
-
-#include "assets/levelGroup/AntLand/newType/g3.ut1.inc.c"
-
-#include "assets/levelGroup/AntLand/newType/g4.ut1.inc.c"
-
-#include "assets/levelGroup/AntLand/newType/g5.ut1.inc.c"
-
-#include "assets/levelGroup/AntLand/newType/g6.ut1.inc.c"
-
-#include "assets/levelGroup/AntLand/newType/g7.ut1.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room20_obj1.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room20_obj2.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room20_obj3.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room20_obj4.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room20_obj5.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room20_obj6.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room20_obj7.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room20_obj8.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room20_obj9.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room20_obj10.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room20_obj11.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room20_obj12.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room20_obj13.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room20_obj14.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room20_obj15.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room20_obj16.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room20_obj17.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room20_obj18.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room20_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomActors/room20_act1.roomAct.inc.c"
-
-#include "assets/levelGroup/AntLand/roomActors/room20_actSTOP.roomAct.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room4_obj1.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room4_obj2.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room4_obj3.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room4_obj4.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room4_obj5.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room4_obj6.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room4_obj7.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room4_obj8.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room4_obj9.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room4_obj10.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room4_obj11.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room4_obj12.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room4_obj13.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room4_obj14.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room4_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomActors/room4_act1.roomAct.inc.c"
-
-#include "assets/levelGroup/AntLand/roomActors/room4_actSTOP.roomAct.inc.c"
-
-#include "assets/levelGroup/AntLand/newType/g8.ut1.inc.c"
-
-#include "assets/levelGroup/AntLand/newType/g9.ut1.inc.c"
-
-#include "assets/levelGroup/AntLand/newType/g10.ut1.inc.c"
-
-#include "assets/levelGroup/AntLand/newType/g11.ut1.inc.c"
-
-#include "assets/levelGroup/AntLand/newType/g12.ut1.inc.c"
-
-#include "assets/levelGroup/AntLand/newType/g13.ut1.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room5_obj1.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room5_obj2.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room5_obj3.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room5_obj4.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room5_obj5.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room5_obj6.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room5_obj7.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room5_obj8.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room5_obj9.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room5_obj10.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room5_obj11.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room5_obj12.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room5_obj13.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room5_obj14.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room5_obj15.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room5_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomActors/room5_act1.roomAct.inc.c"
-
-#include "assets/levelGroup/AntLand/roomActors/room5_act2.roomAct.inc.c"
-
-#include "assets/levelGroup/AntLand/roomActors/room5_act3.roomAct.inc.c"
-
-#include "assets/levelGroup/AntLand/roomActors/room5_act4.roomAct.inc.c"
-
-#include "assets/levelGroup/AntLand/roomActors/room5_actSTOP.roomAct.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room6_obj1.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room6_obj2.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room6_obj3.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room6_obj4.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room6_obj5.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room6_obj6.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room6_obj7.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room6_obj8.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room6_obj9.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room6_obj10.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room6_obj11.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room6_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomActors/room6_act1.roomAct.inc.c"
-
-#include "assets/levelGroup/AntLand/roomActors/room6_actSTOP.roomAct.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/roomUnk_obj1.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/roomUnk_obj2.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/roomUnk_obj3.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/roomUnk_obj4.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/roomUnk_obj5.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/roomUnk_obj6.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/roomUnk_obj7.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/roomUnk_obj8.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/roomUnk_obj9.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/roomUnk_obj10.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/roomUnk_obj11.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/roomUnk_obj12.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/roomUnk_obj13.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/roomUnk_obj14.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/roomUnk_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room7_obj1.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room7_obj2.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room7_obj3.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room7_obj4.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room7_obj5.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room7_obj6.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room7_obj7.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room7_obj8.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room7_obj9.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room7_obj10.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room7_obj11.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room7_obj12.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room7_obj13.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room7_obj14.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room7_obj15.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room7_obj16.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room7_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room8_obj1.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room8_obj2.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room8_obj3.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room8_obj4.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room8_obj5.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room8_obj6.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room8_obj7.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room8_obj8.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room8_obj9.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room8_obj10.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room8_obj11.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room8_obj12.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room8_obj13.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room8_obj14.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room8_obj15.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room8_obj16.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room8_obj17.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room8_obj18.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room8_obj19.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room8_obj20.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room8_obj21.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room8_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomActors/room8_act1.roomAct.inc.c"
-
-#include "assets/levelGroup/AntLand/roomActors/room8_act2.roomAct.inc.c"
-
-#include "assets/levelGroup/AntLand/roomActors/room8_act3.roomAct.inc.c"
-
-#include "assets/levelGroup/AntLand/roomActors/room8_act4.roomAct.inc.c"
-
-#include "assets/levelGroup/AntLand/roomActors/room8_act5.roomAct.inc.c"
-
-#include "assets/levelGroup/AntLand/roomActors/room8_act6.roomAct.inc.c"
-
-#include "assets/levelGroup/AntLand/roomActors/room8_act7.roomAct.inc.c"
-
-#include "assets/levelGroup/AntLand/roomActors/room8_act8.roomAct.inc.c"
-
-#include "assets/levelGroup/AntLand/roomActors/room8_act9.roomAct.inc.c"
-
-#include "assets/levelGroup/AntLand/roomActors/room8_act10.roomAct.inc.c"
-
-#include "assets/levelGroup/AntLand/roomActors/room8_act11.roomAct.inc.c"
-
-#include "assets/levelGroup/AntLand/roomActors/room8_act12.roomAct.inc.c"
-
-#include "assets/levelGroup/AntLand/roomActors/room8_act13.roomAct.inc.c"
-
-#include "assets/levelGroup/AntLand/roomActors/room8_act14.roomAct.inc.c"
-
-#include "assets/levelGroup/AntLand/roomActors/room8_act15.roomAct.inc.c"
-
-#include "assets/levelGroup/AntLand/roomActors/room8_act16.roomAct.inc.c"
-
-#include "assets/levelGroup/AntLand/roomActors/room8_act17.roomAct.inc.c"
-
-#include "assets/levelGroup/AntLand/roomActors/room8_act18.roomAct.inc.c"
-
-#include "assets/levelGroup/AntLand/roomActors/room8_actSTOP.roomAct.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room9_obj1.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room9_obj2.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room9_obj3.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room9_obj4.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room9_obj5.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room9_obj6.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room9_obj7.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room9_obj8.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room9_obj9.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room9_obj10.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room9_obj11.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room9_obj12.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room9_obj13.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room9_obj14.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room9_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomActors/room9_act1.roomAct.inc.c"
-
-#include "assets/levelGroup/AntLand/roomActors/room9_act2.roomAct.inc.c"
-
-#include "assets/levelGroup/AntLand/roomActors/room9_act3.roomAct.inc.c"
-
-#include "assets/levelGroup/AntLand/roomActors/room9_act4.roomAct.inc.c"
-
-#include "assets/levelGroup/AntLand/roomActors/room9_act5.roomAct.inc.c"
-
-#include "assets/levelGroup/AntLand/roomActors/room9_act6.roomAct.inc.c"
-
-#include "assets/levelGroup/AntLand/roomActors/room9_act7.roomAct.inc.c"
-
-#include "assets/levelGroup/AntLand/roomActors/room9_act8.roomAct.inc.c"
-
-#include "assets/levelGroup/AntLand/roomActors/room9_actSTOP.roomAct.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room10_obj1.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room10_obj2.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room10_obj3.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room10_obj4.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room10_obj5.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room10_obj6.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room10_obj7.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room10_obj8.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room10_obj9.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room10_obj10.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room10_obj11.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room10_obj12.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room10_obj13.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room10_obj14.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room10_obj15.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room10_obj16.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room10_obj17.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room10_obj18.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room10_obj19.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room10_obj20.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room10_obj21.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room10_obj22.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room10_obj23.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room10_obj24.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room10_obj25.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room10_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomActors/room10_act1.roomAct.inc.c"
-
-#include "assets/levelGroup/AntLand/roomActors/room10_actSTOP.roomAct.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room11_obj1.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room11_obj2.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room11_obj3.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room11_obj4.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room11_obj5.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room11_obj6.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room11_obj7.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room11_obj8.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room11_obj9.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room11_obj10.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room11_obj11.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room11_obj12.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room11_obj13.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room11_obj14.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room11_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room12_obj1.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room12_obj2.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room12_obj3.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room12_obj4.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room12_obj5.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room12_obj6.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room12_obj7.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room12_obj8.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room12_obj9.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room12_obj10.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room12_obj11.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room12_obj12.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room12_obj13.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room12_obj14.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room12_obj15.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room12_obj16.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room12_obj17.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room12_obj18.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room12_obj19.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room12_obj20.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room12_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomActors/room12_act1.roomAct.inc.c"
-
-#include "assets/levelGroup/AntLand/roomActors/room12_actSTOP.roomAct.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room13_obj1.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room13_obj2.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room13_obj3.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room13_obj4.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room13_obj5.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room13_obj6.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room13_obj7.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room13_obj8.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room13_obj9.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room13_obj10.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room13_obj11.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room13_obj12.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room13_obj13.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room13_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomActors/room13_act1.roomAct.inc.c"
-
-#include "assets/levelGroup/AntLand/roomActors/room13_act2.roomAct.inc.c"
-
-#include "assets/levelGroup/AntLand/roomActors/room13_act3.roomAct.inc.c"
-
-#include "assets/levelGroup/AntLand/roomActors/room13_act4.roomAct.inc.c"
-
-#include "assets/levelGroup/AntLand/roomActors/room13_act5.roomAct.inc.c"
-
-#include "assets/levelGroup/AntLand/roomActors/room13_act6.roomAct.inc.c"
-
-#include "assets/levelGroup/AntLand/roomActors/room13_act7.roomAct.inc.c"
-
-#include "assets/levelGroup/AntLand/roomActors/room13_actSTOP.roomAct.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room14_obj1.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room14_obj2.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room14_obj3.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room14_obj4.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room14_obj5.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room14_obj6.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room14_obj7.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room14_obj8.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room14_obj9.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room14_obj10.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room14_obj11.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room14_obj12.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room14_obj13.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room14_obj14.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room14_obj15.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room14_obj16.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room14_obj17.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room14_obj18.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room14_obj19.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room14_obj20.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room14_obj21.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room14_obj22.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room14_obj23.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room14_obj24.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room14_obj25.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room14_obj26.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room14_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomActors/room14_act1.roomAct.inc.c"
-
-#include "assets/levelGroup/AntLand/roomActors/room14_act2.roomAct.inc.c"
-
-#include "assets/levelGroup/AntLand/roomActors/room14_act3.roomAct.inc.c"
-
-#include "assets/levelGroup/AntLand/roomActors/room14_act4.roomAct.inc.c"
-
-#include "assets/levelGroup/AntLand/roomActors/room14_act5.roomAct.inc.c"
-
-#include "assets/levelGroup/AntLand/roomActors/room14_act6.roomAct.inc.c"
-
-#include "assets/levelGroup/AntLand/roomActors/room14_act7.roomAct.inc.c"
-
-#include "assets/levelGroup/AntLand/roomActors/room14_act8.roomAct.inc.c"
-
-#include "assets/levelGroup/AntLand/roomActors/room14_act9.roomAct.inc.c"
-
-#include "assets/levelGroup/AntLand/roomActors/room14_act10.roomAct.inc.c"
-
-#include "assets/levelGroup/AntLand/roomActors/room14_act11.roomAct.inc.c"
-
-#include "assets/levelGroup/AntLand/roomActors/room14_actSTOP.roomAct.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room21_obj1.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room21_obj2.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room21_obj3.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room21_obj4.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room21_obj5.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room21_obj6.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room21_obj7.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room21_obj8.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room21_obj9.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room21_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room15_obj1.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room15_obj2.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room15_obj3.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room15_obj4.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room15_obj5.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room15_obj6.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room15_obj7.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room15_obj8.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room15_obj9.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room15_obj10.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room15_obj11.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room15_obj12.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room15_obj13.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room15_obj14.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room15_obj15.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room15_obj16.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room15_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/roomUnk3_obj1.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/roomUnk3_obj2.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/roomUnk3_obj3.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/roomUnk3_obj4.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/roomUnk3_obj5.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/roomUnk3_obj6.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/roomUnk3_obj7.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/roomUnk3_obj8.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/roomUnk3_obj9.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/roomUnk3_obj10.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/roomUnk3_obj11.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/roomUnk3_obj12.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/roomUnk3_obj13.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/roomUnk3_obj14.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/roomUnk3_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room16_obj1.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room16_obj2.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room16_obj3.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room16_obj4.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room16_obj5.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room16_obj6.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room16_obj7.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room16_obj8.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room16_obj9.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room16_obj10.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room16_obj11.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room16_obj12.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room16_obj13.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room16_obj14.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room16_obj15.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room16_obj16.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room16_obj17.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room16_obj18.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room16_obj19.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room16_obj20.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room16_obj21.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room16_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomActors/room16_act1.roomAct.inc.c"
-
-#include "assets/levelGroup/AntLand/roomActors/room16_act2.roomAct.inc.c"
-
-#include "assets/levelGroup/AntLand/roomActors/room16_actSTOP.roomAct.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room17_obj1.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room17_obj2.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room17_obj3.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room17_obj4.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room17_obj5.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room17_obj6.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room17_obj7.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room17_obj8.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room17_obj9.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room17_obj10.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room17_obj11.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room17_obj12.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room17_obj13.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room17_obj14.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room17_obj15.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room17_obj16.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room17_obj17.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room17_obj18.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room17_obj19.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room17_obj20.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room17_obj21.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room17_obj22.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room17_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomActors/room17_act1.roomAct.inc.c"
-
-#include "assets/levelGroup/AntLand/roomActors/room17_act2.roomAct.inc.c"
-
-#include "assets/levelGroup/AntLand/roomActors/room17_act3.roomAct.inc.c"
-
-#include "assets/levelGroup/AntLand/roomActors/room17_act4.roomAct.inc.c"
-
-#include "assets/levelGroup/AntLand/roomActors/room17_actSTOP.roomAct.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room18_obj1.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room18_obj2.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room18_obj3.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room18_obj4.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room18_obj5.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room18_obj6.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room18_obj7.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room18_obj8.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room18_obj9.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room18_obj10.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room18_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room19_obj1.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room19_obj2.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomObjects/room19_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/AntLand/roomActors/room19_act1.roomAct.inc.c"
-
-#include "assets/levelGroup/AntLand/roomActors/room19_actSTOP.roomAct.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteLib.sprLib.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room0_spr1.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room0_spr2.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room0_spr3.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room0_spr4.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room0_spr5.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room0_spr6.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room0_spr7.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room0_sprSTOP.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room1_spr1.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room1_spr2.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room1_spr3.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room1_spr4.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room1_spr5.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room1_spr6.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room1_spr7.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room1_spr8.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room1_spr9.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room1_spr10.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room1_spr11.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room1_spr12.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room1_spr13.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room1_spr14.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room1_spr15.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room1_spr16.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room1_spr17.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room1_spr18.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room1_sprSTOP.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room2_spr1.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room2_spr2.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room2_spr3.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room2_spr4.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room2_spr5.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room2_spr6.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room2_spr7.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room2_spr8.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room2_spr9.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room2_spr10.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room2_spr11.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room2_spr12.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room2_sprSTOP.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room3_spr1.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room3_spr2.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room3_spr3.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room3_spr4.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room3_spr5.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room3_spr6.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room3_spr7.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room3_spr8.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room3_spr9.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room3_spr10.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room3_spr11.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room3_spr12.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room3_spr13.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room3_spr14.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room3_spr15.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room3_spr16.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room3_spr17.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room3_spr18.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room3_spr19.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room3_spr20.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room3_spr21.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room3_spr22.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room3_spr23.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room3_spr24.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room3_sprSTOP.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room4_spr1.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room4_spr2.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room4_spr3.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room4_spr4.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room4_spr5.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room4_spr6.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room4_spr7.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room4_spr8.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room4_spr9.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room4_spr10.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room4_spr11.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room4_spr12.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room4_sprSTOP.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room5_spr1.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room5_spr2.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room5_spr3.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room5_spr4.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room5_spr5.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room5_spr6.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room5_spr7.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room5_spr8.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room5_spr9.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room5_spr10.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room5_spr11.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room5_spr12.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room5_spr13.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room5_spr14.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room5_spr15.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room5_spr16.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room5_sprSTOP.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room6_spr1.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room6_spr2.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room6_spr3.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room6_spr4.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room6_spr5.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room6_spr6.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room6_spr7.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room6_spr8.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room6_sprSTOP.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room8_spr1.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room8_spr2.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room8_spr3.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room8_spr4.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room8_spr5.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room8_spr6.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room8_spr7.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room8_spr8.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room8_spr9.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room8_spr10.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room8_spr11.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room8_spr12.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room8_spr13.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room8_spr14.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room8_spr15.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room8_spr16.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room8_spr17.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room8_spr18.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room8_spr19.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room8_spr20.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room8_spr21.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room8_spr22.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room8_spr23.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room8_spr24.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room8_sprSTOP.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room9_sprSTOP.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room10_spr1.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room10_spr2.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room10_spr3.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room10_spr4.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room10_spr5.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room10_spr6.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room10_spr7.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room10_spr8.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room10_spr9.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room10_spr10.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room10_spr11.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room10_spr12.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room10_spr13.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room10_spr14.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room10_spr15.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room10_spr16.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room10_sprSTOP.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room11_spr1.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room11_spr2.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room11_spr3.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room11_spr4.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room11_spr5.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room11_spr6.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room11_spr7.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room11_spr8.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room11_spr9.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room11_spr10.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room11_spr11.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room11_spr12.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room11_sprSTOP.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room12_spr1.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room12_spr2.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room12_spr3.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room12_spr4.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room12_spr5.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room12_spr6.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room12_spr7.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room12_spr8.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room12_spr9.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room12_spr10.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room12_spr11.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room12_spr12.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room12_spr13.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room12_spr14.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room12_spr15.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room12_spr16.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room12_sprSTOP.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room13_spr1.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room13_spr2.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room13_spr3.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room13_spr4.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room13_spr5.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room13_spr6.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room13_spr7.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room13_spr8.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room13_spr9.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room13_spr10.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room13_sprSTOP.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room14_spr1.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room14_spr2.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room14_spr3.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room14_spr4.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room14_spr5.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room14_spr6.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room14_spr7.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room14_spr8.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room14_spr9.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room14_spr10.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room14_spr11.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room14_spr12.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room14_spr13.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room14_spr14.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room14_spr15.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room14_spr16.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room14_spr17.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room14_spr18.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room14_spr19.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room14_spr20.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room14_spr21.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room14_spr22.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room14_spr23.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room14_spr24.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room14_spr25.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room14_spr26.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room14_spr27.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room14_spr28.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room14_spr29.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room14_spr30.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room14_sprSTOP.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room16_sprSTOP.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room17_spr1.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room17_spr2.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room17_spr3.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room17_spr4.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room17_spr5.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room17_spr6.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room17_spr7.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room17_spr8.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room17_spr9.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room17_spr10.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room17_spr11.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room17_spr12.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room17_spr13.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room17_spr14.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room17_spr15.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room17_spr16.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room17_spr17.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room17_spr18.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room17_spr19.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room17_spr20.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room17_sprSTOP.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room18_spr1.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room18_sprSTOP.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room20_spr1.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room20_spr2.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room20_spr3.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room20_spr4.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room20_spr5.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room20_spr6.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room20_spr7.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room20_spr8.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room20_spr9.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room20_spr10.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room20_spr11.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room20_spr12.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room20_spr13.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room20_spr14.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room20_spr15.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room20_spr16.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room20_spr17.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room20_spr18.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/spriteActors/room20_sprSTOP.sprite.inc.c"
-
-#include "assets/levelGroup/AntLand/collectables/room0_clct1.clct.inc.c"
-
-#include "assets/levelGroup/AntLand/collectables/room0_clct2.clct.inc.c"
-
-#include "assets/levelGroup/AntLand/collectables/room0_clctSTOP.clct.inc.c"
-
-#include "assets/levelGroup/AntLand/collectables/room1_clct1.clct.inc.c"
-
-#include "assets/levelGroup/AntLand/collectables/room1_clctSTOP.clct.inc.c"
-
-#include "assets/levelGroup/AntLand/collectables/room2_clctSTOP.clct.inc.c"
-
-#include "assets/levelGroup/AntLand/collectables/room3_clct1.clct.inc.c"
-
-#include "assets/levelGroup/AntLand/collectables/room3_clctSTOP.clct.inc.c"
-
-#include "assets/levelGroup/AntLand/collectables/room20_clct1.clct.inc.c"
-
-#include "assets/levelGroup/AntLand/collectables/room20_clct2.clct.inc.c"
-
-#include "assets/levelGroup/AntLand/collectables/room20_clct3.clct.inc.c"
-
-#include "assets/levelGroup/AntLand/collectables/room20_clct4.clct.inc.c"
-
-#include "assets/levelGroup/AntLand/collectables/room20_clct5.clct.inc.c"
-
-#include "assets/levelGroup/AntLand/collectables/room20_clct6.clct.inc.c"
-
-#include "assets/levelGroup/AntLand/collectables/room20_clctSTOP.clct.inc.c"
-
-#include "assets/levelGroup/AntLand/collectables/room5_clct1.clct.inc.c"
-
-#include "assets/levelGroup/AntLand/collectables/room5_clct2.clct.inc.c"
-
-#include "assets/levelGroup/AntLand/collectables/room5_clctSTOP.clct.inc.c"
-
-#include "assets/levelGroup/AntLand/collectables/room6_clct1.clct.inc.c"
-
-#include "assets/levelGroup/AntLand/collectables/room6_clct2.clct.inc.c"
-
-#include "assets/levelGroup/AntLand/collectables/room6_clct3.clct.inc.c"
-
-#include "assets/levelGroup/AntLand/collectables/room6_clctSTOP.clct.inc.c"
-
-#include "assets/levelGroup/AntLand/collectables/room8_clct1.clct.inc.c"
-
-#include "assets/levelGroup/AntLand/collectables/room8_clct2.clct.inc.c"
-
-#include "assets/levelGroup/AntLand/collectables/room8_clct3.clct.inc.c"
-
-#include "assets/levelGroup/AntLand/collectables/room8_clctSTOP.clct.inc.c"
-
-#include "assets/levelGroup/AntLand/collectables/room9_clct1.clct.inc.c"
-
-#include "assets/levelGroup/AntLand/collectables/room9_clct2.clct.inc.c"
-
-#include "assets/levelGroup/AntLand/collectables/room9_clctSTOP.clct.inc.c"
-
-#include "assets/levelGroup/AntLand/collectables/room10_clct1.clct.inc.c"
-
-#include "assets/levelGroup/AntLand/collectables/room10_clct2.clct.inc.c"
-
-#include "assets/levelGroup/AntLand/collectables/room10_clct3.clct.inc.c"
-
-#include "assets/levelGroup/AntLand/collectables/room10_clct4.clct.inc.c"
-
-#include "assets/levelGroup/AntLand/collectables/room10_clctSTOP.clct.inc.c"
-
-#include "assets/levelGroup/AntLand/collectables/room11_clct1.clct.inc.c"
-
-#include "assets/levelGroup/AntLand/collectables/room11_clct2.clct.inc.c"
-
-#include "assets/levelGroup/AntLand/collectables/room11_clctSTOP.clct.inc.c"
-
-#include "assets/levelGroup/AntLand/collectables/room12_clct1.clct.inc.c"
-
-#include "assets/levelGroup/AntLand/collectables/room12_clct2.clct.inc.c"
-
-#include "assets/levelGroup/AntLand/collectables/room12_clctSTOP.clct.inc.c"
-
-#include "assets/levelGroup/AntLand/collectables/roomUnk4_clct1.clct.inc.c"
-
-#include "assets/levelGroup/AntLand/collectables/roomUnk4_clct2.clct.inc.c"
-
-#include "assets/levelGroup/AntLand/collectables/roomUnk4_clctSTOP.clct.inc.c"
-
-#include "assets/levelGroup/AntLand/collectables/room21_clct1.clct.inc.c"
-
-#include "assets/levelGroup/AntLand/collectables/room21_clct2.clct.inc.c"
-
-#include "assets/levelGroup/AntLand/collectables/room21_clct3.clct.inc.c"
-
-#include "assets/levelGroup/AntLand/collectables/room21_clct4.clct.inc.c"
-
-#include "assets/levelGroup/AntLand/collectables/room21_clct5.clct.inc.c"
-
-#include "assets/levelGroup/AntLand/collectables/room21_clct6.clct.inc.c"
-
-#include "assets/levelGroup/AntLand/collectables/room21_clct7.clct.inc.c"
-
-#include "assets/levelGroup/AntLand/collectables/room21_clctSTOP.clct.inc.c"
-
-#include "assets/levelGroup/AntLand/collectables/room16_clct1.clct.inc.c"
-
-#include "assets/levelGroup/AntLand/collectables/room16_clct2.clct.inc.c"
-
-#include "assets/levelGroup/AntLand/collectables/room16_clct3.clct.inc.c"
-
-#include "assets/levelGroup/AntLand/collectables/room16_clct4.clct.inc.c"
-
-#include "assets/levelGroup/AntLand/collectables/room16_clctSTOP.clct.inc.c"
-
-#include "assets/levelGroup/AntLand/collectables/room17_clct1.clct.inc.c"
-
-#include "assets/levelGroup/AntLand/collectables/room17_clct2.clct.inc.c"
-
-#include "assets/levelGroup/AntLand/collectables/room17_clct3.clct.inc.c"
-
-#include "assets/levelGroup/AntLand/collectables/room17_clctSTOP.clct.inc.c"
-
-#include "assets/levelGroup/AntLand/collectables/room18_clct1.clct.inc.c"
-
-#include "assets/levelGroup/AntLand/collectables/room18_clct2.clct.inc.c"
-
-#include "assets/levelGroup/AntLand/collectables/room18_clct3.clct.inc.c"
-
-#include "assets/levelGroup/AntLand/collectables/room18_clctSTOP.clct.inc.c"
-
-#include "assets/levelGroup/AntLand/rooms/room0.rmSet.inc.c"
-
-#include "assets/levelGroup/AntLand/rooms/room1.rmSet.inc.c"
-
-#include "assets/levelGroup/AntLand/rooms/room2.rmSet.inc.c"
-
-#include "assets/levelGroup/AntLand/rooms/room3.rmSet.inc.c"
-
-#include "assets/levelGroup/AntLand/rooms/room4.rmSet.inc.c"
-
-#include "assets/levelGroup/AntLand/rooms/room5.rmSet.inc.c"
-
-#include "assets/levelGroup/AntLand/rooms/room6.rmSet.inc.c"
-
-#include "assets/levelGroup/AntLand/rooms/room7.rmSet.inc.c"
-
-#include "assets/levelGroup/AntLand/rooms/room8.rmSet.inc.c"
-
-#include "assets/levelGroup/AntLand/rooms/room9.rmSet.inc.c"
-
-#include "assets/levelGroup/AntLand/rooms/room10.rmSet.inc.c"
-
-#include "assets/levelGroup/AntLand/rooms/room11.rmSet.inc.c"
-
-#include "assets/levelGroup/AntLand/rooms/room12.rmSet.inc.c"
-
-#include "assets/levelGroup/AntLand/rooms/room13.rmSet.inc.c"
-
-#include "assets/levelGroup/AntLand/rooms/room14.rmSet.inc.c"
-
-#include "assets/levelGroup/AntLand/rooms/room15.rmSet.inc.c"
-
-#include "assets/levelGroup/AntLand/rooms/room16.rmSet.inc.c"
-
-#include "assets/levelGroup/AntLand/rooms/room17.rmSet.inc.c"
-
-#include "assets/levelGroup/AntLand/rooms/room18.rmSet.inc.c"
-
-#include "assets/levelGroup/AntLand/rooms/room19.rmSet.inc.c"
-
-#include "assets/levelGroup/AntLand/rooms/room20.rmSet.inc.c"
-
-#include "assets/levelGroup/AntLand/rooms/room21.rmSet.inc.c"
-
-#include "assets/levelGroup/AntLand/rooms/roomSTOP.rmSet.inc.c"
-
-#include "assets/levelGroup/AntLand/map.lvmM.inc.c"
-
-#include "assets/levelGroup/AntLand/map.lvmH.inc.c"
-
-#include "assets/levelGroup/AntLand/nullOWRoom.rmSet.inc.c"
-
-#include "assets/levelGroup/AntLand/scope.lvlScope.inc.c"
-
-#include "assets/levelGroup/AntLand/header.lvlHdr.inc.c"
-
+enum AntLand_Models {
+    G_FALLBACK_CUBE_MODEL = 0,
+    G_EXIT_SHADOW_SOUTH_MODEL = 1,
+    G_EXIT_SHADOW_NORTH_MODEL = 2,
+    G_EXIT_SHADOW_EAST_MODEL = 3,
+    G_EXIT_SHADOW_WEST_MODEL = 4,
+    G_BL_EXIT_MODEL = 5,
+    G_SANDPIT_MODEL = 6,
+    G_BOSS_BRIDGE_MODEL = 7,
+    G_POLE_MODEL = 8,
+    G_BL_DOOR_MODEL = 9,
+    G_SPIN_DOOR_MODEL = 10,
+    G_BL_LAVA_FLOOR_MODEL = 11,
+    G_BL_LAVA_MODEL = 12,
+    G_BL_LAVA2_MODEL = 13,
+    G_BL_LAVA3_MODEL = 14,
+    G_BL_LAVA4_MODEL = 15,
+    G_BL_LAVA5_MODEL = 16,
+    G_BL_LAVA6_MODEL = 17,
+    G_BL_LAVA7_MODEL = 18,
+    G_BL_LAVA8_MODEL = 19,
+    G_BL_DESTRUCTABLE_TOP_MODEL = 20,
+    G_BL_METAL_BRIDGE_MODEL = 21,
+    G_KL_EXIT_MODEL = 22,
+    G_KL_DOOR_MODEL = 23,
+    G_DC_EXIT_MODEL = 24,
+    G_TALL_EXIT_SHADOW1_MODEL = 25,
+    G_TALL_EXIT_SHADOW2_MODEL = 26,
+    G_GC_EXIT1_MODEL = 27,
+    G_GC_EXIT2_MODEL = 28,
+    G_TRAINING_ROOM_LIGHT_MODEL = 29,
+    G_JL_CAVE_EXIT1_MODEL = 30,
+    G_JL_CAVE_EXIT2_MODEL = 31,
+    G_JL_CAVE_EXIT3_MODEL = 32,
+    G_JL_CAVE_EXIT4_MODEL = 33,
+    G_JL_OUTSIDE_ENTRANCE_MODEL = 34,
+    G_JL_FX_CAM_PILLAR_MODEL = 35,
+    G_JL_CAVE_DOOR_MODEL = 36,
+    AL_EXIT2_MODEL = 37,
+    AL_EXIT3_MODEL = 38,
+    AL_EXIT4_MODEL = 39,
+    AL_ROOM0_MODEL = 40,
+    AL_ROOM1_MODEL = 41,
+    AL_ROOM2_MODEL = 42,
+    AL_ROOM14_MODEL = 43,
+    AL_ROOM4_MODEL = 44,
+    AL_ROOM5_MODEL = 45,
+    AL_ROOM6_MODEL = 46,
+    AL_ROOM7_MODEL = 47,
+    AL_ROOM8_MODEL = 48,
+    AL_ROOM9_MODEL = 49,
+    AL_ROOM10_MODEL = 50,
+    AL_ROOM11_MODEL = 51,
+    AL_ROOM12_MODEL = 52,
+    AL_ROOM13_MODEL = 53,
+    AL_ROOM3_MODEL = 54,
+    AL_ROOM17_MODEL = 55,
+    AL_ROOM15_MODEL = 56,
+    AL_ROOM18_MODEL = 57,
+    AL_ROOM16_MODEL = 58,
+    AL_ROOM20_MODEL = 59,
+    AL_ROOM21_MODEL = 60,
+    AL_ROOM4_PLATFORM_MODEL = 61,
+    AL_ROOM4_FLOOR_MODEL = 62,
+    AL_ROOM6_FLOOR_MODEL = 63,
+    AL_ROOM8_FLOOR_MODEL = 64,
+    AL_ROOM17_FLOOR_MODEL = 65,
+    AL_ROOM10_FLOOR_MODEL = 66,
+    AL_ROOM10_PLATFORM1_MODEL = 67,
+    AL_ROOM10_PLATFORM2_MODEL = 68,
+    AL_ROOM10_PLATFORM3_MODEL = 69,
+    AL_ROOM5_PLATFORM_MODEL = 70,
+    AL_ROOM13_PLATFORM_MODEL = 71,
+    AL_ROOM21_PLATFORM1_MODEL = 72,
+    AL_ROOM21_PLATFORM2_MODEL = 73,
+    AL_ROOM12_FLOOR1_MODEL = 74,
+    AL_ROOM12_FLOOR2_MODEL = 75,
+    AL_ROOM11_FLOOR1_MODEL = 76,
+    AL_ROOM11_FLOOR2_MODEL = 77,
+    AL_ROOM4_GRATE_MODEL = 78,
+    AL_ROOM7_FLOOR_MODEL = 79,
+    AL_ROOM7_CEILING_MODEL = 80,
+    AL_ROOM15_FLOOR_MODEL = 81,
+    AL_ROOM15_CEILING_MODEL = 82,
+    AL_ROOM8_FLOOR1_MODEL = 83,
+    AL_ROOM8_FLOOR2_MODEL = 84,
+    AL_ROOM0DOOR_PILLAR1_MODEL = 85,
+    AL_ROOM0DOOR_PILLAR2_MODEL = 86,
+    AL_ROOM0DOOR_TOP_MODEL = 87,
+    AL_ROOM0DOOR_TORCHSTAND1_MODEL = 88,
+    AL_ROOM0DOOR_TORCHSTAND2_MODEL = 89,
+    AL_ROOM16_FLOOR1_MODEL = 90,
+    AL_ROOM16_FLOOR2_MODEL = 91,
+    AL_ROOM16_GRATE_MODEL = 92,
+    AL_TILT_PLATFORM_MODEL = 93,
+    AL_PLATFORM_MODEL = 94,
+    AL_MOVING_PLATFORM_MODEL = 95,
+    AL_QUAD_MODEL = 96,
+    AL_FIXED_CAM_PILLAR_MODEL = 97,
+    AL_POLE_MODEL = 98
+};
+
+StageModel AntLand_stageModels[99] = {
+    {&Global_fallbackCube_Gfx[0], &Global_fallbackCube_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_exitShadowSouth_Gfx[0], &Global_exitShadowSouth_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_exitShadowNorth_Gfx[0], &Global_exitShadowNorth_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_exitShadowEast_Gfx[0], &Global_exitShadowEast_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_exitShadowWest_Gfx[0], &Global_exitShadowWest_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_ALBLExit_Gfx[0], &Global_ALBLExit_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_sandPit_Gfx[0], &Global_sandPit_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_BossBridge_Gfx[0], &Global_BossBridge_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_ALPole_Gfx[0], &Global_ALPole_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_ALBLDoor_Gfx[0], &Global_ALBLDoor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_ALSpinDoor_Gfx[0], &Global_ALSpinDoor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_BLLavaFloor_Gfx[0], &Global_BLLavaFloor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_BLLava_Gfx[0], &Global_BLLava_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_BLLava2_Gfx[0], &Global_BLLava2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_BLLava3_Gfx[0], &Global_BLLava3_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_BLLava4_Gfx[0], &Global_BLLava4_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_BLLava5_Gfx[0], &Global_BLLava5_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_BLLava6_Gfx[0], &Global_BLLava6_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_BLLava7_Gfx[0], &Global_BLLava7_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_BLLava8_Gfx[0], &Global_BLLava8_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_BLDestructableTop_Gfx[0], &Global_BLDestructableTop_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_BLMetalBridge_Gfx[0], &Global_BLMetalBridge_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_KLExit_Gfx[0], &Global_KLExit_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_KLDoor_Gfx[0], &Global_KLDoor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_DCExit_Gfx[0], &Global_DCExit_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_TallExitShadow1_Gfx[0], &Global_TallExitShadow1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_TallExitShadow2_Gfx[0], &Global_TallExitShadow2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_GCExit1_Gfx[0], &Global_GCExit1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_GCExit2_Gfx[0], &Global_GCExit2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_trainingRoomLight_Gfx[0], &Global_trainingRoomLight_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_JLCaveExit1_Gfx[0], &Global_JLCaveExit1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_JLCaveExit2_Gfx[0], &Global_JLCaveExit2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_JLCaveExit3_Gfx[0], &Global_JLCaveExit3_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_JLCaveExit4_Gfx[0], &Global_JLCaveExit4_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_JLOutsideEntrance_Gfx[0], &Global_JLOutsideEntrance_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_JLFxCamPillar_Gfx[0], &Global_JLFxCamPillar_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_JLCaveDoor_Gfx[0], &Global_JLCaveDoor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&AntLand_exit2_Gfx[0], &AntLand_exit2_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&AntLand_exit3_Gfx[0], &AntLand_exit3_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&AntLand_exit4_Gfx[0], &AntLand_exit4_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&AntLand_room0_Gfx[0], &AntLand_room0_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&AntLand_room1_Gfx[0], &AntLand_room1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&AntLand_room2_Gfx[0], &AntLand_room2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&AntLand_room14_Gfx[0], &AntLand_room14_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&AntLand_room4_Gfx[0], &AntLand_room4_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&AntLand_room5_Gfx[0], &AntLand_room5_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&AntLand_room6_Gfx[0], &AntLand_room6_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&AntLand_room7_Gfx[0], &AntLand_room7_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&AntLand_room8_Gfx[0], &AntLand_room8_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&AntLand_room9_Gfx[0], &AntLand_room9_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&AntLand_room10_Gfx[0], &AntLand_room10_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&AntLand_room11_Gfx[0], &AntLand_room11_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&AntLand_room12_Gfx[0], &AntLand_room12_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&AntLand_room13_Gfx[0], &AntLand_room13_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&AntLand_room3_Gfx[0], &AntLand_room3_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&AntLand_room17_Gfx[0], &AntLand_room17_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&AntLand_room15_Gfx[0], &AntLand_room15_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&AntLand_room18_Gfx[0], &AntLand_room18_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&AntLand_room16_Gfx[0], &AntLand_room16_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&AntLand_room20_Gfx[0], &AntLand_room20_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&AntLand_room21_Gfx[0], &AntLand_room21_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&AntLand_room4Platform_Gfx[0], &AntLand_room4Platform_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&AntLand_room4Floor_Gfx[0], &AntLand_room4Floor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&AntLand_room6Floor_Gfx[0], &AntLand_room6Floor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&AntLand_room8Floor_Gfx[0], &AntLand_room8Floor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&AntLand_room17Floor_Gfx[0], &AntLand_room17Floor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&AntLand_room10Floor_Gfx[0], &AntLand_room10Floor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&AntLand_room10Platform1_Gfx[0], &AntLand_room10Platform1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&AntLand_room10Platform2_Gfx[0], &AntLand_room10Platform2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&AntLand_room10Platform3_Gfx[0], &AntLand_room10Platform3_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&AntLand_room5Platform_Gfx[0], &AntLand_room5Platform_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&AntLand_room13Platform_Gfx[0], &AntLand_room13Platform_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&AntLand_room21Platform1_Gfx[0], &AntLand_room21Platform1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&AntLand_room21Platform2_Gfx[0], &AntLand_room21Platform2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&AntLand_room12Floor1_Gfx[0], &AntLand_room12Floor1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&AntLand_room12Floor2_Gfx[0], &AntLand_room12Floor2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&AntLand_room11Floor1_Gfx[0], &AntLand_room11Floor1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&AntLand_room11Floor2_Gfx[0], &AntLand_room11Floor2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&AntLand_room4Grate_Gfx[0], &AntLand_room4Grate_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&AntLand_room7Floor_Gfx[0], &AntLand_room7Floor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&AntLand_room7Ceiling_Gfx[0], &AntLand_room7Ceiling_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&AntLand_room15Floor_Gfx[0], &AntLand_room15Floor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&AntLand_room15Ceiling_Gfx[0], &AntLand_room15Ceiling_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&AntLand_room8Floor1_Gfx[0], &AntLand_room8Floor1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&AntLand_room8Floor2_Gfx[0], &AntLand_room8Floor2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&AntLand_room0doorPillar1_Gfx[0], &AntLand_room0doorPillar1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&AntLand_room0doorPillar2_Gfx[0], &AntLand_room0doorPillar2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&AntLand_room0doorTop_Gfx[0], &AntLand_room0doorTop_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&AntLand_room0doorTorchStand1_Gfx[0], &AntLand_room0doorTorchStand1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&AntLand_room0doorTorchStand2_Gfx[0], &AntLand_room0doorTorchStand2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&AntLand_room16Floor1_Gfx[0], &AntLand_room16Floor1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&AntLand_room16Floor2_Gfx[0], &AntLand_room16Floor2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&AntLand_room16Grate_Gfx[0], &AntLand_room16Grate_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&AntLand_tiltPlatform_Gfx[0], &AntLand_tiltPlatform_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&AntLand_platform_Gfx[0], &AntLand_platform_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&AntLand_movingPlatform_Gfx[0], &AntLand_movingPlatform_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&AntLand_quad_Gfx[0], &AntLand_quad_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&AntLand_fixedCamPillar_Gfx[0], &AntLand_fixedCamPillar_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {&Global_pole_Gfx[0], &Global_pole_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+};
+
+unsigned char AntLand_rabobjects_Bin[] = { 
+    0x00, 0x00, 0x00, 0x00, 0x42, 0xC8, 0x00, 0x00, 0x42, 0xC8, 0x00, 0x00, 0x42, 0xC8, 0x00, 0x00, 0x02, 0x00, 0x6E, 0x1C, 0x00, 0x00, 0x00, 0x00, 0x42, 0xC8, 0x00, 0x00, 0x42, 0xC8, 0x00, 0x00, 0x42, 0xC8, 0x00, 0x00, 0x02, 0x00, 0x6E, 0x1C
+};
+
+RoomObject AntLand_room0_objects[12] = {
+    {{1200.0,0.0,0.0},{1.0,1.0,1.0},0,0,7,0,1400.0,1000.0,-1000.0,0.0,0,90,0,1000,0,0,AL_EXIT3_MODEL,-1,-1,-1,NULL,NULL,0,0,3,4,4,0,-1,0,0,},
+    {{1200.0,0.0,0.0},{1.0,1.0,1.0},0,0,7,0,1400.0,1000.0,-1000.0,0.0,0,90,0,1000,0,0,G_EXIT_SHADOW_NORTH_MODEL,-1,-1,-1,NULL,NULL,0,0,3,4,4,0,-1,0,0,},
+    {{0.0,0.0,0.0},{1.0,1.0,1.0},0,0,7,0,1400.0,1000.0,-1000.0,0.0,0,90,0,1000,0,0,AL_ROOM0DOOR_PILLAR1_MODEL,-1,-1,-1,NULL,NULL,0,0,6,4,4,0,-1,0,0,},
+    {{0.0,0.0,0.0},{1.0,1.0,1.0},0,0,7,0,1400.0,1000.0,-1000.0,0.0,0,90,0,1000,0,0,AL_ROOM0DOOR_PILLAR2_MODEL,-1,-1,-1,NULL,NULL,0,0,6,4,4,0,-1,0,0,},
+    {{0.0,0.0,0.0},{1.0,1.0,1.0},0,0,7,0,1400.0,1000.0,-1000.0,0.0,0,90,0,1000,0,0,AL_ROOM0DOOR_TOP_MODEL,-1,-1,-1,NULL,NULL,0,0,6,4,4,0,-1,0,0,},
+    {{0.0,0.0,0.0},{1.0,1.0,1.0},0,0,7,0,1400.0,1000.0,-1000.0,0.0,0,90,0,1000,0,0,AL_ROOM0DOOR_TORCHSTAND1_MODEL,-1,-1,-1,NULL,NULL,0,0,6,4,4,0,-1,0,0,},
+    {{0.0,0.0,0.0},{1.0,1.0,1.0},0,0,7,0,1400.0,1000.0,-1000.0,0.0,0,90,0,1000,0,0,AL_ROOM0DOOR_TORCHSTAND2_MODEL,-1,-1,-1,NULL,NULL,0,0,6,4,4,0,-1,0,0,},
+    {{0.0,0.0,0.0},{1.0,1.0,1.0},1,DEGREES_TO_RADIANS_2PI(0.02741556724295125),7,0,1400.0,1000.0,-1000.0,0.0,0,90,0,1000,0,0,AL_ROOM0_MODEL,-1,-1,-1,NULL,NULL,0,0,3,4,4,0,-1,0,0,},
+    {{1200.0,0.0,0.0},{1.0,1.0,1.0},0,0,256,0,400.0,400.0,0.0,0.0,2,1,0,0,0,0,0,-1,-1,-1,NULL,NULL,0,0,2,-1,1,0,-1,0,0,},
+    {{1200.0,0.0,0.0},{4.0,4.0,4.0},0,0,7,0,1400.0,1000.0,-1000.0,0.0,0,90,0,1000,0,0,0,-1,-1,-1,NULL,NULL,0,0,1,0,0,0,-1,0,0,},
+    {{-900.0,0.0,-900.0},{1.5,1.5,1.5},0,0,7,0,0.0,0.0,0.0,0.0,0,0,0,0,0,0,AL_FIXED_CAM_PILLAR_MODEL,-1,-1,-1,NULL,NULL,0,0,34,4,4,0,-1,0,0,},
+    {{0.0,0.0,0.0},{0.0,0.0,0.0},0,0,0,0,0.0,0.0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,NULL,NULL,0,0,0,0,0,0,0,0,0,}
+};
+
+RoomActor AntLand_room0_actors[1] = {
+    {0, {0.0,0.0,0.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0} // Null actor
+};
+
+RoomObject AntLand_room1_objects[11] = {
+    {{-1200.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, AL_EXIT2_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{-1200.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, G_EXIT_SHADOW_SOUTH_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{-1200.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 256, 0, 400.0, 400.0, 0.0, 0.0, 4, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 2, -1, 1, 0, -1, 0, 0},
+    {{-1200.0,0.0,0.0}, {4.0,4.0,4.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+    {{1200.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, AL_EXIT3_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{1200.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, G_EXIT_SHADOW_NORTH_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{1200.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 256, 0, 400.0, 400.0, 0.0, 0.0, 2, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 2, -1, 1, 0, -1, 0, 0},
+    {{1200.0,0.0,0.0}, {4.0,4.0,4.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, AL_ROOM1_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{-900.0,0.0,-900.0}, {1.5,1.0,1.5}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, AL_FIXED_CAM_PILLAR_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 34, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, 0, 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomActor AntLand_room1_actors[4] = {
+    {GREY_ANT_SPAWNER, {-250.0,0.0,-1100.0}, 180.0, -1500.0, 1500.0, 0, 0.0, -1500.0, 1500.0, 1, -250.0, 1100.0, 0.0, 0.0, 0, 0, 0, 0, 1090519040, 1106247680, 0, 0},
+    {GREY_ANT_SPAWNER, {0.0,0.0,1100.0}, 180.0, -1500.0, 1500.0, 0, 0.0, -1500.0, 1500.0, 1, 0.0, -1100.0, 0.0, 0.0, 0, 0, 0, 0, 1092616192, 1108082688, 0, 0},
+    {GREY_ANT_SPAWNER, {250.0,0.0,-1100.0}, 180.0, -1500.0, 1500.0, 0, 0.0, -1500.0, 1500.0, 1, 250.0, 1100.0, 0.0, 0.0, 0, 0, 0, 0, 1090519040, 1106247680, 0, 0},
+    {0, {0.0,0.0,0.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0} // Null actor
+};
+
+RoomObject AntLand_room2_objects[11] = {
+    {{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, AL_ROOM2_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{-1200.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, AL_EXIT2_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{-1200.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, G_EXIT_SHADOW_SOUTH_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{-1200.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 256, 0, 400.0, 400.0, 0.0, 0.0, 4, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 2, -1, 1, 0, -1, 0, 0},
+    {{-1200.0,0.0,0.0}, {4.0,4.0,4.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+    {{1200.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, AL_EXIT3_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{1200.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, G_EXIT_SHADOW_NORTH_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{1200.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 256, 0, 400.0, 400.0, 0.0, 0.0, 2, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 2, -1, 1, 0, -1, 0, 0},
+    {{1200.0,0.0,0.0}, {4.0,4.0,4.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+    {{-900.0,0.0,-900.0}, {1.5,1.5,1.5}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, AL_FIXED_CAM_PILLAR_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 34, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, 0, 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomActor AntLand_room2_actors[5] = {
+    {RED_ANT_SPAWNER, {-200.0,0.0,-400.0}, 100.0, -950.0, 950.0, -1007026176, 0.0, -950.0, 950.0, 0, 18.0, 0.800000011920929, 4.0, 360000.0, 1130430464, 0, 0, 0, 1123024896, 1090519040, 0, 0},
+    {RED_ANT_SPAWNER, {-200.0,0.0,400.0}, 100.0, -950.0, 950.0, -1007026176, 0.0, -950.0, 950.0, 0, 18.0, 0.800000011920929, 4.0, 360000.0, 1124532224, 0, 0, 0, 1123024896, 1090519040, 0, 0},
+    {RED_ANT_SPAWNER, {300.0,0.0,-300.0}, 100.0, -950.0, 950.0, -1007026176, 0.0, -950.0, 950.0, 0, 18.0, 0.800000011920929, 4.0, 360000.0, 1124532224, 0, 0, 0, 1123024896, 1090519040, 0, 0},
+    {RED_ANT_SPAWNER, {300.0,0.0,300.0}, 100.0, -950.0, 950.0, -1007026176, 0.0, -950.0, 950.0, 0, 18.0, 0.800000011920929, 4.0, 360000.0, 1130430464, 0, 0, 0, 1123024896, 1090519040, 0, 0},
+    {0, {0.0,0.0,0.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0} // Null actor
+};
+
+RoomObject AntLand_room3_objects[16] = {
+    {{-1200.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, AL_EXIT2_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{-1200.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, G_EXIT_SHADOW_SOUTH_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{-1200.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 256, 0, 400.0, 400.0, 0.0, 0.0, 4, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 2, -1, 1, 0, -1, 0, 0},
+    {{-1200.0,0.0,0.0}, {4.0,4.0,4.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, AL_ROOM3_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{1200.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, AL_EXIT3_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{1200.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, G_EXIT_SHADOW_NORTH_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{1200.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 256, 0, 400.0, 400.0, 0.0, 0.0, 2, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 2, -1, 1, 0, -1, 0, 0},
+    {{1200.0,0.0,0.0}, {4.0,4.0,4.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+    {{0.0,0.0,1200.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, AL_EXIT4_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,1200.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, G_EXIT_SHADOW_EAST_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,1200.0}, {1.0,1.0,1.0}, 0, 0, 256, 0, 400.0, 400.0, 0.0, 0.0, 3, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 2, -1, 1, 0, -1, 0, 0},
+    {{0.0,0.0,1200.0}, {4.0,4.0,4.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+    {{0.0,0.0,1050.0}, {1.0,1.0,0.20000000298023224}, 0, DEGREES_TO_RADIANS_2PI(0.02741556724295125), 7, 11, 0.0, 400.0, 1050.0, 0.0, 1, 40, -1, 40, 0, 0, G_BL_DOOR_MODEL, -1, -1, 14, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{-900.0,0.0,-900.0}, {1.5,1.5,1.5}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, AL_FIXED_CAM_PILLAR_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 34, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, 0, 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomActor AntLand_room3_actors[8] = {
+    {GREEN_ANT, {0.0,0.0,600.0}, 100.0, -900.0, 900.0, 0, 100.0, -900.0, 900.0, 0, 30.0, 15.0, 650.0, 0.0, 0, 0, 0, 0, 1109131264, 0, 0, 0},
+    {GREEN_ANT, {500.0,0.0,-400.0}, 100.0, -900.0, 900.0, 0, 1000.0, -900.0, 900.0, 0, 30.0, 15.0, 650.0, 0.0, 0, 0, 0, 0, 1109131264, 0, 0, 0},
+    {GREEN_ANT, {-400.0,0.0,-400.0}, 100.0, -900.0, 900.0, 0, 800.0, -900.0, 900.0, 0, 30.0, 15.0, 650.0, 0.0, 0, 0, 0, 0, 1109131264, 0, 0, 0},
+    {GREY_ANT_SPAWNER, {700.0,0.0,-1100.0}, 180.0, -900.0, 900.0, 0, 100.0, -900.0, 900.0, 1, 700.0, 1100.0, 700.0, 1100.0, 1143930880, 1149861888, 0, 0, 1092616192, 1123024896, 0, 0},
+    {GREY_ANT_SPAWNER, {-600.0,0.0,1100.0}, 180.0, -1000.0, 1000.0, 0, 100.0, -1000.0, 1000.0, 1, -600.0, -1100.0, -600.0, -1100.0, -1005191168, -997621760, 0, 0, 1092616192, 1123024896, 0, 0},
+    {GREY_ANT_SPAWNER, {-1100.0,0.0,800.0}, 90.0, -1000.0, 1000.0, 0, 100.0, -1000.0, 1000.0, 1, 1100.0, 800.0, 1100.0, 800.0, 1149861888, 1145569280, 0, 0, 1092616192, 1123024896, 0, 0},
+    {GREY_ANT_SPAWNER, {1100.0,0.0,400.0}, 90.0, -1000.0, 1000.0, 0, 100.0, -1000.0, 1000.0, 1, -1100.0, 400.0, -1100.0, 400.0, -997621760, 1137180672, 0, 0, 1092616192, 1123024896, 0, 0},
+    {ACTOR_NULL, {0.0,0.0,0.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+PlatformKeyframe AntLand_room20_platform1_keyframes[2] = {
+    {{-800.0, 100.0, 800.0}, 0, 240, 0, 0, 0, 0},
+    {{-800.0, 2000.0, 800.0}, 0, 120, 0, 0, 0, 0}
+};
+
+PlatformKeyframe AntLand_room20_platform2_keyframes[3] = {
+    {{-800.0, 2000.0, 0.0}, 0, 240, 0, 0, 0, 0},
+    {{-800.0, 1000.0, -800.0}, 0, 180, 0, 0, 0, 0},
+    {{-800.0, 1000.0, -800.0}, 0, 180, 0, 0, 0, 0}
+};
+
+PlatformKeyframe AntLand_room20_platform3_keyframes[2] = {
+    {{-400.0, 1000.0, -800.0}, 0, 180, 0, 0, 0, 0},
+    {{-400.0, 2500.0, -800.0}, 0, 180, 0, 0, 0, 0}
+};
+
+RoomObject AntLand_room20_objects[19] = {
+    {{-800.0,100.0,800.0}, {1.0,1.0,1.0}, 0, 0, 7, 10, 0.0, 0.0, 0.0, 0.0, AntLand_room20_platform1_keyframes, 2, 0, 0, 0, 0, AL_MOVING_PLATFORM_MODEL, -1, -1, -1, NULL, &func_800D90B8, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{-800.0,2000.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 10, 0.0, 0.0, 0.0, 0.0, AntLand_room20_platform2_keyframes, 3, 0, 0, 0, 0, AL_MOVING_PLATFORM_MODEL, -1, -1, -1, NULL, &func_800D90B8, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{-400.0,1000.0,-800.0}, {1.0,1.0,1.0}, 0, 0, 7, 10, 0.0, 0.0, 0.0, 0.0, AntLand_room20_platform3_keyframes, 2, 0, 0, 0, 0, AL_MOVING_PLATFORM_MODEL, -1, -1, -1, NULL, &func_800D90B8, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{0.0,1500.0,800.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, AL_PLATFORM_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{0.0,2000.0,800.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, AL_POLE_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{-800.0,500.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, AL_PLATFORM_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{800.0,2000.0,-200.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, AL_POLE_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{800.0,1500.0,-200.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, AL_PLATFORM_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{0.0,2000.0,0.0}, {0.20000000298023224,1.0,0.20000000298023224}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, AL_PLATFORM_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{0.0,2500.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, AL_POLE_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{400.0,2000.0,800.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, AL_PLATFORM_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{-1200.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, AL_EXIT2_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{-1200.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, G_EXIT_SHADOW_SOUTH_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, AL_ROOM20_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{-1200.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 256, 0, 400.0, 400.0, 0.0, 0.0, 4, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 2, -1, 1, 0, -1, 0, 0},
+    {{-1200.0,0.0,0.0}, {4.0,4.0,4.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+    {{900.0,0.0,-900.0}, {1.5,1.5,1.5}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, AL_FIXED_CAM_PILLAR_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 34, 4, 4, 0, -1, 0, 0},
+    {{900.0,1500.0,-900.0}, {1.5,1.5,1.5}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, AL_FIXED_CAM_PILLAR_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 34, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, 0, 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomActor AntLand_room20_actors[2] = {
+    {GREY_ANT_SPAWNER, {810.0,0.0,1010.0}, 90.0, -1000.0, 1000.0, 0, 100.0, -1000.0, 1000.0, 1, -1110.0, -750.0, -1110.0, -750.0, -997539840, -1002733568, 0, 0, 1092616192, 1114636288, 0, 0},
+    {ACTOR_NULL, {0.0,0.0,0.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomObject AntLand_room4_objects[15] = {
+    {{0.0,0.0,-1200.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, G_BL_EXIT_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,-1200.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, G_EXIT_SHADOW_WEST_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,-1200.0}, {1.0,1.0,1.0}, 0, 0, 256, 0, 400.0, 400.0, 0.0, 0.0, 1, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 2, -1, 1, 0, -1, 0, 0},
+    {{0.0,0.0,-1200.0}, {4.0,4.0,4.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, AL_ROOM4_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{140.0,0.0,-140.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, AL_ROOM4_PLATFORM_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 0, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, AL_ROOM4_FLOOR_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, AL_ROOM4_GRATE_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{1200.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, AL_EXIT3_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{1200.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, G_EXIT_SHADOW_NORTH_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{1200.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 256, 0, 400.0, 400.0, 0.0, 0.0, 2, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 2, -1, 1, 0, -1, 0, 0},
+    {{1200.0,0.0,0.0}, {4.0,4.0,4.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+    {{0.0,-300.0,0.0}, {1.0,2.5,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, G_POLE_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 6, 4, 4, 0, -1, 1, 0},
+    {{0.0,-1500.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, AL_POLE_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 0, 0, 4, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, 0, 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomActor AntLand_room4_actors[2] = {
+    {YELLOW_ANT, {-400.0,0.0,400.0}, 45.0, 200.0, 500.0, 0, 0.0, 200.0, 500.0, 1, 300.0, 300.0, 30.0, 8.0, 1092616192, 0, 0, 0, 0, 0, 0, 0},
+    {ACTOR_NULL, {0.0,0.0,0.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+PlatformKeyframe AntLand_room5_platform_keyframes[6] = {
+    {{-1000.0, 100.0, -1000.0}, 0, 90, 0, 0, 0, 0},
+    {{-1000.0, 800.0, -1000.0}, 0, 90, 0, 0, 0, 0},
+    {{-300.0, 600.0, -300.0}, 0, 120, 0, 0, 0, 0},
+    {{1000.0, 600.0, 1000.0}, 0, 120, 0, 0, 0, 0},
+    {{400.0, 1000.0, 1000.0}, 0, 90, 0, 0, 0, 0},
+    {{0.0, 400.0, 1000.0}, 0, 150, 0, 0, 0, 0}
+};
+
+RoomObject AntLand_room5_objects[16] = {
+    {{-1000.0,100.0,-1000.0}, {1.0,1.0,1.0}, 0, 0, 7, 10, 0.0, 0.0, 0.0, 0.0, AntLand_room5_platform_keyframes, 6, 0, 0, 0, 0, AL_MOVING_PLATFORM_MODEL, -1, -1, -1, NULL, &func_800D90B8, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{200.0,0.0,-200.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, AL_ROOM0DOOR_TORCHSTAND2_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 6, 4, 4, 0, -1, 0, 0},
+    {{200.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, G_POLE_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 6, 4, 4, 0, -1, 1, 0},
+    {{-1400.0,600.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, AL_EXIT2_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{-1400.0,600.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, G_EXIT_SHADOW_SOUTH_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{-1400.0,600.0,0.0}, {1.0,1.0,1.0}, 0, 0, 256, 0, 400.0, 400.0, 0.0, 0.0, 4, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 2, -1, 1, 0, -1, 0, 0},
+    {{-1400.0,600.0,0.0}, {4.0,4.0,4.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {0.800000011920929,1.0,0.800000011920929}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, AL_ROOM5_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{300.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, AL_ROOM5_PLATFORM_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,1400.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, AL_EXIT4_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,1400.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, G_EXIT_SHADOW_EAST_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,1400.0}, {1.0,1.0,1.0}, 0, 0, 256, 0, 400.0, 400.0, 0.0, 0.0, 3, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 2, -1, 1, 0, -1, 0, 0},
+    {{0.0,0.0,1400.0}, {4.0,4.0,4.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+    {{0.0,0.0,1250.0}, {1.0,1.0,0.20000000298023224}, 0, DEGREES_TO_RADIANS_2PI(0.02741556724295125), 7, 11, 0.0, 400.0, 1250.0, 0.0, 1, 40, -1, 40, 0, 0, G_BL_DOOR_MODEL, -1, -1, 4, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,-1100.0}, {1.5,1.5,1.5}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, AL_FIXED_CAM_PILLAR_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 34, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, 0, 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomActor AntLand_room5_actors[5] = {
+    {YELLOW_ANT, {500.0,0.0,-300.0}, 270.0, -1500.0, 1500.0, 0, 0.0, -1500.0, 1500.0, 1, 200.0, 300.0, 30.0, 8.0, 1092616192, 0, 0, 0, 0, 0, 0, 0},
+    {YELLOW_ANT, {500.0,0.0,300.0}, 270.0, -1500.0, 1500.0, 0, 0.0, -1500.0, 1500.0, 1, 200.0, 300.0, 30.0, 8.0, 1092616192, 0, 0, 0, 0, 1065353216, 0, 0},
+    {GREY_ANT_SPAWNER, {-1300.0,0.0,1000.0}, 0.0, -10000.0, 10000.0, 0, 0.0, -10000.0, 10000.0, 1, 1300.0, 1000.0, 0.0, 0.0, 0, 0, 0, 0, 1090519040, 1125515264, 0, 0},
+    {GREY_ANT_SPAWNER, {-800.0,0.0,-1300.0}, 0.0, -10000.0, 10000.0, 0, 0.0, -10000.0, 10000.0, 1, 1300.0, 800.0, 0.0, 0.0, 0, 0, 0, 0, 1090519040, 1125515264, 0, 0},
+    {ACTOR_NULL, {0.0,0.0,0.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomObject AntLand_room6_objects[12] = {
+    {{0.0,0.0,-1700.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, G_BL_EXIT_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,-1700.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, G_EXIT_SHADOW_WEST_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,-1700.0}, {1.0,1.0,1.0}, 0, 0, 256, 0, 400.0, 400.0, 0.0, 0.0, 1, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 2, -1, 1, 0, -1, 0, 0},
+    {{0.0,0.0,-1700.0}, {4.0,4.0,4.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, AL_ROOM6_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, AL_ROOM6_FLOOR_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{-1700.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, AL_EXIT2_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{-1700.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, G_EXIT_SHADOW_SOUTH_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-1700.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 256, 0, 400.0, 400.0, 0.0, 0.0, 4, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 2, -1, 1, 0, -1, 0, 0},
+    {{-1700.0,0.0,0.0}, {4.0,4.0,4.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+    {{0.0,-1500.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, AL_POLE_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 0, 0, 4, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, 0, 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomActor AntLand_room6_actors[2] = {
+    {FALLING_GREY_ANT_SPAWNER, {-700.0,1000.0,1400.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 1, 750.0, 1400.0, 1400.0, 0.0, 1150271488, -998031360, 1219479552, 0, 1092616192, 1114636288, 0, 0},
+    {ACTOR_NULL, {0.0,0.0,0.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomObject AntLand_roomUnk_objects[15] = {
+    {{1200.0,-20.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, AL_EXIT3_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{1200.0,-20.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, G_EXIT_SHADOW_NORTH_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{1200.0,-20.0,0.0}, {1.0,1.0,1.0}, 0, 0, 256, 0, 400.0, 400.0, 0.0, 0.0, 2, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 2, -1, 1, 0, -1, 0, 0},
+    {{1200.0,-20.0,0.0}, {4.0,4.0,4.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+    {{0.0,-10.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, AL_ROOM7_FLOOR_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, AL_ROOM7_CEILING_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-1200.0,-20.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, AL_EXIT2_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{-1200.0,-20.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, G_EXIT_SHADOW_SOUTH_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{-1200.0,-20.0,0.0}, {1.0,1.0,1.0}, 0, 0, 256, 0, 400.0, 400.0, 0.0, 0.0, 4, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 2, -1, 1, 0, -1, 0, 0},
+    {{-1200.0,-20.0,0.0}, {4.0,4.0,4.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {0.8799999952316284,0.8799999952316284,0.8799999952316284}, 0, 0, 7, 7, 7.0, 1000.0, 0.0, 0.0, -2146764336, -2146763668, 40, 24, 8, 11, AL_ROOM7_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{930.0,500.0,0.0}, {0.20000000298023224,1.0,1.0}, 0, 0, 7, 11, 930.0, 0.0, 0.0, 0.0, 1, 30, -1, 30, 0, 0, G_SPIN_DOOR_MODEL, -1, -1, 0, &func_800AFB2C, &func_800B06B0, 0, 0, 2, 4, 4, 0, 11, 0, 0},
+    {{-930.0,500.0,0.0}, {0.20000000298023224,1.0,1.0}, 0, 0, 7, 11, -930.0, 0.0, 0.0, 0.0, 1, 30, -1, 30, 0, 0, G_SPIN_DOOR_MODEL, -1, -1, 0, &func_800AFB2C, &func_800B06B0, 0, 0, 2, 4, 4, 0, 11, 0, 0},
+    {{-800.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 512, 0, 300.0, 1000.0, 2000.0, 0.0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 523, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, 0, 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomObject AntLand_room7_objects[17] = {
+    {{1200.0,-20.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, AL_EXIT3_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{1200.0,-20.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, G_EXIT_SHADOW_NORTH_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{1200.0,-20.0,0.0}, {1.0,1.0,1.0}, 0, 0, 256, 0, 400.0, 400.0, 0.0, 0.0, 2, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 2, -1, 1, 0, -1, 0, 0},
+    {{1200.0,-20.0,0.0}, {4.0,4.0,4.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+    {{0.0,-10.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, AL_ROOM7_FLOOR_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, AL_ROOM7_CEILING_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{-1200.0,-20.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, AL_EXIT2_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{-1200.0,-20.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, G_EXIT_SHADOW_SOUTH_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{-1200.0,-20.0,0.0}, {1.0,1.0,1.0}, 0, 0, 256, 0, 400.0, 400.0, 0.0, 0.0, 4, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 2, -1, 1, 0, -1, 0, 0},
+    {{-1200.0,-20.0,0.0}, {4.0,4.0,4.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, AL_ROOM7_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {0.8799999952316284,0.8799999952316284,0.8799999952316284}, 0, 0, 7, 7, 7.0, 1000.0, 0.0, 0.0, -2146764336, -2146763668, 40, 24, 8, 11, AL_ROOM7_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{930.0,500.0,0.0}, {0.20000000298023224,1.0,1.0}, 0, 0, 7, 11, 930.0, 0.0, 0.0, 0.0, 1, 30, -1, 30, 0, 0, G_SPIN_DOOR_MODEL, -1, -1, 0, &func_800AFB2C, &func_800B06B0, 0, 0, 2, 4, 4, 0, 11, 0, 0},
+    {{-930.0,500.0,0.0}, {0.20000000298023224,1.0,1.0}, 0, 0, 7, 11, -930.0, 0.0, 0.0, 0.0, 1, 30, -1, 30, 0, 0, G_SPIN_DOOR_MODEL, -1, -1, 0, &func_800AFB2C, &func_800B06B0, 0, 0, 2, 4, 4, 0, 11, 0, 0},
+    {{400.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 512, 0, 300.0, 1000.0, 2000.0, 0.0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 523, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
+    {{0.0,0.0,-800.0}, {1.5,1.5,1.5}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, AL_FIXED_CAM_PILLAR_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 34, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, 0, 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomObject AntLand_room8_objects[22] = {
+    {{1700.0,0.0,1500.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, AL_EXIT3_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{1700.0,0.0,1500.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, G_EXIT_SHADOW_NORTH_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{1700.0,0.0,1500.0}, {1.0,1.0,1.0}, 0, 0, 256, 0, 400.0, 400.0, 0.0, 0.0, 2, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 2, -1, 1, 0, -1, 0, 0},
+    {{1700.0,0.0,1500.0}, {4.0,4.0,4.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+    {{-1700.0,0.0,-1500.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, AL_EXIT2_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{-1700.0,0.0,-1500.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, G_EXIT_SHADOW_SOUTH_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{-1700.0,0.0,-1500.0}, {1.0,1.0,1.0}, 0, 0, 256, 0, 400.0, 400.0, 0.0, 0.0, 4, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 2, -1, 1, 0, -1, 0, 0},
+    {{-1700.0,0.0,-1500.0}, {4.0,4.0,4.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+    {{-1501.0,-100.0,900.0}, {0.009999999776482582,11.0,44.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 3, 0, 4, 0, -1, 0, 0},
+    {{-1501.0,-100.0,-3000.0}, {0.009999999776482582,11.0,26.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 3, 0, 4, 0, -1, 0, 0},
+    {{-1501.0,300.0,-1500.0}, {0.009999999776482582,11.0,4.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 3, 0, 4, 0, -1, 0, 0},
+    {{1501.0,-100.0,-900.0}, {0.009999999776482582,11.0,44.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 3, 0, 4, 0, -1, 0, 0},
+    {{1501.0,-100.0,3000.0}, {0.009999999776482582,11.0,26.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 3, 0, 4, 0, -1, 0, 0},
+    {{1501.0,300.0,1500.0}, {0.009999999776482582,11.0,4.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 3, 0, 4, 0, -1, 0, 0},
+    {{0.0,-100.0,-3001.0}, {32.0,11.0,0.009999999776482582}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 3, 0, 4, 0, -1, 0, 0},
+    {{0.0,-100.0,3001.0}, {32.0,11.0,0.009999999776482582}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 3, 0, 4, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, AL_ROOM8_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 0, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, AL_ROOM8_FLOOR_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 6, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, AL_ROOM8_FLOOR1_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, AL_ROOM8_FLOOR2_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{0.0,-1500.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, AL_POLE_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 0, 0, 4, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, 0, 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomActor AntLand_room8_actors[19] = {
+    {ANT_TRIO_SPAWNER, {-600.0,800.0,-1500.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 1, 500.0, -1900.0, -1200.0, 2500.0, 1142292480, 1157234688, 1219479552, 0, 1092616192, 1123024896, 0, 0},
+    {ANT_TRIO_SPAWNER, {-600.0,800.0,-1700.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 1, 900.0, -2200.0, -900.0, 2200.0, 1142292480, 1155596288, 1219479552, 0, 1092616192, 1123024896, 0, 0},
+    {ANT_TRIO_SPAWNER, {-600.0,800.0,-1900.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 1, 1200.0, -2500.0, -500.0, 1900.0, 1142292480, 1153957888, 1219479552, 0, 1092616192, 1123024896, 0, 0},
+    {ANT_TRIO, {400.0,0.0,-1650.0}, 0.0, -5000.0, 5000.0, -951889920, 5000.0, -5000.0, 5000.0, 1, 400.0, -1650.0, -1200.0, 2500.0, 1142292480, 1157234688, 1219479552, 0, 1092616192, 0, 0, 0},
+    {ANT_TRIO, {100.0,0.0,-900.0}, 0.0, -5000.0, 5000.0, -951889920, 5000.0, -5000.0, 5000.0, 1, 100.0, -900.0, -1200.0, 2500.0, 1142292480, 1157234688, 1219479552, 0, 1092616192, 0, 0, 0},
+    {ANT_TRIO, {-150.0,0.0,-200.0}, 0.0, -5000.0, 5000.0, -951889920, 5000.0, -5000.0, 5000.0, 1, -150.0, -200.0, -1200.0, 2500.0, 1142292480, 1157234688, 1219479552, 0, 1092616192, 0, 0, 0},
+    {ANT_TRIO, {-450.0,0.0,600.0}, 0.0, -5000.0, 5000.0, -951889920, 5000.0, -5000.0, 5000.0, 1, -450.0, 600.0, -1200.0, 2500.0, 1142292480, 1157234688, 1219479552, 0, 1092616192, 0, 0, 0},
+    {ANT_TRIO, {-750.0,0.0,1300.0}, 0.0, -5000.0, 5000.0, -951889920, 5000.0, -5000.0, 5000.0, 1, -750.0, 1300.0, -1200.0, 2500.0, 1142292480, 1157234688, 1219479552, 0, 1092616192, 0, 0, 0},
+    {ANT_TRIO, {750.0,0.0,-1850.0}, 0.0, -5000.0, 5000.0, -951889920, 5000.0, -5000.0, 5000.0, 1, 750.0, -1850.0, -900.0, 2200.0, 1142292480, 1155596288, 1219479552, 0, 1092616192, 0, 0, 0},
+    {ANT_TRIO, {400.0,0.0,-1000.0}, 0.0, -5000.0, 5000.0, -951889920, 5000.0, -5000.0, 5000.0, 1, 400.0, -1000.0, -900.0, 2200.0, 1142292480, 1155596288, 1219479552, 0, 1092616192, 0, 0, 0},
+    {ANT_TRIO, {100.0,0.0,-250.0}, 0.0, -5000.0, 5000.0, -951889920, 5000.0, -5000.0, 5000.0, 1, 100.0, -250.0, -900.0, 2200.0, 1142292480, 1155596288, 1219479552, 0, 1092616192, 0, 0, 0},
+    {ANT_TRIO, {-200.0,0.0,500.0}, 0.0, -5000.0, 5000.0, -951889920, 5000.0, -5000.0, 5000.0, 1, -200.0, 500.0, -900.0, 2200.0, 1142292480, 1155596288, 1219479552, 0, 1092616192, 0, 0, 0},
+    {ANT_TRIO, {-500.0,0.0,1200.0}, 0.0, -5000.0, 5000.0, -951889920, 5000.0, -5000.0, 5000.0, 1, -500.0, 1200.0, -900.0, 2200.0, 1142292480, 1155596288, 1219479552, 0, 1092616192, 0, 0, 0},
+    {ANT_TRIO, {1000.0,0.0,-2000.0}, 0.0, -5000.0, 5000.0, -951889920, 5000.0, -5000.0, 5000.0, 1, 1000.0, -2000.0, -500.0, 1900.0, 1142292480, 1153957888, 1219479552, 0, 1092616192, 0, 0, 0},
+    {ANT_TRIO, {700.0,0.0,-1200.0}, 0.0, -5000.0, 5000.0, -951889920, 5000.0, -5000.0, 5000.0, 1, 700.0, -1200.0, -500.0, 1900.0, 1142292480, 1153957888, 1219479552, 0, 1092616192, 0, 0, 0},
+    {ANT_TRIO, {350.0,0.0,-300.0}, 0.0, -5000.0, 5000.0, -951889920, 5000.0, -5000.0, 5000.0, 1, 350.0, -300.0, -500.0, 1900.0, 1142292480, 1153957888, 1219479552, 0, 1092616192, 0, 0, 0},
+    {ANT_TRIO, {50.0,0.0,450.0}, 0.0, -5000.0, 5000.0, -951889920, 5000.0, -5000.0, 5000.0, 1, 50.0, 450.0, -500.0, 1900.0, 1142292480, 1153957888, 1219479552, 0, 1092616192, 0, 0, 0},
+    {ANT_TRIO, {-200.0,0.0,1100.0}, 0.0, -5000.0, 5000.0, -951889920, 5000.0, -5000.0, 5000.0, 1, -200.0, 1100.0, -500.0, 1900.0, 1142292480, 1153957888, 1219479552, 0, 1092616192, 0, 0, 0},
+    {ACTOR_NULL, {0.0,0.0,0.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomObject AntLand_room9_objects[15] = {
+    {{1000.0,1000.0,800.0}, {1.0,1.0,1.0}, 3, 0, 7, 27, 0.20000000298023224, 0.20000000298023224, 4.0, 0.0, 0, 0, 0, 0, 0, 0, AL_TILT_PLATFORM_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-300.0,1000.0,600.0}, {1.0,1.0,1.0}, 3, 0, 7, 27, 0.20000000298023224, 0.20000000298023224, 4.0, 0.0, 0, 0, 0, 0, 0, 0, AL_TILT_PLATFORM_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{1800.0,0.0,800.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, AL_PLATFORM_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{1800.0,0.0,800.0}, {2.0,1.0,2.0}, 0, 0, 7, 37, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, AL_QUAD_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 0, 4, 4, 0, -1, 0, 0},
+    {{2200.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, AL_EXIT3_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{2200.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, G_EXIT_SHADOW_NORTH_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{2200.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 256, 0, 400.0, 400.0, 0.0, 0.0, 2, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 2, -1, 1, 0, -1, 0, 0},
+    {{2200.0,0.0,0.0}, {4.0,4.0,4.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, AL_ROOM9_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{-2200.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, AL_EXIT2_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{-2200.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, G_EXIT_SHADOW_SOUTH_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{-2200.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 256, 0, 400.0, 400.0, 0.0, 0.0, 4, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 2, -1, 1, 0, -1, 0, 0},
+    {{-2200.0,0.0,0.0}, {4.0,4.0,4.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+    {{1900.0,0.0,-900.0}, {1.5,1.5,1.5}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, AL_FIXED_CAM_PILLAR_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 34, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, 0, 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomActor AntLand_room9_actors[9] = {
+    {RED_ANT_SPAWNER, {-1150.0,0.0,-600.0}, 240.0, -1900.0, 1900.0, -1007026176, 0.0, -950.0, 950.0, 0, 20.0, 0.800000011920929, 6.0, 810000.0, 1130430464, 0, 0, 0, 1120403456, 1098907648, 0, 0},
+    {RED_ANT_SPAWNER, {-150.0,0.0,-600.0}, 240.0, -1900.0, 1900.0, -1007026176, 0.0, -950.0, 950.0, 0, 20.0, 0.800000011920929, 6.0, 810000.0, 1114636288, 0, 0, 0, 1121714176, 1098907648, 0, 0},
+    {RED_ANT_SPAWNER, {850.0,0.0,-600.0}, 240.0, -1900.0, 1900.0, -1007026176, 0.0, -950.0, 950.0, 0, 20.0, 0.800000011920929, 6.0, 1000000.0, 1134395392, 0, 0, 0, 1120403456, 1098907648, 0, 0},
+    {RED_ANT_SPAWNER, {-650.0,0.0,0.0}, 240.0, -1900.0, 1900.0, -1007026176, 0.0, -950.0, 950.0, 0, 21.0, 0.6000000238418579, 5.0, 1210000.0, 1127481344, 0, 0, 0, 1119092736, 1098907648, 0, 0},
+    {RED_ANT_SPAWNER, {150.0,0.0,0.0}, 240.0, -1900.0, 1900.0, -1007026176, 0.0, -950.0, 950.0, 0, 21.0, 0.6000000238418579, 5.0, 1210000.0, 0, 0, 0, 0, 1119092736, 1098907648, 0, 0},
+    {RED_ANT_SPAWNER, {-1150.0,0.0,600.0}, 240.0, -1900.0, 1900.0, -1007026176, 0.0, -950.0, 950.0, 0, 20.0, 0.800000011920929, 6.0, 810000.0, 1124532224, 0, 0, 0, 1120403456, 1098907648, 0, 0},
+    {RED_ANT_SPAWNER, {-150.0,0.0,600.0}, 240.0, -1900.0, 1900.0, -1007026176, 0.0, -950.0, 950.0, 0, 20.0, 0.800000011920929, 6.0, 810000.0, 1133903872, 0, 0, 0, 1121714176, 1098907648, 0, 0},
+    {RED_ANT_SPAWNER, {850.0,0.0,600.0}, 240.0, -1900.0, 1900.0, -1007026176, 0.0, -950.0, 950.0, 0, 20.0, 0.800000011920929, 6.0, 1000000.0, 1110704128, 0, 0, 0, 1120403456, 1098907648, 0, 0},
+    {ACTOR_NULL, {0.0,0.0,0.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomObject AntLand_room10_objects[26] = {
+    {{-600.0,0.0,-700.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, G_POLE_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 6, 4, 4, 0, -1, 1, 0},
+    {{500.0,0.0,-700.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, G_POLE_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 6, 4, 4, 0, -1, 1, 0},
+    {{-600.0,0.0,500.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, G_POLE_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 6, 4, 4, 0, -1, 1, 0},
+    {{1700.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, AL_EXIT3_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{1700.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, G_EXIT_SHADOW_NORTH_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{1700.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 256, 0, 400.0, 400.0, 0.0, 0.0, 2, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 2, -1, 1, 0, -1, 0, 0},
+    {{1700.0,0.0,0.0}, {4.0,4.0,4.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+    {{0.0,0.0,1700.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, AL_EXIT4_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,1700.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, G_EXIT_SHADOW_EAST_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,1700.0}, {1.0,1.0,1.0}, 0, 0, 256, 0, 400.0, 400.0, 0.0, 0.0, 3, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 2, -1, 1, 0, -1, 0, 0},
+    {{0.0,0.0,1700.0}, {4.0,4.0,4.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+    {{1501.0,-100.0,900.0}, {0.009999999776482582,11.0,14.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 3, 0, 4, 0, -1, 0, 0},
+    {{1501.0,-100.0,-900.0}, {0.009999999776482582,11.0,14.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 3, 0, 4, 0, -1, 0, 0},
+    {{1501.0,300.0,0.0}, {0.009999999776482582,11.0,4.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 3, 0, 4, 0, -1, 0, 0},
+    {{0.0,-100.0,-1501.0}, {32.0,11.0,0.009999999776482582}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 3, 0, 4, 0, -1, 0, 0},
+    {{-1501.0,-100.0,0.0}, {0.009999999776482582,11.0,32.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 3, 0, 4, 0, -1, 0, 0},
+    {{-900.0,-100.0,1501.0}, {14.0,11.0,0.009999999776482582}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 3, 0, 4, 0, -1, 0, 0},
+    {{900.0,-100.0,1501.0}, {14.0,11.0,0.009999999776482582}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 3, 0, 4, 0, -1, 0, 0},
+    {{0.0,300.0,1501.0}, {4.0,11.0,0.009999999776482582}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 3, 0, 4, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, AL_ROOM10_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 0, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, AL_ROOM10_FLOOR_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, AL_ROOM10_PLATFORM1_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, AL_ROOM10_PLATFORM2_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, AL_ROOM10_PLATFORM3_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{0.0,-1500.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, AL_POLE_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 0, 0, 4, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, 0, 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomActor AntLand_room10_actors[2] = {
+    {GREY_ANT_SPAWNER, {1050.0,0.0,-1400.0}, 180.0, -1700.0, 1700.0, 0, 10.0, -1700.0, 1700.0, 1, 1050.0, 1050.0, -1400.0, 1050.0, -995164160, 1149452288, 0, 0, 1092616192, 1097859072, 0, 0},
+    {ACTOR_NULL, {0.0,0.0,0.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomObject AntLand_room11_objects[15] = {
+    {{0.0,0.0,-1200.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, G_BL_EXIT_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,-1200.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, G_EXIT_SHADOW_WEST_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,-1200.0}, {1.0,1.0,1.0}, 0, 0, 256, 0, 400.0, 400.0, 0.0, 0.0, 1, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 2, -1, 1, 0, -1, 0, 0},
+    {{0.0,0.0,-1200.0}, {4.0,4.0,4.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, AL_ROOM11_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, G_POLE_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 6, 4, 4, 0, -1, 1, 0},
+    {{300.0,0.0,0.0}, {0.5,0.800000011920929,0.800000011920929}, 2, DEGREES_TO_RADIANS_2PI(-90.00000250447816), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, AL_ROOM11_FLOOR1_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, AL_ROOM11_FLOOR1_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, AL_ROOM11_FLOOR2_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,1200.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, AL_EXIT4_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,1200.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, G_EXIT_SHADOW_EAST_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,1200.0}, {1.0,1.0,1.0}, 0, 0, 256, 0, 400.0, 400.0, 0.0, 0.0, 3, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 2, -1, 1, 0, -1, 0, 0},
+    {{0.0,0.0,1200.0}, {4.0,4.0,4.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+    {{0.0,-1500.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, AL_POLE_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 0, 0, 4, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, 0, 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomObject AntLand_room12_objects[21] = {
+    {{0.0,0.0,-1700.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, G_BL_EXIT_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,-1700.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, G_EXIT_SHADOW_WEST_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,-1700.0}, {1.0,1.0,1.0}, 0, 0, 256, 0, 400.0, 400.0, 0.0, 0.0, 1, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 2, -1, 1, 0, -1, 0, 0},
+    {{0.0,0.0,-1700.0}, {4.0,4.0,4.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+    {{1700.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, AL_EXIT3_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{1700.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, G_EXIT_SHADOW_NORTH_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{1700.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 256, 0, 400.0, 400.0, 0.0, 0.0, 2, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 2, -1, 1, 0, -1, 0, 0},
+    {{1700.0,0.0,0.0}, {4.0,4.0,4.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+    {{1501.0,-100.0,900.0}, {0.009999999776482582,11.0,14.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 3, 0, 4, 0, -1, 0, 0},
+    {{1501.0,-100.0,-900.0}, {0.009999999776482582,11.0,14.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 3, 0, 4, 0, -1, 0, 0},
+    {{1501.0,300.0,0.0}, {0.009999999776482582,11.0,4.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 3, 0, 4, 0, -1, 0, 0},
+    {{-900.0,-100.0,-1501.0}, {14.0,11.0,0.009999999776482582}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 3, 0, 4, 0, -1, 0, 0},
+    {{900.0,-100.0,-1501.0}, {14.0,11.0,0.009999999776482582}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 3, 0, 4, 0, -1, 0, 0},
+    {{0.0,300.0,-1501.0}, {4.0,11.0,0.009999999776482582}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 3, 0, 4, 0, -1, 0, 0},
+    {{-1501.0,-100.0,0.0}, {0.009999999776482582,11.0,32.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 3, 0, 4, 0, -1, 0, 0},
+    {{0.0,-100.0,1501.0}, {32.0,11.0,0.009999999776482582}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 3, 0, 4, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, AL_ROOM12_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 0, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, AL_ROOM12_FLOOR1_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, AL_ROOM12_FLOOR2_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{0.0,-1500.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, AL_POLE_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 0, 0, 4, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, 0, 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomActor AntLand_room12_actors[2] = {
+    {GREY_ANT_SPAWNER, {1150.0,0.0,1350.0}, 0.0, -5000.0, 5000.0, 0, 0.0, -5000.0, 5000.0, 0, 350.0, 1350.0, 350.0, 100.0, -995573760, 1120403456, -995573760, -995573760, 1090519040, 1106247680, 0, 0},
+    {ACTOR_NULL, {0.0,0.0,0.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomObject AntLand_room13_objects[14] = {
+    {{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, G_POLE_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 6, 4, 4, 0, -1, 1, 0},
+    {{-1700.0,600.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, AL_EXIT2_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{-1700.0,600.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, G_EXIT_SHADOW_SOUTH_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{-1700.0,600.0,0.0}, {1.0,1.0,1.0}, 0, 0, 256, 0, 400.0, 400.0, 0.0, 0.0, 4, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 2, -1, 1, 0, -1, 0, 0},
+    {{-1700.0,600.0,0.0}, {4.0,4.0,4.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, AL_ROOM13_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, AL_ROOM13_PLATFORM_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{1700.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, AL_EXIT3_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{1700.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, G_EXIT_SHADOW_NORTH_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{1700.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 256, 0, 400.0, 400.0, 0.0, 0.0, 2, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 2, -1, 1, 0, -1, 0, 0},
+    {{1700.0,0.0,0.0}, {4.0,4.0,4.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+    {{1550.0,0.0,0.0}, {0.20000000298023224,1.0,1.0}, 0, 0, 7, 11, 1550.0, 400.0, 0.0, 0.0, 1, 40, -1, 40, 0, 0, G_BL_DOOR_MODEL, -1, -1, 6, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{-1400.0,0.0,1400.0}, {1.5,1.5,1.5}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, AL_FIXED_CAM_PILLAR_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 34, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, 0, 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomActor AntLand_room13_actors[8] = {
+    {YELLOW_ANT, {500.0,0.0,-300.0}, 270.0, -1500.0, 1500.0, 0, 0.0, -1500.0, 1500.0, 1, 400.0, 600.0, 30.0, 12.0, 1092616192, 0, 0, 0, 0, 0, 0, 0},
+    {YELLOW_ANT, {500.0,0.0,300.0}, 270.0, -1500.0, 1500.0, 0, 0.0, -1500.0, 1500.0, 1, 400.0, 600.0, 30.0, 12.0, 1092616192, 0, 0, 0, 0, 0, 0, 0},
+    {YELLOW_ANT, {-500.0,0.0,300.0}, 270.0, -1500.0, 1500.0, 0, 0.0, -1500.0, 1500.0, 1, 400.0, 600.0, 30.0, 12.0, 1092616192, 0, 0, 0, 0, 0, 0, 0},
+    {YELLOW_ANT, {-500.0,0.0,-300.0}, 270.0, -1500.0, 1500.0, 0, 0.0, -1500.0, 1500.0, 1, 400.0, 600.0, 30.0, 12.0, 1092616192, 0, 0, 0, 0, 0, 0, 0},
+    {GREY_ANT_SPAWNER, {-1600.0,0.0,1200.0}, 0.0, -10000.0, 10000.0, 0, 0.0, -10000.0, 10000.0, 1, 1600.0, 1200.0, 0.0, 0.0, 0, 0, 0, 0, 1094713344, 1119092736, 0, 0},
+    {GREY_ANT_SPAWNER, {-1100.0,0.0,-1600.0}, 0.0, -10000.0, 10000.0, 0, 0.0, -10000.0, 10000.0, 1, 1600.0, 1100.0, 0.0, 0.0, 0, 0, 0, 0, 1094713344, 1125515264, 0, 0},
+    {GREY_ANT_SPAWNER, {-1300.0,0.0,300.0}, 0.0, -10000.0, 10000.0, 0, 0.0, -10000.0, 10000.0, 1, 1600.0, -1100.0, 0.0, 0.0, 0, 0, 0, 0, 1094713344, 1125515264, 0, 0},
+    {ACTOR_NULL, {0.0,0.0,0.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomObject AntLand_room14_objects[27] = {
+    {{1200.0,0.0,-1000.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, AL_EXIT3_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{1200.0,0.0,-1000.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, G_EXIT_SHADOW_NORTH_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{1200.0,0.0,-1000.0}, {1.0,1.0,1.0}, 0, 0, 256, 0, 400.0, 400.0, 0.0, 0.0, 2, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 2, -1, 1, 0, -1, 0, 0},
+    {{1200.0,0.0,-1000.0}, {4.0,4.0,4.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+    {{0.0,0.0,2200.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, AL_EXIT4_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,2200.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, G_EXIT_SHADOW_EAST_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,2200.0}, {1.0,1.0,1.0}, 0, 0, 256, 0, 400.0, 400.0, 0.0, 0.0, 3, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 2, -1, 1, 0, -1, 0, 0},
+    {{0.0,0.0,2200.0}, {4.0,4.0,4.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+    {{-1200.0,0.0,-1000.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, AL_EXIT2_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{-1200.0,0.0,-1000.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, G_EXIT_SHADOW_SOUTH_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{-1200.0,0.0,-1000.0}, {1.0,1.0,1.0}, 0, 0, 256, 0, 400.0, 400.0, 0.0, 0.0, 4, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 2, -1, 1, 0, -1, 0, 0},
+    {{-1200.0,0.0,-1000.0}, {4.0,4.0,4.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+    {{1001.0,-100.0,1000.0}, {0.009999999776482582,11.0,36.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 3, 0, 4, 0, -1, 0, 0},
+    {{1001.0,-100.0,-2000.0}, {0.009999999776482582,11.0,16.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 3, 0, 4, 0, -1, 0, 0},
+    {{1001.0,300.0,-1000.0}, {0.009999999776482582,11.0,4.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 3, 0, 4, 0, -1, 0, 0},
+    {{0.0,-100.0,-2001.0}, {32.0,11.0,0.009999999776482582}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 3, 0, 4, 0, -1, 0, 0},
+    {{-1001.0,-100.0,1000.0}, {0.009999999776482582,11.0,36.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 3, 0, 4, 0, -1, 0, 0},
+    {{-1001.0,-100.0,-2000.0}, {0.009999999776482582,11.0,16.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 3, 0, 4, 0, -1, 0, 0},
+    {{-1001.0,300.0,-1000.0}, {0.009999999776482582,11.0,4.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 3, 0, 4, 0, -1, 0, 0},
+    {{-900.0,-100.0,2001.0}, {14.0,11.0,0.009999999776482582}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 3, 0, 4, 0, -1, 0, 0},
+    {{900.0,-100.0,2001.0}, {14.0,11.0,0.009999999776482582}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 3, 0, 4, 0, -1, 0, 0},
+    {{0.0,300.0,2001.0}, {4.0,11.0,0.009999999776482582}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 3, 0, 4, 0, -1, 0, 0},
+    {{0.0,-1.0,0.0}, {30.0,0.009999999776482582,50.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 2, 0, 4, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, AL_ROOM14_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 0, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,2050.0}, {1.0,1.0,0.20000000298023224}, 0, DEGREES_TO_RADIANS_2PI(0.02741556724295125), 7, 11, 0.0, 400.0, 2050.0, 0.0, 1, 40, -1, 40, 0, 0, G_BL_DOOR_MODEL, -1, -1, 7, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{-900.0,0.0,-150.0}, {1.5,1.5,1.5}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, AL_FIXED_CAM_PILLAR_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 34, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, 0, 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomActor AntLand_room14_actors[12] = {
+    {GREEN_ANT, {600.0,0.0,-300.0}, 100.0, -900.0, 900.0, 0, 1000.0, -1900.0, 1900.0, 0, 30.0, 15.0, 650.0, 0.0, 0, 0, 0, 0, 1115160576, 0, 0, 0},
+    {GREEN_ANT, {-600.0,0.0,-300.0}, 100.0, -900.0, 900.0, 0, 1000.0, -1900.0, 1900.0, 0, 30.0, 15.0, 650.0, 0.0, 0, 0, 0, 0, 1109917696, 0, 0, 0},
+    {GREEN_ANT, {600.0,0.0,1600.0}, 100.0, -900.0, 900.0, 0, 1000.0, -1900.0, 1900.0, 0, 30.0, 15.0, 650.0, 0.0, 0, 0, 0, 0, 1112539136, 0, 0, 0},
+    {GREEN_ANT, {-600.0,0.0,1600.0}, 100.0, -900.0, 900.0, 0, 1000.0, -1900.0, 1900.0, 0, 30.0, 15.0, 650.0, 0.0, 0, 0, 0, 0, 1102053376, 0, 0, 0},
+    {GREEN_ANT, {0.0,0.0,600.0}, 100.0, -900.0, 900.0, 0, 1000.0, -1900.0, 1900.0, 0, 30.0, 15.0, 650.0, 0.0, 0, 0, 0, 0, 1109131264, 0, 0, 0},
+    {GREY_ANT_SPAWNER, {-600.0,0.0,-2100.0}, 180.0, -1000.0, 1000.0, 0, 100.0, -2000.0, 2000.0, 1, -600.0, 2100.0, -600.0, 2100.0, -1005191168, 1157840896, 0, 0, 1101004800, 1114636288, 0, 0},
+    {GREY_ANT_SPAWNER, {-600.0,0.0,2100.0}, 0.0, -1200.0, 1200.0, 0, 1000.0, -2000.0, 2000.0, 1, -600.0, -2100.0, -600.0, -2100.0, -1005191168, -989642752, 0, 0, 1097859072, 1116471296, 0, 0},
+    {GREY_ANT_SPAWNER, {-1100.0,0.0,100.0}, 90.0, -1200.0, 1200.0, 0, 1000.0, -2000.0, 2000.0, 1, 1100.0, 100.0, 1100.0, 100.0, 1149861888, 1120403456, 0, 0, 1095761920, 1107558400, 0, 0},
+    {GREY_ANT_SPAWNER, {-1100.0,0.0,1100.0}, 270.0, -1200.0, 1200.0, 0, 1000.0, -2000.0, 2000.0, 1, 1100.0, 1100.0, 1100.0, 1100.0, 1149861888, 1149861888, 0, 0, 1099956224, 1123024896, 0, 0},
+    {GREY_ANT_SPAWNER, {1100.0,0.0,-400.0}, 240.0, -1200.0, 1200.0, 0, 1000.0, -2000.0, 2000.0, 1, -1100.0, 600.0, -1100.0, 600.0, -997621760, 1142292480, 0, 0, 1101004800, 1114636288, 0, 0},
+    {GREY_ANT_SPAWNER, {-1100.0,0.0,1600.0}, 30.0, -1200.0, 1200.0, 0, 1000.0, -2000.0, 2000.0, 1, 1100.0, 600.0, 1100.0, 600.0, 1149861888, 1142292480, 0, 0, 1102053376, 1127481344, 0, 0},
+    {ACTOR_NULL, {0.0,0.0,0.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomObject AntLand_room21_objects[10] = {
+    {{-1200.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, AL_EXIT2_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{-1200.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, G_EXIT_SHADOW_SOUTH_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{-1200.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 256, 0, 400.0, 400.0, 0.0, 0.0, 4, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 2, -1, 1, 0, -1, 0, 0},
+    {{-1200.0,0.0,0.0}, {4.0,4.0,4.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, AL_ROOM21_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{450.0,0.0,-150.0}, {1.0,5.5,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, AL_POLE_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 6, 4, 4, 0, -1, 1, 0},
+    {{0.0,0.0,0.0}, {1.0,1.100000023841858,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, AL_ROOM21_PLATFORM1_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {1.0,1.5,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, AL_ROOM21_PLATFORM2_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{-900.0,0.0,900.0}, {1.5,1.5,1.5}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, AL_FIXED_CAM_PILLAR_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 34, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, 0, 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomObject AntLand_room15_objects[17] = {
+    {{0.0,0.0,-1200.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, G_BL_EXIT_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,-1200.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, G_EXIT_SHADOW_WEST_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,-1200.0}, {1.0,1.0,1.0}, 0, 0, 256, 0, 400.0, 400.0, 0.0, 0.0, 1, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 2, -1, 1, 0, -1, 0, 0},
+    {{0.0,0.0,-1200.0}, {4.0,4.0,4.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, AL_ROOM15_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{0.0,-10.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, AL_ROOM15_FLOOR_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, AL_ROOM15_CEILING_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,1200.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, AL_EXIT4_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,1200.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, G_EXIT_SHADOW_EAST_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,1200.0}, {1.0,1.0,1.0}, 0, 0, 256, 0, 400.0, 400.0, 0.0, 0.0, 3, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 2, -1, 1, 0, -1, 0, 0},
+    {{0.0,0.0,1200.0}, {4.0,4.0,4.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {0.8799999952316284,0.8799999952316284,0.8799999952316284}, 0, 0, 7, 7, 12.0, 0.0, 0.0, 1000.0, -2146764336, -2146763668, 80, 36, 5, 12, AL_ROOM15_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{0.0,500.0,930.0}, {1.0,1.0,0.20000000298023224}, 0, 0, 7, 11, 0.0, 0.0, 930.0, 0.0, 1, 30, -1, 30, 0, 0, G_SPIN_DOOR_MODEL, -1, -1, 0, &func_800AFB2C, &func_800B06B0, 0, 0, 2, 4, 4, 0, 11, 0, 0},
+    {{0.0,500.0,-930.0}, {1.0,1.0,0.20000000298023224}, 0, 0, 7, 11, 0.0, 0.0, -930.0, 0.0, 1, 30, -1, 30, 0, 0, G_SPIN_DOOR_MODEL, -1, -1, 0, &func_800AFB2C, &func_800B06B0, 0, 0, 2, 4, 4, 0, 11, 0, 0},
+    {{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 512, 0, 2000.0, 1000.0, 300.0, 0.0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 524, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
+    {{-800.0,0.0,0.0}, {1.5,1.5,1.5}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, AL_FIXED_CAM_PILLAR_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 34, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, 0, 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomObject AntLand_roomUnk3_objects[15] = {
+    {{0.0,0.0,-1200.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, G_BL_EXIT_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,-1200.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, G_EXIT_SHADOW_WEST_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,-1200.0}, {1.0,1.0,1.0}, 0, 0, 256, 0, 400.0, 400.0, 0.0, 0.0, 1, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 2, -1, 1, 0, -1, 0, 0},
+    {{0.0,0.0,-1200.0}, {4.0,4.0,4.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+    {{0.0,-10.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, AL_ROOM15_FLOOR_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, AL_ROOM15_CEILING_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,1200.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, AL_EXIT4_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,1200.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, G_EXIT_SHADOW_EAST_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,1200.0}, {1.0,1.0,1.0}, 0, 0, 256, 0, 400.0, 400.0, 0.0, 0.0, 3, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 2, -1, 1, 0, -1, 0, 0},
+    {{0.0,0.0,1200.0}, {4.0,4.0,4.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {0.8799999952316284,0.8799999952316284,0.8799999952316284}, 0, 0, 7, 7, 10.0, 0.0, 0.0, 1000.0, -2146764336, -2146763668, 60, 32, 6, 12, AL_ROOM15_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{0.0,500.0,930.0}, {1.0,1.0,0.20000000298023224}, 0, 0, 7, 11, 0.0, 0.0, 930.0, 0.0, 1, 30, -1, 30, 0, 0, G_SPIN_DOOR_MODEL, -1, -1, 0, &func_800AFB2C, &func_800B06B0, 0, 0, 2, 4, 4, 0, 11, 0, 0},
+    {{0.0,500.0,-930.0}, {1.0,1.0,0.20000000298023224}, 0, 0, 7, 11, 0.0, 0.0, -930.0, 0.0, 1, 30, -1, 30, 0, 0, G_SPIN_DOOR_MODEL, -1, -1, 0, &func_800AFB2C, &func_800B06B0, 0, 0, 2, 4, 4, 0, 11, 0, 0},
+    {{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 512, 0, 2000.0, 1000.0, 300.0, 0.0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 524, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, 0, 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomObject AntLand_room16_objects[22] = {
+    {{0.0,0.0,-1700.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, G_BL_EXIT_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,-1700.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, G_EXIT_SHADOW_WEST_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,-1700.0}, {1.0,1.0,1.0}, 0, 0, 256, 0, 400.0, 400.0, 0.0, 0.0, 1, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 2, -1, 1, 0, -1, 0, 0},
+    {{0.0,0.0,-1700.0}, {4.0,4.0,4.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+    {{0.0,0.0,1700.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, AL_EXIT4_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,1700.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, G_EXIT_SHADOW_EAST_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,1700.0}, {1.0,1.0,1.0}, 0, 0, 256, 0, 400.0, 400.0, 0.0, 0.0, 3, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 2, -1, 1, 0, -1, 0, 0},
+    {{0.0,0.0,1700.0}, {4.0,4.0,4.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+    {{-1501.0,-100.0,0.0}, {0.009999999776482582,11.0,32.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 3, 0, 4, 0, -1, 0, 0},
+    {{1501.0,-100.0,0.0}, {0.009999999776482582,11.0,32.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 3, 0, 4, 0, -1, 0, 0},
+    {{-900.0,-100.0,-1501.0}, {14.0,11.0,0.009999999776482582}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 3, 0, 4, 0, -1, 0, 0},
+    {{900.0,-100.0,-1501.0}, {14.0,11.0,0.009999999776482582}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 3, 0, 4, 0, -1, 0, 0},
+    {{0.0,300.0,-1501.0}, {4.0,11.0,0.009999999776482582}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 3, 0, 4, 0, -1, 0, 0},
+    {{-900.0,-100.0,1501.0}, {14.0,11.0,0.009999999776482582}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 3, 0, 4, 0, -1, 0, 0},
+    {{900.0,-100.0,1501.0}, {14.0,11.0,0.009999999776482582}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 3, 0, 4, 0, -1, 0, 0},
+    {{0.0,300.0,1501.0}, {4.0,11.0,0.009999999776482582}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 3, 0, 4, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, AL_ROOM16_FLOOR1_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, AL_ROOM16_FLOOR2_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, AL_ROOM16_GRATE_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, AL_ROOM16_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 0, 4, 4, 0, -1, 0, 0},
+    {{0.0,-1500.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, AL_POLE_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 0, 0, 4, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, 0, 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomActor AntLand_room16_actors[3] = {
+    {GREY_ANT_SPAWNER, {1150.0,0.0,-1050.0}, 0.0, -1500.0, 0.0, -994344960, 1500.0, 0.0, -1500.0, 1, -1350.0, -1050.0, -1350.0, 0.0, 1151909888, 0, 1151909888, 1151909888, 1094713344, 1101004800, 0, 0},
+    {GREY_ANT_SPAWNER, {1350.0,0.0,-1050.0}, 0.0, -1500.0, 0.0, -994344960, 1500.0, 0.0, -1500.0, 1, 1350.0, -100.0, -1350.0, -100.0, -995573760, -1027080192, -995573760, 1150271488, 1094713344, 1101004800, 0, 0},
+    {ACTOR_NULL, {0.0,0.0,0.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomObject AntLand_room17_objects[23] = {
+    {{0.0,0.0,-1700.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, G_BL_EXIT_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,-1700.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, G_EXIT_SHADOW_WEST_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,-1700.0}, {1.0,1.0,1.0}, 0, 0, 256, 0, 400.0, 400.0, 0.0, 0.0, 1, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 2, -1, 1, 0, -1, 0, 0},
+    {{0.0,0.0,-1700.0}, {4.0,4.0,4.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+    {{0.0,0.0,1700.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, AL_EXIT4_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,1700.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, G_EXIT_SHADOW_EAST_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,1700.0}, {1.0,1.0,1.0}, 0, 0, 256, 0, 400.0, 400.0, 0.0, 0.0, 3, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 2, -1, 1, 0, -1, 0, 0},
+    {{0.0,0.0,1700.0}, {4.0,4.0,4.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+    {{0.0,0.0,1550.0}, {1.0,1.0,0.20000000298023224}, 0, 0, 7, 11, 0.0, 400.0, 1550.0, 0.0, 1, 15, -1, 40, 0, 0, G_BL_DOOR_MODEL, -1, -1, 9, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, AL_ROOM17_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 0, 4, 4, 0, -1, 0, 0},
+    {{-1501.0,-100.0,0.0}, {0.009999999776482582,11.0,32.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 3, 0, 4, 0, -1, 0, 0},
+    {{1501.0,-100.0,0.0}, {0.009999999776482582,11.0,32.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 3, 0, 4, 0, -1, 0, 0},
+    {{-900.0,-100.0,-1501.0}, {14.0,11.0,0.009999999776482582}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 3, 0, 4, 0, -1, 0, 0},
+    {{900.0,-100.0,-1501.0}, {14.0,11.0,0.009999999776482582}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 3, 0, 4, 0, -1, 0, 0},
+    {{0.0,300.0,-1501.0}, {4.0,11.0,0.009999999776482582}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 3, 0, 4, 0, -1, 0, 0},
+    {{-900.0,-100.0,1501.0}, {14.0,11.0,0.009999999776482582}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 3, 0, 4, 0, -1, 0, 0},
+    {{900.0,-100.0,1501.0}, {14.0,11.0,0.009999999776482582}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 3, 0, 4, 0, -1, 0, 0},
+    {{0.0,300.0,1501.0}, {4.0,11.0,0.009999999776482582}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 3, 0, 4, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, AL_ROOM17_FLOOR_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 6, 4, 4, 0, -1, 0, 0},
+    {{-1300.0,-200.0,1300.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, AL_ROOM21_PLATFORM2_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 0, 4, 0, -1, 0, 0},
+    {{100.0,-200.0,1300.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, AL_ROOM21_PLATFORM2_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 0, 4, 0, -1, 0, 0},
+    {{0.0,-1500.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, AL_POLE_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 0, 0, 4, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, 0, 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomActor AntLand_room17_actors[5] = {
+    {BULLET_HELL_ANT_SPAWNER, {-490.0,0.0,1600.0}, 90.0, -1500.0, 1500.0, 0, 0.0, -1500.0, 1500.0, 1, 45.0, 8.0, 0.0, 0.0, 0, 0, 0, 0, 1106247680, 1106247680, 0, 0},
+    {BULLET_HELL_ANT_SPAWNER, {-970.0,0.0,1600.0}, 90.0, -1500.0, 1500.0, 0, 0.0, -1500.0, 1500.0, 1, 45.0, -8.0, 0.0, 0.0, 0, 0, 0, 0, 1092616192, 1119092736, 0, 0},
+    {BULLET_HELL_ANT_SPAWNER, {490.0,0.0,1600.0}, 90.0, -1500.0, 1500.0, 0, 0.0, -1500.0, 1500.0, 1, 45.0, 8.0, 0.0, 0.0, 0, 0, 0, 0, 1106247680, 1106247680, 0, 0},
+    {BULLET_HELL_ANT_SPAWNER, {970.0,0.0,1600.0}, 90.0, -1500.0, 1500.0, 0, 0.0, -1500.0, 1500.0, 1, 45.0, -8.0, 0.0, 0.0, 0, 0, 0, 0, 1092616192, 1119092736, 0, 0},
+    {ACTOR_NULL, {0.0,0.0,0.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomObject AntLand_room18_objects[11] = {
+    {{0.0,0.0,-1200.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, G_BL_EXIT_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,-1200.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, G_EXIT_SHADOW_WEST_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,-1200.0}, {1.0,1.0,1.0}, 0, 0, 256, 0, 400.0, 400.0, 0.0, 0.0, 1, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 2, -1, 1, 0, -1, 0, 0},
+    {{0.0,0.0,-1200.0}, {4.0,4.0,4.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, AL_ROOM18_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,1200.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, AL_EXIT4_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,1200.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, G_EXIT_SHADOW_EAST_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,1200.0}, {1.0,1.0,1.0}, 0, 0, 256, 0, 400.0, 400.0, 0.0, 0.0, 3, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 2, -1, 1, 0, -1, 0, 0},
+    {{0.0,0.0,1200.0}, {4.0,4.0,4.0}, 0, 0, 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+    {{-900.0,0.0,-900.0}, {1.5,1.5,1.5}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, AL_FIXED_CAM_PILLAR_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 34, 4, 4, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, 0, 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomObject AntLand_room19_objects[3] = {
+    {{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, AL_ROOM0_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 2, 0, 4, 0, -1, 0, 0},
+    {{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, 0, 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, G_POLE_MODEL, -1, -1, -1, NULL, NULL, 0, 0, 6, 4, 4, 0, -1, 1, 0},
+    {{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, 0, 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomActor AntLand_room19_actors[2] = {
+    {YELLOW_ANT, {800.0,0.0,300.0}, 270.0, 300.0, 300.0, 0, 0.0, 0.0, 0.0, 1, 300.0, 300.0, 60.0, 12.0, 1092616192, 0, 0, 0, 0, 0, 0, 0},
+    {ACTOR_NULL, {0.0,0.0,0.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+
+// Sprites
+s32 AntLand_spriteLib_Sprlib[] = {
+    12,
+    69,
+    5,
+    6,
+    14,
+    8,
+    7,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    12,
+    69,
+    14,
+    8,
+    7,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    13,
+    12,
+    69,
+    8,
+    7,
+    14,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    13,
+    12,
+    69,
+    14,
+    5,
+    6,
+    8,
+    7,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    13,
+    12,
+    69,
+    8,
+    7,
+    14,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    13,
+    12,
+    69,
+    8,
+    7,
+    14,
+    27,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    13,
+    12,
+    69,
+    8,
+    7,
+    14,
+    23,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+};
+
+SpriteActor AntLand_room0_sprites[8] = {
+    {18, 0, {-700.0,0.0,-300.0}, {100.0,200.0,200.0}, 1, 0, 60.0, 0, 0, 0, 0, 0, {30, 1, 0, 0}},
+    {3, 0, {900.0,400.0,-900.0}, {100.0,200.0,250.0}, 1, 0, 60.0, 1, 0, 0, 0, 0, {255, 255, 255, 255}},
+    {3, 0, {900.0,400.0,900.0}, {100.0,200.0,250.0}, 1, 0, 80.0, 1, 0, 0, 0, 0, {255, 255, 255, 255}},
+    {8, 0, {990.0,500.0,-900.0}, {100.0,100.0,150.0}, 1, 0, 60.0, 1, -1027080192, 0, 0, 0, {255, 255, 255, 255}},
+    {8, 0, {900.0,500.0,-990.0}, {100.0,100.0,150.0}, 1, 0, 70.0, 1, 0, 1120403456, 0, 0, {255, 255, 255, 255}},
+    {8, 0, {990.0,500.0,900.0}, {100.0,100.0,150.0}, 1, 0, 50.0, 1, -1027080192, 0, 0, 0, {255, 255, 255, 255}},
+    {8, 0, {900.0,500.0,990.0}, {100.0,100.0,150.0}, 1, 0, 90.0, 1, 0, -1027080192, 0, 0, {255, 255, 255, 255}},
+    {-1, 0, {-1.0,-1.0,-1.0}, {-1.0,32.0,32.0}, 1, 0, 0.0, 0, 0, 0, 0, 0, {-1, -1, 0, 0}}
+};
+
+SpriteActor AntLand_room1_sprites[19] = {
+    {4, 0, {-250.0,50.0,-990.0}, {100.0,200.0,250.0}, 1, 0, 1.0, 0, 0, 0, 1120403456, 0, {255, 255, 255, 255}},
+    {4, 0, {0.0,50.0,-990.0}, {100.0,200.0,250.0}, 1, 0, 1.0, 0, 0, 0, 1120403456, 0, {255, 255, 255, 255}},
+    {4, 0, {250.0,50.0,-990.0}, {100.0,200.0,250.0}, 1, 0, 1.0, 0, 0, 0, 1120403456, 0, {255, 255, 255, 255}},
+    {4, 0, {-250.0,50.0,990.0}, {100.0,200.0,250.0}, 1, 0, 1.0, 0, 0, 0, 1120403456, 0, {255, 255, 255, 255}},
+    {4, 0, {0.0,50.0,990.0}, {100.0,200.0,250.0}, 1, 0, 1.0, 0, 0, 0, 1120403456, 0, {255, 255, 255, 255}},
+    {4, 0, {250.0,50.0,990.0}, {100.0,200.0,250.0}, 1, 0, 1.0, 0, 0, 0, 1120403456, 0, {255, 255, 255, 255}},
+    {3, 0, {-920.0,260.0,550.0}, {100.0,100.0,150.0}, 1, 0, 60.0, 1, 0, 0, 0, 0, {255, 255, 255, 255}},
+    {3, 0, {-550.0,260.0,920.0}, {100.0,100.0,150.0}, 1, 0, 70.0, 1, 0, 0, 0, 0, {255, 255, 255, 255}},
+    {3, 0, {642.0,260.0,920.0}, {100.0,100.0,150.0}, 1, 0, 50.0, 1, 0, 0, 0, 0, {255, 255, 255, 255}},
+    {3, 0, {930.0,260.0,550.0}, {100.0,100.0,150.0}, 1, 0, 90.0, 1, 0, 0, 0, 0, {255, 255, 255, 255}},
+    {3, 0, {642.0,260.0,-920.0}, {100.0,100.0,150.0}, 1, 0, 50.0, 1, 0, 0, 0, 0, {255, 255, 255, 255}},
+    {3, 0, {-550.0,260.0,-920.0}, {100.0,100.0,150.0}, 1, 0, 80.0, 1, 0, 0, 0, 0, {255, 255, 255, 255}},
+    {8, 0, {-990.0,260.0,550.0}, {100.0,100.0,150.0}, 1, 0, 60.0, 1, 1120403456, 0, 0, 0, {255, 255, 255, 255}},
+    {8, 0, {-550.0,260.0,990.0}, {100.0,100.0,150.0}, 1, 0, 70.0, 1, 0, -1027080192, 0, 0, {255, 255, 255, 255}},
+    {8, 0, {642.0,260.0,990.0}, {100.0,100.0,150.0}, 1, 0, 50.0, 1, 0, -1027080192, 0, 0, {255, 255, 255, 255}},
+    {8, 0, {990.0,260.0,550.0}, {100.0,100.0,150.0}, 1, 0, 90.0, 1, -1027080192, 0, 0, 0, {255, 255, 255, 255}},
+    {8, 0, {642.0,260.0,-990.0}, {100.0,100.0,150.0}, 1, 0, 50.0, 1, 0, 1120403456, 0, 0, {255, 255, 255, 255}},
+    {8, 0, {-550.0,260.0,-990.0}, {100.0,100.0,150.0}, 1, 0, 80.0, 1, 0, 1120403456, 0, 0, {255, 255, 255, 255}},
+    {-1, 0, {-1.0,-1.0,-1.0}, {-1.0,32.0,32.0}, 1, 0, 0.0, 0, 0, 0, 0, 0, {-1, -1, 0, 0}}
+};
+
+SpriteActor AntLand_room2_sprites[13] = {
+    {3, 0, {-930.0,260.0,550.0}, {100.0,100.0,150.0}, 1, 0, 60.0, 1, 0, 0, 0, 0, {255, 255, 255, 255}},
+    {3, 0, {-550.0,260.0,930.0}, {100.0,100.0,150.0}, 1, 0, 50.0, 1, 0, 0, 0, 0, {255, 255, 255, 255}},
+    {3, 0, {642.0,260.0,930.0}, {100.0,100.0,150.0}, 1, 0, 80.0, 1, 0, 0, 0, 0, {255, 255, 255, 255}},
+    {3, 0, {930.0,260.0,550.0}, {100.0,100.0,150.0}, 1, 0, 90.0, 1, 0, 0, 0, 0, {255, 255, 255, 255}},
+    {3, 0, {642.0,260.0,-930.0}, {100.0,100.0,150.0}, 1, 0, 72.0, 1, 0, 0, 0, 0, {255, 255, 255, 255}},
+    {3, 0, {-550.0,260.0,-930.0}, {100.0,100.0,150.0}, 1, 0, 81.0, 1, 0, 0, 0, 0, {255, 255, 255, 255}},
+    {8, 0, {-990.0,260.0,550.0}, {100.0,100.0,150.0}, 1, 0, 60.0, 1, 1120403456, 0, 0, 0, {255, 255, 255, 255}},
+    {8, 0, {-550.0,260.0,990.0}, {100.0,100.0,150.0}, 1, 0, 50.0, 1, 0, -1027080192, 0, 0, {255, 255, 255, 255}},
+    {8, 0, {642.0,260.0,990.0}, {100.0,100.0,150.0}, 1, 0, 80.0, 1, 0, -1027080192, 0, 0, {255, 255, 255, 255}},
+    {8, 0, {990.0,260.0,550.0}, {100.0,100.0,150.0}, 1, 0, 90.0, 1, -1027080192, 0, 0, 0, {255, 255, 255, 255}},
+    {8, 0, {642.0,260.0,-990.0}, {100.0,100.0,150.0}, 1, 0, 72.0, 1, 0, 1120403456, 0, 0, {255, 255, 255, 255}},
+    {8, 0, {-550.0,260.0,-990.0}, {100.0,100.0,150.0}, 1, 0, 81.0, 1, 0, 1120403456, 0, 0, {255, 255, 255, 255}},
+    {-1, 0, {-1.0,-1.0,-1.0}, {-1.0,32.0,32.0}, 1, 0, 0.0, 0, 0, 0, 0, 0, {-1, -1, 0, 0}}
+};
+
+SpriteActor AntLand_room3_sprites[25] = {
+    {4, 0, {-600.0,50.0,-990.0}, {100.0,200.0,250.0}, 1, 0, 1.0, 0, 0, 0, 1120403456, 0, {255, 255, 255, 255}},
+    {4, 0, {700.0,50.0,-990.0}, {100.0,200.0,250.0}, 1, 0, 1.0, 0, 0, 0, 1120403456, 0, {255, 255, 255, 255}},
+    {4, 0, {-600.0,50.0,990.0}, {100.0,200.0,250.0}, 1, 0, 1.0, 0, 0, 0, -1027080192, 0, {255, 255, 255, 255}},
+    {4, 0, {700.0,50.0,990.0}, {100.0,200.0,250.0}, 1, 0, 1.0, 0, 0, 0, -1027080192, 0, {255, 255, 255, 255}},
+    {4, 0, {-990.0,50.0,400.0}, {100.0,200.0,250.0}, 1, 0, 1.0, 0, 1120403456, 0, 0, 0, {255, 255, 255, 255}},
+    {4, 0, {-990.0,50.0,800.0}, {100.0,200.0,250.0}, 1, 0, 1.0, 0, 1120403456, 0, 0, 0, {255, 255, 255, 255}},
+    {4, 0, {990.0,50.0,400.0}, {100.0,200.0,250.0}, 1, 0, 1.0, 0, -1027080192, 0, 0, 0, {255, 255, 255, 255}},
+    {4, 0, {990.0,50.0,800.0}, {100.0,200.0,250.0}, 1, 0, 1.0, 0, -1027080192, 0, 0, 0, {255, 255, 255, 255}},
+    {3, 0, {-930.0,260.0,550.0}, {100.0,100.0,150.0}, 1, 0, 88.0, 1, 0, 0, 0, 0, {255, 255, 255, 255}},
+    {3, 0, {-930.0,260.0,-642.0}, {100.0,100.0,150.0}, 1, 0, 80.0, 1, 0, 0, 0, 0, {255, 255, 255, 255}},
+    {3, 0, {-550.0,260.0,930.0}, {100.0,100.0,150.0}, 1, 0, 60.0, 1, 0, 0, 0, 0, {255, 255, 255, 255}},
+    {3, 0, {-550.0,260.0,-930.0}, {100.0,100.0,150.0}, 1, 0, 65.0, 1, 0, 0, 0, 0, {255, 255, 255, 255}},
+    {3, 0, {930.0,260.0,550.0}, {100.0,100.0,150.0}, 1, 0, 68.0, 1, 0, 0, 0, 0, {255, 255, 255, 255}},
+    {3, 0, {930.0,260.0,-642.0}, {100.0,100.0,150.0}, 1, 0, 58.0, 1, 0, 0, 0, 0, {255, 255, 255, 255}},
+    {3, 0, {642.0,260.0,930.0}, {100.0,100.0,150.0}, 1, 0, 70.0, 1, 0, 0, 0, 0, {255, 255, 255, 255}},
+    {3, 0, {642.0,260.0,-930.0}, {100.0,100.0,150.0}, 1, 0, 62.0, 1, 0, 0, 0, 0, {255, 255, 255, 255}},
+    {8, 0, {-990.0,260.0,550.0}, {100.0,100.0,150.0}, 1, 0, 88.0, 1, 1120403456, 0, 0, 0, {255, 255, 255, 255}},
+    {8, 0, {-990.0,260.0,-642.0}, {100.0,100.0,150.0}, 1, 0, 80.0, 1, 1120403456, 0, 0, 0, {255, 255, 255, 255}},
+    {8, 0, {-550.0,260.0,990.0}, {100.0,100.0,150.0}, 1, 0, 60.0, 1, 0, -1027080192, 0, 0, {255, 255, 255, 255}},
+    {8, 0, {-550.0,260.0,-990.0}, {100.0,100.0,150.0}, 1, 0, 65.0, 1, 0, 1120403456, 0, 0, {255, 255, 255, 255}},
+    {8, 0, {990.0,260.0,550.0}, {100.0,100.0,150.0}, 1, 0, 68.0, 1, -1027080192, 0, 0, 0, {255, 255, 255, 255}},
+    {8, 0, {990.0,260.0,-642.0}, {100.0,100.0,150.0}, 1, 0, 58.0, 1, -1027080192, 0, 0, 0, {255, 255, 255, 255}},
+    {8, 0, {642.0,260.0,990.0}, {100.0,100.0,150.0}, 1, 0, 70.0, 1, 0, -1027080192, 0, 0, {255, 255, 255, 255}},
+    {8, 0, {642.0,260.0,-990.0}, {100.0,100.0,150.0}, 1, 0, 62.0, 1, 0, 1120403456, 0, 0, {255, 255, 255, 255}},
+    {-1, 0, {-1.0,-1.0,-1.0}, {-1.0,32.0,32.0}, 1, 0, 0.0, 0, 0, 0, 0, 0, {-1, -1, 0, 0}}
+};
+
+SpriteActor AntLand_room4_sprites[13] = {
+    {3, 0, {-950.0,260.0,-650.0}, {100.0,100.0,150.0}, 1, 0, 68.0, 1, 0, 0, 0, 0, {255, 255, 255, 255}},
+    {3, 0, {-950.0,260.0,550.0}, {100.0,100.0,150.0}, 1, 0, 60.0, 1, 0, 0, 0, 0, {255, 255, 255, 255}},
+    {3, 0, {-550.0,260.0,950.0}, {100.0,100.0,150.0}, 1, 0, 78.0, 1, 0, 0, 0, 0, {255, 255, 255, 255}},
+    {3, 0, {650.0,260.0,950.0}, {100.0,100.0,150.0}, 1, 0, 58.0, 1, 0, 0, 0, 0, {255, 255, 255, 255}},
+    {3, 0, {-950.0,260.0,-650.0}, {100.0,100.0,150.0}, 1, 0, 62.0, 1, 0, 0, 0, 0, {255, 255, 255, 255}},
+    {3, 0, {950.0,260.0,-650.0}, {100.0,100.0,150.0}, 1, 0, 74.0, 1, 0, 0, 0, 0, {255, 255, 255, 255}},
+    {8, 0, {-990.0,260.0,-650.0}, {100.0,100.0,150.0}, 1, 0, 68.0, 1, 1120403456, 0, 0, 0, {255, 255, 255, 255}},
+    {8, 0, {-990.0,260.0,550.0}, {100.0,100.0,150.0}, 1, 0, 60.0, 1, 1120403456, 0, 0, 0, {255, 255, 255, 255}},
+    {8, 0, {-550.0,260.0,990.0}, {100.0,100.0,150.0}, 1, 0, 78.0, 1, 0, -1027080192, 0, 0, {255, 255, 255, 255}},
+    {8, 0, {650.0,260.0,990.0}, {100.0,100.0,150.0}, 1, 0, 58.0, 1, 0, -1027080192, 0, 0, {255, 255, 255, 255}},
+    {8, 0, {-990.0,260.0,-650.0}, {100.0,100.0,150.0}, 1, 0, 62.0, 1, 1120403456, 0, 0, 0, {255, 255, 255, 255}},
+    {8, 0, {990.0,260.0,-650.0}, {100.0,100.0,150.0}, 1, 0, 74.0, 1, -1027080192, 0, 0, 0, {255, 255, 255, 255}},
+    {-1, 0, {-1.0,-1.0,-1.0}, {-1.0,32.0,32.0}, 1, 0, 0.0, 0, 0, 0, 0, 0, {-1, -1, 0, 0}}
+};
+
+SpriteActor AntLand_room5_sprites[17] = {
+    {4, 0, {-1190.0,50.0,1000.0}, {100.0,200.0,250.0}, 1, 0, 1.0, 0, 1120403456, 0, 0, 0, {255, 255, 255, 255}},
+    {4, 0, {1190.0,50.0,1000.0}, {100.0,200.0,250.0}, 1, 0, 1.0, 0, -1027080192, 0, 0, 0, {255, 255, 255, 255}},
+    {4, 0, {-700.0,50.0,-1190.0}, {100.0,200.0,250.0}, 1, 0, 1.0, 0, 0, 0, -1027080192, 0, {255, 255, 255, 255}},
+    {4, 0, {1190.0,50.0,700.0}, {100.0,200.0,250.0}, 1, 0, 1.0, 0, 1120403456, 0, 0, 0, {255, 255, 255, 255}},
+    {3, 0, {1130.0,260.0,440.0}, {100.0,100.0,150.0}, 1, 0, 80.0, 1, 0, 0, 0, 0, {255, 255, 255, 255}},
+    {3, 0, {-440.0,260.0,1130.0}, {100.0,100.0,150.0}, 1, 0, 68.0, 1, 0, 0, 0, 0, {255, 255, 255, 255}},
+    {3, 0, {-1130.0,860.0,440.0}, {100.0,100.0,150.0}, 1, 0, 78.0, 1, 0, 0, 0, 0, {255, 255, 255, 255}},
+    {3, 0, {540.0,260.0,-1130.0}, {100.0,100.0,150.0}, 1, 0, 8.0, 0, 0, 0, 0, 0, {255, 255, 255, 255}},
+    {3, 0, {1130.0,260.0,-540.0}, {100.0,100.0,150.0}, 1, 0, 8.0, 0, 0, 0, 0, 0, {255, 255, 255, 255}},
+    {3, 0, {-440.0,260.0,-1130.0}, {100.0,100.0,150.0}, 1, 0, 58.0, 1, 0, 0, 0, 0, {255, 255, 255, 255}},
+    {8, 0, {1190.0,260.0,440.0}, {100.0,100.0,150.0}, 1, 0, 80.0, 1, -1027080192, 0, 0, 0, {255, 255, 255, 255}},
+    {8, 0, {-440.0,260.0,1190.0}, {100.0,100.0,150.0}, 1, 0, 68.0, 1, 0, -1027080192, 0, 0, {255, 255, 255, 255}},
+    {8, 0, {-1190.0,860.0,440.0}, {100.0,100.0,150.0}, 1, 0, 78.0, 1, 1120403456, 0, 0, 0, {255, 255, 255, 255}},
+    {8, 0, {540.0,260.0,-1190.0}, {100.0,100.0,150.0}, 1, 0, 8.0, 0, 0, 1120403456, 0, 0, {255, 255, 255, 255}},
+    {8, 0, {1190.0,260.0,-540.0}, {100.0,100.0,150.0}, 1, 0, 8.0, 0, -1027080192, 0, 0, 0, {255, 255, 255, 255}},
+    {8, 0, {-440.0,260.0,-1190.0}, {100.0,100.0,150.0}, 1, 0, 58.0, 1, 0, 1120403456, 0, 0, {255, 255, 255, 255}},
+    {-1, 0, {-1.0,-1.0,-1.0}, {-1.0,32.0,32.0}, 1, 0, 0.0, 0, 0, 0, 0, 0, {-1, -1, 0, 0}}
+};
+
+SpriteActor AntLand_room6_sprites[9] = {
+    {3, 0, {750.0,260.0,-1420.0}, {100.0,100.0,150.0}, 1, 0, 80.0, 1, 0, 0, 0, 0, {255, 255, 255, 255}},
+    {3, 0, {-1420.0,260.0,-750.0}, {100.0,100.0,150.0}, 1, 0, 88.0, 1, 0, 0, 0, 0, {255, 255, 255, 255}},
+    {3, 0, {-1420.0,260.0,750.0}, {100.0,100.0,150.0}, 1, 0, 78.0, 1, 0, 0, 0, 0, {255, 255, 255, 255}},
+    {3, 0, {-750.0,260.0,-1420.0}, {100.0,100.0,150.0}, 1, 0, 58.0, 1, 0, 0, 0, 0, {255, 255, 255, 255}},
+    {8, 0, {750.0,260.0,-1490.0}, {100.0,100.0,150.0}, 1, 0, 80.0, 1, 0, 1120403456, 0, 0, {255, 255, 255, 255}},
+    {8, 0, {-1490.0,260.0,-750.0}, {100.0,100.0,150.0}, 1, 0, 88.0, 1, 1120403456, 0, 0, 0, {255, 255, 255, 255}},
+    {8, 0, {-1490.0,260.0,750.0}, {100.0,100.0,150.0}, 1, 0, 78.0, 1, 1120403456, 0, 0, 0, {255, 255, 255, 255}},
+    {8, 0, {-750.0,260.0,-1490.0}, {100.0,100.0,150.0}, 1, 0, 58.0, 1, 0, 1120403456, 0, 0, {255, 255, 255, 255}},
+    {-1, 0, {-1.0,-1.0,-1.0}, {-1.0,32.0,32.0}, 1, 0, 0.0, 0, 0, 0, 0, 0, {-1, -1, 0, 0}}
+};
+
+SpriteActor AntLand_room8_sprites[25] = {
+    {3, 0, {-1430.0,260.0,2250.0}, {100.0,100.0,150.0}, 1, 0, 58.0, 1, 0, 0, 0, 0, {255, 255, 255, 255}},
+    {3, 0, {-1430.0,260.0,750.0}, {100.0,100.0,150.0}, 1, 0, 68.0, 1, 0, 0, 0, 0, {255, 255, 255, 255}},
+    {3, 0, {-1430.0,260.0,-750.0}, {100.0,100.0,150.0}, 1, 0, 78.0, 1, 0, 0, 0, 0, {255, 255, 255, 255}},
+    {3, 0, {-1430.0,260.0,-2250.0}, {100.0,100.0,150.0}, 1, 0, 60.0, 1, 0, 0, 0, 0, {255, 255, 255, 255}},
+    {3, 0, {-750.0,260.0,-2930.0}, {100.0,100.0,150.0}, 1, 0, 70.0, 1, 0, 0, 0, 0, {255, 255, 255, 255}},
+    {3, 0, {750.0,260.0,-2930.0}, {100.0,100.0,150.0}, 1, 0, 48.0, 1, 0, 0, 0, 0, {255, 255, 255, 255}},
+    {3, 0, {1430.0,260.0,-2250.0}, {100.0,100.0,150.0}, 1, 0, 52.0, 1, 0, 0, 0, 0, {255, 255, 255, 255}},
+    {3, 0, {1430.0,260.0,-750.0}, {100.0,100.0,150.0}, 1, 0, 62.0, 1, 0, 0, 0, 0, {255, 255, 255, 255}},
+    {3, 0, {1430.0,260.0,750.0}, {100.0,100.0,150.0}, 1, 0, 74.0, 1, 0, 0, 0, 0, {255, 255, 255, 255}},
+    {3, 0, {1430.0,260.0,2250.0}, {100.0,100.0,150.0}, 1, 0, 76.0, 1, 0, 0, 0, 0, {255, 255, 255, 255}},
+    {3, 0, {750.0,260.0,2930.0}, {100.0,100.0,150.0}, 1, 0, 90.0, 1, 0, 0, 0, 0, {255, 255, 255, 255}},
+    {3, 0, {-750.0,260.0,2930.0}, {100.0,100.0,150.0}, 1, 0, 66.0, 1, 0, 0, 0, 0, {255, 255, 255, 255}},
+    {8, 0, {-1490.0,260.0,2250.0}, {100.0,100.0,150.0}, 1, 0, 58.0, 1, 1120403456, 0, 0, 0, {255, 255, 255, 255}},
+    {8, 0, {-1490.0,260.0,750.0}, {100.0,100.0,150.0}, 1, 0, 68.0, 1, 1120403456, 0, 0, 0, {255, 255, 255, 255}},
+    {8, 0, {-1490.0,260.0,-750.0}, {100.0,100.0,150.0}, 1, 0, 78.0, 1, 1120403456, 0, 0, 0, {255, 255, 255, 255}},
+    {8, 0, {-1490.0,260.0,-2250.0}, {100.0,100.0,150.0}, 1, 0, 60.0, 1, 1120403456, 0, 0, 0, {255, 255, 255, 255}},
+    {8, 0, {-750.0,260.0,-2990.0}, {100.0,100.0,150.0}, 1, 0, 70.0, 1, 0, 1120403456, 0, 0, {255, 255, 255, 255}},
+    {8, 0, {750.0,260.0,-2990.0}, {100.0,100.0,150.0}, 1, 0, 48.0, 1, 0, 1120403456, 0, 0, {255, 255, 255, 255}},
+    {8, 0, {1490.0,260.0,-2250.0}, {100.0,100.0,150.0}, 1, 0, 52.0, 1, -1027080192, 0, 0, 0, {255, 255, 255, 255}},
+    {8, 0, {1490.0,260.0,-750.0}, {100.0,100.0,150.0}, 1, 0, 62.0, 1, -1027080192, 0, 0, 0, {255, 255, 255, 255}},
+    {8, 0, {1490.0,260.0,750.0}, {100.0,100.0,150.0}, 1, 0, 74.0, 1, -1027080192, 0, 0, 0, {255, 255, 255, 255}},
+    {8, 0, {1490.0,260.0,2250.0}, {100.0,100.0,150.0}, 1, 0, 76.0, 1, -1027080192, 0, 0, 0, {255, 255, 255, 255}},
+    {8, 0, {750.0,260.0,2990.0}, {100.0,100.0,150.0}, 1, 0, 90.0, 1, 0, -1027080192, 0, 0, {255, 255, 255, 255}},
+    {8, 0, {-750.0,260.0,2990.0}, {100.0,100.0,150.0}, 1, 0, 66.0, 1, 0, -1027080192, 0, 0, {255, 255, 255, 255}},
+    {-1, 0, {-1.0,-1.0,-1.0}, {-1.0,32.0,32.0}, 1, 0, 0.0, 0, 0, 0, 0, 0, {-1, -1, 0, 0}}
+};
+
+SpriteActor AntLand_room9_sprites[1] = {
+    {-1, SPRITE_BLANK, {-1.0,-1.0,-1.0}, {-1.0,32.0,32.0}, 1, 0, 0.0, 0, 0, 0, 0, 0, {-1, -1, 0, 0}}
+};
+
+SpriteActor AntLand_room10_sprites[17] = {
+    {3, SPRITE_BLANK, {1450.0,260.0,750.0}, {100.0,100.0,150.0}, 1, 0, 68.0, 1, 0, 0, 0, 0, {255, 255, 255, 255}},
+    {3, SPRITE_BLANK, {1450.0,260.0,-750.0}, {100.0,100.0,150.0}, 1, 0, 78.0, 1, 0, 0, 0, 0, {255, 255, 255, 255}},
+    {3, SPRITE_BLANK, {750.0,260.0,-1450.0}, {100.0,100.0,150.0}, 1, 0, 58.0, 1, 0, 0, 0, 0, {255, 255, 255, 255}},
+    {3, SPRITE_BLANK, {-750.0,260.0,1450.0}, {100.0,100.0,150.0}, 1, 0, 80.0, 1, 0, 0, 0, 0, {255, 255, 255, 255}},
+    {3, SPRITE_BLANK, {-1450.0,260.0,-750.0}, {100.0,100.0,150.0}, 1, 0, 72.0, 1, 0, 0, 0, 0, {255, 255, 255, 255}},
+    {3, SPRITE_BLANK, {-1450.0,260.0,750.0}, {100.0,100.0,150.0}, 1, 0, 60.0, 1, 0, 0, 0, 0, {255, 255, 255, 255}},
+    {3, SPRITE_BLANK, {-750.0,260.0,-1450.0}, {100.0,100.0,150.0}, 1, 0, 50.0, 1, 0, 0, 0, 0, {255, 255, 255, 255}},
+    {3, SPRITE_BLANK, {750.0,260.0,1450.0}, {100.0,100.0,150.0}, 1, 0, 66.0, 1, 0, 0, 0, 0, {255, 255, 255, 255}},
+    {8, SPRITE_BLANK, {1490.0,260.0,750.0}, {100.0,100.0,150.0}, 1, 0, 68.0, 1, -1027080192, 0, 0, 0, {255, 255, 255, 255}},
+    {8, SPRITE_BLANK, {1490.0,260.0,-750.0}, {100.0,100.0,150.0}, 1, 0, 78.0, 1, -1027080192, 0, 0, 0, {255, 255, 255, 255}},
+    {8, SPRITE_BLANK, {750.0,260.0,-1490.0}, {100.0,100.0,150.0}, 1, 0, 58.0, 1, 0, 1120403456, 0, 0, {255, 255, 255, 255}},
+    {8, SPRITE_BLANK, {-750.0,260.0,1490.0}, {100.0,100.0,150.0}, 1, 0, 80.0, 1, 0, -1027080192, 0, 0, {255, 255, 255, 255}},
+    {8, SPRITE_BLANK, {-1490.0,260.0,-750.0}, {100.0,100.0,150.0}, 1, 0, 72.0, 1, 1120403456, 0, 0, 0, {255, 255, 255, 255}},
+    {8, SPRITE_BLANK, {-1490.0,260.0,750.0}, {100.0,100.0,150.0}, 1, 0, 60.0, 1, 1120403456, 0, 0, 0, {255, 255, 255, 255}},
+    {8, SPRITE_BLANK, {-750.0,260.0,-1490.0}, {100.0,100.0,150.0}, 1, 0, 50.0, 1, 0, 1120403456, 0, 0, {255, 255, 255, 255}},
+    {8, SPRITE_BLANK, {750.0,260.0,1490.0}, {100.0,100.0,150.0}, 1, 0, 66.0, 1, 0, -1027080192, 0, 0, {255, 255, 255, 255}},
+    {-1, SPRITE_BLANK, {-1.0,-1.0,-1.0}, {-1.0,32.0,32.0}, 1, 0, 0.0, 0, 0, 0, 0, 0, {-1, -1, 0, 0}}
+};
+
+SpriteActor AntLand_room11_sprites[13] = {
+    {3, SPRITE_BLANK, {-920.0,260.0,-644.0}, {100.0,100.0,150.0}, 1, 0, 80.0, 1, 0, 0, 0, 0, {255, 255, 255, 255}},
+    {3, SPRITE_BLANK, {-920.0,260.0,550.0}, {100.0,100.0,150.0}, 1, 0, 68.0, 1, 0, 0, 0, 0, {255, 255, 255, 255}},
+    {3, SPRITE_BLANK, {-550.0,260.0,920.0}, {100.0,100.0,150.0}, 1, 0, 58.0, 1, 0, 0, 0, 0, {255, 255, 255, 255}},
+    {3, SPRITE_BLANK, {920.0,260.0,550.0}, {100.0,100.0,150.0}, 1, 0, 78.0, 1, 0, 0, 0, 0, {255, 255, 255, 255}},
+    {3, SPRITE_BLANK, {920.0,260.0,-644.0}, {100.0,100.0,150.0}, 1, 0, 72.0, 1, 0, 0, 0, 0, {255, 255, 255, 255}},
+    {3, SPRITE_BLANK, {-550.0,260.0,-920.0}, {100.0,100.0,150.0}, 1, 0, 60.0, 1, 0, 0, 0, 0, {255, 255, 255, 255}},
+    {8, SPRITE_BLANK, {-990.0,260.0,-644.0}, {100.0,100.0,150.0}, 1, 0, 80.0, 1, 1120403456, 0, 0, 0, {255, 255, 255, 255}},
+    {8, SPRITE_BLANK, {-990.0,260.0,550.0}, {100.0,100.0,150.0}, 1, 0, 68.0, 1, 1120403456, 0, 0, 0, {255, 255, 255, 255}},
+    {8, SPRITE_BLANK, {-550.0,260.0,990.0}, {100.0,100.0,150.0}, 1, 0, 58.0, 1, 0, -1027080192, 0, 0, {255, 255, 255, 255}},
+    {8, SPRITE_BLANK, {990.0,260.0,550.0}, {100.0,100.0,150.0}, 1, 0, 78.0, 1, -1027080192, 0, 0, 0, {255, 255, 255, 255}},
+    {8, SPRITE_BLANK, {990.0,260.0,-644.0}, {100.0,100.0,150.0}, 1, 0, 72.0, 1, -1027080192, 0, 0, 0, {255, 255, 255, 255}},
+    {8, SPRITE_BLANK, {-550.0,260.0,-990.0}, {100.0,100.0,150.0}, 1, 0, 60.0, 1, 0, 1120403456, 0, 0, {255, 255, 255, 255}},
+    {-1, SPRITE_BLANK, {-1.0,-1.0,-1.0}, {-1.0,32.0,32.0}, 1, 0, 0.0, 0, 0, 0, 0, 0, {-1, -1, 0, 0}}
+};
+
+SpriteActor AntLand_room12_sprites[17] = {
+    {3, SPRITE_BLANK, {750.0,260.0,-1430.0}, {100.0,100.0,150.0}, 1, 0, 60.0, 1, 0, 0, 0, 0, {255, 255, 255, 255}},
+    {3, SPRITE_BLANK, {-1430.0,260.0,-750.0}, {100.0,100.0,150.0}, 1, 0, 68.0, 1, 0, 0, 0, 0, {255, 255, 255, 255}},
+    {3, SPRITE_BLANK, {-1430.0,260.0,750.0}, {100.0,100.0,150.0}, 1, 0, 78.0, 1, 0, 0, 0, 0, {255, 255, 255, 255}},
+    {3, SPRITE_BLANK, {-750.0,260.0,1430.0}, {100.0,100.0,150.0}, 1, 0, 88.0, 1, 0, 0, 0, 0, {255, 255, 255, 255}},
+    {3, SPRITE_BLANK, {1430.0,260.0,750.0}, {100.0,100.0,150.0}, 1, 0, 58.0, 1, 0, 0, 0, 0, {255, 255, 255, 255}},
+    {3, SPRITE_BLANK, {1430.0,260.0,-750.0}, {100.0,100.0,150.0}, 1, 0, 62.0, 1, 0, 0, 0, 0, {255, 255, 255, 255}},
+    {3, SPRITE_BLANK, {-750.0,260.0,-1430.0}, {100.0,100.0,150.0}, 1, 0, 66.0, 1, 0, 0, 0, 0, {255, 255, 255, 255}},
+    {3, SPRITE_BLANK, {750.0,260.0,1430.0}, {100.0,100.0,150.0}, 1, 0, 72.0, 1, 0, 0, 0, 0, {255, 255, 255, 255}},
+    {8, SPRITE_BLANK, {750.0,260.0,-1490.0}, {100.0,100.0,150.0}, 1, 0, 60.0, 1, 0, 1120403456, 0, 0, {255, 255, 255, 255}},
+    {8, SPRITE_BLANK, {-1490.0,260.0,-750.0}, {100.0,100.0,150.0}, 1, 0, 68.0, 1, 1120403456, 0, 0, 0, {255, 255, 255, 255}},
+    {8, SPRITE_BLANK, {-1490.0,260.0,750.0}, {100.0,100.0,150.0}, 1, 0, 78.0, 1, 1120403456, 0, 0, 0, {255, 255, 255, 255}},
+    {8, SPRITE_BLANK, {-750.0,260.0,1490.0}, {100.0,100.0,150.0}, 1, 0, 88.0, 1, 0, -1027080192, 0, 0, {255, 255, 255, 255}},
+    {8, SPRITE_BLANK, {1490.0,260.0,750.0}, {100.0,100.0,150.0}, 1, 0, 58.0, 1, -1027080192, 0, 0, 0, {255, 255, 255, 255}},
+    {8, SPRITE_BLANK, {1490.0,260.0,-750.0}, {100.0,100.0,150.0}, 1, 0, 62.0, 1, -1027080192, 0, 0, 0, {255, 255, 255, 255}},
+    {8, SPRITE_BLANK, {-750.0,260.0,-1490.0}, {100.0,100.0,150.0}, 1, 0, 66.0, 1, 0, 1120403456, 0, 0, {255, 255, 255, 255}},
+    {8, SPRITE_BLANK, {750.0,260.0,1490.0}, {100.0,100.0,150.0}, 1, 0, 72.0, 1, 0, -1027080192, 0, 0, {255, 255, 255, 255}},
+    {-1, SPRITE_BLANK, {-1.0,-1.0,-1.0}, {-1.0,32.0,32.0}, 1, 0, 0.0, 0, 0, 0, 0, 0, {-1, -1, 0, 0}}
+};
+
+SpriteActor AntLand_room13_sprites[11] = {
+    {4, SPRITE_BLANK, {-1490.0,50.0,1200.0}, {100.0,200.0,250.0}, 1, 0, 1.0, 0, 1120403456, 0, 0, 0, {255, 255, 255, 255}},
+    {4, SPRITE_BLANK, {1490.0,50.0,1200.0}, {100.0,200.0,250.0}, 1, 0, 1.0, 0, -1027080192, 0, 0, 0, {255, 255, 255, 255}},
+    {4, SPRITE_BLANK, {-1000.0,50.0,-1490.0}, {100.0,200.0,250.0}, 1, 0, 1.0, 0, 0, 0, 1120403456, 0, {255, 255, 255, 255}},
+    {4, SPRITE_BLANK, {1490.0,50.0,1000.0}, {100.0,200.0,250.0}, 1, 0, 1.0, 0, -1027080192, 0, 0, 0, {255, 255, 255, 255}},
+    {4, SPRITE_BLANK, {-1090.0,50.0,200.0}, {100.0,200.0,250.0}, 1, 0, 1.0, 0, 1120403456, 0, 0, 0, {255, 255, 255, 255}},
+    {4, SPRITE_BLANK, {1490.0,50.0,-1000.0}, {100.0,200.0,250.0}, 1, 0, 1.0, 0, -1027080192, 0, 0, 0, {255, 255, 255, 255}},
+    {3, SPRITE_BLANK, {-1450.0,860.0,-750.0}, {100.0,100.0,150.0}, 1, 0, 68.0, 1, 0, 0, 0, 0, {255, 255, 255, 255}},
+    {3, SPRITE_BLANK, {-1450.0,860.0,750.0}, {100.0,100.0,150.0}, 1, 0, 78.0, 1, 0, 0, 0, 0, {255, 255, 255, 255}},
+    {8, SPRITE_BLANK, {-1490.0,860.0,-750.0}, {100.0,100.0,150.0}, 1, 0, 68.0, 1, 1120403456, 0, 0, 0, {255, 255, 255, 255}},
+    {8, SPRITE_BLANK, {-1490.0,860.0,750.0}, {100.0,100.0,150.0}, 1, 0, 78.0, 1, 1120403456, 0, 0, 0, {255, 255, 255, 255}},
+    {-1, SPRITE_BLANK, {-1.0,-1.0,-1.0}, {-1.0,32.0,32.0}, 1, 0, 0.0, 0, 0, 0, 0, 0, {-1, -1, 0, 0}}
+};
+
+SpriteActor AntLand_room14_sprites[31] = {
+    {4, SPRITE_BLANK, {-600.0,50.0,-1990.0}, {100.0,200.0,250.0}, 1, 0, 1.0, 0, 0, 0, 1120403456, 0, {255, 255, 255, 255}},
+    {4, SPRITE_BLANK, {600.0,50.0,1990.0}, {100.0,200.0,250.0}, 1, 0, 1.0, 0, 0, 0, 1120403456, 0, {255, 255, 255, 255}},
+    {4, SPRITE_BLANK, {-600.0,50.0,1990.0}, {100.0,200.0,250.0}, 1, 0, 1.0, 0, 0, 0, -1027080192, 0, {255, 255, 255, 255}},
+    {4, SPRITE_BLANK, {600.0,50.0,-1990.0}, {100.0,200.0,250.0}, 1, 0, 1.0, 0, 0, 0, -1027080192, 0, {255, 255, 255, 255}},
+    {4, SPRITE_BLANK, {-990.0,50.0,100.0}, {100.0,200.0,250.0}, 1, 0, 1.0, 0, 1120403456, 0, 0, 0, {255, 255, 255, 255}},
+    {4, SPRITE_BLANK, {-990.0,50.0,600.0}, {100.0,200.0,250.0}, 1, 0, 1.0, 0, 1120403456, 0, 0, 0, {255, 255, 255, 255}},
+    {4, SPRITE_BLANK, {-990.0,50.0,1100.0}, {100.0,200.0,250.0}, 1, 0, 1.0, 0, 1120403456, 0, 0, 0, {255, 255, 255, 255}},
+    {4, SPRITE_BLANK, {990.0,50.0,100.0}, {100.0,200.0,250.0}, 1, 0, 1.0, 0, -1027080192, 0, 0, 0, {255, 255, 255, 255}},
+    {4, SPRITE_BLANK, {990.0,50.0,600.0}, {100.0,200.0,250.0}, 1, 0, 1.0, 0, -1027080192, 0, 0, 0, {255, 255, 255, 255}},
+    {4, SPRITE_BLANK, {990.0,50.0,1100.0}, {100.0,200.0,250.0}, 1, 0, 1.0, 0, -1027080192, 0, 0, 0, {255, 255, 255, 255}},
+    {4, SPRITE_BLANK, {990.0,50.0,-400.0}, {100.0,200.0,250.0}, 1, 0, 1.0, 0, -1027080192, 0, 0, 0, {255, 255, 255, 255}},
+    {4, SPRITE_BLANK, {-990.0,50.0,1600.0}, {100.0,200.0,250.0}, 1, 0, 1.0, 0, 1120403456, 0, 0, 0, {255, 255, 255, 255}},
+    {3, SPRITE_BLANK, {-550.0,260.0,1930.0}, {100.0,100.0,150.0}, 1, 0, 73.0, 1, 0, 0, 0, 0, {255, 255, 255, 255}},
+    {3, SPRITE_BLANK, {930.0,260.0,1644.0}, {100.0,100.0,150.0}, 1, 0, 72.0, 1, 0, 0, 0, 0, {255, 255, 255, 255}},
+    {3, SPRITE_BLANK, {930.0,260.0,450.0}, {100.0,100.0,150.0}, 1, 0, 60.0, 1, 0, 0, 0, 0, {255, 255, 255, 255}},
+    {3, SPRITE_BLANK, {930.0,260.0,-450.0}, {100.0,100.0,150.0}, 1, 0, 68.0, 1, 0, 0, 0, 0, {255, 255, 255, 255}},
+    {3, SPRITE_BLANK, {642.0,260.0,-1930.0}, {100.0,100.0,150.0}, 1, 0, 83.0, 1, 0, 0, 0, 0, {255, 255, 255, 255}},
+    {3, SPRITE_BLANK, {-550.0,260.0,-1930.0}, {100.0,100.0,150.0}, 1, 0, 78.0, 1, 0, 0, 0, 0, {255, 255, 255, 255}},
+    {3, SPRITE_BLANK, {-930.0,260.0,-450.0}, {100.0,100.0,150.0}, 1, 0, 58.0, 1, 0, 0, 0, 0, {255, 255, 255, 255}},
+    {3, SPRITE_BLANK, {-930.0,260.0,450.0}, {100.0,100.0,150.0}, 1, 0, 69.0, 1, 0, 0, 0, 0, {255, 255, 255, 255}},
+    {3, SPRITE_BLANK, {-930.0,260.0,1644.0}, {100.0,100.0,150.0}, 1, 0, 68.0, 1, 0, 0, 0, 0, {255, 255, 255, 255}},
+    {8, SPRITE_BLANK, {-550.0,260.0,1990.0}, {100.0,100.0,150.0}, 1, 0, 73.0, 1, 0, -1027080192, 0, 0, {255, 255, 255, 255}},
+    {8, SPRITE_BLANK, {990.0,260.0,1644.0}, {100.0,100.0,150.0}, 1, 0, 72.0, 1, -1027080192, 0, 0, 0, {255, 255, 255, 255}},
+    {8, SPRITE_BLANK, {990.0,260.0,450.0}, {100.0,100.0,150.0}, 1, 0, 60.0, 1, -1027080192, 0, 0, 0, {255, 255, 255, 255}},
+    {8, SPRITE_BLANK, {990.0,260.0,-450.0}, {100.0,100.0,150.0}, 1, 0, 68.0, 1, -1027080192, 0, 0, 0, {255, 255, 255, 255}},
+    {8, SPRITE_BLANK, {642.0,260.0,-1990.0}, {100.0,100.0,150.0}, 1, 0, 83.0, 1, 0, 1120403456, 0, 0, {255, 255, 255, 255}},
+    {8, SPRITE_BLANK, {-550.0,260.0,-1990.0}, {100.0,100.0,150.0}, 1, 0, 78.0, 1, 0, 1120403456, 0, 0, {255, 255, 255, 255}},
+    {8, SPRITE_BLANK, {-990.0,260.0,-450.0}, {100.0,100.0,150.0}, 1, 0, 58.0, 1, 1120403456, 0, 0, 0, {255, 255, 255, 255}},
+    {8, SPRITE_BLANK, {-990.0,260.0,450.0}, {100.0,100.0,150.0}, 1, 0, 69.0, 1, 1120403456, 0, 0, 0, {255, 255, 255, 255}},
+    {8, SPRITE_BLANK, {-990.0,260.0,1644.0}, {100.0,100.0,150.0}, 1, 0, 68.0, 1, 1120403456, 0, 0, 0, {255, 255, 255, 255}},
+    {-1, SPRITE_BLANK, {-1.0,-1.0,-1.0}, {-1.0,32.0,32.0}, 1, 0, 0.0, 0, 0, 0, 0, 0, {-1, -1, 0, 0}}
+};
+
+SpriteActor AntLand_room16_sprites[1] = {
+    -1, SPRITE_BLANK, {-1.0,-1.0,-1.0}, {-1.0,32.0,32.0}, 1, 0, 0.0, 0, 0, 0, 0, 0, {-1, -1, 0, 0} // Null sprite
+};
+
+SpriteActor AntLand_room17_sprites[21] = {
+    {4, SPRITE_BLANK, {490.0,50.0,1490.0}, {100.0,200.0,250.0}, 1, 0, 1.0, 0, 0, 0, 1120403456, 0, {255, 255, 255, 255}},
+    {4, SPRITE_BLANK, {970.0,50.0,1490.0}, {100.0,200.0,250.0}, 1, 0, 1.0, 0, 0, 0, 1120403456, 0, {255, 255, 255, 255}},
+    {4, SPRITE_BLANK, {-490.0,50.0,1490.0}, {100.0,200.0,250.0}, 1, 0, 1.0, 0, 0, 0, 1120403456, 0, {255, 255, 255, 255}},
+    {4, SPRITE_BLANK, {-970.0,50.0,1490.0}, {100.0,200.0,250.0}, 1, 0, 1.0, 0, 0, 0, 1120403456, 0, {255, 255, 255, 255}},
+    {3, SPRITE_BLANK, {750.0,260.0,-1430.0}, {100.0,100.0,150.0}, 1, 0, 68.0, 1, 0, 0, 0, 0, {255, 255, 255, 255}},
+    {3, SPRITE_BLANK, {-1430.0,260.0,-750.0}, {100.0,100.0,150.0}, 1, 0, 78.0, 1, 0, 0, 0, 0, {255, 255, 255, 255}},
+    {3, SPRITE_BLANK, {-1430.0,260.0,750.0}, {100.0,100.0,150.0}, 1, 0, 88.0, 1, 0, 0, 0, 0, {255, 255, 255, 255}},
+    {3, SPRITE_BLANK, {-750.0,260.0,1430.0}, {100.0,100.0,150.0}, 1, 0, 58.0, 1, 0, 0, 0, 0, {255, 255, 255, 255}},
+    {3, SPRITE_BLANK, {1430.0,260.0,750.0}, {100.0,100.0,150.0}, 1, 0, 64.0, 1, 0, 0, 0, 0, {255, 255, 255, 255}},
+    {3, SPRITE_BLANK, {1430.0,260.0,-750.0}, {100.0,100.0,150.0}, 1, 0, 66.0, 1, 0, 0, 0, 0, {255, 255, 255, 255}},
+    {3, SPRITE_BLANK, {-750.0,260.0,-1430.0}, {100.0,100.0,150.0}, 1, 0, 62.0, 1, 0, 0, 0, 0, {255, 255, 255, 255}},
+    {3, SPRITE_BLANK, {750.0,260.0,1430.0}, {100.0,100.0,150.0}, 1, 0, 60.0, 1, 0, 0, 0, 0, {255, 255, 255, 255}},
+    {8, SPRITE_BLANK, {750.0,260.0,-1490.0}, {100.0,100.0,150.0}, 1, 0, 68.0, 1, 0, 1120403456, 0, 0, {255, 255, 255, 255}},
+    {8, SPRITE_BLANK, {-1490.0,260.0,-750.0}, {100.0,100.0,150.0}, 1, 0, 78.0, 1, 1120403456, 0, 0, 0, {255, 255, 255, 255}},
+    {8, SPRITE_BLANK, {-1490.0,260.0,750.0}, {100.0,100.0,150.0}, 1, 0, 88.0, 1, 1120403456, 0, 0, 0, {255, 255, 255, 255}},
+    {8, SPRITE_BLANK, {-750.0,260.0,1490.0}, {100.0,100.0,150.0}, 1, 0, 58.0, 1, 0, -1027080192, 0, 0, {255, 255, 255, 255}},
+    {8, SPRITE_BLANK, {1490.0,260.0,750.0}, {100.0,100.0,150.0}, 1, 0, 64.0, 1, -1027080192, 0, 0, 0, {255, 255, 255, 255}},
+    {8, SPRITE_BLANK, {1490.0,260.0,-750.0}, {100.0,100.0,150.0}, 1, 0, 66.0, 1, -1027080192, 0, 0, 0, {255, 255, 255, 255}},
+    {8, SPRITE_BLANK, {-750.0,260.0,-1490.0}, {100.0,100.0,150.0}, 1, 0, 62.0, 1, 0, 1120403456, 0, 0, {255, 255, 255, 255}},
+    {8, SPRITE_BLANK, {750.0,260.0,1490.0}, {100.0,100.0,150.0}, 1, 0, 60.0, 1, 0, -1027080192, 0, 0, {255, 255, 255, 255}},
+    {-1, SPRITE_BLANK, {-1.0,-1.0,-1.0}, {-1.0,32.0,32.0}, 1, 0, 0.0, 0, 0, 0, 0, 0, {-1, -1, 0, 0}}
+};
+
+SpriteActor AntLand_room18_sprites[2] = {
+    {18, SPRITE_BLANK, {-500.0,0.0,750.0}, {100.0,200.0,200.0}, 1, 0, 60.0, 0, 0, 0, 0, 0, {31, 13, 0, 0}},
+    {-1, SPRITE_BLANK, {-1.0,-1.0,-1.0}, {-1.0,32.0,32.0}, 1, 0, 0.0, 0, 0, 0, 0, 0, {-1, -1, 0, 0}}
+};
+
+SpriteActor AntLand_room20_sprites[19] = {
+    {3, SPRITE_BLANK, {930.0,260.0,-644.0}, {100.0,100.0,150.0}, 1, 0, 68.0, 1, 0, 0, 0, 0, {255, 255, 255, 255}},
+    {3, SPRITE_BLANK, {930.0,260.0,550.0}, {100.0,100.0,150.0}, 1, 0, 78.0, 1, 0, 0, 0, 0, {255, 255, 255, 255}},
+    {3, SPRITE_BLANK, {-550.0,260.0,930.0}, {100.0,100.0,150.0}, 1, 0, 88.0, 1, 0, 0, 0, 0, {255, 255, 255, 255}},
+    {3, SPRITE_BLANK, {642.0,260.0,930.0}, {100.0,100.0,150.0}, 1, 0, 58.0, 1, 0, 0, 0, 0, {255, 255, 255, 255}},
+    {3, SPRITE_BLANK, {930.0,260.0,550.0}, {100.0,100.0,150.0}, 1, 0, 68.0, 1, 0, 0, 0, 0, {255, 255, 255, 255}},
+    {3, SPRITE_BLANK, {642.0,260.0,-930.0}, {100.0,100.0,150.0}, 1, 0, 64.0, 1, 0, 0, 0, 0, {255, 255, 255, 255}},
+    {3, SPRITE_BLANK, {-550.0,260.0,-930.0}, {100.0,100.0,150.0}, 1, 0, 70.0, 1, 0, 0, 0, 0, {255, 255, 255, 255}},
+    {3, SPRITE_BLANK, {-930.0,260.0,550.0}, {100.0,100.0,150.0}, 1, 0, 50.0, 1, 0, 0, 0, 0, {255, 255, 255, 255}},
+    {8, SPRITE_BLANK, {990.0,260.0,-644.0}, {100.0,100.0,150.0}, 1, 0, 68.0, 1, -1027080192, 0, 0, 0, {255, 255, 255, 255}},
+    {8, SPRITE_BLANK, {990.0,260.0,550.0}, {100.0,100.0,150.0}, 1, 0, 78.0, 1, -1027080192, 0, 0, 0, {255, 255, 255, 255}},
+    {8, SPRITE_BLANK, {-550.0,260.0,990.0}, {100.0,100.0,150.0}, 1, 0, 88.0, 1, 0, -1027080192, 0, 0, {255, 255, 255, 255}},
+    {8, SPRITE_BLANK, {642.0,260.0,990.0}, {100.0,100.0,150.0}, 1, 0, 58.0, 1, 0, -1027080192, 0, 0, {255, 255, 255, 255}},
+    {8, SPRITE_BLANK, {990.0,260.0,550.0}, {100.0,100.0,150.0}, 1, 0, 68.0, 1, -1027080192, 0, 0, 0, {255, 255, 255, 255}},
+    {8, SPRITE_BLANK, {642.0,260.0,-990.0}, {100.0,100.0,150.0}, 1, 0, 64.0, 1, 0, 1120403456, 0, 0, {255, 255, 255, 255}},
+    {8, SPRITE_BLANK, {-550.0,260.0,-990.0}, {100.0,100.0,150.0}, 1, 0, 70.0, 1, 0, 1120403456, 0, 0, {255, 255, 255, 255}},
+    {8, SPRITE_BLANK, {-990.0,260.0,550.0}, {100.0,100.0,150.0}, 1, 0, 50.0, 1, 1120403456, 0, 0, 0, {255, 255, 255, 255}},
+    {4, SPRITE_BLANK, {800.0,50.0,990.0}, {100.0,200.0,200.0}, 1, 0, 1.0, 0, 0, 0, 1120403456, 0, {255, 255, 255, 255}},
+    {4, SPRITE_BLANK, {-990.0,50.0,-700.0}, {100.0,200.0,200.0}, 1, 0, 1.0, 0, 1120403456, 0, 0, 0, {255, 255, 255, 255}},
+    {-1, SPRITE_BLANK, {-1.0,-1.0,-1.0}, {-1.0,32.0,32.0}, 1, 0, 0.0, 0, 0, 0, 0, 0, {-1, -1, 0, 0}}
+};
+
+// Collectables
+Collectable AntLand_room0_collectables[3] = {
+    {R_HEART, {-849.0,0.0,-589.0}, -1, 0, 0, 0},
+    {CROWN, {-555.0,0.0,-862.0}, -1, 0, 0, 0},
+    {0, {0.0,0.0,0.0}, -1, 0, 0, 0} // Null collectable
+};
+
+Collectable AntLand_room1_collectables[2] = {
+    {CROWN, {-150.0,0.0,0.0}, -1, 0, 0, 0},
+    {0, {0.0,0.0,0.0}, -1, 0, 0, 0} // Null collectable
+};
+
+Collectable AntLand_room2_collectables[1] = {
+    {0, {0.0,0.0,0.0}, -1, 0, 0, 0} // Null collectable
+};
+
+Collectable AntLand_room3_collectables[2] = {
+    {R_HEART, {815.0,0.0,667.0}, -1, 0, 0, 0},
+    {0, {0.0,0.0,0.0}, -1, 0, 0, 0} // Null collectable
+};
+
+Collectable AntLand_room20_collectables[7] = {
+    {CROWN, {-800.0,1000.0,0.0}, -1, 0, 0, 0},
+    {CROWN, {900.0,2000.0,-200.0}, -1, 0, 0, 0},
+    {CROWN, {400.0,2500.0,800.0}, -1, 0, 0, 0},
+    {CROWN, {-400.0,2500.0,-800.0}, -1, 0, 0, 0},
+    {CROWN, {0.0,0.0,0.0}, -1, 0, 0, 0},
+    {CROWN, {-800.0,2100.0,-500.0}, -1, 0, 0, 0},
+    {0, {0.0,0.0,0.0}, -1, 0, 0, 0} // Null collectable
+};
+
+Collectable AntLand_room5_collectables[3] = {
+    {CROWN, {400.0,1200.0,1000.0}, 4, 0, 0, 0},
+    {R_HEART, {-1120.0,300.0,300.0}, -1, 0, 0, 0},
+    {0, {0.0,0.0,0.0}, -1, 0, 0, 0} // Null collectable
+};
+
+Collectable AntLand_room6_collectables[4] = {
+    {CROWN, {500.0,0.0,-1100.0}, -1, 0, 0, 0},
+    {R_HEART, {1200.0,0.0,500.0}, -1, 0, 0, 0},
+    {CROWN, {-1100.0,0.0,500.0}, -1, 0, 0, 0},
+    {0, {0.0,0.0,0.0}, -1, 0, 0, 0}
+};
+
+Collectable AntLand_room8_collectables[4] = {
+    {R_HEART, {-1080.0,0.0,2400.0}, -1, 0, 0, 0},
+    {R_HEART, {1020.0,0.0,-2500.0}, -1, 0, 0, 0},
+    {R_HEART, {1020.0,0.0,-2300.0}, -1, 0, 0, 0},
+    {0, {0.0,0.0,0.0}, -1, 0, 0, 0}
+};
+
+Collectable AntLand_room9_collectables[3] = {
+    {CROWN, {0.0,0.0,0.0}, -1, 0, 0, 0},
+    {CROWN, {600.0,1500.0,800.0}, -1, 0, 0, 0},
+    {0, {0.0,0.0,0.0}, -1, 0, 0, 0}
+};
+
+Collectable AntLand_room10_collectables[5] = {
+    {R_HEART, {50.0,0.0,-150.0}, -1, 0, 0, 0},
+    {O_HEART, {-150.0,0.0,50.0}, -1, 0, 0, 0},
+    {CROWN, {-50.0,0.0,-1250.0}, -1, 0, 0, 0},
+    {CROWN, {-1250.0,0.0,-50.0}, -1, 0, 0, 0},
+    {0, {0.0,0.0,0.0}, -1, 0, 0, 0}
+};
+
+Collectable AntLand_room11_collectables[3] = {
+    {CROWN, {900.0,0.0,-100.0}, -1, 0, 0, 0},
+    {R_HEART, {900.0,0.0,100.0}, -1, 0, 0, 0},
+    {0, {0.0,0.0,0.0}, -1, 0, 0, 0}
+};
+
+Collectable AntLand_room12_collectables[3] = {
+    {CROWN, {1350.0,0.0,1350.0}, -1, 0, 0, 0},
+    {R_HEART, {1230.0,0.0,-250.0}, -1, 0, 0, 0},
+    {0, {0.0,0.0,0.0}, -1, 0, 0, 0}
+};
+
+Collectable AntLand_roomUnk4_collectables[3] = {
+    {CROWN, {1350.0,0.0,1350.0}, -1, 0, 0, 0},
+    {R_HEART, {700.0,0.0,200.0}, -1, 0, 0, 0},
+    {0, {0.0,0.0,0.0}, -1, 0, 0, 0}
+};
+
+Collectable AntLand_room21_collectables[8] = {
+    {CROWN, {850.0,880.0,-850.0}, -1, 0, 0, 0},
+    {CROWN, {650.0,880.0,-850.0}, -1, 0, 0, 0},
+    {CROWN, {450.0,880.0,-850.0}, -1, 0, 0, 0},
+    {R_HEART, {850.0,880.0,-650.0}, -1, 0, 0, 0},
+    {O_HEART, {650.0,880.0,-650.0}, -1, 0, 0, 0},
+    {R_HEART, {450.0,880.0,-650.0}, -1, 0, 0, 0},
+    {CARROT, {450.0,1100.0,-150.0}, -1, 0, 0, 0},
+    {0, {0.0,0.0,0.0}, -1, 0, 0, 0}
+};
+
+Collectable AntLand_room16_collectables[5] = {
+    {CROWN, {1350.0,0.0,-1350.0}, -1, 0, 0, 0},
+    {CROWN, {-1350.0,0.0,1350.0}, -1, 0, 0, 0},
+    {R_HEART, {0.0,0.0,1050.0}, -1, 0, 0, 0},
+    {TIME_STOP_POWER_UP, {-1400.0,0.0,-1400.0}, -1, 0, -1, 360},
+    {0, {0.0,0.0,0.0}, -1, 0, 0, 0}
+};
+
+Collectable AntLand_room17_collectables[4] = {
+    {CROWN, {500.0,0.0,500.0}, -1, 0, 0, 0},
+    {CROWN, {-500.0,0.0,500.0}, -1, 0, 0, 0},
+    {BIG_HEAD_POWER_UP, {1000.0,0.0,-400.0}, -1, 0, -1, 300},
+    {0, {0.0,0.0,0.0}, -1, 0, 0, 0}
+};
+
+Collectable AntLand_room18_collectables[4] = {
+    {R_HEART, {0.0,150.0,0.0}, -1, 0, 0, 0},
+    {R_HEART, {0.0,300.0,0.0}, -1, 0, 0, 0},
+    {CROWN, {0.0,450.0,0.0}, -1, 0, 0, 0},
+    {0, {0.0,0.0,0.0}, -1, 0, 0, 0}
+};
+
+RoomInstance AntLand_room_instances[] = {
+    {AntLand_room0_objects, AntLand_room0_actors, AntLand_room0_collectables, AntLand_room0_sprites, 0, 0, 1, 0, -1, 0, 0.0, 1, -900.0, 300.0, -900.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+    {AntLand_room1_objects, AntLand_room1_actors, AntLand_room1_collectables, AntLand_room1_sprites, 0, 0, 1, 0, -1, 200, 0.0, 1, -900.0, 600.0, -900.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+    {AntLand_room2_objects, AntLand_room2_actors, AntLand_room2_collectables, AntLand_room2_sprites, 0, 0, 2, 0, -1, 0, 0.0, 1, -900.0, 600.0, -900.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+    {AntLand_room3_objects, AntLand_room3_actors, AntLand_room3_collectables, AntLand_room3_sprites, 1, 0, 0, 2, 14, 0, 0.0, 1, -900.0, 600.0, -900.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+    {AntLand_room4_objects, AntLand_room4_actors, 0, AntLand_room4_sprites, 0, 0, 1, 0, -1, 0, 0.0, 2, -700.0, 800.0, -950.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+    {AntLand_room5_objects, AntLand_room5_actors, AntLand_room5_collectables, AntLand_room5_sprites, 1, 0, 1, 6, 4, 0, 0.0, 2, 0.0, 800.0, -1100.0, 0.0, 0.0, 1.7999999523162842, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+    {AntLand_room6_objects, AntLand_room6_actors, AntLand_room6_collectables, AntLand_room6_sprites, 0, 0, 1, 0, -1, 0, 0.0, 1, 1400.0, 500.0, -1400.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+    {AntLand_room7_objects, 0, 0, 0, 0, 0, 1, 0, -1, 0, 0.0, 2, 0.0, 600.0, -800.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+    {AntLand_room8_objects, AntLand_room8_actors, AntLand_room8_collectables, AntLand_room8_sprites, 0, 0, 1, 0, -1, 0, 0.0, 1, 900.0, 800.0, 600.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+    {AntLand_room9_objects, AntLand_room9_actors, AntLand_room9_collectables, AntLand_room9_sprites, 0, 0, 2, 0, -1, 0, 0.0, 1, 1900.0, 600.0, -900.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+    {AntLand_room10_objects, AntLand_room10_actors, AntLand_room10_collectables, AntLand_room10_sprites, 0, 0, 2, 0, -1, 200, 0.0, 2, -550.0, 800.0, -1100.0, 0.0, 0.0, -600.0, 0.699999988079071, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+    {AntLand_room11_objects, 0, AntLand_room11_collectables, AntLand_room11_sprites, 0, 0, 2, 0, -1, 0, 0.0, 2, -980.0, 700.0, 0.0, 0.0, 0.0, 0.0, 0.30000001192092896, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+    {AntLand_room12_objects, AntLand_room12_actors, AntLand_room12_collectables, AntLand_room12_sprites, 0, 0, 2, 0, -1, 400, 0.0, 10, -1000.0, 0.0, 1300.0, 0.0, 0.0, 3.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+    {AntLand_room13_objects, AntLand_room13_actors, 0, AntLand_room13_sprites, 1, 0, 2, 6, 6, 0, 0.0, 2, -1400.0, 900.0, 1400.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+    {AntLand_room14_objects, AntLand_room14_actors, 0, AntLand_room14_sprites, 1, 0, 0, 2, 7, 0, 0.0, 10, -900.0, 0.0, -150.0, 0.0, 0.0, 0.0, 2.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+    {AntLand_room15_objects, 0, 0, 0, 0, 0, 1, 0, -1, 0, 0.0, 2, -800.0, 600.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+    {AntLand_room16_objects, AntLand_room16_actors, AntLand_room16_collectables, AntLand_room16_sprites, 0, 0, 5, 0, -1, 200, 0.0, 10, -500.0, 0.0, 1400.0, 0.0, 0.0, 0.0, 2.5, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+    {AntLand_room17_objects, AntLand_room17_actors, AntLand_room17_collectables, AntLand_room17_sprites, 1, 0, 6, 11, 9, 0, 0.0, 1, -400.0, 550.0, -1350.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+    {AntLand_room18_objects, 0, AntLand_room18_collectables, AntLand_room18_sprites, 0, 0, 2, 0, -1, 0, 0.0, 2, -900.0, 800.0, -900.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+    {AntLand_room19_objects, AntLand_room19_actors, 0, 0, 1, 1, 2, 0, -1, 0, 0.0, 2, 0.0, 800.0, 1000.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+    {AntLand_room20_objects, AntLand_room20_actors, AntLand_room20_collectables, AntLand_room20_sprites, 0, 0, 2, 0, -1, 0, 0.0, 1, 900.0, 600.0, -900.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+    {AntLand_room21_objects, 0, AntLand_room21_collectables, 0, 0, 0, 4, 0, -1, 0, 0.0, 2, -900.0, 1150.0, 900.0, 0.0, 0.0, 0.0, 0.6000000238418579, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+    {0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0}   // Null room
+};
+
+s32 AntLand_rooms_map[10][8] = {
+    {-1,  0,  1,  2,  3, 20, -1, -1},
+    {-1, -1, -1, -1,  4,  5, -1, -1},
+    {-1, 10,  9,  8,  7,  6, -1, -1},
+    {-1, 11, -1, -1, -1, -1, -1, -1},
+    {-1, 12, 13, 14, 21, -1, -1, -1},
+    {-1, -1, -1, 15, -1, -1, -1, -1},
+    {-1, -1, -1, 16, -1, -1, -1, -1},
+    {-1, -1, -1, 17, -1, -1, -1, -1},
+    {-1, -1, -1, 18, -1, -1, -1, -1},
+    {-1, -1, -1, 19, -1, -1, -1, -1} 
+};
+
+StageMapData AntLand_map_data = {
+    8, 10, AntLand_room_instances, AntLand_rooms_map, 
+};
+
+RoomInstance AntLand_nullOWRoom_Rmset = {
+    0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0
+};
+
+LevelScope AntLand_scope_Lvlscope = {
+    0,
+    0,
+    0,
+    255,
+    20000,  // render distance
+    60,
+};
+
+StageData AntLand_stageData = {
+    &AntLand_map_data,
+    0,
+    AntLand_stageModels,            // Model array
+    99,                             // Model count 
+    0,
+    50336464,
+    131072,
+    &AntLand_spriteLib_Sprlib[0],
+    &AntLand_scope_Lvlscope,
+};
+
+
+/* Asset Information that is not hardcoded */
 Mtx AntLand_IMtx2 = IDENTITY;
 
 #include "assets/levelGroup/AntLand/alScope.light.inc.c"
@@ -1928,7 +1688,7 @@ Mtx AntLand_IMtx2 = IDENTITY;
 Mtx AntLand_IMtx3 = IDENTITY;
 unsigned char AntLand_Pad1[] = FILEPAD;
 unsigned char AntLand_antWallw_i4_PNG[] = {
-#include "build/assets/levelGroup/AntLand/antWallw.i4.png.inc.c"
+    #include "build/assets/levelGroup/AntLand/antWallw.i4.png.inc.c"
 };
 
 #include "assets/levelGroup/AntLand/exit2/exit2.gfx.inc.c"
@@ -2177,19 +1937,19 @@ Mtx AntLand_IMtx31 = IDENTITY;
 Mtx AntLand_IMtx32 = IDENTITY;
 unsigned char AntLand_Pad27[] = FILEPAD;
 unsigned char AntLand_hole_ci4_PNG[] = {
-#include "build/assets/levelGroup/AntLand/hole.ci4.png.inc.c"
+    #include "build/assets/levelGroup/AntLand/hole.ci4.png.inc.c"
 };
 unsigned char AntLand_Pad28[] = FILEPAD;
 unsigned char AntLand_hole_ci4_PAL[] = {
-#include "build/assets/levelGroup/AntLand/hole.ci4.pal.inc.c"
+    #include "build/assets/levelGroup/AntLand/hole.ci4.pal.inc.c"
 };
 unsigned char AntLand_Pad29[] = FILEPAD;
 unsigned char AntLand_metallurgic_ci4_PNG[] = {
-#include "build/assets/levelGroup/AntLand/metallurgic.ci4.png.inc.c"
+    #include "build/assets/levelGroup/AntLand/metallurgic.ci4.png.inc.c"
 };
 unsigned char AntLand_Pad30[] = FILEPAD;
 unsigned char AntLand_metallurgic_ci4_PAL[] = {
-#include "build/assets/levelGroup/AntLand/metallurgic.ci4.pal.inc.c"
+    #include "build/assets/levelGroup/AntLand/metallurgic.ci4.pal.inc.c"
 };
 
 #include "assets/levelGroup/AntLand/room10Floor/room10Floor.gfx.inc.c"
@@ -2233,15 +1993,15 @@ Mtx AntLand_IMtx39 = IDENTITY;
 Mtx AntLand_IMtx40 = IDENTITY;
 unsigned char AntLand_Pad31[] = FILEPAD;
 unsigned char AntLand_path_ci4_PNG[] = {
-#include "build/assets/levelGroup/AntLand/path.ci4.png.inc.c"
+    #include "build/assets/levelGroup/AntLand/path.ci4.png.inc.c"
 };
 unsigned char AntLand_Pad32[] = FILEPAD;
 unsigned char AntLand_path_ci4_PAL[] = {
-#include "build/assets/levelGroup/AntLand/path.ci4.pal.inc.c"
+    #include "build/assets/levelGroup/AntLand/path.ci4.pal.inc.c"
 };
 unsigned char AntLand_Pad33[] = FILEPAD;
 unsigned char AntLand_stone_ci4_PNG[] = {
-#include "build/assets/levelGroup/AntLand/stone.ci4.png.inc.c"
+    #include "build/assets/levelGroup/AntLand/stone.ci4.png.inc.c"
 };
 unsigned char AntLand_Pad34[] = FILEPAD;
 unsigned char AntLand_stone_ci4_PAL[] = {
@@ -2304,7 +2064,7 @@ Mtx AntLand_IMtx50 = IDENTITY;
 Mtx AntLand_IMtx51 = IDENTITY;
 unsigned char AntLand_Pad35[] = FILEPAD;
 unsigned char AntLand_wallagain_i4_PNG[] = {
-#include "build/assets/levelGroup/AntLand/wallagain.i4.png.inc.c"
+    #include "build/assets/levelGroup/AntLand/wallagain.i4.png.inc.c"
 };
 
 #include "assets/levelGroup/AntLand/room0doorPillar1/room0doorPillar1.gfx.inc.c"
@@ -2401,109 +2161,200 @@ Mtx AntLand_IMtx63 = IDENTITY;
 
 #include "assets/levelGroup/AntLand/fixedCamPillar/fixedCamPillar.gfx.inc.c"
 
-#include "assets/levelGroup/AntLand/exit2/exit2.colV.inc.c"
+/* Models Collision Information */
 
-#include "assets/levelGroup/AntLand/exit2/exit2.colT.inc.c"
+Vec3f AntLand_exit2_collison_verts[] = {
+    #include "assets/levelGroup/AntLand/exit2/exit2.colV.inc.c"
+};
+
+Vec3w AntLand_exit2_collision_tris[] = {
+    #include "assets/levelGroup/AntLand/exit2/exit2.colT.inc.c"
+};
 
 #include "assets/levelGroup/AntLand/exit2/exit2.colS.inc.c"
 
-#include "assets/levelGroup/AntLand/exit2/exit2.colH.inc.c"
+ModelCollision AntLand_exit2_collision = {
+    6, 4, AntLand_exit2_collison_verts, AntLand_exit2_collision_tris, &AntLand_exit2_ColS   // Nathan's data_only doesnt work for this rect3d
+};
 
-#include "assets/levelGroup/AntLand/exit3/exit3.colV.inc.c"
+Vec3f AntLand_exit3_collison_verts[] = {
+    #include "assets/levelGroup/AntLand/exit3/exit3.colV.inc.c"
+};
 
-#include "assets/levelGroup/AntLand/exit3/exit3.colT.inc.c"
+Vec3w AntLand_exit3_collision_tris[] = {
+    #include "assets/levelGroup/AntLand/exit3/exit3.colT.inc.c"
+};
 
 #include "assets/levelGroup/AntLand/exit3/exit3.colS.inc.c"
 
-#include "assets/levelGroup/AntLand/exit3/exit3.colH.inc.c"
+ModelCollision AntLand_exit3_collision = {
+    6, 4, AntLand_exit3_collison_verts, AntLand_exit3_collision_tris, &AntLand_exit3_ColS
+};
 
-#include "assets/levelGroup/AntLand/exit4/exit4.colV.inc.c"
+Vec3f AntLand_exit4_collison_verts[] = {
+    #include "assets/levelGroup/AntLand/exit4/exit4.colV.inc.c"
+};
 
-#include "assets/levelGroup/AntLand/exit4/exit4.colT.inc.c"
+Vec3w AntLand_exit4_collision_tris[] = {
+    #include "assets/levelGroup/AntLand/exit4/exit4.colT.inc.c"
+};
 
 #include "assets/levelGroup/AntLand/exit4/exit4.colS.inc.c"
 
-#include "assets/levelGroup/AntLand/exit4/exit4.colH.inc.c"
+ModelCollision AntLand_exit4_ColH = {
+    6, 4, AntLand_exit4_collison_verts, AntLand_exit4_collision_tris, &AntLand_exit4_ColS
+};
 
-#include "assets/levelGroup/AntLand/room0/room0.colV.inc.c"
 
-#include "assets/levelGroup/AntLand/room0/room0.colT.inc.c"
+// Room 0
+Vec3f AntLand_room0_collision_verts[] = {
+    #include "assets/levelGroup/AntLand/room0/room0.colV.inc.c"
+};
+
+Vec3w AntLand_room0_collision_tris[] = {
+    #include "assets/levelGroup/AntLand/room0/room0.colT.inc.c"
+};
 
 #include "assets/levelGroup/AntLand/room0/room0.colS.inc.c"
 
-#include "assets/levelGroup/AntLand/room0/room0.colH.inc.c"
+ModelCollision AntLand_room0_ColH = {
+    35, 64, AntLand_room0_collision_verts, AntLand_room0_collision_tris, &AntLand_room0_ColS
+};
 
-#include "assets/levelGroup/AntLand/room1/room1.colV.inc.c"
+// Room 1
+Vec3f AntLand_room1_collision_verts[] = {
+    #include "assets/levelGroup/AntLand/room1/room1.colV.inc.c"
+};
 
-#include "assets/levelGroup/AntLand/room1/room1.colT.inc.c"
+Vec3w AntLand_room1_collision_tris[] = {
+    #include "assets/levelGroup/AntLand/room1/room1.colT.inc.c"
+};
 
 #include "assets/levelGroup/AntLand/room1/room1.colS.inc.c"
 
-#include "assets/levelGroup/AntLand/room1/room1.colH.inc.c"
+ModelCollision AntLand_room1_ColH = {
+    48, 84, AntLand_room1_collision_verts, AntLand_room1_collision_tris, &AntLand_room1_ColS
+};
 
-#include "assets/levelGroup/AntLand/room2/room2.colV.inc.c"
+// Room 2
+Vec3f AntLand_room2_collision_verts[] = {
+    #include "assets/levelGroup/AntLand/room2/room2.colV.inc.c"
+};
 
-#include "assets/levelGroup/AntLand/room2/room2.colT.inc.c"
+Vec3w AntLand_room2_collision_tris[] = {
+    #include "assets/levelGroup/AntLand/room2/room2.colT.inc.c"
+};
 
 #include "assets/levelGroup/AntLand/room2/room2.colS.inc.c"
 
-#include "assets/levelGroup/AntLand/room2/room2.colH.inc.c"
+ModelCollision AntLand_room2_ColH = {
+    52, 92, AntLand_room2_collision_verts, AntLand_room2_collision_tris, &AntLand_room2_ColS
+};
 
-#include "assets/levelGroup/AntLand/room14/room14.colV.inc.c"
+// Room 14
+Vec3f AntLand_room14_collision_verts[] = {
+    #include "assets/levelGroup/AntLand/room14/room14.colV.inc.c"
+};
 
-#include "assets/levelGroup/AntLand/room14/room14.colT.inc.c"
+Vec3w AntLand_room14_collision_tris[] = {
+    #include "assets/levelGroup/AntLand/room14/room14.colT.inc.c"
+};
 
 #include "assets/levelGroup/AntLand/room14/room14.colS.inc.c"
 
-#include "assets/levelGroup/AntLand/room14/room14.colH.inc.c"
+ModelCollision AntLand_room14_ColH = {
+    66, 118, AntLand_room14_collision_verts, AntLand_room14_collision_tris, &AntLand_room14_ColS
+};
 
-#include "assets/levelGroup/AntLand/room4/room4.colV.inc.c"
+// Room 4
+Vec3f AntLand_room4_collision_verts[] = {
+    #include "assets/levelGroup/AntLand/room4/room4.colV.inc.c"
+};
 
-#include "assets/levelGroup/AntLand/room4/room4.colT.inc.c"
+Vec3w AntLand_room4_collision_tris[] = {
+    #include "assets/levelGroup/AntLand/room4/room4.colT.inc.c"
+};
 
 #include "assets/levelGroup/AntLand/room4/room4.colS.inc.c"
 
-#include "assets/levelGroup/AntLand/room4/room4.colH.inc.c"
+ModelCollision AntLand_room4_ColH = {
+    53, 86, AntLand_room4_collision_verts, AntLand_room4_collision_tris, &AntLand_room4_ColS
+};
 
-#include "assets/levelGroup/AntLand/room5/room5.colV.inc.c"
+// Room 5
+Vec3f AntLand_room5_collision_verts[] = {
+    #include "assets/levelGroup/AntLand/room5/room5.colV.inc.c"
+};
 
-#include "assets/levelGroup/AntLand/room5/room5.colT.inc.c"
+Vec3w AntLand_room5_collision_tris[] = {
+    #include "assets/levelGroup/AntLand/room5/room5.colT.inc.c"
+};
 
 #include "assets/levelGroup/AntLand/room5/room5.colS.inc.c"
 
-#include "assets/levelGroup/AntLand/room5/room5.colH.inc.c"
+ModelCollision AntLand_room5_collision = {
+    48, 84, AntLand_room5_collision_verts, AntLand_room5_collision_tris, &AntLand_room5_ColS
+};
 
-#include "assets/levelGroup/AntLand/room6/room6.colV.inc.c"
+// Room 6
+Vec3f AntLand_room6_collision_verts[] = {
+    #include "assets/levelGroup/AntLand/room6/room6.colV.inc.c"
+};
 
-#include "assets/levelGroup/AntLand/room6/room6.colT.inc.c"
+Vec3w AntLand_room6_collision_tris[] = {
+    #include "assets/levelGroup/AntLand/room6/room6.colT.inc.c"
+};
 
 #include "assets/levelGroup/AntLand/room6/room6.colS.inc.c"
 
-#include "assets/levelGroup/AntLand/room6/room6.colH.inc.c"
+ModelCollision AntLand_room6_collision = {
+    76, 118, AntLand_room6_collision_verts, AntLand_room6_collision_tris, &AntLand_room6_ColS
+};
 
-#include "assets/levelGroup/AntLand/room7/room7.colV.inc.c"
+// Room 7
+Vec3f AntLand_room7_collision_verts[] = {
+    #include "assets/levelGroup/AntLand/room7/room7.colV.inc.c"
+};
 
-#include "assets/levelGroup/AntLand/room7/room7.colT.inc.c"
+Vec3w AntLand_room7_collision_tris[] = {
+    #include "assets/levelGroup/AntLand/room7/room7.colT.inc.c"
+};
 
 #include "assets/levelGroup/AntLand/room7/room7.colS.inc.c"
 
-#include "assets/levelGroup/AntLand/room7/room7.colH.inc.c"
+ModelCollision AntLand_room7_collision = {
+    38, 45, AntLand_room7_collision_verts, AntLand_room7_collision_tris, &AntLand_room7_ColS
+};
 
-#include "assets/levelGroup/AntLand/room8/room8.colV.inc.c"
+// Room 8
+Vec3f AntLand_room8_collision_verts[] = {
+    #include "assets/levelGroup/AntLand/room8/room8.colV.inc.c"
+};
 
-#include "assets/levelGroup/AntLand/room8/room8.colT.inc.c"
+Vec3w AntLand_room8_collision_tris[] = {
+    #include "assets/levelGroup/AntLand/room8/room8.colT.inc.c"
+};
 
 #include "assets/levelGroup/AntLand/room8/room8.colS.inc.c"
 
-#include "assets/levelGroup/AntLand/room8/room8.colH.inc.c"
+ModelCollision AntLand_room8_collision = {
+    82, 150, AntLand_room8_collision_verts, AntLand_room8_collision_tris, &AntLand_room8_ColS
+};
 
-#include "assets/levelGroup/AntLand/room9/room9.colV.inc.c"
+// Room 9
+Vec3f AntLand_room9_collision_verts[] = {
+    #include "assets/levelGroup/AntLand/room9/room9.colV.inc.c"
+};
 
-#include "assets/levelGroup/AntLand/room9/room9.colT.inc.c"
+Vec3w AntLand_room9_collision_tris[] = {
+    #include "assets/levelGroup/AntLand/room9/room9.colT.inc.c"
+};
 
 #include "assets/levelGroup/AntLand/room9/room9.colS.inc.c"
 
-#include "assets/levelGroup/AntLand/room9/room9.colH.inc.c"
+ModelCollision AntLand_room9_collision = {
+    24, 38, AntLand_room9_collision_verts, AntLand_room9_collision_tris, &AntLand_room9_ColS
+};
 
 #include "assets/levelGroup/AntLand/room10/room10.colV.inc.c"
 
@@ -2511,7 +2362,9 @@ Mtx AntLand_IMtx63 = IDENTITY;
 
 #include "assets/levelGroup/AntLand/room10/room10.colS.inc.c"
 
-#include "assets/levelGroup/AntLand/room10/room10.colH.inc.c"
+ModelCollision AntLand_room10_ColH = {
+    6, 1, &AntLand_room10_ColV[0], &AntLand_room10_ColT[0], &AntLand_room10_ColS
+};
 
 #include "assets/levelGroup/AntLand/room11/room11.colV.inc.c"
 
@@ -2519,7 +2372,9 @@ Mtx AntLand_IMtx63 = IDENTITY;
 
 #include "assets/levelGroup/AntLand/room11/room11.colS.inc.c"
 
-#include "assets/levelGroup/AntLand/room11/room11.colH.inc.c"
+ModelCollision AntLand_room11_ColH = {
+    52, 90, &AntLand_room11_ColV[0], &AntLand_room11_ColT[0], &AntLand_room11_ColS
+};
 
 #include "assets/levelGroup/AntLand/room12/room12.colV.inc.c"
 
@@ -2527,7 +2382,9 @@ Mtx AntLand_IMtx63 = IDENTITY;
 
 #include "assets/levelGroup/AntLand/room12/room12.colS.inc.c"
 
-#include "assets/levelGroup/AntLand/room12/room12.colH.inc.c"
+ModelCollision AntLand_room12_ColH = {
+    64, 110, &AntLand_room12_ColV[0], &AntLand_room12_ColT[0], &AntLand_room12_ColS
+};
 
 #include "assets/levelGroup/AntLand/room13/room13.colV.inc.c"
 
@@ -2535,7 +2392,9 @@ Mtx AntLand_IMtx63 = IDENTITY;
 
 #include "assets/levelGroup/AntLand/room13/room13.colS.inc.c"
 
-#include "assets/levelGroup/AntLand/room13/room13.colH.inc.c"
+ModelCollision AntLand_room13_ColH = {
+    56, 99, &AntLand_room13_ColV[0], &AntLand_room13_ColT[0], &AntLand_room13_ColS
+};
 
 #include "assets/levelGroup/AntLand/room3/room3.colV.inc.c"
 
@@ -2543,7 +2402,9 @@ Mtx AntLand_IMtx63 = IDENTITY;
 
 #include "assets/levelGroup/AntLand/room3/room3.colS.inc.c"
 
-#include "assets/levelGroup/AntLand/room3/room3.colH.inc.c"
+ModelCollision AntLand_room3_ColH = {
+    60, 108, &AntLand_room3_ColV[0], &AntLand_room3_ColT[0], &AntLand_room3_ColS
+};
 
 #include "assets/levelGroup/AntLand/room17/room17.colV.inc.c"
 
@@ -2551,7 +2412,9 @@ Mtx AntLand_IMtx63 = IDENTITY;
 
 #include "assets/levelGroup/AntLand/room17/room17.colS.inc.c"
 
-#include "assets/levelGroup/AntLand/room17/room17.colH.inc.c"
+ModelCollision AntLand_room17_ColH = {
+    60, 106, &AntLand_room17_ColV[0], &AntLand_room17_ColT[0], &AntLand_room17_ColS
+};
 
 #include "assets/levelGroup/AntLand/room15/room15.colV.inc.c"
 
@@ -2559,7 +2422,9 @@ Mtx AntLand_IMtx63 = IDENTITY;
 
 #include "assets/levelGroup/AntLand/room15/room15.colS.inc.c"
 
-#include "assets/levelGroup/AntLand/room15/room15.colH.inc.c"
+ModelCollision AntLand_room15_ColH = {
+    38, 47, &AntLand_room15_ColV[0], &AntLand_room15_ColT[0], &AntLand_room15_ColS
+};
 
 #include "assets/levelGroup/AntLand/room18/room18.colV.inc.c"
 
@@ -2567,7 +2432,9 @@ Mtx AntLand_IMtx63 = IDENTITY;
 
 #include "assets/levelGroup/AntLand/room18/room18.colS.inc.c"
 
-#include "assets/levelGroup/AntLand/room18/room18.colH.inc.c"
+ModelCollision AntLand_room18_ColH = {
+    32, 52, &AntLand_room18_ColV[0], &AntLand_room18_ColT[0], &AntLand_room18_ColS
+};
 
 #include "assets/levelGroup/AntLand/room16/room16.colV.inc.c"
 
@@ -2575,7 +2442,9 @@ Mtx AntLand_IMtx63 = IDENTITY;
 
 #include "assets/levelGroup/AntLand/room16/room16.colS.inc.c"
 
-#include "assets/levelGroup/AntLand/room16/room16.colH.inc.c"
+ModelCollision AntLand_room16_ColH = {
+    28, 40, &AntLand_room16_ColV[0], &AntLand_room16_ColT[0], &AntLand_room16_ColS
+};
 
 #include "assets/levelGroup/AntLand/room20/room20.colV.inc.c"
 
@@ -2583,7 +2452,9 @@ Mtx AntLand_IMtx63 = IDENTITY;
 
 #include "assets/levelGroup/AntLand/room20/room20.colS.inc.c"
 
-#include "assets/levelGroup/AntLand/room20/room20.colH.inc.c"
+ModelCollision AntLand_room20_ColH = {
+    40, 72, &AntLand_room20_ColV[0], &AntLand_room20_ColT[0], &AntLand_room20_ColS
+};
 
 #include "assets/levelGroup/AntLand/room21/room21.colV.inc.c"
 
@@ -2591,7 +2462,9 @@ Mtx AntLand_IMtx63 = IDENTITY;
 
 #include "assets/levelGroup/AntLand/room21/room21.colS.inc.c"
 
-#include "assets/levelGroup/AntLand/room21/room21.colH.inc.c"
+ModelCollision AntLand_room21_ColH = {
+    25, 35, &AntLand_room21_ColV[0], &AntLand_room21_ColT[0], &AntLand_room21_ColS
+};
 
 #include "assets/levelGroup/AntLand/room4Platform/room4Platform.colV.inc.c"
 
@@ -2599,7 +2472,9 @@ Mtx AntLand_IMtx63 = IDENTITY;
 
 #include "assets/levelGroup/AntLand/room4Platform/room4Platform.colS.inc.c"
 
-#include "assets/levelGroup/AntLand/room4Platform/room4Platform.colH.inc.c"
+ModelCollision AntLand_room4Platform_ColH = {
+    8, 10, &AntLand_room4Platform_ColV[0], &AntLand_room4Platform_ColT[0], &AntLand_room4Platform_ColS
+};
 
 #include "assets/levelGroup/AntLand/room4Floor/room4Floor.colV.inc.c"
 
@@ -2607,7 +2482,9 @@ Mtx AntLand_IMtx63 = IDENTITY;
 
 #include "assets/levelGroup/AntLand/room4Floor/room4Floor.colS.inc.c"
 
-#include "assets/levelGroup/AntLand/room4Floor/room4Floor.colH.inc.c"
+ModelCollision AntLand_room4Floor_ColH = {
+    13, 15, &AntLand_room4Floor_ColV[0], &AntLand_room4Floor_ColT[0], &AntLand_room4Floor_ColS
+};
 
 #include "assets/levelGroup/AntLand/room6Floor/room6Floor.colV.inc.c"
 
@@ -2615,7 +2492,9 @@ Mtx AntLand_IMtx63 = IDENTITY;
 
 #include "assets/levelGroup/AntLand/room6Floor/room6Floor.colS.inc.c"
 
-#include "assets/levelGroup/AntLand/room6Floor/room6Floor.colH.inc.c"
+ModelCollision AntLand_room6Floor_ColH = {
+    28, 32, &AntLand_room6Floor_ColV[0], &AntLand_room6Floor_ColT[0], &AntLand_room6Floor_ColS
+};
 
 #include "assets/levelGroup/AntLand/room8Floor/room8Floor.colV.inc.c"
 
@@ -2623,7 +2502,9 @@ Mtx AntLand_IMtx63 = IDENTITY;
 
 #include "assets/levelGroup/AntLand/room8Floor/room8Floor.colS.inc.c"
 
-#include "assets/levelGroup/AntLand/room8Floor/room8Floor.colH.inc.c"
+ModelCollision AntLand_room8Floor_ColH = {
+    21, 30, &AntLand_room8Floor_ColV[0], &AntLand_room8Floor_ColT[0], &AntLand_room8Floor_ColS
+};
 
 #include "assets/levelGroup/AntLand/room17Floor/room17Floor.colV.inc.c"
 
@@ -2887,7 +2768,9 @@ Mtx AntLand_IMtx63 = IDENTITY;
 
 #include "assets/levelGroup/AntLand/fixedCamPillar/fixedCamPillar.colS.inc.c"
 
-#include "assets/levelGroup/AntLand/fixedCamPillar/fixedCamPillar.colH.inc.c"
+ModelCollision AntLand_fixedCamPillar_ColH = {
+    8, 8, &AntLand_fixedCamPillar_ColV[0], &AntLand_fixedCamPillar_ColT[0], &AntLand_fixedCamPillar_ColS
+};
 
 s32 alignment_Pad[] = {0, 0};
 

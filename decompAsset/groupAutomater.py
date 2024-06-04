@@ -191,7 +191,7 @@ def start(group, where):
                         elif customType == "ColT":
                             newC.append("Vec3s "+symbol+"[] = {")
                         elif customType == "ColH":
-                            newC.append("CollisionData "+symbol+"[] = {")
+                            newC.append("ModelCollision "+symbol+"[] = {")
                     elif char:
                         newC.append("unsigned char "+symbol+"[] = {")
                     

@@ -6,8 +6,10 @@
 #define MAX_ACTORS 64
 
 // GENERAL MATHS //
+#define PI_SHORT 3.14156 //for unknown reasons, less digits are randomly required
 #define PI 3.141592653589793
-#define PI_2 6.283185307179586
+#define TAU 6.283185307179586
+#define PI_HALF 1.57078
 #define SQ(x) ((x)*(x))
 #define SUM_OF_SQUARES(x,y) (SQ(x) + SQ(y))
 #define NORM_2(x,y) (sqrtf(SQ(x) + SQ(y)))
@@ -37,8 +39,8 @@
 #define PACK_FILL_DEPTH(z,dz) (GPACK_ZDZ(z, dz) << 0x10) | GPACK_ZDZ(z, dz)
 
 //macros for simplifying the "play sound effect" calls
-#define PLAYSFX(id,arg4,flag) PlaySoundEffect(id,NULL,NULL,NULL,arg4,flag)
-#define PLAYSFXAT(id,pos,arg4,flag) PlaySoundEffect(id,&pos.x,&pos.y,&pos.z,arg4,flag)
+#define PLAY_SFX(id,arg4,flag) PlaySoundEffect(id,NULL,NULL,NULL,arg4,flag)
+#define PLAY_SFX_AT(id,pos,arg4,flag) PlaySoundEffect(id,&pos.x,&pos.y,&pos.z,arg4,flag)
 
 #define flabs(A) (((A) < 0.0f) ? (-A) : (A))
 #define RANDOM(min, max)  ((min) + (Rand() % (s32)((max) - (min) + 1)))

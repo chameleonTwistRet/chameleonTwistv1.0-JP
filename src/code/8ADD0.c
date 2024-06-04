@@ -33,7 +33,7 @@ typedef struct UnkData {
 s32 D_801087A0[] = {0, 1, 2, 3, 4, 5, 6, 7};
 s32 sBossIDs[] = {0x4B, 7, 0x13, 0x1E, 0x26, 0x3D};
 Vec3w D_801087D8[] = {{0, 3, 0}, {1, 0xC, 2}, {2, 0x30, 4}, {3, 0x40, 6}, {4, 0x80, 7}};
-s32 D_80108814 = 0; //padding?
+s32 D_80108814 = 0; //?
 s32 D_80108818 = 0;
 f32 D_8010881C = 1.0f;
 f32 D_80108820 = 1.0f;
@@ -86,11 +86,11 @@ UnkFunctionStructs D_80108894[] = {
 
 UnkData D_80108A5C[] = {
     {0, 1.0f, 0.0f, 0.0f},
-    {0x19, 1.0f, 0.0f, 0.0f},
+    {25, 1.0f, 0.0f, 0.0f},
     {0, 1.0f, 0.0f, 0.0f},
     {0, 1.0f, 0.0f, 0.0f},
     {0, 1.0f, 0.0f, 0.0f},
-    {0x30, 1.0f, 0.0f, 0.0f},
+    {48, 1.0f, 0.0f, 0.0f},
     {0, 1.0f, 0.0f, 0.0f},
     {0, 1.0f, 0.0f, 0.0f},
     {0, 1.0f, 0.0f, 0.0f}
@@ -155,10 +155,13 @@ s32 CountShotActors(void) {
 
     for (i = 0, actor = gActors; i < MAX_ACTORS; i++, actor++) {
         // If the actor is a pickup:
-        if (IsNotPickup(actor) == FALSE) continue;
-        if (actor->actorState != 3) continue;
-            count++;
-        
+        if (IsNotPickup(actor) == FALSE) {
+            continue;
+        }
+        if (actor->actorState != 3) {
+            continue;
+        }
+        count++;
     }
     return count;
 }
@@ -166,9 +169,9 @@ s32 CountShotActors(void) {
 s32 func_800B07E4(void) {
     s32 i;
     Actor* actor;
-    s32 count;
-    count = 0;
-    for(i = 0, actor = &gActors[0]; i != ACTORS_MAX; actor++, i++){
+    s32 count = 0;
+
+    for (i = 0, actor = gActors; i != ARRAY_COUNT(gActors); actor++, i++){
         if ((actor->actorID == WHITE_BOMB) && (actor->actorState == 0)) {
             count++;
         }
@@ -177,7 +180,7 @@ s32 func_800B07E4(void) {
 }
 
 void func_800B088C(Collider* arg0, RoomObject* arg1) {
-    arg0->unk_AC = arg1->unk38;
+    arg0->unk_AC = arg1->keyframes;
     arg0->unk_B0 = arg1->unk3C;
     arg0->unk_B4 = 0;
     arg0->unk_B8 = -1;
@@ -225,7 +228,7 @@ void func_800B09C0(Collider* arg0, RoomObject* arg1) {
 }
 
 void func_800B09E8(Collider* arg0, RoomObject* arg1) {
-    arg0->unk_AC = arg1->unk38;    
+    arg0->unk_AC = arg1->keyframes;    
     if (func_800B34D0(arg0->unk_AC) != 0) {
         arg0->unk_B0 = 0;
     } else {
@@ -238,7 +241,7 @@ void func_800B0A30(Collider* arg0, RoomObject* arg1) {
 
     gSelectedCharacters[1] = 4;
     arg0->unk_AC = 0;
-    arg0->unk_B0 = arg1->unk38;
+    arg0->unk_B0 = arg1->keyframes;
     if (func_800B34D0(arg0->unk_B0) != 0) {
         gPlayerActors[1].active = gPlayerActors[1].exists = 0;
         arg0->unk_AC = 2;
@@ -271,7 +274,7 @@ void RegistShutter(Collider* arg0, RoomObject* arg1) {
     s32 i;
 
     arg0->unk_8C = arg1->unk28;
-    arg0->unk_AC = arg1->unk38;
+    arg0->unk_AC = arg1->keyframes;
     arg0->unk_B0 = arg1->unk3C;
     arg0->unk_B4 = arg1->unk40;
     arg0->unk_B8 = arg1->unk44;
@@ -279,7 +282,7 @@ void RegistShutter(Collider* arg0, RoomObject* arg1) {
     arg0->unk_C0 = arg1->unk4C;
     arg0->unkC4 = arg1->unk2C;
     D_802025B4 = 0;
-    for(i = 0, colliderArray = &D_80240898;
+    for (i = 0, colliderArray = &D_80240898;
         i < gFieldCount; i++, colliderArray++){
         realCollider = *colliderArray;
         if (realCollider->unk_10 == 28) {
@@ -502,7 +505,7 @@ s32 func_800B2510(void) {
     s32 ret = 0;
     s32 i;
     
-    for (i = 0; i < PLAYERS_MAX; i++) {
+    for (i = 0; i < ARRAY_COUNT(gPlayerActors); i++) {
         if (gPlayerActors[i].exists != 0 && gPlayerActors[i].power == 4) {
             ret = 1;
             break;
@@ -513,7 +516,7 @@ s32 func_800B2510(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B255C.s")
 
-Vec3f* func_800B2AB4(Vec3f* arg0, Vec3f arg1, s32* arg4) {
+Vec3f* func_800B2AB4(Vec3f* arg0, Vec3f arg1, s32* arg4) { //TODO: fix arg4 type
     Collider* temp = &D_80236980[arg4[1]];
     Vec3f sp20;
 
@@ -544,6 +547,7 @@ Vec3f* Vec3f_SetAtBossPos(Vec3f* arg0) {
     s32 numActors;
     Vec3f pos;
     s32 i;
+
     Vec3f_Zero(&pos); // Call Vec3f_Zero with the passed in pointer
 
     actors = gActors;
@@ -587,10 +591,15 @@ s32 IsBossPresent(void) {
 s32 IsBossStage(void) {
     s32 ret;
     
-    if ((gCurrentStage != 9) && (gCurrentStage != 0xA) && (gCurrentStage != 0xB) && (gCurrentStage != 0xC) && (gCurrentStage != 0xD) && (gCurrentStage != 0xE)) {
-        ret = 0;
+    if ((gCurrentStage != STAGE_JUNGLEBOSS) &&
+        (gCurrentStage != STAGE_ANTBOSS) &&
+        (gCurrentStage != STAGE_BOMBBOSS) &&
+        (gCurrentStage != STAGE_DESERTBOSS) &&
+        (gCurrentStage != STAGE_KIDSBOSS) &&
+        (gCurrentStage != STAGE_GHOSTBOSS)) {
+        ret = FALSE;
     } else {
-        ret = 1;
+        ret = TRUE;
     }
     return ret;
 }
@@ -772,10 +781,13 @@ s32 IsRoomObjInvalid(RoomObject* obj) {
  */
 s32 GetRoomObjCount(RoomObject* obj) {
     s32 end;
+
     if (!obj) {
         return 0;
     }
+
     end = 0;
+
     while(IsRoomObjInvalid(obj) == FALSE){
         end++;
         obj++;
@@ -815,58 +827,66 @@ s32 GetRoomActCount(RoomActor* actor) {
 /**
  * @brief This function returns a boolean value based on whether the Collectable passed is valid.
  * 
- * @param clct: The Collectable to check if valid.
+ * @param collectable: The Collectable to check if valid.
  * @return true if the clct is invalid, false otherwise.
  */
-s32 IsCollectableInvalid(Collectable* clct) {
-    return (clct->id == 0) ? TRUE : FALSE;
+s32 IsCollectableInvalid(Collectable* collectable) {
+    return (collectable->id == 0) ? TRUE : FALSE;
 }
 
 /**
  * @brief This function returns a int value of how many Collectables are in an array.
  * 
- * @param clct: The Collectable to start iterating from.
+ * @param collectable: The Collectable to start iterating from.
  * @return the amount of valid Collectables in the array.
  */
-s32 GetCollectableCount(Collectable* clct) {
+s32 GetCollectableCount(Collectable* collectable) {
     s32 i;
-    if (clct == NULL) {
+
+    if (collectable == NULL) {
         return 0;
     }
+
     i = 0;
-    while (IsCollectableInvalid(clct) == FALSE) {
+
+    while (IsCollectableInvalid(collectable) == FALSE) {
         i++;
-        clct++;
+        collectable++;
     }
+
     return i;
 }
 
 /**
- * @brief This function returns a boolean value based on whether the RoomSettings passed is valid.
+ * @brief This function returns a boolean value based on whether the RoomInstance passed is valid.
  * 
- * @param room: The RoomSettings to check if valid.
+ * @param room: The RoomInstance to check if valid.
  * @return true if the room is invalid, false otherwise.
  */
-s32 IsRoomInvalid(RoomSettings* room) {
-    return (room->RoomObjectsPointer == NULL) ? TRUE : FALSE;
+s32 IsRoomInvalid(RoomInstance* room) {
+    return (room->objects == NULL) ? TRUE : FALSE;
 }
 
 /**
- * @brief This function returns a int value of how many RoomSettings are in an array.
+ * @brief This function returns a int value of how many RoomInstance are in an array.
  * 
- * @param room: The RoomSettings to start iterating from.
- * @return the amount of valid RoomSettings in the array.
+ * @param room: The RoomInstance to start iterating from.
+ * @return the amount of valid RoomInstance in the array.
  */
-s32 GetRoomCount(RoomSettings* room) {
+s32 GetRoomCount(RoomInstance* room) {
     s32 i;
+
     if (room == NULL) {
         return 0;
     }
+
     i = 0;
+
     while (IsRoomInvalid(room) == FALSE) {
         i++;
         room++;
     }
+
     return i;
 }
 
@@ -888,17 +908,22 @@ s32 IsSpriteActInvalid(SpriteActor* sprite) {
  */
 s32 GetSpriteActCount(SpriteActor* sprite) {
     s32 i;
+
     if (sprite == 0) {
         return 0;
     }
+
     i = 0;
+
     while (IsSpriteActInvalid(sprite) == FALSE) {
         i++;
         sprite++;
     }
+
     return i;
 }
 
+//TODO: fix this
 s32 func_800B3FFC(Collider *arg0, s32 arg1) {
     Vec3w* new_var = &D_801087D8[arg1];
     int new_var2 = arg0->unk_14 & new_var->y;
@@ -964,28 +989,27 @@ void AddCarrot(s32 stage) {
         // iterate through the bitfield and count the number of bits set
         for (i = 0; i < 6; i++) {
             if (gCarrotBitfield & (1 << i)) {
-                gTotalCarrots += 1;
+                gTotalCarrots++;
             }
         }        
     }
 }
 
 void func_800B4264(void) {
-    collectableWrapper* cltcWr;
+    CollectableWrapper* collectableWrapper;
     s32 ifJL = StageCarrotAvailable(gCurrentStage) != STAGE_JUNGLE ? 1 : 2;
     s32 i;
 
-    for(i = 0,  cltcWr = D_802019A8; i != 0x80; i++, cltcWr++){
-        if ((cltcWr->levelDataCollectable != NULL) && (cltcWr->levelDataCollectable->id == 0x64) && (ifJL != cltcWr->bitfield)) {
-            cltcWr->bitfield = ifJL;
+    for (i = 0,  collectableWrapper = D_802019A8; i != 0x80; i++, collectableWrapper++){
+        if ((collectableWrapper->levelDataCollectable != NULL) && (collectableWrapper->levelDataCollectable->id == 0x64) && (ifJL != collectableWrapper->bitfield)) {
+            collectableWrapper->bitfield = ifJL;
             if (ifJL == 2) {
-                if (cltcWr->actorIndex >= 0) {
-                    gActors[cltcWr->actorIndex].actorID = 0;
-                    cltcWr->actorIndex = -1;
+                if (collectableWrapper->actorIndex >= 0) {
+                    gActors[collectableWrapper->actorIndex].actorID = 0;
+                    collectableWrapper->actorIndex = -1;
                 }
             }
         }
-        
     }
 }
 
@@ -1002,7 +1026,7 @@ void func_800B4264(void) {
 void setCrownPositionsForRoom(s32 arg0) {
     s32 limit;
     s32 i;
-    collectableWrapper* var_s0;
+    CollectableWrapper* var_s0;
     Collectable* new_var;
     
     limit = gZoneFields[arg0].clctCount;
@@ -1044,15 +1068,14 @@ void func_800B5600(void) {
 }
 
 void func_800B560C(s32 arg0) {
-    if (D_802025B0 < 32) {
-        D_802025B0[D_80202530] = arg0;
-        D_802025B0++;
+    if (D_802025B0 < ARRAY_COUNT(D_80202530)) {
+        D_80202530[D_802025B0++] = arg0;
     }
 }
 
 void func_800B5640() {
     s32 i;
-    for(i = 0; i < D_802025B0; i++){
+    for (i = 0; i < D_802025B0; i++){
         EraseField(&D_80236980[D_80202530[i]]);
     }
 }
@@ -1067,10 +1090,11 @@ void func_800B56D4(f32 arg0, f32 arg1) {
 
 s32 func_800B5878(Rect3D* arg0) {
     s32 flag = FALSE;
-    Rect3D* var_s1;
+    Rect3D* rect;
     s32 i;
-    for(i = 0, var_s1 = &D_802026B0; i < D_802026A8; i++, var_s1++) {
-        if (IfRectsIntersect(arg0, var_s1)) {
+
+    for (i = 0, rect = &D_802026B0; i < D_802026A8; i++, rect++) {
+        if (IfRectsIntersect(arg0, rect)) {
             flag = TRUE;
             break;
         }
@@ -1081,10 +1105,12 @@ s32 func_800B5878(Rect3D* arg0) {
 s32 func_800B5908(Collider* collider, f32 yMod) {
     s32 flag, i;
     Rect3D rect = collider->unk_CC;
+
     rect.min.y = rect.max.y;
     rect.max.y += yMod;
     flag = 0;
-    for(i = 0; i < D_802026A8; i++) {
+
+    for (i = 0; i < D_802026A8; i++) {
         if (IsPointInRect(D_802032B0[i], &rect) != 0) {
             flag = 1;
             break;
@@ -1118,7 +1144,7 @@ void func_800B5D68(Collider* arg0, s32 arg1) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B5ED0.s")
 
 void func_800B602C(Collider* arg0, s32 arg1) {
-    arg0->unk_AC = arg1 - 0x3C;
+    arg0->unk_AC = arg1 - 60;
     arg0->unk_B0 = 1;
 }
 
@@ -1144,7 +1170,7 @@ void func_800B6098(Collider* arg0, RoomObject* arg1) {
     arg0->unk_98 = arg1->unk28;
     arg0->unk_9C = arg1->unk2C;
     arg0->unk_A0 = arg1->unk30;
-    arg0->unk_AC = arg1->unk38;
+    arg0->unk_AC = arg1->keyframes;
     arg0->unk_B0 = arg1->unk3C;
     arg0->unk_B4 = arg1->unk40;
     arg0->unk_B8 = arg1->unk44;
@@ -1249,7 +1275,7 @@ void func_800BA2D0(Collider* arg0, RoomObject* arg1) {
     arg0->unk_9C = arg1->unk2C;
     arg0->unk_A0 = arg1->unk30;
     arg0->unkA4 = 0;
-    arg0->unk_AC = arg1->unk38;
+    arg0->unk_AC = arg1->keyframes;
     arg0->unk_B0 = arg1->unk3C;
     arg0->unk_B4 = arg1->unk40;
     arg0->unk_B8 = 0;
@@ -1381,7 +1407,7 @@ void func_800BE2C0(void) {
     }
     
     // For all players reset bullet mechanisms
-    for (i = 0; i < PLAYERS_MAX; i++) {
+    for (i = 0; i < ARRAY_COUNT(gTongues); i++) {
         gTongues[i].amountOnTongue = 0;
         gTongues[i].amountInMouth = 0;
         gPlayerActors[i].amountToShoot = 0;
@@ -1394,8 +1420,11 @@ void func_800BE370(s32 room) {
     Rect3D* rectTemp = &gZoneFields[room].roomBounds;
     Actor* actorList;
     s32 i;
+
     for (i = 0, actorList = gActors; i < MAX_ACTORS; i++, actorList++) {
-        if (IsNotPickup(actorList) == 0) continue;
+        if (IsNotPickup(actorList) == 0) {
+            continue;
+        }
         if (actorList->actorState == 0) {
             if ((rectTemp->min.x <= actorList->pos.x)  && (rectTemp->max.x >= actorList->pos.x)) {
                 if ((rectTemp->min.z <= actorList->pos.z) && (rectTemp->max.z >= actorList->pos.z)) {
@@ -1418,7 +1447,6 @@ void func_800BE550(Tongue* arg0) {
     func_800BE474(arg0);
 }
 
-
 void EraseToungeEatEnemy(Tongue* arg0) {
     s32 i;
 
@@ -1426,7 +1454,7 @@ void EraseToungeEatEnemy(Tongue* arg0) {
     arg0->tongueMode = 0;
     arg0->segments = 0;
 
-    for (i = 0; i < MAX_ACTORS; i++) {
+    for (i = 0; i < ARRAY_COUNT(gActors); i++) {
         if (gActors[i].actorID == 0) 
             continue;
         if (gActors[i].actorState != 1)
@@ -1445,7 +1473,7 @@ void EraseToungeEatEnemy(Tongue* arg0) {
 }
 
 void func_800BE664(PlayerActor * arg0) {
-    if (arg0->power == POWERUP_TIME) {
+    if (arg0->power == POWERUP_TIMER) {
         arg0->power = POWERUP_NONE;
     }
 }
@@ -1456,9 +1484,10 @@ void func_800BE664(PlayerActor * arg0) {
 
 void func_800BE7BC(void) {
     s32 i;
-    pole* var_v1;
-    for(i=0,var_v1=D_80170968; i < 64; i++, var_v1++ ){
-          var_v1->mode=0;        
+    Pole* pole;
+
+    for (i = 0, pole = Poles; i < ARRAY_COUNT(Poles); i++, pole++) {
+        pole->mode = 0;        
     }
 }
 
@@ -1477,7 +1506,8 @@ void func_800BE7BC(void) {
 void func_800BF268(s32 arg0) {
     Collider** currentCollider;
     s32 i;
-    for(i = 0, currentCollider = &D_80240898; i < gFieldCount; i++, currentCollider++){
+
+    for (i = 0, currentCollider = &D_80240898; i < gFieldCount; i++, currentCollider++){
         if (arg0 == (*currentCollider)->unk_08) {
             EraseField(*currentCollider);
             //must be this way
@@ -1490,7 +1520,7 @@ void func_800BF268(s32 arg0) {
 void RegistDoor(RoomObject* obj, s32 arg1, s32 arg2) {
     Door* door;
 
-    if (gDoorCount < 16) {
+    if (gDoorCount < ARRAY_COUNT(gDoors)) {
         door = &gDoors[gDoorCount];
         door->index = gDoorCount;
         door->unk4 = arg2;
@@ -1500,7 +1530,7 @@ void RegistDoor(RoomObject* obj, s32 arg1, s32 arg2) {
         door->max.z = obj->position.z;
         door->rect.max.y = obj->unk28;
         door->rect.max.z = obj->unk2C;
-        door->direction = obj->unk38;
+        door->direction = obj->keyframes;
         door->unk34 = obj->unk3C;
         gDoorCount++;
     }
@@ -1514,14 +1544,13 @@ void func_800BF524(s32 inzone) {
     Door** var_s1;
     s32 i;
 
-    for(i = 0, var_s1 = &D_80240C98[i];
+    for (i = 0, var_s1 = &D_80240C98[i];
         i < gSwitchAreaCount; i++, var_s1++){
         if (inzone == (*var_s1)->inZone) {
             func_800BF4AC(*var_s1);
             //must be like this
             i--; var_s1--;
         }
-        
     }
 }
 
@@ -1535,7 +1564,7 @@ void func_800BF84C(s32 room) {
     s32 i;
     Field* zone = &gZoneFields[room];
     s32 limit = zone->rmActCount;
-    RoomActor* actor = zone->roomActors;
+    RoomActor* actor = zone->actors;
     
     for (i = 0; i < limit; i++, actor++){
         if (actor->id == 13 || actor->id == 45 || zone->unk68 == 0 || actor->id != zone->unk84){
@@ -1595,9 +1624,9 @@ void ChameleonFromDoor(PlayerActor* player, s32 arg1, s32 arg2, s32 arg3, s32 ar
 }
 
 void func_800C0AEC(void) {
-    Actor* currentActor = &gActors[0];
+    Actor* currentActor = gActors;
     s32 i = 0;
-    while (i != 64){
+    while (i != ARRAY_COUNT(gActors)){
         if ((IsNotPickup(currentActor) == 0) || (currentActor->actorState != 2)) {
             func_800311C8(currentActor);
             func_800314E4(currentActor);
@@ -1610,30 +1639,30 @@ void func_800C0AEC(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C0B74.s")
 
-void func_800C0CDC(PlayerActor* arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4) {
-    if (gZoneFields[arg1].unk7C != 0) {
+void func_800C0CDC(PlayerActor* arg0, s32 zone, s32 arg2, s32 arg3, s32 arg4) {
+    if (gZoneFields[zone].unk7C != 0) {
         gGameModeState = 3;
         switch (gCurrentStage) {                    /* switch 1 */
-        case 0:                                     /* switch 1 */
+        case STAGE_JUNGLE:                                     /* switch 1 */
             D_80174878 = 8;
             return;
-        case 1:                                     /* switch 1 */
+        case STAGE_ANT:                                     /* switch 1 */
             D_80174878 = 9;
             return;
-        case 2:                                     /* switch 1 */
-            D_80174878 = 0xA;
+        case STAGE_BOMB:                                     /* switch 1 */
+            D_80174878 = 10;
             return;
-        case 3:                                     /* switch 1 */
-            D_80174878 = 0xB;
+        case STAGE_DESERT:                                     /* switch 1 */
+            D_80174878 = 11;
             return;
-        case 4:                                     /* switch 1 */
-            D_80174878 = 0xC;
+        case STAGE_KIDS:                                     /* switch 1 */
+            D_80174878 = 12;
             return;
-        case 5:                                     /* switch 1 */
-            D_80174878 = 0xD;
+        case STAGE_GHOST:                                     /* switch 1 */
+            D_80174878 = 13;
             return;
-        case 15:                                    /* switch 1 */
-            switch (arg1) {                         /* switch 2 */
+        case STAGE_BOSSRUSH:                                    /* switch 1 */
+            switch (zone) {                         /* switch 2 */
             case 1:                                 /* switch 2 */
                 D_80174878 = 8;
                 return;
@@ -1641,16 +1670,16 @@ void func_800C0CDC(PlayerActor* arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4) {
                 D_80174878 = 9;
                 return;
             case 2:                                 /* switch 2 */
-                D_80174878 = 0xA;
+                D_80174878 = 10;
                 return;
             case 4:                                 /* switch 2 */
-                D_80174878 = 0xB;
+                D_80174878 = 11;
                 return;
             case 5:                                 /* switch 2 */
-                D_80174878 = 0xC;
+                D_80174878 = 12;
                 return;
             case 6:                                 /* switch 2 */
-                D_80174878 = 0xD;
+                D_80174878 = 13;
                 return;
             }
             break;
@@ -1658,8 +1687,8 @@ void func_800C0CDC(PlayerActor* arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4) {
             gGameModeState = 2;
         }
     }
-    func_800C0760(arg1);
-    ChameleonFromDoor(arg0, arg1, arg2, arg3, arg4);
+    func_800C0760(zone);
+    ChameleonFromDoor(arg0, zone, arg2, arg3, arg4);
     func_800BFCD0();
 }
 
@@ -1692,18 +1721,20 @@ void func_800C1458(s32 arg0) {
     s32 i;
     D_802039B4 = 0;
     func_800C1204(arg0, gPlayerActors, 1, 0, 1);
-    if (gCurrentStage != 7) {
+
+    if (gCurrentStage != STAGE_VS) {
         return;
     }
-    for(i = 0; i != 4; i++){
+
+    for (i = 0; i != ARRAY_COUNT(gPlayerActors); i++){
         if ((gPlayerActors[i].active != 0) && (gPlayerActors[i].exists != 0)) {
             func_800B4F14(i, &gPlayerActors[i].pos.x, &gPlayerActors[i].pos.y, &gPlayerActors[i].pos.z);
             gPlayerActors[i].yAngle = CalculateAngleOfVector(-gPlayerActors[i].pos.x, gPlayerActors[i].pos.z);
         }
     }
-
 }
 
+//TODO: check if this should be &gPlayerActors[0] or gPlayerActors
 void func_800C1510(s32 arg0, s32 arg1) {
     D_802039B4 = 1;
     func_800C1204(arg0, &gPlayerActors[0], 1,  arg1, 1);
@@ -1736,7 +1767,7 @@ void func_800C198C(s32 arg0, Field* room) {
     Rect3D sp10;
 
     flag = 1;
-    for(i = 0, var_a2 = &D_80240898; i < gFieldCount; i++){
+    for (i = 0, var_a2 = &D_80240898; i < gFieldCount; i++){
         temp_a0 = *var_a2;
         if (arg0 == temp_a0->unk_08) {
             if (flag != 0) {
@@ -1906,11 +1937,14 @@ void func_800C38E0(SpriteActor* arg0) {
     if (arg0 == NULL) {
         return;
     }
+
     curSpAct = arg0;
+
     while (curSpAct->size >= 0){
         curSpAct->unk20 = func_800AF604(curSpAct->position.x, curSpAct->position.y, curSpAct->position.z, 6000);
         curSpAct++;
     }
+    
     func_80083F18(arg0);
 }
 
@@ -1945,9 +1979,11 @@ void func_800C4040(PlayerActor* arg0, Tongue* arg1, Camera* camera, f32 arg3, f3
     f32 temp_f12;
 
     temp_v0 = &gZoneFields[gCurrentZone];
+
     if (arg3 == 0.0 && arg4 == 0.0) {
         arg3 = 1;
     }
+
     //these MUST be formatted like this
     camera->f5.x = camera->f1.z = arg0->pos.x;
     camera->f5.y = camera->f2.x = arg0->pos.y + (60.0 / camera->size1);
@@ -1958,6 +1994,7 @@ void func_800C4040(PlayerActor* arg0, Tongue* arg1, Camera* camera, f32 arg3, f3
     camera->f4.z = camera->f3.z = camera->f2.y;
     camera->f5.y += gZoneFields[gCurrentZone].unkD0 * camera->size1;
     camera->f4.y += gZoneFields[gCurrentZone].unkD0 * camera->size1;
+
     if (isInOverworld == TRUE) {
         camera->f4.z += 800 * camera->size1;
         camera->f3.z += 800 * camera->size1;
@@ -1965,6 +2002,7 @@ void func_800C4040(PlayerActor* arg0, Tongue* arg1, Camera* camera, f32 arg3, f3
         func_800C3DCC(camera, sp54, sp48, arg0->pos.y);
         return;
     }
+
     temp_f0_8 = temp_v0->rect_48.min.x;
     temp_f12 = temp_v0->rect_48.min.z;
     arg3 *= 800 * camera->size1;
@@ -1975,6 +2013,7 @@ void func_800C4040(PlayerActor* arg0, Tongue* arg1, Camera* camera, f32 arg3, f3
     camera->f3.x += arg3;
     camera->f4.z += arg4;
     camera->f3.z += arg4;
+
     if (camera->unk0 == 1) {
         func_800D69D0(gZoneFields[gCurrentZone].cameraMode, arg0, arg1, camera, &sp54, &sp48, 1);
         func_800C3DCC(camera, sp54, sp48, arg0->pos.y);
@@ -2079,13 +2118,13 @@ void func_800C5508(PlayerActor* player) {
 void func_800C5538(PlayerActor* arg0) {
     arg0->canJump = FALSE;
     arg0->groundMovement = 1;
-    arg0->globalTimer = arg0->globalTimer + 0.800000000000000044;
+    arg0->globalTimer = arg0->globalTimer + 0.8;
 }
 
 void func_800C5564(PlayerActor* arg0) {
     arg0->canJump = FALSE;
     arg0->groundMovement = 0;
-    arg0->globalTimer = arg0->globalTimer + 0.299999999999999989;
+    arg0->globalTimer = arg0->globalTimer + 0.3;
 }
 
 /**
@@ -2165,6 +2204,7 @@ void func_800C88AC(void) {
     }
 }
 
+//TODO: check if this should be &gPlayerActors[0] or gPlayerActors
 void func_800C88D0(void) {
     func_800C56D4(&gPlayerActors[0]);
 }
@@ -2182,4 +2222,3 @@ f32 unused_data[] = {
 };
 
 s32 D_80108B68 = 0;
-s32 D_80108B6C = 0; //padding?

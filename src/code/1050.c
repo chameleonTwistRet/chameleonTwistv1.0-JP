@@ -151,7 +151,7 @@ void func_80025EF0(PlayerActor* arg0, Tongue* arg1, s32 arg2) {
     }
 
     if (D_80174980 == 5) {
-        func_80027240(&D_800FF8D4, gSpriteListings[207].bitmapP, gTimer / 2, gSpriteListings[207].tileCountY);
+        func_80027240(&D_800FF8D4, gSpriteListings[207].raster, gTimer / 2, gSpriteListings[207].tileCountY);
         if (gTimer == 20) {
             Effect_TypeT_Init(22.0f, 154.0f, 60, D_800F686C);
         }
@@ -279,16 +279,16 @@ void func_80025EF0(PlayerActor* arg0, Tongue* arg1, s32 arg2) {
         func_80027240(&D_800FF8D4, anim, sp120 % animFrames, animObjects);
         if (D_800F0560 == 0 && sp120 % animFrames >= 3 && sp120 % animFrames <= 12) {
             if (arg0->inWater == 1) {
-                PLAYSFXAT(2, arg0->pos, 0, 0);
+                PLAY_SFX_AT(2, arg0->pos, 0, 0);
             } else {
-                PLAYSFXAT(0, arg0->pos, 0, 0);
+                PLAY_SFX_AT(0, arg0->pos, 0, 0);
             }
             D_800F0560 = 1;
         } else if (D_800F0560 == 1 && sp120 % animFrames > 12) {
             if (arg0->inWater == 1) {
-                PLAYSFXAT(3, arg0->pos, 0, 0);
+                PLAY_SFX_AT(3, arg0->pos, 0, 0);
             } else {
-                PLAYSFXAT(1, arg0->pos, 0, 0);
+                PLAY_SFX_AT(1, arg0->pos, 0, 0);
             }
             D_800F0560 = 0;
         }
@@ -297,16 +297,16 @@ void func_80025EF0(PlayerActor* arg0, Tongue* arg1, s32 arg2) {
         func_80027240(&D_800FF8D4, anim, sp120 % animFrames, animObjects);
         if (D_800F0560 == 0 && sp120 % animFrames >= 0 && sp120 % animFrames <= 9) {
             if (arg0->inWater == 1) {
-                PLAYSFXAT(2, arg0->pos, 0, 0);
+                PLAY_SFX_AT(2, arg0->pos, 0, 0);
             } else {
-                PLAYSFXAT(0, arg0->pos, 0, 0);
+                PLAY_SFX_AT(0, arg0->pos, 0, 0);
             }
             D_800F0560 = 1;
         } else if (D_800F0560 == 1 && sp120 % animFrames > 9) {
             if (arg0->inWater == 1) {
-                PLAYSFXAT(3, arg0->pos, 0, 0);
+                PLAY_SFX_AT(3, arg0->pos, 0, 0);
             } else {
-                PLAYSFXAT(1, arg0->pos, 0, 0);
+                PLAY_SFX_AT(1, arg0->pos, 0, 0);
             }
             D_800F0560 = 0;
         }
@@ -562,7 +562,7 @@ Gfx* func_8002A4C4(GraphicStruct* arg0, Gfx* gfxPos, PlayerActor* player, Tongue
         guRotate(&sp100, player->yAngle + 90.0f, 0.0f, 1.0f, 0.0f);
         guRotate(&spC0, gTimer * f20 * 30.0f + 45.0f, 0.0f, 0.0f, 1.0f);
         guMtxCatL(&spC0, &sp100, &arg0->reticuleRotate[playerIndex][i]);
-        scale += f20 * 1.5f + sinf((gTimer % 8) * PI_2 / 8) * f20 * 0.5f;
+        scale += f20 * 1.5f + sinf((gTimer % 8) * TAU / 8) * f20 * 0.5f;
         scale *= 0.8f;
         guScale(&arg0->reticuleScale[playerIndex][i], scale, scale, scale);
         gSPMatrix(gfxPos++, OS_K0_TO_PHYSICAL(&arg0->reticuleTranslate[playerIndex][i]), G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
