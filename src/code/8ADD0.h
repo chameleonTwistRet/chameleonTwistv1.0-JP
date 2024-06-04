@@ -132,8 +132,8 @@ s32 IsRoomActInvalid(RoomActor* actor);
 s32 GetRoomActCount(RoomActor* actor);
 s32 IsCollectableInvalid(Collectable* clct);
 s32 GetCollectableCount(Collectable* clct);
-s32 IsRoomInvalid(RoomSettings* room);
-s32 GetRoomCount(RoomSettings* room);
+s32 IsRoomInvalid(RoomInstance* room);
+s32 GetRoomCount(RoomInstance* room);
 s32 IsSpriteActInvalid(SpriteActor* sprite);
 s32 GetSpriteActCount(SpriteActor* arg0);
 s32 func_800B3FFC(Collider* arg0, s32 arg1);
@@ -186,7 +186,7 @@ void func_800C1204(s32, PlayerActor*, s32, s32, s32);
 void func_800C1458(s32 arg0);
 void func_800C1510(s32 arg0, s32 arg1);
 s32 func_800C1550(s32 arg0);
-void func_800C15AC(RoomSettings* arg0, s32 arg1);
+void func_800C15AC(RoomInstance* arg0, s32 arg1);
 void InitFieldSubScroll(s32, Field*, s32, s32);
 void func_800C198C(s32, Field*);
 void func_800C1B70(void);
@@ -322,9 +322,9 @@ extern s32 gNextZone;
 extern s32 isFirstZone;
 
 s32 func_800B47DC(s32);                             /* extern */
-void func_800B4884(RoomSettings*);                     /* extern */
+void func_800B4884(RoomInstance*);                     /* extern */
 void func_800BE7F0(void);                                  /* extern */
-extern RoomSettings* D_802478F0;
+extern RoomInstance* D_802478F0;
 extern s32 D_80247904;
 
 extern Vec3f D_80201930;

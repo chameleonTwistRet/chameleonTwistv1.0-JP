@@ -67,7 +67,7 @@ class N64SegLevelHeader(CommonSegCodeSubsegment):
         if not self.data_only:
             lines.append('#include "common.h"')
             lines.append("")
-            lines.append("LevelHeader %s = {" % (sym.name))
+            lines.append("StageData %s = {" % (sym.name))
 
         byteData = bytearray(sprite_data)
         data = struct.unpack('>IIIHHIIII', byteData)

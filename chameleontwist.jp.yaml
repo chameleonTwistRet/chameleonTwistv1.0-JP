@@ -2152,56 +2152,56 @@ segments:
       - [0x4C9578, gfxSeg, fixedCamPillar/fixedCamPillar]
 
     
-      - {start: 0x4C97E0, type: collision, name: exit2/exit2, args: "Verts"}
-      - {start: 0x4C9828, type: collision, name: exit2/exit2, args: "Tris"}
+      - {start: 0x4C97E0, type: collision, name: exit2/exit2, args: "Verts", data_only: True}
+      - {start: 0x4C9828, type: collision, name: exit2/exit2, args: "Tris", data_only: True}
       - {start: 0x4C9858, type: collision, name: exit2/exit2, args: "Settings"}
       - {start: 0x4C9870, type: collision, name: exit2/exit2, args: "Header"}
-      - {start: 0x4C9884, type: collision, name: exit3/exit3, args: "Verts"}
-      - {start: 0x4C98cc, type: collision, name: exit3/exit3, args: "Tris"}
+      - {start: 0x4C9884, type: collision, name: exit3/exit3, args: "Verts", data_only: True}
+      - {start: 0x4C98cc, type: collision, name: exit3/exit3, args: "Tris", data_only: True}
       - {start: 0x4C98fc, type: collision, name: exit3/exit3, args: "Settings"}
       - {start: 0x4C9914, type: collision, name: exit3/exit3, args: "Header"}
-      - {start: 0x4C9928, type: collision, name: exit4/exit4, args: "Verts"}
-      - {start: 0x4C9970, type: collision, name: exit4/exit4, args: "Tris"}
+      - {start: 0x4C9928, type: collision, name: exit4/exit4, args: "Verts", data_only: True}
+      - {start: 0x4C9970, type: collision, name: exit4/exit4, args: "Tris", data_only: True}
       - {start: 0x4C99a0, type: collision, name: exit4/exit4, args: "Settings"}
       - {start: 0x4C99b8, type: collision, name: exit4/exit4, args: "Header"}
-      - {start: 0x4C99cc, type: collision, name: room0/room0, args: "Verts"}
-      - {start: 0x4c9b70, type: collision, name: room0/room0, args: "Tris"}
+      - {start: 0x4C99cc, type: collision, name: room0/room0, args: "Verts", data_only: True}
+      - {start: 0x4c9b70, type: collision, name: room0/room0, args: "Tris", data_only: True}
       - {start: 0x4c9e70, type: collision, name: room0/room0, args: "Settings"}
       - {start: 0x4c9e88, type: collision, name: room0/room0, args: "Header"}
-      - {start: 0x4c9e9c, type: collision, name: room1/room1, args: "Verts"}
-      - {start: 0x4ca0dc, type: collision, name: room1/room1, args: "Tris"}
+      - {start: 0x4c9e9c, type: collision, name: room1/room1, args: "Verts", data_only: True}
+      - {start: 0x4ca0dc, type: collision, name: room1/room1, args: "Tris", data_only: True}
       - {start: 0x4ca4cc, type: collision, name: room1/room1, args: "Settings"}
       - {start: 0x4ca4e4, type: collision, name: room1/room1, args: "Header"}
-      - {start: 0x4ca4f8, type: collision, name: room2/room2, args: "Verts"}
-      - {start: 0x4ca768, type: collision, name: room2/room2, args: "Tris"}
+      - {start: 0x4ca4f8, type: collision, name: room2/room2, args: "Verts", data_only: True}
+      - {start: 0x4ca768, type: collision, name: room2/room2, args: "Tris", data_only: True}
       - {start: 0x4cabb8, type: collision, name: room2/room2, args: "Settings"}
       - {start: 0x4cabd0, type: collision, name: room2/room2, args: "Header"}
-      - {start: 0x4cabe4, type: collision, name: room14/room14, args: "Verts"}
-      - {start: 0x4caefc, type: collision, name: room14/room14, args: "Tris"}
+      - {start: 0x4cabe4, type: collision, name: room14/room14, args: "Verts", data_only: True}
+      - {start: 0x4caefc, type: collision, name: room14/room14, args: "Tris", data_only: True}
       - {start: 0x4cb484, type: collision, name: room14/room14, args: "Settings"}
       - {start: 0x4cb49c, type: collision, name: room14/room14, args: "Header"}
-      - {start: 0x4cb4b0, type: collision, name: room4/room4, args: "Verts"}
-      - {start: 0x4cb72C, type: collision, name: room4/room4, args: "Tris"}
+      - {start: 0x4cb4b0, type: collision, name: room4/room4, args: "Verts", data_only: True}
+      - {start: 0x4cb72C, type: collision, name: room4/room4, args: "Tris", data_only: True}
       - {start: 0x4cbb34, type: collision, name: room4/room4, args: "Settings"}
       - {start: 0x4cbb4c, type: collision, name: room4/room4, args: "Header"}
-      - {start: 0x4cbb60, type: collision, name: room5/room5, args: "Verts"}
-      - {start: 0x4cbda0, type: collision, name: room5/room5, args: "Tris"}
+      - {start: 0x4cbb60, type: collision, name: room5/room5, args: "Verts", data_only: True}
+      - {start: 0x4cbda0, type: collision, name: room5/room5, args: "Tris", data_only: True}
       - {start: 0x4cc190, type: collision, name: room5/room5, args: "Settings"}
       - {start: 0x4cc1a8, type: collision, name: room5/room5, args: "Header"}
-      - {start: 0x4cc1bc, type: collision, name: room6/room6, args: "Verts"}
-      - {start: 0x4cc54c, type: collision, name: room6/room6, args: "Tris"}
+      - {start: 0x4cc1bc, type: collision, name: room6/room6, args: "Verts", data_only: True}
+      - {start: 0x4cc54c, type: collision, name: room6/room6, args: "Tris", data_only: True}
       - {start: 0x4ccad4, type: collision, name: room6/room6, args: "Settings"}
       - {start: 0x4ccaec, type: collision, name: room6/room6, args: "Header"}
-      - {start: 0x4ccb00, type: collision, name: room7/room7, args: "Verts"}
-      - {start: 0x4cccc8, type: collision, name: room7/room7, args: "Tris"}
+      - {start: 0x4ccb00, type: collision, name: room7/room7, args: "Verts", data_only: True}
+      - {start: 0x4cccc8, type: collision, name: room7/room7, args: "Tris", data_only: True}
       - {start: 0x4ccee4, type: collision, name: room7/room7, args: "Settings"}
       - {start: 0x4ccefc, type: collision, name: room7/room7, args: "Header"}
-      - {start: 0x4ccf10, type: collision, name: room8/room8, args: "Verts"}
-      - {start: 0x4cd2e8, type: collision, name: room8/room8, args: "Tris"}
+      - {start: 0x4ccf10, type: collision, name: room8/room8, args: "Verts", data_only: True}
+      - {start: 0x4cd2e8, type: collision, name: room8/room8, args: "Tris", data_only: True}
       - {start: 0x4cd9f0, type: collision, name: room8/room8, args: "Settings"}
       - {start: 0x4cda08, type: collision, name: room8/room8, args: "Header"}
-      - {start: 0x4cda1c, type: collision, name: room9/room9, args: "Verts"}
-      - {start: 0x4cdb3c, type: collision, name: room9/room9, args: "Tris"}
+      - {start: 0x4cda1c, type: collision, name: room9/room9, args: "Verts", data_only: True}
+      - {start: 0x4cdb3c, type: collision, name: room9/room9, args: "Tris", data_only: True}
       - {start: 0x4cdd04, type: collision, name: room9/room9, args: "Settings"}
       - {start: 0x4cdd1c, type: collision, name: room9/room9, args: "Header"}
       - {start: 0x4cdd30, type: collision, name: room10/room10, args: "Verts"}

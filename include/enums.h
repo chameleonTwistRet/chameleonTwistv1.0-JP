@@ -230,6 +230,7 @@ enum BGM {
 //indecies of sprites in gSpriteListings
 //TODO - complete
 enum SPRITE {
+    SPRITE_NULL = -1,
     SPRITE_BLANK = 0,
     SPRITE_TEXTBIG = 1,
     SPRITE_REDBLANK = 2,

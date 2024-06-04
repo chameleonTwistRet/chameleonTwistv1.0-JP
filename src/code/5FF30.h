@@ -113,7 +113,7 @@ typedef struct Struct_800AB734 {
 } Struct_800AB734; //sizeof 0x160
 
 typedef struct StageLoadData {
-    LevelHeader* stagePtr;
+    StageData* stageData;
     void* romStart;
     void* ramStart;
     void* ramEnd;
@@ -570,7 +570,7 @@ extern chameleonLetter D_80100DF0[];
 extern s32 D_800F0704;
 extern SaveFile gSaveFile;
 extern SaveFile* gSaveFiles;
-//used to be StageSegData even though its the same but renamed segTableEntry?
+//used to be StageLoadData even though its the same but renamed segTableEntry?
 //its even casted to segTableEntry anyways
 extern StageLoadData gStageLoadData[];
 extern s16 D_80200058;

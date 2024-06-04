@@ -423,7 +423,7 @@ spA = []
 rA = []
 for name in go:
     #print(name)
-    if name.find("roomObjects\\") != -1:
+    if name.find("objects\\") != -1:
         dater = open(name, 'rb').read()
         num = len(list(roomObject.keys()))
         if num != len(dater) / 4:
@@ -441,7 +441,7 @@ for name in go:
             print('oops!')
         else:
             spA.append(parseStruct(dater, specialActor))
-    elif name.find("roomActors\\") != -1:
+    elif name.find("actors\\") != -1:
         dater = open(name, 'rb').read()
         num = len(list(roomActor.keys()))
         if num != len(dater) / 4:

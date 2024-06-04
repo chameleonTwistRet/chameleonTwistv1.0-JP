@@ -205,13 +205,13 @@ typedef struct Tongue { // at 80169268 (for p1)
 } Tongue; //sizeof 0x60C
 
 
-typedef struct CollisionData{
+typedef struct ModelCollision{
     s32 aOVerts;
     s32 aOTris;
     Vec3f* vertsStart; //segmented
     Vec3w* trisStart; //segmented
     Rect3D* settingsStart; //segmented
-} CollisionData;
+} ModelCollision;
 
 
 typedef struct Collider {
@@ -256,7 +256,7 @@ typedef struct Collider {
     /* 0x0C8 */ s32 unkC8;
     /* 0x0CC */ Rect3D unk_CC;
     /* 0x0E4 */ void* unk_E4;
-    /* 0x0E8 */ CollisionData* collisionData;
+    /* 0x0E8 */ ModelCollision* collisionData;
     /* 0x0EC */ Gfx* gfx;
     /* 0x0F0 */ char padF0[4];
     /* 0x0F4 */ void* unkF4;                        /* inferred */
@@ -307,7 +307,7 @@ typedef struct RoomObject {
     f32 unk2C;
     f32 unk30;
     f32 unk34;
-    s32 unk38; // uservariable???
+    s32 keyframes;
     s32 unk3C;
     s32 unk40;
     s32 unk44;
@@ -400,11 +400,11 @@ typedef struct SpriteActor {
 } SpriteActor; // sizeof 0x50
 
 typedef struct Field {
-    /* 0x00 */ RoomObject* roomObjects;
-    //pointer of levelData roomObjects
+    /* 0x00 */ RoomObject* objects;
+    //pointer of levelData objects
     //0 for none
-    /* 0x04 */ RoomActor* roomActors;
-    //pointer of levelData roomActors
+    /* 0x04 */ RoomActor* actors;
+    //pointer of levelData actors
     //0 for none
     /* 0x08 */ Collectable* collectables; 
     //pointer of levelData collectables
@@ -413,9 +413,9 @@ typedef struct Field {
     //pointer of levelData spriteActors
     //0 for none
     /* 0x10 */ s32 rmObjCount;
-    //how much to iterate in Collision.roomObjects
+    //how much to iterate in Collision.objects
     /* 0x14 */ s32 rmActCount;
-    //how much to iterate in Collision.roomActors
+    //how much to iterate in Collision.actors
     /* 0x18 */ s32 clctCount;
     //how much to iterate in Collision.collectables
     /* 0x1C */ Vec2w exit;
@@ -519,11 +519,11 @@ typedef struct actorSubArray { //starts at 0x40
     /* 0x10 */ f32 unk_10;
 } actorSubArray; //sizeof 0x14
 
-typedef struct LevelPointer{
+typedef struct StageModel{
     Gfx* Graphics; //type Gfx*, but it throws 3000 errors. wtf???
-    CollisionData* Collisions;
+    ModelCollision* Collisions;
     char pad[0x28];
-} LevelPointer;
+} StageModel;
 
 typedef struct DMAStruct {
     /* 0x00 */ OSIoMesg ioMsg;
@@ -1005,17 +1005,8 @@ typedef struct Door {
     s32 unk48; 
 } Door; //sizeof 0x4C (?)
 
-/*Dupe of CollisionData???
-typedef struct ModelData{
-    s32 vertCount;
-    s32 triCount;
-    Vec3f* verts;
-    Vec3f* tris;
-    Rect3D* modelBox;
-} ModelData; //sizeof 0x14*/
-
 //platform move point
-typedef struct UnkType1 {
+typedef struct PlatformKeyframe {
     Vec3f position; //position
     s32 unkC;
     s32 unk10; // total move time
@@ -1023,7 +1014,7 @@ typedef struct UnkType1 {
     s32 unk18; // come back hold
     s32 unk1C; // go to next hold
     s32 unk20; // be here by when in the object's moving timer (generally equal total move time + all previous steps)
-} UnkType1; //sizeof 0x24
+} PlatformKeyframe; //sizeof 0x24
 
 typedef struct UnkType2 {
     f32 unk0;
@@ -1034,11 +1025,11 @@ typedef struct UnkType2 {
     f32 unk14;
 } UnkType2; //sizeof 0x18
 
-typedef struct RoomSettings {
-    RoomObject* RoomObjectsPointer;
-    RoomActor* RoomActorPointer;
-    Collectable* CollectablePointer;
-    SpriteActor* SpriteActorPointer;
+typedef struct RoomInstance {
+    RoomObject* objects;
+    RoomActor* actors;
+    Collectable* collectables;
+    SpriteActor* sprites;
     s32 unk10;
     s32 unk14;
     s32 amountOfSpriteActors; //needs verification
@@ -1064,15 +1055,14 @@ typedef struct RoomSettings {
     s32 unk60;
     f32 unk64;
     f32 unk68;
-} RoomSettings; //sizeof 0x6C
+} RoomInstance; //sizeof 0x6C
 
-typedef struct LevelMap {
-    //s32* rooms; //1 dimensional array that's actually 2 dimensional. the player navigates with axiis on doors that move them on the x or y.
-    s32 width; // width for ^
-    s32 height; // height for ^^
-    RoomSettings* dungeonRooms; //pointer to the array of RoomSettings for the dungeon.
-    s32* roomsPointer; //pointer to the array of rooms for this map. is usually directly above the width/this struct.
-} LevelMap;
+typedef struct StageMapData {
+    s32 width; // width in rooms of map
+    s32 height; // height in rooms of map
+    RoomInstance* roomInstances;
+    s32* roomsMap;
+} StageMapData;
 
 typedef struct LevelScope {
     s32 unk0;
@@ -1083,17 +1073,17 @@ typedef struct LevelScope {
     s32 unk14;
 } LevelScope;
 
-typedef struct LevelHeader {
-    LevelMap* Map;
-    RoomSettings* OWRooms;
-    LevelPointer* Pointers;
-    u16 levelPointerCount; //the amount of objects stored in ^
+typedef struct StageData {
+    StageMapData* roomsMap;
+    RoomInstance* roomInstances;
+    StageModel* models;
+    u16 modelCount;
     u16 unkC;
     u32 RoomObjects;
     u32 unk14;
     s32* SpriteLib;
     LevelScope* Scope;
-} LevelHeader;
+} StageData;
 
 typedef struct segTableEntry {
     const char* name;
@@ -1102,11 +1092,6 @@ typedef struct segTableEntry {
     void* ramAddrStart;
     void* ramAddrEnd;
 } segTableEntry;
-
-typedef struct StageSegData {
-    /* 0x00 */ void* baseAddress;
-    /* 0x04 */ char unk04[0x10];
-} StageSegData;
 
 typedef struct Anim {
     f32 unk0;

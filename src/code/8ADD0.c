@@ -180,7 +180,7 @@ s32 func_800B07E4(void) {
 }
 
 void func_800B088C(Collider* arg0, RoomObject* arg1) {
-    arg0->unk_AC = arg1->unk38;
+    arg0->unk_AC = arg1->keyframes;
     arg0->unk_B0 = arg1->unk3C;
     arg0->unk_B4 = 0;
     arg0->unk_B8 = -1;
@@ -228,7 +228,7 @@ void func_800B09C0(Collider* arg0, RoomObject* arg1) {
 }
 
 void func_800B09E8(Collider* arg0, RoomObject* arg1) {
-    arg0->unk_AC = arg1->unk38;    
+    arg0->unk_AC = arg1->keyframes;    
     if (func_800B34D0(arg0->unk_AC) != 0) {
         arg0->unk_B0 = 0;
     } else {
@@ -241,7 +241,7 @@ void func_800B0A30(Collider* arg0, RoomObject* arg1) {
 
     gSelectedCharacters[1] = 4;
     arg0->unk_AC = 0;
-    arg0->unk_B0 = arg1->unk38;
+    arg0->unk_B0 = arg1->keyframes;
     if (func_800B34D0(arg0->unk_B0) != 0) {
         gPlayerActors[1].active = gPlayerActors[1].exists = 0;
         arg0->unk_AC = 2;
@@ -274,7 +274,7 @@ void RegistShutter(Collider* arg0, RoomObject* arg1) {
     s32 i;
 
     arg0->unk_8C = arg1->unk28;
-    arg0->unk_AC = arg1->unk38;
+    arg0->unk_AC = arg1->keyframes;
     arg0->unk_B0 = arg1->unk3C;
     arg0->unk_B4 = arg1->unk40;
     arg0->unk_B8 = arg1->unk44;
@@ -858,22 +858,22 @@ s32 GetCollectableCount(Collectable* collectable) {
 }
 
 /**
- * @brief This function returns a boolean value based on whether the RoomSettings passed is valid.
+ * @brief This function returns a boolean value based on whether the RoomInstance passed is valid.
  * 
- * @param room: The RoomSettings to check if valid.
+ * @param room: The RoomInstance to check if valid.
  * @return true if the room is invalid, false otherwise.
  */
-s32 IsRoomInvalid(RoomSettings* room) {
-    return (room->RoomObjectsPointer == NULL) ? TRUE : FALSE;
+s32 IsRoomInvalid(RoomInstance* room) {
+    return (room->objects == NULL) ? TRUE : FALSE;
 }
 
 /**
- * @brief This function returns a int value of how many RoomSettings are in an array.
+ * @brief This function returns a int value of how many RoomInstance are in an array.
  * 
- * @param room: The RoomSettings to start iterating from.
- * @return the amount of valid RoomSettings in the array.
+ * @param room: The RoomInstance to start iterating from.
+ * @return the amount of valid RoomInstance in the array.
  */
-s32 GetRoomCount(RoomSettings* room) {
+s32 GetRoomCount(RoomInstance* room) {
     s32 i;
 
     if (room == NULL) {
@@ -1170,7 +1170,7 @@ void func_800B6098(Collider* arg0, RoomObject* arg1) {
     arg0->unk_98 = arg1->unk28;
     arg0->unk_9C = arg1->unk2C;
     arg0->unk_A0 = arg1->unk30;
-    arg0->unk_AC = arg1->unk38;
+    arg0->unk_AC = arg1->keyframes;
     arg0->unk_B0 = arg1->unk3C;
     arg0->unk_B4 = arg1->unk40;
     arg0->unk_B8 = arg1->unk44;
@@ -1275,7 +1275,7 @@ void func_800BA2D0(Collider* arg0, RoomObject* arg1) {
     arg0->unk_9C = arg1->unk2C;
     arg0->unk_A0 = arg1->unk30;
     arg0->unkA4 = 0;
-    arg0->unk_AC = arg1->unk38;
+    arg0->unk_AC = arg1->keyframes;
     arg0->unk_B0 = arg1->unk3C;
     arg0->unk_B4 = arg1->unk40;
     arg0->unk_B8 = 0;
@@ -1530,7 +1530,7 @@ void RegistDoor(RoomObject* obj, s32 arg1, s32 arg2) {
         door->max.z = obj->position.z;
         door->rect.max.y = obj->unk28;
         door->rect.max.z = obj->unk2C;
-        door->direction = obj->unk38;
+        door->direction = obj->keyframes;
         door->unk34 = obj->unk3C;
         gDoorCount++;
     }
@@ -1564,7 +1564,7 @@ void func_800BF84C(s32 room) {
     s32 i;
     Field* zone = &gZoneFields[room];
     s32 limit = zone->rmActCount;
-    RoomActor* actor = zone->roomActors;
+    RoomActor* actor = zone->actors;
     
     for (i = 0; i < limit; i++, actor++){
         if (actor->id == 13 || actor->id == 45 || zone->unk68 == 0 || actor->id != zone->unk84){
