@@ -262,6 +262,6 @@ if __name__ == "__main__":
     try:
         args = parser.parse_args()
     except SystemExit:
-        start("Quintella", "levelGroup/Quintella")
+        start("BossRush", "levelGroup/BossRush")
         exit()
     start(args.group, args.outfileName)

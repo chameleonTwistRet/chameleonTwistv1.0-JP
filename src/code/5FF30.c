@@ -557,149 +557,213 @@ Unk_800FFB74 D_800FF9BC = {
 };
 
 
+extern Gfx BombSnake_unkF_Gfx[];
+extern Mtx BombSnake_unk1_Animarr[];
+extern Anim BombSnake_unk1Header_Animh;
+
 Unk_800FFB74 D_800FF9D0 = {
-    (void*)0x03002760,
-    D_3007EA0,
-    (void*)0x0300275C,
-    (void*)0x03002758,
-    LIST_END,
+BombSnake_unk1_Animarr,
+BombSnake_unkF_Gfx,
+&BombSnake_unk1Header_Animh.objects,
+&BombSnake_unk1Header_Animh.frames,
+LIST_END,
 };
+
+
+extern Gfx BombSnake_unk11_Gfx[];
+extern Mtx BombSnake_unk2_Animarr[];
+extern Anim BombSnake_unk2Header_Animh;
 
 Unk_800FFB74 D_800FF9E4 = {
-    (void*)0x03002A90,
-    D_3008428,
-    (void*)0x03002A8C,
-    (void*)0x03002A88,
-    LIST_END,
+BombSnake_unk2_Animarr,
+BombSnake_unk11_Gfx,
+&BombSnake_unk2Header_Animh.objects,
+&BombSnake_unk2Header_Animh.frames,
+LIST_END,
 };
+
+extern Mtx BombSnake_unk3_Animarr[];
+extern Anim BombSnake_unk3Header_Animh;
 
 Unk_800FFB74 D_800FF9F8 = {
-    (void*)0x03002B40,
-    D_3008428,
-    (void*)0x03002B3C,
-    (void*)0x03002B38,
-    LIST_END,
+BombSnake_unk3_Animarr,
+BombSnake_unk11_Gfx,
+&BombSnake_unk3Header_Animh.objects,
+&BombSnake_unk3Header_Animh.frames,
+LIST_END,
 };
+
+extern Mtx BombSnake_unk4_Animarr[];
+extern Anim BombSnake_unk4Header_Animh;
 
 Unk_800FFB74 D_800FFA0C = {
-    (void*)0x03002F30,
-    D_3008428,
-    (void*)0x03002F2C,
-    (void*)0x03002F28,
-    LIST_END,
+BombSnake_unk4_Animarr,
+BombSnake_unk11_Gfx,
+&BombSnake_unk4Header_Animh.objects,
+&BombSnake_unk4Header_Animh.frames,
+LIST_END,
 };
+
+
+extern Gfx Quintella_a_model18_Gfx[];
+extern Mtx Quintella_unk7_Animarr[];
+extern Anim Quintella_unk7Header_Animh;
 
 Unk_800FFB74 D_800FFA20 = {
-    (void*)0x030458F0,
-    D_300EFC0,
-    (void*)0x030458EC,
-    (void*)0x030458E8,
-    LIST_END,
+Quintella_unk7_Animarr,
+Quintella_a_model18_Gfx,
+&Quintella_unk7Header_Animh.objects,
+&Quintella_unk7Header_Animh.frames,
+LIST_END,
 };
+
+extern Mtx Quintella_unk8_Animarr[];
+extern Anim Quintella_unk8Header_Animh;
 
 Unk_800FFB74 D_800FFA34 = {
-    (void*)0x030465E0,
-    D_300EFC0,
-    (void*)0x030465DC,
-    (void*)0x030465D8,
-    0,
+Quintella_unk8_Animarr,
+Quintella_a_model18_Gfx,
+&Quintella_unk8Header_Animh.objects,
+&Quintella_unk8Header_Animh.frames,
+0,
 };
+
+extern Mtx Quintella_unk9_Animarr[];
+extern Anim Quintella_unk9Header_Animh;
 
 Unk_800FFB74 D_800FFA48 = {
-    (void*)0x03047B50,
-    D_300EFC0,
-    (void*)0x03047B4C,
-    (void*)0x03047B48,
-    LIST_END,
+Quintella_unk9_Animarr,
+Quintella_a_model18_Gfx,
+&Quintella_unk9Header_Animh.objects,
+&Quintella_unk9Header_Animh.frames,
+LIST_END,
 };
+
+extern Mtx Quintella_unk10_Animarr[];
+extern Anim Quintella_unk10Header_Animh;
 
 Unk_800FFB74 D_800FFA5C = {
-    (void*)0x0304FB00,
-    D_300EFC0,
-    (void*)0x0304FAFC,
-    (void*)0x0304FAF8,
-    LIST_END,
+Quintella_unk10_Animarr,
+Quintella_a_model18_Gfx,
+&Quintella_unk10Header_Animh.objects,
+&Quintella_unk10Header_Animh.frames,
+LIST_END,
 };
+
+extern Mtx Quintella_unk11_Animarr[];
+extern Anim Quintella_unk11Header_Animh;
 
 Unk_800FFB74 D_800FFA70 = {
-    (void*)0x0305E4F0,
-    D_300EFC0,
-    (void*)0x0305E4EC,
-    (void*)0x0305E4E8,
-    LIST_END,
+Quintella_unk11_Animarr,
+Quintella_a_model18_Gfx,
+&Quintella_unk11Header_Animh.objects,
+&Quintella_unk11Header_Animh.frames,
+LIST_END,
 };
+
+
+extern Gfx LizardKong_a_model12_Gfx[];
+extern Mtx LizardKong_unk5_Animarr[];
+extern Anim LizardKong_unk5Header_Animh;
 
 Unk_800FFB74 D_800FFA84 = {
-    (void*)0x0302CC68,
-    D_300DB48,
-    (void*)0x0302CC60,
-    (void*)0x0302CC5C,
-    LIST_END,
+LizardKong_unk5_Animarr,
+LizardKong_a_model12_Gfx,
+&LizardKong_unk5Header_Animh.objects,
+&LizardKong_unk5Header_Animh.frames,
+LIST_END,
 };
+
+extern Mtx LizardKong_unk6_Animarr[];
+extern Anim LizardKong_unk6Header_Animh;
 
 Unk_800FFB74 D_800FFA98 = {
-    (void*)0x0302DA68,
-    D_300DB48,
-    (void*)0x0302DA60,
-    (void*)0x0302DA5C,
-    LIST_END,
+LizardKong_unk6_Animarr,
+LizardKong_a_model12_Gfx,
+&LizardKong_unk6Header_Animh.objects,
+&LizardKong_unk6Header_Animh.frames,
+LIST_END,
 };
+
+extern Mtx LizardKong_unk7_Animarr[];
+extern Anim LizardKong_unk7Header_Animh;
 
 Unk_800FFB74 D_800FFAAC = {
-    (void*)0x030303E8,
-    D_300DB48,
-    (void*)0x030303E0,
-    (void*)0x030303DC,
-    LIST_END,
+LizardKong_unk7_Animarr,
+LizardKong_a_model12_Gfx,
+&LizardKong_unk7Header_Animh.objects,
+&LizardKong_unk7Header_Animh.frames,
+LIST_END,
 };
+
+extern Mtx LizardKong_unk8_Animarr[];
+extern Anim LizardKong_unk8Header_Animh;
 
 Unk_800FFB74 D_800FFAC0 = {
-    (void*)0x030311E8,
-    D_300DB48,
-    (void*)0x030311E0,
-    (void*)0x030311DC,
-    LIST_END,
+LizardKong_unk8_Animarr,
+LizardKong_a_model12_Gfx,
+&LizardKong_unk8Header_Animh.objects,
+&LizardKong_unk8Header_Animh.frames,
+LIST_END,
 };
+
+extern Mtx LizardKong_unk9_Animarr[];
+extern Anim LizardKong_unk9Header_Animh;
 
 Unk_800FFB74 D_800FFAD4 = {
-    (void*)0x03034928,
-    D_3011318,
-    (void*)0x03034920,
-    (void*)0x0303491C,
-    LIST_END,
+LizardKong_unk9_Animarr,
+LizardKong_a_model14_Gfx,
+&LizardKong_unk9Header_Animh.objects,
+&LizardKong_unk9Header_Animh.frames,
+LIST_END,
 };
+
+
+extern Gfx Armadillo_a_model21_Gfx[];
+extern Mtx Armadillo_unk3_Animarr[];
+extern Anim Armadillo_unk3Header_Animh;
 
 Unk_800FFB74 D_800FFAE8 = {
-    (void*)0x0301B630,
-    D_300CED0,
-    (void*)0x0301B62C,
-    (void*)0x0301B628,
-    LIST_END,
+Armadillo_unk3_Animarr,
+Armadillo_a_model21_Gfx,
+&Armadillo_unk3Header_Animh.objects,
+&Armadillo_unk3Header_Animh.frames,
+LIST_END,
 };
+
+extern Mtx Armadillo_unk4_Animarr[];
+extern Anim Armadillo_unk4Header_Animh;
 
 Unk_800FFB74 D_800FFAFC = {
-    (void*)0x0301E870,
-    D_300CED0,
-    (void*)0x0301E868,
-    (void*)0x0301E864,
-    LIST_END,
+Armadillo_unk4_Animarr,
+Armadillo_a_model21_Gfx,
+&Armadillo_unk4Header_Animh.objects,
+&Armadillo_unk4Header_Animh.frames,
+LIST_END,
 };
+
+extern Mtx Armadillo_unk5_Animarr[];
+extern Anim Armadillo_unk5Header_Animh;
 
 Unk_800FFB74 D_800FFB10 = {
-    (void*)0x03021AB0,
-    D_300CED0,
-    (void*)0x03021AA8,
-    (void*)0x03021AA4,
-    LIST_END,
+Armadillo_unk5_Animarr,
+Armadillo_a_model21_Gfx,
+&Armadillo_unk5Header_Animh.objects,
+&Armadillo_unk5Header_Animh.frames,
+LIST_END,
 };
 
+extern Mtx Armadillo_unk6_Animarr[];
+extern Anim Armadillo_unk6Header_Animh;
+
 Unk_800FFB74 D_800FFB24 = {
-    (void*)0x030265F0,
-    D_300CED0,
-    (void*)0x030265E8,
-    (void*)0x030265E4,
-    LIST_END,
+Armadillo_unk6_Animarr,
+Armadillo_a_model21_Gfx,
+&Armadillo_unk6Header_Animh.objects,
+&Armadillo_unk6Header_Animh.frames,
+LIST_END,
 };
+
 
 Unk_800FFB74 D_800FFB38 = {
     (void*)0x0301E2E8,
@@ -709,13 +773,19 @@ Unk_800FFB74 D_800FFB38 = {
     LIST_END,
 };
 
+
+extern Gfx GiantCake_a_model15_Gfx[];
+extern Mtx GiantCake_unk3_Animarr[];
+extern Anim GiantCake_unk3Header_Animh;
+
 Unk_800FFB74 D_800FFB4C = {
-    (void*)0x0301E268,
-    D_300A9E0,
-    (void*)0x0301E260,
-    (void*)0x0301E25C,
-    LIST_END,
+GiantCake_unk3_Animarr,
+GiantCake_a_model15_Gfx,
+&GiantCake_unk3Header_Animh.objects,
+&GiantCake_unk3Header_Animh.frames,
+LIST_END,
 };
+
 
 Unk_800FFB74 D_800FFB60 = {
     (void*)0x030222E8,
@@ -858,7 +928,17 @@ extern StageData AntLand_stageData;
 extern StageData BombLand_header_Lvlhdr;
 extern StageData DesertCastle_header_Lvlhdr;
 extern StageData KidsLand_header_Lvlhdr;
+extern StageData GhostCastle_header_Lvlhdr;
 extern StageData IntroOutro_header_Lvlhdr;
+extern StageData BattleMode_header_Lvlhdr;
+extern StageData Training_header_Lvlhdr;
+extern StageData LizardKong_header_Lvlhdr;
+extern StageData Quintella_header_Lvlhdr;
+extern StageData BombSnake_header_Lvlhdr;
+extern StageData Armadillo_header_Lvlhdr;
+extern StageData GiantCake_header_Lvlhdr;
+extern StageData PileOfBooks_header_Lvlhdr;
+extern StageData BossRush_header_Lvlhdr;
 
 //TODO: fix the segmented pointers here
 StageLoadData gStageLoadData[] = {
@@ -867,17 +947,17 @@ StageLoadData gStageLoadData[] = {
     {&BombLand_header_Lvlhdr, BombLand_ROM_START, BombLand_VRAM, BombLand_VRAM_END, 2},
     {&DesertCastle_header_Lvlhdr, DesertCastle_ROM_START, DesertCastle_VRAM, DesertCastle_VRAM_END, 3},
     {&KidsLand_header_Lvlhdr, KidsLand_ROM_START, KidsLand_VRAM, KidsLand_VRAM_END, 4},
-    {(void*)0x03011F2C, GhostCastle_ROM_START, GhostCastle_VRAM, GhostCastle_VRAM_END, 5},
+    {&GhostCastle_header_Lvlhdr, GhostCastle_ROM_START, GhostCastle_VRAM, GhostCastle_VRAM_END, 5},
     {&IntroOutro_header_Lvlhdr, IntroOutro_ROM_START, IntroOutro_VRAM, IntroOutro_VRAM_END, 6},
-    {(void*)0x03006358, BattleMode_ROM_START, BattleMode_VRAM, BattleMode_VRAM_END, 7},
-    {(void*)0x03005F44, Training_ROM_START, Training_VRAM, Training_VRAM_END, 8},
-    {(void*)0x030011F0, LizardKong_ROM_START, LizardKong_VRAM, LizardKong_VRAM_END, 9},
-    {(void*)0x03001454, Quintella_ROM_START, Quintella_VRAM, Quintella_VRAM_END, 10},
-    {(void*)0x03001464, BombSnake_ROM_START, BombSnake_VRAM, BombSnake_VRAM_END, 11},
-    {(void*)0x030013C4, Armadillo_ROM_START, Armadillo_VRAM, Armadillo_VRAM_END, 12},
-    {(void*)0x03001300, GiantCake_ROM_START, GiantCake_VRAM, GiantCake_VRAM_END, 13},
-    {(void*)0x03002674, PileOfBooks_ROM_START, PileOfBooks_VRAM, PileOfBooks_VRAM_END, 14},
-    {(void*)0x030031F0, BossRush_ROM_START, BossRush_VRAM, BossRush_VRAM_END, 15},
+    {&BattleMode_header_Lvlhdr, BattleMode_ROM_START, BattleMode_VRAM, BattleMode_VRAM_END, 7},
+    {&Training_header_Lvlhdr, Training_ROM_START, Training_VRAM, Training_VRAM_END, 8},
+    {&LizardKong_header_Lvlhdr, LizardKong_ROM_START, LizardKong_VRAM, LizardKong_VRAM_END, 9},
+    {&Quintella_header_Lvlhdr, Quintella_ROM_START, Quintella_VRAM, Quintella_VRAM_END, 10},
+    {&BombSnake_header_Lvlhdr, BombSnake_ROM_START, BombSnake_VRAM, BombSnake_VRAM_END, 11},
+    {&Armadillo_header_Lvlhdr, Armadillo_ROM_START, Armadillo_VRAM, Armadillo_VRAM_END, 12},
+    {&GiantCake_header_Lvlhdr, GiantCake_ROM_START, GiantCake_VRAM, GiantCake_VRAM_END, 13},
+    {&PileOfBooks_header_Lvlhdr, PileOfBooks_ROM_START, PileOfBooks_VRAM, PileOfBooks_VRAM_END, 14},
+    {&BossRush_header_Lvlhdr, BossRush_ROM_START, BossRush_VRAM, BossRush_VRAM_END, 15},
     {0, 0, 0, 0, -1},
     {0, 0, 0, 0, -1},
     {0, 0, 0, 0, -1},
@@ -954,13 +1034,15 @@ enum StageSelectStages{
     BOSSRUSH // 6
 };
 
+#define canAccess(stage) TRUE << stage
+
 StageSelectData StageSelect[] = {                                                                               //?        
-    { 56, 192, SPRITE_JL_ICON,          BOSSRUSH,   AL,     BL,     BL,     NONE,   NONE,   NONE,       NONE,   NONE},
-    {108, 112, SPRITE_AL_ICON,          NONE,       DC,     DC,     KL,     BL,     JL,     BOSSRUSH,   NONE,   29},
-    {148, 184, SPRITE_BL_ICON,          DC,         DC,     KL,     KL,     NONE,   JL,     JL,         AL,     27},
-    {186,  80, SPRITE_DC_ICON,          NONE,       GC,     GC,     KL,     KL,     BL,     AL,         NONE,   54},
-    {228, 152, SPRITE_KL_ICON,          DC,         GC,     NONE,   NONE,   NONE,   BL,     BL,         AL,     46},
-    {258,  56, SPRITE_GC_ICON,          NONE,       NONE,   NONE,   KL,     KL,     KL,     DC,         NONE,   24},
+    { 56, 192, SPRITE_JL_ICON,          BOSSRUSH,   AL,     BL,     BL,     NONE,   NONE,   NONE,       NONE,   -1},
+    {108, 112, SPRITE_AL_ICON,          NONE,       DC,     DC,     KL,     BL,     JL,     BOSSRUSH,   NONE,   canAccess(JL) | canAccess(BL) | canAccess(DC) |  canAccess(KL)},
+    {148, 184, SPRITE_BL_ICON,          DC,         DC,     KL,     KL,     NONE,   JL,     JL,         AL,     canAccess(JL) | canAccess(AL) | canAccess(DC) |  canAccess(KL)},
+    {186,  80, SPRITE_DC_ICON,          NONE,       GC,     GC,     KL,     KL,     BL,     AL,         NONE,   canAccess(AL) | canAccess(BL) |  canAccess(KL) | canAccess(GC)},
+    {228, 152, SPRITE_KL_ICON,          DC,         GC,     NONE,   NONE,   NONE,   BL,     BL,         AL,     canAccess(AL) | canAccess(BL) |  canAccess(DC) | canAccess(GC)},
+    {258,  56, SPRITE_GC_ICON,          NONE,       NONE,   NONE,   KL,     KL,     KL,     DC,         NONE,   canAccess(DC) | canAccess(KL)},
     { 56, 110, SPRITE_BOSSRUSH_ICON,    NONE,       NONE,   AL,     NONE,   JL,     NONE,   NONE,       NONE,   0},
     {  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
 };

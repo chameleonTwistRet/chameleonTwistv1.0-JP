@@ -256,7 +256,7 @@ typedef struct Collider {
     /* 0x0C8 */ s32 unkC8;
     /* 0x0CC */ Rect3D unk_CC;
     /* 0x0E4 */ void* unk_E4;
-    /* 0x0E8 */ ModelCollision* collisionData;
+    /* 0x0E8 */ ModelCollision* ModelCollision;
     /* 0x0EC */ Gfx* gfx;
     /* 0x0F0 */ char padF0[4];
     /* 0x0F4 */ void* unkF4;                        /* inferred */
@@ -1036,7 +1036,7 @@ typedef struct RoomInstance {
     s32 unk1C;
     s32 unk20;
     s32 unk24;
-    f32 unk28;
+    f32 cameraRot; //basically how top-down you want the room to be. mostly for extRooms
     s32 unk2C;
     f32 unk30;
     f32 unk34;

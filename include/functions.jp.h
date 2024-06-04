@@ -258,6 +258,7 @@ Effect* Effect_TypeC_Init(f32, f32, f32, f32, f32, f32, u8, u8, u8, u8, s32, s32
 Effect* Effect_TypeE_Init(f32, f32, f32, f32, f32, f32, f32, f32, s32, s32);
 Effect* Effect_TypeF_Init(f32, f32, f32, f32, f32, f32, f32, f32, s32, s32);
 Effect* Effect_TypeT_Init(f32, f32, s32, s32);
+void Effect_TypeAM_Init(f32 posX, f32 posY, f32 posZ, f32 arg3, s32* arg4);
 Effect* func_80065CAC(f32);
 void func_800667A8(void);
 void func_800667B4(Effect*);
@@ -554,5 +555,14 @@ void func_800D8E70(Collider* arg0);
 void func_800D8ED4(Collider* arg0);
 
 
+void func_800B21CC(s32 arg0, s32 arg1);
+void func_800D9128(Collider* arg0);
+void func_800B2070(s32 arg0);
+void func_800D9104(Collider* arg0);
+void func_800D9190(Collider* arg0);
+void func_800D914C(Collider* arg0);
+void func_800B2144(Collider* arg0, unkStruct14* arg1);
+void func_800B216C(Collider* arg0);
+void func_800D91B4(Collider* arg0);
 
 #endif

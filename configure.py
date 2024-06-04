@@ -389,7 +389,7 @@ def build_stuff(linker_entries: List[LinkerEntry]):
             continue
 
         if os.path.dirname(c_file) == "src/audio":
-            ninja.build(o_file, "O2_cc", c_file)  # Update later
+            ninja.build(o_file, "ido_O3_cc", c_file)  # Update later
         elif os.path.dirname(c_file) in ["src/io", "src/os"]:
             ninja.build(o_file, "O1_cc", c_file)
     
