@@ -256,7 +256,7 @@ typedef struct Collider {
     /* 0x0C8 */ s32 unkC8;
     /* 0x0CC */ Rect3D unk_CC;
     /* 0x0E4 */ void* unk_E4;
-    /* 0x0E8 */ ModelCollision* collisionData;
+    /* 0x0E8 */ ModelCollision* ModelCollision;
     /* 0x0EC */ Gfx* gfx;
     /* 0x0F0 */ char padF0[4];
     /* 0x0F4 */ void* unkF4;                        /* inferred */

@@ -923,22 +923,22 @@ char D_800FFEC4[] = "ＣＯＮＧＲＡＴＵＬＡＴＩＯＮＳ！";
 f32 D_800FFEE8 = 0.0f;
 s16 D_800FFEEC[] = {0x18, 0x19, 0x1A, 0x1B, LIST_END};
 
-extern LevelHeader JungleLand_stageData;
-extern LevelHeader AntLand_stageData;
-extern LevelHeader BombLand_header_Lvlhdr;
-extern LevelHeader DesertCastle_header_Lvlhdr;
-extern LevelHeader KidsLand_header_Lvlhdr;
-extern LevelHeader GhostCastle_header_Lvlhdr;
-extern LevelHeader IntroOutro_header_Lvlhdr;
-extern LevelHeader BattleMode_header_Lvlhdr;
-extern LevelHeader Training_header_Lvlhdr;
-extern LevelHeader LizardKong_header_Lvlhdr;
-extern LevelHeader Quintella_header_Lvlhdr;
-extern LevelHeader BombSnake_header_Lvlhdr;
-extern LevelHeader Armadillo_header_Lvlhdr;
-extern LevelHeader GiantCake_header_Lvlhdr;
-extern LevelHeader PileOfBooks_header_Lvlhdr;
-extern LevelHeader BossRush_header_Lvlhdr;
+extern StageData JungleLand_stageData;
+extern StageData AntLand_stageData;
+extern StageData BombLand_header_Lvlhdr;
+extern StageData DesertCastle_header_Lvlhdr;
+extern StageData KidsLand_header_Lvlhdr;
+extern StageData GhostCastle_header_Lvlhdr;
+extern StageData IntroOutro_header_Lvlhdr;
+extern StageData BattleMode_header_Lvlhdr;
+extern StageData Training_header_Lvlhdr;
+extern StageData LizardKong_header_Lvlhdr;
+extern StageData Quintella_header_Lvlhdr;
+extern StageData BombSnake_header_Lvlhdr;
+extern StageData Armadillo_header_Lvlhdr;
+extern StageData GiantCake_header_Lvlhdr;
+extern StageData PileOfBooks_header_Lvlhdr;
+extern StageData BossRush_header_Lvlhdr;
 
 //TODO: fix the segmented pointers here
 StageLoadData gStageLoadData[] = {

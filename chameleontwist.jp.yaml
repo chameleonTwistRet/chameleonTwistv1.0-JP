@@ -228,7 +228,7 @@ segments:
       - [0xC95C0, data, rspBootText]
       - [0xC9690, data, gspFast3DTextStart]
       - [0xCAAC0, data, aspMainTextStart]
-      - [0xCB8E0, .data, code/1050] #800EE290 through 800F0B50
+      - [0xCB8E0, data, code/1050] #800EE290 through 800F0B50
       - [0xCBAA0, data, code/debug] #800F0B50 through 800F0B50
       - [0xCBF50, .data, code/battle]
       - [0xCC190, .data, code/sprite]

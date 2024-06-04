@@ -29,7 +29,13 @@ Mtx D_80129730;
 GraphicStruct gGraphicsList[2];
 
 extern u64* D_80200CB0;
-//if you can get the pointers to build be my guest
+/*
+these build, but don't shift due to some weird bss stuff swapping vars around
+once fixed, 
+- [0xCB8E0, data, code/1050]
+in the yaml should be able to become
+- [0xCB8E0, .data, code/1050]
+
 OSTask D_800F04E0[2] = {
 {
     1,
@@ -110,6 +116,7 @@ char D_800F067C[] = "BH";
 s32 D_800F0680[4] = {0, 0, 0, 0};
 s32 RumblePakError = 0;
 s32 D_800F0694[3] = {0, 0, 0};
+*/
 
 void bootproc(void) {
     __osInitialize_common();
