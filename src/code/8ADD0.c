@@ -1139,7 +1139,18 @@ void func_800B5D68(Collider* arg0, s32 arg1) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B5E40.s")
+void func_800B5E40(Collider* arg0, RoomObject* arg1) {
+    func_800B402C(arg0, 0, 1);
+    if (arg0->unk_5C != 0) {
+        func_800B402C(arg0, 1, 1);
+    } else {
+        func_800B402C(arg0, 1, 0);
+    }
+    func_800B402C(arg0, 2, 2);
+    arg0->unk_8C = arg1->unk28;
+    arg0->unk_AC = arg1->keyframes - 0x3C;
+    arg0->unk_B0 = 0;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B5ED0.s")
 
