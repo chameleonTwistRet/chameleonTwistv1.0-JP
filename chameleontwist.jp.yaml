@@ -10135,7 +10135,133 @@ segments:
       vram: 0x81000000
       start: 0x7A72B0
       subsegments:
-      - [0x7A72B0, databin, BombSnake_data]
+      - [0x7A72B0] #identity matrix
+      - [0x7A72F0, levelPointer, pointers]
+      - [0x7A7a70, databin, rabObjects]
+
+      - [0x7a7bd4, roomObject, roomObjects/room0_obj1]
+      - [0x7a7c60, roomObject, roomObjects/room0_obj2]
+      - [0x7a7cec, roomObject, roomObjects/room0_obj3]
+      - [0x7a7d78, roomObject, roomObjects/room0_obj4]
+      - [0x7a7e04, roomObject, roomObjects/room0_obj5]
+      - [0x7a7e90, roomObject, roomObjects/room0_obj6]
+      - [0x7a7f1c, roomObject, roomObjects/room0_obj7]
+      - [0x7a7fa8, roomObject, roomObjects/room0_obj8]
+      - [0x7a8034, roomObject, roomObjects/room0_obj9]
+      - [0x7a80c0, roomObject, roomObjects/room0_obj10]
+      - [0x7a814c, roomObject, roomObjects/room0_obj11]
+      - [0x7a81d8, roomObject, roomObjects/room0_obj12]
+      - [0x7a8264, roomObject, roomObjects/room0_objSTOP]
+
+      - [0x7a82f0, roomActor, roomActors/room0_act1]
+      - [0x7a8350, roomActor, roomActors/room0_actSTOP]
+
+      - [0x7a83B0, roomActor, roomActors/room1_act1]
+      - [0x7a8410, roomActor, roomActors/roomActSTOP]
+
+      - [0x7a8470, spriteLib, spriteLib]
+      - [0x7a8530, roomSettings, room0]
+      - [0x7a859c, roomSettings, room1]
+      - [0x7a8608, roomSettings, roomSTOP]
+      - {start: 0x7a8674, type: levelMap, name: map, args: Map}
+      - {start: 0x7a8680, type: levelMap, name: map, args: Header}
+      - [0x7a8690, roomSettings, nullOWRoom]
+      - [0x7A86FC, levelScope, scope]
+      - [0x7A8714, levelHeader, header]
+      - [0x7a8734]
+
+      - [0x7a8740] #identity matrix
+      - [0x7a8780, lights, bsScope/bsScope] # set Lights 1 for alot of bs assets
+
+      - [0x7a8798, vtx, arenaWalls/arenaWalls]
+      - [0x7a89b8] #identity matrix
+      - [0x7a89f8, gfxSeg, arenaWalls/arenaWalls]
+
+      - [0x7a8d90, vtx, arenaFloor/arenaFloor]
+      - [0x7a8f10] #identity matrix
+      - [0x7a8f50] #B8000000
+      - [0x7a8f58, i4, img/arenaFloor.i4, 64, 32]
+      - [0x7A9358, gfxSeg, arenaFloor/arenaFloor]
+
+      - {start: 0x7A9600, type: collision, name: arenaWalls/arenaWalls, args: "Verts"}
+      - {start: 0x7a96d8, type: collision, name: arenaWalls/arenaWalls, args: "Tris"}
+      - {start: 0x7a97f8, type: collision, name: arenaWalls/arenaWalls, args: "Settings"}
+      - {start: 0x7a9810, type: collision, name: arenaWalls/arenaWalls, args: "Header"}
+      - {start: 0x7a9824, type: collision, name: arenaFloor/arenaFloor, args: "Verts"}
+      - {start: 0x7a98b4, type: collision, name: arenaFloor/arenaFloor, args: "Tris"}
+      - {start: 0x7a9974, type: collision, name: arenaFloor/arenaFloor, args: "Settings"}
+      - {start: 0x7a998c, type: collision, name: arenaFloor/arenaFloor, args: "Header"}
+
+      - [0x7a99a0] #identity matrix
+
+      - [0x7a99e0, animHeader, anim/unk1Header]
+      - [0x7a9a10, animArray, anim/unk1, 2, 6]
+      - [0x7a9d10, animHeader, anim/unk2Header]
+      - [0x7a9d40, animArray, anim/unk2, 2, 1]
+      - [0x7a9dc0, animHeader, anim/unk3Header]
+      - [0x7a9df0, animArray, anim/unk3, 15, 1]
+      - [0x7aa1b0, animHeader, anim/unk4Header]
+      - [0x7aa1e0, animArray, anim/unk4, 15, 1]
+
+      - [0x7aa5a0, lights, bsScope2/bsScope2] # set Lights 1 for alot of bs objects
+
+      - [0x7aa5b8, vtx, bombSnakeHead/bombSnakeHead]
+      - [0x7ab208] #identity matrix
+      - [0x7ab248] #B8000000
+      - [0x7ab250, ci4, img/cannonClone.ci4, 32, 16]
+      - [0x7AB350] #B8000000
+      - [0x7AB358, palette, img/cannonClone.ci4]
+      - [0x7ab558] #B8000000
+      - [0x7ab560, ci4, img/color.ci4, 16, 16]
+      - [0x7AB5E0] #B8000000
+      - [0x7AB5E8, palette, img/color.ci4]
+      - [0x7ab7e8, gfxSeg, bombSnakeHead/bombSnakeHead]
+
+      - [0x7AC0A0, vtx, bombSnakeHeadSpike/bombSnakeHeadSpike]
+      - [0x7Ac300] #identity matrix
+      - [0x7Ac340] #B8000000
+      - [0x7Ac348, ci4, img/bombSnakeHeadSpike.ci4, 32, 16]
+      - [0x7AC448] #B8000000
+      - [0x7AC450, palette, img/bombSnakeHeadSpike.ci4]
+      - [0x7ac650, gfxSeg, bombSnakeHeadSpike/bombSnakeHeadSpike]
+
+      - [0x7AC948, vtx, bombSnakeHeadGem/bombSnakeHeadGem]
+      - [0x7acf48] #identity matrix
+      - [0x7acf88] #B8000000
+      - [0x7acf90, ci8, img/bombSnakeHeadGem.ci8, 32, 48]
+      - [0x7AD590] #B8000000
+      - [0x7AD598, palette, img/bombSnakeHeadGem.ci8]
+      - [0x7ad798, gfxSeg, bombSnakeHeadGem/bombSnakeHeadGem]
+
+      - [0x7ad9e0, vtx, bombSnakeEars/bombSnakeEars]
+      - [0x7add60] #identity matrix
+      - [0x7adda0] #B8000000
+      - [0x7adda8, rgba16, img/bombSnakeEars.rgba16, 41, 41]
+      - [0x7AEAD0, gfxSeg, bombSnakeEars/bombSnakeEars]
+
+      - [0x7aef20, vtx, unkD/unkD]
+      - [0x7aef60] #identity matrix
+      - [0x7aefa0, gfxSeg, unkD/unkD]
+
+      - [0x7af018, vtx, unkE/unkE]
+      - [0x7af058] #identity matrix
+      - [0x7af098, gfxSeg, unkE/unkE]
+
+      - [0x7af110] #identity matrix
+      - [0x7af150, gfxSeg, unkF/unkF]
+
+      - [0x7af198, vtx, bombSnakeTail/bombSnakeTail]
+      - [0x7af398] #identity matrix
+      - [0x7af3d8, gfxSeg, bombSnakeTail/bombSnakeTail]
+
+      - [0x7af698] #identity matrix
+      - [0x7af6d8, gfxSeg, unk11/unk11]
+
+      - [0x7af6f8, animPointers, anim/unk1Pointers]
+      - [0x7af704, animPointers, anim/unk2Pointers]
+      - [0x7af710, animPointers, anim/unk3Pointers]
+      - [0x7af71C, animPointers, anim/unk4Pointers]
+      - [0x7af728] #alignment
 
   - start: 0x7af730
     name: GiantCake
