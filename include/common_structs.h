@@ -146,7 +146,7 @@ typedef struct Struct_80076EA0 {
     /* 0x04 */ f32 unk_04;
     /* 0x08 */ f32 unk_08;
     /* 0x0C */ s32 unk_0C;
-    /* 0x10 */ char* unk_10;
+    /* 0x10 */ const char* unk_10;
     /* 0x14 */ s32 unk_14;
 } Struct_80076EA0; // sizeof 0x18
 
@@ -1101,7 +1101,7 @@ typedef struct Anim {
     f32 unk18;
     f32 unk1C;
     f32 unk20;
-    s32 unk24;
+    f32 unk24;
     s32 frames;
     s32 objects;
 } Anim;

@@ -14,16 +14,11 @@ extern u8 D_800F0D88[];
 extern u8 D_800F0D8C[];
 
 unkStruct16 D_800F0D90[5] = {
-{&Animations_unk2Pointers_Animp, &Animations_unk2Pointers_Animp,
-D_800F0D3C, 28, -10.0f},
-{&static0_chameleonAnimPointers_Animp[0], &static0_chameleonAnimPointers_Animp[0],
-D_800F0D58, 45, -30.0f},
-{&static0_chameleonAnimPointers_Animp[0], &static0_chameleonAnimPointers_Animp[0],
-D_800F0D88, 1, -30.0f},
-{&Animations_unk2Pointers_Animp, &Animations_unk2Pointers_Animp,
-D_800F0D8C, 1, -10.0f},
-{&Animations_unk1Pointers_Animp, &Animations_unk2Pointers_Animp,
-D_800F0D3C, 28, 0.0f}
+{&Animations_unk2Pointers_Animp, &Animations_unk2Pointers_Animp, D_800F0D3C, 28, -10.0f},
+{&static0_chameleonAnims[0], &static0_chameleonAnims[0], D_800F0D58, 45, -30.0f},
+{&static0_chameleonAnims[0], &static0_chameleonAnims[0], D_800F0D88, 1, -30.0f},
+{&Animations_unk2Pointers_Animp, &Animations_unk2Pointers_Animp, D_800F0D8C, 1, -10.0f},
+{&Animations_unk1Pointers_Animp, &Animations_unk2Pointers_Animp, D_800F0D3C, 28, 0.0f}
 };
 
 unk_80052094_8 Battle_MsgReady[5] = {
@@ -528,7 +523,7 @@ char GC_Boss_Text_White[][TEXT_LINE_SIZE] = {
     ""
 };
 
-char** Dialogue[CHARA_TOTAL][20] = {
+char (*Dialogue[CHARA_TOTAL][20])[TEXT_LINE_SIZE] = {
     //Davy
     {
     JL_IntroText,
@@ -760,7 +755,7 @@ char Unk2_EndingMove_Text[][TEXT_LINE_SIZE] = {
 };
 
 //unique dialogue, intro/outro
-char* D_800F59B8[][20] = {
+char (*D_800F59B8[CHARA_TOTAL + 1][20])[TEXT_LINE_SIZE] = {
     //Davy
     {
     ItsAnotherBeautifulDay_Text,
@@ -937,7 +932,7 @@ char BlackFightNotEnoughCarrots_Text[][TEXT_LINE_SIZE] = {
     ""
 };
 
-char** D_800F67A0[6] = {
+char (*D_800F67A0[6])[TEXT_LINE_SIZE] = {
     BilliardsEnoughCarrots_Text,
     BilliardsNotEnoughCarrots_Text,
     BowlingEnoughCarrots_Text,
@@ -1849,15 +1844,15 @@ extern const char D_8010CB48[];
 extern const char D_8010CB64[];
 
 Struct_80076EA0 D_800FE404[9] = {
-    {114, 44, 1, 0, &D_8010CABC, 1},
-    {116, 86, 1, 1, &D_8010CACC, 1},
-    {64, 118, 1, 1, &D_8010CADC, 1},
-    {64, 150, 1, 1, &D_8010CAF8, 1},
-    {128,182, 1, 1, &D_8010CB14, 1},
-    {114, 70, 1, 1, &D_8010CB20, 1},
-    {64, 102, 1, 1, &D_8010CB2C, 1},
-    {64, 134, 1, 1, &D_8010CB48, 1},
-    {120,166, 1, 1, &D_8010CB64, 1}
+    {114, 44, 1, 0, D_8010CABC, 1},
+    {116, 86, 1, 1, D_8010CACC, 1},
+    {64, 118, 1, 1, D_8010CADC, 1},
+    {64, 150, 1, 1, D_8010CAF8, 1},
+    {128,182, 1, 1, D_8010CB14, 1},
+    {114, 70, 1, 1, D_8010CB20, 1},
+    {64, 102, 1, 1, D_8010CB2C, 1},
+    {64, 134, 1, 1, D_8010CB48, 1},
+    {120,166, 1, 1, D_8010CB64, 1}
 };
 
 u8 gDontChangeEyes = 0;
@@ -1907,9 +1902,9 @@ chameleonEyeListEntry chameleonEyeList[6] = {
 
 //TODO: fix
 struct_800FE54C BossDeadEyes[3] = {
-    {0x03004D90, 0x03005598},
-    {0x03006FE0, 0x030073E8},
-    {0x03006A20, 0x03007228}
+    {(void*)0x03004D90, (void*)0x03005598},
+    {(void*)0x03006FE0, (void*)0x030073E8},
+    {(void*)0x03006A20, (void*)0x03007228}
 };
 
 //basic color lookup table?

@@ -11299,7 +11299,7 @@ static0_GetupFromKnockback_Animh = 0x010387D0; // type:Animh rom:0x13A330 define
 static0_GetupFromKnockback_Animarr = 0x01038800; // type:Animarr rom:0x13A360 defined:True
 static0_unk3_Animh = 0x0103C900; // type:Animh rom:0x13E460 defined:True
 static0_unk3_Animarr = 0x0103C930; // type:Animarr rom:0x13E490 defined:True
-static0_chameleonAnimPointers_Animp = 0x01045B70; // type:Animp rom:0x1476D0 defined:True
+static0_chameleonAnims = 0x01045B70; // type:Animp rom:0x1476D0 defined:True
 
 
 //generated section BombSnake starting here
