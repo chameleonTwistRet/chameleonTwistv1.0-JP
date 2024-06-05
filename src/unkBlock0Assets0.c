@@ -1,6 +1,7 @@
 #include "common.h"
 
 //TODO: fill in all void* segments with actual segment pointers
+//TODO: what does this file actually do/get used for?
 
 typedef struct unkAssetStruct0 {
     f32 unk_00;

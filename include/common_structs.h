@@ -520,7 +520,7 @@ typedef struct actorSubArray { //starts at 0x40
 } actorSubArray; //sizeof 0x14
 
 typedef struct StageModel{
-    Gfx* Graphics; //type Gfx*, but it throws 3000 errors. wtf???
+    Gfx* Graphics;
     ModelCollision* Collisions;
     char pad[0x28];
 } StageModel;
@@ -541,8 +541,6 @@ typedef struct unk802000C84 {
 typedef struct unkStruct09 {
 char unk_00[0x84];
 } unkStruct09; //sizeof 0x84
-
-
 
 typedef struct unkStruct14 {
 /* 0x00 */ char unk_00[0x38];
@@ -575,9 +573,9 @@ typedef struct unk80100F50 {
     /* 0x04*/ u32 unk4;
 } unk80100F50; //sizeof 0x08
 
-typedef struct frameBufferData {
+typedef struct FrameBuffer {
     /* 0x00 */ char data[0x25800]; // h*W*colDepth
-} frameBufferData; //sizeof 0x25800
+} FrameBuffer; //sizeof 0x25800
 
 typedef struct CTTask {
     /* 0x00 */ s16 runType;
