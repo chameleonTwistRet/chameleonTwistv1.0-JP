@@ -1071,7 +1071,7 @@ void Battle_Update(void) {
                 if (gPlayerActors[i].active) {
                     if (gPlayerActors[i].exists && Battle_PlayerIsOut[i] != TRUE || D_800F0B64 != BATTLE_STAGE_INVALID) {
                         numAlive++;
-                        if (gPlayerActors[i].canJump || gPlayerActors[i].playerHURTSTATE != 0 || gTongues[i].tongueMode != 0) {
+                        if (gPlayerActors[i].canJump || gPlayerActors[i].playerDamagedState != 0 || gTongues[i].tongueMode != 0) {
                             if (Battle_PlayerRank[i] != 0) {
                                 DisableInput();
                             }

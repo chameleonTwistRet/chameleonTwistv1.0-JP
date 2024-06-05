@@ -114,17 +114,17 @@ typedef struct PlayerActor {
     /* 0x0C0 */ u32 amountLeftToShoot;
     /* 0x0C4 */ u32 vaultFall;//timer for falling after vault
     /* 0x0C8 */ s32 hp;
-    /* 0x0CC */ u32 playerHURTSTATE;
-    /* 0x0D0 */ s32 playerHURTTIMER;
-    /* 0x0D4 */ u32 playerHURTANIM;
-    /* 0x0D8 */ u32 playerHURTBY;
+    /* 0x0CC */ u32 playerDamagedState;
+    /* 0x0D0 */ s32 playerDamagedTimer;
+    /* 0x0D4 */ u32 playerDamagedAnimation;
+    /* 0x0D8 */ u32 playerDamagedByID;
     /* 0x0DC */ f32 unk_DC[6];
     /* 0x0F4 */ f32 unk_F4[6];
     /* 0x10C */ f32 timerDown;
     /* 0x110 */ f32 reticleSize;
     /* 0x114 */ s32 active; //0x00 = no, 0x01 = yes
     /* 0x118 */ s32 exists; //0x00 = no, 0x01 = yes
-    /* 0x11C */ u32 power; //enum of power it has
+    /* 0x11C */ s32 activePowerup; //enum of power it has
     /* 0x120 */ s32 powerTimer; 
     /* 0x124 */ s32 powerTimerTill; 
     /* 0x128 */ f32 tongueYOffset; 
@@ -376,12 +376,12 @@ typedef struct CollectableWrapper {
     s32 actorIndex;
 } CollectableWrapper;
 
-typedef struct Color128 {
+typedef struct RGBA128 {
     u32 r;
     u32 g;
     u32 b;
     u32 a;
-} Color128;
+} RGBA128;
 
 typedef struct SpriteActor {
     s32 size;
@@ -396,7 +396,7 @@ typedef struct SpriteActor {
     s32 unk34;
     s32 unk38;
     s32 unk3C;
-    Color128 color;
+    RGBA128 color;
 } SpriteActor; // sizeof 0x50
 
 typedef struct Field {
@@ -412,11 +412,11 @@ typedef struct Field {
     /* 0x0C */ SpriteActor* spriteActors;
     //pointer of levelData spriteActors
     //0 for none
-    /* 0x10 */ s32 rmObjCount;
+    /* 0x10 */ s32 roomObjectsCount;
     //how much to iterate in Collision.objects
-    /* 0x14 */ s32 rmActCount;
+    /* 0x14 */ s32 roomActorsCount;
     //how much to iterate in Collision.actors
-    /* 0x18 */ s32 clctCount;
+    /* 0x18 */ s32 collectablesCount;
     //how much to iterate in Collision.collectables
     /* 0x1C */ Vec2w exit;
     //where to send you relative on exit of the room

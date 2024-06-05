@@ -257,7 +257,6 @@ void func_800B0AA4(Collider* collider) {
             func_800B35B0(collider->unk_B0);
             collider->unk_AC = 2;
         }
-    //why even have case 1 or 2 at that point?? nulled code???
     case 1:
     case 2:
         break;
@@ -506,7 +505,7 @@ s32 func_800B2510(void) {
     s32 i;
     
     for (i = 0; i < ARRAY_COUNT(gPlayerActors); i++) {
-        if (gPlayerActors[i].exists != 0 && gPlayerActors[i].power == 4) {
+        if (gPlayerActors[i].exists != 0 && gPlayerActors[i].activePowerup == POWERUP_TIMER) {
             ret = 1;
             break;
         }
@@ -881,7 +880,6 @@ s32 GetRoomCount(RoomInstance* room) {
     }
 
     i = 0;
-
     while (IsRoomInvalid(room) == FALSE) {
         i++;
         room++;
@@ -914,7 +912,6 @@ s32 GetSpriteActCount(SpriteActor* sprite) {
     }
 
     i = 0;
-
     while (IsSpriteActInvalid(sprite) == FALSE) {
         i++;
         sprite++;
@@ -1023,16 +1020,16 @@ void func_800B4264(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B4A3C.s")
 
-void setCrownPositionsForRoom(s32 arg0) {
-    s32 limit;
+void SetCrownPositionsForRoom(s32 zoneIndex) {
+    s32 numCollectables;
     s32 i;
     CollectableWrapper* var_s0;
     Collectable* new_var;
     
-    limit = gZoneFields[arg0].clctCount;
-    var_s0 = &D_802019A8[gZoneFields[arg0].unk78];
+    numCollectables = gZoneFields[zoneIndex].collectablesCount;
+    var_s0 = &D_802019A8[gZoneFields[zoneIndex].unk78];
     
-    for (i = 0; i < limit; i++, var_s0++) {
+    for (i = 0; i < numCollectables; i++, var_s0++) {
         new_var = var_s0->levelDataCollectable;
         if (var_s0->bitfield == 1) {
             var_s0->actorIndex = func_800B4A3C(new_var);
@@ -1460,7 +1457,7 @@ void EraseToungeEatEnemy(Tongue* arg0) {
         if (gActors[i].actorState != 1)
             continue;
             if (IsPickup(&gActors[i]) != 0) {
-                pickup_collide_func(i);
+                PickupCollisionEvent(i);
             } else {
                 gActors[i].actorState = 2;
                 arg0->inMouth[arg0->amountInMouth] = i;
@@ -1473,8 +1470,8 @@ void EraseToungeEatEnemy(Tongue* arg0) {
 }
 
 void func_800BE664(PlayerActor * arg0) {
-    if (arg0->power == POWERUP_TIMER) {
-        arg0->power = POWERUP_NONE;
+    if (arg0->activePowerup == POWERUP_TIMER) {
+        arg0->activePowerup = POWERUP_NONE;
     }
 }
 
@@ -1563,7 +1560,7 @@ void func_800BF5A4(void) {
 void func_800BF84C(s32 room) {
     s32 i;
     Field* zone = &gZoneFields[room];
-    s32 limit = zone->rmActCount;
+    s32 limit = zone->roomActorsCount;
     RoomActor* actor = zone->actors;
     
     for (i = 0; i < limit; i++, actor++){

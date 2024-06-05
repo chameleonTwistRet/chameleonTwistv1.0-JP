@@ -60,9 +60,9 @@ void func_800312FC(Actor*, f32);
 void func_800313BC(s32, f32); //actor kill
 void func_80031518(Actor*);
 void func_80031DB0(PlayerActor*, Tongue*, s32);
-s32 IsActiveExplosion(Actor*);
+s32 IsExplosionActive(Actor*);
 void func_800382F4(Actor*);
-void func_800383A0(Actor*);
+void CalcEnemyNextPositionWrapper(Actor*);
 void ActorInit_GreyAntSpawner(Actor*); // Grey Ant Spawner
 void ActorTick_GreyAntSpawner(Actor*);
 void ActorInit_GreyAnt(Actor*); // Grey Ant Function
@@ -445,7 +445,7 @@ void func_800C1458(s32);
 //funcs that were in 8add0.h that are in other c's
 //84e0.c
 void func_800314E4(Actor*);
-void pickup_collide_func(s32 actorIndex);
+void PickupCollisionEvent(s32 actorIndex);
 void func_80036D74(PlayerActor* arg0, Tongue* arg1);
 //poly.c
 void func_800CFDC8(PlayerActor*);

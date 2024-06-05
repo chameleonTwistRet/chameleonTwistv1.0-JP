@@ -146,7 +146,7 @@ void func_80025EF0(PlayerActor* arg0, Tongue* arg1, s32 arg2) {
 
     func_8007AC2C(&sp120);
 
-    if (arg0->playerHURTSTATE == 3 && gTimer % 2 != 0) {
+    if (arg0->playerDamagedState == 3 && gTimer % 2 != 0) {
         return;
     }
 
@@ -158,9 +158,9 @@ void func_80025EF0(PlayerActor* arg0, Tongue* arg1, s32 arg2) {
         if (gTimer == 120) {
             Effect_TypeT_Init(22.0f, 154.0f, 60, D_800F6870);
         }
-    } else if (arg0->playerHURTSTATE == 4) {
+    } else if (arg0->playerDamagedState == 4) {
         func_80027138(&static0_chameleonAnimPointers_Animp[10], &animObjects, &animFrames, &anim);
-        sp124 = arg0->playerHURTTIMER;
+        sp124 = arg0->playerDamagedTimer;
         if (sp124 >= animFrames) {
             sp124 = animFrames - 1;
         }
@@ -175,8 +175,8 @@ void func_80025EF0(PlayerActor* arg0, Tongue* arg1, s32 arg2) {
     } else if (arg0->vaultFall != 0) {
         func_80027138(&static0_chameleonAnimPointers_Animp[5], &animObjects, &animFrames, &anim);
         func_80027240(&D_800FF8D4, anim, animFrames - arg0->vaultFall, animObjects);
-    } else if (arg0->playerHURTSTATE == 1) {
-        sp124 = arg0->playerHURTTIMER - 10;
+    } else if (arg0->playerDamagedState == 1) {
+        sp124 = arg0->playerDamagedTimer - 10;
         func_80027138(&static0_chameleonAnimPointers_Animp[8], &animObjects, &animFrames, &anim);
         if (sp124 < 0) {
             sp124 = 0;
@@ -184,11 +184,11 @@ void func_80025EF0(PlayerActor* arg0, Tongue* arg1, s32 arg2) {
             sp124 = animFrames - 1;
         }
         func_80027240(&D_800FF8D4, anim, sp124, animObjects);
-    } else if (arg0->playerHURTSTATE == 2) {
+    } else if (arg0->playerDamagedState == 2) {
         if (arg0->hp > 0) {
-            sp124 = arg0->playerHURTTIMER;
+            sp124 = arg0->playerDamagedTimer;
         } else {
-            sp124 = arg0->playerHURTTIMER / 3;
+            sp124 = arg0->playerDamagedTimer / 3;
         }       
         func_80027138(&static0_chameleonAnimPointers_Animp[9], &animObjects, &animFrames, &anim);
         if (sp124 >= animFrames) {
@@ -312,7 +312,7 @@ void func_80025EF0(PlayerActor* arg0, Tongue* arg1, s32 arg2) {
         }
     }
 
-    if (arg0->power == 1 && (arg0->powerTimer >= 30 && arg0->powerTimer <= arg0->powerTimerTill - 30 || !(gTimer % 2))) {
+    if (arg0->activePowerup == 1 && (arg0->powerTimer >= 30 && arg0->powerTimer <= arg0->powerTimerTill - 30 || !(gTimer % 2))) {
         Mtx spD0;
         guMtxIdent(&spD0);
         guScale(&spD0, 2.0f, 2.0f, 2.0f);
@@ -320,7 +320,7 @@ void func_80025EF0(PlayerActor* arg0, Tongue* arg1, s32 arg2) {
         guMtxCatL(&spD0, &sp110[3], &sp110[3]);
     }
 
-    if (arg0->power == 2 && (arg0->powerTimer >= 30 && arg0->powerTimer <= arg0->powerTimerTill - 30 || !(gTimer % 2))) {
+    if (arg0->activePowerup == 2 && (arg0->powerTimer >= 30 && arg0->powerTimer <= arg0->powerTimerTill - 30 || !(gTimer % 2))) {
         Mtx sp90;
         guMtxIdent(&sp90);
         guScale(&sp90, 2.0f, 2.0f, 2.0f);
@@ -505,7 +505,7 @@ Gfx* func_8002A190(GraphicStruct* arg0, Gfx* gfxPos, PlayerActor* player, Tongue
     f32 scaleZ = 1.4f;
     f32 sp28 = 25.0f;
 
-    if (player->power == 3 && (player->powerTimer >= 20 && player->powerTimer <= player->powerTimerTill - 20 || !(gTimer % 2))) {
+    if (player->activePowerup == 3 && (player->powerTimer >= 20 && player->powerTimer <= player->powerTimerTill - 20 || !(gTimer % 2))) {
         scaleX /= 2.0f;
         scaleY /= 2.0f;
         scaleZ /= 2.0f;
@@ -531,7 +531,7 @@ Gfx* func_8002A190(GraphicStruct* arg0, Gfx* gfxPos, PlayerActor* player, Tongue
     gSPMatrix(gfxPos++, OS_K0_TO_PHYSICAL(&arg0->playerTranslate[playerIndex]), G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
     gSPMatrix(gfxPos++, OS_K0_TO_PHYSICAL(&arg0->playerRotate[playerIndex]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
     gSPMatrix(gfxPos++, OS_K0_TO_PHYSICAL(&arg0->playerScale[playerIndex]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
-    if (player->playerHURTSTATE != 3 || gTimer % 2 == 0) {
+    if (player->playerDamagedState != 3 || gTimer % 2 == 0) {
         Gfx* dlist = Davy_restAssociate_Gfx;
         if (gSelectedCharacters[playerIndex] <= CHARA_WHITE) {
             if (Battle_GameType == BATTLE_TYPE_UNK_0) {
@@ -586,7 +586,7 @@ Gfx* func_8002A824(GraphicStruct* arg0, Gfx* gfxPos, PlayerActor* player, Tongue
     f32 f28 = 1.0f;
     Mtx sp118, spD8;    
 
-    if (player->power == 3) {
+    if (player->activePowerup == 3) {
         f28 = 0.5f;
     }
     if (tongue->tongueMode == 4 || tongue->tongueMode == 5 || tongue->tongueMode == 11) {

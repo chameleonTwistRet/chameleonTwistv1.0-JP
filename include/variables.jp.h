@@ -16,8 +16,8 @@ extern SpriteListing gSpriteListings[230];
 extern OSPfs gRumblePfs[MAXCONTROLLERS];
 
 extern Camera* D_80174860;
-extern PlayerActor* gCurrentActivePlayerPointer;
-extern Tongue* gTongueOnePointer;
+extern PlayerActor* gCurrentActivePlayer;
+extern Tongue* gTongueOne;
 extern ContMain gContMain[MAXCONTROLLERS];
 extern s16 gTotalCarrots;
 extern unk0* D_801FFB84;
