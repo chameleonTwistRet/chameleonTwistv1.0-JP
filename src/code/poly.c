@@ -47,6 +47,8 @@ void func_800C9748(Rect3D*, s32, s32);
 void func_800CA734(Vec3f*, Vec3f, f32, s32);
 void func_800CBC08(Actor*);
 void func_800CC814(Actor*, Vec3f, s32);
+Vec3f* WorldToLocal(Vec3f* outVec, Vec3f vec, Poly* poly);
+Vec3f* LocalToWorld(Vec3f* outVec, Vec3f vec, Poly* poly);
 
 void ClearPolygon(void) {
     D_80236968 = 0;
@@ -103,7 +105,48 @@ s32 IfPolyBoundIntersectsRect(Poly* poly, Rect3D* rect) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800CA4BC.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800CA5B4.s")
+typedef struct UnkArg4 {
+    Poly* unk0;
+    s32 unk4;
+    char unk8[8];
+    Vec3f unk10;
+} UnkArg4;
+
+
+Vec3f* func_800CA5B4(Vec3f* arg0, Vec3f arg1, UnkArg4* arg4, f32 arg5) {
+    Vec3f sp54;
+    f32 temp_f14;
+    f32 temp_f18;
+    f32 temp_f0;
+    f32 pad;
+    f32 temp_f2;
+    Vec3f sp34;
+    Poly* polygon;
+
+    if (arg4->unk4) {
+        sp54 = arg4->unk10;
+        temp_f0 = arg1.x - sp54.x;
+        temp_f18 = arg1.y - sp54.y;
+        temp_f14 = arg1.z - sp54.z;
+        temp_f2 = arg5 / NORM_3(temp_f0, temp_f18, temp_f14);
+        
+        temp_f0 *= temp_f2;
+        arg1.x = sp54.x + (temp_f0);
+        
+        temp_f18 *= temp_f2;
+        arg1.y = sp54.y + (temp_f18);
+        
+        temp_f14 *= temp_f2;
+        arg1.z = sp54.z + (temp_f14);
+    } else {
+        polygon = arg4->unk0;
+        WorldToLocal(&sp34, arg1, polygon);
+        sp34.z = arg5;
+        LocalToWorld(&arg1, sp34, polygon);
+    }
+    *arg0 = arg1;
+    return arg0;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800CA734.s")
 
