@@ -680,12 +680,9 @@ typedef struct Poly {
     /* 0x70 */ f32 unk_70;
     /* 0x74 */ f32 unk_74;
     /* 0x78 */ f32 unk_78;
-    /* 0x7C */ f32 unk_7C;
-    /* 0x80 */ f32 unk_80;
-    /* 0x84 */ f32 unk_84;
-    /* 0x88 */ f32 unk_88;
-    /* 0x8C */ f32 unk_8C;
-    /* 0x90 */ f32 unk_90;
+    /* 0x7C */ Vec2f unk_7C;
+    /* 0x84 */ Vec2f unk_84;
+    /* 0x8C */ Vec2f unk_8C;
 } Poly;
 
 typedef struct Actor {

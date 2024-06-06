@@ -50,6 +50,13 @@ void func_800CC814(Actor*, Vec3f, s32);
 Vec3f* WorldToLocal(Vec3f* outVec, Vec3f vec, Poly* poly);
 Vec3f* LocalToWorld(Vec3f* outVec, Vec3f vec, Poly* poly);
 
+typedef struct UnkMinDistance {
+    f32 temp; //unused?
+    f32* unk_04;
+    s32* unk_08;
+    Vec3f* vec;
+} UnkMinDistance;
+
 void ClearPolygon(void) {
     D_80236968 = 0;
 }
@@ -93,11 +100,117 @@ s32 IfPolyBoundIntersectsRect(Poly* poly, Rect3D* rect) {
     return 1;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800C9B7C.s")
+f32 func_800C9B7C(Vec3f vecA, Vec2f vecB) {
+    f32 deltaX;
+    f32 deltaY;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/poly/DistanceWithLine.s")
+    deltaX = vecA.x - vecB.x;
+    deltaY = vecA.y - vecB.y;
+    return NORM_3(deltaX, deltaY, vecA.z);
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/poly/MinimunDistance.s")
+void DistanceWithLine(Vec3f point, Vec2f lineStart, Vec2f lineEnd, f32* distance, Vec3f* closestPoint3D, Poly* polygon) {
+    f32 deltaYLine;
+    f32 deltaXLine;
+    f32 lineSegmentLengthSquared;
+    f32 sp5C;  // Unused
+    f32 deltaYPoint;
+    f32 deltaXPoint;
+    f32 sp58;  // Unused
+    f32 sp54;  // Unused
+    Vec2f closestPoint2D;
+    Vec3f closestPoint3DLocal;
+    f32 projectionFactor;
+
+    deltaXPoint = point.x - lineStart.x;
+    deltaYPoint = point.y - lineStart.y;
+    deltaXLine = lineEnd.x - lineStart.x;
+    deltaYLine = lineEnd.y - lineStart.y;
+
+    lineSegmentLengthSquared = (SQ(deltaXLine)) + (SQ(deltaYLine));
+    
+    if (lineSegmentLengthSquared == 0.0f) {
+        DummiedPrintf3("DistanceWithLine(): determinant is 0\n");
+    }
+    projectionFactor = ((deltaXLine * deltaXPoint) + (deltaYLine * deltaYPoint)) / lineSegmentLengthSquared;
+    
+    if (projectionFactor <= 0.0f) {
+        closestPoint2D = lineStart;
+    } else if (projectionFactor >= 1.0f) {
+        closestPoint2D = lineEnd;
+    } else {
+        closestPoint2D.x = ((1.0f - projectionFactor) * lineStart.x) + (projectionFactor * lineEnd.x);
+        closestPoint2D.y = ((1.0f - projectionFactor) * lineStart.y) + (projectionFactor * lineEnd.y);
+    }
+    
+    *distance = func_800C9B7C(point, closestPoint2D);
+
+    closestPoint3DLocal.x = closestPoint2D.x;
+    closestPoint3DLocal.y = closestPoint2D.y;
+    closestPoint3DLocal.z = 0.0f;
+    LocalToWorld(closestPoint3D, closestPoint3DLocal, polygon);
+}
+
+void MinimunDistance(Vec3f arg0, Poly* polygon, UnkMinDistance arg5) {
+    f32 temp_f0;
+    f32 temp_f2;
+    u32 var_v0;
+
+    WorldToLocal(&arg0, arg0, polygon);
+    var_v0 = 0;
+    temp_f0 = (polygon->unk_74 * arg0.y) + (polygon->unk_6C * arg0.x);
+    temp_f2 = (polygon->unk_78 * arg0.y) + (polygon->unk_70 * arg0.x);
+
+    if (temp_f0 < 0.0f) {
+        var_v0 = 1;
+    }
+    if (temp_f2 < 0.0f) {
+        var_v0 += 2;
+    }
+    if ((temp_f0 + temp_f2) > 1.0f) {
+        var_v0 += 4;
+    }
+    
+    switch (var_v0) {
+    case 0:
+        *arg5.vec = arg0;
+        arg5.vec->z = 0.0f;
+        LocalToWorld(arg5.vec, *arg5.vec, polygon);
+        *arg5.unk_04 = arg0.z;
+        *arg5.unk_08 = 0;
+        return;
+    case 3:
+        *arg5.vec = polygon->offset;
+        *arg5.unk_04 = func_800C9B7C(arg0, polygon->unk_7C);
+        *arg5.unk_08 = 1;
+        return;
+    case 6:
+        *arg5.vec = polygon->unkVec;
+        *arg5.unk_04 = func_800C9B7C(arg0, polygon->unk_84);
+        *arg5.unk_08 = 1;
+        return;
+    case 5:
+        *arg5.vec = polygon->unkVec2;
+        *arg5.unk_04 = func_800C9B7C(arg0, polygon->unk_8C);
+        *arg5.unk_08 = 1;
+        return;
+    case 2:
+        DistanceWithLine(arg0, polygon->unk_7C, polygon->unk_84, arg5.unk_04, arg5.vec, polygon);
+        *arg5.unk_08 = 1;
+        return;
+    case 4:
+        DistanceWithLine(arg0, polygon->unk_84, polygon->unk_8C, arg5.unk_04, arg5.vec, polygon);
+        *arg5.unk_08 = 1;
+        return;
+    case 1:
+        DistanceWithLine(arg0, polygon->unk_8C, polygon->unk_7C, arg5.unk_04, arg5.vec, polygon);
+        *arg5.unk_08 = 1;
+        return;
+    default:
+        DummiedPrintf3("MinimunDistance(): invalid case\n");
+        return;
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/ListUpTouchedPolygon.s")
 
