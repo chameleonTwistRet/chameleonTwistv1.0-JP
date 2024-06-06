@@ -14,16 +14,11 @@ extern u8 D_800F0D88[];
 extern u8 D_800F0D8C[];
 
 unkStruct16 D_800F0D90[5] = {
-{&Animations_unk2Pointers_Animp, &Animations_unk2Pointers_Animp,
-D_800F0D3C, 28, -10.0f},
-{&static0_chameleonAnimPointers_Animp[0], &static0_chameleonAnimPointers_Animp[0],
-D_800F0D58, 45, -30.0f},
-{&static0_chameleonAnimPointers_Animp[0], &static0_chameleonAnimPointers_Animp[0],
-D_800F0D88, 1, -30.0f},
-{&Animations_unk2Pointers_Animp, &Animations_unk2Pointers_Animp,
-D_800F0D8C, 1, -10.0f},
-{&Animations_unk1Pointers_Animp, &Animations_unk2Pointers_Animp,
-D_800F0D3C, 28, 0.0f}
+{&Animations_unk2Pointers_Animp, &Animations_unk2Pointers_Animp, D_800F0D3C, 28, -10.0f},
+{&static0_chameleonAnims[0], &static0_chameleonAnims[0], D_800F0D58, 45, -30.0f},
+{&static0_chameleonAnims[0], &static0_chameleonAnims[0], D_800F0D88, 1, -30.0f},
+{&Animations_unk2Pointers_Animp, &Animations_unk2Pointers_Animp, D_800F0D8C, 1, -10.0f},
+{&Animations_unk1Pointers_Animp, &Animations_unk2Pointers_Animp, D_800F0D3C, 28, 0.0f}
 };
 
 unk_80052094_8 Battle_MsgReady[5] = {
@@ -43,11 +38,8 @@ unk_80052094_8 Battle_MsgGo[3] = {
 s32 padding[3] = {0, 0, 0};
 
 #define TEXT_LINE_LENGTH 30
-//bc shorts
-#define TEXT_LINE_SIZE TEXT_LINE_LENGTH*2
-#define TEXT_LINES 3
+#define TEXT_LINE_SIZE TEXT_LINE_LENGTH * 2
 #define NULL_LINE "　"
-#define TERMINATE_TEXTBOX(x) char x[TEXT_LINE_SIZE] = "";
 
 // JP chameleon names
 // Davy = "デイビー"
@@ -66,1095 +58,907 @@ However, TEXT_LINE_SIZE is TEXT_LINE_LENGTH * 2, as the EUC-JP characters are st
 */
 
 //JL intro text
-char JL_IntroText[2][TEXT_LINES][TEXT_LINE_SIZE] = {
-    {
+char JL_IntroText[][TEXT_LINE_SIZE] = {
     "ここはジャングルランド。この不思",
     "議の世界の入り口です。",
-    NULL_LINE
-    },
-    {
+    NULL_LINE,
+
     "舌や体の操作が出来るようになった",
     "ら、タイムアタックに行ってみると",
-    "いいですよ。"
-    }
+    "いいですよ。",
+    
+    ""
 };
 
-//stop
-TERMINATE_TEXTBOX(pad0)
-
-//AL intro text (davy)
-char D_800F0FE4[2][TEXT_LINES][TEXT_LINE_SIZE] = {
-    {
+char AL_Intro_Text_Davy[][TEXT_LINE_SIZE] = {
     "アリ、アリ、アリの大行進。",
     "ここは地中深くのアリのステージ。",
-    NULL_LINE
-    },
-    {
+    NULL_LINE,
+
     "数え切れないほどのアリたちが、",
     "デイビーの行く手をふさいで",
-    "います。"
-    }
+    "います。",
+
+    ""
 };
 
-//stop
-TERMINATE_TEXTBOX(pad1)
-
-//AL intro text (Jack)
-char D_800F1188[2][TEXT_LINES][TEXT_LINE_SIZE] = {
-    {
+char AL_Intro_Text_Jack[][TEXT_LINE_SIZE] = {
     "アリ、アリ、アリの大行進。",
     "ここは地中深くのアリのステージ。",
-    NULL_LINE
-    },
-    {
+    NULL_LINE,
+
     "数え切れないほどのアリたちが、",
     "ジャックの行く手をふさいで",
-    "います。"
-    }
+    "います。",
+
+    ""
 };
 
-//stop
-TERMINATE_TEXTBOX(pad2)
-
-//AL intro text (Linda)
-char D_800F132C[2][TEXT_LINES][TEXT_LINE_SIZE] = {
-    {
+char AL_Intro_Text_Linda[][TEXT_LINE_SIZE] = {
     "アリ、アリ、アリの大行進。",
     "ここは地中深くのアリのステージ。",
-    NULL_LINE
-    },
-    {
+    NULL_LINE,
+
     "数え切れないほどのアリたちが、",
     "リンダの行く手をふさいで",
-    "います。"
-    }
+    "います。",
+
+    ""
 };
 
-//stop
-TERMINATE_TEXTBOX(pad3)
-
-//AL intro text (Fred)
-char D_800F14D0[2][TEXT_LINES][TEXT_LINE_SIZE] = {
-    {
+char AL_Intro_Text_Fred[][TEXT_LINE_SIZE] = {
     "アリ、アリ、アリの大行進。",
     "ここは地中深くのアリのステージ。",
-    NULL_LINE
-    },
-    {
+    NULL_LINE,
+
     "数え切れないほどのアリたちが、",
     "フレッドの行く手をふさいで",
-    "います。"
-    }
+    "います。",
+
+    ""
 };
 
-//stop
-TERMINATE_TEXTBOX(pad4)
-
-//AL intro text (Black) (Unused)
-char D_800F1674[2][TEXT_LINES][TEXT_LINE_SIZE] = {
-    {
+char AL_Intro_Text_Black[][TEXT_LINE_SIZE] = {
     "アリ、アリ、アリの大行進。",
     "ここは地中深くのアリのステージ。",
-    NULL_LINE
-    },
-    {
+    NULL_LINE,
+
     "数え切れないほどのアリたちが、",
     "ブラックの行く手をふさいで",
-    "います。"
-    }
+    "います。",
+
+    ""
 };
 
-//stop
-TERMINATE_TEXTBOX(pad5)
-
-//AL intro text (White)
-char D_800F1818[2][TEXT_LINES][TEXT_LINE_SIZE] = {
-    {
+char AL_Intro_Text_White[][TEXT_LINE_SIZE] = {
     "アリ、アリ、アリの大行進。",
     "ここは地中深くのアリのステージ。",
-    NULL_LINE
-    },
-    {
+    NULL_LINE,
+
     "数え切れないほどのアリたちが、",
     "ホワイトの行く手をふさいで",
-    "います。"
-    }
+    "います。",
+
+    ""
 };
 
-//stop
-TERMINATE_TEXTBOX(pad6)
-
-//BL intro text
-char D_800F19BC[2][TEXT_LINES][TEXT_LINE_SIZE] = {
-    {
+char BL_Intro_Text[][TEXT_LINE_SIZE] = {
     "ドカーン！と、キケンなボムが",
     "いっぱいです。のるとダメージの",
-    "床やこわれるブロック、"
-    },
-    {
+    "床やこわれるブロック、",
+
     "ボムはつながって大バクハツしたり",
     "もします。",
-    "" // stop
-    }
+
+    ""
 };
 
-//KL intro text
-char D_800F1B24[2][TEXT_LINES][TEXT_LINE_SIZE] = {
-    {
+char KL_Intro_Text[][TEXT_LINE_SIZE] = {
     "チョコレートにクッキー、ウエハー",
     "ス、おいしそうなお菓子でいっぱい",
-    "です。"
-    },
-    {
+    "です。",
+
     "でもそんなお菓子にだまされないで",
     "下さい。高度なアクションやパズル",
-    "が待ってるようです。"
-    }
+    "が待ってるようです。",
+
+    ""
 };
 
-//stop
-TERMINATE_TEXTBOX(pad7)
-
-//DC intro text
-char D_800F1CC8[2][TEXT_LINES][TEXT_LINE_SIZE] = {
-    {
+char DC_Intro_Text[][TEXT_LINE_SIZE] = {
     "砂漠にうもれた城のステージ。城に",
     "は高い壁や、やりなどがまちうけて",
-    "います。"
-    },
-    {
+    "います。",
+
     "砂漠では流砂や落石などにも要注意",
     "です。",
-    "" // stop
-    }
+    ""
 };
 
-//GC intro text (Davy)
-char D_800F1E30[2][TEXT_LINES][TEXT_LINE_SIZE] = {
-    {
+char GC_Intro_Text_Davy[][TEXT_LINE_SIZE] = {
     "とうとうここまで来ましたね、",
     "ここが最後のステージのゴーストキ",
-    "ャッスルです。"
-    },
-    {
+    "ャッスルです。",
+
     "この先、奇妙なゴーストたちがデイ",
     "ビーの行く手をふさごうとする",
-    "でしょう。"
-    }
+    "でしょう。",
+    ""
 };
 
-//stop
-TERMINATE_TEXTBOX(pad8)
-
-//GC intro text (Jack)
-char D_800F1FD4[2][TEXT_LINES][TEXT_LINE_SIZE] = {
-    {
+char GC_Intro_Text_Jack[][TEXT_LINE_SIZE] = {
     "とうとうここまで来ましたね、",
     "ここが最後のステージのゴーストキ",
-    "ャッスルです。"
-    },
-    {
+    "ャッスルです。",
+
     "この先、奇妙なゴーストたちがジャ",
     "ックの行く手をふさごうとする",
-    "でしょう。"
-    }
+    "でしょう。",
+
+    ""
 };
 
-//stop
-TERMINATE_TEXTBOX(pad9)
-
-//GC intro text (Fred)
-char D_800F2178[2][TEXT_LINES][TEXT_LINE_SIZE] = {
-    {
+char GC_Intro_Text_Fred[][TEXT_LINE_SIZE] = {
     "とうとうここまで来ましたね、",
     "ここが最後のステージのゴーストキ",
-    "ャッスルです。"
-    },
-    {
+    "ャッスルです。",
+
     "この先、奇妙なゴーストたちがフレ",
     "ッドの行く手をふさごうとする",
-    "でしょう。"
-    }
+    "でしょう。",
+
+    ""
 };
 
-//stop
-TERMINATE_TEXTBOX(padA)
-
-//GC intro text (Linda)
-char D_800F231C[2][TEXT_LINES][TEXT_LINE_SIZE] = {
-    {
+char GC_Intro_Text_Linda[][TEXT_LINE_SIZE] = {
     "とうとうここまで来ましたね、",
     "ここが最後のステージのゴーストキ",
-    "ャッスルです。"
-    },
-    {
+    "ャッスルです。",
+
     "この先、奇妙なゴーストたちがリン",
     "ダの行く手をふさごうとする",
-    "でしょう。"
-    }
+    "でしょう。",
+
+    ""
 };
 
-//stop
-TERMINATE_TEXTBOX(padB)
-
-//GC intro text (Black) (unused)
-char D_800F24C0[2][TEXT_LINES][TEXT_LINE_SIZE] = {
-    {
+char GC_Intro_Text_Black[][TEXT_LINE_SIZE] = {
     "とうとうここまで来ましたね、",
     "ここが最後のステージのゴーストキ",
-    "ャッスルです。"
-    },
-    {
+    "ャッスルです。",
+
     "この先、奇妙なゴーストたちがブラ",
     "ックの行く手をふさごうとする",
-    "でしょう。"
-    }
+    "でしょう。",
+
+    ""
 };
 
-//stop
-TERMINATE_TEXTBOX(padC)
-
-//GC intro text (White)
-char D_800F2664[2][TEXT_LINES][TEXT_LINE_SIZE] = {
-    {
+char GC_Intro_Text_White[][TEXT_LINE_SIZE] = {
     "とうとうここまで来ましたね、",
     "ここが最後のステージのゴーストキ",
-    "ャッスルです。"
-    },
-    {
+    "ャッスルです。",
+
     "この先、奇妙なゴーストたちがホワ",
     "イトの行く手をふさごうとする",
-    "でしょう。"
-    }
+    "でしょう。",
+
+    ""
 };
 
-//stop
-TERMINATE_TEXTBOX(padD)
-
-//Training intro text (Davy)
-char D_800F2808[3][TEXT_LINES][TEXT_LINE_SIZE] = {
-    {
+char Training_Intro_Text_Davy[][TEXT_LINE_SIZE] = {
     "デイビー。",
     "ここでは、あなたの舌テクニックを",
-    "試すことが出来ます。"
-    },
-    {
+    "試すことが出来ます。",
+
     "１〜５の部屋でクリアするタイムを",
     "きそって下さい。",
-    NULL_LINE
-    },
-    {
+    NULL_LINE,
+
     "くわしい説明はそれぞれの部屋で",
     "しますね。がんばっていいタイムを",
-    "出してください。"
-    }
-};
-              
-//stop
-TERMINATE_TEXTBOX(padE)
+    "出してください。",
 
-//Training intro text (Jack)
-char D_800F2A60[3][TEXT_LINES][TEXT_LINE_SIZE] = {
-    {
+    ""
+};
+
+char Training_Intro_Text_Jack[][TEXT_LINE_SIZE] = {
     "ジャック。",
     "ここでは、あなたの舌テクニックを",
-    "試すことが出来ます。"
-    },
-    {
+    "試すことが出来ます。",
+
     "１〜５の部屋でクリアするタイムを",
     "きそって下さい。",
-    NULL_LINE
-    },
-    {
+    NULL_LINE,
+
     "くわしい説明はそれぞれの部屋で",
     "しますね。がんばっていいタイムを",
-    "出してください。"
-    }
-};
-              
-//stop
-TERMINATE_TEXTBOX(padF)
+    "出してください。",
 
-//Training intro text (Linda)
-char D_800F2CB8[3][TEXT_LINES][TEXT_LINE_SIZE] = {
-    {
+    ""
+};
+
+char Training_Intro_Text_Linda[][TEXT_LINE_SIZE] = {
     "リンダ。",
     "ここでは、あなたの舌テクニックを",
-    "試すことが出来ます。"
-    },
-    {
+    "試すことが出来ます。",
+
     "１〜５の部屋でクリアするタイムを",
     "きそって下さい。",
-    NULL_LINE
-    },
-    {
+    NULL_LINE,
+
     "くわしい説明はそれぞれの部屋で",
     "しますね。がんばっていいタイムを",
-    "出してください。"
-    }
-};
-              
-//stop
-TERMINATE_TEXTBOX(pad10)
+    "出してください。",
 
-//Training intro text (Fred)
-char D_800F2F10[3][TEXT_LINES][TEXT_LINE_SIZE] = {
-    {
+    ""
+};
+
+char Training_Intro_Text_Fred[][TEXT_LINE_SIZE] = {
     "フレッド。",
     "ここでは、あなたの舌テクニックを",
-    "試すことが出来ます。"
-    },
-    {
+    "試すことが出来ます。",
+
     "１〜５の部屋でクリアするタイムを",
     "きそって下さい。",
-    NULL_LINE
-    },
-    {
+    NULL_LINE,
+
     "くわしい説明はそれぞれの部屋で",
     "しますね。がんばっていいタイムを",
-    "出してください。"
-    }
-};
-              
-//stop
-TERMINATE_TEXTBOX(pad11)
+    "出してください。",
 
-//Training intro text (Black)
-char D_800F3168[3][TEXT_LINES][TEXT_LINE_SIZE] = {
-    {
+    ""
+};
+
+char Training_Intro_Text_Black[][TEXT_LINE_SIZE] = {
     "ブラック。",
     "ここでは、あなたの舌テクニックを",
-    "試すことが出来ます。"
-    },
-    {
+    "試すことが出来ます。",
+
     "１〜５の部屋でクリアするタイムを",
     "きそって下さい。",
-    NULL_LINE
-    },
-    {
+    NULL_LINE,
+
     "くわしい説明はそれぞれの部屋で",
     "しますね。がんばっていいタイムを",
-    "出してください。"
-    }
+    "出してください。",
+
+    ""
 };
 
-//stop
-TERMINATE_TEXTBOX(pad12)
-
-//Training intro text (White)
-char D_800F33C0[3][TEXT_LINES][TEXT_LINE_SIZE] = {
-    {
+char Training_Intro_Text_White[][TEXT_LINE_SIZE] = {
     "ホワイト。",
     "ここでは、あなたの舌テクニックを",
-    "試すことが出来ます。"
-    },
-    {
+    "試すことが出来ます。",
+
     "１〜５の部屋でクリアするタイムを",
     "きそって下さい。",
-    NULL_LINE
-    },
-    {
+    NULL_LINE,
+
     "くわしい説明はそれぞれの部屋で",
     "しますね。がんばっていいタイムを",
-    "出してください。"
-    }
+    "出してください。",
+
+    ""
 };
 
-//stop
-TERMINATE_TEXTBOX(pad13)
-
-//Training Room 1
-char D_800F3618[2][TEXT_LINES][TEXT_LINE_SIZE] = {
-    {
+char Training_Room_1_Text[][TEXT_LINE_SIZE] = {
     "この部屋は、真ん中にいるチョコ",
     "キッズをすべてやっつけるとクリア",
-    "です。Ｂボタンで舌をのばして"
-    },
-    {
+    "です。Ｂボタンで舌をのばして",
+
     "敵をからめます。そして",
     "もう１度Ｂボタンを押すとマシン",
-    "ガンアタックをします。"
-    }
+    "ガンアタックをします。",
+
+    ""
 };
 
-//stop
-TERMINATE_TEXTBOX(pad14)
-
-//Training Room 4
-char D_800F37BC[2][TEXT_LINES][TEXT_LINE_SIZE] = {
-    {
+char Training_Room_4_Text[][TEXT_LINE_SIZE] = {
     "ここは、クイック移動の部屋です。",
     "Ｂボタンを押して杭をつかんで",
-    "下さい。"
-    },
-    {
+    "下さい。",
+
     "Ｂボタンを押しつづけると次の台に",
     "移れます。落ちたら、またここに戻",
-    "ってきて始めてください。"
-    }
+    "ってきて始めてください。",
+
+    ""
 };
 
-//stop
-TERMINATE_TEXTBOX(pad15)
-
-//Training Room 2
-char D_800F3960[2][TEXT_LINES][TEXT_LINE_SIZE] = {
-    {
+char Training_Room_2_Text[][TEXT_LINE_SIZE] = {
     "ここは、台の上にのって鬼火をボム",
     "めがけてあてて下さい。すべてバク",
-    "ハツさせるとクリアです。"
-    },
-    {
+    "ハツさせるとクリアです。",
+
     "Ｒトリガーを押しながら３Ｄスティ",
     "ックを動かすと、その場で回転する",
-    "のでねらいやすいですよ。"
-    }
-};
-              
-//stop
-TERMINATE_TEXTBOX(pad16)
+    "のでねらいやすいですよ。",
 
-//Training Room 5
-char D_800F3B04[2][TEXT_LINES][TEXT_LINE_SIZE] = {
-    {
+    ""
+};
+
+char Training_Room_5_Text[][TEXT_LINE_SIZE] = {
     "さて、ここではクイック回転のタイ",
     "ムアタック。Ｂボタンを押して杭",
-    "をつかんで下さい。"
-    },
-    {
+    "をつかんで下さい。",
+
     "つかんだら回転したい方向に３Ｄス",
     "ティックを動かし、Ａボタンをいっ",
-    "しょに押して下さい。"
-    }
-};
-     
-         
-//stop
-TERMINATE_TEXTBOX(pad17)
+    "しょに押して下さい。",
 
-//Training Room 3
-char D_800F3CA8[2][TEXT_LINES][TEXT_LINE_SIZE] = {
-    {
+    ""
+};
+
+char Training_Room_3_Text[][TEXT_LINE_SIZE] = {
     "この部屋では、舌高跳びを使って頂",
     "上までのぼって下さい。歩きながら",
-    "Ｚトリガーを押すと、"
-    },
-    {
+    "Ｚトリガーを押すと、",
+
     "逆立ちをします。タイミングよく",
     "Ａボタンを押して高くジャンプ",
-    "して下さい。"
-    }
+    "して下さい。",
+
+    ""
 };
 
-//stop
-TERMINATE_TEXTBOX(pad18)
-
-//JL Boss
-char D_800F3E4C[1][TEXT_LINES][TEXT_LINE_SIZE] = {
-    {
+char JL_Boss_Text[][TEXT_LINE_SIZE] = {
     "もうすぐボスとの対戦です。",
     "リザードコングは狂暴で、岩を",
-    "なげてきます。"
-    }
+    "なげてきます。",
+
+    ""
 };
 
-//stop
-TERMINATE_TEXTBOX(pad19)
-
-//AL BossTEXT_LINES
-char D_800F3F3C[2][TEXT_LINES][TEXT_LINE_SIZE] = {
-    {
+char AL_Boss_Text[][TEXT_LINE_SIZE] = {
     "この先の部屋ではアントランドの",
     "ボス、クインテラが待ちかまえて",
-    "います。"
-    },
-    {
+    "います。",
+
     "クインテラを怒らせると、",
     "巨大なしっぽで回転攻撃をして",
-    "くるので、気をつけて下さい。"
-    }
+    "くるので、気をつけて下さい。",
+
+    ""
 };
 
-//stop
-TERMINATE_TEXTBOX(pad1A)
-
-//BL Boss
-char D_800F40E0[2][TEXT_LINES][TEXT_LINE_SIZE] = {
-    {
+char BL_Boss_Text[][TEXT_LINE_SIZE] = {
     "もうすぐボスの部屋です。",
     "ボムドッカンは体当たりで",
-    "攻撃をしてきます。"
-    },
-    {
+    "攻撃をしてきます。",
+
     "ダメージをあたえていくと、",
     "だんだん動きが速くなっていく",
-    "ので、注意して下さい。"
-    }
+    "ので、注意して下さい。",
+
+    ""
 };
 
-//stop
-TERMINATE_TEXTBOX(pad1B)
-
-//KL Boss
-char D_800F4284[1][TEXT_LINES][TEXT_LINE_SIZE] = {
-    {
+char KL_Boss_Text[][TEXT_LINE_SIZE] = {
     "キッズランドのボスは、いちご",
     "爆弾ではげしい攻撃をしてきます。",
-    "気をつけて下さいね。"
-    }
-};
+    "気をつけて下さいね。",
 
-//stop
-TERMINATE_TEXTBOX(pad1C)
+    ""
+};
 
 //DC Boss
-char D_800F4374[1][TEXT_LINES][TEXT_LINE_SIZE] = {
-    {
+char DC_Boss_Text[][TEXT_LINE_SIZE] = {
     "このステージのボスは、砂にもぐる",
     "のが得意です。もぐる前にスナカリ",
-    "をぶつけて、やっつけましょう。"
-    }
+    "をぶつけて、やっつけましょう。",
+
+    ""
 };
 
-//stop
-TERMINATE_TEXTBOX(pad1D)
-
-//GC Boss (Davy)
-char D_800F4464[2][TEXT_LINES][TEXT_LINE_SIZE] = {
-    {
+char GC_Boss_Text_Davy[][TEXT_LINE_SIZE] = {
     "いよいよ最後のボスです。",
     "とても強いですが、デイビーなら",
-    "きっと倒せるはずです。"
-    },
-    {
+    "きっと倒せるはずです。",
+
     "がんばって下さいね。",
     "では、私はひと足先に出口で待って",
-    "います。"
-    }
+    "います。",
+
+    ""
 };
 
-//stop
-TERMINATE_TEXTBOX(pad1E)
-
-//GC Boss (Jack)
-char D_800F4608[2][TEXT_LINES][TEXT_LINE_SIZE] = {
-    {
+char GC_Boss_Text_Jack[][TEXT_LINE_SIZE] = {
     "いよいよ最後のボスです。",
     "とても強いですが、ジャックなら",
-    "きっと倒せるはずです。"
-    },
-    {
+    "きっと倒せるはずです。",
+
     "がんばって下さいね。",
     "では、私はひと足先に出口で待って",
-    "います。"
-    }
+    "います。",
+
+    ""
 };
 
-//stop
-TERMINATE_TEXTBOX(pad1F)
-
-//GC Boss (Linda)
-char D_800F47AC[2][TEXT_LINES][TEXT_LINE_SIZE] = {
-    {
+char GC_Boss_Text_Linda[][TEXT_LINE_SIZE] = {
     "いよいよ最後のボスです。",
     "とても強いですが、リンダなら",
-    "きっと倒せるはずです。"
-    },
-    {
+    "きっと倒せるはずです。",
+
     "がんばって下さいね。",
     "では、私はひと足先に出口で待って",
-    "います。"
-    }
+    "います。",
+
+    ""
 };
 
-//stop
-TERMINATE_TEXTBOX(pad20)
-
-//GC Boss (Fred)
-char D_800F4950[2][TEXT_LINES][TEXT_LINE_SIZE] = {
-    {
+char GC_Boss_Text_Fred[][TEXT_LINE_SIZE] = {
     "いよいよ最後のボスです。",
     "とても強いですが、フレッドなら",
-    "きっと倒せるはずです。"
-    },
-    {
+    "きっと倒せるはずです。",
+
     "がんばって下さいね。",
     "では、私はひと足先に出口で待って",
-    "います。"
-    }
+    "います。",
+
+    ""
 };
 
-//stop
-TERMINATE_TEXTBOX(pad21)
-
-//GC Boss (Black) (unused)
-char D_800F4AF4[2][TEXT_LINES][TEXT_LINE_SIZE] = {
-    {
+char GC_Boss_Text_Black[][TEXT_LINE_SIZE] = {
     "いよいよ最後のボスです。",
     "とても強いですが、ブラックなら",
-    "きっと倒せるはずです。"
-    },
-    {
+    "きっと倒せるはずです。",
+
     "がんばって下さいね。",
     "では、私はひと足先に出口で待って",
-    "います。"
-    }
+    "います。",
+
+    ""
 };
 
-//stop
-TERMINATE_TEXTBOX(pad22)
-
-//GC Boss (White)
-char D_800F4C98[2][TEXT_LINES][TEXT_LINE_SIZE] = {
-    {
+char GC_Boss_Text_White[][TEXT_LINE_SIZE] = {
     "いよいよ最後のボスです。",
     "とても強いですが、ホワイトなら",
-    "きっと倒せるはずです。"
-    },
-    {
+    "きっと倒せるはずです。",
+
     "がんばって下さいね。",
     "では、私はひと足先に出口で待って",
-    "います。"
-    }
+    "います。",
+
+    ""
 };
 
-//stop
-TERMINATE_TEXTBOX(pad23)
-
-
-char* Dialogue[6][20] = {
+char (*Dialogue[CHARA_TOTAL][20])[TEXT_LINE_SIZE] = {
     //Davy
     {
     JL_IntroText,
-    D_800F0FE4,
-    D_800F19BC,
-    D_800F1B24,
-    D_800F1CC8,
-    D_800F1E30,
-    D_800F2808,
-    D_800F3618,
-    D_800F37BC,
-    D_800F3960,
-    D_800F3B04,
-    D_800F3CA8,
-    D_800F3E4C,
-    D_800F3F3C,
-    D_800F40E0,
-    D_800F4284,
-    D_800F4374,
-    D_800F4464,
+    AL_Intro_Text_Davy,
+    BL_Intro_Text,
+    KL_Intro_Text,
+    DC_Intro_Text,
+    GC_Intro_Text_Davy,
+    Training_Intro_Text_Davy,
+    Training_Room_1_Text,
+    Training_Room_4_Text,
+    Training_Room_2_Text,
+    Training_Room_5_Text,
+    Training_Room_3_Text,
+    JL_Boss_Text,
+    AL_Boss_Text,
+    BL_Boss_Text,
+    KL_Boss_Text,
+    DC_Boss_Text,
+    GC_Boss_Text_Davy,
     NULL, NULL
     },
+
     //Jack
     {
     JL_IntroText,
-    D_800F1188,
-    D_800F19BC,
-    D_800F1B24,
-    D_800F1CC8,
-    D_800F1FD4,
-    D_800F2A60,
-    D_800F3618,
-    D_800F37BC,
-    D_800F3960,
-    D_800F3B04,
-    D_800F3CA8,
-    D_800F3E4C,
-    D_800F3F3C,
-    D_800F40E0,
-    D_800F4284,
-    D_800F4374,
-    D_800F4608,
+    AL_Intro_Text_Jack,
+    BL_Intro_Text,
+    KL_Intro_Text,
+    DC_Intro_Text,
+    GC_Intro_Text_Jack,
+    Training_Intro_Text_Jack,
+    Training_Room_1_Text,
+    Training_Room_4_Text,
+    Training_Room_2_Text,
+    Training_Room_5_Text,
+    Training_Room_3_Text,
+    JL_Boss_Text,
+    AL_Boss_Text,
+    BL_Boss_Text,
+    KL_Boss_Text,
+    DC_Boss_Text,
+    GC_Boss_Text_Jack,
     NULL, NULL
     },
+
     //Fred
     {
     JL_IntroText,
-    D_800F14D0,
-    D_800F19BC,
-    D_800F1B24,
-    D_800F1CC8,
-    D_800F2178,
-    D_800F2F10,
-    D_800F3618,
-    D_800F37BC,
-    D_800F3960,
-    D_800F3B04,
-    D_800F3CA8,
-    D_800F3E4C,
-    D_800F3F3C,
-    D_800F40E0,
-    D_800F4284,
-    D_800F4374,
-    D_800F4950,
+    AL_Intro_Text_Fred,
+    BL_Intro_Text,
+    KL_Intro_Text,
+    DC_Intro_Text,
+    GC_Intro_Text_Fred,
+    Training_Intro_Text_Fred,
+    Training_Room_1_Text,
+    Training_Room_4_Text,
+    Training_Room_2_Text,
+    Training_Room_5_Text,
+    Training_Room_3_Text,
+    JL_Boss_Text,
+    AL_Boss_Text,
+    BL_Boss_Text,
+    KL_Boss_Text,
+    DC_Boss_Text,
+    GC_Boss_Text_Fred,
     NULL, NULL
     },
+
     //Linda
     {
     JL_IntroText,
-    D_800F132C,
-    D_800F19BC,
-    D_800F1B24,
-    D_800F1CC8,
-    D_800F231C,
-    D_800F2CB8,
-    D_800F3618,
-    D_800F37BC,
-    D_800F3960,
-    D_800F3B04,
-    D_800F3CA8,
-    D_800F3E4C,
-    D_800F3F3C,
-    D_800F40E0,
-    D_800F4284,
-    D_800F4374,
-    D_800F47AC,
+    AL_Intro_Text_Linda,
+    BL_Intro_Text,
+    KL_Intro_Text,
+    DC_Intro_Text,
+    GC_Intro_Text_Linda,
+    Training_Intro_Text_Linda,
+    Training_Room_1_Text,
+    Training_Room_4_Text,
+    Training_Room_2_Text,
+    Training_Room_5_Text,
+    Training_Room_3_Text,
+    JL_Boss_Text,
+    AL_Boss_Text,
+    BL_Boss_Text,
+    KL_Boss_Text,
+    DC_Boss_Text,
+    GC_Boss_Text_Linda,
     NULL, NULL
     },
+
     //Black
     {
     JL_IntroText,
-    D_800F1674,
-    D_800F19BC,
-    D_800F1B24,
-    D_800F1CC8,
-    D_800F24C0,
-    D_800F3168,
-    D_800F3618,
-    D_800F37BC,
-    D_800F3960,
-    D_800F3B04,
-    D_800F3CA8,
-    D_800F3E4C,
-    D_800F3F3C,
-    D_800F40E0,
-    D_800F4284,
-    D_800F4374,
-    D_800F4AF4,
+    AL_Intro_Text_Black,
+    BL_Intro_Text,
+    KL_Intro_Text,
+    DC_Intro_Text,
+    GC_Intro_Text_Black,
+    Training_Intro_Text_Black,
+    Training_Room_1_Text,
+    Training_Room_4_Text,
+    Training_Room_2_Text,
+    Training_Room_5_Text,
+    Training_Room_3_Text,
+    JL_Boss_Text,
+    AL_Boss_Text,
+    BL_Boss_Text,
+    KL_Boss_Text,
+    DC_Boss_Text,
+    GC_Boss_Text_Black,
     NULL, NULL
     },
+
     //White
     {
     JL_IntroText,
-    D_800F1818,
-    D_800F19BC,
-    D_800F1B24,
-    D_800F1CC8,
-    D_800F2664,
-    D_800F33C0,
-    D_800F3618,
-    D_800F37BC,
-    D_800F3960,
-    D_800F3B04,
-    D_800F3CA8,
-    D_800F3E4C,
-    D_800F3F3C,
-    D_800F40E0,
-    D_800F4284,
-    D_800F4374,
-    D_800F4C98,
+    AL_Intro_Text_White,
+    BL_Intro_Text,
+    KL_Intro_Text,
+    DC_Intro_Text,
+    GC_Intro_Text_White,
+    Training_Intro_Text_White,
+    Training_Room_1_Text,
+    Training_Room_4_Text,
+    Training_Room_2_Text,
+    Training_Room_5_Text,
+    Training_Room_3_Text,
+    JL_Boss_Text,
+    AL_Boss_Text,
+    BL_Boss_Text,
+    KL_Boss_Text,
+    DC_Boss_Text,
+    GC_Boss_Text_White,
     NULL, NULL
     }
+    
 };
 
+
 //Intro Movie
-char D_800F501C[1][17][TEXT_LINE_SIZE] = {
-    {
+char ItsAnotherBeautifulDay_Text[][TEXT_LINE_SIZE] = {
     "　　　今日もいい天気です。　　　",
     "",
+};
 
+char Rabbit_Busy_Busy_Text[][TEXT_LINE_SIZE] = {
     "「いそがしい、　あーいそがしい」",
     "",
+};
 
+char ThisIsNotGoingToGetUsThere_Text[][TEXT_LINE_SIZE] = {
     "「これでは、時間に間に合わない」",
     "",
+};
 
+char WhatCantWeMakeInTime_Text[][TEXT_LINE_SIZE] = {
     "　何に間に合わないのでしょう？　",
     "",
+};
 
+char CuriousChameleon_Text[][TEXT_LINE_SIZE] = {
     "　　好奇心の強いカメレオンは、　",
     "　追いかけて行くことにしました。",
     "",
+};
 
+char ChameleonsBodyHasTransformed_Text[][TEXT_LINE_SIZE] = {
     "　　おやっ、カメレオンの体が　　",
     "　　　変身してしまいました。　　",
     "",
-    
-    "　ところで、あのうさぎはどこに　",
-    "　　　　行ったのでしょう。　　　",
-    ""                    
-    } 
 };
 
+char WhereIsThatRabbit_Text[][TEXT_LINE_SIZE] = {
+    "　ところで、あのうさぎはどこに　", //By the way, where is that rabbit?
+    "　　　　行ったのでしょう。　　　", //I guess he went there
+    ""
+};
+
+
 //Ending Movie
-char D_800F5418[1][24][TEXT_LINE_SIZE] = {
-    {
-    //Davy
+char D_800F5418[][TEXT_LINE_SIZE] = {
     "　　　　やあ、デイビー。",
     "　　どうでしたか？この世界は。",
-    "",                       
-    //Jack
+    "",
+};
+
+char Jack_EndingMove_Text[][TEXT_LINE_SIZE] = {
     "　　　　やあ、ジャック。",
     "　　どうでしたか？この世界は。",
     "",
-    //Fred
+};
+
+char Fred_EndingMove_Text[][TEXT_LINE_SIZE] = {
     "　　　　やあ、フレッド。",
     "　　どうでしたか？この世界は。",
     "",
-    //Linda
+};
+
+char Linda_EndingMove_Text[][TEXT_LINE_SIZE] = {
     "　　　　やあ、リンダ。",
     "　　どうでしたか？この世界は。",
     "",
-    //Black
+};
+
+char Black_EndingMove_Text[][TEXT_LINE_SIZE] = {
     "　　　　やあ、ブラック。",
     "　　どうでしたか？この世界は。",
     "",
-    //White
+};
+
+char White_EndingMove_Text[][TEXT_LINE_SIZE] = {
     "　　　　やあ、ホワイト。",
     "　　どうでしたか？この世界は。",
     "",
-    //Rest is normal
+};
+
+char Unk_EndingMove_Text[][TEXT_LINE_SIZE] = {
     "　　　　楽しかったですか？",
     "　　また、遊びに来て下さいね。",
     "",
+};
+
+char Unk2_EndingMove_Text[][TEXT_LINE_SIZE] = {
     "　いつでもお待ちしております。",
     "　　　　それでは．．．",
     "",
-    } 
 };
 
 //unique dialogue, intro/outro
-//notice how only the first &D_800F5418 changes ..
-char* D_800F59B8[7][20] = {
+char (*D_800F59B8[CHARA_TOTAL + 1][20])[TEXT_LINE_SIZE] = {
     //Davy
     {
-    &D_800F501C,
-    &D_800F501C[0][2][0],
-    &D_800F501C[0][4][0],
-    &D_800F501C[0][6][0],
-    &D_800F501C[0][8][0],
-
-    &D_800F5418,
-    &D_800F5418[0][18][0],
-    &D_800F5418[0][21][0],
+    ItsAnotherBeautifulDay_Text,
+    Rabbit_Busy_Busy_Text,
+    ThisIsNotGoingToGetUsThere_Text,
+    WhatCantWeMakeInTime_Text,
+    CuriousChameleon_Text,
+    D_800F5418,
+    Unk_EndingMove_Text,
+    Unk2_EndingMove_Text,
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL
     },
+
     //Jack
     {
-    &D_800F501C,
-    &D_800F501C[0][2][0],
-    &D_800F501C[0][4][0],
-    &D_800F501C[0][6][0],
-    &D_800F501C[0][8][0],
-
-    &D_800F5418[0][3][0],
-    &D_800F5418[0][18][0],
-    &D_800F5418[0][21][0],
+    ItsAnotherBeautifulDay_Text,
+    Rabbit_Busy_Busy_Text,
+    ThisIsNotGoingToGetUsThere_Text,
+    WhatCantWeMakeInTime_Text,
+    CuriousChameleon_Text,
+    Jack_EndingMove_Text,
+    Unk_EndingMove_Text,
+    Unk2_EndingMove_Text,
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL
     },
+
     //Fred
     {
-    &D_800F501C,
-    &D_800F501C[0][2][0],
-    &D_800F501C[0][4][0],
-    &D_800F501C[0][6][0],
-    &D_800F501C[0][8][0],
-
-    &D_800F5418[0][6][0],
-    &D_800F5418[0][18][0],
-    &D_800F5418[0][21][0],
+    ItsAnotherBeautifulDay_Text,
+    Rabbit_Busy_Busy_Text,
+    ThisIsNotGoingToGetUsThere_Text,
+    WhatCantWeMakeInTime_Text,
+    CuriousChameleon_Text,
+    Fred_EndingMove_Text,
+    Unk_EndingMove_Text,
+    Unk2_EndingMove_Text,
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL
     },
+
     //Linda
     {
-    &D_800F501C,
-    &D_800F501C[0][2][0],
-    &D_800F501C[0][4][0],
-    &D_800F501C[0][6][0],
-    &D_800F501C[0][8][0],
-
-    &D_800F5418[0][9][0],
-    &D_800F5418[0][18][0],
-    &D_800F5418[0][21][0],
+    ItsAnotherBeautifulDay_Text,
+    Rabbit_Busy_Busy_Text,
+    ThisIsNotGoingToGetUsThere_Text,
+    WhatCantWeMakeInTime_Text,
+    CuriousChameleon_Text,
+    Linda_EndingMove_Text,
+    Unk_EndingMove_Text,
+    Unk2_EndingMove_Text,
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL
     },
+
     //Black (?)
     {
-    &D_800F501C,
-    &D_800F501C[0][2][0],
-    &D_800F501C[0][4][0],
-    &D_800F501C[0][6][0],
-    &D_800F501C[0][8][0],
-
-    &D_800F5418[0][9][0],
-    &D_800F5418[0][18][0],
-    &D_800F5418[0][21][0],
+    ItsAnotherBeautifulDay_Text,
+    Rabbit_Busy_Busy_Text,
+    ThisIsNotGoingToGetUsThere_Text,
+    WhatCantWeMakeInTime_Text,
+    CuriousChameleon_Text,
+    Linda_EndingMove_Text,
+    Unk_EndingMove_Text,
+    Unk2_EndingMove_Text,
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL
     },
+
     //White
     {
-    &D_800F501C,
-    &D_800F501C[0][2][0],
-    &D_800F501C[0][4][0],
-    &D_800F501C[0][6][0],
-    &D_800F501C[0][8][0],
-
-    &D_800F5418[0][15][0],
-    &D_800F5418[0][18][0],
-    &D_800F5418[0][21][0],
+    ItsAnotherBeautifulDay_Text,
+    Rabbit_Busy_Busy_Text,
+    ThisIsNotGoingToGetUsThere_Text,
+    WhatCantWeMakeInTime_Text,
+    CuriousChameleon_Text,
+    White_EndingMove_Text,
+    Unk_EndingMove_Text,
+    Unk2_EndingMove_Text,
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL
     },
-    //????????? blank??? default????? what????? is this black for real????
+    
+    //Unknown
     {
-    &D_800F501C,
-    &D_800F501C[0][2][0],
-    &D_800F501C[0][4][0],
-    &D_800F501C[0][6][0],
-    &D_800F501C[0][8][0],
-
-    &D_800F5418[0][12][0],
-    &D_800F5418[0][18][0],
-    &D_800F5418[0][21][0],
+    ItsAnotherBeautifulDay_Text,
+    Rabbit_Busy_Busy_Text,
+    ThisIsNotGoingToGetUsThere_Text,
+    WhatCantWeMakeInTime_Text,
+    CuriousChameleon_Text,
+    Black_EndingMove_Text,
+    Unk_EndingMove_Text,
+    Unk2_EndingMove_Text,
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL
     },
 };
 
-//
-char D_800F5BE8[3][TEXT_LINES][TEXT_LINE_SIZE] = {
-    {
+char BilliardsEnoughCarrots_Text[][TEXT_LINE_SIZE] = {
     "この扉を開くにはキャロットが",
     "４個必要です。",
-    "　"
-    },
-    {
+    NULL_LINE,
+
+
     "よく集めましたね。この部屋では",
     "ビリヤードが遊べます。",
-    "　"
-    },
-    {
+    NULL_LINE,
+
     "玉を全部ポケットに入れると、",
     "クラウンがもらえますよ。",
-    //stop
+
     ""
-    } 
 };
 
-char D_800F5E04[2][TEXT_LINES][TEXT_LINE_SIZE] = {
-    {
+char BilliardsNotEnoughCarrots_Text[][TEXT_LINE_SIZE] = {
     "この扉を開くにはキャロットが",
     "４個必要です。",
-    "　"
-    },
-    {
+    NULL_LINE,
+
     "キャロットを４個集めてから。",
     "また来て下さい。",
-    "　"
-    } 
+    NULL_LINE,
+
+    ""
 };
 
-//stop
-TERMINATE_TEXTBOX(pad24)
-
-char D_800F5FA8[3][TEXT_LINES][TEXT_LINE_SIZE] = {
-    {
+char BowlingEnoughCarrots_Text[][TEXT_LINE_SIZE] = {
     "この扉を開くにはキャロットが",
     "２個必要です。",
-    "　"
-    },
-    {
+    NULL_LINE,
+
     "よく集めましたね。",
     "この部屋ではボーリングで遊ぶ",
-    "ことが出来ます。"
-    },
-    {
+    "ことが出来ます。",
+
     "２００点以上得点をとると",
     "クラウンがもらえますよ。",
-    "がんばって下さい。"
-    } 
+    "がんばって下さい。",
+
+    ""
 };
 
-//stop
-TERMINATE_TEXTBOX(pad25)
-
-char D_800F6200[2][TEXT_LINES][TEXT_LINE_SIZE] = {
-    {
+char BowlingNotEnoughCarrots_Text[][TEXT_LINE_SIZE] = {
     "この扉を開くにはキャロットが",
     "２個必要です。",
-    "　"
-    },
-    {
+    NULL_LINE,
+
     "また集めてから来て下さい。",
     "キャロットはこの世界に",
-    "５つかくされていますよ。"
-    }
+    "５つかくされていますよ。",
+
+    ""
 };
 
-//stop
-TERMINATE_TEXTBOX(pad26)
-
-char D_800F63A4[3][TEXT_LINES][TEXT_LINE_SIZE] = {
-    {
+char BlackFightEnoughCarrots_Text[][TEXT_LINE_SIZE] = {
     "この扉を開くにはキャロットが",
     "５個必要です。",
-    "　"
-    },
-    {
+    NULL_LINE,
+
     "キャロットを全部集めたのですね。",
     "すごいですね。",
-    "さあ、部屋にお入り下さい。"
-    },
-    {
+    "さあ、部屋にお入り下さい。",
+
     "この部屋では、強敵があなたを",
     "待っています。",
-    "　"
-    }
-};
+    NULL_LINE,
 
-//stop
-TERMINATE_TEXTBOX(pad27)
+    ""
+};
                                     
-char D_800F65FC[2][TEXT_LINES][TEXT_LINE_SIZE] = {
-    {
+char BlackFightNotEnoughCarrots_Text[][TEXT_LINE_SIZE] = {
     "この扉を開くにはキャロットが",
     "５個必要です。",
-    "　"
-    },
-    {
+    NULL_LINE,
+
     "また集めてから来て下さい。",
     "キャロットはこの世界に",
-    "５つかくされていますよ。"
-    }
-};
+    "５つかくされていますよ。",
 
-//stop
-TERMINATE_TEXTBOX(pad28)
-
-char* D_800F67A0[6] = {
-    D_800F5BE8,
-    D_800F5E04,
-    D_800F5FA8,
-    D_800F6200,
-    D_800F63A4,
-    D_800F65FC
-};
-
-char D_800F67B8[1][TEXT_LINES][TEXT_LINE_SIZE] = {
-    {
-    "この扉を開くには５０個の",
-    "コレクトアイテムが必要です。",
     ""
-    }
 };
-char* D_800F686C = &D_800F501C[0][11][0];
-char* D_800F6870 = &D_800F501C[0][14][0];
-char* D_800F6874 = &D_800F67B8;
+
+char (*D_800F67A0[6])[TEXT_LINE_SIZE] = {
+    BilliardsEnoughCarrots_Text,
+    BilliardsNotEnoughCarrots_Text,
+    BowlingEnoughCarrots_Text,
+    BowlingNotEnoughCarrots_Text,
+    BlackFightEnoughCarrots_Text,
+    BlackFightNotEnoughCarrots_Text
+};
+
+char BilliardsDoorEntry_Text[][TEXT_LINE_SIZE] = {
+    "この扉を開くには５０個の", //To open this door, 50
+    "コレクトアイテムが必要です。", //collectibles are required
+    ""
+};
+
+//These are just pointers to 2D arrays
+char (*D_800F686C)[TEXT_LINE_SIZE] = ChameleonsBodyHasTransformed_Text;
+char (*D_800F6870)[TEXT_LINE_SIZE] = WhereIsThatRabbit_Text;
+char (*D_800F6874)[TEXT_LINE_SIZE] = BilliardsDoorEntry_Text;
+
 
 s32 D_800F6878 = 0;
 s32 D_800F687C = 1;
 
 s32 D_800F6880 = 0;
 
-s32 rngSeed = 0xA6B99CD;
+s32 rngSeed = 0x0A6B99CD;
 
 s32 gPrevButtons[4] = {-1, -1, -1, -1};
 s32 gButtons[4] = {-1, -1, -1, -1};
@@ -2040,15 +1844,15 @@ extern const char D_8010CB48[];
 extern const char D_8010CB64[];
 
 Struct_80076EA0 D_800FE404[9] = {
-    {114, 44, 1, 0, &D_8010CABC, 1},
-    {116, 86, 1, 1, &D_8010CACC, 1},
-    {64, 118, 1, 1, &D_8010CADC, 1},
-    {64, 150, 1, 1, &D_8010CAF8, 1},
-    {128,182, 1, 1, &D_8010CB14, 1},
-    {114, 70, 1, 1, &D_8010CB20, 1},
-    {64, 102, 1, 1, &D_8010CB2C, 1},
-    {64, 134, 1, 1, &D_8010CB48, 1},
-    {120,166, 1, 1, &D_8010CB64, 1}
+    {114, 44, 1, 0, D_8010CABC, 1},
+    {116, 86, 1, 1, D_8010CACC, 1},
+    {64, 118, 1, 1, D_8010CADC, 1},
+    {64, 150, 1, 1, D_8010CAF8, 1},
+    {128,182, 1, 1, D_8010CB14, 1},
+    {114, 70, 1, 1, D_8010CB20, 1},
+    {64, 102, 1, 1, D_8010CB2C, 1},
+    {64, 134, 1, 1, D_8010CB48, 1},
+    {120,166, 1, 1, D_8010CB64, 1}
 };
 
 u8 gDontChangeEyes = 0;
@@ -2098,9 +1902,9 @@ chameleonEyeListEntry chameleonEyeList[6] = {
 
 //TODO: fix
 struct_800FE54C BossDeadEyes[3] = {
-    {0x03004D90, 0x03005598},
-    {0x03006FE0, 0x030073E8},
-    {0x03006A20, 0x03007228}
+    {(void*)0x03004D90, (void*)0x03005598},
+    {(void*)0x03006FE0, (void*)0x030073E8},
+    {(void*)0x03006A20, (void*)0x03007228}
 };
 
 //basic color lookup table?

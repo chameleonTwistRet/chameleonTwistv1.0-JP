@@ -6,13 +6,11 @@
             "includePath": [
                 "${workspaceFolder}/include",
                 "${workspaceFolder}/include/PR",
-                "${workspaceFolder}/src",
-                "${workspaceFolder}/src/mod"
+                "${workspaceFolder}/src"
             ],
             "defines": [
                 "_LANGUAGE_C",
-                "VERSION=jp",
-                "VERSION_JP"
+                "VER_JP"
             ],
             "cStandard": "gnu89",
             "cppStandard": "c++17"

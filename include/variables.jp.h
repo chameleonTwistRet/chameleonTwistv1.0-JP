@@ -363,14 +363,18 @@ extern s32 sGameModeStart;
 extern char D_8010DB20[];
 extern Field gZoneFields[];
 extern s32 currentStageCrowns;
-extern char* Dialogue[6][20]; //sizeof 0x1E0
 extern s32 gIsGamePaused;
-extern Gfx* ChameleonGfxs[6];
-extern char* D_800F686C;
-extern char* D_800F6870;
-extern char* D_800F6874;
-extern char* D_800F67A0[6];
-
-extern AnimPointer static0_chameleonAnimPointers_Animp[12];
+extern Gfx* ChameleonGfxs[CHARA_TOTAL];
+#define TEXT_LINE_SIZE 60
+extern char (*Dialogue[CHARA_TOTAL][20])[TEXT_LINE_SIZE]; //sizeof 0x1E0
+extern char ChameleonsBodyHasTransformed_Text[][TEXT_LINE_SIZE];
+extern char WhereIsThatRabbit_Text[][TEXT_LINE_SIZE];
+extern char BilliardsDoorEntry_Text[][TEXT_LINE_SIZE];
+extern char (*D_800F686C)[TEXT_LINE_SIZE];
+extern char (*D_800F6870)[TEXT_LINE_SIZE];
+extern char (*D_800F6874)[TEXT_LINE_SIZE];
+extern char (*D_800F67A0[6])[TEXT_LINE_SIZE];
+extern char (*D_800F59B8[CHARA_TOTAL + 1][20])[TEXT_LINE_SIZE];
+extern AnimPointer static0_chameleonAnims[12];
 
 #endif
