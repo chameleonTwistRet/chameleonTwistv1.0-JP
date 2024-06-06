@@ -235,7 +235,9 @@ typedef struct Collider {
     /* 0x05C */ s32 unk_5C;
     /* 0x060 */ f32 unk60;
     /* 0x064 */ f32 unk64;
-    /* 0x068 */ char pad68[0x18];                   /* maybe part of unk64[7]? */
+    /* 0x068 */ char pad68[4];
+    /* 0x06C */ s32 unk_6C;
+    /* 0x070 */ char pad70[0x10];
     /* 0x080 */ s32 unk80;
     /* 0x084 */ char pad84[8];                      /* maybe part of unk80[3]? */
     /* 0x08C */ f32 unk_8C;
