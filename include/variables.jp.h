@@ -377,4 +377,5 @@ extern char (*D_800F67A0[6])[TEXT_LINE_SIZE];
 extern char (*D_800F59B8[CHARA_TOTAL + 1][20])[TEXT_LINE_SIZE];
 extern AnimPointer static0_chameleonAnims[12];
 
+extern Collider* D_80240898;
 #endif

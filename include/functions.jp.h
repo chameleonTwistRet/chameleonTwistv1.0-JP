@@ -408,7 +408,7 @@ s32 IsPointInRect(Vec3f, Rect3D*);
 void AdjustRectToVec3(Rect3D* r, Vec3f vec);
 Vec3f* Vec3f_Lerp(Vec3f*, Vec3f, Vec3f, f32);
 void func_800C8F00(void);
-void func_800C9504(void);
+void func_800C9504(Collider*);
 void CalcEnemyNextPosition(Actor*);
 s32 func_800CF080(s32, f32);
 void func_800CFDB8(PlayerActor*);

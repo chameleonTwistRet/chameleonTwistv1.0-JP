@@ -29,8 +29,33 @@ extern Vec3f D_802489C8[8];
 Shadow gShadows[64];
 s32 gShadowCount;
 Vec3f D_80248518;
-char D_80248528[0x18];
-char D_80248540[0x368];
+
+typedef struct UnkPolyStruct {
+    void* unk0;
+    s32 unk4;
+    f32 unk8;
+    f32 unkC;
+    f32 unk10;
+    f32 unk14;
+    f32 unk18;
+} UnkPolyStruct;
+
+UnkPolyStruct D_80248528[32];
+
+typedef struct UnkMinDistance {
+    f32 temp; //unused?
+    f32* unk_04;
+    s32* unk_08;
+    Vec3f* vec;
+} UnkMinDistance;
+
+typedef struct UnkArg4 {
+    Poly* unk0;
+    s32 unk4;
+    char unk8[8];
+    Vec3f unk10;
+} UnkArg4;
+
 s32 D_802488A8;
 char D_802488B0[0x10];
 char gHasShadow[0x100];
@@ -62,18 +87,40 @@ const char D_80110180[] = "\n";
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800C9600.s")
 
-void func_800C9704(void) {
+void func_800C9704(Collider* arg0) {
     D_8023696C = 0;
-    func_800C9504();
+    func_800C9504(arg0);
 }
 
-void func_800C9728(void) {
-    func_800C9504();
+void func_800C9728(Collider* arg0) {
+    func_800C9504(arg0);
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800C9748.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800C982C.s")
+s32 func_800C982C(Rect3D* arg0, Collider* arg1) {
+    s32 var_s3;
+    Collider* temp_s0;
+    Collider** var_s2;
+    s32 i;
+
+    var_s3 = 0;
+    D_8023696C = 0;
+    
+    for (i = 0, var_s2 = &D_80240898; i < gFieldCount; i++, var_s2++){
+        temp_s0 = *var_s2;
+        if (((temp_s0->unk_10 != 0x21) || (arg1->unk_6C == 0)) && (temp_s0->unk_114 & 2) && (temp_s0->unk_0C & 0x77)) {
+            if (IfRectsIntersect(arg0, &temp_s0->unk_CC) == 0) {
+                //yes...this is required
+                continue;
+            } else {
+                func_800C9504(temp_s0);
+                var_s3++;
+            }
+        }        
+    }
+    return var_s3;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800C9928.s")
 
@@ -93,25 +140,149 @@ s32 IfPolyBoundIntersectsRect(Poly* poly, Rect3D* rect) {
     return 1;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800C9B7C.s")
+f32 Distance3DTo2DProjectedXY(Vec3f vecA, Vec2f vecB) {
+    f32 deltaX;
+    f32 deltaY;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/poly/DistanceWithLine.s")
+    deltaX = vecA.x - vecB.x;
+    deltaY = vecA.y - vecB.y;
+    return NORM_3(deltaX, deltaY, vecA.z);
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/poly/MinimunDistance.s")
+void DistanceWithLine(Vec3f point, Vec2f lineStart, Vec2f lineEnd, f32* distance, Vec3f* closestPoint3D, Poly* polygon) {
+    f32 deltaYLine;
+    f32 deltaXLine;
+    f32 lineSegmentLengthSquared;
+    f32 sp5C;  // Unused
+    f32 deltaYPoint;
+    f32 deltaXPoint;
+    f32 sp58;  // Unused
+    f32 sp54;  // Unused
+    Vec2f closestPoint2D;
+    Vec3f closestPoint3DLocal;
+    f32 projectionFactor;
+
+    deltaXPoint = point.x - lineStart.x;
+    deltaYPoint = point.y - lineStart.y;
+    deltaXLine = lineEnd.x - lineStart.x;
+    deltaYLine = lineEnd.y - lineStart.y;
+
+    lineSegmentLengthSquared = (SQ(deltaXLine)) + (SQ(deltaYLine));
+    
+    if (lineSegmentLengthSquared == 0.0f) {
+        DummiedPrintf3("DistanceWithLine(): determinant is 0\n");
+    }
+    projectionFactor = ((deltaXLine * deltaXPoint) + (deltaYLine * deltaYPoint)) / lineSegmentLengthSquared;
+    
+    if (projectionFactor <= 0.0f) {
+        closestPoint2D = lineStart;
+    } else if (projectionFactor >= 1.0f) {
+        closestPoint2D = lineEnd;
+    } else {
+        closestPoint2D.x = ((1.0f - projectionFactor) * lineStart.x) + (projectionFactor * lineEnd.x);
+        closestPoint2D.y = ((1.0f - projectionFactor) * lineStart.y) + (projectionFactor * lineEnd.y);
+    }
+    
+    *distance = Distance3DTo2DProjectedXY(point, closestPoint2D);
+
+    closestPoint3DLocal.x = closestPoint2D.x;
+    closestPoint3DLocal.y = closestPoint2D.y;
+    closestPoint3DLocal.z = 0.0f;
+    LocalToWorld(closestPoint3D, closestPoint3DLocal, polygon);
+}
+
+void MinimunDistance(Vec3f arg0, Poly* polygon, UnkMinDistance arg5) {
+    f32 temp_f0;
+    f32 temp_f2;
+    u32 var_v0;
+
+    WorldToLocal(&arg0, arg0, polygon);
+    var_v0 = 0;
+    temp_f0 = (polygon->unk_74 * arg0.y) + (polygon->unk_6C * arg0.x);
+    temp_f2 = (polygon->unk_78 * arg0.y) + (polygon->unk_70 * arg0.x);
+
+    if (temp_f0 < 0.0f) {
+        var_v0 = 1;
+    }
+    if (temp_f2 < 0.0f) {
+        var_v0 += 2;
+    }
+    if ((temp_f0 + temp_f2) > 1.0f) {
+        var_v0 += 4;
+    }
+
+    switch (var_v0) {
+    case 0:
+        *arg5.vec = arg0;
+        arg5.vec->z = 0.0f;
+        LocalToWorld(arg5.vec, *arg5.vec, polygon);
+        *arg5.unk_04 = arg0.z;
+        *arg5.unk_08 = 0;
+        return;
+    case 3:
+        *arg5.vec = polygon->offset;
+        *arg5.unk_04 = Distance3DTo2DProjectedXY(arg0, polygon->unk_7C);
+        *arg5.unk_08 = 1;
+        return;
+    case 6:
+        *arg5.vec = polygon->unkVec;
+        *arg5.unk_04 = Distance3DTo2DProjectedXY(arg0, polygon->unk_84);
+        *arg5.unk_08 = 1;
+        return;
+    case 5:
+        *arg5.vec = polygon->unkVec2;
+        *arg5.unk_04 = Distance3DTo2DProjectedXY(arg0, polygon->unk_8C);
+        *arg5.unk_08 = 1;
+        return;
+    case 2:
+        DistanceWithLine(arg0, polygon->unk_7C, polygon->unk_84, arg5.unk_04, arg5.vec, polygon);
+        *arg5.unk_08 = 1;
+        return;
+    case 4:
+        DistanceWithLine(arg0, polygon->unk_84, polygon->unk_8C, arg5.unk_04, arg5.vec, polygon);
+        *arg5.unk_08 = 1;
+        return;
+    case 1:
+        DistanceWithLine(arg0, polygon->unk_8C, polygon->unk_7C, arg5.unk_04, arg5.vec, polygon);
+        *arg5.unk_08 = 1;
+        return;
+    default:
+        DummiedPrintf3("MinimunDistance(): invalid case\n");
+        return;
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/ListUpTouchedPolygon.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800CA3FC.s")
+UnkPolyStruct* func_800CA3FC(void) {
+    UnkPolyStruct* curUnkPoly;
+    UnkPolyStruct* nextUnkPoly;
+    f32 temp_f0;
+    f32 temp_f2;
+    s32 i;
+
+    if (D_802488A8 == 0) {
+        return NULL;
+    }
+    
+    if (D_802488A8 == 1) {
+        return D_80248528;
+    }
+    
+    nextUnkPoly = &D_80248528[1];
+    curUnkPoly = D_80248528;
+    
+    for (i = 1; i < D_802488A8; i++, nextUnkPoly++) {
+        temp_f0 = curUnkPoly->unk8;
+        temp_f2 = nextUnkPoly->unk8;
+        if (!(temp_f0 < temp_f2) && ((temp_f0 != temp_f2) || (nextUnkPoly->unk4 == 0) || (curUnkPoly->unk4 == 0) || !(nextUnkPoly->unkC < curUnkPoly->unkC))) {
+            curUnkPoly = nextUnkPoly;
+        }        
+    }
+    return curUnkPoly;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800CA4BC.s")
-
-typedef struct UnkArg4 {
-    Poly* unk0;
-    s32 unk4;
-    char unk8[8];
-    Vec3f unk10;
-} UnkArg4;
-
 
 Vec3f* func_800CA5B4(Vec3f* arg0, Vec3f arg1, UnkArg4* arg4, f32 arg5) {
     Vec3f sp54;

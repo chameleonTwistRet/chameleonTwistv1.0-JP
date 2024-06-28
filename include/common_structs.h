@@ -235,7 +235,9 @@ typedef struct Collider {
     /* 0x05C */ s32 unk_5C;
     /* 0x060 */ f32 unk60;
     /* 0x064 */ f32 unk64;
-    /* 0x068 */ char pad68[0x18];                   /* maybe part of unk64[7]? */
+    /* 0x068 */ char pad68[4];
+    /* 0x06C */ s32 unk_6C;
+    /* 0x070 */ char pad70[0x10];
     /* 0x080 */ s32 unk80;
     /* 0x084 */ char pad84[8];                      /* maybe part of unk80[3]? */
     /* 0x08C */ f32 unk_8C;
@@ -680,12 +682,9 @@ typedef struct Poly {
     /* 0x70 */ f32 unk_70;
     /* 0x74 */ f32 unk_74;
     /* 0x78 */ f32 unk_78;
-    /* 0x7C */ f32 unk_7C;
-    /* 0x80 */ f32 unk_80;
-    /* 0x84 */ f32 unk_84;
-    /* 0x88 */ f32 unk_88;
-    /* 0x8C */ f32 unk_8C;
-    /* 0x90 */ f32 unk_90;
+    /* 0x7C */ Vec2f unk_7C;
+    /* 0x84 */ Vec2f unk_84;
+    /* 0x8C */ Vec2f unk_8C;
 } Poly;
 
 typedef struct Actor {
