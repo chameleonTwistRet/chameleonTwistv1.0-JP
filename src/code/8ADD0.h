@@ -232,7 +232,6 @@ extern unk801B3178* D_801B3178;
 extern unk8020D908 D_8020D908;
 extern unkStruct20 D_802039B8[];
 extern s32 D_80206CF4;
-extern Collider* D_80240898;
 //extern s32 D_80168DFC;
 //extern s32 D_80168E14;
 extern s32 D_802065B8[];

@@ -1491,7 +1491,6 @@ s32 StopSoundEffect(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80087824.s")
 
-//rain did this one, just didnt add it
 s16 func_8008788C(s32 arg0, f32 arg1) {
     s32 var_v0 = 0;
     unk0* var_v1 = D_801FFB84->unk50;
@@ -1644,7 +1643,6 @@ s32 func_8008873C(f32* arg0, f32* arg1, f32* arg2) {
     if (D_800FF64C == D_800FF650 ) {
         return 0;
     }
-    //"TALK = %d\n"
     DummiedPrintf("TALK = %d\n", D_80200A98[D_800FF64C]);
     return AddSoundEffect(D_80200A98[D_800FF64C], arg0, arg1, arg2, 0, 2);
 }

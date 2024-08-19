@@ -66,7 +66,7 @@ class N64SegAnimHeader(CommonSegCodeSubsegment):
             lines.append(f"Anim {sym.name} = {{")
 
         byteData = bytearray(buffer)
-        data = struct.unpack('>fffffffffIII', byteData)
+        data = struct.unpack('>ffffffffffII', byteData)
         for v in data:
             lines.append(f"    {v},")
 

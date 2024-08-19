@@ -370,8 +370,6 @@ extern u8 sTextGradientPalettes[];
 extern s32 gCharacterPortraits[];
 extern u8 D_800FE790[];
 extern s32 D_800FE74C;
-
-extern char* D_800F59B8[7][20];
 extern s32 cutsceneSwitch;
 extern s32 D_800FED10;
 extern f32 D_800FED14;

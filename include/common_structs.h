@@ -146,7 +146,7 @@ typedef struct Struct_80076EA0 {
     /* 0x04 */ f32 unk_04;
     /* 0x08 */ f32 unk_08;
     /* 0x0C */ s32 unk_0C;
-    /* 0x10 */ char* unk_10;
+    /* 0x10 */ const char* unk_10;
     /* 0x14 */ s32 unk_14;
 } Struct_80076EA0; // sizeof 0x18
 
@@ -235,7 +235,9 @@ typedef struct Collider {
     /* 0x05C */ s32 unk_5C;
     /* 0x060 */ f32 unk60;
     /* 0x064 */ f32 unk64;
-    /* 0x068 */ char pad68[0x18];                   /* maybe part of unk64[7]? */
+    /* 0x068 */ char pad68[4];
+    /* 0x06C */ s32 unk_6C;
+    /* 0x070 */ char pad70[0x10];
     /* 0x080 */ s32 unk80;
     /* 0x084 */ char pad84[8];                      /* maybe part of unk80[3]? */
     /* 0x08C */ f32 unk_8C;
@@ -520,7 +522,7 @@ typedef struct actorSubArray { //starts at 0x40
 } actorSubArray; //sizeof 0x14
 
 typedef struct StageModel{
-    Gfx* Graphics; //type Gfx*, but it throws 3000 errors. wtf???
+    Gfx* Graphics;
     ModelCollision* Collisions;
     char pad[0x28];
 } StageModel;
@@ -541,8 +543,6 @@ typedef struct unk802000C84 {
 typedef struct unkStruct09 {
 char unk_00[0x84];
 } unkStruct09; //sizeof 0x84
-
-
 
 typedef struct unkStruct14 {
 /* 0x00 */ char unk_00[0x38];
@@ -575,9 +575,9 @@ typedef struct unk80100F50 {
     /* 0x04*/ u32 unk4;
 } unk80100F50; //sizeof 0x08
 
-typedef struct frameBufferData {
+typedef struct FrameBuffer {
     /* 0x00 */ char data[0x25800]; // h*W*colDepth
-} frameBufferData; //sizeof 0x25800
+} FrameBuffer; //sizeof 0x25800
 
 typedef struct CTTask {
     /* 0x00 */ s16 runType;
@@ -682,12 +682,9 @@ typedef struct Poly {
     /* 0x70 */ f32 unk_70;
     /* 0x74 */ f32 unk_74;
     /* 0x78 */ f32 unk_78;
-    /* 0x7C */ f32 unk_7C;
-    /* 0x80 */ f32 unk_80;
-    /* 0x84 */ f32 unk_84;
-    /* 0x88 */ f32 unk_88;
-    /* 0x8C */ f32 unk_8C;
-    /* 0x90 */ f32 unk_90;
+    /* 0x7C */ Vec2f unk_7C;
+    /* 0x84 */ Vec2f unk_84;
+    /* 0x8C */ Vec2f unk_8C;
 } Poly;
 
 typedef struct Actor {
@@ -1103,7 +1100,7 @@ typedef struct Anim {
     f32 unk18;
     f32 unk1C;
     f32 unk20;
-    s32 unk24;
+    f32 unk24;
     s32 frames;
     s32 objects;
 } Anim;

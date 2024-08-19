@@ -159,7 +159,8 @@ enum PlayerCharacters{
 	CHARA_FRED = 2,
 	CHARA_LINDA = 3,
 	CHARA_BLACK = 4,
-	CHARA_WHITE = 5
+	CHARA_WHITE = 5,
+    CHARA_TOTAL
 };
 
 enum Stages{
