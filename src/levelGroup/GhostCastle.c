@@ -274,1233 +274,957 @@ extern ModelCollision Global_pole_ColH;
 
 Mtx GhostCastle_IMtx1 = IDENTITY;
 
-#include "assets/levelGroup/GhostCastle/pointers.lvp.inc.c"
-
-#include "build/assets/levelGroup/GhostCastle/rabObjects.inc.c"
-
-#include "assets/levelGroup/GhostCastle/spriteActors/room0_spr1.sprite.inc.c"
-
-#include "assets/levelGroup/GhostCastle/spriteActors/room0_spr2.sprite.inc.c"
-
-#include "assets/levelGroup/GhostCastle/spriteActors/room0_spr3.sprite.inc.c"
-
-#include "assets/levelGroup/GhostCastle/spriteActors/room0_spr4.sprite.inc.c"
-
-#include "assets/levelGroup/GhostCastle/spriteActors/room0_sprSTOP.sprite.inc.c"
-
-#include "assets/levelGroup/GhostCastle/spriteActors/room18_spr1.sprite.inc.c"
-
-#include "assets/levelGroup/GhostCastle/spriteActors/room18_sprSTOP.sprite.inc.c"
-
-#include "assets/levelGroup/GhostCastle/spriteActors/room7_spr1.sprite.inc.c"
-
-#include "assets/levelGroup/GhostCastle/spriteActors/room7_sprSTOP.sprite.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room0_obj1.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room0_obj2.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room0_obj3.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room0_obj4.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room0_obj5.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room0_obj6.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room0_obj7.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room0_obj8.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room0_obj9.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room0_obj10.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room0_obj11.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room0_obj12.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room0_obj13.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room0_obj14.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room0_obj15.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room0_obj16.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room0_obj17.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room0_obj18.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room0_obj19.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room0_obj20.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room0_obj21.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room0_obj22.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room0_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/roomMulti_obj1.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/roomMulti_objSTOP.roomObj.inc.c"
-
-#include "build/assets/levelGroup/GhostCastle/unusedGarbage.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room2_obj1.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room2_obj2.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room2_obj3.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room2_obj4.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room2_obj5.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room2_obj6.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room2_obj7.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room2_obj8.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room2_obj9.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room2_obj10.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room2_obj11.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room2_obj12.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room2_obj13.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room2_obj14.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room2_obj15.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room2_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room2_act1.roomAct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room2_act2.roomAct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room2_act3.roomAct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room2_act4.roomAct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room2_act5.roomAct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room2_act6.roomAct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room2_act7.roomAct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room2_act8.roomAct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room2_act9.roomAct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room2_act10.roomAct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room2_act11.roomAct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room2_act12.roomAct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room2_act13.roomAct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room2_act14.roomAct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room2_act15.roomAct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room2_act16.roomAct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room2_act17.roomAct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room2_act18.roomAct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room2_act19.roomAct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room2_act20.roomAct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room2_act21.roomAct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room2_act22.roomAct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room2_act23.roomAct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room2_act24.roomAct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room2_act25.roomAct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room2_act26.roomAct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room2_act27.roomAct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room2_act28.roomAct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room2_act29.roomAct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room2_act30.roomAct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room2_act31.roomAct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room2_actSTOP.roomAct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room4_obj1.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room4_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room5_obj1.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room5_obj2.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room5_obj3.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room5_obj4.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room5_obj5.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room5_obj6.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room5_obj7.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room5_obj8.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room5_obj9.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room5_obj10.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room5_obj11.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room5_obj12.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room5_obj13.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room5_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room5_act1.roomAct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room5_act2.roomAct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room5_act3.roomAct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room5_act4.roomAct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room5_actSTOP.roomAct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/spriteActors/room5_spr1.sprite.inc.c"
-
-#include "assets/levelGroup/GhostCastle/spriteActors/room5_spr2.sprite.inc.c"
-
-#include "assets/levelGroup/GhostCastle/spriteActors/room5_spr3.sprite.inc.c"
-
-#include "assets/levelGroup/GhostCastle/spriteActors/room5_sprSTOP.sprite.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room6_obj1.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room6_obj2.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room6_obj3.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room6_obj4.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room6_obj5.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room6_obj6.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room6_obj7.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room6_obj8.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room6_obj9.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room6_obj10.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room6_obj11.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room6_obj12.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room6_obj13.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room6_obj14.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room6_obj15.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room6_obj16.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room6_obj17.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room6_obj18.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room6_obj19.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room6_obj20.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room6_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room7_obj1.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room7_obj2.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room7_obj3.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room7_obj4.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room7_obj5.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room7_obj6.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room7_obj7.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room7_obj8.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room7_obj9.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room7_obj10.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room7_obj11.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room7_obj12.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room7_obj13.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room7_obj14.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room7_obj15.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room7_obj16.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room7_obj17.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room7_obj18.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room7_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room7_act1.roomAct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room7_act2.roomAct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room7_act3.roomAct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room7_actSTOP.roomAct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room8_obj1.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room8_obj2.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room8_obj3.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room8_obj4.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room8_obj5.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room8_obj6.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room8_obj7.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room8_obj8.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room8_obj9.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room8_obj10.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room8_obj11.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room8_obj12.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room8_obj13.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room8_obj14.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room8_obj15.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room8_obj16.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room8_obj17.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room8_obj18.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room8_obj19.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room8_obj20.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room8_obj21.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room8_obj22.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room8_obj23.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room8_obj24.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room8_obj25.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room8_obj26.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room8_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room9_obj1.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room9_obj2.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room9_obj3.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room9_obj4.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room9_obj5.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room9_obj6.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room9_obj7.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room9_obj8.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room9_obj9.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room9_obj10.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room9_obj11.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room9_obj12.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room9_obj13.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room9_obj14.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room9_obj15.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room9_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/spriteActors/room9_spr1.sprite.inc.c"
-
-#include "assets/levelGroup/GhostCastle/spriteActors/room9_sprSTOP.sprite.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room9_act1.roomAct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room9_act2.roomAct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room9_act3.roomAct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room9_act4.roomAct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room9_act5.roomAct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room9_act6.roomAct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room9_act7.roomAct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room9_act8.roomAct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room9_actSTOP.roomAct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room10_obj1.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room10_obj2.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room10_obj3.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room10_obj4.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room10_obj5.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room10_obj6.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room10_obj7.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room10_obj8.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room10_obj9.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room10_obj10.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room10_obj11.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room10_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room11_obj1.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room11_obj2.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room11_obj3.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room11_obj4.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room11_obj5.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room11_obj6.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room11_obj7.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room11_obj8.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room11_obj9.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room11_obj10.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room11_obj11.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room11_obj12.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room11_obj13.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room11_obj14.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room11_obj15.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room11_obj16.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room11_obj17.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room11_obj18.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room11_obj19.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room11_obj20.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room11_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room11_act1.roomAct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room11_act2.roomAct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room11_act3.roomAct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room11_act4.roomAct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room11_act5.roomAct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room11_act6.roomAct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room11_act7.roomAct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room11_act8.roomAct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room11_act9.roomAct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room11_act10.roomAct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room11_actSTOP.roomAct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room12_obj1.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room12_obj2.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room12_obj3.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room12_obj4.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room12_obj5.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room12_obj6.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room12_obj7.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room12_obj8.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room12_obj9.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room12_obj10.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room12_obj11.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room12_obj12.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room12_obj13.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room12_obj14.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room12_obj15.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room12_obj16.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room12_obj17.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room12_obj18.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room12_obj19.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room12_obj20.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room12_obj21.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room12_obj22.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room12_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room12_act1.roomAct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room12_act2.roomAct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room12_act3.roomAct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room12_act4.roomAct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room12_act5.roomAct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room12_act6.roomAct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room12_act7.roomAct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room12_act8.roomAct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room12_act9.roomAct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room12_actSTOP.roomAct.inc.c"
+StageModel GhostCastle_stageModels[115] = {
+{&Global_fallbackCube_Gfx[0], &Global_fallbackCube_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_exitShadowSouth_Gfx[0], &Global_exitShadowSouth_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_exitShadowNorth_Gfx[0], &Global_exitShadowNorth_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_exitShadowEast_Gfx[0], &Global_exitShadowEast_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_exitShadowWest_Gfx[0], &Global_exitShadowWest_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_ALBLExit_Gfx[0], &Global_ALBLExit_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_sandPit_Gfx[0], &Global_sandPit_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BossBridge_Gfx[0], &Global_BossBridge_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_ALPole_Gfx[0], &Global_ALPole_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_ALBLDoor_Gfx[0], &Global_ALBLDoor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_ALSpinDoor_Gfx[0], &Global_ALSpinDoor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLLavaFloor_Gfx[0], &Global_BLLavaFloor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLLava_Gfx[0], &Global_BLLava_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLLava2_Gfx[0], &Global_BLLava2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLLava3_Gfx[0], &Global_BLLava3_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLLava4_Gfx[0], &Global_BLLava4_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLLava5_Gfx[0], &Global_BLLava5_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLLava6_Gfx[0], &Global_BLLava6_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLLava7_Gfx[0], &Global_BLLava7_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLLava8_Gfx[0], &Global_BLLava8_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLDestructableTop_Gfx[0], &Global_BLDestructableTop_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLMetalBridge_Gfx[0], &Global_BLMetalBridge_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_KLExit_Gfx[0], &Global_KLExit_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_KLDoor_Gfx[0], &Global_KLDoor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_DCExit_Gfx[0], &Global_DCExit_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_TallExitShadow1_Gfx[0], &Global_TallExitShadow1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_TallExitShadow2_Gfx[0], &Global_TallExitShadow2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_GCExit1_Gfx[0], &Global_GCExit1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_GCExit2_Gfx[0], &Global_GCExit2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_trainingRoomLight_Gfx[0], &Global_trainingRoomLight_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_JLCaveExit1_Gfx[0], &Global_JLCaveExit1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_JLCaveExit2_Gfx[0], &Global_JLCaveExit2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_JLCaveExit3_Gfx[0], &Global_JLCaveExit3_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_JLCaveExit4_Gfx[0], &Global_JLCaveExit4_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_JLOutsideEntrance_Gfx[0], &Global_JLOutsideEntrance_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_JLFxCamPillar_Gfx[0], &Global_JLFxCamPillar_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_JLCaveDoor_Gfx[0], &Global_JLCaveDoor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&GhostCastle_model1_Gfx[0], &GhostCastle_unkCol1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&GhostCastle_model2_Gfx[0], &GhostCastle_unkCol2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&GhostCastle_model3_Gfx[0], &GhostCastle_unkCol3_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&GhostCastle_model4_Gfx[0], &GhostCastle_unkCol4_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&GhostCastle_model5_Gfx[0], &GhostCastle_unkCol5_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&GhostCastle_model6_Gfx[0], &GhostCastle_unkCol6_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&GhostCastle_model7_Gfx[0], &GhostCastle_unkCol7_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&GhostCastle_model8_Gfx[0], &GhostCastle_unkCol8_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&GhostCastle_model9_Gfx[0], &GhostCastle_unkCol9_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&GhostCastle_model10_Gfx[0], &GhostCastle_unkCol10_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&GhostCastle_model11_Gfx[0], &GhostCastle_unkCol11_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&GhostCastle_model12_Gfx[0], &GhostCastle_unkCol12_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&GhostCastle_model13_Gfx[0], &GhostCastle_unkCol13_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&GhostCastle_model14_Gfx[0], &GhostCastle_unkCol14_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&GhostCastle_model15_Gfx[0], &GhostCastle_unkCol15_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&GhostCastle_model16_Gfx[0], &GhostCastle_unkCol16_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&GhostCastle_model17_Gfx[0], &GhostCastle_unkCol17_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&GhostCastle_model18_Gfx[0], &GhostCastle_unkCol18_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&GhostCastle_model19_Gfx[0], &GhostCastle_unkCol19_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&GhostCastle_model20_Gfx[0], &GhostCastle_unkCol20_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&GhostCastle_model21_Gfx[0], &GhostCastle_unkCol21_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&GhostCastle_model22_Gfx[0], &GhostCastle_unkCol22_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&GhostCastle_model23_Gfx[0], &GhostCastle_unkCol23_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&GhostCastle_model24_Gfx[0], &GhostCastle_unkCol24_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&GhostCastle_model25_Gfx[0], &GhostCastle_unkCol25_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&GhostCastle_model84_Gfx[0], &GhostCastle_unkCol26_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&GhostCastle_model26_Gfx[0], &GhostCastle_unkCol27_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&GhostCastle_model27_Gfx[0], &GhostCastle_unkCol28_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&GhostCastle_model28_Gfx[0], &GhostCastle_unkCol29_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&GhostCastle_model29_Gfx[0], &GhostCastle_unkCol30_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&GhostCastle_model85_Gfx[0], &GhostCastle_unkCol31_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&GhostCastle_model86_Gfx[0], &GhostCastle_unkCol32_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&GhostCastle_model30_Gfx[0], &GhostCastle_unkCol33_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&GhostCastle_model31_Gfx[0], &GhostCastle_unkCol34_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&GhostCastle_model32_Gfx[0], &GhostCastle_unkCol35_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&GhostCastle_model33_Gfx[0], &GhostCastle_unkCol36_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&GhostCastle_model34_Gfx[0], &GhostCastle_unkCol37_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&GhostCastle_model35_Gfx[0], &GhostCastle_unkCol38_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&GhostCastle_model36_Gfx[0], &GhostCastle_unkCol39_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&GhostCastle_model37_Gfx[0], &GhostCastle_unkCol40_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&GhostCastle_model38_Gfx[0], &GhostCastle_unkCol41_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&GhostCastle_model39_Gfx[0], &GhostCastle_unkCol42_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&GhostCastle_model40_Gfx[0], &GhostCastle_unkCol43_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&GhostCastle_model41_Gfx[0], &GhostCastle_unkCol44_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&GhostCastle_model42_Gfx[0], &GhostCastle_unkCol45_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&GhostCastle_model43_Gfx[0], &GhostCastle_unkCol46_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&GhostCastle_model44_Gfx[0], &GhostCastle_unkCol47_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&GhostCastle_model45_Gfx[0], &GhostCastle_unkCol48_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&GhostCastle_model46_Gfx[0], &GhostCastle_unkCol49_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&GhostCastle_model47_Gfx[0], &GhostCastle_unkCol50_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&GhostCastle_model48_Gfx[0], &GhostCastle_unkCol51_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&GhostCastle_model49_Gfx[0], &GhostCastle_unkCol52_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&GhostCastle_model50_Gfx[0], &GhostCastle_unkCol53_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&GhostCastle_model51_Gfx[0], &GhostCastle_unkCol54_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&GhostCastle_model52_Gfx[0], &GhostCastle_unkCol55_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&GhostCastle_model53_Gfx[0], &GhostCastle_unkCol56_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&GhostCastle_model54_Gfx[0], &GhostCastle_unkCol57_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&GhostCastle_model55_Gfx[0], &GhostCastle_unkCol58_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&GhostCastle_model56_Gfx[0], &GhostCastle_unkCol59_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&GhostCastle_model57_Gfx[0], &GhostCastle_unkCol60_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&GhostCastle_model58_Gfx[0], &GhostCastle_unkCol61_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&GhostCastle_model59_Gfx[0], &GhostCastle_unkCol62_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&GhostCastle_model60_Gfx[0], &GhostCastle_unkCol63_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&GhostCastle_model61_Gfx[0], &GhostCastle_unkCol64_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&GhostCastle_model62_Gfx[0], &GhostCastle_unkCol65_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&GhostCastle_model63_Gfx[0], &GhostCastle_unkCol66_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&GhostCastle_model64_Gfx[0], &GhostCastle_unkCol67_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&GhostCastle_model65_Gfx[0], &GhostCastle_unkCol68_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&GhostCastle_model66_Gfx[0], &GhostCastle_unkCol69_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&GhostCastle_model67_Gfx[0], &GhostCastle_unkCol70_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&GhostCastle_model68_Gfx[0], &GhostCastle_unkCol71_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&GhostCastle_model69_Gfx[0], &GhostCastle_unkCol72_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&GhostCastle_model70_Gfx[0], &GhostCastle_unkCol73_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&GhostCastle_model71_Gfx[0], &GhostCastle_unkCol74_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&GhostCastle_model72_Gfx[0], &GhostCastle_unkCol75_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&GhostCastle_model73_Gfx[0], &GhostCastle_unkCol76_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&GhostCastle_model74_Gfx[0], &GhostCastle_unkCol77_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_pole_Gfx[0], &Global_pole_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+};
+
+unsigned char GhostCastle_rabObjects_Bin[] = {
+0x00, 0x00, 0x00, 0x00, 0x42, 0xC8, 0x00, 0x00, 0x42, 0xC8, 0x00, 0x00, 0x42, 0xC8, 0x00, 0x00, 0x02, 0x00, 0x6E, 0x1C, 0x00, 0x00, 0x00, 0x00, 0x42, 0xC8, 0x00, 0x00, 0x42, 0xC8, 0x00, 0x00, 0x42, 0xC8, 0x00, 0x00, 0x02, 0x00, 0x6E, 0x1C
+};
+
+SpriteActor GhostCastle_room0_sprites[5] = {
+{18, 0, {1830.0,0.0,-830.0}, {100.0,200.0,200.0}, 1, 0, 60.0, 0, 0, 0, 0, 0, 17, 5, 0, 0},
+{20, 0, {0.0,10.0,500.0}, {100.0,300.0,300.0}, 1, 0, 30.0, 0, -1082130432, 1148846080, 0, 0, 255, 255, 10, 255},
+{20, 0, {200.0,800.0,-1990.0}, {100.0,300.0,300.0}, 1, 0, 30.0, 0, 0, 1120403456, 0, 0, 255, 255, 100, 255},
+{20, 0, {-200.0,800.0,-1990.0}, {100.0,300.0,300.0}, 1, 0, 30.0, 0, 0, 0, 1120403456, 0, 255, 255, 100, 255},
+{-1, 0, {-1.0,-1.0,-1.0}, {-1.0,32.0,32.0}, 1, 0, 0.0, 0, 0, 0, 0, 0, -1, -1, 0, 0}
+};
+
+SpriteActor GhostCastle_room18_sprites[2] = {
+{18, 0, {-350.0,1000.0,-1400.0}, {100.0,200.0,200.0}, 1, 0, 60.0, 0, 0, 0, 0, 0, 18, 17, 0, 0},
+{-1, 0, {-1.0,-1.0,-1.0}, {-1.0,32.0,32.0}, 1, 0, 0.0, 0, 0, 0, 0, 0, -1, -1, 0, 0}
+};
+
+SpriteActor GhostCastle_room7_sprites[2] = {
+{19, 0, {2000.0,0.0,1500.0}, {100.0,200.0,200.0}, 1, 0, 60.0, 0, 0, 0, 0, 0, 1, 3, 4, 0},
+{-1, 0, {-1.0,-1.0,-1.0}, {-1.0,32.0,32.0}, 1, 0, 0.0, 0, 0, 0, 0, 0, -1, -1, 0, 0}
+};
+
+RoomObject GhostCastle_room0_objects[23] = {
+{{-1600.0,0.0,1800.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 99, -1, -1, -1, NULL, NULL, 0, 0, 34, 4, 4, 0, -1, 0, 0},
+{{-3200.0,1200.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 76, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+{{-3200.0,1200.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 78, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+{{-3200.0,1200.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 256, 0, 400.0, 400.0, 0.0, 0.0, 4, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
+{{-3200.0,1200.0,0.0}, {4.0,4.0,4.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+{{3200.0,1200.0,-500.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 77, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+{{3200.0,1200.0,-500.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 79, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+{{3200.0,1200.0,-500.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 256, 0, 400.0, 400.0, 0.0, 0.0, 2, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
+{{3200.0,1200.0,-500.0}, {4.0,4.0,4.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 40, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 41, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 42, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 43, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 44, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 45, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 46, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 47, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 48, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 49, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 50, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 51, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,-15.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 80, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomObject GhostCastle_roomMulti_objects[2] = {
+{{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 114, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+unsigned char GhostCastle_unusedGarbage_Bin[] = {
+0x00, 0x00, 0x00, 0x67, 0x03, 0x00, 0x26, 0x74, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x01, 0xFF, 0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x01
+};
+
+RoomObject GhostCastle_room2_objects[16] = {
+{{-2200.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 76, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+{{-2200.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 78, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+{{-2200.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 256, 0, 400.0, 400.0, 0.0, 0.0, 4, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
+{{-2200.0,0.0,0.0}, {4.0,4.0,4.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+{{100.0,120.0,1000.0}, {1.5,1.5,1.100000023841858}, 3, DEGREES_TO_RADIANS_2PI(0.0), 7, 8, 0.0, 0.0, 0.0, 0.0, 390, 0, 0, 0, 0, 0, 107, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+{{100.0,50.0,450.0}, {0.4000000059604645,5.5,0.20000000298023224}, 3, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 59, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+{{100.0,50.0,1650.0}, {0.4000000059604645,5.5,0.20000000298023224}, 2, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 59, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+{{0.0,-150.0,0.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(0.0), 7, 8, 0.0, 0.0, 0.0, 0.0, 780, 0, 0, 0, 0, 0, 37, -1, -1, -1, NULL, &func_800D9128, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+{{1750.0,0.0,0.0}, {1.0,1.2000000476837158,1.5}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 38, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+{{-1750.0,0.0,0.0}, {1.0,1.2000000476837158,1.5}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 38, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 81, -1, -1, -1, NULL, &func_800B2070, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{2200.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 77, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+{{2200.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 79, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+{{2200.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 256, 0, 400.0, 400.0, 0.0, 0.0, 2, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
+{{2200.0,0.0,0.0}, {4.0,4.0,4.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomActor GhostCastle_room2_actors[32] = {
+{BARREL_JUMP_FIRE_SPAWNER, {0.0,-150.0,800.0}, 0.0, -10000.0, 10000.0, 0, 10000.0, -10000.0, 10000.0, 1, 0.0, 0.0, 800.0, 0.4615384638309479, 0, 0, 0, 0, 1145241600, 0, 0, 0},
+{BARREL_JUMP_FIRE_SPAWNER, {0.0,-150.0,1000.0}, 0.0, -10000.0, 10000.0, 0, 10000.0, -10000.0, 10000.0, 1, 0.0, 0.0, 1000.0, 0.4615384638309479, 0, 0, 0, 0, 1145241600, 1101004800, 0, 0},
+{BARREL_JUMP_FIRE_SPAWNER, {0.0,-150.0,1200.0}, 0.0, -10000.0, 10000.0, 0, 10000.0, -10000.0, 10000.0, 1, 0.0, 0.0, 1200.0, 0.4615384638309479, 0, 0, 0, 0, 1145241600, 1109393408, 0, 0},
+{BARREL_JUMP_FIRE_SPAWNER, {0.0,-150.0,1400.0}, 0.0, -10000.0, 10000.0, 0, 10000.0, -10000.0, 10000.0, 1, 0.0, 0.0, 1400.0, 0.4615384638309479, 0, 0, 0, 0, 1145241600, 1114636288, 0, 0},
+{BARREL_JUMP_FIRE_SPAWNER, {50.0,-150.0,900.0}, 0.0, -10000.0, 10000.0, 0, 10000.0, -10000.0, 10000.0, 1, 0.0, 0.0, 900.0, 0.4615384638309479, 0, 0, 0, 0, 1145241600, 1126170624, 0, 0},
+{BARREL_JUMP_FIRE_SPAWNER, {0.0,-150.0,1100.0}, 0.0, -10000.0, 10000.0, 0, 10000.0, -10000.0, 10000.0, 1, 0.0, 0.0, 1100.0, 0.4615384638309479, 0, 0, 0, 0, 1145241600, 1124859904, 0, 0},
+{BARREL_JUMP_FIRE_SPAWNER, {0.0,-150.0,1300.0}, 0.0, -10000.0, 10000.0, 0, 10000.0, -10000.0, 10000.0, 1, 0.0, 0.0, 1300.0, 0.4615384638309479, 0, 0, 0, 0, 1145241600, 1123024896, 0, 0},
+{BARREL_JUMP_FIRE_SPAWNER, {50.0,-150.0,1500.0}, 0.0, -10000.0, 10000.0, 0, 10000.0, -10000.0, 10000.0, 1, 0.0, 0.0, 1500.0, 0.4615384638309479, 0, 0, 0, 0, 1145241600, 1120403456, 0, 0},
+{BARREL_JUMP_FIRE_SPAWNER, {50.0,-150.0,550.0}, 0.0, -10000.0, 10000.0, 0, 10000.0, -10000.0, 10000.0, 1, 0.0, 0.0, 550.0, 0.4615384638309479, 0, 0, 0, 0, 1145241600, 1127481344, 0, 0},
+{BARREL_JUMP_FIRE_SPAWNER, {25.0,-150.0,700.0}, 0.0, -10000.0, 10000.0, 0, 10000.0, -10000.0, 10000.0, 1, 0.0, 0.0, 700.0, 0.4615384638309479, 0, 0, 0, 0, 1145241600, 1128792064, 0, 0},
+{BARREL_JUMP_FIRE_SPAWNER, {0.0,-150.0,950.0}, 0.0, -10000.0, 10000.0, 0, 10000.0, -10000.0, 10000.0, 1, 0.0, 0.0, 950.0, 0.4615384638309479, 0, 0, 0, 0, 1145241600, 1127481344, 0, 0},
+{BARREL_JUMP_FIRE_SPAWNER, {-25.0,-150.0,1150.0}, 0.0, -10000.0, 10000.0, 0, 10000.0, -10000.0, 10000.0, 1, 0.0, 0.0, 1150.0, 0.4615384638309479, 0, 0, 0, 0, 1145241600, 1126170624, 0, 0},
+{BARREL_JUMP_FIRE_SPAWNER, {-50.0,-150.0,700.0}, 0.0, -10000.0, 10000.0, 0, 10000.0, -10000.0, 10000.0, 1, 0.0, 0.0, 700.0, 0.4615384638309479, 0, 0, 0, 0, 1145241600, 1128792064, 0, 0},
+{BARREL_JUMP_FIRE_SPAWNER, {50.0,-150.0,1000.0}, 0.0, -10000.0, 10000.0, 0, 10000.0, -10000.0, 10000.0, 1, 0.0, 0.0, 1000.0, 0.4615384638309479, 0, 0, 0, 0, 1145241600, 1130102784, 0, 0},
+{BARREL_JUMP_FIRE_SPAWNER, {-50.0,-150.0,1300.0}, 0.0, -10000.0, 10000.0, 0, 10000.0, -10000.0, 10000.0, 1, 0.0, 0.0, 1300.0, 0.4615384638309479, 0, 0, 0, 0, 1145241600, 1131413504, 0, 0},
+{BARREL_JUMP_FIRE_SPAWNER, {-50.0,-150.0,550.0}, 0.0, -10000.0, 10000.0, 0, 10000.0, -10000.0, 10000.0, 1, 0.0, 0.0, 550.0, 0.4615384638309479, 0, 0, 0, 0, 1145241600, 1134559232, 0, 0},
+{BARREL_JUMP_FIRE_SPAWNER, {-25.0,-150.0,700.0}, 0.0, -10000.0, 10000.0, 0, 10000.0, -10000.0, 10000.0, 1, 0.0, 0.0, 700.0, 0.4615384638309479, 0, 0, 0, 0, 1145241600, 1135214592, 0, 0},
+{BARREL_JUMP_FIRE_SPAWNER, {0.0,-150.0,950.0}, 0.0, -10000.0, 10000.0, 0, 10000.0, -10000.0, 10000.0, 1, 0.0, 0.0, 950.0, 0.4615384638309479, 0, 0, 0, 0, 1145241600, 1135869952, 0, 0},
+{BARREL_JUMP_FIRE_SPAWNER, {25.0,-150.0,1100.0}, 0.0, -10000.0, 10000.0, 0, 10000.0, -10000.0, 10000.0, 1, 0.0, 0.0, 1100.0, 0.4615384638309479, 0, 0, 0, 0, 1145241600, 1135214592, 0, 0},
+{BARREL_JUMP_FIRE_SPAWNER, {0.0,-150.0,800.0}, 0.0, -10000.0, 10000.0, 0, 10000.0, -10000.0, 10000.0, 1, 0.0, 0.0, 800.0, 0.4615384638309479, 0, 0, 0, 0, 1145241600, 1138491392, 0, 0},
+{BARREL_JUMP_FIRE_SPAWNER, {0.0,-150.0,1000.0}, 0.0, -10000.0, 10000.0, 0, 10000.0, -10000.0, 10000.0, 1, 0.0, 0.0, 1000.0, 0.4615384638309479, 0, 0, 0, 0, 1145241600, 1138491392, 0, 0},
+{BARREL_JUMP_FIRE_SPAWNER, {0.0,-150.0,1200.0}, 0.0, -10000.0, 10000.0, 0, 10000.0, -10000.0, 10000.0, 1, 0.0, 0.0, 1200.0, 0.4615384638309479, 0, 0, 0, 0, 1145241600, 1138491392, 0, 0},
+{BARREL_JUMP_FIRE_SPAWNER, {0.0,-150.0,1400.0}, 0.0, -10000.0, 10000.0, 0, 10000.0, -10000.0, 10000.0, 1, 0.0, 0.0, 1400.0, 0.4615384638309479, 0, 0, 0, 0, 1145241600, 1138491392, 0, 0},
+{BARREL_JUMP_FIRE_SPAWNER, {0.0,-150.0,800.0}, 0.0, -10000.0, 10000.0, 0, 10000.0, -10000.0, 10000.0, 1, 0.0, 0.0, 800.0, 0.4615384638309479, 0, 0, 0, 0, 1145241600, 1141309440, 0, 0},
+{BARREL_JUMP_FIRE_SPAWNER, {0.0,-150.0,1000.0}, 0.0, -10000.0, 10000.0, 0, 10000.0, -10000.0, 10000.0, 1, 0.0, 0.0, 1000.0, 0.4615384638309479, 0, 0, 0, 0, 1145241600, 1141637120, 0, 0},
+{BARREL_JUMP_FIRE_SPAWNER, {0.0,-150.0,1200.0}, 0.0, -10000.0, 10000.0, 0, 10000.0, -10000.0, 10000.0, 1, 0.0, 0.0, 1200.0, 0.4615384638309479, 0, 0, 0, 0, 1145241600, 1141964800, 0, 0},
+{BARREL_JUMP_FIRE_SPAWNER, {0.0,-150.0,1400.0}, 0.0, -10000.0, 10000.0, 0, 10000.0, -10000.0, 10000.0, 1, 0.0, 0.0, 1400.0, 0.4615384638309479, 0, 0, 0, 0, 1145241600, 1142292480, 0, 0},
+{BARREL_JUMP_FIRE_SPAWNER, {0.0,-150.0,800.0}, 0.0, -10000.0, 10000.0, 0, 10000.0, -10000.0, 10000.0, 1, 0.0, 0.0, 800.0, 0.4615384638309479, 0, 0, 0, 0, 1145241600, 1144258560, 0, 0},
+{BARREL_JUMP_FIRE_SPAWNER, {0.0,-150.0,1000.0}, 0.0, -10000.0, 10000.0, 0, 10000.0, -10000.0, 10000.0, 1, 0.0, 0.0, 1000.0, 0.4615384638309479, 0, 0, 0, 0, 1145241600, 1143930880, 0, 0},
+{BARREL_JUMP_FIRE_SPAWNER, {0.0,-150.0,1200.0}, 0.0, -10000.0, 10000.0, 0, 10000.0, -10000.0, 10000.0, 1, 0.0, 0.0, 1200.0, 0.4615384638309479, 0, 0, 0, 0, 1145241600, 1143603200, 0, 0},
+{BARREL_JUMP_FIRE_SPAWNER, {0.0,-150.0,1400.0}, 0.0, -10000.0, 10000.0, 0, 10000.0, -10000.0, 10000.0, 1, 0.0, 0.0, 1400.0, 0.4615384638309479, 0, 0, 0, 0, 1145241600, 1143275520, 0, 0},
+{ACTOR_NULL, {0.0,0.0,0.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomObject GhostCastle_room4_objects[2] = {
+{{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 114, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomObject GhostCastle_room5_objects[14] = {
+{{1700.0,0.0,900.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 77, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+{{1700.0,0.0,900.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 79, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+{{1700.0,0.0,900.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 256, 0, 400.0, 400.0, 0.0, 0.0, 2, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
+{{1700.0,0.0,900.0}, {4.0,4.0,4.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 105, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 82, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+{{1000.0,0.0,-1000.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 52, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+{{1260.0,350.0,-1400.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(-45.00000125223908), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 70, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+{{1400.0,350.0,-1260.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(-45.00000125223908), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 71, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+{{-900.0,0.0,-1700.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 28, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+{{-900.0,0.0,-1700.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 25, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+{{-900.0,0.0,-1700.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 256, 0, 400.0, 400.0, 0.0, 0.0, 1, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
+{{-900.0,0.0,-1700.0}, {4.0,4.0,4.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomActor GhostCastle_room5_actors[5] = {
+{FIRE_SPAWNER, {1260.0,0.0,-1260.0}, 0.0, -1500.0, 1500.0, 0, 1000.0, -1500.0, 1500.0, 0, 14.0, 2.0, 8.0, 10.0, 1254013984, 1232348160, 0, 0, 1106247680, 1114636288, 1082130432, 1103101952},
+{FIRE_SPAWNER, {1260.0,0.0,-1260.0}, 0.0, -1500.0, 1500.0, 0, 1000.0, -1500.0, 1500.0, 0, 18.0, 2.0, 8.0, 10.0, 1254013984, 1232348160, 0, 0, 1110704128, 1114636288, 1082130432, 1103101952},
+{FIRE_SPAWNER, {1260.0,0.0,-1260.0}, 0.0, -1500.0, 1500.0, 0, 1000.0, -1500.0, 1500.0, 0, 10.0, 2.0, 8.0, 10.0, 1254013984, 1232348160, 0, 0, 1101004800, 1114636288, 1082130432, 1103101952},
+{FIRE_SPAWNER, {1260.0,0.0,-1260.0}, 0.0, -1500.0, 1500.0, 0, 1000.0, -1500.0, 1500.0, 0, 20.0, 2.0, 8.0, 10.0, 1254013984, 1232348160, 0, 0, 1123024896, 1114636288, 1082130432, 1103101952},
+{ACTOR_NULL, {0.0,0.0,0.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+SpriteActor GhostCastle_room5_sprites[4] = {
+{3, 0, {1074.0,0.0,-1225.0}, {100.0,200.0,250.0}, 1, 0, 60.0, 1, 0, 0, 0, 0, 255, 255, 255, 255},
+{3, 0, {1152.0,0.0,-1147.0}, {100.0,200.0,250.0}, 1, 0, 80.0, 1, 0, 0, 0, 0, 255, 255, 255, 255},
+{3, 0, {1230.0,0.0,-1069.0}, {100.0,200.0,250.0}, 1, 0, 80.0, 1, 0, 0, 0, 0, 255, 255, 255, 255},
+{-1, 0, {-1.0,-1.0,-1.0}, {-1.0,32.0,32.0}, 1, 0, 0.0, 0, 0, 0, 0, 0, -1, -1, 0, 0}
+};
+
+RoomObject GhostCastle_room6_objects[21] = {
+{{-1300.0,200.0,0.0}, {0.800000011920929,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(0.0), 7, 8, 0.0, 0.0, 0.0, 0.0, 240, 0, 0, 0, 0, 0, 68, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+{{400.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 114, -1, -1, -1, NULL, NULL, 0, 0, 6, 4, 4, 0, 0, 0, 0},
+{{-400.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 114, -1, -1, -1, NULL, NULL, 0, 0, 6, 4, 4, 0, 0, 0, 0},
+{{1900.0,-100.0,0.0}, {1.0,1.0,1.0}, 3, DEGREES_TO_RADIANS_2PI(0.0), 7, 8, 0.0, 0.0, 0.0, 0.0, 600, 0, 0, 0, 0, 0, 66, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+{{-2200.0,200.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 114, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+{{-400.0,-200.0,0.0}, {0.8500000238418579,1.0,1.0}, 1, DEGREES_TO_RADIANS_2PI(0.0), 7, 8, 0.0, 0.0, 0.0, 0.0, 600, 0, 0, 0, 0, 0, 67, -1, -1, -1, NULL, &func_800D9104, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+{{300.0,-200.0,0.0}, {0.8500000238418579,1.0,1.0}, 1, DEGREES_TO_RADIANS_2PI(0.0), 7, 8, 0.0, 0.0, 0.0, 0.0, -360, 0, 0, 0, 0, 0, 67, -1, -1, -1, NULL, &func_800D9104, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+{{1000.0,-200.0,0.0}, {0.8500000238418579,1.0,1.0}, 1, DEGREES_TO_RADIANS_2PI(0.0), 7, 8, 0.0, 0.0, 0.0, 0.0, 600, 0, 0, 0, 0, 0, 67, -1, -1, -1, NULL, &func_800D9104, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 83, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 54, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 55, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+{{-2500.0,200.0,1700.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 27, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+{{-2500.0,200.0,1700.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 26, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+{{-2500.0,200.0,1700.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 256, 0, 400.0, 400.0, 0.0, 0.0, 3, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
+{{-2500.0,200.0,1700.0}, {4.0,4.0,4.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+{{3200.0,200.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 77, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+{{3200.0,200.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 79, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+{{3200.0,200.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 256, 0, 400.0, 400.0, 0.0, 0.0, 2, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
+{{3200.0,200.0,0.0}, {4.0,4.0,4.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+{{-3300.0,200.0,1400.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 98, -1, -1, -1, NULL, NULL, 0, 0, 34, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomObject GhostCastle_room7_objects[19] = {
+{{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 84, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 75, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+{{100.0,0.0,1600.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 114, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+{{1700.0,0.0,1600.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 114, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+{{2525.0,0.0,1700.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(0.0), 7, 34, 10.0, 0.0, 0.0, -90.0, 3, 20, 777, 40, 0, 0, 109, -1, -1, 1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+{{2525.0,0.0,1300.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(0.0), 7, 34, 10.0, 0.0, 0.0, 90.0, 3, 20, 777, 40, 0, 0, 110, -1, -1, 1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+{{-2700.0,0.0,2000.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 76, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+{{-2700.0,0.0,2000.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 78, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+{{-2700.0,0.0,2000.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 256, 0, 400.0, 400.0, 0.0, 0.0, 4, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
+{{-2700.0,0.0,2000.0}, {4.0,4.0,4.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+{{800.0,0.0,-2500.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 76, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+{{800.0,0.0,-2500.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 78, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+{{800.0,0.0,-2500.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 256, 0, 400.0, 400.0, 0.0, 0.0, 4, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
+{{800.0,0.0,-2500.0}, {4.0,4.0,4.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+{{2700.0,0.0,1500.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 77, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+{{2700.0,0.0,1500.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 79, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+{{2700.0,0.0,1500.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 256, 0, 400.0, 400.0, 0.0, 0.0, 2, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
+{{2700.0,0.0,1500.0}, {4.0,4.0,4.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomActor GhostCastle_room7_actors[4] = {
+{FIRE_SPAWNER, {1000.0,1500.0,-300.0}, 0.0, -1100.0, 1500.0, 0, 1000.0, -1000.0, 3000.0, 0, 10.0, 3.0, 8.0, 10.0, 1254013984, 0, 0, 0, 1144750080, 1114636288, 1106247680, 1098907648},
+{FIRE_SPAWNER, {0.0,1500.0,500.0}, 0.0, -1100.0, 1500.0, 0, 1000.0, -1000.0, 3000.0, 0, 10.0, 3.0, 8.0, 10.0, 1254013984, 0, 0, 0, 1149452288, 1114636288, 1106247680, 1098907648},
+{FIRE_SPAWNER, {-500.0,1500.0,2400.0}, 0.0, -1100.0, 1500.0, 0, 1000.0, -1000.0, 3000.0, 0, 10.0, 3.0, 8.0, 10.0, 1254013984, 0, 0, 0, 1144750080, 1114636288, 1106247680, 1098907648},
+{ACTOR_NULL, {0.0,0.0,0.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomObject GhostCastle_room8_objects[27] = {
+{{0.0,200.0,0.0}, {0.8333333134651184,1.0,1.0}, 1, DEGREES_TO_RADIANS_2PI(0.0), 7, 25, 90.0, 0.0, 0.0, 0.0, 5, 300, 9, 0, 0, 0, 85, -1, -1, -1, NULL, &func_800D9190, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{2700.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 77, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+{{2700.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 79, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+{{2700.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 256, 0, 400.0, 400.0, 0.0, 0.0, 2, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
+{{2700.0,0.0,0.0}, {4.0,4.0,4.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+{{2200.0,-200.0,-1000.0}, {1.0,1.0,1.0}, 1, DEGREES_TO_RADIANS_2PI(0.0), 7, 35, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 53, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, 0, 0, 0},
+{{2200.0,-200.0,1400.0}, {1.0,1.0,1.0}, 1, DEGREES_TO_RADIANS_2PI(0.0), 7, 35, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 58, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, 0, 0, 0},
+{{1700.0,-200.0,700.0}, {1.0,1.0,1.0}, 1, DEGREES_TO_RADIANS_2PI(0.0), 7, 35, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 53, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, 0, 0, 0},
+{{1100.0,-200.0,-900.0}, {1.0,1.0,1.0}, 1, DEGREES_TO_RADIANS_2PI(0.0), 7, 35, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 53, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, 0, 0, 0},
+{{1000.0,-200.0,200.0}, {1.0,1.0,1.0}, 1, DEGREES_TO_RADIANS_2PI(0.0), 7, 35, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 53, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, 0, 0, 0},
+{{0.0,-200.0,1000.0}, {1.0,1.0,1.0}, 1, DEGREES_TO_RADIANS_2PI(0.0), 7, 35, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 57, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, 0, 0, 0},
+{{-200.0,-200.0,300.0}, {1.0,1.0,1.0}, 1, DEGREES_TO_RADIANS_2PI(0.0), 7, 35, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 108, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, 0, 0, 0},
+{{-600.0,-200.0,700.0}, {1.0,1.0,1.0}, 1, DEGREES_TO_RADIANS_2PI(0.0), 7, 35, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 53, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, 0, 0, 0},
+{{100.0,-200.0,-800.0}, {1.0,1.0,1.0}, 1, DEGREES_TO_RADIANS_2PI(0.0), 7, 35, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 53, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, 0, 0, 0},
+{{-800.0,-200.0,-900.0}, {1.0,1.0,1.0}, 1, DEGREES_TO_RADIANS_2PI(0.0), 7, 35, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 58, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, 0, 0, 0},
+{{-1450.0,-200.0,-800.0}, {1.0,1.0,1.0}, 1, DEGREES_TO_RADIANS_2PI(0.0), 7, 35, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 53, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, 0, 0, 0},
+{{-1550.0,-200.0,500.0}, {1.0,1.0,1.0}, 1, DEGREES_TO_RADIANS_2PI(0.0), 7, 35, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 53, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, 0, 0, 0},
+{{-2200.0,-200.0,1400.0}, {1.0,1.0,1.0}, 1, DEGREES_TO_RADIANS_2PI(0.0), 7, 35, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 58, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, 0, 0, 0},
+{{-2300.0,-200.0,-900.0}, {0.800000011920929,0.6000000238418579,0.800000011920929}, 2, DEGREES_TO_RADIANS_2PI(0.0), 7, 35, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 53, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, 0, 0, 0},
+{{-2350.0,-200.0,250.0}, {1.0,1.0,1.0}, 1, DEGREES_TO_RADIANS_2PI(0.0), 7, 35, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 56, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, 0, 0, 0},
+{{-2350.0,-200.0,-200.0}, {1.0,1.0,1.0}, 1, DEGREES_TO_RADIANS_2PI(0.0), 7, 35, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 56, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, 0, 0, 0},
+{{2350.0,-200.0,250.0}, {1.0,1.0,1.0}, 1, DEGREES_TO_RADIANS_2PI(0.0), 7, 35, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 56, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, 0, 0, 0},
+{{-2700.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 76, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+{{-2700.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 78, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+{{-2700.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 256, 0, 400.0, 400.0, 0.0, 0.0, 4, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
+{{-2700.0,0.0,0.0}, {4.0,4.0,4.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomObject GhostCastle_room9_objects[16] = {
+{{0.0,0.0,0.0}, {0.5,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 86, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {0.5,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 39, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{700.0,0.0,2500.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 77, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+{{700.0,0.0,2500.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 79, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+{{700.0,0.0,2500.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 256, 0, 400.0, 400.0, 0.0, 0.0, 2, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
+{{700.0,0.0,2500.0}, {4.0,4.0,4.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+{{-700.0,0.0,2500.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 76, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+{{-700.0,0.0,2500.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 78, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+{{-700.0,0.0,2500.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 256, 0, 400.0, 400.0, 0.0, 0.0, 4, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
+{{-700.0,0.0,2500.0}, {4.0,4.0,4.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+{{-700.0,1400.0,-2600.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 76, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+{{-700.0,1400.0,-2600.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 78, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+{{-700.0,1400.0,-2600.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 256, 0, 400.0, 400.0, 0.0, 0.0, 4, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
+{{-700.0,1400.0,-2600.0}, {4.0,4.0,4.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+{{400.0,0.0,2900.0}, {0.5,0.5,0.5}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 99, -1, -1, -1, NULL, NULL, 0, 0, 34, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+SpriteActor GhostCastle_room9_sprites[2] = {
+{20, 0, {0.0,10.0,2500.0}, {100.0,300.0,300.0}, 1, 0, 30.0, 0, -1082130432, 1148846080, 0, 0, 255, 255, 100, 255},
+{-1, 0, {-1.0,-1.0,-1.0}, {-1.0,32.0,32.0}, 1, 0, 0.0, 0, 0, 0, 0, 0, -1, -1, 0, 0}
+};
+
+RoomActor GhostCastle_room9_actors[9] = {
+{SANDAL, {375.0,0.0,2265.0}, 90.0, -1000.0, 1000.0, 0, 2000.0, -3000.0, 3000.0, 0, 250.0, 100.0, 120.0, 0.0, 0, 0, 0, 0, 1106247680, 1106247680, 1086324736, 1106247680},
+{SANDAL, {125.0,0.0,2265.0}, 90.0, -1000.0, 1000.0, 0, 2000.0, -3000.0, 3000.0, 0, 250.0, 100.0, 120.0, 0.0, 0, 0, 0, 0, 1106247680, 1106247680, 1086324736, 0},
+{SANDAL, {-125.0,0.0,2265.0}, 90.0, -1000.0, 1000.0, 0, 2000.0, -3000.0, 3000.0, 0, 250.0, 100.0, 120.0, 0.0, 0, 0, 0, 0, 1106247680, 1106247680, 1086324736, 1106247680},
+{SANDAL, {-375.0,0.0,2265.0}, 90.0, -1000.0, 1000.0, 0, 2000.0, -3000.0, 3000.0, 0, 250.0, 100.0, 120.0, 0.0, 0, 0, 0, 0, 1106247680, 1106247680, 1086324736, 0},
+{SANDAL, {375.0,700.0,-245.0}, 90.0, -1000.0, 1000.0, 0, 2000.0, -3000.0, 3000.0, 0, 250.0, 100.0, 150.0, 0.0, 0, 0, 0, 0, 1106247680, 1106247680, 1086324736, 1106247680},
+{SANDAL, {125.0,700.0,-245.0}, 90.0, -1000.0, 1000.0, 0, 2000.0, -3000.0, 3000.0, 0, 250.0, 100.0, 150.0, 0.0, 0, 0, 0, 0, 1106247680, 1106247680, 1086324736, 0},
+{SANDAL, {-125.0,700.0,-245.0}, 90.0, -1000.0, 1000.0, 0, 2000.0, -3000.0, 3000.0, 0, 250.0, 100.0, 150.0, 0.0, 0, 0, 0, 0, 1106247680, 1106247680, 1086324736, 1106247680},
+{SANDAL, {-375.0,700.0,-245.0}, 90.0, -1000.0, 1000.0, 0, 2000.0, -3000.0, 3000.0, 0, 250.0, 100.0, 150.0, 0.0, 0, 0, 0, 0, 1106247680, 1106247680, 1086324736, 0},
+{ACTOR_NULL, {0.0,0.0,0.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomObject GhostCastle_room10_objects[12] = {
+{{0.0,0.0,0.0}, {1.0,1.0,1.0}, 1, DEGREES_TO_RADIANS_2PI(0.0), 7, 8, 0.0, 0.0, 0.0, 0.0, 300, 0, 0, 0, 0, 0, 87, -1, -1, -1, NULL, &func_800D914C, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {1.0499999523162842,1.0499999523162842,1.0499999523162842}, 1, DEGREES_TO_RADIANS_2PI(0.0), 7, 8, 0.0, 0.0, 0.0, 0.0, 300, 0, 0, 0, 0, 0, 87, -1, -1, -1, NULL, NULL, 0, 0, 2, 0, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 88, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{2500.0,-200.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 77, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+{{2500.0,-200.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 79, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+{{2500.0,-200.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 256, 0, 400.0, 400.0, 0.0, 0.0, 2, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
+{{2500.0,-200.0,0.0}, {4.0,4.0,4.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+{{-2500.0,-200.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 76, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+{{-2500.0,-200.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 78, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+{{-2500.0,-200.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 256, 0, 400.0, 400.0, 0.0, 0.0, 4, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
+{{-2500.0,-200.0,0.0}, {4.0,4.0,4.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomObject GhostCastle_room11_objects[21] = {
+{{-350.0,0.0,2400.0}, {2.0,1.0,2.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 98, -1, -1, -1, NULL, NULL, 0, 0, 34, 4, 4, 0, -1, 0, 0},
+{{2700.0,0.0,1500.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 77, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+{{2700.0,0.0,1500.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 79, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+{{2700.0,0.0,1500.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 256, 0, 400.0, 400.0, 0.0, 0.0, 2, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
+{{2700.0,0.0,1500.0}, {4.0,4.0,4.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 89, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{-1500.0,0.0,-2700.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 28, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+{{-1500.0,0.0,-2700.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 25, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+{{-1500.0,0.0,-2700.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 256, 0, 400.0, 400.0, 0.0, 0.0, 1, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
+{{-1500.0,0.0,-2700.0}, {4.0,4.0,4.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+{{-700.0,-20.0,-1300.0}, {1.0,1.0,1.0}, 3, DEGREES_TO_RADIANS_2PI(-74.99999867197056), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 62, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+{{-700.0,-20.0,-500.0}, {1.0,1.0,1.0}, 3, DEGREES_TO_RADIANS_2PI(-74.99999867197056), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 62, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+{{-1000.0,-20.0,1100.0}, {1.0,1.0,1.0}, 3, DEGREES_TO_RADIANS_2PI(-74.99999867197056), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 62, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+{{100.0,-20.0,500.0}, {1.0,1.0,1.0}, 3, DEGREES_TO_RADIANS_2PI(-74.99999867197056), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 62, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+{{-1150.0,-20.0,350.0}, {1.0,1.0,1.0}, 3, DEGREES_TO_RADIANS_2PI(-74.99999867197056), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 62, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+{{-600.0,-20.0,600.0}, {1.0,1.0,1.0}, 3, DEGREES_TO_RADIANS_2PI(-74.99999867197056), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 62, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+{{-2100.0,-20.0,600.0}, {1.0,1.0,1.0}, 3, DEGREES_TO_RADIANS_2PI(-74.99999867197056), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 62, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+{{-2300.0,-20.0,-100.0}, {1.0,1.0,1.0}, 3, DEGREES_TO_RADIANS_2PI(-74.99999867197056), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 62, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+{{-2300.0,-20.0,-900.0}, {1.0,1.0,1.0}, 3, DEGREES_TO_RADIANS_2PI(-74.99999867197056), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 62, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+{{-2300.0,-20.0,-1700.0}, {1.0,1.0,1.0}, 3, DEGREES_TO_RADIANS_2PI(-74.99999867197056), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 62, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomActor GhostCastle_room11_actors[11] = {
+{CANDLES, {-1000.0,200.0,1100.0}, 0.0, -10000.0, 10000.0, -971227136, 10000.0, -10000.0, 10000.0, 0, 10.0, 5.0, 5.0, 30.0, 1242125376, 0, 0, 0, 1106247680, 1114636288, 1106247680, 1107296256},
+{CANDLES, {-600.0,200.0,600.0}, 0.0, -10000.0, 10000.0, -971227136, 10000.0, -10000.0, 10000.0, 0, 10.0, 5.0, 5.0, 30.0, 1242125376, 0, 0, 0, 1106247680, 1114636288, 1106247680, 1107296256},
+{CANDLES, {-700.0,200.0,-1300.0}, 0.0, -10000.0, 10000.0, -971227136, 10000.0, -10000.0, 10000.0, 0, 10.0, 5.0, 5.0, 30.0, 1226588160, 0, 0, 0, 1114636288, 1114636288, 1106247680, 1107296256},
+{CANDLES, {-700.0,200.0,-500.0}, 0.0, -10000.0, 10000.0, -971227136, 10000.0, -10000.0, 10000.0, 0, 10.0, 5.0, 5.0, 30.0, 1226588160, 0, 0, 0, 1114636288, 1114636288, 1106247680, 1107296256},
+{CANDLES, {100.0,200.0,500.0}, 0.0, -10000.0, 10000.0, -971227136, 10000.0, -10000.0, 10000.0, 0, 10.0, 5.0, 5.0, 30.0, 1226588160, 0, 0, 0, 1114636288, 1114636288, 1106247680, 1107296256},
+{CANDLES, {-1150.0,200.0,350.0}, 0.0, -10000.0, 10000.0, -971227136, 10000.0, -10000.0, 10000.0, 0, 10.0, 5.0, 5.0, 30.0, 1226588160, 0, 0, 0, 1114636288, 1114636288, 1106247680, 1107296256},
+{CANDLES, {-2100.0,200.0,600.0}, 0.0, -10000.0, 10000.0, -971227136, 10000.0, -10000.0, 10000.0, 0, 10.0, 5.0, 5.0, 30.0, 1226588160, 0, 0, 0, 1114636288, 1114636288, 1106247680, 1107296256},
+{CANDLES, {-2300.0,200.0,-100.0}, 0.0, -10000.0, 10000.0, -971227136, 10000.0, -10000.0, 10000.0, 0, 10.0, 5.0, 5.0, 30.0, 1226588160, 0, 0, 0, 1114636288, 1114636288, 1106247680, 1107296256},
+{CANDLES, {-2300.0,200.0,-900.0}, 0.0, -10000.0, 10000.0, -971227136, 10000.0, -10000.0, 10000.0, 0, 10.0, 5.0, 5.0, 30.0, 1226588160, 0, 0, 0, 1114636288, 1114636288, 1106247680, 1107296256},
+{CANDLES, {-2300.0,200.0,-1700.0}, 0.0, -10000.0, 10000.0, -971227136, 10000.0, -10000.0, 10000.0, 0, 10.0, 5.0, 5.0, 30.0, 1226588160, 0, 0, 0, 1114636288, 1114636288, 1106247680, 1107296256},
+{ACTOR_NULL, {0.0,0.0,0.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomObject GhostCastle_room12_objects[23] = {
+{{-1400.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 98, -1, -1, -1, NULL, NULL, 0, 0, 34, 4, 4, 0, -1, 0, 0},
+{{200.0,0.0,1530.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(0.0), 7, 34, -15.0, 0.0, 0.0, 90.0, 3, 30, 0, 40, 0, 0, 110, -1, -1, 25, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+{{600.0,0.0,1530.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(0.0), 7, 34, 15.0, 0.0, 0.0, -90.0, 3, 30, 0, 40, 0, 0, 110, -1, -1, 25, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+{{100.0,0.0,-1530.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(0.0), 7, 34, -15.0, 0.0, 0.0, -90.0, 3, 30, 0, 40, 0, 0, 109, -1, -1, 25, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+{{500.0,0.0,-1530.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(0.0), 7, 34, 15.0, 0.0, 0.0, 90.0, 3, 30, 0, 40, 0, 0, 109, -1, -1, 25, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 90, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{1610.0,600.0,-800.0}, {1.5,1.5,1.5}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 74, -1, -1, -1, NULL, NULL, 0, 0, 0, 4, 4, 0, -1, 0, 0},
+{{1610.0,600.0,700.0}, {1.5,1.5,1.5}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 74, -1, -1, -1, NULL, NULL, 0, 0, 0, 4, 4, 0, -1, 0, 0},
+{{1600.0,600.0,-800.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 63, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{1600.0,600.0,700.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 63, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{1500.0,400.0,-800.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 29, -1, -1, -1, NULL, NULL, 0, 0, 0, 4, 4, 0, -1, 0, 0},
+{{1500.0,400.0,700.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 29, -1, -1, -1, NULL, NULL, 0, 0, 0, 4, 4, 0, -1, 0, 0},
+{{400.0,0.0,1700.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 27, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+{{400.0,0.0,1700.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 26, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+{{400.0,0.0,1700.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 256, 0, 400.0, 400.0, 0.0, 0.0, 3, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
+{{400.0,0.0,1700.0}, {4.0,4.0,4.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+{{300.0,0.0,-1700.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 28, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+{{300.0,0.0,-1700.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 25, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+{{300.0,0.0,-1700.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 256, 0, 400.0, 400.0, 0.0, 0.0, 1, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
+{{300.0,0.0,-1700.0}, {4.0,4.0,4.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+{{0.0,0.0,500.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 512, 0, 5000.0, 2000.0, 2000.0, 0.0, 0, 0, 0, 0, 0, 0, 0, -1, 25, 517, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 512, 0, 10000.0, 10000.0, 10000.0, 0.0, 0, 0, 0, 0, 0, 0, 0, -1, 537, 5, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomActor GhostCastle_room12_actors[10] = {
+{RNG_ROOM_SPAWNER, {0.0,-50.0,0.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 1, 10.0, 10.0, 8.0, 10.0, 1147207680, 0, 0, 0, 1093664768, 1106247680, 1114636288, 1101004800},
+{MIRROR, {1100.0,2400.0,1200.0}, 225.0, -10000.0, 10000.0, -971227136, 10000.0, -10000.0, 10000.0, 0, 0.0, 0.0, 1000000.0, 50.0, 0, 0, 0, 0, 0, 1073741824, 0, 1101004800},
+{MIRROR, {1100.0,2400.0,-1200.0}, 225.0, -10000.0, 10000.0, -971227136, 10000.0, -10000.0, 10000.0, 0, 0.0, 0.0, 1000000.0, 50.0, 0, 0, 0, 0, 1065353216, 1073741824, 0, 1101004800},
+{SAUCER, {-900.0,0.0,-400.0}, 0.0, -10000.0, 10000.0, -971227136, 10000.0, -10000.0, 10000.0, 0, 0.0, 0.0, 0.0, 700.0, 1117782016, 0, 0, 0, 1065353216, 1088421888, 1120403456, 1101004800},
+{CUP, {-600.0,0.0,-400.0}, 0.0, -10000.0, 10000.0, -971227136, 10000.0, -10000.0, 10000.0, 0, 0.0, 0.0, 0.0, 800.0, 1114636288, 0, 0, 0, 1073741824, 1088421888, 1119092736, 1101004800},
+{SAUCER, {-300.0,0.0,-400.0}, 0.0, -10000.0, 10000.0, -971227136, 10000.0, -10000.0, 10000.0, 0, 0.0, 0.0, 0.0, 800.0, 1114636288, 0, 0, 0, 1077936128, 1088421888, 1119092736, 1101004800},
+{CUP, {300.0,0.0,-400.0}, 0.0, -10000.0, 10000.0, -971227136, 10000.0, -10000.0, 10000.0, 0, 0.0, 0.0, 0.0, 900.0, 1114636288, 0, 0, 0, 1082130432, 1088421888, 1117782016, 1101004800},
+{SAUCER, {600.0,0.0,-400.0}, 0.0, -10000.0, 10000.0, -971227136, 10000.0, -10000.0, 10000.0, 0, 0.0, 0.0, 0.0, 900.0, 1114636288, 0, 0, 0, 1084227584, 1088421888, 1117782016, 1101004800},
+{CUP, {900.0,0.0,-400.0}, 0.0, -10000.0, 10000.0, -971227136, 10000.0, -10000.0, 10000.0, 0, 0.0, 0.0, 0.0, 1000.0, 1114636288, 0, 0, 0, 1086324736, 1088421888, 1116471296, 1101004800},
+{ACTOR_NULL, {0.0,0.0,0.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
 
 #include "assets/levelGroup/GhostCastle/newType/g1.ut1.inc.c"
-
 #include "assets/levelGroup/GhostCastle/newType/g2.ut1.inc.c"
-
 #include "assets/levelGroup/GhostCastle/newType/g3.ut1.inc.c"
-
 #include "assets/levelGroup/GhostCastle/newType/g4.ut1.inc.c"
-
 #include "assets/levelGroup/GhostCastle/newType/g5.ut1.inc.c"
-
 #include "assets/levelGroup/GhostCastle/newType/g6.ut1.inc.c"
-
 #include "assets/levelGroup/GhostCastle/newType/g7.ut1.inc.c"
-
 #include "assets/levelGroup/GhostCastle/newType/g8.ut1.inc.c"
-
 #include "assets/levelGroup/GhostCastle/newType/g9.ut1.inc.c"
-
 #include "assets/levelGroup/GhostCastle/newType/g10.ut1.inc.c"
-
 #include "assets/levelGroup/GhostCastle/newType/g11.ut1.inc.c"
-
 #include "assets/levelGroup/GhostCastle/newType/g12.ut1.inc.c"
-
 #include "assets/levelGroup/GhostCastle/newType/g13.ut1.inc.c"
 
-#include "assets/levelGroup/GhostCastle/roomObjects/room13_obj1.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room13_obj2.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room13_obj3.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room13_obj4.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room13_obj5.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room13_obj6.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room13_obj7.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room13_obj8.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room13_obj9.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room13_obj10.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room13_obj11.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room13_obj12.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room13_obj13.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room13_obj14.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room13_obj15.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room13_obj16.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room13_obj17.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room13_obj18.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room13_obj19.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room13_obj20.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room13_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room13_act1.roomAct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room13_act2.roomAct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room13_act3.roomAct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room13_actSTOP.roomAct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/spriteActors/room13_spr1.sprite.inc.c"
-
-#include "assets/levelGroup/GhostCastle/spriteActors/room13_sprSTOP.sprite.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room14_obj1.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room14_obj2.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room14_obj3.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room14_obj4.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room14_obj5.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room14_obj6.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room14_obj7.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room14_obj8.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room14_obj9.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room14_obj10.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room14_obj11.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room14_obj12.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room14_obj13.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room14_obj14.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room14_obj15.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room14_obj16.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room14_obj17.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room14_obj18.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room14_obj19.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room14_obj20.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room14_obj21.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room14_obj22.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room14_obj23.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room14_obj24.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room14_obj25.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room14_obj26.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room14_obj27.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room14_obj28.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room14_obj29.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room14_obj30.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room14_obj31.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room14_obj32.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room14_obj33.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room14_obj34.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room14_obj35.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room14_obj36.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room14_obj37.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room14_obj38.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room14_obj39.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room14_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room14_act1.roomAct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room14_act2.roomAct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room14_act3.roomAct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room14_act4.roomAct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room14_act5.roomAct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room14_act6.roomAct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room14_act7.roomAct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room14_actSTOP.roomAct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room15_obj1.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room15_obj2.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room15_obj3.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room15_obj4.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room15_obj5.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room15_obj6.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room15_obj7.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room15_obj8.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room15_obj9.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room15_obj10.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room15_obj11.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room15_obj12.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room15_obj13.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room15_obj14.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room15_obj15.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room15_obj16.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room15_obj17.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room15_obj18.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room15_obj19.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room15_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/spriteActors/room15_spr1.sprite.inc.c"
-
-#include "assets/levelGroup/GhostCastle/spriteActors/room15_sprSTOP.sprite.inc.c"
-
-#include "assets/levelGroup/GhostCastle/spriteActors/room16_spr1.sprite.inc.c"
-
-#include "assets/levelGroup/GhostCastle/spriteActors/room16_sprSTOP.sprite.inc.c"
-
-#include "assets/levelGroup/GhostCastle/spriteActors/room12_spr1.sprite.inc.c"
-
-#include "assets/levelGroup/GhostCastle/spriteActors/room12_sprSTOP.sprite.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room15_act1.roomAct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room15_act2.roomAct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room15_act3.roomAct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room15_actSTOP.roomAct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room16_obj1.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room16_obj2.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room16_obj3.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room16_obj4.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room16_obj5.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room16_obj6.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room16_obj7.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room16_obj8.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room16_obj9.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room16_obj10.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room16_obj11.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room16_obj12.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room16_obj13.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room16_obj14.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room16_obj15.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room16_obj16.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room16_obj17.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room16_obj18.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room16_obj19.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room16_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room16_act1.roomAct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room16_act2.roomAct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room16_act3.roomAct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room16_act4.roomAct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room16_act5.roomAct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room16_act6.roomAct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room16_act7.roomAct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room16_act8.roomAct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room16_act9.roomAct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room16_act10.roomAct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room16_act11.roomAct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room16_act12.roomAct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room16_act13.roomAct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room16_actSTOP.roomAct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/spriteActors/roomUnk_spr1.sprite.inc.c"
-
-#include "assets/levelGroup/GhostCastle/spriteActors/roomUnk_spr2.sprite.inc.c"
-
-#include "assets/levelGroup/GhostCastle/spriteActors/roomUnk_spr3.sprite.inc.c"
-
-#include "assets/levelGroup/GhostCastle/spriteActors/roomUnk_spr4.sprite.inc.c"
-
-#include "assets/levelGroup/GhostCastle/spriteActors/roomUnk_spr5.sprite.inc.c"
-
-#include "assets/levelGroup/GhostCastle/spriteActors/roomUnk_spr6.sprite.inc.c"
-
-#include "assets/levelGroup/GhostCastle/spriteActors/roomUnk_spr7.sprite.inc.c"
-
-#include "assets/levelGroup/GhostCastle/spriteActors/roomUnk_spr8.sprite.inc.c"
-
-#include "assets/levelGroup/GhostCastle/spriteActors/roomUnk_spr9.sprite.inc.c"
-
-#include "assets/levelGroup/GhostCastle/spriteActors/roomUnk_spr10.sprite.inc.c"
-
-#include "assets/levelGroup/GhostCastle/spriteActors/roomUnk_spr11.sprite.inc.c"
-
-#include "assets/levelGroup/GhostCastle/spriteActors/roomUnk_spr12.sprite.inc.c"
-
-#include "assets/levelGroup/GhostCastle/spriteActors/roomUnk_spr13.sprite.inc.c"
-
-#include "assets/levelGroup/GhostCastle/spriteActors/roomUnk_spr14.sprite.inc.c"
-
-#include "assets/levelGroup/GhostCastle/spriteActors/roomUnk_spr15.sprite.inc.c"
-
-#include "assets/levelGroup/GhostCastle/spriteActors/roomUnk_spr16.sprite.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room17_obj1.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room17_obj2.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room17_obj3.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room17_obj4.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room17_obj5.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room17_obj6.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room17_obj7.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room17_obj8.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room17_obj9.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room17_obj10.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room17_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room17_act1.roomAct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room17_act2.roomAct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room17_act3.roomAct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room17_act4.roomAct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room17_act5.roomAct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room17_actSTOP.roomAct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room18_obj1.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room18_obj2.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room18_obj3.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room18_obj4.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room18_obj5.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room18_obj6.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room18_obj7.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room18_obj8.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room18_obj9.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room18_obj10.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room18_obj11.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room18_obj12.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room18_obj13.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room18_obj14.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room18_obj15.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room18_obj16.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room18_obj17.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room18_obj18.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room18_obj19.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room18_obj20.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room18_obj21.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room18_obj22.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room18_obj23.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room18_obj24.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room18_obj25.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room18_obj26.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room18_obj27.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room18_obj28.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room18_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room18_act1.roomAct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room18_actSTOP.roomAct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room19_obj1.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room19_obj2.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room19_obj3.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomObjects/room19_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room19_act1.roomAct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/roomActors/room19_actSTOP.roomAct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/collectables/roomUnk_clct1.clct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/collectables/roomUnk_clct2.clct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/collectables/roomUnk_clct3.clct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/collectables/roomUnk_clct4.clct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/collectables/roomUnk_clct5.clct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/collectables/roomUnk_clct6.clct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/collectables/roomUnk_clct7.clct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/collectables/roomUnk_clct8.clct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/collectables/roomUnk_clct9.clct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/collectables/roomUnk_clct10.clct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/collectables/roomUnk_clct11.clct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/collectables/roomUnk_clct12.clct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/collectables/roomUnk_clctSTOP.clct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/collectables/room0_clct1.clct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/collectables/room0_clct2.clct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/collectables/room0_clct3.clct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/collectables/room0_clct4.clct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/collectables/room0_clctSTOP.clct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/collectables/room2_clct1.clct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/collectables/room2_clct2.clct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/collectables/room2_clctSTOP.clct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/collectables/room5_clct1.clct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/collectables/room5_clctSTOP.clct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/collectables/room6_clct1.clct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/collectables/room6_clct2.clct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/collectables/room6_clct3.clct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/collectables/room6_clct4.clct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/collectables/room6_clct5.clct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/collectables/room6_clct6.clct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/collectables/room6_clctSTOP.clct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/collectables/room7_clct1.clct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/collectables/room7_clct2.clct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/collectables/room7_clct3.clct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/collectables/room7_clct4.clct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/collectables/room7_clctSTOP.clct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/collectables/room8_clct1.clct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/collectables/room8_clct2.clct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/collectables/room8_clct3.clct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/collectables/room8_clct4.clct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/collectables/room8_clctSTOP.clct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/collectables/room9_clct1.clct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/collectables/room9_clct2.clct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/collectables/room9_clct3.clct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/collectables/room9_clctSTOP.clct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/collectables/room10_clct1.clct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/collectables/room10_clct2.clct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/collectables/room10_clctSTOP.clct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/collectables/room11_clct1.clct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/collectables/room11_clct2.clct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/collectables/room11_clct3.clct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/collectables/room11_clctSTOP.clct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/collectables/room12_clct1.clct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/collectables/room12_clct2.clct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/collectables/room12_clct3.clct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/collectables/room12_clctSTOP.clct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/collectables/room13_clct1.clct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/collectables/room13_clctSTOP.clct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/collectables/room14_clct1.clct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/collectables/room14_clctSTOP.clct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/collectables/room15_clct1.clct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/collectables/room15_clctSTOP.clct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/collectables/room16_clct1.clct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/collectables/room16_clct2.clct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/collectables/room16_clct3.clct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/collectables/room16_clctSTOP.clct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/collectables/room17_clct1.clct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/collectables/room17_clct2.clct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/collectables/room17_clct3.clct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/collectables/room17_clct4.clct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/collectables/room17_clct5.clct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/collectables/room17_clct6.clct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/collectables/room17_clct7.clct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/collectables/room17_clct8.clct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/collectables/room17_clctSTOP.clct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/collectables/room18_clct1.clct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/collectables/room18_clct2.clct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/collectables/room18_clct3.clct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/collectables/room18_clct4.clct.inc.c"
-
-#include "assets/levelGroup/GhostCastle/collectables/room18_clctSTOP.clct.inc.c"
-
-#include "build/assets/levelGroup/GhostCastle/spriteLib.inc.c"
-
-#include "assets/levelGroup/GhostCastle/rooms/room0.rmSet.inc.c"
-
-#include "assets/levelGroup/GhostCastle/rooms/room1.rmSet.inc.c"
-
-#include "assets/levelGroup/GhostCastle/rooms/room2.rmSet.inc.c"
-
-#include "assets/levelGroup/GhostCastle/rooms/room3.rmSet.inc.c"
-
-#include "assets/levelGroup/GhostCastle/rooms/room4.rmSet.inc.c"
-
-#include "assets/levelGroup/GhostCastle/rooms/room5.rmSet.inc.c"
-
-#include "assets/levelGroup/GhostCastle/rooms/room6.rmSet.inc.c"
-
-#include "assets/levelGroup/GhostCastle/rooms/room7.rmSet.inc.c"
-
-#include "assets/levelGroup/GhostCastle/rooms/room8.rmSet.inc.c"
-
-#include "assets/levelGroup/GhostCastle/rooms/room9.rmSet.inc.c"
-
-#include "assets/levelGroup/GhostCastle/rooms/room10.rmSet.inc.c"
-
-#include "assets/levelGroup/GhostCastle/rooms/room11.rmSet.inc.c"
-
-#include "assets/levelGroup/GhostCastle/rooms/room12.rmSet.inc.c"
-
-#include "assets/levelGroup/GhostCastle/rooms/room13.rmSet.inc.c"
-
-#include "assets/levelGroup/GhostCastle/rooms/room14.rmSet.inc.c"
-
-#include "assets/levelGroup/GhostCastle/rooms/room15.rmSet.inc.c"
-
-#include "assets/levelGroup/GhostCastle/rooms/room16.rmSet.inc.c"
-
-#include "assets/levelGroup/GhostCastle/rooms/room17.rmSet.inc.c"
-
-#include "assets/levelGroup/GhostCastle/rooms/room18.rmSet.inc.c"
-
-#include "assets/levelGroup/GhostCastle/rooms/room19.rmSet.inc.c"
-
-#include "assets/levelGroup/GhostCastle/rooms/roomSTOP.rmSet.inc.c"
-
-#include "assets/levelGroup/GhostCastle/map.lvmM.inc.c"
-
-#include "assets/levelGroup/GhostCastle/map.lvmH.inc.c"
-
-#include "assets/levelGroup/GhostCastle/spriteActors/roomUnk2_spr1.sprite.inc.c"
-
-#include "assets/levelGroup/GhostCastle/nullOWRoom.rmSet.inc.c"
-
-#include "assets/levelGroup/GhostCastle/scope.lvlScope.inc.c"
-
-#include "assets/levelGroup/GhostCastle/header.lvlHdr.inc.c"
+RoomObject GhostCastle_room13_objects[21] = {
+{{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 91, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{-2500.0,0.0,1450.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(180.00000500895632), 7, 26, -1800.0, -1200.0, 1300.0, 1300.0, 0, 660, 59, 300, 400, 59, 62, -1, -1, -1, NULL, NULL, -2146716084, 0, 2, 4, 4, 0, -1, 0, 0},
+{{-2500.0,0.0,900.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(180.00000500895632), 7, 26, -1800.0, -1200.0, 800.0, 800.0, 0, 660, 59, 300, 400, 59, 62, -1, -1, -1, NULL, NULL, -2146716084, 0, 2, 4, 4, 0, -1, 0, 0},
+{{-2500.0,0.0,350.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(180.00000500895632), 7, 26, -1800.0, -1200.0, 300.0, 300.0, 0, 660, 59, 300, 400, 59, 62, -1, -1, -1, NULL, NULL, -2146716084, 0, 2, 4, 4, 0, -1, 0, 0},
+{{-2500.0,0.0,-200.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(180.00000500895632), 7, 26, -1800.0, -1200.0, -200.0, -200.0, 0, 660, 59, 300, 400, 59, 62, -1, -1, -1, NULL, NULL, -2146716084, 0, 2, 4, 4, 0, -1, 0, 0},
+{{-2100.0,0.0,-900.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(135.00000034162267), 7, 26, -1650.0, -1100.0, -700.0, -700.0, 0, 660, 59, 300, 400, 59, 62, -1, -1, -1, NULL, NULL, -2146716084, 0, 2, 4, 4, 0, -1, 0, 0},
+{{-1500.0,0.0,-1500.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(135.00000034162267), 7, 26, -1150.0, -1100.0, -1150.0, -1100.0, 0, 660, 59, 300, 400, 59, 62, -1, -1, -1, NULL, NULL, -2146716084, 0, 2, 4, 4, 0, -1, 0, 0},
+{{-900.0,0.0,-2100.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(135.00000034162267), 7, 26, -700.0, -700.0, -1700.0, -1100.0, 0, 660, 59, 300, 400, 59, 62, -1, -1, -1, NULL, NULL, -2146716084, 0, 2, 4, 4, 0, -1, 0, 0},
+{{-200.0,0.0,-2500.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(90.00000250447816), 7, 26, -200.0, -200.0, -1800.0, -1200.0, 0, 660, 59, 300, 400, 59, 62, -1, -1, -1, NULL, NULL, -2146716084, 0, 2, 4, 4, 0, -1, 0, 0},
+{{350.0,0.0,-2500.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(90.00000250447816), 7, 26, 300.0, 300.0, -1800.0, -1200.0, 0, 660, 59, 300, 400, 59, 62, -1, -1, -1, NULL, NULL, -2146716084, 0, 2, 4, 4, 0, -1, 0, 0},
+{{900.0,0.0,-2500.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(90.00000250447816), 7, 26, 800.0, 800.0, -1800.0, -1200.0, 0, 660, 59, 300, 400, 59, 62, -1, -1, -1, NULL, NULL, -2146716084, 0, 2, 4, 4, 0, -1, 0, 0},
+{{1450.0,0.0,-2500.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(90.00000250447816), 7, 26, 1300.0, 1300.0, -1800.0, -1200.0, 0, 660, 59, 300, 400, 59, 62, -1, -1, -1, NULL, NULL, -2146716084, 0, 2, 4, 4, 0, -1, 0, 0},
+{{-1500.0,0.0,2700.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 27, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+{{-1500.0,0.0,2700.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 26, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+{{-1500.0,0.0,2700.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 256, 0, 400.0, 400.0, 0.0, 0.0, 3, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
+{{-1500.0,0.0,2700.0}, {4.0,4.0,4.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+{{2700.0,0.0,-1500.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 77, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+{{2700.0,0.0,-1500.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 79, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+{{2700.0,0.0,-1500.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 256, 0, 400.0, 400.0, 0.0, 0.0, 2, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
+{{2700.0,0.0,-1500.0}, {4.0,4.0,4.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomActor GhostCastle_room13_actors[4] = {
+{FIRE_SPAWNER, {1000.0,0.0,-1000.0}, 0.0, -10000.0, 10000.0, -971227136, 10000.0, -10000.0, 10000.0, 0, 15.0, 5.0, 8.0, 5.0, 1242125376, 1232348160, 0, 0, 1114636288, 1106247680, 1101004800, 1084227584},
+{FIRE_SPAWNER, {0.0,0.0,0.0}, 0.0, -10000.0, 10000.0, -971227136, 10000.0, -10000.0, 10000.0, 0, 16.0, 5.0, 8.0, 5.0, 1258902592, 1232348160, 0, 0, 1106247680, 1106247680, 1101004800, 1084227584},
+{FIRE_SPAWNER, {-1000.0,0.0,1000.0}, 0.0, -10000.0, 10000.0, -971227136, 10000.0, -10000.0, 10000.0, 0, 20.0, 5.0, 8.0, 5.0, 1242125376, 1232348160, 0, 0, 1106247680, 1106247680, 1101004800, 1084227584},
+{ACTOR_NULL, {0.0,0.0,0.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+SpriteActor GhostCastle_room13_sprites[2] = {
+{20, 0, {-2480.0,200.0,1800.0}, {100.0,300.0,300.0}, 1, 0, 30.0, 0, -1027080192, 0, 0, 0, 255, 255, 55, 255},
+{-1, 0, {-1.0,-1.0,-1.0}, {-1.0,32.0,32.0}, 1, 0, 0.0, 0, 0, 0, 0, 0, -1, -1, 0, 0}
+};
+
+RoomObject GhostCastle_room14_objects[40] = {
+{{0.0,1000.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 11, 0.0, 325.0, 0.0, 0.0, 1, 20, 0, 20, 0, 0, 72, -1, -1, 26, NULL, NULL, 0, 0, 0, 0, 4, 0, -1, 0, 0},
+{{0.0,2000.0,0.0}, {25.0,10.0,25.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 64, -1, -1, -1, NULL, NULL, 0, 0, 0, 0, 4, 0, -1, 0, 0},
+{{0.0,-125.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 11, 0.0, 325.0, 0.0, 0.0, 1, 20, 777, 20, 0, 0, 72, -1, -1, 26, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+{{-2100.0,-350.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 512, 0, 360.0, 100.0, 400.0, 0.0, 0, 0, 0, 0, 0, 0, 0, -1, 26, 514, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
+{{0.0,-2000.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 512, 0, 10000.0, 1500.0, 10000.0, 0.0, 0, 0, 0, 0, 0, 0, 0, -1, 538, 514, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
+{{0.0,-5000.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 512, 0, 10000.0, 10000.0, 10000.0, 0.0, 0, 0, 0, 0, 0, 0, 0, -1, 538, 2, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
+{{-2600.0,-325.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 76, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+{{-2600.0,-325.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 78, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+{{-2600.0,-325.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 256, 0, 400.0, 400.0, 0.0, 0.0, 4, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
+{{-2600.0,-325.0,0.0}, {4.0,4.0,4.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+{{-1000.0,5.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 60, -1, -1, -1, NULL, NULL, 0, 0, 0, 4, 4, 0, -1, 0, 0},
+{{0.0,5.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 60, -1, -1, -1, NULL, NULL, 0, 0, 0, 4, 4, 0, -1, 0, 0},
+{{1000.0,5.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 60, -1, -1, -1, NULL, NULL, 0, 0, 0, 4, 4, 0, -1, 0, 0},
+{{2500.0,128.0,700.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 61, -1, -1, -1, NULL, NULL, 0, 0, 0, 4, 4, 0, -1, 0, 0},
+{{2500.0,128.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 61, -1, -1, -1, NULL, NULL, 0, 0, 0, 4, 4, 0, -1, 0, 0},
+{{2500.0,128.0,-700.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 61, -1, -1, -1, NULL, NULL, 0, 0, 0, 4, 4, 0, -1, 0, 0},
+{{-2500.0,128.0,700.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 61, -1, -1, -1, NULL, NULL, 0, 0, 0, 4, 4, 0, -1, 0, 0},
+{{-2500.0,128.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 61, -1, -1, -1, NULL, NULL, 0, 0, 0, 4, 4, 0, -1, 0, 0},
+{{-2500.0,128.0,-700.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 61, -1, -1, -1, NULL, NULL, 0, 0, 0, 4, 4, 0, -1, 0, 0},
+{{-1500.0,128.0,1600.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 61, -1, -1, -1, NULL, NULL, 0, 0, 0, 4, 4, 0, -1, 0, 0},
+{{-1000.0,128.0,1600.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 61, -1, -1, -1, NULL, NULL, 0, 0, 0, 4, 4, 0, -1, 0, 0},
+{{-500.0,128.0,1600.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 61, -1, -1, -1, NULL, NULL, 0, 0, 0, 4, 4, 0, -1, 0, 0},
+{{500.0,128.0,1600.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 61, -1, -1, -1, NULL, NULL, 0, 0, 0, 4, 4, 0, -1, 0, 0},
+{{1000.0,128.0,1600.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 61, -1, -1, -1, NULL, NULL, 0, 0, 0, 4, 4, 0, -1, 0, 0},
+{{1500.0,128.0,1600.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 61, -1, -1, -1, NULL, NULL, 0, 0, 0, 4, 4, 0, -1, 0, 0},
+{{-1500.0,128.0,-1600.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 61, -1, -1, -1, NULL, NULL, 0, 0, 0, 4, 4, 0, -1, 0, 0},
+{{-1000.0,128.0,-1600.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 61, -1, -1, -1, NULL, NULL, 0, 0, 0, 4, 4, 0, -1, 0, 0},
+{{-500.0,128.0,-1600.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 61, -1, -1, -1, NULL, NULL, 0, 0, 0, 4, 4, 0, -1, 0, 0},
+{{500.0,128.0,-1600.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 61, -1, -1, -1, NULL, NULL, 0, 0, 0, 4, 4, 0, -1, 0, 0},
+{{1000.0,128.0,-1600.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 61, -1, -1, -1, NULL, NULL, 0, 0, 0, 4, 4, 0, -1, 0, 0},
+{{1500.0,128.0,-1600.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 61, -1, -1, -1, NULL, NULL, 0, 0, 0, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {1.0,0.5,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 2, 0, 0, 0, 0, 0, 92, -1, -1, -1, &func_800B2144, &func_800B216C, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+{{-2000.0,0.0,0.0}, {1.2000000476837158,1.0,1.2000000476837158}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 101, -1, -1, -1, NULL, NULL, 0, 0, 4, 0, 4, 0, -1, 0, 0},
+{{2000.0,0.0,0.0}, {1.2000000476837158,1.0,1.2000000476837158}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 101, -1, -1, -1, NULL, NULL, 0, 0, 4, 0, 4, 0, -1, 0, 0},
+{{-950.0,0.0,1200.0}, {1.2000000476837158,1.0,1.2000000476837158}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 102, -1, -1, -1, NULL, NULL, 0, 0, 4, 0, 4, 0, -1, 0, 0},
+{{950.0,0.0,1200.0}, {1.2000000476837158,1.0,1.2000000476837158}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 102, -1, -1, -1, NULL, NULL, 0, 0, 4, 0, 4, 0, -1, 0, 0},
+{{-950.0,0.0,-1200.0}, {1.2000000476837158,1.0,1.2000000476837158}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 102, -1, -1, -1, NULL, NULL, 0, 0, 4, 0, 4, 0, -1, 0, 0},
+{{950.0,0.0,-1200.0}, {1.2000000476837158,1.0,1.2000000476837158}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 102, -1, -1, -1, NULL, NULL, 0, 0, 4, 0, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 100, -1, -1, -1, NULL, NULL, 0, 0, 4, 0, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomActor GhostCastle_room14_actors[8] = {
+{CUE_BALL, {-1000.0,0.0,0.0}, 0.0, -10000.0, 10000.0, -971227136, 10000.0, -10000.0, 10000.0, 0, 100.0, 0.009999999776482582, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0},
+{BILLIARDS_BALL, {1000.0,0.0,0.0}, 0.0, -10000.0, 10000.0, -971227136, 10000.0, -10000.0, 10000.0, 0, 0.0, 0.009999999776482582, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0},
+{BILLIARDS_BALL, {1500.0,0.0,300.0}, 0.0, -10000.0, 10000.0, -971227136, 10000.0, -10000.0, 10000.0, 0, 0.0, 0.009999999776482582, 0.0, 0.0, 0, 0, 0, 0, 1065353216, 0, 0, 0},
+{BILLIARDS_BALL, {1500.0,0.0,-300.0}, 0.0, -10000.0, 10000.0, -971227136, 10000.0, -10000.0, 10000.0, 0, 0.0, 0.009999999776482582, 0.0, 0.0, 0, 0, 0, 0, 1073741824, 0, 0, 0},
+{BILLIARDS_BALL, {1250.0,0.0,-150.0}, 0.0, -10000.0, 10000.0, -971227136, 10000.0, -10000.0, 10000.0, 0, 0.0, 0.009999999776482582, 0.0, 0.0, 0, 0, 0, 0, 1077936128, 0, 0, 0},
+{BILLIARDS_BALL, {1250.0,0.0,150.0}, 0.0, -10000.0, 10000.0, -971227136, 10000.0, -10000.0, 10000.0, 0, 0.0, 0.009999999776482582, 0.0, 0.0, 0, 0, 0, 0, 1082130432, 0, 0, 0},
+{BILLIARDS_BALL, {1500.0,0.0,0.0}, 0.0, -10000.0, 10000.0, -971227136, 10000.0, -10000.0, 10000.0, 0, 0.0, 0.009999999776482582, 0.0, 0.0, 0, 0, 0, 0, 1084227584, 0, 0, 0},
+{ACTOR_NULL, {0.0,0.0,0.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomObject GhostCastle_room15_objects[20] = {
+{{-2450.0,0.0,-800.0}, {1.0,3.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 98, -1, -1, -1, NULL, NULL, 0, 0, 34, 4, 4, 0, -1, 0, 0},
+{{-2700.0,0.0,-1500.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 76, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+{{-2700.0,0.0,-1500.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 78, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+{{-2700.0,0.0,-1500.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 256, 0, 400.0, 400.0, 0.0, 0.0, 4, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
+{{-2700.0,0.0,-1500.0}, {4.0,4.0,4.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 93, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{1500.0,0.0,2700.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 27, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+{{1500.0,0.0,2700.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 26, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+{{1500.0,0.0,2700.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 256, 0, 400.0, 400.0, 0.0, 0.0, 3, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
+{{1500.0,0.0,2700.0}, {4.0,4.0,4.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+{{-1250.0,0.0,-2500.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(90.00000250447816), 7, 26, -1300.0, -1300.0, -2050.0, -1200.0, 0, 180, 59, 300, 400, 59, 62, -1, -1, -1, NULL, NULL, -2146716084, 0, 2, 4, 4, 0, -1, 0, 0},
+{{-650.0,0.0,-2500.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(90.00000250447816), 7, 26, -650.0, -650.0, -2050.0, -1250.0, 0, 180, 59, 300, 400, 59, 62, -1, -1, -1, NULL, NULL, -2146716084, 0, 2, 4, 4, 0, -1, 0, 0},
+{{50.0,0.0,-2500.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(90.00000250447816), 7, 26, -50.0, -50.0, -2050.0, -1350.0, 0, 180, 59, 300, 400, 59, 62, -1, -1, -1, NULL, NULL, -2146716084, 0, 2, 4, 4, 0, -1, 0, 0},
+{{900.0,0.0,-2100.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(45.00000125223908), 7, 26, 600.0, 500.0, -1800.0, -1200.0, 0, 180, 59, 300, 400, 59, 62, -1, -1, -1, NULL, NULL, -2146716084, 0, 2, 4, 4, 0, -1, 0, 0},
+{{1500.0,0.0,-1500.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(45.00000125223908), 7, 26, 1150.0, 1050.0, -1150.0, -1050.0, 0, 180, 59, 300, 400, 59, 62, -1, -1, -1, NULL, NULL, -2146716084, 0, 2, 4, 4, 0, -1, 0, 0},
+{{2100.0,0.0,-900.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(45.00000125223908), 7, 26, 1800.0, 1200.0, -550.0, -450.0, 0, 180, 59, 300, 400, 59, 62, -1, -1, -1, NULL, NULL, -2146716084, 0, 2, 4, 4, 0, -1, 0, 0},
+{{2500.0,0.0,-50.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(0.0), 7, 26, 2050.0, 1350.0, -50.0, -50.0, 0, 180, 59, 300, 400, 59, 62, -1, -1, -1, NULL, NULL, -2146716084, 0, 2, 4, 4, 0, -1, 0, 0},
+{{2500.0,0.0,650.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(0.0), 7, 26, 2050.0, 1300.0, 650.0, 650.0, 0, 180, 59, 300, 400, 59, 62, -1, -1, -1, NULL, NULL, -2146716084, 0, 2, 4, 4, 0, -1, 0, 0},
+{{2500.0,0.0,1250.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(0.0), 7, 26, 2050.0, 1200.0, 1300.0, 1300.0, 0, 180, 59, 300, 400, 59, 62, -1, -1, -1, NULL, NULL, -2146716084, 0, 2, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+SpriteActor GhostCastle_room15_sprites[2] = {
+{20, 0, {-2000.0,10.0,-1500.0}, {100.0,300.0,300.0}, 1, 0, 30.0, 0, 0, 1148846080, -1082130432, 0, 255, 255, 55, 255},
+{-1, 0, {-1.0,-1.0,-1.0}, {-1.0,32.0,32.0}, 1, 0, 0.0, 0, 0, 0, 0, 0, -1, -1, 0, 0}
+};
+
+SpriteActor GhostCastle_room16_sprites[2] = {
+{22, 0, {0.0,0.0,0.0}, {100.0,1.0,1.0}, 1, 0, 1.0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+{-1, 0, {-1.0,-1.0,-1.0}, {-1.0,32.0,32.0}, 1, 0, 0.0, 0, 0, 0, 0, 0, -1, -1, 0, 0}
+};
+
+SpriteActor GhostCastle_room12_sprites[2] = {
+{22, 0, {0.0,0.0,0.0}, {100.0,1.0,1.0}, 1, 0, 1.0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+{-1, 0, {-1.0,-1.0,-1.0}, {-1.0,32.0,32.0}, 1, 0, 0.0, 0, 0, 0, 0, 0, -1, -1, 0, 0}
+};
+
+RoomActor GhostCastle_room15_actors[4] = {
+{FIRE_SPAWNER, {-1000.0,0.0,-1000.0}, 0.0, -10000.0, 10000.0, -971227136, 10000.0, -10000.0, 10000.0, 0, 15.0, 5.0, 8.0, 5.0, 1242125376, 1232348160, 0, 0, 1097859072, 1106247680, 1101004800, 1084227584},
+{FIRE_SPAWNER, {0.0,0.0,0.0}, 0.0, -10000.0, 10000.0, -971227136, 10000.0, -10000.0, 10000.0, 0, 13.0, 5.0, 8.0, 5.0, 1258902592, 1232348160, 0, 0, 1092616192, 1106247680, 1101004800, 1084227584},
+{FIRE_SPAWNER, {1000.0,0.0,1000.0}, 0.0, -10000.0, 10000.0, -971227136, 10000.0, -10000.0, 10000.0, 0, 18.0, 5.0, 8.0, 5.0, 1242125376, 1232348160, 0, 0, 1084227584, 1106247680, 1101004800, 1084227584},
+{ACTOR_NULL, {0.0,0.0,0.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomObject GhostCastle_room16_objects[20] = {
+{{-1400.0,0.0,0.0}, {1.0,2.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 98, -1, -1, -1, NULL, NULL, 0, 0, 34, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 94, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{-810.0,0.0,-1530.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 11, -600.0, 0.0, -1530.0, 0.0, 4, 20, 0, 40, 0, 0, 111, -1, -1, 24, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{10.0,0.0,-1530.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 11, -200.0, 0.0, -1530.0, 0.0, 4, 20, 0, 40, 0, 0, 112, -1, -1, 24, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{-810.0,0.0,1530.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 11, -600.0, 0.0, 1530.0, 0.0, 4, 20, 0, 40, 0, 0, 111, -1, -1, 24, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{10.0,0.0,1530.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 11, -200.0, 0.0, 1530.0, 0.0, 4, 20, 0, 40, 0, 0, 112, -1, -1, 24, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{-400.0,0.0,-1700.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 28, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+{{-400.0,0.0,-1700.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 25, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+{{-400.0,0.0,-1700.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 256, 0, 400.0, 400.0, 0.0, 0.0, 1, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
+{{-400.0,0.0,-1700.0}, {4.0,4.0,4.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+{{1610.0,500.0,0.0}, {1.5,1.5,1.5}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 74, -1, -1, -1, NULL, NULL, 0, 0, 0, 4, 4, 0, -1, 0, 0},
+{{1600.0,500.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 63, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{1500.0,300.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 29, -1, -1, -1, NULL, NULL, 0, 0, 0, 4, 4, 0, -1, 0, 0},
+{{-400.0,0.0,1700.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 27, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+{{-400.0,0.0,1700.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 26, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+{{-400.0,0.0,1700.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 256, 0, 400.0, 400.0, 0.0, 0.0, 3, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
+{{-400.0,0.0,1700.0}, {4.0,4.0,4.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+{{0.0,0.0,-500.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 512, 0, 10000.0, 2000.0, 2000.0, 0.0, 0, 0, 0, 0, 0, 0, 0, -1, 24, 518, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 512, 0, 10000.0, 10000.0, 10000.0, 0.0, 0, 0, 0, 0, 0, 0, 0, -1, 536, 6, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomActor GhostCastle_room16_actors[14] = {
+{RNG_ROOM_SPAWNER, {0.0,-50.0,0.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 1, 10.0, 10.0, 8.0, 10.0, 1147207680, 0, 0, 0, 1097859072, 1106247680, 1114636288, 1101529088},
+{MIRROR, {1300.0,2400.0,700.0}, 0.0, -10000.0, 10000.0, -971227136, 10000.0, -10000.0, 10000.0, 0, 0.0, 0.0, 1000000.0, 50.0, 0, 0, 0, 0, 0, 1082130432, 0, 1101529088},
+{MIRROR, {800.0,2400.0,1300.0}, 0.0, -10000.0, 10000.0, -971227136, 10000.0, -10000.0, 10000.0, 0, 0.0, 0.0, 1000000.0, 50.0, 0, 0, 0, 0, 1065353216, 1082130432, 0, 1101529088},
+{MIRROR, {800.0,2400.0,-1300.0}, 0.0, -10000.0, 10000.0, -971227136, 10000.0, -10000.0, 10000.0, 0, 0.0, 0.0, 1000000.0, 50.0, 0, 0, 0, 0, 1073741824, 1082130432, 0, 1101529088},
+{MIRROR, {1300.0,2400.0,-700.0}, 0.0, -10000.0, 10000.0, -971227136, 10000.0, -10000.0, 10000.0, 0, 0.0, 0.0, 1000000.0, 50.0, 0, 0, 0, 0, 1077936128, 1082130432, 0, 1101529088},
+{SCROLL, {1450.0,0.0,-500.0}, 180.0, -10000.0, 10000.0, -971227136, 10000.0, -10000.0, 10000.0, 0, 0.0, 0.0, 0.0, 700.0, 1117782016, 0, 0, 0, 0, 1088421888, 1120403456, 1101529088},
+{SCROLL, {1450.0,0.0,500.0}, 180.0, -10000.0, 10000.0, -971227136, 10000.0, -10000.0, 10000.0, 0, 0.0, 0.0, 0.0, 700.0, 1117782016, 0, 0, 0, 1065353216, 1088421888, 1120403456, 1101529088},
+{METAL_SHEET, {1200.0,0.0,-1200.0}, 225.0, -10000.0, 10000.0, -971227136, 10000.0, -10000.0, 10000.0, 0, 0.0, 0.0, 0.0, 800.0, 1117782016, 0, 0, 0, 1073741824, 1088421888, 1119092736, 1101529088},
+{METAL_SHEET, {1200.0,0.0,1200.0}, 135.0, -10000.0, 10000.0, -971227136, 10000.0, -10000.0, 10000.0, 0, 0.0, 0.0, 0.0, 800.0, 1114636288, 0, 0, 0, 1077936128, 1088421888, 1119092736, 1101529088},
+{SCROLL, {-1450.0,0.0,-500.0}, 0.0, -10000.0, 10000.0, -971227136, 10000.0, -10000.0, 10000.0, 0, 0.0, 0.0, 0.0, 900.0, 1117782016, 0, 0, 0, 1082130432, 1088421888, 1117782016, 1101529088},
+{SCROLL, {-1450.0,0.0,500.0}, 0.0, -10000.0, 10000.0, -971227136, 10000.0, -10000.0, 10000.0, 0, 0.0, 0.0, 0.0, 900.0, 1117782016, 0, 0, 0, 1084227584, 1088421888, 1117782016, 1101529088},
+{METAL_SHEET, {500.0,0.0,-1400.0}, -90.0, -10000.0, 10000.0, -971227136, 10000.0, -10000.0, 10000.0, 0, 0.0, 0.0, 0.0, 1000.0, 1117782016, 0, 0, 0, 1086324736, 1088421888, 1116471296, 1101529088},
+{METAL_SHEET, {500.0,0.0,1400.0}, 90.0, -10000.0, 10000.0, -971227136, 10000.0, -10000.0, 10000.0, 0, 0.0, 0.0, 0.0, 1000.0, 1117782016, 0, 0, 0, 1088421888, 1088421888, 1116471296, 1101529088},
+{ACTOR_NULL, {0.0,0.0,0.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+SpriteActor GhostCastle_roomUnk_sprites[16] = {
+{2, 53, {2300.0,0.0,-1300.0}, {100.0,100.0,150.0}, 1, 0, 8.0, 0, 0, 0, 0, 0, 255, 255, 255, 255},
+{2, 53, {2300.0,0.0,-500.0}, {100.0,100.0,150.0}, 1, 0, 8.0, 0, 0, 0, 0, 0, 255, 255, 255, 255},
+{2, 53, {2300.0,0.0,300.0}, {100.0,100.0,150.0}, 1, 0, 8.0, 0, 0, 0, 0, 0, 255, 255, 255, 255},
+{2, 53, {1800.0,0.0,900.0}, {100.0,100.0,150.0}, 1, 0, 8.0, 0, 0, 0, 0, 0, 255, 255, 255, 255},
+{2, 53, {1200.0,0.0,1500.0}, {100.0,100.0,150.0}, 1, 0, 8.0, 0, 0, 0, 0, 0, 255, 255, 255, 255},
+{2, 53, {600.0,0.0,2100.0}, {100.0,100.0,150.0}, 1, 0, 8.0, 0, 0, 0, 0, 0, 255, 255, 255, 255},
+{2, 53, {-100.0,0.0,2300.0}, {100.0,100.0,150.0}, 1, 0, 8.0, 0, 0, 0, 0, 0, 255, 255, 255, 255},
+{2, 53, {-900.0,0.0,2300.0}, {100.0,100.0,150.0}, 1, 0, 8.0, 0, 0, 0, 0, 0, 255, 255, 255, 255},
+{2, 53, {-1700.0,0.0,2300.0}, {100.0,100.0,150.0}, 1, 0, 8.0, 0, 0, 0, 0, 0, 255, 255, 255, 255},
+{2, 53, {-1300.0,0.0,700.0}, {100.0,100.0,150.0}, 1, 0, 8.0, 0, 0, 0, 0, 0, 255, 255, 255, 255},
+{2, 53, {-500.0,0.0,700.0}, {100.0,100.0,150.0}, 1, 0, 8.0, 0, 0, 0, 0, 0, 255, 255, 255, 255},
+{2, 53, {100.0,0.0,400.0}, {100.0,100.0,150.0}, 1, 0, 8.0, 0, 0, 0, 0, 0, 255, 255, 255, 255},
+{2, 53, {500.0,0.0,-100.0}, {100.0,100.0,150.0}, 1, 0, 8.0, 0, 0, 0, 0, 0, 255, 255, 255, 255},
+{2, 53, {700.0,0.0,-900.0}, {100.0,100.0,150.0}, 1, 0, 8.0, 0, 0, 0, 0, 0, 255, 255, 255, 255},
+{2, 53, {700.0,0.0,-1700.0}, {100.0,100.0,150.0}, 1, 0, 8.0, 0, 0, 0, 0, 0, 255, 255, 255, 255},
+{-1, 0, {-1.0,-1.0,-1.0}, {-1.0,32.0,32.0}, 1, 0, 0.0, 0, 0, 0, 0, 0, -1, -1, 0, 0}
+};
+
+RoomObject GhostCastle_room17_objects[11] = {
+{{2400.0,0.0,600.0}, {2.0,1.0,2.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 98, -1, -1, -1, NULL, NULL, 0, 0, 34, 4, 4, 0, -1, 0, 0},
+{{1500.0,0.0,-2700.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 28, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+{{1500.0,0.0,-2700.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 25, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+{{1500.0,0.0,-2700.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 256, 0, 400.0, 400.0, 0.0, 0.0, 1, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
+{{1500.0,0.0,-2700.0}, {4.0,4.0,4.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 95, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{-2700.0,0.0,1500.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 76, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+{{-2700.0,0.0,1500.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 78, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+{{-2700.0,0.0,1500.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 256, 0, 400.0, 400.0, 0.0, 0.0, 4, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
+{{-2700.0,0.0,1500.0}, {4.0,4.0,4.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomActor GhostCastle_room17_actors[6] = {
+{FIRE_SPITTER, {500.0,230.0,500.0}, 0.0, -10000.0, 10000.0, -971227136, 10000.0, -10000.0, 10000.0, 0, 20.0, 8.0, 5.0, 5.0, 1226588160, 0, 0, 0, 1101004800, 1101004800, 1109393408, 1109393408},
+{FIRE_SPITTER, {1000.0,230.0,1000.0}, 0.0, -10000.0, 10000.0, -971227136, 10000.0, -10000.0, 10000.0, 0, 20.0, 8.0, 5.0, 5.0, 1229308160, 0, 0, 0, 1101004800, 1101004800, 1109393408, 1109393408},
+{FIRE_SPITTER, {-500.0,230.0,900.0}, 0.0, -10000.0, 10000.0, -971227136, 10000.0, -10000.0, 10000.0, 0, 20.0, 8.0, 5.0, 5.0, 1229308160, 0, 0, 0, 1101004800, 1101004800, 1109393408, 1109393408},
+{FIRE_SPITTER, {-500.0,230.0,1500.0}, 0.0, -10000.0, 10000.0, -971227136, 10000.0, -10000.0, 10000.0, 0, 20.0, 8.0, 5.0, 5.0, 1229308160, 0, 0, 0, 1101004800, 1101004800, 1109393408, 1109393408},
+{FIRE_SPITTER, {-500.0,230.0,2100.0}, 0.0, -10000.0, 10000.0, -971227136, 10000.0, -10000.0, 10000.0, 0, 20.0, 8.0, 5.0, 5.0, 1229308160, 0, 0, 0, 1101004800, 1101004800, 1109393408, 1109393408},
+{ACTOR_NULL, {0.0,0.0,0.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomObject GhostCastle_room18_objects[29] = {
+{{1700.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 77, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+{{1700.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 79, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+{{1700.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 256, 0, 400.0, 400.0, 0.0, 0.0, 2, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
+{{1700.0,0.0,0.0}, {4.0,4.0,4.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 96, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{-200.0,-5.0,-1300.0}, {1.7000000476837158,0.25,0.800000011920929}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 69, -1, -1, -1, NULL, &func_800D91B4, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+{{-595.0,-5.0,600.0}, {1.7000000476837158,0.25,0.699999988079071}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 69, -1, -1, -1, NULL, &func_800D91B4, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+{{800.0,-5.0,-100.0}, {0.800000011920929,0.25,0.699999988079071}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 68, -1, -1, -1, NULL, &func_800D91B4, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+{{500.0,-8.0,1150.0}, {0.5,0.11999999731779099,8.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 65, -1, -1, -1, NULL, &func_800D91B4, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+{{-600.0,-8.0,-450.0}, {0.5,0.11999999731779099,7.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 65, -1, -1, -1, NULL, &func_800D91B4, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+{{840.0,995.0,-200.0}, {1.2000000476837158,0.25,0.699999988079071}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 68, -1, -1, -1, NULL, &func_800D91B4, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+{{0.0,995.0,700.0}, {2.5,0.25,0.699999988079071}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 69, -1, -1, -1, NULL, &func_800D91B4, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+{{-550.0,995.0,-1300.0}, {1.0,0.25,0.699999988079071}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 69, -1, -1, -1, NULL, &func_800D91B4, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+{{200.0,992.0,700.0}, {0.5,0.11999999731779099,6.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 65, -1, -1, -1, NULL, &func_800D91B4, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+{{-1000.0,992.0,-450.0}, {0.5,0.11999999731779099,7.5}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 65, -1, -1, -1, NULL, &func_800D91B4, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+{{1450.0,992.0,-900.0}, {0.6000000238418579,0.11999999731779099,2.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 64, -1, -1, -1, NULL, &func_800D91B4, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+{{-550.0,0.0,1350.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 64, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+{{850.0,0.0,-1350.0}, {1.5,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 64, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+{{1050.0,450.0,-1350.0}, {1.0,1.2000000476837158,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 64, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{1350.0,1000.0,-1350.0}, {1.2000000476837158,1.2000000476837158,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 64, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{1300.0,0.0,0.0}, {1.3333333730697632,0.5,1.3333333730697632}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, -400.0, 0.0, 1550.0, 0.0, 0, 20, 0, 40, 0, 0, 64, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{-200.0,1000.0,-1300.0}, {2.6666667461395264,0.5,1.3333333730697632}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, -400.0, 0.0, 1550.0, 0.0, 0, 20, 0, 40, 0, 0, 64, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{1350.0,1000.0,-400.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 114, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{-300.0,0.0,600.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 114, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,1000.0,-1700.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 28, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+{{0.0,1000.0,-1700.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 25, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+{{0.0,1000.0,-1700.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 256, 0, 400.0, 400.0, 0.0, 0.0, 1, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
+{{0.0,1000.0,-1700.0}, {4.0,4.0,4.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomActor GhostCastle_room18_actors[2] = {
+{FIRE_SPITTER, {-1000.0,1010.0,-500.0}, 0.0, -1500.0, 1500.0, -998637568, 1000.0, -1000.0, 1000.0, 0, 6.0, 3.0, 6.0, 3.0, 1254013984, 0, 0, 0, 1133903872, 1101004800, 1101004800, 1084227584},
+{ACTOR_NULL, {0.0,0.0,0.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomObject GhostCastle_room19_objects[4] = {
+{{0.0,0.0,0.0}, {1.0,5.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 38, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{1250.0,250.0,0.0}, {1.0,10.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 38, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{1000.0,0.0,-100.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(0.0), 7, 26, 600.0, 600.0, 0.0, 0.0, 0, 660, 59, 300, 400, 59, 62, -1, -1, -1, NULL, NULL, -2146716084, 0, 2, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomActor GhostCastle_room19_actors[2] = {
+{FIRE, {500.0,50.0,0.0}, 0.0, -1500.0, 1500.0, -998637568, 1000.0, -1500.0, 1500.0, 0, 6.0, 3.0, 6.0, 3.0, 1254013984, 0, 0, 0, 1133903872, 1101004800, 1101004800, 1084227584},
+{ACTOR_NULL, {0.0,0.0,0.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+Collectable GhostCastle_roomUnk_collectables[13] = {
+{R_HEART, {-1500.0,258.0,1600.0}, 4294967295, 0, 0, 0},
+{R_HEART, {-1000.0,258.0,1600.0}, 4294967295, 0, 0, 0},
+{R_HEART, {-500.0,258.0,1600.0}, 4294967295, 0, 0, 0},
+{R_HEART, {500.0,258.0,1600.0}, 4294967295, 0, 0, 0},
+{R_HEART, {1000.0,258.0,1600.0}, 4294967295, 0, 0, 0},
+{R_HEART, {1500.0,258.0,1600.0}, 4294967295, 0, 0, 0},
+{R_HEART, {-1500.0,258.0,-1600.0}, 4294967295, 0, 0, 0},
+{R_HEART, {-1000.0,258.0,-1600.0}, 4294967295, 0, 0, 0},
+{R_HEART, {-500.0,258.0,-1600.0}, 4294967295, 0, 0, 0},
+{R_HEART, {500.0,258.0,-1600.0}, 4294967295, 0, 0, 0},
+{R_HEART, {1000.0,258.0,-1600.0}, 4294967295, 0, 0, 0},
+{R_HEART, {1500.0,258.0,-1600.0}, 4294967295, 0, 0, 0},
+{ACTOR_NULL, {0.0,0.0,0.0}, 4294967295, 0, 0, 0}
+};
+
+Collectable GhostCastle_room0_collectables[5] = {
+{R_HEART, {-2800.0,1200.0,-1400.0}, 4294967295, 0, 0, 0},
+{R_HEART, {2800.0,1200.0,-1400.0}, 4294967295, 0, 0, 0},
+{CROWN, {-2830.0,5.0,1830.0}, 4294967295, 0, 0, 0},
+{CROWN, {2830.0,5.0,1830.0}, 4294967295, 0, 0, 0},
+{ACTOR_NULL, {0.0,0.0,0.0}, 4294967295, 0, 0, 0}
+};
+
+Collectable GhostCastle_room2_collectables[3] = {
+{CROWN, {-334.0,-150.0,616.0}, 4294967295, 0, 0, 0},
+{Y_HEART, {-434.0,-150.0,1116.0}, 4294967295, 0, 0, 0},
+{ACTOR_NULL, {0.0,0.0,0.0}, 4294967295, 0, 0, 0}
+};
+
+Collectable GhostCastle_room5_collectables[2] = {
+{CROWN, {1250.0,0.0,-1250.0}, 4294967295, 0, 0, 0},
+{ACTOR_NULL, {0.0,0.0,0.0}, 4294967295, 0, 0, 0}
+};
+
+Collectable GhostCastle_room6_collectables[7] = {
+{R_HEART, {2750.0,200.0,-900.0}, 4294967295, 0, 0, 0},
+{R_HEART, {2750.0,200.0,900.0}, 4294967295, 0, 0, 0},
+{R_HEART, {-3220.0,200.0,-873.0}, 4294967295, 0, 0, 0},
+{R_HEART, {-2799.0,200.0,-1066.0}, 4294967295, 0, 0, 0},
+{O_HEART, {-1307.0,200.0,-3.0}, 4294967295, 0, 0, 0},
+{CROWN, {0.0,400.0,0.0}, 4294967295, 0, 0, 0},
+{ACTOR_NULL, {0.0,0.0,0.0}, 4294967295, 0, 0, 0}
+};
+
+Collectable GhostCastle_room7_collectables[5] = {
+{CROWN, {800.0,-90.0,1950.0}, 4294967295, 0, 0, 0},
+{CROWN, {-1000.0,0.0,-800.0}, 4294967295, 0, 0, 0},
+{R_HEART, {2000.0,0.0,-2800.0}, 4294967295, 0, 0, 0},
+{R_HEART, {2300.0,0.0,-2800.0}, 4294967295, 0, 0, 0},
+{ACTOR_NULL, {0.0,0.0,0.0}, 4294967295, 0, 0, 0}
+};
+
+Collectable GhostCastle_room8_collectables[5] = {
+{CROWN, {2200.0,1300.0,0.0}, 4294967295, 0, 0, 0},
+{Y_HEART, {2000.0,1300.0,0.0}, 4294967295, 0, 0, 0},
+{CROWN, {0.0,1200.0,0.0}, 4294967295, 0, 0, 0},
+{R_HEART, {-2300.0,-1100.0,0.0}, 4294967295, 0, 0, 0},
+{ACTOR_NULL, {0.0,0.0,0.0}, 4294967295, 0, 0, 0}
+};
+
+Collectable GhostCastle_room9_collectables[4] = {
+{TIME_STOP_POWER_UP, {-300.0,0.0,2800.0}, 4294967295, 0, -1, 450},
+{CROWN, {400.0,700.0,150.0}, 4294967295, 0, 0, 0},
+{CROWN, {-400.0,700.0,150.0}, 4294967295, 0, 0, 0},
+{ACTOR_NULL, {0.0,0.0,0.0}, 4294967295, 0, 0, 0}
+};
+
+Collectable GhostCastle_room10_collectables[3] = {
+{R_HEART, {-2100.0,-200.0,-250.0}, 4294967295, 0, 0, 0},
+{R_HEART, {-2100.0,-200.0,250.0}, 4294967295, 0, 0, 0},
+{ACTOR_NULL, {0.0,0.0,0.0}, 4294967295, 0, 0, 0}
+};
+
+Collectable GhostCastle_room11_collectables[4] = {
+{CROWN, {-1500.0,0.0,-900.0}, 15, 0, 0, 0},
+{R_HEART, {-780.0,0.0,-2300.0}, 4294967295, 0, 0, 0},
+{R_HEART, {-2020.0,0.0,-2300.0}, 4294967295, 0, 0, 0},
+{ACTOR_NULL, {0.0,0.0,0.0}, 4294967295, 0, 0, 0}
+};
+
+Collectable GhostCastle_room12_collectables[4] = {
+{CROWN, {0.0,0.0,0.0}, 4294967295, 0, 0, 0},
+{O_HEART, {-700.0,0.0,-1300.0}, 4294967295, 0, 0, 0},
+{R_HEART, {-700.0,0.0,1300.0}, 4294967295, 0, 0, 0},
+{ACTOR_NULL, {0.0,0.0,0.0}, 4294967295, 0, 0, 0}
+};
+
+Collectable GhostCastle_room13_collectables[2] = {
+{CROWN, {2300.0,0.0,-700.0}, 4294967295, 0, 0, 0},
+{ACTOR_NULL, {0.0,0.0,0.0}, 4294967295, 0, 0, 0}
+};
+
+Collectable GhostCastle_room14_collectables[2] = {
+{CROWN, {-1800.0,300.0,0.0}, 29, 0, 0, 0},
+{ACTOR_NULL, {0.0,0.0,0.0}, 4294967295, 0, 0, 0}
+};
+
+Collectable GhostCastle_room15_collectables[2] = {
+{CROWN, {660.0,0.0,1700.0}, 4294967295, 0, 0, 0},
+{ACTOR_NULL, {0.0,0.0,0.0}, 4294967295, 0, 0, 0}
+};
+
+Collectable GhostCastle_room16_collectables[4] = {
+{CROWN, {0.0,0.0,0.0}, 4294967295, 0, 0, 0},
+{CROWN, {1530.0,300.0,0.0}, 4294967295, 0, 0, 0},
+{O_HEART, {-1350.0,0.0,-300.0}, 4294967295, 0, 0, 0},
+{ACTOR_NULL, {0.0,0.0,0.0}, 4294967295, 0, 0, 0}
+};
+
+Collectable GhostCastle_room17_collectables[9] = {
+{CROWN, {-1500.0,0.0,900.0}, 16, 0, 0, 0},
+{CROWN, {-2186.0,0.0,1943.0}, 4294967295, 0, 0, 0},
+{CROWN, {-2186.0,0.0,1043.0}, 4294967295, 0, 0, 0},
+{R_HEART, {1300.0,0.0,200.0}, 4294967295, 0, 0, 0},
+{R_HEART, {200.0,0.0,1300.0}, 4294967295, 0, 0, 0},
+{R_HEART, {-2200.0,0.0,800.0}, 4294967295, 0, 0, 0},
+{R_HEART, {-2200.0,0.0,2200.0}, 4294967295, 0, 0, 0},
+{BIG_HEAD_POWER_UP, {2300.0,0.0,200.0}, 4294967295, 0, -1, 450},
+{ACTOR_NULL, {0.0,0.0,0.0}, 4294967295, 0, 0, 0}
+};
+
+Collectable GhostCastle_room18_collectables[5] = {
+{CROWN, {-568.0,0.0,1347.0}, 4294967295, 0, 0, 0},
+{CROWN, {1391.0,1000.0,700.0}, 4294967295, 0, 0, 0},
+{R_HEART, {500.0,0.0,1400.0}, 4294967295, 0, 0, 0},
+{CARROT, {-1400.0,5000.0,700.0}, 4294967295, 0, 0, 0},
+{ACTOR_NULL, {0.0,0.0,0.0}, 4294967295, 0, 0, 0}
+};
+
+unsigned char GhostCastle_spriteLib_Bin[] = {
+0x00, 0x00, 0x00, 0x2F, 0x00, 0x00, 0x00, 0x34, 0x00, 0x00, 0x00, 0x35, 0x00, 0x00, 0x00, 0xBA, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x2F, 0x00, 0x00, 0x00, 0x30, 0x00, 0x00, 0x00, 0x31, 0x00, 0x00, 0x00, 0x37, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xBA, 0x00, 0x00, 0x00, 0x2F, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x2F, 0x00, 0x00, 0x00, 0x37, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x32, 0x00, 0x00, 0x00, 0x33, 0x00, 0x00, 0x00, 0x2F, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x2F, 0x00, 0x00, 0x00, 0x45, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xBA, 0x00, 0x00, 0x00, 0x2F, 0x00, 0x00, 0x00, 0x17, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xBA, 0x00, 0x00, 0x00, 0x2F, 0x00, 0x00, 0x00, 0x1B, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+};
+
+RoomInstance GhostCastle_room_instances[21] = {
+{GhostCastle_room0_objects, 0,GhostCastle_room0_collectables,GhostCastle_room0_sprites, 0, 0, 2, 0, -1, 0, 0.0, 1, -1600.0, 1000.0, 1800.0, 0.0, 0.0, 0.0, 1.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+{GhostCastle_roomMulti_objects, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0.0, 0, -400.0, 200.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+{GhostCastle_room2_objects,GhostCastle_room2_actors,GhostCastle_room2_collectables, 0, 0, 0, 2, 0, -1, 1000, 0.0, 2, -1000.0, 800.0, -1800.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+{GhostCastle_roomMulti_objects, 0, 0, 0, 0, 0, 2, 0, -1, 0, 0.0, 1, -1300.0, 100.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+{GhostCastle_room4_objects, 0, 0, 0, 0, 0, 0, 47, 23, 0, 0.0, 2, -1300.0, 700.0, 0.0, 0.0, 0.0, 0.0, 0.5, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+{GhostCastle_room5_objects,GhostCastle_room5_actors,GhostCastle_room5_collectables,GhostCastle_room5_sprites, 0, 0, 5, 0, -1, 0, 0.0, 1, -1200.0, 0.0, 1200.0, 0.0, 0.0, 0.0, 0.800000011920929, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+{GhostCastle_room6_objects, 0,GhostCastle_room6_collectables, 0, 0, 0, 2, 0, -1, 0, 0.0, 1, -3300.0, 600.0, 1400.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+{GhostCastle_room7_objects,GhostCastle_room7_actors,GhostCastle_room7_collectables,GhostCastle_room7_sprites, 0, 0, 2, 0, -1, 0, 0.0, 1, 2500.0, 1500.0, 2900.0, 0.0, 0.0, 0.0, 4.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+{GhostCastle_room8_objects, 0,GhostCastle_room8_collectables, 0, 0, 0, 2, 0, -1, 0, 0.0, 13, 1500.0, 1300.0, 1900.0, -1500.0, 1300.0, 1900.0, 1.600000023841858, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+{GhostCastle_room9_objects,GhostCastle_room9_actors,GhostCastle_room9_collectables,GhostCastle_room9_sprites, 0, 0, 7, 0, -1, 0, 0.0, 1, 400.0, 0.0, 2900.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+{GhostCastle_room10_objects, 0,GhostCastle_room10_collectables, 0, 0, 0, 2, 0, -1, 0, 0.0, 1, 0.0, 400.0, 600.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+{GhostCastle_room11_objects,GhostCastle_room11_actors,GhostCastle_room11_collectables, 0, 0, 0, 0, 57, 15, 0, 0.0, 1, -350.0, 0.0, 2400.0, 0.0, 0.0, 0.0, 200.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 1.5},
+{GhostCastle_room12_objects,GhostCastle_room12_actors,GhostCastle_room12_collectables,GhostCastle_room12_sprites, 1, 0, 1, 53, 5, 0, 0.0, 2, -1400.0, 800.0, 0.0, 0.0, 0.0, 0.0, 0.800000011920929, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+{GhostCastle_room13_objects,GhostCastle_room13_actors,GhostCastle_room13_collectables,GhostCastle_room13_sprites, 0, 0, 0, 0, -1, 0, 0.0, 10, -800.0, 0.0, 2450.0, 0.0, 0.0, 0.0, 2.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+{GhostCastle_room14_objects,GhostCastle_room14_actors,GhostCastle_room14_collectables, 0, 0, 0, 4, 45, 29, 0, 0.0, 16, -1000.0, 200.0, -1500.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 300.0},
+{GhostCastle_room15_objects,GhostCastle_room15_actors,GhostCastle_room15_collectables,GhostCastle_room15_sprites, 0, 0, 0, 0, -1, 0, 0.0, 10, -2450.0, 0.0, -800.0, 0.0, 0.0, 0.0, 2.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+{GhostCastle_room16_objects,GhostCastle_room16_actors,GhostCastle_room16_collectables,GhostCastle_room16_sprites, 1, 0, 1, 53, 6, 0, 0.0, 2, -1400.0, 800.0, 0.0, 0.0, 0.0, 0.0, 0.800000011920929, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+{GhostCastle_room17_objects,GhostCastle_room17_actors,GhostCastle_room17_collectables, 0, 0, 0, 6, 56, 16, 0, 0.0, 1, 2400.0, 0.0, 600.0, 0.0, 0.0, 0.0, 200.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 1.5},
+{GhostCastle_room18_objects,GhostCastle_room18_actors,GhostCastle_room18_collectables,GhostCastle_room18_sprites, 0, 0, 2, 0, -1, 0, 0.0, 1, -1400.0, 500.0, 1400.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+{GhostCastle_room19_objects,GhostCastle_room19_actors, 0, 0, 0, 1, 0, 0, -1, 0, 0.0, 4, 600.0, 200.0, 1200.0, 600.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+{0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0}
+};
+
+s32 GhostCastle_rooms_map[70] = {
+-1, -1, -1, -1, -1, -1, -1, 13, 2, 2, 2, 15, -1, -1, 12, -1, -1, -1, 16, -1, -1, 12, -1, 19, -1, 16, -1, -1, 12, -1, 18, 17, 17, -1, -1, 12, -1, -1, -1, -1, -1, -1, 11, 10, 9, -1, -1, -1, -1, -1, 6, 9, 8, 7, 14, -1, -1, 5, 0, 0, 7, 14, -1, -1, 5, 0, 0, -1, -1, -1, 
+};
+
+StageMapData GhostCastle_map_data = {
+7, 10, GhostCastle_room_instances, GhostCastle_rooms_map, 
+};
+
+SpriteActor GhostCastle_roomUnk2_sprites[1] = {
+{-1, 0, {-1.0,-1.0,-1.0}, {-1.0,32.0,32.0}, 1, 0, 0.0, 0, 0, 0, 0, 0, -1, -1, 0, 0}
+};
+
+RoomInstance GhostCastle_ext_room_instances[1] = {
+{0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0}
+};
+
+LevelScope GhostCastle_scope_Lvlscope = {
+    0,
+    0,
+    0,
+    255,
+    10000,
+    60,
+};
+
+StageData GhostCastle_header_Lvlhdr = {
+    &GhostCastle_map_data,
+    0,
+    &GhostCastle_stageModels[0],
+    115,
+    0,
+    50337232,
+    131072,
+    50401812,
+    &GhostCastle_scope_Lvlscope,
+};
 Mtx GhostCastle_IMtx2 = IDENTITY;
 
 #include "assets/levelGroup/GhostCastle/gcScope/gcScope.light.inc.c"
@@ -2160,7 +1884,9 @@ Mtx GhostCastle_IMtx79 = IDENTITY;
 
 #include "assets/levelGroup/GhostCastle/unkCol1/unkCol1.colS.inc.c"
 
-#include "assets/levelGroup/GhostCastle/unkCol1/unkCol1.colH.inc.c"
+ModelCollision GhostCastle_unkCol1_ColH = {
+48, 80, &GhostCastle_unkCol1_ColV[0], &GhostCastle_unkCol1_ColT[0], &GhostCastle_unkCol1_ColS
+};
 
 #include "assets/levelGroup/GhostCastle/unkCol2/unkCol2.colV.inc.c"
 
@@ -2168,7 +1894,9 @@ Mtx GhostCastle_IMtx79 = IDENTITY;
 
 #include "assets/levelGroup/GhostCastle/unkCol2/unkCol2.colS.inc.c"
 
-#include "assets/levelGroup/GhostCastle/unkCol2/unkCol2.colH.inc.c"
+ModelCollision GhostCastle_unkCol2_ColH = {
+8, 10, &GhostCastle_unkCol2_ColV[0], &GhostCastle_unkCol2_ColT[0], &GhostCastle_unkCol2_ColS
+};
 
 #include "assets/levelGroup/GhostCastle/unkCol3/unkCol3.colV.inc.c"
 
@@ -2176,7 +1904,9 @@ Mtx GhostCastle_IMtx79 = IDENTITY;
 
 #include "assets/levelGroup/GhostCastle/unkCol3/unkCol3.colS.inc.c"
 
-#include "assets/levelGroup/GhostCastle/unkCol3/unkCol3.colH.inc.c"
+ModelCollision GhostCastle_unkCol3_ColH = {
+60, 58, &GhostCastle_unkCol3_ColV[0], &GhostCastle_unkCol3_ColT[0], &GhostCastle_unkCol3_ColS
+};
 
 #include "assets/levelGroup/GhostCastle/unkCol4/unkCol4.colV.inc.c"
 
@@ -2184,7 +1914,9 @@ Mtx GhostCastle_IMtx79 = IDENTITY;
 
 #include "assets/levelGroup/GhostCastle/unkCol4/unkCol4.colS.inc.c"
 
-#include "assets/levelGroup/GhostCastle/unkCol4/unkCol4.colH.inc.c"
+ModelCollision GhostCastle_unkCol4_ColH = {
+56, 67, &GhostCastle_unkCol4_ColV[0], &GhostCastle_unkCol4_ColT[0], &GhostCastle_unkCol4_ColS
+};
 
 #include "assets/levelGroup/GhostCastle/unkCol5/unkCol5.colV.inc.c"
 
@@ -2192,7 +1924,9 @@ Mtx GhostCastle_IMtx79 = IDENTITY;
 
 #include "assets/levelGroup/GhostCastle/unkCol5/unkCol5.colS.inc.c"
 
-#include "assets/levelGroup/GhostCastle/unkCol5/unkCol5.colH.inc.c"
+ModelCollision GhostCastle_unkCol5_ColH = {
+26, 27, &GhostCastle_unkCol5_ColV[0], &GhostCastle_unkCol5_ColT[0], &GhostCastle_unkCol5_ColS
+};
 
 #include "assets/levelGroup/GhostCastle/unkCol6/unkCol6.colV.inc.c"
 
@@ -2200,7 +1934,9 @@ Mtx GhostCastle_IMtx79 = IDENTITY;
 
 #include "assets/levelGroup/GhostCastle/unkCol6/unkCol6.colS.inc.c"
 
-#include "assets/levelGroup/GhostCastle/unkCol6/unkCol6.colH.inc.c"
+ModelCollision GhostCastle_unkCol6_ColH = {
+28, 36, &GhostCastle_unkCol6_ColV[0], &GhostCastle_unkCol6_ColT[0], &GhostCastle_unkCol6_ColS
+};
 
 #include "assets/levelGroup/GhostCastle/unkCol7/unkCol7.colV.inc.c"
 
@@ -2208,7 +1944,9 @@ Mtx GhostCastle_IMtx79 = IDENTITY;
 
 #include "assets/levelGroup/GhostCastle/unkCol7/unkCol7.colS.inc.c"
 
-#include "assets/levelGroup/GhostCastle/unkCol7/unkCol7.colH.inc.c"
+ModelCollision GhostCastle_unkCol7_ColH = {
+24, 30, &GhostCastle_unkCol7_ColV[0], &GhostCastle_unkCol7_ColT[0], &GhostCastle_unkCol7_ColS
+};
 
 #include "assets/levelGroup/GhostCastle/unkCol8/unkCol8.colV.inc.c"
 
@@ -2216,7 +1954,9 @@ Mtx GhostCastle_IMtx79 = IDENTITY;
 
 #include "assets/levelGroup/GhostCastle/unkCol8/unkCol8.colS.inc.c"
 
-#include "assets/levelGroup/GhostCastle/unkCol8/unkCol8.colH.inc.c"
+ModelCollision GhostCastle_unkCol8_ColH = {
+14, 12, &GhostCastle_unkCol8_ColV[0], &GhostCastle_unkCol8_ColT[0], &GhostCastle_unkCol8_ColS
+};
 
 #include "assets/levelGroup/GhostCastle/unkCol9/unkCol9.colV.inc.c"
 
@@ -2224,7 +1964,9 @@ Mtx GhostCastle_IMtx79 = IDENTITY;
 
 #include "assets/levelGroup/GhostCastle/unkCol9/unkCol9.colS.inc.c"
 
-#include "assets/levelGroup/GhostCastle/unkCol9/unkCol9.colH.inc.c"
+ModelCollision GhostCastle_unkCol9_ColH = {
+12, 10, &GhostCastle_unkCol9_ColV[0], &GhostCastle_unkCol9_ColT[0], &GhostCastle_unkCol9_ColS
+};
 
 #include "assets/levelGroup/GhostCastle/unkCol10/unkCol10.colV.inc.c"
 
@@ -2232,7 +1974,9 @@ Mtx GhostCastle_IMtx79 = IDENTITY;
 
 #include "assets/levelGroup/GhostCastle/unkCol10/unkCol10.colS.inc.c"
 
-#include "assets/levelGroup/GhostCastle/unkCol10/unkCol10.colH.inc.c"
+ModelCollision GhostCastle_unkCol10_ColH = {
+14, 12, &GhostCastle_unkCol10_ColV[0], &GhostCastle_unkCol10_ColT[0], &GhostCastle_unkCol10_ColS
+};
 
 #include "assets/levelGroup/GhostCastle/unkCol11/unkCol11.colV.inc.c"
 
@@ -2240,7 +1984,9 @@ Mtx GhostCastle_IMtx79 = IDENTITY;
 
 #include "assets/levelGroup/GhostCastle/unkCol11/unkCol11.colS.inc.c"
 
-#include "assets/levelGroup/GhostCastle/unkCol11/unkCol11.colH.inc.c"
+ModelCollision GhostCastle_unkCol11_ColH = {
+12, 10, &GhostCastle_unkCol11_ColV[0], &GhostCastle_unkCol11_ColT[0], &GhostCastle_unkCol11_ColS
+};
 
 #include "assets/levelGroup/GhostCastle/unkCol12/unkCol12.colV.inc.c"
 
@@ -2248,7 +1994,9 @@ Mtx GhostCastle_IMtx79 = IDENTITY;
 
 #include "assets/levelGroup/GhostCastle/unkCol12/unkCol12.colS.inc.c"
 
-#include "assets/levelGroup/GhostCastle/unkCol12/unkCol12.colH.inc.c"
+ModelCollision GhostCastle_unkCol12_ColH = {
+14, 16, &GhostCastle_unkCol12_ColV[0], &GhostCastle_unkCol12_ColT[0], &GhostCastle_unkCol12_ColS
+};
 
 #include "assets/levelGroup/GhostCastle/unkCol13/unkCol13.colV.inc.c"
 
@@ -2256,7 +2004,9 @@ Mtx GhostCastle_IMtx79 = IDENTITY;
 
 #include "assets/levelGroup/GhostCastle/unkCol13/unkCol13.colS.inc.c"
 
-#include "assets/levelGroup/GhostCastle/unkCol13/unkCol13.colH.inc.c"
+ModelCollision GhostCastle_unkCol13_ColH = {
+26, 26, &GhostCastle_unkCol13_ColV[0], &GhostCastle_unkCol13_ColT[0], &GhostCastle_unkCol13_ColS
+};
 
 #include "assets/levelGroup/GhostCastle/unkCol14/unkCol14.colV.inc.c"
 
@@ -2264,7 +2014,9 @@ Mtx GhostCastle_IMtx79 = IDENTITY;
 
 #include "assets/levelGroup/GhostCastle/unkCol14/unkCol14.colS.inc.c"
 
-#include "assets/levelGroup/GhostCastle/unkCol14/unkCol14.colH.inc.c"
+ModelCollision GhostCastle_unkCol14_ColH = {
+16, 18, &GhostCastle_unkCol14_ColV[0], &GhostCastle_unkCol14_ColT[0], &GhostCastle_unkCol14_ColS
+};
 
 #include "assets/levelGroup/GhostCastle/unkCol15/unkCol15.colV.inc.c"
 
@@ -2272,7 +2024,9 @@ Mtx GhostCastle_IMtx79 = IDENTITY;
 
 #include "assets/levelGroup/GhostCastle/unkCol15/unkCol15.colS.inc.c"
 
-#include "assets/levelGroup/GhostCastle/unkCol15/unkCol15.colH.inc.c"
+ModelCollision GhostCastle_unkCol15_ColH = {
+26, 26, &GhostCastle_unkCol15_ColV[0], &GhostCastle_unkCol15_ColT[0], &GhostCastle_unkCol15_ColS
+};
 
 #include "assets/levelGroup/GhostCastle/unkCol16/unkCol16.colV.inc.c"
 
@@ -2280,7 +2034,9 @@ Mtx GhostCastle_IMtx79 = IDENTITY;
 
 #include "assets/levelGroup/GhostCastle/unkCol16/unkCol16.colS.inc.c"
 
-#include "assets/levelGroup/GhostCastle/unkCol16/unkCol16.colH.inc.c"
+ModelCollision GhostCastle_unkCol16_ColH = {
+20, 28, &GhostCastle_unkCol16_ColV[0], &GhostCastle_unkCol16_ColT[0], &GhostCastle_unkCol16_ColS
+};
 
 #include "assets/levelGroup/GhostCastle/unkCol17/unkCol17.colV.inc.c"
 
@@ -2288,7 +2044,9 @@ Mtx GhostCastle_IMtx79 = IDENTITY;
 
 #include "assets/levelGroup/GhostCastle/unkCol17/unkCol17.colS.inc.c"
 
-#include "assets/levelGroup/GhostCastle/unkCol17/unkCol17.colH.inc.c"
+ModelCollision GhostCastle_unkCol17_ColH = {
+16, 25, &GhostCastle_unkCol17_ColV[0], &GhostCastle_unkCol17_ColT[0], &GhostCastle_unkCol17_ColS
+};
 
 #include "assets/levelGroup/GhostCastle/unkCol18/unkCol18.colV.inc.c"
 
@@ -2296,7 +2054,9 @@ Mtx GhostCastle_IMtx79 = IDENTITY;
 
 #include "assets/levelGroup/GhostCastle/unkCol18/unkCol18.colS.inc.c"
 
-#include "assets/levelGroup/GhostCastle/unkCol18/unkCol18.colH.inc.c"
+ModelCollision GhostCastle_unkCol18_ColH = {
+8, 6, &GhostCastle_unkCol18_ColV[0], &GhostCastle_unkCol18_ColT[0], &GhostCastle_unkCol18_ColS
+};
 
 #include "assets/levelGroup/GhostCastle/unkCol19/unkCol19.colV.inc.c"
 
@@ -2304,7 +2064,9 @@ Mtx GhostCastle_IMtx79 = IDENTITY;
 
 #include "assets/levelGroup/GhostCastle/unkCol19/unkCol19.colS.inc.c"
 
-#include "assets/levelGroup/GhostCastle/unkCol19/unkCol19.colH.inc.c"
+ModelCollision GhostCastle_unkCol19_ColH = {
+6, 4, &GhostCastle_unkCol19_ColV[0], &GhostCastle_unkCol19_ColT[0], &GhostCastle_unkCol19_ColS
+};
 
 #include "assets/levelGroup/GhostCastle/unkCol20/unkCol20.colV.inc.c"
 
@@ -2312,7 +2074,9 @@ Mtx GhostCastle_IMtx79 = IDENTITY;
 
 #include "assets/levelGroup/GhostCastle/unkCol20/unkCol20.colS.inc.c"
 
-#include "assets/levelGroup/GhostCastle/unkCol20/unkCol20.colH.inc.c"
+ModelCollision GhostCastle_unkCol20_ColH = {
+8, 10, &GhostCastle_unkCol20_ColV[0], &GhostCastle_unkCol20_ColT[0], &GhostCastle_unkCol20_ColS
+};
 
 #include "assets/levelGroup/GhostCastle/unkCol21/unkCol21.colV.inc.c"
 
@@ -2320,7 +2084,9 @@ Mtx GhostCastle_IMtx79 = IDENTITY;
 
 #include "assets/levelGroup/GhostCastle/unkCol21/unkCol21.colS.inc.c"
 
-#include "assets/levelGroup/GhostCastle/unkCol21/unkCol21.colH.inc.c"
+ModelCollision GhostCastle_unkCol21_ColH = {
+40, 62, &GhostCastle_unkCol21_ColV[0], &GhostCastle_unkCol21_ColT[0], &GhostCastle_unkCol21_ColS
+};
 
 #include "assets/levelGroup/GhostCastle/unkCol22/unkCol22.colV.inc.c"
 
@@ -2328,7 +2094,9 @@ Mtx GhostCastle_IMtx79 = IDENTITY;
 
 #include "assets/levelGroup/GhostCastle/unkCol22/unkCol22.colS.inc.c"
 
-#include "assets/levelGroup/GhostCastle/unkCol22/unkCol22.colH.inc.c"
+ModelCollision GhostCastle_unkCol22_ColH = {
+8, 10, &GhostCastle_unkCol22_ColV[0], &GhostCastle_unkCol22_ColT[0], &GhostCastle_unkCol22_ColS
+};
 
 #include "assets/levelGroup/GhostCastle/unkCol23/unkCol23.colV.inc.c"
 
@@ -2336,7 +2104,9 @@ Mtx GhostCastle_IMtx79 = IDENTITY;
 
 #include "assets/levelGroup/GhostCastle/unkCol23/unkCol23.colS.inc.c"
 
-#include "assets/levelGroup/GhostCastle/unkCol23/unkCol23.colH.inc.c"
+ModelCollision GhostCastle_unkCol23_ColH = {
+10, 14, &GhostCastle_unkCol23_ColV[0], &GhostCastle_unkCol23_ColT[0], &GhostCastle_unkCol23_ColS
+};
 
 #include "assets/levelGroup/GhostCastle/unkCol24/unkCol24.colV.inc.c"
 
@@ -2344,7 +2114,9 @@ Mtx GhostCastle_IMtx79 = IDENTITY;
 
 #include "assets/levelGroup/GhostCastle/unkCol24/unkCol24.colS.inc.c"
 
-#include "assets/levelGroup/GhostCastle/unkCol24/unkCol24.colH.inc.c"
+ModelCollision GhostCastle_unkCol24_ColH = {
+8, 6, &GhostCastle_unkCol24_ColV[0], &GhostCastle_unkCol24_ColT[0], &GhostCastle_unkCol24_ColS
+};
 
 #include "assets/levelGroup/GhostCastle/unkCol25/unkCol25.colV.inc.c"
 
@@ -2352,7 +2124,9 @@ Mtx GhostCastle_IMtx79 = IDENTITY;
 
 #include "assets/levelGroup/GhostCastle/unkCol25/unkCol25.colS.inc.c"
 
-#include "assets/levelGroup/GhostCastle/unkCol25/unkCol25.colH.inc.c"
+ModelCollision GhostCastle_unkCol25_ColH = {
+4, 2, &GhostCastle_unkCol25_ColV[0], &GhostCastle_unkCol25_ColT[0], &GhostCastle_unkCol25_ColS
+};
 
 #include "assets/levelGroup/GhostCastle/unkCol26/unkCol26.colV.inc.c"
 
@@ -2360,7 +2134,9 @@ Mtx GhostCastle_IMtx79 = IDENTITY;
 
 #include "assets/levelGroup/GhostCastle/unkCol26/unkCol26.colS.inc.c"
 
-#include "assets/levelGroup/GhostCastle/unkCol26/unkCol26.colH.inc.c"
+ModelCollision GhostCastle_unkCol26_ColH = {
+4, 3, &GhostCastle_unkCol26_ColV[0], &GhostCastle_unkCol26_ColT[0], &GhostCastle_unkCol26_ColS
+};
 
 #include "assets/levelGroup/GhostCastle/unkCol27/unkCol27.colV.inc.c"
 
@@ -2368,7 +2144,9 @@ Mtx GhostCastle_IMtx79 = IDENTITY;
 
 #include "assets/levelGroup/GhostCastle/unkCol27/unkCol27.colS.inc.c"
 
-#include "assets/levelGroup/GhostCastle/unkCol27/unkCol27.colH.inc.c"
+ModelCollision GhostCastle_unkCol27_ColH = {
+4, 2, &GhostCastle_unkCol27_ColV[0], &GhostCastle_unkCol27_ColT[0], &GhostCastle_unkCol27_ColS
+};
 
 #include "assets/levelGroup/GhostCastle/unkCol28/unkCol28.colV.inc.c"
 
@@ -2376,7 +2154,9 @@ Mtx GhostCastle_IMtx79 = IDENTITY;
 
 #include "assets/levelGroup/GhostCastle/unkCol28/unkCol28.colS.inc.c"
 
-#include "assets/levelGroup/GhostCastle/unkCol28/unkCol28.colH.inc.c"
+ModelCollision GhostCastle_unkCol28_ColH = {
+8, 12, &GhostCastle_unkCol28_ColV[0], &GhostCastle_unkCol28_ColT[0], &GhostCastle_unkCol28_ColS
+};
 
 #include "assets/levelGroup/GhostCastle/unkCol29/unkCol29.colV.inc.c"
 
@@ -2384,7 +2164,9 @@ Mtx GhostCastle_IMtx79 = IDENTITY;
 
 #include "assets/levelGroup/GhostCastle/unkCol29/unkCol29.colS.inc.c"
 
-#include "assets/levelGroup/GhostCastle/unkCol29/unkCol29.colH.inc.c"
+ModelCollision GhostCastle_unkCol29_ColH = {
+8, 8, &GhostCastle_unkCol29_ColV[0], &GhostCastle_unkCol29_ColT[0], &GhostCastle_unkCol29_ColS
+};
 
 #include "assets/levelGroup/GhostCastle/unkCol30/unkCol30.colV.inc.c"
 
@@ -2392,7 +2174,9 @@ Mtx GhostCastle_IMtx79 = IDENTITY;
 
 #include "assets/levelGroup/GhostCastle/unkCol30/unkCol30.colS.inc.c"
 
-#include "assets/levelGroup/GhostCastle/unkCol30/unkCol30.colH.inc.c"
+ModelCollision GhostCastle_unkCol30_ColH = {
+48, 92, &GhostCastle_unkCol30_ColV[0], &GhostCastle_unkCol30_ColT[0], &GhostCastle_unkCol30_ColS
+};
 
 #include "assets/levelGroup/GhostCastle/unkCol31/unkCol31.colV.inc.c"
 
@@ -2400,7 +2184,9 @@ Mtx GhostCastle_IMtx79 = IDENTITY;
 
 #include "assets/levelGroup/GhostCastle/unkCol31/unkCol31.colS.inc.c"
 
-#include "assets/levelGroup/GhostCastle/unkCol31/unkCol31.colH.inc.c"
+ModelCollision GhostCastle_unkCol31_ColH = {
+48, 92, &GhostCastle_unkCol31_ColV[0], &GhostCastle_unkCol31_ColT[0], &GhostCastle_unkCol31_ColS
+};
 
 #include "assets/levelGroup/GhostCastle/unkCol32/unkCol32.colV.inc.c"
 
@@ -2408,7 +2194,9 @@ Mtx GhostCastle_IMtx79 = IDENTITY;
 
 #include "assets/levelGroup/GhostCastle/unkCol32/unkCol32.colS.inc.c"
 
-#include "assets/levelGroup/GhostCastle/unkCol32/unkCol32.colH.inc.c"
+ModelCollision GhostCastle_unkCol32_ColH = {
+8, 10, &GhostCastle_unkCol32_ColV[0], &GhostCastle_unkCol32_ColT[0], &GhostCastle_unkCol32_ColS
+};
 
 #include "assets/levelGroup/GhostCastle/unkCol33/unkCol33.colV.inc.c"
 
@@ -2416,7 +2204,9 @@ Mtx GhostCastle_IMtx79 = IDENTITY;
 
 #include "assets/levelGroup/GhostCastle/unkCol33/unkCol33.colS.inc.c"
 
-#include "assets/levelGroup/GhostCastle/unkCol33/unkCol33.colH.inc.c"
+ModelCollision GhostCastle_unkCol33_ColH = {
+8, 6, &GhostCastle_unkCol33_ColV[0], &GhostCastle_unkCol33_ColT[0], &GhostCastle_unkCol33_ColS
+};
 
 #include "assets/levelGroup/GhostCastle/unkCol34/unkCol34.colV.inc.c"
 
@@ -2424,7 +2214,9 @@ Mtx GhostCastle_IMtx79 = IDENTITY;
 
 #include "assets/levelGroup/GhostCastle/unkCol34/unkCol34.colS.inc.c"
 
-#include "assets/levelGroup/GhostCastle/unkCol34/unkCol34.colH.inc.c"
+ModelCollision GhostCastle_unkCol34_ColH = {
+4, 4, &GhostCastle_unkCol34_ColV[0], &GhostCastle_unkCol34_ColT[0], &GhostCastle_unkCol34_ColS
+};
 
 #include "assets/levelGroup/GhostCastle/unkCol35/unkCol35.colV.inc.c"
 
@@ -2432,7 +2224,9 @@ Mtx GhostCastle_IMtx79 = IDENTITY;
 
 #include "assets/levelGroup/GhostCastle/unkCol35/unkCol35.colS.inc.c"
 
-#include "assets/levelGroup/GhostCastle/unkCol35/unkCol35.colH.inc.c"
+ModelCollision GhostCastle_unkCol35_ColH = {
+4, 4, &GhostCastle_unkCol35_ColV[0], &GhostCastle_unkCol35_ColT[0], &GhostCastle_unkCol35_ColS
+};
 
 #include "assets/levelGroup/GhostCastle/unkCol36/unkCol36.colV.inc.c"
 
@@ -2440,7 +2234,9 @@ Mtx GhostCastle_IMtx79 = IDENTITY;
 
 #include "assets/levelGroup/GhostCastle/unkCol36/unkCol36.colS.inc.c"
 
-#include "assets/levelGroup/GhostCastle/unkCol36/unkCol36.colH.inc.c"
+ModelCollision GhostCastle_unkCol36_ColH = {
+8, 6, &GhostCastle_unkCol36_ColV[0], &GhostCastle_unkCol36_ColT[0], &GhostCastle_unkCol36_ColS
+};
 
 #include "assets/levelGroup/GhostCastle/unkCol37/unkCol37.colV.inc.c"
 
@@ -2448,7 +2244,9 @@ Mtx GhostCastle_IMtx79 = IDENTITY;
 
 #include "assets/levelGroup/GhostCastle/unkCol37/unkCol37.colS.inc.c"
 
-#include "assets/levelGroup/GhostCastle/unkCol37/unkCol37.colH.inc.c"
+ModelCollision GhostCastle_unkCol37_ColH = {
+8, 6, &GhostCastle_unkCol37_ColV[0], &GhostCastle_unkCol37_ColT[0], &GhostCastle_unkCol37_ColS
+};
 
 #include "assets/levelGroup/GhostCastle/unkCol38/unkCol38.colV.inc.c"
 
@@ -2456,7 +2254,9 @@ Mtx GhostCastle_IMtx79 = IDENTITY;
 
 #include "assets/levelGroup/GhostCastle/unkCol38/unkCol38.colS.inc.c"
 
-#include "assets/levelGroup/GhostCastle/unkCol38/unkCol38.colH.inc.c"
+ModelCollision GhostCastle_unkCol38_ColH = {
+4, 4, &GhostCastle_unkCol38_ColV[0], &GhostCastle_unkCol38_ColT[0], &GhostCastle_unkCol38_ColS
+};
 
 #include "assets/levelGroup/GhostCastle/unkCol39/unkCol39.colV.inc.c"
 
@@ -2464,7 +2264,9 @@ Mtx GhostCastle_IMtx79 = IDENTITY;
 
 #include "assets/levelGroup/GhostCastle/unkCol39/unkCol39.colS.inc.c"
 
-#include "assets/levelGroup/GhostCastle/unkCol39/unkCol39.colH.inc.c"
+ModelCollision GhostCastle_unkCol39_ColH = {
+8, 8, &GhostCastle_unkCol39_ColV[0], &GhostCastle_unkCol39_ColT[0], &GhostCastle_unkCol39_ColS
+};
 
 #include "assets/levelGroup/GhostCastle/unkCol40/unkCol40.colV.inc.c"
 
@@ -2472,7 +2274,9 @@ Mtx GhostCastle_IMtx79 = IDENTITY;
 
 #include "assets/levelGroup/GhostCastle/unkCol40/unkCol40.colS.inc.c"
 
-#include "assets/levelGroup/GhostCastle/unkCol40/unkCol40.colH.inc.c"
+ModelCollision GhostCastle_unkCol40_ColH = {
+6, 4, &GhostCastle_unkCol40_ColV[0], &GhostCastle_unkCol40_ColT[0], &GhostCastle_unkCol40_ColS
+};
 
 #include "assets/levelGroup/GhostCastle/unkCol41/unkCol41.colV.inc.c"
 
@@ -2480,7 +2284,9 @@ Mtx GhostCastle_IMtx79 = IDENTITY;
 
 #include "assets/levelGroup/GhostCastle/unkCol41/unkCol41.colS.inc.c"
 
-#include "assets/levelGroup/GhostCastle/unkCol41/unkCol41.colH.inc.c"
+ModelCollision GhostCastle_unkCol41_ColH = {
+6, 4, &GhostCastle_unkCol41_ColV[0], &GhostCastle_unkCol41_ColT[0], &GhostCastle_unkCol41_ColS
+};
 
 #include "assets/levelGroup/GhostCastle/unkCol42/unkCol42.colV.inc.c"
 
@@ -2488,7 +2294,9 @@ Mtx GhostCastle_IMtx79 = IDENTITY;
 
 #include "assets/levelGroup/GhostCastle/unkCol42/unkCol42.colS.inc.c"
 
-#include "assets/levelGroup/GhostCastle/unkCol42/unkCol42.colH.inc.c"
+ModelCollision GhostCastle_unkCol42_ColH = {
+4, 2, &GhostCastle_unkCol42_ColV[0], &GhostCastle_unkCol42_ColT[0], &GhostCastle_unkCol42_ColS
+};
 
 #include "assets/levelGroup/GhostCastle/unkCol43/unkCol43.colV.inc.c"
 
@@ -2496,7 +2304,9 @@ Mtx GhostCastle_IMtx79 = IDENTITY;
 
 #include "assets/levelGroup/GhostCastle/unkCol43/unkCol43.colS.inc.c"
 
-#include "assets/levelGroup/GhostCastle/unkCol43/unkCol43.colH.inc.c"
+ModelCollision GhostCastle_unkCol43_ColH = {
+4, 2, &GhostCastle_unkCol43_ColV[0], &GhostCastle_unkCol43_ColT[0], &GhostCastle_unkCol43_ColS
+};
 
 #include "assets/levelGroup/GhostCastle/unkCol44/unkCol44.colV.inc.c"
 
@@ -2504,7 +2314,9 @@ Mtx GhostCastle_IMtx79 = IDENTITY;
 
 #include "assets/levelGroup/GhostCastle/unkCol44/unkCol44.colS.inc.c"
 
-#include "assets/levelGroup/GhostCastle/unkCol44/unkCol44.colH.inc.c"
+ModelCollision GhostCastle_unkCol44_ColH = {
+76, 116, &GhostCastle_unkCol44_ColV[0], &GhostCastle_unkCol44_ColT[0], &GhostCastle_unkCol44_ColS
+};
 
 #include "assets/levelGroup/GhostCastle/unkCol45/unkCol45.colV.inc.c"
 
@@ -2512,7 +2324,9 @@ Mtx GhostCastle_IMtx79 = IDENTITY;
 
 #include "assets/levelGroup/GhostCastle/unkCol45/unkCol45.colS.inc.c"
 
-#include "assets/levelGroup/GhostCastle/unkCol45/unkCol45.colH.inc.c"
+ModelCollision GhostCastle_unkCol45_ColH = {
+50, 80, &GhostCastle_unkCol45_ColV[0], &GhostCastle_unkCol45_ColT[0], &GhostCastle_unkCol45_ColS
+};
 
 #include "assets/levelGroup/GhostCastle/unkCol46/unkCol46.colV.inc.c"
 
@@ -2520,7 +2334,9 @@ Mtx GhostCastle_IMtx79 = IDENTITY;
 
 #include "assets/levelGroup/GhostCastle/unkCol46/unkCol46.colS.inc.c"
 
-#include "assets/levelGroup/GhostCastle/unkCol46/unkCol46.colH.inc.c"
+ModelCollision GhostCastle_unkCol46_ColH = {
+55, 90, &GhostCastle_unkCol46_ColV[0], &GhostCastle_unkCol46_ColT[0], &GhostCastle_unkCol46_ColS
+};
 
 #include "assets/levelGroup/GhostCastle/unkCol47/unkCol47.colV.inc.c"
 
@@ -2528,7 +2344,9 @@ Mtx GhostCastle_IMtx79 = IDENTITY;
 
 #include "assets/levelGroup/GhostCastle/unkCol47/unkCol47.colS.inc.c"
 
-#include "assets/levelGroup/GhostCastle/unkCol47/unkCol47.colH.inc.c"
+ModelCollision GhostCastle_unkCol47_ColH = {
+37, 51, &GhostCastle_unkCol47_ColV[0], &GhostCastle_unkCol47_ColT[0], &GhostCastle_unkCol47_ColS
+};
 
 #include "assets/levelGroup/GhostCastle/unkCol48/unkCol48.colV.inc.c"
 
@@ -2536,7 +2354,9 @@ Mtx GhostCastle_IMtx79 = IDENTITY;
 
 #include "assets/levelGroup/GhostCastle/unkCol48/unkCol48.colS.inc.c"
 
-#include "assets/levelGroup/GhostCastle/unkCol48/unkCol48.colH.inc.c"
+ModelCollision GhostCastle_unkCol48_ColH = {
+66, 101, &GhostCastle_unkCol48_ColV[0], &GhostCastle_unkCol48_ColT[0], &GhostCastle_unkCol48_ColS
+};
 
 #include "assets/levelGroup/GhostCastle/unkCol49/unkCol49.colV.inc.c"
 
@@ -2544,7 +2364,9 @@ Mtx GhostCastle_IMtx79 = IDENTITY;
 
 #include "assets/levelGroup/GhostCastle/unkCol49/unkCol49.colS.inc.c"
 
-#include "assets/levelGroup/GhostCastle/unkCol49/unkCol49.colH.inc.c"
+ModelCollision GhostCastle_unkCol49_ColH = {
+28, 44, &GhostCastle_unkCol49_ColV[0], &GhostCastle_unkCol49_ColT[0], &GhostCastle_unkCol49_ColS
+};
 
 #include "assets/levelGroup/GhostCastle/unkCol50/unkCol50.colV.inc.c"
 
@@ -2552,7 +2374,9 @@ Mtx GhostCastle_IMtx79 = IDENTITY;
 
 #include "assets/levelGroup/GhostCastle/unkCol50/unkCol50.colS.inc.c"
 
-#include "assets/levelGroup/GhostCastle/unkCol50/unkCol50.colH.inc.c"
+ModelCollision GhostCastle_unkCol50_ColH = {
+92, 144, &GhostCastle_unkCol50_ColV[0], &GhostCastle_unkCol50_ColT[0], &GhostCastle_unkCol50_ColS
+};
 
 #include "assets/levelGroup/GhostCastle/unkCol51/unkCol51.colV.inc.c"
 
@@ -2560,7 +2384,9 @@ Mtx GhostCastle_IMtx79 = IDENTITY;
 
 #include "assets/levelGroup/GhostCastle/unkCol51/unkCol51.colS.inc.c"
 
-#include "assets/levelGroup/GhostCastle/unkCol51/unkCol51.colH.inc.c"
+ModelCollision GhostCastle_unkCol51_ColH = {
+132, 219, &GhostCastle_unkCol51_ColV[0], &GhostCastle_unkCol51_ColT[0], &GhostCastle_unkCol51_ColS
+};
 
 #include "assets/levelGroup/GhostCastle/unkCol52/unkCol52.colV.inc.c"
 
@@ -2568,7 +2394,9 @@ Mtx GhostCastle_IMtx79 = IDENTITY;
 
 #include "assets/levelGroup/GhostCastle/unkCol52/unkCol52.colS.inc.c"
 
-#include "assets/levelGroup/GhostCastle/unkCol52/unkCol52.colH.inc.c"
+ModelCollision GhostCastle_unkCol52_ColH = {
+36, 48, &GhostCastle_unkCol52_ColV[0], &GhostCastle_unkCol52_ColT[0], &GhostCastle_unkCol52_ColS
+};
 
 #include "assets/levelGroup/GhostCastle/unkCol53/unkCol53.colV.inc.c"
 
@@ -2576,7 +2404,9 @@ Mtx GhostCastle_IMtx79 = IDENTITY;
 
 #include "assets/levelGroup/GhostCastle/unkCol53/unkCol53.colS.inc.c"
 
-#include "assets/levelGroup/GhostCastle/unkCol53/unkCol53.colH.inc.c"
+ModelCollision GhostCastle_unkCol53_ColH = {
+44, 75, &GhostCastle_unkCol53_ColV[0], &GhostCastle_unkCol53_ColT[0], &GhostCastle_unkCol53_ColS
+};
 
 #include "assets/levelGroup/GhostCastle/unkCol54/unkCol54.colV.inc.c"
 
@@ -2584,7 +2414,9 @@ Mtx GhostCastle_IMtx79 = IDENTITY;
 
 #include "assets/levelGroup/GhostCastle/unkCol54/unkCol54.colS.inc.c"
 
-#include "assets/levelGroup/GhostCastle/unkCol54/unkCol54.colH.inc.c"
+ModelCollision GhostCastle_unkCol54_ColH = {
+54, 91, &GhostCastle_unkCol54_ColV[0], &GhostCastle_unkCol54_ColT[0], &GhostCastle_unkCol54_ColS
+};
 
 #include "assets/levelGroup/GhostCastle/unkCol55/unkCol55.colV.inc.c"
 
@@ -2592,7 +2424,9 @@ Mtx GhostCastle_IMtx79 = IDENTITY;
 
 #include "assets/levelGroup/GhostCastle/unkCol55/unkCol55.colS.inc.c"
 
-#include "assets/levelGroup/GhostCastle/unkCol55/unkCol55.colH.inc.c"
+ModelCollision GhostCastle_unkCol55_ColH = {
+62, 105, &GhostCastle_unkCol55_ColV[0], &GhostCastle_unkCol55_ColT[0], &GhostCastle_unkCol55_ColS
+};
 
 #include "assets/levelGroup/GhostCastle/unkCol56/unkCol56.colV.inc.c"
 
@@ -2600,7 +2434,9 @@ Mtx GhostCastle_IMtx79 = IDENTITY;
 
 #include "assets/levelGroup/GhostCastle/unkCol56/unkCol56.colS.inc.c"
 
-#include "assets/levelGroup/GhostCastle/unkCol56/unkCol56.colH.inc.c"
+ModelCollision GhostCastle_unkCol56_ColH = {
+161, 277, &GhostCastle_unkCol56_ColV[0], &GhostCastle_unkCol56_ColT[0], &GhostCastle_unkCol56_ColS
+};
 
 #include "assets/levelGroup/GhostCastle/unkCol57/unkCol57.colV.inc.c"
 
@@ -2608,7 +2444,9 @@ Mtx GhostCastle_IMtx79 = IDENTITY;
 
 #include "assets/levelGroup/GhostCastle/unkCol57/unkCol57.colS.inc.c"
 
-#include "assets/levelGroup/GhostCastle/unkCol57/unkCol57.colH.inc.c"
+ModelCollision GhostCastle_unkCol57_ColH = {
+92, 154, &GhostCastle_unkCol57_ColV[0], &GhostCastle_unkCol57_ColT[0], &GhostCastle_unkCol57_ColS
+};
 
 #include "assets/levelGroup/GhostCastle/unkCol58/unkCol58.colV.inc.c"
 
@@ -2616,7 +2454,9 @@ Mtx GhostCastle_IMtx79 = IDENTITY;
 
 #include "assets/levelGroup/GhostCastle/unkCol58/unkCol58.colS.inc.c"
 
-#include "assets/levelGroup/GhostCastle/unkCol58/unkCol58.colH.inc.c"
+ModelCollision GhostCastle_unkCol58_ColH = {
+60, 105, &GhostCastle_unkCol58_ColV[0], &GhostCastle_unkCol58_ColT[0], &GhostCastle_unkCol58_ColS
+};
 
 #include "assets/levelGroup/GhostCastle/unkCol59/unkCol59.colV.inc.c"
 
@@ -2624,7 +2464,9 @@ Mtx GhostCastle_IMtx79 = IDENTITY;
 
 #include "assets/levelGroup/GhostCastle/unkCol59/unkCol59.colS.inc.c"
 
-#include "assets/levelGroup/GhostCastle/unkCol59/unkCol59.colH.inc.c"
+ModelCollision GhostCastle_unkCol59_ColH = {
+68, 117, &GhostCastle_unkCol59_ColV[0], &GhostCastle_unkCol59_ColT[0], &GhostCastle_unkCol59_ColS
+};
 
 #include "assets/levelGroup/GhostCastle/unkCol60/unkCol60.colV.inc.c"
 
@@ -2632,7 +2474,9 @@ Mtx GhostCastle_IMtx79 = IDENTITY;
 
 #include "assets/levelGroup/GhostCastle/unkCol60/unkCol60.colS.inc.c"
 
-#include "assets/levelGroup/GhostCastle/unkCol60/unkCol60.colH.inc.c"
+ModelCollision GhostCastle_unkCol60_ColH = {
+68, 119, &GhostCastle_unkCol60_ColV[0], &GhostCastle_unkCol60_ColT[0], &GhostCastle_unkCol60_ColS
+};
 
 #include "assets/levelGroup/GhostCastle/unkCol61/unkCol61.colV.inc.c"
 
@@ -2640,7 +2484,9 @@ Mtx GhostCastle_IMtx79 = IDENTITY;
 
 #include "assets/levelGroup/GhostCastle/unkCol61/unkCol61.colS.inc.c"
 
-#include "assets/levelGroup/GhostCastle/unkCol61/unkCol61.colH.inc.c"
+ModelCollision GhostCastle_unkCol61_ColH = {
+8, 12, &GhostCastle_unkCol61_ColV[0], &GhostCastle_unkCol61_ColT[0], &GhostCastle_unkCol61_ColS
+};
 
 #include "assets/levelGroup/GhostCastle/unkCol62/unkCol62.colV.inc.c"
 
@@ -2648,7 +2494,9 @@ Mtx GhostCastle_IMtx79 = IDENTITY;
 
 #include "assets/levelGroup/GhostCastle/unkCol62/unkCol62.colS.inc.c"
 
-#include "assets/levelGroup/GhostCastle/unkCol62/unkCol62.colH.inc.c"
+ModelCollision GhostCastle_unkCol62_ColH = {
+8, 8, &GhostCastle_unkCol62_ColV[0], &GhostCastle_unkCol62_ColT[0], &GhostCastle_unkCol62_ColS
+};
 
 #include "assets/levelGroup/GhostCastle/unkCol63/unkCol63.colV.inc.c"
 
@@ -2656,7 +2504,9 @@ Mtx GhostCastle_IMtx79 = IDENTITY;
 
 #include "assets/levelGroup/GhostCastle/unkCol63/unkCol63.colS.inc.c"
 
-#include "assets/levelGroup/GhostCastle/unkCol63/unkCol63.colH.inc.c"
+ModelCollision GhostCastle_unkCol63_ColH = {
+12, 12, &GhostCastle_unkCol63_ColV[0], &GhostCastle_unkCol63_ColT[0], &GhostCastle_unkCol63_ColS
+};
 
 #include "assets/levelGroup/GhostCastle/unkCol64/unkCol64.colV.inc.c"
 
@@ -2664,7 +2514,9 @@ Mtx GhostCastle_IMtx79 = IDENTITY;
 
 #include "assets/levelGroup/GhostCastle/unkCol64/unkCol64.colS.inc.c"
 
-#include "assets/levelGroup/GhostCastle/unkCol64/unkCol64.colH.inc.c"
+ModelCollision GhostCastle_unkCol64_ColH = {
+22, 20, &GhostCastle_unkCol64_ColV[0], &GhostCastle_unkCol64_ColT[0], &GhostCastle_unkCol64_ColS
+};
 
 #include "assets/levelGroup/GhostCastle/unkCol65/unkCol65.colV.inc.c"
 
@@ -2672,7 +2524,9 @@ Mtx GhostCastle_IMtx79 = IDENTITY;
 
 #include "assets/levelGroup/GhostCastle/unkCol65/unkCol65.colS.inc.c"
 
-#include "assets/levelGroup/GhostCastle/unkCol65/unkCol65.colH.inc.c"
+ModelCollision GhostCastle_unkCol65_ColH = {
+4, 4, &GhostCastle_unkCol65_ColV[0], &GhostCastle_unkCol65_ColT[0], &GhostCastle_unkCol65_ColS
+};
 
 #include "assets/levelGroup/GhostCastle/unkCol66/unkCol66.colV.inc.c"
 
@@ -2680,7 +2534,9 @@ Mtx GhostCastle_IMtx79 = IDENTITY;
 
 #include "assets/levelGroup/GhostCastle/unkCol66/unkCol66.colS.inc.c"
 
-#include "assets/levelGroup/GhostCastle/unkCol66/unkCol66.colH.inc.c"
+ModelCollision GhostCastle_unkCol66_ColH = {
+4, 4, &GhostCastle_unkCol66_ColV[0], &GhostCastle_unkCol66_ColT[0], &GhostCastle_unkCol66_ColS
+};
 
 #include "assets/levelGroup/GhostCastle/unkCol67/unkCol67.colV.inc.c"
 
@@ -2688,7 +2544,9 @@ Mtx GhostCastle_IMtx79 = IDENTITY;
 
 #include "assets/levelGroup/GhostCastle/unkCol67/unkCol67.colS.inc.c"
 
-#include "assets/levelGroup/GhostCastle/unkCol67/unkCol67.colH.inc.c"
+ModelCollision GhostCastle_unkCol67_ColH = {
+12, 14, &GhostCastle_unkCol67_ColV[0], &GhostCastle_unkCol67_ColT[0], &GhostCastle_unkCol67_ColS
+};
 
 #include "assets/levelGroup/GhostCastle/unkCol68/unkCol68.colV.inc.c"
 
@@ -2696,7 +2554,9 @@ Mtx GhostCastle_IMtx79 = IDENTITY;
 
 #include "assets/levelGroup/GhostCastle/unkCol68/unkCol68.colS.inc.c"
 
-#include "assets/levelGroup/GhostCastle/unkCol68/unkCol68.colH.inc.c"
+ModelCollision GhostCastle_unkCol68_ColH = {
+8, 10, &GhostCastle_unkCol68_ColV[0], &GhostCastle_unkCol68_ColT[0], &GhostCastle_unkCol68_ColS
+};
 
 #include "assets/levelGroup/GhostCastle/unkCol69/unkCol69.colV.inc.c"
 
@@ -2704,7 +2564,9 @@ Mtx GhostCastle_IMtx79 = IDENTITY;
 
 #include "assets/levelGroup/GhostCastle/unkCol69/unkCol69.colS.inc.c"
 
-#include "assets/levelGroup/GhostCastle/unkCol69/unkCol69.colH.inc.c"
+ModelCollision GhostCastle_unkCol69_ColH = {
+55, 90, &GhostCastle_unkCol69_ColV[0], &GhostCastle_unkCol69_ColT[0], &GhostCastle_unkCol69_ColS
+};
 
 #include "assets/levelGroup/GhostCastle/unkCol70/unkCol70.colV.inc.c"
 
@@ -2712,7 +2574,9 @@ Mtx GhostCastle_IMtx79 = IDENTITY;
 
 #include "assets/levelGroup/GhostCastle/unkCol70/unkCol70.colS.inc.c"
 
-#include "assets/levelGroup/GhostCastle/unkCol70/unkCol70.colH.inc.c"
+ModelCollision GhostCastle_unkCol70_ColH = {
+12, 8, &GhostCastle_unkCol70_ColV[0], &GhostCastle_unkCol70_ColT[0], &GhostCastle_unkCol70_ColS
+};
 
 #include "assets/levelGroup/GhostCastle/unkCol71/unkCol71.colV.inc.c"
 
@@ -2720,7 +2584,9 @@ Mtx GhostCastle_IMtx79 = IDENTITY;
 
 #include "assets/levelGroup/GhostCastle/unkCol71/unkCol71.colS.inc.c"
 
-#include "assets/levelGroup/GhostCastle/unkCol71/unkCol71.colH.inc.c"
+ModelCollision GhostCastle_unkCol71_ColH = {
+16, 28, &GhostCastle_unkCol71_ColV[0], &GhostCastle_unkCol71_ColT[0], &GhostCastle_unkCol71_ColS
+};
 
 #include "assets/levelGroup/GhostCastle/unkCol72/unkCol72.colV.inc.c"
 
@@ -2728,7 +2594,9 @@ Mtx GhostCastle_IMtx79 = IDENTITY;
 
 #include "assets/levelGroup/GhostCastle/unkCol72/unkCol72.colS.inc.c"
 
-#include "assets/levelGroup/GhostCastle/unkCol72/unkCol72.colH.inc.c"
+ModelCollision GhostCastle_unkCol72_ColH = {
+16, 25, &GhostCastle_unkCol72_ColV[0], &GhostCastle_unkCol72_ColT[0], &GhostCastle_unkCol72_ColS
+};
 
 #include "assets/levelGroup/GhostCastle/unkCol73/unkCol73.colV.inc.c"
 
@@ -2736,7 +2604,9 @@ Mtx GhostCastle_IMtx79 = IDENTITY;
 
 #include "assets/levelGroup/GhostCastle/unkCol73/unkCol73.colS.inc.c"
 
-#include "assets/levelGroup/GhostCastle/unkCol73/unkCol73.colH.inc.c"
+ModelCollision GhostCastle_unkCol73_ColH = {
+8, 8, &GhostCastle_unkCol73_ColV[0], &GhostCastle_unkCol73_ColT[0], &GhostCastle_unkCol73_ColS
+};
 
 #include "assets/levelGroup/GhostCastle/unkCol74/unkCol74.colV.inc.c"
 
@@ -2744,7 +2614,9 @@ Mtx GhostCastle_IMtx79 = IDENTITY;
 
 #include "assets/levelGroup/GhostCastle/unkCol74/unkCol74.colS.inc.c"
 
-#include "assets/levelGroup/GhostCastle/unkCol74/unkCol74.colH.inc.c"
+ModelCollision GhostCastle_unkCol74_ColH = {
+8, 8, &GhostCastle_unkCol74_ColV[0], &GhostCastle_unkCol74_ColT[0], &GhostCastle_unkCol74_ColS
+};
 
 #include "assets/levelGroup/GhostCastle/unkCol75/unkCol75.colV.inc.c"
 
@@ -2752,7 +2624,9 @@ Mtx GhostCastle_IMtx79 = IDENTITY;
 
 #include "assets/levelGroup/GhostCastle/unkCol75/unkCol75.colS.inc.c"
 
-#include "assets/levelGroup/GhostCastle/unkCol75/unkCol75.colH.inc.c"
+ModelCollision GhostCastle_unkCol75_ColH = {
+8, 8, &GhostCastle_unkCol75_ColV[0], &GhostCastle_unkCol75_ColT[0], &GhostCastle_unkCol75_ColS
+};
 
 #include "assets/levelGroup/GhostCastle/unkCol76/unkCol76.colV.inc.c"
 
@@ -2760,7 +2634,9 @@ Mtx GhostCastle_IMtx79 = IDENTITY;
 
 #include "assets/levelGroup/GhostCastle/unkCol76/unkCol76.colS.inc.c"
 
-#include "assets/levelGroup/GhostCastle/unkCol76/unkCol76.colH.inc.c"
+ModelCollision GhostCastle_unkCol76_ColH = {
+8, 8, &GhostCastle_unkCol76_ColV[0], &GhostCastle_unkCol76_ColT[0], &GhostCastle_unkCol76_ColS
+};
 
 #include "assets/levelGroup/GhostCastle/unkCol77/unkCol77.colV.inc.c"
 
@@ -2768,7 +2644,9 @@ Mtx GhostCastle_IMtx79 = IDENTITY;
 
 #include "assets/levelGroup/GhostCastle/unkCol77/unkCol77.colS.inc.c"
 
-#include "assets/levelGroup/GhostCastle/unkCol77/unkCol77.colH.inc.c"
+ModelCollision GhostCastle_unkCol77_ColH = {
+18, 16, &GhostCastle_unkCol77_ColV[0], &GhostCastle_unkCol77_ColT[0], &GhostCastle_unkCol77_ColS
+};
 Mtx GhostCastle_IMtx80 = IDENTITY;
 
 #include "assets/levelGroup/GhostCastle/gcScope2/gcScope2.light.inc.c"

@@ -26,6 +26,7 @@ options:
   asm_data_macro: dlabel
   create_undefined_funcs_auto: no
   asm_emit_size_directive: false
+  cache_path: .splache
 segments:
   - name: header
     type: databin
@@ -5708,7 +5709,6 @@ segments:
       - [0x5787f8, animArray, anim/unk2, 1, 1]
       - [0x578838, animPointers, anim/unk2Pointers]
       - [0x578844, databin, alignment3]
-
 
   - start: 0x578850
     name: DesertCastle
@@ -12773,8 +12773,6 @@ segments:
       - [0x7FD3A0, animPointers, anim/unk6Pointers]
       - [0x7FD3AC] #eof
 
-
-
   - start: 0x7fd3b0
     name: PileOfBooks
     vram: 0x03000000 #SEGMENT 0x03
@@ -13071,9 +13069,6 @@ segments:
       - [0x849418, animArray, anim/unk5, 10, 2]
       - [0x849918, animPointers, anim/unk5Pointers]
       - [0x849924] #eof
-
-
-
 
   - start: 0x849930
     name: BattleMode
@@ -13593,7 +13588,6 @@ segments:
       - [0x85c8e0, animArray, anim/unk1, 2, 1]
       - [0x85c960, animPointers, anim/unk1Pointers]
       - [0x85c96c] #eof
-
 
   - start: 0x85c970
     name: Training

@@ -6114,7 +6114,7 @@ extImages_unk2_Animarr = 0x101E6808; // type:Animarr rom:0xAA8EA8 defined:True
 
 //generated section KidsLand starting here
 KidsLand_IMtx1 = 0x03000000; // type:Mtx rom:0x51FB40 defined:True
-KidsLand_pointers_Lvp = 0x03000040; // type:Lvp rom:0x51FB80 defined:True
+KidsLand_stageModels = 0x03000040; // type:Lvp rom:0x51FB80 defined:True
 KidsLand_rabObjects_Bin = 0x03001690; // type:Bin rom:0x5211D0 defined:True
 KidsLand_room0_spr1_Sprite = 0x030016B8; // type:Sprite rom:0x5211F8 defined:True
 KidsLand_room0_sprSTOP_Sprite = 0x03001708; // type:Sprite rom:0x521248 defined:True
@@ -6903,8 +6903,8 @@ KidsLand_room16_Rmset = 0x03015A5C; // type:Rmset rom:0x53559C defined:True
 KidsLand_room17_Rmset = 0x03015AC8; // type:Rmset rom:0x535608 defined:True
 KidsLand_room18_Rmset = 0x03015B34; // type:Rmset rom:0x535674 defined:True
 KidsLand_roomSTOP_Rmset = 0x03015BA0; // type:Rmset rom:0x5356E0 defined:True
-KidsLand_map_LvmM = 0x03015C0C; // type:LvmM rom:0x53574C defined:True
-KidsLand_map_LvmH = 0x03015CEC; // type:LvmH rom:0x53582C defined:True
+KidsLand_rooms_map = 0x03015C0C; // type:LvmM rom:0x53574C defined:True
+KidsLand_map_data = 0x03015CEC; // type:LvmH rom:0x53582C defined:True
 KidsLand_nullOWRoom_Rmset = 0x03015CFC; // type:Rmset rom:0x53583C defined:True
 KidsLand_scope_Lvlscope = 0x03015D68; // type:Lvlscope rom:0x5358A8 defined:True
 KidsLand_header_Lvlhdr = 0x03015D80; // type:Lvlhdr rom:0x5358C0 defined:True
@@ -9035,7 +9035,7 @@ BombLand_unkPointers_Animp = 0x03043F80; // type:Animp rom:0x51FB30 defined:True
 
 //generated section DesertCastle starting here
 DesertCastle_IMtx1 = 0x03000000; // type:Mtx rom:0x578850 defined:True
-DesertCastle_pointers_Lvp = 0x03000040; // type:Lvp rom:0x578890 defined:True
+DesertCastle_stageModels = 0x03000040; // type:Lvp rom:0x578890 defined:True
 DesertCastle_rabObjects_Bin = 0x03001840; // type:Bin rom:0x57A090 defined:True
 DesertCastle_room1_spr1_Sprite = 0x03001868; // type:Sprite rom:0x57A0B8 defined:True
 DesertCastle_room1_sprSTOP_Sprite = 0x030018B8; // type:Sprite rom:0x57A108 defined:True
@@ -9487,8 +9487,8 @@ DesertCastle_room35_clct3_Clct = 0x0300D21C; // type:Clct rom:0x585A6C defined:T
 DesertCastle_room35_clctSTOP_Clct = 0x0300D23C; // type:Clct rom:0x585A8C defined:True
 DesertCastle_fakeRoom1_Rmset = 0x0300D25C; // type:Rmset rom:0x585AAC defined:True
 DesertCastle_fakeRoomSTOP_Rmset = 0x0300D2C8; // type:Rmset rom:0x585B18 defined:True
-DesertCastle_map_LvmM = 0x0300D334; // type:LvmM rom:0x585B84 defined:True
-DesertCastle_map_LvmH = 0x0300D340; // type:LvmH rom:0x585B90 defined:True
+DesertCastle_rooms_map = 0x0300D334; // type:LvmM rom:0x585B84 defined:True
+DesertCastle_map_data = 0x0300D340; // type:LvmH rom:0x585B90 defined:True
 DesertCastle_room5_act1_Roomact = 0x0300D350; // type:Roomact rom:0x585BA0 defined:True
 DesertCastle_room5_act2_Roomact = 0x0300D3B0; // type:Roomact rom:0x585C00 defined:True
 DesertCastle_room5_actSTOP_Roomact = 0x0300D410; // type:Roomact rom:0x585C60 defined:True
@@ -10266,7 +10266,7 @@ DesertCastle_unk3Pointers_Animp = 0x0304B2C0; // type:Animp rom:0x5C3B10 defined
 
 //generated section IntroOutro starting here
 IntroOutro_IMtx1 = 0x03000000; // type:Mtx rom:0x5C3B20 defined:True
-IntroOutro_pointers_Lvp = 0x03000040; // type:Lvp rom:0x5C3B60 defined:True
+IntroOutro_stageModels = 0x03000040; // type:Lvp rom:0x5C3B60 defined:True
 IntroOutro_rabObjects_Bin = 0x03000E80; // type:Bin rom:0x5C49A0 defined:True
 IntroOutro_room0_obj1_Roomobj = 0x03000EA8; // type:Roomobj rom:0x5C49C8 defined:True
 IntroOutro_room0_obj2_Roomobj = 0x03000F34; // type:Roomobj rom:0x5C4A54 defined:True
@@ -10476,8 +10476,8 @@ IntroOutro_roomMulti_objSTOP_Roomobj = 0x03007974; // type:Roomobj rom:0x5CB494 
 IntroOutro_spriteLib_Sprlib = 0x03007A00; // type:Sprlib rom:0x5CB520 defined:True
 IntroOutro_fakeRoom_Rmset = 0x03007A80; // type:Rmset rom:0x5CB5A0 defined:True
 IntroOutro_fakeRoomSTOP_Rmset = 0x03007AEC; // type:Rmset rom:0x5CB60C defined:True
-IntroOutro_map_LvmM = 0x03007B58; // type:LvmM rom:0x5CB678 defined:True
-IntroOutro_map_LvmH = 0x03007B64; // type:LvmH rom:0x5CB684 defined:True
+IntroOutro_rooms_map = 0x03007B58; // type:LvmM rom:0x5CB678 defined:True
+IntroOutro_map_data = 0x03007B64; // type:LvmH rom:0x5CB684 defined:True
 IntroOutro_room0_Rmset = 0x03007B74; // type:Rmset rom:0x5CB694 defined:True
 IntroOutro_room1_Rmset = 0x03007BE0; // type:Rmset rom:0x5CB700 defined:True
 IntroOutro_room2_Rmset = 0x03007C4C; // type:Rmset rom:0x5CB76C defined:True
@@ -11303,7 +11303,7 @@ static0_chameleonAnims = 0x01045B70; // type:Animp rom:0x1476D0 defined:True
 
 //generated section GhostCastle starting here
 GhostCastle_IMtx1 = 0x03000000; // type:Mtx rom:0x6344C0 defined:True
-GhostCastle_pointers_Lvp = 0x03000040; // type:Lvp rom:0x634500 defined:True
+GhostCastle_stageModels = 0x03000040; // type:Lvp rom:0x634500 defined:True
 GhostCastle_rabObjects_Bin = 0x030015D0; // type:Bin rom:0x635A90 defined:True
 GhostCastle_room0_spr1_Sprite = 0x030015F8; // type:Sprite rom:0x635AB8 defined:True
 GhostCastle_room0_spr2_Sprite = 0x03001648; // type:Sprite rom:0x635B08 defined:True
@@ -11911,8 +11911,8 @@ GhostCastle_room17_Rmset = 0x03011B80; // type:Rmset rom:0x646040 defined:True
 GhostCastle_room18_Rmset = 0x03011BEC; // type:Rmset rom:0x6460AC defined:True
 GhostCastle_room19_Rmset = 0x03011C58; // type:Rmset rom:0x646118 defined:True
 GhostCastle_roomSTOP_Rmset = 0x03011CC4; // type:Rmset rom:0x646184 defined:True
-GhostCastle_map_LvmM = 0x03011D30; // type:LvmM rom:0x6461F0 defined:True
-GhostCastle_map_LvmH = 0x03011E48; // type:LvmH rom:0x646308 defined:True
+GhostCastle_rooms_map = 0x03011D30; // type:LvmM rom:0x6461F0 defined:True
+GhostCastle_map_data = 0x03011E48; // type:LvmH rom:0x646308 defined:True
 GhostCastle_roomUnk2_spr1_Sprite = 0x03011E58; // type:Sprite rom:0x646318 defined:True
 GhostCastle_nullOWRoom_Rmset = 0x03011EA8; // type:Rmset rom:0x646368 defined:True
 GhostCastle_scope_Lvlscope = 0x03011F14; // type:Lvlscope rom:0x6463D4 defined:True
@@ -12578,7 +12578,7 @@ GhostCastle_unk4Pointer_Animp = 0x03074948; // type:Animp rom:0x6A8E08 defined:T
 
 //generated section LizardKong starting here
 LizardKong_IMtx1 = 0x03000000; // type:Mtx rom:0x70DB70 defined:True
-LizardKong_pointers_Lvp = 0x03000040; // type:Lvp rom:0x70DBB0 defined:True
+LizardKong_stageModels = 0x03000040; // type:Lvp rom:0x70DBB0 defined:True
 LizardKong_rabObjects_Bin = 0x030007C0; // type:Bin rom:0x70E330 defined:True
 LizardKong_room0_obj1_Roomobj = 0x030007E8; // type:Roomobj rom:0x70E358 defined:True
 LizardKong_room0_obj2_Roomobj = 0x03000874; // type:Roomobj rom:0x70E3E4 defined:True
@@ -12601,8 +12601,8 @@ LizardKong_spriteLib_Sprlib = 0x03000FD4; // type:Sprlib rom:0x70EB44 defined:Tr
 LizardKong_room0_Rmset = 0x03001054; // type:Rmset rom:0x70EBC4 defined:True
 LizardKong_room1_Rmset = 0x030010C0; // type:Rmset rom:0x70EC30 defined:True
 LizardKong_roomSTOP_Rmset = 0x0300112C; // type:Rmset rom:0x70EC9C defined:True
-LizardKong_map_LvmM = 0x03001198; // type:LvmM rom:0x70ED08 defined:True
-LizardKong_map_LvmH = 0x030011C8; // type:LvmH rom:0x70ED38 defined:True
+LizardKong_rooms_map = 0x03001198; // type:LvmM rom:0x70ED08 defined:True
+LizardKong_map_data = 0x030011C8; // type:LvmH rom:0x70ED38 defined:True
 LizardKong_scope_Lvlscope = 0x030011D8; // type:Lvlscope rom:0x70ED48 defined:True
 LizardKong_header_Lvlhdr = 0x030011F0; // type:Lvlhdr rom:0x70ED60 defined:True
 LizardKong_IMtx2 = 0x03001210; // type:Mtx rom:0x70ED80 defined:True
@@ -12728,7 +12728,7 @@ LizardKong_unk11Pointers_Animp = 0x03039C68; // type:Animp rom:0x7477D8 defined:
 
 //generated section Quintella starting here
 Quintella_IMtx1 = 0x03000000; // type:Mtx rom:0x7477F0 defined:True
-Quintella_pointers_Lvp = 0x03000040; // type:Lvp rom:0x747830 defined:True
+Quintella_stageModels = 0x03000040; // type:Lvp rom:0x747830 defined:True
 Quintella_rabObjects_Bin = 0x030007C0; // type:Bin rom:0x747FB0 defined:True
 Quintella_spriteLib_Sprlib = 0x030007E8; // type:Sprlib rom:0x747FD8 defined:True
 Quintella_roomUnk_clct1_Clct = 0x03000868; // type:Clct rom:0x748058 defined:True
@@ -12759,8 +12759,8 @@ Quintella_room1_actSTOP_Roomact = 0x03001210; // type:Roomact rom:0x748A00 defin
 Quintella_room0_Rmset = 0x03001270; // type:Rmset rom:0x748A60 defined:True
 Quintella_room1_Rmset = 0x030012DC; // type:Rmset rom:0x748ACC defined:True
 Quintella_roomSTOP_Rmset = 0x03001348; // type:Rmset rom:0x748B38 defined:True
-Quintella_map_LvmM = 0x030013B4; // type:LvmM rom:0x748BA4 defined:True
-Quintella_map_LvmH = 0x030013C0; // type:LvmH rom:0x748BB0 defined:True
+Quintella_rooms_map = 0x030013B4; // type:LvmM rom:0x748BA4 defined:True
+Quintella_map_data = 0x030013C0; // type:LvmH rom:0x748BB0 defined:True
 Quintella_nullOWRoom_Rmset = 0x030013D0; // type:Rmset rom:0x748BC0 defined:True
 Quintella_scope_Lvlscope = 0x0300143C; // type:Lvlscope rom:0x748C2C defined:True
 Quintella_header_Lvlhdr = 0x03001454; // type:Lvlhdr rom:0x748C44 defined:True
@@ -12894,7 +12894,7 @@ Quintella_unk11Pointers_Animp = 0x0305FAA8; // type:Animp rom:0x7A7298 defined:T
 
 //generated section BombSnake starting here
 BombSnake_IMtx1 = 0x03000000; // type:Mtx rom:0x7A72B0 defined:True
-BombSnake_pointers_Lvp = 0x03000040; // type:Lvp rom:0x7A72F0 defined:True
+BombSnake_stageModels = 0x03000040; // type:Lvp rom:0x7A72F0 defined:True
 BombSnake_rabObjects_Bin = 0x030007C0; // type:Bin rom:0x7A7A70 defined:True
 BombSnake_room0_obj1_Roomobj = 0x03000924; // type:Roomobj rom:0x7A7BD4 defined:True
 BombSnake_room0_obj2_Roomobj = 0x030009B0; // type:Roomobj rom:0x7A7C60 defined:True
@@ -12917,8 +12917,8 @@ BombSnake_spriteLib_Sprlib = 0x030011C0; // type:Sprlib rom:0x7A8470 defined:Tru
 BombSnake_room0_Rmset = 0x03001280; // type:Rmset rom:0x7A8530 defined:True
 BombSnake_room1_Rmset = 0x030012EC; // type:Rmset rom:0x7A859C defined:True
 BombSnake_roomSTOP_Rmset = 0x03001358; // type:Rmset rom:0x7A8608 defined:True
-BombSnake_map_LvmM = 0x030013C4; // type:LvmM rom:0x7A8674 defined:True
-BombSnake_map_LvmH = 0x030013D0; // type:LvmH rom:0x7A8680 defined:True
+BombSnake_rooms_map = 0x030013C4; // type:LvmM rom:0x7A8674 defined:True
+BombSnake_map_data = 0x030013D0; // type:LvmH rom:0x7A8680 defined:True
 BombSnake_nullOWRoom_Rmset = 0x030013E0; // type:Rmset rom:0x7A8690 defined:True
 BombSnake_scope_Lvlscope = 0x0300144C; // type:Lvlscope rom:0x7A86FC defined:True
 BombSnake_header_Lvlhdr = 0x03001464; // type:Lvlhdr rom:0x7A8714 defined:True
@@ -12991,7 +12991,7 @@ BombSnake_unk4Pointers_Animp = 0x0300846C; // type:Animp rom:0x7AF71C defined:Tr
 
 //generated section GiantCake starting here
 GiantCake_IMtx1 = 0x03000000; // type:Mtx rom:0x7AF730 defined:True
-GiantCake_pointers_Lvp = 0x03000040; // type:Lvp rom:0x7AF770 defined:True
+GiantCake_stageModels = 0x03000040; // type:Lvp rom:0x7AF770 defined:True
 GiantCake_rabObjects_Bin = 0x030007C0; // type:Bin rom:0x7AFEF0 defined:True
 GiantCake_roomMulti_obj1_Roomobj = 0x030007E8; // type:Roomobj rom:0x7AFF18 defined:True
 GiantCake_roomMulti_obj2_Roomobj = 0x03000874; // type:Roomobj rom:0x7AFFA4 defined:True
@@ -13014,8 +13014,8 @@ GiantCake_spriteLib_Sprlib = 0x03001084; // type:Sprlib rom:0x7B07B4 defined:Tru
 GiantCake_room0_Rmset = 0x03001104; // type:Rmset rom:0x7B0834 defined:True
 GiantCake_room1_Rmset = 0x03001170; // type:Rmset rom:0x7B08A0 defined:True
 GiantCake_roomSTOP_Rmset = 0x030011DC; // type:Rmset rom:0x7B090C defined:True
-GiantCake_map_LvmM = 0x03001248; // type:LvmM rom:0x7B0978 defined:True
-GiantCake_map_LvmH = 0x0300126C; // type:LvmH rom:0x7B099C defined:True
+GiantCake_rooms_map = 0x03001248; // type:LvmM rom:0x7B0978 defined:True
+GiantCake_map_data = 0x0300126C; // type:LvmH rom:0x7B099C defined:True
 GiantCake_nullOWRoom_Rmset = 0x0300127C; // type:Rmset rom:0x7B09AC defined:True
 GiantCake_scope_Lvlscope = 0x030012E8; // type:Lvlscope rom:0x7B0A18 defined:True
 GiantCake_header_Lvlhdr = 0x03001300; // type:Lvlhdr rom:0x7B0A30 defined:True
@@ -13218,7 +13218,7 @@ GiantCake_unk5Pointers_Animp = 0x03022B68; // type:Animp rom:0x7D2298 defined:Tr
 
 //generated section Armadillo starting here
 Armadillo_IMtx1 = 0x03000000; // type:Mtx rom:0x7D22B0 defined:True
-Armadillo_pointers_Lvp = 0x03000040; // type:Lvp rom:0x7D22F0 defined:True
+Armadillo_stageModels = 0x03000040; // type:Lvp rom:0x7D22F0 defined:True
 Armadillo_rabObjects_Bin = 0x030007C0; // type:Bin rom:0x7D2A70 defined:True
 Armadillo_roomMulti_obj1_Roomobj = 0x030007E8; // type:Roomobj rom:0x7D2A98 defined:True
 Armadillo_roomMulti_obj2_Roomobj = 0x03000874; // type:Roomobj rom:0x7D2B24 defined:True
@@ -13242,8 +13242,8 @@ Armadillo_spriteLib_Sprlib = 0x03001110; // type:Sprlib rom:0x7D33C0 defined:Tru
 Armadillo_room0_Rmset = 0x030011D0; // type:Rmset rom:0x7D3480 defined:True
 Armadillo_room1_Rmset = 0x0300123C; // type:Rmset rom:0x7D34EC defined:True
 Armadillo_roomSTOP_Rmset = 0x030012A8; // type:Rmset rom:0x7D3558 defined:True
-Armadillo_map_LvmM = 0x03001314; // type:LvmM rom:0x7D35C4 defined:True
-Armadillo_map_LvmH = 0x03001330; // type:LvmH rom:0x7D35E0 defined:True
+Armadillo_rooms_map = 0x03001314; // type:LvmM rom:0x7D35C4 defined:True
+Armadillo_map_data = 0x03001330; // type:LvmH rom:0x7D35E0 defined:True
 Armadillo_nullOWRoom_Rmset = 0x03001340; // type:Rmset rom:0x7D35F0 defined:True
 Armadillo_scope_Lvlscope = 0x030013AC; // type:Lvlscope rom:0x7D365C defined:True
 Armadillo_header_Lvlhdr = 0x030013C4; // type:Lvlhdr rom:0x7D3674 defined:True
@@ -13362,7 +13362,7 @@ Armadillo_unk6Pointers_Animp = 0x0302B0F0; // type:Animp rom:0x7FD3A0 defined:Tr
 
 //generated section PileOfBooks starting here
 PileOfBooks_IMtx1 = 0x03000000; // type:Mtx rom:0x7FD3B0 defined:True
-PileOfBooks_pointers_Lvp = 0x03000040; // type:Lvp rom:0x7FD3F0 defined:True
+PileOfBooks_stageModels = 0x03000040; // type:Lvp rom:0x7FD3F0 defined:True
 PileOfBooks_rabObjects_Bin = 0x03000880; // type:Bin rom:0x7FDC30 defined:True
 PileOfBooks_roomMulti_obj1_Roomobj = 0x030008A8; // type:Roomobj rom:0x7FDC58 defined:True
 PileOfBooks_roomMulti_obj2_Roomobj = 0x03000934; // type:Roomobj rom:0x7FDCE4 defined:True
@@ -13419,8 +13419,8 @@ PileOfBooks_room1_Rmset = 0x030023B0; // type:Rmset rom:0x7FF760 defined:True
 PileOfBooks_room2_Rmset = 0x0300241C; // type:Rmset rom:0x7FF7CC defined:True
 PileOfBooks_room3_Rmset = 0x03002488; // type:Rmset rom:0x7FF838 defined:True
 PileOfBooks_roomSTOP_Rmset = 0x030024F4; // type:Rmset rom:0x7FF8A4 defined:True
-PileOfBooks_map_LvmM = 0x03002560; // type:LvmM rom:0x7FF910 defined:True
-PileOfBooks_map_LvmH = 0x03002590; // type:LvmH rom:0x7FF940 defined:True
+PileOfBooks_rooms_map = 0x03002560; // type:LvmM rom:0x7FF910 defined:True
+PileOfBooks_map_data = 0x03002590; // type:LvmH rom:0x7FF940 defined:True
 PileOfBooks_roomUnk_spr1_Sprite = 0x030025A0; // type:Sprite rom:0x7FF950 defined:True
 PileOfBooks_nullOWRoom_Rmset = 0x030025F0; // type:Rmset rom:0x7FF9A0 defined:True
 PileOfBooks_scope_Lvlscope = 0x0300265C; // type:Lvlscope rom:0x7FFA0C defined:True
@@ -13570,7 +13570,7 @@ PileOfBooks_unk5Pointers_Animp = 0x0304C568; // type:Animp rom:0x849918 defined:
 
 //generated section BattleMode starting here
 BattleMode_IMtx1 = 0x03000000; // type:Mtx rom:0x849930 defined:True
-BattleMode_pointers_Lvp = 0x03000040; // type:Lvp rom:0x849970 defined:True
+BattleMode_stageModels = 0x03000040; // type:Lvp rom:0x849970 defined:True
 BattleMode_rabObjects_Bin = 0x03000D00; // type:Bin rom:0x84A630 defined:True
 BattleMode_room7_obj1_Roomobj = 0x03000D28; // type:Roomobj rom:0x84A658 defined:True
 BattleMode_room7_obj2_Roomobj = 0x03000DB4; // type:Roomobj rom:0x84A6E4 defined:True
@@ -13765,8 +13765,8 @@ BattleMode_room5_Rmset = 0x03006088; // type:Rmset rom:0x84F9B8 defined:True
 BattleMode_room6_Rmset = 0x030060F4; // type:Rmset rom:0x84FA24 defined:True
 BattleMode_room7_Rmset = 0x03006160; // type:Rmset rom:0x84FA90 defined:True
 BattleMode_roomSTOP_Rmset = 0x030061CC; // type:Rmset rom:0x84FAFC defined:True
-BattleMode_map_LvmM = 0x03006238; // type:LvmM rom:0x84FB68 defined:True
-BattleMode_map_LvmH = 0x03006274; // type:LvmH rom:0x84FBA4 defined:True
+BattleMode_rooms_map = 0x03006238; // type:LvmM rom:0x84FB68 defined:True
+BattleMode_map_data = 0x03006274; // type:LvmH rom:0x84FBA4 defined:True
 BattleMode_roomUnk_spr1_Sprite = 0x03006284; // type:Sprite rom:0x84FBB4 defined:True
 BattleMode_nullOWRoom_Rmset = 0x030062D4; // type:Rmset rom:0x84FC04 defined:True
 BattleMode_scope_Lvlscope = 0x03006340; // type:Lvlscope rom:0x84FC70 defined:True
@@ -14004,7 +14004,7 @@ BattleMode_unk1Pointers_Animp = 0x03013030; // type:Animp rom:0x85C960 defined:T
 
 //generated section Training starting here
 Training_IMtx1 = 0x03000000; // type:Mtx rom:0x85C970 defined:True
-Training_pointers_Lvp = 0x03000040; // type:Lvp rom:0x85C9B0 defined:True
+Training_stageModels = 0x03000040; // type:Lvp rom:0x85C9B0 defined:True
 Training_rabObjects_Bin = 0x03000B80; // type:Bin rom:0x85D4F0 defined:True
 Training_room0_obj1_Roomobj = 0x03000BA8; // type:Roomobj rom:0x85D518 defined:True
 Training_room0_obj2_Roomobj = 0x03000C34; // type:Roomobj rom:0x85D5A4 defined:True
@@ -14179,8 +14179,8 @@ Training_room4_Rmset = 0x03005CD0; // type:Rmset rom:0x862640 defined:True
 Training_room5_Rmset = 0x03005D3C; // type:Rmset rom:0x8626AC defined:True
 Training_room6_Rmset = 0x03005DA8; // type:Rmset rom:0x862718 defined:True
 Training_roomSTOP_Rmset = 0x03005E14; // type:Rmset rom:0x862784 defined:True
-Training_map_LvmM = 0x03005E80; // type:LvmM rom:0x8627F0 defined:True
-Training_map_LvmH = 0x03005EB0; // type:LvmH rom:0x862820 defined:True
+Training_rooms_map = 0x03005E80; // type:LvmM rom:0x8627F0 defined:True
+Training_map_data = 0x03005EB0; // type:LvmH rom:0x862820 defined:True
 Training_nullOWRoom_Rmset = 0x03005EC0; // type:Rmset rom:0x862830 defined:True
 Training_scope_Lvlscope = 0x03005F2C; // type:Lvlscope rom:0x86289C defined:True
 Training_header_Lvlhdr = 0x03005F44; // type:Lvlhdr rom:0x8628B4 defined:True
@@ -14354,7 +14354,7 @@ Training_IMtx25 = 0x0301BF00; // type:Mtx rom:0x878870 defined:True
 
 //generated section BossRush starting here
 BossRush_IMtx1 = 0x03000000; // type:Mtx rom:0x8788B0 defined:True
-BossRush_pointers_Lvp = 0x03000040; // type:Lvp rom:0x8788F0 defined:True
+BossRush_stageModels = 0x03000040; // type:Lvp rom:0x8788F0 defined:True
 BossRush_rabObjects_Bin = 0x03000910; // type:Bin rom:0x8791C0 defined:True
 BossRush_room0_obj1_Roomobj = 0x03000938; // type:Roomobj rom:0x8791E8 defined:True
 BossRush_room0_obj2_Roomobj = 0x030009C4; // type:Roomobj rom:0x879274 defined:True
@@ -14434,8 +14434,8 @@ BossRush_room6_Rmset = 0x03002F00; // type:Rmset rom:0x87B7B0 defined:True
 BossRush_room7_Rmset = 0x03002F6C; // type:Rmset rom:0x87B81C defined:True
 BossRush_room8_Rmset = 0x03002FD8; // type:Rmset rom:0x87B888 defined:True
 BossRush_roomSTOP_Rmset = 0x03003044; // type:Rmset rom:0x87B8F4 defined:True
-BossRush_map_LvmM = 0x030030B0; // type:LvmM rom:0x87B960 defined:True
-BossRush_map_LvmH = 0x030030F0; // type:LvmH rom:0x87B9A0 defined:True
+BossRush_rooms_map = 0x030030B0; // type:LvmM rom:0x87B960 defined:True
+BossRush_map_data = 0x030030F0; // type:LvmH rom:0x87B9A0 defined:True
 BossRush_roomUnk_Rmset = 0x03003100; // type:Rmset rom:0x87B9B0 defined:True
 BossRush_nullOWRoom_Rmset = 0x0300316C; // type:Rmset rom:0x87BA1C defined:True
 BossRush_scope_Lvlscope = 0x030031D8; // type:Lvlscope rom:0x87BA88 defined:True

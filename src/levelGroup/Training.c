@@ -218,365 +218,363 @@ extern ModelCollision Global_pole_ColH;
 
 Mtx Training_IMtx1 = IDENTITY;
 
-#include "assets/levelGroup/Training/pointers.lvp.inc.c"
-
-#include "build/assets/levelGroup/Training/rabObjects.inc.c"
-
-#include "assets/levelGroup/Training/roomObjects/room0_obj1.roomObj.inc.c"
-
-#include "assets/levelGroup/Training/roomObjects/room0_obj2.roomObj.inc.c"
-
-#include "assets/levelGroup/Training/roomObjects/room0_obj3.roomObj.inc.c"
-
-#include "assets/levelGroup/Training/roomObjects/room0_obj4.roomObj.inc.c"
-
-#include "assets/levelGroup/Training/roomObjects/room0_obj5.roomObj.inc.c"
-
-#include "assets/levelGroup/Training/roomObjects/room0_obj6.roomObj.inc.c"
-
-#include "assets/levelGroup/Training/roomObjects/room0_obj7.roomObj.inc.c"
-
-#include "assets/levelGroup/Training/roomObjects/room0_obj8.roomObj.inc.c"
-
-#include "assets/levelGroup/Training/roomObjects/room0_obj9.roomObj.inc.c"
-
-#include "assets/levelGroup/Training/roomObjects/room0_obj10.roomObj.inc.c"
-
-#include "assets/levelGroup/Training/roomObjects/room0_obj11.roomObj.inc.c"
-
-#include "assets/levelGroup/Training/roomObjects/room0_obj12.roomObj.inc.c"
-
-#include "assets/levelGroup/Training/roomObjects/room0_obj13.roomObj.inc.c"
-
-#include "assets/levelGroup/Training/roomObjects/room0_obj14.roomObj.inc.c"
-
-#include "assets/levelGroup/Training/roomObjects/room0_obj15.roomObj.inc.c"
-
-#include "assets/levelGroup/Training/roomObjects/room0_obj16.roomObj.inc.c"
-
-#include "assets/levelGroup/Training/roomObjects/room0_obj17.roomObj.inc.c"
-
-#include "assets/levelGroup/Training/roomObjects/room0_obj18.roomObj.inc.c"
-
-#include "assets/levelGroup/Training/roomObjects/room0_obj19.roomObj.inc.c"
-
-#include "assets/levelGroup/Training/roomObjects/room0_obj20.roomObj.inc.c"
-
-#include "assets/levelGroup/Training/roomObjects/room0_obj21.roomObj.inc.c"
-
-#include "assets/levelGroup/Training/roomObjects/room0_obj22.roomObj.inc.c"
-
-#include "assets/levelGroup/Training/roomObjects/room0_obj23.roomObj.inc.c"
-
-#include "assets/levelGroup/Training/roomObjects/room0_obj24.roomObj.inc.c"
-
-#include "assets/levelGroup/Training/roomObjects/room0_obj25.roomObj.inc.c"
-
-#include "assets/levelGroup/Training/roomObjects/room0_obj26.roomObj.inc.c"
-
-#include "assets/levelGroup/Training/roomObjects/room0_obj27.roomObj.inc.c"
-
-#include "assets/levelGroup/Training/roomObjects/room0_obj28.roomObj.inc.c"
-
-#include "assets/levelGroup/Training/roomObjects/room0_obj29.roomObj.inc.c"
-
-#include "assets/levelGroup/Training/roomObjects/room0_obj30.roomObj.inc.c"
-
-#include "assets/levelGroup/Training/roomObjects/room0_obj31.roomObj.inc.c"
-
-#include "assets/levelGroup/Training/roomObjects/room0_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/Training/spriteActors/room0_spr1.sprite.inc.c"
-
-#include "assets/levelGroup/Training/spriteActors/room0_sprSTOP.sprite.inc.c"
-
-#include "assets/levelGroup/Training/spriteActors/room1_spr1.sprite.inc.c"
-
-#include "assets/levelGroup/Training/spriteActors/room1_sprSTOP.sprite.inc.c"
-
-#include "assets/levelGroup/Training/spriteActors/room4_spr1.sprite.inc.c"
-
-#include "assets/levelGroup/Training/spriteActors/room4_sprSTOP.sprite.inc.c"
-
-#include "assets/levelGroup/Training/spriteActors/room2_spr1.sprite.inc.c"
-
-#include "assets/levelGroup/Training/spriteActors/room2_sprSTOP.sprite.inc.c"
-
-#include "assets/levelGroup/Training/spriteActors/room5_spr1.sprite.inc.c"
-
-#include "assets/levelGroup/Training/spriteActors/room5_sprSTOP.sprite.inc.c"
-
-#include "assets/levelGroup/Training/spriteActors/room3_spr1.sprite.inc.c"
-
-#include "assets/levelGroup/Training/spriteActors/room3_sprSTOP.sprite.inc.c"
-
-#include "assets/levelGroup/Training/roomObjects/room1_obj1.roomObj.inc.c"
-
-#include "assets/levelGroup/Training/roomObjects/room1_obj2.roomObj.inc.c"
-
-#include "assets/levelGroup/Training/roomObjects/room1_obj3.roomObj.inc.c"
-
-#include "assets/levelGroup/Training/roomObjects/room1_obj4.roomObj.inc.c"
-
-#include "assets/levelGroup/Training/roomObjects/room1_obj5.roomObj.inc.c"
-
-#include "assets/levelGroup/Training/roomObjects/room1_obj6.roomObj.inc.c"
-
-#include "assets/levelGroup/Training/roomObjects/room1_obj7.roomObj.inc.c"
-
-#include "assets/levelGroup/Training/roomObjects/room1_obj8.roomObj.inc.c"
-
-#include "assets/levelGroup/Training/roomObjects/room1_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/Training/roomActors/room1_act1.roomAct.inc.c"
-
-#include "assets/levelGroup/Training/roomActors/room1_act2.roomAct.inc.c"
-
-#include "assets/levelGroup/Training/roomActors/room1_act3.roomAct.inc.c"
-
-#include "assets/levelGroup/Training/roomActors/room1_act4.roomAct.inc.c"
-
-#include "assets/levelGroup/Training/roomActors/room1_act5.roomAct.inc.c"
-
-#include "assets/levelGroup/Training/roomActors/room1_act6.roomAct.inc.c"
-
-#include "assets/levelGroup/Training/roomActors/room1_act7.roomAct.inc.c"
-
-#include "assets/levelGroup/Training/roomActors/room1_act8.roomAct.inc.c"
-
-#include "assets/levelGroup/Training/roomActors/room1_act9.roomAct.inc.c"
-
-#include "assets/levelGroup/Training/roomActors/room1_act10.roomAct.inc.c"
-
-#include "assets/levelGroup/Training/roomActors/room1_act11.roomAct.inc.c"
-
-#include "assets/levelGroup/Training/roomActors/room1_act12.roomAct.inc.c"
-
-#include "assets/levelGroup/Training/roomActors/room1_act13.roomAct.inc.c"
-
-#include "assets/levelGroup/Training/roomActors/room1_act14.roomAct.inc.c"
-
-#include "assets/levelGroup/Training/roomActors/room1_act15.roomAct.inc.c"
-
-#include "assets/levelGroup/Training/roomActors/room1_act16.roomAct.inc.c"
-
-#include "assets/levelGroup/Training/roomActors/room1_act17.roomAct.inc.c"
-
-#include "assets/levelGroup/Training/roomActors/room1_act18.roomAct.inc.c"
-
-#include "assets/levelGroup/Training/roomActors/room1_act19.roomAct.inc.c"
-
-#include "assets/levelGroup/Training/roomActors/room1_act20.roomAct.inc.c"
-
-#include "assets/levelGroup/Training/roomActors/room1_act21.roomAct.inc.c"
-
-#include "assets/levelGroup/Training/roomActors/room1_act22.roomAct.inc.c"
-
-#include "assets/levelGroup/Training/roomActors/room1_act23.roomAct.inc.c"
-
-#include "assets/levelGroup/Training/roomActors/room1_act24.roomAct.inc.c"
-
-#include "assets/levelGroup/Training/roomActors/room1_act25.roomAct.inc.c"
-
-#include "assets/levelGroup/Training/roomActors/room1_act26.roomAct.inc.c"
-
-#include "assets/levelGroup/Training/roomActors/room1_act27.roomAct.inc.c"
-
-#include "assets/levelGroup/Training/roomActors/room1_act28.roomAct.inc.c"
-
-#include "assets/levelGroup/Training/roomActors/room1_act29.roomAct.inc.c"
-
-#include "assets/levelGroup/Training/roomActors/room1_act30.roomAct.inc.c"
-
-#include "assets/levelGroup/Training/roomActors/room1_act31.roomAct.inc.c"
-
-#include "assets/levelGroup/Training/roomActors/room1_act32.roomAct.inc.c"
-
-#include "assets/levelGroup/Training/roomActors/room1_act33.roomAct.inc.c"
-
-#include "assets/levelGroup/Training/roomActors/room1_act34.roomAct.inc.c"
-
-#include "assets/levelGroup/Training/roomActors/room1_act35.roomAct.inc.c"
-
-#include "assets/levelGroup/Training/roomActors/room1_actSTOP.roomAct.inc.c"
-
-#include "assets/levelGroup/Training/roomObjects/room4_obj1.roomObj.inc.c"
-
-#include "assets/levelGroup/Training/roomObjects/room4_obj2.roomObj.inc.c"
-
-#include "assets/levelGroup/Training/roomObjects/room4_obj3.roomObj.inc.c"
-
-#include "assets/levelGroup/Training/roomObjects/room4_obj4.roomObj.inc.c"
-
-#include "assets/levelGroup/Training/roomObjects/room4_obj5.roomObj.inc.c"
-
-#include "assets/levelGroup/Training/roomObjects/room4_obj6.roomObj.inc.c"
-
-#include "assets/levelGroup/Training/roomObjects/room4_obj7.roomObj.inc.c"
-
-#include "assets/levelGroup/Training/roomObjects/room4_obj8.roomObj.inc.c"
-
-#include "assets/levelGroup/Training/roomObjects/room4_obj9.roomObj.inc.c"
-
-#include "assets/levelGroup/Training/roomObjects/room4_obj10.roomObj.inc.c"
-
-#include "assets/levelGroup/Training/roomObjects/room4_obj11.roomObj.inc.c"
-
-#include "assets/levelGroup/Training/roomObjects/room4_obj12.roomObj.inc.c"
-
-#include "assets/levelGroup/Training/roomObjects/room4_obj13.roomObj.inc.c"
-
-#include "assets/levelGroup/Training/roomObjects/room4_obj14.roomObj.inc.c"
-
-#include "assets/levelGroup/Training/roomObjects/room4_obj15.roomObj.inc.c"
-
-#include "assets/levelGroup/Training/roomObjects/room4_obj16.roomObj.inc.c"
-
-#include "assets/levelGroup/Training/roomObjects/room4_obj17.roomObj.inc.c"
-
-#include "assets/levelGroup/Training/roomObjects/room4_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/Training/roomObjects/room2_obj1.roomObj.inc.c"
-
-#include "assets/levelGroup/Training/roomObjects/room2_obj2.roomObj.inc.c"
-
-#include "assets/levelGroup/Training/roomObjects/room2_obj3.roomObj.inc.c"
-
-#include "assets/levelGroup/Training/roomObjects/room2_obj4.roomObj.inc.c"
-
-#include "assets/levelGroup/Training/roomObjects/room2_obj5.roomObj.inc.c"
-
-#include "assets/levelGroup/Training/roomObjects/room2_obj6.roomObj.inc.c"
-
-#include "assets/levelGroup/Training/roomObjects/room2_obj7.roomObj.inc.c"
-
-#include "assets/levelGroup/Training/roomObjects/room2_obj8.roomObj.inc.c"
-
-#include "assets/levelGroup/Training/roomObjects/room2_obj9.roomObj.inc.c"
-
-#include "assets/levelGroup/Training/roomObjects/room2_obj10.roomObj.inc.c"
-
-#include "assets/levelGroup/Training/roomObjects/room2_obj11.roomObj.inc.c"
-
-#include "assets/levelGroup/Training/roomObjects/room2_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/Training/roomActors/room2_act1.roomAct.inc.c"
-
-#include "assets/levelGroup/Training/roomActors/room2_act2.roomAct.inc.c"
-
-#include "assets/levelGroup/Training/roomActors/room2_act3.roomAct.inc.c"
-
-#include "assets/levelGroup/Training/roomActors/room2_act4.roomAct.inc.c"
-
-#include "assets/levelGroup/Training/roomActors/room2_act5.roomAct.inc.c"
-
-#include "assets/levelGroup/Training/roomActors/room2_act6.roomAct.inc.c"
-
-#include "assets/levelGroup/Training/roomActors/room2_act7.roomAct.inc.c"
-
-#include "assets/levelGroup/Training/roomActors/room2_act8.roomAct.inc.c"
-
-#include "assets/levelGroup/Training/roomActors/room2_act9.roomAct.inc.c"
-
-#include "assets/levelGroup/Training/roomActors/room2_actSTOP.roomAct.inc.c"
-
-#include "assets/levelGroup/Training/roomObjects/room5_obj1.roomObj.inc.c"
-
-#include "assets/levelGroup/Training/roomObjects/room5_obj2.roomObj.inc.c"
-
-#include "assets/levelGroup/Training/roomObjects/room5_obj3.roomObj.inc.c"
-
-#include "assets/levelGroup/Training/roomObjects/room5_obj4.roomObj.inc.c"
-
-#include "assets/levelGroup/Training/roomObjects/room5_obj5.roomObj.inc.c"
-
-#include "assets/levelGroup/Training/roomObjects/room5_obj6.roomObj.inc.c"
-
-#include "assets/levelGroup/Training/roomObjects/room5_obj7.roomObj.inc.c"
-
-#include "assets/levelGroup/Training/roomObjects/room5_obj8.roomObj.inc.c"
-
-#include "assets/levelGroup/Training/roomObjects/room5_obj9.roomObj.inc.c"
-
-#include "assets/levelGroup/Training/roomObjects/room5_obj10.roomObj.inc.c"
-
-#include "assets/levelGroup/Training/roomObjects/room5_obj11.roomObj.inc.c"
-
-#include "assets/levelGroup/Training/roomObjects/room5_obj12.roomObj.inc.c"
-
-#include "assets/levelGroup/Training/roomObjects/room5_obj13.roomObj.inc.c"
-
-#include "assets/levelGroup/Training/roomObjects/room5_obj14.roomObj.inc.c"
-
-#include "assets/levelGroup/Training/roomObjects/room5_obj15.roomObj.inc.c"
-
-#include "assets/levelGroup/Training/roomObjects/room5_obj16.roomObj.inc.c"
-
-#include "assets/levelGroup/Training/roomObjects/room5_obj17.roomObj.inc.c"
-
-#include "assets/levelGroup/Training/roomObjects/room5_obj18.roomObj.inc.c"
-
-#include "assets/levelGroup/Training/roomObjects/room5_obj19.roomObj.inc.c"
-
-#include "assets/levelGroup/Training/roomObjects/room5_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/Training/roomObjects/room3_obj1.roomObj.inc.c"
-
-#include "assets/levelGroup/Training/roomObjects/room3_obj2.roomObj.inc.c"
-
-#include "assets/levelGroup/Training/roomObjects/room3_obj3.roomObj.inc.c"
-
-#include "assets/levelGroup/Training/roomObjects/room3_obj4.roomObj.inc.c"
-
-#include "assets/levelGroup/Training/roomObjects/room3_obj5.roomObj.inc.c"
-
-#include "assets/levelGroup/Training/roomObjects/room3_obj6.roomObj.inc.c"
-
-#include "assets/levelGroup/Training/roomObjects/room3_obj7.roomObj.inc.c"
-
-#include "assets/levelGroup/Training/roomObjects/room3_obj8.roomObj.inc.c"
-
-#include "assets/levelGroup/Training/roomObjects/room3_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/Training/roomObjects/room6_obj1.roomObj.inc.c"
-
-#include "assets/levelGroup/Training/roomObjects/room6_obj2.roomObj.inc.c"
-
-#include "assets/levelGroup/Training/roomObjects/room6_obj3.roomObj.inc.c"
-
-#include "assets/levelGroup/Training/roomObjects/room6_obj4.roomObj.inc.c"
-
-#include "assets/levelGroup/Training/roomObjects/room6_obj5.roomObj.inc.c"
-
-#include "assets/levelGroup/Training/roomObjects/room6_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/Training/spriteLib.sprLib.inc.c"
-
-#include "assets/levelGroup/Training/rooms/room0.rmSet.inc.c"
-
-#include "assets/levelGroup/Training/rooms/room1.rmSet.inc.c"
-
-#include "assets/levelGroup/Training/rooms/room2.rmSet.inc.c"
-
-#include "assets/levelGroup/Training/rooms/room3.rmSet.inc.c"
-
-#include "assets/levelGroup/Training/rooms/room4.rmSet.inc.c"
-
-#include "assets/levelGroup/Training/rooms/room5.rmSet.inc.c"
-
-#include "assets/levelGroup/Training/rooms/room6.rmSet.inc.c"
-
-#include "assets/levelGroup/Training/rooms/roomSTOP.rmSet.inc.c"
-
-#include "assets/levelGroup/Training/map.lvmM.inc.c"
-
-#include "assets/levelGroup/Training/map.lvmH.inc.c"
-
-#include "assets/levelGroup/Training/nullOWRoom.rmSet.inc.c"
-
-#include "assets/levelGroup/Training/scope.lvlScope.inc.c"
-
-#include "assets/levelGroup/Training/header.lvlHdr.inc.c"
+StageModel Training_stageModels[60] = {
+{&Global_fallbackCube_Gfx[0], &Global_fallbackCube_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_exitShadowSouth_Gfx[0], &Global_exitShadowSouth_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_exitShadowNorth_Gfx[0], &Global_exitShadowNorth_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_exitShadowEast_Gfx[0], &Global_exitShadowEast_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_exitShadowWest_Gfx[0], &Global_exitShadowWest_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_ALBLExit_Gfx[0], &Global_ALBLExit_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_sandPit_Gfx[0], &Global_sandPit_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BossBridge_Gfx[0], &Global_BossBridge_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_ALPole_Gfx[0], &Global_ALPole_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_ALBLDoor_Gfx[0], &Global_ALBLDoor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_ALSpinDoor_Gfx[0], &Global_ALSpinDoor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLLavaFloor_Gfx[0], &Global_BLLavaFloor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLLava_Gfx[0], &Global_BLLava_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLLava2_Gfx[0], &Global_BLLava2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLLava3_Gfx[0], &Global_BLLava3_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLLava4_Gfx[0], &Global_BLLava4_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLLava5_Gfx[0], &Global_BLLava5_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLLava6_Gfx[0], &Global_BLLava6_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLLava7_Gfx[0], &Global_BLLava7_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLLava8_Gfx[0], &Global_BLLava8_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLDestructableTop_Gfx[0], &Global_BLDestructableTop_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLMetalBridge_Gfx[0], &Global_BLMetalBridge_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_KLExit_Gfx[0], &Global_KLExit_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_KLDoor_Gfx[0], &Global_KLDoor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_DCExit_Gfx[0], &Global_DCExit_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_TallExitShadow1_Gfx[0], &Global_TallExitShadow1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_TallExitShadow2_Gfx[0], &Global_TallExitShadow2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_GCExit1_Gfx[0], &Global_GCExit1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_GCExit2_Gfx[0], &Global_GCExit2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_trainingRoomLight_Gfx[0], &Global_trainingRoomLight_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_JLCaveExit1_Gfx[0], &Global_JLCaveExit1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_JLCaveExit2_Gfx[0], &Global_JLCaveExit2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_JLCaveExit3_Gfx[0], &Global_JLCaveExit3_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_JLCaveExit4_Gfx[0], &Global_JLCaveExit4_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_JLOutsideEntrance_Gfx[0], &Global_JLOutsideEntrance_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_JLFxCamPillar_Gfx[0], &Global_JLFxCamPillar_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_JLCaveDoor_Gfx[0], &Global_JLCaveDoor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Training_model1_Gfx[0], &Training_unkCol1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Training_model2_Gfx[0], &Training_unkCol2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Training_model3_Gfx[0], &Training_unkCol3_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Training_model4_Gfx[0], &Training_unkCol4_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Training_model5_Gfx[0], &Training_unkCol5_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Training_model6_Gfx[0], &Training_unkCol6_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Training_model7_Gfx[0], &Training_unkCol7_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Training_model8_Gfx[0], &Training_unkCol8_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Training_model9_Gfx[0], &Training_unkCol9_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Training_model10_Gfx[0], &Training_unkCol10_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Training_model11_Gfx[0], &Training_unkCol11_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Training_model12_Gfx[0], &Training_unkCol12_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Training_model13_Gfx[0], &Training_unkCol13_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Training_model14_Gfx[0], &Training_unkCol14_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Training_model15_Gfx[0], &Training_unkCol15_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Training_model16_Gfx[0], &Training_unkCol16_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Training_model17_Gfx[0], &Training_unkCol17_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Training_model18_Gfx[0], &Training_unkCol18_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Training_model19_Gfx[0], &Training_unkCol19_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Training_model20_Gfx[0], &Training_unkCol20_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Training_model21_Gfx[0], &Training_unkCol21_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Training_model22_Gfx[0], &Training_unkCol22_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_pole_Gfx[0], &Global_pole_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+};
+
+unsigned char Training_rabObjects_Bin[] = {
+0x00, 0x00, 0x00, 0x00, 0x42, 0xC8, 0x00, 0x00, 0x42, 0xC8, 0x00, 0x00, 0x42, 0xC8, 0x00, 0x00, 0x02, 0x00, 0x6E, 0x1C, 0x00, 0x00, 0x00, 0x00, 0x42, 0xC8, 0x00, 0x00, 0x42, 0xC8, 0x00, 0x00, 0x42, 0xC8, 0x00, 0x00, 0x02, 0x00, 0x6E, 0x1C
+};
+
+RoomObject Training_room0_objects[32] = {
+{{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 37, -1, -1, -1, &func_800B21CC, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{-600.0,0.0,-1200.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 43, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{600.0,0.0,-1200.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 43, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{-600.0,0.0,1500.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 43, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{600.0,0.0,1500.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 43, -1, -1, -1, NULL, NULL, 0, 0, 34, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,2600.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 57, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,2600.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 3, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,2600.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 256, 0, 400.0, 400.0, 0.0, 0.0, 3, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
+{{0.0,0.0,2600.0}, {4.0,4.0,4.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+{{-1700.0,0.0,800.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 55, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+{{-1700.0,0.0,800.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 1, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+{{-1700.0,0.0,800.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 256, 0, 400.0, 400.0, 0.0, 0.0, 4, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
+{{-1700.0,0.0,800.0}, {4.0,4.0,4.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+{{-1700.0,0.0,-800.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 55, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+{{-1700.0,0.0,-800.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 1, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+{{-1700.0,0.0,-800.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 256, 0, 400.0, 400.0, 0.0, 0.0, 4, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
+{{-1700.0,0.0,-800.0}, {4.0,4.0,4.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+{{1700.0,0.0,800.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 56, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+{{1700.0,0.0,800.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 2, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+{{1700.0,0.0,800.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 256, 0, 400.0, 400.0, 0.0, 0.0, 2, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
+{{1700.0,0.0,800.0}, {4.0,4.0,4.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+{{1700.0,0.0,-800.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 56, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+{{1700.0,0.0,-800.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 2, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+{{1700.0,0.0,-800.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 256, 0, 400.0, 400.0, 0.0, 0.0, 2, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
+{{1700.0,0.0,-800.0}, {4.0,4.0,4.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+{{0.0,0.0,-1800.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 58, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,-1800.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 4, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,-1800.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 256, 0, 400.0, 400.0, 0.0, 0.0, 1, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
+{{0.0,0.0,-1800.0}, {4.0,4.0,4.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+{{-1500.0,400.0,100.0}, {1.0,0.75,0.75}, 2, DEGREES_TO_RADIANS_2PI(180.00000500895632), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 29, -1, -1, -1, NULL, NULL, 0, 0, 0, 4, 4, 0, -1, 0, 0},
+{{-1500.0,400.0,1400.0}, {1.0,0.75,0.75}, 2, DEGREES_TO_RADIANS_2PI(180.00000500895632), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 29, -1, -1, -1, NULL, NULL, 0, 0, 0, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+SpriteActor Training_room0_sprites[2] = {
+{18, 0, {-750.0,0.0,2050.0}, {100.0,200.0,200.0}, 1, 0, 60.0, 0, 0, 0, 0, 0, 31, 6, 0, 0},
+{-1, 0, {-1.0,-1.0,-1.0}, {-1.0,32.0,32.0}, 1, 0, 0.0, 0, 0, 0, 0, 0, -1, -1, 0, 0}
+};
+
+SpriteActor Training_room1_sprites[2] = {
+{18, 0, {1500.0,200.0,0.0}, {100.0,200.0,200.0}, 1, 0, 60.0, 0, 0, 0, 0, 0, 30, 7, 0, 0},
+{-1, 0, {-1.0,-1.0,-1.0}, {-1.0,32.0,32.0}, 1, 0, 0.0, 0, 0, 0, 0, 0, -1, -1, 0, 0}
+};
+
+SpriteActor Training_room4_sprites[2] = {
+{18, 0, {-3500.0,0.0,-800.0}, {100.0,200.0,200.0}, 1, 0, 60.0, 0, 0, 0, 0, 0, 29, 8, 0, 0},
+{-1, 0, {-1.0,-1.0,-1.0}, {-1.0,32.0,32.0}, 1, 0, 0.0, 0, 0, 0, 0, 0, -1, -1, 0, 0}
+};
+
+SpriteActor Training_room2_sprites[2] = {
+{18, 0, {1800.0,0.0,200.0}, {100.0,200.0,200.0}, 1, 0, 60.0, 0, 0, 0, 0, 0, 28, 9, 0, 0},
+{-1, 0, {-1.0,-1.0,-1.0}, {-1.0,32.0,32.0}, 1, 0, 0.0, 0, 0, 0, 0, 0, -1, -1, 0, 0}
+};
+
+SpriteActor Training_room5_sprites[2] = {
+{18, 0, {-1300.0,0.0,-1800.0}, {100.0,200.0,200.0}, 1, 0, 60.0, 0, 0, 0, 0, 0, 27, 10, 0, 0},
+{-1, 0, {-1.0,-1.0,-1.0}, {-1.0,32.0,32.0}, 1, 0, 0.0, 0, 0, 0, 0, 0, -1, -1, 0, 0}
+};
+
+SpriteActor Training_room3_sprites[2] = {
+{18, 0, {-700.0,0.0,1500.0}, {100.0,200.0,200.0}, 1, 0, 60.0, 0, 0, 0, 0, 0, 26, 11, 0, 0},
+{-1, 0, {-1.0,-1.0,-1.0}, {-1.0,32.0,32.0}, 1, 0, 0.0, 0, 0, 0, 0, 0, -1, -1, 0, 0}
+};
+
+RoomObject Training_room1_objects[9] = {
+{{0.0,200.0,0.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(180.00000500895632), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 38, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{-600.0,5.0,50.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(180.00000500895632), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 44, -1, -1, -1, NULL, NULL, 0, 0, 0, 4, 4, 0, -1, 0, 0},
+{{2200.0,200.0,500.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 56, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+{{2200.0,200.0,500.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 2, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+{{2200.0,200.0,500.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 256, 0, 400.0, 400.0, 0.0, 0.0, 2, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
+{{2200.0,200.0,500.0}, {4.0,4.0,4.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+{{1900.0,200.0,1400.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 43, -1, -1, -1, NULL, NULL, 0, 0, 34, 4, 4, 0, -1, 0, 0},
+{{-500.0,-200.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 512, 0, 3000.0, 2400.0, 3000.0, 0.0, 0, 0, 0, 0, 0, 0, 0, -1, 1, -1, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomActor Training_room1_actors[36] = {
+{CHOCO_KID, {-600.0,0.0,50.0}, 0.0, -1000.0, 1000.0, -998637568, 0.0, -1000.0, 1000.0, 0, 3.0, 1.0, 12.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0},
+{CHOCO_KID, {-800.0,0.0,50.0}, 0.0, -1000.0, 1000.0, -998637568, 0.0, -1000.0, 1000.0, 0, 3.0, 1.0, 12.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0},
+{CHOCO_KID, {-1000.0,0.0,50.0}, 0.0, -1000.0, 1000.0, -998637568, 0.0, -1000.0, 1000.0, 0, 3.0, 1.0, 12.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0},
+{CHOCO_KID, {-400.0,0.0,50.0}, 0.0, -1000.0, 1000.0, -998637568, 0.0, -1000.0, 1000.0, 0, 3.0, 1.0, 12.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0},
+{CHOCO_KID, {-200.0,0.0,50.0}, 0.0, -1000.0, 1000.0, -998637568, 0.0, -1000.0, 1000.0, 0, 3.0, 1.0, 12.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0},
+{CHOCO_KID, {-600.0,0.0,-150.0}, 0.0, -1000.0, 1000.0, -998637568, 0.0, -1000.0, 1000.0, 0, 3.0, 1.0, 12.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0},
+{CHOCO_KID, {-800.0,0.0,-150.0}, 0.0, -1000.0, 1000.0, -998637568, 0.0, -1000.0, 1000.0, 0, 3.0, 1.0, 12.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0},
+{CHOCO_KID, {-1000.0,0.0,-150.0}, 0.0, -1000.0, 1000.0, -998637568, 0.0, -1000.0, 1000.0, 0, 3.0, 1.0, 12.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0},
+{CHOCO_KID, {-400.0,0.0,-150.0}, 0.0, -1000.0, 1000.0, -998637568, 0.0, -1000.0, 1000.0, 0, 3.0, 1.0, 12.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0},
+{CHOCO_KID, {-200.0,0.0,-150.0}, 0.0, -1000.0, 1000.0, -998637568, 0.0, -1000.0, 1000.0, 0, 3.0, 1.0, 12.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0},
+{CHOCO_KID, {-600.0,0.0,250.0}, 0.0, -1000.0, 1000.0, -998637568, 0.0, -1000.0, 1000.0, 0, 3.0, 1.0, 12.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0},
+{CHOCO_KID, {-800.0,0.0,250.0}, 0.0, -1000.0, 1000.0, -998637568, 0.0, -1000.0, 1000.0, 0, 3.0, 1.0, 12.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0},
+{CHOCO_KID, {-1000.0,0.0,250.0}, 0.0, -1000.0, 1000.0, -998637568, 0.0, -1000.0, 1000.0, 0, 3.0, 1.0, 12.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0},
+{CHOCO_KID, {-400.0,0.0,250.0}, 0.0, -1000.0, 1000.0, -998637568, 0.0, -1000.0, 1000.0, 0, 3.0, 1.0, 12.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0},
+{CHOCO_KID, {-200.0,0.0,250.0}, 0.0, -1000.0, 1000.0, -998637568, 0.0, -1000.0, 1000.0, 0, 3.0, 1.0, 12.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0},
+{CHOCO_KID, {-600.0,0.0,-350.0}, 0.0, -1000.0, 1000.0, -998637568, 0.0, -1000.0, 1000.0, 0, 3.0, 1.0, 12.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0},
+{CHOCO_KID, {-800.0,0.0,-350.0}, 0.0, -1000.0, 1000.0, -998637568, 0.0, -1000.0, 1000.0, 0, 3.0, 1.0, 12.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0},
+{CHOCO_KID, {-1000.0,0.0,-350.0}, 0.0, -1000.0, 1000.0, -998637568, 0.0, -1000.0, 1000.0, 0, 3.0, 1.0, 12.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0},
+{CHOCO_KID, {-400.0,0.0,-350.0}, 0.0, -1000.0, 1000.0, -998637568, 0.0, -1000.0, 1000.0, 0, 3.0, 1.0, 12.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0},
+{CHOCO_KID, {-200.0,0.0,-350.0}, 0.0, -1000.0, 1000.0, -998637568, 0.0, -1000.0, 1000.0, 0, 3.0, 1.0, 12.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0},
+{CHOCO_KID, {-600.0,0.0,450.0}, 0.0, -1000.0, 1000.0, -998637568, 0.0, -1000.0, 1000.0, 0, 3.0, 1.0, 12.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0},
+{CHOCO_KID, {-800.0,0.0,450.0}, 0.0, -1000.0, 1000.0, -998637568, 0.0, -1000.0, 1000.0, 0, 3.0, 1.0, 12.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0},
+{CHOCO_KID, {-1000.0,0.0,450.0}, 0.0, -1000.0, 1000.0, -998637568, 0.0, -1000.0, 1000.0, 0, 3.0, 1.0, 12.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0},
+{CHOCO_KID, {-400.0,0.0,450.0}, 0.0, -1000.0, 1000.0, -998637568, 0.0, -1000.0, 1000.0, 0, 3.0, 1.0, 12.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0},
+{CHOCO_KID, {-200.0,0.0,450.0}, 0.0, -1000.0, 1000.0, -998637568, 0.0, -1000.0, 1000.0, 0, 3.0, 1.0, 12.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0},
+{CHOCO_KID, {-600.0,0.0,-550.0}, 0.0, -1000.0, 1000.0, -998637568, 0.0, -1000.0, 1000.0, 0, 3.0, 1.0, 12.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0},
+{CHOCO_KID, {-800.0,0.0,-550.0}, 0.0, -1000.0, 1000.0, -998637568, 0.0, -1000.0, 1000.0, 0, 3.0, 1.0, 12.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0},
+{CHOCO_KID, {-1000.0,0.0,-550.0}, 0.0, -1000.0, 1000.0, -998637568, 0.0, -1000.0, 1000.0, 0, 3.0, 1.0, 12.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0},
+{CHOCO_KID, {-400.0,0.0,-550.0}, 0.0, -1000.0, 1000.0, -998637568, 0.0, -1000.0, 1000.0, 0, 3.0, 1.0, 12.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0},
+{CHOCO_KID, {-200.0,0.0,-550.0}, 0.0, -1000.0, 1000.0, -998637568, 0.0, -1000.0, 1000.0, 0, 3.0, 1.0, 12.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0},
+{CHOCO_KID, {-600.0,0.0,650.0}, 0.0, -1000.0, 1000.0, -998637568, 0.0, -1000.0, 1000.0, 0, 3.0, 1.0, 12.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0},
+{CHOCO_KID, {-800.0,0.0,650.0}, 0.0, -1000.0, 1000.0, -998637568, 0.0, -1000.0, 1000.0, 0, 3.0, 1.0, 12.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0},
+{CHOCO_KID, {-1000.0,0.0,650.0}, 0.0, -1000.0, 1000.0, -998637568, 0.0, -1000.0, 1000.0, 0, 3.0, 1.0, 12.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0},
+{CHOCO_KID, {-400.0,0.0,650.0}, 0.0, -1000.0, 1000.0, -998637568, 0.0, -1000.0, 1000.0, 0, 3.0, 1.0, 12.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0},
+{CHOCO_KID, {-200.0,0.0,650.0}, 0.0, -1000.0, 1000.0, -998637568, 0.0, -1000.0, 1000.0, 0, 3.0, 1.0, 12.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0},
+{ACTOR_NULL, {0.0,0.0,0.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomObject Training_room4_objects[18] = {
+{{0.0,0.0,0.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(180.00000500895632), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 39, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{-1500.0,0.0,0.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(180.00000500895632), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 45, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{-100.0,0.0,200.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(180.00000500895632), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 45, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{1100.0,0.0,900.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(180.00000500895632), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 45, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{2200.0,0.0,-200.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(180.00000500895632), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 45, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{-1500.0,0.0,0.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(180.00000500895632), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 59, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+{{-100.0,0.0,200.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(180.00000500895632), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 59, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+{{1100.0,0.0,900.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(180.00000500895632), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 59, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+{{2200.0,0.0,-200.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(180.00000500895632), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 59, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+{{3400.0,0.0,100.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(180.00000500895632), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 59, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+{{-3900.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 55, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+{{-3900.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 1, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+{{-3900.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 256, 0, 400.0, 400.0, 0.0, 0.0, 4, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
+{{-3900.0,0.0,0.0}, {4.0,4.0,4.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+{{-3600.0,-900.0,900.0}, {1.0,3.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 43, -1, -1, -1, NULL, NULL, 0, 0, 34, 4, 4, 0, -1, 0, 0},
+{{-800.0,-900.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 512, 0, 4800.0, 3800.0, 2000.0, 0.0, 0, 0, 0, 0, 0, 0, 0, -1, 1, -1, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
+{{3450.0,0.0,-150.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 512, 0, 500.0, 2000.0, 1700.0, 0.0, 0, 0, 0, 0, 0, 0, 0, -1, 2, -1, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomObject Training_room2_objects[12] = {
+{{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 11, 0.0, 500.0, 0.0, 0.0, 0, 20, -1, 40, 0, 0, 54, -1, -1, 1, NULL, NULL, 0, 0, 3, 0, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 40, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 46, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 48, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,500.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 47, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{2200.0,0.0,1100.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 56, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+{{2200.0,0.0,1100.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 2, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+{{2200.0,0.0,1100.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 256, 0, 400.0, 400.0, 0.0, 0.0, 2, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
+{{2200.0,0.0,1100.0}, {4.0,4.0,4.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+{{0.0,400.0,1400.0}, {1.2000000476837158,1.0,1.2000000476837158}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 43, -1, -1, -1, NULL, NULL, 0, 0, 34, 4, 4, 0, -1, 0, 0},
+{{0.0,400.0,900.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 512, 0, 1000.0, 1600.0, 1200.0, 0.0, 0, 0, 0, 0, 0, 0, 0, -1, 1, -1, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomActor Training_room2_actors[10] = {
+{GRENADE, {-1300.0,400.0,-900.0}, 1.0, -900.0, 900.0, -1000275968, 900.0, -900.0, 900.0, 0, 0.0, 5.0, 0.0, 0.0, 0, 0, 0, 0, 1129447424, 1092616192, 0, 0},
+{GRENADE, {-900.0,400.0,-1100.0}, 1.0, -900.0, 900.0, -1000275968, 900.0, -900.0, 900.0, 0, 0.0, 5.0, 0.0, 0.0, 0, 0, 0, 0, 1129447424, 1092616192, 0, 0},
+{GRENADE, {-400.0,400.0,-1300.0}, 1.0, -900.0, 900.0, -1000275968, 900.0, -900.0, 900.0, 0, 0.0, 5.0, 0.0, 0.0, 0, 0, 0, 0, 1129447424, 1092616192, 0, 0},
+{GRENADE, {0.0,400.0,-1300.0}, 1.0, -900.0, 900.0, -1000275968, 900.0, -900.0, 900.0, 0, 0.0, 5.0, 0.0, 0.0, 0, 0, 0, 0, 1129447424, 1092616192, 0, 0},
+{GRENADE, {0.0,400.0,-1300.0}, 1.0, -900.0, 900.0, -1000275968, 900.0, -900.0, 900.0, 0, 0.0, 5.0, 0.0, 0.0, 0, 0, 0, 0, 1129447424, 1092616192, 0, 0},
+{GRENADE, {500.0,400.0,-1300.0}, 1.0, -900.0, 900.0, -1000275968, 900.0, -900.0, 900.0, 0, 0.0, 5.0, 0.0, 0.0, 0, 0, 0, 0, 1129447424, 1092616192, 0, 0},
+{GRENADE, {1000.0,400.0,-1100.0}, 1.0, -900.0, 900.0, -1000275968, 900.0, -900.0, 900.0, 0, 0.0, 5.0, 0.0, 0.0, 0, 0, 0, 0, 1129447424, 1092616192, 0, 0},
+{GRENADE, {1300.0,400.0,-900.0}, 1.0, -900.0, 900.0, -1000275968, 900.0, -900.0, 900.0, 0, 0.0, 5.0, 0.0, 0.0, 0, 0, 0, 0, 1129447424, 1092616192, 0, 0},
+{UNK_FIRE_SPAWNER, {-400.0,1000.0,550.0}, 0.0, -100.0, 100.0, 1137180672, 1200.0, -100.0, 100.0, 0, 2.0, 2.0, 25.0, 10.0, 0, 0, 0, 0, 0, 1106247680, 1073741824, 1065353216},
+{ACTOR_NULL, {0.0,0.0,0.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomObject Training_room5_objects[20] = {
+{{0.0,0.0,0.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(180.00000500895632), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 41, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(180.00000500895632), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 49, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(180.00000500895632), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 53, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{500.0,0.0,-1700.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 50, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{1700.0,0.0,-500.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 50, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{300.0,0.0,100.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 50, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{1200.0,0.0,1200.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(224.99999601591165), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 50, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{-400.0,0.0,1700.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, -3010.0, -200.0, 0.0, -90.0, 0, 20, 0, 40, 0, 0, 51, -1, 2, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{-200.0,-900.0,-1700.0}, {1.0,6.111111164093018,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 59, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+{{1100.0,-900.0,-1100.0}, {1.0,6.111111164093018,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 59, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+{{1000.0,-900.0,-100.0}, {1.0,6.111111164093018,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 59, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+{{800.0,-900.0,700.0}, {1.0,6.111111164093018,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 59, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+{{550.0,-900.0,1900.0}, {1.0,6.111111164093018,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 59, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+{{-1200.0,-900.0,0.0}, {1.0,3.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 43, -1, -1, -1, NULL, NULL, 0, 0, 34, 4, 4, 0, -1, 0, 0},
+{{-500.0,0.0,-950.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 512, 0, 1000.0, 2000.0, 2100.0, 0.0, 0, 0, 0, 0, 0, 0, 0, -1, 1, -1, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
+{{-2200.0,0.0,-1500.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 55, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+{{-2200.0,0.0,-1500.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 1, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+{{-2200.0,0.0,-1500.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 256, 0, 400.0, 400.0, 0.0, 0.0, 4, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
+{{-2200.0,0.0,-1500.0}, {4.0,4.0,4.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomObject Training_room3_objects[9] = {
+{{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 42, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, -3010.0, -200.0, 0.0, -90.0, 0, 20, 0, 40, 0, 0, 52, -1, 2, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{-500.0,0.0,2500.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 57, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+{{-500.0,0.0,2500.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 3, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+{{-500.0,0.0,2500.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 256, 0, 400.0, 400.0, 0.0, 0.0, 3, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
+{{-500.0,0.0,2500.0}, {4.0,4.0,4.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+{{800.0,-350.0,1200.0}, {1.0,3.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 43, -1, -1, -1, NULL, NULL, 0, 0, 34, 4, 4, 0, -1, 0, 0},
+{{-600.0,0.0,1000.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 512, 0, 800.0, 7000.0, 600.0, 0.0, 0, 0, 0, 0, 0, 0, 0, -1, 1, -1, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomObject Training_room6_objects[6] = {
+{{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 37, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,-1800.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 58, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,-1800.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 4, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,-1800.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 256, 0, 400.0, 400.0, 0.0, 0.0, 1, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
+{{0.0,0.0,-1800.0}, {4.0,4.0,4.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+s32 Training_spriteLib_Sprlib[] = {
+    39,
+    33,
+    47,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+};
+
+RoomInstance Training_room_instances[8] = {
+{Training_room0_objects, 0, 0,Training_room0_sprites, 0, 0, 0, 0, -1, 0, 0.0, 1, 600.0, 0.0, 1500.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+{Training_room1_objects,Training_room1_actors, 0,Training_room1_sprites, 0, 0, 0, 37, 2, 0, 0.0, 1, 1900.0, 0.0, 1400.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+{Training_room2_objects,Training_room2_actors, 0,Training_room2_sprites, 0, 0, 0, 14, 2, 0, 0.0, 2, 0.0, 800.0, 1400.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+{Training_room3_objects, 0, 0,Training_room3_sprites, 0, 0, 0, 0, -1, 0, 0.0, 1, 800.0, 200.0, 1200.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+{Training_room4_objects, 0, 0,Training_room4_sprites, 0, 0, 0, 0, -1, 0, 0.0, 1, -3600.0, 0.0, 900.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+{Training_room5_objects, 0, 0,Training_room5_sprites, 0, 0, 0, 0, -1, 0, 0.0, 10, -1200.0, 900.0, 0.0, 0.0, 0.0, 0.0, 2.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+{Training_room6_objects, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0.0, 1, 600.0, 0.0, 1500.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+{0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0}
+};
+
+s32 Training_rooms_map[4][3] = {
+    {-1, 3, -1},
+    { 2, 0,  4},
+    { 1, 0,  5},
+    {-1, 6, -1} 
+};
+
+StageMapData Training_map_data = {
+3, 4, Training_room_instances, Training_rooms_map, 
+};
+
+RoomInstance Training_ext_room_instances[1] = {
+{0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0}
+};
+
+LevelScope Training_scope_Lvlscope = {
+    0,
+    0,
+    0,
+    -1,
+    25000,
+    60,
+};
+
+StageData Training_header_Lvlhdr = {
+    &Training_map_data,
+    0,
+    &Training_stageModels[0],
+    60,
+    0,
+    50334592,
+    131072,
+    &Training_spriteLib_Sprlib[0],
+    &Training_scope_Lvlscope,
+};
 s32 training_pad[2] = {0, 0};
 Mtx Training_IMtx2 = IDENTITY;
 
@@ -734,7 +732,9 @@ Mtx Training_IMtx24 = IDENTITY;
 
 #include "assets/levelGroup/Training/unkCol1/unkCol1.colS.inc.c"
 
-#include "assets/levelGroup/Training/unkCol1/unkCol1.colH.inc.c"
+ModelCollision Training_unkCol1_ColH = {
+122, 213, &Training_unkCol1_ColV[0], &Training_unkCol1_ColT[0], &Training_unkCol1_ColS
+};
 
 #include "assets/levelGroup/Training/unkCol2/unkCol2.colV.inc.c"
 
@@ -742,7 +742,9 @@ Mtx Training_IMtx24 = IDENTITY;
 
 #include "assets/levelGroup/Training/unkCol2/unkCol2.colS.inc.c"
 
-#include "assets/levelGroup/Training/unkCol2/unkCol2.colH.inc.c"
+ModelCollision Training_unkCol2_ColH = {
+28, 46, &Training_unkCol2_ColV[0], &Training_unkCol2_ColT[0], &Training_unkCol2_ColS
+};
 
 #include "assets/levelGroup/Training/unkCol3/unkCol3.colV.inc.c"
 
@@ -750,7 +752,9 @@ Mtx Training_IMtx24 = IDENTITY;
 
 #include "assets/levelGroup/Training/unkCol3/unkCol3.colS.inc.c"
 
-#include "assets/levelGroup/Training/unkCol3/unkCol3.colH.inc.c"
+ModelCollision Training_unkCol3_ColH = {
+59, 97, &Training_unkCol3_ColV[0], &Training_unkCol3_ColT[0], &Training_unkCol3_ColS
+};
 
 #include "assets/levelGroup/Training/unkCol4/unkCol4.colV.inc.c"
 
@@ -758,7 +762,9 @@ Mtx Training_IMtx24 = IDENTITY;
 
 #include "assets/levelGroup/Training/unkCol4/unkCol4.colS.inc.c"
 
-#include "assets/levelGroup/Training/unkCol4/unkCol4.colH.inc.c"
+ModelCollision Training_unkCol4_ColH = {
+51, 84, &Training_unkCol4_ColV[0], &Training_unkCol4_ColT[0], &Training_unkCol4_ColS
+};
 
 #include "assets/levelGroup/Training/unkCol5/unkCol5.colV.inc.c"
 
@@ -766,7 +772,9 @@ Mtx Training_IMtx24 = IDENTITY;
 
 #include "assets/levelGroup/Training/unkCol5/unkCol5.colS.inc.c"
 
-#include "assets/levelGroup/Training/unkCol5/unkCol5.colH.inc.c"
+ModelCollision Training_unkCol5_ColH = {
+23, 34, &Training_unkCol5_ColV[0], &Training_unkCol5_ColT[0], &Training_unkCol5_ColS
+};
 
 #include "assets/levelGroup/Training/unkCol6/unkCol6.colV.inc.c"
 
@@ -774,7 +782,9 @@ Mtx Training_IMtx24 = IDENTITY;
 
 #include "assets/levelGroup/Training/unkCol6/unkCol6.colS.inc.c"
 
-#include "assets/levelGroup/Training/unkCol6/unkCol6.colH.inc.c"
+ModelCollision Training_unkCol6_ColH = {
+46, 83, &Training_unkCol6_ColV[0], &Training_unkCol6_ColT[0], &Training_unkCol6_ColS
+};
 
 #include "assets/levelGroup/Training/unkCol7/unkCol7.colV.inc.c"
 
@@ -782,7 +792,9 @@ Mtx Training_IMtx24 = IDENTITY;
 
 #include "assets/levelGroup/Training/unkCol7/unkCol7.colS.inc.c"
 
-#include "assets/levelGroup/Training/unkCol7/unkCol7.colH.inc.c"
+ModelCollision Training_unkCol7_ColH = {
+16, 16, &Training_unkCol7_ColV[0], &Training_unkCol7_ColT[0], &Training_unkCol7_ColS
+};
 
 #include "assets/levelGroup/Training/unkCol8/unkCol8.colV.inc.c"
 
@@ -790,7 +802,9 @@ Mtx Training_IMtx24 = IDENTITY;
 
 #include "assets/levelGroup/Training/unkCol8/unkCol8.colS.inc.c"
 
-#include "assets/levelGroup/Training/unkCol8/unkCol8.colH.inc.c"
+ModelCollision Training_unkCol8_ColH = {
+8, 18, &Training_unkCol8_ColV[0], &Training_unkCol8_ColT[0], &Training_unkCol8_ColS
+};
 
 #include "assets/levelGroup/Training/unkCol9/unkCol9.colV.inc.c"
 
@@ -798,7 +812,9 @@ Mtx Training_IMtx24 = IDENTITY;
 
 #include "assets/levelGroup/Training/unkCol9/unkCol9.colS.inc.c"
 
-#include "assets/levelGroup/Training/unkCol9/unkCol9.colH.inc.c"
+ModelCollision Training_unkCol9_ColH = {
+16, 22, &Training_unkCol9_ColV[0], &Training_unkCol9_ColT[0], &Training_unkCol9_ColS
+};
 
 #include "assets/levelGroup/Training/unkCol10/unkCol10.colV.inc.c"
 
@@ -806,7 +822,9 @@ Mtx Training_IMtx24 = IDENTITY;
 
 #include "assets/levelGroup/Training/unkCol10/unkCol10.colS.inc.c"
 
-#include "assets/levelGroup/Training/unkCol10/unkCol10.colH.inc.c"
+ModelCollision Training_unkCol10_ColH = {
+20, 24, &Training_unkCol10_ColV[0], &Training_unkCol10_ColT[0], &Training_unkCol10_ColS
+};
 
 #include "assets/levelGroup/Training/unkCol11/unkCol11.colV.inc.c"
 
@@ -814,7 +832,9 @@ Mtx Training_IMtx24 = IDENTITY;
 
 #include "assets/levelGroup/Training/unkCol11/unkCol11.colS.inc.c"
 
-#include "assets/levelGroup/Training/unkCol11/unkCol11.colH.inc.c"
+ModelCollision Training_unkCol11_ColH = {
+16, 22, &Training_unkCol11_ColV[0], &Training_unkCol11_ColT[0], &Training_unkCol11_ColS
+};
 
 #include "assets/levelGroup/Training/unkCol12/unkCol12.colV.inc.c"
 
@@ -822,7 +842,9 @@ Mtx Training_IMtx24 = IDENTITY;
 
 #include "assets/levelGroup/Training/unkCol12/unkCol12.colS.inc.c"
 
-#include "assets/levelGroup/Training/unkCol12/unkCol12.colH.inc.c"
+ModelCollision Training_unkCol12_ColH = {
+19, 23, &Training_unkCol12_ColV[0], &Training_unkCol12_ColT[0], &Training_unkCol12_ColS
+};
 
 #include "assets/levelGroup/Training/unkCol13/unkCol13.colV.inc.c"
 
@@ -830,7 +852,9 @@ Mtx Training_IMtx24 = IDENTITY;
 
 #include "assets/levelGroup/Training/unkCol13/unkCol13.colS.inc.c"
 
-#include "assets/levelGroup/Training/unkCol13/unkCol13.colH.inc.c"
+ModelCollision Training_unkCol13_ColH = {
+13, 12, &Training_unkCol13_ColV[0], &Training_unkCol13_ColT[0], &Training_unkCol13_ColS
+};
 
 #include "assets/levelGroup/Training/unkCol14/unkCol14.colV.inc.c"
 
@@ -838,7 +862,9 @@ Mtx Training_IMtx24 = IDENTITY;
 
 #include "assets/levelGroup/Training/unkCol14/unkCol14.colS.inc.c"
 
-#include "assets/levelGroup/Training/unkCol14/unkCol14.colH.inc.c"
+ModelCollision Training_unkCol14_ColH = {
+8, 10, &Training_unkCol14_ColV[0], &Training_unkCol14_ColT[0], &Training_unkCol14_ColS
+};
 
 #include "assets/levelGroup/Training/unkCol15/unkCol15.colV.inc.c"
 
@@ -846,7 +872,9 @@ Mtx Training_IMtx24 = IDENTITY;
 
 #include "assets/levelGroup/Training/unkCol15/unkCol15.colS.inc.c"
 
-#include "assets/levelGroup/Training/unkCol15/unkCol15.colH.inc.c"
+ModelCollision Training_unkCol15_ColH = {
+12, 18, &Training_unkCol15_ColV[0], &Training_unkCol15_ColT[0], &Training_unkCol15_ColS
+};
 
 #include "assets/levelGroup/Training/unkCol16/unkCol16.colV.inc.c"
 
@@ -854,7 +882,9 @@ Mtx Training_IMtx24 = IDENTITY;
 
 #include "assets/levelGroup/Training/unkCol16/unkCol16.colS.inc.c"
 
-#include "assets/levelGroup/Training/unkCol16/unkCol16.colH.inc.c"
+ModelCollision Training_unkCol16_ColH = {
+8, 10, &Training_unkCol16_ColV[0], &Training_unkCol16_ColT[0], &Training_unkCol16_ColS
+};
 
 #include "assets/levelGroup/Training/unkCol17/unkCol17.colV.inc.c"
 
@@ -862,7 +892,9 @@ Mtx Training_IMtx24 = IDENTITY;
 
 #include "assets/levelGroup/Training/unkCol17/unkCol17.colS.inc.c"
 
-#include "assets/levelGroup/Training/unkCol17/unkCol17.colH.inc.c"
+ModelCollision Training_unkCol17_ColH = {
+15, 18, &Training_unkCol17_ColV[0], &Training_unkCol17_ColT[0], &Training_unkCol17_ColS
+};
 
 #include "assets/levelGroup/Training/unkCol18/unkCol18.colV.inc.c"
 
@@ -870,7 +902,9 @@ Mtx Training_IMtx24 = IDENTITY;
 
 #include "assets/levelGroup/Training/unkCol18/unkCol18.colS.inc.c"
 
-#include "assets/levelGroup/Training/unkCol18/unkCol18.colH.inc.c"
+ModelCollision Training_unkCol18_ColH = {
+20, 24, &Training_unkCol18_ColV[0], &Training_unkCol18_ColT[0], &Training_unkCol18_ColS
+};
 
 #include "assets/levelGroup/Training/unkCol19/unkCol19.colV.inc.c"
 
@@ -878,7 +912,9 @@ Mtx Training_IMtx24 = IDENTITY;
 
 #include "assets/levelGroup/Training/unkCol19/unkCol19.colS.inc.c"
 
-#include "assets/levelGroup/Training/unkCol19/unkCol19.colH.inc.c"
+ModelCollision Training_unkCol19_ColH = {
+6, 4, &Training_unkCol19_ColV[0], &Training_unkCol19_ColT[0], &Training_unkCol19_ColS
+};
 
 #include "assets/levelGroup/Training/unkCol20/unkCol20.colV.inc.c"
 
@@ -886,7 +922,9 @@ Mtx Training_IMtx24 = IDENTITY;
 
 #include "assets/levelGroup/Training/unkCol20/unkCol20.colS.inc.c"
 
-#include "assets/levelGroup/Training/unkCol20/unkCol20.colH.inc.c"
+ModelCollision Training_unkCol20_ColH = {
+6, 4, &Training_unkCol20_ColV[0], &Training_unkCol20_ColT[0], &Training_unkCol20_ColS
+};
 
 #include "assets/levelGroup/Training/unkCol21/unkCol21.colV.inc.c"
 
@@ -894,7 +932,9 @@ Mtx Training_IMtx24 = IDENTITY;
 
 #include "assets/levelGroup/Training/unkCol21/unkCol21.colS.inc.c"
 
-#include "assets/levelGroup/Training/unkCol21/unkCol21.colH.inc.c"
+ModelCollision Training_unkCol21_ColH = {
+6, 4, &Training_unkCol21_ColV[0], &Training_unkCol21_ColT[0], &Training_unkCol21_ColS
+};
 
 #include "assets/levelGroup/Training/unkCol22/unkCol22.colV.inc.c"
 
@@ -902,5 +942,7 @@ Mtx Training_IMtx24 = IDENTITY;
 
 #include "assets/levelGroup/Training/unkCol22/unkCol22.colS.inc.c"
 
-#include "assets/levelGroup/Training/unkCol22/unkCol22.colH.inc.c"
+ModelCollision Training_unkCol22_ColH = {
+6, 4, &Training_unkCol22_ColV[0], &Training_unkCol22_ColT[0], &Training_unkCol22_ColS
+};
 Mtx Training_IMtx25 = IDENTITY;

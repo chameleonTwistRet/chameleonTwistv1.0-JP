@@ -52,7 +52,8 @@ class N64SegAnimPointers(CommonSegCodeSubsegment):
             sym = self.create_symbol(
                 addr=self.vram_start, in_segment=True, type="Animp", define=True
             )
-
+        if sym == "static0_chameleonAnimPointers_Animp":
+            print("what")
 
 
         num = 0

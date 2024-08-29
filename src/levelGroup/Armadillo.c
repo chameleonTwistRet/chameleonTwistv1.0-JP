@@ -86,63 +86,170 @@ extern ModelCollision Global_pole_ColH;
 
 Mtx Armadillo_IMtx1 = IDENTITY;
 
-#include "assets/levelGroup/Armadillo/pointers.lvp.inc.c"
+StageModel Armadillo_stageModels[40] = {
+{&Global_fallbackCube_Gfx[0], &Global_fallbackCube_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_exitShadowSouth_Gfx[0], &Global_exitShadowSouth_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_exitShadowNorth_Gfx[0], &Global_exitShadowNorth_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_exitShadowEast_Gfx[0], &Global_exitShadowEast_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_exitShadowWest_Gfx[0], &Global_exitShadowWest_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_ALBLExit_Gfx[0], &Global_ALBLExit_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_sandPit_Gfx[0], &Global_sandPit_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BossBridge_Gfx[0], &Global_BossBridge_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_ALPole_Gfx[0], &Global_ALPole_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_ALBLDoor_Gfx[0], &Global_ALBLDoor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_ALSpinDoor_Gfx[0], &Global_ALSpinDoor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLLavaFloor_Gfx[0], &Global_BLLavaFloor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLLava_Gfx[0], &Global_BLLava_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLLava2_Gfx[0], &Global_BLLava2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLLava3_Gfx[0], &Global_BLLava3_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLLava4_Gfx[0], &Global_BLLava4_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLLava5_Gfx[0], &Global_BLLava5_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLLava6_Gfx[0], &Global_BLLava6_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLLava7_Gfx[0], &Global_BLLava7_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLLava8_Gfx[0], &Global_BLLava8_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLDestructableTop_Gfx[0], &Global_BLDestructableTop_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLMetalBridge_Gfx[0], &Global_BLMetalBridge_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_KLExit_Gfx[0], &Global_KLExit_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_KLDoor_Gfx[0], &Global_KLDoor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_DCExit_Gfx[0], &Global_DCExit_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_TallExitShadow1_Gfx[0], &Global_TallExitShadow1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_TallExitShadow2_Gfx[0], &Global_TallExitShadow2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_GCExit1_Gfx[0], &Global_GCExit1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_GCExit2_Gfx[0], &Global_GCExit2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_trainingRoomLight_Gfx[0], &Global_trainingRoomLight_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_JLCaveExit1_Gfx[0], &Global_JLCaveExit1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_JLCaveExit2_Gfx[0], &Global_JLCaveExit2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_JLCaveExit3_Gfx[0], &Global_JLCaveExit3_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_JLCaveExit4_Gfx[0], &Global_JLCaveExit4_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_JLOutsideEntrance_Gfx[0], &Global_JLOutsideEntrance_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_JLFxCamPillar_Gfx[0], &Global_JLFxCamPillar_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_JLCaveDoor_Gfx[0], &Global_JLCaveDoor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Armadillo_model1_Gfx[0], &Armadillo_unkCol1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Armadillo_model2_Gfx[0], &Armadillo_unkCol2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_pole_Gfx[0], &Global_pole_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+};
 
-#include "build/assets/levelGroup/Armadillo/rabObjects.inc.c"
+unsigned char Armadillo_rabObjects_Bin[] = {
+0x00, 0x00, 0x00, 0x00, 0x42, 0xC8, 0x00, 0x00, 0x42, 0xC8, 0x00, 0x00, 0x42, 0xC8, 0x00, 0x00, 0x02, 0x00, 0x6E, 0x1C, 0x00, 0x00, 0x00, 0x00, 0x42, 0xC8, 0x00, 0x00, 0x42, 0xC8, 0x00, 0x00, 0x42, 0xC8, 0x00, 0x00, 0x02, 0x00, 0x6E, 0x1C
+};
 
-#include "assets/levelGroup/Armadillo/roomObjects/roomMulti_obj1.roomObj.inc.c"
+RoomObject Armadillo_roomMulti_objects[14] = {
+{{-0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 37, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 38, -1, 30, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,3300.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 5, 0.0, -20000.0, 3300.0, 0.0, 45, 300, -2, 0, 0, 0, 7, -1, -1, 30, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,3100.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 5, 0.0, -20000.0, 3100.0, 0.0, 40, 300, -2, 0, 0, 0, 7, -1, -1, 30, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,2900.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 5, 0.0, -20000.0, 2900.0, 0.0, 35, 300, -2, 0, 0, 0, 7, -1, -1, 30, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,2700.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 5, 0.0, -20000.0, 2700.0, 0.0, 30, 300, -2, 0, 0, 0, 7, -1, -1, 30, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,2500.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 5, 0.0, -20000.0, 2500.0, 0.0, 25, 300, -2, 0, 0, 0, 7, -1, -1, 30, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,2300.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 5, 0.0, -20000.0, 2300.0, 0.0, 20, 300, -2, 0, 0, 0, 7, -1, -1, 30, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,2100.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 5, 0.0, -20000.0, 2100.0, 0.0, 15, 300, -2, 0, 0, 0, 7, -1, -1, 30, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{-0.0,0.0,3600.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 24, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{-0.0,0.0,3600.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 3, -1, -1, -1, NULL, NULL, 0, 0, 0, 4, 4, 0, -1, 0, 0},
+{{-0.0,0.0,3600.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 256, 0, 400.0, 400.0, 0.0, 0.0, 3, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
+{{-0.0,0.0,3600.0}, {4.0,4.0,4.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
 
-#include "assets/levelGroup/Armadillo/roomObjects/roomMulti_obj2.roomObj.inc.c"
+RoomActor Armadillo_room0_actors[2] = {
+{ARMADILLO, {-0.0,0.0,0.0}, 270.0, -2000.0, 2000.0, -971227136, 10000.0, -2000.0, 2000.0, 1, 48.0, 2.0, 100.0, 12.0, 1142292480, 1092616192, 1140850688, 1145569280, 1082130432, 1106247680, 1084227584, 1084227584},
+{ACTOR_NULL, {0.0,0.0,0.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
 
-#include "assets/levelGroup/Armadillo/roomObjects/roomMulti_obj3.roomObj.inc.c"
+RoomActor Armadillo_room1_actors[2] = {
+{ARMADILLO, {-0.0,0.0,0.0}, 270.0, -2000.0, 2000.0, -971227136, 10000.0, -2000.0, 2000.0, 1, 60.0, 4.0, 150.0, 15.0, 1142292480, 0, 1143930880, 1137180672, 1086324736, 1114636288, 1090519040, 1086324736},
+{ACTOR_NULL, {0.0,0.0,0.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
 
-#include "assets/levelGroup/Armadillo/roomObjects/roomMulti_obj4.roomObj.inc.c"
+s32 Armadillo_spriteLib_Sprlib[] = {
+    44,
+    45,
+    226,
+    227,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+};
 
-#include "assets/levelGroup/Armadillo/roomObjects/roomMulti_obj5.roomObj.inc.c"
+RoomInstance Armadillo_room_instances[3] = {
+{Armadillo_roomMulti_objects,Armadillo_room0_actors, 0, 0, 0, 1, 0, 0, -1, 0, 0.0, 5, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1500.0, 0.0},
+{Armadillo_roomMulti_objects,Armadillo_room1_actors, 0, 0, 0, 1, 0, 0, -1, 0, 0.0, 5, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1500.0, 0.0},
+{0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0}
+};
 
-#include "assets/levelGroup/Armadillo/roomObjects/roomMulti_obj6.roomObj.inc.c"
+//??
+s32 Armadillo_rooms_map[7] = {
+-1, 1, -2, -1, -2, 0, -1, 
+};
 
-#include "assets/levelGroup/Armadillo/roomObjects/roomMulti_obj7.roomObj.inc.c"
+StageMapData Armadillo_map_data = {
+3, 3, Armadillo_room_instances, Armadillo_rooms_map, 
+};
 
-#include "assets/levelGroup/Armadillo/roomObjects/roomMulti_obj8.roomObj.inc.c"
+RoomInstance Armadillo_ext_room_instances[1] = {
+{0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0}
+};
 
-#include "assets/levelGroup/Armadillo/roomObjects/roomMulti_obj9.roomObj.inc.c"
+LevelScope Armadillo_scope_Lvlscope = {
+    0,
+    0,
+    0,
+    255,
+    25000,
+    60,
+};
 
-#include "assets/levelGroup/Armadillo/roomObjects/roomMulti_obj10.roomObj.inc.c"
-
-#include "assets/levelGroup/Armadillo/roomObjects/roomMulti_obj11.roomObj.inc.c"
-
-#include "assets/levelGroup/Armadillo/roomObjects/roomMulti_obj12.roomObj.inc.c"
-
-#include "assets/levelGroup/Armadillo/roomObjects/roomMulti_obj13.roomObj.inc.c"
-
-#include "assets/levelGroup/Armadillo/roomObjects/roomMulti_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/Armadillo/roomActors/room0_act1.roomAct.inc.c"
-
-#include "assets/levelGroup/Armadillo/roomActors/room0_actSTOP.roomAct.inc.c"
-
-#include "assets/levelGroup/Armadillo/roomActors/room1_act1.roomAct.inc.c"
-
-#include "assets/levelGroup/Armadillo/roomActors/room1_actSTOP.roomAct.inc.c"
-
-#include "assets/levelGroup/Armadillo/spriteLib.sprLib.inc.c"
-
-#include "assets/levelGroup/Armadillo/rooms/room0.rmSet.inc.c"
-
-#include "assets/levelGroup/Armadillo/rooms/room1.rmSet.inc.c"
-
-#include "assets/levelGroup/Armadillo/rooms/roomSTOP.rmSet.inc.c"
-
-#include "assets/levelGroup/Armadillo/map.lvmM.inc.c"
-
-#include "assets/levelGroup/Armadillo/map.lvmH.inc.c"
-
-#include "assets/levelGroup/Armadillo/nullOWRoom.rmSet.inc.c"
-
-#include "assets/levelGroup/Armadillo/scope.lvlScope.inc.c"
-
-#include "assets/levelGroup/Armadillo/header.lvlHdr.inc.c"
+StageData Armadillo_header_Lvlhdr = {
+    &Armadillo_map_data,
+    0,
+    &Armadillo_stageModels[0],
+    40,
+    0,
+    50333632,
+    131072,
+    &Armadillo_spriteLib_Sprlib[0],
+    &Armadillo_scope_Lvlscope,
+};
 s32 armadillo_pad[3] = 0;
 Mtx Armadillo_IMtx2 = IDENTITY;
 
@@ -164,7 +271,9 @@ Mtx Armadillo_IMtx4 = IDENTITY;
 
 #include "assets/levelGroup/Armadillo/unkCol1/unkCol1.colS.inc.c"
 
-#include "assets/levelGroup/Armadillo/unkCol1/unkCol1.colH.inc.c"
+ModelCollision Armadillo_unkCol1_ColH = {
+23, 34, &Armadillo_unkCol1_ColV[0], &Armadillo_unkCol1_ColT[0], &Armadillo_unkCol1_ColS
+};
 
 #include "assets/levelGroup/Armadillo/unkCol2/unkCol2.colV.inc.c"
 
@@ -172,7 +281,9 @@ Mtx Armadillo_IMtx4 = IDENTITY;
 
 #include "assets/levelGroup/Armadillo/unkCol2/unkCol2.colS.inc.c"
 
-#include "assets/levelGroup/Armadillo/unkCol2/unkCol2.colH.inc.c"
+ModelCollision Armadillo_unkCol2_ColH = {
+10, 12, &Armadillo_unkCol2_ColV[0], &Armadillo_unkCol2_ColT[0], &Armadillo_unkCol2_ColS
+};
 s32 armadillo_pad2[3] = 0;
 Mtx Armadillo_IMtx5 = IDENTITY;
 

@@ -92,77 +92,163 @@ extern ModelCollision Global_pole_ColH;
 
 Mtx Quintella_IMtx1 = IDENTITY;
 
-#include "assets/levelGroup/Quintella/pointers.lvp.inc.c"
+StageModel Quintella_stageModels[40] = {
+{&Global_fallbackCube_Gfx[0], &Global_fallbackCube_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_exitShadowSouth_Gfx[0], &Global_exitShadowSouth_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_exitShadowNorth_Gfx[0], &Global_exitShadowNorth_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_exitShadowEast_Gfx[0], &Global_exitShadowEast_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_exitShadowWest_Gfx[0], &Global_exitShadowWest_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_ALBLExit_Gfx[0], &Global_ALBLExit_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_sandPit_Gfx[0], &Global_sandPit_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BossBridge_Gfx[0], &Global_BossBridge_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_ALPole_Gfx[0], &Global_ALPole_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_ALBLDoor_Gfx[0], &Global_ALBLDoor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_ALSpinDoor_Gfx[0], &Global_ALSpinDoor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLLavaFloor_Gfx[0], &Global_BLLavaFloor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLLava_Gfx[0], &Global_BLLava_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLLava2_Gfx[0], &Global_BLLava2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLLava3_Gfx[0], &Global_BLLava3_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLLava4_Gfx[0], &Global_BLLava4_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLLava5_Gfx[0], &Global_BLLava5_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLLava6_Gfx[0], &Global_BLLava6_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLLava7_Gfx[0], &Global_BLLava7_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLLava8_Gfx[0], &Global_BLLava8_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLDestructableTop_Gfx[0], &Global_BLDestructableTop_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLMetalBridge_Gfx[0], &Global_BLMetalBridge_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_KLExit_Gfx[0], &Global_KLExit_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_KLDoor_Gfx[0], &Global_KLDoor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_DCExit_Gfx[0], &Global_DCExit_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_TallExitShadow1_Gfx[0], &Global_TallExitShadow1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_TallExitShadow2_Gfx[0], &Global_TallExitShadow2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_GCExit1_Gfx[0], &Global_GCExit1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_GCExit2_Gfx[0], &Global_GCExit2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_trainingRoomLight_Gfx[0], &Global_trainingRoomLight_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_JLCaveExit1_Gfx[0], &Global_JLCaveExit1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_JLCaveExit2_Gfx[0], &Global_JLCaveExit2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_JLCaveExit3_Gfx[0], &Global_JLCaveExit3_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_JLCaveExit4_Gfx[0], &Global_JLCaveExit4_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_JLOutsideEntrance_Gfx[0], &Global_JLOutsideEntrance_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_JLFxCamPillar_Gfx[0], &Global_JLFxCamPillar_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_JLCaveDoor_Gfx[0], &Global_JLCaveDoor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Quintella_model1_Gfx[0], &Quintella_unkCol1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Quintella_model2_Gfx[0], &Quintella_unkCol2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_pole_Gfx[0], &Global_pole_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+};
 
-#include "build/assets/levelGroup/Quintella/rabObjects.inc.c"
+unsigned char Quintella_rabObjects_Bin[] = {
+0x00, 0x00, 0x00, 0x00, 0x42, 0xC8, 0x00, 0x00, 0x42, 0xC8, 0x00, 0x00, 0x42, 0xC8, 0x00, 0x00, 0x02, 0x00, 0x6E, 0x1C, 0x00, 0x00, 0x00, 0x00, 0x42, 0xC8, 0x00, 0x00, 0x42, 0xC8, 0x00, 0x00, 0x42, 0xC8, 0x00, 0x00, 0x02, 0x00, 0x6E, 0x1C
+};
 
-#include "assets/levelGroup/Quintella/spriteLib.sprLib.inc.c"
+s32 Quintella_spriteLib_Sprlib[] = {
+    14,
+    226,
+    227,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    14,
+    226,
+    227,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+};
 
-#include "assets/levelGroup/Quintella/collectables/roomUnk_clct1.clct.inc.c"
+Collectable Quintella_roomUnk_collectables[7] = {
+{R_HEART, {150.0,0.0,-1405.0}, 4294967295, 0, 0, 0},
+{R_HEART, {-150.0,0.0,-1405.0}, 4294967295, 0, 0, 0},
+{R_HEART, {-1304.0,0.0,-304.0}, 4294967295, 0, 0, 0},
+{R_HEART, {-100.0,0.0,1384.0}, 4294967295, 0, 0, 0},
+{R_HEART, {100.0,0.0,1384.0}, 4294967295, 0, 0, 0},
+{R_HEART, {1385.0,0.0,29.0}, 4294967295, 0, 0, 0},
+{ACTOR_NULL, {0.0,0.0,0.0}, 4294967295, 0, 0, 0}
+};
 
-#include "assets/levelGroup/Quintella/collectables/roomUnk_clct2.clct.inc.c"
+RoomObject Quintella_roomMulti_objects[14] = {
+{{0.0,0.0,-2800.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 5, 0.0, -20000.0, -2400.0, 0.0, 15, 300, -2, 0, 0, 0, 7, -1, -1, 16, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,-2600.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 5, 0.0, -20000.0, -2400.0, 0.0, 20, 300, -2, 0, 0, 0, 7, -1, -1, 16, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,-2400.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 5, 0.0, -20000.0, -2400.0, 0.0, 25, 300, -2, 0, 0, 0, 7, -1, -1, 16, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,-2200.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 5, 0.0, -20000.0, -2200.0, 0.0, 30, 300, -2, 0, 0, 0, 7, -1, -1, 16, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,-2000.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 5, 0.0, -20000.0, -2000.0, 0.0, 35, 300, -2, 0, 0, 0, 7, -1, -1, 16, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,-1800.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 5, 0.0, -20000.0, -1800.0, 0.0, 40, 300, -2, 0, 0, 0, 7, -1, -1, 16, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,-1600.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 5, 0.0, -20000.0, -1600.0, 0.0, 45, 300, -2, 0, 0, 0, 7, -1, -1, 16, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 37, -1, -1, -1, NULL, NULL, 0, 0, 0, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 38, -1, 16, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+{{0.0,-6000.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 5, 0.0, 0.0, 0.0, 0.0, 0, 300, -1, 0, 0, 0, 8, -1, -1, -1, NULL, NULL, 0, 0, 6, 4, 4, 0, -1, 1, 0},
+{{0.0,0.0,-3100.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 256, 0, 400.0, 400.0, 0.0, 0.0, 1, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 2, -1, 1, 0, -1, 0, 0},
+{{0.0,0.0,-3100.0}, {4.0,4.0,4.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+{{0.0,-1500.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 39, -1, -1, -1, NULL, NULL, 0, 0, 0, 0, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
 
-#include "assets/levelGroup/Quintella/collectables/roomUnk_clct3.clct.inc.c"
+RoomActor Quintella_room0_actors[2] = {
+{ANT_QUEEN, {0.0,0.0,400.0}, 90.0, -1500.0, 1500.0, 0, 0.0, -1500.0, 1500.0, 0, 0.0, 0.0, 0.0, 10.0, 1073741824, 0, 0, 0, 1094713344, 1084227584, 1084227584, 1090519040},
+{ACTOR_NULL, {0.0,0.0,0.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
 
-#include "assets/levelGroup/Quintella/collectables/roomUnk_clct4.clct.inc.c"
+RoomActor Quintella_room1_actors[2] = {
+{ANT_QUEEN, {0.0,0.0,400.0}, 90.0, -1500.0, 1500.0, 0, 0.0, -1500.0, 1500.0, 0, 0.20000000298023224, 0.0, 0.0, 14.0, 1077936128, 0, 0, 0, 1114636288, 1084227584, 1084227584, 1082130432},
+{ACTOR_NULL, {0.0,0.0,0.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
 
-#include "assets/levelGroup/Quintella/collectables/roomUnk_clct5.clct.inc.c"
+RoomInstance Quintella_room_instances[3] = {
+{Quintella_roomMulti_objects,Quintella_room0_actors, 0, 0, 1, 1, 0, 7, 31, 0, 0.0, 5, 1500.0, 800.0, -1500.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1500.0, 200.0},
+{Quintella_roomMulti_objects,Quintella_room1_actors, 0, 0, 1, 1, 0, 7, 31, 0, 0.0, 5, 1500.0, 800.0, -1500.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1500.0, 200.0},
+{0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0}
+};
 
-#include "assets/levelGroup/Quintella/collectables/roomUnk_clct6.clct.inc.c"
+s32 Quintella_rooms_map[3] = {
+-1, 0, -1, 
+};
 
-#include "assets/levelGroup/Quintella/collectables/roomUnk_clctSTOP.clct.inc.c"
+StageMapData Quintella_map_data = {
+3, 1, Quintella_room_instances, Quintella_rooms_map, 
+};
 
-#include "assets/levelGroup/Quintella/roomObjects/roomMulti_obj1.roomObj.inc.c"
+RoomInstance Quintella_ext_room_instances[1] = {
+{0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0}
+};
 
-#include "assets/levelGroup/Quintella/roomObjects/roomMulti_obj2.roomObj.inc.c"
+LevelScope Quintella_scope_Lvlscope = {
+    0,
+    0,
+    0,
+    -1,
+    25000,
+    60,
+};
 
-#include "assets/levelGroup/Quintella/roomObjects/roomMulti_obj3.roomObj.inc.c"
-
-#include "assets/levelGroup/Quintella/roomObjects/roomMulti_obj4.roomObj.inc.c"
-
-#include "assets/levelGroup/Quintella/roomObjects/roomMulti_obj5.roomObj.inc.c"
-
-#include "assets/levelGroup/Quintella/roomObjects/roomMulti_obj6.roomObj.inc.c"
-
-#include "assets/levelGroup/Quintella/roomObjects/roomMulti_obj7.roomObj.inc.c"
-
-#include "assets/levelGroup/Quintella/roomObjects/roomMulti_obj8.roomObj.inc.c"
-
-#include "assets/levelGroup/Quintella/roomObjects/roomMulti_obj9.roomObj.inc.c"
-
-#include "assets/levelGroup/Quintella/roomObjects/roomMulti_obj10.roomObj.inc.c"
-
-#include "assets/levelGroup/Quintella/roomObjects/roomMulti_obj11.roomObj.inc.c"
-
-#include "assets/levelGroup/Quintella/roomObjects/roomMulti_obj12.roomObj.inc.c"
-
-#include "assets/levelGroup/Quintella/roomObjects/roomMulti_obj13.roomObj.inc.c"
-
-#include "assets/levelGroup/Quintella/roomObjects/roomMulti_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/Quintella/roomActors/room0_act1.roomAct.inc.c"
-
-#include "assets/levelGroup/Quintella/roomActors/room0_actSTOP.roomAct.inc.c"
-
-#include "assets/levelGroup/Quintella/roomActors/room1_act1.roomAct.inc.c"
-
-#include "assets/levelGroup/Quintella/roomActors/room1_actSTOP.roomAct.inc.c"
-
-#include "assets/levelGroup/Quintella/rooms/room0.rmSet.inc.c"
-
-#include "assets/levelGroup/Quintella/rooms/room1.rmSet.inc.c"
-
-#include "assets/levelGroup/Quintella/rooms/roomSTOP.rmSet.inc.c"
-
-#include "assets/levelGroup/Quintella/map.lvmM.inc.c"
-
-#include "assets/levelGroup/Quintella/map.lvmH.inc.c"
-
-#include "assets/levelGroup/Quintella/nullOWRoom.rmSet.inc.c"
-
-#include "assets/levelGroup/Quintella/scope.lvlScope.inc.c"
-
-#include "assets/levelGroup/Quintella/header.lvlHdr.inc.c"
+StageData Quintella_header_Lvlhdr = {
+    &Quintella_map_data,
+    0,
+    &Quintella_stageModels[0],
+    40,
+    0,
+    50333632,
+    131072,
+    &Quintella_spriteLib_Sprlib[0],
+    &Quintella_scope_Lvlscope,
+};
 s32 alignment_Quintella[2] = {0, 0};
 Mtx Quintella_IMtx2 = IDENTITY;
 
@@ -196,7 +282,9 @@ Mtx Quintella_IMtx4 = IDENTITY;
 
 #include "assets/levelGroup/Quintella/unkCol1/unkCol1.colS.inc.c"
 
-#include "assets/levelGroup/Quintella/unkCol1/unkCol1.colH.inc.c"
+ModelCollision Quintella_unkCol1_ColH = {
+34, 60, &Quintella_unkCol1_ColV[0], &Quintella_unkCol1_ColT[0], &Quintella_unkCol1_ColS
+};
 
 #include "assets/levelGroup/Quintella/unkCol2/unkCol2.colV.inc.c"
 
@@ -204,7 +292,9 @@ Mtx Quintella_IMtx4 = IDENTITY;
 
 #include "assets/levelGroup/Quintella/unkCol2/unkCol2.colS.inc.c"
 
-#include "assets/levelGroup/Quintella/unkCol2/unkCol2.colH.inc.c"
+ModelCollision Quintella_unkCol2_ColH = {
+17, 24, &Quintella_unkCol2_ColV[0], &Quintella_unkCol2_ColT[0], &Quintella_unkCol2_ColS
+};
 Mtx Quintella_IMtx5 = IDENTITY;
 
 #include "assets/levelGroup/Quintella/qtScope2/qtScope2.light.inc.c"

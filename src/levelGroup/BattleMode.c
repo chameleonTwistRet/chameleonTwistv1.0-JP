@@ -180,407 +180,509 @@ extern ModelCollision Global_pole_ColH;
 
 Mtx BattleMode_IMtx1 = IDENTITY;
 
-#include "assets/levelGroup/BattleMode/pointers.lvp.inc.c"
+StageModel BattleMode_stageModels[68] = {
+{&Global_fallbackCube_Gfx[0], &Global_fallbackCube_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_exitShadowSouth_Gfx[0], &Global_exitShadowSouth_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_exitShadowNorth_Gfx[0], &Global_exitShadowNorth_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_exitShadowEast_Gfx[0], &Global_exitShadowEast_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_exitShadowWest_Gfx[0], &Global_exitShadowWest_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_ALBLExit_Gfx[0], &Global_ALBLExit_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_sandPit_Gfx[0], &Global_sandPit_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BossBridge_Gfx[0], &Global_BossBridge_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_ALPole_Gfx[0], &Global_ALPole_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_ALBLDoor_Gfx[0], &Global_ALBLDoor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_ALSpinDoor_Gfx[0], &Global_ALSpinDoor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLLavaFloor_Gfx[0], &Global_BLLavaFloor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLLava_Gfx[0], &Global_BLLava_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLLava2_Gfx[0], &Global_BLLava2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLLava3_Gfx[0], &Global_BLLava3_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLLava4_Gfx[0], &Global_BLLava4_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLLava5_Gfx[0], &Global_BLLava5_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLLava6_Gfx[0], &Global_BLLava6_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLLava7_Gfx[0], &Global_BLLava7_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLLava8_Gfx[0], &Global_BLLava8_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLDestructableTop_Gfx[0], &Global_BLDestructableTop_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLMetalBridge_Gfx[0], &Global_BLMetalBridge_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_KLExit_Gfx[0], &Global_KLExit_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_KLDoor_Gfx[0], &Global_KLDoor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_DCExit_Gfx[0], &Global_DCExit_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_TallExitShadow1_Gfx[0], &Global_TallExitShadow1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_TallExitShadow2_Gfx[0], &Global_TallExitShadow2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_GCExit1_Gfx[0], &Global_GCExit1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_GCExit2_Gfx[0], &Global_GCExit2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_trainingRoomLight_Gfx[0], &Global_trainingRoomLight_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_JLCaveExit1_Gfx[0], &Global_JLCaveExit1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_JLCaveExit2_Gfx[0], &Global_JLCaveExit2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_JLCaveExit3_Gfx[0], &Global_JLCaveExit3_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_JLCaveExit4_Gfx[0], &Global_JLCaveExit4_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_JLOutsideEntrance_Gfx[0], &Global_JLOutsideEntrance_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_JLFxCamPillar_Gfx[0], &Global_JLFxCamPillar_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_JLCaveDoor_Gfx[0], &Global_JLCaveDoor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&BattleMode_model1_Gfx[0], &BattleMode_unkCol1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&BattleMode_model2_Gfx[0], &BattleMode_unkCol2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&BattleMode_model3_Gfx[0], &BattleMode_unkCol3_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&BattleMode_model4_Gfx[0], &BattleMode_unkCol4_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&BattleMode_model5_Gfx[0], &BattleMode_unkCol5_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&BattleMode_model6_Gfx[0], &BattleMode_unkCol6_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&BattleMode_model7_Gfx[0], &BattleMode_unkCol7_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&BattleMode_model8_Gfx[0], &BattleMode_unkCol8_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&BattleMode_model9_Gfx[0], &BattleMode_unkCol9_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&BattleMode_model10_Gfx[0], &BattleMode_unkCol10_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&BattleMode_model11_Gfx[0], &BattleMode_unkCol11_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&BattleMode_model12_Gfx[0], &BattleMode_unkCol12_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&BattleMode_model13_Gfx[0], &BattleMode_unkCol13_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&BattleMode_model14_Gfx[0], &BattleMode_unkCol14_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&BattleMode_model15_Gfx[0], &BattleMode_unkCol15_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&BattleMode_model16_Gfx[0], &BattleMode_unkCol16_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&BattleMode_model17_Gfx[0], &BattleMode_unkCol17_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&BattleMode_model18_Gfx[0], &BattleMode_unkCol18_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&BattleMode_model19_Gfx[0], &BattleMode_unkCol19_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&BattleMode_model20_Gfx[0], &BattleMode_unkCol20_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&BattleMode_model21_Gfx[0], &BattleMode_unkCol21_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&BattleMode_model22_Gfx[0], &BattleMode_unkCol22_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&BattleMode_model23_Gfx[0], &BattleMode_unkCol23_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&BattleMode_model24_Gfx[0], &BattleMode_unkCol24_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&BattleMode_model25_Gfx[0], &BattleMode_unkCol25_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&BattleMode_model26_Gfx[0], &BattleMode_unkCol26_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&BattleMode_model27_Gfx[0], &BattleMode_unkCol27_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&BattleMode_model28_Gfx[0], &BattleMode_unkCol28_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&BattleMode_model29_Gfx[0], &BattleMode_unkCol29_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&BattleMode_model30_Gfx[0], &BattleMode_unkCol30_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_pole_Gfx[0], &Global_pole_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+};
+
+unsigned char BattleMode_rabObjects_Bin[] = {
+0x00, 0x00, 0x00, 0x00, 0x42, 0xC8, 0x00, 0x00, 0x42, 0xC8, 0x00, 0x00, 0x42, 0xC8, 0x00, 0x00, 0x02, 0x00, 0x6E, 0x1C, 0x00, 0x00, 0x00, 0x00, 0x42, 0xC8, 0x00, 0x00, 0x42, 0xC8, 0x00, 0x00, 0x42, 0xC8, 0x00, 0x00, 0x02, 0x00, 0x6E, 0x1C
+};
+
+RoomObject BattleMode_room7_objects[4] = {
+{{0.0,0.0,0.0}, {1.0,0.375,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 37, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 67, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,-300.0,0.0}, {4.0,8.0,4.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 66, -1, -1, -1, NULL, NULL, 0, 0, 2, 0, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomActor BattleMode_room7_actors[3] = {
+{POPCORN_BUCKET_SPAWNER, {0.0,400.0,0.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 1, 30.0, 20.0, 0.0, 0.0, 0, 0, 0, 0, 1117782016, 1082130432, 1109393408, 1098907648},
+{POWER_UP_SPAWNER, {0.0,1000.0,100.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 1, 10.0, 15.0, 10.0, 10.0, 0, 1147207680, 1133903872, 0, 1142292480, 1133903872, 1125515264, 1125515264},
+{ACTOR_NULL, {0.0,0.0,0.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomObject BattleMode_room4_objects[6] = {
+{{0.0,0.0,0.0}, {0.75,0.6000000238418579,0.75}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 38, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 1},
+{{0.0,0.0,0.0}, {0.75,0.6000000238418579,0.75}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 47, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 2},
+{{200.0,0.0,-637.5}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 67, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{-100.0,0.0,637.5}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 67, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,-300.0,0.0}, {5.0,8.0,5.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 66, -1, -1, -1, NULL, NULL, 0, 0, 2, 0, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomActor BattleMode_room4_actors[16] = {
+{POWER_UP_SPAWNER, {0.0,1000.0,0.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 1, 60.0, 10.0, 5.0, 50.0, 0, 1147207680, 1133903872, 0, 1142292480, 1133903872, 1125515264, 1125515264},
+{CHOCO_KID_SPAWNER, {-150.0,0.0,-75.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 1, 3.0, 1.0, 12.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0},
+{CHOCO_KID_SPAWNER, {-75.0,0.0,-75.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 1, 3.0, 1.0, 12.0, 0.0, 0, 0, 0, 0, 1065353216, 0, 0, 0},
+{CHOCO_KID_SPAWNER, {0.0,0.0,-75.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 1, 3.0, 1.0, 12.0, 0.0, 0, 0, 0, 0, 1073741824, 0, 0, 0},
+{CHOCO_KID_SPAWNER, {75.0,0.0,-75.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 1, 3.0, 1.0, 12.0, 0.0, 0, 0, 0, 0, 1077936128, 0, 0, 0},
+{CHOCO_KID_SPAWNER, {150.0,0.0,-75.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 1, 3.0, 1.0, 12.0, 0.0, 0, 0, 0, 0, 1082130432, 0, 0, 0},
+{CHOCO_KID_SPAWNER, {-150.0,0.0,0.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 1, 3.0, 1.0, 12.0, 0.0, 0, 0, 0, 0, 1084227584, 0, 0, 0},
+{CHOCO_KID_SPAWNER, {-75.0,0.0,0.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 1, 3.0, 1.0, 12.0, 0.0, 0, 0, 0, 0, 1086324736, 0, 0, 0},
+{CHOCO_KID_SPAWNER, {75.0,0.0,0.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 1, 3.0, 1.0, 12.0, 0.0, 0, 0, 0, 0, 1090519040, 0, 0, 0},
+{CHOCO_KID_SPAWNER, {150.0,0.0,0.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 1, 3.0, 1.0, 12.0, 0.0, 0, 0, 0, 0, 1091567616, 0, 0, 0},
+{CHOCO_KID_SPAWNER, {-150.0,0.0,75.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 1, 3.0, 1.0, 12.0, 0.0, 0, 0, 0, 0, 1092616192, 0, 0, 0},
+{CHOCO_KID_SPAWNER, {-75.0,0.0,75.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 1, 3.0, 1.0, 12.0, 0.0, 0, 0, 0, 0, 1093664768, 0, 0, 0},
+{CHOCO_KID_SPAWNER, {0.0,0.0,75.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 1, 3.0, 1.0, 12.0, 0.0, 0, 0, 0, 0, 1094713344, 0, 0, 0},
+{CHOCO_KID_SPAWNER, {75.0,0.0,75.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 1, 3.0, 1.0, 12.0, 0.0, 0, 0, 0, 0, 1095761920, 0, 0, 0},
+{CHOCO_KID_SPAWNER, {150.0,0.0,75.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 1, 3.0, 1.0, 12.0, 0.0, 0, 0, 0, 0, 1096810496, 0, 0, 0},
+{ACTOR_NULL, {0.0,0.0,0.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomObject BattleMode_room5_objects[26] = {
+{{0.0,0.0,600.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 50, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 50, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,-600.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 50, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,600.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 51, -1, -1, -1, NULL, NULL, 0, 0, 0, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 51, -1, -1, -1, NULL, NULL, 0, 0, 0, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,-600.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 51, -1, -1, -1, NULL, NULL, 0, 0, 0, 4, 4, 0, -1, 0, 0},
+{{1000.0,0.0,300.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 52, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{-1000.0,0.0,300.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 52, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{1000.0,0.0,300.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 53, -1, -1, -1, NULL, NULL, 0, 0, 0, 4, 4, 0, -1, 0, 0},
+{{-1000.0,0.0,300.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 53, -1, -1, -1, NULL, NULL, 0, 0, 0, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,300.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 54, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{-600.0,0.0,-300.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 54, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{600.0,0.0,-300.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 54, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,300.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 55, -1, -1, -1, NULL, NULL, 0, 0, 0, 4, 4, 0, -1, 0, 0},
+{{-600.0,0.0,-300.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 55, -1, -1, -1, NULL, NULL, 0, 0, 0, 4, 4, 0, -1, 0, 0},
+{{600.0,0.0,-300.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 55, -1, -1, -1, NULL, NULL, 0, 0, 0, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,600.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 63, -1, -1, -1, NULL, NULL, 0, 0, 2, 0, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 63, -1, -1, -1, NULL, NULL, 0, 0, 2, 0, 4, 0, -1, 0, 0},
+{{0.0,0.0,-600.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 63, -1, -1, -1, NULL, NULL, 0, 0, 2, 0, 4, 0, -1, 0, 0},
+{{1000.0,0.0,300.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 64, -1, -1, -1, NULL, NULL, 0, 0, 2, 0, 4, 0, -1, 0, 0},
+{{-1000.0,0.0,300.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 64, -1, -1, -1, NULL, NULL, 0, 0, 2, 0, 4, 0, -1, 0, 0},
+{{0.0,0.0,300.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 65, -1, -1, -1, NULL, NULL, 0, 0, 2, 0, 4, 0, -1, 0, 0},
+{{-600.0,0.0,-300.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 65, -1, -1, -1, NULL, NULL, 0, 0, 2, 0, 4, 0, -1, 0, 0},
+{{600.0,0.0,-300.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 65, -1, -1, -1, NULL, NULL, 0, 0, 2, 0, 4, 0, -1, 0, 0},
+{{0.0,-300.0,0.0}, {4.5,200.0,3.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 66, -1, -1, -1, NULL, NULL, 0, 0, 2, 0, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomActor BattleMode_room5_actors[7] = {
+{FALLING_GREY_ANT_SPAWNER, {200.0,1500.0,0.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 1, 800.0, 0.0, 800.0, 500.0, 1145569280, 1133903872, 1219479552, 0, 1092616192, 1127481344, 0, 0},
+{FALLING_GREY_ANT_SPAWNER, {-200.0,1500.0,0.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 1, -800.0, 0.0, -800.0, 500.0, -1001914368, 1133903872, 1219479552, 0, 1092616192, 1132920832, 0, 0},
+{FALLING_GREY_ANT_SPAWNER, {0.0,1500.0,0.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 1, 0.0, 600.0, 800.0, 600.0, 1145569280, 1142292480, 1219479552, 0, 1092616192, 1135869952, 0, 0},
+{FALLING_GREY_ANT_SPAWNER, {0.0,1500.0,0.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 1, 0.0, 600.0, -800.0, 600.0, -1001914368, 1142292480, 1219479552, 0, 1092616192, 1138819072, 0, 0},
+{FALLING_GREY_ANT_SPAWNER, {0.0,1500.0,-600.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 1, 0.0, -600.0, 800.0, -600.0, 1145569280, -1005191168, 1219479552, 0, 1092616192, 1141309440, 0, 0},
+{FALLING_GREY_ANT_SPAWNER, {0.0,1500.0,-600.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 1, 0.0, -600.0, -800.0, -600.0, -1001914368, -1005191168, 1219479552, 0, 1092616192, 1142784000, 0, 0},
+{ACTOR_NULL, {0.0,0.0,0.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+SpriteActor BattleMode_room5_sprites[9] = {
+{0, 0, {0.0,-300.0,600.0}, {100.0,2700.0,300.0}, 1, 0, 1.0, 0, 0, 1148846080, 1065353216, 0, 20, 20, 20, 120},
+{0, 0, {0.0,-300.0,0.0}, {100.0,2700.0,300.0}, 1, 0, 1.0, 0, 0, 1148846080, 1065353216, 0, 20, 20, 20, 120},
+{0, 0, {0.0,-300.0,-600.0}, {100.0,2700.0,300.0}, 1, 0, 1.0, 0, 0, 1148846080, 1065353216, 0, 20, 20, 20, 120},
+{0, 0, {1000.0,-300.0,300.0}, {100.0,600.0,300.0}, 1, 0, 1.0, 0, 0, 1148846080, 1065353216, 0, 20, 20, 20, 120},
+{0, 0, {-1000.0,-300.0,300.0}, {100.0,600.0,300.0}, 1, 0, 1.0, 0, 0, 1148846080, 1065353216, 0, 20, 20, 20, 120},
+{0, 0, {0.0,-300.0,300.0}, {100.0,800.0,300.0}, 1, 0, 1.0, 0, 0, 1148846080, 1065353216, 0, 20, 20, 20, 120},
+{0, 0, {-600.0,-300.0,-300.0}, {100.0,800.0,300.0}, 1, 0, 1.0, 0, 0, 1148846080, 1065353216, 0, 20, 20, 20, 120},
+{0, 0, {600.0,-300.0,-300.0}, {100.0,800.0,300.0}, 1, 0, 1.0, 0, 0, 1148846080, 1065353216, 0, 20, 20, 20, 120},
+{-1, 0, {-1.0,-1.0,-1.0}, {-1.0,32.0,32.0}, 1, 0, 0.0, 0, 0, 0, 0, 0, -1, -1, 0, 0}
+};
 
-#include "build/assets/levelGroup/BattleMode/rabObjects.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomObjects/room7_obj1.roomObj.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomObjects/room7_obj2.roomObj.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomObjects/room7_obj3.roomObj.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomObjects/room7_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomActors/room7_act1.roomAct.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomActors/room7_act2.roomAct.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomActors/room7_actSTOP.roomAct.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomObjects/room4_obj1.roomObj.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomObjects/room4_obj2.roomObj.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomObjects/room4_obj3.roomObj.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomObjects/room4_obj4.roomObj.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomObjects/room4_obj5.roomObj.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomObjects/room4_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomActors/room4_act1.roomAct.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomActors/room4_act2.roomAct.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomActors/room4_act3.roomAct.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomActors/room4_act4.roomAct.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomActors/room4_act5.roomAct.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomActors/room4_act6.roomAct.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomActors/room4_act7.roomAct.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomActors/room4_act8.roomAct.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomActors/room4_act9.roomAct.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomActors/room4_act10.roomAct.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomActors/room4_act11.roomAct.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomActors/room4_act12.roomAct.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomActors/room4_act13.roomAct.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomActors/room4_act14.roomAct.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomActors/room4_act15.roomAct.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomActors/room4_actSTOP.roomAct.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomObjects/room5_obj1.roomObj.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomObjects/room5_obj2.roomObj.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomObjects/room5_obj3.roomObj.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomObjects/room5_obj4.roomObj.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomObjects/room5_obj5.roomObj.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomObjects/room5_obj6.roomObj.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomObjects/room5_obj7.roomObj.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomObjects/room5_obj8.roomObj.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomObjects/room5_obj9.roomObj.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomObjects/room5_obj10.roomObj.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomObjects/room5_obj11.roomObj.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomObjects/room5_obj12.roomObj.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomObjects/room5_obj13.roomObj.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomObjects/room5_obj14.roomObj.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomObjects/room5_obj15.roomObj.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomObjects/room5_obj16.roomObj.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomObjects/room5_obj17.roomObj.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomObjects/room5_obj18.roomObj.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomObjects/room5_obj19.roomObj.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomObjects/room5_obj20.roomObj.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomObjects/room5_obj21.roomObj.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomObjects/room5_obj22.roomObj.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomObjects/room5_obj23.roomObj.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomObjects/room5_obj24.roomObj.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomObjects/room5_obj25.roomObj.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomObjects/room5_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomActors/room5_act1.roomAct.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomActors/room5_act2.roomAct.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomActors/room5_act3.roomAct.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomActors/room5_act4.roomAct.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomActors/room5_act5.roomAct.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomActors/room5_act6.roomAct.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomActors/room5_actSTOP.roomAct.inc.c"
-
-#include "assets/levelGroup/BattleMode/spriteActors/room5_spr1.sprite.inc.c"
-
-#include "assets/levelGroup/BattleMode/spriteActors/room5_spr2.sprite.inc.c"
-
-#include "assets/levelGroup/BattleMode/spriteActors/room5_spr3.sprite.inc.c"
-
-#include "assets/levelGroup/BattleMode/spriteActors/room5_spr4.sprite.inc.c"
-
-#include "assets/levelGroup/BattleMode/spriteActors/room5_spr5.sprite.inc.c"
-
-#include "assets/levelGroup/BattleMode/spriteActors/room5_spr6.sprite.inc.c"
-
-#include "assets/levelGroup/BattleMode/spriteActors/room5_spr7.sprite.inc.c"
-
-#include "assets/levelGroup/BattleMode/spriteActors/room5_spr8.sprite.inc.c"
-
-#include "assets/levelGroup/BattleMode/spriteActors/room5_sprSTOP.sprite.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomObjects/room6_obj1.roomObj.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomObjects/room6_obj2.roomObj.inc.c"
 extern Vtx BattleMode_model3_Vtx[];
-#include "assets/levelGroup/BattleMode/roomObjects/room6_obj3.roomObj.inc.c"
 
-#include "assets/levelGroup/BattleMode/roomObjects/room6_obj4.roomObj.inc.c"
+RoomObject BattleMode_room6_objects[12] = {
+{{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 67, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+{{0.0,-300.0,0.0}, {5.0,8.0,5.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 66, -1, -1, -1, NULL, NULL, 0, 0, 2, 0, 4, 0, -1, 0, 0},
+{{0.0,1000.0,0.0}, {0.009999999776482582,0.009999999776482582,0.009999999776482582}, 2, DEGREES_TO_RADIANS_2PI(45.00000125223908), 7, 32, 2.0, 0.0, 5.0, 0.0, &BattleMode_model3_Vtx, -8, -32, 9, -32, 4064, 39, -1, -1, -1, NULL, &func_800D8E70, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {0.5,0.6000000238418579,0.5}, 2, DEGREES_TO_RADIANS_2PI(0.0), 7, 9, 2.0, 0.0, 5.0, 0.0, 0, 0, 0, 0, 0, 0, 39, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {0.5,0.6000000238418579,0.5}, 2, DEGREES_TO_RADIANS_2PI(45.00000125223908), 7, 9, 5.0, 0.0, 2.0, 0.0, 0, 0, 0, 0, 0, 0, 39, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {0.5,0.6000000238418579,0.5}, 2, DEGREES_TO_RADIANS_2PI(90.00000250447816), 7, 9, 5.0, 0.0, -2.0, 0.0, 0, 0, 0, 0, 0, 0, 39, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {0.5,0.6000000238418579,0.5}, 2, DEGREES_TO_RADIANS_2PI(135.00000034162267), 7, 9, 2.0, 0.0, -5.0, 0.0, 0, 0, 0, 0, 0, 0, 39, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {0.5,0.6000000238418579,0.5}, 2, DEGREES_TO_RADIANS_2PI(180.00000500895632), 7, 9, -2.0, 0.0, -5.0, 0.0, 0, 0, 0, 0, 0, 0, 39, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {0.5,0.6000000238418579,0.5}, 2, DEGREES_TO_RADIANS_2PI(224.99999601591165), 7, 9, -5.0, 0.0, -2.0, 0.0, 0, 0, 0, 0, 0, 0, 39, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {0.5,0.6000000238418579,0.5}, 2, DEGREES_TO_RADIANS_2PI(270.00000068324533), 7, 9, -5.0, 0.0, 2.0, 0.0, 0, 0, 0, 0, 0, 0, 39, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {0.5,0.6000000238418579,0.5}, 2, DEGREES_TO_RADIANS_2PI(314.99999169020066), 7, 9, -2.0, 0.0, 5.0, 0.0, 0, 0, 0, 0, 0, 0, 39, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
 
-#include "assets/levelGroup/BattleMode/roomObjects/room6_obj5.roomObj.inc.c"
+RoomActor BattleMode_room6_actors[3] = {
+{POWER_UP_SPAWNER, {0.0,1000.0,100.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 1, 10.0, 10.0, 30.0, 50.0, 0, 1147207680, 1133903872, 0, 1142292480, 1133903872, 1125515264, 1125515264},
+{BATTLE_MODE_SAND_CRAB_SPAWNER, {0.0,0.0,0.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 1, 0.0, 15.0, 32.0, 0.0, 0, 0, 0, 0, 1101004800, 0, 0, 0},
+{ACTOR_NULL, {0.0,0.0,0.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
 
-#include "assets/levelGroup/BattleMode/roomObjects/room6_obj6.roomObj.inc.c"
+RoomObject BattleMode_room1_objects[3] = {
+{{0.0,0.0,0.0}, {0.5,1.0,0.5}, 2, DEGREES_TO_RADIANS_2PI(0.0), 7, 8, 0.0, 0.0, 0.0, 0.0, 450, 0, 0, 0, 0, 0, 40, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,-400.0,0.0}, {15.0,1.0,15.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 48, -1, -1, -1, NULL, NULL, 0, 0, 0, 0, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
 
-#include "assets/levelGroup/BattleMode/roomObjects/room6_obj7.roomObj.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomObjects/room6_obj8.roomObj.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomObjects/room6_obj9.roomObj.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomObjects/room6_obj10.roomObj.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomObjects/room6_obj11.roomObj.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomObjects/room6_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomActors/room6_act1.roomAct.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomActors/room6_act2.roomAct.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomActors/room6_actSTOP.roomAct.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomObjects/room1_obj1.roomObj.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomObjects/room1_obj2.roomObj.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomObjects/room1_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomActors/room1_act1.roomAct.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomActors/room1_act2.roomAct.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomActors/room1_act3.roomAct.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomActors/room1_act4.roomAct.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomActors/room1_act5.roomAct.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomActors/room1_actSTOP.roomAct.inc.c"
+RoomActor BattleMode_room1_actors[6] = {
+{POWER_UP_SPAWNER, {-900.0,600.0,0.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 1, 10.0, 10.0, 30.0, 50.0, 1120403456, 1147207680, 1119092736, 0, 1142292480, 1133903872, 1125515264, 1125515264},
+{POWER_UP_SPAWNER, {900.0,600.0,0.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 1, 10.0, 10.0, 30.0, 50.0, 1120403456, 1133903872, 1106247680, 0, 1142292480, 1133903872, 1125515264, 1125515264},
+{POWER_UP_SPAWNER, {0.0,600.0,900.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 1, 10.0, 10.0, 30.0, 50.0, 1120403456, 1142292480, 1114636288, 0, 1142292480, 1133903872, 1125515264, 1125515264},
+{POWER_UP_SPAWNER, {0.0,600.0,-900.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 1, 10.0, 10.0, 30.0, 50.0, 1120403456, 1150681088, 1123024896, 0, 1142292480, 1133903872, 1125515264, 1125515264},
+{BATTLE_MODE_FIRE_SPAWNER, {0.0,0.0,0.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 1, 900.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 1107296256, 0, 0, 0},
+{ACTOR_NULL, {0.0,0.0,0.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
 
 #include "assets/levelGroup/BattleMode/newType/g1.ut1.inc.c"
-
 #include "assets/levelGroup/BattleMode/newType/g2.ut1.inc.c"
-
 #include "assets/levelGroup/BattleMode/newType/g3.ut1.inc.c"
-
 #include "assets/levelGroup/BattleMode/newType/g4.ut1.inc.c"
-
 #include "assets/levelGroup/BattleMode/newType/g5.ut1.inc.c"
-
 #include "assets/levelGroup/BattleMode/newType/g6.ut1.inc.c"
-
 #include "assets/levelGroup/BattleMode/newType/g7.ut1.inc.c"
-
 #include "assets/levelGroup/BattleMode/newType/g8.ut1.inc.c"
-
 #include "assets/levelGroup/BattleMode/newType/g9.ut1.inc.c"
-
 #include "assets/levelGroup/BattleMode/newType/g10.ut1.inc.c"
-
 #include "assets/levelGroup/BattleMode/newType/g11.ut1.inc.c"
-
 #include "assets/levelGroup/BattleMode/newType/g12.ut1.inc.c"
-
 #include "assets/levelGroup/BattleMode/newType/g13.ut1.inc.c"
-
 #include "assets/levelGroup/BattleMode/newType/g14.ut1.inc.c"
-
 #include "assets/levelGroup/BattleMode/newType/g15.ut1.inc.c"
-
 #include "assets/levelGroup/BattleMode/newType/g16.ut1.inc.c"
 
-#include "assets/levelGroup/BattleMode/roomObjects/room2_obj1.roomObj.inc.c"
+RoomObject BattleMode_room2_objects[7] = {
+{{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 6, 0.0, 0.0, 0.0, 0.0, &BattleMode_g1_Ut1, 4, 0, 0, 0, 0, 56, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 6, 0.0, 0.0, 0.0, 0.0, &BattleMode_g5_Ut1, 4, 0, 0, 0, 0, 56, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 6, 0.0, 0.0, 0.0, 0.0, &BattleMode_g9_Ut1, 4, 0, 0, 0, 0, 56, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 6, 0.0, 0.0, 0.0, 0.0, &BattleMode_g13_Ut1, 4, 0, 0, 0, 0, 56, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {0.5,1.0,0.5}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 57, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,-400.0,0.0}, {15.0,1.0,15.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 48, -1, -1, -1, NULL, NULL, 0, 0, 0, 0, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
 
-#include "assets/levelGroup/BattleMode/roomObjects/room2_obj2.roomObj.inc.c"
+RoomActor BattleMode_room2_actors[2] = {
+{BATTLE_MODE_SAUCER_SPAWNER, {0.0,0.0,0.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 1, 30.0, 5.0, 0.0, 0.0, 0, 0, 0, 0, 1092616192, 1094713344, 0, 0},
+{ACTOR_NULL, {0.0,0.0,0.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
 
-#include "assets/levelGroup/BattleMode/roomObjects/room2_obj3.roomObj.inc.c"
+RoomActor BattleMode_room3_actors[25] = {
+{CHOCO_KID_SPAWNER, {-650.0,0.0,-400.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 1, 3.0, 1.0, 12.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0},
+{CHOCO_KID_SPAWNER, {-650.0,0.0,-200.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 1, 3.0, 1.0, 12.0, 0.0, 0, 0, 0, 0, 1065353216, 0, 0, 0},
+{CHOCO_KID_SPAWNER, {-650.0,0.0,0.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 1, 3.0, 1.0, 12.0, 0.0, 0, 0, 0, 0, 1073741824, 0, 0, 0},
+{CHOCO_KID_SPAWNER, {-650.0,0.0,200.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 1, 3.0, 1.0, 12.0, 0.0, 0, 0, 0, 0, 1077936128, 0, 0, 0},
+{CHOCO_KID_SPAWNER, {-650.0,0.0,400.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 1, 3.0, 1.0, 12.0, 0.0, 0, 0, 0, 0, 1082130432, 0, 0, 0},
+{CHOCO_KID_SPAWNER, {650.0,0.0,-400.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 1, 3.0, 1.0, 12.0, 0.0, 0, 0, 0, 0, 1084227584, 0, 0, 0},
+{CHOCO_KID_SPAWNER, {650.0,0.0,-200.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 1, 3.0, 1.0, 12.0, 0.0, 0, 0, 0, 0, 1086324736, 0, 0, 0},
+{CHOCO_KID_SPAWNER, {650.0,0.0,0.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 1, 3.0, 1.0, 12.0, 0.0, 0, 0, 0, 0, 1088421888, 0, 0, 0},
+{CHOCO_KID_SPAWNER, {650.0,0.0,200.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 1, 3.0, 1.0, 12.0, 0.0, 0, 0, 0, 0, 1090519040, 0, 0, 0},
+{CHOCO_KID_SPAWNER, {650.0,0.0,400.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 1, 3.0, 1.0, 12.0, 0.0, 0, 0, 0, 0, 1091567616, 0, 0, 0},
+{CHOCO_KID_SPAWNER, {-400.0,0.0,-600.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 1, 3.0, 1.0, 12.0, 0.0, 0, 0, 0, 0, 1092616192, 0, 0, 0},
+{CHOCO_KID_SPAWNER, {-200.0,0.0,-600.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 1, 3.0, 1.0, 12.0, 0.0, 0, 0, 0, 0, 1093664768, 0, 0, 0},
+{CHOCO_KID_SPAWNER, {0.0,0.0,-600.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 1, 3.0, 1.0, 12.0, 0.0, 0, 0, 0, 0, 1094713344, 0, 0, 0},
+{CHOCO_KID_SPAWNER, {200.0,0.0,-600.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 1, 3.0, 1.0, 12.0, 0.0, 0, 0, 0, 0, 1095761920, 0, 0, 0},
+{CHOCO_KID_SPAWNER, {400.0,0.0,-600.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 1, 3.0, 1.0, 12.0, 0.0, 0, 0, 0, 0, 1096810496, 0, 0, 0},
+{CHOCO_KID_SPAWNER, {-400.0,0.0,600.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 1, 3.0, 1.0, 12.0, 0.0, 0, 0, 0, 0, 1097859072, 0, 0, 0},
+{CHOCO_KID_SPAWNER, {-200.0,0.0,600.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 1, 3.0, 1.0, 12.0, 0.0, 0, 0, 0, 0, 1098907648, 0, 0, 0},
+{CHOCO_KID_SPAWNER, {0.0,0.0,600.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 1, 3.0, 1.0, 12.0, 0.0, 0, 0, 0, 0, 1099431936, 0, 0, 0},
+{CHOCO_KID_SPAWNER, {200.0,0.0,600.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 1, 3.0, 1.0, 12.0, 0.0, 0, 0, 0, 0, 1100480512, 0, 0, 0},
+{CHOCO_KID_SPAWNER, {400.0,0.0,600.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 1, 3.0, 1.0, 12.0, 0.0, 0, 0, 0, 0, 1101004800, 0, 0, 0},
+{POWER_UP_SPAWNER, {-800.0,600.0,-800.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 1, 10.0, 20.0, 5.0, 5.0, 0, 1147207680, 1133903872, 0, 1142292480, 1133903872, 1125515264, 1125515264},
+{POWER_UP_SPAWNER, {800.0,600.0,-800.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 1, 10.0, 20.0, 5.0, 5.0, 0, 1147207680, 1133903872, 0, 1142292480, 1133903872, 1125515264, 1125515264},
+{POWER_UP_SPAWNER, {-800.0,600.0,800.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 1, 10.0, 20.0, 5.0, 5.0, 0, 1147207680, 1133903872, 0, 1142292480, 1133903872, 1125515264, 1125515264},
+{POWER_UP_SPAWNER, {800.0,600.0,800.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 1, 10.0, 20.0, 5.0, 5.0, 0, 1147207680, 1133903872, 0, 1142292480, 1133903872, 1125515264, 1125515264},
+{ACTOR_NULL, {0.0,0.0,0.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
 
-#include "assets/levelGroup/BattleMode/roomObjects/room2_obj4.roomObj.inc.c"
+RoomActor BattleMode_roomUnk_actors[3] = {
+{GREY_ANT_SPAWNER_WRAPPER, {-50.0,0.0,-1500.0}, 20.0, -10000.0, 10000.0, -971227136, 10000.0, -10000.0, 10000.0, 1, -50.0, -1400.0, -1000.0, -1000.0, -995164160, -1027080192, -994344960, -1027080192, 1101004800, 1106247680, 0, 0},
+{GREY_ANT_SPAWNER_WRAPPER, {50.0,0.0,-1500.0}, 20.0, -10000.0, 10000.0, -971227136, 10000.0, -10000.0, 10000.0, 1, 50.0, -1400.0, 1000.0, -1000.0, 1152319488, -1027080192, 1153138688, -1027080192, 1101004800, 1106247680, 0, 0},
+{ACTOR_NULL, {0.0,0.0,0.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
 
-#include "assets/levelGroup/BattleMode/roomObjects/room2_obj5.roomObj.inc.c"
+RoomObject BattleMode_room3_objects[3] = {
+{{0.0,0.0,0.0}, {0.5,1.5,0.5}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 42, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,-400.0,0.0}, {15.0,1.0,15.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 48, -1, -1, -1, NULL, NULL, 0, 0, 0, 0, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
 
-#include "assets/levelGroup/BattleMode/roomObjects/room2_obj6.roomObj.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomObjects/room2_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomActors/room2_act1.roomAct.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomActors/room2_actSTOP.roomAct.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomActors/room3_act1.roomAct.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomActors/room3_act2.roomAct.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomActors/room3_act3.roomAct.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomActors/room3_act4.roomAct.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomActors/room3_act5.roomAct.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomActors/room3_act6.roomAct.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomActors/room3_act7.roomAct.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomActors/room3_act8.roomAct.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomActors/room3_act9.roomAct.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomActors/room3_act10.roomAct.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomActors/room3_act11.roomAct.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomActors/room3_act12.roomAct.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomActors/room3_act13.roomAct.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomActors/room3_act14.roomAct.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomActors/room3_act15.roomAct.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomActors/room3_act16.roomAct.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomActors/room3_act17.roomAct.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomActors/room3_act18.roomAct.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomActors/room3_act19.roomAct.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomActors/room3_act20.roomAct.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomActors/room3_act21.roomAct.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomActors/room3_act22.roomAct.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomActors/room3_act23.roomAct.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomActors/room3_act24.roomAct.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomActors/room3_actSTOP.roomAct.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomActors/roomUnk_act1.roomAct.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomActors/roomUnk_act2.roomAct.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomActors/roomUnk_actSTOP.roomAct.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomObjects/room3_obj1.roomObj.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomObjects/room3_obj2.roomObj.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomObjects/room3_objSTOP.roomObj.inc.c"
 extern Vtx BattleMode_model7_Vtx[];
-#include "assets/levelGroup/BattleMode/roomObjects/roomUnk_obj1.roomObj.inc.c"
 
-#include "assets/levelGroup/BattleMode/roomObjects/roomUnk_obj2.roomObj.inc.c"
+RoomObject BattleMode_roomUnk_objects[15] = {
+{{0.0,1000.0,0.0}, {0.009999999776482582,0.009999999776482582,0.009999999776482582}, 2, DEGREES_TO_RADIANS_2PI(45.00000125223908), 7, 32, 2.0, 0.0, 5.0, 0.0, &BattleMode_model7_Vtx, 32, -16, 10, 4484, 4063, 43, -1, -1, -1, NULL, &func_800D8E70, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,20.0,0.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 44, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(0.0), 7, 9, -5.0, 0.0, 2.0, 0.0, 0, 0, 0, 0, 0, 0, 43, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,20.0,0.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(45.00000125223908), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 44, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(45.00000125223908), 7, 9, -2.0, 0.0, 5.0, 0.0, 0, 0, 0, 0, 0, 0, 43, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,20.0,0.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(90.00000250447816), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 44, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(90.00000250447816), 7, 9, 2.0, 0.0, 5.0, 0.0, 0, 0, 0, 0, 0, 0, 43, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,20.0,0.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(135.00000034162267), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 44, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(135.00000034162267), 7, 9, 5.0, 0.0, 2.0, 0.0, 0, 0, 0, 0, 0, 0, 43, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,5.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 58, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,5.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 59, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,20.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 60, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,20.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 61, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,-300.0,0.0}, {4.0,8.0,4.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 66, -1, -1, -1, NULL, NULL, 0, 0, 2, 0, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
 
-#include "assets/levelGroup/BattleMode/roomObjects/roomUnk_obj3.roomObj.inc.c"
+RoomObject BattleMode_room0_objects[11] = {
+{{0.0,0.0,0.0}, {0.699999988079071,1.0,0.699999988079071}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 45, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{1085.0,0.0,875.0}, {0.699999988079071,1.0,0.699999988079071}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 46, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{1085.0,0.0,-875.0}, {0.699999988079071,1.0,0.699999988079071}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 46, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{-1085.0,0.0,875.0}, {0.699999988079071,1.0,0.699999988079071}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 46, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{-1085.0,0.0,-875.0}, {0.699999988079071,1.0,0.699999988079071}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 46, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{1085.0,0.0,875.0}, {0.699999988079071,1.0,0.699999988079071}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 67, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{1085.0,0.0,-875.0}, {0.699999988079071,1.0,0.699999988079071}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 67, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{-1085.0,0.0,875.0}, {0.699999988079071,1.0,0.699999988079071}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 67, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{-1085.0,0.0,-875.0}, {0.699999988079071,1.0,0.699999988079071}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 67, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,-400.0,0.0}, {15.0,1.0,15.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 48, -1, -1, -1, NULL, NULL, 0, 0, 0, 0, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
 
-#include "assets/levelGroup/BattleMode/roomObjects/roomUnk_obj4.roomObj.inc.c"
+RoomActor BattleMode_room0_actors[6] = {
+{POPCORN_BUCKET_SPAWNER, {0.0,400.0,0.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 1, 30.0, 20.0, 0.0, 0.0, 0, 0, 0, 0, 1117782016, 1082130432, 1109393408, 1098907648},
+{POWER_UP_SPAWNER, {1085.0,0.0,805.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 1, 10.0, 15.0, 10.0, 10.0, 0, 1147207680, 1133903872, 0, 1142292480, 1133903872, 1125515264, 1125515264},
+{POWER_UP_SPAWNER, {1085.0,0.0,-805.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 1, 10.0, 15.0, 10.0, 10.0, 0, 1147207680, 1133903872, 0, 1142292480, 1133903872, 1125515264, 1125515264},
+{POWER_UP_SPAWNER, {-1085.0,0.0,805.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 1, 10.0, 15.0, 10.0, 10.0, 0, 1147207680, 1133903872, 0, 1142292480, 1133903872, 1125515264, 1125515264},
+{POWER_UP_SPAWNER, {-1085.0,0.0,-805.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 1, 10.0, 15.0, 10.0, 10.0, 0, 1147207680, 1133903872, 0, 1142292480, 1133903872, 1125515264, 1125515264},
+{ACTOR_NULL, {0.0,0.0,0.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
 
-#include "assets/levelGroup/BattleMode/roomObjects/roomUnk_obj5.roomObj.inc.c"
+s32 BattleMode_spriteLib_Sprlib[] = {
+    40,
+    104,
+    105,
+    106,
+    107,
+    108,
+    109,
+    22,
+    23,
+    24,
+    25,
+    0,
+    0,
+    0,
+    0,
+    0,
+    47,
+    40,
+    104,
+    105,
+    106,
+    107,
+    108,
+    109,
+    22,
+    23,
+    24,
+    25,
+    0,
+    0,
+    0,
+    0,
+    49,
+    40,
+    104,
+    105,
+    106,
+    107,
+    108,
+    109,
+    22,
+    23,
+    24,
+    25,
+    0,
+    0,
+    0,
+    0,
+    39,
+    39,
+    40,
+    104,
+    105,
+    106,
+    107,
+    108,
+    109,
+    22,
+    23,
+    24,
+    25,
+    0,
+    0,
+    0,
+    39,
+    39,
+    40,
+    104,
+    105,
+    106,
+    107,
+    108,
+    109,
+    22,
+    23,
+    24,
+    25,
+    0,
+    0,
+    0,
+    14,
+    40,
+    104,
+    105,
+    106,
+    107,
+    108,
+    109,
+    22,
+    23,
+    24,
+    25,
+    0,
+    0,
+    0,
+    0,
+    44,
+    45,
+    40,
+    104,
+    105,
+    106,
+    107,
+    108,
+    109,
+    22,
+    23,
+    24,
+    25,
+    0,
+    0,
+    0,
+    40,
+    104,
+    105,
+    106,
+    107,
+    108,
+    109,
+    22,
+    23,
+    24,
+    25,
+    0,
+    0,
+    0,
+    0,
+    0,
+};
 
-#include "assets/levelGroup/BattleMode/roomObjects/roomUnk_obj6.roomObj.inc.c"
+RoomInstance BattleMode_room_instances[9] = {
+{BattleMode_room0_objects,BattleMode_room0_actors, 0, 0, 0, 0, 0, 0, -1, 0, 0.0, 8, 0.699999988079071, 0.800000011920929, 800.0, 50.0, 1800.0, 30.0, 0.8999999761581421, -400, 50, -400, 400, 3277200, -26214350, 26214800, 3341936, -1.0, 0.0},
+{BattleMode_room1_objects,BattleMode_room1_actors, 0, 0, 0, 0, 1, 0, -1, 0, 0.0, 8, 0.699999988079071, 0.800000011920929, 800.0, 50.0, 1800.0, 30.0, 0.8999999761581421, -400, 50, -400, 400, 3277200, -26214350, 26214800, 3341936, -1.0, 0.0},
+{BattleMode_room2_objects,BattleMode_room2_actors, 0, 0, 0, 0, 2, 0, -1, 0, 0.0, 8, 0.699999988079071, 0.800000011920929, 800.0, 50.0, 1800.0, 30.0, 0.8999999761581421, -600, 50, -1050, 600, 3277850, -68812750, 39322650, 3341736, -1.0, 0.0},
+{BattleMode_room3_objects,BattleMode_room3_actors, 0, 0, 0, 0, 3, 0, -1, 0, 0.0, 8, 0.699999988079071, 0.800000011920929, 800.0, 50.0, 1800.0, 30.0, 0.8999999761581421, -400, 50, -400, 400, 3277200, -26214350, 26214800, 3341936, -1.0, 0.0},
+{BattleMode_room4_objects,BattleMode_room4_actors, 0, 0, 0, 0, 4, 0, -1, 0, 0.0, 8, 0.8500000238418579, 0.800000011920929, 800.0, 50.0, -1800.0, 30.0, 0.8999999761581421, -600, 50, -600, 600, 3277400, -39321550, 39322200, 3341736, -1.0, 0.0},
+{BattleMode_room5_objects,BattleMode_room5_actors, 0,BattleMode_room5_sprites, 0, 0, 5, 0, -1, 0, 0.0, 8, 0.8500000238418579, 0.800000011920929, 800.0, 50.0, -1800.0, 30.0, 0.8999999761581421, -1100, 50, -600, 1100, 3277400, -65535950, 39322700, 3341736, -1.0, 0.0},
+{BattleMode_room6_objects,BattleMode_room6_actors, 0, 0, 0, 0, 6, 0, -1, 0, 0.0, 8, 0.8500000238418579, 0.800000011920929, 800.0, 50.0, -1800.0, 30.0, 0.8999999761581421, -500, 50, -500, 500, 3277300, -32767950, 32768500, 3341836, -1.0, 0.0},
+{BattleMode_room7_objects,BattleMode_room7_actors, 0, 0, 0, 0, 7, 0, -1, 0, 0.0, 8, 0.699999988079071, 0.800000011920929, 800.0, 50.0, -1800.0, 30.0, 0.8999999761581421, -1000, 50, -1000, 1000, 3277800, -65535950, 65537000, 3341336, -1.0, 0.0},
+{0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0}
+};
 
-#include "assets/levelGroup/BattleMode/roomObjects/roomUnk_obj7.roomObj.inc.c"
+s32 BattleMode_rooms_map[5][3] = {
+    {-1,  4, -1},
+    {-1,  3, -1},
+    {-1,  2, -1},
+    {-1,  1, -1},
+    {-1,  0, -1}
+};
 
-#include "assets/levelGroup/BattleMode/roomObjects/roomUnk_obj8.roomObj.inc.c"
+StageMapData BattleMode_map_data = {
+3, 5, BattleMode_room_instances, BattleMode_rooms_map, 
+};
 
-#include "assets/levelGroup/BattleMode/roomObjects/roomUnk_obj9.roomObj.inc.c"
+SpriteActor BattleMode_roomUnk_sprites[1] = {
+{-1, 0, {-1.0,-1.0,-1.0}, {-1.0,32.0,32.0}, 1, 0, 0.0, 0, 0, 0, 0, 0, -1, -1, 0, 0}
+};
 
-#include "assets/levelGroup/BattleMode/roomObjects/roomUnk_obj10.roomObj.inc.c"
+RoomInstance BattleMode_ext_room_instances[1] = {
+{0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0}
+};
 
-#include "assets/levelGroup/BattleMode/roomObjects/roomUnk_obj11.roomObj.inc.c"
+LevelScope BattleMode_scope_Lvlscope = {
+    0,
+    0,
+    0,
+    -1,
+    25000,
+    60,
+};
 
-#include "assets/levelGroup/BattleMode/roomObjects/roomUnk_obj12.roomObj.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomObjects/roomUnk_obj13.roomObj.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomObjects/roomUnk_obj14.roomObj.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomObjects/roomUnk_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomObjects/room0_obj1.roomObj.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomObjects/room0_obj2.roomObj.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomObjects/room0_obj3.roomObj.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomObjects/room0_obj4.roomObj.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomObjects/room0_obj5.roomObj.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomObjects/room0_obj6.roomObj.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomObjects/room0_obj7.roomObj.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomObjects/room0_obj8.roomObj.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomObjects/room0_obj9.roomObj.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomObjects/room0_obj10.roomObj.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomObjects/room0_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomActors/room0_act1.roomAct.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomActors/room0_act2.roomAct.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomActors/room0_act3.roomAct.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomActors/room0_act4.roomAct.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomActors/room0_act5.roomAct.inc.c"
-
-#include "assets/levelGroup/BattleMode/roomActors/room0_actSTOP.roomAct.inc.c"
-
-#include "assets/levelGroup/BattleMode/spriteLib.sprLib.inc.c"
-
-#include "assets/levelGroup/BattleMode/rooms/room0.rmSet.inc.c"
-
-#include "assets/levelGroup/BattleMode/rooms/room1.rmSet.inc.c"
-
-#include "assets/levelGroup/BattleMode/rooms/room2.rmSet.inc.c"
-
-#include "assets/levelGroup/BattleMode/rooms/room3.rmSet.inc.c"
-
-#include "assets/levelGroup/BattleMode/rooms/room4.rmSet.inc.c"
-
-#include "assets/levelGroup/BattleMode/rooms/room5.rmSet.inc.c"
-
-#include "assets/levelGroup/BattleMode/rooms/room6.rmSet.inc.c"
-
-#include "assets/levelGroup/BattleMode/rooms/room7.rmSet.inc.c"
-
-#include "assets/levelGroup/BattleMode/rooms/roomSTOP.rmSet.inc.c"
-
-#include "assets/levelGroup/BattleMode/map.lvmM.inc.c"
-
-#include "assets/levelGroup/BattleMode/map.lvmH.inc.c"
-
-#include "assets/levelGroup/BattleMode/spriteActors/roomUnk_spr1.sprite.inc.c"
-
-#include "assets/levelGroup/BattleMode/nullOWRoom.rmSet.inc.c"
-
-#include "assets/levelGroup/BattleMode/scope.lvlScope.inc.c"
-
-#include "assets/levelGroup/BattleMode/header.lvlHdr.inc.c"
+StageData BattleMode_header_Lvlhdr = {
+    &BattleMode_map_data,
+    0,
+    &BattleMode_stageModels[0],
+    68,
+    0,
+    50334976,
+    131072,
+    &BattleMode_spriteLib_Sprlib[0],
+    &BattleMode_scope_Lvlscope,
+};
 s32 battleMode_pad[2] = {0, 0};
 Mtx BattleMode_IMtx2 = IDENTITY;
 
@@ -770,7 +872,9 @@ Mtx BattleMode_IMtx32 = IDENTITY;
 
 #include "assets/levelGroup/BattleMode/unkCol1/unkCol1.colS.inc.c"
 
-#include "assets/levelGroup/BattleMode/unkCol1/unkCol1.colH.inc.c"
+ModelCollision BattleMode_unkCol1_ColH = {
+16, 22, &BattleMode_unkCol1_ColV[0], &BattleMode_unkCol1_ColT[0], &BattleMode_unkCol1_ColS
+};
 
 #include "assets/levelGroup/BattleMode/unkCol2/unkCol2.colV.inc.c"
 
@@ -778,7 +882,9 @@ Mtx BattleMode_IMtx32 = IDENTITY;
 
 #include "assets/levelGroup/BattleMode/unkCol2/unkCol2.colS.inc.c"
 
-#include "assets/levelGroup/BattleMode/unkCol2/unkCol2.colH.inc.c"
+ModelCollision BattleMode_unkCol2_ColH = {
+16, 22, &BattleMode_unkCol2_ColV[0], &BattleMode_unkCol2_ColT[0], &BattleMode_unkCol2_ColS
+};
 
 #include "assets/levelGroup/BattleMode/unkCol3/unkCol3.colV.inc.c"
 
@@ -786,7 +892,9 @@ Mtx BattleMode_IMtx32 = IDENTITY;
 
 #include "assets/levelGroup/BattleMode/unkCol3/unkCol3.colS.inc.c"
 
-#include "assets/levelGroup/BattleMode/unkCol3/unkCol3.colH.inc.c"
+ModelCollision BattleMode_unkCol3_ColH = {
+5, 3, &BattleMode_unkCol3_ColV[0], &BattleMode_unkCol3_ColT[0], &BattleMode_unkCol3_ColS
+};
 
 #include "assets/levelGroup/BattleMode/unkCol4/unkCol4.colV.inc.c"
 
@@ -794,7 +902,9 @@ Mtx BattleMode_IMtx32 = IDENTITY;
 
 #include "assets/levelGroup/BattleMode/unkCol4/unkCol4.colS.inc.c"
 
-#include "assets/levelGroup/BattleMode/unkCol4/unkCol4.colH.inc.c"
+ModelCollision BattleMode_unkCol4_ColH = {
+32, 48, &BattleMode_unkCol4_ColV[0], &BattleMode_unkCol4_ColT[0], &BattleMode_unkCol4_ColS
+};
 
 #include "assets/levelGroup/BattleMode/unkCol5/unkCol5.colV.inc.c"
 
@@ -802,7 +912,9 @@ Mtx BattleMode_IMtx32 = IDENTITY;
 
 #include "assets/levelGroup/BattleMode/unkCol5/unkCol5.colS.inc.c"
 
-#include "assets/levelGroup/BattleMode/unkCol5/unkCol5.colH.inc.c"
+ModelCollision BattleMode_unkCol5_ColH = {
+4, 2, &BattleMode_unkCol5_ColV[0], &BattleMode_unkCol5_ColT[0], &BattleMode_unkCol5_ColS
+};
 
 #include "assets/levelGroup/BattleMode/unkCol6/unkCol6.colV.inc.c"
 
@@ -810,7 +922,9 @@ Mtx BattleMode_IMtx32 = IDENTITY;
 
 #include "assets/levelGroup/BattleMode/unkCol6/unkCol6.colS.inc.c"
 
-#include "assets/levelGroup/BattleMode/unkCol6/unkCol6.colH.inc.c"
+ModelCollision BattleMode_unkCol6_ColH = {
+24, 42, &BattleMode_unkCol6_ColV[0], &BattleMode_unkCol6_ColT[0], &BattleMode_unkCol6_ColS
+};
 
 #include "assets/levelGroup/BattleMode/unkCol7/unkCol7.colV.inc.c"
 
@@ -818,7 +932,9 @@ Mtx BattleMode_IMtx32 = IDENTITY;
 
 #include "assets/levelGroup/BattleMode/unkCol7/unkCol7.colS.inc.c"
 
-#include "assets/levelGroup/BattleMode/unkCol7/unkCol7.colH.inc.c"
+ModelCollision BattleMode_unkCol7_ColH = {
+8, 6, &BattleMode_unkCol7_ColV[0], &BattleMode_unkCol7_ColT[0], &BattleMode_unkCol7_ColS
+};
 
 #include "assets/levelGroup/BattleMode/unkCol8/unkCol8.colV.inc.c"
 
@@ -826,7 +942,9 @@ Mtx BattleMode_IMtx32 = IDENTITY;
 
 #include "assets/levelGroup/BattleMode/unkCol8/unkCol8.colS.inc.c"
 
-#include "assets/levelGroup/BattleMode/unkCol8/unkCol8.colH.inc.c"
+ModelCollision BattleMode_unkCol8_ColH = {
+6, 4, &BattleMode_unkCol8_ColV[0], &BattleMode_unkCol8_ColT[0], &BattleMode_unkCol8_ColS
+};
 
 #include "assets/levelGroup/BattleMode/unkCol9/unkCol9.colV.inc.c"
 
@@ -834,7 +952,9 @@ Mtx BattleMode_IMtx32 = IDENTITY;
 
 #include "assets/levelGroup/BattleMode/unkCol9/unkCol9.colS.inc.c"
 
-#include "assets/levelGroup/BattleMode/unkCol9/unkCol9.colH.inc.c"
+ModelCollision BattleMode_unkCol9_ColH = {
+8, 10, &BattleMode_unkCol9_ColV[0], &BattleMode_unkCol9_ColT[0], &BattleMode_unkCol9_ColS
+};
 
 #include "assets/levelGroup/BattleMode/unkCol10/unkCol10.colV.inc.c"
 
@@ -842,7 +962,9 @@ Mtx BattleMode_IMtx32 = IDENTITY;
 
 #include "assets/levelGroup/BattleMode/unkCol10/unkCol10.colS.inc.c"
 
-#include "assets/levelGroup/BattleMode/unkCol10/unkCol10.colH.inc.c"
+ModelCollision BattleMode_unkCol10_ColH = {
+8, 10, &BattleMode_unkCol10_ColV[0], &BattleMode_unkCol10_ColT[0], &BattleMode_unkCol10_ColS
+};
 
 #include "assets/levelGroup/BattleMode/unkCol11/unkCol11.colV.inc.c"
 
@@ -850,7 +972,9 @@ Mtx BattleMode_IMtx32 = IDENTITY;
 
 #include "assets/levelGroup/BattleMode/unkCol11/unkCol11.colS.inc.c"
 
-#include "assets/levelGroup/BattleMode/unkCol11/unkCol11.colH.inc.c"
+ModelCollision BattleMode_unkCol11_ColH = {
+4, 2, &BattleMode_unkCol11_ColV[0], &BattleMode_unkCol11_ColT[0], &BattleMode_unkCol11_ColS
+};
 
 #include "assets/levelGroup/BattleMode/unkCol12/unkCol12.colV.inc.c"
 
@@ -858,7 +982,9 @@ Mtx BattleMode_IMtx32 = IDENTITY;
 
 #include "assets/levelGroup/BattleMode/unkCol12/unkCol12.colS.inc.c"
 
-#include "assets/levelGroup/BattleMode/unkCol12/unkCol12.colH.inc.c"
+ModelCollision BattleMode_unkCol12_ColH = {
+4, 2, &BattleMode_unkCol12_ColV[0], &BattleMode_unkCol12_ColT[0], &BattleMode_unkCol12_ColS
+};
 
 #include "assets/levelGroup/BattleMode/unkCol13/unkCol13.colV.inc.c"
 
@@ -866,7 +992,9 @@ Mtx BattleMode_IMtx32 = IDENTITY;
 
 #include "assets/levelGroup/BattleMode/unkCol13/unkCol13.colS.inc.c"
 
-#include "assets/levelGroup/BattleMode/unkCol13/unkCol13.colH.inc.c"
+ModelCollision BattleMode_unkCol13_ColH = {
+4, 2, &BattleMode_unkCol13_ColV[0], &BattleMode_unkCol13_ColT[0], &BattleMode_unkCol13_ColS
+};
 
 #include "assets/levelGroup/BattleMode/unkCol14/unkCol14.colV.inc.c"
 
@@ -874,7 +1002,9 @@ Mtx BattleMode_IMtx32 = IDENTITY;
 
 #include "assets/levelGroup/BattleMode/unkCol14/unkCol14.colS.inc.c"
 
-#include "assets/levelGroup/BattleMode/unkCol14/unkCol14.colH.inc.c"
+ModelCollision BattleMode_unkCol14_ColH = {
+4, 2, &BattleMode_unkCol14_ColV[0], &BattleMode_unkCol14_ColT[0], &BattleMode_unkCol14_ColS
+};
 
 #include "assets/levelGroup/BattleMode/unkCol15/unkCol15.colV.inc.c"
 
@@ -882,7 +1012,9 @@ Mtx BattleMode_IMtx32 = IDENTITY;
 
 #include "assets/levelGroup/BattleMode/unkCol15/unkCol15.colS.inc.c"
 
-#include "assets/levelGroup/BattleMode/unkCol15/unkCol15.colH.inc.c"
+ModelCollision BattleMode_unkCol15_ColH = {
+4, 2, &BattleMode_unkCol15_ColV[0], &BattleMode_unkCol15_ColT[0], &BattleMode_unkCol15_ColS
+};
 
 #include "assets/levelGroup/BattleMode/unkCol16/unkCol16.colV.inc.c"
 
@@ -890,7 +1022,9 @@ Mtx BattleMode_IMtx32 = IDENTITY;
 
 #include "assets/levelGroup/BattleMode/unkCol16/unkCol16.colS.inc.c"
 
-#include "assets/levelGroup/BattleMode/unkCol16/unkCol16.colH.inc.c"
+ModelCollision BattleMode_unkCol16_ColH = {
+4, 2, &BattleMode_unkCol16_ColV[0], &BattleMode_unkCol16_ColT[0], &BattleMode_unkCol16_ColS
+};
 
 #include "assets/levelGroup/BattleMode/unkCol17/unkCol17.colV.inc.c"
 
@@ -898,7 +1032,9 @@ Mtx BattleMode_IMtx32 = IDENTITY;
 
 #include "assets/levelGroup/BattleMode/unkCol17/unkCol17.colS.inc.c"
 
-#include "assets/levelGroup/BattleMode/unkCol17/unkCol17.colH.inc.c"
+ModelCollision BattleMode_unkCol17_ColH = {
+8, 4, &BattleMode_unkCol17_ColV[0], &BattleMode_unkCol17_ColT[0], &BattleMode_unkCol17_ColS
+};
 
 #include "assets/levelGroup/BattleMode/unkCol18/unkCol18.colV.inc.c"
 
@@ -906,7 +1042,9 @@ Mtx BattleMode_IMtx32 = IDENTITY;
 
 #include "assets/levelGroup/BattleMode/unkCol18/unkCol18.colS.inc.c"
 
-#include "assets/levelGroup/BattleMode/unkCol18/unkCol18.colH.inc.c"
+ModelCollision BattleMode_unkCol18_ColH = {
+4, 2, &BattleMode_unkCol18_ColV[0], &BattleMode_unkCol18_ColT[0], &BattleMode_unkCol18_ColS
+};
 
 #include "assets/levelGroup/BattleMode/unkCol19/unkCol19.colV.inc.c"
 
@@ -914,7 +1052,9 @@ Mtx BattleMode_IMtx32 = IDENTITY;
 
 #include "assets/levelGroup/BattleMode/unkCol19/unkCol19.colS.inc.c"
 
-#include "assets/levelGroup/BattleMode/unkCol19/unkCol19.colH.inc.c"
+ModelCollision BattleMode_unkCol19_ColH = {
+8, 4, &BattleMode_unkCol19_ColV[0], &BattleMode_unkCol19_ColT[0], &BattleMode_unkCol19_ColS
+};
 
 #include "assets/levelGroup/BattleMode/unkCol20/unkCol20.colV.inc.c"
 
@@ -922,7 +1062,9 @@ Mtx BattleMode_IMtx32 = IDENTITY;
 
 #include "assets/levelGroup/BattleMode/unkCol20/unkCol20.colS.inc.c"
 
-#include "assets/levelGroup/BattleMode/unkCol20/unkCol20.colH.inc.c"
+ModelCollision BattleMode_unkCol20_ColH = {
+8, 10, &BattleMode_unkCol20_ColV[0], &BattleMode_unkCol20_ColT[0], &BattleMode_unkCol20_ColS
+};
 
 #include "assets/levelGroup/BattleMode/unkCol21/unkCol21.colV.inc.c"
 
@@ -930,7 +1072,9 @@ Mtx BattleMode_IMtx32 = IDENTITY;
 
 #include "assets/levelGroup/BattleMode/unkCol21/unkCol21.colS.inc.c"
 
-#include "assets/levelGroup/BattleMode/unkCol21/unkCol21.colH.inc.c"
+ModelCollision BattleMode_unkCol21_ColH = {
+8, 10, &BattleMode_unkCol21_ColV[0], &BattleMode_unkCol21_ColT[0], &BattleMode_unkCol21_ColS
+};
 
 #include "assets/levelGroup/BattleMode/unkCol22/unkCol22.colV.inc.c"
 
@@ -938,7 +1082,9 @@ Mtx BattleMode_IMtx32 = IDENTITY;
 
 #include "assets/levelGroup/BattleMode/unkCol22/unkCol22.colS.inc.c"
 
-#include "assets/levelGroup/BattleMode/unkCol22/unkCol22.colH.inc.c"
+ModelCollision BattleMode_unkCol22_ColH = {
+7, 5, &BattleMode_unkCol22_ColV[0], &BattleMode_unkCol22_ColT[0], &BattleMode_unkCol22_ColS
+};
 
 #include "assets/levelGroup/BattleMode/unkCol23/unkCol23.colV.inc.c"
 
@@ -946,7 +1092,9 @@ Mtx BattleMode_IMtx32 = IDENTITY;
 
 #include "assets/levelGroup/BattleMode/unkCol23/unkCol23.colS.inc.c"
 
-#include "assets/levelGroup/BattleMode/unkCol23/unkCol23.colH.inc.c"
+ModelCollision BattleMode_unkCol23_ColH = {
+7, 5, &BattleMode_unkCol23_ColV[0], &BattleMode_unkCol23_ColT[0], &BattleMode_unkCol23_ColS
+};
 
 #include "assets/levelGroup/BattleMode/unkCol24/unkCol24.colV.inc.c"
 
@@ -954,7 +1102,9 @@ Mtx BattleMode_IMtx32 = IDENTITY;
 
 #include "assets/levelGroup/BattleMode/unkCol24/unkCol24.colS.inc.c"
 
-#include "assets/levelGroup/BattleMode/unkCol24/unkCol24.colH.inc.c"
+ModelCollision BattleMode_unkCol24_ColH = {
+4, 2, &BattleMode_unkCol24_ColV[0], &BattleMode_unkCol24_ColT[0], &BattleMode_unkCol24_ColS
+};
 
 #include "assets/levelGroup/BattleMode/unkCol25/unkCol25.colV.inc.c"
 
@@ -962,7 +1112,9 @@ Mtx BattleMode_IMtx32 = IDENTITY;
 
 #include "assets/levelGroup/BattleMode/unkCol25/unkCol25.colS.inc.c"
 
-#include "assets/levelGroup/BattleMode/unkCol25/unkCol25.colH.inc.c"
+ModelCollision BattleMode_unkCol25_ColH = {
+4, 2, &BattleMode_unkCol25_ColV[0], &BattleMode_unkCol25_ColT[0], &BattleMode_unkCol25_ColS
+};
 
 #include "assets/levelGroup/BattleMode/unkCol26/unkCol26.colV.inc.c"
 
@@ -970,7 +1122,9 @@ Mtx BattleMode_IMtx32 = IDENTITY;
 
 #include "assets/levelGroup/BattleMode/unkCol26/unkCol26.colS.inc.c"
 
-#include "assets/levelGroup/BattleMode/unkCol26/unkCol26.colH.inc.c"
+ModelCollision BattleMode_unkCol26_ColH = {
+8, 10, &BattleMode_unkCol26_ColV[0], &BattleMode_unkCol26_ColT[0], &BattleMode_unkCol26_ColS
+};
 
 #include "assets/levelGroup/BattleMode/unkCol27/unkCol27.colV.inc.c"
 
@@ -978,7 +1132,9 @@ Mtx BattleMode_IMtx32 = IDENTITY;
 
 #include "assets/levelGroup/BattleMode/unkCol27/unkCol27.colS.inc.c"
 
-#include "assets/levelGroup/BattleMode/unkCol27/unkCol27.colH.inc.c"
+ModelCollision BattleMode_unkCol27_ColH = {
+8, 10, &BattleMode_unkCol27_ColV[0], &BattleMode_unkCol27_ColT[0], &BattleMode_unkCol27_ColS
+};
 
 #include "assets/levelGroup/BattleMode/unkCol28/unkCol28.colV.inc.c"
 
@@ -986,7 +1142,9 @@ Mtx BattleMode_IMtx32 = IDENTITY;
 
 #include "assets/levelGroup/BattleMode/unkCol28/unkCol28.colS.inc.c"
 
-#include "assets/levelGroup/BattleMode/unkCol28/unkCol28.colH.inc.c"
+ModelCollision BattleMode_unkCol28_ColH = {
+8, 10, &BattleMode_unkCol28_ColV[0], &BattleMode_unkCol28_ColT[0], &BattleMode_unkCol28_ColS
+};
 
 #include "assets/levelGroup/BattleMode/unkCol29/unkCol29.colV.inc.c"
 
@@ -994,7 +1152,9 @@ Mtx BattleMode_IMtx32 = IDENTITY;
 
 #include "assets/levelGroup/BattleMode/unkCol29/unkCol29.colS.inc.c"
 
-#include "assets/levelGroup/BattleMode/unkCol29/unkCol29.colH.inc.c"
+ModelCollision BattleMode_unkCol29_ColH = {
+8, 10, &BattleMode_unkCol29_ColV[0], &BattleMode_unkCol29_ColT[0], &BattleMode_unkCol29_ColS
+};
 
 #include "assets/levelGroup/BattleMode/unkCol30/unkCol30.colV.inc.c"
 
@@ -1002,7 +1162,9 @@ Mtx BattleMode_IMtx32 = IDENTITY;
 
 #include "assets/levelGroup/BattleMode/unkCol30/unkCol30.colS.inc.c"
 
-#include "assets/levelGroup/BattleMode/unkCol30/unkCol30.colH.inc.c"
+ModelCollision BattleMode_unkCol30_ColH = {
+8, 10, &BattleMode_unkCol30_ColV[0], &BattleMode_unkCol30_ColT[0], &BattleMode_unkCol30_ColS
+};
 Mtx BattleMode_IMtx33 = IDENTITY;
 
 #include "assets/levelGroup/BattleMode/battleScope2/battleScope2.light.inc.c"

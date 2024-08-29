@@ -352,7 +352,7 @@ enum BombLand_Models {
     BL_POLE_MODEL
 };
 
-StageModel  BombLand_stageModels[110] = {
+StageModel BombLand_stageModels[110] = {
     {&Global_fallbackCube_Gfx[0], &Global_fallbackCube_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
     {&Global_exitShadowSouth_Gfx[0], &Global_exitShadowSouth_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
     {&Global_exitShadowNorth_Gfx[0], &Global_exitShadowNorth_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
@@ -466,7 +466,9 @@ StageModel  BombLand_stageModels[110] = {
 };
 
 
-#include "build/assets/levelGroup/BombLand/rabObjects.inc.c"
+unsigned char BombLand_rabObjects_Bin[] = {
+0x00, 0x00, 0x00, 0x00, 0x42, 0xC8, 0x00, 0x00, 0x42, 0xC8, 0x00, 0x00, 0x42, 0xC8, 0x00, 0x00, 0x02, 0x00, 0x6E, 0x1C, 0x00, 0x00, 0x00, 0x00, 0x42, 0xC8, 0x00, 0x00, 0x42, 0xC8, 0x00, 0x00, 0x42, 0xC8, 0x00, 0x00, 0x02, 0x00, 0x6E, 0x1C, 0x00, 0x00, 0x00, 0x0B, 0x00, 0x00, 0x00, 0x0C, 0x00, 0x00, 0x00, 0x0D, 0x00, 0x00, 0x00, 0x0E, 0x00, 0x00, 0x00, 0x0F, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x11, 0x00, 0x00, 0x00, 0x12, 0x03, 0x00, 0x15, 0x0C, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x0A, 0xFF, 0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x01, 0x03, 0x00, 0x15, 0x08, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x05, 0x00, 0x27, 0x8D, 0x00, 0xFF, 0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x03, 0x00, 0x15, 0x08, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x05, 0x00, 0x00, 0x00, 0x0A, 0xFF, 0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x03, 0x00, 0x15, 0x0C, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x0A, 0x00, 0x00, 0x01, 0x2C, 0x00, 0x00, 0x00, 0x01, 0x03, 0x00, 0x15, 0x1C, 0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0x0F, 0x00, 0x00, 0x00, 0x05, 0x00, 0x00, 0x00, 0x0F, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0B, 0x00, 0x00, 0x00, 0x13, 0x00, 0x00, 0x00, 0x0C, 0x00, 0x00, 0x00, 0x0D, 0x00, 0x00, 0x00, 0x0E, 0x00, 0x00, 0x00, 0x0F, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x11, 0x00, 0x00, 0x00, 0x12, 0x00, 0x00, 0x00, 0x13, 0x00, 0x00, 0x00, 0x0C, 0x03, 0x00, 0x15, 0xA0, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x3C, 0xFF, 0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x03, 0x00, 0x15, 0xA4, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x3C, 0xFF, 0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x03, 0x00, 0x15, 0xC4, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x1E, 0x00, 0x00, 0x00, 0x1E, 0x00, 0x00, 0x00, 0x00, 0x03, 0x00, 0x15, 0xA8, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x0A, 0x00, 0x00, 0x01, 0x2C, 0x00, 0x00, 0x00, 0x01, 0x03, 0x00, 0x15, 0xB8, 0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0x0F, 0x00, 0x00, 0x00, 0x05, 0x00, 0x00, 0x00, 0x05, 0x00, 0x00, 0x00, 0x01
+};
 
 SpriteActor BombLand_room0_sprites[2] = {
     {18, 0, {-433.0,0.0,386.0}, {100.0,200.0,200.0}, 1, 0, 60.0, 0, 0, 0, 0, 0, {30, 2, 0, 0}},
@@ -1423,7 +1425,88 @@ Collectable BombLand_room15_collectables[2] = {
     {ACTOR_NULL, {0.0,0.0,0.0}, -1, 0, 0, 0}
 };
 
-#include "assets/levelGroup/BombLand/spriteLib.sprLib.inc.c"
+s32 BombLand_spriteLib_Sprlib[] = {
+    113,
+    76,
+    36,
+    43,
+    32,
+    33,
+    34,
+    35,
+    51,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    113,
+    76,
+    36,
+    43,
+    32,
+    33,
+    34,
+    35,
+    24,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    113,
+    76,
+    36,
+    43,
+    32,
+    33,
+    34,
+    35,
+    27,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+};
 
 RoomInstance BombLand_room_instances[17] = {
     {BombLand_room0_objects, BombLand_room0_actors, BombLand_room0_collectables, BombLand_room0_sprites, 0, 0, 0, 0, -1, 0, 0.0, 1, -800.0, 500.0, -700.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
@@ -1976,7 +2059,9 @@ unsigned char BombLand_bars_ia4_PNG[] = {
 
 #include "assets/levelGroup/BombLand/exit1/exit1.colS.inc.c"
 
-#include "assets/levelGroup/BombLand/exit1/exit1.colH.inc.c"
+ModelCollision BombLand_exit1_ColH = {
+6, 4, &BombLand_exit1_ColV[0], &BombLand_exit1_ColT[0], &BombLand_exit1_ColS
+};
 
 #include "assets/levelGroup/BombLand/exit2/exit2.colV.inc.c"
 
@@ -1984,7 +2069,9 @@ unsigned char BombLand_bars_ia4_PNG[] = {
 
 #include "assets/levelGroup/BombLand/exit2/exit2.colS.inc.c"
 
-#include "assets/levelGroup/BombLand/exit2/exit2.colH.inc.c"
+ModelCollision BombLand_exit2_ColH = {
+6, 4, &BombLand_exit2_ColV[0], &BombLand_exit2_ColT[0], &BombLand_exit2_ColS
+};
 
 #include "assets/levelGroup/BombLand/exit3/exit3.colV.inc.c"
 
@@ -1992,7 +2079,9 @@ unsigned char BombLand_bars_ia4_PNG[] = {
 
 #include "assets/levelGroup/BombLand/exit3/exit3.colS.inc.c"
 
-#include "assets/levelGroup/BombLand/exit3/exit3.colH.inc.c"
+ModelCollision BombLand_exit3_ColH = {
+6, 4, &BombLand_exit3_ColV[0], &BombLand_exit3_ColT[0], &BombLand_exit3_ColS
+};
 
 #include "assets/levelGroup/BombLand/exit4/exit4.colV.inc.c"
 
@@ -2000,7 +2089,9 @@ unsigned char BombLand_bars_ia4_PNG[] = {
 
 #include "assets/levelGroup/BombLand/exit4/exit4.colS.inc.c"
 
-#include "assets/levelGroup/BombLand/exit4/exit4.colH.inc.c"
+ModelCollision BombLand_exit4_ColH = {
+6, 4, &BombLand_exit4_ColV[0], &BombLand_exit4_ColT[0], &BombLand_exit4_ColS
+};
 
 #include "assets/levelGroup/BombLand/room0/room0.colV.inc.c"
 
@@ -2008,7 +2099,9 @@ unsigned char BombLand_bars_ia4_PNG[] = {
 
 #include "assets/levelGroup/BombLand/room0/room0.colS.inc.c"
 
-#include "assets/levelGroup/BombLand/room0/room0.colH.inc.c"
+ModelCollision BombLand_room0_ColH = {
+38, 58, &BombLand_room0_ColV[0], &BombLand_room0_ColT[0], &BombLand_room0_ColS
+};
 
 #include "assets/levelGroup/BombLand/room1/room1.colV.inc.c"
 
@@ -2016,7 +2109,9 @@ unsigned char BombLand_bars_ia4_PNG[] = {
 
 #include "assets/levelGroup/BombLand/room1/room1.colS.inc.c"
 
-#include "assets/levelGroup/BombLand/room1/room1.colH.inc.c"
+ModelCollision BombLand_room1_ColH = {
+43, 53, &BombLand_room1_ColV[0], &BombLand_room1_ColT[0], &BombLand_room1_ColS
+};
 
 #include "assets/levelGroup/BombLand/room2/room2.colV.inc.c"
 
@@ -2024,7 +2119,9 @@ unsigned char BombLand_bars_ia4_PNG[] = {
 
 #include "assets/levelGroup/BombLand/room2/room2.colS.inc.c"
 
-#include "assets/levelGroup/BombLand/room2/room2.colH.inc.c"
+ModelCollision BombLand_room2_ColH = {
+44, 44, &BombLand_room2_ColV[0], &BombLand_room2_ColT[0], &BombLand_room2_ColS
+};
 
 #include "assets/levelGroup/BombLand/room3/room3.colV.inc.c"
 
@@ -2032,7 +2129,9 @@ unsigned char BombLand_bars_ia4_PNG[] = {
 
 #include "assets/levelGroup/BombLand/room3/room3.colS.inc.c"
 
-#include "assets/levelGroup/BombLand/room3/room3.colH.inc.c"
+ModelCollision BombLand_room3_ColH = {
+38, 48, &BombLand_room3_ColV[0], &BombLand_room3_ColT[0], &BombLand_room3_ColS
+};
 
 #include "assets/levelGroup/BombLand/room4/room4.colV.inc.c"
 
@@ -2040,7 +2139,9 @@ unsigned char BombLand_bars_ia4_PNG[] = {
 
 #include "assets/levelGroup/BombLand/room4/room4.colS.inc.c"
 
-#include "assets/levelGroup/BombLand/room4/room4.colH.inc.c"
+ModelCollision BombLand_room4_ColH = {
+41, 53, &BombLand_room4_ColV[0], &BombLand_room4_ColT[0], &BombLand_room4_ColS
+};
 
 #include "assets/levelGroup/BombLand/room5/room5.colV.inc.c"
 
@@ -2048,7 +2149,9 @@ unsigned char BombLand_bars_ia4_PNG[] = {
 
 #include "assets/levelGroup/BombLand/room5/room5.colS.inc.c"
 
-#include "assets/levelGroup/BombLand/room5/room5.colH.inc.c"
+ModelCollision BombLand_room5_ColH = {
+36, 43, &BombLand_room5_ColV[0], &BombLand_room5_ColT[0], &BombLand_room5_ColS
+};
 
 #include "assets/levelGroup/BombLand/room6/room6.colV.inc.c"
 
@@ -2056,7 +2159,9 @@ unsigned char BombLand_bars_ia4_PNG[] = {
 
 #include "assets/levelGroup/BombLand/room6/room6.colS.inc.c"
 
-#include "assets/levelGroup/BombLand/room6/room6.colH.inc.c"
+ModelCollision BombLand_room6_ColH = {
+44, 44, &BombLand_room6_ColV[0], &BombLand_room6_ColT[0], &BombLand_room6_ColS
+};
 
 #include "assets/levelGroup/BombLand/room7/room7.colV.inc.c"
 
@@ -2064,7 +2169,9 @@ unsigned char BombLand_bars_ia4_PNG[] = {
 
 #include "assets/levelGroup/BombLand/room7/room7.colS.inc.c"
 
-#include "assets/levelGroup/BombLand/room7/room7.colH.inc.c"
+ModelCollision BombLand_room7_ColH = {
+38, 46, &BombLand_room7_ColV[0], &BombLand_room7_ColT[0], &BombLand_room7_ColS
+};
 
 #include "assets/levelGroup/BombLand/room8/room8.colV.inc.c"
 
@@ -2072,7 +2179,9 @@ unsigned char BombLand_bars_ia4_PNG[] = {
 
 #include "assets/levelGroup/BombLand/room8/room8.colS.inc.c"
 
-#include "assets/levelGroup/BombLand/room8/room8.colH.inc.c"
+ModelCollision BombLand_room8_ColH = {
+28, 40, &BombLand_room8_ColV[0], &BombLand_room8_ColT[0], &BombLand_room8_ColS
+};
 
 #include "assets/levelGroup/BombLand/room9/room9.colV.inc.c"
 
@@ -2080,7 +2189,9 @@ unsigned char BombLand_bars_ia4_PNG[] = {
 
 #include "assets/levelGroup/BombLand/room9/room9.colS.inc.c"
 
-#include "assets/levelGroup/BombLand/room9/room9.colH.inc.c"
+ModelCollision BombLand_room9_ColH = {
+36, 52, &BombLand_room9_ColV[0], &BombLand_room9_ColT[0], &BombLand_room9_ColS
+};
 
 #include "assets/levelGroup/BombLand/room10/room10.colV.inc.c"
 
@@ -2088,7 +2199,9 @@ unsigned char BombLand_bars_ia4_PNG[] = {
 
 #include "assets/levelGroup/BombLand/room10/room10.colS.inc.c"
 
-#include "assets/levelGroup/BombLand/room10/room10.colH.inc.c"
+ModelCollision BombLand_room10_ColH = {
+31, 41, &BombLand_room10_ColV[0], &BombLand_room10_ColT[0], &BombLand_room10_ColS
+};
 
 #include "assets/levelGroup/BombLand/room11/room11.colV.inc.c"
 
@@ -2096,7 +2209,9 @@ unsigned char BombLand_bars_ia4_PNG[] = {
 
 #include "assets/levelGroup/BombLand/room11/room11.colS.inc.c"
 
-#include "assets/levelGroup/BombLand/room11/room11.colH.inc.c"
+ModelCollision BombLand_room11_ColH = {
+44, 42, &BombLand_room11_ColV[0], &BombLand_room11_ColT[0], &BombLand_room11_ColS
+};
 
 #include "assets/levelGroup/BombLand/room12/room12.colV.inc.c"
 
@@ -2104,7 +2219,9 @@ unsigned char BombLand_bars_ia4_PNG[] = {
 
 #include "assets/levelGroup/BombLand/room12/room12.colS.inc.c"
 
-#include "assets/levelGroup/BombLand/room12/room12.colH.inc.c"
+ModelCollision BombLand_room12_ColH = {
+38, 46, &BombLand_room12_ColV[0], &BombLand_room12_ColT[0], &BombLand_room12_ColS
+};
 
 #include "assets/levelGroup/BombLand/room13/room13.colV.inc.c"
 
@@ -2112,7 +2229,9 @@ unsigned char BombLand_bars_ia4_PNG[] = {
 
 #include "assets/levelGroup/BombLand/room13/room13.colS.inc.c"
 
-#include "assets/levelGroup/BombLand/room13/room13.colH.inc.c"
+ModelCollision BombLand_room13_ColH = {
+32, 44, &BombLand_room13_ColV[0], &BombLand_room13_ColT[0], &BombLand_room13_ColS
+};
 
 #include "assets/levelGroup/BombLand/room15Floor/room15Floor.colV.inc.c"
 
@@ -2120,7 +2239,9 @@ unsigned char BombLand_bars_ia4_PNG[] = {
 
 #include "assets/levelGroup/BombLand/room15Floor/room15Floor.colS.inc.c"
 
-#include "assets/levelGroup/BombLand/room15Floor/room15Floor.colH.inc.c"
+ModelCollision BombLand_room15Floor_ColH = {
+8, 10, &BombLand_room15Floor_ColV[0], &BombLand_room15Floor_ColT[0], &BombLand_room15Floor_ColS
+};
 
 #include "assets/levelGroup/BombLand/room15/room15.colV.inc.c"
 
@@ -2128,7 +2249,9 @@ unsigned char BombLand_bars_ia4_PNG[] = {
 
 #include "assets/levelGroup/BombLand/room15/room15.colS.inc.c"
 
-#include "assets/levelGroup/BombLand/room15/room15.colH.inc.c"
+ModelCollision BombLand_room15_ColH = {
+16, 24, &BombLand_room15_ColV[0], &BombLand_room15_ColT[0], &BombLand_room15_ColS
+};
 
 #include "assets/levelGroup/BombLand/room0Pipe/room0Pipe.colV.inc.c"
 
@@ -2136,7 +2259,9 @@ unsigned char BombLand_bars_ia4_PNG[] = {
 
 #include "assets/levelGroup/BombLand/room0Pipe/room0Pipe.colS.inc.c"
 
-#include "assets/levelGroup/BombLand/room0Pipe/room0Pipe.colH.inc.c"
+ModelCollision BombLand_room0Pipe_ColH = {
+22, 36, &BombLand_room0Pipe_ColV[0], &BombLand_room0Pipe_ColT[0], &BombLand_room0Pipe_ColS
+};
 
 #include "assets/levelGroup/BombLand/room1Floor/room1Floor.colV.inc.c"
 
@@ -2144,7 +2269,9 @@ unsigned char BombLand_bars_ia4_PNG[] = {
 
 #include "assets/levelGroup/BombLand/room1Floor/room1Floor.colS.inc.c"
 
-#include "assets/levelGroup/BombLand/room1Floor/room1Floor.colH.inc.c"
+ModelCollision BombLand_room1Floor_ColH = {
+64, 99, &BombLand_room1Floor_ColV[0], &BombLand_room1Floor_ColT[0], &BombLand_room1Floor_ColS
+};
 
 #include "assets/levelGroup/BombLand/block/block.colV.inc.c"
 
@@ -2152,7 +2279,9 @@ unsigned char BombLand_bars_ia4_PNG[] = {
 
 #include "assets/levelGroup/BombLand/block/block.colS.inc.c"
 
-#include "assets/levelGroup/BombLand/block/block.colH.inc.c"
+ModelCollision BombLand_block_ColH = {
+8, 10, &BombLand_block_ColV[0], &BombLand_block_ColT[0], &BombLand_block_ColS
+};
 
 #include "assets/levelGroup/BombLand/breakableBlockSides/breakableBlockSides.colV.inc.c"
 
@@ -2160,7 +2289,9 @@ unsigned char BombLand_bars_ia4_PNG[] = {
 
 #include "assets/levelGroup/BombLand/breakableBlockSides/breakableBlockSides.colS.inc.c"
 
-#include "assets/levelGroup/BombLand/breakableBlockSides/breakableBlockSides.colH.inc.c"
+ModelCollision BombLand_breakableBlockSides_ColH = {
+8, 8, &BombLand_breakableBlockSides_ColV[0], &BombLand_breakableBlockSides_ColT[0], &BombLand_breakableBlockSides_ColS
+};
 
 #include "assets/levelGroup/BombLand/room3Start/room3Start.colV.inc.c"
 
@@ -2168,7 +2299,9 @@ unsigned char BombLand_bars_ia4_PNG[] = {
 
 #include "assets/levelGroup/BombLand/room3Start/room3Start.colS.inc.c"
 
-#include "assets/levelGroup/BombLand/room3Start/room3Start.colH.inc.c"
+ModelCollision BombLand_room3Start_ColH = {
+8, 8, &BombLand_room3Start_ColV[0], &BombLand_room3Start_ColT[0], &BombLand_room3Start_ColS
+};
 
 #include "assets/levelGroup/BombLand/room3End/room3End.colV.inc.c"
 
@@ -2176,7 +2309,9 @@ unsigned char BombLand_bars_ia4_PNG[] = {
 
 #include "assets/levelGroup/BombLand/room3End/room3End.colS.inc.c"
 
-#include "assets/levelGroup/BombLand/room3End/room3End.colH.inc.c"
+ModelCollision BombLand_room3End_ColH = {
+12, 14, &BombLand_room3End_ColV[0], &BombLand_room3End_ColT[0], &BombLand_room3End_ColS
+};
 
 #include "assets/levelGroup/BombLand/block2Maybe/block2Maybe.colV.inc.c"
 
@@ -2184,7 +2319,9 @@ unsigned char BombLand_bars_ia4_PNG[] = {
 
 #include "assets/levelGroup/BombLand/block2Maybe/block2Maybe.colS.inc.c"
 
-#include "assets/levelGroup/BombLand/block2Maybe/block2Maybe.colH.inc.c"
+ModelCollision BombLand_block2Maybe_ColH = {
+8, 10, &BombLand_block2Maybe_ColV[0], &BombLand_block2Maybe_ColT[0], &BombLand_block2Maybe_ColS
+};
 
 #include "assets/levelGroup/BombLand/unusedPlatformMaybe/unusedPlatformMaybe.colV.inc.c"
 
@@ -2192,7 +2329,9 @@ unsigned char BombLand_bars_ia4_PNG[] = {
 
 #include "assets/levelGroup/BombLand/unusedPlatformMaybe/unusedPlatformMaybe.colS.inc.c"
 
-#include "assets/levelGroup/BombLand/unusedPlatformMaybe/unusedPlatformMaybe.colH.inc.c"
+ModelCollision BombLand_unusedPlatformMaybe_ColH = {
+8, 12, &BombLand_unusedPlatformMaybe_ColV[0], &BombLand_unusedPlatformMaybe_ColT[0], &BombLand_unusedPlatformMaybe_ColS
+};
 
 #include "assets/levelGroup/BombLand/wall/wall.colV.inc.c"
 
@@ -2200,7 +2339,9 @@ unsigned char BombLand_bars_ia4_PNG[] = {
 
 #include "assets/levelGroup/BombLand/wall/wall.colS.inc.c"
 
-#include "assets/levelGroup/BombLand/wall/wall.colH.inc.c"
+ModelCollision BombLand_wall_ColH = {
+4, 2, &BombLand_wall_ColV[0], &BombLand_wall_ColT[0], &BombLand_wall_ColS
+};
 
 #include "assets/levelGroup/BombLand/room4End1/room4End1.colV.inc.c"
 
@@ -2208,7 +2349,9 @@ unsigned char BombLand_bars_ia4_PNG[] = {
 
 #include "assets/levelGroup/BombLand/room4End1/room4End1.colS.inc.c"
 
-#include "assets/levelGroup/BombLand/room4End1/room4End1.colH.inc.c"
+ModelCollision BombLand_room4End1_ColH = {
+7, 6, &BombLand_room4End1_ColV[0], &BombLand_room4End1_ColT[0], &BombLand_room4End1_ColS
+};
 
 #include "assets/levelGroup/BombLand/room4End2/room4End2.colV.inc.c"
 
@@ -2216,7 +2359,9 @@ unsigned char BombLand_bars_ia4_PNG[] = {
 
 #include "assets/levelGroup/BombLand/room4End2/room4End2.colS.inc.c"
 
-#include "assets/levelGroup/BombLand/room4End2/room4End2.colH.inc.c"
+ModelCollision BombLand_room4End2_ColH = {
+9, 8, &BombLand_room4End2_ColV[0], &BombLand_room4End2_ColT[0], &BombLand_room4End2_ColS
+};
 
 #include "assets/levelGroup/BombLand/room4Start/room4Start.colV.inc.c"
 
@@ -2224,7 +2369,9 @@ unsigned char BombLand_bars_ia4_PNG[] = {
 
 #include "assets/levelGroup/BombLand/room4Start/room4Start.colS.inc.c"
 
-#include "assets/levelGroup/BombLand/room4Start/room4Start.colH.inc.c"
+ModelCollision BombLand_room4Start_ColH = {
+8, 8, &BombLand_room4Start_ColV[0], &BombLand_room4Start_ColT[0], &BombLand_room4Start_ColS
+};
 
 #include "assets/levelGroup/BombLand/room5Start/room5Start.colV.inc.c"
 
@@ -2232,7 +2379,9 @@ unsigned char BombLand_bars_ia4_PNG[] = {
 
 #include "assets/levelGroup/BombLand/room5Start/room5Start.colS.inc.c"
 
-#include "assets/levelGroup/BombLand/room5Start/room5Start.colH.inc.c"
+ModelCollision BombLand_room5Start_ColH = {
+13, 15, &BombLand_room5Start_ColV[0], &BombLand_room5Start_ColT[0], &BombLand_room5Start_ColS
+};
 
 #include "assets/levelGroup/BombLand/room5End/room5End.colV.inc.c"
 
@@ -2240,7 +2389,9 @@ unsigned char BombLand_bars_ia4_PNG[] = {
 
 #include "assets/levelGroup/BombLand/room5End/room5End.colS.inc.c"
 
-#include "assets/levelGroup/BombLand/room5End/room5End.colH.inc.c"
+ModelCollision BombLand_room5End_ColH = {
+13, 15, &BombLand_room5End_ColV[0], &BombLand_room5End_ColT[0], &BombLand_room5End_ColS
+};
 
 #include "assets/levelGroup/BombLand/breakableBlock/breakableBlock.colV.inc.c"
 
@@ -2248,7 +2399,9 @@ unsigned char BombLand_bars_ia4_PNG[] = {
 
 #include "assets/levelGroup/BombLand/breakableBlock/breakableBlock.colS.inc.c"
 
-#include "assets/levelGroup/BombLand/breakableBlock/breakableBlock.colH.inc.c"
+ModelCollision BombLand_breakableBlock_ColH = {
+8, 10, &BombLand_breakableBlock_ColV[0], &BombLand_breakableBlock_ColT[0], &BombLand_breakableBlock_ColS
+};
 
 #include "assets/levelGroup/BombLand/breakableBlockStack/breakableBlockStack.colV.inc.c"
 
@@ -2256,7 +2409,9 @@ unsigned char BombLand_bars_ia4_PNG[] = {
 
 #include "assets/levelGroup/BombLand/breakableBlockStack/breakableBlockStack.colS.inc.c"
 
-#include "assets/levelGroup/BombLand/breakableBlockStack/breakableBlockStack.colH.inc.c"
+ModelCollision BombLand_breakableBlockStack_ColH = {
+8, 10, &BombLand_breakableBlockStack_ColV[0], &BombLand_breakableBlockStack_ColT[0], &BombLand_breakableBlockStack_ColS
+};
 
 #include "assets/levelGroup/BombLand/room7Start/room7Start.colV.inc.c"
 
@@ -2264,7 +2419,9 @@ unsigned char BombLand_bars_ia4_PNG[] = {
 
 #include "assets/levelGroup/BombLand/room7Start/room7Start.colS.inc.c"
 
-#include "assets/levelGroup/BombLand/room7Start/room7Start.colH.inc.c"
+ModelCollision BombLand_room7Start_ColH = {
+6, 4, &BombLand_room7Start_ColV[0], &BombLand_room7Start_ColT[0], &BombLand_room7Start_ColS
+};
 
 #include "assets/levelGroup/BombLand/room7End/room7End.colV.inc.c"
 
@@ -2272,7 +2429,9 @@ unsigned char BombLand_bars_ia4_PNG[] = {
 
 #include "assets/levelGroup/BombLand/room7End/room7End.colS.inc.c"
 
-#include "assets/levelGroup/BombLand/room7End/room7End.colH.inc.c"
+ModelCollision BombLand_room7End_ColH = {
+6, 4, &BombLand_room7End_ColV[0], &BombLand_room7End_ColT[0], &BombLand_room7End_ColS
+};
 
 #include "assets/levelGroup/BombLand/breakableBlockSide1/breakableBlockSide1.colV.inc.c"
 
@@ -2280,7 +2439,9 @@ unsigned char BombLand_bars_ia4_PNG[] = {
 
 #include "assets/levelGroup/BombLand/breakableBlockSide1/breakableBlockSide1.colS.inc.c"
 
-#include "assets/levelGroup/BombLand/breakableBlockSide1/breakableBlockSide1.colH.inc.c"
+ModelCollision BombLand_breakableBlockSide1_ColH = {
+4, 2, &BombLand_breakableBlockSide1_ColV[0], &BombLand_breakableBlockSide1_ColT[0], &BombLand_breakableBlockSide1_ColS
+};
 
 #include "assets/levelGroup/BombLand/breakableBlockSide2/breakableBlockSide2.colV.inc.c"
 
@@ -2288,7 +2449,9 @@ unsigned char BombLand_bars_ia4_PNG[] = {
 
 #include "assets/levelGroup/BombLand/breakableBlockSide2/breakableBlockSide2.colS.inc.c"
 
-#include "assets/levelGroup/BombLand/breakableBlockSide2/breakableBlockSide2.colH.inc.c"
+ModelCollision BombLand_breakableBlockSide2_ColH = {
+4, 2, &BombLand_breakableBlockSide2_ColV[0], &BombLand_breakableBlockSide2_ColT[0], &BombLand_breakableBlockSide2_ColS
+};
 
 #include "assets/levelGroup/BombLand/breakableBlockSide3/breakableBlockSide3.colV.inc.c"
 
@@ -2296,7 +2459,9 @@ unsigned char BombLand_bars_ia4_PNG[] = {
 
 #include "assets/levelGroup/BombLand/breakableBlockSide3/breakableBlockSide3.colS.inc.c"
 
-#include "assets/levelGroup/BombLand/breakableBlockSide3/breakableBlockSide3.colH.inc.c"
+ModelCollision BombLand_breakableBlockSide3_ColH = {
+4, 2, &BombLand_breakableBlockSide3_ColV[0], &BombLand_breakableBlockSide3_ColT[0], &BombLand_breakableBlockSide3_ColS
+};
 
 #include "assets/levelGroup/BombLand/breakableBlockSide4/breakableBlockSide4.colV.inc.c"
 
@@ -2304,7 +2469,9 @@ unsigned char BombLand_bars_ia4_PNG[] = {
 
 #include "assets/levelGroup/BombLand/breakableBlockSide4/breakableBlockSide4.colS.inc.c"
 
-#include "assets/levelGroup/BombLand/breakableBlockSide4/breakableBlockSide4.colH.inc.c"
+ModelCollision BombLand_breakableBlockSide4_ColH = {
+4, 2, &BombLand_breakableBlockSide4_ColV[0], &BombLand_breakableBlockSide4_ColT[0], &BombLand_breakableBlockSide4_ColS
+};
 
 #include "assets/levelGroup/BombLand/blockPlatform/blockPlatform.colV.inc.c"
 
@@ -2312,7 +2479,9 @@ unsigned char BombLand_bars_ia4_PNG[] = {
 
 #include "assets/levelGroup/BombLand/blockPlatform/blockPlatform.colS.inc.c"
 
-#include "assets/levelGroup/BombLand/blockPlatform/blockPlatform.colH.inc.c"
+ModelCollision BombLand_blockPlatform_ColH = {
+8, 10, &BombLand_blockPlatform_ColV[0], &BombLand_blockPlatform_ColT[0], &BombLand_blockPlatform_ColS
+};
 
 #include "assets/levelGroup/BombLand/breakableBlock2/breakableBlock2.colV.inc.c"
 
@@ -2320,7 +2489,9 @@ unsigned char BombLand_bars_ia4_PNG[] = {
 
 #include "assets/levelGroup/BombLand/breakableBlock2/breakableBlock2.colS.inc.c"
 
-#include "assets/levelGroup/BombLand/breakableBlock2/breakableBlock2.colH.inc.c"
+ModelCollision BombLand_breakableBlock2_ColH = {
+8, 10, &BombLand_breakableBlock2_ColV[0], &BombLand_breakableBlock2_ColT[0], &BombLand_breakableBlock2_ColS
+};
 
 #include "assets/levelGroup/BombLand/room8Start/room8Start.colV.inc.c"
 
@@ -2328,7 +2499,9 @@ unsigned char BombLand_bars_ia4_PNG[] = {
 
 #include "assets/levelGroup/BombLand/room8Start/room8Start.colS.inc.c"
 
-#include "assets/levelGroup/BombLand/room8Start/room8Start.colH.inc.c"
+ModelCollision BombLand_room8Start_ColH = {
+8, 8, &BombLand_room8Start_ColV[0], &BombLand_room8Start_ColT[0], &BombLand_room8Start_ColS
+};
 
 #include "assets/levelGroup/BombLand/room8End/room8End.colV.inc.c"
 
@@ -2336,7 +2509,9 @@ unsigned char BombLand_bars_ia4_PNG[] = {
 
 #include "assets/levelGroup/BombLand/room8End/room8End.colS.inc.c"
 
-#include "assets/levelGroup/BombLand/room8End/room8End.colH.inc.c"
+ModelCollision BombLand_room8End_ColH = {
+12, 14, &BombLand_room8End_ColV[0], &BombLand_room8End_ColT[0], &BombLand_room8End_ColS
+};
 
 #include "assets/levelGroup/BombLand/room9End1/room9End1.colV.inc.c"
 
@@ -2344,7 +2519,9 @@ unsigned char BombLand_bars_ia4_PNG[] = {
 
 #include "assets/levelGroup/BombLand/room9End1/room9End1.colS.inc.c"
 
-#include "assets/levelGroup/BombLand/room9End1/room9End1.colH.inc.c"
+ModelCollision BombLand_room9End1_ColH = {
+7, 6, &BombLand_room9End1_ColV[0], &BombLand_room9End1_ColT[0], &BombLand_room9End1_ColS
+};
 
 #include "assets/levelGroup/BombLand/room9End2/room9End2.colV.inc.c"
 
@@ -2352,7 +2529,9 @@ unsigned char BombLand_bars_ia4_PNG[] = {
 
 #include "assets/levelGroup/BombLand/room9End2/room9End2.colS.inc.c"
 
-#include "assets/levelGroup/BombLand/room9End2/room9End2.colH.inc.c"
+ModelCollision BombLand_room9End2_ColH = {
+9, 8, &BombLand_room9End2_ColV[0], &BombLand_room9End2_ColT[0], &BombLand_room9End2_ColS
+};
 
 #include "assets/levelGroup/BombLand/room9Start/room9Start.colV.inc.c"
 
@@ -2360,7 +2539,9 @@ unsigned char BombLand_bars_ia4_PNG[] = {
 
 #include "assets/levelGroup/BombLand/room9Start/room9Start.colS.inc.c"
 
-#include "assets/levelGroup/BombLand/room9Start/room9Start.colH.inc.c"
+ModelCollision BombLand_room9Start_ColH = {
+8, 8, &BombLand_room9Start_ColV[0], &BombLand_room9Start_ColT[0], &BombLand_room9Start_ColS
+};
 
 #include "assets/levelGroup/BombLand/room10Floor/room10Floor.colV.inc.c"
 
@@ -2368,7 +2549,9 @@ unsigned char BombLand_bars_ia4_PNG[] = {
 
 #include "assets/levelGroup/BombLand/room10Floor/room10Floor.colS.inc.c"
 
-#include "assets/levelGroup/BombLand/room10Floor/room10Floor.colH.inc.c"
+ModelCollision BombLand_room10Floor_ColH = {
+24, 24, &BombLand_room10Floor_ColV[0], &BombLand_room10Floor_ColT[0], &BombLand_room10Floor_ColS
+};
 
 #include "assets/levelGroup/BombLand/room10Platform/room10Platform.colV.inc.c"
 
@@ -2376,7 +2559,9 @@ unsigned char BombLand_bars_ia4_PNG[] = {
 
 #include "assets/levelGroup/BombLand/room10Platform/room10Platform.colS.inc.c"
 
-#include "assets/levelGroup/BombLand/room10Platform/room10Platform.colH.inc.c"
+ModelCollision BombLand_room10Platform_ColH = {
+12, 12, &BombLand_room10Platform_ColV[0], &BombLand_room10Platform_ColT[0], &BombLand_room10Platform_ColS
+};
 
 #include "assets/levelGroup/BombLand/tallWallWithFloorOnTop/tallWallWithFloorOnTop.colV.inc.c"
 
@@ -2384,7 +2569,9 @@ unsigned char BombLand_bars_ia4_PNG[] = {
 
 #include "assets/levelGroup/BombLand/tallWallWithFloorOnTop/tallWallWithFloorOnTop.colS.inc.c"
 
-#include "assets/levelGroup/BombLand/tallWallWithFloorOnTop/tallWallWithFloorOnTop.colH.inc.c"
+ModelCollision BombLand_tallWallWithFloorOnTop_ColH = {
+8, 6, &BombLand_tallWallWithFloorOnTop_ColV[0], &BombLand_tallWallWithFloorOnTop_ColT[0], &BombLand_tallWallWithFloorOnTop_ColS
+};
 
 #include "assets/levelGroup/BombLand/unkBlock/unkBlock.colV.inc.c"
 
@@ -2392,7 +2579,9 @@ unsigned char BombLand_bars_ia4_PNG[] = {
 
 #include "assets/levelGroup/BombLand/unkBlock/unkBlock.colS.inc.c"
 
-#include "assets/levelGroup/BombLand/unkBlock/unkBlock.colH.inc.c"
+ModelCollision BombLand_unkBlock_ColH = {
+8, 8, &BombLand_unkBlock_ColV[0], &BombLand_unkBlock_ColT[0], &BombLand_unkBlock_ColS
+};
 
 #include "assets/levelGroup/BombLand/thinBreakableBlockSide1/thinBreakableBlockSide1.colV.inc.c"
 
@@ -2400,7 +2589,9 @@ unsigned char BombLand_bars_ia4_PNG[] = {
 
 #include "assets/levelGroup/BombLand/thinBreakableBlockSide1/thinBreakableBlockSide1.colS.inc.c"
 
-#include "assets/levelGroup/BombLand/thinBreakableBlockSide1/thinBreakableBlockSide1.colH.inc.c"
+ModelCollision BombLand_thinBreakableBlockSide1_ColH = {
+4, 2, &BombLand_thinBreakableBlockSide1_ColV[0], &BombLand_thinBreakableBlockSide1_ColT[0], &BombLand_thinBreakableBlockSide1_ColS
+};
 
 #include "assets/levelGroup/BombLand/thinBreakableBlockSide2/thinBreakableBlockSide2.colV.inc.c"
 
@@ -2408,7 +2599,9 @@ unsigned char BombLand_bars_ia4_PNG[] = {
 
 #include "assets/levelGroup/BombLand/thinBreakableBlockSide2/thinBreakableBlockSide2.colS.inc.c"
 
-#include "assets/levelGroup/BombLand/thinBreakableBlockSide2/thinBreakableBlockSide2.colH.inc.c"
+ModelCollision BombLand_thinBreakableBlockSide2_ColH = {
+4, 2, &BombLand_thinBreakableBlockSide2_ColV[0], &BombLand_thinBreakableBlockSide2_ColT[0], &BombLand_thinBreakableBlockSide2_ColS
+};
 
 #include "assets/levelGroup/BombLand/thinBreakableBlockSide3/thinBreakableBlockSide3.colV.inc.c"
 
@@ -2416,7 +2609,9 @@ unsigned char BombLand_bars_ia4_PNG[] = {
 
 #include "assets/levelGroup/BombLand/thinBreakableBlockSide3/thinBreakableBlockSide3.colS.inc.c"
 
-#include "assets/levelGroup/BombLand/thinBreakableBlockSide3/thinBreakableBlockSide3.colH.inc.c"
+ModelCollision BombLand_thinBreakableBlockSide3_ColH = {
+4, 2, &BombLand_thinBreakableBlockSide3_ColV[0], &BombLand_thinBreakableBlockSide3_ColT[0], &BombLand_thinBreakableBlockSide3_ColS
+};
 
 #include "assets/levelGroup/BombLand/thinBreakableBlockSide4/thinBreakableBlockSide4.colV.inc.c"
 
@@ -2424,7 +2619,9 @@ unsigned char BombLand_bars_ia4_PNG[] = {
 
 #include "assets/levelGroup/BombLand/thinBreakableBlockSide4/thinBreakableBlockSide4.colS.inc.c"
 
-#include "assets/levelGroup/BombLand/thinBreakableBlockSide4/thinBreakableBlockSide4.colH.inc.c"
+ModelCollision BombLand_thinBreakableBlockSide4_ColH = {
+4, 2, &BombLand_thinBreakableBlockSide4_ColV[0], &BombLand_thinBreakableBlockSide4_ColT[0], &BombLand_thinBreakableBlockSide4_ColS
+};
 
 #include "assets/levelGroup/BombLand/thinBreakableBlockSide5/thinBreakableBlockSide5.colV.inc.c"
 
@@ -2432,7 +2629,9 @@ unsigned char BombLand_bars_ia4_PNG[] = {
 
 #include "assets/levelGroup/BombLand/thinBreakableBlockSide5/thinBreakableBlockSide5.colS.inc.c"
 
-#include "assets/levelGroup/BombLand/thinBreakableBlockSide5/thinBreakableBlockSide5.colH.inc.c"
+ModelCollision BombLand_thinBreakableBlockSide5_ColH = {
+4, 2, &BombLand_thinBreakableBlockSide5_ColV[0], &BombLand_thinBreakableBlockSide5_ColT[0], &BombLand_thinBreakableBlockSide5_ColS
+};
 
 #include "assets/levelGroup/BombLand/unkPlatform/unkPlatform.colV.inc.c"
 
@@ -2440,7 +2639,9 @@ unsigned char BombLand_bars_ia4_PNG[] = {
 
 #include "assets/levelGroup/BombLand/unkPlatform/unkPlatform.colS.inc.c"
 
-#include "assets/levelGroup/BombLand/unkPlatform/unkPlatform.colH.inc.c"
+ModelCollision BombLand_unkPlatform_ColH = {
+8, 12, &BombLand_unkPlatform_ColV[0], &BombLand_unkPlatform_ColT[0], &BombLand_unkPlatform_ColS
+};
 
 #include "assets/levelGroup/BombLand/pipe1/pipe1.colV.inc.c"
 
@@ -2448,7 +2649,9 @@ unsigned char BombLand_bars_ia4_PNG[] = {
 
 #include "assets/levelGroup/BombLand/pipe1/pipe1.colS.inc.c"
 
-#include "assets/levelGroup/BombLand/pipe1/pipe1.colH.inc.c"
+ModelCollision BombLand_pipe1_ColH = {
+8, 8, &BombLand_pipe1_ColV[0], &BombLand_pipe1_ColT[0], &BombLand_pipe1_ColS
+};
 
 #include "assets/levelGroup/BombLand/pipe2/pipe2.colV.inc.c"
 
@@ -2456,7 +2659,9 @@ unsigned char BombLand_bars_ia4_PNG[] = {
 
 #include "assets/levelGroup/BombLand/pipe2/pipe2.colS.inc.c"
 
-#include "assets/levelGroup/BombLand/pipe2/pipe2.colH.inc.c"
+ModelCollision BombLand_pipe2_ColH = {
+32, 40, &BombLand_pipe2_ColV[0], &BombLand_pipe2_ColT[0], &BombLand_pipe2_ColS
+};
 
 #include "assets/levelGroup/BombLand/breakableBlockTop/breakableBlockTop.colV.inc.c"
 
@@ -2464,7 +2669,9 @@ unsigned char BombLand_bars_ia4_PNG[] = {
 
 #include "assets/levelGroup/BombLand/breakableBlockTop/breakableBlockTop.colS.inc.c"
 
-#include "assets/levelGroup/BombLand/breakableBlockTop/breakableBlockTop.colH.inc.c"
+ModelCollision BombLand_breakableBlockTop_ColH = {
+4, 2, &BombLand_breakableBlockTop_ColV[0], &BombLand_breakableBlockTop_ColT[0], &BombLand_breakableBlockTop_ColS
+};
 
 #include "assets/levelGroup/BombLand/blockTop/blockTop.colV.inc.c"
 
@@ -2472,7 +2679,9 @@ unsigned char BombLand_bars_ia4_PNG[] = {
 
 #include "assets/levelGroup/BombLand/blockTop/blockTop.colS.inc.c"
 
-#include "assets/levelGroup/BombLand/blockTop/blockTop.colH.inc.c"
+ModelCollision BombLand_blockTop_ColH = {
+4, 2, &BombLand_blockTop_ColV[0], &BombLand_blockTop_ColT[0], &BombLand_blockTop_ColS
+};
 
 #include "assets/levelGroup/BombLand/breakableBlockAgain/breakableBlockAgain.colV.inc.c"
 
@@ -2480,7 +2689,9 @@ unsigned char BombLand_bars_ia4_PNG[] = {
 
 #include "assets/levelGroup/BombLand/breakableBlockAgain/breakableBlockAgain.colS.inc.c"
 
-#include "assets/levelGroup/BombLand/breakableBlockAgain/breakableBlockAgain.colH.inc.c"
+ModelCollision BombLand_breakableBlockAgain_ColH = {
+8, 12, &BombLand_breakableBlockAgain_ColV[0], &BombLand_breakableBlockAgain_ColT[0], &BombLand_breakableBlockAgain_ColS
+};
 
 #include "assets/levelGroup/BombLand/metalBridgeThing/metalBridgeThing.colV.inc.c"
 
@@ -2488,7 +2699,9 @@ unsigned char BombLand_bars_ia4_PNG[] = {
 
 #include "assets/levelGroup/BombLand/metalBridgeThing/metalBridgeThing.colS.inc.c"
 
-#include "assets/levelGroup/BombLand/metalBridgeThing/metalBridgeThing.colH.inc.c"
+ModelCollision BombLand_metalBridgeThing_ColH = {
+8, 6, &BombLand_metalBridgeThing_ColV[0], &BombLand_metalBridgeThing_ColT[0], &BombLand_metalBridgeThing_ColS
+};
 
 #include "assets/levelGroup/BombLand/longPipe/longPipe.colV.inc.c"
 
@@ -2496,7 +2709,9 @@ unsigned char BombLand_bars_ia4_PNG[] = {
 
 #include "assets/levelGroup/BombLand/longPipe/longPipe.colS.inc.c"
 
-#include "assets/levelGroup/BombLand/longPipe/longPipe.colH.inc.c"
+ModelCollision BombLand_longPipe_ColH = {
+20, 32, &BombLand_longPipe_ColV[0], &BombLand_longPipe_ColT[0], &BombLand_longPipe_ColS
+};
 
 #include "assets/levelGroup/BombLand/XResult/XResult.colV.inc.c"
 
@@ -2504,7 +2719,9 @@ unsigned char BombLand_bars_ia4_PNG[] = {
 
 #include "assets/levelGroup/BombLand/XResult/XResult.colS.inc.c"
 
-#include "assets/levelGroup/BombLand/XResult/XResult.colH.inc.c"
+ModelCollision BombLand_XResult_ColH = {
+4, 2, &BombLand_XResult_ColV[0], &BombLand_XResult_ColT[0], &BombLand_XResult_ColS
+};
 
 #include "assets/levelGroup/BombLand/OResult/OResult.colV.inc.c"
 
@@ -2512,7 +2729,9 @@ unsigned char BombLand_bars_ia4_PNG[] = {
 
 #include "assets/levelGroup/BombLand/OResult/OResult.colS.inc.c"
 
-#include "assets/levelGroup/BombLand/OResult/OResult.colH.inc.c"
+ModelCollision BombLand_OResult_ColH = {
+4, 2, &BombLand_OResult_ColV[0], &BombLand_OResult_ColT[0], &BombLand_OResult_ColS
+};
 
 #include "assets/levelGroup/BombLand/grenadeShutters/grenadeShutters.colV.inc.c"
 
@@ -2520,7 +2739,9 @@ unsigned char BombLand_bars_ia4_PNG[] = {
 
 #include "assets/levelGroup/BombLand/grenadeShutters/grenadeShutters.colS.inc.c"
 
-#include "assets/levelGroup/BombLand/grenadeShutters/grenadeShutters.colH.inc.c"
+ModelCollision BombLand_grenadeShutters_ColH = {
+4, 4, &BombLand_grenadeShutters_ColV[0], &BombLand_grenadeShutters_ColT[0], &BombLand_grenadeShutters_ColS
+};
 
 #include "assets/levelGroup/BombLand/doorWall/doorWall.colV.inc.c"
 
@@ -2528,7 +2749,9 @@ unsigned char BombLand_bars_ia4_PNG[] = {
 
 #include "assets/levelGroup/BombLand/doorWall/doorWall.colS.inc.c"
 
-#include "assets/levelGroup/BombLand/doorWall/doorWall.colH.inc.c"
+ModelCollision BombLand_doorWall_ColH = {
+4, 2, &BombLand_doorWall_ColV[0], &BombLand_doorWall_ColT[0], &BombLand_doorWall_ColS
+};
 
 #include "assets/levelGroup/BombLand/doorPoles/doorPoles.colV.inc.c"
 
@@ -2536,7 +2759,9 @@ unsigned char BombLand_bars_ia4_PNG[] = {
 
 #include "assets/levelGroup/BombLand/doorPoles/doorPoles.colS.inc.c"
 
-#include "assets/levelGroup/BombLand/doorPoles/doorPoles.colH.inc.c"
+ModelCollision BombLand_doorPoles_ColH = {
+8, 8, &BombLand_doorPoles_ColV[0], &BombLand_doorPoles_ColT[0], &BombLand_doorPoles_ColS
+};
 
 #include "assets/levelGroup/BombLand/unk72/unk72.colV.inc.c"
 
@@ -2544,9 +2769,11 @@ unsigned char BombLand_bars_ia4_PNG[] = {
 
 #include "assets/levelGroup/BombLand/unk72/unk72.colS.inc.c"
 
-#include "assets/levelGroup/BombLand/unk72/unk72.colH.inc.c"
+ModelCollision BombLand_unk72_ColH = {
+8, 8, &BombLand_unk72_ColV[0], &BombLand_unk72_ColT[0], &BombLand_unk72_ColS
+};
 
-#include "assets/levelGroup/BombLand/unkMtx.mtx.inc.c"
+Mtx BombLand_unkMtx_Mtx = IDENTITY;
 
 #include "assets/levelGroup/BombLand/anim/unk.animH.inc.c"
 

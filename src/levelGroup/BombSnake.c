@@ -87,61 +87,168 @@ extern ModelCollision Global_pole_ColH;
 
 Mtx BombSnake_IMtx1 = IDENTITY;
 
-#include "assets/levelGroup/BombSnake/pointers.lvp.inc.c"
+StageModel BombSnake_stageModels[40] = {
+{&Global_fallbackCube_Gfx[0], &Global_fallbackCube_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_exitShadowSouth_Gfx[0], &Global_exitShadowSouth_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_exitShadowNorth_Gfx[0], &Global_exitShadowNorth_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_exitShadowEast_Gfx[0], &Global_exitShadowEast_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_exitShadowWest_Gfx[0], &Global_exitShadowWest_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_ALBLExit_Gfx[0], &Global_ALBLExit_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_sandPit_Gfx[0], &Global_sandPit_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BossBridge_Gfx[0], &Global_BossBridge_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_ALPole_Gfx[0], &Global_ALPole_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_ALBLDoor_Gfx[0], &Global_ALBLDoor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_ALSpinDoor_Gfx[0], &Global_ALSpinDoor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLLavaFloor_Gfx[0], &Global_BLLavaFloor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLLava_Gfx[0], &Global_BLLava_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLLava2_Gfx[0], &Global_BLLava2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLLava3_Gfx[0], &Global_BLLava3_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLLava4_Gfx[0], &Global_BLLava4_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLLava5_Gfx[0], &Global_BLLava5_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLLava6_Gfx[0], &Global_BLLava6_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLLava7_Gfx[0], &Global_BLLava7_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLLava8_Gfx[0], &Global_BLLava8_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLDestructableTop_Gfx[0], &Global_BLDestructableTop_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLMetalBridge_Gfx[0], &Global_BLMetalBridge_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_KLExit_Gfx[0], &Global_KLExit_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_KLDoor_Gfx[0], &Global_KLDoor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_DCExit_Gfx[0], &Global_DCExit_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_TallExitShadow1_Gfx[0], &Global_TallExitShadow1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_TallExitShadow2_Gfx[0], &Global_TallExitShadow2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_GCExit1_Gfx[0], &Global_GCExit1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_GCExit2_Gfx[0], &Global_GCExit2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_trainingRoomLight_Gfx[0], &Global_trainingRoomLight_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_JLCaveExit1_Gfx[0], &Global_JLCaveExit1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_JLCaveExit2_Gfx[0], &Global_JLCaveExit2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_JLCaveExit3_Gfx[0], &Global_JLCaveExit3_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_JLCaveExit4_Gfx[0], &Global_JLCaveExit4_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_JLOutsideEntrance_Gfx[0], &Global_JLOutsideEntrance_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_JLFxCamPillar_Gfx[0], &Global_JLFxCamPillar_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_JLCaveDoor_Gfx[0], &Global_JLCaveDoor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&BombSnake_arenaWalls_Gfx[0], &BombSnake_arenaWalls_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&BombSnake_arenaFloor_Gfx[0], &BombSnake_arenaFloor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_pole_Gfx[0], &Global_pole_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+};
 
-#include "build/assets/levelGroup/BombSnake/rabObjects.inc.c"
+unsigned char BombSnake_rabObjects_Bin[] = {
+0x00, 0x00, 0x00, 0x00, 0x42, 0xC8, 0x00, 0x00, 0x42, 0xC8, 0x00, 0x00, 0x42, 0xC8, 0x00, 0x00, 0x02, 0x00, 0x6E, 0x1C, 0x00, 0x00, 0x00, 0x00, 0x42, 0xC8, 0x00, 0x00, 0x42, 0xC8, 0x00, 0x00, 0x42, 0xC8, 0x00, 0x00, 0x02, 0x00, 0x6E, 0x1C, 0x00, 0x00, 0x00, 0x0B, 0x00, 0x00, 0x00, 0x0C, 0x00, 0x00, 0x00, 0x0D, 0x00, 0x00, 0x00, 0x0E, 0x00, 0x00, 0x00, 0x0F, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x11, 0x00, 0x00, 0x00, 0x12, 0x03, 0x00, 0x07, 0xEC, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x0A, 0xFF, 0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x01, 0x03, 0x00, 0x07, 0xE8, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x05, 0x00, 0x00, 0x02, 0x58, 0xFF, 0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x03, 0x00, 0x07, 0xE8, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x05, 0x00, 0x00, 0x00, 0x0A, 0xFF, 0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x03, 0x00, 0x07, 0xEC, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x0A, 0x00, 0x00, 0x01, 0x2C, 0x00, 0x00, 0x00, 0x01, 0x03, 0x00, 0x07, 0xFC, 0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0x0F, 0x00, 0x00, 0x00, 0x05, 0x00, 0x00, 0x00, 0x0F, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0B, 0x00, 0x00, 0x00, 0x13, 0x00, 0x00, 0x00, 0x0C, 0x00, 0x00, 0x00, 0x0D, 0x00, 0x00, 0x00, 0x0E, 0x00, 0x00, 0x00, 0x0F, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x11, 0x00, 0x00, 0x00, 0x12, 0x00, 0x00, 0x00, 0x13, 0x00, 0x00, 0x00, 0x0C, 0x03, 0x00, 0x08, 0x80, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x3C, 0xFF, 0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x03, 0x00, 0x08, 0x84, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x3C, 0xFF, 0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x03, 0x00, 0x08, 0xA4, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x1E, 0x00, 0x00, 0x00, 0x1E, 0x00, 0x00, 0x00, 0x00, 0x03, 0x00, 0x08, 0x88, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x0A, 0x00, 0x00, 0x01, 0x2C, 0x00, 0x00, 0x00, 0x01, 0x03, 0x00, 0x08, 0x98, 0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0x0F, 0x00, 0x00, 0x00, 0x05, 0x00, 0x00, 0x00, 0x05, 0x00, 0x00, 0x00, 0x01
+};
 
-#include "assets/levelGroup/BombSnake/roomObjects/room0_obj1.roomObj.inc.c"
+RoomObject BombSnake_room0_objects[13] = {
+{{0.0,0.0,0.0}, {40.0,1.0,40.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 23, 0.0, 0.0, 0.0, 0.0, 50333868, 5, 6, 50365568, 50365968, 0, 11, -1, 30, -1, NULL, NULL, -2146718652, 0, 2, 4, 4, 0, -1, 0, 0},
+{{-3300.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 5, -3300.0, -20000.0, 0.0, 0.0, 15, 300, -2, 0, 0, 0, 21, -1, -1, 30, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{-3100.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 5, -3100.0, -20000.0, 0.0, 0.0, 20, 300, -2, 0, 0, 0, 21, -1, -1, 30, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{-2900.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 5, -2900.0, -20000.0, 0.0, 0.0, 25, 300, -2, 0, 0, 0, 21, -1, -1, 30, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{-2700.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 5, -2700.0, -20000.0, 0.0, 0.0, 30, 300, -2, 0, 0, 0, 21, -1, -1, 30, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{-2500.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 5, -2500.0, -20000.0, 0.0, 0.0, 35, 300, -2, 0, 0, 0, 21, -1, -1, 30, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{-2300.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 5, -2300.0, -20000.0, 0.0, 0.0, 40, 300, -2, 0, 0, 0, 21, -1, -1, 30, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{-2100.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 5, -2100.0, -20000.0, 0.0, 0.0, 45, 300, -2, 0, 0, 0, 21, -1, -1, 30, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.10000000149011612, 1.2000000476837158, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 37, -1, -1, -1, &func_800B09C0, NULL, 0, 0, 0, 4, 4, 0, -1, 0, 0},
+{{0.0,-100.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 38, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+{{-3600.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 256, 0, 400.0, 400.0, 0.0, 0.0, 4, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
+{{-3600.0,0.0,0.0}, {4.0,4.0,4.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
 
-#include "assets/levelGroup/BombSnake/roomObjects/room0_obj2.roomObj.inc.c"
+RoomActor BombSnake_room0_actors[2] = {
+{BL_BOSS_SEGMENT, {-5000.0,0.0,-1800.0}, 270.0, -2000.0, 2000.0, 0, 50.0, -2000.0, 2000.0, 0, 13.0, 5.0, 100.0, 20.0, 1082130432, 1109393408, 1119092736, 1101004800, 0, -1082130432, 1120403456, 1114636288},
+{ACTOR_NULL, {0.0,0.0,0.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
 
-#include "assets/levelGroup/BombSnake/roomObjects/room0_obj3.roomObj.inc.c"
+RoomActor BombSnake_room1_actors[2] = {
+{BL_BOSS_SEGMENT, {-5000.0,0.0,-1800.0}, 270.0, -2000.0, 2000.0, 0, 50.0, -2000.0, 2000.0, 0, 20.0, 8.0, 120.0, 22.0, 1084227584, 1112014848, 1125515264, 1102053376, 0, -1082130432, 1114636288, 1113325568},
+{ACTOR_NULL, {0.0,0.0,0.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
 
-#include "assets/levelGroup/BombSnake/roomObjects/room0_obj4.roomObj.inc.c"
+s32 BombSnake_spriteLib_Sprlib[] = {
+    211,
+    36,
+    43,
+    32,
+    33,
+    34,
+    35,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+};
 
-#include "assets/levelGroup/BombSnake/roomObjects/room0_obj5.roomObj.inc.c"
+RoomInstance BombSnake_room_instances[3] = {
+{BombSnake_room0_objects,BombSnake_room0_actors, 0, 0, 0, 1, 0, 0, -1, 0, 0.0, 5, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1500.0, 180.0},
+{BombSnake_room0_objects,BombSnake_room1_actors, 0, 0, 0, 1, 0, 0, -1, 0, 0.0, 5, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1500.0, 180.0},
+{0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0}
+};
 
-#include "assets/levelGroup/BombSnake/roomObjects/room0_obj6.roomObj.inc.c"
+s32 BombSnake_rooms_map[3] = {
+-1, 0, -1, 
+};
 
-#include "assets/levelGroup/BombSnake/roomObjects/room0_obj7.roomObj.inc.c"
+StageMapData BombSnake_map_data = {
+3, 1, BombSnake_room_instances, BombSnake_rooms_map, 
+};
 
-#include "assets/levelGroup/BombSnake/roomObjects/room0_obj8.roomObj.inc.c"
+RoomInstance BombSnake_ext_room_instances[1] = {
+{0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0}
+};
 
-#include "assets/levelGroup/BombSnake/roomObjects/room0_obj9.roomObj.inc.c"
+LevelScope BombSnake_scope_Lvlscope = {
+    0,
+    0,
+    0,
+    255,
+    25000,
+    60,
+};
 
-#include "assets/levelGroup/BombSnake/roomObjects/room0_obj10.roomObj.inc.c"
-
-#include "assets/levelGroup/BombSnake/roomObjects/room0_obj11.roomObj.inc.c"
-
-#include "assets/levelGroup/BombSnake/roomObjects/room0_obj12.roomObj.inc.c"
-
-#include "assets/levelGroup/BombSnake/roomObjects/room0_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/BombSnake/roomActors/room0_act1.roomAct.inc.c"
-
-#include "assets/levelGroup/BombSnake/roomActors/room0_actSTOP.roomAct.inc.c"
-
-#include "assets/levelGroup/BombSnake/roomActors/room1_act1.roomAct.inc.c"
-
-#include "assets/levelGroup/BombSnake/roomActors/roomActSTOP.roomAct.inc.c"
-
-#include "assets/levelGroup/BombSnake/spriteLib.sprLib.inc.c"
-
-#include "assets/levelGroup/BombSnake/room0.rmSet.inc.c"
-
-#include "assets/levelGroup/BombSnake/room1.rmSet.inc.c"
-
-#include "assets/levelGroup/BombSnake/roomSTOP.rmSet.inc.c"
-
-#include "assets/levelGroup/BombSnake/map.lvmM.inc.c"
-
-#include "assets/levelGroup/BombSnake/map.lvmH.inc.c"
-
-#include "assets/levelGroup/BombSnake/nullOWRoom.rmSet.inc.c"
-
-#include "assets/levelGroup/BombSnake/scope.lvlScope.inc.c"
-
-#include "assets/levelGroup/BombSnake/header.lvlHdr.inc.c"
+StageData BombSnake_header_Lvlhdr = {
+    &BombSnake_map_data,
+    0,
+    &BombSnake_stageModels[0],
+    40,
+    0,
+    50333632,
+    131072,
+    &BombSnake_spriteLib_Sprlib[0],
+    &BombSnake_scope_Lvlscope,
+};
 s32 bombSnake_alignement[2] = {0, 0};
 Mtx BombSnake_IMtx2 = IDENTITY;
 
@@ -167,7 +274,9 @@ unsigned char BombSnake_arenaFloor_i4_PNG[] = {
 
 #include "assets/levelGroup/BombSnake/arenaWalls/arenaWalls.colS.inc.c"
 
-#include "assets/levelGroup/BombSnake/arenaWalls/arenaWalls.colH.inc.c"
+ModelCollision BombSnake_arenaWalls_ColH = {
+18, 24, &BombSnake_arenaWalls_ColV[0], &BombSnake_arenaWalls_ColT[0], &BombSnake_arenaWalls_ColS
+};
 
 #include "assets/levelGroup/BombSnake/arenaFloor/arenaFloor.colV.inc.c"
 
@@ -175,7 +284,9 @@ unsigned char BombSnake_arenaFloor_i4_PNG[] = {
 
 #include "assets/levelGroup/BombSnake/arenaFloor/arenaFloor.colS.inc.c"
 
-#include "assets/levelGroup/BombSnake/arenaFloor/arenaFloor.colH.inc.c"
+ModelCollision BombSnake_arenaFloor_ColH = {
+12, 16, &BombSnake_arenaFloor_ColV[0], &BombSnake_arenaFloor_ColT[0], &BombSnake_arenaFloor_ColS
+};
 Mtx BombSnake_IMtx5 = IDENTITY;
 
 #include "assets/levelGroup/BombSnake/anim/unk1Header.animH.inc.c"

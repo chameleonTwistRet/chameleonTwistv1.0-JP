@@ -115,177 +115,213 @@ extern ModelCollision Global_pole_ColH;
 
 Mtx BossRush_IMtx1 = IDENTITY;
 
-#include "assets/levelGroup/BossRush/pointers.lvp.inc.c"
-
-#include "build/assets/levelGroup/BossRush/rabObjects.inc.c"
-
-#include "assets/levelGroup/BossRush/roomObjects/room0_obj1.roomObj.inc.c"
-
-#include "assets/levelGroup/BossRush/roomObjects/room0_obj2.roomObj.inc.c"
-
-#include "assets/levelGroup/BossRush/roomObjects/room0_obj3.roomObj.inc.c"
-
-#include "assets/levelGroup/BossRush/roomObjects/room0_obj4.roomObj.inc.c"
-
-#include "assets/levelGroup/BossRush/roomObjects/room0_obj5.roomObj.inc.c"
-
-#include "assets/levelGroup/BossRush/roomObjects/room0_obj6.roomObj.inc.c"
-
-#include "assets/levelGroup/BossRush/roomObjects/room0_obj7.roomObj.inc.c"
-
-#include "assets/levelGroup/BossRush/roomObjects/room0_obj8.roomObj.inc.c"
-
-#include "assets/levelGroup/BossRush/roomObjects/room0_obj9.roomObj.inc.c"
-
-#include "assets/levelGroup/BossRush/roomObjects/room0_obj10.roomObj.inc.c"
-
-#include "assets/levelGroup/BossRush/roomObjects/room0_obj11.roomObj.inc.c"
-
-#include "assets/levelGroup/BossRush/roomObjects/room0_obj12.roomObj.inc.c"
-
-#include "assets/levelGroup/BossRush/roomObjects/room0_obj13.roomObj.inc.c"
-
-#include "assets/levelGroup/BossRush/roomObjects/room0_obj14.roomObj.inc.c"
-
-#include "assets/levelGroup/BossRush/roomObjects/room0_obj15.roomObj.inc.c"
-
-#include "assets/levelGroup/BossRush/roomObjects/room0_obj16.roomObj.inc.c"
-
-#include "assets/levelGroup/BossRush/roomObjects/room0_obj17.roomObj.inc.c"
-
-#include "assets/levelGroup/BossRush/roomObjects/room0_obj18.roomObj.inc.c"
-
-#include "assets/levelGroup/BossRush/roomObjects/room0_obj19.roomObj.inc.c"
-
-#include "assets/levelGroup/BossRush/roomObjects/room0_obj20.roomObj.inc.c"
-
-#include "assets/levelGroup/BossRush/roomObjects/room0_obj21.roomObj.inc.c"
-
-#include "assets/levelGroup/BossRush/roomObjects/room0_obj22.roomObj.inc.c"
-
-#include "assets/levelGroup/BossRush/roomObjects/room0_obj23.roomObj.inc.c"
-
-#include "assets/levelGroup/BossRush/roomObjects/room0_obj24.roomObj.inc.c"
-
-#include "assets/levelGroup/BossRush/roomObjects/room0_obj25.roomObj.inc.c"
-
-#include "assets/levelGroup/BossRush/roomObjects/room0_obj26.roomObj.inc.c"
-
-#include "assets/levelGroup/BossRush/roomObjects/room0_obj27.roomObj.inc.c"
-
-#include "assets/levelGroup/BossRush/roomObjects/room0_obj28.roomObj.inc.c"
-
-#include "assets/levelGroup/BossRush/roomObjects/room0_obj29.roomObj.inc.c"
-
-#include "assets/levelGroup/BossRush/roomObjects/room0_obj30.roomObj.inc.c"
-
-#include "assets/levelGroup/BossRush/roomObjects/room0_obj31.roomObj.inc.c"
-
-#include "assets/levelGroup/BossRush/roomObjects/room0_obj32.roomObj.inc.c"
-
-#include "assets/levelGroup/BossRush/roomObjects/room0_obj33.roomObj.inc.c"
-
-#include "assets/levelGroup/BossRush/roomObjects/room0_obj34.roomObj.inc.c"
-
-#include "assets/levelGroup/BossRush/roomObjects/room0_obj35.roomObj.inc.c"
-
-#include "assets/levelGroup/BossRush/roomObjects/room0_obj36.roomObj.inc.c"
-
-#include "assets/levelGroup/BossRush/roomObjects/room0_obj37.roomObj.inc.c"
-
-#include "assets/levelGroup/BossRush/roomObjects/room0_obj38.roomObj.inc.c"
-
-#include "assets/levelGroup/BossRush/roomObjects/room0_obj39.roomObj.inc.c"
-
-#include "assets/levelGroup/BossRush/roomObjects/room0_obj40.roomObj.inc.c"
-
-#include "assets/levelGroup/BossRush/roomObjects/room0_obj41.roomObj.inc.c"
-
-#include "assets/levelGroup/BossRush/roomObjects/room0_obj42.roomObj.inc.c"
-
-#include "assets/levelGroup/BossRush/roomObjects/room0_obj43.roomObj.inc.c"
-
-#include "assets/levelGroup/BossRush/roomObjects/room0_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/BossRush/spriteActors/roomMulti_spr1.sprite.inc.c"
-
-#include "assets/levelGroup/BossRush/spriteActors/roomMulti_spr2.sprite.inc.c"
-
-#include "assets/levelGroup/BossRush/spriteActors/roomMulti_spr3.sprite.inc.c"
-
-#include "assets/levelGroup/BossRush/spriteActors/roomMulti_spr4.sprite.inc.c"
-
-#include "assets/levelGroup/BossRush/spriteActors/roomMulti_spr5.sprite.inc.c"
-
-#include "assets/levelGroup/BossRush/spriteActors/roomMulti_spr6.sprite.inc.c"
-
-#include "assets/levelGroup/BossRush/spriteActors/roomMulti_sprSTOP.sprite.inc.c"
-
-#include "assets/levelGroup/BossRush/roomObjects/room1_obj1.roomObj.inc.c"
-
-#include "assets/levelGroup/BossRush/roomObjects/room1_obj2.roomObj.inc.c"
-
-#include "assets/levelGroup/BossRush/roomObjects/room1_obj3.roomObj.inc.c"
-
-#include "assets/levelGroup/BossRush/roomObjects/room1_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/BossRush/roomObjects/roomMulti2_obj1.roomObj.inc.c"
-
-#include "assets/levelGroup/BossRush/roomObjects/roomMulti2_obj2.roomObj.inc.c"
-
-#include "assets/levelGroup/BossRush/roomObjects/roomMulti2_obj3.roomObj.inc.c"
-
-#include "assets/levelGroup/BossRush/roomObjects/roomMulti2_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/BossRush/roomObjects/roomMulti3_obj1.roomObj.inc.c"
-
-#include "assets/levelGroup/BossRush/roomObjects/roomMulti3_obj2.roomObj.inc.c"
-
-#include "assets/levelGroup/BossRush/roomObjects/roomMulti3_obj3.roomObj.inc.c"
-
-#include "assets/levelGroup/BossRush/roomObjects/roomMulti3_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/BossRush/roomObjects/roomMulti4_obj1.roomObj.inc.c"
-
-#include "assets/levelGroup/BossRush/roomObjects/roomMulti4_obj2.roomObj.inc.c"
-
-#include "assets/levelGroup/BossRush/roomObjects/roomMulti4_obj3.roomObj.inc.c"
-
-#include "assets/levelGroup/BossRush/roomObjects/roomMulti4_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/BossRush/spriteLib.sprLib.inc.c"
-
-#include "assets/levelGroup/BossRush/rooms/room0.rmSet.inc.c"
-
-#include "assets/levelGroup/BossRush/rooms/room1.rmSet.inc.c"
-
-#include "assets/levelGroup/BossRush/rooms/room2.rmSet.inc.c"
-
-#include "assets/levelGroup/BossRush/rooms/room3.rmSet.inc.c"
-
-#include "assets/levelGroup/BossRush/rooms/room4.rmSet.inc.c"
-
-#include "assets/levelGroup/BossRush/rooms/room5.rmSet.inc.c"
-
-#include "assets/levelGroup/BossRush/rooms/room6.rmSet.inc.c"
-
-#include "assets/levelGroup/BossRush/rooms/room7.rmSet.inc.c"
-
-#include "assets/levelGroup/BossRush/rooms/room8.rmSet.inc.c"
-
-#include "assets/levelGroup/BossRush/rooms/roomSTOP.rmSet.inc.c"
-
-#include "assets/levelGroup/BossRush/map.lvmM.inc.c"
-
-#include "assets/levelGroup/BossRush/map.lvmH.inc.c"
-
-#include "assets/levelGroup/BossRush/extRooms/roomUnk.rmSet.inc.c"
-
-#include "assets/levelGroup/BossRush/nullOWRoom.rmSet.inc.c"
-
-#include "assets/levelGroup/BossRush/scope.lvlScope.inc.c"
-
-#include "assets/levelGroup/BossRush/header.lvlHdr.inc.c"
+StageModel BossRush_stageModels[47] = {
+{&Global_fallbackCube_Gfx[0], &Global_fallbackCube_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_exitShadowSouth_Gfx[0], &Global_exitShadowSouth_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_exitShadowNorth_Gfx[0], &Global_exitShadowNorth_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_exitShadowEast_Gfx[0], &Global_exitShadowEast_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_exitShadowWest_Gfx[0], &Global_exitShadowWest_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_ALBLExit_Gfx[0], &Global_ALBLExit_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_sandPit_Gfx[0], &Global_sandPit_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BossBridge_Gfx[0], &Global_BossBridge_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_ALPole_Gfx[0], &Global_ALPole_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_ALBLDoor_Gfx[0], &Global_ALBLDoor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_ALSpinDoor_Gfx[0], &Global_ALSpinDoor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLLavaFloor_Gfx[0], &Global_BLLavaFloor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLLava_Gfx[0], &Global_BLLava_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLLava2_Gfx[0], &Global_BLLava2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLLava3_Gfx[0], &Global_BLLava3_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLLava4_Gfx[0], &Global_BLLava4_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLLava5_Gfx[0], &Global_BLLava5_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLLava6_Gfx[0], &Global_BLLava6_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLLava7_Gfx[0], &Global_BLLava7_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLLava8_Gfx[0], &Global_BLLava8_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLDestructableTop_Gfx[0], &Global_BLDestructableTop_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLMetalBridge_Gfx[0], &Global_BLMetalBridge_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_KLExit_Gfx[0], &Global_KLExit_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_KLDoor_Gfx[0], &Global_KLDoor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_DCExit_Gfx[0], &Global_DCExit_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_TallExitShadow1_Gfx[0], &Global_TallExitShadow1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_TallExitShadow2_Gfx[0], &Global_TallExitShadow2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_GCExit1_Gfx[0], &Global_GCExit1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_GCExit2_Gfx[0], &Global_GCExit2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_trainingRoomLight_Gfx[0], &Global_trainingRoomLight_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_JLCaveExit1_Gfx[0], &Global_JLCaveExit1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_JLCaveExit2_Gfx[0], &Global_JLCaveExit2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_JLCaveExit3_Gfx[0], &Global_JLCaveExit3_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_JLCaveExit4_Gfx[0], &Global_JLCaveExit4_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_JLOutsideEntrance_Gfx[0], &Global_JLOutsideEntrance_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_JLFxCamPillar_Gfx[0], &Global_JLFxCamPillar_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_JLCaveDoor_Gfx[0], &Global_JLCaveDoor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&BossRush_model1_Gfx[0], &BossRush_unkCol1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&BossRush_model2_Gfx[0], &BossRush_unkCol2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&BossRush_model3_Gfx[0], &BossRush_unkCol3_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&BossRush_model4_Gfx[0], &BossRush_unkCol4_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&BossRush_model5_Gfx[0], &BossRush_unkCol5_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&BossRush_model6_Gfx[0], &BossRush_unkCol6_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&BossRush_model7_Gfx[0], &BossRush_unkCol7_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&BossRush_model8_Gfx[0], &BossRush_unkCol8_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&BossRush_model9_Gfx[0], &BossRush_unkCol9_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_pole_Gfx[0], &Global_pole_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+};
+
+unsigned char BossRush_rabObjects_Bin[] = {
+0x00, 0x00, 0x00, 0x00, 0x42, 0xC8, 0x00, 0x00, 0x42, 0xC8, 0x00, 0x00, 0x42, 0xC8, 0x00, 0x00, 0x02, 0x00, 0x6E, 0x1C, 0x00, 0x00, 0x00, 0x00, 0x42, 0xC8, 0x00, 0x00, 0x42, 0xC8, 0x00, 0x00, 0x42, 0xC8, 0x00, 0x00, 0x02, 0x00, 0x6E, 0x1C
+};
+
+RoomObject BossRush_room0_objects[44] = {
+{{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 37, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 38, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {1.0,4.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 43, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+{{1000.0,0.0,400.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(-112.00000083995421), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 42, -1, -1, -1, NULL, NULL, 0, 0, 0, 4, 4, 0, -1, 0, 0},
+{{1000.0,0.0,-400.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(-67.99999733881295), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 42, -1, -1, -1, NULL, NULL, 0, 0, 0, 4, 4, 0, -1, 0, 0},
+{{400.0,0.0,-1000.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(-22.000000043023345), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 42, -1, -1, -1, NULL, NULL, 0, 0, 0, 4, 4, 0, -1, 0, 0},
+{{-400.0,0.0,-1000.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(22.000000043023345), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 42, -1, -1, -1, NULL, NULL, 0, 0, 0, 4, 4, 0, -1, 0, 0},
+{{-1000.0,0.0,-400.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(67.99999733881295), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 42, -1, -1, -1, NULL, NULL, 0, 0, 0, 4, 4, 0, -1, 0, 0},
+{{-1000.0,0.0,400.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(112.00000083995421), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 42, -1, -1, -1, NULL, NULL, 0, 0, 0, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,2000.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 256, 0, 1600.0, 1600.0, 0.0, 0.0, 3, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
+{{0.0,0.0,2000.0}, {4.0,4.0,4.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+{{1000.0,-10.0,400.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(-112.00000083995421), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 44, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+{{1000.0,-10.0,-400.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(-67.99999733881295), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 44, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+{{400.0,-10.0,-1000.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(-22.000000043023345), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 44, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+{{-400.0,-10.0,-1000.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(22.000000043023345), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 44, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+{{-1000.0,-10.0,-400.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(67.99999733881295), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 44, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+{{-1000.0,-10.0,400.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(112.00000083995421), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 44, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+{{1000.0,-10.0,400.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(-112.00000083995421), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 40, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+{{1000.0,-10.0,-400.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(-67.99999733881295), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 40, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+{{400.0,-10.0,-1000.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(-22.000000043023345), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 40, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+{{-400.0,-10.0,-1000.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(22.000000043023345), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 40, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+{{-1000.0,-10.0,-400.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(67.99999733881295), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 40, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+{{-1000.0,-10.0,400.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(112.00000083995421), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 40, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+{{1000.0,-10.0,400.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(-112.00000083995421), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 39, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+{{1000.0,-10.0,-400.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(-67.99999733881295), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 39, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+{{400.0,-10.0,-1000.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(-22.000000043023345), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 39, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+{{-400.0,-10.0,-1000.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(22.000000043023345), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 39, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+{{-1000.0,-10.0,-400.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(67.99999733881295), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 39, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+{{-1000.0,-10.0,400.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(112.00000083995421), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 39, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 41, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,10000.0,0.0}, {10.0,1.0,30.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 37, -1, -1, -1, NULL, NULL, 0, 0, 7, 0, 4, 0, -1, 0, 0},
+{{-1957.300048828125,-10.0,795.7999877929688}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 256, 0, 1600.0, 1600.0, 0.0, 0.0, 4, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
+{{-1957.300048828125,-10.0,795.7999877929688}, {4.0,4.0,4.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+{{-1973.4000244140625,-10.0,-769.3499755859375}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 256, 0, 1600.0, 1600.0, 0.0, 0.0, 4, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
+{{-1973.4000244140625,-10.0,-769.3499755859375}, {4.0,4.0,4.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+{{-779.7000122070312,-10.0,-1941.199951171875}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 256, 0, 1600.0, 1600.0, 0.0, 0.0, 1, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
+{{-779.7000122070312,-10.0,-1941.199951171875}, {4.0,4.0,4.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+{{1957.300048828125,-10.0,795.7999877929688}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 256, 0, 1600.0, 1600.0, 0.0, 0.0, 2, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
+{{1957.300048828125,-10.0,795.7999877929688}, {4.0,4.0,4.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+{{1973.4000244140625,-10.0,-769.3499755859375}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 256, 0, 1600.0, 1600.0, 0.0, 0.0, 2, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
+{{1973.4000244140625,-10.0,-769.3499755859375}, {4.0,4.0,4.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+{{779.7000122070312,-10.0,-1941.199951171875}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 256, 0, 1600.0, 1600.0, 0.0, 0.0, 1, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
+{{779.7000122070312,-10.0,-1941.199951171875}, {4.0,4.0,4.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+SpriteActor BossRush_roomMulti_sprites[7] = {
+{2, 56, {-2200.0,0.0,920.0}, {128.0,512.0,480.0}, 1, 0, 1.0, 0, 0, 0, 0, 0, 255, 128, 128, 255},
+{2, 34, {-1900.0,0.0,-750.0}, {128.0,512.0,480.0}, 1, 0, 1.0, 0, 0, 0, 0, 0, 255, 128, 128, 255},
+{2, 14, {-780.0,0.0,-2000.0}, {128.0,512.0,480.0}, 1, 0, 1.0, 0, 0, 0, 0, 0, 255, 128, 128, 255},
+{2, 44, {780.0,0.0,-2000.0}, {128.0,512.0,480.0}, 1, 0, 1.0, 0, 0, 0, 0, 0, 255, 128, 128, 255},
+{2, 39, {1900.0,0.0,-750.0}, {128.0,512.0,480.0}, 1, 0, 1.0, 0, 0, 0, 0, 0, 255, 128, 128, 255},
+{2, 47, {2200.0,0.0,920.0}, {128.0,512.0,480.0}, 1, 0, 1.0, 0, 0, 0, 0, 0, 255, 128, 128, 255},
+{-1, 0, {-1.0,-1.0,-1.0}, {-1.0,32.0,32.0}, 1, 0, 0.0, 0, 0, 0, 0, 0, -1, -1, 0, 0}
+};
+
+RoomObject BossRush_room1_objects[4] = {
+{{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 256, 0, 1600.0, 1600.0, 0.0, 0.0, 2, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {4.0,4.0,4.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {10.0,1.0,30.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 37, -1, -1, -1, NULL, NULL, 0, 0, 7, 0, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomObject BossRush_roomMulti2_objects[4] = {
+{{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 256, 0, 1600.0, 1600.0, 0.0, 0.0, 3, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {4.0,4.0,4.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {10.0,1.0,30.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 37, -1, -1, -1, NULL, NULL, 0, 0, 7, 0, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomObject BossRush_roomMulti3_objects[4] = {
+{{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 256, 0, 1600.0, 1600.0, 0.0, 0.0, 4, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {4.0,4.0,4.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {10.0,1.0,30.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 37, -1, -1, -1, NULL, NULL, 0, 0, 7, 0, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomObject BossRush_roomMulti4_objects[4] = {
+{{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 256, 0, 1600.0, 1600.0, 0.0, 0.0, 1, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {4.0,4.0,4.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {10.0,1.0,30.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 37, -1, -1, -1, NULL, NULL, 0, 0, 7, 0, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+s32 BossRush_spriteLib_Sprlib[] = {
+    14,
+    39,
+    44,
+    47,
+    34,
+    56,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+};
+
+RoomInstance BossRush_room_instances[10] = {
+{BossRush_room0_objects, 0, 0,BossRush_roomMulti_sprites, 0, 0, 0, 0, -1, 0, 0.0, 1, 0.0, 800.0, 10.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+{BossRush_room1_objects, 0, 0, 0, 0, 1, 0, 0, -1, 0, 0.0, 1, 0.0, 800.0, -1600.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+{BossRush_room1_objects, 0, 0, 0, 0, 1, 0, 0, -1, 0, 0.0, 1, 0.0, 800.0, -1600.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+{BossRush_roomMulti2_objects, 0, 0, 0, 0, 1, 0, 0, -1, 0, 0.0, 1, 0.0, 800.0, -1600.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+{BossRush_roomMulti2_objects, 0, 0, 0, 0, 1, 0, 0, -1, 0, 0.0, 1, 0.0, 800.0, -1600.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+{BossRush_roomMulti3_objects, 0, 0, 0, 0, 1, 0, 0, -1, 0, 0.0, 1, 0.0, 800.0, -1600.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+{BossRush_roomMulti3_objects, 0, 0, 0, 0, 1, 0, 0, -1, 0, 0.0, 1, 0.0, 800.0, -1600.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+{BossRush_roomMulti4_objects, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0.0, 1, 0.0, 800.0, -1600.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+{BossRush_roomMulti4_objects, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0.0, 1, 0.0, 800.0, -1600.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+{0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0}
+};
+
+s32 BossRush_rooms_map[4][4] = {
+{-1, 3, 4, -1},
+{ 2, 0, 0,  5},
+{ 1, 0, 0,  6},
+{-1, 7, 8, -1}, 
+};
+
+StageMapData BossRush_map_data = {
+4, 4, BossRush_room_instances, BossRush_rooms_map, 
+};
+
+RoomInstance BossRush_ext_room_instances[2] = {
+{BossRush_room0_objects, 0, 0,BossRush_roomMulti_sprites, 0, 0, 0, 0, 0, 0, 45.0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+{0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0}
+};
+
+LevelScope BossRush_scope_Lvlscope = {
+    0,
+    0,
+    0,
+    -1,
+    25000,
+    60,
+};
+
+StageData BossRush_header_Lvlhdr = {
+    &BossRush_map_data,
+    0,
+    &BossRush_stageModels[0],
+    47,
+    0,
+    50333968,
+    131072,
+    &BossRush_spriteLib_Sprlib[0],
+    &BossRush_scope_Lvlscope,
+};
 Mtx BossRush_IMtx2 = IDENTITY;
 
 #include "assets/levelGroup/BossRush/bossScope1/bossScope1.light.inc.c"
@@ -341,7 +377,9 @@ Mtx BossRush_IMtx11 = IDENTITY;
 
 #include "assets/levelGroup/BossRush/unkCol1/unkCol1.colS.inc.c"
 
-#include "assets/levelGroup/BossRush/unkCol1/unkCol1.colH.inc.c"
+ModelCollision BossRush_unkCol1_ColH = {
+32, 54, &BossRush_unkCol1_ColV[0], &BossRush_unkCol1_ColT[0], &BossRush_unkCol1_ColS
+};
 
 #include "assets/levelGroup/BossRush/unkCol2/unkCol2.colV.inc.c"
 
@@ -349,7 +387,9 @@ Mtx BossRush_IMtx11 = IDENTITY;
 
 #include "assets/levelGroup/BossRush/unkCol2/unkCol2.colS.inc.c"
 
-#include "assets/levelGroup/BossRush/unkCol2/unkCol2.colH.inc.c"
+ModelCollision BossRush_unkCol2_ColH = {
+10, 10, &BossRush_unkCol2_ColV[0], &BossRush_unkCol2_ColT[0], &BossRush_unkCol2_ColS
+};
 
 #include "assets/levelGroup/BossRush/unkCol3/unkCol3.colV.inc.c"
 
@@ -357,7 +397,9 @@ Mtx BossRush_IMtx11 = IDENTITY;
 
 #include "assets/levelGroup/BossRush/unkCol3/unkCol3.colS.inc.c"
 
-#include "assets/levelGroup/BossRush/unkCol3/unkCol3.colH.inc.c"
+ModelCollision BossRush_unkCol3_ColH = {
+12, 8, &BossRush_unkCol3_ColV[0], &BossRush_unkCol3_ColT[0], &BossRush_unkCol3_ColS
+};
 
 #include "assets/levelGroup/BossRush/unkCol4/unkCol4.colV.inc.c"
 
@@ -365,7 +407,9 @@ Mtx BossRush_IMtx11 = IDENTITY;
 
 #include "assets/levelGroup/BossRush/unkCol4/unkCol4.colS.inc.c"
 
-#include "assets/levelGroup/BossRush/unkCol4/unkCol4.colH.inc.c"
+ModelCollision BossRush_unkCol4_ColH = {
+12, 8, &BossRush_unkCol4_ColV[0], &BossRush_unkCol4_ColT[0], &BossRush_unkCol4_ColS
+};
 
 #include "assets/levelGroup/BossRush/unkCol5/unkCol5.colV.inc.c"
 
@@ -373,7 +417,9 @@ Mtx BossRush_IMtx11 = IDENTITY;
 
 #include "assets/levelGroup/BossRush/unkCol5/unkCol5.colS.inc.c"
 
-#include "assets/levelGroup/BossRush/unkCol5/unkCol5.colH.inc.c"
+ModelCollision BossRush_unkCol5_ColH = {
+8, 6, &BossRush_unkCol5_ColV[0], &BossRush_unkCol5_ColT[0], &BossRush_unkCol5_ColS
+};
 
 #include "assets/levelGroup/BossRush/unkCol6/unkCol6.colV.inc.c"
 
@@ -381,7 +427,9 @@ Mtx BossRush_IMtx11 = IDENTITY;
 
 #include "assets/levelGroup/BossRush/unkCol6/unkCol6.colS.inc.c"
 
-#include "assets/levelGroup/BossRush/unkCol6/unkCol6.colH.inc.c"
+ModelCollision BossRush_unkCol6_ColH = {
+8, 8, &BossRush_unkCol6_ColV[0], &BossRush_unkCol6_ColT[0], &BossRush_unkCol6_ColS
+};
 
 #include "assets/levelGroup/BossRush/unkCol7/unkCol7.colV.inc.c"
 
@@ -389,7 +437,9 @@ Mtx BossRush_IMtx11 = IDENTITY;
 
 #include "assets/levelGroup/BossRush/unkCol7/unkCol7.colS.inc.c"
 
-#include "assets/levelGroup/BossRush/unkCol7/unkCol7.colH.inc.c"
+ModelCollision BossRush_unkCol7_ColH = {
+16, 16, &BossRush_unkCol7_ColV[0], &BossRush_unkCol7_ColT[0], &BossRush_unkCol7_ColS
+};
 
 #include "assets/levelGroup/BossRush/unkCol8/unkCol8.colV.inc.c"
 
@@ -397,7 +447,9 @@ Mtx BossRush_IMtx11 = IDENTITY;
 
 #include "assets/levelGroup/BossRush/unkCol8/unkCol8.colS.inc.c"
 
-#include "assets/levelGroup/BossRush/unkCol8/unkCol8.colH.inc.c"
+ModelCollision BossRush_unkCol8_ColH = {
+24, 20, &BossRush_unkCol8_ColV[0], &BossRush_unkCol8_ColT[0], &BossRush_unkCol8_ColS
+};
 
 #include "assets/levelGroup/BossRush/unkCol9/unkCol9.colV.inc.c"
 
@@ -405,6 +457,8 @@ Mtx BossRush_IMtx11 = IDENTITY;
 
 #include "assets/levelGroup/BossRush/unkCol9/unkCol9.colS.inc.c"
 
-#include "assets/levelGroup/BossRush/unkCol9/unkCol9.colH.inc.c"
+ModelCollision BossRush_unkCol9_ColH = {
+6, 4, &BossRush_unkCol9_ColV[0], &BossRush_unkCol9_ColT[0], &BossRush_unkCol9_ColS
+};
 s32 bossRush_pad[2] = {0, 0};
 Mtx BossRush_IMtx12 = IDENTITY;

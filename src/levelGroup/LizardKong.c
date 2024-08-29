@@ -91,59 +91,151 @@ extern ModelCollision Global_pole_ColH;
 
 Mtx LizardKong_IMtx1 = IDENTITY;
 
-#include "assets/levelGroup/LizardKong/pointers.lvp.inc.c"
+StageModel LizardKong_stageModels[40] = {
+{&Global_fallbackCube_Gfx[0], &Global_fallbackCube_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_exitShadowSouth_Gfx[0], &Global_exitShadowSouth_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_exitShadowNorth_Gfx[0], &Global_exitShadowNorth_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_exitShadowEast_Gfx[0], &Global_exitShadowEast_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_exitShadowWest_Gfx[0], &Global_exitShadowWest_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_ALBLExit_Gfx[0], &Global_ALBLExit_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_sandPit_Gfx[0], &Global_sandPit_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BossBridge_Gfx[0], &Global_BossBridge_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_ALPole_Gfx[0], &Global_ALPole_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_ALBLDoor_Gfx[0], &Global_ALBLDoor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_ALSpinDoor_Gfx[0], &Global_ALSpinDoor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLLavaFloor_Gfx[0], &Global_BLLavaFloor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLLava_Gfx[0], &Global_BLLava_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLLava2_Gfx[0], &Global_BLLava2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLLava3_Gfx[0], &Global_BLLava3_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLLava4_Gfx[0], &Global_BLLava4_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLLava5_Gfx[0], &Global_BLLava5_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLLava6_Gfx[0], &Global_BLLava6_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLLava7_Gfx[0], &Global_BLLava7_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLLava8_Gfx[0], &Global_BLLava8_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLDestructableTop_Gfx[0], &Global_BLDestructableTop_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLMetalBridge_Gfx[0], &Global_BLMetalBridge_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_KLExit_Gfx[0], &Global_KLExit_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_KLDoor_Gfx[0], &Global_KLDoor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_DCExit_Gfx[0], &Global_DCExit_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_TallExitShadow1_Gfx[0], &Global_TallExitShadow1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_TallExitShadow2_Gfx[0], &Global_TallExitShadow2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_GCExit1_Gfx[0], &Global_GCExit1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_GCExit2_Gfx[0], &Global_GCExit2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_trainingRoomLight_Gfx[0], &Global_trainingRoomLight_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_JLCaveExit1_Gfx[0], &Global_JLCaveExit1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_JLCaveExit2_Gfx[0], &Global_JLCaveExit2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_JLCaveExit3_Gfx[0], &Global_JLCaveExit3_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_JLCaveExit4_Gfx[0], &Global_JLCaveExit4_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_JLOutsideEntrance_Gfx[0], &Global_JLOutsideEntrance_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_JLFxCamPillar_Gfx[0], &Global_JLFxCamPillar_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_JLCaveDoor_Gfx[0], &Global_JLCaveDoor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&LizardKong_model1_Gfx[0], &LizardKong_unkCol1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&LizardKong_model2_Gfx[0], &LizardKong_unkCol2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_pole_Gfx[0], &Global_pole_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+};
 
-#include "build/assets/levelGroup/LizardKong/rabObjects.inc.c"
+unsigned char LizardKong_rabObjects_Bin[] = {
+0x00, 0x00, 0x00, 0x00, 0x42, 0xC8, 0x00, 0x00, 0x42, 0xC8, 0x00, 0x00, 0x42, 0xC8, 0x00, 0x00, 0x02, 0x00, 0x6E, 0x1C, 0x00, 0x00, 0x00, 0x00, 0x42, 0xC8, 0x00, 0x00, 0x42, 0xC8, 0x00, 0x00, 0x42, 0xC8, 0x00, 0x00, 0x02, 0x00, 0x6E, 0x1C
+};
 
-#include "assets/levelGroup/LizardKong/roomObjects/room0_obj1.roomObj.inc.c"
+RoomObject LizardKong_room0_objects[9] = {
+{{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 37, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 38, -1, 30, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{-200.0,-50.0,-200.0}, {1.5,2.0,2.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 35, -1, -1, -1, NULL, NULL, 0, 0, 34, 4, 4, 0, -1, 0, 0},
+{{200.0,0.0,200.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 32, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{200.0,0.0,200.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 3, -1, -1, -1, NULL, NULL, 0, 0, 0, 4, 4, 0, -1, 0, 0},
+{{200.0,0.0,200.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 256, 0, 400.0, 400.0, 0.0, 0.0, 3, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
+{{200.0,0.0,200.0}, {4.0,4.0,4.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+{{200.0,400.0,30.0}, {1.0,1.3333333730697632,0.10000000149011612}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 11, 200.0, 0.0, 30.0, 0.0, 2, 20, -1, 40, 0, 0, 36, -1, -1, 30, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
 
-#include "assets/levelGroup/LizardKong/roomObjects/room0_obj2.roomObj.inc.c"
+RoomActor LizardKong_room0_actors[4] = {
+{LIZARD_KONG, {0.0,0.0,0.0}, 263.0, -10000.0, 10000.0, -971227136, 10000.0, -10000.0, 10000.0, 1, 0.6000000238418579, 15.0, 2000.0, 80.0, 1077936128, 1110704128, 1161527296, 1061997773, 1106247680, 1065353216, 1065353216, 0},
+{LIZARD_KONG_BUTTERFLY_SPAWNER, {500.0,-100.0,-3200.0}, 0.0, -50000.0, 50000.0, -951889920, 50000.0, -50000.0, 50000.0, 0, 8.0, 4.0, 10.0, 1.0, 1077936128, 0, 0, 0, 1135869952, 1086324736, 1106247680, 0},
+{LIZARD_KONG_BUTTERFLY_SPAWNER, {-500.0,-100.0,-3200.0}, 0.0, -50000.0, 50000.0, -951889920, 50000.0, -50000.0, 50000.0, 0, 8.0, 4.0, 10.0, 1.0, 1077936128, 0, 0, 0, 1135869952, 1086324736, 1106247680, 0},
+{ACTOR_NULL, {0.0,0.0,0.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
 
-#include "assets/levelGroup/LizardKong/roomObjects/room0_obj3.roomObj.inc.c"
+RoomActor LizardKong_room1_actors[4] = {
+{LIZARD_KONG, {0.0,0.0,0.0}, 263.0, -10000.0, 10000.0, -971227136, 10000.0, -10000.0, 10000.0, 1, 2.0, 30.0, 2000.0, 20.0, 1106247680, 1110704128, 1161527296, 1058642330, 1084227584, 1077936128, 1073741824, 0},
+{LIZARD_KONG_BUTTERFLY_SPAWNER, {500.0,-100.0,-3200.0}, 0.0, -50000.0, 50000.0, -951889920, 50000.0, -50000.0, 50000.0, 0, 10.0, 4.0, 10.0, 1.0, 1077936128, 0, 0, 0, 1135869952, 1111490560, 1106247680, 0},
+{LIZARD_KONG_BUTTERFLY_SPAWNER, {-500.0,-100.0,-3200.0}, 0.0, -50000.0, 50000.0, -951889920, 50000.0, -50000.0, 50000.0, 0, 20.0, 4.0, 10.0, 1.0, 1077936128, 0, 0, 0, 1135869952, 1111490560, 1106247680, 0},
+{ACTOR_NULL, {0.0,0.0,0.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
 
-#include "assets/levelGroup/LizardKong/roomObjects/room0_obj4.roomObj.inc.c"
+s32 LizardKong_spriteLib_Sprlib[] = {
+    56,
+    57,
+    58,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+};
 
-#include "assets/levelGroup/LizardKong/roomObjects/room0_obj5.roomObj.inc.c"
+RoomInstance LizardKong_room_instances[3] = {
+{LizardKong_room0_objects,LizardKong_room0_actors, 0, 0, 0, 0, 0, 0, -1, 0, 0.0, 10, -200.0, 800.0, -200.0, 0.0, 0.0, 0.0, 2.0, 0, 0, 0, 0, 0, 0, 0, 0, -1500.0, 200.0},
+{LizardKong_room0_objects,LizardKong_room1_actors, 0, 0, 0, 0, 0, 0, -1, 0, 0.0, 10, -200.0, 800.0, -200.0, 0.0, 0.0, 0.0, 2.0, 0, 0, 0, 0, 0, 0, 0, 0, -1500.0, 200.0},
+{0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0}
+};
 
-#include "assets/levelGroup/LizardKong/roomObjects/room0_obj6.roomObj.inc.c"
+s32 LizardKong_rooms_map[4][3] = {
+    {-1,  1, -1},
+    {-1, -1, -1},
+    {-1,  0, -1},
+    {-1, -1, -1}
+};
 
-#include "assets/levelGroup/LizardKong/roomObjects/room0_obj7.roomObj.inc.c"
+StageMapData LizardKong_map_data = {
+3, 4, LizardKong_room_instances, LizardKong_rooms_map, 
+};
 
-#include "assets/levelGroup/LizardKong/roomObjects/room0_obj8.roomObj.inc.c"
+LevelScope LizardKong_scope_Lvlscope = {
+    0,
+    0,
+    0,
+    -1,
+    25000,
+    60,
+};
 
-#include "assets/levelGroup/LizardKong/roomObjects/room0_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/LizardKong/roomActors/room0_act1.roomAct.inc.c"
-
-#include "assets/levelGroup/LizardKong/roomActors/room0_act2.roomAct.inc.c"
-
-#include "assets/levelGroup/LizardKong/roomActors/room0_act3.roomAct.inc.c"
-
-#include "assets/levelGroup/LizardKong/roomActors/room0_actSTOP.roomAct.inc.c"
-
-#include "assets/levelGroup/LizardKong/roomActors/room1_act1.roomAct.inc.c"
-
-#include "assets/levelGroup/LizardKong/roomActors/room1_act2.roomAct.inc.c"
-
-#include "assets/levelGroup/LizardKong/roomActors/room1_act3.roomAct.inc.c"
-
-#include "assets/levelGroup/LizardKong/roomActors/room1_actSTOP.roomAct.inc.c"
-
-#include "assets/levelGroup/LizardKong/spriteLib.sprLib.inc.c"
-
-#include "assets/levelGroup/LizardKong/rooms/room0.rmSet.inc.c"
-
-#include "assets/levelGroup/LizardKong/rooms/room1.rmSet.inc.c"
-
-#include "assets/levelGroup/LizardKong/rooms/roomSTOP.rmSet.inc.c"
-
-#include "assets/levelGroup/LizardKong/map.lvmM.inc.c"
-
-#include "assets/levelGroup/LizardKong/map.lvmH.inc.c"
-
-#include "assets/levelGroup/LizardKong/scope.lvlScope.inc.c"
-
-#include "assets/levelGroup/LizardKong/header.lvlHdr.inc.c"
+StageData LizardKong_header_Lvlhdr = {
+    &LizardKong_map_data,
+    0,
+    &LizardKong_stageModels[0],
+    40,
+    0,
+    50333632,
+    131072,
+    &LizardKong_spriteLib_Sprlib[0],
+    &LizardKong_scope_Lvlscope,
+};
 Mtx LizardKong_IMtx2 = IDENTITY;
 
 #include "assets/levelGroup/LizardKong/lkScope/lkScope.light.inc.c"
@@ -172,7 +264,9 @@ Mtx LizardKong_IMtx4 = IDENTITY;
 
 #include "assets/levelGroup/LizardKong/unkCol1/unkCol1.colS.inc.c"
 
-#include "assets/levelGroup/LizardKong/unkCol1/unkCol1.colH.inc.c"
+ModelCollision LizardKong_unkCol1_ColH = {
+27, 33, &LizardKong_unkCol1_ColV[0], &LizardKong_unkCol1_ColT[0], &LizardKong_unkCol1_ColS
+};
 
 #include "assets/levelGroup/LizardKong/unkCol2/unkCol2.colV.inc.c"
 
@@ -180,7 +274,9 @@ Mtx LizardKong_IMtx4 = IDENTITY;
 
 #include "assets/levelGroup/LizardKong/unkCol2/unkCol2.colS.inc.c"
 
-#include "assets/levelGroup/LizardKong/unkCol2/unkCol2.colH.inc.c"
+ModelCollision LizardKong_unkCol2_ColH = {
+14, 16, &LizardKong_unkCol2_ColV[0], &LizardKong_unkCol2_ColT[0], &LizardKong_unkCol2_ColS
+};
 Mtx LizardKong_IMtx5 = IDENTITY;
 
 #include "assets/levelGroup/LizardKong/lkScope2/lkScope2.light.inc.c"

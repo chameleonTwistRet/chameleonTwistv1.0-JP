@@ -1196,21 +1196,21 @@ typedef struct SpriteListing {
 } SpriteListing; //sizeof 0x78
 
 typedef struct cutsceneCamera{
-    u32 unk0; //unktype
-    f32 unk4;
-    f32 unk8;
-    f32 unkC;
-    u32 unk10; //unktype
-    u32 unk14; //unktype
-    u32 unk18; //unktype
-    u32 unk1C; //unktype
-    u32 unk20; //unktype
-    u32 unk24; //unktype
-    u32 unk28; //unktype
-    u32 unk2C; //unktype
-    u32 unk30; //unktype
-    u32 unk34; //unktype
-    f32 unk38;
+    f32 unk_00;
+    f32 unk_04;
+    f32 unk_08;
+    f32 unk_0C;
+    f32 unk_10;
+    f32 unk_14;
+    f32 unk_18;
+    f32 unk_1C;
+    f32 unk_20;
+    f32 unk_24;
+    f32 unk_28;
+    f32 unk_2C;
+    f32 unk_30;
+    f32 unk_34;
+    f32 unk_38;
 } cutsceneCamera; //sizeof 0x3C
 
 enum CutsceneUses {
@@ -1231,24 +1231,43 @@ enum CutsceneUses {
 //24fb00
 //also after cutsceneCamera's in assets0
 typedef struct cutsceneFunction{
-/* 0x00 */ s32 unk0;
-/* 0x04 */ u32 unk4; //unktype s32?
-/* 0x08 */ u32 unk8; //unktype s32?
-/* 0x0C */ s32 useCase; // enum
-/* 0x10 */ cutsceneCamera* unk10;
-/* 0x14 */ s32 flag1; // ram stuff
-/* 0x18 */ cutsceneCamera* unk18;
-/* 0x1C */ Vec3f toPlacePos; //might be more usecases idk
-/* 0x28 */ Gfx* toPlace; //segmented, if use case 0xA
-/* 0x2C */ s32 flag2; // ram stuff 2
-/* 0x30 */ u32 unk30; //unktype
-/* 0x34 */ u32 unk34; //unktype
-/* 0x38 */ f32 unk38;
-/* 0x3C */ f32 unk3C;
-/* 0x40 */ f32 unk40;
-/* 0x44 */ u32 unk44; //unktype
-/* 0x48 */ f32 unk48;
-/* 0x4C */ u32 unk4C; //unktype
+    s32 unk_00;
+    s32 unk_04;
+    s32 unk_08;
+    s32 useCase; // CutsceneUses enum
+    cutsceneCamera* unk_10;
+    s32 flag1;
+    cutsceneCamera* unk_18;
+    Vec3f toPlacePos;
+    Gfx* toPlace; //segment pointer
+    s32 flag2;
+    s32 unk_30;
+    s32 unk_34;
+    f32 unk_38;
+    f32 unk_3C;
+    f32 unk_40;
+    f32 unk_44;
+    f32 unk_48;
+    f32 unk_4C;
+
+    s32 unk_50;
+    s32 unk_54;
+    s32 unk_58;
+    s32 useCaseTwo; // CutsceneUses enum
+    cutsceneCamera* unk_60;
+    s32 flag1Two;
+    cutsceneCamera* unk_68;
+    Vec3f toPlacePosTwo;
+    Gfx* toPlaceTwo; //segment pointer
+    s32 flag2Two;
+    s32 unk_80;
+    s32 unk_84;
+    f32 unk_88;
+    f32 unk_8C;
+    f32 unk_90;
+    f32 unk_94;
+    f32 unk_98;
+    f32 unk_9C;
 } cutsceneFunction; //sizeof 0x50
 
 #endif

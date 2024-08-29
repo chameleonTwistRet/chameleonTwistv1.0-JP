@@ -2512,7 +2512,9 @@ ModelCollision AntLand_room8Floor_ColH = {
 
 #include "assets/levelGroup/AntLand/room17Floor/room17Floor.colS.inc.c"
 
-#include "assets/levelGroup/AntLand/room17Floor/room17Floor.colH.inc.c"
+ModelCollision AntLand_room17Floor_ColH = {
+56, 80, &AntLand_room17Floor_ColV[0], &AntLand_room17Floor_ColT[0], &AntLand_room17Floor_ColS
+};
 
 #include "assets/levelGroup/AntLand/room10Floor/room10Floor.colV.inc.c"
 
@@ -2520,7 +2522,9 @@ ModelCollision AntLand_room8Floor_ColH = {
 
 #include "assets/levelGroup/AntLand/room10Floor/room10Floor.colS.inc.c"
 
-#include "assets/levelGroup/AntLand/room10Floor/room10Floor.colH.inc.c"
+ModelCollision AntLand_room10Floor_ColH = {
+53, 76, &AntLand_room10Floor_ColV[0], &AntLand_room10Floor_ColT[0], &AntLand_room10Floor_ColS
+};
 
 #include "assets/levelGroup/AntLand/room10Platform1/room10Platform1.colV.inc.c"
 
@@ -2528,7 +2532,9 @@ ModelCollision AntLand_room8Floor_ColH = {
 
 #include "assets/levelGroup/AntLand/room10Platform1/room10Platform1.colS.inc.c"
 
-#include "assets/levelGroup/AntLand/room10Platform1/room10Platform1.colH.inc.c"
+ModelCollision AntLand_room10Platform1_ColH = {
+8, 8, &AntLand_room10Platform1_ColV[0], &AntLand_room10Platform1_ColT[0], &AntLand_room10Platform1_ColS
+};
 
 #include "assets/levelGroup/AntLand/room10Platform2/room10Platform2.colV.inc.c"
 
@@ -2536,7 +2542,9 @@ ModelCollision AntLand_room8Floor_ColH = {
 
 #include "assets/levelGroup/AntLand/room10Platform2/room10Platform2.colS.inc.c"
 
-#include "assets/levelGroup/AntLand/room10Platform2/room10Platform2.colH.inc.c"
+ModelCollision AntLand_room10Platform2_ColH = {
+8, 8, &AntLand_room10Platform2_ColV[0], &AntLand_room10Platform2_ColT[0], &AntLand_room10Platform2_ColS
+};
 
 #include "assets/levelGroup/AntLand/room10Platform3/room10Platform3.colV.inc.c"
 
@@ -2544,7 +2552,9 @@ ModelCollision AntLand_room8Floor_ColH = {
 
 #include "assets/levelGroup/AntLand/room10Platform3/room10Platform3.colS.inc.c"
 
-#include "assets/levelGroup/AntLand/room10Platform3/room10Platform3.colH.inc.c"
+ModelCollision AntLand_room10Platform3_ColH = {
+8, 10, &AntLand_room10Platform3_ColV[0], &AntLand_room10Platform3_ColT[0], &AntLand_room10Platform3_ColS
+};
 
 #include "assets/levelGroup/AntLand/room5Platform/room5Platform.colV.inc.c"
 
@@ -2552,7 +2562,9 @@ ModelCollision AntLand_room8Floor_ColH = {
 
 #include "assets/levelGroup/AntLand/room5Platform/room5Platform.colS.inc.c"
 
-#include "assets/levelGroup/AntLand/room5Platform/room5Platform.colH.inc.c"
+ModelCollision AntLand_room5Platform_ColH = {
+16, 20, &AntLand_room5Platform_ColV[0], &AntLand_room5Platform_ColT[0], &AntLand_room5Platform_ColS
+};
 
 #include "assets/levelGroup/AntLand/room13Platform/room13Platform.colV.inc.c"
 
@@ -2560,7 +2572,9 @@ ModelCollision AntLand_room8Floor_ColH = {
 
 #include "assets/levelGroup/AntLand/room13Platform/room13Platform.colS.inc.c"
 
-#include "assets/levelGroup/AntLand/room13Platform/room13Platform.colH.inc.c"
+ModelCollision AntLand_room13Platform_ColH = {
+16, 20, &AntLand_room13Platform_ColV[0], &AntLand_room13Platform_ColT[0], &AntLand_room13Platform_ColS
+};
 
 #include "assets/levelGroup/AntLand/room21Platform1/room21Platform1.colV.inc.c"
 
@@ -2568,7 +2582,9 @@ ModelCollision AntLand_room8Floor_ColH = {
 
 #include "assets/levelGroup/AntLand/room21Platform1/room21Platform1.colS.inc.c"
 
-#include "assets/levelGroup/AntLand/room21Platform1/room21Platform1.colH.inc.c"
+ModelCollision AntLand_room21Platform1_ColH = {
+7, 6, &AntLand_room21Platform1_ColV[0], &AntLand_room21Platform1_ColT[0], &AntLand_room21Platform1_ColS
+};
 
 #include "assets/levelGroup/AntLand/room21Platform2/room21Platform2.colV.inc.c"
 
@@ -2576,7 +2592,9 @@ ModelCollision AntLand_room8Floor_ColH = {
 
 #include "assets/levelGroup/AntLand/room21Platform2/room21Platform2.colS.inc.c"
 
-#include "assets/levelGroup/AntLand/room21Platform2/room21Platform2.colH.inc.c"
+ModelCollision AntLand_room21Platform2_ColH = {
+7, 6, &AntLand_room21Platform2_ColV[0], &AntLand_room21Platform2_ColT[0], &AntLand_room21Platform2_ColS
+};
 
 #include "assets/levelGroup/AntLand/room12Floor1/room12Floor1.colV.inc.c"
 
@@ -2584,7 +2602,9 @@ ModelCollision AntLand_room8Floor_ColH = {
 
 #include "assets/levelGroup/AntLand/room12Floor1/room12Floor1.colS.inc.c"
 
-#include "assets/levelGroup/AntLand/room12Floor1/room12Floor1.colH.inc.c"
+ModelCollision AntLand_room12Floor1_ColH = {
+63, 94, &AntLand_room12Floor1_ColV[0], &AntLand_room12Floor1_ColT[0], &AntLand_room12Floor1_ColS
+};
 
 #include "assets/levelGroup/AntLand/room12Floor2/room12Floor2.colV.inc.c"
 
@@ -2592,7 +2612,9 @@ ModelCollision AntLand_room8Floor_ColH = {
 
 #include "assets/levelGroup/AntLand/room12Floor2/room12Floor2.colS.inc.c"
 
-#include "assets/levelGroup/AntLand/room12Floor2/room12Floor2.colH.inc.c"
+ModelCollision AntLand_room12Floor2_ColH = {
+13, 13, &AntLand_room12Floor2_ColV[0], &AntLand_room12Floor2_ColT[0], &AntLand_room12Floor2_ColS
+};
 
 #include "assets/levelGroup/AntLand/room11Floor1/room11Floor1.colV.inc.c"
 
@@ -2600,7 +2622,9 @@ ModelCollision AntLand_room8Floor_ColH = {
 
 #include "assets/levelGroup/AntLand/room11Floor1/room11Floor1.colS.inc.c"
 
-#include "assets/levelGroup/AntLand/room11Floor1/room11Floor1.colH.inc.c"
+ModelCollision AntLand_room11Floor1_ColH = {
+8, 8, &AntLand_room11Floor1_ColV[0], &AntLand_room11Floor1_ColT[0], &AntLand_room11Floor1_ColS
+};
 
 #include "assets/levelGroup/AntLand/room11Floor2/room11Floor2.colV.inc.c"
 
@@ -2608,7 +2632,9 @@ ModelCollision AntLand_room8Floor_ColH = {
 
 #include "assets/levelGroup/AntLand/room11Floor2/room11Floor2.colS.inc.c"
 
-#include "assets/levelGroup/AntLand/room11Floor2/room11Floor2.colH.inc.c"
+ModelCollision AntLand_room11Floor2_ColH = {
+8, 8, &AntLand_room11Floor2_ColV[0], &AntLand_room11Floor2_ColT[0], &AntLand_room11Floor2_ColS
+};
 
 #include "assets/levelGroup/AntLand/room4Grate/room4Grate.colV.inc.c"
 
@@ -2616,7 +2642,9 @@ ModelCollision AntLand_room8Floor_ColH = {
 
 #include "assets/levelGroup/AntLand/room4Grate/room4Grate.colS.inc.c"
 
-#include "assets/levelGroup/AntLand/room4Grate/room4Grate.colH.inc.c"
+ModelCollision AntLand_room4Grate_ColH = {
+4, 4, &AntLand_room4Grate_ColV[0], &AntLand_room4Grate_ColT[0], &AntLand_room4Grate_ColS
+};
 
 #include "assets/levelGroup/AntLand/room7Floor/room7Floor.colV.inc.c"
 
@@ -2624,7 +2652,9 @@ ModelCollision AntLand_room8Floor_ColH = {
 
 #include "assets/levelGroup/AntLand/room7Floor/room7Floor.colS.inc.c"
 
-#include "assets/levelGroup/AntLand/room7Floor/room7Floor.colH.inc.c"
+ModelCollision AntLand_room7Floor_ColH = {
+4, 2, &AntLand_room7Floor_ColV[0], &AntLand_room7Floor_ColT[0], &AntLand_room7Floor_ColS
+};
 
 #include "assets/levelGroup/AntLand/room7Ceiling/room7Ceiling.colV.inc.c"
 
@@ -2632,7 +2662,9 @@ ModelCollision AntLand_room8Floor_ColH = {
 
 #include "assets/levelGroup/AntLand/room7Ceiling/room7Ceiling.colS.inc.c"
 
-#include "assets/levelGroup/AntLand/room7Ceiling/room7Ceiling.colH.inc.c"
+ModelCollision AntLand_room7Ceiling_ColH = {
+4, 2, &AntLand_room7Ceiling_ColV[0], &AntLand_room7Ceiling_ColT[0], &AntLand_room7Ceiling_ColS
+};
 
 #include "assets/levelGroup/AntLand/room15Floor/room15Floor.colV.inc.c"
 
@@ -2640,7 +2672,9 @@ ModelCollision AntLand_room8Floor_ColH = {
 
 #include "assets/levelGroup/AntLand/room15Floor/room15Floor.colS.inc.c"
 
-#include "assets/levelGroup/AntLand/room15Floor/room15Floor.colH.inc.c"
+ModelCollision AntLand_room15Floor_ColH = {
+4, 2, &AntLand_room15Floor_ColV[0], &AntLand_room15Floor_ColT[0], &AntLand_room15Floor_ColS
+};
 
 #include "assets/levelGroup/AntLand/room15Ceiling/room15Ceiling.colV.inc.c"
 
@@ -2648,7 +2682,9 @@ ModelCollision AntLand_room8Floor_ColH = {
 
 #include "assets/levelGroup/AntLand/room15Ceiling/room15Ceiling.colS.inc.c"
 
-#include "assets/levelGroup/AntLand/room15Ceiling/room15Ceiling.colH.inc.c"
+ModelCollision AntLand_room15Ceiling_ColH = {
+4, 2, &AntLand_room15Ceiling_ColV[0], &AntLand_room15Ceiling_ColT[0], &AntLand_room15Ceiling_ColS
+};
 
 #include "assets/levelGroup/AntLand/room8Floor1/room8Floor1.colV.inc.c"
 
@@ -2656,7 +2692,9 @@ ModelCollision AntLand_room8Floor_ColH = {
 
 #include "assets/levelGroup/AntLand/room8Floor1/room8Floor1.colS.inc.c"
 
-#include "assets/levelGroup/AntLand/room8Floor1/room8Floor1.colH.inc.c"
+ModelCollision AntLand_room8Floor1_ColH = {
+10, 10, &AntLand_room8Floor1_ColV[0], &AntLand_room8Floor1_ColT[0], &AntLand_room8Floor1_ColS
+};
 
 #include "assets/levelGroup/AntLand/room8Floor2/room8Floor2.colV.inc.c"
 
@@ -2664,7 +2702,9 @@ ModelCollision AntLand_room8Floor_ColH = {
 
 #include "assets/levelGroup/AntLand/room8Floor2/room8Floor2.colS.inc.c"
 
-#include "assets/levelGroup/AntLand/room8Floor2/room8Floor2.colH.inc.c"
+ModelCollision AntLand_room8Floor2_ColH = {
+8, 8, &AntLand_room8Floor2_ColV[0], &AntLand_room8Floor2_ColT[0], &AntLand_room8Floor2_ColS
+};
 
 #include "assets/levelGroup/AntLand/room0doorPillar1/room0doorPillar1.colV.inc.c"
 
@@ -2672,7 +2712,9 @@ ModelCollision AntLand_room8Floor_ColH = {
 
 #include "assets/levelGroup/AntLand/room0doorPillar1/room0doorPillar1.colS.inc.c"
 
-#include "assets/levelGroup/AntLand/room0doorPillar1/room0doorPillar1.colH.inc.c"
+ModelCollision AntLand_room0doorPillar1_ColH = {
+6, 4, &AntLand_room0doorPillar1_ColV[0], &AntLand_room0doorPillar1_ColT[0], &AntLand_room0doorPillar1_ColS
+};
 
 #include "assets/levelGroup/AntLand/room0doorPillar2/room0doorPillar2.colV.inc.c"
 
@@ -2680,7 +2722,9 @@ ModelCollision AntLand_room8Floor_ColH = {
 
 #include "assets/levelGroup/AntLand/room0doorPillar2/room0doorPillar2.colS.inc.c"
 
-#include "assets/levelGroup/AntLand/room0doorPillar2/room0doorPillar2.colH.inc.c"
+ModelCollision AntLand_room0doorPillar2_ColH = {
+6, 4, &AntLand_room0doorPillar2_ColV[0], &AntLand_room0doorPillar2_ColT[0], &AntLand_room0doorPillar2_ColS
+};
 
 #include "assets/levelGroup/AntLand/room0doorTop/room0doorTop.colV.inc.c"
 
@@ -2688,7 +2732,9 @@ ModelCollision AntLand_room8Floor_ColH = {
 
 #include "assets/levelGroup/AntLand/room0doorTop/room0doorTop.colS.inc.c"
 
-#include "assets/levelGroup/AntLand/room0doorTop/room0doorTop.colH.inc.c"
+ModelCollision AntLand_room0doorTop_ColH = {
+8, 10, &AntLand_room0doorTop_ColV[0], &AntLand_room0doorTop_ColT[0], &AntLand_room0doorTop_ColS
+};
 
 #include "assets/levelGroup/AntLand/room0doorTorchStand1/room0doorTorchStand1.colV.inc.c"
 
@@ -2696,7 +2742,9 @@ ModelCollision AntLand_room8Floor_ColH = {
 
 #include "assets/levelGroup/AntLand/room0doorTorchStand1/room0doorTorchStand1.colS.inc.c"
 
-#include "assets/levelGroup/AntLand/room0doorTorchStand1/room0doorTorchStand1.colH.inc.c"
+ModelCollision AntLand_room0doorTorchStand1_ColH = {
+7, 6, &AntLand_room0doorTorchStand1_ColV[0], &AntLand_room0doorTorchStand1_ColT[0], &AntLand_room0doorTorchStand1_ColS
+};
 
 #include "assets/levelGroup/AntLand/room0doorTorchStand2/room0doorTorchStand2.colV.inc.c"
 
@@ -2704,7 +2752,9 @@ ModelCollision AntLand_room8Floor_ColH = {
 
 #include "assets/levelGroup/AntLand/room0doorTorchStand2/room0doorTorchStand2.colS.inc.c"
 
-#include "assets/levelGroup/AntLand/room0doorTorchStand2/room0doorTorchStand2.colH.inc.c"
+ModelCollision AntLand_room0doorTorchStand2_ColH = {
+7, 6, &AntLand_room0doorTorchStand2_ColV[0], &AntLand_room0doorTorchStand2_ColT[0], &AntLand_room0doorTorchStand2_ColS
+};
 
 #include "assets/levelGroup/AntLand/room16Floor1/room16Floor1.colV.inc.c"
 
@@ -2712,7 +2762,9 @@ ModelCollision AntLand_room8Floor_ColH = {
 
 #include "assets/levelGroup/AntLand/room16Floor1/room16Floor1.colS.inc.c"
 
-#include "assets/levelGroup/AntLand/room16Floor1/room16Floor1.colH.inc.c"
+ModelCollision AntLand_room16Floor1_ColH = {
+68, 106, &AntLand_room16Floor1_ColV[0], &AntLand_room16Floor1_ColT[0], &AntLand_room16Floor1_ColS
+};
 
 #include "assets/levelGroup/AntLand/room16Floor2/room16Floor2.colV.inc.c"
 
@@ -2720,7 +2772,9 @@ ModelCollision AntLand_room8Floor_ColH = {
 
 #include "assets/levelGroup/AntLand/room16Floor2/room16Floor2.colS.inc.c"
 
-#include "assets/levelGroup/AntLand/room16Floor2/room16Floor2.colH.inc.c"
+ModelCollision AntLand_room16Floor2_ColH = {
+12, 12, &AntLand_room16Floor2_ColV[0], &AntLand_room16Floor2_ColT[0], &AntLand_room16Floor2_ColS
+};
 
 #include "assets/levelGroup/AntLand/room16Grate/room16Grate.colV.inc.c"
 
@@ -2728,7 +2782,9 @@ ModelCollision AntLand_room8Floor_ColH = {
 
 #include "assets/levelGroup/AntLand/room16Grate/room16Grate.colS.inc.c"
 
-#include "assets/levelGroup/AntLand/room16Grate/room16Grate.colH.inc.c"
+ModelCollision AntLand_room16Grate_ColH = {
+4, 4, &AntLand_room16Grate_ColV[0], &AntLand_room16Grate_ColT[0], &AntLand_room16Grate_ColS
+};
 
 #include "assets/levelGroup/AntLand/tiltPlatform/tiltPlatform.colV.inc.c"
 
@@ -2736,7 +2792,9 @@ ModelCollision AntLand_room8Floor_ColH = {
 
 #include "assets/levelGroup/AntLand/tiltPlatform/tiltPlatform.colS.inc.c"
 
-#include "assets/levelGroup/AntLand/tiltPlatform/tiltPlatform.colH.inc.c"
+ModelCollision AntLand_tiltPlatform_ColH = {
+8, 12, &AntLand_tiltPlatform_ColV[0], &AntLand_tiltPlatform_ColT[0], &AntLand_tiltPlatform_ColS
+};
 
 #include "assets/levelGroup/AntLand/platform/platform.colV.inc.c"
 
@@ -2744,7 +2802,9 @@ ModelCollision AntLand_room8Floor_ColH = {
 
 #include "assets/levelGroup/AntLand/platform/platform.colS.inc.c"
 
-#include "assets/levelGroup/AntLand/platform/platform.colH.inc.c"
+ModelCollision AntLand_platform_ColH = {
+8, 12, &AntLand_platform_ColV[0], &AntLand_platform_ColT[0], &AntLand_platform_ColS
+};
 
 #include "assets/levelGroup/AntLand/movingPlatform/movingPlatform.colV.inc.c"
 
@@ -2752,7 +2812,9 @@ ModelCollision AntLand_room8Floor_ColH = {
 
 #include "assets/levelGroup/AntLand/movingPlatform/movingPlatform.colS.inc.c"
 
-#include "assets/levelGroup/AntLand/movingPlatform/movingPlatform.colH.inc.c"
+ModelCollision AntLand_movingPlatform_ColH = {
+8, 12, &AntLand_movingPlatform_ColV[0], &AntLand_movingPlatform_ColT[0], &AntLand_movingPlatform_ColS
+};
 
 #include "assets/levelGroup/AntLand/quad/quad.colV.inc.c"
 
@@ -2760,7 +2822,9 @@ ModelCollision AntLand_room8Floor_ColH = {
 
 #include "assets/levelGroup/AntLand/quad/quad.colS.inc.c"
 
-#include "assets/levelGroup/AntLand/quad/quad.colH.inc.c"
+ModelCollision AntLand_quad_ColH = {
+4, 2, &AntLand_quad_ColV[0], &AntLand_quad_ColT[0], &AntLand_quad_ColS
+};
 
 #include "assets/levelGroup/AntLand/fixedCamPillar/fixedCamPillar.colV.inc.c"
 

@@ -75,7 +75,7 @@ class N64SegLevelMap(CommonSegCodeSubsegment):
                             addr=data[i], in_segment=True, type="LvmM", define=True
                         )
                         add.append(str(data[i]))
-                    else: add.append("&"+smsym.name+"[0]")
+                    else: add.append(smsym.name)
                 else:
                     add.append(str(data[i]))
                 i += 1

@@ -92,61 +92,154 @@ extern ModelCollision Global_pole_ColH;
 
 Mtx GiantCake_IMtx1 = IDENTITY;
 
-#include "assets/levelGroup/GiantCake/pointers.lvp.inc.c"
+StageModel GiantCake_stageModels[40] = {
+{&Global_fallbackCube_Gfx[0], &Global_fallbackCube_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_exitShadowSouth_Gfx[0], &Global_exitShadowSouth_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_exitShadowNorth_Gfx[0], &Global_exitShadowNorth_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_exitShadowEast_Gfx[0], &Global_exitShadowEast_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_exitShadowWest_Gfx[0], &Global_exitShadowWest_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_ALBLExit_Gfx[0], &Global_ALBLExit_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_sandPit_Gfx[0], &Global_sandPit_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BossBridge_Gfx[0], &Global_BossBridge_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_ALPole_Gfx[0], &Global_ALPole_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_ALBLDoor_Gfx[0], &Global_ALBLDoor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_ALSpinDoor_Gfx[0], &Global_ALSpinDoor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLLavaFloor_Gfx[0], &Global_BLLavaFloor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLLava_Gfx[0], &Global_BLLava_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLLava2_Gfx[0], &Global_BLLava2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLLava3_Gfx[0], &Global_BLLava3_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLLava4_Gfx[0], &Global_BLLava4_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLLava5_Gfx[0], &Global_BLLava5_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLLava6_Gfx[0], &Global_BLLava6_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLLava7_Gfx[0], &Global_BLLava7_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLLava8_Gfx[0], &Global_BLLava8_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLDestructableTop_Gfx[0], &Global_BLDestructableTop_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLMetalBridge_Gfx[0], &Global_BLMetalBridge_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_KLExit_Gfx[0], &Global_KLExit_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_KLDoor_Gfx[0], &Global_KLDoor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_DCExit_Gfx[0], &Global_DCExit_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_TallExitShadow1_Gfx[0], &Global_TallExitShadow1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_TallExitShadow2_Gfx[0], &Global_TallExitShadow2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_GCExit1_Gfx[0], &Global_GCExit1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_GCExit2_Gfx[0], &Global_GCExit2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_trainingRoomLight_Gfx[0], &Global_trainingRoomLight_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_JLCaveExit1_Gfx[0], &Global_JLCaveExit1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_JLCaveExit2_Gfx[0], &Global_JLCaveExit2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_JLCaveExit3_Gfx[0], &Global_JLCaveExit3_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_JLCaveExit4_Gfx[0], &Global_JLCaveExit4_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_JLOutsideEntrance_Gfx[0], &Global_JLOutsideEntrance_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_JLFxCamPillar_Gfx[0], &Global_JLFxCamPillar_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_JLCaveDoor_Gfx[0], &Global_JLCaveDoor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&GiantCake_model1_Gfx[0], &GiantCake_unkCol1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&GiantCake_model2_Gfx[0], &GiantCake_unkCol2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_pole_Gfx[0], &Global_pole_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+};
 
-#include "build/assets/levelGroup/GiantCake/rabObjects.inc.c"
+unsigned char GiantCake_rabObjects_Bin[] = {
+0x00, 0x00, 0x00, 0x00, 0x42, 0xC8, 0x00, 0x00, 0x42, 0xC8, 0x00, 0x00, 0x42, 0xC8, 0x00, 0x00, 0x02, 0x00, 0x6E, 0x1C, 0x00, 0x00, 0x00, 0x00, 0x42, 0xC8, 0x00, 0x00, 0x42, 0xC8, 0x00, 0x00, 0x42, 0xC8, 0x00, 0x00, 0x02, 0x00, 0x6E, 0x1C
+};
 
-#include "assets/levelGroup/GiantCake/roomObjects/roomMulti_obj1.roomObj.inc.c"
+RoomObject GiantCake_roomMulti_objects[13] = {
+{{-3300.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 5, -3300.0, -20000.0, 0.0, 0.0, 15, 300, -2, 0, 0, 0, 21, -1, -1, 30, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{-3100.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 5, -3100.0, -20000.0, 0.0, 0.0, 20, 300, -2, 0, 0, 0, 21, -1, -1, 30, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{-2900.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 5, -2900.0, -20000.0, 0.0, 0.0, 25, 300, -2, 0, 0, 0, 21, -1, -1, 30, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{-2700.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 5, -2700.0, -20000.0, 0.0, 0.0, 30, 300, -2, 0, 0, 0, 21, -1, -1, 30, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{-2500.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 5, -2500.0, -20000.0, 0.0, 0.0, 35, 300, -2, 0, 0, 0, 21, -1, -1, 30, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{-2300.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 5, -2300.0, -20000.0, 0.0, 0.0, 40, 300, -2, 0, 0, 0, 21, -1, -1, 30, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{-2100.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 5, -2100.0, -20000.0, 0.0, 0.0, 45, 300, -2, 0, 0, 0, 21, -1, -1, 30, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 37, -1, -1, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 38, -1, 30, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+{{-3450.0,-400.0,0.0}, {1.0,1.0,0.125}, 2, DEGREES_TO_RADIANS_2PI(90.00000250447816), 7, 11, -3450.0, -400.0, 0.0, 0.0, 2, 20, -1, 40, 0, 0, 23, -1, -1, 24, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+{{-3600.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 256, 0, 400.0, 400.0, 0.0, 0.0, 4, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
+{{-3600.0,0.0,0.0}, {4.0,4.0,4.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
 
-#include "assets/levelGroup/GiantCake/roomObjects/roomMulti_obj2.roomObj.inc.c"
+RoomActor GiantCake_room0_actors[2] = {
+{CAKE_BOSS, {0.0,0.0,0.0}, 0.0, -5000.0, 5000.0, -979615744, 5000.0, -5000.0, 5000.0, 0, 32.0, 6.0, 24.0, 5.0, -1069547520, 1140457472, 0, 1157234688, 1127481344, 1127481344, 1090519040, 0},
+{ACTOR_NULL, {0.0,0.0,0.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
 
-#include "assets/levelGroup/GiantCake/roomObjects/roomMulti_obj3.roomObj.inc.c"
+RoomActor GiantCake_room1_actors[2] = {
+{CAKE_BOSS, {0.0,0.0,0.0}, 0.0, -5000.0, 5000.0, -979615744, 5000.0, -5000.0, 5000.0, 0, 64.0, 4.5, 30.0, 8.0, -1061158912, 1140457472, 0, 1157234688, 1133903872, 1116471296, 1073741824, 0},
+{ACTOR_NULL, {0.0,0.0,0.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
 
-#include "assets/levelGroup/GiantCake/roomObjects/roomMulti_obj4.roomObj.inc.c"
+s32 GiantCake_spriteLib_Sprlib[] = {
+    37,
+    38,
+    39,
+    40,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    37,
+    38,
+    39,
+    40,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+};
 
-#include "assets/levelGroup/GiantCake/roomObjects/roomMulti_obj5.roomObj.inc.c"
+RoomInstance GiantCake_room_instances[3] = {
+{GiantCake_roomMulti_objects,GiantCake_room0_actors, 0, 0, 0, 1, 0, 0, -1, 0, 0.0, 15, 0.0, 0.0, 0.0, 0.0, 0.0, 65.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1500.0, 200.0},
+{GiantCake_roomMulti_objects,GiantCake_room1_actors, 0, 0, 0, 1, 0, 0, -1, 0, 0.0, 15, 0.0, 0.0, 0.0, 0.0, 0.0, 65.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1500.0, 200.0},
+{0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0}
+};
 
-#include "assets/levelGroup/GiantCake/roomObjects/roomMulti_obj6.roomObj.inc.c"
+s32 GiantCake_rooms_map[3][3] = {
+{-1, -1, -1},
+{-1,  0, -1},
+{-1, -1, -1}, 
+};
 
-#include "assets/levelGroup/GiantCake/roomObjects/roomMulti_obj7.roomObj.inc.c"
+StageMapData GiantCake_map_data = {
+3, 3, GiantCake_room_instances, GiantCake_rooms_map, 
+};
 
-#include "assets/levelGroup/GiantCake/roomObjects/roomMulti_obj8.roomObj.inc.c"
+RoomInstance GiantCake_ext_room_instances[1] = {
+{0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0}
+};
 
-#include "assets/levelGroup/GiantCake/roomObjects/roomMulti_obj9.roomObj.inc.c"
+LevelScope GiantCake_scope_Lvlscope = {
+    0,
+    0,
+    0,
+    255,
+    25000,
+    60,
+};
 
-#include "assets/levelGroup/GiantCake/roomObjects/roomMulti_obj10.roomObj.inc.c"
-
-#include "assets/levelGroup/GiantCake/roomObjects/roomMulti_obj11.roomObj.inc.c"
-
-#include "assets/levelGroup/GiantCake/roomObjects/roomMulti_obj12.roomObj.inc.c"
-
-#include "assets/levelGroup/GiantCake/roomObjects/roomMulti_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/GiantCake/roomActors/room0_act1.roomAct.inc.c"
-
-#include "assets/levelGroup/GiantCake/roomActors/room0_actSTOP.roomAct.inc.c"
-
-#include "assets/levelGroup/GiantCake/roomActors/room1_act1.roomAct.inc.c"
-
-#include "assets/levelGroup/GiantCake/roomActors/room1_actSTOP.roomAct.inc.c"
-
-#include "assets/levelGroup/GiantCake/spriteLib.sprLib.inc.c"
-
-#include "assets/levelGroup/GiantCake/rooms/room0.rmSet.inc.c"
-
-#include "assets/levelGroup/GiantCake/rooms/room1.rmSet.inc.c"
-
-#include "assets/levelGroup/GiantCake/rooms/roomSTOP.rmSet.inc.c"
-
-#include "assets/levelGroup/GiantCake/map.lvmM.inc.c"
-
-#include "assets/levelGroup/GiantCake/map.lvmH.inc.c"
-
-#include "assets/levelGroup/GiantCake/nullOWRoom.rmSet.inc.c"
-
-#include "assets/levelGroup/GiantCake/scope.lvlScope.inc.c"
-
-#include "assets/levelGroup/GiantCake/header.lvlHdr.inc.c"
+StageData GiantCake_header_Lvlhdr = {
+    &GiantCake_map_data,
+    0,
+    &GiantCake_stageModels[0],
+    40,
+    0,
+    50333632,
+    131072,
+    &GiantCake_spriteLib_Sprlib[0],
+    &GiantCake_scope_Lvlscope,
+};
 Mtx GiantCake_IMtx2 = IDENTITY;
 
 #include "assets/levelGroup/GiantCake/gicScope/gicScope.light.inc.c"
@@ -167,7 +260,9 @@ Mtx GiantCake_IMtx4 = IDENTITY;
 
 #include "assets/levelGroup/GiantCake/unkCol1/unkCol1.colS.inc.c"
 
-#include "assets/levelGroup/GiantCake/unkCol1/unkCol1.colH.inc.c"
+ModelCollision GiantCake_unkCol1_ColH = {
+16, 22, &GiantCake_unkCol1_ColV[0], &GiantCake_unkCol1_ColT[0], &GiantCake_unkCol1_ColS
+};
 
 #include "assets/levelGroup/GiantCake/unkCol2/unkCol2.colV.inc.c"
 
@@ -175,7 +270,9 @@ Mtx GiantCake_IMtx4 = IDENTITY;
 
 #include "assets/levelGroup/GiantCake/unkCol2/unkCol2.colS.inc.c"
 
-#include "assets/levelGroup/GiantCake/unkCol2/unkCol2.colH.inc.c"
+ModelCollision GiantCake_unkCol2_ColH = {
+8, 10, &GiantCake_unkCol2_ColV[0], &GiantCake_unkCol2_ColT[0], &GiantCake_unkCol2_ColS
+};
 Mtx GiantCake_IMtx5 = IDENTITY;
 
 #include "assets/levelGroup/GiantCake/gicScope2/gicScope2.light.inc.c"

@@ -167,515 +167,469 @@ extern ModelCollision Global_pole_ColH;
 
 Mtx IntroOutro_IMtx1 = IDENTITY;
 
-#include "assets/levelGroup/IntroOutro/pointers.lvp.inc.c"
-
-#include "build/assets/levelGroup/IntroOutro/rabObjects.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room0_obj1.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room0_obj2.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room0_obj3.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room0_obj4.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room0_obj5.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room0_obj6.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room0_obj7.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room0_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room1_obj1.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room1_obj2.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room1_obj3.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room1_obj4.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room1_obj5.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room1_obj6.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room1_obj7.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room1_obj8.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room1_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room2_obj1.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room2_obj2.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room2_obj3.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room2_obj4.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room2_obj5.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room2_obj6.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room2_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room5_obj1.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room5_obj2.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room5_obj3.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room5_obj4.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room5_obj5.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room5_obj6.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room5_obj7.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room5_obj8.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room5_obj9.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room5_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room6_obj1.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room6_obj2.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room6_obj3.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room6_obj4.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room6_obj5.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room6_obj6.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room6_obj7.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room6_obj8.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room6_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room7_obj1.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room7_obj2.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room7_obj3.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room7_obj4.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room7_obj5.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room7_obj6.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room7_obj7.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room7_obj8.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room7_obj9.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room7_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room10_obj1.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room10_obj2.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room10_obj3.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room10_obj4.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room10_obj5.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room10_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room11_obj1.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room11_obj2.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room11_obj3.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room11_obj4.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room11_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room12_obj1.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room12_obj2.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room12_obj3.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room12_obj4.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room12_obj5.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room12_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room15_obj1.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room15_obj2.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room15_obj3.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room15_obj4.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room15_obj5.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room15_obj6.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room15_obj7.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room15_obj8.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room15_obj9.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room15_obj10.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room15_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room16_obj1.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room16_obj2.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room16_obj3.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room16_obj4.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room16_obj5.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room16_obj6.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room16_obj7.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room16_obj8.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room16_obj9.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room16_obj10.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room16_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room17_obj1.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room17_obj2.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room17_obj3.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room17_obj4.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room17_obj5.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room17_obj6.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room17_obj7.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room17_obj8.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room17_obj9.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room17_obj10.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room17_obj11.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room17_obj12.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room17_obj13.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room17_obj14.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room17_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room20_obj1.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room20_obj2.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room20_obj3.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room20_obj4.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room20_obj5.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room20_obj6.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room20_obj7.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room20_obj8.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room20_obj9.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room20_obj10.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room20_obj11.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room20_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomActors/room20_act1.roomAct.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomActors/room20_act2.roomAct.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomActors/room20_act3.roomAct.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomActors/room20_act4.roomAct.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomActors/room20_act5.roomAct.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomActors/room20_act6.roomAct.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomActors/room20_act7.roomAct.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomActors/room20_act8.roomAct.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomActors/room20_act9.roomAct.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomActors/room20_act10.roomAct.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomActors/room20_act11.roomAct.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomActors/room20_act12.roomAct.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomActors/room20_act13.roomAct.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomActors/room20_act14.roomAct.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomActors/room20_act15.roomAct.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomActors/room20_act16.roomAct.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomActors/room20_act17.roomAct.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomActors/room20_act18.roomAct.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomActors/room20_act19.roomAct.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomActors/room20_act20.roomAct.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomActors/room20_act21.roomAct.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomActors/room20_act22.roomAct.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomActors/room20_act23.roomAct.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomActors/room20_act24.roomAct.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomActors/room20_actSTOP.roomAct.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room23_obj1.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room23_obj2.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room23_obj3.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room23_obj4.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room23_obj5.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room23_obj6.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room23_obj7.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room23_obj8.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room23_obj9.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room23_obj10.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room23_obj11.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room23_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room26_obj1.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room26_obj2.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room26_obj3.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room26_obj4.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room26_obj5.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room26_obj6.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room26_obj7.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room26_obj8.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room26_obj9.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room26_obj10.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room26_obj11.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room26_obj12.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room26_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room29_obj1.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room29_obj2.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room29_obj3.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room29_obj4.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room29_obj5.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room29_obj6.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room29_obj7.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room29_obj8.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room29_obj9.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room29_obj10.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room29_obj11.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room29_obj12.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room29_obj13.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room29_obj14.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room29_obj15.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room29_obj16.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room29_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/spriteActors/room32_spr1.sprite.inc.c"
-
-#include "assets/levelGroup/IntroOutro/spriteActors/room32_sprSTOP.sprite.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room32_obj1.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room32_obj2.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room32_obj3.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room32_obj4.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room32_obj5.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room32_obj6.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room32_obj7.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room32_obj8.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room32_obj9.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room32_obj10.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room32_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room33_obj1.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room33_obj2.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/room33_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/roomMulti_obj1.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/roomMulti_obj2.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/roomObjects/roomMulti_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/IntroOutro/spriteLib.sprLib.inc.c"
-
-#include "assets/levelGroup/IntroOutro/rooms/fakeRoom.rmSet.inc.c"
-
-#include "assets/levelGroup/IntroOutro/rooms/fakeRoomSTOP.rmSet.inc.c"
-
-#include "assets/levelGroup/IntroOutro/map.lvmM.inc.c"
-
-#include "assets/levelGroup/IntroOutro/map.lvmH.inc.c"
-
-#include "assets/levelGroup/IntroOutro/extRooms/room0.rmSet.inc.c"
-
-#include "assets/levelGroup/IntroOutro/extRooms/room1.rmSet.inc.c"
-
-#include "assets/levelGroup/IntroOutro/extRooms/room2.rmSet.inc.c"
-
-#include "assets/levelGroup/IntroOutro/extRooms/room3.rmSet.inc.c"
-
-#include "assets/levelGroup/IntroOutro/extRooms/room4.rmSet.inc.c"
-
-#include "assets/levelGroup/IntroOutro/extRooms/room5.rmSet.inc.c"
-
-#include "assets/levelGroup/IntroOutro/extRooms/room6.rmSet.inc.c"
-
-#include "assets/levelGroup/IntroOutro/extRooms/room7.rmSet.inc.c"
-
-#include "assets/levelGroup/IntroOutro/extRooms/room8.rmSet.inc.c"
-
-#include "assets/levelGroup/IntroOutro/extRooms/room9.rmSet.inc.c"
-
-#include "assets/levelGroup/IntroOutro/extRooms/room10.rmSet.inc.c"
-
-#include "assets/levelGroup/IntroOutro/extRooms/room11.rmSet.inc.c"
-
-#include "assets/levelGroup/IntroOutro/extRooms/room12.rmSet.inc.c"
-
-#include "assets/levelGroup/IntroOutro/extRooms/room13.rmSet.inc.c"
-
-#include "assets/levelGroup/IntroOutro/extRooms/room14.rmSet.inc.c"
-
-#include "assets/levelGroup/IntroOutro/extRooms/room15.rmSet.inc.c"
-
-#include "assets/levelGroup/IntroOutro/extRooms/room16.rmSet.inc.c"
-
-#include "assets/levelGroup/IntroOutro/extRooms/room17.rmSet.inc.c"
-
-#include "assets/levelGroup/IntroOutro/extRooms/room18.rmSet.inc.c"
-
-#include "assets/levelGroup/IntroOutro/extRooms/room19.rmSet.inc.c"
-
-#include "assets/levelGroup/IntroOutro/extRooms/room20.rmSet.inc.c"
-
-#include "assets/levelGroup/IntroOutro/extRooms/room21.rmSet.inc.c"
-
-#include "assets/levelGroup/IntroOutro/extRooms/room22.rmSet.inc.c"
-
-#include "assets/levelGroup/IntroOutro/extRooms/room23.rmSet.inc.c"
-
-#include "assets/levelGroup/IntroOutro/extRooms/room24.rmSet.inc.c"
-
-#include "assets/levelGroup/IntroOutro/extRooms/room25.rmSet.inc.c"
-
-#include "assets/levelGroup/IntroOutro/extRooms/room26.rmSet.inc.c"
-
-#include "assets/levelGroup/IntroOutro/extRooms/room27.rmSet.inc.c"
-
-#include "assets/levelGroup/IntroOutro/extRooms/room28.rmSet.inc.c"
-
-#include "assets/levelGroup/IntroOutro/extRooms/room29.rmSet.inc.c"
-
-#include "assets/levelGroup/IntroOutro/extRooms/room30.rmSet.inc.c"
-
-#include "assets/levelGroup/IntroOutro/extRooms/room31.rmSet.inc.c"
-
-#include "assets/levelGroup/IntroOutro/extRooms/room32.rmSet.inc.c"
-
-#include "assets/levelGroup/IntroOutro/extRooms/room33.rmSet.inc.c"
-
-#include "assets/levelGroup/IntroOutro/extRooms/room34.rmSet.inc.c"
-
-#include "assets/levelGroup/IntroOutro/extRooms/room35.rmSet.inc.c"
-
-#include "assets/levelGroup/IntroOutro/extRooms/room36.rmSet.inc.c"
-
-#include "assets/levelGroup/IntroOutro/extRooms/room37.rmSet.inc.c"
-
-#include "assets/levelGroup/IntroOutro/extRooms/room38.rmSet.inc.c"
-
-#include "assets/levelGroup/IntroOutro/extRooms/room39.rmSet.inc.c"
-
-#include "assets/levelGroup/IntroOutro/extRooms/roomSTOP.rmSet.inc.c"
-
-#include "assets/levelGroup/IntroOutro/scope.lvlScope.inc.c"
-
-#include "assets/levelGroup/IntroOutro/header.lvlHdr.inc.c"
+StageModel IntroOutro_stageModels[76] = {
+{&Global_fallbackCube_Gfx[0], &Global_fallbackCube_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_exitShadowSouth_Gfx[0], &Global_exitShadowSouth_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_exitShadowNorth_Gfx[0], &Global_exitShadowNorth_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_exitShadowEast_Gfx[0], &Global_exitShadowEast_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_exitShadowWest_Gfx[0], &Global_exitShadowWest_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_ALBLExit_Gfx[0], &Global_ALBLExit_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_sandPit_Gfx[0], &Global_sandPit_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BossBridge_Gfx[0], &Global_BossBridge_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_ALPole_Gfx[0], &Global_ALPole_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_ALBLDoor_Gfx[0], &Global_ALBLDoor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_ALSpinDoor_Gfx[0], &Global_ALSpinDoor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLLavaFloor_Gfx[0], &Global_BLLavaFloor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLLava_Gfx[0], &Global_BLLava_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLLava2_Gfx[0], &Global_BLLava2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLLava3_Gfx[0], &Global_BLLava3_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLLava4_Gfx[0], &Global_BLLava4_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLLava5_Gfx[0], &Global_BLLava5_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLLava6_Gfx[0], &Global_BLLava6_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLLava7_Gfx[0], &Global_BLLava7_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLLava8_Gfx[0], &Global_BLLava8_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLDestructableTop_Gfx[0], &Global_BLDestructableTop_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLMetalBridge_Gfx[0], &Global_BLMetalBridge_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_KLExit_Gfx[0], &Global_KLExit_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_KLDoor_Gfx[0], &Global_KLDoor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_DCExit_Gfx[0], &Global_DCExit_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_TallExitShadow1_Gfx[0], &Global_TallExitShadow1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_TallExitShadow2_Gfx[0], &Global_TallExitShadow2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_GCExit1_Gfx[0], &Global_GCExit1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_GCExit2_Gfx[0], &Global_GCExit2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_trainingRoomLight_Gfx[0], &Global_trainingRoomLight_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_JLCaveExit1_Gfx[0], &Global_JLCaveExit1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_JLCaveExit2_Gfx[0], &Global_JLCaveExit2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_JLCaveExit3_Gfx[0], &Global_JLCaveExit3_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_JLCaveExit4_Gfx[0], &Global_JLCaveExit4_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_JLOutsideEntrance_Gfx[0], &Global_JLOutsideEntrance_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_JLFxCamPillar_Gfx[0], &Global_JLFxCamPillar_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_JLCaveDoor_Gfx[0], &Global_JLCaveDoor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&IntroOutro_model1_Gfx[0], &IntroOutro_unkCol1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&IntroOutro_model2_Gfx[0], &IntroOutro_unkCol2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&IntroOutro_model3_Gfx[0], &IntroOutro_unkCol3_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&IntroOutro_model4_Gfx[0], &IntroOutro_unkCol4_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&IntroOutro_model5_Gfx[0], &IntroOutro_unkCol5_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&IntroOutro_model6_Gfx[0], &IntroOutro_unkCol6_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&IntroOutro_model7_Gfx[0], &IntroOutro_unkCol7_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&IntroOutro_model8_Gfx[0], &IntroOutro_unkCol8_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&IntroOutro_model9_Gfx[0], &IntroOutro_unkCol9_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&IntroOutro_model10_Gfx[0], &IntroOutro_unkCol10_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&IntroOutro_model11_Gfx[0], &IntroOutro_unkCol11_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&IntroOutro_model12_Gfx[0], &IntroOutro_unkCol12_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&IntroOutro_model13_Gfx[0], &IntroOutro_unkCol13_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&IntroOutro_model14_Gfx[0], &IntroOutro_unkCol14_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&IntroOutro_model15_Gfx[0], &IntroOutro_unkCol15_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&IntroOutro_model16_Gfx[0], &IntroOutro_unkCol16_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&IntroOutro_model17_Gfx[0], &IntroOutro_unkCol17_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&IntroOutro_model18_Gfx[0], &IntroOutro_unkCol18_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&IntroOutro_model19_Gfx[0], &IntroOutro_unkCol19_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&IntroOutro_model20_Gfx[0], &IntroOutro_unkCol20_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&IntroOutro_model21_Gfx[0], &IntroOutro_unkCol21_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&IntroOutro_model22_Gfx[0], &IntroOutro_unkCol22_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&IntroOutro_model23_Gfx[0], &IntroOutro_unkCol23_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&IntroOutro_model24_Gfx[0], &IntroOutro_unkCol24_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&IntroOutro_model25_Gfx[0], &IntroOutro_unkCol25_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&IntroOutro_model26_Gfx[0], &IntroOutro_unkCol26_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&IntroOutro_model27_Gfx[0], &IntroOutro_unkCol27_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&IntroOutro_model28_Gfx[0], &IntroOutro_unkCol28_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&IntroOutro_model29_Gfx[0], &IntroOutro_unkCol29_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&IntroOutro_model30_Gfx[0], &IntroOutro_unkCol30_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&IntroOutro_model31_Gfx[0], &IntroOutro_unkCol31_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&IntroOutro_model32_Gfx[0], &IntroOutro_unkCol32_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&IntroOutro_model33_Gfx[0], &IntroOutro_unkCol33_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&IntroOutro_model34_Gfx[0], &IntroOutro_unkCol34_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&IntroOutro_model35_Gfx[0], &IntroOutro_unkCol35_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&IntroOutro_model36_Gfx[0], &IntroOutro_unkCol36_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&IntroOutro_model37_Gfx[0], &IntroOutro_unkCol37_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&IntroOutro_model38_Gfx[0], &IntroOutro_unkCol38_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_pole_Gfx[0], &Global_pole_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+};
+
+unsigned char IntroOutro_rabObjects_Bin[] = {
+0x00, 0x00, 0x00, 0x00, 0x42, 0xC8, 0x00, 0x00, 0x42, 0xC8, 0x00, 0x00, 0x42, 0xC8, 0x00, 0x00, 0x02, 0x00, 0x6E, 0x1C, 0x00, 0x00, 0x00, 0x00, 0x42, 0xC8, 0x00, 0x00, 0x42, 0xC8, 0x00, 0x00, 0x42, 0xC8, 0x00, 0x00, 0x02, 0x00, 0x6E, 0x1C
+};
+
+RoomObject IntroOutro_room0_objects[8] = {
+{{0.0,0.0,600.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 39, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{-700.0,0.0,100.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 39, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{-900.0,0.0,-700.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 39, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,-700.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 39, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{800.0,0.0,300.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 37, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{1100.0,0.0,-700.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 37, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{-1400.0,0.0,600.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 37, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomObject IntroOutro_room1_objects[9] = {
+{{0.0,0.0,-1400.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 43, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{800.0,0.0,-1700.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 39, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{800.0,0.0,-2500.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 44, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{-100.0,0.0,-2800.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 44, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{-1300.0,0.0,-1700.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 37, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{-1300.0,0.0,-2900.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 37, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{-400.0,0.0,-2600.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 38, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{-1100.0,0.0,-2700.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 38, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomObject IntroOutro_room2_objects[7] = {
+{{-600.0,0.0,-3500.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 45, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{-1100.0,0.0,-4200.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 43, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{-800.0,0.0,-4800.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 43, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,-4700.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 43, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{600.0,0.0,-4200.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 37, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{1000.0,0.0,-3700.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 37, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomObject IntroOutro_room5_objects[10] = {
+{{0.0,0.0,600.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 42, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{-1200.0,0.0,500.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 43, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{-1200.0,0.0,500.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 75, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{-1200.0,0.0,-400.0}, {0.625,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(90.00000250447816), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 45, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,-700.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 39, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,-700.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 75, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{900.0,0.0,-200.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 37, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,-100.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 38, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{800.0,0.0,600.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 38, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomObject IntroOutro_room6_objects[9] = {
+{{700.0,0.0,-1400.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 45, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{1300.0,0.0,-2400.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 43, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{600.0,500.0,-2600.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 43, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,700.0,-2800.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 43, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{1300.0,0.0,-2400.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 75, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{600.0,500.0,-2600.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 75, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{-1200.0,0.0,-2200.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 37, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{-800.0,0.0,-2800.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 37, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomObject IntroOutro_room7_objects[10] = {
+{{0.0,700.0,-3400.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 44, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{1000.0,700.0,-3900.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 43, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{1000.0,700.0,-3900.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 75, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{100.0,700.0,-4700.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 39, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{100.0,700.0,-4700.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 75, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{600.0,700.0,-3600.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 37, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{-900.0,700.0,-4800.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 37, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{600.0,700.0,-4400.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 38, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{-1100.0,700.0,-4100.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 38, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomObject IntroOutro_room10_objects[6] = {
+{{0.0,0.0,600.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 43, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{-500.0,400.0,300.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 43, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{-700.0,800.0,-200.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 43, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{-300.0,1200.0,-800.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 45, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{1300.0,0.0,-100.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 37, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomObject IntroOutro_room11_objects[5] = {
+{{-600.0,1200.0,-2100.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 49, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{200.0,1200.0,-1450.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(45.00000125223908), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 44, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{200.0,2200.0,-2750.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(-45.00000125223908), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 44, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{500.0,1600.0,-2100.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(90.00000250447816), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 44, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomObject IntroOutro_room12_objects[6] = {
+{{-100.0,2000.0,-3400.0}, {2.0,2.0,2.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 46, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{600.0,2600.0,-3700.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 42, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{900.0,3000.0,-4500.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 42, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,3200.0,-4700.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 42, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{-1400.0,2200.0,-4800.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 37, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomObject IntroOutro_room15_objects[11] = {
+{{0.0,0.0,700.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 43, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{500.0,0.0,-400.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 43, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{1200.0,0.0,600.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 39, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{-200.0,0.0,-800.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 44, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{550.0,0.0,350.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 48, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{1150.0,0.0,-150.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 48, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{550.0,0.0,350.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 75, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{1150.0,0.0,-150.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 75, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{500.0,0.0,100.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 37, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{-900.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 40, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomObject IntroOutro_room16_objects[11] = {
+{{-1200.0,0.0,-1900.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 39, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,-2700.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 39, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{100.0,0.0,-1400.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 44, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{-1000.0,0.0,-1400.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 48, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{-600.0,0.0,-2700.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 48, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{-1000.0,0.0,-1400.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 75, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{-600.0,0.0,-2700.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 75, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{-400.0,0.0,-1900.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 37, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{700.0,0.0,-2300.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 37, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{900.0,0.0,-1500.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 37, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomObject IntroOutro_room17_objects[15] = {
+{{0.0,0.0,-3400.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 43, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,-4800.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 48, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,-4800.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 75, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,-6300.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 39, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{-1100.0,0.0,-3500.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 37, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{-1500.0,0.0,-4000.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 37, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{-1700.0,0.0,-4700.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 37, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{1100.0,0.0,-3500.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 37, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{1500.0,0.0,-4000.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 37, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{1700.0,0.0,-4700.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 37, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{-1200.0,0.0,-6400.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 37, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{-1500.0,0.0,-5500.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 37, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{1200.0,0.0,-6400.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 37, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{1500.0,0.0,-5500.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 37, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomObject IntroOutro_room20_objects[12] = {
+{{0.0,0.0,0.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(90.00000250447816), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 50, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 49, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{600.0,5.0,700.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 44, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,5.0,1100.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 44, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{-600.0,5.0,700.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 44, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{2400.0,0.0,-1700.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 37, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{1600.0,0.0,-1100.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 37, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{900.0,0.0,-1400.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 37, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{-1100.0,0.0,-1000.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 37, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{-1800.0,0.0,-1400.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 37, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{-2800.0,0.0,-1200.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 37, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomActor IntroOutro_room20_actors[25] = {
+{VULTURE, {1750.0,50.0,300.0}, 90.0, -100.0, 100.0, -998637568, 1000.0, -100.0, 100.0, 1, 45.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 1108082688, 0, 0, 0},
+{VULTURE, {1650.0,50.0,100.0}, 90.0, -100.0, 100.0, -998637568, 1000.0, -100.0, 100.0, 1, 45.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 1108082688, 0, 0, 0},
+{VULTURE, {1700.0,50.0,-100.0}, 90.0, -100.0, 100.0, -998637568, 1000.0, -100.0, 100.0, 1, 45.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 1108082688, 0, 0, 0},
+{VULTURE, {1800.0,50.0,-300.0}, 90.0, -100.0, 100.0, -998637568, 1000.0, -100.0, 100.0, 1, 45.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 1108082688, 0, 0, 0},
+{VULTURE, {1450.0,50.0,400.0}, 90.0, -100.0, 100.0, -998637568, 1000.0, -100.0, 100.0, 1, 45.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 1108082688, 0, 0, 0},
+{VULTURE, {1350.0,50.0,150.0}, 90.0, -100.0, 100.0, -998637568, 1000.0, -100.0, 100.0, 1, 45.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 1108082688, 0, 0, 0},
+{VULTURE, {1350.0,50.0,-150.0}, 90.0, -100.0, 100.0, -998637568, 1000.0, -100.0, 100.0, 1, 45.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 1108082688, 0, 0, 0},
+{VULTURE, {1400.0,50.0,-300.0}, 90.0, -100.0, 100.0, -998637568, 1000.0, -100.0, 100.0, 1, 45.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 1108082688, 0, 0, 0},
+{VULTURE, {1150.0,50.0,300.0}, 90.0, -100.0, 100.0, -998637568, 1000.0, -100.0, 100.0, 1, 45.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 1108082688, 0, 0, 0},
+{VULTURE, {1100.0,50.0,100.0}, 90.0, -100.0, 100.0, -998637568, 1000.0, -100.0, 100.0, 1, 45.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 1108082688, 0, 0, 0},
+{VULTURE, {1150.0,50.0,-100.0}, 90.0, -100.0, 100.0, -998637568, 1000.0, -100.0, 100.0, 1, 45.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 1108082688, 0, 0, 0},
+{VULTURE, {1050.0,50.0,-300.0}, 90.0, -100.0, 100.0, -998637568, 1000.0, -100.0, 100.0, 1, 45.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 1108082688, 0, 0, 0},
+{VULTURE, {-2750.0,50.0,300.0}, 90.0, -100.0, 100.0, -998637568, 1000.0, -100.0, 100.0, 1, 45.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 1108082688, 0, 0, 0},
+{VULTURE, {-2650.0,50.0,100.0}, 90.0, -100.0, 100.0, -998637568, 1000.0, -100.0, 100.0, 1, 45.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 1108082688, 0, 0, 0},
+{VULTURE, {-2700.0,50.0,-100.0}, 90.0, -100.0, 100.0, -998637568, 1000.0, -100.0, 100.0, 1, 45.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 1108082688, 0, 0, 0},
+{VULTURE, {-2800.0,50.0,-300.0}, 90.0, -100.0, 100.0, -998637568, 1000.0, -100.0, 100.0, 1, 45.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 1108082688, 0, 0, 0},
+{VULTURE, {-2450.0,50.0,400.0}, 90.0, -100.0, 100.0, -998637568, 1000.0, -100.0, 100.0, 1, 45.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 1108082688, 0, 0, 0},
+{VULTURE, {-2350.0,50.0,150.0}, 90.0, -100.0, 100.0, -998637568, 1000.0, -100.0, 100.0, 1, 45.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 1108082688, 0, 0, 0},
+{VULTURE, {-2350.0,50.0,-150.0}, 90.0, -100.0, 100.0, -998637568, 1000.0, -100.0, 100.0, 1, 45.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 1108082688, 0, 0, 0},
+{VULTURE, {-2400.0,50.0,-300.0}, 90.0, -100.0, 100.0, -998637568, 1000.0, -100.0, 100.0, 1, 45.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 1108082688, 0, 0, 0},
+{VULTURE, {-2150.0,50.0,300.0}, 90.0, -100.0, 100.0, -998637568, 1000.0, -100.0, 100.0, 1, 45.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 1108082688, 0, 0, 0},
+{VULTURE, {-2100.0,50.0,100.0}, 90.0, -100.0, 100.0, -998637568, 1000.0, -100.0, 100.0, 1, 45.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 1108082688, 0, 0, 0},
+{VULTURE, {-2150.0,50.0,-100.0}, 90.0, -100.0, 100.0, -998637568, 1000.0, -100.0, 100.0, 1, 45.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 1108082688, 0, 0, 0},
+{VULTURE, {-2050.0,50.0,-300.0}, 90.0, -100.0, 100.0, -998637568, 1000.0, -100.0, 100.0, 1, 45.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 1108082688, 0, 0, 0},
+{ACTOR_NULL, {0.0,0.0,0.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomObject IntroOutro_room23_objects[12] = {
+{{1700.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 39, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{1200.0,200.0,0.0}, {1.0,1.0,2.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 46, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{1000.0,400.0,0.0}, {1.0,1.0,2.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 46, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{300.0,1500.0,0.0}, {1.0,1.0,2.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 46, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{-1100.0,2100.0,0.0}, {1.0,1.0,2.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 46, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{900.0,1000.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 43, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{-300.0,1600.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 43, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{-1800.0,2100.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 43, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{300.0,1600.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 75, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{-1100.0,2200.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 75, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 51, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomObject IntroOutro_room26_objects[13] = {
+{{2700.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 44, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{1700.0,700.0,0.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(90.00000250447816), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 43, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{2200.0,200.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 43, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{-500.0,900.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 43, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{-1900.0,700.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 43, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{1650.0,600.0,0.0}, {0.0,0.0,0.5}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 47, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{-2700.0,1100.0,0.0}, {0.0,0.0,0.5}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 47, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{1000.0,800.0,0.0}, {1.0,1.0,2.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 46, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{800.0,1200.0,0.0}, {1.0,1.0,2.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 46, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{-200.0,1300.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 75, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{-1600.0,1100.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 75, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 52, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomObject IntroOutro_room29_objects[17] = {
+{{1300.0,0.0,3500.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 37, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{900.0,0.0,1900.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 37, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{1800.0,0.0,1100.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 37, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{1300.0,0.0,300.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 37, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{800.0,0.0,-1200.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 37, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{1600.0,0.0,-1900.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 37, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{-1200.0,0.0,3700.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 37, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{-900.0,0.0,1900.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 37, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{-2000.0,0.0,1300.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 37, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{-1500.0,0.0,500.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 37, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{-1200.0,0.0,-400.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 37, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{-1800.0,0.0,-1400.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 37, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{-500.0,0.0,-3700.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 37, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{1300.0,0.0,-3000.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 38, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{-1300.0,0.0,-3200.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 38, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 50, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+SpriteActor IntroOutro_room32_sprites[2] = {
+{18, 0, {-400.0,0.0,-2700.0}, {100.0,200.0,200.0}, 1, 0, 60.0, 0, 0, 0, 0, 0, 31, 1, 0, 0},
+{-1, 0, {-1.0,-1.0,-1.0}, {-1.0,32.0,32.0}, 1, 0, 0.0, 0, 0, 0, 0, 0, -1, -1, 0, 0}
+};
+
+RoomObject IntroOutro_room32_objects[11] = {
+{{1100.0,0.0,-100.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 37, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{1200.0,0.0,-3200.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 37, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{-1200.0,0.0,2000.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 37, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{-1800.0,0.0,1200.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 37, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{-1500.0,0.0,-500.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 37, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{-100.0,0.0,-3700.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 37, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{-1300.0,0.0,-1800.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 38, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{1600.0,0.0,-1200.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 38, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{-500.0,0.0,500.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 40, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 50, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomObject IntroOutro_room33_objects[3] = {
+{{0.0,-1000.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 75, -1, -1, -1, NULL, NULL, 0, 0, 0, 0, 4, 0, -1, 0, 0},
+{{0.0,-1000.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 75, -1, -1, -1, NULL, NULL, 0, 0, 0, 0, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+RoomObject IntroOutro_roomMulti_objects[3] = {
+{{0.0,-1000.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 75, -1, -1, -1, NULL, NULL, 0, 0, 0, 0, 4, 0, -1, 0, 0},
+{{0.0,-1000.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 75, -1, -1, -1, NULL, NULL, 0, 0, 0, 0, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+s32 IntroOutro_spriteLib_Sprlib[] = {
+    46,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+};
+
+RoomInstance IntroOutro_room_instances[2] = {
+{IntroOutro_room1_objects, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0.0, 1, -900.0, 500.0, -900.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+{0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0}
+};
+
+s32 IntroOutro_rooms_map[3] = {
+-1, 0, -1, 
+};
+
+StageMapData IntroOutro_map_data = {
+3, 1, IntroOutro_room_instances, IntroOutro_rooms_map, 
+};
+
+RoomInstance IntroOutro_ext_room_instances[41] = {
+{IntroOutro_room0_objects, 0, 0, 0, 0, 0, 0, 0, 0, 0, 60.0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+{IntroOutro_room1_objects, 0, 0, 0, 0, 0, 0, 0, 0, 0, 60.0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, 0, -2000, 0, 0, 0, 0, 0, -1.0, 0.0},
+{IntroOutro_room2_objects, 0, 0, 0, 0, 0, 0, 0, 0, 0, 60.0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, 0, -4000, 0, 0, 0, 0, 0, -1.0, 0.0},
+{IntroOutro_roomMulti_objects, 0, 0, 0, 0, 0, 0, 0, 0, 0, 60.0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+{IntroOutro_roomMulti_objects, 0, 0, 0, 0, 0, 0, 0, 0, 0, 60.0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+{IntroOutro_room5_objects, 0, 0, 0, 0, 0, 0, 0, 0, 0, 60.0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+{IntroOutro_room6_objects, 0, 0, 0, 0, 0, 0, 0, 0, 0, 60.0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, 0, -2000, 0, 0, 0, 0, 0, -1.0, 0.0},
+{IntroOutro_room7_objects, 0, 0, 0, 0, 0, 0, 0, 0, 0, 60.0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, 700, -4000, 0, 0, 0, 0, 0, -1.0, 0.0},
+{IntroOutro_roomMulti_objects, 0, 0, 0, 0, 0, 0, 0, 0, 0, 60.0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+{IntroOutro_roomMulti_objects, 0, 0, 0, 0, 0, 0, 0, 0, 0, 60.0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+{IntroOutro_room10_objects, 0, 0, 0, 0, 0, 0, 0, 0, 0, 60.0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+{IntroOutro_room11_objects, 0, 0, 0, 0, 0, 0, 0, 0, 0, 60.0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, 1200, -2000, 0, 0, 0, 0, 0, -1.0, 0.0},
+{IntroOutro_room12_objects, 0, 0, 0, 0, 0, 0, 0, 0, 0, 60.0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, 2200, -4000, 0, 0, 0, 0, 0, -1.0, 0.0},
+{IntroOutro_roomMulti_objects, 0, 0, 0, 0, 0, 0, 0, 0, 0, 60.0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+{IntroOutro_roomMulti_objects, 0, 0, 0, 0, 0, 0, 0, 0, 0, 60.0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+{IntroOutro_room15_objects, 0, 0, 0, 0, 0, 0, 0, 0, 0, 60.0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+{IntroOutro_room16_objects, 0, 0, 0, 0, 0, 0, 0, 0, 0, 60.0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, 0, -2000, 0, 0, 0, 0, 0, -1.0, 0.0},
+{IntroOutro_room17_objects, 0, 0, 0, 0, 0, 0, 0, 0, 0, 60.0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, 0, -4800, 0, 0, 0, 0, 0, -1.0, 0.0},
+{IntroOutro_roomMulti_objects, 0, 0, 0, 0, 0, 0, 0, 0, 0, 60.0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+{IntroOutro_roomMulti_objects, 0, 0, 0, 0, 0, 0, 0, 0, 0, 60.0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+{IntroOutro_room20_objects,IntroOutro_room20_actors, 0, 0, 0, 0, 0, 0, 0, 0, 60.0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+{IntroOutro_roomMulti_objects, 0, 0, 0, 0, 0, 0, 0, 0, 0, 60.0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+{IntroOutro_roomMulti_objects, 0, 0, 0, 0, 0, 0, 0, 0, 0, 60.0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+{IntroOutro_room23_objects, 0, 0, 0, 0, 0, 0, 0, 0, 0, 60.0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+{IntroOutro_roomMulti_objects, 0, 0, 0, 0, 0, 0, 0, 0, 0, 60.0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+{IntroOutro_roomMulti_objects, 0, 0, 0, 0, 0, 0, 0, 0, 0, 60.0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+{IntroOutro_room26_objects, 0, 0, 0, 0, 0, 0, 0, 0, 0, 60.0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+{IntroOutro_roomMulti_objects, 0, 0, 0, 0, 0, 0, 0, 0, 0, 60.0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+{IntroOutro_roomMulti_objects, 0, 0, 0, 0, 0, 0, 0, 0, 0, 60.0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+{IntroOutro_room29_objects, 0, 0, 0, 0, 0, 0, 0, 0, 0, 60.0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+{IntroOutro_roomMulti_objects, 0, 0, 0, 0, 0, 0, 0, 0, 0, 60.0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+{IntroOutro_roomMulti_objects, 0, 0, 0, 0, 0, 0, 0, 0, 0, 60.0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+{IntroOutro_room32_objects, 0, 0,IntroOutro_room32_sprites, 0, 0, 0, 0, 0, 0, 60.0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+{IntroOutro_room33_objects, 0, 0, 0, 0, 0, 0, 0, 0, 0, 60.0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+{IntroOutro_roomMulti_objects, 0, 0, 0, 0, 0, 0, 0, 0, 0, 60.0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+{IntroOutro_roomMulti_objects, 0, 0, 0, 0, 0, 0, 0, 0, 0, 60.0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+{IntroOutro_roomMulti_objects, 0, 0, 0, 0, 0, 0, 0, 0, 0, 60.0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+{IntroOutro_roomMulti_objects, 0, 0, 0, 0, 0, 0, 0, 0, 0, 60.0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+{IntroOutro_roomMulti_objects, 0, 0, 0, 0, 0, 0, 0, 0, 0, 60.0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+{IntroOutro_roomMulti_objects, 0, 0, 0, 0, 0, 0, 0, 0, 0, 60.0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+{0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0}
+};
+
+LevelScope IntroOutro_scope_Lvlscope = {
+    0,
+    0,
+    0,
+    -1,
+    8000,
+    60,
+};
+
+StageData IntroOutro_header_Lvlhdr = {
+    0,
+    IntroOutro_ext_room_instances,
+    &IntroOutro_stageModels[0],
+    76,
+    0,
+    50335360,
+    131072,
+    &IntroOutro_spriteLib_Sprlib[0],
+    &IntroOutro_scope_Lvlscope,
+};
 s32 introOutroPad[] = {0, 0};
 Mtx IntroOutro_IMtx2 = IDENTITY;
 
@@ -1105,7 +1059,9 @@ Mtx IntroOutro_IMtx40 = IDENTITY;
 
 #include "assets/levelGroup/IntroOutro/unkCol1/unkCol1.colS.inc.c"
 
-#include "assets/levelGroup/IntroOutro/unkCol1/unkCol1.colH.inc.c"
+ModelCollision IntroOutro_unkCol1_ColH = {
+12, 16, &IntroOutro_unkCol1_ColV[0], &IntroOutro_unkCol1_ColT[0], &IntroOutro_unkCol1_ColS
+};
 
 #include "assets/levelGroup/IntroOutro/unkCol2/unkCol2.colV.inc.c"
 
@@ -1113,7 +1069,9 @@ Mtx IntroOutro_IMtx40 = IDENTITY;
 
 #include "assets/levelGroup/IntroOutro/unkCol2/unkCol2.colS.inc.c"
 
-#include "assets/levelGroup/IntroOutro/unkCol2/unkCol2.colH.inc.c"
+ModelCollision IntroOutro_unkCol2_ColH = {
+12, 16, &IntroOutro_unkCol2_ColV[0], &IntroOutro_unkCol2_ColT[0], &IntroOutro_unkCol2_ColS
+};
 
 #include "assets/levelGroup/IntroOutro/unkCol3/unkCol3.colV.inc.c"
 
@@ -1121,7 +1079,9 @@ Mtx IntroOutro_IMtx40 = IDENTITY;
 
 #include "assets/levelGroup/IntroOutro/unkCol3/unkCol3.colS.inc.c"
 
-#include "assets/levelGroup/IntroOutro/unkCol3/unkCol3.colH.inc.c"
+ModelCollision IntroOutro_unkCol3_ColH = {
+24, 38, &IntroOutro_unkCol3_ColV[0], &IntroOutro_unkCol3_ColT[0], &IntroOutro_unkCol3_ColS
+};
 
 #include "assets/levelGroup/IntroOutro/unkCol4/unkCol4.colV.inc.c"
 
@@ -1129,7 +1089,9 @@ Mtx IntroOutro_IMtx40 = IDENTITY;
 
 #include "assets/levelGroup/IntroOutro/unkCol4/unkCol4.colS.inc.c"
 
-#include "assets/levelGroup/IntroOutro/unkCol4/unkCol4.colH.inc.c"
+ModelCollision IntroOutro_unkCol4_ColH = {
+18, 24, &IntroOutro_unkCol4_ColV[0], &IntroOutro_unkCol4_ColT[0], &IntroOutro_unkCol4_ColS
+};
 
 #include "assets/levelGroup/IntroOutro/unkCol5/unkCol5.colV.inc.c"
 
@@ -1137,7 +1099,9 @@ Mtx IntroOutro_IMtx40 = IDENTITY;
 
 #include "assets/levelGroup/IntroOutro/unkCol5/unkCol5.colS.inc.c"
 
-#include "assets/levelGroup/IntroOutro/unkCol5/unkCol5.colH.inc.c"
+ModelCollision IntroOutro_unkCol5_ColH = {
+12, 20, &IntroOutro_unkCol5_ColV[0], &IntroOutro_unkCol5_ColT[0], &IntroOutro_unkCol5_ColS
+};
 
 #include "assets/levelGroup/IntroOutro/unkCol6/unkCol6.colV.inc.c"
 
@@ -1145,7 +1109,9 @@ Mtx IntroOutro_IMtx40 = IDENTITY;
 
 #include "assets/levelGroup/IntroOutro/unkCol6/unkCol6.colS.inc.c"
 
-#include "assets/levelGroup/IntroOutro/unkCol6/unkCol6.colH.inc.c"
+ModelCollision IntroOutro_unkCol6_ColH = {
+8, 10, &IntroOutro_unkCol6_ColV[0], &IntroOutro_unkCol6_ColT[0], &IntroOutro_unkCol6_ColS
+};
 
 #include "assets/levelGroup/IntroOutro/unkCol7/unkCol7.colV.inc.c"
 
@@ -1153,7 +1119,9 @@ Mtx IntroOutro_IMtx40 = IDENTITY;
 
 #include "assets/levelGroup/IntroOutro/unkCol7/unkCol7.colS.inc.c"
 
-#include "assets/levelGroup/IntroOutro/unkCol7/unkCol7.colH.inc.c"
+ModelCollision IntroOutro_unkCol7_ColH = {
+8, 12, &IntroOutro_unkCol7_ColV[0], &IntroOutro_unkCol7_ColT[0], &IntroOutro_unkCol7_ColS
+};
 
 #include "assets/levelGroup/IntroOutro/unkCol8/unkCol8.colV.inc.c"
 
@@ -1161,7 +1129,9 @@ Mtx IntroOutro_IMtx40 = IDENTITY;
 
 #include "assets/levelGroup/IntroOutro/unkCol8/unkCol8.colS.inc.c"
 
-#include "assets/levelGroup/IntroOutro/unkCol8/unkCol8.colH.inc.c"
+ModelCollision IntroOutro_unkCol8_ColH = {
+8, 12, &IntroOutro_unkCol8_ColV[0], &IntroOutro_unkCol8_ColT[0], &IntroOutro_unkCol8_ColS
+};
 
 #include "assets/levelGroup/IntroOutro/unkCol9/unkCol9.colV.inc.c"
 
@@ -1169,7 +1139,9 @@ Mtx IntroOutro_IMtx40 = IDENTITY;
 
 #include "assets/levelGroup/IntroOutro/unkCol9/unkCol9.colS.inc.c"
 
-#include "assets/levelGroup/IntroOutro/unkCol9/unkCol9.colH.inc.c"
+ModelCollision IntroOutro_unkCol9_ColH = {
+8, 12, &IntroOutro_unkCol9_ColV[0], &IntroOutro_unkCol9_ColT[0], &IntroOutro_unkCol9_ColS
+};
 
 #include "assets/levelGroup/IntroOutro/unkCol10/unkCol10.colV.inc.c"
 
@@ -1177,7 +1149,9 @@ Mtx IntroOutro_IMtx40 = IDENTITY;
 
 #include "assets/levelGroup/IntroOutro/unkCol10/unkCol10.colS.inc.c"
 
-#include "assets/levelGroup/IntroOutro/unkCol10/unkCol10.colH.inc.c"
+ModelCollision IntroOutro_unkCol10_ColH = {
+8, 12, &IntroOutro_unkCol10_ColV[0], &IntroOutro_unkCol10_ColT[0], &IntroOutro_unkCol10_ColS
+};
 
 #include "assets/levelGroup/IntroOutro/unkCol11/unkCol11.colV.inc.c"
 
@@ -1185,7 +1159,9 @@ Mtx IntroOutro_IMtx40 = IDENTITY;
 
 #include "assets/levelGroup/IntroOutro/unkCol11/unkCol11.colS.inc.c"
 
-#include "assets/levelGroup/IntroOutro/unkCol11/unkCol11.colH.inc.c"
+ModelCollision IntroOutro_unkCol11_ColH = {
+8, 10, &IntroOutro_unkCol11_ColV[0], &IntroOutro_unkCol11_ColT[0], &IntroOutro_unkCol11_ColS
+};
 
 #include "assets/levelGroup/IntroOutro/unkCol12/unkCol12.colV.inc.c"
 
@@ -1193,7 +1169,9 @@ Mtx IntroOutro_IMtx40 = IDENTITY;
 
 #include "assets/levelGroup/IntroOutro/unkCol12/unkCol12.colS.inc.c"
 
-#include "assets/levelGroup/IntroOutro/unkCol12/unkCol12.colH.inc.c"
+ModelCollision IntroOutro_unkCol12_ColH = {
+12, 20, &IntroOutro_unkCol12_ColV[0], &IntroOutro_unkCol12_ColT[0], &IntroOutro_unkCol12_ColS
+};
 
 #include "assets/levelGroup/IntroOutro/unkCol13/unkCol13.colV.inc.c"
 
@@ -1201,7 +1179,9 @@ Mtx IntroOutro_IMtx40 = IDENTITY;
 
 #include "assets/levelGroup/IntroOutro/unkCol13/unkCol13.colS.inc.c"
 
-#include "assets/levelGroup/IntroOutro/unkCol13/unkCol13.colH.inc.c"
+ModelCollision IntroOutro_unkCol13_ColH = {
+24, 32, &IntroOutro_unkCol13_ColV[0], &IntroOutro_unkCol13_ColT[0], &IntroOutro_unkCol13_ColS
+};
 
 #include "assets/levelGroup/IntroOutro/unkCol14/unkCol14.colV.inc.c"
 
@@ -1209,7 +1189,9 @@ Mtx IntroOutro_IMtx40 = IDENTITY;
 
 #include "assets/levelGroup/IntroOutro/unkCol14/unkCol14.colS.inc.c"
 
-#include "assets/levelGroup/IntroOutro/unkCol14/unkCol14.colH.inc.c"
+ModelCollision IntroOutro_unkCol14_ColH = {
+18, 28, &IntroOutro_unkCol14_ColV[0], &IntroOutro_unkCol14_ColT[0], &IntroOutro_unkCol14_ColS
+};
 
 #include "assets/levelGroup/IntroOutro/unkCol15/unkCol15.colV.inc.c"
 
@@ -1217,7 +1199,9 @@ Mtx IntroOutro_IMtx40 = IDENTITY;
 
 #include "assets/levelGroup/IntroOutro/unkCol15/unkCol15.colS.inc.c"
 
-#include "assets/levelGroup/IntroOutro/unkCol15/unkCol15.colH.inc.c"
+ModelCollision IntroOutro_unkCol15_ColH = {
+12, 12, &IntroOutro_unkCol15_ColV[0], &IntroOutro_unkCol15_ColT[0], &IntroOutro_unkCol15_ColS
+};
 
 #include "assets/levelGroup/IntroOutro/unkCol16/unkCol16.colV.inc.c"
 
@@ -1225,7 +1209,9 @@ Mtx IntroOutro_IMtx40 = IDENTITY;
 
 #include "assets/levelGroup/IntroOutro/unkCol16/unkCol16.colS.inc.c"
 
-#include "assets/levelGroup/IntroOutro/unkCol16/unkCol16.colH.inc.c"
+ModelCollision IntroOutro_unkCol16_ColH = {
+12, 12, &IntroOutro_unkCol16_ColV[0], &IntroOutro_unkCol16_ColT[0], &IntroOutro_unkCol16_ColS
+};
 
 #include "assets/levelGroup/IntroOutro/unkCol17/unkCol17.colV.inc.c"
 
@@ -1233,7 +1219,9 @@ Mtx IntroOutro_IMtx40 = IDENTITY;
 
 #include "assets/levelGroup/IntroOutro/unkCol17/unkCol17.colS.inc.c"
 
-#include "assets/levelGroup/IntroOutro/unkCol17/unkCol17.colH.inc.c"
+ModelCollision IntroOutro_unkCol17_ColH = {
+5, 3, &IntroOutro_unkCol17_ColV[0], &IntroOutro_unkCol17_ColT[0], &IntroOutro_unkCol17_ColS
+};
 
 #include "assets/levelGroup/IntroOutro/unkCol18/unkCol18.colV.inc.c"
 
@@ -1241,7 +1229,9 @@ Mtx IntroOutro_IMtx40 = IDENTITY;
 
 #include "assets/levelGroup/IntroOutro/unkCol18/unkCol18.colS.inc.c"
 
-#include "assets/levelGroup/IntroOutro/unkCol18/unkCol18.colH.inc.c"
+ModelCollision IntroOutro_unkCol18_ColH = {
+5, 3, &IntroOutro_unkCol18_ColV[0], &IntroOutro_unkCol18_ColT[0], &IntroOutro_unkCol18_ColS
+};
 
 #include "assets/levelGroup/IntroOutro/unkCol19/unkCol19.colV.inc.c"
 
@@ -1249,7 +1239,9 @@ Mtx IntroOutro_IMtx40 = IDENTITY;
 
 #include "assets/levelGroup/IntroOutro/unkCol19/unkCol19.colS.inc.c"
 
-#include "assets/levelGroup/IntroOutro/unkCol19/unkCol19.colH.inc.c"
+ModelCollision IntroOutro_unkCol19_ColH = {
+4, 2, &IntroOutro_unkCol19_ColV[0], &IntroOutro_unkCol19_ColT[0], &IntroOutro_unkCol19_ColS
+};
 
 #include "assets/levelGroup/IntroOutro/unkCol20/unkCol20.colV.inc.c"
 
@@ -1257,7 +1249,9 @@ Mtx IntroOutro_IMtx40 = IDENTITY;
 
 #include "assets/levelGroup/IntroOutro/unkCol20/unkCol20.colS.inc.c"
 
-#include "assets/levelGroup/IntroOutro/unkCol20/unkCol20.colH.inc.c"
+ModelCollision IntroOutro_unkCol20_ColH = {
+4, 2, &IntroOutro_unkCol20_ColV[0], &IntroOutro_unkCol20_ColT[0], &IntroOutro_unkCol20_ColS
+};
 
 #include "assets/levelGroup/IntroOutro/unkCol21/unkCol21.colV.inc.c"
 
@@ -1265,7 +1259,9 @@ Mtx IntroOutro_IMtx40 = IDENTITY;
 
 #include "assets/levelGroup/IntroOutro/unkCol21/unkCol21.colS.inc.c"
 
-#include "assets/levelGroup/IntroOutro/unkCol21/unkCol21.colH.inc.c"
+ModelCollision IntroOutro_unkCol21_ColH = {
+5, 3, &IntroOutro_unkCol21_ColV[0], &IntroOutro_unkCol21_ColT[0], &IntroOutro_unkCol21_ColS
+};
 
 #include "assets/levelGroup/IntroOutro/unkCol22/unkCol22.colV.inc.c"
 
@@ -1273,7 +1269,9 @@ Mtx IntroOutro_IMtx40 = IDENTITY;
 
 #include "assets/levelGroup/IntroOutro/unkCol22/unkCol22.colS.inc.c"
 
-#include "assets/levelGroup/IntroOutro/unkCol22/unkCol22.colH.inc.c"
+ModelCollision IntroOutro_unkCol22_ColH = {
+4, 2, &IntroOutro_unkCol22_ColV[0], &IntroOutro_unkCol22_ColT[0], &IntroOutro_unkCol22_ColS
+};
 
 #include "assets/levelGroup/IntroOutro/unkCol23/unkCol23.colV.inc.c"
 
@@ -1281,7 +1279,9 @@ Mtx IntroOutro_IMtx40 = IDENTITY;
 
 #include "assets/levelGroup/IntroOutro/unkCol23/unkCol23.colS.inc.c"
 
-#include "assets/levelGroup/IntroOutro/unkCol23/unkCol23.colH.inc.c"
+ModelCollision IntroOutro_unkCol23_ColH = {
+8, 6, &IntroOutro_unkCol23_ColV[0], &IntroOutro_unkCol23_ColT[0], &IntroOutro_unkCol23_ColS
+};
 
 #include "assets/levelGroup/IntroOutro/unkCol24/unkCol24.colV.inc.c"
 
@@ -1289,7 +1289,9 @@ Mtx IntroOutro_IMtx40 = IDENTITY;
 
 #include "assets/levelGroup/IntroOutro/unkCol24/unkCol24.colS.inc.c"
 
-#include "assets/levelGroup/IntroOutro/unkCol24/unkCol24.colH.inc.c"
+ModelCollision IntroOutro_unkCol24_ColH = {
+6, 4, &IntroOutro_unkCol24_ColV[0], &IntroOutro_unkCol24_ColT[0], &IntroOutro_unkCol24_ColS
+};
 
 #include "assets/levelGroup/IntroOutro/unkCol25/unkCol25.colV.inc.c"
 
@@ -1297,7 +1299,9 @@ Mtx IntroOutro_IMtx40 = IDENTITY;
 
 #include "assets/levelGroup/IntroOutro/unkCol25/unkCol25.colS.inc.c"
 
-#include "assets/levelGroup/IntroOutro/unkCol25/unkCol25.colH.inc.c"
+ModelCollision IntroOutro_unkCol25_ColH = {
+6, 4, &IntroOutro_unkCol25_ColV[0], &IntroOutro_unkCol25_ColT[0], &IntroOutro_unkCol25_ColS
+};
 
 #include "assets/levelGroup/IntroOutro/unkCol26/unkCol26.colV.inc.c"
 
@@ -1305,7 +1309,9 @@ Mtx IntroOutro_IMtx40 = IDENTITY;
 
 #include "assets/levelGroup/IntroOutro/unkCol26/unkCol26.colS.inc.c"
 
-#include "assets/levelGroup/IntroOutro/unkCol26/unkCol26.colH.inc.c"
+ModelCollision IntroOutro_unkCol26_ColH = {
+4, 2, &IntroOutro_unkCol26_ColV[0], &IntroOutro_unkCol26_ColT[0], &IntroOutro_unkCol26_ColS
+};
 
 #include "assets/levelGroup/IntroOutro/unkCol27/unkCol27.colV.inc.c"
 
@@ -1313,7 +1319,9 @@ Mtx IntroOutro_IMtx40 = IDENTITY;
 
 #include "assets/levelGroup/IntroOutro/unkCol27/unkCol27.colS.inc.c"
 
-#include "assets/levelGroup/IntroOutro/unkCol27/unkCol27.colH.inc.c"
+ModelCollision IntroOutro_unkCol27_ColH = {
+31, 39, &IntroOutro_unkCol27_ColV[0], &IntroOutro_unkCol27_ColT[0], &IntroOutro_unkCol27_ColS
+};
 
 #include "assets/levelGroup/IntroOutro/unkCol28/unkCol28.colV.inc.c"
 
@@ -1321,7 +1329,9 @@ Mtx IntroOutro_IMtx40 = IDENTITY;
 
 #include "assets/levelGroup/IntroOutro/unkCol28/unkCol28.colS.inc.c"
 
-#include "assets/levelGroup/IntroOutro/unkCol28/unkCol28.colH.inc.c"
+ModelCollision IntroOutro_unkCol28_ColH = {
+22, 32, &IntroOutro_unkCol28_ColV[0], &IntroOutro_unkCol28_ColT[0], &IntroOutro_unkCol28_ColS
+};
 
 #include "assets/levelGroup/IntroOutro/unkCol29/unkCol29.colV.inc.c"
 
@@ -1329,7 +1339,9 @@ Mtx IntroOutro_IMtx40 = IDENTITY;
 
 #include "assets/levelGroup/IntroOutro/unkCol29/unkCol29.colS.inc.c"
 
-#include "assets/levelGroup/IntroOutro/unkCol29/unkCol29.colH.inc.c"
+ModelCollision IntroOutro_unkCol29_ColH = {
+12, 12, &IntroOutro_unkCol29_ColV[0], &IntroOutro_unkCol29_ColT[0], &IntroOutro_unkCol29_ColS
+};
 
 #include "assets/levelGroup/IntroOutro/unkCol30/unkCol30.colV.inc.c"
 
@@ -1337,7 +1349,9 @@ Mtx IntroOutro_IMtx40 = IDENTITY;
 
 #include "assets/levelGroup/IntroOutro/unkCol30/unkCol30.colS.inc.c"
 
-#include "assets/levelGroup/IntroOutro/unkCol30/unkCol30.colH.inc.c"
+ModelCollision IntroOutro_unkCol30_ColH = {
+8, 12, &IntroOutro_unkCol30_ColV[0], &IntroOutro_unkCol30_ColT[0], &IntroOutro_unkCol30_ColS
+};
 
 #include "assets/levelGroup/IntroOutro/unkCol31/unkCol31.colV.inc.c"
 
@@ -1345,7 +1359,9 @@ Mtx IntroOutro_IMtx40 = IDENTITY;
 
 #include "assets/levelGroup/IntroOutro/unkCol31/unkCol31.colS.inc.c"
 
-#include "assets/levelGroup/IntroOutro/unkCol31/unkCol31.colH.inc.c"
+ModelCollision IntroOutro_unkCol31_ColH = {
+8, 12, &IntroOutro_unkCol31_ColV[0], &IntroOutro_unkCol31_ColT[0], &IntroOutro_unkCol31_ColS
+};
 
 #include "assets/levelGroup/IntroOutro/unkCol32/unkCol32.colV.inc.c"
 
@@ -1353,7 +1369,9 @@ Mtx IntroOutro_IMtx40 = IDENTITY;
 
 #include "assets/levelGroup/IntroOutro/unkCol32/unkCol32.colS.inc.c"
 
-#include "assets/levelGroup/IntroOutro/unkCol32/unkCol32.colH.inc.c"
+ModelCollision IntroOutro_unkCol32_ColH = {
+16, 14, &IntroOutro_unkCol32_ColV[0], &IntroOutro_unkCol32_ColT[0], &IntroOutro_unkCol32_ColS
+};
 
 #include "assets/levelGroup/IntroOutro/unkCol33/unkCol33.colV.inc.c"
 
@@ -1361,7 +1379,9 @@ Mtx IntroOutro_IMtx40 = IDENTITY;
 
 #include "assets/levelGroup/IntroOutro/unkCol33/unkCol33.colS.inc.c"
 
-#include "assets/levelGroup/IntroOutro/unkCol33/unkCol33.colH.inc.c"
+ModelCollision IntroOutro_unkCol33_ColH = {
+16, 20, &IntroOutro_unkCol33_ColV[0], &IntroOutro_unkCol33_ColT[0], &IntroOutro_unkCol33_ColS
+};
 
 #include "assets/levelGroup/IntroOutro/unkCol34/unkCol34.colV.inc.c"
 
@@ -1369,7 +1389,9 @@ Mtx IntroOutro_IMtx40 = IDENTITY;
 
 #include "assets/levelGroup/IntroOutro/unkCol34/unkCol34.colS.inc.c"
 
-#include "assets/levelGroup/IntroOutro/unkCol34/unkCol34.colH.inc.c"
+ModelCollision IntroOutro_unkCol34_ColH = {
+16, 20, &IntroOutro_unkCol34_ColV[0], &IntroOutro_unkCol34_ColT[0], &IntroOutro_unkCol34_ColS
+};
 
 #include "assets/levelGroup/IntroOutro/unkCol35/unkCol35.colV.inc.c"
 
@@ -1377,7 +1399,9 @@ Mtx IntroOutro_IMtx40 = IDENTITY;
 
 #include "assets/levelGroup/IntroOutro/unkCol35/unkCol35.colS.inc.c"
 
-#include "assets/levelGroup/IntroOutro/unkCol35/unkCol35.colH.inc.c"
+ModelCollision IntroOutro_unkCol35_ColH = {
+31, 45, &IntroOutro_unkCol35_ColV[0], &IntroOutro_unkCol35_ColT[0], &IntroOutro_unkCol35_ColS
+};
 
 #include "assets/levelGroup/IntroOutro/unkCol36/unkCol36.colV.inc.c"
 
@@ -1385,7 +1409,9 @@ Mtx IntroOutro_IMtx40 = IDENTITY;
 
 #include "assets/levelGroup/IntroOutro/unkCol36/unkCol36.colS.inc.c"
 
-#include "assets/levelGroup/IntroOutro/unkCol36/unkCol36.colH.inc.c"
+ModelCollision IntroOutro_unkCol36_ColH = {
+12, 16, &IntroOutro_unkCol36_ColV[0], &IntroOutro_unkCol36_ColT[0], &IntroOutro_unkCol36_ColS
+};
 
 #include "assets/levelGroup/IntroOutro/unkCol37/unkCol37.colV.inc.c"
 
@@ -1393,7 +1419,9 @@ Mtx IntroOutro_IMtx40 = IDENTITY;
 
 #include "assets/levelGroup/IntroOutro/unkCol37/unkCol37.colS.inc.c"
 
-#include "assets/levelGroup/IntroOutro/unkCol37/unkCol37.colH.inc.c"
+ModelCollision IntroOutro_unkCol37_ColH = {
+72, 134, &IntroOutro_unkCol37_ColV[0], &IntroOutro_unkCol37_ColT[0], &IntroOutro_unkCol37_ColS
+};
 
 #include "assets/levelGroup/IntroOutro/unkCol38/unkCol38.colV.inc.c"
 
@@ -1401,7 +1429,9 @@ Mtx IntroOutro_IMtx40 = IDENTITY;
 
 #include "assets/levelGroup/IntroOutro/unkCol38/unkCol38.colS.inc.c"
 
-#include "assets/levelGroup/IntroOutro/unkCol38/unkCol38.colH.inc.c"
+ModelCollision IntroOutro_unkCol38_ColH = {
+132, 250, &IntroOutro_unkCol38_ColV[0], &IntroOutro_unkCol38_ColT[0], &IntroOutro_unkCol38_ColS
+};
 Mtx IntroOutro_IMtx41 = IDENTITY;
 
 #include "assets/levelGroup/IntroOutro/ioScope2/ioScope2.light.inc.c"
@@ -2070,7 +2100,7 @@ Mtx IntroOutro_IMtx143 = IDENTITY;
 
 #include "assets/levelGroup/IntroOutro/rabbitCutscene/rabbitCutscene_unk2.gfx.inc.c"
 
-#include "assets/levelGroup/IntroOutro/rabbitCutscene/rabbitCutscene_restassociate.mtx.inc.c"
+Mtx IntroOutro_rabbitCutscene_restassociate_Mtx = IDENTITY;
 
 #include "assets/levelGroup/IntroOutro/rabbitCutscene/rabbitCutscene_restassociate.gfx.inc.c"
 

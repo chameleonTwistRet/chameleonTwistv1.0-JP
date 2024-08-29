@@ -109,131 +109,203 @@ extern ModelCollision Global_pole_ColH;
 
 Mtx PileOfBooks_IMtx1 = IDENTITY;
 
-#include "assets/levelGroup/PileOfBooks/pointers.lvp.inc.c"
+StageModel PileOfBooks_stageModels[44] = {
+{&Global_fallbackCube_Gfx[0], &Global_fallbackCube_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_exitShadowSouth_Gfx[0], &Global_exitShadowSouth_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_exitShadowNorth_Gfx[0], &Global_exitShadowNorth_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_exitShadowEast_Gfx[0], &Global_exitShadowEast_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_exitShadowWest_Gfx[0], &Global_exitShadowWest_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_ALBLExit_Gfx[0], &Global_ALBLExit_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_sandPit_Gfx[0], &Global_sandPit_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BossBridge_Gfx[0], &Global_BossBridge_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_ALPole_Gfx[0], &Global_ALPole_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_ALBLDoor_Gfx[0], &Global_ALBLDoor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_ALSpinDoor_Gfx[0], &Global_ALSpinDoor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLLavaFloor_Gfx[0], &Global_BLLavaFloor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLLava_Gfx[0], &Global_BLLava_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLLava2_Gfx[0], &Global_BLLava2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLLava3_Gfx[0], &Global_BLLava3_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLLava4_Gfx[0], &Global_BLLava4_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLLava5_Gfx[0], &Global_BLLava5_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLLava6_Gfx[0], &Global_BLLava6_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLLava7_Gfx[0], &Global_BLLava7_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLLava8_Gfx[0], &Global_BLLava8_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLDestructableTop_Gfx[0], &Global_BLDestructableTop_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_BLMetalBridge_Gfx[0], &Global_BLMetalBridge_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_KLExit_Gfx[0], &Global_KLExit_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_KLDoor_Gfx[0], &Global_KLDoor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_DCExit_Gfx[0], &Global_DCExit_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_TallExitShadow1_Gfx[0], &Global_TallExitShadow1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_TallExitShadow2_Gfx[0], &Global_TallExitShadow2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_GCExit1_Gfx[0], &Global_GCExit1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_GCExit2_Gfx[0], &Global_GCExit2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_trainingRoomLight_Gfx[0], &Global_trainingRoomLight_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_JLCaveExit1_Gfx[0], &Global_JLCaveExit1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_JLCaveExit2_Gfx[0], &Global_JLCaveExit2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_JLCaveExit3_Gfx[0], &Global_JLCaveExit3_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_JLCaveExit4_Gfx[0], &Global_JLCaveExit4_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_JLOutsideEntrance_Gfx[0], &Global_JLOutsideEntrance_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_JLFxCamPillar_Gfx[0], &Global_JLFxCamPillar_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_JLCaveDoor_Gfx[0], &Global_JLCaveDoor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&PileOfBooks_model1_Gfx[0], &PileOfBooks_unkCol1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&PileOfBooks_model2_Gfx[0], &PileOfBooks_unkCol2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&PileOfBooks_model3_Gfx[0], &PileOfBooks_unkCol3_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&PileOfBooks_model4_Gfx[0], &PileOfBooks_unkCol4_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&PileOfBooks_model5_Gfx[0], &PileOfBooks_unkCol5_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&PileOfBooks_model6_Gfx[0], &PileOfBooks_unkCol6_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{&Global_pole_Gfx[0], &Global_pole_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+};
 
-#include "build/assets/levelGroup/PileOfBooks/rabObjects.inc.c"
+unsigned char PileOfBooks_rabObjects_Bin[] = {
+0x00, 0x00, 0x00, 0x00, 0x42, 0xC8, 0x00, 0x00, 0x42, 0xC8, 0x00, 0x00, 0x42, 0xC8, 0x00, 0x00, 0x02, 0x00, 0x6E, 0x1C, 0x00, 0x00, 0x00, 0x00, 0x42, 0xC8, 0x00, 0x00, 0x42, 0xC8, 0x00, 0x00, 0x42, 0xC8, 0x00, 0x00, 0x02, 0x00, 0x6E, 0x1C
+};
 
-#include "assets/levelGroup/PileOfBooks/roomObjects/roomMulti_obj1.roomObj.inc.c"
+RoomObject PileOfBooks_roomMulti_objects[14] = {
+{{0.0,0.0,3300.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 5, 0.0, -20000.0, 3300.0, 0.0, 15, 300, -2, 0, 0, 0, 7, -1, -1, 20, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,3100.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 5, 0.0, -20000.0, 3100.0, 0.0, 20, 300, -2, 0, 0, 0, 7, -1, -1, 20, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,2900.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 5, 0.0, -20000.0, 2900.0, 0.0, 25, 300, -2, 0, 0, 0, 7, -1, -1, 20, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,2700.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 5, 0.0, -20000.0, 2700.0, 0.0, 30, 300, -2, 0, 0, 0, 7, -1, -1, 20, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,2500.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 5, 0.0, -20000.0, 2500.0, 0.0, 35, 300, -2, 0, 0, 0, 7, -1, -1, 20, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,2300.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 5, 0.0, -20000.0, 2300.0, 0.0, 40, 300, -2, 0, 0, 0, 7, -1, -1, 20, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,2100.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 5, 0.0, -20000.0, 2100.0, 0.0, 45, 300, -2, 0, 0, 0, 7, -1, -1, 20, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 37, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 38, -1, 20, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,3600.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 27, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,3600.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 26, -1, -1, -1, NULL, NULL, 0, 0, 0, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,3600.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 256, 0, 400.0, 400.0, 0.0, 0.0, 3, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
+{{0.0,0.0,3600.0}, {4.0,4.0,4.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
 
-#include "assets/levelGroup/PileOfBooks/roomObjects/roomMulti_obj2.roomObj.inc.c"
+RoomObject PileOfBooks_room2_objects[18] = {
+{{0.0,2000.0,-3300.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 5, 0.0, 0.0, -3300.0, 0.0, 165, 30, 150000, 0, 0, 0, 7, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,2000.0,-3100.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 5, 0.0, 0.0, -3100.0, 0.0, 160, 30, 150000, 0, 0, 0, 7, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,2000.0,-2900.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 5, 0.0, 0.0, -2900.0, 0.0, 155, 30, 150000, 0, 0, 0, 7, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,2000.0,-2700.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 5, 0.0, 0.0, -2700.0, 0.0, 150, 30, 150000, 0, 0, 0, 7, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,2000.0,-2500.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 5, 0.0, 0.0, -2500.0, 0.0, 145, 30, 150000, 0, 0, 0, 7, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,2000.0,-2300.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 5, 0.0, 0.0, -2300.0, 0.0, 140, 30, 150000, 0, 0, 0, 7, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,2000.0,-2100.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 5, 0.0, 0.0, -2100.0, 0.0, 135, 30, 150000, 0, 0, 0, 7, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 37, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 38, -1, 22, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,3600.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 27, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,3600.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 26, -1, -1, -1, NULL, NULL, 0, 0, 0, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,3600.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 256, 0, 400.0, 400.0, 0.0, 0.0, 3, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
+{{0.0,0.0,3600.0}, {4.0,4.0,4.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+{{0.0,0.0,-3600.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 28, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,-3600.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 25, -1, -1, -1, NULL, NULL, 0, 0, 0, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,-3600.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 256, 0, 400.0, 400.0, 0.0, 0.0, 1, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
+{{0.0,0.0,-3600.0}, {4.0,4.0,4.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
 
-#include "assets/levelGroup/PileOfBooks/roomObjects/roomMulti_obj3.roomObj.inc.c"
+RoomActor PileOfBooks_room0_actors[2] = {
+{PILE_OF_BOOKS, {0.0,0.0,0.0}, 270.0, -10000.0, 10000.0, 0, 0.0, -10000.0, 10000.0, 0, 2250000.0, 7.0, 3.0, 60.0, 0, 1036831949, 0, 0, 1082130432, 1082130432, 1094713344, 1103101952},
+{ACTOR_NULL, {0.0,0.0,0.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
 
-#include "assets/levelGroup/PileOfBooks/roomObjects/roomMulti_obj4.roomObj.inc.c"
+RoomActor PileOfBooks_room1_actors[2] = {
+{PILE_OF_BOOKS, {0.0,0.0,0.0}, 270.0, -10000.0, 10000.0, 0, 0.0, -10000.0, 10000.0, 0, 2250000.0, 12.0, 5.0, 75.0, 1058642330, 1036831949, 0, 0, 1082130432, 1086324736, 1073741824, 1098907648},
+{ACTOR_NULL, {0.0,0.0,0.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
 
-#include "assets/levelGroup/PileOfBooks/roomObjects/roomMulti_obj5.roomObj.inc.c"
+s32 PileOfBooks_spriteLib_Sprlib[] = {
+    47,
+    48,
+    49,
+    50,
+    51,
+    52,
+    53,
+    54,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+};
 
-#include "assets/levelGroup/PileOfBooks/roomObjects/roomMulti_obj6.roomObj.inc.c"
+RoomObject PileOfBooks_room3_objects[13] = {
+{{0.0,0.0,0.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(180.00000500895632), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 39, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(180.00000500895632), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 40, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,2700.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 27, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,2700.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 26, -1, -1, -1, NULL, NULL, 0, 0, 0, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,2700.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 256, 0, 400.0, 400.0, 0.0, 0.0, 3, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
+{{0.0,0.0,2700.0}, {4.0,4.0,4.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+{{0.0,0.0,-2700.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 28, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,-2700.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 25, -1, -1, -1, NULL, NULL, 0, 0, 0, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,-2700.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 256, 0, 400.0, 400.0, 0.0, 0.0, 1, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
+{{0.0,0.0,-2700.0}, {4.0,4.0,4.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
+{{0.0,5.0,10.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(180.00000500895632), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 41, -1, -1, -1, NULL, NULL, 0, 0, 0, 4, 4, 0, -1, 0, 0},
+{{0.0,5.0,10.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(180.00000500895632), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 42, -1, -1, -1, NULL, NULL, 0, 0, 0, 4, 4, 0, -1, 0, 0},
+{{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
 
-#include "assets/levelGroup/PileOfBooks/roomObjects/roomMulti_obj7.roomObj.inc.c"
+RoomInstance PileOfBooks_room_instances[5] = {
+{PileOfBooks_roomMulti_objects,PileOfBooks_room0_actors, 0, 0, 0, 1, 0, 0, -1, 0, 0.0, 15, -400.0, 200.0, 0.0, 0.0, 0.0, 65.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1500.0, 200.0},
+{PileOfBooks_roomMulti_objects,PileOfBooks_room1_actors, 0, 0, 0, 1, 0, 0, -1, 0, 0.0, 15, -400.0, 200.0, 0.0, 0.0, 0.0, 65.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1500.0, 200.0},
+{PileOfBooks_room2_objects, 0, 0, 0, 0, 1, 0, 0, -1, 0, 0.0, 10, -400.0, 200.0, 0.0, 0.0, 0.0, 65.0, 1.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+{PileOfBooks_room3_objects, 0, 0, 0, 0, 0, 2, 0, -1, 0, 0.0, 10, -400.0, 200.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+{0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0}
+};
 
-#include "assets/levelGroup/PileOfBooks/roomObjects/roomMulti_obj8.roomObj.inc.c"
+s32 PileOfBooks_rooms_map[4][3] = {
+    {-1, 3, -1},
+    {-1, 2, -1},
+    {-1, 1, -1},
+    {-1, 0, -1}
+};
 
-#include "assets/levelGroup/PileOfBooks/roomObjects/roomMulti_obj9.roomObj.inc.c"
+StageMapData PileOfBooks_map_data = {
+3, 4, PileOfBooks_room_instances, PileOfBooks_rooms_map, 
+};
 
-#include "assets/levelGroup/PileOfBooks/roomObjects/roomMulti_obj10.roomObj.inc.c"
+SpriteActor PileOfBooks_roomUnk_sprites[1] = {
+{-1, 0, {-1.0,-1.0,-1.0}, {-1.0,32.0,32.0}, 1, 0, 0.0, 0, 0, 0, 0, 0, -1, -1, 0, 0}
+};
 
-#include "assets/levelGroup/PileOfBooks/roomObjects/roomMulti_obj11.roomObj.inc.c"
+RoomInstance PileOfBooks_ext_room_instances[1] = {
+{0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0}
+};
 
-#include "assets/levelGroup/PileOfBooks/roomObjects/roomMulti_obj12.roomObj.inc.c"
+LevelScope PileOfBooks_scope_Lvlscope = {
+    0,
+    0,
+    0,
+    255,
+    10000,
+    60,
+};
 
-#include "assets/levelGroup/PileOfBooks/roomObjects/roomMulti_obj13.roomObj.inc.c"
-
-#include "assets/levelGroup/PileOfBooks/roomObjects/roomMulti_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/PileOfBooks/roomObjects/room2_obj1.roomObj.inc.c"
-
-#include "assets/levelGroup/PileOfBooks/roomObjects/room2_obj2.roomObj.inc.c"
-
-#include "assets/levelGroup/PileOfBooks/roomObjects/room2_obj3.roomObj.inc.c"
-
-#include "assets/levelGroup/PileOfBooks/roomObjects/room2_obj4.roomObj.inc.c"
-
-#include "assets/levelGroup/PileOfBooks/roomObjects/room2_obj5.roomObj.inc.c"
-
-#include "assets/levelGroup/PileOfBooks/roomObjects/room2_obj6.roomObj.inc.c"
-
-#include "assets/levelGroup/PileOfBooks/roomObjects/room2_obj7.roomObj.inc.c"
-
-#include "assets/levelGroup/PileOfBooks/roomObjects/room2_obj8.roomObj.inc.c"
-
-#include "assets/levelGroup/PileOfBooks/roomObjects/room2_obj9.roomObj.inc.c"
-
-#include "assets/levelGroup/PileOfBooks/roomObjects/room2_obj10.roomObj.inc.c"
-
-#include "assets/levelGroup/PileOfBooks/roomObjects/room2_obj11.roomObj.inc.c"
-
-#include "assets/levelGroup/PileOfBooks/roomObjects/room2_obj12.roomObj.inc.c"
-
-#include "assets/levelGroup/PileOfBooks/roomObjects/room2_obj13.roomObj.inc.c"
-
-#include "assets/levelGroup/PileOfBooks/roomObjects/room2_obj14.roomObj.inc.c"
-
-#include "assets/levelGroup/PileOfBooks/roomObjects/room2_obj15.roomObj.inc.c"
-
-#include "assets/levelGroup/PileOfBooks/roomObjects/room2_obj16.roomObj.inc.c"
-
-#include "assets/levelGroup/PileOfBooks/roomObjects/room2_obj17.roomObj.inc.c"
-
-#include "assets/levelGroup/PileOfBooks/roomObjects/room2_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/PileOfBooks/roomActors/room0_act1.roomAct.inc.c"
-
-#include "assets/levelGroup/PileOfBooks/roomActors/room0_actSTOP.roomAct.inc.c"
-
-#include "assets/levelGroup/PileOfBooks/roomActors/room1_act1.roomAct.inc.c"
-
-#include "assets/levelGroup/PileOfBooks/roomActors/room1_actSTOP.roomAct.inc.c"
-
-#include "assets/levelGroup/PileOfBooks/spriteLib.sprLib.inc.c"
-
-#include "assets/levelGroup/PileOfBooks/roomObjects/room3_obj1.roomObj.inc.c"
-
-#include "assets/levelGroup/PileOfBooks/roomObjects/room3_obj2.roomObj.inc.c"
-
-#include "assets/levelGroup/PileOfBooks/roomObjects/room3_obj3.roomObj.inc.c"
-
-#include "assets/levelGroup/PileOfBooks/roomObjects/room3_obj4.roomObj.inc.c"
-
-#include "assets/levelGroup/PileOfBooks/roomObjects/room3_obj5.roomObj.inc.c"
-
-#include "assets/levelGroup/PileOfBooks/roomObjects/room3_obj6.roomObj.inc.c"
-
-#include "assets/levelGroup/PileOfBooks/roomObjects/room3_obj7.roomObj.inc.c"
-
-#include "assets/levelGroup/PileOfBooks/roomObjects/room3_obj8.roomObj.inc.c"
-
-#include "assets/levelGroup/PileOfBooks/roomObjects/room3_obj9.roomObj.inc.c"
-
-#include "assets/levelGroup/PileOfBooks/roomObjects/room3_obj10.roomObj.inc.c"
-
-#include "assets/levelGroup/PileOfBooks/roomObjects/room3_obj11.roomObj.inc.c"
-
-#include "assets/levelGroup/PileOfBooks/roomObjects/room3_obj12.roomObj.inc.c"
-
-#include "assets/levelGroup/PileOfBooks/roomObjects/room3_objSTOP.roomObj.inc.c"
-
-#include "assets/levelGroup/PileOfBooks/rooms/room0.rmSet.inc.c"
-
-#include "assets/levelGroup/PileOfBooks/rooms/room1.rmSet.inc.c"
-
-#include "assets/levelGroup/PileOfBooks/rooms/room2.rmSet.inc.c"
-
-#include "assets/levelGroup/PileOfBooks/rooms/room3.rmSet.inc.c"
-
-#include "assets/levelGroup/PileOfBooks/rooms/roomSTOP.rmSet.inc.c"
-
-#include "assets/levelGroup/PileOfBooks/map.lvmM.inc.c"
-
-#include "assets/levelGroup/PileOfBooks/map.lvmH.inc.c"
-
-#include "assets/levelGroup/PileOfBooks/spriteActor/roomUnk_spr1.sprite.inc.c"
-
-#include "assets/levelGroup/PileOfBooks/nullOWRoom.rmSet.inc.c"
-
-#include "assets/levelGroup/PileOfBooks/scope.lvlScope.inc.c"
-
-#include "assets/levelGroup/PileOfBooks/header.lvlHdr.inc.c"
+StageData PileOfBooks_header_Lvlhdr = {
+    &PileOfBooks_map_data,
+    0,
+    &PileOfBooks_stageModels[0],
+    44,
+    0,
+    50333824,
+    131072,
+    &PileOfBooks_spriteLib_Sprlib[0],
+    &PileOfBooks_scope_Lvlscope,
+};
 s32 pob_pad2[3] = 0;
 Mtx PileOfBooks_IMtx2 = IDENTITY;
 
@@ -275,7 +347,9 @@ Mtx PileOfBooks_IMtx8 = IDENTITY;
 
 #include "assets/levelGroup/PileOfBooks/unkCol1/unkCol1.colS.inc.c"
 
-#include "assets/levelGroup/PileOfBooks/unkCol1/unkCol1.colH.inc.c"
+ModelCollision PileOfBooks_unkCol1_ColH = {
+36, 44, &PileOfBooks_unkCol1_ColV[0], &PileOfBooks_unkCol1_ColT[0], &PileOfBooks_unkCol1_ColS
+};
 
 #include "assets/levelGroup/PileOfBooks/unkCol2/unkCol2.colV.inc.c"
 
@@ -283,7 +357,9 @@ Mtx PileOfBooks_IMtx8 = IDENTITY;
 
 #include "assets/levelGroup/PileOfBooks/unkCol2/unkCol2.colS.inc.c"
 
-#include "assets/levelGroup/PileOfBooks/unkCol2/unkCol2.colH.inc.c"
+ModelCollision PileOfBooks_unkCol2_ColH = {
+8, 10, &PileOfBooks_unkCol2_ColV[0], &PileOfBooks_unkCol2_ColT[0], &PileOfBooks_unkCol2_ColS
+};
 
 #include "assets/levelGroup/PileOfBooks/unkCol3/unkCol3.colV.inc.c"
 
@@ -291,7 +367,9 @@ Mtx PileOfBooks_IMtx8 = IDENTITY;
 
 #include "assets/levelGroup/PileOfBooks/unkCol3/unkCol3.colS.inc.c"
 
-#include "assets/levelGroup/PileOfBooks/unkCol3/unkCol3.colH.inc.c"
+ModelCollision PileOfBooks_unkCol3_ColH = {
+64, 100, &PileOfBooks_unkCol3_ColV[0], &PileOfBooks_unkCol3_ColT[0], &PileOfBooks_unkCol3_ColS
+};
 
 #include "assets/levelGroup/PileOfBooks/unkCol4/unkCol4.colV.inc.c"
 
@@ -299,7 +377,9 @@ Mtx PileOfBooks_IMtx8 = IDENTITY;
 
 #include "assets/levelGroup/PileOfBooks/unkCol4/unkCol4.colS.inc.c"
 
-#include "assets/levelGroup/PileOfBooks/unkCol4/unkCol4.colH.inc.c"
+ModelCollision PileOfBooks_unkCol4_ColH = {
+24, 28, &PileOfBooks_unkCol4_ColV[0], &PileOfBooks_unkCol4_ColT[0], &PileOfBooks_unkCol4_ColS
+};
 
 #include "assets/levelGroup/PileOfBooks/unkCol5/unkCol5.colV.inc.c"
 
@@ -307,7 +387,9 @@ Mtx PileOfBooks_IMtx8 = IDENTITY;
 
 #include "assets/levelGroup/PileOfBooks/unkCol5/unkCol5.colS.inc.c"
 
-#include "assets/levelGroup/PileOfBooks/unkCol5/unkCol5.colH.inc.c"
+ModelCollision PileOfBooks_unkCol5_ColH = {
+12, 14, &PileOfBooks_unkCol5_ColV[0], &PileOfBooks_unkCol5_ColT[0], &PileOfBooks_unkCol5_ColS
+};
 
 #include "assets/levelGroup/PileOfBooks/unkCol6/unkCol6.colV.inc.c"
 
@@ -315,7 +397,9 @@ Mtx PileOfBooks_IMtx8 = IDENTITY;
 
 #include "assets/levelGroup/PileOfBooks/unkCol6/unkCol6.colS.inc.c"
 
-#include "assets/levelGroup/PileOfBooks/unkCol6/unkCol6.colH.inc.c"
+ModelCollision PileOfBooks_unkCol6_ColH = {
+12, 14, &PileOfBooks_unkCol6_ColV[0], &PileOfBooks_unkCol6_ColT[0], &PileOfBooks_unkCol6_ColS
+};
 Mtx PileOfBooks_IMtx9 = IDENTITY;
 
 #include "assets/levelGroup/PileOfBooks/pobScope2/pobScope2.light.inc.c"
