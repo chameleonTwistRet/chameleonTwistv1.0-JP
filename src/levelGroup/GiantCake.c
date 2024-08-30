@@ -235,7 +235,7 @@ StageData GiantCake_header_Lvlhdr = {
     &GiantCake_stageModels[0],
     40,
     0,
-    50333632,
+    GiantCake_rabObjects_Bin,
     131072,
     &GiantCake_spriteLib_Sprlib[0],
     &GiantCake_scope_Lvlscope,

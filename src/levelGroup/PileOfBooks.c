@@ -301,7 +301,7 @@ StageData PileOfBooks_header_Lvlhdr = {
     &PileOfBooks_stageModels[0],
     44,
     0,
-    50333824,
+    PileOfBooks_rabObjects_Bin,
     131072,
     &PileOfBooks_spriteLib_Sprlib[0],
     &PileOfBooks_scope_Lvlscope,

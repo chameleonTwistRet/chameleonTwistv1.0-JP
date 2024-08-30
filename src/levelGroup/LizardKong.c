@@ -231,7 +231,7 @@ StageData LizardKong_header_Lvlhdr = {
     &LizardKong_stageModels[0],
     40,
     0,
-    50333632,
+    LizardKong_rabObjects_Bin,
     131072,
     &LizardKong_spriteLib_Sprlib[0],
     &LizardKong_scope_Lvlscope,

@@ -1535,9 +1535,9 @@ StageData JungleLand_stageData = {
     &JungleLand_stageModels[0],
     122,
     0,
-    50337568,
+    JungleLand_rabObjects_Bin,
     131072,
-    &JungleLand_spriteLib_Sprlib[0],
+    JungleLand_spriteLib_Sprlib,
     &JungleLand_scope_Lvlscope,
 };
 Mtx JungleLand_IMtx2 = IDENTITY;

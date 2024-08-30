@@ -570,7 +570,7 @@ StageData Training_header_Lvlhdr = {
     &Training_stageModels[0],
     60,
     0,
-    50334592,
+    Training_rabObjects_Bin,
     131072,
     &Training_spriteLib_Sprlib[0],
     &Training_scope_Lvlscope,

@@ -317,7 +317,7 @@ StageData BossRush_header_Lvlhdr = {
     &BossRush_stageModels[0],
     47,
     0,
-    50333968,
+    BossRush_rabObjects_Bin,
     131072,
     &BossRush_spriteLib_Sprlib[0],
     &BossRush_scope_Lvlscope,

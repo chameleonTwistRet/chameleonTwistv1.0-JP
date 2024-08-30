@@ -298,6 +298,27 @@ typedef struct unkSpriteStruct {
     /* 0x05C */ s32 unk_5C;
 } unkSpriteStruct; //sizeof 0x60
 
+
+//platform move point
+typedef struct PlatformKeyframe {
+    Vec3f position; //position
+    s32 unkC;
+    s32 unk10; // total move time
+    s32 unk14;
+    s32 unk18; // come back hold
+    s32 unk1C; // go to next hold
+    s32 unk20; // be here by when in the object's moving timer (generally equal total move time + all previous steps)
+} PlatformKeyframe; //sizeof 0x24
+
+typedef struct UnkType2 {
+    f32 unk0;
+    f32 unk4;
+    s32 unk8;
+    f32 unkC;
+    f32 unk10;
+    f32 unk14;
+} UnkType2; //sizeof 0x18
+
 typedef struct RoomObject {
     Vec3f position;
     Vec3f scale;
@@ -309,8 +330,18 @@ typedef struct RoomObject {
     f32 unk2C;
     f32 unk30;
     f32 unk34;
-    s32 keyframes;
-    s32 unk3C;
+    //uservariable1
+    //either pointer or NULL
+    //as of now, can be:
+    //Vtx, PlatformKeyframe, UnkType2,
+    union {
+        s32 temp;
+        Vtx* _Vtx;
+        PlatformKeyframe* _keyframe;
+        UnkType2* _ut2;
+    } keyframes;
+    //int arg for ^
+    s32 noKeyframes; //pointer sizeof (default usually 90)
     s32 unk40;
     s32 unk44;
     s32 unk48;
@@ -1002,26 +1033,6 @@ typedef struct Door {
     s32 unk48; 
 } Door; //sizeof 0x4C (?)
 
-//platform move point
-typedef struct PlatformKeyframe {
-    Vec3f position; //position
-    s32 unkC;
-    s32 unk10; // total move time
-    s32 unk14;
-    s32 unk18; // come back hold
-    s32 unk1C; // go to next hold
-    s32 unk20; // be here by when in the object's moving timer (generally equal total move time + all previous steps)
-} PlatformKeyframe; //sizeof 0x24
-
-typedef struct UnkType2 {
-    f32 unk0;
-    f32 unk4;
-    s32 unk8;
-    f32 unkC;
-    f32 unk10;
-    f32 unk14;
-} UnkType2; //sizeof 0x18
-
 typedef struct RoomInstance {
     RoomObject* objects;
     RoomActor* actors;
@@ -1076,7 +1087,7 @@ typedef struct StageData {
     StageModel* models;
     u16 modelCount;
     u16 unkC;
-    u32 RoomObjects;
+    unsigned char* RoomObjects;
     u32 unk14;
     s32* SpriteLib;
     LevelScope* Scope;

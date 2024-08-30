@@ -558,8 +558,8 @@ RoomInstance IntroOutro_room_instances[2] = {
 {0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0}
 };
 
-s32 IntroOutro_rooms_map[3] = {
--1, 0, -1, 
+s32 IntroOutro_rooms_map[1][3] = {
+    {-1, 0, -1}, 
 };
 
 StageMapData IntroOutro_map_data = {
@@ -625,7 +625,7 @@ StageData IntroOutro_header_Lvlhdr = {
     &IntroOutro_stageModels[0],
     76,
     0,
-    50335360,
+    IntroOutro_rabObjects_Bin,
     131072,
     &IntroOutro_spriteLib_Sprlib[0],
     &IntroOutro_scope_Lvlscope,

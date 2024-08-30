@@ -244,7 +244,7 @@ StageData BombSnake_header_Lvlhdr = {
     &BombSnake_stageModels[0],
     40,
     0,
-    50333632,
+    BombSnake_rabObjects_Bin,
     131072,
     &BombSnake_spriteLib_Sprlib[0],
     &BombSnake_scope_Lvlscope,

@@ -1249,7 +1249,7 @@ StageData DesertCastle_header_Lvlhdr = {
     &DesertCastle_stageModels[0],
     128,
     0,
-    50337856,
+    DesertCastle_rabObjects_Bin,
     131072,
     &DesertCastle_spriteLib_Sprlib[0],
     &DesertCastle_scope_Lvlscope,

@@ -245,7 +245,7 @@ StageData Armadillo_header_Lvlhdr = {
     &Armadillo_stageModels[0],
     40,
     0,
-    50333632,
+    Armadillo_rabObjects_Bin,
     131072,
     &Armadillo_spriteLib_Sprlib[0],
     &Armadillo_scope_Lvlscope,

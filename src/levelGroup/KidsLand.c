@@ -1452,7 +1452,7 @@ StageData KidsLand_header_Lvlhdr = {
     &KidsLand_stageModels[0],
     119,
     0,
-    50337424,
+    KidsLand_rabObjects_Bin,
     131072,
     &KidsLand_spriteLib_Sprlib[0],
     &KidsLand_scope_Lvlscope,

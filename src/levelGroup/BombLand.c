@@ -1557,7 +1557,7 @@ StageData BombLand_header_Lvlhdr = {
     &BombLand_stageModels[0],
     110,
     0,
-    50336992,
+    BombLand_rabObjects_Bin,
     131072,
     &BombLand_spriteLib_Sprlib[0],
     &BombLand_scope_Lvlscope,

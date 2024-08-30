@@ -678,7 +678,7 @@ StageData BattleMode_header_Lvlhdr = {
     &BattleMode_stageModels[0],
     68,
     0,
-    50334976,
+    BattleMode_rabObjects_Bin,
     131072,
     &BattleMode_spriteLib_Sprlib[0],
     &BattleMode_scope_Lvlscope,

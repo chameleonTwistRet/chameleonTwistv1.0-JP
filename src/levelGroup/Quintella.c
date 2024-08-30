@@ -217,8 +217,8 @@ RoomInstance Quintella_room_instances[3] = {
 {0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0}
 };
 
-s32 Quintella_rooms_map[3] = {
--1, 0, -1, 
+s32 Quintella_rooms_map[1][3] = {
+    {-1, 0, -1}, 
 };
 
 StageMapData Quintella_map_data = {
@@ -244,7 +244,7 @@ StageData Quintella_header_Lvlhdr = {
     &Quintella_stageModels[0],
     40,
     0,
-    50333632,
+    Quintella_rabObjects_Bin,
     131072,
     &Quintella_spriteLib_Sprlib[0],
     &Quintella_scope_Lvlscope,
