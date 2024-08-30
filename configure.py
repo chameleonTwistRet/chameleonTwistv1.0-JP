@@ -19,6 +19,7 @@ TOOLS_DIR = "tools"
 
 BASENAME = "chameleontwist.jp"
 YAML_FILE = f"{BASENAME}.yaml"
+YAML_FILE_SMALL = f"{BASENAME}.copy.yaml"
 LD_PATH = f"{BASENAME}.ld"
 ELF_PATH = f"build/{BASENAME}"
 MAP_PATH = f"build/{BASENAME}.map"
@@ -432,6 +433,13 @@ if __name__ == "__main__":
     )
 
     parser.add_argument(
+        "-f",
+        "--full",
+        help="Split the entire game (not recommended for func work)",
+        action="store_true",
+    )
+
+    parser.add_argument(
         "-n",
         "--nonmatching",
         help="Build a non-matching version of the game",
@@ -462,9 +470,14 @@ if __name__ == "__main__":
         CFLAGS = CFLAGS.replace(DEFINES, to)
         GAME_COMPILE_CMD = GAME_COMPILE_CMD.replace(DEFINES, to)
         DEFINES = to
-        
+    
+    yaml_to_use = YAML_FILE
+    if not args.full:
+        yaml_to_use = YAML_FILE_SMALL
+    else:
+        print("splitting entire game!")
 
-    split.main([YAML_FILE], modes="all", verbose=False, use_cache=True)
+    split.main([yaml_to_use], modes="all", verbose=False, use_cache=True)
 
     linker_entries = split.linker_writer.entries
 

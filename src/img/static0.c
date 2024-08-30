@@ -1,8 +1,9 @@
 #include "common.h"
 
-#include "assets/img/static0/mtx00.mtx.inc.c"
+Mtx static0_mtx00_Mtx = IDENTITY;
 
-#include "assets/img/static0/mtx01.mtx.inc.c"
+Mtx static0_mtx01_Mtx = IDENTITY;
+
 unsigned char static0_star_rgba32_PNG[] = {
 #include "build/assets/img/static0/star.rgba32.png.inc.c"
 };
@@ -75,7 +76,8 @@ unsigned char static0_explode_ia4_PNG[] = {
 
 #include "assets/img/static0/vtx1.vtx.inc.c"
 
-#include "assets/img/static0/mtx1.mtx.inc.c"
+Mtx static0_mtx1_Mtx = IDENTITY;
+
 unsigned char static0_Pad11[] = FILEPAD;
 unsigned char static0_sand_ci4_PNG[] = {
 #include "build/assets/img/static0/sand.ci4.png.inc.c"
@@ -89,7 +91,8 @@ unsigned char static0_sand_ci4_PAL[] = {
 
 #include "assets/img/static0/vtx2.vtx.inc.c"
 
-#include "assets/img/static0/mtx2.mtx.inc.c"
+Mtx static0_mtx2_Mtx = IDENTITY;
+
 unsigned char static0_sandSplash_ci8_PNG[] = {
 #include "build/assets/img/static0/sandSplash.ci8.png.inc.c"
 };
@@ -101,13 +104,14 @@ unsigned char static0_sandSplash_ci8_PAL[] = {
 
 #include "assets/img/static0/vtx3.vtx.inc.c"
 
-#include "assets/img/static0/mtx3.mtx.inc.c"
+Mtx static0_mtx3_Mtx = IDENTITY;
 
 #include "assets/img/static0/gfx3.gfx.inc.c"
 
 #include "assets/img/static0/vtx4.vtx.inc.c"
 
-#include "assets/img/static0/mtx4.mtx.inc.c"
+Mtx static0_mtx4_Mtx = IDENTITY;
+
 unsigned char static0_Pad13[] = FILEPAD;
 unsigned char static0_fogFade_ia8_PNG[] = {
 #include "build/assets/img/static0/fogFade.ia8.png.inc.c"
@@ -115,6 +119,7 @@ unsigned char static0_fogFade_ia8_PNG[] = {
 
 #include "assets/img/static0/gfx4.gfx.inc.c"
 
+//old gfx segment that got cut off??
 #include "build/assets/img/static0/gfxNew.inc.c"
 
 #include "assets/img/static0/groupLights2.light.inc.c"
@@ -127,7 +132,7 @@ unsigned char static0_fogFade_ia8_PNG[] = {
 
 #include "assets/img/static0/gfx6.gfx.inc.c"
 
-#include "assets/img/static0/mtx5.mtx.inc.c"
+Mtx static0_mtx5_Mtx = IDENTITY;
 
 #include "assets/img/static0/anim/chameleon/Idle.animH.inc.c"
 

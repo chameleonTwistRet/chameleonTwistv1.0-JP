@@ -1249,59 +1249,18 @@ RoomActor JungleLand_room4_actors[7] = {
 #include "assets/levelGroup/JungleLand/newType/g15.ut1.inc.c"
 #include "assets/levelGroup/JungleLand/newType/g16.ut1.inc.c"
 
-UnkType2 JungleLand_h1_Ut2 = {
-    3100.0,
-    1200.0,
-    1,
-    0.0,
-    0.0,
-    0.0,
-};
+
+#include "assets/levelGroup/JungleLand/newType2/h1.ut2.inc.c"
 #include "assets/levelGroup/JungleLand/newType2/h2.ut2.inc.c"
-UnkType2 JungleLand_h3_Ut2 = {
-    800.0,
-    1100.0,
-    1,
-    0.0,
-    0.0,
-    0.0,
-};
+#include "assets/levelGroup/JungleLand/newType2/h3.ut2.inc.c"
 #include "assets/levelGroup/JungleLand/newType2/h4.ut2.inc.c"
-UnkType2 JungleLand_h5_Ut2 = {
-    -1700.0,
-    950.0,
-    1,
-    0.0,
-    0.0,
-    0.0,
-};
+#include "assets/levelGroup/JungleLand/newType2/h5.ut2.inc.c"
 #include "assets/levelGroup/JungleLand/newType2/h6.ut2.inc.c"
-UnkType2 JungleLand_h7_Ut2 = {
-    -3350.0,
-    800.0,
-    1,
-    0.0,
-    0.0,
-    0.0,
-};
+#include "assets/levelGroup/JungleLand/newType2/h7.ut2.inc.c"
 #include "assets/levelGroup/JungleLand/newType2/h8.ut2.inc.c"
-UnkType2 JungleLand_h9_Ut2 = {
-    -500.0,
-    600.0,
-    1,
-    0.0,
-    0.0,
-    0.0,
-};
+#include "assets/levelGroup/JungleLand/newType2/h9.ut2.inc.c"
 #include "assets/levelGroup/JungleLand/newType2/h10.ut2.inc.c"
-UnkType2 JungleLand_h11_Ut2 = {
-    600.0,
-    450.0,
-    1,
-    0.0,
-    0.0,
-    0.0,
-};
+#include "assets/levelGroup/JungleLand/newType2/h11.ut2.inc.c"
 #include "assets/levelGroup/JungleLand/newType2/h12.ut2.inc.c"
 
 RoomObject JungleLand_room5_objects[54] = {

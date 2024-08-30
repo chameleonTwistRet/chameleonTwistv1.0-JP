@@ -1256,7 +1256,7 @@ StageData DesertCastle_header_Lvlhdr = {
 };
 Mtx DesertCastle_IMtx2 = IDENTITY;
 
-#include "assets/levelGroup/DesertCastle/klScope.light.inc.c"
+#include "assets/levelGroup/DesertCastle/dcScope.light.inc.c"
 
 #include "assets/levelGroup/DesertCastle/model1/model1.vtx.inc.c"
 Mtx DesertCastle_IMtx3 = IDENTITY;
@@ -2681,7 +2681,7 @@ ModelCollision DesertCastle_unkCol90_ColH = {
 };
 Mtx DesertCastle_IMtx93 = IDENTITY;
 
-#include "assets/levelGroup/DesertCastle/klScope2.light.inc.c"
+#include "assets/levelGroup/DesertCastle/dcScope2.light.inc.c"
 
 #include "assets/levelGroup/DesertCastle/actorModel1/actorModel1.vtx.inc.c"
 Mtx DesertCastle_IMtx94 = IDENTITY;

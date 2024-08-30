@@ -6310,7 +6310,7 @@ segments:
       - [0x586ce0, levelHeader, header]
       
       - [0x586d00] #identity matrix
-      - [0x586d40, lights, klScope]
+      - [0x586d40, lights, dcScope]
 
       - [0x586d58, vtx, model1/model1]
       - [0x586fb8] #identity matrix
@@ -7067,7 +7067,7 @@ segments:
       - {start: 0x5bc2bc, type: collision, name: unkCol90/unkCol90, args: "Header"}
 
       - [0x5bc2d0] #identity matrix
-      - [0x5bc310, lights, klScope2]
+      - [0x5bc310, lights, dcScope2]
 
       - [0x5bc328, vtx, actorModel1/actorModel1]
       - [0x5bc7a8] #identity matrix
@@ -9117,7 +9117,7 @@ segments:
       - [0x645694, collectable, collectables/room18_clct4]
       - [0x6456b4, collectable, collectables/room18_clctSTOP]
       
-      - [0x6456d4, databin, spriteLib]
+      - [0x6456d4, spriteLib, spriteLib]
 
       - [0x645914, roomSettings, rooms/room0]
       - [0x645980, roomSettings, rooms/room1]
