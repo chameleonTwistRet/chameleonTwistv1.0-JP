@@ -158,7 +158,7 @@ void func_80025EF0(PlayerActor* arg0, Tongue* arg1, s32 arg2) {
     }
 
     if (D_80174980 == 5) {
-        func_80027240(&D_800FF8D4, gSpriteListings[207].raster, gTimer / 2, gSpriteListings[207].tileCountY);
+        func_80027240(&D_800FF8D4, gSpriteListings[SPRITE_ANIM1].raster, gTimer / 2, gSpriteListings[SPRITE_ANIM1].tileCountY);
         if (gTimer == 20) {
             Effect_TypeT_Init(22.0f, 154.0f, 60, D_800F686C);
         }
@@ -470,15 +470,15 @@ void func_800274F0(Actor* actor) {
 
     func_80058044(actor->pos.x, actor->pos.y + sp34 / 2, actor->pos.z,
                   sp34 * 3 / 2, sp34 * 3 / 2,
-                  -actor->unk_90, sp38, 7);
+                  -actor->unk_90, sp38, SPRITE_CATERPILLAR);
     func_8005747C(sp30->unk_08[actor->userVariables[1]],
                   sp30->unk_48[actor->userVariables[1]] + sp34 / 2,
                   sp30->unk_88[actor->userVariables[1]],
-                  sp34, sp34, sp38, 8);
+                  sp34, sp34, sp38, SPRITE_CATERPILLAR_PART);
     func_8005747C(sp30->unk_08[actor->userVariables[2]],
                   sp30->unk_48[actor->userVariables[2]] + sp34 / 2,
                   sp30->unk_88[actor->userVariables[2]],
-                  sp34, sp34, sp38, 8);
+                  sp34, sp34, sp38, SPRITE_CATERPILLAR_PART);
 }
 
 /**

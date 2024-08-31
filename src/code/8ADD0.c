@@ -236,10 +236,11 @@ void func_800B09E8(Collider* arg0, RoomObject* arg1) {
     }
 }
 
+//inits black?
 void func_800B0A30(Collider* arg0, RoomObject* arg1) {
     gPlayerActors[1].active = gPlayerActors[1].exists = 1;
 
-    gSelectedCharacters[1] = 4;
+    gSelectedCharacters[1] = CHARA_BLACK;
     arg0->unk_AC = 0;
     arg0->unk_B0 = arg1->keyframes.temp;
     if (func_800B34D0(arg0->unk_B0) != 0) {

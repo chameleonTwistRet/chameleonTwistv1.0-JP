@@ -38,6 +38,14 @@
 #define PACK_FILL_COLOR(r, g, b, a) (GPACK_RGBA5551(r, g, b, a) << 0x10) | GPACK_RGBA5551(r, g, b, a)
 #define PACK_FILL_DEPTH(z,dz) (GPACK_ZDZ(z, dz) << 0x10) | GPACK_ZDZ(z, dz)
 
+//goes top left, bottom left, top right, bottom right
+//when the top half is copied to the bottom half
+#define SetTextGradient_TopBottom(r1,g1,b1,a1,r2,g2,b2,a2) SetTextGradient(r1, g1, b1, a1, r2, g2, b2, a2, r1, g1, b1, a1, r2, g2, b2, a2)
+//when the left half is copied to the right half
+#define SetTextGradient_LeftRight(r1,g1,b1,a1,r2,g2,b2,a2) SetTextGradient(r1, g1, b1, a1, r1, g1, b1, a1, r2, g2, b2, a2, r2, g2, b2, a2)
+//when the you use the same color for all verts
+#define SetTextGradient_All(r1,g1,b1,a1) SetTextGradient(r1, g1, b1, a1, r1, g1, b1, a1, r1, g1, b1, a1, r1, g1, b1, a1)
+
 //macros for simplifying the "play sound effect" calls
 #define PLAY_SFX(id,arg4,flag) PlaySoundEffect(id,NULL,NULL,NULL,arg4,flag)
 #define PLAY_SFX_AT(id,pos,arg4,flag) PlaySoundEffect(id,&pos.x,&pos.y,&pos.z,arg4,flag)

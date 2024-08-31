@@ -764,12 +764,15 @@ Armadillo_a_model21_Gfx,
 LIST_END,
 };
 
+extern Mtx GiantCake_unk4_Animarr[];
+extern Gfx GiantCake_a_model33_Gfx[];
+extern Anim GiantCake_unk4Header_Animh;
 
 Unk_800FFB74 D_800FFB38 = {
-    (void*)0x0301E2E8,
-    (void*)0x03013708,
-    (void*)0x0301E2E0,
-    (void*)0x0301E2DC,
+    GiantCake_unk4_Animarr,
+    GiantCake_a_model33_Gfx,
+    &GiantCake_unk4Header_Animh.objects,
+    &GiantCake_unk4Header_Animh.frames,
     LIST_END,
 };
 
@@ -786,12 +789,15 @@ GiantCake_a_model15_Gfx,
 LIST_END,
 };
 
+extern Mtx GiantCake_unk5_Animarr[];
+extern Gfx GiantCake_a_model51_Gfx[];
+extern Anim GiantCake_unk5Header_Animh;
 
 Unk_800FFB74 D_800FFB60 = {
-    (void*)0x030222E8,
-    (void*)0x0301C198,
-    (void*)0x030222E0,
-    (void*)0x030222DC,
+    GiantCake_unk5_Animarr,
+    GiantCake_a_model51_Gfx,
+    &GiantCake_unk5Header_Animh.objects,
+    &GiantCake_unk5Header_Animh.frames,
     LIST_END,
 };
 
@@ -1025,7 +1031,7 @@ typedef struct StageSelectData {
 
 enum StageSelectStages{
     NONE = -1,
-    JL = 0,
+    JL, // 0
     AL, // 1
     BL, // 2
     DC, // 3
@@ -1038,10 +1044,10 @@ enum StageSelectStages{
 
 StageSelectData StageSelect[] = {                                                                               //?        
     { 56, 192, SPRITE_JL_ICON,          BOSSRUSH,   AL,     BL,     BL,     NONE,   NONE,   NONE,       NONE,   -1},
-    {108, 112, SPRITE_AL_ICON,          NONE,       DC,     DC,     KL,     BL,     JL,     BOSSRUSH,   NONE,   canAccess(JL) | canAccess(BL) | canAccess(DC) |  canAccess(KL)},
-    {148, 184, SPRITE_BL_ICON,          DC,         DC,     KL,     KL,     NONE,   JL,     JL,         AL,     canAccess(JL) | canAccess(AL) | canAccess(DC) |  canAccess(KL)},
-    {186,  80, SPRITE_DC_ICON,          NONE,       GC,     GC,     KL,     KL,     BL,     AL,         NONE,   canAccess(AL) | canAccess(BL) |  canAccess(KL) | canAccess(GC)},
-    {228, 152, SPRITE_KL_ICON,          DC,         GC,     NONE,   NONE,   NONE,   BL,     BL,         AL,     canAccess(AL) | canAccess(BL) |  canAccess(DC) | canAccess(GC)},
+    {108, 112, SPRITE_AL_ICON,          NONE,       DC,     DC,     KL,     BL,     JL,     BOSSRUSH,   NONE,   canAccess(JL) | canAccess(BL) | canAccess(DC) | canAccess(KL)},
+    {148, 184, SPRITE_BL_ICON,          DC,         DC,     KL,     KL,     NONE,   JL,     JL,         AL,     canAccess(JL) | canAccess(AL) | canAccess(DC) | canAccess(KL)},
+    {186,  80, SPRITE_DC_ICON,          NONE,       GC,     GC,     KL,     KL,     BL,     AL,         NONE,   canAccess(AL) | canAccess(BL) | canAccess(KL) | canAccess(GC)},
+    {228, 152, SPRITE_KL_ICON,          DC,         GC,     NONE,   NONE,   NONE,   BL,     BL,         AL,     canAccess(AL) | canAccess(BL) | canAccess(DC) | canAccess(GC)},
     {258,  56, SPRITE_GC_ICON,          NONE,       NONE,   NONE,   KL,     KL,     KL,     DC,         NONE,   canAccess(DC) | canAccess(KL)},
     { 56, 110, SPRITE_BOSSRUSH_ICON,    NONE,       NONE,   AL,     NONE,   JL,     NONE,   NONE,       NONE,   0},
     {  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
@@ -1934,7 +1940,7 @@ void func_8008C1C8(Gfx** arg0) {
         if ((D_80176F58[0] == 0) && (gOneRun != 0)) {
             if ((gNoHit != 0) && (gCurrentStage != STAGE_TRAINING)) {
                 SetTextGradient_TopBottom(255, 255, 0, 255, 255, 0, 0, 255);
-                printUISprite(276.0f, 204.0f, 0.0f, 0.0f, 1.0f, 16.0f, 16.0f, 0.0f, 75);
+                printUISprite(276.0f, 204.0f, 0.0f, 0.0f, 1.0f, 16.0f, 16.0f, 0.0f, SPRITE_STAR2);
             }
         }
     }
@@ -2507,7 +2513,7 @@ Gfx* setFrustum(Gfx* gfxPos, s32 fbIndex) {
 void func_8008E7B8(CTTask* arg0) {
     //more research needed? is it just getting the right half???
     setPrimColor(arg0->unk5E, arg0->unk60, arg0->unk_62, arg0->unk66);
-    printUISprite(2.0f, 2.0f, 0.0f, 0.0f, 1.0f, 316.0f, 236.0f, 0.0f, 0);
+    printUISprite(2.0f, 2.0f, 0.0f, 0.0f, 1.0f, 316.0f, 236.0f, 0.0f, SPRITE_BLANK);
     CTTask_Unlink(arg0);
 }
 
@@ -4543,12 +4549,12 @@ void func_80097D1C(CTTask* task) {
     CTTask* newTask = task->unk58;
 
     setPrimColor(0xCD, 0xFF, 0x4F, 0xFF);
-    func_80059F28(0, 0, 0, 0, 1, 320, 240, 0, 0);
+    func_80059F28(0, 0, 0, 0, 1, 320, 240, 0, SPRITE_BLANK);
     func_800610B8();
-    printUISprite(80, 16, 0, 0, 1, 0, 0, 0, 0x4E);
-    printUISprite(208, 16, 0, 0, 1, 0, 0, 2, 0x4E);
+    printUISprite(80, 16, 0, 0, 1, 0, 0, 0, SPRITE_BATTLE_STAGETITLEBOARD);
+    printUISprite(208, 16, 0, 0, 1, 0, 0, 2, SPRITE_BATTLE_STAGETITLEBOARD);
     for (i = 0x70; i < 0xB1; i += 0x20){
-        printUISprite(i, 16, 0, 0, 1, 0, 0, 1, 0x4E);
+        printUISprite(i, 16, 0, 0, 1, 0, 0, 1, SPRITE_BATTLE_STAGETITLEBOARD);
     }
     func_800610A8();
     SetTextGradient_TopBottom(240, 20, 10, 255, 220, 220, 1, 255);
@@ -4569,15 +4575,15 @@ void func_80097D1C(CTTask* task) {
         PrintText(101, 209, 1, 1, 8, 14, "ＣＡＮＣＥＬ", 1);
         PrintText(187, 209, 1, 1, 8, 14, "ＣＬＥＡＲ", 1);
         PrintText(265, 209, 1, 1, 8, 14, "ＣＯＰＹ", 1);
-        printUISprite(24, 208, 0, 0, 1, 0, 0, 0, 0x6E);
-        printUISprite(78, 208, 0, 0, 1, 0, 0, 1, 0x6E);
-        printUISprite(164, 208, 0, 0, 1, 0, 0, 3, 0x6E);
-        printUISprite(242, 208, 0, 0, 1, 0, 0, 2, 0x6E);
+        printUISprite(24, 208, 0, 0, 1, 0, 0, 0, SPRITE_SPECIFIC_SYMBOLS); // A
+        printUISprite(78, 208, 0, 0, 1, 0, 0, 1, SPRITE_SPECIFIC_SYMBOLS); // B
+        printUISprite(164, 208, 0, 0, 1, 0, 0, 3, SPRITE_SPECIFIC_SYMBOLS); // L
+        printUISprite(242, 208, 0, 0, 1, 0, 0, 2, SPRITE_SPECIFIC_SYMBOLS); // R
     } else {
         PrintText(117, 209, 1, 1, 8, 14, "ＯＫ", 1);
         PrintText(191, 209, 1, 1, 8, 14, "ＣＡＮＣＥＬ", 1);
-        printUISprite(94, 208, 0, 0, 1, 0, 0, 0, 0x6E);
-        printUISprite(168, 208, 0, 0, 1, 0, 0, 1, 0x6E);
+        printUISprite(94, 208, 0, 0, 1, 0, 0, 0, SPRITE_SPECIFIC_SYMBOLS); // A
+        printUISprite(168, 208, 0, 0, 1, 0, 0, 1, SPRITE_SPECIFIC_SYMBOLS); // B
     }
     func_800610B8();
 }
@@ -4588,16 +4594,17 @@ void func_800983C8(CTTask* task) {
     f32 i;
 
     func_800610B8();
-    func_80059F28(x, y, 0, 0, 1, 0, 0, 0, 0x4D);
-    func_80059F28(x, y + 24, 0, 0, 1, 32, 16, 3, 0x4D);
-    func_80059F28(x, y + 40, 0, 0, 1, 0, 0, 6, 0x4D);
-    func_80059F28(x + 96, y, 0, 0, 1, 0, 0, 2, 0x4D);
-    func_80059F28(x + 96, y + 24, 0, 0, 1, 0, 0, 5, 0x4D);
-    func_80059F28(x + 96, y + 40, 0, 0, 1, 0, 0, 8, 0x4D);
+    //drawing the board manually??
+    func_80059F28(x, y, 0, 0, 1, 0, 0, 0, SPRITE_BATTLE_BIGBOARD);
+    func_80059F28(x, y + 24, 0, 0, 1, 32, 16, 3, SPRITE_BATTLE_BIGBOARD);
+    func_80059F28(x, y + 40, 0, 0, 1, 0, 0, 6, SPRITE_BATTLE_BIGBOARD);
+    func_80059F28(x + 96, y, 0, 0, 1, 0, 0, 2, SPRITE_BATTLE_BIGBOARD);
+    func_80059F28(x + 96, y + 24, 0, 0, 1, 0, 0, 5, SPRITE_BATTLE_BIGBOARD);
+    func_80059F28(x + 96, y + 40, 0, 0, 1, 0, 0, 8, SPRITE_BATTLE_BIGBOARD);
     for (i = x + 32; i <= x + 64; i += 32){
-        func_80059F28(i, y, 0, 0, 1, 0, 0, 1, 0x4D);
-        func_80059F28(i, y + 24, 0, 0, 1, 0, 0, 4, 0x4D);
-        func_80059F28(i, y + 40, 0, 0, 1, 0, 0, 7, 0x4D);
+        func_80059F28(i, y, 0, 0, 1, 0, 0, 1, SPRITE_BATTLE_BIGBOARD);
+        func_80059F28(i, y + 24, 0, 0, 1, 0, 0, 4, SPRITE_BATTLE_BIGBOARD);
+        func_80059F28(i, y + 40, 0, 0, 1, 0, 0, 7, SPRITE_BATTLE_BIGBOARD);
     }
 }
 
@@ -4683,10 +4690,10 @@ void func_80098F50(CTTask* task) {
     if ((u16) task->unk72 == 1) {
         temp = task->unk_64;
         func_80059F28(x, y + 33, 0, 0, 1, 0, 0, 0,D_801003CC[task->unk66]);
-        printUISprite(x + 28, y + 33, 0, 0, 1, 0, 0, 0, 0x70);
+        printUISprite(x + 28, y + 33, 0, 0, 1, 0, 0, 0, SPRITE_CROWN_ICON);
         SetTextGradient_TopBottom(20, 100, 1, 255, 240, 220, 0, 255);
         func_800612F0(1);
-        printUISprite(x + 20 + 16 + 9, y + 33, 0, 0, 1, 16, 16, 20, 1);
+        printUISprite(x + 20 + 16 + 9, y + 33, 0, 0, 1, 16, 16, 20, SPRITE_TEXTBIG);
         func_800612F0(0);
         SetTextGradient_TopBottom(20, 100, 1, 255, 240, 220, 0, 255);
         PrintText(x + 20 + 32 + 10, y + 30, 0, 1, 12, 20, ParseIntToBase10(temp, &resultChar[0]), 1);
@@ -4871,7 +4878,7 @@ void func_8009AF98(CTTask* task) {
 
 void func_8009B08C(CTTask* task) {
     setPrimColor(0, 0, 0, 255);
-    printUISprite(2, 2, 0, 0, 1, 316, 236, 0, 0);
+    printUISprite(2, 2, 0, 0, 1, 316, 236, 0, SPRITE_BLANK);
     gGameModeState = 3;
     task->function = func_8009B120;
 }
@@ -5200,33 +5207,34 @@ void func_8009C828(CTTask* task) {
 void func_8009CBC0(void) {
     s32 i, j;
 
+    //drawing the board manually??
     setPrimColor(205, 255, 79, 255);
-    func_80059F28(0, 0, 0, 0, 1, 320, 240, 0, 0);
+    func_80059F28(0, 0, 0, 0, 1, 320, 240, 0, SPRITE_BLANK);
     func_800610B8();
-    func_80059F28(48, 16, 0, 0, 1, 32, 32, 0, 78);
+    func_80059F28(48, 16, 0, 0, 1, 32, 32, 0, SPRITE_BATTLE_STAGETITLEBOARD);
     for (i = 80; i < 209; i += 0x20){
-        func_80059F28(i, 16, 0, 0, 1, 32, 32, 1, 78);
+        func_80059F28(i, 16, 0, 0, 1, 32, 32, 1, SPRITE_BATTLE_STAGETITLEBOARD);
     }
-    func_80059F28(240, 16, 0, 0, 1, 32, 32, 2, 78);
-    func_80059F28(32, 56, 0, 0, 1, 32, 24, 0, 77);
-    func_80059F28(256, 56, 0, 0, 1, 32, 24, 2, 77);
-    func_80059F28(32, 200, 0, 0, 1, 32, 24, 6, 77);
-    func_80059F28(256, 200, 0, 0, 1, 32, 24, 8, 77);
+    func_80059F28(240, 16, 0, 0, 1, 32, 32, 2, SPRITE_BATTLE_STAGETITLEBOARD);
+    func_80059F28(32, 56, 0, 0, 1, 32, 24, 0, SPRITE_BATTLE_BIGBOARD);
+    func_80059F28(256, 56, 0, 0, 1, 32, 24, 2, SPRITE_BATTLE_BIGBOARD);
+    func_80059F28(32, 200, 0, 0, 1, 32, 24, 6, SPRITE_BATTLE_BIGBOARD);
+    func_80059F28(256, 200, 0, 0, 1, 32, 24, 8, SPRITE_BATTLE_BIGBOARD);
     for (i = 0x40; i < 225; i += 0x20){
-        func_80059F28(i, 56, 0, 0, 1, 32, 24, 1, 77);
+        func_80059F28(i, 56, 0, 0, 1, 32, 24, 1, SPRITE_BATTLE_BIGBOARD);
     }
     for (i = 0x40; i != 0x100; i += 0x20){
-        func_80059F28(i, 200, 0, 0, 1, 32, 24, 7, 77);
+        func_80059F28(i, 200, 0, 0, 1, 32, 24, 7, SPRITE_BATTLE_BIGBOARD);
     }
     for (j = 80; j < 177; j += 0x18){
-        func_80059F28(32, j, 0, 0, 1, 32, 24, 3, 77);
+        func_80059F28(32, j, 0, 0, 1, 32, 24, 3, SPRITE_BATTLE_BIGBOARD);
     }
     for (j = 80; j != 200; j += 0x18){
-        func_80059F28(256, j, 0, 0, 1, 32, 24, 5, 77);
+        func_80059F28(256, j, 0, 0, 1, 32, 24, 5, SPRITE_BATTLE_BIGBOARD);
     }
     for (i = 0x40; i != 0x100; i += 0x20){
         for (j = 80; j != 200; j += 0x18){
-            func_80059F28(i, j, 0, 0, 1, 32, 24, 4, 77);
+            func_80059F28(i, j, 0, 0, 1, 32, 24, 4, SPRITE_BATTLE_BIGBOARD);
         }
     }
 }
@@ -5237,7 +5245,7 @@ void func_8009CFA8(void) {
     for (i = 0; i != 5; i++){
         for (j = 0; j != 8; j++){
             func_800612F0(i);
-            func_80059F28(j * 40, i * 48, 0, 0, 1, 0, 0, j, 210);
+            func_80059F28(j * 40, i * 48, 0, 0, 1, 0, 0, j, SPRITE_BATTLE_CHAMELEONBACKGROUND);
         }
     }
 }
@@ -6002,14 +6010,14 @@ void func_800A3DC0(CTTask* arg0) {
 
 void PrintDataClearConfirm(void) {
     setPrimColor(0, 0, 0, 200);
-    printUISprite(64, 72, 0, 0, 1, 192, 88, 0, 0);
+    printUISprite(64, 72, 0, 0, 1, 192, 88, 0, SPRITE_BLANK);
     func_800610A8();
     SetTextGradient_TopBottom(255, 10, 10, 255, 200, 200, 0, 255);
     PrintText(76, 88, 0, 1, 0, 0, "ＤＡＴＡ", 1);
     PrintText(148, 88, 0, 1, 0, 0, "ＣＬＥＡＲ？", 1);
     func_800612F0(0);
-    printUISprite(96, 128, 0, 0, 1, 0, 0, 0, 110);
-    printUISprite(152, 128, 0, 0, 1, 0, 0, 1, 110);
+    printUISprite(96, 128, 0, 0, 1, 0, 0, 0, SPRITE_SPECIFIC_SYMBOLS); // A
+    printUISprite(152, 128, 0, 0, 1, 0, 0, 1, SPRITE_SPECIFIC_SYMBOLS); // B
     PrintText(120, 129, 0, 1, 8, 14, "ＯＫ", 1);
     PrintText(176, 129, 0, 1, 8, 14, "ＣＡＮＣＥＬ", 1);
     func_800610B8();
@@ -6023,7 +6031,7 @@ void func_800A41C0(CTTask* task) {
     if (task->unk_62 != 0) {
         task->unk_62--;
         setPrimColor(0, 0, 0, 200);
-        printUISprite(64, 160, 0, 0, 1, 192, 32, 0, 0);
+        printUISprite(64, 160, 0, 0, 1, 192, 32, 0, SPRITE_BLANK);
         SetTextGradient_TopBottom(255, 10, 10, 255, 200, 200, 0, 255);
         PrintText(136, 160, 0, 1, 24, 24, "ＯＫ！", 1);
     } else {
@@ -6044,8 +6052,9 @@ void Process_OptionsMenu(void) {
         LoadSprite(SPRITE_BATTLE_BIGBOARD);
         LoadSprite(SPRITE_BATTLE_STAGETITLEBOARD);
         LoadSprite(SPRITE_BATTLE_OPTIONSARROWS);
-        LoadSprite(195);
-        LoadSprite(14);
+        //??????
+        LoadSprite(SPRITE_TEXT_JL2);
+        LoadSprite(SPRITE_GRAYANT);
         CTTaskList_Init();
         D_80168DA0 = 4;
         gGameModeState++;
@@ -6162,7 +6171,7 @@ void Task_GameOverLetter(CTTask* task) {
     task->unk7C += 2.5;
     func_800612F0(task->unk_64);
     SetTextGradient_TopBottom(240, 20, 10, 255, 220, 120, 1, 255);
-    func_80059F28(task->pos.x, task->pos.y, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, task->unk_04, 94);
+    func_80059F28(task->pos.x, task->pos.y, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, task->unk_04, SPRITE_TEXTBIGGER);
 }
 
 CTTask* func_800A4BCC(CTTask* task) {
@@ -6216,8 +6225,8 @@ void Process_GameOver(void) {
             D_801FC9AC = 0;
             func_8008F114();
             func_8008FE00();
-            LoadPlayerEyes(*gSelectedCharacters);
-            SetPlayerContextEyes(*gSelectedCharacters, 2, 0);
+            LoadPlayerEyes(gSelectedCharacters[0]);
+            SetPlayerContextEyes(gSelectedCharacters[0], 2, 0);
             break;
         case 1:
             func_800A4484();
@@ -7000,7 +7009,7 @@ void func_800A9728(CTTask* arg0) {
 void func_800A97E4(CTTask* arg0) {
     if (func_8008EC90() != 0) {
         setPrimColor(0, 0, 0, 0xFF);
-        printUISprite(2.0f, 2.0f, 0.0f, 0.0f, 1.0f, 316.0f, 236.0f, 0.0f, 0);
+        printUISprite(2.0f, 2.0f, 0.0f, 0.0f, 1.0f, 316.0f, 236.0f, 0.0f, SPRITE_BLANK);
         if (D_800F0704 != 0) {
             gGameModeState = 3;
             return;

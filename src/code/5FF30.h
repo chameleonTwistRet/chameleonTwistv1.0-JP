@@ -7,12 +7,6 @@
 //used in func_80098684 and func_80088B7C
 #define Eight 8.0f+0
 
-//migrate these to macros.h or something, since other c's can do stuff like this
-//when the top half is copied to the bottom half
-#define SetTextGradient_TopBottom(r1,g1,b1,a1,r2,g2,b2,a2) SetTextGradient(r1, g1, b1, a1, r2, g2, b2, a2, r1, g1, b1, a1, r2, g2, b2, a2)
-//when the left half is copied to the right half
-#define SetTextGradient_LeftRight(r1,g1,b1,a1,r2,g2,b2,a2) SetTextGradient(r1, g1, b1, a1, r1, g1, b1, a1, r2, g2, b2, a2, r2, g2, b2, a2)
-
 
 enum SchedMessages {
     SCHED_MESG_VINTR = 0,
@@ -86,7 +80,7 @@ extern s16 D_80200B38;
 extern s32 D_80236978;
 typedef struct UnkPlaySoundEffect {
     char unk_00[0x0E];
-    s16 unk_0E;
+    s16 unk_0E; //amount of sounds?
 } UnkPlaySoundEffect;
 
 typedef struct Unk_800FFB74 {

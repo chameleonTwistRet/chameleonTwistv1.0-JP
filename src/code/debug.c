@@ -184,11 +184,11 @@ void Debug_TestView(void) {
     }
     if (sDebugTestView != 0) {
         setPrimColor(0, 0, 0, 255);
-        printUISprite(0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 320.0f, 180.0f, 0.0f, 0);
+        printUISprite(0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 320.0f, 180.0f, 0.0f, SPRITE_BLANK);
         func_8007B480(0.0f, 0.0f, 0.0f, 0.0f, 400.0f, 2000.0f);
         func_8007B4CC(0.0f, 120.0f, 0.0f, 0.0f, 120.0f, 0.0f);
-        printUISprite(32.0f, 32.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 77);
-        SetTextGradient(191, 10, 0, 255, 200, 200, 0, 255, 191, 10, 0, 255, 200, 200, 0, 255);
+        printUISprite(32.0f, 32.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, SPRITE_BATTLE_BIGBOARD);
+        SetTextGradient_TopBottom(191,  10, 0, 255, 200, 200, 0, 255);
         PrintTextWrapper(64.0f, 32.0f, 0.0f, 1.0f, "ＴＥＳＴＶＩＥＷ", 1);
     }
 }
