@@ -422,12 +422,12 @@ typedef struct SpriteActor {
     Vec3f position;
     Vec3f scale;
     s32 unk20;
-    s32 unk24;
+    f32 unk24;
     f32 unk28;
     s32 damages;
-    s32 unk30;
-    s32 unk34;
-    s32 unk38;
+    f32 unk30;
+    f32 unk34;
+    f32 unk38;
     s32 unk3C;
     Color128 color;
 } SpriteActor; // sizeof 0x50

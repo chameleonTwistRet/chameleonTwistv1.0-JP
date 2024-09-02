@@ -5677,7 +5677,20 @@ void func_800A0D90(void) {
     func_80084788();
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A0E3C.s")
+void func_800A0E3C(CTTask* task) {
+    void (*taskFunc)(CTTask*);
+    CTTask* sp20;
+
+    sp20 = task->unk58;
+    taskFunc = task->function;
+    if (taskFunc == NULL) {
+        DummiedPrintf("NULL POINTER %d\n", task->taskID);
+    } else {
+        taskFunc(task);
+    }
+    func_8008D7FC(task);
+    task->unk50 = ChameleonGfxs[sp20->unk5E];
+}
 
 u16 func_800A0EB8(CTTask* task) {
     return func_8008D6E4(task, &gContMain[task->unk_62]);
