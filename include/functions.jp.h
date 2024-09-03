@@ -546,6 +546,8 @@ void func_800B1DA0(Collider* arg0, s32 arg1);
 void func_800B12B4(Collider* arg0, RoomObject* arg1); // assumed
 void func_800B1538(Collider* arg0, RoomObject* arg1); // assumed
 void func_800D90E0(Collider* arg0);
+void func_800AF9D0(Collider* arg0, RoomObject* arg1);
+void MoveTheater(Camera* arg0); // might be wrong
 
 void func_800D8F3C(Collider* arg0);
 void func_800D8F9C(Collider* arg0);

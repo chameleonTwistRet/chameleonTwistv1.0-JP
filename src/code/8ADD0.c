@@ -2221,6 +2221,8 @@ void func_800C88D0(void) {
     func_800C56D4(&gPlayerActors[0]);
 }
 
+
+
 CardinalDirection gCardinalDirections[] = {
     {0, 0, 0, "NO_DIR", 0},
     {0, -1, 3, "NORTH", 180.0f},

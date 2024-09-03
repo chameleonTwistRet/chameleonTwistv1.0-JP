@@ -748,6 +748,13 @@ enum AntLandStageFlags {
     SF_SPIN_ROOM_1_COMPLETED = 0
 };
 
+enum Zone_Directions {
+    ZDIR_NONE = 0,
+    ZDIR_NORTH,
+    ZDIR_EAST,
+    ZDIR_SOUTH,
+    ZDIR_WEST
+};
 
 /*
 enum JLFlags {

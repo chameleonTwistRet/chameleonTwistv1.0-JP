@@ -373,7 +373,7 @@ typedef struct RoomActor {
     f32 unk10;
     f32 unk14;
     f32 unk18;
-    s32 unk1C;
+    f32 unk1C;
     f32 unk20;
     f32 unk24;
     f32 unk28;
@@ -382,14 +382,14 @@ typedef struct RoomActor {
     f32 unk34;
     f32 unk38;
     f32 unk3C;
-    s32 unk40;
-    s32 unk44;
-    s32 unk48;
-    s32 unk4C;
-    s32 unk50;
-    s32 unk54;
-    s32 unk58;
-    s32 unk5C;
+    f32 unk40;
+    f32 unk44;
+    f32 unk48;
+    f32 unk4C;
+    f32 unk50;
+    f32 unk54;
+    f32 unk58;
+    f32 unk5C;
 } RoomActor; //sizeof 0x60
 
 typedef struct Collectable {
