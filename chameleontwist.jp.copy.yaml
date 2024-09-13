@@ -25,7 +25,7 @@ options:
   asm_jtbl_label_macro: jlabel
   asm_data_macro: dlabel
   create_undefined_funcs_auto: no
-  asm_emit_size_directive: false
+  asm_emit_size_directive: true
   cache_path: .splache
 segments:
   - name: header
@@ -359,7 +359,6 @@ segments:
     - name: static0
       dir: static0
       type: .data
-      subalign: 8
       vram: 0x81000000
       start: 0x101B60
       subsegments:
@@ -886,7 +885,6 @@ segments:
     - name: AntLand
       dir: AntLand
       type: .data
-      subalign: 8
       vram: 0x81000000
       start: 0x4807a0
       subsegments:
@@ -1553,7 +1551,6 @@ segments:
     - name: BombLand
       dir: BombLand
       type: .data
-      subalign: 8
       vram: 0x81000000
       start: 0x4DBBB0
       subsegments:
@@ -2232,7 +2229,6 @@ segments:
     - name: KidsLand
       dir: KidsLand
       type: .data
-      subalign: 8
       vram: 0x81000000
       start: 0x51FB40
       subsegments:
@@ -3221,7 +3217,6 @@ segments:
     - name: DesertCastle
       dir: DesertCastle
       type: .data
-      subalign: 8
       vram: 0x81000000
       start: 0x578850
       subsegments:
@@ -4164,7 +4159,6 @@ segments:
     - name: IntroOutro
       dir: IntroOutro
       type: .data
-      subalign: 8
       vram: 0x81000000
       start: 0x5C3B20
       subsegments:
@@ -5155,7 +5149,6 @@ segments:
     - name: GhostCastle
       dir: GhostCastle
       type: .data
-      subalign: 8
       vram: 0x81000000
       start: 0x6344C0
       subsegments:
@@ -6024,7 +6017,6 @@ segments:
     - name: JungleLand
       dir: JungleLand
       type: .data
-      subalign: 8
       vram: 0x81000000
       start: 0x6A8e20
       subsegments:
@@ -6939,7 +6931,6 @@ segments:
     - name: LizardKong
       dir: LizardKong
       type: .data
-      subalign: 8
       vram: 0x81000000
       start: 0x70db70
       subsegments:
@@ -7145,7 +7136,6 @@ segments:
     - name: Quintella
       dir: Quintella
       type: .data
-      subalign: 8
       vram: 0x81000000
       start: 0x7477f0
       subsegments:
@@ -7349,7 +7339,6 @@ segments:
     - name: BombSnake
       dir: BombSnake
       type: .data
-      subalign: 8
       vram: 0x81000000
       start: 0x7A72B0
       subsegments:
@@ -7422,6 +7411,7 @@ segments:
       - [0x7add60] #identity matrix
       - [0x7adda0] #B8000000
       - [0x7adda8, rgba16, img/bombSnakeEars.rgba16, 41, 41]
+      - [0x7AEACA] #alignment
       - [0x7AEAD0, gfxSeg, bombSnakeEars/bombSnakeEars]
 
       - [0x7aef20, vtx, unkD/unkD]
@@ -7461,7 +7451,6 @@ segments:
     - name: GiantCake
       dir: GiantCake
       type: .data
-      subalign: 8
       vram: 0x81000000
       start: 0x7af730
       subsegments:
@@ -7754,7 +7743,6 @@ segments:
     - name: Armadillo
       dir: Armadillo
       type: .data
-      subalign: 8
       vram: 0x81000000
       start: 0x7d22b0
       subsegments:
@@ -7937,7 +7925,6 @@ segments:
     - name: PileOfBooks
       dir: PileOfBooks
       type: .data
-      subalign: 8
       vram: 0x81000000
       start: 0x7fd3b0
       subsegments:
@@ -8163,7 +8150,6 @@ segments:
     - name: BattleMode
       dir: BattleMode
       type: .data
-      subalign: 8
       vram: 0x81000000
       start: 0x849930
       subsegments:
@@ -8476,7 +8462,6 @@ segments:
     - name: Training
       dir: Training
       type: .data
-      subalign: 8
       vram: 0x81000000
       start: 0x85c970
       subsegments:
@@ -8695,7 +8680,6 @@ segments:
     - name: BossRush
       dir: BossRush
       type: .data
-      subalign: 8
       vram: 0x81000000
       start: 0x8788B0
       subsegments:
@@ -8792,7 +8776,6 @@ segments:
     - name: Global
       dir: Global
       type: .data
-      subalign: 8
       vram: 0x81000000
       start: 0x87F640
       subsegments:
@@ -9729,7 +9712,6 @@ segments:
     - name: extImages
       dir: extImages
       type: .data
-      subalign: 8
       vram: 0x80FF20E8
       start: 0x8c26a0
       subsegments:
@@ -10598,7 +10580,6 @@ segments:
     - name: CreditsDemo
       dir: CreditsDemo
       type: .data
-      subalign: 8
       vram: 0x81000000
       start: 0xab10b0
       subsegments:
@@ -10616,7 +10597,6 @@ segments:
     - name: Rabbit
       dir: Rabbit
       type: .data
-      subalign: 8
       vram: 0x81000000
       start: 0xAB5360
       subsegments:
@@ -10708,7 +10688,6 @@ segments:
     - name: Animations
       dir: Animations
       type: .data
-      subalign: 8
       vram: 0x81000000
       start: 0xABD990
       subsegments:
@@ -10733,7 +10712,6 @@ segments:
     - name: Battle_Chameleons
       dir: Battle_Chameleons
       type: .data
-      subalign: 8
       vram: 0x81000000
       start: 0xACBD90
       subsegments:
@@ -11450,7 +11428,6 @@ segments:
     - name: DemoData
       dir: DemoData
       type: .data
-      subalign: 8
       vram: 0x81000000
       start: 0xAF5690
       subsegments:
@@ -11486,7 +11463,6 @@ segments:
     - name: Davy
       dir: Davy
       type: .data
-      subalign: 8
       vram: 0x81000000
       start: 0xAFC6B0
       subsegments:
@@ -11626,7 +11602,6 @@ segments:
     - name: Jack
       dir: Jack
       type: .data
-      subalign: 8
       vram: 0x81000000
       start: 0xB05290
       subsegments:
@@ -11766,7 +11741,6 @@ segments:
     - name: Fred
       dir: Fred
       type: .data
-      subalign: 8
       vram: 0x81000000
       start: 0xB0DEB0
       subsegments:
@@ -11906,7 +11880,6 @@ segments:
     - name: Linda
       dir: Linda
       type: .data
-      subalign: 8
       vram: 0x81000000
       start: 0xB16A90
       subsegments:
@@ -12050,7 +12023,6 @@ segments:
     - name: Black
       dir: Black
       type: .data
-      subalign: 8
       vram: 0x81000000
       start: 0xB1FE00
       subsegments:
@@ -12190,7 +12162,6 @@ segments:
     - name: White
       dir: White
       type: .data
-      subalign: 8
       vram: 0x81000000
       start: 0xB289F0
       subsegments:
