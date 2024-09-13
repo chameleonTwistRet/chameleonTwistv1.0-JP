@@ -169,7 +169,6 @@ s32 func_8008C040(s32 arg0);
 void func_8008C070(s32 arg0);
 void func_8008C1C8(Gfx** arg0);
 void func_8008C35C(Gfx** arg0);
-s32 Actor_PlaySound(Actor* actor, s32 sfxID, s32 unused1, s32 unused2);
 void func_8008C3F0(Actor* actor, s32 sfxID, s32 unused);
 s32 func_8008C438(void);
 void Timing_StartGfx(void);

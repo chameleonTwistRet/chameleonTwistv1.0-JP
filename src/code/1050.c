@@ -286,16 +286,16 @@ void func_80025EF0(PlayerActor* arg0, Tongue* arg1, s32 arg2) {
         func_80027240(&D_800FF8D4, anim, sp120 % animFrames, animObjects);
         if (D_800F0560 == 0 && sp120 % animFrames >= 3 && sp120 % animFrames <= 12) {
             if (arg0->inWater == 1) {
-                PLAY_SFX_AT(2, arg0->pos, 0, 0);
+                PLAY_SFX_AT(SFX_ChameleonRightFootSplash, arg0->pos, 0, 0);
             } else {
-                PLAY_SFX_AT(0, arg0->pos, 0, 0);
+                PLAY_SFX_AT(SFX_ChameleonRightFoot, arg0->pos, 0, 0);
             }
             D_800F0560 = 1;
         } else if (D_800F0560 == 1 && sp120 % animFrames > 12) {
             if (arg0->inWater == 1) {
-                PLAY_SFX_AT(3, arg0->pos, 0, 0);
+                PLAY_SFX_AT(SFX_ChameleonLeftFootSplash, arg0->pos, 0, 0);
             } else {
-                PLAY_SFX_AT(1, arg0->pos, 0, 0);
+                PLAY_SFX_AT(SFX_ChameleonLeftFoot, arg0->pos, 0, 0);
             }
             D_800F0560 = 0;
         }
@@ -304,16 +304,16 @@ void func_80025EF0(PlayerActor* arg0, Tongue* arg1, s32 arg2) {
         func_80027240(&D_800FF8D4, anim, sp120 % animFrames, animObjects);
         if (D_800F0560 == 0 && sp120 % animFrames >= 0 && sp120 % animFrames <= 9) {
             if (arg0->inWater == 1) {
-                PLAY_SFX_AT(2, arg0->pos, 0, 0);
+                PLAY_SFX_AT(SFX_ChameleonRightFootSplash, arg0->pos, 0, 0);
             } else {
-                PLAY_SFX_AT(0, arg0->pos, 0, 0);
+                PLAY_SFX_AT(SFX_ChameleonRightFoot, arg0->pos, 0, 0);
             }
             D_800F0560 = 1;
         } else if (D_800F0560 == 1 && sp120 % animFrames > 9) {
             if (arg0->inWater == 1) {
-                PLAY_SFX_AT(3, arg0->pos, 0, 0);
+                PLAY_SFX_AT(SFX_ChameleonLeftFootSplash, arg0->pos, 0, 0);
             } else {
-                PLAY_SFX_AT(1, arg0->pos, 0, 0);
+                PLAY_SFX_AT(SFX_ChameleonLeftFoot, arg0->pos, 0, 0);
             }
             D_800F0560 = 0;
         }

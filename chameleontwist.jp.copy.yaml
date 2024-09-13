@@ -230,13 +230,13 @@ segments:
       - [0xC9690, data, gspFast3DTextStart]
       - [0xCAAC0, data, aspMainTextStart]
       - [0xCB8E0, data, code/1050] #800EE290 through 800F0B50
-      - [0xCBAA0, data, code/debug] #800F0B50 through 800F0B50
+      - [0xCBAA0, .data, code/debug] #800F0B50 through 800F0B50
       - [0xCBF50, .data, code/battle]
       - [0xCC190, .data, code/sprite]
       - [0xDA1C0, .data, code/5FF30] #800FEDC0 through 80108B70
       - [0xDB840, data, code/5FF30] #starts at 80100440
       - [0xE3BA0, .data, code/8ADD0] #801087A0 through 80108B70
-      - [0xE3F70, data, code/math] #80108B70 through 80109010
+      - [0xE3F70, .data, code/math] #80108B70 through 80109010
       - [0xE4410, .data, os/initialize] #80109010 through 80109030
       - [0xE4430, .data, io/vimgr] # 80109030 through 80109050
       - [0xE4450, data, io/vitbl] # 80109050 through 80109D70
@@ -1227,7 +1227,7 @@ segments:
     
       - {start: 0x4C97E0, type: collision, name: exit2/exit2, args: "Verts", data_only: True}
       - {start: 0x4C9828, type: collision, name: exit2/exit2, args: "Tris", data_only: True}
-      - {start: 0x4C9858, type: collision, name: exit2/exit2, args: "Settings"}
+      - {start: 0x4C9858, type: collision, name: exit2/exit2, args: "Settings", data_only: True}
       - [0x4C9870]
       - {start: 0x4C9884, type: collision, name: exit3/exit3, args: "Verts", data_only: True}
       - {start: 0x4C98cc, type: collision, name: exit3/exit3, args: "Tris", data_only: True}

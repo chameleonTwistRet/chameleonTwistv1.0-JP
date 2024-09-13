@@ -474,7 +474,7 @@ f32 func_800B2308(f32 arg0, s32 caseNum) {
         break;
     case 1:
         // Range(f) = [0, 1]
-        ret = (1.0 - __cosf(arg0 * PI)) * 0.5;
+        ret = (1.0 - cosf(arg0 * PI)) * 0.5;
         break;
     case 2:
         ret = arg0;

@@ -4284,7 +4284,7 @@ void Effect_TypeA_Init(f32 posX, f32 posY, f32 posZ, s32 numParts, s32 size) {
     effect->pos.y = posY;
     effect->pos.z = posZ;
     effect->duration = size * 3;
-    effect->unk8 = PLAY_SFX_AT(0xC3, effect->pos, 0, 0x20);
+    effect->unk8 = PLAY_SFX_AT(SFX_C3_unkSnd, effect->pos, 0, 0x20);
 
     for (parts = effect->parts, i = 0; i < numParts; i++) {
         parts[i].pos.x = posX + RANDOM(-size, size);
@@ -4311,7 +4311,7 @@ void Effect_TypeA_Init2(f32 posX, f32 posY, f32 posZ, s32 numParts, s32 size) {
     effect->pos.y = posY;
     effect->pos.z = posZ;
     effect->duration = size * 3;
-    effect->unk8 = PLAY_SFX_AT(0xC3, effect->pos, 10, 0x20);
+    effect->unk8 = PLAY_SFX_AT(SFX_C3_unkSnd, effect->pos, 10, 0x20);
 
     for (parts = effect->parts, i = 0; i < numParts; i++) {
         parts[i].pos.x = posX + RANDOM(-size, size);
@@ -4955,6 +4955,7 @@ Effect* Effect_TypeD_Init(f32 posX, f32 posY, f32 posZ, f32 targetX, f32 targetY
     effect->duration = 30.0f;
     effect->lifeTime = 0.0f;
 
+    //null sound
     PLAY_SFX_AT(0xE0, effect->pos, 0, 0x20);
 
     for (parts = effect->parts, i = 0; i < effect->numParts; i++) {
@@ -6937,7 +6938,7 @@ void Effect_TypeAG_Init(f32 arg0, f32 arg1, s32 arg2) {
         return;
     }
 
-    effect->spriteID = PLAY_SFX(0x3F, 0, 0x10);
+    effect->spriteID = PLAY_SFX(SFX_3F_unkSnd, 0, 0x10);
     func_800882D0(effect->spriteID, 11);
     func_80088474(effect->spriteID, 0);
     effect->pos.x = 1.0f / arg0;
@@ -7121,7 +7122,7 @@ s32 func_8007101C(void) {
     s32 i;
 
     if (func_80055EEC(0x800) % 20 == 1) {
-        PLAY_SFX(0x2A, 0, 0x10);
+        PLAY_SFX(SFX_2A_unkSnd, 0, 0x10);
         if (D_800FE708 == 0) {
             D_800FE708 = 5;
         } else {
@@ -7129,7 +7130,7 @@ s32 func_8007101C(void) {
         }
     }
     if (func_80055EEC(0x400) % 20 == 1) {
-        PLAY_SFX(0x2A, 0, 0x10);
+        PLAY_SFX(SFX_2A_unkSnd, 0, 0x10);
         if (D_800FE708 == 5) {
             D_800FE708 = 0;
         } else {
@@ -7398,7 +7399,7 @@ void Effect_TypeAL_Update(Effect* effect, Gfx** pGfxPos) {
                 effect->lifeTime = 1.0f;
                 if (gSelectedCharacters[0] == CHARA_WHITE && gNoHit && gOneRun) {
                     if (effect->spriteID == 1) {
-                        PLAY_SFX(0x38, 0, 0x10);
+                        PLAY_SFX(SFX_38_unkSnd, 0, 0x10);
                         effect->spriteID = 0;
                     }
                     SetTextGradientFromPalette(5);

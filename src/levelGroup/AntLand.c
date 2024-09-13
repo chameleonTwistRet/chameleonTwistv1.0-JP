@@ -2171,10 +2171,12 @@ Vec3w AntLand_exit2_collision_tris[] = {
     #include "assets/levelGroup/AntLand/exit2/exit2.colT.inc.c"
 };
 
-#include "assets/levelGroup/AntLand/exit2/exit2.colS.inc.c"
+Rect3D AntLand_exit2_ColS = {
+    #include "assets/levelGroup/AntLand/exit2/exit2.colS.inc.c"
+};
 
 ModelCollision AntLand_exit2_collision = {
-    6, 4, AntLand_exit2_collison_verts, AntLand_exit2_collision_tris, &AntLand_exit2_ColS   // Nathan's data_only doesnt work for this rect3d
+    6, 4, AntLand_exit2_collison_verts, AntLand_exit2_collision_tris, &AntLand_exit2_ColS
 };
 
 Vec3f AntLand_exit3_collison_verts[] = {

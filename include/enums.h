@@ -526,7 +526,19 @@ enum Letters {
 	LETTER_Z = 26,
 	SPACE = 100
 };
-	
+
+/*
+  for sfx copies, define them as SFX_OriginalSound+offset
+  eg, PLAY_SFX(13, 0, 16) would be PLAY_SFX(SFX_EnemyCollide+1)
+  this makes is so that we know what is and isnt redundant
+  enums of something like SFX_CopyOf(X) would be fine but
+  very annoying to refactor in the long run
+
+  if it is found that the copied index has a unique use, please add it
+  and notate accordingly
+  (hypothetically) eg, SFX_EnemyCollide+1 = SFX_EnemyCollide_ExtraChannel
+  until then, it will be presumed leftover
+*/
 enum SFX {
     SFX_ChameleonRightFoot = 0,
     SFX_ChameleonLeftFoot = 1,
