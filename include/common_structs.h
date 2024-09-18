@@ -131,11 +131,6 @@ typedef struct PlayerActor {
     /* 0x12C */ f32 tongueSeperation; 
 } PlayerActor; //sizeof 0x130
 
-typedef struct EffectTypeAQArg7 {
-    /* 0x0 */ u8 unk_0;
-    /* 0x1 */ u8 unk_1;
-} EffectTypeAQArg7; //sizeof 0x2
-
 typedef struct unk_80052094_8 {
     /* 0x00 */ f32 unk_00;
     /* 0x08 */ s32 unk_04;
@@ -525,11 +520,72 @@ typedef struct Camera {//take these with a grain of salt
     /* 0x70 */ f32 unk70;
 } Camera; //size 0x74
 
+//the only reason this exists is because PlayerInit references what SEEMS to be
+//PlayerActor but unk_f4[3] is an s32???????? this sucks ass
+typedef struct PlayerActor_s {
+    /* 0x000 */ u32 playerID;
+    /* 0x004 */ Vec3f pos;
+    /* 0x010 */ Vec3f pos2; //slightly off from pos
+    /* 0x01C */ f32 yCounter; //counts around where the y is but not at
+    /* 0x020 */ f32 waterGIMP; //how much to gimp you in water? idk but its correlated
+    /* 0x024 */ Vec3f vel;
+    /* 0x030 */ Vec3f vaultlocity;
+    /* 0x03C */ f32 yAngle;
+    /* 0x040 */ f32 forwardVel; //between 0 and 20.8. gets broken on slope jumps
+    /* 0x044 */ f32 forwardImpulse;
+    /* 0x048 */ f32 waterFactor; //gets effected in water again
+    /* 0x04C */ f32 hitboxSize; //30 default
+    /* 0x050 */ f32 hitboxYStretch; //unconfirmed. 150 default.
+    /* 0x054 */ u32 canJump;    //0x00 = yes, 0x01 = no
+    /* 0x058 */ u32 jumpReleasedInAir;    // 0x00 = no, 0x01 = yes
+    /* 0x05C */ s32 jumpAnimFrame;
+    /* 0x060 */ u32 hasTumbled;    //0x00 = no, 0x01 = yes. resets on jump.
+    /* 0x064 */ u32 unk64;
+    /* 0x068 */ u32 inWater;//0x00 = no, 0x01 = yes.
+    /* 0x06C */ u32 squishTimer;
+    /* 0x070 */ f32 yScale;
+    /* 0x074 */ u32 locked; //0x00 = no, 0x16 = yes. when using lock to stand in place.
+    /* 0x078 */ s32 amountToShoot; //number for machine gun shoot
+    /* 0x07C */ s32 surface; //-1 when off ground, diff number when on diff surface. if 0 you slow to a crawl
+    /* 0x080 */ s32 wSurface; //-1 when not in water, diff number when in diff water
+    /* 0x084 */ s32 surfaceSlide; //1 if you slide on a slope while standing. 0 if else (not walkable slopes)
+    /* 0x088 */ s32 surfaceFine; //more accurate
+    /* 0x08C */ s32 vaulting; // 0 if not, 1 if
+    /* 0x090 */ f32 xFromCenter; //from center of room (when on ground)
+    /* 0x094 */ f32 yFromCenter;
+    /* 0x098 */ f32 zFromCenter;
+    /* 0x09C */ Vec3f shift; //override(?) when on moving objects (falling bridges, etc)
+    /* 0x0A8 */ Vec3f move; //override when sliding on slopes or on poles
+    /* 0x0B4 */ u32 groundMovement; //0x00 = standing, 0x01 = walking, 0x02 = running
+    /* 0x0B8 */ f32 globalTimer;
+    /* 0x0BC */ s32 unkBC;
+    /* 0x0C0 */ u32 amountLeftToShoot;
+    /* 0x0C4 */ u32 vaultFall;//timer for falling after vault
+    /* 0x0C8 */ s32 hp;
+    /* 0x0CC */ u32 playerHURTSTATE;
+    /* 0x0D0 */ s32 playerHURTTIMER;
+    /* 0x0D4 */ u32 playerHURTANIM;
+    /* 0x0D8 */ u32 playerHURTBY;
+    /* 0x0DC */ f32 unk_DC[6];
+    /* 0x0F4 */ f32 unk_F4[2];
+                s32 arbitraryChange;
+    /* 0x0F4 */ f32 unk_F4_2[3];
+    /* 0x10C */ f32 timerDown;
+    /* 0x110 */ f32 reticleSize;
+    /* 0x114 */ s32 active; //0x00 = no, 0x01 = yes
+    /* 0x118 */ s32 exists; //0x00 = no, 0x01 = yes
+    /* 0x11C */ u32 power; //enum of power it has
+    /* 0x120 */ s32 powerTimer; 
+    /* 0x124 */ s32 powerTimerTill; 
+    /* 0x128 */ f32 tongueYOffset; 
+    /* 0x12C */ f32 tongueSeperation; 
+} PlayerActor_s; //sizeof 0x130
+
 typedef struct PlayerInit {
     u32 unk0; //used to ID selected chameleon.
     u32 unk4;
     u32 unk8;
-    PlayerActor actorInit;
+    PlayerActor_s actorInit;
     Tongue tongueInit;
     u8 cameraInit[0x6C]; //camera substruct(s?) yet defined. copied like the other 2
     s32 unk7b4;
@@ -681,7 +737,7 @@ typedef struct unk800FF624 {
     /* 0x08 */ s32 unk_08;
 } unk800FF624; //sizeof 0xC
 
-
+//the original size was 0x24??? builds like this though
 typedef struct unkStruct0 {
     /* 0x00 */ s32 unk_00;
     /* 0x04 */ s32 unk_04;
@@ -692,7 +748,8 @@ typedef struct unkStruct0 {
     /* 0x18 */ s32 unk_18;
     /* 0x1C */ s32 unk_1C;
     /* 0x20 */ s32 unk_20;
-} unkStruct0; //sizeof 0x24
+    /* 0x20 */ s32 unk_24;
+} unkStruct0; //sizeof 0x28
 
 typedef struct unkVecStruct {
     Vec3f vec1;

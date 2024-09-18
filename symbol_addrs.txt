@@ -1027,8 +1027,8 @@ ActorTick_AntQueenDrone = 0x8003b8d8; // type:func rom:0x16cd8
 ActorTick_BombBossSegment = 0x8003d210; // type:func rom:0x18610
 ActorTick_Explosion = 0x8003d598; // type:func rom:0x18998
 ActorTick_BombBossBomb = 0x8003d5c8; // type:func rom:0x189c8
-ActorInit_ChameleonBlackSpotSpawnner = 0x8003d6a4; // type:func rom:0x18aa4
-ActorTick_ChameleonBlackSpotSpawnner = 0x8003d6ac; // type:func rom:0x18aac
+ActorInit_ChameleonBlackSpotSpawner = 0x8003d6a4; // type:func rom:0x18aa4
+ActorTick_ChameleonBlackSpotSpawner = 0x8003d6ac; // type:func rom:0x18aac
 ActorInit_ChameleonBlackSpot = 0x8003d908; // type:func rom:0x18d08
 ActorTick_ChameleonBlackSpot = 0x8003d930; // type:func rom:0x18d30
 ActorTick_Arrow = 0x8003e32c; // type:func rom:0x1972c
@@ -1364,6 +1364,7 @@ ActorInit_Fire = 0x80044584;
 ActorInit_Sandal = 0x80044708; 
 ActorTick_Sandal = 0x80044728;
 ActorInit_Unk2E = 0x800431E8;
+ActorTick_GhostBossArmSpitter = 0x80046FB8;
 ActorInit_SpiderSpawner = 0x8004718C;
 ActorTick_SpiderSpawner = 0x80047194;
 ActorInit_Spider = 0x80047350;
@@ -1523,6 +1524,13 @@ D_80129730 = 0x80129730;
 D_801003DC = 0x801003DC; //size:0x0C
 gFrameBuffers = 0x803B5000; //size:0x4B000
 cutsceneSwitch = 0x800FED0C; // type:s32 size:0x4
+
+//defined for proper generation
+D_80100E08 = 0x80100E08; // type:s16 size:0xAA
+D_80100F50 = 0x80100F50; // type:u32 size:0x28
+CreditsTimeOffset = 0x80101078; // type:s32 size:0x4
+AmountOfCredits = 0x80101080; // type:s32 size:0x4
+CreditsData = 0x80105E08; // size:0x2940
 
 D_80111C90 = 0x80111C90; //size:0x2000
 __osException = 0x800E1940;

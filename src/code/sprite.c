@@ -7919,18 +7919,18 @@ void Effect_TypeAQ_Update(Effect* effect, Gfx** pGfxPos) {
     }
 }
 
-void Effect_TypeAQ_Init(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, s32 arg6, EffectTypeAQArg7* arg7, s32 arg8, s32* arg9) {
+void Effect_TypeAQ_Init(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, s32 arg6, char* arg7, s32 arg8, s32* arg9) {
     Effect* effect;
     Effect_TypeAQ_Data* data;
     EffectPart* parts;
     s32 sp60;
     s32 sp5C;
     s32 i = 0;
-    EffectTypeAQArg7* ptr = arg7;
+    unsigned char* ptr = arg7;
     
 
-    while (ptr->unk_0 != 0) {
-        ptr++;
+    while (*ptr != 0) {
+        ptr+=2;
         i++;
     }
 
@@ -7947,7 +7947,7 @@ void Effect_TypeAQ_Init(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 ar
     *arg9 = 1;    
     parts = effect->parts;
 
-    for (i = 0, ptr = arg7; i < effect->numParts; ptr++, i++) {
+    for (i = 0, ptr = arg7; i < effect->numParts; ptr+=2, i++) {
         if (func_80080318(arg8, ptr, &sp60, &sp5C) == 0) {
             parts[i].unk_24 = sp5C;
             parts[i].unk_25 = sp60;
@@ -8042,15 +8042,15 @@ void Effect_TypeAR_Update(Effect* effect, Gfx** pGfxPos) {
     PrintTextWrapper(posX, effect->pos.y, 0.0f, 1.0f, data->unk_20, effect->spriteID);
 }
 
-void Effect_TypeAR_Init(f32 arg0, f32 arg1, s32 arg2, f32 arg3, f32 arg4, f32 arg5, s32 arg6, EffectTypeAQArg7* arg7, s32 arg8, s32* arg9) {
+void Effect_TypeAR_Init(f32 arg0, f32 arg1, s32 arg2, f32 arg3, f32 arg4, f32 arg5, s32 arg6, char* arg7, s32 arg8, s32* arg9) {
     Effect* effect;
     Effect_TypeAQ_Data* data;
     s32 i = 0;
     f32 f0;
-    EffectTypeAQArg7* ptr = arg7;
-
-    while (ptr->unk_0 != 0) {
-        ptr++;
+    unsigned char* ptr = arg7;
+    
+    while (*ptr != 0) {
+        ptr+=2;
         i++;
     }
 

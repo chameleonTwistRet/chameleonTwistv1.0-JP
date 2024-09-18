@@ -177,7 +177,7 @@ typedef struct Effect_TypeAQ_Data {
     /* 0x14 */ s32 unk_14;
     /* 0x18 */ s32* unk_18;
     /* 0x1C */ u8 unk_1C;
-    /* 0x20 */ EffectTypeAQArg7* unk_20;
+    /* 0x20 */ unsigned char* unk_20;
 } Effect_TypeAQ_Data; //sizeof 0x24
 
 typedef struct Effect_TypeAS_Data {
