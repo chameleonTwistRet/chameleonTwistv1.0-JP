@@ -169,89 +169,89 @@ unsigned char BossRush_rabObjects_Bin[] = {
 0x00, 0x00, 0x00, 0x00, 0x42, 0xC8, 0x00, 0x00, 0x42, 0xC8, 0x00, 0x00, 0x42, 0xC8, 0x00, 0x00, 0x02, 0x00, 0x6E, 0x1C, 0x00, 0x00, 0x00, 0x00, 0x42, 0xC8, 0x00, 0x00, 0x42, 0xC8, 0x00, 0x00, 0x42, 0xC8, 0x00, 0x00, 0x02, 0x00, 0x6E, 0x1C
 };
 
-RoomObject BossRush_room0_objects[44] = {
-{{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 37, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
-{{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 38, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
-{{0.0,0.0,0.0}, {1.0,4.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 43, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
-{{1000.0,0.0,400.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(-112.00000083995421), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 42, -1, -1, -1, NULL, NULL, 0, 0, 0, 4, 4, 0, -1, 0, 0},
-{{1000.0,0.0,-400.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(-67.99999733881295), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 42, -1, -1, -1, NULL, NULL, 0, 0, 0, 4, 4, 0, -1, 0, 0},
-{{400.0,0.0,-1000.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(-22.000000043023345), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 42, -1, -1, -1, NULL, NULL, 0, 0, 0, 4, 4, 0, -1, 0, 0},
-{{-400.0,0.0,-1000.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(22.000000043023345), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 42, -1, -1, -1, NULL, NULL, 0, 0, 0, 4, 4, 0, -1, 0, 0},
-{{-1000.0,0.0,-400.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(67.99999733881295), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 42, -1, -1, -1, NULL, NULL, 0, 0, 0, 4, 4, 0, -1, 0, 0},
-{{-1000.0,0.0,400.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(112.00000083995421), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 42, -1, -1, -1, NULL, NULL, 0, 0, 0, 4, 4, 0, -1, 0, 0},
-{{0.0,0.0,2000.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 256, 0, 1600.0, 1600.0, 0.0, 0.0, 3, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
-{{0.0,0.0,2000.0}, {4.0,4.0,4.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
-{{1000.0,-10.0,400.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(-112.00000083995421), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 44, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
-{{1000.0,-10.0,-400.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(-67.99999733881295), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 44, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
-{{400.0,-10.0,-1000.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(-22.000000043023345), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 44, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
-{{-400.0,-10.0,-1000.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(22.000000043023345), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 44, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
-{{-1000.0,-10.0,-400.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(67.99999733881295), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 44, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
-{{-1000.0,-10.0,400.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(112.00000083995421), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 44, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
-{{1000.0,-10.0,400.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(-112.00000083995421), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 40, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
-{{1000.0,-10.0,-400.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(-67.99999733881295), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 40, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
-{{400.0,-10.0,-1000.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(-22.000000043023345), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 40, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
-{{-400.0,-10.0,-1000.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(22.000000043023345), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 40, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
-{{-1000.0,-10.0,-400.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(67.99999733881295), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 40, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
-{{-1000.0,-10.0,400.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(112.00000083995421), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 40, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
-{{1000.0,-10.0,400.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(-112.00000083995421), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 39, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
-{{1000.0,-10.0,-400.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(-67.99999733881295), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 39, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
-{{400.0,-10.0,-1000.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(-22.000000043023345), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 39, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
-{{-400.0,-10.0,-1000.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(22.000000043023345), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 39, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
-{{-1000.0,-10.0,-400.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(67.99999733881295), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 39, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
-{{-1000.0,-10.0,400.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(112.00000083995421), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 39, -1, -1, -1, NULL, NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
-{{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 41, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
-{{0.0,10000.0,0.0}, {10.0,1.0,30.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 37, -1, -1, -1, NULL, NULL, 0, 0, 7, 0, 4, 0, -1, 0, 0},
-{{-1957.300048828125,-10.0,795.7999877929688}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 256, 0, 1600.0, 1600.0, 0.0, 0.0, 4, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
-{{-1957.300048828125,-10.0,795.7999877929688}, {4.0,4.0,4.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
-{{-1973.4000244140625,-10.0,-769.3499755859375}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 256, 0, 1600.0, 1600.0, 0.0, 0.0, 4, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
-{{-1973.4000244140625,-10.0,-769.3499755859375}, {4.0,4.0,4.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
-{{-779.7000122070312,-10.0,-1941.199951171875}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 256, 0, 1600.0, 1600.0, 0.0, 0.0, 1, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
-{{-779.7000122070312,-10.0,-1941.199951171875}, {4.0,4.0,4.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
-{{1957.300048828125,-10.0,795.7999877929688}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 256, 0, 1600.0, 1600.0, 0.0, 0.0, 2, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
-{{1957.300048828125,-10.0,795.7999877929688}, {4.0,4.0,4.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
-{{1973.4000244140625,-10.0,-769.3499755859375}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 256, 0, 1600.0, 1600.0, 0.0, 0.0, 2, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
-{{1973.4000244140625,-10.0,-769.3499755859375}, {4.0,4.0,4.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
-{{779.7000122070312,-10.0,-1941.199951171875}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 256, 0, 1600.0, 1600.0, 0.0, 0.0, 1, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
-{{779.7000122070312,-10.0,-1941.199951171875}, {4.0,4.0,4.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
-{{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+RoomObject BossRush_room0_objects[] = {
+    {                                  {0.0,0.0,0.0},   {1.0,1.0,1.0}, 0,                 DEGREES_TO_RADIANS_2PI(0.0),   7, 0,    0.0,    0.0,     0.0, 0.0, 0,  0, 0,    0, 0, 0, 37, -1, -1, -1, NULL, NULL, 0, 0, 7,  4, 4, 0, -1, 0, 0},
+    {                                  {0.0,0.0,0.0},   {1.0,1.0,1.0}, 0,                 DEGREES_TO_RADIANS_2PI(0.0),   7, 0,    0.0,    0.0,     0.0, 0.0, 0,  0, 0,    0, 0, 0, 38, -1, -1, -1, NULL, NULL, 0, 0, 7,  4, 4, 0, -1, 0, 0},
+    {                                  {0.0,0.0,0.0},   {1.0,4.0,1.0}, 0,                 DEGREES_TO_RADIANS_2PI(0.0),   7, 0,    0.0,    0.0,     0.0, 0.0, 0,  0, 0,    0, 0, 0, 43, -1, -1, -1, NULL, NULL, 0, 0, 2,  4, 4, 0, -1, 0, 0},
+    {                             {1000.0,0.0,400.0},   {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(-112.00000083995421),   7, 0,    0.0,    0.0,     0.0, 0.0, 0,  0, 0,    0, 0, 0, 42, -1, -1, -1, NULL, NULL, 0, 0, 0,  4, 4, 0, -1, 0, 0},
+    {                            {1000.0,0.0,-400.0},   {1.0,1.0,1.0}, 2,  DEGREES_TO_RADIANS_2PI(-67.99999733881295),   7, 0,    0.0,    0.0,     0.0, 0.0, 0,  0, 0,    0, 0, 0, 42, -1, -1, -1, NULL, NULL, 0, 0, 0,  4, 4, 0, -1, 0, 0},
+    {                            {400.0,0.0,-1000.0},   {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(-22.000000043023345),   7, 0,    0.0,    0.0,     0.0, 0.0, 0,  0, 0,    0, 0, 0, 42, -1, -1, -1, NULL, NULL, 0, 0, 0,  4, 4, 0, -1, 0, 0},
+    {                           {-400.0,0.0,-1000.0},   {1.0,1.0,1.0}, 2,  DEGREES_TO_RADIANS_2PI(22.000000043023345),   7, 0,    0.0,    0.0,     0.0, 0.0, 0,  0, 0,    0, 0, 0, 42, -1, -1, -1, NULL, NULL, 0, 0, 0,  4, 4, 0, -1, 0, 0},
+    {                           {-1000.0,0.0,-400.0},   {1.0,1.0,1.0}, 2,   DEGREES_TO_RADIANS_2PI(67.99999733881295),   7, 0,    0.0,    0.0,     0.0, 0.0, 0,  0, 0,    0, 0, 0, 42, -1, -1, -1, NULL, NULL, 0, 0, 0,  4, 4, 0, -1, 0, 0},
+    {                            {-1000.0,0.0,400.0},   {1.0,1.0,1.0}, 2,  DEGREES_TO_RADIANS_2PI(112.00000083995421),   7, 0,    0.0,    0.0,     0.0, 0.0, 0,  0, 0,    0, 0, 0, 42, -1, -1, -1, NULL, NULL, 0, 0, 0,  4, 4, 0, -1, 0, 0},
+    {                               {0.0,0.0,2000.0},   {1.0,1.0,1.0}, 0,                 DEGREES_TO_RADIANS_2PI(0.0), 256, 0, 1600.0, 1600.0,     0.0, 0.0, 3,  1, 0,    0, 0, 0,  0, -1, -1, -1, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
+    {                               {0.0,0.0,2000.0},   {4.0,4.0,4.0}, 0,                 DEGREES_TO_RADIANS_2PI(0.0),   7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0,  0, -1, -1, -1, NULL, NULL, 0, 0, 1,  0, 0, 0, -1, 0, 0},
+    {                           {1000.0,-10.0,400.0},   {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(-112.00000083995421),   7, 0,    0.0,    0.0,     0.0, 0.0, 0,  0, 0,    0, 0, 0, 44, -1, -1, -1, NULL, NULL, 0, 0, 2,  4, 4, 0, -1, 0, 0},
+    {                          {1000.0,-10.0,-400.0},   {1.0,1.0,1.0}, 2,  DEGREES_TO_RADIANS_2PI(-67.99999733881295),   7, 0,    0.0,    0.0,     0.0, 0.0, 0,  0, 0,    0, 0, 0, 44, -1, -1, -1, NULL, NULL, 0, 0, 2,  4, 4, 0, -1, 0, 0},
+    {                          {400.0,-10.0,-1000.0},   {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(-22.000000043023345),   7, 0,    0.0,    0.0,     0.0, 0.0, 0,  0, 0,    0, 0, 0, 44, -1, -1, -1, NULL, NULL, 0, 0, 2,  4, 4, 0, -1, 0, 0},
+    {                         {-400.0,-10.0,-1000.0},   {1.0,1.0,1.0}, 2,  DEGREES_TO_RADIANS_2PI(22.000000043023345),   7, 0,    0.0,    0.0,     0.0, 0.0, 0,  0, 0,    0, 0, 0, 44, -1, -1, -1, NULL, NULL, 0, 0, 2,  4, 4, 0, -1, 0, 0},
+    {                         {-1000.0,-10.0,-400.0},   {1.0,1.0,1.0}, 2,   DEGREES_TO_RADIANS_2PI(67.99999733881295),   7, 0,    0.0,    0.0,     0.0, 0.0, 0,  0, 0,    0, 0, 0, 44, -1, -1, -1, NULL, NULL, 0, 0, 2,  4, 4, 0, -1, 0, 0},
+    {                          {-1000.0,-10.0,400.0},   {1.0,1.0,1.0}, 2,  DEGREES_TO_RADIANS_2PI(112.00000083995421),   7, 0,    0.0,    0.0,     0.0, 0.0, 0,  0, 0,    0, 0, 0, 44, -1, -1, -1, NULL, NULL, 0, 0, 2,  4, 4, 0, -1, 0, 0},
+    {                           {1000.0,-10.0,400.0},   {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(-112.00000083995421),   7, 0,    0.0,    0.0,     0.0, 0.0, 0,  0, 0,    0, 0, 0, 40, -1, -1, -1, NULL, NULL, 0, 0, 2,  4, 4, 0, -1, 0, 0},
+    {                          {1000.0,-10.0,-400.0},   {1.0,1.0,1.0}, 2,  DEGREES_TO_RADIANS_2PI(-67.99999733881295),   7, 0,    0.0,    0.0,     0.0, 0.0, 0,  0, 0,    0, 0, 0, 40, -1, -1, -1, NULL, NULL, 0, 0, 2,  4, 4, 0, -1, 0, 0},
+    {                          {400.0,-10.0,-1000.0},   {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(-22.000000043023345),   7, 0,    0.0,    0.0,     0.0, 0.0, 0,  0, 0,    0, 0, 0, 40, -1, -1, -1, NULL, NULL, 0, 0, 2,  4, 4, 0, -1, 0, 0},
+    {                         {-400.0,-10.0,-1000.0},   {1.0,1.0,1.0}, 2,  DEGREES_TO_RADIANS_2PI(22.000000043023345),   7, 0,    0.0,    0.0,     0.0, 0.0, 0,  0, 0,    0, 0, 0, 40, -1, -1, -1, NULL, NULL, 0, 0, 2,  4, 4, 0, -1, 0, 0},
+    {                         {-1000.0,-10.0,-400.0},   {1.0,1.0,1.0}, 2,   DEGREES_TO_RADIANS_2PI(67.99999733881295),   7, 0,    0.0,    0.0,     0.0, 0.0, 0,  0, 0,    0, 0, 0, 40, -1, -1, -1, NULL, NULL, 0, 0, 2,  4, 4, 0, -1, 0, 0},
+    {                          {-1000.0,-10.0,400.0},   {1.0,1.0,1.0}, 2,  DEGREES_TO_RADIANS_2PI(112.00000083995421),   7, 0,    0.0,    0.0,     0.0, 0.0, 0,  0, 0,    0, 0, 0, 40, -1, -1, -1, NULL, NULL, 0, 0, 2,  4, 4, 0, -1, 0, 0},
+    {                           {1000.0,-10.0,400.0},   {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(-112.00000083995421),   7, 0,    0.0,    0.0,     0.0, 0.0, 0,  0, 0,    0, 0, 0, 39, -1, -1, -1, NULL, NULL, 0, 0, 2,  4, 4, 0, -1, 0, 0},
+    {                          {1000.0,-10.0,-400.0},   {1.0,1.0,1.0}, 2,  DEGREES_TO_RADIANS_2PI(-67.99999733881295),   7, 0,    0.0,    0.0,     0.0, 0.0, 0,  0, 0,    0, 0, 0, 39, -1, -1, -1, NULL, NULL, 0, 0, 2,  4, 4, 0, -1, 0, 0},
+    {                          {400.0,-10.0,-1000.0},   {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(-22.000000043023345),   7, 0,    0.0,    0.0,     0.0, 0.0, 0,  0, 0,    0, 0, 0, 39, -1, -1, -1, NULL, NULL, 0, 0, 2,  4, 4, 0, -1, 0, 0},
+    {                         {-400.0,-10.0,-1000.0},   {1.0,1.0,1.0}, 2,  DEGREES_TO_RADIANS_2PI(22.000000043023345),   7, 0,    0.0,    0.0,     0.0, 0.0, 0,  0, 0,    0, 0, 0, 39, -1, -1, -1, NULL, NULL, 0, 0, 2,  4, 4, 0, -1, 0, 0},
+    {                         {-1000.0,-10.0,-400.0},   {1.0,1.0,1.0}, 2,   DEGREES_TO_RADIANS_2PI(67.99999733881295),   7, 0,    0.0,    0.0,     0.0, 0.0, 0,  0, 0,    0, 0, 0, 39, -1, -1, -1, NULL, NULL, 0, 0, 2,  4, 4, 0, -1, 0, 0},
+    {                          {-1000.0,-10.0,400.0},   {1.0,1.0,1.0}, 2,  DEGREES_TO_RADIANS_2PI(112.00000083995421),   7, 0,    0.0,    0.0,     0.0, 0.0, 0,  0, 0,    0, 0, 0, 39, -1, -1, -1, NULL, NULL, 0, 0, 2,  4, 4, 0, -1, 0, 0},
+    {                                  {0.0,0.0,0.0},   {1.0,1.0,1.0}, 0,                 DEGREES_TO_RADIANS_2PI(0.0),   7, 0,    0.0,    0.0,     0.0, 0.0, 0,  0, 0,    0, 0, 0, 41, -1, -1, -1, NULL, NULL, 0, 0, 7,  4, 4, 0, -1, 0, 0},
+    {                              {0.0,10000.0,0.0}, {10.0,1.0,30.0}, 0,                 DEGREES_TO_RADIANS_2PI(0.0),   7, 0,    0.0,    0.0,     0.0, 0.0, 0,  0, 0,    0, 0, 0, 37, -1, -1, -1, NULL, NULL, 0, 0, 7,  0, 4, 0, -1, 0, 0},
+    {   {-1957.300048828125,-10.0,795.7999877929688},   {1.0,1.0,1.0}, 0,                 DEGREES_TO_RADIANS_2PI(0.0), 256, 0, 1600.0, 1600.0,     0.0, 0.0, 4,  1, 0,    0, 0, 0,  0, -1, -1, -1, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
+    {   {-1957.300048828125,-10.0,795.7999877929688},   {4.0,4.0,4.0}, 0,                 DEGREES_TO_RADIANS_2PI(0.0),   7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0,  0, -1, -1, -1, NULL, NULL, 0, 0, 1,  0, 0, 0, -1, 0, 0},
+    { {-1973.4000244140625,-10.0,-769.3499755859375},   {1.0,1.0,1.0}, 0,                 DEGREES_TO_RADIANS_2PI(0.0), 256, 0, 1600.0, 1600.0,     0.0, 0.0, 4,  1, 0,    0, 0, 0,  0, -1, -1, -1, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
+    { {-1973.4000244140625,-10.0,-769.3499755859375},   {4.0,4.0,4.0}, 0,                 DEGREES_TO_RADIANS_2PI(0.0),   7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0,  0, -1, -1, -1, NULL, NULL, 0, 0, 1,  0, 0, 0, -1, 0, 0},
+    {  {-779.7000122070312,-10.0,-1941.199951171875},   {1.0,1.0,1.0}, 0,                 DEGREES_TO_RADIANS_2PI(0.0), 256, 0, 1600.0, 1600.0,     0.0, 0.0, 1,  1, 0,    0, 0, 0,  0, -1, -1, -1, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
+    {  {-779.7000122070312,-10.0,-1941.199951171875},   {4.0,4.0,4.0}, 0,                 DEGREES_TO_RADIANS_2PI(0.0),   7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0,  0, -1, -1, -1, NULL, NULL, 0, 0, 1,  0, 0, 0, -1, 0, 0},
+    {    {1957.300048828125,-10.0,795.7999877929688},   {1.0,1.0,1.0}, 0,                 DEGREES_TO_RADIANS_2PI(0.0), 256, 0, 1600.0, 1600.0,     0.0, 0.0, 2,  1, 0,    0, 0, 0,  0, -1, -1, -1, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
+    {    {1957.300048828125,-10.0,795.7999877929688},   {4.0,4.0,4.0}, 0,                 DEGREES_TO_RADIANS_2PI(0.0),   7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0,  0, -1, -1, -1, NULL, NULL, 0, 0, 1,  0, 0, 0, -1, 0, 0},
+    {  {1973.4000244140625,-10.0,-769.3499755859375},   {1.0,1.0,1.0}, 0,                 DEGREES_TO_RADIANS_2PI(0.0), 256, 0, 1600.0, 1600.0,     0.0, 0.0, 2,  1, 0,    0, 0, 0,  0, -1, -1, -1, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
+    {  {1973.4000244140625,-10.0,-769.3499755859375},   {4.0,4.0,4.0}, 0,                 DEGREES_TO_RADIANS_2PI(0.0),   7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0,  0, -1, -1, -1, NULL, NULL, 0, 0, 1,  0, 0, 0, -1, 0, 0},
+    {   {779.7000122070312,-10.0,-1941.199951171875},   {1.0,1.0,1.0}, 0,                 DEGREES_TO_RADIANS_2PI(0.0), 256, 0, 1600.0, 1600.0,     0.0, 0.0, 1,  1, 0,    0, 0, 0,  0, -1, -1, -1, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
+    {   {779.7000122070312,-10.0,-1941.199951171875},   {4.0,4.0,4.0}, 0,                 DEGREES_TO_RADIANS_2PI(0.0),   7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0,  0, -1, -1, -1, NULL, NULL, 0, 0, 1,  0, 0, 0, -1, 0, 0},
+    {                                  {0.0,0.0,0.0},   {0.0,0.0,0.0}, 0,                 DEGREES_TO_RADIANS_2PI(0.0),   0, 0,    0.0,    0.0,     0.0, 0.0, 0,  0, 0,    0, 0, 0,  0,  0,  0,  0, NULL, NULL, 0, 0, 0,  0, 0, 0,  0, 0, 0}
 };
 
-SpriteActor BossRush_roomMulti_sprites[7] = {
-{2, 56, {-2200.0,0.0,920.0}, {128.0,512.0,480.0}, 1, 0, 1.0, 0, 0, 0, 0, 0, 255, 128, 128, 255},
-{2, 34, {-1900.0,0.0,-750.0}, {128.0,512.0,480.0}, 1, 0, 1.0, 0, 0, 0, 0, 0, 255, 128, 128, 255},
-{2, 14, {-780.0,0.0,-2000.0}, {128.0,512.0,480.0}, 1, 0, 1.0, 0, 0, 0, 0, 0, 255, 128, 128, 255},
-{2, 44, {780.0,0.0,-2000.0}, {128.0,512.0,480.0}, 1, 0, 1.0, 0, 0, 0, 0, 0, 255, 128, 128, 255},
-{2, 39, {1900.0,0.0,-750.0}, {128.0,512.0,480.0}, 1, 0, 1.0, 0, 0, 0, 0, 0, 255, 128, 128, 255},
-{2, 47, {2200.0,0.0,920.0}, {128.0,512.0,480.0}, 1, 0, 1.0, 0, 0, 0, 0, 0, 255, 128, 128, 255},
-{-1, 0, {-1.0,-1.0,-1.0}, {-1.0,32.0,32.0}, 1, 0, 0.0, 0, 0, 0, 0, 0, -1, -1, 0, 0}
+SpriteActor BossRush_roomMulti_sprites[] = {
+    {  2, 56,  {-2200.0,0.0,920.0}, {128.0,512.0,480.0}, 1, 0, 1.0, 0, 0, 0, 0, 0, 255, 128, 128, 255},
+    {  2, 34, {-1900.0,0.0,-750.0}, {128.0,512.0,480.0}, 1, 0, 1.0, 0, 0, 0, 0, 0, 255, 128, 128, 255},
+    {  2, 14, {-780.0,0.0,-2000.0}, {128.0,512.0,480.0}, 1, 0, 1.0, 0, 0, 0, 0, 0, 255, 128, 128, 255},
+    {  2, 44,  {780.0,0.0,-2000.0}, {128.0,512.0,480.0}, 1, 0, 1.0, 0, 0, 0, 0, 0, 255, 128, 128, 255},
+    {  2, 39,  {1900.0,0.0,-750.0}, {128.0,512.0,480.0}, 1, 0, 1.0, 0, 0, 0, 0, 0, 255, 128, 128, 255},
+    {  2, 47,   {2200.0,0.0,920.0}, {128.0,512.0,480.0}, 1, 0, 1.0, 0, 0, 0, 0, 0, 255, 128, 128, 255},
+    { -1,  0,     {-1.0,-1.0,-1.0},    {-1.0,32.0,32.0}, 1, 0, 0.0, 0, 0, 0, 0, 0,     -1, -1, 0,   0}
 };
 
-RoomObject BossRush_room1_objects[4] = {
-{{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 256, 0, 1600.0, 1600.0, 0.0, 0.0, 2, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
-{{0.0,0.0,0.0}, {4.0,4.0,4.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
-{{0.0,0.0,0.0}, {10.0,1.0,30.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 37, -1, -1, -1, NULL, NULL, 0, 0, 7, 0, 4, 0, -1, 0, 0},
-{{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+RoomObject BossRush_room1_objects[] = {
+    { {0.0,0.0,0.0},   {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 256, 0, 1600.0, 1600.0,     0.0, 0.0, 2,  1, 0,    0, 0, 0,  0, -1, -1, -1, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
+    { {0.0,0.0,0.0},   {4.0,4.0,4.0}, 0, DEGREES_TO_RADIANS_2PI(0.0),   7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0,  0, -1, -1, -1, NULL, NULL, 0, 0, 1,  0, 0, 0, -1, 0, 0},
+    { {0.0,0.0,0.0}, {10.0,1.0,30.0}, 0, DEGREES_TO_RADIANS_2PI(0.0),   7, 0,    0.0,    0.0,     0.0, 0.0, 0,  0, 0,    0, 0, 0, 37, -1, -1, -1, NULL, NULL, 0, 0, 7,  0, 4, 0, -1, 0, 0},
+    { {0.0,0.0,0.0},   {0.0,0.0,0.0}, 0, DEGREES_TO_RADIANS_2PI(0.0),   0, 0,    0.0,    0.0,     0.0, 0.0, 0,  0, 0,    0, 0, 0,  0,  0,  0,  0, NULL, NULL, 0, 0, 0,  0, 0, 0,  0, 0, 0}
 };
 
-RoomObject BossRush_roomMulti2_objects[4] = {
-{{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 256, 0, 1600.0, 1600.0, 0.0, 0.0, 3, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
-{{0.0,0.0,0.0}, {4.0,4.0,4.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
-{{0.0,0.0,0.0}, {10.0,1.0,30.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 37, -1, -1, -1, NULL, NULL, 0, 0, 7, 0, 4, 0, -1, 0, 0},
-{{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+RoomObject BossRush_roomMulti2_objects[] = {
+    { {0.0,0.0,0.0},   {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 256, 0, 1600.0, 1600.0,     0.0, 0.0, 3,  1, 0,    0, 0, 0,  0, -1, -1, -1, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
+    { {0.0,0.0,0.0},   {4.0,4.0,4.0}, 0, DEGREES_TO_RADIANS_2PI(0.0),   7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0,  0, -1, -1, -1, NULL, NULL, 0, 0, 1,  0, 0, 0, -1, 0, 0},
+    { {0.0,0.0,0.0}, {10.0,1.0,30.0}, 0, DEGREES_TO_RADIANS_2PI(0.0),   7, 0,    0.0,    0.0,     0.0, 0.0, 0,  0, 0,    0, 0, 0, 37, -1, -1, -1, NULL, NULL, 0, 0, 7,  0, 4, 0, -1, 0, 0},
+    { {0.0,0.0,0.0},   {0.0,0.0,0.0}, 0, DEGREES_TO_RADIANS_2PI(0.0),   0, 0,    0.0,    0.0,     0.0, 0.0, 0,  0, 0,    0, 0, 0,  0,  0,  0,  0, NULL, NULL, 0, 0, 0,  0, 0, 0,  0, 0, 0}
 };
 
-RoomObject BossRush_roomMulti3_objects[4] = {
-{{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 256, 0, 1600.0, 1600.0, 0.0, 0.0, 4, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
-{{0.0,0.0,0.0}, {4.0,4.0,4.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
-{{0.0,0.0,0.0}, {10.0,1.0,30.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 37, -1, -1, -1, NULL, NULL, 0, 0, 7, 0, 4, 0, -1, 0, 0},
-{{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+RoomObject BossRush_roomMulti3_objects[] = {
+    { {0.0,0.0,0.0},   {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 256, 0, 1600.0, 1600.0,     0.0, 0.0, 4,  1, 0,    0, 0, 0,  0, -1, -1, -1, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
+    { {0.0,0.0,0.0},   {4.0,4.0,4.0}, 0, DEGREES_TO_RADIANS_2PI(0.0),   7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0,  0, -1, -1, -1, NULL, NULL, 0, 0, 1,  0, 0, 0, -1, 0, 0},
+    { {0.0,0.0,0.0}, {10.0,1.0,30.0}, 0, DEGREES_TO_RADIANS_2PI(0.0),   7, 0,    0.0,    0.0,     0.0, 0.0, 0,  0, 0,    0, 0, 0, 37, -1, -1, -1, NULL, NULL, 0, 0, 7,  0, 4, 0, -1, 0, 0},
+    { {0.0,0.0,0.0},   {0.0,0.0,0.0}, 0, DEGREES_TO_RADIANS_2PI(0.0),   0, 0,    0.0,    0.0,     0.0, 0.0, 0,  0, 0,    0, 0, 0,  0,  0,  0,  0, NULL, NULL, 0, 0, 0,  0, 0, 0,  0, 0, 0}
 };
 
-RoomObject BossRush_roomMulti4_objects[4] = {
-{{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 256, 0, 1600.0, 1600.0, 0.0, 0.0, 1, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
-{{0.0,0.0,0.0}, {4.0,4.0,4.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
-{{0.0,0.0,0.0}, {10.0,1.0,30.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 37, -1, -1, -1, NULL, NULL, 0, 0, 7, 0, 4, 0, -1, 0, 0},
-{{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+RoomObject BossRush_roomMulti4_objects[] = {
+    { {0.0,0.0,0.0},   {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 256, 0, 1600.0, 1600.0,     0.0, 0.0, 1,  1, 0,    0, 0, 0,  0, -1, -1, -1, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
+    { {0.0,0.0,0.0},   {4.0,4.0,4.0}, 0, DEGREES_TO_RADIANS_2PI(0.0),   7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0,  0, -1, -1, -1, NULL, NULL, 0, 0, 1,  0, 0, 0, -1, 0, 0},
+    { {0.0,0.0,0.0}, {10.0,1.0,30.0}, 0, DEGREES_TO_RADIANS_2PI(0.0),   7, 0,    0.0,    0.0,     0.0, 0.0, 0,  0, 0,    0, 0, 0, 37, -1, -1, -1, NULL, NULL, 0, 0, 7,  0, 4, 0, -1, 0, 0},
+    { {0.0,0.0,0.0},   {0.0,0.0,0.0}, 0, DEGREES_TO_RADIANS_2PI(0.0),   0, 0,    0.0,    0.0,     0.0, 0.0, 0,  0, 0,    0, 0, 0,  0,  0,  0,  0, NULL, NULL, 0, 0, 0,  0, 0, 0,  0, 0, 0}
 };
 
 s32 BossRush_spriteLib_Sprlib[] = {
@@ -273,17 +273,17 @@ s32 BossRush_spriteLib_Sprlib[] = {
     0,
 };
 
-RoomInstance BossRush_room_instances[10] = {
-{BossRush_room0_objects, 0, 0,BossRush_roomMulti_sprites, 0, 0, 0, 0, -1, 0, 0.0, 1, 0.0, 800.0, 10.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
-{BossRush_room1_objects, 0, 0, 0, 0, 1, 0, 0, -1, 0, 0.0, 1, 0.0, 800.0, -1600.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
-{BossRush_room1_objects, 0, 0, 0, 0, 1, 0, 0, -1, 0, 0.0, 1, 0.0, 800.0, -1600.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
-{BossRush_roomMulti2_objects, 0, 0, 0, 0, 1, 0, 0, -1, 0, 0.0, 1, 0.0, 800.0, -1600.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
-{BossRush_roomMulti2_objects, 0, 0, 0, 0, 1, 0, 0, -1, 0, 0.0, 1, 0.0, 800.0, -1600.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
-{BossRush_roomMulti3_objects, 0, 0, 0, 0, 1, 0, 0, -1, 0, 0.0, 1, 0.0, 800.0, -1600.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
-{BossRush_roomMulti3_objects, 0, 0, 0, 0, 1, 0, 0, -1, 0, 0.0, 1, 0.0, 800.0, -1600.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
-{BossRush_roomMulti4_objects, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0.0, 1, 0.0, 800.0, -1600.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
-{BossRush_roomMulti4_objects, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0.0, 1, 0.0, 800.0, -1600.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
-{0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0}
+RoomInstance BossRush_room_instances[] = {
+    {      BossRush_room0_objects, 0, 0, BossRush_roomMulti_sprites, 0, 0, 0, 0, -1, 0, 0.0, 1, 0.0, 800.0,    10.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+    {      BossRush_room1_objects, 0, 0,                          0, 0, 1, 0, 0, -1, 0, 0.0, 1, 0.0, 800.0, -1600.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+    {      BossRush_room1_objects, 0, 0,                          0, 0, 1, 0, 0, -1, 0, 0.0, 1, 0.0, 800.0, -1600.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+    { BossRush_roomMulti2_objects, 0, 0,                          0, 0, 1, 0, 0, -1, 0, 0.0, 1, 0.0, 800.0, -1600.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+    { BossRush_roomMulti2_objects, 0, 0,                          0, 0, 1, 0, 0, -1, 0, 0.0, 1, 0.0, 800.0, -1600.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+    { BossRush_roomMulti3_objects, 0, 0,                          0, 0, 1, 0, 0, -1, 0, 0.0, 1, 0.0, 800.0, -1600.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+    { BossRush_roomMulti3_objects, 0, 0,                          0, 0, 1, 0, 0, -1, 0, 0.0, 1, 0.0, 800.0, -1600.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+    { BossRush_roomMulti4_objects, 0, 0,                          0, 0, 0, 0, 0, -1, 0, 0.0, 1, 0.0, 800.0, -1600.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+    { BossRush_roomMulti4_objects, 0, 0,                          0, 0, 0, 0, 0, -1, 0, 0.0, 1, 0.0, 800.0, -1600.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+    {                           0, 0, 0,                          0, 0, 0, 0, 0, -1, 0, 0.0, 0, 0.0,   0.0,     0.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0}
 };
 
 s32 BossRush_rooms_map[4][4] = {
@@ -297,9 +297,9 @@ StageMapData BossRush_map_data = {
 4, 4, BossRush_room_instances, BossRush_rooms_map, 
 };
 
-RoomInstance BossRush_ext_room_instances[2] = {
-{BossRush_room0_objects, 0, 0,BossRush_roomMulti_sprites, 0, 0, 0, 0, 0, 0, 45.0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
-{0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0}
+RoomInstance BossRush_ext_room_instances[] = {
+    { BossRush_room0_objects, 0, 0, BossRush_roomMulti_sprites, 0, 0, 0, 0,  0, 0, 45.0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
+    {                      0, 0, 0,                          0, 0, 0, 0, 0, -1, 0,  0.0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0}
 };
 
 LevelScope BossRush_scope_Lvlscope = {
@@ -324,138 +324,229 @@ StageData BossRush_header_Lvlhdr = {
 };
 Mtx BossRush_IMtx2 = IDENTITY;
 
-#include "assets/levelGroup/BossRush/bossScope1/bossScope1.light.inc.c"
+Lights1 BossRush_bossScope1_Light = 
+    #include "assets/levelGroup/BossRush/bossScope1/bossScope1.light.inc.c"
 
-#include "assets/levelGroup/BossRush/model1/model1.vtx.inc.c"
+Vtx BossRush_model1_Vtx[] = {
+    #include "assets/levelGroup/BossRush/model1/model1.vtx.inc.c"
+};
 Mtx BossRush_IMtx3 = IDENTITY;
 
-#include "assets/levelGroup/BossRush/model1/model1.gfx.inc.c"
+Gfx BossRush_model1_Gfx[] = {
+    #include "assets/levelGroup/BossRush/model1/model1.gfx.inc.c"
+};
 
-#include "assets/levelGroup/BossRush/model2/model2.vtx.inc.c"
+Vtx BossRush_model2_Vtx[] = {
+    #include "assets/levelGroup/BossRush/model2/model2.vtx.inc.c"
+};
 Mtx BossRush_IMtx4 = IDENTITY;
 
-#include "assets/levelGroup/BossRush/model2/model2.gfx.inc.c"
+Gfx BossRush_model2_Gfx[] = {
+    #include "assets/levelGroup/BossRush/model2/model2.gfx.inc.c"
+};
 
-#include "assets/levelGroup/BossRush/model3/model3.vtx.inc.c"
+Vtx BossRush_model3_Vtx[] = {
+    #include "assets/levelGroup/BossRush/model3/model3.vtx.inc.c"
+};
 Mtx BossRush_IMtx5 = IDENTITY;
 
-#include "assets/levelGroup/BossRush/model3/model3.gfx.inc.c"
+Gfx BossRush_model3_Gfx[] = {
+    #include "assets/levelGroup/BossRush/model3/model3.gfx.inc.c"
+};
 
-#include "assets/levelGroup/BossRush/model4/model4.vtx.inc.c"
+Vtx BossRush_model4_Vtx[] = {
+    #include "assets/levelGroup/BossRush/model4/model4.vtx.inc.c"
+};
 Mtx BossRush_IMtx6 = IDENTITY;
 
-#include "assets/levelGroup/BossRush/model4/model4.gfx.inc.c"
+Gfx BossRush_model4_Gfx[] = {
+    #include "assets/levelGroup/BossRush/model4/model4.gfx.inc.c"
+};
 
-#include "assets/levelGroup/BossRush/model5/model5.vtx.inc.c"
+Vtx BossRush_model5_Vtx[] = {
+    #include "assets/levelGroup/BossRush/model5/model5.vtx.inc.c"
+};
 Mtx BossRush_IMtx7 = IDENTITY;
 
-#include "assets/levelGroup/BossRush/model5/model5.gfx.inc.c"
+Gfx BossRush_model5_Gfx[] = {
+    #include "assets/levelGroup/BossRush/model5/model5.gfx.inc.c"
+};
 
-#include "assets/levelGroup/BossRush/model6/model6.vtx.inc.c"
+Vtx BossRush_model6_Vtx[] = {
+    #include "assets/levelGroup/BossRush/model6/model6.vtx.inc.c"
+};
 Mtx BossRush_IMtx8 = IDENTITY;
 
-#include "assets/levelGroup/BossRush/model6/model6.gfx.inc.c"
+Gfx BossRush_model6_Gfx[] = {
+    #include "assets/levelGroup/BossRush/model6/model6.gfx.inc.c"
+};
 
-#include "assets/levelGroup/BossRush/model7/model7.vtx.inc.c"
+Vtx BossRush_model7_Vtx[] = {
+    #include "assets/levelGroup/BossRush/model7/model7.vtx.inc.c"
+};
 Mtx BossRush_IMtx9 = IDENTITY;
 
-#include "assets/levelGroup/BossRush/model7/model7.gfx.inc.c"
+Gfx BossRush_model7_Gfx[] = {
+    #include "assets/levelGroup/BossRush/model7/model7.gfx.inc.c"
+};
 
-#include "assets/levelGroup/BossRush/model8/model8.vtx.inc.c"
+Vtx BossRush_model8_Vtx[] = {
+    #include "assets/levelGroup/BossRush/model8/model8.vtx.inc.c"
+};
 Mtx BossRush_IMtx10 = IDENTITY;
 
-#include "assets/levelGroup/BossRush/model8/model8.gfx.inc.c"
+Gfx BossRush_model8_Gfx[] = {
+    #include "assets/levelGroup/BossRush/model8/model8.gfx.inc.c"
+};
 
-#include "assets/levelGroup/BossRush/model9/model9.vtx.inc.c"
+Vtx BossRush_model9_Vtx[] = {
+    #include "assets/levelGroup/BossRush/model9/model9.vtx.inc.c"
+};
 Mtx BossRush_IMtx11 = IDENTITY;
 
-#include "assets/levelGroup/BossRush/model9/model9.gfx.inc.c"
+Gfx BossRush_model9_Gfx[] = {
+    #include "assets/levelGroup/BossRush/model9/model9.gfx.inc.c"
+};
 
-#include "assets/levelGroup/BossRush/unkCol1/unkCol1.colV.inc.c"
+Vec3f BossRush_unkCol1_ColV[] = {
+    #include "assets/levelGroup/BossRush/unkCol1/unkCol1.colV.inc.c"
+};
 
-#include "assets/levelGroup/BossRush/unkCol1/unkCol1.colT.inc.c"
+Vec3w BossRush_unkCol1_ColT[] = {
+    #include "assets/levelGroup/BossRush/unkCol1/unkCol1.colT.inc.c"
+};
 
-#include "assets/levelGroup/BossRush/unkCol1/unkCol1.colS.inc.c"
+Rect3D BossRush_unkCol1_ColS = {
+    #include "assets/levelGroup/BossRush/unkCol1/unkCol1.colS.inc.c"
+};
 
 ModelCollision BossRush_unkCol1_ColH = {
 32, 54, &BossRush_unkCol1_ColV[0], &BossRush_unkCol1_ColT[0], &BossRush_unkCol1_ColS
 };
 
-#include "assets/levelGroup/BossRush/unkCol2/unkCol2.colV.inc.c"
+Vec3f BossRush_unkCol2_ColV[] = {
+    #include "assets/levelGroup/BossRush/unkCol2/unkCol2.colV.inc.c"
+};
 
-#include "assets/levelGroup/BossRush/unkCol2/unkCol2.colT.inc.c"
+Vec3w BossRush_unkCol2_ColT[] = {
+    #include "assets/levelGroup/BossRush/unkCol2/unkCol2.colT.inc.c"
+};
 
-#include "assets/levelGroup/BossRush/unkCol2/unkCol2.colS.inc.c"
+Rect3D BossRush_unkCol2_ColS = {
+    #include "assets/levelGroup/BossRush/unkCol2/unkCol2.colS.inc.c"
+};
 
 ModelCollision BossRush_unkCol2_ColH = {
 10, 10, &BossRush_unkCol2_ColV[0], &BossRush_unkCol2_ColT[0], &BossRush_unkCol2_ColS
 };
 
-#include "assets/levelGroup/BossRush/unkCol3/unkCol3.colV.inc.c"
+Vec3f BossRush_unkCol3_ColV[] = {
+    #include "assets/levelGroup/BossRush/unkCol3/unkCol3.colV.inc.c"
+};
 
-#include "assets/levelGroup/BossRush/unkCol3/unkCol3.colT.inc.c"
+Vec3w BossRush_unkCol3_ColT[] = {
+    #include "assets/levelGroup/BossRush/unkCol3/unkCol3.colT.inc.c"
+};
 
-#include "assets/levelGroup/BossRush/unkCol3/unkCol3.colS.inc.c"
+Rect3D BossRush_unkCol3_ColS = {
+    #include "assets/levelGroup/BossRush/unkCol3/unkCol3.colS.inc.c"
+};
 
 ModelCollision BossRush_unkCol3_ColH = {
 12, 8, &BossRush_unkCol3_ColV[0], &BossRush_unkCol3_ColT[0], &BossRush_unkCol3_ColS
 };
 
-#include "assets/levelGroup/BossRush/unkCol4/unkCol4.colV.inc.c"
+Vec3f BossRush_unkCol4_ColV[] = {
+    #include "assets/levelGroup/BossRush/unkCol4/unkCol4.colV.inc.c"
+};
 
-#include "assets/levelGroup/BossRush/unkCol4/unkCol4.colT.inc.c"
+Vec3w BossRush_unkCol4_ColT[] = {
+    #include "assets/levelGroup/BossRush/unkCol4/unkCol4.colT.inc.c"
+};
 
-#include "assets/levelGroup/BossRush/unkCol4/unkCol4.colS.inc.c"
+Rect3D BossRush_unkCol4_ColS = {
+    #include "assets/levelGroup/BossRush/unkCol4/unkCol4.colS.inc.c"
+};
 
 ModelCollision BossRush_unkCol4_ColH = {
 12, 8, &BossRush_unkCol4_ColV[0], &BossRush_unkCol4_ColT[0], &BossRush_unkCol4_ColS
 };
 
-#include "assets/levelGroup/BossRush/unkCol5/unkCol5.colV.inc.c"
+Vec3f BossRush_unkCol5_ColV[] = {
+    #include "assets/levelGroup/BossRush/unkCol5/unkCol5.colV.inc.c"
+};
 
-#include "assets/levelGroup/BossRush/unkCol5/unkCol5.colT.inc.c"
+Vec3w BossRush_unkCol5_ColT[] = {
+    #include "assets/levelGroup/BossRush/unkCol5/unkCol5.colT.inc.c"
+};
 
-#include "assets/levelGroup/BossRush/unkCol5/unkCol5.colS.inc.c"
+Rect3D BossRush_unkCol5_ColS = {
+    #include "assets/levelGroup/BossRush/unkCol5/unkCol5.colS.inc.c"
+};
 
 ModelCollision BossRush_unkCol5_ColH = {
 8, 6, &BossRush_unkCol5_ColV[0], &BossRush_unkCol5_ColT[0], &BossRush_unkCol5_ColS
 };
 
-#include "assets/levelGroup/BossRush/unkCol6/unkCol6.colV.inc.c"
+Vec3f BossRush_unkCol6_ColV[] = {
+    #include "assets/levelGroup/BossRush/unkCol6/unkCol6.colV.inc.c"
+};
 
-#include "assets/levelGroup/BossRush/unkCol6/unkCol6.colT.inc.c"
+Vec3w BossRush_unkCol6_ColT[] = {
+    #include "assets/levelGroup/BossRush/unkCol6/unkCol6.colT.inc.c"
+};
 
-#include "assets/levelGroup/BossRush/unkCol6/unkCol6.colS.inc.c"
+Rect3D BossRush_unkCol6_ColS = {
+    #include "assets/levelGroup/BossRush/unkCol6/unkCol6.colS.inc.c"
+};
 
 ModelCollision BossRush_unkCol6_ColH = {
 8, 8, &BossRush_unkCol6_ColV[0], &BossRush_unkCol6_ColT[0], &BossRush_unkCol6_ColS
 };
 
-#include "assets/levelGroup/BossRush/unkCol7/unkCol7.colV.inc.c"
+Vec3f BossRush_unkCol7_ColV[] = {
+    #include "assets/levelGroup/BossRush/unkCol7/unkCol7.colV.inc.c"
+};
 
-#include "assets/levelGroup/BossRush/unkCol7/unkCol7.colT.inc.c"
+Vec3w BossRush_unkCol7_ColT[] = {
+    #include "assets/levelGroup/BossRush/unkCol7/unkCol7.colT.inc.c"
+};
 
-#include "assets/levelGroup/BossRush/unkCol7/unkCol7.colS.inc.c"
+Rect3D BossRush_unkCol7_ColS = {
+    #include "assets/levelGroup/BossRush/unkCol7/unkCol7.colS.inc.c"
+};
 
 ModelCollision BossRush_unkCol7_ColH = {
 16, 16, &BossRush_unkCol7_ColV[0], &BossRush_unkCol7_ColT[0], &BossRush_unkCol7_ColS
 };
 
-#include "assets/levelGroup/BossRush/unkCol8/unkCol8.colV.inc.c"
+Vec3f BossRush_unkCol8_ColV[] = {
+    #include "assets/levelGroup/BossRush/unkCol8/unkCol8.colV.inc.c"
+};
 
-#include "assets/levelGroup/BossRush/unkCol8/unkCol8.colT.inc.c"
+Vec3w BossRush_unkCol8_ColT[] = {
+    #include "assets/levelGroup/BossRush/unkCol8/unkCol8.colT.inc.c"
+};
 
-#include "assets/levelGroup/BossRush/unkCol8/unkCol8.colS.inc.c"
+Rect3D BossRush_unkCol8_ColS = {
+    #include "assets/levelGroup/BossRush/unkCol8/unkCol8.colS.inc.c"
+};
 
 ModelCollision BossRush_unkCol8_ColH = {
 24, 20, &BossRush_unkCol8_ColV[0], &BossRush_unkCol8_ColT[0], &BossRush_unkCol8_ColS
 };
 
-#include "assets/levelGroup/BossRush/unkCol9/unkCol9.colV.inc.c"
+Vec3f BossRush_unkCol9_ColV[] = {
+    #include "assets/levelGroup/BossRush/unkCol9/unkCol9.colV.inc.c"
+};
 
-#include "assets/levelGroup/BossRush/unkCol9/unkCol9.colT.inc.c"
+Vec3w BossRush_unkCol9_ColT[] = {
+    #include "assets/levelGroup/BossRush/unkCol9/unkCol9.colT.inc.c"
+};
 
-#include "assets/levelGroup/BossRush/unkCol9/unkCol9.colS.inc.c"
+Rect3D BossRush_unkCol9_ColS = {
+    #include "assets/levelGroup/BossRush/unkCol9/unkCol9.colS.inc.c"
+};
 
 ModelCollision BossRush_unkCol9_ColH = {
 6, 4, &BossRush_unkCol9_ColV[0], &BossRush_unkCol9_ColT[0], &BossRush_unkCol9_ColS

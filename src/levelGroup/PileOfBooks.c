@@ -160,52 +160,52 @@ unsigned char PileOfBooks_rabObjects_Bin[] = {
 0x00, 0x00, 0x00, 0x00, 0x42, 0xC8, 0x00, 0x00, 0x42, 0xC8, 0x00, 0x00, 0x42, 0xC8, 0x00, 0x00, 0x02, 0x00, 0x6E, 0x1C, 0x00, 0x00, 0x00, 0x00, 0x42, 0xC8, 0x00, 0x00, 0x42, 0xC8, 0x00, 0x00, 0x42, 0xC8, 0x00, 0x00, 0x02, 0x00, 0x6E, 0x1C
 };
 
-RoomObject PileOfBooks_roomMulti_objects[14] = {
-{{0.0,0.0,3300.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 5, 0.0, -20000.0, 3300.0, 0.0, 15, 300, -2, 0, 0, 0, 7, -1, -1, 20, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
-{{0.0,0.0,3100.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 5, 0.0, -20000.0, 3100.0, 0.0, 20, 300, -2, 0, 0, 0, 7, -1, -1, 20, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
-{{0.0,0.0,2900.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 5, 0.0, -20000.0, 2900.0, 0.0, 25, 300, -2, 0, 0, 0, 7, -1, -1, 20, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
-{{0.0,0.0,2700.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 5, 0.0, -20000.0, 2700.0, 0.0, 30, 300, -2, 0, 0, 0, 7, -1, -1, 20, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
-{{0.0,0.0,2500.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 5, 0.0, -20000.0, 2500.0, 0.0, 35, 300, -2, 0, 0, 0, 7, -1, -1, 20, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
-{{0.0,0.0,2300.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 5, 0.0, -20000.0, 2300.0, 0.0, 40, 300, -2, 0, 0, 0, 7, -1, -1, 20, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
-{{0.0,0.0,2100.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 5, 0.0, -20000.0, 2100.0, 0.0, 45, 300, -2, 0, 0, 0, 7, -1, -1, 20, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
-{{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 37, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
-{{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 38, -1, 20, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
-{{0.0,0.0,3600.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 27, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
-{{0.0,0.0,3600.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 26, -1, -1, -1, NULL, NULL, 0, 0, 0, 4, 4, 0, -1, 0, 0},
-{{0.0,0.0,3600.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 256, 0, 400.0, 400.0, 0.0, 0.0, 3, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
-{{0.0,0.0,3600.0}, {4.0,4.0,4.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
-{{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+RoomObject PileOfBooks_roomMulti_objects[] = {
+    { {0.0,0.0,3300.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0),   7, 5,    0.0, -20000.0,  3300.0, 0.0, 15, 300, -2,    0, 0, 0,  7, -1, -1, 20, NULL, NULL, 0, 0, 7,  4, 4, 0, -1, 0, 0},
+    { {0.0,0.0,3100.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0),   7, 5,    0.0, -20000.0,  3100.0, 0.0, 20, 300, -2,    0, 0, 0,  7, -1, -1, 20, NULL, NULL, 0, 0, 7,  4, 4, 0, -1, 0, 0},
+    { {0.0,0.0,2900.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0),   7, 5,    0.0, -20000.0,  2900.0, 0.0, 25, 300, -2,    0, 0, 0,  7, -1, -1, 20, NULL, NULL, 0, 0, 7,  4, 4, 0, -1, 0, 0},
+    { {0.0,0.0,2700.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0),   7, 5,    0.0, -20000.0,  2700.0, 0.0, 30, 300, -2,    0, 0, 0,  7, -1, -1, 20, NULL, NULL, 0, 0, 7,  4, 4, 0, -1, 0, 0},
+    { {0.0,0.0,2500.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0),   7, 5,    0.0, -20000.0,  2500.0, 0.0, 35, 300, -2,    0, 0, 0,  7, -1, -1, 20, NULL, NULL, 0, 0, 7,  4, 4, 0, -1, 0, 0},
+    { {0.0,0.0,2300.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0),   7, 5,    0.0, -20000.0,  2300.0, 0.0, 40, 300, -2,    0, 0, 0,  7, -1, -1, 20, NULL, NULL, 0, 0, 7,  4, 4, 0, -1, 0, 0},
+    { {0.0,0.0,2100.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0),   7, 5,    0.0, -20000.0,  2100.0, 0.0, 45, 300, -2,    0, 0, 0,  7, -1, -1, 20, NULL, NULL, 0, 0, 7,  4, 4, 0, -1, 0, 0},
+    {    {0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0),   7, 0,    0.0,      0.0,     0.0, 0.0,  0,   0,  0,    0, 0, 0, 37, -1, -1, -1, NULL, NULL, 0, 0, 7,  4, 4, 0, -1, 0, 0},
+    {    {0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0),   7, 0, 1400.0,   1000.0, -1000.0, 0.0,  0,  90,  0, 1000, 0, 0, 38, -1, 20, -1, NULL, NULL, 0, 0, 3,  4, 4, 0, -1, 0, 0},
+    { {0.0,0.0,3600.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0),   7, 0,    0.0,      0.0,     0.0, 0.0,  0,   0,  0,    0, 0, 0, 27, -1, -1, -1, NULL, NULL, 0, 0, 7,  4, 4, 0, -1, 0, 0},
+    { {0.0,0.0,3600.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0),   7, 0,    0.0,      0.0,     0.0, 0.0,  0,   0,  0,    0, 0, 0, 26, -1, -1, -1, NULL, NULL, 0, 0, 0,  4, 4, 0, -1, 0, 0},
+    { {0.0,0.0,3600.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 256, 0,  400.0,    400.0,     0.0, 0.0,  3,   1,  0,    0, 0, 0,  0, -1, -1, -1, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
+    { {0.0,0.0,3600.0}, {4.0,4.0,4.0}, 0, DEGREES_TO_RADIANS_2PI(0.0),   7, 0, 1400.0,   1000.0, -1000.0, 0.0,  0,  90,  0, 1000, 0, 0,  0, -1, -1, -1, NULL, NULL, 0, 0, 1,  0, 0, 0, -1, 0, 0},
+    {    {0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, DEGREES_TO_RADIANS_2PI(0.0),   0, 0,    0.0,      0.0,     0.0, 0.0,  0,   0,  0,    0, 0, 0,  0,  0,  0,  0, NULL, NULL, 0, 0, 0,  0, 0, 0,  0, 0, 0}
 };
 
-RoomObject PileOfBooks_room2_objects[18] = {
-{{0.0,2000.0,-3300.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 5, 0.0, 0.0, -3300.0, 0.0, 165, 30, 150000, 0, 0, 0, 7, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
-{{0.0,2000.0,-3100.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 5, 0.0, 0.0, -3100.0, 0.0, 160, 30, 150000, 0, 0, 0, 7, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
-{{0.0,2000.0,-2900.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 5, 0.0, 0.0, -2900.0, 0.0, 155, 30, 150000, 0, 0, 0, 7, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
-{{0.0,2000.0,-2700.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 5, 0.0, 0.0, -2700.0, 0.0, 150, 30, 150000, 0, 0, 0, 7, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
-{{0.0,2000.0,-2500.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 5, 0.0, 0.0, -2500.0, 0.0, 145, 30, 150000, 0, 0, 0, 7, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
-{{0.0,2000.0,-2300.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 5, 0.0, 0.0, -2300.0, 0.0, 140, 30, 150000, 0, 0, 0, 7, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
-{{0.0,2000.0,-2100.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 5, 0.0, 0.0, -2100.0, 0.0, 135, 30, 150000, 0, 0, 0, 7, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
-{{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 37, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
-{{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 38, -1, 22, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
-{{0.0,0.0,3600.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 27, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
-{{0.0,0.0,3600.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 26, -1, -1, -1, NULL, NULL, 0, 0, 0, 4, 4, 0, -1, 0, 0},
-{{0.0,0.0,3600.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 256, 0, 400.0, 400.0, 0.0, 0.0, 3, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
-{{0.0,0.0,3600.0}, {4.0,4.0,4.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
-{{0.0,0.0,-3600.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 28, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
-{{0.0,0.0,-3600.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 25, -1, -1, -1, NULL, NULL, 0, 0, 0, 4, 4, 0, -1, 0, 0},
-{{0.0,0.0,-3600.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 256, 0, 400.0, 400.0, 0.0, 0.0, 1, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
-{{0.0,0.0,-3600.0}, {4.0,4.0,4.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
-{{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+RoomObject PileOfBooks_room2_objects[] = {
+    { {0.0,2000.0,-3300.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0),   7, 5,    0.0,    0.0, -3300.0, 0.0, 165, 30, 150000,    0, 0, 0,  7, -1, -1, -1, NULL, NULL, 0, 0, 7,  4, 4, 0, -1, 0, 0},
+    { {0.0,2000.0,-3100.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0),   7, 5,    0.0,    0.0, -3100.0, 0.0, 160, 30, 150000,    0, 0, 0,  7, -1, -1, -1, NULL, NULL, 0, 0, 7,  4, 4, 0, -1, 0, 0},
+    { {0.0,2000.0,-2900.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0),   7, 5,    0.0,    0.0, -2900.0, 0.0, 155, 30, 150000,    0, 0, 0,  7, -1, -1, -1, NULL, NULL, 0, 0, 7,  4, 4, 0, -1, 0, 0},
+    { {0.0,2000.0,-2700.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0),   7, 5,    0.0,    0.0, -2700.0, 0.0, 150, 30, 150000,    0, 0, 0,  7, -1, -1, -1, NULL, NULL, 0, 0, 7,  4, 4, 0, -1, 0, 0},
+    { {0.0,2000.0,-2500.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0),   7, 5,    0.0,    0.0, -2500.0, 0.0, 145, 30, 150000,    0, 0, 0,  7, -1, -1, -1, NULL, NULL, 0, 0, 7,  4, 4, 0, -1, 0, 0},
+    { {0.0,2000.0,-2300.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0),   7, 5,    0.0,    0.0, -2300.0, 0.0, 140, 30, 150000,    0, 0, 0,  7, -1, -1, -1, NULL, NULL, 0, 0, 7,  4, 4, 0, -1, 0, 0},
+    { {0.0,2000.0,-2100.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0),   7, 5,    0.0,    0.0, -2100.0, 0.0, 135, 30, 150000,    0, 0, 0,  7, -1, -1, -1, NULL, NULL, 0, 0, 7,  4, 4, 0, -1, 0, 0},
+    {        {0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0),   7, 0,    0.0,    0.0,     0.0, 0.0,   0,  0,      0,    0, 0, 0, 37, -1, -1, -1, NULL, NULL, 0, 0, 7,  4, 4, 0, -1, 0, 0},
+    {        {0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0),   7, 0, 1400.0, 1000.0, -1000.0, 0.0,   0, 90,      0, 1000, 0, 0, 38, -1, 22, -1, NULL, NULL, 0, 0, 3,  4, 4, 0, -1, 0, 0},
+    {     {0.0,0.0,3600.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0),   7, 0,    0.0,    0.0,     0.0, 0.0,   0,  0,      0,    0, 0, 0, 27, -1, -1, -1, NULL, NULL, 0, 0, 7,  4, 4, 0, -1, 0, 0},
+    {     {0.0,0.0,3600.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0),   7, 0,    0.0,    0.0,     0.0, 0.0,   0,  0,      0,    0, 0, 0, 26, -1, -1, -1, NULL, NULL, 0, 0, 0,  4, 4, 0, -1, 0, 0},
+    {     {0.0,0.0,3600.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 256, 0,  400.0,  400.0,     0.0, 0.0,   3,  1,      0,    0, 0, 0,  0, -1, -1, -1, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
+    {     {0.0,0.0,3600.0}, {4.0,4.0,4.0}, 0, DEGREES_TO_RADIANS_2PI(0.0),   7, 0, 1400.0, 1000.0, -1000.0, 0.0,   0, 90,      0, 1000, 0, 0,  0, -1, -1, -1, NULL, NULL, 0, 0, 1,  0, 0, 0, -1, 0, 0},
+    {    {0.0,0.0,-3600.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0),   7, 0,    0.0,    0.0,     0.0, 0.0,   0,  0,      0,    0, 0, 0, 28, -1, -1, -1, NULL, NULL, 0, 0, 7,  4, 4, 0, -1, 0, 0},
+    {    {0.0,0.0,-3600.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0),   7, 0,    0.0,    0.0,     0.0, 0.0,   0,  0,      0,    0, 0, 0, 25, -1, -1, -1, NULL, NULL, 0, 0, 0,  4, 4, 0, -1, 0, 0},
+    {    {0.0,0.0,-3600.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 256, 0,  400.0,  400.0,     0.0, 0.0,   1,  1,      0,    0, 0, 0,  0, -1, -1, -1, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
+    {    {0.0,0.0,-3600.0}, {4.0,4.0,4.0}, 0, DEGREES_TO_RADIANS_2PI(0.0),   7, 0, 1400.0, 1000.0, -1000.0, 0.0,   0, 90,      0, 1000, 0, 0,  0, -1, -1, -1, NULL, NULL, 0, 0, 1,  0, 0, 0, -1, 0, 0},
+    {        {0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, DEGREES_TO_RADIANS_2PI(0.0),   0, 0,    0.0,    0.0,     0.0, 0.0,   0,  0,      0,    0, 0, 0,  0,  0,  0,  0, NULL, NULL, 0, 0, 0,  0, 0, 0,  0, 0, 0}
 };
 
-RoomActor PileOfBooks_room0_actors[2] = {
-{PILE_OF_BOOKS, {0.0,0.0,0.0}, 270.0, -10000.0, 10000.0, 0, 0.0, -10000.0, 10000.0, 0, 2250000.0, 7.0, 3.0, 60.0, 0, 0.10000000149011612f, 0, 0, 4.0f, 4.0f, 12.0f, 24.0f},
-{ACTOR_NULL, {0.0,0.0,0.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0}
+RoomActor PileOfBooks_room0_actors[] = {
+    { PILE_OF_BOOKS, {0.0,0.0,0.0}, 270.0, -10000.0, 10000.0, 0, 0.0, -10000.0, 10000.0, 0, 2250000.0, 7.0, 3.0, 60.0, 0, 0.10000000149011612f, 0, 0, 4.0f, 4.0f, 12.0f, 24.0f},
+    {    ACTOR_NULL, {0.0,0.0,0.0},   0.0,      0.0,     0.0, 0, 0.0,      0.0,     0.0, 0,       0.0, 0.0, 0.0,  0.0, 0,                    0, 0, 0,    0,    0,     0,     0}
 };
 
-RoomActor PileOfBooks_room1_actors[2] = {
-{PILE_OF_BOOKS, {0.0,0.0,0.0}, 270.0, -10000.0, 10000.0, 0, 0.0, -10000.0, 10000.0, 0, 2250000.0, 12.0, 5.0, 75.0, 0.6000000238418579f, 0.10000000149011612f, 0, 0, 4.0f, 6.0f, 2.0f, 16.0f},
-{ACTOR_NULL, {0.0,0.0,0.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0}
+RoomActor PileOfBooks_room1_actors[] = {
+    { PILE_OF_BOOKS, {0.0,0.0,0.0}, 270.0, -10000.0, 10000.0, 0, 0.0, -10000.0, 10000.0, 0, 2250000.0, 12.0, 5.0, 75.0, 0.6000000238418579f, 0.10000000149011612f, 0, 0, 4.0f, 6.0f, 2.0f, 16.0f},
+    {    ACTOR_NULL, {0.0,0.0,0.0},   0.0,      0.0,     0.0, 0, 0.0,      0.0,     0.0, 0,       0.0,  0.0, 0.0,  0.0,                   0,                    0, 0, 0,    0,    0,    0,     0}
 };
 
 s32 PileOfBooks_spriteLib_Sprlib[] = {
@@ -243,28 +243,28 @@ s32 PileOfBooks_spriteLib_Sprlib[] = {
     0,
 };
 
-RoomObject PileOfBooks_room3_objects[13] = {
-{{0.0,0.0,0.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(180.00000500895632), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 39, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
-{{0.0,0.0,0.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(180.00000500895632), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 40, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
-{{0.0,0.0,2700.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 27, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
-{{0.0,0.0,2700.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 26, -1, -1, -1, NULL, NULL, 0, 0, 0, 4, 4, 0, -1, 0, 0},
-{{0.0,0.0,2700.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 256, 0, 400.0, 400.0, 0.0, 0.0, 3, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
-{{0.0,0.0,2700.0}, {4.0,4.0,4.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
-{{0.0,0.0,-2700.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 28, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
-{{0.0,0.0,-2700.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 25, -1, -1, -1, NULL, NULL, 0, 0, 0, 4, 4, 0, -1, 0, 0},
-{{0.0,0.0,-2700.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 256, 0, 400.0, 400.0, 0.0, 0.0, 1, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
-{{0.0,0.0,-2700.0}, {4.0,4.0,4.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
-{{0.0,5.0,10.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(180.00000500895632), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 41, -1, -1, -1, NULL, NULL, 0, 0, 0, 4, 4, 0, -1, 0, 0},
-{{0.0,5.0,10.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(180.00000500895632), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 42, -1, -1, -1, NULL, NULL, 0, 0, 0, 4, 4, 0, -1, 0, 0},
-{{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+RoomObject PileOfBooks_room3_objects[] = {
+    {     {0.0,0.0,0.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(180.00000500895632),   7, 0,    0.0,    0.0,     0.0, 0.0, 0,  0, 0,    0, 0, 0, 39, -1, -1, -1, NULL, NULL, 0, 0, 7,  4, 4, 0, -1, 0, 0},
+    {     {0.0,0.0,0.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(180.00000500895632),   7, 0,    0.0,    0.0,     0.0, 0.0, 0,  0, 0,    0, 0, 0, 40, -1, -1, -1, NULL, NULL, 0, 0, 7,  4, 4, 0, -1, 0, 0},
+    {  {0.0,0.0,2700.0}, {1.0,1.0,1.0}, 0,                DEGREES_TO_RADIANS_2PI(0.0),   7, 0,    0.0,    0.0,     0.0, 0.0, 0,  0, 0,    0, 0, 0, 27, -1, -1, -1, NULL, NULL, 0, 0, 7,  4, 4, 0, -1, 0, 0},
+    {  {0.0,0.0,2700.0}, {1.0,1.0,1.0}, 0,                DEGREES_TO_RADIANS_2PI(0.0),   7, 0,    0.0,    0.0,     0.0, 0.0, 0,  0, 0,    0, 0, 0, 26, -1, -1, -1, NULL, NULL, 0, 0, 0,  4, 4, 0, -1, 0, 0},
+    {  {0.0,0.0,2700.0}, {1.0,1.0,1.0}, 0,                DEGREES_TO_RADIANS_2PI(0.0), 256, 0,  400.0,  400.0,     0.0, 0.0, 3,  1, 0,    0, 0, 0,  0, -1, -1, -1, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
+    {  {0.0,0.0,2700.0}, {4.0,4.0,4.0}, 0,                DEGREES_TO_RADIANS_2PI(0.0),   7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0,  0, -1, -1, -1, NULL, NULL, 0, 0, 1,  0, 0, 0, -1, 0, 0},
+    { {0.0,0.0,-2700.0}, {1.0,1.0,1.0}, 0,                DEGREES_TO_RADIANS_2PI(0.0),   7, 0,    0.0,    0.0,     0.0, 0.0, 0,  0, 0,    0, 0, 0, 28, -1, -1, -1, NULL, NULL, 0, 0, 7,  4, 4, 0, -1, 0, 0},
+    { {0.0,0.0,-2700.0}, {1.0,1.0,1.0}, 0,                DEGREES_TO_RADIANS_2PI(0.0),   7, 0,    0.0,    0.0,     0.0, 0.0, 0,  0, 0,    0, 0, 0, 25, -1, -1, -1, NULL, NULL, 0, 0, 0,  4, 4, 0, -1, 0, 0},
+    { {0.0,0.0,-2700.0}, {1.0,1.0,1.0}, 0,                DEGREES_TO_RADIANS_2PI(0.0), 256, 0,  400.0,  400.0,     0.0, 0.0, 1,  1, 0,    0, 0, 0,  0, -1, -1, -1, NULL, NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
+    { {0.0,0.0,-2700.0}, {4.0,4.0,4.0}, 0,                DEGREES_TO_RADIANS_2PI(0.0),   7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0,  0, -1, -1, -1, NULL, NULL, 0, 0, 1,  0, 0, 0, -1, 0, 0},
+    {    {0.0,5.0,10.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(180.00000500895632),   7, 0,    0.0,    0.0,     0.0, 0.0, 0,  0, 0,    0, 0, 0, 41, -1, -1, -1, NULL, NULL, 0, 0, 0,  4, 4, 0, -1, 0, 0},
+    {    {0.0,5.0,10.0}, {1.0,1.0,1.0}, 2, DEGREES_TO_RADIANS_2PI(180.00000500895632),   7, 0,    0.0,    0.0,     0.0, 0.0, 0,  0, 0,    0, 0, 0, 42, -1, -1, -1, NULL, NULL, 0, 0, 0,  4, 4, 0, -1, 0, 0},
+    {     {0.0,0.0,0.0}, {0.0,0.0,0.0}, 0,                DEGREES_TO_RADIANS_2PI(0.0),   0, 0,    0.0,    0.0,     0.0, 0.0, 0,  0, 0,    0, 0, 0,  0,  0,  0,  0, NULL, NULL, 0, 0, 0,  0, 0, 0,  0, 0, 0}
 };
 
-RoomInstance PileOfBooks_room_instances[5] = {
-{PileOfBooks_roomMulti_objects,PileOfBooks_room0_actors, 0, 0, 0, 1, 0, 0, -1, 0, 0.0, 15, -400.0, 200.0, 0.0, 0.0, 0.0, 65.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1500.0, 200.0},
-{PileOfBooks_roomMulti_objects,PileOfBooks_room1_actors, 0, 0, 0, 1, 0, 0, -1, 0, 0.0, 15, -400.0, 200.0, 0.0, 0.0, 0.0, 65.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1500.0, 200.0},
-{PileOfBooks_room2_objects, 0, 0, 0, 0, 1, 0, 0, -1, 0, 0.0, 10, -400.0, 200.0, 0.0, 0.0, 0.0, 65.0, 1.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
-{PileOfBooks_room3_objects, 0, 0, 0, 0, 0, 2, 0, -1, 0, 0.0, 10, -400.0, 200.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0},
-{0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0}
+RoomInstance PileOfBooks_room_instances[] = {
+    { PileOfBooks_roomMulti_objects, PileOfBooks_room0_actors, 0, 0, 0, 1, 0, 0, -1, 0, 0.0, 15, -400.0, 200.0, 0.0, 0.0, 0.0, 65.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1500.0, 200.0},
+    { PileOfBooks_roomMulti_objects, PileOfBooks_room1_actors, 0, 0, 0, 1, 0, 0, -1, 0, 0.0, 15, -400.0, 200.0, 0.0, 0.0, 0.0, 65.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1500.0, 200.0},
+    {     PileOfBooks_room2_objects,                        0, 0, 0, 0, 1, 0, 0, -1, 0, 0.0, 10, -400.0, 200.0, 0.0, 0.0, 0.0, 65.0, 1.0, 0, 0, 0, 0, 0, 0, 0, 0,    -1.0,   0.0},
+    {     PileOfBooks_room3_objects,                        0, 0, 0, 0, 0, 2, 0, -1, 0, 0.0, 10, -400.0, 200.0, 0.0, 0.0, 0.0,  0.0, 1.0, 0, 0, 0, 0, 0, 0, 0, 0,    -1.0,   0.0},
+    {                             0,                        0, 0, 0, 0, 0, 0, 0, -1, 0, 0.0,  0,    0.0,   0.0, 0.0, 0.0, 0.0,  0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0,    -1.0,   0.0}
 };
 
 s32 PileOfBooks_rooms_map[4][3] = {
@@ -278,12 +278,12 @@ StageMapData PileOfBooks_map_data = {
 3, 4, PileOfBooks_room_instances, PileOfBooks_rooms_map, 
 };
 
-SpriteActor PileOfBooks_roomUnk_sprites[1] = {
-{-1, 0, {-1.0,-1.0,-1.0}, {-1.0,32.0,32.0}, 1, 0, 0.0, 0, 0, 0, 0, 0, -1, -1, 0, 0}
+SpriteActor PileOfBooks_roomUnk_sprites[] = {
+    { -1, 0, {-1.0,-1.0,-1.0}, {-1.0,32.0,32.0}, 1, 0, 0.0, 0, 0, 0, 0, 0, -1, -1, 0, 0}
 };
 
-RoomInstance PileOfBooks_ext_room_instances[1] = {
-{0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0}
+RoomInstance PileOfBooks_ext_room_instances[] = {
+    { 0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0}
 };
 
 LevelScope PileOfBooks_scope_Lvlscope = {
@@ -309,102 +309,166 @@ StageData PileOfBooks_header_Lvlhdr = {
 s32 pob_pad2[3] = 0;
 Mtx PileOfBooks_IMtx2 = IDENTITY;
 
-#include "assets/levelGroup/PileOfBooks/pobScope/pobScope.light.inc.c"
+Lights1 PileOfBooks_pobScope_Light = 
+    #include "assets/levelGroup/PileOfBooks/pobScope/pobScope.light.inc.c"
 
-#include "assets/levelGroup/PileOfBooks/model1/model1.vtx.inc.c"
+Vtx PileOfBooks_model1_Vtx[] = {
+    #include "assets/levelGroup/PileOfBooks/model1/model1.vtx.inc.c"
+};
 Mtx PileOfBooks_IMtx3 = IDENTITY;
 
-#include "assets/levelGroup/PileOfBooks/model1/model1.gfx.inc.c"
+Gfx PileOfBooks_model1_Gfx[] = {
+    #include "assets/levelGroup/PileOfBooks/model1/model1.gfx.inc.c"
+};
 
-#include "assets/levelGroup/PileOfBooks/model2/model2.vtx.inc.c"
+Vtx PileOfBooks_model2_Vtx[] = {
+    #include "assets/levelGroup/PileOfBooks/model2/model2.vtx.inc.c"
+};
 Mtx PileOfBooks_IMtx4 = IDENTITY;
 
-#include "assets/levelGroup/PileOfBooks/model2/model2.gfx.inc.c"
+Gfx PileOfBooks_model2_Gfx[] = {
+    #include "assets/levelGroup/PileOfBooks/model2/model2.gfx.inc.c"
+};
 
-#include "assets/levelGroup/PileOfBooks/model3/model3.vtx.inc.c"
+Vtx PileOfBooks_model3_Vtx[] = {
+    #include "assets/levelGroup/PileOfBooks/model3/model3.vtx.inc.c"
+};
 Mtx PileOfBooks_IMtx5 = IDENTITY;
 
-#include "assets/levelGroup/PileOfBooks/model3/model3.gfx.inc.c"
+Gfx PileOfBooks_model3_Gfx[] = {
+    #include "assets/levelGroup/PileOfBooks/model3/model3.gfx.inc.c"
+};
 
-#include "assets/levelGroup/PileOfBooks/model4/model4.vtx.inc.c"
+Vtx PileOfBooks_model4_Vtx[] = {
+    #include "assets/levelGroup/PileOfBooks/model4/model4.vtx.inc.c"
+};
 Mtx PileOfBooks_IMtx6 = IDENTITY;
 
-#include "assets/levelGroup/PileOfBooks/model4/model4.gfx.inc.c"
+Gfx PileOfBooks_model4_Gfx[] = {
+    #include "assets/levelGroup/PileOfBooks/model4/model4.gfx.inc.c"
+};
 
-#include "assets/levelGroup/PileOfBooks/model5/model5.vtx.inc.c"
+Vtx PileOfBooks_model5_Vtx[] = {
+    #include "assets/levelGroup/PileOfBooks/model5/model5.vtx.inc.c"
+};
 Mtx PileOfBooks_IMtx7 = IDENTITY;
 
-#include "assets/levelGroup/PileOfBooks/model5/model5.gfx.inc.c"
+Gfx PileOfBooks_model5_Gfx[] = {
+    #include "assets/levelGroup/PileOfBooks/model5/model5.gfx.inc.c"
+};
 
-#include "assets/levelGroup/PileOfBooks/model6/model6.vtx.inc.c"
+Vtx PileOfBooks_model6_Vtx[] = {
+    #include "assets/levelGroup/PileOfBooks/model6/model6.vtx.inc.c"
+};
 Mtx PileOfBooks_IMtx8 = IDENTITY;
 
-#include "assets/levelGroup/PileOfBooks/model6/model6.gfx.inc.c"
+Gfx PileOfBooks_model6_Gfx[] = {
+    #include "assets/levelGroup/PileOfBooks/model6/model6.gfx.inc.c"
+};
 
-#include "assets/levelGroup/PileOfBooks/unkCol1/unkCol1.colV.inc.c"
+Vec3f PileOfBooks_unkCol1_ColV[] = {
+    #include "assets/levelGroup/PileOfBooks/unkCol1/unkCol1.colV.inc.c"
+};
 
-#include "assets/levelGroup/PileOfBooks/unkCol1/unkCol1.colT.inc.c"
+Vec3w PileOfBooks_unkCol1_ColT[] = {
+    #include "assets/levelGroup/PileOfBooks/unkCol1/unkCol1.colT.inc.c"
+};
 
-#include "assets/levelGroup/PileOfBooks/unkCol1/unkCol1.colS.inc.c"
+Rect3D PileOfBooks_unkCol1_ColS = {
+    #include "assets/levelGroup/PileOfBooks/unkCol1/unkCol1.colS.inc.c"
+};
 
 ModelCollision PileOfBooks_unkCol1_ColH = {
 36, 44, &PileOfBooks_unkCol1_ColV[0], &PileOfBooks_unkCol1_ColT[0], &PileOfBooks_unkCol1_ColS
 };
 
-#include "assets/levelGroup/PileOfBooks/unkCol2/unkCol2.colV.inc.c"
+Vec3f PileOfBooks_unkCol2_ColV[] = {
+    #include "assets/levelGroup/PileOfBooks/unkCol2/unkCol2.colV.inc.c"
+};
 
-#include "assets/levelGroup/PileOfBooks/unkCol2/unkCol2.colT.inc.c"
+Vec3w PileOfBooks_unkCol2_ColT[] = {
+    #include "assets/levelGroup/PileOfBooks/unkCol2/unkCol2.colT.inc.c"
+};
 
-#include "assets/levelGroup/PileOfBooks/unkCol2/unkCol2.colS.inc.c"
+Rect3D PileOfBooks_unkCol2_ColS = {
+    #include "assets/levelGroup/PileOfBooks/unkCol2/unkCol2.colS.inc.c"
+};
 
 ModelCollision PileOfBooks_unkCol2_ColH = {
 8, 10, &PileOfBooks_unkCol2_ColV[0], &PileOfBooks_unkCol2_ColT[0], &PileOfBooks_unkCol2_ColS
 };
 
-#include "assets/levelGroup/PileOfBooks/unkCol3/unkCol3.colV.inc.c"
+Vec3f PileOfBooks_unkCol3_ColV[] = {
+    #include "assets/levelGroup/PileOfBooks/unkCol3/unkCol3.colV.inc.c"
+};
 
-#include "assets/levelGroup/PileOfBooks/unkCol3/unkCol3.colT.inc.c"
+Vec3w PileOfBooks_unkCol3_ColT[] = {
+    #include "assets/levelGroup/PileOfBooks/unkCol3/unkCol3.colT.inc.c"
+};
 
-#include "assets/levelGroup/PileOfBooks/unkCol3/unkCol3.colS.inc.c"
+Rect3D PileOfBooks_unkCol3_ColS = {
+    #include "assets/levelGroup/PileOfBooks/unkCol3/unkCol3.colS.inc.c"
+};
 
 ModelCollision PileOfBooks_unkCol3_ColH = {
 64, 100, &PileOfBooks_unkCol3_ColV[0], &PileOfBooks_unkCol3_ColT[0], &PileOfBooks_unkCol3_ColS
 };
 
-#include "assets/levelGroup/PileOfBooks/unkCol4/unkCol4.colV.inc.c"
+Vec3f PileOfBooks_unkCol4_ColV[] = {
+    #include "assets/levelGroup/PileOfBooks/unkCol4/unkCol4.colV.inc.c"
+};
 
-#include "assets/levelGroup/PileOfBooks/unkCol4/unkCol4.colT.inc.c"
+Vec3w PileOfBooks_unkCol4_ColT[] = {
+    #include "assets/levelGroup/PileOfBooks/unkCol4/unkCol4.colT.inc.c"
+};
 
-#include "assets/levelGroup/PileOfBooks/unkCol4/unkCol4.colS.inc.c"
+Rect3D PileOfBooks_unkCol4_ColS = {
+    #include "assets/levelGroup/PileOfBooks/unkCol4/unkCol4.colS.inc.c"
+};
 
 ModelCollision PileOfBooks_unkCol4_ColH = {
 24, 28, &PileOfBooks_unkCol4_ColV[0], &PileOfBooks_unkCol4_ColT[0], &PileOfBooks_unkCol4_ColS
 };
 
-#include "assets/levelGroup/PileOfBooks/unkCol5/unkCol5.colV.inc.c"
+Vec3f PileOfBooks_unkCol5_ColV[] = {
+    #include "assets/levelGroup/PileOfBooks/unkCol5/unkCol5.colV.inc.c"
+};
 
-#include "assets/levelGroup/PileOfBooks/unkCol5/unkCol5.colT.inc.c"
+Vec3w PileOfBooks_unkCol5_ColT[] = {
+    #include "assets/levelGroup/PileOfBooks/unkCol5/unkCol5.colT.inc.c"
+};
 
-#include "assets/levelGroup/PileOfBooks/unkCol5/unkCol5.colS.inc.c"
+Rect3D PileOfBooks_unkCol5_ColS = {
+    #include "assets/levelGroup/PileOfBooks/unkCol5/unkCol5.colS.inc.c"
+};
 
 ModelCollision PileOfBooks_unkCol5_ColH = {
 12, 14, &PileOfBooks_unkCol5_ColV[0], &PileOfBooks_unkCol5_ColT[0], &PileOfBooks_unkCol5_ColS
 };
 
-#include "assets/levelGroup/PileOfBooks/unkCol6/unkCol6.colV.inc.c"
+Vec3f PileOfBooks_unkCol6_ColV[] = {
+    #include "assets/levelGroup/PileOfBooks/unkCol6/unkCol6.colV.inc.c"
+};
 
-#include "assets/levelGroup/PileOfBooks/unkCol6/unkCol6.colT.inc.c"
+Vec3w PileOfBooks_unkCol6_ColT[] = {
+    #include "assets/levelGroup/PileOfBooks/unkCol6/unkCol6.colT.inc.c"
+};
 
-#include "assets/levelGroup/PileOfBooks/unkCol6/unkCol6.colS.inc.c"
+Rect3D PileOfBooks_unkCol6_ColS = {
+    #include "assets/levelGroup/PileOfBooks/unkCol6/unkCol6.colS.inc.c"
+};
 
 ModelCollision PileOfBooks_unkCol6_ColH = {
 12, 14, &PileOfBooks_unkCol6_ColV[0], &PileOfBooks_unkCol6_ColT[0], &PileOfBooks_unkCol6_ColS
 };
 Mtx PileOfBooks_IMtx9 = IDENTITY;
 
-#include "assets/levelGroup/PileOfBooks/pobScope2/pobScope2.light.inc.c"
+Lights1 PileOfBooks_pobScope2_Light = 
+    #include "assets/levelGroup/PileOfBooks/pobScope2/pobScope2.light.inc.c"
 
-#include "assets/levelGroup/PileOfBooks/a_model1/a_model1.vtx.inc.c"
+Vtx PileOfBooks_a_model1_Vtx[] = {
+    #include "assets/levelGroup/PileOfBooks/a_model1/a_model1.vtx.inc.c"
+};
 Mtx PileOfBooks_IMtx10 = IDENTITY;
 unsigned char PileOfBooks_Pad1[] = FILEPAD;
 unsigned char PileOfBooks_cTbarrel_ci4_PNG[] = {
@@ -423,19 +487,31 @@ unsigned char PileOfBooks_barrelSide_ci4_PAL[] = {
 #include "build/assets/levelGroup/PileOfBooks/img/barrelSide.ci4.pal.inc.c"
 };
 
-#include "assets/levelGroup/PileOfBooks/a_model1/a_model1.gfx.inc.c"
+Gfx PileOfBooks_a_model1_Gfx[] = {
+    #include "assets/levelGroup/PileOfBooks/a_model1/a_model1.gfx.inc.c"
+};
 
-#include "assets/levelGroup/PileOfBooks/a_model2/a_model2.vtx.inc.c"
+Vtx PileOfBooks_a_model2_Vtx[] = {
+    #include "assets/levelGroup/PileOfBooks/a_model2/a_model2.vtx.inc.c"
+};
 Mtx PileOfBooks_IMtx11 = IDENTITY;
 
-#include "assets/levelGroup/PileOfBooks/a_model2/a_model2.gfx.inc.c"
+Gfx PileOfBooks_a_model2_Gfx[] = {
+    #include "assets/levelGroup/PileOfBooks/a_model2/a_model2.gfx.inc.c"
+};
 
-#include "assets/levelGroup/PileOfBooks/a_model3/a_model3.vtx.inc.c"
+Vtx PileOfBooks_a_model3_Vtx[] = {
+    #include "assets/levelGroup/PileOfBooks/a_model3/a_model3.vtx.inc.c"
+};
 Mtx PileOfBooks_IMtx12 = IDENTITY;
 
-#include "assets/levelGroup/PileOfBooks/a_model3/a_model3.gfx.inc.c"
+Gfx PileOfBooks_a_model3_Gfx[] = {
+    #include "assets/levelGroup/PileOfBooks/a_model3/a_model3.gfx.inc.c"
+};
 
-#include "assets/levelGroup/PileOfBooks/a_model4/a_model4.vtx.inc.c"
+Vtx PileOfBooks_a_model4_Vtx[] = {
+    #include "assets/levelGroup/PileOfBooks/a_model4/a_model4.vtx.inc.c"
+};
 Mtx PileOfBooks_IMtx13 = IDENTITY;
 unsigned char PileOfBooks_Pad5[] = FILEPAD;
 unsigned char PileOfBooks_painting_ci4_PNG[] = {
@@ -454,9 +530,13 @@ unsigned char PileOfBooks_color_ci4_PAL[] = {
 #include "build/assets/levelGroup/PileOfBooks/img/color.ci4.pal.inc.c"
 };
 
-#include "assets/levelGroup/PileOfBooks/a_model4/a_model4.gfx.inc.c"
+Gfx PileOfBooks_a_model4_Gfx[] = {
+    #include "assets/levelGroup/PileOfBooks/a_model4/a_model4.gfx.inc.c"
+};
 
-#include "assets/levelGroup/PileOfBooks/a_model5/a_model5.vtx.inc.c"
+Vtx PileOfBooks_a_model5_Vtx[] = {
+    #include "assets/levelGroup/PileOfBooks/a_model5/a_model5.vtx.inc.c"
+};
 Mtx PileOfBooks_IMtx14 = IDENTITY;
 unsigned char PileOfBooks_Pad9[] = FILEPAD;
 unsigned char PileOfBooks_crate_ci4_PNG[] = {
@@ -475,24 +555,40 @@ unsigned char PileOfBooks_wood_ci4_PAL[] = {
 #include "build/assets/levelGroup/PileOfBooks/img/wood.ci4.pal.inc.c"
 };
 
-#include "assets/levelGroup/PileOfBooks/a_model5/a_model5.gfx.inc.c"
+Gfx PileOfBooks_a_model5_Gfx[] = {
+    #include "assets/levelGroup/PileOfBooks/a_model5/a_model5.gfx.inc.c"
+};
 
-#include "assets/levelGroup/PileOfBooks/a_model6/a_model6.vtx.inc.c"
+Vtx PileOfBooks_a_model6_Vtx[] = {
+    #include "assets/levelGroup/PileOfBooks/a_model6/a_model6.vtx.inc.c"
+};
 Mtx PileOfBooks_IMtx15 = IDENTITY;
 
-#include "assets/levelGroup/PileOfBooks/a_model6/a_model6.gfx.inc.c"
+Gfx PileOfBooks_a_model6_Gfx[] = {
+    #include "assets/levelGroup/PileOfBooks/a_model6/a_model6.gfx.inc.c"
+};
 
-#include "assets/levelGroup/PileOfBooks/a_model7/a_model7.vtx.inc.c"
+Vtx PileOfBooks_a_model7_Vtx[] = {
+    #include "assets/levelGroup/PileOfBooks/a_model7/a_model7.vtx.inc.c"
+};
 Mtx PileOfBooks_IMtx16 = IDENTITY;
 
-#include "assets/levelGroup/PileOfBooks/a_model7/a_model7.gfx.inc.c"
+Gfx PileOfBooks_a_model7_Gfx[] = {
+    #include "assets/levelGroup/PileOfBooks/a_model7/a_model7.gfx.inc.c"
+};
 
-#include "assets/levelGroup/PileOfBooks/a_model8/a_model8.vtx.inc.c"
+Vtx PileOfBooks_a_model8_Vtx[] = {
+    #include "assets/levelGroup/PileOfBooks/a_model8/a_model8.vtx.inc.c"
+};
 Mtx PileOfBooks_IMtx17 = IDENTITY;
 
-#include "assets/levelGroup/PileOfBooks/a_model8/a_model8.gfx.inc.c"
+Gfx PileOfBooks_a_model8_Gfx[] = {
+    #include "assets/levelGroup/PileOfBooks/a_model8/a_model8.gfx.inc.c"
+};
 
-#include "assets/levelGroup/PileOfBooks/a_model9/a_model9.vtx.inc.c"
+Vtx PileOfBooks_a_model9_Vtx[] = {
+    #include "assets/levelGroup/PileOfBooks/a_model9/a_model9.vtx.inc.c"
+};
 Mtx PileOfBooks_IMtx18 = IDENTITY;
 unsigned char PileOfBooks_Pad13[] = FILEPAD;
 unsigned char PileOfBooks_drawer_ci4_PNG[] = {
@@ -503,14 +599,22 @@ unsigned char PileOfBooks_drawer_ci4_PAL[] = {
 #include "build/assets/levelGroup/PileOfBooks/img/drawer.ci4.pal.inc.c"
 };
 
-#include "assets/levelGroup/PileOfBooks/a_model9/a_model9.gfx.inc.c"
+Gfx PileOfBooks_a_model9_Gfx[] = {
+    #include "assets/levelGroup/PileOfBooks/a_model9/a_model9.gfx.inc.c"
+};
 
-#include "assets/levelGroup/PileOfBooks/a_model19/a_model19.vtx.inc.c"
+Vtx PileOfBooks_a_model19_Vtx[] = {
+    #include "assets/levelGroup/PileOfBooks/a_model19/a_model19.vtx.inc.c"
+};
 Mtx PileOfBooks_IMtx19 = IDENTITY;
 
-#include "assets/levelGroup/PileOfBooks/a_model19/a_model19.gfx.inc.c"
+Gfx PileOfBooks_a_model19_Gfx[] = {
+    #include "assets/levelGroup/PileOfBooks/a_model19/a_model19.gfx.inc.c"
+};
 
-#include "assets/levelGroup/PileOfBooks/a_model10/a_model10.vtx.inc.c"
+Vtx PileOfBooks_a_model10_Vtx[] = {
+    #include "assets/levelGroup/PileOfBooks/a_model10/a_model10.vtx.inc.c"
+};
 Mtx PileOfBooks_IMtx20 = IDENTITY;
 unsigned char PileOfBooks_Pad15[] = FILEPAD;
 unsigned char PileOfBooks_color2_ci4_PNG[] = {
@@ -529,32 +633,54 @@ unsigned char PileOfBooks_scroll_ci4_PAL[] = {
 #include "build/assets/levelGroup/PileOfBooks/img/scroll.ci4.pal.inc.c"
 };
 
-#include "assets/levelGroup/PileOfBooks/a_model10/a_model10.gfx.inc.c"
+Gfx PileOfBooks_a_model10_Gfx[] = {
+    #include "assets/levelGroup/PileOfBooks/a_model10/a_model10.gfx.inc.c"
+};
 
-#include "assets/levelGroup/PileOfBooks/a_model11/a_model11.vtx.inc.c"
+Vtx PileOfBooks_a_model11_Vtx[] = {
+    #include "assets/levelGroup/PileOfBooks/a_model11/a_model11.vtx.inc.c"
+};
 Mtx PileOfBooks_IMtx21 = IDENTITY;
 
-#include "assets/levelGroup/PileOfBooks/a_model11/a_model11.gfx.inc.c"
+Gfx PileOfBooks_a_model11_Gfx[] = {
+    #include "assets/levelGroup/PileOfBooks/a_model11/a_model11.gfx.inc.c"
+};
 
-#include "assets/levelGroup/PileOfBooks/a_model12/a_model12.vtx.inc.c"
+Vtx PileOfBooks_a_model12_Vtx[] = {
+    #include "assets/levelGroup/PileOfBooks/a_model12/a_model12.vtx.inc.c"
+};
 Mtx PileOfBooks_IMtx22 = IDENTITY;
 
-#include "assets/levelGroup/PileOfBooks/a_model12/a_model12.gfx.inc.c"
+Gfx PileOfBooks_a_model12_Gfx[] = {
+    #include "assets/levelGroup/PileOfBooks/a_model12/a_model12.gfx.inc.c"
+};
 
-#include "assets/levelGroup/PileOfBooks/a_model13/a_model13.vtx.inc.c"
+Vtx PileOfBooks_a_model13_Vtx[] = {
+    #include "assets/levelGroup/PileOfBooks/a_model13/a_model13.vtx.inc.c"
+};
 Mtx PileOfBooks_IMtx23 = IDENTITY;
 
-#include "assets/levelGroup/PileOfBooks/a_model13/a_model13.gfx.inc.c"
+Gfx PileOfBooks_a_model13_Gfx[] = {
+    #include "assets/levelGroup/PileOfBooks/a_model13/a_model13.gfx.inc.c"
+};
 
-#include "assets/levelGroup/PileOfBooks/a_model14/a_model14.vtx.inc.c"
+Vtx PileOfBooks_a_model14_Vtx[] = {
+    #include "assets/levelGroup/PileOfBooks/a_model14/a_model14.vtx.inc.c"
+};
 Mtx PileOfBooks_IMtx24 = IDENTITY;
 
-#include "assets/levelGroup/PileOfBooks/a_model14/a_model14.gfx.inc.c"
+Gfx PileOfBooks_a_model14_Gfx[] = {
+    #include "assets/levelGroup/PileOfBooks/a_model14/a_model14.gfx.inc.c"
+};
 Mtx PileOfBooks_IMtx25 = IDENTITY;
 
-#include "assets/levelGroup/PileOfBooks/a_model15/a_model15.gfx.inc.c"
+Gfx PileOfBooks_a_model15_Gfx[] = {
+    #include "assets/levelGroup/PileOfBooks/a_model15/a_model15.gfx.inc.c"
+};
 
-#include "assets/levelGroup/PileOfBooks/a_model16/a_model16.vtx.inc.c"
+Vtx PileOfBooks_a_model16_Vtx[] = {
+    #include "assets/levelGroup/PileOfBooks/a_model16/a_model16.vtx.inc.c"
+};
 Mtx PileOfBooks_IMtx26 = IDENTITY;
 unsigned char PileOfBooks_Pad19[] = FILEPAD;
 unsigned char PileOfBooks_sandal_ci8_PNG[] = {
@@ -581,9 +707,13 @@ unsigned char PileOfBooks_fireSpitter_side_ci8_PAL[] = {
 #include "build/assets/levelGroup/PileOfBooks/img/fireSpitter_side.ci8.pal.inc.c"
 };
 
-#include "assets/levelGroup/PileOfBooks/a_model16/a_model16.gfx.inc.c"
+Gfx PileOfBooks_a_model16_Gfx[] = {
+    #include "assets/levelGroup/PileOfBooks/a_model16/a_model16.gfx.inc.c"
+};
 
-#include "assets/levelGroup/PileOfBooks/a_model17/a_model17.vtx.inc.c"
+Vtx PileOfBooks_a_model17_Vtx[] = {
+    #include "assets/levelGroup/PileOfBooks/a_model17/a_model17.vtx.inc.c"
+};
 Mtx PileOfBooks_IMtx27 = IDENTITY;
 unsigned char PileOfBooks_Pad25[] = FILEPAD;
 unsigned char PileOfBooks_thing_ci8_PNG[] = {
@@ -594,37 +724,71 @@ unsigned char PileOfBooks_thing_ci8_PAL[] = {
 #include "build/assets/levelGroup/PileOfBooks/img/thing.ci8.pal.inc.c"
 };
 
-#include "assets/levelGroup/PileOfBooks/a_model17/a_model17.gfx.inc.c"
+Gfx PileOfBooks_a_model17_Gfx[] = {
+    #include "assets/levelGroup/PileOfBooks/a_model17/a_model17.gfx.inc.c"
+};
 Mtx PileOfBooks_IMtx28 = IDENTITY;
 
-#include "assets/levelGroup/PileOfBooks/a_model18/a_model18.gfx.inc.c"
+Gfx PileOfBooks_a_model18_Gfx[] = {
+    #include "assets/levelGroup/PileOfBooks/a_model18/a_model18.gfx.inc.c"
+};
 
-#include "assets/levelGroup/PileOfBooks/anim/unk1Header.animH.inc.c"
+Anim PileOfBooks_unk1Header_Animh = {
+    #include "assets/levelGroup/PileOfBooks/anim/unk1Header.animH.inc.c"
+};
 
-#include "assets/levelGroup/PileOfBooks/anim/unk1.animArr.inc.c"
+Mtx PileOfBooks_unk1_Animarr[90][15] = {
+    #include "assets/levelGroup/PileOfBooks/anim/unk1.animArr.inc.c"
+};
 
-#include "assets/levelGroup/PileOfBooks/anim/unk1Pointers.animP.inc.c"
+AnimPointer PileOfBooks_unk1Pointers_Animp[1] = {
+{&PileOfBooks_unk1Header_Animh.frames, &PileOfBooks_unk1Header_Animh.objects, &PileOfBooks_unk1_Animarr[0][0]}
+};
 
-#include "assets/levelGroup/PileOfBooks/anim/unk2Header.animH.inc.c"
+Anim PileOfBooks_unk2Header_Animh = {
+    #include "assets/levelGroup/PileOfBooks/anim/unk2Header.animH.inc.c"
+};
 
-#include "assets/levelGroup/PileOfBooks/anim/unk2.animArr.inc.c"
+Mtx PileOfBooks_unk2_Animarr[100][15] = {
+    #include "assets/levelGroup/PileOfBooks/anim/unk2.animArr.inc.c"
+};
 
-#include "assets/levelGroup/PileOfBooks/anim/unk2Pointers.animP.inc.c"
+AnimPointer PileOfBooks_unk2Pointers_Animp[1] = {
+{&PileOfBooks_unk2Header_Animh.frames, &PileOfBooks_unk2Header_Animh.objects, &PileOfBooks_unk2_Animarr[0][0]}
+};
 
-#include "assets/levelGroup/PileOfBooks/anim/unk3Header.animH.inc.c"
+Anim PileOfBooks_unk3Header_Animh = {
+    #include "assets/levelGroup/PileOfBooks/anim/unk3Header.animH.inc.c"
+};
 
-#include "assets/levelGroup/PileOfBooks/anim/unk3.animArr.inc.c"
+Mtx PileOfBooks_unk3_Animarr[12][15] = {
+    #include "assets/levelGroup/PileOfBooks/anim/unk3.animArr.inc.c"
+};
 
-#include "assets/levelGroup/PileOfBooks/anim/unk3Pointers.animP.inc.c"
+AnimPointer PileOfBooks_unk3Pointers_Animp[1] = {
+{&PileOfBooks_unk3Header_Animh.frames, &PileOfBooks_unk3Header_Animh.objects, &PileOfBooks_unk3_Animarr[0][0]}
+};
 
-#include "assets/levelGroup/PileOfBooks/anim/unk4Header.animH.inc.c"
+Anim PileOfBooks_unk4Header_Animh = {
+    #include "assets/levelGroup/PileOfBooks/anim/unk4Header.animH.inc.c"
+};
 
-#include "assets/levelGroup/PileOfBooks/anim/unk4.animArr.inc.c"
+Mtx PileOfBooks_unk4_Animarr[40][15] = {
+    #include "assets/levelGroup/PileOfBooks/anim/unk4.animArr.inc.c"
+};
 
-#include "assets/levelGroup/PileOfBooks/anim/unk4Pointers.animP.inc.c"
+AnimPointer PileOfBooks_unk4Pointers_Animp[1] = {
+{&PileOfBooks_unk4Header_Animh.frames, &PileOfBooks_unk4Header_Animh.objects, &PileOfBooks_unk4_Animarr[0][0]}
+};
 
-#include "assets/levelGroup/PileOfBooks/anim/unk5Header.animH.inc.c"
+Anim PileOfBooks_unk5Header_Animh = {
+    #include "assets/levelGroup/PileOfBooks/anim/unk5Header.animH.inc.c"
+};
 
-#include "assets/levelGroup/PileOfBooks/anim/unk5.animArr.inc.c"
+Mtx PileOfBooks_unk5_Animarr[10][2] = {
+    #include "assets/levelGroup/PileOfBooks/anim/unk5.animArr.inc.c"
+};
 
-#include "assets/levelGroup/PileOfBooks/anim/unk5Pointers.animP.inc.c"
+AnimPointer PileOfBooks_unk5Pointers_Animp[1] = {
+{&PileOfBooks_unk5Header_Animh.frames, &PileOfBooks_unk5Header_Animh.objects, &PileOfBooks_unk5_Animarr[0][0]}
+};

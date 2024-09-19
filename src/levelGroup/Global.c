@@ -12,9 +12,12 @@ extern Vtx D_800FE8C8_Global[];
 
 Mtx Global_IMtx1 = IDENTITY;
 
-#include "assets/levelGroup/Global/globalScope/globalScope.light.inc.c"
+Lights1 Global_globalScope_Light = 
+    #include "assets/levelGroup/Global/globalScope/globalScope.light.inc.c"
 
-#include "assets/levelGroup/Global/cannon/cannon.vtx.inc.c"
+Vtx Global_cannon_Vtx[] = {
+    #include "assets/levelGroup/Global/cannon/cannon.vtx.inc.c"
+};
 Mtx Global_IMtx2 = IDENTITY;
 unsigned char Global_Pad1[] = FILEPAD;
 unsigned char Global_cannonHole_rgba16_PNG[] = {
@@ -29,9 +32,13 @@ unsigned char Global_black_rgba16_PNG[] = {
 #include "build/assets/levelGroup/Global/cannon/black.rgba16.png.inc.c"
 };
 
-#include "assets/levelGroup/Global/cannon/cannon.gfx.inc.c"
+Gfx Global_cannon_Gfx[] = {
+    #include "assets/levelGroup/Global/cannon/cannon.gfx.inc.c"
+};
 
-#include "assets/levelGroup/Global/cannonHolder/cannonHolder.vtx.inc.c"
+Vtx Global_cannonHolder_Vtx[] = {
+    #include "assets/levelGroup/Global/cannonHolder/cannonHolder.vtx.inc.c"
+};
 Mtx Global_IMtx3 = IDENTITY;
 unsigned char Global_Pad4[] = FILEPAD;
 unsigned char Global_woodWithBolt_rgba16_PNG[] = {
@@ -54,54 +61,88 @@ unsigned char Global_midWood_rgba16_PNG[] = {
 #include "build/assets/levelGroup/Global/cannonHolder/midWood.rgba16.png.inc.c"
 };
 
-#include "assets/levelGroup/Global/cannonHolder/cannonHolder.gfx.inc.c"
+Gfx Global_cannonHolder_Gfx[] = {
+    #include "assets/levelGroup/Global/cannonHolder/cannonHolder.gfx.inc.c"
+};
 
-#include "assets/levelGroup/Global/pole/pole.vtx.inc.c"
+Vtx Global_pole_Vtx[] = {
+    #include "assets/levelGroup/Global/pole/pole.vtx.inc.c"
+};
 Mtx Global_IMtx4 = IDENTITY;
 
-#include "assets/levelGroup/Global/pole/pole.gfx.inc.c"
+Gfx Global_pole_Gfx[] = {
+    #include "assets/levelGroup/Global/pole/pole.gfx.inc.c"
+};
 
-#include "assets/levelGroup/Global/unusedStructure/unusedStructure.vtx.inc.c"
+Vtx Global_unusedStructure_Vtx[] = {
+    #include "assets/levelGroup/Global/unusedStructure/unusedStructure.vtx.inc.c"
+};
 Mtx Global_IMtx5 = IDENTITY;
 
-#include "assets/levelGroup/Global/unusedStructure/unusedStructure.gfx.inc.c"
+Gfx Global_unusedStructure_Gfx[] = {
+    #include "assets/levelGroup/Global/unusedStructure/unusedStructure.gfx.inc.c"
+};
 
-#include "assets/levelGroup/Global/shadow/shadow.vtx.inc.c"
+Vtx Global_shadow_Vtx[] = {
+    #include "assets/levelGroup/Global/shadow/shadow.vtx.inc.c"
+};
 Mtx Global_IMtx6 = IDENTITY;
 unsigned char Global_Pad9[] = FILEPAD;
 unsigned char Global_shadow_ia8_PNG[] = {
 #include "build/assets/levelGroup/Global/shadow/shadow.ia8.png.inc.c"
 };
 
-#include "assets/levelGroup/Global/shadow/shadow.gfx.inc.c"
+Gfx Global_shadow_Gfx[] = {
+    #include "assets/levelGroup/Global/shadow/shadow.gfx.inc.c"
+};
 
-#include "assets/levelGroup/Global/shadow/shadow2.gfx.inc.c"
+Gfx Global_shadow2_Gfx[] = {
+    #include "assets/levelGroup/Global/shadow/shadow2.gfx.inc.c"
+};
 
-#include "assets/levelGroup/Global/pole/pole.colV.inc.c"
+Vec3f Global_pole_ColV[] = {
+    #include "assets/levelGroup/Global/pole/pole.colV.inc.c"
+};
 
-#include "assets/levelGroup/Global/pole/pole.colT.inc.c"
+Vec3w Global_pole_ColT[] = {
+    #include "assets/levelGroup/Global/pole/pole.colT.inc.c"
+};
 
-#include "assets/levelGroup/Global/pole/pole.colS.inc.c"
+Rect3D Global_pole_ColS = {
+    #include "assets/levelGroup/Global/pole/pole.colS.inc.c"
+};
 
 ModelCollision Global_pole_ColH = {
 30, 10, &Global_pole_ColV[0], &Global_pole_ColT[0], &Global_pole_ColS
 };
 
-#include "assets/levelGroup/Global/unk1/unk1.colV.inc.c"
+Vec3f Global_unk1_ColV[] = {
+    #include "assets/levelGroup/Global/unk1/unk1.colV.inc.c"
+};
 
-#include "assets/levelGroup/Global/unk1/unk1.colT.inc.c"
+Vec3w Global_unk1_ColT[] = {
+    #include "assets/levelGroup/Global/unk1/unk1.colT.inc.c"
+};
 
-#include "assets/levelGroup/Global/unk1/unk1.colS.inc.c"
+Rect3D Global_unk1_ColS = {
+    #include "assets/levelGroup/Global/unk1/unk1.colS.inc.c"
+};
 
 ModelCollision Global_unk1_ColH = {
 8, 12, &Global_unk1_ColV[0], &Global_unk1_ColT[0], &Global_unk1_ColS
 };
 
-#include "assets/levelGroup/Global/unk2/unk2.colV.inc.c"
+Vec3f Global_unk2_ColV[] = {
+    #include "assets/levelGroup/Global/unk2/unk2.colV.inc.c"
+};
 
-#include "assets/levelGroup/Global/unk2/unk2.colT.inc.c"
+Vec3w Global_unk2_ColT[] = {
+    #include "assets/levelGroup/Global/unk2/unk2.colT.inc.c"
+};
 
-#include "assets/levelGroup/Global/unk2/unk2.colS.inc.c"
+Rect3D Global_unk2_ColS = {
+    #include "assets/levelGroup/Global/unk2/unk2.colS.inc.c"
+};
 
 ModelCollision Global_unk2_ColH = {
 8, 12, &Global_unk2_ColV[0], &Global_unk2_ColT[0], &Global_unk2_ColS
@@ -863,91 +904,151 @@ unsigned char Global_fogFade_ia8_PNG[] = {
 #include "build/assets/levelGroup/Global/img/fogFade.ia8.png.inc.c"
 };
 
-#include "assets/levelGroup/Global/fallbackCube/fallbackCube.vtx.inc.c"
+Vtx Global_fallbackCube_Vtx[] = {
+    #include "assets/levelGroup/Global/fallbackCube/fallbackCube.vtx.inc.c"
+};
 Mtx Global_IMtx7 = IDENTITY;
 
-#include "assets/levelGroup/Global/fallbackCube/fallbackCube.gfx.inc.c"
+Gfx Global_fallbackCube_Gfx[] = {
+    #include "assets/levelGroup/Global/fallbackCube/fallbackCube.gfx.inc.c"
+};
 
-#include "assets/levelGroup/Global/fallbackCube/fallbackCube.colV.inc.c"
+Vec3f Global_fallbackCube_ColV[] = {
+    #include "assets/levelGroup/Global/fallbackCube/fallbackCube.colV.inc.c"
+};
 
-#include "assets/levelGroup/Global/fallbackCube/fallbackCube.colT.inc.c"
+Vec3w Global_fallbackCube_ColT[] = {
+    #include "assets/levelGroup/Global/fallbackCube/fallbackCube.colT.inc.c"
+};
 
-#include "assets/levelGroup/Global/fallbackCube/fallbackCube.colS.inc.c"
+Rect3D Global_fallbackCube_ColS = {
+    #include "assets/levelGroup/Global/fallbackCube/fallbackCube.colS.inc.c"
+};
 
 ModelCollision Global_fallbackCube_ColH = {
 8, 12, &Global_fallbackCube_ColV[0], &Global_fallbackCube_ColT[0], &Global_fallbackCube_ColS
 };
 
-#include "assets/levelGroup/Global/exitShadowSouth/exitShadowSouth.vtx.inc.c"
+Vtx Global_exitShadowSouth_Vtx[] = {
+    #include "assets/levelGroup/Global/exitShadowSouth/exitShadowSouth.vtx.inc.c"
+};
 Mtx Global_IMtx8 = IDENTITY;
 
-#include "assets/levelGroup/Global/exitShadowSouth/exitShadowSouth.gfx.inc.c"
+Gfx Global_exitShadowSouth_Gfx[] = {
+    #include "assets/levelGroup/Global/exitShadowSouth/exitShadowSouth.gfx.inc.c"
+};
 
-#include "assets/levelGroup/Global/exitShadowSouth/exitShadowSouth.colV.inc.c"
+Vec3f Global_exitShadowSouth_ColV[] = {
+    #include "assets/levelGroup/Global/exitShadowSouth/exitShadowSouth.colV.inc.c"
+};
 
-#include "assets/levelGroup/Global/exitShadowSouth/exitShadowSouth.colT.inc.c"
+Vec3w Global_exitShadowSouth_ColT[] = {
+    #include "assets/levelGroup/Global/exitShadowSouth/exitShadowSouth.colT.inc.c"
+};
 
-#include "assets/levelGroup/Global/exitShadowSouth/exitShadowSouth.colS.inc.c"
+Rect3D Global_exitShadowSouth_ColS = {
+    #include "assets/levelGroup/Global/exitShadowSouth/exitShadowSouth.colS.inc.c"
+};
 
 ModelCollision Global_exitShadowSouth_ColH = {
 4, 2, &Global_exitShadowSouth_ColV[0], &Global_exitShadowSouth_ColT[0], &Global_exitShadowSouth_ColS
 };
 
-#include "assets/levelGroup/Global/exitShadowNorth/exitShadowNorth.vtx.inc.c"
+Vtx Global_exitShadowNorth_Vtx[] = {
+    #include "assets/levelGroup/Global/exitShadowNorth/exitShadowNorth.vtx.inc.c"
+};
 Mtx Global_IMtx9 = IDENTITY;
 
-#include "assets/levelGroup/Global/exitShadowNorth/exitShadowNorth.gfx.inc.c"
+Gfx Global_exitShadowNorth_Gfx[] = {
+    #include "assets/levelGroup/Global/exitShadowNorth/exitShadowNorth.gfx.inc.c"
+};
 
-#include "assets/levelGroup/Global/exitShadowNorth/exitShadowNorth.colV.inc.c"
+Vec3f Global_exitShadowNorth_ColV[] = {
+    #include "assets/levelGroup/Global/exitShadowNorth/exitShadowNorth.colV.inc.c"
+};
 
-#include "assets/levelGroup/Global/exitShadowNorth/exitShadowNorth.colT.inc.c"
+Vec3w Global_exitShadowNorth_ColT[] = {
+    #include "assets/levelGroup/Global/exitShadowNorth/exitShadowNorth.colT.inc.c"
+};
 
-#include "assets/levelGroup/Global/exitShadowNorth/exitShadowNorth.colS.inc.c"
+Rect3D Global_exitShadowNorth_ColS = {
+    #include "assets/levelGroup/Global/exitShadowNorth/exitShadowNorth.colS.inc.c"
+};
 
 ModelCollision Global_exitShadowNorth_ColH = {
 4, 2, &Global_exitShadowNorth_ColV[0], &Global_exitShadowNorth_ColT[0], &Global_exitShadowNorth_ColS
 };
 
-#include "assets/levelGroup/Global/exitShadowEast/exitShadowEast.vtx.inc.c"
+Vtx Global_exitShadowEast_Vtx[] = {
+    #include "assets/levelGroup/Global/exitShadowEast/exitShadowEast.vtx.inc.c"
+};
 Mtx Global_IMtx10 = IDENTITY;
 
-#include "assets/levelGroup/Global/exitShadowEast/exitShadowEast.gfx.inc.c"
+Gfx Global_exitShadowEast_Gfx[] = {
+    #include "assets/levelGroup/Global/exitShadowEast/exitShadowEast.gfx.inc.c"
+};
 
-#include "assets/levelGroup/Global/exitShadowEast/exitShadowEast.colV.inc.c"
+Vec3f Global_exitShadowEast_ColV[] = {
+    #include "assets/levelGroup/Global/exitShadowEast/exitShadowEast.colV.inc.c"
+};
 
-#include "assets/levelGroup/Global/exitShadowEast/exitShadowEast.colT.inc.c"
+Vec3w Global_exitShadowEast_ColT[] = {
+    #include "assets/levelGroup/Global/exitShadowEast/exitShadowEast.colT.inc.c"
+};
 
-#include "assets/levelGroup/Global/exitShadowEast/exitShadowEast.colS.inc.c"
+Rect3D Global_exitShadowEast_ColS = {
+    #include "assets/levelGroup/Global/exitShadowEast/exitShadowEast.colS.inc.c"
+};
 
 ModelCollision Global_exitShadowEast_ColH = {
 4, 2, &Global_exitShadowEast_ColV[0], &Global_exitShadowEast_ColT[0], &Global_exitShadowEast_ColS
 };
 
-#include "assets/levelGroup/Global/exitShadowWest/exitShadowWest.vtx.inc.c"
+Vtx Global_exitShadowWest_Vtx[] = {
+    #include "assets/levelGroup/Global/exitShadowWest/exitShadowWest.vtx.inc.c"
+};
 Mtx Global_IMtx11 = IDENTITY;
 
-#include "assets/levelGroup/Global/exitShadowWest/exitShadowWest.gfx.inc.c"
+Gfx Global_exitShadowWest_Gfx[] = {
+    #include "assets/levelGroup/Global/exitShadowWest/exitShadowWest.gfx.inc.c"
+};
 
-#include "assets/levelGroup/Global/exitShadowWest/exitShadowWest.colV.inc.c"
+Vec3f Global_exitShadowWest_ColV[] = {
+    #include "assets/levelGroup/Global/exitShadowWest/exitShadowWest.colV.inc.c"
+};
 
-#include "assets/levelGroup/Global/exitShadowWest/exitShadowWest.colT.inc.c"
+Vec3w Global_exitShadowWest_ColT[] = {
+    #include "assets/levelGroup/Global/exitShadowWest/exitShadowWest.colT.inc.c"
+};
 
-#include "assets/levelGroup/Global/exitShadowWest/exitShadowWest.colS.inc.c"
+Rect3D Global_exitShadowWest_ColS = {
+    #include "assets/levelGroup/Global/exitShadowWest/exitShadowWest.colS.inc.c"
+};
 
 ModelCollision Global_exitShadowWest_ColH = {
 4, 2, &Global_exitShadowWest_ColV[0], &Global_exitShadowWest_ColT[0], &Global_exitShadowWest_ColS
 };
 
-#include "assets/levelGroup/Global/ALBLExit/ALBLExit.vtx.inc.c"
+Vtx Global_ALBLExit_Vtx[] = {
+    #include "assets/levelGroup/Global/ALBLExit/ALBLExit.vtx.inc.c"
+};
 Mtx Global_IMtx12 = IDENTITY;
 
-#include "assets/levelGroup/Global/ALBLExit/ALBLExit.gfx.inc.c"
+Gfx Global_ALBLExit_Gfx[] = {
+    #include "assets/levelGroup/Global/ALBLExit/ALBLExit.gfx.inc.c"
+};
 
-#include "assets/levelGroup/Global/ALBLExit/ALBLExit.colV.inc.c"
+Vec3f Global_ALBLExit_ColV[] = {
+    #include "assets/levelGroup/Global/ALBLExit/ALBLExit.colV.inc.c"
+};
 
-#include "assets/levelGroup/Global/ALBLExit/ALBLExit.colT.inc.c"
+Vec3w Global_ALBLExit_ColT[] = {
+    #include "assets/levelGroup/Global/ALBLExit/ALBLExit.colT.inc.c"
+};
 
-#include "assets/levelGroup/Global/ALBLExit/ALBLExit.colS.inc.c"
+Rect3D Global_ALBLExit_ColS = {
+    #include "assets/levelGroup/Global/ALBLExit/ALBLExit.colS.inc.c"
+};
 
 ModelCollision Global_ALBLExit_ColH = {
 6, 4, &Global_ALBLExit_ColV[0], &Global_ALBLExit_ColT[0], &Global_ALBLExit_ColS
@@ -955,34 +1056,54 @@ ModelCollision Global_ALBLExit_ColH = {
 
 Mtx Global_IMtx13 = IDENTITY;
 
-#include "assets/levelGroup/Global/unk3/unk3.gfx.inc.c"
+Gfx Global_sandPit_Gfx[] = {
+    #include "assets/levelGroup/Global/unk3/unk3.gfx.inc.c"
+};
 
-#include "assets/levelGroup/Global/unk3/unk3.colV.inc.c"
+Vec3f Global_unk3_ColV[] = {
+    #include "assets/levelGroup/Global/unk3/unk3.colV.inc.c"
+};
 
-#include "assets/levelGroup/Global/unk3/unk3.colT.inc.c"
+Vec3w Global_unk3_ColT[] = {
+    #include "assets/levelGroup/Global/unk3/unk3.colT.inc.c"
+};
 
-#include "assets/levelGroup/Global/unk3/unk3.colS.inc.c"
+Rect3D Global_unk3_ColS = {
+    #include "assets/levelGroup/Global/unk3/unk3.colS.inc.c"
+};
 
 ModelCollision Global_sandPit_ColH = {
 7, 6, &Global_unk3_ColV[0], &Global_unk3_ColT[0], &Global_unk3_ColS
 };
 
-#include "assets/levelGroup/Global/BossBridge/BossBridge.vtx.inc.c"
+Vtx Global_BossBridge_Vtx[] = {
+    #include "assets/levelGroup/Global/BossBridge/BossBridge.vtx.inc.c"
+};
 Mtx Global_IMtx14 = IDENTITY;
 
-#include "assets/levelGroup/Global/BossBridge/BossBridge.gfx.inc.c"
+Gfx Global_BossBridge_Gfx[] = {
+    #include "assets/levelGroup/Global/BossBridge/BossBridge.gfx.inc.c"
+};
 
-#include "assets/levelGroup/Global/BossBridge/BossBridge.colV.inc.c"
+Vec3f Global_BossBridge_ColV[] = {
+    #include "assets/levelGroup/Global/BossBridge/BossBridge.colV.inc.c"
+};
 
-#include "assets/levelGroup/Global/BossBridge/BossBridge.colT.inc.c"
+Vec3w Global_BossBridge_ColT[] = {
+    #include "assets/levelGroup/Global/BossBridge/BossBridge.colT.inc.c"
+};
 
-#include "assets/levelGroup/Global/BossBridge/BossBridge.colS.inc.c"
+Rect3D Global_BossBridge_ColS = {
+    #include "assets/levelGroup/Global/BossBridge/BossBridge.colS.inc.c"
+};
 
 ModelCollision Global_BossBridge_ColH = {
 8, 10, &Global_BossBridge_ColV[0], &Global_BossBridge_ColT[0], &Global_BossBridge_ColS
 };
 
-#include "assets/levelGroup/Global/ALPole/ALPole.vtx.inc.c"
+Vtx Global_ALPole_Vtx[] = {
+    #include "assets/levelGroup/Global/ALPole/ALPole.vtx.inc.c"
+};
 Mtx Global_IMtx15 = IDENTITY;
 unsigned char Global_Pad195[] = FILEPAD;
 unsigned char Global_side_i4_PNG[] = {
@@ -993,38 +1114,58 @@ unsigned char Global_topper_i4_PNG[] = {
 #include "build/assets/levelGroup/Global/ALPole/topper.i4.png.inc.c"
 };
 
-#include "assets/levelGroup/Global/ALPole/ALPole.gfx.inc.c"
+Gfx Global_ALPole_Gfx[] = {
+    #include "assets/levelGroup/Global/ALPole/ALPole.gfx.inc.c"
+};
 
-#include "assets/levelGroup/Global/ALPole/ALPole.colV.inc.c"
+Vec3f Global_ALPole_ColV[] = {
+    #include "assets/levelGroup/Global/ALPole/ALPole.colV.inc.c"
+};
 
-#include "assets/levelGroup/Global/ALPole/ALPole.colT.inc.c"
+Vec3w Global_ALPole_ColT[] = {
+    #include "assets/levelGroup/Global/ALPole/ALPole.colT.inc.c"
+};
 
-#include "assets/levelGroup/Global/ALPole/ALPole.colS.inc.c"
+Rect3D Global_ALPole_ColS = {
+    #include "assets/levelGroup/Global/ALPole/ALPole.colS.inc.c"
+};
 
 ModelCollision Global_ALPole_ColH = {
 8, 10, &Global_ALPole_ColV[0], &Global_ALPole_ColT[0], &Global_ALPole_ColS
 };
 
-#include "assets/levelGroup/Global/ALBLDoor/ALBLDoor.vtx.inc.c"
+Vtx Global_ALBLDoor_Vtx[] = {
+    #include "assets/levelGroup/Global/ALBLDoor/ALBLDoor.vtx.inc.c"
+};
 Mtx Global_IMtx16 = IDENTITY;
 unsigned char Global_Pad197[] = FILEPAD;
 unsigned char Global_ALBLDoor_i4_PNG[] = {
 #include "build/assets/levelGroup/Global/ALBLDoor/ALBLDoor.i4.png.inc.c"
 };
 
-#include "assets/levelGroup/Global/ALBLDoor/ALBLDoor.gfx.inc.c"
+Gfx Global_ALBLDoor_Gfx[] = {
+    #include "assets/levelGroup/Global/ALBLDoor/ALBLDoor.gfx.inc.c"
+};
 
-#include "assets/levelGroup/Global/ALBLDoor/ALBLDoor.colV.inc.c"
+Vec3f Global_ALBLDoor_ColV[] = {
+    #include "assets/levelGroup/Global/ALBLDoor/ALBLDoor.colV.inc.c"
+};
 
-#include "assets/levelGroup/Global/ALBLDoor/ALBLDoor.colT.inc.c"
+Vec3w Global_ALBLDoor_ColT[] = {
+    #include "assets/levelGroup/Global/ALBLDoor/ALBLDoor.colT.inc.c"
+};
 
-#include "assets/levelGroup/Global/ALBLDoor/ALBLDoor.colS.inc.c"
+Rect3D Global_ALBLDoor_ColS = {
+    #include "assets/levelGroup/Global/ALBLDoor/ALBLDoor.colS.inc.c"
+};
 
 ModelCollision Global_ALBLDoor_ColH = {
 8, 8, &Global_ALBLDoor_ColV[0], &Global_ALBLDoor_ColT[0], &Global_ALBLDoor_ColS
 };
 
-#include "assets/levelGroup/Global/ALSpinDoor/ALSpinDoor.vtx.inc.c"
+Vtx Global_ALSpinDoor_Vtx[] = {
+    #include "assets/levelGroup/Global/ALSpinDoor/ALSpinDoor.vtx.inc.c"
+};
 Mtx Global_IMtx17 = IDENTITY;
 unsigned char Global_Pad198[] = FILEPAD;
 unsigned char Global_ALSpinDoor_ci4_PNG[] = {
@@ -1035,34 +1176,54 @@ unsigned char Global_ALSpinDoor_ci4_PAL[] = {
 #include "build/assets/levelGroup/Global/ALSpinDoor/ALSpinDoor.ci4.pal.inc.c"
 };
 
-#include "assets/levelGroup/Global/ALSpinDoor/ALSpinDoor.gfx.inc.c"
+Gfx Global_ALSpinDoor_Gfx[] = {
+    #include "assets/levelGroup/Global/ALSpinDoor/ALSpinDoor.gfx.inc.c"
+};
 
-#include "assets/levelGroup/Global/ALSpinDoor/ALSpinDoor.colV.inc.c"
+Vec3f Global_ALSpinDoor_ColV[] = {
+    #include "assets/levelGroup/Global/ALSpinDoor/ALSpinDoor.colV.inc.c"
+};
 
-#include "assets/levelGroup/Global/ALSpinDoor/ALSpinDoor.colT.inc.c"
+Vec3w Global_ALSpinDoor_ColT[] = {
+    #include "assets/levelGroup/Global/ALSpinDoor/ALSpinDoor.colT.inc.c"
+};
 
-#include "assets/levelGroup/Global/ALSpinDoor/ALSpinDoor.colS.inc.c"
+Rect3D Global_ALSpinDoor_ColS = {
+    #include "assets/levelGroup/Global/ALSpinDoor/ALSpinDoor.colS.inc.c"
+};
 
 ModelCollision Global_ALSpinDoor_ColH = {
 8, 8, &Global_ALSpinDoor_ColV[0], &Global_ALSpinDoor_ColT[0], &Global_ALSpinDoor_ColS
 };
 
-#include "assets/levelGroup/Global/BLLavaFloor/BLLavaFloor.vtx.inc.c"
+Vtx Global_BLLavaFloor_Vtx[] = {
+    #include "assets/levelGroup/Global/BLLavaFloor/BLLavaFloor.vtx.inc.c"
+};
 Mtx Global_IMtx18 = IDENTITY;
 
-#include "assets/levelGroup/Global/BLLavaFloor/BLLavaFloor.gfx.inc.c"
+Gfx Global_BLLavaFloor_Gfx[] = {
+    #include "assets/levelGroup/Global/BLLavaFloor/BLLavaFloor.gfx.inc.c"
+};
 
-#include "assets/levelGroup/Global/BLLavaFloor/BLLavaFloor.colV.inc.c"
+Vec3f Global_BLLavaFloor_ColV[] = {
+    #include "assets/levelGroup/Global/BLLavaFloor/BLLavaFloor.colV.inc.c"
+};
 
-#include "assets/levelGroup/Global/BLLavaFloor/BLLavaFloor.colT.inc.c"
+Vec3w Global_BLLavaFloor_ColT[] = {
+    #include "assets/levelGroup/Global/BLLavaFloor/BLLavaFloor.colT.inc.c"
+};
 
-#include "assets/levelGroup/Global/BLLavaFloor/BLLavaFloor.colS.inc.c"
+Rect3D Global_BLLavaFloor_ColS = {
+    #include "assets/levelGroup/Global/BLLavaFloor/BLLavaFloor.colS.inc.c"
+};
 
 ModelCollision Global_BLLavaFloor_ColH = {
 4, 2, &Global_BLLavaFloor_ColV[0], &Global_BLLavaFloor_ColT[0], &Global_BLLavaFloor_ColS
 };
 
-#include "assets/levelGroup/Global/BLLava/BLLava.vtx.inc.c"
+Vtx Global_BLLava_Vtx[] = {
+    #include "assets/levelGroup/Global/BLLava/BLLava.vtx.inc.c"
+};
 Mtx Global_IMtx19 = IDENTITY;
 unsigned char Global_Pad200[] = FILEPAD;
 unsigned char Global_BLLava_ci4_PNG[] = {
@@ -1073,19 +1234,29 @@ unsigned char Global_BLLava_ci4_PAL[] = {
 #include "build/assets/levelGroup/Global/BLLava/BLLava.ci4.pal.inc.c"
 };
 
-#include "assets/levelGroup/Global/BLLava/BLLava.gfx.inc.c"
+Gfx Global_BLLava_Gfx[] = {
+    #include "assets/levelGroup/Global/BLLava/BLLava.gfx.inc.c"
+};
 
-#include "assets/levelGroup/Global/BLLava/BLLava.colV.inc.c"
+Vec3f Global_BLLava_ColV[] = {
+    #include "assets/levelGroup/Global/BLLava/BLLava.colV.inc.c"
+};
 
-#include "assets/levelGroup/Global/BLLava/BLLava.colT.inc.c"
+Vec3w Global_BLLava_ColT[] = {
+    #include "assets/levelGroup/Global/BLLava/BLLava.colT.inc.c"
+};
 
-#include "assets/levelGroup/Global/BLLava/BLLava.colS.inc.c"
+Rect3D Global_BLLava_ColS = {
+    #include "assets/levelGroup/Global/BLLava/BLLava.colS.inc.c"
+};
 
 ModelCollision Global_BLLava_ColH = {
 4, 2, &Global_BLLava_ColV[0], &Global_BLLava_ColT[0], &Global_BLLava_ColS
 };
 
-#include "assets/levelGroup/Global/BLLava2/BLLava2.vtx.inc.c"
+Vtx Global_BLLava2_Vtx[] = {
+    #include "assets/levelGroup/Global/BLLava2/BLLava2.vtx.inc.c"
+};
 Mtx Global_IMtx20 = IDENTITY;
 unsigned char Global_Pad202[] = FILEPAD;
 unsigned char Global_BLLava2_ci4_PNG[] = {
@@ -1096,19 +1267,29 @@ unsigned char Global_BLLava2_ci4_PAL[] = {
 #include "build/assets/levelGroup/Global/BLLava2/BLLava2.ci4.pal.inc.c"
 };
 
-#include "assets/levelGroup/Global/BLLava2/BLLava2.gfx.inc.c"
+Gfx Global_BLLava2_Gfx[] = {
+    #include "assets/levelGroup/Global/BLLava2/BLLava2.gfx.inc.c"
+};
 
-#include "assets/levelGroup/Global/BLLava2/BLLava2.colV.inc.c"
+Vec3f Global_BLLava2_ColV[] = {
+    #include "assets/levelGroup/Global/BLLava2/BLLava2.colV.inc.c"
+};
 
-#include "assets/levelGroup/Global/BLLava2/BLLava2.colT.inc.c"
+Vec3w Global_BLLava2_ColT[] = {
+    #include "assets/levelGroup/Global/BLLava2/BLLava2.colT.inc.c"
+};
 
-#include "assets/levelGroup/Global/BLLava2/BLLava2.colS.inc.c"
+Rect3D Global_BLLava2_ColS = {
+    #include "assets/levelGroup/Global/BLLava2/BLLava2.colS.inc.c"
+};
 
 ModelCollision Global_BLLava2_ColH = {
 4, 2, &Global_BLLava2_ColV[0], &Global_BLLava2_ColT[0], &Global_BLLava2_ColS
 };
 
-#include "assets/levelGroup/Global/BLLava3/BLLava3.vtx.inc.c"
+Vtx Global_BLLava3_Vtx[] = {
+    #include "assets/levelGroup/Global/BLLava3/BLLava3.vtx.inc.c"
+};
 Mtx Global_IMtx21 = IDENTITY;
 unsigned char Global_Pad204[] = FILEPAD;
 unsigned char Global_BLLava3_ci4_PNG[] = {
@@ -1119,19 +1300,29 @@ unsigned char Global_BLLava3_ci4_PAL[] = {
 #include "build/assets/levelGroup/Global/BLLava3/BLLava3.ci4.pal.inc.c"
 };
 
-#include "assets/levelGroup/Global/BLLava3/BLLava3.gfx.inc.c"
+Gfx Global_BLLava3_Gfx[] = {
+    #include "assets/levelGroup/Global/BLLava3/BLLava3.gfx.inc.c"
+};
 
-#include "assets/levelGroup/Global/BLLava3/BLLava3.colV.inc.c"
+Vec3f Global_BLLava3_ColV[] = {
+    #include "assets/levelGroup/Global/BLLava3/BLLava3.colV.inc.c"
+};
 
-#include "assets/levelGroup/Global/BLLava3/BLLava3.colT.inc.c"
+Vec3w Global_BLLava3_ColT[] = {
+    #include "assets/levelGroup/Global/BLLava3/BLLava3.colT.inc.c"
+};
 
-#include "assets/levelGroup/Global/BLLava3/BLLava3.colS.inc.c"
+Rect3D Global_BLLava3_ColS = {
+    #include "assets/levelGroup/Global/BLLava3/BLLava3.colS.inc.c"
+};
 
 ModelCollision Global_BLLava3_ColH = {
 4, 2, &Global_BLLava3_ColV[0], &Global_BLLava3_ColT[0], &Global_BLLava3_ColS
 };
 
-#include "assets/levelGroup/Global/BLLava4/BLLava4.vtx.inc.c"
+Vtx Global_BLLava4_Vtx[] = {
+    #include "assets/levelGroup/Global/BLLava4/BLLava4.vtx.inc.c"
+};
 Mtx Global_IMtx22 = IDENTITY;
 unsigned char Global_Pad206[] = FILEPAD;
 unsigned char Global_BLLava4_ci4_PNG[] = {
@@ -1142,19 +1333,29 @@ unsigned char Global_BLLava4_ci4_PAL[] = {
 #include "build/assets/levelGroup/Global/BLLava4/BLLava4.ci4.pal.inc.c"
 };
 
-#include "assets/levelGroup/Global/BLLava4/BLLava4.gfx.inc.c"
+Gfx Global_BLLava4_Gfx[] = {
+    #include "assets/levelGroup/Global/BLLava4/BLLava4.gfx.inc.c"
+};
 
-#include "assets/levelGroup/Global/BLLava4/BLLava4.colV.inc.c"
+Vec3f Global_BLLava4_ColV[] = {
+    #include "assets/levelGroup/Global/BLLava4/BLLava4.colV.inc.c"
+};
 
-#include "assets/levelGroup/Global/BLLava4/BLLava4.colT.inc.c"
+Vec3w Global_BLLava4_ColT[] = {
+    #include "assets/levelGroup/Global/BLLava4/BLLava4.colT.inc.c"
+};
 
-#include "assets/levelGroup/Global/BLLava4/BLLava4.colS.inc.c"
+Rect3D Global_BLLava4_ColS = {
+    #include "assets/levelGroup/Global/BLLava4/BLLava4.colS.inc.c"
+};
 
 ModelCollision Global_BLLava4_ColH = {
 4, 2, &Global_BLLava4_ColV[0], &Global_BLLava4_ColT[0], &Global_BLLava4_ColS
 };
 
-#include "assets/levelGroup/Global/BLLava5/BLLava5.vtx.inc.c"
+Vtx Global_BLLava5_Vtx[] = {
+    #include "assets/levelGroup/Global/BLLava5/BLLava5.vtx.inc.c"
+};
 Mtx Global_IMtx23 = IDENTITY;
 unsigned char Global_Pad208[] = FILEPAD;
 unsigned char Global_BLLava5_ci4_PNG[] = {
@@ -1165,19 +1366,29 @@ unsigned char Global_BLLava5_ci4_PAL[] = {
 #include "build/assets/levelGroup/Global/BLLava5/BLLava5.ci4.pal.inc.c"
 };
 
-#include "assets/levelGroup/Global/BLLava5/BLLava5.gfx.inc.c"
+Gfx Global_BLLava5_Gfx[] = {
+    #include "assets/levelGroup/Global/BLLava5/BLLava5.gfx.inc.c"
+};
 
-#include "assets/levelGroup/Global/BLLava5/BLLava5.colV.inc.c"
+Vec3f Global_BLLava5_ColV[] = {
+    #include "assets/levelGroup/Global/BLLava5/BLLava5.colV.inc.c"
+};
 
-#include "assets/levelGroup/Global/BLLava5/BLLava5.colT.inc.c"
+Vec3w Global_BLLava5_ColT[] = {
+    #include "assets/levelGroup/Global/BLLava5/BLLava5.colT.inc.c"
+};
 
-#include "assets/levelGroup/Global/BLLava5/BLLava5.colS.inc.c"
+Rect3D Global_BLLava5_ColS = {
+    #include "assets/levelGroup/Global/BLLava5/BLLava5.colS.inc.c"
+};
 
 ModelCollision Global_BLLava5_ColH = {
 4, 2, &Global_BLLava5_ColV[0], &Global_BLLava5_ColT[0], &Global_BLLava5_ColS
 };
 
-#include "assets/levelGroup/Global/BLLava6/BLLava6.vtx.inc.c"
+Vtx Global_BLLava6_Vtx[] = {
+    #include "assets/levelGroup/Global/BLLava6/BLLava6.vtx.inc.c"
+};
 Mtx Global_IMtx24 = IDENTITY;
 unsigned char Global_Pad210[] = FILEPAD;
 unsigned char Global_BLLava6_ci4_PNG[] = {
@@ -1188,19 +1399,29 @@ unsigned char Global_BLLava6_ci4_PAL[] = {
 #include "build/assets/levelGroup/Global/BLLava6/BLLava6.ci4.pal.inc.c"
 };
 
-#include "assets/levelGroup/Global/BLLava6/BLLava6.gfx.inc.c"
+Gfx Global_BLLava6_Gfx[] = {
+    #include "assets/levelGroup/Global/BLLava6/BLLava6.gfx.inc.c"
+};
 
-#include "assets/levelGroup/Global/BLLava6/BLLava6.colV.inc.c"
+Vec3f Global_BLLava6_ColV[] = {
+    #include "assets/levelGroup/Global/BLLava6/BLLava6.colV.inc.c"
+};
 
-#include "assets/levelGroup/Global/BLLava6/BLLava6.colT.inc.c"
+Vec3w Global_BLLava6_ColT[] = {
+    #include "assets/levelGroup/Global/BLLava6/BLLava6.colT.inc.c"
+};
 
-#include "assets/levelGroup/Global/BLLava6/BLLava6.colS.inc.c"
+Rect3D Global_BLLava6_ColS = {
+    #include "assets/levelGroup/Global/BLLava6/BLLava6.colS.inc.c"
+};
 
 ModelCollision Global_BLLava6_ColH = {
 4, 2, &Global_BLLava6_ColV[0], &Global_BLLava6_ColT[0], &Global_BLLava6_ColS
 };
 
-#include "assets/levelGroup/Global/BLLava7/BLLava7.vtx.inc.c"
+Vtx Global_BLLava7_Vtx[] = {
+    #include "assets/levelGroup/Global/BLLava7/BLLava7.vtx.inc.c"
+};
 Mtx Global_IMtx25 = IDENTITY;
 unsigned char Global_Pad212[] = FILEPAD;
 unsigned char Global_BLLava7_ci4_PNG[] = {
@@ -1211,19 +1432,29 @@ unsigned char Global_BLLava7_ci4_PAL[] = {
 #include "build/assets/levelGroup/Global/BLLava7/BLLava7.ci4.pal.inc.c"
 };
 
-#include "assets/levelGroup/Global/BLLava7/BLLava7.gfx.inc.c"
+Gfx Global_BLLava7_Gfx[] = {
+    #include "assets/levelGroup/Global/BLLava7/BLLava7.gfx.inc.c"
+};
 
-#include "assets/levelGroup/Global/BLLava7/BLLava7.colV.inc.c"
+Vec3f Global_BLLava7_ColV[] = {
+    #include "assets/levelGroup/Global/BLLava7/BLLava7.colV.inc.c"
+};
 
-#include "assets/levelGroup/Global/BLLava7/BLLava7.colT.inc.c"
+Vec3w Global_BLLava7_ColT[] = {
+    #include "assets/levelGroup/Global/BLLava7/BLLava7.colT.inc.c"
+};
 
-#include "assets/levelGroup/Global/BLLava7/BLLava7.colS.inc.c"
+Rect3D Global_BLLava7_ColS = {
+    #include "assets/levelGroup/Global/BLLava7/BLLava7.colS.inc.c"
+};
 
 ModelCollision Global_BLLava7_ColH = {
 4, 2, &Global_BLLava7_ColV[0], &Global_BLLava7_ColT[0], &Global_BLLava7_ColS
 };
 
-#include "assets/levelGroup/Global/BLLava8/BLLava8.vtx.inc.c"
+Vtx Global_BLLava8_Vtx[] = {
+    #include "assets/levelGroup/Global/BLLava8/BLLava8.vtx.inc.c"
+};
 Mtx Global_IMtx26 = IDENTITY;
 unsigned char Global_Pad214[] = FILEPAD;
 unsigned char Global_BLLava8_ci4_PNG[] = {
@@ -1234,64 +1465,104 @@ unsigned char Global_BLLava8_ci4_PAL[] = {
 #include "build/assets/levelGroup/Global/BLLava8/BLLava8.ci4.pal.inc.c"
 };
 
-#include "assets/levelGroup/Global/BLLava8/BLLava8.gfx.inc.c"
+Gfx Global_BLLava8_Gfx[] = {
+    #include "assets/levelGroup/Global/BLLava8/BLLava8.gfx.inc.c"
+};
 
-#include "assets/levelGroup/Global/BLLava8/BLLava8.colV.inc.c"
+Vec3f Global_BLLava8_ColV[] = {
+    #include "assets/levelGroup/Global/BLLava8/BLLava8.colV.inc.c"
+};
 
-#include "assets/levelGroup/Global/BLLava8/BLLava8.colT.inc.c"
+Vec3w Global_BLLava8_ColT[] = {
+    #include "assets/levelGroup/Global/BLLava8/BLLava8.colT.inc.c"
+};
 
-#include "assets/levelGroup/Global/BLLava8/BLLava8.colS.inc.c"
+Rect3D Global_BLLava8_ColS = {
+    #include "assets/levelGroup/Global/BLLava8/BLLava8.colS.inc.c"
+};
 
 ModelCollision Global_BLLava8_ColH = {
 4, 2, &Global_BLLava8_ColV[0], &Global_BLLava8_ColT[0], &Global_BLLava8_ColS
 };
 
-#include "assets/levelGroup/Global/BLDestructableTop/BLDestructableTop.vtx.inc.c"
+Vtx Global_BLDestructableTop_Vtx[] = {
+    #include "assets/levelGroup/Global/BLDestructableTop/BLDestructableTop.vtx.inc.c"
+};
 Mtx Global_IMtx27 = IDENTITY;
 
-#include "assets/levelGroup/Global/BLDestructableTop/BLDestructableTop.gfx.inc.c"
+Gfx Global_BLDestructableTop_Gfx[] = {
+    #include "assets/levelGroup/Global/BLDestructableTop/BLDestructableTop.gfx.inc.c"
+};
 
-#include "assets/levelGroup/Global/BLDestructableTop/BLDestructableTop.colV.inc.c"
+Vec3f Global_BLDestructableTop_ColV[] = {
+    #include "assets/levelGroup/Global/BLDestructableTop/BLDestructableTop.colV.inc.c"
+};
 
-#include "assets/levelGroup/Global/BLDestructableTop/BLDestructableTop.colT.inc.c"
+Vec3w Global_BLDestructableTop_ColT[] = {
+    #include "assets/levelGroup/Global/BLDestructableTop/BLDestructableTop.colT.inc.c"
+};
 
-#include "assets/levelGroup/Global/BLDestructableTop/BLDestructableTop.colS.inc.c"
+Rect3D Global_BLDestructableTop_ColS = {
+    #include "assets/levelGroup/Global/BLDestructableTop/BLDestructableTop.colS.inc.c"
+};
 
 ModelCollision Global_BLDestructableTop_ColH = {
 4, 2, &Global_BLDestructableTop_ColV[0], &Global_BLDestructableTop_ColT[0], &Global_BLDestructableTop_ColS
 };
 
-#include "assets/levelGroup/Global/BLMetalBridge/BLMetalBridge.vtx.inc.c"
+Vtx Global_BLMetalBridge_Vtx[] = {
+    #include "assets/levelGroup/Global/BLMetalBridge/BLMetalBridge.vtx.inc.c"
+};
 Mtx Global_IMtx28 = IDENTITY;
 
-#include "assets/levelGroup/Global/BLMetalBridge/BLMetalBridge.gfx.inc.c"
+Gfx Global_BLMetalBridge_Gfx[] = {
+    #include "assets/levelGroup/Global/BLMetalBridge/BLMetalBridge.gfx.inc.c"
+};
 
-#include "assets/levelGroup/Global/BLMetalBridge/BLMetalBridge.colV.inc.c"
+Vec3f Global_BLMetalBridge_ColV[] = {
+    #include "assets/levelGroup/Global/BLMetalBridge/BLMetalBridge.colV.inc.c"
+};
 
-#include "assets/levelGroup/Global/BLMetalBridge/BLMetalBridge.colT.inc.c"
+Vec3w Global_BLMetalBridge_ColT[] = {
+    #include "assets/levelGroup/Global/BLMetalBridge/BLMetalBridge.colT.inc.c"
+};
 
-#include "assets/levelGroup/Global/BLMetalBridge/BLMetalBridge.colS.inc.c"
+Rect3D Global_BLMetalBridge_ColS = {
+    #include "assets/levelGroup/Global/BLMetalBridge/BLMetalBridge.colS.inc.c"
+};
 
 ModelCollision Global_BLMetalBridge_ColH = {
 8, 10, &Global_BLMetalBridge_ColV[0], &Global_BLMetalBridge_ColT[0], &Global_BLMetalBridge_ColS
 };
 
-#include "assets/levelGroup/Global/KLExit/KLExit.vtx.inc.c"
+Vtx Global_KLExit_Vtx[] = {
+    #include "assets/levelGroup/Global/KLExit/KLExit.vtx.inc.c"
+};
 Mtx Global_IMtx29 = IDENTITY;
 
-#include "assets/levelGroup/Global/KLExit/KLExit.gfx.inc.c"
+Gfx Global_KLExit_Gfx[] = {
+    #include "assets/levelGroup/Global/KLExit/KLExit.gfx.inc.c"
+};
 
-#include "assets/levelGroup/Global/KLExit/KLExit.colV.inc.c"
+Vec3f Global_KLExit_ColV[] = {
+    #include "assets/levelGroup/Global/KLExit/KLExit.colV.inc.c"
+};
 
-#include "assets/levelGroup/Global/KLExit/KLExit.colT.inc.c"
+Vec3w Global_KLExit_ColT[] = {
+    #include "assets/levelGroup/Global/KLExit/KLExit.colT.inc.c"
+};
 
-#include "assets/levelGroup/Global/KLExit/KLExit.colS.inc.c"
+Rect3D Global_KLExit_ColS = {
+    #include "assets/levelGroup/Global/KLExit/KLExit.colS.inc.c"
+};
 
 ModelCollision Global_KLExit_ColH = {
 6, 4, &Global_KLExit_ColV[0], &Global_KLExit_ColT[0], &Global_KLExit_ColS
 };
 
-#include "assets/levelGroup/Global/KLDoor/KLDoor.vtx.inc.c"
+Vtx Global_KLDoor_Vtx[] = {
+    #include "assets/levelGroup/Global/KLDoor/KLDoor.vtx.inc.c"
+};
 Mtx Global_IMtx30 = IDENTITY;
 unsigned char Global_Pad216[] = FILEPAD;
 unsigned char Global_KLDoor_ci4_PNG[] = {
@@ -1302,208 +1573,346 @@ unsigned char Global_KLDoor_ci4_PAL[] = {
 #include "build/assets/levelGroup/Global/KLDoor/KLDoor.ci4.pal.inc.c"
 };
 
-#include "assets/levelGroup/Global/KLDoor/KLDoor.gfx.inc.c"
+Gfx Global_KLDoor_Gfx[] = {
+    #include "assets/levelGroup/Global/KLDoor/KLDoor.gfx.inc.c"
+};
 
-#include "assets/levelGroup/Global/KLDoor/KLDoor.colV.inc.c"
+Vec3f Global_KLDoor_ColV[] = {
+    #include "assets/levelGroup/Global/KLDoor/KLDoor.colV.inc.c"
+};
 
-#include "assets/levelGroup/Global/KLDoor/KLDoor.colT.inc.c"
+Vec3w Global_KLDoor_ColT[] = {
+    #include "assets/levelGroup/Global/KLDoor/KLDoor.colT.inc.c"
+};
 
-#include "assets/levelGroup/Global/KLDoor/KLDoor.colS.inc.c"
+Rect3D Global_KLDoor_ColS = {
+    #include "assets/levelGroup/Global/KLDoor/KLDoor.colS.inc.c"
+};
 
 ModelCollision Global_KLDoor_ColH = {
 8, 8, &Global_KLDoor_ColV[0], &Global_KLDoor_ColT[0], &Global_KLDoor_ColS
 };
 
-#include "assets/levelGroup/Global/DCExit/DCExit.vtx.inc.c"
+Vtx Global_DCExit_Vtx[] = {
+    #include "assets/levelGroup/Global/DCExit/DCExit.vtx.inc.c"
+};
 Mtx Global_IMtx31 = IDENTITY;
 
-#include "assets/levelGroup/Global/DCExit/DCExit.gfx.inc.c"
+Gfx Global_DCExit_Gfx[] = {
+    #include "assets/levelGroup/Global/DCExit/DCExit.gfx.inc.c"
+};
 
-#include "assets/levelGroup/Global/DCExit/DCExit.colV.inc.c"
+Vec3f Global_DCExit_ColV[] = {
+    #include "assets/levelGroup/Global/DCExit/DCExit.colV.inc.c"
+};
 
-#include "assets/levelGroup/Global/DCExit/DCExit.colT.inc.c"
+Vec3w Global_DCExit_ColT[] = {
+    #include "assets/levelGroup/Global/DCExit/DCExit.colT.inc.c"
+};
 
-#include "assets/levelGroup/Global/DCExit/DCExit.colS.inc.c"
+Rect3D Global_DCExit_ColS = {
+    #include "assets/levelGroup/Global/DCExit/DCExit.colS.inc.c"
+};
 
 ModelCollision Global_DCExit_ColH = {
 6, 4, &Global_DCExit_ColV[0], &Global_DCExit_ColT[0], &Global_DCExit_ColS
 };
 
-#include "assets/levelGroup/Global/TallExitShadow1/TallExitShadow1.vtx.inc.c"
+Vtx Global_TallExitShadow1_Vtx[] = {
+    #include "assets/levelGroup/Global/TallExitShadow1/TallExitShadow1.vtx.inc.c"
+};
 Mtx Global_IMtx32 = IDENTITY;
 
-#include "assets/levelGroup/Global/TallExitShadow1/TallExitShadow1.gfx.inc.c"
+Gfx Global_TallExitShadow1_Gfx[] = {
+    #include "assets/levelGroup/Global/TallExitShadow1/TallExitShadow1.gfx.inc.c"
+};
 
-#include "assets/levelGroup/Global/TallExitShadow1/TallExitShadow1.colV.inc.c"
+Vec3f Global_TallExitShadow1_ColV[] = {
+    #include "assets/levelGroup/Global/TallExitShadow1/TallExitShadow1.colV.inc.c"
+};
 
-#include "assets/levelGroup/Global/TallExitShadow1/TallExitShadow1.colT.inc.c"
+Vec3w Global_TallExitShadow1_ColT[] = {
+    #include "assets/levelGroup/Global/TallExitShadow1/TallExitShadow1.colT.inc.c"
+};
 
-#include "assets/levelGroup/Global/TallExitShadow1/TallExitShadow1.colS.inc.c"
+Rect3D Global_TallExitShadow1_ColS = {
+    #include "assets/levelGroup/Global/TallExitShadow1/TallExitShadow1.colS.inc.c"
+};
 
 ModelCollision Global_TallExitShadow1_ColH = {
 4, 2, &Global_TallExitShadow1_ColV[0], &Global_TallExitShadow1_ColT[0], &Global_TallExitShadow1_ColS
 };
 
-#include "assets/levelGroup/Global/TallExitShadow2/TallExitShadow2.vtx.inc.c"
+Vtx Global_TallExitShadow2_Vtx[] = {
+    #include "assets/levelGroup/Global/TallExitShadow2/TallExitShadow2.vtx.inc.c"
+};
 Mtx Global_IMtx33 = IDENTITY;
 
-#include "assets/levelGroup/Global/TallExitShadow2/TallExitShadow2.gfx.inc.c"
+Gfx Global_TallExitShadow2_Gfx[] = {
+    #include "assets/levelGroup/Global/TallExitShadow2/TallExitShadow2.gfx.inc.c"
+};
 
-#include "assets/levelGroup/Global/TallExitShadow2/TallExitShadow2.colV.inc.c"
+Vec3f Global_TallExitShadow2_ColV[] = {
+    #include "assets/levelGroup/Global/TallExitShadow2/TallExitShadow2.colV.inc.c"
+};
 
-#include "assets/levelGroup/Global/TallExitShadow2/TallExitShadow2.colT.inc.c"
+Vec3w Global_TallExitShadow2_ColT[] = {
+    #include "assets/levelGroup/Global/TallExitShadow2/TallExitShadow2.colT.inc.c"
+};
 
-#include "assets/levelGroup/Global/TallExitShadow2/TallExitShadow2.colS.inc.c"
+Rect3D Global_TallExitShadow2_ColS = {
+    #include "assets/levelGroup/Global/TallExitShadow2/TallExitShadow2.colS.inc.c"
+};
 
 ModelCollision Global_TallExitShadow2_ColH = {
 4, 2, &Global_TallExitShadow2_ColV[0], &Global_TallExitShadow2_ColT[0], &Global_TallExitShadow2_ColS
 };
 
-#include "assets/levelGroup/Global/GCExit1/GCExit1.vtx.inc.c"
+Vtx Global_GCExit1_Vtx[] = {
+    #include "assets/levelGroup/Global/GCExit1/GCExit1.vtx.inc.c"
+};
 Mtx Global_IMtx34 = IDENTITY;
 
-#include "assets/levelGroup/Global/GCExit1/GCExit1.gfx.inc.c"
+Gfx Global_GCExit1_Gfx[] = {
+    #include "assets/levelGroup/Global/GCExit1/GCExit1.gfx.inc.c"
+};
 
-#include "assets/levelGroup/Global/GCExit1/GCExit1.colV.inc.c"
+Vec3f Global_GCExit1_ColV[] = {
+    #include "assets/levelGroup/Global/GCExit1/GCExit1.colV.inc.c"
+};
 
-#include "assets/levelGroup/Global/GCExit1/GCExit1.colT.inc.c"
+Vec3w Global_GCExit1_ColT[] = {
+    #include "assets/levelGroup/Global/GCExit1/GCExit1.colT.inc.c"
+};
 
-#include "assets/levelGroup/Global/GCExit1/GCExit1.colS.inc.c"
+Rect3D Global_GCExit1_ColS = {
+    #include "assets/levelGroup/Global/GCExit1/GCExit1.colS.inc.c"
+};
 
 ModelCollision Global_GCExit1_ColH = {
 6, 4, &Global_GCExit1_ColV[0], &Global_GCExit1_ColT[0], &Global_GCExit1_ColS
 };
 
-#include "assets/levelGroup/Global/GCExit2/GCExit2.vtx.inc.c"
+Vtx Global_GCExit2_Vtx[] = {
+    #include "assets/levelGroup/Global/GCExit2/GCExit2.vtx.inc.c"
+};
 Mtx Global_IMtx35 = IDENTITY;
 
-#include "assets/levelGroup/Global/GCExit2/GCExit2.gfx.inc.c"
+Gfx Global_GCExit2_Gfx[] = {
+    #include "assets/levelGroup/Global/GCExit2/GCExit2.gfx.inc.c"
+};
 
-#include "assets/levelGroup/Global/GCExit2/GCExit2.colV.inc.c"
+Vec3f Global_GCExit2_ColV[] = {
+    #include "assets/levelGroup/Global/GCExit2/GCExit2.colV.inc.c"
+};
 
-#include "assets/levelGroup/Global/GCExit2/GCExit2.colT.inc.c"
+Vec3w Global_GCExit2_ColT[] = {
+    #include "assets/levelGroup/Global/GCExit2/GCExit2.colT.inc.c"
+};
 
-#include "assets/levelGroup/Global/GCExit2/GCExit2.colS.inc.c"
+Rect3D Global_GCExit2_ColS = {
+    #include "assets/levelGroup/Global/GCExit2/GCExit2.colS.inc.c"
+};
 
 ModelCollision Global_GCExit2_ColH = {
 6, 4, &Global_GCExit2_ColV[0], &Global_GCExit2_ColT[0], &Global_GCExit2_ColS
 };
 
-#include "assets/levelGroup/Global/trainingRoomLight/trainingRoomLight.vtx.inc.c"
+Vtx Global_trainingRoomLight_Vtx[] = {
+    #include "assets/levelGroup/Global/trainingRoomLight/trainingRoomLight.vtx.inc.c"
+};
 Mtx Global_IMtx36 = IDENTITY;
 
-#include "assets/levelGroup/Global/trainingRoomLight/trainingRoomLight.gfx.inc.c"
+Gfx Global_trainingRoomLight_Gfx[] = {
+    #include "assets/levelGroup/Global/trainingRoomLight/trainingRoomLight.gfx.inc.c"
+};
 
-#include "assets/levelGroup/Global/trainingRoomLight/trainingRoomLight.colV.inc.c"
+Vec3f Global_trainingRoomLight_ColV[] = {
+    #include "assets/levelGroup/Global/trainingRoomLight/trainingRoomLight.colV.inc.c"
+};
 
-#include "assets/levelGroup/Global/trainingRoomLight/trainingRoomLight.colT.inc.c"
+Vec3w Global_trainingRoomLight_ColT[] = {
+    #include "assets/levelGroup/Global/trainingRoomLight/trainingRoomLight.colT.inc.c"
+};
 
-#include "assets/levelGroup/Global/trainingRoomLight/trainingRoomLight.colS.inc.c"
+Rect3D Global_trainingRoomLight_ColS = {
+    #include "assets/levelGroup/Global/trainingRoomLight/trainingRoomLight.colS.inc.c"
+};
 
 ModelCollision Global_trainingRoomLight_ColH = {
 12, 16, &Global_trainingRoomLight_ColV[0], &Global_trainingRoomLight_ColT[0], &Global_trainingRoomLight_ColS
 };
 
-#include "assets/levelGroup/Global/JLCaveExit1/JLCaveExit1.vtx.inc.c"
+Vtx Global_JLCaveExit1_Vtx[] = {
+    #include "assets/levelGroup/Global/JLCaveExit1/JLCaveExit1.vtx.inc.c"
+};
 Mtx Global_IMtx37 = IDENTITY;
 
-#include "assets/levelGroup/Global/JLCaveExit1/JLCaveExit1.gfx.inc.c"
+Gfx Global_JLCaveExit1_Gfx[] = {
+    #include "assets/levelGroup/Global/JLCaveExit1/JLCaveExit1.gfx.inc.c"
+};
 
-#include "assets/levelGroup/Global/JLCaveExit1/JLCaveExit1.colV.inc.c"
+Vec3f Global_JLCaveExit1_ColV[] = {
+    #include "assets/levelGroup/Global/JLCaveExit1/JLCaveExit1.colV.inc.c"
+};
 
-#include "assets/levelGroup/Global/JLCaveExit1/JLCaveExit1.colT.inc.c"
+Vec3w Global_JLCaveExit1_ColT[] = {
+    #include "assets/levelGroup/Global/JLCaveExit1/JLCaveExit1.colT.inc.c"
+};
 
-#include "assets/levelGroup/Global/JLCaveExit1/JLCaveExit1.colS.inc.c"
+Rect3D Global_JLCaveExit1_ColS = {
+    #include "assets/levelGroup/Global/JLCaveExit1/JLCaveExit1.colS.inc.c"
+};
 
 ModelCollision Global_JLCaveExit1_ColH = {
 6, 4, &Global_JLCaveExit1_ColV[0], &Global_JLCaveExit1_ColT[0], &Global_JLCaveExit1_ColS
 };
 
-#include "assets/levelGroup/Global/JLCaveExit2/JLCaveExit2.vtx.inc.c"
+Vtx Global_JLCaveExit2_Vtx[] = {
+    #include "assets/levelGroup/Global/JLCaveExit2/JLCaveExit2.vtx.inc.c"
+};
 Mtx Global_IMtx38 = IDENTITY;
 
-#include "assets/levelGroup/Global/JLCaveExit2/JLCaveExit2.gfx.inc.c"
+Gfx Global_JLCaveExit2_Gfx[] = {
+    #include "assets/levelGroup/Global/JLCaveExit2/JLCaveExit2.gfx.inc.c"
+};
 
-#include "assets/levelGroup/Global/JLCaveExit2/JLCaveExit2.colV.inc.c"
+Vec3f Global_JLCaveExit2_ColV[] = {
+    #include "assets/levelGroup/Global/JLCaveExit2/JLCaveExit2.colV.inc.c"
+};
 
-#include "assets/levelGroup/Global/JLCaveExit2/JLCaveExit2.colT.inc.c"
+Vec3w Global_JLCaveExit2_ColT[] = {
+    #include "assets/levelGroup/Global/JLCaveExit2/JLCaveExit2.colT.inc.c"
+};
 
-#include "assets/levelGroup/Global/JLCaveExit2/JLCaveExit2.colS.inc.c"
+Rect3D Global_JLCaveExit2_ColS = {
+    #include "assets/levelGroup/Global/JLCaveExit2/JLCaveExit2.colS.inc.c"
+};
 
 ModelCollision Global_JLCaveExit2_ColH = {
 6, 4, &Global_JLCaveExit2_ColV[0], &Global_JLCaveExit2_ColT[0], &Global_JLCaveExit2_ColS
 };
 
-#include "assets/levelGroup/Global/JLCaveExit3/JLCaveExit3.vtx.inc.c"
+Vtx Global_JLCaveExit3_Vtx[] = {
+    #include "assets/levelGroup/Global/JLCaveExit3/JLCaveExit3.vtx.inc.c"
+};
 Mtx Global_IMtx39 = IDENTITY;
 
-#include "assets/levelGroup/Global/JLCaveExit3/JLCaveExit3.gfx.inc.c"
+Gfx Global_JLCaveExit3_Gfx[] = {
+    #include "assets/levelGroup/Global/JLCaveExit3/JLCaveExit3.gfx.inc.c"
+};
 
-#include "assets/levelGroup/Global/JLCaveExit3/JLCaveExit3.colV.inc.c"
+Vec3f Global_JLCaveExit3_ColV[] = {
+    #include "assets/levelGroup/Global/JLCaveExit3/JLCaveExit3.colV.inc.c"
+};
 
-#include "assets/levelGroup/Global/JLCaveExit3/JLCaveExit3.colT.inc.c"
+Vec3w Global_JLCaveExit3_ColT[] = {
+    #include "assets/levelGroup/Global/JLCaveExit3/JLCaveExit3.colT.inc.c"
+};
 
-#include "assets/levelGroup/Global/JLCaveExit3/JLCaveExit3.colS.inc.c"
+Rect3D Global_JLCaveExit3_ColS = {
+    #include "assets/levelGroup/Global/JLCaveExit3/JLCaveExit3.colS.inc.c"
+};
 
 ModelCollision Global_JLCaveExit3_ColH = {
 6, 4, &Global_JLCaveExit3_ColV[0], &Global_JLCaveExit3_ColT[0], &Global_JLCaveExit3_ColS
 };
 
-#include "assets/levelGroup/Global/JLCaveExit4/JLCaveExit4.vtx.inc.c"
+Vtx Global_JLCaveExit4_Vtx[] = {
+    #include "assets/levelGroup/Global/JLCaveExit4/JLCaveExit4.vtx.inc.c"
+};
 Mtx Global_IMtx40 = IDENTITY;
 
-#include "assets/levelGroup/Global/JLCaveExit4/JLCaveExit4.gfx.inc.c"
+Gfx Global_JLCaveExit4_Gfx[] = {
+    #include "assets/levelGroup/Global/JLCaveExit4/JLCaveExit4.gfx.inc.c"
+};
 
-#include "assets/levelGroup/Global/JLCaveExit4/JLCaveExit4.colV.inc.c"
+Vec3f Global_JLCaveExit4_ColV[] = {
+    #include "assets/levelGroup/Global/JLCaveExit4/JLCaveExit4.colV.inc.c"
+};
 
-#include "assets/levelGroup/Global/JLCaveExit4/JLCaveExit4.colT.inc.c"
+Vec3w Global_JLCaveExit4_ColT[] = {
+    #include "assets/levelGroup/Global/JLCaveExit4/JLCaveExit4.colT.inc.c"
+};
 
-#include "assets/levelGroup/Global/JLCaveExit4/JLCaveExit4.colS.inc.c"
+Rect3D Global_JLCaveExit4_ColS = {
+    #include "assets/levelGroup/Global/JLCaveExit4/JLCaveExit4.colS.inc.c"
+};
 
 ModelCollision Global_JLCaveExit4_ColH = {
 6, 4, &Global_JLCaveExit4_ColV[0], &Global_JLCaveExit4_ColT[0], &Global_JLCaveExit4_ColS
 };
 
-#include "assets/levelGroup/Global/JLOutsideEntrance/JLOutsideEntrance.vtx.inc.c"
+Vtx Global_JLOutsideEntrance_Vtx[] = {
+    #include "assets/levelGroup/Global/JLOutsideEntrance/JLOutsideEntrance.vtx.inc.c"
+};
 Mtx Global_IMtx41 = IDENTITY;
 
-#include "assets/levelGroup/Global/JLOutsideEntrance/JLOutsideEntrance.gfx.inc.c"
+Gfx Global_JLOutsideEntrance_Gfx[] = {
+    #include "assets/levelGroup/Global/JLOutsideEntrance/JLOutsideEntrance.gfx.inc.c"
+};
 
-#include "assets/levelGroup/Global/JLOutsideEntrance/JLOutsideEntrance.colV.inc.c"
+Vec3f Global_JLOutsideEntrance_ColV[] = {
+    #include "assets/levelGroup/Global/JLOutsideEntrance/JLOutsideEntrance.colV.inc.c"
+};
 
-#include "assets/levelGroup/Global/JLOutsideEntrance/JLOutsideEntrance.colT.inc.c"
+Vec3w Global_JLOutsideEntrance_ColT[] = {
+    #include "assets/levelGroup/Global/JLOutsideEntrance/JLOutsideEntrance.colT.inc.c"
+};
 
-#include "assets/levelGroup/Global/JLOutsideEntrance/JLOutsideEntrance.colS.inc.c"
+Rect3D Global_JLOutsideEntrance_ColS = {
+    #include "assets/levelGroup/Global/JLOutsideEntrance/JLOutsideEntrance.colS.inc.c"
+};
 
 ModelCollision Global_JLOutsideEntrance_ColH = {
 12, 16, &Global_JLOutsideEntrance_ColV[0], &Global_JLOutsideEntrance_ColT[0], &Global_JLOutsideEntrance_ColS
 };
 
-#include "assets/levelGroup/Global/JLFxCamPillar/JLFxCamPillar.vtx.inc.c"
+Vtx Global_JLFxCamPillar_Vtx[] = {
+    #include "assets/levelGroup/Global/JLFxCamPillar/JLFxCamPillar.vtx.inc.c"
+};
 Mtx Global_IMtx42 = IDENTITY;
 
-#include "assets/levelGroup/Global/JLFxCamPillar/JLFxCamPillar.gfx.inc.c"
+Gfx Global_JLFxCamPillar_Gfx[] = {
+    #include "assets/levelGroup/Global/JLFxCamPillar/JLFxCamPillar.gfx.inc.c"
+};
 
-#include "assets/levelGroup/Global/JLFxCamPillar/JLFxCamPillar.colV.inc.c"
+Vec3f Global_JLFxCamPillar_ColV[] = {
+    #include "assets/levelGroup/Global/JLFxCamPillar/JLFxCamPillar.colV.inc.c"
+};
 
-#include "assets/levelGroup/Global/JLFxCamPillar/JLFxCamPillar.colT.inc.c"
+Vec3w Global_JLFxCamPillar_ColT[] = {
+    #include "assets/levelGroup/Global/JLFxCamPillar/JLFxCamPillar.colT.inc.c"
+};
 
-#include "assets/levelGroup/Global/JLFxCamPillar/JLFxCamPillar.colS.inc.c"
+Rect3D Global_JLFxCamPillar_ColS = {
+    #include "assets/levelGroup/Global/JLFxCamPillar/JLFxCamPillar.colS.inc.c"
+};
 
 ModelCollision Global_JLFxCamPillar_ColH = {
 12, 12, &Global_JLFxCamPillar_ColV[0], &Global_JLFxCamPillar_ColT[0], &Global_JLFxCamPillar_ColS
 };
 
-#include "assets/levelGroup/Global/JLCaveDoor/JLCaveDoor.vtx.inc.c"
+Vtx Global_JLCaveDoor_Vtx[] = {
+    #include "assets/levelGroup/Global/JLCaveDoor/JLCaveDoor.vtx.inc.c"
+};
 Mtx Global_IMtx43 = IDENTITY;
 
-#include "assets/levelGroup/Global/JLCaveDoor/JLCaveDoor.gfx.inc.c"
+Gfx Global_JLCaveDoor_Gfx[] = {
+    #include "assets/levelGroup/Global/JLCaveDoor/JLCaveDoor.gfx.inc.c"
+};
 
-#include "assets/levelGroup/Global/JLCaveDoor/JLCaveDoor.colV.inc.c"
+Vec3f Global_JLCaveDoor_ColV[] = {
+    #include "assets/levelGroup/Global/JLCaveDoor/JLCaveDoor.colV.inc.c"
+};
 
-#include "assets/levelGroup/Global/JLCaveDoor/JLCaveDoor.colT.inc.c"
+Vec3w Global_JLCaveDoor_ColT[] = {
+    #include "assets/levelGroup/Global/JLCaveDoor/JLCaveDoor.colT.inc.c"
+};
 
-#include "assets/levelGroup/Global/JLCaveDoor/JLCaveDoor.colS.inc.c"
+Rect3D Global_JLCaveDoor_ColS = {
+    #include "assets/levelGroup/Global/JLCaveDoor/JLCaveDoor.colS.inc.c"
+};
 
 ModelCollision Global_JLCaveDoor_ColH = {
 8, 8, &Global_JLCaveDoor_ColV[0], &Global_JLCaveDoor_ColT[0], &Global_JLCaveDoor_ColS

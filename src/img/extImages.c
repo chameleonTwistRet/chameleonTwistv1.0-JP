@@ -1376,10 +1376,18 @@ unsigned char extImages_menuOptions_ia8_PNG[] = {
 #include "build/assets/img/extImages/menuOptions.ia8.png.inc.c"
 };
 
-#include "assets/img/extImages/anim/unk1Header.animH.inc.c"
+Anim extImages_unk1Header_Animh = {
+    #include "assets/img/extImages/anim/unk1Header.animH.inc.c"
+};
 
-#include "assets/img/extImages/anim/unk1.animArr.inc.c"
+Mtx extImages_unk1_Animarr[100][13] = {
+    #include "assets/img/extImages/anim/unk1.animArr.inc.c"
+};
 
-#include "assets/img/extImages/anim/unk2Header.animH.inc.c"
+Anim extImages_unk2Header_Animh = {
+    #include "assets/img/extImages/anim/unk2Header.animH.inc.c"
+};
 
-#include "assets/img/extImages/anim/unk2.animArr.inc.c"
+Mtx extImages_unk2_Animarr[40][13] = {
+    #include "assets/img/extImages/anim/unk2.animArr.inc.c"
+};

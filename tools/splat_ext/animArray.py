@@ -37,6 +37,9 @@ class N64SegAnimArray(CommonSegCodeSubsegment):
         )
         self.file_text = None
         self.data_only = isinstance(yaml, dict) and yaml.get("data_only", False)
+        if isinstance(yaml, dict):
+            self.args.append(yaml.get("frames", 1))
+            self.args.append(yaml.get("objects", 1))
 
     def get_linker_section(self) -> str:
         #return ".data"

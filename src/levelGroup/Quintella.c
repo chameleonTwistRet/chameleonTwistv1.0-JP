@@ -174,47 +174,47 @@ s32 Quintella_spriteLib_Sprlib[] = {
     0,
 };
 
-Collectable Quintella_roomUnk_collectables[7] = {
-{R_HEART, {150.0,0.0,-1405.0}, 4294967295, 0, 0, 0},
-{R_HEART, {-150.0,0.0,-1405.0}, 4294967295, 0, 0, 0},
-{R_HEART, {-1304.0,0.0,-304.0}, 4294967295, 0, 0, 0},
-{R_HEART, {-100.0,0.0,1384.0}, 4294967295, 0, 0, 0},
-{R_HEART, {100.0,0.0,1384.0}, 4294967295, 0, 0, 0},
-{R_HEART, {1385.0,0.0,29.0}, 4294967295, 0, 0, 0},
-{ACTOR_NULL, {0.0,0.0,0.0}, 4294967295, 0, 0, 0}
+Collectable Quintella_roomUnk_collectables[] = {
+    {    R_HEART,  {150.0,0.0,-1405.0}, 4294967295, 0, 0, 0},
+    {    R_HEART, {-150.0,0.0,-1405.0}, 4294967295, 0, 0, 0},
+    {    R_HEART, {-1304.0,0.0,-304.0}, 4294967295, 0, 0, 0},
+    {    R_HEART,  {-100.0,0.0,1384.0}, 4294967295, 0, 0, 0},
+    {    R_HEART,   {100.0,0.0,1384.0}, 4294967295, 0, 0, 0},
+    {    R_HEART,    {1385.0,0.0,29.0}, 4294967295, 0, 0, 0},
+    { ACTOR_NULL,        {0.0,0.0,0.0}, 4294967295, 0, 0, 0}
 };
 
-RoomObject Quintella_roomMulti_objects[14] = {
-{{0.0,0.0,-2800.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 5, 0.0, -20000.0, -2400.0, 0.0, 15, 300, -2, 0, 0, 0, 7, -1, -1, 16, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
-{{0.0,0.0,-2600.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 5, 0.0, -20000.0, -2400.0, 0.0, 20, 300, -2, 0, 0, 0, 7, -1, -1, 16, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
-{{0.0,0.0,-2400.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 5, 0.0, -20000.0, -2400.0, 0.0, 25, 300, -2, 0, 0, 0, 7, -1, -1, 16, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
-{{0.0,0.0,-2200.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 5, 0.0, -20000.0, -2200.0, 0.0, 30, 300, -2, 0, 0, 0, 7, -1, -1, 16, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
-{{0.0,0.0,-2000.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 5, 0.0, -20000.0, -2000.0, 0.0, 35, 300, -2, 0, 0, 0, 7, -1, -1, 16, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
-{{0.0,0.0,-1800.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 5, 0.0, -20000.0, -1800.0, 0.0, 40, 300, -2, 0, 0, 0, 7, -1, -1, 16, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
-{{0.0,0.0,-1600.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 5, 0.0, -20000.0, -1600.0, 0.0, 45, 300, -2, 0, 0, 0, 7, -1, -1, 16, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
-{{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 37, -1, -1, -1, NULL, NULL, 0, 0, 0, 4, 4, 0, -1, 0, 0},
-{{0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 38, -1, 16, -1, NULL, NULL, 0, 0, 3, 4, 4, 0, -1, 0, 0},
-{{0.0,-6000.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 5, 0.0, 0.0, 0.0, 0.0, 0, 300, -1, 0, 0, 0, 8, -1, -1, -1, NULL, NULL, 0, 0, 6, 4, 4, 0, -1, 1, 0},
-{{0.0,0.0,-3100.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 256, 0, 400.0, 400.0, 0.0, 0.0, 1, 1, 0, 0, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 2, -1, 1, 0, -1, 0, 0},
-{{0.0,0.0,-3100.0}, {4.0,4.0,4.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 1400.0, 1000.0, -1000.0, 0.0, 0, 90, 0, 1000, 0, 0, 0, -1, -1, -1, NULL, NULL, 0, 0, 1, 0, 0, 0, -1, 0, 0},
-{{0.0,-1500.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 39, -1, -1, -1, NULL, NULL, 0, 0, 0, 0, 4, 0, -1, 0, 0},
-{{0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+RoomObject Quintella_roomMulti_objects[] = {
+    { {0.0,0.0,-2800.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0),   7, 5,    0.0, -20000.0, -2400.0, 0.0, 15, 300, -2,    0, 0, 0,  7, -1, -1, 16, NULL, NULL, 0, 0, 7,  4, 4, 0, -1, 0, 0},
+    { {0.0,0.0,-2600.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0),   7, 5,    0.0, -20000.0, -2400.0, 0.0, 20, 300, -2,    0, 0, 0,  7, -1, -1, 16, NULL, NULL, 0, 0, 7,  4, 4, 0, -1, 0, 0},
+    { {0.0,0.0,-2400.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0),   7, 5,    0.0, -20000.0, -2400.0, 0.0, 25, 300, -2,    0, 0, 0,  7, -1, -1, 16, NULL, NULL, 0, 0, 7,  4, 4, 0, -1, 0, 0},
+    { {0.0,0.0,-2200.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0),   7, 5,    0.0, -20000.0, -2200.0, 0.0, 30, 300, -2,    0, 0, 0,  7, -1, -1, 16, NULL, NULL, 0, 0, 7,  4, 4, 0, -1, 0, 0},
+    { {0.0,0.0,-2000.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0),   7, 5,    0.0, -20000.0, -2000.0, 0.0, 35, 300, -2,    0, 0, 0,  7, -1, -1, 16, NULL, NULL, 0, 0, 7,  4, 4, 0, -1, 0, 0},
+    { {0.0,0.0,-1800.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0),   7, 5,    0.0, -20000.0, -1800.0, 0.0, 40, 300, -2,    0, 0, 0,  7, -1, -1, 16, NULL, NULL, 0, 0, 7,  4, 4, 0, -1, 0, 0},
+    { {0.0,0.0,-1600.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0),   7, 5,    0.0, -20000.0, -1600.0, 0.0, 45, 300, -2,    0, 0, 0,  7, -1, -1, 16, NULL, NULL, 0, 0, 7,  4, 4, 0, -1, 0, 0},
+    {     {0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0),   7, 0, 1400.0,   1000.0, -1000.0, 0.0,  0,  90,  0, 1000, 0, 0, 37, -1, -1, -1, NULL, NULL, 0, 0, 0,  4, 4, 0, -1, 0, 0},
+    {     {0.0,0.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0),   7, 0, 1400.0,   1000.0, -1000.0, 0.0,  0,  90,  0, 1000, 0, 0, 38, -1, 16, -1, NULL, NULL, 0, 0, 3,  4, 4, 0, -1, 0, 0},
+    { {0.0,-6000.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0),   7, 5,    0.0,      0.0,     0.0, 0.0,  0, 300, -1,    0, 0, 0,  8, -1, -1, -1, NULL, NULL, 0, 0, 6,  4, 4, 0, -1, 1, 0},
+    { {0.0,0.0,-3100.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 256, 0,  400.0,    400.0,     0.0, 0.0,  1,   1,  0,    0, 0, 0,  0, -1, -1, -1, NULL, NULL, 0, 0, 2, -1, 1, 0, -1, 0, 0},
+    { {0.0,0.0,-3100.0}, {4.0,4.0,4.0}, 0, DEGREES_TO_RADIANS_2PI(0.0),   7, 0, 1400.0,   1000.0, -1000.0, 0.0,  0,  90,  0, 1000, 0, 0,  0, -1, -1, -1, NULL, NULL, 0, 0, 1,  0, 0, 0, -1, 0, 0},
+    { {0.0,-1500.0,0.0}, {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0),   7, 0,    0.0,      0.0,     0.0, 0.0,  0,   0,  0,    0, 0, 0, 39, -1, -1, -1, NULL, NULL, 0, 0, 0,  0, 4, 0, -1, 0, 0},
+    {     {0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, DEGREES_TO_RADIANS_2PI(0.0),   0, 0,    0.0,      0.0,     0.0, 0.0,  0,   0,  0,    0, 0, 0,  0,  0,  0,  0, NULL, NULL, 0, 0, 0,  0, 0, 0,  0, 0, 0}
 };
 
-RoomActor Quintella_room0_actors[2] = {
-{ANT_QUEEN, {0.0,0.0,400.0}, 90.0, -1500.0, 1500.0, 0, 0.0, -1500.0, 1500.0, 0, 0.0, 0.0, 0.0, 10.0, 2.0f, 0, 0, 0, 12.0f, 5.0f, 5.0f, 8.0f},
-{ACTOR_NULL, {0.0,0.0,0.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0}
+RoomActor Quintella_room0_actors[] = {
+    {  ANT_QUEEN, {0.0,0.0,400.0}, 90.0, -1500.0, 1500.0, 0, 0.0, -1500.0, 1500.0, 0, 0.0, 0.0, 0.0, 10.0, 2.0f, 0, 0, 0, 12.0f, 5.0f, 5.0f, 8.0f},
+    { ACTOR_NULL,   {0.0,0.0,0.0},  0.0,     0.0,    0.0, 0, 0.0,     0.0,    0.0, 0, 0.0, 0.0, 0.0,  0.0,    0, 0, 0, 0,     0,    0,    0,    0}
 };
 
-RoomActor Quintella_room1_actors[2] = {
-{ANT_QUEEN, {0.0,0.0,400.0}, 90.0, -1500.0, 1500.0, 0, 0.0, -1500.0, 1500.0, 0, 0.20000000298023224, 0.0, 0.0, 14.0, 3.0f, 0, 0, 0, 60.0f, 5.0f, 5.0f, 4.0f},
-{ACTOR_NULL, {0.0,0.0,0.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0}
+RoomActor Quintella_room1_actors[] = {
+    {  ANT_QUEEN, {0.0,0.0,400.0}, 90.0, -1500.0, 1500.0, 0, 0.0, -1500.0, 1500.0, 0, 0.20000000298023224, 0.0, 0.0, 14.0, 3.0f, 0, 0, 0, 60.0f, 5.0f, 5.0f, 4.0f},
+    { ACTOR_NULL,   {0.0,0.0,0.0},  0.0,     0.0,    0.0, 0, 0.0,     0.0,    0.0, 0,                 0.0, 0.0, 0.0,  0.0,    0, 0, 0, 0,     0,    0,    0,    0}
 };
 
-RoomInstance Quintella_room_instances[3] = {
-{Quintella_roomMulti_objects,Quintella_room0_actors, 0, 0, 1, 1, 0, 7, 31, 0, 0.0, 5, 1500.0, 800.0, -1500.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1500.0, 200.0},
-{Quintella_roomMulti_objects,Quintella_room1_actors, 0, 0, 1, 1, 0, 7, 31, 0, 0.0, 5, 1500.0, 800.0, -1500.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1500.0, 200.0},
-{0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0}
+RoomInstance Quintella_room_instances[] = {
+    { Quintella_roomMulti_objects, Quintella_room0_actors, 0, 0, 1, 1, 0, 7, 31, 0, 0.0, 5, 1500.0, 800.0, -1500.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1500.0, 200.0},
+    { Quintella_roomMulti_objects, Quintella_room1_actors, 0, 0, 1, 1, 0, 7, 31, 0, 0.0, 5, 1500.0, 800.0, -1500.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1500.0, 200.0},
+    {                           0,                      0, 0, 0, 0, 0, 0, 0, -1, 0, 0.0, 0,    0.0,   0.0,     0.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0,    -1.0,   0.0}
 };
 
 s32 Quintella_rooms_map[1][3] = {
@@ -225,8 +225,8 @@ StageMapData Quintella_map_data = {
 3, 1, Quintella_room_instances, Quintella_rooms_map, 
 };
 
-RoomInstance Quintella_ext_room_instances[1] = {
-{0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0}
+RoomInstance Quintella_ext_room_instances[] = {
+    { 0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0}
 };
 
 LevelScope Quintella_scope_Lvlscope = {
@@ -252,9 +252,12 @@ StageData Quintella_header_Lvlhdr = {
 s32 alignment_Quintella[2] = {0, 0};
 Mtx Quintella_IMtx2 = IDENTITY;
 
-#include "assets/levelGroup/Quintella/qtScope/qtScope.light.inc.c"
+Lights1 Quintella_qtScope_Light = 
+    #include "assets/levelGroup/Quintella/qtScope/qtScope.light.inc.c"
 
-#include "assets/levelGroup/Quintella/model1/model1.vtx.inc.c"
+Vtx Quintella_model1_Vtx[] = {
+    #include "assets/levelGroup/Quintella/model1/model1.vtx.inc.c"
+};
 Mtx Quintella_IMtx3 = IDENTITY;
 unsigned char Quintella_Pad1[] = FILEPAD;
 unsigned char Quintella_mural_i4_PNG[] = {
@@ -269,42 +272,67 @@ unsigned char Quintella_wallFade_ci8_PAL[] = {
 #include "build/assets/levelGroup/Quintella/img/wallFade.ci8.pal.inc.c"
 };
 
-#include "assets/levelGroup/Quintella/model1/model1.gfx.inc.c"
+Gfx Quintella_model1_Gfx[] = {
+    #include "assets/levelGroup/Quintella/model1/model1.gfx.inc.c"
+};
 
-#include "assets/levelGroup/Quintella/model2/model2.vtx.inc.c"
+Vtx Quintella_model2_Vtx[] = {
+    #include "assets/levelGroup/Quintella/model2/model2.vtx.inc.c"
+};
 Mtx Quintella_IMtx4 = IDENTITY;
 
-#include "assets/levelGroup/Quintella/model2/model2.gfx.inc.c"
+Gfx Quintella_model2_Gfx[] = {
+    #include "assets/levelGroup/Quintella/model2/model2.gfx.inc.c"
+};
 
-#include "assets/levelGroup/Quintella/unkCol1/unkCol1.colV.inc.c"
+Vec3f Quintella_unkCol1_ColV[] = {
+    #include "assets/levelGroup/Quintella/unkCol1/unkCol1.colV.inc.c"
+};
 
-#include "assets/levelGroup/Quintella/unkCol1/unkCol1.colT.inc.c"
+Vec3w Quintella_unkCol1_ColT[] = {
+    #include "assets/levelGroup/Quintella/unkCol1/unkCol1.colT.inc.c"
+};
 
-#include "assets/levelGroup/Quintella/unkCol1/unkCol1.colS.inc.c"
+Rect3D Quintella_unkCol1_ColS = {
+    #include "assets/levelGroup/Quintella/unkCol1/unkCol1.colS.inc.c"
+};
 
 ModelCollision Quintella_unkCol1_ColH = {
 34, 60, &Quintella_unkCol1_ColV[0], &Quintella_unkCol1_ColT[0], &Quintella_unkCol1_ColS
 };
 
-#include "assets/levelGroup/Quintella/unkCol2/unkCol2.colV.inc.c"
+Vec3f Quintella_unkCol2_ColV[] = {
+    #include "assets/levelGroup/Quintella/unkCol2/unkCol2.colV.inc.c"
+};
 
-#include "assets/levelGroup/Quintella/unkCol2/unkCol2.colT.inc.c"
+Vec3w Quintella_unkCol2_ColT[] = {
+    #include "assets/levelGroup/Quintella/unkCol2/unkCol2.colT.inc.c"
+};
 
-#include "assets/levelGroup/Quintella/unkCol2/unkCol2.colS.inc.c"
+Rect3D Quintella_unkCol2_ColS = {
+    #include "assets/levelGroup/Quintella/unkCol2/unkCol2.colS.inc.c"
+};
 
 ModelCollision Quintella_unkCol2_ColH = {
 17, 24, &Quintella_unkCol2_ColV[0], &Quintella_unkCol2_ColT[0], &Quintella_unkCol2_ColS
 };
 Mtx Quintella_IMtx5 = IDENTITY;
 
-#include "assets/levelGroup/Quintella/qtScope2/qtScope2.light.inc.c"
+Lights1 Quintella_qtScope2_Light = 
+    #include "assets/levelGroup/Quintella/qtScope2/qtScope2.light.inc.c"
 
-#include "assets/levelGroup/Quintella/a_model1/a_model1.vtx.inc.c"
+Vtx Quintella_a_model1_Vtx[] = {
+    #include "assets/levelGroup/Quintella/a_model1/a_model1.vtx.inc.c"
+};
 Mtx Quintella_IMtx6 = IDENTITY;
 
-#include "assets/levelGroup/Quintella/a_model1/a_model1.gfx.inc.c"
+Gfx Quintella_a_model1_Gfx[] = {
+    #include "assets/levelGroup/Quintella/a_model1/a_model1.gfx.inc.c"
+};
 
-#include "assets/levelGroup/Quintella/a_model2/a_model2.vtx.inc.c"
+Vtx Quintella_a_model2_Vtx[] = {
+    #include "assets/levelGroup/Quintella/a_model2/a_model2.vtx.inc.c"
+};
 Mtx Quintella_IMtx7 = IDENTITY;
 unsigned char Quintella_Pad4[] = FILEPAD;
 unsigned char Quintella_color_ci4_PNG[] = {
@@ -331,9 +359,13 @@ unsigned char Quintella_gaster_ci4_PAL[] = {
 #include "build/assets/levelGroup/Quintella/img/gaster.ci4.pal.inc.c"
 };
 
-#include "assets/levelGroup/Quintella/a_model2/a_model2.gfx.inc.c"
+Gfx Quintella_a_model2_Gfx[] = {
+    #include "assets/levelGroup/Quintella/a_model2/a_model2.gfx.inc.c"
+};
 
-#include "assets/levelGroup/Quintella/a_model3/a_model3.vtx.inc.c"
+Vtx Quintella_a_model3_Vtx[] = {
+    #include "assets/levelGroup/Quintella/a_model3/a_model3.vtx.inc.c"
+};
 Mtx Quintella_IMtx8 = IDENTITY;
 unsigned char Quintella_Pad10[] = FILEPAD;
 unsigned char Quintella_eye_ci8_PNG[] = {
@@ -352,9 +384,13 @@ unsigned char Quintella_color3_ci4_PAL[] = {
 #include "build/assets/levelGroup/Quintella/img/color3.ci4.pal.inc.c"
 };
 
-#include "assets/levelGroup/Quintella/a_model3/a_model3.gfx.inc.c"
+Gfx Quintella_a_model3_Gfx[] = {
+    #include "assets/levelGroup/Quintella/a_model3/a_model3.gfx.inc.c"
+};
 
-#include "assets/levelGroup/Quintella/a_model4/a_model4.vtx.inc.c"
+Vtx Quintella_a_model4_Vtx[] = {
+    #include "assets/levelGroup/Quintella/a_model4/a_model4.vtx.inc.c"
+};
 Mtx Quintella_IMtx9 = IDENTITY;
 unsigned char Quintella_Pad14[] = FILEPAD;
 unsigned char Quintella_shoulder_ci4_PNG[] = {
@@ -365,49 +401,85 @@ unsigned char Quintella_shoulder_ci4_PAL[] = {
 #include "build/assets/levelGroup/Quintella/img/shoulder.ci4.pal.inc.c"
 };
 
-#include "assets/levelGroup/Quintella/a_model4/a_model4.gfx.inc.c"
+Gfx Quintella_a_model4_Gfx[] = {
+    #include "assets/levelGroup/Quintella/a_model4/a_model4.gfx.inc.c"
+};
 
-#include "assets/levelGroup/Quintella/a_model5/a_model5.vtx.inc.c"
+Vtx Quintella_a_model5_Vtx[] = {
+    #include "assets/levelGroup/Quintella/a_model5/a_model5.vtx.inc.c"
+};
 Mtx Quintella_IMtx10 = IDENTITY;
 
-#include "assets/levelGroup/Quintella/a_model5/a_model5.gfx.inc.c"
+Gfx Quintella_a_model5_Gfx[] = {
+    #include "assets/levelGroup/Quintella/a_model5/a_model5.gfx.inc.c"
+};
 
-#include "assets/levelGroup/Quintella/a_model6/a_model6.vtx.inc.c"
+Vtx Quintella_a_model6_Vtx[] = {
+    #include "assets/levelGroup/Quintella/a_model6/a_model6.vtx.inc.c"
+};
 Mtx Quintella_IMtx11 = IDENTITY;
 
-#include "assets/levelGroup/Quintella/a_model6/a_model6.gfx.inc.c"
+Gfx Quintella_a_model6_Gfx[] = {
+    #include "assets/levelGroup/Quintella/a_model6/a_model6.gfx.inc.c"
+};
 
-#include "assets/levelGroup/Quintella/a_model7/a_model7.vtx.inc.c"
+Vtx Quintella_a_model7_Vtx[] = {
+    #include "assets/levelGroup/Quintella/a_model7/a_model7.vtx.inc.c"
+};
 Mtx Quintella_IMtx12 = IDENTITY;
 
-#include "assets/levelGroup/Quintella/a_model7/a_model7.gfx.inc.c"
+Gfx Quintella_a_model7_Gfx[] = {
+    #include "assets/levelGroup/Quintella/a_model7/a_model7.gfx.inc.c"
+};
 
-#include "assets/levelGroup/Quintella/a_model8/a_model8.vtx.inc.c"
+Vtx Quintella_a_model8_Vtx[] = {
+    #include "assets/levelGroup/Quintella/a_model8/a_model8.vtx.inc.c"
+};
 Mtx Quintella_IMtx13 = IDENTITY;
 
-#include "assets/levelGroup/Quintella/a_model8/a_model8.gfx.inc.c"
+Gfx Quintella_a_model8_Gfx[] = {
+    #include "assets/levelGroup/Quintella/a_model8/a_model8.gfx.inc.c"
+};
 
-#include "assets/levelGroup/Quintella/a_model9/a_model9.vtx.inc.c"
+Vtx Quintella_a_model9_Vtx[] = {
+    #include "assets/levelGroup/Quintella/a_model9/a_model9.vtx.inc.c"
+};
 Mtx Quintella_IMtx14 = IDENTITY;
 
-#include "assets/levelGroup/Quintella/a_model9/a_model9.gfx.inc.c"
+Gfx Quintella_a_model9_Gfx[] = {
+    #include "assets/levelGroup/Quintella/a_model9/a_model9.gfx.inc.c"
+};
 
-#include "assets/levelGroup/Quintella/a_model10/a_model10.vtx.inc.c"
+Vtx Quintella_a_model10_Vtx[] = {
+    #include "assets/levelGroup/Quintella/a_model10/a_model10.vtx.inc.c"
+};
 Mtx Quintella_IMtx15 = IDENTITY;
 
-#include "assets/levelGroup/Quintella/a_model10/a_model10.gfx.inc.c"
+Gfx Quintella_a_model10_Gfx[] = {
+    #include "assets/levelGroup/Quintella/a_model10/a_model10.gfx.inc.c"
+};
 
-#include "assets/levelGroup/Quintella/a_model11/a_model11.vtx.inc.c"
+Vtx Quintella_a_model11_Vtx[] = {
+    #include "assets/levelGroup/Quintella/a_model11/a_model11.vtx.inc.c"
+};
 Mtx Quintella_IMtx16 = IDENTITY;
 
-#include "assets/levelGroup/Quintella/a_model11/a_model11.gfx.inc.c"
+Gfx Quintella_a_model11_Gfx[] = {
+    #include "assets/levelGroup/Quintella/a_model11/a_model11.gfx.inc.c"
+};
 
-#include "assets/levelGroup/Quintella/a_model12/a_model12.vtx.inc.c"
+Vtx Quintella_a_model12_Vtx[] = {
+    #include "assets/levelGroup/Quintella/a_model12/a_model12.vtx.inc.c"
+};
 Mtx Quintella_IMtx17 = IDENTITY;
 
-#include "assets/levelGroup/Quintella/a_model12/a_model12.gfx.inc.c"
+Gfx Quintella_a_model12_Gfx[] = {
+    #include "assets/levelGroup/Quintella/a_model12/a_model12.gfx.inc.c"
+};
 
-#include "assets/levelGroup/Quintella/a_model13/a_model13.vtx.inc.c"
+Vtx Quintella_a_model13_Vtx[] = {
+    #include "assets/levelGroup/Quintella/a_model13/a_model13.vtx.inc.c"
+};
 Mtx Quintella_IMtx18 = IDENTITY;
 unsigned char Quintella_Pad16[] = FILEPAD;
 unsigned char Quintella_dressTop_ci4_PNG[] = {
@@ -430,19 +502,31 @@ unsigned char Quintella_dress_ci4_PAL[] = {
 #include "build/assets/levelGroup/Quintella/img/dress.ci4.pal.inc.c"
 };
 
-#include "assets/levelGroup/Quintella/a_model13/a_model13.gfx.inc.c"
+Gfx Quintella_a_model13_Gfx[] = {
+    #include "assets/levelGroup/Quintella/a_model13/a_model13.gfx.inc.c"
+};
 
-#include "assets/levelGroup/Quintella/a_model14/a_model14.vtx.inc.c"
+Vtx Quintella_a_model14_Vtx[] = {
+    #include "assets/levelGroup/Quintella/a_model14/a_model14.vtx.inc.c"
+};
 Mtx Quintella_IMtx19 = IDENTITY;
 
-#include "assets/levelGroup/Quintella/a_model14/a_model14.gfx.inc.c"
+Gfx Quintella_a_model14_Gfx[] = {
+    #include "assets/levelGroup/Quintella/a_model14/a_model14.gfx.inc.c"
+};
 
-#include "assets/levelGroup/Quintella/a_model15/a_model15.vtx.inc.c"
+Vtx Quintella_a_model15_Vtx[] = {
+    #include "assets/levelGroup/Quintella/a_model15/a_model15.vtx.inc.c"
+};
 Mtx Quintella_IMtx20 = IDENTITY;
 
-#include "assets/levelGroup/Quintella/a_model15/a_model15.gfx.inc.c"
+Gfx Quintella_a_model15_Gfx[] = {
+    #include "assets/levelGroup/Quintella/a_model15/a_model15.gfx.inc.c"
+};
 
-#include "assets/levelGroup/Quintella/a_model16/a_model16.vtx.inc.c"
+Vtx Quintella_a_model16_Vtx[] = {
+    #include "assets/levelGroup/Quintella/a_model16/a_model16.vtx.inc.c"
+};
 Mtx Quintella_IMtx21 = IDENTITY;
 unsigned char Quintella_Pad21[] = FILEPAD;
 unsigned char Quintella_fan_ci4_PNG[] = {
@@ -453,78 +537,152 @@ unsigned char Quintella_fan_ci4_PAL[] = {
 #include "build/assets/levelGroup/Quintella/img/fan.ci4.pal.inc.c"
 };
 
-#include "assets/levelGroup/Quintella/a_model16/a_model16.gfx.inc.c"
+Gfx Quintella_a_model16_Gfx[] = {
+    #include "assets/levelGroup/Quintella/a_model16/a_model16.gfx.inc.c"
+};
 
-#include "assets/levelGroup/Quintella/a_model17/a_model17.vtx.inc.c"
+Vtx Quintella_a_model17_Vtx[] = {
+    #include "assets/levelGroup/Quintella/a_model17/a_model17.vtx.inc.c"
+};
 Mtx Quintella_IMtx22 = IDENTITY;
 
-#include "assets/levelGroup/Quintella/a_model17/a_model17.gfx.inc.c"
+Gfx Quintella_a_model17_Gfx[] = {
+    #include "assets/levelGroup/Quintella/a_model17/a_model17.gfx.inc.c"
+};
 Mtx Quintella_IMtx23 = IDENTITY;
 
-#include "assets/levelGroup/Quintella/a_model18/a_model18.gfx.inc.c"
+Gfx Quintella_a_model18_Gfx[] = {
+    #include "assets/levelGroup/Quintella/a_model18/a_model18.gfx.inc.c"
+};
 
-#include "assets/levelGroup/Quintella/anim/unk1Header.animH.inc.c"
+Anim Quintella_unk1Header_Animh = {
+    #include "assets/levelGroup/Quintella/anim/unk1Header.animH.inc.c"
+};
 
-#include "assets/levelGroup/Quintella/anim/unk1.animArr.inc.c"
+Mtx Quintella_unk1_Animarr[40][17] = {
+    #include "assets/levelGroup/Quintella/anim/unk1.animArr.inc.c"
+};
 
-#include "assets/levelGroup/Quintella/anim/unk2Header.animH.inc.c"
+Anim Quintella_unk2Header_Animh = {
+    #include "assets/levelGroup/Quintella/anim/unk2Header.animH.inc.c"
+};
 
-#include "assets/levelGroup/Quintella/anim/unk2.animArr.inc.c"
+Mtx Quintella_unk2_Animarr[30][17] = {
+    #include "assets/levelGroup/Quintella/anim/unk2.animArr.inc.c"
+};
 
-#include "assets/levelGroup/Quintella/anim/unk3Header.animH.inc.c"
+Anim Quintella_unk3Header_Animh = {
+    #include "assets/levelGroup/Quintella/anim/unk3Header.animH.inc.c"
+};
 
-#include "assets/levelGroup/Quintella/anim/unk3.animArr.inc.c"
+Mtx Quintella_unk3_Animarr[15][17] = {
+    #include "assets/levelGroup/Quintella/anim/unk3.animArr.inc.c"
+};
 
-#include "assets/levelGroup/Quintella/anim/unk4Header.animH.inc.c"
+Anim Quintella_unk4Header_Animh = {
+    #include "assets/levelGroup/Quintella/anim/unk4Header.animH.inc.c"
+};
 
-#include "assets/levelGroup/Quintella/anim/unk4.animArr.inc.c"
+Mtx Quintella_unk4_Animarr[20][17] = {
+    #include "assets/levelGroup/Quintella/anim/unk4.animArr.inc.c"
+};
 
-#include "assets/levelGroup/Quintella/anim/unk5Header.animH.inc.c"
+Anim Quintella_unk5Header_Animh = {
+    #include "assets/levelGroup/Quintella/anim/unk5Header.animH.inc.c"
+};
 
-#include "assets/levelGroup/Quintella/anim/unk5.animArr.inc.c"
+Mtx Quintella_unk5_Animarr[40][17] = {
+    #include "assets/levelGroup/Quintella/anim/unk5.animArr.inc.c"
+};
 
-#include "assets/levelGroup/Quintella/anim/unk6Header.animH.inc.c"
+Anim Quintella_unk6Header_Animh = {
+    #include "assets/levelGroup/Quintella/anim/unk6Header.animH.inc.c"
+};
 
-#include "assets/levelGroup/Quintella/anim/unk6.animArr.inc.c"
+Mtx Quintella_unk6_Animarr[60][17] = {
+    #include "assets/levelGroup/Quintella/anim/unk6.animArr.inc.c"
+};
 
-#include "assets/levelGroup/Quintella/anim/unk7Header.animH.inc.c"
+Anim Quintella_unk7Header_Animh = {
+    #include "assets/levelGroup/Quintella/anim/unk7Header.animH.inc.c"
+};
 
-#include "assets/levelGroup/Quintella/anim/unk7.animArr.inc.c"
+Mtx Quintella_unk7_Animarr[3][17] = {
+    #include "assets/levelGroup/Quintella/anim/unk7.animArr.inc.c"
+};
 
-#include "assets/levelGroup/Quintella/anim/unk8Header.animH.inc.c"
+Anim Quintella_unk8Header_Animh = {
+    #include "assets/levelGroup/Quintella/anim/unk8Header.animH.inc.c"
+};
 
-#include "assets/levelGroup/Quintella/anim/unk8.animArr.inc.c"
+Mtx Quintella_unk8_Animarr[5][17] = {
+    #include "assets/levelGroup/Quintella/anim/unk8.animArr.inc.c"
+};
 
-#include "assets/levelGroup/Quintella/anim/unk9Header.animH.inc.c"
+Anim Quintella_unk9Header_Animh = {
+    #include "assets/levelGroup/Quintella/anim/unk9Header.animH.inc.c"
+};
 
-#include "assets/levelGroup/Quintella/anim/unk9.animArr.inc.c"
+Mtx Quintella_unk9_Animarr[30][17] = {
+    #include "assets/levelGroup/Quintella/anim/unk9.animArr.inc.c"
+};
 
-#include "assets/levelGroup/Quintella/anim/unk10Header.animH.inc.c"
+Anim Quintella_unk10Header_Animh = {
+    #include "assets/levelGroup/Quintella/anim/unk10Header.animH.inc.c"
+};
 
-#include "assets/levelGroup/Quintella/anim/unk10.animArr.inc.c"
+Mtx Quintella_unk10_Animarr[55][17] = {
+    #include "assets/levelGroup/Quintella/anim/unk10.animArr.inc.c"
+};
 
-#include "assets/levelGroup/Quintella/anim/unk11Header.animH.inc.c"
+Anim Quintella_unk11Header_Animh = {
+    #include "assets/levelGroup/Quintella/anim/unk11Header.animH.inc.c"
+};
 
-#include "assets/levelGroup/Quintella/anim/unk11.animArr.inc.c"
+Mtx Quintella_unk11_Animarr[5][17] = {
+    #include "assets/levelGroup/Quintella/anim/unk11.animArr.inc.c"
+};
 
-#include "assets/levelGroup/Quintella/anim/unk1Pointers.animP.inc.c"
+AnimPointer Quintella_unk1Pointers_Animp[1] = {
+{&Quintella_unk1Header_Animh.frames, &Quintella_unk1Header_Animh.objects, &Quintella_unk1_Animarr[0][0]}
+};
 
-#include "assets/levelGroup/Quintella/anim/unk2Pointers.animP.inc.c"
+AnimPointer Quintella_unk2Pointers_Animp[1] = {
+{&Quintella_unk2Header_Animh.frames, &Quintella_unk2Header_Animh.objects, &Quintella_unk2_Animarr[0][0]}
+};
 
-#include "assets/levelGroup/Quintella/anim/unk3Pointers.animP.inc.c"
+AnimPointer Quintella_unk3Pointers_Animp[1] = {
+{&Quintella_unk3Header_Animh.frames, &Quintella_unk3Header_Animh.objects, &Quintella_unk3_Animarr[0][0]}
+};
 
-#include "assets/levelGroup/Quintella/anim/unk4Pointers.animP.inc.c"
+AnimPointer Quintella_unk4Pointers_Animp[1] = {
+{&Quintella_unk4Header_Animh.frames, &Quintella_unk4Header_Animh.objects, &Quintella_unk4_Animarr[0][0]}
+};
 
-#include "assets/levelGroup/Quintella/anim/unk5Pointers.animP.inc.c"
+AnimPointer Quintella_unk5Pointers_Animp[1] = {
+{&Quintella_unk5Header_Animh.frames, &Quintella_unk5Header_Animh.objects, &Quintella_unk5_Animarr[0][0]}
+};
 
-#include "assets/levelGroup/Quintella/anim/unk6Pointers.animP.inc.c"
+AnimPointer Quintella_unk6Pointers_Animp[1] = {
+{&Quintella_unk6Header_Animh.frames, &Quintella_unk6Header_Animh.objects, &Quintella_unk6_Animarr[0][0]}
+};
 
-#include "assets/levelGroup/Quintella/anim/unk7Pointers.animP.inc.c"
+AnimPointer Quintella_unk7Pointers_Animp[1] = {
+{&Quintella_unk7Header_Animh.frames, &Quintella_unk7Header_Animh.objects, &Quintella_unk7_Animarr[0][0]}
+};
 
-#include "assets/levelGroup/Quintella/anim/unk8Pointers.animP.inc.c"
+AnimPointer Quintella_unk8Pointers_Animp[1] = {
+{&Quintella_unk8Header_Animh.frames, &Quintella_unk8Header_Animh.objects, &Quintella_unk8_Animarr[0][0]}
+};
 
-#include "assets/levelGroup/Quintella/anim/unk9Pointers.animP.inc.c"
+AnimPointer Quintella_unk9Pointers_Animp[1] = {
+{&Quintella_unk9Header_Animh.frames, &Quintella_unk9Header_Animh.objects, &Quintella_unk9_Animarr[0][0]}
+};
 
-#include "assets/levelGroup/Quintella/anim/unk10Pointers.animP.inc.c"
+AnimPointer Quintella_unk10Pointers_Animp[1] = {
+{&Quintella_unk10Header_Animh.frames, &Quintella_unk10Header_Animh.objects, &Quintella_unk10_Animarr[0][0]}
+};
 
-#include "assets/levelGroup/Quintella/anim/unk11Pointers.animP.inc.c"
+AnimPointer Quintella_unk11Pointers_Animp[1] = {
+{&Quintella_unk11Header_Animh.frames, &Quintella_unk11Header_Animh.objects, &Quintella_unk11_Animarr[0][0]}
+};
