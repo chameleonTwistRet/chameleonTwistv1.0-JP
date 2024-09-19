@@ -1440,7 +1440,7 @@ SpriteActor AntLand_room14_sprites[31] = {
 };
 
 SpriteActor AntLand_room16_sprites[1] = {
-    -1, SPRITE_BLANK, {-1.0,-1.0,-1.0}, {-1.0,32.0,32.0}, 1, 0, 0.0, 0, 0, 0, 0, 0, {-1, -1, 0, 0} // Null sprite
+    {-1, SPRITE_BLANK, {-1.0,-1.0,-1.0}, {-1.0,32.0,32.0}, 1, 0, 0.0, 0, 0, 0, 0, 0, {-1, -1, 0, 0}} // Null sprite
 };
 
 SpriteActor AntLand_room17_sprites[21] = {
@@ -1653,8 +1653,8 @@ StageMapData AntLand_map_data = {
     8, 10, AntLand_room_instances, AntLand_rooms_map, 
 };
 
-RoomInstance AntLand_nullOWRoom_Rmset = {
-    0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0
+RoomInstance AntLand_nullOWRoom_Rmset[] = {
+    {0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0}
 };
 
 LevelScope AntLand_scope_Lvlscope = {

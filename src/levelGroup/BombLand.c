@@ -1538,8 +1538,8 @@ StageMapData BombLand_map_data = {
     8, 3, BombLand_room_instances, BombLand_rooms_map, 
 };
 
-RoomInstance BombLand_nullOWRoom_Rmset = {
-    0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0
+RoomInstance BombLand_nullOWRoom_Rmset[] = {
+    {0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0}
 };
 
 LevelScope BombLand_scope_Lvlscope = {
