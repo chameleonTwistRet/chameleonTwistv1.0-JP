@@ -1,11 +1,3 @@
 #include "common.h"
-#include "PR/os_internal.h"
-#include "osint.h"
 
-void osYieldThread(void) {
-    register u32 saveMask = __osDisableInt();
-    
-    __osRunningThread->state = OS_STATE_RUNNABLE;
-    __osEnqueueAndYield(&__osRunQueue);
-    __osRestoreInt(saveMask);
-}
+#pragma GLOBAL_ASM("asm/nonmatchings/os/yieldthread/func_800EBEC0.s")

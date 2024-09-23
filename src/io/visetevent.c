@@ -1,10 +1,3 @@
 #include "common.h"
 
-void osViSetEvent(OSMesgQueue *mq, OSMesg m, u32 retraceCount) {
-    register u32 saveMask = __osDisableInt();
-
-    __osViNext->msgq = mq;
-    __osViNext->msg = m;
-    __osViNext->retraceCount = retraceCount;
-    __osRestoreInt(saveMask);
-}
+#pragma GLOBAL_ASM("asm/nonmatchings/io/visetevent/func_800DC2B0.s")

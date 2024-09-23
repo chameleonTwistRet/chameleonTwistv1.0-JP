@@ -1,8 +1,6 @@
 #include "ultra64.h"
 #include "macros.h"
 #include "common_structs.h"
-#include "io/viint.h"
-#include "os/osint.h"
 #include "enums.h"
 
 
