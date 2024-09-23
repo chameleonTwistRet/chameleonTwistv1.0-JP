@@ -322,4 +322,6 @@ segments:
       # - {start: 0xED090, type: .bss, vram: 0x8024C2A0, name: io/conteepread }
       # - {start: 0xED090, type: bss, vram: 0x8024C2E0, name: exceptasm }
       # - {start: 0xED090, type: .bss, vram: 0x8024C490, name: io/leodiskinit}
-  - [0xED090]
+      
+  - [0xED090, databin]
+  - [0xC00000]
