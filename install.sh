@@ -11,7 +11,7 @@ if cat /etc/os-release | grep -E 'ID=debian|ID_LIKE=(.*)debian' &> /dev/null; th
     sudo apt update
     sudo apt -y install python3 python3-pip ipython3
     # pip install -r tools/splat/requirements.txt
-    python3 -m pip install -U splat64[mips]
+    python3 -m pip install -U splat64[mips]==0.27.2 #should work on latest, but exists for compatibility
 
     sudo apt install -y gcc
     sudo apt-get install -y gcc-mips-linux-gnu
@@ -22,7 +22,7 @@ if cat /etc/os-release | grep -E 'ID=debian|ID_LIKE=(.*)debian' &> /dev/null; th
     pip install pylibyaml
     pip install capstone
     pip install n64img
-    pip install spimdisasm
+    pip install spimdisasm==1.30.0 #should work on latest, but exists for compatibility
     pip install tqdm
     pip install colorama
     pip install intervaltree

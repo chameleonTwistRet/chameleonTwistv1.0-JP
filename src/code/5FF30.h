@@ -7,12 +7,6 @@
 //used in func_80098684 and func_80088B7C
 #define Eight 8.0f+0
 
-//migrate these to macros.h or something, since other c's can do stuff like this
-//when the top half is copied to the bottom half
-#define SetTextGradient_TopBottom(r1,g1,b1,a1,r2,g2,b2,a2) SetTextGradient(r1, g1, b1, a1, r2, g2, b2, a2, r1, g1, b1, a1, r2, g2, b2, a2)
-//when the left half is copied to the right half
-#define SetTextGradient_LeftRight(r1,g1,b1,a1,r2,g2,b2,a2) SetTextGradient(r1, g1, b1, a1, r1, g1, b1, a1, r2, g2, b2, a2, r2, g2, b2, a2)
-
 
 enum SchedMessages {
     SCHED_MESG_VINTR = 0,
@@ -32,11 +26,11 @@ enum AudioTaskStates {
 };
 
 /* Structs */
-typedef struct chameleonLetter{
+typedef struct letterDef{
     s16 x;
     s16 y;
-    char* letter;
-}chameleonLetter;
+    const char* letter;
+}letterDef;
 
 typedef struct unk801FC9BC {
     u16 unk_00;
@@ -86,7 +80,7 @@ extern s16 D_80200B38;
 extern s32 D_80236978;
 typedef struct UnkPlaySoundEffect {
     char unk_00[0x0E];
-    s16 unk_0E;
+    s16 unk_0E; //amount of sounds?
 } UnkPlaySoundEffect;
 
 typedef struct Unk_800FFB74 {
@@ -105,12 +99,15 @@ typedef struct Unk_800FFDDC {
     /* 0x07 */ s16 unk_08;
 } Unk_800FFDDC; // size 0xA
 
-typedef struct Struct_800AB734 {
-    /* 0x00 */ s32 unk_00;
+//defined in us 1.0's uncompiled source code as ROLL_DATA
+typedef struct RollData {
+    /* 0x00 */ s32 execTime; //time (gCurrentDemoTimer - CreditsTimeOffset) to execute this roll
     /* 0x04 */ s32 unk_04;
-    /* 0x08 */ char pad_08[8];
-    /* 0x10 */ EffectTypeAQArg7 unk_10[7][24];
-} Struct_800AB734; //sizeof 0x160
+    /* 0x08 */ s32 unk_08; //id???
+    /* 0x0C */ s32 unk_0C;
+    //expected euc-jp
+    /* 0x10 */ char lines[7][48];
+} RollData; //sizeof 0x160
 
 typedef struct StageLoadData {
     StageData* stageData;
@@ -175,7 +172,6 @@ s32 func_8008C040(s32 arg0);
 void func_8008C070(s32 arg0);
 void func_8008C1C8(Gfx** arg0);
 void func_8008C35C(Gfx** arg0);
-s32 Actor_PlaySound(Actor* actor, s32 sfxID, s32 unused1, s32 unused2);
 void func_8008C3F0(Actor* actor, s32 sfxID, s32 unused);
 s32 func_8008C438(void);
 void Timing_StartGfx(void);
@@ -566,7 +562,7 @@ extern s16 D_80200CA8;
 extern OSTask D_800F04E0[2];
 extern unk801FFB88* D_801FFB88;
 extern unk801FC9BC D_801FC9BC[]; //probably not correct
-extern chameleonLetter D_80100DF0[];
+extern letterDef D_80100DF0[];
 extern s32 D_800F0704;
 extern SaveFile gSaveFile;
 extern SaveFile* gSaveFiles;
@@ -627,7 +623,7 @@ extern s32 D_800FFDEC;
 extern f32* D_800FF610; //this probably isnt right but until we care roll with it
 extern s16 D_801FC9A4;
 extern s8 D_80200C08;
-extern s16 D_80100D8C;
+extern s16 D_80100D8C[];
 extern s16 D_800FFEBC;
 extern s32 D_802023E0;
 extern s32 D_80202420; //unk type
@@ -646,7 +642,7 @@ extern s16 D_800FFEEC[];
 extern s8 D_80200B30;
 extern s16 sDebugBitfeild;
 extern s8 D_80200B28[];
-extern chameleonLetter* D_801005F8[6];
+extern letterDef* D_801005F8[];
 typedef struct stuff {
     s16 unk0[3];
     u8 unk6[6];
@@ -655,7 +651,7 @@ extern stuff D_801003DC;
 extern s16 D_80200B1A;
 extern s16 D_80200B1C;
 extern s16 gSelectedBattleBGM;
-extern f32 D_80100468[];
+extern s16 D_80100468[];
 extern s8 D_80200B2C;
 extern s16 D_801003CC[];
 extern s16 D_80200B18;
@@ -663,14 +659,14 @@ extern f32 D_80108784;
 extern f32 D_80108788;
 extern f32 D_8010878C;
 extern s16 D_80200B1E;
-extern chameleonLetter* D_80100F28[10]; // coords and text for stage names
-extern chameleonLetter* D_80100DA0[];
+extern letterDef* D_80100F28[]; // coords and text for stage names
+extern const char* D_80100DD8[];
 extern s16 D_80100D88;
 extern s16 sDebugPerfectCodeFlag;
-extern s32 D_80101080;
+extern s32 AmountOfCredits;
 extern s32 D_80101074;
-extern s32 D_80101078;
-extern Struct_800AB734 D_80105E08[];
+extern s32 CreditsTimeOffset;
+extern RollData CreditsData[];
 extern s32 D_8010875C;
 extern s32 D_80174980;
 

@@ -19,6 +19,7 @@ TOOLS_DIR = "tools"
 
 BASENAME = "chameleontwist.jp"
 YAML_FILE = f"{BASENAME}.yaml"
+YAML_FILE_SMALL = f"{BASENAME}.copy.yaml"
 LD_PATH = f"{BASENAME}.ld"
 ELF_PATH = f"build/{BASENAME}"
 MAP_PATH = f"build/{BASENAME}.map"
@@ -51,7 +52,7 @@ GAME_COMPILE_CMD = f"{GAME_CC_DIR} -- -c {CFLAGS} -mips2 -O2"
 #LIB_COMPILE_CMD = (f"{LIB_CC_DIR} -c -B {LIB_CC_DIR}/ee- {INCLUDES} -O2 -G0")
 
 # LDFLGS = f"-T {LD_PATH} -Map {MAP_PATH} --no-check-sections"
-LDFLGS = f"-T {LD_PATH} -T undefined_syms_auto.txt -Map {MAP_PATH} --no-check-sections"
+LDFLGS = f"-T {LD_PATH} -T undefined_syms.txt -Map {MAP_PATH} --no-check-sections"
 DEPENDENCY_GEN = f"cpp -w {INCLUDES} -nostdinc -MD -MF $out.d $in -o /dev/null"
 
 IMG_CONVERT = f"{TOOLS_DIR}/image_converter.py"
@@ -389,7 +390,7 @@ def build_stuff(linker_entries: List[LinkerEntry]):
             continue
 
         if os.path.dirname(c_file) == "src/audio":
-            ninja.build(o_file, "O2_cc", c_file)  # Update later
+            ninja.build(o_file, "ido_O3_cc", c_file)  # Update later
         elif os.path.dirname(c_file) in ["src/io", "src/os"]:
             ninja.build(o_file, "O1_cc", c_file)
     
@@ -432,6 +433,13 @@ if __name__ == "__main__":
     )
 
     parser.add_argument(
+        "-f",
+        "--full",
+        help="Split the entire game (not recommended for func work)",
+        action="store_true",
+    )
+
+    parser.add_argument(
         "-n",
         "--nonmatching",
         help="Build a non-matching version of the game",
@@ -462,9 +470,14 @@ if __name__ == "__main__":
         CFLAGS = CFLAGS.replace(DEFINES, to)
         GAME_COMPILE_CMD = GAME_COMPILE_CMD.replace(DEFINES, to)
         DEFINES = to
-        
+    
+    yaml_to_use = YAML_FILE
+    if not args.full:
+        yaml_to_use = YAML_FILE_SMALL
+    else:
+        print("splitting entire game!")
 
-    split.main([YAML_FILE], modes="all", verbose=False, use_cache=False)
+    split.main([yaml_to_use], modes="all", verbose=False, use_cache=True)
 
     linker_entries = split.linker_writer.entries
 

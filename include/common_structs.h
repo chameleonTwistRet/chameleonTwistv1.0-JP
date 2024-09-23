@@ -131,11 +131,6 @@ typedef struct PlayerActor {
     /* 0x12C */ f32 tongueSeperation; 
 } PlayerActor; //sizeof 0x130
 
-typedef struct EffectTypeAQArg7 {
-    /* 0x0 */ u8 unk_0;
-    /* 0x1 */ u8 unk_1;
-} EffectTypeAQArg7; //sizeof 0x2
-
 typedef struct unk_80052094_8 {
     /* 0x00 */ f32 unk_00;
     /* 0x08 */ s32 unk_04;
@@ -258,7 +253,7 @@ typedef struct Collider {
     /* 0x0C8 */ s32 unkC8;
     /* 0x0CC */ Rect3D unk_CC;
     /* 0x0E4 */ void* unk_E4;
-    /* 0x0E8 */ ModelCollision* collisionData;
+    /* 0x0E8 */ ModelCollision* ModelCollision;
     /* 0x0EC */ Gfx* gfx;
     /* 0x0F0 */ char padF0[4];
     /* 0x0F4 */ void* unkF4;                        /* inferred */
@@ -298,6 +293,27 @@ typedef struct unkSpriteStruct {
     /* 0x05C */ s32 unk_5C;
 } unkSpriteStruct; //sizeof 0x60
 
+
+//platform move point
+typedef struct PlatformKeyframe {
+    Vec3f position; //position
+    s32 unkC;
+    s32 unk10; // total move time
+    s32 unk14;
+    s32 unk18; // come back hold
+    s32 unk1C; // go to next hold
+    s32 unk20; // be here by when in the object's moving timer (generally equal total move time + all previous steps)
+} PlatformKeyframe; //sizeof 0x24
+
+typedef struct UnkType2 {
+    f32 unk0;
+    f32 unk4;
+    s32 unk8;
+    f32 unkC;
+    f32 unk10;
+    f32 unk14;
+} UnkType2; //sizeof 0x18
+
 typedef struct RoomObject {
     Vec3f position;
     Vec3f scale;
@@ -309,8 +325,18 @@ typedef struct RoomObject {
     f32 unk2C;
     f32 unk30;
     f32 unk34;
-    s32 keyframes;
-    s32 unk3C;
+    //uservariable1
+    //either pointer or NULL
+    //as of now, can be:
+    //Vtx, PlatformKeyframe, UnkType2,
+    union {
+        s32 temp;
+        Vtx* _Vtx;
+        PlatformKeyframe* _keyframe;
+        UnkType2* _ut2;
+    } keyframes;
+    //int arg for ^
+    s32 noKeyframes; //pointer sizeof (default usually 90)
     s32 unk40;
     s32 unk44;
     s32 unk48;
@@ -342,7 +368,7 @@ typedef struct RoomActor {
     f32 unk10;
     f32 unk14;
     f32 unk18;
-    s32 unk1C;
+    f32 unk1C;
     f32 unk20;
     f32 unk24;
     f32 unk28;
@@ -351,14 +377,14 @@ typedef struct RoomActor {
     f32 unk34;
     f32 unk38;
     f32 unk3C;
-    s32 unk40;
-    s32 unk44;
-    s32 unk48;
-    s32 unk4C;
-    s32 unk50;
-    s32 unk54;
-    s32 unk58;
-    s32 unk5C;
+    f32 unk40;
+    f32 unk44;
+    f32 unk48;
+    f32 unk4C;
+    f32 unk50;
+    f32 unk54;
+    f32 unk58;
+    f32 unk5C;
 } RoomActor; //sizeof 0x60
 
 typedef struct Collectable {
@@ -391,12 +417,12 @@ typedef struct SpriteActor {
     Vec3f position;
     Vec3f scale;
     s32 unk20;
-    s32 unk24;
+    f32 unk24;
     f32 unk28;
     s32 damages;
-    s32 unk30;
-    s32 unk34;
-    s32 unk38;
+    f32 unk30;
+    f32 unk34;
+    f32 unk38;
     s32 unk3C;
     Color128 color;
 } SpriteActor; // sizeof 0x50
@@ -494,11 +520,72 @@ typedef struct Camera {//take these with a grain of salt
     /* 0x70 */ f32 unk70;
 } Camera; //size 0x74
 
+//the only reason this exists is because PlayerInit references what SEEMS to be
+//PlayerActor but unk_f4[3] is an s32???????? this sucks ass
+typedef struct PlayerActor_s {
+    /* 0x000 */ u32 playerID;
+    /* 0x004 */ Vec3f pos;
+    /* 0x010 */ Vec3f pos2; //slightly off from pos
+    /* 0x01C */ f32 yCounter; //counts around where the y is but not at
+    /* 0x020 */ f32 waterGIMP; //how much to gimp you in water? idk but its correlated
+    /* 0x024 */ Vec3f vel;
+    /* 0x030 */ Vec3f vaultlocity;
+    /* 0x03C */ f32 yAngle;
+    /* 0x040 */ f32 forwardVel; //between 0 and 20.8. gets broken on slope jumps
+    /* 0x044 */ f32 forwardImpulse;
+    /* 0x048 */ f32 waterFactor; //gets effected in water again
+    /* 0x04C */ f32 hitboxSize; //30 default
+    /* 0x050 */ f32 hitboxYStretch; //unconfirmed. 150 default.
+    /* 0x054 */ u32 canJump;    //0x00 = yes, 0x01 = no
+    /* 0x058 */ u32 jumpReleasedInAir;    // 0x00 = no, 0x01 = yes
+    /* 0x05C */ s32 jumpAnimFrame;
+    /* 0x060 */ u32 hasTumbled;    //0x00 = no, 0x01 = yes. resets on jump.
+    /* 0x064 */ u32 unk64;
+    /* 0x068 */ u32 inWater;//0x00 = no, 0x01 = yes.
+    /* 0x06C */ u32 squishTimer;
+    /* 0x070 */ f32 yScale;
+    /* 0x074 */ u32 locked; //0x00 = no, 0x16 = yes. when using lock to stand in place.
+    /* 0x078 */ s32 amountToShoot; //number for machine gun shoot
+    /* 0x07C */ s32 surface; //-1 when off ground, diff number when on diff surface. if 0 you slow to a crawl
+    /* 0x080 */ s32 wSurface; //-1 when not in water, diff number when in diff water
+    /* 0x084 */ s32 surfaceSlide; //1 if you slide on a slope while standing. 0 if else (not walkable slopes)
+    /* 0x088 */ s32 surfaceFine; //more accurate
+    /* 0x08C */ s32 vaulting; // 0 if not, 1 if
+    /* 0x090 */ f32 xFromCenter; //from center of room (when on ground)
+    /* 0x094 */ f32 yFromCenter;
+    /* 0x098 */ f32 zFromCenter;
+    /* 0x09C */ Vec3f shift; //override(?) when on moving objects (falling bridges, etc)
+    /* 0x0A8 */ Vec3f move; //override when sliding on slopes or on poles
+    /* 0x0B4 */ u32 groundMovement; //0x00 = standing, 0x01 = walking, 0x02 = running
+    /* 0x0B8 */ f32 globalTimer;
+    /* 0x0BC */ s32 unkBC;
+    /* 0x0C0 */ u32 amountLeftToShoot;
+    /* 0x0C4 */ u32 vaultFall;//timer for falling after vault
+    /* 0x0C8 */ s32 hp;
+    /* 0x0CC */ u32 playerHURTSTATE;
+    /* 0x0D0 */ s32 playerHURTTIMER;
+    /* 0x0D4 */ u32 playerHURTANIM;
+    /* 0x0D8 */ u32 playerHURTBY;
+    /* 0x0DC */ f32 unk_DC[6];
+    /* 0x0F4 */ f32 unk_F4[2];
+                s32 arbitraryChange;
+    /* 0x0F4 */ f32 unk_F4_2[3];
+    /* 0x10C */ f32 timerDown;
+    /* 0x110 */ f32 reticleSize;
+    /* 0x114 */ s32 active; //0x00 = no, 0x01 = yes
+    /* 0x118 */ s32 exists; //0x00 = no, 0x01 = yes
+    /* 0x11C */ u32 power; //enum of power it has
+    /* 0x120 */ s32 powerTimer; 
+    /* 0x124 */ s32 powerTimerTill; 
+    /* 0x128 */ f32 tongueYOffset; 
+    /* 0x12C */ f32 tongueSeperation; 
+} PlayerActor_s; //sizeof 0x130
+
 typedef struct PlayerInit {
     u32 unk0; //used to ID selected chameleon.
     u32 unk4;
     u32 unk8;
-    PlayerActor actorInit;
+    PlayerActor_s actorInit;
     Tongue tongueInit;
     u8 cameraInit[0x6C]; //camera substruct(s?) yet defined. copied like the other 2
     s32 unk7b4;
@@ -650,7 +737,7 @@ typedef struct unk800FF624 {
     /* 0x08 */ s32 unk_08;
 } unk800FF624; //sizeof 0xC
 
-
+//the original size was 0x24??? builds like this though
 typedef struct unkStruct0 {
     /* 0x00 */ s32 unk_00;
     /* 0x04 */ s32 unk_04;
@@ -661,7 +748,8 @@ typedef struct unkStruct0 {
     /* 0x18 */ s32 unk_18;
     /* 0x1C */ s32 unk_1C;
     /* 0x20 */ s32 unk_20;
-} unkStruct0; //sizeof 0x24
+    /* 0x20 */ s32 unk_24;
+} unkStruct0; //sizeof 0x28
 
 typedef struct unkVecStruct {
     Vec3f vec1;
@@ -1002,26 +1090,6 @@ typedef struct Door {
     s32 unk48; 
 } Door; //sizeof 0x4C (?)
 
-//platform move point
-typedef struct PlatformKeyframe {
-    Vec3f position; //position
-    s32 unkC;
-    s32 unk10; // total move time
-    s32 unk14;
-    s32 unk18; // come back hold
-    s32 unk1C; // go to next hold
-    s32 unk20; // be here by when in the object's moving timer (generally equal total move time + all previous steps)
-} PlatformKeyframe; //sizeof 0x24
-
-typedef struct UnkType2 {
-    f32 unk0;
-    f32 unk4;
-    s32 unk8;
-    f32 unkC;
-    f32 unk10;
-    f32 unk14;
-} UnkType2; //sizeof 0x18
-
 typedef struct RoomInstance {
     RoomObject* objects;
     RoomActor* actors;
@@ -1033,7 +1101,7 @@ typedef struct RoomInstance {
     s32 unk1C;
     s32 unk20;
     s32 unk24;
-    f32 unk28;
+    f32 cameraRot; //basically how top-down you want the room to be. mostly for extRooms
     s32 unk2C;
     f32 unk30;
     f32 unk34;
@@ -1076,7 +1144,7 @@ typedef struct StageData {
     StageModel* models;
     u16 modelCount;
     u16 unkC;
-    u32 RoomObjects;
+    unsigned char* RoomObjects;
     u32 unk14;
     s32* SpriteLib;
     LevelScope* Scope;
@@ -1196,21 +1264,21 @@ typedef struct SpriteListing {
 } SpriteListing; //sizeof 0x78
 
 typedef struct cutsceneCamera{
-    u32 unk0; //unktype
-    f32 unk4;
-    f32 unk8;
-    f32 unkC;
-    u32 unk10; //unktype
-    u32 unk14; //unktype
-    u32 unk18; //unktype
-    u32 unk1C; //unktype
-    u32 unk20; //unktype
-    u32 unk24; //unktype
-    u32 unk28; //unktype
-    u32 unk2C; //unktype
-    u32 unk30; //unktype
-    u32 unk34; //unktype
-    f32 unk38;
+    f32 unk_00;
+    f32 unk_04;
+    f32 unk_08;
+    f32 unk_0C;
+    f32 unk_10;
+    f32 unk_14;
+    f32 unk_18;
+    f32 unk_1C;
+    f32 unk_20;
+    f32 unk_24;
+    f32 unk_28;
+    f32 unk_2C;
+    f32 unk_30;
+    f32 unk_34;
+    f32 unk_38;
 } cutsceneCamera; //sizeof 0x3C
 
 enum CutsceneUses {
@@ -1231,24 +1299,43 @@ enum CutsceneUses {
 //24fb00
 //also after cutsceneCamera's in assets0
 typedef struct cutsceneFunction{
-/* 0x00 */ s32 unk0;
-/* 0x04 */ u32 unk4; //unktype s32?
-/* 0x08 */ u32 unk8; //unktype s32?
-/* 0x0C */ s32 useCase; // enum
-/* 0x10 */ cutsceneCamera* unk10;
-/* 0x14 */ s32 flag1; // ram stuff
-/* 0x18 */ cutsceneCamera* unk18;
-/* 0x1C */ Vec3f toPlacePos; //might be more usecases idk
-/* 0x28 */ Gfx* toPlace; //segmented, if use case 0xA
-/* 0x2C */ s32 flag2; // ram stuff 2
-/* 0x30 */ u32 unk30; //unktype
-/* 0x34 */ u32 unk34; //unktype
-/* 0x38 */ f32 unk38;
-/* 0x3C */ f32 unk3C;
-/* 0x40 */ f32 unk40;
-/* 0x44 */ u32 unk44; //unktype
-/* 0x48 */ f32 unk48;
-/* 0x4C */ u32 unk4C; //unktype
+    s32 unk_00;
+    s32 unk_04;
+    s32 unk_08;
+    s32 useCase; // CutsceneUses enum
+    cutsceneCamera* unk_10;
+    s32 flag1;
+    cutsceneCamera* unk_18;
+    Vec3f toPlacePos;
+    Gfx* toPlace; //segment pointer
+    s32 flag2;
+    s32 unk_30;
+    s32 unk_34;
+    f32 unk_38;
+    f32 unk_3C;
+    f32 unk_40;
+    f32 unk_44;
+    f32 unk_48;
+    f32 unk_4C;
+
+    s32 unk_50;
+    s32 unk_54;
+    s32 unk_58;
+    s32 useCaseTwo; // CutsceneUses enum
+    cutsceneCamera* unk_60;
+    s32 flag1Two;
+    cutsceneCamera* unk_68;
+    Vec3f toPlacePosTwo;
+    Gfx* toPlaceTwo; //segment pointer
+    s32 flag2Two;
+    s32 unk_80;
+    s32 unk_84;
+    f32 unk_88;
+    f32 unk_8C;
+    f32 unk_90;
+    f32 unk_94;
+    f32 unk_98;
+    f32 unk_9C;
 } cutsceneFunction; //sizeof 0x50
 
 #endif

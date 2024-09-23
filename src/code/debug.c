@@ -18,6 +18,69 @@ u8 D_80176819;
 u8 D_8017681A;
 u8 D_8017681B;
 
+//data
+s16 sDebugPerfectCodeFlag = 1;
+s32 sDebugMultiplayer = 0;
+s16 sDebugLevelAccess = -1;
+s16 sDebugBitfeild = 0;
+s32 sDebugInt = -1;
+s16 sStageCrownTotals[] = {25, 25, 21, 24, 23, 23};
+
+u8 debug_pad = 0;
+
+s16 D_800F06C6 = 0;
+f32 D_800F06C8[] = {
+    1.299999952,
+    1.200000048,
+    1,
+    0.6999999881,
+    2
+};
+u8 gSelectedCharacters[4] = {0, 1, 2, 3};
+s16 D_800F06E0[] = {-1, 0};
+s16 D_800F06E4[] = {-1, 0};
+s32 sGameModeStart = 18;
+s32 D_800F06EC = -1;
+s32 D_800F06F0 = -1;
+s32 D_800F06F4 = -1;
+s32 D_800F06F8 = -1;
+s32 D_800F06FC = -1;
+s32 D_800F0700 = -1;
+s32 D_800F0704 = 0;
+s16 D_800F0708[] = {-1, 0};
+f32 D_800F070C = 0;
+f32 D_800F0710 = 0;
+f32 D_800F0714 = 0;
+f32 sDebugPlayerHeights[4] = {0, 0, 0, 0};
+u32 sDebugViewType = 0;
+u32 sDebugViewZoomOut = 1000;
+u32 sDebugViewRotate = 0;
+
+//smth like this
+char D_800F0734[][100] = {
+    "ひだりうえ",
+    "ひだりした",
+    "みぎうえ",
+    "みぎした"
+};
+s32 D_800F08C4 = 0;
+s32 D_800F08C8[] = {0, 0};
+s32 D_800F08D0 = 0;
+char D_800F08D4[100] = "SPR_s0_leaf70";
+char D_800F0938[100] = "SPR_s0_leaf71";
+s32 D_800F099C[] = {0, 0};
+s32 D_800F09A4 = 0;
+char D_800F09A8[][100] = {
+    "ITEM_VITAL",
+    "ITEM_3VITAL",
+    "ITEM_MAXVITAL",
+    "ITEM_COLLECT",
+};
+s32 sDebugTestView = 0;
+u32 sDebugCodeSeqStep = 0;
+s32 D_800F0B40[] = {0, 0, 0, 0};
+//
+
 typedef struct unkTextStruct {
 char strings[4][0x64];
 } unkTextStruct;
@@ -36,7 +99,6 @@ typedef struct unkarg0_2 {
 /* 0x18 */ f32 UNK_28;
 } unkarg0_2;
 
-extern unkTextStruct D_800F0734;
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/debug/Debug_MovePlayer.s")
 
@@ -184,11 +246,11 @@ void Debug_TestView(void) {
     }
     if (sDebugTestView != 0) {
         setPrimColor(0, 0, 0, 255);
-        printUISprite(0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 320.0f, 180.0f, 0.0f, 0);
+        printUISprite(0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 320.0f, 180.0f, 0.0f, SPRITE_BLANK);
         func_8007B480(0.0f, 0.0f, 0.0f, 0.0f, 400.0f, 2000.0f);
         func_8007B4CC(0.0f, 120.0f, 0.0f, 0.0f, 120.0f, 0.0f);
-        printUISprite(32.0f, 32.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 77);
-        SetTextGradient(191, 10, 0, 255, 200, 200, 0, 255, 191, 10, 0, 255, 200, 200, 0, 255);
+        printUISprite(32.0f, 32.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, SPRITE_BATTLE_BIGBOARD);
+        SetTextGradient_TopBottom(191,  10, 0, 255, 200, 200, 0, 255);
         PrintTextWrapper(64.0f, 32.0f, 0.0f, 1.0f, "ＴＥＳＴＶＩＥＷ", 1);
     }
 }

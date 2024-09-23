@@ -180,8 +180,8 @@ s32 func_800B07E4(void) {
 }
 
 void func_800B088C(Collider* arg0, RoomObject* arg1) {
-    arg0->unk_AC = arg1->keyframes;
-    arg0->unk_B0 = arg1->unk3C;
+    arg0->unk_AC = arg1->keyframes.temp;
+    arg0->unk_B0 = arg1->noKeyframes;
     arg0->unk_B4 = 0;
     arg0->unk_B8 = -1;
     func_800B35FC(arg0->unk_AC);
@@ -228,7 +228,7 @@ void func_800B09C0(Collider* arg0, RoomObject* arg1) {
 }
 
 void func_800B09E8(Collider* arg0, RoomObject* arg1) {
-    arg0->unk_AC = arg1->keyframes;    
+    arg0->unk_AC = arg1->keyframes.temp;    
     if (func_800B34D0(arg0->unk_AC) != 0) {
         arg0->unk_B0 = 0;
     } else {
@@ -236,12 +236,13 @@ void func_800B09E8(Collider* arg0, RoomObject* arg1) {
     }
 }
 
+//inits black?
 void func_800B0A30(Collider* arg0, RoomObject* arg1) {
     gPlayerActors[1].active = gPlayerActors[1].exists = 1;
 
-    gSelectedCharacters[1] = 4;
+    gSelectedCharacters[1] = CHARA_BLACK;
     arg0->unk_AC = 0;
-    arg0->unk_B0 = arg1->keyframes;
+    arg0->unk_B0 = arg1->keyframes.temp;
     if (func_800B34D0(arg0->unk_B0) != 0) {
         gPlayerActors[1].active = gPlayerActors[1].exists = 0;
         arg0->unk_AC = 2;
@@ -274,8 +275,8 @@ void RegistShutter(Collider* arg0, RoomObject* arg1) {
     s32 i;
 
     arg0->unk_8C = arg1->unk28;
-    arg0->unk_AC = arg1->keyframes;
-    arg0->unk_B0 = arg1->unk3C;
+    arg0->unk_AC = arg1->keyframes.temp;
+    arg0->unk_B0 = arg1->noKeyframes;
     arg0->unk_B4 = arg1->unk40;
     arg0->unk_B8 = arg1->unk44;
     arg0->unk_BC = arg1->unk48;
@@ -473,7 +474,7 @@ f32 func_800B2308(f32 arg0, s32 caseNum) {
         break;
     case 1:
         // Range(f) = [0, 1]
-        ret = (1.0 - __cosf(arg0 * PI)) * 0.5;
+        ret = (1.0 - cosf(arg0 * PI)) * 0.5;
         break;
     case 2:
         ret = arg0;
@@ -1148,7 +1149,7 @@ void func_800B5E40(Collider* arg0, RoomObject* arg1) {
     }
     func_800B402C(arg0, 2, 2);
     arg0->unk_8C = arg1->unk28;
-    arg0->unk_AC = arg1->keyframes - 0x3C;
+    arg0->unk_AC = arg1->keyframes.temp - 0x3C;
     arg0->unk_B0 = 0;
 }
 
@@ -1181,8 +1182,8 @@ void func_800B6098(Collider* arg0, RoomObject* arg1) {
     arg0->unk_98 = arg1->unk28;
     arg0->unk_9C = arg1->unk2C;
     arg0->unk_A0 = arg1->unk30;
-    arg0->unk_AC = arg1->keyframes;
-    arg0->unk_B0 = arg1->unk3C;
+    arg0->unk_AC = arg1->keyframes.temp;
+    arg0->unk_B0 = arg1->noKeyframes;
     arg0->unk_B4 = arg1->unk40;
     arg0->unk_B8 = arg1->unk44;
     arg0->unk_BC = arg1->unk48;
@@ -1286,8 +1287,8 @@ void func_800BA2D0(Collider* arg0, RoomObject* arg1) {
     arg0->unk_9C = arg1->unk2C;
     arg0->unk_A0 = arg1->unk30;
     arg0->unkA4 = 0;
-    arg0->unk_AC = arg1->keyframes;
-    arg0->unk_B0 = arg1->unk3C;
+    arg0->unk_AC = arg1->keyframes.temp;
+    arg0->unk_B0 = arg1->noKeyframes;
     arg0->unk_B4 = arg1->unk40;
     arg0->unk_B8 = 0;
     arg0->unk_BC = 0;
@@ -1541,8 +1542,8 @@ void RegistDoor(RoomObject* obj, s32 arg1, s32 arg2) {
         door->max.z = obj->position.z;
         door->rect.max.y = obj->unk28;
         door->rect.max.z = obj->unk2C;
-        door->direction = obj->keyframes;
-        door->unk34 = obj->unk3C;
+        door->direction = obj->keyframes.temp;
+        door->unk34 = obj->noKeyframes;
         gDoorCount++;
     }
 }
@@ -2219,6 +2220,8 @@ void func_800C88AC(void) {
 void func_800C88D0(void) {
     func_800C56D4(&gPlayerActors[0]);
 }
+
+
 
 CardinalDirection gCardinalDirections[] = {
     {0, 0, 0, "NO_DIR", 0},

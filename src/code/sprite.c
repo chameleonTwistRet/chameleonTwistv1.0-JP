@@ -3665,6 +3665,7 @@ void func_8005C6FC(f32 arg0, f32 arg1, f32 arg2, s32 arg3) {
     PrintReset();
 }
 
+//gSpriteListings init???
 void func_8005C9B8(void) {
     s32 i;
     for (i = 0; i < ARRAY_COUNT(gSpriteListings); i++) {
@@ -4109,6 +4110,7 @@ void func_800612E4(f32 arg0) {
     D_800FDFF0 = arg0;
 }
 
+//sets spritesheet y???
 void func_800612F0(s32 arg0) {
     D_800FDFE8 = arg0;
 }
@@ -4244,12 +4246,12 @@ void Effect_TypeA_Update(Effect* effect, Gfx** pGfxPos) {
         }
 
         size = effect->duration - parts[i].lifeTime * effect->duration;
-        func_8005747C(parts[i].pos.x, parts[i].pos.y, parts[i].pos.z, size * 2, size * 2, parts[i].lifeTime, 0x4A);
+        func_8005747C(parts[i].pos.x, parts[i].pos.y, parts[i].pos.z, size * 2, size * 2, parts[i].lifeTime, SPRITE_PUFF);
 
         if (D_800F687C > 0) {
             if ((i % 2)) {
                 setPrimColor(alpha, 0, 0, 127);
-                func_8005747C(effect->pos.x + RANDOM(-30, 30), effect->pos.y + RANDOM(-60, 60), effect->pos.z + RANDOM(-30, 30), size / 2, size / 2, parts[i].lifeTime, 0x4A);
+                func_8005747C(effect->pos.x + RANDOM(-30, 30), effect->pos.y + RANDOM(-60, 60), effect->pos.z + RANDOM(-30, 30), size / 2, size / 2, parts[i].lifeTime, SPRITE_PUFF);
             }
 
             parts[i].pos.x += parts[i].vel.x;
@@ -4282,7 +4284,7 @@ void Effect_TypeA_Init(f32 posX, f32 posY, f32 posZ, s32 numParts, s32 size) {
     effect->pos.y = posY;
     effect->pos.z = posZ;
     effect->duration = size * 3;
-    effect->unk8 = PLAY_SFX_AT(0xC3, effect->pos, 0, 0x20);
+    effect->unk8 = PLAY_SFX_AT(SFX_C3_unkSnd, effect->pos, 0, 0x20);
 
     for (parts = effect->parts, i = 0; i < numParts; i++) {
         parts[i].pos.x = posX + RANDOM(-size, size);
@@ -4309,7 +4311,7 @@ void Effect_TypeA_Init2(f32 posX, f32 posY, f32 posZ, s32 numParts, s32 size) {
     effect->pos.y = posY;
     effect->pos.z = posZ;
     effect->duration = size * 3;
-    effect->unk8 = PLAY_SFX_AT(0xC3, effect->pos, 10, 0x20);
+    effect->unk8 = PLAY_SFX_AT(SFX_C3_unkSnd, effect->pos, 10, 0x20);
 
     for (parts = effect->parts, i = 0; i < numParts; i++) {
         parts[i].pos.x = posX + RANDOM(-size, size);
@@ -4372,10 +4374,10 @@ void Effect_TypeB_Update(Effect* effect, Gfx** pGfxPos) {
             numAlive++;
 
             setPrimColor(255, 255, 255, 200);
-            func_8005747C(parts[i].pos.x, parts[i].pos.y, parts[i].pos.z, parts[i].sizeX * 1.5, parts[i].sizeY * 1.5, parts[i].lifeTime, 0x48);
+            func_8005747C(parts[i].pos.x, parts[i].pos.y, parts[i].pos.z, parts[i].sizeX * 1.5, parts[i].sizeY * 1.5, parts[i].lifeTime, SPRITE_TWINKLE);
 
             setPrimColor(200, 255, 0, 160);
-            func_8005747C(parts[i].pos.x, parts[i].pos.y, parts[i].pos.z, parts[i].sizeX, parts[i].sizeY, parts[i].lifeTime, 0x49);
+            func_8005747C(parts[i].pos.x, parts[i].pos.y, parts[i].pos.z, parts[i].sizeX, parts[i].sizeY, parts[i].lifeTime, SPRITE_TWINKLE2);
 
             if (D_800F687C > 0) {
                 parts[i].vel.y -= 1.02;
@@ -4450,7 +4452,7 @@ void func_80062684(Effect* effect) {
         switch(parts[i].unk_25) {
             case 0:
                 if (((s32)(parts[i].lifeTime * 50.0f) % 2) || D_800F687C == 0) {
-                    printUISprite(effect->pos.x + parts[i].pos.x, effect->pos.y + parts[i].pos.y, effect->pos.z + parts[i].pos.z, 0.0f, 0.5f, 0.0f, 0.0f, 0.0f, 0xF);
+                    printUISprite(effect->pos.x + parts[i].pos.x, effect->pos.y + parts[i].pos.y, effect->pos.z + parts[i].pos.z, 0.0f, 0.5f, 0.0f, 0.0f, 0.0f, SPRITE_HITPOINT);
                 }
                 if (D_800F687C > 0) {
                     parts[i].lifeTime += 1.0f / 30.0f;
@@ -4462,7 +4464,7 @@ void func_80062684(Effect* effect) {
                 break;
             case 1:
                 if ((s32)(parts[i].lifeTime * 50.0f) % 2) {
-                    printUISprite(effect->pos.x + parts[i].pos.x, effect->pos.y + parts[i].pos.y, effect->pos.z + parts[i].pos.z, (parts[i].lifeTime - 1.0f) * 6.28312, 0.5f, 0.0f, 0.0f, 0.0f, 0xF);
+                    printUISprite(effect->pos.x + parts[i].pos.x, effect->pos.y + parts[i].pos.y, effect->pos.z + parts[i].pos.z, (parts[i].lifeTime - 1.0f) * 6.28312, 0.5f, 0.0f, 0.0f, 0.0f, SPRITE_HITPOINT);
                 }
                 if (D_800F687C > 0) {
                     parts[i].lifeTime += 1.0f / 30.0f;
@@ -4473,7 +4475,7 @@ void func_80062684(Effect* effect) {
                 }
                 break;
             case 2:
-                printUISprite(effect->pos.x + parts[i].pos.x, effect->pos.y + parts[i].pos.y, effect->pos.z + parts[i].pos.z, 0.0f, 0.5f, 0.0f, 0.0f, 0.0f, 0xF);
+                printUISprite(effect->pos.x + parts[i].pos.x, effect->pos.y + parts[i].pos.y, effect->pos.z + parts[i].pos.z, 0.0f, 0.5f, 0.0f, 0.0f, 0.0f, SPRITE_HITPOINT);
                 parts[i].lifeTime = 0.0f;
                 break;
             case 3:
@@ -4614,20 +4616,20 @@ Effect* Effect_HealthBar_Init(s32 posX, s32 posY, s32* arg2, s32* arg3, u32 arg4
 void func_80062E18(Effect* effect) {
     Effect_HealthBar_Data* data = (Effect_HealthBar_Data*)effect->data;
 
-    SetTextGradient(191, 10, 0, 255, 200, 200, 0, 255, 191, 10, 0, 255, 200, 200, 0, 255);
+    SetTextGradient_TopBottom(191, 10, 0, 255, 200, 200, 0, 255);
     printNumber(264.0f, 16.0f, 0.0f, 1.0f, (f32) *data->curHPPtr, 2, 0);
 
-    printUISprite(232.0f, 16.0f, 0.0f, 0.0f, 1.0f, 16.0f, 16.0f, 0.0f, 18);
+    printUISprite(232.0f, 16.0f, 0.0f, 0.0f, 1.0f, 16.0f, 16.0f, 0.0f, SPRITE_CROWN);
 
-    SetTextGradient(191, 10, 0, 255, 200, 200, 0, 255, 191, 10, 0, 255, 200, 200, 0, 255);
+    SetTextGradient_TopBottom(191, 10, 0, 255, 200, 200, 0, 255);
     PrintText(254.0f, 20.0f, 0.0f, 1.0f, 8.0f, 8.0f, "Ｘ", 1);
 
-    SetTextGradient(191, 10, 0, 255, 200, 200, 0, 255, 191, 10, 0, 255, 200, 200, 0, 255);
+    SetTextGradient_TopBottom(191, 10, 0, 255, 200, 200, 0, 255);
     printNumber(264.0f, 36.0f, 0.0f, 1.0f, (f32) gTotalCarrots, 2, 0);
 
-    printUISprite(232.0f, 36.0f, 0.0f, 0.0f, 1.0f, 16.0f, 16.0f, 0.0f, 26);
+    printUISprite(232.0f, 36.0f, 0.0f, 0.0f, 1.0f, 16.0f, 16.0f, 0.0f, SPRITE_CARROT);
 
-    SetTextGradient(191, 10, 0, 255, 200, 200, 0, 255, 191, 10, 0, 255, 200, 200, 0, 255);
+    SetTextGradient_TopBottom(191, 10, 0, 255, 200, 200, 0, 255);
     PrintText(254.0f, 40.0f, 0.0f, 1.0f, 8.0f, 8.0f, "Ｘ", 1);
 }
 
@@ -4851,7 +4853,7 @@ void Effect_TypeD_Update(Effect* effect, Gfx** pGfxPos) {
             for (i = 0; i < effect->numParts; i++) {
                 if (parts[i].lifeTime < 1.0f) {
                     setPrimColor(data->color.r, data->color.g, data->color.b, data->color.a - parts[i].lifeTime * (data->color.a - 1));
-                    func_8005747C(parts[i].pos.x, parts[i].pos.y, parts[i].pos.z, data->sizeX / 3, data->sizeY / 3, effect->lifeTime, 0x4A);
+                    func_8005747C(parts[i].pos.x, parts[i].pos.y, parts[i].pos.z, data->sizeX / 3, data->sizeY / 3, effect->lifeTime, SPRITE_PUFF);
 
                     if (D_800F687C > 0) {
                         parts[i].vel.y += 1;
@@ -4870,7 +4872,7 @@ void Effect_TypeD_Update(Effect* effect, Gfx** pGfxPos) {
                 if (parts[i].lifeTime < 1.0f) {
                     setPrimColor(parts[i].sizeX * data->color.r, parts[i].sizeY * data->color.g, (1.0f - parts[i].lifeTime) * data->color.b, (1.0f - parts[i].lifeTime) * data->color.a);
                     func_800612D8(sinf(parts[i].lifeTime * 6.28312 * 6) * 3.0f);
-                    func_8005747C(parts[i].pos.x, parts[i].pos.y, parts[i].pos.z, RANDOM(10, 20), RANDOM(10, 20), parts[i].lifeTime, 0);
+                    func_8005747C(parts[i].pos.x, parts[i].pos.y, parts[i].pos.z, RANDOM(10, 20), RANDOM(10, 20), parts[i].lifeTime, SPRITE_BLANK);
                 }
 
                 if (D_800F687C > 0) {
@@ -4888,14 +4890,14 @@ void Effect_TypeD_Update(Effect* effect, Gfx** pGfxPos) {
         default:
             if (effect->lifeTime != 0.0f && effect->lifeTime > 0.0f) {
                 setPrimColor(255, 255, 255, 64 - effect->lifeTime * 64);
-                printUISprite(0.0f, 0.0f, 0.0f, 0.0f, 1, 320.0f, 240.0f, 0.0f, 0);
+                printUISprite(0.0f, 0.0f, 0.0f, 0.0f, 1, 320.0f, 240.0f, 0.0f, SPRITE_BLANK);
             }
 
             for (i = 0; i < effect->numParts; i++) {
                 if (parts[i].lifeTime < 1.0f) {
                     setPrimColor((1.0f - parts[i].lifeTime) * data->color.r, (1.0f - parts[i].lifeTime) * data->color.g, (1.0f - parts[i].lifeTime) * data->color.b, (1.0f - parts[i].lifeTime) * data->color.a);
                     func_800612D8(sinf(parts[i].lifeTime * 6.28312 * 6) * 3.0f);
-                    func_8005747C(parts[i].pos.x, parts[i].pos.y, parts[i].pos.z, 0.0f, 0.0f, parts[i].lifeTime, 0x4B);
+                    func_8005747C(parts[i].pos.x, parts[i].pos.y, parts[i].pos.z, 0.0f, 0.0f, parts[i].lifeTime, SPRITE_STAR2);
                 }
 
                 if (D_800F687C > 0) {
@@ -4953,6 +4955,7 @@ Effect* Effect_TypeD_Init(f32 posX, f32 posY, f32 posZ, f32 targetX, f32 targetY
     effect->duration = 30.0f;
     effect->lifeTime = 0.0f;
 
+    //null sound
     PLAY_SFX_AT(0xE0, effect->pos, 0, 0x20);
 
     for (parts = effect->parts, i = 0; i < effect->numParts; i++) {
@@ -5318,13 +5321,13 @@ void Effect_TypeK_Update(Effect* effect, Gfx** pGfxPos) {
     func_8006122C(parts->pos.x, parts->pos.y);
 
     setPrimColor(0, 0, 0, 255);
-    printUISprite(-160.0f, -120.0f, 0.0f, 0.0f, 1, 640.0f, 120.0f, 0.0f, 0);
+    printUISprite(-160.0f, -120.0f, 0.0f, 0.0f, 1, 640.0f, 120.0f, 0.0f, SPRITE_BLANK);
     setPrimColor(0, 0, 0, 255);
-    printUISprite(-160.0f, 240.0f, 0.0f, 0.0f, 1, 640.0f, 120.0f, 0.0f, 0);
+    printUISprite(-160.0f, 240.0f, 0.0f, 0.0f, 1, 640.0f, 120.0f, 0.0f, SPRITE_BLANK);
     setPrimColor(0, 0, 0, 255);
-    printUISprite(-160.0f, 0.0f, 0.0f, 0.0f, 1, 160.0f, 240.0f, 0.0f, 0);
+    printUISprite(-160.0f, 0.0f, 0.0f, 0.0f, 1, 160.0f, 240.0f, 0.0f, SPRITE_BLANK);
     setPrimColor(0, 0, 0, 255);
-    printUISprite(320.0f, 0.0f, 0.0f, 0.0f, 1, 160.0f, 240.0f, 0.0f, 0);
+    printUISprite(320.0f, 0.0f, 0.0f, 0.0f, 1, 160.0f, 240.0f, 0.0f, SPRITE_BLANK);
     
     func_80061240();
 
@@ -5370,9 +5373,9 @@ void Effect_TypeL_Update(Effect* effect, Gfx** pGfxPos) {
     func_8006122C(parts->pos.x, parts->pos.y);
 
     setPrimColor(0, 0, 0, 255);
-    printUISprite(-320.0f, 0.0f, 0.0f, 0.0f, 1, 322.0f, 480.0f, 0.0f, 0);
+    printUISprite(-320.0f, 0.0f, 0.0f, 0.0f, 1, 322.0f, 480.0f, 0.0f, SPRITE_BLANK);
     setPrimColor(0, 0, 0, 255);
-    printUISprite(0.0f, 240.0f, 0.0f, 0.0f, 1, 320.0f, 240.0f, 0.0f, 0);
+    printUISprite(0.0f, 240.0f, 0.0f, 0.0f, 1, 320.0f, 240.0f, 0.0f, SPRITE_BLANK);
     
     func_80061240();
 
@@ -5510,7 +5513,7 @@ void Effect_TypeO_Update(Effect* effect, Gfx** pGfxPos) {
     effect->vel.x += 1.0f / effect->vel.y;
     if (effect->vel.x >= 1.0f) {
         setPrimColor(effect->pos.x, effect->pos.y, effect->pos.z, alpha);
-        printUISprite(0.0f, 0.0f, 0.0f, 0.0f, 1, 320.0f, 240.0f, 0.0f, 0);
+        printUISprite(0.0f, 0.0f, 0.0f, 0.0f, 1, 320.0f, 240.0f, 0.0f, SPRITE_BLANK);
 
         effect->lifeTime += 1.0f / effect->duration;
         if (effect->lifeTime >= 1.0f) {
@@ -5543,7 +5546,7 @@ void Effect_TypeP_Update(Effect* effect, Gfx** pGfxPos) {
     effect->vel.x += 1.0f / effect->vel.y;
     if (effect->vel.x >= 1.0f) {
         setPrimColor(effect->pos.x, effect->pos.y, effect->pos.z, alpha);
-        printUISprite(0.0f, 0.0f, 0.0f, 0.0f, 1, 320.0f, 240.0f, 0.0f, 0);
+        printUISprite(0.0f, 0.0f, 0.0f, 0.0f, 1, 320.0f, 240.0f, 0.0f, SPRITE_BLANK);
 
         effect->lifeTime += 1.0f / effect->duration;
         if (effect->lifeTime >= 1.0f) {
@@ -5580,7 +5583,7 @@ void Effect_TypeQ_Update(Effect* effect, Gfx** pGfxPos) {
     if (effect->vel.x >= 1.0f) {
         func_800610B8();
         setPrimColor(effect->pos.x, effect->pos.y, effect->pos.z, alpha);
-        printUISprite(0.0f, 32.0f, 0.0f, 0.0f, 1, 320.0f, 176.0f, 0.0f, 0);
+        printUISprite(0.0f, 32.0f, 0.0f, 0.0f, 1, 320.0f, 176.0f, 0.0f, SPRITE_BLANK);
 
         effect->lifeTime += 1.0f / effect->duration;
         if (effect->lifeTime >= 1.0f) {
@@ -5617,7 +5620,7 @@ void Effect_TypeR_Update(Effect* effect, Gfx** pGfxPos) {
     if (effect->vel.x >= 1.0f) {
         func_800610B8();
         setPrimColor(effect->pos.x, effect->pos.y, effect->pos.z, alpha);
-        printUISprite(0.0f, 32.0f, 0.0f, 0.0f, 1, 320.0f, 176.0f, 0.0f, 0);
+        printUISprite(0.0f, 32.0f, 0.0f, 0.0f, 1, 320.0f, 176.0f, 0.0f, SPRITE_BLANK);
 
         effect->lifeTime += 1.0f / effect->duration;
         if (effect->lifeTime >= 1.0f) {
@@ -5653,10 +5656,14 @@ void Effect_TypeS_Update(Effect* effect, Gfx** pGfxPos) {
     }
     if (effect->vel.x >= 1.0f) {
         setPrimColor(effect->lifeTime * 255.0f, 255, 0, 255); // green to yellow
+        //this if statement actually moves the x, not the y.
+        //this could be used for the other freecam frame but func_80084884 does the y work
+        //so this is kinda irrelevant
+        //also this function/effect never gets called so consider this unused
         if (D_80176B78->unk0 == 1) {
-            printUISprite(32.0f, 200.0f, 0.0f, 0.0f, 1, 24.0f, 16.0f, 1, 204);
+            printUISprite(32.0f, 200.0f, 0.0f, 0.0f, 1, 24.0f, 16.0f, 1, SPRITE_CAMERA); //frame 1
         } else {
-            printUISprite(32.0f, 200.0f, 0.0f, 0.0f, 1, 24.0f, 16.0f, 0.0f, 204);
+            printUISprite(32.0f, 200.0f, 0.0f, 0.0f, 1, 24.0f, 16.0f, 0.0f, SPRITE_CAMERA); //frame 0
         }
         
         if (D_800F687C > 0) {
@@ -5762,7 +5769,7 @@ void Effect_TypeU_Update(Effect* effect, Gfx** pGfxPos) {
             break;
     }
 
-    func_8005747C(effect->pos.x, effect->pos.y, effect->pos.z, effect->sizeX, effect->sizeY, effect->lifeTime, 215);
+    func_8005747C(effect->pos.x, effect->pos.y, effect->pos.z, effect->sizeX, effect->sizeY, effect->lifeTime, SPRITE_HEXAGON);
     effect->pos.x += effect->vel.x;
     effect->pos.y += effect->vel.y;
     effect->pos.z += effect->vel.z;
@@ -5868,7 +5875,7 @@ void Effect_TypeV_Update(Effect* effect, Gfx** pGfxPos) {
     }
     setPrimColor(data->color.r, data->color.g, data->color.b, alpha);
     guAlign(&mtx, 0.0f, dirX, 100000000.0f, dirZ);
-    func_80058BE4(&mtx, effect->pos.x, effect->pos.y, effect->pos.z, effect->sizeX, effect->sizeX, 0.0f, 72);
+    func_80058BE4(&mtx, effect->pos.x, effect->pos.y, effect->pos.z, effect->sizeX, effect->sizeX, 0.0f, SPRITE_TWINKLE);
 
     if (D_800F687C > 0) {
         effect->lifeTime += effect->duration;
@@ -6268,7 +6275,7 @@ void Effect_TypeX_Update(Effect* effect, Gfx** pGfxPos) {
     f2 = ABS2(effect->lifeTime - 0.5f);
     temp = f2 * 255.0f;
     setPrimColor(255.0f * sp34, 255.0f * sp34, 255.0f * sp34, 255 - temp);
-    func_8005747C(data->unk_00.x, data->unk_00.y, data->unk_00.z, q, q, 0.0f, 0x4A);
+    func_8005747C(data->unk_00.x, data->unk_00.y, data->unk_00.z, q, q, 0.0f, SPRITE_PUFF);
 }
 
 void Effect_TypeX_Init(f32 posX, f32 posY, f32 posZ, f32 velX, f32 velY, f32 velZ, f32 duration) {
@@ -6372,7 +6379,7 @@ void Effect_TypeZ_Update(Effect* effect, Gfx** pGfxPos) {
 
     setPrimColor(data->color.r, data->color.g, data->color.b, sp40);
     guRotate(&mtx, data->angle, 1.0f, 1.0f, 1.0f);
-    func_80058BE4(&mtx, data->pos.x, data->pos.y, data->pos.z, data->scale, data->scale, 0.0f, 0);
+    func_80058BE4(&mtx, data->pos.x, data->pos.y, data->pos.z, data->scale, data->scale, 0.0f, SPRITE_BLANK);
 }
 
 void Effect_TypeZ_Init(f32 posX, f32 posY, f32 posZ, f32 arg3, f32 arg4, f32 arg5, f32 arg6, f32 duration, s32 arg8, u8 arg9, u8 argA, u8 argB) {
@@ -6516,7 +6523,7 @@ void Effect_TypeAA_Update(Effect* effect, Gfx** pGfxPos) {
                           effect->pos.x, effect->pos.y, effect->pos.z,
                           data[i].pos.x, data[i].pos.y, data[i].pos.z,
                           data[i+1].pos.x, data[i+1].pos.y, data[i+1].pos.z,
-                          1.0f, 1.0f, 0.0f, 0);
+                          1.0f, 1.0f, 0.0f, SPRITE_BLANK);
         }
     }
 }
@@ -6682,7 +6689,7 @@ void Effect_TypeAC_Update(Effect* effect, Gfx** pGfxPos) {
     }
 
     setPrimColor(data->color.r, data->color.g, data->color.b, data->color.a);
-    func_8005747C(effect->pos.x, effect->pos.y, effect->pos.z, size, size, 0.0f, 219);
+    func_8005747C(effect->pos.x, effect->pos.y, effect->pos.z, size, size, 0.0f, SPRITE_EXPLODE);
 }
 
 void Effect_TypeAC_Init(f32 posX, f32 posY, f32 posZ, f32 arg3, f32 duration) {
@@ -6794,7 +6801,7 @@ void Effect_TypeAE_Update(Effect* effect, Gfx** pGfxPos) {
     f32 sp30 = effect->sizeX * sp34;
 
     setPrimColor(255, 255, sp34 * 255.0f, 255);
-    func_8005747C(effect->pos.x, effect->pos.y, effect->pos.z, sp30, sp30, 0.0f, 0x71);
+    func_8005747C(effect->pos.x, effect->pos.y, effect->pos.z, sp30, sp30, 0.0f, SPRITE_PUFF2);
     if (D_800F687C > 0) {
         effect->pos.x += effect->vel.x;
         effect->pos.y += effect->vel.y * sp34;
@@ -6931,7 +6938,7 @@ void Effect_TypeAG_Init(f32 arg0, f32 arg1, s32 arg2) {
         return;
     }
 
-    effect->spriteID = PLAY_SFX(0x3F, 0, 0x10);
+    effect->spriteID = PLAY_SFX(SFX_3F_unkSnd, 0, 0x10);
     func_800882D0(effect->spriteID, 11);
     func_80088474(effect->spriteID, 0);
     effect->pos.x = 1.0f / arg0;
@@ -7055,7 +7062,7 @@ void Effect_TypeAI_Update(Effect* effect, Gfx** pGfxPos) {
 
     effect->unk5 *= alpha;
     setPrimColor(effect->unk5, effect->unk5, effect->unk5, 255.0f * alpha);
-    printUISprite(0.0f, 0.0f, 0.0f, 0.0f, 1, 320.0f, 240.0f, 0.0f, 0);
+    printUISprite(0.0f, 0.0f, 0.0f, 0.0f, 1, 320.0f, 240.0f, 0.0f, SPRITE_BLANK);
 }
 
 void Effect_TypeAI_Init(u8 arg0, f32 arg1, f32 arg2, s32 arg3) {
@@ -7091,7 +7098,7 @@ void Effect_TypeAJ_Update(Effect* effect, Gfx** pGfxPos) {
 
     effect->unk5 *= effect->lifeTime;
     setPrimColor(effect->unk5, effect->unk5, effect->unk5, 255.0f * alpha);
-    printUISprite(0.0f, 0.0f, 0.0f, 0.0f, 1, 320.0f, 240.0f, 0.0f, 0);
+    printUISprite(0.0f, 0.0f, 0.0f, 0.0f, 1, 320.0f, 240.0f, 0.0f, SPRITE_BLANK);
 }
 
 void Effect_TypeAJ_Init(u8 arg0, f32 arg1, f32 arg2) {
@@ -7108,14 +7115,14 @@ void Effect_TypeAJ_Init(u8 arg0, f32 arg1, f32 arg2) {
     effect->lifeTime = 0.0f;    
     effect->duration = 1.0f / arg2;
     setPrimColor(arg0, arg0, arg0, 255);
-    printUISprite(0.0f, 0.0f, 0.0f, 0.0f, 1, 320.0f, 240.0f, 0.0f, 0);
+    printUISprite(0.0f, 0.0f, 0.0f, 0.0f, 1, 320.0f, 240.0f, 0.0f, SPRITE_BLANK);
 }
 
 s32 func_8007101C(void) {
     s32 i;
 
     if (func_80055EEC(0x800) % 20 == 1) {
-        PLAY_SFX(0x2A, 0, 0x10);
+        PLAY_SFX(SFX_2A_unkSnd, 0, 0x10);
         if (D_800FE708 == 0) {
             D_800FE708 = 5;
         } else {
@@ -7123,7 +7130,7 @@ s32 func_8007101C(void) {
         }
     }
     if (func_80055EEC(0x400) % 20 == 1) {
-        PLAY_SFX(0x2A, 0, 0x10);
+        PLAY_SFX(SFX_2A_unkSnd, 0, 0x10);
         if (D_800FE708 == 5) {
             D_800FE708 = 0;
         } else {
@@ -7137,7 +7144,7 @@ s32 func_8007101C(void) {
         } else {
             SetTextGradientFromPalette(3);
         }
-        func_80059F28(188.0f, 96 + i * 20, 0.0f, 0.0f, 1.0f, 104.0f, 16.0f, 0.0f, 189 + i);
+        func_80059F28(188.0f, 96 + i * 20, 0.0f, 0.0f, 1.0f, 104.0f, 16.0f, 0.0f, SPRITE_RANKING_TEXT_JL + i);
     }
     return D_800FE708;
 }
@@ -7226,7 +7233,7 @@ void Effect_GameResults_Update(Effect* effect, Gfx** pGfxPos) {
     s32 i;
 
     setPrimColor(0, 0, 0, 255);
-    printUISprite(0.0f, 0.0f, 0.0f, 0.0f, 1, 320.0f, 240.0f, 0.0f, 0);
+    printUISprite(0.0f, 0.0f, 0.0f, 0.0f, 1, 320.0f, 240.0f, 0.0f, SPRITE_BLANK);
     if (effect->spriteID == 0) {
         sp8C = D_800FE70C;
 
@@ -7275,8 +7282,8 @@ void Effect_GameResults_Update(Effect* effect, Gfx** pGfxPos) {
         FreeSprite(SPRITE_RANKING_TEXT_DC);
         FreeSprite(SPRITE_RANKING_TEXT_KL);
         FreeSprite(SPRITE_RANKING_TEXT_GC);
-        FreeSprite(224);
-        FreeSprite(225);
+        FreeSprite(SPRITE_CROWN_SMALL);
+        FreeSprite(SPRITE_CARROT_SMALL);
         Effect_Free(effect);
     }
 }
@@ -7298,10 +7305,10 @@ void Effect_GameResults_Init() {
     LoadSprite(SPRITE_RANKING_TEXT_DC);
     LoadSprite(SPRITE_RANKING_TEXT_KL);
     LoadSprite(SPRITE_RANKING_TEXT_GC);
-    LoadSprite(224);
-    LoadSprite(225);
+    LoadSprite(SPRITE_CROWN_SMALL);
+    LoadSprite(SPRITE_CARROT_SMALL);
     setPrimColor(0, 0, 0, 255);
-    printUISprite(0.0f, 0.0f, 0.0f, 0.0f, 1, 320.0f, 240.0f, 0.0f, 0);
+    printUISprite(0.0f, 0.0f, 0.0f, 0.0f, 1, 320.0f, 240.0f, 0.0f, SPRITE_BLANK);
 }
 
 #ifdef NON_MATCHING
@@ -7321,6 +7328,7 @@ void func_80071A48(u32 arg0, s8* str) {
 void func_80071A48(u32 arg0, s8* str);
 #endif
 
+//ending?
 void Effect_TypeAL_Update(Effect* effect, Gfx** pGfxPos) {
     Effect_TypeAL_Data* data = (Effect_TypeAL_Data*)effect->data;
     f32 sp68 = 100.0f;
@@ -7331,7 +7339,7 @@ void Effect_TypeAL_Update(Effect* effect, Gfx** pGfxPos) {
     s32 i, j;
 
     setPrimColor(0, 0, 0, 255);
-    func_80059F28(0.0f, 0.0f, 0.0f, 0.0f, 1, 320.0f, 240.0f, 0.0f, 0);
+    func_80059F28(0.0f, 0.0f, 0.0f, 0.0f, 1, 320.0f, 240.0f, 0.0f, SPRITE_BLANK);
     func_8007B480(0.0f, 10000.0f, 0.0f, 0.0f, 10000.0f, 600.0f);
 
     switch (effect->unk5) {
@@ -7349,21 +7357,28 @@ void Effect_TypeAL_Update(Effect* effect, Gfx** pGfxPos) {
             sp60 = sinf(effect->vel.z * PI_HALF);
             s2 = 0;
             effect->vel.z += effect->pos.y;
-            a0 = 0;
-            a1 = 0;
+            a0 = 0; //how many total crowns you've collected
+            a1 = 0; //the actual stage limits
 
             if (effect->vel.z >= 1.0f) {
+                //add all of your totals
                 for (i = 0; i < 6; i++) {
                     a0 += gGameState.stageCrownRecord[i];
                 }
+                //why does this go through 9 if there's only 6 crown stages???
                 for (i = 0; i < 9; i++) {
                     a1 += sStageCrownTotals[i];
                 }
-                if (a0 == a1 && gSelectedCharacters[0] <= 3) {
-                    PLAY_SFX(0x19, 0, 0x10);
+                //if collected all AND player is Davy, Jack, Fred or Linda
+                if (a0 == a1 && gSelectedCharacters[0] <= CHARA_LINDA) {
+                    //unlock white (or at least play the animation as if you did)
+                    PLAY_SFX(SFX_ChameleonRespawn, 0, 0x10);
+                    //load twinkle
                     Effect_TypeW_Init(260.0f, 9920.0f, 0.0f, 32.0f, 20, 16);
-                    Effect_TypeAH_Init(&effect->numParts, 260.0f, 9850.0f, 0.0f, -22.0f, &D_800F0D90[4], 5, 1, 1);
+                    //load white model
+                    Effect_TypeAH_Init(&effect->numParts, 260.0f, 9850.0f, 0.0f, -22.0f, &D_800F0D90[4], CHARA_WHITE, 1, 1);
                 }
+                //manually print out record
                 for (i = 0; i < 6; i++) {
                     s2 += RecordTime_ParseToSecs(&D_80200B85[i]);
                 }
@@ -7376,15 +7391,15 @@ void Effect_TypeAL_Update(Effect* effect, Gfx** pGfxPos) {
         case 2:
             SetTextGradientFromPalette(5);
             PrintTextWrapper(64.0f, 48.0f, 0.0f, .6f, "ＴＯＴＡＬ　ＴＩＭＥ", 1);
-            if (gSelectedCharacters[0] == 5 && gNoHit && gOneRun) {
+            if (gSelectedCharacters[0] == CHARA_WHITE && gNoHit && gOneRun) {
                 sp68 = 100.0f - sinf(effect->lifeTime * PI_HALF) * 22.0f;
             }
             effect->lifeTime += effect->vel.x;
             if (effect->lifeTime >= 1.0f) {
                 effect->lifeTime = 1.0f;
-                if (gSelectedCharacters[0] == 5 && gNoHit && gOneRun) {
+                if (gSelectedCharacters[0] == CHARA_WHITE && gNoHit && gOneRun) {
                     if (effect->spriteID == 1) {
-                        PLAY_SFX(0x38, 0, 0x10);
+                        PLAY_SFX(SFX_38_unkSnd, 0, 0x10);
                         effect->spriteID = 0;
                     }
                     SetTextGradientFromPalette(5);
@@ -7399,10 +7414,10 @@ void Effect_TypeAL_Update(Effect* effect, Gfx** pGfxPos) {
     }
 
     SetTextGradient(0, 162, 227, 255.0f * sp64, 18, 232, 130, 255.0f * sp64, 255, 255, 0, 255.0f * sp64, 255, 110, 194, 255.0f * sp64);
-    printUISprite(96.0f, sp68, 0.0f, 0.0f, 1, 128.0f, 32.0f, 0.0f, 218);
+    printUISprite(96.0f, sp68, 0.0f, 0.0f, 1, 128.0f, 32.0f, 0.0f, SPRITE_THE_END);
     for (j = 0; j < 4; j++) {
-        SetTextGradient(204, 231, 241, 255.0f * sp60, 0, 126, 178, 255.0f * sp60, 204, 231, 241, 255.0f * sp60, 0, 126, 178, 255.0f * sp60);
-        printUISprite(32 + j * 64, 192.0f, 0.0f, 0.0f, 1, 64.0f, 16.0f, j, 217);
+        SetTextGradient_TopBottom(204, 231, 241, 255.0f * sp60, 0, 126, 178, 255.0f * sp60);
+        printUISprite(32 + j * 64, 192.0f, 0.0f, 0.0f, 1, 64.0f, 16.0f, j, SPRITE_JSS_COPYRIGHT);
     }
 }
 
@@ -7418,8 +7433,8 @@ void Effect_TypeAL_Init(void) {
     data = (Effect_TypeAL_Data*)effect->data;
     data->unk_10 = 0;
 
-    LoadSprite(217);
-    LoadSprite(218);    
+    LoadSprite(SPRITE_JSS_COPYRIGHT);
+    LoadSprite(SPRITE_THE_END);    
 
     effect->spriteID = 1;
     effect->unk5 = 0;
@@ -7477,7 +7492,7 @@ void Effect_TypeAM_Update(Effect* effect, Gfx** pGfxPos) {
             }
 
             setPrimColor(255, 255, 255, effect->numParts / 21.0f * 255.0f);
-            printUISprite(0.0f, 0.0f, 0.0f, 0.0f, 1, 320.0f, 240.0f, 0.0f, 0);
+            printUISprite(0.0f, 0.0f, 0.0f, 0.0f, 1, 320.0f, 240.0f, 0.0f, SPRITE_BLANK);
             effect->spriteID++;
 
             if (effect->numParts == 20) {
@@ -7487,7 +7502,7 @@ void Effect_TypeAM_Update(Effect* effect, Gfx** pGfxPos) {
             break;
         case 2:
             setPrimColor(255, 255, 255, 255);
-            printUISprite(0.0f, 0.0f, 0.0f, 0.0f, 1, 320.0f, 240.0f, 0.0f, 0);
+            printUISprite(0.0f, 0.0f, 0.0f, 0.0f, 1, 320.0f, 240.0f, 0.0f, SPRITE_BLANK);
             Effect_TypeAI_Init(255, 1.0f, 32.0f, 1);
             gIsGamePaused = PAUSEMODE_FROZEN;
             effect->spriteID++;
@@ -7552,7 +7567,7 @@ void func_80072B1C(Effect* effect, Gfx** pGfxPos) {
     for (i = 0; i < 5; i++) {
         for (j = 0; j < 8; j++) {
             func_800612F0(i);
-            func_80059F28(j * 40, i * 48, 0.0f, 0.0f, 1, 40.0f, 48.0f, j, 212);
+            func_80059F28(j * 40, i * 48, 0.0f, 0.0f, 1, 40.0f, 48.0f, j, SPRITE_RANKING_SCREEN);
         }
     }
 
@@ -7708,15 +7723,15 @@ void Effect_ControllerRumble_Update(Effect* effect, Gfx** pGfxPos) {
     }
 
     setPrimColor(128, 0, 0, 255);
-    func_80059F28(0.0f, 0.0f, 0.0f, 0.0f, 1, 320.0f, 240.0f, 0.0f, 0);
+    func_80059F28(0.0f, 0.0f, 0.0f, 0.0f, 1, 320.0f, 240.0f, 0.0f, SPRITE_BLANK);
 
     for (i = 0; i < 8; i++) {
         SetTextGradientFromPaletteAlpha(0x15, s2 / temp);
         func_800612F0(D_800FE750[i].unk_04);
-        func_80059F28(32 + i * 32, 64.0f, 0.0f, 0.0f, 1, 32.0f, temp, D_800FE750[i].unk_00, 0x5E);
+        func_80059F28(32 + i * 32, 64.0f, 0.0f, 0.0f, 1, 32.0f, temp, D_800FE750[i].unk_00, SPRITE_TEXTBIGGER);
         SetTextGradientFromPaletteAlpha(0x15, s2 / temp);
         func_800612F0(D_800FE750[i].unk_04 + 1);
-        func_80059F28(32 + i * 32, 80.0f, 0.0f, 0.0f, 1, 32.0f, temp, D_800FE750[i].unk_00, 0x5E);
+        func_80059F28(32 + i * 32, 80.0f, 0.0f, 0.0f, 1, 32.0f, temp, D_800FE750[i].unk_00, SPRITE_TEXTBIGGER);
     }
     
     s2 = effect->unk5;
@@ -7750,19 +7765,20 @@ void Effect_ControllerRumble_Init(void) {
     effect->unk5 = 0;
 }
 
+
 void func_800735F4(f32 arg0, f32 arg1, f32 arg2, f32 arg3) {
-    SetTextGradient(0x6B, 0xC7, 0xE3, arg3, 0x6B, 0xC7, 0xE3, arg3, 0x6B, 0xC7, 0xE3, arg2, 0x6B, 0xC7, 0xE3, arg2);
-    func_80059F28(64.0f, 100.0f, 0.0f, 0.0f, 1.0f, 32.0f, 40.0f, 0.0f, 0xCD);
-    SetTextGradient(0x6B, 0xC7, 0xE3, arg2, 0x6B, 0xC7, 0xE3, arg2, 0x6B, 0xC7, 0xE3, arg1, 0x6B, 0xC7, 0xE3, arg1);
-    func_80059F28(96.0f, 100.0f, 0.0f, 0.0f, 1.0f, 32.0f, 40.0f, 1.0f, 0xCD);
-    SetTextGradient(0x6B, 0xC7, 0xE3, arg1, 0x6B, 0xC7, 0xE3, arg1, 0x6B, 0xC7, 0xE3, arg0, 0x6B, 0xC7, 0xE3, arg0);
-    func_80059F28(128.0f, 100.0f, 0.0f, 0.0f, 1.0f, 32.0f, 40.0f, 2.0f, 0xCD);
-    SetTextGradient(0x6B, 0xC7, 0xE3, arg0, 0x6B, 0xC7, 0xE3, arg0, 0x6B, 0xC7, 0xE3, arg1, 0x6B, 0xC7, 0xE3, arg1);
-    func_80059F28(160.0f, 100.0f, 0.0f, 0.0f, 1.0f, 32.0f, 40.0f, 3.0f, 0xCD);
-    SetTextGradient(0x6B, 0xC7, 0xE3, arg1, 0x6B, 0xC7, 0xE3, arg1, 0x6B, 0xC7, 0xE3, arg2, 0x6B, 0xC7, 0xE3, arg2);
-    func_80059F28(192.0f, 100.0f, 0.0f, 0.0f, 1.0f, 32.0f, 40.0f, 4.0f, 0xCD);
-    SetTextGradient(0x6B, 0xC7, 0xE3, arg2, 0x6B, 0xC7, 0xE3, arg2, 0x6B, 0xC7, 0xE3, arg3, 0x6B, 0xC7, 0xE3, arg3);
-    func_80059F28(224.0f, 100.0f, 0.0f, 0.0f, 1.0f, 32.0f, 40.0f, 5.0f, 0xCD);
+    SetTextGradient_LeftRight(107, 199, 227, arg3, 107, 199, 227, arg2);
+    func_80059F28(64.0f, 100.0f, 0.0f, 0.0f, 1.0f, 32.0f, 40.0f, 0.0f, SPRITE_SUNSOFTLOGO);
+    SetTextGradient_LeftRight(107, 199, 227, arg2, 107, 199, 227, arg1);
+    func_80059F28(96.0f, 100.0f, 0.0f, 0.0f, 1.0f, 32.0f, 40.0f, 1.0f, SPRITE_SUNSOFTLOGO);
+    SetTextGradient_LeftRight(107, 199, 227, arg1, 107, 199, 227, arg0);
+    func_80059F28(128.0f, 100.0f, 0.0f, 0.0f, 1.0f, 32.0f, 40.0f, 2.0f, SPRITE_SUNSOFTLOGO);
+    SetTextGradient_LeftRight(107, 199, 227, arg0, 107, 199, 227, arg1);
+    func_80059F28(160.0f, 100.0f, 0.0f, 0.0f, 1.0f, 32.0f, 40.0f, 3.0f, SPRITE_SUNSOFTLOGO);
+    SetTextGradient_LeftRight(107, 199, 227, arg1, 107, 199, 227, arg2);
+    func_80059F28(192.0f, 100.0f, 0.0f, 0.0f, 1.0f, 32.0f, 40.0f, 4.0f, SPRITE_SUNSOFTLOGO);
+    SetTextGradient_LeftRight(107, 199, 227, arg2, 107, 199, 227, arg3);
+    func_80059F28(224.0f, 100.0f, 0.0f, 0.0f, 1.0f, 32.0f, 40.0f, 5.0f, SPRITE_SUNSOFTLOGO);
 }
 
 void Effect_TypeAP_Update(Effect* effect, Gfx** pGfxPos) {
@@ -7771,7 +7787,7 @@ void Effect_TypeAP_Update(Effect* effect, Gfx** pGfxPos) {
 
     effect->lifeTime += 1.0f;
     setPrimColor(255, 255, 255, 255);
-    func_80059F28(0.0f, 0.0f, 0.0f, 0.0f, 1, 320.0f, 240.0f, 0.0f, 0);
+    func_80059F28(0.0f, 0.0f, 0.0f, 0.0f, 1, 320.0f, 240.0f, 0.0f, SPRITE_BLANK);
 
     switch (effect->spriteID) {
         case 0:
@@ -7903,18 +7919,18 @@ void Effect_TypeAQ_Update(Effect* effect, Gfx** pGfxPos) {
     }
 }
 
-void Effect_TypeAQ_Init(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, s32 arg6, EffectTypeAQArg7* arg7, s32 arg8, s32* arg9) {
+void Effect_TypeAQ_Init(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, s32 arg6, char* arg7, s32 arg8, s32* arg9) {
     Effect* effect;
     Effect_TypeAQ_Data* data;
     EffectPart* parts;
     s32 sp60;
     s32 sp5C;
     s32 i = 0;
-    EffectTypeAQArg7* ptr = arg7;
+    unsigned char* ptr = arg7;
     
 
-    while (ptr->unk_0 != 0) {
-        ptr++;
+    while (*ptr != 0) {
+        ptr+=2;
         i++;
     }
 
@@ -7931,7 +7947,7 @@ void Effect_TypeAQ_Init(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 ar
     *arg9 = 1;    
     parts = effect->parts;
 
-    for (i = 0, ptr = arg7; i < effect->numParts; ptr++, i++) {
+    for (i = 0, ptr = arg7; i < effect->numParts; ptr+=2, i++) {
         if (func_80080318(arg8, ptr, &sp60, &sp5C) == 0) {
             parts[i].unk_24 = sp5C;
             parts[i].unk_25 = sp60;
@@ -8026,15 +8042,15 @@ void Effect_TypeAR_Update(Effect* effect, Gfx** pGfxPos) {
     PrintTextWrapper(posX, effect->pos.y, 0.0f, 1.0f, data->unk_20, effect->spriteID);
 }
 
-void Effect_TypeAR_Init(f32 arg0, f32 arg1, s32 arg2, f32 arg3, f32 arg4, f32 arg5, s32 arg6, EffectTypeAQArg7* arg7, s32 arg8, s32* arg9) {
+void Effect_TypeAR_Init(f32 arg0, f32 arg1, s32 arg2, f32 arg3, f32 arg4, f32 arg5, s32 arg6, char* arg7, s32 arg8, s32* arg9) {
     Effect* effect;
     Effect_TypeAQ_Data* data;
     s32 i = 0;
     f32 f0;
-    EffectTypeAQArg7* ptr = arg7;
-
-    while (ptr->unk_0 != 0) {
-        ptr++;
+    unsigned char* ptr = arg7;
+    
+    while (*ptr != 0) {
+        ptr+=2;
         i++;
     }
 
@@ -8301,7 +8317,7 @@ void Effect_TypeAU_Update(Effect* effect, Gfx** pGfxPos) {
             break;
     }
 
-    SetTextGradient(255, 255, 255, alpha * 255, 255, 255, 255, alpha * 255, 255, 255, 255, alpha * 255, 255, 255, 255, alpha * 255);
+    SetTextGradient_All(255, 255, 255, alpha * 255);
     printUISprite(effect->pos.x, effect->pos.y, 0, 0, 1, effect->vel.x, effect->vel.y, data->unk_08, data->unk_0C);
 }
 
@@ -8333,7 +8349,7 @@ void Effect_TypeAV_Update(Effect* effect, Gfx** pGfxPos) {
     Effect_TypeAV_Data* data = (Effect_TypeAV_Data*)effect->data;
 
     setPrimColor(data->color.r, data->color.g, data->color.b, (1.0f - effect->lifeTime) * 128.0f);
-    func_8005747C(effect->pos.x, effect->pos.y, effect->pos.z, data->unk_0C * 200.0f, data->unk_0C * 300.0f, 0.0f, 0x4A);
+    func_8005747C(effect->pos.x, effect->pos.y, effect->pos.z, data->unk_0C * 200.0f, data->unk_0C * 300.0f, 0.0f, SPRITE_PUFF);
 
     if (D_800F687C > 0) {
         effect->lifeTime += effect->duration;
@@ -8510,7 +8526,7 @@ void SetTextGradientFromPalette(s32 palette) {
 
 void DrawTranslucentRectangle(f32 posX, f32 posY, f32 width, f32 height, u8 opacity) {
     setPrimColor(0, 0, 0, opacity);
-    printUISprite(posX, posY, 0.0f, 0.0f, 1.0f, width, height, 0.0f, 0);
+    printUISprite(posX, posY, 0.0f, 0.0f, 1.0f, width, height, 0.0f, SPRITE_BLANK);
 }
 
 void func_8007691C(Effect_TypeAY_Data* arg0, f32 arg1, s32 arg2) {
@@ -8540,10 +8556,8 @@ void func_8007691C(Effect_TypeAY_Data* arg0, f32 arg1, s32 arg2) {
             if (s0 >= 24 && s0 < 32) {
                 arg0->unk_21 = 80 + (u8)(175.0f * (1.0f - (s0 % 8) / 8.0f));
             }
-            SetTextGradient(255, arg0->unk_20, 0, arg1 * 255,
-                            255, arg0->unk_21, 0, arg1 * 255,
-                            255, arg0->unk_20, 0, arg1 * 255,
-                            255, arg0->unk_21, 0, arg1 * 255);
+            SetTextGradient_TopBottom(255, arg0->unk_20, 0, arg1 * 255,
+                                      255, arg0->unk_21, 0, arg1 * 255);
         } else {
             SetTextGradientFromPaletteAlpha(3, arg1);
         }
@@ -8702,10 +8716,10 @@ void Effect_TypeAZ_Update(Effect* effect, Gfx** pGfxPos) {
         } else {
             SetTextGradientFromPalette(data->unk_DC);
             func_800612F0(data->unk_00[i].unk_04);
-            printUISprite(data->unk_00[i].unk_08, effect->pos.y,         0.0f, 0.0f, 1.0f, effect->pos.z * 32.0f, 16, data->unk_00[i].unk_00, 0x5E);
+            printUISprite(data->unk_00[i].unk_08, effect->pos.y,         0.0f, 0.0f, 1.0f, effect->pos.z * 32.0f, 16, data->unk_00[i].unk_00, SPRITE_TEXTBIGGER);
             SetTextGradientFromPalette(data->unk_E0);
             func_800612F0(data->unk_00[i].unk_04 + 1);
-            printUISprite(data->unk_00[i].unk_08, effect->pos.y + 16.0f, 0.0f, 0.0f, 1.0f, effect->pos.z * 32.0f, 16, data->unk_00[i].unk_00, 0x5E);
+            printUISprite(data->unk_00[i].unk_08, effect->pos.y + 16.0f, 0.0f, 0.0f, 1.0f, effect->pos.z * 32.0f, 16, data->unk_00[i].unk_00, SPRITE_TEXTBIGGER);
         }
     }
 }
@@ -8765,7 +8779,7 @@ void Effect_StageRecordTime_Update(Effect* effect, Gfx** pGfxPos) {
             SetTextGradientFromPalette(7);
         }
         func_800612F0(1);
-        func_80059F28(effect->pos.x + data->unk_00[i].unk_10 * effect->lifeTime, effect->pos.y + 8.0f, 0.0f, 0.0f, 1, 11.2f, 16.8f, data->unk_00[i].unk_00, 1);
+        func_80059F28(effect->pos.x + data->unk_00[i].unk_10 * effect->lifeTime, effect->pos.y + 8.0f, 0.0f, 0.0f, 1, 11.2f, 16.8f, data->unk_00[i].unk_00, SPRITE_TEXTBIG);
     }
     effect->lifeTime += effect->duration;
     if (effect->lifeTime >= 1.0f) {
@@ -8813,7 +8827,7 @@ void Effect_TypeBA_Update(Effect* effect, Gfx** pGfxPos) {
     sp34 = sinf(data->color.a * 0.01745329251994) * 100.0f;
     setPrimColor(data->color.r, data->color.g, data->color.b, (1.0f - effect->lifeTime) * 255.0f);
     guAlign(&mtx, 0.0f, sp34, 100.0f - sp34, sp34);
-    func_80058BE4(&mtx, effect->pos.x, effect->pos.y, effect->pos.z, data->size, data->size, 0.0f, 0x4A);
+    func_80058BE4(&mtx, effect->pos.x, effect->pos.y, effect->pos.z, data->size, data->size, 0.0f, SPRITE_PUFF);
 
     if (D_800F687C > 0) {
         effect->pos.x += effect->vel.x;
@@ -8902,7 +8916,7 @@ void Effect_TypeBB_Update(Effect* effect, Gfx** pGfxPos) {
     guMtxXFML(&mtx2, data->v2.x, data->v2.y, data->v2.z, &x2, &y2, &z2);
     guMtxXFML(&mtx2, data->v3.x, data->v3.y, data->v3.z, &x3, &y3, &z3);
     setPrimColor(data->color.r, data->color.g, data->color.b, 100);
-    func_80058748(x1, y1, z1, x1, y1, z1, x2, y2, z2, x3, y3, z3, 0.0f, 0.0f, 0.0f, 0);
+    func_80058748(x1, y1, z1, x1, y1, z1, x2, y2, z2, x3, y3, z3, 0.0f, 0.0f, 0.0f, SPRITE_BLANK);
 }
 
 #ifdef NON_MATCHING
@@ -8977,7 +8991,7 @@ void Effect_TypeBC_Update(Effect* effect, Gfx** pGfxPos) {
 
     setPrimColor(220, 255, 255, (1.0f - effect->lifeTime) * 255.0f);
     guAlign(&mtx, 0.0f, 0.0f, 100.0f, 0.0f);
-    func_80058BE4(&mtx, effect->pos.x, effect->pos.y, effect->pos.z, effect->vel.y, effect->vel.y, 0.0f, 0x6F);
+    func_80058BE4(&mtx, effect->pos.x, effect->pos.y, effect->pos.z, effect->vel.y, effect->vel.y, 0.0f, SPRITE_SMOKE_CIRCLE);
     if (D_800F687C > 0) {
         effect->vel.y += effect->vel.x;
         effect->lifeTime += effect->duration;
@@ -9011,7 +9025,7 @@ void Effect_TypeBD_Update(Effect* effect, Gfx** pGfxPos) {
     sp34 = effect->sizeX * (1.0f - effect->lifeTime);
     setPrimColor(255, 255, 255, 212.0f - effect->lifeTime * 212.0f);
     guAlign(&mtx, 0.0f, 0.0f, 100.0f, 0.0f);
-    func_80058BE4(&mtx, effect->pos.x, effect->pos.y, effect->pos.z, sp34, sp34 * 0.6f, 0.0f, 0x4A);
+    func_80058BE4(&mtx, effect->pos.x, effect->pos.y, effect->pos.z, sp34, sp34 * 0.6f, 0.0f, SPRITE_PUFF);
     if (D_800F687C > 0) {
         effect->lifeTime += effect->duration;
         effect->pos.x += effect->vel.x;
@@ -9044,7 +9058,7 @@ void Effect_TypeBD_Init(f32 posX, f32 posY, f32 posZ, f32 duration, f32 arg4, f3
 void Effect_TypeBE_Update(Effect* effect, Gfx** pGfxPos) {
 
     setPrimColor(220, 255, 255, 144);
-    func_8005747C(effect->pos.x, effect->pos.y, effect->pos.z, 16.0f, 16.0f, 0.0f, 0x4A);
+    func_8005747C(effect->pos.x, effect->pos.y, effect->pos.z, 16.0f, 16.0f, 0.0f, SPRITE_PUFF);
     if (D_800F687C > 0) {
         effect->pos.x += effect->vel.x;
         effect->pos.y += effect->vel.y;
@@ -9083,7 +9097,7 @@ void Effect_TypeBF_Update(Effect* effect, Gfx** pGfxPos) {
 
     size = effect->spriteID + effect->lifeTime * effect->spriteID;
     setPrimColor(data->color.r, data->color.g, data->color.b, 255.0f - effect->lifeTime * 255.0f);
-    func_8005747C(effect->pos.x, effect->pos.y, effect->pos.z, size, size, 0.0f, 0x4A);
+    func_8005747C(effect->pos.x, effect->pos.y, effect->pos.z, size, size, 0.0f, SPRITE_PUFF);
     if (D_800F687C > 0) {
         effect->lifeTime += effect->duration;
         effect->pos.x += effect->vel.x * (1.0f - effect->lifeTime);
@@ -9126,7 +9140,7 @@ void Effect_TypeBG_Update(Effect* effect, Gfx** pGfxPos) {
     f32 sp30 = 1.0f - effect->lifeTime;
 
     setPrimColor(255, 255, 255, 128.0f - (effect->lifeTime - 0.5f) * 255.0f);
-    func_8005747C(effect->pos.x, effect->pos.y, effect->pos.z, size, size * 0.7, 0.0f, 0x4A);
+    func_8005747C(effect->pos.x, effect->pos.y, effect->pos.z, size, size * 0.7, 0.0f, SPRITE_PUFF);
     if (D_800F687C > 0) {
         effect->pos.x += effect->vel.x * sp30;
         effect->pos.y = effect->sizeY + effect->vel.y * effect->lifeTime;
@@ -9164,7 +9178,7 @@ void Effect_TypeBH_Update(Effect* effect, Gfx** pGfxPos) {
 
     setPrimColor(effect->vel.x, effect->vel.y, effect->vel.z, effect->sizeY - f2 * (effect->sizeY * 2));
     guAlign(&mtx, 0.0f, 0.0f, 100.0f, 0.0f);
-    func_80058BE4(&mtx, effect->pos.x, effect->pos.y, effect->pos.z, effect->sizeX, effect->sizeX, 0.0f, 0x4A);
+    func_80058BE4(&mtx, effect->pos.x, effect->pos.y, effect->pos.z, effect->sizeX, effect->sizeX, 0.0f, SPRITE_PUFF);
     if (D_800F687C > 0) {
         effect->lifeTime += effect->duration;
         if (effect->lifeTime > 1.0f) {
@@ -9205,9 +9219,9 @@ void Effect_TypeBI_Update(Effect* effect, Gfx** pGfxPos) {
     if (gCurrentZone >= 4) {
         setPrimColor(data->unk_00->r, data->unk_00->g, data->unk_00->b, data->unk_00->a - ABS2((effect->lifeTime - 0.5f) * data->unk_00->a * 2));
         guAlign(&mtx, 0.0f, 0.0f, 100.0f, 0.0f);
-        func_80058BE4(&mtx, effect->pos.x, effect->pos.y, effect->pos.z, data->size, data->size, 0.0f, 0x4A);
+        func_80058BE4(&mtx, effect->pos.x, effect->pos.y, effect->pos.z, data->size, data->size, 0.0f, SPRITE_PUFF);
     } else {
-        func_80059F28(effect->pos.x, effect->pos.y, effect->pos.z, 0.0f, 1.0f, data->size, data->size, effect->lifeTime, 0x4A);
+        func_80059F28(effect->pos.x, effect->pos.y, effect->pos.z, 0.0f, 1.0f, data->size, data->size, effect->lifeTime, SPRITE_PUFF);
     }
     if (D_800F687C > 0) {
         effect->lifeTime += effect->duration;
@@ -9248,7 +9262,7 @@ void Effect_TypeBJ_Update(Effect* effect, Gfx** pGfxPos) {
                  255.0f * (1.0f - effect->lifeTime),
                  255.0f * (1.0f - effect->lifeTime),
                  255.0f - effect->lifeTime * 128.0f);
-    func_8005747C(effect->pos.x, effect->pos.y, effect->pos.z, size, size, 0.0f, 0x4A);
+    func_8005747C(effect->pos.x, effect->pos.y, effect->pos.z, size, size, 0.0f, SPRITE_PUFF);
     if (D_800F687C > 0) {
         effect->lifeTime += effect->duration;
         if (effect->lifeTime > 1.0f) {
@@ -9312,11 +9326,11 @@ void func_8007AC2C(s32* arg0) {
 
 void func_8007AF30(void) {
     func_8007ADDC(0);
-    LoadSprite(207);
+    LoadSprite(SPRITE_ANIM1);
 }
 
 void func_8007AF58(void) {
-    FreeSprite(207);
+    FreeSprite(SPRITE_ANIM1);
     func_8007ADDC(1);
 }
 
@@ -9525,10 +9539,10 @@ Gfx* func_80084884(Gfx* arg0) {
     if (((u32)D_80168DA0 == 1) && (D_800FEDB4 == 1) && (isInOverworld == FALSE) && (gGameModeCurrent == 0)) {
         if ((u32)D_80176B78->unk0 == 1) {
             func_800612F0(1);
-            printUISprite(24.0f, 208.0f, 0.0f, 0.0f, 1.0f, 24.0f, 16.0f, 0.0f, 0xCC);
+            printUISprite(24.0f, 208.0f, 0.0f, 0.0f, 1.0f, 24.0f, 16.0f, 0.0f, SPRITE_CAMERA);
         } else {
             func_800612F0(0);
-            printUISprite(24.0f, 208.0f, 0.0f, 0.0f, 1.0f, 24.0f, 16.0f, 0.0f, 0xCC);
+            printUISprite(24.0f, 208.0f, 0.0f, 0.0f, 1.0f, 24.0f, 16.0f, 0.0f, SPRITE_CAMERA);
         }
     }
     func_80069734();

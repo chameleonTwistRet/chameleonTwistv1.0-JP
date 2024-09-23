@@ -255,7 +255,7 @@ f32 Battle_CalcTableColumnWidths(u8 numColumns, f32* arg1, f32 xMin, f32 xMax) {
 
 void Battle_PlayEnvSounds(void) {
     if (gCurrentZone == 6 && (Battle_Time % 60) == 0) {
-        PLAY_SFX(137, 0, 0x10);
+        PLAY_SFX(SFX_89_unkSnd, 0, 0x10);
     }
 }
 
@@ -298,10 +298,8 @@ void Battle_DrawPortraits(void) {
 void Battle_PrintPlayerTimer(s32 playerID) {
     if (Battle_PlayerRank[playerID] == 0) {
         s8 g = Battle_Time * 16;
-        SetTextGradient(255, g, 32, 255,
-                        255, 0,  0, 255,
-                        255, g, 32, 255,
-                        255, 0,  0, 255);
+        SetTextGradient_TopBottom(255, g, 32, 255,
+                                  255, 0,  0, 255);
     } else {
         SetTextGradientFromPalette(5);
     }
@@ -356,10 +354,7 @@ void Battle_PrintPlayerRank(s32 playerID) {
     
     temp_t4 = Battle_Time % 64;
     if (temp_t4 < 2 || temp_t4 >= 6 && temp_t4 < 8) {
-        SetTextGradient(255, 255, 255, 255 * alpha, 
-                        255, 255, 255, 255 * alpha, 
-                        255, 255, 255, 255 * alpha, 
-                        255, 255, 255, 255 * alpha);
+        SetTextGradient_All(255, 255, 255, 255 * alpha);
     } else {
         switch (Battle_PlayerRank[playerID]) {
             case 0:
@@ -452,7 +447,7 @@ void func_800522A4(f32 arg0, f32 arg1, f32 arg2, f32 arg3, void* arg4, s32 arg5)
         if (func_80080318(1, (void*)temp, &sp90, &sp8C) == 0) {
             SetTextGradientFromPalette(arg5);
             func_800612F0(sp8C);
-            func_80059F28(arg0 + 16.0f * arg2 * var_s1, arg1, 0, 0, 1.0f, 16 * arg2, 24.0f * arg3, sp90, 1);
+            func_80059F28(arg0 + 16.0f * arg2 * var_s1, arg1, 0, 0, 1.0f, 16 * arg2, 24.0f * arg3, sp90, SPRITE_TEXTBIG);
         }
         
         temp += 2;
@@ -533,40 +528,28 @@ void Battle_ShimmeringText(u32 charID) {
     
     switch (charID) {
         case CHARA_DAVY:
-            SetTextGradient(0, D_80176840 * 0.8, D_80176840, 255,
-                            0, D_80176841 * 0.8, D_80176841, 255,
-                            0, D_80176840 * 0.8, D_80176840, 255,
-                            0, D_80176841 * 0.8, D_80176841, 255);
+            SetTextGradient_TopBottom(0, D_80176840 * 0.8, D_80176840, 255,
+                                      0, D_80176841 * 0.8, D_80176841, 255);
             break;
         case CHARA_JACK:
-            SetTextGradient(D_80176840 * 0.4, D_80176840, 0, 255,
-                            D_80176841 * 0.4, D_80176841, 0, 255,
-                            D_80176840 * 0.4, D_80176840, 0, 255,
-                            D_80176841 * 0.4, D_80176841, 0, 255);
+            SetTextGradient_TopBottom(D_80176840 * 0.4, D_80176840, 0, 255,
+                                      D_80176841 * 0.4, D_80176841, 0, 255);
             break;
         case CHARA_FRED:
-            SetTextGradient(D_80176840, D_80176840, 0, 255,
-                            D_80176841, D_80176841, 0, 255,
-                            D_80176840, D_80176840, 0, 255,
-                            D_80176841, D_80176841, 0, 255);
+            SetTextGradient_TopBottom(D_80176840, D_80176840, 0, 255,
+                                      D_80176841, D_80176841, 0, 255);
             break;
         case CHARA_LINDA:
-            SetTextGradient(D_80176840, D_80176840 * 0.4, D_80176840 * 0.5, 255, 
-                            D_80176841, D_80176841 * 0.4, D_80176841 * 0.5, 255,
-                            D_80176840, D_80176840 * 0.4, D_80176840 * 0.5, 255, 
-                            D_80176841, D_80176841 * 0.4, D_80176841 * 0.5, 255);
+            SetTextGradient_TopBottom(D_80176840, D_80176840 * 0.4, D_80176840 * 0.5, 255, 
+                                      D_80176841, D_80176841 * 0.4, D_80176841 * 0.5, 255);
             break;
         case CHARA_BLACK:
-            SetTextGradient(D_80176840 * 0.4, D_80176840 * 0.2, D_80176840, 255,
-                            D_80176841 * 0.4, D_80176841 * 0.2, D_80176841, 255,
-                            D_80176840 * 0.4, D_80176840 * 0.2, D_80176840, 255,
-                            D_80176841 * 0.4, D_80176841 * 0.2, D_80176841, 255);
+            SetTextGradient_TopBottom(D_80176840 * 0.4, D_80176840 * 0.2, D_80176840, 255,
+                                      D_80176841 * 0.4, D_80176841 * 0.2, D_80176841, 255);
             break;
         case CHARA_WHITE:
-            SetTextGradient(D_80176840, D_80176840, D_80176840, 255,
-                            D_80176841, D_80176841, D_80176841, 255,
-                            D_80176840, D_80176840, D_80176840, 255,
-                            D_80176841, D_80176841, D_80176841, 255);
+            SetTextGradient_TopBottom(D_80176840, D_80176840, D_80176840, 255,
+                                      D_80176841, D_80176841, D_80176841, 255);
             break;
     }
 }
@@ -614,10 +597,8 @@ void Battle_PrintHurry(void) {
 void Battle_PrintCountdownTimer(void) {
     f32 scaleY = 1.0f;
     if (Battle_TimeLeft <= 930) {
-        SetTextGradient(255, 60, 0, 255,
-                        255, 0, 0, 255,
-                        255, 60, 0, 255,
-                        255, 0, 0, 255);
+        SetTextGradient_TopBottom(255, 60, 0, 255,
+                                  255,  0, 0, 255);
         if (Battle_TimeLeft <= 20) {
             scaleY = Battle_TimeLeft / 20.0f;
         }
@@ -788,7 +769,7 @@ void Battle_DrawLightSpot(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, s32 
     if (Battle_Time % 2) {
         setPrimColor(D_800FE564[playerID].r, D_800FE564[playerID].g, D_800FE564[playerID].b, D_800FE564[playerID].a * flabs((arg3 / arg1)));
         guAlign(&mtx, 0.0f, 0.0f, 100.0f, 0.0f);
-        func_80058BE4(&mtx, arg0, arg1, arg2, arg4, arg4, 0.0f, SPRITE_74);
+        func_80058BE4(&mtx, arg0, arg1, arg2, arg4, arg4, 0.0f, SPRITE_PUFF);
     }
 }
 
@@ -917,7 +898,7 @@ void Battle_Update(void) {
             if (Battle_Time > 45) {
                 Battle_Stage = BATTLE_STAGE_READY;
                 Battle_Time = 0;
-                PLAY_SFX(62, 0, 0x10);
+                PLAY_SFX(SFX_3E_unkSnd, 0, 0x10);
             }
             break;
         case BATTLE_STAGE_READY:
@@ -933,7 +914,7 @@ void Battle_Update(void) {
                 gIsGamePaused = PAUSEMODE_NOT_PAUSED;
                 Battle_Stage = BATTLE_STAGE_GO;
                 Battle_Time = 0;
-                D_8017683C = PLAY_SFX(64, 0, 0x10);
+                D_8017683C = PLAY_SFX(SFX_40_unkSnd, 0, 0x10);
                 PlayBGM(gMultiplayerBGM);
                 EnableInput();
             }
@@ -1167,7 +1148,7 @@ void Process_Ranking(void) {
         D_800FE708 = 0;
         DMAStruct_Print();
         func_800A1EC4();
-        LoadSprite(212);
+        LoadSprite(SPRITE_RANKING_SCREEN);
         LoadSprite(SPRITE_PORTRAITDAVY);
         LoadSprite(SPRITE_PORTRAITJACK);
         LoadSprite(SPRITE_PORTRAITFRED);

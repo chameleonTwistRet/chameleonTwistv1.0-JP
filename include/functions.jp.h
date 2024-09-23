@@ -66,7 +66,7 @@ void func_800383A0(Actor*);
 void ActorInit_GreyAntSpawner(Actor*); // Grey Ant Spawner
 void ActorTick_GreyAntSpawner(Actor*);
 void ActorInit_GreyAnt(Actor*); // Grey Ant Function
-void ActorTick_GreyAnt(void);
+void ActorTick_GreyAnt(Actor*);
 void func_80038990(Actor*); // Bullet-Hell Ant Spawner
 void ActorInit_AntBulletHell(Actor*);
 void ActorInit_AntTrio(Actor*); // Ant Trio Function
@@ -82,9 +82,9 @@ void ActorInit_Missile(Actor*); // MISSILE Function
 void ActorInit_Cannon(Actor*);
 void ActorInit_Cannonball(Actor*);
 void func_8003C8AC(Actor*);
-void func_8003D574(Actor*);
+void ActorInit_Explosion(Actor*);
 void ActorTick_Explosion(Actor*);
-void ActorInit_ChameleonBlackSpotSpawnner(Actor*);
+void ActorInit_ChameleonBlackSpotSpawner(Actor*);
 void ActorInit_ChameleonBlackSpot(Actor*);
 void ActorTick_ChameleonBlackSpot(Actor*);
 void ActorTick_Chomper(Actor*);
@@ -92,24 +92,24 @@ void ActorInit_SandCrab(Actor*);
 void ActorInit_Vulture(Actor*); // VULTURE Function
 void ActorInit_Arrows(Actor*); // ARROWS Function
 void func_8003E368(Actor*); // BOULDER
-void func_8003E62C(Actor*); // ARMADILLO Function
+void ActorInit_Armadillo(Actor*); // ARMADILLO Function
 void func_8003E660(Actor*);
 void func_8003FA38(Actor*, f32, f32, f32);
-void func_8003FB04(Actor*); // POGO Function
-void ActorTick_Unk22(s32);
-void func_8003FEB4(Actor*); // UNK_23
-void ActorTick_Unk23(s32);
+void ActorInit_Pogo(Actor*); // POGO Function
+void ActorTick_Unk22(Actor*);
+void ActorInit_Unk23(Actor*); // UNK_23
+void ActorTick_Unk23(Actor*);
 void ActorInit_IceCreamSandwich(Actor*); // Ice Cream Sandwich Function
 
 void ActorInit_ChocoKid(Actor*); // Training Room Choco Kid Function
 void ActorTick_ChocoKid(Actor*);
 void ActorInit_Unk1F(Actor*); // UNK_1F Function
-void ActorTick_Unk1F(void);
+void ActorTick_Unk1F(Actor*);
 void ActorInit_Popcorn(Actor*);
 void ActorTick_Popcorn(Actor*);
 void func_800405F8(Actor*); // Cake Boss Strwaberry Function
 void func_80040CDC(Actor*); // UNK_28
-void ActorTick_Unk28(s32);
+void ActorTick_Unk28(Actor*);
 void func_80040CEC(Actor*);
 void ActorInit_CakeBoss(Actor*);
 void ActorTick_MinigameActor(Actor*);
@@ -120,53 +120,53 @@ void Bowling_ResetPins(void);
 void ActorInit_BowlingBall(Actor*); // Bowling Ball Function
 void ActorInit_BowlingPin(Actor*); // Bowling Pins Function
 void ActorInit_Unk2E(Actor*);
-void ActorTick_Unk2E(void);
-void func_800434F4(Actor*); // UNK_2F
-void ActorTick_Unk2F(s32);
+void ActorTick_Unk2E(Actor*);
+void ActorInit_Unk2F(Actor*); // UNK_2F
+void ActorTick_Unk2F(Actor*);
 void ActorInit_FloatingObjects(Actor*);
-void ActorTick_FloatingObjects(void);
+void ActorTick_FloatingObjects(Actor*);
 void ActorInit_Cup(Actor*); // CUP Function
-void ActorTick_Cup(void);
+void ActorTick_Cup(Actor*);
 void ActorInit_Saucer(Actor*); // SAUCER Function
-void ActorTick_Saucer(void);
+void ActorTick_Saucer(Actor*);
 void ActorInit_MetalSheet(Actor*); // Metal Sheet Function
-void ActorTick_MetalSheet(void);
+void ActorTick_MetalSheet(Actor*);
 void ActorInit_Scroll(Actor*); // SCROLL Function
-void ActorTick_Scroll(void);
+void ActorTick_Scroll(Actor*);
 void ActorInit_RNGRoomSpawner(Actor*);
 void ActorInit_Mirror(Actor*);
 void ActorInit_BarrelFireSpawner(Actor*);
 void ActorInit_BarrelFire(Actor*); // Barrel Jump FIRE Actor
 void ActorInit_FireSpitter(Actor*); // FIRE Spitter Function
-void ActorTick_FireSpitter(void);
+void ActorTick_FireSpitter(Actor*);
 void ActorInit_Candles(Actor*); // CANDLES Function
-void ActorTick_Candles(void);
+void ActorTick_Candles(Actor*);
 void ActorInit_FireSpawner(Actor*); // FIRE Spawner
-void ActorTick_FireSpawner(void);
+void ActorTick_FireSpawner(Actor*);
 void ActorInit_Fire(Actor*);
 void ActorInit_Sandal(Actor*); // SANDAL Function
-void ActorTick_Sandal(void);
+void ActorTick_Sandal(Actor*);
 void GhostBoss_SpawnArms(Actor*);
 void ActorInit_GhostBoss(Actor*); // Pile of Books Function
 s32 func_80044E80(Actor*, s32);
-void func_80046DDC(Actor*);
-void func_80046FB0(Actor*);
+void ActorInit_GhostBossArmSegment(Actor*);
+void ActorInit_GhostBossArmSpitter(Actor*);
 void ActorInit_GhostBossShot(Actor*);
 void ActorInit_SpiderSpawner(Actor*);
 void ActorInit_Spider(Actor*); // SPIDER Function
 void ActorInit_SpiderTrio(Actor*);
-void func_8004769C(Actor*); // GOLEM Room SPIDER Spawner
-void func_800477C4(Actor*); // GOLEM?
+void ActorInit_GolemSpiderSpawner(Actor*); // GOLEM Room SPIDER Spawner
+void ActorInit_Golem(Actor*); // GOLEM?
 void ActorInit_Hedgehog(Actor*); // HEDGEHOG Function
 void ActorInit_Fish(Actor*); // FISH Function
 void func_800480EC(Actor*);
-void func_800487D8(Actor*); // Lizard Kong Butterfly Spawner
-void func_800488C4(Actor*);
+void ActorInit_LizardKongButterflySpawner(Actor*); // Lizard Kong Butterfly Spawner
+void ActorInit_LizardKongBoulder(Actor*);
 void ActorInit_LizardKong(Actor*);
 void func_800489B0(Actor*);
 void ActorInit_PopcornBucketSpawner(Actor*); // POPCORN Bucket Spawner
 void ActorInit_PopcornBucket(Actor*); // POPCORN Bucket Function
-void ActorTick_PopcornBucket(void);
+void ActorTick_PopcornBucket(Actor*);
 void ActorInit_Unk4E(Actor*);
 void ActorTick_Unk4E(Actor*);
 void ActorInit_ChocoKidSpawner(Actor*); // Choco Kid Spawner
@@ -175,7 +175,7 @@ void func_80049A44(Actor*);
 void ActorInit_GreyAntSpawnerWrapper(Actor*); // GREY_ANT_SPAWNER_WRAPPER Function
 void ActorTick_GreyAntSpawnerWrapper(Actor*);
 void ActorInit_GreyAntWrapper(Actor*); // UNK_52 Function
-void ActorTick_GreyAntWrapper(void);
+void ActorTick_GreyAntWrapper(Actor*);
 void ActorInit_BattleModeSandCrabSpawner(Actor*); // Battle Mode Sand Crab Spawner
 void ActorInit_BattleModeSandCrab(Actor*); // Battle Mode Sand Crab Function
 void ActorTick_BattleModeSandCrab(Actor*);
@@ -258,6 +258,7 @@ Effect* Effect_TypeC_Init(f32, f32, f32, f32, f32, f32, u8, u8, u8, u8, s32, s32
 Effect* Effect_TypeE_Init(f32, f32, f32, f32, f32, f32, f32, f32, s32, s32);
 Effect* Effect_TypeF_Init(f32, f32, f32, f32, f32, f32, f32, f32, s32, s32);
 Effect* Effect_TypeT_Init(f32, f32, s32, s32);
+void Effect_TypeAM_Init(f32 posX, f32 posY, f32 posZ, f32 arg3, s32* arg4);
 Effect* func_80065CAC(f32);
 void func_800667A8(void);
 void func_800667B4(Effect*);
@@ -283,8 +284,8 @@ void Effect_ControllerRumble_Init(void);
 void SetTextGradientFromPaletteAlpha(s32, f32);
 void SetTextGradientFromPalette(s32);
 void Effect_TypeBC_Init(f32, f32, f32, f32, f32, f32);
-void Effect_TypeAR_Init(f32 arg0, f32 arg1, s32 arg2, f32 arg3, f32 arg4, f32 arg5, s32 arg6, EffectTypeAQArg7* arg7, s32 arg8, s32* arg9);
-void Effect_TypeAQ_Init(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, s32 arg6, EffectTypeAQArg7* arg7, s32 arg8, s32* arg9);
+void Effect_TypeAR_Init(f32 arg0, f32 arg1, s32 arg2, f32 arg3, f32 arg4, f32 arg5, s32 arg6, char* arg7, s32 arg8, s32* arg9);
+void Effect_TypeAQ_Init(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, s32 arg6, char* arg7, s32 arg8, s32* arg9);
 void Effect_TypeBJ_Init(f32, f32, f32, f32, f32);
 Gfx* func_8007ABDC(Gfx*);
 void func_8007ABE4(void);
@@ -354,7 +355,7 @@ s32 PlayBGM(s32);
 s32 StopBGM(void);
 void func_8008C094(void);
 void func_8008C35C(Gfx**);
-s32 Actor_PlaySound(Actor*, s32, s32, s32);
+s32 Actor_PlaySound(Actor* actor, s32 sfxID, s32 unused1, s32 unused2);
 void func_8008C3F0(Actor*, s32, s32);
 s32 func_8008C438(void);
 void CTTask_Unlink(CTTask*);
@@ -441,6 +442,7 @@ void Debug_ZeroInt(void);
 void PrintNumberWR(f32, f32, f32, f32, f32, s32, s32);
 void printNumber(f32, f32, f32, f32, f32, s32, s32);
 void func_800C1458(s32);
+void CalcNextPosition(PlayerActor*, Tongue*, Actor*); //might be void*, going off func_800360E4
 
 //funcs that were in 8add0.h that are in other c's
 //84e0.c
@@ -466,7 +468,7 @@ void func_800C29D8(s32);
 //funcs that were in 5ff30.h that are in other c's
 //sprite.c
 void func_80059F28(f32, f32, f32, f32, f32, f32, f32, f32, s32);
-void func_80080864(f32, f32, f32, f32, f32, f32, char*, s32);
+void func_80080864(f32, f32, f32, f32, f32, f32, const char*, s32);
 void func_8007B174(void);
 void Rumble_StopAll(void);
 void func_8005C454(f32 arg0, f32 arg1, f32 arg2, s32 arg3);
@@ -545,6 +547,8 @@ void func_800B1DA0(Collider* arg0, s32 arg1);
 void func_800B12B4(Collider* arg0, RoomObject* arg1); // assumed
 void func_800B1538(Collider* arg0, RoomObject* arg1); // assumed
 void func_800D90E0(Collider* arg0);
+void func_800AF9D0(Collider* arg0, RoomObject* arg1);
+void MoveTheater(Camera* arg0); // might be wrong
 
 void func_800D8F3C(Collider* arg0);
 void func_800D8F9C(Collider* arg0);
@@ -554,5 +558,14 @@ void func_800D8E70(Collider* arg0);
 void func_800D8ED4(Collider* arg0);
 
 
+void func_800B21CC(s32 arg0, s32 arg1);
+void func_800D9128(Collider* arg0);
+void func_800B2070(s32 arg0);
+void func_800D9104(Collider* arg0);
+void func_800D9190(Collider* arg0);
+void func_800D914C(Collider* arg0);
+void func_800B2144(Collider* arg0, unkStruct14* arg1);
+void func_800B216C(Collider* arg0);
+void func_800D91B4(Collider* arg0);
 
 #endif

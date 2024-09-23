@@ -557,171 +557,247 @@ Unk_800FFB74 D_800FF9BC = {
 };
 
 
+extern Gfx BombSnake_unkF_Gfx[];
+extern Mtx BombSnake_unk1_Animarr[];
+extern Anim BombSnake_unk1Header_Animh;
+
 Unk_800FFB74 D_800FF9D0 = {
-    (void*)0x03002760,
-    D_3007EA0,
-    (void*)0x0300275C,
-    (void*)0x03002758,
-    LIST_END,
+BombSnake_unk1_Animarr,
+BombSnake_unkF_Gfx,
+&BombSnake_unk1Header_Animh.objects,
+&BombSnake_unk1Header_Animh.frames,
+LIST_END,
 };
+
+
+extern Gfx BombSnake_unk11_Gfx[];
+extern Mtx BombSnake_unk2_Animarr[];
+extern Anim BombSnake_unk2Header_Animh;
 
 Unk_800FFB74 D_800FF9E4 = {
-    (void*)0x03002A90,
-    D_3008428,
-    (void*)0x03002A8C,
-    (void*)0x03002A88,
-    LIST_END,
+BombSnake_unk2_Animarr,
+BombSnake_unk11_Gfx,
+&BombSnake_unk2Header_Animh.objects,
+&BombSnake_unk2Header_Animh.frames,
+LIST_END,
 };
+
+extern Mtx BombSnake_unk3_Animarr[];
+extern Anim BombSnake_unk3Header_Animh;
 
 Unk_800FFB74 D_800FF9F8 = {
-    (void*)0x03002B40,
-    D_3008428,
-    (void*)0x03002B3C,
-    (void*)0x03002B38,
-    LIST_END,
+BombSnake_unk3_Animarr,
+BombSnake_unk11_Gfx,
+&BombSnake_unk3Header_Animh.objects,
+&BombSnake_unk3Header_Animh.frames,
+LIST_END,
 };
+
+extern Mtx BombSnake_unk4_Animarr[];
+extern Anim BombSnake_unk4Header_Animh;
 
 Unk_800FFB74 D_800FFA0C = {
-    (void*)0x03002F30,
-    D_3008428,
-    (void*)0x03002F2C,
-    (void*)0x03002F28,
-    LIST_END,
+BombSnake_unk4_Animarr,
+BombSnake_unk11_Gfx,
+&BombSnake_unk4Header_Animh.objects,
+&BombSnake_unk4Header_Animh.frames,
+LIST_END,
 };
+
+
+extern Gfx Quintella_a_model18_Gfx[];
+extern Mtx Quintella_unk7_Animarr[];
+extern Anim Quintella_unk7Header_Animh;
 
 Unk_800FFB74 D_800FFA20 = {
-    (void*)0x030458F0,
-    D_300EFC0,
-    (void*)0x030458EC,
-    (void*)0x030458E8,
-    LIST_END,
+Quintella_unk7_Animarr,
+Quintella_a_model18_Gfx,
+&Quintella_unk7Header_Animh.objects,
+&Quintella_unk7Header_Animh.frames,
+LIST_END,
 };
+
+extern Mtx Quintella_unk8_Animarr[];
+extern Anim Quintella_unk8Header_Animh;
 
 Unk_800FFB74 D_800FFA34 = {
-    (void*)0x030465E0,
-    D_300EFC0,
-    (void*)0x030465DC,
-    (void*)0x030465D8,
-    0,
+Quintella_unk8_Animarr,
+Quintella_a_model18_Gfx,
+&Quintella_unk8Header_Animh.objects,
+&Quintella_unk8Header_Animh.frames,
+0,
 };
+
+extern Mtx Quintella_unk9_Animarr[];
+extern Anim Quintella_unk9Header_Animh;
 
 Unk_800FFB74 D_800FFA48 = {
-    (void*)0x03047B50,
-    D_300EFC0,
-    (void*)0x03047B4C,
-    (void*)0x03047B48,
-    LIST_END,
+Quintella_unk9_Animarr,
+Quintella_a_model18_Gfx,
+&Quintella_unk9Header_Animh.objects,
+&Quintella_unk9Header_Animh.frames,
+LIST_END,
 };
+
+extern Mtx Quintella_unk10_Animarr[];
+extern Anim Quintella_unk10Header_Animh;
 
 Unk_800FFB74 D_800FFA5C = {
-    (void*)0x0304FB00,
-    D_300EFC0,
-    (void*)0x0304FAFC,
-    (void*)0x0304FAF8,
-    LIST_END,
+Quintella_unk10_Animarr,
+Quintella_a_model18_Gfx,
+&Quintella_unk10Header_Animh.objects,
+&Quintella_unk10Header_Animh.frames,
+LIST_END,
 };
+
+extern Mtx Quintella_unk11_Animarr[];
+extern Anim Quintella_unk11Header_Animh;
 
 Unk_800FFB74 D_800FFA70 = {
-    (void*)0x0305E4F0,
-    D_300EFC0,
-    (void*)0x0305E4EC,
-    (void*)0x0305E4E8,
-    LIST_END,
+Quintella_unk11_Animarr,
+Quintella_a_model18_Gfx,
+&Quintella_unk11Header_Animh.objects,
+&Quintella_unk11Header_Animh.frames,
+LIST_END,
 };
+
+
+extern Gfx LizardKong_a_model12_Gfx[];
+extern Mtx LizardKong_unk5_Animarr[];
+extern Anim LizardKong_unk5Header_Animh;
 
 Unk_800FFB74 D_800FFA84 = {
-    (void*)0x0302CC68,
-    D_300DB48,
-    (void*)0x0302CC60,
-    (void*)0x0302CC5C,
-    LIST_END,
+LizardKong_unk5_Animarr,
+LizardKong_a_model12_Gfx,
+&LizardKong_unk5Header_Animh.objects,
+&LizardKong_unk5Header_Animh.frames,
+LIST_END,
 };
+
+extern Mtx LizardKong_unk6_Animarr[];
+extern Anim LizardKong_unk6Header_Animh;
 
 Unk_800FFB74 D_800FFA98 = {
-    (void*)0x0302DA68,
-    D_300DB48,
-    (void*)0x0302DA60,
-    (void*)0x0302DA5C,
-    LIST_END,
+LizardKong_unk6_Animarr,
+LizardKong_a_model12_Gfx,
+&LizardKong_unk6Header_Animh.objects,
+&LizardKong_unk6Header_Animh.frames,
+LIST_END,
 };
+
+extern Mtx LizardKong_unk7_Animarr[];
+extern Anim LizardKong_unk7Header_Animh;
 
 Unk_800FFB74 D_800FFAAC = {
-    (void*)0x030303E8,
-    D_300DB48,
-    (void*)0x030303E0,
-    (void*)0x030303DC,
-    LIST_END,
+LizardKong_unk7_Animarr,
+LizardKong_a_model12_Gfx,
+&LizardKong_unk7Header_Animh.objects,
+&LizardKong_unk7Header_Animh.frames,
+LIST_END,
 };
+
+extern Mtx LizardKong_unk8_Animarr[];
+extern Anim LizardKong_unk8Header_Animh;
 
 Unk_800FFB74 D_800FFAC0 = {
-    (void*)0x030311E8,
-    D_300DB48,
-    (void*)0x030311E0,
-    (void*)0x030311DC,
-    LIST_END,
+LizardKong_unk8_Animarr,
+LizardKong_a_model12_Gfx,
+&LizardKong_unk8Header_Animh.objects,
+&LizardKong_unk8Header_Animh.frames,
+LIST_END,
 };
+
+extern Mtx LizardKong_unk9_Animarr[];
+extern Anim LizardKong_unk9Header_Animh;
 
 Unk_800FFB74 D_800FFAD4 = {
-    (void*)0x03034928,
-    D_3011318,
-    (void*)0x03034920,
-    (void*)0x0303491C,
-    LIST_END,
+LizardKong_unk9_Animarr,
+LizardKong_a_model14_Gfx,
+&LizardKong_unk9Header_Animh.objects,
+&LizardKong_unk9Header_Animh.frames,
+LIST_END,
 };
+
+
+extern Gfx Armadillo_a_model21_Gfx[];
+extern Mtx Armadillo_unk3_Animarr[];
+extern Anim Armadillo_unk3Header_Animh;
 
 Unk_800FFB74 D_800FFAE8 = {
-    (void*)0x0301B630,
-    D_300CED0,
-    (void*)0x0301B62C,
-    (void*)0x0301B628,
-    LIST_END,
+Armadillo_unk3_Animarr,
+Armadillo_a_model21_Gfx,
+&Armadillo_unk3Header_Animh.objects,
+&Armadillo_unk3Header_Animh.frames,
+LIST_END,
 };
+
+extern Mtx Armadillo_unk4_Animarr[];
+extern Anim Armadillo_unk4Header_Animh;
 
 Unk_800FFB74 D_800FFAFC = {
-    (void*)0x0301E870,
-    D_300CED0,
-    (void*)0x0301E868,
-    (void*)0x0301E864,
-    LIST_END,
+Armadillo_unk4_Animarr,
+Armadillo_a_model21_Gfx,
+&Armadillo_unk4Header_Animh.objects,
+&Armadillo_unk4Header_Animh.frames,
+LIST_END,
 };
+
+extern Mtx Armadillo_unk5_Animarr[];
+extern Anim Armadillo_unk5Header_Animh;
 
 Unk_800FFB74 D_800FFB10 = {
-    (void*)0x03021AB0,
-    D_300CED0,
-    (void*)0x03021AA8,
-    (void*)0x03021AA4,
-    LIST_END,
+Armadillo_unk5_Animarr,
+Armadillo_a_model21_Gfx,
+&Armadillo_unk5Header_Animh.objects,
+&Armadillo_unk5Header_Animh.frames,
+LIST_END,
 };
+
+extern Mtx Armadillo_unk6_Animarr[];
+extern Anim Armadillo_unk6Header_Animh;
 
 Unk_800FFB74 D_800FFB24 = {
-    (void*)0x030265F0,
-    D_300CED0,
-    (void*)0x030265E8,
-    (void*)0x030265E4,
-    LIST_END,
+Armadillo_unk6_Animarr,
+Armadillo_a_model21_Gfx,
+&Armadillo_unk6Header_Animh.objects,
+&Armadillo_unk6Header_Animh.frames,
+LIST_END,
 };
+
+extern Mtx GiantCake_unk4_Animarr[];
+extern Gfx GiantCake_a_model33_Gfx[];
+extern Anim GiantCake_unk4Header_Animh;
 
 Unk_800FFB74 D_800FFB38 = {
-    (void*)0x0301E2E8,
-    (void*)0x03013708,
-    (void*)0x0301E2E0,
-    (void*)0x0301E2DC,
+    GiantCake_unk4_Animarr,
+    GiantCake_a_model33_Gfx,
+    &GiantCake_unk4Header_Animh.objects,
+    &GiantCake_unk4Header_Animh.frames,
     LIST_END,
 };
+
+
+extern Gfx GiantCake_a_model15_Gfx[];
+extern Mtx GiantCake_unk3_Animarr[];
+extern Anim GiantCake_unk3Header_Animh;
 
 Unk_800FFB74 D_800FFB4C = {
-    (void*)0x0301E268,
-    D_300A9E0,
-    (void*)0x0301E260,
-    (void*)0x0301E25C,
-    LIST_END,
+GiantCake_unk3_Animarr,
+GiantCake_a_model15_Gfx,
+&GiantCake_unk3Header_Animh.objects,
+&GiantCake_unk3Header_Animh.frames,
+LIST_END,
 };
 
+extern Mtx GiantCake_unk5_Animarr[];
+extern Gfx GiantCake_a_model51_Gfx[];
+extern Anim GiantCake_unk5Header_Animh;
+
 Unk_800FFB74 D_800FFB60 = {
-    (void*)0x030222E8,
-    (void*)0x0301C198,
-    (void*)0x030222E0,
-    (void*)0x030222DC,
+    GiantCake_unk5_Animarr,
+    GiantCake_a_model51_Gfx,
+    &GiantCake_unk5Header_Animh.objects,
+    &GiantCake_unk5Header_Animh.frames,
     LIST_END,
 };
 
@@ -858,26 +934,35 @@ extern StageData AntLand_stageData;
 extern StageData BombLand_header_Lvlhdr;
 extern StageData DesertCastle_header_Lvlhdr;
 extern StageData KidsLand_header_Lvlhdr;
+extern StageData GhostCastle_header_Lvlhdr;
 extern StageData IntroOutro_header_Lvlhdr;
+extern StageData BattleMode_header_Lvlhdr;
+extern StageData Training_header_Lvlhdr;
+extern StageData LizardKong_header_Lvlhdr;
+extern StageData Quintella_header_Lvlhdr;
+extern StageData BombSnake_header_Lvlhdr;
+extern StageData Armadillo_header_Lvlhdr;
+extern StageData GiantCake_header_Lvlhdr;
+extern StageData PileOfBooks_header_Lvlhdr;
+extern StageData BossRush_header_Lvlhdr;
 
-//TODO: fix the segmented pointers here
 StageLoadData gStageLoadData[] = {
     {&JungleLand_stageData, JungleLand_ROM_START, JungleLand_VRAM, JungleLand_VRAM_END, 0},
     {&AntLand_stageData, AntLand_ROM_START, AntLand_VRAM, AntLand_VRAM_END, 1},
     {&BombLand_header_Lvlhdr, BombLand_ROM_START, BombLand_VRAM, BombLand_VRAM_END, 2},
     {&DesertCastle_header_Lvlhdr, DesertCastle_ROM_START, DesertCastle_VRAM, DesertCastle_VRAM_END, 3},
     {&KidsLand_header_Lvlhdr, KidsLand_ROM_START, KidsLand_VRAM, KidsLand_VRAM_END, 4},
-    {(void*)0x03011F2C, GhostCastle_ROM_START, GhostCastle_VRAM, GhostCastle_VRAM_END, 5},
+    {&GhostCastle_header_Lvlhdr, GhostCastle_ROM_START, GhostCastle_VRAM, GhostCastle_VRAM_END, 5},
     {&IntroOutro_header_Lvlhdr, IntroOutro_ROM_START, IntroOutro_VRAM, IntroOutro_VRAM_END, 6},
-    {(void*)0x03006358, BattleMode_ROM_START, BattleMode_VRAM, BattleMode_VRAM_END, 7},
-    {(void*)0x03005F44, Training_ROM_START, Training_VRAM, Training_VRAM_END, 8},
-    {(void*)0x030011F0, LizardKong_ROM_START, LizardKong_VRAM, LizardKong_VRAM_END, 9},
-    {(void*)0x03001454, Quintella_ROM_START, Quintella_VRAM, Quintella_VRAM_END, 10},
-    {(void*)0x03001464, BombSnake_ROM_START, BombSnake_VRAM, BombSnake_VRAM_END, 11},
-    {(void*)0x030013C4, Armadillo_ROM_START, Armadillo_VRAM, Armadillo_VRAM_END, 12},
-    {(void*)0x03001300, GiantCake_ROM_START, GiantCake_VRAM, GiantCake_VRAM_END, 13},
-    {(void*)0x03002674, PileOfBooks_ROM_START, PileOfBooks_VRAM, PileOfBooks_VRAM_END, 14},
-    {(void*)0x030031F0, BossRush_ROM_START, BossRush_VRAM, BossRush_VRAM_END, 15},
+    {&BattleMode_header_Lvlhdr, BattleMode_ROM_START, BattleMode_VRAM, BattleMode_VRAM_END, 7},
+    {&Training_header_Lvlhdr, Training_ROM_START, Training_VRAM, Training_VRAM_END, 8},
+    {&LizardKong_header_Lvlhdr, LizardKong_ROM_START, LizardKong_VRAM, LizardKong_VRAM_END, 9},
+    {&Quintella_header_Lvlhdr, Quintella_ROM_START, Quintella_VRAM, Quintella_VRAM_END, 10},
+    {&BombSnake_header_Lvlhdr, BombSnake_ROM_START, BombSnake_VRAM, BombSnake_VRAM_END, 11},
+    {&Armadillo_header_Lvlhdr, Armadillo_ROM_START, Armadillo_VRAM, Armadillo_VRAM_END, 12},
+    {&GiantCake_header_Lvlhdr, GiantCake_ROM_START, GiantCake_VRAM, GiantCake_VRAM_END, 13},
+    {&PileOfBooks_header_Lvlhdr, PileOfBooks_ROM_START, PileOfBooks_VRAM, PileOfBooks_VRAM_END, 14},
+    {&BossRush_header_Lvlhdr, BossRush_ROM_START, BossRush_VRAM, BossRush_VRAM_END, 15},
     {0, 0, 0, 0, -1},
     {0, 0, 0, 0, -1},
     {0, 0, 0, 0, -1},
@@ -945,7 +1030,7 @@ typedef struct StageSelectData {
 
 enum StageSelectStages{
     NONE = -1,
-    JL = 0,
+    JL, // 0
     AL, // 1
     BL, // 2
     DC, // 3
@@ -954,13 +1039,15 @@ enum StageSelectStages{
     BOSSRUSH // 6
 };
 
+#define canAccess(stage) TRUE << stage
+
 StageSelectData StageSelect[] = {                                                                               //?        
-    { 56, 192, SPRITE_JL_ICON,          BOSSRUSH,   AL,     BL,     BL,     NONE,   NONE,   NONE,       NONE,   NONE},
-    {108, 112, SPRITE_AL_ICON,          NONE,       DC,     DC,     KL,     BL,     JL,     BOSSRUSH,   NONE,   29},
-    {148, 184, SPRITE_BL_ICON,          DC,         DC,     KL,     KL,     NONE,   JL,     JL,         AL,     27},
-    {186,  80, SPRITE_DC_ICON,          NONE,       GC,     GC,     KL,     KL,     BL,     AL,         NONE,   54},
-    {228, 152, SPRITE_KL_ICON,          DC,         GC,     NONE,   NONE,   NONE,   BL,     BL,         AL,     46},
-    {258,  56, SPRITE_GC_ICON,          NONE,       NONE,   NONE,   KL,     KL,     KL,     DC,         NONE,   24},
+    { 56, 192, SPRITE_JL_ICON,          BOSSRUSH,   AL,     BL,     BL,     NONE,   NONE,   NONE,       NONE,   -1},
+    {108, 112, SPRITE_AL_ICON,          NONE,       DC,     DC,     KL,     BL,     JL,     BOSSRUSH,   NONE,   canAccess(JL) | canAccess(BL) | canAccess(DC) | canAccess(KL)},
+    {148, 184, SPRITE_BL_ICON,          DC,         DC,     KL,     KL,     NONE,   JL,     JL,         AL,     canAccess(JL) | canAccess(AL) | canAccess(DC) | canAccess(KL)},
+    {186,  80, SPRITE_DC_ICON,          NONE,       GC,     GC,     KL,     KL,     BL,     AL,         NONE,   canAccess(AL) | canAccess(BL) | canAccess(KL) | canAccess(GC)},
+    {228, 152, SPRITE_KL_ICON,          DC,         GC,     NONE,   NONE,   NONE,   BL,     BL,         AL,     canAccess(AL) | canAccess(BL) | canAccess(DC) | canAccess(GC)},
+    {258,  56, SPRITE_GC_ICON,          NONE,       NONE,   NONE,   KL,     KL,     KL,     DC,         NONE,   canAccess(DC) | canAccess(KL)},
     { 56, 110, SPRITE_BOSSRUSH_ICON,    NONE,       NONE,   AL,     NONE,   JL,     NONE,   NONE,       NONE,   0},
     {  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
 };
@@ -1047,11 +1134,6 @@ stuff D_801003DC = {
 s16 D_801003E8[] = {0x0040, 0x0080, 0x0080, 0x0080, 0x00C0, 0x0080, 0x0100, 0x0080};
 s16 D_801003F8[] = {0x0044, 0x0080, 0x0080, 0x0080, 0x00BE, 0x0080, 0x00FC, 0x0080};
 
-typedef struct unkStruct5FF30 {
-    s32 unk0;
-    const char* name;
-} unkStruct5FF30;
-
 //battle mode
 extern const char D_8010E60C[];
 extern const char D_8010E618[];
@@ -1060,14 +1142,1024 @@ extern const char D_8010E630[];
 extern const char D_8010E63C[];
 extern const char D_8010E648[];
 
-unkStruct5FF30 D_80100408[] = {
-    {0xFFF00060, D_8010E60C},
-    {0xFFF00060, D_8010E618},
-    {0xFFF00060, D_8010E624},
-    {0xFFEC0060, D_8010E630},
-    {0xFFEC0060, D_8010E63C},
-    {0xFFEC0060, D_8010E648},
+letterDef D_80100408[] = {
+    {-16, 96, D_8010E60C},
+    {-16, 96, D_8010E618},
+    {-16, 96, D_8010E624},
+    {-20, 96, D_8010E630},
+    {-20, 96, D_8010E63C},
+    {-20, 96, D_8010E648},
+    {0, 0, NULL},
 };
+
+u16 D_80100440[] = {
+    0x0090,
+    0x0090,
+    0x0076,
+    0x0063,
+    0x0050,
+    0x0050,
+    0x0050,
+    0x0050,
+    0x0050,
+    0x0050,
+    0x0800,
+    0x8B58,
+    0x0900,
+    0x8B98,
+    0x0A00,
+    0x8B58,
+    0x0B00,
+    0x92E8,
+    0x0C00,
+    0x8B68
+};
+
+s16 D_80100468[] = {
+    0x0037,
+    0x0058,
+    0x005F,
+    0x0070,
+    0x0058,
+    0x0060,
+    0x00A8,
+    0x0058,
+    0x0061,
+    0x00E0,
+    0x0058,
+    0x0062,
+    0x0037,
+    0x009C,
+    0x0063,
+    0x0070,
+    0x009C,
+    0x0064,
+    0x00A8,
+    0x009C,
+    0x0065,
+    0x00E0,
+    0x009C,
+    0x0066
+};
+
+//battle mode
+extern const char D_8010E754[];
+extern const char D_8010E76C[];
+extern const char D_8010E784[];
+extern const char D_8010E7A4[];
+extern const char D_8010E7B8[];
+
+letterDef D_80100498[] = {
+    {40, 70, D_8010E754},
+    {40, 102, D_8010E76C},
+    {40, 134, D_8010E784},
+    {40, 162, D_8010E7A4},
+    {130, 194, D_8010E7B8},
+    {0, 0, NULL},
+};
+
+//music options for ^
+extern const char D_8010E7C4[];
+extern const char D_8010E7D4[];
+extern const char D_8010E7E0[];
+extern const char D_8010E7EC[];
+
+letterDef D_801004C8[] = {
+    {192, 70, D_8010E7C4},
+    {202, 70, D_8010E7D4},
+    {202, 70, D_8010E7E0},
+    {202, 70, D_8010E7EC},
+    {0, 0, NULL},
+};
+
+//davy name
+extern const char D_8010E878[];
+extern const char D_8010E87C[];
+extern const char D_8010E880[];
+extern const char D_8010E884[];
+
+letterDef D_801004F0[] = {
+    {88, 75, D_8010E878},
+    {128, 68, D_8010E87C},
+    {176, 68, D_8010E880},
+    {216, 75, D_8010E884},
+    {0, 0, NULL}
+};
+
+//jack name
+extern const char D_8010E888[];
+extern const char D_8010E88C[];
+extern const char D_8010E890[];
+extern const char D_8010E894[];
+
+letterDef D_80100518[] = {
+    {88, 75, D_8010E888},
+    {128, 68, D_8010E88C},
+    {176, 68, D_8010E890},
+    {216, 75, D_8010E894},
+    {0, 0, NULL}
+};
+
+//fred name
+extern const char D_8010E898[];
+extern const char D_8010E89C[];
+extern const char D_8010E8A0[];
+extern const char D_8010E8A4[];
+
+letterDef D_80100540[] = {
+    {88, 75, D_8010E898},
+    {128, 68, D_8010E89C},
+    {176, 68, D_8010E8A0},
+    {216, 75, D_8010E8A4},
+    {0, 0, NULL}
+};
+
+//linda name
+extern const char D_8010E8A8[];
+extern const char D_8010E8AC[];
+extern const char D_8010E8B0[];
+extern const char D_8010E8B4[];
+extern const char D_8010E8B8[];
+
+letterDef D_80100568[] = {
+    {88, 75, D_8010E8A8},
+    {116, 70, D_8010E8AC},
+    {152, 68, D_8010E8B0},
+    {188, 70, D_8010E8B4},
+    {216, 75, D_8010E8B8},
+    {0, 0, NULL}
+};
+
+//black name
+extern const char D_8010E8BC[];
+extern const char D_8010E8C0[];
+extern const char D_8010E8C4[];
+extern const char D_8010E8C8[];
+extern const char D_8010E8CC[];
+
+letterDef D_80100598[] = {
+    {88, 75, D_8010E8BC},
+    {116, 70, D_8010E8C0},
+    {152, 68, D_8010E8C4},
+    {188, 70, D_8010E8C8},
+    {216, 75, D_8010E8CC},
+    {0, 0, NULL}
+};
+
+//white name
+extern const char D_8010E8D0[];
+extern const char D_8010E8D4[];
+extern const char D_8010E8D8[];
+extern const char D_8010E8DC[];
+extern const char D_8010E8E0[];
+
+letterDef D_801005C8[] = {
+    {88, 75, D_8010E8D0},
+    {116, 70, D_8010E8D4},
+    {152, 68, D_8010E8D8},
+    {188, 70, D_8010E8DC},
+    {216, 75, D_8010E8E0},
+    {0, 0, NULL}
+};
+
+letterDef* D_801005F8[] = {
+    D_801004F0,
+    D_80100518,
+    D_80100540,
+    D_80100568,
+    D_80100598,
+    D_801005C8,
+    NULL
+};
+
+typedef struct unk5ff30_80100614_sub {
+    u32 unk0;
+    u32 unk4;
+    f32 unk8;
+    f32 unkC;
+    f32 unk10;
+    f32 unk14;
+    f32 unk18;
+    f32 unk1C;
+} unk5ff30_80100614_sub;
+
+typedef struct unk5ff30_80100614 {
+    unk5ff30_80100614_sub unk0[3];
+    s32 unk60;
+    s32 unk64;
+} unk5ff30_80100614;
+
+
+unk5ff30_80100614 D_80100614[] = {
+{
+{{  0, 0x78,
+    -7500.0f, 9290.0f, -400.0f,
+    -8400.0f, 9290.0f, -400.0f
+},
+{   0x10000, 0,
+    -7500.0f, 9000.0f, -800.0f,
+      270.0f,    0.0f,    0.0f,
+},
+{   0, 0,
+    0.0f, 0.0f, 0.0f,
+    0.0f, 0.0f, 0.0f,
+}},
+0, 0
+},
+{
+{{  0x10013, 0x78,
+    50.0f, 290.0f,    0.0f,
+    50.0f, 290.0f, 1000.0f
+},
+{   0x10000, 0,
+    -500.0f, 0.0f, 0.0f,
+       0.0f, 0.0f, 0.0f,
+},
+{   0, 0,
+    0.0f, 0.0f, 0.0f,
+    0.0f, 0.0f, 0.0f,
+}},
+0, 0
+},
+{
+{{  0x2000E, 0x78,
+    375.0f, 290.0f,    0.0f,
+    375.0f, 290.0f, 1000.0f
+},
+{   0x10000, 0,
+    -150.0f, 0.0f, 0.0f,
+       0.0f, 0.0f, 0.0f,
+},
+{   0, 0,
+    0.0f, 0.0f, 0.0f,
+    0.0f, 0.0f, 0.0f,
+}},
+0, 0
+},
+{
+{{  0x30000, 0x78,
+    700.0f, 5290.0f,    0.0f,
+    700.0f, 5290.0f, 1000.0f
+},
+{   0x10000, 0,
+    150.0f, 5000.0f, 0.0f,
+      0.0f,    0.0f, 0.0f,
+},
+{   0, 0,
+    0.0f, 0.0f, 0.0f,
+    0.0f, 0.0f, 0.0f,
+}},
+0, 0
+},
+{
+{{  0x40010, 0x78,
+    50.0f, 290.0f,    0.0f,
+    50.0f, 290.0f, 1000.0f
+},
+{   0x10000, 0,
+    -300.0f, 0.0f, 0.0f,
+       0.0f, 0.0f, 0.0f,
+},
+{   0, 0,
+    0.0f, 0.0f, 0.0f,
+    0.0f, 0.0f, 0.0f,
+}},
+0, 0
+},
+{
+{{  0x50013, 0x78,
+    500.0f, 290.0f,    0.0f,
+    500.0f, 290.0f, 1000.0f
+},
+{   0x10000, 0,
+    0.0f, 0.0f, 0.0f,
+    0.0f, 0.0f, 0.0f,
+},
+{   0, 0,
+    0.0f, 0.0f, 0.0f,
+    0.0f, 0.0f, 0.0f,
+}},
+0, 0
+},
+{
+{{  0x10004, 0x78,
+    0.0f, 290.0f,    0.0f,
+    0.0f, 290.0f, 1000.0f
+},
+{   0x10000, 0,
+    -300.0f, 0.0f, 0.0f,
+       0.0f, 0.0f, 0.0f,
+},
+{   0, 0,
+    0.0f, 0.0f, 0.0f,
+    0.0f, 0.0f, 0.0f,
+}},
+0, 0
+},
+{
+{{  9, 0x0258,
+    0.0f, 190.0f,    0.0f,
+    0.0f, 200.0f, 1000.0f
+},
+{   0x10000, 0,
+    12216.0f, 600.0f, -18535.0f,
+        0.0f,   0.0f,      0.0f,
+},
+{   0, 0,
+    0.0f, 0.0f, 0.0f,
+    0.0f, 0.0f, 0.0f,
+}},
+0, 0
+},
+{
+{{  0x10010, 0x258,
+    0.0f, 190.0f,    0.0f,
+    0.0f, 200.0f, 1000.0f
+},
+{   0x10000, 0,
+    0.0f, 0.0f, -1380.0f,
+    0.0f, 0.0f,     0.0f,
+},
+{   0, 0,
+    0.0f, 0.0f, 0.0f,
+    0.0f, 0.0f, 0.0f,
+}},
+0, 0
+},
+{
+{{  0x1000D, 0x258,
+    0.0f, 190.0f,    0.0f,
+    0.0f, 200.0f, 1000.0f
+},
+{   0x10000, 0,
+    -1380.0f, 600.0f, 0.0f,
+        0.0f,   0.0f, 0.0f,
+},
+{   0, 0,
+    0.0f, 0.0f, 0.0f,
+    0.0f, 0.0f, 0.0f,
+}},
+0, 0
+},
+{
+{{  0x2000C, 0x258,
+    0.0f, 190.0f,    0.0f,
+    0.0f, 200.0f, 1000.0f
+},
+{   0x10000, 0,
+    -1880.0f, 0.0f, 0.0f,
+        0.0f, 0.0f, 0.0f,
+},
+{   0, 0,
+    0.0f, 0.0f, 0.0f,
+    0.0f, 0.0f, 0.0f,
+}},
+0, 0
+},
+{
+{{  0x30017, 0x258,
+    0.0f, 190.0f,    0.0f,
+    0.0f, 200.0f, 1000.0f
+},
+{   0x10000, 0,
+    18810.0f, -1000.0f, 7900.0f,
+        0.0f,     0.0f,    0.0f
+},
+{   0, 0,
+    0.0f, 0.0f, 0.0f,
+    0.0f, 0.0f, 0.0f,
+}},
+0, 0
+},
+{
+{{  0x30019, 0x258,
+    0.0f, 190.0f,    0.0f,
+    0.0f, 200.0f, 1000.0f
+},
+{   0x10000, 0,
+    12452.0f, 200.0f, 7397.0f,
+        0.0f,   0.0f,    0.0f
+},
+{   0, 0,
+    0.0f, 0.0f, 0.0f,
+    0.0f, 0.0f, 0.0f,
+}},
+0, 0
+},
+{
+{{  0x40008, 0x258,
+    0.0f, 190.0f,    0.0f,
+    0.0f, 200.0f, 1000.0f
+},
+{   0x10000, 0,
+    1851.0f, 0.0f, -990.0f,
+       0.0f, 0.0f,    0.0f
+},
+{   0, 0,
+    0.0f, 0.0f, 0.0f,
+    0.0f, 0.0f, 0.0f,
+}},
+0, 0
+},
+{
+{{  0x50012, 0x258,
+    0.0f, 190.0f,    0.0f,
+    0.0f, 200.0f, 1000.0f
+},
+{   0x10000, 0,
+    1380.0f, 0.0f, 0.0f,
+       0.0f, 0.0f, 0.0f
+},
+{   0, 0,
+    0.0f, 0.0f, 0.0f,
+    0.0f, 0.0f, 0.0f,
+}},
+0, 0
+},
+{
+{{  0x50006, 0x258,
+    0.0f, 190.0f,    0.0f,
+    0.0f, 200.0f, 1000.0f
+},
+{   0x10000, 0,
+    -2410.0f, 200.0f, 708.0f,
+        0.0f,   0.0f,   0.0f
+},
+{   0, 0,
+    0.0f, 0.0f, 0.0f,
+    0.0f, 0.0f, 0.0f,
+}},
+0, 0
+},
+{
+{{  0xE0002, 0x384,
+    0.0f, 190.0f,    0.0f,
+    0.0f, 200.0f, 1000.0f
+},
+{   0x10000, 0,
+      0.0f, 0.0f, -400.0f,
+    180.0f, 0.0f,    0.0f
+},
+{   0, 0,
+    0.0f, 0.0f, 0.0f,
+    0.0f, 0.0f, 0.0f,
+}},
+0, 0
+},
+{
+{{  0xFFFF0000, 0,
+    0.0f, 190.0f,    0.0f,
+    0.0f, 200.0f, 1000.0f
+},
+{   0x10000, 0,
+    0.0f, 0.0f, 0.0f,
+    0.0f, 0.0f, 0.0f,
+},
+{   0, 0,
+    0.0f, 0.0f, 0.0f,
+    0.0f, 0.0f, 0.0f,
+}},
+0, 0
+}
+};
+
+
+s16 D_80100D64[] = {
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0x0014,
+    0,
+    0x00A5,
+    0,
+    0,
+    0,
+    0x0064,
+    0x0064,
+    0x00EE,
+    0x013C,
+    0
+};
+
+s16 D_80100D88 = 1;
+s16 D_80100D8C[] = {0, 1, 1, 1, 2, 6, 7, 7, 7, 8};
+
+//0-B
+extern const char D_8010E9A0[];
+extern const char D_8010E9A8[];
+extern const char D_8010E9B0[];
+extern const char D_8010E9B8[];
+extern const char D_8010E9C0[];
+extern const char D_8010E9C8[];
+
+letterDef D_80100DA0[] = {
+    {96, 186, D_8010E9A0},
+    {96, 186, D_8010E9A8},
+    {96, 186, D_8010E9B0},
+    {96, 186, D_8010E9B8},
+    {96, 186, D_8010E9C0},
+    {96, 186, D_8010E9C8},
+    {0, 0, NULL},
+};
+
+//options
+extern const char D_8010EA24[];
+extern const char D_8010EA3C[];
+extern const char D_8010EA54[];
+extern const char D_8010EA6C[];
+extern const char D_8010EA94[];
+
+const char* D_80100DD8[] = {
+    D_8010EA24,
+    D_8010EA3C,
+    D_8010EA54,
+    D_8010EA6C,
+    D_8010EA94,
+    NULL
+};
+
+//continue/exit
+extern const char D_8010EB40[];
+extern const char D_8010EB54[];
+
+letterDef D_80100DF0[] = {
+    {48, 120, D_8010EB40},
+    {80, 152, D_8010EB54},
+    {0, 0, NULL}
+};
+
+s16 D_80100E08[17][5] = {
+    {0, 0,  24, -176, 3},
+    {0, 1,  24, -160, 3},
+    {0, 0,  56, -216, 0},
+    {0, 1,  56, -200, 0},
+    {0, 0,  88, -136, 6},
+    {0, 1,  88, -120, 6},
+    {0, 0, 120, -246, 2},
+    {0, 1, 120, -230, 2},
+    {0, 0, 168, -166, 8},
+    {0, 1, 168, -150, 8},
+    {0, 2, 200, -196, 1},
+    {0, 3, 200, -180, 1},
+    {0, 0, 232, -226, 2},
+    {0, 1, 232, -210, 2},
+    {0, 2, 264, -186, 0},
+    {0, 3, 264, -170, 0},
+    {0, 0,   0,    0,-1}
+};
+
+s16 D_80100EB4[] = {84,86,85,87,88,89,89,89,89,0};
+
+//jungle, land
+extern const char D_8010EBA4[];
+extern const char D_8010EBB4[];
+letterDef D_80100EC8[] = {
+    {72, 56, D_8010EBA4},
+    {184, 56, D_8010EBB4}
+};
+
+//ant, land
+extern const char D_8010EBC0[];
+extern const char D_8010EBC8[];
+letterDef D_80100ED8[] = {
+    {96, 56, D_8010EBC0},
+    {160, 56, D_8010EBC8}
+};
+
+//bomb, land
+extern const char D_8010EBD4[];
+extern const char D_8010EBE0[];
+letterDef D_80100EE8[] = {
+    {96, 56, D_8010EBD4},
+    {160, 56, D_8010EBE0}
+};
+
+//desert, castle
+extern const char D_8010EBEC[];
+extern const char D_8010EBFC[];
+letterDef D_80100EF8[] = {
+    {66, 56, D_8010EBEC},
+    {168, 56, D_8010EBFC}
+};
+
+//kids, land
+extern const char D_8010EC0C[];
+extern const char D_8010EC18[];
+letterDef D_80100F08[] = {
+    {88, 56, D_8010EC0C},
+    {168, 56, D_8010EC18}
+};
+
+//ghost, castle
+extern const char D_8010EC24[];
+extern const char D_8010EC30[];
+letterDef D_80100F18[] = {
+    {72, 56, D_8010EC24},
+    {168, 56, D_8010EC30}
+};
+
+letterDef* D_80100F28[] = {
+    D_80100EC8,
+    D_80100ED8,
+    D_80100EE8,
+    D_80100EF8,
+    D_80100F08,
+    D_80100F18,
+    D_80100F18,
+    D_80100F18,
+    D_80100F18,
+    NULL,
+};
+
+unk80100F50 D_80100F50[] = {
+    {(u32) bootproc, (u32) assets0_VRAM},
+    {(u32) assets0_VRAM, (u32) static0_VRAM_END},
+    {NULL, NULL},
+    {NULL, NULL},
+    {NULL, NULL}
+};
+
+s32 D_80100F78 = 0;
+s32 D_80100F7C = 0;
+s32 D_80100F80 = 0;
+s32 D_80100F84 = 0;
+s32 D_80100F88 = 0;
+
+s32 D_80100F8C[17] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+
+s16 UseFixedRNGSeed = 0;
+
+//debug
+extern const char D_8010F028[];
+extern const char D_8010F02C[];
+extern const char D_8010F030[];
+extern const char D_8010F034[];
+extern const char D_8010F038[];
+extern const char D_8010F03C[];
+extern const char D_8010F040[];
+extern const char D_8010F044[];
+extern const char D_8010F048[];
+extern const char D_8010F04C[];
+extern const char D_8010F050[];
+extern const char D_8010F054[];
+extern const char D_8010F058[];
+extern const char D_8010F05C[];
+extern const char D_8010F060[];
+extern const char D_8010F064[];
+extern const char D_8010F068[];
+extern const char D_8010F06C[];
+
+const char* D_80100FD4[] = {
+    D_8010F028,
+    D_8010F02C,
+    D_8010F030,
+    D_8010F034,
+    D_8010F038,
+    D_8010F03C,
+    D_8010F040,
+    D_8010F044,
+    D_8010F048,
+    D_8010F04C,
+    D_8010F050,
+    D_8010F054,
+    D_8010F058,
+    D_8010F05C,
+    D_8010F060,
+    D_8010F064,
+    D_8010F068,
+    D_8010F06C,
+    NULL
+};
+
+s32 D_80101020 = 0;
+s16 D_80101024[] = {6,6,6,10,-1};
+s16 D_80101030 = 0;
+s8 D_80101034[] = {7,8,9,11,12,13,14,15,-1};
+f32 D_80101040 = 0.0f;
+f32 D_80101044 = 0.0f;
+
+unkStruct0 D_80101048 = {
+    4265,
+    4041,
+    3677,
+    2854,
+    2172,
+    1530,
+    1118,
+    712,
+    313,
+    0
+};
+
+s32 D_80101070 = 0;
+s32 D_80101074 = 0;
+s32 CreditsTimeOffset = 0;
+s32 gValidPlayerInits = 6;
+
+s32 AmountOfCredits = 19;
+s32 AmountOfCredits_pad = 0;
+
+//this formatting is atrocious please bear with me
+PlayerInit gPlayerInits[10] = {
+ {4090, 68, 0, {0, {26.2847900390625f, 0.0f, -1401.450439453125f},
+ {13.54901123046875f, 0.0f, -1400.6544189453125f},
+ 0.0f, -1.0f, {12.73577880859375f, -13.754118919372559f, -0.7960205078125f},
+ {0.0f, 0.0f, 0.0f},
+ 3.576324462890625f, 12.760629653930664f, 0.320000022649765f, 1.0f, 30.0f, 150.0f, 0, 1, 10, 0, 0, 0, 0, 1.0f, 0, 0, 0, -1, 0, 7, 0, 26.2847900390625f, 0.0f, -1.450439453125f, {0.0f, 0.0f, 0.0f},
+ {0.0f, 0.0f, 0.0f},
+ 1, 91.34614562988281f, 0, 0, 0, 10, 0, 0, 0, 0, {377.59930419921875f, 776.8203125f, 1176.0413818359375f, 1575.262451171875f, -1423.4075927734375f, -1448.3587646484375f},
+ {-1473.31005859375f, -1498.26123046875f},
+ -243, {1.0f, 0.0f, 0.0f},
+ 0.0f, 0.0f, 1, 1, 0, 0, 0, 60.0f, 50.0f},
+ {0, 0, 0, 0, 0, 0, {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+ {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+ {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+ {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+ {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+ {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+ {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+ 0.0f, 0.0f, 0.0f, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+ 0, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+ 0, {0.0f},
+ 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0, 0.0f, 0, 0, 0},
+ {0x00, 0x00, 0x00, 0x01, 0x43, 0x90, 0xF5, 0x83, 0x43, 0x87, 0x00, 0x00, 0x42, 0x3C, 0x6D, 0xC2, 0x42, 0x87, 0x4A, 0x3E, 0xC4, 0xA2, 0xA3, 0xA1, 0x40, 0x9A, 0xEF, 0x7F, 0x43, 0x9F, 0xD2, 0xF0, 0x44, 0x17, 0x35, 0xDF, 0xC4, 0x09, 0x3E, 0x00, 0x42, 0x3C, 0x6D, 0xC2, 0x44, 0x1E, 0xC1, 0x78, 0xC3, 0x9F, 0x31, 0x66, 0x42, 0x3C, 0x6D, 0xC2, 0x42, 0x87, 0x4A, 0x3E, 0xC4, 0xA2, 0xA3, 0xA1, 0x00, 0x00, 0x00, 0x00, 0x3F, 0x80, 0x00, 0x00, 0x3F, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x43, 0x34, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00},
+ 0, 0, 1},
+ {3716, 77, 0, {0, {20.0f, 0.0f, 620.0f},
+ {20.0f, 0.0f, 620.0f},
+ 0.0f, -1.0f, {0.0f, -13.754118919372559f, 0.0f},
+ {0.0f, 0.0f, 0.0f},
+ 312.9129943847656f, 0.0f, 0.320000022649765f, 1.0f, 30.0f, 150.0f, 0, 1, 10, 0, 0, 0, 0, 1.0f, 0, 0, 2, -1, 0, 7, 0, 20.0f, 0.0f, 20.0f, {0.0f, 0.0f, 0.0f},
+ {0.0f, 0.0f, 0.0f},
+ 0, 267.03759765625f, 0, 0, 0, 10, 0, 0, 0, 0, {63.576759338378906f, 335.9315185546875f, 608.2862548828125f, 880.6409912109375f, 666.8728637695312f, 959.8283081054688f},
+ {1252.78369140625f, 1545.7392578125f},
+ -626, {1.0f, 0.0f, 0.0f},
+ 0.0f, 0.0f, 1, 1, 0, 0, 0, 60.0f, 50.0f},
+ {0, 0, 0, 0, 0, 0, {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+ {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+ {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+ {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+ {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+ {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+ {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+ 0.0f, 0.0f, 0.0f, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+ 0, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+ 0, {0.0f},
+ 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0, 0.0f, 0, 0, 0},
+ {0x00, 0x00, 0x00, 0x01, 0x43, 0x62, 0x55, 0x89, 0x43, 0x87, 0x00, 0x00, 0x41, 0x95, 0x94, 0x65, 0x42, 0x81, 0x95, 0xF4, 0x44, 0x02, 0xBC, 0x2C, 0x40, 0x25, 0xDF, 0x3A, 0xC4, 0x05, 0x6A, 0x7E, 0x44, 0x16, 0xA5, 0xDF, 0x44, 0x89, 0xB4, 0x93, 0x41, 0x95, 0x94, 0x65, 0x43, 0xD1, 0x9E, 0xDA, 0x44, 0x8E, 0x1B, 0x99, 0x41, 0x95, 0x94, 0x65, 0x42, 0x81, 0x95, 0xF4, 0x44, 0x02, 0xBC, 0x2C, 0x00, 0x00, 0x00, 0x00, 0x3F, 0x80, 0x00, 0x00, 0x3F, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x38, 0x43, 0x34, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00},
+ 0, 0, 10},
+ {2866, 47, 0, {0, {1.31561279296875f, 0.0f, 696.3430786132812f},
+ {1.31561279296875f, 0.0f, 696.3430786132812f},
+ 0.0f, -1.0f, {0.0f, -13.754118919372559f, 0.0f},
+ {-31.795303344726562f, 20.247161865234375f, -10.876914978027344f},
+ 40.149383544921875f, 0.0f, 0.320000022649765f, 1.0f, 30.0f, 150.0f, 0, 1, 10, 0, 0, 0, 0, 1.0f, 0, 0, 2, -1, 0, 7, 0, 1.31561279296875f, 0.0f, -3.65692138671875f, {0.0f, 0.0f, 0.0f},
+ {0.0f, 0.0f, 0.0f},
+ 0, 683.8077392578125f, 0, 0, 0, 10, 0, 0, 0, 0, {111.38431549072266f, 417.1307067871094f, 722.8770751953125f, 1028.62353515625f, 603.494384765625f, 345.581298828125f},
+ {87.66827392578125f, -170.24481201171875f},
+ -1446, {1.0f, 0.0f, 0.0f},
+ 0.0f, 0.0f, 1, 1, 0, 0, 0, 60.0f, 50.0f},
+ {0, 1, 10, 0, 0, 10, {11.465489387512207f, 45.86195755004883f, 90.57988739013672f, 135.16046142578125f, 179.48687744140625f, 222.97657775878906f, 264.0537109375f, 301.9752197265625f, 338.2799072265625f, 373.91058349609375f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+ {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+ {-9.67173957824707f, -38.68695831298828f, -43.71753692626953f, -49.847145080566406f, -57.603973388671875f, -69.16449737548828f, -87.54025268554688f, -111.76747131347656f, -138.35635375976562f, -165.84188842773438f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+ {40.149383544921875f, 6.418548583984375f, 7.82879638671875f, 9.925872802734375f, 14.88623046875f, 24.101226806640625f, 32.5736083984375f, 36.218353271484375f, 37.646636962890625f, 37.646636962890625f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+ {15.0f, 60.0f, 100.57801818847656f, 144.059326171875f, 188.50399780273438f, 233.4572296142578f, 278.1863708496094f, 321.9953308105469f, 365.4801940917969f, 409.0386962890625f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+ {28.66372299194336f, 68.2209243774414f, 112.87017822265625f, 157.32366943359375f, 201.2317352294922f, 243.51515197753906f, 283.01446533203125f, 320.1275634765625f, 356.0952453613281f, 391.7259216308594f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+ {-24.179349899291992f, -41.202247619628906f, -46.78234100341797f, -53.72555923461914f, -63.38423538208008f, -78.35237121582031f, -99.65386199951172f, -125.0619125366211f, -152.09912109375f, -179.58465576171875f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+ 336.0821228027344f, 409.0386962890625f, 42.526275634765625f, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+ 0, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+ 0, {39.015785217285156f},
+ 34.68069839477539f, 30.345609664916992f, 26.010522842407227f, 21.67543601989746f, 17.340349197387695f, 13.005261421203613f, 8.670174598693848f, 4.335087299346924f, 0.0f, 341.1146240234375f, 20.80000114440918f, 138.8479766845703f, 329.2213134765625f, 47.49870300292969f, 24, 0.0f, 0, 0, 0},
+ {0x00, 0x00, 0x00, 0x01, 0x43, 0x21, 0x64, 0x40, 0x43, 0x87, 0x00, 0x00, 0x42, 0x36, 0xA0, 0xEA, 0x44, 0x54, 0x83, 0x70, 0x44, 0x06, 0xFF, 0x17, 0x44, 0x08, 0x60, 0x6B, 0xC4, 0x3E, 0x8E, 0x96, 0x44, 0x92, 0xF3, 0x1B, 0x43, 0x85, 0xFC, 0x3E, 0x42, 0x36, 0xA0, 0xEA, 0x44, 0x9A, 0x10, 0x5B, 0x44, 0x96, 0x4D, 0x7C, 0x42, 0x36, 0xA0, 0xEA, 0x44, 0x54, 0x83, 0x70, 0x44, 0x06, 0xFF, 0x17, 0x00, 0x00, 0x00, 0x00, 0x3F, 0x80, 0x00, 0x02, 0x3F, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x43, 0x34, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00},
+ 0, 0, 15},
+ {2286, 158, 0, {0, {2043.54736328125f, 0.0f, -55.4671630859375f},
+ {2059.941650390625f, 0.0f, -42.6661376953125f},
+ 0.0f, -1.0f, {-16.394287109375f, -13.754118919372559f, -12.801025390625f},
+ {-31.795303344726562f, 20.247161865234375f, -10.876914978027344f},
+ 142.0166015625f, 20.80000114440918f, 0.320000022649765f, 1.0f, 30.0f, 150.0f, 0, 1, 10, 0, 0, 0, 0, 1.0f, 0, 0, 2, -1, 0, 20, 0, 2043.54736328125f, 0.0f, -55.4671630859375f, {0.0f, 0.0f, 0.0f},
+ {0.0f, 0.0f, 0.0f},
+ 2, 927.9891357421875f, -1, 0, 0, 10, 0, 0, 0, 0, {1753.4937744140625f, 1438.2181396484375f, 1122.942626953125f, 807.6668701171875f, -281.9465637207031f, -528.1198120117188f},
+ {-774.2930908203125f, -1020.4663696289062f},
+ 4, {2.0f, 0.0f, 0.0f},
+ 0.0f, 0.0f, 1, 1, 0, 0, 0, 60.0f, 50.0f},
+ {0, 0, 0, 0, 0, 0, {-1.8999097347259521f, -7.599638938903809f, -15.403757095336914f, -23.231719970703125f, -31.032169342041016f, -38.82360076904297f, -46.65592575073242f, -54.49021911621094f, -62.313106536865234f, -70.12788391113281f, -77.94017791748047f, -85.74919128417969f, -93.55890655517578f, -101.36884307861328f, -109.17896270751953f, -116.9876708984375f, -124.79508972167969f, -132.60073852539062f, -140.40530395507812f, -158.01840209960938f, -184.6678924560547f, -213.281494140625f, -241.99771118164062f, -270.8002624511719f, -299.5953063964844f, -328.019775390625f, -347.883056640625f, -355.7592468261719f, -363.44580078125f, -371.3194885253906f, 0.0f, 0.0f, -340.96142578125f},
+ {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+ {14.879195213317871f, 59.516780853271484f, 103.83453369140625f, 148.14883422851562f, 192.4672393798828f, 236.78746032714844f, 281.1007995605469f, 325.4138488769531f, 369.72857666015625f, 414.04486083984375f, 458.36151123046875f, 502.6787109375f, 546.9957275390625f, 591.31298828125f, 635.6302490234375f, 679.9472045898438f, 724.2647705078125f, 768.5823364257812f, 812.90087890625f, 854.31005859375f, 890.5851440429688f, 925.3368530273438f, 959.951416015625f, 994.5444946289062f, 1029.1378173828125f, 1064.0218505859375f, 1104.3955078125f, 1148.692626953125f, 1193.0482177734375f, 1237.34619140625f, 0.0f, 0.0f, 1324.5211181640625f},
+ {-97.27371215820312f, -100.0f, -100.0f, -100.0f, -100.0f, -100.0f, -100.0f, -100.0f, -100.0f, -100.0f, -100.0f, -100.0f, -100.0f, -100.0f, -100.0f, -100.0f, -100.0f, -100.0f, -113.04522705078125f, -126.27313232421875f, -129.42703247070312f, -129.7437744140625f, -129.7437744140625f, -129.7437744140625f, -129.179931640625f, -116.2315673828125f, -100.0f, -100.0f, -100.0f, -70.82520294189453f, 0.0f, 0.0f, -70.82556915283203f},
+ {15.0f, 60.0f, 104.97089385986328f, 149.95925903320312f, 194.95298767089844f, 239.94906616210938f, 284.9463806152344f, 329.9444580078125f, 374.9429626464844f, 419.9418029785156f, 464.94085693359375f, 509.9400939941406f, 554.939453125f, 599.9389038085938f, 644.9384155273438f, 689.9380493164062f, 734.9376831054688f, 779.9373168945312f, 824.9370727539062f, 868.8014526367188f, 909.5294799804688f, 949.5985107421875f, 989.984375f, 1030.7525634765625f, 1071.859375f, 1113.4356689453125f, 1157.8912353515625f, 1202.5220947265625f, 1247.1795654296875f, 1291.8607177734375f, 0.0f, 0.0f},
+ {-4.74977445602417f, -11.501697540283203f, -19.317737579345703f, -27.13194465637207f, -34.927886962890625f, -42.73976135253906f, -50.57307434082031f, -58.40166473388672f, -66.22049713134766f, -74.03402709960938f, -81.84468078613281f, -89.654052734375f, -97.46387481689453f, -105.2739028930664f, -113.08331298828125f, -120.8913803100586f, -128.69790649414062f, -136.50302124023438f, -149.21185302734375f, -171.3431396484375f, -198.97470092773438f, -227.6396026611328f, -256.39898681640625f, -285.1977844238281f, -313.80755615234375f, -337.951416015625f, -351.8211669921875f, -359.6025390625f, -367.38262939453125f, -371.037353515625f, 0.0f, 0.0f},
+ {37.1979866027832f, 81.6756591796875f, 125.99168395996094f, 170.30804443359375f, 214.62734985351562f, 258.9441223144531f, 303.25732421875f, 347.57122802734375f, 391.88671875f, 436.20318603515625f, 480.5201110839844f, 524.8372192382812f, 569.1543579101562f, 613.4716186523438f, 657.7886962890625f, 702.10595703125f, 746.423583984375f, 790.7415771484375f, 833.60546875f, 872.4476318359375f, 907.9609985351562f, 942.6441650390625f, 977.2479248046875f, 1011.8411865234375f, 1046.579833984375f, 1084.208740234375f, 1126.5440673828125f, 1170.870361328125f, 1215.197265625f, 1238.211669921875f, 0.0f, 0.0f},
+ -97.27371215820312f, 0.0f, 78.99539184570312f, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+ 0, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+ 0, {39.015785217285156f},
+ 34.68069839477539f, 30.345609664916992f, 26.010522842407227f, 21.67543601989746f, 17.340349197387695f, 13.005261421203613f, 8.670174598693848f, 4.335087299346924f, 0.0f, 341.1146240234375f, 20.80000114440918f, 138.8479766845703f, 329.2213134765625f, 47.49870300292969f, 24, 1.8456820249557495f, 0, -1, 0},
+ {0x00, 0x00, 0x00, 0x01, 0x42, 0xDC, 0x9C, 0x3D, 0x43, 0x87, 0x00, 0x00, 0x44, 0xEA, 0x02, 0x80, 0x42, 0x74, 0x2A, 0xDE, 0xC3, 0x23, 0xBE, 0x58, 0x3F, 0x0D, 0x0B, 0x67, 0x44, 0xC7, 0x4E, 0xCA, 0x44, 0x16, 0x23, 0x45, 0xC4, 0x64, 0x81, 0xEA, 0x44, 0xEA, 0x02, 0x80, 0x43, 0xF6, 0x18, 0x33, 0x44, 0x11, 0xC1, 0x9F, 0x44, 0xEA, 0x02, 0x80, 0x42, 0x74, 0x2A, 0xDE, 0xC3, 0x23, 0xBE, 0x58, 0x00, 0x00, 0x00, 0x00, 0x3F, 0x80, 0x00, 0x02, 0x3F, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x43, 0x34, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00},
+ 0, 0, 20},
+ {1555, 48, 0, {0, {1700.0f, 0.0f, 0.0f},
+ {1700.0f, 0.0f, 0.0f},
+ 0.0f, -1.0f, {0.0f, -13.754118919372559f, 0.0f},
+ {-31.795303344726562f, 20.247161865234375f, -10.876914978027344f},
+ 74.5086669921875f, 0.0f, 0.320000022649765f, 1.0f, 30.0f, 150.0f, 0, 1, 10, 0, 0, 0, 0, 1.0f, 0, 0, 2, -1, 0, 18, 0, 0.0f, 0.0f, 0.0f, {0.0f, 0.0f, 0.0f},
+ {0.0f, 0.0f, 0.0f},
+ 0, 1263.68115234375f, -1, 0, 0, 10, 0, 0, 0, 0, {1729.9144287109375f, 1836.75146484375f, 1943.58837890625f, 2050.425537109375f, -107.93114471435547f, -493.3995056152344f},
+ {-878.8678588867188f, -1264.336181640625f},
+ -86, {1.0f, 0.0f, 0.0f},
+ 0.0f, 0.0f, 1, 1, 0, 0, 0, 60.0f, 50.0f},
+ {0, 0, 0, 0, 0, 0, {-14.908260345458984f, -59.63304138183594f, -104.41517639160156f, -149.41517639160156f, -194.41517639160156f, -239.41517639160156f, -284.4151611328125f, -328.92938232421875f, -371.72607421875f, -412.0799255371094f, -448.25799560546875f, -479.1686706542969f, -509.3229064941406f, -537.6637573242188f, -558.6005859375f, -568.248779296875f, -568.248779296875f, -568.248779296875f, -564.5556030273438f, -560.8624267578125f, -557.1692504882812f, -553.47607421875f, -553.47607421875f, -553.47607421875f, -448.1075439453125f, -492.62176513671875f, -536.4039916992188f, -579.1486206054688f, -619.817138671875f, -656.2980346679688f, -688.3527221679688f, -720.4074096679688f, -340.96142578125f},
+ {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+ {1.6564314365386963f, 6.625725746154785f, 11.048418045043945f, 11.048421859741211f, 11.048425674438477f, 11.048429489135742f, 11.048433303833008f, 4.45414400100708f, -9.454265594482422f, -29.368223190307617f, -56.12913513183594f, -88.83280181884766f, -122.23521423339844f, -157.18942260742188f, -197.02218627929688f, -240.9757080078125f, -285.9757080078125f, -330.9757080078125f, -375.82391357421875f, -420.672119140625f, -465.52032470703125f, -510.3685302734375f, -555.3685302734375f, -600.3685302734375f, -501.5859375f, -494.99163818359375f, -484.59375f, -470.5260925292969f, -451.26287841796875f, -424.916259765625f, -393.3330993652344f, -361.74993896484375f, 1324.5211181640625f},
+ {186.34002685546875f, 185.6402587890625f, 180.0f, 180.0f, 180.0f, 180.0f, 171.57354736328125f, 161.9964599609375f, 153.73443603515625f, 143.50967407226562f, 133.38552856445312f, 132.0743408203125f, 129.03509521484375f, 117.72723388671875f, 102.380615234375f, 90.0f, 90.0f, 85.29238891601562f, 85.29238891601562f, 85.29238891601562f, 85.29238891601562f, 90.0f, 90.0f, 90.0f, 188.42645263671875f, 193.3597412109375f, 198.21685791015625f, 205.34521484375f, 215.8369140625f, 224.575439453125f, 224.575439453125f, 224.575439453125f, -70.82556915283203f},
+ {15.0f, 59.999996185302734f, 104.99807739257812f, 149.82310485839844f, 194.72885131835938f, 239.6699676513672f, 284.6296691894531f, 328.95953369140625f, 371.8463134765625f, 413.1251220703125f, 451.75848388671875f, 487.33343505859375f, 523.7855224609375f, 560.1703491210938f, 592.3279418945312f, 617.2324829101562f, 636.1515502929688f, 657.6105346679688f, 678.2083740234375f, 701.0932006835938f, 726.0487060546875f, 752.8690185546875f, 784.0726928710938f, 816.5648193359375f, 672.5985717773438f, 698.3501586914062f, 722.8833618164062f, 746.1956176757812f, 766.6886596679688f, 781.8445434570312f, 792.8053588867188f, 806.1326904296875f},
+ {-37.270652770996094f, -82.02410888671875f, -126.91517639160156f, -171.91517639160156f, -216.91517639160156f, -261.9151611328125f, -306.6722717285156f, -350.3277282714844f, -391.90301513671875f, -430.1689758300781f, -463.7133483886719f, -494.24578857421875f, -523.4933471679688f, -548.1321411132812f, -563.4246826171875f, -568.248779296875f, -568.248779296875f, -566.4021606445312f, -562.708984375f, -559.0158081054688f, -555.3226318359375f, -553.47607421875f, -553.47607421875f, -553.47607421875f, -470.3646545410156f, -514.5128784179688f, -557.7763061523438f, -599.48291015625f, -638.0576171875f, -672.3253784179688f, -704.3800659179688f, -736.4347534179688f},
+ {4.141078948974609f, 8.837072372436523f, 11.048419952392578f, 11.048423767089844f, 11.04842758178711f, 11.048431396484375f, 7.751288414001465f, -2.50006103515625f, -19.411243438720703f, -42.748680114746094f, -72.48097229003906f, -105.53401184082031f, -139.7123260498047f, -177.10580444335938f, -218.9989471435547f, -263.4757080078125f, -308.4757080078125f, -353.3998107910156f, -398.2480163574219f, -443.0962219238281f, -487.9444274902344f, -532.8685302734375f, -577.8685302734375f, -622.8685302734375f, -498.2887878417969f, -489.7926940917969f, -477.5599365234375f, -460.8945007324219f, -438.0895690917969f, -409.12469482421875f, -377.5415344238281f, -345.9583740234375f},
+ 186.34002685546875f, 0.0f, 104.2652587890625f, {13, 15, 22, 23, 19, 18, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+ 0, {13, 15, 22, 23, 19, 18, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+ 0, {39.015785217285156f},
+ 34.68069839477539f, 30.345609664916992f, 26.010522842407227f, 21.67543601989746f, 17.340349197387695f, 13.005261421203613f, 8.670174598693848f, 4.335087299346924f, 0.0f, 341.1146240234375f, 20.80000114440918f, 138.8479766845703f, 329.2213134765625f, 47.49870300292969f, 24, 1.8456820249557495f, 0, -1, 0},
+ {0x00, 0x00, 0x00, 0x01, 0x43, 0x56, 0x42, 0x40, 0x43, 0x87, 0x00, 0x00, 0x44, 0xA8, 0x94, 0xD7, 0x42, 0x43, 0x5C, 0xCC, 0x41, 0x94, 0x17, 0x43, 0x3F, 0xCF, 0x10, 0x8E, 0x43, 0xF4, 0x8B, 0x3E, 0x44, 0x43, 0x67, 0x85, 0x44, 0x16, 0xFD, 0x73, 0x44, 0xA8, 0x94, 0xD7, 0x44, 0x35, 0x70, 0x9F, 0x44, 0x94, 0xDF, 0x07, 0x44, 0xA8, 0x94, 0xD7, 0x42, 0x43, 0x5C, 0xCC, 0x41, 0x94, 0x17, 0x43, 0x00, 0x00, 0x00, 0x01, 0x3F, 0xA6, 0x66, 0x64, 0x3F, 0xA6, 0x66, 0x66, 0x00, 0x00, 0x00, 0x51, 0x43, 0x34, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00},
+ 0, 0, 23},
+ {1119, 216, 0, {0, {9.81707763671875f, 0.0f, 2292.763916015625f},
+ {9.322021484375f, 0.0f, 2313.55810546875f},
+ 0.0f, -1.0f, {0.49505615234375f, -13.754118919372559f, -20.794189453125f},
+ {-22.704818725585938f, 22.272003173828125f, 0.8305773735046387f},
+ 88.63616943359375f, 20.80000114440918f, 0.320000022649765f, 1.0f, 30.0f, 150.0f, 0, 1, 10, 0, 0, 0, 0, 1.0f, 0, 0, 11, -1, 0, 20, 0, 9.81707763671875f, 0.0f, 2292.763916015625f, {0.0f, 0.0f, 0.0f},
+ {0.0f, 0.0f, 0.0f},
+ 2, 1988.731689453125f, -1, 0, 0, 10, 0, 0, 0, 0, {12.482796669006348f, 22.00322151184082f, 31.52364730834961f, 41.044071197509766f, 2180.795654296875f, 1780.908935546875f},
+ {1381.022216796875f, 981.1356201171875f},
+ -1336, {1.0f, 0.0f, 0.0f},
+ 0.0f, 0.0f, 1, 1, 0, 0, 0, 60.0f, 50.0f},
+ {0, 0, 0, 0, 0, 0, {-15.0f, -45.0f, -45.0f, -45.0f, -45.0f, -45.0f, -45.0f, -45.0f, -45.0f, -45.0f, -45.0f, -45.0f, -45.0f, -45.0f, -45.0f, -45.0f, -45.0f, -90.0f, -135.0f, -180.0f, -225.0f, -553.47607421875f, -553.47607421875f, -553.47607421875f, -448.1075439453125f, -492.62176513671875f, -536.4039916992188f, -579.1486206054688f, -619.817138671875f, -656.2980346679688f, -688.3527221679688f, -720.4074096679688f, -327.177734375f},
+ {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+ {1.3113416343912832e-06f, 3.934024789487012e-06f, 3.9340256989817135e-06f, 3.934024789487012e-06f, 3.93402387999231e-06f, 3.934024789487012e-06f, 3.9340256989817135e-06f, 3.934022970497608e-06f, 3.9340256989817135e-06f, 3.934022970497608e-06f, 3.93402387999231e-06f, 3.934022970497608e-06f, 3.934022061002906e-06f, 3.934022970497608e-06f, 3.93402387999231e-06f, 3.934022970497608e-06f, 3.934029336960521e-06f, 7.868052307458129e-06f, 1.1802083463408053e-05f, 1.573610643390566e-05f, 1.967012940440327e-05f, -510.3685302734375f, -555.3685302734375f, -600.3685302734375f, -501.5859375f, -494.99163818359375f, -484.59375f, -470.5260925292969f, -451.26287841796875f, -424.916259765625f, -393.3330993652344f, -361.74993896484375f, -36.218570709228516f},
+ {180.0f, 180.0f, 180.0f, 180.0f, 180.0f, 180.0f, 180.0f, 180.0f, 180.0f, 180.0f, 180.0f, 180.0f, 180.0f, 180.0f, 180.0f, 180.0f, 180.0f, 180.0f, 180.0f, 180.0f, 160.48312377929688f, 90.0f, 90.0f, 90.0f, 188.42645263671875f, 193.3597412109375f, 198.21685791015625f, 205.34521484375f, 215.8369140625f, 224.575439453125f, 224.575439453125f, 224.575439453125f, 160.48342895507812f},
+ {15.0f, 60.0f, 105.0f, 150.0f, 195.0f, 240.0f, 285.0f, 330.0f, 375.0f, 420.0f, 465.0f, 510.0f, 555.0f, 600.0f, 645.0f, 690.0f, 735.0f, 780.0f, 825.0f, 870.0f, 915.0f, 752.8690185546875f, 784.0726928710938f, 816.5648193359375f, 672.5985717773438f, 698.3501586914062f, 722.8833618164062f, 746.1956176757812f, 766.6886596679688f, 781.8445434570312f, 792.8053588867188f, 806.1326904296875f},
+ {-37.5f, -45.0f, -45.0f, -45.0f, -45.0f, -45.0f, -45.0f, -45.0f, -45.0f, -45.0f, -45.0f, -45.0f, -45.0f, -45.0f, -45.0f, -45.0f, -45.0f, -90.0f, -135.0f, -180.0f, -203.52178955078125f, -553.47607421875f, -553.47607421875f, -553.47607421875f, -470.3646545410156f, -514.5128784179688f, -557.7763061523438f, -599.48291015625f, -638.0576171875f, -672.3253784179688f, -704.3800659179688f, -736.4347534179688f},
+ {3.2783541428216267e-06f, 3.934024789487012e-06f, 3.934024789487012e-06f, 3.934024789487012e-06f, 3.934024789487012e-06f, 3.934026608476415e-06f, 3.934022970497608e-06f, 3.934026608476415e-06f, 3.934022970497608e-06f, 3.934024789487012e-06f, 3.934024789487012e-06f, 3.934024789487012e-06f, 3.934024789487012e-06f, 3.934022970497608e-06f, 3.934022970497608e-06f, 3.934022970497608e-06f, 3.934022970497608e-06f, 7.86804775998462e-06f, 1.1802072549471632e-05f, 1.5736097338958643e-05f, -0.3621532618999481f, -532.8685302734375f, -577.8685302734375f, -622.8685302734375f, -498.2887878417969f, -489.7926940917969f, -477.5599365234375f, -460.8945007324219f, -438.0895690917969f, -409.12469482421875f, -377.5415344238281f, -345.9583740234375f},
+ 180.0f, 0.0f, 123.83331298828125f, {13, 15, 22, 23, 19, 18, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+ 0, {13, 15, 22, 23, 19, 18, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+ 0, {58.78312301635742f},
+ 52.25166320800781f, 45.72020721435547f, 39.18874740600586f, 32.657291412353516f, 26.125831604003906f, 19.59437370300293f, 13.062915802001953f, 6.531457901000977f, 0.0f, 2.09503173828125f, 20.80000114440918f, 209.05709838867188f, 286.3926086425781f, -7.647623538970947f, 22, 2.168139696121216f, 3, -1, 0},
+ {0x00, 0x00, 0x00, 0x01, 0x43, 0x85, 0x66, 0x6B, 0x43, 0x87, 0x00, 0x00, 0x41, 0x57, 0x36, 0xC3, 0x42, 0x10, 0x53, 0x59, 0x45, 0x05, 0x4E, 0xD6, 0x3E, 0x98, 0x6B, 0x34, 0xC2, 0x78, 0x10, 0xE7, 0x44, 0x7D, 0x93, 0x09, 0x45, 0x59, 0xAD, 0x1A, 0x41, 0x57, 0x36, 0xC3, 0x44, 0x67, 0x33, 0x6C, 0x45, 0x65, 0x83, 0xD3, 0x41, 0x57, 0x36, 0xC3, 0x42, 0x10, 0x53, 0x59, 0x45, 0x05, 0x4E, 0xD6, 0x00, 0x00, 0x00, 0x02, 0x3F, 0xD8, 0x51, 0xE8, 0x3F, 0xD8, 0x51, 0xEA, 0x00, 0x00, 0x00, 0x00, 0x43, 0x34, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00},
+ 0, 0, 32},
+ {0, 0, 0, {0, {0.0f, 0.0f, 0.0f},
+ {0.0f, 0.0f, 0.0f},
+ 0.0f, 0.0f, {0.0f, 0.0f, 0.0f},
+ {0.0f, 0.0f, 0.0f},
+ 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0, 0, 0, 0, 0, 0, 0, 0.0f, 0, 0, 0, 0, 0, 0, 0, 0.0f, 0.0f, 0.0f, {0.0f, 0.0f, 0.0f},
+ {0.0f, 0.0f, 0.0f},
+ 0, 0.0f, 0, 0, 0, 0, 0, 0, 0, 0, {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+ {0.0f, 0.0f},
+ 0, {0.0f, 0.0f, 0.0f},
+ 0.0f, 0.0f, 0, 0, 0, 0, 0, 0.0f, 0.0f},
+ {0, 0, 0, 0, 0, 0, {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+ {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+ {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+ {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+ {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+ {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+ {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+ 0.0f, 0.0f, 0.0f, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+ 0, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+ 0, {0.0f},
+ 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0, 0.0f, 0, 0, 0},
+ {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00},
+ 0, 0, 0},
+ {0, 0, 0, {0, {0.0f, 0.0f, 0.0f},
+ {0.0f, 0.0f, 0.0f},
+ 0.0f, 0.0f, {0.0f, 0.0f, 0.0f},
+ {0.0f, 0.0f, 0.0f},
+ 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0, 0, 0, 0, 0, 0, 0, 0.0f, 0, 0, 0, 0, 0, 0, 0, 0.0f, 0.0f, 0.0f, {0.0f, 0.0f, 0.0f},
+ {0.0f, 0.0f, 0.0f},
+ 0, 0.0f, 0, 0, 0, 0, 0, 0, 0, 0, {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+ {0.0f, 0.0f},
+ 0, {0.0f, 0.0f, 0.0f},
+ 0.0f, 0.0f, 0, 0, 0, 0, 0, 0.0f, 0.0f},
+ {0, 0, 0, 0, 0, 0, {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+ {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+ {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+ {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+ {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+ {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+ {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+ 0.0f, 0.0f, 0.0f, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+ 0, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+ 0, {0.0f},
+ 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0, 0.0f, 0, 0, 0},
+ {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00},
+ 0, 0, 0},
+ {0, 0, 0, {0, {0.0f, 0.0f, 0.0f},
+ {0.0f, 0.0f, 0.0f},
+ 0.0f, 0.0f, {0.0f, 0.0f, 0.0f},
+ {0.0f, 0.0f, 0.0f},
+ 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0, 0, 0, 0, 0, 0, 0, 0.0f, 0, 0, 0, 0, 0, 0, 0, 0.0f, 0.0f, 0.0f, {0.0f, 0.0f, 0.0f},
+ {0.0f, 0.0f, 0.0f},
+ 0, 0.0f, 0, 0, 0, 0, 0, 0, 0, 0, {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+ {0.0f, 0.0f},
+ 0, {0.0f, 0.0f, 0.0f},
+ 0.0f, 0.0f, 0, 0, 0, 0, 0, 0.0f, 0.0f},
+ {0, 0, 0, 0, 0, 0, {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+ {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+ {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+ {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+ {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+ {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+ {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+ 0.0f, 0.0f, 0.0f, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+ 0, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+ 0, {0.0f},
+ 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0, 0.0f, 0, 0, 0},
+ {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00},
+ 0, 0, 0},
+ {0, 0, 0, {0, {0.0f, 0.0f, 0.0f},
+ {0.0f, 0.0f, 0.0f},
+ 0.0f, 0.0f, {0.0f, 0.0f, 0.0f},
+ {0.0f, 0.0f, 0.0f},
+ 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0, 0, 0, 0, 0, 0, 0, 0.0f, 0, 0, 0, 0, 0, 0, 0, 0.0f, 0.0f, 0.0f, {0.0f, 0.0f, 0.0f},
+ {0.0f, 0.0f, 0.0f},
+ 0, 0.0f, 0, 0, 0, 0, 0, 0, 0, 0, {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+ {0.0f, 0.0f},
+ 0, {0.0f, 0.0f, 0.0f},
+ 0.0f, 0.0f, 0, 0, 0, 0, 0, 0.0f, 0.0f},
+ {0, 0, 0, 0, 0, 0, {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+ {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+ {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+ {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+ {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+ {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+ {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+ 0.0f, 0.0f, 0.0f, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+ 0, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+ 0, {0.0f},
+ 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0, 0.0f, 0, 0, 0},
+ {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00},
+ 0, 0, 0}
+};
+
+
+//matches ROLL_DATA from the uncompiled us 1.0 source code
+//differences:
+//arg0 and arg2
+//the copyright bit is gone and 11 entries were added
+//some strings were moved around/spliced to fit the character limit/display better
+RollData CreditsData[] = {
+    {3931,0,5,0,{"ＥＸＥＣＵＴＩＶＥ　ＰＲＯＤＵＣＥＲ","ＫＡＴＳＵＭＩ","ＫＡＷＡＭＵＲＡ","","","",""}},
+    {3760,1,5,0,{"　　　　ＰＲＯＤＵＣＥＲ","","","ＴＡＥＫＯ","ＮＡＧＡＴＡ","",""}},
+    {3518,2,6,0,{"ＯＲＩＧＩＮＡＬ","　　ＧＡＭＥ　ＤＥＳＩＧＮ","","","ＨＩＤＥＹＵＫＩ","ＮＡＫＡＮＩＳＨＩ", ""}},
+    {3340,3,4,0,{"　　　　ＤＩＲＥＣＴＯＲ","","","ＭＡＳＡＫＩ","ＫＩＭＵＲＡ","",""}},
+    {3169,4,6,0,{"ＣＯＭＰＵＴＥＲ　ＡＲＴＳ","ＴＡＫＡＳＨＩ","ＭＡＫＩＮＯ","ＹＵＫＩ","ＴＡＭＵＲＡ","ＨＩＲＯＹＵＫＩ","ＭＯＲＩＯＫＡ"}},
+    {3003,5,6,0,{"　　　　ＰＲＯＧＲＡＭ","ＨＩＤＥＹＵＫＩ","ＮＡＫＡＮＩＳＨＩ","ＭＡＳＡＴＡＫＡ","ＩＭＵＲＡ","ＴＡＫＡＳＨＩ","ＳＵＧＩＯＫＡ"}},
+    {2782,6,5,0,{"　　　　ＰＲＯＧＲＡＭ","ＭＡＳＡＫＩ","ＫＩＭＵＲＡ","ＭＡＳＡＯＭＩ","ＩＳＨＩＭＯＴＯ","",""}},
+    {2611,7,6,0,{"ＧＲＡＰＨＩＣ　ＡＲＴＳ","ＭＩＴＳＵＹＡＳＵ","ＮＯＭＯＴＯ","ＨＩＤＥＫＩ","ＳＨＩＢＡＧＡＫＩ", "",""}},
+    {2438,8,4,0,{"ＭＵＳＩＣ　＆　ＳＯＵＮＤ","ＴＡＫＡＳＨＩ","ＳＵＧＩＯＫＡ","ＴＡＫＡＳＨＩ","ＭＡＫＩＮＯ","ＹＵＵＪＩ","ＮＡＫＡＯ"}},
+    {2105,9,5,0,{"ＭＵＳＩＣ　＆　ＳＯＵＮＤ","ＮＯＢＵＴＯＳＨＩ","ＩＣＨＩＭＩＹＡ","ＫＯＫＩ","ＴＯＣＨＩＯ","ＴＳＵＴＯＭＵ","ＷＡＳＨＩＪＩＭＡ"}},
+    {1936,10,5,0,{"ＭＵＳＩＣ　＆　ＳＯＵＮＤ","ＨＩＲＯＳＨＩ","ＴＡＫＡＭＩ","ＦＵＭＩＨＩＫＯ","ＹＡＭＡＤＡ","",""}},
+    {1764,11,5,0,{"ＤＥＢＵＧＧＩＮＧ　ＴＥＡＭ","ＹＵＵＳＵＫＥ","ＴＡＢＡＴＡ","ＳＨＩＮＧＯ","ＭＡＴＳＵＭＵＲＡ","ＭＡＫＯＴＯ","ＭＡＥＨＩＲＡ"}},
+    {1586,12,5,0,{"　　ＯＲＩＧＩＮＡＬ","ＣＨＡＭＥＬＥＯＮ　ＤＥＳＩＧＮ","ＴＡＤＡＳＨＩ","ＯＨＹＡ","","",""}},
+    {1366,13,5,0,{"　　ＧＡＭＥ　ＤＥＳＩＧＮ","ＨＩＤＥＹＵＫＩ","ＮＡＫＡＮＩＳＨＩ","ＴＡＫＡＳＨＩ","ＭＡＫＩＮＯ","ＹＵＫＩ","ＴＡＭＵＲＡ"}},
+    {1190,14,3,0,{"　　ＧＡＭＥ　ＤＥＳＩＧＮ","ＨＩＲＯＹＵＫＩ","ＭＯＲＩＯＫＡ","ＭＡＫＯＴＯ","ＴＡＮＡＫＡ","",""}},
+    { 801,15,4,0,{"　　ＧＡＭＥ　ＤＥＳＩＧＮ","ＡＩ","ＮＡＤＡＴＡＮＩ","ＡＫＩＲＯＴ","","",""}},
+    { 626,16,4,0,{"ＡＳＳＩＳＴＡＮＴ　ＰＲＯＤＵＣＥＲ","ＳＹＯＪＩ","ＯＧＡＷＡ","","","",""}},
+    { 452,17,4,0,{"ＰＵＢＬＩＣ　ＩＮＦＯＲＭＡＴＩＯＮ","ＹＵＫＡＫＯ","ＯＫＡＤＡ","ＳＡＣＨＩＹＯ","ＮＯＧＡＭＩ", "",""}},
+    { 276,18,4,0,{"ＳＰＥＣＩＡＬ　ＴＨＡＮＫＳ　ＴＯ","ＳＵＰＥＲ　ＭＡＲＩＯ　ＣＬＵＢ","","ＦＡＭＩＭＡＧＡ６４","","",""}},
+    {0,0,0,0,{"","","","","","",""}},
+    {0,0,0,0,{"","","","","","",""}},
+    {0,0,0,0,{"","","","","","",""}},
+    {0,0,0,0,{"","","","","","",""}},
+    {0,0,0,0,{"","","","","","",""}},
+    {0,0,0,0,{"","","","","","",""}},
+    {0,0,0,0,{"","","","","","",""}},
+    {0,0,0,0,{"","","","","","",""}},
+    {0,0,0,0,{"","","","","","",""}},
+    {0,0,0,0,{"","","","","","",""}},
+    {0,0,0,0,{"","","","","","",""}}
+};
+
+s32 D_80108748 = 0;
+s32 D_8010874C = 500;
+s32 D_80108750 = 0;
+f32 D_80108754 = 0;
+s32 D_80108758 = 0;
+
+s32 D_8010875C = 1;
+f32 D_80108760 = 0;
+f32 D_80108764 = 0;
+f32 D_80108768 = 0;
+
+s32 D_8010876C = 0;
+s32 D_80108770 = 0;
+f32 D_80108774 = 0;
+f32 D_80108778 = 0;
+s32 D_8010877C = 0;
+s32 D_80108780 = 0;
+
+f32 D_80108784 = 0;
+f32 D_80108788 = 10000;
+f32 D_8010878C = 0;
+
+u32 D_80108790 = 0;
+
 
 void schedproc(s32 arg0) {
     s32 var_s2;
@@ -1852,7 +2944,7 @@ void func_8008C1C8(Gfx** arg0) {
         if ((D_80176F58[0] == 0) && (gOneRun != 0)) {
             if ((gNoHit != 0) && (gCurrentStage != STAGE_TRAINING)) {
                 SetTextGradient_TopBottom(255, 255, 0, 255, 255, 0, 0, 255);
-                printUISprite(276.0f, 204.0f, 0.0f, 0.0f, 1.0f, 16.0f, 16.0f, 0.0f, 75);
+                printUISprite(276.0f, 204.0f, 0.0f, 0.0f, 1.0f, 16.0f, 16.0f, 0.0f, SPRITE_STAR2);
             }
         }
     }
@@ -2425,7 +3517,7 @@ Gfx* setFrustum(Gfx* gfxPos, s32 fbIndex) {
 void func_8008E7B8(CTTask* arg0) {
     //more research needed? is it just getting the right half???
     setPrimColor(arg0->unk5E, arg0->unk60, arg0->unk_62, arg0->unk66);
-    printUISprite(2.0f, 2.0f, 0.0f, 0.0f, 1.0f, 316.0f, 236.0f, 0.0f, 0);
+    printUISprite(2.0f, 2.0f, 0.0f, 0.0f, 1.0f, 316.0f, 236.0f, 0.0f, SPRITE_BLANK);
     CTTask_Unlink(arg0);
 }
 
@@ -4461,12 +5553,12 @@ void func_80097D1C(CTTask* task) {
     CTTask* newTask = task->unk58;
 
     setPrimColor(0xCD, 0xFF, 0x4F, 0xFF);
-    func_80059F28(0, 0, 0, 0, 1, 320, 240, 0, 0);
+    func_80059F28(0, 0, 0, 0, 1, 320, 240, 0, SPRITE_BLANK);
     func_800610B8();
-    printUISprite(80, 16, 0, 0, 1, 0, 0, 0, 0x4E);
-    printUISprite(208, 16, 0, 0, 1, 0, 0, 2, 0x4E);
+    printUISprite(80, 16, 0, 0, 1, 0, 0, 0, SPRITE_BATTLE_STAGETITLEBOARD);
+    printUISprite(208, 16, 0, 0, 1, 0, 0, 2, SPRITE_BATTLE_STAGETITLEBOARD);
     for (i = 0x70; i < 0xB1; i += 0x20){
-        printUISprite(i, 16, 0, 0, 1, 0, 0, 1, 0x4E);
+        printUISprite(i, 16, 0, 0, 1, 0, 0, 1, SPRITE_BATTLE_STAGETITLEBOARD);
     }
     func_800610A8();
     SetTextGradient_TopBottom(240, 20, 10, 255, 220, 220, 1, 255);
@@ -4487,15 +5579,15 @@ void func_80097D1C(CTTask* task) {
         PrintText(101, 209, 1, 1, 8, 14, "ＣＡＮＣＥＬ", 1);
         PrintText(187, 209, 1, 1, 8, 14, "ＣＬＥＡＲ", 1);
         PrintText(265, 209, 1, 1, 8, 14, "ＣＯＰＹ", 1);
-        printUISprite(24, 208, 0, 0, 1, 0, 0, 0, 0x6E);
-        printUISprite(78, 208, 0, 0, 1, 0, 0, 1, 0x6E);
-        printUISprite(164, 208, 0, 0, 1, 0, 0, 3, 0x6E);
-        printUISprite(242, 208, 0, 0, 1, 0, 0, 2, 0x6E);
+        printUISprite(24, 208, 0, 0, 1, 0, 0, 0, SPRITE_SPECIFIC_SYMBOLS); // A
+        printUISprite(78, 208, 0, 0, 1, 0, 0, 1, SPRITE_SPECIFIC_SYMBOLS); // B
+        printUISprite(164, 208, 0, 0, 1, 0, 0, 3, SPRITE_SPECIFIC_SYMBOLS); // L
+        printUISprite(242, 208, 0, 0, 1, 0, 0, 2, SPRITE_SPECIFIC_SYMBOLS); // R
     } else {
         PrintText(117, 209, 1, 1, 8, 14, "ＯＫ", 1);
         PrintText(191, 209, 1, 1, 8, 14, "ＣＡＮＣＥＬ", 1);
-        printUISprite(94, 208, 0, 0, 1, 0, 0, 0, 0x6E);
-        printUISprite(168, 208, 0, 0, 1, 0, 0, 1, 0x6E);
+        printUISprite(94, 208, 0, 0, 1, 0, 0, 0, SPRITE_SPECIFIC_SYMBOLS); // A
+        printUISprite(168, 208, 0, 0, 1, 0, 0, 1, SPRITE_SPECIFIC_SYMBOLS); // B
     }
     func_800610B8();
 }
@@ -4506,16 +5598,17 @@ void func_800983C8(CTTask* task) {
     f32 i;
 
     func_800610B8();
-    func_80059F28(x, y, 0, 0, 1, 0, 0, 0, 0x4D);
-    func_80059F28(x, y + 24, 0, 0, 1, 32, 16, 3, 0x4D);
-    func_80059F28(x, y + 40, 0, 0, 1, 0, 0, 6, 0x4D);
-    func_80059F28(x + 96, y, 0, 0, 1, 0, 0, 2, 0x4D);
-    func_80059F28(x + 96, y + 24, 0, 0, 1, 0, 0, 5, 0x4D);
-    func_80059F28(x + 96, y + 40, 0, 0, 1, 0, 0, 8, 0x4D);
+    //drawing the board manually??
+    func_80059F28(x, y, 0, 0, 1, 0, 0, 0, SPRITE_BATTLE_BIGBOARD);
+    func_80059F28(x, y + 24, 0, 0, 1, 32, 16, 3, SPRITE_BATTLE_BIGBOARD);
+    func_80059F28(x, y + 40, 0, 0, 1, 0, 0, 6, SPRITE_BATTLE_BIGBOARD);
+    func_80059F28(x + 96, y, 0, 0, 1, 0, 0, 2, SPRITE_BATTLE_BIGBOARD);
+    func_80059F28(x + 96, y + 24, 0, 0, 1, 0, 0, 5, SPRITE_BATTLE_BIGBOARD);
+    func_80059F28(x + 96, y + 40, 0, 0, 1, 0, 0, 8, SPRITE_BATTLE_BIGBOARD);
     for (i = x + 32; i <= x + 64; i += 32){
-        func_80059F28(i, y, 0, 0, 1, 0, 0, 1, 0x4D);
-        func_80059F28(i, y + 24, 0, 0, 1, 0, 0, 4, 0x4D);
-        func_80059F28(i, y + 40, 0, 0, 1, 0, 0, 7, 0x4D);
+        func_80059F28(i, y, 0, 0, 1, 0, 0, 1, SPRITE_BATTLE_BIGBOARD);
+        func_80059F28(i, y + 24, 0, 0, 1, 0, 0, 4, SPRITE_BATTLE_BIGBOARD);
+        func_80059F28(i, y + 40, 0, 0, 1, 0, 0, 7, SPRITE_BATTLE_BIGBOARD);
     }
 }
 
@@ -4601,10 +5694,10 @@ void func_80098F50(CTTask* task) {
     if ((u16) task->unk72 == 1) {
         temp = task->unk_64;
         func_80059F28(x, y + 33, 0, 0, 1, 0, 0, 0,D_801003CC[task->unk66]);
-        printUISprite(x + 28, y + 33, 0, 0, 1, 0, 0, 0, 0x70);
+        printUISprite(x + 28, y + 33, 0, 0, 1, 0, 0, 0, SPRITE_CROWN_ICON);
         SetTextGradient_TopBottom(20, 100, 1, 255, 240, 220, 0, 255);
         func_800612F0(1);
-        printUISprite(x + 20 + 16 + 9, y + 33, 0, 0, 1, 16, 16, 20, 1);
+        printUISprite(x + 20 + 16 + 9, y + 33, 0, 0, 1, 16, 16, 20, SPRITE_TEXTBIG);
         func_800612F0(0);
         SetTextGradient_TopBottom(20, 100, 1, 255, 240, 220, 0, 255);
         PrintText(x + 20 + 32 + 10, y + 30, 0, 1, 12, 20, ParseIntToBase10(temp, &resultChar[0]), 1);
@@ -4789,7 +5882,7 @@ void func_8009AF98(CTTask* task) {
 
 void func_8009B08C(CTTask* task) {
     setPrimColor(0, 0, 0, 255);
-    printUISprite(2, 2, 0, 0, 1, 316, 236, 0, 0);
+    printUISprite(2, 2, 0, 0, 1, 316, 236, 0, SPRITE_BLANK);
     gGameModeState = 3;
     task->function = func_8009B120;
 }
@@ -5118,33 +6211,34 @@ void func_8009C828(CTTask* task) {
 void func_8009CBC0(void) {
     s32 i, j;
 
+    //drawing the board manually??
     setPrimColor(205, 255, 79, 255);
-    func_80059F28(0, 0, 0, 0, 1, 320, 240, 0, 0);
+    func_80059F28(0, 0, 0, 0, 1, 320, 240, 0, SPRITE_BLANK);
     func_800610B8();
-    func_80059F28(48, 16, 0, 0, 1, 32, 32, 0, 78);
+    func_80059F28(48, 16, 0, 0, 1, 32, 32, 0, SPRITE_BATTLE_STAGETITLEBOARD);
     for (i = 80; i < 209; i += 0x20){
-        func_80059F28(i, 16, 0, 0, 1, 32, 32, 1, 78);
+        func_80059F28(i, 16, 0, 0, 1, 32, 32, 1, SPRITE_BATTLE_STAGETITLEBOARD);
     }
-    func_80059F28(240, 16, 0, 0, 1, 32, 32, 2, 78);
-    func_80059F28(32, 56, 0, 0, 1, 32, 24, 0, 77);
-    func_80059F28(256, 56, 0, 0, 1, 32, 24, 2, 77);
-    func_80059F28(32, 200, 0, 0, 1, 32, 24, 6, 77);
-    func_80059F28(256, 200, 0, 0, 1, 32, 24, 8, 77);
+    func_80059F28(240, 16, 0, 0, 1, 32, 32, 2, SPRITE_BATTLE_STAGETITLEBOARD);
+    func_80059F28(32, 56, 0, 0, 1, 32, 24, 0, SPRITE_BATTLE_BIGBOARD);
+    func_80059F28(256, 56, 0, 0, 1, 32, 24, 2, SPRITE_BATTLE_BIGBOARD);
+    func_80059F28(32, 200, 0, 0, 1, 32, 24, 6, SPRITE_BATTLE_BIGBOARD);
+    func_80059F28(256, 200, 0, 0, 1, 32, 24, 8, SPRITE_BATTLE_BIGBOARD);
     for (i = 0x40; i < 225; i += 0x20){
-        func_80059F28(i, 56, 0, 0, 1, 32, 24, 1, 77);
+        func_80059F28(i, 56, 0, 0, 1, 32, 24, 1, SPRITE_BATTLE_BIGBOARD);
     }
     for (i = 0x40; i != 0x100; i += 0x20){
-        func_80059F28(i, 200, 0, 0, 1, 32, 24, 7, 77);
+        func_80059F28(i, 200, 0, 0, 1, 32, 24, 7, SPRITE_BATTLE_BIGBOARD);
     }
     for (j = 80; j < 177; j += 0x18){
-        func_80059F28(32, j, 0, 0, 1, 32, 24, 3, 77);
+        func_80059F28(32, j, 0, 0, 1, 32, 24, 3, SPRITE_BATTLE_BIGBOARD);
     }
     for (j = 80; j != 200; j += 0x18){
-        func_80059F28(256, j, 0, 0, 1, 32, 24, 5, 77);
+        func_80059F28(256, j, 0, 0, 1, 32, 24, 5, SPRITE_BATTLE_BIGBOARD);
     }
     for (i = 0x40; i != 0x100; i += 0x20){
         for (j = 80; j != 200; j += 0x18){
-            func_80059F28(i, j, 0, 0, 1, 32, 24, 4, 77);
+            func_80059F28(i, j, 0, 0, 1, 32, 24, 4, SPRITE_BATTLE_BIGBOARD);
         }
     }
 }
@@ -5155,7 +6249,7 @@ void func_8009CFA8(void) {
     for (i = 0; i != 5; i++){
         for (j = 0; j != 8; j++){
             func_800612F0(i);
-            func_80059F28(j * 40, i * 48, 0, 0, 1, 0, 0, j, 210);
+            func_80059F28(j * 40, i * 48, 0, 0, 1, 0, 0, j, SPRITE_BATTLE_CHAMELEONBACKGROUND);
         }
     }
 }
@@ -5248,11 +6342,11 @@ void func_8009DE1C(CTTask* task) {
         task->function = func_8009E24C;
         task->unk60 = 8;
         temp_t1->unk94[task->unk_5C] = task->unk_62;
-        PLAY_SFX(0x28, 0, 0x10);
+        PLAY_SFX(SFX_Select, 0, 0x10);
     }
     if (gContMain[task->unk_62].buttons2 & 0x4000) {
         temp_t1->unk54 = 15;
-        PLAY_SFX(0xC4, 0, 0x10);
+        PLAY_SFX(SFX_Decline, 0, 0x10);
         return;
     }
     if (result == 0) return;
@@ -5267,7 +6361,7 @@ void func_8009DE1C(CTTask* task) {
         if ((task->unk_5C == 4) && (D_80200B2C == 0)) {
             task->unk_5C--;
         }
-        PLAY_SFX(0x2A, 0, 0x10);
+        PLAY_SFX(SFX_2A_unkSnd, 0, 0x10);
         while (temp_t1->unk94[task->unk_5C] != 0xFF){
             task->unk_5C--;
             if (task->unk_5C < 0) {
@@ -5292,7 +6386,7 @@ void func_8009DE1C(CTTask* task) {
         if (task->unk_5C >= 6) {
             task->unk_5C = 0;
         }
-        PLAY_SFX(0x2A, 0, 0x10);
+        PLAY_SFX(SFX_2A_unkSnd, 0, 0x10);
         while (temp_t1->unk94[task->unk_5C] != 0xFF){
             task->unk_5C++;
             if ((task->unk_5C == 4) && (D_80200B2C == 0)) {
@@ -5389,33 +6483,33 @@ void func_8009F314(CTTask* task) {
             funcResult = func_8009DDEC(task);
             if ((gContMain[task->unk_62].buttons2 & 0x1000) || (gContMain[task->unk_62].buttons2 & 0x8000)) {
                 newTask->unk54 = 14;
-                PLAY_SFX(40, 0, 0x10);
+                PLAY_SFX(SFX_Select, 0, 0x10);
             } else if (gContMain[task->unk_62].buttons2 & 0x4000) {
                 newTask->unk54 = 8;
-                PLAY_SFX(196, 0, 0x10);
+                PLAY_SFX(SFX_Decline, 0, 0x10);
             } else if (gContMain[task->unk_62].buttons2 & 0x0010) {
                 newTask->unk54 = 9;
-                PLAY_SFX(40, 0, 0x10);
+                PLAY_SFX(SFX_Select, 0, 0x10);
             } else if (funcResult != 0) {
                 if (funcResult & 0x400) {
                     if (newTask->unk5E < 4) {
                         newTask->unk5E += 4;
-                        PLAY_SFX(42, 0, 0x10);
+                        PLAY_SFX(SFX_2A_unkSnd, 0, 0x10);
                     }
                 } else if (funcResult & 0x800) {
                     if (newTask->unk5E >= 4) {
                         newTask->unk5E -= 4;
-                        PLAY_SFX(42, 0, 0x10);
+                        PLAY_SFX(SFX_2A_unkSnd, 0, 0x10);
                     }
                 } else if (funcResult & 0x100) {
                     newTask->unk5E++;
-                    PLAY_SFX(42, 0, 0x10);
+                    PLAY_SFX(SFX_2A_unkSnd, 0, 0x10);
                     if ((newTask->unk5E == 4) || (newTask->unk5E == 8)) {
                         newTask->unk5E -= 4;
                     }
                 } else if (funcResult & 0x200) {
                     newTask->unk5E--;
-                    PLAY_SFX(42, 0, 0x10);
+                    PLAY_SFX(SFX_2A_unkSnd, 0, 0x10);
                     if ((newTask->unk5E == -1) || (newTask->unk5E == 3)) {
                         newTask->unk5E += 4;
                     }
@@ -5487,7 +6581,7 @@ void func_800A03B8(CTTask* task) {
         if ((gContMain[task->unk_62].buttons2 & 0x1000) || (gContMain[task->unk_62].buttons2 & 0x8000)) {
             if (newTask->unk60 == 4) {
                 newTask->unk54 = 12;
-                PLAY_SFX(40, 0, 0x10);
+                PLAY_SFX(SFX_Select, 0, 0x10);
                 task->function = func_8009F314;
             }
         } else if (funcResult != 0) {
@@ -5496,13 +6590,13 @@ void func_800A03B8(CTTask* task) {
                 if (newTask->unk60 >= 5) {
                     newTask->unk60 = 0;
                 }
-                PLAY_SFX(42, 0, 0x10);
+                PLAY_SFX(SFX_2A_unkSnd, 0, 0x10);
             } else if (funcResult & 0x800) {
                 newTask->unk60--;
                 if (newTask->unk60 < 0) {
                     newTask->unk60 = 4;
                 }
-                PLAY_SFX(42, 0, 0x10);
+                PLAY_SFX(SFX_2A_unkSnd, 0, 0x10);
             } else {
                 if (funcResult & 0x100) {
                     if (newTask->unk60 == 3) {
@@ -5510,21 +6604,21 @@ void func_800A03B8(CTTask* task) {
                         if (newTask->unk6A >= 5) {
                             newTask->unk6A = 0;
                         }
-                        PLAY_SFX(42, 0, 0x10);
+                        PLAY_SFX(SFX_2A_unkSnd, 0, 0x10);
                     } else if (newTask->unk60 == 0) {
                         newTask->unk66++;
                         if (newTask->unk66 >= 4) {
                             newTask->unk66 = 0;
                         }
-                        PLAY_SFX(42, 0, 0x10);
+                        PLAY_SFX(SFX_2A_unkSnd, 0, 0x10);
                     } else if (newTask->unk60 == 1) {
                         newTask->unk_62++;
                         if (newTask->unk_62 >= 9) {
                             newTask->unk_62 = 0;
                         }
-                        PLAY_SFX(42, 0, 0x10);
+                        PLAY_SFX(SFX_2A_unkSnd, 0, 0x10);
                     } else if (newTask->unk60 == 2) {
-                        PLAY_SFX(42, 0, 0x10);
+                        PLAY_SFX(SFX_2A_unkSnd, 0, 0x10);
                         newTask->unk_68++;
                         if (D_80200B1E < newTask->unk_68) {
                             newTask->unk_68 = D_801003DC.unk6[-D_80200B1E + 1];
@@ -5537,25 +6631,25 @@ void func_800A03B8(CTTask* task) {
                         if (newTask->unk6A < 0) {
                             newTask->unk6A = 4;
                         }
-                        PLAY_SFX(42, 0, 0x10);
+                        PLAY_SFX(SFX_2A_unkSnd, 0, 0x10);
                     } else if (newTask->unk60 == 0) {
                         newTask->unk66--;
                         if (newTask->unk66 < 0) {
                             newTask->unk66 = 3;
                         }
-                        PLAY_SFX(42, 0, 0x10);
+                        PLAY_SFX(SFX_2A_unkSnd, 0, 0x10);
                     } else if (newTask->unk60 == 1) {
                         newTask->unk_62--;
                         if (newTask->unk_62 < 0) {
                             newTask->unk_62 = 8;
                         }
-                        PLAY_SFX(42, 0, 0x10);
+                        PLAY_SFX(SFX_2A_unkSnd, 0, 0x10);
                     } else if (newTask->unk60 == 2) {
                         newTask->unk_68--;
                         if (newTask->unk_68 < D_801003DC.unk6[-D_80200B1E + 1]) {
                             newTask->unk_68 = D_80200B1E;
                         }
-                        PLAY_SFX(42, 0, 0x10);
+                        PLAY_SFX(SFX_2A_unkSnd, 0, 0x10);
                     }
                 }
             }
@@ -5587,7 +6681,20 @@ void func_800A0D90(void) {
     func_80084788();
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A0E3C.s")
+void func_800A0E3C(CTTask* task) {
+    void (*taskFunc)(CTTask*);
+    CTTask* sp20;
+
+    sp20 = task->unk58;
+    taskFunc = task->function;
+    if (taskFunc == NULL) {
+        DummiedPrintf("NULL POINTER %d\n", task->taskID);
+    } else {
+        taskFunc(task);
+    }
+    func_8008D7FC(task);
+    task->unk50 = ChameleonGfxs[sp20->unk5E];
+}
 
 u16 func_800A0EB8(CTTask* task) {
     return func_8008D6E4(task, &gContMain[task->unk_62]);
@@ -5633,14 +6740,6 @@ const char D_8010E8D4[] = "Ｈ";
 const char D_8010E8D8[] = "Ｉ";
 const char D_8010E8DC[] = "Ｔ";
 const char D_8010E8E0[] = "Ｅ";
-
-/*chameleonLetter D_801004F0[] = {
-    {0x58, 0x4B, &D_8010E878},
-    {0x80, 0x44, &D_8010E87C},
-    {0xB0, 0x44, &D_8010E880},
-    {0xD8, 0x4B, &D_8010E884},
-    {0, 0, 0},
-};*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A10F0.s")
 
@@ -5920,14 +7019,14 @@ void func_800A3DC0(CTTask* arg0) {
 
 void PrintDataClearConfirm(void) {
     setPrimColor(0, 0, 0, 200);
-    printUISprite(64, 72, 0, 0, 1, 192, 88, 0, 0);
+    printUISprite(64, 72, 0, 0, 1, 192, 88, 0, SPRITE_BLANK);
     func_800610A8();
     SetTextGradient_TopBottom(255, 10, 10, 255, 200, 200, 0, 255);
     PrintText(76, 88, 0, 1, 0, 0, "ＤＡＴＡ", 1);
     PrintText(148, 88, 0, 1, 0, 0, "ＣＬＥＡＲ？", 1);
     func_800612F0(0);
-    printUISprite(96, 128, 0, 0, 1, 0, 0, 0, 110);
-    printUISprite(152, 128, 0, 0, 1, 0, 0, 1, 110);
+    printUISprite(96, 128, 0, 0, 1, 0, 0, 0, SPRITE_SPECIFIC_SYMBOLS); // A
+    printUISprite(152, 128, 0, 0, 1, 0, 0, 1, SPRITE_SPECIFIC_SYMBOLS); // B
     PrintText(120, 129, 0, 1, 8, 14, "ＯＫ", 1);
     PrintText(176, 129, 0, 1, 8, 14, "ＣＡＮＣＥＬ", 1);
     func_800610B8();
@@ -5941,7 +7040,7 @@ void func_800A41C0(CTTask* task) {
     if (task->unk_62 != 0) {
         task->unk_62--;
         setPrimColor(0, 0, 0, 200);
-        printUISprite(64, 160, 0, 0, 1, 192, 32, 0, 0);
+        printUISprite(64, 160, 0, 0, 1, 192, 32, 0, SPRITE_BLANK);
         SetTextGradient_TopBottom(255, 10, 10, 255, 200, 200, 0, 255);
         PrintText(136, 160, 0, 1, 24, 24, "ＯＫ！", 1);
     } else {
@@ -5962,8 +7061,9 @@ void Process_OptionsMenu(void) {
         LoadSprite(SPRITE_BATTLE_BIGBOARD);
         LoadSprite(SPRITE_BATTLE_STAGETITLEBOARD);
         LoadSprite(SPRITE_BATTLE_OPTIONSARROWS);
-        LoadSprite(195);
-        LoadSprite(14);
+        //??????
+        LoadSprite(SPRITE_TEXT_JL2);
+        LoadSprite(SPRITE_GRAYANT);
         CTTaskList_Init();
         D_80168DA0 = 4;
         gGameModeState++;
@@ -6080,7 +7180,7 @@ void Task_GameOverLetter(CTTask* task) {
     task->unk7C += 2.5;
     func_800612F0(task->unk_64);
     SetTextGradient_TopBottom(240, 20, 10, 255, 220, 120, 1, 255);
-    func_80059F28(task->pos.x, task->pos.y, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, task->unk_04, 94);
+    func_80059F28(task->pos.x, task->pos.y, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, task->unk_04, SPRITE_TEXTBIGGER);
 }
 
 CTTask* func_800A4BCC(CTTask* task) {
@@ -6134,8 +7234,8 @@ void Process_GameOver(void) {
             D_801FC9AC = 0;
             func_8008F114();
             func_8008FE00();
-            LoadPlayerEyes(*gSelectedCharacters);
-            SetPlayerContextEyes(*gSelectedCharacters, 2, 0);
+            LoadPlayerEyes(gSelectedCharacters[0]);
+            SetPlayerContextEyes(gSelectedCharacters[0], 2, 0);
             break;
         case 1:
             func_800A4484();
@@ -6863,6 +7963,7 @@ const char D_8010F064[] = "8";
 const char D_8010F068[] = "9";
 const char D_8010F06C[] = "10";
 
+//debug 4p printer
 void func_800A93AC(ContMain* arg0) {
     s32 i;
 
@@ -6915,10 +8016,11 @@ void func_800A9728(CTTask* arg0) {
     }
 }
 
+//ending_goto_endinglevel
 void func_800A97E4(CTTask* arg0) {
     if (func_8008EC90() != 0) {
         setPrimColor(0, 0, 0, 0xFF);
-        printUISprite(2.0f, 2.0f, 0.0f, 0.0f, 1.0f, 316.0f, 236.0f, 0.0f, 0);
+        printUISprite(2.0f, 2.0f, 0.0f, 0.0f, 1.0f, 316.0f, 236.0f, 0.0f, SPRITE_BLANK);
         if (D_800F0704 != 0) {
             gGameModeState = 3;
             return;
@@ -7079,334 +8181,335 @@ void func_800AAB0C(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/PlayerInits_Copy.s")
 
+//related to credits
 void func_800AB734(void) {
     s32 i;
-    EffectTypeAQArg7* str1;
-    EffectTypeAQArg7* str2;
-    EffectTypeAQArg7* str3;
-    EffectTypeAQArg7* str4;
-    EffectTypeAQArg7* str5;
-    EffectTypeAQArg7* str6;
-    EffectTypeAQArg7* str7;
+    char* str1;
+    char* str2;
+    char* str3;
+    char* str4;
+    char* str5;
+    char* str6;
+    char* str7;
 
-    for (i = 0; i < D_80101080; i++) {
-        if (D_80105E08[i].unk_00 == gCurrentDemoTimer - D_80101078) {
-            D_80101074 = D_80105E08[i].unk_04;
-            if (D_80105E08[i].unk_04 && D_80105E08[i].unk_04 && D_80105E08[i].unk_04) {} // TODO: fake match
-            switch (D_80105E08[i].unk_04) {
+    for (i = 0; i < AmountOfCredits; i++) {
+        if (CreditsData[i].execTime == gCurrentDemoTimer - CreditsTimeOffset) {
+            D_80101074 = CreditsData[i].unk_04;
+            if (CreditsData[i].unk_04 && CreditsData[i].unk_04 && CreditsData[i].unk_04) {} // TODO: fake match
+            switch (CreditsData[i].unk_04) {
                 case 0:
-                    str1 = D_80105E08[i].unk_10[0];
-                    str2 = D_80105E08[i].unk_10[1];
-                    str3 = D_80105E08[i].unk_10[2];
-                    str4 = D_80105E08[i].unk_10[3];
-                    str5 = D_80105E08[i].unk_10[4];
+                    str1 = CreditsData[i].lines[0];
+                    str2 = CreditsData[i].lines[1];
+                    str3 = CreditsData[i].lines[2];
+                    str4 = CreditsData[i].lines[3];
+                    str5 = CreditsData[i].lines[4];
                     Effect_TypeK_Init(150.0f, 0.0f, -120.0f);
                     Effect_TypeAR_Init(16.0f, 140.0f, 1, 30.0f, 60.0f, 60.0f, 5, str1, 1, &D_8010875C);
-                    Effect_TypeAQ_Init(54.0f, 180.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xC, str2, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(78.0f, 204.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xC, str3, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(54.0f, 180.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str2, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(78.0f, 204.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str3, 4, &D_8010875C);
                     Effect_TypeAQ_Init(54.0f, 228.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xB, str4, 4, &D_8010875C);
                     Effect_TypeAQ_Init(78.0f, 252.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xB, str5, 4, &D_8010875C);
                     break;
                 case 1:
-                    str1 = D_80105E08[i].unk_10[0];
-                    str2 = D_80105E08[i].unk_10[1];
-                    str3 = D_80105E08[i].unk_10[2];
-                    str4 = D_80105E08[i].unk_10[3];
-                    str5 = D_80105E08[i].unk_10[4];
-                    str6 = D_80105E08[i].unk_10[5];
-                    str7 = D_80105E08[i].unk_10[6];
+                    str1 = CreditsData[i].lines[0];
+                    str2 = CreditsData[i].lines[1];
+                    str3 = CreditsData[i].lines[2];
+                    str4 = CreditsData[i].lines[3];
+                    str5 = CreditsData[i].lines[4];
+                    str6 = CreditsData[i].lines[5];
+                    str7 = CreditsData[i].lines[6];
                     Effect_TypeK_Init(150.0f, 160.0f, -60.0f);
                     Effect_TypeAR_Init(20.0f, 192.0f, 1, 30.0f, 60.0f, 60.0f, 5, str1, 1, &D_8010875C);
-                    Effect_TypeAQ_Init(24.0f, 48.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xC, str2, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(36.0f, 72.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xC, str3, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(24.0f, 96.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xB, str4, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(36.0f, 120.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xB, str5, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(24.0f, 48.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str2, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(36.0f, 72.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str3, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(24.0f, 96.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str4, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(36.0f, 120.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str5, 4, &D_8010875C);
                     Effect_TypeAQ_Init(24.0f, 144.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str6, 4, &D_8010875C);
                     Effect_TypeAQ_Init(36.0f, 168.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str7, 4, &D_8010875C);
                     break;
                 case 2:
-                    str1 = D_80105E08[i].unk_10[0];
-                    str2 = D_80105E08[i].unk_10[1];
-                    str3 = D_80105E08[i].unk_10[2];
-                    str4 = D_80105E08[i].unk_10[3];
-                    str5 = D_80105E08[i].unk_10[4];
-                    str6 = D_80105E08[i].unk_10[5];
-                    str7 = D_80105E08[i].unk_10[6];
+                    str1 = CreditsData[i].lines[0];
+                    str2 = CreditsData[i].lines[1];
+                    str3 = CreditsData[i].lines[2];
+                    str4 = CreditsData[i].lines[3];
+                    str5 = CreditsData[i].lines[4];
+                    str6 = CreditsData[i].lines[5];
+                    str7 = CreditsData[i].lines[6];
                     Effect_TypeK_Init(150.0f, 160.0f, 84.0f);
                     Effect_TypeAR_Init(60.0f, 24.0f, 1, 30.0f, 60.0f, 60.0f, 5, str1, 1, &D_8010875C);
                     Effect_TypeAR_Init(60.0f, 48.0f, 0, 30.0f, 60.0f, 60.0f, 5, str2, 1, &D_8010875C);
                     Effect_TypeAQ_Init(24.0f, 112.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str3, 4, &D_8010875C);
                     Effect_TypeAQ_Init(36.0f, 136.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str4, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(24.0f, 160.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xB, str5, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(36.0f, 184.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xB, str6, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(24.0f, 208.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xC, str7, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(24.0f, 160.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str5, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(36.0f, 184.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str6, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(24.0f, 208.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str7, 4, &D_8010875C);
                     break;
                 case 3:
-                    str1 = D_80105E08[i].unk_10[0];
-                    str2 = D_80105E08[i].unk_10[1];
-                    str3 = D_80105E08[i].unk_10[2];
-                    str4 = D_80105E08[i].unk_10[3];
-                    str5 = D_80105E08[i].unk_10[4];
-                    str6 = D_80105E08[i].unk_10[5];
-                    str7 = D_80105E08[i].unk_10[6];
+                    str1 = CreditsData[i].lines[0];
+                    str2 = CreditsData[i].lines[1];
+                    str3 = CreditsData[i].lines[2];
+                    str4 = CreditsData[i].lines[3];
+                    str5 = CreditsData[i].lines[4];
+                    str6 = CreditsData[i].lines[5];
+                    str7 = CreditsData[i].lines[6];
                     Effect_TypeK_Init(150.0f, 160.0f, -60.0f);
                     Effect_TypeAR_Init(20.0f, 192.0f, 1, 30.0f, 60.0f, 60.0f, 5, str1, 1, &D_8010875C);
-                    Effect_TypeAQ_Init(24.0f, 24.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xC, str2, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(36.0f, 48.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xC, str3, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(24.0f, 72.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xB, str4, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(36.0f, 96.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xB, str5, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(24.0f, 24.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str2, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(36.0f, 48.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str3, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(24.0f, 72.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str4, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(36.0f, 96.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str5, 4, &D_8010875C);
                     Effect_TypeAQ_Init(24.0f, 120.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str6, 4, &D_8010875C);
                     Effect_TypeAQ_Init(36.0f, 144.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str7, 4, &D_8010875C);
                     break;
                 case 4:
-                    str1 = D_80105E08[i].unk_10[0];
-                    str2 = D_80105E08[i].unk_10[1];
-                    str3 = D_80105E08[i].unk_10[2];
-                    str4 = D_80105E08[i].unk_10[3];
-                    str5 = D_80105E08[i].unk_10[4];
-                    str6 = D_80105E08[i].unk_10[5];
-                    str7 = D_80105E08[i].unk_10[6];
+                    str1 = CreditsData[i].lines[0];
+                    str2 = CreditsData[i].lines[1];
+                    str3 = CreditsData[i].lines[2];
+                    str4 = CreditsData[i].lines[3];
+                    str5 = CreditsData[i].lines[4];
+                    str6 = CreditsData[i].lines[5];
+                    str7 = CreditsData[i].lines[6];
                     Effect_TypeK_Init(150.0f, -160.0f, -60.0f);
                     Effect_TypeAR_Init(20.0f, 192.0f, 0, 30.0f, 60.0f, 60.0f, 5, str1, 1, &D_8010875C);
                     Effect_TypeAQ_Init(196.0f, 48.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str2, 4, &D_8010875C);
                     Effect_TypeAQ_Init(208.0f, 72.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str3, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(196.0f, 96.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xA, str4, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(208.0f, 120.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xA, str5, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(196.0f, 144.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xB, str6, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(208.0f, 168.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xB, str7, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(196.0f, 96.0f, 12.0f, 3.0f, 60.0f, 60.0f, 10, str4, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(208.0f, 120.0f, 12.0f, 3.0f, 60.0f, 60.0f, 10, str5, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(196.0f, 144.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str6, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(208.0f, 168.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str7, 4, &D_8010875C);
                     break;
                 case 5:
-                    str1 = D_80105E08[i].unk_10[0];
-                    str2 = D_80105E08[i].unk_10[1];
-                    str3 = D_80105E08[i].unk_10[2];
-                    str4 = D_80105E08[i].unk_10[3];
-                    str5 = D_80105E08[i].unk_10[4];
-                    str6 = D_80105E08[i].unk_10[5];
-                    str7 = D_80105E08[i].unk_10[6];
+                    str1 = CreditsData[i].lines[0];
+                    str2 = CreditsData[i].lines[1];
+                    str3 = CreditsData[i].lines[2];
+                    str4 = CreditsData[i].lines[3];
+                    str5 = CreditsData[i].lines[4];
+                    str6 = CreditsData[i].lines[5];
+                    str7 = CreditsData[i].lines[6];
                     Effect_TypeK_Init(150.0f, 160.0f, 60.0f);
                     Effect_TypeAR_Init(20.0f, 24.0f, 1, 30.0f, 60.0f, 60.0f, 5, str1, 1, &D_8010875C);
                     Effect_TypeAQ_Init(24.0f, 88.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str2, 4, &D_8010875C);
                     Effect_TypeAQ_Init(36.0f, 112.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str3, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(24.0f, 136.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xB, str4, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(36.0f, 160.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xB, str5, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(24.0f, 184.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xC, str6, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(36.0f, 208.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xC, str7, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(24.0f, 136.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str4, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(36.0f, 160.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str5, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(24.0f, 184.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str6, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(36.0f, 208.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str7, 4, &D_8010875C);
                     break;
                 case 6:
-                    str1 = D_80105E08[i].unk_10[0];
-                    str2 = D_80105E08[i].unk_10[1];
-                    str3 = D_80105E08[i].unk_10[2];
-                    str4 = D_80105E08[i].unk_10[3];
-                    str5 = D_80105E08[i].unk_10[4];
-                    str6 = D_80105E08[i].unk_10[5];
-                    str7 = D_80105E08[i].unk_10[6];
+                    str1 = CreditsData[i].lines[0];
+                    str2 = CreditsData[i].lines[1];
+                    str3 = CreditsData[i].lines[2];
+                    str4 = CreditsData[i].lines[3];
+                    str5 = CreditsData[i].lines[4];
+                    str6 = CreditsData[i].lines[5];
+                    str7 = CreditsData[i].lines[6];
                     Effect_TypeK_Init(150.0f, -160.0f, 60.0f);
                     Effect_TypeAR_Init(20.0f, 24.0f, 0, 30.0f, 60.0f, 60.0f, 5, str1, 1, &D_8010875C);
-                    Effect_TypeAQ_Init(196.0f, 88.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xB, str2, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(208.0f, 112.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xB, str3, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(196.0f, 136.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xC, str4, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(208.0f, 160.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xC, str5, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(196.0f, 88.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str2, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(208.0f, 112.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str3, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(196.0f, 136.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str4, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(208.0f, 160.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str5, 4, &D_8010875C);
                     Effect_TypeAQ_Init(196.0f, 184.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str6, 4, &D_8010875C);
                     Effect_TypeAQ_Init(208.0f, 208.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str7, 4, &D_8010875C);
                     break;
                 case 7:
-                    str1 = D_80105E08[i].unk_10[0];
-                    str2 = D_80105E08[i].unk_10[1];
-                    str3 = D_80105E08[i].unk_10[2];
-                    str4 = D_80105E08[i].unk_10[3];
-                    str5 = D_80105E08[i].unk_10[4];
-                    str6 = D_80105E08[i].unk_10[5];
-                    str7 = D_80105E08[i].unk_10[6];
+                    str1 = CreditsData[i].lines[0];
+                    str2 = CreditsData[i].lines[1];
+                    str3 = CreditsData[i].lines[2];
+                    str4 = CreditsData[i].lines[3];
+                    str5 = CreditsData[i].lines[4];
+                    str6 = CreditsData[i].lines[5];
+                    str7 = CreditsData[i].lines[6];
                     Effect_TypeK_Init(150.0f, 160.0f, -60.0f);
                     Effect_TypeAR_Init(20.0f, 192.0f, 1, 30.0f, 60.0f, 60.0f, 5, str1, 1, &D_8010875C);
-                    Effect_TypeAQ_Init(24.0f, 72.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xC, str2, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(36.0f, 96.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xC, str3, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(24.0f, 120.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xB, str4, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(36.0f, 144.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xB, str5, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(24.0f, 72.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str2, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(36.0f, 96.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str3, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(24.0f, 120.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str4, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(36.0f, 144.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str5, 4, &D_8010875C);
                     Effect_TypeAQ_Init(24.0f, 168.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str6, 4, &D_8010875C);
                     Effect_TypeAQ_Init(36.0f, 192.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str7, 4, &D_8010875C);
                     break;
                 case 8:
-                    str1 = D_80105E08[i].unk_10[0];
-                    str2 = D_80105E08[i].unk_10[1];
-                    str3 = D_80105E08[i].unk_10[2];
-                    str4 = D_80105E08[i].unk_10[3];
-                    str5 = D_80105E08[i].unk_10[4];
-                    str6 = D_80105E08[i].unk_10[5];
-                    str7 = D_80105E08[i].unk_10[6];
+                    str1 = CreditsData[i].lines[0];
+                    str2 = CreditsData[i].lines[1];
+                    str3 = CreditsData[i].lines[2];
+                    str4 = CreditsData[i].lines[3];
+                    str5 = CreditsData[i].lines[4];
+                    str6 = CreditsData[i].lines[5];
+                    str7 = CreditsData[i].lines[6];
                     Effect_TypeK_Init(150.0f, 160.0f, 60.0f);
                     Effect_TypeAR_Init(20.0f, 24.0f, 1, 30.0f, 60.0f, 60.0f, 5, str1, 1, &D_8010875C);
                     Effect_TypeAQ_Init(24.0f, 88.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str2, 4, &D_8010875C);
                     Effect_TypeAQ_Init(36.0f, 112.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str3, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(24.0f, 136.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xB, str4, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(36.0f, 160.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xB, str5, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(24.0f, 184.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xC, str6, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(36.0f, 208.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xC, str7, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(24.0f, 136.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str4, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(36.0f, 160.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str5, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(24.0f, 184.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str6, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(36.0f, 208.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str7, 4, &D_8010875C);
                     break;
                 case 9:
-                    str1 = D_80105E08[i].unk_10[0];
-                    str2 = D_80105E08[i].unk_10[1];
-                    str3 = D_80105E08[i].unk_10[2];
-                    str4 = D_80105E08[i].unk_10[3];
-                    str5 = D_80105E08[i].unk_10[4];
-                    str6 = D_80105E08[i].unk_10[5];
-                    str7 = D_80105E08[i].unk_10[6];
+                    str1 = CreditsData[i].lines[0];
+                    str2 = CreditsData[i].lines[1];
+                    str3 = CreditsData[i].lines[2];
+                    str4 = CreditsData[i].lines[3];
+                    str5 = CreditsData[i].lines[4];
+                    str6 = CreditsData[i].lines[5];
+                    str7 = CreditsData[i].lines[6];
                     Effect_TypeK_Init(150.0f, 160.0f, -60.0f);
                     Effect_TypeAR_Init(20.0f, 192.0f, 1, 30.0f, 60.0f, 60.0f, 5, str1, 1, &D_8010875C);
-                    Effect_TypeAQ_Init(24.0f, 48.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xC, str2, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(36.0f, 72.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xC, str3, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(24.0f, 96.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xB, str4, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(36.0f, 120.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xB, str5, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(24.0f, 48.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str2, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(36.0f, 72.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str3, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(24.0f, 96.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str4, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(36.0f, 120.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str5, 4, &D_8010875C);
                     Effect_TypeAQ_Init(24.0f, 144.0f, 12.0f, 3.0f, 60.0f, 60.0f, 6, str6, 4, &D_8010875C);
                     Effect_TypeAQ_Init(36.0f, 168.0f, 12.0f, 3.0f, 60.0f, 60.0f, 6, str7, 4, &D_8010875C);
                     break;
                 case 10:
-                    str1 = D_80105E08[i].unk_10[0];
-                    str2 = D_80105E08[i].unk_10[1];
-                    str3 = D_80105E08[i].unk_10[2];
-                    str4 = D_80105E08[i].unk_10[3];
-                    str5 = D_80105E08[i].unk_10[4];
-                    str6 = D_80105E08[i].unk_10[5];
-                    str7 = D_80105E08[i].unk_10[6];
+                    str1 = CreditsData[i].lines[0];
+                    str2 = CreditsData[i].lines[1];
+                    str3 = CreditsData[i].lines[2];
+                    str4 = CreditsData[i].lines[3];
+                    str5 = CreditsData[i].lines[4];
+                    str6 = CreditsData[i].lines[5];
+                    str7 = CreditsData[i].lines[6];
                     Effect_TypeK_Init(150.0f, -160.0f, 60.0f);
                     Effect_TypeAR_Init(20.0f, 24.0f, 0, 30.0f, 60.0f, 60.0f, 5, str1, 1, &D_8010875C);
-                    Effect_TypeAQ_Init(196.0f, 88.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xB, str2, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(208.0f, 112.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xB, str3, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(196.0f, 136.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xC, str4, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(208.0f, 160.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xC, str5, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(196.0f, 88.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str2, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(208.0f, 112.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str3, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(196.0f, 136.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str4, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(208.0f, 160.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str5, 4, &D_8010875C);
                     Effect_TypeAQ_Init(196.0f, 184.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str6, 4, &D_8010875C);
                     Effect_TypeAQ_Init(208.0f, 208.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str7, 4, &D_8010875C);
                     break;
                 case 11:
-                    str1 = D_80105E08[i].unk_10[0];
-                    str2 = D_80105E08[i].unk_10[1];
-                    str3 = D_80105E08[i].unk_10[2];
-                    str4 = D_80105E08[i].unk_10[3];
-                    str5 = D_80105E08[i].unk_10[4];
-                    str6 = D_80105E08[i].unk_10[5];
-                    str7 = D_80105E08[i].unk_10[6];
+                    str1 = CreditsData[i].lines[0];
+                    str2 = CreditsData[i].lines[1];
+                    str3 = CreditsData[i].lines[2];
+                    str4 = CreditsData[i].lines[3];
+                    str5 = CreditsData[i].lines[4];
+                    str6 = CreditsData[i].lines[5];
+                    str7 = CreditsData[i].lines[6];
                     Effect_TypeK_Init(150.0f, 160.0f, 60.0f);
                     Effect_TypeAR_Init(20.0f, 24.0f, 1, 30.0f, 60.0f, 60.0f, 5, str1, 1, &D_8010875C);
-                    Effect_TypeAQ_Init(24.0f, 88.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xC, str2, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(36.0f, 112.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xC, str3, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(24.0f, 136.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xB, str4, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(36.0f, 160.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xB, str5, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(24.0f, 88.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str2, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(36.0f, 112.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str3, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(24.0f, 136.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str4, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(36.0f, 160.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str5, 4, &D_8010875C);
                     Effect_TypeAQ_Init(24.0f, 184.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str6, 4, &D_8010875C);
                     Effect_TypeAQ_Init(36.0f, 208.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str7, 4, &D_8010875C);
                     break;
                 case 12:
-                    str1 = D_80105E08[i].unk_10[0];
-                    str2 = D_80105E08[i].unk_10[1];
-                    str3 = D_80105E08[i].unk_10[2];
-                    str4 = D_80105E08[i].unk_10[3];
-                    str5 = D_80105E08[i].unk_10[4];
-                    str6 = D_80105E08[i].unk_10[5];
-                    str7 = D_80105E08[i].unk_10[6];
+                    str1 = CreditsData[i].lines[0];
+                    str2 = CreditsData[i].lines[1];
+                    str3 = CreditsData[i].lines[2];
+                    str4 = CreditsData[i].lines[3];
+                    str5 = CreditsData[i].lines[4];
+                    str6 = CreditsData[i].lines[5];
+                    str7 = CreditsData[i].lines[6];
                     Effect_TypeK_Init(150.0f, -160.0f, -84.0f);
                     Effect_TypeAR_Init(20.0f, 168.0f, 1, 30.0f, 60.0f, 60.0f, 5, str1, 1, &D_8010875C);
                     Effect_TypeAR_Init(20.0f, 192.0f, 0, 30.0f, 60.0f, 60.0f, 5, str2, 1, &D_8010875C);
                     Effect_TypeAQ_Init(196.0f, 96.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str3, 4, &D_8010875C);
                     Effect_TypeAQ_Init(208.0f, 120.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str4, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(196.0f, 144.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xA, str5, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(208.0f, 168.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xA, str6, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(196.0f, 192.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xB, str7, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(196.0f, 144.0f, 12.0f, 3.0f, 60.0f, 60.0f, 10, str5, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(208.0f, 168.0f, 12.0f, 3.0f, 60.0f, 60.0f, 10, str6, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(196.0f, 192.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str7, 4, &D_8010875C);
                     break;
                 case 13:
-                    str1 = D_80105E08[i].unk_10[0];
-                    str2 = D_80105E08[i].unk_10[1];
-                    str3 = D_80105E08[i].unk_10[2];
-                    str4 = D_80105E08[i].unk_10[3];
-                    str5 = D_80105E08[i].unk_10[4];
-                    str6 = D_80105E08[i].unk_10[5];
-                    str7 = D_80105E08[i].unk_10[6];
+                    str1 = CreditsData[i].lines[0];
+                    str2 = CreditsData[i].lines[1];
+                    str3 = CreditsData[i].lines[2];
+                    str4 = CreditsData[i].lines[3];
+                    str5 = CreditsData[i].lines[4];
+                    str6 = CreditsData[i].lines[5];
+                    str7 = CreditsData[i].lines[6];
                     Effect_TypeK_Init(150.0f, -160.0f, 60.0f);
                     Effect_TypeAR_Init(20.0f, 24.0f, 0, 30.0f, 60.0f, 60.0f, 5, str1, 1, &D_8010875C);
-                    Effect_TypeAQ_Init(196.0f, 88.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xB, str2, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(208.0f, 112.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xB, str3, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(196.0f, 136.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xA, str4, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(208.0f, 160.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xA, str5, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(196.0f, 88.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str2, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(208.0f, 112.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str3, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(196.0f, 136.0f, 12.0f, 3.0f, 60.0f, 60.0f, 10, str4, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(208.0f, 160.0f, 12.0f, 3.0f, 60.0f, 60.0f, 10, str5, 4, &D_8010875C);
                     Effect_TypeAQ_Init(196.0f, 184.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str6, 4, &D_8010875C);
                     Effect_TypeAQ_Init(208.0f, 208.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str7, 4, &D_8010875C);
                     break;
                 case 14:
-                    str1 = D_80105E08[i].unk_10[0];
-                    str2 = D_80105E08[i].unk_10[1];
-                    str3 = D_80105E08[i].unk_10[2];
-                    str4 = D_80105E08[i].unk_10[3];
-                    str5 = D_80105E08[i].unk_10[4];
-                    str6 = D_80105E08[i].unk_10[5];
-                    str7 = D_80105E08[i].unk_10[6];
+                    str1 = CreditsData[i].lines[0];
+                    str2 = CreditsData[i].lines[1];
+                    str3 = CreditsData[i].lines[2];
+                    str4 = CreditsData[i].lines[3];
+                    str5 = CreditsData[i].lines[4];
+                    str6 = CreditsData[i].lines[5];
+                    str7 = CreditsData[i].lines[6];
                     Effect_TypeK_Init(150.0f, -160.0f, -60.0f);
                     Effect_TypeAR_Init(20.0f, 192.0f, 0, 30.0f, 60.0f, 60.0f, 5, str1, 1, &D_8010875C);
                     Effect_TypeAQ_Init(196.0f, 72.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str2, 4, &D_8010875C);
                     Effect_TypeAQ_Init(208.0f, 96.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str3, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(196.0f, 120.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xA, str4, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(208.0f, 144.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xA, str5, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(196.0f, 168.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xB, str6, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(208.0f, 192.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xB, str7, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(196.0f, 120.0f, 12.0f, 3.0f, 60.0f, 60.0f, 10, str4, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(208.0f, 144.0f, 12.0f, 3.0f, 60.0f, 60.0f, 10, str5, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(196.0f, 168.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str6, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(208.0f, 192.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str7, 4, &D_8010875C);
                     break;
                 case 15:
-                    str1 = D_80105E08[i].unk_10[0];
-                    str2 = D_80105E08[i].unk_10[1];
-                    str3 = D_80105E08[i].unk_10[2];
-                    str4 = D_80105E08[i].unk_10[3];
-                    str5 = D_80105E08[i].unk_10[4];
-                    str6 = D_80105E08[i].unk_10[5];
-                    str7 = D_80105E08[i].unk_10[6];
+                    str1 = CreditsData[i].lines[0];
+                    str2 = CreditsData[i].lines[1];
+                    str3 = CreditsData[i].lines[2];
+                    str4 = CreditsData[i].lines[3];
+                    str5 = CreditsData[i].lines[4];
+                    str6 = CreditsData[i].lines[5];
+                    str7 = CreditsData[i].lines[6];
                     Effect_TypeK_Init(150.0f, -160.0f, -60.0f);
                     Effect_TypeAR_Init(20.0f, 192.0f, 0, 30.0f, 60.0f, 60.0f, 5, str1, 1, &D_8010875C);
                     Effect_TypeAQ_Init(196.0f, 72.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str2, 4, &D_8010875C);
                     Effect_TypeAQ_Init(208.0f, 96.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str3, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(196.0f, 120.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xA, str4, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(208.0f, 144.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xA, str5, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(196.0f, 168.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xB, str6, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(208.0f, 192.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xB, str7, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(196.0f, 120.0f, 12.0f, 3.0f, 60.0f, 60.0f, 10, str4, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(208.0f, 144.0f, 12.0f, 3.0f, 60.0f, 60.0f, 10, str5, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(196.0f, 168.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str6, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(208.0f, 192.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str7, 4, &D_8010875C);
                     break;
                 case 16:
-                    str1 = D_80105E08[i].unk_10[0];
-                    str2 = D_80105E08[i].unk_10[1];
-                    str3 = D_80105E08[i].unk_10[2];
-                    str4 = D_80105E08[i].unk_10[3];
-                    str5 = D_80105E08[i].unk_10[4];
-                    str6 = D_80105E08[i].unk_10[5];
-                    str7 = D_80105E08[i].unk_10[6];
+                    str1 = CreditsData[i].lines[0];
+                    str2 = CreditsData[i].lines[1];
+                    str3 = CreditsData[i].lines[2];
+                    str4 = CreditsData[i].lines[3];
+                    str5 = CreditsData[i].lines[4];
+                    str6 = CreditsData[i].lines[5];
+                    str7 = CreditsData[i].lines[6];
                     Effect_TypeK_Init(150.0f, 160.0f, 60.0f);
                     Effect_TypeAR_Init(20.0f, 24.0f, 1, 30.0f, 60.0f, 60.0f, 5, str1, 1, &D_8010875C);
                     Effect_TypeAQ_Init(24.0f, 136.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str2, 4, &D_8010875C);
                     Effect_TypeAQ_Init(36.0f, 160.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str3, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(24.0f, 184.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xB, str4, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(36.0f, 208.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xB, str5, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(24.0f, 232.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xC, str6, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(36.0f, 256.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xC, str7, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(24.0f, 184.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str4, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(36.0f, 208.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str5, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(24.0f, 232.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str6, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(36.0f, 256.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str7, 4, &D_8010875C);
                     break;
                 case 17:
-                    str1 = D_80105E08[i].unk_10[0];
-                    str2 = D_80105E08[i].unk_10[1];
-                    str3 = D_80105E08[i].unk_10[2];
-                    str4 = D_80105E08[i].unk_10[3];
-                    str5 = D_80105E08[i].unk_10[4];
+                    str1 = CreditsData[i].lines[0];
+                    str2 = CreditsData[i].lines[1];
+                    str3 = CreditsData[i].lines[2];
+                    str4 = CreditsData[i].lines[3];
+                    str5 = CreditsData[i].lines[4];
                     Effect_TypeK_Init(150.0f, 160.0f, 60.0f);
                     Effect_TypeAR_Init(16.0f, 24.0f, 1, 30.0f, 60.0f, 30.0f, 5, str1, 1, &D_8010875C);
-                    Effect_TypeAQ_Init(24.0f, 112.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xC, str2, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(48.0f, 136.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xC, str3, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(24.0f, 160.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xB, str4, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(48.0f, 184.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xB, str5, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(24.0f, 112.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str2, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(48.0f, 136.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str3, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(24.0f, 160.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str4, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(48.0f, 184.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str5, 4, &D_8010875C);
                     break;
                 case 18:
-                    str1 = D_80105E08[i].unk_10[0];
-                    str2 = D_80105E08[i].unk_10[1];
-                    str4 = D_80105E08[i].unk_10[3];
+                    str1 = CreditsData[i].lines[0];
+                    str2 = CreditsData[i].lines[1];
+                    str4 = CreditsData[i].lines[3];
                     Effect_TypeK_Init(150.0f, 0.0f, -120.0f);
                     Effect_TypeAR_Init(16.0f, 136.0f, 1, 30.0f, 60.0f, 30.0f, 5, str1, 1, &D_8010875C);
-                    Effect_TypeAQ_Init(24.0f, 188.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xC, str2, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(24.0f, 212.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xB, str4, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(24.0f, 188.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str2, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(24.0f, 212.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str4, 4, &D_8010875C);
                     break;
                 case 19:
-                    str1 = D_80105E08[i].unk_10[0];
-                    str2 = D_80105E08[i].unk_10[1];
+                    str1 = CreditsData[i].lines[0];
+                    str2 = CreditsData[i].lines[1];
                     Effect_TypeK_Init(150.0f, 0.0f, 120.0f);
-                    Effect_TypeAQ_Init(46.0f, 32.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xC, str1, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(40.0f, 64.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xB, str2, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(46.0f, 32.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str1, 4, &D_8010875C);
+                    Effect_TypeAQ_Init(40.0f, 64.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str2, 4, &D_8010875C);
                     break;
             }
         }

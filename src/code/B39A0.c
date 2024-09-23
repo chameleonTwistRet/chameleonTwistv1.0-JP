@@ -181,7 +181,7 @@ void func_800D8E4C(Collider* arg0) {
 
 void func_800D8E70(Collider* arg0) {func_800D8918(arg0, SFX_89_unkSnd, 0x1E, 6000.0f, 6000.0f, 600.0f, 1500.0f, 500.0f, 2000.0f);}
 
-void func_800D8ED4(Collider* arg0) { func_800D8918(arg0, SFX_89_unkSnd, 0x1E, 2200.0f, 1400.0f, 700.0f, 1000.0f, 500.0f, 2000.0f);}
+void func_800D8ED4(Collider* arg0) {func_800D8918(arg0, SFX_89_unkSnd, 0x1E, 2200.0f, 1400.0f, 700.0f, 1000.0f, 500.0f, 2000.0f);}
 
 void func_800D8F3C(Collider* arg0) {func_800D8918(arg0, SFX_89_unkSnd, 0x1E, -8500.0f, 24000.0f, 600.0f, 2500.0f, 1000.0f, 1000.0f);}
 
