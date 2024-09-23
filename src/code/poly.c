@@ -2,6 +2,8 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800C8F00.s")
 
+#pragma GLOBAL_ASM("asm/nonmatchings/code/poly/D_80110180.s")
+
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800C8F0C.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800C9504.s")
@@ -163,5 +165,3 @@
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800D72DC.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800D73BC.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/poly/D_80110180.s")

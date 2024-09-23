@@ -33,5 +33,3 @@
 #pragma GLOBAL_ASM("asm/nonmatchings/code/vector/func_800D8178.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/vector/func_800D8198.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/vector/D_80110720.s")

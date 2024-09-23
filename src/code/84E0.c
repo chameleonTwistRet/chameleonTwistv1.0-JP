@@ -603,3 +603,23 @@
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8004DDE0.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/D_8010A6D0.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/D_8010A774.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/D_8010A8C0.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/D_8010AA28.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/D_8010B484.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/D_8010B48C.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/D_8010B490.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/D_8010B494.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/D_8010B498.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/D_8010B49C.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/D_8010B4A0.s")

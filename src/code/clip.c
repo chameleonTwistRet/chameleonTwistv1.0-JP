@@ -11,5 +11,3 @@
 #pragma GLOBAL_ASM("asm/nonmatchings/code/clip/func_800AF62C.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/clip/func_800AF658.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/clip/D_8010F990.s")

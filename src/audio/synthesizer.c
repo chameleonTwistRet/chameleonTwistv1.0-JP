@@ -19,5 +19,3 @@ void func_800DEAD0(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/audio/synthesizer/func_800DEAD8.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/audio/synthesizer/func_800DED70.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/audio/synthesizer/D_80110C10.s")

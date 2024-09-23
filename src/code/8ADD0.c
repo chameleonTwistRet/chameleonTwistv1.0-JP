@@ -510,8 +510,6 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C88D0.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/D_8010F9E0.s")
-
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/D_8010FA44.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/D_8010FA4C.s")

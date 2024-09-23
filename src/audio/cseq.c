@@ -21,5 +21,3 @@
 #pragma GLOBAL_ASM("asm/nonmatchings/audio/cseq/func_800DFFA0.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/audio/cseq/func_800E000C.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/audio/cseq/D_80110C20.s")

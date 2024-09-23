@@ -26,5 +26,3 @@ void func_800ECD50(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/audio/seq/func_800ED228.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/audio/seq/func_800ED258.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/audio/seq/D_80111190.s")

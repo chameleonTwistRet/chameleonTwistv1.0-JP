@@ -4,10 +4,6 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/debug/func_8004EBD4.s")
 
-void func_8004ECA8(void) {
-    
-}
-
 #pragma GLOBAL_ASM("asm/nonmatchings/code/debug/func_8004ECB0.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/debug/func_8004EF5C.s")
@@ -29,5 +25,3 @@ void func_8004ECA8(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/debug/func_8004FFFC.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/debug/func_800501BC.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/debug/D_8010C640.s")

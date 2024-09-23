@@ -32,13 +32,13 @@ args = parser.parse_args()
 diff_count = args.count
 
 if args.make:
-    check_call(["ninja", "chameleonTwistJP.z64"])
+    check_call(["ninja", "chameleontwist"])
 
 baseimg = f"baserom.jp.z64"
-basemap = f"expected/build/chameleontwist.jp.map"
+basemap = f"expected/build/chameleontwist"
 
-myimg = f"build/chameleontwist.jp.z64"
-mymap = f"build/chameleontwist.jp.map"
+myimg = f"build/chameleontwist"
+mymap = f"build/chameleontwist"
 
 if not os.path.isfile(baseimg):
     print(f"{baseimg} must exist.")

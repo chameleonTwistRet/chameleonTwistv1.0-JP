@@ -13,5 +13,3 @@
 #pragma GLOBAL_ASM("asm/nonmatchings/audio/env/func_800EABEC.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/audio/env/func_800EAC9C.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/audio/env/D_801110D0.s")

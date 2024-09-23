@@ -9,5 +9,3 @@
 #pragma GLOBAL_ASM("asm/nonmatchings/code/B35B0/func_800D8468.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/B35B0/func_800D8544.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/B35B0/D_80110820.s")

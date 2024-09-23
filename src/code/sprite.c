@@ -406,6 +406,24 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80071420.s")
 
+#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/D_8010CABC.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/D_8010CACC.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/D_8010CADC.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/D_8010CAF8.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/D_8010CB14.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/D_8010CB20.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/D_8010CB2C.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/D_8010CB48.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/D_8010CB64.s")
+
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_800714C8.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80071968.s")
@@ -649,23 +667,3 @@
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_800849DC.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80084A04.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/D_8010CA10.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/D_8010CABC.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/D_8010CACC.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/D_8010CADC.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/D_8010CAF8.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/D_8010CB14.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/D_8010CB20.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/D_8010CB2C.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/D_8010CB48.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/D_8010CB64.s")

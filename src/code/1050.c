@@ -67,5 +67,3 @@
 #pragma GLOBAL_ASM("asm/nonmatchings/code/1050/func_8002CE54.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/1050/func_8002D080.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/1050/D_8010A2F0.s")
