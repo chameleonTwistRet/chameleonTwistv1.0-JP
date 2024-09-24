@@ -130,6 +130,14 @@ alSaveParam = 0x800eb300; // type:func rom:0xc6700
 //os/virtualtophysical.c
 osVirtualToPhysical = 0x800dc8a0; // type:func rom:0xb7ca0
 
+//os/thread.c
+__osDequeueThread = 0x800e2c20; // type:func rom:0xbe020
+__osThreadTail = 0x80109e00; // size:0x8 rom:0xe5200
+__osRunQueue = 0x80109e08; // size:0x4 rom:0xe5208
+__osActiveQueue = 0x80109e0c; // size:0x4 rom:0xe520c
+__osRunningThread = 0x80109e10; // size:0x4 rom:0xe5210
+__osFaultedThread = 0x80109e14; // size:0x4 rom:0xe5214
+
 //os/sl.c
 alHeapDBAlloc = 0x800dc9e0; // type:func rom:0xb7de0
 alUnlink = 0x800dc920; // type:func rom:0xb7d20

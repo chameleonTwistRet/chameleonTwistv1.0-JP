@@ -246,7 +246,7 @@ segments:
       - [0xE51C0, data, gu/random] #80109DC0 through 80109DD0
       - [0xE51D0, data, io/siacs] #80109DD0 through 80109DE0
       - [0xE51E0, data, os/sethwinterrupt] #80109DE0
-      - [0xE5200, data, os/thread]
+      - [0xE5200, .data, os/thread]
       - [0xE5220, data, os/timerintr]
       - [0xE5230, data, io/vi]
       - [0xE52A0, data, io/piacs]

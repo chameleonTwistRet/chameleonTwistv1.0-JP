@@ -41,6 +41,7 @@ ELF_PATH = f"build/{BASENAME}"
 MAP_PATH = f"build/{BASENAME}.map"
 PRE_ELF_PATH = f"build/{BASENAME}.elf"
 OVERLAY_INTRO_PATH = "src/overlays/intro"
+OS_PATH = "src/os"
 AUDIO_PATH = "src/audio/"
 
 COMMON_INCLUDES = "-I. -Iinclude -Iinclude/PR -Isrc"
@@ -55,7 +56,11 @@ GAME_OVERLAY_COMPILE_CMD = (
 )
 
 GAME_COMPILE_CMD = (
-    f"{GAME_CC_DIR} {COMMON_INCLUDES} -- -c -G 0 {WARNINGS} {COMMON_INCLUDES} -mips2 -O2 -g3"
+    f"{GAME_CC_DIR} {COMMON_INCLUDES} -- -c -G 0 {WARNINGS} {COMMON_INCLUDES} -mips2 -O2"
+)
+
+OS_COMPILE_CMD = (
+    f"{GAME_CC_DIR} {COMMON_INCLUDES} -- -c -G 0 {WARNINGS} {COMMON_INCLUDES} -mips2 -O1"
 )
 
 AUDIO_COMPILE_CMD = (
@@ -156,6 +161,14 @@ def build_stuff(linker_entries: List[LinkerEntry]):
     )
 
     ninja.rule(
+        "os_cc",
+        command=f"{OS_COMPILE_CMD} -o $out $in",
+        description="Compiling -O1 ido .c file",
+        depfile="$out.d",
+        deps="gcc",
+    )
+
+    ninja.rule(
         "overlaycc",
         description="cc (overlay) $in",
         command=f"{GAME_OVERLAY_COMPILE_CMD} -o $out $in",
@@ -203,6 +216,8 @@ def build_stuff(linker_entries: List[LinkerEntry]):
                 build(entry.object_path, entry.src_paths, "libcc")
             elif any(str(src_path).startswith(OVERLAY_INTRO_PATH) for src_path in entry.src_paths):
                 build(entry.object_path, entry.src_paths, "overlaycc")
+            elif any(str(src_path).startswith(OS_PATH) for src_path in entry.src_paths):
+                build(entry.object_path, entry.src_paths, "os_cc")
             # elif any(str(src_path).startswith(AUDIO_PATH) for src_path in entry.src_paths):
             #     build(entry.object_path, entry.src_paths, "ido_O3_cc")
             # elif any(str(src_path).startswith("src/audio/cents2ratio.c") for src_path in entry.src_paths):
