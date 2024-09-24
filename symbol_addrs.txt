@@ -104,6 +104,8 @@ alFilterNew = 0x800ed3c0; // type:func rom:0xc87c0
 
 //audio/synthesizer.c
 alMainBusNew = 0x800e8df4; // type:func rom:0xc41f4
+_freePVoice = 0x800de9f0; // type:func rom:0xb9df0
+__freeParam = 0x800dea88; // type:func rom:0xb9e88
 
 //audio/env.c
 alEnvmixerPull = 0x800EAC9C; // type:func rom:0xc609c
@@ -124,6 +126,9 @@ alMainBusParam = 0x800e95f0; // type:func rom:0xc49f0
 //audio/save.c
 alSavePull = 0x800EB334; // type:func
 alSaveParam = 0x800eb300; // type:func rom:0xc6700
+
+//os/virtualtophysical.c
+osVirtualToPhysical = 0x800dc8a0; // type:func rom:0xb7ca0
 
 //os/sl.c
 alHeapDBAlloc = 0x800dc9e0; // type:func rom:0xb7de0

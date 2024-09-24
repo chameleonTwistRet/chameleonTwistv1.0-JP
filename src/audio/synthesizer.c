@@ -5,11 +5,11 @@ void func_800DE990(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/audio/synthesizer/func_800DE998.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/audio/synthesizer/func_800DE9F0.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/audio/synthesizer/_freePVoice.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/audio/synthesizer/func_800DEA28.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/audio/synthesizer/func_800DEA88.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/audio/synthesizer/__freeParam.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/audio/synthesizer/func_800DEAA0.s")
 

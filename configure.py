@@ -28,7 +28,8 @@ AUDIO_FILES = [
     "csplayer.c",
     "cspsetseq.c",
     "cspsettempo.c",
-    "drvrNew.c"
+    "drvrNew.c",
+    #"evn.c"
 ]
 
 BASENAME = "chameleontwist"
