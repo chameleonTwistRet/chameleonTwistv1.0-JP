@@ -4,7 +4,7 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/audio/env/func_800EA5B8.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/audio/env/func_800EA6A4.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/audio/env/alEnvmixerParam.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/audio/env/func_800EA784.s")
 
@@ -12,4 +12,4 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/audio/env/func_800EABEC.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/audio/env/func_800EAC9C.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/audio/env/alEnvmixerPull.s")

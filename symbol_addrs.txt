@@ -79,6 +79,52 @@ alCSPNew = 0x800de070; // type:func rom:0xb9470
 //audio/synsetpan.c
 alSynSetPan = 0x800E8B50; // type:func
 
+//audio/cspsetseq.c
+alCSPSetSeq = 0x800e0180; // type:func rom:0xbb580
+
+//audio/cspsettempo.c
+alCSPSetTempo = 0x800df610; // type:func rom:0xbaa10
+
+//audio/drvrNew.c
+alSaveNew = 0x800e8db0; // type:func rom:0xc41b0
+alAuxBusNew = 0x800e8e48; // type:func rom:0xc4248
+alResampleNew = 0x800e8e9c; // type:func rom:0xc429c
+alLoadNew = 0x800e8f24; // type:func rom:0xc4324
+alEnvmixerNew = 0x800e8fcc; // type:func rom:0xc43cc
+_init_lpfilter = 0x800e9070; // type:func rom:0xc4470
+alFxNew = 0x800e9110; // type:func rom:0xc4510
+
+//audio/reverb.c
+alFxParam = 0x800edcd4; // type:func rom:0xc90d4
+alFxPull = 0x800edcec; // type:func rom:0xc90ec
+alFxParamHdl = 0x800eda78; // type:func rom:0xc8e78
+
+//audio/filter.c
+alFilterNew = 0x800ed3c0; // type:func rom:0xc87c0
+
+//audio/synthesizer.c
+alMainBusNew = 0x800e8df4; // type:func rom:0xc41f4
+
+//audio/env.c
+alEnvmixerPull = 0x800EAC9C; // type:func rom:0xc609c
+alEnvmixerParam = 0x800ea6a4; // type:func rom:0xc5aa4
+
+//audio/load.c
+alAdpcmPull = 0x800e9dec; // type:func rom:0xc51ec
+alLoadParam = 0x800e9740; // type:func rom:0xc4b40
+
+//audio/resample.c
+alResamplePull = 0x800ea37c; // type:func rom:0xc577c
+alResampleParam = 0x800ea290; // type:func rom:0xc5690
+
+//audio/mainbus.c
+alMainBusPull = 0x800e9620; // type:func rom:0xc4a20
+alMainBusParam = 0x800e95f0; // type:func rom:0xc49f0
+
+//audio/save.c
+alSavePull = 0x800EB334; // type:func
+alSaveParam = 0x800eb300; // type:func rom:0xc6700
+
 //os/sl.c
 alHeapDBAlloc = 0x800dc9e0; // type:func rom:0xb7de0
 alUnlink = 0x800dc920; // type:func rom:0xb7d20
