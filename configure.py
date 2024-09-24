@@ -16,6 +16,18 @@ from splat.segtypes.linker_entry import LinkerEntry
 ROOT = Path(__file__).parent.resolve()
 TOOLS_DIR = ROOT / "tools"
 
+#temporary until all C files match in src/audio
+AUDIO_FILES = [
+    "auxbus.c",
+    "bnkf.c",
+    "cents2ratio.c",
+    "copy.c",
+    "cseq.c",
+    "cspgetstate.c",
+    "cspgettemp.c",
+    "csplayer.c"
+]
+
 BASENAME = "chameleontwist"
 VERSION = "jp"
 YAML_FILE = f"{BASENAME}.{VERSION}.yaml"
@@ -25,11 +37,13 @@ ELF_PATH = f"build/{BASENAME}"
 MAP_PATH = f"build/{BASENAME}.map"
 PRE_ELF_PATH = f"build/{BASENAME}.elf"
 OVERLAY_INTRO_PATH = "src/overlays/intro"
+AUDIO_PATH = "src/audio/"
 
 COMMON_INCLUDES = "-I. -Iinclude -Iinclude/PR -Isrc"
 
-GAME_CC_DIR = f"$ASM_PROC $ASM_PROC_FLAGS {TOOLS_DIR}/ido_5.3/usr/lib/cc --$AS $ASFLAGS"
-LIB_CC_DIR = f"$ASM_PROC $ASM_PROC_FLAGS {TOOLS_DIR}/ido_5.3/usr/lib/cc --$AS $ASFLAGS"
+IDO_CC = f"{TOOLS_DIR}/ido_5.3/usr/lib/cc"
+GAME_CC_DIR = f"$ASM_PROC $ASM_PROC_FLAGS {IDO_CC} --$AS $ASFLAGS"
+LIB_CC_DIR = f"$ASM_PROC $ASM_PROC_FLAGS {IDO_CC} --$AS $ASFLAGS"
 WARNINGS = "-fullwarn -verbose -Xcpluscomm -signed -nostdinc -non_shared -Wab,-r4300_mul -D_LANGUAGE_C -DF3DEX_GBI -DNDEBUG -woff 649,838"
 
 GAME_OVERLAY_COMPILE_CMD = (
@@ -38,6 +52,10 @@ GAME_OVERLAY_COMPILE_CMD = (
 
 GAME_COMPILE_CMD = (
     f"{GAME_CC_DIR} {COMMON_INCLUDES} -- -c -G 0 {WARNINGS} {COMMON_INCLUDES} -mips2 -O2 -g3"
+)
+
+AUDIO_COMPILE_CMD = (
+    f"{IDO_CC} -c -G 0 -Xcpluscomm -xansi {COMMON_INCLUDES} -non_shared -mips2 -woff 819,826,852 -Wab,-r4300_mul -nostdinc -O3"
 )
 
 LIB_COMPILE_CMD = (
@@ -126,6 +144,14 @@ def build_stuff(linker_entries: List[LinkerEntry]):
     )
 
     ninja.rule(
+        "ido_O3_cc",
+        command=f"{AUDIO_COMPILE_CMD} -o $out $in",
+        description="Compiling -O3 ido .c file",
+        depfile="$out.d",
+        deps="gcc",
+    )
+
+    ninja.rule(
         "overlaycc",
         description="cc (overlay) $in",
         command=f"{GAME_OVERLAY_COMPILE_CMD} -o $out $in",
@@ -173,6 +199,12 @@ def build_stuff(linker_entries: List[LinkerEntry]):
                 build(entry.object_path, entry.src_paths, "libcc")
             elif any(str(src_path).startswith(OVERLAY_INTRO_PATH) for src_path in entry.src_paths):
                 build(entry.object_path, entry.src_paths, "overlaycc")
+            # elif any(str(src_path).startswith(AUDIO_PATH) for src_path in entry.src_paths):
+            #     build(entry.object_path, entry.src_paths, "ido_O3_cc")
+            # elif any(str(src_path).startswith("src/audio/cents2ratio.c") for src_path in entry.src_paths):
+            #     build(entry.object_path, entry.src_paths, "ido_O3_cc")
+            elif any(os.path.basename(src_path) in AUDIO_FILES for src_path in entry.src_paths):
+                build(entry.object_path, entry.src_paths, "ido_O3_cc")
             else:
                 build(entry.object_path, entry.src_paths, "cc")
         elif isinstance(seg, splat.segtypes.common.databin.CommonSegDatabin):

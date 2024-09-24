@@ -1,2 +1,85 @@
 func_80084B30 = 0x80084B30; //type:func
 D_8010B484 = 0x8010B484; // force_migration:True
+
+//audio/auxbus.c
+alAuxBusPull = 0x800eb220; // type:func rom:0xc6620
+alAuxBusParam = 0x800eb1f0; // type:func rom:0xc65f0
+
+//audio/bnkf.c
+alSeqFileNew = 0x800dce08; // type:func rom:0xb8208
+alBnkfNew = 0x800dcd04; // type:func rom:0xb8104
+
+//audio/cents2ratio.c
+alCents2Ratio = 0x800dca40; // type:func rom:0xb7e40
+
+//audio/copy.c
+alCopy = 0x800ed340; // type:func rom:0xc8740
+
+//audio/cseq.c
+alCSeqNew = 0x800dfc1c; // type:func rom:0xbb01c
+__alCSeqNextDelta = 0x800e000c; // type:func rom:0xbb40c
+alCSeqNextEvent = 0x800df924; // type:func rom:0xbad24
+
+//audio/cspgetstate.c
+alCSPGetState = 0x800df560; // type:func rom:0xba960
+
+//audio/cspgettemp.c
+alCSPGetTempo = 0x800df680; // type:func rom:0xbaa80
+
+//audio/csplayer.c
+osSetIntMask = 0x800e8c80; // type:func rom:0xc4080
+alGlobals = 0x80109da0; // size:0x4 rom:0xe51a0
+
+//audio/synaddplayer.c
+alSynAddPlayer = 0x800e8580; // type:func rom:0xc3980
+
+//audio/synfreevoice.c
+alSynFreeVoice = 0x800e8650; // type:func rom:0xc3a50
+
+//audio/synsetpitch.c
+alSynSetPitch = 0x800e87a0; // type:func rom:0xc3ba0
+
+//audio/synstopvoice.c
+alSynStopVoice = 0x800e85d0; // type:func rom:0xc39d0
+
+//audio/synsetvol.c
+alSynSetVol = 0x800e8700; // type:func rom:0xc3b00
+
+//audio/event.c
+alEvtqFlushType = 0x800e8240; // type:func rom:0xc3640
+alEvtqPostEvent = 0x800e835c; // type:func rom:0xc375c
+alEvtqNextEvent = 0x800e8480; // type:func rom:0xc3880
+alEvtqNew = 0x800e850c; // type:func rom:0xc390c
+
+//audio/synallocvoice.c
+alSynAllocVoice = 0x800e8918; // type:func rom:0xc3d18
+
+//audio/seqplayer.c
+__setInstChanState = 0x800E6900; // type:func rom:0xc1d00
+__initFromBank = 0x800e69d4; // type:func rom:0xc1dd4
+__vsDelta = 0x800e6a90; // type:func rom:0xc1e90
+__vsVol = 0x800e6ab4; // type:func rom:0xc1eb4
+__seqpReleaseVoice = 0x800e6b3c; // type:func rom:0xc1f3c
+__voiceNeedsNoteKill = 0x800e6c68; // type:func rom:0xc2068
+__unmapVoice = 0x800e6d10; // type:func rom:0xc2110
+__vsPan = 0x800e6ed4; // type:func rom:0xc22d4
+__lookupVoice = 0x800e6f1c; // type:func rom:0xc231c
+__mapVoice = 0x800e6f90; // type:func rom:0xc2390
+__lookupSoundQuick = 0x800e7000; // type:func rom:0xc2400
+__seqpStopOsc = 0x800e7f40; // type:func rom:0xc3340
+__initChanState = 0x800e8044; // type:func rom:0xc3444
+
+//audio/synstartvoiceparam.c
+alSynStartVoiceParams = 0x800e8a60; // type:func rom:0xc3e60
+
+//audio/csplayer.c
+alSynSetFXMix = 0x800E8BE0; // type:func
+alCSPNew = 0x800de070; // type:func rom:0xb9470
+
+//audio/synsetpan.c
+alSynSetPan = 0x800E8B50; // type:func
+
+//os/sl.c
+alHeapDBAlloc = 0x800dc9e0; // type:func rom:0xb7de0
+alUnlink = 0x800dc920; // type:func rom:0xb7d20
+alLink = 0x800dc950; // type:func rom:0xb7d50
