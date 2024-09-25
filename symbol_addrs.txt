@@ -39,6 +39,9 @@ alSynFreeVoice = 0x800e8650; // type:func rom:0xc3a50
 //audio/synsetpitch.c
 alSynSetPitch = 0x800e87a0; // type:func rom:0xc3ba0
 
+//audio/synsetpriority.c
+alSynSetPriority = 0x800ed330; // type:func rom:0xc8730
+
 //audio/synstopvoice.c
 alSynStopVoice = 0x800e85d0; // type:func rom:0xc39d0
 
@@ -69,6 +72,21 @@ __lookupSoundQuick = 0x800e7000; // type:func rom:0xc2400
 __seqpStopOsc = 0x800e7f40; // type:func rom:0xc3340
 __initChanState = 0x800e8044; // type:func rom:0xc3444
 
+//audio/seqpplay.c
+alCSPPlay = 0x800df5e0; // type:func rom:0xba9e0
+
+//audio/seqpsetbank.c
+alSeqpSetBank = 0x800de1e0; // type:func rom:0xb95e0
+
+//audio/seqpsetpan.c
+alSeqpSetChlPan = 0x800de930; // type:func rom:0xb9d30
+
+//audio/seqpsetvol.c
+alSeqpSetVol = 0x800df570; // type:func rom:0xba970
+
+//audio/seqpstop.c
+alCSPStop = 0x800df5b0; // type:func rom:0xba9b0
+
 //audio/synstartvoiceparam.c
 alSynStartVoiceParams = 0x800e8a60; // type:func rom:0xc3e60
 
@@ -86,6 +104,7 @@ alCSPSetSeq = 0x800e0180; // type:func rom:0xbb580
 alCSPSetTempo = 0x800df610; // type:func rom:0xbaa10
 
 //audio/drvrNew.c
+alMainBusNew = 0x800e8df4; // type:func rom:0xc41f4
 alSaveNew = 0x800e8db0; // type:func rom:0xc41b0
 alAuxBusNew = 0x800e8e48; // type:func rom:0xc4248
 alResampleNew = 0x800e8e9c; // type:func rom:0xc429c
@@ -103,9 +122,10 @@ alFxParamHdl = 0x800eda78; // type:func rom:0xc8e78
 alFilterNew = 0x800ed3c0; // type:func rom:0xc87c0
 
 //audio/synthesizer.c
-alMainBusNew = 0x800e8df4; // type:func rom:0xc41f4
+
 _freePVoice = 0x800de9f0; // type:func rom:0xb9df0
 __freeParam = 0x800dea88; // type:func rom:0xb9e88
+alSynNew = 0x800ded70; // type:func rom:0xba170
 
 //audio/env.c
 alEnvmixerPull = 0x800EAC9C; // type:func rom:0xc609c
@@ -124,8 +144,19 @@ alMainBusPull = 0x800e9620; // type:func rom:0xc4a20
 alMainBusParam = 0x800e95f0; // type:func rom:0xc49f0
 
 //audio/save.c
-alSavePull = 0x800EB334; // type:func
+alSavePull = 0x800EB334; // type:func rom:0xc6734
 alSaveParam = 0x800eb300; // type:func rom:0xc6700
+
+//audio/seq.c
+alSeqNew = 0x800ed258; // type:func rom:0xc8658
+alSeqNewMarker = 0x800ecf28; // type:func rom:0xc8328
+alSeqNextEvent = 0x800ecda4; // type:func rom:0xc81a4
+__alSeqNextDelta = 0x800ed180; // type:func rom:0xc8580
+alSeqGetTicks = 0x800ecd48; // type:func rom:0xc8148
+alSeqSetLoc = 0x800ECD2C; // type:func rom:0xc812c
+
+//audio/syndelete.c
+alSynDelete = 0x800e68F0; // type:func rom:0xc1cf0
 
 //os/virtualtophysical.c
 osVirtualToPhysical = 0x800dc8a0; // type:func rom:0xb7ca0
@@ -138,7 +169,13 @@ __osActiveQueue = 0x80109e0c; // size:0x4 rom:0xe520c
 __osRunningThread = 0x80109e10; // size:0x4 rom:0xe5210
 __osFaultedThread = 0x80109e14; // size:0x4 rom:0xe5214
 
-//os/sl.c
+//audio/heapinit.c
+alHeapInit = 0x800dcbc0; // type:func rom:0xb7fc0
+
+//audio/sl.c
 alHeapDBAlloc = 0x800dc9e0; // type:func rom:0xb7de0
 alUnlink = 0x800dc920; // type:func rom:0xb7d20
 alLink = 0x800dc950; // type:func rom:0xb7d50
+alInit = 0x800dc9ac; // type:func rom:0xb7dac
+alClose = 0x800dc974; // type:func rom:0xb7d74
+

@@ -29,7 +29,22 @@ AUDIO_FILES = [
     "cspsetseq.c",
     "cspsettempo.c",
     "drvrNew.c",
-    #"evn.c"
+    "env.c",
+    "event.c",
+    "filter.c",
+    "heapinit.c",
+    "load.c",
+    "mainbus.c",
+    "resample.c",
+    "reverb.c",
+    "seq.c",
+    "seqplayer.c",
+    "seqpplay.c",
+    "seqpsetbank.c",
+    "seqpsetpan.c",
+    "seqpsetvol.c",
+    "seqpstop.c",
+    #"sl.c"
 ]
 
 BASENAME = "chameleontwist"
@@ -56,6 +71,10 @@ GAME_OVERLAY_COMPILE_CMD = (
 )
 
 GAME_COMPILE_CMD = (
+    f"{GAME_CC_DIR} {COMMON_INCLUDES} -- -c -G 0 {WARNINGS} {COMMON_INCLUDES} -mips2 -O2"
+)
+
+O2_COMPILE_CMD = (
     f"{GAME_CC_DIR} {COMMON_INCLUDES} -- -c -G 0 {WARNINGS} {COMMON_INCLUDES} -mips2 -O2"
 )
 
@@ -160,6 +179,15 @@ def build_stuff(linker_entries: List[LinkerEntry]):
         deps="gcc",
     )
 
+
+    ninja.rule(
+        "O2_cc",
+        command=f"{O2_COMPILE_CMD} -o $out $in",
+        description="Compiling -O2 ido .c file",
+        depfile="$out.d",
+        deps="gcc",
+    )
+
     ninja.rule(
         "os_cc",
         command=f"{OS_COMPILE_CMD} -o $out $in",
@@ -218,6 +246,8 @@ def build_stuff(linker_entries: List[LinkerEntry]):
                 build(entry.object_path, entry.src_paths, "overlaycc")
             elif any(str(src_path).startswith(OS_PATH) for src_path in entry.src_paths):
                 build(entry.object_path, entry.src_paths, "os_cc")
+            elif any(str(src_path).startswith("src/audio/sl.c") for src_path in entry.src_paths):
+                build(entry.object_path, entry.src_paths, "O2_cc")
             # elif any(str(src_path).startswith(AUDIO_PATH) for src_path in entry.src_paths):
             #     build(entry.object_path, entry.src_paths, "ido_O3_cc")
             # elif any(str(src_path).startswith("src/audio/cents2ratio.c") for src_path in entry.src_paths):

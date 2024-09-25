@@ -1,11 +1,108 @@
-#include "common.h"
+/*====================================================================
+ * sl.c
+ *
+ * Synopsis:
+ *  Sound library global routines
+ *
+ * Copyright 1993, Silicon Graphics, Inc.
+ * All Rights Reserved.
+ *
+ * This is UNPUBLISHED PROPRIETARY SOURCE CODE of Silicon Graphics,
+ * Inc.; the contents of this file may not be disclosed to third
+ * parties, copied or duplicated in any form, in whole or in part,
+ * without the prior written permission of Silicon Graphics, Inc.
+ *
+ * RESTRICTED RIGHTS LEGEND:
+ * Use, duplication or disclosure by the Government is subject to
+ * restrictions as set forth in subdivision (c)(1)(ii) of the Rights
+ * in Technical Data and Computer Software clause at DFARS
+ * 252.227-7013, and/or in similar or successor clauses in the FAR,
+ * DOD or NASA FAR Supplement. Unpublished - rights reserved under the
+ * Copyright Laws of the United States.
+ *====================================================================*/
+#include <PR/libaudio.h>
+#include "synthInternals.h"
+#include <os_internal.h>
+#include <ultraerror.h>
 
-#pragma GLOBAL_ASM("asm/nonmatchings/audio/sl/alUnlink.s")
+void alUnlink(ALLink* element) {
+    ALLink* n;
+    ALLink* p;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/audio/sl/alLink.s")
+    n = element->next;
+    if (n != NULL) {
+        n->prev = element->prev;
+    }
+    p = element->prev;
+    if (p != NULL) {
+        p->next = element->next;
+    }
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/audio/sl/func_800DC974.s")
+void alLink(ALLink* element, ALLink* after) {
+    ALLink* temp_v0;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/audio/sl/func_800DC9AC.s")
+    element->next = after->next;
+    element->prev = after;
+    temp_v0 = after->next;
+    if (temp_v0 != NULL) {
+        temp_v0->prev = element;
+    }
+    after->next = element;
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/audio/sl/alHeapDBAlloc.s")
+void alClose(ALGlobals *glob)
+{
+    if (alGlobals) {
+        alSynDelete(&glob->drvr);
+        alGlobals = 0;
+    }
+}
+
+void alInit(ALGlobals* glob, ALSynConfig* c) {
+    if (alGlobals == NULL) {
+        alGlobals = glob;
+        alSynNew(&glob->drvr, c);
+    }
+}
+
+void *alHeapDBAlloc(u8 *file, s32 line, ALHeap *hp, s32 num, s32 size)
+{
+    s32 bytes;
+    u8 *ptr = 0;
+
+    bytes = (num*size + AL_CACHE_ALIGN) & ~AL_CACHE_ALIGN;
+    
+#ifdef _DEBUG
+    hp->count++;    
+    bytes += sizeof(HeapInfo);
+#endif
+    
+    if ((hp->cur + bytes) <= (hp->base + hp->len)) {
+
+        ptr = hp->cur;
+        hp->cur += bytes;
+
+#ifdef _DEBUG    
+        ((HeapInfo *)ptr)->magic = AL_HEAP_MAGIC;
+        ((HeapInfo *)ptr)->size  = bytes;
+        ((HeapInfo *)ptr)->count = hp->count;
+        if (file) {
+            ((HeapInfo *)ptr)->file  = file;
+            ((HeapInfo *)ptr)->line  = line;
+        } else {
+            ((HeapInfo *)ptr)->file  = (u8 *) "unknown";
+            ((HeapInfo *)ptr)->line  = 0;
+        }
+        
+        ptr += sizeof(HeapInfo);        
+#endif
+
+    } else {
+#ifdef _DEBUG
+        __osError(ERR_ALHEAPNOFREE, 1, size);
+#endif        
+    }
+
+    return ptr;
+}

@@ -252,7 +252,7 @@ segments:
       - [0xE52A0, data, io/piacs]
       - [0xE52B0, data, libc/xprintf]
       - [0xE5300, .data, audio/drvrNew]
-      - [0xE5490, data, audio/env]
+      - [0xE5490, .data, audio/env]
       - [0xE55D0, data, io/vimodepallan1]
       - [0xE5620, data, io/vimodempallan1]
       - [0xE5670, data, io/vimodentsclan1]
