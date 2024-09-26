@@ -122,8 +122,8 @@ alFxParamHdl = 0x800eda78; // type:func rom:0xc8e78
 alFilterNew = 0x800ed3c0; // type:func rom:0xc87c0
 
 //audio/synthesizer.c
-
 _freePVoice = 0x800de9f0; // type:func rom:0xb9df0
+__allocParam = 0x800deaa0; // type:func rom:0xb9ea0
 __freeParam = 0x800dea88; // type:func rom:0xb9e88
 alSynNew = 0x800ded70; // type:func rom:0xba170
 
@@ -179,3 +179,48 @@ alLink = 0x800dc950; // type:func rom:0xb7d50
 alInit = 0x800dc9ac; // type:func rom:0xb7dac
 alClose = 0x800dc974; // type:func rom:0xb7d74
 
+//audio/sndpallocate.c
+alSndpAllocate = 0x800df1c0; // type:func rom:0xba5c0
+
+//audio/sndpdeallocate.c
+alSndpDeallocate = 0x800df510; // type:func rom:0xba910
+
+//audio/sndpgetstate.c
+alSndpGetState = 0x800df4a0; // type:func rom:0xba8a0
+
+//audio/sndplayer.c
+alSndpNew = 0x800de7f4; // type:func rom:0xb9bf4
+
+//audio/sndpplay.c
+alSndpPlay = 0x800df430; // type:func rom:0xba830
+
+//audio/sndpsetfxmix.c
+alSndpSetFXMix = 0x800df2e0; // type:func rom:0xba6e0
+
+//audio/sndpsetpan.c
+alSndpSetPan = 0x800df3d0; // type:func rom:0xba7d0
+
+//audio/sndpsetpitch.c
+alSndpSetPitch = 0x800df280; // type:func rom:0xba680
+
+//audio/sndpsetpriority.c
+alSndpSetPriority = 0x800df340; // type:func rom:0xba740
+
+//audio/sndpsetsound.c
+alSndpSetSound = 0x800df260; // type:func rom:0xba660
+
+//audio/sndpsetvol.c
+alSndpSetVol = 0x800df370; // type:func rom:0xba770
+
+//audio/sndpstop.c
+alSndpStop = 0x800df4c0; // type:func rom:0xba8c0
+
+//audio/synstartvoice.c
+alSynStartVoice = 0x800E8D20; // type:func rom:0xc4120
+
+//audio/synallocfx.c
+alSynAllocFX = 0x800e9550; // type:func rom:0xc4950
+
+//audio
+_timeToSamples = 0x800de998; // type:func rom:0xb9d98
+alAudioFrame = 0x800dead8; // type:func rom:0xb9ed8

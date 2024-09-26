@@ -39,6 +39,8 @@
         "8add0.h": "c",
         "sprite.h": "c",
         "5ff30.h": "c",
-        "1050.h": "c"
+        "1050.h": "c",
+        "seqp.h": "c",
+        "ultraerror.h": "c"
     }
 }

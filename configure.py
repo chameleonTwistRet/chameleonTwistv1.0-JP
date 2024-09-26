@@ -18,33 +18,7 @@ TOOLS_DIR = ROOT / "tools"
 
 #temporary until all C files match in src/audio
 AUDIO_FILES = [
-    "auxbus.c",
-    "bnkf.c",
-    "cents2ratio.c",
-    "copy.c",
-    "cseq.c",
-    "cspgetstate.c",
-    "cspgettemp.c",
-    "csplayer.c",
-    "cspsetseq.c",
-    "cspsettempo.c",
-    "drvrNew.c",
-    "env.c",
-    "event.c",
-    "filter.c",
-    "heapinit.c",
-    "load.c",
-    "mainbus.c",
-    "resample.c",
-    "reverb.c",
-    "seq.c",
-    "seqplayer.c",
-    "seqpplay.c",
-    "seqpsetbank.c",
-    "seqpsetpan.c",
-    "seqpsetvol.c",
-    "seqpstop.c",
-    #"sl.c"
+
 ]
 
 BASENAME = "chameleontwist"
@@ -246,14 +220,14 @@ def build_stuff(linker_entries: List[LinkerEntry]):
                 build(entry.object_path, entry.src_paths, "overlaycc")
             elif any(str(src_path).startswith(OS_PATH) for src_path in entry.src_paths):
                 build(entry.object_path, entry.src_paths, "os_cc")
+            elif any(str(src_path).startswith("src/audio/save.c") for src_path in entry.src_paths):
+                build(entry.object_path, entry.src_paths, "O2_cc")
             elif any(str(src_path).startswith("src/audio/sl.c") for src_path in entry.src_paths):
                 build(entry.object_path, entry.src_paths, "O2_cc")
-            # elif any(str(src_path).startswith(AUDIO_PATH) for src_path in entry.src_paths):
-            #     build(entry.object_path, entry.src_paths, "ido_O3_cc")
-            # elif any(str(src_path).startswith("src/audio/cents2ratio.c") for src_path in entry.src_paths):
-            #     build(entry.object_path, entry.src_paths, "ido_O3_cc")
-            elif any(os.path.basename(src_path) in AUDIO_FILES for src_path in entry.src_paths):
+            elif any(str(src_path).startswith("src/audio/") for src_path in entry.src_paths):
                 build(entry.object_path, entry.src_paths, "ido_O3_cc")
+            # elif any(os.path.basename(src_path) in AUDIO_FILES for src_path in entry.src_paths):
+            #     build(entry.object_path, entry.src_paths, "ido_O3_cc")
             else:
                 build(entry.object_path, entry.src_paths, "cc")
         elif isinstance(seg, splat.segtypes.common.databin.CommonSegDatabin):
