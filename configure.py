@@ -18,7 +18,7 @@ TOOLS_DIR = ROOT / "tools"
 
 #temporary until all C files match in src/audio
 AUDIO_FILES = [
-
+    "align.c"
 ]
 
 BASENAME = "chameleontwist"
@@ -226,8 +226,8 @@ def build_stuff(linker_entries: List[LinkerEntry]):
                 build(entry.object_path, entry.src_paths, "O2_cc")
             elif any(str(src_path).startswith("src/audio/") for src_path in entry.src_paths):
                 build(entry.object_path, entry.src_paths, "ido_O3_cc")
-            # elif any(os.path.basename(src_path) in AUDIO_FILES for src_path in entry.src_paths):
-            #     build(entry.object_path, entry.src_paths, "ido_O3_cc")
+            elif any(os.path.basename(src_path) in AUDIO_FILES for src_path in entry.src_paths):
+                build(entry.object_path, entry.src_paths, "ido_O3_cc")
             else:
                 build(entry.object_path, entry.src_paths, "cc")
         elif isinstance(seg, splat.segtypes.common.databin.CommonSegDatabin):

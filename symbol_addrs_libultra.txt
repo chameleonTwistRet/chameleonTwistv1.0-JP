@@ -221,3 +221,22 @@ alSynAllocFX = 0x800e9550; // type:func rom:0xc4950
 //audio
 _timeToSamples = 0x800de998; // type:func rom:0xb9d98
 alAudioFrame = 0x800dead8; // type:func rom:0xb9ed8
+
+//gu/align.c
+guAlignF = 0x800dbae0; // type:func rom:0xb6ee0
+guAlign = 0x800dbca0; // type:func rom:0xb70a0
+
+//gu/normalize.c
+guNormalize = 0x800e3f00; // type:func rom:0xbf300
+
+//gu/sinf.c
+__sinf = 0x800dad80; // type:func rom:0xb6180
+
+//gu/cosf.c
+__cosf = 0x800db0c0; // type:func rom:0xb64c0
+
+//gu/mtxutil.c
+guMtxIdentF = 0x800da8c0; // type:func rom:0xb5cc0
+guMtxF2L = 0x800da7c0; // type:func rom:0xb5bc0
+
+__sqrtf = 0x800db0b0; // type:func rom:0xb64b0

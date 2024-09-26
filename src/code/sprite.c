@@ -654,7 +654,13 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80083B28.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80083F08.s")
+void func_80083F08(void) {
+    
+}
+
+void func_80083F10(void) {
+
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80083F18.s")
 

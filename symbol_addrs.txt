@@ -1,2 +1,3 @@
 func_80084B30 = 0x80084B30; //type:func
 D_8010B484 = 0x8010B484; // force_migration:True
+func_8004ECA8 = 0x8004ECA8; //type:func
