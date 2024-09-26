@@ -11,7 +11,7 @@ options:
   ld_symbol_header_path: include/ld_addrs.h
   ld_script_path: chameleontwist.jp.ld
   undefined_funcs_auto_path: undefined_funcs_auto.txt
-  symbol_addrs_path: symbol_addrs.txt
+  symbol_addrs_path: [symbol_addrs_libultra.txt, symbol_addrs.txt]
   # undefined_syms_path: undefined_syms.txt
   asm_path: asm
   src_path: src
