@@ -238,5 +238,42 @@ __cosf = 0x800db0c0; // type:func rom:0xb64c0
 //gu/mtxutil.c
 guMtxIdentF = 0x800da8c0; // type:func rom:0xb5cc0
 guMtxF2L = 0x800da7c0; // type:func rom:0xb5bc0
+guMtxIdent = 0x800da948; // type:func rom:0xb5d48
+guMtxL2F = 0x800da978; // type:func rom:0xb5d78
 
 __sqrtf = 0x800db0b0; // type:func rom:0xb64b0
+
+//gu/lookat.c
+guLookAtF = 0x800dbcf0; // type:func rom:0xb70f0
+guLookAt = 0x800dbfa8; // type:func rom:0xb73a8
+
+//gu/mtxcatf.c
+guMtxXFMF = 0x800e3cf0; // type:func rom:0xbf0f0
+guMtxCatF = 0x800e3d90; // type:func rom:0xbf190
+
+//gu/mtxcatl.c
+guMtxXFML = 0x800daad0; // type:func rom:0xb5ed0
+guMtxCatL = 0x800dab30; // type:func rom:0xb5f30
+
+//gu/ortho.c
+guOrthoF = 0x800e0260; // type:func rom:0xbb660
+guOrtho = 0x800e03b4; // type:func rom:0xbb7b4
+
+//gu/perspective.c
+guPerspectiveF = 0x800dc020; // type:func rom:0xb7420
+guPerspective = 0x800dc250; // type:func rom:0xb7650
+
+//gu/random.c
+guRandom = 0x800e0a70; // type:func rom:0xbbe70
+
+//gu/rotate.c
+guRotateF = 0x800dab90; // type:func rom:0xb5f90
+guRotate = 0x800dad24; // type:func rom:0xb6124
+
+//gu/scale.c
+guScaleF = 0x800daa30; // type:func rom:0xb5e30
+guScale = 0x800daa84; // type:func rom:0xb5e84
+
+//gu/translate.c
+guTranslateF = 0x800daf40; // type:func rom:0xb6340
+guTranslate = 0x800daf88; // type:func rom:0xb6388

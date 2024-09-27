@@ -16,9 +16,17 @@ from splat.segtypes.linker_entry import LinkerEntry
 ROOT = Path(__file__).parent.resolve()
 TOOLS_DIR = ROOT / "tools"
 
-#temporary until all C files match in src/audio
-AUDIO_FILES = [
-    "align.c"
+#temporary until all C files with O3 match
+O3_FILES = [
+]
+
+#overrides directory compile flags
+O2_FILES = [
+    "sl.c",
+    "mtxutil.c",
+    "mtxcatl.c",
+    "save.c",
+    "translate.c"
 ]
 
 BASENAME = "chameleontwist"
@@ -220,14 +228,14 @@ def build_stuff(linker_entries: List[LinkerEntry]):
                 build(entry.object_path, entry.src_paths, "overlaycc")
             elif any(str(src_path).startswith(OS_PATH) for src_path in entry.src_paths):
                 build(entry.object_path, entry.src_paths, "os_cc")
-            elif any(str(src_path).startswith("src/audio/save.c") for src_path in entry.src_paths):
-                build(entry.object_path, entry.src_paths, "O2_cc")
-            elif any(str(src_path).startswith("src/audio/sl.c") for src_path in entry.src_paths):
+            elif any(os.path.basename(src_path) in O2_FILES for src_path in entry.src_paths):
                 build(entry.object_path, entry.src_paths, "O2_cc")
             elif any(str(src_path).startswith("src/audio/") for src_path in entry.src_paths):
                 build(entry.object_path, entry.src_paths, "ido_O3_cc")
-            elif any(os.path.basename(src_path) in AUDIO_FILES for src_path in entry.src_paths):
+            elif any(str(src_path).startswith("src/gu/") for src_path in entry.src_paths):
                 build(entry.object_path, entry.src_paths, "ido_O3_cc")
+            # elif any(os.path.basename(src_path) in O3_FILES for src_path in entry.src_paths):
+            #     build(entry.object_path, entry.src_paths, "ido_O3_cc")
             else:
                 build(entry.object_path, entry.src_paths, "cc")
         elif isinstance(seg, splat.segtypes.common.databin.CommonSegDatabin):

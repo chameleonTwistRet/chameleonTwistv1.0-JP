@@ -243,7 +243,7 @@ segments:
       - [0xE5190, data, io/controller] #80109D90 through 80109DA0
       - [0xE51A0, data, audio/csplayer] #80109DA0 through 80109DB0
       - [0xE51B0, data, io/aisetnextbuf] #80109DB0 through 80109DC0
-      - [0xE51C0, data, gu/random] #80109DC0 through 80109DD0
+      - [0xE51C0, .data, gu/random] #80109DC0 through 80109DD0
       - [0xE51D0, data, io/siacs] #80109DD0 through 80109DE0
       - [0xE51E0, data, os/sethwinterrupt] #80109DE0
       - [0xE5200, .data, os/thread]
@@ -282,7 +282,7 @@ segments:
       - [0xEC020, .rodata, audio/cseq] #80110C20
       - [0xEC030, rodata, os/exceptasm] #80110C30
       - [0xEC080, .rodata, io/pirawdma] #80110C80
-      - [0xEC0A0, rodata, nan_f] #80110CA0
+      - [0xEC0A0, rodata, qnan_f] #80110CA0
       - [0xEC0B0, .rodata, libc/xprintf] #80110CB0
       - [0xEC1B0, .rodata, audio/seqplayer] #80110DB0
       - [0xEC3F0, rodata, interruptRelated]
@@ -309,7 +309,8 @@ segments:
       # - {start: 0xED090, type: .bss, vram: 0x80248C70, name: os/initialize }
       # - {start: 0xED090, type: .bss, vram: 0x80248C80, name: io/vimgr }
       # - {start: 0xED090, type: .bss, vram: 0x80249EA0, name: io/pimgr }
-      # - {start: 0xED090, type: .bss, vram: 0x8024B070, name: gu/rotate }
+      - {start: 0xED090, type: .bss, vram: 0x8024B070, name: gu/rotate }
+      - { start: 0xED090, type: bss, vram: 0x8024B080, name: globalBSS3 }
       # - {start: 0xED090, type: .bss, vram: 0x8024B080, name: os/seteventmesg }
       # - {start: 0xED090, type: .bss, vram: 0x8024B100, name: io/controller }
       - { start: 0xED090, type: .bss, vram: 0x8024B190, name: gu/align }
