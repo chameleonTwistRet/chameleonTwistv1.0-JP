@@ -250,13 +250,13 @@ segments:
       - [0xE5220, .data, os/timerintr]
       - [0xE5230, data, io/vi]
       - [0xE52A0, data, io/piacs]
-      - [0xE52B0, data, libc/xprintf]
+      - [0xE52B0, .data, libc/xprintf]
       - [0xE5300, .data, audio/drvrNew]
       - [0xE5490, .data, audio/env]
       - [0xE55D0, data, io/vimodepallan1]
       - [0xE5620, data, io/vimodempallan1]
       - [0xE5670, data, io/vimodentsclan1]
-      - [0xE56C0, data, libc/xlitob] #8010A2C0 through 8010A2F0
+      - [0xE56C0, .data, libc/xlitob] #8010A2C0 through 8010A2F0
       - [0xE56F0, .rodata, code/1050] #8010A2F0 through 8010A6D0
       - [0xE5AD0, .rodata, code/84E0] #8010A6D0 through 8010C640
       - [0xE7A40, .rodata, code/debug] #8010C640 through 8010C940

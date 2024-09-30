@@ -396,3 +396,26 @@ osYieldThread = 0x800ebec0; // type:func rom:0xc72c0
 
 //os/virtualtophysical.c
 __osProbeTLB = 0x800e6830; // type:func rom:0xc1c30
+
+//libc/ldiv.c
+lldiv = 0x800ee030; // type:func rom:0xc9430
+ldiv = 0x800ee130; // type:func rom:0xc9530
+__ll_div = 0x800e05cc; // type:func rom:0xbb9cc
+__ull_rem = 0x800e04ec; // type:func rom:0xbb8ec
+
+//libc/string.c
+memcpy = 0x800ebf10; // type:func rom:0xc7310
+strlen = 0x800ebf3c; // type:func rom:0xc733c
+strchr = 0x800ebf64; // type:func rom:0xc7364
+
+//libc/syncprintf.c
+__osSyncVPrintf = 0x800dba80; // type:func rom:0xaF680
+osSyncPrintf = 0x800dba94; // type:func rom:0xb6e94
+
+//libc/xprintf.c
+_Printf = 0x800e5dc0; // type:func rom:0xc11c0
+
+//libc/xldtob.c
+_Litob = 0x800ebfb0; // type:func rom:0xc73b0
+_Ldunscale = 0x800ec7b8; // type:func rom:0xc7bb8
+_Ldtob = 0x800ec7c0; // type:func rom:0xc7bc0

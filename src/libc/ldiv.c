@@ -1,5 +1,31 @@
 #include "common.h"
+#include "xstdio.h"
 
-#pragma GLOBAL_ASM("asm/nonmatchings/libc/ldiv/func_800EE030.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/libc/ldiv/func_800EE130.s")
+lldiv_t lldiv(long long num, long long denom) {
+    lldiv_t ret;
+
+    ret.quot = num / denom;
+    ret.rem = num - denom * ret.quot;
+
+    if (ret.quot < 0 && ret.rem > 0) {
+        ret.quot++;
+        ret.rem -= denom;
+    }
+
+    return ret;
+}
+
+ldiv_t ldiv(long num, long denom) {
+    ldiv_t ret;
+
+    ret.quot = num / denom;
+    ret.rem = num - denom * ret.quot;
+
+    if (ret.quot < 0 && ret.rem > 0) {
+        ret.quot++;
+        ret.rem -= denom;
+    }
+
+    return ret;
+}

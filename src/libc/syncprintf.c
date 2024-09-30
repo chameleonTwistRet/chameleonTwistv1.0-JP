@@ -1,5 +1,14 @@
 #include "common.h"
+#include "xstdio.h"
 
-#pragma GLOBAL_ASM("asm/nonmatchings/libc/syncprintf/func_800DBA80.s")
+s32 __osSyncVPrintf(const char *fmt, va_list args, s32 arg2) {
+    return 1;
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/libc/syncprintf/func_800DBA94.s")
+void osSyncPrintf(const char *fmt, ...) {
+    int ans;
+    va_list ap;
+    va_start(ap, fmt);
+    
+    _Printf((void*)&__osSyncVPrintf, NULL, fmt, ap);
+}

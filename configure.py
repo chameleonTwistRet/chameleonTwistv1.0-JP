@@ -22,8 +22,10 @@ C_FILE_OVERRIDES = {
     "mtxcatl.c": "O2_cc",
     "save.c": "O2_cc",
     "translate.c": "O2_cc",
-
-
+    "ldiv.c": "O2_cc",
+    "ll.c": "ll_cc",
+    "xldtob.c": "ido_O3_cc",
+    "xprintf.c": "ido_O3_cc"
 }
 
 #overrides directory compile flags
@@ -51,7 +53,6 @@ COMMON_INCLUDES = "-I. -Iinclude -Iinclude/PR -Isrc"
 
 IDO_CC = f"{TOOLS_DIR}/ido_5.3/usr/lib/cc"
 GAME_CC_DIR = f"$ASM_PROC $ASM_PROC_FLAGS {IDO_CC} --$AS $ASFLAGS"
-LIB_CC_DIR = f"$ASM_PROC $ASM_PROC_FLAGS {IDO_CC} --$AS $ASFLAGS"
 WARNINGS = "-fullwarn -verbose -Xcpluscomm -signed -nostdinc -non_shared -Wab,-r4300_mul -D_LANGUAGE_C -DF3DEX_GBI -DNDEBUG -woff 649,838"
 
 GAME_COMPILE_CMD = (
@@ -70,8 +71,8 @@ AUDIO_COMPILE_CMD = (
     f"{IDO_CC} -c -G 0 -Xcpluscomm -xansi {COMMON_INCLUDES} -non_shared -mips2 -woff 819,826,852 -Wab,-r4300_mul -nostdinc -O3"
 )
 
-LIB_COMPILE_CMD = (
-    f"{LIB_CC_DIR} -c -B {LIB_CC_DIR}/ee- {COMMON_INCLUDES} -O2 -G0"
+LL_COMPILE_CMD = (
+    f"{GAME_CC_DIR} {COMMON_INCLUDES} -- -c -G 0 {WARNINGS} {COMMON_INCLUDES} -mips3 -32 -O1"
 )
 
 def exec_shell(command: List[str]) -> str:
@@ -163,7 +164,6 @@ def build_stuff(linker_entries: List[LinkerEntry]):
         deps="gcc",
     )
 
-
     ninja.rule(
         "O2_cc",
         command=f"{O2_COMPILE_CMD} -o $out $in",
@@ -181,9 +181,9 @@ def build_stuff(linker_entries: List[LinkerEntry]):
     )
 
     ninja.rule(
-        "libcc",
+        "ll_cc",
         description="cc $in",
-        command=f"{LIB_COMPILE_CMD} $in -o $out",
+        command=f"{LL_COMPILE_CMD} $in -o $out && python3 {TOOLS_DIR}/set_o32abi_bit.py $out",
     )
 
     ninja.rule(
@@ -218,14 +218,14 @@ def build_stuff(linker_entries: List[LinkerEntry]):
         ):
             build(entry.object_path, entry.src_paths, "as")
         elif isinstance(seg, splat.segtypes.common.c.CommonSegC):
-            if any(str(src_path).startswith("src/lib/") for src_path in entry.src_paths):
-                build(entry.object_path, entry.src_paths, "libcc")
             # First check for C files that have overrides
-            elif any(os.path.basename(src_path) in C_FILE_OVERRIDES for src_path in entry.src_paths):
+            if any(os.path.basename(src_path) in C_FILE_OVERRIDES for src_path in entry.src_paths):
                 # Find the matching key in C_FILE_OVERRIDES
                 override_key = next(os.path.basename(src_path) for src_path in entry.src_paths if os.path.basename(src_path) in C_FILE_OVERRIDES)
                 # Get the value from the dictionary and use it in the build function
                 build(entry.object_path, entry.src_paths, C_FILE_OVERRIDES[override_key])
+            elif any(str(src_path).startswith("src/libc/ll.c") for src_path in entry.src_paths):
+                build(entry.object_path, entry.src_paths, "ll_cc")
             elif any(str(src_path).startswith(OS_PATH) for src_path in entry.src_paths):
                 build(entry.object_path, entry.src_paths, "O1_cc")
             elif any(str(src_path).startswith(AUDIO_PATH) for src_path in entry.src_paths):
