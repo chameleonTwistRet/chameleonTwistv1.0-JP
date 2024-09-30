@@ -1,3 +1,3 @@
 #include "common.h"
 
-#pragma GLOBAL_ASM("asm/nonmatchings/io/sprawread/func_800E1890.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/io/sprawread/__osSpRawReadIo.s")

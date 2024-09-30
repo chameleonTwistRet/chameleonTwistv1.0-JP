@@ -16,18 +16,24 @@ from splat.segtypes.linker_entry import LinkerEntry
 ROOT = Path(__file__).parent.resolve()
 TOOLS_DIR = ROOT / "tools"
 
-#temporary until all C files with O3 match
-O3_FILES = [
-]
+C_FILE_OVERRIDES = {
+    "sl.c": "O2_cc",
+    "mtxutil.c": "O2_cc",
+    "mtxcatl.c": "O2_cc",
+    "save.c": "O2_cc",
+    "translate.c": "O2_cc",
+
+
+}
 
 #overrides directory compile flags
-O2_FILES = [
-    "sl.c",
-    "mtxutil.c",
-    "mtxcatl.c",
-    "save.c",
-    "translate.c"
-]
+# O2_FILES = [
+#     "sl.c",
+#     "mtxutil.c",
+#     "mtxcatl.c",
+#     "save.c",
+#     "translate.c"
+# ]
 
 BASENAME = "chameleontwist"
 VERSION = "jp"
@@ -37,8 +43,8 @@ LD_PATH = f"{BASENAME}.{VERSION}.ld"
 ELF_PATH = f"build/{BASENAME}"
 MAP_PATH = f"build/{BASENAME}.map"
 PRE_ELF_PATH = f"build/{BASENAME}.elf"
-OVERLAY_INTRO_PATH = "src/overlays/intro"
 OS_PATH = "src/os"
+GU_PATH = "src/gu"
 AUDIO_PATH = "src/audio/"
 
 COMMON_INCLUDES = "-I. -Iinclude -Iinclude/PR -Isrc"
@@ -47,10 +53,6 @@ IDO_CC = f"{TOOLS_DIR}/ido_5.3/usr/lib/cc"
 GAME_CC_DIR = f"$ASM_PROC $ASM_PROC_FLAGS {IDO_CC} --$AS $ASFLAGS"
 LIB_CC_DIR = f"$ASM_PROC $ASM_PROC_FLAGS {IDO_CC} --$AS $ASFLAGS"
 WARNINGS = "-fullwarn -verbose -Xcpluscomm -signed -nostdinc -non_shared -Wab,-r4300_mul -D_LANGUAGE_C -DF3DEX_GBI -DNDEBUG -woff 649,838"
-
-GAME_OVERLAY_COMPILE_CMD = (
-    f"{GAME_CC_DIR} {COMMON_INCLUDES} -- -c -G 0 {WARNINGS} {COMMON_INCLUDES} -mips2 -O2"
-)
 
 GAME_COMPILE_CMD = (
     f"{GAME_CC_DIR} {COMMON_INCLUDES} -- -c -G 0 {WARNINGS} {COMMON_INCLUDES} -mips2 -O2"
@@ -171,17 +173,11 @@ def build_stuff(linker_entries: List[LinkerEntry]):
     )
 
     ninja.rule(
-        "os_cc",
+        "O1_cc",
         command=f"{OS_COMPILE_CMD} -o $out $in",
         description="Compiling -O1 ido .c file",
         depfile="$out.d",
         deps="gcc",
-    )
-
-    ninja.rule(
-        "overlaycc",
-        description="cc (overlay) $in",
-        command=f"{GAME_OVERLAY_COMPILE_CMD} -o $out $in",
     )
 
     ninja.rule(
@@ -224,18 +220,18 @@ def build_stuff(linker_entries: List[LinkerEntry]):
         elif isinstance(seg, splat.segtypes.common.c.CommonSegC):
             if any(str(src_path).startswith("src/lib/") for src_path in entry.src_paths):
                 build(entry.object_path, entry.src_paths, "libcc")
-            elif any(str(src_path).startswith(OVERLAY_INTRO_PATH) for src_path in entry.src_paths):
-                build(entry.object_path, entry.src_paths, "overlaycc")
+            # First check for C files that have overrides
+            elif any(os.path.basename(src_path) in C_FILE_OVERRIDES for src_path in entry.src_paths):
+                # Find the matching key in C_FILE_OVERRIDES
+                override_key = next(os.path.basename(src_path) for src_path in entry.src_paths if os.path.basename(src_path) in C_FILE_OVERRIDES)
+                # Get the value from the dictionary and use it in the build function
+                build(entry.object_path, entry.src_paths, C_FILE_OVERRIDES[override_key])
             elif any(str(src_path).startswith(OS_PATH) for src_path in entry.src_paths):
-                build(entry.object_path, entry.src_paths, "os_cc")
-            elif any(os.path.basename(src_path) in O2_FILES for src_path in entry.src_paths):
-                build(entry.object_path, entry.src_paths, "O2_cc")
-            elif any(str(src_path).startswith("src/audio/") for src_path in entry.src_paths):
+                build(entry.object_path, entry.src_paths, "O1_cc")
+            elif any(str(src_path).startswith(AUDIO_PATH) for src_path in entry.src_paths):
                 build(entry.object_path, entry.src_paths, "ido_O3_cc")
-            elif any(str(src_path).startswith("src/gu/") for src_path in entry.src_paths):
+            elif any(str(src_path).startswith(GU_PATH) for src_path in entry.src_paths):
                 build(entry.object_path, entry.src_paths, "ido_O3_cc")
-            # elif any(os.path.basename(src_path) in O3_FILES for src_path in entry.src_paths):
-            #     build(entry.object_path, entry.src_paths, "ido_O3_cc")
             else:
                 build(entry.object_path, entry.src_paths, "cc")
         elif isinstance(seg, splat.segtypes.common.databin.CommonSegDatabin):

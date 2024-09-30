@@ -4,7 +4,7 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/libc/ll/func_800E04EC.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/libc/ll/func_800E0528.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/libc/ll/__ull_div.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/libc/ll/func_800E0564.s")
 
@@ -12,7 +12,7 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/libc/ll/func_800E05CC.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/libc/ll/func_800E0628.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/libc/ll/__ll_mul.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/libc/ll/func_800E0658.s")
 

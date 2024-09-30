@@ -5,3 +5,13 @@ func_8004ECA8 = 0x8004ECA8; //type:func
 //qnan_f
 __libm_qnan_f = 0x80110CA0; //rom:0xEC0A0
 
+
+osTvType = 0x80000300; // type:u32 size:0x4
+CART_DD = 0x80000304; // type:u32 size:0x4 
+osRomBase = 0x80000308; // type:u32 size:0x4
+osResetType = 0x8000030c; // type:u32 size:0x4
+CIC_ID = 0x80000310; // type:u32 size:0x4 
+VERSION = 0x80000314; // type:u32 size:0x4 
+osMemSize = 0x80000318; // type:s32 size:0x4
+osAppNMIBuffer = 0x8000031c; // type:u32 size:0x4 
+_bzero = 0x800e0420; // type:func rom:0xbb820

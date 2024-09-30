@@ -423,8 +423,6 @@ void func_800D79E4(Poly*, s32);
 void Vec3f_Zero(Vec3f*);
 f32 Vec3f_Normalize(Vec3f*);
 void func_800D87A4(Collider* arg0, s32 arg1); 
-void func_800D99D0(s32*, s32, void*, s32, s32*, s32);
-void func_800D9B20(s32*);
 //void func_800DA510(s32*, s32, s32, s32, s32, s32, s32*);
 void func_800DA620(s32*, s32, s32);
 s32 func_800DB820(OSMesgQueue*);

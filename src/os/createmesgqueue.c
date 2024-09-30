@@ -1,3 +1,11 @@
 #include "common.h"
+#include "osint.h"
 
-#pragma GLOBAL_ASM("asm/nonmatchings/os/createmesgqueue/func_800DA4E0.s")
+void osCreateMesgQueue(OSMesgQueue *mq, OSMesg *msg, s32 msgCount) {
+    mq->mtqueue = (OSThread *)&__osThreadTail.next;
+    mq->fullqueue = (OSThread *)&__osThreadTail.next;
+    mq->validCount = 0;
+    mq->first = 0;
+    mq->msgCount = msgCount;
+    mq->msg = msg;
+}

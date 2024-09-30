@@ -277,3 +277,122 @@ guScale = 0x800daa84; // type:func rom:0xb5e84
 //gu/translate.c
 guTranslateF = 0x800daf40; // type:func rom:0xb6340
 guTranslate = 0x800daf88; // type:func rom:0xb6388
+
+//OS
+
+//os/createmesgqueue.c
+osCreateMesgQueue = 0x800da4e0; // type:func rom:0xb58e0
+
+//os/createthread.c
+osCreateThread = 0x800d99d0; // type:func rom:0xb4dd0
+__osCleanupThread = 0x800e2220; // rom:0xbd620
+
+//os/destroythread.c
+osStopThread = 0x800EBC10; // type:func rom:0xC7010
+
+//os/getthreadpri.c
+osGetThreadPri = 0x800e3060; // type:func rom:0xbe460
+
+//os/gettime.c
+osGetTime = 0x800e01c0; // type:func rom:0xbb5c0
+
+//os/getsr.s
+__osSetSR = 0x800e1860; // type:func rom:0xbcc60
+__osGetSR = 0x800e1870; // type:func rom:0xbcc70
+
+//os/initialize.c
+osClockRate = 0x80109010; // type:u64 size:0x8 rom:0xe4410
+__osInitialize_common = 0x800d9730; // type:func rom:0xb4b30
+__osSetFpcCsr = 0x800e1880; // type:func rom:0xbcc80
+__osSpRawReadIo = 0x800e1890; // type:func rom:0xbcc90
+__osSpRawWriteIo = 0x800e18e0; // type:func rom:0xbcce0
+__osExceptionPreamble = 0x800e1930; // rom:0xbcd30
+__createSpeedParam = 0x800e2230; // type:func rom:0xbd630
+__OSGlobalIntMask = 0x8010901c; // size:0x4 rom:0xe441c
+__osShutdown = 0x80109020; // size:0x4 rom:0xe4420
+
+//os/invalicache.s
+osInvalICache = 0x800dca90; // type:func rom:0xb7e90
+
+//os/writebackdcacheall.s
+osWritebackDCache = 0x800dafe0; // type:func rom:0xb63e0
+
+//os/pirawread.c
+osPiRawReadIo = 0x800da760; // type:func rom:0xb5b60
+
+//libc/ll.c
+__ull_div = 0x800e0528; // type:func rom:0xbb928
+__ll_mul = 0x800e0628; // type:func rom:0xbba28
+
+//os/leointerrupt.c
+__osLeoInterrupt = 0x800e2320; // type:func rom:0xbd720
+__osLeoAbnormalResume = 0x800e2a04; // type:func rom:0xbde04
+__osLeoResume = 0x800e2aec; // type:func rom:0xbdeec
+__osDiskHandle = 0x8024c504; // size:0x4
+leoDiskStack = 0x8024B240; // size:0x1000
+
+//os/sethwinterrupt.c
+__osSetHWIntrRoutine = 0x800e22d0; // type:func rom:0xbd6d0
+__osHwIntTable = 0x80109de0; // rom:0xe51e0
+
+//os/interrupt.s
+__osDisableInt = 0x800e2be0; // type:func rom:0xbdfe0
+__osRestoreInt = 0x800e2c00; // type:func rom:0xbe000
+
+//os/getcount.s
+osGetCount = 0x800e0250; // type:func rom:0xbb650
+
+//os/vimgr.c
+__osCurrentTime = 0x8024c260; // type:u64 size:0x8
+__osBaseCounter = 0x8024c268; // size:0x4
+__osViIntrCount = 0x8024c26c; // size:0x4
+
+//os/exceptasm.s
+__osDispatchThread = 0x800e20a4; // type:func rom:0xbd4a4
+__osPopThread = 0x800e2094; // type:func rom:0xbd494
+__osEnqueueThread = 0x800e204c; // type:func rom:0xbd44c
+
+//os/jammesg.c
+osJamMesg = 0x800e3b70; // type:func rom:0xbef70
+__osEnqueueAndYield = 0x800e1f4c; // type:func rom:0xbd34c
+
+//os/startthread.c
+osStartThread = 0x800d9b20; // type:func rom:0xb4f20
+
+//os/pirawdma.c
+__osEPiRawStartDma = 0x800e36e0; // type:func rom:0xbeae0
+
+//os/seteventmesg.c
+__osEventStateTab = 0x8024b080; // size:0x08
+
+//os/recvmesg.c
+osRecvMesg = 0x800da620; // type:func rom:0xb5a20
+
+//os/resetglobalintmask.c
+__osResetGlobalIntMask = 0x800ebe10; // type:func rom:0xc7210
+
+//os/sendmesg.c
+osSendMesg = 0x800dc400; // type:func rom:0xb7800
+
+//os/seteventmesg.c
+osSetEventMesg = 0x800db230; // type:func rom:0xb6630
+
+//os/setthreadpri.c
+osSetThreadPri = 0x800da400; // type:func rom:0xb5800
+
+//os/settimer.c
+osSetTimer = 0x800dc320; // type:func rom:0xb7720
+
+//os/timerintr.c
+__osInsertTimer = 0x800e2ed8; // type:func rom:0xbe2d8
+__osTimerList = 0x80109e20; // size:0x4 rom:0xe5220
+__osSetTimerIntr = 0x800e2e64; // type:func rom:0xbe264
+__osTimerServicesInit = 0x800e2c60; // type:func rom:0xbe060
+__osTimerInterrupt = 0x800e2cec; // type:func rom:0xbe0ec
+__osSetCompare = 0x800ebe00; // type:func rom:0xc7200
+
+//os/yieldthread.c
+osYieldThread = 0x800ebec0; // type:func rom:0xc72c0
+
+//os/virtualtophysical.c
+__osProbeTLB = 0x800e6830; // type:func rom:0xc1c30
