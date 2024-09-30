@@ -1,3 +1,6 @@
-#include "common.h"
+#include "PR/os_internal.h"
+#include "PR/rcp.h"
 
-#pragma GLOBAL_ASM("asm/nonmatchings/io/spsetstat/func_800E6720.s")
+void __osSpSetStatus(u32 data) {
+    IO_WRITE(SP_STATUS_REG, data);
+}

@@ -1,3 +1,6 @@
 #include "common.h"
+#include "os_internal.h"
 
-#pragma GLOBAL_ASM("asm/nonmatchings/io/sptaskyield/func_800DF070.s")
+void osSpTaskYield(void) {
+    __osSpSetStatus(SP_SET_YIELD);
+}

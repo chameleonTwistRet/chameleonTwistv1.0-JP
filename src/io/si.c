@@ -1,3 +1,13 @@
 #include "common.h"
+#include "PR/os_internal.h"
+#include "siint.h"
 
-#pragma GLOBAL_ASM("asm/nonmatchings/io/si/func_800EBBE0.s")
+int __osSiDeviceBusy() {
+    register u32 stat = IO_READ(SI_STATUS_REG);
+
+    if (stat & (SI_STATUS_DMA_BUSY | SI_STATUS_RD_BUSY)) {
+        return TRUE;
+    }
+
+    return FALSE;
+}

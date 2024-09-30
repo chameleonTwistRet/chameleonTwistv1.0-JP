@@ -1,3 +1,10 @@
 #include "common.h"
+#include "piint.h"
 
-#pragma GLOBAL_ASM("asm/nonmatchings/io/pigetcmdq/func_800E3CC0.s")
+OSMesgQueue *osPiGetCmdQueue(void) {
+    if (!__osPiDevMgr.active) {
+        return NULL;
+    }
+    
+    return __osPiDevMgr.cmdQueue;
+}

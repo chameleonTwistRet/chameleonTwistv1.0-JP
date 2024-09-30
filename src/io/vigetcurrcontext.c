@@ -1,3 +1,7 @@
 #include "common.h"
+#include "viint.h"
 
-#pragma GLOBAL_ASM("asm/nonmatchings/io/vigetcurrcontext/func_800E31D0.s")
+__OSViContext* __osViGetCurrentContext(void)
+{
+    return __osViCurr;
+}

@@ -1,7 +1,23 @@
 #include "common.h"
 
-#pragma GLOBAL_ASM("asm/nonmatchings/io/piacs/func_800E3540.s")
+#define PI_Q_BUF_LEN 1
+u32 __osPiAccessQueueEnabled = 0;
+OSMesg piAccessBuf[PI_Q_BUF_LEN];
+OSMesgQueue __osPiAccessQueue;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/io/piacs/func_800E3590.s")
+void __osPiCreateAccessQueue(void) {
+	__osPiAccessQueueEnabled = 1;
+	osCreateMesgQueue(&__osPiAccessQueue, piAccessBuf, PI_Q_BUF_LEN);
+	osSendMesg(&__osPiAccessQueue, NULL, OS_MESG_NOBLOCK);
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/io/piacs/func_800E35D4.s")
+void __osPiGetAccess(void) {
+	OSMesg dummyMesg;
+	if (!__osPiAccessQueueEnabled)
+		__osPiCreateAccessQueue();
+	osRecvMesg(&__osPiAccessQueue, &dummyMesg, OS_MESG_BLOCK);
+}
+
+void __osPiRelAccess(void) {
+	osSendMesg(&__osPiAccessQueue, NULL, OS_MESG_NOBLOCK);
+}

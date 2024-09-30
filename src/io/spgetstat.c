@@ -1,3 +1,6 @@
 #include "common.h"
+#include "PR/rcp.h"
 
-#pragma GLOBAL_ASM("asm/nonmatchings/io/spgetstat/func_800EB3C0.s")
+u32 __osSpGetStatus() {
+    return IO_READ(SP_STATUS_REG);
+}

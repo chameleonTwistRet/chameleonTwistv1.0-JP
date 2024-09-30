@@ -25,7 +25,9 @@ C_FILE_OVERRIDES = {
     "ldiv.c": "O2_cc",
     "ll.c": "ll_cc",
     "xldtob.c": "ido_O3_cc",
-    "xprintf.c": "ido_O3_cc"
+    "xprintf.c": "ido_O3_cc",
+    "motor.c": "motor_O3_cc",
+    "sptask.c": "O2_cc",
 }
 
 #overrides directory compile flags
@@ -45,8 +47,9 @@ LD_PATH = f"{BASENAME}.{VERSION}.ld"
 ELF_PATH = f"build/{BASENAME}"
 MAP_PATH = f"build/{BASENAME}.map"
 PRE_ELF_PATH = f"build/{BASENAME}.elf"
-OS_PATH = "src/os"
-GU_PATH = "src/gu"
+IO_PATH = "src/io/"
+OS_PATH = "src/os/"
+GU_PATH = "src/gu/"
 AUDIO_PATH = "src/audio/"
 
 COMMON_INCLUDES = "-I. -Iinclude -Iinclude/PR -Isrc"
@@ -69,6 +72,10 @@ OS_COMPILE_CMD = (
 
 AUDIO_COMPILE_CMD = (
     f"{IDO_CC} -c -G 0 -Xcpluscomm -xansi {COMMON_INCLUDES} -non_shared -mips2 -woff 819,826,852 -Wab,-r4300_mul -nostdinc -O3"
+)
+
+MOTOR_COMPILE_CMD = (
+    f"{IDO_CC} -c -G 0 -Xcpluscomm -xansi {COMMON_INCLUDES} -non_shared -mips1 -woff 819,826,852 -Wab,-r4300_mul -nostdinc -O3"
 )
 
 LL_COMPILE_CMD = (
@@ -157,6 +164,14 @@ def build_stuff(linker_entries: List[LinkerEntry]):
     )
 
     ninja.rule(
+        "motor_O3_cc",
+        command=f"{MOTOR_COMPILE_CMD} -o $out $in",
+        description="Compiling -O3 ido .c file",
+        depfile="$out.d",
+        deps="gcc",
+    )
+
+    ninja.rule(
         "ido_O3_cc",
         command=f"{AUDIO_COMPILE_CMD} -o $out $in",
         description="Compiling -O3 ido .c file",
@@ -227,6 +242,8 @@ def build_stuff(linker_entries: List[LinkerEntry]):
             elif any(str(src_path).startswith("src/libc/ll.c") for src_path in entry.src_paths):
                 build(entry.object_path, entry.src_paths, "ll_cc")
             elif any(str(src_path).startswith(OS_PATH) for src_path in entry.src_paths):
+                build(entry.object_path, entry.src_paths, "O1_cc")
+            elif any(str(src_path).startswith(IO_PATH) for src_path in entry.src_paths):
                 build(entry.object_path, entry.src_paths, "O1_cc")
             elif any(str(src_path).startswith(AUDIO_PATH) for src_path in entry.src_paths):
                 build(entry.object_path, entry.src_paths, "ido_O3_cc")

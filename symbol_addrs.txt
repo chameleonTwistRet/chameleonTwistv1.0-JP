@@ -15,3 +15,4 @@ VERSION = 0x80000314; // type:u32 size:0x4
 osMemSize = 0x80000318; // type:s32 size:0x4
 osAppNMIBuffer = 0x8000031c; // type:u32 size:0x4 
 _bzero = 0x800e0420; // type:func rom:0xbb820
+_bcopy = 0x800e6410; // type:func rom:0xc1810

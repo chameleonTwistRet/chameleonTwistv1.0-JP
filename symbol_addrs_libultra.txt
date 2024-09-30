@@ -320,6 +320,9 @@ osWritebackDCache = 0x800dafe0; // type:func rom:0xb63e0
 //os/pirawread.c
 osPiRawReadIo = 0x800da760; // type:func rom:0xb5b60
 
+//os/epirawwrite.c
+__osEPiRawWriteIo = 0x800ebe70; // type:func rom:0xc7270
+
 //libc/ll.c
 __ull_div = 0x800e0528; // type:func rom:0xbb928
 __ll_mul = 0x800e0628; // type:func rom:0xbba28
@@ -419,3 +422,176 @@ _Printf = 0x800e5dc0; // type:func rom:0xc11c0
 _Litob = 0x800ebfb0; // type:func rom:0xc73b0
 _Ldunscale = 0x800ec7b8; // type:func rom:0xc7bb8
 _Ldtob = 0x800ec7c0; // type:func rom:0xc7bc0
+
+//io/ai.c
+__osAiDeviceBusy = 0x800eb3d0; // type:func rom:0xc67d0
+
+//io/aisetfreq.c
+osAiSetFrequency = 0x800dce50; // type:func rom:0xb8250
+
+//io/aisetnextbuf.c
+osAiSetNextBuffer = 0x800df110; // type:func rom:0xba510
+
+//io/conteeplongread.c
+osEepromLongRead = 0x800e07f0; // type:func rom:0xbbbf0
+
+//io/conteeplongwrite.c
+osEepromLongWrite = 0x800e0930; // type:func rom:0xbbd30
+
+//io/conteepwrite.c
+osEepromWrite = 0x800eb400; // type:func rom:0xc6800
+__osEepStatus = 0x800eb6bc; // type:func rom:0xc6abc
+__osPackEepWriteData = 0x800eb5b0; // type:func rom:0xc69b0
+
+//io/conteepread.c
+osEepromRead = 0x800eb8e0; // type:func rom:0xc6ce0
+__osPackEepReadData = 0x800ebad0; // type:func rom:0xc6ed0
+
+//io/conteepprobe.c
+osEepromProbe = 0x800e0780; // type:func rom:0xbbb80
+
+//io/controller.c
+__osEepromTimer = 0x8024b148; // size:0x20
+__osEepromTimerQ = 0x8024b168; // size:0x18
+__osEepromTimerMsg = 0x8024b180; // size:0x4
+__osContLastCmd = 0x8024b140; // size:0x1
+__osContPifRam = 0x8024b100; // size:0x40
+__osMaxControllers = 0x8024b141; // size:0x1
+osContInit = 0x800db2a0; // type:func rom:0xb66a0
+
+//io/siascs.c
+__osSiGetAccess = 0x800e0e60; // type:func rom:0xbc260
+__osSiRelAccess = 0x800e0ea4; // type:func rom:0xbc2a4
+__osSiCreateAccessQueue = 0x800e0e10; // type:func rom:0xbc210
+
+//io/motor.c
+__osSiRawStartDma = 0x800e0ed0; // type:func rom:0xbc2d0
+osMotorInit = 0x800d9344; // type:func rom:0xb4744
+osMotorStart = 0x800d94dc; // type:func rom:0xb48dc
+osMotorStop = 0x800d9604; // type:func rom:0xb4a04
+
+//io/contpfs.c
+__osGetId = 0x800e4604; // type:func rom:0xbfa04
+__osContRamRead = 0x800e14b0; // type:func rom:0xbc8b0
+__osContRamWrite = 0x800e1100; // type:func rom:0xbc500
+__osCheckId = 0x800e4860; // type:func rom:0xbfc60
+__osPfsSelectBank = 0x800e4c7c; // type:func rom:0xc007c
+__osPfsRWInode = 0x800e495c; // type:func rom:0xbfd5c
+
+//io/pfsisplug.c
+__osPfsPifRam = 0x8024b1e0; // size:0x40
+__osPfsRequestData = 0x800e0c40; // type:func rom:0xbc040
+__osPfsGetInitData = 0x800e0d3c; // type:func rom:0xbc13c
+osPfsIsPlug = 0x800e0aa0; // type:func rom:0xbbea0
+
+//io/crc.c
+__osContDataCrc = 0x800e1030; // type:func rom:0xbc430
+
+//io/pfsinit.c
+__osPfsGetStatus = 0x800db714; // type:func rom:0xb6b14
+osPfsInitPak = 0x800db660; // type:func rom:0xb6a60
+__osContAddressCrc = 0x800e0f80; // type:func rom:0xbc380
+
+//io/contreaddata.c
+osContStartReadData = 0x800db820; // type:func rom:0xb6c20
+osContGetReadData = 0x800db8e4; // type:func rom:0xb6ce4
+
+//io/leodiskinit.c
+osLeoDiskInit = 0x800ebd10; // type:func rom:0xc7110
+
+//io/pimgr.c
+__osPiTable = 0x80109d8c; // size:0x4 rom:0xe518c
+
+//io/pfsinit.c
+osPfsChecker = 0x800e4cf0; // type:func rom:0xc00f0
+
+//io/piacs.c
+__osPiCreateAccessQueue = 0x800e3540; // type:func rom:0xbe940
+__osPiGetAccess = 0x800e3590; // type:func rom:0xbe990
+__osPiRelAccess = 0x800e35d4; // type:func rom:0xbe9d4
+__osPiAccessQueueEnabled = 0x80109ea0; // size:0x4 rom:0xe52a0
+__osPiAccessQueue = 0x8024c288; // size:0x18
+
+//io/pidma.c
+osPiStartDma = 0x800da510; // type:func rom:0xb5910
+
+//io/pimgr.c
+__osPiDevMgr = 0x80109d70; // size:0x1c rom:0xe5170
+osCreatePiManager = 0x800da270; // type:func rom:0xb5670
+__osDevMgrMain = 0x800e37c0; // type:func rom:0xbebc0
+
+//io/pigetcmdq.c
+osPiGetCmdQueue = 0x800e3cc0; // type:func rom:0xbf0c0
+
+//io/pirawdma.c
+__osPiRawStartDma = 0x800e3600; // type:func rom:0xbea00
+
+//io/si.c
+__osSiDeviceBusy = 0x800ebbe0; // type:func rom:0xc6fe0
+
+//io/sp.c
+__osSpDeviceBusy = 0x800e6800; // type:func rom:0xc1c00
+
+//os/invaldcache.s
+osInvalDCache = 0x800dcb10; // type:func rom:0xb7f10
+
+//io/spgetstat.c
+__osSpGetStatus = 0x800eb3c0; // type:func rom:0xc67c0
+
+//io/sprawdma.c
+__osSpRawStartDma = 0x800e6770; // type:func rom:0xc1b70
+
+//io/spsetpc.c
+__osSpSetPc = 0x800e6730; // type:func rom:0xc1b30
+
+//io/sptask.c
+_VirtualToPhysicalTask = 0x800dc580; // type:func rom:0xb7980
+osSpTaskLoad = 0x800dc68c; // type:func rom:0xb7a8c
+osSpTaskStartGo = 0x800dc7f4; // type:func rom:0xb7bf4
+
+//io/spsetstat.c
+__osSpSetStatus = 0x800e6720; // type:func rom:0xc1b20
+
+//io/sptaskyield.c
+osSpTaskYield = 0x800df070; // type:func rom:0xba470
+
+//io/sptaskyielded.c
+osSpTaskYielded = 0x800df090; // type:func rom:0xba490
+
+//io/vi.c
+__osViInit = 0x800e3080; // type:func rom:0xbe480
+osViClock = 0x80109e98; // size:0x4 rom:0xe5298
+__osViNext = 0x80109e94; // size:0x4 rom:0xe5294
+__osViCurr = 0x80109e90; // size:0x4 rom:0xe5290
+
+//io/vimodepallan1.c
+osViModePalLan1 = 0x8010a1d0; // rom:0xe55d0
+
+osViModeMpalLan1 = 0x8010a220; // rom:0xe5620
+osViModeNtscLan1 = 0x8010a270; // rom:0xe5670
+__osViSwapContext = 0x800e31e0; // type:func rom:0xbe5e0
+
+//io/viblack.c
+osViBlack = 0x800da040; // type:func rom:0xb5440
+
+//io/vigetcurrcontext.c
+__osViGetCurrentContext = 0x800e31d0; // type:func rom:0xbe5d0
+
+//io/vimgr.c
+osCreateViManager = 0x800d9c70; // type:func rom:0xb5070
+viMgrMain = 0x800d9df8; // type:func rom:0xb51f8
+
+//io/visetevent.c
+osViSetEvent = 0x800dc2b0; // type:func rom:0xb76b0
+
+//io/visetmode.c
+osViSetMode = 0x800d9fd0; // type:func rom:0xb53d0
+
+//io/visetspecial.c
+osViSetSpecialFeatures = 0x800da0b0; // type:func rom:0xb54b0
+
+//io/visetyscale.c
+osViSetYScale = 0x800dc840; // type:func rom:0xb7c40
+
+//io/viswapbuf.c
+osViSwapBuffer = 0x800db060; // type:func rom:0xb6460
