@@ -57,123 +57,119 @@ s32 CompareWrappedAngles(f32 angle1, f32 angle2) {
     return ret;
 }
 
-// jtbl 801107F8
-#pragma GLOBAL_ASM("asm/nonmatchings/code/vector/func_800D75B4.s")
-/* //non equivalent
-void func_800D75B4(Poly* arg0, s32 arg1) {
-    Vec3f sp70; //unk_70
-    f32 sp50; //unkVecStruct.vec2
+void func_800D75B4(Poly *arg0, s32 arg1) {
+    char pad[4];
+    Vec3f sp70;
+    Vec3f temp;
     f32 temp_f0_2;
     f32 temp_f0_3;
     f32 temp_f0_4;
-    f32 temp_f14;
-    f32 temp_f14_4;
-    f32 temp_f16;
-    f32 temp_f16_4;
     f32 temp_f18_3;
-    f32 temp_f2;
-    f32 temp_f2_3;
-    f32 temp_f2_4;
-    unkVecStruct* temp_v0;
-
+    f32 sp50;
+    char pad2[8];
+    unkVecStruct *temp_v0;
+    
     switch (arg1) {
-    case 1:
-        func_800AEB48(arg0);
-        break;
-    case 2:
-        // Orthonormalisation Algorithm
-        
-        temp_v0 = &arg0->unkVectorStruct;
-
-        // s = unkVec - offset
-        sp70.x = arg0->unkVec.x - arg0->offset.x;
-        sp70.y = arg0->unkVec.y - arg0->offset.y;
-        sp70.z = arg0->unkVec.z - arg0->offset.z;
-
-        // t = unkVec2 - offset
-        temp_f2 = arg0->unkVec2.x - arg0->offset.x;
-        temp_f14 = arg0->unkVec2.y - arg0->offset.y;
-        temp_f16 = arg0->unkVec2.z - arg0->offset.z;
-
-        // v1 = s = (unkvec - off)
-        temp_v0->vec1 = sp70;
-
-        // ||v1||
-        temp_f0_2 = __sqrtf(SQ(arg0->unkVectorStruct.vec1.x) + SQ(arg0->unkVectorStruct.vec1.y + SQ(arg0->unkVectorStruct.vec1.z)));
-
-        // if length of v1 is 0, not a poly
-        if (temp_f0_2 == 0.0) {
-            arg0->unk_00 = -1;
+        case 1:
+            func_800AEB48(arg0);
             break;
-        }
+    
+        case 2:
+            // Orthonormalisation Algorithm
+            
+            temp_v0 = &arg0->unkVectorStruct;
 
-        // normalise s.t. v1 = v1/||v1||
-        temp_v0->vec1.x /= temp_f0_2;
-        temp_v0->vec1.y = temp_v0->vec1.y / temp_f0_2;
-        temp_v0->vec1.z = temp_v0->vec1.z / temp_f0_2;
+            // s = unkVec - offset
+            sp70.x = arg0->unkVec.x - arg0->offset.x;
+            sp70.y = arg0->unkVec.y - arg0->offset.y;
+            sp70.z = arg0->unkVec.z - arg0->offset.z;
 
-        // let n = (s x t), hence (s orth n) and (s orth t)
-        temp_v0->normal.x = (sp70.y * temp_f16) - (sp70.z * temp_f14);
-        temp_v0->normal.y = (sp70.z * temp_f2) - (sp70.x * temp_f16);
-        temp_v0->normal.z = (sp70.x * temp_f14) - (sp70.y * temp_f2);
+            // t = unkVec2 - offset
+            temp.x = arg0->unkVec2.x - arg0->offset.x;
+            temp.y = arg0->unkVec2.y - arg0->offset.y;
+            temp.z = arg0->unkVec2.z - arg0->offset.z;
 
-        // ||n||
-        temp_f0_3 = __sqrtf(SQ(temp_v0->normal.z) + (SQ(temp_v0->normal.x) + SQ(temp_v0->normal.y)));
+            // v1 = s = (unkvec - off)
+            temp_v0->vec1 = sp70;
 
-        // if ||n|| = 0, not poly
-        if (temp_f0_3 == 0.0) {
-            arg0->unk_00 = -1;
+            // ||v1||
+            temp_f0_2 = __sqrtf((arg0->unkVectorStruct.vec1.z * arg0->unkVectorStruct.vec1.z) + ((arg0->unkVectorStruct.vec1.x * arg0->unkVectorStruct.vec1.x) + (arg0->unkVectorStruct.vec1.y * arg0->unkVectorStruct.vec1.y)));
+            
+            // if length of v1 is 0, not a poly
+            if (temp_f0_2 == 0.0) {
+                arg0->unk_00 = -1;
+                return;
+            }
+
+            // normalise s.t. v1 = v1/||v1||
+            temp_v0->vec1.x /= temp_f0_2;
+            temp_v0->vec1.y /= temp_f0_2;
+            temp_v0->vec1.z /= temp_f0_2;
+
+            // let n = (s x t), hence (s orth n) and (s orth t)
+            temp_v0->normal.x = (sp70.y * temp.z) - (sp70.z * temp.y);
+            temp_v0->normal.y = (sp70.z * temp.x) - (sp70.x * temp.z);
+            temp_v0->normal.z = (sp70.x * temp.y) - (sp70.y * temp.x);
+
+            // ||n||
+            temp_f0_3 = __sqrtf((temp_v0->normal.z * temp_v0->normal.z) + ((temp_v0->normal.x * temp_v0->normal.x) + (temp_v0->normal.y * temp_v0->normal.y)));
+            if (temp_f0_3 == 0.0) {
+                arg0->unk_00 = -1;
+                return;
+            }
+
+            // normalise s.t. n = n/||n||
+            temp_v0->normal.x = temp_v0->normal.x / temp_f0_3;
+            temp_v0->normal.y = temp_v0->normal.y / temp_f0_3;
+            temp_v0->normal.z = temp_v0->normal.z / temp_f0_3;
+
+            // v2 = (n x v1) -> (v2 orth n) and (v2 orth v1)
+            // Given two normalised orthogonal vectors, their cross product will also be normalised
+    
+            // from earlier (s orth n) -> (v1 orth n), preserved through normalisation
+            temp_v0->vec2.x = (temp_v0->normal.y * temp_v0->vec1.z) - (temp_v0->vec1.y * temp_v0->normal.z);
+            temp_v0->vec2.y = (temp_v0->normal.z * temp_v0->vec1.x) - (temp_v0->vec1.z * temp_v0->normal.x);
+            temp_v0->vec2.z = (temp_v0->normal.x * temp_v0->vec1.y) - (temp_v0->vec1.x * temp_v0->normal.y);
             break;
-        }
-
-        // normalise s.t. n = n/||n||
-        temp_v0->normal.x = temp_v0->normal.x / temp_f0_3;
-        temp_v0->normal.y = temp_v0->normal.y / temp_f0_3;
-        temp_v0->normal.z = temp_v0->normal.z / temp_f0_3;
-
-        // v2 = (n x v1) -> (v2 orth n) and (v2 orth v1)
-        // Given two normalised orthogonal vectors, their cross product will also be normalised
-
-        // from earlier (s orth n) -> (v1 orth n), preserved through normalisation
-        temp_v0->vec2.x = (temp_v0->normal.y * temp_v0->vec1.z) - (temp_v0->vec1.y * temp_v0->normal.z);
-        temp_v0->vec2.y = (temp_v0->normal.z * temp_v0->vec1.x) - (temp_v0->vec1.z * temp_v0->normal.x);
-        temp_v0->vec2.z = (temp_v0->normal.x * temp_v0->vec1.y) - (temp_v0->vec1.x * temp_v0->normal.y);
-        break;
-    case 3:
-        sp70.x = arg0->unkVec.x - arg0->unkVectorStruct.vec1.x;
-        sp70.y = arg0->unkVec.y - arg0->unkVectorStruct.vec1.y;
-        sp70.z = arg0->unkVec.z - arg0->unkVectorStruct.vec1.z;
-        temp_f2_4 = arg0->unkVec2.x - arg0->unkVectorStruct.vec1.x;
-        temp_f14_4 = arg0->unkVec2.y - arg0->unkVectorStruct.vec1.y;
-        temp_f16_4 = arg0->unkVec2.z - arg0->unkVectorStruct.vec1.z;
-        sp50 = (arg0->unkVectorStruct.vec1.z * temp_f16_4) + ((temp_f2_4 * arg0->unkVectorStruct.vec1.x) + (temp_f14_4 * arg0->unkVectorStruct.vec1.y));
-        temp_f18_3 = (arg0->unkVectorStruct.vec2.z * temp_f16_4) + ((temp_f2_4 * arg0->unkVectorStruct.vec2.x) + (temp_f14_4 * arg0->unkVectorStruct.vec2.y));
-        temp_f0_4 = __sqrtf(SQ(sp70.x) + SQ(sp70.y) + SQ(sp70.z));
-        if (((temp_f0_4 * temp_f18_3)) == 0.0) {
-            arg0->unk_00 = -1;
-            //func_800D7460("\nIt's not a polygon.**********************\n");
-            func_800D7460(D_80110720);
+    
+        case 3:
+            sp70.x = arg0->unkVec.x - arg0->offset.x;
+            sp70.y = arg0->unkVec.y - arg0->offset.y;
+            sp70.z = arg0->unkVec.z - arg0->offset.z;
+            temp.x = arg0->unkVec2.x - arg0->offset.x;
+            temp.y = arg0->unkVec2.y - arg0->offset.y;
+            temp.z = arg0->unkVec2.z - arg0->offset.z;
+            sp50 = (arg0->unkVectorStruct.vec1.z * temp.z) + ((temp.x * arg0->unkVectorStruct.vec1.x) + (temp.y * arg0->unkVectorStruct.vec1.y));
+            //why does having this here twice fix most of the codegen?
+            temp_f18_3 = (arg0->unkVectorStruct.vec2.x * temp.z) + ((temp.x * arg0->unkVectorStruct.vec2.x) + (temp.y * arg0->unkVectorStruct.vec2.y));
+            temp_f18_3 = (arg0->unkVectorStruct.vec2.z * temp.z) + ((temp.x * arg0->unkVectorStruct.vec2.x) + (temp.y * arg0->unkVectorStruct.vec2.y));
+            temp_f0_4 = __sqrtf(((sp70.x * sp70.x) + (sp70.y * sp70.y)) + (sp70.z * sp70.z));
+            if ((temp_f0_4 * temp_f18_3) == 0.0) {
+                arg0->unk_00 = -1;
+                DummiedPrintf3("\nIt's not a polygon.**********************\n");
+                return;
+            }
+            arg0->unk_84.x = temp_f0_4;
+            arg0->unk_8C.x = sp50;
+            arg0->unk_8C.y = temp_f18_3;
+            arg0->unk_70 = 0.0f;
+            arg0->unk_7C.x = 0.0f;
+            arg0->unk_7C.y = 0.0f;
+            arg0->unk_84.y = 0.0f;
+            arg0->unk_6C = arg0->unk_8C.y * ((f32) (1.0 / (arg0->unk_84.x * arg0->unk_8C.y)));
+            arg0->unk_74 = (-sp50) * ((f32) (1.0 / (arg0->unk_84.x * arg0->unk_8C.y)));
+            arg0->unk_78 = arg0->unk_84.x * ((f32) (1.0 / (arg0->unk_84.x * arg0->unk_8C.y)));
             break;
-        }
-        arg0->unk_84 = temp_f0_4;
-        arg0->unk_8C = sp50;
-        arg0->unk_90 = temp_f18_3;
-        arg0->unk_70.x = 0.0f;
-        arg0->unk_7C = 0.0f;
-        arg0->unk_80 = 0.0f;
-        arg0->unk_88 = 0.0f;
-        arg0->unk_6C = temp_f18_3 * (f32)(1.0 / (temp_f0_4 * temp_f18_3));
-        arg0->unk_70.y = -sp50 * (f32)(1.0 / (temp_f0_4 * temp_f18_3));
-        arg0->unk_70.z = temp_f0_4 * (f32)(1.0 / (temp_f0_4 * temp_f18_3));
-        break;
-    default:
-    case -1:
-    case 0:
-        break;
+    
+        default:
+        case -1:
+        case 0:
+            break;
+
     }
+
     arg0->unk_00 = arg1;
 }
-*/
 
 void OnlyCheckPolyInfoLevel(Poly* arg0, s32 arg1, char* arg2) {
     if (arg0->unk_00 < arg1) {
