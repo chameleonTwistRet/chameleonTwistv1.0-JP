@@ -26,8 +26,8 @@ OSMesgQueue gSyncMessageQueue;
 OSIoMesg D_80119300; //
 char D_80119318[8];
 Mtx D_80119320[16];
-Gfx D_80119720[8192];
-Gfx D_80129720[2];
+u8 D_80119720[0x10010]; //0x10000 in size
+// Gfx D_80129720[2];
 Mtx D_80129730;
 GraphicStruct gGraphicsList[2];
 
@@ -50,8 +50,8 @@ OSTask D_800F04E0[2] = {
     NULL,
     0x800,
     (void*)D_80119320,
-    sizeof(D_80119320),
-    D_80119720,
+    0x400,
+    D_80119720, //D_80119720
     NULL,
     NULL,
     0,
@@ -68,8 +68,8 @@ OSTask D_800F04E0[2] = {
     NULL,
     0x800,
     (void*)D_80119320,
-    sizeof(D_80119320),
-    (void*)D_80119720,
+    0x400,
+    D_80119720, //(void*)D_80119720
     NULL,
     NULL,
     0,
@@ -88,11 +88,9 @@ OSTask D_800F04E0[2] = {
     0x1000,
     NULL,
     0x800,
-    // (void*)D_80119320,
-    0x80119320,
+    0x80119320, //(void*)D_80119320
     0x400,
-    // D_80119720,
-    0x80119720,
+    0x80119720, //D_80119720
     NULL,
     NULL,
     0,
@@ -108,11 +106,9 @@ OSTask D_800F04E0[2] = {
     0x1000,
     NULL,
     0x800,
-    // (void*)D_80119320,
-    0x80119320,
+    0x80119320, //(void*)D_80119320
     0x400,
-    // (void*)D_80119720,
-    0x80119720,
+    0x80119720, //(void*)D_80119720
     NULL,
     NULL,
     0,
@@ -1192,7 +1188,7 @@ void Video_SetTask(GraphicStruct* arg0, Gfx* arg1, s32 arg2) { //TODO: fix up sy
     task->ucode_boot_size =  ((s32)gspFast3DTextStart_data__s - (s32)rspBootText_data__s); //should be rspBootText_data__s_end - rspBootText_data__s_start
     task->ucode = (u64*)gspFast3DTextStart;
     task->ucode_data = (u64*)gspFast3DDataStart;
-    task->output_buff_size = (u64*)D_80129720;
+    task->output_buff_size = (u64*)&D_80119720[0x10000]; //??
     task->data_ptr = (u64*)arg0;
     task->data_size = (((s32)arg1 - (s32)arg0) >> 3) << 3;
 }
