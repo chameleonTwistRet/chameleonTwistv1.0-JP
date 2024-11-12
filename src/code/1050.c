@@ -2,6 +2,9 @@
 #include "battle.h"
 #include "sprite.h"
 
+// extern Addr rspBootText_data__s;
+// extern Addr gspFast3DTextStart_data__s;
+
 char D_80111C90[8192];
 OSThread gIdleThread;
 char gIdleThreadStack[8192];
@@ -28,14 +31,14 @@ Gfx D_80129720[2];
 Mtx D_80129730;
 GraphicStruct gGraphicsList[2];
 
-extern u64* D_80200CB0;
-/*
-these build, but don't shift due to some weird bss stuff swapping vars around
-once fixed, 
-- [0xCB8E0, data, code/1050]
-in the yaml should be able to become
-- [0xCB8E0, .data, code/1050]
+extern u64 D_80200CB0[];
 
+// these build, but don't shift due to some weird bss stuff swapping vars around
+// once fixed, 
+// - [0xCB8E0, data, code/1050]
+// in the yaml should be able to become
+// - [0xCB8E0, .data, code/1050]
+#ifdef SHIFT
 OSTask D_800F04E0[2] = {
 {
     1,
@@ -46,13 +49,13 @@ OSTask D_800F04E0[2] = {
     0x1000,
     NULL,
     0x800,
-    0x80119320,
-    0x400,
-    0x80119720,
+    (void*)D_80119320,
+    sizeof(D_80119320),
+    D_80119720,
     NULL,
     NULL,
     0,
-    0x80200CB0,
+    D_80200CB0,
     0xC00
 },
 {
@@ -64,8 +67,51 @@ OSTask D_800F04E0[2] = {
     0x1000,
     NULL,
     0x800,
+    (void*)D_80119320,
+    sizeof(D_80119320),
+    (void*)D_80119720,
+    NULL,
+    NULL,
+    0,
+    D_80200CB0,
+    0xC00
+}};
+
+#else
+OSTask D_800F04E0[2] = {
+{
+    1,
+    0,
+    NULL,
+    0,
+    NULL,
+    0x1000,
+    NULL,
+    0x800,
+    // (void*)D_80119320,
     0x80119320,
     0x400,
+    // D_80119720,
+    0x80119720,
+    NULL,
+    NULL,
+    0,
+    D_80200CB0,
+    0xC00
+},
+{
+    1,
+    0,
+    NULL,
+    0,
+    NULL,
+    0x1000,
+    NULL,
+    0x800,
+    // (void*)D_80119320,
+    0x80119320,
+    0x400,
+    // (void*)D_80119720,
     0x80119720,
     NULL,
     NULL,
@@ -73,13 +119,14 @@ OSTask D_800F04E0[2] = {
     0x80200CB0,
     0xC00
 }};
+#endif
 
-Armadillo_unk1Pointers_Animp
-Armadillo_unk2Pointers_Animp
 
 s32 D_800F0560 = 0;
-//levelGroup segmented pointers
-u32 D_800F0564[2] = {0x0301B5E8, 0x0301B5F4}; -> {Armadillo_unk1Pointers_Animp, Armadillo_unk2Pointers_Animp};
+extern AnimPointer Armadillo_unk1Pointers_Animp[];
+extern AnimPointer Armadillo_unk2Pointers_Animp[];
+
+void* D_800F0564[2] = {Armadillo_unk1Pointers_Animp, Armadillo_unk2Pointers_Animp};
 
 s32 D_800F056C[6] = {7, 170, 5, 135, 180, 98};
 s32 D_800F0584[6] = {49, 5, 180, 5, 170, 81};
@@ -118,7 +165,7 @@ char D_800F067C[] = "BH";
 s32 D_800F0680[4] = {0, 0, 0, 0};
 s32 RumblePakError = 0;
 s32 D_800F0694[3] = {0, 0, 0};
-*/
+
 
 void bootproc(void) {
     __osInitialize_common();

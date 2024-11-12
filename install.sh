@@ -20,7 +20,6 @@ if cat /etc/os-release | grep -E 'ID=debian|ID_LIKE=(.*)debian' &> /dev/null; th
     sudo chmod a+x /usr/local/bin/ninja
 
     pip install pylibyaml
-    pip install capstone
     pip install n64img
     pip install spimdisasm==1.30.0 #should work on latest, but exists for compatibility
     pip install tqdm

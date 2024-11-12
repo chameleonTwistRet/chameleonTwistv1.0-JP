@@ -69,7 +69,10 @@ def clean():
     shutil.rmtree("asm", ignore_errors=True)
     shutil.rmtree("assets", ignore_errors=True)
     shutil.rmtree("build", ignore_errors=True)
-    print("directory cleaned!")
+    print("rm -rf asm/")
+    print("rm -rf assets/")
+    print("rm -rf build/")
+    print("rm -rf .splache/")
 
 
 def write_permuter_settings():
