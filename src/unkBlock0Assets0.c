@@ -1,5 +1,7 @@
 #include "common.h"
 
+extern Gfx IntroOutro_model17_Gfx[];
+extern Gfx IntroOutro_model18_Gfx[];
 //TODO: fill in all void* segments with actual segment pointers
 //TODO: what does this file actually do/get used for?
 
@@ -246,8 +248,8 @@ unkAssetStruct1 D_8024F790 = { 0, 0.00f, 0.00f, 7, 0, 0, 15, 0x00000000, 0, 0x00
 unkAssetStruct1 D_8024F7E0 = { 0, 0.00f, 0.00f, 9, 0, 0, 14, 0x00000000, 0, 0x00000000, 27.00f, 0.00f, 0.00f, 0x00000000, 0, 0, 0, 0.00f, 0.00f, 0.00f};
 unkAssetStruct1 D_8024F830 = { 0, 0.00f, 0.00f, 11, 0, 0, 14, 0x00000000, 0, 0x00000000, 28.00f, 0.00f, 0.00f, 0x00000000, 0, 0, 0, 0.00f, 0.00f, 0.00f};
 unkAssetStruct1 D_8024F880 = { 0, 0.00f, 0.00f, 0, 0, 0, 8, &D_8024C510, 0, &D_8024C600, 0.00f, 0.00f, 0.00f, 0x00000000, 0, 0, 0, 0.00f, 0.00f, 0.00f};
-unkAssetStruct1 D_8024F8D0 = { 0, 0.00f, 0.00f, 0, 0, 0, 10, 0x00000000, 0, 0x00000000, 0.00f, 0.00f, 0.00f, (void*)0x030183D8, 0, 0, 0, 0.00f, 0.00f, 0.00f};
-unkAssetStruct1 D_8024F920 = { 0, 0.00f, 0.00f, 0, 0, 0, 10, 0x00000000, 0, 0x00000000, 0.00f, 0.00f, 0.00f, (void*)0x03018578, 0, 0, 0, 0.00f, 0.00f, 0.00f};
+unkAssetStruct1 D_8024F8D0 = { 0, 0.00f, 0.00f, 0, 0, 0, 10, 0x00000000, 0, 0x00000000, 0.00f, 0.00f, 0.00f, IntroOutro_model17_Gfx, 0, 0, 0, 0.00f, 0.00f, 0.00f};
+unkAssetStruct1 D_8024F920 = { 0, 0.00f, 0.00f, 0, 0, 0, 10, 0x00000000, 0, 0x00000000, 0.00f, 0.00f, 0.00f, IntroOutro_model18_Gfx, 0, 0, 0, 0.00f, 0.00f, 0.00f};
 unkAssetStruct1 D_8024F970 = { 0, 0.00f, 0.00f, 0, 0, 0, 10, 0x00000000, 0, 0x00000000, 0.00f, 0.00f, 0.00f, (void*)0x03018708, 0, 0, 0, 0.00f, 0.00f, 0.00f};
 unkAssetStruct1 D_8024F9C0 = { 0, 0.00f, 0.00f, 0, 0, 0, 10, 0x00000000, 0, 0x00000000, 0.00f, 0.00f, 0.00f, (void*)0x03018890, 0, 0, 0, 0.00f, 0.00f, 0.00f};
 unkAssetStruct1 D_8024FA10 = { 0, 0.00f, 0.00f, 0, 0, 0, 10, 0x00000000, 0, 0x00000000, 0.00f, 0.00f, 0.00f, (void*)0x03019168, 0, 0, 0, 0.00f, 0.00f, 0.00f};
