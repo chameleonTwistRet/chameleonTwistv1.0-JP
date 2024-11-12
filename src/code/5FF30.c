@@ -8112,8 +8112,6 @@ void func_800AAAC8(void) {
     gPlayerActors->pos.z = 600.0f;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800AAB0C.s")
-/*
 void func_800AAB0C(s32 arg0) {
     s32 dmaResult;
     s32 dmaSize;
@@ -8124,7 +8122,7 @@ void func_800AAB0C(s32 arg0) {
     _bzero(gPlayerActors, sizeof(gPlayerActors));
     _bzero(&gCamera[0], sizeof(Camera));
     D_80168DA0 = 1;
-    *(u32*)&gPlayerActors[0].active = 1; //required u32 here but usually requires s32?
+    gPlayerActors[0].active = 1;
     gPlayerActors[1].active = 0;
     gPlayerActors[2].active = 0;
     gPlayerActors[3].active = 0;
@@ -8137,13 +8135,13 @@ void func_800AAB0C(s32 arg0) {
     func_80084788();
     func_80055FA4();
 
-    for (i = 0; i < 4; i++) { //TODO: unhardcode this for loop
+    for (i = 0; i < MAXCONTROLLERS; i++) { //TODO: unhardcode this for loop
         D_801756C0[i] = 0;
         D_80175678[i] = 0;
     }
 
     gCurrentDemoTimer = 0x10A9;
-    dmaSize = D_F0042B0 - D_F000000;
+    dmaSize = CreditsDemo_RODATA_END - CreditsDemo_VRAM;
     UseFixedRNGSeed = TRUE;
     D_80200C8C = _malloc(dmaSize);
     if (D_80200C8C == NULL) {
@@ -8158,8 +8156,6 @@ void func_800AAB0C(s32 arg0) {
             while (func_800A72E8(dmaResult) == 0) {}
         }
     }
-    //TODO fake match
-    if (gPlayerActors){}
     DMAStruct_Print();
     D_80200C94 = D_80200C8C;
     D_80200C84.unk0 = 0;
@@ -8171,7 +8167,7 @@ void func_800AAB0C(s32 arg0) {
     func_800AAAC8();
     gPlayerActors->yAngle = 0.0f;
 }
-*/
+
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800AACFC.s")
 
