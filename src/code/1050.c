@@ -74,10 +74,12 @@ OSTask D_800F04E0[2] = {
     0xC00
 }};
 
+Armadillo_unk1Pointers_Animp
+Armadillo_unk2Pointers_Animp
 
 s32 D_800F0560 = 0;
 //levelGroup segmented pointers
-u32 D_800F0564[2] = {0x0301B5E8, 0x0301B5F4};
+u32 D_800F0564[2] = {0x0301B5E8, 0x0301B5F4}; -> {Armadillo_unk1Pointers_Animp, Armadillo_unk2Pointers_Animp};
 
 s32 D_800F056C[6] = {7, 170, 5, 135, 180, 98};
 s32 D_800F0584[6] = {49, 5, 180, 5, 170, 81};

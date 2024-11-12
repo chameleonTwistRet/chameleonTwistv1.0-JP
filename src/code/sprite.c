@@ -1899,12 +1899,18 @@ chameleonEyeListEntry chameleonEyeList[6] = {
 {&Black_eyeR_ci8_PNG, &Black_eyeL_ci8_PNG, &Black_eyeR_ci8_PAL, &Black_eyeL_ci8_PAL},
 {&White_eyeR_ci8_PNG, &White_eyeL_ci8_PNG, &White_eyeR_ci8_PAL, &White_eyeL_ci8_PAL}
 };
+extern unsigned char LizardKong_face_ci4_PNG[];
+extern unsigned char LizardKong_face_ci4_PAL[];
+extern unsigned char Quintella_eye_ci8_PNG[];
+extern unsigned char Quintella_eye_ci8_PAL[];
+extern unsigned char Armadillo_face_ci8_PNG[];
+extern unsigned char Armadillo_face_ci8_PAL[];
 
 //TODO: fix
 struct_800FE54C BossDeadEyes[3] = {
-    {(void*)0x03004D90, (void*)0x03005598},
-    {(void*)0x03006FE0, (void*)0x030073E8},
-    {(void*)0x03006A20, (void*)0x03007228}
+    {LizardKong_face_ci4_PNG, LizardKong_face_ci4_PAL},
+    {Quintella_eye_ci8_PNG, Quintella_eye_ci8_PAL},
+    {Armadillo_face_ci8_PNG, Armadillo_face_ci8_PAL}
 };
 
 //basic color lookup table?
