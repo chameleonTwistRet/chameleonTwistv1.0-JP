@@ -241,7 +241,7 @@ segments:
       - [0xE4450, data, io/vitbl] # 80109050 through 80109D70
       - [0xE5170, .data, io/pimgr] #80109D70 through 80109D90
       - [0xE5190, .data, io/controller] #80109D90 through 80109DA0
-      - [0xE51A0, data, audio/csplayer] #80109DA0 through 80109DB0
+      - [0xE51A0, .data, audio/sl] #80109DA0 through 80109DB0
       - [0xE51B0, .data, io/aisetnextbuf] #80109DB0 through 80109DC0
       - [0xE51C0, .data, gu/random] #80109DC0 through 80109DD0
       - [0xE51D0, .data, io/siacs] #80109DD0 through 80109DE0

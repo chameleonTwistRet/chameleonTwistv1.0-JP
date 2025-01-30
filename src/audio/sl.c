@@ -25,6 +25,8 @@
 #include <os_internal.h>
 #include <ultraerror.h>
 
+ALGlobals *alGlobals=0;
+
 void alUnlink(ALLink* element) {
     ALLink* n;
     ALLink* p;

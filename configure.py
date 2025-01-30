@@ -443,6 +443,13 @@ if __name__ == "__main__":
     )
 
     parser.add_argument(
+        "-s",
+        "--shift",
+        help="Build a shiftable version of the game",
+        action="store_true",
+    )
+
+    parser.add_argument(
         "-n",
         "--nonmatching",
         help="Build a non-matching version of the game",
@@ -461,12 +468,19 @@ if __name__ == "__main__":
     if args.clean:
         clean()
     
-    needsRecalculation = args.nonmatching or args.chckrecalc
+    needsRecalculation = args.nonmatching or args.shift or args.chckrecalc
 
     if needsRecalculation:
         print('checksum will be recalculated when building!')
         subprocess.run(f"gcc {TOOLS_DIR}/n64crc/n64crc.c -o {TOOLS_DIR}/n64crc/n64crc.exe", shell = True, executable="/bin/bash")
-    
+
+    if args.shift:
+        print('a shiftable rom will be built!')
+        to = DEFINES + " -DSHIFT"
+        CFLAGS = CFLAGS.replace(DEFINES, to)
+        GAME_COMPILE_CMD = GAME_COMPILE_CMD.replace(DEFINES, to)
+        DEFINES = to
+
     if args.nonmatching:
         print('a nonmatching rom will be built!')
         to = DEFINES + " -DNON_MATCHING"
