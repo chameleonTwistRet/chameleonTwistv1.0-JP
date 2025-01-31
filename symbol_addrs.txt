@@ -1527,7 +1527,7 @@ cutsceneSwitch = 0x800FED0C; // type:s32 size:0x4
 
 //defined for proper generation
 D_80100E08 = 0x80100E08; // type:s16 size:0xAA
-D_80100F50 = 0x80100F50; // type:u32 size:0x28
+D_80100F50 = 0x80100F50; // type:u32 size:0x80
 CreditsTimeOffset = 0x80101078; // type:s32 size:0x4
 AmountOfCredits = 0x80101080; // type:s32 size:0x4
 CreditsData = 0x80105E08; // size:0x2940

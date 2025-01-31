@@ -1780,16 +1780,19 @@ unk80100F50 D_80100F50[] = {
     {(u32) assets0_VRAM, (u32) static0_VRAM_END},
     {NULL, NULL},
     {NULL, NULL},
-    {NULL, NULL}
+    {NULL, NULL},
+    {NULL, NULL},
+    {NULL, NULL},
+    {NULL, NULL},
+    {NULL, NULL},
+    {NULL, NULL},
+    {NULL, NULL},
+    {NULL, NULL},
+    {NULL, NULL},
+    {NULL, NULL},
+    {NULL, NULL},
+    {NULL, NULL},
 };
-
-s32 D_80100F78 = 0;
-s32 D_80100F7C = 0;
-s32 D_80100F80 = 0;
-s32 D_80100F84 = 0;
-s32 D_80100F88 = 0;
-
-s32 D_80100F8C[17] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 
 s16 UseFixedRNGSeed = 0;
 
