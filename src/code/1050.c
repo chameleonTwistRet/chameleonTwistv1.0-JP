@@ -1148,7 +1148,7 @@ Gfx* func_8002C900(GraphicStruct* arg0, s32 arg1) {
     s32 i;
 
     gfxPos = func_8002C4E8(arg0->UnkGroup.dlist, arg1, 0);
-    gSPDisplayList(gfxPos++, D_1015B18);
+    gSPDisplayList(gfxPos++, static0_UnkStatic0_Gfx);
     gDPSetColorImage(gfxPos++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 320, OS_K0_TO_PHYSICAL(&gFrameBuffers[arg1]));
     gfxPos = func_8002C280(arg0, gfxPos);
     D_800FF8D4 = arg0->unk1e880;

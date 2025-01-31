@@ -49,7 +49,7 @@ extern s32 Battle_GameType;
 extern OSTask D_800F04E0[2];
 extern OSMesgQueue gFrameDrawnMessageQueue;
 extern OSMesgQueue gSyncMessageQueue;
-extern Gfx D_1015B18[];
+extern Gfx static0_UnkStatic0_Gfx[];
 extern s16 D_800FFEC0;
 extern Gfx D_1015A70[];
 extern Gfx D_1015AB8[];

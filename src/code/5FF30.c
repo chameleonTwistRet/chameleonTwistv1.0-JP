@@ -3279,7 +3279,7 @@ Gfx* func_8008D168(Gfx* gfxPos, s32 arg1, s32 arg2) {
     if (D_800FFEC0 != 0){
         D_800FFEC0--;
     }
-    gSPDisplayList(gfxPos++, D_1015B18);
+    gSPDisplayList(gfxPos++, static0_UnkStatic0_Gfx);
     gDPSetColorImage(gfxPos++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 320, OS_K0_TO_PHYSICAL(&gFrameBuffers[arg1]));
     return gfxPos;
 }

@@ -427,6 +427,7 @@ segments:
       - [0x116ca8, ia8, fogFade.ia8, 16, 96]
       - {start: 0x1172a8, type: gfxSeg, name: gfx4, data_only: True}
       - [0x1175C0, databin, gfxNew] #old portion of ^???
+      - {start: 0x117678, type: gfxSeg, name: UnkStatic0, data_only: True}
       - {start: 0x1176b8, type: lights, name: groupLights2, data_only: True}
       - {start: 0x1176d0, type: vtx, name: vtx5, data_only: True}
       - {start: 0x117730, type: gfxSeg, name: gfx5, data_only: True}

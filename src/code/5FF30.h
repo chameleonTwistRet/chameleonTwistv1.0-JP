@@ -610,7 +610,7 @@ extern s16 D_800FFEC0;
 extern Gfx D_1015A70[];
 extern Gfx D_1015AB8[];
 extern Gfx D_1015AE8[];
-extern Gfx D_1015B18[];
+extern Gfx static0_UnkStatic0_Gfx[];
 extern Mtx D_801B3180[];
 extern Mtx D_801B3240[];
 extern Mtx D_801B3300[];

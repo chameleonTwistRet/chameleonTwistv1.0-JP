@@ -163,6 +163,19 @@ Gfx static0_gfx4_Gfx[] = {
 //old gfx segment that got cut off??
 #include "build/assets/img/static0/gfxNew.inc.c"
 
+extern u8 gfxZBuffer[];
+
+Gfx static0_UnkStatic0_Gfx[] = {
+    gsDPSetCycleType(G_CYC_FILL),
+    gsDPSetRenderMode(G_RM_NOOP, G_RM_NOOP2),
+    gsDPSetDepthImage(OS_K0_TO_PHYSICAL(gfxZBuffer)),
+    gsDPSetColorImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 320, OS_K0_TO_PHYSICAL(gfxZBuffer)),
+    gsDPSetFillColor(0xFFFCFFFC),
+    gsDPFillRectangle(18, 16, 301, 223),
+    gsDPPipeSync(),
+    gsSPEndDisplayList(),
+};
+
 Lights1 static0_groupLights2_Light = 
     #include "assets/img/static0/groupLights2.light.inc.c"
 
