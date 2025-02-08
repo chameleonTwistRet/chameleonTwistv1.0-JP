@@ -12,7 +12,7 @@
 extern s32 rngSeed; //rng
 
 extern SpriteListing gSpriteListings[230];
-  
+
 extern OSPfs gRumblePfs[MAXCONTROLLERS];
 
 extern Camera* D_80174860;
@@ -26,7 +26,7 @@ extern Effect* gEffectListHead;
 extern Effect gEffectList;
 extern s32 D_800F68A8;              // s32 (but really only 1bit) is controller input allowed.
 extern s32 sDebugInt;
-extern s32 D_800F06EC;
+extern s32 sDebugStageOverride;
 extern s32 sDebugTestView;
 extern u8 D_800F0B54[];
 extern s32 D_800F6880;
@@ -108,7 +108,7 @@ extern s16 gGfxTaskRunning;
 extern s16 gAudioTaskState;
 extern s16 D_800FF5F4;
 extern s16 gIsPaused;
-extern s16 gIsStero;
+extern s16 gIsStereo;
 extern s16 D_800FF604;
 extern s16 D_800FF608;
 extern ALCSPlayer* gBGMPlayerP;
@@ -262,7 +262,7 @@ extern s32 currLoadingBGM;
 extern s32 currBGMIndex;
 extern ALSeqFile* gBGMALSeqFileP;
 extern OSMesgQueue D_801FCA50[50];
-typedef u8 Addr[];
+
 extern char D_8010F1EC[];
 extern char D_8010F1FC[];
 extern s32 D_80168DA0;
@@ -345,7 +345,7 @@ extern s16 gNoHit;
 extern BGMVolume volBGM;
 extern BGMVolume volumesBGM[];
 extern s16 doesBGMLoop;
-extern s16 gIsStero;
+extern s16 gIsStereo;
 extern s16 D_801FCA48;
 extern ALCSeq* gBGMSeqP;
 extern s16 gIsNotInCave;
@@ -365,6 +365,7 @@ extern Field gZoneFields[];
 extern s32 currentStageCrowns;
 extern s32 gIsGamePaused;
 extern Gfx* ChameleonGfxs[CHARA_TOTAL];
+//why does this need to be redefined???
 #define TEXT_LINE_SIZE 60
 extern char (*Dialogue[CHARA_TOTAL][20])[TEXT_LINE_SIZE]; //sizeof 0x1E0
 extern char ChameleonsBodyHasTransformed_Text[][TEXT_LINE_SIZE];
@@ -380,6 +381,7 @@ extern AnimPointer static0_chameleonAnims[12];
 extern Collider* D_80240898;
 
 extern void* gSfxList[0xE1]; //may be part of struct before
+extern unk80170E68 D_80170E68[];
 
 
 #endif

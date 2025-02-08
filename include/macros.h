@@ -39,9 +39,9 @@
 #define PACK_FILL_DEPTH(z,dz) (GPACK_ZDZ(z, dz) << 0x10) | GPACK_ZDZ(z, dz)
 
 //goes top left, bottom left, top right, bottom right
-//when the top half is copied to the bottom half
+//when the top half and bottom half are copied
 #define SetTextGradient_TopBottom(r1,g1,b1,a1,r2,g2,b2,a2) SetTextGradient(r1, g1, b1, a1, r2, g2, b2, a2, r1, g1, b1, a1, r2, g2, b2, a2)
-//when the left half is copied to the right half
+//when the left half and right half are copied
 #define SetTextGradient_LeftRight(r1,g1,b1,a1,r2,g2,b2,a2) SetTextGradient(r1, g1, b1, a1, r1, g1, b1, a1, r2, g2, b2, a2, r2, g2, b2, a2)
 //when the you use the same color for all verts
 #define SetTextGradient_All(r1,g1,b1,a1) SetTextGradient(r1, g1, b1, a1, r1, g1, b1, a1, r1, g1, b1, a1, r1, g1, b1, a1)

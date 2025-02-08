@@ -5,13 +5,13 @@
 // extern Addr rspBootText_data__s;
 // extern Addr gspFast3DTextStart_data__s;
 
-char D_80111C90[8192];
+char D_80111C90[0x2000];
 OSThread gIdleThread;
-char gIdleThreadStack[8192];
+char gIdleThreadStack[0x2000];
 OSThread gMainThread;
-char gMainThreadStack[8192];
+char gMainThreadStack[0x2000];
 OSThread D_80117FF0;
-char D_801181A0[4096];
+char D_801181A0[0x1000];
 void* D_801191A0;
 OSMesg gPiManMsgs[50];
 OSMesgQueue gPiManMgsQ;
@@ -34,7 +34,7 @@ GraphicStruct gGraphicsList[2];
 extern u64 D_80200CB0[];
 
 // these build, but don't shift due to some weird bss stuff swapping vars around
-// once fixed, 
+// once fixed,
 // - [0xCB8E0, data, code/1050]
 // in the yaml should be able to become
 // - [0xCB8E0, .data, code/1050]
@@ -118,11 +118,14 @@ OSTask D_800F04E0[2] = {
 #endif
 
 
-s32 D_800F0560 = 0;
+s32 Chameleon_StepBool = FALSE;
+
 extern AnimPointer Armadillo_unk1Pointers_Animp[];
 extern AnimPointer Armadillo_unk2Pointers_Animp[];
-
-void* D_800F0564[2] = {Armadillo_unk1Pointers_Animp, Armadillo_unk2Pointers_Animp};
+AnimPointer* D_800F0564[2] = {
+    Armadillo_unk1Pointers_Animp,
+    Armadillo_unk2Pointers_Animp
+};
 
 s32 D_800F056C[6] = {7, 170, 5, 135, 180, 98};
 s32 D_800F0584[6] = {49, 5, 180, 5, 170, 81};
@@ -142,27 +145,29 @@ Gfx* ChameleonGfxs[6] = {
     White_restAssociate_Gfx
 };
 
-Gfx* D_800F0650[6] = {
-Battle_Chameleons_Davy_restAssociate_Gfx,
-Battle_Chameleons_Jack_restAssociate_Gfx,
-Battle_Chameleons_Fred_restAssociate_Gfx,
-Battle_Chameleons_Linda_restAssociate_Gfx,
-Battle_Chameleons_Black_restAssociate_Gfx,
-Battle_Chameleons_White_restAssociate_Gfx
+Gfx* Battle_ChameleonGfxs[6] = {
+    Battle_Chameleons_Davy_restAssociate_Gfx,
+    Battle_Chameleons_Jack_restAssociate_Gfx,
+    Battle_Chameleons_Fred_restAssociate_Gfx,
+    Battle_Chameleons_Linda_restAssociate_Gfx,
+    Battle_Chameleons_Black_restAssociate_Gfx,
+    Battle_Chameleons_White_restAssociate_Gfx
 };
 
 s32 gFramebufferIndex = 0;
 
+//gFrame?
 s32 D_800F066C = 0;
+
 s32 D_800F0670 = 0;
 s32 gIsGamePaused = 0;
 s32 D_800F0678 = 0;
+//this is definitely not char if its used in ActorTick_Armadillo
 char D_800F067C[] = "BH";
 s32 D_800F0680[4] = {0, 0, 0, 0};
 s32 RumblePakError = 0;
-s32 D_800F0694[3] = {0, 0, 0};
 
-
+//align 0x10 onto 0xf06a0
 void bootproc(void) {
     __osInitialize_common();
     gControllerNo = 1;                            //gIdleThreadStack[1024]
@@ -241,7 +246,7 @@ void func_80025EF0(PlayerActor* arg0, Tongue* arg1, s32 arg2) {
             sp124 = arg0->playerHURTTIMER;
         } else {
             sp124 = arg0->playerHURTTIMER / 3;
-        }       
+        }
         func_80027138(&static0_chameleonAnims[9], &animObjects, &animFrames, &anim);
         if (sp124 >= animFrames) {
             sp124 = animFrames - 1;
@@ -329,38 +334,38 @@ void func_80025EF0(PlayerActor* arg0, Tongue* arg1, s32 arg2) {
     } else if (arg0->groundMovement == 1) {
         func_80027138(&static0_chameleonAnims[1], &animObjects, &animFrames, &anim);
         func_80027240(&D_800FF8D4, anim, sp120 % animFrames, animObjects);
-        if (D_800F0560 == 0 && sp120 % animFrames >= 3 && sp120 % animFrames <= 12) {
+        if (Chameleon_StepBool == FALSE && sp120 % animFrames >= 3 && sp120 % animFrames <= 12) {
             if (arg0->inWater == 1) {
                 PLAY_SFX_AT(SFX_ChameleonRightFootSplash, arg0->pos, 0, 0);
             } else {
                 PLAY_SFX_AT(SFX_ChameleonRightFoot, arg0->pos, 0, 0);
             }
-            D_800F0560 = 1;
-        } else if (D_800F0560 == 1 && sp120 % animFrames > 12) {
+            Chameleon_StepBool = TRUE;
+        } else if (Chameleon_StepBool == TRUE && sp120 % animFrames > 12) {
             if (arg0->inWater == 1) {
                 PLAY_SFX_AT(SFX_ChameleonLeftFootSplash, arg0->pos, 0, 0);
             } else {
                 PLAY_SFX_AT(SFX_ChameleonLeftFoot, arg0->pos, 0, 0);
             }
-            D_800F0560 = 0;
+            Chameleon_StepBool = FALSE;
         }
     } else {
         func_80027138(&static0_chameleonAnims[2], &animObjects, &animFrames, &anim);
         func_80027240(&D_800FF8D4, anim, sp120 % animFrames, animObjects);
-        if (D_800F0560 == 0 && sp120 % animFrames >= 0 && sp120 % animFrames <= 9) {
+        if (Chameleon_StepBool == FALSE && sp120 % animFrames >= 0 && sp120 % animFrames <= 9) {
             if (arg0->inWater == 1) {
                 PLAY_SFX_AT(SFX_ChameleonRightFootSplash, arg0->pos, 0, 0);
             } else {
                 PLAY_SFX_AT(SFX_ChameleonRightFoot, arg0->pos, 0, 0);
             }
-            D_800F0560 = 1;
-        } else if (D_800F0560 == 1 && sp120 % animFrames > 9) {
+            Chameleon_StepBool = TRUE;
+        } else if (Chameleon_StepBool == TRUE && sp120 % animFrames > 9) {
             if (arg0->inWater == 1) {
                 PLAY_SFX_AT(SFX_ChameleonLeftFootSplash, arg0->pos, 0, 0);
             } else {
                 PLAY_SFX_AT(SFX_ChameleonLeftFoot, arg0->pos, 0, 0);
             }
-            D_800F0560 = 0;
+            Chameleon_StepBool = FALSE;
         }
     }
 
@@ -407,7 +412,7 @@ void func_80026CA8(GraphicStruct *arg0, Mtx *arg1, u32 arg2, f32 arg3, s32 arg4)
     f32 xPos = 0.0f;
     f32 yPos = 0.0f;
     f32 zPos = 0.0f;
-    
+
     func_800849DC(0, gTongues, &gPlayerActors[0], gCamera);
     guMtxXFML(&arg0->actorRotate[arg2], xPos, yPos, zPos, &xPos, &yPos, &zPos);         // 4x4 fp matrix
     guMtxXFML(&arg0->actorScale[arg2], xPos, yPos, zPos, &xPos, &yPos, &zPos);
@@ -420,7 +425,7 @@ void func_80026E30(GraphicStruct *arg0, Mtx *arg1, u32 arg2, f32 arg3, s32 arg4)
     f32 xPos = 0.0f;
     f32 yPos = 0.0f;
     f32 zPos = 0.0f;
-    
+
     func_800849DC(0, gTongues, &gPlayerActors[0], gCamera);
     guMtxXFML(&arg0->actorRotate[arg2], xPos, yPos, zPos, &xPos, &yPos, &zPos);
     guMtxXFML(&arg0->actorScale[arg2], xPos, yPos, zPos, &xPos, &yPos, &zPos);
@@ -432,7 +437,7 @@ void func_80026E30(GraphicStruct *arg0, Mtx *arg1, u32 arg2, f32 arg3, s32 arg4)
 void func_80026FB8(GraphicStruct *arg0, Mtx *arg1, u32 arg2, f32 arg3, f32 arg4, s32 arg5) {
     f32 xPos, yPos, zPos;
     zPos = yPos = xPos = 0.0f;
-    
+
     func_800849DC(0, gTongues, &gPlayerActors[0], gCamera);
     guMtxXFML(arg1, xPos, yPos, zPos, &xPos, &yPos, &zPos);
     guMtxXFML(&arg0->actorRotate[arg2], xPos, yPos, zPos, &xPos, &yPos, &zPos);
@@ -455,15 +460,15 @@ void func_80027138(AnimPointer* pointer, s32* ramObjects, s32* ramFrames, Mtx** 
 
     //this is required to be 1 line or codegen breaks
     if (!IS_SEGMENTED(pointer)) {realPointer = pointer;} else {realPointer = SEGMENTED_TO_VIRTUAL(pointer);}
-    
+
     if (!IS_SEGMENTED(realPointer->noObjects)) {
         newInt = realPointer->noObjects;
     } else {
         newInt = SEGMENTED_TO_VIRTUAL(realPointer->noObjects);
     }
-    
+
     *ramObjects = *newInt;
-    
+
     if (!IS_SEGMENTED(realPointer->noFrames)) {
         newInt = realPointer->noFrames;
     } else {
@@ -471,7 +476,7 @@ void func_80027138(AnimPointer* pointer, s32* ramObjects, s32* ramFrames, Mtx** 
     }
 
     *ramFrames = *newInt;
-    
+
     if (!IS_SEGMENTED(realPointer->animation)) {
         *ramAnim = realPointer->animation;
     } else {
@@ -495,7 +500,7 @@ void func_80027240(Mtx** arg0, Mtx* arg1, s32 arg2, s32 arg3) {
 }
 
 void func_800273F8(s32 actorIndex) {
-    s32 i; 
+    s32 i;
     for (i = 0; i < gActors[actorIndex].tongueCollision; i++) {
         func_80080C28(gActors[actorIndex].pos.x + gActors[actorIndex].unknownPositionThings[i].unk_00,
                       gActors[actorIndex].pos.y + gActors[actorIndex].unknownPositionThings[i].unk_04 + gActors[actorIndex].unknownPositionThings[i].unk_10 / 2,
@@ -511,7 +516,7 @@ void func_800274F0(Actor* actor) {
     s32 unused;
     f32 sp38 = (f32)(gTimer % 31) / 32;
     f32 sp34 = actor->unknownPositionThings[0].unk_10;
-    unkStruct* sp30 = &D_80172E88[actor->userVariables[0]];    
+    unkStruct* sp30 = &D_80172E88[actor->userVariables[0]];
 
     func_80058044(actor->pos.x, actor->pos.y + sp34 / 2, actor->pos.z,
                   sp34 * 3 / 2, sp34 * 3 / 2,
@@ -528,22 +533,22 @@ void func_800274F0(Actor* actor) {
 
 /**
  * @brief Returns the index of the first active player actor, or 0 if none are active signalling single player.
- * 
- * @return (s32) The highest index of an active player actor. 
+ *
+ * @return (s32) The highest index of an active player actor.
  */
 s32 func_80027650(void) {       // GetHighestActivePlayerIndex
     s32 i;
-    
+
     for (i = 3; i >= 0; i--) {
         if (gPlayerActors[i].active != 0 && gPlayerActors[i].exists) {
             break;
         }
     }
-    
+
     if (i < 0) {
         i = 0;
     }
-    
+
     return i;
 }
 
@@ -553,7 +558,7 @@ void func_80027694(GraphicStruct* arg0);
 //draw player
 Gfx* func_8002A190(GraphicStruct* arg0, Gfx* gfxPos, PlayerActor* player, Tongue* tongue, s32 playerIndex) {
     f32 scaleX = 1.4f;
-    f32 scaleY = player->yScale * 1.4f;    
+    f32 scaleY = player->yScale * 1.4f;
     f32 scaleZ = 1.4f;
     f32 sp28 = 25.0f;
 
@@ -585,11 +590,14 @@ Gfx* func_8002A190(GraphicStruct* arg0, Gfx* gfxPos, PlayerActor* player, Tongue
     gSPMatrix(gfxPos++, OS_K0_TO_PHYSICAL(&arg0->playerScale[playerIndex]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
     if (player->playerHURTSTATE != 3 || gTimer % 2 == 0) {
         Gfx* dlist = Davy_restAssociate_Gfx;
+        //in what situation is it NOT in 0-6 inclusive???
         if (gSelectedCharacters[playerIndex] <= CHARA_WHITE) {
-            if (Battle_GameType == BATTLE_TYPE_UNK_0) {
+            //load normal
+            if (Battle_GameType == BATTLE_TYPE_NOTBATTLE) {
                 dlist = ChameleonGfxs[gSelectedCharacters[playerIndex]];
+            //load battle
             } else {
-                dlist = D_800F0650[gSelectedCharacters[playerIndex]];
+                dlist = Battle_ChameleonGfxs[gSelectedCharacters[playerIndex]];
             }
         }
         PutDList(&D_800FF8D4, &gfxPos, dlist);
@@ -600,7 +608,7 @@ Gfx* func_8002A190(GraphicStruct* arg0, Gfx* gfxPos, PlayerActor* player, Tongue
 
 Gfx* func_8002A4C4(GraphicStruct* arg0, Gfx* gfxPos, PlayerActor* player, Tongue* tongue, s32 playerIndex) {
     s32 i;
-    
+
     for (i = 0; i < 6; i++) {
         Mtx sp100, spC0;
         f32 f20 = (player->reticleSize - 1.0f) * 0.5f;
@@ -609,7 +617,7 @@ Gfx* func_8002A4C4(GraphicStruct* arg0, Gfx* gfxPos, PlayerActor* player, Tongue
         if (gTimer % 2 == i % 2) {
             continue;
         }
-        
+
         guTranslate(&arg0->reticuleTranslate[playerIndex][i], player->unk_DC[i], player->pos.y + player->tongueYOffset, player->unk_F4[i]);
         guRotate(&sp100, player->yAngle + 90.0f, 0.0f, 1.0f, 0.0f);
         guRotate(&spC0, gTimer * f20 * 30.0f + 45.0f, 0.0f, 0.0f, 1.0f);
@@ -636,7 +644,7 @@ Gfx* func_8002A824(GraphicStruct* arg0, Gfx* gfxPos, PlayerActor* player, Tongue
     s32 i;
     s32 sp160 = FALSE;
     f32 f28 = 1.0f;
-    Mtx sp118, spD8;    
+    Mtx sp118, spD8;
 
     if (player->power == 3) {
         f28 = 0.5f;
@@ -646,12 +654,12 @@ Gfx* func_8002A824(GraphicStruct* arg0, Gfx* gfxPos, PlayerActor* player, Tongue
     }
 
     for (i = tongue->poleSegmentAt; i < tongue->segments; i++) {
-        guTranslate(&arg0->tongueTranslate[playerIndex][i], 
+        guTranslate(&arg0->tongueTranslate[playerIndex][i],
                     tongue->tongueXs[i] + player->pos.x,
                     tongue->tongueYs[i] + player->pos.y + player->tongueYOffset,
                     tongue->tongueZs[i] + player->pos.z);
         if (tongue->vaulting == 1) {
-            
+
             guRotate(&sp118, tongue->angleOfVault - 90.0f, 0.0f, 1.0f, 0.0f);
             guRotate(&spD8, 90.0f - tongue->reset1[i], 1.0f, 0.0f, 0.0f);
             guMtxCatL(&spD8, &sp118, &arg0->tongueRotate[playerIndex][i]);
@@ -688,7 +696,7 @@ Gfx* func_8002A824(GraphicStruct* arg0, Gfx* gfxPos, PlayerActor* player, Tongue
     }
 
     if (sp160) {
-        guTranslate(&arg0->tongueTranslate[playerIndex][32], 
+        guTranslate(&arg0->tongueTranslate[playerIndex][32],
                     tongue->tongueXs[32] + player->pos.x,
                     tongue->tongueYs[32] + player->pos.y + player->tongueYOffset,
                     tongue->tongueZs[32] + player->pos.z);
@@ -717,7 +725,7 @@ void func_8002AE3C(void) {
 
         if (gActors[i].actorState == 2) {
             continue;
-        }        
+        }
 
         if (func_80026C78(&gActors[i])) {
             continue;
@@ -779,7 +787,7 @@ void func_8002AE3C(void) {
                 }
                 if (gActors[i].userVariables[3] > 0 && gActors[i].userVariables[3] <= 10) {
                     f32 f16 = temp * (1 - gActors[i].userVariables[3]) + 150;
-                    func_8005747C(gActors[i].pos.x, 
+                    func_8005747C(gActors[i].pos.x,
                                   gActors[i].pos.y + (gActors[i].unknownPositionThings[0].unk_10 + f16) * 0.5f,
                                   gActors[i].pos.z,
                                   f16 + 2.0f * gActors[i].unknownPositionThings[0].unk_0C,
@@ -793,7 +801,7 @@ void func_8002AE3C(void) {
                 continue;
         }
         if (!a1) {
-            func_8005747C(gActors[i].pos.x, 
+            func_8005747C(gActors[i].pos.x,
                           gActors[i].pos.y + gActors[i].unknownPositionThings[0].unk_10 * 0.5f,
                           gActors[i].pos.z,
                           scale * gActors[i].unknownPositionThings[0].unk_0C,
@@ -880,7 +888,7 @@ Gfx* func_8002B7BC(GraphicStruct* arg0, Gfx* gfxPos) {
         if (gActors[i].actorState == 2 || gActors[i].actorState == 4 && (gActors[i].unk_C8 & 1) && D_80174980 != 3 || func_80026C78(&gActors[i])) {
             continue;
         }
-        
+
         switch (gActors[i].actorID) {
             case YELLOW_ANT:
                 gActors[i].unk_E8 = gActors[i].unk_134[5] - 40.0f;
@@ -1148,7 +1156,7 @@ Gfx* func_8002C900(GraphicStruct* arg0, s32 arg1) {
     s32 i;
 
     gfxPos = func_8002C4E8(arg0->UnkGroup.dlist, arg1, 0);
-    gSPDisplayList(gfxPos++, static0_UnkStatic0_Gfx);
+    gSPDisplayList(gfxPos++, D_1015B18);
     gDPSetColorImage(gfxPos++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 320, OS_K0_TO_PHYSICAL(&gFrameBuffers[arg1]));
     gfxPos = func_8002C280(arg0, gfxPos);
     D_800FF8D4 = arg0->unk1e880;
@@ -1198,7 +1206,7 @@ void DemoGfx_DrawFrame(Gfx* arg0, GraphicStruct* arg1, s32 fbIndex) {
     if (D_80174998 < 3) {
         arg0 = func_8002CAC8(arg1, fbIndex);
     }
-    
+
     Video_SetTask(arg1, arg0, fbIndex);
     osWritebackDCache(arg1, sizeof(GraphicStruct));
     Sched_SetGfxTask(&D_800F04E0[fbIndex], fbIndex);
@@ -1209,11 +1217,11 @@ void DemoGfx_SwapFB(s32 fbIndex) {
     osRecvMesg(&gFrameDrawnMessageQueue, NULL, OS_MESG_BLOCK);
     osViSwapBuffer(&gFrameBuffers[fbIndex].data);
     osViSetSpecialFeatures(OS_VI_GAMMA_ON|OS_VI_GAMMA_DITHER_ON);
-    
+
     if (MQ_IS_FULL(&gSyncMessageQueue)) {
         osRecvMesg(&gSyncMessageQueue, NULL, OS_MESG_BLOCK);
     }
-    
+
     func_8008C554();
     osRecvMesg(&gSyncMessageQueue, NULL, OS_MESG_BLOCK);
     Timing_StartProcess();
@@ -1237,13 +1245,13 @@ void func_8002CCDC(void) {
 
 void func_8002CD04(void) {
     DMAStruct_Print();
+
     D_80174878++;
-
-    if (D_800F06EC >= 0) {
-        D_80174878 = D_800F06EC;
+    if (sDebugStageOverride >= 0) {
+        D_80174878 = sDebugStageOverride;
     }
-
     D_80174878 = LoadStageByIndex(D_80174878);
+
     func_8002E0CC();
     InitField();
     func_8002CCDC();
@@ -1279,16 +1287,16 @@ void func_8002CE54(void) {
     s32 var;
     s32 i;
     ContMain sp28[4];
-    
+
     D_800F066C++;
     func_8002CD94(D_800F066C);
     Controller_StartRead();
     DemoGfx_DrawFrame(0, &gGraphicsList[gFramebufferIndex], gFramebufferIndex);
-    
+
     for (i = 0; i < MAXCONTROLLERS; i++) {
         Controller_Zero(&sp28[i]);
     }
-    
+
     if (D_80174980 == 5) {
         D_80168D78[0] = 1;
         func_8004BC48(&sp28[0]);
@@ -1297,7 +1305,7 @@ void func_8002CE54(void) {
         D_800FF8E0 = 0;
         D_800FF8E4 = 0;
     } else {
-        if (Battle_GameType != 0) {
+        if (Battle_GameType != BATTLE_TYPE_NOTBATTLE) {
             if (sDebugMultiplayer != 0) {
                 D_80168D78[1] = 1;
                 func_8004CD9C(1, &sp28[1]);
@@ -1316,7 +1324,7 @@ void func_8002CE54(void) {
         }
         func_8004E784(sp28, 4, D_80168D78, sp28);
     }
-    
+
     func_8004DDE0();
     Battle_Update();
     var = 1 - gFramebufferIndex;

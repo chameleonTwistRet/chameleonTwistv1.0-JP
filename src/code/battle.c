@@ -129,12 +129,12 @@ s32 Battle_UpdateRanking(void) {
     s32 i, j;
     s32 numFirstPlace = 0;
     s32 numSecondPlace = 0;
-    
+
     s32 gameType = Battle_GameType;
     if (Battle_Stage == BATTLE_STAGE_SUDDEN_DEATH) {
         gameType = BATTLE_TYPE_SURVIVAL;
     }
-    
+
     switch (gameType) {
         case BATTLE_TYPE_TIME_TRIAL:
             for (i = 0; i < ARRAY_COUNT(gPlayerActors) ; i++) {
@@ -144,10 +144,10 @@ s32 Battle_UpdateRanking(void) {
                         if (gPlayerActors[j].active == TRUE) {
                             if (i != j && Battle_PlayerData[Battle_CornerIndices[j]].fallOffTime <
                                           Battle_PlayerData[Battle_CornerIndices[i]].fallOffTime) {
-                                rank++; 
+                                rank++;
                             }
                             Battle_PlayerRank[i] = rank;
-                        }    
+                        }
                     }
                     if (Battle_PlayerRank[i] == 0) {
                         numFirstPlace++;
@@ -175,7 +175,7 @@ s32 Battle_UpdateRanking(void) {
             for (i = 0; i < ARRAY_COUNT(gPlayerActors); i++) {
                 if (gPlayerActors[i].active == TRUE) {
                     Battle_PlayerRank[i] = Battle_SurvivalPlayerRank[i] - 1;
-                    
+
                     if (Battle_SurvivalPlayerRank[i] < 2) {
                         Battle_PlayerRank[i] = 0;
                     }
@@ -195,7 +195,7 @@ s32 Battle_KnockOutPlayer(s32 playerID) {
     static s32 sSurvivalLastPlayerRank;
     s32 numFirstPlace = 0;
     s32 i;
-    
+
     if (Battle_LastKnockOutTime == Battle_Time) {
         // two or more players are knocked out simulataneously
         Battle_SurvivalPlayerRank[playerID] = sSurvivalLastPlayerRank;
@@ -214,13 +214,13 @@ s32 Battle_KnockOutPlayer(s32 playerID) {
     } else {
         Battle_SurvivalPlayerRank[playerID] = sSurvivalLastPlayerRank = Battle_NumRanks--;
     }
-    
+
     Battle_LastKnockOutTime = Battle_Time;
 
     if (numFirstPlace >= 2) {
         numFirstPlace = 0;
-    } else {        
-        numFirstPlace = -1;        
+    } else {
+        numFirstPlace = -1;
     }
     return numFirstPlace;
 }
@@ -230,7 +230,7 @@ s32 D_8017683C;
 f32 Battle_CalcTableColumnWidths(u8 numColumns, f32* arg1, f32 xMin, f32 xMax) {
     f32 width;
     f32 temp_f12;
-    
+
     width = xMax - xMin;
     switch (numColumns) {
         default:
@@ -330,7 +330,7 @@ void Battle_PrintPlayerRank(s32 playerID) {
     f32 deltaX = 0.0f;
     f32 deltaY = 0.0f;
     s32 temp_t4;
-    
+
     if (Battle_PlayerData[Battle_CornerIndices[playerID]].rank != Battle_PlayerRank[Battle_CornerIndices[playerID]]) {
         Battle_PlayerData[Battle_CornerIndices[playerID]].rank = Battle_PlayerRank[Battle_CornerIndices[playerID]];
         Battle_PlayerData[Battle_CornerIndices[playerID]].rankTimer = 0;
@@ -340,7 +340,7 @@ void Battle_PrintPlayerRank(s32 playerID) {
             alpha *= Battle_PlayerData[Battle_CornerIndices[playerID]].rankTimer;
             go = 1 - alpha;
             temp_f2 = 1.0f + 2.0f * go;
-            
+
             sp68 *= temp_f2;
             sp64 *= temp_f2;
 
@@ -351,7 +351,7 @@ void Battle_PrintPlayerRank(s32 playerID) {
             deltaY *= go;
         }
     }
-    
+
     temp_t4 = Battle_Time % 64;
     if (temp_t4 < 2 || temp_t4 >= 6 && temp_t4 < 8) {
         SetTextGradient_All(255, 255, 255, 255 * alpha);
@@ -377,7 +377,7 @@ void Battle_PrintPlayerRank(s32 playerID) {
 }
 #else
 #pragma GLOBAL_ASM("asm/nonmatchings/code/battle/Battle_PrintPlayerRank.s")
-void Battle_PrintPlayerRank(s32 arg0); 
+void Battle_PrintPlayerRank(s32 arg0);
 #endif
 
 void func_80051F38(void) {
@@ -415,8 +415,8 @@ void Battle_PrintTextBig(f32 posX, f32 posY, f32 scaleX, s32 palette, u8 length,
     if (scaleX > 1.0f) {
         scaleX = 1.0f;
     }
-    
-    for (i = 0; i < length; i++) {        
+
+    for (i = 0; i < length; i++) {
         SetTextGradientFromPalette(palette);
         func_800612F0(arg5[i].unk_04);
         if (!arg6) {
@@ -437,7 +437,7 @@ void Battle_PrintTextBig(f32 posX, f32 posY, f32 scaleX, s32 palette, u8 length,
 void func_800522A4(f32 arg0, f32 arg1, f32 arg2, f32 arg3, void* arg4, s32 arg5) { //TODO: fix typing
     s32 var_s0;
     s32 sp90;
-    s32 sp8C;    
+    s32 sp8C;
     s32 var_s1;
     s32 temp = (s32)arg4;
 
@@ -449,7 +449,7 @@ void func_800522A4(f32 arg0, f32 arg1, f32 arg2, f32 arg3, void* arg4, s32 arg5)
             func_800612F0(sp8C);
             func_80059F28(arg0 + 16.0f * arg2 * var_s1, arg1, 0, 0, 1.0f, 16 * arg2, 24.0f * arg3, sp90, SPRITE_TEXTBIG);
         }
-        
+
         temp += 2;
         var_s1 += 1;
     }
@@ -462,7 +462,7 @@ void Battle_PrintNumber(f32 posX, f32 posY, f32 scaleX, f32 scaleY, s32 value, s
     if (numDigits > 8) {
         numDigits = 8;
     }
-    
+
     for (i = 0; i < numDigits; i++) {
         s32 digit = (value / Battle_DecimalPowers[numDigits - i - 1]) % 10;
         func_800612F0(1);
@@ -484,12 +484,12 @@ void Battle_PrintName(s32 playerID, f32 posX) {
         posX -= 3;
         func_800610A8();
         SetTextGradientFromPalette(0);
-        
+
         func_800612F0(0);
         func_80059F28(posX,      102.0f, 0.0f, 0.0f, 1.0f, 12.0f, 24.0f, LETTER_C, SPRITE_TEXTBIG);
         func_80059F28(posX + 12, 104.6f, 0.0f, 0.0f, 1.0f, 12.0f, 24.0f, LETTER_O, SPRITE_TEXTBIG);
         func_80059F28(posX + 24, 107.3f, 0.0f, 0.0f, 1.0f, 12.0f, 24.0f, LETTER_M, SPRITE_TEXTBIG);
-        
+
         func_800612F0(1);
         func_80059F28(posX + 36, 110.0f, 0.0f, 0.0f, 1.0f, 12.0f, 24.0f, compIndex + 1, SPRITE_TEXTBIG);
         func_800610B8();
@@ -497,7 +497,7 @@ void Battle_PrintName(s32 playerID, f32 posX) {
         func_800612F0(1);
         SetTextGradientFromPalette(0);
         func_80059F28(posX, 102.0f, 0.0f, 0.0f, 1.0f, 16.0f, 24.0f, playerID + 1, SPRITE_TEXTBIG);
-        
+
         func_800612F0(0);
         SetTextGradientFromPalette(0);
         func_80059F28(posX + 24, 110.0f, 0.0f, 0.0f, 1.0f, 16.0f, 24.0f, LETTER_P, SPRITE_TEXTBIG);
@@ -509,14 +509,14 @@ void Battle_ShimmeringText(u32 charID) {
     static u8 D_80176841;
     f32 newvar; // required to match
     s32 temp_t6 = Battle_Time % 32;
-    
+
     if (temp_t6 >= 0 && temp_t6 < 8) {
         D_80176840 = 80 + (u8)(175.0f * (temp_t6 % 8) / (newvar = 8.0f));
     }
     if (temp_t6 >= 8 && temp_t6 < 16) {
         D_80176841 = 80 + (u8)(175.0f * (temp_t6 % 8) / (newvar = 8.0f));
     }
-    
+
     if (temp_t6 >= 16 && temp_t6 < 24) {
         D_80176840 = (1 - (temp_t6 % 8) / 8.0f) * 175.0f;
         D_80176840 += 80;
@@ -525,7 +525,7 @@ void Battle_ShimmeringText(u32 charID) {
         D_80176841 = (1 - (temp_t6 % 8) / 8.0f) * 175.0f;
         D_80176841 += 80;
     }
-    
+
     switch (charID) {
         case CHARA_DAVY:
             SetTextGradient_TopBottom(0, D_80176840 * 0.8, D_80176840, 255,
@@ -540,7 +540,7 @@ void Battle_ShimmeringText(u32 charID) {
                                       D_80176841, D_80176841, 0, 255);
             break;
         case CHARA_LINDA:
-            SetTextGradient_TopBottom(D_80176840, D_80176840 * 0.4, D_80176840 * 0.5, 255, 
+            SetTextGradient_TopBottom(D_80176840, D_80176840 * 0.4, D_80176840 * 0.5, 255,
                                       D_80176841, D_80176841 * 0.4, D_80176841 * 0.5, 255);
             break;
         case CHARA_BLACK:
@@ -579,7 +579,7 @@ void Battle_PrintRankingTable(void) {
                     numDigits = 1;
                 }
 
-                Battle_PrintNumber(posX + 12.8f * (numDigits == 1), posY, 0.8f, 0.8f, Battle_RankingTable[i][j], numDigits, 0); 
+                Battle_PrintNumber(posX + 12.8f * (numDigits == 1), posY, 0.8f, 0.8f, Battle_RankingTable[i][j], numDigits, 0);
             }
             posX += width;
         }
@@ -589,7 +589,7 @@ void Battle_PrintRankingTable(void) {
 //prints "HURRY!" during MP Battle [9 times]
 void Battle_PrintHurry(void) {
     if (Battle_TimeLeft <= 1800 && Battle_TimeLeft > 1710 && (Battle_TimeLeft % 10) < 5) {
-        SetTextGradientFromPalette(1); 
+        SetTextGradientFromPalette(1);
         PrintTextWrapper(100.0f, 10.0f, 0.0f, 1.0f, "ＨＵＲＲＹ！", SPRITE_TEXTBIG);
     }
 }
@@ -628,7 +628,7 @@ void Battle_PrintSuddenDeath(f32 posX, f32 posY) {
         }
         func_800612F0(0);
         printUISprite(posX + i * 11.2f, posY + (1 - scaleY) * 12.0f, 0.0f, 0.0f, 1.0f, 11.2f, 16.8f * scaleY, Battle_MsgSuddenDeath[i], SPRITE_TEXTBIG);
-    }    
+    }
 }
 
 void func_80053CA0(void) {
@@ -645,7 +645,7 @@ void func_80053CA0(void) {
 
 void func_80053DA8(s32 arg0) {
     s32 i;
-    s32 comID;    
+    s32 comID;
 
     if (arg0 == 0) {
         for (i = 0; i < ARRAY_COUNT(gPlayerActors); i++) {
@@ -656,7 +656,7 @@ void func_80053DA8(s32 arg0) {
     } else {
         i = -1;
     }
-    
+
     comID = Battle_GetComputerPlayerID(i);
     if (comID >= 0) {
         D_800F0CEC[0].unk_00 = comID + 5;
@@ -685,7 +685,7 @@ void func_80053FA0(s32 playerID) {
     sp84 = sinf(DEGREES_TO_RADIANS_2PI(gPlayerActors[playerID].yAngle + 260.0f));
 
     posX = gPlayerActors[playerID].pos.x; // required for matching
-    
+
     func_80068A88(D_80176B78->f5.x, D_80176B78->f5.y, D_80176B78->f5.z,
                   gPlayerActors[playerID].pos.x, gPlayerActors[playerID].pos.y + 300.0f, gPlayerActors[playerID].pos.z,
                   gPlayerActors[playerID].pos.x, gPlayerActors[playerID].pos.y + 150.0f, gPlayerActors[playerID].pos.z,
@@ -775,7 +775,7 @@ void Battle_DrawLightSpot(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, s32 
 
 void Battle_Init(void) {
     s32 i;
-    
+
     Battle_Stage = BATTLE_STAGE_INIT;
     D_800F0B64 = BATTLE_STAGE_INVALID;
     Battle_TimeLeft = gTimeTrialDuration;
@@ -817,16 +817,16 @@ void Battle_Update(void) {
     u32 var_v1_2;
     s32 i;
 
-    if (gCurrentStage != STAGE_VS || Battle_GameType == BATTLE_TYPE_UNK_0) {
+    if (gCurrentStage != STAGE_VS || Battle_GameType == BATTLE_TYPE_NOTBATTLE) {
         return;
     }
-    
+
     if (gCurrentZone >= 4) {
         Battle_GameType = BATTLE_TYPE_TIME_TRIAL;
     } else {
         Battle_GameType = BATTLE_TYPE_SURVIVAL;
     }
-    
+
     if (!gIsMultiplayerPaused) {
         var_v1 = 0;
         var_v0 = 0;
@@ -838,13 +838,13 @@ void Battle_Update(void) {
                 }
             }
         }
-        
+
         if (var_v0 == var_v1) {
             var_v1_2 = 0;
         } else {
             var_v1_2 = 1;
         }
-        
+
         for (i = 0; i < 4; i++) {
             if (gPlayerActors[i].active) {
                 if (!var_v1_2) {
@@ -860,7 +860,7 @@ void Battle_Update(void) {
             }
         }
     }
-    
+
     switch (Battle_Stage) {
         case BATTLE_STAGE_INIT:
             gIsGamePaused = PAUSEMODE_FROZEN;
@@ -870,7 +870,7 @@ void Battle_Update(void) {
                     Battle_PlayerCount++;
                 }
             }
-    
+
             if (Battle_GameType == BATTLE_TYPE_SURVIVAL) {
                 Battle_NumRanks = Battle_PlayerCount;
             } else {
@@ -878,13 +878,13 @@ void Battle_Update(void) {
             }
             for (i = 0; i < 4; i++) {
                 Battle_SurvivalPlayerRank[i] = 0;
-                Battle_PlayerData[i].fallOffTime = 29;    
+                Battle_PlayerData[i].fallOffTime = 29;
                 Battle_PlayerIsOut[i] = FALSE;
             }
             for (i = 0; i < 4; i++) {
                 Battle_PlayerRank[i] = 0;
             }
-            
+
             Battle_Time = 0;
             Battle_Stage = BATTLE_STAGE_AFTER_INIT;
             Effect_TypeO_Init(255, 255, 255, 0, 0x2D);
@@ -1271,7 +1271,7 @@ void Process_Boot(void) {
 }
 
 void Process_SunsoftLogo(void) {
-    switch (gGameModeState) { 
+    switch (gGameModeState) {
     case 0:
         D_800FFDF4 = 1;
         DMAStruct_Print();
@@ -1297,6 +1297,6 @@ void Process_SunsoftLogo(void) {
         SetProcessType(GAME_MODE_SUPPLY_SYSTEM_LOGO);
         break;
     }
-    
+
     func_8008C094();
 }

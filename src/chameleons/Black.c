@@ -1,7 +1,7 @@
 #include "common.h"
 
 
-Lights1 Black_light_Light = 
+Lights1 Black_light_Light =
     #include "assets/chameleons/Black/light.light.inc.c"
 
 Vtx Black_body_Vtx[] = {

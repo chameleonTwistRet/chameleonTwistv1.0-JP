@@ -387,7 +387,7 @@ enum JungleLand_Models {
     JL_INT_FOUR_MODEL,
     JL_INT_SIX_MODEL,
     JL_INT_SEVEN_MODEL,
-    JL_INT_FIVE_MODEL, 
+    JL_INT_FIVE_MODEL,
     JL_RAIL_FLOOR_ONE_MODEL,
     JL_SINGLE_RAIL_TRACK_MODEL,
     JL_SINGLE_RAIL_TRACK2_MODEL,
@@ -1379,7 +1379,8 @@ SpriteActor JungleLand_room0_sprites[] = {
     { -1, 0,       {-1.0,-1.0,-1.0}, {-1.0,32.0,32.0}, 1, 0,  0.0, 0,    0,    0, 0, 0, -1, -1, 0,   0}
 };
 
-s32 JungleLand_spriteLib_Sprlib[] = {
+s32 JungleLand_spriteLib_Sprlib[6][16] = {
+{   0,
     0,
     0,
     0,
@@ -1394,9 +1395,8 @@ s32 JungleLand_spriteLib_Sprlib[] = {
     0,
     0,
     0,
-    0,
-    0,
-    57,
+    0},
+{   57,
     56,
     0,
     0,
@@ -1411,8 +1411,8 @@ s32 JungleLand_spriteLib_Sprlib[] = {
     0,
     0,
     0,
-    0,
-    56,
+    0},
+{   56,
     82,
     83,
     111,
@@ -1427,10 +1427,8 @@ s32 JungleLand_spriteLib_Sprlib[] = {
     0,
     0,
     0,
-    0,
-    57,
-    0,
-    0,
+    0},
+{   57,
     0,
     0,
     0,
@@ -1444,7 +1442,9 @@ s32 JungleLand_spriteLib_Sprlib[] = {
     0,
     0,
     0,
-    57,
+    0,
+    0},
+{   57,
     56,
     23,
     0,
@@ -1459,8 +1459,8 @@ s32 JungleLand_spriteLib_Sprlib[] = {
     0,
     0,
     0,
-    0,
-    57,
+    0},
+{   57,
     56,
     27,
     0,
@@ -1475,7 +1475,7 @@ s32 JungleLand_spriteLib_Sprlib[] = {
     0,
     0,
     0,
-    0,
+    0},
 };
 
 RoomInstance JungleLand_room_instances[] = {
@@ -1499,11 +1499,11 @@ s32 JungleLand_rooms_map[8][3] = {
     { 8, -1, -1},
     { 4, -1, -1},
     { 3,  2,  1},
-    {-1, -1,  0} 
+    {-1, -1,  0}
 };
 
 StageMapData JungleLand_map_data = {
-    3, 8, JungleLand_room_instances, JungleLand_rooms_map, 
+    3, 8, JungleLand_room_instances, JungleLand_rooms_map,
 };
 
 RoomInstance JungleLand_ext_room_instances[] = {
@@ -1546,7 +1546,7 @@ StageData JungleLand_stageData = {
 };
 Mtx JungleLand_IMtx2 = IDENTITY;
 
-Lights1 JungleLand_jlScope_Light = 
+Lights1 JungleLand_jlScope_Light =
     #include "assets/levelGroup/JungleLand/jlScope/jlScope.light.inc.c"
 
 Vtx JungleLand_lilypad_Vtx[] = {
@@ -2488,7 +2488,7 @@ Rect3D JungleLand_lilypad_ColS = {
 };
 
 ModelCollision JungleLand_lilypad_ColH = {
-8, 6, &JungleLand_lilypad_ColV[0], &JungleLand_lilypad_ColT[0], &JungleLand_lilypad_ColS
+8, 6, JungleLand_lilypad_ColV, JungleLand_lilypad_ColT, &JungleLand_lilypad_ColS
 };
 
 Vec3f JungleLand_vine_ColV[] = {
@@ -2504,7 +2504,7 @@ Rect3D JungleLand_vine_ColS = {
 };
 
 ModelCollision JungleLand_vine_ColH = {
-4, 4, &JungleLand_vine_ColV[0], &JungleLand_vine_ColT[0], &JungleLand_vine_ColS
+4, 4, JungleLand_vine_ColV, JungleLand_vine_ColT, &JungleLand_vine_ColS
 };
 
 Vec3f JungleLand_fallenCrownLog_ColV[] = {
@@ -2520,7 +2520,7 @@ Rect3D JungleLand_fallenCrownLog_ColS = {
 };
 
 ModelCollision JungleLand_fallenCrownLog_ColH = {
-18, 32, &JungleLand_fallenCrownLog_ColV[0], &JungleLand_fallenCrownLog_ColT[0], &JungleLand_fallenCrownLog_ColS
+18, 32, JungleLand_fallenCrownLog_ColV, JungleLand_fallenCrownLog_ColT, &JungleLand_fallenCrownLog_ColS
 };
 
 Vec3f JungleLand_unkLog_ColV[] = {
@@ -2536,7 +2536,7 @@ Rect3D JungleLand_unkLog_ColS = {
 };
 
 ModelCollision JungleLand_unkLog_ColH = {
-12, 20, &JungleLand_unkLog_ColV[0], &JungleLand_unkLog_ColT[0], &JungleLand_unkLog_ColS
+12, 20, JungleLand_unkLog_ColV, JungleLand_unkLog_ColT, &JungleLand_unkLog_ColS
 };
 
 Vec3f JungleLand_fallenLogStump_ColV[] = {
@@ -2552,7 +2552,7 @@ Rect3D JungleLand_fallenLogStump_ColS = {
 };
 
 ModelCollision JungleLand_fallenLogStump_ColH = {
-12, 16, &JungleLand_fallenLogStump_ColV[0], &JungleLand_fallenLogStump_ColT[0], &JungleLand_fallenLogStump_ColS
+12, 16, JungleLand_fallenLogStump_ColV, JungleLand_fallenLogStump_ColT, &JungleLand_fallenLogStump_ColS
 };
 
 Vec3f JungleLand_logTunnel_ColV[] = {
@@ -2568,7 +2568,7 @@ Rect3D JungleLand_logTunnel_ColS = {
 };
 
 ModelCollision JungleLand_logTunnel_ColH = {
-38, 62, &JungleLand_logTunnel_ColV[0], &JungleLand_logTunnel_ColT[0], &JungleLand_logTunnel_ColS
+38, 62, JungleLand_logTunnel_ColV, JungleLand_logTunnel_ColT, &JungleLand_logTunnel_ColS
 };
 
 Vec3f JungleLand_waterfallRock_ColV[] = {
@@ -2584,7 +2584,7 @@ Rect3D JungleLand_waterfallRock_ColS = {
 };
 
 ModelCollision JungleLand_waterfallRock_ColH = {
-10, 13, &JungleLand_waterfallRock_ColV[0], &JungleLand_waterfallRock_ColT[0], &JungleLand_waterfallRock_ColS
+10, 13, JungleLand_waterfallRock_ColV, JungleLand_waterfallRock_ColT, &JungleLand_waterfallRock_ColS
 };
 
 Vec3f JungleLand_extEntranceDoorFrame_ColV[] = {
@@ -2600,7 +2600,7 @@ Rect3D JungleLand_extEntranceDoorFrame_ColS = {
 };
 
 ModelCollision JungleLand_extEntranceDoorFrame_ColH = {
-36, 46, &JungleLand_extEntranceDoorFrame_ColV[0], &JungleLand_extEntranceDoorFrame_ColT[0], &JungleLand_extEntranceDoorFrame_ColS
+36, 46, JungleLand_extEntranceDoorFrame_ColV, JungleLand_extEntranceDoorFrame_ColT, &JungleLand_extEntranceDoorFrame_ColS
 };
 
 Vec3f JungleLand_fallBridge_ColV[] = {
@@ -2616,7 +2616,7 @@ Rect3D JungleLand_fallBridge_ColS = {
 };
 
 ModelCollision JungleLand_fallBridge_ColH = {
-4, 2, &JungleLand_fallBridge_ColV[0], &JungleLand_fallBridge_ColT[0], &JungleLand_fallBridge_ColS
+4, 2, JungleLand_fallBridge_ColV, JungleLand_fallBridge_ColT, &JungleLand_fallBridge_ColS
 };
 
 Vec3f JungleLand_ctCrate_ColV[] = {
@@ -2632,7 +2632,7 @@ Rect3D JungleLand_ctCrate_ColS = {
 };
 
 ModelCollision JungleLand_ctCrate_ColH = {
-8, 10, &JungleLand_ctCrate_ColV[0], &JungleLand_ctCrate_ColT[0], &JungleLand_ctCrate_ColS
+8, 10, JungleLand_ctCrate_ColV, JungleLand_ctCrate_ColT, &JungleLand_ctCrate_ColS
 };
 
 Vec3f JungleLand_ctCrate2_ColV[] = {
@@ -2648,7 +2648,7 @@ Rect3D JungleLand_ctCrate2_ColS = {
 };
 
 ModelCollision JungleLand_ctCrate2_ColH = {
-8, 10, &JungleLand_ctCrate2_ColV[0], &JungleLand_ctCrate2_ColT[0], &JungleLand_ctCrate2_ColS
+8, 10, JungleLand_ctCrate2_ColV, JungleLand_ctCrate2_ColT, &JungleLand_ctCrate2_ColS
 };
 
 Vec3f JungleLand_walkingPlank_ColV[] = {
@@ -2664,7 +2664,7 @@ Rect3D JungleLand_walkingPlank_ColS = {
 };
 
 ModelCollision JungleLand_walkingPlank_ColH = {
-8, 8, &JungleLand_walkingPlank_ColV[0], &JungleLand_walkingPlank_ColT[0], &JungleLand_walkingPlank_ColS
+8, 8, JungleLand_walkingPlank_ColV, JungleLand_walkingPlank_ColT, &JungleLand_walkingPlank_ColS
 };
 
 Vec3f JungleLand_walkingPlank2_ColV[] = {
@@ -2680,7 +2680,7 @@ Rect3D JungleLand_walkingPlank2_ColS = {
 };
 
 ModelCollision JungleLand_walkingPlank2_ColH = {
-8, 8, &JungleLand_walkingPlank2_ColV[0], &JungleLand_walkingPlank2_ColT[0], &JungleLand_walkingPlank2_ColS
+8, 8, JungleLand_walkingPlank2_ColV, JungleLand_walkingPlank2_ColT, &JungleLand_walkingPlank2_ColS
 };
 
 Vec3f JungleLand_walkingPlank3_ColV[] = {
@@ -2696,7 +2696,7 @@ Rect3D JungleLand_walkingPlank3_ColS = {
 };
 
 ModelCollision JungleLand_walkingPlank3_ColH = {
-8, 8, &JungleLand_walkingPlank3_ColV[0], &JungleLand_walkingPlank3_ColT[0], &JungleLand_walkingPlank3_ColS
+8, 8, JungleLand_walkingPlank3_ColV, JungleLand_walkingPlank3_ColT, &JungleLand_walkingPlank3_ColS
 };
 
 Vec3f JungleLand_walkingPlank4_ColV[] = {
@@ -2712,7 +2712,7 @@ Rect3D JungleLand_walkingPlank4_ColS = {
 };
 
 ModelCollision JungleLand_walkingPlank4_ColH = {
-8, 8, &JungleLand_walkingPlank4_ColV[0], &JungleLand_walkingPlank4_ColT[0], &JungleLand_walkingPlank4_ColS
+8, 8, JungleLand_walkingPlank4_ColV, JungleLand_walkingPlank4_ColT, &JungleLand_walkingPlank4_ColS
 };
 
 Vec3f JungleLand_singularPlank_ColV[] = {
@@ -2728,7 +2728,7 @@ Rect3D JungleLand_singularPlank_ColS = {
 };
 
 ModelCollision JungleLand_singularPlank_ColH = {
-4, 2, &JungleLand_singularPlank_ColV[0], &JungleLand_singularPlank_ColT[0], &JungleLand_singularPlank_ColS
+4, 2, JungleLand_singularPlank_ColV, JungleLand_singularPlank_ColT, &JungleLand_singularPlank_ColS
 };
 
 Vec3f JungleLand_roomSixStartPlatform_ColV[] = {
@@ -2744,7 +2744,7 @@ Rect3D JungleLand_roomSixStartPlatform_ColS = {
 };
 
 ModelCollision JungleLand_roomSixStartPlatform_ColH = {
-12, 14, &JungleLand_roomSixStartPlatform_ColV[0], &JungleLand_roomSixStartPlatform_ColT[0], &JungleLand_roomSixStartPlatform_ColS
+12, 14, JungleLand_roomSixStartPlatform_ColV, JungleLand_roomSixStartPlatform_ColT, &JungleLand_roomSixStartPlatform_ColS
 };
 
 Vec3f JungleLand_cavePlatform_ColV[] = {
@@ -2760,7 +2760,7 @@ Rect3D JungleLand_cavePlatform_ColS = {
 };
 
 ModelCollision JungleLand_cavePlatform_ColH = {
-8, 8, &JungleLand_cavePlatform_ColV[0], &JungleLand_cavePlatform_ColT[0], &JungleLand_cavePlatform_ColS
+8, 8, JungleLand_cavePlatform_ColV, JungleLand_cavePlatform_ColT, &JungleLand_cavePlatform_ColS
 };
 
 Vec3f JungleLand_roomSixCrownPlatform_ColV[] = {
@@ -2776,7 +2776,7 @@ Rect3D JungleLand_roomSixCrownPlatform_ColS = {
 };
 
 ModelCollision JungleLand_roomSixCrownPlatform_ColH = {
-12, 14, &JungleLand_roomSixCrownPlatform_ColV[0], &JungleLand_roomSixCrownPlatform_ColT[0], &JungleLand_roomSixCrownPlatform_ColS
+12, 14, JungleLand_roomSixCrownPlatform_ColV, JungleLand_roomSixCrownPlatform_ColT, &JungleLand_roomSixCrownPlatform_ColS
 };
 
 Vec3f JungleLand_roomSixSidePlatform_ColV[] = {
@@ -2792,7 +2792,7 @@ Rect3D JungleLand_roomSixSidePlatform_ColS = {
 };
 
 ModelCollision JungleLand_roomSixSidePlatform_ColH = {
-15, 18, &JungleLand_roomSixSidePlatform_ColV[0], &JungleLand_roomSixSidePlatform_ColT[0], &JungleLand_roomSixSidePlatform_ColS
+15, 18, JungleLand_roomSixSidePlatform_ColV, JungleLand_roomSixSidePlatform_ColT, &JungleLand_roomSixSidePlatform_ColS
 };
 
 Vec3f JungleLand_roomSevenLava_ColV[] = {
@@ -2808,7 +2808,7 @@ Rect3D JungleLand_roomSevenLava_ColS = {
 };
 
 ModelCollision JungleLand_roomSevenLava_ColH = {
-12, 10, &JungleLand_roomSevenLava_ColV[0], &JungleLand_roomSevenLava_ColT[0], &JungleLand_roomSevenLava_ColS
+12, 10, JungleLand_roomSevenLava_ColV, JungleLand_roomSevenLava_ColT, &JungleLand_roomSevenLava_ColS
 };
 
 Vec3f JungleLand_roomSevenFloor_ColV[] = {
@@ -2824,7 +2824,7 @@ Rect3D JungleLand_roomSevenFloor_ColS = {
 };
 
 ModelCollision JungleLand_roomSevenFloor_ColH = {
-8, 6, &JungleLand_roomSevenFloor_ColV[0], &JungleLand_roomSevenFloor_ColT[0], &JungleLand_roomSevenFloor_ColS
+8, 6, JungleLand_roomSevenFloor_ColV, JungleLand_roomSevenFloor_ColT, &JungleLand_roomSevenFloor_ColS
 };
 
 Vec3f JungleLand_roomZeroLava_ColV[] = {
@@ -2840,7 +2840,7 @@ Rect3D JungleLand_roomZeroLava_ColS = {
 };
 
 ModelCollision JungleLand_roomZeroLava_ColH = {
-8, 6, &JungleLand_roomZeroLava_ColV[0], &JungleLand_roomZeroLava_ColT[0], &JungleLand_roomZeroLava_ColS
+8, 6, JungleLand_roomZeroLava_ColV, JungleLand_roomZeroLava_ColT, &JungleLand_roomZeroLava_ColS
 };
 
 Vec3f JungleLand_roomOnePlatform_ColV[] = {
@@ -2856,7 +2856,7 @@ Rect3D JungleLand_roomOnePlatform_ColS = {
 };
 
 ModelCollision JungleLand_roomOnePlatform_ColH = {
-16, 22, &JungleLand_roomOnePlatform_ColV[0], &JungleLand_roomOnePlatform_ColT[0], &JungleLand_roomOnePlatform_ColS
+16, 22, JungleLand_roomOnePlatform_ColV, JungleLand_roomOnePlatform_ColT, &JungleLand_roomOnePlatform_ColS
 };
 
 Vec3f JungleLand_roomSixCrownEdgePlatform_ColV[] = {
@@ -2872,7 +2872,7 @@ Rect3D JungleLand_roomSixCrownEdgePlatform_ColS = {
 };
 
 ModelCollision JungleLand_roomSixCrownEdgePlatform_ColH = {
-18, 20, &JungleLand_roomSixCrownEdgePlatform_ColV[0], &JungleLand_roomSixCrownEdgePlatform_ColT[0], &JungleLand_roomSixCrownEdgePlatform_ColS
+18, 20, JungleLand_roomSixCrownEdgePlatform_ColV, JungleLand_roomSixCrownEdgePlatform_ColT, &JungleLand_roomSixCrownEdgePlatform_ColS
 };
 
 Vec3f JungleLand_roomSevenSpinRing_ColV[] = {
@@ -2888,7 +2888,7 @@ Rect3D JungleLand_roomSevenSpinRing_ColS = {
 };
 
 ModelCollision JungleLand_roomSevenSpinRing_ColH = {
-51, 86, &JungleLand_roomSevenSpinRing_ColV[0], &JungleLand_roomSevenSpinRing_ColT[0], &JungleLand_roomSevenSpinRing_ColS
+51, 86, JungleLand_roomSevenSpinRing_ColV, JungleLand_roomSevenSpinRing_ColT, &JungleLand_roomSevenSpinRing_ColS
 };
 
 Vec3f JungleLand_woodBlock_ColV[] = {
@@ -2904,7 +2904,7 @@ Rect3D JungleLand_woodBlock_ColS = {
 };
 
 ModelCollision JungleLand_woodBlock_ColH = {
-8, 10, &JungleLand_woodBlock_ColV[0], &JungleLand_woodBlock_ColT[0], &JungleLand_woodBlock_ColS
+8, 10, JungleLand_woodBlock_ColV, JungleLand_woodBlock_ColT, &JungleLand_woodBlock_ColS
 };
 
 Vec3f JungleLand_ropes_ColV[] = {
@@ -2920,7 +2920,7 @@ Rect3D JungleLand_ropes_ColS = {
 };
 
 ModelCollision JungleLand_ropes_ColH = {
-4, 4, &JungleLand_ropes_ColV[0], &JungleLand_ropes_ColT[0], &JungleLand_ropes_ColS
+4, 4, JungleLand_ropes_ColV, JungleLand_ropes_ColT, &JungleLand_ropes_ColS
 };
 
 Vec3f JungleLand_railOne_ColV[] = {
@@ -2936,7 +2936,7 @@ Rect3D JungleLand_railOne_ColS = {
 };
 
 ModelCollision JungleLand_railOne_ColH = {
-16, 16, &JungleLand_railOne_ColV[0], &JungleLand_railOne_ColT[0], &JungleLand_railOne_ColS
+16, 16, JungleLand_railOne_ColV, JungleLand_railOne_ColT, &JungleLand_railOne_ColS
 };
 
 Vec3f JungleLand_railTwo_ColV[] = {
@@ -2952,7 +2952,7 @@ Rect3D JungleLand_railTwo_ColS = {
 };
 
 ModelCollision JungleLand_railTwo_ColH = {
-16, 16, &JungleLand_railTwo_ColV[0], &JungleLand_railTwo_ColT[0], &JungleLand_railTwo_ColS
+16, 16, JungleLand_railTwo_ColV, JungleLand_railTwo_ColT, &JungleLand_railTwo_ColS
 };
 
 Vec3f JungleLand_railThree_ColV[] = {
@@ -2968,7 +2968,7 @@ Rect3D JungleLand_railThree_ColS = {
 };
 
 ModelCollision JungleLand_railThree_ColH = {
-16, 16, &JungleLand_railThree_ColV[0], &JungleLand_railThree_ColT[0], &JungleLand_railThree_ColS
+16, 16, JungleLand_railThree_ColV, JungleLand_railThree_ColT, &JungleLand_railThree_ColS
 };
 
 Vec3f JungleLand_railFour_ColV[] = {
@@ -2984,7 +2984,7 @@ Rect3D JungleLand_railFour_ColS = {
 };
 
 ModelCollision JungleLand_railFour_ColH = {
-16, 16, &JungleLand_railFour_ColV[0], &JungleLand_railFour_ColT[0], &JungleLand_railFour_ColS
+16, 16, JungleLand_railFour_ColV, JungleLand_railFour_ColT, &JungleLand_railFour_ColS
 };
 
 Vec3f JungleLand_railFive_ColV[] = {
@@ -3000,7 +3000,7 @@ Rect3D JungleLand_railFive_ColS = {
 };
 
 ModelCollision JungleLand_railFive_ColH = {
-16, 16, &JungleLand_railFive_ColV[0], &JungleLand_railFive_ColT[0], &JungleLand_railFive_ColS
+16, 16, JungleLand_railFive_ColV, JungleLand_railFive_ColT, &JungleLand_railFive_ColS
 };
 
 Vec3f JungleLand_railSix_ColV[] = {
@@ -3016,7 +3016,7 @@ Rect3D JungleLand_railSix_ColS = {
 };
 
 ModelCollision JungleLand_railSix_ColH = {
-16, 16, &JungleLand_railSix_ColV[0], &JungleLand_railSix_ColT[0], &JungleLand_railSix_ColS
+16, 16, JungleLand_railSix_ColV, JungleLand_railSix_ColT, &JungleLand_railSix_ColS
 };
 
 Vec3f JungleLand_rail_ColV[] = {
@@ -3032,7 +3032,7 @@ Rect3D JungleLand_rail_ColS = {
 };
 
 ModelCollision JungleLand_rail_ColH = {
-16, 20, &JungleLand_rail_ColV[0], &JungleLand_rail_ColT[0], &JungleLand_rail_ColS
+16, 20, JungleLand_rail_ColV, JungleLand_rail_ColT, &JungleLand_rail_ColS
 };
 
 Vec3f JungleLand_ctCrate3_ColV[] = {
@@ -3048,7 +3048,7 @@ Rect3D JungleLand_ctCrate3_ColS = {
 };
 
 ModelCollision JungleLand_ctCrate3_ColH = {
-8, 10, &JungleLand_ctCrate3_ColV[0], &JungleLand_ctCrate3_ColT[0], &JungleLand_ctCrate3_ColS
+8, 10, JungleLand_ctCrate3_ColV, JungleLand_ctCrate3_ColT, &JungleLand_ctCrate3_ColS
 };
 
 Vec3f JungleLand_logOne_ColV[] = {
@@ -3064,7 +3064,7 @@ Rect3D JungleLand_logOne_ColS = {
 };
 
 ModelCollision JungleLand_logOne_ColH = {
-10, 8, &JungleLand_logOne_ColV[0], &JungleLand_logOne_ColT[0], &JungleLand_logOne_ColS
+10, 8, JungleLand_logOne_ColV, JungleLand_logOne_ColT, &JungleLand_logOne_ColS
 };
 
 Vec3f JungleLand_fallBridgeSmall2_ColV[] = {
@@ -3080,7 +3080,7 @@ Rect3D JungleLand_fallBridgeSmall2_ColS = {
 };
 
 ModelCollision JungleLand_fallBridgeSmall2_ColH = {
-4, 2, &JungleLand_fallBridgeSmall2_ColV[0], &JungleLand_fallBridgeSmall2_ColT[0], &JungleLand_fallBridgeSmall2_ColS
+4, 2, JungleLand_fallBridgeSmall2_ColV, JungleLand_fallBridgeSmall2_ColT, &JungleLand_fallBridgeSmall2_ColS
 };
 
 Vec3f JungleLand_logSetPiece_ColV[] = {
@@ -3096,7 +3096,7 @@ Rect3D JungleLand_logSetPiece_ColS = {
 };
 
 ModelCollision JungleLand_logSetPiece_ColH = {
-9, 7, &JungleLand_logSetPiece_ColV[0], &JungleLand_logSetPiece_ColT[0], &JungleLand_logSetPiece_ColS
+9, 7, JungleLand_logSetPiece_ColV, JungleLand_logSetPiece_ColT, &JungleLand_logSetPiece_ColS
 };
 
 Vec3f JungleLand_holeLog_ColV[] = {
@@ -3112,7 +3112,7 @@ Rect3D JungleLand_holeLog_ColS = {
 };
 
 ModelCollision JungleLand_holeLog_ColH = {
-58, 120, &JungleLand_holeLog_ColV[0], &JungleLand_holeLog_ColT[0], &JungleLand_holeLog_ColS
+58, 120, JungleLand_holeLog_ColV, JungleLand_holeLog_ColT, &JungleLand_holeLog_ColS
 };
 
 Vec3f JungleLand_waterfallGroundCollision_ColV[] = {
@@ -3128,7 +3128,7 @@ Rect3D JungleLand_waterfallGroundCollision_ColS = {
 };
 
 ModelCollision JungleLand_waterfallGroundCollision_ColH = {
-12, 8, &JungleLand_waterfallGroundCollision_ColV[0], &JungleLand_waterfallGroundCollision_ColT[0], &JungleLand_waterfallGroundCollision_ColS
+12, 8, JungleLand_waterfallGroundCollision_ColV, JungleLand_waterfallGroundCollision_ColT, &JungleLand_waterfallGroundCollision_ColS
 };
 
 Vec3f JungleLand_waterfallBacksideCollision_ColV[] = {
@@ -3144,7 +3144,7 @@ Rect3D JungleLand_waterfallBacksideCollision_ColS = {
 };
 
 ModelCollision JungleLand_waterfallBacksideCollision_ColH = {
-8, 10, &JungleLand_waterfallBacksideCollision_ColV[0], &JungleLand_waterfallBacksideCollision_ColT[0], &JungleLand_waterfallBacksideCollision_ColS
+8, 10, JungleLand_waterfallBacksideCollision_ColV, JungleLand_waterfallBacksideCollision_ColT, &JungleLand_waterfallBacksideCollision_ColS
 };
 
 Vec3f JungleLand_groundCollision_ColV[] = {
@@ -3160,7 +3160,7 @@ Rect3D JungleLand_groundCollision_ColS = {
 };
 
 ModelCollision JungleLand_groundCollision_ColH = {
-28, 31, &JungleLand_groundCollision_ColV[0], &JungleLand_groundCollision_ColT[0], &JungleLand_groundCollision_ColS
+28, 31, JungleLand_groundCollision_ColV, JungleLand_groundCollision_ColT, &JungleLand_groundCollision_ColS
 };
 
 Vec3f JungleLand_holeLogBottom_ColV[] = {
@@ -3176,7 +3176,7 @@ Rect3D JungleLand_holeLogBottom_ColS = {
 };
 
 ModelCollision JungleLand_holeLogBottom_ColH = {
-24, 25, &JungleLand_holeLogBottom_ColV[0], &JungleLand_holeLogBottom_ColT[0], &JungleLand_holeLogBottom_ColS
+24, 25, JungleLand_holeLogBottom_ColV, JungleLand_holeLogBottom_ColT, &JungleLand_holeLogBottom_ColS
 };
 
 Vec3f JungleLand_extThree_ColV[] = {
@@ -3192,7 +3192,7 @@ Rect3D JungleLand_extThree_ColS = {
 };
 
 ModelCollision JungleLand_extThree_ColH = {
-47, 77, &JungleLand_extThree_ColV[0], &JungleLand_extThree_ColT[0], &JungleLand_extThree_ColS
+47, 77, JungleLand_extThree_ColV, JungleLand_extThree_ColT, &JungleLand_extThree_ColS
 };
 
 Vec3f JungleLand_extFour_ColV[] = {
@@ -3208,7 +3208,7 @@ Rect3D JungleLand_extFour_ColS = {
 };
 
 ModelCollision JungleLand_extFour_ColH = {
-21, 30, &JungleLand_extFour_ColV[0], &JungleLand_extFour_ColT[0], &JungleLand_extFour_ColS
+21, 30, JungleLand_extFour_ColV, JungleLand_extFour_ColT, &JungleLand_extFour_ColS
 };
 
 Vec3f JungleLand_extZero_ColV[] = {
@@ -3224,7 +3224,7 @@ Rect3D JungleLand_extZero_ColS = {
 };
 
 ModelCollision JungleLand_extZero_ColH = {
-25, 37, &JungleLand_extZero_ColV[0], &JungleLand_extZero_ColT[0], &JungleLand_extZero_ColS
+25, 37, JungleLand_extZero_ColV, JungleLand_extZero_ColT, &JungleLand_extZero_ColS
 };
 
 Vec3f JungleLand_extOne_ColV[] = {
@@ -3240,7 +3240,7 @@ Rect3D JungleLand_extOne_ColS = {
 };
 
 ModelCollision JungleLand_extOne_ColH = {
-92, 153, &JungleLand_extOne_ColV[0], &JungleLand_extOne_ColT[0], &JungleLand_extOne_ColS
+92, 153, JungleLand_extOne_ColV, JungleLand_extOne_ColT, &JungleLand_extOne_ColS
 };
 
 Vec3f JungleLand_extTwo_ColV[] = {
@@ -3256,7 +3256,7 @@ Rect3D JungleLand_extTwo_ColS = {
 };
 
 ModelCollision JungleLand_extTwo_ColH = {
-23, 29, &JungleLand_extTwo_ColV[0], &JungleLand_extTwo_ColT[0], &JungleLand_extTwo_ColS
+23, 29, JungleLand_extTwo_ColV, JungleLand_extTwo_ColT, &JungleLand_extTwo_ColS
 };
 
 Vec3f JungleLand_rockFloor_ColV[] = {
@@ -3272,7 +3272,7 @@ Rect3D JungleLand_rockFloor_ColS = {
 };
 
 ModelCollision JungleLand_rockFloor_ColH = {
-6, 8, &JungleLand_rockFloor_ColV[0], &JungleLand_rockFloor_ColT[0], &JungleLand_rockFloor_ColS
+6, 8, JungleLand_rockFloor_ColV, JungleLand_rockFloor_ColT, &JungleLand_rockFloor_ColS
 };
 
 Vec3f JungleLand_rockFloor2_ColV[] = {
@@ -3288,7 +3288,7 @@ Rect3D JungleLand_rockFloor2_ColS = {
 };
 
 ModelCollision JungleLand_rockFloor2_ColH = {
-5, 6, &JungleLand_rockFloor2_ColV[0], &JungleLand_rockFloor2_ColT[0], &JungleLand_rockFloor2_ColS
+5, 6, JungleLand_rockFloor2_ColV, JungleLand_rockFloor2_ColT, &JungleLand_rockFloor2_ColS
 };
 
 Vec3f JungleLand_extFive_ColV[] = {
@@ -3304,7 +3304,7 @@ Rect3D JungleLand_extFive_ColS = {
 };
 
 ModelCollision JungleLand_extFive_ColH = {
-34, 40, &JungleLand_extFive_ColV[0], &JungleLand_extFive_ColT[0], &JungleLand_extFive_ColS
+34, 40, JungleLand_extFive_ColV, JungleLand_extFive_ColT, &JungleLand_extFive_ColS
 };
 
 Vec3f JungleLand_extThreePartTwo_ColV[] = {
@@ -3320,7 +3320,7 @@ Rect3D JungleLand_extThreePartTwo_ColS = {
 };
 
 ModelCollision JungleLand_extThreePartTwo_ColH = {
-9, 7, &JungleLand_extThreePartTwo_ColV[0], &JungleLand_extThreePartTwo_ColT[0], &JungleLand_extThreePartTwo_ColS
+9, 7, JungleLand_extThreePartTwo_ColV, JungleLand_extThreePartTwo_ColT, &JungleLand_extThreePartTwo_ColS
 };
 
 Vec3f JungleLand_extFivePartTwo_ColV[] = {
@@ -3336,7 +3336,7 @@ Rect3D JungleLand_extFivePartTwo_ColS = {
 };
 
 ModelCollision JungleLand_extFivePartTwo_ColH = {
-23, 26, &JungleLand_extFivePartTwo_ColV[0], &JungleLand_extFivePartTwo_ColT[0], &JungleLand_extFivePartTwo_ColS
+23, 26, JungleLand_extFivePartTwo_ColV, JungleLand_extFivePartTwo_ColT, &JungleLand_extFivePartTwo_ColS
 };
 
 Vec3f JungleLand_extSix_ColV[] = {
@@ -3352,7 +3352,7 @@ Rect3D JungleLand_extSix_ColS = {
 };
 
 ModelCollision JungleLand_extSix_ColH = {
-20, 24, &JungleLand_extSix_ColV[0], &JungleLand_extSix_ColT[0], &JungleLand_extSix_ColS
+20, 24, JungleLand_extSix_ColV, JungleLand_extSix_ColT, &JungleLand_extSix_ColS
 };
 
 Vec3f JungleLand_extSeven_ColV[] = {
@@ -3368,7 +3368,7 @@ Rect3D JungleLand_extSeven_ColS = {
 };
 
 ModelCollision JungleLand_extSeven_ColH = {
-32, 45, &JungleLand_extSeven_ColV[0], &JungleLand_extSeven_ColT[0], &JungleLand_extSeven_ColS
+32, 45, JungleLand_extSeven_ColV, JungleLand_extSeven_ColT, &JungleLand_extSeven_ColS
 };
 
 Vec3f JungleLand_extEight_ColV[] = {
@@ -3384,7 +3384,7 @@ Rect3D JungleLand_extEight_ColS = {
 };
 
 ModelCollision JungleLand_extEight_ColH = {
-24, 33, &JungleLand_extEight_ColV[0], &JungleLand_extEight_ColT[0], &JungleLand_extEight_ColS
+24, 33, JungleLand_extEight_ColV, JungleLand_extEight_ColT, &JungleLand_extEight_ColS
 };
 
 Vec3f JungleLand_extEightBridge_ColV[] = {
@@ -3400,7 +3400,7 @@ Rect3D JungleLand_extEightBridge_ColS = {
 };
 
 ModelCollision JungleLand_extEightBridge_ColH = {
-8, 8, &JungleLand_extEightBridge_ColV[0], &JungleLand_extEightBridge_ColT[0], &JungleLand_extEightBridge_ColS
+8, 8, JungleLand_extEightBridge_ColV, JungleLand_extEightBridge_ColT, &JungleLand_extEightBridge_ColS
 };
 
 Vec3f JungleLand_extNine_ColV[] = {
@@ -3416,7 +3416,7 @@ Rect3D JungleLand_extNine_ColS = {
 };
 
 ModelCollision JungleLand_extNine_ColH = {
-29, 40, &JungleLand_extNine_ColV[0], &JungleLand_extNine_ColT[0], &JungleLand_extNine_ColS
+29, 40, JungleLand_extNine_ColV, JungleLand_extNine_ColT, &JungleLand_extNine_ColS
 };
 
 Vec3f JungleLand_extTen_ColV[] = {
@@ -3432,7 +3432,7 @@ Rect3D JungleLand_extTen_ColS = {
 };
 
 ModelCollision JungleLand_extTen_ColH = {
-53, 88, &JungleLand_extTen_ColV[0], &JungleLand_extTen_ColT[0], &JungleLand_extTen_ColS
+53, 88, JungleLand_extTen_ColV, JungleLand_extTen_ColT, &JungleLand_extTen_ColS
 };
 
 Vec3f JungleLand_extEleven_ColV[] = {
@@ -3448,7 +3448,7 @@ Rect3D JungleLand_extEleven_ColS = {
 };
 
 ModelCollision JungleLand_extEleven_ColH = {
-85, 144, &JungleLand_extEleven_ColV[0], &JungleLand_extEleven_ColT[0], &JungleLand_extEleven_ColS
+85, 144, JungleLand_extEleven_ColV, JungleLand_extEleven_ColT, &JungleLand_extEleven_ColS
 };
 
 Vec3f JungleLand_intZero_ColV[] = {
@@ -3464,7 +3464,7 @@ Rect3D JungleLand_intZero_ColS = {
 };
 
 ModelCollision JungleLand_intZero_ColH = {
-40, 60, &JungleLand_intZero_ColV[0], &JungleLand_intZero_ColT[0], &JungleLand_intZero_ColS
+40, 60, JungleLand_intZero_ColV, JungleLand_intZero_ColT, &JungleLand_intZero_ColS
 };
 
 Vec3f JungleLand_intOne_ColV[] = {
@@ -3480,7 +3480,7 @@ Rect3D JungleLand_intOne_ColS = {
 };
 
 ModelCollision JungleLand_intOne_ColH = {
-100, 174, &JungleLand_intOne_ColV[0], &JungleLand_intOne_ColT[0], &JungleLand_intOne_ColS
+100, 174, JungleLand_intOne_ColV, JungleLand_intOne_ColT, &JungleLand_intOne_ColS
 };
 
 Vec3f JungleLand_intTwo_ColV[] = {
@@ -3496,7 +3496,7 @@ Rect3D JungleLand_intTwo_ColS = {
 };
 
 ModelCollision JungleLand_intTwo_ColH = {
-28, 38, &JungleLand_intTwo_ColV[0], &JungleLand_intTwo_ColT[0], &JungleLand_intTwo_ColS
+28, 38, JungleLand_intTwo_ColV, JungleLand_intTwo_ColT, &JungleLand_intTwo_ColS
 };
 
 Vec3f JungleLand_intThree_ColV[] = {
@@ -3512,7 +3512,7 @@ Rect3D JungleLand_intThree_ColS = {
 };
 
 ModelCollision JungleLand_intThree_ColH = {
-24, 28, &JungleLand_intThree_ColV[0], &JungleLand_intThree_ColT[0], &JungleLand_intThree_ColS
+24, 28, JungleLand_intThree_ColV, JungleLand_intThree_ColT, &JungleLand_intThree_ColS
 };
 
 Vec3f JungleLand_intFour_ColV[] = {
@@ -3528,7 +3528,7 @@ Rect3D JungleLand_intFour_ColS = {
 };
 
 ModelCollision JungleLand_intFour_ColH = {
-24, 34, &JungleLand_intFour_ColV[0], &JungleLand_intFour_ColT[0], &JungleLand_intFour_ColS
+24, 34, JungleLand_intFour_ColV, JungleLand_intFour_ColT, &JungleLand_intFour_ColS
 };
 
 Vec3f JungleLand_intSix_ColV[] = {
@@ -3544,7 +3544,7 @@ Rect3D JungleLand_intSix_ColS = {
 };
 
 ModelCollision JungleLand_intSix_ColH = {
-29, 40, &JungleLand_intSix_ColV[0], &JungleLand_intSix_ColT[0], &JungleLand_intSix_ColS
+29, 40, JungleLand_intSix_ColV, JungleLand_intSix_ColT, &JungleLand_intSix_ColS
 };
 
 Vec3f JungleLand_intSeven_ColV[] = {
@@ -3560,7 +3560,7 @@ Rect3D JungleLand_intSeven_ColS = {
 };
 
 ModelCollision JungleLand_intSeven_ColH = {
-20, 20, &JungleLand_intSeven_ColV[0], &JungleLand_intSeven_ColT[0], &JungleLand_intSeven_ColS
+20, 20, JungleLand_intSeven_ColV, JungleLand_intSeven_ColT, &JungleLand_intSeven_ColS
 };
 
 Vec3f JungleLand_intFive_ColV[] = {
@@ -3576,7 +3576,7 @@ Rect3D JungleLand_intFive_ColS = {
 };
 
 ModelCollision JungleLand_intFive_ColH = {
-28, 42, &JungleLand_intFive_ColV[0], &JungleLand_intFive_ColT[0], &JungleLand_intFive_ColS
+28, 42, JungleLand_intFive_ColV, JungleLand_intFive_ColT, &JungleLand_intFive_ColS
 };
 
 Vec3f JungleLand_railFloorOne_ColV[] = {
@@ -3592,7 +3592,7 @@ Rect3D JungleLand_railFloorOne_ColS = {
 };
 
 ModelCollision JungleLand_railFloorOne_ColH = {
-4, 2, &JungleLand_railFloorOne_ColV[0], &JungleLand_railFloorOne_ColT[0], &JungleLand_railFloorOne_ColS
+4, 2, JungleLand_railFloorOne_ColV, JungleLand_railFloorOne_ColT, &JungleLand_railFloorOne_ColS
 };
 
 Vec3f JungleLand_singleRailTrack_ColV[] = {
@@ -3608,7 +3608,7 @@ Rect3D JungleLand_singleRailTrack_ColS = {
 };
 
 ModelCollision JungleLand_singleRailTrack_ColH = {
-4, 2, &JungleLand_singleRailTrack_ColV[0], &JungleLand_singleRailTrack_ColT[0], &JungleLand_singleRailTrack_ColS
+4, 2, JungleLand_singleRailTrack_ColV, JungleLand_singleRailTrack_ColT, &JungleLand_singleRailTrack_ColS
 };
 
 Vec3f JungleLand_singleRailTrack2_ColV[] = {
@@ -3624,7 +3624,7 @@ Rect3D JungleLand_singleRailTrack2_ColS = {
 };
 
 ModelCollision JungleLand_singleRailTrack2_ColH = {
-4, 2, &JungleLand_singleRailTrack2_ColV[0], &JungleLand_singleRailTrack2_ColT[0], &JungleLand_singleRailTrack2_ColS
+4, 2, JungleLand_singleRailTrack2_ColV, JungleLand_singleRailTrack2_ColT, &JungleLand_singleRailTrack2_ColS
 };
 
 Vec3f JungleLand_branchRail_ColV[] = {
@@ -3640,7 +3640,7 @@ Rect3D JungleLand_branchRail_ColS = {
 };
 
 ModelCollision JungleLand_branchRail_ColH = {
-4, 2, &JungleLand_branchRail_ColV[0], &JungleLand_branchRail_ColT[0], &JungleLand_branchRail_ColS
+4, 2, JungleLand_branchRail_ColV, JungleLand_branchRail_ColT, &JungleLand_branchRail_ColS
 };
 
 Vec3f JungleLand_turnRail_ColV[] = {
@@ -3656,7 +3656,7 @@ Rect3D JungleLand_turnRail_ColS = {
 };
 
 ModelCollision JungleLand_turnRail_ColH = {
-4, 2, &JungleLand_turnRail_ColV[0], &JungleLand_turnRail_ColT[0], &JungleLand_turnRail_ColS
+4, 2, JungleLand_turnRail_ColV, JungleLand_turnRail_ColT, &JungleLand_turnRail_ColS
 };
 
 Vec3f JungleLand_singleRailTrack3_ColV[] = {
@@ -3672,7 +3672,7 @@ Rect3D JungleLand_singleRailTrack3_ColS = {
 };
 
 ModelCollision JungleLand_singleRailTrack3_ColH = {
-4, 2, &JungleLand_singleRailTrack3_ColV[0], &JungleLand_singleRailTrack3_ColT[0], &JungleLand_singleRailTrack3_ColS
+4, 2, JungleLand_singleRailTrack3_ColV, JungleLand_singleRailTrack3_ColT, &JungleLand_singleRailTrack3_ColS
 };
 
 Vec3f JungleLand_brokenMinecartRail_ColV[] = {
@@ -3688,7 +3688,7 @@ Rect3D JungleLand_brokenMinecartRail_ColS = {
 };
 
 ModelCollision JungleLand_brokenMinecartRail_ColH = {
-40, 64, &JungleLand_brokenMinecartRail_ColV[0], &JungleLand_brokenMinecartRail_ColT[0], &JungleLand_brokenMinecartRail_ColS
+40, 64, JungleLand_brokenMinecartRail_ColV, JungleLand_brokenMinecartRail_ColT, &JungleLand_brokenMinecartRail_ColS
 };
 
 Vec3f JungleLand_brokenMinecartRail2_ColV[] = {
@@ -3704,7 +3704,7 @@ Rect3D JungleLand_brokenMinecartRail2_ColS = {
 };
 
 ModelCollision JungleLand_brokenMinecartRail2_ColH = {
-32, 48, &JungleLand_brokenMinecartRail2_ColV[0], &JungleLand_brokenMinecartRail2_ColT[0], &JungleLand_brokenMinecartRail2_ColS
+32, 48, JungleLand_brokenMinecartRail2_ColV, JungleLand_brokenMinecartRail2_ColT, &JungleLand_brokenMinecartRail2_ColS
 };
 
 Vec3f JungleLand_minecart_ColV[] = {
@@ -3720,7 +3720,7 @@ Rect3D JungleLand_minecart_ColS = {
 };
 
 ModelCollision JungleLand_minecart_ColH = {
-32, 50, &JungleLand_minecart_ColV[0], &JungleLand_minecart_ColT[0], &JungleLand_minecart_ColS
+32, 50, JungleLand_minecart_ColV, JungleLand_minecart_ColT, &JungleLand_minecart_ColS
 };
 
 Vec3f JungleLand_doorFraMEd_ColV[] = {
@@ -3736,7 +3736,7 @@ Rect3D JungleLand_doorFraMEd_ColS = {
 };
 
 ModelCollision JungleLand_doorFraMEd_ColH = {
-26, 34, &JungleLand_doorFraMEd_ColV[0], &JungleLand_doorFraMEd_ColT[0], &JungleLand_doorFraMEd_ColS
+26, 34, JungleLand_doorFraMEd_ColV, JungleLand_doorFraMEd_ColT, &JungleLand_doorFraMEd_ColS
 };
 
 Vec3f JungleLand_doorFrame2_ColV[] = {
@@ -3752,7 +3752,7 @@ Rect3D JungleLand_doorFrame2_ColS = {
 };
 
 ModelCollision JungleLand_doorFrame2_ColH = {
-26, 34, &JungleLand_doorFrame2_ColV[0], &JungleLand_doorFrame2_ColT[0], &JungleLand_doorFrame2_ColS
+26, 34, JungleLand_doorFrame2_ColV, JungleLand_doorFrame2_ColT, &JungleLand_doorFrame2_ColS
 };
 
 Vec3f JungleLand_fernPlant_ColV[] = {
@@ -3768,7 +3768,7 @@ Rect3D JungleLand_fernPlant_ColS = {
 };
 
 ModelCollision JungleLand_fernPlant_ColH = {
-4, 2, &JungleLand_fernPlant_ColV[0], &JungleLand_fernPlant_ColT[0], &JungleLand_fernPlant_ColS
+4, 2, JungleLand_fernPlant_ColV, JungleLand_fernPlant_ColT, &JungleLand_fernPlant_ColS
 };
 
 Vec3f JungleLand_waterfall_ColV[] = {
@@ -3784,7 +3784,7 @@ Rect3D JungleLand_waterfall_ColS = {
 };
 
 ModelCollision JungleLand_waterfall_ColH = {
-10, 8, &JungleLand_waterfall_ColV[0], &JungleLand_waterfall_ColT[0], &JungleLand_waterfall_ColS
+10, 8, JungleLand_waterfall_ColV, JungleLand_waterfall_ColT, &JungleLand_waterfall_ColS
 };
 
 Vec3f JungleLand_water_ColV[] = {
@@ -3800,7 +3800,7 @@ Rect3D JungleLand_water_ColS = {
 };
 
 ModelCollision JungleLand_water_ColH = {
-5, 3, &JungleLand_water_ColV[0], &JungleLand_water_ColT[0], &JungleLand_water_ColS
+5, 3, JungleLand_water_ColV, JungleLand_water_ColT, &JungleLand_water_ColS
 };
 
 Vec3f JungleLand_water2_ColV[] = {
@@ -3816,13 +3816,13 @@ Rect3D JungleLand_water2_ColS = {
 };
 
 ModelCollision JungleLand_water2_ColH = {
-5, 3, &JungleLand_water2_ColV[0], &JungleLand_water2_ColT[0], &JungleLand_water2_ColS
+5, 3, JungleLand_water2_ColV, JungleLand_water2_ColT, &JungleLand_water2_ColS
 };
 s32 alignment_Pad_JL[] = {0, 0};
 
 Mtx JungleLand_IMtx87 = IDENTITY;
 
-Lights1 JungleLand_jlScope2_Light = 
+Lights1 JungleLand_jlScope2_Light =
     #include "assets/levelGroup/JungleLand/jlScope2/jlScope2.light.inc.c"
 
 Vtx JungleLand_rockGolem_Vtx[] = {

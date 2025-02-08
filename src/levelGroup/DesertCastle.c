@@ -983,8 +983,8 @@ RoomActor DesertCastle_roomMulti2_actors[] = {
     { ACTOR_NULL, {0.0,0.0,0.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0}
 };
 
-s32 DesertCastle_spriteLib_Sprlib[] = {
-    59,
+s32 DesertCastle_spriteLib_Sprlib[3][16] = {
+{   59,
     60,
     61,
     62,
@@ -999,6 +999,8 @@ s32 DesertCastle_spriteLib_Sprlib[] = {
     0,
     0,
     0,
+    0},
+{   0,
     0,
     0,
     0,
@@ -1013,6 +1015,8 @@ s32 DesertCastle_spriteLib_Sprlib[] = {
     0,
     0,
     0,
+    0},
+{   0,
     0,
     0,
     0,
@@ -1027,11 +1031,7 @@ s32 DesertCastle_spriteLib_Sprlib[] = {
     0,
     0,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
+    0},
 };
 
 Collectable DesertCastle_room4_collectables[] = {
@@ -1179,12 +1179,12 @@ RoomInstance DesertCastle_room_instances[] = {
     {                          0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0.0, 0,    0.0,   0.0,    0.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0, 0.0}
 };
 
-s32 DesertCastle_rooms_map[3] = {
--1, 0, -1, 
+s32 DesertCastle_rooms_map[1][3] = {
+    {-1, 0, -1},
 };
 
 StageMapData DesertCastle_map_data = {
-3, 1, DesertCastle_room_instances, DesertCastle_rooms_map, 
+    3, 1, DesertCastle_room_instances, DesertCastle_rooms_map,
 };
 
 RoomActor DesertCastle_room5_actors[] = {
@@ -1251,12 +1251,12 @@ StageData DesertCastle_header_Lvlhdr = {
     0,
     DesertCastle_rabObjects_Bin,
     131072,
-    &DesertCastle_spriteLib_Sprlib[0],
+    DesertCastle_spriteLib_Sprlib,
     &DesertCastle_scope_Lvlscope,
 };
 Mtx DesertCastle_IMtx2 = IDENTITY;
 
-Lights1 DesertCastle_klScope_Light = 
+Lights1 DesertCastle_klScope_Light =
     #include "assets/levelGroup/DesertCastle/dcScope.light.inc.c"
 
 Vtx DesertCastle_model1_Vtx[] = {
@@ -2152,7 +2152,7 @@ Rect3D DesertCastle_unkCol1_ColS = {
 };
 
 ModelCollision DesertCastle_unkCol1_ColH = {
-18, 22, &DesertCastle_unkCol1_ColV[0], &DesertCastle_unkCol1_ColT[0], &DesertCastle_unkCol1_ColS
+18, 22, DesertCastle_unkCol1_ColV, DesertCastle_unkCol1_ColT, &DesertCastle_unkCol1_ColS
 };
 
 Vec3f DesertCastle_unkCol2_ColV[] = {
@@ -2168,7 +2168,7 @@ Rect3D DesertCastle_unkCol2_ColS = {
 };
 
 ModelCollision DesertCastle_unkCol2_ColH = {
-24, 24, &DesertCastle_unkCol2_ColV[0], &DesertCastle_unkCol2_ColT[0], &DesertCastle_unkCol2_ColS
+24, 24, DesertCastle_unkCol2_ColV, DesertCastle_unkCol2_ColT, &DesertCastle_unkCol2_ColS
 };
 
 Vec3f DesertCastle_unkCol3_ColV[] = {
@@ -2184,7 +2184,7 @@ Rect3D DesertCastle_unkCol3_ColS = {
 };
 
 ModelCollision DesertCastle_unkCol3_ColH = {
-21, 28, &DesertCastle_unkCol3_ColV[0], &DesertCastle_unkCol3_ColT[0], &DesertCastle_unkCol3_ColS
+21, 28, DesertCastle_unkCol3_ColV, DesertCastle_unkCol3_ColT, &DesertCastle_unkCol3_ColS
 };
 
 Vec3f DesertCastle_unkCol4_ColV[] = {
@@ -2200,7 +2200,7 @@ Rect3D DesertCastle_unkCol4_ColS = {
 };
 
 ModelCollision DesertCastle_unkCol4_ColH = {
-40, 69, &DesertCastle_unkCol4_ColV[0], &DesertCastle_unkCol4_ColT[0], &DesertCastle_unkCol4_ColS
+40, 69, DesertCastle_unkCol4_ColV, DesertCastle_unkCol4_ColT, &DesertCastle_unkCol4_ColS
 };
 
 Vec3f DesertCastle_unkCol5_ColV[] = {
@@ -2216,7 +2216,7 @@ Rect3D DesertCastle_unkCol5_ColS = {
 };
 
 ModelCollision DesertCastle_unkCol5_ColH = {
-35, 46, &DesertCastle_unkCol5_ColV[0], &DesertCastle_unkCol5_ColT[0], &DesertCastle_unkCol5_ColS
+35, 46, DesertCastle_unkCol5_ColV, DesertCastle_unkCol5_ColT, &DesertCastle_unkCol5_ColS
 };
 
 Vec3f DesertCastle_unkCol6_ColV[] = {
@@ -2232,7 +2232,7 @@ Rect3D DesertCastle_unkCol6_ColS = {
 };
 
 ModelCollision DesertCastle_unkCol6_ColH = {
-21, 15, &DesertCastle_unkCol6_ColV[0], &DesertCastle_unkCol6_ColT[0], &DesertCastle_unkCol6_ColS
+21, 15, DesertCastle_unkCol6_ColV, DesertCastle_unkCol6_ColT, &DesertCastle_unkCol6_ColS
 };
 
 Vec3f DesertCastle_unkCol7_ColV[] = {
@@ -2248,7 +2248,7 @@ Rect3D DesertCastle_unkCol7_ColS = {
 };
 
 ModelCollision DesertCastle_unkCol7_ColH = {
-51, 77, &DesertCastle_unkCol7_ColV[0], &DesertCastle_unkCol7_ColT[0], &DesertCastle_unkCol7_ColS
+51, 77, DesertCastle_unkCol7_ColV, DesertCastle_unkCol7_ColT, &DesertCastle_unkCol7_ColS
 };
 
 Vec3f DesertCastle_unkCol8_ColV[] = {
@@ -2264,7 +2264,7 @@ Rect3D DesertCastle_unkCol8_ColS = {
 };
 
 ModelCollision DesertCastle_unkCol8_ColH = {
-25, 30, &DesertCastle_unkCol8_ColV[0], &DesertCastle_unkCol8_ColT[0], &DesertCastle_unkCol8_ColS
+25, 30, DesertCastle_unkCol8_ColV, DesertCastle_unkCol8_ColT, &DesertCastle_unkCol8_ColS
 };
 
 Vec3f DesertCastle_unkCol9_ColV[] = {
@@ -2280,7 +2280,7 @@ Rect3D DesertCastle_unkCol9_ColS = {
 };
 
 ModelCollision DesertCastle_unkCol9_ColH = {
-38, 58, &DesertCastle_unkCol9_ColV[0], &DesertCastle_unkCol9_ColT[0], &DesertCastle_unkCol9_ColS
+38, 58, DesertCastle_unkCol9_ColV, DesertCastle_unkCol9_ColT, &DesertCastle_unkCol9_ColS
 };
 
 Vec3f DesertCastle_unkCol10_ColV[] = {
@@ -2296,7 +2296,7 @@ Rect3D DesertCastle_unkCol10_ColS = {
 };
 
 ModelCollision DesertCastle_unkCol10_ColH = {
-31, 42, &DesertCastle_unkCol10_ColV[0], &DesertCastle_unkCol10_ColT[0], &DesertCastle_unkCol10_ColS
+31, 42, DesertCastle_unkCol10_ColV, DesertCastle_unkCol10_ColT, &DesertCastle_unkCol10_ColS
 };
 
 Vec3f DesertCastle_unkCol11_ColV[] = {
@@ -2312,7 +2312,7 @@ Rect3D DesertCastle_unkCol11_ColS = {
 };
 
 ModelCollision DesertCastle_unkCol11_ColH = {
-35, 52, &DesertCastle_unkCol11_ColV[0], &DesertCastle_unkCol11_ColT[0], &DesertCastle_unkCol11_ColS
+35, 52, DesertCastle_unkCol11_ColV, DesertCastle_unkCol11_ColT, &DesertCastle_unkCol11_ColS
 };
 
 Vec3f DesertCastle_unkCol12_ColV[] = {
@@ -2328,7 +2328,7 @@ Rect3D DesertCastle_unkCol12_ColS = {
 };
 
 ModelCollision DesertCastle_unkCol12_ColH = {
-40, 60, &DesertCastle_unkCol12_ColV[0], &DesertCastle_unkCol12_ColT[0], &DesertCastle_unkCol12_ColS
+40, 60, DesertCastle_unkCol12_ColV, DesertCastle_unkCol12_ColT, &DesertCastle_unkCol12_ColS
 };
 
 Vec3f DesertCastle_unkCol13_ColV[] = {
@@ -2344,7 +2344,7 @@ Rect3D DesertCastle_unkCol13_ColS = {
 };
 
 ModelCollision DesertCastle_unkCol13_ColH = {
-51, 79, &DesertCastle_unkCol13_ColV[0], &DesertCastle_unkCol13_ColT[0], &DesertCastle_unkCol13_ColS
+51, 79, DesertCastle_unkCol13_ColV, DesertCastle_unkCol13_ColT, &DesertCastle_unkCol13_ColS
 };
 
 Vec3f DesertCastle_unkCol14_ColV[] = {
@@ -2360,7 +2360,7 @@ Rect3D DesertCastle_unkCol14_ColS = {
 };
 
 ModelCollision DesertCastle_unkCol14_ColH = {
-58, 67, &DesertCastle_unkCol14_ColV[0], &DesertCastle_unkCol14_ColT[0], &DesertCastle_unkCol14_ColS
+58, 67, DesertCastle_unkCol14_ColV, DesertCastle_unkCol14_ColT, &DesertCastle_unkCol14_ColS
 };
 
 Vec3f DesertCastle_unkCol15_ColV[] = {
@@ -2376,7 +2376,7 @@ Rect3D DesertCastle_unkCol15_ColS = {
 };
 
 ModelCollision DesertCastle_unkCol15_ColH = {
-10, 9, &DesertCastle_unkCol15_ColV[0], &DesertCastle_unkCol15_ColT[0], &DesertCastle_unkCol15_ColS
+10, 9, DesertCastle_unkCol15_ColV, DesertCastle_unkCol15_ColT, &DesertCastle_unkCol15_ColS
 };
 
 Vec3f DesertCastle_unkCol16_ColV[] = {
@@ -2392,7 +2392,7 @@ Rect3D DesertCastle_unkCol16_ColS = {
 };
 
 ModelCollision DesertCastle_unkCol16_ColH = {
-11, 11, &DesertCastle_unkCol16_ColV[0], &DesertCastle_unkCol16_ColT[0], &DesertCastle_unkCol16_ColS
+11, 11, DesertCastle_unkCol16_ColV, DesertCastle_unkCol16_ColT, &DesertCastle_unkCol16_ColS
 };
 
 Vec3f DesertCastle_unkCol17_ColV[] = {
@@ -2408,7 +2408,7 @@ Rect3D DesertCastle_unkCol17_ColS = {
 };
 
 ModelCollision DesertCastle_unkCol17_ColH = {
-20, 20, &DesertCastle_unkCol17_ColV[0], &DesertCastle_unkCol17_ColT[0], &DesertCastle_unkCol17_ColS
+20, 20, DesertCastle_unkCol17_ColV, DesertCastle_unkCol17_ColT, &DesertCastle_unkCol17_ColS
 };
 
 Vec3f DesertCastle_unkCol18_ColV[] = {
@@ -2424,7 +2424,7 @@ Rect3D DesertCastle_unkCol18_ColS = {
 };
 
 ModelCollision DesertCastle_unkCol18_ColH = {
-8, 4, &DesertCastle_unkCol18_ColV[0], &DesertCastle_unkCol18_ColT[0], &DesertCastle_unkCol18_ColS
+8, 4, DesertCastle_unkCol18_ColV, DesertCastle_unkCol18_ColT, &DesertCastle_unkCol18_ColS
 };
 
 Vec3f DesertCastle_unkCol19_ColV[] = {
@@ -2440,7 +2440,7 @@ Rect3D DesertCastle_unkCol19_ColS = {
 };
 
 ModelCollision DesertCastle_unkCol19_ColH = {
-21, 23, &DesertCastle_unkCol19_ColV[0], &DesertCastle_unkCol19_ColT[0], &DesertCastle_unkCol19_ColS
+21, 23, DesertCastle_unkCol19_ColV, DesertCastle_unkCol19_ColT, &DesertCastle_unkCol19_ColS
 };
 
 Vec3f DesertCastle_unkCol20_ColV[] = {
@@ -2456,7 +2456,7 @@ Rect3D DesertCastle_unkCol20_ColS = {
 };
 
 ModelCollision DesertCastle_unkCol20_ColH = {
-10, 6, &DesertCastle_unkCol20_ColV[0], &DesertCastle_unkCol20_ColT[0], &DesertCastle_unkCol20_ColS
+10, 6, DesertCastle_unkCol20_ColV, DesertCastle_unkCol20_ColT, &DesertCastle_unkCol20_ColS
 };
 
 Vec3f DesertCastle_unkCol21_ColV[] = {
@@ -2472,7 +2472,7 @@ Rect3D DesertCastle_unkCol21_ColS = {
 };
 
 ModelCollision DesertCastle_unkCol21_ColH = {
-13, 10, &DesertCastle_unkCol21_ColV[0], &DesertCastle_unkCol21_ColT[0], &DesertCastle_unkCol21_ColS
+13, 10, DesertCastle_unkCol21_ColV, DesertCastle_unkCol21_ColT, &DesertCastle_unkCol21_ColS
 };
 
 Vec3f DesertCastle_unkCol22_ColV[] = {
@@ -2488,7 +2488,7 @@ Rect3D DesertCastle_unkCol22_ColS = {
 };
 
 ModelCollision DesertCastle_unkCol22_ColH = {
-14, 11, &DesertCastle_unkCol22_ColV[0], &DesertCastle_unkCol22_ColT[0], &DesertCastle_unkCol22_ColS
+14, 11, DesertCastle_unkCol22_ColV, DesertCastle_unkCol22_ColT, &DesertCastle_unkCol22_ColS
 };
 
 Vec3f DesertCastle_unkCol23_ColV[] = {
@@ -2504,7 +2504,7 @@ Rect3D DesertCastle_unkCol23_ColS = {
 };
 
 ModelCollision DesertCastle_unkCol23_ColH = {
-5, 3, &DesertCastle_unkCol23_ColV[0], &DesertCastle_unkCol23_ColT[0], &DesertCastle_unkCol23_ColS
+5, 3, DesertCastle_unkCol23_ColV, DesertCastle_unkCol23_ColT, &DesertCastle_unkCol23_ColS
 };
 
 Vec3f DesertCastle_unkCol24_ColV[] = {
@@ -2520,7 +2520,7 @@ Rect3D DesertCastle_unkCol24_ColS = {
 };
 
 ModelCollision DesertCastle_unkCol24_ColH = {
-13, 16, &DesertCastle_unkCol24_ColV[0], &DesertCastle_unkCol24_ColT[0], &DesertCastle_unkCol24_ColS
+13, 16, DesertCastle_unkCol24_ColV, DesertCastle_unkCol24_ColT, &DesertCastle_unkCol24_ColS
 };
 
 Vec3f DesertCastle_unkCol25_ColV[] = {
@@ -2536,7 +2536,7 @@ Rect3D DesertCastle_unkCol25_ColS = {
 };
 
 ModelCollision DesertCastle_unkCol25_ColH = {
-17, 21, &DesertCastle_unkCol25_ColV[0], &DesertCastle_unkCol25_ColT[0], &DesertCastle_unkCol25_ColS
+17, 21, DesertCastle_unkCol25_ColV, DesertCastle_unkCol25_ColT, &DesertCastle_unkCol25_ColS
 };
 
 Vec3f DesertCastle_unkCol26_ColV[] = {
@@ -2552,7 +2552,7 @@ Rect3D DesertCastle_unkCol26_ColS = {
 };
 
 ModelCollision DesertCastle_unkCol26_ColH = {
-8, 4, &DesertCastle_unkCol26_ColV[0], &DesertCastle_unkCol26_ColT[0], &DesertCastle_unkCol26_ColS
+8, 4, DesertCastle_unkCol26_ColV, DesertCastle_unkCol26_ColT, &DesertCastle_unkCol26_ColS
 };
 
 Vec3f DesertCastle_unkCol27_ColV[] = {
@@ -2568,7 +2568,7 @@ Rect3D DesertCastle_unkCol27_ColS = {
 };
 
 ModelCollision DesertCastle_unkCol27_ColH = {
-5, 3, &DesertCastle_unkCol27_ColV[0], &DesertCastle_unkCol27_ColT[0], &DesertCastle_unkCol27_ColS
+5, 3, DesertCastle_unkCol27_ColV, DesertCastle_unkCol27_ColT, &DesertCastle_unkCol27_ColS
 };
 
 Vec3f DesertCastle_unkCol28_ColV[] = {
@@ -2584,7 +2584,7 @@ Rect3D DesertCastle_unkCol28_ColS = {
 };
 
 ModelCollision DesertCastle_unkCol28_ColH = {
-10, 6, &DesertCastle_unkCol28_ColV[0], &DesertCastle_unkCol28_ColT[0], &DesertCastle_unkCol28_ColS
+10, 6, DesertCastle_unkCol28_ColV, DesertCastle_unkCol28_ColT, &DesertCastle_unkCol28_ColS
 };
 
 Vec3f DesertCastle_unkCol29_ColV[] = {
@@ -2600,7 +2600,7 @@ Rect3D DesertCastle_unkCol29_ColS = {
 };
 
 ModelCollision DesertCastle_unkCol29_ColH = {
-4, 2, &DesertCastle_unkCol29_ColV[0], &DesertCastle_unkCol29_ColT[0], &DesertCastle_unkCol29_ColS
+4, 2, DesertCastle_unkCol29_ColV, DesertCastle_unkCol29_ColT, &DesertCastle_unkCol29_ColS
 };
 
 Vec3f DesertCastle_unkCol30_ColV[] = {
@@ -2616,7 +2616,7 @@ Rect3D DesertCastle_unkCol30_ColS = {
 };
 
 ModelCollision DesertCastle_unkCol30_ColH = {
-7, 5, &DesertCastle_unkCol30_ColV[0], &DesertCastle_unkCol30_ColT[0], &DesertCastle_unkCol30_ColS
+7, 5, DesertCastle_unkCol30_ColV, DesertCastle_unkCol30_ColT, &DesertCastle_unkCol30_ColS
 };
 
 Vec3f DesertCastle_unkCol31_ColV[] = {
@@ -2632,7 +2632,7 @@ Rect3D DesertCastle_unkCol31_ColS = {
 };
 
 ModelCollision DesertCastle_unkCol31_ColH = {
-4, 2, &DesertCastle_unkCol31_ColV[0], &DesertCastle_unkCol31_ColT[0], &DesertCastle_unkCol31_ColS
+4, 2, DesertCastle_unkCol31_ColV, DesertCastle_unkCol31_ColT, &DesertCastle_unkCol31_ColS
 };
 
 Vec3f DesertCastle_unkCol32_ColV[] = {
@@ -2648,7 +2648,7 @@ Rect3D DesertCastle_unkCol32_ColS = {
 };
 
 ModelCollision DesertCastle_unkCol32_ColH = {
-29, 41, &DesertCastle_unkCol32_ColV[0], &DesertCastle_unkCol32_ColT[0], &DesertCastle_unkCol32_ColS
+29, 41, DesertCastle_unkCol32_ColV, DesertCastle_unkCol32_ColT, &DesertCastle_unkCol32_ColS
 };
 
 Vec3f DesertCastle_unkCol33_ColV[] = {
@@ -2664,7 +2664,7 @@ Rect3D DesertCastle_unkCol33_ColS = {
 };
 
 ModelCollision DesertCastle_unkCol33_ColH = {
-54, 70, &DesertCastle_unkCol33_ColV[0], &DesertCastle_unkCol33_ColT[0], &DesertCastle_unkCol33_ColS
+54, 70, DesertCastle_unkCol33_ColV, DesertCastle_unkCol33_ColT, &DesertCastle_unkCol33_ColS
 };
 
 Vec3f DesertCastle_unkCol34_ColV[] = {
@@ -2680,7 +2680,7 @@ Rect3D DesertCastle_unkCol34_ColS = {
 };
 
 ModelCollision DesertCastle_unkCol34_ColH = {
-20, 20, &DesertCastle_unkCol34_ColV[0], &DesertCastle_unkCol34_ColT[0], &DesertCastle_unkCol34_ColS
+20, 20, DesertCastle_unkCol34_ColV, DesertCastle_unkCol34_ColT, &DesertCastle_unkCol34_ColS
 };
 
 Vec3f DesertCastle_unkCol35_ColV[] = {
@@ -2696,7 +2696,7 @@ Rect3D DesertCastle_unkCol35_ColS = {
 };
 
 ModelCollision DesertCastle_unkCol35_ColH = {
-34, 53, &DesertCastle_unkCol35_ColV[0], &DesertCastle_unkCol35_ColT[0], &DesertCastle_unkCol35_ColS
+34, 53, DesertCastle_unkCol35_ColV, DesertCastle_unkCol35_ColT, &DesertCastle_unkCol35_ColS
 };
 
 Vec3f DesertCastle_unkCol36_ColV[] = {
@@ -2712,7 +2712,7 @@ Rect3D DesertCastle_unkCol36_ColS = {
 };
 
 ModelCollision DesertCastle_unkCol36_ColH = {
-12, 10, &DesertCastle_unkCol36_ColV[0], &DesertCastle_unkCol36_ColT[0], &DesertCastle_unkCol36_ColS
+12, 10, DesertCastle_unkCol36_ColV, DesertCastle_unkCol36_ColT, &DesertCastle_unkCol36_ColS
 };
 
 Vec3f DesertCastle_unkCol37_ColV[] = {
@@ -2728,7 +2728,7 @@ Rect3D DesertCastle_unkCol37_ColS = {
 };
 
 ModelCollision DesertCastle_unkCol37_ColH = {
-13, 13, &DesertCastle_unkCol37_ColV[0], &DesertCastle_unkCol37_ColT[0], &DesertCastle_unkCol37_ColS
+13, 13, DesertCastle_unkCol37_ColV, DesertCastle_unkCol37_ColT, &DesertCastle_unkCol37_ColS
 };
 
 Vec3f DesertCastle_unkCol38_ColV[] = {
@@ -2744,7 +2744,7 @@ Rect3D DesertCastle_unkCol38_ColS = {
 };
 
 ModelCollision DesertCastle_unkCol38_ColH = {
-20, 23, &DesertCastle_unkCol38_ColV[0], &DesertCastle_unkCol38_ColT[0], &DesertCastle_unkCol38_ColS
+20, 23, DesertCastle_unkCol38_ColV, DesertCastle_unkCol38_ColT, &DesertCastle_unkCol38_ColS
 };
 
 Vec3f DesertCastle_unkCol39_ColV[] = {
@@ -2760,7 +2760,7 @@ Rect3D DesertCastle_unkCol39_ColS = {
 };
 
 ModelCollision DesertCastle_unkCol39_ColH = {
-46, 60, &DesertCastle_unkCol39_ColV[0], &DesertCastle_unkCol39_ColT[0], &DesertCastle_unkCol39_ColS
+46, 60, DesertCastle_unkCol39_ColV, DesertCastle_unkCol39_ColT, &DesertCastle_unkCol39_ColS
 };
 
 Vec3f DesertCastle_unkCol40_ColV[] = {
@@ -2776,7 +2776,7 @@ Rect3D DesertCastle_unkCol40_ColS = {
 };
 
 ModelCollision DesertCastle_unkCol40_ColH = {
-32, 28, &DesertCastle_unkCol40_ColV[0], &DesertCastle_unkCol40_ColT[0], &DesertCastle_unkCol40_ColS
+32, 28, DesertCastle_unkCol40_ColV, DesertCastle_unkCol40_ColT, &DesertCastle_unkCol40_ColS
 };
 
 Vec3f DesertCastle_unkCol41_ColV[] = {
@@ -2792,7 +2792,7 @@ Rect3D DesertCastle_unkCol41_ColS = {
 };
 
 ModelCollision DesertCastle_unkCol41_ColH = {
-28, 38, &DesertCastle_unkCol41_ColV[0], &DesertCastle_unkCol41_ColT[0], &DesertCastle_unkCol41_ColS
+28, 38, DesertCastle_unkCol41_ColV, DesertCastle_unkCol41_ColT, &DesertCastle_unkCol41_ColS
 };
 
 Vec3f DesertCastle_unkCol42_ColV[] = {
@@ -2808,7 +2808,7 @@ Rect3D DesertCastle_unkCol42_ColS = {
 };
 
 ModelCollision DesertCastle_unkCol42_ColH = {
-28, 42, &DesertCastle_unkCol42_ColV[0], &DesertCastle_unkCol42_ColT[0], &DesertCastle_unkCol42_ColS
+28, 42, DesertCastle_unkCol42_ColV, DesertCastle_unkCol42_ColT, &DesertCastle_unkCol42_ColS
 };
 
 Vec3f DesertCastle_unkCol43_ColV[] = {
@@ -2824,7 +2824,7 @@ Rect3D DesertCastle_unkCol43_ColS = {
 };
 
 ModelCollision DesertCastle_unkCol43_ColH = {
-25, 34, &DesertCastle_unkCol43_ColV[0], &DesertCastle_unkCol43_ColT[0], &DesertCastle_unkCol43_ColS
+25, 34, DesertCastle_unkCol43_ColV, DesertCastle_unkCol43_ColT, &DesertCastle_unkCol43_ColS
 };
 
 Vec3f DesertCastle_unkCol44_ColV[] = {
@@ -2840,7 +2840,7 @@ Rect3D DesertCastle_unkCol44_ColS = {
 };
 
 ModelCollision DesertCastle_unkCol44_ColH = {
-38, 42, &DesertCastle_unkCol44_ColV[0], &DesertCastle_unkCol44_ColT[0], &DesertCastle_unkCol44_ColS
+38, 42, DesertCastle_unkCol44_ColV, DesertCastle_unkCol44_ColT, &DesertCastle_unkCol44_ColS
 };
 
 Vec3f DesertCastle_unkCol45_ColV[] = {
@@ -2856,7 +2856,7 @@ Rect3D DesertCastle_unkCol45_ColS = {
 };
 
 ModelCollision DesertCastle_unkCol45_ColH = {
-24, 33, &DesertCastle_unkCol45_ColV[0], &DesertCastle_unkCol45_ColT[0], &DesertCastle_unkCol45_ColS
+24, 33, DesertCastle_unkCol45_ColV, DesertCastle_unkCol45_ColT, &DesertCastle_unkCol45_ColS
 };
 
 Vec3f DesertCastle_unkCol46_ColV[] = {
@@ -2872,7 +2872,7 @@ Rect3D DesertCastle_unkCol46_ColS = {
 };
 
 ModelCollision DesertCastle_unkCol46_ColH = {
-30, 35, &DesertCastle_unkCol46_ColV[0], &DesertCastle_unkCol46_ColT[0], &DesertCastle_unkCol46_ColS
+30, 35, DesertCastle_unkCol46_ColV, DesertCastle_unkCol46_ColT, &DesertCastle_unkCol46_ColS
 };
 
 Vec3f DesertCastle_unkCol47_ColV[] = {
@@ -2888,7 +2888,7 @@ Rect3D DesertCastle_unkCol47_ColS = {
 };
 
 ModelCollision DesertCastle_unkCol47_ColH = {
-6, 8, &DesertCastle_unkCol47_ColV[0], &DesertCastle_unkCol47_ColT[0], &DesertCastle_unkCol47_ColS
+6, 8, DesertCastle_unkCol47_ColV, DesertCastle_unkCol47_ColT, &DesertCastle_unkCol47_ColS
 };
 
 Vec3f DesertCastle_unkCol48_ColV[] = {
@@ -2904,7 +2904,7 @@ Rect3D DesertCastle_unkCol48_ColS = {
 };
 
 ModelCollision DesertCastle_unkCol48_ColH = {
-5, 4, &DesertCastle_unkCol48_ColV[0], &DesertCastle_unkCol48_ColT[0], &DesertCastle_unkCol48_ColS
+5, 4, DesertCastle_unkCol48_ColV, DesertCastle_unkCol48_ColT, &DesertCastle_unkCol48_ColS
 };
 
 Vec3f DesertCastle_unkCol49_ColV[] = {
@@ -2920,7 +2920,7 @@ Rect3D DesertCastle_unkCol49_ColS = {
 };
 
 ModelCollision DesertCastle_unkCol49_ColH = {
-6, 8, &DesertCastle_unkCol49_ColV[0], &DesertCastle_unkCol49_ColT[0], &DesertCastle_unkCol49_ColS
+6, 8, DesertCastle_unkCol49_ColV, DesertCastle_unkCol49_ColT, &DesertCastle_unkCol49_ColS
 };
 
 Vec3f DesertCastle_unkCol50_ColV[] = {
@@ -2936,7 +2936,7 @@ Rect3D DesertCastle_unkCol50_ColS = {
 };
 
 ModelCollision DesertCastle_unkCol50_ColH = {
-5, 4, &DesertCastle_unkCol50_ColV[0], &DesertCastle_unkCol50_ColT[0], &DesertCastle_unkCol50_ColS
+5, 4, DesertCastle_unkCol50_ColV, DesertCastle_unkCol50_ColT, &DesertCastle_unkCol50_ColS
 };
 
 Vec3f DesertCastle_unkCol51_ColV[] = {
@@ -2952,7 +2952,7 @@ Rect3D DesertCastle_unkCol51_ColS = {
 };
 
 ModelCollision DesertCastle_unkCol51_ColH = {
-16, 22, &DesertCastle_unkCol51_ColV[0], &DesertCastle_unkCol51_ColT[0], &DesertCastle_unkCol51_ColS
+16, 22, DesertCastle_unkCol51_ColV, DesertCastle_unkCol51_ColT, &DesertCastle_unkCol51_ColS
 };
 
 Vec3f DesertCastle_unkCol52_ColV[] = {
@@ -2968,7 +2968,7 @@ Rect3D DesertCastle_unkCol52_ColS = {
 };
 
 ModelCollision DesertCastle_unkCol52_ColH = {
-8, 8, &DesertCastle_unkCol52_ColV[0], &DesertCastle_unkCol52_ColT[0], &DesertCastle_unkCol52_ColS
+8, 8, DesertCastle_unkCol52_ColV, DesertCastle_unkCol52_ColT, &DesertCastle_unkCol52_ColS
 };
 
 Vec3f DesertCastle_unkCol53_ColV[] = {
@@ -2984,7 +2984,7 @@ Rect3D DesertCastle_unkCol53_ColS = {
 };
 
 ModelCollision DesertCastle_unkCol53_ColH = {
-8, 8, &DesertCastle_unkCol53_ColV[0], &DesertCastle_unkCol53_ColT[0], &DesertCastle_unkCol53_ColS
+8, 8, DesertCastle_unkCol53_ColV, DesertCastle_unkCol53_ColT, &DesertCastle_unkCol53_ColS
 };
 
 Vec3f DesertCastle_unkCol54_ColV[] = {
@@ -3000,7 +3000,7 @@ Rect3D DesertCastle_unkCol54_ColS = {
 };
 
 ModelCollision DesertCastle_unkCol54_ColH = {
-8, 10, &DesertCastle_unkCol54_ColV[0], &DesertCastle_unkCol54_ColT[0], &DesertCastle_unkCol54_ColS
+8, 10, DesertCastle_unkCol54_ColV, DesertCastle_unkCol54_ColT, &DesertCastle_unkCol54_ColS
 };
 
 Vec3f DesertCastle_unkCol55_ColV[] = {
@@ -3016,7 +3016,7 @@ Rect3D DesertCastle_unkCol55_ColS = {
 };
 
 ModelCollision DesertCastle_unkCol55_ColH = {
-16, 22, &DesertCastle_unkCol55_ColV[0], &DesertCastle_unkCol55_ColT[0], &DesertCastle_unkCol55_ColS
+16, 22, DesertCastle_unkCol55_ColV, DesertCastle_unkCol55_ColT, &DesertCastle_unkCol55_ColS
 };
 
 Vec3f DesertCastle_unkCol56_ColV[] = {
@@ -3032,7 +3032,7 @@ Rect3D DesertCastle_unkCol56_ColS = {
 };
 
 ModelCollision DesertCastle_unkCol56_ColH = {
-12, 16, &DesertCastle_unkCol56_ColV[0], &DesertCastle_unkCol56_ColT[0], &DesertCastle_unkCol56_ColS
+12, 16, DesertCastle_unkCol56_ColV, DesertCastle_unkCol56_ColT, &DesertCastle_unkCol56_ColS
 };
 
 Vec3f DesertCastle_unkCol57_ColV[] = {
@@ -3048,7 +3048,7 @@ Rect3D DesertCastle_unkCol57_ColS = {
 };
 
 ModelCollision DesertCastle_unkCol57_ColH = {
-12, 14, &DesertCastle_unkCol57_ColV[0], &DesertCastle_unkCol57_ColT[0], &DesertCastle_unkCol57_ColS
+12, 14, DesertCastle_unkCol57_ColV, DesertCastle_unkCol57_ColT, &DesertCastle_unkCol57_ColS
 };
 
 Vec3f DesertCastle_unkCol58_ColV[] = {
@@ -3064,7 +3064,7 @@ Rect3D DesertCastle_unkCol58_ColS = {
 };
 
 ModelCollision DesertCastle_unkCol58_ColH = {
-12, 14, &DesertCastle_unkCol58_ColV[0], &DesertCastle_unkCol58_ColT[0], &DesertCastle_unkCol58_ColS
+12, 14, DesertCastle_unkCol58_ColV, DesertCastle_unkCol58_ColT, &DesertCastle_unkCol58_ColS
 };
 
 Vec3f DesertCastle_unkCol59_ColV[] = {
@@ -3080,7 +3080,7 @@ Rect3D DesertCastle_unkCol59_ColS = {
 };
 
 ModelCollision DesertCastle_unkCol59_ColH = {
-16, 22, &DesertCastle_unkCol59_ColV[0], &DesertCastle_unkCol59_ColT[0], &DesertCastle_unkCol59_ColS
+16, 22, DesertCastle_unkCol59_ColV, DesertCastle_unkCol59_ColT, &DesertCastle_unkCol59_ColS
 };
 
 Vec3f DesertCastle_unkCol60_ColV[] = {
@@ -3096,7 +3096,7 @@ Rect3D DesertCastle_unkCol60_ColS = {
 };
 
 ModelCollision DesertCastle_unkCol60_ColH = {
-12, 16, &DesertCastle_unkCol60_ColV[0], &DesertCastle_unkCol60_ColT[0], &DesertCastle_unkCol60_ColS
+12, 16, DesertCastle_unkCol60_ColV, DesertCastle_unkCol60_ColT, &DesertCastle_unkCol60_ColS
 };
 
 Vec3f DesertCastle_unkCol61_ColV[] = {
@@ -3112,7 +3112,7 @@ Rect3D DesertCastle_unkCol61_ColS = {
 };
 
 ModelCollision DesertCastle_unkCol61_ColH = {
-4, 4, &DesertCastle_unkCol61_ColV[0], &DesertCastle_unkCol61_ColT[0], &DesertCastle_unkCol61_ColS
+4, 4, DesertCastle_unkCol61_ColV, DesertCastle_unkCol61_ColT, &DesertCastle_unkCol61_ColS
 };
 
 Vec3f DesertCastle_unkCol62_ColV[] = {
@@ -3128,7 +3128,7 @@ Rect3D DesertCastle_unkCol62_ColS = {
 };
 
 ModelCollision DesertCastle_unkCol62_ColH = {
-8, 8, &DesertCastle_unkCol62_ColV[0], &DesertCastle_unkCol62_ColT[0], &DesertCastle_unkCol62_ColS
+8, 8, DesertCastle_unkCol62_ColV, DesertCastle_unkCol62_ColT, &DesertCastle_unkCol62_ColS
 };
 
 Vec3f DesertCastle_unkCol63_ColV[] = {
@@ -3144,7 +3144,7 @@ Rect3D DesertCastle_unkCol63_ColS = {
 };
 
 ModelCollision DesertCastle_unkCol63_ColH = {
-8, 10, &DesertCastle_unkCol63_ColV[0], &DesertCastle_unkCol63_ColT[0], &DesertCastle_unkCol63_ColS
+8, 10, DesertCastle_unkCol63_ColV, DesertCastle_unkCol63_ColT, &DesertCastle_unkCol63_ColS
 };
 
 Vec3f DesertCastle_unkCol64_ColV[] = {
@@ -3160,7 +3160,7 @@ Rect3D DesertCastle_unkCol64_ColS = {
 };
 
 ModelCollision DesertCastle_unkCol64_ColH = {
-4, 4, &DesertCastle_unkCol64_ColV[0], &DesertCastle_unkCol64_ColT[0], &DesertCastle_unkCol64_ColS
+4, 4, DesertCastle_unkCol64_ColV, DesertCastle_unkCol64_ColT, &DesertCastle_unkCol64_ColS
 };
 
 Vec3f DesertCastle_unkCol65_ColV[] = {
@@ -3176,7 +3176,7 @@ Rect3D DesertCastle_unkCol65_ColS = {
 };
 
 ModelCollision DesertCastle_unkCol65_ColH = {
-11, 12, &DesertCastle_unkCol65_ColV[0], &DesertCastle_unkCol65_ColT[0], &DesertCastle_unkCol65_ColS
+11, 12, DesertCastle_unkCol65_ColV, DesertCastle_unkCol65_ColT, &DesertCastle_unkCol65_ColS
 };
 
 Vec3f DesertCastle_unkCol66_ColV[] = {
@@ -3192,7 +3192,7 @@ Rect3D DesertCastle_unkCol66_ColS = {
 };
 
 ModelCollision DesertCastle_unkCol66_ColH = {
-15, 22, &DesertCastle_unkCol66_ColV[0], &DesertCastle_unkCol66_ColT[0], &DesertCastle_unkCol66_ColS
+15, 22, DesertCastle_unkCol66_ColV, DesertCastle_unkCol66_ColT, &DesertCastle_unkCol66_ColS
 };
 
 Vec3f DesertCastle_unkCol67_ColV[] = {
@@ -3208,7 +3208,7 @@ Rect3D DesertCastle_unkCol67_ColS = {
 };
 
 ModelCollision DesertCastle_unkCol67_ColH = {
-8, 8, &DesertCastle_unkCol67_ColV[0], &DesertCastle_unkCol67_ColT[0], &DesertCastle_unkCol67_ColS
+8, 8, DesertCastle_unkCol67_ColV, DesertCastle_unkCol67_ColT, &DesertCastle_unkCol67_ColS
 };
 
 Vec3f DesertCastle_unkCol68_ColV[] = {
@@ -3224,7 +3224,7 @@ Rect3D DesertCastle_unkCol68_ColS = {
 };
 
 ModelCollision DesertCastle_unkCol68_ColH = {
-8, 8, &DesertCastle_unkCol68_ColV[0], &DesertCastle_unkCol68_ColT[0], &DesertCastle_unkCol68_ColS
+8, 8, DesertCastle_unkCol68_ColV, DesertCastle_unkCol68_ColT, &DesertCastle_unkCol68_ColS
 };
 
 Vec3f DesertCastle_unkCol69_ColV[] = {
@@ -3240,7 +3240,7 @@ Rect3D DesertCastle_unkCol69_ColS = {
 };
 
 ModelCollision DesertCastle_unkCol69_ColH = {
-8, 6, &DesertCastle_unkCol69_ColV[0], &DesertCastle_unkCol69_ColT[0], &DesertCastle_unkCol69_ColS
+8, 6, DesertCastle_unkCol69_ColV, DesertCastle_unkCol69_ColT, &DesertCastle_unkCol69_ColS
 };
 
 Vec3f DesertCastle_unkCol70_ColV[] = {
@@ -3256,7 +3256,7 @@ Rect3D DesertCastle_unkCol70_ColS = {
 };
 
 ModelCollision DesertCastle_unkCol70_ColH = {
-18, 32, &DesertCastle_unkCol70_ColV[0], &DesertCastle_unkCol70_ColT[0], &DesertCastle_unkCol70_ColS
+18, 32, DesertCastle_unkCol70_ColV, DesertCastle_unkCol70_ColT, &DesertCastle_unkCol70_ColS
 };
 
 Vec3f DesertCastle_unkCol71_ColV[] = {
@@ -3272,7 +3272,7 @@ Rect3D DesertCastle_unkCol71_ColS = {
 };
 
 ModelCollision DesertCastle_unkCol71_ColH = {
-8, 6, &DesertCastle_unkCol71_ColV[0], &DesertCastle_unkCol71_ColT[0], &DesertCastle_unkCol71_ColS
+8, 6, DesertCastle_unkCol71_ColV, DesertCastle_unkCol71_ColT, &DesertCastle_unkCol71_ColS
 };
 
 Vec3f DesertCastle_unkCol72_ColV[] = {
@@ -3288,7 +3288,7 @@ Rect3D DesertCastle_unkCol72_ColS = {
 };
 
 ModelCollision DesertCastle_unkCol72_ColH = {
-14, 22, &DesertCastle_unkCol72_ColV[0], &DesertCastle_unkCol72_ColT[0], &DesertCastle_unkCol72_ColS
+14, 22, DesertCastle_unkCol72_ColV, DesertCastle_unkCol72_ColT, &DesertCastle_unkCol72_ColS
 };
 
 Vec3f DesertCastle_unkCol73_ColV[] = {
@@ -3304,7 +3304,7 @@ Rect3D DesertCastle_unkCol73_ColS = {
 };
 
 ModelCollision DesertCastle_unkCol73_ColH = {
-8, 8, &DesertCastle_unkCol73_ColV[0], &DesertCastle_unkCol73_ColT[0], &DesertCastle_unkCol73_ColS
+8, 8, DesertCastle_unkCol73_ColV, DesertCastle_unkCol73_ColT, &DesertCastle_unkCol73_ColS
 };
 
 Vec3f DesertCastle_unkCol74_ColV[] = {
@@ -3320,7 +3320,7 @@ Rect3D DesertCastle_unkCol74_ColS = {
 };
 
 ModelCollision DesertCastle_unkCol74_ColH = {
-16, 12, &DesertCastle_unkCol74_ColV[0], &DesertCastle_unkCol74_ColT[0], &DesertCastle_unkCol74_ColS
+16, 12, DesertCastle_unkCol74_ColV, DesertCastle_unkCol74_ColT, &DesertCastle_unkCol74_ColS
 };
 
 Vec3f DesertCastle_unkCol75_ColV[] = {
@@ -3336,7 +3336,7 @@ Rect3D DesertCastle_unkCol75_ColS = {
 };
 
 ModelCollision DesertCastle_unkCol75_ColH = {
-8, 12, &DesertCastle_unkCol75_ColV[0], &DesertCastle_unkCol75_ColT[0], &DesertCastle_unkCol75_ColS
+8, 12, DesertCastle_unkCol75_ColV, DesertCastle_unkCol75_ColT, &DesertCastle_unkCol75_ColS
 };
 
 Vec3f DesertCastle_unkCol76_ColV[] = {
@@ -3352,7 +3352,7 @@ Rect3D DesertCastle_unkCol76_ColS = {
 };
 
 ModelCollision DesertCastle_unkCol76_ColH = {
-17, 20, &DesertCastle_unkCol76_ColV[0], &DesertCastle_unkCol76_ColT[0], &DesertCastle_unkCol76_ColS
+17, 20, DesertCastle_unkCol76_ColV, DesertCastle_unkCol76_ColT, &DesertCastle_unkCol76_ColS
 };
 
 Vec3f DesertCastle_unkCol77_ColV[] = {
@@ -3368,7 +3368,7 @@ Rect3D DesertCastle_unkCol77_ColS = {
 };
 
 ModelCollision DesertCastle_unkCol77_ColH = {
-15, 12, &DesertCastle_unkCol77_ColV[0], &DesertCastle_unkCol77_ColT[0], &DesertCastle_unkCol77_ColS
+15, 12, DesertCastle_unkCol77_ColV, DesertCastle_unkCol77_ColT, &DesertCastle_unkCol77_ColS
 };
 
 Vec3f DesertCastle_unkCol78_ColV[] = {
@@ -3384,7 +3384,7 @@ Rect3D DesertCastle_unkCol78_ColS = {
 };
 
 ModelCollision DesertCastle_unkCol78_ColH = {
-16, 12, &DesertCastle_unkCol78_ColV[0], &DesertCastle_unkCol78_ColT[0], &DesertCastle_unkCol78_ColS
+16, 12, DesertCastle_unkCol78_ColV, DesertCastle_unkCol78_ColT, &DesertCastle_unkCol78_ColS
 };
 
 Vec3f DesertCastle_unkCol79_ColV[] = {
@@ -3400,7 +3400,7 @@ Rect3D DesertCastle_unkCol79_ColS = {
 };
 
 ModelCollision DesertCastle_unkCol79_ColH = {
-9, 8, &DesertCastle_unkCol79_ColV[0], &DesertCastle_unkCol79_ColT[0], &DesertCastle_unkCol79_ColS
+9, 8, DesertCastle_unkCol79_ColV, DesertCastle_unkCol79_ColT, &DesertCastle_unkCol79_ColS
 };
 
 Vec3f DesertCastle_unkCol80_ColV[] = {
@@ -3416,7 +3416,7 @@ Rect3D DesertCastle_unkCol80_ColS = {
 };
 
 ModelCollision DesertCastle_unkCol80_ColH = {
-9, 8, &DesertCastle_unkCol80_ColV[0], &DesertCastle_unkCol80_ColT[0], &DesertCastle_unkCol80_ColS
+9, 8, DesertCastle_unkCol80_ColV, DesertCastle_unkCol80_ColT, &DesertCastle_unkCol80_ColS
 };
 
 Vec3f DesertCastle_unkCol81_ColV[] = {
@@ -3432,7 +3432,7 @@ Rect3D DesertCastle_unkCol81_ColS = {
 };
 
 ModelCollision DesertCastle_unkCol81_ColH = {
-9, 8, &DesertCastle_unkCol81_ColV[0], &DesertCastle_unkCol81_ColT[0], &DesertCastle_unkCol81_ColS
+9, 8, DesertCastle_unkCol81_ColV, DesertCastle_unkCol81_ColT, &DesertCastle_unkCol81_ColS
 };
 
 Vec3f DesertCastle_unkCol82_ColV[] = {
@@ -3448,7 +3448,7 @@ Rect3D DesertCastle_unkCol82_ColS = {
 };
 
 ModelCollision DesertCastle_unkCol82_ColH = {
-12, 16, &DesertCastle_unkCol82_ColV[0], &DesertCastle_unkCol82_ColT[0], &DesertCastle_unkCol82_ColS
+12, 16, DesertCastle_unkCol82_ColV, DesertCastle_unkCol82_ColT, &DesertCastle_unkCol82_ColS
 };
 
 Vec3f DesertCastle_unkCol83_ColV[] = {
@@ -3464,7 +3464,7 @@ Rect3D DesertCastle_unkCol83_ColS = {
 };
 
 ModelCollision DesertCastle_unkCol83_ColH = {
-16, 19, &DesertCastle_unkCol83_ColV[0], &DesertCastle_unkCol83_ColT[0], &DesertCastle_unkCol83_ColS
+16, 19, DesertCastle_unkCol83_ColV, DesertCastle_unkCol83_ColT, &DesertCastle_unkCol83_ColS
 };
 
 Vec3f DesertCastle_unkCol84_ColV[] = {
@@ -3480,7 +3480,7 @@ Rect3D DesertCastle_unkCol84_ColS = {
 };
 
 ModelCollision DesertCastle_unkCol84_ColH = {
-28, 40, &DesertCastle_unkCol84_ColV[0], &DesertCastle_unkCol84_ColT[0], &DesertCastle_unkCol84_ColS
+28, 40, DesertCastle_unkCol84_ColV, DesertCastle_unkCol84_ColT, &DesertCastle_unkCol84_ColS
 };
 
 Vec3f DesertCastle_unkCol85_ColV[] = {
@@ -3496,7 +3496,7 @@ Rect3D DesertCastle_unkCol85_ColS = {
 };
 
 ModelCollision DesertCastle_unkCol85_ColH = {
-12, 20, &DesertCastle_unkCol85_ColV[0], &DesertCastle_unkCol85_ColT[0], &DesertCastle_unkCol85_ColS
+12, 20, DesertCastle_unkCol85_ColV, DesertCastle_unkCol85_ColT, &DesertCastle_unkCol85_ColS
 };
 
 Vec3f DesertCastle_unkCol86_ColV[] = {
@@ -3512,7 +3512,7 @@ Rect3D DesertCastle_unkCol86_ColS = {
 };
 
 ModelCollision DesertCastle_unkCol86_ColH = {
-12, 20, &DesertCastle_unkCol86_ColV[0], &DesertCastle_unkCol86_ColT[0], &DesertCastle_unkCol86_ColS
+12, 20, DesertCastle_unkCol86_ColV, DesertCastle_unkCol86_ColT, &DesertCastle_unkCol86_ColS
 };
 
 Vec3f DesertCastle_unkCol87_ColV[] = {
@@ -3528,7 +3528,7 @@ Rect3D DesertCastle_unkCol87_ColS = {
 };
 
 ModelCollision DesertCastle_unkCol87_ColH = {
-8, 12, &DesertCastle_unkCol87_ColV[0], &DesertCastle_unkCol87_ColT[0], &DesertCastle_unkCol87_ColS
+8, 12, DesertCastle_unkCol87_ColV, DesertCastle_unkCol87_ColT, &DesertCastle_unkCol87_ColS
 };
 
 Vec3f DesertCastle_unkCol88_ColV[] = {
@@ -3544,7 +3544,7 @@ Rect3D DesertCastle_unkCol88_ColS = {
 };
 
 ModelCollision DesertCastle_unkCol88_ColH = {
-8, 12, &DesertCastle_unkCol88_ColV[0], &DesertCastle_unkCol88_ColT[0], &DesertCastle_unkCol88_ColS
+8, 12, DesertCastle_unkCol88_ColV, DesertCastle_unkCol88_ColT, &DesertCastle_unkCol88_ColS
 };
 
 Vec3f DesertCastle_unkCol89_ColV[] = {
@@ -3560,7 +3560,7 @@ Rect3D DesertCastle_unkCol89_ColS = {
 };
 
 ModelCollision DesertCastle_unkCol89_ColH = {
-6, 4, &DesertCastle_unkCol89_ColV[0], &DesertCastle_unkCol89_ColT[0], &DesertCastle_unkCol89_ColS
+6, 4, DesertCastle_unkCol89_ColV, DesertCastle_unkCol89_ColT, &DesertCastle_unkCol89_ColS
 };
 
 Vec3f DesertCastle_unkCol90_ColV[] = {
@@ -3576,11 +3576,11 @@ Rect3D DesertCastle_unkCol90_ColS = {
 };
 
 ModelCollision DesertCastle_unkCol90_ColH = {
-10, 16, &DesertCastle_unkCol90_ColV[0], &DesertCastle_unkCol90_ColT[0], &DesertCastle_unkCol90_ColS
+10, 16, DesertCastle_unkCol90_ColV, DesertCastle_unkCol90_ColT, &DesertCastle_unkCol90_ColS
 };
 Mtx DesertCastle_IMtx93 = IDENTITY;
 
-Lights1 DesertCastle_klScope2_Light = 
+Lights1 DesertCastle_klScope2_Light =
     #include "assets/levelGroup/DesertCastle/dcScope2.light.inc.c"
 
 Vtx DesertCastle_actorModel1_Vtx[] = {

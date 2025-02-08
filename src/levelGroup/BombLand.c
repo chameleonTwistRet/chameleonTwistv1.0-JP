@@ -1425,8 +1425,8 @@ Collectable BombLand_room15_collectables[] = {
     { ACTOR_NULL,   {0.0,0.0,0.0}, -1, 0, 0, 0}
 };
 
-s32 BombLand_spriteLib_Sprlib[] = {
-    113,
+s32 BombLand_spriteLib_Sprlib[5][16] = {
+{   113,
     76,
     36,
     43,
@@ -1441,8 +1441,8 @@ s32 BombLand_spriteLib_Sprlib[] = {
     0,
     0,
     0,
-    0,
-    113,
+    0},
+{   113,
     76,
     36,
     43,
@@ -1457,8 +1457,8 @@ s32 BombLand_spriteLib_Sprlib[] = {
     0,
     0,
     0,
-    0,
-    113,
+    0},
+{   113,
     76,
     36,
     43,
@@ -1473,6 +1473,8 @@ s32 BombLand_spriteLib_Sprlib[] = {
     0,
     0,
     0,
+    0},
+{   0,
     0,
     0,
     0,
@@ -1487,6 +1489,8 @@ s32 BombLand_spriteLib_Sprlib[] = {
     0,
     0,
     0,
+    0},
+{   0,
     0,
     0,
     0,
@@ -1501,11 +1505,7 @@ s32 BombLand_spriteLib_Sprlib[] = {
     0,
     0,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
+    0},
 };
 
 RoomInstance BombLand_room_instances[] = {
@@ -1530,12 +1530,12 @@ RoomInstance BombLand_room_instances[] = {
 
 s32 BombLand_rooms_map[3][8] = {
     {-1,  0,  1,  2,  3,  4, -1, -1},
-    {-1,  9,  8,  7,  6,  5, 15, -1}, 
-    {-1, 10, 11, 12, 13, 14, -1, -1} 
+    {-1,  9,  8,  7,  6,  5, 15, -1},
+    {-1, 10, 11, 12, 13, 14, -1, -1}
 };
 
 StageMapData BombLand_map_data = {
-    8, 3, BombLand_room_instances, BombLand_rooms_map, 
+    8, 3, BombLand_room_instances, BombLand_rooms_map,
 };
 
 RoomInstance BombLand_nullOWRoom_Rmset[] = {
@@ -1559,7 +1559,7 @@ StageData BombLand_header_Lvlhdr = {
     0,
     BombLand_rabObjects_Bin,
     131072,
-    &BombLand_spriteLib_Sprlib[0],
+    BombLand_spriteLib_Sprlib,
     &BombLand_scope_Lvlscope,
 };
 
@@ -1567,7 +1567,7 @@ s32 alignment_Pad_BL[] = {0, 0, 0};
 
 Mtx BombLand_IMtx2 = IDENTITY;
 
-Lights1 BombLand_blScope_Light = 
+Lights1 BombLand_blScope_Light =
     #include "assets/levelGroup/BombLand/blScope.light.inc.c"
 
 Vtx BombLand_exit1_Vtx[] = {
@@ -2355,7 +2355,7 @@ Rect3D BombLand_exit1_ColS = {
 };
 
 ModelCollision BombLand_exit1_ColH = {
-6, 4, &BombLand_exit1_ColV[0], &BombLand_exit1_ColT[0], &BombLand_exit1_ColS
+6, 4, BombLand_exit1_ColV, BombLand_exit1_ColT, &BombLand_exit1_ColS
 };
 
 Vec3f BombLand_exit2_ColV[] = {
@@ -2371,7 +2371,7 @@ Rect3D BombLand_exit2_ColS = {
 };
 
 ModelCollision BombLand_exit2_ColH = {
-6, 4, &BombLand_exit2_ColV[0], &BombLand_exit2_ColT[0], &BombLand_exit2_ColS
+6, 4, BombLand_exit2_ColV, BombLand_exit2_ColT, &BombLand_exit2_ColS
 };
 
 Vec3f BombLand_exit3_ColV[] = {
@@ -2387,7 +2387,7 @@ Rect3D BombLand_exit3_ColS = {
 };
 
 ModelCollision BombLand_exit3_ColH = {
-6, 4, &BombLand_exit3_ColV[0], &BombLand_exit3_ColT[0], &BombLand_exit3_ColS
+6, 4, BombLand_exit3_ColV, BombLand_exit3_ColT, &BombLand_exit3_ColS
 };
 
 Vec3f BombLand_exit4_ColV[] = {
@@ -2403,7 +2403,7 @@ Rect3D BombLand_exit4_ColS = {
 };
 
 ModelCollision BombLand_exit4_ColH = {
-6, 4, &BombLand_exit4_ColV[0], &BombLand_exit4_ColT[0], &BombLand_exit4_ColS
+6, 4, BombLand_exit4_ColV, BombLand_exit4_ColT, &BombLand_exit4_ColS
 };
 
 Vec3f BombLand_room0_ColV[] = {
@@ -2419,7 +2419,7 @@ Rect3D BombLand_room0_ColS = {
 };
 
 ModelCollision BombLand_room0_ColH = {
-38, 58, &BombLand_room0_ColV[0], &BombLand_room0_ColT[0], &BombLand_room0_ColS
+38, 58, BombLand_room0_ColV, BombLand_room0_ColT, &BombLand_room0_ColS
 };
 
 Vec3f BombLand_room1_ColV[] = {
@@ -2435,7 +2435,7 @@ Rect3D BombLand_room1_ColS = {
 };
 
 ModelCollision BombLand_room1_ColH = {
-43, 53, &BombLand_room1_ColV[0], &BombLand_room1_ColT[0], &BombLand_room1_ColS
+43, 53, BombLand_room1_ColV, BombLand_room1_ColT, &BombLand_room1_ColS
 };
 
 Vec3f BombLand_room2_ColV[] = {
@@ -2451,7 +2451,7 @@ Rect3D BombLand_room2_ColS = {
 };
 
 ModelCollision BombLand_room2_ColH = {
-44, 44, &BombLand_room2_ColV[0], &BombLand_room2_ColT[0], &BombLand_room2_ColS
+44, 44, BombLand_room2_ColV, BombLand_room2_ColT, &BombLand_room2_ColS
 };
 
 Vec3f BombLand_room3_ColV[] = {
@@ -2467,7 +2467,7 @@ Rect3D BombLand_room3_ColS = {
 };
 
 ModelCollision BombLand_room3_ColH = {
-38, 48, &BombLand_room3_ColV[0], &BombLand_room3_ColT[0], &BombLand_room3_ColS
+38, 48, BombLand_room3_ColV, BombLand_room3_ColT, &BombLand_room3_ColS
 };
 
 Vec3f BombLand_room4_ColV[] = {
@@ -2483,7 +2483,7 @@ Rect3D BombLand_room4_ColS = {
 };
 
 ModelCollision BombLand_room4_ColH = {
-41, 53, &BombLand_room4_ColV[0], &BombLand_room4_ColT[0], &BombLand_room4_ColS
+41, 53, BombLand_room4_ColV, BombLand_room4_ColT, &BombLand_room4_ColS
 };
 
 Vec3f BombLand_room5_ColV[] = {
@@ -2499,7 +2499,7 @@ Rect3D BombLand_room5_ColS = {
 };
 
 ModelCollision BombLand_room5_ColH = {
-36, 43, &BombLand_room5_ColV[0], &BombLand_room5_ColT[0], &BombLand_room5_ColS
+36, 43, BombLand_room5_ColV, BombLand_room5_ColT, &BombLand_room5_ColS
 };
 
 Vec3f BombLand_room6_ColV[] = {
@@ -2515,7 +2515,7 @@ Rect3D BombLand_room6_ColS = {
 };
 
 ModelCollision BombLand_room6_ColH = {
-44, 44, &BombLand_room6_ColV[0], &BombLand_room6_ColT[0], &BombLand_room6_ColS
+44, 44, BombLand_room6_ColV, BombLand_room6_ColT, &BombLand_room6_ColS
 };
 
 Vec3f BombLand_room7_ColV[] = {
@@ -2531,7 +2531,7 @@ Rect3D BombLand_room7_ColS = {
 };
 
 ModelCollision BombLand_room7_ColH = {
-38, 46, &BombLand_room7_ColV[0], &BombLand_room7_ColT[0], &BombLand_room7_ColS
+38, 46, BombLand_room7_ColV, BombLand_room7_ColT, &BombLand_room7_ColS
 };
 
 Vec3f BombLand_room8_ColV[] = {
@@ -2547,7 +2547,7 @@ Rect3D BombLand_room8_ColS = {
 };
 
 ModelCollision BombLand_room8_ColH = {
-28, 40, &BombLand_room8_ColV[0], &BombLand_room8_ColT[0], &BombLand_room8_ColS
+28, 40, BombLand_room8_ColV, BombLand_room8_ColT, &BombLand_room8_ColS
 };
 
 Vec3f BombLand_room9_ColV[] = {
@@ -2563,7 +2563,7 @@ Rect3D BombLand_room9_ColS = {
 };
 
 ModelCollision BombLand_room9_ColH = {
-36, 52, &BombLand_room9_ColV[0], &BombLand_room9_ColT[0], &BombLand_room9_ColS
+36, 52, BombLand_room9_ColV, BombLand_room9_ColT, &BombLand_room9_ColS
 };
 
 Vec3f BombLand_room10_ColV[] = {
@@ -2579,7 +2579,7 @@ Rect3D BombLand_room10_ColS = {
 };
 
 ModelCollision BombLand_room10_ColH = {
-31, 41, &BombLand_room10_ColV[0], &BombLand_room10_ColT[0], &BombLand_room10_ColS
+31, 41, BombLand_room10_ColV, BombLand_room10_ColT, &BombLand_room10_ColS
 };
 
 Vec3f BombLand_room11_ColV[] = {
@@ -2595,7 +2595,7 @@ Rect3D BombLand_room11_ColS = {
 };
 
 ModelCollision BombLand_room11_ColH = {
-44, 42, &BombLand_room11_ColV[0], &BombLand_room11_ColT[0], &BombLand_room11_ColS
+44, 42, BombLand_room11_ColV, BombLand_room11_ColT, &BombLand_room11_ColS
 };
 
 Vec3f BombLand_room12_ColV[] = {
@@ -2611,7 +2611,7 @@ Rect3D BombLand_room12_ColS = {
 };
 
 ModelCollision BombLand_room12_ColH = {
-38, 46, &BombLand_room12_ColV[0], &BombLand_room12_ColT[0], &BombLand_room12_ColS
+38, 46, BombLand_room12_ColV, BombLand_room12_ColT, &BombLand_room12_ColS
 };
 
 Vec3f BombLand_room13_ColV[] = {
@@ -2627,7 +2627,7 @@ Rect3D BombLand_room13_ColS = {
 };
 
 ModelCollision BombLand_room13_ColH = {
-32, 44, &BombLand_room13_ColV[0], &BombLand_room13_ColT[0], &BombLand_room13_ColS
+32, 44, BombLand_room13_ColV, BombLand_room13_ColT, &BombLand_room13_ColS
 };
 
 Vec3f BombLand_room15Floor_ColV[] = {
@@ -2643,7 +2643,7 @@ Rect3D BombLand_room15Floor_ColS = {
 };
 
 ModelCollision BombLand_room15Floor_ColH = {
-8, 10, &BombLand_room15Floor_ColV[0], &BombLand_room15Floor_ColT[0], &BombLand_room15Floor_ColS
+8, 10, BombLand_room15Floor_ColV, BombLand_room15Floor_ColT, &BombLand_room15Floor_ColS
 };
 
 Vec3f BombLand_room15_ColV[] = {
@@ -2659,7 +2659,7 @@ Rect3D BombLand_room15_ColS = {
 };
 
 ModelCollision BombLand_room15_ColH = {
-16, 24, &BombLand_room15_ColV[0], &BombLand_room15_ColT[0], &BombLand_room15_ColS
+16, 24, BombLand_room15_ColV, BombLand_room15_ColT, &BombLand_room15_ColS
 };
 
 Vec3f BombLand_room0Pipe_ColV[] = {
@@ -2675,7 +2675,7 @@ Rect3D BombLand_room0Pipe_ColS = {
 };
 
 ModelCollision BombLand_room0Pipe_ColH = {
-22, 36, &BombLand_room0Pipe_ColV[0], &BombLand_room0Pipe_ColT[0], &BombLand_room0Pipe_ColS
+22, 36, BombLand_room0Pipe_ColV, BombLand_room0Pipe_ColT, &BombLand_room0Pipe_ColS
 };
 
 Vec3f BombLand_room1Floor_ColV[] = {
@@ -2691,7 +2691,7 @@ Rect3D BombLand_room1Floor_ColS = {
 };
 
 ModelCollision BombLand_room1Floor_ColH = {
-64, 99, &BombLand_room1Floor_ColV[0], &BombLand_room1Floor_ColT[0], &BombLand_room1Floor_ColS
+64, 99, BombLand_room1Floor_ColV, BombLand_room1Floor_ColT, &BombLand_room1Floor_ColS
 };
 
 Vec3f BombLand_block_ColV[] = {
@@ -2707,7 +2707,7 @@ Rect3D BombLand_block_ColS = {
 };
 
 ModelCollision BombLand_block_ColH = {
-8, 10, &BombLand_block_ColV[0], &BombLand_block_ColT[0], &BombLand_block_ColS
+8, 10, BombLand_block_ColV, BombLand_block_ColT, &BombLand_block_ColS
 };
 
 Vec3f BombLand_breakableBlockSides_ColV[] = {
@@ -2723,7 +2723,7 @@ Rect3D BombLand_breakableBlockSides_ColS = {
 };
 
 ModelCollision BombLand_breakableBlockSides_ColH = {
-8, 8, &BombLand_breakableBlockSides_ColV[0], &BombLand_breakableBlockSides_ColT[0], &BombLand_breakableBlockSides_ColS
+8, 8, BombLand_breakableBlockSides_ColV, BombLand_breakableBlockSides_ColT, &BombLand_breakableBlockSides_ColS
 };
 
 Vec3f BombLand_room3Start_ColV[] = {
@@ -2739,7 +2739,7 @@ Rect3D BombLand_room3Start_ColS = {
 };
 
 ModelCollision BombLand_room3Start_ColH = {
-8, 8, &BombLand_room3Start_ColV[0], &BombLand_room3Start_ColT[0], &BombLand_room3Start_ColS
+8, 8, BombLand_room3Start_ColV, BombLand_room3Start_ColT, &BombLand_room3Start_ColS
 };
 
 Vec3f BombLand_room3End_ColV[] = {
@@ -2755,7 +2755,7 @@ Rect3D BombLand_room3End_ColS = {
 };
 
 ModelCollision BombLand_room3End_ColH = {
-12, 14, &BombLand_room3End_ColV[0], &BombLand_room3End_ColT[0], &BombLand_room3End_ColS
+12, 14, BombLand_room3End_ColV, BombLand_room3End_ColT, &BombLand_room3End_ColS
 };
 
 Vec3f BombLand_block2Maybe_ColV[] = {
@@ -2771,7 +2771,7 @@ Rect3D BombLand_block2Maybe_ColS = {
 };
 
 ModelCollision BombLand_block2Maybe_ColH = {
-8, 10, &BombLand_block2Maybe_ColV[0], &BombLand_block2Maybe_ColT[0], &BombLand_block2Maybe_ColS
+8, 10, BombLand_block2Maybe_ColV, BombLand_block2Maybe_ColT, &BombLand_block2Maybe_ColS
 };
 
 Vec3f BombLand_unusedPlatformMaybe_ColV[] = {
@@ -2787,7 +2787,7 @@ Rect3D BombLand_unusedPlatformMaybe_ColS = {
 };
 
 ModelCollision BombLand_unusedPlatformMaybe_ColH = {
-8, 12, &BombLand_unusedPlatformMaybe_ColV[0], &BombLand_unusedPlatformMaybe_ColT[0], &BombLand_unusedPlatformMaybe_ColS
+8, 12, BombLand_unusedPlatformMaybe_ColV, BombLand_unusedPlatformMaybe_ColT, &BombLand_unusedPlatformMaybe_ColS
 };
 
 Vec3f BombLand_wall_ColV[] = {
@@ -2803,7 +2803,7 @@ Rect3D BombLand_wall_ColS = {
 };
 
 ModelCollision BombLand_wall_ColH = {
-4, 2, &BombLand_wall_ColV[0], &BombLand_wall_ColT[0], &BombLand_wall_ColS
+4, 2, BombLand_wall_ColV, BombLand_wall_ColT, &BombLand_wall_ColS
 };
 
 Vec3f BombLand_room4End1_ColV[] = {
@@ -2819,7 +2819,7 @@ Rect3D BombLand_room4End1_ColS = {
 };
 
 ModelCollision BombLand_room4End1_ColH = {
-7, 6, &BombLand_room4End1_ColV[0], &BombLand_room4End1_ColT[0], &BombLand_room4End1_ColS
+7, 6, BombLand_room4End1_ColV, BombLand_room4End1_ColT, &BombLand_room4End1_ColS
 };
 
 Vec3f BombLand_room4End2_ColV[] = {
@@ -2835,7 +2835,7 @@ Rect3D BombLand_room4End2_ColS = {
 };
 
 ModelCollision BombLand_room4End2_ColH = {
-9, 8, &BombLand_room4End2_ColV[0], &BombLand_room4End2_ColT[0], &BombLand_room4End2_ColS
+9, 8, BombLand_room4End2_ColV, BombLand_room4End2_ColT, &BombLand_room4End2_ColS
 };
 
 Vec3f BombLand_room4Start_ColV[] = {
@@ -2851,7 +2851,7 @@ Rect3D BombLand_room4Start_ColS = {
 };
 
 ModelCollision BombLand_room4Start_ColH = {
-8, 8, &BombLand_room4Start_ColV[0], &BombLand_room4Start_ColT[0], &BombLand_room4Start_ColS
+8, 8, BombLand_room4Start_ColV, BombLand_room4Start_ColT, &BombLand_room4Start_ColS
 };
 
 Vec3f BombLand_room5Start_ColV[] = {
@@ -2867,7 +2867,7 @@ Rect3D BombLand_room5Start_ColS = {
 };
 
 ModelCollision BombLand_room5Start_ColH = {
-13, 15, &BombLand_room5Start_ColV[0], &BombLand_room5Start_ColT[0], &BombLand_room5Start_ColS
+13, 15, BombLand_room5Start_ColV, BombLand_room5Start_ColT, &BombLand_room5Start_ColS
 };
 
 Vec3f BombLand_room5End_ColV[] = {
@@ -2883,7 +2883,7 @@ Rect3D BombLand_room5End_ColS = {
 };
 
 ModelCollision BombLand_room5End_ColH = {
-13, 15, &BombLand_room5End_ColV[0], &BombLand_room5End_ColT[0], &BombLand_room5End_ColS
+13, 15, BombLand_room5End_ColV, BombLand_room5End_ColT, &BombLand_room5End_ColS
 };
 
 Vec3f BombLand_breakableBlock_ColV[] = {
@@ -2899,7 +2899,7 @@ Rect3D BombLand_breakableBlock_ColS = {
 };
 
 ModelCollision BombLand_breakableBlock_ColH = {
-8, 10, &BombLand_breakableBlock_ColV[0], &BombLand_breakableBlock_ColT[0], &BombLand_breakableBlock_ColS
+8, 10, BombLand_breakableBlock_ColV, BombLand_breakableBlock_ColT, &BombLand_breakableBlock_ColS
 };
 
 Vec3f BombLand_breakableBlockStack_ColV[] = {
@@ -2915,7 +2915,7 @@ Rect3D BombLand_breakableBlockStack_ColS = {
 };
 
 ModelCollision BombLand_breakableBlockStack_ColH = {
-8, 10, &BombLand_breakableBlockStack_ColV[0], &BombLand_breakableBlockStack_ColT[0], &BombLand_breakableBlockStack_ColS
+8, 10, BombLand_breakableBlockStack_ColV, BombLand_breakableBlockStack_ColT, &BombLand_breakableBlockStack_ColS
 };
 
 Vec3f BombLand_room7Start_ColV[] = {
@@ -2931,7 +2931,7 @@ Rect3D BombLand_room7Start_ColS = {
 };
 
 ModelCollision BombLand_room7Start_ColH = {
-6, 4, &BombLand_room7Start_ColV[0], &BombLand_room7Start_ColT[0], &BombLand_room7Start_ColS
+6, 4, BombLand_room7Start_ColV, BombLand_room7Start_ColT, &BombLand_room7Start_ColS
 };
 
 Vec3f BombLand_room7End_ColV[] = {
@@ -2947,7 +2947,7 @@ Rect3D BombLand_room7End_ColS = {
 };
 
 ModelCollision BombLand_room7End_ColH = {
-6, 4, &BombLand_room7End_ColV[0], &BombLand_room7End_ColT[0], &BombLand_room7End_ColS
+6, 4, BombLand_room7End_ColV, BombLand_room7End_ColT, &BombLand_room7End_ColS
 };
 
 Vec3f BombLand_breakableBlockSide1_ColV[] = {
@@ -2963,7 +2963,7 @@ Rect3D BombLand_breakableBlockSide1_ColS = {
 };
 
 ModelCollision BombLand_breakableBlockSide1_ColH = {
-4, 2, &BombLand_breakableBlockSide1_ColV[0], &BombLand_breakableBlockSide1_ColT[0], &BombLand_breakableBlockSide1_ColS
+4, 2, BombLand_breakableBlockSide1_ColV, BombLand_breakableBlockSide1_ColT, &BombLand_breakableBlockSide1_ColS
 };
 
 Vec3f BombLand_breakableBlockSide2_ColV[] = {
@@ -2979,7 +2979,7 @@ Rect3D BombLand_breakableBlockSide2_ColS = {
 };
 
 ModelCollision BombLand_breakableBlockSide2_ColH = {
-4, 2, &BombLand_breakableBlockSide2_ColV[0], &BombLand_breakableBlockSide2_ColT[0], &BombLand_breakableBlockSide2_ColS
+4, 2, BombLand_breakableBlockSide2_ColV, BombLand_breakableBlockSide2_ColT, &BombLand_breakableBlockSide2_ColS
 };
 
 Vec3f BombLand_breakableBlockSide3_ColV[] = {
@@ -2995,7 +2995,7 @@ Rect3D BombLand_breakableBlockSide3_ColS = {
 };
 
 ModelCollision BombLand_breakableBlockSide3_ColH = {
-4, 2, &BombLand_breakableBlockSide3_ColV[0], &BombLand_breakableBlockSide3_ColT[0], &BombLand_breakableBlockSide3_ColS
+4, 2, BombLand_breakableBlockSide3_ColV, BombLand_breakableBlockSide3_ColT, &BombLand_breakableBlockSide3_ColS
 };
 
 Vec3f BombLand_breakableBlockSide4_ColV[] = {
@@ -3011,7 +3011,7 @@ Rect3D BombLand_breakableBlockSide4_ColS = {
 };
 
 ModelCollision BombLand_breakableBlockSide4_ColH = {
-4, 2, &BombLand_breakableBlockSide4_ColV[0], &BombLand_breakableBlockSide4_ColT[0], &BombLand_breakableBlockSide4_ColS
+4, 2, BombLand_breakableBlockSide4_ColV, BombLand_breakableBlockSide4_ColT, &BombLand_breakableBlockSide4_ColS
 };
 
 Vec3f BombLand_blockPlatform_ColV[] = {
@@ -3027,7 +3027,7 @@ Rect3D BombLand_blockPlatform_ColS = {
 };
 
 ModelCollision BombLand_blockPlatform_ColH = {
-8, 10, &BombLand_blockPlatform_ColV[0], &BombLand_blockPlatform_ColT[0], &BombLand_blockPlatform_ColS
+8, 10, BombLand_blockPlatform_ColV, BombLand_blockPlatform_ColT, &BombLand_blockPlatform_ColS
 };
 
 Vec3f BombLand_breakableBlock2_ColV[] = {
@@ -3043,7 +3043,7 @@ Rect3D BombLand_breakableBlock2_ColS = {
 };
 
 ModelCollision BombLand_breakableBlock2_ColH = {
-8, 10, &BombLand_breakableBlock2_ColV[0], &BombLand_breakableBlock2_ColT[0], &BombLand_breakableBlock2_ColS
+8, 10, BombLand_breakableBlock2_ColV, BombLand_breakableBlock2_ColT, &BombLand_breakableBlock2_ColS
 };
 
 Vec3f BombLand_room8Start_ColV[] = {
@@ -3059,7 +3059,7 @@ Rect3D BombLand_room8Start_ColS = {
 };
 
 ModelCollision BombLand_room8Start_ColH = {
-8, 8, &BombLand_room8Start_ColV[0], &BombLand_room8Start_ColT[0], &BombLand_room8Start_ColS
+8, 8, BombLand_room8Start_ColV, BombLand_room8Start_ColT, &BombLand_room8Start_ColS
 };
 
 Vec3f BombLand_room8End_ColV[] = {
@@ -3075,7 +3075,7 @@ Rect3D BombLand_room8End_ColS = {
 };
 
 ModelCollision BombLand_room8End_ColH = {
-12, 14, &BombLand_room8End_ColV[0], &BombLand_room8End_ColT[0], &BombLand_room8End_ColS
+12, 14, BombLand_room8End_ColV, BombLand_room8End_ColT, &BombLand_room8End_ColS
 };
 
 Vec3f BombLand_room9End1_ColV[] = {
@@ -3091,7 +3091,7 @@ Rect3D BombLand_room9End1_ColS = {
 };
 
 ModelCollision BombLand_room9End1_ColH = {
-7, 6, &BombLand_room9End1_ColV[0], &BombLand_room9End1_ColT[0], &BombLand_room9End1_ColS
+7, 6, BombLand_room9End1_ColV, BombLand_room9End1_ColT, &BombLand_room9End1_ColS
 };
 
 Vec3f BombLand_room9End2_ColV[] = {
@@ -3107,7 +3107,7 @@ Rect3D BombLand_room9End2_ColS = {
 };
 
 ModelCollision BombLand_room9End2_ColH = {
-9, 8, &BombLand_room9End2_ColV[0], &BombLand_room9End2_ColT[0], &BombLand_room9End2_ColS
+9, 8, BombLand_room9End2_ColV, BombLand_room9End2_ColT, &BombLand_room9End2_ColS
 };
 
 Vec3f BombLand_room9Start_ColV[] = {
@@ -3123,7 +3123,7 @@ Rect3D BombLand_room9Start_ColS = {
 };
 
 ModelCollision BombLand_room9Start_ColH = {
-8, 8, &BombLand_room9Start_ColV[0], &BombLand_room9Start_ColT[0], &BombLand_room9Start_ColS
+8, 8, BombLand_room9Start_ColV, BombLand_room9Start_ColT, &BombLand_room9Start_ColS
 };
 
 Vec3f BombLand_room10Floor_ColV[] = {
@@ -3139,7 +3139,7 @@ Rect3D BombLand_room10Floor_ColS = {
 };
 
 ModelCollision BombLand_room10Floor_ColH = {
-24, 24, &BombLand_room10Floor_ColV[0], &BombLand_room10Floor_ColT[0], &BombLand_room10Floor_ColS
+24, 24, BombLand_room10Floor_ColV, BombLand_room10Floor_ColT, &BombLand_room10Floor_ColS
 };
 
 Vec3f BombLand_room10Platform_ColV[] = {
@@ -3155,7 +3155,7 @@ Rect3D BombLand_room10Platform_ColS = {
 };
 
 ModelCollision BombLand_room10Platform_ColH = {
-12, 12, &BombLand_room10Platform_ColV[0], &BombLand_room10Platform_ColT[0], &BombLand_room10Platform_ColS
+12, 12, BombLand_room10Platform_ColV, BombLand_room10Platform_ColT, &BombLand_room10Platform_ColS
 };
 
 Vec3f BombLand_tallWallWithFloorOnTop_ColV[] = {
@@ -3171,7 +3171,7 @@ Rect3D BombLand_tallWallWithFloorOnTop_ColS = {
 };
 
 ModelCollision BombLand_tallWallWithFloorOnTop_ColH = {
-8, 6, &BombLand_tallWallWithFloorOnTop_ColV[0], &BombLand_tallWallWithFloorOnTop_ColT[0], &BombLand_tallWallWithFloorOnTop_ColS
+8, 6, BombLand_tallWallWithFloorOnTop_ColV, BombLand_tallWallWithFloorOnTop_ColT, &BombLand_tallWallWithFloorOnTop_ColS
 };
 
 Vec3f BombLand_unkBlock_ColV[] = {
@@ -3187,7 +3187,7 @@ Rect3D BombLand_unkBlock_ColS = {
 };
 
 ModelCollision BombLand_unkBlock_ColH = {
-8, 8, &BombLand_unkBlock_ColV[0], &BombLand_unkBlock_ColT[0], &BombLand_unkBlock_ColS
+8, 8, BombLand_unkBlock_ColV, BombLand_unkBlock_ColT, &BombLand_unkBlock_ColS
 };
 
 Vec3f BombLand_thinBreakableBlockSide1_ColV[] = {
@@ -3203,7 +3203,7 @@ Rect3D BombLand_thinBreakableBlockSide1_ColS = {
 };
 
 ModelCollision BombLand_thinBreakableBlockSide1_ColH = {
-4, 2, &BombLand_thinBreakableBlockSide1_ColV[0], &BombLand_thinBreakableBlockSide1_ColT[0], &BombLand_thinBreakableBlockSide1_ColS
+4, 2, BombLand_thinBreakableBlockSide1_ColV, BombLand_thinBreakableBlockSide1_ColT, &BombLand_thinBreakableBlockSide1_ColS
 };
 
 Vec3f BombLand_thinBreakableBlockSide2_ColV[] = {
@@ -3219,7 +3219,7 @@ Rect3D BombLand_thinBreakableBlockSide2_ColS = {
 };
 
 ModelCollision BombLand_thinBreakableBlockSide2_ColH = {
-4, 2, &BombLand_thinBreakableBlockSide2_ColV[0], &BombLand_thinBreakableBlockSide2_ColT[0], &BombLand_thinBreakableBlockSide2_ColS
+4, 2, BombLand_thinBreakableBlockSide2_ColV, BombLand_thinBreakableBlockSide2_ColT, &BombLand_thinBreakableBlockSide2_ColS
 };
 
 Vec3f BombLand_thinBreakableBlockSide3_ColV[] = {
@@ -3235,7 +3235,7 @@ Rect3D BombLand_thinBreakableBlockSide3_ColS = {
 };
 
 ModelCollision BombLand_thinBreakableBlockSide3_ColH = {
-4, 2, &BombLand_thinBreakableBlockSide3_ColV[0], &BombLand_thinBreakableBlockSide3_ColT[0], &BombLand_thinBreakableBlockSide3_ColS
+4, 2, BombLand_thinBreakableBlockSide3_ColV, BombLand_thinBreakableBlockSide3_ColT, &BombLand_thinBreakableBlockSide3_ColS
 };
 
 Vec3f BombLand_thinBreakableBlockSide4_ColV[] = {
@@ -3251,7 +3251,7 @@ Rect3D BombLand_thinBreakableBlockSide4_ColS = {
 };
 
 ModelCollision BombLand_thinBreakableBlockSide4_ColH = {
-4, 2, &BombLand_thinBreakableBlockSide4_ColV[0], &BombLand_thinBreakableBlockSide4_ColT[0], &BombLand_thinBreakableBlockSide4_ColS
+4, 2, BombLand_thinBreakableBlockSide4_ColV, BombLand_thinBreakableBlockSide4_ColT, &BombLand_thinBreakableBlockSide4_ColS
 };
 
 Vec3f BombLand_thinBreakableBlockSide5_ColV[] = {
@@ -3267,7 +3267,7 @@ Rect3D BombLand_thinBreakableBlockSide5_ColS = {
 };
 
 ModelCollision BombLand_thinBreakableBlockSide5_ColH = {
-4, 2, &BombLand_thinBreakableBlockSide5_ColV[0], &BombLand_thinBreakableBlockSide5_ColT[0], &BombLand_thinBreakableBlockSide5_ColS
+4, 2, BombLand_thinBreakableBlockSide5_ColV, BombLand_thinBreakableBlockSide5_ColT, &BombLand_thinBreakableBlockSide5_ColS
 };
 
 Vec3f BombLand_unkPlatform_ColV[] = {
@@ -3283,7 +3283,7 @@ Rect3D BombLand_unkPlatform_ColS = {
 };
 
 ModelCollision BombLand_unkPlatform_ColH = {
-8, 12, &BombLand_unkPlatform_ColV[0], &BombLand_unkPlatform_ColT[0], &BombLand_unkPlatform_ColS
+8, 12, BombLand_unkPlatform_ColV, BombLand_unkPlatform_ColT, &BombLand_unkPlatform_ColS
 };
 
 Vec3f BombLand_pipe1_ColV[] = {
@@ -3299,7 +3299,7 @@ Rect3D BombLand_pipe1_ColS = {
 };
 
 ModelCollision BombLand_pipe1_ColH = {
-8, 8, &BombLand_pipe1_ColV[0], &BombLand_pipe1_ColT[0], &BombLand_pipe1_ColS
+8, 8, BombLand_pipe1_ColV, BombLand_pipe1_ColT, &BombLand_pipe1_ColS
 };
 
 Vec3f BombLand_pipe2_ColV[] = {
@@ -3315,7 +3315,7 @@ Rect3D BombLand_pipe2_ColS = {
 };
 
 ModelCollision BombLand_pipe2_ColH = {
-32, 40, &BombLand_pipe2_ColV[0], &BombLand_pipe2_ColT[0], &BombLand_pipe2_ColS
+32, 40, BombLand_pipe2_ColV, BombLand_pipe2_ColT, &BombLand_pipe2_ColS
 };
 
 Vec3f BombLand_breakableBlockTop_ColV[] = {
@@ -3331,7 +3331,7 @@ Rect3D BombLand_breakableBlockTop_ColS = {
 };
 
 ModelCollision BombLand_breakableBlockTop_ColH = {
-4, 2, &BombLand_breakableBlockTop_ColV[0], &BombLand_breakableBlockTop_ColT[0], &BombLand_breakableBlockTop_ColS
+4, 2, BombLand_breakableBlockTop_ColV, BombLand_breakableBlockTop_ColT, &BombLand_breakableBlockTop_ColS
 };
 
 Vec3f BombLand_blockTop_ColV[] = {
@@ -3347,7 +3347,7 @@ Rect3D BombLand_blockTop_ColS = {
 };
 
 ModelCollision BombLand_blockTop_ColH = {
-4, 2, &BombLand_blockTop_ColV[0], &BombLand_blockTop_ColT[0], &BombLand_blockTop_ColS
+4, 2, BombLand_blockTop_ColV, BombLand_blockTop_ColT, &BombLand_blockTop_ColS
 };
 
 Vec3f BombLand_breakableBlockAgain_ColV[] = {
@@ -3363,7 +3363,7 @@ Rect3D BombLand_breakableBlockAgain_ColS = {
 };
 
 ModelCollision BombLand_breakableBlockAgain_ColH = {
-8, 12, &BombLand_breakableBlockAgain_ColV[0], &BombLand_breakableBlockAgain_ColT[0], &BombLand_breakableBlockAgain_ColS
+8, 12, BombLand_breakableBlockAgain_ColV, BombLand_breakableBlockAgain_ColT, &BombLand_breakableBlockAgain_ColS
 };
 
 Vec3f BombLand_metalBridgeThing_ColV[] = {
@@ -3379,7 +3379,7 @@ Rect3D BombLand_metalBridgeThing_ColS = {
 };
 
 ModelCollision BombLand_metalBridgeThing_ColH = {
-8, 6, &BombLand_metalBridgeThing_ColV[0], &BombLand_metalBridgeThing_ColT[0], &BombLand_metalBridgeThing_ColS
+8, 6, BombLand_metalBridgeThing_ColV, BombLand_metalBridgeThing_ColT, &BombLand_metalBridgeThing_ColS
 };
 
 Vec3f BombLand_longPipe_ColV[] = {
@@ -3395,7 +3395,7 @@ Rect3D BombLand_longPipe_ColS = {
 };
 
 ModelCollision BombLand_longPipe_ColH = {
-20, 32, &BombLand_longPipe_ColV[0], &BombLand_longPipe_ColT[0], &BombLand_longPipe_ColS
+20, 32, BombLand_longPipe_ColV, BombLand_longPipe_ColT, &BombLand_longPipe_ColS
 };
 
 Vec3f BombLand_XResult_ColV[] = {
@@ -3411,7 +3411,7 @@ Rect3D BombLand_XResult_ColS = {
 };
 
 ModelCollision BombLand_XResult_ColH = {
-4, 2, &BombLand_XResult_ColV[0], &BombLand_XResult_ColT[0], &BombLand_XResult_ColS
+4, 2, BombLand_XResult_ColV, BombLand_XResult_ColT, &BombLand_XResult_ColS
 };
 
 Vec3f BombLand_OResult_ColV[] = {
@@ -3427,7 +3427,7 @@ Rect3D BombLand_OResult_ColS = {
 };
 
 ModelCollision BombLand_OResult_ColH = {
-4, 2, &BombLand_OResult_ColV[0], &BombLand_OResult_ColT[0], &BombLand_OResult_ColS
+4, 2, BombLand_OResult_ColV, BombLand_OResult_ColT, &BombLand_OResult_ColS
 };
 
 Vec3f BombLand_grenadeShutters_ColV[] = {
@@ -3443,7 +3443,7 @@ Rect3D BombLand_grenadeShutters_ColS = {
 };
 
 ModelCollision BombLand_grenadeShutters_ColH = {
-4, 4, &BombLand_grenadeShutters_ColV[0], &BombLand_grenadeShutters_ColT[0], &BombLand_grenadeShutters_ColS
+4, 4, BombLand_grenadeShutters_ColV, BombLand_grenadeShutters_ColT, &BombLand_grenadeShutters_ColS
 };
 
 Vec3f BombLand_doorWall_ColV[] = {
@@ -3459,7 +3459,7 @@ Rect3D BombLand_doorWall_ColS = {
 };
 
 ModelCollision BombLand_doorWall_ColH = {
-4, 2, &BombLand_doorWall_ColV[0], &BombLand_doorWall_ColT[0], &BombLand_doorWall_ColS
+4, 2, BombLand_doorWall_ColV, BombLand_doorWall_ColT, &BombLand_doorWall_ColS
 };
 
 Vec3f BombLand_doorPoles_ColV[] = {
@@ -3475,7 +3475,7 @@ Rect3D BombLand_doorPoles_ColS = {
 };
 
 ModelCollision BombLand_doorPoles_ColH = {
-8, 8, &BombLand_doorPoles_ColV[0], &BombLand_doorPoles_ColT[0], &BombLand_doorPoles_ColS
+8, 8, BombLand_doorPoles_ColV, BombLand_doorPoles_ColT, &BombLand_doorPoles_ColS
 };
 
 Vec3f BombLand_unk72_ColV[] = {
@@ -3491,7 +3491,7 @@ Rect3D BombLand_unk72_ColS = {
 };
 
 ModelCollision BombLand_unk72_ColH = {
-8, 8, &BombLand_unk72_ColV[0], &BombLand_unk72_ColT[0], &BombLand_unk72_ColS
+8, 8, BombLand_unk72_ColV, BombLand_unk72_ColT, &BombLand_unk72_ColS
 };
 
 Mtx BombLand_unkMtx_Mtx = IDENTITY;
@@ -3504,7 +3504,7 @@ Mtx BombLand_unk_Animarr[1][1] = {
     #include "assets/levelGroup/BombLand/anim/unk.animArr.inc.c"
 };
 
-Lights1 BombLand_blScope2_Light = 
+Lights1 BombLand_blScope2_Light =
     #include "assets/levelGroup/BombLand/blScope2.light.inc.c"
 
 Vtx BombLand_unk73_Vtx[] = {

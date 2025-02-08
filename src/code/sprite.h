@@ -1,7 +1,7 @@
 #ifndef _SPRITE_H_
 #define _SPRITE_H_
 
-#include "common.h" 
+#include "common.h"
 
 typedef struct Effect_HealthBar_Data {
     /* 0x00 */ s32* curHPPtr;
@@ -68,7 +68,7 @@ typedef struct Effect_TypeI_Data {
 typedef struct Effect_TypeM_Data {
     /* 0x00 */ Mtx mtx;
     /* 0x40 */ Gfx* dlist;
-    /* 0x44 */ s32* finish;    
+    /* 0x44 */ s32* finish;
 } Effect_TypeM_Data; //sizeof 0x48
 
 typedef struct Effect_TypeT_Data {
@@ -303,6 +303,8 @@ extern s32 D_80176960[];
 extern s32 D_80176980[];
 extern s32 gUnkRumbleArray[];
 void osMotorStop(OSPfs *pfs);
+void RecordTime_SetTo(s32 arg0, TimeVal* arg1);
+void func_800BE2C0(void);
 extern s32 D_80176960[];
 extern s32 gRumbleTime[];
 extern f32 D_800FEA18;
@@ -428,6 +430,7 @@ void Effect_TypeBF_Init(f32 posX, f32 posY, f32 posZ, f32 velV, f32 yaw, f32 vel
 void SetPlayerEyes(s32 spriteIndex, s32 whichEye, s32 eyeIndex);
 s32 printTextbox(f32, f32, char*);
 void WrapDegrees(f32* theta_ptr);
+void PrintTimer(s32 arg0, f32 arg1);
 
 
 void Effect_GameResults_Init(void);
@@ -440,5 +443,6 @@ Effect* Effect_TypeQ_Init(u8 colorR, u8 colorG, u8 colorB, s32 delay, s32 durati
 Effect* Effect_TypeR_Init(u8 colorR, u8 colorG, u8 colorB, s32 delay, s32 duration);
 void Effect_TypeU_Init(f32 posX, f32 posY, f32 posZ, f32 targetX, f32 targetY, f32 targetZ, f32 duration, s32 colorMode, f32 sizeX, f32 sizeY);
 void func_80056BFC(s32 arg0, s32 arg1, f32 arg2, f32* arg3, f32* arg4, f32* arg5, f32* arg6);
+
 
 #endif //_SPRITE_H_

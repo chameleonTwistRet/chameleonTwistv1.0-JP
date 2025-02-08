@@ -217,7 +217,7 @@ void func_800B08C8(Collider* arg0) {
             arg0->unk_B4 = 3;
         }
         break;
-    
+
     case 3:
         break;
     }
@@ -228,7 +228,7 @@ void func_800B09C0(Collider* arg0, RoomObject* arg1) {
 }
 
 void func_800B09E8(Collider* arg0, RoomObject* arg1) {
-    arg0->unk_AC = arg1->keyframes.temp;    
+    arg0->unk_AC = arg1->keyframes.temp;
     if (func_800B34D0(arg0->unk_AC) != 0) {
         arg0->unk_B0 = 0;
     } else {
@@ -333,7 +333,7 @@ void func_800B2070(s32 arg0) {
     vec.x = gPlayer->pos.x;
     vec.y = gPlayer->pos.y;
     vec.z = gPlayer->pos.z;
-    
+
     // If the player is not in the bounding box, not squished, and not jumping, set the squish timer to 1
     if (((gPlayer->squishTimer == 0) && (gPlayer->canJump == 0)) && (IsPointInRect(vec, &rect) != 0)) {
         //D_80168E14 = 1;
@@ -376,7 +376,7 @@ void func_800B21CC(s32 arg0, s32 arg1) {
 
 /**
  * @brief Limits an integer to be in an inclusive range [a, b].
- *      
+ *
  * @param integer: The integer to limit.
  * @param a: The lower bound of the range.
  * @param b: The upper bound of the range.
@@ -393,7 +393,7 @@ void LimitInt(s32* integer, s32 a, s32 b) {
 
 /**
  * @brief Limits a float to be in an inclusive range [a, b].
- *      
+ *
  * @param _float: The float to limit.
  * @param a: The lower bound of the range.
  * @param b: The upper bound of the range.
@@ -410,9 +410,9 @@ void LimitFloat(f32* _float, f32 a, f32 b) {
 
 /**
  * @brief Checks if an actor is not a pickup.
- *      
+ *
  * @param actor: The actor to check.
- * 
+ *
  * @return: 1 if the actor is not a pickup, 0 otherwise.
  */
 s32 IsNotPickup(Actor* actor) {
@@ -421,9 +421,9 @@ s32 IsNotPickup(Actor* actor) {
 
 /**
  * @brief Checks if an actor is a pickup.
- *      
+ *
  * @param actor: The actor to check.
- *      
+ *
  * @return: 1 if the actor is a pickup, 0 otherwise.
  */
 s32 IsPickup(Actor* actor) {
@@ -432,14 +432,14 @@ s32 IsPickup(Actor* actor) {
 
 /**
  * @brief Checks a given ID against the array of Boss IDs
- * 
- * @param id 
+ *
+ * @param id
  * @return (s32) 1 if the ID is a Boss ID, 0 otherwise.
  */
 s32 IsBossID(s32 id) {
     int i;
     int ret = 0;
-    
+
     for (i = 0; i < ARRAY_COUNT(sBossIDs); i++) {
         if (id == sBossIDs[i]) {
             ret = 1;
@@ -451,9 +451,9 @@ s32 IsBossID(s32 id) {
 
 /**
  * @brief Determines if an actor is a boss by checking its ID.
- * 
- * @param actor 
- * @return (s32) 1 if the actor is a boss, 0 otherwise. 
+ *
+ * @param actor
+ * @return (s32) 1 if the actor is a boss, 0 otherwise.
  */
 s32 IsActorBoss(Actor* actor) {
     return IsBossID(actor->actorID);
@@ -496,7 +496,7 @@ f32 func_800B2308(f32 arg0, s32 caseNum) {
 Vec3f* func_800B2470(Vec3f* vecA, Vec3f vecB, Vec3f vecC, f32 a, s32 b) {
     f32 pad;
     Vec3f tempVec;
-    
+
     Vec3f_Lerp(&tempVec, vecB, vecC, func_800B2308(a, b));
     *vecA = tempVec;
     return vecA;
@@ -505,7 +505,7 @@ Vec3f* func_800B2470(Vec3f* vecA, Vec3f vecB, Vec3f vecC, f32 a, s32 b) {
 s32 func_800B2510(void) {
     s32 ret = 0;
     s32 i;
-    
+
     for (i = 0; i < ARRAY_COUNT(gPlayerActors); i++) {
         if (gPlayerActors[i].exists != 0 && gPlayerActors[i].power == 4) {
             ret = 1;
@@ -538,7 +538,7 @@ s32 func_800B2B50(s32 arg0, s32 arg1) {
             ret = temp2->unk_00;
             break;
         }
-        
+
     }
     return ret;
 }
@@ -559,7 +559,7 @@ Vec3f* Vec3f_SetAtBossPos(Vec3f* arg0) {
             pos.y = actors->pos.y;
             pos.z = actors->pos.z;
             break; // Break out of the loop since we found a boss actor
-        }        
+        }
     }
     *arg0 = pos;
     return arg0;
@@ -567,14 +567,14 @@ Vec3f* Vec3f_SetAtBossPos(Vec3f* arg0) {
 
 /**
  * @brief If the boss is in the list of currently active actors.
- * 
+ *
  * @return (s32) 1 if the boss is in the list of currently active actors, 0 otherwise.
  */
 s32 IsBossPresent(void) {
     s32 i;
     Actor* curActor;
     s32 isBoss = FALSE;
-    
+
     for (i = 0, curActor = gActors; i < MAX_ACTORS; i++, curActor++) {
         if (IsActorBoss(curActor) != 0) {
             isBoss = TRUE;
@@ -586,12 +586,12 @@ s32 IsBossPresent(void) {
 
 /**
  * @brief Returns True if the current stage is a boss stage.
- * 
- * @return (s32) 1 if the current stage is a boss stage, 0 otherwise. 
+ *
+ * @return (s32) 1 if the current stage is a boss stage, 0 otherwise.
  */
 s32 IsBossStage(void) {
     s32 ret;
-    
+
     if ((gCurrentStage != STAGE_JUNGLEBOSS) &&
         (gCurrentStage != STAGE_ANTBOSS) &&
         (gCurrentStage != STAGE_BOMBBOSS) &&
@@ -709,7 +709,7 @@ void func_800B35B0(s32 arg0) {
     } else {
         var_v0 = 0;
     }
-    
+
     if (var_v0 != 0) {
         sp1C = 0;
     } else {
@@ -728,13 +728,13 @@ void func_800B35FC(s32 arg0) {
     } else {
         var_v0 = 0;
     }
-    
+
     if (var_v0 != 0) {
         sp1C = 1;
     } else {
         sp1C = 0;
     }
-    
+
     *func_800B3424(arg0) = sp1C;
 }
 
@@ -766,7 +766,7 @@ void ResetStageModels(void) {
 
 /**
  * @brief This function returns a boolean value based on whether the RoomObject passed is valid.
- * 
+ *
  * @param obj: The RoomObject to check if valid.
  * @return true if the obj is invalid, false otherwise.
  */
@@ -776,7 +776,7 @@ s32 IsRoomObjInvalid(RoomObject* obj) {
 
 /**
  * @brief This function returns a int value of how many RoomObjects are in an array.
- * 
+ *
  * @param obj: The RoomObject to start iterating from.
  * @return the amount of valid RoomObjects in the array.
  */
@@ -798,7 +798,7 @@ s32 GetRoomObjCount(RoomObject* obj) {
 
 /**
  * @brief This function returns a boolean value based on whether the RoomActor passed is valid.
- * 
+ *
  * @param actor: The RoomActor to check if valid.
  * @return true if the actor is invalid, false otherwise.
  */
@@ -808,7 +808,7 @@ s32 IsRoomActInvalid(RoomActor* actor) {
 
 /**
  * @brief This function returns a int value of how many RoomActors are in an array.
- * 
+ *
  * @param actor: The RoomActor to start iterating from.
  * @return the amount of valid RoomActors in the array.
  */
@@ -827,7 +827,7 @@ s32 GetRoomActCount(RoomActor* actor) {
 
 /**
  * @brief This function returns a boolean value based on whether the Collectable passed is valid.
- * 
+ *
  * @param collectable: The Collectable to check if valid.
  * @return true if the clct is invalid, false otherwise.
  */
@@ -837,7 +837,7 @@ s32 IsCollectableInvalid(Collectable* collectable) {
 
 /**
  * @brief This function returns a int value of how many Collectables are in an array.
- * 
+ *
  * @param collectable: The Collectable to start iterating from.
  * @return the amount of valid Collectables in the array.
  */
@@ -860,7 +860,7 @@ s32 GetCollectableCount(Collectable* collectable) {
 
 /**
  * @brief This function returns a boolean value based on whether the RoomInstance passed is valid.
- * 
+ *
  * @param room: The RoomInstance to check if valid.
  * @return true if the room is invalid, false otherwise.
  */
@@ -870,7 +870,7 @@ s32 IsRoomInvalid(RoomInstance* room) {
 
 /**
  * @brief This function returns a int value of how many RoomInstance are in an array.
- * 
+ *
  * @param room: The RoomInstance to start iterating from.
  * @return the amount of valid RoomInstance in the array.
  */
@@ -893,7 +893,7 @@ s32 GetRoomCount(RoomInstance* room) {
 
 /**
  * @brief This function returns a boolean value based on whether the SpriteActor passed is valid.
- * 
+ *
  * @param sprite: The SpriteActor to check if valid.
  * @return true if the sprite is invalid, false otherwise.
  */
@@ -903,7 +903,7 @@ s32 IsSpriteActInvalid(SpriteActor* sprite) {
 
 /**
  * @brief This function returns a int value of how many SpriteActors are in an array.
- * 
+ *
  * @param sprite: The SpriteActor to start iterating from.
  * @return the amount of valid SpriteActors in the array.
  */
@@ -961,8 +961,8 @@ void func_800B40FC(void) {
 
 /**
  * @brief This function returns a boolean value based on whether the CARROT item is available in the stage passed in as an argument.
- * 
- * @param stage: The stage to check for the CARROT item. 
+ *
+ * @param stage: The stage to check for the CARROT item.
  * @return true if the CARROT item is available in the stage passed in as an argument, false otherwise.
  */
 s32 StageCarrotAvailable(s32 stage) {
@@ -977,8 +977,8 @@ s32 StageCarrotAvailable(s32 stage) {
 
 /**
  * @brief Adds a CARROT to the global bitfield and increments the total number of carrots collected.
- * 
- * @param stage: the index of the bitfield to add the CARROT to. 
+ *
+ * @param stage: the index of the bitfield to add the CARROT to.
  */
 void AddCarrot(s32 stage) {
     s32 i;
@@ -992,7 +992,7 @@ void AddCarrot(s32 stage) {
             if (gCarrotBitfield & (1 << i)) {
                 gTotalCarrots++;
             }
-        }        
+        }
     }
 }
 
@@ -1029,10 +1029,10 @@ void setCrownPositionsForRoom(s32 arg0) {
     s32 i;
     CollectableWrapper* var_s0;
     Collectable* new_var;
-    
+
     limit = gZoneFields[arg0].clctCount;
     var_s0 = &D_802019A8[gZoneFields[arg0].unk78];
-    
+
     for (i = 0; i < limit; i++, var_s0++) {
         new_var = var_s0->levelDataCollectable;
         if (var_s0->bitfield == 1) {
@@ -1049,12 +1049,12 @@ void setCrownPositionsForRoom(s32 arg0) {
 
 void func_800B4FCC(void) {
     s32 i;
-    
+
     for (i = 0; i < ARRAY_COUNT(gActors); i++) {
         if ((IsNotPickup(&gActors[i]) != 0) && (gActors[i].actorState == 0)) {
             func_800311C8(&gActors[i]);
             func_800313BC(i, Random(0, 0x168));
-        }        
+        }
     }
 }
 
@@ -1208,7 +1208,7 @@ void func_800B6098(Collider* arg0, RoomObject* arg1) {
             arg0->unk_30.y = arg0->unk_9C;
             arg0->unk_30.z = arg0->unk_A0;
             func_800B5D68(arg0, 1);
-            func_800B2E40(arg0);            
+            func_800B2E40(arg0);
         }
     }
 }
@@ -1417,7 +1417,7 @@ void func_800BE2C0(void) {
             func_800314E4(actorList);
         }
     }
-    
+
     // For all players reset bullet mechanisms
     for (i = 0; i < ARRAY_COUNT(gTongues); i++) {
         gTongues[i].amountOnTongue = 0;
@@ -1467,7 +1467,7 @@ void EraseToungeEatEnemy(Tongue* arg0) {
     arg0->segments = 0;
 
     for (i = 0; i < ARRAY_COUNT(gActors); i++) {
-        if (gActors[i].actorID == 0) 
+        if (gActors[i].actorID == 0)
             continue;
         if (gActors[i].actorState != 1)
             continue;
@@ -1478,8 +1478,8 @@ void EraseToungeEatEnemy(Tongue* arg0) {
                 arg0->inMouth[arg0->amountInMouth] = i;
                 arg0->amountInMouth += 1;
             }
-            arg0->amountOnTongue -= 1;      
-        
+            arg0->amountOnTongue -= 1;
+
     }
     func_800BE474(arg0);
 }
@@ -1499,7 +1499,7 @@ void func_800BE7BC(void) {
     Pole* pole;
 
     for (i = 0, pole = Poles; i < ARRAY_COUNT(Poles); i++, pole++) {
-        pole->mode = 0;        
+        pole->mode = 0;
     }
 }
 
@@ -1577,7 +1577,7 @@ void func_800BF84C(s32 room) {
     Field* zone = &gZoneFields[room];
     s32 limit = zone->rmActCount;
     RoomActor* actor = zone->actors;
-    
+
     for (i = 0; i < limit; i++, actor++){
         if (actor->id == 13 || actor->id == 45 || zone->unk68 == 0 || actor->id != zone->unk84){
             if(!IsBossStage() || !IsBossID(actor->id)) {
@@ -1613,7 +1613,7 @@ void ChameleonFromDoor(PlayerActor* player, s32 arg1, s32 arg2, s32 arg3, s32 ar
     s32 i;
     s32 pad[3];
     Vec3f sp24;
-    
+
     currentDoor = NULL;
     door = gDoors;
     for (i = 0; i < gDoorCount; i++, door++) {
@@ -1622,10 +1622,10 @@ void ChameleonFromDoor(PlayerActor* player, s32 arg1, s32 arg2, s32 arg3, s32 ar
             break;
         }
     }
-    
+
     isChange.unk18 = i;
     func_800C08B8(&sp24, player, currentDoor);
-    
+
     isChange.unk4C = sp24.x;
     isChange.unk50 = sp24.y;
     isChange.unk54 = sp24.z;
@@ -1716,7 +1716,7 @@ void func_800C0E78(s32 arg0) {
                 break;
             }
         }
-        
+
         if (temp != 0) {
             gZoneFields[arg0].unk64 = 0;
         }
@@ -1762,7 +1762,7 @@ s32 func_800C1550(s32 arg0) {
         if (arg0 < 0 || arg0 >= (D_802478E0 - 1)) {
             result = FALSE;
         }
-        
+
     }
     return result;
 }
@@ -1933,7 +1933,7 @@ void enterBossRoom(void) {
         new_var = 3;
         new_var2 = &new_var;
         gGameModeState = *new_var2;
-        D_80174878 = 0xB;
+        D_80174878 = 11;
     }
 }
 
@@ -1956,7 +1956,7 @@ void func_800C38E0(SpriteActor* arg0) {
         curSpAct->unk20 = func_800AF604(curSpAct->position.x, curSpAct->position.y, curSpAct->position.z, 6000);
         curSpAct++;
     }
-    
+
     func_80083F18(arg0);
 }
 
@@ -2154,7 +2154,7 @@ void Player_SetFromBoss(PlayerActor* player, f32 distance) {
     s32 sgnZ;
 
     Vec3f_SetAtBossPos(&bossPos);
-    
+
     if (bossPos.x > 0.0f) {
         sgnX = 1;
     } else {
@@ -2165,7 +2165,7 @@ void Player_SetFromBoss(PlayerActor* player, f32 distance) {
         }
         sgnX = tempSgn;
     }
-    
+
     if (bossPos.z > 0.0f) {
         sgnZ = 1;
     } else {
@@ -2176,7 +2176,7 @@ void Player_SetFromBoss(PlayerActor* player, f32 distance) {
         }
         sgnZ = tempSgn;
     }
-    
+
     if (bossPos.x < 0.0f) {
         absX = -bossPos.x;
     } else {

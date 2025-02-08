@@ -2,7 +2,7 @@
 
 #include "assets/chameleons/Battle_Chameleons/groupMtx.mtx.inc.c"
 
-Lights1 Battle_Chameleons_grouplight_Light = 
+Lights1 Battle_Chameleons_grouplight_Light =
     #include "assets/chameleons/Battle_Chameleons/grouplight.light.inc.c"
 
 Vtx Battle_Chameleons_Davy_body_Vtx[] = {

@@ -164,8 +164,8 @@ RoomActor LizardKong_room1_actors[] = {
     {                    ACTOR_NULL,           {0.0,0.0,0.0},   0.0,      0.0,     0.0,         0,     0.0,      0.0,     0.0, 0,  0.0,  0.0,    0.0,  0.0,     0,     0,       0,                   0,      0,     0,     0, 0}
 };
 
-s32 LizardKong_spriteLib_Sprlib[] = {
-    56,
+s32 LizardKong_spriteLib_Sprlib[2][16] = {
+{   56,
     57,
     58,
     0,
@@ -180,6 +180,8 @@ s32 LizardKong_spriteLib_Sprlib[] = {
     0,
     0,
     0,
+    0},
+{   0,
     0,
     0,
     0,
@@ -194,9 +196,7 @@ s32 LizardKong_spriteLib_Sprlib[] = {
     0,
     0,
     0,
-    0,
-    0,
-    0,
+    0},
 };
 
 RoomInstance LizardKong_room_instances[] = {
@@ -213,7 +213,7 @@ s32 LizardKong_rooms_map[4][3] = {
 };
 
 StageMapData LizardKong_map_data = {
-3, 4, LizardKong_room_instances, LizardKong_rooms_map, 
+    3, 4, LizardKong_room_instances, LizardKong_rooms_map,
 };
 
 LevelScope LizardKong_scope_Lvlscope = {
@@ -233,12 +233,12 @@ StageData LizardKong_header_Lvlhdr = {
     0,
     LizardKong_rabObjects_Bin,
     131072,
-    &LizardKong_spriteLib_Sprlib[0],
+    LizardKong_spriteLib_Sprlib,
     &LizardKong_scope_Lvlscope,
 };
 Mtx LizardKong_IMtx2 = IDENTITY;
 
-Lights1 LizardKong_lkScope_Light = 
+Lights1 LizardKong_lkScope_Light =
     #include "assets/levelGroup/LizardKong/lkScope/lkScope.light.inc.c"
 
 Vtx LizardKong_model1_Vtx[] = {
@@ -280,7 +280,7 @@ Rect3D LizardKong_unkCol1_ColS = {
 };
 
 ModelCollision LizardKong_unkCol1_ColH = {
-27, 33, &LizardKong_unkCol1_ColV[0], &LizardKong_unkCol1_ColT[0], &LizardKong_unkCol1_ColS
+27, 33, LizardKong_unkCol1_ColV, LizardKong_unkCol1_ColT, &LizardKong_unkCol1_ColS
 };
 
 Vec3f LizardKong_unkCol2_ColV[] = {
@@ -296,11 +296,11 @@ Rect3D LizardKong_unkCol2_ColS = {
 };
 
 ModelCollision LizardKong_unkCol2_ColH = {
-14, 16, &LizardKong_unkCol2_ColV[0], &LizardKong_unkCol2_ColT[0], &LizardKong_unkCol2_ColS
+14, 16, LizardKong_unkCol2_ColV, LizardKong_unkCol2_ColT, &LizardKong_unkCol2_ColS
 };
 Mtx LizardKong_IMtx5 = IDENTITY;
 
-Lights1 LizardKong_lkScope2_Light = 
+Lights1 LizardKong_lkScope2_Light =
     #include "assets/levelGroup/LizardKong/lkScope2/lkScope2.light.inc.c"
 
 Vtx LizardKong_a_model1_Vtx[] = {

@@ -27,8 +27,6 @@ extern Gfx IntroOutro_model2_Gfx[];
 extern Gfx IntroOutro_model4_Gfx[];
 extern Gfx IntroOutro_model14_Gfx[];
 extern Gfx IntroOutro_model29_Gfx[];
-//TODO: fill in all void* segments with actual segment pointers
-//TODO: what does this file actually do/get used for?
 
 cutsceneCamera D_8024C510 = { 0.00f, 600.00f, 1850.00f, 90.00f, 0.00f, 0.00f, 0.00f, 0.00f, 0.00f, 0.00f, 0.00f, 0.00f, 0.00f,0.00f, 600.00f};
 cutsceneCamera D_8024C54C = { 600.00f, 650.00f, 1050.00f, 90.00f, 0.00f, 0.00f, 0.00f, 0.00f, 0.00f, 0.00f, 0.00f, 0.00f, 0.00f,0.00f, 600.00f};
@@ -248,13 +246,13 @@ typedef struct unkAssetStruct1 {
     s32 unk_10;
     s32 unk_14;
     s32 unk_18;
-    void* unk_1C; //ram pointer
+    cutsceneCamera* unk_1C; //ram pointer
     s32 unk_20;
-    void* unk_24; //ram pointer
+    cutsceneCamera* unk_24; //ram pointer
     f32 unk_28;
     f32 unk_2C;
     f32 unk_30;
-    void* unk_34; //segment pointer to gfx
+    Gfx* unk_34; //segment pointer to gfx
     s32 unk_38;
     s32 unk_3C;
     s32 unk_40;
@@ -1215,4 +1213,4 @@ cutsceneFunction D_80260D08 = { 3, 0, 0, 13, 0x00000000, 0, 0x00000000, 900.00f,
 cutsceneFunction D_80260DA8 = { 3, 0, 0, 10, 0x00000000, 0, 0x00000000, -1550.00f, 0.00f, -150.00f, IntroOutro_model37_Gfx, 0, 0, 0, 0.00f, 0.00f, 0.00f, 0.00f, 0.00f, 0.00f, 3, 0, 0, 2, &D_80259648, 0, 0x00000000, 0.00f, 0.00f, 0.00f, 0x00000000, 0, 0, 0, 0.00f, 0.00f, 0.00f, 0.00f, 0.00f, 0.00f};
 cutsceneFunction D_80260E48 = { 4, 0, 0, 8, &D_80258D9C, 0, &D_80258E14, 0.00f, 0.00f, 0.00f, 0x00000000, 0, 0, 0, 0.00f, 0.00f, 0.00f, 0.00f, 0.00f, 0.00f, 4, 0, 0, 19, 0x00000000, 0, 0x00000000, 0.00f, 0.00f, 0.00f, 0x00000000, 0, 0, 0, 0.00f, 0.00f, 0.00f, 0.00f, 0.00f, 0.00f};
 cutsceneFunction D_80260EE8 = { 5, 0, 0, 8, &D_80258E8C, 0, &D_80258F04, 0.00f, 0.00f, 0.00f, 0x00000000, 0, 0, 0, 0.00f, 0.00f, 0.00f, 0.00f, 0.00f, 0.00f, 5, 0, 0, 18, 0x00000000, 0, 0x00000000, 0.00f, 0.00f, 0.00f, 0x00000000, 0, 0, 0, 0.00f, 0.00f, 0.00f, 0.00f, 0.00f, 0.00f};
-s32 D_80260F88[]= {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000};
+s32 D_80260F88[] = {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000};
