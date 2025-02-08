@@ -40,7 +40,10 @@ u8 gSelectedCharacters[4] = {0, 1, 2, 3};
 s16 D_800F06E0[] = {-1, 0};
 s16 D_800F06E4[] = {-1, 0};
 s32 sGameModeStart = 18;
-s32 D_800F06EC = -1;
+
+//value hooked onto the LoadStageByIndex call with D_80174878 to overwrite it
+s32 sDebugStageOverride = -1;
+
 s32 D_800F06F0 = -1;
 s32 D_800F06F4 = -1;
 s32 D_800F06F8 = -1;
@@ -143,27 +146,27 @@ void Debug_NOOP(void) {
 //     static s32 D_800F08C4;
 //     unkTextStruct buffer = D_800F0734;
 //     s32 i;
-    
+
 //     if (func_80055E5C(0x4000)) {
 //         D_80176810[D_800F08C4]++;
 //     }
-    
+
 //     if (func_80055E5C(0x8000) != 0) {
 //         D_80176810[D_800F08C4]--;
 //     }
-    
+
 //     if (func_80055E5C(2) != 0) {
 //         D_80176814[D_800F08C4]++;
 //     }
-    
+
 //     if (func_80055E5C(4) != 0) {
 //         D_80176814[D_800F08C4]--;
 //     }
-    
+
 //     if (func_80055E5C(8) != 0) {
 //         D_80176818[D_800F08C4]++;
 //     }
-    
+
 //     if (func_80055E5C(1) != 0) {
 //         D_80176818[D_800F08C4]--;
 //     }
@@ -171,13 +174,13 @@ void Debug_NOOP(void) {
 //         D_800F08C4 = (D_800F08C4) + 1;
 //         D_800F08C4 = (D_800F08C4) & 3;
 //     }
-    
+
 //     if (func_80055E5C(0x2000) != 0) {
 //         for (i = 0; i < 4; i++) {
 //             D_80176810[i] = D_80176814[i] = D_80176818[i] = 0;
 //         }
 //     }
-    
+
 //     func_800610B8();
 //     for (i = 0; i < 4; i++) {
 //         SetTextGradient(D_80176810[0], D_80176814[0], D_80176818[0], 0xFF, D_80176810[1], D_80176814[1], D_80176818[1], 0xFF, D_80176810[2], D_80176814[2], D_80176818[2], 0xFF, D_80176810[3], D_80176814[3], D_80176818[3], 0xFF); PrintNumberWR(180.0f, (i + 2) * 0x20, 0.0f, 0.5f, D_80176810[i], 3, 0);
@@ -186,10 +189,10 @@ void Debug_NOOP(void) {
 //         SetTextGradient(D_80176810[0], D_80176814[0], D_80176818[0], 0xFF, D_80176810[1], D_80176814[1], D_80176818[1], 0xFF, D_80176810[2], D_80176814[2], D_80176818[2], 0xFF, D_80176810[3], D_80176814[3], D_80176818[3], 0xFF);
 //         printNumber(240.0f, (i + 2) * 0x20, 0.0f, 0.5f, D_80176818[i], 3, 0);
 //     }
-    
+
 //     SetTextGradient(D_80176810[0], D_80176814[0], D_80176818[0], 0xFF, D_80176810[1], D_80176814[1], D_80176818[1], 0xFF, D_80176810[2], D_80176814[2], D_80176818[2], 0xFF, D_80176810[3], D_80176814[3], D_80176818[3], 0xFF);
 //     PrintTextWrapper(140.0f, 32.0f, 0.0f, 1.0f, buffer.strings[D_800F08C4], 1);
-    
+
 //     switch (D_800F08C4) {
 //     default:
 //         break;
@@ -206,7 +209,7 @@ void Debug_NOOP(void) {
 //         PrintTextWrapper(296.0f, 48.0f, 0.0f, 0.5f, buffer.strings[D_800F08C4], 1);
 //         break;
 //     }
-    
+
 //     func_800610B8();
 // }
 

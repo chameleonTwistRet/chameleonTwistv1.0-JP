@@ -12,7 +12,7 @@ extern Vtx D_800FE8C8_Global[];
 
 Mtx Global_IMtx1 = IDENTITY;
 
-Lights1 Global_globalScope_Light = 
+Lights1 Global_globalScope_Light =
     #include "assets/levelGroup/Global/globalScope/globalScope.light.inc.c"
 
 Vtx Global_cannon_Vtx[] = {
@@ -113,7 +113,7 @@ Rect3D Global_pole_ColS = {
 };
 
 ModelCollision Global_pole_ColH = {
-30, 10, &Global_pole_ColV[0], &Global_pole_ColT[0], &Global_pole_ColS
+30, 10, Global_pole_ColV, Global_pole_ColT, &Global_pole_ColS
 };
 
 Vec3f Global_unk1_ColV[] = {
@@ -129,7 +129,7 @@ Rect3D Global_unk1_ColS = {
 };
 
 ModelCollision Global_unk1_ColH = {
-8, 12, &Global_unk1_ColV[0], &Global_unk1_ColT[0], &Global_unk1_ColS
+8, 12, Global_unk1_ColV, Global_unk1_ColT, &Global_unk1_ColS
 };
 
 Vec3f Global_unk2_ColV[] = {
@@ -145,7 +145,7 @@ Rect3D Global_unk2_ColS = {
 };
 
 ModelCollision Global_unk2_ColH = {
-8, 12, &Global_unk2_ColV[0], &Global_unk2_ColT[0], &Global_unk2_ColS
+8, 12, Global_unk2_ColV, Global_unk2_ColT, &Global_unk2_ColS
 };
 
 unsigned char Global_what_Bin[] = {
@@ -926,7 +926,7 @@ Rect3D Global_fallbackCube_ColS = {
 };
 
 ModelCollision Global_fallbackCube_ColH = {
-8, 12, &Global_fallbackCube_ColV[0], &Global_fallbackCube_ColT[0], &Global_fallbackCube_ColS
+8, 12, Global_fallbackCube_ColV, Global_fallbackCube_ColT, &Global_fallbackCube_ColS
 };
 
 Vtx Global_exitShadowSouth_Vtx[] = {
@@ -951,7 +951,7 @@ Rect3D Global_exitShadowSouth_ColS = {
 };
 
 ModelCollision Global_exitShadowSouth_ColH = {
-4, 2, &Global_exitShadowSouth_ColV[0], &Global_exitShadowSouth_ColT[0], &Global_exitShadowSouth_ColS
+4, 2, Global_exitShadowSouth_ColV, Global_exitShadowSouth_ColT, &Global_exitShadowSouth_ColS
 };
 
 Vtx Global_exitShadowNorth_Vtx[] = {
@@ -976,7 +976,7 @@ Rect3D Global_exitShadowNorth_ColS = {
 };
 
 ModelCollision Global_exitShadowNorth_ColH = {
-4, 2, &Global_exitShadowNorth_ColV[0], &Global_exitShadowNorth_ColT[0], &Global_exitShadowNorth_ColS
+4, 2, Global_exitShadowNorth_ColV, Global_exitShadowNorth_ColT, &Global_exitShadowNorth_ColS
 };
 
 Vtx Global_exitShadowEast_Vtx[] = {
@@ -1001,7 +1001,7 @@ Rect3D Global_exitShadowEast_ColS = {
 };
 
 ModelCollision Global_exitShadowEast_ColH = {
-4, 2, &Global_exitShadowEast_ColV[0], &Global_exitShadowEast_ColT[0], &Global_exitShadowEast_ColS
+4, 2, Global_exitShadowEast_ColV, Global_exitShadowEast_ColT, &Global_exitShadowEast_ColS
 };
 
 Vtx Global_exitShadowWest_Vtx[] = {
@@ -1026,7 +1026,7 @@ Rect3D Global_exitShadowWest_ColS = {
 };
 
 ModelCollision Global_exitShadowWest_ColH = {
-4, 2, &Global_exitShadowWest_ColV[0], &Global_exitShadowWest_ColT[0], &Global_exitShadowWest_ColS
+4, 2, Global_exitShadowWest_ColV, Global_exitShadowWest_ColT, &Global_exitShadowWest_ColS
 };
 
 Vtx Global_ALBLExit_Vtx[] = {
@@ -1051,7 +1051,7 @@ Rect3D Global_ALBLExit_ColS = {
 };
 
 ModelCollision Global_ALBLExit_ColH = {
-6, 4, &Global_ALBLExit_ColV[0], &Global_ALBLExit_ColT[0], &Global_ALBLExit_ColS
+6, 4, Global_ALBLExit_ColV, Global_ALBLExit_ColT, &Global_ALBLExit_ColS
 };
 
 Mtx Global_IMtx13 = IDENTITY;
@@ -1073,7 +1073,7 @@ Rect3D Global_unk3_ColS = {
 };
 
 ModelCollision Global_sandPit_ColH = {
-7, 6, &Global_unk3_ColV[0], &Global_unk3_ColT[0], &Global_unk3_ColS
+7, 6, Global_unk3_ColV, Global_unk3_ColT, &Global_unk3_ColS
 };
 
 Vtx Global_BossBridge_Vtx[] = {
@@ -1098,7 +1098,7 @@ Rect3D Global_BossBridge_ColS = {
 };
 
 ModelCollision Global_BossBridge_ColH = {
-8, 10, &Global_BossBridge_ColV[0], &Global_BossBridge_ColT[0], &Global_BossBridge_ColS
+8, 10, Global_BossBridge_ColV, Global_BossBridge_ColT, &Global_BossBridge_ColS
 };
 
 Vtx Global_ALPole_Vtx[] = {
@@ -1131,7 +1131,7 @@ Rect3D Global_ALPole_ColS = {
 };
 
 ModelCollision Global_ALPole_ColH = {
-8, 10, &Global_ALPole_ColV[0], &Global_ALPole_ColT[0], &Global_ALPole_ColS
+8, 10, Global_ALPole_ColV, Global_ALPole_ColT, &Global_ALPole_ColS
 };
 
 Vtx Global_ALBLDoor_Vtx[] = {
@@ -1160,7 +1160,7 @@ Rect3D Global_ALBLDoor_ColS = {
 };
 
 ModelCollision Global_ALBLDoor_ColH = {
-8, 8, &Global_ALBLDoor_ColV[0], &Global_ALBLDoor_ColT[0], &Global_ALBLDoor_ColS
+8, 8, Global_ALBLDoor_ColV, Global_ALBLDoor_ColT, &Global_ALBLDoor_ColS
 };
 
 Vtx Global_ALSpinDoor_Vtx[] = {
@@ -1193,7 +1193,7 @@ Rect3D Global_ALSpinDoor_ColS = {
 };
 
 ModelCollision Global_ALSpinDoor_ColH = {
-8, 8, &Global_ALSpinDoor_ColV[0], &Global_ALSpinDoor_ColT[0], &Global_ALSpinDoor_ColS
+8, 8, Global_ALSpinDoor_ColV, Global_ALSpinDoor_ColT, &Global_ALSpinDoor_ColS
 };
 
 Vtx Global_BLLavaFloor_Vtx[] = {
@@ -1218,7 +1218,7 @@ Rect3D Global_BLLavaFloor_ColS = {
 };
 
 ModelCollision Global_BLLavaFloor_ColH = {
-4, 2, &Global_BLLavaFloor_ColV[0], &Global_BLLavaFloor_ColT[0], &Global_BLLavaFloor_ColS
+4, 2, Global_BLLavaFloor_ColV, Global_BLLavaFloor_ColT, &Global_BLLavaFloor_ColS
 };
 
 Vtx Global_BLLava_Vtx[] = {
@@ -1251,7 +1251,7 @@ Rect3D Global_BLLava_ColS = {
 };
 
 ModelCollision Global_BLLava_ColH = {
-4, 2, &Global_BLLava_ColV[0], &Global_BLLava_ColT[0], &Global_BLLava_ColS
+4, 2, Global_BLLava_ColV, Global_BLLava_ColT, &Global_BLLava_ColS
 };
 
 Vtx Global_BLLava2_Vtx[] = {
@@ -1284,7 +1284,7 @@ Rect3D Global_BLLava2_ColS = {
 };
 
 ModelCollision Global_BLLava2_ColH = {
-4, 2, &Global_BLLava2_ColV[0], &Global_BLLava2_ColT[0], &Global_BLLava2_ColS
+4, 2, Global_BLLava2_ColV, Global_BLLava2_ColT, &Global_BLLava2_ColS
 };
 
 Vtx Global_BLLava3_Vtx[] = {
@@ -1317,7 +1317,7 @@ Rect3D Global_BLLava3_ColS = {
 };
 
 ModelCollision Global_BLLava3_ColH = {
-4, 2, &Global_BLLava3_ColV[0], &Global_BLLava3_ColT[0], &Global_BLLava3_ColS
+4, 2, Global_BLLava3_ColV, Global_BLLava3_ColT, &Global_BLLava3_ColS
 };
 
 Vtx Global_BLLava4_Vtx[] = {
@@ -1350,7 +1350,7 @@ Rect3D Global_BLLava4_ColS = {
 };
 
 ModelCollision Global_BLLava4_ColH = {
-4, 2, &Global_BLLava4_ColV[0], &Global_BLLava4_ColT[0], &Global_BLLava4_ColS
+4, 2, Global_BLLava4_ColV, Global_BLLava4_ColT, &Global_BLLava4_ColS
 };
 
 Vtx Global_BLLava5_Vtx[] = {
@@ -1383,7 +1383,7 @@ Rect3D Global_BLLava5_ColS = {
 };
 
 ModelCollision Global_BLLava5_ColH = {
-4, 2, &Global_BLLava5_ColV[0], &Global_BLLava5_ColT[0], &Global_BLLava5_ColS
+4, 2, Global_BLLava5_ColV, Global_BLLava5_ColT, &Global_BLLava5_ColS
 };
 
 Vtx Global_BLLava6_Vtx[] = {
@@ -1416,7 +1416,7 @@ Rect3D Global_BLLava6_ColS = {
 };
 
 ModelCollision Global_BLLava6_ColH = {
-4, 2, &Global_BLLava6_ColV[0], &Global_BLLava6_ColT[0], &Global_BLLava6_ColS
+4, 2, Global_BLLava6_ColV, Global_BLLava6_ColT, &Global_BLLava6_ColS
 };
 
 Vtx Global_BLLava7_Vtx[] = {
@@ -1449,7 +1449,7 @@ Rect3D Global_BLLava7_ColS = {
 };
 
 ModelCollision Global_BLLava7_ColH = {
-4, 2, &Global_BLLava7_ColV[0], &Global_BLLava7_ColT[0], &Global_BLLava7_ColS
+4, 2, Global_BLLava7_ColV, Global_BLLava7_ColT, &Global_BLLava7_ColS
 };
 
 Vtx Global_BLLava8_Vtx[] = {
@@ -1482,7 +1482,7 @@ Rect3D Global_BLLava8_ColS = {
 };
 
 ModelCollision Global_BLLava8_ColH = {
-4, 2, &Global_BLLava8_ColV[0], &Global_BLLava8_ColT[0], &Global_BLLava8_ColS
+4, 2, Global_BLLava8_ColV, Global_BLLava8_ColT, &Global_BLLava8_ColS
 };
 
 Vtx Global_BLDestructableTop_Vtx[] = {
@@ -1507,7 +1507,7 @@ Rect3D Global_BLDestructableTop_ColS = {
 };
 
 ModelCollision Global_BLDestructableTop_ColH = {
-4, 2, &Global_BLDestructableTop_ColV[0], &Global_BLDestructableTop_ColT[0], &Global_BLDestructableTop_ColS
+4, 2, Global_BLDestructableTop_ColV, Global_BLDestructableTop_ColT, &Global_BLDestructableTop_ColS
 };
 
 Vtx Global_BLMetalBridge_Vtx[] = {
@@ -1532,7 +1532,7 @@ Rect3D Global_BLMetalBridge_ColS = {
 };
 
 ModelCollision Global_BLMetalBridge_ColH = {
-8, 10, &Global_BLMetalBridge_ColV[0], &Global_BLMetalBridge_ColT[0], &Global_BLMetalBridge_ColS
+8, 10, Global_BLMetalBridge_ColV, Global_BLMetalBridge_ColT, &Global_BLMetalBridge_ColS
 };
 
 Vtx Global_KLExit_Vtx[] = {
@@ -1557,7 +1557,7 @@ Rect3D Global_KLExit_ColS = {
 };
 
 ModelCollision Global_KLExit_ColH = {
-6, 4, &Global_KLExit_ColV[0], &Global_KLExit_ColT[0], &Global_KLExit_ColS
+6, 4, Global_KLExit_ColV, Global_KLExit_ColT, &Global_KLExit_ColS
 };
 
 Vtx Global_KLDoor_Vtx[] = {
@@ -1590,7 +1590,7 @@ Rect3D Global_KLDoor_ColS = {
 };
 
 ModelCollision Global_KLDoor_ColH = {
-8, 8, &Global_KLDoor_ColV[0], &Global_KLDoor_ColT[0], &Global_KLDoor_ColS
+8, 8, Global_KLDoor_ColV, Global_KLDoor_ColT, &Global_KLDoor_ColS
 };
 
 Vtx Global_DCExit_Vtx[] = {
@@ -1615,7 +1615,7 @@ Rect3D Global_DCExit_ColS = {
 };
 
 ModelCollision Global_DCExit_ColH = {
-6, 4, &Global_DCExit_ColV[0], &Global_DCExit_ColT[0], &Global_DCExit_ColS
+6, 4, Global_DCExit_ColV, Global_DCExit_ColT, &Global_DCExit_ColS
 };
 
 Vtx Global_TallExitShadow1_Vtx[] = {
@@ -1640,7 +1640,7 @@ Rect3D Global_TallExitShadow1_ColS = {
 };
 
 ModelCollision Global_TallExitShadow1_ColH = {
-4, 2, &Global_TallExitShadow1_ColV[0], &Global_TallExitShadow1_ColT[0], &Global_TallExitShadow1_ColS
+4, 2, Global_TallExitShadow1_ColV, Global_TallExitShadow1_ColT, &Global_TallExitShadow1_ColS
 };
 
 Vtx Global_TallExitShadow2_Vtx[] = {
@@ -1665,7 +1665,7 @@ Rect3D Global_TallExitShadow2_ColS = {
 };
 
 ModelCollision Global_TallExitShadow2_ColH = {
-4, 2, &Global_TallExitShadow2_ColV[0], &Global_TallExitShadow2_ColT[0], &Global_TallExitShadow2_ColS
+4, 2, Global_TallExitShadow2_ColV, Global_TallExitShadow2_ColT, &Global_TallExitShadow2_ColS
 };
 
 Vtx Global_GCExit1_Vtx[] = {
@@ -1690,7 +1690,7 @@ Rect3D Global_GCExit1_ColS = {
 };
 
 ModelCollision Global_GCExit1_ColH = {
-6, 4, &Global_GCExit1_ColV[0], &Global_GCExit1_ColT[0], &Global_GCExit1_ColS
+6, 4, Global_GCExit1_ColV, Global_GCExit1_ColT, &Global_GCExit1_ColS
 };
 
 Vtx Global_GCExit2_Vtx[] = {
@@ -1715,7 +1715,7 @@ Rect3D Global_GCExit2_ColS = {
 };
 
 ModelCollision Global_GCExit2_ColH = {
-6, 4, &Global_GCExit2_ColV[0], &Global_GCExit2_ColT[0], &Global_GCExit2_ColS
+6, 4, Global_GCExit2_ColV, Global_GCExit2_ColT, &Global_GCExit2_ColS
 };
 
 Vtx Global_trainingRoomLight_Vtx[] = {
@@ -1740,7 +1740,7 @@ Rect3D Global_trainingRoomLight_ColS = {
 };
 
 ModelCollision Global_trainingRoomLight_ColH = {
-12, 16, &Global_trainingRoomLight_ColV[0], &Global_trainingRoomLight_ColT[0], &Global_trainingRoomLight_ColS
+12, 16, Global_trainingRoomLight_ColV, Global_trainingRoomLight_ColT, &Global_trainingRoomLight_ColS
 };
 
 Vtx Global_JLCaveExit1_Vtx[] = {
@@ -1765,7 +1765,7 @@ Rect3D Global_JLCaveExit1_ColS = {
 };
 
 ModelCollision Global_JLCaveExit1_ColH = {
-6, 4, &Global_JLCaveExit1_ColV[0], &Global_JLCaveExit1_ColT[0], &Global_JLCaveExit1_ColS
+6, 4, Global_JLCaveExit1_ColV, Global_JLCaveExit1_ColT, &Global_JLCaveExit1_ColS
 };
 
 Vtx Global_JLCaveExit2_Vtx[] = {
@@ -1790,7 +1790,7 @@ Rect3D Global_JLCaveExit2_ColS = {
 };
 
 ModelCollision Global_JLCaveExit2_ColH = {
-6, 4, &Global_JLCaveExit2_ColV[0], &Global_JLCaveExit2_ColT[0], &Global_JLCaveExit2_ColS
+6, 4, Global_JLCaveExit2_ColV, Global_JLCaveExit2_ColT, &Global_JLCaveExit2_ColS
 };
 
 Vtx Global_JLCaveExit3_Vtx[] = {
@@ -1815,7 +1815,7 @@ Rect3D Global_JLCaveExit3_ColS = {
 };
 
 ModelCollision Global_JLCaveExit3_ColH = {
-6, 4, &Global_JLCaveExit3_ColV[0], &Global_JLCaveExit3_ColT[0], &Global_JLCaveExit3_ColS
+6, 4, Global_JLCaveExit3_ColV, Global_JLCaveExit3_ColT, &Global_JLCaveExit3_ColS
 };
 
 Vtx Global_JLCaveExit4_Vtx[] = {
@@ -1840,7 +1840,7 @@ Rect3D Global_JLCaveExit4_ColS = {
 };
 
 ModelCollision Global_JLCaveExit4_ColH = {
-6, 4, &Global_JLCaveExit4_ColV[0], &Global_JLCaveExit4_ColT[0], &Global_JLCaveExit4_ColS
+6, 4, Global_JLCaveExit4_ColV, Global_JLCaveExit4_ColT, &Global_JLCaveExit4_ColS
 };
 
 Vtx Global_JLOutsideEntrance_Vtx[] = {
@@ -1865,7 +1865,7 @@ Rect3D Global_JLOutsideEntrance_ColS = {
 };
 
 ModelCollision Global_JLOutsideEntrance_ColH = {
-12, 16, &Global_JLOutsideEntrance_ColV[0], &Global_JLOutsideEntrance_ColT[0], &Global_JLOutsideEntrance_ColS
+12, 16, Global_JLOutsideEntrance_ColV, Global_JLOutsideEntrance_ColT, &Global_JLOutsideEntrance_ColS
 };
 
 Vtx Global_JLFxCamPillar_Vtx[] = {
@@ -1890,7 +1890,7 @@ Rect3D Global_JLFxCamPillar_ColS = {
 };
 
 ModelCollision Global_JLFxCamPillar_ColH = {
-12, 12, &Global_JLFxCamPillar_ColV[0], &Global_JLFxCamPillar_ColT[0], &Global_JLFxCamPillar_ColS
+12, 12, Global_JLFxCamPillar_ColV, Global_JLFxCamPillar_ColT, &Global_JLFxCamPillar_ColS
 };
 
 Vtx Global_JLCaveDoor_Vtx[] = {
@@ -1915,6 +1915,6 @@ Rect3D Global_JLCaveDoor_ColS = {
 };
 
 ModelCollision Global_JLCaveDoor_ColH = {
-8, 8, &Global_JLCaveDoor_ColV[0], &Global_JLCaveDoor_ColT[0], &Global_JLCaveDoor_ColS
+8, 8, Global_JLCaveDoor_ColV, Global_JLCaveDoor_ColT, &Global_JLCaveDoor_ColS
 };
 

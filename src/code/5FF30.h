@@ -7,7 +7,6 @@
 //used in func_80098684 and func_80088B7C
 #define Eight 8.0f+0
 
-
 enum SchedMessages {
     SCHED_MESG_VINTR = 0,
     SCHED_MESG_SP_TASK_DONE = 1,
@@ -25,7 +24,13 @@ enum AudioTaskStates {
     AUDIO_TASK_STATE_RUNNING = 2
 };
 
+
 /* Structs */
+typedef struct stuff {
+    s16 unk0[3];
+    u8 unk6[6];
+} stuff;
+
 typedef struct letterDef{
     s16 x;
     s16 y;
@@ -131,7 +136,8 @@ void func_8009DA20(CTTask* task);                   /* extern */
 void func_8009F1B4(CTTask* task);                   /* extern */
 void func_8009F5B0(CTTask* task);                   /* extern */
 
-/* funcs */
+
+/* Function Prototypes */
 void schedproc(s32 arg0);
 void Sched_SetGfxTask(OSTask* task, s32 fbIndex);
 void Sched_SetAudioTask(OSTask* arg0);
@@ -212,7 +218,7 @@ void func_8008DB24(f32, f32, f32, f32, f32, s16, s16, s16);
 void func_8008DB90(Gfx** pGfxPos, GraphicStruct* arg1);
 Gfx* func_8008E314(Gfx* gfxPos, Tongue* tongues, PlayerActor* players, Camera* cameras, s32 fbIndex);
 Gfx* func_8008E488(Gfx* gfxPos, Tongue* tongues, PlayerActor* players, Camera* cameras, s32 fbIndex);
-Gfx* setFrustum(Gfx* gfxPos, s32 fbIndex);
+Gfx* SetFrustum(Gfx* gfxPos, s32 fbIndex);
 void func_8008E698(CTTask*);
 void func_8008E7B8(CTTask* arg0);
 void func_8008E840(CTTask*);
@@ -555,7 +561,8 @@ void func_8009CB14(void);
 void func_8009D0EC(void);
 void func_8009EE44(void);
 
-/* Ext Variables */
+
+/* External Signatures */
 extern ContMain D_801FC9B8;
 extern s16 D_80200CA0;
 extern s16 D_80200CA8;
@@ -610,7 +617,7 @@ extern s16 D_800FFEC0;
 extern Gfx D_1015A70[];
 extern Gfx D_1015AB8[];
 extern Gfx D_1015AE8[];
-extern Gfx static0_UnkStatic0_Gfx[];
+extern Gfx D_1015B18[];
 extern Mtx D_801B3180[];
 extern Mtx D_801B3240[];
 extern Mtx D_801B3300[];
@@ -643,11 +650,6 @@ extern s8 D_80200B30;
 extern s16 sDebugBitfeild;
 extern s8 D_80200B28[];
 extern letterDef* D_801005F8[];
-typedef struct stuff {
-    s16 unk0[3];
-    u8 unk6[6];
-} stuff;
-extern stuff D_801003DC;
 extern s16 D_80200B1A;
 extern s16 D_80200B1C;
 extern s16 gSelectedBattleBGM;

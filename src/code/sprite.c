@@ -47,8 +47,8 @@ s32 padding[3] = {0, 0, 0};
 // Fred = "フレッド"
 // Linda = "リンダ"
 // V arent the actual word, they are treated as proper names
-// Black = "ブラック" 
-// White = "ホワイト" 
+// Black = "ブラック"
+// White = "ホワイト"
 
 /*
 Dialogue is usually formatted as such:
@@ -66,7 +66,7 @@ char JL_IntroText[][TEXT_LINE_SIZE] = {
     "舌や体の操作が出来るようになった",
     "ら、タイムアタックに行ってみると",
     "いいですよ。",
-    
+
     ""
 };
 
@@ -661,7 +661,7 @@ char (*Dialogue[CHARA_TOTAL][20])[TEXT_LINE_SIZE] = {
     GC_Boss_Text_White,
     NULL, NULL
     }
-    
+
 };
 
 
@@ -706,7 +706,7 @@ char WhereIsThatRabbit_Text[][TEXT_LINE_SIZE] = {
 
 
 //Ending Movie
-char D_800F5418[][TEXT_LINE_SIZE] = {
+char Davy_EndingMove_Text[][TEXT_LINE_SIZE] = {
     "　　　　やあ、デイビー。",
     "　　どうでしたか？この世界は。",
     "",
@@ -763,7 +763,7 @@ char (*D_800F59B8[CHARA_TOTAL + 1][20])[TEXT_LINE_SIZE] = {
     ThisIsNotGoingToGetUsThere_Text,
     WhatCantWeMakeInTime_Text,
     CuriousChameleon_Text,
-    D_800F5418,
+    Davy_EndingMove_Text,
     Unk_EndingMove_Text,
     Unk2_EndingMove_Text,
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL
@@ -833,7 +833,7 @@ char (*D_800F59B8[CHARA_TOTAL + 1][20])[TEXT_LINE_SIZE] = {
     Unk2_EndingMove_Text,
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL
     },
-    
+
     //Unknown
     {
     ItsAnotherBeautifulDay_Text,
@@ -919,7 +919,7 @@ char BlackFightEnoughCarrots_Text[][TEXT_LINE_SIZE] = {
 
     ""
 };
-                                    
+
 char BlackFightNotEnoughCarrots_Text[][TEXT_LINE_SIZE] = {
     "この扉を開くにはキャロットが",
     "５個必要です。",
@@ -980,6 +980,9 @@ Mtx D_800F68D0[5] = {
     IDENTITY
 };
 
+//these are sprite 'tile defs'
+
+//unused
 u8 D_800F6A10[64] = {
  0, 1, 2, 3, 4, 5, 6, 7,
  8, 9,10,11,12,13,14,15,
@@ -991,30 +994,51 @@ u8 D_800F6A10[64] = {
  4, 5, 2, 3, 4, 5, 0, 0
 };
 
-//eng symbol test?
-char D_800F6A50[] = "　ＡＢＣＤＥＦＧＨＩＪＫＬＭＮＯＰＱＲＳＴＵＶＷＸＹＺ０１２３４５６７８９？！＆’”：（）／＋Ｘ＠〜ｘ−ｃ　";
+//static0_textBig_ia8_PNG
+char D_800F6A50[] = "　ＡＢＣＤＥＦＧＨＩＪＫＬＭＮＯＰＱＲＳＴＵＶＷＸＹＺ"
+                    "０１２３４５６７８９？！＆’”：（）／＋Ｘ＠〜ｘ−ｃ　";
 
-//general symbol test?
-char D_800F6AC0[] = "　アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲンァィゥェォャュョガギグゲゴザジズゼゾダヂヅデドバビブベボパピプペポあいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをんぁぃぅぇぉゃゅょがぎぐげござじずぜぞだぢづでどばびぶべぼぱぴぷぺぽ０１２３４５６７８９？！＆”：（）．，−＋×÷＝「」〜ＡＢＣＤＥＦＧＨＩＪＫＬＭＮＯＰＱＲＳＴＵＶＷＸＹＺッっー続接状異動振下正用切源電技部屋上説明出真中舌敵度押匹台鬼火場回転高跳使頂歩逆立移杭次落戻始方向不思議世界入口体操作練習行床大菓子来最後奇妙手私足先’、。進地深数砂漠城通壁待受流落石要注意今日天気時間合何好心強追変身遊対戦狂暴怒攻撃当速得爆倒点全試玉以個持扉開必集巨岩弾楽前挿";
+//static0_textSmall_ia4_PNG
+char D_800F6AC0[] = "　アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマ"
+                    "ミムメモヤユヨラリルレロワヲンァィゥェォャュョガギグゲゴザジズゼ"
+                    "ゾダヂヅデドバビブベボパピプペポあいうえおかきくけこさしすせそた"
+                    "ちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをんぁぃ"
+                    "ぅぇぉゃゅょがぎぐげござじずぜぞだぢづでどばびぶべぼぱぴぷぺぽ０"
+                    "１２３４５６７８９？！＆”：（）．，−＋×÷＝「」〜ＡＢＣＤＥＦ"
+                    "ＧＨＩＪＫＬＭＮＯＰＱＲＳＴＵＶＷＸＹＺッっー続接状異動振下正用"
+                    "切源電技部屋上説明出真中舌敵度押匹台鬼火場回転高跳使頂歩逆立移杭"
+                    "次落戻始方向不思議世界入口体操作練習行床大菓子来最後奇妙手私足先"
+                    "’、。進地深数砂漠城通壁待受流落石要注意今日天気時間合何好心強追"
+                    "変身遊対戦狂暴怒攻撃当速得爆倒点全試玉以個持扉開必集巨岩弾楽前挿";
 
+//extImages_symbols_ia8_PNG
 char D_800F6D84[] = "ＡＢＣＤＥＦＧＨＩＪＫＬＭＮＯＰＱＲＳＴＵＶＷＸＹＺ４６　";
 
+//extImages_greenAntBottom_ci8_PNG
 u8 D_800F6DC0[4] = {0, 1, 2, 3};
 
+//extImages_greenAntTop_ci8_PNG
 u8 D_800F6DC4[4] = {0, 0, 0, 0};
 
+//extImages_caterpillar_ci8_PNG
 u8 D_800F6DC8[4] = {0, 1, 0, 0};
 
+//extImages_caterpillarPart_ci8_PNG
 u8 D_800F6DCC[4] = {0, 0, 0, 0};
 
+//extImages_antHole_ia4_PNG
 u8 D_800F6DD0[4] = {0, 0, 0, 0};
 
+//extImages_sandCrabAppearUnused_ia4_PNG
 u8 D_800F6DD4[] = {0, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 7, 8};
 
+//extImages_grayAnt_ci8_PNG
 u8 D_800F6DE4[4] = {0, 1, 2, 3};
 
+//static0_health_ci8_PNG
 u8 D_800F6DE8[4] = {0, 0, 0, 0};
 
+//static0_bar_ci4_PNG
 u8 D_800F6DEC[4] = {0, 1, 2, 0};
 
 u8 D_800F6DF0[4] = {0, 0, 0, 0};
@@ -1571,40 +1595,37 @@ char D_800F73A0[40] = "０１２３４５６７８９ＡＢＣＤＥＦＧ";
 
 #include "gSpriteListings.c"
 
+
+
+//weird sprite debug variable
 s32 D_800FDF98 = 0;
 
+//sprite scale????
+//could also be z?
 f32 D_800FDF9C = 218;
 
+//unused?
 s32 D_800FDFA0 = 0;
 
 s32 gSpriteFrameBuffer = 0;
-
 s32 D_800FDFA8[2] = {0, 0};
-
 s32 D_800FDFB0[2] = {0, 0};
-
 s32 D_800FDFB8[2] = {0, 0};
-
 s32 D_800FDFC0[2] = {0, 0};
-
 s32 D_800FDFC8[2] = {0, 0};
 
+//these are definitely colors but what for????
+//debug printing stuff???
 u8 gPrimRed = 255;
-
 u8 gPrimGreen = 255;
-
 u8 gPrimBlue = 255;
-
 u8 gPrimAlpha = 255;
 
 u8 D_800FDFE0 = 0;
-
 u8 D_800FDFE4 = 0;
-
 s32 D_800FDFE8 = 0;
-
+//not even used?
 s32 D_800FDFEC = 1;
-
 f32 D_800FDFF0 = 1;
 f32 D_800FDFF4 = 0;
 f32 D_800FDFF8 = 0;
@@ -1643,49 +1664,29 @@ f32 D_800FE074 = 0.5;
 f32 D_800FE078 = 1;
 f32 D_800FE07C = 0;
 
-//translate these pls
 Gfx D_800FE080[] = {
-0xE7000000,
-0x00000000,
-0xBA001402,
-0x00000000,
-0xBB000001,
-0x80008000,
-0xB9000002,
-0x00000000,
-0xBA001301,
-0x00000000,
-0xBA000C02,
-0x00002000,
-0xBA000903,
-0x00000C00,
-0xBA001102,
-0x00000000,
-0xBA001001,
-0x00000000,
-0xBA000E02,
-0x00000000,
-0xB900031D,
-0x0F0A7008,
-0xFA000000,
-0xFFFFFFFF,
-0xFC119623,
-0xFF2FFFFF,
-0xB8000000,
-0x00000000
+    gsDPPipeSync(),
+    gsDPSetCycleType(G_CYC_1CYCLE),
+    gsSPTexture(0x8000, 0x8000, 0, G_TX_RENDERTILE, G_ON),
+    gsDPSetAlphaCompare(G_AC_NONE),
+    gsDPSetTexturePersp(G_TP_NONE),
+    gsDPSetTextureFilter(G_TF_BILERP),
+    gsDPSetTextureConvert(G_TC_FILT),
+    gsDPSetTextureDetail(G_TD_CLAMP),
+    gsDPSetTextureLOD(G_TL_TILE),
+    gsDPSetTextureLUT(G_TT_NONE),
+    gsDPSetRenderMode(G_RM_TEX_EDGE, G_RM_TEX_EDGE2),
+    gsDPSetPrimColor(0, 0, 0xFF, 0xFF, 0xFF, 0xFF),
+    gsDPSetCombineMode(G_CC_MODULATEIA_PRIM, G_CC_MODULATEIA_PRIM),
+    gsSPEndDisplayList(),
 };
 
 Gfx D_800FE0F0[] = {
-0xBB000000,
-0x80008000,
-0xFCFFFFFF,
-0xFFFE793C,
-0xB900031D,
-0x0F0A4000,
-0xB9000002,
-0x00000000,
-0xB8000000,
-0x00000000
+    gsSPTexture(0x8000, 0x8000, 0, G_TX_RENDERTILE, G_OFF),
+    gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
+    gsDPSetRenderMode(G_RM_OPA_SURF, G_RM_OPA_SURF2),
+    gsDPSetAlphaCompare(G_AC_NONE),
+    gsSPEndDisplayList(),
 };
 
 Mtx D_800FE118 = IDENTITY;
@@ -1714,11 +1715,8 @@ s32 D_800FE188 = 0;
 
 //copies of gPrimRed, gPrimGreen, gPrimBlue and gPrimAlpha?
 u8 D_800FE18C = 255;
-
 u8 D_800FE190 = 255;
-
 u8 D_800FE194 = 255;
-
 u8 D_800FE198 = 255;
 
 s32 D_800FE19C = 0;
@@ -1906,7 +1904,6 @@ extern unsigned char Quintella_eye_ci8_PAL[];
 extern unsigned char Armadillo_face_ci8_PNG[];
 extern unsigned char Armadillo_face_ci8_PAL[];
 
-//TODO: fix
 struct_800FE54C BossDeadEyes[3] = {
     {LizardKong_face_ci4_PNG, LizardKong_face_ci4_PAL},
     {Quintella_eye_ci8_PNG, Quintella_eye_ci8_PAL},
@@ -1929,79 +1926,79 @@ RGBA32 D_800FE564[10] = {
 
 u8 sTextGradientPalettes[] = {
 0, 0, 0, 192,
-0, 0, 0, 0xC0,
-0, 0, 0, 0xC0,
-0, 0, 0, 0xC0,
+0, 0, 0, 192,
+0, 0, 0, 192,
+0, 0, 0, 192,
 
 255, 255, 255, 255,
 255, 255, 0, 255,
 255, 255, 255, 255,
 255, 255, 0, 255,
 
-0x16, 0xC8, 10, 255,
-0xDC, 0xDC, 1, 255,
-0x16, 0xC8, 10, 255,
-0xDC, 0xDC, 1, 255,
+22, 200, 10, 255,
+220, 220, 1, 255,
+22, 200, 10, 255,
+220, 220, 1, 255,
 
-0x7F, 0x7F, 0x3C, 255,
-0x1E, 0x1E, 0x14, 255,
-0x7F, 0x7F, 0x3C, 255,
-0x1E, 0x1E, 0x14, 255,
+127, 127, 60, 255,
+30, 30, 20, 255,
+127, 127, 60, 255,
+30, 30, 20, 255,
 
 255, 10, 10, 255,
-0xC8, 0xC8, 0, 255,
+200, 200, 0, 255,
 255, 10, 10, 255,
-0xC8, 0xC8, 0, 255,
+200, 200, 0, 255,
 
-0xF0, 0xDC, 10, 255,
-0x14, 0x64, 1, 255,
-0xF0, 0xDC, 10, 255,
-0x14, 0x64, 1, 255,
+240, 220, 10, 255,
+20, 100, 1, 255,
+240, 220, 10, 255,
+20, 100, 1, 255,
 
-0xF0, 0xDC, 0, 255,
-0x14, 0x64, 1, 255,
-0xF0, 0xDC, 0, 255,
-0x14, 0x64, 1, 255,
+240, 220, 0, 255,
+20, 100, 1, 255,
+240, 220, 0, 255,
+20, 100, 1, 255,
 
-0xC0, 0x40, 0, 255,
+192, 64, 0, 255,
 255, 5, 0, 255,
-0xC0, 0x40, 0, 255,
+192, 64, 0, 255,
 255, 5, 0, 255,
 
-0xB4, 0xFA, 255, 255,
+180, 250, 255, 255,
 0, 5, 255, 255,
-0xB4, 0xFA, 255, 255,
+180, 250, 255, 255,
 0, 5, 255, 255,
 
-0xFC, 0xFA, 0x5E, 255,
-0xC8, 0x3C, 1, 255,
-0xC8, 0x3C, 1, 255,
-0xFC, 0x99, 0x28, 255,
+252, 250, 94, 255,
+200, 60, 1, 255,
+200, 60, 1, 255,
+252, 153, 40, 255,
 
-0xFA, 0xFA, 0xFA, 255,
-0x28, 0x28, 0x28, 255,
-0x1E, 0x1E, 0x1E, 255,
-0xB4, 0xB4, 0xB4, 255,
+250, 250, 250, 255,
+40, 40, 40, 255,
+30, 30, 30, 255,
+180, 180, 180, 255,
 
-0xD9, 0xA7, 0xA7, 255,
-0x68, 0x19, 0x19, 255,
-0x68, 0x19, 0x19, 255,
-0x87, 0x56, 0x56, 255,
+217, 167, 167, 255,
+104, 25, 25, 255,
+104, 25, 25, 255,
+135, 86, 86, 255,
 
-0xF5, 0xF8, 0xE7, 255,
-0x8E, 0, 0x1B, 255,
-0x8E, 0, 0x1B, 255,
-0xC5, 0x93, 0xBB, 255,
-
-255, 255, 255, 255,
-0x64, 255, 255, 255,
-0x64, 255, 255, 255,
-0x64, 255, 255, 255,
+245, 248, 231, 255,
+142, 0, 27, 255,
+142, 0, 27, 255,
+197, 147, 187, 255,
 
 255, 255, 255, 255,
-0x52, 255, 0x32, 255,
-0x52, 255, 0x32, 255,
-0x52, 255, 0x32, 255,
+100, 255, 255, 255,
+100, 255, 255, 255,
+100, 255, 255, 255,
+
+255, 255, 255, 255,
+82, 255, 50, 255,
+82, 255, 50, 255,
+82, 255, 50, 255,
 
 255, 255, 255, 255,
 255, 255, 0, 255,
@@ -2009,29 +2006,29 @@ u8 sTextGradientPalettes[] = {
 255, 255, 0, 255,
 
 255, 255, 255, 255,
-255, 0x60, 0, 255,
-255, 0x60, 0, 255,
-255, 0x60, 0, 255,
+255, 96, 0, 255,
+255, 96, 0, 255,
+255, 96, 0, 255,
 
-0, 0xC0, 255, 255,
+0, 192, 255, 255,
 255, 255, 255, 255,
-0, 0xC0, 255, 255,
+0, 192, 255, 255,
 255, 255, 255, 255,
 
 255, 255, 255, 255,
-255, 0xC0, 0, 0xD4,
+255, 192, 0, 212,
 255, 255, 255, 255,
-255, 0xC0, 0, 255,
+255, 192, 0, 255,
 
-255, 0x80, 0, 255,
-255, 255, 0x80, 255,
-255, 0x80, 0, 255,
-255, 255, 0x80, 255,
+255, 128, 0, 255,
+255, 255, 128, 255,
+255, 128, 0, 255,
+255, 255, 128, 255,
 
-255, 255, 0x80, 255,
-255, 0xC0, 0, 0xD4,
-255, 255, 0x80, 255,
-255, 0xC0, 0, 255,
+255, 255, 128, 255,
+255, 192, 0, 212,
+255, 255, 128, 255,
+255, 192, 0, 255,
 
 255, 255, 0, 255,
 255, 255, 0, 255,
@@ -2298,7 +2295,7 @@ s32 D_800FEDAC = 0;
 s32 D_800FEDB0 = 0;
 u32 D_800FEDB4 = 0;
 s32 D_800FEDB8 = 1;
-s32 D_800FEDBC = 0;
+u32 D_800FEDBC = 0;
 
 
 void DummiedPrintf2(char* arg0, ...) {
@@ -2307,7 +2304,7 @@ void DummiedPrintf2(char* arg0, ...) {
 
 /**
  * @brief Sets the seed for generating randomness.
- * 
+ *
  * @param seed: seed for rng
  */
 void Rand_SetSeed(s32 seed) {
@@ -2324,9 +2321,10 @@ s32 Rand(void) {
 
 void func_80055C04(void) {
     s32 i;
-    
+
+    //EnableInput
     D_800F68A8 = 1;
-    
+
     for (i = 0; i < MAXCONTROLLERS; i++) {
         gPrevButtons[i] = -1;
         gButtons[i] = -1;
@@ -2347,7 +2345,7 @@ s32 func_80055C90(void) {
 
 /**
  * @brief Simplifies joystick movement to d-pad equivalent.
- * 
+ *
  * @param conts: controllers struct
  */
 void Controller_ParseJoystick(ContMain* conts) {
@@ -2373,7 +2371,7 @@ void Controller_ParseJoystick(ContMain* conts) {
             }
         }
 
-        if (D_800F68A8 == NULL) {                     // if player is allowed movement (?) | Possibly if the chameleon is loaded 
+        if (D_800F68A8 == NULL) {                     // if player is allowed movement (?) | Possibly if the chameleon is loaded
             if (((s32)gPlayerActors[i].active > 0)) { //cast required
                 if (gPlayerActors[i].exists > 0) {
                     Controller_Zero(&conts[i]);
@@ -2410,9 +2408,9 @@ void func_80055FBC(s32 arg0) {
 
 /**
  * @brief Recursively calls until the angle is within the range of 0-360.
- * 
- * @param arg0 
- * @return f32 
+ *
+ * @param arg0
+ * @return f32
  */
 f32 WrapAngleRecursive(f32 arg0) {
     if (arg0 >= 360.0f) {
@@ -2458,13 +2456,13 @@ void* func_80056D30(s32 arg0) {
     unkStruct02* var_a2;
     unkStruct02* next;
     s32 flags;
-    
+
     if (arg0 == 0) {
         return NULL;
     }
-    
+
     var_a2 = D_80176F4C;
-    
+
     while (1) {
         flags = var_a2->flags;
         if ((flags & 1) && ((u32) arg0 < (u32) flags)) {
@@ -2480,7 +2478,7 @@ void* func_80056D30(s32 arg0) {
             if (((!var_a2) && (!var_a2)) && (!var_a2)){} //TODO: fake match
             return var_a2 + 1;
         }
-         
+
         if (var_a2->next != NULL) {
             var_a2 = var_a2->next;
         } else {
@@ -2511,7 +2509,7 @@ void func_80056EB4(void) {
 
 void* _malloc(s32 arg0) {
     void* temp_v0 = func_80056D30(arg0);
-    
+
     if (temp_v0 == NULL) {
         DummiedPrintf2("mem err!\n");
     }
@@ -2566,30 +2564,30 @@ s32 LoadSprite(s32 arg0) {
         dmaSize = (s32) (temp_s1->width * temp_s1->height * temp_s1->tileCountX * temp_s1->tileCountY) / 2;
         break;
     }
-    
+
     if (temp_s1->bitmapRom == NULL) {
         temp_s1->bitmapRom = (s32)temp_s1->raster;
     }
-    
+
     if (temp_s1->paletteRom == NULL) {
         temp_s1->paletteRom = (s32)temp_s1->palette;
     }
-    
+
     temp_s1->raster = _malloc(dmaSize);
-    
+
     if (temp_s1->raster == NULL) {
         DummiedPrintf2(" sprite.c : sprite on mem err!(size=%d SPRITE3ID=%d)\n", dmaSize, arg0);
         return SPRITE_LOAD_ERROR;
     }
-    
+
     dmaResult = DMA_Copy(&extImages_ROM_START[temp_s1->bitmapRom & 0xFFFFFF], temp_s1->raster, dmaSize);
 
     while (dmaResult < 0) {
         dmaResult = DMA_Copy(&extImages_ROM_START[temp_s1->bitmapRom & 0xFFFFFF], temp_s1->raster, dmaSize);
     }
-    
+
     while (func_800A72E8(dmaResult) == 0);
-    
+
     if ((temp_s1->type == 4) || (temp_s1->type == 5)) {
         temp_s1->palette = _malloc(CI8_PAL_SIZE);
         if (temp_s1->palette == NULL) {
@@ -2597,13 +2595,13 @@ s32 LoadSprite(s32 arg0) {
             Free(temp_s1->raster);
             return SPRITE_LOAD_ERROR;
         }
-        
+
         dmaResult = DMA_Copy(&extImages_ROM_START[temp_s1->paletteRom & 0xFFFFFF], temp_s1->palette, CI8_PAL_SIZE);
 
         while (dmaResult < 0) {
             dmaResult = DMA_Copy(&extImages_ROM_START[temp_s1->paletteRom & 0xFFFFFF], temp_s1->palette, CI8_PAL_SIZE);
         }
-        
+
         while (func_800A72E8(dmaResult) == 0);
     }
     return SPRITE_LOAD_SUCCESS;
@@ -2649,7 +2647,7 @@ void PrintReset(void) {
 void func_8005747C(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, s32 arg6) {
     f32 sp6C, sp68;
     f32 sp54, sp50, sp4C;
-    s32 sp48, sp44;    
+    s32 sp48, sp44;
     SpriteListing* tile;
 
     if (D_800FDFA8[gSpriteFrameBuffer] >= 200) {
@@ -2717,7 +2715,7 @@ void func_8005747C(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, s
 void func_80057A68(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, s32 arg6) {
     f32 sp6C, sp68;
     f32 sp54, sp50, sp4C;
-    s32 sp48, sp44;    
+    s32 sp48, sp44;
     SpriteListing* tile;
 
     if (D_800FDFA8[gSpriteFrameBuffer] >= 200) {
@@ -2787,7 +2785,7 @@ void func_80058044(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f
     f32 sp54, sp50, sp4C;
     f32 angle;
     s32 sp48, sp44;
-    SpriteListing* tile;    
+    SpriteListing* tile;
 
     if (D_800FDFA8[gSpriteFrameBuffer] >= 200) {
         PrintReset();
@@ -2871,7 +2869,7 @@ void func_80058748(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f
     f32 sp54, sp50, sp4C;
     s32 sp48;
     s32 sp44;
-    SpriteListing* tile;    
+    SpriteListing* tile;
 
     if (D_800FDFB0[gSpriteFrameBuffer] >= 200) {
         PrintReset();
@@ -2928,7 +2926,7 @@ void func_80058BE4(Mtx* arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, 
     f32 sp54, sp50, sp4C;
     s32 sp48;
     s32 sp44;
-    SpriteListing* tile;    
+    SpriteListing* tile;
 
     if (D_800FDFB0[gSpriteFrameBuffer] >= 200) {
         PrintReset();
@@ -2960,7 +2958,7 @@ void func_80058BE4(Mtx* arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, 
 
     sp54 = -sp3C;
     sp50 = 0.0f;
-    sp4C = sp38;    
+    sp4C = sp38;
     guMtxXFML(arg0, sp54, sp50, sp4C, &sp54, &sp50, &sp4C);
     tile->quad[0].v.ob[0] = sp54 + arg1;
     tile->quad[0].v.ob[1] = sp50 + arg2;
@@ -2968,7 +2966,7 @@ void func_80058BE4(Mtx* arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, 
 
     sp54 = -sp3C;
     sp50 = 0.0f;
-    sp4C = -sp38 * 1;    
+    sp4C = -sp38 * 1;
     guMtxXFML(arg0, sp54, sp50, sp4C, &sp54, &sp50, &sp4C);
     tile->quad[1].v.ob[0] = sp54 + arg1;
     tile->quad[1].v.ob[1] = sp50 + arg2;
@@ -3007,7 +3005,7 @@ void func_80059254(Mtx* arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, 
     f32 sp54, sp50, sp4C;
     s32 sp48;
     s32 sp44;
-    SpriteListing* tile;    
+    SpriteListing* tile;
 
     if (D_800FDFB0[gSpriteFrameBuffer] >= 200) {
         PrintReset();
@@ -3086,7 +3084,7 @@ void func_800598C4(Mtx* arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, 
     f32 sp54, sp50, sp4C;
     s32 sp48;
     s32 sp44;
-    SpriteListing* tile;    
+    SpriteListing* tile;
 
     if (D_800FDFB0[gSpriteFrameBuffer] >= 200) {
         PrintReset();
@@ -3264,7 +3262,7 @@ void func_8005A7CC(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f
 
     arg0 += D_800FDFF4;
     arg1 += D_800FDFF8;
-    
+
     for (i = 0; i < gSpriteListings[arg7].tileCountX; i++) {
         for (j = 0; j < gSpriteListings[arg7].tileCountY; j++) {
             if (D_800FDFC8[gSpriteFrameBuffer] >= 200) {
@@ -3453,7 +3451,7 @@ void func_8005B874(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f
 
     arg0 += D_800FDFF4;
     arg1 += D_800FDFF8;
-    
+
     for (i = 0; i < gSpriteListings[arg7].tileCountX; i++) {
         for (j = 0; j < gSpriteListings[arg7].tileCountY; j++) {
             if (D_800FDFB8[gSpriteFrameBuffer] >= 200) {
@@ -3586,7 +3584,7 @@ void func_8005C04C(f32 arg0, f32 arg1, f32 arg2, f32 arg3, s32 arg4) {
 void func_8005C454(f32 arg0, f32 arg1, f32 arg2, s32 arg3) {
     s32 i, j;
     SpriteListing* tile;
-    
+
     for (i = 0; i < gSpriteListings[arg3].tileCountX; i++) {
         for (j = 0; j < gSpriteListings[arg3].tileCountY; j++) {
             if (D_800FDFC0[gSpriteFrameBuffer] >= 200) {
@@ -3605,14 +3603,14 @@ void func_8005C454(f32 arg0, f32 arg1, f32 arg2, s32 arg3) {
             tile->quad[0].v.ob[2] = (s16)arg2 * 4;
 
             tile->quad[1].v.ob[0] = ((s16)arg0 + i * tile->width + tile->width) * 4;
-            tile->quad[1].v.ob[1] = ((s16)arg1 + j * tile->height + tile->height) * 4;            
+            tile->quad[1].v.ob[1] = ((s16)arg1 + j * tile->height + tile->height) * 4;
             tile->quad[1].v.ob[2] = (s16)arg2 * 4;
 
             if (tile->quad[1].v.ob[0] < 0 || tile->quad[0].v.ob[0] > SCREEN_WIDTH * 4 ||
                 tile->quad[1].v.ob[1] < 0 || tile->quad[0].v.ob[1] > SCREEN_HEIGHT * 4) {
                 continue;
             }
-            
+
             tile->quad[0].v.tc[0] = ((s16)(tile->tileIndexX * tile->width)) << 5;
             tile->quad[0].v.tc[1] = ((s16)(tile->tileIndexY * tile->height)) << 5;
             if (gPrimRed != 0 || gPrimGreen != 0 || gPrimBlue != 0 || gPrimAlpha != 0) {
@@ -3630,7 +3628,7 @@ void func_8005C454(f32 arg0, f32 arg1, f32 arg2, s32 arg3) {
 void func_8005C6FC(f32 arg0, f32 arg1, f32 arg2, s32 arg3) {
     s32 i, j;
     SpriteListing* tile;
-    
+
     for (i = 0; i < gSpriteListings[arg3].tileCountX; i++) {
         for (j = gSpriteListings[arg3].tileCountY / 2; j < gSpriteListings[arg3].tileCountY; j++) {
             if (D_800FDFC0[gSpriteFrameBuffer] >= 200) {
@@ -3649,14 +3647,14 @@ void func_8005C6FC(f32 arg0, f32 arg1, f32 arg2, s32 arg3) {
             tile->quad[0].v.ob[2] = (s16)arg2 * 4;
 
             tile->quad[1].v.ob[0] = ((s16)arg0 + i * tile->width + tile->width) * 4;
-            tile->quad[1].v.ob[1] = ((s16)arg1 + j * tile->height + tile->height) * 4;            
+            tile->quad[1].v.ob[1] = ((s16)arg1 + j * tile->height + tile->height) * 4;
             tile->quad[1].v.ob[2] = (s16)arg2 * 4;
 
             if (tile->quad[1].v.ob[0] < 0 || tile->quad[0].v.ob[0] > SCREEN_WIDTH * 4 ||
                 tile->quad[1].v.ob[1] < 0 || tile->quad[0].v.ob[1] > SCREEN_HEIGHT * 4) {
                 continue;
             }
-            
+
             tile->quad[0].v.tc[0] = ((s16)(tile->tileIndexX * tile->width)) << 5;
             tile->quad[0].v.tc[1] = ((s16)(tile->tileIndexY * tile->height)) << 5;
             if (gPrimRed != 0 || gPrimGreen != 0 || gPrimBlue != 0 || gPrimAlpha != 0) {
@@ -3681,7 +3679,7 @@ void func_8005C9B8(void) {
         }
         if (gSpriteListings[i].paletteRom != 0) {
             gSpriteListings[i].palette = (void*)gSpriteListings[i].paletteRom;
-        }        
+        }
     }
     LoadSprite(SPRITE_CROWN);
     LoadSprite(SPRITE_HEARTRED);
@@ -3796,7 +3794,7 @@ Gfx* func_8005CA44(Gfx* gfxPos) {
                 gDPLoadTextureTile(gfxPos++, tile->raster, G_IM_FMT_IA, G_IM_SIZ_8b, tile->width * tile->tileCountX, 0,
                                     ulx, uly, ulx + tile->width - 1, uly + tile->height - 1, 0,
                                     G_TX_CLAMP, G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
-                break;            
+                break;
             case COLORMODE_RGBA16:
                 gSPDisplayList(gfxPos++, tile->unk_00);
                 gDPLoadTextureTile(gfxPos++, tile->raster, G_IM_FMT_RGBA, G_IM_SIZ_16b, tile->width * tile->tileCountX, 0,
@@ -3907,7 +3905,7 @@ Gfx* func_8005CA44(Gfx* gfxPos) {
     gSpriteFrameBuffer ^= 1;
     D_800FDFA8[gSpriteFrameBuffer] = 0;
     D_800FDFB0[gSpriteFrameBuffer] = 0;
-    D_800FDFB8[gSpriteFrameBuffer] = 0;    
+    D_800FDFB8[gSpriteFrameBuffer] = 0;
     PrintReset();
     return gfxPos;
 }
@@ -4162,38 +4160,38 @@ void Effect_ResetListEntry(Effect* effect) {
 
 Effect* Effect_Alloc(s32 numParts, s32 dataSize, void* fpUpdate) {
     Effect* effect;
-    
+
     effect = _malloc(sizeof(Effect));
-    
+
     if (effect == NULL) {
         return NULL;
     }
-    
+
     if (numParts != 0) {
         effect->parts = _malloc(numParts * sizeof(EffectPart));
         if (effect->parts == NULL) {
             Free(effect);
             return NULL;
-        }        
+        }
     } else {
         effect->parts = 0;
     }
-    
+
     if (dataSize != 0) {
         effect->data = _malloc(dataSize);
         if (effect->data == NULL) {
             Free(effect);
             Free(effect->parts);
             return NULL;
-        }        
+        }
     } else {
         effect->data = NULL;
     }
-    
+
     if (gEffectListHead->next != NULL) {
         gEffectListHead->next->previous = effect;
     }
-    
+
     effect->numParts = numParts;
     effect->lifeTime = 0.0f;
     effect->fpUpdate = fpUpdate;
@@ -4280,7 +4278,7 @@ void Effect_TypeA_Init(f32 posX, f32 posY, f32 posZ, s32 numParts, s32 size) {
     Effect* effect;
     EffectPart* parts;
     s32 i;
-    
+
     effect = Effect_Alloc(numParts, 0, &Effect_TypeA_Update);
     if (effect == NULL) {
         return;
@@ -4307,7 +4305,7 @@ void Effect_TypeA_Init2(f32 posX, f32 posY, f32 posZ, s32 numParts, s32 size) {
     Effect* effect;
     EffectPart* parts;
     s32 i;
-    
+
     effect = Effect_Alloc(numParts, 0, &Effect_TypeA_Update);
     if (effect == NULL) {
         return;
@@ -4412,12 +4410,12 @@ Effect* Effect_TypeB_Init(f32 posX, f32 posY, f32 posZ, s32 numParts) {
     Effect* effect;
     EffectPart* parts;
     s32 i;
-    
+
     effect = Effect_Alloc(numParts, 0, &Effect_TypeB_Update);
     if (effect == NULL) {
         return effect;
     }
-    
+
     effect->pos.x = posX;
     effect->pos.y = posY;
     effect->pos.z = posZ;
@@ -4437,7 +4435,7 @@ Effect* Effect_TypeB_Init(f32 posX, f32 posY, f32 posZ, s32 numParts) {
 
         parts[i].vel.x = 0.0f;
         parts[i].vel.y = -10.0f;
-        parts[i].vel.z = 0.0f;        
+        parts[i].vel.z = 0.0f;
     }
 
     return effect;
@@ -4445,7 +4443,7 @@ Effect* Effect_TypeB_Init(f32 posX, f32 posY, f32 posZ, s32 numParts) {
 
 void func_8006266C(Effect* effect) {
     Effect_HealthBar_Data* data = (Effect_HealthBar_Data*)effect->data;
- 
+
     data->mode = 1;
     data->idleTime = 0.0f;
 }
@@ -4515,7 +4513,7 @@ void Effect_HealthBar_Update(Effect* effect, Gfx** pGfxPos) {
         data->idleTime = 0.0f;
         data->mode = 1;
     }
-    
+
     for (i = data->lastHP; i < *data->curHPPtr; i++) {
         parts[i].unk_25 = 0;
         data->idleTime = 0.0f;
@@ -4586,7 +4584,7 @@ Effect* Effect_HealthBar_Init(s32 posX, s32 posY, s32* arg2, s32* arg3, u32 arg4
     EffectPart* parts;
     Effect_HealthBar_Data* data;
     s32 i;
-    
+
     effect = Effect_Alloc(*arg2, sizeof(Effect_HealthBar_Data), &Effect_HealthBar_Update);
     if (effect == NULL) {
         return effect;
@@ -4596,7 +4594,7 @@ Effect* Effect_HealthBar_Init(s32 posX, s32 posY, s32* arg2, s32* arg3, u32 arg4
 
     data = (Effect_HealthBar_Data*)effect->data;
     data->mode = 0;
-    data->curHPPtr = arg2;    
+    data->curHPPtr = arg2;
     data->movePhase = 0.0f;
     data->lastHP = *arg2;
     data->idleTime = 0.0f;
@@ -4613,7 +4611,7 @@ Effect* Effect_HealthBar_Init(s32 posX, s32 posY, s32* arg2, s32* arg3, u32 arg4
 
         parts[i].pos.x = i * 14;
         parts[i].pos.y = 0.0f;
-        parts[i].pos.z = 0.0f;      
+        parts[i].pos.z = 0.0f;
     }
 
     return effect;
@@ -4667,7 +4665,7 @@ void func_80063160(Effect* effect, Gfx** pGfxPos) {
     if (D_80176F58[0] == 1 && D_80176F58[1] == 1) {
         return;
     }
-    
+
     if (D_800F687C == 0) {
         data->idleTime = 0.0f;
         if (D_800F06E4 < 0) {
@@ -4741,7 +4739,7 @@ Effect* func_800634D4(s32 posX, s32 posY, s32* arg2, s32* arg3, u32 arg4, s32 ar
     EffectPart* parts;
     Effect_HealthBar_Data* data;
     s32 i;
-    
+
     effect = Effect_Alloc(*arg2, sizeof(Effect_HealthBar_Data), &func_80063160);
     if (effect == NULL) {
         return effect;
@@ -4751,7 +4749,7 @@ Effect* func_800634D4(s32 posX, s32 posY, s32* arg2, s32* arg3, u32 arg4, s32 ar
 
     data = (Effect_HealthBar_Data*)effect->data;
     data->mode = 0;
-    data->curHPPtr = arg2;    
+    data->curHPPtr = arg2;
     data->movePhase = 0.0f;
     data->lastHP = *arg2;
     data->idleTime = 0.0f;
@@ -4768,7 +4766,7 @@ Effect* func_800634D4(s32 posX, s32 posY, s32* arg2, s32* arg3, u32 arg4, s32 ar
 
         parts[i].pos.x = i * 14;
         parts[i].pos.y = 0.0f;
-        parts[i].pos.z = 0.0f;      
+        parts[i].pos.z = 0.0f;
     }
 
     return effect;
@@ -4810,7 +4808,7 @@ Effect* Effect_TypeC_Init(f32 posX, f32 posY, f32 posZ, f32 targetX, f32 targetY
     Effect_TypeC_Data* data;
     s32 i;
     f32 dist;
-    
+
     dist = NORM_3(posX - targetX, posY - targetY, posZ - targetZ);
     effect = Effect_Alloc(numParts, sizeof(Effect_TypeC_Data), &Effect_TypeC_Update);
     if (effect == NULL) {
@@ -4922,7 +4920,7 @@ void Effect_TypeD_Update(Effect* effect, Gfx** pGfxPos) {
         if (effect->lifeTime >= 1.0f) {
             Effect_Free(effect);
         }
-    }    
+    }
 }
 #else
 void Effect_TypeD_Update(Effect* effect, Gfx** pGfxPos);
@@ -4935,7 +4933,7 @@ Effect* Effect_TypeD_Init(f32 posX, f32 posY, f32 posZ, f32 targetX, f32 targetY
     Effect_TypeD_Data* data;
     s32 i;
     f32 dist;
-    
+
     if (SQ(posX - targetX) + SQ(posY - targetY) + SQ(posZ - targetZ) > 0.0f) {
         dist = NORM_3(posX - targetX, posY - targetY, posZ - targetZ);
     } else {
@@ -5003,7 +5001,7 @@ void Effect_TypeE_Update(Effect* effect, Gfx** pGfxPos) {
     Effect_TypeE_Data* data = (Effect_TypeE_Data*)effect->data;
     f32 alpha = 255.0f - effect->lifeTime * 254.0f;
     EffectPart* parts = effect->parts;
-    
+
     if (alpha > 254.0) {
         alpha = 254.0f;
     }
@@ -5070,7 +5068,7 @@ void Effect_TypeF_Update(Effect* effect, Gfx** pGfxPos) {
     Effect_TypeF_Data* data = (Effect_TypeF_Data*)effect->data;
     f32 alpha = 255.0f * sinf(effect->lifeTime * PI_HALF);
     EffectPart* parts = effect->parts;
-    
+
     if (alpha > 254.0) {
         alpha = 254.0f;
     }
@@ -5334,7 +5332,7 @@ void Effect_TypeK_Update(Effect* effect, Gfx** pGfxPos) {
     printUISprite(-160.0f, 0.0f, 0.0f, 0.0f, 1, 160.0f, 240.0f, 0.0f, SPRITE_BLANK);
     setPrimColor(0, 0, 0, 255);
     printUISprite(320.0f, 0.0f, 0.0f, 0.0f, 1, 160.0f, 240.0f, 0.0f, SPRITE_BLANK);
-    
+
     func_80061240();
 
     effect->lifeTime += 1.0f / effect->duration;
@@ -5382,7 +5380,7 @@ void Effect_TypeL_Update(Effect* effect, Gfx** pGfxPos) {
     printUISprite(-320.0f, 0.0f, 0.0f, 0.0f, 1, 322.0f, 480.0f, 0.0f, SPRITE_BLANK);
     setPrimColor(0, 0, 0, 255);
     printUISprite(0.0f, 240.0f, 0.0f, 0.0f, 1, 320.0f, 240.0f, 0.0f, SPRITE_BLANK);
-    
+
     func_80061240();
 
     effect->lifeTime += 1.0f / effect->duration;
@@ -5433,7 +5431,7 @@ void Effect_TypeM_Update(Effect* effect, Gfx** pGfxPos) {
 
 Effect* Effect_TypeM_Init(f32 posX, f32 posY, f32 posZ, s32* finishPtr, Gfx* dlist) {
     Effect_TypeM_Data* data;
-    Effect* effect;    
+    Effect* effect;
 
     effect = Effect_Alloc(0, sizeof(Effect_TypeM_Data), &Effect_TypeM_Update);
     if (effect == NULL) {
@@ -5455,7 +5453,7 @@ Effect* Effect_TypeM_Init(f32 posX, f32 posY, f32 posZ, s32* finishPtr, Gfx* dli
 
 Effect* Effect_TypeM_Init2(f32 posX, f32 posY, f32 posZ, f32 scaleX, f32 scaleY, f32 scaleZ, f32 rotX, f32 rotY, f32 rotZ, s32* finishPtr, Gfx* dlist) {
     Effect_TypeM_Data* data;
-    Effect* effect;    
+    Effect* effect;
     Mtx mtx;
 
     effect = Effect_Alloc(0, sizeof(Effect_TypeM_Data), &Effect_TypeM_Update);
@@ -5529,7 +5527,7 @@ void Effect_TypeO_Update(Effect* effect, Gfx** pGfxPos) {
 }
 
 Effect* Effect_TypeO_Init(u8 colorR, u8 colorG, u8 colorB, s32 delay, s32 duration) {
-    Effect* effect;    
+    Effect* effect;
 
     effect = Effect_Alloc(0, 0, &Effect_TypeO_Update);
     if (effect == NULL) {
@@ -5562,7 +5560,7 @@ void Effect_TypeP_Update(Effect* effect, Gfx** pGfxPos) {
 }
 
 Effect* Effect_TypeP_Init(u8 colorR, u8 colorG, u8 colorB, s32 delay, s32 duration) {
-    Effect* effect;    
+    Effect* effect;
 
     effect = Effect_Alloc(0, 0, &Effect_TypeP_Update);
     if (effect == NULL) {
@@ -5599,7 +5597,7 @@ void Effect_TypeQ_Update(Effect* effect, Gfx** pGfxPos) {
 }
 
 Effect* Effect_TypeQ_Init(u8 colorR, u8 colorG, u8 colorB, s32 delay, s32 duration) {
-    Effect* effect;    
+    Effect* effect;
 
     effect = Effect_Alloc(0, 0, &Effect_TypeQ_Update);
     if (effect == NULL) {
@@ -5636,7 +5634,7 @@ void Effect_TypeR_Update(Effect* effect, Gfx** pGfxPos) {
 }
 
 Effect* Effect_TypeR_Init(u8 colorR, u8 colorG, u8 colorB, s32 delay, s32 duration) {
-    Effect* effect;    
+    Effect* effect;
 
     effect = Effect_Alloc(0, 0, &Effect_TypeR_Update);
     if (effect == NULL) {
@@ -5671,7 +5669,7 @@ void Effect_TypeS_Update(Effect* effect, Gfx** pGfxPos) {
         } else {
             printUISprite(32.0f, 200.0f, 0.0f, 0.0f, 1, 24.0f, 16.0f, 0.0f, SPRITE_CAMERA); //frame 0
         }
-        
+
         if (D_800F687C > 0) {
             effect->lifeTime += 1.0f / effect->duration;
             if (effect->lifeTime >= 1.0f) {
@@ -5811,7 +5809,7 @@ void Effect_TypeU_Init(f32 posX, f32 posY, f32 posZ, f32 targetX, f32 targetY, f
 void Bowling_CountPins(s32* pinsRemaining) {
     s32 i;
     s32 pinCount;
-    
+
     for (i = 0, pinCount = 0; i < ARRAY_COUNT(gActors); i++){
         if (gActors[i].actorID == BOWLING_PINS) {
             pinCount++;
@@ -5925,7 +5923,7 @@ void Effect_TypeV_Init(f32 posX, f32 posY, f32 posZ, f32 velX, f32 velY, f32 vel
     effect->vel.y = velY;
     effect->vel.z = velZ;
     effect->lifeTime = 0.0f;
-    effect->duration = 1.0f / duration;    
+    effect->duration = 1.0f / duration;
 }
 
 void Effect_TypeW_Update(Effect* effect, Gfx** pGfxPos) {
@@ -5940,7 +5938,7 @@ void Effect_TypeW_Update(Effect* effect, Gfx** pGfxPos) {
                 Effect_TypeV_Init(effect->pos.x, effect->pos.y, effect->pos.z, velX, velY, velZ, effect->sizeX, effect->sizeY, TRUE, 0);
             }
             effect->unk5 = TRUE;
-        }        
+        }
 
         effect->lifeTime += effect->duration;
         if (effect->lifeTime >= 1.0f) {
@@ -5961,12 +5959,12 @@ void Effect_TypeW_Init(f32 posX, f32 posY, f32 posZ, f32 size, s32 duration, s32
     }
 
     effect->spriteID = arg5;
-    effect->unk5 = FALSE;    
+    effect->unk5 = FALSE;
     effect->pos.x = posX;
     effect->pos.y = posY;
     effect->pos.z = posZ;
     effect->sizeX = size;
-    effect->sizeY = duration;    
+    effect->sizeY = duration;
     effect->lifeTime = 0.0f;
     effect->duration = 1.0f / (duration + 20);
     LoadSprite(SPRITE_TWINKLE);
@@ -5975,7 +5973,7 @@ void Effect_TypeW_Init(f32 posX, f32 posY, f32 posZ, f32 size, s32 duration, s32
 void LoadPlayerEyes(s32 arg0) {
     s32 i;
     s32 var_s0 = (arg0 * 10) + 114;
-    
+
     for (i = 0; i != 10; i++){
         gLockContextEyes = LoadSprite(var_s0);
         if ((gLockContextEyes) > 0) {
@@ -6112,7 +6110,7 @@ void Effect_PlayerEyes_Update(Effect* effect, Gfx** pGfxPos) {
 
 u32 Effect_PlayerEyes_Init(s32 charID, s32 arg1, f32 duration, s32 arg3) {
     s32 arg0;
-    Effect* effect;    
+    Effect* effect;
 
     if (gDontChangeEyes == TRUE) {
         return FALSE;
@@ -6121,7 +6119,7 @@ u32 Effect_PlayerEyes_Init(s32 charID, s32 arg1, f32 duration, s32 arg3) {
         return FALSE;
     }
 
-    if (Battle_GameType == 0) {
+    if (Battle_GameType == BATTLE_TYPE_NOTBATTLE) {
         arg0 = 0;
     } else {
         arg0 = charID;
@@ -6161,15 +6159,15 @@ u32 Effect_PlayerEyes_Init(s32 charID, s32 arg1, f32 duration, s32 arg3) {
         D_800FE4E4[arg0].unk_00 = 1;
     } else if (arg3 == 2) {
         D_800FE4E4[arg0].unk_01 = 1;
-    } 
+    }
 
     if (TRUE) { // TODO fake match ??
         effect->spriteID = 114 + charID * 10;
-        effect->unk8 = arg0;    
+        effect->unk8 = arg0;
         effect->pos.x = arg1;
         effect->pos.y = arg3;
-        effect->pos.z = charID;        
-        effect->lifeTime = 0.0f;    
+        effect->pos.z = charID;
+        effect->lifeTime = 0.0f;
         effect->duration = 1.0f / duration;
     }
     return TRUE;
@@ -6187,10 +6185,10 @@ void Effect_BossDeadEyes_Update(Effect* effect, Gfx** pGfxPos) {
             break;
         case 7:
             FreeSprite(SPRITE_EYES_DEAD_QUINTELLA);
-            break;        
+            break;
         case 30:
             FreeSprite(SPRITE_EYES_DEAD_ARMADILLO);
-            break;        
+            break;
     }
     Effect_Free(effect);
 }
@@ -6205,7 +6203,7 @@ void Effect_BossDeadEyes_Init(s32 arg0) {
             break;
         case 7:
             ret = LoadSprite(SPRITE_EYES_DEAD_QUINTELLA);
-            break;        
+            break;
         case 30:
             ret = LoadSprite(SPRITE_EYES_DEAD_ARMADILLO);
             break;
@@ -6227,7 +6225,7 @@ void SetBossDeadEyes(s32 arg0) {
     SpriteListing* sprite;
     s32 rasterSize;
     s32 eyesIndex;
-    s32 spriteIndex;    
+    s32 spriteIndex;
 
     switch(arg0) {
         case 75:
@@ -6239,7 +6237,7 @@ void SetBossDeadEyes(s32 arg0) {
             //same line required
             spriteIndex = SPRITE_EYES_DEAD_QUINTELLA;\
             eyesIndex = 1;
-            break;       
+            break;
         case 30:
             //same line required
             spriteIndex = SPRITE_EYES_DEAD_ARMADILLO;\
@@ -6261,7 +6259,7 @@ void Effect_TypeX_Update(Effect* effect, Gfx** pGfxPos) {
     f32 q;
     f32 unused2[2];
     u8 temp;
-    
+
     sp34 = cosf(effect->lifeTime * PI_HALF);
     sinAngle = sinf(effect->lifeTime * PI_HALF);
     q = 128.0f * sinAngle;
@@ -6305,7 +6303,7 @@ void Effect_TypeX_Init(f32 posX, f32 posY, f32 posZ, f32 velX, f32 velY, f32 vel
     effect->vel.y = velY;
     effect->vel.z = velZ;
     effect->lifeTime = 0.0f;
-    effect->duration = 1.0f / duration;    
+    effect->duration = 1.0f / duration;
 }
 
 void Effect_TypeX_Create(f32 arg0, f32 arg1, f32 arg2, f32 arg3, s32 arg4) {
@@ -6324,7 +6322,7 @@ void Effect_TypeY_Update(Effect* effect, Gfx** pGfxPos) {
     f32 nv;
     f32 scaleY = effect->vel.y;
 
-    if (D_800F687C > 0 && (gTimer % 5) == 0) {        
+    if (D_800F687C > 0 && (gTimer % 5) == 0) {
         f32 f2 = ABS2(effect->lifeTime - 0.5f);
         nv = f2 * scaleY + effect->vel.y;
         Effect_TypeH_Init(effect->pos.x, effect->pos.y, effect->pos.z, 0.0f, 0.0f, 0.0f, effect->vel.x, nv, effect->vel.z, 90.0f, 12, 0);
@@ -6351,7 +6349,7 @@ void Effect_TypeY_Init(f32 posX, f32 posY, f32 posZ, f32 scaleX, f32 scaleY, f32
     effect->vel.y = scaleY;
     effect->vel.z = scaleZ;
     effect->lifeTime = 0.0f;
-    effect->duration = 1.0f / duration;    
+    effect->duration = 1.0f / duration;
 }
 
 void Effect_TypeZ_Update(Effect* effect, Gfx** pGfxPos) {
@@ -6410,12 +6408,12 @@ void Effect_TypeZ_Init(f32 posX, f32 posY, f32 posZ, f32 arg3, f32 arg4, f32 arg
     effect->spriteID = arg8;
     effect->pos.x = posX;
     effect->pos.y = posY;
-    effect->pos.z = posZ;    
+    effect->pos.z = posZ;
     effect->vel.x = arg3;
     effect->vel.y = arg4;
     effect->vel.z = arg5;
     effect->lifeTime = 0.0f;
-    effect->duration = 1.0f / duration;    
+    effect->duration = 1.0f / duration;
 }
 
 void Effect_TypeZ_Create(f32 posX, f32 posY, f32 posZ, f32 arg3, f32 arg4, s32 arg5) {
@@ -6423,11 +6421,11 @@ void Effect_TypeZ_Create(f32 posX, f32 posY, f32 posZ, f32 arg3, f32 arg4, s32 a
     s32 i;
     f32 delta;
     f32 x1, y1, z1;
-    u8 r,g,b;    
+    u8 r,g,b;
 
-    if (Battle_GameType != 0 || gCurrentStage == STAGE_TRAINING) {
+    if (Battle_GameType != BATTLE_TYPE_NOTBATTLE || gCurrentStage == STAGE_TRAINING) {
         return;
-    }   
+    }
 
     delta = 360.0f / arg5;
     for (angle = 0.0f, i = 0; i < arg5; angle += delta, i++) {
@@ -6466,7 +6464,7 @@ void Effect_TypeAA_Update(Effect* effect, Gfx** pGfxPos) {
     Effect_TypeAA_Data* data = (Effect_TypeAA_Data*)effect->data;
     f32 x, y, z, t; // sp84, sp80, sp7C
     f32 sp74;
-    f32 angleX, angleY, angleZ; // sp70, sp6C, sp68    
+    f32 angleX, angleY, angleZ; // sp70, sp6C, sp68
     s32 i;
 
     if (effect->unk5 == 0) {
@@ -6483,7 +6481,7 @@ void Effect_TypeAA_Update(Effect* effect, Gfx** pGfxPos) {
 
             t = -sinf(angleY) * z;
             z = cosf(angleY) * z;
-            
+
             x = cosf(angleZ) * t - sinf(angleZ) * y;
             y = sinf(angleZ) * t + cosf(angleZ) * y;
 
@@ -6559,14 +6557,14 @@ void Effect_TypeAA_Init(f32 posX, f32 posY, f32 posZ, f32 arg3, f32 arg4, f32 ar
     effect->numParts = 0;
     effect->pos.x = posX;
     effect->pos.y = posY;
-    effect->pos.z = posZ;    
+    effect->pos.z = posZ;
     effect->vel.x = arg4;
     effect->vel.y = arg5;
     effect->vel.z = arg6;
     effect->sizeX = arg3;
     effect->sizeY = arg7;
     effect->lifeTime = 1.0f;
-    effect->duration = 1.0f / duration;    
+    effect->duration = 1.0f / duration;
 }
 
 void Effect_TypeAB_Update(Effect* effect, Gfx** pGfxPos) {
@@ -6615,12 +6613,12 @@ void Effect_TypeAB_Init(f32 posX, f32 posY, f32 posZ, f32 arg3, f32 arg4, f32 ar
     effect->spriteID = argB;
     effect->pos.x = posX;
     effect->pos.y = posY;
-    effect->pos.z = posZ;    
+    effect->pos.z = posZ;
     effect->vel.x = arg3;
     effect->vel.y = arg4;
     effect->vel.z = arg5;
     effect->lifeTime = 0.0f;
-    effect->duration = 1.0f / duration;    
+    effect->duration = 1.0f / duration;
 }
 
 void Effect_TypeAB_TypeAC_Create(f32 posX, f32 posY, f32 posZ, f32 arg3, f32 arg4, s32 arg5) {
@@ -6740,10 +6738,10 @@ void Effect_TypeAC_Init(f32 posX, f32 posY, f32 posZ, f32 arg3, f32 duration) {
 
     effect->pos.x = posX;
     effect->pos.y = posY;
-    effect->pos.z = posZ;    
+    effect->pos.z = posZ;
     effect->vel.x = arg3;
     effect->lifeTime = 0.0f;
-    effect->duration = 1.0f / duration;    
+    effect->duration = 1.0f / duration;
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8006F230.s")
@@ -6764,7 +6762,7 @@ void Effect_TypeAD_Update(Effect* effect, Gfx** pGfxPos) {
     }
 
     // BUG effect used after freeing
-    
+
     if (effect->lifeTime > effect->duration) {
         sp50 = sinf(sp54 * 0.01745329251994);
         effect->pos.x = effect->vel.x + RANDOM(effect->vel.y - 100.0f, effect->vel.y) * sp50;
@@ -6786,12 +6784,12 @@ void Effect_TypeAD_Init(f32 posX, f32 posY, f32 posZ, f32 arg3, f32 arg4, f32 ar
     arg3 -= 90.0f;
     effect->pos.x = 0.0f;
     effect->pos.y = posY;
-    effect->pos.z = 0.0f;    
+    effect->pos.z = 0.0f;
     effect->vel.x = posX + sinf(arg3 * 0.01745329251994) * arg4;
     effect->vel.y = arg5 * 0.7f;
     effect->vel.z = posZ + cosf(arg3 * 0.01745329251994) * arg4;
     effect->lifeTime = 0.0f;
-    effect->duration = 1.0f;    
+    effect->duration = 1.0f;
 }
 
 void func_8006FD14(f32 posX, f32 posY, f32 posZ) {
@@ -6841,7 +6839,7 @@ void Effect_TypeAE_Init(f32 posX, f32 posY, f32 posZ, f32 arg3, f32 arg4, f32 du
     effect->vel.y = 10.0f;
     effect->vel.z = -cosAngle * arg4 * 0.8f;
     effect->lifeTime = 0.0f;
-    effect->duration = 1.0f / duration;    
+    effect->duration = 1.0f / duration;
 }
 
 void Effect_TypeAF_Update(Effect* effect, Gfx** pGfxPos) {
@@ -6849,7 +6847,7 @@ void Effect_TypeAF_Update(Effect* effect, Gfx** pGfxPos) {
     Effect_TypeAF_Data* data = (Effect_TypeAF_Data*)effect->data;
     f32 f28 = data->unk_24 - sinf(data->unk_20 * 0.01745329251994) * data->unk_24 / 4;
     s32 i;
-    f32 angle;    
+    f32 angle;
     f32 temp;
 
     if (D_800F687C > 0) {
@@ -6909,9 +6907,9 @@ void Effect_TypeAF_Init(f32* arg0, f32* arg1, f32* arg2, f32 arg3, f32 arg4, f32
     effect->spriteID = arg8;
     effect->vel.x = arg3;
     effect->vel.y = arg5;
-    effect->vel.z = 0.0f;    
+    effect->vel.z = 0.0f;
     effect->lifeTime = 0.0f;
-    effect->duration = 1.0f / duration;    
+    effect->duration = 1.0f / duration;
 }
 
 void Effect_TypeAG_Update(Effect* effect, Gfx** pGfxPos) {
@@ -6949,7 +6947,7 @@ void Effect_TypeAG_Init(f32 arg0, f32 arg1, s32 arg2) {
     func_80088474(effect->spriteID, 0);
     effect->pos.x = 1.0f / arg0;
     effect->pos.y = 1.0f / arg1;
-    effect->pos.z = 0;    
+    effect->pos.z = 0;
     effect->lifeTime = 0.0f;
     effect->duration = arg2;
 }
@@ -6963,7 +6961,7 @@ void Effect_TypeAH_Update(Effect* effect, Gfx** pGfxPos) {
     s32 sp44;
     Mtx* sp40;
     Mtx* mtxPos;
-    
+
 
     guMtxIdent(&data->mtx[data->unk_A9C]);
     guScale(&mtx, 1.4f, 1.4f, 1.4f);
@@ -7083,7 +7081,7 @@ void Effect_TypeAI_Init(u8 arg0, f32 arg1, f32 arg2, s32 arg3) {
     effect->unk5 = arg0;
     effect->pos.x = 0.0f;
     effect->pos.y = 1.0f / arg2;
-    effect->lifeTime = 0.0f;    
+    effect->lifeTime = 0.0f;
     effect->duration = 1.0f / arg1;
 }
 
@@ -7118,7 +7116,7 @@ void Effect_TypeAJ_Init(u8 arg0, f32 arg1, f32 arg2) {
     effect->unk5 = arg0;
     effect->pos.y = 0.0f;
     effect->pos.z = 1.0f / arg1;
-    effect->lifeTime = 0.0f;    
+    effect->lifeTime = 0.0f;
     effect->duration = 1.0f / arg2;
     setPrimColor(arg0, arg0, arg0, 255);
     printUISprite(0.0f, 0.0f, 0.0f, 0.0f, 1, 320.0f, 240.0f, 0.0f, SPRITE_BLANK);
@@ -7157,7 +7155,7 @@ s32 func_8007101C(void) {
 
 void Effect_TypeAK_Update(Effect* effect, Gfx** pGfxPos) {
     f32 alpha;
-    f32 sp38;    
+    f32 sp38;
 
     switch (effect->unk5) {
         case 0:
@@ -7212,7 +7210,7 @@ void Effect_TypeAK_Init(f32 posX, f32 posY, f32 arg2, f32 arg3, f32 arg4, f32 ar
 
     effect->spriteID = 0xBD + arg6;
     effect->unk5 = 0;
-    effect->pos.x = posX;    
+    effect->pos.x = posX;
     effect->pos.y = posY;
     effect->vel.x = 1.0f / arg3;
     effect->vel.y = 1.0f / arg4;
@@ -7344,6 +7342,7 @@ void Effect_TypeAL_Update(Effect* effect, Gfx** pGfxPos) {
     s32 a0, a1;
     s32 i, j;
 
+    //draw background
     setPrimColor(0, 0, 0, 255);
     func_80059F28(0.0f, 0.0f, 0.0f, 0.0f, 1, 320.0f, 240.0f, 0.0f, SPRITE_BLANK);
     func_8007B480(0.0f, 10000.0f, 0.0f, 0.0f, 10000.0f, 600.0f);
@@ -7440,7 +7439,7 @@ void Effect_TypeAL_Init(void) {
     data->unk_10 = 0;
 
     LoadSprite(SPRITE_JSS_COPYRIGHT);
-    LoadSprite(SPRITE_THE_END);    
+    LoadSprite(SPRITE_THE_END);
 
     effect->spriteID = 1;
     effect->unk5 = 0;
@@ -7485,7 +7484,7 @@ void Effect_TypeAM_Update(Effect* effect, Gfx** pGfxPos) {
             break;
         case 1:
             if (effect->numParts < 20) {
-                effect->lifeTime += effect->duration;   
+                effect->lifeTime += effect->duration;
                 if (effect->lifeTime >= 1.0f) {
                     effect->lifeTime = 0.0f;
                     sp90 = effect->vel.x + RANDOM(45, 120);
@@ -7533,7 +7532,7 @@ void Effect_TypeAM_Init(f32 posX, f32 posY, f32 posZ, f32 arg3, s32* arg4) {
     data->unk_00 = arg4;
 
     effect->spriteID = 0;
-    
+
     effect->numParts = 0;
     effect->pos.x = posX;
     effect->pos.y = posY;
@@ -7550,7 +7549,7 @@ void printStageRecordTimes(s32 arg0) {
     s32 sp98;
     s32 sp94;
     s32 sp90;
-    s32 sp8C;    
+    s32 sp8C;
     f32 yOffset;
 
     yOffset = 0.0f;
@@ -7739,7 +7738,7 @@ void Effect_ControllerRumble_Update(Effect* effect, Gfx** pGfxPos) {
         func_800612F0(D_800FE750[i].unk_04 + 1);
         func_80059F28(32 + i * 32, 80.0f, 0.0f, 0.0f, 1, 32.0f, temp, D_800FE750[i].unk_00, SPRITE_TEXTBIGGER);
     }
-    
+
     s2 = effect->unk5;
     switch (s2) {
         case 0:
@@ -7809,7 +7808,7 @@ void Effect_TypeAP_Update(Effect* effect, Gfx** pGfxPos) {
             }
             break;
         case 2:
-            f0 = effect->lifeTime / 32; 
+            f0 = effect->lifeTime / 32;
             if (f0 > 0.0 && f0 <= 0.25) {
                 effect->pos.x = f0 / 0.25 * 255.0;
             }
@@ -7933,7 +7932,7 @@ void Effect_TypeAQ_Init(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 ar
     s32 sp5C;
     s32 i = 0;
     unsigned char* ptr = arg7;
-    
+
 
     while (*ptr != 0) {
         ptr+=2;
@@ -7950,7 +7949,7 @@ void Effect_TypeAQ_Init(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 ar
     }
 
     data = (Effect_TypeAQ_Data*)effect->data;
-    *arg9 = 1;    
+    *arg9 = 1;
     parts = effect->parts;
 
     for (i = 0, ptr = arg7; i < effect->numParts; ptr+=2, i++) {
@@ -7984,7 +7983,7 @@ void Effect_TypeAQ_Init(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 ar
 
     data->unk_18 = arg9;
     data->unk_1C = 0;
-    data->unk_14 = arg6;    
+    data->unk_14 = arg6;
 
     effect->pos.x = arg0;
     effect->pos.y = arg1;
@@ -8054,7 +8053,7 @@ void Effect_TypeAR_Init(f32 arg0, f32 arg1, s32 arg2, f32 arg3, f32 arg4, f32 ar
     s32 i = 0;
     f32 f0;
     unsigned char* ptr = arg7;
-    
+
     while (*ptr != 0) {
         ptr+=2;
         i++;
@@ -8082,7 +8081,7 @@ void Effect_TypeAR_Init(f32 arg0, f32 arg1, s32 arg2, f32 arg3, f32 arg4, f32 ar
     data->unk_08 = 1.0f / arg5;
     data->unk_18 = arg9;
     data->unk_14 = arg6;
-    data->unk_20 = arg7;    
+    data->unk_20 = arg7;
 
     effect->spriteID = arg8;
     effect->unk5 = 0;
@@ -8102,7 +8101,7 @@ void Effect_TypeAS_Update(Effect* effect, Gfx** pGfxPos) {
     s32 i;
     f32 offsetX;
     f32 alpha;
-    
+
     switch (effect->unk5) {
         case 0:
             effect->lifeTime += effect->pos.z;
@@ -8151,7 +8150,7 @@ void Effect_TypeAS_Update(Effect* effect, Gfx** pGfxPos) {
             do { offsetX = effect->sizeX - effect->sizeX; } while (0);
             if (effect->unk5 == 3) {
                 sizeX = effect->sizeX;
-                alpha = cosf(effect->lifeTime * PI_HALF);                
+                alpha = cosf(effect->lifeTime * PI_HALF);
             } else {
                 sizeX = effect->sizeX;
                 alpha = 1.0f;
@@ -8169,7 +8168,7 @@ void Effect_TypeAS_Init(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 ar
     Effect_TypeAS_Data* data;
     s32 i;
     s32 power;
-    
+
     power = 1;
     for (i = 0; i < argC - 1; i++) {
         power *= 10;
@@ -8187,7 +8186,7 @@ void Effect_TypeAS_Init(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 ar
     effect->sizeX = 16.0f * arg2;
     effect->sizeY = 24.0f * arg3;
     effect->unk5 = 0;
-    
+
     if (argD == 1) {
         argC = 8;
     }
@@ -8198,7 +8197,7 @@ void Effect_TypeAS_Init(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 ar
     effect->vel.x = 1.0f / arg5;
     effect->vel.y = 1.0f / arg6;
     effect->vel.z = 1.0f / (arg7 - argC * arg5 - arg6);
-    effect->lifeTime = 0.0f;    
+    effect->lifeTime = 0.0f;
 
     if (argD == 0) {
         for (i = 0; i < argC; i++) {
@@ -8258,7 +8257,7 @@ void Effect_TypeAT_Update(Effect* effect, Gfx** pGfxPos) {
             if (effect->lifeTime >= 1.0f) {
                 Effect_Free(effect);
                 return;
-            } 
+            }
             alpha = cosf(effect->lifeTime * PI_HALF);
             effect->lifeTime += effect->vel.z;
             break;
@@ -8285,12 +8284,12 @@ void Effect_TypeAT_Init(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 ar
     effect->spriteID = arg6;
     effect->unk5 = 0;
     effect->pos.x = arg0;
-    effect->pos.y = arg1;   
+    effect->pos.y = arg1;
     effect->pos.z = 1.0f / (arg5 - arg3 - arg4);
-    effect->vel.x = arg2;    
-    effect->vel.y = 1.0f / arg3;    
+    effect->vel.x = arg2;
+    effect->vel.y = 1.0f / arg3;
     effect->vel.z = 1.0f / arg4;
-    effect->lifeTime = 0.0f;    
+    effect->lifeTime = 0.0f;
 }
 
 void Effect_TypeAU_Update(Effect* effect, Gfx** pGfxPos) {
@@ -8311,15 +8310,15 @@ void Effect_TypeAU_Update(Effect* effect, Gfx** pGfxPos) {
                 alpha = 1.0f;
                 effect->unk5++;
                 effect->lifeTime = 0.0f;
-            } 
+            }
             break;
-        case 2:            
+        case 2:
             alpha = cosf(effect->lifeTime * PI_HALF);
             effect->lifeTime += effect->vel.z;
             if (effect->lifeTime >= 1.0f) {
                 Effect_Free(effect);
                 return;
-            } 
+            }
             break;
     }
 
@@ -8342,11 +8341,11 @@ void Effect_TypeAU_Init(f32 arg0, f32 arg1, f32 arg2, f32 arg3, s32 arg4, s32 ar
 
     effect->unk5 = 0;
     effect->pos.x = arg0;
-    effect->pos.y = arg1;   
+    effect->pos.y = arg1;
     effect->vel.x = arg2;
     effect->vel.y = arg3;
     effect->lifeTime = 0.0f;
-    effect->pos.z = 1.0f / arg6;    
+    effect->pos.z = 1.0f / arg6;
     effect->vel.z = 1.0f / arg7;
     effect->duration = 1.0f / (arg8 - arg6 - arg7);
 }
@@ -8465,7 +8464,7 @@ void Effect_TypeAW_Init(f32 posX, f32 posY, f32 posZ, f32 arg3, f32 arg4, f32 ar
     data->dlist = static0_gfx3_Gfx;
     data->yaw = yaw;
     data->mtxIndex = 0;
-    data->finished = FALSE;    
+    data->finished = FALSE;
 
     effect->pos.x = posX;
     effect->pos.y = posY;
@@ -8578,7 +8577,7 @@ void Effect_TypeAY_Update(Effect* effect, Gfx** pGfxPos) {
     f32 unused[1];
     f32 sp44;
     s32 i;
-    
+
 
     if (D_800FE74C == 0) {
         gIsGamePaused = PAUSEMODE_NOT_PAUSED;
@@ -8744,7 +8743,7 @@ void Effect_TypeAZ_Init(f32 arg0, f32 arg1, f32 arg2, f32 arg3, s32 arg4, unk_80
     for (i = 0; i < arg4; i++) {
         data->unk_00[i].unk_08 = 320.0f + i * 64.0f;
         data->unk_00[i].unk_0C = 0.0f;
-        data->unk_00[i].unk_10 = arg2 / arg4 * i;        
+        data->unk_00[i].unk_10 = arg2 / arg4 * i;
         data->unk_00[i].unk_00 = arg5[i].unk_00;
         data->unk_00[i].unk_04 = arg5[i].unk_04;
     }
@@ -8814,7 +8813,7 @@ void Effect_StageRecordTime_Init(f32 arg0, f32 arg1, f32 arg2, u8 arg3, u8 arg4,
 
     for (i = 0; i < 6; i++) {
         data->unk_00[i].unk_00 = D_800FE790[i];
-        data->unk_00[i].unk_10 = arg2 / 5.0f * (5 - i);    
+        data->unk_00[i].unk_10 = arg2 / 5.0f * (5 - i);
     }
     data->unk_79 = arg6;
     data->unk_78 = arg5;
@@ -9035,7 +9034,7 @@ void Effect_TypeBD_Update(Effect* effect, Gfx** pGfxPos) {
     if (D_800F687C > 0) {
         effect->lifeTime += effect->duration;
         effect->pos.x += effect->vel.x;
-        effect->pos.z += effect->vel.z;        
+        effect->pos.z += effect->vel.z;
         if (effect->lifeTime >= 1.0f) {
             Effect_Free(effect);
         }
@@ -9348,7 +9347,7 @@ void func_8007AF58(void) {
 void Rumble_StopAll(void) {
     OSPfs* gRumblePfsTemp = gRumblePfs;
     s32 i;
-    
+
     for (i = 0; i < MAXCONTROLLERS; i++) {
         if (D_80176960[i] == 0) {
             continue;
@@ -9370,7 +9369,27 @@ void Rumble_AddTime(s32 arg0, s32 arg1) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8007B38C.s")
+void func_8007B38C(void) {
+    D_800FE018 = 0.0f;
+    D_800FE01C = 0.0f;
+    D_800FE020 = 0.0f;
+    D_800FE024 = 0.0f;
+    D_800FE028 = 0.0f;
+    D_800FE02C = 0.0f;
+    D_800FE048 = 0.0f;
+    D_800FE04C = 0.0f;
+    D_800FE050 = 0.0f;
+    D_800FE054 = 0.0f;
+    D_800FE058 = 0.0f;
+    D_800FE05C = 0.0f;
+    D_800FE030 = 0.0f;
+    D_800FE034 = 0.0f;
+    D_800FE038 = 0.0f;
+    D_800FE03C = 0.0f;
+    D_800FE040 = 0.0f;
+    D_800FE044 = 0.0f;
+    D_800FE060 = 1.3333334f;
+}
 
 void func_8007B434(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5) {
     D_800FE018 = arg0;
@@ -9435,7 +9454,17 @@ s32 func_8007C500(void) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/PrintTimer.s")
+void PrintTimer(s32 arg0, f32 arg1) {
+    func_800610A8();
+    SetTextGradient_TopBottom(191, 10, 0, 255, 200, 200, 0, 255);
+    printNumber((0 * arg1) + 192, 20, 0, arg1, (arg0 / 1800) % 60, 2, 0);
+    PrintTextWrapper((32 * arg1) + 192, 20, 0, arg1 * 0.8, "：", 1);
+    printNumber((48 * arg1) + 192, 20, 0, arg1, (arg0 / 30) % 60, 2, 0);
+    PrintTextWrapper((80 * arg1) + 192, 20, 0, arg1, "’", 1);
+    printNumber((96 * arg1) + 192, 20, 0, arg1, ((arg0 % 30) * 100) / 30, 2, 0);
+    PrintTextWrapper((128 * arg1) + 192, 20, 0, arg1, "”", 1);
+    func_800610B8();
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8007C7FC.s")
 
@@ -9453,7 +9482,24 @@ void func_8007DFDC(f32 arg0, f32 arg1, f32 arg2, f32 arg3) {
 //prints textbox. arg2= char[3][30]*
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/printTextbox.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8007E5E8.s")
+void func_8007E5E8(void) {
+    if (D_800FE000 == 0) {
+        PrintReset();
+        D_800FEBB4 = 0.0f;
+        D_800FEBB8 = 0.0f;
+        D_800FEBBC = 0.0f;
+        D_800FEBC0 = 0.0f;
+        D_800FEBC4 = 0;
+        D_800FEBC8 = 0;
+        D_800FEBCC = 0;
+        D_800FEBD0 = -1.0f;
+        D_80176F50 = 0.0f;
+        D_800FEBD4.x = 0.0f;
+        D_800FEBD4.y = 0.0f;
+        D_800FEBD4.z = 0.0f;
+        D_800FEBD4.yaw = 0.0f;
+    }
+}
 
 void func_8007E684(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4) {
     D_800FEBD4.x = arg0;

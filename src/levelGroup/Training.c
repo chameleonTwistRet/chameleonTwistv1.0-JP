@@ -494,8 +494,8 @@ RoomObject Training_room6_objects[] = {
     {     {0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, DEGREES_TO_RADIANS_2PI(0.0),   0, 0,    0.0,    0.0,     0.0, 0.0, 0,  0, 0,    0, 0, 0,  0,  0,  0,  0, NULL, NULL, 0, 0, 0,  0, 0, 0,  0, 0, 0}
 };
 
-s32 Training_spriteLib_Sprlib[] = {
-    39,
+s32 Training_spriteLib_Sprlib[2][16] = {
+{   39,
     33,
     47,
     0,
@@ -510,6 +510,8 @@ s32 Training_spriteLib_Sprlib[] = {
     0,
     0,
     0,
+    0},
+{   0,
     0,
     0,
     0,
@@ -524,9 +526,7 @@ s32 Training_spriteLib_Sprlib[] = {
     0,
     0,
     0,
-    0,
-    0,
-    0,
+    0},
 };
 
 RoomInstance Training_room_instances[] = {
@@ -544,11 +544,11 @@ s32 Training_rooms_map[4][3] = {
     {-1, 3, -1},
     { 2, 0,  4},
     { 1, 0,  5},
-    {-1, 6, -1} 
+    {-1, 6, -1}
 };
 
 StageMapData Training_map_data = {
-3, 4, Training_room_instances, Training_rooms_map, 
+    3, 4, Training_room_instances, Training_rooms_map,
 };
 
 RoomInstance Training_ext_room_instances[] = {
@@ -572,13 +572,13 @@ StageData Training_header_Lvlhdr = {
     0,
     Training_rabObjects_Bin,
     131072,
-    &Training_spriteLib_Sprlib[0],
+    Training_spriteLib_Sprlib,
     &Training_scope_Lvlscope,
 };
 s32 training_pad[2] = {0, 0};
 Mtx Training_IMtx2 = IDENTITY;
 
-Lights1 Training_trainingScope1_Light = 
+Lights1 Training_trainingScope1_Light =
     #include "assets/levelGroup/Training/trainingScope1/trainingScope1.light.inc.c"
 
 Vtx Training_model1_Vtx[] = {
@@ -828,7 +828,7 @@ Rect3D Training_unkCol1_ColS = {
 };
 
 ModelCollision Training_unkCol1_ColH = {
-122, 213, &Training_unkCol1_ColV[0], &Training_unkCol1_ColT[0], &Training_unkCol1_ColS
+122, 213, Training_unkCol1_ColV, Training_unkCol1_ColT, &Training_unkCol1_ColS
 };
 
 Vec3f Training_unkCol2_ColV[] = {
@@ -844,7 +844,7 @@ Rect3D Training_unkCol2_ColS = {
 };
 
 ModelCollision Training_unkCol2_ColH = {
-28, 46, &Training_unkCol2_ColV[0], &Training_unkCol2_ColT[0], &Training_unkCol2_ColS
+28, 46, Training_unkCol2_ColV, Training_unkCol2_ColT, &Training_unkCol2_ColS
 };
 
 Vec3f Training_unkCol3_ColV[] = {
@@ -860,7 +860,7 @@ Rect3D Training_unkCol3_ColS = {
 };
 
 ModelCollision Training_unkCol3_ColH = {
-59, 97, &Training_unkCol3_ColV[0], &Training_unkCol3_ColT[0], &Training_unkCol3_ColS
+59, 97, Training_unkCol3_ColV, Training_unkCol3_ColT, &Training_unkCol3_ColS
 };
 
 Vec3f Training_unkCol4_ColV[] = {
@@ -876,7 +876,7 @@ Rect3D Training_unkCol4_ColS = {
 };
 
 ModelCollision Training_unkCol4_ColH = {
-51, 84, &Training_unkCol4_ColV[0], &Training_unkCol4_ColT[0], &Training_unkCol4_ColS
+51, 84, Training_unkCol4_ColV, Training_unkCol4_ColT, &Training_unkCol4_ColS
 };
 
 Vec3f Training_unkCol5_ColV[] = {
@@ -892,7 +892,7 @@ Rect3D Training_unkCol5_ColS = {
 };
 
 ModelCollision Training_unkCol5_ColH = {
-23, 34, &Training_unkCol5_ColV[0], &Training_unkCol5_ColT[0], &Training_unkCol5_ColS
+23, 34, Training_unkCol5_ColV, Training_unkCol5_ColT, &Training_unkCol5_ColS
 };
 
 Vec3f Training_unkCol6_ColV[] = {
@@ -908,7 +908,7 @@ Rect3D Training_unkCol6_ColS = {
 };
 
 ModelCollision Training_unkCol6_ColH = {
-46, 83, &Training_unkCol6_ColV[0], &Training_unkCol6_ColT[0], &Training_unkCol6_ColS
+46, 83, Training_unkCol6_ColV, Training_unkCol6_ColT, &Training_unkCol6_ColS
 };
 
 Vec3f Training_unkCol7_ColV[] = {
@@ -924,7 +924,7 @@ Rect3D Training_unkCol7_ColS = {
 };
 
 ModelCollision Training_unkCol7_ColH = {
-16, 16, &Training_unkCol7_ColV[0], &Training_unkCol7_ColT[0], &Training_unkCol7_ColS
+16, 16, Training_unkCol7_ColV, Training_unkCol7_ColT, &Training_unkCol7_ColS
 };
 
 Vec3f Training_unkCol8_ColV[] = {
@@ -940,7 +940,7 @@ Rect3D Training_unkCol8_ColS = {
 };
 
 ModelCollision Training_unkCol8_ColH = {
-8, 18, &Training_unkCol8_ColV[0], &Training_unkCol8_ColT[0], &Training_unkCol8_ColS
+8, 18, Training_unkCol8_ColV, Training_unkCol8_ColT, &Training_unkCol8_ColS
 };
 
 Vec3f Training_unkCol9_ColV[] = {
@@ -956,7 +956,7 @@ Rect3D Training_unkCol9_ColS = {
 };
 
 ModelCollision Training_unkCol9_ColH = {
-16, 22, &Training_unkCol9_ColV[0], &Training_unkCol9_ColT[0], &Training_unkCol9_ColS
+16, 22, Training_unkCol9_ColV, Training_unkCol9_ColT, &Training_unkCol9_ColS
 };
 
 Vec3f Training_unkCol10_ColV[] = {
@@ -972,7 +972,7 @@ Rect3D Training_unkCol10_ColS = {
 };
 
 ModelCollision Training_unkCol10_ColH = {
-20, 24, &Training_unkCol10_ColV[0], &Training_unkCol10_ColT[0], &Training_unkCol10_ColS
+20, 24, Training_unkCol10_ColV, Training_unkCol10_ColT, &Training_unkCol10_ColS
 };
 
 Vec3f Training_unkCol11_ColV[] = {
@@ -988,7 +988,7 @@ Rect3D Training_unkCol11_ColS = {
 };
 
 ModelCollision Training_unkCol11_ColH = {
-16, 22, &Training_unkCol11_ColV[0], &Training_unkCol11_ColT[0], &Training_unkCol11_ColS
+16, 22, Training_unkCol11_ColV, Training_unkCol11_ColT, &Training_unkCol11_ColS
 };
 
 Vec3f Training_unkCol12_ColV[] = {
@@ -1004,7 +1004,7 @@ Rect3D Training_unkCol12_ColS = {
 };
 
 ModelCollision Training_unkCol12_ColH = {
-19, 23, &Training_unkCol12_ColV[0], &Training_unkCol12_ColT[0], &Training_unkCol12_ColS
+19, 23, Training_unkCol12_ColV, Training_unkCol12_ColT, &Training_unkCol12_ColS
 };
 
 Vec3f Training_unkCol13_ColV[] = {
@@ -1020,7 +1020,7 @@ Rect3D Training_unkCol13_ColS = {
 };
 
 ModelCollision Training_unkCol13_ColH = {
-13, 12, &Training_unkCol13_ColV[0], &Training_unkCol13_ColT[0], &Training_unkCol13_ColS
+13, 12, Training_unkCol13_ColV, Training_unkCol13_ColT, &Training_unkCol13_ColS
 };
 
 Vec3f Training_unkCol14_ColV[] = {
@@ -1036,7 +1036,7 @@ Rect3D Training_unkCol14_ColS = {
 };
 
 ModelCollision Training_unkCol14_ColH = {
-8, 10, &Training_unkCol14_ColV[0], &Training_unkCol14_ColT[0], &Training_unkCol14_ColS
+8, 10, Training_unkCol14_ColV, Training_unkCol14_ColT, &Training_unkCol14_ColS
 };
 
 Vec3f Training_unkCol15_ColV[] = {
@@ -1052,7 +1052,7 @@ Rect3D Training_unkCol15_ColS = {
 };
 
 ModelCollision Training_unkCol15_ColH = {
-12, 18, &Training_unkCol15_ColV[0], &Training_unkCol15_ColT[0], &Training_unkCol15_ColS
+12, 18, Training_unkCol15_ColV, Training_unkCol15_ColT, &Training_unkCol15_ColS
 };
 
 Vec3f Training_unkCol16_ColV[] = {
@@ -1068,7 +1068,7 @@ Rect3D Training_unkCol16_ColS = {
 };
 
 ModelCollision Training_unkCol16_ColH = {
-8, 10, &Training_unkCol16_ColV[0], &Training_unkCol16_ColT[0], &Training_unkCol16_ColS
+8, 10, Training_unkCol16_ColV, Training_unkCol16_ColT, &Training_unkCol16_ColS
 };
 
 Vec3f Training_unkCol17_ColV[] = {
@@ -1084,7 +1084,7 @@ Rect3D Training_unkCol17_ColS = {
 };
 
 ModelCollision Training_unkCol17_ColH = {
-15, 18, &Training_unkCol17_ColV[0], &Training_unkCol17_ColT[0], &Training_unkCol17_ColS
+15, 18, Training_unkCol17_ColV, Training_unkCol17_ColT, &Training_unkCol17_ColS
 };
 
 Vec3f Training_unkCol18_ColV[] = {
@@ -1100,7 +1100,7 @@ Rect3D Training_unkCol18_ColS = {
 };
 
 ModelCollision Training_unkCol18_ColH = {
-20, 24, &Training_unkCol18_ColV[0], &Training_unkCol18_ColT[0], &Training_unkCol18_ColS
+20, 24, Training_unkCol18_ColV, Training_unkCol18_ColT, &Training_unkCol18_ColS
 };
 
 Vec3f Training_unkCol19_ColV[] = {
@@ -1116,7 +1116,7 @@ Rect3D Training_unkCol19_ColS = {
 };
 
 ModelCollision Training_unkCol19_ColH = {
-6, 4, &Training_unkCol19_ColV[0], &Training_unkCol19_ColT[0], &Training_unkCol19_ColS
+6, 4, Training_unkCol19_ColV, Training_unkCol19_ColT, &Training_unkCol19_ColS
 };
 
 Vec3f Training_unkCol20_ColV[] = {
@@ -1132,7 +1132,7 @@ Rect3D Training_unkCol20_ColS = {
 };
 
 ModelCollision Training_unkCol20_ColH = {
-6, 4, &Training_unkCol20_ColV[0], &Training_unkCol20_ColT[0], &Training_unkCol20_ColS
+6, 4, Training_unkCol20_ColV, Training_unkCol20_ColT, &Training_unkCol20_ColS
 };
 
 Vec3f Training_unkCol21_ColV[] = {
@@ -1148,7 +1148,7 @@ Rect3D Training_unkCol21_ColS = {
 };
 
 ModelCollision Training_unkCol21_ColH = {
-6, 4, &Training_unkCol21_ColV[0], &Training_unkCol21_ColT[0], &Training_unkCol21_ColS
+6, 4, Training_unkCol21_ColV, Training_unkCol21_ColT, &Training_unkCol21_ColS
 };
 
 Vec3f Training_unkCol22_ColV[] = {
@@ -1164,6 +1164,6 @@ Rect3D Training_unkCol22_ColS = {
 };
 
 ModelCollision Training_unkCol22_ColH = {
-6, 4, &Training_unkCol22_ColV[0], &Training_unkCol22_ColT[0], &Training_unkCol22_ColS
+6, 4, Training_unkCol22_ColV, Training_unkCol22_ColT, &Training_unkCol22_ColS
 };
 Mtx Training_IMtx25 = IDENTITY;

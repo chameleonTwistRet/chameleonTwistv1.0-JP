@@ -28,12 +28,6 @@ enum BattleStages {
     BATTLE_STAGE_EXIT = 10
 };
 
-enum BattleTypes {
-    BATTLE_TYPE_UNK_0 = 0,
-    BATTLE_TYPE_SURVIVAL = 1,
-    BATTLE_TYPE_TIME_TRIAL = 2
-};
-
 /* Functions */
 void func_80058BE4(Mtx* arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, s32 arg7);
 void func_80059F28(f32, f32, f32, f32, f32, f32, f32, f32, s32);
