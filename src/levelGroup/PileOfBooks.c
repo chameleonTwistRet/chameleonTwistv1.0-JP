@@ -208,8 +208,8 @@ RoomActor PileOfBooks_room1_actors[] = {
     {    ACTOR_NULL, {0.0,0.0,0.0},   0.0,      0.0,     0.0, 0, 0.0,      0.0,     0.0, 0,       0.0,  0.0, 0.0,  0.0,                   0,                    0, 0, 0,    0,    0,    0,     0}
 };
 
-s32 PileOfBooks_spriteLib_Sprlib[] = {
-    47,
+s32 PileOfBooks_spriteLib_Sprlib[2][16] = {
+{   47,
     48,
     49,
     50,
@@ -224,6 +224,8 @@ s32 PileOfBooks_spriteLib_Sprlib[] = {
     0,
     0,
     0,
+    0},
+{   0,
     0,
     0,
     0,
@@ -238,9 +240,7 @@ s32 PileOfBooks_spriteLib_Sprlib[] = {
     0,
     0,
     0,
-    0,
-    0,
-    0,
+    0},
 };
 
 RoomObject PileOfBooks_room3_objects[] = {
@@ -275,7 +275,7 @@ s32 PileOfBooks_rooms_map[4][3] = {
 };
 
 StageMapData PileOfBooks_map_data = {
-3, 4, PileOfBooks_room_instances, PileOfBooks_rooms_map, 
+    3, 4, PileOfBooks_room_instances, PileOfBooks_rooms_map,
 };
 
 SpriteActor PileOfBooks_roomUnk_sprites[] = {
@@ -303,13 +303,13 @@ StageData PileOfBooks_header_Lvlhdr = {
     0,
     PileOfBooks_rabObjects_Bin,
     131072,
-    &PileOfBooks_spriteLib_Sprlib[0],
+    PileOfBooks_spriteLib_Sprlib,
     &PileOfBooks_scope_Lvlscope,
 };
-s32 pob_pad2[3] = 0;
+s32 pob_pad2[] = {0, 0, 0};
 Mtx PileOfBooks_IMtx2 = IDENTITY;
 
-Lights1 PileOfBooks_pobScope_Light = 
+Lights1 PileOfBooks_pobScope_Light =
     #include "assets/levelGroup/PileOfBooks/pobScope/pobScope.light.inc.c"
 
 Vtx PileOfBooks_model1_Vtx[] = {
@@ -379,7 +379,7 @@ Rect3D PileOfBooks_unkCol1_ColS = {
 };
 
 ModelCollision PileOfBooks_unkCol1_ColH = {
-36, 44, &PileOfBooks_unkCol1_ColV[0], &PileOfBooks_unkCol1_ColT[0], &PileOfBooks_unkCol1_ColS
+36, 44, PileOfBooks_unkCol1_ColV, PileOfBooks_unkCol1_ColT, &PileOfBooks_unkCol1_ColS
 };
 
 Vec3f PileOfBooks_unkCol2_ColV[] = {
@@ -395,7 +395,7 @@ Rect3D PileOfBooks_unkCol2_ColS = {
 };
 
 ModelCollision PileOfBooks_unkCol2_ColH = {
-8, 10, &PileOfBooks_unkCol2_ColV[0], &PileOfBooks_unkCol2_ColT[0], &PileOfBooks_unkCol2_ColS
+8, 10, PileOfBooks_unkCol2_ColV, PileOfBooks_unkCol2_ColT, &PileOfBooks_unkCol2_ColS
 };
 
 Vec3f PileOfBooks_unkCol3_ColV[] = {
@@ -411,7 +411,7 @@ Rect3D PileOfBooks_unkCol3_ColS = {
 };
 
 ModelCollision PileOfBooks_unkCol3_ColH = {
-64, 100, &PileOfBooks_unkCol3_ColV[0], &PileOfBooks_unkCol3_ColT[0], &PileOfBooks_unkCol3_ColS
+64, 100, PileOfBooks_unkCol3_ColV, PileOfBooks_unkCol3_ColT, &PileOfBooks_unkCol3_ColS
 };
 
 Vec3f PileOfBooks_unkCol4_ColV[] = {
@@ -427,7 +427,7 @@ Rect3D PileOfBooks_unkCol4_ColS = {
 };
 
 ModelCollision PileOfBooks_unkCol4_ColH = {
-24, 28, &PileOfBooks_unkCol4_ColV[0], &PileOfBooks_unkCol4_ColT[0], &PileOfBooks_unkCol4_ColS
+24, 28, PileOfBooks_unkCol4_ColV, PileOfBooks_unkCol4_ColT, &PileOfBooks_unkCol4_ColS
 };
 
 Vec3f PileOfBooks_unkCol5_ColV[] = {
@@ -443,7 +443,7 @@ Rect3D PileOfBooks_unkCol5_ColS = {
 };
 
 ModelCollision PileOfBooks_unkCol5_ColH = {
-12, 14, &PileOfBooks_unkCol5_ColV[0], &PileOfBooks_unkCol5_ColT[0], &PileOfBooks_unkCol5_ColS
+12, 14, PileOfBooks_unkCol5_ColV, PileOfBooks_unkCol5_ColT, &PileOfBooks_unkCol5_ColS
 };
 
 Vec3f PileOfBooks_unkCol6_ColV[] = {
@@ -459,11 +459,11 @@ Rect3D PileOfBooks_unkCol6_ColS = {
 };
 
 ModelCollision PileOfBooks_unkCol6_ColH = {
-12, 14, &PileOfBooks_unkCol6_ColV[0], &PileOfBooks_unkCol6_ColT[0], &PileOfBooks_unkCol6_ColS
+12, 14, PileOfBooks_unkCol6_ColV, PileOfBooks_unkCol6_ColT, &PileOfBooks_unkCol6_ColS
 };
 Mtx PileOfBooks_IMtx9 = IDENTITY;
 
-Lights1 PileOfBooks_pobScope2_Light = 
+Lights1 PileOfBooks_pobScope2_Light =
     #include "assets/levelGroup/PileOfBooks/pobScope2/pobScope2.light.inc.c"
 
 Vtx PileOfBooks_a_model1_Vtx[] = {

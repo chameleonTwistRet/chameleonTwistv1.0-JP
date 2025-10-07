@@ -254,8 +254,8 @@ RoomObject BossRush_roomMulti4_objects[] = {
     { {0.0,0.0,0.0},   {0.0,0.0,0.0}, 0, DEGREES_TO_RADIANS_2PI(0.0),   0, 0,    0.0,    0.0,     0.0, 0.0, 0,  0, 0,    0, 0, 0,  0,  0,  0,  0, NULL, NULL, 0, 0, 0,  0, 0, 0,  0, 0, 0}
 };
 
-s32 BossRush_spriteLib_Sprlib[] = {
-    14,
+s32 BossRush_spriteLib_Sprlib[1][16] = {
+{   14,
     39,
     44,
     47,
@@ -270,7 +270,7 @@ s32 BossRush_spriteLib_Sprlib[] = {
     0,
     0,
     0,
-    0,
+    0},
 };
 
 RoomInstance BossRush_room_instances[] = {
@@ -290,11 +290,11 @@ s32 BossRush_rooms_map[4][4] = {
 {-1, 3, 4, -1},
 { 2, 0, 0,  5},
 { 1, 0, 0,  6},
-{-1, 7, 8, -1}, 
+{-1, 7, 8, -1},
 };
 
 StageMapData BossRush_map_data = {
-4, 4, BossRush_room_instances, BossRush_rooms_map, 
+    4, 4, BossRush_room_instances, BossRush_rooms_map,
 };
 
 RoomInstance BossRush_ext_room_instances[] = {
@@ -319,12 +319,12 @@ StageData BossRush_header_Lvlhdr = {
     0,
     BossRush_rabObjects_Bin,
     131072,
-    &BossRush_spriteLib_Sprlib[0],
+    BossRush_spriteLib_Sprlib,
     &BossRush_scope_Lvlscope,
 };
 Mtx BossRush_IMtx2 = IDENTITY;
 
-Lights1 BossRush_bossScope1_Light = 
+Lights1 BossRush_bossScope1_Light =
     #include "assets/levelGroup/BossRush/bossScope1/bossScope1.light.inc.c"
 
 Vtx BossRush_model1_Vtx[] = {
@@ -421,7 +421,7 @@ Rect3D BossRush_unkCol1_ColS = {
 };
 
 ModelCollision BossRush_unkCol1_ColH = {
-32, 54, &BossRush_unkCol1_ColV[0], &BossRush_unkCol1_ColT[0], &BossRush_unkCol1_ColS
+32, 54, BossRush_unkCol1_ColV, BossRush_unkCol1_ColT, &BossRush_unkCol1_ColS
 };
 
 Vec3f BossRush_unkCol2_ColV[] = {
@@ -437,7 +437,7 @@ Rect3D BossRush_unkCol2_ColS = {
 };
 
 ModelCollision BossRush_unkCol2_ColH = {
-10, 10, &BossRush_unkCol2_ColV[0], &BossRush_unkCol2_ColT[0], &BossRush_unkCol2_ColS
+10, 10, BossRush_unkCol2_ColV, BossRush_unkCol2_ColT, &BossRush_unkCol2_ColS
 };
 
 Vec3f BossRush_unkCol3_ColV[] = {
@@ -453,7 +453,7 @@ Rect3D BossRush_unkCol3_ColS = {
 };
 
 ModelCollision BossRush_unkCol3_ColH = {
-12, 8, &BossRush_unkCol3_ColV[0], &BossRush_unkCol3_ColT[0], &BossRush_unkCol3_ColS
+12, 8, BossRush_unkCol3_ColV, BossRush_unkCol3_ColT, &BossRush_unkCol3_ColS
 };
 
 Vec3f BossRush_unkCol4_ColV[] = {
@@ -469,7 +469,7 @@ Rect3D BossRush_unkCol4_ColS = {
 };
 
 ModelCollision BossRush_unkCol4_ColH = {
-12, 8, &BossRush_unkCol4_ColV[0], &BossRush_unkCol4_ColT[0], &BossRush_unkCol4_ColS
+12, 8, BossRush_unkCol4_ColV, BossRush_unkCol4_ColT, &BossRush_unkCol4_ColS
 };
 
 Vec3f BossRush_unkCol5_ColV[] = {
@@ -485,7 +485,7 @@ Rect3D BossRush_unkCol5_ColS = {
 };
 
 ModelCollision BossRush_unkCol5_ColH = {
-8, 6, &BossRush_unkCol5_ColV[0], &BossRush_unkCol5_ColT[0], &BossRush_unkCol5_ColS
+8, 6, BossRush_unkCol5_ColV, BossRush_unkCol5_ColT, &BossRush_unkCol5_ColS
 };
 
 Vec3f BossRush_unkCol6_ColV[] = {
@@ -501,7 +501,7 @@ Rect3D BossRush_unkCol6_ColS = {
 };
 
 ModelCollision BossRush_unkCol6_ColH = {
-8, 8, &BossRush_unkCol6_ColV[0], &BossRush_unkCol6_ColT[0], &BossRush_unkCol6_ColS
+8, 8, BossRush_unkCol6_ColV, BossRush_unkCol6_ColT, &BossRush_unkCol6_ColS
 };
 
 Vec3f BossRush_unkCol7_ColV[] = {
@@ -517,7 +517,7 @@ Rect3D BossRush_unkCol7_ColS = {
 };
 
 ModelCollision BossRush_unkCol7_ColH = {
-16, 16, &BossRush_unkCol7_ColV[0], &BossRush_unkCol7_ColT[0], &BossRush_unkCol7_ColS
+16, 16, BossRush_unkCol7_ColV, BossRush_unkCol7_ColT, &BossRush_unkCol7_ColS
 };
 
 Vec3f BossRush_unkCol8_ColV[] = {
@@ -533,7 +533,7 @@ Rect3D BossRush_unkCol8_ColS = {
 };
 
 ModelCollision BossRush_unkCol8_ColH = {
-24, 20, &BossRush_unkCol8_ColV[0], &BossRush_unkCol8_ColT[0], &BossRush_unkCol8_ColS
+24, 20, BossRush_unkCol8_ColV, BossRush_unkCol8_ColT, &BossRush_unkCol8_ColS
 };
 
 Vec3f BossRush_unkCol9_ColV[] = {
@@ -549,7 +549,7 @@ Rect3D BossRush_unkCol9_ColS = {
 };
 
 ModelCollision BossRush_unkCol9_ColH = {
-6, 4, &BossRush_unkCol9_ColV[0], &BossRush_unkCol9_ColT[0], &BossRush_unkCol9_ColS
+6, 4, BossRush_unkCol9_ColV, BossRush_unkCol9_ColT, &BossRush_unkCol9_ColS
 };
 s32 bossRush_pad[2] = {0, 0};
 Mtx BossRush_IMtx12 = IDENTITY;

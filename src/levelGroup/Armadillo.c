@@ -160,8 +160,8 @@ RoomActor Armadillo_room1_actors[] = {
     { ACTOR_NULL,  {0.0,0.0,0.0},   0.0,     0.0,    0.0,         0,     0.0,     0.0,    0.0, 0,  0.0, 0.0,   0.0,  0.0,      0, 0,      0,      0,    0,     0,    0,    0}
 };
 
-s32 Armadillo_spriteLib_Sprlib[] = {
-    44,
+s32 Armadillo_spriteLib_Sprlib[3][16] = {
+{   44,
     45,
     226,
     227,
@@ -176,6 +176,8 @@ s32 Armadillo_spriteLib_Sprlib[] = {
     0,
     0,
     0,
+    0},
+{   0,
     0,
     0,
     0,
@@ -190,6 +192,8 @@ s32 Armadillo_spriteLib_Sprlib[] = {
     0,
     0,
     0,
+    0},
+{   0,
     0,
     0,
     0,
@@ -204,11 +208,7 @@ s32 Armadillo_spriteLib_Sprlib[] = {
     0,
     0,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
+    0},
 };
 
 RoomInstance Armadillo_room_instances[] = {
@@ -218,12 +218,12 @@ RoomInstance Armadillo_room_instances[] = {
 };
 
 //??
-s32 Armadillo_rooms_map[7] = {
--1, 1, -2, -1, -2, 0, -1, 
+s32 Armadillo_rooms_map[1][7] = {
+    {-1, 1, -2, -1, -2, 0, -1}
 };
 
 StageMapData Armadillo_map_data = {
-3, 3, Armadillo_room_instances, Armadillo_rooms_map, 
+    3, 3, Armadillo_room_instances, Armadillo_rooms_map,
 };
 
 RoomInstance Armadillo_ext_room_instances[] = {
@@ -242,18 +242,18 @@ LevelScope Armadillo_scope_Lvlscope = {
 StageData Armadillo_header_Lvlhdr = {
     &Armadillo_map_data,
     0,
-    &Armadillo_stageModels[0],
+    Armadillo_stageModels,
     40,
     0,
     Armadillo_rabObjects_Bin,
     131072,
-    &Armadillo_spriteLib_Sprlib[0],
+    Armadillo_spriteLib_Sprlib,
     &Armadillo_scope_Lvlscope,
 };
-s32 armadillo_pad[3] = 0;
+s32 armadillo_pad[3] = {0, 0, 0};
 Mtx Armadillo_IMtx2 = IDENTITY;
 
-Lights1 Armadillo_adScope1_Light = 
+Lights1 Armadillo_adScope1_Light =
     #include "assets/levelGroup/Armadillo/adScope1/adScope1.light.inc.c"
 
 Vtx Armadillo_model1_Vtx[] = {
@@ -287,7 +287,7 @@ Rect3D Armadillo_unkCol1_ColS = {
 };
 
 ModelCollision Armadillo_unkCol1_ColH = {
-23, 34, &Armadillo_unkCol1_ColV[0], &Armadillo_unkCol1_ColT[0], &Armadillo_unkCol1_ColS
+23, 34, Armadillo_unkCol1_ColV, Armadillo_unkCol1_ColT, &Armadillo_unkCol1_ColS
 };
 
 Vec3f Armadillo_unkCol2_ColV[] = {
@@ -303,12 +303,12 @@ Rect3D Armadillo_unkCol2_ColS = {
 };
 
 ModelCollision Armadillo_unkCol2_ColH = {
-10, 12, &Armadillo_unkCol2_ColV[0], &Armadillo_unkCol2_ColT[0], &Armadillo_unkCol2_ColS
+10, 12, Armadillo_unkCol2_ColV, Armadillo_unkCol2_ColT, &Armadillo_unkCol2_ColS
 };
-s32 armadillo_pad2[3] = 0;
+s32 armadillo_pad2[3] = {0, 0, 0};
 Mtx Armadillo_IMtx5 = IDENTITY;
 
-Lights1 Armadillo_adScope2_Light = 
+Lights1 Armadillo_adScope2_Light =
     #include "assets/levelGroup/Armadillo/adScope2/adScope2.light.inc.c"
 
 Vtx Armadillo_a_model1_Vtx[] = {

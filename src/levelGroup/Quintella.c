@@ -139,8 +139,8 @@ unsigned char Quintella_rabObjects_Bin[] = {
 0x00, 0x00, 0x00, 0x00, 0x42, 0xC8, 0x00, 0x00, 0x42, 0xC8, 0x00, 0x00, 0x42, 0xC8, 0x00, 0x00, 0x02, 0x00, 0x6E, 0x1C, 0x00, 0x00, 0x00, 0x00, 0x42, 0xC8, 0x00, 0x00, 0x42, 0xC8, 0x00, 0x00, 0x42, 0xC8, 0x00, 0x00, 0x02, 0x00, 0x6E, 0x1C
 };
 
-s32 Quintella_spriteLib_Sprlib[] = {
-    14,
+s32 Quintella_spriteLib_Sprlib[2][16] = {
+{   14,
     226,
     227,
     0,
@@ -155,8 +155,8 @@ s32 Quintella_spriteLib_Sprlib[] = {
     0,
     0,
     0,
-    0,
-    14,
+    0},
+{   14,
     226,
     227,
     0,
@@ -171,7 +171,7 @@ s32 Quintella_spriteLib_Sprlib[] = {
     0,
     0,
     0,
-    0,
+    0},
 };
 
 Collectable Quintella_roomUnk_collectables[] = {
@@ -218,11 +218,11 @@ RoomInstance Quintella_room_instances[] = {
 };
 
 s32 Quintella_rooms_map[1][3] = {
-    {-1, 0, -1}, 
+    {-1, 0, -1},
 };
 
 StageMapData Quintella_map_data = {
-3, 1, Quintella_room_instances, Quintella_rooms_map, 
+    3, 1, Quintella_room_instances, Quintella_rooms_map,
 };
 
 RoomInstance Quintella_ext_room_instances[] = {
@@ -246,13 +246,13 @@ StageData Quintella_header_Lvlhdr = {
     0,
     Quintella_rabObjects_Bin,
     131072,
-    &Quintella_spriteLib_Sprlib[0],
+    Quintella_spriteLib_Sprlib,
     &Quintella_scope_Lvlscope,
 };
 s32 alignment_Quintella[2] = {0, 0};
 Mtx Quintella_IMtx2 = IDENTITY;
 
-Lights1 Quintella_qtScope_Light = 
+Lights1 Quintella_qtScope_Light =
     #include "assets/levelGroup/Quintella/qtScope/qtScope.light.inc.c"
 
 Vtx Quintella_model1_Vtx[] = {
@@ -298,7 +298,7 @@ Rect3D Quintella_unkCol1_ColS = {
 };
 
 ModelCollision Quintella_unkCol1_ColH = {
-34, 60, &Quintella_unkCol1_ColV[0], &Quintella_unkCol1_ColT[0], &Quintella_unkCol1_ColS
+34, 60, Quintella_unkCol1_ColV, Quintella_unkCol1_ColT, &Quintella_unkCol1_ColS
 };
 
 Vec3f Quintella_unkCol2_ColV[] = {
@@ -314,11 +314,11 @@ Rect3D Quintella_unkCol2_ColS = {
 };
 
 ModelCollision Quintella_unkCol2_ColH = {
-17, 24, &Quintella_unkCol2_ColV[0], &Quintella_unkCol2_ColT[0], &Quintella_unkCol2_ColS
+17, 24, Quintella_unkCol2_ColV, Quintella_unkCol2_ColT, &Quintella_unkCol2_ColS
 };
 Mtx Quintella_IMtx5 = IDENTITY;
 
-Lights1 Quintella_qtScope2_Light = 
+Lights1 Quintella_qtScope2_Light =
     #include "assets/levelGroup/Quintella/qtScope2/qtScope2.light.inc.c"
 
 Vtx Quintella_a_model1_Vtx[] = {

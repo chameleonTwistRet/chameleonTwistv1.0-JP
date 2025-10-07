@@ -160,8 +160,8 @@ RoomActor BombSnake_room1_actors[] = {
     {      ACTOR_NULL,         {0.0,0.0,0.0},   0.0,     0.0,    0.0, 0,  0.0,     0.0,    0.0, 0,  0.0, 0.0,   0.0,  0.0,    0,     0,      0,     0, 0,     0,     0,     0}
 };
 
-s32 BombSnake_spriteLib_Sprlib[] = {
-    211,
+s32 BombSnake_spriteLib_Sprlib[3][16] = {
+{   211,
     36,
     43,
     32,
@@ -176,6 +176,8 @@ s32 BombSnake_spriteLib_Sprlib[] = {
     0,
     0,
     0,
+    0},
+{   0,
     0,
     0,
     0,
@@ -190,6 +192,8 @@ s32 BombSnake_spriteLib_Sprlib[] = {
     0,
     0,
     0,
+    0},
+{   0,
     0,
     0,
     0,
@@ -204,11 +208,7 @@ s32 BombSnake_spriteLib_Sprlib[] = {
     0,
     0,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
+    0},
 };
 
 RoomInstance BombSnake_room_instances[] = {
@@ -217,12 +217,12 @@ RoomInstance BombSnake_room_instances[] = {
     {                       0,                      0, 0, 0, 0, 0, 0, 0, -1, 0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0,    -1.0,   0.0}
 };
 
-s32 BombSnake_rooms_map[3] = {
--1, 0, -1, 
+s32 BombSnake_rooms_map[1][3] = {
+    {-1, 0, -1}
 };
 
 StageMapData BombSnake_map_data = {
-3, 1, BombSnake_room_instances, BombSnake_rooms_map, 
+    3, 1, BombSnake_room_instances, BombSnake_rooms_map,
 };
 
 RoomInstance BombSnake_ext_room_instances[] = {
@@ -246,13 +246,13 @@ StageData BombSnake_header_Lvlhdr = {
     0,
     BombSnake_rabObjects_Bin,
     131072,
-    &BombSnake_spriteLib_Sprlib[0],
+    BombSnake_spriteLib_Sprlib,
     &BombSnake_scope_Lvlscope,
 };
 s32 bombSnake_alignement[2] = {0, 0};
 Mtx BombSnake_IMtx2 = IDENTITY;
 
-Lights1 BombSnake_bsScope_Light = 
+Lights1 BombSnake_bsScope_Light =
     #include "assets/levelGroup/BombSnake/bsScope/bsScope.light.inc.c"
 
 Vtx BombSnake_arenaWalls_Vtx[] = {
@@ -290,7 +290,7 @@ Rect3D BombSnake_arenaWalls_ColS = {
 };
 
 ModelCollision BombSnake_arenaWalls_ColH = {
-18, 24, &BombSnake_arenaWalls_ColV[0], &BombSnake_arenaWalls_ColT[0], &BombSnake_arenaWalls_ColS
+18, 24, BombSnake_arenaWalls_ColV, BombSnake_arenaWalls_ColT, &BombSnake_arenaWalls_ColS
 };
 
 Vec3f BombSnake_arenaFloor_ColV[] = {
@@ -306,7 +306,7 @@ Rect3D BombSnake_arenaFloor_ColS = {
 };
 
 ModelCollision BombSnake_arenaFloor_ColH = {
-12, 16, &BombSnake_arenaFloor_ColV[0], &BombSnake_arenaFloor_ColT[0], &BombSnake_arenaFloor_ColS
+12, 16, BombSnake_arenaFloor_ColV, BombSnake_arenaFloor_ColT, &BombSnake_arenaFloor_ColS
 };
 Mtx BombSnake_IMtx5 = IDENTITY;
 
@@ -342,7 +342,7 @@ Mtx BombSnake_unk4_Animarr[15][1] = {
     #include "assets/levelGroup/BombSnake/anim/unk4.animArr.inc.c"
 };
 
-Lights1 BombSnake_bsScope2_Light = 
+Lights1 BombSnake_bsScope2_Light =
     #include "assets/levelGroup/BombSnake/bsScope2/bsScope2.light.inc.c"
 
 Vtx BombSnake_bombSnakeHead_Vtx[] = {

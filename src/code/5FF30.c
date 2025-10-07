@@ -270,7 +270,7 @@ s32 D_800FF5C0 = 0; //padding?
 
 s16 gSchedReset = 0;
 s32 gGfxTaskPending = 0;
-s16 D_800FF5CC = 3;
+s16 D_800FF5CC = 3; //timer
 s32 D_800FF5D0 = -1;
 s16 D_800FF5D4 = 0;
 s16 gGfxTaskStarted = 1;
@@ -282,7 +282,7 @@ s16 gGfxTaskRunning = 0;
 s16 gAudioTaskState = 0;
 s16 D_800FF5F4 = 0;
 s16 gIsPaused = 0;
-s16 gIsStero = 1;
+s16 gIsStereo = 1;
 s16 gSFXMute = -1;
 s16 D_800FF604 = 0;
 s16 D_800FF608 = 0;
@@ -1041,7 +1041,7 @@ enum StageSelectStages{
 
 #define canAccess(stage) TRUE << stage
 
-StageSelectData StageSelect[] = {                                                                               //?        
+StageSelectData StageSelect[] = {                                                                               //?
     { 56, 192, SPRITE_JL_ICON,          BOSSRUSH,   AL,     BL,     BL,     NONE,   NONE,   NONE,       NONE,   -1},
     {108, 112, SPRITE_AL_ICON,          NONE,       DC,     DC,     KL,     BL,     JL,     BOSSRUSH,   NONE,   canAccess(JL) | canAccess(BL) | canAccess(DC) | canAccess(KL)},
     {148, 184, SPRITE_BL_ICON,          DC,         DC,     KL,     KL,     NONE,   JL,     JL,         AL,     canAccess(JL) | canAccess(AL) | canAccess(DC) | canAccess(KL)},
@@ -1780,19 +1780,16 @@ unk80100F50 D_80100F50[] = {
     {(u32) assets0_VRAM, (u32) static0_VRAM_END},
     {NULL, NULL},
     {NULL, NULL},
-    {NULL, NULL},
-    {NULL, NULL},
-    {NULL, NULL},
-    {NULL, NULL},
-    {NULL, NULL},
-    {NULL, NULL},
-    {NULL, NULL},
-    {NULL, NULL},
-    {NULL, NULL},
-    {NULL, NULL},
-    {NULL, NULL},
-    {NULL, NULL},
+    {NULL, NULL}
 };
+
+s32 D_80100F78 = 0;
+s32 D_80100F7C = 0;
+s32 D_80100F80 = 0;
+s32 D_80100F84 = 0;
+s32 D_80100F88 = 0;
+
+s32 D_80100F8C[17] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 
 s16 UseFixedRNGSeed = 0;
 
@@ -2165,10 +2162,9 @@ u32 D_80108790 = 0;
 
 
 void schedproc(s32 arg0) {
-    s32 var_s2;
+    s32 var_s2 = 1;
     OSMesg mesg;
 
-    var_s2 = 1;
     func_800A7844();
     osCreateMesgQueue(&gSchedMessageQueue, gSchedMessageQueueMsgs, ARRAY_COUNT(gSchedMessageQueueMsgs));
     osSetEventMesg(OS_EVENT_PRENMI, &gSchedMessageQueue, (OSMesg)SCHED_MESG_RESET);
@@ -2273,12 +2269,12 @@ void schedproc(s32 arg0) {
             default:
                 continue;
         }
-        
+
         gAudioTaskState = AUDIO_TASK_STATE_PENDING;
         if (osSendMesg(&gSyncAudioMessageQueue, NULL, OS_MESG_NOBLOCK) == -1) {
             DummiedPrintf("Audio送信失敗\n");
         }
-        // continue;   
+        // continue;
     }
 }
 
@@ -2325,11 +2321,8 @@ void func_80085290(void) {
 }
 
 f32 func_80085364(u8 arg0) {
-    f32 var_f0;
-    f32 var_f2;
-    
-    var_f0 = 1.030992985;
-    var_f2 = 1.0f;
+    f32 var_f0 = 1.030992985;
+    f32 var_f2 = 1.0f;
 
     while ((u32)arg0 != 0) {
         s32 temp;
@@ -2339,7 +2332,7 @@ f32 func_80085364(u8 arg0) {
         temp = arg0;
         var_f0 *= var_f0;
         arg0 = ((u32)temp >> 1);
-    } 
+    }
 
     return var_f2;
 }
@@ -2378,7 +2371,7 @@ void func_80085D14(void) {
     D_800FF608 = 0;
     D_800FF64C = 0;
     D_800FF650 = 0;
-    gIsStero = 0;
+    gIsStereo = 0;
     TempoBGMBool = 0;
     TempoToSetBGM = 0;
     D_801FC9A0 = 0;
@@ -2402,7 +2395,7 @@ unk0* func_80086EB4(s32 arg0) {
 
     prev = D_801FFB84->unk50;
     next = prev->unk50;
-    
+
     while (next != NULL) {
         if (arg0 == prev->unk40) {
             return prev;
@@ -2419,7 +2412,7 @@ s16 func_80086EFC(s32 arg0) {
 
     prev = D_801FFB84->unk50;
     next = prev->unk50;
-    
+
     while (next != NULL) {
         if (arg0 == prev->unk40) {
             return prev->unk42;
@@ -2436,7 +2429,7 @@ void func_80087088(unk0* arg0) {
     unk0* temp_v0;
     unk0* temp_v1_2;
     s16 temp = arg0->unk22;
-    
+
     if (D_801FFB88[temp].unk0 > 0) {
         D_801FFB88[temp].unk0--;
     }
@@ -2455,16 +2448,15 @@ void func_80087088(unk0* arg0) {
                 arg0->unk20 = 0;
                 arg0->unk0 = 0;
                 arg0->unk4 = 0;
-                arg0->unk8 = 0;                
+                arg0->unk8 = 0;
             }
         }
     }
 }
 
 s32 func_80087130(unk0* arg0, unk0* arg1) {
-    unk0* temp_v1;
+    unk0* temp_v1 = arg1->unk50;
 
-    temp_v1 = arg1->unk50;
     arg1->unk50 = arg0;
     arg0->unk54 = arg1;
     arg0->unk50 = temp_v1;
@@ -2476,6 +2468,7 @@ s32 func_80087130(unk0* arg0, unk0* arg1) {
 s32 func_8008714C(unk0* arg0, s32 arg1) {
     unk0* temp_v0 = arg0->unk50;
     unk0* temp_a1 = arg0->unk54;
+
     temp_a1->unk50 = arg0->unk50;
     temp_v0->unk54 = temp_a1;
     func_80087130(arg0, temp_a1);
@@ -2502,7 +2495,18 @@ s32 StopSoundEffect(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800874E4.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80087824.s")
+s32 func_80087824(s32 arg0, s32 arg1) {
+    s32 var_v1 = 0;
+
+    if (arg1 > 0) {
+        if (D_801FFB88[arg0].unk0 >= arg1) {
+            var_v1 = -1;
+        }
+    } else if (D_801FFB88[arg0].unk0 >= D_800FEDC0[arg0][3]) {
+        var_v1 = -1;
+    }
+    return var_v1;
+}
 
 s16 func_8008788C(s32 arg0, f32 arg1) {
     s32 var_v0 = 0;
@@ -2519,11 +2523,11 @@ s16 func_8008788C(s32 arg0, f32 arg1) {
         var_v1 = var_a1;
         var_a1 = var_a1->unk50;
     }
-    
+
     if (var_v0 == 0) {
         return -1;
     }
-    
+
     return -2;
 }
 
@@ -2562,12 +2566,12 @@ s32 PlaySoundEffect(s32 id, f32* posX, f32* posY, f32* posZ, s32 arg4, s32 flag)
 void func_80087FA4(u32 arg0) {
     D_800FF5E8 = arg0;
     D_800FF5E4 = arg0;
-    
+
     if (arg0 == 0) {
         D_801FCA00 = 0.0;
         return;
     }
-    
+
     D_801FCA00 = 1.0 / arg0;
 }
 
@@ -2593,13 +2597,12 @@ void func_8008800C(s32 arg0) {
 
 s32 func_800885EC(s32 arg0, s32 arg1) {
     s32 v1;
-    unk0 *temp_v0;
-    
-    temp_v0 = func_80086EB4(arg0);
+    unk0 *temp_v0 = func_80086EB4(arg0);
+
     if (temp_v0 == 0) {
         return -1;
     }
-    
+
     if (arg1 < 0) {
         arg1 = 0;
     } else {
@@ -2610,7 +2613,7 @@ s32 func_800885EC(s32 arg0, s32 arg1) {
         }
         arg1 = v1;
     }
-    
+
     if (arg1 == temp_v0->unk3D) {
         return 0;
     } else {
@@ -2620,7 +2623,7 @@ s32 func_800885EC(s32 arg0, s32 arg1) {
             alSndpSetFXMix(gSFXPlayerP, arg1);
         }
     }
-    
+
     return 0;
 }
 
@@ -2636,13 +2639,12 @@ s32 func_80088698(s32 arg0) {
 }
 
 s32 func_800886D8(s32 arg0, s16 arg1, s16 arg2) {
-    unk0* temp_v0;
+    unk0* temp_v0 = func_80086EB4(arg0);
 
-    temp_v0 = func_80086EB4(arg0);
     if (temp_v0 == NULL) {
         return -1;
     }
-    
+
     temp_v0->unk30 = arg1;
     temp_v0->unk2C = (f32)(arg1 - temp_v0->unk32) / arg2;
     return 0;
@@ -2652,7 +2654,7 @@ s32 func_8008873C(f32* arg0, f32* arg1, f32* arg2) {
     if (++D_800FF64C >= 0x80) {
         D_800FF64C = 0;
     }
-    
+
     if (D_800FF64C == D_800FF650 ) {
         return 0;
     }
@@ -2667,7 +2669,7 @@ void func_80088B7C(u8* arg0, u8* arg1, u8* arg2, u8* arg3, u8* arg4, u8* arg5) {
     s32 temp_t6;
     s32 temp_v0;
     s32 var_v1;
-    
+
     temp_v0 = D_80174998 & 7;
     temp_t6 = (D_80174998 & 0x18) / 8;
     if (temp_t6 == 0) {
@@ -2795,30 +2797,30 @@ s32 LoadBGM(void) {
         D_800FF604 = gIsPaused;
         return 0;
     }
-    
+
     if (gIsPaused != 0) {
         return 0;
     }
-    
+
     if (D_801FC9A0 != 0) {
         if (volBGM.vol > 0) {
-            volBGM.vol = volBGM.vol - D_801FC9A0;
+            volBGM.vol -= D_801FC9A0;
             if (volBGM.vol < 0) {
                 volBGM.vol = 0;
             }
             alSeqpSetVol((ALSeqPlayer*)gBGMPlayerP, volBGM.vol);
-        } 
+        }
     }
-    
+
     // Is always 0 (dead code)
     if (TempoBGMBool != 0) {
         alCSPSetTempo(gBGMPlayerP, TempoToSetBGM);
     } else {
         TempoBGM = alCSPGetTempo(gBGMPlayerP);
     }
-    
+
     temp_v0 = alCSPGetState(gBGMPlayerP);
-    
+
     if (currLoadingBGM == -1) {
         if ((temp_v0 == AL_STOPPED) && (doesBGMLoop != 0)) {
             currLoadingBGM = currBGMIndex;
@@ -2829,15 +2831,15 @@ s32 LoadBGM(void) {
     else if (temp_v0 != AL_STOPPED) {
         return 0;
     }
-    
+
     currBGMIndex = currLoadingBGM;
-    sp24 = gBGMALSeqFileP->seqArray[currBGMIndex].len; 
+    sp24 = gBGMALSeqFileP->seqArray[currBGMIndex].len;
     devAddr = (s32)gBGMALSeqFileP->seqArray[currBGMIndex].offset;
-    
+
     if (sp24 & 1) {
         sp24++;
     }
-    
+
     osInvalDCache(D_801FD550, sp24);
     Audio_RomCopy(devAddr, D_801FD550, sp24);
     alCSeqNew(gBGMSeqP, (u8*)D_801FD550);
@@ -2932,10 +2934,10 @@ s32 func_8008C040(s32 arg0) {
 
 void func_8008C070(s32 arg0) {
     if (arg0 != 0) {
-        gIsStero = 1;
+        gIsStereo = 1;
         return;
     }
-    gIsStero = 0;
+    gIsStereo = 0;
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008C094.s")
@@ -2966,7 +2968,6 @@ void PlayStageBGM(s32 arg0) {
 }
 
 void func_8008C35C(Gfx** arg0) {
-
 }
 
 s32 Actor_PlaySound(Actor* actor, s32 sfxID, s32 unused1, s32 unused2) {
@@ -3075,7 +3076,7 @@ s32 PutDList(Mtx** arg0, Gfx** arg1, Gfx* arg2) {
     sp64 = *arg0;
     var_s2 = 1;
     sp60 = *arg1;
-    
+
     DummiedPrintf("S_PutDList In\n");
     DummiedPrintf("%X\n", arg2);
     while (1) {
@@ -3124,13 +3125,13 @@ void strcpy(u8* arg0, u8* arg1) {
 
 /**
  * @brief Run a CTTask's assigned function
- * 
- * @param task 
+ *
+ * @param task
  */
 void CTTask_Run(CTTask* task) {
     void (*temp)(CTTask*); //?
     void (*taskFunc)(CTTask*);
-    
+
     temp = taskFunc = task->function;
     if (taskFunc == 0) {
         DummiedPrintf("NULL POINTER %d\n", task->taskID);
@@ -3141,19 +3142,19 @@ void CTTask_Run(CTTask* task) {
         DummiedPrintf("BAD POINTER %d, %X\n", task->taskID, (u32)task->function);
         taskFunc = task->function;
     }
-    
+
     if ((u32)taskFunc & 1) {
         DummiedPrintf("ERROR POINTER %X\n", task);
     }
-    
+
     taskFunc(task);
 }
 
 
 /**
  * @brief Remove a CTTask from the linked list by linking its surrounding tasks together (sets task to inactive)
- * 
- * @param taskToRemove 
+ *
+ * @param taskToRemove
  */
 void CTTask_Unlink(CTTask* taskToRemove) {
     CTTask* nextTask = taskToRemove->next;
@@ -3170,7 +3171,7 @@ void CTTask_Unlink(CTTask* taskToRemove) {
 void CTTaskList_Clear(void) {
     CTTask* prev;
     CTTask* curr = gCTTaskHead->next;
-    
+
     while (curr->next != 0) {
         prev = curr;
         CTTask_Unlink(curr);
@@ -3182,16 +3183,15 @@ void CTTaskList_Clear(void) {
 //rain did this one but didnt add it
 void Task_ClearMost(void) {
     CTTask* temp_s0;
-    CTTask* var_s1;
+    CTTask* var_s1 = gCTTaskHead->next;
 
-    var_s1 = gCTTaskHead->next;
     while (var_s1->next != NULL) {
         temp_s0 = var_s1;
         var_s1 = var_s1->next;
         if (temp_s0->taskID != 240) {
             CTTask_Unlink(temp_s0);
             Free(temp_s0);
-        }           
+        }
     }
 }
 
@@ -3218,11 +3218,9 @@ void CTTaskList_Init(void) {
 const char D_8010DA14[] = "壊された %X\n";
 
 void CTTask_Unlink_2(CTTask* task) {
-    CTTask* nextTask;
-    CTTask* prevTask;
+    CTTask* nextTask = task->next;
+    CTTask* prevTask = task->prev;
 
-    nextTask = task->next;
-    prevTask = task->prev;
     nextTask->prev = prevTask;
     prevTask->next = nextTask;
     task->runType = 0;
@@ -3279,11 +3277,12 @@ Gfx* func_8008D168(Gfx* gfxPos, s32 arg1, s32 arg2) {
     if (D_800FFEC0 != 0){
         D_800FFEC0--;
     }
-    gSPDisplayList(gfxPos++, static0_UnkStatic0_Gfx);
+    gSPDisplayList(gfxPos++, D_1015B18);
     gDPSetColorImage(gfxPos++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 320, OS_K0_TO_PHYSICAL(&gFrameBuffers[arg1]));
     return gfxPos;
 }
 
+//StickToPad?
 s32 func_8008D5DC(ContMain* controller) {
     //CANNOT be a Vec2f.
     f32 stickX = controller->stickX;
@@ -3294,16 +3293,16 @@ s32 func_8008D5DC(ContMain* controller) {
         return 0;
     }
     if (stickX >= 25) {
-        result = 0x100;
+        result = R_JPAD;
     }
     if (stickX <= -25) {
-        result |= 0x200;
+        result |= L_JPAD;
     }
     if (stickY >= 25) {
-        result |= 0x800;
+        result |= U_JPAD;
     }
     if (stickY <= -25) {
-        result |= 0x400;
+        result |= D_JPAD;
     }
     return result;
 }
@@ -3323,11 +3322,13 @@ s32 func_8008D7B0(CTTask* task) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008D950.s")
 
 //macros???
-void func_8008DAB8(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, s32 unused, s16 arg6, s16 arg7) {
-    func_8005747C(arg0, 180 - arg1, arg2 - 80, arg3, arg4, arg6, arg7);
+void func_8008DAB8(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, s32 unused,
+                   s16 arg6, s16 arg7) {
+    func_8005747C(arg0, 180.0f - arg1, arg2 - 80.0f, arg3, arg4, arg6, arg7);
 }
 
-void func_8008DB24(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, s16 unused, s16 arg6, s16 arg7) {
+void func_8008DB24(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, s16 unused,
+                   s16 arg6, s16 arg7) {
     func_8005747C(arg0, 180.0f - arg1, arg2 - 80.0f, arg3, arg4, arg6, arg7);
 }
 
@@ -3337,15 +3338,14 @@ void func_8008DB90(Gfx** pGfxPos, GraphicStruct* arg1) {
     s32* var_t0;
     s32 i;
     s32 v12;
-    Gfx* gfxPos;
+    Gfx* gfxPos = *pGfxPos;
     Mtx* mtxTranslate;
     Mtx* mtxRotate;
-    Mtx* mtxScale;    
+    Mtx* mtxScale;
     u32 mtxCount;
     Mtx* s4;
     Unk_800FFB74* v1;
-    
-    gfxPos = *pGfxPos;
+
     D_800FF8D4 = arg1->unk1e880;
 
     if (D_800FFDEC) { } // required for matching
@@ -3375,10 +3375,10 @@ void func_8008DB90(Gfx** pGfxPos, GraphicStruct* arg1) {
     }
 
     D_800FF8D4 = arg1->unk1e880;
-    
+
     mtxTranslate = arg1->actorTranslate;
     mtxScale = arg1->actorScale;
-    mtxRotate = arg1->actorRotate;    
+    mtxRotate = arg1->actorRotate;
 
     task = gCTTaskHead->next;
     while (task->next != NULL) {
@@ -3412,14 +3412,14 @@ void func_8008DB90(Gfx** pGfxPos, GraphicStruct* arg1) {
                     guMtxCatL(&s4[s0[i].unk_00], mtxRotate, &s4[s0[i].unk_00]);
                     guMtxCatL(&s4[s0[i].unk_00], mtxScale, &s4[s0[i].unk_00]);
                     if (s0[i].unk_00 == 5) {
-                        func_80059254(&s4[s0[i].unk_00], 
+                        func_80059254(&s4[s0[i].unk_00],
                             s0[i].unk_02 + (task->pos.x + sp8C),
                             s0[i].unk_02 + (180.0f - task->pos.y - sp88),
                             task->pos.z + sp84,
                             s0[i].unk_06, s0[i].unk_06,
                             task->unk4C, s0[i].unk_08);
                     } else {
-                        func_800598C4(&s4[s0[i].unk_00], 
+                        func_800598C4(&s4[s0[i].unk_00],
                             s0[i].unk_02 + (task->pos.x + sp8C),
                             s0[i].unk_02 + (180.0f - task->pos.y - sp88),
                             task->pos.z + sp84,
@@ -3458,21 +3458,21 @@ Gfx* func_8008E314(Gfx* gfxPos, Tongue* tongues, PlayerActor* players, Camera* c
     camera->f3.x = 0.0f;
     camera->f3.y = 0.0f;
     camera->f3.z = 0.0f;
-    
+
     camera->f5.x = 0.0f;
     camera->f5.y = 0.0f;
     camera->f5.z = 0.0f;
 
     camera->f1.z = 0.0f;
     camera->f2.x = 0.0f;
-    camera->f2.y = 100.0f;    
+    camera->f2.y = 100.0f;
 
     guPerspective(&D_801B3180[fbIndex], &perspNorm, 60.0f, 4.0f / 3.0f, 1.0f, 1000.0f, 1.0f);
     gSPPerspNormalize(gfxPos++, perspNorm);
     guLookAt(&D_801B3240[fbIndex],
-                 camera->f4.x, camera->f4.y, camera->f4.z, // Eye
-                 camera->f5.x, camera->f5.y, camera->f5.z, // At
-                 0, 1, 0); // Up
+             camera->f4.x, camera->f4.y, camera->f4.z, // Eye
+             camera->f5.x, camera->f5.y, camera->f5.z, // At
+             0, 1, 0); // Up
     gSPMatrix(gfxPos++, OS_K0_TO_PHYSICAL(&D_801B3180[fbIndex]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
     gSPMatrix(gfxPos++, OS_K0_TO_PHYSICAL(&D_801B3240[fbIndex]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     return gfxPos;
@@ -3489,27 +3489,27 @@ Gfx* func_8008E488(Gfx* gfxPos, Tongue* tongues, PlayerActor* players, Camera* c
     camera->f3.x = 0.0f;
     camera->f3.y = 0.0f;
     camera->f3.z = 0.0f;
-    
+
     camera->f5.x = 0.0f;
     camera->f5.y = 0.0f;
     camera->f5.z = 0.0f;
 
     camera->f1.z = 0.0f;
     camera->f2.x = 0.0f;
-    camera->f2.y = 5.0f;    
+    camera->f2.y = 5.0f;
 
     guPerspective(&D_801B3300[fbIndex], &perspNorm, 60.0f, 4.0f / 3.0f, 1.0f, 20000.0f, 1.0f);
     gSPPerspNormalize(gfxPos++, perspNorm);
     guLookAt(&D_801B33C0[fbIndex],
-                 camera->f4.x, camera->f4.y, camera->f4.z, // Eye
-                 camera->f5.x, camera->f5.y, camera->f5.z, // At
-                 0, 1, 0); // Up
+             camera->f4.x, camera->f4.y, camera->f4.z, // Eye
+             camera->f5.x, camera->f5.y, camera->f5.z, // At
+             0, 1, 0); // Up
     gSPMatrix(gfxPos++, OS_K0_TO_PHYSICAL(&D_801B3300[fbIndex]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
     gSPMatrix(gfxPos++, OS_K0_TO_PHYSICAL(&D_801B33C0[fbIndex]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     return gfxPos;
 }
 
-Gfx* setFrustum(Gfx* gfxPos, s32 fbIndex) {
+Gfx* SetFrustum(Gfx* gfxPos, s32 fbIndex) {
     guOrtho(&D_801B3480[fbIndex], 0.0f, 320.0f, 0.0f, 240.0f, -2000.0f, 2000.0f, 1.0f);
     gSPMatrix(gfxPos++, OS_K0_TO_PHYSICAL(&D_801B3480[fbIndex]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
     return gfxPos;
@@ -3518,7 +3518,7 @@ Gfx* setFrustum(Gfx* gfxPos, s32 fbIndex) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008E698.s")
 
 void func_8008E7B8(CTTask* arg0) {
-    //more research needed? is it just getting the right half???
+    //more research needed? is it just getting the lower half???
     setPrimColor(arg0->unk5E, arg0->unk60, arg0->unk_62, arg0->unk66);
     printUISprite(2.0f, 2.0f, 0.0f, 0.0f, 1.0f, 316.0f, 236.0f, 0.0f, SPRITE_BLANK);
     CTTask_Unlink(arg0);
@@ -3528,12 +3528,11 @@ void func_8008E7B8(CTTask* arg0) {
 
 // UNK58 typing is confusing due to this
 CTTask* func_8008E9AC(s16 arg0, s16 arg1, s16 arg2, s16 arg3, s16* arg4) {
-    CTTask* task;
+    CTTask* task = CTTask_Alloc(1, 0xF0, 0);
 
-    task = CTTask_Alloc(1, 0xF0, 0);
     if (task == NULL) {
         DummiedPrintf("エラー\n");
-        while (1) {}
+        while (1){}
     }
     task->unk_5C = arg0;
     task->unk_64 = -24 - arg0;
@@ -3546,12 +3545,13 @@ CTTask* func_8008E9AC(s16 arg0, s16 arg1, s16 arg2, s16 arg3, s16* arg4) {
     task->pos.z = 0.0f;
     task->unk58 = (CTTask*)arg4; //TODO: probably fix this
     D_801B3540 = 1;
-    
+
     return task;
 }
 
 CTTask* func_8008EA60(s16 arg0, s16 arg1, s16 arg2, s16 arg3, s16* arg4) {
     CTTask* task = CTTask_Alloc(1, 240, 0);
+
     if (task == NULL) {
         DummiedPrintf("エラー\n"); // error
         while(1){}
@@ -3569,8 +3569,10 @@ CTTask* func_8008EA60(s16 arg0, s16 arg1, s16 arg2, s16 arg3, s16* arg4) {
     return task;
 }
 
-CTTask* func_8008EB08(s16 arg0, s16 arg1, s16 arg2, s16 arg3, s16* arg4, f32 arg5, f32 arg6, f32 arg7, f32 arg8, s16 arg9) {
+CTTask* func_8008EB08(s16 arg0, s16 arg1, s16 arg2, s16 arg3, s16* arg4, f32 arg5,
+                      f32 arg6, f32 arg7, f32 arg8, s16 arg9) {
     CTTask* newTask = CTTask_Alloc(1, arg9, NULL);
+
     if (newTask == NULL) {
         DummiedPrintf("エラー\n");
         while(1){}
@@ -3591,8 +3593,10 @@ CTTask* func_8008EB08(s16 arg0, s16 arg1, s16 arg2, s16 arg3, s16* arg4, f32 arg
     return newTask;
 }
 
-CTTask* func_8008EBCC(s16 arg0, s16 arg1, s16 arg2, s16 arg3, CTTask* arg4, f32 arg5, f32 arg6, f32 arg7, f32 arg8, s16 arg9) {
+CTTask* func_8008EBCC(s16 arg0, s16 arg1, s16 arg2, s16 arg3, CTTask* arg4, f32 arg5,
+                      f32 arg6, f32 arg7, f32 arg8, s16 arg9) {
     CTTask* newTask = CTTask_Alloc(1, arg9, NULL);
+
     if (newTask == NULL) {
         DummiedPrintf("エラー\n");
         while(1){}
@@ -3652,6 +3656,7 @@ void func_8008EFA0(CTTask* arg0) {
 
 CTTask* func_8008F050(s16 arg0, s16 arg1, s16 arg2, s16 arg3, s16* arg4) {
     CTTask* task = CTTask_Alloc(1, 240, 0);
+
     if (task == 0) {
         DummiedPrintf("エラー\n");
         while(1){}
@@ -3720,11 +3725,11 @@ void func_8008F16C(void) {
         }
         func_80084A04();
         if (D_801FC9AC == 1) {
-            gMainGfxPos = setFrustum(gMainGfxPos, gFramebufferIndex);
+            gMainGfxPos = SetFrustum(gMainGfxPos, gFramebufferIndex);
             func_8008DB90(&gMainGfxPos, &gGraphicsList[gFramebufferIndex]);
             gMainGfxPos = func_8005CA44(gMainGfxPos);
         } else {
-            gMainGfxPos = setFrustum(gMainGfxPos, gFramebufferIndex);
+            gMainGfxPos = SetFrustum(gMainGfxPos, gFramebufferIndex);
             func_8008DB90(&gMainGfxPos, &gGraphicsList[gFramebufferIndex]);
             gMainGfxPos = func_8008E488(gMainGfxPos, gTongues, gPlayerActors, gCamera, gFramebufferIndex);
             gMainGfxPos = func_8005CA44(gMainGfxPos);
@@ -3753,30 +3758,29 @@ void func_8008F16C(void) {
 
 s32 DrawBackground(s32 arg0) {
     s32 var_a1;
-    UnkBg* var_s0;
+    UnkBg* var_s0 = D_800FFE58[arg0];
 
-    var_s0 = D_800FFE58[arg0];
     for (; var_s0->spriteID != -1; var_s0++) {
             if (LoadSprite(var_s0->spriteID) != 0) {
                 DummiedPrintf("ＢＧロードエラー %d\n", var_s0->spriteID);
-            }        
+            }
     }
     return 0;
 }
 
 void func_8008F710(CTTask* task) {
-    UnkBg* var_s0;
-    
-    var_s0 = D_800FFE58[task->unk_04];
+    UnkBg* var_s0 = D_800FFE58[task->unk_04];
+
     for (; var_s0->spriteID != -1; var_s0++) {
         s32 temp0 = var_s0->unk0;
         s32 temp1 = var_s0->unk2;
-        func_8005C454(temp0, temp1, 0.0f, var_s0->spriteID);    
+        func_8005C454(temp0, temp1, 0.0f, var_s0->spriteID);
     }
 }
 
 CTTask* func_8008F7A4(s16 arg0, s16 arg1) {
     CTTask* newTask = CTTask_Alloc(1, arg1, NULL);
+
     if (newTask == NULL) {
         DummiedPrintf("Ｂｇ表示タスク作製エラー\n");
         while(1){}
@@ -3798,71 +3802,73 @@ CTTask* func_8008F7A4(s16 arg0, s16 arg1) {
 
 s32 ReturnInputS32(s32 n) {
     switch (n) {
-    case 0:
-        return 0;
-    case 1:
-        return 1;
-    case 2:
-        return 2;
-    case 3:
-        return 3;
-    case 4:
-        return 4;
-    case 5:
-        return 5;
-    case 6:
-        return 6;
-    case 7:
-        return 7;
-    case 8:
-        return 8;
-    case 9:
-        return 9;
-    default:
-        return 0;
+        case 0:
+            return 0;
+        case 1:
+            return 1;
+        case 2:
+            return 2;
+        case 3:
+            return 3;
+        case 4:
+            return 4;
+        case 5:
+            return 5;
+        case 6:
+            return 6;
+        case 7:
+            return 7;
+        case 8:
+            return 8;
+        case 9:
+            return 9;
+        default:
+            return 0;
     }
 }
 
 s32 GetBaseStage(s32 stageID) {
     s32 ret;
 
+    //if boss of area x, return area x
+    //otherwise just return area x
     switch (stageID) {
-    case STAGE_JUNGLE:
-    case STAGE_JUNGLEBOSS:
-        ret = STAGE_JUNGLE;
-        break;
-    case STAGE_ANT:
-    case STAGE_ANTBOSS:
-        ret = STAGE_ANT;
-        break;
-    case STAGE_BOMB:
-    case STAGE_BOMBBOSS:
-        ret = STAGE_BOMB;
-        break;
-    case STAGE_DESERT:
-    case STAGE_DESERTBOSS:
-        ret = STAGE_DESERT;
-        break;
-    case STAGE_KIDS:
-    case STAGE_KIDSBOSS:
-        ret = STAGE_KIDS;
-        break;
-    case STAGE_GHOST:
-    case STAGE_GHOSTBOSS:
-        ret = STAGE_GHOST;
-        break;
-    case STAGE_BOSSRUSH:
-        ret = 6;
-        break;
-    default:
-        return -1;
+        case STAGE_JUNGLE:
+        case STAGE_JUNGLEBOSS:
+            ret = STAGE_JUNGLE;
+            break;
+        case STAGE_ANT:
+        case STAGE_ANTBOSS:
+            ret = STAGE_ANT;
+            break;
+        case STAGE_BOMB:
+        case STAGE_BOMBBOSS:
+            ret = STAGE_BOMB;
+            break;
+        case STAGE_DESERT:
+        case STAGE_DESERTBOSS:
+            ret = STAGE_DESERT;
+            break;
+        case STAGE_KIDS:
+        case STAGE_KIDSBOSS:
+            ret = STAGE_KIDS;
+            break;
+        case STAGE_GHOST:
+        case STAGE_GHOSTBOSS:
+            ret = STAGE_GHOST;
+            break;
+        case STAGE_BOSSRUSH:
+            ret = 6;
+            break;
+        default:
+            return -1;
     }
     return ret;
 }
 
 /**
  * @brief Scans the memory in quantities of 10KB to find the maximum amount of memory that can be allocated
- * 
+ *
  * @return s32 - free memory in bytes
  */
 s32 MemsizeCheck(void) {
@@ -3905,11 +3911,13 @@ void SetProcessType(s32 gameMode) {
 
 void func_8008FD68(void) {
     DMAStruct_Print();
+
     D_80174878++;
-    if (D_800F06EC >= 0) {
-        D_80174878 = D_800F06EC;
+    if (sDebugStageOverride >= 0) {
+        D_80174878 = sDebugStageOverride;
     }
     D_80174878 = LoadStageByIndex(D_80174878);
+
     func_8002E0CC();
     InitField();
     func_80056EB4();
@@ -3931,7 +3939,7 @@ void func_8008FE00(void) {
 
 void func_8008FE50(void) {
     s32 i;
-    
+
     for (i = CHARA_DAVY; i <= CHARA_WHITE; i++) {
         LoadPlayerEyes(i);
         SetPlayerContextEyes(i, 0, 0);
@@ -3957,14 +3965,13 @@ void func_8008FEA8(s32 arg0, s32 arg1) {
         } else {
             var_a0 = (s32*)SEGMENTED_TO_VIRTUAL2(gStageLoadData[arg0].stageData);
         }
-        
 
         if (!IS_SEGMENTED(var_a0[7])) {
             var_a0_2 = (Vec3f*)var_a0[7];
         } else {
             var_a0_2 = SEGMENTED_TO_VIRTUAL(var_a0[7]);
         }
-        
+
         gPlayerActors->pos.x = var_a0_2->x;
         gPlayerActors->pos.y = var_a0_2->y;
         gPlayerActors->pos.z = var_a0_2->z;
@@ -3978,189 +3985,191 @@ void Porocess_Mode0(void) {
     s32 i;
 
     switch (gGameModeState) {
-    case 0:
-        D_800FFDF0 = 3;
-        DMAStruct_Print();
-        D_80174878 += 1;
-        
-        if (D_800F06EC >= 0) {
-            D_80174878 = D_800F06EC;
-        }
-        
-        D_80174878 = LoadStageByIndex(D_80174878);
-        if (gCurrentStage == STAGE_VS) {
-            D_80168DA0 = gControllerNo;
-            Battle_GameType = 2;
-        } else {
-            Battle_GameType = 0;
-            D_80168DA0 = 1;
-        }
+        case 0:
+            D_800FFDF0 = 3;
+            DMAStruct_Print();
 
-        //required 1 liner to match
-        for (i = 0; i < D_80168DA0; i++) {gPlayerActors[i].active = 1;}
+            D_80174878++;
+            if (sDebugStageOverride >= 0) {
+                D_80174878 = sDebugStageOverride;
+            }
+            D_80174878 = LoadStageByIndex(D_80174878);
 
-        for (; i < ARRAY_COUNT(gPlayerActors); i++) {
-            gPlayerActors[i].active = 0;
-        }            
-        for (i = 0; i < ARRAY_COUNT(gTongues); i++) {
-            _bzero(&gTongues[i], sizeof(Tongue));
-        }
-    
-        func_8002E0CC();
-        InitField();
-        func_80056EB4();
-        Effect_Init();
-        func_8005C9B8();
-        func_80084788();
-        
-        D_80174980 = 0;
-        if (gCurrentStage == STAGE_VS) {
-            Battle_Init();
-        } else {
-            func_8008FE00();
-        }
-        if (gCurrentStage == STAGE_BOMB) {
-            LoadPlayerEyes(4);
-            SetPlayerContextEyes(4, 0, 0);
-            FreePlayerEyes(4);
-        }
-        CTTaskList_Init();
-        if ((gCurrentStage == STAGE_BOSSRUSH) || (gCurrentStage == STAGE_TRAINING)) {
-            func_800C1458(0);
-        }
-        func_8008BE14();
-        func_8008800C(8);
-        gGameModeState++;
-        func_8008F114();
-        gCurrentStageTime = 0;
-        return;
-    case 1:
-        func_8002CE54();
-        return;
-    case 2:
-        gGameModeState = 1;
-        return;
-    case 3:
-        Battle_GameType = 0;
-        temp_s0 = gPlayerActors->hp;
-        sp28 = currentStageCrowns;
-        sp24 = D_80247904;
-        DMAStruct_Print();
-        D_80174878++;
-        if (D_800F06EC >= 0) {
-            D_80174878 = D_800F06EC;
-        }
-        D_80174878 = LoadStageByIndex(D_80174878);
-        func_8002E0CC();
-        InitField();
-        gPlayerActors->hp = temp_s0;
-        func_80056EB4();
-        Effect_Init();
-        func_8005C9B8();
-        func_80084788();
-        CTTaskList_Init();
-        if (D_800FFEBC != 0) {
-            func_800C1458(1);
-        } else {
-            func_800C1458(0);
-        }
-        gGameModeState = 1;
-        func_8008F114();
-        currentStageCrowns = sp28;
-        D_80247904 = sp24;
-        func_8008FE00();
-        if (gCurrentStage == STAGE_BOMB) {
-            LoadPlayerEyes(4);
-            SetPlayerContextEyes(4, 0, 0);
-            FreePlayerEyes(4);
+            if (gCurrentStage == STAGE_VS) {
+                D_80168DA0 = gControllerNo;
+                Battle_GameType = BATTLE_TYPE_TIME_TRIAL;
+            } else {
+                Battle_GameType = BATTLE_TYPE_NOTBATTLE;
+                D_80168DA0 = 1;
+            }
+
+            //required 1 liner to match
+            for (i = 0; i < D_80168DA0; i++) gPlayerActors[i].active = 1;
+
+            for (; i < ARRAY_COUNT(gPlayerActors); i++) {
+                gPlayerActors[i].active = 0;
+            }
+            for (i = 0; i < ARRAY_COUNT(gTongues); i++) {
+                _bzero(&gTongues[i], sizeof(Tongue));
+            }
+
+            func_8002E0CC();
+            InitField();
+            func_80056EB4();
+            Effect_Init();
+            func_8005C9B8();
+            func_80084788();
+
+            D_80174980 = 0;
+            if (gCurrentStage == STAGE_VS) {
+                Battle_Init();
+            } else {
+                func_8008FE00();
+            }
+            if (gCurrentStage == STAGE_BOMB) {
+                LoadPlayerEyes(4);
+                SetPlayerContextEyes(4, 0, 0);
+                FreePlayerEyes(4);
+            }
+            CTTaskList_Init();
+            if ((gCurrentStage == STAGE_BOSSRUSH) || (gCurrentStage == STAGE_TRAINING)) {
+                func_800C1458(0);
+            }
+            func_8008BE14();
+            func_8008800C(8);
+            gGameModeState++;
+            func_8008F114();
+            gCurrentStageTime = 0;
             return;
-        }
-    default:
-        return;
-    case 4:
-        for (i = 0; i < 4; i++) {
-            _bzero(&gTongues[i], sizeof(Tongue));
-        }
-        
-        gPlayerActors[0].active = 1;
-        for (i = 1; i < ARRAY_COUNT(gPlayerActors); i++) {
-            gPlayerActors[i].active = 0;
-        }
-        
-        gNoHit = 0;
-        gOneRun = 0;
-        D_80200B38 = 0;
-        Battle_GameType = 0;
-        SaveData_ReadFile(&gGameState);
-        D_80174878 = gCurrentStage - 1;
-        func_8008FD68();
-        SaveData_ReadFile(&gGameState);
-        if (isInOverworld == TRUE) {
-            if (gCurrentStage == STAGE_JUNGLE) {
-                D_80236978 = 1;
+        case 1:
+            func_8002CE54();
+            return;
+        case 2:
+            gGameModeState = 1;
+            return;
+        case 3:
+            Battle_GameType = BATTLE_TYPE_NOTBATTLE;
+            temp_s0 = gPlayerActors->hp;
+            sp28 = currentStageCrowns;
+            sp24 = D_80247904;
+            DMAStruct_Print();
+
+            D_80174878++;
+            if (sDebugStageOverride >= 0) {
+                D_80174878 = sDebugStageOverride;
             }
-            func_800C2820(gGameState.gCurrentZone, &gPlayerActors[0], &gGameState);
-        } else {
-            D_80236978 = 0;
-            func_800C1510(gGameState.gCurrentZone, gGameState.unk33);
-            func_800B4574(&gGameState.unk2, &gGameState.UNK_22);
-            func_800C0760(gGameState.gCurrentZone);
-        }
-        currentStageCrowns = (s32) gGameState.stageCrowns;
-        DummiedPrintf("\n");
-        func_8008FEA8(gCurrentStage, gGameState.gCurrentZone);
-        gGameModeState = 1;
-        func_8008F114();
-        func_8008FE00();
-        if (gCurrentStage == STAGE_BOMB) {
-            LoadPlayerEyes(4);
-            SetPlayerContextEyes(4, 0, 0);
-            FreePlayerEyes(4);
-        }
-        func_8008800C(8);
-        return;
-    case 5:
-        SetProcessType(1);
-        func_8008F114();
-        return;
-    case 6:
-        SetProcessType(6);
-        return;
-    case 7:
-        gNoHit = 0;
-        gOneRun = 0;
-        D_80200B38 = 0;
-        D_80168DA0 = 1;
-        Battle_GameType = 0;
-        SaveData_ReadFile(&gSaveFile);
-        D_80174878 = gCurrentStage - 1;
-        for (i = 0; i < ARRAY_COUNT(gTongues); i++) {
-            _bzero(&gTongues[i], sizeof(Tongue));
-        }
-        func_8008FD68();
-        SaveData_ReadFile(&gSaveFile);
-        if (isInOverworld == TRUE) {
-            if (gCurrentStage == STAGE_JUNGLE) {
-                D_80236978 = 1;
+            D_80174878 = LoadStageByIndex(D_80174878);
+
+            func_8002E0CC();
+            InitField();
+            gPlayerActors->hp = temp_s0;
+            func_80056EB4();
+            Effect_Init();
+            func_8005C9B8();
+            func_80084788();
+            CTTaskList_Init();
+            if (D_800FFEBC != 0) {
+                func_800C1458(1);
+            } else {
+                func_800C1458(0);
             }
-            func_800C2820(gSaveFile.gCurrentZone, &gPlayerActors[0], &gSaveFile);
-        } else {
-            D_80236978 = 0;
-            func_800C1510(gSaveFile.gCurrentZone, gSaveFile.unk33);
-            func_800B4574(&gSaveFile.unk2, &gSaveFile.UNK_22);
-            func_800C0760(gSaveFile.gCurrentZone);
-        }
-        func_8008FEA8(gCurrentStage, gSaveFile.gCurrentZone);
-        currentStageCrowns = (s32) gSaveFile.stageCrowns;
-        gGameModeState = 1;
-        func_8008F114();
-        func_8008FE00();
-        if (gCurrentStage == STAGE_BOMB) {
-            LoadPlayerEyes(4);
-            SetPlayerContextEyes(4, 0, 0);
-            FreePlayerEyes(4);
-        }
-        break;
+            gGameModeState = 1;
+            func_8008F114();
+            currentStageCrowns = sp28;
+            D_80247904 = sp24;
+            func_8008FE00();
+            if (gCurrentStage == STAGE_BOMB) {
+                LoadPlayerEyes(4);
+                SetPlayerContextEyes(4, 0, 0);
+                FreePlayerEyes(4);
+                return;
+            }
+        default:
+            return;
+        case 4:
+            for (i = 0; i < 4; i++) {
+                _bzero(&gTongues[i], sizeof(Tongue));
+            }
+
+            gPlayerActors[0].active = 1;
+            for (i = 1; i < ARRAY_COUNT(gPlayerActors); i++) {
+                gPlayerActors[i].active = 0;
+            }
+
+            gNoHit = 0;
+            gOneRun = 0;
+            D_80200B38 = 0;
+            Battle_GameType = BATTLE_TYPE_NOTBATTLE;
+            SaveData_ReadFile(&gGameState);
+            D_80174878 = gCurrentStage - 1;
+            func_8008FD68();
+            SaveData_ReadFile(&gGameState);
+            if (isInOverworld == TRUE) {
+                if (gCurrentStage == STAGE_JUNGLE) {
+                    D_80236978 = 1;
+                }
+                func_800C2820(gGameState.gCurrentZone, &gPlayerActors[0], &gGameState);
+            } else {
+                D_80236978 = 0;
+                func_800C1510(gGameState.gCurrentZone, gGameState.unk33);
+                func_800B4574(&gGameState.unk2, &gGameState.UNK_22);
+                func_800C0760(gGameState.gCurrentZone);
+            }
+            currentStageCrowns = (s32) gGameState.stageCrowns;
+            DummiedPrintf("\n");
+            func_8008FEA8(gCurrentStage, gGameState.gCurrentZone);
+            gGameModeState = 1;
+            func_8008F114();
+            func_8008FE00();
+            if (gCurrentStage == STAGE_BOMB) {
+                LoadPlayerEyes(4);
+                SetPlayerContextEyes(4, 0, 0);
+                FreePlayerEyes(4);
+            }
+            func_8008800C(8);
+            return;
+        case 5:
+            SetProcessType(1);
+            func_8008F114();
+            return;
+        case 6:
+            SetProcessType(6);
+            return;
+        case 7:
+            gNoHit = 0;
+            gOneRun = 0;
+            D_80200B38 = 0;
+            D_80168DA0 = 1;
+            Battle_GameType = BATTLE_TYPE_NOTBATTLE;
+            SaveData_ReadFile(&gSaveFile);
+            D_80174878 = gCurrentStage - 1;
+            for (i = 0; i < ARRAY_COUNT(gTongues); i++) {
+                _bzero(&gTongues[i], sizeof(Tongue));
+            }
+            func_8008FD68();
+            SaveData_ReadFile(&gSaveFile);
+            if (isInOverworld == TRUE) {
+                if (gCurrentStage == STAGE_JUNGLE) {
+                    D_80236978 = 1;
+                }
+                func_800C2820(gSaveFile.gCurrentZone, &gPlayerActors[0], &gSaveFile);
+            } else {
+                D_80236978 = 0;
+                func_800C1510(gSaveFile.gCurrentZone, gSaveFile.unk33);
+                func_800B4574(&gSaveFile.unk2, &gSaveFile.UNK_22);
+                func_800C0760(gSaveFile.gCurrentZone);
+            }
+            func_8008FEA8(gCurrentStage, gSaveFile.gCurrentZone);
+            currentStageCrowns = (s32) gSaveFile.stageCrowns;
+            gGameModeState = 1;
+            func_8008F114();
+            func_8008FE00();
+            if (gCurrentStage == STAGE_BOMB) {
+                LoadPlayerEyes(4);
+                SetPlayerContextEyes(4, 0, 0);
+                FreePlayerEyes(4);
+            }
+            return;
     }
 }
 
@@ -4175,73 +4184,73 @@ void MainLoop(void) {
     if (SaveData_RecordChecksum() != gGameRecords.flags[0]) {
         SaveData_ClearRecords();
     }
-    gIsStero = gGameRecords.flags[1] & 1;
+    gIsStereo = gGameRecords.flags[1] & 1;
     osRecvMesg(&gSyncMessageQueue, NULL, OS_MESG_BLOCK);
     while(1){
         switch (gGameModeCurrent) {
-        case 0:
-            Porocess_Mode0();
-            continue;
-        case 1:
-            Process_StageSelect();
-            continue;
-        case 2:
-            FileWork();
-            continue;
-        case 3:
-            func_8009C904();
-            continue;
-        case 4:
-            func_800A9F84();
-            continue;
-        case 5:
-            func_800AA3F0();
-            continue;
-        case 20:
-            func_800ADE70();
-            continue;
-        case 21:
-            func_800AE4AC();
-            continue;
-        case 6:
-            Process_TitleMenu();
-            continue;
-        case 7:
-            Process_BattleMenu();
-            continue;
-        case 8:
-            Process_OptionsMenu();
-            continue;
-        case 9:
-            Process_GameOver();
-            continue;
-        case 10:
-            Process_JSSLogo();
-            continue;
-        case 11:
-            Process_PreCredits();
-            continue;
-        case 12:
-            Process_NewGameMenu();
-            continue;
-        case 13:
-            func_800A6DD8();
-            continue;
-        case 14:
-            func_800A07E0();
-            continue;
-        case 16:
-            Process_Ranking();
-            continue;
-        case 17:
-            func_800557F8();
-            continue;
-        case 18:
-            Process_Boot();
-            continue;
-        case 19:
-            Process_SunsoftLogo();
-            continue;
+            case 0:
+                Porocess_Mode0();
+                continue;
+            case 1:
+                Process_StageSelect();
+                continue;
+            case 2:
+                FileWork();
+                continue;
+            case 3:
+                func_8009C904();
+                continue;
+            case 4:
+                func_800A9F84();
+                continue;
+            case 5:
+                func_800AA3F0();
+                continue;
+            case 20:
+                func_800ADE70();
+                continue;
+            case 21:
+                func_800AE4AC();
+                continue;
+            case 6:
+                Process_TitleMenu();
+                continue;
+            case 7:
+                Process_BattleMenu();
+                continue;
+            case 8:
+                Process_OptionsMenu();
+                continue;
+            case 9:
+                Process_GameOver();
+                continue;
+            case 10:
+                Process_JSSLogo();
+                continue;
+            case 11:
+                Process_PreCredits();
+                continue;
+            case 12:
+                Process_NewGameMenu();
+                continue;
+            case 13:
+                func_800A6DD8();
+                continue;
+            case 14:
+                func_800A07E0();
+                continue;
+            case 16:
+                Process_Ranking();
+                continue;
+            case 17:
+                func_800557F8();
+                continue;
+            case 18:
+                Process_Boot();
+                continue;
+            case 19:
+                Process_SunsoftLogo();
+                continue;
         }
         DummiedPrintf("No Process = %d\n", gGameModeCurrent);
     }
@@ -4253,53 +4262,53 @@ s32 func_80090B10(s32 time, s32 stageID) {
     s32 baseStage;
     s32 recordTime;
     s32 ret = 0;
-    
+
     baseStage = GetBaseStage(stageID);
-    
+
     if (baseStage < 0) {
         return 0;
     }
     if (time == 0) {
         return 0;
     }
-    
+
     time /= 30;
     recordTime = RecordTime_ParseToSecs(&gGameState.stageTimes[baseStage]);
-    
+
     if ((time < recordTime) || (recordTime == 0)) {
         RecordTime_SetTo(time, &gGameState.stageTimes[baseStage]);
         ret = 1;
     }
-    
+
     return ret;
 }
 
 void func_80090BC0(void) {
     LoadSprite(SPRITE_SPECIFIC_SYMBOLS);
     switch (gCurrentStage) {
-    case STAGE_KIDSBOSS:
-        LoadSprite(SPRITE_PUFF2);
-        LoadSprite(SPRITE_CHOCOKID);
-        break;
-    case STAGE_ANTBOSS:
-        LoadSprite(SPRITE_GRAYANT);
-        break;
-    case STAGE_BOMBBOSS:
-        LoadSprite(SPRITE_BOMBDOKKAN_PART);
-        LoadSprite(SPRITE_BOMBDOKKAN_EYE);
-        LoadSprite(SPRITE_EYEBLINK_UNUSED);
-        LoadSprite(SPRITE_EYETWIRL_UNUSED);
-    default:
-    case STAGE_JUNGLEBOSS:
-    case STAGE_DESERTBOSS:
-        break;
+        case STAGE_KIDSBOSS:
+            LoadSprite(SPRITE_PUFF2);
+            LoadSprite(SPRITE_CHOCOKID);
+            break;
+        case STAGE_ANTBOSS:
+            LoadSprite(SPRITE_GRAYANT);
+            break;
+        case STAGE_BOMBBOSS:
+            LoadSprite(SPRITE_BOMBDOKKAN_PART);
+            LoadSprite(SPRITE_BOMBDOKKAN_EYE);
+            LoadSprite(SPRITE_EYEBLINK_UNUSED);
+            LoadSprite(SPRITE_EYETWIRL_UNUSED);
+        default:
+        case STAGE_JUNGLEBOSS:
+        case STAGE_DESERTBOSS:
+            break;
     }
 }
 
 void func_80090C54(CTTask* arg0) {
-    //why
     f32 sp1C = arg0->pos.x;
     f32 sp18 = arg0->pos.y;
+
     if (func_8008D950(arg0) == -1) {
         arg0->pos.x += sp1C;
         arg0->pos.y += sp18;
@@ -4321,6 +4330,7 @@ s32 func_80090CB0(CTTask* task) {
 
 void func_80090E2C(void) {
     CTTask* task = CTTask_Alloc(1, 100, NULL);
+
     if (task == NULL) {
         DummiedPrintf("エラー\n");
         while(1){}
@@ -4348,15 +4358,15 @@ void func_800910E4(CTTask* task) {
     task->unk84 = 1.5f;
     task->unk7C = -20;
     switch (gCurrentStage) {
-    case STAGE_JUNGLEBOSS:
-        task->unk88 = 95;
-        break;
-    case STAGE_BOMBBOSS:
-        task->unk88 = 102;
-        break;
-    case STAGE_DESERTBOSS:
-        task->unk88 = 90;
-        break;
+        case STAGE_JUNGLEBOSS:
+            task->unk88 = 95;
+            break;
+        case STAGE_BOMBBOSS:
+            task->unk88 = 102;
+            break;
+        case STAGE_DESERTBOSS:
+            task->unk88 = 90;
+            break;
     }
     task->unk4E = 0;
 }
@@ -4444,6 +4454,7 @@ func:
 
 void func_80091758(CTTask* arg0) {
     CTTask* task;
+
     if (arg0->unk60) {
         arg0->unk60--;
         return;
@@ -4490,7 +4501,7 @@ void func_80092254(CTTask* arg0) {
         }
     }
     func_80091A38(arg0);
-    if ((gContMain->buttons2 & 0x8000) || (gContMain->buttons2 & 0x1000)) {
+    if ((gContMain->buttons2 & A_BUTTON) || (gContMain->buttons2 & START_BUTTON)) {
         arg0->unk60 = 0x10;
     }
     if (arg0->unk60 >= 0x10) {
@@ -4522,6 +4533,7 @@ void func_8009244C(CTTask* task) {
 
 void func_80092474(CTTask* task) {
     CTTask* temp_v0;
+
     task->rotA += 5.0;
     if (task->rotA >= 360) {
         task->rotA -= 360;
@@ -4575,7 +4587,6 @@ void func_800925A8(CTTask* task) {
 }
 
 void func_80092690(CTTask* task) {
-
     if (task->unk5E != 0) {
         func_8008D7FC(task);
     }
@@ -4632,8 +4643,7 @@ void func_80092864(CTTask* task) {
 void func_8009288C(CTTask* task) {
     if (task->unk60 != 0) {
         task->unk60--;
-    }
-    else if (func_8008D7FC(task) != 0) {
+    } else if (func_8008D7FC(task) != 0) {
         if (task->unk58->unk54 < 7) {
             task->unk58->unk54 = 7;
         }
@@ -4642,11 +4652,11 @@ void func_8009288C(CTTask* task) {
 }
 
 void func_800928F0(CTTask* arg0) {
-
 }
 
 void func_800928F8(f32 arg0, f32 arg1, f32 arg2, f32 arg3) {
     CTTask* task = CTTask_Alloc(1, 240, NULL);
+
     task->pos.x = arg0;
     task->pos.y = arg1;
     task->pos.z = 0.0f;
@@ -4679,6 +4689,7 @@ void func_80092990(CTTask* task) {
 
 s32 func_80092C0C(CTTask* task) {
     s32 flag = FALSE;
+
     task->pos.x += task->unk80;
     if (task->pos.x >= 160.0f) {
         flag = TRUE;
@@ -4689,6 +4700,7 @@ s32 func_80092C0C(CTTask* task) {
 
 CTTask* func_80092C54(s32 task) {
     CTTask* newTask = CTTask_Alloc(1, 100, NULL);
+
     newTask->unk4E = 1;
     newTask->unk44 = 16;
     newTask->unk48 = -1;
@@ -4718,8 +4730,7 @@ void func_80092D68(CTTask* task) {
     if (func_80092C0C(task) != 0) {
         task->function = func_80092E10;
         task->unk90 = 90;
-    }
-    else{
+    } else {
         //must be like this
         task->rotA = task->unk90 + task->rotA;
         if (task->rotA > 115) {
@@ -4733,7 +4744,7 @@ void func_80092D68(CTTask* task) {
 
 void func_80092E10(CTTask* arg0) {
     CTTask* temp_v0 = arg0->unk58;
-    
+
     func_80092A64(arg0, temp_v0->unk8C);
     if (temp_v0->unk54 == 5) {
         arg0->function = func_80092E9C;
@@ -4762,7 +4773,7 @@ void func_80092E9C(CTTask* task) {
 }
 
 void func_80092F44(CTTask* task) {
-    if (func_8008D7FC(task)) {
+    if (func_8008D7FC(task) != 0) {
         if (task->unk_5C) {
             task->unk_5C--;
             task->unk7C *= -0.6;
@@ -4776,6 +4787,7 @@ void func_80092F44(CTTask* task) {
 
 void func_80092FB8(CTTask* task) {
     CTTask* taskNext = task->unk58;
+
     if (func_8008D7FC(task)) {
         taskNext->unk54 = 6;
     }
@@ -4783,6 +4795,7 @@ void func_80092FB8(CTTask* task) {
 
 CTTask* func_80092FEC(s32 arg0) {
     CTTask* temp_v0 = CTTask_Alloc(1, 100, NULL);
+
     temp_v0->rot.y = 1;
     temp_v0->rotA = 80;
     temp_v0->unk55 = 255;
@@ -4821,6 +4834,7 @@ void func_80093110(CTTask* task) {
 
 void func_8009319C(CTTask* task) {
     CTTask* newTask = task->unk58;
+
     func_8008DAB8(task->pos.x + D_800FFEE8, task->pos.y, task->pos.z, task->scale.x * 40.0, task->scale.x * 40.0, (s32) task->unk55, 0, (s32) task->unk_04);
     func_80092A64(task, newTask->unk8C);
     if (newTask->unk54 == 5) {
@@ -4833,6 +4847,7 @@ void func_8009319C(CTTask* task) {
 
 void func_80093260(CTTask* task) {
     CTTask* newTask = task->unk58;
+
     func_8008DAB8(task->pos.x, task->pos.y, task->pos.z, task->scale.x * 40.0, task->scale.x * 40.0, task->unk55, 0, task->unk_04);
     if (func_80090CB0(task) != 0) {
         if (task->unk_5C != 0) {
@@ -4863,8 +4878,7 @@ void func_80093500(CTTask* task) {
         task->unk_5C = 30;
         task->unk_62 = 30;
         task->unk90 = 90;
-    }
-    else{
+    } else {
         if ((gTimer % 28) == 0) {
             PLAY_SFX(SFX_Bomb_Caterpillar_Slither, 0, 16);
         }
@@ -4880,7 +4894,6 @@ void func_80093500(CTTask* task) {
 }
 
 void func_800935F8(s32 arg0) {
-
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80093600.s")
@@ -4910,6 +4923,7 @@ void func_8009384C(CTTask* task) {
 
 void func_800938B0(CTTask* task) {
     CTTask* otherTask = task->unk58;
+
     if ((task->unk54 == 6) && (otherTask->unk54 < 7)) {
         otherTask->unk54 = 7;
     }
@@ -4917,6 +4931,7 @@ void func_800938B0(CTTask* task) {
 
 void func_800938E4(s32 xMult) {
     CTTask* task = CTTask_Alloc(1, 100, 0);
+
     task->function = func_800939B0;
     task->scale.x = 0.8f;
     task->unk3C = 1.0f;
@@ -4959,12 +4974,11 @@ void func_8009403C(CTTask* task) {
     func_8008D7FC(task);
     if (task->unk7C < 0) {
         func_80090CB0(task);
-    }
-    else{
+    } else {
         task->unk44 = 11;
         if (task->unk60 != 0) {
             task->unk60--;
-        
+
         } else {
             task->function = func_800940B8;
             task->unk_5C = 3;
@@ -4996,7 +5010,6 @@ void func_80094120(CTTask* task) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800941C0.s")
 
 void func_80094220(CTTask* task) {
-
 }
 
 void func_80094228(CTTask* task) {
@@ -5053,7 +5066,7 @@ void func_80094410(CTTask* task) {
         task->unk80 = 0;
         if (task->unk60 != 0) {
             task->unk60--;
-        } else{
+        } else {
             task->function = func_80094540;
             task->rotA = 0;
         }
@@ -5072,6 +5085,7 @@ void func_800944C0(CTTask* task) {
 
 void func_80094540(CTTask* task) {
     CTTask* newTask;
+
     if (task->unk60 != 0) {
         task->unk5E = 0;
         task->unk60--;
@@ -5089,13 +5103,13 @@ void func_80094540(CTTask* task) {
 }
 
 void func_800945E4(CTTask* arg0) {
-
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800945EC.s")
 
 void func_800946F4(CTTask* task) {
     f32 var_f2 = (task->rotA < 0) ? -task->rotA : task->rotA;
+
     task->pos.y = (96.0 - (sinf(DEGREES_TO_RADIANS_2PI(var_f2)) * (task->scale.x * 40.0))) + 13.0;
 }
 
@@ -5154,7 +5168,7 @@ void func_80094958(CTTask* task) {
 //thanks rain
 void func_80094ABC(CTTask* task) {
     CTTask* temp;
-    
+
     task->unk_04 = 39;
     task->unk44 = 5;
     task->pos.y = 72;
@@ -5174,8 +5188,7 @@ void func_80094B2C(CTTask* task) {
     func_8008DAB8(task->pos.x, task->pos.y, task->pos.z, task->scale.x * 40.0, task->scale.y * 40.0, task->unk55, task->unk4C, task->unk_04);
     if (task->unk_5C != 0) {
         task->unk_5C--;
-    }
-    else {
+    } else {
         task->function = func_80094BDC;
     }
 }
@@ -5213,7 +5226,7 @@ void func_80094D64(CTTask* arg0) {
 
 void func_80094DBC(CTTask* task) {
     CTTask* taskUnk;
-    
+
     func_8008D7FC(task);
     if (task->unk_5C != 0) {
         task->unk_5C--;
@@ -5276,7 +5289,7 @@ void func_80095184(CTTask* task) {
 
 void func_80095500(CTTask* task) {
     CTTask* temp;
-    
+
     if (task->unk_5C != 0) {
         task->unk_5C--;
         return;
@@ -5298,6 +5311,7 @@ void func_80095500(CTTask* task) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80095EC8.s")
 
+//Segment names
 const char segNameCode[] = "コード";
 const char segNameStatic[] = "スタティック";
 const char segNameCommon[] = "共通";
@@ -5319,11 +5333,9 @@ const char segNameDemo[] = "デモ";
 s32 func_8009603C(s32 segmentID, s32 arg1) {
     s32 temp_s0;
     s32 size;
-    unk80100F50* temp_s3;
-    segTableEntry* segment;
+    unk80100F50* temp_s3 = &D_80100F50[segmentID];
+    segTableEntry* segment = &gSegTable[segmentID];
 
-    segment = &gSegTable[segmentID];                            
-    temp_s3 = &D_80100F50[segmentID];                            
     size = (u32) segment->ramAddrEnd - (u32) segment->ramAddrStart;
     temp_s3->base_address = arg1 - size;
     temp_s3->unk4 = (u32) arg1;
@@ -5343,7 +5355,7 @@ u32 func_80096128(s32 stageToLoad, s32 inpAddr) {
     StageLoadData* stageData = &gStageLoadData[stageToLoad];
     s32 size = (u32) stageData->ramEnd - (u32) stageData->ramStart;
     s32 dmaResult;
-    
+
     D_80100F50[0x3].base_address = inpAddr - size;
     D_80100F50[0x3].unk4 = D_80100F50[0x3].base_address + size;
     dmaResult = DMA_Copy(stageData->romStart, (void*)D_80100F50[0x3].base_address, size);
@@ -5375,7 +5387,7 @@ void func_800966E0(void) {
 //     s32 trueBits;
 //     u8 temp_v0;
 //     s32 var;
-    
+
 //     temp_v0 = D_8010026E[stageIndex].temp0;
 //     if (stageIndex == 0) {
 //         return 1;
@@ -5397,7 +5409,7 @@ void func_800966E0(void) {
 //         }
 //         return FALSE;
 //     }
-    
+
 //     if (gGameState.stageAccess & temp_v0) {
 //         return TRUE;
 //     }
@@ -5406,6 +5418,7 @@ void func_800966E0(void) {
 
 f32 func_80096898(u16 arg0) {
     f32 floatVar = 0.0f;
+
     switch (arg0) {
         default:
             break;
@@ -5462,7 +5475,7 @@ void func_80096964(CTTask* task) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80096CA0.s")
 
 
-
+//stage names
 const char stageNameJungleLand[] = "ＪＵＮＧＬＥ　ＬＡＮＤ";
 const char stageNameAntLand[] = "　ＡＮＴ　ＬＡＮＤ";
 const char stageNameBombLand[] = "　ＢＯＭＢ　ＬＡＮＤ";
@@ -5493,6 +5506,7 @@ s32 func_80097414(s32 arg0, s32 arg1) {
 
 CTTask* func_80097498(void) {
     CTTask* temp_v0 = CTTask_Alloc(1, 0x64, 0);
+
     if (temp_v0 == NULL) {
         DummiedPrintf("エラー\n");
         while (1){}
@@ -5520,6 +5534,7 @@ void func_80097508(CTTask* task) {
 
 void func_80097CF8(CTTask* task) {
     CTTask* temp = task->unk58;
+
     func_80096D40(temp->unk7A);
 }
 
@@ -5551,6 +5566,7 @@ const char D_8010E1CC[] = "Ｃ  ＹＥＳＮＯ";
 const char D_8010E1DC[] = "Ｃ  ＯＫ";
 const char D_8010E1E8[] = "Ｃ  ＱＵＩＴ";
 
+//Save menu
 void func_80097D1C(CTTask* task) {
     s16 i;
     CTTask* newTask = task->unk58;
@@ -5673,14 +5689,14 @@ void func_80098F50(CTTask* task) {
     u8 g2;
     u8 b1;
     u8 b2;
-    
+
     unk62 = task->unk_62;
     newTask = task->unk58;
     x = task->pos.x;
     y = task->pos.y;
     func_800610A8();
     if ((task->unk_62 == newTask->unk6A) && (newTask->unk54 == 6)) {
-        D_80174998 += 1;
+        D_80174998++;
         func_80098684(&r1, &g1, &b1, &r2, &g2, &b2);
         SetTextGradient_TopBottom(255, 0, 0, 255, 255, 128, 0, 255);
     } else if (task->unk_62 == newTask->unk6A) {
@@ -5734,6 +5750,7 @@ void func_8009984C(CTTask* arg0) {
 
 void func_80099870(CTTask* arg0) {
     CTTask* sp1C = arg0->unk58;
+
     arg0->unk_68 -= 32;
     func_80099570(arg0);
     if (arg0->unk_68 <= 0) {
@@ -5752,13 +5769,14 @@ void func_800998CC(CTTask* arg0) {
 
 void func_8009A57C(CTTask* task) {
     CTTask* temp_v1 = task->unk58;
+
     if (temp_v1->unk54 == 1) {
         task->function = func_8009A64C;
     } else if (temp_v1->unk54 == 0) {
-        if (gContMain[task->unk_62].buttons2 & 0x8000) {
+        if (gContMain[task->unk_62].buttons2 & A_BUTTON) {
             temp_v1->unk54 = 1;
             PLAY_SFX(SFX_Select, 0, 80);
-        } else if (gContMain[task->unk_62].buttons2 & 0x4000) {
+        } else if (gContMain[task->unk_62].buttons2 & B_BUTTON) {
             temp_v1->unk54 = 3;
             PLAY_SFX(SFX_Decline, 0, 80);
         } else {
@@ -5769,13 +5787,14 @@ void func_8009A57C(CTTask* task) {
 
 void func_8009A64C(CTTask* task) {
     CTTask* newTask = task->unk58;
+
     if (newTask->unk54 != 1) {
         task->function = func_8009A57C;
-    } else if (gContMain[task->unk_62].buttons2 & 0x8000) {
+    } else if (gContMain[task->unk_62].buttons2 & A_BUTTON) {
         newTask->unk54 = 2;
         task->function = func_8009A57C;
         PLAY_SFX(SFX_Select, 0, 80);
-    } else if (gContMain[task->unk_62].buttons2 & 0x4000) {
+    } else if (gContMain[task->unk_62].buttons2 & B_BUTTON) {
         newTask->unk54 = 0;
         task->function = func_8009A57C;
         PLAY_SFX(SFX_Decline, 0, 80);
@@ -5788,6 +5807,7 @@ void func_8009A64C(CTTask* task) {
 
 void func_8009A988(CTTask* arg0) {
     CTTask* temp_v1 = arg0->unk58;
+
     if (temp_v1->unk54 == 0xD) {
         func_8009A724(arg0);
         arg0->unk60 = 0;
@@ -5846,6 +5866,7 @@ void func_8009ACC8(CTTask* task) {
 void func_8009AD74(CTTask* task) {
     CTTask* var_v0 = gCTTaskHead;
     CTTask* var_v1 = var_v0->next;
+
     while (var_v1 != NULL){
         if ((var_v0->runType == 3) && (task->unk6A == var_v0->unk_62)) {
             var_v1 = var_v0->next;
@@ -5861,6 +5882,7 @@ void func_8009AD74(CTTask* task) {
 void func_8009ADDC(CTTask* task) {
     //eugh
     s16 temp_v0 = task->unk_68;
+
     task->unk_68 = temp_v0 - 1;
     if (temp_v0 == 0) {
         DummiedPrintf("元に戻る\n", task);
@@ -5891,43 +5913,39 @@ void func_8009B08C(CTTask* task) {
 }
 
 void func_8009B120(CTTask* task) {
-
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/FileWork.s")
 
 void func_8009B45C(CTTask* task) {
-
 }
 
 void func_8009B464(CTTask* task) {
     CTTask* newTask = task->unk58;
-    if (gContMain[task->unk_62].buttons2 & 0x8000) {
+
+    if (gContMain[task->unk_62].buttons2 & A_BUTTON) {
         if (gSaveFiles[newTask->unk6A].flags & 2) {
             newTask->unk54 = 6;
             task->function = func_8009B45C;
             PLAY_SFX(SFX_Select, 0, 80);
             return;
-        }
-        else{
+        } else {
             PLAY_SFX(SFX_Save_Delete_Decline, 0, 80);
         }
     }
-    if (gContMain[task->unk_62].buttons2 & 0x4000) {
+    if (gContMain[task->unk_62].buttons2 & B_BUTTON) {
         newTask->unk54 = 7;
         task->function = func_8009B45C;
         PLAY_SFX(SFX_Decline, 0, 80);
-    }
-    else if (gContMain[task->unk_62].buttons2 & 0x20) {
+    } else if (gContMain[task->unk_62].buttons2 & L_TRIG) {
         if (!(gSaveFiles[newTask->unk6A].flags & 2)) {
             PLAY_SFX(SFX_Save_Delete_Decline, 0, 80);
-        } else{
+        } else {
             newTask->unk54 = 9;
             task->function = func_8009BEC4;
             PLAY_SFX(SFX_Select, 0, 80);
         }
-    }
-    else if (gContMain[task->unk_62].buttons2 & 0x10) {
+    } else if (gContMain[task->unk_62].buttons2 & R_TRIG) {
         if (!(gSaveFiles[newTask->unk6A].flags & 2)) {
             PLAY_SFX(SFX_Save_Delete_Decline, 0, 80);
         } else {
@@ -5936,8 +5954,7 @@ void func_8009B464(CTTask* task) {
             newTask->unk_64 = newTask->unk6A;
             PLAY_SFX(SFX_Select, 0, 80);
         }
-    }
-    else{
+    } else {
         func_800998DC(task);
     }
 }
@@ -5980,6 +5997,7 @@ void func_8009BAF4(CTTask* task) {
 void func_8009BB54(CTTask* task) {
     //eugh
     s16 temp_v0 = task->unk_68;
+
     task->unk_68 = temp_v0 - 1;
     if (temp_v0 == 0) {
         DummiedPrintf("元に戻る\n");
@@ -6013,7 +6031,7 @@ void func_8009BC60(CTTask* arg0) {
 
 void func_8009BC98(CTTask* arg0) {
     func_80099AF4(arg0);
-    
+
     if (arg0->unk54 == 0xA) {
         arg0->function = func_8009BCF0;
     }
@@ -6040,13 +6058,14 @@ void func_8009BDC0(CTTask* arg0) {
 
 void func_8009BEC4(CTTask* task) {
     CTTask* newTask = task->unk58;
+
     if (newTask->unk54 != 9) {
         task->function = func_8009C278;
-    }  else if (gContMain[task->unk_62].buttons2 & 0x8000) {
+    } else if (gContMain[task->unk_62].buttons2 & A_BUTTON) {
         newTask->unk54 = 10;
         task->function = func_8009C278;
         PLAY_SFX(SFX_Select, 0, 80);
-    } else if (gContMain[task->unk_62].buttons2 & 0x4000) {
+    } else if (gContMain[task->unk_62].buttons2 & B_BUTTON) {
         newTask->unk54 = 4;
         task->function = func_8009C278;
         PLAY_SFX(SFX_Decline, 0, 80);
@@ -6057,8 +6076,7 @@ void func_8009BFA0(CTTask* arg0) {
     func_80099AF4(arg0);
     if (arg0->unk54 == 19) {
         arg0->function = func_8009BFF8;
-    }
-    else if (arg0->unk54 == 4) {
+    } else if (arg0->unk54 == 4) {
         arg0->function = func_8009BA38;
     }
 }
@@ -6074,13 +6092,14 @@ void func_8009BFF8(CTTask* arg0) {
 
 void func_8009C19C(CTTask* task) {
     CTTask* newTask = task->unk58;
+
     if (newTask->unk54 != 18) {
         task->function = func_8009C278;
-    } else if (gContMain[task->unk_62].buttons2 & 0x8000) {
+    } else if (gContMain[task->unk_62].buttons2 & A_BUTTON) {
         newTask->unk54 = 19;
         task->function = func_8009C278;
         PLAY_SFX(SFX_Select, 0, 80);
-    } else if (gContMain[task->unk_62].buttons2 & 0x4000) {
+    } else if (gContMain[task->unk_62].buttons2 & B_BUTTON) {
         newTask->unk54 = 4;
         task->function = func_8009C278;
         PLAY_SFX(SFX_Decline, 0, 80);
@@ -6092,8 +6111,7 @@ void func_8009C19C(CTTask* task) {
 void func_8009C2FC(CTTask* arg0) {
     if (arg0->unk54 == 0xF) {
         arg0->function = &func_8009C33C;
-    }
-    else if (arg0->unk54 == 0xE) {
+    } else if (arg0->unk54 == 0xE) {
         arg0->unk54 = 4;
         arg0->function = &func_8009BA38;
     }
@@ -6104,8 +6122,7 @@ void func_8009C33C(CTTask* task) {
     func_80099AF4(task);
     if (task->unk54 == 16) {
         task->function = func_8009C394;
-    }
-    else if (task->unk54 == 4) {
+    } else if (task->unk54 == 4) {
         task->function = func_8009BA38;
     }
 }
@@ -6114,8 +6131,7 @@ void func_8009C394(CTTask* task) {
     CTTask* newTask;
     CTTask* next;
 
-    for (newTask = gCTTaskHead, next = newTask->next;
-    next != NULL; newTask = next, next = next->next){
+    for (newTask = gCTTaskHead, next = newTask->next; next != NULL; newTask = next, next = next->next){
         if (newTask->runType == 3) {
             if (task->unk_64 == newTask->unk_62) {
                 newTask->function = func_800998CC;
@@ -6158,6 +6174,7 @@ void func_8009C644(CTTask* task) {
 
 void func_8009C6AC(CTTask* arg0) {
     s16 save = arg0->unk_68;
+
     arg0->unk_68 = save-1;
     if (save == 0) {
         DummiedPrintf("元に戻る\n", arg0);
@@ -6168,7 +6185,7 @@ void func_8009C6AC(CTTask* arg0) {
 
 void func_8009C700(CTTask* task) {
     if (task->unk_68--) {
-        return;
+        //return;
     } else {
         DummiedPrintf("元に戻る\n", task);
         task->function = &func_8009C644;
@@ -6177,12 +6194,13 @@ void func_8009C700(CTTask* task) {
 
 void func_8009C74C(CTTask* task) {
     CTTask* newTask = task->unk58;
+
     if (newTask->unk54 == 0xD) {
-        if (gContMain[task->unk_62].buttons2 & 0x8000) {
+        if (gContMain[task->unk_62].buttons2 & A_BUTTON) {
             newTask->unk54 = 15;
             task->function = func_8009C828;
             PLAY_SFX(SFX_Select, 0, 80);
-        } else if (gContMain[task->unk_62].buttons2 & 0x4000) {
+        } else if (gContMain[task->unk_62].buttons2 & B_BUTTON) {
             newTask->unk54 = 14;
             task->function = func_8009B464;
             PLAY_SFX(SFX_Decline, 0, 80);
@@ -6194,13 +6212,14 @@ void func_8009C74C(CTTask* task) {
 
 void func_8009C828(CTTask* task) {
     CTTask* newTask = task->unk58;
+
     if (newTask->unk54 != 15) {
         task->function = func_8009C278;
-    } else if (gContMain[task->unk_62].buttons2 & 0x8000) {
+    } else if (gContMain[task->unk_62].buttons2 & A_BUTTON) {
         newTask->unk54 = 16;
         task->function = func_8009C278;
         PLAY_SFX(SFX_Select, 0, 80);
-    } else if (gContMain[task->unk_62].buttons2 & 0x4000) {
+    } else if (gContMain[task->unk_62].buttons2 & B_BUTTON) {
         newTask->unk54 = 4;
         task->function = func_8009C278;
         PLAY_SFX(SFX_Decline, 0, 80);
@@ -6248,6 +6267,7 @@ void func_8009CBC0(void) {
 
 void func_8009CFA8(void) {
     s32 i, j;
+
     func_800610B8();
     for (i = 0; i != 5; i++){
         for (j = 0; j != 8; j++){
@@ -6320,9 +6340,8 @@ u16 func_8009DDEC(CTTask* task) {
 
 void func_8009DE1C(CTTask* task) {
     u16 result;
-    CTTask* temp_t1;
+    CTTask* temp_t1 = task->unk58;
 
-    temp_t1 = task->unk58;
     task->unk54 = 0;
     task->unk44 = 3;
     if (temp_t1->unk54 == 15) return;
@@ -6340,19 +6359,21 @@ void func_8009DE1C(CTTask* task) {
     }
     result = func_8009DDEC(task);
     temp_t1 = task->unk58;
-    if (gContMain[task->unk_62].buttons2 & 0x8000) {
+    if (gContMain[task->unk_62].buttons2 & A_BUTTON) {
         task->unk72 = 2;
         task->function = func_8009E24C;
         task->unk60 = 8;
         temp_t1->unk94[task->unk_5C] = task->unk_62;
         PLAY_SFX(SFX_Select, 0, 0x10);
     }
-    if (gContMain[task->unk_62].buttons2 & 0x4000) {
+    if (gContMain[task->unk_62].buttons2 & B_BUTTON) {
         temp_t1->unk54 = 15;
         PLAY_SFX(SFX_Decline, 0, 0x10);
         return;
     }
-    if (result == 0) return;
+    if (result == 0) {
+        return;
+    }
     if (result & 0x200) {
         task->unk_5C--;
         if (task->unk_5C < 0) {
@@ -6432,6 +6453,7 @@ void func_8009E2B0(CTTask* arg0) {
 
 void func_8009E784(CTTask* task) {
     CTTask* newTask = task->unk58;
+
     while (newTask->unk94[task->unk_5C] != 0xFF){
         task->unk_5C++;
         if ((task->unk_5C == 4) && (D_80200B2C == 0)) {
@@ -6484,13 +6506,13 @@ void func_8009F314(CTTask* task) {
             CTTask_Unlink(task);
         } else if (newTask->unk54 < 9) {
             funcResult = func_8009DDEC(task);
-            if ((gContMain[task->unk_62].buttons2 & 0x1000) || (gContMain[task->unk_62].buttons2 & 0x8000)) {
+            if ((gContMain[task->unk_62].buttons2 & START_BUTTON) || (gContMain[task->unk_62].buttons2 & A_BUTTON)) {
                 newTask->unk54 = 14;
                 PLAY_SFX(SFX_Select, 0, 0x10);
-            } else if (gContMain[task->unk_62].buttons2 & 0x4000) {
+            } else if (gContMain[task->unk_62].buttons2 & B_BUTTON) {
                 newTask->unk54 = 8;
                 PLAY_SFX(SFX_Decline, 0, 0x10);
-            } else if (gContMain[task->unk_62].buttons2 & 0x0010) {
+            } else if (gContMain[task->unk_62].buttons2 & R_TRIG) {
                 newTask->unk54 = 9;
                 PLAY_SFX(SFX_Select, 0, 0x10);
             } else if (funcResult != 0) {
@@ -6577,11 +6599,12 @@ void func_800A0354(CTTask* arg0) {
 void func_800A03B8(CTTask* task) {
     u16 funcResult;
     CTTask* newTask = task->unk58;
+
     funcResult = func_8009DDEC(task);
     if (newTask->unk54 == 12) {
         task->function = func_8009F314;
     } else if (newTask->unk54 == 11) {
-        if ((gContMain[task->unk_62].buttons2 & 0x1000) || (gContMain[task->unk_62].buttons2 & 0x8000)) {
+        if ((gContMain[task->unk_62].buttons2 & START_BUTTON) || (gContMain[task->unk_62].buttons2 & A_BUTTON)) {
             if (newTask->unk60 == 4) {
                 newTask->unk54 = 12;
                 PLAY_SFX(SFX_Select, 0, 0x10);
@@ -6671,6 +6694,7 @@ void func_800A07E0(void) {
 void func_800A0D90(void) {
     s32 i;
     s32 address;
+
     D_80100F50[1].base_address = (u32)gFrameBuffers - ALIGN16((u32)static0_VRAM_END - (u32)static0_VRAM);
     D_80100F50[1].unk4 = (u32)gFrameBuffers; //TODO: is the a singular frame buffer or both?
     address = D_80100F50[1].base_address;
@@ -6686,9 +6710,8 @@ void func_800A0D90(void) {
 
 void func_800A0E3C(CTTask* task) {
     void (*taskFunc)(CTTask*);
-    CTTask* sp20;
+    CTTask* sp20 = task->unk58;
 
-    sp20 = task->unk58;
     taskFunc = task->function;
     if (taskFunc == NULL) {
         DummiedPrintf("NULL POINTER %d\n", task->taskID);
@@ -6706,7 +6729,6 @@ u16 func_800A0EB8(CTTask* task) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A0EE8.s")
 
 void func_800A10E8(CTTask* task) {
-
 }
 
 //chameleon names
@@ -6748,6 +6770,7 @@ const char D_8010E8E0[] = "Ｅ";
 
 CTTask* func_800A18C8(void) {
     CTTask* task = CTTask_Alloc(1, 100, NULL);
+
     if (task == NULL) {
         DummiedPrintf("エラー\n");
         while(1){}
@@ -6758,7 +6781,7 @@ CTTask* func_800A18C8(void) {
 
 void func_800A191C(CTTask* task) {
     CTTask* unkTask = task->unk58;
-    
+
     if (!(task->unk60-- > 0)) {
         unkTask->unk54 = 1;
     }
@@ -6780,42 +6803,42 @@ void func_800A1CCC(CTTask* arg0) {
 
 void Process_NewGameMenu(void) {
     switch (gGameModeState) {
-    case 0:
-        D_800FFDF0 = 3;
-        D_800FFDF4 = 1;
-        //must be like this
-        D_800FF8DC = D_800FF8E0 = D_800FF8E4 = 0;
-        DummiedPrintf("色選択プロセス\n");
-        DMAStruct_Print();
-        func_8008F16C();
-        func_800A0D90();
-        LoadSprite(SPRITE_BATTLE_BIGBOARD);
-        LoadSprite(SPRITE_BATTLE_STAGETITLEBOARD);
-        LoadSprite(SPRITE_SPECIFIC_SYMBOLS);
-        LoadSprite(SPRITE_BATTLE_OPTIONSARROWS);
-        CTTaskList_Init();
-        D_80168DA0 = 1;
-        gGameModeState++;
-        gTimer = 0;
-        UseFixedRNGSeed = 0;
-        func_80088198();
-        func_8008BE14();
-        D_801FC9AC = 0;
-        func_800A878C(&gGameState);
-        func_8008FE50();
-        LockEyeChange();
-        func_8008F16C();
-        break;
-    case 1:
-        PlayBGM(BGM_TRAINING);
-        func_800A18C8();
-        gGameModeState++;
-        func_8008F16C();
-        break;
-    case 2:
-        func_8008F16C();
-        gTimer++;
-        break;
+        case 0:
+            D_800FFDF0 = 3;
+            D_800FFDF4 = 1;
+            //must be like this
+            D_800FF8DC = D_800FF8E0 = D_800FF8E4 = 0;
+            DummiedPrintf("色選択プロセス\n");
+            DMAStruct_Print();
+            func_8008F16C();
+            func_800A0D90();
+            LoadSprite(SPRITE_BATTLE_BIGBOARD);
+            LoadSprite(SPRITE_BATTLE_STAGETITLEBOARD);
+            LoadSprite(SPRITE_SPECIFIC_SYMBOLS);
+            LoadSprite(SPRITE_BATTLE_OPTIONSARROWS);
+            CTTaskList_Init();
+            D_80168DA0 = 1;
+            gGameModeState++;
+            gTimer = 0;
+            UseFixedRNGSeed = 0;
+            func_80088198();
+            func_8008BE14();
+            D_801FC9AC = 0;
+            func_800A878C(&gGameState);
+            func_8008FE50();
+            LockEyeChange();
+            func_8008F16C();
+            break;
+        case 1:
+            PlayBGM(BGM_TRAINING);
+            func_800A18C8();
+            gGameModeState++;
+            func_8008F16C();
+            break;
+        case 2:
+            func_8008F16C();
+            gTimer++;
+            break;
     }
     func_8008C094();
 }
@@ -6832,6 +6855,7 @@ void func_800A1EC4(void) {
 
 void PrintPerfectCode(CTTask* task) {
     char sp50[38];
+
     SetTextGradient_TopBottom(255, 144, 242, 255, 255, 56, 100, 255);
     PrintText(144.0f, 24.0f, 0.0f, 0.7f, 0.0f, 0.0f, "ＰＥＲＦＥＣＴ  ＣＯＤＥ", 1);
     SetTextGradient_TopBottom(144, 242, 255, 255, 56, 100, 255, 255);
@@ -6840,6 +6864,7 @@ void PrintPerfectCode(CTTask* task) {
 
 CTTask* func_800A20CC(void) {
     CTTask* task;
+
     DummiedPrintf("マスタ作成\n"); // Master creation
     task = CTTask_Alloc(1, 100, 0);
     if (!task) {
@@ -6853,7 +6878,6 @@ CTTask* func_800A20CC(void) {
     func_8008EA60(32, 0, 0, 0, &task->unk_64);
     return task;
 }
-
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A2164.s")
 
@@ -6872,11 +6896,12 @@ void func_800A250C(CTTask* task) {
         SetTextGradient_TopBottom(110, 210, 255, 255, 0, 222, 0, 255);
         PrintTextWrapper(72.0f, 176.0f, 0.0f, 1.0f, "ＰＲＥＳＳ  ＳＴＡＲＴ", 1);
     }
-    
+
     task->unk6A++;
-    
-    if (task->unk6A >= 0x11) {
-        task->unk6A = -0xA;
+
+    //"loop"
+    if (task->unk6A >= 17) {
+        task->unk6A = -10;
     }
 }
 
@@ -6884,6 +6909,7 @@ void func_800A250C(CTTask* task) {
 
 void func_800A272C(CTTask* task) {
     s16 dontNeed;
+
     func_800A25F0(task, 162);
     if (func_8008EC90() != 0) {
         dontNeed = task->unk_5C;
@@ -6910,56 +6936,57 @@ void func_800A2B9C(CTTask* task) {
 
 void Process_TitleMenu(void) {
     switch (gGameModeState) {
-    case 0:
-        func_80061394();
-        D_800FFDF0 = 3;
-        D_801FC9AC = 0;
-        D_800FFDF4 = 1;
-        //required
-        D_800FF8DC = D_800FF8E0 = 0;
-        D_800FF8E4 = 0;
-        DummiedPrintf("タイトルプロセス\n");
-        DMAStruct_Print();
-        func_800A1EC4();
-        LoadSprite(SPRITE_MENUOPTIONS);
-        CTTaskList_Init();
-        func_8008F16C();
-        D_80168DA0 = 4;
-        gGameModeState++;
-        UseFixedRNGSeed = 0;
-        func_8008BE14();
-        func_80088198();
-        DrawBackground(BG_TITLESCREEN);
-        func_8008F16C();
-        break;
-    case 1:
-        LoadSprite(SPRITE_BATTLE_BIGBOARD); // the bg for menu options
-        LoadSprite(SPRITE_BATTLE_STAGETITLEBOARD); // ?
-        LoadSprite(SPRITE_CHAMELEON); // CHAMELEON
-        LoadSprite(SPRITE_TWIST); // TWIST
-        PlayBGM(BGM_TITLE);
-        func_800A20CC();
-        gGameModeState++;
-        func_8008F114();
-        break;
-    case 2:
-        gGameModeState++;
-        func_8008F114();
-        break;
-    case 3:
-        func_8008F16C();
-        gTimer++;
-        break;
-    case 4:
-        SetProcessType(D_80200058);
-        func_80061394();
-        break;
+        case 0:
+            func_80061394();
+            D_800FFDF0 = 3;
+            D_801FC9AC = 0;
+            D_800FFDF4 = 1;
+            //required
+            D_800FF8DC = D_800FF8E0 = 0;
+            D_800FF8E4 = 0;
+            DummiedPrintf("タイトルプロセス\n");
+            DMAStruct_Print();
+            func_800A1EC4();
+            LoadSprite(SPRITE_MENUOPTIONS);
+            CTTaskList_Init();
+            func_8008F16C();
+            D_80168DA0 = 4;
+            gGameModeState++;
+            UseFixedRNGSeed = 0;
+            func_8008BE14();
+            func_80088198();
+            DrawBackground(BG_TITLESCREEN);
+            func_8008F16C();
+            break;
+        case 1:
+            LoadSprite(SPRITE_BATTLE_BIGBOARD); // the bg for menu options
+            LoadSprite(SPRITE_BATTLE_STAGETITLEBOARD); // ?
+            LoadSprite(SPRITE_CHAMELEON); // CHAMELEON
+            LoadSprite(SPRITE_TWIST); // TWIST
+            PlayBGM(BGM_TITLE);
+            func_800A20CC();
+            gGameModeState++;
+            func_8008F114();
+            break;
+        case 2:
+            gGameModeState++;
+            func_8008F114();
+            break;
+        case 3:
+            func_8008F16C();
+            gTimer++;
+            break;
+        case 4:
+            SetProcessType(D_80200058);
+            func_80061394();
+            break;
     }
     func_8008C094();
 }
 
 CTTask* func_800A2D84(void) {
     CTTask* temp_v0 = CTTask_Alloc(1, 100, NULL);
+
     if (temp_v0 == NULL) {
         DummiedPrintf("エラー\n");
         while(1){}
@@ -7000,7 +7027,7 @@ void func_800A3928(CTTask* task) {
     func_800A2EF4(task);
     if (func_8008EC90() != 0) {
         task->unk_62 = 15;
-        if (gIsStero != (gGameRecords.flags[1] & 1)) {
+        if (gIsStereo != (gGameRecords.flags[1] & 1)) {
             task->function = func_800A3990;
         } else{
             SetProcessType(GAME_MODE_TITLE_SCREEN);
@@ -7014,10 +7041,11 @@ void func_800A3928(CTTask* task) {
 
 void func_800A3DC0(CTTask* arg0) {
     CTTask* temp_v0 = CTTask_Alloc(1, 0x64, NULL);
+
     temp_v0->unk58 = arg0;
     temp_v0->function = func_800A4074;
     temp_v0->unk_62 = 0;
- 
+
 }
 
 void PrintDataClearConfirm(void) {
@@ -7039,6 +7067,7 @@ void PrintDataClearConfirm(void) {
 
 void func_800A41C0(CTTask* task) {
     CTTask* newTask = task->unk58;
+
     PrintDataClearConfirm();
     if (task->unk_62 != 0) {
         task->unk_62--;
@@ -7054,41 +7083,41 @@ void func_800A41C0(CTTask* task) {
 
 void Process_OptionsMenu(void) {
     switch (gGameModeState) {
-    case 0:
-        D_800FFDF4 = 1;
-        DummiedPrintf("オプションプロセス\n", &gGameModeState);
-        DMAStruct_Print();
-        func_800A1EC4();
-        UseFixedRNGSeed = 0;
-        LoadSprite(SPRITE_SPECIFIC_SYMBOLS);
-        LoadSprite(SPRITE_BATTLE_BIGBOARD);
-        LoadSprite(SPRITE_BATTLE_STAGETITLEBOARD);
-        LoadSprite(SPRITE_BATTLE_OPTIONSARROWS);
-        //??????
-        LoadSprite(SPRITE_TEXT_JL2);
-        LoadSprite(SPRITE_GRAYANT);
-        CTTaskList_Init();
-        D_80168DA0 = 4;
-        gGameModeState++;
-        D_800FFDF0 = 3;
-        func_8008BE14();
-        func_80088198();
-        D_801FC9AC = 0;
-        func_8008F114();
-        break;
-    case 1:
-        func_800A2D84();
-        gGameModeState++;
-        func_8008F114();
-        break;
-    case 2:
-        gGameModeState++;
-        func_8008F114();
-        break;
-    case 3:
-        func_8008F16C();
-        gTimer++;
-        break;
+        case 0:
+            D_800FFDF4 = 1;
+            DummiedPrintf("オプションプロセス\n", &gGameModeState);
+            DMAStruct_Print();
+            func_800A1EC4();
+            UseFixedRNGSeed = 0;
+            LoadSprite(SPRITE_SPECIFIC_SYMBOLS);
+            LoadSprite(SPRITE_BATTLE_BIGBOARD);
+            LoadSprite(SPRITE_BATTLE_STAGETITLEBOARD);
+            LoadSprite(SPRITE_BATTLE_OPTIONSARROWS);
+            //??????
+            LoadSprite(SPRITE_TEXT_JL2);
+            LoadSprite(SPRITE_GRAYANT);
+            CTTaskList_Init();
+            D_80168DA0 = 4;
+            gGameModeState++;
+            D_800FFDF0 = 3;
+            func_8008BE14();
+            func_80088198();
+            D_801FC9AC = 0;
+            func_8008F114();
+            break;
+        case 1:
+            func_800A2D84();
+            gGameModeState++;
+            func_8008F114();
+            break;
+        case 2:
+            gGameModeState++;
+            func_8008F114();
+            break;
+        case 3:
+            func_8008F16C();
+            gTimer++;
+            break;
     }
     func_8008C094();
 }
@@ -7096,7 +7125,7 @@ void Process_OptionsMenu(void) {
 // Create Game Over Task?
 CTTask* func_800A4484(void) {
     CTTask* task = CTTask_Alloc(1, 100, NULL);
-    
+
     if (task == NULL) {
         DummiedPrintf("エラー\n");
         while (1) {}
@@ -7113,9 +7142,9 @@ void func_800A44D8(CTTask* arg0) {
     if (arg0->unk60 < 0xFF) {
         arg0->unk60++;
     }
-    
+
     setPrimColor(0, 0, 0, arg0->unk60);
-    
+
     for (i = 0; D_80100DF0[i].letter != 0; i++) {
         temp_f22 = D_80100DF0[i].x;
         temp_f24 = D_80100DF0[i].y;
@@ -7124,7 +7153,7 @@ void func_800A44D8(CTTask* arg0) {
         } else {
             SetTextGradient_TopBottom(160, 160, 160, 204, 40, 40, 40, 204);
         }
-        func_80080864(temp_f22, temp_f24, 0.0f, 1.0f, 0.0f, 0.0f, D_80100DF0[i].letter, 1);        
+        func_80080864(temp_f22, temp_f24, 0.0f, 1.0f, 0.0f, 0.0f, D_80100DF0[i].letter, 1);
     }
 }
 
@@ -7187,8 +7216,8 @@ void Task_GameOverLetter(CTTask* task) {
 }
 
 CTTask* func_800A4BCC(CTTask* task) {
-    CTTask* newTask;
-    newTask = CTTask_Alloc(1, 120, NULL);
+    CTTask* newTask = CTTask_Alloc(1, 120, NULL);
+
     newTask->unk4E = 1;
     newTask->unk44 = 5;
     newTask->function = func_800A4D0C;
@@ -7254,19 +7283,18 @@ void Process_GameOver(void) {
             gTimer++;
             break;
     }
-
     func_8008C094();
 }
 
 CTTask* func_800A5060(void){
-    CTTask* t = CTTask_Alloc(1, 0x64, NULL);
+    CTTask* task = CTTask_Alloc(1, 0x64, NULL);
 
-    if(!t){
+    if(!task){
         DummiedPrintf("エラー\n");
         while(1){}
     }
-    t->function = func_800A50B4;
-    return t;
+    task->function = func_800A50B4;
+    return task;
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A50B4.s")
@@ -7291,7 +7319,6 @@ void func_800A5488(CTTask* task) {
 }
 
 void func_800A54EC(CTTask* arg0) { //probably CTTask*
-
 }
 
 void func_800A54F4(CTTask* arg0) {
@@ -7300,51 +7327,48 @@ void func_800A54F4(CTTask* arg0) {
     }
 }
 
-void func_800A5524(CTTask* arg0) {
-    CTTask* temp_v0;
-    u16 temp_v1;
+void func_800A5524(CTTask* task) {
+    CTTask* newTask = task->unk58;
 
-    temp_v0 = arg0->unk58;
-    temp_v1 = gContMain[arg0->unk_62].buttons2;
-    if (((temp_v1 & 0x1000) || (temp_v1 & 0x8000)) && (temp_v0->unk54 == 1)) {
-        temp_v0->unk_62 = 6;
+    if (((gContMain[task->unk_62].buttons2 & START_BUTTON) || (gContMain[task->unk_62].buttons2 & A_BUTTON)) && (newTask->unk54 == 1)) {
+        newTask->unk_62 = 6;
     }
 }
 
 void Process_JSSLogo(void) {
     switch (gGameModeState) {
-    case 0:
-        D_800FF8DC = D_800FF8E0 = D_800FF8E4 = 0;
-        func_80061394();
-        D_800FFDF4 = 1;
-        DummiedPrintf("ロゴプロセス\n"); //Logo process
-        DMAStruct_Print();
-        func_800A1EC4();
-        LoadSprite(SPRITE_JSSLOGO_BG);
-        LoadSprite(SPRITE_JSSLOGO_CAT);
-        CTTaskList_Init();
-        D_80168DA0 = 4;
-        UseFixedRNGSeed = 0;
-        D_800FFDF0 = 3;
-        func_8008BE14();
-        func_80088198();
-        D_801FC9AC = 0;
-        func_8008F114();
-        gGameModeState++;
-        break;
-    case 1:
-        func_800A5060();
-        gGameModeState++;
-        func_8008F114();
-        break;
-    case 2:
-        gGameModeState++;
-        func_8008F114();
-        break;
-    case 3:
-        func_8008F16C();
-        gTimer++;
-        break;
+        case 0:
+            D_800FF8DC = D_800FF8E0 = D_800FF8E4 = 0;
+            func_80061394();
+            D_800FFDF4 = 1;
+            DummiedPrintf("ロゴプロセス\n"); //Logo process
+            DMAStruct_Print();
+            func_800A1EC4();
+            LoadSprite(SPRITE_JSSLOGO_BG);
+            LoadSprite(SPRITE_JSSLOGO_CAT);
+            CTTaskList_Init();
+            D_80168DA0 = 4;
+            UseFixedRNGSeed = 0;
+            D_800FFDF0 = 3;
+            func_8008BE14();
+            func_80088198();
+            D_801FC9AC = 0;
+            func_8008F114();
+            gGameModeState++;
+            break;
+        case 1:
+            func_800A5060();
+            gGameModeState++;
+            func_8008F114();
+            break;
+        case 2:
+            gGameModeState++;
+            func_8008F114();
+            break;
+        case 3:
+            func_8008F16C();
+            gTimer++;
+            break;
     }
     func_8008C094();
 }
@@ -7364,22 +7388,22 @@ void func_800A56D4(void) {
 
 s32 func_800A5778(s32 arg0) {
     switch (arg0) {
-    case 0:
-        return 0;
-    case 1:
-        return 1;
-    case 2:
-        return 2;
-    case 3:
-        return 3;
-    case 4:
-        return 4;
-    case 5:
-        return 5;
-    case 15:
-        return 6;
-    default:
-        return 0;
+        case 0:
+            return 0;
+        case 1:
+            return 1;
+        case 2:
+            return 2;
+        case 3:
+            return 3;
+        case 4:
+            return 4;
+        case 5:
+            return 5;
+        case 15:
+            return 6;
+        default:
+            return 0;
     }
 }
 
@@ -7405,6 +7429,7 @@ const char D_8010EC30[] = castle;
 
 void func_800A6B34(void) {
     CTTask* task = CTTask_Alloc(1, 100, NULL);
+
     if (task == NULL) {
         DummiedPrintf("エラー\n");
         while (1) {}
@@ -7418,7 +7443,7 @@ void func_800A6B80(CTTask* task) {
     task->unk_62 = D_800FF8E8;
     task->unk_5C = 1;
     task->unk_64 = 0;
-    
+
     func_8008EA60(32, 0, 0, 0, &task->unk_64);
     CTTask_Alloc(1, 0x62, NULL)->function = PrintSelectedStageInfo;
 }
@@ -7478,13 +7503,13 @@ s32 func_800A72E8(s32 arg0) {
             }
         }
     }
-    
+
     DummiedPrintf("Id(%d)残り %d\n", arg0, j); //Id(%d)残り %d\n     //Id(%d)%d\n remaining
-    
+
     if (j > 0) {
         return 0;
     }
-    
+
     return 1;
 }
 
@@ -7507,16 +7532,16 @@ s32 DMA_Copy(void* arg0, void* arg1, s32 size) {
             }
         }
     }
-    
+
     if (i >= ARRAY_COUNT(D_801FCFD8)) {
         //"満タン\n"("full tank"?)
         DummiedPrintf("満タン\n");
         return -1;
     }
-    
+
     osInvalICache(arg1, size);
     osInvalDCache(arg1, size);
-    
+
     temp_v0 = func_800A73EC(arg0, arg1, size, dmaSizeCalc);
 
     if (temp_v0 < 0) {
@@ -7552,17 +7577,17 @@ s32 func_800A772C(void* arg0, void* arg1, s32 size) {
             }
         }
     }
-    
+
     if (i >= ARRAY_COUNT(D_801FCFD8)) {
         return -1;
     }
     //"読み(%X)書き(%X)サイズ(%d)\n"("read (%X) write (%X) size (%d)")
     DummiedPrintf("読み(%X)書き(%X)サイズ(%d)\n", arg0, arg1, size);
     //"書き終わり(%X)\n"("end of write (%x)")
-    DummiedPrintf("書き終わり(%X)\n", (s32)arg1 + size);    
+    DummiedPrintf("書き終わり(%X)\n", (s32)arg1 + size);
     osInvalICache(arg1, size);
     osInvalDCache(arg1, size);
-    
+
     temp_v0 = func_800A73EC(arg0, arg1, size, dmaSizeCalc );
 
     if (temp_v0 < 0) {
@@ -7574,8 +7599,9 @@ s32 func_800A772C(void* arg0, void* arg1, s32 size) {
 
 void func_800A7844(void) {
     s32 i;
+
     D_801FD558 = 0;
-    
+
     for (i = 0; i < ARRAY_COUNT(D_801FCA50); i++) {
         osCreateMesgQueue(&D_801FCA50[i], &D_801FCF08[i], 1);
         D_801FCFD8[i].index = -1;
@@ -7585,7 +7611,7 @@ void func_800A7844(void) {
 s32 func_800A78D0(void) {
     s32 i;
     s32 j = 0;
-    
+
     for (i = 0; i < ARRAY_COUNT(D_801FCA50); i++) {
         if (D_801FCFD8[i].index >= 0) {
             if (osRecvMesg(&D_801FCA50[i], NULL, OS_MESG_NOBLOCK) != -1) {
@@ -7605,8 +7631,7 @@ s32 func_800A78D0(void) {
 
 //the following three programs are used in generating the "Perfect Code"
 s32 func_800A7A18(u32 arg0) {
-    s32 i;
-    s32 j;
+    s32 i, j;
 
     for (i = 0, j = 0; i < 32; i++) {
         if (((i < 7) || (i >= 0xF)) && ((arg0 >> i) & 1)) {
@@ -7624,7 +7649,7 @@ s32 GeneratePerfectCode(u32 time) {
 
     time |= 0x01400000;
     temp_v0 = func_800A7A18(time);
-    
+
     for (i = 0, perfectCode = 0; i < 32; i++) {
         if ((i >= 7) && (i < 0xF)) {
             if (temp_v0 << 7 >> i & 1) {
@@ -7657,9 +7682,8 @@ s32 func_800A7C58(u32 time) {
 
 //parses record time, returns minutes and seconds.
 s32 RecordTime_GetMinsSecs(TimeVal* record, s32* mins, s32* secs) {
-    s32 time;
+    s32 time = RecordTime_ParseToSecs(record);
 
-    time = RecordTime_ParseToSecs(record);
     *secs = time % 60;
     *mins = time / 60;
     return 0;
@@ -7670,6 +7694,7 @@ s32 RecordTime_GetMinsSecs(TimeVal* record, s32* mins, s32* secs) {
 //parses time kept on record.
 s32 RecordTime_ParseToSecs(TimeVal* arg0) {
     s32 time = arg0->b0 & 15;
+
     time <<= 8;
     time += arg0->b1;
     time <<= 8;
@@ -7681,7 +7706,7 @@ s32 RecordTime_ParseToSecs(TimeVal* arg0) {
 void RecordTime_SetTo(s32 arg0, TimeVal* arg1) {
     u8 temp = arg1->b0 & 0xF0;
 
-    arg1->b2 = arg0 & 0xFF;    
+    arg1->b2 = arg0 & 0xFF;
     arg1->b1 = (arg0 & 0xFF00) >> 8;
     arg1->b0 = (arg0 & 0xFF0000) >> 16;
 
@@ -7693,47 +7718,41 @@ void RecordTime_SetTo(s32 arg0, TimeVal* arg1) {
 
 /**
  * @brief Generates an 8-bit checksum for the save data by summing the bytes together.
- * 
+ *
  * @param saveData: Passed as a u8* to be iterated over
  * @return (s32) Checksum value
  */
 s32 SaveData_FileChecksum(u8 *saveData) {
-    s32 checksum;
-    int one;
-    s32 hasNoNonZeroBytes;
-    u8 *tempSaveData;
-    s32 hasNoNonFFBytes;
+    s32 checksum = 0;
+    int one = 1;                            // set to 1, (skips the checksum var in the struct)
+    s32 hasNoNonZeroBytes = 1;
+    u8 *tempSaveData = saveData;
+    s32 hasNoNonFFBytes = 1;
     s32 i;
-    
-    checksum = 0;
-    one = 1;                            // set to 1, (skips the checksum var in the struct)
-    hasNoNonZeroBytes = 1;
-    hasNoNonFFBytes = 1;
-    tempSaveData = saveData;
-    
+
     // Iterate through the save data (excluding the old checksum), adding each byte to the new checksum
     for (i = 1; i < sizeof(SaveFile); i++) {
         checksum += saveData[i];
         checksum &= 0xff;               // keep checksum in the byte range
-        
+
         // 0x00 or 0xFF checks
-        do { 
-            if (tempSaveData[i] != 0) { 
-                hasNoNonZeroBytes = 0; 
-            } 
+        do {
+            if (tempSaveData[i] != 0) {
+                hasNoNonZeroBytes = 0;
+            }
         } while (0);
-        
+
         if (tempSaveData[i] != 0xFF) {
             hasNoNonFFBytes = 0;
         }
     }
-    
+
     // If all bytes are 0 or 0xFF, return the checksum + 5 so the checksum is different
     if ((hasNoNonZeroBytes == one) || (hasNoNonFFBytes == one)) {
         DummiedPrintf(" SaveData FILLER\n", &saveData[i], checksum, tempSaveData);
         return ((*saveData) + 5) & 0xFF;
     }
-    
+
     return checksum;
 }
 
@@ -7746,20 +7765,19 @@ s32 SaveData_FileChecksum(u8 *saveData) {
 s32 SaveData_Compare(u8 *arg0, u8 *arg1) {
     s32 i;
     s32 var_s7 = 0;
-    u8 *new_var;
-    new_var = arg1;
-    
+    u8 *new_var = arg1;
+
     for (i = 0; i < 128; i++) {
         if (arg0){}
         if (arg0[i] != new_var[i]) {
             var_s7 = 1;
             do {
-                //"%dバイト目違う [%X][%X}\n"("%d bytes wrong [%X][%X}\n")(sic) 
-                DummiedPrintf("%dバイト目違う [%X][%X}\n", i, arg0[i], arg1[i]); 
+                //"%dバイト目違う [%X][%X}\n"("%d bytes wrong [%X][%X}\n")(sic)
+                DummiedPrintf("%dバイト目違う [%X][%X}\n", i, arg0[i], arg1[i]);
             } while (0);
         }
     }
-    
+
     return var_s7;
 }
 
@@ -7768,13 +7786,13 @@ void SaveData_LoadFile(s32 arg0, SaveFile* arg1) {
     if (osEepromProbe(&gEepromMsgQ) != 1) {
         DummiedPrintf("ＥＥＰロムエラー \n");
     }
-    
+
     DummiedPrintf("ロード開始\n");
-    
+
     if (osEepromLongRead(&gEepromMsgQ, ((arg0 * 0x60) / 8) & 0xFF, (u8*)arg1, 0x60) != 0) {
         DummiedPrintf("ＥＥＰロム読み込みエラー %d ブロック目から %d バイトを読めません\n", arg0, 0x60);
     }
-    
+
     SaveData_Wait();
 }
 
@@ -7783,13 +7801,13 @@ void SaveData_LoadAllFiles(u8* arg0) {
     if (osEepromProbe(&gEepromMsgQ) != 1) {
         DummiedPrintf("ＥＥＰロムエラー \n");
     }
-    
+
     DummiedPrintf("ロード開始\n");
-    
+
     if (osEepromLongRead(&gEepromMsgQ, 0, arg0, 0x180) != 0) {
         DummiedPrintf("ＥＥＰロム読み込みエラー %d ブロック目から %d バイトを読めません\n", 0, 0x180);
     }
-    
+
     SaveData_Wait();
 }
 
@@ -7800,55 +7818,53 @@ void SaveData_LoadRecords(u8* arg0) {
     }
     //"メインロード開始" ("main road start"?)
     DummiedPrintf("メインロード開始\n");
-    
+
     if (osEepromLongRead(&gEepromMsgQ, 0x30, arg0, sizeof(SaveRecord)) != 0) {
         //"ＥＥＰロム読み込みエラー 共通部分(Main)から %d バイトを読めません"
         //("EEP ROM read error Cannot read %d bytes from common part (Main)")
         DummiedPrintf("ＥＥＰロム読み込みエラー 共通部分(Main)から %d バイトを読めません\n", sizeof(SaveRecord));
     }
-    
+
     SaveData_Wait();
 }
 
 /**
  * @brief Save a given SaveFile to the EEPROM.
- * 
- * @param saveIndex: File number minus one 
- * @param saveFile: SaveFile to be saved 
+ *
+ * @param saveIndex: File number minus one
+ * @param saveFile: SaveFile to be saved
  */
-void SaveData_SaveFile(s32 saveIndex, SaveFile* saveFile) { 
+void SaveData_SaveFile(s32 saveIndex, SaveFile* saveFile) {
     //"%d 番目のファイルにセーブ  %dバイト目\n"("saving to %d-th file, %d bytes"?)
     DummiedPrintf("%d 番目のファイルにセーブ  %dバイト目\n", saveIndex, (s32) (saveIndex * 0x60) / 8);
     osRecvMesg(&gEepromMsgQ, NULL, OS_MESG_NOBLOCK);
-    
+
     if (osEepromProbe(&gEepromMsgQ) != 1) {
         //"ＥＥＰロムエラー \n"("EEP rom error")
         DummiedPrintf("ＥＥＰロムエラー \n");
     }
     //"セーブ開始\n" ("start save")
     DummiedPrintf("セーブ開始\n");
-    
+
     if (osEepromLongWrite(&gEepromMsgQ, (saveIndex * 0x60) / 8, (u8*)saveFile, 0x60) != 0) {
         //"ＥＥＰロム書き込みエラー \n"("EEProm write error")
         DummiedPrintf("ＥＥＰロム書き込みエラー \n");
     }
-    
+
     SaveData_Wait();
     SaveData_Wait();
 }
 
 /**
  * @brief Attempt to update a save file, comparing the file being saved with the file when reloaded.
- * 
+ *
  * @param saveIndex: Index to save file to
- * @param saveFile: SaveFile to be updated 
- * @return (s32) 0 for success, 1 for error 
+ * @param saveFile: SaveFile to be updated
+ * @return (s32) 0 for success, 1 for error
  */
 s32 SaveData_UpdateFile(s32 saveIndex, SaveFile* saveFile) {
-    s32 i;
+    s32 i = 0;
     SaveFile newFile;
-
-    i = 0;
 
     // Attempt update 3 times before returning error
     while (1) {
@@ -7868,28 +7884,28 @@ s32 SaveData_UpdateFile(s32 saveIndex, SaveFile* saveFile) {
 
 void SaveData_SaveRecords(void) {
     gGameRecords.flags[0] = SaveData_RecordChecksum();
-    
+
     osRecvMesg(&gEepromMsgQ, NULL, OS_MESG_NOBLOCK);
-    
+
     if (osEepromProbe(&gEepromMsgQ) != 1) {
         DummiedPrintf("ＥＥＰロムエラー \n");
     }
-    
+
     DummiedPrintf("セーブ開始\n");
-    
+
     if (osEepromLongWrite(&gEepromMsgQ, 0x30, &gGameRecords.flags[0], 0x80) != 0) {
         //"ＥＥＰロム書き込みエラー \n"("EEPRom write error")
         DummiedPrintf("ＥＥＰロム書き込みエラー \n");
     }
-    
+
     SaveData_Wait();
     SaveData_Wait();
 }
 
 /**
  * @brief Attempt to update game records, comparing the records being saved with the records when reloaded.
- * 
- * @return (s32) 0 for success, 1 for error 
+ *
+ * @return (s32) 0 for success, 1 for error
  */
 s32 SaveData_UpdateRecords(void) {
     s32 i;
@@ -7926,7 +7942,7 @@ void func_800A87D4(s32 arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/SaveData_ResetRecords.s")
 
 /**
- * @brief Clear all records data. 
+ * @brief Clear all records data.
  */
 void SaveData_ClearRecords(void) {
     DummiedPrintf("ファイルクリア\n");
@@ -8009,7 +8025,7 @@ void func_800A9728(CTTask* arg0) {
         }
         gCurrentDemoTimer = D_801FCA08;
     }
-    
+
     if ((D_80100D64[gCurrentDemo] + 0xA) >= gCurrentDemoTimer) {
         arg0->unk_64 = 0;
         if (gGameModeCurrent != GAME_MODE_CREDITS_DEMO) {
@@ -8041,9 +8057,9 @@ void func_800A97E4(CTTask* arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800AA3F0.s")
 
 /**
- * @brief 
- * 
- * @param zone: room number 
+ * @brief
+ *
+ * @param zone: room number
  */
 void func_800AA844(s32 zone) {
     gCurrentZone = zone;
@@ -8119,6 +8135,7 @@ void func_800AAB0C(s32 arg0) {
     s32 dmaResult;
     s32 dmaSize;
     s32 i;
+
     DMAStruct_Print();
     LoadStageByIndex(arg0);
     DMAStruct_Print();
@@ -8545,6 +8562,7 @@ void func_800ADE24(void) {
 
 s32 func_800AE158(s32 arg0) {
     s32 temp_v0;
+
     gPlayerActors->pos.x = D_80108784;
     gPlayerActors->pos.y = D_80108788 + 7000;
     gPlayerActors->pos.z = D_8010878C;
@@ -8609,7 +8627,7 @@ void ComputeBoundingBoxFromRects(Rect3D* rectA, Rect3D* rectB, Rect3D* rectOut) 
         rectOut->max.z = rectA->max.z;
         return;
     }
-    
+
     rectOut->max.z = rectB->max.z;
 }
 
@@ -8641,9 +8659,9 @@ void AdjustRectToVec3(Rect3D* r, Vec3f vec) {
 
 /**
  * @brief Expands the input rectangle by a given amount.
- * 
+ *
  * @param r: Pointer to the rectangle to be expanded
- * @param s: Amount to expand the rectangle by 
+ * @param s: Amount to expand the rectangle by
  */
 void Rect_Expand(Rect3D* r, f32 s){
     r->min.x -= s;
@@ -8656,28 +8674,28 @@ void Rect_Expand(Rect3D* r, f32 s){
 
 /**
  * @brief Adjust the bounds of a rectangle to ensure that the minimum values are less than the maximum values.
- * 
+ *
  * @param[in,out] rect: Pointer to rectangle to adjust
  */
 void OrderRectBounds(Rect3D *rect) {
     f32 prevMaxX;
     f32 prevMaxY;
     f32 prevMaxZ;
-    
+
     if (rect->max.x < rect->min.x) {
         prevMaxX = rect->max.x;
         rect->max.x = rect->min.x;
         rect->min.x = prevMaxX;
     }
-    
+
     if (rect->max.y < rect->min.y) {
         prevMaxY = rect->max.y;
         rect->max.y = rect->min.y;
         rect->min.y = prevMaxY;
     }
-    
+
     prevMaxZ = rect->max.z;
-    
+
     if (prevMaxZ < rect->min.z) {
         rect->max.z = rect->min.z;
         rect->min.z = prevMaxZ;
@@ -8686,10 +8704,10 @@ void OrderRectBounds(Rect3D *rect) {
 
 /**
  * @brief Compares two given rectangles to determine if they intersect.
- *      
+ *
  * @param[in,out] rectA: first rectangle
  * @param[in,out] rectB: second rectangle
- * 
+ *
  * @return (s32) 1 if the two rectangles intersect, 0 otherwise
  */
 s32 IfRectsIntersect(Rect3D* rectA, Rect3D* rectB) {
@@ -8716,10 +8734,10 @@ s32 IfRectsIntersect(Rect3D* rectA, Rect3D* rectB) {
 
 /**
  * @brief Determines if a point (vec3f) is within a given rectangle.
- * 
- * @param point: Point to check 
+ *
+ * @param point: Point to check
  * @param rect: Pointer to rectangle to check against
- * @return (s32) 1 if point is in rectangle, 0 otherwise 
+ * @return (s32) 1 if point is in rectangle, 0 otherwise
  */
 s32 IsPointInRect(Vec3f point, Rect3D* rect) {
     if (point.x < rect->min.x) {
@@ -8745,10 +8763,10 @@ s32 IsPointInRect(Vec3f point, Rect3D* rect) {
 
 /**
  * @brief Create a bounding box from two given vectors.
- * 
+ *
  * @param vecA: First vector
  * @param vecB: Second vector
- * @param rect: Pointer to rectangle to store bounding box in 
+ * @param rect: Pointer to rectangle to store bounding box in
  */
 void CalculateBoundingRectFromVectors(Vec3f vecA, Vec3f vecB, Rect3D* rect) {
     if (vecA.x < vecB.x) {

@@ -7,15 +7,22 @@ s32 D_801748A0;
 s32 D_801748A4;
 unk0 D_801748A8; //is size 0x58, struct is a guess
 unk80174900 D_80174900;
-s32 D_80174980;
+s32 D_80174980; //game state???
+//0 == menuing?
+//1 == normal
+//2 == ???
+//3 == ending
+//4 == dead
+//5 == ???
+
 s32 D_80174984;
-s32 D_80174988;
+s32 D_80174988; //makes you invincible? debug? also has a case for white
 s32 D_8017498C;
 s32 D_80174990;
-f32 D_80174994;
-s32 D_80174998;
+f32 D_80174994; //death plane y?
+s32 D_80174998; //fade?
 s32 gTimer;
-s32 D_801749A0;
+s32 D_801749A0; //actor & object timer (for keeping track of deltas) (the stop watch pauses this !)
 s32 D_801749A4;
 s32 D_801749A8;
 s32 Battle_GameType;
@@ -24,7 +31,7 @@ s32 gIsMultiplayerPaused;
 char D_801749B8[24];
 s32 D_801749D0;
 
-
+//pob related
 s32 D_801749D8[30];
 
 unk80174A50 D_80174A50;
@@ -39,8 +46,8 @@ unk80175608 D_80175608;
 
 /**
  * @brief Returns the result of the SUM_OF_SQUARES macro
- * 
- * @param x: first value 
+ *
+ * @param x: first value
  * @param y: second value
  * @return (f32) x^2 + y^2
  */
@@ -50,7 +57,7 @@ f32 SumOfSquaresWrapper(f32 x, f32 y) {
 
 /**
  * @brief Wrap degrees to range [0-360)
- * 
+ *
  * @param theta_ptr: pointer to the angle to wrap
  * @return (ptr) altered angle
  */
@@ -71,9 +78,9 @@ void WrapDegrees(f32* theta_ptr) {
 }
 
 /**
- * @brief This function takes in a vector, (a,b) in the form of two floats, and a radius c. 
+ * @brief This function takes in a vector, (a,b) in the form of two floats, and a radius c.
  * If the vector is outside the disk of radius c about (0,0), it is normalized to be on the boundary.
- * 
+ *
  * @param a: pointer to the x component of the vector
  * @param b: pointer to the y component of the vector
  * @param c: radius of a given disk
@@ -217,7 +224,7 @@ void func_8002D434(f32 *vecX, f32 *vecY, f32 diffX, f32 diffY, f32 addAngle) {
     f32 a = *vecX - diffX;
     f32 b = *vecY - diffY;
     f32 c = NORM_2(a, b);
-    
+
     // If magnitude is not 0, calculate new angle and adjust vector
     if (c != 0.0f) {
         newAngle = CalculateAngleOfVector(a, -b) + addAngle;
@@ -311,12 +318,12 @@ void Actors_Init(s32 actorIndex, s32 actorID, f32 arg2, f32 arg3, f32 arg4, f32 
     actorInstance->unk_98 = 0;
     actorInstance->unk_9C = 0;
     actorInstance->unk_B0 = 0.0f;
-    
+
     actorInstance->unk_A0.unk_00 = D_8010AA28[actorID].unk_00;
     actorInstance->unk_A0.unk_04 = D_8010AA28[actorID].unk_04;
     actorInstance->unk_A0.unk_08 = D_8010AA28[actorID].unk_08;
     actorInstance->unk_A0.unk_0C = D_8010AA28[actorID].unk_0C;
-    
+
 
     actorInstance->unk_C4 = 0;
     actorInstance->unk_C8 = 0;
@@ -624,8 +631,8 @@ s32 func_8002DF5C(s32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4) {
             Poles[i].pos.x = arg1;
             Poles[i].pos.y = arg2;
             Poles[i].pos.z = arg3;
-            Poles[i].yStretch = arg4; 
-            return i;            
+            Poles[i].yStretch = arg4;
+            return i;
         }
     }
     return -1;
@@ -661,7 +668,7 @@ void func_8002E5DC(UnkTempStruct arg0) {
                 }
                 func_800D34CC();
             }
-        } else if ((Battle_GameType == 0) && (TRUE != isInOverworld) && (arg0.unk_02 & 0x20)) {
+        } else if ((Battle_GameType == BATTLE_TYPE_NOTBATTLE) && (TRUE != isInOverworld) && (arg0.unk_02 & 0x20)) {
             PLAY_SFX(SFX_2C_unkSnd, 0, 0x10);
             if (D_80174860->unk0 == 0) {
                 D_80174860->unk0 = 1;
@@ -743,7 +750,7 @@ void func_8002ECCC(s32 arg0) {
                 func_8002E9F4();
                 if (gTongueOnePointer->trueAngle > 90.0f) {
                     temp = -(90.0f - gTongueOnePointer->trueAngle);
-                    
+
                 } else {
                     temp = (90.0f - gTongueOnePointer->trueAngle);
                 }
@@ -799,7 +806,7 @@ void func_8002ECCC(s32 arg0) {
             D_80174860->f3.y = D_80174994;
         }
     }
-    
+
     SetCameraParameters();
     if (D_800FEA30 >= 2) {
         D_80174860->f4.x = D_80174860->f3.x;
@@ -809,7 +816,7 @@ void func_8002ECCC(s32 arg0) {
         D_80174860->f5.y = D_80174860->f2.x;
         D_80174860->f5.z = D_80174860->f2.y;
     }
-    
+
     D_80174860->f1.y = CalculateAngleOfVector(D_80174860->f4.x - D_80174860->f5.x, -(D_80174860->f4.z - D_80174860->f5.z));
 }
 
@@ -878,29 +885,29 @@ s32 func_8002F6DC(f32* arg0, f32 arg1) {
     f32 var_f2;
 
     var_f2 = 30.0f;
-    
+
     if (*arg0 < arg1) {
         var_f0 = -(*arg0 - arg1);
     } else {
         var_f0 = *arg0 - arg1;
     }
-    
+
     if (var_f0 > 180.0f) {
         var_f0 = 360.0f - var_f0;
     }
-    
+
     if (var_f0 < 45.0f) {
         var_f2 = (var_f0 / 1.607142806f) + 2.0f;
     }
-    
+
     if (var_f2 <= var_f0) {
         *arg0 += var_f2 * AreAnglesWithin180Degrees(*arg0, arg1);
     } else {
         *arg0 = arg1;
     }
-    
+
     WrapDegrees(arg0);
-    
+
     if (var_f0 > 135.0f) {
         return 1;
     } else {
@@ -970,7 +977,7 @@ void func_800311C8(Actor* arg0) {
             for (i = 0; i < MAX_ACTORS; i++, curActor++) {
                 if ((gActors[i].actorID == 0x47) && (arg0->unk_128 == gActors[i].unk_128)) {
                     gActors[i].userVariables[3] = -1;
-                }                
+                }
             }
         }
     }
@@ -1021,7 +1028,7 @@ void func_800317A0(void) {
     s32 i;
     gTongueOnePointer->controlAngle = gCurrentActivePlayerPointer->yAngle;
     gTongueOnePointer->length = 0;
-    
+
     for (i = gTongueOnePointer->poleSegmentAt; i < gTongueOnePointer->cameraSegmentAt; i++){
         if (((gTongueOnePointer->tongueXs[i] != 0.0f) || (gTongueOnePointer->tongueZs[i] != 0.0f)) && (gTongueOnePointer->length < gTongueOnePointer->tongueForwards[i])) {
             gTongueOnePointer->controlAngle = CalculateAngleOfVector(gTongueOnePointer->tongueXs[i], gTongueOnePointer->tongueZs[i]);
@@ -1058,7 +1065,7 @@ void func_800320EC(s32 arg0, f32 arg1, f32 arg2) {
         }
         angle += gTongueOnePointer->tongueDir * 90.0f;
         WrapDegrees(&angle);
-        
+
         gActors[arg0].unk_134[2] = angle;
         gActors[arg0].userVariables[0] = 1;
         gActors[arg0].unk_134[0] = angle;
@@ -1167,7 +1174,7 @@ void pickup_collide_func(s32 actorIndex) {
             gCurrentActivePlayerPointer->powerTimer = 0;
             gCurrentActivePlayerPointer->powerTimerTill = actor->unk_128;
             gCurrentActivePlayerPointer->tongueYOffset = 30.0f;
-            gCurrentActivePlayerPointer->tongueSeperation = 25.0f; 
+            gCurrentActivePlayerPointer->tongueSeperation = 25.0f;
             gCurrentActivePlayerPointer->hitboxSize *= 0.5f;
             gCurrentActivePlayerPointer->hitboxYStretch *= 0.5f;
             SetPlayerImpulse();
@@ -1177,9 +1184,9 @@ void pickup_collide_func(s32 actorIndex) {
         var_s0 = 0x32;
         break;
     }
-    
+
     actor->actorID = 0;
-    
+
     if (var_s0 == 0) {
         Effect_PlayerEyes_Init(gSelectedCharacters[gCurrentActivePlayerPointer->playerID], 2, 50.0f, 0);
         return;
@@ -1251,7 +1258,7 @@ void func_800360E4(Actor* actor) {
     f32 pad, pad2;
     f32 angle;
     f32 xCalc = gCurrentActivePlayerPointer->pos.x - actor->pos.x, zCalc = gCurrentActivePlayerPointer->pos.z - actor->pos.z; //required
-    
+
     if ((actor->pos.y < (gCurrentActivePlayerPointer->pos.y + gCurrentActivePlayerPointer->hitboxYStretch)) && (gCurrentActivePlayerPointer->pos.y < (actor->unknownPositionThings[0].unk_10 + actor->pos.y))) {
         if ((SQ(xCalc) + SQ(zCalc)) < SQ(actor->unknownPositionThings[0].unk_0C)) {
             angle = CalculateAngleOfVector(xCalc, -zCalc);
@@ -1273,7 +1280,7 @@ void func_80036D74(PlayerActor* arg0, Tongue* arg1) {
         func_8002F884(arg0->playerID, 5);
         Effect_TypeD_Create(arg0->pos.x, arg0->pos.y, arg0->pos.z);
         PLAY_SFX(SFX_ChameleonOw+1, 0, 0x10);
-        if ((Battle_GameType == 0) && (D_80174980 != 3) && (D_80174988 == 0)) {
+        if ((Battle_GameType == BATTLE_TYPE_NOTBATTLE) && (D_80174980 != 3) && (D_80174988 == 0)) {
             gNoHit = 0;
             if (--arg0->hp <= 0) {
                 D_80174980 = 4;
@@ -1414,7 +1421,7 @@ void ActorInit_AntBulletHell(Actor* bulletHellAnt) {
     WrapDegrees(&bulletHellAnt->unk_90);
     func_800382F4(bulletHellAnt);
 }
- 
+
 s32 ActorTick_BulletHellAnt(Actor* bulletHellAnt) {
     if (bulletHellAnt->unk_98 != 0) {
         bulletHellAnt->vel.y -= 3.200000048f;
@@ -1422,7 +1429,7 @@ s32 ActorTick_BulletHellAnt(Actor* bulletHellAnt) {
     }
     if (gTimer % 8 == 0) {
         PLAY_SFX_AT(SFX_63_unkSnd+3, bulletHellAnt->pos, 1, 0);
-    } 
+    }
     else if (gTimer % 8 == 4) {
         PLAY_SFX_AT(SFX_63_unkSnd+2, bulletHellAnt->pos, 1, 0);
     }
@@ -1443,7 +1450,7 @@ void ActorInit_AntTrio(Actor* antTrio) {
     antTrio->unk_94 = (f32) antTrio->unk_124;
     antTrio->unk_90 = CalcAngleBetween2DPoints(antTrio->pos.x, antTrio->pos.z, antTrio->position._f32.x, antTrio->position._f32.y);
     antTrio->unk_98 = 1;
-    func_800382F4(antTrio); 
+    func_800382F4(antTrio);
     antTrio->unk_F0 = Random(0, 0x100);
 }
 
@@ -1608,7 +1615,7 @@ s32 func_8003C734(Actor* arg0, s32 arg1) {
     s32 actorIndex;
 
     actorIndex = Actor_Init(arg0->actorID, arg0->pos.x, arg0->pos.y, arg0->pos.z, arg0->unk_90, arg0->unk_F4, arg0->unk_F8, arg0->unk_FC, arg0->unk_100, arg0->unk_104, arg0->unk_108, arg0->position._f32.x, arg0->position._f32.y, arg0->unk_15C, arg0->unk_160, arg0->unk_164, arg0->unk_168, arg0->unk_16C, arg0->unk_170, 0, arg0->unk_128, arg0->unk_12C, arg0->unk_130);
-    
+
     if (actorIndex == -1) {
         return -1;
     }
@@ -1640,7 +1647,7 @@ s32 func_8003C734(Actor* arg0, s32 arg1) {
 
 void ActorInit_Explosion(Actor* explosion) {
     f32 xPos = explosion->position._f32.x;
-    
+
     xPos *= 2;
     explosion->unknownPositionThings[0].unk_0C = explosion->position._f32.x;
     explosion->tScale = explosion->position._f32.x;
@@ -1667,10 +1674,10 @@ void ActorTick_BombBossBomb(Actor* bsBomb) {
         func_80031518(bsBomb);
     }
 }
- 
+
 // Black Chameleon Projectile Spawner
 void ActorInit_ChameleonBlackSpotSpawner(Actor* blackChameleonProjectileSpawner){
-    
+
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_ChameleonBlackSpotSpawner.s")
@@ -1755,9 +1762,9 @@ void BoulderCalculations(Actor* boulder) {
     f32 tempBC = boulder->unk_BC;
     f32 calculation;
     f32 var = (((tempX * tempB4) + (tempY * tempB8) + (tempZ * tempBC)) * 2);
-    
+
     calculation = var / ((tempB4 * tempB4) + (tempB8 * tempB8) + (tempBC * tempBC));
-    
+
     boulder->unk_98 = 1;
     boulder->pos.y += boulder->unknownPositionThings[0].unk_10 * 0.5f;
     boulder->vel.x = (tempX - (calculation * tempB4)) * 0.8f;
@@ -1857,7 +1864,7 @@ void func_8003E968(Actor* armadillo, f32 arg1, f32 arg2) {
 
     armadillo->vel.x += (cosf(DEGREES_TO_RADIANS_2PI(angle)) * armadillo->position._f32.y * 1.5f) -
         (((cos < 0.0f) ? -cos : cos) * armadillo->vel.x);
-    armadillo->vel.z += ((-sinf(DEGREES_TO_RADIANS_2PI(angle)) * armadillo->position._f32.y * 1.5f) - 
+    armadillo->vel.z += ((-sinf(DEGREES_TO_RADIANS_2PI(angle)) * armadillo->position._f32.y * 1.5f) -
         (((sin < 0.0f) ? -sin : sin) * armadillo->vel.z));
     armadillo->vel.y -= 3.2f;
     if (armadillo->vel.y < 0.0f) {
@@ -1893,7 +1900,7 @@ void ActorInit_Pogo(Actor* pogo) {
     pogo->unk_134[0] = pogo->pos.x;
     pogo->unk_134[1] = pogo->pos.y;
     pogo->unk_134[2] = pogo->pos.z;
-    
+
     func_8003FA38(pogo, pogo->position._f32.x, pogo->position._f32.y, pogo->unk_15C);
 }
 
@@ -2108,7 +2115,7 @@ void func_80040CEC(Actor* cakeBossChocoKid){
 
 void ActorInit_CakeBoss(Actor* cake) {
     cake->tongueCollision = 3;
-    cake->userVariables[2] = 4; 
+    cake->userVariables[2] = 4;
     cake->unknownPositionThings[1].unk_0C = cake->tScale;
     cake->unknownPositionThings[1].unk_04 = 250;
     cake->unknownPositionThings[1].unk_10 = cake->tYPos;
@@ -2170,7 +2177,7 @@ void ActorInit_CueBall(Actor* cueBall) {
 
 void ActorTick_CueBall(Actor* cueBall) {
     f32 angle;
-    
+
     if (cueBall->tongueBumpSeg != 0) {
         if ((gTongueOnePointer->segments == cueBall->tongueBumpSeg) || gTongueOnePointer->segments == (cueBall->tongueBumpSeg + 1)) {
             if (gTongueOnePointer->vaulting == 0) {
@@ -2181,10 +2188,10 @@ void ActorTick_CueBall(Actor* cueBall) {
             }
         }
     }
-    
+
     //super
     ActorTick_MinigameActor(cueBall);
-    
+
     if (cueBall->pos.y < -cueBall->unknownPositionThings[0].unk_10) {
         cueBall->unk_98 = 1;
         cueBall->pos.x = gCurrentActivePlayerPointer->pos.x;
@@ -2368,7 +2375,7 @@ void ActorInit_Fire(Actor* fire) {
 
 void ActorTick_Fire(Actor* fire) {
     f32 angle  = CalcAngleBetween2DPoints(fire->pos.x, fire->pos.z, gCurrentActivePlayerPointer->pos.x, gCurrentActivePlayerPointer->pos.z);
-    
+
     if (fire->userVariables[0] == 0) {
         fire->unk_94 = fire->position._f32.x;
         func_8002D36C(&fire->unk_90, angle, fire->position._f32.y);
@@ -2434,7 +2441,7 @@ void ActorInit_GhostBossArmSegment(Actor* armSeg) {
         if ((armSeg->unk_124 < gActors[armSeg->unk_128].unk_128 + 2)) {
             f32 scalar = 1.200000048f;
             armSeg->tScale *= scalar;
-            armSeg->unknownPositionThings[0].unk_0C *= scalar;            
+            armSeg->unknownPositionThings[0].unk_0C *= scalar;
         }
     }
 }
@@ -2471,14 +2478,14 @@ void ActorTick_GhostBossArmSpitter(Actor* armSpit) {
             if (armSpit->unk_F0 == 9) {
                 armSpit->userVariables[0] = 1;
             }
-        } 
+        }
         else {
             armSpit->unk_F0 -= 1;
             if (armSpit->unk_F0  == 0) {
                 armSpit->userVariables[0] = 0;
             }
         }
-    } 
+    }
     else {
         if (armSpit->unk_F0 != 0) {
             armSpit->unk_F0 -= 1;
@@ -2608,7 +2615,7 @@ void ActorInit_LizardKongBoulder(Actor* lk_boulder) {
 void ActorTick_LizardKongBoulder(Actor* lk_boulder) {
     lk_boulder->unk_134[3] += lk_boulder->unk_94;
     lk_boulder->vel.y -= 3.200000048f;
-    
+
     if (lk_boulder->unk_98 == 0) {
         lk_boulder->unk_98 = 1;
         lk_boulder->pos.y = lk_boulder->unknownPositionThings[0].unk_10 / 2;
@@ -2616,9 +2623,9 @@ void ActorTick_LizardKongBoulder(Actor* lk_boulder) {
         lk_boulder->unk_94 *= 0.8999999762f;
         PLAY_SFX_AT(SFX_RockTumble, lk_boulder->pos, 0, 0);
     }
-    
+
     func_800382F4(lk_boulder);
-} 
+}
 
 //used in ActorInit_LizardKong
 void func_800489B0(Actor* lizardKong) {
@@ -2809,13 +2816,13 @@ void ActorTick_Unk5A(Actor* unk_5A) {
 }
 
 void ActorInit_PowerUpSpawner(Actor* powerUpSpawner){
-    
+
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_PowerUpSpawner.s")
 
 void ActorInit_FallingGreyAntSpawner(Actor* fallingGreyAntSpawner){
-    
+
 }
 
 void ActorTick_FallingGreyAntSpawner(Actor* fallingGreyAntSpawner) {
@@ -2836,7 +2843,7 @@ void ActorInit_FallingGreyAnt(Actor* fallingGreyAntActor) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_FallingGreyAnt.s")
 
 void ActorInit_UnkFireSpawner(Actor* unkFireSpawner){
-    
+
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_UnkFireSpawner.s")
@@ -2881,7 +2888,7 @@ void func_8004BA5C(s32 arg0) {
     s32 i;
     gCurrentActivePlayerPointer = &gPlayerActors[0];
     gTongueOnePointer = &gTongues[0];
-    
+
     for (i = 0; i < arg0; i++) {
         Actors_Tick();
     }
@@ -3001,7 +3008,7 @@ u8 func_8004CC6C(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8004CD9C.s")
 
 //related to updating the screen
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8004DDE0.s") 
+#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8004DDE0.s")
 
 const Vec2f D_8010A6D0[0x6B] = {
 {  0,   0},
@@ -3183,6 +3190,7 @@ const unk_8010AA28 D_8010AA28[0x6B] = {
 {1, 3, 1, 0},
 {1, 1, 0, 0},
 {0, 1, 1, 0},
+//porcupine
 {1, 1, 0, 0},
 {1, 4, 0, 0},
 {1, 4, 0, 0},

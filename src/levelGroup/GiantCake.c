@@ -165,8 +165,8 @@ RoomActor GiantCake_room1_actors[] = {
     { ACTOR_NULL, {0.0,0.0,0.0}, 0.0,     0.0,    0.0,        0,    0.0,     0.0,    0.0, 0,  0.0, 0.0,  0.0, 0.0,     0,      0, 0,       0,      0,     0,    0, 0}
 };
 
-s32 GiantCake_spriteLib_Sprlib[] = {
-    37,
+s32 GiantCake_spriteLib_Sprlib[2][16] = {
+{   37,
     38,
     39,
     40,
@@ -181,8 +181,8 @@ s32 GiantCake_spriteLib_Sprlib[] = {
     0,
     0,
     0,
-    0,
-    37,
+    0},
+{   37,
     38,
     39,
     40,
@@ -197,7 +197,7 @@ s32 GiantCake_spriteLib_Sprlib[] = {
     0,
     0,
     0,
-    0,
+    0},
 };
 
 RoomInstance GiantCake_room_instances[] = {
@@ -209,11 +209,11 @@ RoomInstance GiantCake_room_instances[] = {
 s32 GiantCake_rooms_map[3][3] = {
 {-1, -1, -1},
 {-1,  0, -1},
-{-1, -1, -1}, 
+{-1, -1, -1},
 };
 
 StageMapData GiantCake_map_data = {
-3, 3, GiantCake_room_instances, GiantCake_rooms_map, 
+    3, 3, GiantCake_room_instances, GiantCake_rooms_map,
 };
 
 RoomInstance GiantCake_ext_room_instances[] = {
@@ -237,12 +237,12 @@ StageData GiantCake_header_Lvlhdr = {
     0,
     GiantCake_rabObjects_Bin,
     131072,
-    &GiantCake_spriteLib_Sprlib[0],
+    GiantCake_spriteLib_Sprlib,
     &GiantCake_scope_Lvlscope,
 };
 Mtx GiantCake_IMtx2 = IDENTITY;
 
-Lights1 GiantCake_gicScope_Light = 
+Lights1 GiantCake_gicScope_Light =
     #include "assets/levelGroup/GiantCake/gicScope/gicScope.light.inc.c"
 
 Vtx GiantCake_model1_Vtx[] = {
@@ -276,7 +276,7 @@ Rect3D GiantCake_unkCol1_ColS = {
 };
 
 ModelCollision GiantCake_unkCol1_ColH = {
-16, 22, &GiantCake_unkCol1_ColV[0], &GiantCake_unkCol1_ColT[0], &GiantCake_unkCol1_ColS
+16, 22, GiantCake_unkCol1_ColV, GiantCake_unkCol1_ColT, &GiantCake_unkCol1_ColS
 };
 
 Vec3f GiantCake_unkCol2_ColV[] = {
@@ -292,11 +292,11 @@ Rect3D GiantCake_unkCol2_ColS = {
 };
 
 ModelCollision GiantCake_unkCol2_ColH = {
-8, 10, &GiantCake_unkCol2_ColV[0], &GiantCake_unkCol2_ColT[0], &GiantCake_unkCol2_ColS
+8, 10, GiantCake_unkCol2_ColV, GiantCake_unkCol2_ColT, &GiantCake_unkCol2_ColS
 };
 Mtx GiantCake_IMtx5 = IDENTITY;
 
-Lights1 GiantCake_gicScope2_Light = 
+Lights1 GiantCake_gicScope2_Light =
     #include "assets/levelGroup/GiantCake/gicScope2/gicScope2.light.inc.c"
 
 Vtx GiantCake_a_model1_Vtx[] = {

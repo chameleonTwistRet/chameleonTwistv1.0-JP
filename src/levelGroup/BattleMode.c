@@ -500,8 +500,8 @@ RoomActor BattleMode_room0_actors[] = {
     {             ACTOR_NULL,        {0.0,0.0,0.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0,  0.0,  0.0,  0.0,  0.0, 0,      0,      0, 0,      0,      0,      0,      0}
 };
 
-s32 BattleMode_spriteLib_Sprlib[] = {
-    40,
+s32 BattleMode_spriteLib_Sprlib[8][16] = {
+{   40,
     104,
     105,
     106,
@@ -516,8 +516,8 @@ s32 BattleMode_spriteLib_Sprlib[] = {
     0,
     0,
     0,
-    0,
-    47,
+    0},
+{   47,
     40,
     104,
     105,
@@ -532,8 +532,8 @@ s32 BattleMode_spriteLib_Sprlib[] = {
     0,
     0,
     0,
-    0,
-    49,
+    0},
+{   49,
     40,
     104,
     105,
@@ -548,24 +548,8 @@ s32 BattleMode_spriteLib_Sprlib[] = {
     0,
     0,
     0,
-    0,
-    39,
-    39,
-    40,
-    104,
-    105,
-    106,
-    107,
-    108,
-    109,
-    22,
-    23,
-    24,
-    25,
-    0,
-    0,
-    0,
-    39,
+    0},
+{   39,
     39,
     40,
     104,
@@ -580,8 +564,24 @@ s32 BattleMode_spriteLib_Sprlib[] = {
     25,
     0,
     0,
+    0},
+{   39,
+    39,
+    40,
+    104,
+    105,
+    106,
+    107,
+    108,
+    109,
+    22,
+    23,
+    24,
+    25,
     0,
-    14,
+    0,
+    0},
+{   14,
     40,
     104,
     105,
@@ -596,8 +596,8 @@ s32 BattleMode_spriteLib_Sprlib[] = {
     0,
     0,
     0,
-    0,
-    44,
+    0},
+{   44,
     45,
     40,
     104,
@@ -612,8 +612,8 @@ s32 BattleMode_spriteLib_Sprlib[] = {
     25,
     0,
     0,
-    0,
-    40,
+    0},
+{   40,
     104,
     105,
     106,
@@ -628,7 +628,7 @@ s32 BattleMode_spriteLib_Sprlib[] = {
     0,
     0,
     0,
-    0,
+    0},
 };
 
 RoomInstance BattleMode_room_instances[] = {
@@ -652,7 +652,7 @@ s32 BattleMode_rooms_map[5][3] = {
 };
 
 StageMapData BattleMode_map_data = {
-3, 5, BattleMode_room_instances, BattleMode_rooms_map, 
+    3, 5, BattleMode_room_instances, BattleMode_rooms_map,
 };
 
 SpriteActor BattleMode_roomUnk_sprites[] = {
@@ -680,13 +680,13 @@ StageData BattleMode_header_Lvlhdr = {
     0,
     BattleMode_rabObjects_Bin,
     131072,
-    &BattleMode_spriteLib_Sprlib[0],
+    BattleMode_spriteLib_Sprlib,
     &BattleMode_scope_Lvlscope,
 };
 s32 battleMode_pad[2] = {0, 0};
 Mtx BattleMode_IMtx2 = IDENTITY;
 
-Lights1 BattleMode_battleScope_Light = 
+Lights1 BattleMode_battleScope_Light =
     #include "assets/levelGroup/BattleMode/battleScope/battleScope.light.inc.c"
 
 Vtx BattleMode_model1_Vtx[] = {
@@ -1000,7 +1000,7 @@ Rect3D BattleMode_unkCol1_ColS = {
 };
 
 ModelCollision BattleMode_unkCol1_ColH = {
-16, 22, &BattleMode_unkCol1_ColV[0], &BattleMode_unkCol1_ColT[0], &BattleMode_unkCol1_ColS
+16, 22, BattleMode_unkCol1_ColV, BattleMode_unkCol1_ColT, &BattleMode_unkCol1_ColS
 };
 
 Vec3f BattleMode_unkCol2_ColV[] = {
@@ -1016,7 +1016,7 @@ Rect3D BattleMode_unkCol2_ColS = {
 };
 
 ModelCollision BattleMode_unkCol2_ColH = {
-16, 22, &BattleMode_unkCol2_ColV[0], &BattleMode_unkCol2_ColT[0], &BattleMode_unkCol2_ColS
+16, 22, BattleMode_unkCol2_ColV, BattleMode_unkCol2_ColT, &BattleMode_unkCol2_ColS
 };
 
 Vec3f BattleMode_unkCol3_ColV[] = {
@@ -1032,7 +1032,7 @@ Rect3D BattleMode_unkCol3_ColS = {
 };
 
 ModelCollision BattleMode_unkCol3_ColH = {
-5, 3, &BattleMode_unkCol3_ColV[0], &BattleMode_unkCol3_ColT[0], &BattleMode_unkCol3_ColS
+5, 3, BattleMode_unkCol3_ColV, BattleMode_unkCol3_ColT, &BattleMode_unkCol3_ColS
 };
 
 Vec3f BattleMode_unkCol4_ColV[] = {
@@ -1048,7 +1048,7 @@ Rect3D BattleMode_unkCol4_ColS = {
 };
 
 ModelCollision BattleMode_unkCol4_ColH = {
-32, 48, &BattleMode_unkCol4_ColV[0], &BattleMode_unkCol4_ColT[0], &BattleMode_unkCol4_ColS
+32, 48, BattleMode_unkCol4_ColV, BattleMode_unkCol4_ColT, &BattleMode_unkCol4_ColS
 };
 
 Vec3f BattleMode_unkCol5_ColV[] = {
@@ -1064,7 +1064,7 @@ Rect3D BattleMode_unkCol5_ColS = {
 };
 
 ModelCollision BattleMode_unkCol5_ColH = {
-4, 2, &BattleMode_unkCol5_ColV[0], &BattleMode_unkCol5_ColT[0], &BattleMode_unkCol5_ColS
+4, 2, BattleMode_unkCol5_ColV, BattleMode_unkCol5_ColT, &BattleMode_unkCol5_ColS
 };
 
 Vec3f BattleMode_unkCol6_ColV[] = {
@@ -1080,7 +1080,7 @@ Rect3D BattleMode_unkCol6_ColS = {
 };
 
 ModelCollision BattleMode_unkCol6_ColH = {
-24, 42, &BattleMode_unkCol6_ColV[0], &BattleMode_unkCol6_ColT[0], &BattleMode_unkCol6_ColS
+24, 42, BattleMode_unkCol6_ColV, BattleMode_unkCol6_ColT, &BattleMode_unkCol6_ColS
 };
 
 Vec3f BattleMode_unkCol7_ColV[] = {
@@ -1096,7 +1096,7 @@ Rect3D BattleMode_unkCol7_ColS = {
 };
 
 ModelCollision BattleMode_unkCol7_ColH = {
-8, 6, &BattleMode_unkCol7_ColV[0], &BattleMode_unkCol7_ColT[0], &BattleMode_unkCol7_ColS
+8, 6, BattleMode_unkCol7_ColV, BattleMode_unkCol7_ColT, &BattleMode_unkCol7_ColS
 };
 
 Vec3f BattleMode_unkCol8_ColV[] = {
@@ -1112,7 +1112,7 @@ Rect3D BattleMode_unkCol8_ColS = {
 };
 
 ModelCollision BattleMode_unkCol8_ColH = {
-6, 4, &BattleMode_unkCol8_ColV[0], &BattleMode_unkCol8_ColT[0], &BattleMode_unkCol8_ColS
+6, 4, BattleMode_unkCol8_ColV, BattleMode_unkCol8_ColT, &BattleMode_unkCol8_ColS
 };
 
 Vec3f BattleMode_unkCol9_ColV[] = {
@@ -1128,7 +1128,7 @@ Rect3D BattleMode_unkCol9_ColS = {
 };
 
 ModelCollision BattleMode_unkCol9_ColH = {
-8, 10, &BattleMode_unkCol9_ColV[0], &BattleMode_unkCol9_ColT[0], &BattleMode_unkCol9_ColS
+8, 10, BattleMode_unkCol9_ColV, BattleMode_unkCol9_ColT, &BattleMode_unkCol9_ColS
 };
 
 Vec3f BattleMode_unkCol10_ColV[] = {
@@ -1144,7 +1144,7 @@ Rect3D BattleMode_unkCol10_ColS = {
 };
 
 ModelCollision BattleMode_unkCol10_ColH = {
-8, 10, &BattleMode_unkCol10_ColV[0], &BattleMode_unkCol10_ColT[0], &BattleMode_unkCol10_ColS
+8, 10, BattleMode_unkCol10_ColV, BattleMode_unkCol10_ColT, &BattleMode_unkCol10_ColS
 };
 
 Vec3f BattleMode_unkCol11_ColV[] = {
@@ -1160,7 +1160,7 @@ Rect3D BattleMode_unkCol11_ColS = {
 };
 
 ModelCollision BattleMode_unkCol11_ColH = {
-4, 2, &BattleMode_unkCol11_ColV[0], &BattleMode_unkCol11_ColT[0], &BattleMode_unkCol11_ColS
+4, 2, BattleMode_unkCol11_ColV, BattleMode_unkCol11_ColT, &BattleMode_unkCol11_ColS
 };
 
 Vec3f BattleMode_unkCol12_ColV[] = {
@@ -1176,7 +1176,7 @@ Rect3D BattleMode_unkCol12_ColS = {
 };
 
 ModelCollision BattleMode_unkCol12_ColH = {
-4, 2, &BattleMode_unkCol12_ColV[0], &BattleMode_unkCol12_ColT[0], &BattleMode_unkCol12_ColS
+4, 2, BattleMode_unkCol12_ColV, BattleMode_unkCol12_ColT, &BattleMode_unkCol12_ColS
 };
 
 Vec3f BattleMode_unkCol13_ColV[] = {
@@ -1192,7 +1192,7 @@ Rect3D BattleMode_unkCol13_ColS = {
 };
 
 ModelCollision BattleMode_unkCol13_ColH = {
-4, 2, &BattleMode_unkCol13_ColV[0], &BattleMode_unkCol13_ColT[0], &BattleMode_unkCol13_ColS
+4, 2, BattleMode_unkCol13_ColV, BattleMode_unkCol13_ColT, &BattleMode_unkCol13_ColS
 };
 
 Vec3f BattleMode_unkCol14_ColV[] = {
@@ -1208,7 +1208,7 @@ Rect3D BattleMode_unkCol14_ColS = {
 };
 
 ModelCollision BattleMode_unkCol14_ColH = {
-4, 2, &BattleMode_unkCol14_ColV[0], &BattleMode_unkCol14_ColT[0], &BattleMode_unkCol14_ColS
+4, 2, BattleMode_unkCol14_ColV, BattleMode_unkCol14_ColT, &BattleMode_unkCol14_ColS
 };
 
 Vec3f BattleMode_unkCol15_ColV[] = {
@@ -1224,7 +1224,7 @@ Rect3D BattleMode_unkCol15_ColS = {
 };
 
 ModelCollision BattleMode_unkCol15_ColH = {
-4, 2, &BattleMode_unkCol15_ColV[0], &BattleMode_unkCol15_ColT[0], &BattleMode_unkCol15_ColS
+4, 2, BattleMode_unkCol15_ColV, BattleMode_unkCol15_ColT, &BattleMode_unkCol15_ColS
 };
 
 Vec3f BattleMode_unkCol16_ColV[] = {
@@ -1240,7 +1240,7 @@ Rect3D BattleMode_unkCol16_ColS = {
 };
 
 ModelCollision BattleMode_unkCol16_ColH = {
-4, 2, &BattleMode_unkCol16_ColV[0], &BattleMode_unkCol16_ColT[0], &BattleMode_unkCol16_ColS
+4, 2, BattleMode_unkCol16_ColV, BattleMode_unkCol16_ColT, &BattleMode_unkCol16_ColS
 };
 
 Vec3f BattleMode_unkCol17_ColV[] = {
@@ -1256,7 +1256,7 @@ Rect3D BattleMode_unkCol17_ColS = {
 };
 
 ModelCollision BattleMode_unkCol17_ColH = {
-8, 4, &BattleMode_unkCol17_ColV[0], &BattleMode_unkCol17_ColT[0], &BattleMode_unkCol17_ColS
+8, 4, BattleMode_unkCol17_ColV, BattleMode_unkCol17_ColT, &BattleMode_unkCol17_ColS
 };
 
 Vec3f BattleMode_unkCol18_ColV[] = {
@@ -1272,7 +1272,7 @@ Rect3D BattleMode_unkCol18_ColS = {
 };
 
 ModelCollision BattleMode_unkCol18_ColH = {
-4, 2, &BattleMode_unkCol18_ColV[0], &BattleMode_unkCol18_ColT[0], &BattleMode_unkCol18_ColS
+4, 2, BattleMode_unkCol18_ColV, BattleMode_unkCol18_ColT, &BattleMode_unkCol18_ColS
 };
 
 Vec3f BattleMode_unkCol19_ColV[] = {
@@ -1288,7 +1288,7 @@ Rect3D BattleMode_unkCol19_ColS = {
 };
 
 ModelCollision BattleMode_unkCol19_ColH = {
-8, 4, &BattleMode_unkCol19_ColV[0], &BattleMode_unkCol19_ColT[0], &BattleMode_unkCol19_ColS
+8, 4, BattleMode_unkCol19_ColV, BattleMode_unkCol19_ColT, &BattleMode_unkCol19_ColS
 };
 
 Vec3f BattleMode_unkCol20_ColV[] = {
@@ -1304,7 +1304,7 @@ Rect3D BattleMode_unkCol20_ColS = {
 };
 
 ModelCollision BattleMode_unkCol20_ColH = {
-8, 10, &BattleMode_unkCol20_ColV[0], &BattleMode_unkCol20_ColT[0], &BattleMode_unkCol20_ColS
+8, 10, BattleMode_unkCol20_ColV, BattleMode_unkCol20_ColT, &BattleMode_unkCol20_ColS
 };
 
 Vec3f BattleMode_unkCol21_ColV[] = {
@@ -1320,7 +1320,7 @@ Rect3D BattleMode_unkCol21_ColS = {
 };
 
 ModelCollision BattleMode_unkCol21_ColH = {
-8, 10, &BattleMode_unkCol21_ColV[0], &BattleMode_unkCol21_ColT[0], &BattleMode_unkCol21_ColS
+8, 10, BattleMode_unkCol21_ColV, BattleMode_unkCol21_ColT, &BattleMode_unkCol21_ColS
 };
 
 Vec3f BattleMode_unkCol22_ColV[] = {
@@ -1336,7 +1336,7 @@ Rect3D BattleMode_unkCol22_ColS = {
 };
 
 ModelCollision BattleMode_unkCol22_ColH = {
-7, 5, &BattleMode_unkCol22_ColV[0], &BattleMode_unkCol22_ColT[0], &BattleMode_unkCol22_ColS
+7, 5, BattleMode_unkCol22_ColV, BattleMode_unkCol22_ColT, &BattleMode_unkCol22_ColS
 };
 
 Vec3f BattleMode_unkCol23_ColV[] = {
@@ -1352,7 +1352,7 @@ Rect3D BattleMode_unkCol23_ColS = {
 };
 
 ModelCollision BattleMode_unkCol23_ColH = {
-7, 5, &BattleMode_unkCol23_ColV[0], &BattleMode_unkCol23_ColT[0], &BattleMode_unkCol23_ColS
+7, 5, BattleMode_unkCol23_ColV, BattleMode_unkCol23_ColT, &BattleMode_unkCol23_ColS
 };
 
 Vec3f BattleMode_unkCol24_ColV[] = {
@@ -1368,7 +1368,7 @@ Rect3D BattleMode_unkCol24_ColS = {
 };
 
 ModelCollision BattleMode_unkCol24_ColH = {
-4, 2, &BattleMode_unkCol24_ColV[0], &BattleMode_unkCol24_ColT[0], &BattleMode_unkCol24_ColS
+4, 2, BattleMode_unkCol24_ColV, BattleMode_unkCol24_ColT, &BattleMode_unkCol24_ColS
 };
 
 Vec3f BattleMode_unkCol25_ColV[] = {
@@ -1384,7 +1384,7 @@ Rect3D BattleMode_unkCol25_ColS = {
 };
 
 ModelCollision BattleMode_unkCol25_ColH = {
-4, 2, &BattleMode_unkCol25_ColV[0], &BattleMode_unkCol25_ColT[0], &BattleMode_unkCol25_ColS
+4, 2, BattleMode_unkCol25_ColV, BattleMode_unkCol25_ColT, &BattleMode_unkCol25_ColS
 };
 
 Vec3f BattleMode_unkCol26_ColV[] = {
@@ -1400,7 +1400,7 @@ Rect3D BattleMode_unkCol26_ColS = {
 };
 
 ModelCollision BattleMode_unkCol26_ColH = {
-8, 10, &BattleMode_unkCol26_ColV[0], &BattleMode_unkCol26_ColT[0], &BattleMode_unkCol26_ColS
+8, 10, BattleMode_unkCol26_ColV, BattleMode_unkCol26_ColT, &BattleMode_unkCol26_ColS
 };
 
 Vec3f BattleMode_unkCol27_ColV[] = {
@@ -1416,7 +1416,7 @@ Rect3D BattleMode_unkCol27_ColS = {
 };
 
 ModelCollision BattleMode_unkCol27_ColH = {
-8, 10, &BattleMode_unkCol27_ColV[0], &BattleMode_unkCol27_ColT[0], &BattleMode_unkCol27_ColS
+8, 10, BattleMode_unkCol27_ColV, BattleMode_unkCol27_ColT, &BattleMode_unkCol27_ColS
 };
 
 Vec3f BattleMode_unkCol28_ColV[] = {
@@ -1432,7 +1432,7 @@ Rect3D BattleMode_unkCol28_ColS = {
 };
 
 ModelCollision BattleMode_unkCol28_ColH = {
-8, 10, &BattleMode_unkCol28_ColV[0], &BattleMode_unkCol28_ColT[0], &BattleMode_unkCol28_ColS
+8, 10, BattleMode_unkCol28_ColV, BattleMode_unkCol28_ColT, &BattleMode_unkCol28_ColS
 };
 
 Vec3f BattleMode_unkCol29_ColV[] = {
@@ -1448,7 +1448,7 @@ Rect3D BattleMode_unkCol29_ColS = {
 };
 
 ModelCollision BattleMode_unkCol29_ColH = {
-8, 10, &BattleMode_unkCol29_ColV[0], &BattleMode_unkCol29_ColT[0], &BattleMode_unkCol29_ColS
+8, 10, BattleMode_unkCol29_ColV, BattleMode_unkCol29_ColT, &BattleMode_unkCol29_ColS
 };
 
 Vec3f BattleMode_unkCol30_ColV[] = {
@@ -1464,11 +1464,11 @@ Rect3D BattleMode_unkCol30_ColS = {
 };
 
 ModelCollision BattleMode_unkCol30_ColH = {
-8, 10, &BattleMode_unkCol30_ColV[0], &BattleMode_unkCol30_ColT[0], &BattleMode_unkCol30_ColS
+8, 10, BattleMode_unkCol30_ColV, BattleMode_unkCol30_ColT, &BattleMode_unkCol30_ColS
 };
 Mtx BattleMode_IMtx33 = IDENTITY;
 
-Lights1 BattleMode_battleScope2_Light = 
+Lights1 BattleMode_battleScope2_Light =
     #include "assets/levelGroup/BattleMode/battleScope2/battleScope2.light.inc.c"
 
 Vtx BattleMode_a_model1_Vtx[] = {

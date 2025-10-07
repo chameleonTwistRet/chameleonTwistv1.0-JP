@@ -7,5 +7,6 @@
 #include "functions.jp.h"
 #include "variables.jp.h"
 #include "enums.h"
+#include "ld_symbols.h"
 #include "ld_addrs.h"
 #endif

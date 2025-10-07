@@ -6,30 +6,8 @@ import bmesh
 silly = '//wsl$/Ubuntu/root/NathaCT/'
 assetDir = 'assets/'
 
-
-yamler = 'chameleontwist.jp.yaml'
-yamlDir = silly + yamler
-
-symbler = 'symbol_addrs.txt'
-symbolDir = silly + symbler
-
-symbols = {}
-
-#get all symbols
-for line in open(symbolDir, "r", encoding="utf-8").readlines():
-    symbol = line.strip()
-    if symbol == "" or symbol.startswith("//"): continue
-    divide = symbol.split("; // ")
-    if len(divide) < 2: continue
-    important = divide[0].split(" = ")
-    name = important[0].strip()
-    vram = important[1].strip()
-    symbols[name] = {"vram": vram}
-    meta = divide[1].split(" ")
-    for entry in meta:
-        data = entry.split(":")
-        if len(data) < 2: continue
-        symbols[name][data[0]] = data[1]
+map = "build/chameleontwist.jp.map"
+mapDir = silly + map
 
 #whether or not texture filtering is enabled
 #option mostly for me because i love the crust :D
@@ -49,21 +27,24 @@ if os.path.exists("C:/assets/"):
     shutil.rmtree("C:/assets/")
 #
 
-
 #object integer scaling
 #if you cast some of these ints to float the models would be HUGE
 scale = 100.0
 
-def dumpGfx(path):
+def dumpGfx2(path):
     toTrack = {
         'txt': ['gsDPLoadTextureTile_4b','gsDPLoadTextureTile'],
         'vtx': ['gsSPVertex'],
-        'tri': ['gsSP1Triangle'],
+        'tri': ['gsSP1Triangle', 'gsSP2Triangles'],
+        'vtxColor': ['gsDPSetPrimColor'],
     }
+    gfxLines = open(path).readlines()
 
     fileList = []
-    for line in open(path).readlines():
-        line = line[4:]
+    i = 0
+    for line in gfxLines:
+        line = line.strip()
+
         for gfxCommand in list(toTrack.keys()):
             isValid = False
             for indicator in toTrack[gfxCommand]:
@@ -71,16 +52,88 @@ def dumpGfx(path):
                     fileList.append({
                         "Command": gfxCommand,
                         "Full": line,
-                        "Indicator": indicator})
+                        "Indicator": indicator,
+                        "i": i})
                     isValid = True
                     break
             if isValid: break
-    return fileList
-
-def start(toUser):
-    funName = toUser.split("/")[-1].split(".gfx")[0]
+        i += 1
     
-    yamling = open(yamlDir).readlines()
+    #cleanup
+    i = 0
+    while i < len(fileList):
+        if fileList[i]["Indicator"] == "gsSP2Triangles":
+            #if it isnt entirely inlined (normal)
+            if fileList[i]["Full"].find(")") == -1:
+                fileList[i]["Full"] = fileList[i]["Full"].strip() + gfxLines[fileList[i]["i"]+1].strip()
+        i += 1
+    
+
+    i = 0
+    while i < len(fileList):
+        file = fileList[i]
+        #needsFile
+        if not file["Command"] in ["tri", "vtxColor"]:
+            args = file["Full"].split("(")[-1].split(")")[0].split(",")
+            symbol = args[0]
+            #if symbol is array (eg vtx)
+            if symbol.find("[") != -1:
+                symbol = symbol.split("[")[0].replace("&", "")
+                
+            topLayer = True
+            #check original inc to see if its just defined there
+            for line in gfxLines:
+                if line.find(symbol) != -1 and line.find(" = ") != -1:
+                    topLayer = False
+                    break
+            
+            
+            file = ""
+            
+            if topLayer:
+                mapLines = open(mapDir, "r", encoding="utf-8").readlines()
+                
+                c = ""
+                x = 0
+                way = 1
+                while x < len(mapLines):
+                    line = mapLines[x]
+                    #find where its actually defined in the rom map
+                    if line.find("                "+symbol) != -1 and way == 1:
+                        way = -1
+                    #get the c from the mapping def
+                    elif way == -1 and line.find(".c.o") != -1:
+                        c = line.split("build/")[-1].split(".o")[0]
+                        break
+                    x += way
+                
+                cLines = open(silly+c, "r", encoding="utf-8").readlines()
+                x = 0
+                while x < len(cLines):
+                    if cLines[x].find(symbol) != -1 and cLines[x].find(" = ") != -1:
+                        file = cLines[x+1].split('#include "')[-1].split('"')[0]
+                        break
+                    x += 1
+                
+                
+            else:
+                #fill later with custom objects
+                pass
+            
+            #use original files and not build artifacts
+            if file.find("build/") != -1:
+                file = file.split("build/")[-1].split(".inc.c")[0]
+            
+            fileList[i]["Symbol"] = symbol
+            fileList[i]["File"] = file
+        
+        i += 1
+
+    return fileList
+    
+
+def start(toUser = ""):
+    if toUser == "": return
 
     files = []
     objdata = {
@@ -94,42 +147,22 @@ def start(toUser):
 
     mesh = bpy.data.meshes.new("model")
     object = bpy.data.objects.new("model", mesh)
-    object.name = funName
+    object.name = toUser.split("/")[-1].split(".gfx")[0]
     bpy.context.collection.objects.link(object)
 
-    files = dumpGfx(toUser)
+    files = dumpGfx2(toUser)
+    print(files)
     for file in files:
-        allArgs = file["Full"].replace(file["Indicator"], "", 1)[1:-3] #only the goods
-        if allArgs.startswith("&"): allArgs = allArgs[1:]
-        args = allArgs.split(",")
-        symbolname = args[0]
+        args = file["Full"].split(file["Indicator"]+"(")[-1].split(")")[0].split(",")
         arrayPos = 0
-        if symbolname.endswith("]"):
-            dats = symbolname.split("[")
-            symbolname = dats[0]
-            arrayPos = int(dats[1].split("]")[0])
-        needsFile = not file["Command"] in ["tri"]
-        if needsFile:
-            getAddr = symbols[symbolname]["rom"]
-            fileName = ""
-            dir = ""
-            spaces = ""
-            for line in yamling:
-                if line.find("dir:") != -1:
-                    data = line.split("dir: ")
-                    cspaces = data[0]
-                    dirg = data[1].split("#")[0].strip() + "/"
-                    if len(cspaces) > len(spaces): dir += dirg
-                    else: dir = dirg
-                    spaces = cspaces
-                if line.lower().find(getAddr.lower()) != -1:
-                    fileName = dir+line.split(",")[2].split("]")[0].strip()
-                    break
-            fileName = silly+assetDir+fileName
+        if args[0].find("]") != -1:
+            arrayPos = int(args[0].split("]")[0].split("[")[-1])
+        
+        hasFile = "File" in list(file.keys())
+        if hasFile:
             #begin the data usage.
             if file["Command"] == "vtx": #if resource is vertex data
-                newFileName = fileName+".vtx.inc.c"
-                fileData = open(newFileName).readlines()
+                fileData = open(silly+file["File"]).readlines()
                 bank = int(args[2])
                 while len(objdata['bank']) < bank: objdata['bank'].append(0)#fill bank
                 
@@ -160,17 +193,17 @@ def start(toUser):
                     bank += 1
                 
             elif file["Command"] == "txt": #if resource is texture data
-                smallName = fileName.split("/")[-1]
+                smallName = file["File"].split("/")[-1]
                 matthew = bpy.data.materials.new(name=smallName)
                 matthew.use_nodes = True
                 
                 bsdf = matthew.node_tree.nodes["Principled BSDF"]
                 texImage = matthew.node_tree.nodes.new('ShaderNodeTexImage')
                 #these shouldnt be needed
-                copyTo = "C:/assets/" + fileName + ".png"
-                makerTo = "C:/assets/" + fileName.replace(smallName, "")
+                copyTo = "C:/assets/" + smallName + ".png"
+                makerTo = "C:/assets/"
                 if not os.path.exists(makerTo):os.makedirs(makerTo)
-                shutil.copyfile(fileName + ".png", copyTo)
+                shutil.copyfile(silly+file["File"], copyTo)
                 #
 
                 texImage.image = bpy.data.images.load(copyTo)
@@ -189,12 +222,27 @@ def start(toUser):
                 })
                 
         elif file["Command"] == "tri": #if resource is tri data
-            tri = []
-            for a in range(0,3): tri.append(objdata['bank'][int(args[a])])
-            objdata["faces"].append(tri)
-            objdata['uvAssigns'].append(objdata['textures'][-1] if len(objdata['textures']) >= 1 else 0)
-
-
+            if file["Indicator"] == "gsSP1Triangle":
+                tri = []
+                for a in range(0,3): tri.append(objdata['bank'][int(args[a])])
+                objdata["faces"].append(tri)
+                objdata['uvAssigns'].append(objdata['textures'][-1] if len(objdata['textures']) >= 1 else 0)
+            elif file["Indicator"] == "gsSP2Triangles":
+                for t in range(0, 2):
+                    t = 4 * t
+                    tri = []
+                    for a in range(0+t,3+t): tri.append(objdata['bank'][int(args[a])])
+                    objdata["faces"].append(tri)
+                    objdata['uvAssigns'].append(objdata['textures'][-1] if len(objdata['textures']) >= 1 else 0)
+        
+        elif file["Command"] == "vtxColor": #if resource is vertex color(ed)
+            print(file)
+            #TODO: add vertex coloring support
+            #specifically, in combination with i(a) textures and just normal colored verts
+            #obviously, the latter is just making a material with a solid color
+            #though idk how to tint a grayscale texture in blender LOL
+            pass
+    
     mesh.from_pydata(objdata["verts"], [], objdata["faces"])
 
     bpy.context.view_layer.objects.active = object
@@ -258,15 +306,8 @@ def start(toUser):
         bpy.ops.object.mode_set(mode='OBJECT')
     return object
 
-
-
-
-startu = silly+assetDir+"chameleons/Davy/"
-endu = "*/*.gfx.inc.c"
 from glob import glob
 
-
-print(startu+endu)
-for gfx in glob(startu+endu, recursive=True):
-    print(gfx)
-    start(gfx)
+for model in glob(silly+"assets/chameleons/Davy/**/*.gfx.inc.c", recursive=True):
+    print(model)
+    start(model)

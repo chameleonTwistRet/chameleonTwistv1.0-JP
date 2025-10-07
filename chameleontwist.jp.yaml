@@ -266,7 +266,7 @@ segments:
       - [0xEAD90, .rodata, code/clip]
       - [0xEADE0, .rodata, code/8ADD0]
       - [0xEB500, .rodata, code/math]
-      - [0xEB580, .rodata, code/poly] 
+      - [0xEB580, .rodata, code/poly]
       - [0xEBB20, .rodata, code/vector]
       - [0xEBC20, .rodata, code/B35B0]
       - [0xEBC70, .rodata, code/B39A0]
@@ -437,7 +437,7 @@ segments:
 
       - {start: 0x1178D0, type: animHeader, name: anim/chameleon/Idle, data_only: True}
       - {start: 0x117900, type: animArray, name: anim/chameleon/Idle, frames: 16, objects: 13, data_only: True}
-      
+
       - {start: 0x11ad00, type: animHeader, name: anim/chameleon/Walk, data_only: True}
       - {start: 0x11ad30, type: animArray, name: anim/chameleon/Walk, frames: 20, objects: 13, data_only: True}
 
@@ -472,7 +472,7 @@ segments:
       - {start: 0x13E490, type: animArray, name: anim/chameleon/unk3, frames: 45, objects: 13, data_only: True}
 
       - [0x1476D0, animPointers, chameleonAnimPointers]
-  
+
   - name: assets1
     type: code
     subalign: 8
@@ -505,7 +505,7 @@ segments:
       - [0x2AB120, databin, sound/tbl] #sfxs #unkSize
 
   # # Start of next part?
-  # - [0x147760, databin, alBankfile0] #size of 0x7B60 [ram 801C4940] 
+  # - [0x147760, databin, alBankfile0] #size of 0x7B60 [ram 801C4940]
   # - [0x14F2C0, databin, alBankfile0Table] #unksize
   # - [0x282E80, databin, alBankFileBGM] #size of 0xEC
   # - [0x282F6C, databin, BGM00Jungle1] #size of 0x3337
@@ -547,7 +547,7 @@ segments:
   #ALWaveTable (size 0x10)
 
 
-  # - [0x2AB120, databin, sound/tbl] #sfxs #unkSize 
+  # - [0x2AB120, databin, sound/tbl] #sfxs #unkSize
   # #these all build correctly, but these will be turned into
   # #a segtype under the tbl split
   # # - [0x2AB398, databin, sound/00_ChameleonRightFoot]
@@ -1705,7 +1705,7 @@ segments:
       - [0x4963c8, spriteActor, spriteActors/room20_spr17]
       - [0x496418, spriteActor, spriteActors/room20_spr18]
       - [0x496468, spriteActor, spriteActors/room20_sprSTOP]
-      
+
       - [0x4964b8, collectable, collectables/room0_clct1]
       - [0x4964D8, collectable, collectables/room0_clct2]
       - [0x4964F8, collectable, collectables/room0_clctSTOP]
@@ -2149,7 +2149,7 @@ segments:
       - [0x4C9538] #identity matrix
       - {start: 0x4C9578, type: gfxSeg, name: fixedCamPillar/fixedCamPillar, data_only: True}
 
-    
+
       - {start: 0x4C97E0, type: collision, name: exit2/exit2, args: "Verts", data_only: True}
       - {start: 0x4C9828, type: collision, name: exit2/exit2, args: "Tris", data_only: True}
       - {start: 0x4C9858, type: collision, name: exit2/exit2, args: "Settings", data_only: True}
@@ -2396,7 +2396,7 @@ segments:
       - {start: 0x4d5714, type: collision, name: fixedCamPillar/fixedCamPillar, args: "Header", data_only: True}
 
       - [0x4D5728]
-      
+
       - [0x4D5730] #identity matrix
       - {start: 0x4D5770, type: lights, name: alScope2, data_only: True}
 
@@ -2488,13 +2488,13 @@ segments:
       - [0x4dd090, databin, rabObjects]
 
       - [0x4dd1f4, spriteActor, spriteActors/room0_spr1]
-      - [0x4dd244, spriteActor, spriteActors/room0_sprSTOP] 
-      - [0x4dd294, spriteActor, spriteActors/room12_spr1]   
+      - [0x4dd244, spriteActor, spriteActors/room0_sprSTOP]
+      - [0x4dd294, spriteActor, spriteActors/room12_spr1]
       - [0x4dd2e4, spriteActor, spriteActors/room12_sprSTOP]
-      - [0x4dd334, roomObject, roomObjects/room0_obj1]      
-      - [0x4dd3c0, roomObject, roomObjects/room0_obj2]      
-      - [0x4dd44c, roomObject, roomObjects/room0_obj3]      
-      - [0x4dd4d8, roomObject, roomObjects/room0_obj4]      
+      - [0x4dd334, roomObject, roomObjects/room0_obj1]
+      - [0x4dd3c0, roomObject, roomObjects/room0_obj2]
+      - [0x4dd44c, roomObject, roomObjects/room0_obj3]
+      - [0x4dd4d8, roomObject, roomObjects/room0_obj4]
       - [0x4dd564, roomObject, roomObjects/room0_obj5]
       - [0x4dd5f0, roomObject, roomObjects/room0_obj6]
       - [0x4dd67c, roomObject, roomObjects/room0_obj7]
@@ -3321,7 +3321,7 @@ segments:
       - [0x4f609c, roomSettings, rooms/room14]
       - [0x4f6108, roomSettings, rooms/room15]
       - [0x4f6174, roomSettings, rooms/roomSTOP]
-      
+
       - {start: 0x4f61e0, type: levelMap, name: map, args: Map}
       - {start: 0x4f6240, type: levelMap, name: map, args: Header}
       - [0x4f6250, roomSettings, nullOWRoom]
@@ -4008,7 +4008,7 @@ segments:
       - [0x51FB40] #identity matrix
       - [0x51fb80, levelPointer, pointers]
       - [0x5211d0, databin, rabObjects]
-      
+
       - [0x5211f8, spriteActor, spriteActors/room0_spr1]
       - [0x521248, spriteActor, spriteActors/room0_sprSTOP]
 
@@ -4285,7 +4285,7 @@ segments:
       - [0x527e80, roomObject, roomObjects/room6_obj12]
       - [0x527f0c, roomObject, roomObjects/room6_obj13]
       - [0x527f98, roomObject, roomObjects/room6_objSTOP]
-      
+
       - [0x528024, roomActor, roomActors/room6_act1]
       - [0x528084, roomActor, roomActors/room6_act2]
       - [0x5280e4, roomActor, roomActors/room6_act3]
@@ -4673,7 +4673,7 @@ segments:
       - [0x531b3c, roomActor, roomActors/room9_act11]
       - [0x531b9c, roomActor, roomActors/room9_act12]
       - [0x531bfc, roomActor, roomActors/room9_actSTOP]
-      
+
       - [0x531C5C, unkType1, newType/g111]
       - [0x531C80, unkType1, newType/g112]
 
@@ -4700,7 +4700,7 @@ segments:
       - [0x532794, roomObject, roomObjects/room11_obj21]
       - [0x532820, roomObject, roomObjects/room11_obj22]
       - [0x5328ac, roomObject, roomObjects/room11_objSTOP]
-      
+
       - [0x532938, collectable, collectables/room11_clct1]
       - [0x532958, collectable, collectables/room11_clct2]
       - [0x532978, collectable, collectables/room11_clctSTOP]
@@ -5809,7 +5809,7 @@ segments:
       - [0x57c53c, roomObject, roomObjects/room6_obj18]
       - [0x57c5c8, roomObject, roomObjects/room6_obj19]
       - [0x57c654, roomObject, roomObjects/room6_objSTOP]
-    
+
       - [0x57C6E0, unkType1, newType/g1]
       - [0x57C704, unkType1, newType/g2]
       - [0x57C728, unkType1, newType/g3]
@@ -6144,7 +6144,7 @@ segments:
 
       - [0x584C44, roomActor, roomObjects/roomUnk_act1]
       - [0x584CA4, roomActor, roomObjects/roomUnk_actSTOP]
-      
+
       - [0x584d04, roomObject, roomObjects/roomMulti2_obj1]
       - [0x584d90, roomObject, roomObjects/roomMulti2_obj2]
       - [0x584e1c, roomObject, roomObjects/roomMulti2_obj3]
@@ -6158,7 +6158,7 @@ segments:
 
       - [0x58516c, collectable, collectables/room4_clct1]
       - [0x58518c, collectable, collectables/room4_clctSTOP]
-      
+
       - [0x5851ac, collectable, collectables/room6_clct1]
       - [0x5851cc, collectable, collectables/room6_clct2]
       - [0x5851ec, collectable, collectables/room6_clctSTOP]
@@ -6303,7 +6303,7 @@ segments:
 
       - [0x586cc8, levelScope, scope]
       - [0x586ce0, levelHeader, header]
-      
+
       - [0x586d00] #identity matrix
       - {start: 0x586d40, type: lights, name: dcScope, data_only: True}
 
@@ -9109,7 +9109,7 @@ segments:
       - [0x645674, collectable, collectables/room18_clct3]
       - [0x645694, collectable, collectables/room18_clct4]
       - [0x6456b4, collectable, collectables/room18_clctSTOP]
-      
+
       - [0x6456d4, spriteLib, spriteLib]
 
       - [0x645914, roomSettings, rooms/room0]
@@ -10009,7 +10009,7 @@ segments:
       - [0x6aa7e8, spriteActor, spriteActors/eroom0_sprTree]
       - [0x6aa838, spriteActor, spriteActors/eroom0_sprTree2]
       - [0x6aa888, spriteActor, spriteActors/eroom0_sprSTOP]
-      
+
       - [0x6aa8d8, spriteActor, spriteActors/room6_sprRabbit]
       - [0x6aa928, spriteActor, spriteActors/room6_sprSTOP]
 
@@ -10017,7 +10017,7 @@ segments:
       - [0x6aa9c8, spriteActor, spriteActors/eroom1_sprFern2]
       - [0x6aaa18, spriteActor, spriteActors/eroom1_sprFern3]
       - [0x6aaa68, spriteActor, spriteActors/eroom1_sprSTOP]
-      
+
       - [0x6aaab8, spriteActor, spriteActors/eroomUnk_sprFern]
       - [0x6aab08, spriteActor, spriteActors/eroomUnk_sprFern2]
       - [0x6aab58, spriteActor, spriteActors/eroomUnk_sprFern3]
@@ -10036,7 +10036,7 @@ segments:
       - [0x6aaec8, spriteActor, spriteActors/eroom7_sprFern]
       - [0x6aaf18, spriteActor, spriteActors/eroom7_sprFern2]
       - [0x6aaf68, spriteActor, spriteActors/eroom7_sprSTOP]
-      
+
       - [0x6aafb8, spriteActor, spriteActors/eroom12_sprFern]
       - [0x6ab008, spriteActor, spriteActors/eroom12_sprFern2]
       - [0x6ab058, spriteActor, spriteActors/eroom12_sprFern3]
@@ -10650,7 +10650,7 @@ segments:
       - [0x6ba38c, roomObject, roomObjects/room5_objLoadingZone2]
       - [0x6ba418, roomObject, roomObjects/room5_objSomethingElseDoorRelated2]
       - [0x6ba4a4, roomObject, roomObjects/room5_objSTOP]
-      
+
       - [0x6ba530, roomObject, roomObjects/room6_objWalls]
       - [0x6ba5bc, roomObject, roomObjects/room6_objLava6]
       - [0x6ba648, roomObject, roomObjects/room6_objFloor]
@@ -10757,11 +10757,11 @@ segments:
       - [0x6BECF0] #B8000000
       - [0x6BECF8, palette, fallenLogStump.ci8]
       - {start: 0x6BEEF8, type: gfxSeg, name: fallenLogStump/fallenLogStump, data_only: True}
-      
+
       - {start: 0x6BF150, type: vtx, name: logTunnel/logTunnel, data_only: True}
       - [0x6BF530] #identity matrix
       - {start: 0x6bf570, type: gfxSeg, name: logTunnel/logTunnel, data_only: True}
-      
+
       - {start: 0x6BFA68, type: vtx, name: waterfallRock/waterfallRock, data_only: True}
       - [0x6BFBD8] #identity matrix
       - {start: 0x6BFC18, type: gfxSeg, name: waterfallRock/waterfallRock, data_only: True}
@@ -10795,11 +10795,11 @@ segments:
       - {start: 0x6C2B50, type: vtx, name: ctCrate2/ctCrate2, data_only: True}
       - [0x6C2C90] #identity matrix
       - {start: 0x6C2CD0, type: gfxSeg, name: ctCrate2/ctCrate2, data_only: True}
-      
+
       - {start: 0x6C30B8, type: vtx, name: walkingPlank/walkingPlank, data_only: True}
       - [0x6C31B8] #identity matrix
       - {start: 0x6C31F8, type: gfxSeg, name: walkingPlank/walkingPlank, data_only: True}
-          
+
       - {start: 0x6C34F0, type: vtx, name: walkingPlank2/walkingPlank2, data_only: True}
       - [0x6C35F0] #identity matrix
       - {start: 0x6C3630, type: gfxSeg, name: walkingPlank2/walkingPlank2, data_only: True}
@@ -11488,7 +11488,7 @@ segments:
       - [0x6FB6A0] #B8000000
       - [0x6FB6A8, palette, golem.ci4]
       - [0x6FB8A8] #B8000000
-      - [0x6FB8B0, ci8,     golemFace.ci8, 64, 64] 
+      - [0x6FB8B0, ci8,     golemFace.ci8, 64, 64]
       - [0x6FC8B0] #B8000000
       - [0x6FC8B8, palette, golemFace.ci8]
       - {start: 0x6FCAB8, type: gfxSeg, name: rockGolem/rockGolem, data_only: True}
@@ -11528,14 +11528,14 @@ segments:
       - {start: 0x700610, type: vtx, name: rockGolemElbow/rockGolemElbow, data_only: True}
       - [0x700750] #identity matrix
       - {start: 0x700790, type: gfxSeg, name: rockGolemElbow/rockGolemElbow, data_only: True}
-      
+
       - {start: 0x700a28, type: vtx, name: rockGolemArm2/rockGolemArm2, data_only: True}
       - [0x700d98] #identity matrix
       - {start: 0x700dd8, type: gfxSeg, name: rockGolemArm2/rockGolemArm2, data_only: True}
 
       - [0x701530] #identity matrix
       - {start: 0x701570, type: gfxSeg, name: unkunk, data_only: True}
-      
+
       - {start: 0x7015c8, type: vtx, name: spiderRock/spiderRock, data_only: True}
       - [0x701858] #identity matrix
       - [0x701898] #B8000000
@@ -11543,7 +11543,7 @@ segments:
       - [0x701ee0] #B8000000
       - [0x701ee8, palette, spiderRock.ci8]
       - {start: 0x7020E8, type: gfxSeg, name: spiderRock/spiderRock, data_only: True}
-    
+
       - [0x702388] #identity matrix
       - {start: 0x7023C8, type: gfxSeg, name: unkunk2, data_only: True}
 
@@ -11552,7 +11552,7 @@ segments:
       - [0x7024b8] #B8000000
       - [0x7024c0, rgba16, fish.rgba16, 48, 40]
       - {start: 0x7033C0, type: gfxSeg, name: fish/fish, data_only: True}
-    
+
       - [0x703518] #identity matrix
       - {start: 0x703558, type: gfxSeg, name: unkunk3, data_only: True}
 
@@ -11573,17 +11573,17 @@ segments:
       - [0x706bd4]
       - {start: 0x706bd8, type: animArray, name: anim/actors/golem/golemAttack, frames: 55, objects: 8, data_only: True}
       - [0x70d9d8, animPointers, anim/actors/golem/golemAttackPointers]
-      
+
       - {start: 0x70d9e4, type: animHeader, name: anim/actors/spiderRock/spiderRockInit, data_only: True}
       - [0x70DA14]
       - {start: 0x70DA18, type: animArray, name: anim/actors/spiderRock/spiderRockInit, frames: 1, objects: 1, data_only: True}
       - [0x70da58, animPointers, anim/actors/spiderRock/spiderRockInitPointers]
-      
+
       - {start: 0x70da64, type: animHeader, name: anim/actors/fish/fishHeadInit, data_only: True}
       - [0x70da94]
       - {start: 0x70da98, type: animArray, name: anim/actors/fish/fishHeadInit, frames: 1, objects: 1, data_only: True}
       - [0x70dad8, animPointers, anim/actors/fish/fishHeadInitPointers]
-      
+
       - {start: 0x70dae4, type: animHeader, name: anim/actors/fish/fishTailInit, data_only: True}
       - [0x70db14]
       - {start: 0x70db18, type: animArray, name: anim/actors/fish/fishTailInit, frames: 1, objects: 1, data_only: True}
@@ -11634,7 +11634,7 @@ segments:
       - [0x70ebc4, roomSettings, rooms/room0]
       - [0x70ec30, roomSettings, rooms/room1]
       - [0x70ec9c, roomSettings, rooms/roomSTOP]
-      
+
       - {start: 0x70ed08, type: levelMap, name: map, args: Map}
       - {start: 0x70ed38, type: levelMap, name: map, args: Header}
 
@@ -11773,56 +11773,56 @@ segments:
 
       - [0x71ee48] #identity matrix
       - {start: 0x71ee88, type: gfxSeg, name: a_model14/a_model14, data_only: True}
-      
+
       - {start: 0x71eea8, type: animHeader, name: anim/unk1Header, data_only: True}
       - {start: 0x71eed8, type: animArray, name: anim/unk1, frames: 80, objects: 11, data_only: True}
       - [0x72CAD8, animPointers, anim/unk1Pointers]
-      
+
       - {start: 0x72cae4, type: animHeader, name: anim/unk2Header, data_only: True}
       - [0x72cb14] #alignment
       - {start: 0x72cb18, type: animArray, name: anim/unk2, frames: 40, objects: 11, data_only: True}
       - [0x733918, animPointers, anim/unk2Pointers]
-      
+
       - {start: 0x733924, type: animHeader, name: anim/unk3Header, data_only: True}
       - [0x733954] #alignment
       - {start: 0x733958, type: animArray, name: anim/unk3, frames: 30, objects: 11, data_only: True}
       - [0x738BD8, animPointers, anim/unk3Pointers]
-      
+
       - {start: 0x738Be4, type: animHeader, name: anim/unk4Header, data_only: True}
       - [0x738c14] #alignment
       - {start: 0x738c18, type: animArray, name: anim/unk4, frames: 10, objects: 11, data_only: True}
       - [0x73A798, animPointers, anim/unk4Pointers]
-      
+
       - {start: 0x73A7a4, type: animHeader, name: anim/unk5Header, data_only: True}
       - [0x73A7d4] #alignment
       - {start: 0x73A7d8, type: animArray, name: anim/unk5, frames: 5, objects: 11, data_only: True}
       - [0x73B598, animPointers, anim/unk5Pointers]
-      
+
       - {start: 0x73B5a4, type: animHeader, name: anim/unk6Header, data_only: True}
       - [0x73B5d4] #alignment
       - {start: 0x73B5d8, type: animArray, name: anim/unk6, frames: 15, objects: 11, data_only: True}
       - [0x73DF18, animPointers, anim/unk6Pointers]
-      
+
       - {start: 0x73DF24, type: animHeader, name: anim/unk7Header, data_only: True}
       - [0x73DF54] #alignment
       - {start: 0x73DF58, type: animArray, name: anim/unk7, frames: 5, objects: 11, data_only: True}
       - [0x73ED18, animPointers, anim/unk7Pointers]
-      
+
       - {start: 0x73ED24, type: animHeader, name: anim/unk8Header, data_only: True}
       - [0x73ED54] #alignment
       - {start: 0x73ED58, type: animArray, name: anim/unk8, frames: 20, objects: 11, data_only: True}
       - [0x742458, animPointers, anim/unk8Pointers]
-      
+
       - {start: 0x742464, type: animHeader, name: anim/unk9Header, data_only: True}
       - [0x742494] #alignment
       - {start: 0x742498, type: animArray, name: anim/unk9, frames: 1, objects: 1, data_only: True}
       - [0x7424d8, animPointers, anim/unk9Pointers]
-      
+
       - {start: 0x7424e4, type: animHeader, name: anim/unk10Header, data_only: True}
       - [0x742514] #alignment
       - {start: 0x742518, type: animArray, name: anim/unk10, frames: 15, objects: 11, data_only: True}
       - [0x744E58, animPointers, anim/unk10Pointers]
-      
+
       - {start: 0x744E64, type: animHeader, name: anim/unk11Header, data_only: True}
       - [0x744E94] #alignment
       - {start: 0x744E98, type: animArray, name: anim/unk11, frames: 15, objects: 11, data_only: True}
@@ -12026,7 +12026,7 @@ segments:
 
       - [0x756770] #identity matrix
       - {start: 0x7567b0, type: gfxSeg, name: a_model18/a_model18, data_only: True}
-      
+
       - {start: 0x756850, type: animHeader, name: anim/unk1Header, data_only: True}
       - {start: 0x756880, type: animArray, name: anim/unk1, frames: 40, objects: 17, data_only: True}
 
@@ -12136,7 +12136,7 @@ segments:
       - [0x7a8f50] #B8000000
       - [0x7a8f58, i4, img/arenaFloor.i4, 64, 32]
       - {start: 0x7A9358, type: gfxSeg, name: arenaFloor/arenaFloor, data_only: True}
-      
+
       - {start: 0x7A9600, type: collision, name: arenaWalls/arenaWalls, args: "Verts", data_only: True}
       - {start: 0x7a96d8, type: collision, name: arenaWalls/arenaWalls, args: "Tris", data_only: True}
       - {start: 0x7a97f8, type: collision, name: arenaWalls/arenaWalls, args: "Settings", data_only: True}
@@ -12211,7 +12211,7 @@ segments:
 
       - [0x7af698] #identity matrix
       - {start: 0x7af6d8, type: gfxSeg, name: unk11/unk11, data_only: True}
-      
+
       - [0x7af6f8, animPointers, anim/unk1Pointers]
       - [0x7af704, animPointers, anim/unk2Pointers]
       - [0x7af710, animPointers, anim/unk3Pointers]
@@ -13301,11 +13301,11 @@ segments:
 
       - [0x84fcb0] #identity matrix
       - {start: 0x84fcf0, type: lights, name: battleScope/battleScope, data_only: True}
-      
+
       - {start: 0x84fd08, type: vtx, name: model1/model1, data_only: True}
       - [0x84ff08] #identity matrix
       - {start: 0x84ff48, type: gfxSeg, name: model1/model1, data_only: True}
-      
+
       - {start: 0x850390, type: vtx, name: model2/model2, data_only: True}
       - [0x850570] #identity matrix
       - [0x8505b0] #B8000000
@@ -13313,11 +13313,11 @@ segments:
       - [0x850Db8] #B8000000
       - [0x850DC0, palette, img/ice.ci4]
       - {start: 0x850FC0, type: gfxSeg, name: model2/model2, data_only: True}
-      
+
       - {start: 0x851408, type: vtx, name: model3/model3, data_only: True}
       - [0x851498] #identity matrix
       - {start: 0x8514d8, type: gfxSeg, name: model3/model3, data_only: True}
-      
+
       - {start: 0x851708, type: vtx, name: model4/model4, data_only: True}
       - [0x851c08] #identity matrix
       - [0x851c48] #B8000000
@@ -13325,31 +13325,31 @@ segments:
       - [0x852450] #B8000000
       - [0x852458, palette, img/rocks.ci4]
       - {start: 0x852658, type: gfxSeg, name: model4/model4, data_only: True}
-      
+
       - {start: 0x852ef0, type: vtx, name: model5/model5, data_only: True}
       - [0x852f30] #identity matrix
       - {start: 0x852f70, type: gfxSeg, name: model5/model5, data_only: True}
-      
+
       - {start: 0x853078, type: vtx, name: model6/model6, data_only: True}
       - [0x8534b8] #identity matrix
       - {start: 0x8534f8, type: gfxSeg, name: model6/model6, data_only: True}
-      
+
       - {start: 0x853d20, type: vtx, name: model7/model7, data_only: True}
       - [0x853dc0] #identity matrix
       - {start: 0x853e00, type: gfxSeg, name: model7/model7, data_only: True}
-      
+
       - {start: 0x854008, type: vtx, name: model8/model8, data_only: True}
       - [0x854088] #identity matrix
       - {start: 0x8540c8, type: gfxSeg, name: model8/model8, data_only: True}
-      
+
       - {start: 0x8542c0, type: vtx, name: model9/model9, data_only: True}
       - [0x854400] #identity matrix
       - {start: 0x854440, type: gfxSeg, name: model9/model9, data_only: True}
-      
+
       - {start: 0x854748, type: vtx, name: model10/model10, data_only: True}
       - [0x854888] #identity matrix
       - {start: 0x8548c8, type: gfxSeg, name: model10/model10, data_only: True}
-      
+
       - {start: 0x854bd0, type: vtx, name: model11/model11, data_only: True}
       - [0x854c10] #identity matrix
       - [0x854c50] #B8000000
@@ -13357,81 +13357,81 @@ segments:
       - [0x855458] #B8000000
       - [0x855460, palette, img/ice2.ci4]
       - {start: 0x855660, type: gfxSeg, name: model11/model11, data_only: True}
-      
+
       - {start: 0x855768, type: vtx, name: model12/model12, data_only: True}
       - [0x8557a8] #identity matrix
       - {start: 0x8557e8, type: gfxSeg, name: model12/model12, data_only: True}
-      
+
       - {start: 0x8558f0, type: vtx, name: model13/model13, data_only: True}
       - [0x855930] #identity matrix
       - {start: 0x855970, type: gfxSeg, name: model13/model13, data_only: True}
-      
+
       - {start: 0x855a78, type: vtx, name: model14/model14, data_only: True}
       - [0x855ab8] #identity matrix
       - [0x855af8] #B8000000
       - [0x855b00, rgba16,     img/ice2.rgba16, 32, 64]
       - {start: 0x856B00, type: gfxSeg, name: model14/model14, data_only: True}
-      
+
       - {start: 0x856bd8, type: vtx, name: model15/model15, data_only: True}
       - [0x856c18] #identity matrix
       - {start: 0x856c58, type: gfxSeg, name: model15/model15, data_only: True}
-      
+
       - {start: 0x856d60, type: vtx, name: model16/model16, data_only: True}
       - [0x856da0] #identity matrix
       - {start: 0x856de0, type: gfxSeg, name: model16/model16, data_only: True}
-      
+
       - {start: 0x856ee8, type: vtx, name: model17/model17, data_only: True}
       - [0x856f68] #identity matrix
       - {start: 0x856fa8, type: gfxSeg, name: model17/model17, data_only: True}
-      
+
       - {start: 0x8571a0, type: vtx, name: model18/model18, data_only: True}
       - [0x8571e0] #identity matrix
       - {start: 0x857220, type: gfxSeg, name: model18/model18, data_only: True}
-      
+
       - {start: 0x857328, type: vtx, name: model19/model19, data_only: True}
       - [0x8573a8] #identity matrix
       - {start: 0x8573e8, type: gfxSeg, name: model19/model19, data_only: True}
-      
+
       - {start: 0x8575e0, type: vtx, name: model20/model20, data_only: True}
       - [0x857720] #identity matrix
       - {start: 0x857760, type: gfxSeg, name: model20/model20, data_only: True}
-      
+
       - {start: 0x857b48, type: vtx, name: model21/model21, data_only: True}
       - [0x857c88] #identity matrix
       - {start: 0x857cc8, type: gfxSeg, name: model21/model21, data_only: True}
-      
+
       - {start: 0x8580b0, type: vtx, name: model22/model22, data_only: True}
       - [0x858140] #identity matrix
       - {start: 0x858180, type: gfxSeg, name: model22/model22, data_only: True}
-      
+
       - {start: 0x858380, type: vtx, name: model23/model23, data_only: True}
       - [0x858410] #identity matrix
       - {start: 0x858450, type: gfxSeg, name: model23/model23, data_only: True}
-      
+
       - {start: 0x858650, type: vtx, name: model24/model24, data_only: True}
       - [0x858690] #identity matrix
       - {start: 0x8586d0, type: gfxSeg, name: model24/model24, data_only: True}
-      
+
       - {start: 0x8587d8, type: vtx, name: model25/model25, data_only: True}
       - [0x858818] #identity matrix
       - {start: 0x858858, type: gfxSeg, name: model25/model25, data_only: True}
-      
+
       - {start: 0x858960, type: vtx, name: model26/model26, data_only: True}
       - [0x8589e0] #identity matrix
       - {start: 0x858a20, type: gfxSeg, name: model26/model26, data_only: True}
-      
+
       - {start: 0x858ac8, type: vtx, name: model27/model27, data_only: True}
       - [0x858b48] #identity matrix
       - {start: 0x858b88, type: gfxSeg, name: model27/model27, data_only: True}
-      
+
       - {start: 0x858c30, type: vtx, name: model28/model28, data_only: True}
       - [0x858cb0] #identity matrix
       - {start: 0x858cf0, type: gfxSeg, name: model28/model28, data_only: True}
-      
+
       - {start: 0x858d98, type: vtx, name: model29/model29, data_only: True}
       - [0x858e18] #identity matrix
       - {start: 0x858e58, type: gfxSeg, name: model29/model29, data_only: True}
-      
+
       - {start: 0x858f00, type: vtx, name: model30/model30, data_only: True}
       - [0x858f80] #identity matrix
       - {start: 0x858fc0, type: gfxSeg, name: model30/model30, data_only: True}
@@ -13559,7 +13559,7 @@ segments:
 
       - [0x85ae20] #identity matrix
       - {start: 0x85ae60, type: lights, name: battleScope2/battleScope2, data_only: True}
-      
+
       - {start: 0x85ae78, type: vtx, name: a_model1/a_model1, data_only: True}
       - [0x85b538] #identity matrix
       - [0x85b578] #B8000000
@@ -13774,7 +13774,7 @@ segments:
       - [0x862384, roomObject, roomObjects/room6_objSTOP]
 
       - [0x862410, spriteLib, spriteLib]
-      
+
       - [0x862490, roomSettings, rooms/room0]
       - [0x8624fc, roomSettings, rooms/room1]
       - [0x862568, roomSettings, rooms/room2]
@@ -13792,7 +13792,7 @@ segments:
 
       - [0x8628e0] #identity matrix
       - {start: 0x862920, type: lights, name: trainingScope1/trainingScope1, data_only: True}
-      
+
       - {start: 0x862938, type: vtx, name: model1/model1, data_only: True}
       - [0x864798] #identity matrix
       - [0x8647d8] #B8000000
@@ -13808,39 +13808,39 @@ segments:
       - [0x866780] #B8000000
       - [0x866788, i4,     img/one.i4, 48, 48]
       - {start: 0x866C08, type: gfxSeg, name: model1/model1, data_only: True}
-      
+
       - {start: 0x8684d8, type: vtx, name: model2/model2, data_only: True}
       - [0x868a18] #identity matrix
       - {start: 0x868a58, type: gfxSeg, name: model2/model2, data_only: True}
-      
+
       - {start: 0x869530, type: vtx, name: model3/model3, data_only: True}
       - [0x869ec0] #identity matrix
       - {start: 0x869f00, type: gfxSeg, name: model3/model3, data_only: True}
-      
+
       - {start: 0x86aa98, type: vtx, name: model4/model4, data_only: True}
       - [0x86b198] #identity matrix
       - {start: 0x86b1d8, type: gfxSeg, name: model4/model4, data_only: True}
-      
+
       - {start: 0x86bf38, type: vtx, name: model5/model5, data_only: True}
       - [0x86c278] #identity matrix
       - {start: 0x86c2b8, type: gfxSeg, name: model5/model5, data_only: True}
-      
+
       - {start: 0x86cae0, type: vtx, name: model6/model6, data_only: True}
       - [0x86d2a0] #identity matrix
       - {start: 0x86d2e0, type: gfxSeg, name: model6/model6, data_only: True}
-      
+
       - {start: 0x86dc98, type: vtx, name: model7/model7, data_only: True}
       - [0x86de18] #identity matrix
       - {start: 0x86de58, type: gfxSeg, name: model7/model7, data_only: True}
-      
+
       - {start: 0x86e230, type: vtx, name: model8/model8, data_only: True}
       - [0x86e470] #identity matrix
       - {start: 0x86e4b0, type: gfxSeg, name: model8/model8, data_only: True}
-      
+
       - {start: 0x86ec58, type: vtx, name: model9/model9, data_only: True}
       - [0x86ee58] #identity matrix
       - {start: 0x86ee98, type: gfxSeg, name: model9/model9, data_only: True}
-      
+
       - {start: 0x86f200, type: vtx, name: model10/model10, data_only: True}
       - [0x86f480] #identity matrix
       - [0x86f4c0] #B8000000
@@ -13848,53 +13848,53 @@ segments:
       - [0x86FCc8] #B8000000
       - [0x86FCD0, palette, img/metal.ci4]
       - {start: 0x86FeD0, type: gfxSeg, name: model10/model10, data_only: True}
-      
+
       - {start: 0x8703f8, type: vtx, name: model11/model11, data_only: True}
       - [0x870658] #identity matrix
       - [0x870698] #B8000000
       - [0x8706a0, i4,     img/grate.i4, 64, 64]
       - {start: 0x870EA0, type: gfxSeg, name: model11/model11, data_only: True}
-      
+
       - {start: 0x871478, type: vtx, name: model12/model12, data_only: True}
       - [0x8716f8] #identity matrix
       - {start: 0x871738, type: gfxSeg, name: model12/model12, data_only: True}
-      
+
       - {start: 0x871a60, type: vtx, name: model13/model13, data_only: True}
       - [0x871bf0] #identity matrix
       - {start: 0x871c30, type: gfxSeg, name: model13/model13, data_only: True}
-      
+
       - {start: 0x872080, type: vtx, name: model14/model14, data_only: True}
       - [0x8721c0] #identity matrix
       - {start: 0x872200, type: gfxSeg, name: model14/model14, data_only: True}
-      
+
       - {start: 0x8725e8, type: vtx, name: model15/model15, data_only: True}
       - [0x872828] #identity matrix
       - {start: 0x872868, type: gfxSeg, name: model15/model15, data_only: True}
-      
+
       - {start: 0x872f30, type: vtx, name: model16/model16, data_only: True}
       - [0x873070] #identity matrix
       - {start: 0x8730b0, type: gfxSeg, name: model16/model16, data_only: True}
-      
+
       - {start: 0x873388, type: vtx, name: model17/model17, data_only: True}
       - [0x873588] #identity matrix
       - {start: 0x8735c8, type: gfxSeg, name: model17/model17, data_only: True}
-      
+
       - {start: 0x873910, type: vtx, name: model18/model18, data_only: True}
       - [0x873a50] #identity matrix
       - {start: 0x873a90, type: gfxSeg, name: model18/model18, data_only: True}
-      
+
       - {start: 0x873bb0, type: vtx, name: model19/model19, data_only: True}
       - [0x873c50] #identity matrix
       - {start: 0x873c90, type: gfxSeg, name: model19/model19, data_only: True}
-      
+
       - {start: 0x873e88, type: vtx, name: model20/model20, data_only: True}
       - [0x873f28] #identity matrix
       - {start: 0x873f68, type: gfxSeg, name: model20/model20, data_only: True}
-      
+
       - {start: 0x874160, type: vtx, name: model21/model21, data_only: True}
       - [0x874200] #identity matrix
       - {start: 0x874240, type: gfxSeg, name: model21/model21, data_only: True}
-      
+
       - {start: 0x874438, type: vtx, name: model22/model22, data_only: True}
       - [0x8744d8] #identity matrix
       - {start: 0x874518, type: gfxSeg, name: model22/model22, data_only: True}
@@ -14009,7 +14009,7 @@ segments:
       - [0x8788B0] #identity matrix
       - [0x8788f0, levelPointer, pointers]
       - [0x8791c0, databin, rabObjects]
-      
+
       - [0x8791e8, roomObject, roomObjects/room0_obj1]
       - [0x879274, roomObject, roomObjects/room0_obj2]
       - [0x879300, roomObject, roomObjects/room0_obj3]
@@ -14077,7 +14077,7 @@ segments:
       - [0x87b114, roomObject, roomObjects/roomMulti3_obj2]
       - [0x87b1a0, roomObject, roomObjects/roomMulti3_obj3]
       - [0x87b22c, roomObject, roomObjects/roomMulti3_objSTOP]
-      
+
       - [0x87b2b8, roomObject, roomObjects/roomMulti4_obj1]
       - [0x87b344, roomObject, roomObjects/roomMulti4_obj2]
       - [0x87b3d0, roomObject, roomObjects/roomMulti4_obj3]
@@ -14103,39 +14103,39 @@ segments:
 
       - [0x87bac0] #identity matrix
       - {start: 0x87bb00, type: lights, name: bossScope1/bossScope1, data_only: True}
-      
+
       - {start: 0x87bb18, type: vtx, name: model1/model1, data_only: True}
       - [0x87c158] #identity matrix
       - {start: 0x87c198, type: gfxSeg, name: model1/model1, data_only: True}
-      
+
       - {start: 0x87c930, type: vtx, name: model2/model2, data_only: True}
       - [0x87ca70] #identity matrix
       - {start: 0x87cab0, type: gfxSeg, name: model2/model2, data_only: True}
-      
+
       - {start: 0x87ceb8, type: vtx, name: model3/model3, data_only: True}
       - [0x87cfb8] #identity matrix
       - {start: 0x87cff8, type: gfxSeg, name: model3/model3, data_only: True}
-      
+
       - {start: 0x87d0e0, type: vtx, name: model4/model4, data_only: True}
       - [0x87d1e0] #identity matrix
       - {start: 0x87d220, type: gfxSeg, name: model4/model4, data_only: True}
-      
+
       - {start: 0x87d308, type: vtx, name: model5/model5, data_only: True}
       - [0x87d3c8] #identity matrix
       - {start: 0x87d408, type: gfxSeg, name: model5/model5, data_only: True}
-      
+
       - {start: 0x87d5e0, type: vtx, name: model6/model6, data_only: True}
       - [0x87d740] #identity matrix
       - {start: 0x87d780, type: gfxSeg, name: model6/model6, data_only: True}
-      
+
       - {start: 0x87dab8, type: vtx, name: model7/model7, data_only: True}
       - [0x87ddb8] #identity matrix
       - {start: 0x87ddf8, type: gfxSeg, name: model7/model7, data_only: True}
-      
+
       - {start: 0x87e1d0, type: vtx, name: model8/model8, data_only: True}
       - [0x87e350] #identity matrix
       - {start: 0x87e390, type: gfxSeg, name: model8/model8, data_only: True}
-      
+
       - {start: 0x87e5a8, type: vtx, name: model9/model9, data_only: True}
       - [0x87e648] #identity matrix
       - {start: 0x87e688, type: gfxSeg, name: model9/model9, data_only: True}
@@ -14246,12 +14246,12 @@ segments:
       - {start: 0x8863b4, type: collision, name: unk1/unk1, args: "Tris", data_only: True}
       - {start: 0x886444, type: collision, name: unk1/unk1, args: "Settings", data_only: True}
       - {start: 0x88645c, type: collision, name: unk1/unk1, args: "Header", data_only: True}
-      
+
       - {start: 0x886470, type: collision, name: unk2/unk2, args: "Verts", data_only: True}
       - {start: 0x8864d0, type: collision, name: unk2/unk2, args: "Tris", data_only: True}
       - {start: 0x886560, type: collision, name: unk2/unk2, args: "Settings", data_only: True}
       - {start: 0x886578, type: collision, name: unk2/unk2, args: "Header", data_only: True}
-      
+
       - [0x88658c, databin, what] #??????? file padding if it fucking sucked
       - [0x8865b8] #B8000000
 
@@ -14491,7 +14491,7 @@ segments:
 
       - [0x89c970, rgba16, img/chain1.rgba16, 32, 32]
       - [0x89D170] #B8000000
-      
+
       - [0x89D178, ci4, img/DCSmallTiles.ci4, 32, 32]
       - [0x89d378] #B8000000
       - [0x89d380, palette, img/DCSmallTiles.ci4]
@@ -14821,7 +14821,7 @@ segments:
       - {start: 0x8b6cd0, type: collision, name: ALPole/ALPole, args: "Settings", data_only: True}
       - {start: 0x8b6ce8, type: collision, name: ALPole/ALPole, args: "Header", data_only: True}
       - [0x8b6cfc]
-    
+
       - {start: 0x8b6d00, type: vtx, name: ALBLDoor/ALBLDoor, data_only: True}
       - [0x8b6e00] #identity matrix
       - [0x8b6e40] #B8000000
@@ -14854,7 +14854,7 @@ segments:
       - {start: 0x8b7d18, type: collision, name: BLLavaFloor/BLLavaFloor, args: "Settings", data_only: True}
       - {start: 0x8b7d30, type: collision, name: BLLavaFloor/BLLavaFloor, args: "Header", data_only: True}
       - [0x8b7d44]
-      
+
       - {start: 0x8b7d48, type: vtx, name: BLLava/BLLava, data_only: True}
       - [0x8b7d88] #identity matrix
       - [0x8b7dC8] #B8000000
@@ -15469,10 +15469,10 @@ segments:
       - [0x8e33b0] #B8000000
 
       - [0x8e33b8, ia4, blackBall.ia4, 32, 32]
-      
+
       - [0x8E35B8, ci8, fern.ci8, 48, 40]
       - [0x8E3D38, palette, fern.ci8]
-      
+
       - [0x8e3f38, ci8, tree.ci8, 40, 48]
       - [0x8E46B8, palette, tree.ci8]
       - [0x8e48b8] #B8000000
@@ -15533,22 +15533,22 @@ segments:
 
       - [0x91e6f8, ci8, missile.ci8, 80, 240]
       - [0x9231f8, palette, missile.ci8]
-      
+
       - [0x9233f8, ci8, bomb.ci8, 120, 40]
       - [0x9246b8, palette, bomb.ci8]
       - [0x9248b8] #B8000000
 
       - [0x9248c0, rgba16, bombSnakeEyes.rgba16, 64, 32]
       - [0x9258c0] #B8000000
-      
+
       - [0x9258c8, rgba16, bombSnakePart.rgba16, 40, 40]
       - [0x926548] #B8000000
 
       - [0x926550, rgba16, balloonUnused.rgba16, 80, 40]
-      
+
       - [0x927E50, ci8, iceCreamSandwich.ci8, 160, 40]
       - [0x929750, palette, iceCreamSandwich.ci8]
-      
+
       - [0x929950, ci8, chocoKid.ci8, 320, 120]
       - [0x932f50, palette, chocoKid.ci8]
 
@@ -15560,7 +15560,7 @@ segments:
 
       - [0x93d190, ci8, sandCrabOut.ci8, 80, 240]
       - [0x941c90, palette, sandCrabOut.ci8]
-      
+
       - [0x941E90, ci8, condor.ci8, 240, 40]
       - [0x944410, palette, condor.ci8]
 
@@ -15620,7 +15620,7 @@ segments:
       - [0x9A3E60] #B8000000
       - [0x9A3E68, palette, DCBG4.ci8]
       - [0x9A4068] #B8000000
-      
+
       - [0x9A4070, ci8, DCBG5.ci8, 64, 256]
       - [0x9A8070] #B8000000
       - [0x9A8078, palette, DCBG5.ci8]
@@ -15734,7 +15734,7 @@ segments:
       - [0x9d03a8] #B8000000
       - [0x9d03b0, palette, GhostCastleIcon.ci8]
       - [0x9D05B0] #B8000000
-      
+
       - [0x9D05B8, ci8, BossRushIcon.ci8, 32, 32]
       - [0x9d09b8] #B8000000
       - [0x9d09c0, palette, BossRushIcon.ci8]
@@ -15798,7 +15798,7 @@ segments:
 
       - [0x9e13f8, ia8, arrow1.ia8, 8, 16]
       - [0x9e1478] #B8000000
-      
+
       - [0x9e1480, ci8, davyIcon.ci8, 16, 16]
       - [0x9E1580] #B8000000
       - [0x9E1588, palette, davyIcon.ci8]
@@ -15881,7 +15881,7 @@ segments:
       - [0xA39B10] #B8000000
       - [0xA39B18, palette, GhostCastleText2.ci8]
       - [0xa39d18] #B8000000
-      
+
       - [0xa39d20, ci8, quintellaDeadEye.ci8, 32, 32]
       - [0xA3A120] #B8000000
       - [0xA3A128, palette, quintellaDeadEye.ci8]
@@ -15904,7 +15904,7 @@ segments:
       - [0xA4F258] #B8000000
       - [0xA4F260, palette, battleRanking.ci8]
       - [0xa4f460] #B8000000
-      
+
       - [0xA4F468, ci8, QuestionMark.ci8, 112, 24] # "....?" image from file select
       - [0xA4FEE8] #B8000000
       - [0xA4FEF0, palette, QuestionMark.ci8]
@@ -16115,7 +16115,7 @@ segments:
       - [0xACBD7C, animPointers, unk2/unk2Pointers]
       - [0xacbd88]
 
-      
+
   - start: 0xACBD90
     name: Battle_Chameleons # 青, match
     vram: 0x07000000 #SEGMENT 0x07
@@ -16248,7 +16248,7 @@ segments:
 
       - [0xAD2760, mtx, Davy/restAssociate/Davy_restAssociate]
       - {start: 0xAD27A0, type: gfxSeg, name: Davy/restAssociate/Davy_restAssociate, data_only: True}
-      
+
       #JACK
       - {start: 0xAD2820, type: vtx, name: Jack/body/Jack_body, data_only: True}
       - [0xad2960] #identity matrix
@@ -16479,7 +16479,7 @@ segments:
       - [0xae03d0, mtx, Fred/restAssociate/Fred_restAssociate]
       - {start: 0xae0410, type: gfxSeg, name: Fred/restAssociate/Fred_restAssociate, data_only: True}
 
-      
+
 
       #LINDA
       - {start: 0xAE0490, type: vtx, name: Linda/body/Linda_body, data_only: True}
@@ -17002,7 +17002,7 @@ segments:
       - {start: 0xb047c0, type: vtx, name: Lfist/Lfist, data_only: True}
       - [0xb04a70] #identity matrix
       - {start: 0xb04ab0, type: gfxSeg, name: Lfist/Lfist, data_only: True}
-      
+
       - [0xb051c8, mtx, restAssociate/restAssociate]
       - {start: 0xb05208, type: gfxSeg, name: restAssociate/restAssociate, data_only: True}
 
@@ -17141,7 +17141,7 @@ segments:
       - {start: 0xB0D3E0, type: vtx, name: Lfist/Lfist, data_only: True}
       - [0xB0D690] #identity matrix
       - {start: 0xB0D6D0, type: gfxSeg, name: Lfist/Lfist, data_only: True}
-      
+
       - [0xB0DDE8, mtx, restAssociate/restAssociate]
       - {start: 0xB0DE28, type: gfxSeg, name: restAssociate/restAssociate, data_only: True}
 
@@ -17280,7 +17280,7 @@ segments:
       - {start: 0xB15FC0, type: vtx, name: Lfist/Lfist, data_only: True}
       - [0xB16270] #identity matrix
       - {start: 0xB162B0, type: gfxSeg, name: Lfist/Lfist, data_only: True}
-      
+
       - [0xB169C8, mtx, restAssociate/restAssociate]
       - {start: 0xB16A08, type: gfxSeg, name: restAssociate/restAssociate, data_only: True}
 
@@ -17423,7 +17423,7 @@ segments:
       - {start: 0xB1F330, type: vtx, name: Lfist/Lfist, data_only: True}
       - [0xB1F5E0] #identity matrix
       - {start: 0xB1F620, type: gfxSeg, name: Lfist/Lfist, data_only: True}
-      
+
       - [0xB1FD38, mtx, restAssociate/restAssociate]
       - {start: 0xB1FD78, type: gfxSeg, name: restAssociate/restAssociate, data_only: True}
 
@@ -17562,7 +17562,7 @@ segments:
       - {start: 0xB27F20, type: vtx, name: Lfist/Lfist, data_only: True}
       - [0xB281D0] #identity matrix
       - {start: 0xB28210, type: gfxSeg, name: Lfist/Lfist, data_only: True}
-      
+
       - [0xB28928, mtx, restAssociate/restAssociate]
       - {start: 0xB28968, type: gfxSeg, name: restAssociate/restAssociate, data_only: True}
 
@@ -17701,7 +17701,7 @@ segments:
       - {start: 0xB30B00, type: vtx, name: Lfist/Lfist, data_only: True}
       - [0xB30DB0] #identity matrix
       - {start: 0xB30DF0, type: gfxSeg, name: Lfist/Lfist, data_only: True}
-      
+
       - [0xB31508, mtx, restAssociate/restAssociate]
       - {start: 0xB31548, type: gfxSeg, name: restAssociate/restAssociate, data_only: True}
 

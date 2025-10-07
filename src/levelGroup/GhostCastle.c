@@ -1161,8 +1161,8 @@ Collectable GhostCastle_room18_collectables[] = {
     { ACTOR_NULL,          {0.0,0.0,0.0}, 4294967295, 0, 0, 0}
 };
 
-s32 GhostCastle_spriteLib_Bin[] = {
-    47,
+s32 GhostCastle_spriteLib_Bin[9][16] = {
+{   47,
     52,
     53,
     186,
@@ -1177,8 +1177,8 @@ s32 GhostCastle_spriteLib_Bin[] = {
     0,
     0,
     0,
-    0,
-    47,
+    0},
+{   47,
     48,
     49,
     55,
@@ -1193,8 +1193,8 @@ s32 GhostCastle_spriteLib_Bin[] = {
     0,
     0,
     0,
-    0,
-    186,
+    0},
+{   186,
     47,
     0,
     0,
@@ -1209,8 +1209,8 @@ s32 GhostCastle_spriteLib_Bin[] = {
     0,
     0,
     0,
-    0,
-    47,
+    0},
+{   47,
     55,
     0,
     0,
@@ -1225,8 +1225,8 @@ s32 GhostCastle_spriteLib_Bin[] = {
     0,
     0,
     0,
-    0,
-    50,
+    0},
+{   50,
     51,
     47,
     0,
@@ -1241,8 +1241,8 @@ s32 GhostCastle_spriteLib_Bin[] = {
     0,
     0,
     0,
-    0,
-    47,
+    0},
+{   47,
     69,
     0,
     0,
@@ -1257,8 +1257,8 @@ s32 GhostCastle_spriteLib_Bin[] = {
     0,
     0,
     0,
-    0,
-    186,
+    0},
+{   186,
     47,
     23,
     0,
@@ -1273,8 +1273,8 @@ s32 GhostCastle_spriteLib_Bin[] = {
     0,
     0,
     0,
-    0,
-    186,
+    0},
+{   186,
     47,
     27,
     0,
@@ -1289,6 +1289,8 @@ s32 GhostCastle_spriteLib_Bin[] = {
     0,
     0,
     0,
+    0},
+{   0,
     0,
     0,
     0,
@@ -1303,9 +1305,7 @@ s32 GhostCastle_spriteLib_Bin[] = {
     0,
     0,
     0,
-    0,
-    0,
-    0,
+    0},
 };
 
 
@@ -1347,7 +1347,7 @@ s32 GhostCastle_rooms_map[10][7] = {
 };
 
 StageMapData GhostCastle_map_data = {
-7, 10, GhostCastle_room_instances, GhostCastle_rooms_map, 
+    7, 10, GhostCastle_room_instances, GhostCastle_rooms_map,
 };
 
 SpriteActor GhostCastle_roomUnk2_sprites[] = {
@@ -1380,7 +1380,7 @@ StageData GhostCastle_header_Lvlhdr = {
 };
 Mtx GhostCastle_IMtx2 = IDENTITY;
 
-Lights1 GhostCastle_gcScope_Light = 
+Lights1 GhostCastle_gcScope_Light =
     #include "assets/levelGroup/GhostCastle/gcScope/gcScope.light.inc.c"
 
 Vtx GhostCastle_model1_Vtx[] = {
@@ -2353,7 +2353,7 @@ Rect3D GhostCastle_unkCol1_ColS = {
 };
 
 ModelCollision GhostCastle_unkCol1_ColH = {
-48, 80, &GhostCastle_unkCol1_ColV[0], &GhostCastle_unkCol1_ColT[0], &GhostCastle_unkCol1_ColS
+48, 80, GhostCastle_unkCol1_ColV, GhostCastle_unkCol1_ColT, &GhostCastle_unkCol1_ColS
 };
 
 Vec3f GhostCastle_unkCol2_ColV[] = {
@@ -2369,7 +2369,7 @@ Rect3D GhostCastle_unkCol2_ColS = {
 };
 
 ModelCollision GhostCastle_unkCol2_ColH = {
-8, 10, &GhostCastle_unkCol2_ColV[0], &GhostCastle_unkCol2_ColT[0], &GhostCastle_unkCol2_ColS
+8, 10, GhostCastle_unkCol2_ColV, GhostCastle_unkCol2_ColT, &GhostCastle_unkCol2_ColS
 };
 
 Vec3f GhostCastle_unkCol3_ColV[] = {
@@ -2385,7 +2385,7 @@ Rect3D GhostCastle_unkCol3_ColS = {
 };
 
 ModelCollision GhostCastle_unkCol3_ColH = {
-60, 58, &GhostCastle_unkCol3_ColV[0], &GhostCastle_unkCol3_ColT[0], &GhostCastle_unkCol3_ColS
+60, 58, GhostCastle_unkCol3_ColV, GhostCastle_unkCol3_ColT, &GhostCastle_unkCol3_ColS
 };
 
 Vec3f GhostCastle_unkCol4_ColV[] = {
@@ -2401,7 +2401,7 @@ Rect3D GhostCastle_unkCol4_ColS = {
 };
 
 ModelCollision GhostCastle_unkCol4_ColH = {
-56, 67, &GhostCastle_unkCol4_ColV[0], &GhostCastle_unkCol4_ColT[0], &GhostCastle_unkCol4_ColS
+56, 67, GhostCastle_unkCol4_ColV, GhostCastle_unkCol4_ColT, &GhostCastle_unkCol4_ColS
 };
 
 Vec3f GhostCastle_unkCol5_ColV[] = {
@@ -2417,7 +2417,7 @@ Rect3D GhostCastle_unkCol5_ColS = {
 };
 
 ModelCollision GhostCastle_unkCol5_ColH = {
-26, 27, &GhostCastle_unkCol5_ColV[0], &GhostCastle_unkCol5_ColT[0], &GhostCastle_unkCol5_ColS
+26, 27, GhostCastle_unkCol5_ColV, GhostCastle_unkCol5_ColT, &GhostCastle_unkCol5_ColS
 };
 
 Vec3f GhostCastle_unkCol6_ColV[] = {
@@ -2433,7 +2433,7 @@ Rect3D GhostCastle_unkCol6_ColS = {
 };
 
 ModelCollision GhostCastle_unkCol6_ColH = {
-28, 36, &GhostCastle_unkCol6_ColV[0], &GhostCastle_unkCol6_ColT[0], &GhostCastle_unkCol6_ColS
+28, 36, GhostCastle_unkCol6_ColV, GhostCastle_unkCol6_ColT, &GhostCastle_unkCol6_ColS
 };
 
 Vec3f GhostCastle_unkCol7_ColV[] = {
@@ -2449,7 +2449,7 @@ Rect3D GhostCastle_unkCol7_ColS = {
 };
 
 ModelCollision GhostCastle_unkCol7_ColH = {
-24, 30, &GhostCastle_unkCol7_ColV[0], &GhostCastle_unkCol7_ColT[0], &GhostCastle_unkCol7_ColS
+24, 30, GhostCastle_unkCol7_ColV, GhostCastle_unkCol7_ColT, &GhostCastle_unkCol7_ColS
 };
 
 Vec3f GhostCastle_unkCol8_ColV[] = {
@@ -2465,7 +2465,7 @@ Rect3D GhostCastle_unkCol8_ColS = {
 };
 
 ModelCollision GhostCastle_unkCol8_ColH = {
-14, 12, &GhostCastle_unkCol8_ColV[0], &GhostCastle_unkCol8_ColT[0], &GhostCastle_unkCol8_ColS
+14, 12, GhostCastle_unkCol8_ColV, GhostCastle_unkCol8_ColT, &GhostCastle_unkCol8_ColS
 };
 
 Vec3f GhostCastle_unkCol9_ColV[] = {
@@ -2481,7 +2481,7 @@ Rect3D GhostCastle_unkCol9_ColS = {
 };
 
 ModelCollision GhostCastle_unkCol9_ColH = {
-12, 10, &GhostCastle_unkCol9_ColV[0], &GhostCastle_unkCol9_ColT[0], &GhostCastle_unkCol9_ColS
+12, 10, GhostCastle_unkCol9_ColV, GhostCastle_unkCol9_ColT, &GhostCastle_unkCol9_ColS
 };
 
 Vec3f GhostCastle_unkCol10_ColV[] = {
@@ -2497,7 +2497,7 @@ Rect3D GhostCastle_unkCol10_ColS = {
 };
 
 ModelCollision GhostCastle_unkCol10_ColH = {
-14, 12, &GhostCastle_unkCol10_ColV[0], &GhostCastle_unkCol10_ColT[0], &GhostCastle_unkCol10_ColS
+14, 12, GhostCastle_unkCol10_ColV, GhostCastle_unkCol10_ColT, &GhostCastle_unkCol10_ColS
 };
 
 Vec3f GhostCastle_unkCol11_ColV[] = {
@@ -2513,7 +2513,7 @@ Rect3D GhostCastle_unkCol11_ColS = {
 };
 
 ModelCollision GhostCastle_unkCol11_ColH = {
-12, 10, &GhostCastle_unkCol11_ColV[0], &GhostCastle_unkCol11_ColT[0], &GhostCastle_unkCol11_ColS
+12, 10, GhostCastle_unkCol11_ColV, GhostCastle_unkCol11_ColT, &GhostCastle_unkCol11_ColS
 };
 
 Vec3f GhostCastle_unkCol12_ColV[] = {
@@ -2529,7 +2529,7 @@ Rect3D GhostCastle_unkCol12_ColS = {
 };
 
 ModelCollision GhostCastle_unkCol12_ColH = {
-14, 16, &GhostCastle_unkCol12_ColV[0], &GhostCastle_unkCol12_ColT[0], &GhostCastle_unkCol12_ColS
+14, 16, GhostCastle_unkCol12_ColV, GhostCastle_unkCol12_ColT, &GhostCastle_unkCol12_ColS
 };
 
 Vec3f GhostCastle_unkCol13_ColV[] = {
@@ -2545,7 +2545,7 @@ Rect3D GhostCastle_unkCol13_ColS = {
 };
 
 ModelCollision GhostCastle_unkCol13_ColH = {
-26, 26, &GhostCastle_unkCol13_ColV[0], &GhostCastle_unkCol13_ColT[0], &GhostCastle_unkCol13_ColS
+26, 26, GhostCastle_unkCol13_ColV, GhostCastle_unkCol13_ColT, &GhostCastle_unkCol13_ColS
 };
 
 Vec3f GhostCastle_unkCol14_ColV[] = {
@@ -2561,7 +2561,7 @@ Rect3D GhostCastle_unkCol14_ColS = {
 };
 
 ModelCollision GhostCastle_unkCol14_ColH = {
-16, 18, &GhostCastle_unkCol14_ColV[0], &GhostCastle_unkCol14_ColT[0], &GhostCastle_unkCol14_ColS
+16, 18, GhostCastle_unkCol14_ColV, GhostCastle_unkCol14_ColT, &GhostCastle_unkCol14_ColS
 };
 
 Vec3f GhostCastle_unkCol15_ColV[] = {
@@ -2577,7 +2577,7 @@ Rect3D GhostCastle_unkCol15_ColS = {
 };
 
 ModelCollision GhostCastle_unkCol15_ColH = {
-26, 26, &GhostCastle_unkCol15_ColV[0], &GhostCastle_unkCol15_ColT[0], &GhostCastle_unkCol15_ColS
+26, 26, GhostCastle_unkCol15_ColV, GhostCastle_unkCol15_ColT, &GhostCastle_unkCol15_ColS
 };
 
 Vec3f GhostCastle_unkCol16_ColV[] = {
@@ -2593,7 +2593,7 @@ Rect3D GhostCastle_unkCol16_ColS = {
 };
 
 ModelCollision GhostCastle_unkCol16_ColH = {
-20, 28, &GhostCastle_unkCol16_ColV[0], &GhostCastle_unkCol16_ColT[0], &GhostCastle_unkCol16_ColS
+20, 28, GhostCastle_unkCol16_ColV, GhostCastle_unkCol16_ColT, &GhostCastle_unkCol16_ColS
 };
 
 Vec3f GhostCastle_unkCol17_ColV[] = {
@@ -2609,7 +2609,7 @@ Rect3D GhostCastle_unkCol17_ColS = {
 };
 
 ModelCollision GhostCastle_unkCol17_ColH = {
-16, 25, &GhostCastle_unkCol17_ColV[0], &GhostCastle_unkCol17_ColT[0], &GhostCastle_unkCol17_ColS
+16, 25, GhostCastle_unkCol17_ColV, GhostCastle_unkCol17_ColT, &GhostCastle_unkCol17_ColS
 };
 
 Vec3f GhostCastle_unkCol18_ColV[] = {
@@ -2625,7 +2625,7 @@ Rect3D GhostCastle_unkCol18_ColS = {
 };
 
 ModelCollision GhostCastle_unkCol18_ColH = {
-8, 6, &GhostCastle_unkCol18_ColV[0], &GhostCastle_unkCol18_ColT[0], &GhostCastle_unkCol18_ColS
+8, 6, GhostCastle_unkCol18_ColV, GhostCastle_unkCol18_ColT, &GhostCastle_unkCol18_ColS
 };
 
 Vec3f GhostCastle_unkCol19_ColV[] = {
@@ -2641,7 +2641,7 @@ Rect3D GhostCastle_unkCol19_ColS = {
 };
 
 ModelCollision GhostCastle_unkCol19_ColH = {
-6, 4, &GhostCastle_unkCol19_ColV[0], &GhostCastle_unkCol19_ColT[0], &GhostCastle_unkCol19_ColS
+6, 4, GhostCastle_unkCol19_ColV, GhostCastle_unkCol19_ColT, &GhostCastle_unkCol19_ColS
 };
 
 Vec3f GhostCastle_unkCol20_ColV[] = {
@@ -2657,7 +2657,7 @@ Rect3D GhostCastle_unkCol20_ColS = {
 };
 
 ModelCollision GhostCastle_unkCol20_ColH = {
-8, 10, &GhostCastle_unkCol20_ColV[0], &GhostCastle_unkCol20_ColT[0], &GhostCastle_unkCol20_ColS
+8, 10, GhostCastle_unkCol20_ColV, GhostCastle_unkCol20_ColT, &GhostCastle_unkCol20_ColS
 };
 
 Vec3f GhostCastle_unkCol21_ColV[] = {
@@ -2673,7 +2673,7 @@ Rect3D GhostCastle_unkCol21_ColS = {
 };
 
 ModelCollision GhostCastle_unkCol21_ColH = {
-40, 62, &GhostCastle_unkCol21_ColV[0], &GhostCastle_unkCol21_ColT[0], &GhostCastle_unkCol21_ColS
+40, 62, GhostCastle_unkCol21_ColV, GhostCastle_unkCol21_ColT, &GhostCastle_unkCol21_ColS
 };
 
 Vec3f GhostCastle_unkCol22_ColV[] = {
@@ -2689,7 +2689,7 @@ Rect3D GhostCastle_unkCol22_ColS = {
 };
 
 ModelCollision GhostCastle_unkCol22_ColH = {
-8, 10, &GhostCastle_unkCol22_ColV[0], &GhostCastle_unkCol22_ColT[0], &GhostCastle_unkCol22_ColS
+8, 10, GhostCastle_unkCol22_ColV, GhostCastle_unkCol22_ColT, &GhostCastle_unkCol22_ColS
 };
 
 Vec3f GhostCastle_unkCol23_ColV[] = {
@@ -2705,7 +2705,7 @@ Rect3D GhostCastle_unkCol23_ColS = {
 };
 
 ModelCollision GhostCastle_unkCol23_ColH = {
-10, 14, &GhostCastle_unkCol23_ColV[0], &GhostCastle_unkCol23_ColT[0], &GhostCastle_unkCol23_ColS
+10, 14, GhostCastle_unkCol23_ColV, GhostCastle_unkCol23_ColT, &GhostCastle_unkCol23_ColS
 };
 
 Vec3f GhostCastle_unkCol24_ColV[] = {
@@ -2721,7 +2721,7 @@ Rect3D GhostCastle_unkCol24_ColS = {
 };
 
 ModelCollision GhostCastle_unkCol24_ColH = {
-8, 6, &GhostCastle_unkCol24_ColV[0], &GhostCastle_unkCol24_ColT[0], &GhostCastle_unkCol24_ColS
+8, 6, GhostCastle_unkCol24_ColV, GhostCastle_unkCol24_ColT, &GhostCastle_unkCol24_ColS
 };
 
 Vec3f GhostCastle_unkCol25_ColV[] = {
@@ -2737,7 +2737,7 @@ Rect3D GhostCastle_unkCol25_ColS = {
 };
 
 ModelCollision GhostCastle_unkCol25_ColH = {
-4, 2, &GhostCastle_unkCol25_ColV[0], &GhostCastle_unkCol25_ColT[0], &GhostCastle_unkCol25_ColS
+4, 2, GhostCastle_unkCol25_ColV, GhostCastle_unkCol25_ColT, &GhostCastle_unkCol25_ColS
 };
 
 Vec3f GhostCastle_unkCol26_ColV[] = {
@@ -2753,7 +2753,7 @@ Rect3D GhostCastle_unkCol26_ColS = {
 };
 
 ModelCollision GhostCastle_unkCol26_ColH = {
-4, 3, &GhostCastle_unkCol26_ColV[0], &GhostCastle_unkCol26_ColT[0], &GhostCastle_unkCol26_ColS
+4, 3, GhostCastle_unkCol26_ColV, GhostCastle_unkCol26_ColT, &GhostCastle_unkCol26_ColS
 };
 
 Vec3f GhostCastle_unkCol27_ColV[] = {
@@ -2769,7 +2769,7 @@ Rect3D GhostCastle_unkCol27_ColS = {
 };
 
 ModelCollision GhostCastle_unkCol27_ColH = {
-4, 2, &GhostCastle_unkCol27_ColV[0], &GhostCastle_unkCol27_ColT[0], &GhostCastle_unkCol27_ColS
+4, 2, GhostCastle_unkCol27_ColV, GhostCastle_unkCol27_ColT, &GhostCastle_unkCol27_ColS
 };
 
 Vec3f GhostCastle_unkCol28_ColV[] = {
@@ -2785,7 +2785,7 @@ Rect3D GhostCastle_unkCol28_ColS = {
 };
 
 ModelCollision GhostCastle_unkCol28_ColH = {
-8, 12, &GhostCastle_unkCol28_ColV[0], &GhostCastle_unkCol28_ColT[0], &GhostCastle_unkCol28_ColS
+8, 12, GhostCastle_unkCol28_ColV, GhostCastle_unkCol28_ColT, &GhostCastle_unkCol28_ColS
 };
 
 Vec3f GhostCastle_unkCol29_ColV[] = {
@@ -2801,7 +2801,7 @@ Rect3D GhostCastle_unkCol29_ColS = {
 };
 
 ModelCollision GhostCastle_unkCol29_ColH = {
-8, 8, &GhostCastle_unkCol29_ColV[0], &GhostCastle_unkCol29_ColT[0], &GhostCastle_unkCol29_ColS
+8, 8, GhostCastle_unkCol29_ColV, GhostCastle_unkCol29_ColT, &GhostCastle_unkCol29_ColS
 };
 
 Vec3f GhostCastle_unkCol30_ColV[] = {
@@ -2817,7 +2817,7 @@ Rect3D GhostCastle_unkCol30_ColS = {
 };
 
 ModelCollision GhostCastle_unkCol30_ColH = {
-48, 92, &GhostCastle_unkCol30_ColV[0], &GhostCastle_unkCol30_ColT[0], &GhostCastle_unkCol30_ColS
+48, 92, GhostCastle_unkCol30_ColV, GhostCastle_unkCol30_ColT, &GhostCastle_unkCol30_ColS
 };
 
 Vec3f GhostCastle_unkCol31_ColV[] = {
@@ -2833,7 +2833,7 @@ Rect3D GhostCastle_unkCol31_ColS = {
 };
 
 ModelCollision GhostCastle_unkCol31_ColH = {
-48, 92, &GhostCastle_unkCol31_ColV[0], &GhostCastle_unkCol31_ColT[0], &GhostCastle_unkCol31_ColS
+48, 92, GhostCastle_unkCol31_ColV, GhostCastle_unkCol31_ColT, &GhostCastle_unkCol31_ColS
 };
 
 Vec3f GhostCastle_unkCol32_ColV[] = {
@@ -2849,7 +2849,7 @@ Rect3D GhostCastle_unkCol32_ColS = {
 };
 
 ModelCollision GhostCastle_unkCol32_ColH = {
-8, 10, &GhostCastle_unkCol32_ColV[0], &GhostCastle_unkCol32_ColT[0], &GhostCastle_unkCol32_ColS
+8, 10, GhostCastle_unkCol32_ColV, GhostCastle_unkCol32_ColT, &GhostCastle_unkCol32_ColS
 };
 
 Vec3f GhostCastle_unkCol33_ColV[] = {
@@ -2865,7 +2865,7 @@ Rect3D GhostCastle_unkCol33_ColS = {
 };
 
 ModelCollision GhostCastle_unkCol33_ColH = {
-8, 6, &GhostCastle_unkCol33_ColV[0], &GhostCastle_unkCol33_ColT[0], &GhostCastle_unkCol33_ColS
+8, 6, GhostCastle_unkCol33_ColV, GhostCastle_unkCol33_ColT, &GhostCastle_unkCol33_ColS
 };
 
 Vec3f GhostCastle_unkCol34_ColV[] = {
@@ -2881,7 +2881,7 @@ Rect3D GhostCastle_unkCol34_ColS = {
 };
 
 ModelCollision GhostCastle_unkCol34_ColH = {
-4, 4, &GhostCastle_unkCol34_ColV[0], &GhostCastle_unkCol34_ColT[0], &GhostCastle_unkCol34_ColS
+4, 4, GhostCastle_unkCol34_ColV, GhostCastle_unkCol34_ColT, &GhostCastle_unkCol34_ColS
 };
 
 Vec3f GhostCastle_unkCol35_ColV[] = {
@@ -2897,7 +2897,7 @@ Rect3D GhostCastle_unkCol35_ColS = {
 };
 
 ModelCollision GhostCastle_unkCol35_ColH = {
-4, 4, &GhostCastle_unkCol35_ColV[0], &GhostCastle_unkCol35_ColT[0], &GhostCastle_unkCol35_ColS
+4, 4, GhostCastle_unkCol35_ColV, GhostCastle_unkCol35_ColT, &GhostCastle_unkCol35_ColS
 };
 
 Vec3f GhostCastle_unkCol36_ColV[] = {
@@ -2913,7 +2913,7 @@ Rect3D GhostCastle_unkCol36_ColS = {
 };
 
 ModelCollision GhostCastle_unkCol36_ColH = {
-8, 6, &GhostCastle_unkCol36_ColV[0], &GhostCastle_unkCol36_ColT[0], &GhostCastle_unkCol36_ColS
+8, 6, GhostCastle_unkCol36_ColV, GhostCastle_unkCol36_ColT, &GhostCastle_unkCol36_ColS
 };
 
 Vec3f GhostCastle_unkCol37_ColV[] = {
@@ -2929,7 +2929,7 @@ Rect3D GhostCastle_unkCol37_ColS = {
 };
 
 ModelCollision GhostCastle_unkCol37_ColH = {
-8, 6, &GhostCastle_unkCol37_ColV[0], &GhostCastle_unkCol37_ColT[0], &GhostCastle_unkCol37_ColS
+8, 6, GhostCastle_unkCol37_ColV, GhostCastle_unkCol37_ColT, &GhostCastle_unkCol37_ColS
 };
 
 Vec3f GhostCastle_unkCol38_ColV[] = {
@@ -2945,7 +2945,7 @@ Rect3D GhostCastle_unkCol38_ColS = {
 };
 
 ModelCollision GhostCastle_unkCol38_ColH = {
-4, 4, &GhostCastle_unkCol38_ColV[0], &GhostCastle_unkCol38_ColT[0], &GhostCastle_unkCol38_ColS
+4, 4, GhostCastle_unkCol38_ColV, GhostCastle_unkCol38_ColT, &GhostCastle_unkCol38_ColS
 };
 
 Vec3f GhostCastle_unkCol39_ColV[] = {
@@ -2961,7 +2961,7 @@ Rect3D GhostCastle_unkCol39_ColS = {
 };
 
 ModelCollision GhostCastle_unkCol39_ColH = {
-8, 8, &GhostCastle_unkCol39_ColV[0], &GhostCastle_unkCol39_ColT[0], &GhostCastle_unkCol39_ColS
+8, 8, GhostCastle_unkCol39_ColV, GhostCastle_unkCol39_ColT, &GhostCastle_unkCol39_ColS
 };
 
 Vec3f GhostCastle_unkCol40_ColV[] = {
@@ -2977,7 +2977,7 @@ Rect3D GhostCastle_unkCol40_ColS = {
 };
 
 ModelCollision GhostCastle_unkCol40_ColH = {
-6, 4, &GhostCastle_unkCol40_ColV[0], &GhostCastle_unkCol40_ColT[0], &GhostCastle_unkCol40_ColS
+6, 4, GhostCastle_unkCol40_ColV, GhostCastle_unkCol40_ColT, &GhostCastle_unkCol40_ColS
 };
 
 Vec3f GhostCastle_unkCol41_ColV[] = {
@@ -2993,7 +2993,7 @@ Rect3D GhostCastle_unkCol41_ColS = {
 };
 
 ModelCollision GhostCastle_unkCol41_ColH = {
-6, 4, &GhostCastle_unkCol41_ColV[0], &GhostCastle_unkCol41_ColT[0], &GhostCastle_unkCol41_ColS
+6, 4, GhostCastle_unkCol41_ColV, GhostCastle_unkCol41_ColT, &GhostCastle_unkCol41_ColS
 };
 
 Vec3f GhostCastle_unkCol42_ColV[] = {
@@ -3009,7 +3009,7 @@ Rect3D GhostCastle_unkCol42_ColS = {
 };
 
 ModelCollision GhostCastle_unkCol42_ColH = {
-4, 2, &GhostCastle_unkCol42_ColV[0], &GhostCastle_unkCol42_ColT[0], &GhostCastle_unkCol42_ColS
+4, 2, GhostCastle_unkCol42_ColV, GhostCastle_unkCol42_ColT, &GhostCastle_unkCol42_ColS
 };
 
 Vec3f GhostCastle_unkCol43_ColV[] = {
@@ -3025,7 +3025,7 @@ Rect3D GhostCastle_unkCol43_ColS = {
 };
 
 ModelCollision GhostCastle_unkCol43_ColH = {
-4, 2, &GhostCastle_unkCol43_ColV[0], &GhostCastle_unkCol43_ColT[0], &GhostCastle_unkCol43_ColS
+4, 2, GhostCastle_unkCol43_ColV, GhostCastle_unkCol43_ColT, &GhostCastle_unkCol43_ColS
 };
 
 Vec3f GhostCastle_unkCol44_ColV[] = {
@@ -3041,7 +3041,7 @@ Rect3D GhostCastle_unkCol44_ColS = {
 };
 
 ModelCollision GhostCastle_unkCol44_ColH = {
-76, 116, &GhostCastle_unkCol44_ColV[0], &GhostCastle_unkCol44_ColT[0], &GhostCastle_unkCol44_ColS
+76, 116, GhostCastle_unkCol44_ColV, GhostCastle_unkCol44_ColT, &GhostCastle_unkCol44_ColS
 };
 
 Vec3f GhostCastle_unkCol45_ColV[] = {
@@ -3057,7 +3057,7 @@ Rect3D GhostCastle_unkCol45_ColS = {
 };
 
 ModelCollision GhostCastle_unkCol45_ColH = {
-50, 80, &GhostCastle_unkCol45_ColV[0], &GhostCastle_unkCol45_ColT[0], &GhostCastle_unkCol45_ColS
+50, 80, GhostCastle_unkCol45_ColV, GhostCastle_unkCol45_ColT, &GhostCastle_unkCol45_ColS
 };
 
 Vec3f GhostCastle_unkCol46_ColV[] = {
@@ -3073,7 +3073,7 @@ Rect3D GhostCastle_unkCol46_ColS = {
 };
 
 ModelCollision GhostCastle_unkCol46_ColH = {
-55, 90, &GhostCastle_unkCol46_ColV[0], &GhostCastle_unkCol46_ColT[0], &GhostCastle_unkCol46_ColS
+55, 90, GhostCastle_unkCol46_ColV, GhostCastle_unkCol46_ColT, &GhostCastle_unkCol46_ColS
 };
 
 Vec3f GhostCastle_unkCol47_ColV[] = {
@@ -3089,7 +3089,7 @@ Rect3D GhostCastle_unkCol47_ColS = {
 };
 
 ModelCollision GhostCastle_unkCol47_ColH = {
-37, 51, &GhostCastle_unkCol47_ColV[0], &GhostCastle_unkCol47_ColT[0], &GhostCastle_unkCol47_ColS
+37, 51, GhostCastle_unkCol47_ColV, GhostCastle_unkCol47_ColT, &GhostCastle_unkCol47_ColS
 };
 
 Vec3f GhostCastle_unkCol48_ColV[] = {
@@ -3105,7 +3105,7 @@ Rect3D GhostCastle_unkCol48_ColS = {
 };
 
 ModelCollision GhostCastle_unkCol48_ColH = {
-66, 101, &GhostCastle_unkCol48_ColV[0], &GhostCastle_unkCol48_ColT[0], &GhostCastle_unkCol48_ColS
+66, 101, GhostCastle_unkCol48_ColV, GhostCastle_unkCol48_ColT, &GhostCastle_unkCol48_ColS
 };
 
 Vec3f GhostCastle_unkCol49_ColV[] = {
@@ -3121,7 +3121,7 @@ Rect3D GhostCastle_unkCol49_ColS = {
 };
 
 ModelCollision GhostCastle_unkCol49_ColH = {
-28, 44, &GhostCastle_unkCol49_ColV[0], &GhostCastle_unkCol49_ColT[0], &GhostCastle_unkCol49_ColS
+28, 44, GhostCastle_unkCol49_ColV, GhostCastle_unkCol49_ColT, &GhostCastle_unkCol49_ColS
 };
 
 Vec3f GhostCastle_unkCol50_ColV[] = {
@@ -3137,7 +3137,7 @@ Rect3D GhostCastle_unkCol50_ColS = {
 };
 
 ModelCollision GhostCastle_unkCol50_ColH = {
-92, 144, &GhostCastle_unkCol50_ColV[0], &GhostCastle_unkCol50_ColT[0], &GhostCastle_unkCol50_ColS
+92, 144, GhostCastle_unkCol50_ColV, GhostCastle_unkCol50_ColT, &GhostCastle_unkCol50_ColS
 };
 
 Vec3f GhostCastle_unkCol51_ColV[] = {
@@ -3153,7 +3153,7 @@ Rect3D GhostCastle_unkCol51_ColS = {
 };
 
 ModelCollision GhostCastle_unkCol51_ColH = {
-132, 219, &GhostCastle_unkCol51_ColV[0], &GhostCastle_unkCol51_ColT[0], &GhostCastle_unkCol51_ColS
+132, 219, GhostCastle_unkCol51_ColV, GhostCastle_unkCol51_ColT, &GhostCastle_unkCol51_ColS
 };
 
 Vec3f GhostCastle_unkCol52_ColV[] = {
@@ -3169,7 +3169,7 @@ Rect3D GhostCastle_unkCol52_ColS = {
 };
 
 ModelCollision GhostCastle_unkCol52_ColH = {
-36, 48, &GhostCastle_unkCol52_ColV[0], &GhostCastle_unkCol52_ColT[0], &GhostCastle_unkCol52_ColS
+36, 48, GhostCastle_unkCol52_ColV, GhostCastle_unkCol52_ColT, &GhostCastle_unkCol52_ColS
 };
 
 Vec3f GhostCastle_unkCol53_ColV[] = {
@@ -3185,7 +3185,7 @@ Rect3D GhostCastle_unkCol53_ColS = {
 };
 
 ModelCollision GhostCastle_unkCol53_ColH = {
-44, 75, &GhostCastle_unkCol53_ColV[0], &GhostCastle_unkCol53_ColT[0], &GhostCastle_unkCol53_ColS
+44, 75, GhostCastle_unkCol53_ColV, GhostCastle_unkCol53_ColT, &GhostCastle_unkCol53_ColS
 };
 
 Vec3f GhostCastle_unkCol54_ColV[] = {
@@ -3201,7 +3201,7 @@ Rect3D GhostCastle_unkCol54_ColS = {
 };
 
 ModelCollision GhostCastle_unkCol54_ColH = {
-54, 91, &GhostCastle_unkCol54_ColV[0], &GhostCastle_unkCol54_ColT[0], &GhostCastle_unkCol54_ColS
+54, 91, GhostCastle_unkCol54_ColV, GhostCastle_unkCol54_ColT, &GhostCastle_unkCol54_ColS
 };
 
 Vec3f GhostCastle_unkCol55_ColV[] = {
@@ -3217,7 +3217,7 @@ Rect3D GhostCastle_unkCol55_ColS = {
 };
 
 ModelCollision GhostCastle_unkCol55_ColH = {
-62, 105, &GhostCastle_unkCol55_ColV[0], &GhostCastle_unkCol55_ColT[0], &GhostCastle_unkCol55_ColS
+62, 105, GhostCastle_unkCol55_ColV, GhostCastle_unkCol55_ColT, &GhostCastle_unkCol55_ColS
 };
 
 Vec3f GhostCastle_unkCol56_ColV[] = {
@@ -3233,7 +3233,7 @@ Rect3D GhostCastle_unkCol56_ColS = {
 };
 
 ModelCollision GhostCastle_unkCol56_ColH = {
-161, 277, &GhostCastle_unkCol56_ColV[0], &GhostCastle_unkCol56_ColT[0], &GhostCastle_unkCol56_ColS
+161, 277, GhostCastle_unkCol56_ColV, GhostCastle_unkCol56_ColT, &GhostCastle_unkCol56_ColS
 };
 
 Vec3f GhostCastle_unkCol57_ColV[] = {
@@ -3249,7 +3249,7 @@ Rect3D GhostCastle_unkCol57_ColS = {
 };
 
 ModelCollision GhostCastle_unkCol57_ColH = {
-92, 154, &GhostCastle_unkCol57_ColV[0], &GhostCastle_unkCol57_ColT[0], &GhostCastle_unkCol57_ColS
+92, 154, GhostCastle_unkCol57_ColV, GhostCastle_unkCol57_ColT, &GhostCastle_unkCol57_ColS
 };
 
 Vec3f GhostCastle_unkCol58_ColV[] = {
@@ -3265,7 +3265,7 @@ Rect3D GhostCastle_unkCol58_ColS = {
 };
 
 ModelCollision GhostCastle_unkCol58_ColH = {
-60, 105, &GhostCastle_unkCol58_ColV[0], &GhostCastle_unkCol58_ColT[0], &GhostCastle_unkCol58_ColS
+60, 105, GhostCastle_unkCol58_ColV, GhostCastle_unkCol58_ColT, &GhostCastle_unkCol58_ColS
 };
 
 Vec3f GhostCastle_unkCol59_ColV[] = {
@@ -3281,7 +3281,7 @@ Rect3D GhostCastle_unkCol59_ColS = {
 };
 
 ModelCollision GhostCastle_unkCol59_ColH = {
-68, 117, &GhostCastle_unkCol59_ColV[0], &GhostCastle_unkCol59_ColT[0], &GhostCastle_unkCol59_ColS
+68, 117, GhostCastle_unkCol59_ColV, GhostCastle_unkCol59_ColT, &GhostCastle_unkCol59_ColS
 };
 
 Vec3f GhostCastle_unkCol60_ColV[] = {
@@ -3297,7 +3297,7 @@ Rect3D GhostCastle_unkCol60_ColS = {
 };
 
 ModelCollision GhostCastle_unkCol60_ColH = {
-68, 119, &GhostCastle_unkCol60_ColV[0], &GhostCastle_unkCol60_ColT[0], &GhostCastle_unkCol60_ColS
+68, 119, GhostCastle_unkCol60_ColV, GhostCastle_unkCol60_ColT, &GhostCastle_unkCol60_ColS
 };
 
 Vec3f GhostCastle_unkCol61_ColV[] = {
@@ -3313,7 +3313,7 @@ Rect3D GhostCastle_unkCol61_ColS = {
 };
 
 ModelCollision GhostCastle_unkCol61_ColH = {
-8, 12, &GhostCastle_unkCol61_ColV[0], &GhostCastle_unkCol61_ColT[0], &GhostCastle_unkCol61_ColS
+8, 12, GhostCastle_unkCol61_ColV, GhostCastle_unkCol61_ColT, &GhostCastle_unkCol61_ColS
 };
 
 Vec3f GhostCastle_unkCol62_ColV[] = {
@@ -3329,7 +3329,7 @@ Rect3D GhostCastle_unkCol62_ColS = {
 };
 
 ModelCollision GhostCastle_unkCol62_ColH = {
-8, 8, &GhostCastle_unkCol62_ColV[0], &GhostCastle_unkCol62_ColT[0], &GhostCastle_unkCol62_ColS
+8, 8, GhostCastle_unkCol62_ColV, GhostCastle_unkCol62_ColT, &GhostCastle_unkCol62_ColS
 };
 
 Vec3f GhostCastle_unkCol63_ColV[] = {
@@ -3345,7 +3345,7 @@ Rect3D GhostCastle_unkCol63_ColS = {
 };
 
 ModelCollision GhostCastle_unkCol63_ColH = {
-12, 12, &GhostCastle_unkCol63_ColV[0], &GhostCastle_unkCol63_ColT[0], &GhostCastle_unkCol63_ColS
+12, 12, GhostCastle_unkCol63_ColV, GhostCastle_unkCol63_ColT, &GhostCastle_unkCol63_ColS
 };
 
 Vec3f GhostCastle_unkCol64_ColV[] = {
@@ -3361,7 +3361,7 @@ Rect3D GhostCastle_unkCol64_ColS = {
 };
 
 ModelCollision GhostCastle_unkCol64_ColH = {
-22, 20, &GhostCastle_unkCol64_ColV[0], &GhostCastle_unkCol64_ColT[0], &GhostCastle_unkCol64_ColS
+22, 20, GhostCastle_unkCol64_ColV, GhostCastle_unkCol64_ColT, &GhostCastle_unkCol64_ColS
 };
 
 Vec3f GhostCastle_unkCol65_ColV[] = {
@@ -3377,7 +3377,7 @@ Rect3D GhostCastle_unkCol65_ColS = {
 };
 
 ModelCollision GhostCastle_unkCol65_ColH = {
-4, 4, &GhostCastle_unkCol65_ColV[0], &GhostCastle_unkCol65_ColT[0], &GhostCastle_unkCol65_ColS
+4, 4, GhostCastle_unkCol65_ColV, GhostCastle_unkCol65_ColT, &GhostCastle_unkCol65_ColS
 };
 
 Vec3f GhostCastle_unkCol66_ColV[] = {
@@ -3393,7 +3393,7 @@ Rect3D GhostCastle_unkCol66_ColS = {
 };
 
 ModelCollision GhostCastle_unkCol66_ColH = {
-4, 4, &GhostCastle_unkCol66_ColV[0], &GhostCastle_unkCol66_ColT[0], &GhostCastle_unkCol66_ColS
+4, 4, GhostCastle_unkCol66_ColV, GhostCastle_unkCol66_ColT, &GhostCastle_unkCol66_ColS
 };
 
 Vec3f GhostCastle_unkCol67_ColV[] = {
@@ -3409,7 +3409,7 @@ Rect3D GhostCastle_unkCol67_ColS = {
 };
 
 ModelCollision GhostCastle_unkCol67_ColH = {
-12, 14, &GhostCastle_unkCol67_ColV[0], &GhostCastle_unkCol67_ColT[0], &GhostCastle_unkCol67_ColS
+12, 14, GhostCastle_unkCol67_ColV, GhostCastle_unkCol67_ColT, &GhostCastle_unkCol67_ColS
 };
 
 Vec3f GhostCastle_unkCol68_ColV[] = {
@@ -3425,7 +3425,7 @@ Rect3D GhostCastle_unkCol68_ColS = {
 };
 
 ModelCollision GhostCastle_unkCol68_ColH = {
-8, 10, &GhostCastle_unkCol68_ColV[0], &GhostCastle_unkCol68_ColT[0], &GhostCastle_unkCol68_ColS
+8, 10, GhostCastle_unkCol68_ColV, GhostCastle_unkCol68_ColT, &GhostCastle_unkCol68_ColS
 };
 
 Vec3f GhostCastle_unkCol69_ColV[] = {
@@ -3441,7 +3441,7 @@ Rect3D GhostCastle_unkCol69_ColS = {
 };
 
 ModelCollision GhostCastle_unkCol69_ColH = {
-55, 90, &GhostCastle_unkCol69_ColV[0], &GhostCastle_unkCol69_ColT[0], &GhostCastle_unkCol69_ColS
+55, 90, GhostCastle_unkCol69_ColV, GhostCastle_unkCol69_ColT, &GhostCastle_unkCol69_ColS
 };
 
 Vec3f GhostCastle_unkCol70_ColV[] = {
@@ -3457,7 +3457,7 @@ Rect3D GhostCastle_unkCol70_ColS = {
 };
 
 ModelCollision GhostCastle_unkCol70_ColH = {
-12, 8, &GhostCastle_unkCol70_ColV[0], &GhostCastle_unkCol70_ColT[0], &GhostCastle_unkCol70_ColS
+12, 8, GhostCastle_unkCol70_ColV, GhostCastle_unkCol70_ColT, &GhostCastle_unkCol70_ColS
 };
 
 Vec3f GhostCastle_unkCol71_ColV[] = {
@@ -3473,7 +3473,7 @@ Rect3D GhostCastle_unkCol71_ColS = {
 };
 
 ModelCollision GhostCastle_unkCol71_ColH = {
-16, 28, &GhostCastle_unkCol71_ColV[0], &GhostCastle_unkCol71_ColT[0], &GhostCastle_unkCol71_ColS
+16, 28, GhostCastle_unkCol71_ColV, GhostCastle_unkCol71_ColT, &GhostCastle_unkCol71_ColS
 };
 
 Vec3f GhostCastle_unkCol72_ColV[] = {
@@ -3489,7 +3489,7 @@ Rect3D GhostCastle_unkCol72_ColS = {
 };
 
 ModelCollision GhostCastle_unkCol72_ColH = {
-16, 25, &GhostCastle_unkCol72_ColV[0], &GhostCastle_unkCol72_ColT[0], &GhostCastle_unkCol72_ColS
+16, 25, GhostCastle_unkCol72_ColV, GhostCastle_unkCol72_ColT, &GhostCastle_unkCol72_ColS
 };
 
 Vec3f GhostCastle_unkCol73_ColV[] = {
@@ -3505,7 +3505,7 @@ Rect3D GhostCastle_unkCol73_ColS = {
 };
 
 ModelCollision GhostCastle_unkCol73_ColH = {
-8, 8, &GhostCastle_unkCol73_ColV[0], &GhostCastle_unkCol73_ColT[0], &GhostCastle_unkCol73_ColS
+8, 8, GhostCastle_unkCol73_ColV, GhostCastle_unkCol73_ColT, &GhostCastle_unkCol73_ColS
 };
 
 Vec3f GhostCastle_unkCol74_ColV[] = {
@@ -3521,7 +3521,7 @@ Rect3D GhostCastle_unkCol74_ColS = {
 };
 
 ModelCollision GhostCastle_unkCol74_ColH = {
-8, 8, &GhostCastle_unkCol74_ColV[0], &GhostCastle_unkCol74_ColT[0], &GhostCastle_unkCol74_ColS
+8, 8, GhostCastle_unkCol74_ColV, GhostCastle_unkCol74_ColT, &GhostCastle_unkCol74_ColS
 };
 
 Vec3f GhostCastle_unkCol75_ColV[] = {
@@ -3537,7 +3537,7 @@ Rect3D GhostCastle_unkCol75_ColS = {
 };
 
 ModelCollision GhostCastle_unkCol75_ColH = {
-8, 8, &GhostCastle_unkCol75_ColV[0], &GhostCastle_unkCol75_ColT[0], &GhostCastle_unkCol75_ColS
+8, 8, GhostCastle_unkCol75_ColV, GhostCastle_unkCol75_ColT, &GhostCastle_unkCol75_ColS
 };
 
 Vec3f GhostCastle_unkCol76_ColV[] = {
@@ -3553,7 +3553,7 @@ Rect3D GhostCastle_unkCol76_ColS = {
 };
 
 ModelCollision GhostCastle_unkCol76_ColH = {
-8, 8, &GhostCastle_unkCol76_ColV[0], &GhostCastle_unkCol76_ColT[0], &GhostCastle_unkCol76_ColS
+8, 8, GhostCastle_unkCol76_ColV, GhostCastle_unkCol76_ColT, &GhostCastle_unkCol76_ColS
 };
 
 Vec3f GhostCastle_unkCol77_ColV[] = {
@@ -3569,11 +3569,11 @@ Rect3D GhostCastle_unkCol77_ColS = {
 };
 
 ModelCollision GhostCastle_unkCol77_ColH = {
-18, 16, &GhostCastle_unkCol77_ColV[0], &GhostCastle_unkCol77_ColT[0], &GhostCastle_unkCol77_ColS
+18, 16, GhostCastle_unkCol77_ColV, GhostCastle_unkCol77_ColT, &GhostCastle_unkCol77_ColS
 };
 Mtx GhostCastle_IMtx80 = IDENTITY;
 
-Lights1 GhostCastle_gcScope2_Light = 
+Lights1 GhostCastle_gcScope2_Light =
     #include "assets/levelGroup/GhostCastle/gcScope2/gcScope2.light.inc.c"
 
 Vtx GhostCastle_model75_Vtx[] = {

@@ -49,7 +49,7 @@ extern s32 Battle_GameType;
 extern OSTask D_800F04E0[2];
 extern OSMesgQueue gFrameDrawnMessageQueue;
 extern OSMesgQueue gSyncMessageQueue;
-extern Gfx static0_UnkStatic0_Gfx[];
+extern Gfx D_1015B18[];
 extern s16 D_800FFEC0;
 extern Gfx D_1015A70[];
 extern Gfx D_1015AB8[];
@@ -99,13 +99,13 @@ extern Gfx Battle_Chameleons_Black_restAssociate_Gfx[];
 extern Gfx Battle_Chameleons_White_restAssociate_Gfx[];
 
 
-extern Gfx* D_800F0650[];
+extern Gfx* Battle_ChameleonGfxs[];
 extern Gfx static0_gfx6_Gfx[];
 extern Gfx static0_gfx5_Gfx[];
 extern Gfx Global_unusedStructure_Gfx[];
 
 
-extern s32 D_800F0560;
+extern s32 Chameleon_StepBool;
 
 extern AnimPointer JungleLand_spiderRockInitPointers_Animp;
 extern AnimPointer JungleLand_golemSleepPointers_Animp;
