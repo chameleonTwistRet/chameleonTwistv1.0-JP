@@ -274,36 +274,36 @@ Gfx Armadillo_model2_Gfx[] = {
     #include "assets/levelGroup/Armadillo/model2/model2.gfx.inc.c"
 };
 
-Vec3f Armadillo_unkCol1_ColV[] = {
-    #include "assets/levelGroup/Armadillo/unkCol1/unkCol1.colV.inc.c"
+Vec3f Armadillo_unkCol1_ColVerts[] = {
+    #include "assets/levelGroup/Armadillo/unkCol1/unkCol1.colVerts.inc.c"
 };
 
-Vec3w Armadillo_unkCol1_ColT[] = {
-    #include "assets/levelGroup/Armadillo/unkCol1/unkCol1.colT.inc.c"
+Vec3w Armadillo_unkCol1_ColTris[] = {
+    #include "assets/levelGroup/Armadillo/unkCol1/unkCol1.colTris.inc.c"
 };
 
-Rect3D Armadillo_unkCol1_ColS = {
-    #include "assets/levelGroup/Armadillo/unkCol1/unkCol1.colS.inc.c"
+Rect3D Armadillo_unkCol1_BoundBox = {
+    #include "assets/levelGroup/Armadillo/unkCol1/unkCol1.boundBox.inc.c"
 };
 
 ModelCollision Armadillo_unkCol1_ColH = {
-23, 34, Armadillo_unkCol1_ColV, Armadillo_unkCol1_ColT, &Armadillo_unkCol1_ColS
+23, 34, Armadillo_unkCol1_ColVerts, Armadillo_unkCol1_ColTris, &Armadillo_unkCol1_BoundBox
 };
 
-Vec3f Armadillo_unkCol2_ColV[] = {
-    #include "assets/levelGroup/Armadillo/unkCol2/unkCol2.colV.inc.c"
+Vec3f Armadillo_unkCol2_ColVerts[] = {
+    #include "assets/levelGroup/Armadillo/unkCol2/unkCol2.colVerts.inc.c"
 };
 
-Vec3w Armadillo_unkCol2_ColT[] = {
-    #include "assets/levelGroup/Armadillo/unkCol2/unkCol2.colT.inc.c"
+Vec3w Armadillo_unkCol2_ColTris[] = {
+    #include "assets/levelGroup/Armadillo/unkCol2/unkCol2.colTris.inc.c"
 };
 
-Rect3D Armadillo_unkCol2_ColS = {
-    #include "assets/levelGroup/Armadillo/unkCol2/unkCol2.colS.inc.c"
+Rect3D Armadillo_unkCol2_BoundBox = {
+    #include "assets/levelGroup/Armadillo/unkCol2/unkCol2.boundBox.inc.c"
 };
 
 ModelCollision Armadillo_unkCol2_ColH = {
-10, 12, Armadillo_unkCol2_ColV, Armadillo_unkCol2_ColT, &Armadillo_unkCol2_ColS
+10, 12, Armadillo_unkCol2_ColVerts, Armadillo_unkCol2_ColTris, &Armadillo_unkCol2_BoundBox
 };
 s32 armadillo_pad2[3] = {0, 0, 0};
 Mtx Armadillo_IMtx5 = IDENTITY;

@@ -408,148 +408,148 @@ Gfx BossRush_model9_Gfx[] = {
     #include "assets/levelGroup/BossRush/model9/model9.gfx.inc.c"
 };
 
-Vec3f BossRush_unkCol1_ColV[] = {
-    #include "assets/levelGroup/BossRush/unkCol1/unkCol1.colV.inc.c"
+Vec3f BossRush_unkCol1_ColVerts[] = {
+    #include "assets/levelGroup/BossRush/unkCol1/unkCol1.colVerts.inc.c"
 };
 
-Vec3w BossRush_unkCol1_ColT[] = {
-    #include "assets/levelGroup/BossRush/unkCol1/unkCol1.colT.inc.c"
+Vec3w BossRush_unkCol1_ColTris[] = {
+    #include "assets/levelGroup/BossRush/unkCol1/unkCol1.colTris.inc.c"
 };
 
-Rect3D BossRush_unkCol1_ColS = {
-    #include "assets/levelGroup/BossRush/unkCol1/unkCol1.colS.inc.c"
+Rect3D BossRush_unkCol1_BoundBox = {
+    #include "assets/levelGroup/BossRush/unkCol1/unkCol1.boundBox.inc.c"
 };
 
 ModelCollision BossRush_unkCol1_ColH = {
-32, 54, BossRush_unkCol1_ColV, BossRush_unkCol1_ColT, &BossRush_unkCol1_ColS
+32, 54, BossRush_unkCol1_ColVerts, BossRush_unkCol1_ColTris, &BossRush_unkCol1_BoundBox
 };
 
-Vec3f BossRush_unkCol2_ColV[] = {
-    #include "assets/levelGroup/BossRush/unkCol2/unkCol2.colV.inc.c"
+Vec3f BossRush_unkCol2_ColVerts[] = {
+    #include "assets/levelGroup/BossRush/unkCol2/unkCol2.colVerts.inc.c"
 };
 
-Vec3w BossRush_unkCol2_ColT[] = {
-    #include "assets/levelGroup/BossRush/unkCol2/unkCol2.colT.inc.c"
+Vec3w BossRush_unkCol2_ColTris[] = {
+    #include "assets/levelGroup/BossRush/unkCol2/unkCol2.colTris.inc.c"
 };
 
-Rect3D BossRush_unkCol2_ColS = {
-    #include "assets/levelGroup/BossRush/unkCol2/unkCol2.colS.inc.c"
+Rect3D BossRush_unkCol2_BoundBox = {
+    #include "assets/levelGroup/BossRush/unkCol2/unkCol2.boundBox.inc.c"
 };
 
 ModelCollision BossRush_unkCol2_ColH = {
-10, 10, BossRush_unkCol2_ColV, BossRush_unkCol2_ColT, &BossRush_unkCol2_ColS
+10, 10, BossRush_unkCol2_ColVerts, BossRush_unkCol2_ColTris, &BossRush_unkCol2_BoundBox
 };
 
-Vec3f BossRush_unkCol3_ColV[] = {
-    #include "assets/levelGroup/BossRush/unkCol3/unkCol3.colV.inc.c"
+Vec3f BossRush_unkCol3_ColVerts[] = {
+    #include "assets/levelGroup/BossRush/unkCol3/unkCol3.colVerts.inc.c"
 };
 
-Vec3w BossRush_unkCol3_ColT[] = {
-    #include "assets/levelGroup/BossRush/unkCol3/unkCol3.colT.inc.c"
+Vec3w BossRush_unkCol3_ColTris[] = {
+    #include "assets/levelGroup/BossRush/unkCol3/unkCol3.colTris.inc.c"
 };
 
-Rect3D BossRush_unkCol3_ColS = {
-    #include "assets/levelGroup/BossRush/unkCol3/unkCol3.colS.inc.c"
+Rect3D BossRush_unkCol3_BoundBox = {
+    #include "assets/levelGroup/BossRush/unkCol3/unkCol3.boundBox.inc.c"
 };
 
 ModelCollision BossRush_unkCol3_ColH = {
-12, 8, BossRush_unkCol3_ColV, BossRush_unkCol3_ColT, &BossRush_unkCol3_ColS
+12, 8, BossRush_unkCol3_ColVerts, BossRush_unkCol3_ColTris, &BossRush_unkCol3_BoundBox
 };
 
-Vec3f BossRush_unkCol4_ColV[] = {
-    #include "assets/levelGroup/BossRush/unkCol4/unkCol4.colV.inc.c"
+Vec3f BossRush_unkCol4_ColVerts[] = {
+    #include "assets/levelGroup/BossRush/unkCol4/unkCol4.colVerts.inc.c"
 };
 
-Vec3w BossRush_unkCol4_ColT[] = {
-    #include "assets/levelGroup/BossRush/unkCol4/unkCol4.colT.inc.c"
+Vec3w BossRush_unkCol4_ColTris[] = {
+    #include "assets/levelGroup/BossRush/unkCol4/unkCol4.colTris.inc.c"
 };
 
-Rect3D BossRush_unkCol4_ColS = {
-    #include "assets/levelGroup/BossRush/unkCol4/unkCol4.colS.inc.c"
+Rect3D BossRush_unkCol4_BoundBox = {
+    #include "assets/levelGroup/BossRush/unkCol4/unkCol4.boundBox.inc.c"
 };
 
 ModelCollision BossRush_unkCol4_ColH = {
-12, 8, BossRush_unkCol4_ColV, BossRush_unkCol4_ColT, &BossRush_unkCol4_ColS
+12, 8, BossRush_unkCol4_ColVerts, BossRush_unkCol4_ColTris, &BossRush_unkCol4_BoundBox
 };
 
-Vec3f BossRush_unkCol5_ColV[] = {
-    #include "assets/levelGroup/BossRush/unkCol5/unkCol5.colV.inc.c"
+Vec3f BossRush_unkCol5_ColVerts[] = {
+    #include "assets/levelGroup/BossRush/unkCol5/unkCol5.colVerts.inc.c"
 };
 
-Vec3w BossRush_unkCol5_ColT[] = {
-    #include "assets/levelGroup/BossRush/unkCol5/unkCol5.colT.inc.c"
+Vec3w BossRush_unkCol5_ColTris[] = {
+    #include "assets/levelGroup/BossRush/unkCol5/unkCol5.colTris.inc.c"
 };
 
-Rect3D BossRush_unkCol5_ColS = {
-    #include "assets/levelGroup/BossRush/unkCol5/unkCol5.colS.inc.c"
+Rect3D BossRush_unkCol5_BoundBox = {
+    #include "assets/levelGroup/BossRush/unkCol5/unkCol5.boundBox.inc.c"
 };
 
 ModelCollision BossRush_unkCol5_ColH = {
-8, 6, BossRush_unkCol5_ColV, BossRush_unkCol5_ColT, &BossRush_unkCol5_ColS
+8, 6, BossRush_unkCol5_ColVerts, BossRush_unkCol5_ColTris, &BossRush_unkCol5_BoundBox
 };
 
-Vec3f BossRush_unkCol6_ColV[] = {
-    #include "assets/levelGroup/BossRush/unkCol6/unkCol6.colV.inc.c"
+Vec3f BossRush_unkCol6_ColVerts[] = {
+    #include "assets/levelGroup/BossRush/unkCol6/unkCol6.colVerts.inc.c"
 };
 
-Vec3w BossRush_unkCol6_ColT[] = {
-    #include "assets/levelGroup/BossRush/unkCol6/unkCol6.colT.inc.c"
+Vec3w BossRush_unkCol6_ColTris[] = {
+    #include "assets/levelGroup/BossRush/unkCol6/unkCol6.colTris.inc.c"
 };
 
-Rect3D BossRush_unkCol6_ColS = {
-    #include "assets/levelGroup/BossRush/unkCol6/unkCol6.colS.inc.c"
+Rect3D BossRush_unkCol6_BoundBox = {
+    #include "assets/levelGroup/BossRush/unkCol6/unkCol6.boundBox.inc.c"
 };
 
 ModelCollision BossRush_unkCol6_ColH = {
-8, 8, BossRush_unkCol6_ColV, BossRush_unkCol6_ColT, &BossRush_unkCol6_ColS
+8, 8, BossRush_unkCol6_ColVerts, BossRush_unkCol6_ColTris, &BossRush_unkCol6_BoundBox
 };
 
-Vec3f BossRush_unkCol7_ColV[] = {
-    #include "assets/levelGroup/BossRush/unkCol7/unkCol7.colV.inc.c"
+Vec3f BossRush_unkCol7_ColVerts[] = {
+    #include "assets/levelGroup/BossRush/unkCol7/unkCol7.colVerts.inc.c"
 };
 
-Vec3w BossRush_unkCol7_ColT[] = {
-    #include "assets/levelGroup/BossRush/unkCol7/unkCol7.colT.inc.c"
+Vec3w BossRush_unkCol7_ColTris[] = {
+    #include "assets/levelGroup/BossRush/unkCol7/unkCol7.colTris.inc.c"
 };
 
-Rect3D BossRush_unkCol7_ColS = {
-    #include "assets/levelGroup/BossRush/unkCol7/unkCol7.colS.inc.c"
+Rect3D BossRush_unkCol7_BoundBox = {
+    #include "assets/levelGroup/BossRush/unkCol7/unkCol7.boundBox.inc.c"
 };
 
 ModelCollision BossRush_unkCol7_ColH = {
-16, 16, BossRush_unkCol7_ColV, BossRush_unkCol7_ColT, &BossRush_unkCol7_ColS
+16, 16, BossRush_unkCol7_ColVerts, BossRush_unkCol7_ColTris, &BossRush_unkCol7_BoundBox
 };
 
-Vec3f BossRush_unkCol8_ColV[] = {
-    #include "assets/levelGroup/BossRush/unkCol8/unkCol8.colV.inc.c"
+Vec3f BossRush_unkCol8_ColVerts[] = {
+    #include "assets/levelGroup/BossRush/unkCol8/unkCol8.colVerts.inc.c"
 };
 
-Vec3w BossRush_unkCol8_ColT[] = {
-    #include "assets/levelGroup/BossRush/unkCol8/unkCol8.colT.inc.c"
+Vec3w BossRush_unkCol8_ColTris[] = {
+    #include "assets/levelGroup/BossRush/unkCol8/unkCol8.colTris.inc.c"
 };
 
-Rect3D BossRush_unkCol8_ColS = {
-    #include "assets/levelGroup/BossRush/unkCol8/unkCol8.colS.inc.c"
+Rect3D BossRush_unkCol8_BoundBox = {
+    #include "assets/levelGroup/BossRush/unkCol8/unkCol8.boundBox.inc.c"
 };
 
 ModelCollision BossRush_unkCol8_ColH = {
-24, 20, BossRush_unkCol8_ColV, BossRush_unkCol8_ColT, &BossRush_unkCol8_ColS
+24, 20, BossRush_unkCol8_ColVerts, BossRush_unkCol8_ColTris, &BossRush_unkCol8_BoundBox
 };
 
-Vec3f BossRush_unkCol9_ColV[] = {
-    #include "assets/levelGroup/BossRush/unkCol9/unkCol9.colV.inc.c"
+Vec3f BossRush_unkCol9_ColVerts[] = {
+    #include "assets/levelGroup/BossRush/unkCol9/unkCol9.colVerts.inc.c"
 };
 
-Vec3w BossRush_unkCol9_ColT[] = {
-    #include "assets/levelGroup/BossRush/unkCol9/unkCol9.colT.inc.c"
+Vec3w BossRush_unkCol9_ColTris[] = {
+    #include "assets/levelGroup/BossRush/unkCol9/unkCol9.colTris.inc.c"
 };
 
-Rect3D BossRush_unkCol9_ColS = {
-    #include "assets/levelGroup/BossRush/unkCol9/unkCol9.colS.inc.c"
+Rect3D BossRush_unkCol9_BoundBox = {
+    #include "assets/levelGroup/BossRush/unkCol9/unkCol9.boundBox.inc.c"
 };
 
 ModelCollision BossRush_unkCol9_ColH = {
-6, 4, BossRush_unkCol9_ColV, BossRush_unkCol9_ColT, &BossRush_unkCol9_ColS
+6, 4, BossRush_unkCol9_ColVerts, BossRush_unkCol9_ColTris, &BossRush_unkCol9_BoundBox
 };
 s32 bossRush_pad[2] = {0, 0};
 Mtx BossRush_IMtx12 = IDENTITY;

@@ -815,355 +815,355 @@ Gfx Training_model22_Gfx[] = {
     #include "assets/levelGroup/Training/model22/model22.gfx.inc.c"
 };
 
-Vec3f Training_unkCol1_ColV[] = {
-    #include "assets/levelGroup/Training/unkCol1/unkCol1.colV.inc.c"
+Vec3f Training_unkCol1_ColVerts[] = {
+    #include "assets/levelGroup/Training/unkCol1/unkCol1.colVerts.inc.c"
 };
 
-Vec3w Training_unkCol1_ColT[] = {
-    #include "assets/levelGroup/Training/unkCol1/unkCol1.colT.inc.c"
+Vec3w Training_unkCol1_ColTris[] = {
+    #include "assets/levelGroup/Training/unkCol1/unkCol1.colTris.inc.c"
 };
 
-Rect3D Training_unkCol1_ColS = {
-    #include "assets/levelGroup/Training/unkCol1/unkCol1.colS.inc.c"
+Rect3D Training_unkCol1_BoundBox = {
+    #include "assets/levelGroup/Training/unkCol1/unkCol1.boundBox.inc.c"
 };
 
 ModelCollision Training_unkCol1_ColH = {
-122, 213, Training_unkCol1_ColV, Training_unkCol1_ColT, &Training_unkCol1_ColS
+122, 213, Training_unkCol1_ColVerts, Training_unkCol1_ColTris, &Training_unkCol1_BoundBox
 };
 
-Vec3f Training_unkCol2_ColV[] = {
-    #include "assets/levelGroup/Training/unkCol2/unkCol2.colV.inc.c"
+Vec3f Training_unkCol2_ColVerts[] = {
+    #include "assets/levelGroup/Training/unkCol2/unkCol2.colVerts.inc.c"
 };
 
-Vec3w Training_unkCol2_ColT[] = {
-    #include "assets/levelGroup/Training/unkCol2/unkCol2.colT.inc.c"
+Vec3w Training_unkCol2_ColTris[] = {
+    #include "assets/levelGroup/Training/unkCol2/unkCol2.colTris.inc.c"
 };
 
-Rect3D Training_unkCol2_ColS = {
-    #include "assets/levelGroup/Training/unkCol2/unkCol2.colS.inc.c"
+Rect3D Training_unkCol2_BoundBox = {
+    #include "assets/levelGroup/Training/unkCol2/unkCol2.boundBox.inc.c"
 };
 
 ModelCollision Training_unkCol2_ColH = {
-28, 46, Training_unkCol2_ColV, Training_unkCol2_ColT, &Training_unkCol2_ColS
+28, 46, Training_unkCol2_ColVerts, Training_unkCol2_ColTris, &Training_unkCol2_BoundBox
 };
 
-Vec3f Training_unkCol3_ColV[] = {
-    #include "assets/levelGroup/Training/unkCol3/unkCol3.colV.inc.c"
+Vec3f Training_unkCol3_ColVerts[] = {
+    #include "assets/levelGroup/Training/unkCol3/unkCol3.colVerts.inc.c"
 };
 
-Vec3w Training_unkCol3_ColT[] = {
-    #include "assets/levelGroup/Training/unkCol3/unkCol3.colT.inc.c"
+Vec3w Training_unkCol3_ColTris[] = {
+    #include "assets/levelGroup/Training/unkCol3/unkCol3.colTris.inc.c"
 };
 
-Rect3D Training_unkCol3_ColS = {
-    #include "assets/levelGroup/Training/unkCol3/unkCol3.colS.inc.c"
+Rect3D Training_unkCol3_BoundBox = {
+    #include "assets/levelGroup/Training/unkCol3/unkCol3.boundBox.inc.c"
 };
 
 ModelCollision Training_unkCol3_ColH = {
-59, 97, Training_unkCol3_ColV, Training_unkCol3_ColT, &Training_unkCol3_ColS
+59, 97, Training_unkCol3_ColVerts, Training_unkCol3_ColTris, &Training_unkCol3_BoundBox
 };
 
-Vec3f Training_unkCol4_ColV[] = {
-    #include "assets/levelGroup/Training/unkCol4/unkCol4.colV.inc.c"
+Vec3f Training_unkCol4_ColVerts[] = {
+    #include "assets/levelGroup/Training/unkCol4/unkCol4.colVerts.inc.c"
 };
 
-Vec3w Training_unkCol4_ColT[] = {
-    #include "assets/levelGroup/Training/unkCol4/unkCol4.colT.inc.c"
+Vec3w Training_unkCol4_ColTris[] = {
+    #include "assets/levelGroup/Training/unkCol4/unkCol4.colTris.inc.c"
 };
 
-Rect3D Training_unkCol4_ColS = {
-    #include "assets/levelGroup/Training/unkCol4/unkCol4.colS.inc.c"
+Rect3D Training_unkCol4_BoundBox = {
+    #include "assets/levelGroup/Training/unkCol4/unkCol4.boundBox.inc.c"
 };
 
 ModelCollision Training_unkCol4_ColH = {
-51, 84, Training_unkCol4_ColV, Training_unkCol4_ColT, &Training_unkCol4_ColS
+51, 84, Training_unkCol4_ColVerts, Training_unkCol4_ColTris, &Training_unkCol4_BoundBox
 };
 
-Vec3f Training_unkCol5_ColV[] = {
-    #include "assets/levelGroup/Training/unkCol5/unkCol5.colV.inc.c"
+Vec3f Training_unkCol5_ColVerts[] = {
+    #include "assets/levelGroup/Training/unkCol5/unkCol5.colVerts.inc.c"
 };
 
-Vec3w Training_unkCol5_ColT[] = {
-    #include "assets/levelGroup/Training/unkCol5/unkCol5.colT.inc.c"
+Vec3w Training_unkCol5_ColTris[] = {
+    #include "assets/levelGroup/Training/unkCol5/unkCol5.colTris.inc.c"
 };
 
-Rect3D Training_unkCol5_ColS = {
-    #include "assets/levelGroup/Training/unkCol5/unkCol5.colS.inc.c"
+Rect3D Training_unkCol5_BoundBox = {
+    #include "assets/levelGroup/Training/unkCol5/unkCol5.boundBox.inc.c"
 };
 
 ModelCollision Training_unkCol5_ColH = {
-23, 34, Training_unkCol5_ColV, Training_unkCol5_ColT, &Training_unkCol5_ColS
+23, 34, Training_unkCol5_ColVerts, Training_unkCol5_ColTris, &Training_unkCol5_BoundBox
 };
 
-Vec3f Training_unkCol6_ColV[] = {
-    #include "assets/levelGroup/Training/unkCol6/unkCol6.colV.inc.c"
+Vec3f Training_unkCol6_ColVerts[] = {
+    #include "assets/levelGroup/Training/unkCol6/unkCol6.colVerts.inc.c"
 };
 
-Vec3w Training_unkCol6_ColT[] = {
-    #include "assets/levelGroup/Training/unkCol6/unkCol6.colT.inc.c"
+Vec3w Training_unkCol6_ColTris[] = {
+    #include "assets/levelGroup/Training/unkCol6/unkCol6.colTris.inc.c"
 };
 
-Rect3D Training_unkCol6_ColS = {
-    #include "assets/levelGroup/Training/unkCol6/unkCol6.colS.inc.c"
+Rect3D Training_unkCol6_BoundBox = {
+    #include "assets/levelGroup/Training/unkCol6/unkCol6.boundBox.inc.c"
 };
 
 ModelCollision Training_unkCol6_ColH = {
-46, 83, Training_unkCol6_ColV, Training_unkCol6_ColT, &Training_unkCol6_ColS
+46, 83, Training_unkCol6_ColVerts, Training_unkCol6_ColTris, &Training_unkCol6_BoundBox
 };
 
-Vec3f Training_unkCol7_ColV[] = {
-    #include "assets/levelGroup/Training/unkCol7/unkCol7.colV.inc.c"
+Vec3f Training_unkCol7_ColVerts[] = {
+    #include "assets/levelGroup/Training/unkCol7/unkCol7.colVerts.inc.c"
 };
 
-Vec3w Training_unkCol7_ColT[] = {
-    #include "assets/levelGroup/Training/unkCol7/unkCol7.colT.inc.c"
+Vec3w Training_unkCol7_ColTris[] = {
+    #include "assets/levelGroup/Training/unkCol7/unkCol7.colTris.inc.c"
 };
 
-Rect3D Training_unkCol7_ColS = {
-    #include "assets/levelGroup/Training/unkCol7/unkCol7.colS.inc.c"
+Rect3D Training_unkCol7_BoundBox = {
+    #include "assets/levelGroup/Training/unkCol7/unkCol7.boundBox.inc.c"
 };
 
 ModelCollision Training_unkCol7_ColH = {
-16, 16, Training_unkCol7_ColV, Training_unkCol7_ColT, &Training_unkCol7_ColS
+16, 16, Training_unkCol7_ColVerts, Training_unkCol7_ColTris, &Training_unkCol7_BoundBox
 };
 
-Vec3f Training_unkCol8_ColV[] = {
-    #include "assets/levelGroup/Training/unkCol8/unkCol8.colV.inc.c"
+Vec3f Training_unkCol8_ColVerts[] = {
+    #include "assets/levelGroup/Training/unkCol8/unkCol8.colVerts.inc.c"
 };
 
-Vec3w Training_unkCol8_ColT[] = {
-    #include "assets/levelGroup/Training/unkCol8/unkCol8.colT.inc.c"
+Vec3w Training_unkCol8_ColTris[] = {
+    #include "assets/levelGroup/Training/unkCol8/unkCol8.colTris.inc.c"
 };
 
-Rect3D Training_unkCol8_ColS = {
-    #include "assets/levelGroup/Training/unkCol8/unkCol8.colS.inc.c"
+Rect3D Training_unkCol8_BoundBox = {
+    #include "assets/levelGroup/Training/unkCol8/unkCol8.boundBox.inc.c"
 };
 
 ModelCollision Training_unkCol8_ColH = {
-8, 18, Training_unkCol8_ColV, Training_unkCol8_ColT, &Training_unkCol8_ColS
+8, 18, Training_unkCol8_ColVerts, Training_unkCol8_ColTris, &Training_unkCol8_BoundBox
 };
 
-Vec3f Training_unkCol9_ColV[] = {
-    #include "assets/levelGroup/Training/unkCol9/unkCol9.colV.inc.c"
+Vec3f Training_unkCol9_ColVerts[] = {
+    #include "assets/levelGroup/Training/unkCol9/unkCol9.colVerts.inc.c"
 };
 
-Vec3w Training_unkCol9_ColT[] = {
-    #include "assets/levelGroup/Training/unkCol9/unkCol9.colT.inc.c"
+Vec3w Training_unkCol9_ColTris[] = {
+    #include "assets/levelGroup/Training/unkCol9/unkCol9.colTris.inc.c"
 };
 
-Rect3D Training_unkCol9_ColS = {
-    #include "assets/levelGroup/Training/unkCol9/unkCol9.colS.inc.c"
+Rect3D Training_unkCol9_BoundBox = {
+    #include "assets/levelGroup/Training/unkCol9/unkCol9.boundBox.inc.c"
 };
 
 ModelCollision Training_unkCol9_ColH = {
-16, 22, Training_unkCol9_ColV, Training_unkCol9_ColT, &Training_unkCol9_ColS
+16, 22, Training_unkCol9_ColVerts, Training_unkCol9_ColTris, &Training_unkCol9_BoundBox
 };
 
-Vec3f Training_unkCol10_ColV[] = {
-    #include "assets/levelGroup/Training/unkCol10/unkCol10.colV.inc.c"
+Vec3f Training_unkCol10_ColVerts[] = {
+    #include "assets/levelGroup/Training/unkCol10/unkCol10.colVerts.inc.c"
 };
 
-Vec3w Training_unkCol10_ColT[] = {
-    #include "assets/levelGroup/Training/unkCol10/unkCol10.colT.inc.c"
+Vec3w Training_unkCol10_ColTris[] = {
+    #include "assets/levelGroup/Training/unkCol10/unkCol10.colTris.inc.c"
 };
 
-Rect3D Training_unkCol10_ColS = {
-    #include "assets/levelGroup/Training/unkCol10/unkCol10.colS.inc.c"
+Rect3D Training_unkCol10_BoundBox = {
+    #include "assets/levelGroup/Training/unkCol10/unkCol10.boundBox.inc.c"
 };
 
 ModelCollision Training_unkCol10_ColH = {
-20, 24, Training_unkCol10_ColV, Training_unkCol10_ColT, &Training_unkCol10_ColS
+20, 24, Training_unkCol10_ColVerts, Training_unkCol10_ColTris, &Training_unkCol10_BoundBox
 };
 
-Vec3f Training_unkCol11_ColV[] = {
-    #include "assets/levelGroup/Training/unkCol11/unkCol11.colV.inc.c"
+Vec3f Training_unkCol11_ColVerts[] = {
+    #include "assets/levelGroup/Training/unkCol11/unkCol11.colVerts.inc.c"
 };
 
-Vec3w Training_unkCol11_ColT[] = {
-    #include "assets/levelGroup/Training/unkCol11/unkCol11.colT.inc.c"
+Vec3w Training_unkCol11_ColTris[] = {
+    #include "assets/levelGroup/Training/unkCol11/unkCol11.colTris.inc.c"
 };
 
-Rect3D Training_unkCol11_ColS = {
-    #include "assets/levelGroup/Training/unkCol11/unkCol11.colS.inc.c"
+Rect3D Training_unkCol11_BoundBox = {
+    #include "assets/levelGroup/Training/unkCol11/unkCol11.boundBox.inc.c"
 };
 
 ModelCollision Training_unkCol11_ColH = {
-16, 22, Training_unkCol11_ColV, Training_unkCol11_ColT, &Training_unkCol11_ColS
+16, 22, Training_unkCol11_ColVerts, Training_unkCol11_ColTris, &Training_unkCol11_BoundBox
 };
 
-Vec3f Training_unkCol12_ColV[] = {
-    #include "assets/levelGroup/Training/unkCol12/unkCol12.colV.inc.c"
+Vec3f Training_unkCol12_ColVerts[] = {
+    #include "assets/levelGroup/Training/unkCol12/unkCol12.colVerts.inc.c"
 };
 
-Vec3w Training_unkCol12_ColT[] = {
-    #include "assets/levelGroup/Training/unkCol12/unkCol12.colT.inc.c"
+Vec3w Training_unkCol12_ColTris[] = {
+    #include "assets/levelGroup/Training/unkCol12/unkCol12.colTris.inc.c"
 };
 
-Rect3D Training_unkCol12_ColS = {
-    #include "assets/levelGroup/Training/unkCol12/unkCol12.colS.inc.c"
+Rect3D Training_unkCol12_BoundBox = {
+    #include "assets/levelGroup/Training/unkCol12/unkCol12.boundBox.inc.c"
 };
 
 ModelCollision Training_unkCol12_ColH = {
-19, 23, Training_unkCol12_ColV, Training_unkCol12_ColT, &Training_unkCol12_ColS
+19, 23, Training_unkCol12_ColVerts, Training_unkCol12_ColTris, &Training_unkCol12_BoundBox
 };
 
-Vec3f Training_unkCol13_ColV[] = {
-    #include "assets/levelGroup/Training/unkCol13/unkCol13.colV.inc.c"
+Vec3f Training_unkCol13_ColVerts[] = {
+    #include "assets/levelGroup/Training/unkCol13/unkCol13.colVerts.inc.c"
 };
 
-Vec3w Training_unkCol13_ColT[] = {
-    #include "assets/levelGroup/Training/unkCol13/unkCol13.colT.inc.c"
+Vec3w Training_unkCol13_ColTris[] = {
+    #include "assets/levelGroup/Training/unkCol13/unkCol13.colTris.inc.c"
 };
 
-Rect3D Training_unkCol13_ColS = {
-    #include "assets/levelGroup/Training/unkCol13/unkCol13.colS.inc.c"
+Rect3D Training_unkCol13_BoundBox = {
+    #include "assets/levelGroup/Training/unkCol13/unkCol13.boundBox.inc.c"
 };
 
 ModelCollision Training_unkCol13_ColH = {
-13, 12, Training_unkCol13_ColV, Training_unkCol13_ColT, &Training_unkCol13_ColS
+13, 12, Training_unkCol13_ColVerts, Training_unkCol13_ColTris, &Training_unkCol13_BoundBox
 };
 
-Vec3f Training_unkCol14_ColV[] = {
-    #include "assets/levelGroup/Training/unkCol14/unkCol14.colV.inc.c"
+Vec3f Training_unkCol14_ColVerts[] = {
+    #include "assets/levelGroup/Training/unkCol14/unkCol14.colVerts.inc.c"
 };
 
-Vec3w Training_unkCol14_ColT[] = {
-    #include "assets/levelGroup/Training/unkCol14/unkCol14.colT.inc.c"
+Vec3w Training_unkCol14_ColTris[] = {
+    #include "assets/levelGroup/Training/unkCol14/unkCol14.colTris.inc.c"
 };
 
-Rect3D Training_unkCol14_ColS = {
-    #include "assets/levelGroup/Training/unkCol14/unkCol14.colS.inc.c"
+Rect3D Training_unkCol14_BoundBox = {
+    #include "assets/levelGroup/Training/unkCol14/unkCol14.boundBox.inc.c"
 };
 
 ModelCollision Training_unkCol14_ColH = {
-8, 10, Training_unkCol14_ColV, Training_unkCol14_ColT, &Training_unkCol14_ColS
+8, 10, Training_unkCol14_ColVerts, Training_unkCol14_ColTris, &Training_unkCol14_BoundBox
 };
 
-Vec3f Training_unkCol15_ColV[] = {
-    #include "assets/levelGroup/Training/unkCol15/unkCol15.colV.inc.c"
+Vec3f Training_unkCol15_ColVerts[] = {
+    #include "assets/levelGroup/Training/unkCol15/unkCol15.colVerts.inc.c"
 };
 
-Vec3w Training_unkCol15_ColT[] = {
-    #include "assets/levelGroup/Training/unkCol15/unkCol15.colT.inc.c"
+Vec3w Training_unkCol15_ColTris[] = {
+    #include "assets/levelGroup/Training/unkCol15/unkCol15.colTris.inc.c"
 };
 
-Rect3D Training_unkCol15_ColS = {
-    #include "assets/levelGroup/Training/unkCol15/unkCol15.colS.inc.c"
+Rect3D Training_unkCol15_BoundBox = {
+    #include "assets/levelGroup/Training/unkCol15/unkCol15.boundBox.inc.c"
 };
 
 ModelCollision Training_unkCol15_ColH = {
-12, 18, Training_unkCol15_ColV, Training_unkCol15_ColT, &Training_unkCol15_ColS
+12, 18, Training_unkCol15_ColVerts, Training_unkCol15_ColTris, &Training_unkCol15_BoundBox
 };
 
-Vec3f Training_unkCol16_ColV[] = {
-    #include "assets/levelGroup/Training/unkCol16/unkCol16.colV.inc.c"
+Vec3f Training_unkCol16_ColVerts[] = {
+    #include "assets/levelGroup/Training/unkCol16/unkCol16.colVerts.inc.c"
 };
 
-Vec3w Training_unkCol16_ColT[] = {
-    #include "assets/levelGroup/Training/unkCol16/unkCol16.colT.inc.c"
+Vec3w Training_unkCol16_ColTris[] = {
+    #include "assets/levelGroup/Training/unkCol16/unkCol16.colTris.inc.c"
 };
 
-Rect3D Training_unkCol16_ColS = {
-    #include "assets/levelGroup/Training/unkCol16/unkCol16.colS.inc.c"
+Rect3D Training_unkCol16_BoundBox = {
+    #include "assets/levelGroup/Training/unkCol16/unkCol16.boundBox.inc.c"
 };
 
 ModelCollision Training_unkCol16_ColH = {
-8, 10, Training_unkCol16_ColV, Training_unkCol16_ColT, &Training_unkCol16_ColS
+8, 10, Training_unkCol16_ColVerts, Training_unkCol16_ColTris, &Training_unkCol16_BoundBox
 };
 
-Vec3f Training_unkCol17_ColV[] = {
-    #include "assets/levelGroup/Training/unkCol17/unkCol17.colV.inc.c"
+Vec3f Training_unkCol17_ColVerts[] = {
+    #include "assets/levelGroup/Training/unkCol17/unkCol17.colVerts.inc.c"
 };
 
-Vec3w Training_unkCol17_ColT[] = {
-    #include "assets/levelGroup/Training/unkCol17/unkCol17.colT.inc.c"
+Vec3w Training_unkCol17_ColTris[] = {
+    #include "assets/levelGroup/Training/unkCol17/unkCol17.colTris.inc.c"
 };
 
-Rect3D Training_unkCol17_ColS = {
-    #include "assets/levelGroup/Training/unkCol17/unkCol17.colS.inc.c"
+Rect3D Training_unkCol17_BoundBox = {
+    #include "assets/levelGroup/Training/unkCol17/unkCol17.boundBox.inc.c"
 };
 
 ModelCollision Training_unkCol17_ColH = {
-15, 18, Training_unkCol17_ColV, Training_unkCol17_ColT, &Training_unkCol17_ColS
+15, 18, Training_unkCol17_ColVerts, Training_unkCol17_ColTris, &Training_unkCol17_BoundBox
 };
 
-Vec3f Training_unkCol18_ColV[] = {
-    #include "assets/levelGroup/Training/unkCol18/unkCol18.colV.inc.c"
+Vec3f Training_unkCol18_ColVerts[] = {
+    #include "assets/levelGroup/Training/unkCol18/unkCol18.colVerts.inc.c"
 };
 
-Vec3w Training_unkCol18_ColT[] = {
-    #include "assets/levelGroup/Training/unkCol18/unkCol18.colT.inc.c"
+Vec3w Training_unkCol18_ColTris[] = {
+    #include "assets/levelGroup/Training/unkCol18/unkCol18.colTris.inc.c"
 };
 
-Rect3D Training_unkCol18_ColS = {
-    #include "assets/levelGroup/Training/unkCol18/unkCol18.colS.inc.c"
+Rect3D Training_unkCol18_BoundBox = {
+    #include "assets/levelGroup/Training/unkCol18/unkCol18.boundBox.inc.c"
 };
 
 ModelCollision Training_unkCol18_ColH = {
-20, 24, Training_unkCol18_ColV, Training_unkCol18_ColT, &Training_unkCol18_ColS
+20, 24, Training_unkCol18_ColVerts, Training_unkCol18_ColTris, &Training_unkCol18_BoundBox
 };
 
-Vec3f Training_unkCol19_ColV[] = {
-    #include "assets/levelGroup/Training/unkCol19/unkCol19.colV.inc.c"
+Vec3f Training_unkCol19_ColVerts[] = {
+    #include "assets/levelGroup/Training/unkCol19/unkCol19.colVerts.inc.c"
 };
 
-Vec3w Training_unkCol19_ColT[] = {
-    #include "assets/levelGroup/Training/unkCol19/unkCol19.colT.inc.c"
+Vec3w Training_unkCol19_ColTris[] = {
+    #include "assets/levelGroup/Training/unkCol19/unkCol19.colTris.inc.c"
 };
 
-Rect3D Training_unkCol19_ColS = {
-    #include "assets/levelGroup/Training/unkCol19/unkCol19.colS.inc.c"
+Rect3D Training_unkCol19_BoundBox = {
+    #include "assets/levelGroup/Training/unkCol19/unkCol19.boundBox.inc.c"
 };
 
 ModelCollision Training_unkCol19_ColH = {
-6, 4, Training_unkCol19_ColV, Training_unkCol19_ColT, &Training_unkCol19_ColS
+6, 4, Training_unkCol19_ColVerts, Training_unkCol19_ColTris, &Training_unkCol19_BoundBox
 };
 
-Vec3f Training_unkCol20_ColV[] = {
-    #include "assets/levelGroup/Training/unkCol20/unkCol20.colV.inc.c"
+Vec3f Training_unkCol20_ColVerts[] = {
+    #include "assets/levelGroup/Training/unkCol20/unkCol20.colVerts.inc.c"
 };
 
-Vec3w Training_unkCol20_ColT[] = {
-    #include "assets/levelGroup/Training/unkCol20/unkCol20.colT.inc.c"
+Vec3w Training_unkCol20_ColTris[] = {
+    #include "assets/levelGroup/Training/unkCol20/unkCol20.colTris.inc.c"
 };
 
-Rect3D Training_unkCol20_ColS = {
-    #include "assets/levelGroup/Training/unkCol20/unkCol20.colS.inc.c"
+Rect3D Training_unkCol20_BoundBox = {
+    #include "assets/levelGroup/Training/unkCol20/unkCol20.boundBox.inc.c"
 };
 
 ModelCollision Training_unkCol20_ColH = {
-6, 4, Training_unkCol20_ColV, Training_unkCol20_ColT, &Training_unkCol20_ColS
+6, 4, Training_unkCol20_ColVerts, Training_unkCol20_ColTris, &Training_unkCol20_BoundBox
 };
 
-Vec3f Training_unkCol21_ColV[] = {
-    #include "assets/levelGroup/Training/unkCol21/unkCol21.colV.inc.c"
+Vec3f Training_unkCol21_ColVerts[] = {
+    #include "assets/levelGroup/Training/unkCol21/unkCol21.colVerts.inc.c"
 };
 
-Vec3w Training_unkCol21_ColT[] = {
-    #include "assets/levelGroup/Training/unkCol21/unkCol21.colT.inc.c"
+Vec3w Training_unkCol21_ColTris[] = {
+    #include "assets/levelGroup/Training/unkCol21/unkCol21.colTris.inc.c"
 };
 
-Rect3D Training_unkCol21_ColS = {
-    #include "assets/levelGroup/Training/unkCol21/unkCol21.colS.inc.c"
+Rect3D Training_unkCol21_BoundBox = {
+    #include "assets/levelGroup/Training/unkCol21/unkCol21.boundBox.inc.c"
 };
 
 ModelCollision Training_unkCol21_ColH = {
-6, 4, Training_unkCol21_ColV, Training_unkCol21_ColT, &Training_unkCol21_ColS
+6, 4, Training_unkCol21_ColVerts, Training_unkCol21_ColTris, &Training_unkCol21_BoundBox
 };
 
-Vec3f Training_unkCol22_ColV[] = {
-    #include "assets/levelGroup/Training/unkCol22/unkCol22.colV.inc.c"
+Vec3f Training_unkCol22_ColVerts[] = {
+    #include "assets/levelGroup/Training/unkCol22/unkCol22.colVerts.inc.c"
 };
 
-Vec3w Training_unkCol22_ColT[] = {
-    #include "assets/levelGroup/Training/unkCol22/unkCol22.colT.inc.c"
+Vec3w Training_unkCol22_ColTris[] = {
+    #include "assets/levelGroup/Training/unkCol22/unkCol22.colTris.inc.c"
 };
 
-Rect3D Training_unkCol22_ColS = {
-    #include "assets/levelGroup/Training/unkCol22/unkCol22.colS.inc.c"
+Rect3D Training_unkCol22_BoundBox = {
+    #include "assets/levelGroup/Training/unkCol22/unkCol22.boundBox.inc.c"
 };
 
 ModelCollision Training_unkCol22_ColH = {
-6, 4, Training_unkCol22_ColV, Training_unkCol22_ColT, &Training_unkCol22_ColS
+6, 4, Training_unkCol22_ColVerts, Training_unkCol22_ColTris, &Training_unkCol22_BoundBox
 };
 Mtx Training_IMtx25 = IDENTITY;

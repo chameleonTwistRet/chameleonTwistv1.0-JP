@@ -285,36 +285,36 @@ Gfx Quintella_model2_Gfx[] = {
     #include "assets/levelGroup/Quintella/model2/model2.gfx.inc.c"
 };
 
-Vec3f Quintella_unkCol1_ColV[] = {
-    #include "assets/levelGroup/Quintella/unkCol1/unkCol1.colV.inc.c"
+Vec3f Quintella_unkCol1_ColVerts[] = {
+    #include "assets/levelGroup/Quintella/unkCol1/unkCol1.colVerts.inc.c"
 };
 
-Vec3w Quintella_unkCol1_ColT[] = {
-    #include "assets/levelGroup/Quintella/unkCol1/unkCol1.colT.inc.c"
+Vec3w Quintella_unkCol1_ColTris[] = {
+    #include "assets/levelGroup/Quintella/unkCol1/unkCol1.colTris.inc.c"
 };
 
-Rect3D Quintella_unkCol1_ColS = {
-    #include "assets/levelGroup/Quintella/unkCol1/unkCol1.colS.inc.c"
+Rect3D Quintella_unkCol1_BoundBox = {
+    #include "assets/levelGroup/Quintella/unkCol1/unkCol1.boundBox.inc.c"
 };
 
 ModelCollision Quintella_unkCol1_ColH = {
-34, 60, Quintella_unkCol1_ColV, Quintella_unkCol1_ColT, &Quintella_unkCol1_ColS
+34, 60, Quintella_unkCol1_ColVerts, Quintella_unkCol1_ColTris, &Quintella_unkCol1_BoundBox
 };
 
-Vec3f Quintella_unkCol2_ColV[] = {
-    #include "assets/levelGroup/Quintella/unkCol2/unkCol2.colV.inc.c"
+Vec3f Quintella_unkCol2_ColVerts[] = {
+    #include "assets/levelGroup/Quintella/unkCol2/unkCol2.colVerts.inc.c"
 };
 
-Vec3w Quintella_unkCol2_ColT[] = {
-    #include "assets/levelGroup/Quintella/unkCol2/unkCol2.colT.inc.c"
+Vec3w Quintella_unkCol2_ColTris[] = {
+    #include "assets/levelGroup/Quintella/unkCol2/unkCol2.colTris.inc.c"
 };
 
-Rect3D Quintella_unkCol2_ColS = {
-    #include "assets/levelGroup/Quintella/unkCol2/unkCol2.colS.inc.c"
+Rect3D Quintella_unkCol2_BoundBox = {
+    #include "assets/levelGroup/Quintella/unkCol2/unkCol2.boundBox.inc.c"
 };
 
 ModelCollision Quintella_unkCol2_ColH = {
-17, 24, Quintella_unkCol2_ColV, Quintella_unkCol2_ColT, &Quintella_unkCol2_ColS
+17, 24, Quintella_unkCol2_ColVerts, Quintella_unkCol2_ColTris, &Quintella_unkCol2_BoundBox
 };
 Mtx Quintella_IMtx5 = IDENTITY;
 

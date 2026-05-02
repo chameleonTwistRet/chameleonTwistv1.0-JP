@@ -263,36 +263,36 @@ Gfx GiantCake_model2_Gfx[] = {
     #include "assets/levelGroup/GiantCake/model2/model2.gfx.inc.c"
 };
 
-Vec3f GiantCake_unkCol1_ColV[] = {
-    #include "assets/levelGroup/GiantCake/unkCol1/unkCol1.colV.inc.c"
+Vec3f GiantCake_unkCol1_ColVerts[] = {
+    #include "assets/levelGroup/GiantCake/unkCol1/unkCol1.colVerts.inc.c"
 };
 
-Vec3w GiantCake_unkCol1_ColT[] = {
-    #include "assets/levelGroup/GiantCake/unkCol1/unkCol1.colT.inc.c"
+Vec3w GiantCake_unkCol1_ColTris[] = {
+    #include "assets/levelGroup/GiantCake/unkCol1/unkCol1.colTris.inc.c"
 };
 
-Rect3D GiantCake_unkCol1_ColS = {
-    #include "assets/levelGroup/GiantCake/unkCol1/unkCol1.colS.inc.c"
+Rect3D GiantCake_unkCol1_BoundBox = {
+    #include "assets/levelGroup/GiantCake/unkCol1/unkCol1.boundBox.inc.c"
 };
 
 ModelCollision GiantCake_unkCol1_ColH = {
-16, 22, GiantCake_unkCol1_ColV, GiantCake_unkCol1_ColT, &GiantCake_unkCol1_ColS
+16, 22, GiantCake_unkCol1_ColVerts, GiantCake_unkCol1_ColTris, &GiantCake_unkCol1_BoundBox
 };
 
-Vec3f GiantCake_unkCol2_ColV[] = {
-    #include "assets/levelGroup/GiantCake/unkCol2/unkCol2.colV.inc.c"
+Vec3f GiantCake_unkCol2_ColVerts[] = {
+    #include "assets/levelGroup/GiantCake/unkCol2/unkCol2.colVerts.inc.c"
 };
 
-Vec3w GiantCake_unkCol2_ColT[] = {
-    #include "assets/levelGroup/GiantCake/unkCol2/unkCol2.colT.inc.c"
+Vec3w GiantCake_unkCol2_ColTris[] = {
+    #include "assets/levelGroup/GiantCake/unkCol2/unkCol2.colTris.inc.c"
 };
 
-Rect3D GiantCake_unkCol2_ColS = {
-    #include "assets/levelGroup/GiantCake/unkCol2/unkCol2.colS.inc.c"
+Rect3D GiantCake_unkCol2_BoundBox = {
+    #include "assets/levelGroup/GiantCake/unkCol2/unkCol2.boundBox.inc.c"
 };
 
 ModelCollision GiantCake_unkCol2_ColH = {
-8, 10, GiantCake_unkCol2_ColV, GiantCake_unkCol2_ColT, &GiantCake_unkCol2_ColS
+8, 10, GiantCake_unkCol2_ColVerts, GiantCake_unkCol2_ColTris, &GiantCake_unkCol2_BoundBox
 };
 Mtx GiantCake_IMtx5 = IDENTITY;
 

@@ -277,36 +277,36 @@ Gfx BombSnake_arenaFloor_Gfx[] = {
     #include "assets/levelGroup/BombSnake/arenaFloor/arenaFloor.gfx.inc.c"
 };
 
-Vec3f BombSnake_arenaWalls_ColV[] = {
-    #include "assets/levelGroup/BombSnake/arenaWalls/arenaWalls.colV.inc.c"
+Vec3f BombSnake_arenaWalls_ColVerts[] = {
+    #include "assets/levelGroup/BombSnake/arenaWalls/arenaWalls.colVerts.inc.c"
 };
 
-Vec3w BombSnake_arenaWalls_ColT[] = {
-    #include "assets/levelGroup/BombSnake/arenaWalls/arenaWalls.colT.inc.c"
+Vec3w BombSnake_arenaWalls_ColTris[] = {
+    #include "assets/levelGroup/BombSnake/arenaWalls/arenaWalls.colTris.inc.c"
 };
 
-Rect3D BombSnake_arenaWalls_ColS = {
-    #include "assets/levelGroup/BombSnake/arenaWalls/arenaWalls.colS.inc.c"
+Rect3D BombSnake_arenaWalls_BoundBox = {
+    #include "assets/levelGroup/BombSnake/arenaWalls/arenaWalls.boundBox.inc.c"
 };
 
 ModelCollision BombSnake_arenaWalls_ColH = {
-18, 24, BombSnake_arenaWalls_ColV, BombSnake_arenaWalls_ColT, &BombSnake_arenaWalls_ColS
+18, 24, BombSnake_arenaWalls_ColVerts, BombSnake_arenaWalls_ColTris, &BombSnake_arenaWalls_BoundBox
 };
 
-Vec3f BombSnake_arenaFloor_ColV[] = {
-    #include "assets/levelGroup/BombSnake/arenaFloor/arenaFloor.colV.inc.c"
+Vec3f BombSnake_arenaFloor_ColVerts[] = {
+    #include "assets/levelGroup/BombSnake/arenaFloor/arenaFloor.colVerts.inc.c"
 };
 
-Vec3w BombSnake_arenaFloor_ColT[] = {
-    #include "assets/levelGroup/BombSnake/arenaFloor/arenaFloor.colT.inc.c"
+Vec3w BombSnake_arenaFloor_ColTris[] = {
+    #include "assets/levelGroup/BombSnake/arenaFloor/arenaFloor.colTris.inc.c"
 };
 
-Rect3D BombSnake_arenaFloor_ColS = {
-    #include "assets/levelGroup/BombSnake/arenaFloor/arenaFloor.colS.inc.c"
+Rect3D BombSnake_arenaFloor_BoundBox = {
+    #include "assets/levelGroup/BombSnake/arenaFloor/arenaFloor.boundBox.inc.c"
 };
 
 ModelCollision BombSnake_arenaFloor_ColH = {
-12, 16, BombSnake_arenaFloor_ColV, BombSnake_arenaFloor_ColT, &BombSnake_arenaFloor_ColS
+12, 16, BombSnake_arenaFloor_ColVerts, BombSnake_arenaFloor_ColTris, &BombSnake_arenaFloor_BoundBox
 };
 Mtx BombSnake_IMtx5 = IDENTITY;
 

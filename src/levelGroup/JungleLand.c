@@ -2475,1348 +2475,1348 @@ Gfx JungleLand_water2_Gfx[] = {
     #include "assets/levelGroup/JungleLand/water2/water2.gfx.inc.c"
 };
 
-Vec3f JungleLand_lilypad_ColV[] = {
-    #include "assets/levelGroup/JungleLand/lilypad/lilypad.colV.inc.c"
+Vec3f JungleLand_lilypad_ColVerts[] = {
+    #include "assets/levelGroup/JungleLand/lilypad/lilypad.colVerts.inc.c"
 };
 
-Vec3w JungleLand_lilypad_ColT[] = {
-    #include "assets/levelGroup/JungleLand/lilypad/lilypad.colT.inc.c"
+Vec3w JungleLand_lilypad_ColTris[] = {
+    #include "assets/levelGroup/JungleLand/lilypad/lilypad.colTris.inc.c"
 };
 
-Rect3D JungleLand_lilypad_ColS = {
-    #include "assets/levelGroup/JungleLand/lilypad/lilypad.colS.inc.c"
+Rect3D JungleLand_lilypad_BoundBox = {
+    #include "assets/levelGroup/JungleLand/lilypad/lilypad.boundBox.inc.c"
 };
 
 ModelCollision JungleLand_lilypad_ColH = {
-8, 6, JungleLand_lilypad_ColV, JungleLand_lilypad_ColT, &JungleLand_lilypad_ColS
+8, 6, JungleLand_lilypad_ColVerts, JungleLand_lilypad_ColTris, &JungleLand_lilypad_BoundBox
 };
 
-Vec3f JungleLand_vine_ColV[] = {
-    #include "assets/levelGroup/JungleLand/vine/vine.colV.inc.c"
+Vec3f JungleLand_vine_ColVerts[] = {
+    #include "assets/levelGroup/JungleLand/vine/vine.colVerts.inc.c"
 };
 
-Vec3w JungleLand_vine_ColT[] = {
-    #include "assets/levelGroup/JungleLand/vine/vine.colT.inc.c"
+Vec3w JungleLand_vine_ColTris[] = {
+    #include "assets/levelGroup/JungleLand/vine/vine.colTris.inc.c"
 };
 
-Rect3D JungleLand_vine_ColS = {
-    #include "assets/levelGroup/JungleLand/vine/vine.colS.inc.c"
+Rect3D JungleLand_vine_BoundBox = {
+    #include "assets/levelGroup/JungleLand/vine/vine.boundBox.inc.c"
 };
 
 ModelCollision JungleLand_vine_ColH = {
-4, 4, JungleLand_vine_ColV, JungleLand_vine_ColT, &JungleLand_vine_ColS
+4, 4, JungleLand_vine_ColVerts, JungleLand_vine_ColTris, &JungleLand_vine_BoundBox
 };
 
-Vec3f JungleLand_fallenCrownLog_ColV[] = {
-    #include "assets/levelGroup/JungleLand/fallenCrownLog/fallenCrownLog.colV.inc.c"
+Vec3f JungleLand_fallenCrownLog_ColVerts[] = {
+    #include "assets/levelGroup/JungleLand/fallenCrownLog/fallenCrownLog.colVerts.inc.c"
 };
 
-Vec3w JungleLand_fallenCrownLog_ColT[] = {
-    #include "assets/levelGroup/JungleLand/fallenCrownLog/fallenCrownLog.colT.inc.c"
+Vec3w JungleLand_fallenCrownLog_ColTris[] = {
+    #include "assets/levelGroup/JungleLand/fallenCrownLog/fallenCrownLog.colTris.inc.c"
 };
 
-Rect3D JungleLand_fallenCrownLog_ColS = {
-    #include "assets/levelGroup/JungleLand/fallenCrownLog/fallenCrownLog.colS.inc.c"
+Rect3D JungleLand_fallenCrownLog_BoundBox = {
+    #include "assets/levelGroup/JungleLand/fallenCrownLog/fallenCrownLog.boundBox.inc.c"
 };
 
 ModelCollision JungleLand_fallenCrownLog_ColH = {
-18, 32, JungleLand_fallenCrownLog_ColV, JungleLand_fallenCrownLog_ColT, &JungleLand_fallenCrownLog_ColS
+18, 32, JungleLand_fallenCrownLog_ColVerts, JungleLand_fallenCrownLog_ColTris, &JungleLand_fallenCrownLog_BoundBox
 };
 
-Vec3f JungleLand_unkLog_ColV[] = {
-    #include "assets/levelGroup/JungleLand/unkLog/unkLog.colV.inc.c"
+Vec3f JungleLand_unkLog_ColVerts[] = {
+    #include "assets/levelGroup/JungleLand/unkLog/unkLog.colVerts.inc.c"
 };
 
-Vec3w JungleLand_unkLog_ColT[] = {
-    #include "assets/levelGroup/JungleLand/unkLog/unkLog.colT.inc.c"
+Vec3w JungleLand_unkLog_ColTris[] = {
+    #include "assets/levelGroup/JungleLand/unkLog/unkLog.colTris.inc.c"
 };
 
-Rect3D JungleLand_unkLog_ColS = {
-    #include "assets/levelGroup/JungleLand/unkLog/unkLog.colS.inc.c"
+Rect3D JungleLand_unkLog_BoundBox = {
+    #include "assets/levelGroup/JungleLand/unkLog/unkLog.boundBox.inc.c"
 };
 
 ModelCollision JungleLand_unkLog_ColH = {
-12, 20, JungleLand_unkLog_ColV, JungleLand_unkLog_ColT, &JungleLand_unkLog_ColS
+12, 20, JungleLand_unkLog_ColVerts, JungleLand_unkLog_ColTris, &JungleLand_unkLog_BoundBox
 };
 
-Vec3f JungleLand_fallenLogStump_ColV[] = {
-    #include "assets/levelGroup/JungleLand/fallenLogStump/fallenLogStump.colV.inc.c"
+Vec3f JungleLand_fallenLogStump_ColVerts[] = {
+    #include "assets/levelGroup/JungleLand/fallenLogStump/fallenLogStump.colVerts.inc.c"
 };
 
-Vec3w JungleLand_fallenLogStump_ColT[] = {
-    #include "assets/levelGroup/JungleLand/fallenLogStump/fallenLogStump.colT.inc.c"
+Vec3w JungleLand_fallenLogStump_ColTris[] = {
+    #include "assets/levelGroup/JungleLand/fallenLogStump/fallenLogStump.colTris.inc.c"
 };
 
-Rect3D JungleLand_fallenLogStump_ColS = {
-    #include "assets/levelGroup/JungleLand/fallenLogStump/fallenLogStump.colS.inc.c"
+Rect3D JungleLand_fallenLogStump_BoundBox = {
+    #include "assets/levelGroup/JungleLand/fallenLogStump/fallenLogStump.boundBox.inc.c"
 };
 
 ModelCollision JungleLand_fallenLogStump_ColH = {
-12, 16, JungleLand_fallenLogStump_ColV, JungleLand_fallenLogStump_ColT, &JungleLand_fallenLogStump_ColS
+12, 16, JungleLand_fallenLogStump_ColVerts, JungleLand_fallenLogStump_ColTris, &JungleLand_fallenLogStump_BoundBox
 };
 
-Vec3f JungleLand_logTunnel_ColV[] = {
-    #include "assets/levelGroup/JungleLand/logTunnel/logTunnel.colV.inc.c"
+Vec3f JungleLand_logTunnel_ColVerts[] = {
+    #include "assets/levelGroup/JungleLand/logTunnel/logTunnel.colVerts.inc.c"
 };
 
-Vec3w JungleLand_logTunnel_ColT[] = {
-    #include "assets/levelGroup/JungleLand/logTunnel/logTunnel.colT.inc.c"
+Vec3w JungleLand_logTunnel_ColTris[] = {
+    #include "assets/levelGroup/JungleLand/logTunnel/logTunnel.colTris.inc.c"
 };
 
-Rect3D JungleLand_logTunnel_ColS = {
-    #include "assets/levelGroup/JungleLand/logTunnel/logTunnel.colS.inc.c"
+Rect3D JungleLand_logTunnel_BoundBox = {
+    #include "assets/levelGroup/JungleLand/logTunnel/logTunnel.boundBox.inc.c"
 };
 
 ModelCollision JungleLand_logTunnel_ColH = {
-38, 62, JungleLand_logTunnel_ColV, JungleLand_logTunnel_ColT, &JungleLand_logTunnel_ColS
+38, 62, JungleLand_logTunnel_ColVerts, JungleLand_logTunnel_ColTris, &JungleLand_logTunnel_BoundBox
 };
 
-Vec3f JungleLand_waterfallRock_ColV[] = {
-    #include "assets/levelGroup/JungleLand/waterfallRock/waterfallRock.colV.inc.c"
+Vec3f JungleLand_waterfallRock_ColVerts[] = {
+    #include "assets/levelGroup/JungleLand/waterfallRock/waterfallRock.colVerts.inc.c"
 };
 
-Vec3w JungleLand_waterfallRock_ColT[] = {
-    #include "assets/levelGroup/JungleLand/waterfallRock/waterfallRock.colT.inc.c"
+Vec3w JungleLand_waterfallRock_ColTris[] = {
+    #include "assets/levelGroup/JungleLand/waterfallRock/waterfallRock.colTris.inc.c"
 };
 
-Rect3D JungleLand_waterfallRock_ColS = {
-    #include "assets/levelGroup/JungleLand/waterfallRock/waterfallRock.colS.inc.c"
+Rect3D JungleLand_waterfallRock_BoundBox = {
+    #include "assets/levelGroup/JungleLand/waterfallRock/waterfallRock.boundBox.inc.c"
 };
 
 ModelCollision JungleLand_waterfallRock_ColH = {
-10, 13, JungleLand_waterfallRock_ColV, JungleLand_waterfallRock_ColT, &JungleLand_waterfallRock_ColS
+10, 13, JungleLand_waterfallRock_ColVerts, JungleLand_waterfallRock_ColTris, &JungleLand_waterfallRock_BoundBox
 };
 
-Vec3f JungleLand_extEntranceDoorFrame_ColV[] = {
-    #include "assets/levelGroup/JungleLand/extEntranceDoorFrame/extEntranceDoorFrame.colV.inc.c"
+Vec3f JungleLand_extEntranceDoorFrame_ColVerts[] = {
+    #include "assets/levelGroup/JungleLand/extEntranceDoorFrame/extEntranceDoorFrame.colVerts.inc.c"
 };
 
-Vec3w JungleLand_extEntranceDoorFrame_ColT[] = {
-    #include "assets/levelGroup/JungleLand/extEntranceDoorFrame/extEntranceDoorFrame.colT.inc.c"
+Vec3w JungleLand_extEntranceDoorFrame_ColTris[] = {
+    #include "assets/levelGroup/JungleLand/extEntranceDoorFrame/extEntranceDoorFrame.colTris.inc.c"
 };
 
-Rect3D JungleLand_extEntranceDoorFrame_ColS = {
-    #include "assets/levelGroup/JungleLand/extEntranceDoorFrame/extEntranceDoorFrame.colS.inc.c"
+Rect3D JungleLand_extEntranceDoorFrame_BoundBox = {
+    #include "assets/levelGroup/JungleLand/extEntranceDoorFrame/extEntranceDoorFrame.boundBox.inc.c"
 };
 
 ModelCollision JungleLand_extEntranceDoorFrame_ColH = {
-36, 46, JungleLand_extEntranceDoorFrame_ColV, JungleLand_extEntranceDoorFrame_ColT, &JungleLand_extEntranceDoorFrame_ColS
+36, 46, JungleLand_extEntranceDoorFrame_ColVerts, JungleLand_extEntranceDoorFrame_ColTris, &JungleLand_extEntranceDoorFrame_BoundBox
 };
 
-Vec3f JungleLand_fallBridge_ColV[] = {
-    #include "assets/levelGroup/JungleLand/fallBridge/fallBridge.colV.inc.c"
+Vec3f JungleLand_fallBridge_ColVerts[] = {
+    #include "assets/levelGroup/JungleLand/fallBridge/fallBridge.colVerts.inc.c"
 };
 
-Vec3w JungleLand_fallBridge_ColT[] = {
-    #include "assets/levelGroup/JungleLand/fallBridge/fallBridge.colT.inc.c"
+Vec3w JungleLand_fallBridge_ColTris[] = {
+    #include "assets/levelGroup/JungleLand/fallBridge/fallBridge.colTris.inc.c"
 };
 
-Rect3D JungleLand_fallBridge_ColS = {
-    #include "assets/levelGroup/JungleLand/fallBridge/fallBridge.colS.inc.c"
+Rect3D JungleLand_fallBridge_BoundBox = {
+    #include "assets/levelGroup/JungleLand/fallBridge/fallBridge.boundBox.inc.c"
 };
 
 ModelCollision JungleLand_fallBridge_ColH = {
-4, 2, JungleLand_fallBridge_ColV, JungleLand_fallBridge_ColT, &JungleLand_fallBridge_ColS
+4, 2, JungleLand_fallBridge_ColVerts, JungleLand_fallBridge_ColTris, &JungleLand_fallBridge_BoundBox
 };
 
-Vec3f JungleLand_ctCrate_ColV[] = {
-    #include "assets/levelGroup/JungleLand/ctCrate/ctCrate.colV.inc.c"
+Vec3f JungleLand_ctCrate_ColVerts[] = {
+    #include "assets/levelGroup/JungleLand/ctCrate/ctCrate.colVerts.inc.c"
 };
 
-Vec3w JungleLand_ctCrate_ColT[] = {
-    #include "assets/levelGroup/JungleLand/ctCrate/ctCrate.colT.inc.c"
+Vec3w JungleLand_ctCrate_ColTris[] = {
+    #include "assets/levelGroup/JungleLand/ctCrate/ctCrate.colTris.inc.c"
 };
 
-Rect3D JungleLand_ctCrate_ColS = {
-    #include "assets/levelGroup/JungleLand/ctCrate/ctCrate.colS.inc.c"
+Rect3D JungleLand_ctCrate_BoundBox = {
+    #include "assets/levelGroup/JungleLand/ctCrate/ctCrate.boundBox.inc.c"
 };
 
 ModelCollision JungleLand_ctCrate_ColH = {
-8, 10, JungleLand_ctCrate_ColV, JungleLand_ctCrate_ColT, &JungleLand_ctCrate_ColS
+8, 10, JungleLand_ctCrate_ColVerts, JungleLand_ctCrate_ColTris, &JungleLand_ctCrate_BoundBox
 };
 
-Vec3f JungleLand_ctCrate2_ColV[] = {
-    #include "assets/levelGroup/JungleLand/ctCrate2/ctCrate2.colV.inc.c"
+Vec3f JungleLand_ctCrate2_ColVerts[] = {
+    #include "assets/levelGroup/JungleLand/ctCrate2/ctCrate2.colVerts.inc.c"
 };
 
-Vec3w JungleLand_ctCrate2_ColT[] = {
-    #include "assets/levelGroup/JungleLand/ctCrate2/ctCrate2.colT.inc.c"
+Vec3w JungleLand_ctCrate2_ColTris[] = {
+    #include "assets/levelGroup/JungleLand/ctCrate2/ctCrate2.colTris.inc.c"
 };
 
-Rect3D JungleLand_ctCrate2_ColS = {
-    #include "assets/levelGroup/JungleLand/ctCrate2/ctCrate2.colS.inc.c"
+Rect3D JungleLand_ctCrate2_BoundBox = {
+    #include "assets/levelGroup/JungleLand/ctCrate2/ctCrate2.boundBox.inc.c"
 };
 
 ModelCollision JungleLand_ctCrate2_ColH = {
-8, 10, JungleLand_ctCrate2_ColV, JungleLand_ctCrate2_ColT, &JungleLand_ctCrate2_ColS
+8, 10, JungleLand_ctCrate2_ColVerts, JungleLand_ctCrate2_ColTris, &JungleLand_ctCrate2_BoundBox
 };
 
-Vec3f JungleLand_walkingPlank_ColV[] = {
-    #include "assets/levelGroup/JungleLand/walkingPlank/walkingPlank.colV.inc.c"
+Vec3f JungleLand_walkingPlank_ColVerts[] = {
+    #include "assets/levelGroup/JungleLand/walkingPlank/walkingPlank.colVerts.inc.c"
 };
 
-Vec3w JungleLand_walkingPlank_ColT[] = {
-    #include "assets/levelGroup/JungleLand/walkingPlank/walkingPlank.colT.inc.c"
+Vec3w JungleLand_walkingPlank_ColTris[] = {
+    #include "assets/levelGroup/JungleLand/walkingPlank/walkingPlank.colTris.inc.c"
 };
 
-Rect3D JungleLand_walkingPlank_ColS = {
-    #include "assets/levelGroup/JungleLand/walkingPlank/walkingPlank.colS.inc.c"
+Rect3D JungleLand_walkingPlank_BoundBox = {
+    #include "assets/levelGroup/JungleLand/walkingPlank/walkingPlank.boundBox.inc.c"
 };
 
 ModelCollision JungleLand_walkingPlank_ColH = {
-8, 8, JungleLand_walkingPlank_ColV, JungleLand_walkingPlank_ColT, &JungleLand_walkingPlank_ColS
+8, 8, JungleLand_walkingPlank_ColVerts, JungleLand_walkingPlank_ColTris, &JungleLand_walkingPlank_BoundBox
 };
 
-Vec3f JungleLand_walkingPlank2_ColV[] = {
-    #include "assets/levelGroup/JungleLand/walkingPlank2/walkingPlank2.colV.inc.c"
+Vec3f JungleLand_walkingPlank2_ColVerts[] = {
+    #include "assets/levelGroup/JungleLand/walkingPlank2/walkingPlank2.colVerts.inc.c"
 };
 
-Vec3w JungleLand_walkingPlank2_ColT[] = {
-    #include "assets/levelGroup/JungleLand/walkingPlank2/walkingPlank2.colT.inc.c"
+Vec3w JungleLand_walkingPlank2_ColTris[] = {
+    #include "assets/levelGroup/JungleLand/walkingPlank2/walkingPlank2.colTris.inc.c"
 };
 
-Rect3D JungleLand_walkingPlank2_ColS = {
-    #include "assets/levelGroup/JungleLand/walkingPlank2/walkingPlank2.colS.inc.c"
+Rect3D JungleLand_walkingPlank2_BoundBox = {
+    #include "assets/levelGroup/JungleLand/walkingPlank2/walkingPlank2.boundBox.inc.c"
 };
 
 ModelCollision JungleLand_walkingPlank2_ColH = {
-8, 8, JungleLand_walkingPlank2_ColV, JungleLand_walkingPlank2_ColT, &JungleLand_walkingPlank2_ColS
+8, 8, JungleLand_walkingPlank2_ColVerts, JungleLand_walkingPlank2_ColTris, &JungleLand_walkingPlank2_BoundBox
 };
 
-Vec3f JungleLand_walkingPlank3_ColV[] = {
-    #include "assets/levelGroup/JungleLand/walkingPlank3/walkingPlank3.colV.inc.c"
+Vec3f JungleLand_walkingPlank3_ColVerts[] = {
+    #include "assets/levelGroup/JungleLand/walkingPlank3/walkingPlank3.colVerts.inc.c"
 };
 
-Vec3w JungleLand_walkingPlank3_ColT[] = {
-    #include "assets/levelGroup/JungleLand/walkingPlank3/walkingPlank3.colT.inc.c"
+Vec3w JungleLand_walkingPlank3_ColTris[] = {
+    #include "assets/levelGroup/JungleLand/walkingPlank3/walkingPlank3.colTris.inc.c"
 };
 
-Rect3D JungleLand_walkingPlank3_ColS = {
-    #include "assets/levelGroup/JungleLand/walkingPlank3/walkingPlank3.colS.inc.c"
+Rect3D JungleLand_walkingPlank3_BoundBox = {
+    #include "assets/levelGroup/JungleLand/walkingPlank3/walkingPlank3.boundBox.inc.c"
 };
 
 ModelCollision JungleLand_walkingPlank3_ColH = {
-8, 8, JungleLand_walkingPlank3_ColV, JungleLand_walkingPlank3_ColT, &JungleLand_walkingPlank3_ColS
+8, 8, JungleLand_walkingPlank3_ColVerts, JungleLand_walkingPlank3_ColTris, &JungleLand_walkingPlank3_BoundBox
 };
 
-Vec3f JungleLand_walkingPlank4_ColV[] = {
-    #include "assets/levelGroup/JungleLand/walkingPlank4/walkingPlank4.colV.inc.c"
+Vec3f JungleLand_walkingPlank4_ColVerts[] = {
+    #include "assets/levelGroup/JungleLand/walkingPlank4/walkingPlank4.colVerts.inc.c"
 };
 
-Vec3w JungleLand_walkingPlank4_ColT[] = {
-    #include "assets/levelGroup/JungleLand/walkingPlank4/walkingPlank4.colT.inc.c"
+Vec3w JungleLand_walkingPlank4_ColTris[] = {
+    #include "assets/levelGroup/JungleLand/walkingPlank4/walkingPlank4.colTris.inc.c"
 };
 
-Rect3D JungleLand_walkingPlank4_ColS = {
-    #include "assets/levelGroup/JungleLand/walkingPlank4/walkingPlank4.colS.inc.c"
+Rect3D JungleLand_walkingPlank4_BoundBox = {
+    #include "assets/levelGroup/JungleLand/walkingPlank4/walkingPlank4.boundBox.inc.c"
 };
 
 ModelCollision JungleLand_walkingPlank4_ColH = {
-8, 8, JungleLand_walkingPlank4_ColV, JungleLand_walkingPlank4_ColT, &JungleLand_walkingPlank4_ColS
+8, 8, JungleLand_walkingPlank4_ColVerts, JungleLand_walkingPlank4_ColTris, &JungleLand_walkingPlank4_BoundBox
 };
 
-Vec3f JungleLand_singularPlank_ColV[] = {
-    #include "assets/levelGroup/JungleLand/singularPlank/singularPlank.colV.inc.c"
+Vec3f JungleLand_singularPlank_ColVerts[] = {
+    #include "assets/levelGroup/JungleLand/singularPlank/singularPlank.colVerts.inc.c"
 };
 
-Vec3w JungleLand_singularPlank_ColT[] = {
-    #include "assets/levelGroup/JungleLand/singularPlank/singularPlank.colT.inc.c"
+Vec3w JungleLand_singularPlank_ColTris[] = {
+    #include "assets/levelGroup/JungleLand/singularPlank/singularPlank.colTris.inc.c"
 };
 
-Rect3D JungleLand_singularPlank_ColS = {
-    #include "assets/levelGroup/JungleLand/singularPlank/singularPlank.colS.inc.c"
+Rect3D JungleLand_singularPlank_BoundBox = {
+    #include "assets/levelGroup/JungleLand/singularPlank/singularPlank.boundBox.inc.c"
 };
 
 ModelCollision JungleLand_singularPlank_ColH = {
-4, 2, JungleLand_singularPlank_ColV, JungleLand_singularPlank_ColT, &JungleLand_singularPlank_ColS
+4, 2, JungleLand_singularPlank_ColVerts, JungleLand_singularPlank_ColTris, &JungleLand_singularPlank_BoundBox
 };
 
-Vec3f JungleLand_roomSixStartPlatform_ColV[] = {
-    #include "assets/levelGroup/JungleLand/roomSixStartPlatform/roomSixStartPlatform.colV.inc.c"
+Vec3f JungleLand_roomSixStartPlatform_ColVerts[] = {
+    #include "assets/levelGroup/JungleLand/roomSixStartPlatform/roomSixStartPlatform.colVerts.inc.c"
 };
 
-Vec3w JungleLand_roomSixStartPlatform_ColT[] = {
-    #include "assets/levelGroup/JungleLand/roomSixStartPlatform/roomSixStartPlatform.colT.inc.c"
+Vec3w JungleLand_roomSixStartPlatform_ColTris[] = {
+    #include "assets/levelGroup/JungleLand/roomSixStartPlatform/roomSixStartPlatform.colTris.inc.c"
 };
 
-Rect3D JungleLand_roomSixStartPlatform_ColS = {
-    #include "assets/levelGroup/JungleLand/roomSixStartPlatform/roomSixStartPlatform.colS.inc.c"
+Rect3D JungleLand_roomSixStartPlatform_BoundBox = {
+    #include "assets/levelGroup/JungleLand/roomSixStartPlatform/roomSixStartPlatform.boundBox.inc.c"
 };
 
 ModelCollision JungleLand_roomSixStartPlatform_ColH = {
-12, 14, JungleLand_roomSixStartPlatform_ColV, JungleLand_roomSixStartPlatform_ColT, &JungleLand_roomSixStartPlatform_ColS
+12, 14, JungleLand_roomSixStartPlatform_ColVerts, JungleLand_roomSixStartPlatform_ColTris, &JungleLand_roomSixStartPlatform_BoundBox
 };
 
-Vec3f JungleLand_cavePlatform_ColV[] = {
-    #include "assets/levelGroup/JungleLand/cavePlatform/cavePlatform.colV.inc.c"
+Vec3f JungleLand_cavePlatform_ColVerts[] = {
+    #include "assets/levelGroup/JungleLand/cavePlatform/cavePlatform.colVerts.inc.c"
 };
 
-Vec3w JungleLand_cavePlatform_ColT[] = {
-    #include "assets/levelGroup/JungleLand/cavePlatform/cavePlatform.colT.inc.c"
+Vec3w JungleLand_cavePlatform_ColTris[] = {
+    #include "assets/levelGroup/JungleLand/cavePlatform/cavePlatform.colTris.inc.c"
 };
 
-Rect3D JungleLand_cavePlatform_ColS = {
-    #include "assets/levelGroup/JungleLand/cavePlatform/cavePlatform.colS.inc.c"
+Rect3D JungleLand_cavePlatform_BoundBox = {
+    #include "assets/levelGroup/JungleLand/cavePlatform/cavePlatform.boundBox.inc.c"
 };
 
 ModelCollision JungleLand_cavePlatform_ColH = {
-8, 8, JungleLand_cavePlatform_ColV, JungleLand_cavePlatform_ColT, &JungleLand_cavePlatform_ColS
+8, 8, JungleLand_cavePlatform_ColVerts, JungleLand_cavePlatform_ColTris, &JungleLand_cavePlatform_BoundBox
 };
 
-Vec3f JungleLand_roomSixCrownPlatform_ColV[] = {
-    #include "assets/levelGroup/JungleLand/roomSixCrownPlatform/roomSixCrownPlatform.colV.inc.c"
+Vec3f JungleLand_roomSixCrownPlatform_ColVerts[] = {
+    #include "assets/levelGroup/JungleLand/roomSixCrownPlatform/roomSixCrownPlatform.colVerts.inc.c"
 };
 
-Vec3w JungleLand_roomSixCrownPlatform_ColT[] = {
-    #include "assets/levelGroup/JungleLand/roomSixCrownPlatform/roomSixCrownPlatform.colT.inc.c"
+Vec3w JungleLand_roomSixCrownPlatform_ColTris[] = {
+    #include "assets/levelGroup/JungleLand/roomSixCrownPlatform/roomSixCrownPlatform.colTris.inc.c"
 };
 
-Rect3D JungleLand_roomSixCrownPlatform_ColS = {
-    #include "assets/levelGroup/JungleLand/roomSixCrownPlatform/roomSixCrownPlatform.colS.inc.c"
+Rect3D JungleLand_roomSixCrownPlatform_BoundBox = {
+    #include "assets/levelGroup/JungleLand/roomSixCrownPlatform/roomSixCrownPlatform.boundBox.inc.c"
 };
 
 ModelCollision JungleLand_roomSixCrownPlatform_ColH = {
-12, 14, JungleLand_roomSixCrownPlatform_ColV, JungleLand_roomSixCrownPlatform_ColT, &JungleLand_roomSixCrownPlatform_ColS
+12, 14, JungleLand_roomSixCrownPlatform_ColVerts, JungleLand_roomSixCrownPlatform_ColTris, &JungleLand_roomSixCrownPlatform_BoundBox
 };
 
-Vec3f JungleLand_roomSixSidePlatform_ColV[] = {
-    #include "assets/levelGroup/JungleLand/roomSixSidePlatform/roomSixSidePlatform.colV.inc.c"
+Vec3f JungleLand_roomSixSidePlatform_ColVerts[] = {
+    #include "assets/levelGroup/JungleLand/roomSixSidePlatform/roomSixSidePlatform.colVerts.inc.c"
 };
 
-Vec3w JungleLand_roomSixSidePlatform_ColT[] = {
-    #include "assets/levelGroup/JungleLand/roomSixSidePlatform/roomSixSidePlatform.colT.inc.c"
+Vec3w JungleLand_roomSixSidePlatform_ColTris[] = {
+    #include "assets/levelGroup/JungleLand/roomSixSidePlatform/roomSixSidePlatform.colTris.inc.c"
 };
 
-Rect3D JungleLand_roomSixSidePlatform_ColS = {
-    #include "assets/levelGroup/JungleLand/roomSixSidePlatform/roomSixSidePlatform.colS.inc.c"
+Rect3D JungleLand_roomSixSidePlatform_BoundBox = {
+    #include "assets/levelGroup/JungleLand/roomSixSidePlatform/roomSixSidePlatform.boundBox.inc.c"
 };
 
 ModelCollision JungleLand_roomSixSidePlatform_ColH = {
-15, 18, JungleLand_roomSixSidePlatform_ColV, JungleLand_roomSixSidePlatform_ColT, &JungleLand_roomSixSidePlatform_ColS
+15, 18, JungleLand_roomSixSidePlatform_ColVerts, JungleLand_roomSixSidePlatform_ColTris, &JungleLand_roomSixSidePlatform_BoundBox
 };
 
-Vec3f JungleLand_roomSevenLava_ColV[] = {
-    #include "assets/levelGroup/JungleLand/roomSevenLava/roomSevenLava.colV.inc.c"
+Vec3f JungleLand_roomSevenLava_ColVerts[] = {
+    #include "assets/levelGroup/JungleLand/roomSevenLava/roomSevenLava.colVerts.inc.c"
 };
 
-Vec3w JungleLand_roomSevenLava_ColT[] = {
-    #include "assets/levelGroup/JungleLand/roomSevenLava/roomSevenLava.colT.inc.c"
+Vec3w JungleLand_roomSevenLava_ColTris[] = {
+    #include "assets/levelGroup/JungleLand/roomSevenLava/roomSevenLava.colTris.inc.c"
 };
 
-Rect3D JungleLand_roomSevenLava_ColS = {
-    #include "assets/levelGroup/JungleLand/roomSevenLava/roomSevenLava.colS.inc.c"
+Rect3D JungleLand_roomSevenLava_BoundBox = {
+    #include "assets/levelGroup/JungleLand/roomSevenLava/roomSevenLava.boundBox.inc.c"
 };
 
 ModelCollision JungleLand_roomSevenLava_ColH = {
-12, 10, JungleLand_roomSevenLava_ColV, JungleLand_roomSevenLava_ColT, &JungleLand_roomSevenLava_ColS
+12, 10, JungleLand_roomSevenLava_ColVerts, JungleLand_roomSevenLava_ColTris, &JungleLand_roomSevenLava_BoundBox
 };
 
-Vec3f JungleLand_roomSevenFloor_ColV[] = {
-    #include "assets/levelGroup/JungleLand/roomSevenFloor/roomSevenFloor.colV.inc.c"
+Vec3f JungleLand_roomSevenFloor_ColVerts[] = {
+    #include "assets/levelGroup/JungleLand/roomSevenFloor/roomSevenFloor.colVerts.inc.c"
 };
 
-Vec3w JungleLand_roomSevenFloor_ColT[] = {
-    #include "assets/levelGroup/JungleLand/roomSevenFloor/roomSevenFloor.colT.inc.c"
+Vec3w JungleLand_roomSevenFloor_ColTris[] = {
+    #include "assets/levelGroup/JungleLand/roomSevenFloor/roomSevenFloor.colTris.inc.c"
 };
 
-Rect3D JungleLand_roomSevenFloor_ColS = {
-    #include "assets/levelGroup/JungleLand/roomSevenFloor/roomSevenFloor.colS.inc.c"
+Rect3D JungleLand_roomSevenFloor_BoundBox = {
+    #include "assets/levelGroup/JungleLand/roomSevenFloor/roomSevenFloor.boundBox.inc.c"
 };
 
 ModelCollision JungleLand_roomSevenFloor_ColH = {
-8, 6, JungleLand_roomSevenFloor_ColV, JungleLand_roomSevenFloor_ColT, &JungleLand_roomSevenFloor_ColS
+8, 6, JungleLand_roomSevenFloor_ColVerts, JungleLand_roomSevenFloor_ColTris, &JungleLand_roomSevenFloor_BoundBox
 };
 
-Vec3f JungleLand_roomZeroLava_ColV[] = {
-    #include "assets/levelGroup/JungleLand/roomZeroLava/roomZeroLava.colV.inc.c"
+Vec3f JungleLand_roomZeroLava_ColVerts[] = {
+    #include "assets/levelGroup/JungleLand/roomZeroLava/roomZeroLava.colVerts.inc.c"
 };
 
-Vec3w JungleLand_roomZeroLava_ColT[] = {
-    #include "assets/levelGroup/JungleLand/roomZeroLava/roomZeroLava.colT.inc.c"
+Vec3w JungleLand_roomZeroLava_ColTris[] = {
+    #include "assets/levelGroup/JungleLand/roomZeroLava/roomZeroLava.colTris.inc.c"
 };
 
-Rect3D JungleLand_roomZeroLava_ColS = {
-    #include "assets/levelGroup/JungleLand/roomZeroLava/roomZeroLava.colS.inc.c"
+Rect3D JungleLand_roomZeroLava_BoundBox = {
+    #include "assets/levelGroup/JungleLand/roomZeroLava/roomZeroLava.boundBox.inc.c"
 };
 
 ModelCollision JungleLand_roomZeroLava_ColH = {
-8, 6, JungleLand_roomZeroLava_ColV, JungleLand_roomZeroLava_ColT, &JungleLand_roomZeroLava_ColS
+8, 6, JungleLand_roomZeroLava_ColVerts, JungleLand_roomZeroLava_ColTris, &JungleLand_roomZeroLava_BoundBox
 };
 
-Vec3f JungleLand_roomOnePlatform_ColV[] = {
-    #include "assets/levelGroup/JungleLand/roomOnePlatform/roomOnePlatform.colV.inc.c"
+Vec3f JungleLand_roomOnePlatform_ColVerts[] = {
+    #include "assets/levelGroup/JungleLand/roomOnePlatform/roomOnePlatform.colVerts.inc.c"
 };
 
-Vec3w JungleLand_roomOnePlatform_ColT[] = {
-    #include "assets/levelGroup/JungleLand/roomOnePlatform/roomOnePlatform.colT.inc.c"
+Vec3w JungleLand_roomOnePlatform_ColTris[] = {
+    #include "assets/levelGroup/JungleLand/roomOnePlatform/roomOnePlatform.colTris.inc.c"
 };
 
-Rect3D JungleLand_roomOnePlatform_ColS = {
-    #include "assets/levelGroup/JungleLand/roomOnePlatform/roomOnePlatform.colS.inc.c"
+Rect3D JungleLand_roomOnePlatform_BoundBox = {
+    #include "assets/levelGroup/JungleLand/roomOnePlatform/roomOnePlatform.boundBox.inc.c"
 };
 
 ModelCollision JungleLand_roomOnePlatform_ColH = {
-16, 22, JungleLand_roomOnePlatform_ColV, JungleLand_roomOnePlatform_ColT, &JungleLand_roomOnePlatform_ColS
+16, 22, JungleLand_roomOnePlatform_ColVerts, JungleLand_roomOnePlatform_ColTris, &JungleLand_roomOnePlatform_BoundBox
 };
 
-Vec3f JungleLand_roomSixCrownEdgePlatform_ColV[] = {
-    #include "assets/levelGroup/JungleLand/roomSixCrownEdgePlatform/roomSixCrownEdgePlatform.colV.inc.c"
+Vec3f JungleLand_roomSixCrownEdgePlatform_ColVerts[] = {
+    #include "assets/levelGroup/JungleLand/roomSixCrownEdgePlatform/roomSixCrownEdgePlatform.colVerts.inc.c"
 };
 
-Vec3w JungleLand_roomSixCrownEdgePlatform_ColT[] = {
-    #include "assets/levelGroup/JungleLand/roomSixCrownEdgePlatform/roomSixCrownEdgePlatform.colT.inc.c"
+Vec3w JungleLand_roomSixCrownEdgePlatform_ColTris[] = {
+    #include "assets/levelGroup/JungleLand/roomSixCrownEdgePlatform/roomSixCrownEdgePlatform.colTris.inc.c"
 };
 
-Rect3D JungleLand_roomSixCrownEdgePlatform_ColS = {
-    #include "assets/levelGroup/JungleLand/roomSixCrownEdgePlatform/roomSixCrownEdgePlatform.colS.inc.c"
+Rect3D JungleLand_roomSixCrownEdgePlatform_BoundBox = {
+    #include "assets/levelGroup/JungleLand/roomSixCrownEdgePlatform/roomSixCrownEdgePlatform.boundBox.inc.c"
 };
 
 ModelCollision JungleLand_roomSixCrownEdgePlatform_ColH = {
-18, 20, JungleLand_roomSixCrownEdgePlatform_ColV, JungleLand_roomSixCrownEdgePlatform_ColT, &JungleLand_roomSixCrownEdgePlatform_ColS
+18, 20, JungleLand_roomSixCrownEdgePlatform_ColVerts, JungleLand_roomSixCrownEdgePlatform_ColTris, &JungleLand_roomSixCrownEdgePlatform_BoundBox
 };
 
-Vec3f JungleLand_roomSevenSpinRing_ColV[] = {
-    #include "assets/levelGroup/JungleLand/roomSevenSpinRing/roomSevenSpinRing.colV.inc.c"
+Vec3f JungleLand_roomSevenSpinRing_ColVerts[] = {
+    #include "assets/levelGroup/JungleLand/roomSevenSpinRing/roomSevenSpinRing.colVerts.inc.c"
 };
 
-Vec3w JungleLand_roomSevenSpinRing_ColT[] = {
-    #include "assets/levelGroup/JungleLand/roomSevenSpinRing/roomSevenSpinRing.colT.inc.c"
+Vec3w JungleLand_roomSevenSpinRing_ColTris[] = {
+    #include "assets/levelGroup/JungleLand/roomSevenSpinRing/roomSevenSpinRing.colTris.inc.c"
 };
 
-Rect3D JungleLand_roomSevenSpinRing_ColS = {
-    #include "assets/levelGroup/JungleLand/roomSevenSpinRing/roomSevenSpinRing.colS.inc.c"
+Rect3D JungleLand_roomSevenSpinRing_BoundBox = {
+    #include "assets/levelGroup/JungleLand/roomSevenSpinRing/roomSevenSpinRing.boundBox.inc.c"
 };
 
 ModelCollision JungleLand_roomSevenSpinRing_ColH = {
-51, 86, JungleLand_roomSevenSpinRing_ColV, JungleLand_roomSevenSpinRing_ColT, &JungleLand_roomSevenSpinRing_ColS
+51, 86, JungleLand_roomSevenSpinRing_ColVerts, JungleLand_roomSevenSpinRing_ColTris, &JungleLand_roomSevenSpinRing_BoundBox
 };
 
-Vec3f JungleLand_woodBlock_ColV[] = {
-    #include "assets/levelGroup/JungleLand/woodBlock/woodBlock.colV.inc.c"
+Vec3f JungleLand_woodBlock_ColVerts[] = {
+    #include "assets/levelGroup/JungleLand/woodBlock/woodBlock.colVerts.inc.c"
 };
 
-Vec3w JungleLand_woodBlock_ColT[] = {
-    #include "assets/levelGroup/JungleLand/woodBlock/woodBlock.colT.inc.c"
+Vec3w JungleLand_woodBlock_ColTris[] = {
+    #include "assets/levelGroup/JungleLand/woodBlock/woodBlock.colTris.inc.c"
 };
 
-Rect3D JungleLand_woodBlock_ColS = {
-    #include "assets/levelGroup/JungleLand/woodBlock/woodBlock.colS.inc.c"
+Rect3D JungleLand_woodBlock_BoundBox = {
+    #include "assets/levelGroup/JungleLand/woodBlock/woodBlock.boundBox.inc.c"
 };
 
 ModelCollision JungleLand_woodBlock_ColH = {
-8, 10, JungleLand_woodBlock_ColV, JungleLand_woodBlock_ColT, &JungleLand_woodBlock_ColS
+8, 10, JungleLand_woodBlock_ColVerts, JungleLand_woodBlock_ColTris, &JungleLand_woodBlock_BoundBox
 };
 
-Vec3f JungleLand_ropes_ColV[] = {
-    #include "assets/levelGroup/JungleLand/ropes/ropes.colV.inc.c"
+Vec3f JungleLand_ropes_ColVerts[] = {
+    #include "assets/levelGroup/JungleLand/ropes/ropes.colVerts.inc.c"
 };
 
-Vec3w JungleLand_ropes_ColT[] = {
-    #include "assets/levelGroup/JungleLand/ropes/ropes.colT.inc.c"
+Vec3w JungleLand_ropes_ColTris[] = {
+    #include "assets/levelGroup/JungleLand/ropes/ropes.colTris.inc.c"
 };
 
-Rect3D JungleLand_ropes_ColS = {
-    #include "assets/levelGroup/JungleLand/ropes/ropes.colS.inc.c"
+Rect3D JungleLand_ropes_BoundBox = {
+    #include "assets/levelGroup/JungleLand/ropes/ropes.boundBox.inc.c"
 };
 
 ModelCollision JungleLand_ropes_ColH = {
-4, 4, JungleLand_ropes_ColV, JungleLand_ropes_ColT, &JungleLand_ropes_ColS
+4, 4, JungleLand_ropes_ColVerts, JungleLand_ropes_ColTris, &JungleLand_ropes_BoundBox
 };
 
-Vec3f JungleLand_railOne_ColV[] = {
-    #include "assets/levelGroup/JungleLand/railOne/railOne.colV.inc.c"
+Vec3f JungleLand_railOne_ColVerts[] = {
+    #include "assets/levelGroup/JungleLand/railOne/railOne.colVerts.inc.c"
 };
 
-Vec3w JungleLand_railOne_ColT[] = {
-    #include "assets/levelGroup/JungleLand/railOne/railOne.colT.inc.c"
+Vec3w JungleLand_railOne_ColTris[] = {
+    #include "assets/levelGroup/JungleLand/railOne/railOne.colTris.inc.c"
 };
 
-Rect3D JungleLand_railOne_ColS = {
-    #include "assets/levelGroup/JungleLand/railOne/railOne.colS.inc.c"
+Rect3D JungleLand_railOne_BoundBox = {
+    #include "assets/levelGroup/JungleLand/railOne/railOne.boundBox.inc.c"
 };
 
 ModelCollision JungleLand_railOne_ColH = {
-16, 16, JungleLand_railOne_ColV, JungleLand_railOne_ColT, &JungleLand_railOne_ColS
+16, 16, JungleLand_railOne_ColVerts, JungleLand_railOne_ColTris, &JungleLand_railOne_BoundBox
 };
 
-Vec3f JungleLand_railTwo_ColV[] = {
-    #include "assets/levelGroup/JungleLand/railTwo/railTwo.colV.inc.c"
+Vec3f JungleLand_railTwo_ColVerts[] = {
+    #include "assets/levelGroup/JungleLand/railTwo/railTwo.colVerts.inc.c"
 };
 
-Vec3w JungleLand_railTwo_ColT[] = {
-    #include "assets/levelGroup/JungleLand/railTwo/railTwo.colT.inc.c"
+Vec3w JungleLand_railTwo_ColTris[] = {
+    #include "assets/levelGroup/JungleLand/railTwo/railTwo.colTris.inc.c"
 };
 
-Rect3D JungleLand_railTwo_ColS = {
-    #include "assets/levelGroup/JungleLand/railTwo/railTwo.colS.inc.c"
+Rect3D JungleLand_railTwo_BoundBox = {
+    #include "assets/levelGroup/JungleLand/railTwo/railTwo.boundBox.inc.c"
 };
 
 ModelCollision JungleLand_railTwo_ColH = {
-16, 16, JungleLand_railTwo_ColV, JungleLand_railTwo_ColT, &JungleLand_railTwo_ColS
+16, 16, JungleLand_railTwo_ColVerts, JungleLand_railTwo_ColTris, &JungleLand_railTwo_BoundBox
 };
 
-Vec3f JungleLand_railThree_ColV[] = {
-    #include "assets/levelGroup/JungleLand/railThree/railThree.colV.inc.c"
+Vec3f JungleLand_railThree_ColVerts[] = {
+    #include "assets/levelGroup/JungleLand/railThree/railThree.colVerts.inc.c"
 };
 
-Vec3w JungleLand_railThree_ColT[] = {
-    #include "assets/levelGroup/JungleLand/railThree/railThree.colT.inc.c"
+Vec3w JungleLand_railThree_ColTris[] = {
+    #include "assets/levelGroup/JungleLand/railThree/railThree.colTris.inc.c"
 };
 
-Rect3D JungleLand_railThree_ColS = {
-    #include "assets/levelGroup/JungleLand/railThree/railThree.colS.inc.c"
+Rect3D JungleLand_railThree_BoundBox = {
+    #include "assets/levelGroup/JungleLand/railThree/railThree.boundBox.inc.c"
 };
 
 ModelCollision JungleLand_railThree_ColH = {
-16, 16, JungleLand_railThree_ColV, JungleLand_railThree_ColT, &JungleLand_railThree_ColS
+16, 16, JungleLand_railThree_ColVerts, JungleLand_railThree_ColTris, &JungleLand_railThree_BoundBox
 };
 
-Vec3f JungleLand_railFour_ColV[] = {
-    #include "assets/levelGroup/JungleLand/railFour/railFour.colV.inc.c"
+Vec3f JungleLand_railFour_ColVerts[] = {
+    #include "assets/levelGroup/JungleLand/railFour/railFour.colVerts.inc.c"
 };
 
-Vec3w JungleLand_railFour_ColT[] = {
-    #include "assets/levelGroup/JungleLand/railFour/railFour.colT.inc.c"
+Vec3w JungleLand_railFour_ColTris[] = {
+    #include "assets/levelGroup/JungleLand/railFour/railFour.colTris.inc.c"
 };
 
-Rect3D JungleLand_railFour_ColS = {
-    #include "assets/levelGroup/JungleLand/railFour/railFour.colS.inc.c"
+Rect3D JungleLand_railFour_BoundBox = {
+    #include "assets/levelGroup/JungleLand/railFour/railFour.boundBox.inc.c"
 };
 
 ModelCollision JungleLand_railFour_ColH = {
-16, 16, JungleLand_railFour_ColV, JungleLand_railFour_ColT, &JungleLand_railFour_ColS
+16, 16, JungleLand_railFour_ColVerts, JungleLand_railFour_ColTris, &JungleLand_railFour_BoundBox
 };
 
-Vec3f JungleLand_railFive_ColV[] = {
-    #include "assets/levelGroup/JungleLand/railFive/railFive.colV.inc.c"
+Vec3f JungleLand_railFive_ColVerts[] = {
+    #include "assets/levelGroup/JungleLand/railFive/railFive.colVerts.inc.c"
 };
 
-Vec3w JungleLand_railFive_ColT[] = {
-    #include "assets/levelGroup/JungleLand/railFive/railFive.colT.inc.c"
+Vec3w JungleLand_railFive_ColTris[] = {
+    #include "assets/levelGroup/JungleLand/railFive/railFive.colTris.inc.c"
 };
 
-Rect3D JungleLand_railFive_ColS = {
-    #include "assets/levelGroup/JungleLand/railFive/railFive.colS.inc.c"
+Rect3D JungleLand_railFive_BoundBox = {
+    #include "assets/levelGroup/JungleLand/railFive/railFive.boundBox.inc.c"
 };
 
 ModelCollision JungleLand_railFive_ColH = {
-16, 16, JungleLand_railFive_ColV, JungleLand_railFive_ColT, &JungleLand_railFive_ColS
+16, 16, JungleLand_railFive_ColVerts, JungleLand_railFive_ColTris, &JungleLand_railFive_BoundBox
 };
 
-Vec3f JungleLand_railSix_ColV[] = {
-    #include "assets/levelGroup/JungleLand/railSix/railSix.colV.inc.c"
+Vec3f JungleLand_railSix_ColVerts[] = {
+    #include "assets/levelGroup/JungleLand/railSix/railSix.colVerts.inc.c"
 };
 
-Vec3w JungleLand_railSix_ColT[] = {
-    #include "assets/levelGroup/JungleLand/railSix/railSix.colT.inc.c"
+Vec3w JungleLand_railSix_ColTris[] = {
+    #include "assets/levelGroup/JungleLand/railSix/railSix.colTris.inc.c"
 };
 
-Rect3D JungleLand_railSix_ColS = {
-    #include "assets/levelGroup/JungleLand/railSix/railSix.colS.inc.c"
+Rect3D JungleLand_railSix_BoundBox = {
+    #include "assets/levelGroup/JungleLand/railSix/railSix.boundBox.inc.c"
 };
 
 ModelCollision JungleLand_railSix_ColH = {
-16, 16, JungleLand_railSix_ColV, JungleLand_railSix_ColT, &JungleLand_railSix_ColS
+16, 16, JungleLand_railSix_ColVerts, JungleLand_railSix_ColTris, &JungleLand_railSix_BoundBox
 };
 
-Vec3f JungleLand_rail_ColV[] = {
-    #include "assets/levelGroup/JungleLand/rail/rail.colV.inc.c"
+Vec3f JungleLand_rail_ColVerts[] = {
+    #include "assets/levelGroup/JungleLand/rail/rail.colVerts.inc.c"
 };
 
-Vec3w JungleLand_rail_ColT[] = {
-    #include "assets/levelGroup/JungleLand/rail/rail.colT.inc.c"
+Vec3w JungleLand_rail_ColTris[] = {
+    #include "assets/levelGroup/JungleLand/rail/rail.colTris.inc.c"
 };
 
-Rect3D JungleLand_rail_ColS = {
-    #include "assets/levelGroup/JungleLand/rail/rail.colS.inc.c"
+Rect3D JungleLand_rail_BoundBox = {
+    #include "assets/levelGroup/JungleLand/rail/rail.boundBox.inc.c"
 };
 
 ModelCollision JungleLand_rail_ColH = {
-16, 20, JungleLand_rail_ColV, JungleLand_rail_ColT, &JungleLand_rail_ColS
+16, 20, JungleLand_rail_ColVerts, JungleLand_rail_ColTris, &JungleLand_rail_BoundBox
 };
 
-Vec3f JungleLand_ctCrate3_ColV[] = {
-    #include "assets/levelGroup/JungleLand/ctCrate3/ctCrate3.colV.inc.c"
+Vec3f JungleLand_ctCrate3_ColVerts[] = {
+    #include "assets/levelGroup/JungleLand/ctCrate3/ctCrate3.colVerts.inc.c"
 };
 
-Vec3w JungleLand_ctCrate3_ColT[] = {
-    #include "assets/levelGroup/JungleLand/ctCrate3/ctCrate3.colT.inc.c"
+Vec3w JungleLand_ctCrate3_ColTris[] = {
+    #include "assets/levelGroup/JungleLand/ctCrate3/ctCrate3.colTris.inc.c"
 };
 
-Rect3D JungleLand_ctCrate3_ColS = {
-    #include "assets/levelGroup/JungleLand/ctCrate3/ctCrate3.colS.inc.c"
+Rect3D JungleLand_ctCrate3_BoundBox = {
+    #include "assets/levelGroup/JungleLand/ctCrate3/ctCrate3.boundBox.inc.c"
 };
 
 ModelCollision JungleLand_ctCrate3_ColH = {
-8, 10, JungleLand_ctCrate3_ColV, JungleLand_ctCrate3_ColT, &JungleLand_ctCrate3_ColS
+8, 10, JungleLand_ctCrate3_ColVerts, JungleLand_ctCrate3_ColTris, &JungleLand_ctCrate3_BoundBox
 };
 
-Vec3f JungleLand_logOne_ColV[] = {
-    #include "assets/levelGroup/JungleLand/logOne/logOne.colV.inc.c"
+Vec3f JungleLand_logOne_ColVerts[] = {
+    #include "assets/levelGroup/JungleLand/logOne/logOne.colVerts.inc.c"
 };
 
-Vec3w JungleLand_logOne_ColT[] = {
-    #include "assets/levelGroup/JungleLand/logOne/logOne.colT.inc.c"
+Vec3w JungleLand_logOne_ColTris[] = {
+    #include "assets/levelGroup/JungleLand/logOne/logOne.colTris.inc.c"
 };
 
-Rect3D JungleLand_logOne_ColS = {
-    #include "assets/levelGroup/JungleLand/logOne/logOne.colS.inc.c"
+Rect3D JungleLand_logOne_BoundBox = {
+    #include "assets/levelGroup/JungleLand/logOne/logOne.boundBox.inc.c"
 };
 
 ModelCollision JungleLand_logOne_ColH = {
-10, 8, JungleLand_logOne_ColV, JungleLand_logOne_ColT, &JungleLand_logOne_ColS
+10, 8, JungleLand_logOne_ColVerts, JungleLand_logOne_ColTris, &JungleLand_logOne_BoundBox
 };
 
-Vec3f JungleLand_fallBridgeSmall2_ColV[] = {
-    #include "assets/levelGroup/JungleLand/fallBridgeSmall2/fallBridgeSmall2.colV.inc.c"
+Vec3f JungleLand_fallBridgeSmall2_ColVerts[] = {
+    #include "assets/levelGroup/JungleLand/fallBridgeSmall2/fallBridgeSmall2.colVerts.inc.c"
 };
 
-Vec3w JungleLand_fallBridgeSmall2_ColT[] = {
-    #include "assets/levelGroup/JungleLand/fallBridgeSmall2/fallBridgeSmall2.colT.inc.c"
+Vec3w JungleLand_fallBridgeSmall2_ColTris[] = {
+    #include "assets/levelGroup/JungleLand/fallBridgeSmall2/fallBridgeSmall2.colTris.inc.c"
 };
 
-Rect3D JungleLand_fallBridgeSmall2_ColS = {
-    #include "assets/levelGroup/JungleLand/fallBridgeSmall2/fallBridgeSmall2.colS.inc.c"
+Rect3D JungleLand_fallBridgeSmall2_BoundBox = {
+    #include "assets/levelGroup/JungleLand/fallBridgeSmall2/fallBridgeSmall2.boundBox.inc.c"
 };
 
 ModelCollision JungleLand_fallBridgeSmall2_ColH = {
-4, 2, JungleLand_fallBridgeSmall2_ColV, JungleLand_fallBridgeSmall2_ColT, &JungleLand_fallBridgeSmall2_ColS
+4, 2, JungleLand_fallBridgeSmall2_ColVerts, JungleLand_fallBridgeSmall2_ColTris, &JungleLand_fallBridgeSmall2_BoundBox
 };
 
-Vec3f JungleLand_logSetPiece_ColV[] = {
-    #include "assets/levelGroup/JungleLand/logSetPiece/logSetPiece.colV.inc.c"
+Vec3f JungleLand_logSetPiece_ColVerts[] = {
+    #include "assets/levelGroup/JungleLand/logSetPiece/logSetPiece.colVerts.inc.c"
 };
 
-Vec3w JungleLand_logSetPiece_ColT[] = {
-    #include "assets/levelGroup/JungleLand/logSetPiece/logSetPiece.colT.inc.c"
+Vec3w JungleLand_logSetPiece_ColTris[] = {
+    #include "assets/levelGroup/JungleLand/logSetPiece/logSetPiece.colTris.inc.c"
 };
 
-Rect3D JungleLand_logSetPiece_ColS = {
-    #include "assets/levelGroup/JungleLand/logSetPiece/logSetPiece.colS.inc.c"
+Rect3D JungleLand_logSetPiece_BoundBox = {
+    #include "assets/levelGroup/JungleLand/logSetPiece/logSetPiece.boundBox.inc.c"
 };
 
 ModelCollision JungleLand_logSetPiece_ColH = {
-9, 7, JungleLand_logSetPiece_ColV, JungleLand_logSetPiece_ColT, &JungleLand_logSetPiece_ColS
+9, 7, JungleLand_logSetPiece_ColVerts, JungleLand_logSetPiece_ColTris, &JungleLand_logSetPiece_BoundBox
 };
 
-Vec3f JungleLand_holeLog_ColV[] = {
-    #include "assets/levelGroup/JungleLand/holeLog/holeLog.colV.inc.c"
+Vec3f JungleLand_holeLog_ColVerts[] = {
+    #include "assets/levelGroup/JungleLand/holeLog/holeLog.colVerts.inc.c"
 };
 
-Vec3w JungleLand_holeLog_ColT[] = {
-    #include "assets/levelGroup/JungleLand/holeLog/holeLog.colT.inc.c"
+Vec3w JungleLand_holeLog_ColTris[] = {
+    #include "assets/levelGroup/JungleLand/holeLog/holeLog.colTris.inc.c"
 };
 
-Rect3D JungleLand_holeLog_ColS = {
-    #include "assets/levelGroup/JungleLand/holeLog/holeLog.colS.inc.c"
+Rect3D JungleLand_holeLog_BoundBox = {
+    #include "assets/levelGroup/JungleLand/holeLog/holeLog.boundBox.inc.c"
 };
 
 ModelCollision JungleLand_holeLog_ColH = {
-58, 120, JungleLand_holeLog_ColV, JungleLand_holeLog_ColT, &JungleLand_holeLog_ColS
+58, 120, JungleLand_holeLog_ColVerts, JungleLand_holeLog_ColTris, &JungleLand_holeLog_BoundBox
 };
 
-Vec3f JungleLand_waterfallGroundCollision_ColV[] = {
-    #include "assets/levelGroup/JungleLand/waterfallGroundCollision/waterfallGroundCollision.colV.inc.c"
+Vec3f JungleLand_waterfallGroundCollision_ColVerts[] = {
+    #include "assets/levelGroup/JungleLand/waterfallGroundCollision/waterfallGroundCollision.colVerts.inc.c"
 };
 
-Vec3w JungleLand_waterfallGroundCollision_ColT[] = {
-    #include "assets/levelGroup/JungleLand/waterfallGroundCollision/waterfallGroundCollision.colT.inc.c"
+Vec3w JungleLand_waterfallGroundCollision_ColTris[] = {
+    #include "assets/levelGroup/JungleLand/waterfallGroundCollision/waterfallGroundCollision.colTris.inc.c"
 };
 
-Rect3D JungleLand_waterfallGroundCollision_ColS = {
-    #include "assets/levelGroup/JungleLand/waterfallGroundCollision/waterfallGroundCollision.colS.inc.c"
+Rect3D JungleLand_waterfallGroundCollision_BoundBox = {
+    #include "assets/levelGroup/JungleLand/waterfallGroundCollision/waterfallGroundCollision.boundBox.inc.c"
 };
 
 ModelCollision JungleLand_waterfallGroundCollision_ColH = {
-12, 8, JungleLand_waterfallGroundCollision_ColV, JungleLand_waterfallGroundCollision_ColT, &JungleLand_waterfallGroundCollision_ColS
+12, 8, JungleLand_waterfallGroundCollision_ColVerts, JungleLand_waterfallGroundCollision_ColTris, &JungleLand_waterfallGroundCollision_BoundBox
 };
 
-Vec3f JungleLand_waterfallBacksideCollision_ColV[] = {
-    #include "assets/levelGroup/JungleLand/waterfallBacksideCollision/waterfallBacksideCollision.colV.inc.c"
+Vec3f JungleLand_waterfallBacksideCollision_ColVerts[] = {
+    #include "assets/levelGroup/JungleLand/waterfallBacksideCollision/waterfallBacksideCollision.colVerts.inc.c"
 };
 
-Vec3w JungleLand_waterfallBacksideCollision_ColT[] = {
-    #include "assets/levelGroup/JungleLand/waterfallBacksideCollision/waterfallBacksideCollision.colT.inc.c"
+Vec3w JungleLand_waterfallBacksideCollision_ColTris[] = {
+    #include "assets/levelGroup/JungleLand/waterfallBacksideCollision/waterfallBacksideCollision.colTris.inc.c"
 };
 
-Rect3D JungleLand_waterfallBacksideCollision_ColS = {
-    #include "assets/levelGroup/JungleLand/waterfallBacksideCollision/waterfallBacksideCollision.colS.inc.c"
+Rect3D JungleLand_waterfallBacksideCollision_BoundBox = {
+    #include "assets/levelGroup/JungleLand/waterfallBacksideCollision/waterfallBacksideCollision.boundBox.inc.c"
 };
 
 ModelCollision JungleLand_waterfallBacksideCollision_ColH = {
-8, 10, JungleLand_waterfallBacksideCollision_ColV, JungleLand_waterfallBacksideCollision_ColT, &JungleLand_waterfallBacksideCollision_ColS
+8, 10, JungleLand_waterfallBacksideCollision_ColVerts, JungleLand_waterfallBacksideCollision_ColTris, &JungleLand_waterfallBacksideCollision_BoundBox
 };
 
-Vec3f JungleLand_groundCollision_ColV[] = {
-    #include "assets/levelGroup/JungleLand/groundCollision/groundCollision.colV.inc.c"
+Vec3f JungleLand_groundCollision_ColVerts[] = {
+    #include "assets/levelGroup/JungleLand/groundCollision/groundCollision.colVerts.inc.c"
 };
 
-Vec3w JungleLand_groundCollision_ColT[] = {
-    #include "assets/levelGroup/JungleLand/groundCollision/groundCollision.colT.inc.c"
+Vec3w JungleLand_groundCollision_ColTris[] = {
+    #include "assets/levelGroup/JungleLand/groundCollision/groundCollision.colTris.inc.c"
 };
 
-Rect3D JungleLand_groundCollision_ColS = {
-    #include "assets/levelGroup/JungleLand/groundCollision/groundCollision.colS.inc.c"
+Rect3D JungleLand_groundCollision_BoundBox = {
+    #include "assets/levelGroup/JungleLand/groundCollision/groundCollision.boundBox.inc.c"
 };
 
 ModelCollision JungleLand_groundCollision_ColH = {
-28, 31, JungleLand_groundCollision_ColV, JungleLand_groundCollision_ColT, &JungleLand_groundCollision_ColS
+28, 31, JungleLand_groundCollision_ColVerts, JungleLand_groundCollision_ColTris, &JungleLand_groundCollision_BoundBox
 };
 
-Vec3f JungleLand_holeLogBottom_ColV[] = {
-    #include "assets/levelGroup/JungleLand/holeLogBottom/holeLogBottom.colV.inc.c"
+Vec3f JungleLand_holeLogBottom_ColVerts[] = {
+    #include "assets/levelGroup/JungleLand/holeLogBottom/holeLogBottom.colVerts.inc.c"
 };
 
-Vec3w JungleLand_holeLogBottom_ColT[] = {
-    #include "assets/levelGroup/JungleLand/holeLogBottom/holeLogBottom.colT.inc.c"
+Vec3w JungleLand_holeLogBottom_ColTris[] = {
+    #include "assets/levelGroup/JungleLand/holeLogBottom/holeLogBottom.colTris.inc.c"
 };
 
-Rect3D JungleLand_holeLogBottom_ColS = {
-    #include "assets/levelGroup/JungleLand/holeLogBottom/holeLogBottom.colS.inc.c"
+Rect3D JungleLand_holeLogBottom_BoundBox = {
+    #include "assets/levelGroup/JungleLand/holeLogBottom/holeLogBottom.boundBox.inc.c"
 };
 
 ModelCollision JungleLand_holeLogBottom_ColH = {
-24, 25, JungleLand_holeLogBottom_ColV, JungleLand_holeLogBottom_ColT, &JungleLand_holeLogBottom_ColS
+24, 25, JungleLand_holeLogBottom_ColVerts, JungleLand_holeLogBottom_ColTris, &JungleLand_holeLogBottom_BoundBox
 };
 
-Vec3f JungleLand_extThree_ColV[] = {
-    #include "assets/levelGroup/JungleLand/extThree/extThree.colV.inc.c"
+Vec3f JungleLand_extThree_ColVerts[] = {
+    #include "assets/levelGroup/JungleLand/extThree/extThree.colVerts.inc.c"
 };
 
-Vec3w JungleLand_extThree_ColT[] = {
-    #include "assets/levelGroup/JungleLand/extThree/extThree.colT.inc.c"
+Vec3w JungleLand_extThree_ColTris[] = {
+    #include "assets/levelGroup/JungleLand/extThree/extThree.colTris.inc.c"
 };
 
-Rect3D JungleLand_extThree_ColS = {
-    #include "assets/levelGroup/JungleLand/extThree/extThree.colS.inc.c"
+Rect3D JungleLand_extThree_BoundBox = {
+    #include "assets/levelGroup/JungleLand/extThree/extThree.boundBox.inc.c"
 };
 
 ModelCollision JungleLand_extThree_ColH = {
-47, 77, JungleLand_extThree_ColV, JungleLand_extThree_ColT, &JungleLand_extThree_ColS
+47, 77, JungleLand_extThree_ColVerts, JungleLand_extThree_ColTris, &JungleLand_extThree_BoundBox
 };
 
-Vec3f JungleLand_extFour_ColV[] = {
-    #include "assets/levelGroup/JungleLand/extFour/extFour.colV.inc.c"
+Vec3f JungleLand_extFour_ColVerts[] = {
+    #include "assets/levelGroup/JungleLand/extFour/extFour.colVerts.inc.c"
 };
 
-Vec3w JungleLand_extFour_ColT[] = {
-    #include "assets/levelGroup/JungleLand/extFour/extFour.colT.inc.c"
+Vec3w JungleLand_extFour_ColTris[] = {
+    #include "assets/levelGroup/JungleLand/extFour/extFour.colTris.inc.c"
 };
 
-Rect3D JungleLand_extFour_ColS = {
-    #include "assets/levelGroup/JungleLand/extFour/extFour.colS.inc.c"
+Rect3D JungleLand_extFour_BoundBox = {
+    #include "assets/levelGroup/JungleLand/extFour/extFour.boundBox.inc.c"
 };
 
 ModelCollision JungleLand_extFour_ColH = {
-21, 30, JungleLand_extFour_ColV, JungleLand_extFour_ColT, &JungleLand_extFour_ColS
+21, 30, JungleLand_extFour_ColVerts, JungleLand_extFour_ColTris, &JungleLand_extFour_BoundBox
 };
 
-Vec3f JungleLand_extZero_ColV[] = {
-    #include "assets/levelGroup/JungleLand/extZero/extZero.colV.inc.c"
+Vec3f JungleLand_extZero_ColVerts[] = {
+    #include "assets/levelGroup/JungleLand/extZero/extZero.colVerts.inc.c"
 };
 
-Vec3w JungleLand_extZero_ColT[] = {
-    #include "assets/levelGroup/JungleLand/extZero/extZero.colT.inc.c"
+Vec3w JungleLand_extZero_ColTris[] = {
+    #include "assets/levelGroup/JungleLand/extZero/extZero.colTris.inc.c"
 };
 
-Rect3D JungleLand_extZero_ColS = {
-    #include "assets/levelGroup/JungleLand/extZero/extZero.colS.inc.c"
+Rect3D JungleLand_extZero_BoundBox = {
+    #include "assets/levelGroup/JungleLand/extZero/extZero.boundBox.inc.c"
 };
 
 ModelCollision JungleLand_extZero_ColH = {
-25, 37, JungleLand_extZero_ColV, JungleLand_extZero_ColT, &JungleLand_extZero_ColS
+25, 37, JungleLand_extZero_ColVerts, JungleLand_extZero_ColTris, &JungleLand_extZero_BoundBox
 };
 
-Vec3f JungleLand_extOne_ColV[] = {
-    #include "assets/levelGroup/JungleLand/extOne/extOne.colV.inc.c"
+Vec3f JungleLand_extOne_ColVerts[] = {
+    #include "assets/levelGroup/JungleLand/extOne/extOne.colVerts.inc.c"
 };
 
-Vec3w JungleLand_extOne_ColT[] = {
-    #include "assets/levelGroup/JungleLand/extOne/extOne.colT.inc.c"
+Vec3w JungleLand_extOne_ColTris[] = {
+    #include "assets/levelGroup/JungleLand/extOne/extOne.colTris.inc.c"
 };
 
-Rect3D JungleLand_extOne_ColS = {
-    #include "assets/levelGroup/JungleLand/extOne/extOne.colS.inc.c"
+Rect3D JungleLand_extOne_BoundBox = {
+    #include "assets/levelGroup/JungleLand/extOne/extOne.boundBox.inc.c"
 };
 
 ModelCollision JungleLand_extOne_ColH = {
-92, 153, JungleLand_extOne_ColV, JungleLand_extOne_ColT, &JungleLand_extOne_ColS
+92, 153, JungleLand_extOne_ColVerts, JungleLand_extOne_ColTris, &JungleLand_extOne_BoundBox
 };
 
-Vec3f JungleLand_extTwo_ColV[] = {
-    #include "assets/levelGroup/JungleLand/extTwo/extTwo.colV.inc.c"
+Vec3f JungleLand_extTwo_ColVerts[] = {
+    #include "assets/levelGroup/JungleLand/extTwo/extTwo.colVerts.inc.c"
 };
 
-Vec3w JungleLand_extTwo_ColT[] = {
-    #include "assets/levelGroup/JungleLand/extTwo/extTwo.colT.inc.c"
+Vec3w JungleLand_extTwo_ColTris[] = {
+    #include "assets/levelGroup/JungleLand/extTwo/extTwo.colTris.inc.c"
 };
 
-Rect3D JungleLand_extTwo_ColS = {
-    #include "assets/levelGroup/JungleLand/extTwo/extTwo.colS.inc.c"
+Rect3D JungleLand_extTwo_BoundBox = {
+    #include "assets/levelGroup/JungleLand/extTwo/extTwo.boundBox.inc.c"
 };
 
 ModelCollision JungleLand_extTwo_ColH = {
-23, 29, JungleLand_extTwo_ColV, JungleLand_extTwo_ColT, &JungleLand_extTwo_ColS
+23, 29, JungleLand_extTwo_ColVerts, JungleLand_extTwo_ColTris, &JungleLand_extTwo_BoundBox
 };
 
-Vec3f JungleLand_rockFloor_ColV[] = {
-    #include "assets/levelGroup/JungleLand/rockFloor/rockFloor.colV.inc.c"
+Vec3f JungleLand_rockFloor_ColVerts[] = {
+    #include "assets/levelGroup/JungleLand/rockFloor/rockFloor.colVerts.inc.c"
 };
 
-Vec3w JungleLand_rockFloor_ColT[] = {
-    #include "assets/levelGroup/JungleLand/rockFloor/rockFloor.colT.inc.c"
+Vec3w JungleLand_rockFloor_ColTris[] = {
+    #include "assets/levelGroup/JungleLand/rockFloor/rockFloor.colTris.inc.c"
 };
 
-Rect3D JungleLand_rockFloor_ColS = {
-    #include "assets/levelGroup/JungleLand/rockFloor/rockFloor.colS.inc.c"
+Rect3D JungleLand_rockFloor_BoundBox = {
+    #include "assets/levelGroup/JungleLand/rockFloor/rockFloor.boundBox.inc.c"
 };
 
 ModelCollision JungleLand_rockFloor_ColH = {
-6, 8, JungleLand_rockFloor_ColV, JungleLand_rockFloor_ColT, &JungleLand_rockFloor_ColS
+6, 8, JungleLand_rockFloor_ColVerts, JungleLand_rockFloor_ColTris, &JungleLand_rockFloor_BoundBox
 };
 
-Vec3f JungleLand_rockFloor2_ColV[] = {
-    #include "assets/levelGroup/JungleLand/rockFloor2/rockFloor2.colV.inc.c"
+Vec3f JungleLand_rockFloor2_ColVerts[] = {
+    #include "assets/levelGroup/JungleLand/rockFloor2/rockFloor2.colVerts.inc.c"
 };
 
-Vec3w JungleLand_rockFloor2_ColT[] = {
-    #include "assets/levelGroup/JungleLand/rockFloor2/rockFloor2.colT.inc.c"
+Vec3w JungleLand_rockFloor2_ColTris[] = {
+    #include "assets/levelGroup/JungleLand/rockFloor2/rockFloor2.colTris.inc.c"
 };
 
-Rect3D JungleLand_rockFloor2_ColS = {
-    #include "assets/levelGroup/JungleLand/rockFloor2/rockFloor2.colS.inc.c"
+Rect3D JungleLand_rockFloor2_BoundBox = {
+    #include "assets/levelGroup/JungleLand/rockFloor2/rockFloor2.boundBox.inc.c"
 };
 
 ModelCollision JungleLand_rockFloor2_ColH = {
-5, 6, JungleLand_rockFloor2_ColV, JungleLand_rockFloor2_ColT, &JungleLand_rockFloor2_ColS
+5, 6, JungleLand_rockFloor2_ColVerts, JungleLand_rockFloor2_ColTris, &JungleLand_rockFloor2_BoundBox
 };
 
-Vec3f JungleLand_extFive_ColV[] = {
-    #include "assets/levelGroup/JungleLand/extFive/extFive.colV.inc.c"
+Vec3f JungleLand_extFive_ColVerts[] = {
+    #include "assets/levelGroup/JungleLand/extFive/extFive.colVerts.inc.c"
 };
 
-Vec3w JungleLand_extFive_ColT[] = {
-    #include "assets/levelGroup/JungleLand/extFive/extFive.colT.inc.c"
+Vec3w JungleLand_extFive_ColTris[] = {
+    #include "assets/levelGroup/JungleLand/extFive/extFive.colTris.inc.c"
 };
 
-Rect3D JungleLand_extFive_ColS = {
-    #include "assets/levelGroup/JungleLand/extFive/extFive.colS.inc.c"
+Rect3D JungleLand_extFive_BoundBox = {
+    #include "assets/levelGroup/JungleLand/extFive/extFive.boundBox.inc.c"
 };
 
 ModelCollision JungleLand_extFive_ColH = {
-34, 40, JungleLand_extFive_ColV, JungleLand_extFive_ColT, &JungleLand_extFive_ColS
+34, 40, JungleLand_extFive_ColVerts, JungleLand_extFive_ColTris, &JungleLand_extFive_BoundBox
 };
 
-Vec3f JungleLand_extThreePartTwo_ColV[] = {
-    #include "assets/levelGroup/JungleLand/extThreePartTwo/extThreePartTwo.colV.inc.c"
+Vec3f JungleLand_extThreePartTwo_ColVerts[] = {
+    #include "assets/levelGroup/JungleLand/extThreePartTwo/extThreePartTwo.colVerts.inc.c"
 };
 
-Vec3w JungleLand_extThreePartTwo_ColT[] = {
-    #include "assets/levelGroup/JungleLand/extThreePartTwo/extThreePartTwo.colT.inc.c"
+Vec3w JungleLand_extThreePartTwo_ColTris[] = {
+    #include "assets/levelGroup/JungleLand/extThreePartTwo/extThreePartTwo.colTris.inc.c"
 };
 
-Rect3D JungleLand_extThreePartTwo_ColS = {
-    #include "assets/levelGroup/JungleLand/extThreePartTwo/extThreePartTwo.colS.inc.c"
+Rect3D JungleLand_extThreePartTwo_BoundBox = {
+    #include "assets/levelGroup/JungleLand/extThreePartTwo/extThreePartTwo.boundBox.inc.c"
 };
 
 ModelCollision JungleLand_extThreePartTwo_ColH = {
-9, 7, JungleLand_extThreePartTwo_ColV, JungleLand_extThreePartTwo_ColT, &JungleLand_extThreePartTwo_ColS
+9, 7, JungleLand_extThreePartTwo_ColVerts, JungleLand_extThreePartTwo_ColTris, &JungleLand_extThreePartTwo_BoundBox
 };
 
-Vec3f JungleLand_extFivePartTwo_ColV[] = {
-    #include "assets/levelGroup/JungleLand/extFivePartTwo/extFivePartTwo.colV.inc.c"
+Vec3f JungleLand_extFivePartTwo_ColVerts[] = {
+    #include "assets/levelGroup/JungleLand/extFivePartTwo/extFivePartTwo.colVerts.inc.c"
 };
 
-Vec3w JungleLand_extFivePartTwo_ColT[] = {
-    #include "assets/levelGroup/JungleLand/extFivePartTwo/extFivePartTwo.colT.inc.c"
+Vec3w JungleLand_extFivePartTwo_ColTris[] = {
+    #include "assets/levelGroup/JungleLand/extFivePartTwo/extFivePartTwo.colTris.inc.c"
 };
 
-Rect3D JungleLand_extFivePartTwo_ColS = {
-    #include "assets/levelGroup/JungleLand/extFivePartTwo/extFivePartTwo.colS.inc.c"
+Rect3D JungleLand_extFivePartTwo_BoundBox = {
+    #include "assets/levelGroup/JungleLand/extFivePartTwo/extFivePartTwo.boundBox.inc.c"
 };
 
 ModelCollision JungleLand_extFivePartTwo_ColH = {
-23, 26, JungleLand_extFivePartTwo_ColV, JungleLand_extFivePartTwo_ColT, &JungleLand_extFivePartTwo_ColS
+23, 26, JungleLand_extFivePartTwo_ColVerts, JungleLand_extFivePartTwo_ColTris, &JungleLand_extFivePartTwo_BoundBox
 };
 
-Vec3f JungleLand_extSix_ColV[] = {
-    #include "assets/levelGroup/JungleLand/extSix/extSix.colV.inc.c"
+Vec3f JungleLand_extSix_ColVerts[] = {
+    #include "assets/levelGroup/JungleLand/extSix/extSix.colVerts.inc.c"
 };
 
-Vec3w JungleLand_extSix_ColT[] = {
-    #include "assets/levelGroup/JungleLand/extSix/extSix.colT.inc.c"
+Vec3w JungleLand_extSix_ColTris[] = {
+    #include "assets/levelGroup/JungleLand/extSix/extSix.colTris.inc.c"
 };
 
-Rect3D JungleLand_extSix_ColS = {
-    #include "assets/levelGroup/JungleLand/extSix/extSix.colS.inc.c"
+Rect3D JungleLand_extSix_BoundBox = {
+    #include "assets/levelGroup/JungleLand/extSix/extSix.boundBox.inc.c"
 };
 
 ModelCollision JungleLand_extSix_ColH = {
-20, 24, JungleLand_extSix_ColV, JungleLand_extSix_ColT, &JungleLand_extSix_ColS
+20, 24, JungleLand_extSix_ColVerts, JungleLand_extSix_ColTris, &JungleLand_extSix_BoundBox
 };
 
-Vec3f JungleLand_extSeven_ColV[] = {
-    #include "assets/levelGroup/JungleLand/extSeven/extSeven.colV.inc.c"
+Vec3f JungleLand_extSeven_ColVerts[] = {
+    #include "assets/levelGroup/JungleLand/extSeven/extSeven.colVerts.inc.c"
 };
 
-Vec3w JungleLand_extSeven_ColT[] = {
-    #include "assets/levelGroup/JungleLand/extSeven/extSeven.colT.inc.c"
+Vec3w JungleLand_extSeven_ColTris[] = {
+    #include "assets/levelGroup/JungleLand/extSeven/extSeven.colTris.inc.c"
 };
 
-Rect3D JungleLand_extSeven_ColS = {
-    #include "assets/levelGroup/JungleLand/extSeven/extSeven.colS.inc.c"
+Rect3D JungleLand_extSeven_BoundBox = {
+    #include "assets/levelGroup/JungleLand/extSeven/extSeven.boundBox.inc.c"
 };
 
 ModelCollision JungleLand_extSeven_ColH = {
-32, 45, JungleLand_extSeven_ColV, JungleLand_extSeven_ColT, &JungleLand_extSeven_ColS
+32, 45, JungleLand_extSeven_ColVerts, JungleLand_extSeven_ColTris, &JungleLand_extSeven_BoundBox
 };
 
-Vec3f JungleLand_extEight_ColV[] = {
-    #include "assets/levelGroup/JungleLand/extEight/extEight.colV.inc.c"
+Vec3f JungleLand_extEight_ColVerts[] = {
+    #include "assets/levelGroup/JungleLand/extEight/extEight.colVerts.inc.c"
 };
 
-Vec3w JungleLand_extEight_ColT[] = {
-    #include "assets/levelGroup/JungleLand/extEight/extEight.colT.inc.c"
+Vec3w JungleLand_extEight_ColTris[] = {
+    #include "assets/levelGroup/JungleLand/extEight/extEight.colTris.inc.c"
 };
 
-Rect3D JungleLand_extEight_ColS = {
-    #include "assets/levelGroup/JungleLand/extEight/extEight.colS.inc.c"
+Rect3D JungleLand_extEight_BoundBox = {
+    #include "assets/levelGroup/JungleLand/extEight/extEight.boundBox.inc.c"
 };
 
 ModelCollision JungleLand_extEight_ColH = {
-24, 33, JungleLand_extEight_ColV, JungleLand_extEight_ColT, &JungleLand_extEight_ColS
+24, 33, JungleLand_extEight_ColVerts, JungleLand_extEight_ColTris, &JungleLand_extEight_BoundBox
 };
 
-Vec3f JungleLand_extEightBridge_ColV[] = {
-    #include "assets/levelGroup/JungleLand/extEightBridge/extEightBridge.colV.inc.c"
+Vec3f JungleLand_extEightBridge_ColVerts[] = {
+    #include "assets/levelGroup/JungleLand/extEightBridge/extEightBridge.colVerts.inc.c"
 };
 
-Vec3w JungleLand_extEightBridge_ColT[] = {
-    #include "assets/levelGroup/JungleLand/extEightBridge/extEightBridge.colT.inc.c"
+Vec3w JungleLand_extEightBridge_ColTris[] = {
+    #include "assets/levelGroup/JungleLand/extEightBridge/extEightBridge.colTris.inc.c"
 };
 
-Rect3D JungleLand_extEightBridge_ColS = {
-    #include "assets/levelGroup/JungleLand/extEightBridge/extEightBridge.colS.inc.c"
+Rect3D JungleLand_extEightBridge_BoundBox = {
+    #include "assets/levelGroup/JungleLand/extEightBridge/extEightBridge.boundBox.inc.c"
 };
 
 ModelCollision JungleLand_extEightBridge_ColH = {
-8, 8, JungleLand_extEightBridge_ColV, JungleLand_extEightBridge_ColT, &JungleLand_extEightBridge_ColS
+8, 8, JungleLand_extEightBridge_ColVerts, JungleLand_extEightBridge_ColTris, &JungleLand_extEightBridge_BoundBox
 };
 
-Vec3f JungleLand_extNine_ColV[] = {
-    #include "assets/levelGroup/JungleLand/extNine/extNine.colV.inc.c"
+Vec3f JungleLand_extNine_ColVerts[] = {
+    #include "assets/levelGroup/JungleLand/extNine/extNine.colVerts.inc.c"
 };
 
-Vec3w JungleLand_extNine_ColT[] = {
-    #include "assets/levelGroup/JungleLand/extNine/extNine.colT.inc.c"
+Vec3w JungleLand_extNine_ColTris[] = {
+    #include "assets/levelGroup/JungleLand/extNine/extNine.colTris.inc.c"
 };
 
-Rect3D JungleLand_extNine_ColS = {
-    #include "assets/levelGroup/JungleLand/extNine/extNine.colS.inc.c"
+Rect3D JungleLand_extNine_BoundBox = {
+    #include "assets/levelGroup/JungleLand/extNine/extNine.boundBox.inc.c"
 };
 
 ModelCollision JungleLand_extNine_ColH = {
-29, 40, JungleLand_extNine_ColV, JungleLand_extNine_ColT, &JungleLand_extNine_ColS
+29, 40, JungleLand_extNine_ColVerts, JungleLand_extNine_ColTris, &JungleLand_extNine_BoundBox
 };
 
-Vec3f JungleLand_extTen_ColV[] = {
-    #include "assets/levelGroup/JungleLand/extTen/extTen.colV.inc.c"
+Vec3f JungleLand_extTen_ColVerts[] = {
+    #include "assets/levelGroup/JungleLand/extTen/extTen.colVerts.inc.c"
 };
 
-Vec3w JungleLand_extTen_ColT[] = {
-    #include "assets/levelGroup/JungleLand/extTen/extTen.colT.inc.c"
+Vec3w JungleLand_extTen_ColTris[] = {
+    #include "assets/levelGroup/JungleLand/extTen/extTen.colTris.inc.c"
 };
 
-Rect3D JungleLand_extTen_ColS = {
-    #include "assets/levelGroup/JungleLand/extTen/extTen.colS.inc.c"
+Rect3D JungleLand_extTen_BoundBox = {
+    #include "assets/levelGroup/JungleLand/extTen/extTen.boundBox.inc.c"
 };
 
 ModelCollision JungleLand_extTen_ColH = {
-53, 88, JungleLand_extTen_ColV, JungleLand_extTen_ColT, &JungleLand_extTen_ColS
+53, 88, JungleLand_extTen_ColVerts, JungleLand_extTen_ColTris, &JungleLand_extTen_BoundBox
 };
 
-Vec3f JungleLand_extEleven_ColV[] = {
-    #include "assets/levelGroup/JungleLand/extEleven/extEleven.colV.inc.c"
+Vec3f JungleLand_extEleven_ColVerts[] = {
+    #include "assets/levelGroup/JungleLand/extEleven/extEleven.colVerts.inc.c"
 };
 
-Vec3w JungleLand_extEleven_ColT[] = {
-    #include "assets/levelGroup/JungleLand/extEleven/extEleven.colT.inc.c"
+Vec3w JungleLand_extEleven_ColTris[] = {
+    #include "assets/levelGroup/JungleLand/extEleven/extEleven.colTris.inc.c"
 };
 
-Rect3D JungleLand_extEleven_ColS = {
-    #include "assets/levelGroup/JungleLand/extEleven/extEleven.colS.inc.c"
+Rect3D JungleLand_extEleven_BoundBox = {
+    #include "assets/levelGroup/JungleLand/extEleven/extEleven.boundBox.inc.c"
 };
 
 ModelCollision JungleLand_extEleven_ColH = {
-85, 144, JungleLand_extEleven_ColV, JungleLand_extEleven_ColT, &JungleLand_extEleven_ColS
+85, 144, JungleLand_extEleven_ColVerts, JungleLand_extEleven_ColTris, &JungleLand_extEleven_BoundBox
 };
 
-Vec3f JungleLand_intZero_ColV[] = {
-    #include "assets/levelGroup/JungleLand/intZero/intZero.colV.inc.c"
+Vec3f JungleLand_intZero_ColVerts[] = {
+    #include "assets/levelGroup/JungleLand/intZero/intZero.colVerts.inc.c"
 };
 
-Vec3w JungleLand_intZero_ColT[] = {
-    #include "assets/levelGroup/JungleLand/intZero/intZero.colT.inc.c"
+Vec3w JungleLand_intZero_ColTris[] = {
+    #include "assets/levelGroup/JungleLand/intZero/intZero.colTris.inc.c"
 };
 
-Rect3D JungleLand_intZero_ColS = {
-    #include "assets/levelGroup/JungleLand/intZero/intZero.colS.inc.c"
+Rect3D JungleLand_intZero_BoundBox = {
+    #include "assets/levelGroup/JungleLand/intZero/intZero.boundBox.inc.c"
 };
 
 ModelCollision JungleLand_intZero_ColH = {
-40, 60, JungleLand_intZero_ColV, JungleLand_intZero_ColT, &JungleLand_intZero_ColS
+40, 60, JungleLand_intZero_ColVerts, JungleLand_intZero_ColTris, &JungleLand_intZero_BoundBox
 };
 
-Vec3f JungleLand_intOne_ColV[] = {
-    #include "assets/levelGroup/JungleLand/intOne/intOne.colV.inc.c"
+Vec3f JungleLand_intOne_ColVerts[] = {
+    #include "assets/levelGroup/JungleLand/intOne/intOne.colVerts.inc.c"
 };
 
-Vec3w JungleLand_intOne_ColT[] = {
-    #include "assets/levelGroup/JungleLand/intOne/intOne.colT.inc.c"
+Vec3w JungleLand_intOne_ColTris[] = {
+    #include "assets/levelGroup/JungleLand/intOne/intOne.colTris.inc.c"
 };
 
-Rect3D JungleLand_intOne_ColS = {
-    #include "assets/levelGroup/JungleLand/intOne/intOne.colS.inc.c"
+Rect3D JungleLand_intOne_BoundBox = {
+    #include "assets/levelGroup/JungleLand/intOne/intOne.boundBox.inc.c"
 };
 
 ModelCollision JungleLand_intOne_ColH = {
-100, 174, JungleLand_intOne_ColV, JungleLand_intOne_ColT, &JungleLand_intOne_ColS
+100, 174, JungleLand_intOne_ColVerts, JungleLand_intOne_ColTris, &JungleLand_intOne_BoundBox
 };
 
-Vec3f JungleLand_intTwo_ColV[] = {
-    #include "assets/levelGroup/JungleLand/intTwo/intTwo.colV.inc.c"
+Vec3f JungleLand_intTwo_ColVerts[] = {
+    #include "assets/levelGroup/JungleLand/intTwo/intTwo.colVerts.inc.c"
 };
 
-Vec3w JungleLand_intTwo_ColT[] = {
-    #include "assets/levelGroup/JungleLand/intTwo/intTwo.colT.inc.c"
+Vec3w JungleLand_intTwo_ColTris[] = {
+    #include "assets/levelGroup/JungleLand/intTwo/intTwo.colTris.inc.c"
 };
 
-Rect3D JungleLand_intTwo_ColS = {
-    #include "assets/levelGroup/JungleLand/intTwo/intTwo.colS.inc.c"
+Rect3D JungleLand_intTwo_BoundBox = {
+    #include "assets/levelGroup/JungleLand/intTwo/intTwo.boundBox.inc.c"
 };
 
 ModelCollision JungleLand_intTwo_ColH = {
-28, 38, JungleLand_intTwo_ColV, JungleLand_intTwo_ColT, &JungleLand_intTwo_ColS
+28, 38, JungleLand_intTwo_ColVerts, JungleLand_intTwo_ColTris, &JungleLand_intTwo_BoundBox
 };
 
-Vec3f JungleLand_intThree_ColV[] = {
-    #include "assets/levelGroup/JungleLand/intThree/intThree.colV.inc.c"
+Vec3f JungleLand_intThree_ColVerts[] = {
+    #include "assets/levelGroup/JungleLand/intThree/intThree.colVerts.inc.c"
 };
 
-Vec3w JungleLand_intThree_ColT[] = {
-    #include "assets/levelGroup/JungleLand/intThree/intThree.colT.inc.c"
+Vec3w JungleLand_intThree_ColTris[] = {
+    #include "assets/levelGroup/JungleLand/intThree/intThree.colTris.inc.c"
 };
 
-Rect3D JungleLand_intThree_ColS = {
-    #include "assets/levelGroup/JungleLand/intThree/intThree.colS.inc.c"
+Rect3D JungleLand_intThree_BoundBox = {
+    #include "assets/levelGroup/JungleLand/intThree/intThree.boundBox.inc.c"
 };
 
 ModelCollision JungleLand_intThree_ColH = {
-24, 28, JungleLand_intThree_ColV, JungleLand_intThree_ColT, &JungleLand_intThree_ColS
+24, 28, JungleLand_intThree_ColVerts, JungleLand_intThree_ColTris, &JungleLand_intThree_BoundBox
 };
 
-Vec3f JungleLand_intFour_ColV[] = {
-    #include "assets/levelGroup/JungleLand/intFour/intFour.colV.inc.c"
+Vec3f JungleLand_intFour_ColVerts[] = {
+    #include "assets/levelGroup/JungleLand/intFour/intFour.colVerts.inc.c"
 };
 
-Vec3w JungleLand_intFour_ColT[] = {
-    #include "assets/levelGroup/JungleLand/intFour/intFour.colT.inc.c"
+Vec3w JungleLand_intFour_ColTris[] = {
+    #include "assets/levelGroup/JungleLand/intFour/intFour.colTris.inc.c"
 };
 
-Rect3D JungleLand_intFour_ColS = {
-    #include "assets/levelGroup/JungleLand/intFour/intFour.colS.inc.c"
+Rect3D JungleLand_intFour_BoundBox = {
+    #include "assets/levelGroup/JungleLand/intFour/intFour.boundBox.inc.c"
 };
 
 ModelCollision JungleLand_intFour_ColH = {
-24, 34, JungleLand_intFour_ColV, JungleLand_intFour_ColT, &JungleLand_intFour_ColS
+24, 34, JungleLand_intFour_ColVerts, JungleLand_intFour_ColTris, &JungleLand_intFour_BoundBox
 };
 
-Vec3f JungleLand_intSix_ColV[] = {
-    #include "assets/levelGroup/JungleLand/intSix/intSix.colV.inc.c"
+Vec3f JungleLand_intSix_ColVerts[] = {
+    #include "assets/levelGroup/JungleLand/intSix/intSix.colVerts.inc.c"
 };
 
-Vec3w JungleLand_intSix_ColT[] = {
-    #include "assets/levelGroup/JungleLand/intSix/intSix.colT.inc.c"
+Vec3w JungleLand_intSix_ColTris[] = {
+    #include "assets/levelGroup/JungleLand/intSix/intSix.colTris.inc.c"
 };
 
-Rect3D JungleLand_intSix_ColS = {
-    #include "assets/levelGroup/JungleLand/intSix/intSix.colS.inc.c"
+Rect3D JungleLand_intSix_BoundBox = {
+    #include "assets/levelGroup/JungleLand/intSix/intSix.boundBox.inc.c"
 };
 
 ModelCollision JungleLand_intSix_ColH = {
-29, 40, JungleLand_intSix_ColV, JungleLand_intSix_ColT, &JungleLand_intSix_ColS
+29, 40, JungleLand_intSix_ColVerts, JungleLand_intSix_ColTris, &JungleLand_intSix_BoundBox
 };
 
-Vec3f JungleLand_intSeven_ColV[] = {
-    #include "assets/levelGroup/JungleLand/intSeven/intSeven.colV.inc.c"
+Vec3f JungleLand_intSeven_ColVerts[] = {
+    #include "assets/levelGroup/JungleLand/intSeven/intSeven.colVerts.inc.c"
 };
 
-Vec3w JungleLand_intSeven_ColT[] = {
-    #include "assets/levelGroup/JungleLand/intSeven/intSeven.colT.inc.c"
+Vec3w JungleLand_intSeven_ColTris[] = {
+    #include "assets/levelGroup/JungleLand/intSeven/intSeven.colTris.inc.c"
 };
 
-Rect3D JungleLand_intSeven_ColS = {
-    #include "assets/levelGroup/JungleLand/intSeven/intSeven.colS.inc.c"
+Rect3D JungleLand_intSeven_BoundBox = {
+    #include "assets/levelGroup/JungleLand/intSeven/intSeven.boundBox.inc.c"
 };
 
 ModelCollision JungleLand_intSeven_ColH = {
-20, 20, JungleLand_intSeven_ColV, JungleLand_intSeven_ColT, &JungleLand_intSeven_ColS
+20, 20, JungleLand_intSeven_ColVerts, JungleLand_intSeven_ColTris, &JungleLand_intSeven_BoundBox
 };
 
-Vec3f JungleLand_intFive_ColV[] = {
-    #include "assets/levelGroup/JungleLand/intFive/intFive.colV.inc.c"
+Vec3f JungleLand_intFive_ColVerts[] = {
+    #include "assets/levelGroup/JungleLand/intFive/intFive.colVerts.inc.c"
 };
 
-Vec3w JungleLand_intFive_ColT[] = {
-    #include "assets/levelGroup/JungleLand/intFive/intFive.colT.inc.c"
+Vec3w JungleLand_intFive_ColTris[] = {
+    #include "assets/levelGroup/JungleLand/intFive/intFive.colTris.inc.c"
 };
 
-Rect3D JungleLand_intFive_ColS = {
-    #include "assets/levelGroup/JungleLand/intFive/intFive.colS.inc.c"
+Rect3D JungleLand_intFive_BoundBox = {
+    #include "assets/levelGroup/JungleLand/intFive/intFive.boundBox.inc.c"
 };
 
 ModelCollision JungleLand_intFive_ColH = {
-28, 42, JungleLand_intFive_ColV, JungleLand_intFive_ColT, &JungleLand_intFive_ColS
+28, 42, JungleLand_intFive_ColVerts, JungleLand_intFive_ColTris, &JungleLand_intFive_BoundBox
 };
 
-Vec3f JungleLand_railFloorOne_ColV[] = {
-    #include "assets/levelGroup/JungleLand/railFloorOne/railFloorOne.colV.inc.c"
+Vec3f JungleLand_railFloorOne_ColVerts[] = {
+    #include "assets/levelGroup/JungleLand/railFloorOne/railFloorOne.colVerts.inc.c"
 };
 
-Vec3w JungleLand_railFloorOne_ColT[] = {
-    #include "assets/levelGroup/JungleLand/railFloorOne/railFloorOne.colT.inc.c"
+Vec3w JungleLand_railFloorOne_ColTris[] = {
+    #include "assets/levelGroup/JungleLand/railFloorOne/railFloorOne.colTris.inc.c"
 };
 
-Rect3D JungleLand_railFloorOne_ColS = {
-    #include "assets/levelGroup/JungleLand/railFloorOne/railFloorOne.colS.inc.c"
+Rect3D JungleLand_railFloorOne_BoundBox = {
+    #include "assets/levelGroup/JungleLand/railFloorOne/railFloorOne.boundBox.inc.c"
 };
 
 ModelCollision JungleLand_railFloorOne_ColH = {
-4, 2, JungleLand_railFloorOne_ColV, JungleLand_railFloorOne_ColT, &JungleLand_railFloorOne_ColS
+4, 2, JungleLand_railFloorOne_ColVerts, JungleLand_railFloorOne_ColTris, &JungleLand_railFloorOne_BoundBox
 };
 
-Vec3f JungleLand_singleRailTrack_ColV[] = {
-    #include "assets/levelGroup/JungleLand/singleRailTrack/singleRailTrack.colV.inc.c"
+Vec3f JungleLand_singleRailTrack_ColVerts[] = {
+    #include "assets/levelGroup/JungleLand/singleRailTrack/singleRailTrack.colVerts.inc.c"
 };
 
-Vec3w JungleLand_singleRailTrack_ColT[] = {
-    #include "assets/levelGroup/JungleLand/singleRailTrack/singleRailTrack.colT.inc.c"
+Vec3w JungleLand_singleRailTrack_ColTris[] = {
+    #include "assets/levelGroup/JungleLand/singleRailTrack/singleRailTrack.colTris.inc.c"
 };
 
-Rect3D JungleLand_singleRailTrack_ColS = {
-    #include "assets/levelGroup/JungleLand/singleRailTrack/singleRailTrack.colS.inc.c"
+Rect3D JungleLand_singleRailTrack_BoundBox = {
+    #include "assets/levelGroup/JungleLand/singleRailTrack/singleRailTrack.boundBox.inc.c"
 };
 
 ModelCollision JungleLand_singleRailTrack_ColH = {
-4, 2, JungleLand_singleRailTrack_ColV, JungleLand_singleRailTrack_ColT, &JungleLand_singleRailTrack_ColS
+4, 2, JungleLand_singleRailTrack_ColVerts, JungleLand_singleRailTrack_ColTris, &JungleLand_singleRailTrack_BoundBox
 };
 
-Vec3f JungleLand_singleRailTrack2_ColV[] = {
-    #include "assets/levelGroup/JungleLand/singleRailTrack2/singleRailTrack2.colV.inc.c"
+Vec3f JungleLand_singleRailTrack2_ColVerts[] = {
+    #include "assets/levelGroup/JungleLand/singleRailTrack2/singleRailTrack2.colVerts.inc.c"
 };
 
-Vec3w JungleLand_singleRailTrack2_ColT[] = {
-    #include "assets/levelGroup/JungleLand/singleRailTrack2/singleRailTrack2.colT.inc.c"
+Vec3w JungleLand_singleRailTrack2_ColTris[] = {
+    #include "assets/levelGroup/JungleLand/singleRailTrack2/singleRailTrack2.colTris.inc.c"
 };
 
-Rect3D JungleLand_singleRailTrack2_ColS = {
-    #include "assets/levelGroup/JungleLand/singleRailTrack2/singleRailTrack2.colS.inc.c"
+Rect3D JungleLand_singleRailTrack2_BoundBox = {
+    #include "assets/levelGroup/JungleLand/singleRailTrack2/singleRailTrack2.boundBox.inc.c"
 };
 
 ModelCollision JungleLand_singleRailTrack2_ColH = {
-4, 2, JungleLand_singleRailTrack2_ColV, JungleLand_singleRailTrack2_ColT, &JungleLand_singleRailTrack2_ColS
+4, 2, JungleLand_singleRailTrack2_ColVerts, JungleLand_singleRailTrack2_ColTris, &JungleLand_singleRailTrack2_BoundBox
 };
 
-Vec3f JungleLand_branchRail_ColV[] = {
-    #include "assets/levelGroup/JungleLand/branchRail/branchRail.colV.inc.c"
+Vec3f JungleLand_branchRail_ColVerts[] = {
+    #include "assets/levelGroup/JungleLand/branchRail/branchRail.colVerts.inc.c"
 };
 
-Vec3w JungleLand_branchRail_ColT[] = {
-    #include "assets/levelGroup/JungleLand/branchRail/branchRail.colT.inc.c"
+Vec3w JungleLand_branchRail_ColTris[] = {
+    #include "assets/levelGroup/JungleLand/branchRail/branchRail.colTris.inc.c"
 };
 
-Rect3D JungleLand_branchRail_ColS = {
-    #include "assets/levelGroup/JungleLand/branchRail/branchRail.colS.inc.c"
+Rect3D JungleLand_branchRail_BoundBox = {
+    #include "assets/levelGroup/JungleLand/branchRail/branchRail.boundBox.inc.c"
 };
 
 ModelCollision JungleLand_branchRail_ColH = {
-4, 2, JungleLand_branchRail_ColV, JungleLand_branchRail_ColT, &JungleLand_branchRail_ColS
+4, 2, JungleLand_branchRail_ColVerts, JungleLand_branchRail_ColTris, &JungleLand_branchRail_BoundBox
 };
 
-Vec3f JungleLand_turnRail_ColV[] = {
-    #include "assets/levelGroup/JungleLand/turnRail/turnRail.colV.inc.c"
+Vec3f JungleLand_turnRail_ColVerts[] = {
+    #include "assets/levelGroup/JungleLand/turnRail/turnRail.colVerts.inc.c"
 };
 
-Vec3w JungleLand_turnRail_ColT[] = {
-    #include "assets/levelGroup/JungleLand/turnRail/turnRail.colT.inc.c"
+Vec3w JungleLand_turnRail_ColTris[] = {
+    #include "assets/levelGroup/JungleLand/turnRail/turnRail.colTris.inc.c"
 };
 
-Rect3D JungleLand_turnRail_ColS = {
-    #include "assets/levelGroup/JungleLand/turnRail/turnRail.colS.inc.c"
+Rect3D JungleLand_turnRail_BoundBox = {
+    #include "assets/levelGroup/JungleLand/turnRail/turnRail.boundBox.inc.c"
 };
 
 ModelCollision JungleLand_turnRail_ColH = {
-4, 2, JungleLand_turnRail_ColV, JungleLand_turnRail_ColT, &JungleLand_turnRail_ColS
+4, 2, JungleLand_turnRail_ColVerts, JungleLand_turnRail_ColTris, &JungleLand_turnRail_BoundBox
 };
 
-Vec3f JungleLand_singleRailTrack3_ColV[] = {
-    #include "assets/levelGroup/JungleLand/singleRailTrack3/singleRailTrack3.colV.inc.c"
+Vec3f JungleLand_singleRailTrack3_ColVerts[] = {
+    #include "assets/levelGroup/JungleLand/singleRailTrack3/singleRailTrack3.colVerts.inc.c"
 };
 
-Vec3w JungleLand_singleRailTrack3_ColT[] = {
-    #include "assets/levelGroup/JungleLand/singleRailTrack3/singleRailTrack3.colT.inc.c"
+Vec3w JungleLand_singleRailTrack3_ColTris[] = {
+    #include "assets/levelGroup/JungleLand/singleRailTrack3/singleRailTrack3.colTris.inc.c"
 };
 
-Rect3D JungleLand_singleRailTrack3_ColS = {
-    #include "assets/levelGroup/JungleLand/singleRailTrack3/singleRailTrack3.colS.inc.c"
+Rect3D JungleLand_singleRailTrack3_BoundBox = {
+    #include "assets/levelGroup/JungleLand/singleRailTrack3/singleRailTrack3.boundBox.inc.c"
 };
 
 ModelCollision JungleLand_singleRailTrack3_ColH = {
-4, 2, JungleLand_singleRailTrack3_ColV, JungleLand_singleRailTrack3_ColT, &JungleLand_singleRailTrack3_ColS
+4, 2, JungleLand_singleRailTrack3_ColVerts, JungleLand_singleRailTrack3_ColTris, &JungleLand_singleRailTrack3_BoundBox
 };
 
-Vec3f JungleLand_brokenMinecartRail_ColV[] = {
-    #include "assets/levelGroup/JungleLand/brokenMinecartRail/brokenMinecartRail.colV.inc.c"
+Vec3f JungleLand_brokenMinecartRail_ColVerts[] = {
+    #include "assets/levelGroup/JungleLand/brokenMinecartRail/brokenMinecartRail.colVerts.inc.c"
 };
 
-Vec3w JungleLand_brokenMinecartRail_ColT[] = {
-    #include "assets/levelGroup/JungleLand/brokenMinecartRail/brokenMinecartRail.colT.inc.c"
+Vec3w JungleLand_brokenMinecartRail_ColTris[] = {
+    #include "assets/levelGroup/JungleLand/brokenMinecartRail/brokenMinecartRail.colTris.inc.c"
 };
 
-Rect3D JungleLand_brokenMinecartRail_ColS = {
-    #include "assets/levelGroup/JungleLand/brokenMinecartRail/brokenMinecartRail.colS.inc.c"
+Rect3D JungleLand_brokenMinecartRail_BoundBox = {
+    #include "assets/levelGroup/JungleLand/brokenMinecartRail/brokenMinecartRail.boundBox.inc.c"
 };
 
 ModelCollision JungleLand_brokenMinecartRail_ColH = {
-40, 64, JungleLand_brokenMinecartRail_ColV, JungleLand_brokenMinecartRail_ColT, &JungleLand_brokenMinecartRail_ColS
+40, 64, JungleLand_brokenMinecartRail_ColVerts, JungleLand_brokenMinecartRail_ColTris, &JungleLand_brokenMinecartRail_BoundBox
 };
 
-Vec3f JungleLand_brokenMinecartRail2_ColV[] = {
-    #include "assets/levelGroup/JungleLand/brokenMinecartRail2/brokenMinecartRail2.colV.inc.c"
+Vec3f JungleLand_brokenMinecartRail2_ColVerts[] = {
+    #include "assets/levelGroup/JungleLand/brokenMinecartRail2/brokenMinecartRail2.colVerts.inc.c"
 };
 
-Vec3w JungleLand_brokenMinecartRail2_ColT[] = {
-    #include "assets/levelGroup/JungleLand/brokenMinecartRail2/brokenMinecartRail2.colT.inc.c"
+Vec3w JungleLand_brokenMinecartRail2_ColTris[] = {
+    #include "assets/levelGroup/JungleLand/brokenMinecartRail2/brokenMinecartRail2.colTris.inc.c"
 };
 
-Rect3D JungleLand_brokenMinecartRail2_ColS = {
-    #include "assets/levelGroup/JungleLand/brokenMinecartRail2/brokenMinecartRail2.colS.inc.c"
+Rect3D JungleLand_brokenMinecartRail2_BoundBox = {
+    #include "assets/levelGroup/JungleLand/brokenMinecartRail2/brokenMinecartRail2.boundBox.inc.c"
 };
 
 ModelCollision JungleLand_brokenMinecartRail2_ColH = {
-32, 48, JungleLand_brokenMinecartRail2_ColV, JungleLand_brokenMinecartRail2_ColT, &JungleLand_brokenMinecartRail2_ColS
+32, 48, JungleLand_brokenMinecartRail2_ColVerts, JungleLand_brokenMinecartRail2_ColTris, &JungleLand_brokenMinecartRail2_BoundBox
 };
 
-Vec3f JungleLand_minecart_ColV[] = {
-    #include "assets/levelGroup/JungleLand/minecart/minecart.colV.inc.c"
+Vec3f JungleLand_minecart_ColVerts[] = {
+    #include "assets/levelGroup/JungleLand/minecart/minecart.colVerts.inc.c"
 };
 
-Vec3w JungleLand_minecart_ColT[] = {
-    #include "assets/levelGroup/JungleLand/minecart/minecart.colT.inc.c"
+Vec3w JungleLand_minecart_ColTris[] = {
+    #include "assets/levelGroup/JungleLand/minecart/minecart.colTris.inc.c"
 };
 
-Rect3D JungleLand_minecart_ColS = {
-    #include "assets/levelGroup/JungleLand/minecart/minecart.colS.inc.c"
+Rect3D JungleLand_minecart_BoundBox = {
+    #include "assets/levelGroup/JungleLand/minecart/minecart.boundBox.inc.c"
 };
 
 ModelCollision JungleLand_minecart_ColH = {
-32, 50, JungleLand_minecart_ColV, JungleLand_minecart_ColT, &JungleLand_minecart_ColS
+32, 50, JungleLand_minecart_ColVerts, JungleLand_minecart_ColTris, &JungleLand_minecart_BoundBox
 };
 
-Vec3f JungleLand_doorFraMEd_ColV[] = {
-    #include "assets/levelGroup/JungleLand/doorFraMEd/doorFraMEd.colV.inc.c"
+Vec3f JungleLand_doorFraMEd_ColVerts[] = {
+    #include "assets/levelGroup/JungleLand/doorFraMEd/doorFraMEd.colVerts.inc.c"
 };
 
-Vec3w JungleLand_doorFraMEd_ColT[] = {
-    #include "assets/levelGroup/JungleLand/doorFraMEd/doorFraMEd.colT.inc.c"
+Vec3w JungleLand_doorFraMEd_ColTris[] = {
+    #include "assets/levelGroup/JungleLand/doorFraMEd/doorFraMEd.colTris.inc.c"
 };
 
-Rect3D JungleLand_doorFraMEd_ColS = {
-    #include "assets/levelGroup/JungleLand/doorFraMEd/doorFraMEd.colS.inc.c"
+Rect3D JungleLand_doorFraMEd_BoundBox = {
+    #include "assets/levelGroup/JungleLand/doorFraMEd/doorFraMEd.boundBox.inc.c"
 };
 
 ModelCollision JungleLand_doorFraMEd_ColH = {
-26, 34, JungleLand_doorFraMEd_ColV, JungleLand_doorFraMEd_ColT, &JungleLand_doorFraMEd_ColS
+26, 34, JungleLand_doorFraMEd_ColVerts, JungleLand_doorFraMEd_ColTris, &JungleLand_doorFraMEd_BoundBox
 };
 
-Vec3f JungleLand_doorFrame2_ColV[] = {
-    #include "assets/levelGroup/JungleLand/doorFrame2/doorFrame2.colV.inc.c"
+Vec3f JungleLand_doorFrame2_ColVerts[] = {
+    #include "assets/levelGroup/JungleLand/doorFrame2/doorFrame2.colVerts.inc.c"
 };
 
-Vec3w JungleLand_doorFrame2_ColT[] = {
-    #include "assets/levelGroup/JungleLand/doorFrame2/doorFrame2.colT.inc.c"
+Vec3w JungleLand_doorFrame2_ColTris[] = {
+    #include "assets/levelGroup/JungleLand/doorFrame2/doorFrame2.colTris.inc.c"
 };
 
-Rect3D JungleLand_doorFrame2_ColS = {
-    #include "assets/levelGroup/JungleLand/doorFrame2/doorFrame2.colS.inc.c"
+Rect3D JungleLand_doorFrame2_BoundBox = {
+    #include "assets/levelGroup/JungleLand/doorFrame2/doorFrame2.boundBox.inc.c"
 };
 
 ModelCollision JungleLand_doorFrame2_ColH = {
-26, 34, JungleLand_doorFrame2_ColV, JungleLand_doorFrame2_ColT, &JungleLand_doorFrame2_ColS
+26, 34, JungleLand_doorFrame2_ColVerts, JungleLand_doorFrame2_ColTris, &JungleLand_doorFrame2_BoundBox
 };
 
-Vec3f JungleLand_fernPlant_ColV[] = {
-    #include "assets/levelGroup/JungleLand/fernPlant/fernPlant.colV.inc.c"
+Vec3f JungleLand_fernPlant_ColVerts[] = {
+    #include "assets/levelGroup/JungleLand/fernPlant/fernPlant.colVerts.inc.c"
 };
 
-Vec3w JungleLand_fernPlant_ColT[] = {
-    #include "assets/levelGroup/JungleLand/fernPlant/fernPlant.colT.inc.c"
+Vec3w JungleLand_fernPlant_ColTris[] = {
+    #include "assets/levelGroup/JungleLand/fernPlant/fernPlant.colTris.inc.c"
 };
 
-Rect3D JungleLand_fernPlant_ColS = {
-    #include "assets/levelGroup/JungleLand/fernPlant/fernPlant.colS.inc.c"
+Rect3D JungleLand_fernPlant_BoundBox = {
+    #include "assets/levelGroup/JungleLand/fernPlant/fernPlant.boundBox.inc.c"
 };
 
 ModelCollision JungleLand_fernPlant_ColH = {
-4, 2, JungleLand_fernPlant_ColV, JungleLand_fernPlant_ColT, &JungleLand_fernPlant_ColS
+4, 2, JungleLand_fernPlant_ColVerts, JungleLand_fernPlant_ColTris, &JungleLand_fernPlant_BoundBox
 };
 
-Vec3f JungleLand_waterfall_ColV[] = {
-    #include "assets/levelGroup/JungleLand/waterfall/waterfall.colV.inc.c"
+Vec3f JungleLand_waterfall_ColVerts[] = {
+    #include "assets/levelGroup/JungleLand/waterfall/waterfall.colVerts.inc.c"
 };
 
-Vec3w JungleLand_waterfall_ColT[] = {
-    #include "assets/levelGroup/JungleLand/waterfall/waterfall.colT.inc.c"
+Vec3w JungleLand_waterfall_ColTris[] = {
+    #include "assets/levelGroup/JungleLand/waterfall/waterfall.colTris.inc.c"
 };
 
-Rect3D JungleLand_waterfall_ColS = {
-    #include "assets/levelGroup/JungleLand/waterfall/waterfall.colS.inc.c"
+Rect3D JungleLand_waterfall_BoundBox = {
+    #include "assets/levelGroup/JungleLand/waterfall/waterfall.boundBox.inc.c"
 };
 
 ModelCollision JungleLand_waterfall_ColH = {
-10, 8, JungleLand_waterfall_ColV, JungleLand_waterfall_ColT, &JungleLand_waterfall_ColS
+10, 8, JungleLand_waterfall_ColVerts, JungleLand_waterfall_ColTris, &JungleLand_waterfall_BoundBox
 };
 
-Vec3f JungleLand_water_ColV[] = {
-    #include "assets/levelGroup/JungleLand/water/water.colV.inc.c"
+Vec3f JungleLand_water_ColVerts[] = {
+    #include "assets/levelGroup/JungleLand/water/water.colVerts.inc.c"
 };
 
-Vec3w JungleLand_water_ColT[] = {
-    #include "assets/levelGroup/JungleLand/water/water.colT.inc.c"
+Vec3w JungleLand_water_ColTris[] = {
+    #include "assets/levelGroup/JungleLand/water/water.colTris.inc.c"
 };
 
-Rect3D JungleLand_water_ColS = {
-    #include "assets/levelGroup/JungleLand/water/water.colS.inc.c"
+Rect3D JungleLand_water_BoundBox = {
+    #include "assets/levelGroup/JungleLand/water/water.boundBox.inc.c"
 };
 
 ModelCollision JungleLand_water_ColH = {
-5, 3, JungleLand_water_ColV, JungleLand_water_ColT, &JungleLand_water_ColS
+5, 3, JungleLand_water_ColVerts, JungleLand_water_ColTris, &JungleLand_water_BoundBox
 };
 
-Vec3f JungleLand_water2_ColV[] = {
-    #include "assets/levelGroup/JungleLand/water2/water2.colV.inc.c"
+Vec3f JungleLand_water2_ColVerts[] = {
+    #include "assets/levelGroup/JungleLand/water2/water2.colVerts.inc.c"
 };
 
-Vec3w JungleLand_water2_ColT[] = {
-    #include "assets/levelGroup/JungleLand/water2/water2.colT.inc.c"
+Vec3w JungleLand_water2_ColTris[] = {
+    #include "assets/levelGroup/JungleLand/water2/water2.colTris.inc.c"
 };
 
-Rect3D JungleLand_water2_ColS = {
-    #include "assets/levelGroup/JungleLand/water2/water2.colS.inc.c"
+Rect3D JungleLand_water2_BoundBox = {
+    #include "assets/levelGroup/JungleLand/water2/water2.boundBox.inc.c"
 };
 
 ModelCollision JungleLand_water2_ColH = {
-5, 3, JungleLand_water2_ColV, JungleLand_water2_ColT, &JungleLand_water2_ColS
+5, 3, JungleLand_water2_ColVerts, JungleLand_water2_ColTris, &JungleLand_water2_BoundBox
 };
 s32 alignment_Pad_JL[] = {0, 0};
 

@@ -8,6 +8,15 @@ from _ct_base import CTSegBase
 from splat.util import options, symbols
 
 
+# Map yaml `args` value -> (filename suffix, symbol-type tag)
+_VARIANT = {
+    "Verts":    ("colVerts", "ColVerts"),
+    "Tris":     ("colTris",  "ColTris"),
+    "Settings": ("boundBox", "BoundBox"),
+    "Header":   ("colH",     "ColH"),
+}
+
+
 def _vec_array(buf, fmt, stride):
     """Yield C-formatted brace-enclosed tuples for an array of `stride`-byte
     records unpacked with `fmt`. Output spacing (', ') matches the original
@@ -23,7 +32,8 @@ class N64SegCollision(CTSegBase):
         self.type = isinstance(yaml, dict) and yaml.get("args", "Header")
 
     def out_path(self) -> Path:
-        return options.opts.asset_path / self.dir / f"{self.name}.col{self.type[0]}.inc.c"
+        suffix, _ = _VARIANT[self.type]
+        return options.opts.asset_path / self.dir / f"{self.name}.{suffix}.inc.c"
 
     def _open_array(self, sym_name: str, c_type: str):
         if self.data_only:
@@ -56,7 +66,7 @@ class N64SegCollision(CTSegBase):
         return sym
 
     def _verts(self, buf):
-        sym = self._ensure_sym(self.vram_start, "ColV")
+        sym = self._ensure_sym(self.vram_start, "ColVerts")
         rows = list(_vec_array(buf, ">fff", 0xC))
         lines = []
         if not self.data_only:
@@ -70,7 +80,7 @@ class N64SegCollision(CTSegBase):
         return "\n".join(lines)
 
     def _tris(self, buf):
-        sym = self._ensure_sym(self.vram_start, "ColT")
+        sym = self._ensure_sym(self.vram_start, "ColTris")
         rows = list(_vec_array(buf, ">iii", 0xC))
         lines = []
         if not self.data_only:
@@ -84,7 +94,7 @@ class N64SegCollision(CTSegBase):
         return "\n".join(lines)
 
     def _settings(self, buf):
-        sym = self._ensure_sym(self.vram_start, "ColS")
+        sym = self._ensure_sym(self.vram_start, "BoundBox")
         a = struct.unpack(">fff", buf[0:0xC])
         b = struct.unpack(">fff", buf[0xC : 0x18])
         body = (
@@ -106,11 +116,11 @@ class N64SegCollision(CTSegBase):
         sym = self._ensure_sym(self.vram_start, "ColH")
         data = list(struct.unpack(">iiIII", buf[0:0x14]))
 
-        # i==2 ColV, i==3 ColT, i==4 ColS — resolve pointers to symbol refs.
+        # i==2 verts, i==3 tris, i==4 bound-box — resolve pointers to symbol refs.
         for i, ref_type, suffix in (
-            (2, "ColV", "[0]"),
-            (3, "ColT", "[0]"),
-            (4, "ColS", ""),
+            (2, "ColVerts", "[0]"),
+            (3, "ColTris",  "[0]"),
+            (4, "BoundBox", ""),
         ):
             ref = self.retrieve_sym_type(symbols.all_symbols_dict, data[i], ref_type)
             if not ref:

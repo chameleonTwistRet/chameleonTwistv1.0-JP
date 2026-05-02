@@ -1190,612 +1190,612 @@ Gfx IntroOutro_model38_Gfx[] = {
     #include "assets/levelGroup/IntroOutro/model38/model38.gfx.inc.c"
 };
 
-Vec3f IntroOutro_unkCol1_ColV[] = {
-    #include "assets/levelGroup/IntroOutro/unkCol1/unkCol1.colV.inc.c"
+Vec3f IntroOutro_unkCol1_ColVerts[] = {
+    #include "assets/levelGroup/IntroOutro/unkCol1/unkCol1.colVerts.inc.c"
 };
 
-Vec3w IntroOutro_unkCol1_ColT[] = {
-    #include "assets/levelGroup/IntroOutro/unkCol1/unkCol1.colT.inc.c"
+Vec3w IntroOutro_unkCol1_ColTris[] = {
+    #include "assets/levelGroup/IntroOutro/unkCol1/unkCol1.colTris.inc.c"
 };
 
-Rect3D IntroOutro_unkCol1_ColS = {
-    #include "assets/levelGroup/IntroOutro/unkCol1/unkCol1.colS.inc.c"
+Rect3D IntroOutro_unkCol1_BoundBox = {
+    #include "assets/levelGroup/IntroOutro/unkCol1/unkCol1.boundBox.inc.c"
 };
 
 ModelCollision IntroOutro_unkCol1_ColH = {
-12, 16, IntroOutro_unkCol1_ColV, IntroOutro_unkCol1_ColT, &IntroOutro_unkCol1_ColS
+12, 16, IntroOutro_unkCol1_ColVerts, IntroOutro_unkCol1_ColTris, &IntroOutro_unkCol1_BoundBox
 };
 
-Vec3f IntroOutro_unkCol2_ColV[] = {
-    #include "assets/levelGroup/IntroOutro/unkCol2/unkCol2.colV.inc.c"
+Vec3f IntroOutro_unkCol2_ColVerts[] = {
+    #include "assets/levelGroup/IntroOutro/unkCol2/unkCol2.colVerts.inc.c"
 };
 
-Vec3w IntroOutro_unkCol2_ColT[] = {
-    #include "assets/levelGroup/IntroOutro/unkCol2/unkCol2.colT.inc.c"
+Vec3w IntroOutro_unkCol2_ColTris[] = {
+    #include "assets/levelGroup/IntroOutro/unkCol2/unkCol2.colTris.inc.c"
 };
 
-Rect3D IntroOutro_unkCol2_ColS = {
-    #include "assets/levelGroup/IntroOutro/unkCol2/unkCol2.colS.inc.c"
+Rect3D IntroOutro_unkCol2_BoundBox = {
+    #include "assets/levelGroup/IntroOutro/unkCol2/unkCol2.boundBox.inc.c"
 };
 
 ModelCollision IntroOutro_unkCol2_ColH = {
-12, 16, IntroOutro_unkCol2_ColV, IntroOutro_unkCol2_ColT, &IntroOutro_unkCol2_ColS
+12, 16, IntroOutro_unkCol2_ColVerts, IntroOutro_unkCol2_ColTris, &IntroOutro_unkCol2_BoundBox
 };
 
-Vec3f IntroOutro_unkCol3_ColV[] = {
-    #include "assets/levelGroup/IntroOutro/unkCol3/unkCol3.colV.inc.c"
+Vec3f IntroOutro_unkCol3_ColVerts[] = {
+    #include "assets/levelGroup/IntroOutro/unkCol3/unkCol3.colVerts.inc.c"
 };
 
-Vec3w IntroOutro_unkCol3_ColT[] = {
-    #include "assets/levelGroup/IntroOutro/unkCol3/unkCol3.colT.inc.c"
+Vec3w IntroOutro_unkCol3_ColTris[] = {
+    #include "assets/levelGroup/IntroOutro/unkCol3/unkCol3.colTris.inc.c"
 };
 
-Rect3D IntroOutro_unkCol3_ColS = {
-    #include "assets/levelGroup/IntroOutro/unkCol3/unkCol3.colS.inc.c"
+Rect3D IntroOutro_unkCol3_BoundBox = {
+    #include "assets/levelGroup/IntroOutro/unkCol3/unkCol3.boundBox.inc.c"
 };
 
 ModelCollision IntroOutro_unkCol3_ColH = {
-24, 38, IntroOutro_unkCol3_ColV, IntroOutro_unkCol3_ColT, &IntroOutro_unkCol3_ColS
+24, 38, IntroOutro_unkCol3_ColVerts, IntroOutro_unkCol3_ColTris, &IntroOutro_unkCol3_BoundBox
 };
 
-Vec3f IntroOutro_unkCol4_ColV[] = {
-    #include "assets/levelGroup/IntroOutro/unkCol4/unkCol4.colV.inc.c"
+Vec3f IntroOutro_unkCol4_ColVerts[] = {
+    #include "assets/levelGroup/IntroOutro/unkCol4/unkCol4.colVerts.inc.c"
 };
 
-Vec3w IntroOutro_unkCol4_ColT[] = {
-    #include "assets/levelGroup/IntroOutro/unkCol4/unkCol4.colT.inc.c"
+Vec3w IntroOutro_unkCol4_ColTris[] = {
+    #include "assets/levelGroup/IntroOutro/unkCol4/unkCol4.colTris.inc.c"
 };
 
-Rect3D IntroOutro_unkCol4_ColS = {
-    #include "assets/levelGroup/IntroOutro/unkCol4/unkCol4.colS.inc.c"
+Rect3D IntroOutro_unkCol4_BoundBox = {
+    #include "assets/levelGroup/IntroOutro/unkCol4/unkCol4.boundBox.inc.c"
 };
 
 ModelCollision IntroOutro_unkCol4_ColH = {
-18, 24, IntroOutro_unkCol4_ColV, IntroOutro_unkCol4_ColT, &IntroOutro_unkCol4_ColS
+18, 24, IntroOutro_unkCol4_ColVerts, IntroOutro_unkCol4_ColTris, &IntroOutro_unkCol4_BoundBox
 };
 
-Vec3f IntroOutro_unkCol5_ColV[] = {
-    #include "assets/levelGroup/IntroOutro/unkCol5/unkCol5.colV.inc.c"
+Vec3f IntroOutro_unkCol5_ColVerts[] = {
+    #include "assets/levelGroup/IntroOutro/unkCol5/unkCol5.colVerts.inc.c"
 };
 
-Vec3w IntroOutro_unkCol5_ColT[] = {
-    #include "assets/levelGroup/IntroOutro/unkCol5/unkCol5.colT.inc.c"
+Vec3w IntroOutro_unkCol5_ColTris[] = {
+    #include "assets/levelGroup/IntroOutro/unkCol5/unkCol5.colTris.inc.c"
 };
 
-Rect3D IntroOutro_unkCol5_ColS = {
-    #include "assets/levelGroup/IntroOutro/unkCol5/unkCol5.colS.inc.c"
+Rect3D IntroOutro_unkCol5_BoundBox = {
+    #include "assets/levelGroup/IntroOutro/unkCol5/unkCol5.boundBox.inc.c"
 };
 
 ModelCollision IntroOutro_unkCol5_ColH = {
-12, 20, IntroOutro_unkCol5_ColV, IntroOutro_unkCol5_ColT, &IntroOutro_unkCol5_ColS
+12, 20, IntroOutro_unkCol5_ColVerts, IntroOutro_unkCol5_ColTris, &IntroOutro_unkCol5_BoundBox
 };
 
-Vec3f IntroOutro_unkCol6_ColV[] = {
-    #include "assets/levelGroup/IntroOutro/unkCol6/unkCol6.colV.inc.c"
+Vec3f IntroOutro_unkCol6_ColVerts[] = {
+    #include "assets/levelGroup/IntroOutro/unkCol6/unkCol6.colVerts.inc.c"
 };
 
-Vec3w IntroOutro_unkCol6_ColT[] = {
-    #include "assets/levelGroup/IntroOutro/unkCol6/unkCol6.colT.inc.c"
+Vec3w IntroOutro_unkCol6_ColTris[] = {
+    #include "assets/levelGroup/IntroOutro/unkCol6/unkCol6.colTris.inc.c"
 };
 
-Rect3D IntroOutro_unkCol6_ColS = {
-    #include "assets/levelGroup/IntroOutro/unkCol6/unkCol6.colS.inc.c"
+Rect3D IntroOutro_unkCol6_BoundBox = {
+    #include "assets/levelGroup/IntroOutro/unkCol6/unkCol6.boundBox.inc.c"
 };
 
 ModelCollision IntroOutro_unkCol6_ColH = {
-8, 10, IntroOutro_unkCol6_ColV, IntroOutro_unkCol6_ColT, &IntroOutro_unkCol6_ColS
+8, 10, IntroOutro_unkCol6_ColVerts, IntroOutro_unkCol6_ColTris, &IntroOutro_unkCol6_BoundBox
 };
 
-Vec3f IntroOutro_unkCol7_ColV[] = {
-    #include "assets/levelGroup/IntroOutro/unkCol7/unkCol7.colV.inc.c"
+Vec3f IntroOutro_unkCol7_ColVerts[] = {
+    #include "assets/levelGroup/IntroOutro/unkCol7/unkCol7.colVerts.inc.c"
 };
 
-Vec3w IntroOutro_unkCol7_ColT[] = {
-    #include "assets/levelGroup/IntroOutro/unkCol7/unkCol7.colT.inc.c"
+Vec3w IntroOutro_unkCol7_ColTris[] = {
+    #include "assets/levelGroup/IntroOutro/unkCol7/unkCol7.colTris.inc.c"
 };
 
-Rect3D IntroOutro_unkCol7_ColS = {
-    #include "assets/levelGroup/IntroOutro/unkCol7/unkCol7.colS.inc.c"
+Rect3D IntroOutro_unkCol7_BoundBox = {
+    #include "assets/levelGroup/IntroOutro/unkCol7/unkCol7.boundBox.inc.c"
 };
 
 ModelCollision IntroOutro_unkCol7_ColH = {
-8, 12, IntroOutro_unkCol7_ColV, IntroOutro_unkCol7_ColT, &IntroOutro_unkCol7_ColS
+8, 12, IntroOutro_unkCol7_ColVerts, IntroOutro_unkCol7_ColTris, &IntroOutro_unkCol7_BoundBox
 };
 
-Vec3f IntroOutro_unkCol8_ColV[] = {
-    #include "assets/levelGroup/IntroOutro/unkCol8/unkCol8.colV.inc.c"
+Vec3f IntroOutro_unkCol8_ColVerts[] = {
+    #include "assets/levelGroup/IntroOutro/unkCol8/unkCol8.colVerts.inc.c"
 };
 
-Vec3w IntroOutro_unkCol8_ColT[] = {
-    #include "assets/levelGroup/IntroOutro/unkCol8/unkCol8.colT.inc.c"
+Vec3w IntroOutro_unkCol8_ColTris[] = {
+    #include "assets/levelGroup/IntroOutro/unkCol8/unkCol8.colTris.inc.c"
 };
 
-Rect3D IntroOutro_unkCol8_ColS = {
-    #include "assets/levelGroup/IntroOutro/unkCol8/unkCol8.colS.inc.c"
+Rect3D IntroOutro_unkCol8_BoundBox = {
+    #include "assets/levelGroup/IntroOutro/unkCol8/unkCol8.boundBox.inc.c"
 };
 
 ModelCollision IntroOutro_unkCol8_ColH = {
-8, 12, IntroOutro_unkCol8_ColV, IntroOutro_unkCol8_ColT, &IntroOutro_unkCol8_ColS
+8, 12, IntroOutro_unkCol8_ColVerts, IntroOutro_unkCol8_ColTris, &IntroOutro_unkCol8_BoundBox
 };
 
-Vec3f IntroOutro_unkCol9_ColV[] = {
-    #include "assets/levelGroup/IntroOutro/unkCol9/unkCol9.colV.inc.c"
+Vec3f IntroOutro_unkCol9_ColVerts[] = {
+    #include "assets/levelGroup/IntroOutro/unkCol9/unkCol9.colVerts.inc.c"
 };
 
-Vec3w IntroOutro_unkCol9_ColT[] = {
-    #include "assets/levelGroup/IntroOutro/unkCol9/unkCol9.colT.inc.c"
+Vec3w IntroOutro_unkCol9_ColTris[] = {
+    #include "assets/levelGroup/IntroOutro/unkCol9/unkCol9.colTris.inc.c"
 };
 
-Rect3D IntroOutro_unkCol9_ColS = {
-    #include "assets/levelGroup/IntroOutro/unkCol9/unkCol9.colS.inc.c"
+Rect3D IntroOutro_unkCol9_BoundBox = {
+    #include "assets/levelGroup/IntroOutro/unkCol9/unkCol9.boundBox.inc.c"
 };
 
 ModelCollision IntroOutro_unkCol9_ColH = {
-8, 12, IntroOutro_unkCol9_ColV, IntroOutro_unkCol9_ColT, &IntroOutro_unkCol9_ColS
+8, 12, IntroOutro_unkCol9_ColVerts, IntroOutro_unkCol9_ColTris, &IntroOutro_unkCol9_BoundBox
 };
 
-Vec3f IntroOutro_unkCol10_ColV[] = {
-    #include "assets/levelGroup/IntroOutro/unkCol10/unkCol10.colV.inc.c"
+Vec3f IntroOutro_unkCol10_ColVerts[] = {
+    #include "assets/levelGroup/IntroOutro/unkCol10/unkCol10.colVerts.inc.c"
 };
 
-Vec3w IntroOutro_unkCol10_ColT[] = {
-    #include "assets/levelGroup/IntroOutro/unkCol10/unkCol10.colT.inc.c"
+Vec3w IntroOutro_unkCol10_ColTris[] = {
+    #include "assets/levelGroup/IntroOutro/unkCol10/unkCol10.colTris.inc.c"
 };
 
-Rect3D IntroOutro_unkCol10_ColS = {
-    #include "assets/levelGroup/IntroOutro/unkCol10/unkCol10.colS.inc.c"
+Rect3D IntroOutro_unkCol10_BoundBox = {
+    #include "assets/levelGroup/IntroOutro/unkCol10/unkCol10.boundBox.inc.c"
 };
 
 ModelCollision IntroOutro_unkCol10_ColH = {
-8, 12, IntroOutro_unkCol10_ColV, IntroOutro_unkCol10_ColT, &IntroOutro_unkCol10_ColS
+8, 12, IntroOutro_unkCol10_ColVerts, IntroOutro_unkCol10_ColTris, &IntroOutro_unkCol10_BoundBox
 };
 
-Vec3f IntroOutro_unkCol11_ColV[] = {
-    #include "assets/levelGroup/IntroOutro/unkCol11/unkCol11.colV.inc.c"
+Vec3f IntroOutro_unkCol11_ColVerts[] = {
+    #include "assets/levelGroup/IntroOutro/unkCol11/unkCol11.colVerts.inc.c"
 };
 
-Vec3w IntroOutro_unkCol11_ColT[] = {
-    #include "assets/levelGroup/IntroOutro/unkCol11/unkCol11.colT.inc.c"
+Vec3w IntroOutro_unkCol11_ColTris[] = {
+    #include "assets/levelGroup/IntroOutro/unkCol11/unkCol11.colTris.inc.c"
 };
 
-Rect3D IntroOutro_unkCol11_ColS = {
-    #include "assets/levelGroup/IntroOutro/unkCol11/unkCol11.colS.inc.c"
+Rect3D IntroOutro_unkCol11_BoundBox = {
+    #include "assets/levelGroup/IntroOutro/unkCol11/unkCol11.boundBox.inc.c"
 };
 
 ModelCollision IntroOutro_unkCol11_ColH = {
-8, 10, IntroOutro_unkCol11_ColV, IntroOutro_unkCol11_ColT, &IntroOutro_unkCol11_ColS
+8, 10, IntroOutro_unkCol11_ColVerts, IntroOutro_unkCol11_ColTris, &IntroOutro_unkCol11_BoundBox
 };
 
-Vec3f IntroOutro_unkCol12_ColV[] = {
-    #include "assets/levelGroup/IntroOutro/unkCol12/unkCol12.colV.inc.c"
+Vec3f IntroOutro_unkCol12_ColVerts[] = {
+    #include "assets/levelGroup/IntroOutro/unkCol12/unkCol12.colVerts.inc.c"
 };
 
-Vec3w IntroOutro_unkCol12_ColT[] = {
-    #include "assets/levelGroup/IntroOutro/unkCol12/unkCol12.colT.inc.c"
+Vec3w IntroOutro_unkCol12_ColTris[] = {
+    #include "assets/levelGroup/IntroOutro/unkCol12/unkCol12.colTris.inc.c"
 };
 
-Rect3D IntroOutro_unkCol12_ColS = {
-    #include "assets/levelGroup/IntroOutro/unkCol12/unkCol12.colS.inc.c"
+Rect3D IntroOutro_unkCol12_BoundBox = {
+    #include "assets/levelGroup/IntroOutro/unkCol12/unkCol12.boundBox.inc.c"
 };
 
 ModelCollision IntroOutro_unkCol12_ColH = {
-12, 20, IntroOutro_unkCol12_ColV, IntroOutro_unkCol12_ColT, &IntroOutro_unkCol12_ColS
+12, 20, IntroOutro_unkCol12_ColVerts, IntroOutro_unkCol12_ColTris, &IntroOutro_unkCol12_BoundBox
 };
 
-Vec3f IntroOutro_unkCol13_ColV[] = {
-    #include "assets/levelGroup/IntroOutro/unkCol13/unkCol13.colV.inc.c"
+Vec3f IntroOutro_unkCol13_ColVerts[] = {
+    #include "assets/levelGroup/IntroOutro/unkCol13/unkCol13.colVerts.inc.c"
 };
 
-Vec3w IntroOutro_unkCol13_ColT[] = {
-    #include "assets/levelGroup/IntroOutro/unkCol13/unkCol13.colT.inc.c"
+Vec3w IntroOutro_unkCol13_ColTris[] = {
+    #include "assets/levelGroup/IntroOutro/unkCol13/unkCol13.colTris.inc.c"
 };
 
-Rect3D IntroOutro_unkCol13_ColS = {
-    #include "assets/levelGroup/IntroOutro/unkCol13/unkCol13.colS.inc.c"
+Rect3D IntroOutro_unkCol13_BoundBox = {
+    #include "assets/levelGroup/IntroOutro/unkCol13/unkCol13.boundBox.inc.c"
 };
 
 ModelCollision IntroOutro_unkCol13_ColH = {
-24, 32, IntroOutro_unkCol13_ColV, IntroOutro_unkCol13_ColT, &IntroOutro_unkCol13_ColS
+24, 32, IntroOutro_unkCol13_ColVerts, IntroOutro_unkCol13_ColTris, &IntroOutro_unkCol13_BoundBox
 };
 
-Vec3f IntroOutro_unkCol14_ColV[] = {
-    #include "assets/levelGroup/IntroOutro/unkCol14/unkCol14.colV.inc.c"
+Vec3f IntroOutro_unkCol14_ColVerts[] = {
+    #include "assets/levelGroup/IntroOutro/unkCol14/unkCol14.colVerts.inc.c"
 };
 
-Vec3w IntroOutro_unkCol14_ColT[] = {
-    #include "assets/levelGroup/IntroOutro/unkCol14/unkCol14.colT.inc.c"
+Vec3w IntroOutro_unkCol14_ColTris[] = {
+    #include "assets/levelGroup/IntroOutro/unkCol14/unkCol14.colTris.inc.c"
 };
 
-Rect3D IntroOutro_unkCol14_ColS = {
-    #include "assets/levelGroup/IntroOutro/unkCol14/unkCol14.colS.inc.c"
+Rect3D IntroOutro_unkCol14_BoundBox = {
+    #include "assets/levelGroup/IntroOutro/unkCol14/unkCol14.boundBox.inc.c"
 };
 
 ModelCollision IntroOutro_unkCol14_ColH = {
-18, 28, IntroOutro_unkCol14_ColV, IntroOutro_unkCol14_ColT, &IntroOutro_unkCol14_ColS
+18, 28, IntroOutro_unkCol14_ColVerts, IntroOutro_unkCol14_ColTris, &IntroOutro_unkCol14_BoundBox
 };
 
-Vec3f IntroOutro_unkCol15_ColV[] = {
-    #include "assets/levelGroup/IntroOutro/unkCol15/unkCol15.colV.inc.c"
+Vec3f IntroOutro_unkCol15_ColVerts[] = {
+    #include "assets/levelGroup/IntroOutro/unkCol15/unkCol15.colVerts.inc.c"
 };
 
-Vec3w IntroOutro_unkCol15_ColT[] = {
-    #include "assets/levelGroup/IntroOutro/unkCol15/unkCol15.colT.inc.c"
+Vec3w IntroOutro_unkCol15_ColTris[] = {
+    #include "assets/levelGroup/IntroOutro/unkCol15/unkCol15.colTris.inc.c"
 };
 
-Rect3D IntroOutro_unkCol15_ColS = {
-    #include "assets/levelGroup/IntroOutro/unkCol15/unkCol15.colS.inc.c"
+Rect3D IntroOutro_unkCol15_BoundBox = {
+    #include "assets/levelGroup/IntroOutro/unkCol15/unkCol15.boundBox.inc.c"
 };
 
 ModelCollision IntroOutro_unkCol15_ColH = {
-12, 12, IntroOutro_unkCol15_ColV, IntroOutro_unkCol15_ColT, &IntroOutro_unkCol15_ColS
+12, 12, IntroOutro_unkCol15_ColVerts, IntroOutro_unkCol15_ColTris, &IntroOutro_unkCol15_BoundBox
 };
 
-Vec3f IntroOutro_unkCol16_ColV[] = {
-    #include "assets/levelGroup/IntroOutro/unkCol16/unkCol16.colV.inc.c"
+Vec3f IntroOutro_unkCol16_ColVerts[] = {
+    #include "assets/levelGroup/IntroOutro/unkCol16/unkCol16.colVerts.inc.c"
 };
 
-Vec3w IntroOutro_unkCol16_ColT[] = {
-    #include "assets/levelGroup/IntroOutro/unkCol16/unkCol16.colT.inc.c"
+Vec3w IntroOutro_unkCol16_ColTris[] = {
+    #include "assets/levelGroup/IntroOutro/unkCol16/unkCol16.colTris.inc.c"
 };
 
-Rect3D IntroOutro_unkCol16_ColS = {
-    #include "assets/levelGroup/IntroOutro/unkCol16/unkCol16.colS.inc.c"
+Rect3D IntroOutro_unkCol16_BoundBox = {
+    #include "assets/levelGroup/IntroOutro/unkCol16/unkCol16.boundBox.inc.c"
 };
 
 ModelCollision IntroOutro_unkCol16_ColH = {
-12, 12, IntroOutro_unkCol16_ColV, IntroOutro_unkCol16_ColT, &IntroOutro_unkCol16_ColS
+12, 12, IntroOutro_unkCol16_ColVerts, IntroOutro_unkCol16_ColTris, &IntroOutro_unkCol16_BoundBox
 };
 
-Vec3f IntroOutro_unkCol17_ColV[] = {
-    #include "assets/levelGroup/IntroOutro/unkCol17/unkCol17.colV.inc.c"
+Vec3f IntroOutro_unkCol17_ColVerts[] = {
+    #include "assets/levelGroup/IntroOutro/unkCol17/unkCol17.colVerts.inc.c"
 };
 
-Vec3w IntroOutro_unkCol17_ColT[] = {
-    #include "assets/levelGroup/IntroOutro/unkCol17/unkCol17.colT.inc.c"
+Vec3w IntroOutro_unkCol17_ColTris[] = {
+    #include "assets/levelGroup/IntroOutro/unkCol17/unkCol17.colTris.inc.c"
 };
 
-Rect3D IntroOutro_unkCol17_ColS = {
-    #include "assets/levelGroup/IntroOutro/unkCol17/unkCol17.colS.inc.c"
+Rect3D IntroOutro_unkCol17_BoundBox = {
+    #include "assets/levelGroup/IntroOutro/unkCol17/unkCol17.boundBox.inc.c"
 };
 
 ModelCollision IntroOutro_unkCol17_ColH = {
-5, 3, IntroOutro_unkCol17_ColV, IntroOutro_unkCol17_ColT, &IntroOutro_unkCol17_ColS
+5, 3, IntroOutro_unkCol17_ColVerts, IntroOutro_unkCol17_ColTris, &IntroOutro_unkCol17_BoundBox
 };
 
-Vec3f IntroOutro_unkCol18_ColV[] = {
-    #include "assets/levelGroup/IntroOutro/unkCol18/unkCol18.colV.inc.c"
+Vec3f IntroOutro_unkCol18_ColVerts[] = {
+    #include "assets/levelGroup/IntroOutro/unkCol18/unkCol18.colVerts.inc.c"
 };
 
-Vec3w IntroOutro_unkCol18_ColT[] = {
-    #include "assets/levelGroup/IntroOutro/unkCol18/unkCol18.colT.inc.c"
+Vec3w IntroOutro_unkCol18_ColTris[] = {
+    #include "assets/levelGroup/IntroOutro/unkCol18/unkCol18.colTris.inc.c"
 };
 
-Rect3D IntroOutro_unkCol18_ColS = {
-    #include "assets/levelGroup/IntroOutro/unkCol18/unkCol18.colS.inc.c"
+Rect3D IntroOutro_unkCol18_BoundBox = {
+    #include "assets/levelGroup/IntroOutro/unkCol18/unkCol18.boundBox.inc.c"
 };
 
 ModelCollision IntroOutro_unkCol18_ColH = {
-5, 3, IntroOutro_unkCol18_ColV, IntroOutro_unkCol18_ColT, &IntroOutro_unkCol18_ColS
+5, 3, IntroOutro_unkCol18_ColVerts, IntroOutro_unkCol18_ColTris, &IntroOutro_unkCol18_BoundBox
 };
 
-Vec3f IntroOutro_unkCol19_ColV[] = {
-    #include "assets/levelGroup/IntroOutro/unkCol19/unkCol19.colV.inc.c"
+Vec3f IntroOutro_unkCol19_ColVerts[] = {
+    #include "assets/levelGroup/IntroOutro/unkCol19/unkCol19.colVerts.inc.c"
 };
 
-Vec3w IntroOutro_unkCol19_ColT[] = {
-    #include "assets/levelGroup/IntroOutro/unkCol19/unkCol19.colT.inc.c"
+Vec3w IntroOutro_unkCol19_ColTris[] = {
+    #include "assets/levelGroup/IntroOutro/unkCol19/unkCol19.colTris.inc.c"
 };
 
-Rect3D IntroOutro_unkCol19_ColS = {
-    #include "assets/levelGroup/IntroOutro/unkCol19/unkCol19.colS.inc.c"
+Rect3D IntroOutro_unkCol19_BoundBox = {
+    #include "assets/levelGroup/IntroOutro/unkCol19/unkCol19.boundBox.inc.c"
 };
 
 ModelCollision IntroOutro_unkCol19_ColH = {
-4, 2, IntroOutro_unkCol19_ColV, IntroOutro_unkCol19_ColT, &IntroOutro_unkCol19_ColS
+4, 2, IntroOutro_unkCol19_ColVerts, IntroOutro_unkCol19_ColTris, &IntroOutro_unkCol19_BoundBox
 };
 
-Vec3f IntroOutro_unkCol20_ColV[] = {
-    #include "assets/levelGroup/IntroOutro/unkCol20/unkCol20.colV.inc.c"
+Vec3f IntroOutro_unkCol20_ColVerts[] = {
+    #include "assets/levelGroup/IntroOutro/unkCol20/unkCol20.colVerts.inc.c"
 };
 
-Vec3w IntroOutro_unkCol20_ColT[] = {
-    #include "assets/levelGroup/IntroOutro/unkCol20/unkCol20.colT.inc.c"
+Vec3w IntroOutro_unkCol20_ColTris[] = {
+    #include "assets/levelGroup/IntroOutro/unkCol20/unkCol20.colTris.inc.c"
 };
 
-Rect3D IntroOutro_unkCol20_ColS = {
-    #include "assets/levelGroup/IntroOutro/unkCol20/unkCol20.colS.inc.c"
+Rect3D IntroOutro_unkCol20_BoundBox = {
+    #include "assets/levelGroup/IntroOutro/unkCol20/unkCol20.boundBox.inc.c"
 };
 
 ModelCollision IntroOutro_unkCol20_ColH = {
-4, 2, IntroOutro_unkCol20_ColV, IntroOutro_unkCol20_ColT, &IntroOutro_unkCol20_ColS
+4, 2, IntroOutro_unkCol20_ColVerts, IntroOutro_unkCol20_ColTris, &IntroOutro_unkCol20_BoundBox
 };
 
-Vec3f IntroOutro_unkCol21_ColV[] = {
-    #include "assets/levelGroup/IntroOutro/unkCol21/unkCol21.colV.inc.c"
+Vec3f IntroOutro_unkCol21_ColVerts[] = {
+    #include "assets/levelGroup/IntroOutro/unkCol21/unkCol21.colVerts.inc.c"
 };
 
-Vec3w IntroOutro_unkCol21_ColT[] = {
-    #include "assets/levelGroup/IntroOutro/unkCol21/unkCol21.colT.inc.c"
+Vec3w IntroOutro_unkCol21_ColTris[] = {
+    #include "assets/levelGroup/IntroOutro/unkCol21/unkCol21.colTris.inc.c"
 };
 
-Rect3D IntroOutro_unkCol21_ColS = {
-    #include "assets/levelGroup/IntroOutro/unkCol21/unkCol21.colS.inc.c"
+Rect3D IntroOutro_unkCol21_BoundBox = {
+    #include "assets/levelGroup/IntroOutro/unkCol21/unkCol21.boundBox.inc.c"
 };
 
 ModelCollision IntroOutro_unkCol21_ColH = {
-5, 3, IntroOutro_unkCol21_ColV, IntroOutro_unkCol21_ColT, &IntroOutro_unkCol21_ColS
+5, 3, IntroOutro_unkCol21_ColVerts, IntroOutro_unkCol21_ColTris, &IntroOutro_unkCol21_BoundBox
 };
 
-Vec3f IntroOutro_unkCol22_ColV[] = {
-    #include "assets/levelGroup/IntroOutro/unkCol22/unkCol22.colV.inc.c"
+Vec3f IntroOutro_unkCol22_ColVerts[] = {
+    #include "assets/levelGroup/IntroOutro/unkCol22/unkCol22.colVerts.inc.c"
 };
 
-Vec3w IntroOutro_unkCol22_ColT[] = {
-    #include "assets/levelGroup/IntroOutro/unkCol22/unkCol22.colT.inc.c"
+Vec3w IntroOutro_unkCol22_ColTris[] = {
+    #include "assets/levelGroup/IntroOutro/unkCol22/unkCol22.colTris.inc.c"
 };
 
-Rect3D IntroOutro_unkCol22_ColS = {
-    #include "assets/levelGroup/IntroOutro/unkCol22/unkCol22.colS.inc.c"
+Rect3D IntroOutro_unkCol22_BoundBox = {
+    #include "assets/levelGroup/IntroOutro/unkCol22/unkCol22.boundBox.inc.c"
 };
 
 ModelCollision IntroOutro_unkCol22_ColH = {
-4, 2, IntroOutro_unkCol22_ColV, IntroOutro_unkCol22_ColT, &IntroOutro_unkCol22_ColS
+4, 2, IntroOutro_unkCol22_ColVerts, IntroOutro_unkCol22_ColTris, &IntroOutro_unkCol22_BoundBox
 };
 
-Vec3f IntroOutro_unkCol23_ColV[] = {
-    #include "assets/levelGroup/IntroOutro/unkCol23/unkCol23.colV.inc.c"
+Vec3f IntroOutro_unkCol23_ColVerts[] = {
+    #include "assets/levelGroup/IntroOutro/unkCol23/unkCol23.colVerts.inc.c"
 };
 
-Vec3w IntroOutro_unkCol23_ColT[] = {
-    #include "assets/levelGroup/IntroOutro/unkCol23/unkCol23.colT.inc.c"
+Vec3w IntroOutro_unkCol23_ColTris[] = {
+    #include "assets/levelGroup/IntroOutro/unkCol23/unkCol23.colTris.inc.c"
 };
 
-Rect3D IntroOutro_unkCol23_ColS = {
-    #include "assets/levelGroup/IntroOutro/unkCol23/unkCol23.colS.inc.c"
+Rect3D IntroOutro_unkCol23_BoundBox = {
+    #include "assets/levelGroup/IntroOutro/unkCol23/unkCol23.boundBox.inc.c"
 };
 
 ModelCollision IntroOutro_unkCol23_ColH = {
-8, 6, IntroOutro_unkCol23_ColV, IntroOutro_unkCol23_ColT, &IntroOutro_unkCol23_ColS
+8, 6, IntroOutro_unkCol23_ColVerts, IntroOutro_unkCol23_ColTris, &IntroOutro_unkCol23_BoundBox
 };
 
-Vec3f IntroOutro_unkCol24_ColV[] = {
-    #include "assets/levelGroup/IntroOutro/unkCol24/unkCol24.colV.inc.c"
+Vec3f IntroOutro_unkCol24_ColVerts[] = {
+    #include "assets/levelGroup/IntroOutro/unkCol24/unkCol24.colVerts.inc.c"
 };
 
-Vec3w IntroOutro_unkCol24_ColT[] = {
-    #include "assets/levelGroup/IntroOutro/unkCol24/unkCol24.colT.inc.c"
+Vec3w IntroOutro_unkCol24_ColTris[] = {
+    #include "assets/levelGroup/IntroOutro/unkCol24/unkCol24.colTris.inc.c"
 };
 
-Rect3D IntroOutro_unkCol24_ColS = {
-    #include "assets/levelGroup/IntroOutro/unkCol24/unkCol24.colS.inc.c"
+Rect3D IntroOutro_unkCol24_BoundBox = {
+    #include "assets/levelGroup/IntroOutro/unkCol24/unkCol24.boundBox.inc.c"
 };
 
 ModelCollision IntroOutro_unkCol24_ColH = {
-6, 4, IntroOutro_unkCol24_ColV, IntroOutro_unkCol24_ColT, &IntroOutro_unkCol24_ColS
+6, 4, IntroOutro_unkCol24_ColVerts, IntroOutro_unkCol24_ColTris, &IntroOutro_unkCol24_BoundBox
 };
 
-Vec3f IntroOutro_unkCol25_ColV[] = {
-    #include "assets/levelGroup/IntroOutro/unkCol25/unkCol25.colV.inc.c"
+Vec3f IntroOutro_unkCol25_ColVerts[] = {
+    #include "assets/levelGroup/IntroOutro/unkCol25/unkCol25.colVerts.inc.c"
 };
 
-Vec3w IntroOutro_unkCol25_ColT[] = {
-    #include "assets/levelGroup/IntroOutro/unkCol25/unkCol25.colT.inc.c"
+Vec3w IntroOutro_unkCol25_ColTris[] = {
+    #include "assets/levelGroup/IntroOutro/unkCol25/unkCol25.colTris.inc.c"
 };
 
-Rect3D IntroOutro_unkCol25_ColS = {
-    #include "assets/levelGroup/IntroOutro/unkCol25/unkCol25.colS.inc.c"
+Rect3D IntroOutro_unkCol25_BoundBox = {
+    #include "assets/levelGroup/IntroOutro/unkCol25/unkCol25.boundBox.inc.c"
 };
 
 ModelCollision IntroOutro_unkCol25_ColH = {
-6, 4, IntroOutro_unkCol25_ColV, IntroOutro_unkCol25_ColT, &IntroOutro_unkCol25_ColS
+6, 4, IntroOutro_unkCol25_ColVerts, IntroOutro_unkCol25_ColTris, &IntroOutro_unkCol25_BoundBox
 };
 
-Vec3f IntroOutro_unkCol26_ColV[] = {
-    #include "assets/levelGroup/IntroOutro/unkCol26/unkCol26.colV.inc.c"
+Vec3f IntroOutro_unkCol26_ColVerts[] = {
+    #include "assets/levelGroup/IntroOutro/unkCol26/unkCol26.colVerts.inc.c"
 };
 
-Vec3w IntroOutro_unkCol26_ColT[] = {
-    #include "assets/levelGroup/IntroOutro/unkCol26/unkCol26.colT.inc.c"
+Vec3w IntroOutro_unkCol26_ColTris[] = {
+    #include "assets/levelGroup/IntroOutro/unkCol26/unkCol26.colTris.inc.c"
 };
 
-Rect3D IntroOutro_unkCol26_ColS = {
-    #include "assets/levelGroup/IntroOutro/unkCol26/unkCol26.colS.inc.c"
+Rect3D IntroOutro_unkCol26_BoundBox = {
+    #include "assets/levelGroup/IntroOutro/unkCol26/unkCol26.boundBox.inc.c"
 };
 
 ModelCollision IntroOutro_unkCol26_ColH = {
-4, 2, IntroOutro_unkCol26_ColV, IntroOutro_unkCol26_ColT, &IntroOutro_unkCol26_ColS
+4, 2, IntroOutro_unkCol26_ColVerts, IntroOutro_unkCol26_ColTris, &IntroOutro_unkCol26_BoundBox
 };
 
-Vec3f IntroOutro_unkCol27_ColV[] = {
-    #include "assets/levelGroup/IntroOutro/unkCol27/unkCol27.colV.inc.c"
+Vec3f IntroOutro_unkCol27_ColVerts[] = {
+    #include "assets/levelGroup/IntroOutro/unkCol27/unkCol27.colVerts.inc.c"
 };
 
-Vec3w IntroOutro_unkCol27_ColT[] = {
-    #include "assets/levelGroup/IntroOutro/unkCol27/unkCol27.colT.inc.c"
+Vec3w IntroOutro_unkCol27_ColTris[] = {
+    #include "assets/levelGroup/IntroOutro/unkCol27/unkCol27.colTris.inc.c"
 };
 
-Rect3D IntroOutro_unkCol27_ColS = {
-    #include "assets/levelGroup/IntroOutro/unkCol27/unkCol27.colS.inc.c"
+Rect3D IntroOutro_unkCol27_BoundBox = {
+    #include "assets/levelGroup/IntroOutro/unkCol27/unkCol27.boundBox.inc.c"
 };
 
 ModelCollision IntroOutro_unkCol27_ColH = {
-31, 39, IntroOutro_unkCol27_ColV, IntroOutro_unkCol27_ColT, &IntroOutro_unkCol27_ColS
+31, 39, IntroOutro_unkCol27_ColVerts, IntroOutro_unkCol27_ColTris, &IntroOutro_unkCol27_BoundBox
 };
 
-Vec3f IntroOutro_unkCol28_ColV[] = {
-    #include "assets/levelGroup/IntroOutro/unkCol28/unkCol28.colV.inc.c"
+Vec3f IntroOutro_unkCol28_ColVerts[] = {
+    #include "assets/levelGroup/IntroOutro/unkCol28/unkCol28.colVerts.inc.c"
 };
 
-Vec3w IntroOutro_unkCol28_ColT[] = {
-    #include "assets/levelGroup/IntroOutro/unkCol28/unkCol28.colT.inc.c"
+Vec3w IntroOutro_unkCol28_ColTris[] = {
+    #include "assets/levelGroup/IntroOutro/unkCol28/unkCol28.colTris.inc.c"
 };
 
-Rect3D IntroOutro_unkCol28_ColS = {
-    #include "assets/levelGroup/IntroOutro/unkCol28/unkCol28.colS.inc.c"
+Rect3D IntroOutro_unkCol28_BoundBox = {
+    #include "assets/levelGroup/IntroOutro/unkCol28/unkCol28.boundBox.inc.c"
 };
 
 ModelCollision IntroOutro_unkCol28_ColH = {
-22, 32, IntroOutro_unkCol28_ColV, IntroOutro_unkCol28_ColT, &IntroOutro_unkCol28_ColS
+22, 32, IntroOutro_unkCol28_ColVerts, IntroOutro_unkCol28_ColTris, &IntroOutro_unkCol28_BoundBox
 };
 
-Vec3f IntroOutro_unkCol29_ColV[] = {
-    #include "assets/levelGroup/IntroOutro/unkCol29/unkCol29.colV.inc.c"
+Vec3f IntroOutro_unkCol29_ColVerts[] = {
+    #include "assets/levelGroup/IntroOutro/unkCol29/unkCol29.colVerts.inc.c"
 };
 
-Vec3w IntroOutro_unkCol29_ColT[] = {
-    #include "assets/levelGroup/IntroOutro/unkCol29/unkCol29.colT.inc.c"
+Vec3w IntroOutro_unkCol29_ColTris[] = {
+    #include "assets/levelGroup/IntroOutro/unkCol29/unkCol29.colTris.inc.c"
 };
 
-Rect3D IntroOutro_unkCol29_ColS = {
-    #include "assets/levelGroup/IntroOutro/unkCol29/unkCol29.colS.inc.c"
+Rect3D IntroOutro_unkCol29_BoundBox = {
+    #include "assets/levelGroup/IntroOutro/unkCol29/unkCol29.boundBox.inc.c"
 };
 
 ModelCollision IntroOutro_unkCol29_ColH = {
-12, 12, IntroOutro_unkCol29_ColV, IntroOutro_unkCol29_ColT, &IntroOutro_unkCol29_ColS
+12, 12, IntroOutro_unkCol29_ColVerts, IntroOutro_unkCol29_ColTris, &IntroOutro_unkCol29_BoundBox
 };
 
-Vec3f IntroOutro_unkCol30_ColV[] = {
-    #include "assets/levelGroup/IntroOutro/unkCol30/unkCol30.colV.inc.c"
+Vec3f IntroOutro_unkCol30_ColVerts[] = {
+    #include "assets/levelGroup/IntroOutro/unkCol30/unkCol30.colVerts.inc.c"
 };
 
-Vec3w IntroOutro_unkCol30_ColT[] = {
-    #include "assets/levelGroup/IntroOutro/unkCol30/unkCol30.colT.inc.c"
+Vec3w IntroOutro_unkCol30_ColTris[] = {
+    #include "assets/levelGroup/IntroOutro/unkCol30/unkCol30.colTris.inc.c"
 };
 
-Rect3D IntroOutro_unkCol30_ColS = {
-    #include "assets/levelGroup/IntroOutro/unkCol30/unkCol30.colS.inc.c"
+Rect3D IntroOutro_unkCol30_BoundBox = {
+    #include "assets/levelGroup/IntroOutro/unkCol30/unkCol30.boundBox.inc.c"
 };
 
 ModelCollision IntroOutro_unkCol30_ColH = {
-8, 12, IntroOutro_unkCol30_ColV, IntroOutro_unkCol30_ColT, &IntroOutro_unkCol30_ColS
+8, 12, IntroOutro_unkCol30_ColVerts, IntroOutro_unkCol30_ColTris, &IntroOutro_unkCol30_BoundBox
 };
 
-Vec3f IntroOutro_unkCol31_ColV[] = {
-    #include "assets/levelGroup/IntroOutro/unkCol31/unkCol31.colV.inc.c"
+Vec3f IntroOutro_unkCol31_ColVerts[] = {
+    #include "assets/levelGroup/IntroOutro/unkCol31/unkCol31.colVerts.inc.c"
 };
 
-Vec3w IntroOutro_unkCol31_ColT[] = {
-    #include "assets/levelGroup/IntroOutro/unkCol31/unkCol31.colT.inc.c"
+Vec3w IntroOutro_unkCol31_ColTris[] = {
+    #include "assets/levelGroup/IntroOutro/unkCol31/unkCol31.colTris.inc.c"
 };
 
-Rect3D IntroOutro_unkCol31_ColS = {
-    #include "assets/levelGroup/IntroOutro/unkCol31/unkCol31.colS.inc.c"
+Rect3D IntroOutro_unkCol31_BoundBox = {
+    #include "assets/levelGroup/IntroOutro/unkCol31/unkCol31.boundBox.inc.c"
 };
 
 ModelCollision IntroOutro_unkCol31_ColH = {
-8, 12, IntroOutro_unkCol31_ColV, IntroOutro_unkCol31_ColT, &IntroOutro_unkCol31_ColS
+8, 12, IntroOutro_unkCol31_ColVerts, IntroOutro_unkCol31_ColTris, &IntroOutro_unkCol31_BoundBox
 };
 
-Vec3f IntroOutro_unkCol32_ColV[] = {
-    #include "assets/levelGroup/IntroOutro/unkCol32/unkCol32.colV.inc.c"
+Vec3f IntroOutro_unkCol32_ColVerts[] = {
+    #include "assets/levelGroup/IntroOutro/unkCol32/unkCol32.colVerts.inc.c"
 };
 
-Vec3w IntroOutro_unkCol32_ColT[] = {
-    #include "assets/levelGroup/IntroOutro/unkCol32/unkCol32.colT.inc.c"
+Vec3w IntroOutro_unkCol32_ColTris[] = {
+    #include "assets/levelGroup/IntroOutro/unkCol32/unkCol32.colTris.inc.c"
 };
 
-Rect3D IntroOutro_unkCol32_ColS = {
-    #include "assets/levelGroup/IntroOutro/unkCol32/unkCol32.colS.inc.c"
+Rect3D IntroOutro_unkCol32_BoundBox = {
+    #include "assets/levelGroup/IntroOutro/unkCol32/unkCol32.boundBox.inc.c"
 };
 
 ModelCollision IntroOutro_unkCol32_ColH = {
-16, 14, IntroOutro_unkCol32_ColV, IntroOutro_unkCol32_ColT, &IntroOutro_unkCol32_ColS
+16, 14, IntroOutro_unkCol32_ColVerts, IntroOutro_unkCol32_ColTris, &IntroOutro_unkCol32_BoundBox
 };
 
-Vec3f IntroOutro_unkCol33_ColV[] = {
-    #include "assets/levelGroup/IntroOutro/unkCol33/unkCol33.colV.inc.c"
+Vec3f IntroOutro_unkCol33_ColVerts[] = {
+    #include "assets/levelGroup/IntroOutro/unkCol33/unkCol33.colVerts.inc.c"
 };
 
-Vec3w IntroOutro_unkCol33_ColT[] = {
-    #include "assets/levelGroup/IntroOutro/unkCol33/unkCol33.colT.inc.c"
+Vec3w IntroOutro_unkCol33_ColTris[] = {
+    #include "assets/levelGroup/IntroOutro/unkCol33/unkCol33.colTris.inc.c"
 };
 
-Rect3D IntroOutro_unkCol33_ColS = {
-    #include "assets/levelGroup/IntroOutro/unkCol33/unkCol33.colS.inc.c"
+Rect3D IntroOutro_unkCol33_BoundBox = {
+    #include "assets/levelGroup/IntroOutro/unkCol33/unkCol33.boundBox.inc.c"
 };
 
 ModelCollision IntroOutro_unkCol33_ColH = {
-16, 20, IntroOutro_unkCol33_ColV, IntroOutro_unkCol33_ColT, &IntroOutro_unkCol33_ColS
+16, 20, IntroOutro_unkCol33_ColVerts, IntroOutro_unkCol33_ColTris, &IntroOutro_unkCol33_BoundBox
 };
 
-Vec3f IntroOutro_unkCol34_ColV[] = {
-    #include "assets/levelGroup/IntroOutro/unkCol34/unkCol34.colV.inc.c"
+Vec3f IntroOutro_unkCol34_ColVerts[] = {
+    #include "assets/levelGroup/IntroOutro/unkCol34/unkCol34.colVerts.inc.c"
 };
 
-Vec3w IntroOutro_unkCol34_ColT[] = {
-    #include "assets/levelGroup/IntroOutro/unkCol34/unkCol34.colT.inc.c"
+Vec3w IntroOutro_unkCol34_ColTris[] = {
+    #include "assets/levelGroup/IntroOutro/unkCol34/unkCol34.colTris.inc.c"
 };
 
-Rect3D IntroOutro_unkCol34_ColS = {
-    #include "assets/levelGroup/IntroOutro/unkCol34/unkCol34.colS.inc.c"
+Rect3D IntroOutro_unkCol34_BoundBox = {
+    #include "assets/levelGroup/IntroOutro/unkCol34/unkCol34.boundBox.inc.c"
 };
 
 ModelCollision IntroOutro_unkCol34_ColH = {
-16, 20, IntroOutro_unkCol34_ColV, IntroOutro_unkCol34_ColT, &IntroOutro_unkCol34_ColS
+16, 20, IntroOutro_unkCol34_ColVerts, IntroOutro_unkCol34_ColTris, &IntroOutro_unkCol34_BoundBox
 };
 
-Vec3f IntroOutro_unkCol35_ColV[] = {
-    #include "assets/levelGroup/IntroOutro/unkCol35/unkCol35.colV.inc.c"
+Vec3f IntroOutro_unkCol35_ColVerts[] = {
+    #include "assets/levelGroup/IntroOutro/unkCol35/unkCol35.colVerts.inc.c"
 };
 
-Vec3w IntroOutro_unkCol35_ColT[] = {
-    #include "assets/levelGroup/IntroOutro/unkCol35/unkCol35.colT.inc.c"
+Vec3w IntroOutro_unkCol35_ColTris[] = {
+    #include "assets/levelGroup/IntroOutro/unkCol35/unkCol35.colTris.inc.c"
 };
 
-Rect3D IntroOutro_unkCol35_ColS = {
-    #include "assets/levelGroup/IntroOutro/unkCol35/unkCol35.colS.inc.c"
+Rect3D IntroOutro_unkCol35_BoundBox = {
+    #include "assets/levelGroup/IntroOutro/unkCol35/unkCol35.boundBox.inc.c"
 };
 
 ModelCollision IntroOutro_unkCol35_ColH = {
-31, 45, IntroOutro_unkCol35_ColV, IntroOutro_unkCol35_ColT, &IntroOutro_unkCol35_ColS
+31, 45, IntroOutro_unkCol35_ColVerts, IntroOutro_unkCol35_ColTris, &IntroOutro_unkCol35_BoundBox
 };
 
-Vec3f IntroOutro_unkCol36_ColV[] = {
-    #include "assets/levelGroup/IntroOutro/unkCol36/unkCol36.colV.inc.c"
+Vec3f IntroOutro_unkCol36_ColVerts[] = {
+    #include "assets/levelGroup/IntroOutro/unkCol36/unkCol36.colVerts.inc.c"
 };
 
-Vec3w IntroOutro_unkCol36_ColT[] = {
-    #include "assets/levelGroup/IntroOutro/unkCol36/unkCol36.colT.inc.c"
+Vec3w IntroOutro_unkCol36_ColTris[] = {
+    #include "assets/levelGroup/IntroOutro/unkCol36/unkCol36.colTris.inc.c"
 };
 
-Rect3D IntroOutro_unkCol36_ColS = {
-    #include "assets/levelGroup/IntroOutro/unkCol36/unkCol36.colS.inc.c"
+Rect3D IntroOutro_unkCol36_BoundBox = {
+    #include "assets/levelGroup/IntroOutro/unkCol36/unkCol36.boundBox.inc.c"
 };
 
 ModelCollision IntroOutro_unkCol36_ColH = {
-12, 16, IntroOutro_unkCol36_ColV, IntroOutro_unkCol36_ColT, &IntroOutro_unkCol36_ColS
+12, 16, IntroOutro_unkCol36_ColVerts, IntroOutro_unkCol36_ColTris, &IntroOutro_unkCol36_BoundBox
 };
 
-Vec3f IntroOutro_unkCol37_ColV[] = {
-    #include "assets/levelGroup/IntroOutro/unkCol37/unkCol37.colV.inc.c"
+Vec3f IntroOutro_unkCol37_ColVerts[] = {
+    #include "assets/levelGroup/IntroOutro/unkCol37/unkCol37.colVerts.inc.c"
 };
 
-Vec3w IntroOutro_unkCol37_ColT[] = {
-    #include "assets/levelGroup/IntroOutro/unkCol37/unkCol37.colT.inc.c"
+Vec3w IntroOutro_unkCol37_ColTris[] = {
+    #include "assets/levelGroup/IntroOutro/unkCol37/unkCol37.colTris.inc.c"
 };
 
-Rect3D IntroOutro_unkCol37_ColS = {
-    #include "assets/levelGroup/IntroOutro/unkCol37/unkCol37.colS.inc.c"
+Rect3D IntroOutro_unkCol37_BoundBox = {
+    #include "assets/levelGroup/IntroOutro/unkCol37/unkCol37.boundBox.inc.c"
 };
 
 ModelCollision IntroOutro_unkCol37_ColH = {
-72, 134, IntroOutro_unkCol37_ColV, IntroOutro_unkCol37_ColT, &IntroOutro_unkCol37_ColS
+72, 134, IntroOutro_unkCol37_ColVerts, IntroOutro_unkCol37_ColTris, &IntroOutro_unkCol37_BoundBox
 };
 
-Vec3f IntroOutro_unkCol38_ColV[] = {
-    #include "assets/levelGroup/IntroOutro/unkCol38/unkCol38.colV.inc.c"
+Vec3f IntroOutro_unkCol38_ColVerts[] = {
+    #include "assets/levelGroup/IntroOutro/unkCol38/unkCol38.colVerts.inc.c"
 };
 
-Vec3w IntroOutro_unkCol38_ColT[] = {
-    #include "assets/levelGroup/IntroOutro/unkCol38/unkCol38.colT.inc.c"
+Vec3w IntroOutro_unkCol38_ColTris[] = {
+    #include "assets/levelGroup/IntroOutro/unkCol38/unkCol38.colTris.inc.c"
 };
 
-Rect3D IntroOutro_unkCol38_ColS = {
-    #include "assets/levelGroup/IntroOutro/unkCol38/unkCol38.colS.inc.c"
+Rect3D IntroOutro_unkCol38_BoundBox = {
+    #include "assets/levelGroup/IntroOutro/unkCol38/unkCol38.boundBox.inc.c"
 };
 
 ModelCollision IntroOutro_unkCol38_ColH = {
-132, 250, IntroOutro_unkCol38_ColV, IntroOutro_unkCol38_ColT, &IntroOutro_unkCol38_ColS
+132, 250, IntroOutro_unkCol38_ColVerts, IntroOutro_unkCol38_ColTris, &IntroOutro_unkCol38_BoundBox
 };
 Mtx IntroOutro_IMtx41 = IDENTITY;
 

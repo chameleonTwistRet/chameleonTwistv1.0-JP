@@ -267,36 +267,36 @@ Gfx LizardKong_model2_Gfx[] = {
     #include "assets/levelGroup/LizardKong/model2/model2.gfx.inc.c"
 };
 
-Vec3f LizardKong_unkCol1_ColV[] = {
-    #include "assets/levelGroup/LizardKong/unkCol1/unkCol1.colV.inc.c"
+Vec3f LizardKong_unkCol1_ColVerts[] = {
+    #include "assets/levelGroup/LizardKong/unkCol1/unkCol1.colVerts.inc.c"
 };
 
-Vec3w LizardKong_unkCol1_ColT[] = {
-    #include "assets/levelGroup/LizardKong/unkCol1/unkCol1.colT.inc.c"
+Vec3w LizardKong_unkCol1_ColTris[] = {
+    #include "assets/levelGroup/LizardKong/unkCol1/unkCol1.colTris.inc.c"
 };
 
-Rect3D LizardKong_unkCol1_ColS = {
-    #include "assets/levelGroup/LizardKong/unkCol1/unkCol1.colS.inc.c"
+Rect3D LizardKong_unkCol1_BoundBox = {
+    #include "assets/levelGroup/LizardKong/unkCol1/unkCol1.boundBox.inc.c"
 };
 
 ModelCollision LizardKong_unkCol1_ColH = {
-27, 33, LizardKong_unkCol1_ColV, LizardKong_unkCol1_ColT, &LizardKong_unkCol1_ColS
+27, 33, LizardKong_unkCol1_ColVerts, LizardKong_unkCol1_ColTris, &LizardKong_unkCol1_BoundBox
 };
 
-Vec3f LizardKong_unkCol2_ColV[] = {
-    #include "assets/levelGroup/LizardKong/unkCol2/unkCol2.colV.inc.c"
+Vec3f LizardKong_unkCol2_ColVerts[] = {
+    #include "assets/levelGroup/LizardKong/unkCol2/unkCol2.colVerts.inc.c"
 };
 
-Vec3w LizardKong_unkCol2_ColT[] = {
-    #include "assets/levelGroup/LizardKong/unkCol2/unkCol2.colT.inc.c"
+Vec3w LizardKong_unkCol2_ColTris[] = {
+    #include "assets/levelGroup/LizardKong/unkCol2/unkCol2.colTris.inc.c"
 };
 
-Rect3D LizardKong_unkCol2_ColS = {
-    #include "assets/levelGroup/LizardKong/unkCol2/unkCol2.colS.inc.c"
+Rect3D LizardKong_unkCol2_BoundBox = {
+    #include "assets/levelGroup/LizardKong/unkCol2/unkCol2.boundBox.inc.c"
 };
 
 ModelCollision LizardKong_unkCol2_ColH = {
-14, 16, LizardKong_unkCol2_ColV, LizardKong_unkCol2_ColT, &LizardKong_unkCol2_ColS
+14, 16, LizardKong_unkCol2_ColVerts, LizardKong_unkCol2_ColTris, &LizardKong_unkCol2_BoundBox
 };
 Mtx LizardKong_IMtx5 = IDENTITY;
 

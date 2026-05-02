@@ -366,100 +366,100 @@ Gfx PileOfBooks_model6_Gfx[] = {
     #include "assets/levelGroup/PileOfBooks/model6/model6.gfx.inc.c"
 };
 
-Vec3f PileOfBooks_unkCol1_ColV[] = {
-    #include "assets/levelGroup/PileOfBooks/unkCol1/unkCol1.colV.inc.c"
+Vec3f PileOfBooks_unkCol1_ColVerts[] = {
+    #include "assets/levelGroup/PileOfBooks/unkCol1/unkCol1.colVerts.inc.c"
 };
 
-Vec3w PileOfBooks_unkCol1_ColT[] = {
-    #include "assets/levelGroup/PileOfBooks/unkCol1/unkCol1.colT.inc.c"
+Vec3w PileOfBooks_unkCol1_ColTris[] = {
+    #include "assets/levelGroup/PileOfBooks/unkCol1/unkCol1.colTris.inc.c"
 };
 
-Rect3D PileOfBooks_unkCol1_ColS = {
-    #include "assets/levelGroup/PileOfBooks/unkCol1/unkCol1.colS.inc.c"
+Rect3D PileOfBooks_unkCol1_BoundBox = {
+    #include "assets/levelGroup/PileOfBooks/unkCol1/unkCol1.boundBox.inc.c"
 };
 
 ModelCollision PileOfBooks_unkCol1_ColH = {
-36, 44, PileOfBooks_unkCol1_ColV, PileOfBooks_unkCol1_ColT, &PileOfBooks_unkCol1_ColS
+36, 44, PileOfBooks_unkCol1_ColVerts, PileOfBooks_unkCol1_ColTris, &PileOfBooks_unkCol1_BoundBox
 };
 
-Vec3f PileOfBooks_unkCol2_ColV[] = {
-    #include "assets/levelGroup/PileOfBooks/unkCol2/unkCol2.colV.inc.c"
+Vec3f PileOfBooks_unkCol2_ColVerts[] = {
+    #include "assets/levelGroup/PileOfBooks/unkCol2/unkCol2.colVerts.inc.c"
 };
 
-Vec3w PileOfBooks_unkCol2_ColT[] = {
-    #include "assets/levelGroup/PileOfBooks/unkCol2/unkCol2.colT.inc.c"
+Vec3w PileOfBooks_unkCol2_ColTris[] = {
+    #include "assets/levelGroup/PileOfBooks/unkCol2/unkCol2.colTris.inc.c"
 };
 
-Rect3D PileOfBooks_unkCol2_ColS = {
-    #include "assets/levelGroup/PileOfBooks/unkCol2/unkCol2.colS.inc.c"
+Rect3D PileOfBooks_unkCol2_BoundBox = {
+    #include "assets/levelGroup/PileOfBooks/unkCol2/unkCol2.boundBox.inc.c"
 };
 
 ModelCollision PileOfBooks_unkCol2_ColH = {
-8, 10, PileOfBooks_unkCol2_ColV, PileOfBooks_unkCol2_ColT, &PileOfBooks_unkCol2_ColS
+8, 10, PileOfBooks_unkCol2_ColVerts, PileOfBooks_unkCol2_ColTris, &PileOfBooks_unkCol2_BoundBox
 };
 
-Vec3f PileOfBooks_unkCol3_ColV[] = {
-    #include "assets/levelGroup/PileOfBooks/unkCol3/unkCol3.colV.inc.c"
+Vec3f PileOfBooks_unkCol3_ColVerts[] = {
+    #include "assets/levelGroup/PileOfBooks/unkCol3/unkCol3.colVerts.inc.c"
 };
 
-Vec3w PileOfBooks_unkCol3_ColT[] = {
-    #include "assets/levelGroup/PileOfBooks/unkCol3/unkCol3.colT.inc.c"
+Vec3w PileOfBooks_unkCol3_ColTris[] = {
+    #include "assets/levelGroup/PileOfBooks/unkCol3/unkCol3.colTris.inc.c"
 };
 
-Rect3D PileOfBooks_unkCol3_ColS = {
-    #include "assets/levelGroup/PileOfBooks/unkCol3/unkCol3.colS.inc.c"
+Rect3D PileOfBooks_unkCol3_BoundBox = {
+    #include "assets/levelGroup/PileOfBooks/unkCol3/unkCol3.boundBox.inc.c"
 };
 
 ModelCollision PileOfBooks_unkCol3_ColH = {
-64, 100, PileOfBooks_unkCol3_ColV, PileOfBooks_unkCol3_ColT, &PileOfBooks_unkCol3_ColS
+64, 100, PileOfBooks_unkCol3_ColVerts, PileOfBooks_unkCol3_ColTris, &PileOfBooks_unkCol3_BoundBox
 };
 
-Vec3f PileOfBooks_unkCol4_ColV[] = {
-    #include "assets/levelGroup/PileOfBooks/unkCol4/unkCol4.colV.inc.c"
+Vec3f PileOfBooks_unkCol4_ColVerts[] = {
+    #include "assets/levelGroup/PileOfBooks/unkCol4/unkCol4.colVerts.inc.c"
 };
 
-Vec3w PileOfBooks_unkCol4_ColT[] = {
-    #include "assets/levelGroup/PileOfBooks/unkCol4/unkCol4.colT.inc.c"
+Vec3w PileOfBooks_unkCol4_ColTris[] = {
+    #include "assets/levelGroup/PileOfBooks/unkCol4/unkCol4.colTris.inc.c"
 };
 
-Rect3D PileOfBooks_unkCol4_ColS = {
-    #include "assets/levelGroup/PileOfBooks/unkCol4/unkCol4.colS.inc.c"
+Rect3D PileOfBooks_unkCol4_BoundBox = {
+    #include "assets/levelGroup/PileOfBooks/unkCol4/unkCol4.boundBox.inc.c"
 };
 
 ModelCollision PileOfBooks_unkCol4_ColH = {
-24, 28, PileOfBooks_unkCol4_ColV, PileOfBooks_unkCol4_ColT, &PileOfBooks_unkCol4_ColS
+24, 28, PileOfBooks_unkCol4_ColVerts, PileOfBooks_unkCol4_ColTris, &PileOfBooks_unkCol4_BoundBox
 };
 
-Vec3f PileOfBooks_unkCol5_ColV[] = {
-    #include "assets/levelGroup/PileOfBooks/unkCol5/unkCol5.colV.inc.c"
+Vec3f PileOfBooks_unkCol5_ColVerts[] = {
+    #include "assets/levelGroup/PileOfBooks/unkCol5/unkCol5.colVerts.inc.c"
 };
 
-Vec3w PileOfBooks_unkCol5_ColT[] = {
-    #include "assets/levelGroup/PileOfBooks/unkCol5/unkCol5.colT.inc.c"
+Vec3w PileOfBooks_unkCol5_ColTris[] = {
+    #include "assets/levelGroup/PileOfBooks/unkCol5/unkCol5.colTris.inc.c"
 };
 
-Rect3D PileOfBooks_unkCol5_ColS = {
-    #include "assets/levelGroup/PileOfBooks/unkCol5/unkCol5.colS.inc.c"
+Rect3D PileOfBooks_unkCol5_BoundBox = {
+    #include "assets/levelGroup/PileOfBooks/unkCol5/unkCol5.boundBox.inc.c"
 };
 
 ModelCollision PileOfBooks_unkCol5_ColH = {
-12, 14, PileOfBooks_unkCol5_ColV, PileOfBooks_unkCol5_ColT, &PileOfBooks_unkCol5_ColS
+12, 14, PileOfBooks_unkCol5_ColVerts, PileOfBooks_unkCol5_ColTris, &PileOfBooks_unkCol5_BoundBox
 };
 
-Vec3f PileOfBooks_unkCol6_ColV[] = {
-    #include "assets/levelGroup/PileOfBooks/unkCol6/unkCol6.colV.inc.c"
+Vec3f PileOfBooks_unkCol6_ColVerts[] = {
+    #include "assets/levelGroup/PileOfBooks/unkCol6/unkCol6.colVerts.inc.c"
 };
 
-Vec3w PileOfBooks_unkCol6_ColT[] = {
-    #include "assets/levelGroup/PileOfBooks/unkCol6/unkCol6.colT.inc.c"
+Vec3w PileOfBooks_unkCol6_ColTris[] = {
+    #include "assets/levelGroup/PileOfBooks/unkCol6/unkCol6.colTris.inc.c"
 };
 
-Rect3D PileOfBooks_unkCol6_ColS = {
-    #include "assets/levelGroup/PileOfBooks/unkCol6/unkCol6.colS.inc.c"
+Rect3D PileOfBooks_unkCol6_BoundBox = {
+    #include "assets/levelGroup/PileOfBooks/unkCol6/unkCol6.boundBox.inc.c"
 };
 
 ModelCollision PileOfBooks_unkCol6_ColH = {
-12, 14, PileOfBooks_unkCol6_ColV, PileOfBooks_unkCol6_ColT, &PileOfBooks_unkCol6_ColS
+12, 14, PileOfBooks_unkCol6_ColVerts, PileOfBooks_unkCol6_ColTris, &PileOfBooks_unkCol6_BoundBox
 };
 Mtx PileOfBooks_IMtx9 = IDENTITY;
 

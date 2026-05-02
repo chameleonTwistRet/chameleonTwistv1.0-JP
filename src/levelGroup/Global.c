@@ -100,52 +100,52 @@ Gfx Global_shadow2_Gfx[] = {
     #include "assets/levelGroup/Global/shadow/shadow2.gfx.inc.c"
 };
 
-Vec3f Global_pole_ColV[] = {
-    #include "assets/levelGroup/Global/pole/pole.colV.inc.c"
+Vec3f Global_pole_ColVerts[] = {
+    #include "assets/levelGroup/Global/pole/pole.colVerts.inc.c"
 };
 
-Vec3w Global_pole_ColT[] = {
-    #include "assets/levelGroup/Global/pole/pole.colT.inc.c"
+Vec3w Global_pole_ColTris[] = {
+    #include "assets/levelGroup/Global/pole/pole.colTris.inc.c"
 };
 
-Rect3D Global_pole_ColS = {
-    #include "assets/levelGroup/Global/pole/pole.colS.inc.c"
+Rect3D Global_pole_BoundBox = {
+    #include "assets/levelGroup/Global/pole/pole.boundBox.inc.c"
 };
 
 ModelCollision Global_pole_ColH = {
-30, 10, Global_pole_ColV, Global_pole_ColT, &Global_pole_ColS
+30, 10, Global_pole_ColVerts, Global_pole_ColTris, &Global_pole_BoundBox
 };
 
-Vec3f Global_unk1_ColV[] = {
-    #include "assets/levelGroup/Global/unk1/unk1.colV.inc.c"
+Vec3f Global_unk1_ColVerts[] = {
+    #include "assets/levelGroup/Global/unk1/unk1.colVerts.inc.c"
 };
 
-Vec3w Global_unk1_ColT[] = {
-    #include "assets/levelGroup/Global/unk1/unk1.colT.inc.c"
+Vec3w Global_unk1_ColTris[] = {
+    #include "assets/levelGroup/Global/unk1/unk1.colTris.inc.c"
 };
 
-Rect3D Global_unk1_ColS = {
-    #include "assets/levelGroup/Global/unk1/unk1.colS.inc.c"
+Rect3D Global_unk1_BoundBox = {
+    #include "assets/levelGroup/Global/unk1/unk1.boundBox.inc.c"
 };
 
 ModelCollision Global_unk1_ColH = {
-8, 12, Global_unk1_ColV, Global_unk1_ColT, &Global_unk1_ColS
+8, 12, Global_unk1_ColVerts, Global_unk1_ColTris, &Global_unk1_BoundBox
 };
 
-Vec3f Global_unk2_ColV[] = {
-    #include "assets/levelGroup/Global/unk2/unk2.colV.inc.c"
+Vec3f Global_unk2_ColVerts[] = {
+    #include "assets/levelGroup/Global/unk2/unk2.colVerts.inc.c"
 };
 
-Vec3w Global_unk2_ColT[] = {
-    #include "assets/levelGroup/Global/unk2/unk2.colT.inc.c"
+Vec3w Global_unk2_ColTris[] = {
+    #include "assets/levelGroup/Global/unk2/unk2.colTris.inc.c"
 };
 
-Rect3D Global_unk2_ColS = {
-    #include "assets/levelGroup/Global/unk2/unk2.colS.inc.c"
+Rect3D Global_unk2_BoundBox = {
+    #include "assets/levelGroup/Global/unk2/unk2.boundBox.inc.c"
 };
 
 ModelCollision Global_unk2_ColH = {
-8, 12, Global_unk2_ColV, Global_unk2_ColT, &Global_unk2_ColS
+8, 12, Global_unk2_ColVerts, Global_unk2_ColTris, &Global_unk2_BoundBox
 };
 
 unsigned char Global_what_Bin[] = {
@@ -913,20 +913,20 @@ Gfx Global_fallbackCube_Gfx[] = {
     #include "assets/levelGroup/Global/fallbackCube/fallbackCube.gfx.inc.c"
 };
 
-Vec3f Global_fallbackCube_ColV[] = {
-    #include "assets/levelGroup/Global/fallbackCube/fallbackCube.colV.inc.c"
+Vec3f Global_fallbackCube_ColVerts[] = {
+    #include "assets/levelGroup/Global/fallbackCube/fallbackCube.colVerts.inc.c"
 };
 
-Vec3w Global_fallbackCube_ColT[] = {
-    #include "assets/levelGroup/Global/fallbackCube/fallbackCube.colT.inc.c"
+Vec3w Global_fallbackCube_ColTris[] = {
+    #include "assets/levelGroup/Global/fallbackCube/fallbackCube.colTris.inc.c"
 };
 
-Rect3D Global_fallbackCube_ColS = {
-    #include "assets/levelGroup/Global/fallbackCube/fallbackCube.colS.inc.c"
+Rect3D Global_fallbackCube_BoundBox = {
+    #include "assets/levelGroup/Global/fallbackCube/fallbackCube.boundBox.inc.c"
 };
 
 ModelCollision Global_fallbackCube_ColH = {
-8, 12, Global_fallbackCube_ColV, Global_fallbackCube_ColT, &Global_fallbackCube_ColS
+8, 12, Global_fallbackCube_ColVerts, Global_fallbackCube_ColTris, &Global_fallbackCube_BoundBox
 };
 
 Vtx Global_exitShadowSouth_Vtx[] = {
@@ -938,20 +938,20 @@ Gfx Global_exitShadowSouth_Gfx[] = {
     #include "assets/levelGroup/Global/exitShadowSouth/exitShadowSouth.gfx.inc.c"
 };
 
-Vec3f Global_exitShadowSouth_ColV[] = {
-    #include "assets/levelGroup/Global/exitShadowSouth/exitShadowSouth.colV.inc.c"
+Vec3f Global_exitShadowSouth_ColVerts[] = {
+    #include "assets/levelGroup/Global/exitShadowSouth/exitShadowSouth.colVerts.inc.c"
 };
 
-Vec3w Global_exitShadowSouth_ColT[] = {
-    #include "assets/levelGroup/Global/exitShadowSouth/exitShadowSouth.colT.inc.c"
+Vec3w Global_exitShadowSouth_ColTris[] = {
+    #include "assets/levelGroup/Global/exitShadowSouth/exitShadowSouth.colTris.inc.c"
 };
 
-Rect3D Global_exitShadowSouth_ColS = {
-    #include "assets/levelGroup/Global/exitShadowSouth/exitShadowSouth.colS.inc.c"
+Rect3D Global_exitShadowSouth_BoundBox = {
+    #include "assets/levelGroup/Global/exitShadowSouth/exitShadowSouth.boundBox.inc.c"
 };
 
 ModelCollision Global_exitShadowSouth_ColH = {
-4, 2, Global_exitShadowSouth_ColV, Global_exitShadowSouth_ColT, &Global_exitShadowSouth_ColS
+4, 2, Global_exitShadowSouth_ColVerts, Global_exitShadowSouth_ColTris, &Global_exitShadowSouth_BoundBox
 };
 
 Vtx Global_exitShadowNorth_Vtx[] = {
@@ -963,20 +963,20 @@ Gfx Global_exitShadowNorth_Gfx[] = {
     #include "assets/levelGroup/Global/exitShadowNorth/exitShadowNorth.gfx.inc.c"
 };
 
-Vec3f Global_exitShadowNorth_ColV[] = {
-    #include "assets/levelGroup/Global/exitShadowNorth/exitShadowNorth.colV.inc.c"
+Vec3f Global_exitShadowNorth_ColVerts[] = {
+    #include "assets/levelGroup/Global/exitShadowNorth/exitShadowNorth.colVerts.inc.c"
 };
 
-Vec3w Global_exitShadowNorth_ColT[] = {
-    #include "assets/levelGroup/Global/exitShadowNorth/exitShadowNorth.colT.inc.c"
+Vec3w Global_exitShadowNorth_ColTris[] = {
+    #include "assets/levelGroup/Global/exitShadowNorth/exitShadowNorth.colTris.inc.c"
 };
 
-Rect3D Global_exitShadowNorth_ColS = {
-    #include "assets/levelGroup/Global/exitShadowNorth/exitShadowNorth.colS.inc.c"
+Rect3D Global_exitShadowNorth_BoundBox = {
+    #include "assets/levelGroup/Global/exitShadowNorth/exitShadowNorth.boundBox.inc.c"
 };
 
 ModelCollision Global_exitShadowNorth_ColH = {
-4, 2, Global_exitShadowNorth_ColV, Global_exitShadowNorth_ColT, &Global_exitShadowNorth_ColS
+4, 2, Global_exitShadowNorth_ColVerts, Global_exitShadowNorth_ColTris, &Global_exitShadowNorth_BoundBox
 };
 
 Vtx Global_exitShadowEast_Vtx[] = {
@@ -988,20 +988,20 @@ Gfx Global_exitShadowEast_Gfx[] = {
     #include "assets/levelGroup/Global/exitShadowEast/exitShadowEast.gfx.inc.c"
 };
 
-Vec3f Global_exitShadowEast_ColV[] = {
-    #include "assets/levelGroup/Global/exitShadowEast/exitShadowEast.colV.inc.c"
+Vec3f Global_exitShadowEast_ColVerts[] = {
+    #include "assets/levelGroup/Global/exitShadowEast/exitShadowEast.colVerts.inc.c"
 };
 
-Vec3w Global_exitShadowEast_ColT[] = {
-    #include "assets/levelGroup/Global/exitShadowEast/exitShadowEast.colT.inc.c"
+Vec3w Global_exitShadowEast_ColTris[] = {
+    #include "assets/levelGroup/Global/exitShadowEast/exitShadowEast.colTris.inc.c"
 };
 
-Rect3D Global_exitShadowEast_ColS = {
-    #include "assets/levelGroup/Global/exitShadowEast/exitShadowEast.colS.inc.c"
+Rect3D Global_exitShadowEast_BoundBox = {
+    #include "assets/levelGroup/Global/exitShadowEast/exitShadowEast.boundBox.inc.c"
 };
 
 ModelCollision Global_exitShadowEast_ColH = {
-4, 2, Global_exitShadowEast_ColV, Global_exitShadowEast_ColT, &Global_exitShadowEast_ColS
+4, 2, Global_exitShadowEast_ColVerts, Global_exitShadowEast_ColTris, &Global_exitShadowEast_BoundBox
 };
 
 Vtx Global_exitShadowWest_Vtx[] = {
@@ -1013,20 +1013,20 @@ Gfx Global_exitShadowWest_Gfx[] = {
     #include "assets/levelGroup/Global/exitShadowWest/exitShadowWest.gfx.inc.c"
 };
 
-Vec3f Global_exitShadowWest_ColV[] = {
-    #include "assets/levelGroup/Global/exitShadowWest/exitShadowWest.colV.inc.c"
+Vec3f Global_exitShadowWest_ColVerts[] = {
+    #include "assets/levelGroup/Global/exitShadowWest/exitShadowWest.colVerts.inc.c"
 };
 
-Vec3w Global_exitShadowWest_ColT[] = {
-    #include "assets/levelGroup/Global/exitShadowWest/exitShadowWest.colT.inc.c"
+Vec3w Global_exitShadowWest_ColTris[] = {
+    #include "assets/levelGroup/Global/exitShadowWest/exitShadowWest.colTris.inc.c"
 };
 
-Rect3D Global_exitShadowWest_ColS = {
-    #include "assets/levelGroup/Global/exitShadowWest/exitShadowWest.colS.inc.c"
+Rect3D Global_exitShadowWest_BoundBox = {
+    #include "assets/levelGroup/Global/exitShadowWest/exitShadowWest.boundBox.inc.c"
 };
 
 ModelCollision Global_exitShadowWest_ColH = {
-4, 2, Global_exitShadowWest_ColV, Global_exitShadowWest_ColT, &Global_exitShadowWest_ColS
+4, 2, Global_exitShadowWest_ColVerts, Global_exitShadowWest_ColTris, &Global_exitShadowWest_BoundBox
 };
 
 Vtx Global_ALBLExit_Vtx[] = {
@@ -1038,20 +1038,20 @@ Gfx Global_ALBLExit_Gfx[] = {
     #include "assets/levelGroup/Global/ALBLExit/ALBLExit.gfx.inc.c"
 };
 
-Vec3f Global_ALBLExit_ColV[] = {
-    #include "assets/levelGroup/Global/ALBLExit/ALBLExit.colV.inc.c"
+Vec3f Global_ALBLExit_ColVerts[] = {
+    #include "assets/levelGroup/Global/ALBLExit/ALBLExit.colVerts.inc.c"
 };
 
-Vec3w Global_ALBLExit_ColT[] = {
-    #include "assets/levelGroup/Global/ALBLExit/ALBLExit.colT.inc.c"
+Vec3w Global_ALBLExit_ColTris[] = {
+    #include "assets/levelGroup/Global/ALBLExit/ALBLExit.colTris.inc.c"
 };
 
-Rect3D Global_ALBLExit_ColS = {
-    #include "assets/levelGroup/Global/ALBLExit/ALBLExit.colS.inc.c"
+Rect3D Global_ALBLExit_BoundBox = {
+    #include "assets/levelGroup/Global/ALBLExit/ALBLExit.boundBox.inc.c"
 };
 
 ModelCollision Global_ALBLExit_ColH = {
-6, 4, Global_ALBLExit_ColV, Global_ALBLExit_ColT, &Global_ALBLExit_ColS
+6, 4, Global_ALBLExit_ColVerts, Global_ALBLExit_ColTris, &Global_ALBLExit_BoundBox
 };
 
 Mtx Global_IMtx13 = IDENTITY;
@@ -1060,20 +1060,20 @@ Gfx Global_sandPit_Gfx[] = {
     #include "assets/levelGroup/Global/unk3/unk3.gfx.inc.c"
 };
 
-Vec3f Global_unk3_ColV[] = {
-    #include "assets/levelGroup/Global/unk3/unk3.colV.inc.c"
+Vec3f Global_unk3_ColVerts[] = {
+    #include "assets/levelGroup/Global/unk3/unk3.colVerts.inc.c"
 };
 
-Vec3w Global_unk3_ColT[] = {
-    #include "assets/levelGroup/Global/unk3/unk3.colT.inc.c"
+Vec3w Global_unk3_ColTris[] = {
+    #include "assets/levelGroup/Global/unk3/unk3.colTris.inc.c"
 };
 
-Rect3D Global_unk3_ColS = {
-    #include "assets/levelGroup/Global/unk3/unk3.colS.inc.c"
+Rect3D Global_unk3_BoundBox = {
+    #include "assets/levelGroup/Global/unk3/unk3.boundBox.inc.c"
 };
 
 ModelCollision Global_sandPit_ColH = {
-7, 6, Global_unk3_ColV, Global_unk3_ColT, &Global_unk3_ColS
+7, 6, Global_unk3_ColVerts, Global_unk3_ColTris, &Global_unk3_BoundBox
 };
 
 Vtx Global_BossBridge_Vtx[] = {
@@ -1085,20 +1085,20 @@ Gfx Global_BossBridge_Gfx[] = {
     #include "assets/levelGroup/Global/BossBridge/BossBridge.gfx.inc.c"
 };
 
-Vec3f Global_BossBridge_ColV[] = {
-    #include "assets/levelGroup/Global/BossBridge/BossBridge.colV.inc.c"
+Vec3f Global_BossBridge_ColVerts[] = {
+    #include "assets/levelGroup/Global/BossBridge/BossBridge.colVerts.inc.c"
 };
 
-Vec3w Global_BossBridge_ColT[] = {
-    #include "assets/levelGroup/Global/BossBridge/BossBridge.colT.inc.c"
+Vec3w Global_BossBridge_ColTris[] = {
+    #include "assets/levelGroup/Global/BossBridge/BossBridge.colTris.inc.c"
 };
 
-Rect3D Global_BossBridge_ColS = {
-    #include "assets/levelGroup/Global/BossBridge/BossBridge.colS.inc.c"
+Rect3D Global_BossBridge_BoundBox = {
+    #include "assets/levelGroup/Global/BossBridge/BossBridge.boundBox.inc.c"
 };
 
 ModelCollision Global_BossBridge_ColH = {
-8, 10, Global_BossBridge_ColV, Global_BossBridge_ColT, &Global_BossBridge_ColS
+8, 10, Global_BossBridge_ColVerts, Global_BossBridge_ColTris, &Global_BossBridge_BoundBox
 };
 
 Vtx Global_ALPole_Vtx[] = {
@@ -1118,20 +1118,20 @@ Gfx Global_ALPole_Gfx[] = {
     #include "assets/levelGroup/Global/ALPole/ALPole.gfx.inc.c"
 };
 
-Vec3f Global_ALPole_ColV[] = {
-    #include "assets/levelGroup/Global/ALPole/ALPole.colV.inc.c"
+Vec3f Global_ALPole_ColVerts[] = {
+    #include "assets/levelGroup/Global/ALPole/ALPole.colVerts.inc.c"
 };
 
-Vec3w Global_ALPole_ColT[] = {
-    #include "assets/levelGroup/Global/ALPole/ALPole.colT.inc.c"
+Vec3w Global_ALPole_ColTris[] = {
+    #include "assets/levelGroup/Global/ALPole/ALPole.colTris.inc.c"
 };
 
-Rect3D Global_ALPole_ColS = {
-    #include "assets/levelGroup/Global/ALPole/ALPole.colS.inc.c"
+Rect3D Global_ALPole_BoundBox = {
+    #include "assets/levelGroup/Global/ALPole/ALPole.boundBox.inc.c"
 };
 
 ModelCollision Global_ALPole_ColH = {
-8, 10, Global_ALPole_ColV, Global_ALPole_ColT, &Global_ALPole_ColS
+8, 10, Global_ALPole_ColVerts, Global_ALPole_ColTris, &Global_ALPole_BoundBox
 };
 
 Vtx Global_ALBLDoor_Vtx[] = {
@@ -1147,20 +1147,20 @@ Gfx Global_ALBLDoor_Gfx[] = {
     #include "assets/levelGroup/Global/ALBLDoor/ALBLDoor.gfx.inc.c"
 };
 
-Vec3f Global_ALBLDoor_ColV[] = {
-    #include "assets/levelGroup/Global/ALBLDoor/ALBLDoor.colV.inc.c"
+Vec3f Global_ALBLDoor_ColVerts[] = {
+    #include "assets/levelGroup/Global/ALBLDoor/ALBLDoor.colVerts.inc.c"
 };
 
-Vec3w Global_ALBLDoor_ColT[] = {
-    #include "assets/levelGroup/Global/ALBLDoor/ALBLDoor.colT.inc.c"
+Vec3w Global_ALBLDoor_ColTris[] = {
+    #include "assets/levelGroup/Global/ALBLDoor/ALBLDoor.colTris.inc.c"
 };
 
-Rect3D Global_ALBLDoor_ColS = {
-    #include "assets/levelGroup/Global/ALBLDoor/ALBLDoor.colS.inc.c"
+Rect3D Global_ALBLDoor_BoundBox = {
+    #include "assets/levelGroup/Global/ALBLDoor/ALBLDoor.boundBox.inc.c"
 };
 
 ModelCollision Global_ALBLDoor_ColH = {
-8, 8, Global_ALBLDoor_ColV, Global_ALBLDoor_ColT, &Global_ALBLDoor_ColS
+8, 8, Global_ALBLDoor_ColVerts, Global_ALBLDoor_ColTris, &Global_ALBLDoor_BoundBox
 };
 
 Vtx Global_ALSpinDoor_Vtx[] = {
@@ -1180,20 +1180,20 @@ Gfx Global_ALSpinDoor_Gfx[] = {
     #include "assets/levelGroup/Global/ALSpinDoor/ALSpinDoor.gfx.inc.c"
 };
 
-Vec3f Global_ALSpinDoor_ColV[] = {
-    #include "assets/levelGroup/Global/ALSpinDoor/ALSpinDoor.colV.inc.c"
+Vec3f Global_ALSpinDoor_ColVerts[] = {
+    #include "assets/levelGroup/Global/ALSpinDoor/ALSpinDoor.colVerts.inc.c"
 };
 
-Vec3w Global_ALSpinDoor_ColT[] = {
-    #include "assets/levelGroup/Global/ALSpinDoor/ALSpinDoor.colT.inc.c"
+Vec3w Global_ALSpinDoor_ColTris[] = {
+    #include "assets/levelGroup/Global/ALSpinDoor/ALSpinDoor.colTris.inc.c"
 };
 
-Rect3D Global_ALSpinDoor_ColS = {
-    #include "assets/levelGroup/Global/ALSpinDoor/ALSpinDoor.colS.inc.c"
+Rect3D Global_ALSpinDoor_BoundBox = {
+    #include "assets/levelGroup/Global/ALSpinDoor/ALSpinDoor.boundBox.inc.c"
 };
 
 ModelCollision Global_ALSpinDoor_ColH = {
-8, 8, Global_ALSpinDoor_ColV, Global_ALSpinDoor_ColT, &Global_ALSpinDoor_ColS
+8, 8, Global_ALSpinDoor_ColVerts, Global_ALSpinDoor_ColTris, &Global_ALSpinDoor_BoundBox
 };
 
 Vtx Global_BLLavaFloor_Vtx[] = {
@@ -1205,20 +1205,20 @@ Gfx Global_BLLavaFloor_Gfx[] = {
     #include "assets/levelGroup/Global/BLLavaFloor/BLLavaFloor.gfx.inc.c"
 };
 
-Vec3f Global_BLLavaFloor_ColV[] = {
-    #include "assets/levelGroup/Global/BLLavaFloor/BLLavaFloor.colV.inc.c"
+Vec3f Global_BLLavaFloor_ColVerts[] = {
+    #include "assets/levelGroup/Global/BLLavaFloor/BLLavaFloor.colVerts.inc.c"
 };
 
-Vec3w Global_BLLavaFloor_ColT[] = {
-    #include "assets/levelGroup/Global/BLLavaFloor/BLLavaFloor.colT.inc.c"
+Vec3w Global_BLLavaFloor_ColTris[] = {
+    #include "assets/levelGroup/Global/BLLavaFloor/BLLavaFloor.colTris.inc.c"
 };
 
-Rect3D Global_BLLavaFloor_ColS = {
-    #include "assets/levelGroup/Global/BLLavaFloor/BLLavaFloor.colS.inc.c"
+Rect3D Global_BLLavaFloor_BoundBox = {
+    #include "assets/levelGroup/Global/BLLavaFloor/BLLavaFloor.boundBox.inc.c"
 };
 
 ModelCollision Global_BLLavaFloor_ColH = {
-4, 2, Global_BLLavaFloor_ColV, Global_BLLavaFloor_ColT, &Global_BLLavaFloor_ColS
+4, 2, Global_BLLavaFloor_ColVerts, Global_BLLavaFloor_ColTris, &Global_BLLavaFloor_BoundBox
 };
 
 Vtx Global_BLLava_Vtx[] = {
@@ -1238,20 +1238,20 @@ Gfx Global_BLLava_Gfx[] = {
     #include "assets/levelGroup/Global/BLLava/BLLava.gfx.inc.c"
 };
 
-Vec3f Global_BLLava_ColV[] = {
-    #include "assets/levelGroup/Global/BLLava/BLLava.colV.inc.c"
+Vec3f Global_BLLava_ColVerts[] = {
+    #include "assets/levelGroup/Global/BLLava/BLLava.colVerts.inc.c"
 };
 
-Vec3w Global_BLLava_ColT[] = {
-    #include "assets/levelGroup/Global/BLLava/BLLava.colT.inc.c"
+Vec3w Global_BLLava_ColTris[] = {
+    #include "assets/levelGroup/Global/BLLava/BLLava.colTris.inc.c"
 };
 
-Rect3D Global_BLLava_ColS = {
-    #include "assets/levelGroup/Global/BLLava/BLLava.colS.inc.c"
+Rect3D Global_BLLava_BoundBox = {
+    #include "assets/levelGroup/Global/BLLava/BLLava.boundBox.inc.c"
 };
 
 ModelCollision Global_BLLava_ColH = {
-4, 2, Global_BLLava_ColV, Global_BLLava_ColT, &Global_BLLava_ColS
+4, 2, Global_BLLava_ColVerts, Global_BLLava_ColTris, &Global_BLLava_BoundBox
 };
 
 Vtx Global_BLLava2_Vtx[] = {
@@ -1271,20 +1271,20 @@ Gfx Global_BLLava2_Gfx[] = {
     #include "assets/levelGroup/Global/BLLava2/BLLava2.gfx.inc.c"
 };
 
-Vec3f Global_BLLava2_ColV[] = {
-    #include "assets/levelGroup/Global/BLLava2/BLLava2.colV.inc.c"
+Vec3f Global_BLLava2_ColVerts[] = {
+    #include "assets/levelGroup/Global/BLLava2/BLLava2.colVerts.inc.c"
 };
 
-Vec3w Global_BLLava2_ColT[] = {
-    #include "assets/levelGroup/Global/BLLava2/BLLava2.colT.inc.c"
+Vec3w Global_BLLava2_ColTris[] = {
+    #include "assets/levelGroup/Global/BLLava2/BLLava2.colTris.inc.c"
 };
 
-Rect3D Global_BLLava2_ColS = {
-    #include "assets/levelGroup/Global/BLLava2/BLLava2.colS.inc.c"
+Rect3D Global_BLLava2_BoundBox = {
+    #include "assets/levelGroup/Global/BLLava2/BLLava2.boundBox.inc.c"
 };
 
 ModelCollision Global_BLLava2_ColH = {
-4, 2, Global_BLLava2_ColV, Global_BLLava2_ColT, &Global_BLLava2_ColS
+4, 2, Global_BLLava2_ColVerts, Global_BLLava2_ColTris, &Global_BLLava2_BoundBox
 };
 
 Vtx Global_BLLava3_Vtx[] = {
@@ -1304,20 +1304,20 @@ Gfx Global_BLLava3_Gfx[] = {
     #include "assets/levelGroup/Global/BLLava3/BLLava3.gfx.inc.c"
 };
 
-Vec3f Global_BLLava3_ColV[] = {
-    #include "assets/levelGroup/Global/BLLava3/BLLava3.colV.inc.c"
+Vec3f Global_BLLava3_ColVerts[] = {
+    #include "assets/levelGroup/Global/BLLava3/BLLava3.colVerts.inc.c"
 };
 
-Vec3w Global_BLLava3_ColT[] = {
-    #include "assets/levelGroup/Global/BLLava3/BLLava3.colT.inc.c"
+Vec3w Global_BLLava3_ColTris[] = {
+    #include "assets/levelGroup/Global/BLLava3/BLLava3.colTris.inc.c"
 };
 
-Rect3D Global_BLLava3_ColS = {
-    #include "assets/levelGroup/Global/BLLava3/BLLava3.colS.inc.c"
+Rect3D Global_BLLava3_BoundBox = {
+    #include "assets/levelGroup/Global/BLLava3/BLLava3.boundBox.inc.c"
 };
 
 ModelCollision Global_BLLava3_ColH = {
-4, 2, Global_BLLava3_ColV, Global_BLLava3_ColT, &Global_BLLava3_ColS
+4, 2, Global_BLLava3_ColVerts, Global_BLLava3_ColTris, &Global_BLLava3_BoundBox
 };
 
 Vtx Global_BLLava4_Vtx[] = {
@@ -1337,20 +1337,20 @@ Gfx Global_BLLava4_Gfx[] = {
     #include "assets/levelGroup/Global/BLLava4/BLLava4.gfx.inc.c"
 };
 
-Vec3f Global_BLLava4_ColV[] = {
-    #include "assets/levelGroup/Global/BLLava4/BLLava4.colV.inc.c"
+Vec3f Global_BLLava4_ColVerts[] = {
+    #include "assets/levelGroup/Global/BLLava4/BLLava4.colVerts.inc.c"
 };
 
-Vec3w Global_BLLava4_ColT[] = {
-    #include "assets/levelGroup/Global/BLLava4/BLLava4.colT.inc.c"
+Vec3w Global_BLLava4_ColTris[] = {
+    #include "assets/levelGroup/Global/BLLava4/BLLava4.colTris.inc.c"
 };
 
-Rect3D Global_BLLava4_ColS = {
-    #include "assets/levelGroup/Global/BLLava4/BLLava4.colS.inc.c"
+Rect3D Global_BLLava4_BoundBox = {
+    #include "assets/levelGroup/Global/BLLava4/BLLava4.boundBox.inc.c"
 };
 
 ModelCollision Global_BLLava4_ColH = {
-4, 2, Global_BLLava4_ColV, Global_BLLava4_ColT, &Global_BLLava4_ColS
+4, 2, Global_BLLava4_ColVerts, Global_BLLava4_ColTris, &Global_BLLava4_BoundBox
 };
 
 Vtx Global_BLLava5_Vtx[] = {
@@ -1370,20 +1370,20 @@ Gfx Global_BLLava5_Gfx[] = {
     #include "assets/levelGroup/Global/BLLava5/BLLava5.gfx.inc.c"
 };
 
-Vec3f Global_BLLava5_ColV[] = {
-    #include "assets/levelGroup/Global/BLLava5/BLLava5.colV.inc.c"
+Vec3f Global_BLLava5_ColVerts[] = {
+    #include "assets/levelGroup/Global/BLLava5/BLLava5.colVerts.inc.c"
 };
 
-Vec3w Global_BLLava5_ColT[] = {
-    #include "assets/levelGroup/Global/BLLava5/BLLava5.colT.inc.c"
+Vec3w Global_BLLava5_ColTris[] = {
+    #include "assets/levelGroup/Global/BLLava5/BLLava5.colTris.inc.c"
 };
 
-Rect3D Global_BLLava5_ColS = {
-    #include "assets/levelGroup/Global/BLLava5/BLLava5.colS.inc.c"
+Rect3D Global_BLLava5_BoundBox = {
+    #include "assets/levelGroup/Global/BLLava5/BLLava5.boundBox.inc.c"
 };
 
 ModelCollision Global_BLLava5_ColH = {
-4, 2, Global_BLLava5_ColV, Global_BLLava5_ColT, &Global_BLLava5_ColS
+4, 2, Global_BLLava5_ColVerts, Global_BLLava5_ColTris, &Global_BLLava5_BoundBox
 };
 
 Vtx Global_BLLava6_Vtx[] = {
@@ -1403,20 +1403,20 @@ Gfx Global_BLLava6_Gfx[] = {
     #include "assets/levelGroup/Global/BLLava6/BLLava6.gfx.inc.c"
 };
 
-Vec3f Global_BLLava6_ColV[] = {
-    #include "assets/levelGroup/Global/BLLava6/BLLava6.colV.inc.c"
+Vec3f Global_BLLava6_ColVerts[] = {
+    #include "assets/levelGroup/Global/BLLava6/BLLava6.colVerts.inc.c"
 };
 
-Vec3w Global_BLLava6_ColT[] = {
-    #include "assets/levelGroup/Global/BLLava6/BLLava6.colT.inc.c"
+Vec3w Global_BLLava6_ColTris[] = {
+    #include "assets/levelGroup/Global/BLLava6/BLLava6.colTris.inc.c"
 };
 
-Rect3D Global_BLLava6_ColS = {
-    #include "assets/levelGroup/Global/BLLava6/BLLava6.colS.inc.c"
+Rect3D Global_BLLava6_BoundBox = {
+    #include "assets/levelGroup/Global/BLLava6/BLLava6.boundBox.inc.c"
 };
 
 ModelCollision Global_BLLava6_ColH = {
-4, 2, Global_BLLava6_ColV, Global_BLLava6_ColT, &Global_BLLava6_ColS
+4, 2, Global_BLLava6_ColVerts, Global_BLLava6_ColTris, &Global_BLLava6_BoundBox
 };
 
 Vtx Global_BLLava7_Vtx[] = {
@@ -1436,20 +1436,20 @@ Gfx Global_BLLava7_Gfx[] = {
     #include "assets/levelGroup/Global/BLLava7/BLLava7.gfx.inc.c"
 };
 
-Vec3f Global_BLLava7_ColV[] = {
-    #include "assets/levelGroup/Global/BLLava7/BLLava7.colV.inc.c"
+Vec3f Global_BLLava7_ColVerts[] = {
+    #include "assets/levelGroup/Global/BLLava7/BLLava7.colVerts.inc.c"
 };
 
-Vec3w Global_BLLava7_ColT[] = {
-    #include "assets/levelGroup/Global/BLLava7/BLLava7.colT.inc.c"
+Vec3w Global_BLLava7_ColTris[] = {
+    #include "assets/levelGroup/Global/BLLava7/BLLava7.colTris.inc.c"
 };
 
-Rect3D Global_BLLava7_ColS = {
-    #include "assets/levelGroup/Global/BLLava7/BLLava7.colS.inc.c"
+Rect3D Global_BLLava7_BoundBox = {
+    #include "assets/levelGroup/Global/BLLava7/BLLava7.boundBox.inc.c"
 };
 
 ModelCollision Global_BLLava7_ColH = {
-4, 2, Global_BLLava7_ColV, Global_BLLava7_ColT, &Global_BLLava7_ColS
+4, 2, Global_BLLava7_ColVerts, Global_BLLava7_ColTris, &Global_BLLava7_BoundBox
 };
 
 Vtx Global_BLLava8_Vtx[] = {
@@ -1469,20 +1469,20 @@ Gfx Global_BLLava8_Gfx[] = {
     #include "assets/levelGroup/Global/BLLava8/BLLava8.gfx.inc.c"
 };
 
-Vec3f Global_BLLava8_ColV[] = {
-    #include "assets/levelGroup/Global/BLLava8/BLLava8.colV.inc.c"
+Vec3f Global_BLLava8_ColVerts[] = {
+    #include "assets/levelGroup/Global/BLLava8/BLLava8.colVerts.inc.c"
 };
 
-Vec3w Global_BLLava8_ColT[] = {
-    #include "assets/levelGroup/Global/BLLava8/BLLava8.colT.inc.c"
+Vec3w Global_BLLava8_ColTris[] = {
+    #include "assets/levelGroup/Global/BLLava8/BLLava8.colTris.inc.c"
 };
 
-Rect3D Global_BLLava8_ColS = {
-    #include "assets/levelGroup/Global/BLLava8/BLLava8.colS.inc.c"
+Rect3D Global_BLLava8_BoundBox = {
+    #include "assets/levelGroup/Global/BLLava8/BLLava8.boundBox.inc.c"
 };
 
 ModelCollision Global_BLLava8_ColH = {
-4, 2, Global_BLLava8_ColV, Global_BLLava8_ColT, &Global_BLLava8_ColS
+4, 2, Global_BLLava8_ColVerts, Global_BLLava8_ColTris, &Global_BLLava8_BoundBox
 };
 
 Vtx Global_BLDestructableTop_Vtx[] = {
@@ -1494,20 +1494,20 @@ Gfx Global_BLDestructableTop_Gfx[] = {
     #include "assets/levelGroup/Global/BLDestructableTop/BLDestructableTop.gfx.inc.c"
 };
 
-Vec3f Global_BLDestructableTop_ColV[] = {
-    #include "assets/levelGroup/Global/BLDestructableTop/BLDestructableTop.colV.inc.c"
+Vec3f Global_BLDestructableTop_ColVerts[] = {
+    #include "assets/levelGroup/Global/BLDestructableTop/BLDestructableTop.colVerts.inc.c"
 };
 
-Vec3w Global_BLDestructableTop_ColT[] = {
-    #include "assets/levelGroup/Global/BLDestructableTop/BLDestructableTop.colT.inc.c"
+Vec3w Global_BLDestructableTop_ColTris[] = {
+    #include "assets/levelGroup/Global/BLDestructableTop/BLDestructableTop.colTris.inc.c"
 };
 
-Rect3D Global_BLDestructableTop_ColS = {
-    #include "assets/levelGroup/Global/BLDestructableTop/BLDestructableTop.colS.inc.c"
+Rect3D Global_BLDestructableTop_BoundBox = {
+    #include "assets/levelGroup/Global/BLDestructableTop/BLDestructableTop.boundBox.inc.c"
 };
 
 ModelCollision Global_BLDestructableTop_ColH = {
-4, 2, Global_BLDestructableTop_ColV, Global_BLDestructableTop_ColT, &Global_BLDestructableTop_ColS
+4, 2, Global_BLDestructableTop_ColVerts, Global_BLDestructableTop_ColTris, &Global_BLDestructableTop_BoundBox
 };
 
 Vtx Global_BLMetalBridge_Vtx[] = {
@@ -1519,20 +1519,20 @@ Gfx Global_BLMetalBridge_Gfx[] = {
     #include "assets/levelGroup/Global/BLMetalBridge/BLMetalBridge.gfx.inc.c"
 };
 
-Vec3f Global_BLMetalBridge_ColV[] = {
-    #include "assets/levelGroup/Global/BLMetalBridge/BLMetalBridge.colV.inc.c"
+Vec3f Global_BLMetalBridge_ColVerts[] = {
+    #include "assets/levelGroup/Global/BLMetalBridge/BLMetalBridge.colVerts.inc.c"
 };
 
-Vec3w Global_BLMetalBridge_ColT[] = {
-    #include "assets/levelGroup/Global/BLMetalBridge/BLMetalBridge.colT.inc.c"
+Vec3w Global_BLMetalBridge_ColTris[] = {
+    #include "assets/levelGroup/Global/BLMetalBridge/BLMetalBridge.colTris.inc.c"
 };
 
-Rect3D Global_BLMetalBridge_ColS = {
-    #include "assets/levelGroup/Global/BLMetalBridge/BLMetalBridge.colS.inc.c"
+Rect3D Global_BLMetalBridge_BoundBox = {
+    #include "assets/levelGroup/Global/BLMetalBridge/BLMetalBridge.boundBox.inc.c"
 };
 
 ModelCollision Global_BLMetalBridge_ColH = {
-8, 10, Global_BLMetalBridge_ColV, Global_BLMetalBridge_ColT, &Global_BLMetalBridge_ColS
+8, 10, Global_BLMetalBridge_ColVerts, Global_BLMetalBridge_ColTris, &Global_BLMetalBridge_BoundBox
 };
 
 Vtx Global_KLExit_Vtx[] = {
@@ -1544,20 +1544,20 @@ Gfx Global_KLExit_Gfx[] = {
     #include "assets/levelGroup/Global/KLExit/KLExit.gfx.inc.c"
 };
 
-Vec3f Global_KLExit_ColV[] = {
-    #include "assets/levelGroup/Global/KLExit/KLExit.colV.inc.c"
+Vec3f Global_KLExit_ColVerts[] = {
+    #include "assets/levelGroup/Global/KLExit/KLExit.colVerts.inc.c"
 };
 
-Vec3w Global_KLExit_ColT[] = {
-    #include "assets/levelGroup/Global/KLExit/KLExit.colT.inc.c"
+Vec3w Global_KLExit_ColTris[] = {
+    #include "assets/levelGroup/Global/KLExit/KLExit.colTris.inc.c"
 };
 
-Rect3D Global_KLExit_ColS = {
-    #include "assets/levelGroup/Global/KLExit/KLExit.colS.inc.c"
+Rect3D Global_KLExit_BoundBox = {
+    #include "assets/levelGroup/Global/KLExit/KLExit.boundBox.inc.c"
 };
 
 ModelCollision Global_KLExit_ColH = {
-6, 4, Global_KLExit_ColV, Global_KLExit_ColT, &Global_KLExit_ColS
+6, 4, Global_KLExit_ColVerts, Global_KLExit_ColTris, &Global_KLExit_BoundBox
 };
 
 Vtx Global_KLDoor_Vtx[] = {
@@ -1577,20 +1577,20 @@ Gfx Global_KLDoor_Gfx[] = {
     #include "assets/levelGroup/Global/KLDoor/KLDoor.gfx.inc.c"
 };
 
-Vec3f Global_KLDoor_ColV[] = {
-    #include "assets/levelGroup/Global/KLDoor/KLDoor.colV.inc.c"
+Vec3f Global_KLDoor_ColVerts[] = {
+    #include "assets/levelGroup/Global/KLDoor/KLDoor.colVerts.inc.c"
 };
 
-Vec3w Global_KLDoor_ColT[] = {
-    #include "assets/levelGroup/Global/KLDoor/KLDoor.colT.inc.c"
+Vec3w Global_KLDoor_ColTris[] = {
+    #include "assets/levelGroup/Global/KLDoor/KLDoor.colTris.inc.c"
 };
 
-Rect3D Global_KLDoor_ColS = {
-    #include "assets/levelGroup/Global/KLDoor/KLDoor.colS.inc.c"
+Rect3D Global_KLDoor_BoundBox = {
+    #include "assets/levelGroup/Global/KLDoor/KLDoor.boundBox.inc.c"
 };
 
 ModelCollision Global_KLDoor_ColH = {
-8, 8, Global_KLDoor_ColV, Global_KLDoor_ColT, &Global_KLDoor_ColS
+8, 8, Global_KLDoor_ColVerts, Global_KLDoor_ColTris, &Global_KLDoor_BoundBox
 };
 
 Vtx Global_DCExit_Vtx[] = {
@@ -1602,20 +1602,20 @@ Gfx Global_DCExit_Gfx[] = {
     #include "assets/levelGroup/Global/DCExit/DCExit.gfx.inc.c"
 };
 
-Vec3f Global_DCExit_ColV[] = {
-    #include "assets/levelGroup/Global/DCExit/DCExit.colV.inc.c"
+Vec3f Global_DCExit_ColVerts[] = {
+    #include "assets/levelGroup/Global/DCExit/DCExit.colVerts.inc.c"
 };
 
-Vec3w Global_DCExit_ColT[] = {
-    #include "assets/levelGroup/Global/DCExit/DCExit.colT.inc.c"
+Vec3w Global_DCExit_ColTris[] = {
+    #include "assets/levelGroup/Global/DCExit/DCExit.colTris.inc.c"
 };
 
-Rect3D Global_DCExit_ColS = {
-    #include "assets/levelGroup/Global/DCExit/DCExit.colS.inc.c"
+Rect3D Global_DCExit_BoundBox = {
+    #include "assets/levelGroup/Global/DCExit/DCExit.boundBox.inc.c"
 };
 
 ModelCollision Global_DCExit_ColH = {
-6, 4, Global_DCExit_ColV, Global_DCExit_ColT, &Global_DCExit_ColS
+6, 4, Global_DCExit_ColVerts, Global_DCExit_ColTris, &Global_DCExit_BoundBox
 };
 
 Vtx Global_TallExitShadow1_Vtx[] = {
@@ -1627,20 +1627,20 @@ Gfx Global_TallExitShadow1_Gfx[] = {
     #include "assets/levelGroup/Global/TallExitShadow1/TallExitShadow1.gfx.inc.c"
 };
 
-Vec3f Global_TallExitShadow1_ColV[] = {
-    #include "assets/levelGroup/Global/TallExitShadow1/TallExitShadow1.colV.inc.c"
+Vec3f Global_TallExitShadow1_ColVerts[] = {
+    #include "assets/levelGroup/Global/TallExitShadow1/TallExitShadow1.colVerts.inc.c"
 };
 
-Vec3w Global_TallExitShadow1_ColT[] = {
-    #include "assets/levelGroup/Global/TallExitShadow1/TallExitShadow1.colT.inc.c"
+Vec3w Global_TallExitShadow1_ColTris[] = {
+    #include "assets/levelGroup/Global/TallExitShadow1/TallExitShadow1.colTris.inc.c"
 };
 
-Rect3D Global_TallExitShadow1_ColS = {
-    #include "assets/levelGroup/Global/TallExitShadow1/TallExitShadow1.colS.inc.c"
+Rect3D Global_TallExitShadow1_BoundBox = {
+    #include "assets/levelGroup/Global/TallExitShadow1/TallExitShadow1.boundBox.inc.c"
 };
 
 ModelCollision Global_TallExitShadow1_ColH = {
-4, 2, Global_TallExitShadow1_ColV, Global_TallExitShadow1_ColT, &Global_TallExitShadow1_ColS
+4, 2, Global_TallExitShadow1_ColVerts, Global_TallExitShadow1_ColTris, &Global_TallExitShadow1_BoundBox
 };
 
 Vtx Global_TallExitShadow2_Vtx[] = {
@@ -1652,20 +1652,20 @@ Gfx Global_TallExitShadow2_Gfx[] = {
     #include "assets/levelGroup/Global/TallExitShadow2/TallExitShadow2.gfx.inc.c"
 };
 
-Vec3f Global_TallExitShadow2_ColV[] = {
-    #include "assets/levelGroup/Global/TallExitShadow2/TallExitShadow2.colV.inc.c"
+Vec3f Global_TallExitShadow2_ColVerts[] = {
+    #include "assets/levelGroup/Global/TallExitShadow2/TallExitShadow2.colVerts.inc.c"
 };
 
-Vec3w Global_TallExitShadow2_ColT[] = {
-    #include "assets/levelGroup/Global/TallExitShadow2/TallExitShadow2.colT.inc.c"
+Vec3w Global_TallExitShadow2_ColTris[] = {
+    #include "assets/levelGroup/Global/TallExitShadow2/TallExitShadow2.colTris.inc.c"
 };
 
-Rect3D Global_TallExitShadow2_ColS = {
-    #include "assets/levelGroup/Global/TallExitShadow2/TallExitShadow2.colS.inc.c"
+Rect3D Global_TallExitShadow2_BoundBox = {
+    #include "assets/levelGroup/Global/TallExitShadow2/TallExitShadow2.boundBox.inc.c"
 };
 
 ModelCollision Global_TallExitShadow2_ColH = {
-4, 2, Global_TallExitShadow2_ColV, Global_TallExitShadow2_ColT, &Global_TallExitShadow2_ColS
+4, 2, Global_TallExitShadow2_ColVerts, Global_TallExitShadow2_ColTris, &Global_TallExitShadow2_BoundBox
 };
 
 Vtx Global_GCExit1_Vtx[] = {
@@ -1677,20 +1677,20 @@ Gfx Global_GCExit1_Gfx[] = {
     #include "assets/levelGroup/Global/GCExit1/GCExit1.gfx.inc.c"
 };
 
-Vec3f Global_GCExit1_ColV[] = {
-    #include "assets/levelGroup/Global/GCExit1/GCExit1.colV.inc.c"
+Vec3f Global_GCExit1_ColVerts[] = {
+    #include "assets/levelGroup/Global/GCExit1/GCExit1.colVerts.inc.c"
 };
 
-Vec3w Global_GCExit1_ColT[] = {
-    #include "assets/levelGroup/Global/GCExit1/GCExit1.colT.inc.c"
+Vec3w Global_GCExit1_ColTris[] = {
+    #include "assets/levelGroup/Global/GCExit1/GCExit1.colTris.inc.c"
 };
 
-Rect3D Global_GCExit1_ColS = {
-    #include "assets/levelGroup/Global/GCExit1/GCExit1.colS.inc.c"
+Rect3D Global_GCExit1_BoundBox = {
+    #include "assets/levelGroup/Global/GCExit1/GCExit1.boundBox.inc.c"
 };
 
 ModelCollision Global_GCExit1_ColH = {
-6, 4, Global_GCExit1_ColV, Global_GCExit1_ColT, &Global_GCExit1_ColS
+6, 4, Global_GCExit1_ColVerts, Global_GCExit1_ColTris, &Global_GCExit1_BoundBox
 };
 
 Vtx Global_GCExit2_Vtx[] = {
@@ -1702,20 +1702,20 @@ Gfx Global_GCExit2_Gfx[] = {
     #include "assets/levelGroup/Global/GCExit2/GCExit2.gfx.inc.c"
 };
 
-Vec3f Global_GCExit2_ColV[] = {
-    #include "assets/levelGroup/Global/GCExit2/GCExit2.colV.inc.c"
+Vec3f Global_GCExit2_ColVerts[] = {
+    #include "assets/levelGroup/Global/GCExit2/GCExit2.colVerts.inc.c"
 };
 
-Vec3w Global_GCExit2_ColT[] = {
-    #include "assets/levelGroup/Global/GCExit2/GCExit2.colT.inc.c"
+Vec3w Global_GCExit2_ColTris[] = {
+    #include "assets/levelGroup/Global/GCExit2/GCExit2.colTris.inc.c"
 };
 
-Rect3D Global_GCExit2_ColS = {
-    #include "assets/levelGroup/Global/GCExit2/GCExit2.colS.inc.c"
+Rect3D Global_GCExit2_BoundBox = {
+    #include "assets/levelGroup/Global/GCExit2/GCExit2.boundBox.inc.c"
 };
 
 ModelCollision Global_GCExit2_ColH = {
-6, 4, Global_GCExit2_ColV, Global_GCExit2_ColT, &Global_GCExit2_ColS
+6, 4, Global_GCExit2_ColVerts, Global_GCExit2_ColTris, &Global_GCExit2_BoundBox
 };
 
 Vtx Global_trainingRoomLight_Vtx[] = {
@@ -1727,20 +1727,20 @@ Gfx Global_trainingRoomLight_Gfx[] = {
     #include "assets/levelGroup/Global/trainingRoomLight/trainingRoomLight.gfx.inc.c"
 };
 
-Vec3f Global_trainingRoomLight_ColV[] = {
-    #include "assets/levelGroup/Global/trainingRoomLight/trainingRoomLight.colV.inc.c"
+Vec3f Global_trainingRoomLight_ColVerts[] = {
+    #include "assets/levelGroup/Global/trainingRoomLight/trainingRoomLight.colVerts.inc.c"
 };
 
-Vec3w Global_trainingRoomLight_ColT[] = {
-    #include "assets/levelGroup/Global/trainingRoomLight/trainingRoomLight.colT.inc.c"
+Vec3w Global_trainingRoomLight_ColTris[] = {
+    #include "assets/levelGroup/Global/trainingRoomLight/trainingRoomLight.colTris.inc.c"
 };
 
-Rect3D Global_trainingRoomLight_ColS = {
-    #include "assets/levelGroup/Global/trainingRoomLight/trainingRoomLight.colS.inc.c"
+Rect3D Global_trainingRoomLight_BoundBox = {
+    #include "assets/levelGroup/Global/trainingRoomLight/trainingRoomLight.boundBox.inc.c"
 };
 
 ModelCollision Global_trainingRoomLight_ColH = {
-12, 16, Global_trainingRoomLight_ColV, Global_trainingRoomLight_ColT, &Global_trainingRoomLight_ColS
+12, 16, Global_trainingRoomLight_ColVerts, Global_trainingRoomLight_ColTris, &Global_trainingRoomLight_BoundBox
 };
 
 Vtx Global_JLCaveExit1_Vtx[] = {
@@ -1752,20 +1752,20 @@ Gfx Global_JLCaveExit1_Gfx[] = {
     #include "assets/levelGroup/Global/JLCaveExit1/JLCaveExit1.gfx.inc.c"
 };
 
-Vec3f Global_JLCaveExit1_ColV[] = {
-    #include "assets/levelGroup/Global/JLCaveExit1/JLCaveExit1.colV.inc.c"
+Vec3f Global_JLCaveExit1_ColVerts[] = {
+    #include "assets/levelGroup/Global/JLCaveExit1/JLCaveExit1.colVerts.inc.c"
 };
 
-Vec3w Global_JLCaveExit1_ColT[] = {
-    #include "assets/levelGroup/Global/JLCaveExit1/JLCaveExit1.colT.inc.c"
+Vec3w Global_JLCaveExit1_ColTris[] = {
+    #include "assets/levelGroup/Global/JLCaveExit1/JLCaveExit1.colTris.inc.c"
 };
 
-Rect3D Global_JLCaveExit1_ColS = {
-    #include "assets/levelGroup/Global/JLCaveExit1/JLCaveExit1.colS.inc.c"
+Rect3D Global_JLCaveExit1_BoundBox = {
+    #include "assets/levelGroup/Global/JLCaveExit1/JLCaveExit1.boundBox.inc.c"
 };
 
 ModelCollision Global_JLCaveExit1_ColH = {
-6, 4, Global_JLCaveExit1_ColV, Global_JLCaveExit1_ColT, &Global_JLCaveExit1_ColS
+6, 4, Global_JLCaveExit1_ColVerts, Global_JLCaveExit1_ColTris, &Global_JLCaveExit1_BoundBox
 };
 
 Vtx Global_JLCaveExit2_Vtx[] = {
@@ -1777,20 +1777,20 @@ Gfx Global_JLCaveExit2_Gfx[] = {
     #include "assets/levelGroup/Global/JLCaveExit2/JLCaveExit2.gfx.inc.c"
 };
 
-Vec3f Global_JLCaveExit2_ColV[] = {
-    #include "assets/levelGroup/Global/JLCaveExit2/JLCaveExit2.colV.inc.c"
+Vec3f Global_JLCaveExit2_ColVerts[] = {
+    #include "assets/levelGroup/Global/JLCaveExit2/JLCaveExit2.colVerts.inc.c"
 };
 
-Vec3w Global_JLCaveExit2_ColT[] = {
-    #include "assets/levelGroup/Global/JLCaveExit2/JLCaveExit2.colT.inc.c"
+Vec3w Global_JLCaveExit2_ColTris[] = {
+    #include "assets/levelGroup/Global/JLCaveExit2/JLCaveExit2.colTris.inc.c"
 };
 
-Rect3D Global_JLCaveExit2_ColS = {
-    #include "assets/levelGroup/Global/JLCaveExit2/JLCaveExit2.colS.inc.c"
+Rect3D Global_JLCaveExit2_BoundBox = {
+    #include "assets/levelGroup/Global/JLCaveExit2/JLCaveExit2.boundBox.inc.c"
 };
 
 ModelCollision Global_JLCaveExit2_ColH = {
-6, 4, Global_JLCaveExit2_ColV, Global_JLCaveExit2_ColT, &Global_JLCaveExit2_ColS
+6, 4, Global_JLCaveExit2_ColVerts, Global_JLCaveExit2_ColTris, &Global_JLCaveExit2_BoundBox
 };
 
 Vtx Global_JLCaveExit3_Vtx[] = {
@@ -1802,20 +1802,20 @@ Gfx Global_JLCaveExit3_Gfx[] = {
     #include "assets/levelGroup/Global/JLCaveExit3/JLCaveExit3.gfx.inc.c"
 };
 
-Vec3f Global_JLCaveExit3_ColV[] = {
-    #include "assets/levelGroup/Global/JLCaveExit3/JLCaveExit3.colV.inc.c"
+Vec3f Global_JLCaveExit3_ColVerts[] = {
+    #include "assets/levelGroup/Global/JLCaveExit3/JLCaveExit3.colVerts.inc.c"
 };
 
-Vec3w Global_JLCaveExit3_ColT[] = {
-    #include "assets/levelGroup/Global/JLCaveExit3/JLCaveExit3.colT.inc.c"
+Vec3w Global_JLCaveExit3_ColTris[] = {
+    #include "assets/levelGroup/Global/JLCaveExit3/JLCaveExit3.colTris.inc.c"
 };
 
-Rect3D Global_JLCaveExit3_ColS = {
-    #include "assets/levelGroup/Global/JLCaveExit3/JLCaveExit3.colS.inc.c"
+Rect3D Global_JLCaveExit3_BoundBox = {
+    #include "assets/levelGroup/Global/JLCaveExit3/JLCaveExit3.boundBox.inc.c"
 };
 
 ModelCollision Global_JLCaveExit3_ColH = {
-6, 4, Global_JLCaveExit3_ColV, Global_JLCaveExit3_ColT, &Global_JLCaveExit3_ColS
+6, 4, Global_JLCaveExit3_ColVerts, Global_JLCaveExit3_ColTris, &Global_JLCaveExit3_BoundBox
 };
 
 Vtx Global_JLCaveExit4_Vtx[] = {
@@ -1827,20 +1827,20 @@ Gfx Global_JLCaveExit4_Gfx[] = {
     #include "assets/levelGroup/Global/JLCaveExit4/JLCaveExit4.gfx.inc.c"
 };
 
-Vec3f Global_JLCaveExit4_ColV[] = {
-    #include "assets/levelGroup/Global/JLCaveExit4/JLCaveExit4.colV.inc.c"
+Vec3f Global_JLCaveExit4_ColVerts[] = {
+    #include "assets/levelGroup/Global/JLCaveExit4/JLCaveExit4.colVerts.inc.c"
 };
 
-Vec3w Global_JLCaveExit4_ColT[] = {
-    #include "assets/levelGroup/Global/JLCaveExit4/JLCaveExit4.colT.inc.c"
+Vec3w Global_JLCaveExit4_ColTris[] = {
+    #include "assets/levelGroup/Global/JLCaveExit4/JLCaveExit4.colTris.inc.c"
 };
 
-Rect3D Global_JLCaveExit4_ColS = {
-    #include "assets/levelGroup/Global/JLCaveExit4/JLCaveExit4.colS.inc.c"
+Rect3D Global_JLCaveExit4_BoundBox = {
+    #include "assets/levelGroup/Global/JLCaveExit4/JLCaveExit4.boundBox.inc.c"
 };
 
 ModelCollision Global_JLCaveExit4_ColH = {
-6, 4, Global_JLCaveExit4_ColV, Global_JLCaveExit4_ColT, &Global_JLCaveExit4_ColS
+6, 4, Global_JLCaveExit4_ColVerts, Global_JLCaveExit4_ColTris, &Global_JLCaveExit4_BoundBox
 };
 
 Vtx Global_JLOutsideEntrance_Vtx[] = {
@@ -1852,20 +1852,20 @@ Gfx Global_JLOutsideEntrance_Gfx[] = {
     #include "assets/levelGroup/Global/JLOutsideEntrance/JLOutsideEntrance.gfx.inc.c"
 };
 
-Vec3f Global_JLOutsideEntrance_ColV[] = {
-    #include "assets/levelGroup/Global/JLOutsideEntrance/JLOutsideEntrance.colV.inc.c"
+Vec3f Global_JLOutsideEntrance_ColVerts[] = {
+    #include "assets/levelGroup/Global/JLOutsideEntrance/JLOutsideEntrance.colVerts.inc.c"
 };
 
-Vec3w Global_JLOutsideEntrance_ColT[] = {
-    #include "assets/levelGroup/Global/JLOutsideEntrance/JLOutsideEntrance.colT.inc.c"
+Vec3w Global_JLOutsideEntrance_ColTris[] = {
+    #include "assets/levelGroup/Global/JLOutsideEntrance/JLOutsideEntrance.colTris.inc.c"
 };
 
-Rect3D Global_JLOutsideEntrance_ColS = {
-    #include "assets/levelGroup/Global/JLOutsideEntrance/JLOutsideEntrance.colS.inc.c"
+Rect3D Global_JLOutsideEntrance_BoundBox = {
+    #include "assets/levelGroup/Global/JLOutsideEntrance/JLOutsideEntrance.boundBox.inc.c"
 };
 
 ModelCollision Global_JLOutsideEntrance_ColH = {
-12, 16, Global_JLOutsideEntrance_ColV, Global_JLOutsideEntrance_ColT, &Global_JLOutsideEntrance_ColS
+12, 16, Global_JLOutsideEntrance_ColVerts, Global_JLOutsideEntrance_ColTris, &Global_JLOutsideEntrance_BoundBox
 };
 
 Vtx Global_JLFxCamPillar_Vtx[] = {
@@ -1877,20 +1877,20 @@ Gfx Global_JLFxCamPillar_Gfx[] = {
     #include "assets/levelGroup/Global/JLFxCamPillar/JLFxCamPillar.gfx.inc.c"
 };
 
-Vec3f Global_JLFxCamPillar_ColV[] = {
-    #include "assets/levelGroup/Global/JLFxCamPillar/JLFxCamPillar.colV.inc.c"
+Vec3f Global_JLFxCamPillar_ColVerts[] = {
+    #include "assets/levelGroup/Global/JLFxCamPillar/JLFxCamPillar.colVerts.inc.c"
 };
 
-Vec3w Global_JLFxCamPillar_ColT[] = {
-    #include "assets/levelGroup/Global/JLFxCamPillar/JLFxCamPillar.colT.inc.c"
+Vec3w Global_JLFxCamPillar_ColTris[] = {
+    #include "assets/levelGroup/Global/JLFxCamPillar/JLFxCamPillar.colTris.inc.c"
 };
 
-Rect3D Global_JLFxCamPillar_ColS = {
-    #include "assets/levelGroup/Global/JLFxCamPillar/JLFxCamPillar.colS.inc.c"
+Rect3D Global_JLFxCamPillar_BoundBox = {
+    #include "assets/levelGroup/Global/JLFxCamPillar/JLFxCamPillar.boundBox.inc.c"
 };
 
 ModelCollision Global_JLFxCamPillar_ColH = {
-12, 12, Global_JLFxCamPillar_ColV, Global_JLFxCamPillar_ColT, &Global_JLFxCamPillar_ColS
+12, 12, Global_JLFxCamPillar_ColVerts, Global_JLFxCamPillar_ColTris, &Global_JLFxCamPillar_BoundBox
 };
 
 Vtx Global_JLCaveDoor_Vtx[] = {
@@ -1902,19 +1902,19 @@ Gfx Global_JLCaveDoor_Gfx[] = {
     #include "assets/levelGroup/Global/JLCaveDoor/JLCaveDoor.gfx.inc.c"
 };
 
-Vec3f Global_JLCaveDoor_ColV[] = {
-    #include "assets/levelGroup/Global/JLCaveDoor/JLCaveDoor.colV.inc.c"
+Vec3f Global_JLCaveDoor_ColVerts[] = {
+    #include "assets/levelGroup/Global/JLCaveDoor/JLCaveDoor.colVerts.inc.c"
 };
 
-Vec3w Global_JLCaveDoor_ColT[] = {
-    #include "assets/levelGroup/Global/JLCaveDoor/JLCaveDoor.colT.inc.c"
+Vec3w Global_JLCaveDoor_ColTris[] = {
+    #include "assets/levelGroup/Global/JLCaveDoor/JLCaveDoor.colTris.inc.c"
 };
 
-Rect3D Global_JLCaveDoor_ColS = {
-    #include "assets/levelGroup/Global/JLCaveDoor/JLCaveDoor.colS.inc.c"
+Rect3D Global_JLCaveDoor_BoundBox = {
+    #include "assets/levelGroup/Global/JLCaveDoor/JLCaveDoor.boundBox.inc.c"
 };
 
 ModelCollision Global_JLCaveDoor_ColH = {
-8, 8, Global_JLCaveDoor_ColV, Global_JLCaveDoor_ColT, &Global_JLCaveDoor_ColS
+8, 8, Global_JLCaveDoor_ColVerts, Global_JLCaveDoor_ColTris, &Global_JLCaveDoor_BoundBox
 };
 

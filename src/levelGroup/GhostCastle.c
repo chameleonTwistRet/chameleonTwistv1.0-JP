@@ -2340,1236 +2340,1236 @@ Gfx GhostCastle_model74_Gfx[] = {
     #include "assets/levelGroup/GhostCastle/model74/model74.gfx.inc.c"
 };
 
-Vec3f GhostCastle_unkCol1_ColV[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol1/unkCol1.colV.inc.c"
+Vec3f GhostCastle_unkCol1_ColVerts[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol1/unkCol1.colVerts.inc.c"
 };
 
-Vec3w GhostCastle_unkCol1_ColT[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol1/unkCol1.colT.inc.c"
+Vec3w GhostCastle_unkCol1_ColTris[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol1/unkCol1.colTris.inc.c"
 };
 
-Rect3D GhostCastle_unkCol1_ColS = {
-    #include "assets/levelGroup/GhostCastle/unkCol1/unkCol1.colS.inc.c"
+Rect3D GhostCastle_unkCol1_BoundBox = {
+    #include "assets/levelGroup/GhostCastle/unkCol1/unkCol1.boundBox.inc.c"
 };
 
 ModelCollision GhostCastle_unkCol1_ColH = {
-48, 80, GhostCastle_unkCol1_ColV, GhostCastle_unkCol1_ColT, &GhostCastle_unkCol1_ColS
+48, 80, GhostCastle_unkCol1_ColVerts, GhostCastle_unkCol1_ColTris, &GhostCastle_unkCol1_BoundBox
 };
 
-Vec3f GhostCastle_unkCol2_ColV[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol2/unkCol2.colV.inc.c"
+Vec3f GhostCastle_unkCol2_ColVerts[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol2/unkCol2.colVerts.inc.c"
 };
 
-Vec3w GhostCastle_unkCol2_ColT[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol2/unkCol2.colT.inc.c"
+Vec3w GhostCastle_unkCol2_ColTris[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol2/unkCol2.colTris.inc.c"
 };
 
-Rect3D GhostCastle_unkCol2_ColS = {
-    #include "assets/levelGroup/GhostCastle/unkCol2/unkCol2.colS.inc.c"
+Rect3D GhostCastle_unkCol2_BoundBox = {
+    #include "assets/levelGroup/GhostCastle/unkCol2/unkCol2.boundBox.inc.c"
 };
 
 ModelCollision GhostCastle_unkCol2_ColH = {
-8, 10, GhostCastle_unkCol2_ColV, GhostCastle_unkCol2_ColT, &GhostCastle_unkCol2_ColS
+8, 10, GhostCastle_unkCol2_ColVerts, GhostCastle_unkCol2_ColTris, &GhostCastle_unkCol2_BoundBox
 };
 
-Vec3f GhostCastle_unkCol3_ColV[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol3/unkCol3.colV.inc.c"
+Vec3f GhostCastle_unkCol3_ColVerts[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol3/unkCol3.colVerts.inc.c"
 };
 
-Vec3w GhostCastle_unkCol3_ColT[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol3/unkCol3.colT.inc.c"
+Vec3w GhostCastle_unkCol3_ColTris[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol3/unkCol3.colTris.inc.c"
 };
 
-Rect3D GhostCastle_unkCol3_ColS = {
-    #include "assets/levelGroup/GhostCastle/unkCol3/unkCol3.colS.inc.c"
+Rect3D GhostCastle_unkCol3_BoundBox = {
+    #include "assets/levelGroup/GhostCastle/unkCol3/unkCol3.boundBox.inc.c"
 };
 
 ModelCollision GhostCastle_unkCol3_ColH = {
-60, 58, GhostCastle_unkCol3_ColV, GhostCastle_unkCol3_ColT, &GhostCastle_unkCol3_ColS
+60, 58, GhostCastle_unkCol3_ColVerts, GhostCastle_unkCol3_ColTris, &GhostCastle_unkCol3_BoundBox
 };
 
-Vec3f GhostCastle_unkCol4_ColV[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol4/unkCol4.colV.inc.c"
+Vec3f GhostCastle_unkCol4_ColVerts[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol4/unkCol4.colVerts.inc.c"
 };
 
-Vec3w GhostCastle_unkCol4_ColT[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol4/unkCol4.colT.inc.c"
+Vec3w GhostCastle_unkCol4_ColTris[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol4/unkCol4.colTris.inc.c"
 };
 
-Rect3D GhostCastle_unkCol4_ColS = {
-    #include "assets/levelGroup/GhostCastle/unkCol4/unkCol4.colS.inc.c"
+Rect3D GhostCastle_unkCol4_BoundBox = {
+    #include "assets/levelGroup/GhostCastle/unkCol4/unkCol4.boundBox.inc.c"
 };
 
 ModelCollision GhostCastle_unkCol4_ColH = {
-56, 67, GhostCastle_unkCol4_ColV, GhostCastle_unkCol4_ColT, &GhostCastle_unkCol4_ColS
+56, 67, GhostCastle_unkCol4_ColVerts, GhostCastle_unkCol4_ColTris, &GhostCastle_unkCol4_BoundBox
 };
 
-Vec3f GhostCastle_unkCol5_ColV[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol5/unkCol5.colV.inc.c"
+Vec3f GhostCastle_unkCol5_ColVerts[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol5/unkCol5.colVerts.inc.c"
 };
 
-Vec3w GhostCastle_unkCol5_ColT[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol5/unkCol5.colT.inc.c"
+Vec3w GhostCastle_unkCol5_ColTris[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol5/unkCol5.colTris.inc.c"
 };
 
-Rect3D GhostCastle_unkCol5_ColS = {
-    #include "assets/levelGroup/GhostCastle/unkCol5/unkCol5.colS.inc.c"
+Rect3D GhostCastle_unkCol5_BoundBox = {
+    #include "assets/levelGroup/GhostCastle/unkCol5/unkCol5.boundBox.inc.c"
 };
 
 ModelCollision GhostCastle_unkCol5_ColH = {
-26, 27, GhostCastle_unkCol5_ColV, GhostCastle_unkCol5_ColT, &GhostCastle_unkCol5_ColS
+26, 27, GhostCastle_unkCol5_ColVerts, GhostCastle_unkCol5_ColTris, &GhostCastle_unkCol5_BoundBox
 };
 
-Vec3f GhostCastle_unkCol6_ColV[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol6/unkCol6.colV.inc.c"
+Vec3f GhostCastle_unkCol6_ColVerts[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol6/unkCol6.colVerts.inc.c"
 };
 
-Vec3w GhostCastle_unkCol6_ColT[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol6/unkCol6.colT.inc.c"
+Vec3w GhostCastle_unkCol6_ColTris[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol6/unkCol6.colTris.inc.c"
 };
 
-Rect3D GhostCastle_unkCol6_ColS = {
-    #include "assets/levelGroup/GhostCastle/unkCol6/unkCol6.colS.inc.c"
+Rect3D GhostCastle_unkCol6_BoundBox = {
+    #include "assets/levelGroup/GhostCastle/unkCol6/unkCol6.boundBox.inc.c"
 };
 
 ModelCollision GhostCastle_unkCol6_ColH = {
-28, 36, GhostCastle_unkCol6_ColV, GhostCastle_unkCol6_ColT, &GhostCastle_unkCol6_ColS
+28, 36, GhostCastle_unkCol6_ColVerts, GhostCastle_unkCol6_ColTris, &GhostCastle_unkCol6_BoundBox
 };
 
-Vec3f GhostCastle_unkCol7_ColV[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol7/unkCol7.colV.inc.c"
+Vec3f GhostCastle_unkCol7_ColVerts[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol7/unkCol7.colVerts.inc.c"
 };
 
-Vec3w GhostCastle_unkCol7_ColT[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol7/unkCol7.colT.inc.c"
+Vec3w GhostCastle_unkCol7_ColTris[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol7/unkCol7.colTris.inc.c"
 };
 
-Rect3D GhostCastle_unkCol7_ColS = {
-    #include "assets/levelGroup/GhostCastle/unkCol7/unkCol7.colS.inc.c"
+Rect3D GhostCastle_unkCol7_BoundBox = {
+    #include "assets/levelGroup/GhostCastle/unkCol7/unkCol7.boundBox.inc.c"
 };
 
 ModelCollision GhostCastle_unkCol7_ColH = {
-24, 30, GhostCastle_unkCol7_ColV, GhostCastle_unkCol7_ColT, &GhostCastle_unkCol7_ColS
+24, 30, GhostCastle_unkCol7_ColVerts, GhostCastle_unkCol7_ColTris, &GhostCastle_unkCol7_BoundBox
 };
 
-Vec3f GhostCastle_unkCol8_ColV[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol8/unkCol8.colV.inc.c"
+Vec3f GhostCastle_unkCol8_ColVerts[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol8/unkCol8.colVerts.inc.c"
 };
 
-Vec3w GhostCastle_unkCol8_ColT[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol8/unkCol8.colT.inc.c"
+Vec3w GhostCastle_unkCol8_ColTris[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol8/unkCol8.colTris.inc.c"
 };
 
-Rect3D GhostCastle_unkCol8_ColS = {
-    #include "assets/levelGroup/GhostCastle/unkCol8/unkCol8.colS.inc.c"
+Rect3D GhostCastle_unkCol8_BoundBox = {
+    #include "assets/levelGroup/GhostCastle/unkCol8/unkCol8.boundBox.inc.c"
 };
 
 ModelCollision GhostCastle_unkCol8_ColH = {
-14, 12, GhostCastle_unkCol8_ColV, GhostCastle_unkCol8_ColT, &GhostCastle_unkCol8_ColS
+14, 12, GhostCastle_unkCol8_ColVerts, GhostCastle_unkCol8_ColTris, &GhostCastle_unkCol8_BoundBox
 };
 
-Vec3f GhostCastle_unkCol9_ColV[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol9/unkCol9.colV.inc.c"
+Vec3f GhostCastle_unkCol9_ColVerts[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol9/unkCol9.colVerts.inc.c"
 };
 
-Vec3w GhostCastle_unkCol9_ColT[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol9/unkCol9.colT.inc.c"
+Vec3w GhostCastle_unkCol9_ColTris[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol9/unkCol9.colTris.inc.c"
 };
 
-Rect3D GhostCastle_unkCol9_ColS = {
-    #include "assets/levelGroup/GhostCastle/unkCol9/unkCol9.colS.inc.c"
+Rect3D GhostCastle_unkCol9_BoundBox = {
+    #include "assets/levelGroup/GhostCastle/unkCol9/unkCol9.boundBox.inc.c"
 };
 
 ModelCollision GhostCastle_unkCol9_ColH = {
-12, 10, GhostCastle_unkCol9_ColV, GhostCastle_unkCol9_ColT, &GhostCastle_unkCol9_ColS
+12, 10, GhostCastle_unkCol9_ColVerts, GhostCastle_unkCol9_ColTris, &GhostCastle_unkCol9_BoundBox
 };
 
-Vec3f GhostCastle_unkCol10_ColV[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol10/unkCol10.colV.inc.c"
+Vec3f GhostCastle_unkCol10_ColVerts[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol10/unkCol10.colVerts.inc.c"
 };
 
-Vec3w GhostCastle_unkCol10_ColT[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol10/unkCol10.colT.inc.c"
+Vec3w GhostCastle_unkCol10_ColTris[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol10/unkCol10.colTris.inc.c"
 };
 
-Rect3D GhostCastle_unkCol10_ColS = {
-    #include "assets/levelGroup/GhostCastle/unkCol10/unkCol10.colS.inc.c"
+Rect3D GhostCastle_unkCol10_BoundBox = {
+    #include "assets/levelGroup/GhostCastle/unkCol10/unkCol10.boundBox.inc.c"
 };
 
 ModelCollision GhostCastle_unkCol10_ColH = {
-14, 12, GhostCastle_unkCol10_ColV, GhostCastle_unkCol10_ColT, &GhostCastle_unkCol10_ColS
+14, 12, GhostCastle_unkCol10_ColVerts, GhostCastle_unkCol10_ColTris, &GhostCastle_unkCol10_BoundBox
 };
 
-Vec3f GhostCastle_unkCol11_ColV[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol11/unkCol11.colV.inc.c"
+Vec3f GhostCastle_unkCol11_ColVerts[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol11/unkCol11.colVerts.inc.c"
 };
 
-Vec3w GhostCastle_unkCol11_ColT[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol11/unkCol11.colT.inc.c"
+Vec3w GhostCastle_unkCol11_ColTris[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol11/unkCol11.colTris.inc.c"
 };
 
-Rect3D GhostCastle_unkCol11_ColS = {
-    #include "assets/levelGroup/GhostCastle/unkCol11/unkCol11.colS.inc.c"
+Rect3D GhostCastle_unkCol11_BoundBox = {
+    #include "assets/levelGroup/GhostCastle/unkCol11/unkCol11.boundBox.inc.c"
 };
 
 ModelCollision GhostCastle_unkCol11_ColH = {
-12, 10, GhostCastle_unkCol11_ColV, GhostCastle_unkCol11_ColT, &GhostCastle_unkCol11_ColS
+12, 10, GhostCastle_unkCol11_ColVerts, GhostCastle_unkCol11_ColTris, &GhostCastle_unkCol11_BoundBox
 };
 
-Vec3f GhostCastle_unkCol12_ColV[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol12/unkCol12.colV.inc.c"
+Vec3f GhostCastle_unkCol12_ColVerts[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol12/unkCol12.colVerts.inc.c"
 };
 
-Vec3w GhostCastle_unkCol12_ColT[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol12/unkCol12.colT.inc.c"
+Vec3w GhostCastle_unkCol12_ColTris[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol12/unkCol12.colTris.inc.c"
 };
 
-Rect3D GhostCastle_unkCol12_ColS = {
-    #include "assets/levelGroup/GhostCastle/unkCol12/unkCol12.colS.inc.c"
+Rect3D GhostCastle_unkCol12_BoundBox = {
+    #include "assets/levelGroup/GhostCastle/unkCol12/unkCol12.boundBox.inc.c"
 };
 
 ModelCollision GhostCastle_unkCol12_ColH = {
-14, 16, GhostCastle_unkCol12_ColV, GhostCastle_unkCol12_ColT, &GhostCastle_unkCol12_ColS
+14, 16, GhostCastle_unkCol12_ColVerts, GhostCastle_unkCol12_ColTris, &GhostCastle_unkCol12_BoundBox
 };
 
-Vec3f GhostCastle_unkCol13_ColV[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol13/unkCol13.colV.inc.c"
+Vec3f GhostCastle_unkCol13_ColVerts[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol13/unkCol13.colVerts.inc.c"
 };
 
-Vec3w GhostCastle_unkCol13_ColT[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol13/unkCol13.colT.inc.c"
+Vec3w GhostCastle_unkCol13_ColTris[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol13/unkCol13.colTris.inc.c"
 };
 
-Rect3D GhostCastle_unkCol13_ColS = {
-    #include "assets/levelGroup/GhostCastle/unkCol13/unkCol13.colS.inc.c"
+Rect3D GhostCastle_unkCol13_BoundBox = {
+    #include "assets/levelGroup/GhostCastle/unkCol13/unkCol13.boundBox.inc.c"
 };
 
 ModelCollision GhostCastle_unkCol13_ColH = {
-26, 26, GhostCastle_unkCol13_ColV, GhostCastle_unkCol13_ColT, &GhostCastle_unkCol13_ColS
+26, 26, GhostCastle_unkCol13_ColVerts, GhostCastle_unkCol13_ColTris, &GhostCastle_unkCol13_BoundBox
 };
 
-Vec3f GhostCastle_unkCol14_ColV[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol14/unkCol14.colV.inc.c"
+Vec3f GhostCastle_unkCol14_ColVerts[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol14/unkCol14.colVerts.inc.c"
 };
 
-Vec3w GhostCastle_unkCol14_ColT[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol14/unkCol14.colT.inc.c"
+Vec3w GhostCastle_unkCol14_ColTris[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol14/unkCol14.colTris.inc.c"
 };
 
-Rect3D GhostCastle_unkCol14_ColS = {
-    #include "assets/levelGroup/GhostCastle/unkCol14/unkCol14.colS.inc.c"
+Rect3D GhostCastle_unkCol14_BoundBox = {
+    #include "assets/levelGroup/GhostCastle/unkCol14/unkCol14.boundBox.inc.c"
 };
 
 ModelCollision GhostCastle_unkCol14_ColH = {
-16, 18, GhostCastle_unkCol14_ColV, GhostCastle_unkCol14_ColT, &GhostCastle_unkCol14_ColS
+16, 18, GhostCastle_unkCol14_ColVerts, GhostCastle_unkCol14_ColTris, &GhostCastle_unkCol14_BoundBox
 };
 
-Vec3f GhostCastle_unkCol15_ColV[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol15/unkCol15.colV.inc.c"
+Vec3f GhostCastle_unkCol15_ColVerts[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol15/unkCol15.colVerts.inc.c"
 };
 
-Vec3w GhostCastle_unkCol15_ColT[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol15/unkCol15.colT.inc.c"
+Vec3w GhostCastle_unkCol15_ColTris[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol15/unkCol15.colTris.inc.c"
 };
 
-Rect3D GhostCastle_unkCol15_ColS = {
-    #include "assets/levelGroup/GhostCastle/unkCol15/unkCol15.colS.inc.c"
+Rect3D GhostCastle_unkCol15_BoundBox = {
+    #include "assets/levelGroup/GhostCastle/unkCol15/unkCol15.boundBox.inc.c"
 };
 
 ModelCollision GhostCastle_unkCol15_ColH = {
-26, 26, GhostCastle_unkCol15_ColV, GhostCastle_unkCol15_ColT, &GhostCastle_unkCol15_ColS
+26, 26, GhostCastle_unkCol15_ColVerts, GhostCastle_unkCol15_ColTris, &GhostCastle_unkCol15_BoundBox
 };
 
-Vec3f GhostCastle_unkCol16_ColV[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol16/unkCol16.colV.inc.c"
+Vec3f GhostCastle_unkCol16_ColVerts[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol16/unkCol16.colVerts.inc.c"
 };
 
-Vec3w GhostCastle_unkCol16_ColT[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol16/unkCol16.colT.inc.c"
+Vec3w GhostCastle_unkCol16_ColTris[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol16/unkCol16.colTris.inc.c"
 };
 
-Rect3D GhostCastle_unkCol16_ColS = {
-    #include "assets/levelGroup/GhostCastle/unkCol16/unkCol16.colS.inc.c"
+Rect3D GhostCastle_unkCol16_BoundBox = {
+    #include "assets/levelGroup/GhostCastle/unkCol16/unkCol16.boundBox.inc.c"
 };
 
 ModelCollision GhostCastle_unkCol16_ColH = {
-20, 28, GhostCastle_unkCol16_ColV, GhostCastle_unkCol16_ColT, &GhostCastle_unkCol16_ColS
+20, 28, GhostCastle_unkCol16_ColVerts, GhostCastle_unkCol16_ColTris, &GhostCastle_unkCol16_BoundBox
 };
 
-Vec3f GhostCastle_unkCol17_ColV[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol17/unkCol17.colV.inc.c"
+Vec3f GhostCastle_unkCol17_ColVerts[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol17/unkCol17.colVerts.inc.c"
 };
 
-Vec3w GhostCastle_unkCol17_ColT[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol17/unkCol17.colT.inc.c"
+Vec3w GhostCastle_unkCol17_ColTris[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol17/unkCol17.colTris.inc.c"
 };
 
-Rect3D GhostCastle_unkCol17_ColS = {
-    #include "assets/levelGroup/GhostCastle/unkCol17/unkCol17.colS.inc.c"
+Rect3D GhostCastle_unkCol17_BoundBox = {
+    #include "assets/levelGroup/GhostCastle/unkCol17/unkCol17.boundBox.inc.c"
 };
 
 ModelCollision GhostCastle_unkCol17_ColH = {
-16, 25, GhostCastle_unkCol17_ColV, GhostCastle_unkCol17_ColT, &GhostCastle_unkCol17_ColS
+16, 25, GhostCastle_unkCol17_ColVerts, GhostCastle_unkCol17_ColTris, &GhostCastle_unkCol17_BoundBox
 };
 
-Vec3f GhostCastle_unkCol18_ColV[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol18/unkCol18.colV.inc.c"
+Vec3f GhostCastle_unkCol18_ColVerts[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol18/unkCol18.colVerts.inc.c"
 };
 
-Vec3w GhostCastle_unkCol18_ColT[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol18/unkCol18.colT.inc.c"
+Vec3w GhostCastle_unkCol18_ColTris[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol18/unkCol18.colTris.inc.c"
 };
 
-Rect3D GhostCastle_unkCol18_ColS = {
-    #include "assets/levelGroup/GhostCastle/unkCol18/unkCol18.colS.inc.c"
+Rect3D GhostCastle_unkCol18_BoundBox = {
+    #include "assets/levelGroup/GhostCastle/unkCol18/unkCol18.boundBox.inc.c"
 };
 
 ModelCollision GhostCastle_unkCol18_ColH = {
-8, 6, GhostCastle_unkCol18_ColV, GhostCastle_unkCol18_ColT, &GhostCastle_unkCol18_ColS
+8, 6, GhostCastle_unkCol18_ColVerts, GhostCastle_unkCol18_ColTris, &GhostCastle_unkCol18_BoundBox
 };
 
-Vec3f GhostCastle_unkCol19_ColV[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol19/unkCol19.colV.inc.c"
+Vec3f GhostCastle_unkCol19_ColVerts[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol19/unkCol19.colVerts.inc.c"
 };
 
-Vec3w GhostCastle_unkCol19_ColT[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol19/unkCol19.colT.inc.c"
+Vec3w GhostCastle_unkCol19_ColTris[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol19/unkCol19.colTris.inc.c"
 };
 
-Rect3D GhostCastle_unkCol19_ColS = {
-    #include "assets/levelGroup/GhostCastle/unkCol19/unkCol19.colS.inc.c"
+Rect3D GhostCastle_unkCol19_BoundBox = {
+    #include "assets/levelGroup/GhostCastle/unkCol19/unkCol19.boundBox.inc.c"
 };
 
 ModelCollision GhostCastle_unkCol19_ColH = {
-6, 4, GhostCastle_unkCol19_ColV, GhostCastle_unkCol19_ColT, &GhostCastle_unkCol19_ColS
+6, 4, GhostCastle_unkCol19_ColVerts, GhostCastle_unkCol19_ColTris, &GhostCastle_unkCol19_BoundBox
 };
 
-Vec3f GhostCastle_unkCol20_ColV[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol20/unkCol20.colV.inc.c"
+Vec3f GhostCastle_unkCol20_ColVerts[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol20/unkCol20.colVerts.inc.c"
 };
 
-Vec3w GhostCastle_unkCol20_ColT[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol20/unkCol20.colT.inc.c"
+Vec3w GhostCastle_unkCol20_ColTris[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol20/unkCol20.colTris.inc.c"
 };
 
-Rect3D GhostCastle_unkCol20_ColS = {
-    #include "assets/levelGroup/GhostCastle/unkCol20/unkCol20.colS.inc.c"
+Rect3D GhostCastle_unkCol20_BoundBox = {
+    #include "assets/levelGroup/GhostCastle/unkCol20/unkCol20.boundBox.inc.c"
 };
 
 ModelCollision GhostCastle_unkCol20_ColH = {
-8, 10, GhostCastle_unkCol20_ColV, GhostCastle_unkCol20_ColT, &GhostCastle_unkCol20_ColS
+8, 10, GhostCastle_unkCol20_ColVerts, GhostCastle_unkCol20_ColTris, &GhostCastle_unkCol20_BoundBox
 };
 
-Vec3f GhostCastle_unkCol21_ColV[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol21/unkCol21.colV.inc.c"
+Vec3f GhostCastle_unkCol21_ColVerts[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol21/unkCol21.colVerts.inc.c"
 };
 
-Vec3w GhostCastle_unkCol21_ColT[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol21/unkCol21.colT.inc.c"
+Vec3w GhostCastle_unkCol21_ColTris[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol21/unkCol21.colTris.inc.c"
 };
 
-Rect3D GhostCastle_unkCol21_ColS = {
-    #include "assets/levelGroup/GhostCastle/unkCol21/unkCol21.colS.inc.c"
+Rect3D GhostCastle_unkCol21_BoundBox = {
+    #include "assets/levelGroup/GhostCastle/unkCol21/unkCol21.boundBox.inc.c"
 };
 
 ModelCollision GhostCastle_unkCol21_ColH = {
-40, 62, GhostCastle_unkCol21_ColV, GhostCastle_unkCol21_ColT, &GhostCastle_unkCol21_ColS
+40, 62, GhostCastle_unkCol21_ColVerts, GhostCastle_unkCol21_ColTris, &GhostCastle_unkCol21_BoundBox
 };
 
-Vec3f GhostCastle_unkCol22_ColV[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol22/unkCol22.colV.inc.c"
+Vec3f GhostCastle_unkCol22_ColVerts[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol22/unkCol22.colVerts.inc.c"
 };
 
-Vec3w GhostCastle_unkCol22_ColT[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol22/unkCol22.colT.inc.c"
+Vec3w GhostCastle_unkCol22_ColTris[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol22/unkCol22.colTris.inc.c"
 };
 
-Rect3D GhostCastle_unkCol22_ColS = {
-    #include "assets/levelGroup/GhostCastle/unkCol22/unkCol22.colS.inc.c"
+Rect3D GhostCastle_unkCol22_BoundBox = {
+    #include "assets/levelGroup/GhostCastle/unkCol22/unkCol22.boundBox.inc.c"
 };
 
 ModelCollision GhostCastle_unkCol22_ColH = {
-8, 10, GhostCastle_unkCol22_ColV, GhostCastle_unkCol22_ColT, &GhostCastle_unkCol22_ColS
+8, 10, GhostCastle_unkCol22_ColVerts, GhostCastle_unkCol22_ColTris, &GhostCastle_unkCol22_BoundBox
 };
 
-Vec3f GhostCastle_unkCol23_ColV[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol23/unkCol23.colV.inc.c"
+Vec3f GhostCastle_unkCol23_ColVerts[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol23/unkCol23.colVerts.inc.c"
 };
 
-Vec3w GhostCastle_unkCol23_ColT[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol23/unkCol23.colT.inc.c"
+Vec3w GhostCastle_unkCol23_ColTris[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol23/unkCol23.colTris.inc.c"
 };
 
-Rect3D GhostCastle_unkCol23_ColS = {
-    #include "assets/levelGroup/GhostCastle/unkCol23/unkCol23.colS.inc.c"
+Rect3D GhostCastle_unkCol23_BoundBox = {
+    #include "assets/levelGroup/GhostCastle/unkCol23/unkCol23.boundBox.inc.c"
 };
 
 ModelCollision GhostCastle_unkCol23_ColH = {
-10, 14, GhostCastle_unkCol23_ColV, GhostCastle_unkCol23_ColT, &GhostCastle_unkCol23_ColS
+10, 14, GhostCastle_unkCol23_ColVerts, GhostCastle_unkCol23_ColTris, &GhostCastle_unkCol23_BoundBox
 };
 
-Vec3f GhostCastle_unkCol24_ColV[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol24/unkCol24.colV.inc.c"
+Vec3f GhostCastle_unkCol24_ColVerts[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol24/unkCol24.colVerts.inc.c"
 };
 
-Vec3w GhostCastle_unkCol24_ColT[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol24/unkCol24.colT.inc.c"
+Vec3w GhostCastle_unkCol24_ColTris[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol24/unkCol24.colTris.inc.c"
 };
 
-Rect3D GhostCastle_unkCol24_ColS = {
-    #include "assets/levelGroup/GhostCastle/unkCol24/unkCol24.colS.inc.c"
+Rect3D GhostCastle_unkCol24_BoundBox = {
+    #include "assets/levelGroup/GhostCastle/unkCol24/unkCol24.boundBox.inc.c"
 };
 
 ModelCollision GhostCastle_unkCol24_ColH = {
-8, 6, GhostCastle_unkCol24_ColV, GhostCastle_unkCol24_ColT, &GhostCastle_unkCol24_ColS
+8, 6, GhostCastle_unkCol24_ColVerts, GhostCastle_unkCol24_ColTris, &GhostCastle_unkCol24_BoundBox
 };
 
-Vec3f GhostCastle_unkCol25_ColV[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol25/unkCol25.colV.inc.c"
+Vec3f GhostCastle_unkCol25_ColVerts[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol25/unkCol25.colVerts.inc.c"
 };
 
-Vec3w GhostCastle_unkCol25_ColT[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol25/unkCol25.colT.inc.c"
+Vec3w GhostCastle_unkCol25_ColTris[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol25/unkCol25.colTris.inc.c"
 };
 
-Rect3D GhostCastle_unkCol25_ColS = {
-    #include "assets/levelGroup/GhostCastle/unkCol25/unkCol25.colS.inc.c"
+Rect3D GhostCastle_unkCol25_BoundBox = {
+    #include "assets/levelGroup/GhostCastle/unkCol25/unkCol25.boundBox.inc.c"
 };
 
 ModelCollision GhostCastle_unkCol25_ColH = {
-4, 2, GhostCastle_unkCol25_ColV, GhostCastle_unkCol25_ColT, &GhostCastle_unkCol25_ColS
+4, 2, GhostCastle_unkCol25_ColVerts, GhostCastle_unkCol25_ColTris, &GhostCastle_unkCol25_BoundBox
 };
 
-Vec3f GhostCastle_unkCol26_ColV[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol26/unkCol26.colV.inc.c"
+Vec3f GhostCastle_unkCol26_ColVerts[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol26/unkCol26.colVerts.inc.c"
 };
 
-Vec3w GhostCastle_unkCol26_ColT[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol26/unkCol26.colT.inc.c"
+Vec3w GhostCastle_unkCol26_ColTris[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol26/unkCol26.colTris.inc.c"
 };
 
-Rect3D GhostCastle_unkCol26_ColS = {
-    #include "assets/levelGroup/GhostCastle/unkCol26/unkCol26.colS.inc.c"
+Rect3D GhostCastle_unkCol26_BoundBox = {
+    #include "assets/levelGroup/GhostCastle/unkCol26/unkCol26.boundBox.inc.c"
 };
 
 ModelCollision GhostCastle_unkCol26_ColH = {
-4, 3, GhostCastle_unkCol26_ColV, GhostCastle_unkCol26_ColT, &GhostCastle_unkCol26_ColS
+4, 3, GhostCastle_unkCol26_ColVerts, GhostCastle_unkCol26_ColTris, &GhostCastle_unkCol26_BoundBox
 };
 
-Vec3f GhostCastle_unkCol27_ColV[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol27/unkCol27.colV.inc.c"
+Vec3f GhostCastle_unkCol27_ColVerts[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol27/unkCol27.colVerts.inc.c"
 };
 
-Vec3w GhostCastle_unkCol27_ColT[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol27/unkCol27.colT.inc.c"
+Vec3w GhostCastle_unkCol27_ColTris[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol27/unkCol27.colTris.inc.c"
 };
 
-Rect3D GhostCastle_unkCol27_ColS = {
-    #include "assets/levelGroup/GhostCastle/unkCol27/unkCol27.colS.inc.c"
+Rect3D GhostCastle_unkCol27_BoundBox = {
+    #include "assets/levelGroup/GhostCastle/unkCol27/unkCol27.boundBox.inc.c"
 };
 
 ModelCollision GhostCastle_unkCol27_ColH = {
-4, 2, GhostCastle_unkCol27_ColV, GhostCastle_unkCol27_ColT, &GhostCastle_unkCol27_ColS
+4, 2, GhostCastle_unkCol27_ColVerts, GhostCastle_unkCol27_ColTris, &GhostCastle_unkCol27_BoundBox
 };
 
-Vec3f GhostCastle_unkCol28_ColV[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol28/unkCol28.colV.inc.c"
+Vec3f GhostCastle_unkCol28_ColVerts[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol28/unkCol28.colVerts.inc.c"
 };
 
-Vec3w GhostCastle_unkCol28_ColT[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol28/unkCol28.colT.inc.c"
+Vec3w GhostCastle_unkCol28_ColTris[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol28/unkCol28.colTris.inc.c"
 };
 
-Rect3D GhostCastle_unkCol28_ColS = {
-    #include "assets/levelGroup/GhostCastle/unkCol28/unkCol28.colS.inc.c"
+Rect3D GhostCastle_unkCol28_BoundBox = {
+    #include "assets/levelGroup/GhostCastle/unkCol28/unkCol28.boundBox.inc.c"
 };
 
 ModelCollision GhostCastle_unkCol28_ColH = {
-8, 12, GhostCastle_unkCol28_ColV, GhostCastle_unkCol28_ColT, &GhostCastle_unkCol28_ColS
+8, 12, GhostCastle_unkCol28_ColVerts, GhostCastle_unkCol28_ColTris, &GhostCastle_unkCol28_BoundBox
 };
 
-Vec3f GhostCastle_unkCol29_ColV[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol29/unkCol29.colV.inc.c"
+Vec3f GhostCastle_unkCol29_ColVerts[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol29/unkCol29.colVerts.inc.c"
 };
 
-Vec3w GhostCastle_unkCol29_ColT[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol29/unkCol29.colT.inc.c"
+Vec3w GhostCastle_unkCol29_ColTris[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol29/unkCol29.colTris.inc.c"
 };
 
-Rect3D GhostCastle_unkCol29_ColS = {
-    #include "assets/levelGroup/GhostCastle/unkCol29/unkCol29.colS.inc.c"
+Rect3D GhostCastle_unkCol29_BoundBox = {
+    #include "assets/levelGroup/GhostCastle/unkCol29/unkCol29.boundBox.inc.c"
 };
 
 ModelCollision GhostCastle_unkCol29_ColH = {
-8, 8, GhostCastle_unkCol29_ColV, GhostCastle_unkCol29_ColT, &GhostCastle_unkCol29_ColS
+8, 8, GhostCastle_unkCol29_ColVerts, GhostCastle_unkCol29_ColTris, &GhostCastle_unkCol29_BoundBox
 };
 
-Vec3f GhostCastle_unkCol30_ColV[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol30/unkCol30.colV.inc.c"
+Vec3f GhostCastle_unkCol30_ColVerts[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol30/unkCol30.colVerts.inc.c"
 };
 
-Vec3w GhostCastle_unkCol30_ColT[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol30/unkCol30.colT.inc.c"
+Vec3w GhostCastle_unkCol30_ColTris[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol30/unkCol30.colTris.inc.c"
 };
 
-Rect3D GhostCastle_unkCol30_ColS = {
-    #include "assets/levelGroup/GhostCastle/unkCol30/unkCol30.colS.inc.c"
+Rect3D GhostCastle_unkCol30_BoundBox = {
+    #include "assets/levelGroup/GhostCastle/unkCol30/unkCol30.boundBox.inc.c"
 };
 
 ModelCollision GhostCastle_unkCol30_ColH = {
-48, 92, GhostCastle_unkCol30_ColV, GhostCastle_unkCol30_ColT, &GhostCastle_unkCol30_ColS
+48, 92, GhostCastle_unkCol30_ColVerts, GhostCastle_unkCol30_ColTris, &GhostCastle_unkCol30_BoundBox
 };
 
-Vec3f GhostCastle_unkCol31_ColV[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol31/unkCol31.colV.inc.c"
+Vec3f GhostCastle_unkCol31_ColVerts[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol31/unkCol31.colVerts.inc.c"
 };
 
-Vec3w GhostCastle_unkCol31_ColT[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol31/unkCol31.colT.inc.c"
+Vec3w GhostCastle_unkCol31_ColTris[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol31/unkCol31.colTris.inc.c"
 };
 
-Rect3D GhostCastle_unkCol31_ColS = {
-    #include "assets/levelGroup/GhostCastle/unkCol31/unkCol31.colS.inc.c"
+Rect3D GhostCastle_unkCol31_BoundBox = {
+    #include "assets/levelGroup/GhostCastle/unkCol31/unkCol31.boundBox.inc.c"
 };
 
 ModelCollision GhostCastle_unkCol31_ColH = {
-48, 92, GhostCastle_unkCol31_ColV, GhostCastle_unkCol31_ColT, &GhostCastle_unkCol31_ColS
+48, 92, GhostCastle_unkCol31_ColVerts, GhostCastle_unkCol31_ColTris, &GhostCastle_unkCol31_BoundBox
 };
 
-Vec3f GhostCastle_unkCol32_ColV[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol32/unkCol32.colV.inc.c"
+Vec3f GhostCastle_unkCol32_ColVerts[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol32/unkCol32.colVerts.inc.c"
 };
 
-Vec3w GhostCastle_unkCol32_ColT[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol32/unkCol32.colT.inc.c"
+Vec3w GhostCastle_unkCol32_ColTris[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol32/unkCol32.colTris.inc.c"
 };
 
-Rect3D GhostCastle_unkCol32_ColS = {
-    #include "assets/levelGroup/GhostCastle/unkCol32/unkCol32.colS.inc.c"
+Rect3D GhostCastle_unkCol32_BoundBox = {
+    #include "assets/levelGroup/GhostCastle/unkCol32/unkCol32.boundBox.inc.c"
 };
 
 ModelCollision GhostCastle_unkCol32_ColH = {
-8, 10, GhostCastle_unkCol32_ColV, GhostCastle_unkCol32_ColT, &GhostCastle_unkCol32_ColS
+8, 10, GhostCastle_unkCol32_ColVerts, GhostCastle_unkCol32_ColTris, &GhostCastle_unkCol32_BoundBox
 };
 
-Vec3f GhostCastle_unkCol33_ColV[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol33/unkCol33.colV.inc.c"
+Vec3f GhostCastle_unkCol33_ColVerts[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol33/unkCol33.colVerts.inc.c"
 };
 
-Vec3w GhostCastle_unkCol33_ColT[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol33/unkCol33.colT.inc.c"
+Vec3w GhostCastle_unkCol33_ColTris[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol33/unkCol33.colTris.inc.c"
 };
 
-Rect3D GhostCastle_unkCol33_ColS = {
-    #include "assets/levelGroup/GhostCastle/unkCol33/unkCol33.colS.inc.c"
+Rect3D GhostCastle_unkCol33_BoundBox = {
+    #include "assets/levelGroup/GhostCastle/unkCol33/unkCol33.boundBox.inc.c"
 };
 
 ModelCollision GhostCastle_unkCol33_ColH = {
-8, 6, GhostCastle_unkCol33_ColV, GhostCastle_unkCol33_ColT, &GhostCastle_unkCol33_ColS
+8, 6, GhostCastle_unkCol33_ColVerts, GhostCastle_unkCol33_ColTris, &GhostCastle_unkCol33_BoundBox
 };
 
-Vec3f GhostCastle_unkCol34_ColV[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol34/unkCol34.colV.inc.c"
+Vec3f GhostCastle_unkCol34_ColVerts[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol34/unkCol34.colVerts.inc.c"
 };
 
-Vec3w GhostCastle_unkCol34_ColT[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol34/unkCol34.colT.inc.c"
+Vec3w GhostCastle_unkCol34_ColTris[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol34/unkCol34.colTris.inc.c"
 };
 
-Rect3D GhostCastle_unkCol34_ColS = {
-    #include "assets/levelGroup/GhostCastle/unkCol34/unkCol34.colS.inc.c"
+Rect3D GhostCastle_unkCol34_BoundBox = {
+    #include "assets/levelGroup/GhostCastle/unkCol34/unkCol34.boundBox.inc.c"
 };
 
 ModelCollision GhostCastle_unkCol34_ColH = {
-4, 4, GhostCastle_unkCol34_ColV, GhostCastle_unkCol34_ColT, &GhostCastle_unkCol34_ColS
+4, 4, GhostCastle_unkCol34_ColVerts, GhostCastle_unkCol34_ColTris, &GhostCastle_unkCol34_BoundBox
 };
 
-Vec3f GhostCastle_unkCol35_ColV[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol35/unkCol35.colV.inc.c"
+Vec3f GhostCastle_unkCol35_ColVerts[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol35/unkCol35.colVerts.inc.c"
 };
 
-Vec3w GhostCastle_unkCol35_ColT[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol35/unkCol35.colT.inc.c"
+Vec3w GhostCastle_unkCol35_ColTris[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol35/unkCol35.colTris.inc.c"
 };
 
-Rect3D GhostCastle_unkCol35_ColS = {
-    #include "assets/levelGroup/GhostCastle/unkCol35/unkCol35.colS.inc.c"
+Rect3D GhostCastle_unkCol35_BoundBox = {
+    #include "assets/levelGroup/GhostCastle/unkCol35/unkCol35.boundBox.inc.c"
 };
 
 ModelCollision GhostCastle_unkCol35_ColH = {
-4, 4, GhostCastle_unkCol35_ColV, GhostCastle_unkCol35_ColT, &GhostCastle_unkCol35_ColS
+4, 4, GhostCastle_unkCol35_ColVerts, GhostCastle_unkCol35_ColTris, &GhostCastle_unkCol35_BoundBox
 };
 
-Vec3f GhostCastle_unkCol36_ColV[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol36/unkCol36.colV.inc.c"
+Vec3f GhostCastle_unkCol36_ColVerts[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol36/unkCol36.colVerts.inc.c"
 };
 
-Vec3w GhostCastle_unkCol36_ColT[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol36/unkCol36.colT.inc.c"
+Vec3w GhostCastle_unkCol36_ColTris[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol36/unkCol36.colTris.inc.c"
 };
 
-Rect3D GhostCastle_unkCol36_ColS = {
-    #include "assets/levelGroup/GhostCastle/unkCol36/unkCol36.colS.inc.c"
+Rect3D GhostCastle_unkCol36_BoundBox = {
+    #include "assets/levelGroup/GhostCastle/unkCol36/unkCol36.boundBox.inc.c"
 };
 
 ModelCollision GhostCastle_unkCol36_ColH = {
-8, 6, GhostCastle_unkCol36_ColV, GhostCastle_unkCol36_ColT, &GhostCastle_unkCol36_ColS
+8, 6, GhostCastle_unkCol36_ColVerts, GhostCastle_unkCol36_ColTris, &GhostCastle_unkCol36_BoundBox
 };
 
-Vec3f GhostCastle_unkCol37_ColV[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol37/unkCol37.colV.inc.c"
+Vec3f GhostCastle_unkCol37_ColVerts[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol37/unkCol37.colVerts.inc.c"
 };
 
-Vec3w GhostCastle_unkCol37_ColT[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol37/unkCol37.colT.inc.c"
+Vec3w GhostCastle_unkCol37_ColTris[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol37/unkCol37.colTris.inc.c"
 };
 
-Rect3D GhostCastle_unkCol37_ColS = {
-    #include "assets/levelGroup/GhostCastle/unkCol37/unkCol37.colS.inc.c"
+Rect3D GhostCastle_unkCol37_BoundBox = {
+    #include "assets/levelGroup/GhostCastle/unkCol37/unkCol37.boundBox.inc.c"
 };
 
 ModelCollision GhostCastle_unkCol37_ColH = {
-8, 6, GhostCastle_unkCol37_ColV, GhostCastle_unkCol37_ColT, &GhostCastle_unkCol37_ColS
+8, 6, GhostCastle_unkCol37_ColVerts, GhostCastle_unkCol37_ColTris, &GhostCastle_unkCol37_BoundBox
 };
 
-Vec3f GhostCastle_unkCol38_ColV[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol38/unkCol38.colV.inc.c"
+Vec3f GhostCastle_unkCol38_ColVerts[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol38/unkCol38.colVerts.inc.c"
 };
 
-Vec3w GhostCastle_unkCol38_ColT[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol38/unkCol38.colT.inc.c"
+Vec3w GhostCastle_unkCol38_ColTris[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol38/unkCol38.colTris.inc.c"
 };
 
-Rect3D GhostCastle_unkCol38_ColS = {
-    #include "assets/levelGroup/GhostCastle/unkCol38/unkCol38.colS.inc.c"
+Rect3D GhostCastle_unkCol38_BoundBox = {
+    #include "assets/levelGroup/GhostCastle/unkCol38/unkCol38.boundBox.inc.c"
 };
 
 ModelCollision GhostCastle_unkCol38_ColH = {
-4, 4, GhostCastle_unkCol38_ColV, GhostCastle_unkCol38_ColT, &GhostCastle_unkCol38_ColS
+4, 4, GhostCastle_unkCol38_ColVerts, GhostCastle_unkCol38_ColTris, &GhostCastle_unkCol38_BoundBox
 };
 
-Vec3f GhostCastle_unkCol39_ColV[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol39/unkCol39.colV.inc.c"
+Vec3f GhostCastle_unkCol39_ColVerts[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol39/unkCol39.colVerts.inc.c"
 };
 
-Vec3w GhostCastle_unkCol39_ColT[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol39/unkCol39.colT.inc.c"
+Vec3w GhostCastle_unkCol39_ColTris[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol39/unkCol39.colTris.inc.c"
 };
 
-Rect3D GhostCastle_unkCol39_ColS = {
-    #include "assets/levelGroup/GhostCastle/unkCol39/unkCol39.colS.inc.c"
+Rect3D GhostCastle_unkCol39_BoundBox = {
+    #include "assets/levelGroup/GhostCastle/unkCol39/unkCol39.boundBox.inc.c"
 };
 
 ModelCollision GhostCastle_unkCol39_ColH = {
-8, 8, GhostCastle_unkCol39_ColV, GhostCastle_unkCol39_ColT, &GhostCastle_unkCol39_ColS
+8, 8, GhostCastle_unkCol39_ColVerts, GhostCastle_unkCol39_ColTris, &GhostCastle_unkCol39_BoundBox
 };
 
-Vec3f GhostCastle_unkCol40_ColV[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol40/unkCol40.colV.inc.c"
+Vec3f GhostCastle_unkCol40_ColVerts[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol40/unkCol40.colVerts.inc.c"
 };
 
-Vec3w GhostCastle_unkCol40_ColT[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol40/unkCol40.colT.inc.c"
+Vec3w GhostCastle_unkCol40_ColTris[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol40/unkCol40.colTris.inc.c"
 };
 
-Rect3D GhostCastle_unkCol40_ColS = {
-    #include "assets/levelGroup/GhostCastle/unkCol40/unkCol40.colS.inc.c"
+Rect3D GhostCastle_unkCol40_BoundBox = {
+    #include "assets/levelGroup/GhostCastle/unkCol40/unkCol40.boundBox.inc.c"
 };
 
 ModelCollision GhostCastle_unkCol40_ColH = {
-6, 4, GhostCastle_unkCol40_ColV, GhostCastle_unkCol40_ColT, &GhostCastle_unkCol40_ColS
+6, 4, GhostCastle_unkCol40_ColVerts, GhostCastle_unkCol40_ColTris, &GhostCastle_unkCol40_BoundBox
 };
 
-Vec3f GhostCastle_unkCol41_ColV[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol41/unkCol41.colV.inc.c"
+Vec3f GhostCastle_unkCol41_ColVerts[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol41/unkCol41.colVerts.inc.c"
 };
 
-Vec3w GhostCastle_unkCol41_ColT[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol41/unkCol41.colT.inc.c"
+Vec3w GhostCastle_unkCol41_ColTris[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol41/unkCol41.colTris.inc.c"
 };
 
-Rect3D GhostCastle_unkCol41_ColS = {
-    #include "assets/levelGroup/GhostCastle/unkCol41/unkCol41.colS.inc.c"
+Rect3D GhostCastle_unkCol41_BoundBox = {
+    #include "assets/levelGroup/GhostCastle/unkCol41/unkCol41.boundBox.inc.c"
 };
 
 ModelCollision GhostCastle_unkCol41_ColH = {
-6, 4, GhostCastle_unkCol41_ColV, GhostCastle_unkCol41_ColT, &GhostCastle_unkCol41_ColS
+6, 4, GhostCastle_unkCol41_ColVerts, GhostCastle_unkCol41_ColTris, &GhostCastle_unkCol41_BoundBox
 };
 
-Vec3f GhostCastle_unkCol42_ColV[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol42/unkCol42.colV.inc.c"
+Vec3f GhostCastle_unkCol42_ColVerts[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol42/unkCol42.colVerts.inc.c"
 };
 
-Vec3w GhostCastle_unkCol42_ColT[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol42/unkCol42.colT.inc.c"
+Vec3w GhostCastle_unkCol42_ColTris[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol42/unkCol42.colTris.inc.c"
 };
 
-Rect3D GhostCastle_unkCol42_ColS = {
-    #include "assets/levelGroup/GhostCastle/unkCol42/unkCol42.colS.inc.c"
+Rect3D GhostCastle_unkCol42_BoundBox = {
+    #include "assets/levelGroup/GhostCastle/unkCol42/unkCol42.boundBox.inc.c"
 };
 
 ModelCollision GhostCastle_unkCol42_ColH = {
-4, 2, GhostCastle_unkCol42_ColV, GhostCastle_unkCol42_ColT, &GhostCastle_unkCol42_ColS
+4, 2, GhostCastle_unkCol42_ColVerts, GhostCastle_unkCol42_ColTris, &GhostCastle_unkCol42_BoundBox
 };
 
-Vec3f GhostCastle_unkCol43_ColV[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol43/unkCol43.colV.inc.c"
+Vec3f GhostCastle_unkCol43_ColVerts[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol43/unkCol43.colVerts.inc.c"
 };
 
-Vec3w GhostCastle_unkCol43_ColT[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol43/unkCol43.colT.inc.c"
+Vec3w GhostCastle_unkCol43_ColTris[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol43/unkCol43.colTris.inc.c"
 };
 
-Rect3D GhostCastle_unkCol43_ColS = {
-    #include "assets/levelGroup/GhostCastle/unkCol43/unkCol43.colS.inc.c"
+Rect3D GhostCastle_unkCol43_BoundBox = {
+    #include "assets/levelGroup/GhostCastle/unkCol43/unkCol43.boundBox.inc.c"
 };
 
 ModelCollision GhostCastle_unkCol43_ColH = {
-4, 2, GhostCastle_unkCol43_ColV, GhostCastle_unkCol43_ColT, &GhostCastle_unkCol43_ColS
+4, 2, GhostCastle_unkCol43_ColVerts, GhostCastle_unkCol43_ColTris, &GhostCastle_unkCol43_BoundBox
 };
 
-Vec3f GhostCastle_unkCol44_ColV[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol44/unkCol44.colV.inc.c"
+Vec3f GhostCastle_unkCol44_ColVerts[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol44/unkCol44.colVerts.inc.c"
 };
 
-Vec3w GhostCastle_unkCol44_ColT[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol44/unkCol44.colT.inc.c"
+Vec3w GhostCastle_unkCol44_ColTris[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol44/unkCol44.colTris.inc.c"
 };
 
-Rect3D GhostCastle_unkCol44_ColS = {
-    #include "assets/levelGroup/GhostCastle/unkCol44/unkCol44.colS.inc.c"
+Rect3D GhostCastle_unkCol44_BoundBox = {
+    #include "assets/levelGroup/GhostCastle/unkCol44/unkCol44.boundBox.inc.c"
 };
 
 ModelCollision GhostCastle_unkCol44_ColH = {
-76, 116, GhostCastle_unkCol44_ColV, GhostCastle_unkCol44_ColT, &GhostCastle_unkCol44_ColS
+76, 116, GhostCastle_unkCol44_ColVerts, GhostCastle_unkCol44_ColTris, &GhostCastle_unkCol44_BoundBox
 };
 
-Vec3f GhostCastle_unkCol45_ColV[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol45/unkCol45.colV.inc.c"
+Vec3f GhostCastle_unkCol45_ColVerts[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol45/unkCol45.colVerts.inc.c"
 };
 
-Vec3w GhostCastle_unkCol45_ColT[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol45/unkCol45.colT.inc.c"
+Vec3w GhostCastle_unkCol45_ColTris[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol45/unkCol45.colTris.inc.c"
 };
 
-Rect3D GhostCastle_unkCol45_ColS = {
-    #include "assets/levelGroup/GhostCastle/unkCol45/unkCol45.colS.inc.c"
+Rect3D GhostCastle_unkCol45_BoundBox = {
+    #include "assets/levelGroup/GhostCastle/unkCol45/unkCol45.boundBox.inc.c"
 };
 
 ModelCollision GhostCastle_unkCol45_ColH = {
-50, 80, GhostCastle_unkCol45_ColV, GhostCastle_unkCol45_ColT, &GhostCastle_unkCol45_ColS
+50, 80, GhostCastle_unkCol45_ColVerts, GhostCastle_unkCol45_ColTris, &GhostCastle_unkCol45_BoundBox
 };
 
-Vec3f GhostCastle_unkCol46_ColV[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol46/unkCol46.colV.inc.c"
+Vec3f GhostCastle_unkCol46_ColVerts[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol46/unkCol46.colVerts.inc.c"
 };
 
-Vec3w GhostCastle_unkCol46_ColT[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol46/unkCol46.colT.inc.c"
+Vec3w GhostCastle_unkCol46_ColTris[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol46/unkCol46.colTris.inc.c"
 };
 
-Rect3D GhostCastle_unkCol46_ColS = {
-    #include "assets/levelGroup/GhostCastle/unkCol46/unkCol46.colS.inc.c"
+Rect3D GhostCastle_unkCol46_BoundBox = {
+    #include "assets/levelGroup/GhostCastle/unkCol46/unkCol46.boundBox.inc.c"
 };
 
 ModelCollision GhostCastle_unkCol46_ColH = {
-55, 90, GhostCastle_unkCol46_ColV, GhostCastle_unkCol46_ColT, &GhostCastle_unkCol46_ColS
+55, 90, GhostCastle_unkCol46_ColVerts, GhostCastle_unkCol46_ColTris, &GhostCastle_unkCol46_BoundBox
 };
 
-Vec3f GhostCastle_unkCol47_ColV[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol47/unkCol47.colV.inc.c"
+Vec3f GhostCastle_unkCol47_ColVerts[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol47/unkCol47.colVerts.inc.c"
 };
 
-Vec3w GhostCastle_unkCol47_ColT[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol47/unkCol47.colT.inc.c"
+Vec3w GhostCastle_unkCol47_ColTris[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol47/unkCol47.colTris.inc.c"
 };
 
-Rect3D GhostCastle_unkCol47_ColS = {
-    #include "assets/levelGroup/GhostCastle/unkCol47/unkCol47.colS.inc.c"
+Rect3D GhostCastle_unkCol47_BoundBox = {
+    #include "assets/levelGroup/GhostCastle/unkCol47/unkCol47.boundBox.inc.c"
 };
 
 ModelCollision GhostCastle_unkCol47_ColH = {
-37, 51, GhostCastle_unkCol47_ColV, GhostCastle_unkCol47_ColT, &GhostCastle_unkCol47_ColS
+37, 51, GhostCastle_unkCol47_ColVerts, GhostCastle_unkCol47_ColTris, &GhostCastle_unkCol47_BoundBox
 };
 
-Vec3f GhostCastle_unkCol48_ColV[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol48/unkCol48.colV.inc.c"
+Vec3f GhostCastle_unkCol48_ColVerts[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol48/unkCol48.colVerts.inc.c"
 };
 
-Vec3w GhostCastle_unkCol48_ColT[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol48/unkCol48.colT.inc.c"
+Vec3w GhostCastle_unkCol48_ColTris[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol48/unkCol48.colTris.inc.c"
 };
 
-Rect3D GhostCastle_unkCol48_ColS = {
-    #include "assets/levelGroup/GhostCastle/unkCol48/unkCol48.colS.inc.c"
+Rect3D GhostCastle_unkCol48_BoundBox = {
+    #include "assets/levelGroup/GhostCastle/unkCol48/unkCol48.boundBox.inc.c"
 };
 
 ModelCollision GhostCastle_unkCol48_ColH = {
-66, 101, GhostCastle_unkCol48_ColV, GhostCastle_unkCol48_ColT, &GhostCastle_unkCol48_ColS
+66, 101, GhostCastle_unkCol48_ColVerts, GhostCastle_unkCol48_ColTris, &GhostCastle_unkCol48_BoundBox
 };
 
-Vec3f GhostCastle_unkCol49_ColV[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol49/unkCol49.colV.inc.c"
+Vec3f GhostCastle_unkCol49_ColVerts[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol49/unkCol49.colVerts.inc.c"
 };
 
-Vec3w GhostCastle_unkCol49_ColT[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol49/unkCol49.colT.inc.c"
+Vec3w GhostCastle_unkCol49_ColTris[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol49/unkCol49.colTris.inc.c"
 };
 
-Rect3D GhostCastle_unkCol49_ColS = {
-    #include "assets/levelGroup/GhostCastle/unkCol49/unkCol49.colS.inc.c"
+Rect3D GhostCastle_unkCol49_BoundBox = {
+    #include "assets/levelGroup/GhostCastle/unkCol49/unkCol49.boundBox.inc.c"
 };
 
 ModelCollision GhostCastle_unkCol49_ColH = {
-28, 44, GhostCastle_unkCol49_ColV, GhostCastle_unkCol49_ColT, &GhostCastle_unkCol49_ColS
+28, 44, GhostCastle_unkCol49_ColVerts, GhostCastle_unkCol49_ColTris, &GhostCastle_unkCol49_BoundBox
 };
 
-Vec3f GhostCastle_unkCol50_ColV[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol50/unkCol50.colV.inc.c"
+Vec3f GhostCastle_unkCol50_ColVerts[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol50/unkCol50.colVerts.inc.c"
 };
 
-Vec3w GhostCastle_unkCol50_ColT[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol50/unkCol50.colT.inc.c"
+Vec3w GhostCastle_unkCol50_ColTris[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol50/unkCol50.colTris.inc.c"
 };
 
-Rect3D GhostCastle_unkCol50_ColS = {
-    #include "assets/levelGroup/GhostCastle/unkCol50/unkCol50.colS.inc.c"
+Rect3D GhostCastle_unkCol50_BoundBox = {
+    #include "assets/levelGroup/GhostCastle/unkCol50/unkCol50.boundBox.inc.c"
 };
 
 ModelCollision GhostCastle_unkCol50_ColH = {
-92, 144, GhostCastle_unkCol50_ColV, GhostCastle_unkCol50_ColT, &GhostCastle_unkCol50_ColS
+92, 144, GhostCastle_unkCol50_ColVerts, GhostCastle_unkCol50_ColTris, &GhostCastle_unkCol50_BoundBox
 };
 
-Vec3f GhostCastle_unkCol51_ColV[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol51/unkCol51.colV.inc.c"
+Vec3f GhostCastle_unkCol51_ColVerts[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol51/unkCol51.colVerts.inc.c"
 };
 
-Vec3w GhostCastle_unkCol51_ColT[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol51/unkCol51.colT.inc.c"
+Vec3w GhostCastle_unkCol51_ColTris[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol51/unkCol51.colTris.inc.c"
 };
 
-Rect3D GhostCastle_unkCol51_ColS = {
-    #include "assets/levelGroup/GhostCastle/unkCol51/unkCol51.colS.inc.c"
+Rect3D GhostCastle_unkCol51_BoundBox = {
+    #include "assets/levelGroup/GhostCastle/unkCol51/unkCol51.boundBox.inc.c"
 };
 
 ModelCollision GhostCastle_unkCol51_ColH = {
-132, 219, GhostCastle_unkCol51_ColV, GhostCastle_unkCol51_ColT, &GhostCastle_unkCol51_ColS
+132, 219, GhostCastle_unkCol51_ColVerts, GhostCastle_unkCol51_ColTris, &GhostCastle_unkCol51_BoundBox
 };
 
-Vec3f GhostCastle_unkCol52_ColV[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol52/unkCol52.colV.inc.c"
+Vec3f GhostCastle_unkCol52_ColVerts[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol52/unkCol52.colVerts.inc.c"
 };
 
-Vec3w GhostCastle_unkCol52_ColT[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol52/unkCol52.colT.inc.c"
+Vec3w GhostCastle_unkCol52_ColTris[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol52/unkCol52.colTris.inc.c"
 };
 
-Rect3D GhostCastle_unkCol52_ColS = {
-    #include "assets/levelGroup/GhostCastle/unkCol52/unkCol52.colS.inc.c"
+Rect3D GhostCastle_unkCol52_BoundBox = {
+    #include "assets/levelGroup/GhostCastle/unkCol52/unkCol52.boundBox.inc.c"
 };
 
 ModelCollision GhostCastle_unkCol52_ColH = {
-36, 48, GhostCastle_unkCol52_ColV, GhostCastle_unkCol52_ColT, &GhostCastle_unkCol52_ColS
+36, 48, GhostCastle_unkCol52_ColVerts, GhostCastle_unkCol52_ColTris, &GhostCastle_unkCol52_BoundBox
 };
 
-Vec3f GhostCastle_unkCol53_ColV[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol53/unkCol53.colV.inc.c"
+Vec3f GhostCastle_unkCol53_ColVerts[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol53/unkCol53.colVerts.inc.c"
 };
 
-Vec3w GhostCastle_unkCol53_ColT[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol53/unkCol53.colT.inc.c"
+Vec3w GhostCastle_unkCol53_ColTris[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol53/unkCol53.colTris.inc.c"
 };
 
-Rect3D GhostCastle_unkCol53_ColS = {
-    #include "assets/levelGroup/GhostCastle/unkCol53/unkCol53.colS.inc.c"
+Rect3D GhostCastle_unkCol53_BoundBox = {
+    #include "assets/levelGroup/GhostCastle/unkCol53/unkCol53.boundBox.inc.c"
 };
 
 ModelCollision GhostCastle_unkCol53_ColH = {
-44, 75, GhostCastle_unkCol53_ColV, GhostCastle_unkCol53_ColT, &GhostCastle_unkCol53_ColS
+44, 75, GhostCastle_unkCol53_ColVerts, GhostCastle_unkCol53_ColTris, &GhostCastle_unkCol53_BoundBox
 };
 
-Vec3f GhostCastle_unkCol54_ColV[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol54/unkCol54.colV.inc.c"
+Vec3f GhostCastle_unkCol54_ColVerts[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol54/unkCol54.colVerts.inc.c"
 };
 
-Vec3w GhostCastle_unkCol54_ColT[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol54/unkCol54.colT.inc.c"
+Vec3w GhostCastle_unkCol54_ColTris[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol54/unkCol54.colTris.inc.c"
 };
 
-Rect3D GhostCastle_unkCol54_ColS = {
-    #include "assets/levelGroup/GhostCastle/unkCol54/unkCol54.colS.inc.c"
+Rect3D GhostCastle_unkCol54_BoundBox = {
+    #include "assets/levelGroup/GhostCastle/unkCol54/unkCol54.boundBox.inc.c"
 };
 
 ModelCollision GhostCastle_unkCol54_ColH = {
-54, 91, GhostCastle_unkCol54_ColV, GhostCastle_unkCol54_ColT, &GhostCastle_unkCol54_ColS
+54, 91, GhostCastle_unkCol54_ColVerts, GhostCastle_unkCol54_ColTris, &GhostCastle_unkCol54_BoundBox
 };
 
-Vec3f GhostCastle_unkCol55_ColV[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol55/unkCol55.colV.inc.c"
+Vec3f GhostCastle_unkCol55_ColVerts[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol55/unkCol55.colVerts.inc.c"
 };
 
-Vec3w GhostCastle_unkCol55_ColT[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol55/unkCol55.colT.inc.c"
+Vec3w GhostCastle_unkCol55_ColTris[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol55/unkCol55.colTris.inc.c"
 };
 
-Rect3D GhostCastle_unkCol55_ColS = {
-    #include "assets/levelGroup/GhostCastle/unkCol55/unkCol55.colS.inc.c"
+Rect3D GhostCastle_unkCol55_BoundBox = {
+    #include "assets/levelGroup/GhostCastle/unkCol55/unkCol55.boundBox.inc.c"
 };
 
 ModelCollision GhostCastle_unkCol55_ColH = {
-62, 105, GhostCastle_unkCol55_ColV, GhostCastle_unkCol55_ColT, &GhostCastle_unkCol55_ColS
+62, 105, GhostCastle_unkCol55_ColVerts, GhostCastle_unkCol55_ColTris, &GhostCastle_unkCol55_BoundBox
 };
 
-Vec3f GhostCastle_unkCol56_ColV[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol56/unkCol56.colV.inc.c"
+Vec3f GhostCastle_unkCol56_ColVerts[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol56/unkCol56.colVerts.inc.c"
 };
 
-Vec3w GhostCastle_unkCol56_ColT[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol56/unkCol56.colT.inc.c"
+Vec3w GhostCastle_unkCol56_ColTris[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol56/unkCol56.colTris.inc.c"
 };
 
-Rect3D GhostCastle_unkCol56_ColS = {
-    #include "assets/levelGroup/GhostCastle/unkCol56/unkCol56.colS.inc.c"
+Rect3D GhostCastle_unkCol56_BoundBox = {
+    #include "assets/levelGroup/GhostCastle/unkCol56/unkCol56.boundBox.inc.c"
 };
 
 ModelCollision GhostCastle_unkCol56_ColH = {
-161, 277, GhostCastle_unkCol56_ColV, GhostCastle_unkCol56_ColT, &GhostCastle_unkCol56_ColS
+161, 277, GhostCastle_unkCol56_ColVerts, GhostCastle_unkCol56_ColTris, &GhostCastle_unkCol56_BoundBox
 };
 
-Vec3f GhostCastle_unkCol57_ColV[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol57/unkCol57.colV.inc.c"
+Vec3f GhostCastle_unkCol57_ColVerts[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol57/unkCol57.colVerts.inc.c"
 };
 
-Vec3w GhostCastle_unkCol57_ColT[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol57/unkCol57.colT.inc.c"
+Vec3w GhostCastle_unkCol57_ColTris[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol57/unkCol57.colTris.inc.c"
 };
 
-Rect3D GhostCastle_unkCol57_ColS = {
-    #include "assets/levelGroup/GhostCastle/unkCol57/unkCol57.colS.inc.c"
+Rect3D GhostCastle_unkCol57_BoundBox = {
+    #include "assets/levelGroup/GhostCastle/unkCol57/unkCol57.boundBox.inc.c"
 };
 
 ModelCollision GhostCastle_unkCol57_ColH = {
-92, 154, GhostCastle_unkCol57_ColV, GhostCastle_unkCol57_ColT, &GhostCastle_unkCol57_ColS
+92, 154, GhostCastle_unkCol57_ColVerts, GhostCastle_unkCol57_ColTris, &GhostCastle_unkCol57_BoundBox
 };
 
-Vec3f GhostCastle_unkCol58_ColV[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol58/unkCol58.colV.inc.c"
+Vec3f GhostCastle_unkCol58_ColVerts[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol58/unkCol58.colVerts.inc.c"
 };
 
-Vec3w GhostCastle_unkCol58_ColT[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol58/unkCol58.colT.inc.c"
+Vec3w GhostCastle_unkCol58_ColTris[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol58/unkCol58.colTris.inc.c"
 };
 
-Rect3D GhostCastle_unkCol58_ColS = {
-    #include "assets/levelGroup/GhostCastle/unkCol58/unkCol58.colS.inc.c"
+Rect3D GhostCastle_unkCol58_BoundBox = {
+    #include "assets/levelGroup/GhostCastle/unkCol58/unkCol58.boundBox.inc.c"
 };
 
 ModelCollision GhostCastle_unkCol58_ColH = {
-60, 105, GhostCastle_unkCol58_ColV, GhostCastle_unkCol58_ColT, &GhostCastle_unkCol58_ColS
+60, 105, GhostCastle_unkCol58_ColVerts, GhostCastle_unkCol58_ColTris, &GhostCastle_unkCol58_BoundBox
 };
 
-Vec3f GhostCastle_unkCol59_ColV[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol59/unkCol59.colV.inc.c"
+Vec3f GhostCastle_unkCol59_ColVerts[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol59/unkCol59.colVerts.inc.c"
 };
 
-Vec3w GhostCastle_unkCol59_ColT[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol59/unkCol59.colT.inc.c"
+Vec3w GhostCastle_unkCol59_ColTris[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol59/unkCol59.colTris.inc.c"
 };
 
-Rect3D GhostCastle_unkCol59_ColS = {
-    #include "assets/levelGroup/GhostCastle/unkCol59/unkCol59.colS.inc.c"
+Rect3D GhostCastle_unkCol59_BoundBox = {
+    #include "assets/levelGroup/GhostCastle/unkCol59/unkCol59.boundBox.inc.c"
 };
 
 ModelCollision GhostCastle_unkCol59_ColH = {
-68, 117, GhostCastle_unkCol59_ColV, GhostCastle_unkCol59_ColT, &GhostCastle_unkCol59_ColS
+68, 117, GhostCastle_unkCol59_ColVerts, GhostCastle_unkCol59_ColTris, &GhostCastle_unkCol59_BoundBox
 };
 
-Vec3f GhostCastle_unkCol60_ColV[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol60/unkCol60.colV.inc.c"
+Vec3f GhostCastle_unkCol60_ColVerts[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol60/unkCol60.colVerts.inc.c"
 };
 
-Vec3w GhostCastle_unkCol60_ColT[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol60/unkCol60.colT.inc.c"
+Vec3w GhostCastle_unkCol60_ColTris[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol60/unkCol60.colTris.inc.c"
 };
 
-Rect3D GhostCastle_unkCol60_ColS = {
-    #include "assets/levelGroup/GhostCastle/unkCol60/unkCol60.colS.inc.c"
+Rect3D GhostCastle_unkCol60_BoundBox = {
+    #include "assets/levelGroup/GhostCastle/unkCol60/unkCol60.boundBox.inc.c"
 };
 
 ModelCollision GhostCastle_unkCol60_ColH = {
-68, 119, GhostCastle_unkCol60_ColV, GhostCastle_unkCol60_ColT, &GhostCastle_unkCol60_ColS
+68, 119, GhostCastle_unkCol60_ColVerts, GhostCastle_unkCol60_ColTris, &GhostCastle_unkCol60_BoundBox
 };
 
-Vec3f GhostCastle_unkCol61_ColV[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol61/unkCol61.colV.inc.c"
+Vec3f GhostCastle_unkCol61_ColVerts[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol61/unkCol61.colVerts.inc.c"
 };
 
-Vec3w GhostCastle_unkCol61_ColT[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol61/unkCol61.colT.inc.c"
+Vec3w GhostCastle_unkCol61_ColTris[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol61/unkCol61.colTris.inc.c"
 };
 
-Rect3D GhostCastle_unkCol61_ColS = {
-    #include "assets/levelGroup/GhostCastle/unkCol61/unkCol61.colS.inc.c"
+Rect3D GhostCastle_unkCol61_BoundBox = {
+    #include "assets/levelGroup/GhostCastle/unkCol61/unkCol61.boundBox.inc.c"
 };
 
 ModelCollision GhostCastle_unkCol61_ColH = {
-8, 12, GhostCastle_unkCol61_ColV, GhostCastle_unkCol61_ColT, &GhostCastle_unkCol61_ColS
+8, 12, GhostCastle_unkCol61_ColVerts, GhostCastle_unkCol61_ColTris, &GhostCastle_unkCol61_BoundBox
 };
 
-Vec3f GhostCastle_unkCol62_ColV[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol62/unkCol62.colV.inc.c"
+Vec3f GhostCastle_unkCol62_ColVerts[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol62/unkCol62.colVerts.inc.c"
 };
 
-Vec3w GhostCastle_unkCol62_ColT[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol62/unkCol62.colT.inc.c"
+Vec3w GhostCastle_unkCol62_ColTris[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol62/unkCol62.colTris.inc.c"
 };
 
-Rect3D GhostCastle_unkCol62_ColS = {
-    #include "assets/levelGroup/GhostCastle/unkCol62/unkCol62.colS.inc.c"
+Rect3D GhostCastle_unkCol62_BoundBox = {
+    #include "assets/levelGroup/GhostCastle/unkCol62/unkCol62.boundBox.inc.c"
 };
 
 ModelCollision GhostCastle_unkCol62_ColH = {
-8, 8, GhostCastle_unkCol62_ColV, GhostCastle_unkCol62_ColT, &GhostCastle_unkCol62_ColS
+8, 8, GhostCastle_unkCol62_ColVerts, GhostCastle_unkCol62_ColTris, &GhostCastle_unkCol62_BoundBox
 };
 
-Vec3f GhostCastle_unkCol63_ColV[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol63/unkCol63.colV.inc.c"
+Vec3f GhostCastle_unkCol63_ColVerts[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol63/unkCol63.colVerts.inc.c"
 };
 
-Vec3w GhostCastle_unkCol63_ColT[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol63/unkCol63.colT.inc.c"
+Vec3w GhostCastle_unkCol63_ColTris[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol63/unkCol63.colTris.inc.c"
 };
 
-Rect3D GhostCastle_unkCol63_ColS = {
-    #include "assets/levelGroup/GhostCastle/unkCol63/unkCol63.colS.inc.c"
+Rect3D GhostCastle_unkCol63_BoundBox = {
+    #include "assets/levelGroup/GhostCastle/unkCol63/unkCol63.boundBox.inc.c"
 };
 
 ModelCollision GhostCastle_unkCol63_ColH = {
-12, 12, GhostCastle_unkCol63_ColV, GhostCastle_unkCol63_ColT, &GhostCastle_unkCol63_ColS
+12, 12, GhostCastle_unkCol63_ColVerts, GhostCastle_unkCol63_ColTris, &GhostCastle_unkCol63_BoundBox
 };
 
-Vec3f GhostCastle_unkCol64_ColV[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol64/unkCol64.colV.inc.c"
+Vec3f GhostCastle_unkCol64_ColVerts[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol64/unkCol64.colVerts.inc.c"
 };
 
-Vec3w GhostCastle_unkCol64_ColT[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol64/unkCol64.colT.inc.c"
+Vec3w GhostCastle_unkCol64_ColTris[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol64/unkCol64.colTris.inc.c"
 };
 
-Rect3D GhostCastle_unkCol64_ColS = {
-    #include "assets/levelGroup/GhostCastle/unkCol64/unkCol64.colS.inc.c"
+Rect3D GhostCastle_unkCol64_BoundBox = {
+    #include "assets/levelGroup/GhostCastle/unkCol64/unkCol64.boundBox.inc.c"
 };
 
 ModelCollision GhostCastle_unkCol64_ColH = {
-22, 20, GhostCastle_unkCol64_ColV, GhostCastle_unkCol64_ColT, &GhostCastle_unkCol64_ColS
+22, 20, GhostCastle_unkCol64_ColVerts, GhostCastle_unkCol64_ColTris, &GhostCastle_unkCol64_BoundBox
 };
 
-Vec3f GhostCastle_unkCol65_ColV[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol65/unkCol65.colV.inc.c"
+Vec3f GhostCastle_unkCol65_ColVerts[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol65/unkCol65.colVerts.inc.c"
 };
 
-Vec3w GhostCastle_unkCol65_ColT[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol65/unkCol65.colT.inc.c"
+Vec3w GhostCastle_unkCol65_ColTris[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol65/unkCol65.colTris.inc.c"
 };
 
-Rect3D GhostCastle_unkCol65_ColS = {
-    #include "assets/levelGroup/GhostCastle/unkCol65/unkCol65.colS.inc.c"
+Rect3D GhostCastle_unkCol65_BoundBox = {
+    #include "assets/levelGroup/GhostCastle/unkCol65/unkCol65.boundBox.inc.c"
 };
 
 ModelCollision GhostCastle_unkCol65_ColH = {
-4, 4, GhostCastle_unkCol65_ColV, GhostCastle_unkCol65_ColT, &GhostCastle_unkCol65_ColS
+4, 4, GhostCastle_unkCol65_ColVerts, GhostCastle_unkCol65_ColTris, &GhostCastle_unkCol65_BoundBox
 };
 
-Vec3f GhostCastle_unkCol66_ColV[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol66/unkCol66.colV.inc.c"
+Vec3f GhostCastle_unkCol66_ColVerts[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol66/unkCol66.colVerts.inc.c"
 };
 
-Vec3w GhostCastle_unkCol66_ColT[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol66/unkCol66.colT.inc.c"
+Vec3w GhostCastle_unkCol66_ColTris[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol66/unkCol66.colTris.inc.c"
 };
 
-Rect3D GhostCastle_unkCol66_ColS = {
-    #include "assets/levelGroup/GhostCastle/unkCol66/unkCol66.colS.inc.c"
+Rect3D GhostCastle_unkCol66_BoundBox = {
+    #include "assets/levelGroup/GhostCastle/unkCol66/unkCol66.boundBox.inc.c"
 };
 
 ModelCollision GhostCastle_unkCol66_ColH = {
-4, 4, GhostCastle_unkCol66_ColV, GhostCastle_unkCol66_ColT, &GhostCastle_unkCol66_ColS
+4, 4, GhostCastle_unkCol66_ColVerts, GhostCastle_unkCol66_ColTris, &GhostCastle_unkCol66_BoundBox
 };
 
-Vec3f GhostCastle_unkCol67_ColV[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol67/unkCol67.colV.inc.c"
+Vec3f GhostCastle_unkCol67_ColVerts[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol67/unkCol67.colVerts.inc.c"
 };
 
-Vec3w GhostCastle_unkCol67_ColT[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol67/unkCol67.colT.inc.c"
+Vec3w GhostCastle_unkCol67_ColTris[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol67/unkCol67.colTris.inc.c"
 };
 
-Rect3D GhostCastle_unkCol67_ColS = {
-    #include "assets/levelGroup/GhostCastle/unkCol67/unkCol67.colS.inc.c"
+Rect3D GhostCastle_unkCol67_BoundBox = {
+    #include "assets/levelGroup/GhostCastle/unkCol67/unkCol67.boundBox.inc.c"
 };
 
 ModelCollision GhostCastle_unkCol67_ColH = {
-12, 14, GhostCastle_unkCol67_ColV, GhostCastle_unkCol67_ColT, &GhostCastle_unkCol67_ColS
+12, 14, GhostCastle_unkCol67_ColVerts, GhostCastle_unkCol67_ColTris, &GhostCastle_unkCol67_BoundBox
 };
 
-Vec3f GhostCastle_unkCol68_ColV[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol68/unkCol68.colV.inc.c"
+Vec3f GhostCastle_unkCol68_ColVerts[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol68/unkCol68.colVerts.inc.c"
 };
 
-Vec3w GhostCastle_unkCol68_ColT[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol68/unkCol68.colT.inc.c"
+Vec3w GhostCastle_unkCol68_ColTris[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol68/unkCol68.colTris.inc.c"
 };
 
-Rect3D GhostCastle_unkCol68_ColS = {
-    #include "assets/levelGroup/GhostCastle/unkCol68/unkCol68.colS.inc.c"
+Rect3D GhostCastle_unkCol68_BoundBox = {
+    #include "assets/levelGroup/GhostCastle/unkCol68/unkCol68.boundBox.inc.c"
 };
 
 ModelCollision GhostCastle_unkCol68_ColH = {
-8, 10, GhostCastle_unkCol68_ColV, GhostCastle_unkCol68_ColT, &GhostCastle_unkCol68_ColS
+8, 10, GhostCastle_unkCol68_ColVerts, GhostCastle_unkCol68_ColTris, &GhostCastle_unkCol68_BoundBox
 };
 
-Vec3f GhostCastle_unkCol69_ColV[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol69/unkCol69.colV.inc.c"
+Vec3f GhostCastle_unkCol69_ColVerts[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol69/unkCol69.colVerts.inc.c"
 };
 
-Vec3w GhostCastle_unkCol69_ColT[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol69/unkCol69.colT.inc.c"
+Vec3w GhostCastle_unkCol69_ColTris[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol69/unkCol69.colTris.inc.c"
 };
 
-Rect3D GhostCastle_unkCol69_ColS = {
-    #include "assets/levelGroup/GhostCastle/unkCol69/unkCol69.colS.inc.c"
+Rect3D GhostCastle_unkCol69_BoundBox = {
+    #include "assets/levelGroup/GhostCastle/unkCol69/unkCol69.boundBox.inc.c"
 };
 
 ModelCollision GhostCastle_unkCol69_ColH = {
-55, 90, GhostCastle_unkCol69_ColV, GhostCastle_unkCol69_ColT, &GhostCastle_unkCol69_ColS
+55, 90, GhostCastle_unkCol69_ColVerts, GhostCastle_unkCol69_ColTris, &GhostCastle_unkCol69_BoundBox
 };
 
-Vec3f GhostCastle_unkCol70_ColV[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol70/unkCol70.colV.inc.c"
+Vec3f GhostCastle_unkCol70_ColVerts[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol70/unkCol70.colVerts.inc.c"
 };
 
-Vec3w GhostCastle_unkCol70_ColT[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol70/unkCol70.colT.inc.c"
+Vec3w GhostCastle_unkCol70_ColTris[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol70/unkCol70.colTris.inc.c"
 };
 
-Rect3D GhostCastle_unkCol70_ColS = {
-    #include "assets/levelGroup/GhostCastle/unkCol70/unkCol70.colS.inc.c"
+Rect3D GhostCastle_unkCol70_BoundBox = {
+    #include "assets/levelGroup/GhostCastle/unkCol70/unkCol70.boundBox.inc.c"
 };
 
 ModelCollision GhostCastle_unkCol70_ColH = {
-12, 8, GhostCastle_unkCol70_ColV, GhostCastle_unkCol70_ColT, &GhostCastle_unkCol70_ColS
+12, 8, GhostCastle_unkCol70_ColVerts, GhostCastle_unkCol70_ColTris, &GhostCastle_unkCol70_BoundBox
 };
 
-Vec3f GhostCastle_unkCol71_ColV[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol71/unkCol71.colV.inc.c"
+Vec3f GhostCastle_unkCol71_ColVerts[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol71/unkCol71.colVerts.inc.c"
 };
 
-Vec3w GhostCastle_unkCol71_ColT[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol71/unkCol71.colT.inc.c"
+Vec3w GhostCastle_unkCol71_ColTris[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol71/unkCol71.colTris.inc.c"
 };
 
-Rect3D GhostCastle_unkCol71_ColS = {
-    #include "assets/levelGroup/GhostCastle/unkCol71/unkCol71.colS.inc.c"
+Rect3D GhostCastle_unkCol71_BoundBox = {
+    #include "assets/levelGroup/GhostCastle/unkCol71/unkCol71.boundBox.inc.c"
 };
 
 ModelCollision GhostCastle_unkCol71_ColH = {
-16, 28, GhostCastle_unkCol71_ColV, GhostCastle_unkCol71_ColT, &GhostCastle_unkCol71_ColS
+16, 28, GhostCastle_unkCol71_ColVerts, GhostCastle_unkCol71_ColTris, &GhostCastle_unkCol71_BoundBox
 };
 
-Vec3f GhostCastle_unkCol72_ColV[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol72/unkCol72.colV.inc.c"
+Vec3f GhostCastle_unkCol72_ColVerts[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol72/unkCol72.colVerts.inc.c"
 };
 
-Vec3w GhostCastle_unkCol72_ColT[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol72/unkCol72.colT.inc.c"
+Vec3w GhostCastle_unkCol72_ColTris[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol72/unkCol72.colTris.inc.c"
 };
 
-Rect3D GhostCastle_unkCol72_ColS = {
-    #include "assets/levelGroup/GhostCastle/unkCol72/unkCol72.colS.inc.c"
+Rect3D GhostCastle_unkCol72_BoundBox = {
+    #include "assets/levelGroup/GhostCastle/unkCol72/unkCol72.boundBox.inc.c"
 };
 
 ModelCollision GhostCastle_unkCol72_ColH = {
-16, 25, GhostCastle_unkCol72_ColV, GhostCastle_unkCol72_ColT, &GhostCastle_unkCol72_ColS
+16, 25, GhostCastle_unkCol72_ColVerts, GhostCastle_unkCol72_ColTris, &GhostCastle_unkCol72_BoundBox
 };
 
-Vec3f GhostCastle_unkCol73_ColV[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol73/unkCol73.colV.inc.c"
+Vec3f GhostCastle_unkCol73_ColVerts[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol73/unkCol73.colVerts.inc.c"
 };
 
-Vec3w GhostCastle_unkCol73_ColT[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol73/unkCol73.colT.inc.c"
+Vec3w GhostCastle_unkCol73_ColTris[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol73/unkCol73.colTris.inc.c"
 };
 
-Rect3D GhostCastle_unkCol73_ColS = {
-    #include "assets/levelGroup/GhostCastle/unkCol73/unkCol73.colS.inc.c"
+Rect3D GhostCastle_unkCol73_BoundBox = {
+    #include "assets/levelGroup/GhostCastle/unkCol73/unkCol73.boundBox.inc.c"
 };
 
 ModelCollision GhostCastle_unkCol73_ColH = {
-8, 8, GhostCastle_unkCol73_ColV, GhostCastle_unkCol73_ColT, &GhostCastle_unkCol73_ColS
+8, 8, GhostCastle_unkCol73_ColVerts, GhostCastle_unkCol73_ColTris, &GhostCastle_unkCol73_BoundBox
 };
 
-Vec3f GhostCastle_unkCol74_ColV[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol74/unkCol74.colV.inc.c"
+Vec3f GhostCastle_unkCol74_ColVerts[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol74/unkCol74.colVerts.inc.c"
 };
 
-Vec3w GhostCastle_unkCol74_ColT[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol74/unkCol74.colT.inc.c"
+Vec3w GhostCastle_unkCol74_ColTris[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol74/unkCol74.colTris.inc.c"
 };
 
-Rect3D GhostCastle_unkCol74_ColS = {
-    #include "assets/levelGroup/GhostCastle/unkCol74/unkCol74.colS.inc.c"
+Rect3D GhostCastle_unkCol74_BoundBox = {
+    #include "assets/levelGroup/GhostCastle/unkCol74/unkCol74.boundBox.inc.c"
 };
 
 ModelCollision GhostCastle_unkCol74_ColH = {
-8, 8, GhostCastle_unkCol74_ColV, GhostCastle_unkCol74_ColT, &GhostCastle_unkCol74_ColS
+8, 8, GhostCastle_unkCol74_ColVerts, GhostCastle_unkCol74_ColTris, &GhostCastle_unkCol74_BoundBox
 };
 
-Vec3f GhostCastle_unkCol75_ColV[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol75/unkCol75.colV.inc.c"
+Vec3f GhostCastle_unkCol75_ColVerts[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol75/unkCol75.colVerts.inc.c"
 };
 
-Vec3w GhostCastle_unkCol75_ColT[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol75/unkCol75.colT.inc.c"
+Vec3w GhostCastle_unkCol75_ColTris[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol75/unkCol75.colTris.inc.c"
 };
 
-Rect3D GhostCastle_unkCol75_ColS = {
-    #include "assets/levelGroup/GhostCastle/unkCol75/unkCol75.colS.inc.c"
+Rect3D GhostCastle_unkCol75_BoundBox = {
+    #include "assets/levelGroup/GhostCastle/unkCol75/unkCol75.boundBox.inc.c"
 };
 
 ModelCollision GhostCastle_unkCol75_ColH = {
-8, 8, GhostCastle_unkCol75_ColV, GhostCastle_unkCol75_ColT, &GhostCastle_unkCol75_ColS
+8, 8, GhostCastle_unkCol75_ColVerts, GhostCastle_unkCol75_ColTris, &GhostCastle_unkCol75_BoundBox
 };
 
-Vec3f GhostCastle_unkCol76_ColV[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol76/unkCol76.colV.inc.c"
+Vec3f GhostCastle_unkCol76_ColVerts[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol76/unkCol76.colVerts.inc.c"
 };
 
-Vec3w GhostCastle_unkCol76_ColT[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol76/unkCol76.colT.inc.c"
+Vec3w GhostCastle_unkCol76_ColTris[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol76/unkCol76.colTris.inc.c"
 };
 
-Rect3D GhostCastle_unkCol76_ColS = {
-    #include "assets/levelGroup/GhostCastle/unkCol76/unkCol76.colS.inc.c"
+Rect3D GhostCastle_unkCol76_BoundBox = {
+    #include "assets/levelGroup/GhostCastle/unkCol76/unkCol76.boundBox.inc.c"
 };
 
 ModelCollision GhostCastle_unkCol76_ColH = {
-8, 8, GhostCastle_unkCol76_ColV, GhostCastle_unkCol76_ColT, &GhostCastle_unkCol76_ColS
+8, 8, GhostCastle_unkCol76_ColVerts, GhostCastle_unkCol76_ColTris, &GhostCastle_unkCol76_BoundBox
 };
 
-Vec3f GhostCastle_unkCol77_ColV[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol77/unkCol77.colV.inc.c"
+Vec3f GhostCastle_unkCol77_ColVerts[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol77/unkCol77.colVerts.inc.c"
 };
 
-Vec3w GhostCastle_unkCol77_ColT[] = {
-    #include "assets/levelGroup/GhostCastle/unkCol77/unkCol77.colT.inc.c"
+Vec3w GhostCastle_unkCol77_ColTris[] = {
+    #include "assets/levelGroup/GhostCastle/unkCol77/unkCol77.colTris.inc.c"
 };
 
-Rect3D GhostCastle_unkCol77_ColS = {
-    #include "assets/levelGroup/GhostCastle/unkCol77/unkCol77.colS.inc.c"
+Rect3D GhostCastle_unkCol77_BoundBox = {
+    #include "assets/levelGroup/GhostCastle/unkCol77/unkCol77.boundBox.inc.c"
 };
 
 ModelCollision GhostCastle_unkCol77_ColH = {
-18, 16, GhostCastle_unkCol77_ColV, GhostCastle_unkCol77_ColT, &GhostCastle_unkCol77_ColS
+18, 16, GhostCastle_unkCol77_ColVerts, GhostCastle_unkCol77_ColTris, &GhostCastle_unkCol77_BoundBox
 };
 Mtx GhostCastle_IMtx80 = IDENTITY;
 

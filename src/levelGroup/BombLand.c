@@ -2342,1156 +2342,1156 @@ Gfx BombLand_unk72_Gfx[] = {
     #include "assets/levelGroup/BombLand/unk72/unk72.gfx.inc.c"
 };
 
-Vec3f BombLand_exit1_ColV[] = {
-    #include "assets/levelGroup/BombLand/exit1/exit1.colV.inc.c"
+Vec3f BombLand_exit1_ColVerts[] = {
+    #include "assets/levelGroup/BombLand/exit1/exit1.colVerts.inc.c"
 };
 
-Vec3w BombLand_exit1_ColT[] = {
-    #include "assets/levelGroup/BombLand/exit1/exit1.colT.inc.c"
+Vec3w BombLand_exit1_ColTris[] = {
+    #include "assets/levelGroup/BombLand/exit1/exit1.colTris.inc.c"
 };
 
-Rect3D BombLand_exit1_ColS = {
-    #include "assets/levelGroup/BombLand/exit1/exit1.colS.inc.c"
+Rect3D BombLand_exit1_BoundBox = {
+    #include "assets/levelGroup/BombLand/exit1/exit1.boundBox.inc.c"
 };
 
 ModelCollision BombLand_exit1_ColH = {
-6, 4, BombLand_exit1_ColV, BombLand_exit1_ColT, &BombLand_exit1_ColS
+6, 4, BombLand_exit1_ColVerts, BombLand_exit1_ColTris, &BombLand_exit1_BoundBox
 };
 
-Vec3f BombLand_exit2_ColV[] = {
-    #include "assets/levelGroup/BombLand/exit2/exit2.colV.inc.c"
+Vec3f BombLand_exit2_ColVerts[] = {
+    #include "assets/levelGroup/BombLand/exit2/exit2.colVerts.inc.c"
 };
 
-Vec3w BombLand_exit2_ColT[] = {
-    #include "assets/levelGroup/BombLand/exit2/exit2.colT.inc.c"
+Vec3w BombLand_exit2_ColTris[] = {
+    #include "assets/levelGroup/BombLand/exit2/exit2.colTris.inc.c"
 };
 
-Rect3D BombLand_exit2_ColS = {
-    #include "assets/levelGroup/BombLand/exit2/exit2.colS.inc.c"
+Rect3D BombLand_exit2_BoundBox = {
+    #include "assets/levelGroup/BombLand/exit2/exit2.boundBox.inc.c"
 };
 
 ModelCollision BombLand_exit2_ColH = {
-6, 4, BombLand_exit2_ColV, BombLand_exit2_ColT, &BombLand_exit2_ColS
+6, 4, BombLand_exit2_ColVerts, BombLand_exit2_ColTris, &BombLand_exit2_BoundBox
 };
 
-Vec3f BombLand_exit3_ColV[] = {
-    #include "assets/levelGroup/BombLand/exit3/exit3.colV.inc.c"
+Vec3f BombLand_exit3_ColVerts[] = {
+    #include "assets/levelGroup/BombLand/exit3/exit3.colVerts.inc.c"
 };
 
-Vec3w BombLand_exit3_ColT[] = {
-    #include "assets/levelGroup/BombLand/exit3/exit3.colT.inc.c"
+Vec3w BombLand_exit3_ColTris[] = {
+    #include "assets/levelGroup/BombLand/exit3/exit3.colTris.inc.c"
 };
 
-Rect3D BombLand_exit3_ColS = {
-    #include "assets/levelGroup/BombLand/exit3/exit3.colS.inc.c"
+Rect3D BombLand_exit3_BoundBox = {
+    #include "assets/levelGroup/BombLand/exit3/exit3.boundBox.inc.c"
 };
 
 ModelCollision BombLand_exit3_ColH = {
-6, 4, BombLand_exit3_ColV, BombLand_exit3_ColT, &BombLand_exit3_ColS
+6, 4, BombLand_exit3_ColVerts, BombLand_exit3_ColTris, &BombLand_exit3_BoundBox
 };
 
-Vec3f BombLand_exit4_ColV[] = {
-    #include "assets/levelGroup/BombLand/exit4/exit4.colV.inc.c"
+Vec3f BombLand_exit4_ColVerts[] = {
+    #include "assets/levelGroup/BombLand/exit4/exit4.colVerts.inc.c"
 };
 
-Vec3w BombLand_exit4_ColT[] = {
-    #include "assets/levelGroup/BombLand/exit4/exit4.colT.inc.c"
+Vec3w BombLand_exit4_ColTris[] = {
+    #include "assets/levelGroup/BombLand/exit4/exit4.colTris.inc.c"
 };
 
-Rect3D BombLand_exit4_ColS = {
-    #include "assets/levelGroup/BombLand/exit4/exit4.colS.inc.c"
+Rect3D BombLand_exit4_BoundBox = {
+    #include "assets/levelGroup/BombLand/exit4/exit4.boundBox.inc.c"
 };
 
 ModelCollision BombLand_exit4_ColH = {
-6, 4, BombLand_exit4_ColV, BombLand_exit4_ColT, &BombLand_exit4_ColS
+6, 4, BombLand_exit4_ColVerts, BombLand_exit4_ColTris, &BombLand_exit4_BoundBox
 };
 
-Vec3f BombLand_room0_ColV[] = {
-    #include "assets/levelGroup/BombLand/room0/room0.colV.inc.c"
+Vec3f BombLand_room0_ColVerts[] = {
+    #include "assets/levelGroup/BombLand/room0/room0.colVerts.inc.c"
 };
 
-Vec3w BombLand_room0_ColT[] = {
-    #include "assets/levelGroup/BombLand/room0/room0.colT.inc.c"
+Vec3w BombLand_room0_ColTris[] = {
+    #include "assets/levelGroup/BombLand/room0/room0.colTris.inc.c"
 };
 
-Rect3D BombLand_room0_ColS = {
-    #include "assets/levelGroup/BombLand/room0/room0.colS.inc.c"
+Rect3D BombLand_room0_BoundBox = {
+    #include "assets/levelGroup/BombLand/room0/room0.boundBox.inc.c"
 };
 
 ModelCollision BombLand_room0_ColH = {
-38, 58, BombLand_room0_ColV, BombLand_room0_ColT, &BombLand_room0_ColS
+38, 58, BombLand_room0_ColVerts, BombLand_room0_ColTris, &BombLand_room0_BoundBox
 };
 
-Vec3f BombLand_room1_ColV[] = {
-    #include "assets/levelGroup/BombLand/room1/room1.colV.inc.c"
+Vec3f BombLand_room1_ColVerts[] = {
+    #include "assets/levelGroup/BombLand/room1/room1.colVerts.inc.c"
 };
 
-Vec3w BombLand_room1_ColT[] = {
-    #include "assets/levelGroup/BombLand/room1/room1.colT.inc.c"
+Vec3w BombLand_room1_ColTris[] = {
+    #include "assets/levelGroup/BombLand/room1/room1.colTris.inc.c"
 };
 
-Rect3D BombLand_room1_ColS = {
-    #include "assets/levelGroup/BombLand/room1/room1.colS.inc.c"
+Rect3D BombLand_room1_BoundBox = {
+    #include "assets/levelGroup/BombLand/room1/room1.boundBox.inc.c"
 };
 
 ModelCollision BombLand_room1_ColH = {
-43, 53, BombLand_room1_ColV, BombLand_room1_ColT, &BombLand_room1_ColS
+43, 53, BombLand_room1_ColVerts, BombLand_room1_ColTris, &BombLand_room1_BoundBox
 };
 
-Vec3f BombLand_room2_ColV[] = {
-    #include "assets/levelGroup/BombLand/room2/room2.colV.inc.c"
+Vec3f BombLand_room2_ColVerts[] = {
+    #include "assets/levelGroup/BombLand/room2/room2.colVerts.inc.c"
 };
 
-Vec3w BombLand_room2_ColT[] = {
-    #include "assets/levelGroup/BombLand/room2/room2.colT.inc.c"
+Vec3w BombLand_room2_ColTris[] = {
+    #include "assets/levelGroup/BombLand/room2/room2.colTris.inc.c"
 };
 
-Rect3D BombLand_room2_ColS = {
-    #include "assets/levelGroup/BombLand/room2/room2.colS.inc.c"
+Rect3D BombLand_room2_BoundBox = {
+    #include "assets/levelGroup/BombLand/room2/room2.boundBox.inc.c"
 };
 
 ModelCollision BombLand_room2_ColH = {
-44, 44, BombLand_room2_ColV, BombLand_room2_ColT, &BombLand_room2_ColS
+44, 44, BombLand_room2_ColVerts, BombLand_room2_ColTris, &BombLand_room2_BoundBox
 };
 
-Vec3f BombLand_room3_ColV[] = {
-    #include "assets/levelGroup/BombLand/room3/room3.colV.inc.c"
+Vec3f BombLand_room3_ColVerts[] = {
+    #include "assets/levelGroup/BombLand/room3/room3.colVerts.inc.c"
 };
 
-Vec3w BombLand_room3_ColT[] = {
-    #include "assets/levelGroup/BombLand/room3/room3.colT.inc.c"
+Vec3w BombLand_room3_ColTris[] = {
+    #include "assets/levelGroup/BombLand/room3/room3.colTris.inc.c"
 };
 
-Rect3D BombLand_room3_ColS = {
-    #include "assets/levelGroup/BombLand/room3/room3.colS.inc.c"
+Rect3D BombLand_room3_BoundBox = {
+    #include "assets/levelGroup/BombLand/room3/room3.boundBox.inc.c"
 };
 
 ModelCollision BombLand_room3_ColH = {
-38, 48, BombLand_room3_ColV, BombLand_room3_ColT, &BombLand_room3_ColS
+38, 48, BombLand_room3_ColVerts, BombLand_room3_ColTris, &BombLand_room3_BoundBox
 };
 
-Vec3f BombLand_room4_ColV[] = {
-    #include "assets/levelGroup/BombLand/room4/room4.colV.inc.c"
+Vec3f BombLand_room4_ColVerts[] = {
+    #include "assets/levelGroup/BombLand/room4/room4.colVerts.inc.c"
 };
 
-Vec3w BombLand_room4_ColT[] = {
-    #include "assets/levelGroup/BombLand/room4/room4.colT.inc.c"
+Vec3w BombLand_room4_ColTris[] = {
+    #include "assets/levelGroup/BombLand/room4/room4.colTris.inc.c"
 };
 
-Rect3D BombLand_room4_ColS = {
-    #include "assets/levelGroup/BombLand/room4/room4.colS.inc.c"
+Rect3D BombLand_room4_BoundBox = {
+    #include "assets/levelGroup/BombLand/room4/room4.boundBox.inc.c"
 };
 
 ModelCollision BombLand_room4_ColH = {
-41, 53, BombLand_room4_ColV, BombLand_room4_ColT, &BombLand_room4_ColS
+41, 53, BombLand_room4_ColVerts, BombLand_room4_ColTris, &BombLand_room4_BoundBox
 };
 
-Vec3f BombLand_room5_ColV[] = {
-    #include "assets/levelGroup/BombLand/room5/room5.colV.inc.c"
+Vec3f BombLand_room5_ColVerts[] = {
+    #include "assets/levelGroup/BombLand/room5/room5.colVerts.inc.c"
 };
 
-Vec3w BombLand_room5_ColT[] = {
-    #include "assets/levelGroup/BombLand/room5/room5.colT.inc.c"
+Vec3w BombLand_room5_ColTris[] = {
+    #include "assets/levelGroup/BombLand/room5/room5.colTris.inc.c"
 };
 
-Rect3D BombLand_room5_ColS = {
-    #include "assets/levelGroup/BombLand/room5/room5.colS.inc.c"
+Rect3D BombLand_room5_BoundBox = {
+    #include "assets/levelGroup/BombLand/room5/room5.boundBox.inc.c"
 };
 
 ModelCollision BombLand_room5_ColH = {
-36, 43, BombLand_room5_ColV, BombLand_room5_ColT, &BombLand_room5_ColS
+36, 43, BombLand_room5_ColVerts, BombLand_room5_ColTris, &BombLand_room5_BoundBox
 };
 
-Vec3f BombLand_room6_ColV[] = {
-    #include "assets/levelGroup/BombLand/room6/room6.colV.inc.c"
+Vec3f BombLand_room6_ColVerts[] = {
+    #include "assets/levelGroup/BombLand/room6/room6.colVerts.inc.c"
 };
 
-Vec3w BombLand_room6_ColT[] = {
-    #include "assets/levelGroup/BombLand/room6/room6.colT.inc.c"
+Vec3w BombLand_room6_ColTris[] = {
+    #include "assets/levelGroup/BombLand/room6/room6.colTris.inc.c"
 };
 
-Rect3D BombLand_room6_ColS = {
-    #include "assets/levelGroup/BombLand/room6/room6.colS.inc.c"
+Rect3D BombLand_room6_BoundBox = {
+    #include "assets/levelGroup/BombLand/room6/room6.boundBox.inc.c"
 };
 
 ModelCollision BombLand_room6_ColH = {
-44, 44, BombLand_room6_ColV, BombLand_room6_ColT, &BombLand_room6_ColS
+44, 44, BombLand_room6_ColVerts, BombLand_room6_ColTris, &BombLand_room6_BoundBox
 };
 
-Vec3f BombLand_room7_ColV[] = {
-    #include "assets/levelGroup/BombLand/room7/room7.colV.inc.c"
+Vec3f BombLand_room7_ColVerts[] = {
+    #include "assets/levelGroup/BombLand/room7/room7.colVerts.inc.c"
 };
 
-Vec3w BombLand_room7_ColT[] = {
-    #include "assets/levelGroup/BombLand/room7/room7.colT.inc.c"
+Vec3w BombLand_room7_ColTris[] = {
+    #include "assets/levelGroup/BombLand/room7/room7.colTris.inc.c"
 };
 
-Rect3D BombLand_room7_ColS = {
-    #include "assets/levelGroup/BombLand/room7/room7.colS.inc.c"
+Rect3D BombLand_room7_BoundBox = {
+    #include "assets/levelGroup/BombLand/room7/room7.boundBox.inc.c"
 };
 
 ModelCollision BombLand_room7_ColH = {
-38, 46, BombLand_room7_ColV, BombLand_room7_ColT, &BombLand_room7_ColS
+38, 46, BombLand_room7_ColVerts, BombLand_room7_ColTris, &BombLand_room7_BoundBox
 };
 
-Vec3f BombLand_room8_ColV[] = {
-    #include "assets/levelGroup/BombLand/room8/room8.colV.inc.c"
+Vec3f BombLand_room8_ColVerts[] = {
+    #include "assets/levelGroup/BombLand/room8/room8.colVerts.inc.c"
 };
 
-Vec3w BombLand_room8_ColT[] = {
-    #include "assets/levelGroup/BombLand/room8/room8.colT.inc.c"
+Vec3w BombLand_room8_ColTris[] = {
+    #include "assets/levelGroup/BombLand/room8/room8.colTris.inc.c"
 };
 
-Rect3D BombLand_room8_ColS = {
-    #include "assets/levelGroup/BombLand/room8/room8.colS.inc.c"
+Rect3D BombLand_room8_BoundBox = {
+    #include "assets/levelGroup/BombLand/room8/room8.boundBox.inc.c"
 };
 
 ModelCollision BombLand_room8_ColH = {
-28, 40, BombLand_room8_ColV, BombLand_room8_ColT, &BombLand_room8_ColS
+28, 40, BombLand_room8_ColVerts, BombLand_room8_ColTris, &BombLand_room8_BoundBox
 };
 
-Vec3f BombLand_room9_ColV[] = {
-    #include "assets/levelGroup/BombLand/room9/room9.colV.inc.c"
+Vec3f BombLand_room9_ColVerts[] = {
+    #include "assets/levelGroup/BombLand/room9/room9.colVerts.inc.c"
 };
 
-Vec3w BombLand_room9_ColT[] = {
-    #include "assets/levelGroup/BombLand/room9/room9.colT.inc.c"
+Vec3w BombLand_room9_ColTris[] = {
+    #include "assets/levelGroup/BombLand/room9/room9.colTris.inc.c"
 };
 
-Rect3D BombLand_room9_ColS = {
-    #include "assets/levelGroup/BombLand/room9/room9.colS.inc.c"
+Rect3D BombLand_room9_BoundBox = {
+    #include "assets/levelGroup/BombLand/room9/room9.boundBox.inc.c"
 };
 
 ModelCollision BombLand_room9_ColH = {
-36, 52, BombLand_room9_ColV, BombLand_room9_ColT, &BombLand_room9_ColS
+36, 52, BombLand_room9_ColVerts, BombLand_room9_ColTris, &BombLand_room9_BoundBox
 };
 
-Vec3f BombLand_room10_ColV[] = {
-    #include "assets/levelGroup/BombLand/room10/room10.colV.inc.c"
+Vec3f BombLand_room10_ColVerts[] = {
+    #include "assets/levelGroup/BombLand/room10/room10.colVerts.inc.c"
 };
 
-Vec3w BombLand_room10_ColT[] = {
-    #include "assets/levelGroup/BombLand/room10/room10.colT.inc.c"
+Vec3w BombLand_room10_ColTris[] = {
+    #include "assets/levelGroup/BombLand/room10/room10.colTris.inc.c"
 };
 
-Rect3D BombLand_room10_ColS = {
-    #include "assets/levelGroup/BombLand/room10/room10.colS.inc.c"
+Rect3D BombLand_room10_BoundBox = {
+    #include "assets/levelGroup/BombLand/room10/room10.boundBox.inc.c"
 };
 
 ModelCollision BombLand_room10_ColH = {
-31, 41, BombLand_room10_ColV, BombLand_room10_ColT, &BombLand_room10_ColS
+31, 41, BombLand_room10_ColVerts, BombLand_room10_ColTris, &BombLand_room10_BoundBox
 };
 
-Vec3f BombLand_room11_ColV[] = {
-    #include "assets/levelGroup/BombLand/room11/room11.colV.inc.c"
+Vec3f BombLand_room11_ColVerts[] = {
+    #include "assets/levelGroup/BombLand/room11/room11.colVerts.inc.c"
 };
 
-Vec3w BombLand_room11_ColT[] = {
-    #include "assets/levelGroup/BombLand/room11/room11.colT.inc.c"
+Vec3w BombLand_room11_ColTris[] = {
+    #include "assets/levelGroup/BombLand/room11/room11.colTris.inc.c"
 };
 
-Rect3D BombLand_room11_ColS = {
-    #include "assets/levelGroup/BombLand/room11/room11.colS.inc.c"
+Rect3D BombLand_room11_BoundBox = {
+    #include "assets/levelGroup/BombLand/room11/room11.boundBox.inc.c"
 };
 
 ModelCollision BombLand_room11_ColH = {
-44, 42, BombLand_room11_ColV, BombLand_room11_ColT, &BombLand_room11_ColS
+44, 42, BombLand_room11_ColVerts, BombLand_room11_ColTris, &BombLand_room11_BoundBox
 };
 
-Vec3f BombLand_room12_ColV[] = {
-    #include "assets/levelGroup/BombLand/room12/room12.colV.inc.c"
+Vec3f BombLand_room12_ColVerts[] = {
+    #include "assets/levelGroup/BombLand/room12/room12.colVerts.inc.c"
 };
 
-Vec3w BombLand_room12_ColT[] = {
-    #include "assets/levelGroup/BombLand/room12/room12.colT.inc.c"
+Vec3w BombLand_room12_ColTris[] = {
+    #include "assets/levelGroup/BombLand/room12/room12.colTris.inc.c"
 };
 
-Rect3D BombLand_room12_ColS = {
-    #include "assets/levelGroup/BombLand/room12/room12.colS.inc.c"
+Rect3D BombLand_room12_BoundBox = {
+    #include "assets/levelGroup/BombLand/room12/room12.boundBox.inc.c"
 };
 
 ModelCollision BombLand_room12_ColH = {
-38, 46, BombLand_room12_ColV, BombLand_room12_ColT, &BombLand_room12_ColS
+38, 46, BombLand_room12_ColVerts, BombLand_room12_ColTris, &BombLand_room12_BoundBox
 };
 
-Vec3f BombLand_room13_ColV[] = {
-    #include "assets/levelGroup/BombLand/room13/room13.colV.inc.c"
+Vec3f BombLand_room13_ColVerts[] = {
+    #include "assets/levelGroup/BombLand/room13/room13.colVerts.inc.c"
 };
 
-Vec3w BombLand_room13_ColT[] = {
-    #include "assets/levelGroup/BombLand/room13/room13.colT.inc.c"
+Vec3w BombLand_room13_ColTris[] = {
+    #include "assets/levelGroup/BombLand/room13/room13.colTris.inc.c"
 };
 
-Rect3D BombLand_room13_ColS = {
-    #include "assets/levelGroup/BombLand/room13/room13.colS.inc.c"
+Rect3D BombLand_room13_BoundBox = {
+    #include "assets/levelGroup/BombLand/room13/room13.boundBox.inc.c"
 };
 
 ModelCollision BombLand_room13_ColH = {
-32, 44, BombLand_room13_ColV, BombLand_room13_ColT, &BombLand_room13_ColS
+32, 44, BombLand_room13_ColVerts, BombLand_room13_ColTris, &BombLand_room13_BoundBox
 };
 
-Vec3f BombLand_room15Floor_ColV[] = {
-    #include "assets/levelGroup/BombLand/room15Floor/room15Floor.colV.inc.c"
+Vec3f BombLand_room15Floor_ColVerts[] = {
+    #include "assets/levelGroup/BombLand/room15Floor/room15Floor.colVerts.inc.c"
 };
 
-Vec3w BombLand_room15Floor_ColT[] = {
-    #include "assets/levelGroup/BombLand/room15Floor/room15Floor.colT.inc.c"
+Vec3w BombLand_room15Floor_ColTris[] = {
+    #include "assets/levelGroup/BombLand/room15Floor/room15Floor.colTris.inc.c"
 };
 
-Rect3D BombLand_room15Floor_ColS = {
-    #include "assets/levelGroup/BombLand/room15Floor/room15Floor.colS.inc.c"
+Rect3D BombLand_room15Floor_BoundBox = {
+    #include "assets/levelGroup/BombLand/room15Floor/room15Floor.boundBox.inc.c"
 };
 
 ModelCollision BombLand_room15Floor_ColH = {
-8, 10, BombLand_room15Floor_ColV, BombLand_room15Floor_ColT, &BombLand_room15Floor_ColS
+8, 10, BombLand_room15Floor_ColVerts, BombLand_room15Floor_ColTris, &BombLand_room15Floor_BoundBox
 };
 
-Vec3f BombLand_room15_ColV[] = {
-    #include "assets/levelGroup/BombLand/room15/room15.colV.inc.c"
+Vec3f BombLand_room15_ColVerts[] = {
+    #include "assets/levelGroup/BombLand/room15/room15.colVerts.inc.c"
 };
 
-Vec3w BombLand_room15_ColT[] = {
-    #include "assets/levelGroup/BombLand/room15/room15.colT.inc.c"
+Vec3w BombLand_room15_ColTris[] = {
+    #include "assets/levelGroup/BombLand/room15/room15.colTris.inc.c"
 };
 
-Rect3D BombLand_room15_ColS = {
-    #include "assets/levelGroup/BombLand/room15/room15.colS.inc.c"
+Rect3D BombLand_room15_BoundBox = {
+    #include "assets/levelGroup/BombLand/room15/room15.boundBox.inc.c"
 };
 
 ModelCollision BombLand_room15_ColH = {
-16, 24, BombLand_room15_ColV, BombLand_room15_ColT, &BombLand_room15_ColS
+16, 24, BombLand_room15_ColVerts, BombLand_room15_ColTris, &BombLand_room15_BoundBox
 };
 
-Vec3f BombLand_room0Pipe_ColV[] = {
-    #include "assets/levelGroup/BombLand/room0Pipe/room0Pipe.colV.inc.c"
+Vec3f BombLand_room0Pipe_ColVerts[] = {
+    #include "assets/levelGroup/BombLand/room0Pipe/room0Pipe.colVerts.inc.c"
 };
 
-Vec3w BombLand_room0Pipe_ColT[] = {
-    #include "assets/levelGroup/BombLand/room0Pipe/room0Pipe.colT.inc.c"
+Vec3w BombLand_room0Pipe_ColTris[] = {
+    #include "assets/levelGroup/BombLand/room0Pipe/room0Pipe.colTris.inc.c"
 };
 
-Rect3D BombLand_room0Pipe_ColS = {
-    #include "assets/levelGroup/BombLand/room0Pipe/room0Pipe.colS.inc.c"
+Rect3D BombLand_room0Pipe_BoundBox = {
+    #include "assets/levelGroup/BombLand/room0Pipe/room0Pipe.boundBox.inc.c"
 };
 
 ModelCollision BombLand_room0Pipe_ColH = {
-22, 36, BombLand_room0Pipe_ColV, BombLand_room0Pipe_ColT, &BombLand_room0Pipe_ColS
+22, 36, BombLand_room0Pipe_ColVerts, BombLand_room0Pipe_ColTris, &BombLand_room0Pipe_BoundBox
 };
 
-Vec3f BombLand_room1Floor_ColV[] = {
-    #include "assets/levelGroup/BombLand/room1Floor/room1Floor.colV.inc.c"
+Vec3f BombLand_room1Floor_ColVerts[] = {
+    #include "assets/levelGroup/BombLand/room1Floor/room1Floor.colVerts.inc.c"
 };
 
-Vec3w BombLand_room1Floor_ColT[] = {
-    #include "assets/levelGroup/BombLand/room1Floor/room1Floor.colT.inc.c"
+Vec3w BombLand_room1Floor_ColTris[] = {
+    #include "assets/levelGroup/BombLand/room1Floor/room1Floor.colTris.inc.c"
 };
 
-Rect3D BombLand_room1Floor_ColS = {
-    #include "assets/levelGroup/BombLand/room1Floor/room1Floor.colS.inc.c"
+Rect3D BombLand_room1Floor_BoundBox = {
+    #include "assets/levelGroup/BombLand/room1Floor/room1Floor.boundBox.inc.c"
 };
 
 ModelCollision BombLand_room1Floor_ColH = {
-64, 99, BombLand_room1Floor_ColV, BombLand_room1Floor_ColT, &BombLand_room1Floor_ColS
+64, 99, BombLand_room1Floor_ColVerts, BombLand_room1Floor_ColTris, &BombLand_room1Floor_BoundBox
 };
 
-Vec3f BombLand_block_ColV[] = {
-    #include "assets/levelGroup/BombLand/block/block.colV.inc.c"
+Vec3f BombLand_block_ColVerts[] = {
+    #include "assets/levelGroup/BombLand/block/block.colVerts.inc.c"
 };
 
-Vec3w BombLand_block_ColT[] = {
-    #include "assets/levelGroup/BombLand/block/block.colT.inc.c"
+Vec3w BombLand_block_ColTris[] = {
+    #include "assets/levelGroup/BombLand/block/block.colTris.inc.c"
 };
 
-Rect3D BombLand_block_ColS = {
-    #include "assets/levelGroup/BombLand/block/block.colS.inc.c"
+Rect3D BombLand_block_BoundBox = {
+    #include "assets/levelGroup/BombLand/block/block.boundBox.inc.c"
 };
 
 ModelCollision BombLand_block_ColH = {
-8, 10, BombLand_block_ColV, BombLand_block_ColT, &BombLand_block_ColS
+8, 10, BombLand_block_ColVerts, BombLand_block_ColTris, &BombLand_block_BoundBox
 };
 
-Vec3f BombLand_breakableBlockSides_ColV[] = {
-    #include "assets/levelGroup/BombLand/breakableBlockSides/breakableBlockSides.colV.inc.c"
+Vec3f BombLand_breakableBlockSides_ColVerts[] = {
+    #include "assets/levelGroup/BombLand/breakableBlockSides/breakableBlockSides.colVerts.inc.c"
 };
 
-Vec3w BombLand_breakableBlockSides_ColT[] = {
-    #include "assets/levelGroup/BombLand/breakableBlockSides/breakableBlockSides.colT.inc.c"
+Vec3w BombLand_breakableBlockSides_ColTris[] = {
+    #include "assets/levelGroup/BombLand/breakableBlockSides/breakableBlockSides.colTris.inc.c"
 };
 
-Rect3D BombLand_breakableBlockSides_ColS = {
-    #include "assets/levelGroup/BombLand/breakableBlockSides/breakableBlockSides.colS.inc.c"
+Rect3D BombLand_breakableBlockSides_BoundBox = {
+    #include "assets/levelGroup/BombLand/breakableBlockSides/breakableBlockSides.boundBox.inc.c"
 };
 
 ModelCollision BombLand_breakableBlockSides_ColH = {
-8, 8, BombLand_breakableBlockSides_ColV, BombLand_breakableBlockSides_ColT, &BombLand_breakableBlockSides_ColS
+8, 8, BombLand_breakableBlockSides_ColVerts, BombLand_breakableBlockSides_ColTris, &BombLand_breakableBlockSides_BoundBox
 };
 
-Vec3f BombLand_room3Start_ColV[] = {
-    #include "assets/levelGroup/BombLand/room3Start/room3Start.colV.inc.c"
+Vec3f BombLand_room3Start_ColVerts[] = {
+    #include "assets/levelGroup/BombLand/room3Start/room3Start.colVerts.inc.c"
 };
 
-Vec3w BombLand_room3Start_ColT[] = {
-    #include "assets/levelGroup/BombLand/room3Start/room3Start.colT.inc.c"
+Vec3w BombLand_room3Start_ColTris[] = {
+    #include "assets/levelGroup/BombLand/room3Start/room3Start.colTris.inc.c"
 };
 
-Rect3D BombLand_room3Start_ColS = {
-    #include "assets/levelGroup/BombLand/room3Start/room3Start.colS.inc.c"
+Rect3D BombLand_room3Start_BoundBox = {
+    #include "assets/levelGroup/BombLand/room3Start/room3Start.boundBox.inc.c"
 };
 
 ModelCollision BombLand_room3Start_ColH = {
-8, 8, BombLand_room3Start_ColV, BombLand_room3Start_ColT, &BombLand_room3Start_ColS
+8, 8, BombLand_room3Start_ColVerts, BombLand_room3Start_ColTris, &BombLand_room3Start_BoundBox
 };
 
-Vec3f BombLand_room3End_ColV[] = {
-    #include "assets/levelGroup/BombLand/room3End/room3End.colV.inc.c"
+Vec3f BombLand_room3End_ColVerts[] = {
+    #include "assets/levelGroup/BombLand/room3End/room3End.colVerts.inc.c"
 };
 
-Vec3w BombLand_room3End_ColT[] = {
-    #include "assets/levelGroup/BombLand/room3End/room3End.colT.inc.c"
+Vec3w BombLand_room3End_ColTris[] = {
+    #include "assets/levelGroup/BombLand/room3End/room3End.colTris.inc.c"
 };
 
-Rect3D BombLand_room3End_ColS = {
-    #include "assets/levelGroup/BombLand/room3End/room3End.colS.inc.c"
+Rect3D BombLand_room3End_BoundBox = {
+    #include "assets/levelGroup/BombLand/room3End/room3End.boundBox.inc.c"
 };
 
 ModelCollision BombLand_room3End_ColH = {
-12, 14, BombLand_room3End_ColV, BombLand_room3End_ColT, &BombLand_room3End_ColS
+12, 14, BombLand_room3End_ColVerts, BombLand_room3End_ColTris, &BombLand_room3End_BoundBox
 };
 
-Vec3f BombLand_block2Maybe_ColV[] = {
-    #include "assets/levelGroup/BombLand/block2Maybe/block2Maybe.colV.inc.c"
+Vec3f BombLand_block2Maybe_ColVerts[] = {
+    #include "assets/levelGroup/BombLand/block2Maybe/block2Maybe.colVerts.inc.c"
 };
 
-Vec3w BombLand_block2Maybe_ColT[] = {
-    #include "assets/levelGroup/BombLand/block2Maybe/block2Maybe.colT.inc.c"
+Vec3w BombLand_block2Maybe_ColTris[] = {
+    #include "assets/levelGroup/BombLand/block2Maybe/block2Maybe.colTris.inc.c"
 };
 
-Rect3D BombLand_block2Maybe_ColS = {
-    #include "assets/levelGroup/BombLand/block2Maybe/block2Maybe.colS.inc.c"
+Rect3D BombLand_block2Maybe_BoundBox = {
+    #include "assets/levelGroup/BombLand/block2Maybe/block2Maybe.boundBox.inc.c"
 };
 
 ModelCollision BombLand_block2Maybe_ColH = {
-8, 10, BombLand_block2Maybe_ColV, BombLand_block2Maybe_ColT, &BombLand_block2Maybe_ColS
+8, 10, BombLand_block2Maybe_ColVerts, BombLand_block2Maybe_ColTris, &BombLand_block2Maybe_BoundBox
 };
 
-Vec3f BombLand_unusedPlatformMaybe_ColV[] = {
-    #include "assets/levelGroup/BombLand/unusedPlatformMaybe/unusedPlatformMaybe.colV.inc.c"
+Vec3f BombLand_unusedPlatformMaybe_ColVerts[] = {
+    #include "assets/levelGroup/BombLand/unusedPlatformMaybe/unusedPlatformMaybe.colVerts.inc.c"
 };
 
-Vec3w BombLand_unusedPlatformMaybe_ColT[] = {
-    #include "assets/levelGroup/BombLand/unusedPlatformMaybe/unusedPlatformMaybe.colT.inc.c"
+Vec3w BombLand_unusedPlatformMaybe_ColTris[] = {
+    #include "assets/levelGroup/BombLand/unusedPlatformMaybe/unusedPlatformMaybe.colTris.inc.c"
 };
 
-Rect3D BombLand_unusedPlatformMaybe_ColS = {
-    #include "assets/levelGroup/BombLand/unusedPlatformMaybe/unusedPlatformMaybe.colS.inc.c"
+Rect3D BombLand_unusedPlatformMaybe_BoundBox = {
+    #include "assets/levelGroup/BombLand/unusedPlatformMaybe/unusedPlatformMaybe.boundBox.inc.c"
 };
 
 ModelCollision BombLand_unusedPlatformMaybe_ColH = {
-8, 12, BombLand_unusedPlatformMaybe_ColV, BombLand_unusedPlatformMaybe_ColT, &BombLand_unusedPlatformMaybe_ColS
+8, 12, BombLand_unusedPlatformMaybe_ColVerts, BombLand_unusedPlatformMaybe_ColTris, &BombLand_unusedPlatformMaybe_BoundBox
 };
 
-Vec3f BombLand_wall_ColV[] = {
-    #include "assets/levelGroup/BombLand/wall/wall.colV.inc.c"
+Vec3f BombLand_wall_ColVerts[] = {
+    #include "assets/levelGroup/BombLand/wall/wall.colVerts.inc.c"
 };
 
-Vec3w BombLand_wall_ColT[] = {
-    #include "assets/levelGroup/BombLand/wall/wall.colT.inc.c"
+Vec3w BombLand_wall_ColTris[] = {
+    #include "assets/levelGroup/BombLand/wall/wall.colTris.inc.c"
 };
 
-Rect3D BombLand_wall_ColS = {
-    #include "assets/levelGroup/BombLand/wall/wall.colS.inc.c"
+Rect3D BombLand_wall_BoundBox = {
+    #include "assets/levelGroup/BombLand/wall/wall.boundBox.inc.c"
 };
 
 ModelCollision BombLand_wall_ColH = {
-4, 2, BombLand_wall_ColV, BombLand_wall_ColT, &BombLand_wall_ColS
+4, 2, BombLand_wall_ColVerts, BombLand_wall_ColTris, &BombLand_wall_BoundBox
 };
 
-Vec3f BombLand_room4End1_ColV[] = {
-    #include "assets/levelGroup/BombLand/room4End1/room4End1.colV.inc.c"
+Vec3f BombLand_room4End1_ColVerts[] = {
+    #include "assets/levelGroup/BombLand/room4End1/room4End1.colVerts.inc.c"
 };
 
-Vec3w BombLand_room4End1_ColT[] = {
-    #include "assets/levelGroup/BombLand/room4End1/room4End1.colT.inc.c"
+Vec3w BombLand_room4End1_ColTris[] = {
+    #include "assets/levelGroup/BombLand/room4End1/room4End1.colTris.inc.c"
 };
 
-Rect3D BombLand_room4End1_ColS = {
-    #include "assets/levelGroup/BombLand/room4End1/room4End1.colS.inc.c"
+Rect3D BombLand_room4End1_BoundBox = {
+    #include "assets/levelGroup/BombLand/room4End1/room4End1.boundBox.inc.c"
 };
 
 ModelCollision BombLand_room4End1_ColH = {
-7, 6, BombLand_room4End1_ColV, BombLand_room4End1_ColT, &BombLand_room4End1_ColS
+7, 6, BombLand_room4End1_ColVerts, BombLand_room4End1_ColTris, &BombLand_room4End1_BoundBox
 };
 
-Vec3f BombLand_room4End2_ColV[] = {
-    #include "assets/levelGroup/BombLand/room4End2/room4End2.colV.inc.c"
+Vec3f BombLand_room4End2_ColVerts[] = {
+    #include "assets/levelGroup/BombLand/room4End2/room4End2.colVerts.inc.c"
 };
 
-Vec3w BombLand_room4End2_ColT[] = {
-    #include "assets/levelGroup/BombLand/room4End2/room4End2.colT.inc.c"
+Vec3w BombLand_room4End2_ColTris[] = {
+    #include "assets/levelGroup/BombLand/room4End2/room4End2.colTris.inc.c"
 };
 
-Rect3D BombLand_room4End2_ColS = {
-    #include "assets/levelGroup/BombLand/room4End2/room4End2.colS.inc.c"
+Rect3D BombLand_room4End2_BoundBox = {
+    #include "assets/levelGroup/BombLand/room4End2/room4End2.boundBox.inc.c"
 };
 
 ModelCollision BombLand_room4End2_ColH = {
-9, 8, BombLand_room4End2_ColV, BombLand_room4End2_ColT, &BombLand_room4End2_ColS
+9, 8, BombLand_room4End2_ColVerts, BombLand_room4End2_ColTris, &BombLand_room4End2_BoundBox
 };
 
-Vec3f BombLand_room4Start_ColV[] = {
-    #include "assets/levelGroup/BombLand/room4Start/room4Start.colV.inc.c"
+Vec3f BombLand_room4Start_ColVerts[] = {
+    #include "assets/levelGroup/BombLand/room4Start/room4Start.colVerts.inc.c"
 };
 
-Vec3w BombLand_room4Start_ColT[] = {
-    #include "assets/levelGroup/BombLand/room4Start/room4Start.colT.inc.c"
+Vec3w BombLand_room4Start_ColTris[] = {
+    #include "assets/levelGroup/BombLand/room4Start/room4Start.colTris.inc.c"
 };
 
-Rect3D BombLand_room4Start_ColS = {
-    #include "assets/levelGroup/BombLand/room4Start/room4Start.colS.inc.c"
+Rect3D BombLand_room4Start_BoundBox = {
+    #include "assets/levelGroup/BombLand/room4Start/room4Start.boundBox.inc.c"
 };
 
 ModelCollision BombLand_room4Start_ColH = {
-8, 8, BombLand_room4Start_ColV, BombLand_room4Start_ColT, &BombLand_room4Start_ColS
+8, 8, BombLand_room4Start_ColVerts, BombLand_room4Start_ColTris, &BombLand_room4Start_BoundBox
 };
 
-Vec3f BombLand_room5Start_ColV[] = {
-    #include "assets/levelGroup/BombLand/room5Start/room5Start.colV.inc.c"
+Vec3f BombLand_room5Start_ColVerts[] = {
+    #include "assets/levelGroup/BombLand/room5Start/room5Start.colVerts.inc.c"
 };
 
-Vec3w BombLand_room5Start_ColT[] = {
-    #include "assets/levelGroup/BombLand/room5Start/room5Start.colT.inc.c"
+Vec3w BombLand_room5Start_ColTris[] = {
+    #include "assets/levelGroup/BombLand/room5Start/room5Start.colTris.inc.c"
 };
 
-Rect3D BombLand_room5Start_ColS = {
-    #include "assets/levelGroup/BombLand/room5Start/room5Start.colS.inc.c"
+Rect3D BombLand_room5Start_BoundBox = {
+    #include "assets/levelGroup/BombLand/room5Start/room5Start.boundBox.inc.c"
 };
 
 ModelCollision BombLand_room5Start_ColH = {
-13, 15, BombLand_room5Start_ColV, BombLand_room5Start_ColT, &BombLand_room5Start_ColS
+13, 15, BombLand_room5Start_ColVerts, BombLand_room5Start_ColTris, &BombLand_room5Start_BoundBox
 };
 
-Vec3f BombLand_room5End_ColV[] = {
-    #include "assets/levelGroup/BombLand/room5End/room5End.colV.inc.c"
+Vec3f BombLand_room5End_ColVerts[] = {
+    #include "assets/levelGroup/BombLand/room5End/room5End.colVerts.inc.c"
 };
 
-Vec3w BombLand_room5End_ColT[] = {
-    #include "assets/levelGroup/BombLand/room5End/room5End.colT.inc.c"
+Vec3w BombLand_room5End_ColTris[] = {
+    #include "assets/levelGroup/BombLand/room5End/room5End.colTris.inc.c"
 };
 
-Rect3D BombLand_room5End_ColS = {
-    #include "assets/levelGroup/BombLand/room5End/room5End.colS.inc.c"
+Rect3D BombLand_room5End_BoundBox = {
+    #include "assets/levelGroup/BombLand/room5End/room5End.boundBox.inc.c"
 };
 
 ModelCollision BombLand_room5End_ColH = {
-13, 15, BombLand_room5End_ColV, BombLand_room5End_ColT, &BombLand_room5End_ColS
+13, 15, BombLand_room5End_ColVerts, BombLand_room5End_ColTris, &BombLand_room5End_BoundBox
 };
 
-Vec3f BombLand_breakableBlock_ColV[] = {
-    #include "assets/levelGroup/BombLand/breakableBlock/breakableBlock.colV.inc.c"
+Vec3f BombLand_breakableBlock_ColVerts[] = {
+    #include "assets/levelGroup/BombLand/breakableBlock/breakableBlock.colVerts.inc.c"
 };
 
-Vec3w BombLand_breakableBlock_ColT[] = {
-    #include "assets/levelGroup/BombLand/breakableBlock/breakableBlock.colT.inc.c"
+Vec3w BombLand_breakableBlock_ColTris[] = {
+    #include "assets/levelGroup/BombLand/breakableBlock/breakableBlock.colTris.inc.c"
 };
 
-Rect3D BombLand_breakableBlock_ColS = {
-    #include "assets/levelGroup/BombLand/breakableBlock/breakableBlock.colS.inc.c"
+Rect3D BombLand_breakableBlock_BoundBox = {
+    #include "assets/levelGroup/BombLand/breakableBlock/breakableBlock.boundBox.inc.c"
 };
 
 ModelCollision BombLand_breakableBlock_ColH = {
-8, 10, BombLand_breakableBlock_ColV, BombLand_breakableBlock_ColT, &BombLand_breakableBlock_ColS
+8, 10, BombLand_breakableBlock_ColVerts, BombLand_breakableBlock_ColTris, &BombLand_breakableBlock_BoundBox
 };
 
-Vec3f BombLand_breakableBlockStack_ColV[] = {
-    #include "assets/levelGroup/BombLand/breakableBlockStack/breakableBlockStack.colV.inc.c"
+Vec3f BombLand_breakableBlockStack_ColVerts[] = {
+    #include "assets/levelGroup/BombLand/breakableBlockStack/breakableBlockStack.colVerts.inc.c"
 };
 
-Vec3w BombLand_breakableBlockStack_ColT[] = {
-    #include "assets/levelGroup/BombLand/breakableBlockStack/breakableBlockStack.colT.inc.c"
+Vec3w BombLand_breakableBlockStack_ColTris[] = {
+    #include "assets/levelGroup/BombLand/breakableBlockStack/breakableBlockStack.colTris.inc.c"
 };
 
-Rect3D BombLand_breakableBlockStack_ColS = {
-    #include "assets/levelGroup/BombLand/breakableBlockStack/breakableBlockStack.colS.inc.c"
+Rect3D BombLand_breakableBlockStack_BoundBox = {
+    #include "assets/levelGroup/BombLand/breakableBlockStack/breakableBlockStack.boundBox.inc.c"
 };
 
 ModelCollision BombLand_breakableBlockStack_ColH = {
-8, 10, BombLand_breakableBlockStack_ColV, BombLand_breakableBlockStack_ColT, &BombLand_breakableBlockStack_ColS
+8, 10, BombLand_breakableBlockStack_ColVerts, BombLand_breakableBlockStack_ColTris, &BombLand_breakableBlockStack_BoundBox
 };
 
-Vec3f BombLand_room7Start_ColV[] = {
-    #include "assets/levelGroup/BombLand/room7Start/room7Start.colV.inc.c"
+Vec3f BombLand_room7Start_ColVerts[] = {
+    #include "assets/levelGroup/BombLand/room7Start/room7Start.colVerts.inc.c"
 };
 
-Vec3w BombLand_room7Start_ColT[] = {
-    #include "assets/levelGroup/BombLand/room7Start/room7Start.colT.inc.c"
+Vec3w BombLand_room7Start_ColTris[] = {
+    #include "assets/levelGroup/BombLand/room7Start/room7Start.colTris.inc.c"
 };
 
-Rect3D BombLand_room7Start_ColS = {
-    #include "assets/levelGroup/BombLand/room7Start/room7Start.colS.inc.c"
+Rect3D BombLand_room7Start_BoundBox = {
+    #include "assets/levelGroup/BombLand/room7Start/room7Start.boundBox.inc.c"
 };
 
 ModelCollision BombLand_room7Start_ColH = {
-6, 4, BombLand_room7Start_ColV, BombLand_room7Start_ColT, &BombLand_room7Start_ColS
+6, 4, BombLand_room7Start_ColVerts, BombLand_room7Start_ColTris, &BombLand_room7Start_BoundBox
 };
 
-Vec3f BombLand_room7End_ColV[] = {
-    #include "assets/levelGroup/BombLand/room7End/room7End.colV.inc.c"
+Vec3f BombLand_room7End_ColVerts[] = {
+    #include "assets/levelGroup/BombLand/room7End/room7End.colVerts.inc.c"
 };
 
-Vec3w BombLand_room7End_ColT[] = {
-    #include "assets/levelGroup/BombLand/room7End/room7End.colT.inc.c"
+Vec3w BombLand_room7End_ColTris[] = {
+    #include "assets/levelGroup/BombLand/room7End/room7End.colTris.inc.c"
 };
 
-Rect3D BombLand_room7End_ColS = {
-    #include "assets/levelGroup/BombLand/room7End/room7End.colS.inc.c"
+Rect3D BombLand_room7End_BoundBox = {
+    #include "assets/levelGroup/BombLand/room7End/room7End.boundBox.inc.c"
 };
 
 ModelCollision BombLand_room7End_ColH = {
-6, 4, BombLand_room7End_ColV, BombLand_room7End_ColT, &BombLand_room7End_ColS
+6, 4, BombLand_room7End_ColVerts, BombLand_room7End_ColTris, &BombLand_room7End_BoundBox
 };
 
-Vec3f BombLand_breakableBlockSide1_ColV[] = {
-    #include "assets/levelGroup/BombLand/breakableBlockSide1/breakableBlockSide1.colV.inc.c"
+Vec3f BombLand_breakableBlockSide1_ColVerts[] = {
+    #include "assets/levelGroup/BombLand/breakableBlockSide1/breakableBlockSide1.colVerts.inc.c"
 };
 
-Vec3w BombLand_breakableBlockSide1_ColT[] = {
-    #include "assets/levelGroup/BombLand/breakableBlockSide1/breakableBlockSide1.colT.inc.c"
+Vec3w BombLand_breakableBlockSide1_ColTris[] = {
+    #include "assets/levelGroup/BombLand/breakableBlockSide1/breakableBlockSide1.colTris.inc.c"
 };
 
-Rect3D BombLand_breakableBlockSide1_ColS = {
-    #include "assets/levelGroup/BombLand/breakableBlockSide1/breakableBlockSide1.colS.inc.c"
+Rect3D BombLand_breakableBlockSide1_BoundBox = {
+    #include "assets/levelGroup/BombLand/breakableBlockSide1/breakableBlockSide1.boundBox.inc.c"
 };
 
 ModelCollision BombLand_breakableBlockSide1_ColH = {
-4, 2, BombLand_breakableBlockSide1_ColV, BombLand_breakableBlockSide1_ColT, &BombLand_breakableBlockSide1_ColS
+4, 2, BombLand_breakableBlockSide1_ColVerts, BombLand_breakableBlockSide1_ColTris, &BombLand_breakableBlockSide1_BoundBox
 };
 
-Vec3f BombLand_breakableBlockSide2_ColV[] = {
-    #include "assets/levelGroup/BombLand/breakableBlockSide2/breakableBlockSide2.colV.inc.c"
+Vec3f BombLand_breakableBlockSide2_ColVerts[] = {
+    #include "assets/levelGroup/BombLand/breakableBlockSide2/breakableBlockSide2.colVerts.inc.c"
 };
 
-Vec3w BombLand_breakableBlockSide2_ColT[] = {
-    #include "assets/levelGroup/BombLand/breakableBlockSide2/breakableBlockSide2.colT.inc.c"
+Vec3w BombLand_breakableBlockSide2_ColTris[] = {
+    #include "assets/levelGroup/BombLand/breakableBlockSide2/breakableBlockSide2.colTris.inc.c"
 };
 
-Rect3D BombLand_breakableBlockSide2_ColS = {
-    #include "assets/levelGroup/BombLand/breakableBlockSide2/breakableBlockSide2.colS.inc.c"
+Rect3D BombLand_breakableBlockSide2_BoundBox = {
+    #include "assets/levelGroup/BombLand/breakableBlockSide2/breakableBlockSide2.boundBox.inc.c"
 };
 
 ModelCollision BombLand_breakableBlockSide2_ColH = {
-4, 2, BombLand_breakableBlockSide2_ColV, BombLand_breakableBlockSide2_ColT, &BombLand_breakableBlockSide2_ColS
+4, 2, BombLand_breakableBlockSide2_ColVerts, BombLand_breakableBlockSide2_ColTris, &BombLand_breakableBlockSide2_BoundBox
 };
 
-Vec3f BombLand_breakableBlockSide3_ColV[] = {
-    #include "assets/levelGroup/BombLand/breakableBlockSide3/breakableBlockSide3.colV.inc.c"
+Vec3f BombLand_breakableBlockSide3_ColVerts[] = {
+    #include "assets/levelGroup/BombLand/breakableBlockSide3/breakableBlockSide3.colVerts.inc.c"
 };
 
-Vec3w BombLand_breakableBlockSide3_ColT[] = {
-    #include "assets/levelGroup/BombLand/breakableBlockSide3/breakableBlockSide3.colT.inc.c"
+Vec3w BombLand_breakableBlockSide3_ColTris[] = {
+    #include "assets/levelGroup/BombLand/breakableBlockSide3/breakableBlockSide3.colTris.inc.c"
 };
 
-Rect3D BombLand_breakableBlockSide3_ColS = {
-    #include "assets/levelGroup/BombLand/breakableBlockSide3/breakableBlockSide3.colS.inc.c"
+Rect3D BombLand_breakableBlockSide3_BoundBox = {
+    #include "assets/levelGroup/BombLand/breakableBlockSide3/breakableBlockSide3.boundBox.inc.c"
 };
 
 ModelCollision BombLand_breakableBlockSide3_ColH = {
-4, 2, BombLand_breakableBlockSide3_ColV, BombLand_breakableBlockSide3_ColT, &BombLand_breakableBlockSide3_ColS
+4, 2, BombLand_breakableBlockSide3_ColVerts, BombLand_breakableBlockSide3_ColTris, &BombLand_breakableBlockSide3_BoundBox
 };
 
-Vec3f BombLand_breakableBlockSide4_ColV[] = {
-    #include "assets/levelGroup/BombLand/breakableBlockSide4/breakableBlockSide4.colV.inc.c"
+Vec3f BombLand_breakableBlockSide4_ColVerts[] = {
+    #include "assets/levelGroup/BombLand/breakableBlockSide4/breakableBlockSide4.colVerts.inc.c"
 };
 
-Vec3w BombLand_breakableBlockSide4_ColT[] = {
-    #include "assets/levelGroup/BombLand/breakableBlockSide4/breakableBlockSide4.colT.inc.c"
+Vec3w BombLand_breakableBlockSide4_ColTris[] = {
+    #include "assets/levelGroup/BombLand/breakableBlockSide4/breakableBlockSide4.colTris.inc.c"
 };
 
-Rect3D BombLand_breakableBlockSide4_ColS = {
-    #include "assets/levelGroup/BombLand/breakableBlockSide4/breakableBlockSide4.colS.inc.c"
+Rect3D BombLand_breakableBlockSide4_BoundBox = {
+    #include "assets/levelGroup/BombLand/breakableBlockSide4/breakableBlockSide4.boundBox.inc.c"
 };
 
 ModelCollision BombLand_breakableBlockSide4_ColH = {
-4, 2, BombLand_breakableBlockSide4_ColV, BombLand_breakableBlockSide4_ColT, &BombLand_breakableBlockSide4_ColS
+4, 2, BombLand_breakableBlockSide4_ColVerts, BombLand_breakableBlockSide4_ColTris, &BombLand_breakableBlockSide4_BoundBox
 };
 
-Vec3f BombLand_blockPlatform_ColV[] = {
-    #include "assets/levelGroup/BombLand/blockPlatform/blockPlatform.colV.inc.c"
+Vec3f BombLand_blockPlatform_ColVerts[] = {
+    #include "assets/levelGroup/BombLand/blockPlatform/blockPlatform.colVerts.inc.c"
 };
 
-Vec3w BombLand_blockPlatform_ColT[] = {
-    #include "assets/levelGroup/BombLand/blockPlatform/blockPlatform.colT.inc.c"
+Vec3w BombLand_blockPlatform_ColTris[] = {
+    #include "assets/levelGroup/BombLand/blockPlatform/blockPlatform.colTris.inc.c"
 };
 
-Rect3D BombLand_blockPlatform_ColS = {
-    #include "assets/levelGroup/BombLand/blockPlatform/blockPlatform.colS.inc.c"
+Rect3D BombLand_blockPlatform_BoundBox = {
+    #include "assets/levelGroup/BombLand/blockPlatform/blockPlatform.boundBox.inc.c"
 };
 
 ModelCollision BombLand_blockPlatform_ColH = {
-8, 10, BombLand_blockPlatform_ColV, BombLand_blockPlatform_ColT, &BombLand_blockPlatform_ColS
+8, 10, BombLand_blockPlatform_ColVerts, BombLand_blockPlatform_ColTris, &BombLand_blockPlatform_BoundBox
 };
 
-Vec3f BombLand_breakableBlock2_ColV[] = {
-    #include "assets/levelGroup/BombLand/breakableBlock2/breakableBlock2.colV.inc.c"
+Vec3f BombLand_breakableBlock2_ColVerts[] = {
+    #include "assets/levelGroup/BombLand/breakableBlock2/breakableBlock2.colVerts.inc.c"
 };
 
-Vec3w BombLand_breakableBlock2_ColT[] = {
-    #include "assets/levelGroup/BombLand/breakableBlock2/breakableBlock2.colT.inc.c"
+Vec3w BombLand_breakableBlock2_ColTris[] = {
+    #include "assets/levelGroup/BombLand/breakableBlock2/breakableBlock2.colTris.inc.c"
 };
 
-Rect3D BombLand_breakableBlock2_ColS = {
-    #include "assets/levelGroup/BombLand/breakableBlock2/breakableBlock2.colS.inc.c"
+Rect3D BombLand_breakableBlock2_BoundBox = {
+    #include "assets/levelGroup/BombLand/breakableBlock2/breakableBlock2.boundBox.inc.c"
 };
 
 ModelCollision BombLand_breakableBlock2_ColH = {
-8, 10, BombLand_breakableBlock2_ColV, BombLand_breakableBlock2_ColT, &BombLand_breakableBlock2_ColS
+8, 10, BombLand_breakableBlock2_ColVerts, BombLand_breakableBlock2_ColTris, &BombLand_breakableBlock2_BoundBox
 };
 
-Vec3f BombLand_room8Start_ColV[] = {
-    #include "assets/levelGroup/BombLand/room8Start/room8Start.colV.inc.c"
+Vec3f BombLand_room8Start_ColVerts[] = {
+    #include "assets/levelGroup/BombLand/room8Start/room8Start.colVerts.inc.c"
 };
 
-Vec3w BombLand_room8Start_ColT[] = {
-    #include "assets/levelGroup/BombLand/room8Start/room8Start.colT.inc.c"
+Vec3w BombLand_room8Start_ColTris[] = {
+    #include "assets/levelGroup/BombLand/room8Start/room8Start.colTris.inc.c"
 };
 
-Rect3D BombLand_room8Start_ColS = {
-    #include "assets/levelGroup/BombLand/room8Start/room8Start.colS.inc.c"
+Rect3D BombLand_room8Start_BoundBox = {
+    #include "assets/levelGroup/BombLand/room8Start/room8Start.boundBox.inc.c"
 };
 
 ModelCollision BombLand_room8Start_ColH = {
-8, 8, BombLand_room8Start_ColV, BombLand_room8Start_ColT, &BombLand_room8Start_ColS
+8, 8, BombLand_room8Start_ColVerts, BombLand_room8Start_ColTris, &BombLand_room8Start_BoundBox
 };
 
-Vec3f BombLand_room8End_ColV[] = {
-    #include "assets/levelGroup/BombLand/room8End/room8End.colV.inc.c"
+Vec3f BombLand_room8End_ColVerts[] = {
+    #include "assets/levelGroup/BombLand/room8End/room8End.colVerts.inc.c"
 };
 
-Vec3w BombLand_room8End_ColT[] = {
-    #include "assets/levelGroup/BombLand/room8End/room8End.colT.inc.c"
+Vec3w BombLand_room8End_ColTris[] = {
+    #include "assets/levelGroup/BombLand/room8End/room8End.colTris.inc.c"
 };
 
-Rect3D BombLand_room8End_ColS = {
-    #include "assets/levelGroup/BombLand/room8End/room8End.colS.inc.c"
+Rect3D BombLand_room8End_BoundBox = {
+    #include "assets/levelGroup/BombLand/room8End/room8End.boundBox.inc.c"
 };
 
 ModelCollision BombLand_room8End_ColH = {
-12, 14, BombLand_room8End_ColV, BombLand_room8End_ColT, &BombLand_room8End_ColS
+12, 14, BombLand_room8End_ColVerts, BombLand_room8End_ColTris, &BombLand_room8End_BoundBox
 };
 
-Vec3f BombLand_room9End1_ColV[] = {
-    #include "assets/levelGroup/BombLand/room9End1/room9End1.colV.inc.c"
+Vec3f BombLand_room9End1_ColVerts[] = {
+    #include "assets/levelGroup/BombLand/room9End1/room9End1.colVerts.inc.c"
 };
 
-Vec3w BombLand_room9End1_ColT[] = {
-    #include "assets/levelGroup/BombLand/room9End1/room9End1.colT.inc.c"
+Vec3w BombLand_room9End1_ColTris[] = {
+    #include "assets/levelGroup/BombLand/room9End1/room9End1.colTris.inc.c"
 };
 
-Rect3D BombLand_room9End1_ColS = {
-    #include "assets/levelGroup/BombLand/room9End1/room9End1.colS.inc.c"
+Rect3D BombLand_room9End1_BoundBox = {
+    #include "assets/levelGroup/BombLand/room9End1/room9End1.boundBox.inc.c"
 };
 
 ModelCollision BombLand_room9End1_ColH = {
-7, 6, BombLand_room9End1_ColV, BombLand_room9End1_ColT, &BombLand_room9End1_ColS
+7, 6, BombLand_room9End1_ColVerts, BombLand_room9End1_ColTris, &BombLand_room9End1_BoundBox
 };
 
-Vec3f BombLand_room9End2_ColV[] = {
-    #include "assets/levelGroup/BombLand/room9End2/room9End2.colV.inc.c"
+Vec3f BombLand_room9End2_ColVerts[] = {
+    #include "assets/levelGroup/BombLand/room9End2/room9End2.colVerts.inc.c"
 };
 
-Vec3w BombLand_room9End2_ColT[] = {
-    #include "assets/levelGroup/BombLand/room9End2/room9End2.colT.inc.c"
+Vec3w BombLand_room9End2_ColTris[] = {
+    #include "assets/levelGroup/BombLand/room9End2/room9End2.colTris.inc.c"
 };
 
-Rect3D BombLand_room9End2_ColS = {
-    #include "assets/levelGroup/BombLand/room9End2/room9End2.colS.inc.c"
+Rect3D BombLand_room9End2_BoundBox = {
+    #include "assets/levelGroup/BombLand/room9End2/room9End2.boundBox.inc.c"
 };
 
 ModelCollision BombLand_room9End2_ColH = {
-9, 8, BombLand_room9End2_ColV, BombLand_room9End2_ColT, &BombLand_room9End2_ColS
+9, 8, BombLand_room9End2_ColVerts, BombLand_room9End2_ColTris, &BombLand_room9End2_BoundBox
 };
 
-Vec3f BombLand_room9Start_ColV[] = {
-    #include "assets/levelGroup/BombLand/room9Start/room9Start.colV.inc.c"
+Vec3f BombLand_room9Start_ColVerts[] = {
+    #include "assets/levelGroup/BombLand/room9Start/room9Start.colVerts.inc.c"
 };
 
-Vec3w BombLand_room9Start_ColT[] = {
-    #include "assets/levelGroup/BombLand/room9Start/room9Start.colT.inc.c"
+Vec3w BombLand_room9Start_ColTris[] = {
+    #include "assets/levelGroup/BombLand/room9Start/room9Start.colTris.inc.c"
 };
 
-Rect3D BombLand_room9Start_ColS = {
-    #include "assets/levelGroup/BombLand/room9Start/room9Start.colS.inc.c"
+Rect3D BombLand_room9Start_BoundBox = {
+    #include "assets/levelGroup/BombLand/room9Start/room9Start.boundBox.inc.c"
 };
 
 ModelCollision BombLand_room9Start_ColH = {
-8, 8, BombLand_room9Start_ColV, BombLand_room9Start_ColT, &BombLand_room9Start_ColS
+8, 8, BombLand_room9Start_ColVerts, BombLand_room9Start_ColTris, &BombLand_room9Start_BoundBox
 };
 
-Vec3f BombLand_room10Floor_ColV[] = {
-    #include "assets/levelGroup/BombLand/room10Floor/room10Floor.colV.inc.c"
+Vec3f BombLand_room10Floor_ColVerts[] = {
+    #include "assets/levelGroup/BombLand/room10Floor/room10Floor.colVerts.inc.c"
 };
 
-Vec3w BombLand_room10Floor_ColT[] = {
-    #include "assets/levelGroup/BombLand/room10Floor/room10Floor.colT.inc.c"
+Vec3w BombLand_room10Floor_ColTris[] = {
+    #include "assets/levelGroup/BombLand/room10Floor/room10Floor.colTris.inc.c"
 };
 
-Rect3D BombLand_room10Floor_ColS = {
-    #include "assets/levelGroup/BombLand/room10Floor/room10Floor.colS.inc.c"
+Rect3D BombLand_room10Floor_BoundBox = {
+    #include "assets/levelGroup/BombLand/room10Floor/room10Floor.boundBox.inc.c"
 };
 
 ModelCollision BombLand_room10Floor_ColH = {
-24, 24, BombLand_room10Floor_ColV, BombLand_room10Floor_ColT, &BombLand_room10Floor_ColS
+24, 24, BombLand_room10Floor_ColVerts, BombLand_room10Floor_ColTris, &BombLand_room10Floor_BoundBox
 };
 
-Vec3f BombLand_room10Platform_ColV[] = {
-    #include "assets/levelGroup/BombLand/room10Platform/room10Platform.colV.inc.c"
+Vec3f BombLand_room10Platform_ColVerts[] = {
+    #include "assets/levelGroup/BombLand/room10Platform/room10Platform.colVerts.inc.c"
 };
 
-Vec3w BombLand_room10Platform_ColT[] = {
-    #include "assets/levelGroup/BombLand/room10Platform/room10Platform.colT.inc.c"
+Vec3w BombLand_room10Platform_ColTris[] = {
+    #include "assets/levelGroup/BombLand/room10Platform/room10Platform.colTris.inc.c"
 };
 
-Rect3D BombLand_room10Platform_ColS = {
-    #include "assets/levelGroup/BombLand/room10Platform/room10Platform.colS.inc.c"
+Rect3D BombLand_room10Platform_BoundBox = {
+    #include "assets/levelGroup/BombLand/room10Platform/room10Platform.boundBox.inc.c"
 };
 
 ModelCollision BombLand_room10Platform_ColH = {
-12, 12, BombLand_room10Platform_ColV, BombLand_room10Platform_ColT, &BombLand_room10Platform_ColS
+12, 12, BombLand_room10Platform_ColVerts, BombLand_room10Platform_ColTris, &BombLand_room10Platform_BoundBox
 };
 
-Vec3f BombLand_tallWallWithFloorOnTop_ColV[] = {
-    #include "assets/levelGroup/BombLand/tallWallWithFloorOnTop/tallWallWithFloorOnTop.colV.inc.c"
+Vec3f BombLand_tallWallWithFloorOnTop_ColVerts[] = {
+    #include "assets/levelGroup/BombLand/tallWallWithFloorOnTop/tallWallWithFloorOnTop.colVerts.inc.c"
 };
 
-Vec3w BombLand_tallWallWithFloorOnTop_ColT[] = {
-    #include "assets/levelGroup/BombLand/tallWallWithFloorOnTop/tallWallWithFloorOnTop.colT.inc.c"
+Vec3w BombLand_tallWallWithFloorOnTop_ColTris[] = {
+    #include "assets/levelGroup/BombLand/tallWallWithFloorOnTop/tallWallWithFloorOnTop.colTris.inc.c"
 };
 
-Rect3D BombLand_tallWallWithFloorOnTop_ColS = {
-    #include "assets/levelGroup/BombLand/tallWallWithFloorOnTop/tallWallWithFloorOnTop.colS.inc.c"
+Rect3D BombLand_tallWallWithFloorOnTop_BoundBox = {
+    #include "assets/levelGroup/BombLand/tallWallWithFloorOnTop/tallWallWithFloorOnTop.boundBox.inc.c"
 };
 
 ModelCollision BombLand_tallWallWithFloorOnTop_ColH = {
-8, 6, BombLand_tallWallWithFloorOnTop_ColV, BombLand_tallWallWithFloorOnTop_ColT, &BombLand_tallWallWithFloorOnTop_ColS
+8, 6, BombLand_tallWallWithFloorOnTop_ColVerts, BombLand_tallWallWithFloorOnTop_ColTris, &BombLand_tallWallWithFloorOnTop_BoundBox
 };
 
-Vec3f BombLand_unkBlock_ColV[] = {
-    #include "assets/levelGroup/BombLand/unkBlock/unkBlock.colV.inc.c"
+Vec3f BombLand_unkBlock_ColVerts[] = {
+    #include "assets/levelGroup/BombLand/unkBlock/unkBlock.colVerts.inc.c"
 };
 
-Vec3w BombLand_unkBlock_ColT[] = {
-    #include "assets/levelGroup/BombLand/unkBlock/unkBlock.colT.inc.c"
+Vec3w BombLand_unkBlock_ColTris[] = {
+    #include "assets/levelGroup/BombLand/unkBlock/unkBlock.colTris.inc.c"
 };
 
-Rect3D BombLand_unkBlock_ColS = {
-    #include "assets/levelGroup/BombLand/unkBlock/unkBlock.colS.inc.c"
+Rect3D BombLand_unkBlock_BoundBox = {
+    #include "assets/levelGroup/BombLand/unkBlock/unkBlock.boundBox.inc.c"
 };
 
 ModelCollision BombLand_unkBlock_ColH = {
-8, 8, BombLand_unkBlock_ColV, BombLand_unkBlock_ColT, &BombLand_unkBlock_ColS
+8, 8, BombLand_unkBlock_ColVerts, BombLand_unkBlock_ColTris, &BombLand_unkBlock_BoundBox
 };
 
-Vec3f BombLand_thinBreakableBlockSide1_ColV[] = {
-    #include "assets/levelGroup/BombLand/thinBreakableBlockSide1/thinBreakableBlockSide1.colV.inc.c"
+Vec3f BombLand_thinBreakableBlockSide1_ColVerts[] = {
+    #include "assets/levelGroup/BombLand/thinBreakableBlockSide1/thinBreakableBlockSide1.colVerts.inc.c"
 };
 
-Vec3w BombLand_thinBreakableBlockSide1_ColT[] = {
-    #include "assets/levelGroup/BombLand/thinBreakableBlockSide1/thinBreakableBlockSide1.colT.inc.c"
+Vec3w BombLand_thinBreakableBlockSide1_ColTris[] = {
+    #include "assets/levelGroup/BombLand/thinBreakableBlockSide1/thinBreakableBlockSide1.colTris.inc.c"
 };
 
-Rect3D BombLand_thinBreakableBlockSide1_ColS = {
-    #include "assets/levelGroup/BombLand/thinBreakableBlockSide1/thinBreakableBlockSide1.colS.inc.c"
+Rect3D BombLand_thinBreakableBlockSide1_BoundBox = {
+    #include "assets/levelGroup/BombLand/thinBreakableBlockSide1/thinBreakableBlockSide1.boundBox.inc.c"
 };
 
 ModelCollision BombLand_thinBreakableBlockSide1_ColH = {
-4, 2, BombLand_thinBreakableBlockSide1_ColV, BombLand_thinBreakableBlockSide1_ColT, &BombLand_thinBreakableBlockSide1_ColS
+4, 2, BombLand_thinBreakableBlockSide1_ColVerts, BombLand_thinBreakableBlockSide1_ColTris, &BombLand_thinBreakableBlockSide1_BoundBox
 };
 
-Vec3f BombLand_thinBreakableBlockSide2_ColV[] = {
-    #include "assets/levelGroup/BombLand/thinBreakableBlockSide2/thinBreakableBlockSide2.colV.inc.c"
+Vec3f BombLand_thinBreakableBlockSide2_ColVerts[] = {
+    #include "assets/levelGroup/BombLand/thinBreakableBlockSide2/thinBreakableBlockSide2.colVerts.inc.c"
 };
 
-Vec3w BombLand_thinBreakableBlockSide2_ColT[] = {
-    #include "assets/levelGroup/BombLand/thinBreakableBlockSide2/thinBreakableBlockSide2.colT.inc.c"
+Vec3w BombLand_thinBreakableBlockSide2_ColTris[] = {
+    #include "assets/levelGroup/BombLand/thinBreakableBlockSide2/thinBreakableBlockSide2.colTris.inc.c"
 };
 
-Rect3D BombLand_thinBreakableBlockSide2_ColS = {
-    #include "assets/levelGroup/BombLand/thinBreakableBlockSide2/thinBreakableBlockSide2.colS.inc.c"
+Rect3D BombLand_thinBreakableBlockSide2_BoundBox = {
+    #include "assets/levelGroup/BombLand/thinBreakableBlockSide2/thinBreakableBlockSide2.boundBox.inc.c"
 };
 
 ModelCollision BombLand_thinBreakableBlockSide2_ColH = {
-4, 2, BombLand_thinBreakableBlockSide2_ColV, BombLand_thinBreakableBlockSide2_ColT, &BombLand_thinBreakableBlockSide2_ColS
+4, 2, BombLand_thinBreakableBlockSide2_ColVerts, BombLand_thinBreakableBlockSide2_ColTris, &BombLand_thinBreakableBlockSide2_BoundBox
 };
 
-Vec3f BombLand_thinBreakableBlockSide3_ColV[] = {
-    #include "assets/levelGroup/BombLand/thinBreakableBlockSide3/thinBreakableBlockSide3.colV.inc.c"
+Vec3f BombLand_thinBreakableBlockSide3_ColVerts[] = {
+    #include "assets/levelGroup/BombLand/thinBreakableBlockSide3/thinBreakableBlockSide3.colVerts.inc.c"
 };
 
-Vec3w BombLand_thinBreakableBlockSide3_ColT[] = {
-    #include "assets/levelGroup/BombLand/thinBreakableBlockSide3/thinBreakableBlockSide3.colT.inc.c"
+Vec3w BombLand_thinBreakableBlockSide3_ColTris[] = {
+    #include "assets/levelGroup/BombLand/thinBreakableBlockSide3/thinBreakableBlockSide3.colTris.inc.c"
 };
 
-Rect3D BombLand_thinBreakableBlockSide3_ColS = {
-    #include "assets/levelGroup/BombLand/thinBreakableBlockSide3/thinBreakableBlockSide3.colS.inc.c"
+Rect3D BombLand_thinBreakableBlockSide3_BoundBox = {
+    #include "assets/levelGroup/BombLand/thinBreakableBlockSide3/thinBreakableBlockSide3.boundBox.inc.c"
 };
 
 ModelCollision BombLand_thinBreakableBlockSide3_ColH = {
-4, 2, BombLand_thinBreakableBlockSide3_ColV, BombLand_thinBreakableBlockSide3_ColT, &BombLand_thinBreakableBlockSide3_ColS
+4, 2, BombLand_thinBreakableBlockSide3_ColVerts, BombLand_thinBreakableBlockSide3_ColTris, &BombLand_thinBreakableBlockSide3_BoundBox
 };
 
-Vec3f BombLand_thinBreakableBlockSide4_ColV[] = {
-    #include "assets/levelGroup/BombLand/thinBreakableBlockSide4/thinBreakableBlockSide4.colV.inc.c"
+Vec3f BombLand_thinBreakableBlockSide4_ColVerts[] = {
+    #include "assets/levelGroup/BombLand/thinBreakableBlockSide4/thinBreakableBlockSide4.colVerts.inc.c"
 };
 
-Vec3w BombLand_thinBreakableBlockSide4_ColT[] = {
-    #include "assets/levelGroup/BombLand/thinBreakableBlockSide4/thinBreakableBlockSide4.colT.inc.c"
+Vec3w BombLand_thinBreakableBlockSide4_ColTris[] = {
+    #include "assets/levelGroup/BombLand/thinBreakableBlockSide4/thinBreakableBlockSide4.colTris.inc.c"
 };
 
-Rect3D BombLand_thinBreakableBlockSide4_ColS = {
-    #include "assets/levelGroup/BombLand/thinBreakableBlockSide4/thinBreakableBlockSide4.colS.inc.c"
+Rect3D BombLand_thinBreakableBlockSide4_BoundBox = {
+    #include "assets/levelGroup/BombLand/thinBreakableBlockSide4/thinBreakableBlockSide4.boundBox.inc.c"
 };
 
 ModelCollision BombLand_thinBreakableBlockSide4_ColH = {
-4, 2, BombLand_thinBreakableBlockSide4_ColV, BombLand_thinBreakableBlockSide4_ColT, &BombLand_thinBreakableBlockSide4_ColS
+4, 2, BombLand_thinBreakableBlockSide4_ColVerts, BombLand_thinBreakableBlockSide4_ColTris, &BombLand_thinBreakableBlockSide4_BoundBox
 };
 
-Vec3f BombLand_thinBreakableBlockSide5_ColV[] = {
-    #include "assets/levelGroup/BombLand/thinBreakableBlockSide5/thinBreakableBlockSide5.colV.inc.c"
+Vec3f BombLand_thinBreakableBlockSide5_ColVerts[] = {
+    #include "assets/levelGroup/BombLand/thinBreakableBlockSide5/thinBreakableBlockSide5.colVerts.inc.c"
 };
 
-Vec3w BombLand_thinBreakableBlockSide5_ColT[] = {
-    #include "assets/levelGroup/BombLand/thinBreakableBlockSide5/thinBreakableBlockSide5.colT.inc.c"
+Vec3w BombLand_thinBreakableBlockSide5_ColTris[] = {
+    #include "assets/levelGroup/BombLand/thinBreakableBlockSide5/thinBreakableBlockSide5.colTris.inc.c"
 };
 
-Rect3D BombLand_thinBreakableBlockSide5_ColS = {
-    #include "assets/levelGroup/BombLand/thinBreakableBlockSide5/thinBreakableBlockSide5.colS.inc.c"
+Rect3D BombLand_thinBreakableBlockSide5_BoundBox = {
+    #include "assets/levelGroup/BombLand/thinBreakableBlockSide5/thinBreakableBlockSide5.boundBox.inc.c"
 };
 
 ModelCollision BombLand_thinBreakableBlockSide5_ColH = {
-4, 2, BombLand_thinBreakableBlockSide5_ColV, BombLand_thinBreakableBlockSide5_ColT, &BombLand_thinBreakableBlockSide5_ColS
+4, 2, BombLand_thinBreakableBlockSide5_ColVerts, BombLand_thinBreakableBlockSide5_ColTris, &BombLand_thinBreakableBlockSide5_BoundBox
 };
 
-Vec3f BombLand_unkPlatform_ColV[] = {
-    #include "assets/levelGroup/BombLand/unkPlatform/unkPlatform.colV.inc.c"
+Vec3f BombLand_unkPlatform_ColVerts[] = {
+    #include "assets/levelGroup/BombLand/unkPlatform/unkPlatform.colVerts.inc.c"
 };
 
-Vec3w BombLand_unkPlatform_ColT[] = {
-    #include "assets/levelGroup/BombLand/unkPlatform/unkPlatform.colT.inc.c"
+Vec3w BombLand_unkPlatform_ColTris[] = {
+    #include "assets/levelGroup/BombLand/unkPlatform/unkPlatform.colTris.inc.c"
 };
 
-Rect3D BombLand_unkPlatform_ColS = {
-    #include "assets/levelGroup/BombLand/unkPlatform/unkPlatform.colS.inc.c"
+Rect3D BombLand_unkPlatform_BoundBox = {
+    #include "assets/levelGroup/BombLand/unkPlatform/unkPlatform.boundBox.inc.c"
 };
 
 ModelCollision BombLand_unkPlatform_ColH = {
-8, 12, BombLand_unkPlatform_ColV, BombLand_unkPlatform_ColT, &BombLand_unkPlatform_ColS
+8, 12, BombLand_unkPlatform_ColVerts, BombLand_unkPlatform_ColTris, &BombLand_unkPlatform_BoundBox
 };
 
-Vec3f BombLand_pipe1_ColV[] = {
-    #include "assets/levelGroup/BombLand/pipe1/pipe1.colV.inc.c"
+Vec3f BombLand_pipe1_ColVerts[] = {
+    #include "assets/levelGroup/BombLand/pipe1/pipe1.colVerts.inc.c"
 };
 
-Vec3w BombLand_pipe1_ColT[] = {
-    #include "assets/levelGroup/BombLand/pipe1/pipe1.colT.inc.c"
+Vec3w BombLand_pipe1_ColTris[] = {
+    #include "assets/levelGroup/BombLand/pipe1/pipe1.colTris.inc.c"
 };
 
-Rect3D BombLand_pipe1_ColS = {
-    #include "assets/levelGroup/BombLand/pipe1/pipe1.colS.inc.c"
+Rect3D BombLand_pipe1_BoundBox = {
+    #include "assets/levelGroup/BombLand/pipe1/pipe1.boundBox.inc.c"
 };
 
 ModelCollision BombLand_pipe1_ColH = {
-8, 8, BombLand_pipe1_ColV, BombLand_pipe1_ColT, &BombLand_pipe1_ColS
+8, 8, BombLand_pipe1_ColVerts, BombLand_pipe1_ColTris, &BombLand_pipe1_BoundBox
 };
 
-Vec3f BombLand_pipe2_ColV[] = {
-    #include "assets/levelGroup/BombLand/pipe2/pipe2.colV.inc.c"
+Vec3f BombLand_pipe2_ColVerts[] = {
+    #include "assets/levelGroup/BombLand/pipe2/pipe2.colVerts.inc.c"
 };
 
-Vec3w BombLand_pipe2_ColT[] = {
-    #include "assets/levelGroup/BombLand/pipe2/pipe2.colT.inc.c"
+Vec3w BombLand_pipe2_ColTris[] = {
+    #include "assets/levelGroup/BombLand/pipe2/pipe2.colTris.inc.c"
 };
 
-Rect3D BombLand_pipe2_ColS = {
-    #include "assets/levelGroup/BombLand/pipe2/pipe2.colS.inc.c"
+Rect3D BombLand_pipe2_BoundBox = {
+    #include "assets/levelGroup/BombLand/pipe2/pipe2.boundBox.inc.c"
 };
 
 ModelCollision BombLand_pipe2_ColH = {
-32, 40, BombLand_pipe2_ColV, BombLand_pipe2_ColT, &BombLand_pipe2_ColS
+32, 40, BombLand_pipe2_ColVerts, BombLand_pipe2_ColTris, &BombLand_pipe2_BoundBox
 };
 
-Vec3f BombLand_breakableBlockTop_ColV[] = {
-    #include "assets/levelGroup/BombLand/breakableBlockTop/breakableBlockTop.colV.inc.c"
+Vec3f BombLand_breakableBlockTop_ColVerts[] = {
+    #include "assets/levelGroup/BombLand/breakableBlockTop/breakableBlockTop.colVerts.inc.c"
 };
 
-Vec3w BombLand_breakableBlockTop_ColT[] = {
-    #include "assets/levelGroup/BombLand/breakableBlockTop/breakableBlockTop.colT.inc.c"
+Vec3w BombLand_breakableBlockTop_ColTris[] = {
+    #include "assets/levelGroup/BombLand/breakableBlockTop/breakableBlockTop.colTris.inc.c"
 };
 
-Rect3D BombLand_breakableBlockTop_ColS = {
-    #include "assets/levelGroup/BombLand/breakableBlockTop/breakableBlockTop.colS.inc.c"
+Rect3D BombLand_breakableBlockTop_BoundBox = {
+    #include "assets/levelGroup/BombLand/breakableBlockTop/breakableBlockTop.boundBox.inc.c"
 };
 
 ModelCollision BombLand_breakableBlockTop_ColH = {
-4, 2, BombLand_breakableBlockTop_ColV, BombLand_breakableBlockTop_ColT, &BombLand_breakableBlockTop_ColS
+4, 2, BombLand_breakableBlockTop_ColVerts, BombLand_breakableBlockTop_ColTris, &BombLand_breakableBlockTop_BoundBox
 };
 
-Vec3f BombLand_blockTop_ColV[] = {
-    #include "assets/levelGroup/BombLand/blockTop/blockTop.colV.inc.c"
+Vec3f BombLand_blockTop_ColVerts[] = {
+    #include "assets/levelGroup/BombLand/blockTop/blockTop.colVerts.inc.c"
 };
 
-Vec3w BombLand_blockTop_ColT[] = {
-    #include "assets/levelGroup/BombLand/blockTop/blockTop.colT.inc.c"
+Vec3w BombLand_blockTop_ColTris[] = {
+    #include "assets/levelGroup/BombLand/blockTop/blockTop.colTris.inc.c"
 };
 
-Rect3D BombLand_blockTop_ColS = {
-    #include "assets/levelGroup/BombLand/blockTop/blockTop.colS.inc.c"
+Rect3D BombLand_blockTop_BoundBox = {
+    #include "assets/levelGroup/BombLand/blockTop/blockTop.boundBox.inc.c"
 };
 
 ModelCollision BombLand_blockTop_ColH = {
-4, 2, BombLand_blockTop_ColV, BombLand_blockTop_ColT, &BombLand_blockTop_ColS
+4, 2, BombLand_blockTop_ColVerts, BombLand_blockTop_ColTris, &BombLand_blockTop_BoundBox
 };
 
-Vec3f BombLand_breakableBlockAgain_ColV[] = {
-    #include "assets/levelGroup/BombLand/breakableBlockAgain/breakableBlockAgain.colV.inc.c"
+Vec3f BombLand_breakableBlockAgain_ColVerts[] = {
+    #include "assets/levelGroup/BombLand/breakableBlockAgain/breakableBlockAgain.colVerts.inc.c"
 };
 
-Vec3w BombLand_breakableBlockAgain_ColT[] = {
-    #include "assets/levelGroup/BombLand/breakableBlockAgain/breakableBlockAgain.colT.inc.c"
+Vec3w BombLand_breakableBlockAgain_ColTris[] = {
+    #include "assets/levelGroup/BombLand/breakableBlockAgain/breakableBlockAgain.colTris.inc.c"
 };
 
-Rect3D BombLand_breakableBlockAgain_ColS = {
-    #include "assets/levelGroup/BombLand/breakableBlockAgain/breakableBlockAgain.colS.inc.c"
+Rect3D BombLand_breakableBlockAgain_BoundBox = {
+    #include "assets/levelGroup/BombLand/breakableBlockAgain/breakableBlockAgain.boundBox.inc.c"
 };
 
 ModelCollision BombLand_breakableBlockAgain_ColH = {
-8, 12, BombLand_breakableBlockAgain_ColV, BombLand_breakableBlockAgain_ColT, &BombLand_breakableBlockAgain_ColS
+8, 12, BombLand_breakableBlockAgain_ColVerts, BombLand_breakableBlockAgain_ColTris, &BombLand_breakableBlockAgain_BoundBox
 };
 
-Vec3f BombLand_metalBridgeThing_ColV[] = {
-    #include "assets/levelGroup/BombLand/metalBridgeThing/metalBridgeThing.colV.inc.c"
+Vec3f BombLand_metalBridgeThing_ColVerts[] = {
+    #include "assets/levelGroup/BombLand/metalBridgeThing/metalBridgeThing.colVerts.inc.c"
 };
 
-Vec3w BombLand_metalBridgeThing_ColT[] = {
-    #include "assets/levelGroup/BombLand/metalBridgeThing/metalBridgeThing.colT.inc.c"
+Vec3w BombLand_metalBridgeThing_ColTris[] = {
+    #include "assets/levelGroup/BombLand/metalBridgeThing/metalBridgeThing.colTris.inc.c"
 };
 
-Rect3D BombLand_metalBridgeThing_ColS = {
-    #include "assets/levelGroup/BombLand/metalBridgeThing/metalBridgeThing.colS.inc.c"
+Rect3D BombLand_metalBridgeThing_BoundBox = {
+    #include "assets/levelGroup/BombLand/metalBridgeThing/metalBridgeThing.boundBox.inc.c"
 };
 
 ModelCollision BombLand_metalBridgeThing_ColH = {
-8, 6, BombLand_metalBridgeThing_ColV, BombLand_metalBridgeThing_ColT, &BombLand_metalBridgeThing_ColS
+8, 6, BombLand_metalBridgeThing_ColVerts, BombLand_metalBridgeThing_ColTris, &BombLand_metalBridgeThing_BoundBox
 };
 
-Vec3f BombLand_longPipe_ColV[] = {
-    #include "assets/levelGroup/BombLand/longPipe/longPipe.colV.inc.c"
+Vec3f BombLand_longPipe_ColVerts[] = {
+    #include "assets/levelGroup/BombLand/longPipe/longPipe.colVerts.inc.c"
 };
 
-Vec3w BombLand_longPipe_ColT[] = {
-    #include "assets/levelGroup/BombLand/longPipe/longPipe.colT.inc.c"
+Vec3w BombLand_longPipe_ColTris[] = {
+    #include "assets/levelGroup/BombLand/longPipe/longPipe.colTris.inc.c"
 };
 
-Rect3D BombLand_longPipe_ColS = {
-    #include "assets/levelGroup/BombLand/longPipe/longPipe.colS.inc.c"
+Rect3D BombLand_longPipe_BoundBox = {
+    #include "assets/levelGroup/BombLand/longPipe/longPipe.boundBox.inc.c"
 };
 
 ModelCollision BombLand_longPipe_ColH = {
-20, 32, BombLand_longPipe_ColV, BombLand_longPipe_ColT, &BombLand_longPipe_ColS
+20, 32, BombLand_longPipe_ColVerts, BombLand_longPipe_ColTris, &BombLand_longPipe_BoundBox
 };
 
-Vec3f BombLand_XResult_ColV[] = {
-    #include "assets/levelGroup/BombLand/XResult/XResult.colV.inc.c"
+Vec3f BombLand_XResult_ColVerts[] = {
+    #include "assets/levelGroup/BombLand/XResult/XResult.colVerts.inc.c"
 };
 
-Vec3w BombLand_XResult_ColT[] = {
-    #include "assets/levelGroup/BombLand/XResult/XResult.colT.inc.c"
+Vec3w BombLand_XResult_ColTris[] = {
+    #include "assets/levelGroup/BombLand/XResult/XResult.colTris.inc.c"
 };
 
-Rect3D BombLand_XResult_ColS = {
-    #include "assets/levelGroup/BombLand/XResult/XResult.colS.inc.c"
+Rect3D BombLand_XResult_BoundBox = {
+    #include "assets/levelGroup/BombLand/XResult/XResult.boundBox.inc.c"
 };
 
 ModelCollision BombLand_XResult_ColH = {
-4, 2, BombLand_XResult_ColV, BombLand_XResult_ColT, &BombLand_XResult_ColS
+4, 2, BombLand_XResult_ColVerts, BombLand_XResult_ColTris, &BombLand_XResult_BoundBox
 };
 
-Vec3f BombLand_OResult_ColV[] = {
-    #include "assets/levelGroup/BombLand/OResult/OResult.colV.inc.c"
+Vec3f BombLand_OResult_ColVerts[] = {
+    #include "assets/levelGroup/BombLand/OResult/OResult.colVerts.inc.c"
 };
 
-Vec3w BombLand_OResult_ColT[] = {
-    #include "assets/levelGroup/BombLand/OResult/OResult.colT.inc.c"
+Vec3w BombLand_OResult_ColTris[] = {
+    #include "assets/levelGroup/BombLand/OResult/OResult.colTris.inc.c"
 };
 
-Rect3D BombLand_OResult_ColS = {
-    #include "assets/levelGroup/BombLand/OResult/OResult.colS.inc.c"
+Rect3D BombLand_OResult_BoundBox = {
+    #include "assets/levelGroup/BombLand/OResult/OResult.boundBox.inc.c"
 };
 
 ModelCollision BombLand_OResult_ColH = {
-4, 2, BombLand_OResult_ColV, BombLand_OResult_ColT, &BombLand_OResult_ColS
+4, 2, BombLand_OResult_ColVerts, BombLand_OResult_ColTris, &BombLand_OResult_BoundBox
 };
 
-Vec3f BombLand_grenadeShutters_ColV[] = {
-    #include "assets/levelGroup/BombLand/grenadeShutters/grenadeShutters.colV.inc.c"
+Vec3f BombLand_grenadeShutters_ColVerts[] = {
+    #include "assets/levelGroup/BombLand/grenadeShutters/grenadeShutters.colVerts.inc.c"
 };
 
-Vec3w BombLand_grenadeShutters_ColT[] = {
-    #include "assets/levelGroup/BombLand/grenadeShutters/grenadeShutters.colT.inc.c"
+Vec3w BombLand_grenadeShutters_ColTris[] = {
+    #include "assets/levelGroup/BombLand/grenadeShutters/grenadeShutters.colTris.inc.c"
 };
 
-Rect3D BombLand_grenadeShutters_ColS = {
-    #include "assets/levelGroup/BombLand/grenadeShutters/grenadeShutters.colS.inc.c"
+Rect3D BombLand_grenadeShutters_BoundBox = {
+    #include "assets/levelGroup/BombLand/grenadeShutters/grenadeShutters.boundBox.inc.c"
 };
 
 ModelCollision BombLand_grenadeShutters_ColH = {
-4, 4, BombLand_grenadeShutters_ColV, BombLand_grenadeShutters_ColT, &BombLand_grenadeShutters_ColS
+4, 4, BombLand_grenadeShutters_ColVerts, BombLand_grenadeShutters_ColTris, &BombLand_grenadeShutters_BoundBox
 };
 
-Vec3f BombLand_doorWall_ColV[] = {
-    #include "assets/levelGroup/BombLand/doorWall/doorWall.colV.inc.c"
+Vec3f BombLand_doorWall_ColVerts[] = {
+    #include "assets/levelGroup/BombLand/doorWall/doorWall.colVerts.inc.c"
 };
 
-Vec3w BombLand_doorWall_ColT[] = {
-    #include "assets/levelGroup/BombLand/doorWall/doorWall.colT.inc.c"
+Vec3w BombLand_doorWall_ColTris[] = {
+    #include "assets/levelGroup/BombLand/doorWall/doorWall.colTris.inc.c"
 };
 
-Rect3D BombLand_doorWall_ColS = {
-    #include "assets/levelGroup/BombLand/doorWall/doorWall.colS.inc.c"
+Rect3D BombLand_doorWall_BoundBox = {
+    #include "assets/levelGroup/BombLand/doorWall/doorWall.boundBox.inc.c"
 };
 
 ModelCollision BombLand_doorWall_ColH = {
-4, 2, BombLand_doorWall_ColV, BombLand_doorWall_ColT, &BombLand_doorWall_ColS
+4, 2, BombLand_doorWall_ColVerts, BombLand_doorWall_ColTris, &BombLand_doorWall_BoundBox
 };
 
-Vec3f BombLand_doorPoles_ColV[] = {
-    #include "assets/levelGroup/BombLand/doorPoles/doorPoles.colV.inc.c"
+Vec3f BombLand_doorPoles_ColVerts[] = {
+    #include "assets/levelGroup/BombLand/doorPoles/doorPoles.colVerts.inc.c"
 };
 
-Vec3w BombLand_doorPoles_ColT[] = {
-    #include "assets/levelGroup/BombLand/doorPoles/doorPoles.colT.inc.c"
+Vec3w BombLand_doorPoles_ColTris[] = {
+    #include "assets/levelGroup/BombLand/doorPoles/doorPoles.colTris.inc.c"
 };
 
-Rect3D BombLand_doorPoles_ColS = {
-    #include "assets/levelGroup/BombLand/doorPoles/doorPoles.colS.inc.c"
+Rect3D BombLand_doorPoles_BoundBox = {
+    #include "assets/levelGroup/BombLand/doorPoles/doorPoles.boundBox.inc.c"
 };
 
 ModelCollision BombLand_doorPoles_ColH = {
-8, 8, BombLand_doorPoles_ColV, BombLand_doorPoles_ColT, &BombLand_doorPoles_ColS
+8, 8, BombLand_doorPoles_ColVerts, BombLand_doorPoles_ColTris, &BombLand_doorPoles_BoundBox
 };
 
-Vec3f BombLand_unk72_ColV[] = {
-    #include "assets/levelGroup/BombLand/unk72/unk72.colV.inc.c"
+Vec3f BombLand_unk72_ColVerts[] = {
+    #include "assets/levelGroup/BombLand/unk72/unk72.colVerts.inc.c"
 };
 
-Vec3w BombLand_unk72_ColT[] = {
-    #include "assets/levelGroup/BombLand/unk72/unk72.colT.inc.c"
+Vec3w BombLand_unk72_ColTris[] = {
+    #include "assets/levelGroup/BombLand/unk72/unk72.colTris.inc.c"
 };
 
-Rect3D BombLand_unk72_ColS = {
-    #include "assets/levelGroup/BombLand/unk72/unk72.colS.inc.c"
+Rect3D BombLand_unk72_BoundBox = {
+    #include "assets/levelGroup/BombLand/unk72/unk72.boundBox.inc.c"
 };
 
 ModelCollision BombLand_unk72_ColH = {
-8, 8, BombLand_unk72_ColV, BombLand_unk72_ColT, &BombLand_unk72_ColS
+8, 8, BombLand_unk72_ColVerts, BombLand_unk72_ColTris, &BombLand_unk72_BoundBox
 };
 
 Mtx BombLand_unkMtx_Mtx = IDENTITY;
