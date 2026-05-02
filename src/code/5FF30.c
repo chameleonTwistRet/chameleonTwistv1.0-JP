@@ -6277,7 +6277,21 @@ void func_8009CFA8(void) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009D08C.s")
+void func_8009D08C(CTTask* task) {
+    CTTask* task2 = task->unk58;
+    s32 val = task2->unk54;
+
+    if (val == 0xF) {
+        func_8009CFA8();
+        return;
+    }
+    if (val >= 7) {
+        func_8009CBC0();
+        return;
+    }
+    func_8009CFA8();
+}
+
 
 //battle mode
 const char D_8010E60C[] = "ＤＡＶＹ";
@@ -6287,7 +6301,27 @@ const char D_8010E630[] = "ＬＩＮＤＡ";
 const char D_8010E63C[] = "ＢＬＡＣＫ";
 const char D_8010E648[] = "ＷＨＩＴＥ";
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009D0EC.s")
+void func_8009D1CC(CTTask*);
+
+CTTask* func_8009D0EC(void) {
+    CTTask* sp20;
+    CTTask* temp_v0;
+    
+    func_8008EA60(0x20, 0, 0, 0, NULL);
+    sp20 = CTTask_Alloc(1, 0x64, NULL);
+    
+    ASSERT_MSG(sp20 != NULL, "エラー\n");
+    
+    sp20->function = func_8009D1CC;
+    temp_v0 = sp20;
+    sp20 = CTTask_Alloc(1, 0x63, NULL);
+    
+    ASSERT_MSG(sp20 != NULL, "エラー\n");
+    
+    sp20->function = func_8009D08C;
+    sp20->unk58 = temp_v0;
+    return sp20;
+}
 
 void func_8009D19C(CTTask* task) {
     if (func_8008EC90()) {

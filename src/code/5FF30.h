@@ -558,7 +558,7 @@ void CalculateBoundingRectFromVectors(Vec3f vecA, Vec3f vecB, Rect3D* rect);
 //////
 
 void func_8009CB14(void);
-void func_8009D0EC(void);
+CTTask* func_8009D0EC(void);
 void func_8009EE44(void);
 
 

@@ -3,6 +3,8 @@
 #include "variables.jp.h"
 #include "common_structs.h"
 
+#define ASSERT_MSG(cond, msg) if (!(cond)) { DummiedPrintf(msg); while (1) {} }
+
 #define MAX_ACTORS 64
 
 // GENERAL MATHS //
