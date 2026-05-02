@@ -135,7 +135,10 @@ class N64SegGfxSeg(N64SegGfx):
         """Try to resolve an address as a symbol of `sym_type`, first via the
         fixed mapping then via the legacy split-mapping. Creates a symbol if
         none is found."""
-        addr_fixed = self.getTrueAdr(addr)
+        # getTrueAdr(addr, split=False) is functionally a no-op: it walks the
+        # YAML for side-effects (a now-unused groupName attr) but returns
+        # `addr` unchanged.
+        addr_fixed = addr
         sym = self.retrieve_sym_type(symbols.all_symbols_dict, addr_fixed, sym_type)
         if sym:
             return sym
@@ -200,7 +203,7 @@ class N64SegGfxSeg(N64SegGfx):
 
     def vtx_handler(self, addr, count):
         split_adr = self.getTrueAdr(addr, True)
-        addr_fixed = self.getTrueAdr(addr)
+        addr_fixed = addr  # getTrueAdr(addr, False) is a no-op (see _resolve_with_fallback)
         sym = self.retrieve_sym_type(symbols.all_symbols_dict, split_adr, "Vtx")
         if not sym:
             sym = self.create_symbol(
@@ -221,53 +224,54 @@ class N64SegGfxSeg(N64SegGfx):
         # Anything shorter is a segmented address that needs translation.
         if len(hex(addr)) > 7 + 2:
             return addr
+        # split=False was a no-op walk; callers now skip it. Preserve here in
+        # case anything else calls getTrueAdr directly.
+        if not split:
+            return addr
+        return _resolve_split_adr(self.rom_start, addr)
 
-        yaml_lines = _yaml_lines()
-        index = hex((addr & 0x0F000000) >> 24).replace("0x", "0x0")
-        otherhalf = addr & ~0x0F000000
-        myself = hex(self.rom_start)
 
-        i = 0
-        mode = 0
-        base_adr = 0x0
-        new = 0x0
+@lru_cache(maxsize=None)
+def _resolve_split_adr(rom_start: int, addr: int) -> int:
+    yaml_lines = _yaml_lines()
+    index = hex((addr & 0x0F000000) >> 24).replace("0x", "0x0")
+    otherhalf = addr & ~0x0F000000
+    myself = hex(rom_start)
 
-        while i < len(yaml_lines):
-            line = yaml_lines[i]
-            if mode == 0:  # find the split this gfx segment came from
-                if line.lower().find(myself) != -1:
-                    mode = 1
-                i += 1
-            elif mode == 1:  # walk back to find the rom-start of that block
-                if line.find("SEGMENT " + index):
-                    for back in range(0, 5):
-                        prev = yaml_lines[i - back]
-                        if prev.startswith("  - start: ") and base_adr == 0x0:
-                            base_adr = int(
-                                prev.split(": ")[1].split("#")[0].strip(), 16
-                            )
-                        elif prev.startswith("    name: ") and self.groupName == "":
-                            self.groupName = prev.split(": ")[1].split("#")[0].strip()
-                        if base_adr != 0x0 and self.groupName != "":
-                            break
-                if base_adr != 0x0:
-                    new = base_adr + otherhalf
-                    if not split:
+    i = 0
+    mode = 0
+    base_adr = 0x0
+    new = 0x0
+
+    while i < len(yaml_lines):
+        line = yaml_lines[i]
+        if mode == 0:  # find the split this gfx segment came from
+            if line.lower().find(myself) != -1:
+                mode = 1
+            i += 1
+        elif mode == 1:  # walk back to find the rom-start of that block
+            if line.find("SEGMENT " + index):
+                for back in range(0, 5):
+                    prev = yaml_lines[i - back]
+                    if prev.startswith("  - start: ") and base_adr == 0x0:
+                        base_adr = int(
+                            prev.split(": ")[1].split("#")[0].strip(), 16
+                        )
+                    if base_adr != 0x0:
                         break
-                    mode = 2
-                i -= 1
-            elif mode == 2:
-                # Vtx are often referenced into the *middle* of a buffer; if
-                # the address we computed is past the next listed split, the
-                # vtx is inside the previous one — back off accordingly.
-                if line.find("-") != -1 and "0x" in line:
-                    candidate = _split_addr(line)
-                    if candidate == new:
-                        break
-                    if candidate > new:
-                        diff = (base_adr + otherhalf) - _split_addr(yaml_lines[i - 1])
-                        otherhalf -= diff
-                        break
-                i += 1
+            if base_adr != 0x0:
+                new = base_adr + otherhalf
+                mode = 2
+            i -= 1
+        elif mode == 2:
+            if line.find("-") != -1 and "0x" in line:
+                candidate = _split_addr(line)
+                if candidate == new:
+                    break
+                if candidate > new:
+                    diff = (base_adr + otherhalf) - _split_addr(yaml_lines[i - 1])
+                    otherhalf -= diff
+                    break
+            i += 1
 
-        return int(index + "000000", 16) + otherhalf
+    return int(index + "000000", 16) + otherhalf
