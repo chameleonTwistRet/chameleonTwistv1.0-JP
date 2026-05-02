@@ -1,18 +1,18 @@
 #include "B39A0.h"
 
-void func_800D85A0(Collider* arg0, s32 sfxID, s32 arg2) {
+void PlaySfxPositionalPeriodic(Collider* arg0, s32 sfxID, s32 arg2) {
     if (((arg0->unk_00 + D_801749A0) % arg2) == 0) {
         func_80088698(PLAY_SFX_AT(sfxID, arg0->sfxPos, 0, 0));
     }
 }
 
-void func_800D8628(Collider* arg0, s32 sfxID, s32 arg2) {
+void PlaySfxPeriodic(Collider* arg0, s32 sfxID, s32 arg2) {
     if ((arg0->unk_00 + D_801749A0) % arg2 == 0) {
         PLAY_SFX(sfxID, 0, 0x10);
     }
 }
 
-void func_800D86A4(Collider* arg0, s32 sfxID0, s32 sfxID1, s32 arg3) {
+void PlaySfxOnContactAndPeriodic(Collider* arg0, s32 sfxID0, s32 sfxID1, s32 arg3) {
     if ((arg0->unk_B4 == 0) && (arg0->unk_BC == 1) && (arg0->unk_C0 == 0)) {
         func_80088698(PLAY_SFX_AT(sfxID0, arg0->sfxPos, 0, 0));
         return;
@@ -22,25 +22,26 @@ void func_800D86A4(Collider* arg0, s32 sfxID0, s32 sfxID1, s32 arg3) {
     }
 }
 
-void func_800D87A4(Collider* arg0, s32 sfxID) {
+void PlaySfxPositionalOnFlag(Collider* arg0, s32 sfxID) {
     if (arg0->unk_B8 == 1) {
         func_80088698(PLAY_SFX_AT(sfxID, arg0->sfxPos, 0, 0));
     }
 }
 
-void func_800D87F8(Collider* arg0, s32 sfxID, s32 arg2) {
+void PlaySfxPeriodicGlobal(Collider* arg0, s32 sfxID, s32 arg2) {
     if ((arg0->unk_BC >= 0) && (((D_801749A0 - arg0->unk_BC) % arg2) == 0)) {
         PLAY_SFX(sfxID, 0, 0x10);
     }
 }
 
-void func_800D887C(Collider* arg0, s32 sfxID, s32 arg2) {
+void PlaySfxPositionalPeriodicOnSurface(Collider* arg0, s32 sfxID, s32 arg2) {
     if ((arg0->unk_00 == gPlayerActors[0].surface) && ((arg0->unk_00 + D_801749A0) % arg2) == 0) {
         func_80088698(PLAY_SFX_AT(sfxID, arg0->sfxPos, 0, 0));
     }
 }
 
-void func_800D8918(Collider* arg0, s32 sfxID, s32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7, f32 arg8) {
+// Periodically plays a sound at a set coordinate after passing a collision rect, 45deg from coordinate axis
+void PlaySfxInZoneDiagonal(Collider* arg0, s32 sfxID, s32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7, f32 arg8) {
     f32 temp_f0_2;
     s32 var_v0;
     f32 xPos;
@@ -94,7 +95,8 @@ void func_800D8918(Collider* arg0, s32 sfxID, s32 arg2, f32 arg3, f32 arg4, f32 
     }
 }
 
-void func_800D8B28(Collider* arg0, s32 sfxID, s32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7, f32 arg8) {
+// the zone has a hard inner region where sound plays at full volume, then a fade region beyond it where the sound position gets clamped to the edge
+void PlaySfxInZoneAxisAligned(Collider* arg0, s32 sfxID, s32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7, f32 arg8) {
     f32 temp_f12;
     f32 temp_f0;
     f32 temp_f16;
@@ -150,79 +152,79 @@ void func_800D8B28(Collider* arg0, s32 sfxID, s32 arg2, f32 arg3, f32 arg4, f32 
     }
 }
 
-void func_800D8CF0(Collider* arg0, s32 sfxID) {
+void PlaySfxOnTrigger(Collider* arg0, s32 sfxID) {
     if ((func_800B34D0(arg0->unk_AC) != 0) && (arg0->unk_B0 != 0)) {
         func_80088698(PLAY_SFX_AT(sfxID, arg0->sfxPos,0, 0));
         arg0->unk_B0 = 0;
     }
 }
 
-void func_800D8D58(Collider* arg0) {func_800D8918(arg0, SFX_55_unkSnd, 0x1E, -12800.0f, 19600.0f, 700.0f, 1500.0f, 1000.0f, 2000.0f);}
+void func_800D8D58(Collider* arg0) {PlaySfxInZoneDiagonal(arg0, SFX_55_unkSnd, 0x1E, -12800.0f, 19600.0f, 700.0f, 1500.0f, 1000.0f, 2000.0f);}
 
 void func_800D8DBC(Collider* arg0) {
-    func_800D8628(arg0, 0x59, 0x2D);
+    PlaySfxPeriodic(arg0, 0x59, 0x2D);
 }
 
 void func_800D8DE0(Collider* arg0) {
-    func_800D8628(arg0, 0x5B, 0x69);
+    PlaySfxPeriodic(arg0, 0x5B, 0x69);
 }
 
 void func_800D8E04(Collider* arg0) {
-    func_800D85A0(arg0, 0x5B, 0x78);
+    PlaySfxPositionalPeriodic(arg0, 0x5B, 0x78);
 }
 
 void func_800D8E28(Collider* arg0) {
-    func_800D8628(arg0, 0x5C, 0x1B);
+    PlaySfxPeriodic(arg0, 0x5C, 0x1B);
 }
 
 void func_800D8E4C(Collider* arg0) {
-    func_800D8628(arg0, 0x89, 0x1E);
+    PlaySfxPeriodic(arg0, 0x89, 0x1E);
 }
 
-void func_800D8E70(Collider* arg0) {func_800D8918(arg0, SFX_89_unkSnd, 0x1E, 6000.0f, 6000.0f, 600.0f, 1500.0f, 500.0f, 2000.0f);}
+void func_800D8E70(Collider* arg0) {PlaySfxInZoneDiagonal(arg0, SFX_89_unkSnd, 0x1E, 6000.0f, 6000.0f, 600.0f, 1500.0f, 500.0f, 2000.0f);}
 
-void func_800D8ED4(Collider* arg0) {func_800D8918(arg0, SFX_89_unkSnd, 0x1E, 2200.0f, 1400.0f, 700.0f, 1000.0f, 500.0f, 2000.0f);}
+void func_800D8ED4(Collider* arg0) {PlaySfxInZoneDiagonal(arg0, SFX_89_unkSnd, 0x1E, 2200.0f, 1400.0f, 700.0f, 1000.0f, 500.0f, 2000.0f);}
 
-void func_800D8F3C(Collider* arg0) {func_800D8918(arg0, SFX_89_unkSnd, 0x1E, -8500.0f, 24000.0f, 600.0f, 2500.0f, 1000.0f, 1000.0f);}
+void func_800D8F3C(Collider* arg0) {PlaySfxInZoneDiagonal(arg0, SFX_89_unkSnd, 0x1E, -8500.0f, 24000.0f, 600.0f, 2500.0f, 1000.0f, 1000.0f);}
 
-void func_800D8F9C(Collider* arg0) {func_800D8B28(arg0, SFX_89_unkSnd, 0x1E, -5100.0f, 25300.0f, 600.0f, 2500.0f, 1000.0f, 1000.0f);}
+void func_800D8F9C(Collider* arg0) {PlaySfxInZoneAxisAligned(arg0, SFX_89_unkSnd, 0x1E, -5100.0f, 25300.0f, 600.0f, 2500.0f, 1000.0f, 1000.0f);}
 
-void func_800D8FFC(Collider* arg0) {func_800D8B28(arg0, SFX_89_unkSnd, 0x1E, 0, 25300.0f, 600.0f, 2500.0f, 1000.0f, 1000.0f);}
+void func_800D8FFC(Collider* arg0) {PlaySfxInZoneAxisAligned(arg0, SFX_89_unkSnd, 0x1E, 0, 25300.0f, 600.0f, 2500.0f, 1000.0f, 1000.0f);}
 
-void func_800D9058(Collider* arg0) {func_800D8918(arg0, SFX_89_unkSnd, 0x1E, 5100.0f, 23600.0f, 3000.0f, 600.0f, 1000.0f, 1000.0f);}
+void func_800D9058(Collider* arg0) {PlaySfxInZoneDiagonal(arg0, SFX_89_unkSnd, 0x1E, 5100.0f, 23600.0f, 3000.0f, 600.0f, 1000.0f, 1000.0f);}
 
 void func_800D90B8(Collider* arg0) {
     func_800D86A4(arg0, 0xA0, -1, 0x1E);
 }
 
 void func_800D90E0(Collider* arg0) {
-    func_800D85A0(arg0, 0xD7, 0x1E);
+    PlaySfxPositionalPeriodic(arg0, 0xD7, 0x1E);
 }
 
 void func_800D9104(Collider* arg0) {
-    func_800D85A0(arg0, 0xAC, 0x2D);
+    PlaySfxPositionalPeriodic(arg0, 0xAC, 0x2D);
 }
 
 void func_800D9128(Collider* arg0) {
-    func_800D8628(arg0, 0xB0, 0x2D);
+    PlaySfxPeriodic(arg0, 0xB0, 0x2D);
 }
 
 void func_800D914C(Collider* arg0) {
-    func_800D8628(arg0, 0xB1, 0x27);
+    PlaySfxPeriodic(arg0, 0xB1, 0x27);
 }
 
 void func_800D9170(Collider* arg0) {
-    func_800D87A4(arg0, 194);
+    PlaySfxPositionalOnFlag(arg0, 194);
 }
 
 void func_800D9190(Collider* arg0) {
-    func_800D87F8(arg0, 0xAD, 0x27);
+    PlaySfxPeriodicGlobal(arg0, 0xAD, 0x27);
 }
 
 void func_800D91B4(Collider* arg0) {
-    func_800D887C(arg0, 0xAE, 0x24);
+    PlaySfxPositionalPeriodicOnSurface(arg0, 0xAE, 0x24);
 }
 
 void func_800D91D8(Collider* arg0) {
-    func_800D8CF0(arg0, 0x3B);
+    PlaySfxOnTrigger(arg0, 0x3B);
 }
