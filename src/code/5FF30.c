@@ -3948,11 +3948,11 @@ void func_8008FE50(void) {
 }
 
 //unfinished naming
-void func_8008FEA8(s32 levelIdx, s32 arg1) {
+void func_8008FEA8(s32 levelIdx, s32 zone) {
     StageData* stage;
     Vec3f* spawnPos;
 
-    if (arg1 == 0) {
+    if (zone == 0) {
         if ((levelIdx != STAGE_ANT) &&
             (levelIdx != STAGE_BOMB) &&
             (levelIdx != STAGE_KIDS) &&
