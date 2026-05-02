@@ -38,85 +38,85 @@ extern u64 D_80200CB0[0x180];
 // - [0xCB8E0, data, code/1050]
 // in the yaml should be able to become
 // - [0xCB8E0, .data, code/1050]
+// Throw it behind an ifdef so shifting can work correctly and we can hardcode the match
 #ifdef SHIFT
 OSTask D_800F04E0[2] = {
 {
-    1,
-    0,
-    NULL,
-    0,
-    NULL,
-    0x1000,
-    NULL,
-    0x800,
-    (void*)D_80119320,
-    0x400,
-    D_80119720, //D_80119720
-    NULL,
-    NULL,
-    0,
-    D_80200CB0,
-    0xC00
+/* type */              1,
+/* flags */             0,
+/* ucode_boot */        NULL,
+/* ucode_boot_size */   0,
+/* ucode */             NULL,
+/* ucode_size */        0x1000,
+/* ucode_data */        NULL,
+/* ucode_data_size */   0x800,
+/* dram_stack */        (void*)D_80119320,
+/* dram_stack_size */   0x400,
+/* output_buff */       D_80119720, //D_80119720
+/* output_buff_size */  NULL,
+/* data_ptr */          NULL,
+/* data_size */         0,
+/* yield_data_ptr */    D_80200CB0,
+/* yield_data_size */   0xC00
 },
 {
-    1,
-    0,
-    NULL,
-    0,
-    NULL,
-    0x1000,
-    NULL,
-    0x800,
-    (void*)D_80119320,
-    0x400,
-    D_80119720, //(void*)D_80119720
-    NULL,
-    NULL,
-    0,
-    D_80200CB0,
-    0xC00
+/* type */ 1,
+/* flags */     0,
+/* ucode_boot */    NULL,
+/* ucode_boot_size */   0,
+/* ucode */             NULL,
+/* ucode_size */        0x1000,
+/* ucode_data */        NULL,
+/* ucode_data_size */   0x800,
+/* dram_stack */        (void*)D_80119320,
+/* dram_stack_size */   0x400,
+/* output_buff */       D_80119720, //(void*)D_80119720
+/* output_buff_size */  NULL,
+/* data_ptr */          NULL,
+/* data_size */         0,
+/* yield_data_ptr */    D_80200CB0,
+/* yield_data_size */   0xC00
 }};
 
 #else
 OSTask D_800F04E0[2] = {
 {
-    1,
-    0,
-    NULL,
-    0,
-    NULL,
-    0x1000,
-    NULL,
-    0x800,
-    (u64*)0x80119320, //(void*)D_80119320
-    0x400,
-    (void*)0x80119720, //D_80119720
-    NULL,
-    NULL,
-    0,
-    D_80200CB0,
-    sizeof(D_80200CB0)
+/* type */ 1,
+/* flags */     0,
+/* ucode_boot */    NULL,
+/* ucode_boot_size */   0,
+/* ucode */             NULL,
+/* ucode_size */        0x1000,
+/* ucode_data */        NULL,
+/* ucode_data_size */   0x800,
+/* dram_stack */        (u64*)0x80119320, //(void*)D_80119320
+/* dram_stack_size */   0x400,
+/* output_buff */       (void*)0x80119720, //D_80119720
+/* output_buff_size */  NULL,
+/* data_ptr */          NULL,
+/* data_size */         0,
+/* yield_data_ptr */    D_80200CB0,
+/* yield_data_size */   sizeof(D_80200CB0)
 },
 {
-    1,
-    0,
-    NULL,
-    0,
-    NULL,
-    0x1000,
-    NULL,
-    0x800,
-    (u64*)0x80119320, //(void*)D_80119320
-    0x400,
-    (void*)0x80119720, //(void*)D_80119720
-    NULL,
-    NULL,
-    0,
-    D_80200CB0,
-    sizeof(D_80200CB0)
+/* type */ 1,
+/* flags */     0,
+/* ucode_boot */    NULL,
+/* ucode_boot_size */   0,
+/* ucode */             NULL,
+/* ucode_size */        0x1000,
+/* ucode_data */        NULL,
+/* ucode_data_size */   0x800,
+/* dram_stack */        (u64*)0x80119320, //(void*)D_80119320
+/* dram_stack_size */   0x400,
+/* output_buff */       (void*)0x80119720, //(void*)D_80119720
+/* output_buff_size */  NULL,
+/* data_ptr */          NULL,
+/* data_size */         0,
+/* yield_data_ptr */    D_80200CB0,
+/* yield_data_size */   sizeof(D_80200CB0)
 }};
 #endif
-
 
 s32 Chameleon_StepBool = FALSE;
 
