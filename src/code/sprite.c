@@ -7328,7 +7328,7 @@ void func_80071A48(u32 in_value, char* out_str) {
 }
 #else
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80071A48.s")
-void func_80071A48(u32 arg0, s8* str);
+void func_80071A48(u32 arg0, char* str);
 #endif
 
 //ending?
@@ -7929,7 +7929,7 @@ void Effect_TypeAQ_Init(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 ar
     s32 sp60;
     s32 sp5C;
     s32 i = 0;
-    u8* ptr = (u8*)arg7; //TODO: ? weird cast hack
+    u8* ptr = arg7;
 
 
     while (*ptr != 0) {
@@ -8050,7 +8050,7 @@ void Effect_TypeAR_Init(f32 arg0, f32 arg1, s32 arg2, f32 arg3, f32 arg4, f32 ar
     Effect_TypeAQ_Data* data;
     s32 i = 0;
     f32 f0;
-    unsigned char* ptr = arg7;
+    char* ptr = arg7;
 
     while (*ptr != 0) {
         ptr+=2;
@@ -9535,7 +9535,7 @@ void func_8007E714(f32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80080318.s")
 
-void PrintTextWrapper(f32 arg0, f32 arg1, f32 arg2, f32 arg3, char* txt, s32 font) {
+void PrintTextWrapper(f32 arg0, f32 arg1, f32 arg2, f32 arg3, const char* txt, s32 font) {
     PrintText(arg0, arg1, arg2, arg3, 0.0f, 0.0f, txt, font);
 }
 

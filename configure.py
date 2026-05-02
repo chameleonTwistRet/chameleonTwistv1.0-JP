@@ -46,7 +46,7 @@ VERSION = "VER_JP"
 
 DEFINES = f"-D_LANGUAGE_C -DF3DEX_GBI -DNDEBUG -D{VERSION}"
 
-WARNINGS = f"-fullwarn -verbose -Xcpluscomm -signed -nostdinc -non_shared -Wab,-r4300_mul -woff 649,838"
+WARNINGS = f"-fullwarn -verbose -Xcpluscomm -nostdinc -non_shared -Wab,-r4300_mul -woff 649,838"
 
 CFLAGS = f"-G 0 {WARNINGS} {INCLUDES} {DEFINES}"
 
