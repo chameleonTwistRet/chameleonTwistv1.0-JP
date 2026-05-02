@@ -144,7 +144,7 @@ void func_800B06B0(Collider* arg0) {
         coord.y = arg0->unk_4C->sfxPos.y + arg0->unk_30.y;
         coord.z = arg0->unk_4C->sfxPos.z + arg0->unk_30.z;
         arg0->unkA4 = 1;
-        func_8007633C(coord.x, coord.y, coord.z, CalculateAngleOfVector(-coord.x, coord.z));
+        func_8007633C(coord.x, coord.y, coord.z, ArcTan2Deg(-coord.x, coord.z));
     }
 }
 
@@ -1741,7 +1741,7 @@ void func_800C1458(s32 arg0) {
     for (i = 0; i != ARRAY_COUNT(gPlayerActors); i++){
         if ((gPlayerActors[i].active != 0) && (gPlayerActors[i].exists != 0)) {
             func_800B4F14(i, &gPlayerActors[i].pos.x, &gPlayerActors[i].pos.y, &gPlayerActors[i].pos.z);
-            gPlayerActors[i].yAngle = CalculateAngleOfVector(-gPlayerActors[i].pos.x, gPlayerActors[i].pos.z);
+            gPlayerActors[i].yAngle = ArcTan2Deg(-gPlayerActors[i].pos.x, gPlayerActors[i].pos.z);
         }
     }
 }

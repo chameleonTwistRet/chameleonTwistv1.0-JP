@@ -5,7 +5,7 @@ extern s32 gCurrentDemoTimer;
 //data
 //lookup tables
 //0-90
-f32 D_80108B70[64] = {
+f32 sAsinDegTable[64] = {
     0,
     0.8952829838,
     1.790784955,
@@ -77,9 +77,9 @@ f32 D_80108B70[64] = {
     75.63848877,
     79.8582077,
 };
-f32 D_80108C70 = 90;
+f32 sAsinDegTableMax = 90;
 //71.8-90
-f32 D_80108C74[64] = {
+f32 sAsinDegTableFine[64] = {
     71.80513,
     71.94903564,
     72.09405518,
@@ -145,9 +145,9 @@ f32 D_80108C74[64] = {
     86.79665375,
     87.73503876,
 };
-f32 D_80108D74 = 90;
+f32 sAsinDegTableFineMax = 90;
 //84.26-90
-f32 D_80108D78[64] = {
+f32 sAsinDegTableFinest[64] = {
     84.26802826,
     84.31302643,
     84.35837555,
@@ -213,9 +213,9 @@ f32 D_80108D78[64] = {
     88.98712921,
     89.28379822,
 };
-f32 D_80108E78 = 90;
+f32 sAsinDegTableFinestMax = 90;
 //0-45
-f32 D_80108E7C[64] = {
+f32 sAtan2DegTable[64] = {
     0,
     0.8951740265,
     1.789911032,
@@ -281,7 +281,7 @@ f32 D_80108E7C[64] = {
     44.09061813,
     44.54886246,
 };
-f32 D_80108F7C = 45;
+f32 sAtan2DegTableMax = 45;
 
 u32 gShadowFlagsSet = 0;
 s32 D_80108F84[] = {4, 21, 4};
@@ -366,11 +366,10 @@ f32 tanf(f32 x) {
 }
 
 /**
- * @brief Interpolates and clamps the inverse sin of a given float value.
- * @param x The value to calculate the arcsine of.
- * @return The interpolated and clamped arcsine of the input value.
+ * Computes the arcsine of x using a three-level lookup table with linear
+ * interpolation. Input is clamped to [-1, 1]. Returns degrees in [-90, 90].
  */
-f32 InterpolateAndClampArcSin(f32 x) {
+f32 AsinDeg(f32 x) {
     f32* table;
     f32 sign;
     f32 abs_x;
@@ -394,14 +393,14 @@ f32 InterpolateAndClampArcSin(f32 x) {
     }
 
     if ((1-1/200.0) <= abs_x) {
-        table = D_80108D78;
-        cur = (abs_x - (1-1/200.0)) * (ARRAY_COUNT(D_80108D78) * 200);
+        table = sAsinDegTableFinest;
+        cur = (abs_x - (1-1/200.0)) * (ARRAY_COUNT(sAsinDegTableFinest) * 200);
     } else if ( (1-1/20.0) <= abs_x) {
-        table = D_80108C74;
-        cur = (abs_x - (1-1/20.0)) * (ARRAY_COUNT(D_80108C74) * 20);
+        table = sAsinDegTableFine;
+        cur = (abs_x - (1-1/20.0)) * (ARRAY_COUNT(sAsinDegTableFine) * 20);
     } else {
-        table = D_80108B70;
-        cur = abs_x * ARRAY_COUNT(D_80108B70);
+        table = sAsinDegTable;
+        cur = abs_x * ARRAY_COUNT(sAsinDegTable);
     }
 
     base = cur;
@@ -425,17 +424,14 @@ f32 InterpolateAndClampArcSin(f32 x) {
  * @return: The angle s.t. sin(angle) = x.
  */
 f32 AngleFromArcSin(f32 x) {
-    return 90.0 - InterpolateAndClampArcSin(x);
+    return 90.0 - AsinDeg(x);
 }
 
 /**
- * @brief Calculates the angle of a 2-dim vector.
- * @param x: The x component of the vector
- * @param y: The y component of the vector
- * 
- * @return The angle of the vector (probably in degrees)
+ * Computes atan2(y, x) using an octant-folding lookup table with linear
+ * interpolation. Returns degrees in [0, 360).
  */
-f32 CalculateAngleOfVector(f32 x, f32 y) {
+f32 ArcTan2Deg(f32 x, f32 y) {
     s32 pad[2];
     f32 angle;
     f32 frac;
@@ -492,8 +488,8 @@ f32 CalculateAngleOfVector(f32 x, f32 y) {
     }
     
     /* angle lookup table is 65 entries long, but the last entry is the same as the first */
-    lookupOne = D_80108E7C[floor];
-    lookupTwo = D_80108E7C[next_index];
+    lookupOne = sAtan2DegTable[floor];
+    lookupTwo = sAtan2DegTable[next_index];
     
     /* Lerp between lookup angle results */
     switch (quadrant) {

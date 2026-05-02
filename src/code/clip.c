@@ -63,7 +63,7 @@ void SetViewAreaParam(Camera* cam, f32 arg1, f32 arg2) {
     D_802018B0.x = sp5C.x - sp38.x;
     D_802018B0.y = sp5C.y - sp38.y;
     D_802018B0.z = sp5C.z - sp38.z;
-    temp_f2_2 = CalculateAngleOfVector(sp44.z, sp44.x);
+    temp_f2_2 = ArcTan2Deg(sp44.z, sp44.x);
     D_802018C8 = (temp_f2_2 - arg1 * 0.5);
     D_802018CC = (temp_f2_2 + arg1 * 0.5);
     
@@ -181,7 +181,7 @@ s32 func_800AF2A4(f32 arg0, f32 arg1, f32 arg2, f32 arg3, s32 arg4) {
             return 0;
         }
         
-        temp_f0_2 = CalculateAngleOfVector(arg2, arg0);
+        temp_f0_2 = ArcTan2Deg(arg2, arg0);
         
         if (D_802018D0 != 0) {
             if ((D_802018CC < temp_f0_2) && (temp_f0_2 < D_802018C8)) {
@@ -279,7 +279,7 @@ s32 check_collision_within_radius(Rect3D *rect, f32 radius) {
                         temp_fv0 = SUM_OF_SQUARES(sp90[i].z, sp90[i].x);
                         if (SQ(radius) < temp_fv0) {  //empty if
                         } else {
-                            angle_xz = CalculateAngleOfVector(sp90[i].z, sp90[i].x);
+                            angle_xz = ArcTan2Deg(sp90[i].z, sp90[i].x);
                             if (D_802018D0 != 0) {
                                 if ((D_802018CC < angle_xz) && (angle_xz < D_802018C8)) {
                                     continue;

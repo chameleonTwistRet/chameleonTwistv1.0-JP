@@ -115,7 +115,7 @@ void func_8004E784(ContMain* arg0, s32 arg1, s32* arg2, ContMain* arg3) {
             gContMain[i].stickY = arg3[i].stickY;
         }
 
-        gContMain[i].stickAngle = CalculateAngleOfVector((f32) gContMain[i].stickX, (f32) gContMain[i].stickY);
+        gContMain[i].stickAngle = ArcTan2Deg((f32) gContMain[i].stickX, (f32) gContMain[i].stickY);
         gContMain[i].buttons1 = (gContMain[i].buttons0 ^ D_80175678[i]) & gContMain[i].buttons0;
         gContMain[i].buttons2 = (gContMain[i].buttons0 ^ D_801756C0[i]) & gContMain[i].buttons0;
         D_801756C0[i] = gContMain[i].buttons0;

@@ -101,7 +101,7 @@ void ClampPointToDisk(f32* a, f32* b, f32 radius) {
  * @brief Calculate the counterclockwise angle between two 2D points relative to the positive x-axis.
  *
  * This function calculates the counterclockwise angle in radians between two 2D points (x1, y1) and (x2, y2)
- * relative to the positive x-axis. The angle is computed by CalculateAngleOfVector,
+ * relative to the positive x-axis. The angle is computed by ArcTan2Deg,
  * which uses a lookup table to determine the angle based on the provided 2D vector (x, y).
  *
  * @param x1 The x-coordinate of the first point.
@@ -112,7 +112,7 @@ void ClampPointToDisk(f32* a, f32* b, f32 radius) {
  * @return (f32) The counterclockwise angle between the two points in radians.
  */
 f32 CalcAngleBetween2DPoints(f32 x1, f32 y1, f32 x2, f32 y2) {
-    return CalculateAngleOfVector(x2 - x1, -(y2 - y1));
+    return ArcTan2Deg(x2 - x1, -(y2 - y1));
 }
 
 /**
@@ -227,7 +227,7 @@ void func_8002D434(f32 *vecX, f32 *vecY, f32 diffX, f32 diffY, f32 addAngle) {
 
     // If magnitude is not 0, calculate new angle and adjust vector
     if (c != 0.0f) {
-        newAngle = CalculateAngleOfVector(a, -b) + addAngle;
+        newAngle = ArcTan2Deg(a, -b) + addAngle;
         *vecX = cosf(DEGREES_TO_RADIANS_2PI(newAngle)) * c + diffX;
         *vecY = diffY + -(sinf(DEGREES_TO_RADIANS_2PI(newAngle)) * c);
     }
@@ -817,7 +817,7 @@ void func_8002ECCC(s32 arg0) {
         D_80174860->f5.z = D_80174860->f2.y;
     }
 
-    D_80174860->f1.y = CalculateAngleOfVector(D_80174860->f4.x - D_80174860->f5.x, -(D_80174860->f4.z - D_80174860->f5.z));
+    D_80174860->f1.y = ArcTan2Deg(D_80174860->f4.x - D_80174860->f5.x, -(D_80174860->f4.z - D_80174860->f5.z));
 }
 
 //related to animation
@@ -1031,7 +1031,7 @@ void func_800317A0(void) {
 
     for (i = gTongueOnePointer->poleSegmentAt; i < gTongueOnePointer->cameraSegmentAt; i++){
         if (((gTongueOnePointer->tongueXs[i] != 0.0f) || (gTongueOnePointer->tongueZs[i] != 0.0f)) && (gTongueOnePointer->length < gTongueOnePointer->tongueForwards[i])) {
-            gTongueOnePointer->controlAngle = CalculateAngleOfVector(gTongueOnePointer->tongueXs[i], gTongueOnePointer->tongueZs[i]);
+            gTongueOnePointer->controlAngle = ArcTan2Deg(gTongueOnePointer->tongueXs[i], gTongueOnePointer->tongueZs[i]);
             gTongueOnePointer->length = gTongueOnePointer->tongueForwards[i];
         }
     }
@@ -1246,7 +1246,7 @@ void func_8003449C(void) {
 
 void func_80035374(Unk_func_80035374* arg0) {
     if ((arg0->unk6 == 0) && (arg0->unk8 == 0)) {
-        AreAnglesWithin180Degrees(gCurrentActivePlayerPointer->yAngle, CalculateAngleOfVector((&Poles[gTongueOnePointer->poleID])->pos.x - gCurrentActivePlayerPointer->pos.x, -((&Poles[gTongueOnePointer->poleID])->pos.z - gCurrentActivePlayerPointer->pos.z)));
+        AreAnglesWithin180Degrees(gCurrentActivePlayerPointer->yAngle, ArcTan2Deg((&Poles[gTongueOnePointer->poleID])->pos.x - gCurrentActivePlayerPointer->pos.x, -((&Poles[gTongueOnePointer->poleID])->pos.z - gCurrentActivePlayerPointer->pos.z)));
     } else {
         AreAnglesWithin180Degrees(arg0->unkC, CalcAngleBetween2DPoints(gCurrentActivePlayerPointer->pos.x, gCurrentActivePlayerPointer->pos.z, (&Poles[gTongueOnePointer->poleID])->pos.x, (&Poles[gTongueOnePointer->poleID])->pos.z));
     }
@@ -1261,7 +1261,7 @@ void func_800360E4(Actor* actor) {
 
     if ((actor->pos.y < (gCurrentActivePlayerPointer->pos.y + gCurrentActivePlayerPointer->hitboxYStretch)) && (gCurrentActivePlayerPointer->pos.y < (actor->unknownPositionThings[0].unk_10 + actor->pos.y))) {
         if ((SQ(xCalc) + SQ(zCalc)) < SQ(actor->unknownPositionThings[0].unk_0C)) {
-            angle = CalculateAngleOfVector(xCalc, -zCalc);
+            angle = ArcTan2Deg(xCalc, -zCalc);
             gCurrentActivePlayerPointer->vel.x = ((actor->unknownPositionThings[0].unk_0C * cosf(DEGREES_TO_RADIANS_2PI(angle))) + actor->pos.x) - gCurrentActivePlayerPointer->pos.x;
             gCurrentActivePlayerPointer->vel.z = ((actor->unknownPositionThings[0].unk_0C * -sinf(DEGREES_TO_RADIANS_2PI(angle))) + actor->pos.z) - gCurrentActivePlayerPointer->pos.z;
             CalcNextPosition(gCurrentActivePlayerPointer, gTongueOnePointer, actor);
@@ -1293,7 +1293,7 @@ void func_80036D74(PlayerActor* arg0, Tongue* arg1) {
         arg0->playerHURTANIM = 0;
         arg0->playerHURTBY = 0;
         func_80031DB0(arg0, arg1, 0);
-        arg0->yAngle = CalculateAngleOfVector(-arg0->vel.x, arg0->vel.z);;
+        arg0->yAngle = ArcTan2Deg(-arg0->vel.x, arg0->vel.z);;
         arg0->vel.x = -cosf(DEGREES_TO_RADIANS_2PI(arg0->yAngle)) * 32.0f;
         arg0->vel.z = sinf(DEGREES_TO_RADIANS_2PI(arg0->yAngle)) * 32.0f;
         func_8002F54C(48.0f, arg0, 1);
@@ -1892,7 +1892,7 @@ void func_8003FA38(Actor* pogo, f32 arg1, f32 arg2, f32 arg3) {
     temp_f8 = (s32) (NORM_2(temp_f0,temp_f2) / pogo->unk_94);
     pogo->userVariables[1] = temp_f8;
     pogo->unk_134[3] = (f32) ((arg2 - pogo->pos.y) / (f32) temp_f8);
-    pogo->unk_90 = CalculateAngleOfVector(temp_f0, -temp_f2);
+    pogo->unk_90 = ArcTan2Deg(temp_f0, -temp_f2);
 }
 
 void ActorInit_Pogo(Actor* pogo) {
@@ -2230,7 +2230,7 @@ void ActorTick_BilliardBall(Actor* billiardBall) {
     temp_f0_2 = NORM_2(billiardBall->vel.x,billiardBall->vel.z);
     billiardBall->unk_94 = temp_f0_2;
     billiardBall->unk_134[0] = ((180.0f * temp_f0_2) / ( billiardBall->unknownPositionThings[0].unk_0C * PI)) + billiardBall->unk_134[0];
-    billiardBall->unk_90 = CalculateAngleOfVector(billiardBall->vel.x, -billiardBall->vel.z);
+    billiardBall->unk_90 = ArcTan2Deg(billiardBall->vel.x, -billiardBall->vel.z);
 }
 
 //(re)set bowling pins

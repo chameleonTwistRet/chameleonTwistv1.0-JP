@@ -358,7 +358,7 @@ Vec3f* func_800CA5B4(Vec3f* arg0, Vec3f arg1, UnkArg4* arg4, f32 arg5) {
  */
 void func_800CC7E0(Vec3f vec) {
     // In this instance the z component is flipped.
-    CalculateAngleOfVector(vec.x, -vec.z);
+    ArcTan2Deg(vec.x, -vec.z);
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800CC814.s")
