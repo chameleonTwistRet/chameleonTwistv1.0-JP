@@ -1459,7 +1459,7 @@ void func_800BE550(Tongue* arg0) {
     func_800BE474(arg0);
 }
 
-void EraseToungeEatEnemy(Tongue* arg0) {
+void EraseTongueEatEnemy(Tongue* arg0) {
     s32 i;
 
     arg0->vaulting = 0;

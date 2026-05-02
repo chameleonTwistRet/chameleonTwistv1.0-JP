@@ -163,7 +163,7 @@ void func_800BE2C0(void);
 void func_800BE370(s32 arg0);
 void func_800BE474(Tongue*);
 void func_800BE550(Tongue* arg0);
-void EraseToungeEatEnemy(Tongue* arg0);
+void EraseTongueEatEnemy(Tongue* arg0);
 void func_800BE664(PlayerActor * arg0);
 void func_800BE7BC(void);
 void EraseField(Collider*);

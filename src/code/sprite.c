@@ -7316,16 +7316,17 @@ void Effect_GameResults_Init() {
 }
 
 #ifdef NON_MATCHING
-void func_80071A48(u32 arg0, s8* str) {
+void func_80071A48(u32 in_value, char* out_str) {
     s32 shift;
+    for (shift = 8-1; shift >= 0; shift -= 1) {
+        s32 digit = (in_value & (0xF << (shift * 4))) >> (shift * 4);
+        char* pChar = &D_800FE724[digit * 2];
 
-    for (shift = 28; shift >= 0; shift -= 4) {
-        s32 digit = ((0xF << shift) & arg0) >> shift;
-        u8* pChar = &D_800FE724[digit * 2];
-        *str++ = *pChar++;
-        *str++ = *pChar++;
+        //twice for euc-jp
+        *out_str++ = *pChar++;
+        *out_str++ = *pChar++;
     }
-    *str = 0;
+    *out_str = 0;
 }
 #else
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80071A48.s")
@@ -7565,7 +7566,7 @@ void printStageRecordTimes(s32 arg0) {
 void printStageRecordTimes(s32 arg0);
 #endif
 
-#ifdef NON_MATCHING
+
 void func_80072B1C(Effect* effect, Gfx** pGfxPos) {
     s32 i, j, k;
 
@@ -7580,8 +7581,8 @@ void func_80072B1C(Effect* effect, Gfx** pGfxPos) {
         printStageRecordTimes(D_800F0B5C);
         effect->spriteID = D_800F0B5C;
     }
-    D_800F0B5C = func_8007101C();
-    if (effect->spriteID != D_800F0B5C) {
+
+    if (effect->spriteID != (D_800F0B5C = func_8007101C())) {
         D_800FE748 = 1;
     }
 
@@ -7592,18 +7593,17 @@ void func_80072B1C(Effect* effect, Gfx** pGfxPos) {
         }
     } else if (effect->lifeTime < 2.0f) {
         for (k = 0; k < 4; k++) {
-            if (gPlayerActors[k].active && func_80055F10(k, 0x4000) == 1) {
-                Effect_TypeAI_Init(0, 16.0f, 10.0f, 0);
-                effect->lifeTime = 2.0f;
-                return;
+            if (!gPlayerActors[k].active) {
+                continue;
+            } if (func_80055F10(k, 0x4000) != 1) {
+                continue;
             }
+            Effect_TypeAI_Init(0, 16.0f, 10.0f, 0);
+            effect->lifeTime = 2.0f;
+            return;
         }
     }
 }
-#else
-void func_80072B1C(Effect* effect, Gfx** pGfxPos);
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80072B1C.s")
-#endif
 
 void Effect_TypeAN_Init(void) {
     Effect* effect;
