@@ -294,16 +294,16 @@ Mtx static0_unk3_Animarr[45][13] = {
 };
 
 AnimPointer static0_chameleonAnims[12] = {
-{&static0_Idle_Animh.frames, &static0_Idle_Animh.objects, &static0_Idle_Animarr[0][0]},
-{&static0_Walk_Animh.frames, &static0_Walk_Animh.objects, &static0_Walk_Animarr[0][0]},
-{&static0_Run_Animh.frames, &static0_Run_Animh.objects, &static0_Run_Animarr[0][0]},
-{&static0_unk_Animh.frames, &static0_unk_Animh.objects, &static0_unk_Animarr[0][0]},
-{&static0_Jump_Animh.frames, &static0_Jump_Animh.objects, &static0_Jump_Animarr[0][0]},
-{&static0_Tongue_Animh.frames, &static0_Tongue_Animh.objects, &static0_Tongue_Animarr[0][0]},
-{&static0_Vault_Animh.frames, &static0_Vault_Animh.objects, &static0_Vault_Animarr[0][0]},
-{&static0_Spin_Animh.frames, &static0_Spin_Animh.objects, &static0_Spin_Animarr[0][0]},
-{&static0_unk2_Animh.frames, &static0_unk2_Animh.objects, &static0_unk2_Animarr[0][0]},
-{&static0_LandFromKnockback_Animh.frames, &static0_LandFromKnockback_Animh.objects, &static0_LandFromKnockback_Animarr[0][0]},
-{&static0_GetupFromKnockback_Animh.frames, &static0_GetupFromKnockback_Animh.objects, &static0_GetupFromKnockback_Animarr[0][0]},
-{&static0_unk3_Animh.frames, &static0_unk3_Animh.objects, &static0_unk3_Animarr[0][0]}
+{&static0_Idle_Animh.frames, &static0_Idle_Animh.objects, static0_Idle_Animarr[0]},
+{&static0_Walk_Animh.frames, &static0_Walk_Animh.objects, static0_Walk_Animarr[0]},
+{&static0_Run_Animh.frames, &static0_Run_Animh.objects, static0_Run_Animarr[0]},
+{&static0_unk_Animh.frames, &static0_unk_Animh.objects, static0_unk_Animarr[0]},
+{&static0_Jump_Animh.frames, &static0_Jump_Animh.objects, static0_Jump_Animarr[0]},
+{&static0_Tongue_Animh.frames, &static0_Tongue_Animh.objects, static0_Tongue_Animarr[0]},
+{&static0_Vault_Animh.frames, &static0_Vault_Animh.objects, static0_Vault_Animarr[0]},
+{&static0_Spin_Animh.frames, &static0_Spin_Animh.objects, static0_Spin_Animarr[0]},
+{&static0_unk2_Animh.frames, &static0_unk2_Animh.objects, static0_unk2_Animarr[0]},
+{&static0_LandFromKnockback_Animh.frames, &static0_LandFromKnockback_Animh.objects, static0_LandFromKnockback_Animarr[0]},
+{&static0_GetupFromKnockback_Animh.frames, &static0_GetupFromKnockback_Animh.objects, static0_GetupFromKnockback_Animarr[0]},
+{&static0_unk3_Animh.frames, &static0_unk3_Animh.objects, static0_unk3_Animarr[0]}
 };

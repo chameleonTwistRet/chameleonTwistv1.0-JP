@@ -15,8 +15,8 @@ Mtx Animations_unk2_Animarr[40][13] = {
 };
 
 AnimPointer Animations_unk1Pointers_Animp[1] = {
-{&Animations_unk1Header_Animh.frames, &Animations_unk1Header_Animh.objects, &Animations_unk1_Animarr[0][0]}
+{&Animations_unk1Header_Animh.frames, &Animations_unk1Header_Animh.objects, Animations_unk1_Animarr[0]}
 };
 AnimPointer Animations_unk2Pointers_Animp[1] = {
-{&Animations_unk2Header_Animh.frames, &Animations_unk2Header_Animh.objects, &Animations_unk2_Animarr[0][0]}
+{&Animations_unk2Header_Animh.frames, &Animations_unk2Header_Animh.objects, Animations_unk2_Animarr[0]}
 };

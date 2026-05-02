@@ -9,130 +9,130 @@ extern unsigned char Global_KLFloor_ci4_PNG[];
 extern unsigned char Global_KLFloor_ci4_PAL[];
 
 extern Gfx Global_fallbackCube_Gfx[];
-extern ModelCollision Global_fallbackCube_ColH;
+extern ModelCollision Global_fallbackCube_collision;
 extern Gfx Global_exitShadowSouth_Gfx[];
-extern ModelCollision Global_exitShadowSouth_ColH;
+extern ModelCollision Global_exitShadowSouth_collision;
 extern Gfx Global_exitShadowNorth_Gfx[];
-extern ModelCollision Global_exitShadowNorth_ColH;
+extern ModelCollision Global_exitShadowNorth_collision;
 extern Gfx Global_exitShadowEast_Gfx[];
-extern ModelCollision Global_exitShadowEast_ColH;
+extern ModelCollision Global_exitShadowEast_collision;
 extern Gfx Global_exitShadowWest_Gfx[];
-extern ModelCollision Global_exitShadowWest_ColH;
+extern ModelCollision Global_exitShadowWest_collision;
 extern Gfx Global_ALBLExit_Gfx[];
-extern ModelCollision Global_ALBLExit_ColH;
+extern ModelCollision Global_ALBLExit_collision;
 extern Gfx Global_sandPit_Gfx[];
-extern ModelCollision Global_sandPit_ColH;
+extern ModelCollision Global_sandPit_collision;
 extern Gfx Global_BossBridge_Gfx[];
-extern ModelCollision Global_BossBridge_ColH;
+extern ModelCollision Global_BossBridge_collision;
 extern Gfx Global_ALPole_Gfx[];
-extern ModelCollision Global_ALPole_ColH;
+extern ModelCollision Global_ALPole_collision;
 extern Gfx Global_ALBLDoor_Gfx[];
-extern ModelCollision Global_ALBLDoor_ColH;
+extern ModelCollision Global_ALBLDoor_collision;
 extern Gfx Global_ALSpinDoor_Gfx[];
-extern ModelCollision Global_ALSpinDoor_ColH;
+extern ModelCollision Global_ALSpinDoor_collision;
 extern Gfx Global_BLLavaFloor_Gfx[];
-extern ModelCollision Global_BLLavaFloor_ColH;
+extern ModelCollision Global_BLLavaFloor_collision;
 extern Gfx Global_BLLava_Gfx[];
-extern ModelCollision Global_BLLava_ColH;
+extern ModelCollision Global_BLLava_collision;
 extern Gfx Global_BLLava2_Gfx[];
-extern ModelCollision Global_BLLava2_ColH;
+extern ModelCollision Global_BLLava2_collision;
 extern Gfx Global_BLLava3_Gfx[];
-extern ModelCollision Global_BLLava3_ColH;
+extern ModelCollision Global_BLLava3_collision;
 extern Gfx Global_BLLava4_Gfx[];
-extern ModelCollision Global_BLLava4_ColH;
+extern ModelCollision Global_BLLava4_collision;
 extern Gfx Global_BLLava5_Gfx[];
-extern ModelCollision Global_BLLava5_ColH;
+extern ModelCollision Global_BLLava5_collision;
 extern Gfx Global_BLLava6_Gfx[];
-extern ModelCollision Global_BLLava6_ColH;
+extern ModelCollision Global_BLLava6_collision;
 extern Gfx Global_BLLava7_Gfx[];
-extern ModelCollision Global_BLLava7_ColH;
+extern ModelCollision Global_BLLava7_collision;
 extern Gfx Global_BLLava8_Gfx[];
-extern ModelCollision Global_BLLava8_ColH;
+extern ModelCollision Global_BLLava8_collision;
 extern Gfx Global_BLDestructableTop_Gfx[];
-extern ModelCollision Global_BLDestructableTop_ColH;
+extern ModelCollision Global_BLDestructableTop_collision;
 extern Gfx Global_BLMetalBridge_Gfx[];
-extern ModelCollision Global_BLMetalBridge_ColH;
+extern ModelCollision Global_BLMetalBridge_collision;
 extern Gfx Global_KLExit_Gfx[];
-extern ModelCollision Global_KLExit_ColH;
+extern ModelCollision Global_KLExit_collision;
 extern Gfx Global_KLDoor_Gfx[];
-extern ModelCollision Global_KLDoor_ColH;
+extern ModelCollision Global_KLDoor_collision;
 extern Gfx Global_DCExit_Gfx[];
-extern ModelCollision Global_DCExit_ColH;
+extern ModelCollision Global_DCExit_collision;
 extern Gfx Global_TallExitShadow1_Gfx[];
-extern ModelCollision Global_TallExitShadow1_ColH;
+extern ModelCollision Global_TallExitShadow1_collision;
 extern Gfx Global_TallExitShadow2_Gfx[];
-extern ModelCollision Global_TallExitShadow2_ColH;
+extern ModelCollision Global_TallExitShadow2_collision;
 extern Gfx Global_GCExit1_Gfx[];
-extern ModelCollision Global_GCExit1_ColH;
+extern ModelCollision Global_GCExit1_collision;
 extern Gfx Global_GCExit2_Gfx[];
-extern ModelCollision Global_GCExit2_ColH;
+extern ModelCollision Global_GCExit2_collision;
 extern Gfx Global_trainingRoomLight_Gfx[];
-extern ModelCollision Global_trainingRoomLight_ColH;
+extern ModelCollision Global_trainingRoomLight_collision;
 extern Gfx Global_JLCaveExit1_Gfx[];
-extern ModelCollision Global_JLCaveExit1_ColH;
+extern ModelCollision Global_JLCaveExit1_collision;
 extern Gfx Global_JLCaveExit2_Gfx[];
-extern ModelCollision Global_JLCaveExit2_ColH;
+extern ModelCollision Global_JLCaveExit2_collision;
 extern Gfx Global_JLCaveExit3_Gfx[];
-extern ModelCollision Global_JLCaveExit3_ColH;
+extern ModelCollision Global_JLCaveExit3_collision;
 extern Gfx Global_JLCaveExit4_Gfx[];
-extern ModelCollision Global_JLCaveExit4_ColH;
+extern ModelCollision Global_JLCaveExit4_collision;
 extern Gfx Global_JLOutsideEntrance_Gfx[];
-extern ModelCollision Global_JLOutsideEntrance_ColH;
+extern ModelCollision Global_JLOutsideEntrance_collision;
 extern Gfx Global_JLFxCamPillar_Gfx[];
-extern ModelCollision Global_JLFxCamPillar_ColH;
+extern ModelCollision Global_JLFxCamPillar_collision;
 extern Gfx Global_JLCaveDoor_Gfx[];
-extern ModelCollision Global_JLCaveDoor_ColH;
+extern ModelCollision Global_JLCaveDoor_collision;
 extern Gfx GiantCake_model1_Gfx[];
-extern ModelCollision GiantCake_unkCol1_ColH;
+extern ModelCollision GiantCake_unkCol1_collision;
 extern Gfx GiantCake_model2_Gfx[];
-extern ModelCollision GiantCake_unkCol2_ColH;
+extern ModelCollision GiantCake_unkCol2_collision;
 extern Gfx Global_pole_Gfx[];
-extern ModelCollision Global_pole_ColH;
+extern ModelCollision Global_pole_collision;
 
 
 Mtx GiantCake_IMtx1 = IDENTITY;
 
 StageModel GiantCake_stageModels[] = {
-{&Global_fallbackCube_Gfx[0], &Global_fallbackCube_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_exitShadowSouth_Gfx[0], &Global_exitShadowSouth_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_exitShadowNorth_Gfx[0], &Global_exitShadowNorth_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_exitShadowEast_Gfx[0], &Global_exitShadowEast_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_exitShadowWest_Gfx[0], &Global_exitShadowWest_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_ALBLExit_Gfx[0], &Global_ALBLExit_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_sandPit_Gfx[0], &Global_sandPit_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_BossBridge_Gfx[0], &Global_BossBridge_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_ALPole_Gfx[0], &Global_ALPole_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_ALBLDoor_Gfx[0], &Global_ALBLDoor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_ALSpinDoor_Gfx[0], &Global_ALSpinDoor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_BLLavaFloor_Gfx[0], &Global_BLLavaFloor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_BLLava_Gfx[0], &Global_BLLava_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_BLLava2_Gfx[0], &Global_BLLava2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_BLLava3_Gfx[0], &Global_BLLava3_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_BLLava4_Gfx[0], &Global_BLLava4_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_BLLava5_Gfx[0], &Global_BLLava5_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_BLLava6_Gfx[0], &Global_BLLava6_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_BLLava7_Gfx[0], &Global_BLLava7_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_BLLava8_Gfx[0], &Global_BLLava8_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_BLDestructableTop_Gfx[0], &Global_BLDestructableTop_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_BLMetalBridge_Gfx[0], &Global_BLMetalBridge_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_KLExit_Gfx[0], &Global_KLExit_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_KLDoor_Gfx[0], &Global_KLDoor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_DCExit_Gfx[0], &Global_DCExit_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_TallExitShadow1_Gfx[0], &Global_TallExitShadow1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_TallExitShadow2_Gfx[0], &Global_TallExitShadow2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_GCExit1_Gfx[0], &Global_GCExit1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_GCExit2_Gfx[0], &Global_GCExit2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_trainingRoomLight_Gfx[0], &Global_trainingRoomLight_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_JLCaveExit1_Gfx[0], &Global_JLCaveExit1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_JLCaveExit2_Gfx[0], &Global_JLCaveExit2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_JLCaveExit3_Gfx[0], &Global_JLCaveExit3_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_JLCaveExit4_Gfx[0], &Global_JLCaveExit4_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_JLOutsideEntrance_Gfx[0], &Global_JLOutsideEntrance_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_JLFxCamPillar_Gfx[0], &Global_JLFxCamPillar_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_JLCaveDoor_Gfx[0], &Global_JLCaveDoor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&GiantCake_model1_Gfx[0], &GiantCake_unkCol1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&GiantCake_model2_Gfx[0], &GiantCake_unkCol2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_pole_Gfx[0], &Global_pole_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_fallbackCube_Gfx, &Global_fallbackCube_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_exitShadowSouth_Gfx, &Global_exitShadowSouth_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_exitShadowNorth_Gfx, &Global_exitShadowNorth_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_exitShadowEast_Gfx, &Global_exitShadowEast_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_exitShadowWest_Gfx, &Global_exitShadowWest_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_ALBLExit_Gfx, &Global_ALBLExit_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_sandPit_Gfx, &Global_sandPit_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_BossBridge_Gfx, &Global_BossBridge_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_ALPole_Gfx, &Global_ALPole_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_ALBLDoor_Gfx, &Global_ALBLDoor_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_ALSpinDoor_Gfx, &Global_ALSpinDoor_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_BLLavaFloor_Gfx, &Global_BLLavaFloor_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_BLLava_Gfx, &Global_BLLava_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_BLLava2_Gfx, &Global_BLLava2_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_BLLava3_Gfx, &Global_BLLava3_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_BLLava4_Gfx, &Global_BLLava4_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_BLLava5_Gfx, &Global_BLLava5_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_BLLava6_Gfx, &Global_BLLava6_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_BLLava7_Gfx, &Global_BLLava7_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_BLLava8_Gfx, &Global_BLLava8_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_BLDestructableTop_Gfx, &Global_BLDestructableTop_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_BLMetalBridge_Gfx, &Global_BLMetalBridge_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_KLExit_Gfx, &Global_KLExit_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_KLDoor_Gfx, &Global_KLDoor_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_DCExit_Gfx, &Global_DCExit_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_TallExitShadow1_Gfx, &Global_TallExitShadow1_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_TallExitShadow2_Gfx, &Global_TallExitShadow2_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_GCExit1_Gfx, &Global_GCExit1_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_GCExit2_Gfx, &Global_GCExit2_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_trainingRoomLight_Gfx, &Global_trainingRoomLight_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_JLCaveExit1_Gfx, &Global_JLCaveExit1_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_JLCaveExit2_Gfx, &Global_JLCaveExit2_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_JLCaveExit3_Gfx, &Global_JLCaveExit3_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_JLCaveExit4_Gfx, &Global_JLCaveExit4_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_JLOutsideEntrance_Gfx, &Global_JLOutsideEntrance_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_JLFxCamPillar_Gfx, &Global_JLFxCamPillar_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_JLCaveDoor_Gfx, &Global_JLCaveDoor_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{GiantCake_model1_Gfx, &GiantCake_unkCol1_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{GiantCake_model2_Gfx, &GiantCake_unkCol2_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_pole_Gfx, &Global_pole_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
 };
 
 unsigned char GiantCake_rabObjects_Bin[] = {
@@ -273,8 +273,8 @@ Rect3D GiantCake_unkCol1_BoundBox = {
     #include "assets/levelGroup/GiantCake/unkCol1/unkCol1.boundBox.inc.c"
 };
 
-ModelCollision GiantCake_unkCol1_ColH = {
-16, 22, GiantCake_unkCol1_ColVerts, GiantCake_unkCol1_ColTris, &GiantCake_unkCol1_BoundBox
+ModelCollision GiantCake_unkCol1_collision = {
+    ARRAY_COUNT(GiantCake_unkCol1_ColVerts), ARRAY_COUNT(GiantCake_unkCol1_ColTris), GiantCake_unkCol1_ColVerts, GiantCake_unkCol1_ColTris, &GiantCake_unkCol1_BoundBox
 };
 
 Vec3f GiantCake_unkCol2_ColVerts[] = {
@@ -289,8 +289,8 @@ Rect3D GiantCake_unkCol2_BoundBox = {
     #include "assets/levelGroup/GiantCake/unkCol2/unkCol2.boundBox.inc.c"
 };
 
-ModelCollision GiantCake_unkCol2_ColH = {
-8, 10, GiantCake_unkCol2_ColVerts, GiantCake_unkCol2_ColTris, &GiantCake_unkCol2_BoundBox
+ModelCollision GiantCake_unkCol2_collision = {
+    ARRAY_COUNT(GiantCake_unkCol2_ColVerts), ARRAY_COUNT(GiantCake_unkCol2_ColTris), GiantCake_unkCol2_ColVerts, GiantCake_unkCol2_ColTris, &GiantCake_unkCol2_BoundBox
 };
 Mtx GiantCake_IMtx5 = IDENTITY;
 
@@ -801,7 +801,7 @@ Mtx GiantCake_unk1_Animarr[15][8] = {
 };
 
 AnimPointer GiantCake_unk1Pointers_Animp[1] = {
-{&GiantCake_unk1Header_Animh.frames, &GiantCake_unk1Header_Animh.objects, &GiantCake_unk1_Animarr[0][0]}
+{&GiantCake_unk1Header_Animh.frames, &GiantCake_unk1Header_Animh.objects, GiantCake_unk1_Animarr[0]}
 };
 
 Anim GiantCake_unk2Header_Animh = {
@@ -813,7 +813,7 @@ Mtx GiantCake_unk2_Animarr[2][3] = {
 };
 
 AnimPointer GiantCake_unk2Pointers_Animp[1] = {
-{&GiantCake_unk2Header_Animh.frames, &GiantCake_unk2Header_Animh.objects, &GiantCake_unk2_Animarr[0][0]}
+{&GiantCake_unk2Header_Animh.frames, &GiantCake_unk2Header_Animh.objects, GiantCake_unk2_Animarr[0]}
 };
 
 Anim GiantCake_unk3Header_Animh = {
@@ -825,7 +825,7 @@ Mtx GiantCake_unk3_Animarr[1][1] = {
 };
 
 AnimPointer GiantCake_unk3Pointers_Animp[1] = {
-{&GiantCake_unk3Header_Animh.frames, &GiantCake_unk3Header_Animh.objects, &GiantCake_unk3_Animarr[0][0]}
+{&GiantCake_unk3Header_Animh.frames, &GiantCake_unk3Header_Animh.objects, GiantCake_unk3_Animarr[0]}
 };
 
 Anim GiantCake_unk4Header_Animh = {
@@ -837,7 +837,7 @@ Mtx GiantCake_unk4_Animarr[15][17] = {
 };
 
 AnimPointer GiantCake_unk4Pointers_Animp[1] = {
-{&GiantCake_unk4Header_Animh.frames, &GiantCake_unk4Header_Animh.objects, &GiantCake_unk4_Animarr[0][0]}
+{&GiantCake_unk4Header_Animh.frames, &GiantCake_unk4Header_Animh.objects, GiantCake_unk4_Animarr[0]}
 };
 
 Anim GiantCake_unk5Header_Animh = {
@@ -849,5 +849,5 @@ Mtx GiantCake_unk5_Animarr[2][17] = {
 };
 
 AnimPointer GiantCake_unk5Pointers_Animp[1] = {
-{&GiantCake_unk5Header_Animh.frames, &GiantCake_unk5Header_Animh.objects, &GiantCake_unk5_Animarr[0][0]}
+{&GiantCake_unk5Header_Animh.frames, &GiantCake_unk5Header_Animh.objects, GiantCake_unk5_Animarr[0]}
 };

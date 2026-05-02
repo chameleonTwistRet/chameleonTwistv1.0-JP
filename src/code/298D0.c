@@ -97,7 +97,7 @@ void func_8004E784(ContMain* arg0, s32 arg1, s32* arg2, ContMain* arg3) {
     s32 i;
 
     osRecvMesg(&gEepromMsgQ, NULL, 1);
-    osContGetReadData(&D_80175650[0]);
+    osContGetReadData(D_80175650);
 
     // for each controller
     for (i = 0; i < arg1; i++) {

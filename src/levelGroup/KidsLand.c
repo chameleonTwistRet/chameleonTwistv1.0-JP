@@ -47,368 +47,368 @@ extern unsigned char Global_KLThing1_ci4_PAL[];
 
 
 extern Gfx Global_fallbackCube_Gfx[];
-extern ModelCollision Global_fallbackCube_ColH;
+extern ModelCollision Global_fallbackCube_collision;
 extern Gfx Global_exitShadowSouth_Gfx[];
-extern ModelCollision Global_exitShadowSouth_ColH;
+extern ModelCollision Global_exitShadowSouth_collision;
 extern Gfx Global_exitShadowNorth_Gfx[];
-extern ModelCollision Global_exitShadowNorth_ColH;
+extern ModelCollision Global_exitShadowNorth_collision;
 extern Gfx Global_exitShadowEast_Gfx[];
-extern ModelCollision Global_exitShadowEast_ColH;
+extern ModelCollision Global_exitShadowEast_collision;
 extern Gfx Global_exitShadowWest_Gfx[];
-extern ModelCollision Global_exitShadowWest_ColH;
+extern ModelCollision Global_exitShadowWest_collision;
 extern Gfx Global_ALBLExit_Gfx[];
-extern ModelCollision Global_ALBLExit_ColH;
+extern ModelCollision Global_ALBLExit_collision;
 extern Gfx Global_sandPit_Gfx[];
-extern ModelCollision Global_sandPit_ColH;
+extern ModelCollision Global_sandPit_collision;
 extern Gfx Global_BossBridge_Gfx[];
-extern ModelCollision Global_BossBridge_ColH;
+extern ModelCollision Global_BossBridge_collision;
 extern Gfx Global_ALPole_Gfx[];
-extern ModelCollision Global_ALPole_ColH;
+extern ModelCollision Global_ALPole_collision;
 extern Gfx Global_ALBLDoor_Gfx[];
-extern ModelCollision Global_ALBLDoor_ColH;
+extern ModelCollision Global_ALBLDoor_collision;
 extern Gfx Global_ALSpinDoor_Gfx[];
-extern ModelCollision Global_ALSpinDoor_ColH;
+extern ModelCollision Global_ALSpinDoor_collision;
 extern Gfx Global_BLLavaFloor_Gfx[];
-extern ModelCollision Global_BLLavaFloor_ColH;
+extern ModelCollision Global_BLLavaFloor_collision;
 extern Gfx Global_BLLava_Gfx[];
-extern ModelCollision Global_BLLava_ColH;
+extern ModelCollision Global_BLLava_collision;
 extern Gfx Global_BLLava2_Gfx[];
-extern ModelCollision Global_BLLava2_ColH;
+extern ModelCollision Global_BLLava2_collision;
 extern Gfx Global_BLLava3_Gfx[];
-extern ModelCollision Global_BLLava3_ColH;
+extern ModelCollision Global_BLLava3_collision;
 extern Gfx Global_BLLava4_Gfx[];
-extern ModelCollision Global_BLLava4_ColH;
+extern ModelCollision Global_BLLava4_collision;
 extern Gfx Global_BLLava5_Gfx[];
-extern ModelCollision Global_BLLava5_ColH;
+extern ModelCollision Global_BLLava5_collision;
 extern Gfx Global_BLLava6_Gfx[];
-extern ModelCollision Global_BLLava6_ColH;
+extern ModelCollision Global_BLLava6_collision;
 extern Gfx Global_BLLava7_Gfx[];
-extern ModelCollision Global_BLLava7_ColH;
+extern ModelCollision Global_BLLava7_collision;
 extern Gfx Global_BLLava8_Gfx[];
-extern ModelCollision Global_BLLava8_ColH;
+extern ModelCollision Global_BLLava8_collision;
 extern Gfx Global_BLDestructableTop_Gfx[];
-extern ModelCollision Global_BLDestructableTop_ColH;
+extern ModelCollision Global_BLDestructableTop_collision;
 extern Gfx Global_BLMetalBridge_Gfx[];
-extern ModelCollision Global_BLMetalBridge_ColH;
+extern ModelCollision Global_BLMetalBridge_collision;
 extern Gfx Global_KLExit_Gfx[];
-extern ModelCollision Global_KLExit_ColH;
+extern ModelCollision Global_KLExit_collision;
 extern Gfx Global_KLDoor_Gfx[];
-extern ModelCollision Global_KLDoor_ColH;
+extern ModelCollision Global_KLDoor_collision;
 extern Gfx Global_DCExit_Gfx[];
-extern ModelCollision Global_DCExit_ColH;
+extern ModelCollision Global_DCExit_collision;
 extern Gfx Global_TallExitShadow1_Gfx[];
-extern ModelCollision Global_TallExitShadow1_ColH;
+extern ModelCollision Global_TallExitShadow1_collision;
 extern Gfx Global_TallExitShadow2_Gfx[];
-extern ModelCollision Global_TallExitShadow2_ColH;
+extern ModelCollision Global_TallExitShadow2_collision;
 extern Gfx Global_GCExit1_Gfx[];
-extern ModelCollision Global_GCExit1_ColH;
+extern ModelCollision Global_GCExit1_collision;
 extern Gfx Global_GCExit2_Gfx[];
-extern ModelCollision Global_GCExit2_ColH;
+extern ModelCollision Global_GCExit2_collision;
 extern Gfx Global_trainingRoomLight_Gfx[];
-extern ModelCollision Global_trainingRoomLight_ColH;
+extern ModelCollision Global_trainingRoomLight_collision;
 extern Gfx Global_JLCaveExit1_Gfx[];
-extern ModelCollision Global_JLCaveExit1_ColH;
+extern ModelCollision Global_JLCaveExit1_collision;
 extern Gfx Global_JLCaveExit2_Gfx[];
-extern ModelCollision Global_JLCaveExit2_ColH;
+extern ModelCollision Global_JLCaveExit2_collision;
 extern Gfx Global_JLCaveExit3_Gfx[];
-extern ModelCollision Global_JLCaveExit3_ColH;
+extern ModelCollision Global_JLCaveExit3_collision;
 extern Gfx Global_JLCaveExit4_Gfx[];
-extern ModelCollision Global_JLCaveExit4_ColH;
+extern ModelCollision Global_JLCaveExit4_collision;
 extern Gfx Global_JLOutsideEntrance_Gfx[];
-extern ModelCollision Global_JLOutsideEntrance_ColH;
+extern ModelCollision Global_JLOutsideEntrance_collision;
 extern Gfx Global_JLFxCamPillar_Gfx[];
-extern ModelCollision Global_JLFxCamPillar_ColH;
+extern ModelCollision Global_JLFxCamPillar_collision;
 extern Gfx Global_JLCaveDoor_Gfx[];
-extern ModelCollision Global_JLCaveDoor_ColH;
+extern ModelCollision Global_JLCaveDoor_collision;
 extern Gfx KidsLand_model1_Gfx[];
-extern ModelCollision KidsLand_unkCol1_ColH;
+extern ModelCollision KidsLand_unkCol1_collision;
 extern Gfx KidsLand_model2_Gfx[];
-extern ModelCollision KidsLand_unkCol2_ColH;
+extern ModelCollision KidsLand_unkCol2_collision;
 extern Gfx KidsLand_model3_Gfx[];
-extern ModelCollision KidsLand_unkCol3_ColH;
+extern ModelCollision KidsLand_unkCol3_collision;
 extern Gfx KidsLand_model4_Gfx[];
-extern ModelCollision KidsLand_unkCol4_ColH;
+extern ModelCollision KidsLand_unkCol4_collision;
 extern Gfx KidsLand_model5_Gfx[];
-extern ModelCollision KidsLand_unkCol5_ColH;
+extern ModelCollision KidsLand_unkCol5_collision;
 extern Gfx KidsLand_model6_Gfx[];
-extern ModelCollision KidsLand_unkCol6_ColH;
+extern ModelCollision KidsLand_unkCol6_collision;
 extern Gfx KidsLand_model7_Gfx[];
-extern ModelCollision KidsLand_unkCol7_ColH;
+extern ModelCollision KidsLand_unkCol7_collision;
 extern Gfx KidsLand_model8_Gfx[];
-extern ModelCollision KidsLand_unkCol8_ColH;
+extern ModelCollision KidsLand_unkCol8_collision;
 extern Gfx KidsLand_model9_Gfx[];
-extern ModelCollision KidsLand_unkCol9_ColH;
+extern ModelCollision KidsLand_unkCol9_collision;
 extern Gfx KidsLand_model10_Gfx[];
-extern ModelCollision KidsLand_unkCol10_ColH;
+extern ModelCollision KidsLand_unkCol10_collision;
 extern Gfx KidsLand_model11_Gfx[];
-extern ModelCollision KidsLand_unkCol11_ColH;
+extern ModelCollision KidsLand_unkCol11_collision;
 extern Gfx KidsLand_model12_Gfx[];
-extern ModelCollision KidsLand_unkCol12_ColH;
+extern ModelCollision KidsLand_unkCol12_collision;
 extern Gfx KidsLand_model13_Gfx[];
-extern ModelCollision KidsLand_unkCol13_ColH;
+extern ModelCollision KidsLand_unkCol13_collision;
 extern Gfx KidsLand_model14_Gfx[];
-extern ModelCollision KidsLand_unkCol14_ColH;
+extern ModelCollision KidsLand_unkCol14_collision;
 extern Gfx KidsLand_model15_Gfx[];
-extern ModelCollision KidsLand_unkCol15_ColH;
+extern ModelCollision KidsLand_unkCol15_collision;
 extern Gfx KidsLand_model16_Gfx[];
-extern ModelCollision KidsLand_unkCol16_ColH;
+extern ModelCollision KidsLand_unkCol16_collision;
 extern Gfx KidsLand_model17_Gfx[];
-extern ModelCollision KidsLand_unkCol17_ColH;
+extern ModelCollision KidsLand_unkCol17_collision;
 extern Gfx KidsLand_model18_Gfx[];
-extern ModelCollision KidsLand_unkCol18_ColH;
+extern ModelCollision KidsLand_unkCol18_collision;
 extern Gfx KidsLand_model19_Gfx[];
-extern ModelCollision KidsLand_unkCol19_ColH;
+extern ModelCollision KidsLand_unkCol19_collision;
 extern Gfx KidsLand_model20_Gfx[];
-extern ModelCollision KidsLand_unkCol20_ColH;
+extern ModelCollision KidsLand_unkCol20_collision;
 extern Gfx KidsLand_model21_Gfx[];
-extern ModelCollision KidsLand_unkCol21_ColH;
+extern ModelCollision KidsLand_unkCol21_collision;
 extern Gfx KidsLand_model22_Gfx[];
-extern ModelCollision KidsLand_unkCol22_ColH;
+extern ModelCollision KidsLand_unkCol22_collision;
 extern Gfx KidsLand_model23_Gfx[];
-extern ModelCollision KidsLand_unkCol23_ColH;
+extern ModelCollision KidsLand_unkCol23_collision;
 extern Gfx KidsLand_model24_Gfx[];
-extern ModelCollision KidsLand_unkCol24_ColH;
+extern ModelCollision KidsLand_unkCol24_collision;
 extern Gfx KidsLand_model25_Gfx[];
-extern ModelCollision KidsLand_unkCol25_ColH;
+extern ModelCollision KidsLand_unkCol25_collision;
 extern Gfx KidsLand_model26_Gfx[];
-extern ModelCollision KidsLand_unkCol26_ColH;
+extern ModelCollision KidsLand_unkCol26_collision;
 extern Gfx KidsLand_model27_Gfx[];
-extern ModelCollision KidsLand_unkCol27_ColH;
+extern ModelCollision KidsLand_unkCol27_collision;
 extern Gfx KidsLand_model28_Gfx[];
-extern ModelCollision KidsLand_unkCol28_ColH;
+extern ModelCollision KidsLand_unkCol28_collision;
 extern Gfx KidsLand_model29_Gfx[];
-extern ModelCollision KidsLand_unkCol29_ColH;
+extern ModelCollision KidsLand_unkCol29_collision;
 extern Gfx KidsLand_model30_Gfx[];
-extern ModelCollision KidsLand_unkCol30_ColH;
+extern ModelCollision KidsLand_unkCol30_collision;
 extern Gfx KidsLand_model31_Gfx[];
-extern ModelCollision KidsLand_unkCol31_ColH;
+extern ModelCollision KidsLand_unkCol31_collision;
 extern Gfx KidsLand_model32_Gfx[];
-extern ModelCollision KidsLand_unkCol32_ColH;
+extern ModelCollision KidsLand_unkCol32_collision;
 extern Gfx KidsLand_model33_Gfx[];
-extern ModelCollision KidsLand_unkCol33_ColH;
+extern ModelCollision KidsLand_unkCol33_collision;
 extern Gfx KidsLand_model34_Gfx[];
-extern ModelCollision KidsLand_unkCol34_ColH;
+extern ModelCollision KidsLand_unkCol34_collision;
 extern Gfx KidsLand_model35_Gfx[];
-extern ModelCollision KidsLand_unkCol35_ColH;
+extern ModelCollision KidsLand_unkCol35_collision;
 extern Gfx KidsLand_model36_Gfx[];
-extern ModelCollision KidsLand_unkCol36_ColH;
+extern ModelCollision KidsLand_unkCol36_collision;
 extern Gfx KidsLand_model37_Gfx[];
-extern ModelCollision KidsLand_unkCol37_ColH;
+extern ModelCollision KidsLand_unkCol37_collision;
 extern Gfx KidsLand_model38_Gfx[];
-extern ModelCollision KidsLand_unkCol38_ColH;
+extern ModelCollision KidsLand_unkCol38_collision;
 extern Gfx KidsLand_model39_Gfx[];
-extern ModelCollision KidsLand_unkCol39_ColH;
+extern ModelCollision KidsLand_unkCol39_collision;
 extern Gfx KidsLand_model40_Gfx[];
-extern ModelCollision KidsLand_unkCol40_ColH;
+extern ModelCollision KidsLand_unkCol40_collision;
 extern Gfx KidsLand_model41_Gfx[];
-extern ModelCollision KidsLand_unkCol41_ColH;
+extern ModelCollision KidsLand_unkCol41_collision;
 extern Gfx KidsLand_model42_Gfx[];
-extern ModelCollision KidsLand_unkCol42_ColH;
+extern ModelCollision KidsLand_unkCol42_collision;
 extern Gfx KidsLand_model43_Gfx[];
-extern ModelCollision KidsLand_unkCol43_ColH;
+extern ModelCollision KidsLand_unkCol43_collision;
 extern Gfx KidsLand_model44_Gfx[];
-extern ModelCollision KidsLand_unkCol44_ColH;
+extern ModelCollision KidsLand_unkCol44_collision;
 extern Gfx KidsLand_model45_Gfx[];
-extern ModelCollision KidsLand_unkCol45_ColH;
+extern ModelCollision KidsLand_unkCol45_collision;
 extern Gfx KidsLand_model46_Gfx[];
-extern ModelCollision KidsLand_unkCol46_ColH;
+extern ModelCollision KidsLand_unkCol46_collision;
 extern Gfx KidsLand_model47_Gfx[];
-extern ModelCollision KidsLand_unkCol47_ColH;
+extern ModelCollision KidsLand_unkCol47_collision;
 extern Gfx KidsLand_model48_Gfx[];
-extern ModelCollision KidsLand_unkCol48_ColH;
+extern ModelCollision KidsLand_unkCol48_collision;
 extern Gfx KidsLand_model49_Gfx[];
-extern ModelCollision KidsLand_unkCol49_ColH;
+extern ModelCollision KidsLand_unkCol49_collision;
 extern Gfx KidsLand_model50_Gfx[];
-extern ModelCollision KidsLand_unkCol50_ColH;
+extern ModelCollision KidsLand_unkCol50_collision;
 extern Gfx KidsLand_model51_Gfx[];
-extern ModelCollision KidsLand_unkCol51_ColH;
+extern ModelCollision KidsLand_unkCol51_collision;
 extern Gfx KidsLand_model52_Gfx[];
-extern ModelCollision KidsLand_unkCol52_ColH;
+extern ModelCollision KidsLand_unkCol52_collision;
 extern Gfx KidsLand_model53_Gfx[];
-extern ModelCollision KidsLand_unkCol53_ColH;
+extern ModelCollision KidsLand_unkCol53_collision;
 extern Gfx KidsLand_model54_Gfx[];
-extern ModelCollision KidsLand_unkCol54_ColH;
+extern ModelCollision KidsLand_unkCol54_collision;
 extern Gfx KidsLand_model55_Gfx[];
-extern ModelCollision KidsLand_unkCol55_ColH;
+extern ModelCollision KidsLand_unkCol55_collision;
 extern Gfx KidsLand_model56_Gfx[];
-extern ModelCollision KidsLand_unkCol56_ColH;
+extern ModelCollision KidsLand_unkCol56_collision;
 extern Gfx KidsLand_model57_Gfx[];
-extern ModelCollision KidsLand_unkCol57_ColH;
+extern ModelCollision KidsLand_unkCol57_collision;
 extern Gfx KidsLand_model58_Gfx[];
-extern ModelCollision KidsLand_unkCol58_ColH;
+extern ModelCollision KidsLand_unkCol58_collision;
 extern Gfx KidsLand_model59_Gfx[];
-extern ModelCollision KidsLand_unkCol59_ColH;
+extern ModelCollision KidsLand_unkCol59_collision;
 extern Gfx KidsLand_model60_Gfx[];
-extern ModelCollision KidsLand_unkCol60_ColH;
+extern ModelCollision KidsLand_unkCol60_collision;
 extern Gfx KidsLand_model61_Gfx[];
-extern ModelCollision KidsLand_unkCol61_ColH;
+extern ModelCollision KidsLand_unkCol61_collision;
 extern Gfx KidsLand_model62_Gfx[];
-extern ModelCollision KidsLand_unkCol62_ColH;
+extern ModelCollision KidsLand_unkCol62_collision;
 extern Gfx KidsLand_model63_Gfx[];
-extern ModelCollision KidsLand_unkCol63_ColH;
+extern ModelCollision KidsLand_unkCol63_collision;
 extern Gfx KidsLand_model64_Gfx[];
-extern ModelCollision KidsLand_unkCol64_ColH;
+extern ModelCollision KidsLand_unkCol64_collision;
 extern Gfx KidsLand_model65_Gfx[];
-extern ModelCollision KidsLand_unkCol65_ColH;
+extern ModelCollision KidsLand_unkCol65_collision;
 extern Gfx KidsLand_model66_Gfx[];
-extern ModelCollision KidsLand_unkCol66_ColH;
+extern ModelCollision KidsLand_unkCol66_collision;
 extern Gfx KidsLand_model67_Gfx[];
-extern ModelCollision KidsLand_unkCol67_ColH;
+extern ModelCollision KidsLand_unkCol67_collision;
 extern Gfx KidsLand_model68_Gfx[];
-extern ModelCollision KidsLand_unkCol68_ColH;
+extern ModelCollision KidsLand_unkCol68_collision;
 extern Gfx KidsLand_model69_Gfx[];
-extern ModelCollision KidsLand_unkCol69_ColH;
+extern ModelCollision KidsLand_unkCol69_collision;
 extern Gfx KidsLand_model70_Gfx[];
-extern ModelCollision KidsLand_unkCol70_ColH;
+extern ModelCollision KidsLand_unkCol70_collision;
 extern Gfx KidsLand_model71_Gfx[];
-extern ModelCollision KidsLand_unkCol71_ColH;
+extern ModelCollision KidsLand_unkCol71_collision;
 extern Gfx KidsLand_model72_Gfx[];
-extern ModelCollision KidsLand_unkCol72_ColH;
+extern ModelCollision KidsLand_unkCol72_collision;
 extern Gfx KidsLand_model73_Gfx[];
-extern ModelCollision KidsLand_unkCol73_ColH;
+extern ModelCollision KidsLand_unkCol73_collision;
 extern Gfx KidsLand_model74_Gfx[];
-extern ModelCollision KidsLand_unkCol74_ColH;
+extern ModelCollision KidsLand_unkCol74_collision;
 extern Gfx KidsLand_model75_Gfx[];
-extern ModelCollision KidsLand_unkCol75_ColH;
+extern ModelCollision KidsLand_unkCol75_collision;
 extern Gfx KidsLand_model76_Gfx[];
-extern ModelCollision KidsLand_unkCol76_ColH;
+extern ModelCollision KidsLand_unkCol76_collision;
 extern Gfx KidsLand_model77_Gfx[];
-extern ModelCollision KidsLand_unkCol77_ColH;
+extern ModelCollision KidsLand_unkCol77_collision;
 extern Gfx KidsLand_model78_Gfx[];
-extern ModelCollision KidsLand_unkCol78_ColH;
+extern ModelCollision KidsLand_unkCol78_collision;
 extern Gfx KidsLand_model79_Gfx[];
-extern ModelCollision KidsLand_unkCol79_ColH;
+extern ModelCollision KidsLand_unkCol79_collision;
 extern Gfx KidsLand_model80_Gfx[];
-extern ModelCollision KidsLand_unkCol80_ColH;
+extern ModelCollision KidsLand_unkCol80_collision;
 extern Gfx KidsLand_model81_Gfx[];
-extern ModelCollision KidsLand_unkCol81_ColH;
+extern ModelCollision KidsLand_unkCol81_collision;
 extern Gfx Global_pole_Gfx[];
-extern ModelCollision Global_pole_ColH;
+extern ModelCollision Global_pole_collision;
 
 
 
 Mtx KidsLand_IMtx1 = IDENTITY;
 
 StageModel KidsLand_stageModels[] = {
-{&Global_fallbackCube_Gfx[0], &Global_fallbackCube_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_exitShadowSouth_Gfx[0], &Global_exitShadowSouth_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_exitShadowNorth_Gfx[0], &Global_exitShadowNorth_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_exitShadowEast_Gfx[0], &Global_exitShadowEast_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_exitShadowWest_Gfx[0], &Global_exitShadowWest_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_ALBLExit_Gfx[0], &Global_ALBLExit_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_sandPit_Gfx[0], &Global_sandPit_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_BossBridge_Gfx[0], &Global_BossBridge_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_ALPole_Gfx[0], &Global_ALPole_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_ALBLDoor_Gfx[0], &Global_ALBLDoor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_ALSpinDoor_Gfx[0], &Global_ALSpinDoor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_BLLavaFloor_Gfx[0], &Global_BLLavaFloor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_BLLava_Gfx[0], &Global_BLLava_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_BLLava2_Gfx[0], &Global_BLLava2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_BLLava3_Gfx[0], &Global_BLLava3_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_BLLava4_Gfx[0], &Global_BLLava4_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_BLLava5_Gfx[0], &Global_BLLava5_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_BLLava6_Gfx[0], &Global_BLLava6_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_BLLava7_Gfx[0], &Global_BLLava7_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_BLLava8_Gfx[0], &Global_BLLava8_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_BLDestructableTop_Gfx[0], &Global_BLDestructableTop_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_BLMetalBridge_Gfx[0], &Global_BLMetalBridge_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_KLExit_Gfx[0], &Global_KLExit_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_KLDoor_Gfx[0], &Global_KLDoor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_DCExit_Gfx[0], &Global_DCExit_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_TallExitShadow1_Gfx[0], &Global_TallExitShadow1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_TallExitShadow2_Gfx[0], &Global_TallExitShadow2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_GCExit1_Gfx[0], &Global_GCExit1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_GCExit2_Gfx[0], &Global_GCExit2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_trainingRoomLight_Gfx[0], &Global_trainingRoomLight_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_JLCaveExit1_Gfx[0], &Global_JLCaveExit1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_JLCaveExit2_Gfx[0], &Global_JLCaveExit2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_JLCaveExit3_Gfx[0], &Global_JLCaveExit3_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_JLCaveExit4_Gfx[0], &Global_JLCaveExit4_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_JLOutsideEntrance_Gfx[0], &Global_JLOutsideEntrance_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_JLFxCamPillar_Gfx[0], &Global_JLFxCamPillar_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_JLCaveDoor_Gfx[0], &Global_JLCaveDoor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&KidsLand_model1_Gfx[0], &KidsLand_unkCol1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&KidsLand_model2_Gfx[0], &KidsLand_unkCol2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&KidsLand_model3_Gfx[0], &KidsLand_unkCol3_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&KidsLand_model4_Gfx[0], &KidsLand_unkCol4_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&KidsLand_model5_Gfx[0], &KidsLand_unkCol5_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&KidsLand_model6_Gfx[0], &KidsLand_unkCol6_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&KidsLand_model7_Gfx[0], &KidsLand_unkCol7_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&KidsLand_model8_Gfx[0], &KidsLand_unkCol8_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&KidsLand_model9_Gfx[0], &KidsLand_unkCol9_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&KidsLand_model10_Gfx[0], &KidsLand_unkCol10_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&KidsLand_model11_Gfx[0], &KidsLand_unkCol11_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&KidsLand_model12_Gfx[0], &KidsLand_unkCol12_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&KidsLand_model13_Gfx[0], &KidsLand_unkCol13_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&KidsLand_model14_Gfx[0], &KidsLand_unkCol14_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&KidsLand_model15_Gfx[0], &KidsLand_unkCol15_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&KidsLand_model16_Gfx[0], &KidsLand_unkCol16_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&KidsLand_model17_Gfx[0], &KidsLand_unkCol17_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&KidsLand_model18_Gfx[0], &KidsLand_unkCol18_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&KidsLand_model19_Gfx[0], &KidsLand_unkCol19_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&KidsLand_model20_Gfx[0], &KidsLand_unkCol20_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&KidsLand_model21_Gfx[0], &KidsLand_unkCol21_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&KidsLand_model22_Gfx[0], &KidsLand_unkCol22_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&KidsLand_model23_Gfx[0], &KidsLand_unkCol23_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&KidsLand_model24_Gfx[0], &KidsLand_unkCol24_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&KidsLand_model25_Gfx[0], &KidsLand_unkCol25_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&KidsLand_model26_Gfx[0], &KidsLand_unkCol26_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&KidsLand_model27_Gfx[0], &KidsLand_unkCol27_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&KidsLand_model28_Gfx[0], &KidsLand_unkCol28_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&KidsLand_model29_Gfx[0], &KidsLand_unkCol29_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&KidsLand_model30_Gfx[0], &KidsLand_unkCol30_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&KidsLand_model31_Gfx[0], &KidsLand_unkCol31_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&KidsLand_model32_Gfx[0], &KidsLand_unkCol32_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&KidsLand_model33_Gfx[0], &KidsLand_unkCol33_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&KidsLand_model34_Gfx[0], &KidsLand_unkCol34_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&KidsLand_model35_Gfx[0], &KidsLand_unkCol35_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&KidsLand_model36_Gfx[0], &KidsLand_unkCol36_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&KidsLand_model37_Gfx[0], &KidsLand_unkCol37_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&KidsLand_model38_Gfx[0], &KidsLand_unkCol38_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&KidsLand_model39_Gfx[0], &KidsLand_unkCol39_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&KidsLand_model40_Gfx[0], &KidsLand_unkCol40_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&KidsLand_model41_Gfx[0], &KidsLand_unkCol41_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&KidsLand_model42_Gfx[0], &KidsLand_unkCol42_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&KidsLand_model43_Gfx[0], &KidsLand_unkCol43_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&KidsLand_model44_Gfx[0], &KidsLand_unkCol44_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&KidsLand_model45_Gfx[0], &KidsLand_unkCol45_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&KidsLand_model46_Gfx[0], &KidsLand_unkCol46_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&KidsLand_model47_Gfx[0], &KidsLand_unkCol47_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&KidsLand_model48_Gfx[0], &KidsLand_unkCol48_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&KidsLand_model49_Gfx[0], &KidsLand_unkCol49_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&KidsLand_model50_Gfx[0], &KidsLand_unkCol50_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&KidsLand_model51_Gfx[0], &KidsLand_unkCol51_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&KidsLand_model52_Gfx[0], &KidsLand_unkCol52_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&KidsLand_model53_Gfx[0], &KidsLand_unkCol53_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&KidsLand_model54_Gfx[0], &KidsLand_unkCol54_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&KidsLand_model55_Gfx[0], &KidsLand_unkCol55_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&KidsLand_model56_Gfx[0], &KidsLand_unkCol56_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&KidsLand_model57_Gfx[0], &KidsLand_unkCol57_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&KidsLand_model58_Gfx[0], &KidsLand_unkCol58_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&KidsLand_model59_Gfx[0], &KidsLand_unkCol59_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&KidsLand_model60_Gfx[0], &KidsLand_unkCol60_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&KidsLand_model61_Gfx[0], &KidsLand_unkCol61_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&KidsLand_model62_Gfx[0], &KidsLand_unkCol62_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&KidsLand_model63_Gfx[0], &KidsLand_unkCol63_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&KidsLand_model64_Gfx[0], &KidsLand_unkCol64_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&KidsLand_model65_Gfx[0], &KidsLand_unkCol65_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&KidsLand_model66_Gfx[0], &KidsLand_unkCol66_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&KidsLand_model67_Gfx[0], &KidsLand_unkCol67_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&KidsLand_model68_Gfx[0], &KidsLand_unkCol68_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&KidsLand_model69_Gfx[0], &KidsLand_unkCol69_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&KidsLand_model70_Gfx[0], &KidsLand_unkCol70_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&KidsLand_model71_Gfx[0], &KidsLand_unkCol71_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&KidsLand_model72_Gfx[0], &KidsLand_unkCol72_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&KidsLand_model73_Gfx[0], &KidsLand_unkCol73_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&KidsLand_model74_Gfx[0], &KidsLand_unkCol74_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&KidsLand_model75_Gfx[0], &KidsLand_unkCol75_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&KidsLand_model76_Gfx[0], &KidsLand_unkCol76_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&KidsLand_model77_Gfx[0], &KidsLand_unkCol77_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&KidsLand_model78_Gfx[0], &KidsLand_unkCol78_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&KidsLand_model79_Gfx[0], &KidsLand_unkCol79_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&KidsLand_model80_Gfx[0], &KidsLand_unkCol80_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&KidsLand_model81_Gfx[0], &KidsLand_unkCol81_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_pole_Gfx[0], &Global_pole_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_fallbackCube_Gfx, &Global_fallbackCube_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_exitShadowSouth_Gfx, &Global_exitShadowSouth_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_exitShadowNorth_Gfx, &Global_exitShadowNorth_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_exitShadowEast_Gfx, &Global_exitShadowEast_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_exitShadowWest_Gfx, &Global_exitShadowWest_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_ALBLExit_Gfx, &Global_ALBLExit_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_sandPit_Gfx, &Global_sandPit_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_BossBridge_Gfx, &Global_BossBridge_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_ALPole_Gfx, &Global_ALPole_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_ALBLDoor_Gfx, &Global_ALBLDoor_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_ALSpinDoor_Gfx, &Global_ALSpinDoor_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_BLLavaFloor_Gfx, &Global_BLLavaFloor_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_BLLava_Gfx, &Global_BLLava_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_BLLava2_Gfx, &Global_BLLava2_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_BLLava3_Gfx, &Global_BLLava3_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_BLLava4_Gfx, &Global_BLLava4_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_BLLava5_Gfx, &Global_BLLava5_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_BLLava6_Gfx, &Global_BLLava6_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_BLLava7_Gfx, &Global_BLLava7_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_BLLava8_Gfx, &Global_BLLava8_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_BLDestructableTop_Gfx, &Global_BLDestructableTop_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_BLMetalBridge_Gfx, &Global_BLMetalBridge_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_KLExit_Gfx, &Global_KLExit_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_KLDoor_Gfx, &Global_KLDoor_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_DCExit_Gfx, &Global_DCExit_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_TallExitShadow1_Gfx, &Global_TallExitShadow1_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_TallExitShadow2_Gfx, &Global_TallExitShadow2_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_GCExit1_Gfx, &Global_GCExit1_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_GCExit2_Gfx, &Global_GCExit2_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_trainingRoomLight_Gfx, &Global_trainingRoomLight_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_JLCaveExit1_Gfx, &Global_JLCaveExit1_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_JLCaveExit2_Gfx, &Global_JLCaveExit2_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_JLCaveExit3_Gfx, &Global_JLCaveExit3_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_JLCaveExit4_Gfx, &Global_JLCaveExit4_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_JLOutsideEntrance_Gfx, &Global_JLOutsideEntrance_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_JLFxCamPillar_Gfx, &Global_JLFxCamPillar_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_JLCaveDoor_Gfx, &Global_JLCaveDoor_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{KidsLand_model1_Gfx, &KidsLand_unkCol1_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{KidsLand_model2_Gfx, &KidsLand_unkCol2_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{KidsLand_model3_Gfx, &KidsLand_unkCol3_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{KidsLand_model4_Gfx, &KidsLand_unkCol4_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{KidsLand_model5_Gfx, &KidsLand_unkCol5_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{KidsLand_model6_Gfx, &KidsLand_unkCol6_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{KidsLand_model7_Gfx, &KidsLand_unkCol7_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{KidsLand_model8_Gfx, &KidsLand_unkCol8_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{KidsLand_model9_Gfx, &KidsLand_unkCol9_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{KidsLand_model10_Gfx, &KidsLand_unkCol10_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{KidsLand_model11_Gfx, &KidsLand_unkCol11_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{KidsLand_model12_Gfx, &KidsLand_unkCol12_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{KidsLand_model13_Gfx, &KidsLand_unkCol13_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{KidsLand_model14_Gfx, &KidsLand_unkCol14_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{KidsLand_model15_Gfx, &KidsLand_unkCol15_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{KidsLand_model16_Gfx, &KidsLand_unkCol16_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{KidsLand_model17_Gfx, &KidsLand_unkCol17_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{KidsLand_model18_Gfx, &KidsLand_unkCol18_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{KidsLand_model19_Gfx, &KidsLand_unkCol19_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{KidsLand_model20_Gfx, &KidsLand_unkCol20_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{KidsLand_model21_Gfx, &KidsLand_unkCol21_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{KidsLand_model22_Gfx, &KidsLand_unkCol22_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{KidsLand_model23_Gfx, &KidsLand_unkCol23_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{KidsLand_model24_Gfx, &KidsLand_unkCol24_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{KidsLand_model25_Gfx, &KidsLand_unkCol25_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{KidsLand_model26_Gfx, &KidsLand_unkCol26_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{KidsLand_model27_Gfx, &KidsLand_unkCol27_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{KidsLand_model28_Gfx, &KidsLand_unkCol28_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{KidsLand_model29_Gfx, &KidsLand_unkCol29_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{KidsLand_model30_Gfx, &KidsLand_unkCol30_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{KidsLand_model31_Gfx, &KidsLand_unkCol31_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{KidsLand_model32_Gfx, &KidsLand_unkCol32_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{KidsLand_model33_Gfx, &KidsLand_unkCol33_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{KidsLand_model34_Gfx, &KidsLand_unkCol34_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{KidsLand_model35_Gfx, &KidsLand_unkCol35_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{KidsLand_model36_Gfx, &KidsLand_unkCol36_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{KidsLand_model37_Gfx, &KidsLand_unkCol37_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{KidsLand_model38_Gfx, &KidsLand_unkCol38_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{KidsLand_model39_Gfx, &KidsLand_unkCol39_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{KidsLand_model40_Gfx, &KidsLand_unkCol40_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{KidsLand_model41_Gfx, &KidsLand_unkCol41_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{KidsLand_model42_Gfx, &KidsLand_unkCol42_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{KidsLand_model43_Gfx, &KidsLand_unkCol43_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{KidsLand_model44_Gfx, &KidsLand_unkCol44_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{KidsLand_model45_Gfx, &KidsLand_unkCol45_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{KidsLand_model46_Gfx, &KidsLand_unkCol46_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{KidsLand_model47_Gfx, &KidsLand_unkCol47_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{KidsLand_model48_Gfx, &KidsLand_unkCol48_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{KidsLand_model49_Gfx, &KidsLand_unkCol49_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{KidsLand_model50_Gfx, &KidsLand_unkCol50_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{KidsLand_model51_Gfx, &KidsLand_unkCol51_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{KidsLand_model52_Gfx, &KidsLand_unkCol52_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{KidsLand_model53_Gfx, &KidsLand_unkCol53_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{KidsLand_model54_Gfx, &KidsLand_unkCol54_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{KidsLand_model55_Gfx, &KidsLand_unkCol55_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{KidsLand_model56_Gfx, &KidsLand_unkCol56_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{KidsLand_model57_Gfx, &KidsLand_unkCol57_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{KidsLand_model58_Gfx, &KidsLand_unkCol58_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{KidsLand_model59_Gfx, &KidsLand_unkCol59_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{KidsLand_model60_Gfx, &KidsLand_unkCol60_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{KidsLand_model61_Gfx, &KidsLand_unkCol61_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{KidsLand_model62_Gfx, &KidsLand_unkCol62_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{KidsLand_model63_Gfx, &KidsLand_unkCol63_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{KidsLand_model64_Gfx, &KidsLand_unkCol64_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{KidsLand_model65_Gfx, &KidsLand_unkCol65_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{KidsLand_model66_Gfx, &KidsLand_unkCol66_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{KidsLand_model67_Gfx, &KidsLand_unkCol67_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{KidsLand_model68_Gfx, &KidsLand_unkCol68_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{KidsLand_model69_Gfx, &KidsLand_unkCol69_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{KidsLand_model70_Gfx, &KidsLand_unkCol70_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{KidsLand_model71_Gfx, &KidsLand_unkCol71_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{KidsLand_model72_Gfx, &KidsLand_unkCol72_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{KidsLand_model73_Gfx, &KidsLand_unkCol73_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{KidsLand_model74_Gfx, &KidsLand_unkCol74_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{KidsLand_model75_Gfx, &KidsLand_unkCol75_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{KidsLand_model76_Gfx, &KidsLand_unkCol76_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{KidsLand_model77_Gfx, &KidsLand_unkCol77_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{KidsLand_model78_Gfx, &KidsLand_unkCol78_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{KidsLand_model79_Gfx, &KidsLand_unkCol79_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{KidsLand_model80_Gfx, &KidsLand_unkCol80_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{KidsLand_model81_Gfx, &KidsLand_unkCol81_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_pole_Gfx, &Global_pole_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
 };
 
 unsigned char KidsLand_rabObjects_Bin[] = {
@@ -2407,8 +2407,8 @@ Rect3D KidsLand_unkCol1_BoundBox = {
     #include "assets/levelGroup/KidsLand/unkCol1/unkCol1.boundBox.inc.c"
 };
 
-ModelCollision KidsLand_unkCol1_ColH = {
-6, 4, KidsLand_unkCol1_ColVerts, KidsLand_unkCol1_ColTris, &KidsLand_unkCol1_BoundBox
+ModelCollision KidsLand_unkCol1_collision = {
+    ARRAY_COUNT(KidsLand_unkCol1_ColVerts), ARRAY_COUNT(KidsLand_unkCol1_ColTris), KidsLand_unkCol1_ColVerts, KidsLand_unkCol1_ColTris, &KidsLand_unkCol1_BoundBox
 };
 
 Vec3f KidsLand_unkCol2_ColVerts[] = {
@@ -2423,8 +2423,8 @@ Rect3D KidsLand_unkCol2_BoundBox = {
     #include "assets/levelGroup/KidsLand/unkCol2/unkCol2.boundBox.inc.c"
 };
 
-ModelCollision KidsLand_unkCol2_ColH = {
-6, 4, KidsLand_unkCol2_ColVerts, KidsLand_unkCol2_ColTris, &KidsLand_unkCol2_BoundBox
+ModelCollision KidsLand_unkCol2_collision = {
+    ARRAY_COUNT(KidsLand_unkCol2_ColVerts), ARRAY_COUNT(KidsLand_unkCol2_ColTris), KidsLand_unkCol2_ColVerts, KidsLand_unkCol2_ColTris, &KidsLand_unkCol2_BoundBox
 };
 
 Vec3f KidsLand_unkCol3_ColVerts[] = {
@@ -2439,8 +2439,8 @@ Rect3D KidsLand_unkCol3_BoundBox = {
     #include "assets/levelGroup/KidsLand/unkCol3/unkCol3.boundBox.inc.c"
 };
 
-ModelCollision KidsLand_unkCol3_ColH = {
-6, 4, KidsLand_unkCol3_ColVerts, KidsLand_unkCol3_ColTris, &KidsLand_unkCol3_BoundBox
+ModelCollision KidsLand_unkCol3_collision = {
+    ARRAY_COUNT(KidsLand_unkCol3_ColVerts), ARRAY_COUNT(KidsLand_unkCol3_ColTris), KidsLand_unkCol3_ColVerts, KidsLand_unkCol3_ColTris, &KidsLand_unkCol3_BoundBox
 };
 
 Vec3f KidsLand_unkCol4_ColVerts[] = {
@@ -2455,8 +2455,8 @@ Rect3D KidsLand_unkCol4_BoundBox = {
     #include "assets/levelGroup/KidsLand/unkCol4/unkCol4.boundBox.inc.c"
 };
 
-ModelCollision KidsLand_unkCol4_ColH = {
-18, 30, KidsLand_unkCol4_ColVerts, KidsLand_unkCol4_ColTris, &KidsLand_unkCol4_BoundBox
+ModelCollision KidsLand_unkCol4_collision = {
+    ARRAY_COUNT(KidsLand_unkCol4_ColVerts), ARRAY_COUNT(KidsLand_unkCol4_ColTris), KidsLand_unkCol4_ColVerts, KidsLand_unkCol4_ColTris, &KidsLand_unkCol4_BoundBox
 };
 
 Vec3f KidsLand_unkCol5_ColVerts[] = {
@@ -2471,8 +2471,8 @@ Rect3D KidsLand_unkCol5_BoundBox = {
     #include "assets/levelGroup/KidsLand/unkCol5/unkCol5.boundBox.inc.c"
 };
 
-ModelCollision KidsLand_unkCol5_ColH = {
-24, 40, KidsLand_unkCol5_ColVerts, KidsLand_unkCol5_ColTris, &KidsLand_unkCol5_BoundBox
+ModelCollision KidsLand_unkCol5_collision = {
+    ARRAY_COUNT(KidsLand_unkCol5_ColVerts), ARRAY_COUNT(KidsLand_unkCol5_ColTris), KidsLand_unkCol5_ColVerts, KidsLand_unkCol5_ColTris, &KidsLand_unkCol5_BoundBox
 };
 
 Vec3f KidsLand_unkCol6_ColVerts[] = {
@@ -2487,8 +2487,8 @@ Rect3D KidsLand_unkCol6_BoundBox = {
     #include "assets/levelGroup/KidsLand/unkCol6/unkCol6.boundBox.inc.c"
 };
 
-ModelCollision KidsLand_unkCol6_ColH = {
-24, 36, KidsLand_unkCol6_ColVerts, KidsLand_unkCol6_ColTris, &KidsLand_unkCol6_BoundBox
+ModelCollision KidsLand_unkCol6_collision = {
+    ARRAY_COUNT(KidsLand_unkCol6_ColVerts), ARRAY_COUNT(KidsLand_unkCol6_ColTris), KidsLand_unkCol6_ColVerts, KidsLand_unkCol6_ColTris, &KidsLand_unkCol6_BoundBox
 };
 
 Vec3f KidsLand_unkCol7_ColVerts[] = {
@@ -2503,8 +2503,8 @@ Rect3D KidsLand_unkCol7_BoundBox = {
     #include "assets/levelGroup/KidsLand/unkCol7/unkCol7.boundBox.inc.c"
 };
 
-ModelCollision KidsLand_unkCol7_ColH = {
-65, 111, KidsLand_unkCol7_ColVerts, KidsLand_unkCol7_ColTris, &KidsLand_unkCol7_BoundBox
+ModelCollision KidsLand_unkCol7_collision = {
+    ARRAY_COUNT(KidsLand_unkCol7_ColVerts), ARRAY_COUNT(KidsLand_unkCol7_ColTris), KidsLand_unkCol7_ColVerts, KidsLand_unkCol7_ColTris, &KidsLand_unkCol7_BoundBox
 };
 
 Vec3f KidsLand_unkCol8_ColVerts[] = {
@@ -2519,8 +2519,8 @@ Rect3D KidsLand_unkCol8_BoundBox = {
     #include "assets/levelGroup/KidsLand/unkCol8/unkCol8.boundBox.inc.c"
 };
 
-ModelCollision KidsLand_unkCol8_ColH = {
-42, 64, KidsLand_unkCol8_ColVerts, KidsLand_unkCol8_ColTris, &KidsLand_unkCol8_BoundBox
+ModelCollision KidsLand_unkCol8_collision = {
+    ARRAY_COUNT(KidsLand_unkCol8_ColVerts), ARRAY_COUNT(KidsLand_unkCol8_ColTris), KidsLand_unkCol8_ColVerts, KidsLand_unkCol8_ColTris, &KidsLand_unkCol8_BoundBox
 };
 
 Vec3f KidsLand_unkCol9_ColVerts[] = {
@@ -2535,8 +2535,8 @@ Rect3D KidsLand_unkCol9_BoundBox = {
     #include "assets/levelGroup/KidsLand/unkCol9/unkCol9.boundBox.inc.c"
 };
 
-ModelCollision KidsLand_unkCol9_ColH = {
-23, 35, KidsLand_unkCol9_ColVerts, KidsLand_unkCol9_ColTris, &KidsLand_unkCol9_BoundBox
+ModelCollision KidsLand_unkCol9_collision = {
+    ARRAY_COUNT(KidsLand_unkCol9_ColVerts), ARRAY_COUNT(KidsLand_unkCol9_ColTris), KidsLand_unkCol9_ColVerts, KidsLand_unkCol9_ColTris, &KidsLand_unkCol9_BoundBox
 };
 
 Vec3f KidsLand_unkCol10_ColVerts[] = {
@@ -2551,8 +2551,8 @@ Rect3D KidsLand_unkCol10_BoundBox = {
     #include "assets/levelGroup/KidsLand/unkCol10/unkCol10.boundBox.inc.c"
 };
 
-ModelCollision KidsLand_unkCol10_ColH = {
-28, 32, KidsLand_unkCol10_ColVerts, KidsLand_unkCol10_ColTris, &KidsLand_unkCol10_BoundBox
+ModelCollision KidsLand_unkCol10_collision = {
+    ARRAY_COUNT(KidsLand_unkCol10_ColVerts), ARRAY_COUNT(KidsLand_unkCol10_ColTris), KidsLand_unkCol10_ColVerts, KidsLand_unkCol10_ColTris, &KidsLand_unkCol10_BoundBox
 };
 
 Vec3f KidsLand_unkCol11_ColVerts[] = {
@@ -2567,8 +2567,8 @@ Rect3D KidsLand_unkCol11_BoundBox = {
     #include "assets/levelGroup/KidsLand/unkCol11/unkCol11.boundBox.inc.c"
 };
 
-ModelCollision KidsLand_unkCol11_ColH = {
-28, 41, KidsLand_unkCol11_ColVerts, KidsLand_unkCol11_ColTris, &KidsLand_unkCol11_BoundBox
+ModelCollision KidsLand_unkCol11_collision = {
+    ARRAY_COUNT(KidsLand_unkCol11_ColVerts), ARRAY_COUNT(KidsLand_unkCol11_ColTris), KidsLand_unkCol11_ColVerts, KidsLand_unkCol11_ColTris, &KidsLand_unkCol11_BoundBox
 };
 
 Vec3f KidsLand_unkCol12_ColVerts[] = {
@@ -2583,8 +2583,8 @@ Rect3D KidsLand_unkCol12_BoundBox = {
     #include "assets/levelGroup/KidsLand/unkCol12/unkCol12.boundBox.inc.c"
 };
 
-ModelCollision KidsLand_unkCol12_ColH = {
-36, 54, KidsLand_unkCol12_ColVerts, KidsLand_unkCol12_ColTris, &KidsLand_unkCol12_BoundBox
+ModelCollision KidsLand_unkCol12_collision = {
+    ARRAY_COUNT(KidsLand_unkCol12_ColVerts), ARRAY_COUNT(KidsLand_unkCol12_ColTris), KidsLand_unkCol12_ColVerts, KidsLand_unkCol12_ColTris, &KidsLand_unkCol12_BoundBox
 };
 
 Vec3f KidsLand_unkCol13_ColVerts[] = {
@@ -2599,8 +2599,8 @@ Rect3D KidsLand_unkCol13_BoundBox = {
     #include "assets/levelGroup/KidsLand/unkCol13/unkCol13.boundBox.inc.c"
 };
 
-ModelCollision KidsLand_unkCol13_ColH = {
-38, 53, KidsLand_unkCol13_ColVerts, KidsLand_unkCol13_ColTris, &KidsLand_unkCol13_BoundBox
+ModelCollision KidsLand_unkCol13_collision = {
+    ARRAY_COUNT(KidsLand_unkCol13_ColVerts), ARRAY_COUNT(KidsLand_unkCol13_ColTris), KidsLand_unkCol13_ColVerts, KidsLand_unkCol13_ColTris, &KidsLand_unkCol13_BoundBox
 };
 
 Vec3f KidsLand_unkCol14_ColVerts[] = {
@@ -2615,8 +2615,8 @@ Rect3D KidsLand_unkCol14_BoundBox = {
     #include "assets/levelGroup/KidsLand/unkCol14/unkCol14.boundBox.inc.c"
 };
 
-ModelCollision KidsLand_unkCol14_ColH = {
-20, 32, KidsLand_unkCol14_ColVerts, KidsLand_unkCol14_ColTris, &KidsLand_unkCol14_BoundBox
+ModelCollision KidsLand_unkCol14_collision = {
+    ARRAY_COUNT(KidsLand_unkCol14_ColVerts), ARRAY_COUNT(KidsLand_unkCol14_ColTris), KidsLand_unkCol14_ColVerts, KidsLand_unkCol14_ColTris, &KidsLand_unkCol14_BoundBox
 };
 
 Vec3f KidsLand_unkCol15_ColVerts[] = {
@@ -2631,8 +2631,8 @@ Rect3D KidsLand_unkCol15_BoundBox = {
     #include "assets/levelGroup/KidsLand/unkCol15/unkCol15.boundBox.inc.c"
 };
 
-ModelCollision KidsLand_unkCol15_ColH = {
-27, 28, KidsLand_unkCol15_ColVerts, KidsLand_unkCol15_ColTris, &KidsLand_unkCol15_BoundBox
+ModelCollision KidsLand_unkCol15_collision = {
+    ARRAY_COUNT(KidsLand_unkCol15_ColVerts), ARRAY_COUNT(KidsLand_unkCol15_ColTris), KidsLand_unkCol15_ColVerts, KidsLand_unkCol15_ColTris, &KidsLand_unkCol15_BoundBox
 };
 
 Vec3f KidsLand_unkCol16_ColVerts[] = {
@@ -2647,8 +2647,8 @@ Rect3D KidsLand_unkCol16_BoundBox = {
     #include "assets/levelGroup/KidsLand/unkCol16/unkCol16.boundBox.inc.c"
 };
 
-ModelCollision KidsLand_unkCol16_ColH = {
-23, 35, KidsLand_unkCol16_ColVerts, KidsLand_unkCol16_ColTris, &KidsLand_unkCol16_BoundBox
+ModelCollision KidsLand_unkCol16_collision = {
+    ARRAY_COUNT(KidsLand_unkCol16_ColVerts), ARRAY_COUNT(KidsLand_unkCol16_ColTris), KidsLand_unkCol16_ColVerts, KidsLand_unkCol16_ColTris, &KidsLand_unkCol16_BoundBox
 };
 
 Vec3f KidsLand_unkCol17_ColVerts[] = {
@@ -2663,8 +2663,8 @@ Rect3D KidsLand_unkCol17_BoundBox = {
     #include "assets/levelGroup/KidsLand/unkCol17/unkCol17.boundBox.inc.c"
 };
 
-ModelCollision KidsLand_unkCol17_ColH = {
-54, 84, KidsLand_unkCol17_ColVerts, KidsLand_unkCol17_ColTris, &KidsLand_unkCol17_BoundBox
+ModelCollision KidsLand_unkCol17_collision = {
+    ARRAY_COUNT(KidsLand_unkCol17_ColVerts), ARRAY_COUNT(KidsLand_unkCol17_ColTris), KidsLand_unkCol17_ColVerts, KidsLand_unkCol17_ColTris, &KidsLand_unkCol17_BoundBox
 };
 
 Vec3f KidsLand_unkCol18_ColVerts[] = {
@@ -2679,8 +2679,8 @@ Rect3D KidsLand_unkCol18_BoundBox = {
     #include "assets/levelGroup/KidsLand/unkCol18/unkCol18.boundBox.inc.c"
 };
 
-ModelCollision KidsLand_unkCol18_ColH = {
-38, 64, KidsLand_unkCol18_ColVerts, KidsLand_unkCol18_ColTris, &KidsLand_unkCol18_BoundBox
+ModelCollision KidsLand_unkCol18_collision = {
+    ARRAY_COUNT(KidsLand_unkCol18_ColVerts), ARRAY_COUNT(KidsLand_unkCol18_ColTris), KidsLand_unkCol18_ColVerts, KidsLand_unkCol18_ColTris, &KidsLand_unkCol18_BoundBox
 };
 
 Vec3f KidsLand_unkCol19_ColVerts[] = {
@@ -2695,8 +2695,8 @@ Rect3D KidsLand_unkCol19_BoundBox = {
     #include "assets/levelGroup/KidsLand/unkCol19/unkCol19.boundBox.inc.c"
 };
 
-ModelCollision KidsLand_unkCol19_ColH = {
-88, 161, KidsLand_unkCol19_ColVerts, KidsLand_unkCol19_ColTris, &KidsLand_unkCol19_BoundBox
+ModelCollision KidsLand_unkCol19_collision = {
+    ARRAY_COUNT(KidsLand_unkCol19_ColVerts), ARRAY_COUNT(KidsLand_unkCol19_ColTris), KidsLand_unkCol19_ColVerts, KidsLand_unkCol19_ColTris, &KidsLand_unkCol19_BoundBox
 };
 
 Vec3f KidsLand_unkCol20_ColVerts[] = {
@@ -2711,8 +2711,8 @@ Rect3D KidsLand_unkCol20_BoundBox = {
     #include "assets/levelGroup/KidsLand/unkCol20/unkCol20.boundBox.inc.c"
 };
 
-ModelCollision KidsLand_unkCol20_ColH = {
-28, 46, KidsLand_unkCol20_ColVerts, KidsLand_unkCol20_ColTris, &KidsLand_unkCol20_BoundBox
+ModelCollision KidsLand_unkCol20_collision = {
+    ARRAY_COUNT(KidsLand_unkCol20_ColVerts), ARRAY_COUNT(KidsLand_unkCol20_ColTris), KidsLand_unkCol20_ColVerts, KidsLand_unkCol20_ColTris, &KidsLand_unkCol20_BoundBox
 };
 
 Vec3f KidsLand_unkCol21_ColVerts[] = {
@@ -2727,8 +2727,8 @@ Rect3D KidsLand_unkCol21_BoundBox = {
     #include "assets/levelGroup/KidsLand/unkCol21/unkCol21.boundBox.inc.c"
 };
 
-ModelCollision KidsLand_unkCol21_ColH = {
-48, 82, KidsLand_unkCol21_ColVerts, KidsLand_unkCol21_ColTris, &KidsLand_unkCol21_BoundBox
+ModelCollision KidsLand_unkCol21_collision = {
+    ARRAY_COUNT(KidsLand_unkCol21_ColVerts), ARRAY_COUNT(KidsLand_unkCol21_ColTris), KidsLand_unkCol21_ColVerts, KidsLand_unkCol21_ColTris, &KidsLand_unkCol21_BoundBox
 };
 
 Vec3f KidsLand_unkCol22_ColVerts[] = {
@@ -2743,8 +2743,8 @@ Rect3D KidsLand_unkCol22_BoundBox = {
     #include "assets/levelGroup/KidsLand/unkCol22/unkCol22.boundBox.inc.c"
 };
 
-ModelCollision KidsLand_unkCol22_ColH = {
-51, 93, KidsLand_unkCol22_ColVerts, KidsLand_unkCol22_ColTris, &KidsLand_unkCol22_BoundBox
+ModelCollision KidsLand_unkCol22_collision = {
+    ARRAY_COUNT(KidsLand_unkCol22_ColVerts), ARRAY_COUNT(KidsLand_unkCol22_ColTris), KidsLand_unkCol22_ColVerts, KidsLand_unkCol22_ColTris, &KidsLand_unkCol22_BoundBox
 };
 
 Vec3f KidsLand_unkCol23_ColVerts[] = {
@@ -2759,8 +2759,8 @@ Rect3D KidsLand_unkCol23_BoundBox = {
     #include "assets/levelGroup/KidsLand/unkCol23/unkCol23.boundBox.inc.c"
 };
 
-ModelCollision KidsLand_unkCol23_ColH = {
-62, 104, KidsLand_unkCol23_ColVerts, KidsLand_unkCol23_ColTris, &KidsLand_unkCol23_BoundBox
+ModelCollision KidsLand_unkCol23_collision = {
+    ARRAY_COUNT(KidsLand_unkCol23_ColVerts), ARRAY_COUNT(KidsLand_unkCol23_ColTris), KidsLand_unkCol23_ColVerts, KidsLand_unkCol23_ColTris, &KidsLand_unkCol23_BoundBox
 };
 
 Vec3f KidsLand_unkCol24_ColVerts[] = {
@@ -2775,8 +2775,8 @@ Rect3D KidsLand_unkCol24_BoundBox = {
     #include "assets/levelGroup/KidsLand/unkCol24/unkCol24.boundBox.inc.c"
 };
 
-ModelCollision KidsLand_unkCol24_ColH = {
-8, 12, KidsLand_unkCol24_ColVerts, KidsLand_unkCol24_ColTris, &KidsLand_unkCol24_BoundBox
+ModelCollision KidsLand_unkCol24_collision = {
+    ARRAY_COUNT(KidsLand_unkCol24_ColVerts), ARRAY_COUNT(KidsLand_unkCol24_ColTris), KidsLand_unkCol24_ColVerts, KidsLand_unkCol24_ColTris, &KidsLand_unkCol24_BoundBox
 };
 
 Vec3f KidsLand_unkCol25_ColVerts[] = {
@@ -2791,8 +2791,8 @@ Rect3D KidsLand_unkCol25_BoundBox = {
     #include "assets/levelGroup/KidsLand/unkCol25/unkCol25.boundBox.inc.c"
 };
 
-ModelCollision KidsLand_unkCol25_ColH = {
-21, 36, KidsLand_unkCol25_ColVerts, KidsLand_unkCol25_ColTris, &KidsLand_unkCol25_BoundBox
+ModelCollision KidsLand_unkCol25_collision = {
+    ARRAY_COUNT(KidsLand_unkCol25_ColVerts), ARRAY_COUNT(KidsLand_unkCol25_ColTris), KidsLand_unkCol25_ColVerts, KidsLand_unkCol25_ColTris, &KidsLand_unkCol25_BoundBox
 };
 
 Vec3f KidsLand_unkCol26_ColVerts[] = {
@@ -2807,8 +2807,8 @@ Rect3D KidsLand_unkCol26_BoundBox = {
     #include "assets/levelGroup/KidsLand/unkCol26/unkCol26.boundBox.inc.c"
 };
 
-ModelCollision KidsLand_unkCol26_ColH = {
-8, 8, KidsLand_unkCol26_ColVerts, KidsLand_unkCol26_ColTris, &KidsLand_unkCol26_BoundBox
+ModelCollision KidsLand_unkCol26_collision = {
+    ARRAY_COUNT(KidsLand_unkCol26_ColVerts), ARRAY_COUNT(KidsLand_unkCol26_ColTris), KidsLand_unkCol26_ColVerts, KidsLand_unkCol26_ColTris, &KidsLand_unkCol26_BoundBox
 };
 
 Vec3f KidsLand_unkCol27_ColVerts[] = {
@@ -2823,8 +2823,8 @@ Rect3D KidsLand_unkCol27_BoundBox = {
     #include "assets/levelGroup/KidsLand/unkCol27/unkCol27.boundBox.inc.c"
 };
 
-ModelCollision KidsLand_unkCol27_ColH = {
-8, 8, KidsLand_unkCol27_ColVerts, KidsLand_unkCol27_ColTris, &KidsLand_unkCol27_BoundBox
+ModelCollision KidsLand_unkCol27_collision = {
+    ARRAY_COUNT(KidsLand_unkCol27_ColVerts), ARRAY_COUNT(KidsLand_unkCol27_ColTris), KidsLand_unkCol27_ColVerts, KidsLand_unkCol27_ColTris, &KidsLand_unkCol27_BoundBox
 };
 
 Vec3f KidsLand_unkCol28_ColVerts[] = {
@@ -2839,8 +2839,8 @@ Rect3D KidsLand_unkCol28_BoundBox = {
     #include "assets/levelGroup/KidsLand/unkCol28/unkCol28.boundBox.inc.c"
 };
 
-ModelCollision KidsLand_unkCol28_ColH = {
-8, 12, KidsLand_unkCol28_ColVerts, KidsLand_unkCol28_ColTris, &KidsLand_unkCol28_BoundBox
+ModelCollision KidsLand_unkCol28_collision = {
+    ARRAY_COUNT(KidsLand_unkCol28_ColVerts), ARRAY_COUNT(KidsLand_unkCol28_ColTris), KidsLand_unkCol28_ColVerts, KidsLand_unkCol28_ColTris, &KidsLand_unkCol28_BoundBox
 };
 
 Vec3f KidsLand_unkCol29_ColVerts[] = {
@@ -2855,8 +2855,8 @@ Rect3D KidsLand_unkCol29_BoundBox = {
     #include "assets/levelGroup/KidsLand/unkCol29/unkCol29.boundBox.inc.c"
 };
 
-ModelCollision KidsLand_unkCol29_ColH = {
-8, 12, KidsLand_unkCol29_ColVerts, KidsLand_unkCol29_ColTris, &KidsLand_unkCol29_BoundBox
+ModelCollision KidsLand_unkCol29_collision = {
+    ARRAY_COUNT(KidsLand_unkCol29_ColVerts), ARRAY_COUNT(KidsLand_unkCol29_ColTris), KidsLand_unkCol29_ColVerts, KidsLand_unkCol29_ColTris, &KidsLand_unkCol29_BoundBox
 };
 
 Vec3f KidsLand_unkCol30_ColVerts[] = {
@@ -2871,8 +2871,8 @@ Rect3D KidsLand_unkCol30_BoundBox = {
     #include "assets/levelGroup/KidsLand/unkCol30/unkCol30.boundBox.inc.c"
 };
 
-ModelCollision KidsLand_unkCol30_ColH = {
-8, 10, KidsLand_unkCol30_ColVerts, KidsLand_unkCol30_ColTris, &KidsLand_unkCol30_BoundBox
+ModelCollision KidsLand_unkCol30_collision = {
+    ARRAY_COUNT(KidsLand_unkCol30_ColVerts), ARRAY_COUNT(KidsLand_unkCol30_ColTris), KidsLand_unkCol30_ColVerts, KidsLand_unkCol30_ColTris, &KidsLand_unkCol30_BoundBox
 };
 
 Vec3f KidsLand_unkCol31_ColVerts[] = {
@@ -2887,8 +2887,8 @@ Rect3D KidsLand_unkCol31_BoundBox = {
     #include "assets/levelGroup/KidsLand/unkCol31/unkCol31.boundBox.inc.c"
 };
 
-ModelCollision KidsLand_unkCol31_ColH = {
-8, 10, KidsLand_unkCol31_ColVerts, KidsLand_unkCol31_ColTris, &KidsLand_unkCol31_BoundBox
+ModelCollision KidsLand_unkCol31_collision = {
+    ARRAY_COUNT(KidsLand_unkCol31_ColVerts), ARRAY_COUNT(KidsLand_unkCol31_ColTris), KidsLand_unkCol31_ColVerts, KidsLand_unkCol31_ColTris, &KidsLand_unkCol31_BoundBox
 };
 
 Vec3f KidsLand_unkCol32_ColVerts[] = {
@@ -2903,8 +2903,8 @@ Rect3D KidsLand_unkCol32_BoundBox = {
     #include "assets/levelGroup/KidsLand/unkCol32/unkCol32.boundBox.inc.c"
 };
 
-ModelCollision KidsLand_unkCol32_ColH = {
-8, 10, KidsLand_unkCol32_ColVerts, KidsLand_unkCol32_ColTris, &KidsLand_unkCol32_BoundBox
+ModelCollision KidsLand_unkCol32_collision = {
+    ARRAY_COUNT(KidsLand_unkCol32_ColVerts), ARRAY_COUNT(KidsLand_unkCol32_ColTris), KidsLand_unkCol32_ColVerts, KidsLand_unkCol32_ColTris, &KidsLand_unkCol32_BoundBox
 };
 
 Vec3f KidsLand_unkCol33_ColVerts[] = {
@@ -2919,8 +2919,8 @@ Rect3D KidsLand_unkCol33_BoundBox = {
     #include "assets/levelGroup/KidsLand/unkCol33/unkCol33.boundBox.inc.c"
 };
 
-ModelCollision KidsLand_unkCol33_ColH = {
-42, 72, KidsLand_unkCol33_ColVerts, KidsLand_unkCol33_ColTris, &KidsLand_unkCol33_BoundBox
+ModelCollision KidsLand_unkCol33_collision = {
+    ARRAY_COUNT(KidsLand_unkCol33_ColVerts), ARRAY_COUNT(KidsLand_unkCol33_ColTris), KidsLand_unkCol33_ColVerts, KidsLand_unkCol33_ColTris, &KidsLand_unkCol33_BoundBox
 };
 
 Vec3f KidsLand_unkCol34_ColVerts[] = {
@@ -2935,8 +2935,8 @@ Rect3D KidsLand_unkCol34_BoundBox = {
     #include "assets/levelGroup/KidsLand/unkCol34/unkCol34.boundBox.inc.c"
 };
 
-ModelCollision KidsLand_unkCol34_ColH = {
-8, 12, KidsLand_unkCol34_ColVerts, KidsLand_unkCol34_ColTris, &KidsLand_unkCol34_BoundBox
+ModelCollision KidsLand_unkCol34_collision = {
+    ARRAY_COUNT(KidsLand_unkCol34_ColVerts), ARRAY_COUNT(KidsLand_unkCol34_ColTris), KidsLand_unkCol34_ColVerts, KidsLand_unkCol34_ColTris, &KidsLand_unkCol34_BoundBox
 };
 
 Vec3f KidsLand_unkCol35_ColVerts[] = {
@@ -2951,8 +2951,8 @@ Rect3D KidsLand_unkCol35_BoundBox = {
     #include "assets/levelGroup/KidsLand/unkCol35/unkCol35.boundBox.inc.c"
 };
 
-ModelCollision KidsLand_unkCol35_ColH = {
-8, 12, KidsLand_unkCol35_ColVerts, KidsLand_unkCol35_ColTris, &KidsLand_unkCol35_BoundBox
+ModelCollision KidsLand_unkCol35_collision = {
+    ARRAY_COUNT(KidsLand_unkCol35_ColVerts), ARRAY_COUNT(KidsLand_unkCol35_ColTris), KidsLand_unkCol35_ColVerts, KidsLand_unkCol35_ColTris, &KidsLand_unkCol35_BoundBox
 };
 
 Vec3f KidsLand_unkCol36_ColVerts[] = {
@@ -2967,8 +2967,8 @@ Rect3D KidsLand_unkCol36_BoundBox = {
     #include "assets/levelGroup/KidsLand/unkCol36/unkCol36.boundBox.inc.c"
 };
 
-ModelCollision KidsLand_unkCol36_ColH = {
-8, 12, KidsLand_unkCol36_ColVerts, KidsLand_unkCol36_ColTris, &KidsLand_unkCol36_BoundBox
+ModelCollision KidsLand_unkCol36_collision = {
+    ARRAY_COUNT(KidsLand_unkCol36_ColVerts), ARRAY_COUNT(KidsLand_unkCol36_ColTris), KidsLand_unkCol36_ColVerts, KidsLand_unkCol36_ColTris, &KidsLand_unkCol36_BoundBox
 };
 
 Vec3f KidsLand_unkCol37_ColVerts[] = {
@@ -2983,8 +2983,8 @@ Rect3D KidsLand_unkCol37_BoundBox = {
     #include "assets/levelGroup/KidsLand/unkCol37/unkCol37.boundBox.inc.c"
 };
 
-ModelCollision KidsLand_unkCol37_ColH = {
-8, 12, KidsLand_unkCol37_ColVerts, KidsLand_unkCol37_ColTris, &KidsLand_unkCol37_BoundBox
+ModelCollision KidsLand_unkCol37_collision = {
+    ARRAY_COUNT(KidsLand_unkCol37_ColVerts), ARRAY_COUNT(KidsLand_unkCol37_ColTris), KidsLand_unkCol37_ColVerts, KidsLand_unkCol37_ColTris, &KidsLand_unkCol37_BoundBox
 };
 
 Vec3f KidsLand_unkCol38_ColVerts[] = {
@@ -2999,8 +2999,8 @@ Rect3D KidsLand_unkCol38_BoundBox = {
     #include "assets/levelGroup/KidsLand/unkCol38/unkCol38.boundBox.inc.c"
 };
 
-ModelCollision KidsLand_unkCol38_ColH = {
-8, 12, KidsLand_unkCol38_ColVerts, KidsLand_unkCol38_ColTris, &KidsLand_unkCol38_BoundBox
+ModelCollision KidsLand_unkCol38_collision = {
+    ARRAY_COUNT(KidsLand_unkCol38_ColVerts), ARRAY_COUNT(KidsLand_unkCol38_ColTris), KidsLand_unkCol38_ColVerts, KidsLand_unkCol38_ColTris, &KidsLand_unkCol38_BoundBox
 };
 
 Vec3f KidsLand_unkCol39_ColVerts[] = {
@@ -3015,8 +3015,8 @@ Rect3D KidsLand_unkCol39_BoundBox = {
     #include "assets/levelGroup/KidsLand/unkCol39/unkCol39.boundBox.inc.c"
 };
 
-ModelCollision KidsLand_unkCol39_ColH = {
-8, 12, KidsLand_unkCol39_ColVerts, KidsLand_unkCol39_ColTris, &KidsLand_unkCol39_BoundBox
+ModelCollision KidsLand_unkCol39_collision = {
+    ARRAY_COUNT(KidsLand_unkCol39_ColVerts), ARRAY_COUNT(KidsLand_unkCol39_ColTris), KidsLand_unkCol39_ColVerts, KidsLand_unkCol39_ColTris, &KidsLand_unkCol39_BoundBox
 };
 
 Vec3f KidsLand_unkCol40_ColVerts[] = {
@@ -3031,8 +3031,8 @@ Rect3D KidsLand_unkCol40_BoundBox = {
     #include "assets/levelGroup/KidsLand/unkCol40/unkCol40.boundBox.inc.c"
 };
 
-ModelCollision KidsLand_unkCol40_ColH = {
-8, 12, KidsLand_unkCol40_ColVerts, KidsLand_unkCol40_ColTris, &KidsLand_unkCol40_BoundBox
+ModelCollision KidsLand_unkCol40_collision = {
+    ARRAY_COUNT(KidsLand_unkCol40_ColVerts), ARRAY_COUNT(KidsLand_unkCol40_ColTris), KidsLand_unkCol40_ColVerts, KidsLand_unkCol40_ColTris, &KidsLand_unkCol40_BoundBox
 };
 
 Vec3f KidsLand_unkCol41_ColVerts[] = {
@@ -3047,8 +3047,8 @@ Rect3D KidsLand_unkCol41_BoundBox = {
     #include "assets/levelGroup/KidsLand/unkCol41/unkCol41.boundBox.inc.c"
 };
 
-ModelCollision KidsLand_unkCol41_ColH = {
-6, 4, KidsLand_unkCol41_ColVerts, KidsLand_unkCol41_ColTris, &KidsLand_unkCol41_BoundBox
+ModelCollision KidsLand_unkCol41_collision = {
+    ARRAY_COUNT(KidsLand_unkCol41_ColVerts), ARRAY_COUNT(KidsLand_unkCol41_ColTris), KidsLand_unkCol41_ColVerts, KidsLand_unkCol41_ColTris, &KidsLand_unkCol41_BoundBox
 };
 
 Vec3f KidsLand_unkCol42_ColVerts[] = {
@@ -3063,8 +3063,8 @@ Rect3D KidsLand_unkCol42_BoundBox = {
     #include "assets/levelGroup/KidsLand/unkCol42/unkCol42.boundBox.inc.c"
 };
 
-ModelCollision KidsLand_unkCol42_ColH = {
-4, 4, KidsLand_unkCol42_ColVerts, KidsLand_unkCol42_ColTris, &KidsLand_unkCol42_BoundBox
+ModelCollision KidsLand_unkCol42_collision = {
+    ARRAY_COUNT(KidsLand_unkCol42_ColVerts), ARRAY_COUNT(KidsLand_unkCol42_ColTris), KidsLand_unkCol42_ColVerts, KidsLand_unkCol42_ColTris, &KidsLand_unkCol42_BoundBox
 };
 
 Vec3f KidsLand_unkCol43_ColVerts[] = {
@@ -3079,8 +3079,8 @@ Rect3D KidsLand_unkCol43_BoundBox = {
     #include "assets/levelGroup/KidsLand/unkCol43/unkCol43.boundBox.inc.c"
 };
 
-ModelCollision KidsLand_unkCol43_ColH = {
-14, 15, KidsLand_unkCol43_ColVerts, KidsLand_unkCol43_ColTris, &KidsLand_unkCol43_BoundBox
+ModelCollision KidsLand_unkCol43_collision = {
+    ARRAY_COUNT(KidsLand_unkCol43_ColVerts), ARRAY_COUNT(KidsLand_unkCol43_ColTris), KidsLand_unkCol43_ColVerts, KidsLand_unkCol43_ColTris, &KidsLand_unkCol43_BoundBox
 };
 
 Vec3f KidsLand_unkCol44_ColVerts[] = {
@@ -3095,8 +3095,8 @@ Rect3D KidsLand_unkCol44_BoundBox = {
     #include "assets/levelGroup/KidsLand/unkCol44/unkCol44.boundBox.inc.c"
 };
 
-ModelCollision KidsLand_unkCol44_ColH = {
-6, 5, KidsLand_unkCol44_ColVerts, KidsLand_unkCol44_ColTris, &KidsLand_unkCol44_BoundBox
+ModelCollision KidsLand_unkCol44_collision = {
+    ARRAY_COUNT(KidsLand_unkCol44_ColVerts), ARRAY_COUNT(KidsLand_unkCol44_ColTris), KidsLand_unkCol44_ColVerts, KidsLand_unkCol44_ColTris, &KidsLand_unkCol44_BoundBox
 };
 
 Vec3f KidsLand_unkCol45_ColVerts[] = {
@@ -3111,8 +3111,8 @@ Rect3D KidsLand_unkCol45_BoundBox = {
     #include "assets/levelGroup/KidsLand/unkCol45/unkCol45.boundBox.inc.c"
 };
 
-ModelCollision KidsLand_unkCol45_ColH = {
-51, 85, KidsLand_unkCol45_ColVerts, KidsLand_unkCol45_ColTris, &KidsLand_unkCol45_BoundBox
+ModelCollision KidsLand_unkCol45_collision = {
+    ARRAY_COUNT(KidsLand_unkCol45_ColVerts), ARRAY_COUNT(KidsLand_unkCol45_ColTris), KidsLand_unkCol45_ColVerts, KidsLand_unkCol45_ColTris, &KidsLand_unkCol45_BoundBox
 };
 
 Vec3f KidsLand_unkCol46_ColVerts[] = {
@@ -3127,8 +3127,8 @@ Rect3D KidsLand_unkCol46_BoundBox = {
     #include "assets/levelGroup/KidsLand/unkCol46/unkCol46.boundBox.inc.c"
 };
 
-ModelCollision KidsLand_unkCol46_ColH = {
-8, 12, KidsLand_unkCol46_ColVerts, KidsLand_unkCol46_ColTris, &KidsLand_unkCol46_BoundBox
+ModelCollision KidsLand_unkCol46_collision = {
+    ARRAY_COUNT(KidsLand_unkCol46_ColVerts), ARRAY_COUNT(KidsLand_unkCol46_ColTris), KidsLand_unkCol46_ColVerts, KidsLand_unkCol46_ColTris, &KidsLand_unkCol46_BoundBox
 };
 
 Vec3f KidsLand_unkCol47_ColVerts[] = {
@@ -3143,8 +3143,8 @@ Rect3D KidsLand_unkCol47_BoundBox = {
     #include "assets/levelGroup/KidsLand/unkCol47/unkCol47.boundBox.inc.c"
 };
 
-ModelCollision KidsLand_unkCol47_ColH = {
-8, 12, KidsLand_unkCol47_ColVerts, KidsLand_unkCol47_ColTris, &KidsLand_unkCol47_BoundBox
+ModelCollision KidsLand_unkCol47_collision = {
+    ARRAY_COUNT(KidsLand_unkCol47_ColVerts), ARRAY_COUNT(KidsLand_unkCol47_ColTris), KidsLand_unkCol47_ColVerts, KidsLand_unkCol47_ColTris, &KidsLand_unkCol47_BoundBox
 };
 
 Vec3f KidsLand_unkCol48_ColVerts[] = {
@@ -3159,8 +3159,8 @@ Rect3D KidsLand_unkCol48_BoundBox = {
     #include "assets/levelGroup/KidsLand/unkCol48/unkCol48.boundBox.inc.c"
 };
 
-ModelCollision KidsLand_unkCol48_ColH = {
-8, 12, KidsLand_unkCol48_ColVerts, KidsLand_unkCol48_ColTris, &KidsLand_unkCol48_BoundBox
+ModelCollision KidsLand_unkCol48_collision = {
+    ARRAY_COUNT(KidsLand_unkCol48_ColVerts), ARRAY_COUNT(KidsLand_unkCol48_ColTris), KidsLand_unkCol48_ColVerts, KidsLand_unkCol48_ColTris, &KidsLand_unkCol48_BoundBox
 };
 
 Vec3f KidsLand_unkCol49_ColVerts[] = {
@@ -3175,8 +3175,8 @@ Rect3D KidsLand_unkCol49_BoundBox = {
     #include "assets/levelGroup/KidsLand/unkCol49/unkCol49.boundBox.inc.c"
 };
 
-ModelCollision KidsLand_unkCol49_ColH = {
-8, 12, KidsLand_unkCol49_ColVerts, KidsLand_unkCol49_ColTris, &KidsLand_unkCol49_BoundBox
+ModelCollision KidsLand_unkCol49_collision = {
+    ARRAY_COUNT(KidsLand_unkCol49_ColVerts), ARRAY_COUNT(KidsLand_unkCol49_ColTris), KidsLand_unkCol49_ColVerts, KidsLand_unkCol49_ColTris, &KidsLand_unkCol49_BoundBox
 };
 
 Vec3f KidsLand_unkCol50_ColVerts[] = {
@@ -3191,8 +3191,8 @@ Rect3D KidsLand_unkCol50_BoundBox = {
     #include "assets/levelGroup/KidsLand/unkCol50/unkCol50.boundBox.inc.c"
 };
 
-ModelCollision KidsLand_unkCol50_ColH = {
-8, 12, KidsLand_unkCol50_ColVerts, KidsLand_unkCol50_ColTris, &KidsLand_unkCol50_BoundBox
+ModelCollision KidsLand_unkCol50_collision = {
+    ARRAY_COUNT(KidsLand_unkCol50_ColVerts), ARRAY_COUNT(KidsLand_unkCol50_ColTris), KidsLand_unkCol50_ColVerts, KidsLand_unkCol50_ColTris, &KidsLand_unkCol50_BoundBox
 };
 
 Vec3f KidsLand_unkCol51_ColVerts[] = {
@@ -3207,8 +3207,8 @@ Rect3D KidsLand_unkCol51_BoundBox = {
     #include "assets/levelGroup/KidsLand/unkCol51/unkCol51.boundBox.inc.c"
 };
 
-ModelCollision KidsLand_unkCol51_ColH = {
-8, 12, KidsLand_unkCol51_ColVerts, KidsLand_unkCol51_ColTris, &KidsLand_unkCol51_BoundBox
+ModelCollision KidsLand_unkCol51_collision = {
+    ARRAY_COUNT(KidsLand_unkCol51_ColVerts), ARRAY_COUNT(KidsLand_unkCol51_ColTris), KidsLand_unkCol51_ColVerts, KidsLand_unkCol51_ColTris, &KidsLand_unkCol51_BoundBox
 };
 
 Vec3f KidsLand_unkCol52_ColVerts[] = {
@@ -3223,8 +3223,8 @@ Rect3D KidsLand_unkCol52_BoundBox = {
     #include "assets/levelGroup/KidsLand/unkCol52/unkCol52.boundBox.inc.c"
 };
 
-ModelCollision KidsLand_unkCol52_ColH = {
-8, 12, KidsLand_unkCol52_ColVerts, KidsLand_unkCol52_ColTris, &KidsLand_unkCol52_BoundBox
+ModelCollision KidsLand_unkCol52_collision = {
+    ARRAY_COUNT(KidsLand_unkCol52_ColVerts), ARRAY_COUNT(KidsLand_unkCol52_ColTris), KidsLand_unkCol52_ColVerts, KidsLand_unkCol52_ColTris, &KidsLand_unkCol52_BoundBox
 };
 
 Vec3f KidsLand_unkCol53_ColVerts[] = {
@@ -3239,8 +3239,8 @@ Rect3D KidsLand_unkCol53_BoundBox = {
     #include "assets/levelGroup/KidsLand/unkCol53/unkCol53.boundBox.inc.c"
 };
 
-ModelCollision KidsLand_unkCol53_ColH = {
-8, 8, KidsLand_unkCol53_ColVerts, KidsLand_unkCol53_ColTris, &KidsLand_unkCol53_BoundBox
+ModelCollision KidsLand_unkCol53_collision = {
+    ARRAY_COUNT(KidsLand_unkCol53_ColVerts), ARRAY_COUNT(KidsLand_unkCol53_ColTris), KidsLand_unkCol53_ColVerts, KidsLand_unkCol53_ColTris, &KidsLand_unkCol53_BoundBox
 };
 
 Vec3f KidsLand_unkCol54_ColVerts[] = {
@@ -3255,8 +3255,8 @@ Rect3D KidsLand_unkCol54_BoundBox = {
     #include "assets/levelGroup/KidsLand/unkCol54/unkCol54.boundBox.inc.c"
 };
 
-ModelCollision KidsLand_unkCol54_ColH = {
-8, 8, KidsLand_unkCol54_ColVerts, KidsLand_unkCol54_ColTris, &KidsLand_unkCol54_BoundBox
+ModelCollision KidsLand_unkCol54_collision = {
+    ARRAY_COUNT(KidsLand_unkCol54_ColVerts), ARRAY_COUNT(KidsLand_unkCol54_ColTris), KidsLand_unkCol54_ColVerts, KidsLand_unkCol54_ColTris, &KidsLand_unkCol54_BoundBox
 };
 
 Vec3f KidsLand_unkCol55_ColVerts[] = {
@@ -3271,8 +3271,8 @@ Rect3D KidsLand_unkCol55_BoundBox = {
     #include "assets/levelGroup/KidsLand/unkCol55/unkCol55.boundBox.inc.c"
 };
 
-ModelCollision KidsLand_unkCol55_ColH = {
-8, 10, KidsLand_unkCol55_ColVerts, KidsLand_unkCol55_ColTris, &KidsLand_unkCol55_BoundBox
+ModelCollision KidsLand_unkCol55_collision = {
+    ARRAY_COUNT(KidsLand_unkCol55_ColVerts), ARRAY_COUNT(KidsLand_unkCol55_ColTris), KidsLand_unkCol55_ColVerts, KidsLand_unkCol55_ColTris, &KidsLand_unkCol55_BoundBox
 };
 
 Vec3f KidsLand_unkCol56_ColVerts[] = {
@@ -3287,8 +3287,8 @@ Rect3D KidsLand_unkCol56_BoundBox = {
     #include "assets/levelGroup/KidsLand/unkCol56/unkCol56.boundBox.inc.c"
 };
 
-ModelCollision KidsLand_unkCol56_ColH = {
-7, 6, KidsLand_unkCol56_ColVerts, KidsLand_unkCol56_ColTris, &KidsLand_unkCol56_BoundBox
+ModelCollision KidsLand_unkCol56_collision = {
+    ARRAY_COUNT(KidsLand_unkCol56_ColVerts), ARRAY_COUNT(KidsLand_unkCol56_ColTris), KidsLand_unkCol56_ColVerts, KidsLand_unkCol56_ColTris, &KidsLand_unkCol56_BoundBox
 };
 
 Vec3f KidsLand_unkCol57_ColVerts[] = {
@@ -3303,8 +3303,8 @@ Rect3D KidsLand_unkCol57_BoundBox = {
     #include "assets/levelGroup/KidsLand/unkCol57/unkCol57.boundBox.inc.c"
 };
 
-ModelCollision KidsLand_unkCol57_ColH = {
-7, 6, KidsLand_unkCol57_ColVerts, KidsLand_unkCol57_ColTris, &KidsLand_unkCol57_BoundBox
+ModelCollision KidsLand_unkCol57_collision = {
+    ARRAY_COUNT(KidsLand_unkCol57_ColVerts), ARRAY_COUNT(KidsLand_unkCol57_ColTris), KidsLand_unkCol57_ColVerts, KidsLand_unkCol57_ColTris, &KidsLand_unkCol57_BoundBox
 };
 
 Vec3f KidsLand_unkCol58_ColVerts[] = {
@@ -3319,8 +3319,8 @@ Rect3D KidsLand_unkCol58_BoundBox = {
     #include "assets/levelGroup/KidsLand/unkCol58/unkCol58.boundBox.inc.c"
 };
 
-ModelCollision KidsLand_unkCol58_ColH = {
-8, 10, KidsLand_unkCol58_ColVerts, KidsLand_unkCol58_ColTris, &KidsLand_unkCol58_BoundBox
+ModelCollision KidsLand_unkCol58_collision = {
+    ARRAY_COUNT(KidsLand_unkCol58_ColVerts), ARRAY_COUNT(KidsLand_unkCol58_ColTris), KidsLand_unkCol58_ColVerts, KidsLand_unkCol58_ColTris, &KidsLand_unkCol58_BoundBox
 };
 
 Vec3f KidsLand_unkCol59_ColVerts[] = {
@@ -3335,8 +3335,8 @@ Rect3D KidsLand_unkCol59_BoundBox = {
     #include "assets/levelGroup/KidsLand/unkCol59/unkCol59.boundBox.inc.c"
 };
 
-ModelCollision KidsLand_unkCol59_ColH = {
-8, 10, KidsLand_unkCol59_ColVerts, KidsLand_unkCol59_ColTris, &KidsLand_unkCol59_BoundBox
+ModelCollision KidsLand_unkCol59_collision = {
+    ARRAY_COUNT(KidsLand_unkCol59_ColVerts), ARRAY_COUNT(KidsLand_unkCol59_ColTris), KidsLand_unkCol59_ColVerts, KidsLand_unkCol59_ColTris, &KidsLand_unkCol59_BoundBox
 };
 
 Vec3f KidsLand_unkCol60_ColVerts[] = {
@@ -3351,8 +3351,8 @@ Rect3D KidsLand_unkCol60_BoundBox = {
     #include "assets/levelGroup/KidsLand/unkCol60/unkCol60.boundBox.inc.c"
 };
 
-ModelCollision KidsLand_unkCol60_ColH = {
-8, 10, KidsLand_unkCol60_ColVerts, KidsLand_unkCol60_ColTris, &KidsLand_unkCol60_BoundBox
+ModelCollision KidsLand_unkCol60_collision = {
+    ARRAY_COUNT(KidsLand_unkCol60_ColVerts), ARRAY_COUNT(KidsLand_unkCol60_ColTris), KidsLand_unkCol60_ColVerts, KidsLand_unkCol60_ColTris, &KidsLand_unkCol60_BoundBox
 };
 
 Vec3f KidsLand_unkCol61_ColVerts[] = {
@@ -3367,8 +3367,8 @@ Rect3D KidsLand_unkCol61_BoundBox = {
     #include "assets/levelGroup/KidsLand/unkCol61/unkCol61.boundBox.inc.c"
 };
 
-ModelCollision KidsLand_unkCol61_ColH = {
-8, 6, KidsLand_unkCol61_ColVerts, KidsLand_unkCol61_ColTris, &KidsLand_unkCol61_BoundBox
+ModelCollision KidsLand_unkCol61_collision = {
+    ARRAY_COUNT(KidsLand_unkCol61_ColVerts), ARRAY_COUNT(KidsLand_unkCol61_ColTris), KidsLand_unkCol61_ColVerts, KidsLand_unkCol61_ColTris, &KidsLand_unkCol61_BoundBox
 };
 
 Vec3f KidsLand_unkCol62_ColVerts[] = {
@@ -3383,8 +3383,8 @@ Rect3D KidsLand_unkCol62_BoundBox = {
     #include "assets/levelGroup/KidsLand/unkCol62/unkCol62.boundBox.inc.c"
 };
 
-ModelCollision KidsLand_unkCol62_ColH = {
-8, 10, KidsLand_unkCol62_ColVerts, KidsLand_unkCol62_ColTris, &KidsLand_unkCol62_BoundBox
+ModelCollision KidsLand_unkCol62_collision = {
+    ARRAY_COUNT(KidsLand_unkCol62_ColVerts), ARRAY_COUNT(KidsLand_unkCol62_ColTris), KidsLand_unkCol62_ColVerts, KidsLand_unkCol62_ColTris, &KidsLand_unkCol62_BoundBox
 };
 
 Vec3f KidsLand_unkCol63_ColVerts[] = {
@@ -3399,8 +3399,8 @@ Rect3D KidsLand_unkCol63_BoundBox = {
     #include "assets/levelGroup/KidsLand/unkCol63/unkCol63.boundBox.inc.c"
 };
 
-ModelCollision KidsLand_unkCol63_ColH = {
-8, 18, KidsLand_unkCol63_ColVerts, KidsLand_unkCol63_ColTris, &KidsLand_unkCol63_BoundBox
+ModelCollision KidsLand_unkCol63_collision = {
+    ARRAY_COUNT(KidsLand_unkCol63_ColVerts), ARRAY_COUNT(KidsLand_unkCol63_ColTris), KidsLand_unkCol63_ColVerts, KidsLand_unkCol63_ColTris, &KidsLand_unkCol63_BoundBox
 };
 
 Vec3f KidsLand_unkCol64_ColVerts[] = {
@@ -3415,8 +3415,8 @@ Rect3D KidsLand_unkCol64_BoundBox = {
     #include "assets/levelGroup/KidsLand/unkCol64/unkCol64.boundBox.inc.c"
 };
 
-ModelCollision KidsLand_unkCol64_ColH = {
-14, 20, KidsLand_unkCol64_ColVerts, KidsLand_unkCol64_ColTris, &KidsLand_unkCol64_BoundBox
+ModelCollision KidsLand_unkCol64_collision = {
+    ARRAY_COUNT(KidsLand_unkCol64_ColVerts), ARRAY_COUNT(KidsLand_unkCol64_ColTris), KidsLand_unkCol64_ColVerts, KidsLand_unkCol64_ColTris, &KidsLand_unkCol64_BoundBox
 };
 
 Vec3f KidsLand_unkCol65_ColVerts[] = {
@@ -3431,8 +3431,8 @@ Rect3D KidsLand_unkCol65_BoundBox = {
     #include "assets/levelGroup/KidsLand/unkCol65/unkCol65.boundBox.inc.c"
 };
 
-ModelCollision KidsLand_unkCol65_ColH = {
-8, 6, KidsLand_unkCol65_ColVerts, KidsLand_unkCol65_ColTris, &KidsLand_unkCol65_BoundBox
+ModelCollision KidsLand_unkCol65_collision = {
+    ARRAY_COUNT(KidsLand_unkCol65_ColVerts), ARRAY_COUNT(KidsLand_unkCol65_ColTris), KidsLand_unkCol65_ColVerts, KidsLand_unkCol65_ColTris, &KidsLand_unkCol65_BoundBox
 };
 
 Vec3f KidsLand_unkCol66_ColVerts[] = {
@@ -3447,8 +3447,8 @@ Rect3D KidsLand_unkCol66_BoundBox = {
     #include "assets/levelGroup/KidsLand/unkCol66/unkCol66.boundBox.inc.c"
 };
 
-ModelCollision KidsLand_unkCol66_ColH = {
-8, 6, KidsLand_unkCol66_ColVerts, KidsLand_unkCol66_ColTris, &KidsLand_unkCol66_BoundBox
+ModelCollision KidsLand_unkCol66_collision = {
+    ARRAY_COUNT(KidsLand_unkCol66_ColVerts), ARRAY_COUNT(KidsLand_unkCol66_ColTris), KidsLand_unkCol66_ColVerts, KidsLand_unkCol66_ColTris, &KidsLand_unkCol66_BoundBox
 };
 
 Vec3f KidsLand_unkCol67_ColVerts[] = {
@@ -3463,8 +3463,8 @@ Rect3D KidsLand_unkCol67_BoundBox = {
     #include "assets/levelGroup/KidsLand/unkCol67/unkCol67.boundBox.inc.c"
 };
 
-ModelCollision KidsLand_unkCol67_ColH = {
-16, 40, KidsLand_unkCol67_ColVerts, KidsLand_unkCol67_ColTris, &KidsLand_unkCol67_BoundBox
+ModelCollision KidsLand_unkCol67_collision = {
+    ARRAY_COUNT(KidsLand_unkCol67_ColVerts), ARRAY_COUNT(KidsLand_unkCol67_ColTris), KidsLand_unkCol67_ColVerts, KidsLand_unkCol67_ColTris, &KidsLand_unkCol67_BoundBox
 };
 
 Vec3f KidsLand_unkCol68_ColVerts[] = {
@@ -3479,8 +3479,8 @@ Rect3D KidsLand_unkCol68_BoundBox = {
     #include "assets/levelGroup/KidsLand/unkCol68/unkCol68.boundBox.inc.c"
 };
 
-ModelCollision KidsLand_unkCol68_ColH = {
-4, 2, KidsLand_unkCol68_ColVerts, KidsLand_unkCol68_ColTris, &KidsLand_unkCol68_BoundBox
+ModelCollision KidsLand_unkCol68_collision = {
+    ARRAY_COUNT(KidsLand_unkCol68_ColVerts), ARRAY_COUNT(KidsLand_unkCol68_ColTris), KidsLand_unkCol68_ColVerts, KidsLand_unkCol68_ColTris, &KidsLand_unkCol68_BoundBox
 };
 
 Vec3f KidsLand_unkCol69_ColVerts[] = {
@@ -3495,8 +3495,8 @@ Rect3D KidsLand_unkCol69_BoundBox = {
     #include "assets/levelGroup/KidsLand/unkCol69/unkCol69.boundBox.inc.c"
 };
 
-ModelCollision KidsLand_unkCol69_ColH = {
-4, 2, KidsLand_unkCol69_ColVerts, KidsLand_unkCol69_ColTris, &KidsLand_unkCol69_BoundBox
+ModelCollision KidsLand_unkCol69_collision = {
+    ARRAY_COUNT(KidsLand_unkCol69_ColVerts), ARRAY_COUNT(KidsLand_unkCol69_ColTris), KidsLand_unkCol69_ColVerts, KidsLand_unkCol69_ColTris, &KidsLand_unkCol69_BoundBox
 };
 
 Vec3f KidsLand_unkCol70_ColVerts[] = {
@@ -3511,8 +3511,8 @@ Rect3D KidsLand_unkCol70_BoundBox = {
     #include "assets/levelGroup/KidsLand/unkCol70/unkCol70.boundBox.inc.c"
 };
 
-ModelCollision KidsLand_unkCol70_ColH = {
-12, 18, KidsLand_unkCol70_ColVerts, KidsLand_unkCol70_ColTris, &KidsLand_unkCol70_BoundBox
+ModelCollision KidsLand_unkCol70_collision = {
+    ARRAY_COUNT(KidsLand_unkCol70_ColVerts), ARRAY_COUNT(KidsLand_unkCol70_ColTris), KidsLand_unkCol70_ColVerts, KidsLand_unkCol70_ColTris, &KidsLand_unkCol70_BoundBox
 };
 
 Vec3f KidsLand_unkCol71_ColVerts[] = {
@@ -3527,8 +3527,8 @@ Rect3D KidsLand_unkCol71_BoundBox = {
     #include "assets/levelGroup/KidsLand/unkCol71/unkCol71.boundBox.inc.c"
 };
 
-ModelCollision KidsLand_unkCol71_ColH = {
-4, 4, KidsLand_unkCol71_ColVerts, KidsLand_unkCol71_ColTris, &KidsLand_unkCol71_BoundBox
+ModelCollision KidsLand_unkCol71_collision = {
+    ARRAY_COUNT(KidsLand_unkCol71_ColVerts), ARRAY_COUNT(KidsLand_unkCol71_ColTris), KidsLand_unkCol71_ColVerts, KidsLand_unkCol71_ColTris, &KidsLand_unkCol71_BoundBox
 };
 
 Vec3f KidsLand_unkCol72_ColVerts[] = {
@@ -3543,8 +3543,8 @@ Rect3D KidsLand_unkCol72_BoundBox = {
     #include "assets/levelGroup/KidsLand/unkCol72/unkCol72.boundBox.inc.c"
 };
 
-ModelCollision KidsLand_unkCol72_ColH = {
-4, 2, KidsLand_unkCol72_ColVerts, KidsLand_unkCol72_ColTris, &KidsLand_unkCol72_BoundBox
+ModelCollision KidsLand_unkCol72_collision = {
+    ARRAY_COUNT(KidsLand_unkCol72_ColVerts), ARRAY_COUNT(KidsLand_unkCol72_ColTris), KidsLand_unkCol72_ColVerts, KidsLand_unkCol72_ColTris, &KidsLand_unkCol72_BoundBox
 };
 
 Vec3f KidsLand_unkCol73_ColVerts[] = {
@@ -3559,8 +3559,8 @@ Rect3D KidsLand_unkCol73_BoundBox = {
     #include "assets/levelGroup/KidsLand/unkCol73/unkCol73.boundBox.inc.c"
 };
 
-ModelCollision KidsLand_unkCol73_ColH = {
-4, 2, KidsLand_unkCol73_ColVerts, KidsLand_unkCol73_ColTris, &KidsLand_unkCol73_BoundBox
+ModelCollision KidsLand_unkCol73_collision = {
+    ARRAY_COUNT(KidsLand_unkCol73_ColVerts), ARRAY_COUNT(KidsLand_unkCol73_ColTris), KidsLand_unkCol73_ColVerts, KidsLand_unkCol73_ColTris, &KidsLand_unkCol73_BoundBox
 };
 
 Vec3f KidsLand_unkCol74_ColVerts[] = {
@@ -3575,8 +3575,8 @@ Rect3D KidsLand_unkCol74_BoundBox = {
     #include "assets/levelGroup/KidsLand/unkCol74/unkCol74.boundBox.inc.c"
 };
 
-ModelCollision KidsLand_unkCol74_ColH = {
-4, 2, KidsLand_unkCol74_ColVerts, KidsLand_unkCol74_ColTris, &KidsLand_unkCol74_BoundBox
+ModelCollision KidsLand_unkCol74_collision = {
+    ARRAY_COUNT(KidsLand_unkCol74_ColVerts), ARRAY_COUNT(KidsLand_unkCol74_ColTris), KidsLand_unkCol74_ColVerts, KidsLand_unkCol74_ColTris, &KidsLand_unkCol74_BoundBox
 };
 
 Vec3f KidsLand_unkCol75_ColVerts[] = {
@@ -3591,8 +3591,8 @@ Rect3D KidsLand_unkCol75_BoundBox = {
     #include "assets/levelGroup/KidsLand/unkCol75/unkCol75.boundBox.inc.c"
 };
 
-ModelCollision KidsLand_unkCol75_ColH = {
-4, 2, KidsLand_unkCol75_ColVerts, KidsLand_unkCol75_ColTris, &KidsLand_unkCol75_BoundBox
+ModelCollision KidsLand_unkCol75_collision = {
+    ARRAY_COUNT(KidsLand_unkCol75_ColVerts), ARRAY_COUNT(KidsLand_unkCol75_ColTris), KidsLand_unkCol75_ColVerts, KidsLand_unkCol75_ColTris, &KidsLand_unkCol75_BoundBox
 };
 
 Vec3f KidsLand_unkCol76_ColVerts[] = {
@@ -3607,8 +3607,8 @@ Rect3D KidsLand_unkCol76_BoundBox = {
     #include "assets/levelGroup/KidsLand/unkCol76/unkCol76.boundBox.inc.c"
 };
 
-ModelCollision KidsLand_unkCol76_ColH = {
-28, 46, KidsLand_unkCol76_ColVerts, KidsLand_unkCol76_ColTris, &KidsLand_unkCol76_BoundBox
+ModelCollision KidsLand_unkCol76_collision = {
+    ARRAY_COUNT(KidsLand_unkCol76_ColVerts), ARRAY_COUNT(KidsLand_unkCol76_ColTris), KidsLand_unkCol76_ColVerts, KidsLand_unkCol76_ColTris, &KidsLand_unkCol76_BoundBox
 };
 
 Vec3f KidsLand_unkCol77_ColVerts[] = {
@@ -3623,8 +3623,8 @@ Rect3D KidsLand_unkCol77_BoundBox = {
     #include "assets/levelGroup/KidsLand/unkCol77/unkCol77.boundBox.inc.c"
 };
 
-ModelCollision KidsLand_unkCol77_ColH = {
-28, 46, KidsLand_unkCol77_ColVerts, KidsLand_unkCol77_ColTris, &KidsLand_unkCol77_BoundBox
+ModelCollision KidsLand_unkCol77_collision = {
+    ARRAY_COUNT(KidsLand_unkCol77_ColVerts), ARRAY_COUNT(KidsLand_unkCol77_ColTris), KidsLand_unkCol77_ColVerts, KidsLand_unkCol77_ColTris, &KidsLand_unkCol77_BoundBox
 };
 
 Vec3f KidsLand_unkCol78_ColVerts[] = {
@@ -3639,8 +3639,8 @@ Rect3D KidsLand_unkCol78_BoundBox = {
     #include "assets/levelGroup/KidsLand/unkCol78/unkCol78.boundBox.inc.c"
 };
 
-ModelCollision KidsLand_unkCol78_ColH = {
-18, 28, KidsLand_unkCol78_ColVerts, KidsLand_unkCol78_ColTris, &KidsLand_unkCol78_BoundBox
+ModelCollision KidsLand_unkCol78_collision = {
+    ARRAY_COUNT(KidsLand_unkCol78_ColVerts), ARRAY_COUNT(KidsLand_unkCol78_ColTris), KidsLand_unkCol78_ColVerts, KidsLand_unkCol78_ColTris, &KidsLand_unkCol78_BoundBox
 };
 
 Vec3f KidsLand_unkCol79_ColVerts[] = {
@@ -3655,8 +3655,8 @@ Rect3D KidsLand_unkCol79_BoundBox = {
     #include "assets/levelGroup/KidsLand/unkCol79/unkCol79.boundBox.inc.c"
 };
 
-ModelCollision KidsLand_unkCol79_ColH = {
-6, 6, KidsLand_unkCol79_ColVerts, KidsLand_unkCol79_ColTris, &KidsLand_unkCol79_BoundBox
+ModelCollision KidsLand_unkCol79_collision = {
+    ARRAY_COUNT(KidsLand_unkCol79_ColVerts), ARRAY_COUNT(KidsLand_unkCol79_ColTris), KidsLand_unkCol79_ColVerts, KidsLand_unkCol79_ColTris, &KidsLand_unkCol79_BoundBox
 };
 
 Vec3f KidsLand_unkCol80_ColVerts[] = {
@@ -3671,8 +3671,8 @@ Rect3D KidsLand_unkCol80_BoundBox = {
     #include "assets/levelGroup/KidsLand/unkCol80/unkCol80.boundBox.inc.c"
 };
 
-ModelCollision KidsLand_unkCol80_ColH = {
-8, 8, KidsLand_unkCol80_ColVerts, KidsLand_unkCol80_ColTris, &KidsLand_unkCol80_BoundBox
+ModelCollision KidsLand_unkCol80_collision = {
+    ARRAY_COUNT(KidsLand_unkCol80_ColVerts), ARRAY_COUNT(KidsLand_unkCol80_ColTris), KidsLand_unkCol80_ColVerts, KidsLand_unkCol80_ColTris, &KidsLand_unkCol80_BoundBox
 };
 
 Vec3f KidsLand_unkCol81_ColVerts[] = {
@@ -3687,8 +3687,8 @@ Rect3D KidsLand_unkCol81_BoundBox = {
     #include "assets/levelGroup/KidsLand/unkCol81/unkCol81.boundBox.inc.c"
 };
 
-ModelCollision KidsLand_unkCol81_ColH = {
-51, 98, KidsLand_unkCol81_ColVerts, KidsLand_unkCol81_ColTris, &KidsLand_unkCol81_BoundBox
+ModelCollision KidsLand_unkCol81_collision = {
+    ARRAY_COUNT(KidsLand_unkCol81_ColVerts), ARRAY_COUNT(KidsLand_unkCol81_ColTris), KidsLand_unkCol81_ColVerts, KidsLand_unkCol81_ColTris, &KidsLand_unkCol81_BoundBox
 };
 s32 alignment_Pad_KL[] = {0, 0};
 
@@ -3870,7 +3870,7 @@ Mtx KidsLand_unk1_Animarr[20][8] = {
 };
 
 AnimPointer KidsLand_unk1Pointers_Animp[1] = {
-{&KidsLand_unk1Header_Animh.frames, &KidsLand_unk1Header_Animh.objects, &KidsLand_unk1_Animarr[0][0]}
+{&KidsLand_unk1Header_Animh.frames, &KidsLand_unk1Header_Animh.objects, KidsLand_unk1_Animarr[0]}
 };
 
 Anim KidsLand_unk2Header_Animh = {
@@ -3882,5 +3882,5 @@ Mtx KidsLand_unk2_Animarr[1][1] = {
 };
 
 AnimPointer KidsLand_unk2Pointers_Animp[1] = {
-{&KidsLand_unk2Header_Animh.frames, &KidsLand_unk2Header_Animh.objects, &KidsLand_unk2_Animarr[0][0]}
+{&KidsLand_unk2Header_Animh.frames, &KidsLand_unk2Header_Animh.objects, KidsLand_unk2_Animarr[0]}
 };

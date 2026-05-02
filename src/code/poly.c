@@ -617,7 +617,7 @@ void SetCameraParameters(void) {
         func_800D5394(gPlayerActors, gTongues, gCamera, &sp3C, &sp30, 0);
     }
     
-    cam = &gCamera[0];
+    cam = gCamera;
     
     for (i = 0; i < ARRAY_COUNT(gCamera); i++, cam++) {
         cam->f5.x = sp3C.x;

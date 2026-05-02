@@ -2886,8 +2886,8 @@ void ActorTick_Powerup(Actor* powerup) {
 //related to spawning collsion pieces
 void func_8004BA5C(s32 arg0) {
     s32 i;
-    gCurrentActivePlayerPointer = &gPlayerActors[0];
-    gTongueOnePointer = &gTongues[0];
+    gCurrentActivePlayerPointer = gPlayerActors;
+    gTongueOnePointer = gTongues;
 
     for (i = 0; i < arg0; i++) {
         Actors_Tick();

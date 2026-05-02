@@ -304,7 +304,7 @@ void func_80025EF0(PlayerActor* arg0, Tongue* arg1, s32 arg2) {
                 }
                 break;
             default:
-                func_80027138(&static0_chameleonAnims[0], &animObjects, &animFrames, &anim);
+                func_80027138(static0_chameleonAnims, &animObjects, &animFrames, &anim);
                 func_80027240(&D_800FF8D4, anim, (s32)arg0->globalTimer % animFrames, animObjects);
                 break;
         }
@@ -329,7 +329,7 @@ void func_80025EF0(PlayerActor* arg0, Tongue* arg1, s32 arg2) {
             func_80027240(&D_800FF8D4, anim, sp124, animObjects);
         }
     } else if (arg0->groundMovement == 0) {
-        func_80027138(&static0_chameleonAnims[0], &animObjects, &animFrames, &anim);
+        func_80027138(static0_chameleonAnims, &animObjects, &animFrames, &anim);
         func_80027240(&D_800FF8D4, anim, (s32)arg0->globalTimer % animFrames, animObjects);
     } else if (arg0->groundMovement == 1) {
         func_80027138(&static0_chameleonAnims[1], &animObjects, &animFrames, &anim);
@@ -413,7 +413,7 @@ void func_80026CA8(GraphicStruct *arg0, Mtx *arg1, u32 arg2, f32 arg3, s32 arg4)
     f32 yPos = 0.0f;
     f32 zPos = 0.0f;
 
-    func_800849DC(0, gTongues, &gPlayerActors[0], gCamera);
+    func_800849DC(0, gTongues, gPlayerActors, gCamera);
     guMtxXFML(&arg0->actorRotate[arg2], xPos, yPos, zPos, &xPos, &yPos, &zPos);         // 4x4 fp matrix
     guMtxXFML(&arg0->actorScale[arg2], xPos, yPos, zPos, &xPos, &yPos, &zPos);
     guMtxCatL(arg1, &arg0->actorRotate[arg2], arg1);
@@ -426,7 +426,7 @@ void func_80026E30(GraphicStruct *arg0, Mtx *arg1, u32 arg2, f32 arg3, s32 arg4)
     f32 yPos = 0.0f;
     f32 zPos = 0.0f;
 
-    func_800849DC(0, gTongues, &gPlayerActors[0], gCamera);
+    func_800849DC(0, gTongues, gPlayerActors, gCamera);
     guMtxXFML(&arg0->actorRotate[arg2], xPos, yPos, zPos, &xPos, &yPos, &zPos);
     guMtxXFML(&arg0->actorScale[arg2], xPos, yPos, zPos, &xPos, &yPos, &zPos);
     guMtxCatL(arg1, &arg0->actorRotate[arg2], arg1);
@@ -438,7 +438,7 @@ void func_80026FB8(GraphicStruct *arg0, Mtx *arg1, u32 arg2, f32 arg3, f32 arg4,
     f32 xPos, yPos, zPos;
     zPos = yPos = xPos = 0.0f;
 
-    func_800849DC(0, gTongues, &gPlayerActors[0], gCamera);
+    func_800849DC(0, gTongues, gPlayerActors, gCamera);
     guMtxXFML(arg1, xPos, yPos, zPos, &xPos, &yPos, &zPos);
     guMtxXFML(&arg0->actorRotate[arg2], xPos, yPos, zPos, &xPos, &yPos, &zPos);
     guMtxXFML(&arg0->actorScale[arg2], xPos, yPos, zPos, &xPos, &yPos, &zPos);
@@ -1075,7 +1075,7 @@ Gfx* func_8002C280(GraphicStruct* arg0, Gfx* gfxPos) {
         gfxPos = func_800849D4(gfxPos);
     }
 
-    func_800849DC(0, &gTongues[0], &gPlayerActors[0], gCamera);
+    func_800849DC(0, gTongues, gPlayerActors, gCamera);
     gfxPos = func_80084884(gfxPos);
     gfxPos = func_8007ABDC(gfxPos);
 
@@ -1299,7 +1299,7 @@ void func_8002CE54(void) {
 
     if (D_80174980 == 5) {
         D_80168D78[0] = 1;
-        func_8004BC48(&sp28[0]);
+        func_8004BC48(sp28);
         func_8004E784(sp28, D_80168DA0, D_80168D78, sp28);
         D_800FF8DC = 0;
         D_800FF8E0 = 0;
@@ -1314,7 +1314,7 @@ void func_8002CE54(void) {
                 D_80168D78[3] = 3;
                 func_8004CD9C(3, &sp28[3]);
             } else {
-                func_8002CDBC(&sp28[0]);
+                func_8002CDBC(sp28);
             }
         } else if (D_801749B0 != 0) {
             D_80168D78[1] = 1;

@@ -32,393 +32,393 @@ extern unsigned char Global_DCFloor_ci4_PNG[];
 extern unsigned char Global_DCFloor_ci4_PAL[];
 
 extern Gfx Global_fallbackCube_Gfx[];
-extern ModelCollision Global_fallbackCube_ColH;
+extern ModelCollision Global_fallbackCube_collision;
 extern Gfx Global_exitShadowSouth_Gfx[];
-extern ModelCollision Global_exitShadowSouth_ColH;
+extern ModelCollision Global_exitShadowSouth_collision;
 extern Gfx Global_exitShadowNorth_Gfx[];
-extern ModelCollision Global_exitShadowNorth_ColH;
+extern ModelCollision Global_exitShadowNorth_collision;
 extern Gfx Global_exitShadowEast_Gfx[];
-extern ModelCollision Global_exitShadowEast_ColH;
+extern ModelCollision Global_exitShadowEast_collision;
 extern Gfx Global_exitShadowWest_Gfx[];
-extern ModelCollision Global_exitShadowWest_ColH;
+extern ModelCollision Global_exitShadowWest_collision;
 extern Gfx Global_ALBLExit_Gfx[];
-extern ModelCollision Global_ALBLExit_ColH;
+extern ModelCollision Global_ALBLExit_collision;
 extern Gfx Global_sandPit_Gfx[];
-extern ModelCollision Global_sandPit_ColH;
+extern ModelCollision Global_sandPit_collision;
 extern Gfx Global_BossBridge_Gfx[];
-extern ModelCollision Global_BossBridge_ColH;
+extern ModelCollision Global_BossBridge_collision;
 extern Gfx Global_ALPole_Gfx[];
-extern ModelCollision Global_ALPole_ColH;
+extern ModelCollision Global_ALPole_collision;
 extern Gfx Global_ALBLDoor_Gfx[];
-extern ModelCollision Global_ALBLDoor_ColH;
+extern ModelCollision Global_ALBLDoor_collision;
 extern Gfx Global_ALSpinDoor_Gfx[];
-extern ModelCollision Global_ALSpinDoor_ColH;
+extern ModelCollision Global_ALSpinDoor_collision;
 extern Gfx Global_BLLavaFloor_Gfx[];
-extern ModelCollision Global_BLLavaFloor_ColH;
+extern ModelCollision Global_BLLavaFloor_collision;
 extern Gfx Global_BLLava_Gfx[];
-extern ModelCollision Global_BLLava_ColH;
+extern ModelCollision Global_BLLava_collision;
 extern Gfx Global_BLLava2_Gfx[];
-extern ModelCollision Global_BLLava2_ColH;
+extern ModelCollision Global_BLLava2_collision;
 extern Gfx Global_BLLava3_Gfx[];
-extern ModelCollision Global_BLLava3_ColH;
+extern ModelCollision Global_BLLava3_collision;
 extern Gfx Global_BLLava4_Gfx[];
-extern ModelCollision Global_BLLava4_ColH;
+extern ModelCollision Global_BLLava4_collision;
 extern Gfx Global_BLLava5_Gfx[];
-extern ModelCollision Global_BLLava5_ColH;
+extern ModelCollision Global_BLLava5_collision;
 extern Gfx Global_BLLava6_Gfx[];
-extern ModelCollision Global_BLLava6_ColH;
+extern ModelCollision Global_BLLava6_collision;
 extern Gfx Global_BLLava7_Gfx[];
-extern ModelCollision Global_BLLava7_ColH;
+extern ModelCollision Global_BLLava7_collision;
 extern Gfx Global_BLLava8_Gfx[];
-extern ModelCollision Global_BLLava8_ColH;
+extern ModelCollision Global_BLLava8_collision;
 extern Gfx Global_BLDestructableTop_Gfx[];
-extern ModelCollision Global_BLDestructableTop_ColH;
+extern ModelCollision Global_BLDestructableTop_collision;
 extern Gfx Global_BLMetalBridge_Gfx[];
-extern ModelCollision Global_BLMetalBridge_ColH;
+extern ModelCollision Global_BLMetalBridge_collision;
 extern Gfx Global_KLExit_Gfx[];
-extern ModelCollision Global_KLExit_ColH;
+extern ModelCollision Global_KLExit_collision;
 extern Gfx Global_KLDoor_Gfx[];
-extern ModelCollision Global_KLDoor_ColH;
+extern ModelCollision Global_KLDoor_collision;
 extern Gfx Global_DCExit_Gfx[];
-extern ModelCollision Global_DCExit_ColH;
+extern ModelCollision Global_DCExit_collision;
 extern Gfx Global_TallExitShadow1_Gfx[];
-extern ModelCollision Global_TallExitShadow1_ColH;
+extern ModelCollision Global_TallExitShadow1_collision;
 extern Gfx Global_TallExitShadow2_Gfx[];
-extern ModelCollision Global_TallExitShadow2_ColH;
+extern ModelCollision Global_TallExitShadow2_collision;
 extern Gfx Global_GCExit1_Gfx[];
-extern ModelCollision Global_GCExit1_ColH;
+extern ModelCollision Global_GCExit1_collision;
 extern Gfx Global_GCExit2_Gfx[];
-extern ModelCollision Global_GCExit2_ColH;
+extern ModelCollision Global_GCExit2_collision;
 extern Gfx Global_trainingRoomLight_Gfx[];
-extern ModelCollision Global_trainingRoomLight_ColH;
+extern ModelCollision Global_trainingRoomLight_collision;
 extern Gfx Global_JLCaveExit1_Gfx[];
-extern ModelCollision Global_JLCaveExit1_ColH;
+extern ModelCollision Global_JLCaveExit1_collision;
 extern Gfx Global_JLCaveExit2_Gfx[];
-extern ModelCollision Global_JLCaveExit2_ColH;
+extern ModelCollision Global_JLCaveExit2_collision;
 extern Gfx Global_JLCaveExit3_Gfx[];
-extern ModelCollision Global_JLCaveExit3_ColH;
+extern ModelCollision Global_JLCaveExit3_collision;
 extern Gfx Global_JLCaveExit4_Gfx[];
-extern ModelCollision Global_JLCaveExit4_ColH;
+extern ModelCollision Global_JLCaveExit4_collision;
 extern Gfx Global_JLOutsideEntrance_Gfx[];
-extern ModelCollision Global_JLOutsideEntrance_ColH;
+extern ModelCollision Global_JLOutsideEntrance_collision;
 extern Gfx Global_JLFxCamPillar_Gfx[];
-extern ModelCollision Global_JLFxCamPillar_ColH;
+extern ModelCollision Global_JLFxCamPillar_collision;
 extern Gfx Global_JLCaveDoor_Gfx[];
-extern ModelCollision Global_JLCaveDoor_ColH;
+extern ModelCollision Global_JLCaveDoor_collision;
 extern Gfx DesertCastle_model1_Gfx[];
-extern ModelCollision DesertCastle_unkCol1_ColH;
+extern ModelCollision DesertCastle_unkCol1_collision;
 extern Gfx DesertCastle_model2_Gfx[];
-extern ModelCollision DesertCastle_unkCol2_ColH;
+extern ModelCollision DesertCastle_unkCol2_collision;
 extern Gfx DesertCastle_model3_Gfx[];
-extern ModelCollision DesertCastle_unkCol3_ColH;
+extern ModelCollision DesertCastle_unkCol3_collision;
 extern Gfx DesertCastle_model4_Gfx[];
-extern ModelCollision DesertCastle_unkCol4_ColH;
+extern ModelCollision DesertCastle_unkCol4_collision;
 extern Gfx DesertCastle_model5_Gfx[];
-extern ModelCollision DesertCastle_unkCol5_ColH;
+extern ModelCollision DesertCastle_unkCol5_collision;
 extern Gfx DesertCastle_model6_Gfx[];
-extern ModelCollision DesertCastle_unkCol6_ColH;
+extern ModelCollision DesertCastle_unkCol6_collision;
 extern Gfx DesertCastle_model7_Gfx[];
-extern ModelCollision DesertCastle_unkCol7_ColH;
+extern ModelCollision DesertCastle_unkCol7_collision;
 extern Gfx DesertCastle_model8_Gfx[];
-extern ModelCollision DesertCastle_unkCol8_ColH;
+extern ModelCollision DesertCastle_unkCol8_collision;
 extern Gfx DesertCastle_model9_Gfx[];
-extern ModelCollision DesertCastle_unkCol9_ColH;
+extern ModelCollision DesertCastle_unkCol9_collision;
 extern Gfx DesertCastle_model10_Gfx[];
-extern ModelCollision DesertCastle_unkCol10_ColH;
+extern ModelCollision DesertCastle_unkCol10_collision;
 extern Gfx DesertCastle_model11_Gfx[];
-extern ModelCollision DesertCastle_unkCol11_ColH;
+extern ModelCollision DesertCastle_unkCol11_collision;
 extern Gfx DesertCastle_model12_Gfx[];
-extern ModelCollision DesertCastle_unkCol12_ColH;
+extern ModelCollision DesertCastle_unkCol12_collision;
 extern Gfx DesertCastle_model13_Gfx[];
-extern ModelCollision DesertCastle_unkCol13_ColH;
+extern ModelCollision DesertCastle_unkCol13_collision;
 extern Gfx DesertCastle_model14_Gfx[];
-extern ModelCollision DesertCastle_unkCol14_ColH;
+extern ModelCollision DesertCastle_unkCol14_collision;
 extern Gfx DesertCastle_model15_Gfx[];
-extern ModelCollision DesertCastle_unkCol15_ColH;
+extern ModelCollision DesertCastle_unkCol15_collision;
 extern Gfx DesertCastle_model16_Gfx[];
-extern ModelCollision DesertCastle_unkCol16_ColH;
+extern ModelCollision DesertCastle_unkCol16_collision;
 extern Gfx DesertCastle_model17_Gfx[];
-extern ModelCollision DesertCastle_unkCol17_ColH;
+extern ModelCollision DesertCastle_unkCol17_collision;
 extern Gfx DesertCastle_model18_Gfx[];
-extern ModelCollision DesertCastle_unkCol18_ColH;
+extern ModelCollision DesertCastle_unkCol18_collision;
 extern Gfx DesertCastle_model19_Gfx[];
-extern ModelCollision DesertCastle_unkCol19_ColH;
+extern ModelCollision DesertCastle_unkCol19_collision;
 extern Gfx DesertCastle_model20_Gfx[];
-extern ModelCollision DesertCastle_unkCol20_ColH;
+extern ModelCollision DesertCastle_unkCol20_collision;
 extern Gfx DesertCastle_model21_Gfx[];
-extern ModelCollision DesertCastle_unkCol21_ColH;
+extern ModelCollision DesertCastle_unkCol21_collision;
 extern Gfx DesertCastle_model22_Gfx[];
-extern ModelCollision DesertCastle_unkCol22_ColH;
+extern ModelCollision DesertCastle_unkCol22_collision;
 extern Gfx DesertCastle_model23_Gfx[];
-extern ModelCollision DesertCastle_unkCol23_ColH;
+extern ModelCollision DesertCastle_unkCol23_collision;
 extern Gfx DesertCastle_model24_Gfx[];
-extern ModelCollision DesertCastle_unkCol24_ColH;
+extern ModelCollision DesertCastle_unkCol24_collision;
 extern Gfx DesertCastle_model25_Gfx[];
-extern ModelCollision DesertCastle_unkCol25_ColH;
+extern ModelCollision DesertCastle_unkCol25_collision;
 extern Gfx DesertCastle_model26_Gfx[];
-extern ModelCollision DesertCastle_unkCol26_ColH;
+extern ModelCollision DesertCastle_unkCol26_collision;
 extern Gfx DesertCastle_model27_Gfx[];
-extern ModelCollision DesertCastle_unkCol27_ColH;
+extern ModelCollision DesertCastle_unkCol27_collision;
 extern Gfx DesertCastle_model28_Gfx[];
-extern ModelCollision DesertCastle_unkCol28_ColH;
+extern ModelCollision DesertCastle_unkCol28_collision;
 extern Gfx DesertCastle_model29_Gfx[];
-extern ModelCollision DesertCastle_unkCol29_ColH;
+extern ModelCollision DesertCastle_unkCol29_collision;
 extern Gfx DesertCastle_model30_Gfx[];
-extern ModelCollision DesertCastle_unkCol30_ColH;
+extern ModelCollision DesertCastle_unkCol30_collision;
 extern Gfx DesertCastle_model31_Gfx[];
-extern ModelCollision DesertCastle_unkCol31_ColH;
+extern ModelCollision DesertCastle_unkCol31_collision;
 extern Gfx DesertCastle_model32_Gfx[];
-extern ModelCollision DesertCastle_unkCol32_ColH;
+extern ModelCollision DesertCastle_unkCol32_collision;
 extern Gfx DesertCastle_model33_Gfx[];
-extern ModelCollision DesertCastle_unkCol33_ColH;
+extern ModelCollision DesertCastle_unkCol33_collision;
 extern Gfx DesertCastle_model34_Gfx[];
-extern ModelCollision DesertCastle_unkCol34_ColH;
+extern ModelCollision DesertCastle_unkCol34_collision;
 extern Gfx DesertCastle_model35_Gfx[];
-extern ModelCollision DesertCastle_unkCol35_ColH;
+extern ModelCollision DesertCastle_unkCol35_collision;
 extern Gfx DesertCastle_model36_Gfx[];
-extern ModelCollision DesertCastle_unkCol36_ColH;
+extern ModelCollision DesertCastle_unkCol36_collision;
 extern Gfx DesertCastle_model37_Gfx[];
-extern ModelCollision DesertCastle_unkCol37_ColH;
+extern ModelCollision DesertCastle_unkCol37_collision;
 extern Gfx DesertCastle_model38_Gfx[];
-extern ModelCollision DesertCastle_unkCol38_ColH;
+extern ModelCollision DesertCastle_unkCol38_collision;
 extern Gfx DesertCastle_model39_Gfx[];
-extern ModelCollision DesertCastle_unkCol39_ColH;
+extern ModelCollision DesertCastle_unkCol39_collision;
 extern Gfx DesertCastle_model40_Gfx[];
-extern ModelCollision DesertCastle_unkCol40_ColH;
+extern ModelCollision DesertCastle_unkCol40_collision;
 extern Gfx DesertCastle_model41_Gfx[];
-extern ModelCollision DesertCastle_unkCol41_ColH;
+extern ModelCollision DesertCastle_unkCol41_collision;
 extern Gfx DesertCastle_model42_Gfx[];
-extern ModelCollision DesertCastle_unkCol42_ColH;
+extern ModelCollision DesertCastle_unkCol42_collision;
 extern Gfx DesertCastle_model43_Gfx[];
-extern ModelCollision DesertCastle_unkCol43_ColH;
+extern ModelCollision DesertCastle_unkCol43_collision;
 extern Gfx DesertCastle_model44_Gfx[];
-extern ModelCollision DesertCastle_unkCol44_ColH;
+extern ModelCollision DesertCastle_unkCol44_collision;
 extern Gfx DesertCastle_model45_Gfx[];
-extern ModelCollision DesertCastle_unkCol45_ColH;
+extern ModelCollision DesertCastle_unkCol45_collision;
 extern Gfx DesertCastle_model46_Gfx[];
-extern ModelCollision DesertCastle_unkCol46_ColH;
+extern ModelCollision DesertCastle_unkCol46_collision;
 extern Gfx DesertCastle_model47_Gfx[];
-extern ModelCollision DesertCastle_unkCol47_ColH;
+extern ModelCollision DesertCastle_unkCol47_collision;
 extern Gfx DesertCastle_model48_Gfx[];
-extern ModelCollision DesertCastle_unkCol48_ColH;
+extern ModelCollision DesertCastle_unkCol48_collision;
 extern Gfx DesertCastle_model49_Gfx[];
-extern ModelCollision DesertCastle_unkCol49_ColH;
+extern ModelCollision DesertCastle_unkCol49_collision;
 extern Gfx DesertCastle_model50_Gfx[];
-extern ModelCollision DesertCastle_unkCol50_ColH;
+extern ModelCollision DesertCastle_unkCol50_collision;
 extern Gfx DesertCastle_model51_Gfx[];
-extern ModelCollision DesertCastle_unkCol51_ColH;
+extern ModelCollision DesertCastle_unkCol51_collision;
 extern Gfx DesertCastle_model52_Gfx[];
-extern ModelCollision DesertCastle_unkCol52_ColH;
+extern ModelCollision DesertCastle_unkCol52_collision;
 extern Gfx DesertCastle_model53_Gfx[];
-extern ModelCollision DesertCastle_unkCol53_ColH;
+extern ModelCollision DesertCastle_unkCol53_collision;
 extern Gfx DesertCastle_model54_Gfx[];
-extern ModelCollision DesertCastle_unkCol54_ColH;
+extern ModelCollision DesertCastle_unkCol54_collision;
 extern Gfx DesertCastle_model55_Gfx[];
-extern ModelCollision DesertCastle_unkCol55_ColH;
+extern ModelCollision DesertCastle_unkCol55_collision;
 extern Gfx DesertCastle_model56_Gfx[];
-extern ModelCollision DesertCastle_unkCol56_ColH;
+extern ModelCollision DesertCastle_unkCol56_collision;
 extern Gfx DesertCastle_model57_Gfx[];
-extern ModelCollision DesertCastle_unkCol57_ColH;
+extern ModelCollision DesertCastle_unkCol57_collision;
 extern Gfx DesertCastle_model58_Gfx[];
-extern ModelCollision DesertCastle_unkCol58_ColH;
+extern ModelCollision DesertCastle_unkCol58_collision;
 extern Gfx DesertCastle_model59_Gfx[];
-extern ModelCollision DesertCastle_unkCol59_ColH;
+extern ModelCollision DesertCastle_unkCol59_collision;
 extern Gfx DesertCastle_model60_Gfx[];
-extern ModelCollision DesertCastle_unkCol60_ColH;
+extern ModelCollision DesertCastle_unkCol60_collision;
 extern Gfx DesertCastle_model61_Gfx[];
-extern ModelCollision DesertCastle_unkCol61_ColH;
+extern ModelCollision DesertCastle_unkCol61_collision;
 extern Gfx DesertCastle_model62_Gfx[];
-extern ModelCollision DesertCastle_unkCol62_ColH;
+extern ModelCollision DesertCastle_unkCol62_collision;
 extern Gfx DesertCastle_model63_Gfx[];
-extern ModelCollision DesertCastle_unkCol63_ColH;
+extern ModelCollision DesertCastle_unkCol63_collision;
 extern Gfx DesertCastle_model64_Gfx[];
-extern ModelCollision DesertCastle_unkCol64_ColH;
+extern ModelCollision DesertCastle_unkCol64_collision;
 extern Gfx DesertCastle_model65_Gfx[];
-extern ModelCollision DesertCastle_unkCol65_ColH;
+extern ModelCollision DesertCastle_unkCol65_collision;
 extern Gfx DesertCastle_model66_Gfx[];
-extern ModelCollision DesertCastle_unkCol66_ColH;
+extern ModelCollision DesertCastle_unkCol66_collision;
 extern Gfx DesertCastle_model67_Gfx[];
-extern ModelCollision DesertCastle_unkCol67_ColH;
+extern ModelCollision DesertCastle_unkCol67_collision;
 extern Gfx DesertCastle_model68_Gfx[];
-extern ModelCollision DesertCastle_unkCol68_ColH;
+extern ModelCollision DesertCastle_unkCol68_collision;
 extern Gfx DesertCastle_model69_Gfx[];
-extern ModelCollision DesertCastle_unkCol69_ColH;
+extern ModelCollision DesertCastle_unkCol69_collision;
 extern Gfx DesertCastle_model70_Gfx[];
-extern ModelCollision DesertCastle_unkCol70_ColH;
+extern ModelCollision DesertCastle_unkCol70_collision;
 extern Gfx DesertCastle_model71_Gfx[];
-extern ModelCollision DesertCastle_unkCol71_ColH;
+extern ModelCollision DesertCastle_unkCol71_collision;
 extern Gfx DesertCastle_model72_Gfx[];
-extern ModelCollision DesertCastle_unkCol72_ColH;
+extern ModelCollision DesertCastle_unkCol72_collision;
 extern Gfx DesertCastle_model73_Gfx[];
-extern ModelCollision DesertCastle_unkCol73_ColH;
+extern ModelCollision DesertCastle_unkCol73_collision;
 extern Gfx DesertCastle_model74_Gfx[];
-extern ModelCollision DesertCastle_unkCol74_ColH;
+extern ModelCollision DesertCastle_unkCol74_collision;
 extern Gfx DesertCastle_model75_Gfx[];
-extern ModelCollision DesertCastle_unkCol75_ColH;
+extern ModelCollision DesertCastle_unkCol75_collision;
 extern Gfx DesertCastle_model76_Gfx[];
-extern ModelCollision DesertCastle_unkCol76_ColH;
+extern ModelCollision DesertCastle_unkCol76_collision;
 extern Gfx DesertCastle_model77_Gfx[];
-extern ModelCollision DesertCastle_unkCol77_ColH;
+extern ModelCollision DesertCastle_unkCol77_collision;
 extern Gfx DesertCastle_model78_Gfx[];
-extern ModelCollision DesertCastle_unkCol78_ColH;
+extern ModelCollision DesertCastle_unkCol78_collision;
 extern Gfx DesertCastle_model79_Gfx[];
-extern ModelCollision DesertCastle_unkCol79_ColH;
+extern ModelCollision DesertCastle_unkCol79_collision;
 extern Gfx DesertCastle_model80_Gfx[];
-extern ModelCollision DesertCastle_unkCol80_ColH;
+extern ModelCollision DesertCastle_unkCol80_collision;
 extern Gfx DesertCastle_model81_Gfx[];
-extern ModelCollision DesertCastle_unkCol81_ColH;
+extern ModelCollision DesertCastle_unkCol81_collision;
 extern Gfx DesertCastle_model82_Gfx[];
-extern ModelCollision DesertCastle_unkCol82_ColH;
+extern ModelCollision DesertCastle_unkCol82_collision;
 extern Gfx DesertCastle_model83_Gfx[];
-extern ModelCollision DesertCastle_unkCol83_ColH;
+extern ModelCollision DesertCastle_unkCol83_collision;
 extern Gfx DesertCastle_model84_Gfx[];
-extern ModelCollision DesertCastle_unkCol84_ColH;
+extern ModelCollision DesertCastle_unkCol84_collision;
 extern Gfx DesertCastle_model85_Gfx[];
-extern ModelCollision DesertCastle_unkCol85_ColH;
+extern ModelCollision DesertCastle_unkCol85_collision;
 extern Gfx DesertCastle_model86_Gfx[];
-extern ModelCollision DesertCastle_unkCol86_ColH;
+extern ModelCollision DesertCastle_unkCol86_collision;
 extern Gfx DesertCastle_model87_Gfx[];
-extern ModelCollision DesertCastle_unkCol87_ColH;
+extern ModelCollision DesertCastle_unkCol87_collision;
 extern Gfx DesertCastle_model88_Gfx[];
-extern ModelCollision DesertCastle_unkCol88_ColH;
+extern ModelCollision DesertCastle_unkCol88_collision;
 extern Gfx DesertCastle_model89_Gfx[];
-extern ModelCollision DesertCastle_unkCol89_ColH;
+extern ModelCollision DesertCastle_unkCol89_collision;
 extern Gfx DesertCastle_model90_Gfx[];
-extern ModelCollision DesertCastle_unkCol90_ColH;
+extern ModelCollision DesertCastle_unkCol90_collision;
 extern Gfx Global_pole_Gfx[];
-extern ModelCollision Global_pole_ColH;
+extern ModelCollision Global_pole_collision;
 
 Mtx DesertCastle_IMtx1 = IDENTITY;
 
 StageModel DesertCastle_stageModels[] = {
-{&Global_fallbackCube_Gfx[0], &Global_fallbackCube_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_exitShadowSouth_Gfx[0], &Global_exitShadowSouth_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_exitShadowNorth_Gfx[0], &Global_exitShadowNorth_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_exitShadowEast_Gfx[0], &Global_exitShadowEast_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_exitShadowWest_Gfx[0], &Global_exitShadowWest_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_ALBLExit_Gfx[0], &Global_ALBLExit_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_sandPit_Gfx[0], &Global_sandPit_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_BossBridge_Gfx[0], &Global_BossBridge_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_ALPole_Gfx[0], &Global_ALPole_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_ALBLDoor_Gfx[0], &Global_ALBLDoor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_ALSpinDoor_Gfx[0], &Global_ALSpinDoor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_BLLavaFloor_Gfx[0], &Global_BLLavaFloor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_BLLava_Gfx[0], &Global_BLLava_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_BLLava2_Gfx[0], &Global_BLLava2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_BLLava3_Gfx[0], &Global_BLLava3_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_BLLava4_Gfx[0], &Global_BLLava4_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_BLLava5_Gfx[0], &Global_BLLava5_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_BLLava6_Gfx[0], &Global_BLLava6_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_BLLava7_Gfx[0], &Global_BLLava7_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_BLLava8_Gfx[0], &Global_BLLava8_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_BLDestructableTop_Gfx[0], &Global_BLDestructableTop_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_BLMetalBridge_Gfx[0], &Global_BLMetalBridge_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_KLExit_Gfx[0], &Global_KLExit_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_KLDoor_Gfx[0], &Global_KLDoor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_DCExit_Gfx[0], &Global_DCExit_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_TallExitShadow1_Gfx[0], &Global_TallExitShadow1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_TallExitShadow2_Gfx[0], &Global_TallExitShadow2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_GCExit1_Gfx[0], &Global_GCExit1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_GCExit2_Gfx[0], &Global_GCExit2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_trainingRoomLight_Gfx[0], &Global_trainingRoomLight_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_JLCaveExit1_Gfx[0], &Global_JLCaveExit1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_JLCaveExit2_Gfx[0], &Global_JLCaveExit2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_JLCaveExit3_Gfx[0], &Global_JLCaveExit3_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_JLCaveExit4_Gfx[0], &Global_JLCaveExit4_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_JLOutsideEntrance_Gfx[0], &Global_JLOutsideEntrance_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_JLFxCamPillar_Gfx[0], &Global_JLFxCamPillar_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_JLCaveDoor_Gfx[0], &Global_JLCaveDoor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&DesertCastle_model1_Gfx[0], &DesertCastle_unkCol1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&DesertCastle_model2_Gfx[0], &DesertCastle_unkCol2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&DesertCastle_model3_Gfx[0], &DesertCastle_unkCol3_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&DesertCastle_model4_Gfx[0], &DesertCastle_unkCol4_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&DesertCastle_model5_Gfx[0], &DesertCastle_unkCol5_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&DesertCastle_model6_Gfx[0], &DesertCastle_unkCol6_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&DesertCastle_model7_Gfx[0], &DesertCastle_unkCol7_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&DesertCastle_model8_Gfx[0], &DesertCastle_unkCol8_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&DesertCastle_model9_Gfx[0], &DesertCastle_unkCol9_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&DesertCastle_model10_Gfx[0], &DesertCastle_unkCol10_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&DesertCastle_model11_Gfx[0], &DesertCastle_unkCol11_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&DesertCastle_model12_Gfx[0], &DesertCastle_unkCol12_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&DesertCastle_model13_Gfx[0], &DesertCastle_unkCol13_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&DesertCastle_model14_Gfx[0], &DesertCastle_unkCol14_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&DesertCastle_model15_Gfx[0], &DesertCastle_unkCol15_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&DesertCastle_model16_Gfx[0], &DesertCastle_unkCol16_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&DesertCastle_model17_Gfx[0], &DesertCastle_unkCol17_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&DesertCastle_model18_Gfx[0], &DesertCastle_unkCol18_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&DesertCastle_model19_Gfx[0], &DesertCastle_unkCol19_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&DesertCastle_model20_Gfx[0], &DesertCastle_unkCol20_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&DesertCastle_model21_Gfx[0], &DesertCastle_unkCol21_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&DesertCastle_model22_Gfx[0], &DesertCastle_unkCol22_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&DesertCastle_model23_Gfx[0], &DesertCastle_unkCol23_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&DesertCastle_model24_Gfx[0], &DesertCastle_unkCol24_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&DesertCastle_model25_Gfx[0], &DesertCastle_unkCol25_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&DesertCastle_model26_Gfx[0], &DesertCastle_unkCol26_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&DesertCastle_model27_Gfx[0], &DesertCastle_unkCol27_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&DesertCastle_model28_Gfx[0], &DesertCastle_unkCol28_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&DesertCastle_model29_Gfx[0], &DesertCastle_unkCol29_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&DesertCastle_model30_Gfx[0], &DesertCastle_unkCol30_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&DesertCastle_model31_Gfx[0], &DesertCastle_unkCol31_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&DesertCastle_model32_Gfx[0], &DesertCastle_unkCol32_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&DesertCastle_model33_Gfx[0], &DesertCastle_unkCol33_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&DesertCastle_model34_Gfx[0], &DesertCastle_unkCol34_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&DesertCastle_model35_Gfx[0], &DesertCastle_unkCol35_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&DesertCastle_model36_Gfx[0], &DesertCastle_unkCol36_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&DesertCastle_model37_Gfx[0], &DesertCastle_unkCol37_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&DesertCastle_model38_Gfx[0], &DesertCastle_unkCol38_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&DesertCastle_model39_Gfx[0], &DesertCastle_unkCol39_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&DesertCastle_model40_Gfx[0], &DesertCastle_unkCol40_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&DesertCastle_model41_Gfx[0], &DesertCastle_unkCol41_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&DesertCastle_model42_Gfx[0], &DesertCastle_unkCol42_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&DesertCastle_model43_Gfx[0], &DesertCastle_unkCol43_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&DesertCastle_model44_Gfx[0], &DesertCastle_unkCol44_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&DesertCastle_model45_Gfx[0], &DesertCastle_unkCol45_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&DesertCastle_model46_Gfx[0], &DesertCastle_unkCol46_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&DesertCastle_model47_Gfx[0], &DesertCastle_unkCol47_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&DesertCastle_model48_Gfx[0], &DesertCastle_unkCol48_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&DesertCastle_model49_Gfx[0], &DesertCastle_unkCol49_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&DesertCastle_model50_Gfx[0], &DesertCastle_unkCol50_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&DesertCastle_model51_Gfx[0], &DesertCastle_unkCol51_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&DesertCastle_model52_Gfx[0], &DesertCastle_unkCol52_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&DesertCastle_model53_Gfx[0], &DesertCastle_unkCol53_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&DesertCastle_model54_Gfx[0], &DesertCastle_unkCol54_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&DesertCastle_model55_Gfx[0], &DesertCastle_unkCol55_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&DesertCastle_model56_Gfx[0], &DesertCastle_unkCol56_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&DesertCastle_model57_Gfx[0], &DesertCastle_unkCol57_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&DesertCastle_model58_Gfx[0], &DesertCastle_unkCol58_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&DesertCastle_model59_Gfx[0], &DesertCastle_unkCol59_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&DesertCastle_model60_Gfx[0], &DesertCastle_unkCol60_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&DesertCastle_model61_Gfx[0], &DesertCastle_unkCol61_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&DesertCastle_model62_Gfx[0], &DesertCastle_unkCol62_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&DesertCastle_model63_Gfx[0], &DesertCastle_unkCol63_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&DesertCastle_model64_Gfx[0], &DesertCastle_unkCol64_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&DesertCastle_model65_Gfx[0], &DesertCastle_unkCol65_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&DesertCastle_model66_Gfx[0], &DesertCastle_unkCol66_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&DesertCastle_model67_Gfx[0], &DesertCastle_unkCol67_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&DesertCastle_model68_Gfx[0], &DesertCastle_unkCol68_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&DesertCastle_model69_Gfx[0], &DesertCastle_unkCol69_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&DesertCastle_model70_Gfx[0], &DesertCastle_unkCol70_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&DesertCastle_model71_Gfx[0], &DesertCastle_unkCol71_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&DesertCastle_model72_Gfx[0], &DesertCastle_unkCol72_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&DesertCastle_model73_Gfx[0], &DesertCastle_unkCol73_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&DesertCastle_model74_Gfx[0], &DesertCastle_unkCol74_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&DesertCastle_model75_Gfx[0], &DesertCastle_unkCol75_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&DesertCastle_model76_Gfx[0], &DesertCastle_unkCol76_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&DesertCastle_model77_Gfx[0], &DesertCastle_unkCol77_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&DesertCastle_model78_Gfx[0], &DesertCastle_unkCol78_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&DesertCastle_model79_Gfx[0], &DesertCastle_unkCol79_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&DesertCastle_model80_Gfx[0], &DesertCastle_unkCol80_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&DesertCastle_model81_Gfx[0], &DesertCastle_unkCol81_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&DesertCastle_model82_Gfx[0], &DesertCastle_unkCol82_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&DesertCastle_model83_Gfx[0], &DesertCastle_unkCol83_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&DesertCastle_model84_Gfx[0], &DesertCastle_unkCol84_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&DesertCastle_model85_Gfx[0], &DesertCastle_unkCol85_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&DesertCastle_model86_Gfx[0], &DesertCastle_unkCol86_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&DesertCastle_model87_Gfx[0], &DesertCastle_unkCol87_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&DesertCastle_model88_Gfx[0], &DesertCastle_unkCol88_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&DesertCastle_model89_Gfx[0], &DesertCastle_unkCol89_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&DesertCastle_model90_Gfx[0], &DesertCastle_unkCol90_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_pole_Gfx[0], &Global_pole_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_fallbackCube_Gfx, &Global_fallbackCube_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_exitShadowSouth_Gfx, &Global_exitShadowSouth_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_exitShadowNorth_Gfx, &Global_exitShadowNorth_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_exitShadowEast_Gfx, &Global_exitShadowEast_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_exitShadowWest_Gfx, &Global_exitShadowWest_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_ALBLExit_Gfx, &Global_ALBLExit_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_sandPit_Gfx, &Global_sandPit_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_BossBridge_Gfx, &Global_BossBridge_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_ALPole_Gfx, &Global_ALPole_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_ALBLDoor_Gfx, &Global_ALBLDoor_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_ALSpinDoor_Gfx, &Global_ALSpinDoor_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_BLLavaFloor_Gfx, &Global_BLLavaFloor_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_BLLava_Gfx, &Global_BLLava_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_BLLava2_Gfx, &Global_BLLava2_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_BLLava3_Gfx, &Global_BLLava3_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_BLLava4_Gfx, &Global_BLLava4_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_BLLava5_Gfx, &Global_BLLava5_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_BLLava6_Gfx, &Global_BLLava6_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_BLLava7_Gfx, &Global_BLLava7_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_BLLava8_Gfx, &Global_BLLava8_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_BLDestructableTop_Gfx, &Global_BLDestructableTop_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_BLMetalBridge_Gfx, &Global_BLMetalBridge_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_KLExit_Gfx, &Global_KLExit_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_KLDoor_Gfx, &Global_KLDoor_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_DCExit_Gfx, &Global_DCExit_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_TallExitShadow1_Gfx, &Global_TallExitShadow1_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_TallExitShadow2_Gfx, &Global_TallExitShadow2_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_GCExit1_Gfx, &Global_GCExit1_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_GCExit2_Gfx, &Global_GCExit2_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_trainingRoomLight_Gfx, &Global_trainingRoomLight_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_JLCaveExit1_Gfx, &Global_JLCaveExit1_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_JLCaveExit2_Gfx, &Global_JLCaveExit2_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_JLCaveExit3_Gfx, &Global_JLCaveExit3_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_JLCaveExit4_Gfx, &Global_JLCaveExit4_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_JLOutsideEntrance_Gfx, &Global_JLOutsideEntrance_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_JLFxCamPillar_Gfx, &Global_JLFxCamPillar_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_JLCaveDoor_Gfx, &Global_JLCaveDoor_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{DesertCastle_model1_Gfx, &DesertCastle_unkCol1_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{DesertCastle_model2_Gfx, &DesertCastle_unkCol2_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{DesertCastle_model3_Gfx, &DesertCastle_unkCol3_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{DesertCastle_model4_Gfx, &DesertCastle_unkCol4_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{DesertCastle_model5_Gfx, &DesertCastle_unkCol5_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{DesertCastle_model6_Gfx, &DesertCastle_unkCol6_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{DesertCastle_model7_Gfx, &DesertCastle_unkCol7_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{DesertCastle_model8_Gfx, &DesertCastle_unkCol8_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{DesertCastle_model9_Gfx, &DesertCastle_unkCol9_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{DesertCastle_model10_Gfx, &DesertCastle_unkCol10_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{DesertCastle_model11_Gfx, &DesertCastle_unkCol11_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{DesertCastle_model12_Gfx, &DesertCastle_unkCol12_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{DesertCastle_model13_Gfx, &DesertCastle_unkCol13_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{DesertCastle_model14_Gfx, &DesertCastle_unkCol14_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{DesertCastle_model15_Gfx, &DesertCastle_unkCol15_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{DesertCastle_model16_Gfx, &DesertCastle_unkCol16_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{DesertCastle_model17_Gfx, &DesertCastle_unkCol17_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{DesertCastle_model18_Gfx, &DesertCastle_unkCol18_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{DesertCastle_model19_Gfx, &DesertCastle_unkCol19_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{DesertCastle_model20_Gfx, &DesertCastle_unkCol20_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{DesertCastle_model21_Gfx, &DesertCastle_unkCol21_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{DesertCastle_model22_Gfx, &DesertCastle_unkCol22_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{DesertCastle_model23_Gfx, &DesertCastle_unkCol23_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{DesertCastle_model24_Gfx, &DesertCastle_unkCol24_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{DesertCastle_model25_Gfx, &DesertCastle_unkCol25_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{DesertCastle_model26_Gfx, &DesertCastle_unkCol26_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{DesertCastle_model27_Gfx, &DesertCastle_unkCol27_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{DesertCastle_model28_Gfx, &DesertCastle_unkCol28_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{DesertCastle_model29_Gfx, &DesertCastle_unkCol29_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{DesertCastle_model30_Gfx, &DesertCastle_unkCol30_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{DesertCastle_model31_Gfx, &DesertCastle_unkCol31_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{DesertCastle_model32_Gfx, &DesertCastle_unkCol32_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{DesertCastle_model33_Gfx, &DesertCastle_unkCol33_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{DesertCastle_model34_Gfx, &DesertCastle_unkCol34_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{DesertCastle_model35_Gfx, &DesertCastle_unkCol35_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{DesertCastle_model36_Gfx, &DesertCastle_unkCol36_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{DesertCastle_model37_Gfx, &DesertCastle_unkCol37_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{DesertCastle_model38_Gfx, &DesertCastle_unkCol38_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{DesertCastle_model39_Gfx, &DesertCastle_unkCol39_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{DesertCastle_model40_Gfx, &DesertCastle_unkCol40_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{DesertCastle_model41_Gfx, &DesertCastle_unkCol41_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{DesertCastle_model42_Gfx, &DesertCastle_unkCol42_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{DesertCastle_model43_Gfx, &DesertCastle_unkCol43_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{DesertCastle_model44_Gfx, &DesertCastle_unkCol44_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{DesertCastle_model45_Gfx, &DesertCastle_unkCol45_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{DesertCastle_model46_Gfx, &DesertCastle_unkCol46_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{DesertCastle_model47_Gfx, &DesertCastle_unkCol47_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{DesertCastle_model48_Gfx, &DesertCastle_unkCol48_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{DesertCastle_model49_Gfx, &DesertCastle_unkCol49_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{DesertCastle_model50_Gfx, &DesertCastle_unkCol50_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{DesertCastle_model51_Gfx, &DesertCastle_unkCol51_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{DesertCastle_model52_Gfx, &DesertCastle_unkCol52_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{DesertCastle_model53_Gfx, &DesertCastle_unkCol53_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{DesertCastle_model54_Gfx, &DesertCastle_unkCol54_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{DesertCastle_model55_Gfx, &DesertCastle_unkCol55_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{DesertCastle_model56_Gfx, &DesertCastle_unkCol56_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{DesertCastle_model57_Gfx, &DesertCastle_unkCol57_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{DesertCastle_model58_Gfx, &DesertCastle_unkCol58_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{DesertCastle_model59_Gfx, &DesertCastle_unkCol59_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{DesertCastle_model60_Gfx, &DesertCastle_unkCol60_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{DesertCastle_model61_Gfx, &DesertCastle_unkCol61_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{DesertCastle_model62_Gfx, &DesertCastle_unkCol62_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{DesertCastle_model63_Gfx, &DesertCastle_unkCol63_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{DesertCastle_model64_Gfx, &DesertCastle_unkCol64_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{DesertCastle_model65_Gfx, &DesertCastle_unkCol65_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{DesertCastle_model66_Gfx, &DesertCastle_unkCol66_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{DesertCastle_model67_Gfx, &DesertCastle_unkCol67_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{DesertCastle_model68_Gfx, &DesertCastle_unkCol68_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{DesertCastle_model69_Gfx, &DesertCastle_unkCol69_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{DesertCastle_model70_Gfx, &DesertCastle_unkCol70_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{DesertCastle_model71_Gfx, &DesertCastle_unkCol71_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{DesertCastle_model72_Gfx, &DesertCastle_unkCol72_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{DesertCastle_model73_Gfx, &DesertCastle_unkCol73_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{DesertCastle_model74_Gfx, &DesertCastle_unkCol74_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{DesertCastle_model75_Gfx, &DesertCastle_unkCol75_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{DesertCastle_model76_Gfx, &DesertCastle_unkCol76_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{DesertCastle_model77_Gfx, &DesertCastle_unkCol77_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{DesertCastle_model78_Gfx, &DesertCastle_unkCol78_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{DesertCastle_model79_Gfx, &DesertCastle_unkCol79_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{DesertCastle_model80_Gfx, &DesertCastle_unkCol80_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{DesertCastle_model81_Gfx, &DesertCastle_unkCol81_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{DesertCastle_model82_Gfx, &DesertCastle_unkCol82_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{DesertCastle_model83_Gfx, &DesertCastle_unkCol83_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{DesertCastle_model84_Gfx, &DesertCastle_unkCol84_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{DesertCastle_model85_Gfx, &DesertCastle_unkCol85_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{DesertCastle_model86_Gfx, &DesertCastle_unkCol86_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{DesertCastle_model87_Gfx, &DesertCastle_unkCol87_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{DesertCastle_model88_Gfx, &DesertCastle_unkCol88_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{DesertCastle_model89_Gfx, &DesertCastle_unkCol89_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{DesertCastle_model90_Gfx, &DesertCastle_unkCol90_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_pole_Gfx, &Global_pole_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
 };
 
 unsigned char DesertCastle_rabObjects_Bin[] = {
@@ -2149,8 +2149,8 @@ Rect3D DesertCastle_unkCol1_BoundBox = {
     #include "assets/levelGroup/DesertCastle/unkCol1/unkCol1.boundBox.inc.c"
 };
 
-ModelCollision DesertCastle_unkCol1_ColH = {
-18, 22, DesertCastle_unkCol1_ColVerts, DesertCastle_unkCol1_ColTris, &DesertCastle_unkCol1_BoundBox
+ModelCollision DesertCastle_unkCol1_collision = {
+    ARRAY_COUNT(DesertCastle_unkCol1_ColVerts), ARRAY_COUNT(DesertCastle_unkCol1_ColTris), DesertCastle_unkCol1_ColVerts, DesertCastle_unkCol1_ColTris, &DesertCastle_unkCol1_BoundBox
 };
 
 Vec3f DesertCastle_unkCol2_ColVerts[] = {
@@ -2165,8 +2165,8 @@ Rect3D DesertCastle_unkCol2_BoundBox = {
     #include "assets/levelGroup/DesertCastle/unkCol2/unkCol2.boundBox.inc.c"
 };
 
-ModelCollision DesertCastle_unkCol2_ColH = {
-24, 24, DesertCastle_unkCol2_ColVerts, DesertCastle_unkCol2_ColTris, &DesertCastle_unkCol2_BoundBox
+ModelCollision DesertCastle_unkCol2_collision = {
+    ARRAY_COUNT(DesertCastle_unkCol2_ColVerts), ARRAY_COUNT(DesertCastle_unkCol2_ColTris), DesertCastle_unkCol2_ColVerts, DesertCastle_unkCol2_ColTris, &DesertCastle_unkCol2_BoundBox
 };
 
 Vec3f DesertCastle_unkCol3_ColVerts[] = {
@@ -2181,8 +2181,8 @@ Rect3D DesertCastle_unkCol3_BoundBox = {
     #include "assets/levelGroup/DesertCastle/unkCol3/unkCol3.boundBox.inc.c"
 };
 
-ModelCollision DesertCastle_unkCol3_ColH = {
-21, 28, DesertCastle_unkCol3_ColVerts, DesertCastle_unkCol3_ColTris, &DesertCastle_unkCol3_BoundBox
+ModelCollision DesertCastle_unkCol3_collision = {
+    ARRAY_COUNT(DesertCastle_unkCol3_ColVerts), ARRAY_COUNT(DesertCastle_unkCol3_ColTris), DesertCastle_unkCol3_ColVerts, DesertCastle_unkCol3_ColTris, &DesertCastle_unkCol3_BoundBox
 };
 
 Vec3f DesertCastle_unkCol4_ColVerts[] = {
@@ -2197,8 +2197,8 @@ Rect3D DesertCastle_unkCol4_BoundBox = {
     #include "assets/levelGroup/DesertCastle/unkCol4/unkCol4.boundBox.inc.c"
 };
 
-ModelCollision DesertCastle_unkCol4_ColH = {
-40, 69, DesertCastle_unkCol4_ColVerts, DesertCastle_unkCol4_ColTris, &DesertCastle_unkCol4_BoundBox
+ModelCollision DesertCastle_unkCol4_collision = {
+    ARRAY_COUNT(DesertCastle_unkCol4_ColVerts), ARRAY_COUNT(DesertCastle_unkCol4_ColTris), DesertCastle_unkCol4_ColVerts, DesertCastle_unkCol4_ColTris, &DesertCastle_unkCol4_BoundBox
 };
 
 Vec3f DesertCastle_unkCol5_ColVerts[] = {
@@ -2213,8 +2213,8 @@ Rect3D DesertCastle_unkCol5_BoundBox = {
     #include "assets/levelGroup/DesertCastle/unkCol5/unkCol5.boundBox.inc.c"
 };
 
-ModelCollision DesertCastle_unkCol5_ColH = {
-35, 46, DesertCastle_unkCol5_ColVerts, DesertCastle_unkCol5_ColTris, &DesertCastle_unkCol5_BoundBox
+ModelCollision DesertCastle_unkCol5_collision = {
+    ARRAY_COUNT(DesertCastle_unkCol5_ColVerts), ARRAY_COUNT(DesertCastle_unkCol5_ColTris), DesertCastle_unkCol5_ColVerts, DesertCastle_unkCol5_ColTris, &DesertCastle_unkCol5_BoundBox
 };
 
 Vec3f DesertCastle_unkCol6_ColVerts[] = {
@@ -2229,8 +2229,8 @@ Rect3D DesertCastle_unkCol6_BoundBox = {
     #include "assets/levelGroup/DesertCastle/unkCol6/unkCol6.boundBox.inc.c"
 };
 
-ModelCollision DesertCastle_unkCol6_ColH = {
-21, 15, DesertCastle_unkCol6_ColVerts, DesertCastle_unkCol6_ColTris, &DesertCastle_unkCol6_BoundBox
+ModelCollision DesertCastle_unkCol6_collision = {
+    ARRAY_COUNT(DesertCastle_unkCol6_ColVerts), ARRAY_COUNT(DesertCastle_unkCol6_ColTris), DesertCastle_unkCol6_ColVerts, DesertCastle_unkCol6_ColTris, &DesertCastle_unkCol6_BoundBox
 };
 
 Vec3f DesertCastle_unkCol7_ColVerts[] = {
@@ -2245,8 +2245,8 @@ Rect3D DesertCastle_unkCol7_BoundBox = {
     #include "assets/levelGroup/DesertCastle/unkCol7/unkCol7.boundBox.inc.c"
 };
 
-ModelCollision DesertCastle_unkCol7_ColH = {
-51, 77, DesertCastle_unkCol7_ColVerts, DesertCastle_unkCol7_ColTris, &DesertCastle_unkCol7_BoundBox
+ModelCollision DesertCastle_unkCol7_collision = {
+    ARRAY_COUNT(DesertCastle_unkCol7_ColVerts), ARRAY_COUNT(DesertCastle_unkCol7_ColTris), DesertCastle_unkCol7_ColVerts, DesertCastle_unkCol7_ColTris, &DesertCastle_unkCol7_BoundBox
 };
 
 Vec3f DesertCastle_unkCol8_ColVerts[] = {
@@ -2261,8 +2261,8 @@ Rect3D DesertCastle_unkCol8_BoundBox = {
     #include "assets/levelGroup/DesertCastle/unkCol8/unkCol8.boundBox.inc.c"
 };
 
-ModelCollision DesertCastle_unkCol8_ColH = {
-25, 30, DesertCastle_unkCol8_ColVerts, DesertCastle_unkCol8_ColTris, &DesertCastle_unkCol8_BoundBox
+ModelCollision DesertCastle_unkCol8_collision = {
+    ARRAY_COUNT(DesertCastle_unkCol8_ColVerts), ARRAY_COUNT(DesertCastle_unkCol8_ColTris), DesertCastle_unkCol8_ColVerts, DesertCastle_unkCol8_ColTris, &DesertCastle_unkCol8_BoundBox
 };
 
 Vec3f DesertCastle_unkCol9_ColVerts[] = {
@@ -2277,8 +2277,8 @@ Rect3D DesertCastle_unkCol9_BoundBox = {
     #include "assets/levelGroup/DesertCastle/unkCol9/unkCol9.boundBox.inc.c"
 };
 
-ModelCollision DesertCastle_unkCol9_ColH = {
-38, 58, DesertCastle_unkCol9_ColVerts, DesertCastle_unkCol9_ColTris, &DesertCastle_unkCol9_BoundBox
+ModelCollision DesertCastle_unkCol9_collision = {
+    ARRAY_COUNT(DesertCastle_unkCol9_ColVerts), ARRAY_COUNT(DesertCastle_unkCol9_ColTris), DesertCastle_unkCol9_ColVerts, DesertCastle_unkCol9_ColTris, &DesertCastle_unkCol9_BoundBox
 };
 
 Vec3f DesertCastle_unkCol10_ColVerts[] = {
@@ -2293,8 +2293,8 @@ Rect3D DesertCastle_unkCol10_BoundBox = {
     #include "assets/levelGroup/DesertCastle/unkCol10/unkCol10.boundBox.inc.c"
 };
 
-ModelCollision DesertCastle_unkCol10_ColH = {
-31, 42, DesertCastle_unkCol10_ColVerts, DesertCastle_unkCol10_ColTris, &DesertCastle_unkCol10_BoundBox
+ModelCollision DesertCastle_unkCol10_collision = {
+    ARRAY_COUNT(DesertCastle_unkCol10_ColVerts), ARRAY_COUNT(DesertCastle_unkCol10_ColTris), DesertCastle_unkCol10_ColVerts, DesertCastle_unkCol10_ColTris, &DesertCastle_unkCol10_BoundBox
 };
 
 Vec3f DesertCastle_unkCol11_ColVerts[] = {
@@ -2309,8 +2309,8 @@ Rect3D DesertCastle_unkCol11_BoundBox = {
     #include "assets/levelGroup/DesertCastle/unkCol11/unkCol11.boundBox.inc.c"
 };
 
-ModelCollision DesertCastle_unkCol11_ColH = {
-35, 52, DesertCastle_unkCol11_ColVerts, DesertCastle_unkCol11_ColTris, &DesertCastle_unkCol11_BoundBox
+ModelCollision DesertCastle_unkCol11_collision = {
+    ARRAY_COUNT(DesertCastle_unkCol11_ColVerts), ARRAY_COUNT(DesertCastle_unkCol11_ColTris), DesertCastle_unkCol11_ColVerts, DesertCastle_unkCol11_ColTris, &DesertCastle_unkCol11_BoundBox
 };
 
 Vec3f DesertCastle_unkCol12_ColVerts[] = {
@@ -2325,8 +2325,8 @@ Rect3D DesertCastle_unkCol12_BoundBox = {
     #include "assets/levelGroup/DesertCastle/unkCol12/unkCol12.boundBox.inc.c"
 };
 
-ModelCollision DesertCastle_unkCol12_ColH = {
-40, 60, DesertCastle_unkCol12_ColVerts, DesertCastle_unkCol12_ColTris, &DesertCastle_unkCol12_BoundBox
+ModelCollision DesertCastle_unkCol12_collision = {
+    ARRAY_COUNT(DesertCastle_unkCol12_ColVerts), ARRAY_COUNT(DesertCastle_unkCol12_ColTris), DesertCastle_unkCol12_ColVerts, DesertCastle_unkCol12_ColTris, &DesertCastle_unkCol12_BoundBox
 };
 
 Vec3f DesertCastle_unkCol13_ColVerts[] = {
@@ -2341,8 +2341,8 @@ Rect3D DesertCastle_unkCol13_BoundBox = {
     #include "assets/levelGroup/DesertCastle/unkCol13/unkCol13.boundBox.inc.c"
 };
 
-ModelCollision DesertCastle_unkCol13_ColH = {
-51, 79, DesertCastle_unkCol13_ColVerts, DesertCastle_unkCol13_ColTris, &DesertCastle_unkCol13_BoundBox
+ModelCollision DesertCastle_unkCol13_collision = {
+    ARRAY_COUNT(DesertCastle_unkCol13_ColVerts), ARRAY_COUNT(DesertCastle_unkCol13_ColTris), DesertCastle_unkCol13_ColVerts, DesertCastle_unkCol13_ColTris, &DesertCastle_unkCol13_BoundBox
 };
 
 Vec3f DesertCastle_unkCol14_ColVerts[] = {
@@ -2357,8 +2357,8 @@ Rect3D DesertCastle_unkCol14_BoundBox = {
     #include "assets/levelGroup/DesertCastle/unkCol14/unkCol14.boundBox.inc.c"
 };
 
-ModelCollision DesertCastle_unkCol14_ColH = {
-58, 67, DesertCastle_unkCol14_ColVerts, DesertCastle_unkCol14_ColTris, &DesertCastle_unkCol14_BoundBox
+ModelCollision DesertCastle_unkCol14_collision = {
+    ARRAY_COUNT(DesertCastle_unkCol14_ColVerts), ARRAY_COUNT(DesertCastle_unkCol14_ColTris), DesertCastle_unkCol14_ColVerts, DesertCastle_unkCol14_ColTris, &DesertCastle_unkCol14_BoundBox
 };
 
 Vec3f DesertCastle_unkCol15_ColVerts[] = {
@@ -2373,8 +2373,8 @@ Rect3D DesertCastle_unkCol15_BoundBox = {
     #include "assets/levelGroup/DesertCastle/unkCol15/unkCol15.boundBox.inc.c"
 };
 
-ModelCollision DesertCastle_unkCol15_ColH = {
-10, 9, DesertCastle_unkCol15_ColVerts, DesertCastle_unkCol15_ColTris, &DesertCastle_unkCol15_BoundBox
+ModelCollision DesertCastle_unkCol15_collision = {
+    ARRAY_COUNT(DesertCastle_unkCol15_ColVerts), ARRAY_COUNT(DesertCastle_unkCol15_ColTris), DesertCastle_unkCol15_ColVerts, DesertCastle_unkCol15_ColTris, &DesertCastle_unkCol15_BoundBox
 };
 
 Vec3f DesertCastle_unkCol16_ColVerts[] = {
@@ -2389,8 +2389,8 @@ Rect3D DesertCastle_unkCol16_BoundBox = {
     #include "assets/levelGroup/DesertCastle/unkCol16/unkCol16.boundBox.inc.c"
 };
 
-ModelCollision DesertCastle_unkCol16_ColH = {
-11, 11, DesertCastle_unkCol16_ColVerts, DesertCastle_unkCol16_ColTris, &DesertCastle_unkCol16_BoundBox
+ModelCollision DesertCastle_unkCol16_collision = {
+    ARRAY_COUNT(DesertCastle_unkCol16_ColVerts), ARRAY_COUNT(DesertCastle_unkCol16_ColTris), DesertCastle_unkCol16_ColVerts, DesertCastle_unkCol16_ColTris, &DesertCastle_unkCol16_BoundBox
 };
 
 Vec3f DesertCastle_unkCol17_ColVerts[] = {
@@ -2405,8 +2405,8 @@ Rect3D DesertCastle_unkCol17_BoundBox = {
     #include "assets/levelGroup/DesertCastle/unkCol17/unkCol17.boundBox.inc.c"
 };
 
-ModelCollision DesertCastle_unkCol17_ColH = {
-20, 20, DesertCastle_unkCol17_ColVerts, DesertCastle_unkCol17_ColTris, &DesertCastle_unkCol17_BoundBox
+ModelCollision DesertCastle_unkCol17_collision = {
+    ARRAY_COUNT(DesertCastle_unkCol17_ColVerts), ARRAY_COUNT(DesertCastle_unkCol17_ColTris), DesertCastle_unkCol17_ColVerts, DesertCastle_unkCol17_ColTris, &DesertCastle_unkCol17_BoundBox
 };
 
 Vec3f DesertCastle_unkCol18_ColVerts[] = {
@@ -2421,8 +2421,8 @@ Rect3D DesertCastle_unkCol18_BoundBox = {
     #include "assets/levelGroup/DesertCastle/unkCol18/unkCol18.boundBox.inc.c"
 };
 
-ModelCollision DesertCastle_unkCol18_ColH = {
-8, 4, DesertCastle_unkCol18_ColVerts, DesertCastle_unkCol18_ColTris, &DesertCastle_unkCol18_BoundBox
+ModelCollision DesertCastle_unkCol18_collision = {
+    ARRAY_COUNT(DesertCastle_unkCol18_ColVerts), ARRAY_COUNT(DesertCastle_unkCol18_ColTris), DesertCastle_unkCol18_ColVerts, DesertCastle_unkCol18_ColTris, &DesertCastle_unkCol18_BoundBox
 };
 
 Vec3f DesertCastle_unkCol19_ColVerts[] = {
@@ -2437,8 +2437,8 @@ Rect3D DesertCastle_unkCol19_BoundBox = {
     #include "assets/levelGroup/DesertCastle/unkCol19/unkCol19.boundBox.inc.c"
 };
 
-ModelCollision DesertCastle_unkCol19_ColH = {
-21, 23, DesertCastle_unkCol19_ColVerts, DesertCastle_unkCol19_ColTris, &DesertCastle_unkCol19_BoundBox
+ModelCollision DesertCastle_unkCol19_collision = {
+    ARRAY_COUNT(DesertCastle_unkCol19_ColVerts), ARRAY_COUNT(DesertCastle_unkCol19_ColTris), DesertCastle_unkCol19_ColVerts, DesertCastle_unkCol19_ColTris, &DesertCastle_unkCol19_BoundBox
 };
 
 Vec3f DesertCastle_unkCol20_ColVerts[] = {
@@ -2453,8 +2453,8 @@ Rect3D DesertCastle_unkCol20_BoundBox = {
     #include "assets/levelGroup/DesertCastle/unkCol20/unkCol20.boundBox.inc.c"
 };
 
-ModelCollision DesertCastle_unkCol20_ColH = {
-10, 6, DesertCastle_unkCol20_ColVerts, DesertCastle_unkCol20_ColTris, &DesertCastle_unkCol20_BoundBox
+ModelCollision DesertCastle_unkCol20_collision = {
+    ARRAY_COUNT(DesertCastle_unkCol20_ColVerts), ARRAY_COUNT(DesertCastle_unkCol20_ColTris), DesertCastle_unkCol20_ColVerts, DesertCastle_unkCol20_ColTris, &DesertCastle_unkCol20_BoundBox
 };
 
 Vec3f DesertCastle_unkCol21_ColVerts[] = {
@@ -2469,8 +2469,8 @@ Rect3D DesertCastle_unkCol21_BoundBox = {
     #include "assets/levelGroup/DesertCastle/unkCol21/unkCol21.boundBox.inc.c"
 };
 
-ModelCollision DesertCastle_unkCol21_ColH = {
-13, 10, DesertCastle_unkCol21_ColVerts, DesertCastle_unkCol21_ColTris, &DesertCastle_unkCol21_BoundBox
+ModelCollision DesertCastle_unkCol21_collision = {
+    ARRAY_COUNT(DesertCastle_unkCol21_ColVerts), ARRAY_COUNT(DesertCastle_unkCol21_ColTris), DesertCastle_unkCol21_ColVerts, DesertCastle_unkCol21_ColTris, &DesertCastle_unkCol21_BoundBox
 };
 
 Vec3f DesertCastle_unkCol22_ColVerts[] = {
@@ -2485,8 +2485,8 @@ Rect3D DesertCastle_unkCol22_BoundBox = {
     #include "assets/levelGroup/DesertCastle/unkCol22/unkCol22.boundBox.inc.c"
 };
 
-ModelCollision DesertCastle_unkCol22_ColH = {
-14, 11, DesertCastle_unkCol22_ColVerts, DesertCastle_unkCol22_ColTris, &DesertCastle_unkCol22_BoundBox
+ModelCollision DesertCastle_unkCol22_collision = {
+    ARRAY_COUNT(DesertCastle_unkCol22_ColVerts), ARRAY_COUNT(DesertCastle_unkCol22_ColTris), DesertCastle_unkCol22_ColVerts, DesertCastle_unkCol22_ColTris, &DesertCastle_unkCol22_BoundBox
 };
 
 Vec3f DesertCastle_unkCol23_ColVerts[] = {
@@ -2501,8 +2501,8 @@ Rect3D DesertCastle_unkCol23_BoundBox = {
     #include "assets/levelGroup/DesertCastle/unkCol23/unkCol23.boundBox.inc.c"
 };
 
-ModelCollision DesertCastle_unkCol23_ColH = {
-5, 3, DesertCastle_unkCol23_ColVerts, DesertCastle_unkCol23_ColTris, &DesertCastle_unkCol23_BoundBox
+ModelCollision DesertCastle_unkCol23_collision = {
+    ARRAY_COUNT(DesertCastle_unkCol23_ColVerts), ARRAY_COUNT(DesertCastle_unkCol23_ColTris), DesertCastle_unkCol23_ColVerts, DesertCastle_unkCol23_ColTris, &DesertCastle_unkCol23_BoundBox
 };
 
 Vec3f DesertCastle_unkCol24_ColVerts[] = {
@@ -2517,8 +2517,8 @@ Rect3D DesertCastle_unkCol24_BoundBox = {
     #include "assets/levelGroup/DesertCastle/unkCol24/unkCol24.boundBox.inc.c"
 };
 
-ModelCollision DesertCastle_unkCol24_ColH = {
-13, 16, DesertCastle_unkCol24_ColVerts, DesertCastle_unkCol24_ColTris, &DesertCastle_unkCol24_BoundBox
+ModelCollision DesertCastle_unkCol24_collision = {
+    ARRAY_COUNT(DesertCastle_unkCol24_ColVerts), ARRAY_COUNT(DesertCastle_unkCol24_ColTris), DesertCastle_unkCol24_ColVerts, DesertCastle_unkCol24_ColTris, &DesertCastle_unkCol24_BoundBox
 };
 
 Vec3f DesertCastle_unkCol25_ColVerts[] = {
@@ -2533,8 +2533,8 @@ Rect3D DesertCastle_unkCol25_BoundBox = {
     #include "assets/levelGroup/DesertCastle/unkCol25/unkCol25.boundBox.inc.c"
 };
 
-ModelCollision DesertCastle_unkCol25_ColH = {
-17, 21, DesertCastle_unkCol25_ColVerts, DesertCastle_unkCol25_ColTris, &DesertCastle_unkCol25_BoundBox
+ModelCollision DesertCastle_unkCol25_collision = {
+    ARRAY_COUNT(DesertCastle_unkCol25_ColVerts), ARRAY_COUNT(DesertCastle_unkCol25_ColTris), DesertCastle_unkCol25_ColVerts, DesertCastle_unkCol25_ColTris, &DesertCastle_unkCol25_BoundBox
 };
 
 Vec3f DesertCastle_unkCol26_ColVerts[] = {
@@ -2549,8 +2549,8 @@ Rect3D DesertCastle_unkCol26_BoundBox = {
     #include "assets/levelGroup/DesertCastle/unkCol26/unkCol26.boundBox.inc.c"
 };
 
-ModelCollision DesertCastle_unkCol26_ColH = {
-8, 4, DesertCastle_unkCol26_ColVerts, DesertCastle_unkCol26_ColTris, &DesertCastle_unkCol26_BoundBox
+ModelCollision DesertCastle_unkCol26_collision = {
+    ARRAY_COUNT(DesertCastle_unkCol26_ColVerts), ARRAY_COUNT(DesertCastle_unkCol26_ColTris), DesertCastle_unkCol26_ColVerts, DesertCastle_unkCol26_ColTris, &DesertCastle_unkCol26_BoundBox
 };
 
 Vec3f DesertCastle_unkCol27_ColVerts[] = {
@@ -2565,8 +2565,8 @@ Rect3D DesertCastle_unkCol27_BoundBox = {
     #include "assets/levelGroup/DesertCastle/unkCol27/unkCol27.boundBox.inc.c"
 };
 
-ModelCollision DesertCastle_unkCol27_ColH = {
-5, 3, DesertCastle_unkCol27_ColVerts, DesertCastle_unkCol27_ColTris, &DesertCastle_unkCol27_BoundBox
+ModelCollision DesertCastle_unkCol27_collision = {
+    ARRAY_COUNT(DesertCastle_unkCol27_ColVerts), ARRAY_COUNT(DesertCastle_unkCol27_ColTris), DesertCastle_unkCol27_ColVerts, DesertCastle_unkCol27_ColTris, &DesertCastle_unkCol27_BoundBox
 };
 
 Vec3f DesertCastle_unkCol28_ColVerts[] = {
@@ -2581,8 +2581,8 @@ Rect3D DesertCastle_unkCol28_BoundBox = {
     #include "assets/levelGroup/DesertCastle/unkCol28/unkCol28.boundBox.inc.c"
 };
 
-ModelCollision DesertCastle_unkCol28_ColH = {
-10, 6, DesertCastle_unkCol28_ColVerts, DesertCastle_unkCol28_ColTris, &DesertCastle_unkCol28_BoundBox
+ModelCollision DesertCastle_unkCol28_collision = {
+    ARRAY_COUNT(DesertCastle_unkCol28_ColVerts), ARRAY_COUNT(DesertCastle_unkCol28_ColTris), DesertCastle_unkCol28_ColVerts, DesertCastle_unkCol28_ColTris, &DesertCastle_unkCol28_BoundBox
 };
 
 Vec3f DesertCastle_unkCol29_ColVerts[] = {
@@ -2597,8 +2597,8 @@ Rect3D DesertCastle_unkCol29_BoundBox = {
     #include "assets/levelGroup/DesertCastle/unkCol29/unkCol29.boundBox.inc.c"
 };
 
-ModelCollision DesertCastle_unkCol29_ColH = {
-4, 2, DesertCastle_unkCol29_ColVerts, DesertCastle_unkCol29_ColTris, &DesertCastle_unkCol29_BoundBox
+ModelCollision DesertCastle_unkCol29_collision = {
+    ARRAY_COUNT(DesertCastle_unkCol29_ColVerts), ARRAY_COUNT(DesertCastle_unkCol29_ColTris), DesertCastle_unkCol29_ColVerts, DesertCastle_unkCol29_ColTris, &DesertCastle_unkCol29_BoundBox
 };
 
 Vec3f DesertCastle_unkCol30_ColVerts[] = {
@@ -2613,8 +2613,8 @@ Rect3D DesertCastle_unkCol30_BoundBox = {
     #include "assets/levelGroup/DesertCastle/unkCol30/unkCol30.boundBox.inc.c"
 };
 
-ModelCollision DesertCastle_unkCol30_ColH = {
-7, 5, DesertCastle_unkCol30_ColVerts, DesertCastle_unkCol30_ColTris, &DesertCastle_unkCol30_BoundBox
+ModelCollision DesertCastle_unkCol30_collision = {
+    ARRAY_COUNT(DesertCastle_unkCol30_ColVerts), ARRAY_COUNT(DesertCastle_unkCol30_ColTris), DesertCastle_unkCol30_ColVerts, DesertCastle_unkCol30_ColTris, &DesertCastle_unkCol30_BoundBox
 };
 
 Vec3f DesertCastle_unkCol31_ColVerts[] = {
@@ -2629,8 +2629,8 @@ Rect3D DesertCastle_unkCol31_BoundBox = {
     #include "assets/levelGroup/DesertCastle/unkCol31/unkCol31.boundBox.inc.c"
 };
 
-ModelCollision DesertCastle_unkCol31_ColH = {
-4, 2, DesertCastle_unkCol31_ColVerts, DesertCastle_unkCol31_ColTris, &DesertCastle_unkCol31_BoundBox
+ModelCollision DesertCastle_unkCol31_collision = {
+    ARRAY_COUNT(DesertCastle_unkCol31_ColVerts), ARRAY_COUNT(DesertCastle_unkCol31_ColTris), DesertCastle_unkCol31_ColVerts, DesertCastle_unkCol31_ColTris, &DesertCastle_unkCol31_BoundBox
 };
 
 Vec3f DesertCastle_unkCol32_ColVerts[] = {
@@ -2645,8 +2645,8 @@ Rect3D DesertCastle_unkCol32_BoundBox = {
     #include "assets/levelGroup/DesertCastle/unkCol32/unkCol32.boundBox.inc.c"
 };
 
-ModelCollision DesertCastle_unkCol32_ColH = {
-29, 41, DesertCastle_unkCol32_ColVerts, DesertCastle_unkCol32_ColTris, &DesertCastle_unkCol32_BoundBox
+ModelCollision DesertCastle_unkCol32_collision = {
+    ARRAY_COUNT(DesertCastle_unkCol32_ColVerts), ARRAY_COUNT(DesertCastle_unkCol32_ColTris), DesertCastle_unkCol32_ColVerts, DesertCastle_unkCol32_ColTris, &DesertCastle_unkCol32_BoundBox
 };
 
 Vec3f DesertCastle_unkCol33_ColVerts[] = {
@@ -2661,8 +2661,8 @@ Rect3D DesertCastle_unkCol33_BoundBox = {
     #include "assets/levelGroup/DesertCastle/unkCol33/unkCol33.boundBox.inc.c"
 };
 
-ModelCollision DesertCastle_unkCol33_ColH = {
-54, 70, DesertCastle_unkCol33_ColVerts, DesertCastle_unkCol33_ColTris, &DesertCastle_unkCol33_BoundBox
+ModelCollision DesertCastle_unkCol33_collision = {
+    ARRAY_COUNT(DesertCastle_unkCol33_ColVerts), ARRAY_COUNT(DesertCastle_unkCol33_ColTris), DesertCastle_unkCol33_ColVerts, DesertCastle_unkCol33_ColTris, &DesertCastle_unkCol33_BoundBox
 };
 
 Vec3f DesertCastle_unkCol34_ColVerts[] = {
@@ -2677,8 +2677,8 @@ Rect3D DesertCastle_unkCol34_BoundBox = {
     #include "assets/levelGroup/DesertCastle/unkCol34/unkCol34.boundBox.inc.c"
 };
 
-ModelCollision DesertCastle_unkCol34_ColH = {
-20, 20, DesertCastle_unkCol34_ColVerts, DesertCastle_unkCol34_ColTris, &DesertCastle_unkCol34_BoundBox
+ModelCollision DesertCastle_unkCol34_collision = {
+    ARRAY_COUNT(DesertCastle_unkCol34_ColVerts), ARRAY_COUNT(DesertCastle_unkCol34_ColTris), DesertCastle_unkCol34_ColVerts, DesertCastle_unkCol34_ColTris, &DesertCastle_unkCol34_BoundBox
 };
 
 Vec3f DesertCastle_unkCol35_ColVerts[] = {
@@ -2693,8 +2693,8 @@ Rect3D DesertCastle_unkCol35_BoundBox = {
     #include "assets/levelGroup/DesertCastle/unkCol35/unkCol35.boundBox.inc.c"
 };
 
-ModelCollision DesertCastle_unkCol35_ColH = {
-34, 53, DesertCastle_unkCol35_ColVerts, DesertCastle_unkCol35_ColTris, &DesertCastle_unkCol35_BoundBox
+ModelCollision DesertCastle_unkCol35_collision = {
+    ARRAY_COUNT(DesertCastle_unkCol35_ColVerts), ARRAY_COUNT(DesertCastle_unkCol35_ColTris), DesertCastle_unkCol35_ColVerts, DesertCastle_unkCol35_ColTris, &DesertCastle_unkCol35_BoundBox
 };
 
 Vec3f DesertCastle_unkCol36_ColVerts[] = {
@@ -2709,8 +2709,8 @@ Rect3D DesertCastle_unkCol36_BoundBox = {
     #include "assets/levelGroup/DesertCastle/unkCol36/unkCol36.boundBox.inc.c"
 };
 
-ModelCollision DesertCastle_unkCol36_ColH = {
-12, 10, DesertCastle_unkCol36_ColVerts, DesertCastle_unkCol36_ColTris, &DesertCastle_unkCol36_BoundBox
+ModelCollision DesertCastle_unkCol36_collision = {
+    ARRAY_COUNT(DesertCastle_unkCol36_ColVerts), ARRAY_COUNT(DesertCastle_unkCol36_ColTris), DesertCastle_unkCol36_ColVerts, DesertCastle_unkCol36_ColTris, &DesertCastle_unkCol36_BoundBox
 };
 
 Vec3f DesertCastle_unkCol37_ColVerts[] = {
@@ -2725,8 +2725,8 @@ Rect3D DesertCastle_unkCol37_BoundBox = {
     #include "assets/levelGroup/DesertCastle/unkCol37/unkCol37.boundBox.inc.c"
 };
 
-ModelCollision DesertCastle_unkCol37_ColH = {
-13, 13, DesertCastle_unkCol37_ColVerts, DesertCastle_unkCol37_ColTris, &DesertCastle_unkCol37_BoundBox
+ModelCollision DesertCastle_unkCol37_collision = {
+    ARRAY_COUNT(DesertCastle_unkCol37_ColVerts), ARRAY_COUNT(DesertCastle_unkCol37_ColTris), DesertCastle_unkCol37_ColVerts, DesertCastle_unkCol37_ColTris, &DesertCastle_unkCol37_BoundBox
 };
 
 Vec3f DesertCastle_unkCol38_ColVerts[] = {
@@ -2741,8 +2741,8 @@ Rect3D DesertCastle_unkCol38_BoundBox = {
     #include "assets/levelGroup/DesertCastle/unkCol38/unkCol38.boundBox.inc.c"
 };
 
-ModelCollision DesertCastle_unkCol38_ColH = {
-20, 23, DesertCastle_unkCol38_ColVerts, DesertCastle_unkCol38_ColTris, &DesertCastle_unkCol38_BoundBox
+ModelCollision DesertCastle_unkCol38_collision = {
+    ARRAY_COUNT(DesertCastle_unkCol38_ColVerts), ARRAY_COUNT(DesertCastle_unkCol38_ColTris), DesertCastle_unkCol38_ColVerts, DesertCastle_unkCol38_ColTris, &DesertCastle_unkCol38_BoundBox
 };
 
 Vec3f DesertCastle_unkCol39_ColVerts[] = {
@@ -2757,8 +2757,8 @@ Rect3D DesertCastle_unkCol39_BoundBox = {
     #include "assets/levelGroup/DesertCastle/unkCol39/unkCol39.boundBox.inc.c"
 };
 
-ModelCollision DesertCastle_unkCol39_ColH = {
-46, 60, DesertCastle_unkCol39_ColVerts, DesertCastle_unkCol39_ColTris, &DesertCastle_unkCol39_BoundBox
+ModelCollision DesertCastle_unkCol39_collision = {
+    ARRAY_COUNT(DesertCastle_unkCol39_ColVerts), ARRAY_COUNT(DesertCastle_unkCol39_ColTris), DesertCastle_unkCol39_ColVerts, DesertCastle_unkCol39_ColTris, &DesertCastle_unkCol39_BoundBox
 };
 
 Vec3f DesertCastle_unkCol40_ColVerts[] = {
@@ -2773,8 +2773,8 @@ Rect3D DesertCastle_unkCol40_BoundBox = {
     #include "assets/levelGroup/DesertCastle/unkCol40/unkCol40.boundBox.inc.c"
 };
 
-ModelCollision DesertCastle_unkCol40_ColH = {
-32, 28, DesertCastle_unkCol40_ColVerts, DesertCastle_unkCol40_ColTris, &DesertCastle_unkCol40_BoundBox
+ModelCollision DesertCastle_unkCol40_collision = {
+    ARRAY_COUNT(DesertCastle_unkCol40_ColVerts), ARRAY_COUNT(DesertCastle_unkCol40_ColTris), DesertCastle_unkCol40_ColVerts, DesertCastle_unkCol40_ColTris, &DesertCastle_unkCol40_BoundBox
 };
 
 Vec3f DesertCastle_unkCol41_ColVerts[] = {
@@ -2789,8 +2789,8 @@ Rect3D DesertCastle_unkCol41_BoundBox = {
     #include "assets/levelGroup/DesertCastle/unkCol41/unkCol41.boundBox.inc.c"
 };
 
-ModelCollision DesertCastle_unkCol41_ColH = {
-28, 38, DesertCastle_unkCol41_ColVerts, DesertCastle_unkCol41_ColTris, &DesertCastle_unkCol41_BoundBox
+ModelCollision DesertCastle_unkCol41_collision = {
+    ARRAY_COUNT(DesertCastle_unkCol41_ColVerts), ARRAY_COUNT(DesertCastle_unkCol41_ColTris), DesertCastle_unkCol41_ColVerts, DesertCastle_unkCol41_ColTris, &DesertCastle_unkCol41_BoundBox
 };
 
 Vec3f DesertCastle_unkCol42_ColVerts[] = {
@@ -2805,8 +2805,8 @@ Rect3D DesertCastle_unkCol42_BoundBox = {
     #include "assets/levelGroup/DesertCastle/unkCol42/unkCol42.boundBox.inc.c"
 };
 
-ModelCollision DesertCastle_unkCol42_ColH = {
-28, 42, DesertCastle_unkCol42_ColVerts, DesertCastle_unkCol42_ColTris, &DesertCastle_unkCol42_BoundBox
+ModelCollision DesertCastle_unkCol42_collision = {
+    ARRAY_COUNT(DesertCastle_unkCol42_ColVerts), ARRAY_COUNT(DesertCastle_unkCol42_ColTris), DesertCastle_unkCol42_ColVerts, DesertCastle_unkCol42_ColTris, &DesertCastle_unkCol42_BoundBox
 };
 
 Vec3f DesertCastle_unkCol43_ColVerts[] = {
@@ -2821,8 +2821,8 @@ Rect3D DesertCastle_unkCol43_BoundBox = {
     #include "assets/levelGroup/DesertCastle/unkCol43/unkCol43.boundBox.inc.c"
 };
 
-ModelCollision DesertCastle_unkCol43_ColH = {
-25, 34, DesertCastle_unkCol43_ColVerts, DesertCastle_unkCol43_ColTris, &DesertCastle_unkCol43_BoundBox
+ModelCollision DesertCastle_unkCol43_collision = {
+    ARRAY_COUNT(DesertCastle_unkCol43_ColVerts), ARRAY_COUNT(DesertCastle_unkCol43_ColTris), DesertCastle_unkCol43_ColVerts, DesertCastle_unkCol43_ColTris, &DesertCastle_unkCol43_BoundBox
 };
 
 Vec3f DesertCastle_unkCol44_ColVerts[] = {
@@ -2837,8 +2837,8 @@ Rect3D DesertCastle_unkCol44_BoundBox = {
     #include "assets/levelGroup/DesertCastle/unkCol44/unkCol44.boundBox.inc.c"
 };
 
-ModelCollision DesertCastle_unkCol44_ColH = {
-38, 42, DesertCastle_unkCol44_ColVerts, DesertCastle_unkCol44_ColTris, &DesertCastle_unkCol44_BoundBox
+ModelCollision DesertCastle_unkCol44_collision = {
+    ARRAY_COUNT(DesertCastle_unkCol44_ColVerts), ARRAY_COUNT(DesertCastle_unkCol44_ColTris), DesertCastle_unkCol44_ColVerts, DesertCastle_unkCol44_ColTris, &DesertCastle_unkCol44_BoundBox
 };
 
 Vec3f DesertCastle_unkCol45_ColVerts[] = {
@@ -2853,8 +2853,8 @@ Rect3D DesertCastle_unkCol45_BoundBox = {
     #include "assets/levelGroup/DesertCastle/unkCol45/unkCol45.boundBox.inc.c"
 };
 
-ModelCollision DesertCastle_unkCol45_ColH = {
-24, 33, DesertCastle_unkCol45_ColVerts, DesertCastle_unkCol45_ColTris, &DesertCastle_unkCol45_BoundBox
+ModelCollision DesertCastle_unkCol45_collision = {
+    ARRAY_COUNT(DesertCastle_unkCol45_ColVerts), ARRAY_COUNT(DesertCastle_unkCol45_ColTris), DesertCastle_unkCol45_ColVerts, DesertCastle_unkCol45_ColTris, &DesertCastle_unkCol45_BoundBox
 };
 
 Vec3f DesertCastle_unkCol46_ColVerts[] = {
@@ -2869,8 +2869,8 @@ Rect3D DesertCastle_unkCol46_BoundBox = {
     #include "assets/levelGroup/DesertCastle/unkCol46/unkCol46.boundBox.inc.c"
 };
 
-ModelCollision DesertCastle_unkCol46_ColH = {
-30, 35, DesertCastle_unkCol46_ColVerts, DesertCastle_unkCol46_ColTris, &DesertCastle_unkCol46_BoundBox
+ModelCollision DesertCastle_unkCol46_collision = {
+    ARRAY_COUNT(DesertCastle_unkCol46_ColVerts), ARRAY_COUNT(DesertCastle_unkCol46_ColTris), DesertCastle_unkCol46_ColVerts, DesertCastle_unkCol46_ColTris, &DesertCastle_unkCol46_BoundBox
 };
 
 Vec3f DesertCastle_unkCol47_ColVerts[] = {
@@ -2885,8 +2885,8 @@ Rect3D DesertCastle_unkCol47_BoundBox = {
     #include "assets/levelGroup/DesertCastle/unkCol47/unkCol47.boundBox.inc.c"
 };
 
-ModelCollision DesertCastle_unkCol47_ColH = {
-6, 8, DesertCastle_unkCol47_ColVerts, DesertCastle_unkCol47_ColTris, &DesertCastle_unkCol47_BoundBox
+ModelCollision DesertCastle_unkCol47_collision = {
+    ARRAY_COUNT(DesertCastle_unkCol47_ColVerts), ARRAY_COUNT(DesertCastle_unkCol47_ColTris), DesertCastle_unkCol47_ColVerts, DesertCastle_unkCol47_ColTris, &DesertCastle_unkCol47_BoundBox
 };
 
 Vec3f DesertCastle_unkCol48_ColVerts[] = {
@@ -2901,8 +2901,8 @@ Rect3D DesertCastle_unkCol48_BoundBox = {
     #include "assets/levelGroup/DesertCastle/unkCol48/unkCol48.boundBox.inc.c"
 };
 
-ModelCollision DesertCastle_unkCol48_ColH = {
-5, 4, DesertCastle_unkCol48_ColVerts, DesertCastle_unkCol48_ColTris, &DesertCastle_unkCol48_BoundBox
+ModelCollision DesertCastle_unkCol48_collision = {
+    ARRAY_COUNT(DesertCastle_unkCol48_ColVerts), ARRAY_COUNT(DesertCastle_unkCol48_ColTris), DesertCastle_unkCol48_ColVerts, DesertCastle_unkCol48_ColTris, &DesertCastle_unkCol48_BoundBox
 };
 
 Vec3f DesertCastle_unkCol49_ColVerts[] = {
@@ -2917,8 +2917,8 @@ Rect3D DesertCastle_unkCol49_BoundBox = {
     #include "assets/levelGroup/DesertCastle/unkCol49/unkCol49.boundBox.inc.c"
 };
 
-ModelCollision DesertCastle_unkCol49_ColH = {
-6, 8, DesertCastle_unkCol49_ColVerts, DesertCastle_unkCol49_ColTris, &DesertCastle_unkCol49_BoundBox
+ModelCollision DesertCastle_unkCol49_collision = {
+    ARRAY_COUNT(DesertCastle_unkCol49_ColVerts), ARRAY_COUNT(DesertCastle_unkCol49_ColTris), DesertCastle_unkCol49_ColVerts, DesertCastle_unkCol49_ColTris, &DesertCastle_unkCol49_BoundBox
 };
 
 Vec3f DesertCastle_unkCol50_ColVerts[] = {
@@ -2933,8 +2933,8 @@ Rect3D DesertCastle_unkCol50_BoundBox = {
     #include "assets/levelGroup/DesertCastle/unkCol50/unkCol50.boundBox.inc.c"
 };
 
-ModelCollision DesertCastle_unkCol50_ColH = {
-5, 4, DesertCastle_unkCol50_ColVerts, DesertCastle_unkCol50_ColTris, &DesertCastle_unkCol50_BoundBox
+ModelCollision DesertCastle_unkCol50_collision = {
+    ARRAY_COUNT(DesertCastle_unkCol50_ColVerts), ARRAY_COUNT(DesertCastle_unkCol50_ColTris), DesertCastle_unkCol50_ColVerts, DesertCastle_unkCol50_ColTris, &DesertCastle_unkCol50_BoundBox
 };
 
 Vec3f DesertCastle_unkCol51_ColVerts[] = {
@@ -2949,8 +2949,8 @@ Rect3D DesertCastle_unkCol51_BoundBox = {
     #include "assets/levelGroup/DesertCastle/unkCol51/unkCol51.boundBox.inc.c"
 };
 
-ModelCollision DesertCastle_unkCol51_ColH = {
-16, 22, DesertCastle_unkCol51_ColVerts, DesertCastle_unkCol51_ColTris, &DesertCastle_unkCol51_BoundBox
+ModelCollision DesertCastle_unkCol51_collision = {
+    ARRAY_COUNT(DesertCastle_unkCol51_ColVerts), ARRAY_COUNT(DesertCastle_unkCol51_ColTris), DesertCastle_unkCol51_ColVerts, DesertCastle_unkCol51_ColTris, &DesertCastle_unkCol51_BoundBox
 };
 
 Vec3f DesertCastle_unkCol52_ColVerts[] = {
@@ -2965,8 +2965,8 @@ Rect3D DesertCastle_unkCol52_BoundBox = {
     #include "assets/levelGroup/DesertCastle/unkCol52/unkCol52.boundBox.inc.c"
 };
 
-ModelCollision DesertCastle_unkCol52_ColH = {
-8, 8, DesertCastle_unkCol52_ColVerts, DesertCastle_unkCol52_ColTris, &DesertCastle_unkCol52_BoundBox
+ModelCollision DesertCastle_unkCol52_collision = {
+    ARRAY_COUNT(DesertCastle_unkCol52_ColVerts), ARRAY_COUNT(DesertCastle_unkCol52_ColTris), DesertCastle_unkCol52_ColVerts, DesertCastle_unkCol52_ColTris, &DesertCastle_unkCol52_BoundBox
 };
 
 Vec3f DesertCastle_unkCol53_ColVerts[] = {
@@ -2981,8 +2981,8 @@ Rect3D DesertCastle_unkCol53_BoundBox = {
     #include "assets/levelGroup/DesertCastle/unkCol53/unkCol53.boundBox.inc.c"
 };
 
-ModelCollision DesertCastle_unkCol53_ColH = {
-8, 8, DesertCastle_unkCol53_ColVerts, DesertCastle_unkCol53_ColTris, &DesertCastle_unkCol53_BoundBox
+ModelCollision DesertCastle_unkCol53_collision = {
+    ARRAY_COUNT(DesertCastle_unkCol53_ColVerts), ARRAY_COUNT(DesertCastle_unkCol53_ColTris), DesertCastle_unkCol53_ColVerts, DesertCastle_unkCol53_ColTris, &DesertCastle_unkCol53_BoundBox
 };
 
 Vec3f DesertCastle_unkCol54_ColVerts[] = {
@@ -2997,8 +2997,8 @@ Rect3D DesertCastle_unkCol54_BoundBox = {
     #include "assets/levelGroup/DesertCastle/unkCol54/unkCol54.boundBox.inc.c"
 };
 
-ModelCollision DesertCastle_unkCol54_ColH = {
-8, 10, DesertCastle_unkCol54_ColVerts, DesertCastle_unkCol54_ColTris, &DesertCastle_unkCol54_BoundBox
+ModelCollision DesertCastle_unkCol54_collision = {
+    ARRAY_COUNT(DesertCastle_unkCol54_ColVerts), ARRAY_COUNT(DesertCastle_unkCol54_ColTris), DesertCastle_unkCol54_ColVerts, DesertCastle_unkCol54_ColTris, &DesertCastle_unkCol54_BoundBox
 };
 
 Vec3f DesertCastle_unkCol55_ColVerts[] = {
@@ -3013,8 +3013,8 @@ Rect3D DesertCastle_unkCol55_BoundBox = {
     #include "assets/levelGroup/DesertCastle/unkCol55/unkCol55.boundBox.inc.c"
 };
 
-ModelCollision DesertCastle_unkCol55_ColH = {
-16, 22, DesertCastle_unkCol55_ColVerts, DesertCastle_unkCol55_ColTris, &DesertCastle_unkCol55_BoundBox
+ModelCollision DesertCastle_unkCol55_collision = {
+    ARRAY_COUNT(DesertCastle_unkCol55_ColVerts), ARRAY_COUNT(DesertCastle_unkCol55_ColTris), DesertCastle_unkCol55_ColVerts, DesertCastle_unkCol55_ColTris, &DesertCastle_unkCol55_BoundBox
 };
 
 Vec3f DesertCastle_unkCol56_ColVerts[] = {
@@ -3029,8 +3029,8 @@ Rect3D DesertCastle_unkCol56_BoundBox = {
     #include "assets/levelGroup/DesertCastle/unkCol56/unkCol56.boundBox.inc.c"
 };
 
-ModelCollision DesertCastle_unkCol56_ColH = {
-12, 16, DesertCastle_unkCol56_ColVerts, DesertCastle_unkCol56_ColTris, &DesertCastle_unkCol56_BoundBox
+ModelCollision DesertCastle_unkCol56_collision = {
+    ARRAY_COUNT(DesertCastle_unkCol56_ColVerts), ARRAY_COUNT(DesertCastle_unkCol56_ColTris), DesertCastle_unkCol56_ColVerts, DesertCastle_unkCol56_ColTris, &DesertCastle_unkCol56_BoundBox
 };
 
 Vec3f DesertCastle_unkCol57_ColVerts[] = {
@@ -3045,8 +3045,8 @@ Rect3D DesertCastle_unkCol57_BoundBox = {
     #include "assets/levelGroup/DesertCastle/unkCol57/unkCol57.boundBox.inc.c"
 };
 
-ModelCollision DesertCastle_unkCol57_ColH = {
-12, 14, DesertCastle_unkCol57_ColVerts, DesertCastle_unkCol57_ColTris, &DesertCastle_unkCol57_BoundBox
+ModelCollision DesertCastle_unkCol57_collision = {
+    ARRAY_COUNT(DesertCastle_unkCol57_ColVerts), ARRAY_COUNT(DesertCastle_unkCol57_ColTris), DesertCastle_unkCol57_ColVerts, DesertCastle_unkCol57_ColTris, &DesertCastle_unkCol57_BoundBox
 };
 
 Vec3f DesertCastle_unkCol58_ColVerts[] = {
@@ -3061,8 +3061,8 @@ Rect3D DesertCastle_unkCol58_BoundBox = {
     #include "assets/levelGroup/DesertCastle/unkCol58/unkCol58.boundBox.inc.c"
 };
 
-ModelCollision DesertCastle_unkCol58_ColH = {
-12, 14, DesertCastle_unkCol58_ColVerts, DesertCastle_unkCol58_ColTris, &DesertCastle_unkCol58_BoundBox
+ModelCollision DesertCastle_unkCol58_collision = {
+    ARRAY_COUNT(DesertCastle_unkCol58_ColVerts), ARRAY_COUNT(DesertCastle_unkCol58_ColTris), DesertCastle_unkCol58_ColVerts, DesertCastle_unkCol58_ColTris, &DesertCastle_unkCol58_BoundBox
 };
 
 Vec3f DesertCastle_unkCol59_ColVerts[] = {
@@ -3077,8 +3077,8 @@ Rect3D DesertCastle_unkCol59_BoundBox = {
     #include "assets/levelGroup/DesertCastle/unkCol59/unkCol59.boundBox.inc.c"
 };
 
-ModelCollision DesertCastle_unkCol59_ColH = {
-16, 22, DesertCastle_unkCol59_ColVerts, DesertCastle_unkCol59_ColTris, &DesertCastle_unkCol59_BoundBox
+ModelCollision DesertCastle_unkCol59_collision = {
+    ARRAY_COUNT(DesertCastle_unkCol59_ColVerts), ARRAY_COUNT(DesertCastle_unkCol59_ColTris), DesertCastle_unkCol59_ColVerts, DesertCastle_unkCol59_ColTris, &DesertCastle_unkCol59_BoundBox
 };
 
 Vec3f DesertCastle_unkCol60_ColVerts[] = {
@@ -3093,8 +3093,8 @@ Rect3D DesertCastle_unkCol60_BoundBox = {
     #include "assets/levelGroup/DesertCastle/unkCol60/unkCol60.boundBox.inc.c"
 };
 
-ModelCollision DesertCastle_unkCol60_ColH = {
-12, 16, DesertCastle_unkCol60_ColVerts, DesertCastle_unkCol60_ColTris, &DesertCastle_unkCol60_BoundBox
+ModelCollision DesertCastle_unkCol60_collision = {
+    ARRAY_COUNT(DesertCastle_unkCol60_ColVerts), ARRAY_COUNT(DesertCastle_unkCol60_ColTris), DesertCastle_unkCol60_ColVerts, DesertCastle_unkCol60_ColTris, &DesertCastle_unkCol60_BoundBox
 };
 
 Vec3f DesertCastle_unkCol61_ColVerts[] = {
@@ -3109,8 +3109,8 @@ Rect3D DesertCastle_unkCol61_BoundBox = {
     #include "assets/levelGroup/DesertCastle/unkCol61/unkCol61.boundBox.inc.c"
 };
 
-ModelCollision DesertCastle_unkCol61_ColH = {
-4, 4, DesertCastle_unkCol61_ColVerts, DesertCastle_unkCol61_ColTris, &DesertCastle_unkCol61_BoundBox
+ModelCollision DesertCastle_unkCol61_collision = {
+    ARRAY_COUNT(DesertCastle_unkCol61_ColVerts), ARRAY_COUNT(DesertCastle_unkCol61_ColTris), DesertCastle_unkCol61_ColVerts, DesertCastle_unkCol61_ColTris, &DesertCastle_unkCol61_BoundBox
 };
 
 Vec3f DesertCastle_unkCol62_ColVerts[] = {
@@ -3125,8 +3125,8 @@ Rect3D DesertCastle_unkCol62_BoundBox = {
     #include "assets/levelGroup/DesertCastle/unkCol62/unkCol62.boundBox.inc.c"
 };
 
-ModelCollision DesertCastle_unkCol62_ColH = {
-8, 8, DesertCastle_unkCol62_ColVerts, DesertCastle_unkCol62_ColTris, &DesertCastle_unkCol62_BoundBox
+ModelCollision DesertCastle_unkCol62_collision = {
+    ARRAY_COUNT(DesertCastle_unkCol62_ColVerts), ARRAY_COUNT(DesertCastle_unkCol62_ColTris), DesertCastle_unkCol62_ColVerts, DesertCastle_unkCol62_ColTris, &DesertCastle_unkCol62_BoundBox
 };
 
 Vec3f DesertCastle_unkCol63_ColVerts[] = {
@@ -3141,8 +3141,8 @@ Rect3D DesertCastle_unkCol63_BoundBox = {
     #include "assets/levelGroup/DesertCastle/unkCol63/unkCol63.boundBox.inc.c"
 };
 
-ModelCollision DesertCastle_unkCol63_ColH = {
-8, 10, DesertCastle_unkCol63_ColVerts, DesertCastle_unkCol63_ColTris, &DesertCastle_unkCol63_BoundBox
+ModelCollision DesertCastle_unkCol63_collision = {
+    ARRAY_COUNT(DesertCastle_unkCol63_ColVerts), ARRAY_COUNT(DesertCastle_unkCol63_ColTris), DesertCastle_unkCol63_ColVerts, DesertCastle_unkCol63_ColTris, &DesertCastle_unkCol63_BoundBox
 };
 
 Vec3f DesertCastle_unkCol64_ColVerts[] = {
@@ -3157,8 +3157,8 @@ Rect3D DesertCastle_unkCol64_BoundBox = {
     #include "assets/levelGroup/DesertCastle/unkCol64/unkCol64.boundBox.inc.c"
 };
 
-ModelCollision DesertCastle_unkCol64_ColH = {
-4, 4, DesertCastle_unkCol64_ColVerts, DesertCastle_unkCol64_ColTris, &DesertCastle_unkCol64_BoundBox
+ModelCollision DesertCastle_unkCol64_collision = {
+    ARRAY_COUNT(DesertCastle_unkCol64_ColVerts), ARRAY_COUNT(DesertCastle_unkCol64_ColTris), DesertCastle_unkCol64_ColVerts, DesertCastle_unkCol64_ColTris, &DesertCastle_unkCol64_BoundBox
 };
 
 Vec3f DesertCastle_unkCol65_ColVerts[] = {
@@ -3173,8 +3173,8 @@ Rect3D DesertCastle_unkCol65_BoundBox = {
     #include "assets/levelGroup/DesertCastle/unkCol65/unkCol65.boundBox.inc.c"
 };
 
-ModelCollision DesertCastle_unkCol65_ColH = {
-11, 12, DesertCastle_unkCol65_ColVerts, DesertCastle_unkCol65_ColTris, &DesertCastle_unkCol65_BoundBox
+ModelCollision DesertCastle_unkCol65_collision = {
+    ARRAY_COUNT(DesertCastle_unkCol65_ColVerts), ARRAY_COUNT(DesertCastle_unkCol65_ColTris), DesertCastle_unkCol65_ColVerts, DesertCastle_unkCol65_ColTris, &DesertCastle_unkCol65_BoundBox
 };
 
 Vec3f DesertCastle_unkCol66_ColVerts[] = {
@@ -3189,8 +3189,8 @@ Rect3D DesertCastle_unkCol66_BoundBox = {
     #include "assets/levelGroup/DesertCastle/unkCol66/unkCol66.boundBox.inc.c"
 };
 
-ModelCollision DesertCastle_unkCol66_ColH = {
-15, 22, DesertCastle_unkCol66_ColVerts, DesertCastle_unkCol66_ColTris, &DesertCastle_unkCol66_BoundBox
+ModelCollision DesertCastle_unkCol66_collision = {
+    ARRAY_COUNT(DesertCastle_unkCol66_ColVerts), ARRAY_COUNT(DesertCastle_unkCol66_ColTris), DesertCastle_unkCol66_ColVerts, DesertCastle_unkCol66_ColTris, &DesertCastle_unkCol66_BoundBox
 };
 
 Vec3f DesertCastle_unkCol67_ColVerts[] = {
@@ -3205,8 +3205,8 @@ Rect3D DesertCastle_unkCol67_BoundBox = {
     #include "assets/levelGroup/DesertCastle/unkCol67/unkCol67.boundBox.inc.c"
 };
 
-ModelCollision DesertCastle_unkCol67_ColH = {
-8, 8, DesertCastle_unkCol67_ColVerts, DesertCastle_unkCol67_ColTris, &DesertCastle_unkCol67_BoundBox
+ModelCollision DesertCastle_unkCol67_collision = {
+    ARRAY_COUNT(DesertCastle_unkCol67_ColVerts), ARRAY_COUNT(DesertCastle_unkCol67_ColTris), DesertCastle_unkCol67_ColVerts, DesertCastle_unkCol67_ColTris, &DesertCastle_unkCol67_BoundBox
 };
 
 Vec3f DesertCastle_unkCol68_ColVerts[] = {
@@ -3221,8 +3221,8 @@ Rect3D DesertCastle_unkCol68_BoundBox = {
     #include "assets/levelGroup/DesertCastle/unkCol68/unkCol68.boundBox.inc.c"
 };
 
-ModelCollision DesertCastle_unkCol68_ColH = {
-8, 8, DesertCastle_unkCol68_ColVerts, DesertCastle_unkCol68_ColTris, &DesertCastle_unkCol68_BoundBox
+ModelCollision DesertCastle_unkCol68_collision = {
+    ARRAY_COUNT(DesertCastle_unkCol68_ColVerts), ARRAY_COUNT(DesertCastle_unkCol68_ColTris), DesertCastle_unkCol68_ColVerts, DesertCastle_unkCol68_ColTris, &DesertCastle_unkCol68_BoundBox
 };
 
 Vec3f DesertCastle_unkCol69_ColVerts[] = {
@@ -3237,8 +3237,8 @@ Rect3D DesertCastle_unkCol69_BoundBox = {
     #include "assets/levelGroup/DesertCastle/unkCol69/unkCol69.boundBox.inc.c"
 };
 
-ModelCollision DesertCastle_unkCol69_ColH = {
-8, 6, DesertCastle_unkCol69_ColVerts, DesertCastle_unkCol69_ColTris, &DesertCastle_unkCol69_BoundBox
+ModelCollision DesertCastle_unkCol69_collision = {
+    ARRAY_COUNT(DesertCastle_unkCol69_ColVerts), ARRAY_COUNT(DesertCastle_unkCol69_ColTris), DesertCastle_unkCol69_ColVerts, DesertCastle_unkCol69_ColTris, &DesertCastle_unkCol69_BoundBox
 };
 
 Vec3f DesertCastle_unkCol70_ColVerts[] = {
@@ -3253,8 +3253,8 @@ Rect3D DesertCastle_unkCol70_BoundBox = {
     #include "assets/levelGroup/DesertCastle/unkCol70/unkCol70.boundBox.inc.c"
 };
 
-ModelCollision DesertCastle_unkCol70_ColH = {
-18, 32, DesertCastle_unkCol70_ColVerts, DesertCastle_unkCol70_ColTris, &DesertCastle_unkCol70_BoundBox
+ModelCollision DesertCastle_unkCol70_collision = {
+    ARRAY_COUNT(DesertCastle_unkCol70_ColVerts), ARRAY_COUNT(DesertCastle_unkCol70_ColTris), DesertCastle_unkCol70_ColVerts, DesertCastle_unkCol70_ColTris, &DesertCastle_unkCol70_BoundBox
 };
 
 Vec3f DesertCastle_unkCol71_ColVerts[] = {
@@ -3269,8 +3269,8 @@ Rect3D DesertCastle_unkCol71_BoundBox = {
     #include "assets/levelGroup/DesertCastle/unkCol71/unkCol71.boundBox.inc.c"
 };
 
-ModelCollision DesertCastle_unkCol71_ColH = {
-8, 6, DesertCastle_unkCol71_ColVerts, DesertCastle_unkCol71_ColTris, &DesertCastle_unkCol71_BoundBox
+ModelCollision DesertCastle_unkCol71_collision = {
+    ARRAY_COUNT(DesertCastle_unkCol71_ColVerts), ARRAY_COUNT(DesertCastle_unkCol71_ColTris), DesertCastle_unkCol71_ColVerts, DesertCastle_unkCol71_ColTris, &DesertCastle_unkCol71_BoundBox
 };
 
 Vec3f DesertCastle_unkCol72_ColVerts[] = {
@@ -3285,8 +3285,8 @@ Rect3D DesertCastle_unkCol72_BoundBox = {
     #include "assets/levelGroup/DesertCastle/unkCol72/unkCol72.boundBox.inc.c"
 };
 
-ModelCollision DesertCastle_unkCol72_ColH = {
-14, 22, DesertCastle_unkCol72_ColVerts, DesertCastle_unkCol72_ColTris, &DesertCastle_unkCol72_BoundBox
+ModelCollision DesertCastle_unkCol72_collision = {
+    ARRAY_COUNT(DesertCastle_unkCol72_ColVerts), ARRAY_COUNT(DesertCastle_unkCol72_ColTris), DesertCastle_unkCol72_ColVerts, DesertCastle_unkCol72_ColTris, &DesertCastle_unkCol72_BoundBox
 };
 
 Vec3f DesertCastle_unkCol73_ColVerts[] = {
@@ -3301,8 +3301,8 @@ Rect3D DesertCastle_unkCol73_BoundBox = {
     #include "assets/levelGroup/DesertCastle/unkCol73/unkCol73.boundBox.inc.c"
 };
 
-ModelCollision DesertCastle_unkCol73_ColH = {
-8, 8, DesertCastle_unkCol73_ColVerts, DesertCastle_unkCol73_ColTris, &DesertCastle_unkCol73_BoundBox
+ModelCollision DesertCastle_unkCol73_collision = {
+    ARRAY_COUNT(DesertCastle_unkCol73_ColVerts), ARRAY_COUNT(DesertCastle_unkCol73_ColTris), DesertCastle_unkCol73_ColVerts, DesertCastle_unkCol73_ColTris, &DesertCastle_unkCol73_BoundBox
 };
 
 Vec3f DesertCastle_unkCol74_ColVerts[] = {
@@ -3317,8 +3317,8 @@ Rect3D DesertCastle_unkCol74_BoundBox = {
     #include "assets/levelGroup/DesertCastle/unkCol74/unkCol74.boundBox.inc.c"
 };
 
-ModelCollision DesertCastle_unkCol74_ColH = {
-16, 12, DesertCastle_unkCol74_ColVerts, DesertCastle_unkCol74_ColTris, &DesertCastle_unkCol74_BoundBox
+ModelCollision DesertCastle_unkCol74_collision = {
+    ARRAY_COUNT(DesertCastle_unkCol74_ColVerts), ARRAY_COUNT(DesertCastle_unkCol74_ColTris), DesertCastle_unkCol74_ColVerts, DesertCastle_unkCol74_ColTris, &DesertCastle_unkCol74_BoundBox
 };
 
 Vec3f DesertCastle_unkCol75_ColVerts[] = {
@@ -3333,8 +3333,8 @@ Rect3D DesertCastle_unkCol75_BoundBox = {
     #include "assets/levelGroup/DesertCastle/unkCol75/unkCol75.boundBox.inc.c"
 };
 
-ModelCollision DesertCastle_unkCol75_ColH = {
-8, 12, DesertCastle_unkCol75_ColVerts, DesertCastle_unkCol75_ColTris, &DesertCastle_unkCol75_BoundBox
+ModelCollision DesertCastle_unkCol75_collision = {
+    ARRAY_COUNT(DesertCastle_unkCol75_ColVerts), ARRAY_COUNT(DesertCastle_unkCol75_ColTris), DesertCastle_unkCol75_ColVerts, DesertCastle_unkCol75_ColTris, &DesertCastle_unkCol75_BoundBox
 };
 
 Vec3f DesertCastle_unkCol76_ColVerts[] = {
@@ -3349,8 +3349,8 @@ Rect3D DesertCastle_unkCol76_BoundBox = {
     #include "assets/levelGroup/DesertCastle/unkCol76/unkCol76.boundBox.inc.c"
 };
 
-ModelCollision DesertCastle_unkCol76_ColH = {
-17, 20, DesertCastle_unkCol76_ColVerts, DesertCastle_unkCol76_ColTris, &DesertCastle_unkCol76_BoundBox
+ModelCollision DesertCastle_unkCol76_collision = {
+    ARRAY_COUNT(DesertCastle_unkCol76_ColVerts), ARRAY_COUNT(DesertCastle_unkCol76_ColTris), DesertCastle_unkCol76_ColVerts, DesertCastle_unkCol76_ColTris, &DesertCastle_unkCol76_BoundBox
 };
 
 Vec3f DesertCastle_unkCol77_ColVerts[] = {
@@ -3365,8 +3365,8 @@ Rect3D DesertCastle_unkCol77_BoundBox = {
     #include "assets/levelGroup/DesertCastle/unkCol77/unkCol77.boundBox.inc.c"
 };
 
-ModelCollision DesertCastle_unkCol77_ColH = {
-15, 12, DesertCastle_unkCol77_ColVerts, DesertCastle_unkCol77_ColTris, &DesertCastle_unkCol77_BoundBox
+ModelCollision DesertCastle_unkCol77_collision = {
+    ARRAY_COUNT(DesertCastle_unkCol77_ColVerts), ARRAY_COUNT(DesertCastle_unkCol77_ColTris), DesertCastle_unkCol77_ColVerts, DesertCastle_unkCol77_ColTris, &DesertCastle_unkCol77_BoundBox
 };
 
 Vec3f DesertCastle_unkCol78_ColVerts[] = {
@@ -3381,8 +3381,8 @@ Rect3D DesertCastle_unkCol78_BoundBox = {
     #include "assets/levelGroup/DesertCastle/unkCol78/unkCol78.boundBox.inc.c"
 };
 
-ModelCollision DesertCastle_unkCol78_ColH = {
-16, 12, DesertCastle_unkCol78_ColVerts, DesertCastle_unkCol78_ColTris, &DesertCastle_unkCol78_BoundBox
+ModelCollision DesertCastle_unkCol78_collision = {
+    ARRAY_COUNT(DesertCastle_unkCol78_ColVerts), ARRAY_COUNT(DesertCastle_unkCol78_ColTris), DesertCastle_unkCol78_ColVerts, DesertCastle_unkCol78_ColTris, &DesertCastle_unkCol78_BoundBox
 };
 
 Vec3f DesertCastle_unkCol79_ColVerts[] = {
@@ -3397,8 +3397,8 @@ Rect3D DesertCastle_unkCol79_BoundBox = {
     #include "assets/levelGroup/DesertCastle/unkCol79/unkCol79.boundBox.inc.c"
 };
 
-ModelCollision DesertCastle_unkCol79_ColH = {
-9, 8, DesertCastle_unkCol79_ColVerts, DesertCastle_unkCol79_ColTris, &DesertCastle_unkCol79_BoundBox
+ModelCollision DesertCastle_unkCol79_collision = {
+    ARRAY_COUNT(DesertCastle_unkCol79_ColVerts), ARRAY_COUNT(DesertCastle_unkCol79_ColTris), DesertCastle_unkCol79_ColVerts, DesertCastle_unkCol79_ColTris, &DesertCastle_unkCol79_BoundBox
 };
 
 Vec3f DesertCastle_unkCol80_ColVerts[] = {
@@ -3413,8 +3413,8 @@ Rect3D DesertCastle_unkCol80_BoundBox = {
     #include "assets/levelGroup/DesertCastle/unkCol80/unkCol80.boundBox.inc.c"
 };
 
-ModelCollision DesertCastle_unkCol80_ColH = {
-9, 8, DesertCastle_unkCol80_ColVerts, DesertCastle_unkCol80_ColTris, &DesertCastle_unkCol80_BoundBox
+ModelCollision DesertCastle_unkCol80_collision = {
+    ARRAY_COUNT(DesertCastle_unkCol80_ColVerts), ARRAY_COUNT(DesertCastle_unkCol80_ColTris), DesertCastle_unkCol80_ColVerts, DesertCastle_unkCol80_ColTris, &DesertCastle_unkCol80_BoundBox
 };
 
 Vec3f DesertCastle_unkCol81_ColVerts[] = {
@@ -3429,8 +3429,8 @@ Rect3D DesertCastle_unkCol81_BoundBox = {
     #include "assets/levelGroup/DesertCastle/unkCol81/unkCol81.boundBox.inc.c"
 };
 
-ModelCollision DesertCastle_unkCol81_ColH = {
-9, 8, DesertCastle_unkCol81_ColVerts, DesertCastle_unkCol81_ColTris, &DesertCastle_unkCol81_BoundBox
+ModelCollision DesertCastle_unkCol81_collision = {
+    ARRAY_COUNT(DesertCastle_unkCol81_ColVerts), ARRAY_COUNT(DesertCastle_unkCol81_ColTris), DesertCastle_unkCol81_ColVerts, DesertCastle_unkCol81_ColTris, &DesertCastle_unkCol81_BoundBox
 };
 
 Vec3f DesertCastle_unkCol82_ColVerts[] = {
@@ -3445,8 +3445,8 @@ Rect3D DesertCastle_unkCol82_BoundBox = {
     #include "assets/levelGroup/DesertCastle/unkCol82/unkCol82.boundBox.inc.c"
 };
 
-ModelCollision DesertCastle_unkCol82_ColH = {
-12, 16, DesertCastle_unkCol82_ColVerts, DesertCastle_unkCol82_ColTris, &DesertCastle_unkCol82_BoundBox
+ModelCollision DesertCastle_unkCol82_collision = {
+    ARRAY_COUNT(DesertCastle_unkCol82_ColVerts), ARRAY_COUNT(DesertCastle_unkCol82_ColTris), DesertCastle_unkCol82_ColVerts, DesertCastle_unkCol82_ColTris, &DesertCastle_unkCol82_BoundBox
 };
 
 Vec3f DesertCastle_unkCol83_ColVerts[] = {
@@ -3461,8 +3461,8 @@ Rect3D DesertCastle_unkCol83_BoundBox = {
     #include "assets/levelGroup/DesertCastle/unkCol83/unkCol83.boundBox.inc.c"
 };
 
-ModelCollision DesertCastle_unkCol83_ColH = {
-16, 19, DesertCastle_unkCol83_ColVerts, DesertCastle_unkCol83_ColTris, &DesertCastle_unkCol83_BoundBox
+ModelCollision DesertCastle_unkCol83_collision = {
+    ARRAY_COUNT(DesertCastle_unkCol83_ColVerts), ARRAY_COUNT(DesertCastle_unkCol83_ColTris), DesertCastle_unkCol83_ColVerts, DesertCastle_unkCol83_ColTris, &DesertCastle_unkCol83_BoundBox
 };
 
 Vec3f DesertCastle_unkCol84_ColVerts[] = {
@@ -3477,8 +3477,8 @@ Rect3D DesertCastle_unkCol84_BoundBox = {
     #include "assets/levelGroup/DesertCastle/unkCol84/unkCol84.boundBox.inc.c"
 };
 
-ModelCollision DesertCastle_unkCol84_ColH = {
-28, 40, DesertCastle_unkCol84_ColVerts, DesertCastle_unkCol84_ColTris, &DesertCastle_unkCol84_BoundBox
+ModelCollision DesertCastle_unkCol84_collision = {
+    ARRAY_COUNT(DesertCastle_unkCol84_ColVerts), ARRAY_COUNT(DesertCastle_unkCol84_ColTris), DesertCastle_unkCol84_ColVerts, DesertCastle_unkCol84_ColTris, &DesertCastle_unkCol84_BoundBox
 };
 
 Vec3f DesertCastle_unkCol85_ColVerts[] = {
@@ -3493,8 +3493,8 @@ Rect3D DesertCastle_unkCol85_BoundBox = {
     #include "assets/levelGroup/DesertCastle/unkCol85/unkCol85.boundBox.inc.c"
 };
 
-ModelCollision DesertCastle_unkCol85_ColH = {
-12, 20, DesertCastle_unkCol85_ColVerts, DesertCastle_unkCol85_ColTris, &DesertCastle_unkCol85_BoundBox
+ModelCollision DesertCastle_unkCol85_collision = {
+    ARRAY_COUNT(DesertCastle_unkCol85_ColVerts), ARRAY_COUNT(DesertCastle_unkCol85_ColTris), DesertCastle_unkCol85_ColVerts, DesertCastle_unkCol85_ColTris, &DesertCastle_unkCol85_BoundBox
 };
 
 Vec3f DesertCastle_unkCol86_ColVerts[] = {
@@ -3509,8 +3509,8 @@ Rect3D DesertCastle_unkCol86_BoundBox = {
     #include "assets/levelGroup/DesertCastle/unkCol86/unkCol86.boundBox.inc.c"
 };
 
-ModelCollision DesertCastle_unkCol86_ColH = {
-12, 20, DesertCastle_unkCol86_ColVerts, DesertCastle_unkCol86_ColTris, &DesertCastle_unkCol86_BoundBox
+ModelCollision DesertCastle_unkCol86_collision = {
+    ARRAY_COUNT(DesertCastle_unkCol86_ColVerts), ARRAY_COUNT(DesertCastle_unkCol86_ColTris), DesertCastle_unkCol86_ColVerts, DesertCastle_unkCol86_ColTris, &DesertCastle_unkCol86_BoundBox
 };
 
 Vec3f DesertCastle_unkCol87_ColVerts[] = {
@@ -3525,8 +3525,8 @@ Rect3D DesertCastle_unkCol87_BoundBox = {
     #include "assets/levelGroup/DesertCastle/unkCol87/unkCol87.boundBox.inc.c"
 };
 
-ModelCollision DesertCastle_unkCol87_ColH = {
-8, 12, DesertCastle_unkCol87_ColVerts, DesertCastle_unkCol87_ColTris, &DesertCastle_unkCol87_BoundBox
+ModelCollision DesertCastle_unkCol87_collision = {
+    ARRAY_COUNT(DesertCastle_unkCol87_ColVerts), ARRAY_COUNT(DesertCastle_unkCol87_ColTris), DesertCastle_unkCol87_ColVerts, DesertCastle_unkCol87_ColTris, &DesertCastle_unkCol87_BoundBox
 };
 
 Vec3f DesertCastle_unkCol88_ColVerts[] = {
@@ -3541,8 +3541,8 @@ Rect3D DesertCastle_unkCol88_BoundBox = {
     #include "assets/levelGroup/DesertCastle/unkCol88/unkCol88.boundBox.inc.c"
 };
 
-ModelCollision DesertCastle_unkCol88_ColH = {
-8, 12, DesertCastle_unkCol88_ColVerts, DesertCastle_unkCol88_ColTris, &DesertCastle_unkCol88_BoundBox
+ModelCollision DesertCastle_unkCol88_collision = {
+    ARRAY_COUNT(DesertCastle_unkCol88_ColVerts), ARRAY_COUNT(DesertCastle_unkCol88_ColTris), DesertCastle_unkCol88_ColVerts, DesertCastle_unkCol88_ColTris, &DesertCastle_unkCol88_BoundBox
 };
 
 Vec3f DesertCastle_unkCol89_ColVerts[] = {
@@ -3557,8 +3557,8 @@ Rect3D DesertCastle_unkCol89_BoundBox = {
     #include "assets/levelGroup/DesertCastle/unkCol89/unkCol89.boundBox.inc.c"
 };
 
-ModelCollision DesertCastle_unkCol89_ColH = {
-6, 4, DesertCastle_unkCol89_ColVerts, DesertCastle_unkCol89_ColTris, &DesertCastle_unkCol89_BoundBox
+ModelCollision DesertCastle_unkCol89_collision = {
+    ARRAY_COUNT(DesertCastle_unkCol89_ColVerts), ARRAY_COUNT(DesertCastle_unkCol89_ColTris), DesertCastle_unkCol89_ColVerts, DesertCastle_unkCol89_ColTris, &DesertCastle_unkCol89_BoundBox
 };
 
 Vec3f DesertCastle_unkCol90_ColVerts[] = {
@@ -3573,8 +3573,8 @@ Rect3D DesertCastle_unkCol90_BoundBox = {
     #include "assets/levelGroup/DesertCastle/unkCol90/unkCol90.boundBox.inc.c"
 };
 
-ModelCollision DesertCastle_unkCol90_ColH = {
-10, 16, DesertCastle_unkCol90_ColVerts, DesertCastle_unkCol90_ColTris, &DesertCastle_unkCol90_BoundBox
+ModelCollision DesertCastle_unkCol90_collision = {
+    ARRAY_COUNT(DesertCastle_unkCol90_ColVerts), ARRAY_COUNT(DesertCastle_unkCol90_ColTris), DesertCastle_unkCol90_ColVerts, DesertCastle_unkCol90_ColTris, &DesertCastle_unkCol90_BoundBox
 };
 Mtx DesertCastle_IMtx93 = IDENTITY;
 
@@ -3799,7 +3799,7 @@ Mtx DesertCastle_unk1_Animarr[2][3] = {
 };
 
 AnimPointer DesertCastle_unk1Pointers_Animp[1] = {
-{&DesertCastle_unk1Header_Animh.frames, &DesertCastle_unk1Header_Animh.objects, &DesertCastle_unk1_Animarr[0][0]}
+{&DesertCastle_unk1Header_Animh.frames, &DesertCastle_unk1Header_Animh.objects, DesertCastle_unk1_Animarr[0]}
 };
 
 Anim DesertCastle_unk2Header_Animh = {
@@ -3811,7 +3811,7 @@ Mtx DesertCastle_unk2_Animarr[5][14] = {
 };
 
 AnimPointer DesertCastle_unk2Pointers_Animp[1] = {
-{&DesertCastle_unk2Header_Animh.frames, &DesertCastle_unk2Header_Animh.objects, &DesertCastle_unk2_Animarr[0][0]}
+{&DesertCastle_unk2Header_Animh.frames, &DesertCastle_unk2Header_Animh.objects, DesertCastle_unk2_Animarr[0]}
 };
 
 Anim DesertCastle_unk3Header_Animh = {
@@ -3823,5 +3823,5 @@ Mtx DesertCastle_unk3_Animarr[1][1] = {
 };
 
 AnimPointer DesertCastle_unk3Pointers_Animp[1] = {
-{&DesertCastle_unk3Header_Animh.frames, &DesertCastle_unk3Header_Animh.objects, &DesertCastle_unk3_Animarr[0][0]}
+{&DesertCastle_unk3Header_Animh.frames, &DesertCastle_unk3Header_Animh.objects, DesertCastle_unk3_Animarr[0]}
 };

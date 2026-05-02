@@ -3,13 +3,13 @@
 #include "PR/rcp.h"
 
 __OSViContext vi[2] = {0};
-__OSViContext *__osViCurr = &vi[0];
+__OSViContext *__osViCurr = vi;
 __OSViContext *__osViNext = &vi[1];
 s32 osViClock = VI_NTSC_CLOCK;
 
 void __osViInit(void) {
 	_bzero(vi, sizeof(vi));
-	__osViCurr = &vi[0];
+	__osViCurr = vi;
 	__osViNext = &vi[1];
 	__osViNext->retraceCount = 1;
 	__osViCurr->retraceCount = 1;

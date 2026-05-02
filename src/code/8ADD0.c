@@ -320,7 +320,7 @@ void func_800B1DA0(Collider* arg0, s32 arg1) {
 
 // Squish player if they are in the squish zone (given by coords not args)
 void func_800B2070(s32 arg0) {
-    PlayerActor* gPlayer = &gPlayerActors[0];       // Player One
+    PlayerActor* gPlayer = gPlayerActors;       // Player One
     Rect3D rect;
     Vec3f vec;
 
@@ -1746,10 +1746,10 @@ void func_800C1458(s32 arg0) {
     }
 }
 
-//TODO: check if this should be &gPlayerActors[0] or gPlayerActors
+//TODO: check if this should be gPlayerActors or gPlayerActors
 void func_800C1510(s32 arg0, s32 arg1) {
     D_802039B4 = 1;
-    func_800C1204(arg0, &gPlayerActors[0], 1,  arg1, 1);
+    func_800C1204(arg0, gPlayerActors, 1,  arg1, 1);
 }
 
 s32 func_800C1550(s32 arg0) {
@@ -1856,7 +1856,7 @@ void func_800C1C64(s32 arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C2820.s")
 
 void func_800C29D8(s32 arg0) {
-    func_800C2670(arg0, &gPlayerActors[0], 1);
+    func_800C2670(arg0, gPlayerActors, 1);
 }
 
 void func_800C2A00(void) {
@@ -2216,9 +2216,9 @@ void func_800C88AC(void) {
     }
 }
 
-//TODO: check if this should be &gPlayerActors[0] or gPlayerActors
+//TODO: check if this should be gPlayerActors or gPlayerActors
 void func_800C88D0(void) {
-    func_800C56D4(&gPlayerActors[0]);
+    func_800C56D4(gPlayerActors);
 }
 
 

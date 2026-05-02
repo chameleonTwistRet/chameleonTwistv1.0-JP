@@ -35,249 +35,249 @@ extern unsigned char Global_JLCaveFadeTop_ci8_PAL[];
 extern unsigned char Global_JLCaveFadeTop_ci8_PNG[];
 
 extern Gfx Global_fallbackCube_Gfx[];
-extern ModelCollision Global_fallbackCube_ColH;
+extern ModelCollision Global_fallbackCube_collision;
 extern Gfx Global_exitShadowSouth_Gfx[];
-extern ModelCollision Global_exitShadowSouth_ColH;
+extern ModelCollision Global_exitShadowSouth_collision;
 extern Gfx Global_exitShadowNorth_Gfx[];
-extern ModelCollision Global_exitShadowNorth_ColH;
+extern ModelCollision Global_exitShadowNorth_collision;
 extern Gfx Global_exitShadowEast_Gfx[];
-extern ModelCollision Global_exitShadowEast_ColH;
+extern ModelCollision Global_exitShadowEast_collision;
 extern Gfx Global_exitShadowWest_Gfx[];
-extern ModelCollision Global_exitShadowWest_ColH;
+extern ModelCollision Global_exitShadowWest_collision;
 extern Gfx Global_ALBLExit_Gfx[];
-extern ModelCollision Global_ALBLExit_ColH;
+extern ModelCollision Global_ALBLExit_collision;
 extern Gfx Global_sandPit_Gfx[];
-extern ModelCollision Global_sandPit_ColH;
+extern ModelCollision Global_sandPit_collision;
 extern Gfx Global_BossBridge_Gfx[];
-extern ModelCollision Global_BossBridge_ColH;
+extern ModelCollision Global_BossBridge_collision;
 extern Gfx Global_ALPole_Gfx[];
-extern ModelCollision Global_ALPole_ColH;
+extern ModelCollision Global_ALPole_collision;
 extern Gfx Global_ALBLDoor_Gfx[];
-extern ModelCollision Global_ALBLDoor_ColH;
+extern ModelCollision Global_ALBLDoor_collision;
 extern Gfx Global_ALSpinDoor_Gfx[];
-extern ModelCollision Global_ALSpinDoor_ColH;
+extern ModelCollision Global_ALSpinDoor_collision;
 extern Gfx Global_BLLavaFloor_Gfx[];
-extern ModelCollision Global_BLLavaFloor_ColH;
+extern ModelCollision Global_BLLavaFloor_collision;
 extern Gfx Global_BLLava_Gfx[];
-extern ModelCollision Global_BLLava_ColH;
+extern ModelCollision Global_BLLava_collision;
 extern Gfx Global_BLLava2_Gfx[];
-extern ModelCollision Global_BLLava2_ColH;
+extern ModelCollision Global_BLLava2_collision;
 extern Gfx Global_BLLava3_Gfx[];
-extern ModelCollision Global_BLLava3_ColH;
+extern ModelCollision Global_BLLava3_collision;
 extern Gfx Global_BLLava4_Gfx[];
-extern ModelCollision Global_BLLava4_ColH;
+extern ModelCollision Global_BLLava4_collision;
 extern Gfx Global_BLLava5_Gfx[];
-extern ModelCollision Global_BLLava5_ColH;
+extern ModelCollision Global_BLLava5_collision;
 extern Gfx Global_BLLava6_Gfx[];
-extern ModelCollision Global_BLLava6_ColH;
+extern ModelCollision Global_BLLava6_collision;
 extern Gfx Global_BLLava7_Gfx[];
-extern ModelCollision Global_BLLava7_ColH;
+extern ModelCollision Global_BLLava7_collision;
 extern Gfx Global_BLLava8_Gfx[];
-extern ModelCollision Global_BLLava8_ColH;
+extern ModelCollision Global_BLLava8_collision;
 extern Gfx Global_BLDestructableTop_Gfx[];
-extern ModelCollision Global_BLDestructableTop_ColH;
+extern ModelCollision Global_BLDestructableTop_collision;
 extern Gfx Global_BLMetalBridge_Gfx[];
-extern ModelCollision Global_BLMetalBridge_ColH;
+extern ModelCollision Global_BLMetalBridge_collision;
 extern Gfx Global_KLExit_Gfx[];
-extern ModelCollision Global_KLExit_ColH;
+extern ModelCollision Global_KLExit_collision;
 extern Gfx Global_KLDoor_Gfx[];
-extern ModelCollision Global_KLDoor_ColH;
+extern ModelCollision Global_KLDoor_collision;
 extern Gfx Global_DCExit_Gfx[];
-extern ModelCollision Global_DCExit_ColH;
+extern ModelCollision Global_DCExit_collision;
 extern Gfx Global_TallExitShadow1_Gfx[];
-extern ModelCollision Global_TallExitShadow1_ColH;
+extern ModelCollision Global_TallExitShadow1_collision;
 extern Gfx Global_TallExitShadow2_Gfx[];
-extern ModelCollision Global_TallExitShadow2_ColH;
+extern ModelCollision Global_TallExitShadow2_collision;
 extern Gfx Global_GCExit1_Gfx[];
-extern ModelCollision Global_GCExit1_ColH;
+extern ModelCollision Global_GCExit1_collision;
 extern Gfx Global_GCExit2_Gfx[];
-extern ModelCollision Global_GCExit2_ColH;
+extern ModelCollision Global_GCExit2_collision;
 extern Gfx Global_trainingRoomLight_Gfx[];
-extern ModelCollision Global_trainingRoomLight_ColH;
+extern ModelCollision Global_trainingRoomLight_collision;
 extern Gfx Global_JLCaveExit1_Gfx[];
-extern ModelCollision Global_JLCaveExit1_ColH;
+extern ModelCollision Global_JLCaveExit1_collision;
 extern Gfx Global_JLCaveExit2_Gfx[];
-extern ModelCollision Global_JLCaveExit2_ColH;
+extern ModelCollision Global_JLCaveExit2_collision;
 extern Gfx Global_JLCaveExit3_Gfx[];
-extern ModelCollision Global_JLCaveExit3_ColH;
+extern ModelCollision Global_JLCaveExit3_collision;
 extern Gfx Global_JLCaveExit4_Gfx[];
-extern ModelCollision Global_JLCaveExit4_ColH;
+extern ModelCollision Global_JLCaveExit4_collision;
 extern Gfx Global_JLOutsideEntrance_Gfx[];
-extern ModelCollision Global_JLOutsideEntrance_ColH;
+extern ModelCollision Global_JLOutsideEntrance_collision;
 extern Gfx Global_JLFxCamPillar_Gfx[];
-extern ModelCollision Global_JLFxCamPillar_ColH;
+extern ModelCollision Global_JLFxCamPillar_collision;
 extern Gfx Global_JLCaveDoor_Gfx[];
-extern ModelCollision Global_JLCaveDoor_ColH;
+extern ModelCollision Global_JLCaveDoor_collision;
 extern Gfx JungleLand_lilypad_Gfx[];
-extern ModelCollision JungleLand_lilypad_ColH;
+extern ModelCollision JungleLand_lilypad_collision;
 extern Gfx JungleLand_vine_Gfx[];
-extern ModelCollision JungleLand_vine_ColH;
+extern ModelCollision JungleLand_vine_collision;
 extern Gfx JungleLand_fallenCrownLog_Gfx[];
-extern ModelCollision JungleLand_fallenCrownLog_ColH;
+extern ModelCollision JungleLand_fallenCrownLog_collision;
 extern Gfx JungleLand_unkLog_Gfx[];
-extern ModelCollision JungleLand_unkLog_ColH;
+extern ModelCollision JungleLand_unkLog_collision;
 extern Gfx JungleLand_fallenLogStump_Gfx[];
-extern ModelCollision JungleLand_fallenLogStump_ColH;
+extern ModelCollision JungleLand_fallenLogStump_collision;
 extern Gfx JungleLand_logTunnel_Gfx[];
-extern ModelCollision JungleLand_logTunnel_ColH;
+extern ModelCollision JungleLand_logTunnel_collision;
 extern Gfx JungleLand_waterfallRock_Gfx[];
-extern ModelCollision JungleLand_waterfallRock_ColH;
+extern ModelCollision JungleLand_waterfallRock_collision;
 extern Gfx JungleLand_extEntranceDoorFrame_Gfx[];
-extern ModelCollision JungleLand_extEntranceDoorFrame_ColH;
+extern ModelCollision JungleLand_extEntranceDoorFrame_collision;
 extern Gfx JungleLand_fallBridge_Gfx[];
-extern ModelCollision JungleLand_fallBridge_ColH;
+extern ModelCollision JungleLand_fallBridge_collision;
 extern Gfx JungleLand_ctCrate_Gfx[];
-extern ModelCollision JungleLand_ctCrate_ColH;
+extern ModelCollision JungleLand_ctCrate_collision;
 extern Gfx JungleLand_ctCrate2_Gfx[];
-extern ModelCollision JungleLand_ctCrate2_ColH;
+extern ModelCollision JungleLand_ctCrate2_collision;
 extern Gfx JungleLand_walkingPlank_Gfx[];
-extern ModelCollision JungleLand_walkingPlank_ColH;
+extern ModelCollision JungleLand_walkingPlank_collision;
 extern Gfx JungleLand_walkingPlank2_Gfx[];
-extern ModelCollision JungleLand_walkingPlank2_ColH;
+extern ModelCollision JungleLand_walkingPlank2_collision;
 extern Gfx JungleLand_walkingPlank3_Gfx[];
-extern ModelCollision JungleLand_walkingPlank3_ColH;
+extern ModelCollision JungleLand_walkingPlank3_collision;
 extern Gfx JungleLand_walkingPlank4_Gfx[];
-extern ModelCollision JungleLand_walkingPlank4_ColH;
+extern ModelCollision JungleLand_walkingPlank4_collision;
 extern Gfx JungleLand_singularPlank_Gfx[];
-extern ModelCollision JungleLand_singularPlank_ColH;
+extern ModelCollision JungleLand_singularPlank_collision;
 extern Gfx JungleLand_roomSixStartPlatform_Gfx[];
-extern ModelCollision JungleLand_roomSixStartPlatform_ColH;
+extern ModelCollision JungleLand_roomSixStartPlatform_collision;
 extern Gfx JungleLand_cavePlatform_Gfx[];
-extern ModelCollision JungleLand_cavePlatform_ColH;
+extern ModelCollision JungleLand_cavePlatform_collision;
 extern Gfx JungleLand_roomSixCrownPlatform_Gfx[];
-extern ModelCollision JungleLand_roomSixCrownPlatform_ColH;
+extern ModelCollision JungleLand_roomSixCrownPlatform_collision;
 extern Gfx JungleLand_roomSixSidePlatform_Gfx[];
-extern ModelCollision JungleLand_roomSixSidePlatform_ColH;
+extern ModelCollision JungleLand_roomSixSidePlatform_collision;
 extern Gfx JungleLand_roomSevenLava_Gfx[];
-extern ModelCollision JungleLand_roomSevenLava_ColH;
+extern ModelCollision JungleLand_roomSevenLava_collision;
 extern Gfx JungleLand_roomSevenFloor_Gfx[];
-extern ModelCollision JungleLand_roomSevenFloor_ColH;
+extern ModelCollision JungleLand_roomSevenFloor_collision;
 extern Gfx JungleLand_roomZeroLava_Gfx[];
-extern ModelCollision JungleLand_roomZeroLava_ColH;
+extern ModelCollision JungleLand_roomZeroLava_collision;
 extern Gfx JungleLand_roomOnePlatform_Gfx[];
-extern ModelCollision JungleLand_roomOnePlatform_ColH;
+extern ModelCollision JungleLand_roomOnePlatform_collision;
 extern Gfx JungleLand_roomSixCrownEdgePlatform_Gfx[];
-extern ModelCollision JungleLand_roomSixCrownEdgePlatform_ColH;
+extern ModelCollision JungleLand_roomSixCrownEdgePlatform_collision;
 extern Gfx JungleLand_roomSevenSpinRing_Gfx[];
-extern ModelCollision JungleLand_roomSevenSpinRing_ColH;
+extern ModelCollision JungleLand_roomSevenSpinRing_collision;
 extern Gfx JungleLand_woodBlock_Gfx[];
-extern ModelCollision JungleLand_woodBlock_ColH;
+extern ModelCollision JungleLand_woodBlock_collision;
 extern Gfx JungleLand_ropes_Gfx[];
-extern ModelCollision JungleLand_ropes_ColH;
+extern ModelCollision JungleLand_ropes_collision;
 extern Gfx JungleLand_railOne_Gfx[];
-extern ModelCollision JungleLand_railOne_ColH;
+extern ModelCollision JungleLand_railOne_collision;
 extern Gfx JungleLand_railTwo_Gfx[];
-extern ModelCollision JungleLand_railTwo_ColH;
+extern ModelCollision JungleLand_railTwo_collision;
 extern Gfx JungleLand_railThree_Gfx[];
-extern ModelCollision JungleLand_railThree_ColH;
+extern ModelCollision JungleLand_railThree_collision;
 extern Gfx JungleLand_railFour_Gfx[];
-extern ModelCollision JungleLand_railFour_ColH;
+extern ModelCollision JungleLand_railFour_collision;
 extern Gfx JungleLand_railFive_Gfx[];
-extern ModelCollision JungleLand_railFive_ColH;
+extern ModelCollision JungleLand_railFive_collision;
 extern Gfx JungleLand_railSix_Gfx[];
-extern ModelCollision JungleLand_railSix_ColH;
+extern ModelCollision JungleLand_railSix_collision;
 extern Gfx JungleLand_rail_Gfx[];
-extern ModelCollision JungleLand_rail_ColH;
+extern ModelCollision JungleLand_rail_collision;
 extern Gfx JungleLand_ctCrate3_Gfx[];
-extern ModelCollision JungleLand_ctCrate3_ColH;
+extern ModelCollision JungleLand_ctCrate3_collision;
 extern Gfx JungleLand_logOne_Gfx[];
-extern ModelCollision JungleLand_logOne_ColH;
+extern ModelCollision JungleLand_logOne_collision;
 extern Gfx JungleLand_fallBridgeSmall2_Gfx[];
-extern ModelCollision JungleLand_fallBridgeSmall2_ColH;
+extern ModelCollision JungleLand_fallBridgeSmall2_collision;
 extern Gfx JungleLand_logSetPiece_Gfx[];
-extern ModelCollision JungleLand_logSetPiece_ColH;
+extern ModelCollision JungleLand_logSetPiece_collision;
 extern Gfx JungleLand_holeLog_Gfx[];
-extern ModelCollision JungleLand_holeLog_ColH;
+extern ModelCollision JungleLand_holeLog_collision;
 extern Gfx JungleLand_waterfallGroundCollision_Gfx[];
-extern ModelCollision JungleLand_waterfallGroundCollision_ColH;
+extern ModelCollision JungleLand_waterfallGroundCollision_collision;
 extern Gfx JungleLand_waterfallBacksideCollision_Gfx[];
-extern ModelCollision JungleLand_waterfallBacksideCollision_ColH;
+extern ModelCollision JungleLand_waterfallBacksideCollision_collision;
 extern Gfx JungleLand_groundCollision_Gfx[];
-extern ModelCollision JungleLand_groundCollision_ColH;
+extern ModelCollision JungleLand_groundCollision_collision;
 extern Gfx JungleLand_holeLogBottom_Gfx[];
-extern ModelCollision JungleLand_holeLogBottom_ColH;
+extern ModelCollision JungleLand_holeLogBottom_collision;
 extern Gfx JungleLand_extThree_Gfx[];
-extern ModelCollision JungleLand_extThree_ColH;
+extern ModelCollision JungleLand_extThree_collision;
 extern Gfx JungleLand_extFour_Gfx[];
-extern ModelCollision JungleLand_extFour_ColH;
+extern ModelCollision JungleLand_extFour_collision;
 extern Gfx JungleLand_extZero_Gfx[];
-extern ModelCollision JungleLand_extZero_ColH;
+extern ModelCollision JungleLand_extZero_collision;
 extern Gfx JungleLand_extOne_Gfx[];
-extern ModelCollision JungleLand_extOne_ColH;
+extern ModelCollision JungleLand_extOne_collision;
 extern Gfx JungleLand_extTwo_Gfx[];
-extern ModelCollision JungleLand_extTwo_ColH;
+extern ModelCollision JungleLand_extTwo_collision;
 extern Gfx JungleLand_rockFloor_Gfx[];
-extern ModelCollision JungleLand_rockFloor_ColH;
+extern ModelCollision JungleLand_rockFloor_collision;
 extern Gfx JungleLand_rockFloor2_Gfx[];
-extern ModelCollision JungleLand_rockFloor2_ColH;
+extern ModelCollision JungleLand_rockFloor2_collision;
 extern Gfx JungleLand_extFive_Gfx[];
-extern ModelCollision JungleLand_extFive_ColH;
+extern ModelCollision JungleLand_extFive_collision;
 extern Gfx JungleLand_extThreePartTwo_Gfx[];
-extern ModelCollision JungleLand_extThreePartTwo_ColH;
+extern ModelCollision JungleLand_extThreePartTwo_collision;
 extern Gfx JungleLand_extFivePartTwo_Gfx[];
-extern ModelCollision JungleLand_extFivePartTwo_ColH;
+extern ModelCollision JungleLand_extFivePartTwo_collision;
 extern Gfx JungleLand_extSix_Gfx[];
-extern ModelCollision JungleLand_extSix_ColH;
+extern ModelCollision JungleLand_extSix_collision;
 extern Gfx JungleLand_extSeven_Gfx[];
-extern ModelCollision JungleLand_extSeven_ColH;
+extern ModelCollision JungleLand_extSeven_collision;
 extern Gfx JungleLand_extEight_Gfx[];
-extern ModelCollision JungleLand_extEight_ColH;
+extern ModelCollision JungleLand_extEight_collision;
 extern Gfx JungleLand_extEightBridge_Gfx[];
-extern ModelCollision JungleLand_extEightBridge_ColH;
+extern ModelCollision JungleLand_extEightBridge_collision;
 extern Gfx JungleLand_extNine_Gfx[];
-extern ModelCollision JungleLand_extNine_ColH;
+extern ModelCollision JungleLand_extNine_collision;
 extern Gfx JungleLand_extTen_Gfx[];
-extern ModelCollision JungleLand_extTen_ColH;
+extern ModelCollision JungleLand_extTen_collision;
 extern Gfx JungleLand_extEleven_Gfx[];
-extern ModelCollision JungleLand_extEleven_ColH;
+extern ModelCollision JungleLand_extEleven_collision;
 extern Gfx JungleLand_intZero_Gfx[];
-extern ModelCollision JungleLand_intZero_ColH;
+extern ModelCollision JungleLand_intZero_collision;
 extern Gfx JungleLand_intOne_Gfx[];
-extern ModelCollision JungleLand_intOne_ColH;
+extern ModelCollision JungleLand_intOne_collision;
 extern Gfx JungleLand_intTwo_Gfx[];
-extern ModelCollision JungleLand_intTwo_ColH;
+extern ModelCollision JungleLand_intTwo_collision;
 extern Gfx JungleLand_intThree_Gfx[];
-extern ModelCollision JungleLand_intThree_ColH;
+extern ModelCollision JungleLand_intThree_collision;
 extern Gfx JungleLand_intFour_Gfx[];
-extern ModelCollision JungleLand_intFour_ColH;
+extern ModelCollision JungleLand_intFour_collision;
 extern Gfx JungleLand_intSix_Gfx[];
-extern ModelCollision JungleLand_intSix_ColH;
+extern ModelCollision JungleLand_intSix_collision;
 extern Gfx JungleLand_intSeven_Gfx[];
-extern ModelCollision JungleLand_intSeven_ColH;
+extern ModelCollision JungleLand_intSeven_collision;
 extern Gfx JungleLand_intFive_Gfx[];
-extern ModelCollision JungleLand_intFive_ColH;
+extern ModelCollision JungleLand_intFive_collision;
 extern Gfx JungleLand_railFloorOne_Gfx[];
-extern ModelCollision JungleLand_railFloorOne_ColH;
+extern ModelCollision JungleLand_railFloorOne_collision;
 extern Gfx JungleLand_singleRailTrack_Gfx[];
-extern ModelCollision JungleLand_singleRailTrack_ColH;
+extern ModelCollision JungleLand_singleRailTrack_collision;
 extern Gfx JungleLand_singleRailTrack2_Gfx[];
-extern ModelCollision JungleLand_singleRailTrack2_ColH;
+extern ModelCollision JungleLand_singleRailTrack2_collision;
 extern Gfx JungleLand_branchRail_Gfx[];
-extern ModelCollision JungleLand_branchRail_ColH;
+extern ModelCollision JungleLand_branchRail_collision;
 extern Gfx JungleLand_turnRail_Gfx[];
-extern ModelCollision JungleLand_turnRail_ColH;
+extern ModelCollision JungleLand_turnRail_collision;
 extern Gfx JungleLand_singleRailTrack3_Gfx[];
-extern ModelCollision JungleLand_singleRailTrack3_ColH;
+extern ModelCollision JungleLand_singleRailTrack3_collision;
 extern Gfx JungleLand_brokenMinecartRail_Gfx[];
-extern ModelCollision JungleLand_brokenMinecartRail_ColH;
+extern ModelCollision JungleLand_brokenMinecartRail_collision;
 extern Gfx JungleLand_brokenMinecartRail2_Gfx[];
-extern ModelCollision JungleLand_brokenMinecartRail2_ColH;
+extern ModelCollision JungleLand_brokenMinecartRail2_collision;
 extern Gfx JungleLand_minecart_Gfx[];
-extern ModelCollision JungleLand_minecart_ColH;
+extern ModelCollision JungleLand_minecart_collision;
 extern Gfx JungleLand_doorFrame_Gfx[];
-extern ModelCollision JungleLand_doorFraMEd_ColH;
+extern ModelCollision JungleLand_doorFraMEd_collision;
 extern Gfx JungleLand_doorFrame2_Gfx[];
-extern ModelCollision JungleLand_doorFrame2_ColH;
+extern ModelCollision JungleLand_doorFrame2_collision;
 extern Gfx JungleLand_fernPlant_Gfx[];
-extern ModelCollision JungleLand_fernPlant_ColH;
+extern ModelCollision JungleLand_fernPlant_collision;
 extern Gfx JungleLand_waterfall_Gfx[];
-extern ModelCollision JungleLand_waterfall_ColH;
+extern ModelCollision JungleLand_waterfall_collision;
 extern Gfx JungleLand_water_Gfx[];
-extern ModelCollision JungleLand_water_ColH;
+extern ModelCollision JungleLand_water_collision;
 extern Gfx JungleLand_water2_Gfx[];
-extern ModelCollision JungleLand_water2_ColH;
+extern ModelCollision JungleLand_water2_collision;
 extern Gfx Global_pole_Gfx[];
-extern ModelCollision Global_pole_ColH;
+extern ModelCollision Global_pole_collision;
 
 Mtx JungleLand_IMtx1 = IDENTITY;
 
@@ -407,128 +407,128 @@ enum JungleLand_Models {
 };
 
 StageModel  JungleLand_stageModels[] = {
-    {&Global_fallbackCube_Gfx[0], &Global_fallbackCube_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&Global_exitShadowSouth_Gfx[0], &Global_exitShadowSouth_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&Global_exitShadowNorth_Gfx[0], &Global_exitShadowNorth_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&Global_exitShadowEast_Gfx[0], &Global_exitShadowEast_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&Global_exitShadowWest_Gfx[0], &Global_exitShadowWest_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&Global_ALBLExit_Gfx[0], &Global_ALBLExit_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&Global_sandPit_Gfx[0], &Global_sandPit_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&Global_BossBridge_Gfx[0], &Global_BossBridge_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&Global_ALPole_Gfx[0], &Global_ALPole_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&Global_ALBLDoor_Gfx[0], &Global_ALBLDoor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&Global_ALSpinDoor_Gfx[0], &Global_ALSpinDoor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&Global_BLLavaFloor_Gfx[0], &Global_BLLavaFloor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&Global_BLLava_Gfx[0], &Global_BLLava_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&Global_BLLava2_Gfx[0], &Global_BLLava2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&Global_BLLava3_Gfx[0], &Global_BLLava3_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&Global_BLLava4_Gfx[0], &Global_BLLava4_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&Global_BLLava5_Gfx[0], &Global_BLLava5_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&Global_BLLava6_Gfx[0], &Global_BLLava6_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&Global_BLLava7_Gfx[0], &Global_BLLava7_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&Global_BLLava8_Gfx[0], &Global_BLLava8_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&Global_BLDestructableTop_Gfx[0], &Global_BLDestructableTop_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&Global_BLMetalBridge_Gfx[0], &Global_BLMetalBridge_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&Global_KLExit_Gfx[0], &Global_KLExit_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&Global_KLDoor_Gfx[0], &Global_KLDoor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&Global_DCExit_Gfx[0], &Global_DCExit_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&Global_TallExitShadow1_Gfx[0], &Global_TallExitShadow1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&Global_TallExitShadow2_Gfx[0], &Global_TallExitShadow2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&Global_GCExit1_Gfx[0], &Global_GCExit1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&Global_GCExit2_Gfx[0], &Global_GCExit2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&Global_trainingRoomLight_Gfx[0], &Global_trainingRoomLight_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&Global_JLCaveExit1_Gfx[0], &Global_JLCaveExit1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&Global_JLCaveExit2_Gfx[0], &Global_JLCaveExit2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&Global_JLCaveExit3_Gfx[0], &Global_JLCaveExit3_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&Global_JLCaveExit4_Gfx[0], &Global_JLCaveExit4_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&Global_JLOutsideEntrance_Gfx[0], &Global_JLOutsideEntrance_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&Global_JLFxCamPillar_Gfx[0], &Global_JLFxCamPillar_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&Global_JLCaveDoor_Gfx[0], &Global_JLCaveDoor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&JungleLand_lilypad_Gfx[0], &JungleLand_lilypad_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&JungleLand_vine_Gfx[0], &JungleLand_vine_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&JungleLand_fallenCrownLog_Gfx[0], &JungleLand_fallenCrownLog_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&JungleLand_unkLog_Gfx[0], &JungleLand_unkLog_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&JungleLand_fallenLogStump_Gfx[0], &JungleLand_fallenLogStump_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&JungleLand_logTunnel_Gfx[0], &JungleLand_logTunnel_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&JungleLand_waterfallRock_Gfx[0], &JungleLand_waterfallRock_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&JungleLand_extEntranceDoorFrame_Gfx[0], &JungleLand_extEntranceDoorFrame_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&JungleLand_fallBridge_Gfx[0], &JungleLand_fallBridge_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&JungleLand_ctCrate_Gfx[0], &JungleLand_ctCrate_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&JungleLand_ctCrate2_Gfx[0], &JungleLand_ctCrate2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&JungleLand_walkingPlank_Gfx[0], &JungleLand_walkingPlank_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&JungleLand_walkingPlank2_Gfx[0], &JungleLand_walkingPlank2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&JungleLand_walkingPlank3_Gfx[0], &JungleLand_walkingPlank3_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&JungleLand_walkingPlank4_Gfx[0], &JungleLand_walkingPlank4_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&JungleLand_singularPlank_Gfx[0], &JungleLand_singularPlank_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&JungleLand_roomSixStartPlatform_Gfx[0], &JungleLand_roomSixStartPlatform_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&JungleLand_cavePlatform_Gfx[0], &JungleLand_cavePlatform_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&JungleLand_roomSixCrownPlatform_Gfx[0], &JungleLand_roomSixCrownPlatform_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&JungleLand_roomSixSidePlatform_Gfx[0], &JungleLand_roomSixSidePlatform_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&JungleLand_roomSevenLava_Gfx[0], &JungleLand_roomSevenLava_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&JungleLand_roomSevenFloor_Gfx[0], &JungleLand_roomSevenFloor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&JungleLand_roomZeroLava_Gfx[0], &JungleLand_roomZeroLava_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&JungleLand_roomOnePlatform_Gfx[0], &JungleLand_roomOnePlatform_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&JungleLand_roomSixCrownEdgePlatform_Gfx[0], &JungleLand_roomSixCrownEdgePlatform_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&JungleLand_roomSevenSpinRing_Gfx[0], &JungleLand_roomSevenSpinRing_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&JungleLand_woodBlock_Gfx[0], &JungleLand_woodBlock_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&JungleLand_ropes_Gfx[0], &JungleLand_ropes_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&JungleLand_railOne_Gfx[0], &JungleLand_railOne_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&JungleLand_railTwo_Gfx[0], &JungleLand_railTwo_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&JungleLand_railThree_Gfx[0], &JungleLand_railThree_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&JungleLand_railFour_Gfx[0], &JungleLand_railFour_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&JungleLand_railFive_Gfx[0], &JungleLand_railFive_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&JungleLand_railSix_Gfx[0], &JungleLand_railSix_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&JungleLand_rail_Gfx[0], &JungleLand_rail_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&JungleLand_ctCrate3_Gfx[0], &JungleLand_ctCrate3_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&JungleLand_logOne_Gfx[0], &JungleLand_logOne_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&JungleLand_fallBridgeSmall2_Gfx[0], &JungleLand_fallBridgeSmall2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&JungleLand_logSetPiece_Gfx[0], &JungleLand_logSetPiece_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&JungleLand_holeLog_Gfx[0], &JungleLand_holeLog_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&JungleLand_waterfallGroundCollision_Gfx[0], &JungleLand_waterfallGroundCollision_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&JungleLand_waterfallBacksideCollision_Gfx[0], &JungleLand_waterfallBacksideCollision_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&JungleLand_groundCollision_Gfx[0], &JungleLand_groundCollision_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&JungleLand_holeLogBottom_Gfx[0], &JungleLand_holeLogBottom_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&JungleLand_extThree_Gfx[0], &JungleLand_extThree_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&JungleLand_extFour_Gfx[0], &JungleLand_extFour_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&JungleLand_extZero_Gfx[0], &JungleLand_extZero_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&JungleLand_extOne_Gfx[0], &JungleLand_extOne_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&JungleLand_extTwo_Gfx[0], &JungleLand_extTwo_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&JungleLand_rockFloor_Gfx[0], &JungleLand_rockFloor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&JungleLand_rockFloor2_Gfx[0], &JungleLand_rockFloor2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&JungleLand_extFive_Gfx[0], &JungleLand_extFive_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&JungleLand_extThreePartTwo_Gfx[0], &JungleLand_extThreePartTwo_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&JungleLand_extFivePartTwo_Gfx[0], &JungleLand_extFivePartTwo_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&JungleLand_extSix_Gfx[0], &JungleLand_extSix_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&JungleLand_extSeven_Gfx[0], &JungleLand_extSeven_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&JungleLand_extEight_Gfx[0], &JungleLand_extEight_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&JungleLand_extEightBridge_Gfx[0], &JungleLand_extEightBridge_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&JungleLand_extNine_Gfx[0], &JungleLand_extNine_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&JungleLand_extTen_Gfx[0], &JungleLand_extTen_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&JungleLand_extEleven_Gfx[0], &JungleLand_extEleven_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&JungleLand_intZero_Gfx[0], &JungleLand_intZero_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&JungleLand_intOne_Gfx[0], &JungleLand_intOne_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&JungleLand_intTwo_Gfx[0], &JungleLand_intTwo_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&JungleLand_intThree_Gfx[0], &JungleLand_intThree_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&JungleLand_intFour_Gfx[0], &JungleLand_intFour_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&JungleLand_intSix_Gfx[0], &JungleLand_intSix_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&JungleLand_intSeven_Gfx[0], &JungleLand_intSeven_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&JungleLand_intFive_Gfx[0], &JungleLand_intFive_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&JungleLand_railFloorOne_Gfx[0], &JungleLand_railFloorOne_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&JungleLand_singleRailTrack_Gfx[0], &JungleLand_singleRailTrack_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&JungleLand_singleRailTrack2_Gfx[0], &JungleLand_singleRailTrack2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&JungleLand_branchRail_Gfx[0], &JungleLand_branchRail_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&JungleLand_turnRail_Gfx[0], &JungleLand_turnRail_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&JungleLand_singleRailTrack3_Gfx[0], &JungleLand_singleRailTrack3_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&JungleLand_brokenMinecartRail_Gfx[0], &JungleLand_brokenMinecartRail_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&JungleLand_brokenMinecartRail2_Gfx[0], &JungleLand_brokenMinecartRail2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&JungleLand_minecart_Gfx[0], &JungleLand_minecart_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&JungleLand_doorFrame_Gfx[0], &JungleLand_doorFraMEd_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&JungleLand_doorFrame2_Gfx[0], &JungleLand_doorFrame2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&JungleLand_fernPlant_Gfx[0], &JungleLand_fernPlant_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&JungleLand_waterfall_Gfx[0], &JungleLand_waterfall_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&JungleLand_water_Gfx[0], &JungleLand_water_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&JungleLand_water2_Gfx[0], &JungleLand_water2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&Global_pole_Gfx[0], &Global_pole_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, }
+    {Global_fallbackCube_Gfx, &Global_fallbackCube_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {Global_exitShadowSouth_Gfx, &Global_exitShadowSouth_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {Global_exitShadowNorth_Gfx, &Global_exitShadowNorth_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {Global_exitShadowEast_Gfx, &Global_exitShadowEast_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {Global_exitShadowWest_Gfx, &Global_exitShadowWest_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {Global_ALBLExit_Gfx, &Global_ALBLExit_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {Global_sandPit_Gfx, &Global_sandPit_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {Global_BossBridge_Gfx, &Global_BossBridge_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {Global_ALPole_Gfx, &Global_ALPole_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {Global_ALBLDoor_Gfx, &Global_ALBLDoor_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {Global_ALSpinDoor_Gfx, &Global_ALSpinDoor_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {Global_BLLavaFloor_Gfx, &Global_BLLavaFloor_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {Global_BLLava_Gfx, &Global_BLLava_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {Global_BLLava2_Gfx, &Global_BLLava2_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {Global_BLLava3_Gfx, &Global_BLLava3_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {Global_BLLava4_Gfx, &Global_BLLava4_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {Global_BLLava5_Gfx, &Global_BLLava5_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {Global_BLLava6_Gfx, &Global_BLLava6_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {Global_BLLava7_Gfx, &Global_BLLava7_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {Global_BLLava8_Gfx, &Global_BLLava8_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {Global_BLDestructableTop_Gfx, &Global_BLDestructableTop_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {Global_BLMetalBridge_Gfx, &Global_BLMetalBridge_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {Global_KLExit_Gfx, &Global_KLExit_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {Global_KLDoor_Gfx, &Global_KLDoor_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {Global_DCExit_Gfx, &Global_DCExit_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {Global_TallExitShadow1_Gfx, &Global_TallExitShadow1_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {Global_TallExitShadow2_Gfx, &Global_TallExitShadow2_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {Global_GCExit1_Gfx, &Global_GCExit1_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {Global_GCExit2_Gfx, &Global_GCExit2_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {Global_trainingRoomLight_Gfx, &Global_trainingRoomLight_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {Global_JLCaveExit1_Gfx, &Global_JLCaveExit1_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {Global_JLCaveExit2_Gfx, &Global_JLCaveExit2_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {Global_JLCaveExit3_Gfx, &Global_JLCaveExit3_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {Global_JLCaveExit4_Gfx, &Global_JLCaveExit4_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {Global_JLOutsideEntrance_Gfx, &Global_JLOutsideEntrance_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {Global_JLFxCamPillar_Gfx, &Global_JLFxCamPillar_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {Global_JLCaveDoor_Gfx, &Global_JLCaveDoor_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {JungleLand_lilypad_Gfx, &JungleLand_lilypad_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {JungleLand_vine_Gfx, &JungleLand_vine_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {JungleLand_fallenCrownLog_Gfx, &JungleLand_fallenCrownLog_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {JungleLand_unkLog_Gfx, &JungleLand_unkLog_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {JungleLand_fallenLogStump_Gfx, &JungleLand_fallenLogStump_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {JungleLand_logTunnel_Gfx, &JungleLand_logTunnel_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {JungleLand_waterfallRock_Gfx, &JungleLand_waterfallRock_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {JungleLand_extEntranceDoorFrame_Gfx, &JungleLand_extEntranceDoorFrame_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {JungleLand_fallBridge_Gfx, &JungleLand_fallBridge_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {JungleLand_ctCrate_Gfx, &JungleLand_ctCrate_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {JungleLand_ctCrate2_Gfx, &JungleLand_ctCrate2_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {JungleLand_walkingPlank_Gfx, &JungleLand_walkingPlank_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {JungleLand_walkingPlank2_Gfx, &JungleLand_walkingPlank2_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {JungleLand_walkingPlank3_Gfx, &JungleLand_walkingPlank3_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {JungleLand_walkingPlank4_Gfx, &JungleLand_walkingPlank4_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {JungleLand_singularPlank_Gfx, &JungleLand_singularPlank_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {JungleLand_roomSixStartPlatform_Gfx, &JungleLand_roomSixStartPlatform_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {JungleLand_cavePlatform_Gfx, &JungleLand_cavePlatform_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {JungleLand_roomSixCrownPlatform_Gfx, &JungleLand_roomSixCrownPlatform_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {JungleLand_roomSixSidePlatform_Gfx, &JungleLand_roomSixSidePlatform_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {JungleLand_roomSevenLava_Gfx, &JungleLand_roomSevenLava_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {JungleLand_roomSevenFloor_Gfx, &JungleLand_roomSevenFloor_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {JungleLand_roomZeroLava_Gfx, &JungleLand_roomZeroLava_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {JungleLand_roomOnePlatform_Gfx, &JungleLand_roomOnePlatform_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {JungleLand_roomSixCrownEdgePlatform_Gfx, &JungleLand_roomSixCrownEdgePlatform_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {JungleLand_roomSevenSpinRing_Gfx, &JungleLand_roomSevenSpinRing_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {JungleLand_woodBlock_Gfx, &JungleLand_woodBlock_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {JungleLand_ropes_Gfx, &JungleLand_ropes_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {JungleLand_railOne_Gfx, &JungleLand_railOne_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {JungleLand_railTwo_Gfx, &JungleLand_railTwo_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {JungleLand_railThree_Gfx, &JungleLand_railThree_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {JungleLand_railFour_Gfx, &JungleLand_railFour_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {JungleLand_railFive_Gfx, &JungleLand_railFive_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {JungleLand_railSix_Gfx, &JungleLand_railSix_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {JungleLand_rail_Gfx, &JungleLand_rail_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {JungleLand_ctCrate3_Gfx, &JungleLand_ctCrate3_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {JungleLand_logOne_Gfx, &JungleLand_logOne_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {JungleLand_fallBridgeSmall2_Gfx, &JungleLand_fallBridgeSmall2_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {JungleLand_logSetPiece_Gfx, &JungleLand_logSetPiece_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {JungleLand_holeLog_Gfx, &JungleLand_holeLog_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {JungleLand_waterfallGroundCollision_Gfx, &JungleLand_waterfallGroundCollision_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {JungleLand_waterfallBacksideCollision_Gfx, &JungleLand_waterfallBacksideCollision_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {JungleLand_groundCollision_Gfx, &JungleLand_groundCollision_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {JungleLand_holeLogBottom_Gfx, &JungleLand_holeLogBottom_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {JungleLand_extThree_Gfx, &JungleLand_extThree_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {JungleLand_extFour_Gfx, &JungleLand_extFour_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {JungleLand_extZero_Gfx, &JungleLand_extZero_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {JungleLand_extOne_Gfx, &JungleLand_extOne_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {JungleLand_extTwo_Gfx, &JungleLand_extTwo_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {JungleLand_rockFloor_Gfx, &JungleLand_rockFloor_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {JungleLand_rockFloor2_Gfx, &JungleLand_rockFloor2_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {JungleLand_extFive_Gfx, &JungleLand_extFive_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {JungleLand_extThreePartTwo_Gfx, &JungleLand_extThreePartTwo_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {JungleLand_extFivePartTwo_Gfx, &JungleLand_extFivePartTwo_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {JungleLand_extSix_Gfx, &JungleLand_extSix_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {JungleLand_extSeven_Gfx, &JungleLand_extSeven_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {JungleLand_extEight_Gfx, &JungleLand_extEight_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {JungleLand_extEightBridge_Gfx, &JungleLand_extEightBridge_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {JungleLand_extNine_Gfx, &JungleLand_extNine_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {JungleLand_extTen_Gfx, &JungleLand_extTen_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {JungleLand_extEleven_Gfx, &JungleLand_extEleven_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {JungleLand_intZero_Gfx, &JungleLand_intZero_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {JungleLand_intOne_Gfx, &JungleLand_intOne_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {JungleLand_intTwo_Gfx, &JungleLand_intTwo_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {JungleLand_intThree_Gfx, &JungleLand_intThree_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {JungleLand_intFour_Gfx, &JungleLand_intFour_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {JungleLand_intSix_Gfx, &JungleLand_intSix_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {JungleLand_intSeven_Gfx, &JungleLand_intSeven_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {JungleLand_intFive_Gfx, &JungleLand_intFive_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {JungleLand_railFloorOne_Gfx, &JungleLand_railFloorOne_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {JungleLand_singleRailTrack_Gfx, &JungleLand_singleRailTrack_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {JungleLand_singleRailTrack2_Gfx, &JungleLand_singleRailTrack2_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {JungleLand_branchRail_Gfx, &JungleLand_branchRail_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {JungleLand_turnRail_Gfx, &JungleLand_turnRail_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {JungleLand_singleRailTrack3_Gfx, &JungleLand_singleRailTrack3_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {JungleLand_brokenMinecartRail_Gfx, &JungleLand_brokenMinecartRail_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {JungleLand_brokenMinecartRail2_Gfx, &JungleLand_brokenMinecartRail2_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {JungleLand_minecart_Gfx, &JungleLand_minecart_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {JungleLand_doorFrame_Gfx, &JungleLand_doorFraMEd_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {JungleLand_doorFrame2_Gfx, &JungleLand_doorFrame2_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {JungleLand_fernPlant_Gfx, &JungleLand_fernPlant_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {JungleLand_waterfall_Gfx, &JungleLand_waterfall_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {JungleLand_water_Gfx, &JungleLand_water_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {JungleLand_water2_Gfx, &JungleLand_water2_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {Global_pole_Gfx, &Global_pole_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, }
 };
 
 unsigned char JungleLand_rabObjects_Bin[] = {
@@ -2485,8 +2485,8 @@ Rect3D JungleLand_lilypad_BoundBox = {
     #include "assets/levelGroup/JungleLand/lilypad/lilypad.boundBox.inc.c"
 };
 
-ModelCollision JungleLand_lilypad_ColH = {
-8, 6, JungleLand_lilypad_ColVerts, JungleLand_lilypad_ColTris, &JungleLand_lilypad_BoundBox
+ModelCollision JungleLand_lilypad_collision = {
+    ARRAY_COUNT(JungleLand_lilypad_ColVerts), ARRAY_COUNT(JungleLand_lilypad_ColTris), JungleLand_lilypad_ColVerts, JungleLand_lilypad_ColTris, &JungleLand_lilypad_BoundBox
 };
 
 Vec3f JungleLand_vine_ColVerts[] = {
@@ -2501,8 +2501,8 @@ Rect3D JungleLand_vine_BoundBox = {
     #include "assets/levelGroup/JungleLand/vine/vine.boundBox.inc.c"
 };
 
-ModelCollision JungleLand_vine_ColH = {
-4, 4, JungleLand_vine_ColVerts, JungleLand_vine_ColTris, &JungleLand_vine_BoundBox
+ModelCollision JungleLand_vine_collision = {
+    ARRAY_COUNT(JungleLand_vine_ColVerts), ARRAY_COUNT(JungleLand_vine_ColTris), JungleLand_vine_ColVerts, JungleLand_vine_ColTris, &JungleLand_vine_BoundBox
 };
 
 Vec3f JungleLand_fallenCrownLog_ColVerts[] = {
@@ -2517,8 +2517,8 @@ Rect3D JungleLand_fallenCrownLog_BoundBox = {
     #include "assets/levelGroup/JungleLand/fallenCrownLog/fallenCrownLog.boundBox.inc.c"
 };
 
-ModelCollision JungleLand_fallenCrownLog_ColH = {
-18, 32, JungleLand_fallenCrownLog_ColVerts, JungleLand_fallenCrownLog_ColTris, &JungleLand_fallenCrownLog_BoundBox
+ModelCollision JungleLand_fallenCrownLog_collision = {
+    ARRAY_COUNT(JungleLand_fallenCrownLog_ColVerts), ARRAY_COUNT(JungleLand_fallenCrownLog_ColTris), JungleLand_fallenCrownLog_ColVerts, JungleLand_fallenCrownLog_ColTris, &JungleLand_fallenCrownLog_BoundBox
 };
 
 Vec3f JungleLand_unkLog_ColVerts[] = {
@@ -2533,8 +2533,8 @@ Rect3D JungleLand_unkLog_BoundBox = {
     #include "assets/levelGroup/JungleLand/unkLog/unkLog.boundBox.inc.c"
 };
 
-ModelCollision JungleLand_unkLog_ColH = {
-12, 20, JungleLand_unkLog_ColVerts, JungleLand_unkLog_ColTris, &JungleLand_unkLog_BoundBox
+ModelCollision JungleLand_unkLog_collision = {
+    ARRAY_COUNT(JungleLand_unkLog_ColVerts), ARRAY_COUNT(JungleLand_unkLog_ColTris), JungleLand_unkLog_ColVerts, JungleLand_unkLog_ColTris, &JungleLand_unkLog_BoundBox
 };
 
 Vec3f JungleLand_fallenLogStump_ColVerts[] = {
@@ -2549,8 +2549,8 @@ Rect3D JungleLand_fallenLogStump_BoundBox = {
     #include "assets/levelGroup/JungleLand/fallenLogStump/fallenLogStump.boundBox.inc.c"
 };
 
-ModelCollision JungleLand_fallenLogStump_ColH = {
-12, 16, JungleLand_fallenLogStump_ColVerts, JungleLand_fallenLogStump_ColTris, &JungleLand_fallenLogStump_BoundBox
+ModelCollision JungleLand_fallenLogStump_collision = {
+    ARRAY_COUNT(JungleLand_fallenLogStump_ColVerts), ARRAY_COUNT(JungleLand_fallenLogStump_ColTris), JungleLand_fallenLogStump_ColVerts, JungleLand_fallenLogStump_ColTris, &JungleLand_fallenLogStump_BoundBox
 };
 
 Vec3f JungleLand_logTunnel_ColVerts[] = {
@@ -2565,8 +2565,8 @@ Rect3D JungleLand_logTunnel_BoundBox = {
     #include "assets/levelGroup/JungleLand/logTunnel/logTunnel.boundBox.inc.c"
 };
 
-ModelCollision JungleLand_logTunnel_ColH = {
-38, 62, JungleLand_logTunnel_ColVerts, JungleLand_logTunnel_ColTris, &JungleLand_logTunnel_BoundBox
+ModelCollision JungleLand_logTunnel_collision = {
+    ARRAY_COUNT(JungleLand_logTunnel_ColVerts), ARRAY_COUNT(JungleLand_logTunnel_ColTris), JungleLand_logTunnel_ColVerts, JungleLand_logTunnel_ColTris, &JungleLand_logTunnel_BoundBox
 };
 
 Vec3f JungleLand_waterfallRock_ColVerts[] = {
@@ -2581,8 +2581,8 @@ Rect3D JungleLand_waterfallRock_BoundBox = {
     #include "assets/levelGroup/JungleLand/waterfallRock/waterfallRock.boundBox.inc.c"
 };
 
-ModelCollision JungleLand_waterfallRock_ColH = {
-10, 13, JungleLand_waterfallRock_ColVerts, JungleLand_waterfallRock_ColTris, &JungleLand_waterfallRock_BoundBox
+ModelCollision JungleLand_waterfallRock_collision = {
+    ARRAY_COUNT(JungleLand_waterfallRock_ColVerts), ARRAY_COUNT(JungleLand_waterfallRock_ColTris), JungleLand_waterfallRock_ColVerts, JungleLand_waterfallRock_ColTris, &JungleLand_waterfallRock_BoundBox
 };
 
 Vec3f JungleLand_extEntranceDoorFrame_ColVerts[] = {
@@ -2597,8 +2597,8 @@ Rect3D JungleLand_extEntranceDoorFrame_BoundBox = {
     #include "assets/levelGroup/JungleLand/extEntranceDoorFrame/extEntranceDoorFrame.boundBox.inc.c"
 };
 
-ModelCollision JungleLand_extEntranceDoorFrame_ColH = {
-36, 46, JungleLand_extEntranceDoorFrame_ColVerts, JungleLand_extEntranceDoorFrame_ColTris, &JungleLand_extEntranceDoorFrame_BoundBox
+ModelCollision JungleLand_extEntranceDoorFrame_collision = {
+    ARRAY_COUNT(JungleLand_extEntranceDoorFrame_ColVerts), ARRAY_COUNT(JungleLand_extEntranceDoorFrame_ColTris), JungleLand_extEntranceDoorFrame_ColVerts, JungleLand_extEntranceDoorFrame_ColTris, &JungleLand_extEntranceDoorFrame_BoundBox
 };
 
 Vec3f JungleLand_fallBridge_ColVerts[] = {
@@ -2613,8 +2613,8 @@ Rect3D JungleLand_fallBridge_BoundBox = {
     #include "assets/levelGroup/JungleLand/fallBridge/fallBridge.boundBox.inc.c"
 };
 
-ModelCollision JungleLand_fallBridge_ColH = {
-4, 2, JungleLand_fallBridge_ColVerts, JungleLand_fallBridge_ColTris, &JungleLand_fallBridge_BoundBox
+ModelCollision JungleLand_fallBridge_collision = {
+    ARRAY_COUNT(JungleLand_fallBridge_ColVerts), ARRAY_COUNT(JungleLand_fallBridge_ColTris), JungleLand_fallBridge_ColVerts, JungleLand_fallBridge_ColTris, &JungleLand_fallBridge_BoundBox
 };
 
 Vec3f JungleLand_ctCrate_ColVerts[] = {
@@ -2629,8 +2629,8 @@ Rect3D JungleLand_ctCrate_BoundBox = {
     #include "assets/levelGroup/JungleLand/ctCrate/ctCrate.boundBox.inc.c"
 };
 
-ModelCollision JungleLand_ctCrate_ColH = {
-8, 10, JungleLand_ctCrate_ColVerts, JungleLand_ctCrate_ColTris, &JungleLand_ctCrate_BoundBox
+ModelCollision JungleLand_ctCrate_collision = {
+    ARRAY_COUNT(JungleLand_ctCrate_ColVerts), ARRAY_COUNT(JungleLand_ctCrate_ColTris), JungleLand_ctCrate_ColVerts, JungleLand_ctCrate_ColTris, &JungleLand_ctCrate_BoundBox
 };
 
 Vec3f JungleLand_ctCrate2_ColVerts[] = {
@@ -2645,8 +2645,8 @@ Rect3D JungleLand_ctCrate2_BoundBox = {
     #include "assets/levelGroup/JungleLand/ctCrate2/ctCrate2.boundBox.inc.c"
 };
 
-ModelCollision JungleLand_ctCrate2_ColH = {
-8, 10, JungleLand_ctCrate2_ColVerts, JungleLand_ctCrate2_ColTris, &JungleLand_ctCrate2_BoundBox
+ModelCollision JungleLand_ctCrate2_collision = {
+    ARRAY_COUNT(JungleLand_ctCrate2_ColVerts), ARRAY_COUNT(JungleLand_ctCrate2_ColTris), JungleLand_ctCrate2_ColVerts, JungleLand_ctCrate2_ColTris, &JungleLand_ctCrate2_BoundBox
 };
 
 Vec3f JungleLand_walkingPlank_ColVerts[] = {
@@ -2661,8 +2661,8 @@ Rect3D JungleLand_walkingPlank_BoundBox = {
     #include "assets/levelGroup/JungleLand/walkingPlank/walkingPlank.boundBox.inc.c"
 };
 
-ModelCollision JungleLand_walkingPlank_ColH = {
-8, 8, JungleLand_walkingPlank_ColVerts, JungleLand_walkingPlank_ColTris, &JungleLand_walkingPlank_BoundBox
+ModelCollision JungleLand_walkingPlank_collision = {
+    ARRAY_COUNT(JungleLand_walkingPlank_ColVerts), ARRAY_COUNT(JungleLand_walkingPlank_ColTris), JungleLand_walkingPlank_ColVerts, JungleLand_walkingPlank_ColTris, &JungleLand_walkingPlank_BoundBox
 };
 
 Vec3f JungleLand_walkingPlank2_ColVerts[] = {
@@ -2677,8 +2677,8 @@ Rect3D JungleLand_walkingPlank2_BoundBox = {
     #include "assets/levelGroup/JungleLand/walkingPlank2/walkingPlank2.boundBox.inc.c"
 };
 
-ModelCollision JungleLand_walkingPlank2_ColH = {
-8, 8, JungleLand_walkingPlank2_ColVerts, JungleLand_walkingPlank2_ColTris, &JungleLand_walkingPlank2_BoundBox
+ModelCollision JungleLand_walkingPlank2_collision = {
+    ARRAY_COUNT(JungleLand_walkingPlank2_ColVerts), ARRAY_COUNT(JungleLand_walkingPlank2_ColTris), JungleLand_walkingPlank2_ColVerts, JungleLand_walkingPlank2_ColTris, &JungleLand_walkingPlank2_BoundBox
 };
 
 Vec3f JungleLand_walkingPlank3_ColVerts[] = {
@@ -2693,8 +2693,8 @@ Rect3D JungleLand_walkingPlank3_BoundBox = {
     #include "assets/levelGroup/JungleLand/walkingPlank3/walkingPlank3.boundBox.inc.c"
 };
 
-ModelCollision JungleLand_walkingPlank3_ColH = {
-8, 8, JungleLand_walkingPlank3_ColVerts, JungleLand_walkingPlank3_ColTris, &JungleLand_walkingPlank3_BoundBox
+ModelCollision JungleLand_walkingPlank3_collision = {
+    ARRAY_COUNT(JungleLand_walkingPlank3_ColVerts), ARRAY_COUNT(JungleLand_walkingPlank3_ColTris), JungleLand_walkingPlank3_ColVerts, JungleLand_walkingPlank3_ColTris, &JungleLand_walkingPlank3_BoundBox
 };
 
 Vec3f JungleLand_walkingPlank4_ColVerts[] = {
@@ -2709,8 +2709,8 @@ Rect3D JungleLand_walkingPlank4_BoundBox = {
     #include "assets/levelGroup/JungleLand/walkingPlank4/walkingPlank4.boundBox.inc.c"
 };
 
-ModelCollision JungleLand_walkingPlank4_ColH = {
-8, 8, JungleLand_walkingPlank4_ColVerts, JungleLand_walkingPlank4_ColTris, &JungleLand_walkingPlank4_BoundBox
+ModelCollision JungleLand_walkingPlank4_collision = {
+    ARRAY_COUNT(JungleLand_walkingPlank4_ColVerts), ARRAY_COUNT(JungleLand_walkingPlank4_ColTris), JungleLand_walkingPlank4_ColVerts, JungleLand_walkingPlank4_ColTris, &JungleLand_walkingPlank4_BoundBox
 };
 
 Vec3f JungleLand_singularPlank_ColVerts[] = {
@@ -2725,8 +2725,8 @@ Rect3D JungleLand_singularPlank_BoundBox = {
     #include "assets/levelGroup/JungleLand/singularPlank/singularPlank.boundBox.inc.c"
 };
 
-ModelCollision JungleLand_singularPlank_ColH = {
-4, 2, JungleLand_singularPlank_ColVerts, JungleLand_singularPlank_ColTris, &JungleLand_singularPlank_BoundBox
+ModelCollision JungleLand_singularPlank_collision = {
+    ARRAY_COUNT(JungleLand_singularPlank_ColVerts), ARRAY_COUNT(JungleLand_singularPlank_ColTris), JungleLand_singularPlank_ColVerts, JungleLand_singularPlank_ColTris, &JungleLand_singularPlank_BoundBox
 };
 
 Vec3f JungleLand_roomSixStartPlatform_ColVerts[] = {
@@ -2741,8 +2741,8 @@ Rect3D JungleLand_roomSixStartPlatform_BoundBox = {
     #include "assets/levelGroup/JungleLand/roomSixStartPlatform/roomSixStartPlatform.boundBox.inc.c"
 };
 
-ModelCollision JungleLand_roomSixStartPlatform_ColH = {
-12, 14, JungleLand_roomSixStartPlatform_ColVerts, JungleLand_roomSixStartPlatform_ColTris, &JungleLand_roomSixStartPlatform_BoundBox
+ModelCollision JungleLand_roomSixStartPlatform_collision = {
+    ARRAY_COUNT(JungleLand_roomSixStartPlatform_ColVerts), ARRAY_COUNT(JungleLand_roomSixStartPlatform_ColTris), JungleLand_roomSixStartPlatform_ColVerts, JungleLand_roomSixStartPlatform_ColTris, &JungleLand_roomSixStartPlatform_BoundBox
 };
 
 Vec3f JungleLand_cavePlatform_ColVerts[] = {
@@ -2757,8 +2757,8 @@ Rect3D JungleLand_cavePlatform_BoundBox = {
     #include "assets/levelGroup/JungleLand/cavePlatform/cavePlatform.boundBox.inc.c"
 };
 
-ModelCollision JungleLand_cavePlatform_ColH = {
-8, 8, JungleLand_cavePlatform_ColVerts, JungleLand_cavePlatform_ColTris, &JungleLand_cavePlatform_BoundBox
+ModelCollision JungleLand_cavePlatform_collision = {
+    ARRAY_COUNT(JungleLand_cavePlatform_ColVerts), ARRAY_COUNT(JungleLand_cavePlatform_ColTris), JungleLand_cavePlatform_ColVerts, JungleLand_cavePlatform_ColTris, &JungleLand_cavePlatform_BoundBox
 };
 
 Vec3f JungleLand_roomSixCrownPlatform_ColVerts[] = {
@@ -2773,8 +2773,8 @@ Rect3D JungleLand_roomSixCrownPlatform_BoundBox = {
     #include "assets/levelGroup/JungleLand/roomSixCrownPlatform/roomSixCrownPlatform.boundBox.inc.c"
 };
 
-ModelCollision JungleLand_roomSixCrownPlatform_ColH = {
-12, 14, JungleLand_roomSixCrownPlatform_ColVerts, JungleLand_roomSixCrownPlatform_ColTris, &JungleLand_roomSixCrownPlatform_BoundBox
+ModelCollision JungleLand_roomSixCrownPlatform_collision = {
+    ARRAY_COUNT(JungleLand_roomSixCrownPlatform_ColVerts), ARRAY_COUNT(JungleLand_roomSixCrownPlatform_ColTris), JungleLand_roomSixCrownPlatform_ColVerts, JungleLand_roomSixCrownPlatform_ColTris, &JungleLand_roomSixCrownPlatform_BoundBox
 };
 
 Vec3f JungleLand_roomSixSidePlatform_ColVerts[] = {
@@ -2789,8 +2789,8 @@ Rect3D JungleLand_roomSixSidePlatform_BoundBox = {
     #include "assets/levelGroup/JungleLand/roomSixSidePlatform/roomSixSidePlatform.boundBox.inc.c"
 };
 
-ModelCollision JungleLand_roomSixSidePlatform_ColH = {
-15, 18, JungleLand_roomSixSidePlatform_ColVerts, JungleLand_roomSixSidePlatform_ColTris, &JungleLand_roomSixSidePlatform_BoundBox
+ModelCollision JungleLand_roomSixSidePlatform_collision = {
+    ARRAY_COUNT(JungleLand_roomSixSidePlatform_ColVerts), ARRAY_COUNT(JungleLand_roomSixSidePlatform_ColTris), JungleLand_roomSixSidePlatform_ColVerts, JungleLand_roomSixSidePlatform_ColTris, &JungleLand_roomSixSidePlatform_BoundBox
 };
 
 Vec3f JungleLand_roomSevenLava_ColVerts[] = {
@@ -2805,8 +2805,8 @@ Rect3D JungleLand_roomSevenLava_BoundBox = {
     #include "assets/levelGroup/JungleLand/roomSevenLava/roomSevenLava.boundBox.inc.c"
 };
 
-ModelCollision JungleLand_roomSevenLava_ColH = {
-12, 10, JungleLand_roomSevenLava_ColVerts, JungleLand_roomSevenLava_ColTris, &JungleLand_roomSevenLava_BoundBox
+ModelCollision JungleLand_roomSevenLava_collision = {
+    ARRAY_COUNT(JungleLand_roomSevenLava_ColVerts), ARRAY_COUNT(JungleLand_roomSevenLava_ColTris), JungleLand_roomSevenLava_ColVerts, JungleLand_roomSevenLava_ColTris, &JungleLand_roomSevenLava_BoundBox
 };
 
 Vec3f JungleLand_roomSevenFloor_ColVerts[] = {
@@ -2821,8 +2821,8 @@ Rect3D JungleLand_roomSevenFloor_BoundBox = {
     #include "assets/levelGroup/JungleLand/roomSevenFloor/roomSevenFloor.boundBox.inc.c"
 };
 
-ModelCollision JungleLand_roomSevenFloor_ColH = {
-8, 6, JungleLand_roomSevenFloor_ColVerts, JungleLand_roomSevenFloor_ColTris, &JungleLand_roomSevenFloor_BoundBox
+ModelCollision JungleLand_roomSevenFloor_collision = {
+    ARRAY_COUNT(JungleLand_roomSevenFloor_ColVerts), ARRAY_COUNT(JungleLand_roomSevenFloor_ColTris), JungleLand_roomSevenFloor_ColVerts, JungleLand_roomSevenFloor_ColTris, &JungleLand_roomSevenFloor_BoundBox
 };
 
 Vec3f JungleLand_roomZeroLava_ColVerts[] = {
@@ -2837,8 +2837,8 @@ Rect3D JungleLand_roomZeroLava_BoundBox = {
     #include "assets/levelGroup/JungleLand/roomZeroLava/roomZeroLava.boundBox.inc.c"
 };
 
-ModelCollision JungleLand_roomZeroLava_ColH = {
-8, 6, JungleLand_roomZeroLava_ColVerts, JungleLand_roomZeroLava_ColTris, &JungleLand_roomZeroLava_BoundBox
+ModelCollision JungleLand_roomZeroLava_collision = {
+    ARRAY_COUNT(JungleLand_roomZeroLava_ColVerts), ARRAY_COUNT(JungleLand_roomZeroLava_ColTris), JungleLand_roomZeroLava_ColVerts, JungleLand_roomZeroLava_ColTris, &JungleLand_roomZeroLava_BoundBox
 };
 
 Vec3f JungleLand_roomOnePlatform_ColVerts[] = {
@@ -2853,8 +2853,8 @@ Rect3D JungleLand_roomOnePlatform_BoundBox = {
     #include "assets/levelGroup/JungleLand/roomOnePlatform/roomOnePlatform.boundBox.inc.c"
 };
 
-ModelCollision JungleLand_roomOnePlatform_ColH = {
-16, 22, JungleLand_roomOnePlatform_ColVerts, JungleLand_roomOnePlatform_ColTris, &JungleLand_roomOnePlatform_BoundBox
+ModelCollision JungleLand_roomOnePlatform_collision = {
+    ARRAY_COUNT(JungleLand_roomOnePlatform_ColVerts), ARRAY_COUNT(JungleLand_roomOnePlatform_ColTris), JungleLand_roomOnePlatform_ColVerts, JungleLand_roomOnePlatform_ColTris, &JungleLand_roomOnePlatform_BoundBox
 };
 
 Vec3f JungleLand_roomSixCrownEdgePlatform_ColVerts[] = {
@@ -2869,8 +2869,8 @@ Rect3D JungleLand_roomSixCrownEdgePlatform_BoundBox = {
     #include "assets/levelGroup/JungleLand/roomSixCrownEdgePlatform/roomSixCrownEdgePlatform.boundBox.inc.c"
 };
 
-ModelCollision JungleLand_roomSixCrownEdgePlatform_ColH = {
-18, 20, JungleLand_roomSixCrownEdgePlatform_ColVerts, JungleLand_roomSixCrownEdgePlatform_ColTris, &JungleLand_roomSixCrownEdgePlatform_BoundBox
+ModelCollision JungleLand_roomSixCrownEdgePlatform_collision = {
+    ARRAY_COUNT(JungleLand_roomSixCrownEdgePlatform_ColVerts), ARRAY_COUNT(JungleLand_roomSixCrownEdgePlatform_ColTris), JungleLand_roomSixCrownEdgePlatform_ColVerts, JungleLand_roomSixCrownEdgePlatform_ColTris, &JungleLand_roomSixCrownEdgePlatform_BoundBox
 };
 
 Vec3f JungleLand_roomSevenSpinRing_ColVerts[] = {
@@ -2885,8 +2885,8 @@ Rect3D JungleLand_roomSevenSpinRing_BoundBox = {
     #include "assets/levelGroup/JungleLand/roomSevenSpinRing/roomSevenSpinRing.boundBox.inc.c"
 };
 
-ModelCollision JungleLand_roomSevenSpinRing_ColH = {
-51, 86, JungleLand_roomSevenSpinRing_ColVerts, JungleLand_roomSevenSpinRing_ColTris, &JungleLand_roomSevenSpinRing_BoundBox
+ModelCollision JungleLand_roomSevenSpinRing_collision = {
+    ARRAY_COUNT(JungleLand_roomSevenSpinRing_ColVerts), ARRAY_COUNT(JungleLand_roomSevenSpinRing_ColTris), JungleLand_roomSevenSpinRing_ColVerts, JungleLand_roomSevenSpinRing_ColTris, &JungleLand_roomSevenSpinRing_BoundBox
 };
 
 Vec3f JungleLand_woodBlock_ColVerts[] = {
@@ -2901,8 +2901,8 @@ Rect3D JungleLand_woodBlock_BoundBox = {
     #include "assets/levelGroup/JungleLand/woodBlock/woodBlock.boundBox.inc.c"
 };
 
-ModelCollision JungleLand_woodBlock_ColH = {
-8, 10, JungleLand_woodBlock_ColVerts, JungleLand_woodBlock_ColTris, &JungleLand_woodBlock_BoundBox
+ModelCollision JungleLand_woodBlock_collision = {
+    ARRAY_COUNT(JungleLand_woodBlock_ColVerts), ARRAY_COUNT(JungleLand_woodBlock_ColTris), JungleLand_woodBlock_ColVerts, JungleLand_woodBlock_ColTris, &JungleLand_woodBlock_BoundBox
 };
 
 Vec3f JungleLand_ropes_ColVerts[] = {
@@ -2917,8 +2917,8 @@ Rect3D JungleLand_ropes_BoundBox = {
     #include "assets/levelGroup/JungleLand/ropes/ropes.boundBox.inc.c"
 };
 
-ModelCollision JungleLand_ropes_ColH = {
-4, 4, JungleLand_ropes_ColVerts, JungleLand_ropes_ColTris, &JungleLand_ropes_BoundBox
+ModelCollision JungleLand_ropes_collision = {
+    ARRAY_COUNT(JungleLand_ropes_ColVerts), ARRAY_COUNT(JungleLand_ropes_ColTris), JungleLand_ropes_ColVerts, JungleLand_ropes_ColTris, &JungleLand_ropes_BoundBox
 };
 
 Vec3f JungleLand_railOne_ColVerts[] = {
@@ -2933,8 +2933,8 @@ Rect3D JungleLand_railOne_BoundBox = {
     #include "assets/levelGroup/JungleLand/railOne/railOne.boundBox.inc.c"
 };
 
-ModelCollision JungleLand_railOne_ColH = {
-16, 16, JungleLand_railOne_ColVerts, JungleLand_railOne_ColTris, &JungleLand_railOne_BoundBox
+ModelCollision JungleLand_railOne_collision = {
+    ARRAY_COUNT(JungleLand_railOne_ColVerts), ARRAY_COUNT(JungleLand_railOne_ColTris), JungleLand_railOne_ColVerts, JungleLand_railOne_ColTris, &JungleLand_railOne_BoundBox
 };
 
 Vec3f JungleLand_railTwo_ColVerts[] = {
@@ -2949,8 +2949,8 @@ Rect3D JungleLand_railTwo_BoundBox = {
     #include "assets/levelGroup/JungleLand/railTwo/railTwo.boundBox.inc.c"
 };
 
-ModelCollision JungleLand_railTwo_ColH = {
-16, 16, JungleLand_railTwo_ColVerts, JungleLand_railTwo_ColTris, &JungleLand_railTwo_BoundBox
+ModelCollision JungleLand_railTwo_collision = {
+    ARRAY_COUNT(JungleLand_railTwo_ColVerts), ARRAY_COUNT(JungleLand_railTwo_ColTris), JungleLand_railTwo_ColVerts, JungleLand_railTwo_ColTris, &JungleLand_railTwo_BoundBox
 };
 
 Vec3f JungleLand_railThree_ColVerts[] = {
@@ -2965,8 +2965,8 @@ Rect3D JungleLand_railThree_BoundBox = {
     #include "assets/levelGroup/JungleLand/railThree/railThree.boundBox.inc.c"
 };
 
-ModelCollision JungleLand_railThree_ColH = {
-16, 16, JungleLand_railThree_ColVerts, JungleLand_railThree_ColTris, &JungleLand_railThree_BoundBox
+ModelCollision JungleLand_railThree_collision = {
+    ARRAY_COUNT(JungleLand_railThree_ColVerts), ARRAY_COUNT(JungleLand_railThree_ColTris), JungleLand_railThree_ColVerts, JungleLand_railThree_ColTris, &JungleLand_railThree_BoundBox
 };
 
 Vec3f JungleLand_railFour_ColVerts[] = {
@@ -2981,8 +2981,8 @@ Rect3D JungleLand_railFour_BoundBox = {
     #include "assets/levelGroup/JungleLand/railFour/railFour.boundBox.inc.c"
 };
 
-ModelCollision JungleLand_railFour_ColH = {
-16, 16, JungleLand_railFour_ColVerts, JungleLand_railFour_ColTris, &JungleLand_railFour_BoundBox
+ModelCollision JungleLand_railFour_collision = {
+    ARRAY_COUNT(JungleLand_railFour_ColVerts), ARRAY_COUNT(JungleLand_railFour_ColTris), JungleLand_railFour_ColVerts, JungleLand_railFour_ColTris, &JungleLand_railFour_BoundBox
 };
 
 Vec3f JungleLand_railFive_ColVerts[] = {
@@ -2997,8 +2997,8 @@ Rect3D JungleLand_railFive_BoundBox = {
     #include "assets/levelGroup/JungleLand/railFive/railFive.boundBox.inc.c"
 };
 
-ModelCollision JungleLand_railFive_ColH = {
-16, 16, JungleLand_railFive_ColVerts, JungleLand_railFive_ColTris, &JungleLand_railFive_BoundBox
+ModelCollision JungleLand_railFive_collision = {
+    ARRAY_COUNT(JungleLand_railFive_ColVerts), ARRAY_COUNT(JungleLand_railFive_ColTris), JungleLand_railFive_ColVerts, JungleLand_railFive_ColTris, &JungleLand_railFive_BoundBox
 };
 
 Vec3f JungleLand_railSix_ColVerts[] = {
@@ -3013,8 +3013,8 @@ Rect3D JungleLand_railSix_BoundBox = {
     #include "assets/levelGroup/JungleLand/railSix/railSix.boundBox.inc.c"
 };
 
-ModelCollision JungleLand_railSix_ColH = {
-16, 16, JungleLand_railSix_ColVerts, JungleLand_railSix_ColTris, &JungleLand_railSix_BoundBox
+ModelCollision JungleLand_railSix_collision = {
+    ARRAY_COUNT(JungleLand_railSix_ColVerts), ARRAY_COUNT(JungleLand_railSix_ColTris), JungleLand_railSix_ColVerts, JungleLand_railSix_ColTris, &JungleLand_railSix_BoundBox
 };
 
 Vec3f JungleLand_rail_ColVerts[] = {
@@ -3029,8 +3029,8 @@ Rect3D JungleLand_rail_BoundBox = {
     #include "assets/levelGroup/JungleLand/rail/rail.boundBox.inc.c"
 };
 
-ModelCollision JungleLand_rail_ColH = {
-16, 20, JungleLand_rail_ColVerts, JungleLand_rail_ColTris, &JungleLand_rail_BoundBox
+ModelCollision JungleLand_rail_collision = {
+    ARRAY_COUNT(JungleLand_rail_ColVerts), ARRAY_COUNT(JungleLand_rail_ColTris), JungleLand_rail_ColVerts, JungleLand_rail_ColTris, &JungleLand_rail_BoundBox
 };
 
 Vec3f JungleLand_ctCrate3_ColVerts[] = {
@@ -3045,8 +3045,8 @@ Rect3D JungleLand_ctCrate3_BoundBox = {
     #include "assets/levelGroup/JungleLand/ctCrate3/ctCrate3.boundBox.inc.c"
 };
 
-ModelCollision JungleLand_ctCrate3_ColH = {
-8, 10, JungleLand_ctCrate3_ColVerts, JungleLand_ctCrate3_ColTris, &JungleLand_ctCrate3_BoundBox
+ModelCollision JungleLand_ctCrate3_collision = {
+    ARRAY_COUNT(JungleLand_ctCrate3_ColVerts), ARRAY_COUNT(JungleLand_ctCrate3_ColTris), JungleLand_ctCrate3_ColVerts, JungleLand_ctCrate3_ColTris, &JungleLand_ctCrate3_BoundBox
 };
 
 Vec3f JungleLand_logOne_ColVerts[] = {
@@ -3061,8 +3061,8 @@ Rect3D JungleLand_logOne_BoundBox = {
     #include "assets/levelGroup/JungleLand/logOne/logOne.boundBox.inc.c"
 };
 
-ModelCollision JungleLand_logOne_ColH = {
-10, 8, JungleLand_logOne_ColVerts, JungleLand_logOne_ColTris, &JungleLand_logOne_BoundBox
+ModelCollision JungleLand_logOne_collision = {
+    ARRAY_COUNT(JungleLand_logOne_ColVerts), ARRAY_COUNT(JungleLand_logOne_ColTris), JungleLand_logOne_ColVerts, JungleLand_logOne_ColTris, &JungleLand_logOne_BoundBox
 };
 
 Vec3f JungleLand_fallBridgeSmall2_ColVerts[] = {
@@ -3077,8 +3077,8 @@ Rect3D JungleLand_fallBridgeSmall2_BoundBox = {
     #include "assets/levelGroup/JungleLand/fallBridgeSmall2/fallBridgeSmall2.boundBox.inc.c"
 };
 
-ModelCollision JungleLand_fallBridgeSmall2_ColH = {
-4, 2, JungleLand_fallBridgeSmall2_ColVerts, JungleLand_fallBridgeSmall2_ColTris, &JungleLand_fallBridgeSmall2_BoundBox
+ModelCollision JungleLand_fallBridgeSmall2_collision = {
+    ARRAY_COUNT(JungleLand_fallBridgeSmall2_ColVerts), ARRAY_COUNT(JungleLand_fallBridgeSmall2_ColTris), JungleLand_fallBridgeSmall2_ColVerts, JungleLand_fallBridgeSmall2_ColTris, &JungleLand_fallBridgeSmall2_BoundBox
 };
 
 Vec3f JungleLand_logSetPiece_ColVerts[] = {
@@ -3093,8 +3093,8 @@ Rect3D JungleLand_logSetPiece_BoundBox = {
     #include "assets/levelGroup/JungleLand/logSetPiece/logSetPiece.boundBox.inc.c"
 };
 
-ModelCollision JungleLand_logSetPiece_ColH = {
-9, 7, JungleLand_logSetPiece_ColVerts, JungleLand_logSetPiece_ColTris, &JungleLand_logSetPiece_BoundBox
+ModelCollision JungleLand_logSetPiece_collision = {
+    ARRAY_COUNT(JungleLand_logSetPiece_ColVerts), ARRAY_COUNT(JungleLand_logSetPiece_ColTris), JungleLand_logSetPiece_ColVerts, JungleLand_logSetPiece_ColTris, &JungleLand_logSetPiece_BoundBox
 };
 
 Vec3f JungleLand_holeLog_ColVerts[] = {
@@ -3109,8 +3109,8 @@ Rect3D JungleLand_holeLog_BoundBox = {
     #include "assets/levelGroup/JungleLand/holeLog/holeLog.boundBox.inc.c"
 };
 
-ModelCollision JungleLand_holeLog_ColH = {
-58, 120, JungleLand_holeLog_ColVerts, JungleLand_holeLog_ColTris, &JungleLand_holeLog_BoundBox
+ModelCollision JungleLand_holeLog_collision = {
+    ARRAY_COUNT(JungleLand_holeLog_ColVerts), ARRAY_COUNT(JungleLand_holeLog_ColTris), JungleLand_holeLog_ColVerts, JungleLand_holeLog_ColTris, &JungleLand_holeLog_BoundBox
 };
 
 Vec3f JungleLand_waterfallGroundCollision_ColVerts[] = {
@@ -3125,8 +3125,8 @@ Rect3D JungleLand_waterfallGroundCollision_BoundBox = {
     #include "assets/levelGroup/JungleLand/waterfallGroundCollision/waterfallGroundCollision.boundBox.inc.c"
 };
 
-ModelCollision JungleLand_waterfallGroundCollision_ColH = {
-12, 8, JungleLand_waterfallGroundCollision_ColVerts, JungleLand_waterfallGroundCollision_ColTris, &JungleLand_waterfallGroundCollision_BoundBox
+ModelCollision JungleLand_waterfallGroundCollision_collision = {
+    ARRAY_COUNT(JungleLand_waterfallGroundCollision_ColVerts), ARRAY_COUNT(JungleLand_waterfallGroundCollision_ColTris), JungleLand_waterfallGroundCollision_ColVerts, JungleLand_waterfallGroundCollision_ColTris, &JungleLand_waterfallGroundCollision_BoundBox
 };
 
 Vec3f JungleLand_waterfallBacksideCollision_ColVerts[] = {
@@ -3141,8 +3141,8 @@ Rect3D JungleLand_waterfallBacksideCollision_BoundBox = {
     #include "assets/levelGroup/JungleLand/waterfallBacksideCollision/waterfallBacksideCollision.boundBox.inc.c"
 };
 
-ModelCollision JungleLand_waterfallBacksideCollision_ColH = {
-8, 10, JungleLand_waterfallBacksideCollision_ColVerts, JungleLand_waterfallBacksideCollision_ColTris, &JungleLand_waterfallBacksideCollision_BoundBox
+ModelCollision JungleLand_waterfallBacksideCollision_collision = {
+    ARRAY_COUNT(JungleLand_waterfallBacksideCollision_ColVerts), ARRAY_COUNT(JungleLand_waterfallBacksideCollision_ColTris), JungleLand_waterfallBacksideCollision_ColVerts, JungleLand_waterfallBacksideCollision_ColTris, &JungleLand_waterfallBacksideCollision_BoundBox
 };
 
 Vec3f JungleLand_groundCollision_ColVerts[] = {
@@ -3157,8 +3157,8 @@ Rect3D JungleLand_groundCollision_BoundBox = {
     #include "assets/levelGroup/JungleLand/groundCollision/groundCollision.boundBox.inc.c"
 };
 
-ModelCollision JungleLand_groundCollision_ColH = {
-28, 31, JungleLand_groundCollision_ColVerts, JungleLand_groundCollision_ColTris, &JungleLand_groundCollision_BoundBox
+ModelCollision JungleLand_groundCollision_collision = {
+    ARRAY_COUNT(JungleLand_groundCollision_ColVerts), ARRAY_COUNT(JungleLand_groundCollision_ColTris), JungleLand_groundCollision_ColVerts, JungleLand_groundCollision_ColTris, &JungleLand_groundCollision_BoundBox
 };
 
 Vec3f JungleLand_holeLogBottom_ColVerts[] = {
@@ -3173,8 +3173,8 @@ Rect3D JungleLand_holeLogBottom_BoundBox = {
     #include "assets/levelGroup/JungleLand/holeLogBottom/holeLogBottom.boundBox.inc.c"
 };
 
-ModelCollision JungleLand_holeLogBottom_ColH = {
-24, 25, JungleLand_holeLogBottom_ColVerts, JungleLand_holeLogBottom_ColTris, &JungleLand_holeLogBottom_BoundBox
+ModelCollision JungleLand_holeLogBottom_collision = {
+    ARRAY_COUNT(JungleLand_holeLogBottom_ColVerts), ARRAY_COUNT(JungleLand_holeLogBottom_ColTris), JungleLand_holeLogBottom_ColVerts, JungleLand_holeLogBottom_ColTris, &JungleLand_holeLogBottom_BoundBox
 };
 
 Vec3f JungleLand_extThree_ColVerts[] = {
@@ -3189,8 +3189,8 @@ Rect3D JungleLand_extThree_BoundBox = {
     #include "assets/levelGroup/JungleLand/extThree/extThree.boundBox.inc.c"
 };
 
-ModelCollision JungleLand_extThree_ColH = {
-47, 77, JungleLand_extThree_ColVerts, JungleLand_extThree_ColTris, &JungleLand_extThree_BoundBox
+ModelCollision JungleLand_extThree_collision = {
+    ARRAY_COUNT(JungleLand_extThree_ColVerts), ARRAY_COUNT(JungleLand_extThree_ColTris), JungleLand_extThree_ColVerts, JungleLand_extThree_ColTris, &JungleLand_extThree_BoundBox
 };
 
 Vec3f JungleLand_extFour_ColVerts[] = {
@@ -3205,8 +3205,8 @@ Rect3D JungleLand_extFour_BoundBox = {
     #include "assets/levelGroup/JungleLand/extFour/extFour.boundBox.inc.c"
 };
 
-ModelCollision JungleLand_extFour_ColH = {
-21, 30, JungleLand_extFour_ColVerts, JungleLand_extFour_ColTris, &JungleLand_extFour_BoundBox
+ModelCollision JungleLand_extFour_collision = {
+    ARRAY_COUNT(JungleLand_extFour_ColVerts), ARRAY_COUNT(JungleLand_extFour_ColTris), JungleLand_extFour_ColVerts, JungleLand_extFour_ColTris, &JungleLand_extFour_BoundBox
 };
 
 Vec3f JungleLand_extZero_ColVerts[] = {
@@ -3221,8 +3221,8 @@ Rect3D JungleLand_extZero_BoundBox = {
     #include "assets/levelGroup/JungleLand/extZero/extZero.boundBox.inc.c"
 };
 
-ModelCollision JungleLand_extZero_ColH = {
-25, 37, JungleLand_extZero_ColVerts, JungleLand_extZero_ColTris, &JungleLand_extZero_BoundBox
+ModelCollision JungleLand_extZero_collision = {
+    ARRAY_COUNT(JungleLand_extZero_ColVerts), ARRAY_COUNT(JungleLand_extZero_ColTris), JungleLand_extZero_ColVerts, JungleLand_extZero_ColTris, &JungleLand_extZero_BoundBox
 };
 
 Vec3f JungleLand_extOne_ColVerts[] = {
@@ -3237,8 +3237,8 @@ Rect3D JungleLand_extOne_BoundBox = {
     #include "assets/levelGroup/JungleLand/extOne/extOne.boundBox.inc.c"
 };
 
-ModelCollision JungleLand_extOne_ColH = {
-92, 153, JungleLand_extOne_ColVerts, JungleLand_extOne_ColTris, &JungleLand_extOne_BoundBox
+ModelCollision JungleLand_extOne_collision = {
+    ARRAY_COUNT(JungleLand_extOne_ColVerts), ARRAY_COUNT(JungleLand_extOne_ColTris), JungleLand_extOne_ColVerts, JungleLand_extOne_ColTris, &JungleLand_extOne_BoundBox
 };
 
 Vec3f JungleLand_extTwo_ColVerts[] = {
@@ -3253,8 +3253,8 @@ Rect3D JungleLand_extTwo_BoundBox = {
     #include "assets/levelGroup/JungleLand/extTwo/extTwo.boundBox.inc.c"
 };
 
-ModelCollision JungleLand_extTwo_ColH = {
-23, 29, JungleLand_extTwo_ColVerts, JungleLand_extTwo_ColTris, &JungleLand_extTwo_BoundBox
+ModelCollision JungleLand_extTwo_collision = {
+    ARRAY_COUNT(JungleLand_extTwo_ColVerts), ARRAY_COUNT(JungleLand_extTwo_ColTris), JungleLand_extTwo_ColVerts, JungleLand_extTwo_ColTris, &JungleLand_extTwo_BoundBox
 };
 
 Vec3f JungleLand_rockFloor_ColVerts[] = {
@@ -3269,8 +3269,8 @@ Rect3D JungleLand_rockFloor_BoundBox = {
     #include "assets/levelGroup/JungleLand/rockFloor/rockFloor.boundBox.inc.c"
 };
 
-ModelCollision JungleLand_rockFloor_ColH = {
-6, 8, JungleLand_rockFloor_ColVerts, JungleLand_rockFloor_ColTris, &JungleLand_rockFloor_BoundBox
+ModelCollision JungleLand_rockFloor_collision = {
+    ARRAY_COUNT(JungleLand_rockFloor_ColVerts), ARRAY_COUNT(JungleLand_rockFloor_ColTris), JungleLand_rockFloor_ColVerts, JungleLand_rockFloor_ColTris, &JungleLand_rockFloor_BoundBox
 };
 
 Vec3f JungleLand_rockFloor2_ColVerts[] = {
@@ -3285,8 +3285,8 @@ Rect3D JungleLand_rockFloor2_BoundBox = {
     #include "assets/levelGroup/JungleLand/rockFloor2/rockFloor2.boundBox.inc.c"
 };
 
-ModelCollision JungleLand_rockFloor2_ColH = {
-5, 6, JungleLand_rockFloor2_ColVerts, JungleLand_rockFloor2_ColTris, &JungleLand_rockFloor2_BoundBox
+ModelCollision JungleLand_rockFloor2_collision = {
+    ARRAY_COUNT(JungleLand_rockFloor2_ColVerts), ARRAY_COUNT(JungleLand_rockFloor2_ColTris), JungleLand_rockFloor2_ColVerts, JungleLand_rockFloor2_ColTris, &JungleLand_rockFloor2_BoundBox
 };
 
 Vec3f JungleLand_extFive_ColVerts[] = {
@@ -3301,8 +3301,8 @@ Rect3D JungleLand_extFive_BoundBox = {
     #include "assets/levelGroup/JungleLand/extFive/extFive.boundBox.inc.c"
 };
 
-ModelCollision JungleLand_extFive_ColH = {
-34, 40, JungleLand_extFive_ColVerts, JungleLand_extFive_ColTris, &JungleLand_extFive_BoundBox
+ModelCollision JungleLand_extFive_collision = {
+    ARRAY_COUNT(JungleLand_extFive_ColVerts), ARRAY_COUNT(JungleLand_extFive_ColTris), JungleLand_extFive_ColVerts, JungleLand_extFive_ColTris, &JungleLand_extFive_BoundBox
 };
 
 Vec3f JungleLand_extThreePartTwo_ColVerts[] = {
@@ -3317,8 +3317,8 @@ Rect3D JungleLand_extThreePartTwo_BoundBox = {
     #include "assets/levelGroup/JungleLand/extThreePartTwo/extThreePartTwo.boundBox.inc.c"
 };
 
-ModelCollision JungleLand_extThreePartTwo_ColH = {
-9, 7, JungleLand_extThreePartTwo_ColVerts, JungleLand_extThreePartTwo_ColTris, &JungleLand_extThreePartTwo_BoundBox
+ModelCollision JungleLand_extThreePartTwo_collision = {
+    ARRAY_COUNT(JungleLand_extThreePartTwo_ColVerts), ARRAY_COUNT(JungleLand_extThreePartTwo_ColTris), JungleLand_extThreePartTwo_ColVerts, JungleLand_extThreePartTwo_ColTris, &JungleLand_extThreePartTwo_BoundBox
 };
 
 Vec3f JungleLand_extFivePartTwo_ColVerts[] = {
@@ -3333,8 +3333,8 @@ Rect3D JungleLand_extFivePartTwo_BoundBox = {
     #include "assets/levelGroup/JungleLand/extFivePartTwo/extFivePartTwo.boundBox.inc.c"
 };
 
-ModelCollision JungleLand_extFivePartTwo_ColH = {
-23, 26, JungleLand_extFivePartTwo_ColVerts, JungleLand_extFivePartTwo_ColTris, &JungleLand_extFivePartTwo_BoundBox
+ModelCollision JungleLand_extFivePartTwo_collision = {
+    ARRAY_COUNT(JungleLand_extFivePartTwo_ColVerts), ARRAY_COUNT(JungleLand_extFivePartTwo_ColTris), JungleLand_extFivePartTwo_ColVerts, JungleLand_extFivePartTwo_ColTris, &JungleLand_extFivePartTwo_BoundBox
 };
 
 Vec3f JungleLand_extSix_ColVerts[] = {
@@ -3349,8 +3349,8 @@ Rect3D JungleLand_extSix_BoundBox = {
     #include "assets/levelGroup/JungleLand/extSix/extSix.boundBox.inc.c"
 };
 
-ModelCollision JungleLand_extSix_ColH = {
-20, 24, JungleLand_extSix_ColVerts, JungleLand_extSix_ColTris, &JungleLand_extSix_BoundBox
+ModelCollision JungleLand_extSix_collision = {
+    ARRAY_COUNT(JungleLand_extSix_ColVerts), ARRAY_COUNT(JungleLand_extSix_ColTris), JungleLand_extSix_ColVerts, JungleLand_extSix_ColTris, &JungleLand_extSix_BoundBox
 };
 
 Vec3f JungleLand_extSeven_ColVerts[] = {
@@ -3365,8 +3365,8 @@ Rect3D JungleLand_extSeven_BoundBox = {
     #include "assets/levelGroup/JungleLand/extSeven/extSeven.boundBox.inc.c"
 };
 
-ModelCollision JungleLand_extSeven_ColH = {
-32, 45, JungleLand_extSeven_ColVerts, JungleLand_extSeven_ColTris, &JungleLand_extSeven_BoundBox
+ModelCollision JungleLand_extSeven_collision = {
+    ARRAY_COUNT(JungleLand_extSeven_ColVerts), ARRAY_COUNT(JungleLand_extSeven_ColTris), JungleLand_extSeven_ColVerts, JungleLand_extSeven_ColTris, &JungleLand_extSeven_BoundBox
 };
 
 Vec3f JungleLand_extEight_ColVerts[] = {
@@ -3381,8 +3381,8 @@ Rect3D JungleLand_extEight_BoundBox = {
     #include "assets/levelGroup/JungleLand/extEight/extEight.boundBox.inc.c"
 };
 
-ModelCollision JungleLand_extEight_ColH = {
-24, 33, JungleLand_extEight_ColVerts, JungleLand_extEight_ColTris, &JungleLand_extEight_BoundBox
+ModelCollision JungleLand_extEight_collision = {
+    ARRAY_COUNT(JungleLand_extEight_ColVerts), ARRAY_COUNT(JungleLand_extEight_ColTris), JungleLand_extEight_ColVerts, JungleLand_extEight_ColTris, &JungleLand_extEight_BoundBox
 };
 
 Vec3f JungleLand_extEightBridge_ColVerts[] = {
@@ -3397,8 +3397,8 @@ Rect3D JungleLand_extEightBridge_BoundBox = {
     #include "assets/levelGroup/JungleLand/extEightBridge/extEightBridge.boundBox.inc.c"
 };
 
-ModelCollision JungleLand_extEightBridge_ColH = {
-8, 8, JungleLand_extEightBridge_ColVerts, JungleLand_extEightBridge_ColTris, &JungleLand_extEightBridge_BoundBox
+ModelCollision JungleLand_extEightBridge_collision = {
+    ARRAY_COUNT(JungleLand_extEightBridge_ColVerts), ARRAY_COUNT(JungleLand_extEightBridge_ColTris), JungleLand_extEightBridge_ColVerts, JungleLand_extEightBridge_ColTris, &JungleLand_extEightBridge_BoundBox
 };
 
 Vec3f JungleLand_extNine_ColVerts[] = {
@@ -3413,8 +3413,8 @@ Rect3D JungleLand_extNine_BoundBox = {
     #include "assets/levelGroup/JungleLand/extNine/extNine.boundBox.inc.c"
 };
 
-ModelCollision JungleLand_extNine_ColH = {
-29, 40, JungleLand_extNine_ColVerts, JungleLand_extNine_ColTris, &JungleLand_extNine_BoundBox
+ModelCollision JungleLand_extNine_collision = {
+    ARRAY_COUNT(JungleLand_extNine_ColVerts), ARRAY_COUNT(JungleLand_extNine_ColTris), JungleLand_extNine_ColVerts, JungleLand_extNine_ColTris, &JungleLand_extNine_BoundBox
 };
 
 Vec3f JungleLand_extTen_ColVerts[] = {
@@ -3429,8 +3429,8 @@ Rect3D JungleLand_extTen_BoundBox = {
     #include "assets/levelGroup/JungleLand/extTen/extTen.boundBox.inc.c"
 };
 
-ModelCollision JungleLand_extTen_ColH = {
-53, 88, JungleLand_extTen_ColVerts, JungleLand_extTen_ColTris, &JungleLand_extTen_BoundBox
+ModelCollision JungleLand_extTen_collision = {
+    ARRAY_COUNT(JungleLand_extTen_ColVerts), ARRAY_COUNT(JungleLand_extTen_ColTris), JungleLand_extTen_ColVerts, JungleLand_extTen_ColTris, &JungleLand_extTen_BoundBox
 };
 
 Vec3f JungleLand_extEleven_ColVerts[] = {
@@ -3445,8 +3445,8 @@ Rect3D JungleLand_extEleven_BoundBox = {
     #include "assets/levelGroup/JungleLand/extEleven/extEleven.boundBox.inc.c"
 };
 
-ModelCollision JungleLand_extEleven_ColH = {
-85, 144, JungleLand_extEleven_ColVerts, JungleLand_extEleven_ColTris, &JungleLand_extEleven_BoundBox
+ModelCollision JungleLand_extEleven_collision = {
+    ARRAY_COUNT(JungleLand_extEleven_ColVerts), ARRAY_COUNT(JungleLand_extEleven_ColTris), JungleLand_extEleven_ColVerts, JungleLand_extEleven_ColTris, &JungleLand_extEleven_BoundBox
 };
 
 Vec3f JungleLand_intZero_ColVerts[] = {
@@ -3461,8 +3461,8 @@ Rect3D JungleLand_intZero_BoundBox = {
     #include "assets/levelGroup/JungleLand/intZero/intZero.boundBox.inc.c"
 };
 
-ModelCollision JungleLand_intZero_ColH = {
-40, 60, JungleLand_intZero_ColVerts, JungleLand_intZero_ColTris, &JungleLand_intZero_BoundBox
+ModelCollision JungleLand_intZero_collision = {
+    ARRAY_COUNT(JungleLand_intZero_ColVerts), ARRAY_COUNT(JungleLand_intZero_ColTris), JungleLand_intZero_ColVerts, JungleLand_intZero_ColTris, &JungleLand_intZero_BoundBox
 };
 
 Vec3f JungleLand_intOne_ColVerts[] = {
@@ -3477,8 +3477,8 @@ Rect3D JungleLand_intOne_BoundBox = {
     #include "assets/levelGroup/JungleLand/intOne/intOne.boundBox.inc.c"
 };
 
-ModelCollision JungleLand_intOne_ColH = {
-100, 174, JungleLand_intOne_ColVerts, JungleLand_intOne_ColTris, &JungleLand_intOne_BoundBox
+ModelCollision JungleLand_intOne_collision = {
+    ARRAY_COUNT(JungleLand_intOne_ColVerts), ARRAY_COUNT(JungleLand_intOne_ColTris), JungleLand_intOne_ColVerts, JungleLand_intOne_ColTris, &JungleLand_intOne_BoundBox
 };
 
 Vec3f JungleLand_intTwo_ColVerts[] = {
@@ -3493,8 +3493,8 @@ Rect3D JungleLand_intTwo_BoundBox = {
     #include "assets/levelGroup/JungleLand/intTwo/intTwo.boundBox.inc.c"
 };
 
-ModelCollision JungleLand_intTwo_ColH = {
-28, 38, JungleLand_intTwo_ColVerts, JungleLand_intTwo_ColTris, &JungleLand_intTwo_BoundBox
+ModelCollision JungleLand_intTwo_collision = {
+    ARRAY_COUNT(JungleLand_intTwo_ColVerts), ARRAY_COUNT(JungleLand_intTwo_ColTris), JungleLand_intTwo_ColVerts, JungleLand_intTwo_ColTris, &JungleLand_intTwo_BoundBox
 };
 
 Vec3f JungleLand_intThree_ColVerts[] = {
@@ -3509,8 +3509,8 @@ Rect3D JungleLand_intThree_BoundBox = {
     #include "assets/levelGroup/JungleLand/intThree/intThree.boundBox.inc.c"
 };
 
-ModelCollision JungleLand_intThree_ColH = {
-24, 28, JungleLand_intThree_ColVerts, JungleLand_intThree_ColTris, &JungleLand_intThree_BoundBox
+ModelCollision JungleLand_intThree_collision = {
+    ARRAY_COUNT(JungleLand_intThree_ColVerts), ARRAY_COUNT(JungleLand_intThree_ColTris), JungleLand_intThree_ColVerts, JungleLand_intThree_ColTris, &JungleLand_intThree_BoundBox
 };
 
 Vec3f JungleLand_intFour_ColVerts[] = {
@@ -3525,8 +3525,8 @@ Rect3D JungleLand_intFour_BoundBox = {
     #include "assets/levelGroup/JungleLand/intFour/intFour.boundBox.inc.c"
 };
 
-ModelCollision JungleLand_intFour_ColH = {
-24, 34, JungleLand_intFour_ColVerts, JungleLand_intFour_ColTris, &JungleLand_intFour_BoundBox
+ModelCollision JungleLand_intFour_collision = {
+    ARRAY_COUNT(JungleLand_intFour_ColVerts), ARRAY_COUNT(JungleLand_intFour_ColTris), JungleLand_intFour_ColVerts, JungleLand_intFour_ColTris, &JungleLand_intFour_BoundBox
 };
 
 Vec3f JungleLand_intSix_ColVerts[] = {
@@ -3541,8 +3541,8 @@ Rect3D JungleLand_intSix_BoundBox = {
     #include "assets/levelGroup/JungleLand/intSix/intSix.boundBox.inc.c"
 };
 
-ModelCollision JungleLand_intSix_ColH = {
-29, 40, JungleLand_intSix_ColVerts, JungleLand_intSix_ColTris, &JungleLand_intSix_BoundBox
+ModelCollision JungleLand_intSix_collision = {
+    ARRAY_COUNT(JungleLand_intSix_ColVerts), ARRAY_COUNT(JungleLand_intSix_ColTris), JungleLand_intSix_ColVerts, JungleLand_intSix_ColTris, &JungleLand_intSix_BoundBox
 };
 
 Vec3f JungleLand_intSeven_ColVerts[] = {
@@ -3557,8 +3557,8 @@ Rect3D JungleLand_intSeven_BoundBox = {
     #include "assets/levelGroup/JungleLand/intSeven/intSeven.boundBox.inc.c"
 };
 
-ModelCollision JungleLand_intSeven_ColH = {
-20, 20, JungleLand_intSeven_ColVerts, JungleLand_intSeven_ColTris, &JungleLand_intSeven_BoundBox
+ModelCollision JungleLand_intSeven_collision = {
+    ARRAY_COUNT(JungleLand_intSeven_ColVerts), ARRAY_COUNT(JungleLand_intSeven_ColTris), JungleLand_intSeven_ColVerts, JungleLand_intSeven_ColTris, &JungleLand_intSeven_BoundBox
 };
 
 Vec3f JungleLand_intFive_ColVerts[] = {
@@ -3573,8 +3573,8 @@ Rect3D JungleLand_intFive_BoundBox = {
     #include "assets/levelGroup/JungleLand/intFive/intFive.boundBox.inc.c"
 };
 
-ModelCollision JungleLand_intFive_ColH = {
-28, 42, JungleLand_intFive_ColVerts, JungleLand_intFive_ColTris, &JungleLand_intFive_BoundBox
+ModelCollision JungleLand_intFive_collision = {
+    ARRAY_COUNT(JungleLand_intFive_ColVerts), ARRAY_COUNT(JungleLand_intFive_ColTris), JungleLand_intFive_ColVerts, JungleLand_intFive_ColTris, &JungleLand_intFive_BoundBox
 };
 
 Vec3f JungleLand_railFloorOne_ColVerts[] = {
@@ -3589,8 +3589,8 @@ Rect3D JungleLand_railFloorOne_BoundBox = {
     #include "assets/levelGroup/JungleLand/railFloorOne/railFloorOne.boundBox.inc.c"
 };
 
-ModelCollision JungleLand_railFloorOne_ColH = {
-4, 2, JungleLand_railFloorOne_ColVerts, JungleLand_railFloorOne_ColTris, &JungleLand_railFloorOne_BoundBox
+ModelCollision JungleLand_railFloorOne_collision = {
+    ARRAY_COUNT(JungleLand_railFloorOne_ColVerts), ARRAY_COUNT(JungleLand_railFloorOne_ColTris), JungleLand_railFloorOne_ColVerts, JungleLand_railFloorOne_ColTris, &JungleLand_railFloorOne_BoundBox
 };
 
 Vec3f JungleLand_singleRailTrack_ColVerts[] = {
@@ -3605,8 +3605,8 @@ Rect3D JungleLand_singleRailTrack_BoundBox = {
     #include "assets/levelGroup/JungleLand/singleRailTrack/singleRailTrack.boundBox.inc.c"
 };
 
-ModelCollision JungleLand_singleRailTrack_ColH = {
-4, 2, JungleLand_singleRailTrack_ColVerts, JungleLand_singleRailTrack_ColTris, &JungleLand_singleRailTrack_BoundBox
+ModelCollision JungleLand_singleRailTrack_collision = {
+    ARRAY_COUNT(JungleLand_singleRailTrack_ColVerts), ARRAY_COUNT(JungleLand_singleRailTrack_ColTris), JungleLand_singleRailTrack_ColVerts, JungleLand_singleRailTrack_ColTris, &JungleLand_singleRailTrack_BoundBox
 };
 
 Vec3f JungleLand_singleRailTrack2_ColVerts[] = {
@@ -3621,8 +3621,8 @@ Rect3D JungleLand_singleRailTrack2_BoundBox = {
     #include "assets/levelGroup/JungleLand/singleRailTrack2/singleRailTrack2.boundBox.inc.c"
 };
 
-ModelCollision JungleLand_singleRailTrack2_ColH = {
-4, 2, JungleLand_singleRailTrack2_ColVerts, JungleLand_singleRailTrack2_ColTris, &JungleLand_singleRailTrack2_BoundBox
+ModelCollision JungleLand_singleRailTrack2_collision = {
+    ARRAY_COUNT(JungleLand_singleRailTrack2_ColVerts), ARRAY_COUNT(JungleLand_singleRailTrack2_ColTris), JungleLand_singleRailTrack2_ColVerts, JungleLand_singleRailTrack2_ColTris, &JungleLand_singleRailTrack2_BoundBox
 };
 
 Vec3f JungleLand_branchRail_ColVerts[] = {
@@ -3637,8 +3637,8 @@ Rect3D JungleLand_branchRail_BoundBox = {
     #include "assets/levelGroup/JungleLand/branchRail/branchRail.boundBox.inc.c"
 };
 
-ModelCollision JungleLand_branchRail_ColH = {
-4, 2, JungleLand_branchRail_ColVerts, JungleLand_branchRail_ColTris, &JungleLand_branchRail_BoundBox
+ModelCollision JungleLand_branchRail_collision = {
+    ARRAY_COUNT(JungleLand_branchRail_ColVerts), ARRAY_COUNT(JungleLand_branchRail_ColTris), JungleLand_branchRail_ColVerts, JungleLand_branchRail_ColTris, &JungleLand_branchRail_BoundBox
 };
 
 Vec3f JungleLand_turnRail_ColVerts[] = {
@@ -3653,8 +3653,8 @@ Rect3D JungleLand_turnRail_BoundBox = {
     #include "assets/levelGroup/JungleLand/turnRail/turnRail.boundBox.inc.c"
 };
 
-ModelCollision JungleLand_turnRail_ColH = {
-4, 2, JungleLand_turnRail_ColVerts, JungleLand_turnRail_ColTris, &JungleLand_turnRail_BoundBox
+ModelCollision JungleLand_turnRail_collision = {
+    ARRAY_COUNT(JungleLand_turnRail_ColVerts), ARRAY_COUNT(JungleLand_turnRail_ColTris), JungleLand_turnRail_ColVerts, JungleLand_turnRail_ColTris, &JungleLand_turnRail_BoundBox
 };
 
 Vec3f JungleLand_singleRailTrack3_ColVerts[] = {
@@ -3669,8 +3669,8 @@ Rect3D JungleLand_singleRailTrack3_BoundBox = {
     #include "assets/levelGroup/JungleLand/singleRailTrack3/singleRailTrack3.boundBox.inc.c"
 };
 
-ModelCollision JungleLand_singleRailTrack3_ColH = {
-4, 2, JungleLand_singleRailTrack3_ColVerts, JungleLand_singleRailTrack3_ColTris, &JungleLand_singleRailTrack3_BoundBox
+ModelCollision JungleLand_singleRailTrack3_collision = {
+    ARRAY_COUNT(JungleLand_singleRailTrack3_ColVerts), ARRAY_COUNT(JungleLand_singleRailTrack3_ColTris), JungleLand_singleRailTrack3_ColVerts, JungleLand_singleRailTrack3_ColTris, &JungleLand_singleRailTrack3_BoundBox
 };
 
 Vec3f JungleLand_brokenMinecartRail_ColVerts[] = {
@@ -3685,8 +3685,8 @@ Rect3D JungleLand_brokenMinecartRail_BoundBox = {
     #include "assets/levelGroup/JungleLand/brokenMinecartRail/brokenMinecartRail.boundBox.inc.c"
 };
 
-ModelCollision JungleLand_brokenMinecartRail_ColH = {
-40, 64, JungleLand_brokenMinecartRail_ColVerts, JungleLand_brokenMinecartRail_ColTris, &JungleLand_brokenMinecartRail_BoundBox
+ModelCollision JungleLand_brokenMinecartRail_collision = {
+    ARRAY_COUNT(JungleLand_brokenMinecartRail_ColVerts), ARRAY_COUNT(JungleLand_brokenMinecartRail_ColTris), JungleLand_brokenMinecartRail_ColVerts, JungleLand_brokenMinecartRail_ColTris, &JungleLand_brokenMinecartRail_BoundBox
 };
 
 Vec3f JungleLand_brokenMinecartRail2_ColVerts[] = {
@@ -3701,8 +3701,8 @@ Rect3D JungleLand_brokenMinecartRail2_BoundBox = {
     #include "assets/levelGroup/JungleLand/brokenMinecartRail2/brokenMinecartRail2.boundBox.inc.c"
 };
 
-ModelCollision JungleLand_brokenMinecartRail2_ColH = {
-32, 48, JungleLand_brokenMinecartRail2_ColVerts, JungleLand_brokenMinecartRail2_ColTris, &JungleLand_brokenMinecartRail2_BoundBox
+ModelCollision JungleLand_brokenMinecartRail2_collision = {
+    ARRAY_COUNT(JungleLand_brokenMinecartRail2_ColVerts), ARRAY_COUNT(JungleLand_brokenMinecartRail2_ColTris), JungleLand_brokenMinecartRail2_ColVerts, JungleLand_brokenMinecartRail2_ColTris, &JungleLand_brokenMinecartRail2_BoundBox
 };
 
 Vec3f JungleLand_minecart_ColVerts[] = {
@@ -3717,8 +3717,8 @@ Rect3D JungleLand_minecart_BoundBox = {
     #include "assets/levelGroup/JungleLand/minecart/minecart.boundBox.inc.c"
 };
 
-ModelCollision JungleLand_minecart_ColH = {
-32, 50, JungleLand_minecart_ColVerts, JungleLand_minecart_ColTris, &JungleLand_minecart_BoundBox
+ModelCollision JungleLand_minecart_collision = {
+    ARRAY_COUNT(JungleLand_minecart_ColVerts), ARRAY_COUNT(JungleLand_minecart_ColTris), JungleLand_minecart_ColVerts, JungleLand_minecart_ColTris, &JungleLand_minecart_BoundBox
 };
 
 Vec3f JungleLand_doorFraMEd_ColVerts[] = {
@@ -3733,8 +3733,8 @@ Rect3D JungleLand_doorFraMEd_BoundBox = {
     #include "assets/levelGroup/JungleLand/doorFraMEd/doorFraMEd.boundBox.inc.c"
 };
 
-ModelCollision JungleLand_doorFraMEd_ColH = {
-26, 34, JungleLand_doorFraMEd_ColVerts, JungleLand_doorFraMEd_ColTris, &JungleLand_doorFraMEd_BoundBox
+ModelCollision JungleLand_doorFraMEd_collision = {
+    ARRAY_COUNT(JungleLand_doorFraMEd_ColVerts), ARRAY_COUNT(JungleLand_doorFraMEd_ColTris), JungleLand_doorFraMEd_ColVerts, JungleLand_doorFraMEd_ColTris, &JungleLand_doorFraMEd_BoundBox
 };
 
 Vec3f JungleLand_doorFrame2_ColVerts[] = {
@@ -3749,8 +3749,8 @@ Rect3D JungleLand_doorFrame2_BoundBox = {
     #include "assets/levelGroup/JungleLand/doorFrame2/doorFrame2.boundBox.inc.c"
 };
 
-ModelCollision JungleLand_doorFrame2_ColH = {
-26, 34, JungleLand_doorFrame2_ColVerts, JungleLand_doorFrame2_ColTris, &JungleLand_doorFrame2_BoundBox
+ModelCollision JungleLand_doorFrame2_collision = {
+    ARRAY_COUNT(JungleLand_doorFrame2_ColVerts), ARRAY_COUNT(JungleLand_doorFrame2_ColTris), JungleLand_doorFrame2_ColVerts, JungleLand_doorFrame2_ColTris, &JungleLand_doorFrame2_BoundBox
 };
 
 Vec3f JungleLand_fernPlant_ColVerts[] = {
@@ -3765,8 +3765,8 @@ Rect3D JungleLand_fernPlant_BoundBox = {
     #include "assets/levelGroup/JungleLand/fernPlant/fernPlant.boundBox.inc.c"
 };
 
-ModelCollision JungleLand_fernPlant_ColH = {
-4, 2, JungleLand_fernPlant_ColVerts, JungleLand_fernPlant_ColTris, &JungleLand_fernPlant_BoundBox
+ModelCollision JungleLand_fernPlant_collision = {
+    ARRAY_COUNT(JungleLand_fernPlant_ColVerts), ARRAY_COUNT(JungleLand_fernPlant_ColTris), JungleLand_fernPlant_ColVerts, JungleLand_fernPlant_ColTris, &JungleLand_fernPlant_BoundBox
 };
 
 Vec3f JungleLand_waterfall_ColVerts[] = {
@@ -3781,8 +3781,8 @@ Rect3D JungleLand_waterfall_BoundBox = {
     #include "assets/levelGroup/JungleLand/waterfall/waterfall.boundBox.inc.c"
 };
 
-ModelCollision JungleLand_waterfall_ColH = {
-10, 8, JungleLand_waterfall_ColVerts, JungleLand_waterfall_ColTris, &JungleLand_waterfall_BoundBox
+ModelCollision JungleLand_waterfall_collision = {
+    ARRAY_COUNT(JungleLand_waterfall_ColVerts), ARRAY_COUNT(JungleLand_waterfall_ColTris), JungleLand_waterfall_ColVerts, JungleLand_waterfall_ColTris, &JungleLand_waterfall_BoundBox
 };
 
 Vec3f JungleLand_water_ColVerts[] = {
@@ -3797,8 +3797,8 @@ Rect3D JungleLand_water_BoundBox = {
     #include "assets/levelGroup/JungleLand/water/water.boundBox.inc.c"
 };
 
-ModelCollision JungleLand_water_ColH = {
-5, 3, JungleLand_water_ColVerts, JungleLand_water_ColTris, &JungleLand_water_BoundBox
+ModelCollision JungleLand_water_collision = {
+    ARRAY_COUNT(JungleLand_water_ColVerts), ARRAY_COUNT(JungleLand_water_ColTris), JungleLand_water_ColVerts, JungleLand_water_ColTris, &JungleLand_water_BoundBox
 };
 
 Vec3f JungleLand_water2_ColVerts[] = {
@@ -3813,8 +3813,8 @@ Rect3D JungleLand_water2_BoundBox = {
     #include "assets/levelGroup/JungleLand/water2/water2.boundBox.inc.c"
 };
 
-ModelCollision JungleLand_water2_ColH = {
-5, 3, JungleLand_water2_ColVerts, JungleLand_water2_ColTris, &JungleLand_water2_BoundBox
+ModelCollision JungleLand_water2_collision = {
+    ARRAY_COUNT(JungleLand_water2_ColVerts), ARRAY_COUNT(JungleLand_water2_ColTris), JungleLand_water2_ColVerts, JungleLand_water2_ColTris, &JungleLand_water2_BoundBox
 };
 s32 alignment_Pad_JL[] = {0, 0};
 
@@ -4007,7 +4007,7 @@ Mtx JungleLand_golemSleep_Animarr[20][8] = {
 };
 
 AnimPointer JungleLand_golemSleepPointers_Animp[1] = {
-{&JungleLand_golemSleep_Animh.frames, &JungleLand_golemSleep_Animh.objects, &JungleLand_golemSleep_Animarr[0][0]}
+{&JungleLand_golemSleep_Animh.frames, &JungleLand_golemSleep_Animh.objects, JungleLand_golemSleep_Animarr[0]}
 };
 
 Anim JungleLand_golemAttack_Animh = {
@@ -4019,7 +4019,7 @@ Mtx JungleLand_golemAttack_Animarr[55][8] = {
 };
 
 AnimPointer JungleLand_golemAttackPointers_Animp[1] = {
-{&JungleLand_golemAttack_Animh.frames, &JungleLand_golemAttack_Animh.objects, &JungleLand_golemAttack_Animarr[0][0]}
+{&JungleLand_golemAttack_Animh.frames, &JungleLand_golemAttack_Animh.objects, JungleLand_golemAttack_Animarr[0]}
 };
 
 Anim JungleLand_spiderRockInit_Animh = {
@@ -4031,7 +4031,7 @@ Mtx JungleLand_spiderRockInit_Animarr[1][1] = {
 };
 
 AnimPointer JungleLand_spiderRockInitPointers_Animp[1] = {
-{&JungleLand_spiderRockInit_Animh.frames, &JungleLand_spiderRockInit_Animh.objects, &JungleLand_spiderRockInit_Animarr[0][0]}
+{&JungleLand_spiderRockInit_Animh.frames, &JungleLand_spiderRockInit_Animh.objects, JungleLand_spiderRockInit_Animarr[0]}
 };
 
 Anim JungleLand_fishHeadInit_Animh = {
@@ -4043,7 +4043,7 @@ Mtx JungleLand_fishHeadInit_Animarr[1][1] = {
 };
 
 AnimPointer JungleLand_fishHeadInitPointers_Animp[1] = {
-{&JungleLand_fishHeadInit_Animh.frames, &JungleLand_fishHeadInit_Animh.objects, &JungleLand_fishHeadInit_Animarr[0][0]}
+{&JungleLand_fishHeadInit_Animh.frames, &JungleLand_fishHeadInit_Animh.objects, JungleLand_fishHeadInit_Animarr[0]}
 };
 
 Anim JungleLand_fishTailInit_Animh = {
@@ -4055,7 +4055,7 @@ Mtx JungleLand_fishTailInit_Animarr[1][1] = {
 };
 
 AnimPointer JungleLand_fishTailInitPointers_Animp[1] = {
-{&JungleLand_fishTailInit_Animh.frames, &JungleLand_fishTailInit_Animh.objects, &JungleLand_fishTailInit_Animarr[0][0]}
+{&JungleLand_fishTailInit_Animh.frames, &JungleLand_fishTailInit_Animh.objects, JungleLand_fishTailInit_Animarr[0]}
 };
 
 s32 alignment_Pad_JL2[] = {0, 0};

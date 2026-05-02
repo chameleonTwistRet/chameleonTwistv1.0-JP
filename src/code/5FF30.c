@@ -3449,7 +3449,7 @@ void func_8008DB90(Gfx** pGfxPos, GraphicStruct* arg1) {
 
 Gfx* func_8008E314(Gfx* gfxPos, Tongue* tongues, PlayerActor* players, Camera* cameras, s32 fbIndex) {
     u16 perspNorm;
-    Camera* camera = &cameras[0];
+    Camera* camera = cameras;
 
     camera->f4.x = 0.0f;
     camera->f4.y = 0.0f;
@@ -3480,7 +3480,7 @@ Gfx* func_8008E314(Gfx* gfxPos, Tongue* tongues, PlayerActor* players, Camera* c
 
 Gfx* func_8008E488(Gfx* gfxPos, Tongue* tongues, PlayerActor* players, Camera* cameras, s32 fbIndex) {
     u16 perspNorm;
-    Camera* camera = &cameras[0];
+    Camera* camera = cameras;
 
     camera->f4.x = 0.0f;
     camera->f4.y = 0.0f;
@@ -4108,7 +4108,7 @@ void Porocess_Mode0(void) {
                 if (gCurrentStage == STAGE_JUNGLE) {
                     D_80236978 = 1;
                 }
-                func_800C2820(gGameState.gCurrentZone, &gPlayerActors[0], &gGameState);
+                func_800C2820(gGameState.gCurrentZone, gPlayerActors, &gGameState);
             } else {
                 D_80236978 = 0;
                 func_800C1510(gGameState.gCurrentZone, gGameState.unk33);
@@ -4152,7 +4152,7 @@ void Porocess_Mode0(void) {
                 if (gCurrentStage == STAGE_JUNGLE) {
                     D_80236978 = 1;
                 }
-                func_800C2820(gSaveFile.gCurrentZone, &gPlayerActors[0], &gSaveFile);
+                func_800C2820(gSaveFile.gCurrentZone, gPlayerActors, &gSaveFile);
             } else {
                 D_80236978 = 0;
                 func_800C1510(gSaveFile.gCurrentZone, gSaveFile.unk33);
@@ -5708,7 +5708,7 @@ void func_80098F50(CTTask* task) {
         SetTextGradient_TopBottom(127, 127, 60, task->unk_68, 30, 30, 20, task->unk_68);
     }
     PrintText(x, y, 0, 1, 0, 0, "ＤＡＴＡ", 1);
-    PrintText(x + 72, y, 0, 1, 0, 0, ParseIntToBase10(unk62 + 1, &resultChar[0]), 1);
+    PrintText(x + 72, y, 0, 1, 0, 0, ParseIntToBase10(unk62 + 1, resultChar), 1);
     func_800610B8();
     if ((u16) task->unk72 == 1) {
         temp = task->unk_64;
@@ -5719,7 +5719,7 @@ void func_80098F50(CTTask* task) {
         printUISprite(x + 20 + 16 + 9, y + 33, 0, 0, 1, 16, 16, 20, SPRITE_TEXTBIG);
         func_800612F0(0);
         SetTextGradient_TopBottom(20, 100, 1, 255, 240, 220, 0, 255);
-        PrintText(x + 20 + 32 + 10, y + 30, 0, 1, 12, 20, ParseIntToBase10(temp, &resultChar[0]), 1);
+        PrintText(x + 20 + 32 + 10, y + 30, 0, 1, 12, 20, ParseIntToBase10(temp, resultChar), 1);
     } else{
         SetTextGradient_LeftRight(1, 1, 1, 255, 1, 1, 1, 128);
         PrintText(x + 16, y + 32, 0, 1, 8, 16, "ＮＯ  ＤＡＴＡ！", 1);
@@ -8140,7 +8140,7 @@ void func_800AAB0C(s32 arg0) {
     LoadStageByIndex(arg0);
     DMAStruct_Print();
     _bzero(gPlayerActors, sizeof(gPlayerActors));
-    _bzero(&gCamera[0], sizeof(Camera));
+    _bzero(gCamera, sizeof(Camera));
     D_80168DA0 = 1;
     gPlayerActors[0].active = 1;
     gPlayerActors[1].active = 0;
