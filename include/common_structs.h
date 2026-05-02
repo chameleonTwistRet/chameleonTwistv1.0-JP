@@ -491,8 +491,8 @@ typedef struct Camera {//take these with a grain of salt
 /* 0x04 */ Vec3f f1; //angle freecam will snap to
 /* 0x10 */ Vec3f f2;
 /* 0x1C */ Vec3f f3;
-/* 0x28 */ Vec3f f4; // perspective "eye"
-/* 0x34 */ Vec3f f5; // perspective "at"
+/* 0x28 */ Vec3f eye; // perspective "eye"
+/* 0x34 */ Vec3f lookAt; // perspective "at"
 /* 0x40 */ s32 unk40;
 /* 0x44 */ f32 size1;
 /* 0x48 */ f32 size2;

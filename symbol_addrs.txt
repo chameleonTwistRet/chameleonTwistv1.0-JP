@@ -695,7 +695,7 @@ idleproc = 0x80025cb8; // type:func rom:0x10b8
 mainproc = 0x80025d80; // type:func rom:0x1180
 videoproc = 0x80084b30; // type:func rom:0x5ff30
 Audio_InitOsc = 0x800853b4; // type:func rom:0x607b4
-check_collision_within_radius = 0x800af658; // type:func rom:0x8aa58
+IsRectInViewArea = 0x800af658; // type:func rom:0x8aa58
 tanf = 0x800c8a1c; // type:func rom:0xa3e1c
 IsNearPoint = 0x800d8030; // type:func rom:0xb3430
 Vec3f_Print = 0x800d8544; // type:func rom:0xb3944
@@ -1500,6 +1500,8 @@ Timing_EndFrameTime = 0x800FF8A0;
 Timing_DelayAudioInterval = 0x800FF888;
 Timing_BusyTime = 0x801B316C;
 gSfxList = 0x801f7570; // size:0x384
+IsPointInViewAreaFull = 0x800AF604;
+IsPointInViewAreaIgnoreY = 0x800AF62C;
 
 //rodata stuff
 D_8010B484 = 0x8010B484; // type:f32 force_migration:True size:0x08

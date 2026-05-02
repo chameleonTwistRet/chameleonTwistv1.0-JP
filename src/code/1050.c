@@ -404,7 +404,7 @@ void func_80025EF0(PlayerActor* arg0, Tongue* arg1, s32 arg2);
 #endif
 
 s32 func_80026C78(Actor* actor) {
-    return 1 - func_800AF604(actor->pos.x, actor->pos.y, actor->pos.z, 8000.0f);
+    return 1 - IsPointInViewAreaFull(actor->pos.x, actor->pos.y, actor->pos.z, 8000.0f);
 }
 
 //adjustment for BL_BOSS_SEGMENT

@@ -19,7 +19,7 @@ void func_8008C554(void);
 void osViSwapBuffer(void* frameBufPtr);
 void Sched_StartThread(void);
 void Audio_StartThread(void);
-s32 func_800AF604(f32, f32, f32, f32);
+s32 IsPointInViewAreaFull(f32, f32, f32, f32);
 void __osInitialize_common(void);
 Gfx* func_8007B524(GraphicStruct*, Gfx*, Camera*);
 Gfx* func_8005F408(Gfx*);

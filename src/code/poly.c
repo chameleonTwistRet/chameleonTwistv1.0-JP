@@ -620,13 +620,13 @@ void SetCameraParameters(void) {
     cam = gCamera;
     
     for (i = 0; i < ARRAY_COUNT(gCamera); i++, cam++) {
-        cam->f5.x = sp3C.x;
-        cam->f5.y = sp3C.y;
-        cam->f5.z = sp3C.z;
+        cam->lookAt.x = sp3C.x;
+        cam->lookAt.y = sp3C.y;
+        cam->lookAt.z = sp3C.z;
 
-        cam->f4.x = sp30.x;
-        cam->f4.y = sp30.y;
-        cam->f4.z = sp30.z;
+        cam->eye.x = sp30.x;
+        cam->eye.y = sp30.y;
+        cam->eye.z = sp30.z;
         if (gCurrentStage != STAGE_VS) {
             break;
         }

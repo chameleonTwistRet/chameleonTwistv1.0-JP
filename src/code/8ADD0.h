@@ -281,7 +281,7 @@ extern s32 D_802025B4;
 extern Collider* D_802025B8[];
 extern s32 D_80236970;
 s32 func_80083F18(SpriteActor*);                      /* extern */
-s32 func_800AF604(f32, f32, f32, f32);              /* extern */
+s32 IsPointInViewAreaFull(f32, f32, f32, f32);              /* extern */
 
 void func_800B5224(f32, s32*, s32*);                   /* extern */
 void func_800BE714(void);                                  /* extern */

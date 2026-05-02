@@ -2521,9 +2521,9 @@ s32 Free(void* arg0) {
 }
 
 void func_80056F48(s32 arg0, Tongue* tongues, PlayerActor* players, Camera* cameras) {
-    f32 xAt = D_801768A0.f5.x - D_801768A0.f4.x;
-    f32 yAt = D_801768A0.f5.y - D_801768A0.f4.y + D_800FE014;
-    f32 zAt = D_801768A0.f5.z - D_801768A0.f4.z;
+    f32 xAt = D_801768A0.lookAt.x - D_801768A0.eye.x;
+    f32 yAt = D_801768A0.lookAt.y - D_801768A0.eye.y + D_800FE014;
+    f32 zAt = D_801768A0.lookAt.z - D_801768A0.eye.z;
     if (xAt != 0 || zAt != 0) {
         guLookAt(&D_80176860,
                  0.0f, 0.0f, 0.0f, // Eye
@@ -2657,7 +2657,7 @@ void func_8005747C(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, s
     *tile = gSpriteListings[arg6];
     D_800FDFA8[gSpriteFrameBuffer]++;
 
-    guMtxXFML(&D_80176860, arg0 - D_801768A0.f4.x, arg1 - D_801768A0.f4.y, arg2 - D_801768A0.f4.z, &sp54, &sp50, &sp4C);
+    guMtxXFML(&D_80176860, arg0 - D_801768A0.eye.x, arg1 - D_801768A0.eye.y, arg2 - D_801768A0.eye.z, &sp54, &sp50, &sp4C);
 
     if (arg5 >= 1.0 || arg5 == 0.0f) {
         tile->tileIndexX = arg5;
@@ -2725,7 +2725,7 @@ void func_80057A68(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, s
     *tile = gSpriteListings[arg6];
     D_800FDFA8[gSpriteFrameBuffer]++;
 
-    guMtxXFML(&D_80176860, arg0 - D_801768A0.f4.x, arg1 - D_801768A0.f4.y, arg2 - D_801768A0.f4.z, &sp54, &sp50, &sp4C);
+    guMtxXFML(&D_80176860, arg0 - D_801768A0.eye.x, arg1 - D_801768A0.eye.y, arg2 - D_801768A0.eye.z, &sp54, &sp50, &sp4C);
 
     if (arg5 >= 1.0 || arg5 == 0.0f) {
         tile->tileIndexX = arg5;
@@ -2794,9 +2794,9 @@ void func_80058044(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f
     *tile = gSpriteListings[arg7];
     D_800FDFA8[gSpriteFrameBuffer]++;
 
-    sp54 = arg0 - D_80176B78->f4.x;
-    sp50 = arg1 - D_80176B78->f4.y;
-    sp4C = arg2 - D_80176B78->f4.z;
+    sp54 = arg0 - D_80176B78->eye.x;
+    sp50 = arg1 - D_80176B78->eye.y;
+    sp4C = arg2 - D_80176B78->eye.z;
 
     angle = func_80056104(sp54, sp4C);
 
@@ -2827,7 +2827,7 @@ void func_80058044(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f
         sp68 = arg4 / 2;
     }
 
-    guMtxXFML(&D_80176860, arg0 - D_801768A0.f4.x, arg1 - D_801768A0.f4.y, arg2 - D_801768A0.f4.z, &sp54, &sp50, &sp4C);
+    guMtxXFML(&D_80176860, arg0 - D_801768A0.eye.x, arg1 - D_801768A0.eye.y, arg2 - D_801768A0.eye.z, &sp54, &sp50, &sp4C);
 
     tile->quad[0].v.ob[0] = -sp6C + sp54;
     tile->quad[0].v.ob[1] = sp68 + sp50;

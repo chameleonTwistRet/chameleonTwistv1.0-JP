@@ -3451,17 +3451,17 @@ Gfx* func_8008E314(Gfx* gfxPos, Tongue* tongues, PlayerActor* players, Camera* c
     u16 perspNorm;
     Camera* camera = cameras;
 
-    camera->f4.x = 0.0f;
-    camera->f4.y = 0.0f;
-    camera->f4.z = 100.0f;
+    camera->eye.x = 0.0f;
+    camera->eye.y = 0.0f;
+    camera->eye.z = 100.0f;
 
     camera->f3.x = 0.0f;
     camera->f3.y = 0.0f;
     camera->f3.z = 0.0f;
 
-    camera->f5.x = 0.0f;
-    camera->f5.y = 0.0f;
-    camera->f5.z = 0.0f;
+    camera->lookAt.x = 0.0f;
+    camera->lookAt.y = 0.0f;
+    camera->lookAt.z = 0.0f;
 
     camera->f1.z = 0.0f;
     camera->f2.x = 0.0f;
@@ -3470,8 +3470,8 @@ Gfx* func_8008E314(Gfx* gfxPos, Tongue* tongues, PlayerActor* players, Camera* c
     guPerspective(&D_801B3180[fbIndex], &perspNorm, 60.0f, 4.0f / 3.0f, 1.0f, 1000.0f, 1.0f);
     gSPPerspNormalize(gfxPos++, perspNorm);
     guLookAt(&D_801B3240[fbIndex],
-             camera->f4.x, camera->f4.y, camera->f4.z, // Eye
-             camera->f5.x, camera->f5.y, camera->f5.z, // At
+             camera->eye.x, camera->eye.y, camera->eye.z, // Eye
+             camera->lookAt.x, camera->lookAt.y, camera->lookAt.z, // At
              0, 1, 0); // Up
     gSPMatrix(gfxPos++, OS_K0_TO_PHYSICAL(&D_801B3180[fbIndex]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
     gSPMatrix(gfxPos++, OS_K0_TO_PHYSICAL(&D_801B3240[fbIndex]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
@@ -3482,17 +3482,17 @@ Gfx* func_8008E488(Gfx* gfxPos, Tongue* tongues, PlayerActor* players, Camera* c
     u16 perspNorm;
     Camera* camera = cameras;
 
-    camera->f4.x = 0.0f;
-    camera->f4.y = 0.0f;
-    camera->f4.z = 5.0f;
+    camera->eye.x = 0.0f;
+    camera->eye.y = 0.0f;
+    camera->eye.z = 5.0f;
 
     camera->f3.x = 0.0f;
     camera->f3.y = 0.0f;
     camera->f3.z = 0.0f;
 
-    camera->f5.x = 0.0f;
-    camera->f5.y = 0.0f;
-    camera->f5.z = 0.0f;
+    camera->lookAt.x = 0.0f;
+    camera->lookAt.y = 0.0f;
+    camera->lookAt.z = 0.0f;
 
     camera->f1.z = 0.0f;
     camera->f2.x = 0.0f;
@@ -3501,8 +3501,8 @@ Gfx* func_8008E488(Gfx* gfxPos, Tongue* tongues, PlayerActor* players, Camera* c
     guPerspective(&D_801B3300[fbIndex], &perspNorm, 60.0f, 4.0f / 3.0f, 1.0f, 20000.0f, 1.0f);
     gSPPerspNormalize(gfxPos++, perspNorm);
     guLookAt(&D_801B33C0[fbIndex],
-             camera->f4.x, camera->f4.y, camera->f4.z, // Eye
-             camera->f5.x, camera->f5.y, camera->f5.z, // At
+             camera->eye.x, camera->eye.y, camera->eye.z, // Eye
+             camera->lookAt.x, camera->lookAt.y, camera->lookAt.z, // At
              0, 1, 0); // Up
     gSPMatrix(gfxPos++, OS_K0_TO_PHYSICAL(&D_801B3300[fbIndex]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
     gSPMatrix(gfxPos++, OS_K0_TO_PHYSICAL(&D_801B33C0[fbIndex]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
@@ -3692,12 +3692,12 @@ void func_8008F16C(void) {
         func_8005CA38();
         if (D_800FFDF0 == 3) {
             func_8002E0CC();
-            gCamera->f4.x = 0.0f;
-            gCamera->f4.y = 0.0f;
-            gCamera->f4.z = 0.0f;
-            gCamera->f5.x = 1000.0f;
-            gCamera->f5.y = 1000.0f;
-            gCamera->f5.z = 1000.0f;
+            gCamera->eye.x = 0.0f;
+            gCamera->eye.y = 0.0f;
+            gCamera->eye.z = 0.0f;
+            gCamera->lookAt.x = 1000.0f;
+            gCamera->lookAt.y = 1000.0f;
+            gCamera->lookAt.z = 1000.0f;
         }
         func_80056F48(0, gTongues, gPlayerActors, gCamera);
         setPrimColor(D_800FF8DC, D_800FF8E0, D_800FF8E4, 255);

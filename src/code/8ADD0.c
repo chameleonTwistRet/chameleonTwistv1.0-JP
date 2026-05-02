@@ -1953,7 +1953,7 @@ void func_800C38E0(SpriteActor* arg0) {
     curSpAct = arg0;
 
     while (curSpAct->size >= 0){
-        curSpAct->unk20 = func_800AF604(curSpAct->position.x, curSpAct->position.y, curSpAct->position.z, 6000);
+        curSpAct->unk20 = IsPointInViewAreaFull(curSpAct->position.x, curSpAct->position.y, curSpAct->position.z, 6000);
         curSpAct++;
     }
 
@@ -1966,17 +1966,17 @@ void func_800C38E0(SpriteActor* arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C3B50.s")
 
 void func_800C3DCC(Camera* camera, Vec3f arg1, Vec3f arg4, f32 arg7) {
-    camera->f5.x = camera->f1.z = arg1.x;
-    camera->f2.x = camera->f5.y = arg1.y;
+    camera->lookAt.x = camera->f1.z = arg1.x;
+    camera->f2.x = camera->lookAt.y = arg1.y;
     camera->f2.z = arg7;
     camera->f2.y = arg1.z;
-    camera->f5.z = arg1.z;
+    camera->lookAt.z = arg1.z;
     camera->f3.x = arg4.x;
-    camera->f4.x = arg4.x;
+    camera->eye.x = arg4.x;
     camera->f3.y = arg4.y;
-    camera->f4.y = camera->f3.y;
+    camera->eye.y = camera->f3.y;
     camera->f3.z = arg4.z;
-    camera->f4.z = arg4.z;
+    camera->eye.z = arg4.z;
     camera->f2.x -= gZoneFields[gCurrentZone].unkD0 * camera->size1;
     camera->f3.y -= gZoneFields[gCurrentZone].unkD0 * camera->size1;
 }
@@ -1997,18 +1997,18 @@ void func_800C4040(PlayerActor* arg0, Tongue* arg1, Camera* camera, f32 arg3, f3
     }
 
     //these MUST be formatted like this
-    camera->f5.x = camera->f1.z = arg0->pos.x;
-    camera->f5.y = camera->f2.x = arg0->pos.y + (60.0 / camera->size1);
+    camera->lookAt.x = camera->f1.z = arg0->pos.x;
+    camera->lookAt.y = camera->f2.x = arg0->pos.y + (60.0 / camera->size1);
     camera->f2.z = arg0->pos.y;
-    camera->f5.z = camera->f2.y = arg0->pos.z;
-    camera->f4.x = camera->f3.x = camera->f1.z;
-    camera->f4.y = camera->f3.y = arg0->pos.y + 600 * camera->size1;
-    camera->f4.z = camera->f3.z = camera->f2.y;
-    camera->f5.y += gZoneFields[gCurrentZone].unkD0 * camera->size1;
-    camera->f4.y += gZoneFields[gCurrentZone].unkD0 * camera->size1;
+    camera->lookAt.z = camera->f2.y = arg0->pos.z;
+    camera->eye.x = camera->f3.x = camera->f1.z;
+    camera->eye.y = camera->f3.y = arg0->pos.y + 600 * camera->size1;
+    camera->eye.z = camera->f3.z = camera->f2.y;
+    camera->lookAt.y += gZoneFields[gCurrentZone].unkD0 * camera->size1;
+    camera->eye.y += gZoneFields[gCurrentZone].unkD0 * camera->size1;
 
     if (isInOverworld == TRUE) {
-        camera->f4.z += 800 * camera->size1;
+        camera->eye.z += 800 * camera->size1;
         camera->f3.z += 800 * camera->size1;
         func_800D3854(arg0, arg1, camera, &sp54, &sp48, 1);
         func_800C3DCC(camera, sp54, sp48, arg0->pos.y);
@@ -2021,9 +2021,9 @@ void func_800C4040(PlayerActor* arg0, Tongue* arg1, Camera* camera, f32 arg3, f3
     arg4 *= 800 * camera->size1;
     LimitFloat(&arg3, -temp_f0_8, temp_f0_8);
     LimitFloat(&arg4, -temp_f12, temp_f12);
-    camera->f4.x += arg3;
+    camera->eye.x += arg3;
     camera->f3.x += arg3;
-    camera->f4.z += arg4;
+    camera->eye.z += arg4;
     camera->f3.z += arg4;
 
     if (camera->unk0 == 1) {
