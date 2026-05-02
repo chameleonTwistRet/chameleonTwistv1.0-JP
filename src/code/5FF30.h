@@ -111,7 +111,7 @@ typedef struct RollData {
     /* 0x08 */ s32 unk_08; //id???
     /* 0x0C */ s32 unk_0C;
     //expected euc-jp
-    /* 0x10 */ char lines[7][48];
+    /* 0x10 */ u8 lines[7][48];
 } RollData; //sizeof 0x160
 
 typedef struct StageLoadData {

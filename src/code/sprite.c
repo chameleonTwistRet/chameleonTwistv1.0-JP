@@ -35,10 +35,8 @@ unk_80052094_8 Battle_MsgGo[3] = {
     {4.0f, 2},
 };
 
-s32 padding[3] = {0, 0, 0};
+s32 padding[3] = {0, 0, 0}; //TODO: not actually padding??
 
-#define TEXT_LINE_LENGTH 30
-#define TEXT_LINE_SIZE TEXT_LINE_LENGTH * 2
 #define NULL_LINE "　"
 
 // JP chameleon names
@@ -7924,14 +7922,14 @@ void Effect_TypeAQ_Update(Effect* effect, Gfx** pGfxPos) {
     }
 }
 
-void Effect_TypeAQ_Init(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, s32 arg6, char* arg7, s32 arg8, s32* arg9) {
+void Effect_TypeAQ_Init(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, s32 arg6, u8* arg7, s32 arg8, s32* arg9) {
     Effect* effect;
     Effect_TypeAQ_Data* data;
     EffectPart* parts;
     s32 sp60;
     s32 sp5C;
     s32 i = 0;
-    unsigned char* ptr = arg7;
+    u8* ptr = (u8*)arg7; //TODO: ? weird cast hack
 
 
     while (*ptr != 0) {

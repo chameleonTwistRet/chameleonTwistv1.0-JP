@@ -8200,13 +8200,13 @@ void func_800AAB0C(s32 arg0) {
 //related to credits
 void func_800AB734(void) {
     s32 i;
-    char* str1;
-    char* str2;
-    char* str3;
-    char* str4;
-    char* str5;
-    char* str6;
-    char* str7;
+    unsigned char* str1;
+    unsigned char* str2;
+    unsigned char* str3;
+    unsigned char* str4;
+    unsigned char* str5;
+    unsigned char* str6;
+    unsigned char* str7;
 
     for (i = 0; i < AmountOfCredits; i++) {
         if (CreditsData[i].execTime == gCurrentDemoTimer - CreditsTimeOffset) {

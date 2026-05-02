@@ -285,7 +285,7 @@ void SetTextGradientFromPaletteAlpha(s32, f32);
 void SetTextGradientFromPalette(s32);
 void Effect_TypeBC_Init(f32, f32, f32, f32, f32, f32);
 void Effect_TypeAR_Init(f32 arg0, f32 arg1, s32 arg2, f32 arg3, f32 arg4, f32 arg5, s32 arg6, char* arg7, s32 arg8, s32* arg9);
-void Effect_TypeAQ_Init(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, s32 arg6, char* arg7, s32 arg8, s32* arg9);
+void Effect_TypeAQ_Init(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, s32 arg6, u8* arg7, s32 arg8, s32* arg9);
 void Effect_TypeBJ_Init(f32, f32, f32, f32, f32);
 Gfx* func_8007ABDC(Gfx*);
 void func_8007ABE4(void);
