@@ -1,199 +1,133 @@
-"""
-Converts Chameleon Twist collision data to a struct of user's choosing
+"""Collision struct splitter: Header / Verts / Tris / Settings variants."""
 
-Author: Nathan R.
-"""
-
-import re
+import os
 import struct
+import sys
 from pathlib import Path
-from splat.util.log import error
+from _ct_base import CTSegBase
 from splat.util import options, symbols
-from splat.segtypes.common.codesubsegment import CommonSegCodeSubsegment
 
 
-class N64SegCollision(CommonSegCodeSubsegment):
-    def __init__(
-        self,
-        rom_start,
-        rom_end,
-        type,
-        name,
-        vram_start,
-        args,
-        yaml,
-    ):
-        super().__init__(
-            rom_start,
-            rom_end,
-            type,
-            name,
-            vram_start,
-            args=args,
-            yaml=yaml,
-        )
-        self.file_text = None
-        self.data_only = isinstance(yaml, dict) and yaml.get("data_only", False)
+def _vec_array(buf, fmt, stride):
+    """Yield C-formatted brace-enclosed tuples for an array of `stride`-byte
+    records unpacked with `fmt`. Output spacing (', ') matches the original
+    splitter, which derived it from `str(tuple)`."""
+    for off in range(0, len(buf), stride):
+        chunk = struct.unpack(fmt, buf[off : off + stride])
+        yield "{" + ", ".join(str(v) for v in chunk) + "},"
+
+
+class N64SegCollision(CTSegBase):
+    def __init__(self, rom_start, rom_end, type, name, vram_start, args, yaml):
+        super().__init__(rom_start, rom_end, type, name, vram_start, args, yaml)
         self.type = isinstance(yaml, dict) and yaml.get("args", "Header")
-
-    def get_linker_section(self) -> str:
-        #return ".data"
-        return []
 
     def out_path(self) -> Path:
         return options.opts.asset_path / self.dir / f"{self.name}.col{self.type[0]}.inc.c"
 
-    def scan(self, rom_bytes: bytes):
-        if self.out_path().exists():
-            return
-        self.file_text = self.disassemble_data(rom_bytes)
+    def _open_array(self, sym_name: str, c_type: str):
+        if self.data_only:
+            return [], None
+        return [
+            '#include "common.h"',
+            "",
+            f"{c_type} {sym_name}[] = {{",
+        ], "header_close"
 
     def disassemble_data(self, rom_bytes):
-        collision_data = rom_bytes[self.rom_start : self.rom_end]
-        #segment_length = len(collision_data)
-        #if (segment_length) != 64:
-        #    if (segment_length == 72):
-        #        collision_data = collision_data[:64]
-        #    else:
-        #        error(
-        #            f"wrong"
-        #        )
-
-        lines = []
+        buf = rom_bytes[self.rom_start : self.rom_end]
 
         if self.type == "Verts":
-            sym = self.retrieve_sym_type(symbols.all_symbols_dict, self.vram_start, "ColV")
-            if not sym:
-                sym = self.create_symbol(
-                    addr=self.vram_start, in_segment=True, type="ColV", define=True
-                )
-            if not self.data_only:
-                lines.append('#include "common.h"')
-                lines.append("")
-                typer = "Vec3f"
-                lines.append(f"{typer} {sym.name}[] = {{")
-            at = len(lines)
-            
-            a = 0
-            b = 0
-            while a < len(collision_data):
-                newLine = str(struct.unpack(">fff", collision_data[a:a+0xC])).replace("(", "{").replace(")","}")+","
-                lines.append(newLine)
-                a += 0xC
-                b += 1
+            return self._verts(buf)
+        if self.type == "Tris":
+            return self._tris(buf)
+        if self.type == "Settings":
+            return self._settings(buf)
+        if self.type == "Header":
+            return self._header(buf)
+        return ""
 
-            if not self.data_only:
-                lines[at] = lines[at].replace("[]", "["+str(b)+"]")
-                lines.append("};")
-        elif self.type == "Tris":
-            sym = self.retrieve_sym_type(symbols.all_symbols_dict, self.vram_start, "ColT")
-            if not sym:
-                sym = self.create_symbol(
-                    addr=self.vram_start, in_segment=True, type="ColT", define=True
-                )
-            if not self.data_only:
-                lines.append('#include "common.h"')
-                lines.append("")
-                typer = "Vec3w"
-                lines.append(f"{typer} {sym.name}[] = {{")
-            at = len(lines)
-            
-            a = 0
-            b = 0
-            while a < len(collision_data):
-                newLine = str(struct.unpack(">iii", collision_data[a:a+0xC])).replace("(", "{").replace(")","}")+","
-                lines.append(newLine)
-                a += 0xC
-                b += 1
-            
+    def _ensure_sym(self, addr, sym_type):
+        sym = self.retrieve_sym_type(symbols.all_symbols_dict, addr, sym_type)
+        if not sym:
+            sym = self.create_symbol(
+                addr=addr, in_segment=True, type=sym_type, define=True
+            )
+        return sym
 
-            if not self.data_only:
-                lines[at] = lines[at].replace("[]", "["+str(b)+"]")
-                lines.append("};")
-        elif self.type == "Settings":
-            sym = self.retrieve_sym_type(symbols.all_symbols_dict, self.vram_start, "ColS")
-            if not sym:
-                sym = self.create_symbol(
-                    addr=self.vram_start, in_segment=True, type="ColS", define=True
-                )
-            if not self.data_only:
-                lines.append('#include "common.h"')
-                lines.append("")
-                typer = "Rect3D"
-                lines.append(f"{typer} {sym.name} = {{")
-            
-            newLine = str(struct.unpack(">fff", collision_data[0:0xC])).replace("(", "{").replace(")","}")+"," +\
-                      str(struct.unpack(">fff", collision_data[0xC:0xC+0xC])).replace("(", "{").replace(")","}")
-            lines.append(newLine)
-
-            if not self.data_only:
-                lines.append("};")
-        elif self.type == "Header":
-            sym = self.retrieve_sym_type(symbols.all_symbols_dict, self.vram_start, "ColH")
-            if not sym:
-                sym = self.create_symbol(
-                    addr=self.vram_start, in_segment=True, type="ColH", define=True
-                )
-            if not self.data_only:
-                lines.append('#include "common.h"')
-                lines.append("")
-                typer = "ModelCollision"
-                lines.append(f"{typer} {sym.name} = {{")
-            
-            #see common_structs.h
-            newLine = str()
-
-            
-            data = struct.unpack(">iiIII", collision_data[0:0x14])
-            one = ""
-            enums = open("include/enums.h", "r", encoding="UTF-8").readlines()
-            i = 0
-            while i < len(data):
-                v = data[i]
-                if i == 2:
-                    sym2 = self.retrieve_sym_type(symbols.all_symbols_dict, v, "ColV")
-                    if not sym2:
-                        sym2 = self.create_symbol(
-                            addr=self.vram_start, in_segment=True, type="ColV", define=True
-                        )
-                    v = "&"+sym2.name+"[0]"
-                elif i == 3:
-                    sym2 = self.retrieve_sym_type(symbols.all_symbols_dict, v, "ColT")
-                    if not sym2:
-                        sym2 = self.create_symbol(
-                            addr=self.vram_start, in_segment=True, type="ColT", define=True
-                        )
-                    v = "&"+sym2.name+"[0]"
-                elif i == 4:
-                    sym2 = self.retrieve_sym_type(symbols.all_symbols_dict, v, "ColS")
-                    if not sym2:
-                        sym2 = self.create_symbol(
-                            addr=self.vram_start, in_segment=True, type="ColS", define=True
-                        )
-                    v = "&"+sym2.name
-                one += str(v)+", "
-                i += 1
-            lines.append(one[:-2])
-
-            if not self.data_only:
-                lines.append("};")
-
-        # enforce newline at end of file
+    def _verts(self, buf):
+        sym = self._ensure_sym(self.vram_start, "ColV")
+        rows = list(_vec_array(buf, ">fff", 0xC))
+        lines = []
+        if not self.data_only:
+            lines.append('#include "common.h"')
+            lines.append("")
+            lines.append(f"Vec3f {sym.name}[] = {{")
+        lines.extend(rows)
+        if not self.data_only:
+            lines.append("};")
         lines.append("")
         return "\n".join(lines)
 
-    def split(self, rom_bytes: bytes):
-        if self.file_text and self.out_path():
-            self.out_path().parent.mkdir(parents=True, exist_ok=True)
+    def _tris(self, buf):
+        sym = self._ensure_sym(self.vram_start, "ColT")
+        rows = list(_vec_array(buf, ">iii", 0xC))
+        lines = []
+        if not self.data_only:
+            lines.append('#include "common.h"')
+            lines.append("")
+            lines.append(f"Vec3w {sym.name}[] = {{")
+        lines.extend(rows)
+        if not self.data_only:
+            lines.append("};")
+        lines.append("")
+        return "\n".join(lines)
 
-            with open(self.out_path(), "w", newline="\n") as f:
-                f.write(self.file_text)
+    def _settings(self, buf):
+        sym = self._ensure_sym(self.vram_start, "ColS")
+        a = struct.unpack(">fff", buf[0:0xC])
+        b = struct.unpack(">fff", buf[0xC : 0x18])
+        body = (
+            "{" + ", ".join(str(v) for v in a) + "},"
+            "{" + ", ".join(str(v) for v in b) + "}"
+        )
+        lines = []
+        if not self.data_only:
+            lines.append('#include "common.h"')
+            lines.append("")
+            lines.append(f"Rect3D {sym.name} = {{")
+        lines.append(body)
+        if not self.data_only:
+            lines.append("};")
+        lines.append("")
+        return "\n".join(lines)
 
-    #def should_scan(self) -> bool:
-    #    return (
-    #        self.rom_start != "auto"
-    #        and self.rom_end != "auto"
-    #    )
-#
-    #def should_split(self) -> bool:
-    #    return self.extract and options.mode_active("mtx")
+    def _header(self, buf):
+        sym = self._ensure_sym(self.vram_start, "ColH")
+        data = list(struct.unpack(">iiIII", buf[0:0x14]))
+
+        # i==2 ColV, i==3 ColT, i==4 ColS — resolve pointers to symbol refs.
+        for i, ref_type, suffix in (
+            (2, "ColV", "[0]"),
+            (3, "ColT", "[0]"),
+            (4, "ColS", ""),
+        ):
+            ref = self.retrieve_sym_type(symbols.all_symbols_dict, data[i], ref_type)
+            if not ref:
+                ref = self.create_symbol(
+                    addr=self.vram_start, in_segment=True, type=ref_type, define=True
+                )
+            data[i] = f"&{ref.name}{suffix}"
+
+        body = ", ".join(str(v) for v in data)
+
+        lines = []
+        if not self.data_only:
+            lines.append('#include "common.h"')
+            lines.append("")
+            lines.append(f"ModelCollision {sym.name} = {{")
+        lines.append(body)
+        if not self.data_only:
+            lines.append("};")
+        lines.append("")
+        return "\n".join(lines)
