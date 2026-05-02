@@ -180,7 +180,7 @@ extern ModelCollision Global_pole_ColH;
 
 Mtx BattleMode_IMtx1 = IDENTITY;
 
-StageModel BattleMode_stageModels[68] = {
+StageModel BattleMode_stageModels[] = {
 {&Global_fallbackCube_Gfx[0], &Global_fallbackCube_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
 {&Global_exitShadowSouth_Gfx[0], &Global_exitShadowSouth_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
 {&Global_exitShadowNorth_Gfx[0], &Global_exitShadowNorth_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
@@ -670,11 +670,11 @@ LevelScope BattleMode_scope_Lvlscope = {
     60,
 };
 
-StageData BattleMode_header_Lvlhdr = {
+StageData BattleMode_stageData = {
     &BattleMode_map_data,
     0,
-    &BattleMode_stageModels[0],
-    68,
+    BattleMode_stageModels,
+    ARRAY_COUNT(BattleMode_stageModels),
     0,
     BattleMode_rabObjects_Bin,
     131072,

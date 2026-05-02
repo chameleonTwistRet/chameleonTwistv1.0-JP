@@ -115,7 +115,7 @@ extern ModelCollision Global_pole_ColH;
 
 Mtx BossRush_IMtx1 = IDENTITY;
 
-StageModel BossRush_stageModels[47] = {
+StageModel BossRush_stageModels[] = {
 {&Global_fallbackCube_Gfx[0], &Global_fallbackCube_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
 {&Global_exitShadowSouth_Gfx[0], &Global_exitShadowSouth_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
 {&Global_exitShadowNorth_Gfx[0], &Global_exitShadowNorth_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
@@ -309,11 +309,11 @@ LevelScope BossRush_scope_Lvlscope = {
     60,
 };
 
-StageData BossRush_header_Lvlhdr = {
+StageData BossRush_stageData = {
     &BossRush_map_data,
     0,
-    &BossRush_stageModels[0],
-    47,
+    BossRush_stageModels,
+    ARRAY_COUNT(BossRush_stageModels),
     0,
     BossRush_rabObjects_Bin,
     131072,

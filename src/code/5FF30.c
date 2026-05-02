@@ -931,38 +931,38 @@ s16 D_800FFEEC[] = {0x18, 0x19, 0x1A, 0x1B, LIST_END};
 
 extern StageData JungleLand_stageData;
 extern StageData AntLand_stageData;
-extern StageData BombLand_header_Lvlhdr;
-extern StageData DesertCastle_header_Lvlhdr;
-extern StageData KidsLand_header_Lvlhdr;
-extern StageData GhostCastle_header_Lvlhdr;
-extern StageData IntroOutro_header_Lvlhdr;
-extern StageData BattleMode_header_Lvlhdr;
-extern StageData Training_header_Lvlhdr;
-extern StageData LizardKong_header_Lvlhdr;
-extern StageData Quintella_header_Lvlhdr;
-extern StageData BombSnake_header_Lvlhdr;
-extern StageData Armadillo_header_Lvlhdr;
-extern StageData GiantCake_header_Lvlhdr;
-extern StageData PileOfBooks_header_Lvlhdr;
-extern StageData BossRush_header_Lvlhdr;
+extern StageData BombLand_stageData;
+extern StageData DesertCastle_stageData;
+extern StageData KidsLand_stageData;
+extern StageData GhostCastle_stageData;
+extern StageData IntroOutro_stageData;
+extern StageData BattleMode_stageData;
+extern StageData Training_stageData;
+extern StageData LizardKong_stageData;
+extern StageData Quintella_stageData;
+extern StageData BombSnake_stageData;
+extern StageData Armadillo_stageData;
+extern StageData GiantCake_stageData;
+extern StageData PileOfBooks_stageData;
+extern StageData BossRush_stageData;
 
 StageLoadData gStageLoadData[] = {
     {&JungleLand_stageData, JungleLand_ROM_START, JungleLand_VRAM, JungleLand_VRAM_END, 0},
     {&AntLand_stageData, AntLand_ROM_START, AntLand_VRAM, AntLand_VRAM_END, 1},
-    {&BombLand_header_Lvlhdr, BombLand_ROM_START, BombLand_VRAM, BombLand_VRAM_END, 2},
-    {&DesertCastle_header_Lvlhdr, DesertCastle_ROM_START, DesertCastle_VRAM, DesertCastle_VRAM_END, 3},
-    {&KidsLand_header_Lvlhdr, KidsLand_ROM_START, KidsLand_VRAM, KidsLand_VRAM_END, 4},
-    {&GhostCastle_header_Lvlhdr, GhostCastle_ROM_START, GhostCastle_VRAM, GhostCastle_VRAM_END, 5},
-    {&IntroOutro_header_Lvlhdr, IntroOutro_ROM_START, IntroOutro_VRAM, IntroOutro_VRAM_END, 6},
-    {&BattleMode_header_Lvlhdr, BattleMode_ROM_START, BattleMode_VRAM, BattleMode_VRAM_END, 7},
-    {&Training_header_Lvlhdr, Training_ROM_START, Training_VRAM, Training_VRAM_END, 8},
-    {&LizardKong_header_Lvlhdr, LizardKong_ROM_START, LizardKong_VRAM, LizardKong_VRAM_END, 9},
-    {&Quintella_header_Lvlhdr, Quintella_ROM_START, Quintella_VRAM, Quintella_VRAM_END, 10},
-    {&BombSnake_header_Lvlhdr, BombSnake_ROM_START, BombSnake_VRAM, BombSnake_VRAM_END, 11},
-    {&Armadillo_header_Lvlhdr, Armadillo_ROM_START, Armadillo_VRAM, Armadillo_VRAM_END, 12},
-    {&GiantCake_header_Lvlhdr, GiantCake_ROM_START, GiantCake_VRAM, GiantCake_VRAM_END, 13},
-    {&PileOfBooks_header_Lvlhdr, PileOfBooks_ROM_START, PileOfBooks_VRAM, PileOfBooks_VRAM_END, 14},
-    {&BossRush_header_Lvlhdr, BossRush_ROM_START, BossRush_VRAM, BossRush_VRAM_END, 15},
+    {&BombLand_stageData, BombLand_ROM_START, BombLand_VRAM, BombLand_VRAM_END, 2},
+    {&DesertCastle_stageData, DesertCastle_ROM_START, DesertCastle_VRAM, DesertCastle_VRAM_END, 3},
+    {&KidsLand_stageData, KidsLand_ROM_START, KidsLand_VRAM, KidsLand_VRAM_END, 4},
+    {&GhostCastle_stageData, GhostCastle_ROM_START, GhostCastle_VRAM, GhostCastle_VRAM_END, 5},
+    {&IntroOutro_stageData, IntroOutro_ROM_START, IntroOutro_VRAM, IntroOutro_VRAM_END, 6},
+    {&BattleMode_stageData, BattleMode_ROM_START, BattleMode_VRAM, BattleMode_VRAM_END, 7},
+    {&Training_stageData, Training_ROM_START, Training_VRAM, Training_VRAM_END, 8},
+    {&LizardKong_stageData, LizardKong_ROM_START, LizardKong_VRAM, LizardKong_VRAM_END, 9},
+    {&Quintella_stageData, Quintella_ROM_START, Quintella_VRAM, Quintella_VRAM_END, 10},
+    {&BombSnake_stageData, BombSnake_ROM_START, BombSnake_VRAM, BombSnake_VRAM_END, 11},
+    {&Armadillo_stageData, Armadillo_ROM_START, Armadillo_VRAM, Armadillo_VRAM_END, 12},
+    {&GiantCake_stageData, GiantCake_ROM_START, GiantCake_VRAM, GiantCake_VRAM_END, 13},
+    {&PileOfBooks_stageData, PileOfBooks_ROM_START, PileOfBooks_VRAM, PileOfBooks_VRAM_END, 14},
+    {&BossRush_stageData, BossRush_ROM_START, BossRush_VRAM, BossRush_VRAM_END, 15},
     {0, 0, 0, 0, -1},
     {0, 0, 0, 0, -1},
     {0, 0, 0, 0, -1},

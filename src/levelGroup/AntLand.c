@@ -331,7 +331,7 @@ enum AntLand_Models {
     AL_POLE_MODEL = 98
 };
 
-StageModel AntLand_stageModels[99] = {
+StageModel AntLand_stageModels[] = {
     {&Global_fallbackCube_Gfx[0], &Global_fallbackCube_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
     {&Global_exitShadowSouth_Gfx[0], &Global_exitShadowSouth_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
     {&Global_exitShadowNorth_Gfx[0], &Global_exitShadowNorth_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
@@ -1667,8 +1667,8 @@ LevelScope AntLand_scope_Lvlscope = {
 StageData AntLand_stageData = {
     &AntLand_map_data,
     0,
-    AntLand_stageModels,            // Model array
-    99,                             // Model count
+    AntLand_stageModels,                // Model array
+    ARRAY_COUNT(AntLand_stageModels),   // Model count
     0,
     AntLand_rabobjects_Bin,
     131072,

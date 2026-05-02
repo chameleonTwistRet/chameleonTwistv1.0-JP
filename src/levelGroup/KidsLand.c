@@ -289,7 +289,7 @@ extern ModelCollision Global_pole_ColH;
 
 Mtx KidsLand_IMtx1 = IDENTITY;
 
-StageModel KidsLand_stageModels[119] = {
+StageModel KidsLand_stageModels[] = {
 {&Global_fallbackCube_Gfx[0], &Global_fallbackCube_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
 {&Global_exitShadowSouth_Gfx[0], &Global_exitShadowSouth_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
 {&Global_exitShadowNorth_Gfx[0], &Global_exitShadowNorth_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
@@ -1450,11 +1450,11 @@ LevelScope KidsLand_scope_Lvlscope = {
     60,
 };
 
-StageData KidsLand_header_Lvlhdr = {
+StageData KidsLand_stageData = {
     &KidsLand_map_data,
     0,
-    &KidsLand_stageModels[0],
-    119,
+    KidsLand_stageModels,
+    ARRAY_COUNT(KidsLand_stageModels),
     0,
     KidsLand_rabObjects_Bin,
     131072,

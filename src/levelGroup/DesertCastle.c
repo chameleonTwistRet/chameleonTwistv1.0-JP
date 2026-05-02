@@ -290,7 +290,7 @@ extern ModelCollision Global_pole_ColH;
 
 Mtx DesertCastle_IMtx1 = IDENTITY;
 
-StageModel DesertCastle_stageModels[128] = {
+StageModel DesertCastle_stageModels[] = {
 {&Global_fallbackCube_Gfx[0], &Global_fallbackCube_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
 {&Global_exitShadowSouth_Gfx[0], &Global_exitShadowSouth_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
 {&Global_exitShadowNorth_Gfx[0], &Global_exitShadowNorth_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
@@ -1241,11 +1241,11 @@ LevelScope DesertCastle_scope_Lvlscope = {
     60,
 };
 
-StageData DesertCastle_header_Lvlhdr = {
+StageData DesertCastle_stageData = {
     0,
     DesertCastle_ext_room_instances,
-    &DesertCastle_stageModels[0],
-    128,
+    DesertCastle_stageModels,
+    ARRAY_COUNT(DesertCastle_stageModels),
     0,
     DesertCastle_rabObjects_Bin,
     131072,

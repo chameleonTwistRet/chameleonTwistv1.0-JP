@@ -406,7 +406,7 @@ enum JungleLand_Models {
     G_POLE_MODEL
 };
 
-StageModel  JungleLand_stageModels[122] = {
+StageModel  JungleLand_stageModels[] = {
     {&Global_fallbackCube_Gfx[0], &Global_fallbackCube_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
     {&Global_exitShadowSouth_Gfx[0], &Global_exitShadowSouth_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
     {&Global_exitShadowNorth_Gfx[0], &Global_exitShadowNorth_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
@@ -1534,8 +1534,8 @@ LevelScope JungleLand_scope_Lvlscope = {
 StageData JungleLand_stageData = {
     &JungleLand_map_data,
     JungleLand_ext_room_instances,     // Exterior Rooms don't use a map
-    &JungleLand_stageModels[0],
-    122,
+    JungleLand_stageModels,
+    ARRAY_COUNT(JungleLand_stageModels),
     0,
     JungleLand_rabObjects_Bin,
     131072,

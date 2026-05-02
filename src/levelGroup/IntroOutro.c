@@ -167,7 +167,7 @@ extern ModelCollision Global_pole_ColH;
 
 Mtx IntroOutro_IMtx1 = IDENTITY;
 
-StageModel IntroOutro_stageModels[76] = {
+StageModel IntroOutro_stageModels[] = {
 {&Global_fallbackCube_Gfx[0], &Global_fallbackCube_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
 {&Global_exitShadowSouth_Gfx[0], &Global_exitShadowSouth_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
 {&Global_exitShadowNorth_Gfx[0], &Global_exitShadowNorth_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
@@ -601,11 +601,11 @@ LevelScope IntroOutro_scope_Lvlscope = {
     60,
 };
 
-StageData IntroOutro_header_Lvlhdr = {
+StageData IntroOutro_stageData = {
     0,
     IntroOutro_ext_room_instances,
-    &IntroOutro_stageModels[0],
-    76,
+    IntroOutro_stageModels,
+    ARRAY_COUNT(IntroOutro_stageModels),
     0,
     IntroOutro_rabObjects_Bin,
     131072,

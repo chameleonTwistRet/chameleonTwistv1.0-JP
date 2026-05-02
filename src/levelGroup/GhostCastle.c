@@ -274,7 +274,7 @@ extern ModelCollision Global_pole_ColH;
 
 Mtx GhostCastle_IMtx1 = IDENTITY;
 
-StageModel GhostCastle_stageModels[115] = {
+StageModel GhostCastle_stageModels[] = {
 {&Global_fallbackCube_Gfx[0], &Global_fallbackCube_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
 {&Global_exitShadowSouth_Gfx[0], &Global_exitShadowSouth_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
 {&Global_exitShadowNorth_Gfx[0], &Global_exitShadowNorth_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
@@ -1365,11 +1365,11 @@ LevelScope GhostCastle_scope_Lvlscope = {
     60,
 };
 
-StageData GhostCastle_header_Lvlhdr = {
+StageData GhostCastle_stageData = {
     &GhostCastle_map_data,
     0,
-    &GhostCastle_stageModels[0],
-    115,
+    GhostCastle_stageModels,
+    ARRAY_COUNT(GhostCastle_stageModels),
     0,
     GhostCastle_rabObjects_Bin,
     131072,

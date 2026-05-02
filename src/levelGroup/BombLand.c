@@ -352,7 +352,7 @@ enum BombLand_Models {
     BL_POLE_MODEL
 };
 
-StageModel BombLand_stageModels[110] = {
+StageModel BombLand_stageModels[] = {
     {&Global_fallbackCube_Gfx[0], &Global_fallbackCube_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
     {&Global_exitShadowSouth_Gfx[0], &Global_exitShadowSouth_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
     {&Global_exitShadowNorth_Gfx[0], &Global_exitShadowNorth_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
@@ -1549,11 +1549,11 @@ LevelScope BombLand_scope_Lvlscope = {
     60,
 };
 
-StageData BombLand_header_Lvlhdr = {
+StageData BombLand_stageData = {
     &BombLand_map_data,
     0,
-    &BombLand_stageModels[0],
-    110,
+    BombLand_stageModels,
+    ARRAY_COUNT(BombLand_stageModels),
     0,
     BombLand_rabObjects_Bin,
     131072,

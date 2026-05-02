@@ -87,7 +87,7 @@ extern ModelCollision Global_pole_ColH;
 
 Mtx BombSnake_IMtx1 = IDENTITY;
 
-StageModel BombSnake_stageModels[40] = {
+StageModel BombSnake_stageModels[] = {
 {&Global_fallbackCube_Gfx[0], &Global_fallbackCube_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
 {&Global_exitShadowSouth_Gfx[0], &Global_exitShadowSouth_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
 {&Global_exitShadowNorth_Gfx[0], &Global_exitShadowNorth_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
@@ -236,11 +236,11 @@ LevelScope BombSnake_scope_Lvlscope = {
     60,
 };
 
-StageData BombSnake_header_Lvlhdr = {
+StageData BombSnake_stageData = {
     &BombSnake_map_data,
     0,
-    &BombSnake_stageModels[0],
-    40,
+    BombSnake_stageModels,
+    ARRAY_COUNT(BombSnake_stageModels),
     0,
     BombSnake_rabObjects_Bin,
     131072,
