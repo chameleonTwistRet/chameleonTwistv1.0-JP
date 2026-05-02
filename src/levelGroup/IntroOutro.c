@@ -595,9 +595,7 @@ RoomInstance IntroOutro_ext_room_instances[] = {
 };
 
 LevelScope IntroOutro_scope_Lvlscope = {
-    0,
-    0,
-    0,
+    {0.0f, 0.0f, 0.0f},
     -1,
     8000,
     60,

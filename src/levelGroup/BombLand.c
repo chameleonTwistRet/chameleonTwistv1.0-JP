@@ -1543,9 +1543,7 @@ RoomInstance BombLand_nullOWRoom_Rmset[] = {
 };
 
 LevelScope BombLand_scope_Lvlscope = {
-    0,
-    0,
-    0,
+    {0.0f, 0.0f, 0.0f},
     255,
     25000,
     60,

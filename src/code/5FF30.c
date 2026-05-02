@@ -3948,33 +3948,33 @@ void func_8008FE50(void) {
 }
 
 //unfinished naming
-void func_8008FEA8(s32 arg0, s32 arg1) {
-    s32* var_a0; //unknown what this is
-    Vec3f* var_a0_2;
+void func_8008FEA8(s32 levelIdx, s32 arg1) {
+    StageData* stage;
+    Vec3f* spawnPos;
 
     if (arg1 == 0) {
-        if ((arg0 != 1) && (arg0 != 2) && (arg0 != 4)) {
-            if (arg0 != 5) {
+        if ((levelIdx != STAGE_ANT) &&
+            (levelIdx != STAGE_BOMB) &&
+            (levelIdx != STAGE_KIDS) &&
+            (levelIdx != STAGE_GHOST)) {
                 return;
-            }
         }
 
-        // set to the virtual base address of the stage
-        if (!IS_SEGMENTED(gStageLoadData[arg0].stageData)) {
-            var_a0 = (s32*)gStageLoadData[arg0].stageData;
+        if (!IS_SEGMENTED(gStageLoadData[levelIdx].stageData)) {
+            stage = gStageLoadData[levelIdx].stageData;
         } else {
-            var_a0 = (s32*)SEGMENTED_TO_VIRTUAL2(gStageLoadData[arg0].stageData);
+            stage = (StageData*)SEGMENTED_TO_VIRTUAL2(gStageLoadData[levelIdx].stageData);
         }
 
-        if (!IS_SEGMENTED(var_a0[7])) {
-            var_a0_2 = (Vec3f*)var_a0[7];
+        if (!IS_SEGMENTED(stage->Scope)) {
+            spawnPos = &stage->Scope->spawnPos;
         } else {
-            var_a0_2 = SEGMENTED_TO_VIRTUAL(var_a0[7]);
+            spawnPos = SEGMENTED_TO_VIRTUAL(&stage->Scope->spawnPos);
         }
 
-        gPlayerActors->pos.x = var_a0_2->x;
-        gPlayerActors->pos.y = var_a0_2->y;
-        gPlayerActors->pos.z = var_a0_2->z;
+        gPlayerActors->pos.x = spawnPos->x;
+        gPlayerActors->pos.y = spawnPos->y;
+        gPlayerActors->pos.z = spawnPos->z;
     }
 }
 

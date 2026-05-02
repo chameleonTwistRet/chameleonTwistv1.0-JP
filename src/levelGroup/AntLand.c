@@ -1658,9 +1658,7 @@ RoomInstance AntLand_nullOWRoom_Rmset[] = {
 };
 
 LevelScope AntLand_scope_Lvlscope = {
-    0,
-    0,
-    0,
+    {0.0f, 0.0f, 0.0f},
     255,
     20000,  // render distance
     60,

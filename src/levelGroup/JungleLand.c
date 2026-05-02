@@ -1525,9 +1525,7 @@ RoomInstance JungleLand_ext_room_instances[] = {
 };
 
 LevelScope JungleLand_scope_Lvlscope = {
-    0,
-    0,
-    0,
+    {0.0f, 0.0f, 0.0f},
     -1,
     25000,
     60,

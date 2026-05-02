@@ -217,9 +217,7 @@ StageMapData LizardKong_map_data = {
 };
 
 LevelScope LizardKong_scope_Lvlscope = {
-    0,
-    0,
-    0,
+    {0.0f, 0.0f, 0.0f},
     -1,
     25000,
     60,

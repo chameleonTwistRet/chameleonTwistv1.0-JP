@@ -1359,9 +1359,7 @@ RoomInstance GhostCastle_ext_room_instances[] = {
 };
 
 LevelScope GhostCastle_scope_Lvlscope = {
-    0,
-    0,
-    0,
+    {0.0f, 0.0f, 0.0f},
     255,
     10000,
     60,

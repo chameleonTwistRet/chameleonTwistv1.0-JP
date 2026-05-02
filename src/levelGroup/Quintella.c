@@ -230,9 +230,7 @@ RoomInstance Quintella_ext_room_instances[] = {
 };
 
 LevelScope Quintella_scope_Lvlscope = {
-    0,
-    0,
-    0,
+    {0.0f, 0.0f, 0.0f},
     -1,
     25000,
     60,

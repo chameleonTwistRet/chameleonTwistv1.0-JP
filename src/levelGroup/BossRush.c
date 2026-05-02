@@ -303,9 +303,7 @@ RoomInstance BossRush_ext_room_instances[] = {
 };
 
 LevelScope BossRush_scope_Lvlscope = {
-    0,
-    0,
-    0,
+    {0.0f, 0.0f, 0.0f},
     -1,
     25000,
     60,

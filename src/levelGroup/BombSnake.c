@@ -230,9 +230,7 @@ RoomInstance BombSnake_ext_room_instances[] = {
 };
 
 LevelScope BombSnake_scope_Lvlscope = {
-    0,
-    0,
-    0,
+    {0.0f, 0.0f, 0.0f},
     255,
     25000,
     60,

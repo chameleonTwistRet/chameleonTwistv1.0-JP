@@ -1118,9 +1118,7 @@ typedef struct StageMapData {
 } StageMapData;
 
 typedef struct LevelScope {
-/* 0x00 */ s32 unk0;
-/* 0x04 */ s32 unk4;
-/* 0x08 */ s32 unk8;
+/* 0x00 */ Vec3f spawnPos;
 /* 0x0C */ s32 unkC;
 /* 0x10 */ s32 renderDistance;
 /* 0x14 */ s32 unk14;

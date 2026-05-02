@@ -31,7 +31,7 @@ u8 D_80119720[0x10010]; //0x10000 in size
 Mtx D_80129730;
 GraphicStruct gGraphicsList[2];
 
-extern u64 D_80200CB0[];
+extern u64 D_80200CB0[0x180];
 
 // these build, but don't shift due to some weird bss stuff swapping vars around
 // once fixed,
@@ -88,14 +88,14 @@ OSTask D_800F04E0[2] = {
     0x1000,
     NULL,
     0x800,
-    0x80119320, //(void*)D_80119320
+    (u64*)0x80119320, //(void*)D_80119320
     0x400,
-    0x80119720, //D_80119720
+    (void*)0x80119720, //D_80119720
     NULL,
     NULL,
     0,
     D_80200CB0,
-    0xC00
+    sizeof(D_80200CB0)
 },
 {
     1,
@@ -106,14 +106,14 @@ OSTask D_800F04E0[2] = {
     0x1000,
     NULL,
     0x800,
-    0x80119320, //(void*)D_80119320
+    (u64*)0x80119320, //(void*)D_80119320
     0x400,
-    0x80119720, //(void*)D_80119720
+    (void*)0x80119720, //(void*)D_80119720
     NULL,
     NULL,
     0,
-    0x80200CB0,
-    0xC00
+    D_80200CB0,
+    sizeof(D_80200CB0)
 }};
 #endif
 

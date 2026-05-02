@@ -287,9 +287,7 @@ RoomInstance PileOfBooks_ext_room_instances[] = {
 };
 
 LevelScope PileOfBooks_scope_Lvlscope = {
-    0,
-    0,
-    0,
+    {0.0f, 0.0f, 0.0f},
     255,
     10000,
     60,
