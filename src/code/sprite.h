@@ -160,7 +160,7 @@ typedef struct Struct_800714C8 {
 } Struct_800714C8;
 
 typedef struct Effect_TypeAL_Data {
-    /* 0x00 */ s8 unk_00[0x10];
+    /* 0x00 */ char unk_00[16];
     /* 0x10 */ u8 unk_10;
 } Effect_TypeAL_Data; //sizeof 0x11
 

@@ -1,5 +1,7 @@
 #include "common.h"
 
+void func_800AEB48(Poly*);
+
 // Auth: Rain, revo, simonlindholm
 void DummiedPrintf3(char* arg0, ...) { /* variadic args: simonlindholm*/
 }
