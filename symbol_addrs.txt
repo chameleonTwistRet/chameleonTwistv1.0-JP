@@ -556,7 +556,7 @@ DummiedPrintf3 = 0x800d7460; // type:func rom:0xb2860
 WrapAngle = 0x800D747C; // type:func
 CompareWrappedAngles = 0x800D74E0; // type:func
 ArcTan2Deg = 0x800C8C14; //type:func
-OnlyCheckPolyInfoLevel = 0x800d799c; // type:func rom:0xb2d9c
+Poly_AssertInfoLevel = 0x800d799c; // type:func rom:0xb2d9c
 ProjectOnPolygon = 0x800d7a4c; // type:func rom:0xb2e4c
 WorldToLocal = 0x800d7b44; // type:func rom:0xb2f44
 LocalToWorld = 0x800d7c3c; // type:func rom:0xb303c
@@ -1502,6 +1502,7 @@ Timing_BusyTime = 0x801B316C;
 gSfxList = 0x801f7570; // size:0x384
 IsPointInViewAreaFull = 0x800AF604;
 IsPointInViewAreaIgnoreY = 0x800AF62C;
+Poly_EnsureInfoLevel = 0x800D79E4;
 
 //rodata stuff
 D_8010B484 = 0x8010B484; // type:f32 force_migration:True size:0x08

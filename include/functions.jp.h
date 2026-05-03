@@ -417,9 +417,9 @@ void func_800CFF64(PlayerActor*);
 
 void func_800D0708(PlayerActor*, Tongue*); //PLAYER PROCESS
 void DummiedPrintf3(char*, ...);
-void func_800D75B4(Poly*, s32);
-void OnlyCheckPolyInfoLevel(Poly*, s32, char*);
-void func_800D79E4(Poly*, s32);
+void Poly_BuildInfoLevel(Poly*, s32);
+void Poly_AssertInfoLevel(Poly*, s32, char*);
+void Poly_EnsureInfoLevel (Poly*, s32);
 void Vec3f_Zero(Vec3f*);
 f32 Vec3f_Normalize(Vec3f*);
 void PlaySfxPositionalOnFlag(Collider* arg0, s32 arg1); 

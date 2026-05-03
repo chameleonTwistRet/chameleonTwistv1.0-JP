@@ -194,7 +194,7 @@ void func_800D8FFC(Collider* arg0) {PlaySfxInZoneAxisAligned(arg0, SFX_89_unkSnd
 void func_800D9058(Collider* arg0) {PlaySfxInZoneDiagonal(arg0, SFX_89_unkSnd, 0x1E, 5100.0f, 23600.0f, 3000.0f, 600.0f, 1000.0f, 1000.0f);}
 
 void func_800D90B8(Collider* arg0) {
-    func_800D86A4(arg0, 0xA0, -1, 0x1E);
+    PlaySfxOnContactAndPeriodic(arg0, 0xA0, -1, 0x1E);
 }
 
 void func_800D90E0(Collider* arg0) {

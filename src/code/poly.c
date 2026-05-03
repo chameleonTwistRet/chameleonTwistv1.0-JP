@@ -128,11 +128,11 @@ s32 func_800C982C(Rect3D* arg0, Collider* arg1) {
 
 // Checks if Poly's bounding box intersects with the given rectangle
 s32 IfPolyBoundIntersectsRect(Poly* poly, Rect3D* rect) {
-    if (poly->unk_00 < 0) {
+    if (poly->infoLevel < 0) {
         return 0;
     }
 
-    func_800D79E4(poly, 1);
+    Poly_EnsureInfoLevel (poly, 1);
 
     if (IfRectsIntersect(rect, &poly->boundBox) == 0) {
         return 0;
@@ -198,8 +198,8 @@ void MinimunDistance(Vec3f arg0, Poly* polygon, UnkMinDistance arg5) {
 
     WorldToLocal(&arg0, arg0, polygon);
     var_v0 = 0;
-    temp_f0 = (polygon->unk_74 * arg0.y) + (polygon->unk_6C * arg0.x);
-    temp_f2 = (polygon->unk_78 * arg0.y) + (polygon->unk_70 * arg0.x);
+    temp_f0 = (polygon->invMtxVSkew * arg0.y) + (polygon->invMtxU * arg0.x);
+    temp_f2 = (polygon->invMtxV * arg0.y) + (polygon->invMtxUSkew * arg0.x);
 
     if (temp_f0 < 0.0f) {
         var_v0 = 1;
@@ -220,30 +220,30 @@ void MinimunDistance(Vec3f arg0, Poly* polygon, UnkMinDistance arg5) {
         *arg5.unk_08 = 0;
         return;
     case 3:
-        *arg5.vec = polygon->offset;
-        *arg5.unk_04 = Distance3DTo2DProjectedXY(arg0, polygon->unk_7C);
+        *arg5.vec = polygon->origin;
+        *arg5.unk_04 = Distance3DTo2DProjectedXY(arg0, polygon->uvOffset);
         *arg5.unk_08 = 1;
         return;
     case 6:
-        *arg5.vec = polygon->unkVec;
-        *arg5.unk_04 = Distance3DTo2DProjectedXY(arg0, polygon->unk_84);
+        *arg5.vec = polygon->edgeVec;
+        *arg5.unk_04 = Distance3DTo2DProjectedXY(arg0, polygon->edgeData);
         *arg5.unk_08 = 1;
         return;
     case 5:
-        *arg5.vec = polygon->unkVec2;
-        *arg5.unk_04 = Distance3DTo2DProjectedXY(arg0, polygon->unk_8C);
+        *arg5.vec = polygon->edgeVec2;
+        *arg5.unk_04 = Distance3DTo2DProjectedXY(arg0, polygon->projData);
         *arg5.unk_08 = 1;
         return;
     case 2:
-        DistanceWithLine(arg0, polygon->unk_7C, polygon->unk_84, arg5.unk_04, arg5.vec, polygon);
+        DistanceWithLine(arg0, polygon->uvOffset, polygon->edgeData, arg5.unk_04, arg5.vec, polygon);
         *arg5.unk_08 = 1;
         return;
     case 4:
-        DistanceWithLine(arg0, polygon->unk_84, polygon->unk_8C, arg5.unk_04, arg5.vec, polygon);
+        DistanceWithLine(arg0, polygon->edgeData, polygon->projData, arg5.unk_04, arg5.vec, polygon);
         *arg5.unk_08 = 1;
         return;
     case 1:
-        DistanceWithLine(arg0, polygon->unk_8C, polygon->unk_7C, arg5.unk_04, arg5.vec, polygon);
+        DistanceWithLine(arg0, polygon->projData, polygon->uvOffset, arg5.unk_04, arg5.vec, polygon);
         *arg5.unk_08 = 1;
         return;
     default:
@@ -549,10 +549,10 @@ void func_800D4550(s32 arg0, s32 arg1, Poly* arg2, Vec3f* arg3, Vec3f* arg4) {
     Field* temp_v0 = &gZoneFields[gCurrentZone];
 
     arg3->x = temp_v0->unkA4;
-    arg3->y = temp_v0->unkA8 + (temp_v0->unkD0 * arg2->unkVectorStruct.vec1.x);
+    arg3->y = temp_v0->unkA8 + (temp_v0->unkD0 * arg2->orthBasis.vec1.x);
     arg3->z = temp_v0->unkAC;
     arg4->x = temp_v0->cameraAnchor.x;
-    arg4->y = temp_v0->cameraAnchor.y + (temp_v0->unkD0 * arg2->unkVectorStruct.vec1.x);
+    arg4->y = temp_v0->cameraAnchor.y + (temp_v0->unkD0 * arg2->orthBasis.vec1.x);
     arg4->z = temp_v0->cameraAnchor.z;
 }
 

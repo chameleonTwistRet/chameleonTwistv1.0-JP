@@ -739,28 +739,28 @@ typedef struct unkStruct0 {
 /* 0x20 */ s32 unk_24;
 } unkStruct0; //sizeof 0x28
 
-typedef struct unkVecStruct {
+typedef struct OrthBasis {
 /* 0x00 */ Vec3f vec1;
 /* 0x0C */ Vec3f vec2;
 /* 0x18 */ Vec3f normal;
-} unkVecStruct;
+} OrthBasis;
 
 typedef struct Poly {
-/* 0x00 */ s32 unk_00;
+/* 0x00 */ s32 infoLevel;    // level of computation (0-3, -1=invalid)
 /* 0x04 */ char unk_04[4];
-/* 0x08 */ Vec3f offset;
-/* 0x14 */ Vec3f unkVec;
-/* 0x20 */ Vec3f unkVec2;
+/* 0x08 */ Vec3f origin;
+/* 0x14 */ Vec3f edgeVec;
+/* 0x20 */ Vec3f edgeVec2;
 /* 0x2C */ Rect3D boundBox;
-/* 0x44 */ unkVecStruct unkVectorStruct;
+/* 0x44 */ OrthBasis orthBasis;
 /* 0x68 */ f32 unk_68;
-/* 0x6C */ f32 unk_6C;
-/* 0x70 */ f32 unk_70;
-/* 0x74 */ f32 unk_74;
-/* 0x78 */ f32 unk_78;
-/* 0x7C */ Vec2f unk_7C;
-/* 0x84 */ Vec2f unk_84;
-/* 0x8C */ Vec2f unk_8C;
+/* 0x6C */ f32 invMtxU;
+/* 0x70 */ f32 invMtxUSkew;
+/* 0x74 */ f32 invMtxVSkew;
+/* 0x78 */ f32 invMtxV;
+/* 0x7C */ Vec2f uvOffset;
+/* 0x84 */ Vec2f edgeData;
+/* 0x8C */ Vec2f projData;
 } Poly;
 
 typedef struct Actor {
