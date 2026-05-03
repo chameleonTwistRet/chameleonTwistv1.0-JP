@@ -690,7 +690,7 @@ typedef struct CTTask {
 /* 0x6C */ s16 unk6C;
 /* 0x6E */ u16 unk6E;
 /* 0x70 */ s16 unk_70;
-/* 0x72 */ s16 unk72;
+/* 0x72 */ u16 unk72;
 /* 0x74 */ s16 unk74;
 /* 0x76 */ char unk76[0x4];
 /* 0x7A */ u16 unk7A;

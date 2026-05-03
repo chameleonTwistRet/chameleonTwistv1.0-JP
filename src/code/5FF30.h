@@ -128,14 +128,13 @@ typedef struct StageLoadData {
 u64 __ull_div(u64 a0, u64 a1);
 u64 __ll_mul(u64 a0, u64 a1);
 
-void func_800A27B0(CTTask* task);                   /* extern */
+void func_800A27B0(CTTask* task);
 extern s16 D_8020005C;
 
-void func_8009D45C(CTTask*, u8, u8, u8);                 /* extern */
-void func_8009DA20(CTTask* task);                   /* extern */
-void func_8009F1B4(CTTask* task);                   /* extern */
-void func_8009F5B0(CTTask* task);                   /* extern */
-
+void func_8009D45C(CTTask* task);
+void func_8009DA20(CTTask* task);
+void func_8009F1B4(CTTask* task);
+void func_8009F5B0(CTTask* task);
 
 /* Function Prototypes */
 void schedproc(s32 arg0);
@@ -648,7 +647,7 @@ extern f32 D_800FFEE8;
 extern s16 D_800FFEEC[];
 extern s8 D_80200B30;
 extern s16 sDebugBitfeild;
-extern s8 D_80200B28[];
+extern u8 D_80200B28[];
 extern letterDef* D_801005F8[];
 extern s16 D_80200B1A;
 extern s16 D_80200B1C;
