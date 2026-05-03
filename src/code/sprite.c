@@ -6971,9 +6971,9 @@ void Effect_TypeAH_Update(Effect* effect, Gfx** pGfxPos) {
 
     mtxPos = data->animArray[data->unk_A9C];
     if (data->unk_A94 == 2) {
-        func_80027138(data->unk_A8C, &sp48, &sp44, &sp40);
+        Anim_LoadPointer(data->unk_A8C, &sp48, &sp44, &sp40);
     } else {
-        func_80027138(data->unk_A88, &sp48, &sp44, &sp40);
+        Anim_LoadPointer(data->unk_A88, &sp48, &sp44, &sp40);
     }
 
     switch (data->unk_A94) {

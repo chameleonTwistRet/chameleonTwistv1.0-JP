@@ -416,7 +416,7 @@ s32 D_800FF8B4 = 0;
 u32 D_800FF8B8 = 0;
 s16 D_800FF8BC = 0;
 s16 D_800FF8C0[] = {0x3737, 0x3700, 0x00FF, 0x00FF, 0xFFFF, 0xFF00, 0xFF00, 0xFFFF, 0xFFFF};
-Mtx* D_800FF8D4 = NULL;
+Mtx* gMatrixBufPtr = NULL;
 s32 D_800FF8D8 = 0;
 u8 D_800FF8DC = 0;
 u8 D_800FF8E0 = 0;
@@ -1785,7 +1785,7 @@ letterDef* D_80100F28[] = {
     NULL,
 };
 
-unk80100F50 D_80100F50[] = {
+loadedSegInfo gLoadedSegments [] = {
     {(u32) bootproc, (u32) assets0_VRAM},
     {(u32) assets0_VRAM, (u32) static0_VRAM_END},
     {NULL, NULL},
@@ -3256,8 +3256,8 @@ Gfx* func_8008D168(Gfx* gfxPos, s32 arg1, s32 arg2) {
     gSPSegment(gfxPos++, 0x01, OS_K0_TO_PHYSICAL(_ALIGN((u32)gFrameBuffers - (u32)static0_VRAM_END + (u32)static0_VRAM, 16)));
 
     for (i = 2; i < 16; i++) {
-        if (D_80100F50[i].base_address != NULL) {
-            gSPSegment(gfxPos++, i, OS_K0_TO_PHYSICAL(D_80100F50[i].base_address));
+        if (gLoadedSegments [i].base_address != NULL) {
+            gSPSegment(gfxPos++, i, OS_K0_TO_PHYSICAL(gLoadedSegments [i].base_address));
         }
     }
 
@@ -3356,7 +3356,7 @@ void func_8008DB90(Gfx** pGfxPos, GraphicStruct* arg1) {
     Mtx* s4;
     Unk_800FFB74* v1;
 
-    D_800FF8D4 = arg1->unk1e880;
+    gMatrixBufPtr = arg1->mtxBuffer;
 
     if (D_800FFDEC) { } // required for matching
 
@@ -3378,13 +3378,13 @@ void func_8008DB90(Gfx** pGfxPos, GraphicStruct* arg1) {
             }
             v12 = *var_t0;
             for (i = 0; i < v12; i++) {
-                *D_800FF8D4++ = var_a0[v12 * (s32)task->unk40 + i];
+                *gMatrixBufPtr++ = var_a0[v12 * (s32)task->unk40 + i];
             }
         }
         task = task->next;
     }
 
-    D_800FF8D4 = arg1->unk1e880;
+    gMatrixBufPtr = arg1->mtxBuffer;
 
     mtxTranslate = arg1->actorTranslate;
     mtxScale = arg1->actorScale;
@@ -3393,7 +3393,7 @@ void func_8008DB90(Gfx** pGfxPos, GraphicStruct* arg1) {
     task = gCTTaskHead->next;
     while (task->next != NULL) {
         if ((task->unk4E & 1) && task->unk46 > 0) {
-            s4 = D_800FF8D4;
+            s4 = gMatrixBufPtr;
 
             if (D_801FC9AC == 1) {
                 guTranslate(mtxTranslate, task->pos.x, 180.0f - task->pos.y, task->pos.z);
@@ -3407,7 +3407,7 @@ void func_8008DB90(Gfx** pGfxPos, GraphicStruct* arg1) {
             gSPMatrix(gfxPos++, OS_K0_TO_PHYSICAL(mtxRotate), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
             gSPMatrix(gfxPos++, OS_K0_TO_PHYSICAL(mtxScale), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
-            PutDList(&D_800FF8D4, &gfxPos, task->unk50);
+            PutDList(&gMatrixBufPtr, &gfxPos, task->unk50);
             gSPPopMatrix(gfxPos++, G_MTX_MODELVIEW);
 
             if (task->unk4E & 2) {
@@ -3446,13 +3446,13 @@ void func_8008DB90(Gfx** pGfxPos, GraphicStruct* arg1) {
         task = task->next;
     }
 
-    mtxCount = ((u32)D_800FF8D4 - (u32)arg1->unk1e880) / sizeof(Mtx);
+    mtxCount = ((u32)gMatrixBufPtr - (u32)arg1->mtxBuffer) / sizeof(Mtx);
     if (D_800FFDEC < mtxCount) {
         DummiedPrintf("Mtx Max = %u\n", mtxCount);
         D_800FFDEC = mtxCount;
     }
     if (mtxCount > 64) {
-        DummiedPrintf("マトリクスの数をオーバーしました( %u )\n", mtxCount);
+        DummiedPrintf("マトリクスの数をオーバーしました( %u )\n", mtxCount);    // Matrix count exceeded
     }
     *pGfxPos = gfxPos;
 }
@@ -5339,36 +5339,45 @@ const char segNameWhite[] = "白";
 const char segNameSpace[] = "スペ";
 const char segNameDemo[] = "デモ";
 
-/* Segment Loading? */
-s32 func_8009603C(s32 segmentID, s32 arg1) {
-    s32 temp_s0;
+/**
+ * @brief Loads a segment from ROM into RAM and updates the runtime segment table.
+ *
+ * Calculates the segment size from gSegTable, places it below topAddr in RAM,
+ * initiates a DMA transfer from ROM, and waits for completion before returning.
+ *
+ * @param segmentID Index into gSegTable and gLoadedSegments identifying the segment to load
+ * @param topAddr Upper bound address in RAM, the segment is placed immediately below this address
+ * @return (s32) Base address in RAM where the segment was loaded, or 0 on DMA error
+ */
+s32 Segment_Load(s32 segmentID, s32 topAddr) {
+    s32 dmaHandle ;
     s32 size;
-    unk80100F50* temp_s3 = &D_80100F50[segmentID];
-    segTableEntry* segment = &gSegTable[segmentID];
+    loadedSegInfo* segmentLocation = &gLoadedSegments [segmentID];  // segment loaded data
+    segTableEntry* segmentInfo = &gSegTable[segmentID]; // segment information table
 
-    size = (u32) segment->ramAddrEnd - (u32) segment->ramAddrStart;
-    temp_s3->base_address = arg1 - size;
-    temp_s3->unk4 = (u32) arg1;
-    temp_s0 = DMA_Copy(segment->romAddrStart, (void* ) temp_s3->base_address, size);
-    temp_s3->unk4 = temp_s3->base_address + size;
-    if (temp_s0 < 0) {
-        DummiedPrintf("エラー %d\n", temp_s0);
+    size = (u32) segmentInfo->ramAddrEnd - (u32) segmentInfo->ramAddrStart;
+    segmentLocation->base_address = topAddr - size;
+    segmentLocation->end_address = (u32) topAddr;
+    dmaHandle = DMA_Copy(segmentInfo->romAddrStart, (void* ) segmentLocation->base_address, size);
+    segmentLocation->end_address = segmentLocation->base_address + size;
+    if (dmaHandle < 0) {
+        DummiedPrintf("エラー %d\n", dmaHandle);
         return 0;
     }
-    while (func_800A72E8(temp_s0) == 0) {}
-    DummiedPrintf("%sセグメント(%dk)読み込み(%X)\n", segment->name, (u32) size / 1024, size);
-    return (s32) temp_s3->base_address;
+    while (func_800A72E8(dmaHandle) == 0) {}
+    DummiedPrintf("%sセグメント(%dk)読み込み(%X)\n", segmentInfo->name, (u32) size / 1024, size);
+    return (s32) segmentLocation->base_address;
 }
 
 /* Stage Loading? */
-u32 func_80096128(s32 stageToLoad, s32 inpAddr) {
+u32 Stage_Load(s32 stageToLoad, s32 inpAddr) {
     StageLoadData* stageData = &gStageLoadData[stageToLoad];
     s32 size = (u32) stageData->ramEnd - (u32) stageData->ramStart;
     s32 dmaResult;
 
-    D_80100F50[0x3].base_address = inpAddr - size;
-    D_80100F50[0x3].unk4 = D_80100F50[0x3].base_address + size;
-    dmaResult = DMA_Copy(stageData->romStart, (void*)D_80100F50[0x3].base_address, size);
+    gLoadedSegments[0x3].base_address = inpAddr - size;
+    gLoadedSegments[0x3].end_address = gLoadedSegments [0x3].base_address + size;
+    dmaResult = DMA_Copy(stageData->romStart, (void*)gLoadedSegments [0x3].base_address, size);
     if (dmaResult < 0) {
         DummiedPrintf("エラー %d\n", dmaResult);    //Error
         return 0;
@@ -5376,16 +5385,16 @@ u32 func_80096128(s32 stageToLoad, s32 inpAddr) {
         while (func_800A72E8(dmaResult) == 0);
         DummiedPrintf("マップデータ(%dk)読み込み(%X)\n", (u32)size / 1024, size);
         // Map data(%dk),  read(%X)
-        return D_80100F50[3].base_address;
+        return gLoadedSegments[3].base_address;
     }
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/LoadStageByIndex.s")
 
 void func_800966E0(void) {
-    D_80100F50[1].base_address = (u32)&gFrameBuffers - _ALIGN((u32)static0_VRAM_END - (u32)static0_VRAM, 16);
-    D_80100F50[1].unk4 = (u32)&gFrameBuffers;
-    D_801FFB78 = func_8009603C(gSelectedCharacters[0] + 8, D_80100F50[1].base_address);
+    gLoadedSegments[1].base_address = (u32)&gFrameBuffers - _ALIGN((u32)static0_VRAM_END - (u32)static0_VRAM, 16);
+    gLoadedSegments[1].end_address = (u32)&gFrameBuffers;
+    D_801FFB78 = Segment_Load(gSelectedCharacters[0] + 8, gLoadedSegments [1].base_address);
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80096748.s")
@@ -6900,11 +6909,11 @@ void func_800A0D90(void) {
     s32 i;
     s32 address;
 
-    D_80100F50[1].base_address = (u32)gFrameBuffers - ALIGN16((u32)static0_VRAM_END - (u32)static0_VRAM);
-    D_80100F50[1].unk4 = (u32)gFrameBuffers; //TODO: is the a singular frame buffer or both?
-    address = D_80100F50[1].base_address;
+    gLoadedSegments [1].base_address = (u32)gFrameBuffers - ALIGN16((u32)static0_VRAM_END - (u32)static0_VRAM);
+    gLoadedSegments [1].end_address = (u32)gFrameBuffers; //TODO: is the a singular frame buffer or both?
+    address = gLoadedSegments [1].base_address;
     for (i = 8; i < 14; i++){
-        address = func_8009603C(i, address);
+        address = Segment_Load(i, address);
     }
     D_801FFB78 = address;
     func_80056EB4();
@@ -7049,9 +7058,9 @@ void Process_NewGameMenu(void) {
 }
 
 void func_800A1EC4(void) {
-    D_80100F50[1].base_address = (u32)gFrameBuffers - (u32)_ALIGN(((u32)static0_VRAM_END - (u32)static0_VRAM), 16);
-    D_80100F50[1].unk4 = (u32)gFrameBuffers;
-    D_801FFB78 = D_80100F50[1].base_address;
+    gLoadedSegments [1].base_address = (u32)gFrameBuffers - (u32)_ALIGN(((u32)static0_VRAM_END - (u32)static0_VRAM), 16);
+    gLoadedSegments [1].end_address = (u32)gFrameBuffers;
+    D_801FFB78 = gLoadedSegments [1].base_address;
     func_80056EB4();
     Effect_Init();
     func_8005C9B8();
@@ -7579,9 +7588,9 @@ void Process_JSSLogo(void) {
 }
 
 void func_800A56D4(void) {
-    D_80100F50[1].base_address = (u32)&gFrameBuffers - _ALIGN((u32)static0_VRAM_END - (u32)static0_VRAM, 16);
-    D_80100F50[1].unk4 = (u32)&gFrameBuffers;
-    D_801FFB78 = D_80100F50[1].base_address;
+    gLoadedSegments [1].base_address = (u32)&gFrameBuffers - _ALIGN((u32)static0_VRAM_END - (u32)static0_VRAM, 16);
+    gLoadedSegments [1].end_address = (u32)&gFrameBuffers;
+    D_801FFB78 = gLoadedSegments [1].base_address;
     func_80056EB4();
     func_8005C9B8();
     Effect_Init();

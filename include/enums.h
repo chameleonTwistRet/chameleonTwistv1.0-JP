@@ -7,6 +7,9 @@
 #define SPRITE_LOAD_ERROR -1
 #define SPRITE_LOAD_SUCCESS 0
 
+#define NO_EXT_ROOMS 0
+#define NO_INT_ROOMS 0
+
 enum actorIDs {
 	ACTOR_NULL = 0,
 	RED_ANT,

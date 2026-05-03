@@ -1367,7 +1367,7 @@ LevelScope GhostCastle_scope_Lvlscope = {
 
 StageData GhostCastle_stageData = {
     &GhostCastle_map_data,
-    0,
+    NO_EXT_ROOMS,
     GhostCastle_stageModels,
     ARRAY_COUNT(GhostCastle_stageModels),
     0,

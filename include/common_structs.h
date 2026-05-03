@@ -645,10 +645,10 @@ typedef struct SaveRecord {
 /* 0x76 */ s8 pad[10];
 } SaveRecord; //sizeof 0x80
 
-typedef struct unk80100F50 {
+typedef struct loadedSegInfo {
 /* 0x00 */ u32 base_address;
-/* 0x04*/ u32 unk4;
-} unk80100F50; //sizeof 0x08
+/* 0x04*/ u32 end_address;
+} loadedSegInfo; //sizeof 0x08
 
 typedef struct FrameBuffer {
 /* 0x00 */ char data[0x25800]; // h*W*colDepth
@@ -1047,7 +1047,7 @@ typedef struct GraphicStruct {
 /*0x12880*/     s8 unk12880[0x4000]; //mtx's for shadows?
 /*0x16880*/     Mtx colliderTransforms[128][3]; // may be wrong.
 /*0x1C880*/     s8 unk1c880[0x2000];
-/*0x1E880*/     Mtx unk1e880[74]; //may be used for "CTTask"s
+/*0x1E880*/     Mtx mtxBuffer[74]; //may be used for "CTTask"s
 } GraphicStruct; //sizeof 0x1FB00
 
 typedef struct Shadow {

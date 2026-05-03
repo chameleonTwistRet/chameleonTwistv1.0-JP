@@ -238,7 +238,7 @@ LevelScope Quintella_scope_Lvlscope = {
 
 StageData Quintella_stageData = {
     &Quintella_map_data,
-    0,
+    NO_EXT_ROOMS,
     Quintella_stageModels,
     ARRAY_COUNT(Quintella_stageModels),
     0,

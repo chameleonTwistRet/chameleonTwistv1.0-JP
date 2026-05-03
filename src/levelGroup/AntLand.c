@@ -1666,7 +1666,7 @@ LevelScope AntLand_scope_Lvlscope = {
 
 StageData AntLand_stageData = {
     &AntLand_map_data,
-    0,
+    NO_EXT_ROOMS,
     AntLand_stageModels,                // Model array
     ARRAY_COUNT(AntLand_stageModels),   // Model count
     0,

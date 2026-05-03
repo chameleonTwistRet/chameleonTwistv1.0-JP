@@ -229,7 +229,7 @@ LevelScope GiantCake_scope_Lvlscope = {
 
 StageData GiantCake_stageData = {
     &GiantCake_map_data,
-    0,
+    NO_EXT_ROOMS,
     GiantCake_stageModels,
     ARRAY_COUNT(GiantCake_stageModels),
     0,

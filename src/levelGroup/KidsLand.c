@@ -1452,7 +1452,7 @@ LevelScope KidsLand_scope_Lvlscope = {
 
 StageData KidsLand_stageData = {
     &KidsLand_map_data,
-    0,
+    NO_EXT_ROOMS,
     KidsLand_stageModels,
     ARRAY_COUNT(KidsLand_stageModels),
     0,

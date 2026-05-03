@@ -1551,7 +1551,7 @@ LevelScope BombLand_scope_Lvlscope = {
 
 StageData BombLand_stageData = {
     &BombLand_map_data,
-    0,
+    NO_EXT_ROOMS,
     BombLand_stageModels,
     ARRAY_COUNT(BombLand_stageModels),
     0,

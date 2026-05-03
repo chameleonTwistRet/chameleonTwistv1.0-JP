@@ -407,7 +407,7 @@ void Effect_TypeAC_Init(f32 posX, f32 posY, f32 posZ, f32 arg3, f32 duration);
 void func_80088474(s32, s32);
 void func_800882D0(s32, s32);
 void func_80088474(s32, s32);
-void func_80027138(AnimPointer* arg0, s32* arg1, s32* arg2, Mtx** arg3);
+void Anim_LoadPointer(AnimPointer* arg0, s32* arg1, s32* arg2, Mtx** arg3);
 void func_80027240(Mtx** arg0, Mtx* arg1, s32 arg2, s32 arg3);
 s32 PutDList(Mtx** arg0, Gfx** arg1, Gfx* arg2);
 void Effect_TypeAT_Init(f32, f32, f32, f32, f32, f32, s32, char*);

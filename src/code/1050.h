@@ -30,7 +30,7 @@ s32 PutDList(Mtx** arg0, Gfx** arg1, Gfx* arg2);
 void func_80080C28(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, u8 arg6, u8 arg7, u8 arg8, u8 arg9);
 void func_80058044(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, s32 arg7);
 void func_80027240(Mtx** arg0, Mtx* arg1, s32 arg2, s32 arg3);
-void func_80027138(AnimPointer* arg0, s32* arg1, s32* arg2, Mtx** arg3);
+void Anim_LoadPointer(AnimPointer* arg0, s32* arg1, s32* arg2, Mtx** arg3);
 void Effect_TypeAF_Init(f32* arg0, f32* arg1, f32* arg2, f32 arg3, f32 arg4, f32 arg5, s32 arg6, s32 arg7, s32 arg8);
 
 /* Ext Variables */
@@ -40,7 +40,7 @@ extern f32 D_80168D90;
 extern s32 gFramebufferIndex;
 extern s32 D_800F066C;
 extern s32 sDebugMultiplayer;
-extern Mtx* D_800FF8D4;
+extern Mtx* gMatrixBufPtr;
 extern u8 D_800FF8DC;
 extern u8 D_800FF8E0;
 extern u8 D_800FF8E4;

@@ -564,7 +564,7 @@ LevelScope Training_scope_Lvlscope = {
 
 StageData Training_stageData = {
     &Training_map_data,
-    0,
+    NO_EXT_ROOMS,
     Training_stageModels,
     ARRAY_COUNT(Training_stageModels),
     0,

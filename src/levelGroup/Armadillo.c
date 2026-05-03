@@ -239,7 +239,7 @@ LevelScope Armadillo_scope_Lvlscope = {
 
 StageData Armadillo_stageData = {
     &Armadillo_map_data,
-    0,
+    NO_EXT_ROOMS,
     Armadillo_stageModels,
     ARRAY_COUNT(Armadillo_stageModels),
     0,

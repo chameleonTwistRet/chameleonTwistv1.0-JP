@@ -602,7 +602,7 @@ LevelScope IntroOutro_scope_Lvlscope = {
 };
 
 StageData IntroOutro_stageData = {
-    0,
+    NO_INT_ROOMS,
     IntroOutro_ext_room_instances,
     IntroOutro_stageModels,
     ARRAY_COUNT(IntroOutro_stageModels),

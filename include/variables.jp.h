@@ -356,7 +356,7 @@ extern u8 D_800FF64C;
 extern u8 D_800FF650;
 extern ALSndPlayer* gSFXPlayerP;
 extern FrameBuffer gFrameBuffers[2];
-extern unk80100F50 D_80100F50[];
+extern loadedSegInfo gLoadedSegments [];
 extern CTTask* gCTTaskHead;
 extern CTTask* gCTTaskTail;
 extern s32 sGameModeStart;

@@ -34,8 +34,8 @@
 #define IS_SEGMENTED(x)          (((u32)(x) & SEGMENT_MASK) != 0)
 #define SEGMENT_INDEX(x)         (((u32)(x) & SEGMENT_MASK) >> SEGMENT_SHIFT)
 #define SEGMENT_OFFSET_CUSTOM(x)        (((u32)(x) & ~SEGMENT_MASK))
-#define SEGMENTED_TO_VIRTUAL(x)  (void*)(SEGMENT_OFFSET_CUSTOM(x) + D_80100F50[SEGMENT_INDEX(x)].base_address)
-#define SEGMENTED_TO_VIRTUAL2(x) (void*)(D_80100F50[SEGMENT_INDEX(x)].base_address + SEGMENT_OFFSET_CUSTOM(x))
+#define SEGMENTED_TO_VIRTUAL(x)  (void*)(SEGMENT_OFFSET_CUSTOM(x) + gLoadedSegments [SEGMENT_INDEX(x)].base_address)
+#define SEGMENTED_TO_VIRTUAL2(x) (void*)(gLoadedSegments [SEGMENT_INDEX(x)].base_address + SEGMENT_OFFSET_CUSTOM(x))
 
 #define PACK_FILL_COLOR(r, g, b, a) (GPACK_RGBA5551(r, g, b, a) << 0x10) | GPACK_RGBA5551(r, g, b, a)
 #define PACK_FILL_DEPTH(z,dz) (GPACK_ZDZ(z, dz) << 0x10) | GPACK_ZDZ(z, dz)

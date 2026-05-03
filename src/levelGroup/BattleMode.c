@@ -672,7 +672,7 @@ LevelScope BattleMode_scope_Lvlscope = {
 
 StageData BattleMode_stageData = {
     &BattleMode_map_data,
-    0,
+    NO_EXT_ROOMS,
     BattleMode_stageModels,
     ARRAY_COUNT(BattleMode_stageModels),
     0,

@@ -238,7 +238,7 @@ LevelScope BombSnake_scope_Lvlscope = {
 
 StageData BombSnake_stageData = {
     &BombSnake_map_data,
-    0,
+    NO_EXT_ROOMS,
     BombSnake_stageModels,
     ARRAY_COUNT(BombSnake_stageModels),
     0,

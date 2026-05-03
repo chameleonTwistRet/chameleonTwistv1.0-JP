@@ -1503,6 +1503,15 @@ gSfxList = 0x801f7570; // size:0x384
 IsPointInViewAreaFull = 0x800AF604;
 IsPointInViewAreaIgnoreY = 0x800AF62C;
 Poly_EnsureInfoLevel = 0x800D79E4;
+Anim_LoadPointer = 0x80027138;
+GetHighestActivePlayerIndex = 0x80027650;
+Actor_IsOffscreen = 0x80026C78;
+Player_DrawBody = 0x8002A190;
+Player_DrawTongue = 0x8002A824;
+Actor_DrawModel = 0x8002B118;
+Actors_DrawAll = 0x8002B7BC;
+Stage_Load = 0x80096128;
+Segment_Load = 0x8009603C;
 
 //rodata stuff
 D_8010B484 = 0x8010B484; // type:f32 force_migration:True size:0x08
@@ -1527,10 +1536,11 @@ D_80129730 = 0x80129730;
 D_801003DC = 0x801003DC; //size:0x0C
 gFrameBuffers = 0x803B5000; //size:0x4B000
 cutsceneSwitch = 0x800FED0C; // type:s32 size:0x4
+gMatrixBufPtr = 0x800FF8D4;
 
 //defined for proper generation
 D_80100E08 = 0x80100E08; // type:s16 size:0xAA
-D_80100F50 = 0x80100F50; // type:u32 size:0x80
+gLoadedSegments  = 0x80100F50; // type:u32 size:0x80
 CreditsTimeOffset = 0x80101078; // type:s32 size:0x4
 AmountOfCredits = 0x80101080; // type:s32 size:0x4
 CreditsData = 0x80105E08; // size:0x2940

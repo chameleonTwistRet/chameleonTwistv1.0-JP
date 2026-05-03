@@ -1242,7 +1242,7 @@ LevelScope DesertCastle_scope_Lvlscope = {
 };
 
 StageData DesertCastle_stageData = {
-    0,
+    NO_INT_ROOMS,
     DesertCastle_ext_room_instances,
     DesertCastle_stageModels,
     ARRAY_COUNT(DesertCastle_stageModels),

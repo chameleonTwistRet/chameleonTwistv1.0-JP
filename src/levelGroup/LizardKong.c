@@ -225,7 +225,7 @@ LevelScope LizardKong_scope_Lvlscope = {
 
 StageData LizardKong_stageData = {
     &LizardKong_map_data,
-    0,
+    NO_EXT_ROOMS,
     LizardKong_stageModels,
     40,
     0,

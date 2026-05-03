@@ -311,7 +311,7 @@ LevelScope BossRush_scope_Lvlscope = {
 
 StageData BossRush_stageData = {
     &BossRush_map_data,
-    0,
+    NO_EXT_ROOMS,
     BossRush_stageModels,
     ARRAY_COUNT(BossRush_stageModels),
     0,

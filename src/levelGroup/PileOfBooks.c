@@ -295,7 +295,7 @@ LevelScope PileOfBooks_scope_Lvlscope = {
 
 StageData PileOfBooks_stageData = {
     &PileOfBooks_map_data,
-    0,
+    NO_EXT_ROOMS,
     PileOfBooks_stageModels,
     ARRAY_COUNT(PileOfBooks_stageModels),
     0,

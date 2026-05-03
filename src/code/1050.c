@@ -199,7 +199,7 @@ void func_80025EF0(PlayerActor* arg0, Tongue* arg1, s32 arg2) {
     s32 animObjects;
     s32 animFrames;
     Mtx* anim = NULL;
-    Mtx* sp110 = D_800FF8D4;
+    Mtx* sp110 = gMatrixBufPtr;
 
     func_8007AC2C(&sp120);
 
@@ -208,7 +208,7 @@ void func_80025EF0(PlayerActor* arg0, Tongue* arg1, s32 arg2) {
     }
 
     if (D_80174980 == 5) {
-        func_80027240(&D_800FF8D4, gSpriteListings[SPRITE_ANIM1].raster, gTimer / 2, gSpriteListings[SPRITE_ANIM1].tileCountY);
+        func_80027240(&gMatrixBufPtr, gSpriteListings[SPRITE_ANIM1].raster, gTimer / 2, gSpriteListings[SPRITE_ANIM1].tileCountY);
         if (gTimer == 20) {
             Effect_TypeT_Init(22.0f, 154.0f, 60, D_800F686C);
         }
@@ -216,42 +216,42 @@ void func_80025EF0(PlayerActor* arg0, Tongue* arg1, s32 arg2) {
             Effect_TypeT_Init(22.0f, 154.0f, 60, D_800F6870);
         }
     } else if (arg0->playerHURTSTATE == 4) {
-        func_80027138(&static0_chameleonAnims[10], &animObjects, &animFrames, &anim);
+        Anim_LoadPointer(&static0_chameleonAnims[10], &animObjects, &animFrames, &anim);
         sp124 = arg0->playerHURTTIMER;
         if (sp124 >= animFrames) {
             sp124 = animFrames - 1;
         }
-        func_80027240(&D_800FF8D4, anim, sp124, animObjects);
+        func_80027240(&gMatrixBufPtr, anim, sp124, animObjects);
     } else if (arg0->amountLeftToShoot != 0) {
-        func_80027138(&static0_chameleonAnims[4], &animObjects, &animFrames, &anim);
+        Anim_LoadPointer(&static0_chameleonAnims[4], &animObjects, &animFrames, &anim);
         sp124 = arg0->amountLeftToShoot;
         if (sp124 >= animFrames) {
             sp124 = animFrames - 1;
         }
-        func_80027240(&D_800FF8D4, anim, sp124, animObjects);
+        func_80027240(&gMatrixBufPtr, anim, sp124, animObjects);
     } else if (arg0->vaultFall != 0) {
-        func_80027138(&static0_chameleonAnims[5], &animObjects, &animFrames, &anim);
-        func_80027240(&D_800FF8D4, anim, animFrames - arg0->vaultFall, animObjects);
+        Anim_LoadPointer(&static0_chameleonAnims[5], &animObjects, &animFrames, &anim);
+        func_80027240(&gMatrixBufPtr, anim, animFrames - arg0->vaultFall, animObjects);
     } else if (arg0->playerHURTSTATE == 1) {
         sp124 = arg0->playerHURTTIMER - 10;
-        func_80027138(&static0_chameleonAnims[8], &animObjects, &animFrames, &anim);
+        Anim_LoadPointer(&static0_chameleonAnims[8], &animObjects, &animFrames, &anim);
         if (sp124 < 0) {
             sp124 = 0;
         } else if (sp124 >= animFrames) {
             sp124 = animFrames - 1;
         }
-        func_80027240(&D_800FF8D4, anim, sp124, animObjects);
+        func_80027240(&gMatrixBufPtr, anim, sp124, animObjects);
     } else if (arg0->playerHURTSTATE == 2) {
         if (arg0->hp > 0) {
             sp124 = arg0->playerHURTTIMER;
         } else {
             sp124 = arg0->playerHURTTIMER / 3;
         }
-        func_80027138(&static0_chameleonAnims[9], &animObjects, &animFrames, &anim);
+        Anim_LoadPointer(&static0_chameleonAnims[9], &animObjects, &animFrames, &anim);
         if (sp124 >= animFrames) {
             sp124 = animFrames - 1;
         }
-        func_80027240(&D_800FF8D4, anim, sp124, animObjects);
+        func_80027240(&gMatrixBufPtr, anim, sp124, animObjects);
     } else if (arg1->tongueMode != 0) {
         switch (arg1->tongueMode) {
             case 1:
@@ -261,28 +261,28 @@ void func_80025EF0(PlayerActor* arg0, Tongue* arg1, s32 arg2) {
                 if (sp124 > 3) {
                     sp124 = 3;
                 }
-                func_80027138(&static0_chameleonAnims[4], &animObjects, &animFrames, &anim);
-                func_80027240(&D_800FF8D4, anim, sp124, animObjects);
+                Anim_LoadPointer(&static0_chameleonAnims[4], &animObjects, &animFrames, &anim);
+                func_80027240(&gMatrixBufPtr, anim, sp124, animObjects);
                 break;
             case 4:
                 sp124 = arg1->timer % 2 + 4;
-                func_80027138(&static0_chameleonAnims[4], &animObjects, &animFrames, &anim);
-                func_80027240(&D_800FF8D4, anim, sp124, animObjects);
+                Anim_LoadPointer(&static0_chameleonAnims[4], &animObjects, &animFrames, &anim);
+                func_80027240(&gMatrixBufPtr, anim, sp124, animObjects);
                 break;
             case 5:
                 sp124 = arg1->poleSegmentAt % 6 + 6;
-                func_80027138(&static0_chameleonAnims[4], &animObjects, &animFrames, &anim);
-                func_80027240(&D_800FF8D4, anim, sp124, animObjects);
+                Anim_LoadPointer(&static0_chameleonAnims[4], &animObjects, &animFrames, &anim);
+                func_80027240(&gMatrixBufPtr, anim, sp124, animObjects);
                 break;
             case 6:
             case 7:
-                func_80027138(&static0_chameleonAnims[4], &animObjects, &animFrames, &anim);
-                func_80027240(&D_800FF8D4, anim, arg1->timer + 12, animObjects);
+                Anim_LoadPointer(&static0_chameleonAnims[4], &animObjects, &animFrames, &anim);
+                func_80027240(&gMatrixBufPtr, anim, arg1->timer + 12, animObjects);
                 break;
             case 8:
             case 9:
-                func_80027138(&static0_chameleonAnims[5], &animObjects, &animFrames, &anim);
-                func_80027240(&D_800FF8D4, anim, arg1->segments, animObjects);
+                Anim_LoadPointer(&static0_chameleonAnims[5], &animObjects, &animFrames, &anim);
+                func_80027240(&gMatrixBufPtr, anim, arg1->segments, animObjects);
                 break;
             case 11:
                 sp124 = arg1->timer;
@@ -290,30 +290,30 @@ void func_80025EF0(PlayerActor* arg0, Tongue* arg1, s32 arg2) {
                     sp124 = (sp124 - 7) % 7 + 7;
                 }
                 if (arg0->unkBC > 0) {
-                    func_80027138(&static0_chameleonAnims[7], &animObjects, &animFrames, &anim);
+                    Anim_LoadPointer(&static0_chameleonAnims[7], &animObjects, &animFrames, &anim);
                     if (sp124 >= animFrames) {
                         sp124 = animFrames - 1;
                     }
-                    func_80027240(&D_800FF8D4, anim, sp124, animObjects);
+                    func_80027240(&gMatrixBufPtr, anim, sp124, animObjects);
                 } else {
-                    func_80027138(&static0_chameleonAnims[6], &animObjects, &animFrames, &anim);
+                    Anim_LoadPointer(&static0_chameleonAnims[6], &animObjects, &animFrames, &anim);
                     if (sp124 >= animFrames) {
                         sp124 = animFrames - 1;
                     }
-                    func_80027240(&D_800FF8D4, anim, sp124, animObjects);
+                    func_80027240(&gMatrixBufPtr, anim, sp124, animObjects);
                 }
                 break;
             default:
-                func_80027138(static0_chameleonAnims, &animObjects, &animFrames, &anim);
-                func_80027240(&D_800FF8D4, anim, (s32)arg0->globalTimer % animFrames, animObjects);
+                Anim_LoadPointer(static0_chameleonAnims, &animObjects, &animFrames, &anim);
+                func_80027240(&gMatrixBufPtr, anim, (s32)arg0->globalTimer % animFrames, animObjects);
                 break;
         }
     } else if (arg0->canJump != 0) {
         if (arg0->vel.y > 0.0f) {
-            func_80027138(&static0_chameleonAnims[3], &animObjects, &animFrames, &anim);
-            func_80027240(&D_800FF8D4, anim, 0, animObjects);
+            Anim_LoadPointer(&static0_chameleonAnims[3], &animObjects, &animFrames, &anim);
+            func_80027240(&gMatrixBufPtr, anim, 0, animObjects);
         } else {
-            func_80027138(&static0_chameleonAnims[3], &animObjects, &animFrames, &anim);
+            Anim_LoadPointer(&static0_chameleonAnims[3], &animObjects, &animFrames, &anim);
             if (-arg0->vel.y * 8.0f < arg0->pos.y - arg0->yCounter) {
                 arg0->jumpAnimFrame %= 10;
                 sp124 = arg0->jumpAnimFrame / 2 + 4;
@@ -326,14 +326,14 @@ void func_80025EF0(PlayerActor* arg0, Tongue* arg1, s32 arg2) {
                     sp124 = animFrames - 1;
                 }
             }
-            func_80027240(&D_800FF8D4, anim, sp124, animObjects);
+            func_80027240(&gMatrixBufPtr, anim, sp124, animObjects);
         }
     } else if (arg0->groundMovement == 0) {
-        func_80027138(static0_chameleonAnims, &animObjects, &animFrames, &anim);
-        func_80027240(&D_800FF8D4, anim, (s32)arg0->globalTimer % animFrames, animObjects);
+        Anim_LoadPointer(static0_chameleonAnims, &animObjects, &animFrames, &anim);
+        func_80027240(&gMatrixBufPtr, anim, (s32)arg0->globalTimer % animFrames, animObjects);
     } else if (arg0->groundMovement == 1) {
-        func_80027138(&static0_chameleonAnims[1], &animObjects, &animFrames, &anim);
-        func_80027240(&D_800FF8D4, anim, sp120 % animFrames, animObjects);
+        Anim_LoadPointer(&static0_chameleonAnims[1], &animObjects, &animFrames, &anim);
+        func_80027240(&gMatrixBufPtr, anim, sp120 % animFrames, animObjects);
         if (Chameleon_StepBool == FALSE && sp120 % animFrames >= 3 && sp120 % animFrames <= 12) {
             if (arg0->inWater == 1) {
                 PLAY_SFX_AT(SFX_ChameleonRightFootSplash, arg0->pos, 0, 0);
@@ -350,8 +350,8 @@ void func_80025EF0(PlayerActor* arg0, Tongue* arg1, s32 arg2) {
             Chameleon_StepBool = FALSE;
         }
     } else {
-        func_80027138(&static0_chameleonAnims[2], &animObjects, &animFrames, &anim);
-        func_80027240(&D_800FF8D4, anim, sp120 % animFrames, animObjects);
+        Anim_LoadPointer(&static0_chameleonAnims[2], &animObjects, &animFrames, &anim);
+        func_80027240(&gMatrixBufPtr, anim, sp120 % animFrames, animObjects);
         if (Chameleon_StepBool == FALSE && sp120 % animFrames >= 0 && sp120 % animFrames <= 9) {
             if (arg0->inWater == 1) {
                 PLAY_SFX_AT(SFX_ChameleonRightFootSplash, arg0->pos, 0, 0);
@@ -378,20 +378,20 @@ void func_80025EF0(PlayerActor* arg0, Tongue* arg1, s32 arg2) {
     }
 
     if (arg0->power == 2 && (arg0->powerTimer >= 30 && arg0->powerTimer <= arg0->powerTimerTill - 30 || !(gTimer % 2))) {
-        Mtx sp90;
-        guMtxIdent(&sp90);
-        guScale(&sp90, 2.0f, 2.0f, 2.0f);
-        guMtxCatL(&sp90, &sp110[1], &sp110[1]);
+        Mtx limb2X;
+        guMtxIdent(&limb2X);
+        guScale(&limb2X, 2.0f, 2.0f, 2.0f);
+        guMtxCatL(&limb2X, &sp110[1], &sp110[1]);
     }
 
     if (arg0->playerID == 0) {
-        f32 sp8C, sp88, sp84;
+        f32 limb2Y, limb2Z, sp84;
         Mtx sp40;
         guRotate(&sp40, arg0->yAngle, 0.0f, 1.0f, 0.0f);
         guMtxCatL(&sp110[1], &sp40, &sp40);
-        guMtxXFML(&sp40, 0, 0, 0, &sp8C, &sp88, &sp84);
-        D_80168D88 = arg0->pos.x + sp8C;
-        D_80168D8C = arg0->pos.y + sp88;
+        guMtxXFML(&sp40, 0, 0, 0, &limb2Y, &limb2Z, &sp84);
+        D_80168D88 = arg0->pos.x + limb2Y;
+        D_80168D8C = arg0->pos.y + limb2Z;
         D_80168D90 = arg0->pos.z + sp84;
         if (D_80174980 == 4) {
             Effect_TypeAF_Init(&D_80168D88, &D_80168D8C, &D_80168D90, 50.0f, 20.0f, 10.0f, 5, 180, 75);
@@ -403,7 +403,7 @@ void func_80025EF0(PlayerActor* arg0, Tongue* arg1, s32 arg2) {
 void func_80025EF0(PlayerActor* arg0, Tongue* arg1, s32 arg2);
 #endif
 
-s32 func_80026C78(Actor* actor) {
+s32 Actor_IsOffscreen(Actor* actor) {
     return 1 - IsPointInViewAreaFull(actor->pos.x, actor->pos.y, actor->pos.z, 8000.0f);
 }
 
@@ -454,7 +454,7 @@ void func_80026FB8(GraphicStruct *arg0, Mtx *arg1, u32 arg2, f32 arg3, f32 arg4,
  * @param ramFrames: The location in ram in which to write pointer->noFrames
  * @param ramAnim: The location in ram in which to write pointer->animation (as a pointer)
  */
-void func_80027138(AnimPointer* pointer, s32* ramObjects, s32* ramFrames, Mtx** ramAnim) {
+void Anim_LoadPointer(AnimPointer* pointer, s32* ramObjects, s32* ramFrames, Mtx** ramAnim) {
     s32* newInt;
     AnimPointer* realPointer;
 
@@ -488,6 +488,7 @@ extern Mtx D_80147FF0[];
 extern Mtx D_80167AF0[];
 
 //arg0 == write to, arg1 == read from, arg2 == frames(?), arg3 == objects
+// Anim_CopyFrame?
 void func_80027240(Mtx** arg0, Mtx* arg1, s32 arg2, s32 arg3) {
     Mtx* mtxPtr = *arg0;
     s32 i;
@@ -536,7 +537,7 @@ void func_800274F0(Actor* actor) {
  *
  * @return (s32) The highest index of an active player actor.
  */
-s32 func_80027650(void) {       // GetHighestActivePlayerIndex
+s32 GetHighestActivePlayerIndex(void) {       // GetHighestActivePlayerIndex
     s32 i;
 
     for (i = 3; i >= 0; i--) {
@@ -556,7 +557,7 @@ s32 func_80027650(void) {       // GetHighestActivePlayerIndex
 void func_80027694(GraphicStruct* arg0);
 
 //draw player
-Gfx* func_8002A190(GraphicStruct* arg0, Gfx* gfxPos, PlayerActor* player, Tongue* tongue, s32 playerIndex) {
+Gfx* Player_DrawBody(GraphicStruct* arg0, Gfx* gfxPos, PlayerActor* player, Tongue* tongue, s32 playerIndex) {
     f32 scaleX = 1.4f;
     f32 scaleY = player->yScale * 1.4f;
     f32 scaleZ = 1.4f;
@@ -600,7 +601,7 @@ Gfx* func_8002A190(GraphicStruct* arg0, Gfx* gfxPos, PlayerActor* player, Tongue
                 dlist = Battle_ChameleonGfxs[gSelectedCharacters[playerIndex]];
             }
         }
-        PutDList(&D_800FF8D4, &gfxPos, dlist);
+        PutDList(&gMatrixBufPtr, &gfxPos, dlist);
     }
     gSPPopMatrix(gfxPos++, G_MTX_MODELVIEW);
     return gfxPos;
@@ -640,7 +641,7 @@ Gfx* func_8002A4C4(GraphicStruct* arg0, Gfx* gfxPos, PlayerActor* player, Tongue
     return gfxPos;
 }
 
-Gfx* func_8002A824(GraphicStruct* arg0, Gfx* gfxPos, PlayerActor* player, Tongue* tongue, s32 playerIndex) {
+Gfx* Player_DrawTongue(GraphicStruct* arg0, Gfx* gfxPos, PlayerActor* player, Tongue* tongue, s32 playerIndex) {
     s32 i;
     s32 sp160 = FALSE;
     f32 f28 = 1.0f;
@@ -727,7 +728,7 @@ void func_8002AE3C(void) {
             continue;
         }
 
-        if (func_80026C78(&gActors[i])) {
+        if (Actor_IsOffscreen(&gActors[i])) {
             continue;
         }
 
@@ -813,7 +814,8 @@ void func_8002AE3C(void) {
 
 }
 
-Gfx* func_8002B118(GraphicStruct* arg0, Gfx* gfxPos, Gfx* dlist, Actor* actor, f32 scale, s32 arg5, s32* mtxIndex) {
+// Generic per-actor model draw with rotation cases per actorID
+Gfx* Actor_DrawModel(GraphicStruct* arg0, Gfx* gfxPos, Gfx* dlist, Actor* actor, f32 scale, s32 arg5, s32* mtxIndex) {
     Mtx sp300, sp2C0, sp280, sp240;
     Mtx sp200, sp1C0;
     Mtx sp180, sp140;
@@ -868,181 +870,181 @@ Gfx* func_8002B118(GraphicStruct* arg0, Gfx* gfxPos, Gfx* dlist, Actor* actor, f
     gSPMatrix(gfxPos++, OS_K0_TO_PHYSICAL(&arg0->actorTranslate[*mtxIndex]), G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
     gSPMatrix(gfxPos++, OS_K0_TO_PHYSICAL(&arg0->actorRotate[*mtxIndex]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
     gSPMatrix(gfxPos++, OS_K0_TO_PHYSICAL(&arg0->actorScale[*mtxIndex]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
-    PutDList(&D_800FF8D4, &gfxPos, dlist);
+    PutDList(&gMatrixBufPtr, &gfxPos, dlist);
     gSPPopMatrix(gfxPos++, G_MTX_MODELVIEW);
     (*mtxIndex)++;
     return gfxPos;
 }
 
-Gfx* func_8002B7BC(GraphicStruct* arg0, Gfx* gfxPos) {
+Gfx* Actors_DrawAll(GraphicStruct* arg0, Gfx* gfxPos) {
     s32 i;
-    s32 sp178 = 0;
-    f32 scale1;
-    Gfx* gfx1;
+    s32 mtxIndex = 0;
+    f32 actorScale ;
+    Gfx* bowlingPinsGfx ;
 
     for (i = 0; i < MAX_ACTORS; i++) {
         if (gActors[i].actorID == ACTOR_NULL) {
             continue;
         }
 
-        if (gActors[i].actorState == 2 || gActors[i].actorState == 4 && (gActors[i].unk_C8 & 1) && D_80174980 != 3 || func_80026C78(&gActors[i])) {
+        if (gActors[i].actorState == 2 || gActors[i].actorState == 4 && (gActors[i].unk_C8 & 1) && D_80174980 != 3 || Actor_IsOffscreen(&gActors[i])) {
             continue;
         }
 
         switch (gActors[i].actorID) {
             case YELLOW_ANT:
                 gActors[i].unk_E8 = gActors[i].unk_134[5] - 40.0f;
-                gfxPos = func_8002B118(arg0, gfxPos, AntLand_yellowAnt_gfx14_Gfx, &gActors[i], 3.0f, 0, &sp178);
+                gfxPos = Actor_DrawModel(arg0, gfxPos, AntLand_yellowAnt_gfx14_Gfx, &gActors[i], 3.0f, 0, &mtxIndex);
                 break;
             case ANT_QUEEN:
                 gActors[i].unk_E8 = gActors[i].unk_134[5];
-                gfxPos = func_8002B118(arg0, gfxPos, Quintella_a_model18_Gfx, &gActors[i], 4.0f, 0, &sp178);
+                gfxPos = Actor_DrawModel(arg0, gfxPos, Quintella_a_model18_Gfx, &gActors[i], 4.0f, 0, &mtxIndex);
                 break;
             case BL_BOSS_SEGMENT:
                 if (gActors[i].globalTimer >= 100) {
                     if (gActors[i].userVariables[3] == 0) {
                         gActors[i].unk_E8 = 0.0f;
-                        gfxPos = func_8002B118(arg0, gfxPos, BombSnake_unkF_Gfx, &gActors[i], 10.0f, 0, &sp178);
+                        gfxPos = Actor_DrawModel(arg0, gfxPos, BombSnake_unkF_Gfx, &gActors[i], 10.0f, 0, &mtxIndex);
                     } else if (gActors[i].userVariables[3] == 10) {
                         gActors[i].unk_E8 = 0;
-                        gfxPos = func_8002B118(arg0, gfxPos, BombSnake_unk11_Gfx, &gActors[i], 10.0f, 0, &sp178);
+                        gfxPos = Actor_DrawModel(arg0, gfxPos, BombSnake_unk11_Gfx, &gActors[i], 10.0f, 0, &mtxIndex);
                     }
                 }
                 break;
             case CANNON:
                 gActors[i].unk_E8 = 0.0f;
-                gfxPos = func_8002B118(arg0, gfxPos, BombLand_unk74_Gfx, &gActors[i], 4.0f, 0, &sp178);
+                gfxPos = Actor_DrawModel(arg0, gfxPos, BombLand_unk74_Gfx, &gActors[i], 4.0f, 0, &mtxIndex);
                 break;
             case UNK_1F:
                 gActors[i].unk_E8 = 0.0f;
-                gfxPos = func_8002B118(arg0, gfxPos, BattleMode_a_model1_Gfx, &gActors[i], 2.0f, 0, &sp178);
+                gfxPos = Actor_DrawModel(arg0, gfxPos, BattleMode_a_model1_Gfx, &gActors[i], 2.0f, 0, &mtxIndex);
                 break;
             case POGO:
                 gActors[i].unk_E8 = 0.0f;
-                gfxPos = func_8002B118(arg0, gfxPos, KidsLand_actorModel9_Gfx, &gActors[i], 3.0f, 0, &sp178);
+                gfxPos = Actor_DrawModel(arg0, gfxPos, KidsLand_actorModel9_Gfx, &gActors[i], 3.0f, 0, &mtxIndex);
                 break;
             case CAKE_BOSS:
                 gActors[i].unk_E8 = 0.0f;
-                gfxPos = func_8002B118(arg0, gfxPos, GiantCake_a_model9_Gfx, &gActors[i], 8.0f, 0, &sp178);
+                gfxPos = Actor_DrawModel(arg0, gfxPos, GiantCake_a_model9_Gfx, &gActors[i], 8.0f, 0, &mtxIndex);
                 gActors[i].unk_E8 = 0.0f;
-                gfxPos = func_8002B118(arg0, gfxPos, GiantCake_a_model13_Gfx, &gActors[i], 8.0f, 1, &sp178);
+                gfxPos = Actor_DrawModel(arg0, gfxPos, GiantCake_a_model13_Gfx, &gActors[i], 8.0f, 1, &mtxIndex);
                 break;
             case CAKE_BOSS_STRAWBERRY:
                 if (gActors[i].unk_128 == 6) {
-                    scale1 = 16.0f;
+                    actorScale  = 16.0f;
                 } else {
-                    scale1 = 8.0f;
+                    actorScale  = 8.0f;
                 }
                 gActors[i].unk_E8 = 0.0f;
-                gfxPos = func_8002B118(arg0, gfxPos, GiantCake_a_model15_Gfx, &gActors[i], scale1, 0, &sp178);
+                gfxPos = Actor_DrawModel(arg0, gfxPos, GiantCake_a_model15_Gfx, &gActors[i], actorScale , 0, &mtxIndex);
                 break;
             case BOWLING_PINS:
                 if (D_800FE400 == 0) {
-                    gfx1 = KidsLand_actorModel10_Gfx;
+                    bowlingPinsGfx  = KidsLand_actorModel10_Gfx;
                 } else {
-                    gfx1 = KidsLand_actorModel12_Gfx;
+                    bowlingPinsGfx  = KidsLand_actorModel12_Gfx;
                 }
                 gActors[i].unk_E8 = 0.0f;
-                gfxPos = func_8002B118(arg0, gfxPos, gfx1, &gActors[i], 3.0f, 0, &sp178);
+                gfxPos = Actor_DrawModel(arg0, gfxPos, bowlingPinsGfx , &gActors[i], 3.0f, 0, &mtxIndex);
                 break;
             case ARROWS:
                 gActors[i].unk_E8 = 50.0f;
-                gfxPos = func_8002B118(arg0, gfxPos, DesertCastle_actorModel4_Gfx, &gActors[i], 3.0f, 0, &sp178);
+                gfxPos = Actor_DrawModel(arg0, gfxPos, DesertCastle_actorModel4_Gfx, &gActors[i], 3.0f, 0, &mtxIndex);
                 break;
             case CHOMPER:
-                scale1 = gActors[i].unk_164 * 6.0f;
+                actorScale  = gActors[i].unk_164 * 6.0f;
                 gActors[i].unk_E8 = 0.0f;
-                gfxPos = func_8002B118(arg0, gfxPos, DesertCastle_actorModel19_Gfx, &gActors[i], scale1, 0, &sp178);
+                gfxPos = Actor_DrawModel(arg0, gfxPos, DesertCastle_actorModel19_Gfx, &gActors[i], actorScale , 0, &mtxIndex);
                 break;
             case BOULDER:
                 gActors[i].unk_E8 = 0.0f;
-                gfxPos = func_8002B118(arg0, gfxPos, DesertCastle_actorModel21_Gfx, &gActors[i], 2.0f, 0, &sp178);
+                gfxPos = Actor_DrawModel(arg0, gfxPos, DesertCastle_actorModel21_Gfx, &gActors[i], 2.0f, 0, &mtxIndex);
                 break;
             case ARMADILLO:
                 gActors[i].unk_E8 = gActors[i].unk_134[4];
-                gfxPos = func_8002B118(arg0, gfxPos, Armadillo_a_model21_Gfx, &gActors[i], 3.0f, 0, &sp178);
+                gfxPos = Actor_DrawModel(arg0, gfxPos, Armadillo_a_model21_Gfx, &gActors[i], 3.0f, 0, &mtxIndex);
                 break;
             case SANDAL:
                 gActors[i].unk_E8 = 0.0f;
-                gfxPos = func_8002B118(arg0, gfxPos, GhostCastle_model78_Gfx, &gActors[i], 2.0f, 0, &sp178);
+                gfxPos = Actor_DrawModel(arg0, gfxPos, GhostCastle_model78_Gfx, &gActors[i], 2.0f, 0, &mtxIndex);
                 break;
             case METAL_SHEET:
                 gActors[i].unk_E8 = 0.0f;
-                gfxPos = func_8002B118(arg0, gfxPos, GhostCastle_model80_Gfx, &gActors[i], 2.0f, 0, &sp178);
+                gfxPos = Actor_DrawModel(arg0, gfxPos, GhostCastle_model80_Gfx, &gActors[i], 2.0f, 0, &mtxIndex);
                 break;
             case SCROLL:
                 gActors[i].unk_E8 = 0.0f;
-                gfxPos = func_8002B118(arg0, gfxPos, GhostCastle_model88_Gfx, &gActors[i], 3.0f, 0, &sp178);
+                gfxPos = Actor_DrawModel(arg0, gfxPos, GhostCastle_model88_Gfx, &gActors[i], 3.0f, 0, &mtxIndex);
                 break;
             case FIRE_SPITTER:
                 gActors[i].unk_E8 = gActors[i].unknownPositionThings[0].unk_10 / 2;
-                gfxPos = func_8002B118(arg0, gfxPos, GhostCastle_model83_Gfx, &gActors[i], 2.0f, 0, &sp178);
+                gfxPos = Actor_DrawModel(arg0, gfxPos, GhostCastle_model83_Gfx, &gActors[i], 2.0f, 0, &mtxIndex);
                 break;
             case PILE_OF_BOOKS:
                 gActors[i].unk_E8 = -60.0f;
-                gfxPos = func_8002B118(arg0, gfxPos, PileOfBooks_a_model15_Gfx, &gActors[i], 6.0f, 0, &sp178);
+                gfxPos = Actor_DrawModel(arg0, gfxPos, PileOfBooks_a_model15_Gfx, &gActors[i], 6.0f, 0, &mtxIndex);
                 break;
             case PILE_OF_BOOKS_ARM_SPITTER:
                 gActors[i].unk_E8 = gActors[i].unknownPositionThings[0].unk_10 / 2;
-                gfxPos = func_8002B118(arg0, gfxPos, PileOfBooks_a_model18_Gfx, &gActors[i], 3.0f, 0, &sp178);
+                gfxPos = Actor_DrawModel(arg0, gfxPos, PileOfBooks_a_model18_Gfx, &gActors[i], 3.0f, 0, &mtxIndex);
                 break;
             case GOLEM:
                 gActors[i].unk_E8 = 0.0f;
-                gfxPos = func_8002B118(arg0, gfxPos, JungleLand_unkunk_Gfx, &gActors[i], 4.0f, 0, &sp178);
+                gfxPos = Actor_DrawModel(arg0, gfxPos, JungleLand_unkunk_Gfx, &gActors[i], 4.0f, 0, &mtxIndex);
                 break;
             case SPIDER_SPAWNER:
                 gActors[i].unk_E8 = 0.0f;
-                gfxPos = func_8002B118(arg0, gfxPos, JungleLand_unkunk2_Gfx, &gActors[i], 2.0f, 0, &sp178);
+                gfxPos = Actor_DrawModel(arg0, gfxPos, JungleLand_unkunk2_Gfx, &gActors[i], 2.0f, 0, &mtxIndex);
                 break;
             case FISH:
                 gActors[i].unk_E8 = 0.0f;
-                gfxPos = func_8002B118(arg0, gfxPos, JungleLand_unkunk3_Gfx, &gActors[i], 1.4f, 0, &sp178);
-                gfxPos = func_8002B118(arg0, gfxPos, JungleLand_unkunk4_Gfx, &gActors[i], 1.4f, 1, &sp178);
+                gfxPos = Actor_DrawModel(arg0, gfxPos, JungleLand_unkunk3_Gfx, &gActors[i], 1.4f, 0, &mtxIndex);
+                gfxPos = Actor_DrawModel(arg0, gfxPos, JungleLand_unkunk4_Gfx, &gActors[i], 1.4f, 1, &mtxIndex);
                 break;
             case LIZARD_KONG_BOULDER:
                 gActors[i].unk_E8 = gActors[i].unknownPositionThings[0].unk_10 / 2;
-                gfxPos = func_8002B118(arg0, gfxPos, LizardKong_a_model14_Gfx, &gActors[i], 2.0f, 0, &sp178);
+                gfxPos = Actor_DrawModel(arg0, gfxPos, LizardKong_a_model14_Gfx, &gActors[i], 2.0f, 0, &mtxIndex);
                 break;
             case LIZARD_KONG:
                 gActors[i].unk_E8 = 0.0f;
-                gfxPos = func_8002B118(arg0, gfxPos, LizardKong_a_model12_Gfx, &gActors[i], 3.0f, 0, &sp178);
+                gfxPos = Actor_DrawModel(arg0, gfxPos, LizardKong_a_model12_Gfx, &gActors[i], 3.0f, 0, &mtxIndex);
                 if (gActors[i].unk_EC == 1 && gActors[i].unk_F0 > 25 && gActors[i].unk_F0 < 62) {
                     s32 unused;
-                    Mtx* sp168;
-                    Mtx sp128;
-                    Mtx spE8;
-                    Mtx spA8;
-                    s32 spA4;
-                    s32 spA0;
-                    f32 sp9C, sp98, sp94;
-                    f32 sp90, sp8C, sp88;
+                    Mtx* animMtxPtr;
+                    Mtx tempMtx;
+                    Mtx rotMtx;
+                    Mtx combinedMtx;
+                    s32 numObjects;
+                    s32 numFrames;
+                    f32 limb1X, limb1Y, limb1Z; // used to spawn boulder in Lizard_Kongs hands (could be L or R hand)
+                    f32 limb2X, limb2Y, limb2Z;
 
-                    sp168 = NULL;
-                    guRotate(&spE8, gActors[i].unk_90 + 90.0f, 0, 1.0f, 0);
-                    func_80027138(&LizardKong_unk2Pointers_Animp, &spA4, &spA0, &sp168);
+                    animMtxPtr = NULL;
+                    guRotate(&rotMtx, gActors[i].unk_90 + 90.0f, 0, 1.0f, 0);
+                    Anim_LoadPointer(&LizardKong_unk2Pointers_Animp, &numObjects, &numFrames, &animMtxPtr);
 
-                    sp128 = sp168[6 + (gActors[i].unk_F0 / 2) * spA4];
-                    guMtxCatL(&sp128, &spE8, &spA8);
-                    guMtxXFML(&spA8, -120.0f, 0.0f, 0.0f, &sp9C, &sp98, &sp94);
+                    tempMtx = animMtxPtr[6 + (gActors[i].unk_F0 / 2) * numObjects];
+                    guMtxCatL(&tempMtx, &rotMtx, &combinedMtx);
+                    guMtxXFML(&combinedMtx, -120.0f, 0.0f, 0.0f, &limb1X, &limb1Y, &limb1Z);
 
-                    sp128 = sp168[8 + (gActors[i].unk_F0 / 2) * spA4];
-                    guMtxCatL(&sp128, &spE8, &spA8);
-                    guMtxXFML(&spA8, 120.0f, 0.0f, 0.0f, &sp90, &sp8C, &sp88);
-                    guTranslate(&arg0->actorTranslate[sp178], gActors[i].pos.x + 3.0f * ((sp9C + sp90) * 0.5f),
-                                                              gActors[i].pos.y + 3.0f * ((sp98 + sp8C) * 0.5f),
-                                                              gActors[i].pos.z + 3.0f * ((sp94 + sp88) * 0.5f));
-                    guRotate(&arg0->actorRotate[sp178], gActors[i].unk_90 + 90.0f, 0, 1.0f, 0);
-                    guScale(&arg0->actorScale[sp178], 2.0f, 2.0f, 2.0f);
-                    gSPMatrix(gfxPos++, OS_K0_TO_PHYSICAL(&arg0->actorTranslate[sp178]), G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
-                    gSPMatrix(gfxPos++, OS_K0_TO_PHYSICAL(&arg0->actorRotate[sp178]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
-                    gSPMatrix(gfxPos++, OS_K0_TO_PHYSICAL(&arg0->actorScale[sp178]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
-                    PutDList(&D_800FF8D4, &gfxPos, LizardKong_a_model14_Gfx);
+                    tempMtx = animMtxPtr[8 + (gActors[i].unk_F0 / 2) * numObjects];
+                    guMtxCatL(&tempMtx, &rotMtx, &combinedMtx);
+                    guMtxXFML(&combinedMtx, 120.0f, 0.0f, 0.0f, &limb2X, &limb2Y, &limb2Z);
+                    guTranslate(&arg0->actorTranslate[mtxIndex], gActors[i].pos.x + 3.0f * ((limb1X + limb2X) * 0.5f),
+                                                              gActors[i].pos.y + 3.0f * ((limb1Y + limb2Y) * 0.5f),
+                                                              gActors[i].pos.z + 3.0f * ((limb1Z + limb2Z) * 0.5f));
+                    guRotate(&arg0->actorRotate[mtxIndex], gActors[i].unk_90 + 90.0f, 0, 1.0f, 0);
+                    guScale(&arg0->actorScale[mtxIndex], 2.0f, 2.0f, 2.0f);
+                    gSPMatrix(gfxPos++, OS_K0_TO_PHYSICAL(&arg0->actorTranslate[mtxIndex]), G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+                    gSPMatrix(gfxPos++, OS_K0_TO_PHYSICAL(&arg0->actorRotate[mtxIndex]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+                    gSPMatrix(gfxPos++, OS_K0_TO_PHYSICAL(&arg0->actorScale[mtxIndex]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+                    PutDList(&gMatrixBufPtr, &gfxPos, LizardKong_a_model14_Gfx);
                     gSPPopMatrix(gfxPos++, G_MTX_MODELVIEW);
                 }
                 break;
             case POPCORN_BUCKET:
                 gActors[i].unk_E8 = 0.0f;
-                gfxPos = func_8002B118(arg0, gfxPos, BattleMode_a_model1_Gfx, &gActors[i], 2.0f, 0, &sp178);
+                gfxPos = Actor_DrawModel(arg0, gfxPos, BattleMode_a_model1_Gfx, &gActors[i], 2.0f, 0, &mtxIndex);
                 break;
         }
     }
@@ -1050,22 +1052,23 @@ Gfx* func_8002B7BC(GraphicStruct* arg0, Gfx* gfxPos) {
     return gfxPos;
 }
 
+// Gfx for building a full game scene
 #ifdef NON_MATCHING
 Gfx* func_8002C280(GraphicStruct* arg0, Gfx* gfxPos) {
     s32 i;
 
     gfxPos = func_8007B524(arg0, gfxPos, gCamera);
-    D_800FF8D4 = arg0->unk1e880;
+    gMatrixBufPtr = arg0->mtxBuffer;
     gfxPos = func_8005F408(gfxPos);
 
     for (i = 0; i < 4; i++) {
         if (!gPlayerActors[i].exists) {
             continue;
         }
-        gfxPos = func_8002A190(arg0, gfxPos, &gPlayerActors[i], &gTongues[i], i);
-        gfxPos = func_8002A824(arg0, gfxPos, &gPlayerActors[i], &gTongues[i], i);
+        gfxPos = Player_DrawBody(arg0, gfxPos, &gPlayerActors[i], &gTongues[i], i);
+        gfxPos = Player_DrawTongue(arg0, gfxPos, &gPlayerActors[i], &gTongues[i], i);
     }
-    gfxPos = func_8002B7BC(arg0, gfxPos);
+    gfxPos = Actors_DrawAll(arg0, gfxPos);
     gfxPos = func_800C3B50(arg0, gfxPos);
     for (i = 0; i < 4; i++) {
         if (!gPlayerActors[i].exists) {
@@ -1113,8 +1116,8 @@ Gfx* func_8002C4E8(Gfx* gfxPos, s32 arg1, s32 arg2) {
     gSPSegment(gfxPos++, 0x01, OS_K0_TO_PHYSICAL(_ALIGN((u32)gFrameBuffers - (u32)static0_VRAM_END + (u32)static0_VRAM, 0x10)));
 
     for (i = 2; i < 16; i++) {
-        if (D_80100F50[i].base_address != NULL) {
-            gSPSegment(gfxPos++, i, OS_K0_TO_PHYSICAL(D_80100F50[i].base_address));
+        if (gLoadedSegments [i].base_address != NULL) {
+            gSPSegment(gfxPos++, i, OS_K0_TO_PHYSICAL(gLoadedSegments [i].base_address));
         }
     }
 
@@ -1159,7 +1162,7 @@ Gfx* func_8002C900(GraphicStruct* arg0, s32 arg1) {
     gSPDisplayList(gfxPos++, D_1015B18);
     gDPSetColorImage(gfxPos++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 320, OS_K0_TO_PHYSICAL(&gFrameBuffers[arg1]));
     gfxPos = func_8002C280(arg0, gfxPos);
-    D_800FF8D4 = arg0->unk1e880;
+    gMatrixBufPtr = arg0->mtxBuffer;
 
     for (i = 0; i < ARRAY_COUNT(gPlayerActors); i++) {
         if (!gPlayerActors[i].exists) {
@@ -1261,12 +1264,14 @@ void func_8002CD04(void) {
     func_80084788();
 }
 
+// Vi_BlackOnFrame2
 void func_8002CD94(s32 arg0) {
     if (arg0 == 2) {
         osViBlack(0);
     }
 }
 
+// polls controllers for VS_STAGE, multiplayer polling?
 void func_8002CDBC(ContMain* controllers) {
     s32 i;
 
