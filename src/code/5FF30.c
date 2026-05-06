@@ -4183,6 +4183,10 @@ void Porocess_Mode0(void) {
     }
 }
 
+#ifdef CRASH_SCREEN
+#include "crash.c"
+#endif
+
 void MainLoop(void) {
     func_8002D080();
     if (sGameModeStart != -1) {
@@ -4196,6 +4200,9 @@ void MainLoop(void) {
     }
     gIsStereo = gGameRecords.flags[1] & 1;
     osRecvMesg(&gSyncMessageQueue, NULL, OS_MESG_BLOCK);
+    #ifdef CRASH_SCREEN
+    crash_screen_init();
+    #endif
     while(1){
         switch (gGameModeCurrent) {
             case 0:

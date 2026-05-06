@@ -462,7 +462,7 @@ if __name__ == "__main__":
 
     if args.shift:
         print('a shiftable rom will be built!')
-        to = DEFINES + " -DSHIFT"
+        to = DEFINES + " -DSHIFT -DCRASH_SCREEN"
         CFLAGS = CFLAGS.replace(DEFINES, to)
         GAME_COMPILE_CMD = GAME_COMPILE_CMD.replace(DEFINES, to)
         DEFINES = to

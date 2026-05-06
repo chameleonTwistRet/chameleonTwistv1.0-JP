@@ -297,8 +297,8 @@ void Battle_DrawPortraits(void) {
 #ifdef NON_MATCHING
 void Battle_PrintPlayerTimer(s32 playerID) {
     if (Battle_PlayerRank[playerID] == 0) {
-        s8 g = Battle_Time * 16;
-        SetTextGradient_TopBottom(255, g, 32, 255,
+        //s8 g = Battle_Time * 16;
+        SetTextGradient_TopBottom(255, Battle_Time * 16, 32, 255,
                                   255, 0,  0, 255);
     } else {
         SetTextGradientFromPalette(5);
