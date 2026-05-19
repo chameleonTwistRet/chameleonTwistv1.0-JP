@@ -34,6 +34,47 @@ extern unsigned char Global_smallBrickWall_i4_PNG[];
 extern unsigned char Global_DCFloor_ci4_PNG[];
 extern unsigned char Global_DCFloor_ci4_PAL[];
 
+enum DesertCastle_Models {
+    G_FALLBACK_CUBE_MODEL = 0,
+    G_EXIT_SHADOW_SOUTH_MODEL,
+    G_EXIT_SHADOW_NORTH_MODEL,
+    G_EXIT_SHADOW_EAST_MODEL,
+    G_EXIT_SHADOW_WEST_MODEL,
+    G_ALBL_EXIT_MODEL,
+    G_SANDPIT_MODEL,
+    G_BOSS_BRIDGE_MODEL,
+    G_AL_POLE_MODEL,
+    G_ALBL_DOOR_MODEL,
+    G_AL_SPIN_DOOR_MODEL,
+    G_BL_LAVA_FLOOR_MODEL,
+    G_BL_LAVA_MODEL,
+    G_BL_LAVA2_MODEL,
+    G_BL_LAVA3_MODEL,
+    G_BL_LAVA4_MODEL,
+    G_BL_LAVA5_MODEL,
+    G_BL_LAVA6_MODEL,
+    G_BL_LAVA7_MODEL,
+    G_BL_LAVA8_MODEL,
+    G_BL_DESTRUCTABLE_TOP_MODEL,
+    G_BL_METAL_BRIDGE_MODEL,
+    G_KL_EXIT_MODEL,
+    G_KL_DOOR_MODEL,
+    G_DC_EXIT_MODEL,
+    G_TALL_EXIT_SHADOW1_MODEL,
+    G_TALL_EXIT_SHADOW2_MODEL,
+    G_GC_EXIT1_MODEL,
+    G_GC_EXIT2_MODEL,
+    G_TRAINING_ROOM_LIGHT_MODEL,
+    G_JL_CAVE_EXIT1_MODEL,
+    G_JL_CAVE_EXIT2_MODEL,
+    G_JL_CAVE_EXIT3_MODEL,
+    G_JL_CAVE_EXIT4_MODEL,
+    G_JL_OUTSIDE_ENTRANCE_MODEL,
+    G_JL_FX_CAM_PILLAR_MODEL,
+    G_JL_CAVE_DOOR_MODEL,
+    DC_POLE_MODEL = 127
+};
+
 #include "global_models.h"
 extern Gfx DesertCastle_model1_Gfx[];
 extern ModelCollision DesertCastle_unkCol1_collision;
