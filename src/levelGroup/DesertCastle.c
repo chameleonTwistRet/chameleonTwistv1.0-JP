@@ -1,333 +1,50 @@
-#include "common.h"
-extern Vtx D_800FE2B0_DesertCastle[];
+#include "DesertCastle.h"
 
-extern unsigned char Global_sandAgain_ci4_PNG[];
-extern unsigned char Global_sandAgain_ci4_PAL[];
-extern unsigned char Global_DCSmallTiles_ci4_PNG[];
-extern unsigned char Global_DCSmallTiles_ci4_PAL[];
-extern unsigned char Global_DCThing1_ci4_PNG[];
-extern unsigned char Global_DCThing1_ci4_PAL[];
-extern unsigned char Global_DCWall3_ci4_PNG[];
-extern unsigned char Global_DCWall3_ci4_PAL[];
-extern unsigned char Global_DCFloor2_ci4_PNG[];
-extern unsigned char Global_DCFloor2_ci4_PAL[];
-extern unsigned char Global_DCBricks_ci4_PNG[];
-extern unsigned char Global_DCBricks_ci4_PAL[];
-extern unsigned char Global_dcTHING2_ci4_PNG[];
-extern unsigned char Global_dcTHING2_ci4_PAL[];
-extern unsigned char Global_DCSandFloor_ci4_PNG[];
-extern unsigned char Global_DCSandFloor_ci4_PAL[];
-extern unsigned char Global_pebbles_ci4_PNG[];
-extern unsigned char Global_pebbles_ci4_PAL[];
-extern unsigned char Global_ropeChroma_ci8_PNG[];
-extern unsigned char Global_ropeChroma_ci8_PAL[];
-extern unsigned char Global_DCWall2_ci4_PNG[];
-extern unsigned char Global_DCWall2_ci4_PAL[];
-extern unsigned char Global_DCThing2_ci4_PNG[];
-extern unsigned char Global_DCThing2_ci4_PAL[];
-extern unsigned char Global_DCThing3_ci4_PNG[];
-extern unsigned char Global_DCThing3_ci4_PAL[];
-extern unsigned char Global_smallBrickWall_i4_PNG[];
-extern unsigned char Global_DCFloor_ci4_PNG[];
-extern unsigned char Global_DCFloor_ci4_PAL[];
-
-extern Gfx Global_fallbackCube_Gfx[];
-extern ModelCollision Global_fallbackCube_collision;
-extern Gfx Global_exitShadowSouth_Gfx[];
-extern ModelCollision Global_exitShadowSouth_collision;
-extern Gfx Global_exitShadowNorth_Gfx[];
-extern ModelCollision Global_exitShadowNorth_collision;
-extern Gfx Global_exitShadowEast_Gfx[];
-extern ModelCollision Global_exitShadowEast_collision;
-extern Gfx Global_exitShadowWest_Gfx[];
-extern ModelCollision Global_exitShadowWest_collision;
-extern Gfx Global_ALBLExit_Gfx[];
-extern ModelCollision Global_ALBLExit_collision;
-extern Gfx Global_sandPit_Gfx[];
-extern ModelCollision Global_sandPit_collision;
-extern Gfx Global_BossBridge_Gfx[];
-extern ModelCollision Global_BossBridge_collision;
-extern Gfx Global_ALPole_Gfx[];
-extern ModelCollision Global_ALPole_collision;
-extern Gfx Global_ALBLDoor_Gfx[];
-extern ModelCollision Global_ALBLDoor_collision;
-extern Gfx Global_ALSpinDoor_Gfx[];
-extern ModelCollision Global_ALSpinDoor_collision;
-extern Gfx Global_BLLavaFloor_Gfx[];
-extern ModelCollision Global_BLLavaFloor_collision;
-extern Gfx Global_BLLava_Gfx[];
-extern ModelCollision Global_BLLava_collision;
-extern Gfx Global_BLLava2_Gfx[];
-extern ModelCollision Global_BLLava2_collision;
-extern Gfx Global_BLLava3_Gfx[];
-extern ModelCollision Global_BLLava3_collision;
-extern Gfx Global_BLLava4_Gfx[];
-extern ModelCollision Global_BLLava4_collision;
-extern Gfx Global_BLLava5_Gfx[];
-extern ModelCollision Global_BLLava5_collision;
-extern Gfx Global_BLLava6_Gfx[];
-extern ModelCollision Global_BLLava6_collision;
-extern Gfx Global_BLLava7_Gfx[];
-extern ModelCollision Global_BLLava7_collision;
-extern Gfx Global_BLLava8_Gfx[];
-extern ModelCollision Global_BLLava8_collision;
-extern Gfx Global_BLDestructableTop_Gfx[];
-extern ModelCollision Global_BLDestructableTop_collision;
-extern Gfx Global_BLMetalBridge_Gfx[];
-extern ModelCollision Global_BLMetalBridge_collision;
-extern Gfx Global_KLExit_Gfx[];
-extern ModelCollision Global_KLExit_collision;
-extern Gfx Global_KLDoor_Gfx[];
-extern ModelCollision Global_KLDoor_collision;
-extern Gfx Global_DCExit_Gfx[];
-extern ModelCollision Global_DCExit_collision;
-extern Gfx Global_TallExitShadow1_Gfx[];
-extern ModelCollision Global_TallExitShadow1_collision;
-extern Gfx Global_TallExitShadow2_Gfx[];
-extern ModelCollision Global_TallExitShadow2_collision;
-extern Gfx Global_GCExit1_Gfx[];
-extern ModelCollision Global_GCExit1_collision;
-extern Gfx Global_GCExit2_Gfx[];
-extern ModelCollision Global_GCExit2_collision;
-extern Gfx Global_trainingRoomLight_Gfx[];
-extern ModelCollision Global_trainingRoomLight_collision;
-extern Gfx Global_JLCaveExit1_Gfx[];
-extern ModelCollision Global_JLCaveExit1_collision;
-extern Gfx Global_JLCaveExit2_Gfx[];
-extern ModelCollision Global_JLCaveExit2_collision;
-extern Gfx Global_JLCaveExit3_Gfx[];
-extern ModelCollision Global_JLCaveExit3_collision;
-extern Gfx Global_JLCaveExit4_Gfx[];
-extern ModelCollision Global_JLCaveExit4_collision;
-extern Gfx Global_JLOutsideEntrance_Gfx[];
-extern ModelCollision Global_JLOutsideEntrance_collision;
-extern Gfx Global_JLFxCamPillar_Gfx[];
-extern ModelCollision Global_JLFxCamPillar_collision;
-extern Gfx Global_JLCaveDoor_Gfx[];
-extern ModelCollision Global_JLCaveDoor_collision;
-extern Gfx DesertCastle_model1_Gfx[];
-extern ModelCollision DesertCastle_unkCol1_collision;
-extern Gfx DesertCastle_model2_Gfx[];
-extern ModelCollision DesertCastle_unkCol2_collision;
-extern Gfx DesertCastle_model3_Gfx[];
-extern ModelCollision DesertCastle_unkCol3_collision;
-extern Gfx DesertCastle_model4_Gfx[];
-extern ModelCollision DesertCastle_unkCol4_collision;
-extern Gfx DesertCastle_model5_Gfx[];
-extern ModelCollision DesertCastle_unkCol5_collision;
-extern Gfx DesertCastle_model6_Gfx[];
-extern ModelCollision DesertCastle_unkCol6_collision;
-extern Gfx DesertCastle_model7_Gfx[];
-extern ModelCollision DesertCastle_unkCol7_collision;
-extern Gfx DesertCastle_model8_Gfx[];
-extern ModelCollision DesertCastle_unkCol8_collision;
-extern Gfx DesertCastle_model9_Gfx[];
-extern ModelCollision DesertCastle_unkCol9_collision;
-extern Gfx DesertCastle_model10_Gfx[];
-extern ModelCollision DesertCastle_unkCol10_collision;
-extern Gfx DesertCastle_model11_Gfx[];
-extern ModelCollision DesertCastle_unkCol11_collision;
-extern Gfx DesertCastle_model12_Gfx[];
-extern ModelCollision DesertCastle_unkCol12_collision;
-extern Gfx DesertCastle_model13_Gfx[];
-extern ModelCollision DesertCastle_unkCol13_collision;
-extern Gfx DesertCastle_model14_Gfx[];
-extern ModelCollision DesertCastle_unkCol14_collision;
-extern Gfx DesertCastle_model15_Gfx[];
-extern ModelCollision DesertCastle_unkCol15_collision;
-extern Gfx DesertCastle_model16_Gfx[];
-extern ModelCollision DesertCastle_unkCol16_collision;
-extern Gfx DesertCastle_model17_Gfx[];
-extern ModelCollision DesertCastle_unkCol17_collision;
-extern Gfx DesertCastle_model18_Gfx[];
-extern ModelCollision DesertCastle_unkCol18_collision;
-extern Gfx DesertCastle_model19_Gfx[];
-extern ModelCollision DesertCastle_unkCol19_collision;
-extern Gfx DesertCastle_model20_Gfx[];
-extern ModelCollision DesertCastle_unkCol20_collision;
-extern Gfx DesertCastle_model21_Gfx[];
-extern ModelCollision DesertCastle_unkCol21_collision;
-extern Gfx DesertCastle_model22_Gfx[];
-extern ModelCollision DesertCastle_unkCol22_collision;
-extern Gfx DesertCastle_model23_Gfx[];
-extern ModelCollision DesertCastle_unkCol23_collision;
-extern Gfx DesertCastle_model24_Gfx[];
-extern ModelCollision DesertCastle_unkCol24_collision;
-extern Gfx DesertCastle_model25_Gfx[];
-extern ModelCollision DesertCastle_unkCol25_collision;
-extern Gfx DesertCastle_model26_Gfx[];
-extern ModelCollision DesertCastle_unkCol26_collision;
-extern Gfx DesertCastle_model27_Gfx[];
-extern ModelCollision DesertCastle_unkCol27_collision;
-extern Gfx DesertCastle_model28_Gfx[];
-extern ModelCollision DesertCastle_unkCol28_collision;
-extern Gfx DesertCastle_model29_Gfx[];
-extern ModelCollision DesertCastle_unkCol29_collision;
-extern Gfx DesertCastle_model30_Gfx[];
-extern ModelCollision DesertCastle_unkCol30_collision;
-extern Gfx DesertCastle_model31_Gfx[];
-extern ModelCollision DesertCastle_unkCol31_collision;
-extern Gfx DesertCastle_model32_Gfx[];
-extern ModelCollision DesertCastle_unkCol32_collision;
-extern Gfx DesertCastle_model33_Gfx[];
-extern ModelCollision DesertCastle_unkCol33_collision;
-extern Gfx DesertCastle_model34_Gfx[];
-extern ModelCollision DesertCastle_unkCol34_collision;
-extern Gfx DesertCastle_model35_Gfx[];
-extern ModelCollision DesertCastle_unkCol35_collision;
-extern Gfx DesertCastle_model36_Gfx[];
-extern ModelCollision DesertCastle_unkCol36_collision;
-extern Gfx DesertCastle_model37_Gfx[];
-extern ModelCollision DesertCastle_unkCol37_collision;
-extern Gfx DesertCastle_model38_Gfx[];
-extern ModelCollision DesertCastle_unkCol38_collision;
-extern Gfx DesertCastle_model39_Gfx[];
-extern ModelCollision DesertCastle_unkCol39_collision;
-extern Gfx DesertCastle_model40_Gfx[];
-extern ModelCollision DesertCastle_unkCol40_collision;
-extern Gfx DesertCastle_model41_Gfx[];
-extern ModelCollision DesertCastle_unkCol41_collision;
-extern Gfx DesertCastle_model42_Gfx[];
-extern ModelCollision DesertCastle_unkCol42_collision;
-extern Gfx DesertCastle_model43_Gfx[];
-extern ModelCollision DesertCastle_unkCol43_collision;
-extern Gfx DesertCastle_model44_Gfx[];
-extern ModelCollision DesertCastle_unkCol44_collision;
-extern Gfx DesertCastle_model45_Gfx[];
-extern ModelCollision DesertCastle_unkCol45_collision;
-extern Gfx DesertCastle_model46_Gfx[];
-extern ModelCollision DesertCastle_unkCol46_collision;
-extern Gfx DesertCastle_model47_Gfx[];
-extern ModelCollision DesertCastle_unkCol47_collision;
-extern Gfx DesertCastle_model48_Gfx[];
-extern ModelCollision DesertCastle_unkCol48_collision;
-extern Gfx DesertCastle_model49_Gfx[];
-extern ModelCollision DesertCastle_unkCol49_collision;
-extern Gfx DesertCastle_model50_Gfx[];
-extern ModelCollision DesertCastle_unkCol50_collision;
-extern Gfx DesertCastle_model51_Gfx[];
-extern ModelCollision DesertCastle_unkCol51_collision;
-extern Gfx DesertCastle_model52_Gfx[];
-extern ModelCollision DesertCastle_unkCol52_collision;
-extern Gfx DesertCastle_model53_Gfx[];
-extern ModelCollision DesertCastle_unkCol53_collision;
-extern Gfx DesertCastle_model54_Gfx[];
-extern ModelCollision DesertCastle_unkCol54_collision;
-extern Gfx DesertCastle_model55_Gfx[];
-extern ModelCollision DesertCastle_unkCol55_collision;
-extern Gfx DesertCastle_model56_Gfx[];
-extern ModelCollision DesertCastle_unkCol56_collision;
-extern Gfx DesertCastle_model57_Gfx[];
-extern ModelCollision DesertCastle_unkCol57_collision;
-extern Gfx DesertCastle_model58_Gfx[];
-extern ModelCollision DesertCastle_unkCol58_collision;
-extern Gfx DesertCastle_model59_Gfx[];
-extern ModelCollision DesertCastle_unkCol59_collision;
-extern Gfx DesertCastle_model60_Gfx[];
-extern ModelCollision DesertCastle_unkCol60_collision;
-extern Gfx DesertCastle_model61_Gfx[];
-extern ModelCollision DesertCastle_unkCol61_collision;
-extern Gfx DesertCastle_model62_Gfx[];
-extern ModelCollision DesertCastle_unkCol62_collision;
-extern Gfx DesertCastle_model63_Gfx[];
-extern ModelCollision DesertCastle_unkCol63_collision;
-extern Gfx DesertCastle_model64_Gfx[];
-extern ModelCollision DesertCastle_unkCol64_collision;
-extern Gfx DesertCastle_model65_Gfx[];
-extern ModelCollision DesertCastle_unkCol65_collision;
-extern Gfx DesertCastle_model66_Gfx[];
-extern ModelCollision DesertCastle_unkCol66_collision;
-extern Gfx DesertCastle_model67_Gfx[];
-extern ModelCollision DesertCastle_unkCol67_collision;
-extern Gfx DesertCastle_model68_Gfx[];
-extern ModelCollision DesertCastle_unkCol68_collision;
-extern Gfx DesertCastle_model69_Gfx[];
-extern ModelCollision DesertCastle_unkCol69_collision;
-extern Gfx DesertCastle_model70_Gfx[];
-extern ModelCollision DesertCastle_unkCol70_collision;
-extern Gfx DesertCastle_model71_Gfx[];
-extern ModelCollision DesertCastle_unkCol71_collision;
-extern Gfx DesertCastle_model72_Gfx[];
-extern ModelCollision DesertCastle_unkCol72_collision;
-extern Gfx DesertCastle_model73_Gfx[];
-extern ModelCollision DesertCastle_unkCol73_collision;
-extern Gfx DesertCastle_model74_Gfx[];
-extern ModelCollision DesertCastle_unkCol74_collision;
-extern Gfx DesertCastle_model75_Gfx[];
-extern ModelCollision DesertCastle_unkCol75_collision;
-extern Gfx DesertCastle_model76_Gfx[];
-extern ModelCollision DesertCastle_unkCol76_collision;
-extern Gfx DesertCastle_model77_Gfx[];
-extern ModelCollision DesertCastle_unkCol77_collision;
-extern Gfx DesertCastle_model78_Gfx[];
-extern ModelCollision DesertCastle_unkCol78_collision;
-extern Gfx DesertCastle_model79_Gfx[];
-extern ModelCollision DesertCastle_unkCol79_collision;
-extern Gfx DesertCastle_model80_Gfx[];
-extern ModelCollision DesertCastle_unkCol80_collision;
-extern Gfx DesertCastle_model81_Gfx[];
-extern ModelCollision DesertCastle_unkCol81_collision;
-extern Gfx DesertCastle_model82_Gfx[];
-extern ModelCollision DesertCastle_unkCol82_collision;
-extern Gfx DesertCastle_model83_Gfx[];
-extern ModelCollision DesertCastle_unkCol83_collision;
-extern Gfx DesertCastle_model84_Gfx[];
-extern ModelCollision DesertCastle_unkCol84_collision;
-extern Gfx DesertCastle_model85_Gfx[];
-extern ModelCollision DesertCastle_unkCol85_collision;
-extern Gfx DesertCastle_model86_Gfx[];
-extern ModelCollision DesertCastle_unkCol86_collision;
-extern Gfx DesertCastle_model87_Gfx[];
-extern ModelCollision DesertCastle_unkCol87_collision;
-extern Gfx DesertCastle_model88_Gfx[];
-extern ModelCollision DesertCastle_unkCol88_collision;
-extern Gfx DesertCastle_model89_Gfx[];
-extern ModelCollision DesertCastle_unkCol89_collision;
-extern Gfx DesertCastle_model90_Gfx[];
-extern ModelCollision DesertCastle_unkCol90_collision;
-extern Gfx Global_pole_Gfx[];
-extern ModelCollision Global_pole_collision;
+enum DesertCastle_Models {
+    G_FALLBACK_CUBE_MODEL = 0,
+    G_EXIT_SHADOW_SOUTH_MODEL,
+    G_EXIT_SHADOW_NORTH_MODEL,
+    G_EXIT_SHADOW_EAST_MODEL,
+    G_EXIT_SHADOW_WEST_MODEL,
+    G_ALBL_EXIT_MODEL,
+    G_SANDPIT_MODEL,
+    G_BOSS_BRIDGE_MODEL,
+    G_AL_POLE_MODEL,
+    G_ALBL_DOOR_MODEL,
+    G_AL_SPIN_DOOR_MODEL,
+    G_BL_LAVA_FLOOR_MODEL,
+    G_BL_LAVA_MODEL,
+    G_BL_LAVA2_MODEL,
+    G_BL_LAVA3_MODEL,
+    G_BL_LAVA4_MODEL,
+    G_BL_LAVA5_MODEL,
+    G_BL_LAVA6_MODEL,
+    G_BL_LAVA7_MODEL,
+    G_BL_LAVA8_MODEL,
+    G_BL_DESTRUCTABLE_TOP_MODEL,
+    G_BL_METAL_BRIDGE_MODEL,
+    G_KL_EXIT_MODEL,
+    G_KL_DOOR_MODEL,
+    G_DC_EXIT_MODEL,
+    G_TALL_EXIT_SHADOW1_MODEL,
+    G_TALL_EXIT_SHADOW2_MODEL,
+    G_GC_EXIT1_MODEL,
+    G_GC_EXIT2_MODEL,
+    G_TRAINING_ROOM_LIGHT_MODEL,
+    G_JL_CAVE_EXIT1_MODEL,
+    G_JL_CAVE_EXIT2_MODEL,
+    G_JL_CAVE_EXIT3_MODEL,
+    G_JL_CAVE_EXIT4_MODEL,
+    G_JL_OUTSIDE_ENTRANCE_MODEL,
+    G_JL_FX_CAM_PILLAR_MODEL,
+    G_JL_CAVE_DOOR_MODEL,
+    DC_POLE_MODEL = 127
+};
 
 Mtx DesertCastle_IMtx1 = IDENTITY;
 
 StageModel DesertCastle_stageModels[] = {
-{Global_fallbackCube_Gfx, &Global_fallbackCube_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{Global_exitShadowSouth_Gfx, &Global_exitShadowSouth_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{Global_exitShadowNorth_Gfx, &Global_exitShadowNorth_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{Global_exitShadowEast_Gfx, &Global_exitShadowEast_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{Global_exitShadowWest_Gfx, &Global_exitShadowWest_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{Global_ALBLExit_Gfx, &Global_ALBLExit_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{Global_sandPit_Gfx, &Global_sandPit_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{Global_BossBridge_Gfx, &Global_BossBridge_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{Global_ALPole_Gfx, &Global_ALPole_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{Global_ALBLDoor_Gfx, &Global_ALBLDoor_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{Global_ALSpinDoor_Gfx, &Global_ALSpinDoor_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{Global_BLLavaFloor_Gfx, &Global_BLLavaFloor_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{Global_BLLava_Gfx, &Global_BLLava_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{Global_BLLava2_Gfx, &Global_BLLava2_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{Global_BLLava3_Gfx, &Global_BLLava3_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{Global_BLLava4_Gfx, &Global_BLLava4_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{Global_BLLava5_Gfx, &Global_BLLava5_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{Global_BLLava6_Gfx, &Global_BLLava6_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{Global_BLLava7_Gfx, &Global_BLLava7_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{Global_BLLava8_Gfx, &Global_BLLava8_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{Global_BLDestructableTop_Gfx, &Global_BLDestructableTop_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{Global_BLMetalBridge_Gfx, &Global_BLMetalBridge_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{Global_KLExit_Gfx, &Global_KLExit_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{Global_KLDoor_Gfx, &Global_KLDoor_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{Global_DCExit_Gfx, &Global_DCExit_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{Global_TallExitShadow1_Gfx, &Global_TallExitShadow1_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{Global_TallExitShadow2_Gfx, &Global_TallExitShadow2_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{Global_GCExit1_Gfx, &Global_GCExit1_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{Global_GCExit2_Gfx, &Global_GCExit2_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{Global_trainingRoomLight_Gfx, &Global_trainingRoomLight_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{Global_JLCaveExit1_Gfx, &Global_JLCaveExit1_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{Global_JLCaveExit2_Gfx, &Global_JLCaveExit2_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{Global_JLCaveExit3_Gfx, &Global_JLCaveExit3_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{Global_JLCaveExit4_Gfx, &Global_JLCaveExit4_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{Global_JLOutsideEntrance_Gfx, &Global_JLOutsideEntrance_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{Global_JLFxCamPillar_Gfx, &Global_JLFxCamPillar_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{Global_JLCaveDoor_Gfx, &Global_JLCaveDoor_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+#include "global_models.inc.c"
 {DesertCastle_model1_Gfx, &DesertCastle_unkCol1_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
 {DesertCastle_model2_Gfx, &DesertCastle_unkCol2_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
 {DesertCastle_model3_Gfx, &DesertCastle_unkCol3_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },

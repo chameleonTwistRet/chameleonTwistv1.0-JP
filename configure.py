@@ -16,6 +16,7 @@ import splat.scripts.split as split
 from splat.segtypes.linker_entry import LinkerEntry
 
 needsRecalculation = False
+modSrcRemap: Dict[str, str] = {}  # vanilla src/levelGroup/<Land>.c -> build/mod/levelGroup/<Land>.c
 
 ROOT = Path(__file__).parent.resolve()
 TOOLS_DIR = "tools"
@@ -91,7 +92,7 @@ def write_permuter_settings():
             """
             )
 
-def build_stuff(linker_entries: List[LinkerEntry]):
+def build_stuff(linker_entries: List[LinkerEntry], extra_asset_cs: List[Path] = []):
     built_objects: Set[Path] = set()
 
     def build(
@@ -104,6 +105,9 @@ def build_stuff(linker_entries: List[LinkerEntry]):
     ):
         if not isinstance(object_paths, list):
             object_paths = [object_paths]
+
+        if modSrcRemap:
+            src_paths = [Path(modSrcRemap.get(str(p), str(p))) for p in src_paths]
 
         object_strs = [str(obj) for obj in object_paths]
 
@@ -379,7 +383,7 @@ def build_stuff(linker_entries: List[LinkerEntry]):
     #invalidate this by letting the linker entries do the work
     #cant rn bc of yaml stuff but when we can get that to work
 
-    c_files = [file for file in glob.glob(f"src/**/*.c", recursive=True) if not file in overrideC]
+    c_files = [file for file in glob.glob(f"src/**/*.c", recursive=True) if not file in overrideC and not file.endswith(".inc.c")]
 
     o_files = []
     for c_file in c_files:
@@ -398,6 +402,15 @@ def build_stuff(linker_entries: List[LinkerEntry]):
 
     for obj in built_objects:
         o_files.append(str(obj))
+
+    # Compile mod asset C files (collision meshes, Gfx display lists, etc.)
+    # discovered in manifests/ by the mod block in __main__.
+    for asset_c in extra_asset_cs:
+        rel = asset_c.relative_to(ROOT)
+        o_file = Path("build") / (str(rel) + ".o")
+        o_file.parent.mkdir(parents=True, exist_ok=True)
+        build(o_file, [asset_c], "O2_cc")
+        o_files.append(str(o_file))
     #########################
 
     build(Path(PRE_ELF_PATH), [Path(LD_PATH)], "ld", o_files)
@@ -449,12 +462,19 @@ if __name__ == "__main__":
         action="store_true",
     )
 
+    parser.add_argument(
+        "-m",
+        "--mod",
+        help="Build a modded ROM: defines CT_MOD, runs LevelEditor codegen, skips SHA1",
+        action="store_true",
+    )
+
     args = parser.parse_args()
 
     if args.clean:
         clean()
 
-    needsRecalculation = args.nonmatching or args.shift or args.chckrecalc
+    needsRecalculation = args.nonmatching or args.shift or args.chckrecalc or args.mod
 
     if needsRecalculation:
         print('checksum will be recalculated when building!')
@@ -462,7 +482,7 @@ if __name__ == "__main__":
 
     if args.shift:
         print('a shiftable rom will be built!')
-        to = DEFINES + " -DSHIFT -DCRASH_SCREEN"
+        to = DEFINES + " -DSHIFT"
         CFLAGS = CFLAGS.replace(DEFINES, to)
         GAME_COMPILE_CMD = GAME_COMPILE_CMD.replace(DEFINES, to)
         DEFINES = to
@@ -474,6 +494,46 @@ if __name__ == "__main__":
         GAME_COMPILE_CMD = GAME_COMPILE_CMD.replace(DEFINES, to)
         DEFINES = to
 
+    mod_asset_cs: List[Path] = []
+
+    if args.mod:
+        # Modding build: define CT_MOD, run LevelEditor codegen for every manifest,
+        # remap modded land src paths to the gated copies under build/mod/levelGroup/.
+        # Intentionally does NOT define NON_MATCHING : that's a decomp-correctness
+        # toggle, separate from modding.
+        print('a modded rom will be built! (CT_MOD defined, SHA1 check skipped)')
+        to = DEFINES + " -DCT_MOD"
+        CFLAGS = CFLAGS.replace(DEFINES, to)
+        GAME_COMPILE_CMD = GAME_COMPILE_CMD.replace(DEFINES, to)
+        DEFINES = to
+
+        manifest_root = ROOT / "tools" / "LevelEditor" / "manifests"
+        build_root = ROOT / "build"
+        for manifest_path in sorted(manifest_root.glob("*/[A-Z]*_mod.json")):
+            print(f"  preparing mod: {manifest_path.relative_to(ROOT)}")
+            rc = subprocess.run(
+                ["python3", str(ROOT / "tools" / "LevelEditor" / "codegen.py"),
+                 str(manifest_path), "--prepare-mod", str(build_root)],
+                cwd=ROOT,
+            ).returncode
+            if rc != 0:
+                print(f"  codegen failed for {manifest_path}")
+                sys.exit(1)
+            # Works in all Python 3 versions
+            land = manifest_path.stem[:-4] if manifest_path.stem.endswith("_mod") else manifest_path.stem
+            vanilla_src = f"src/levelGroup/{land}.c"
+            gated_src = f"build/mod/levelGroup/{land}.c"
+            modSrcRemap[vanilla_src] = gated_src
+
+            # Collect custom model asset C files from the manifest directory.
+            # Convention: each new model lives in manifests/<Land>/<sym>/
+            #   <sym>.collision.c  : exported by the CT level editor (collision mesh)
+            #   <sym>_Gfx.c       : exported by fast64 (visual mesh display list)
+            # Compilation happens inside build_stuff where the build() helper exists.
+            for asset_c in sorted(manifest_path.parent.rglob("*.c")):
+                print(f"    + mod asset: {asset_c.relative_to(ROOT)}")
+                mod_asset_cs.append(asset_c)
+
     yaml_to_use = YAML_FILE
     if not args.full:
         yaml_to_use = YAML_FILE_SMALL
@@ -484,6 +544,6 @@ if __name__ == "__main__":
 
     linker_entries = split.linker_writer.entries
 
-    build_stuff(linker_entries)
+    build_stuff(linker_entries, mod_asset_cs)
 
     write_permuter_settings()
