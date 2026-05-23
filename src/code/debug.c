@@ -277,9 +277,6 @@ char D_800F09A8[][100] = {
     "ITEM_MAXVITAL",
     "ITEM_COLLECT",
 };
-s32 sDebugTestView = 0;
-u32 sDebugCodeSeqStep = 0;
-s32 D_800F0B40[] = {0, 0, 0, 0};
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/debug/func_8004F61C.s")
 
@@ -311,9 +308,9 @@ void Debug_ZeroInt(void) {
 }
 
 void Debug_TestView(void) {
-    s32 *temp = &sDebugTestView;
+    static s32 sDebugTestView = 0;
     if (func_80055E5C(R_TRIG) != 0) {
-        *temp ^= 1;
+        sDebugTestView ^= 1;
     }
     if (sDebugTestView != 0) {
         setPrimColor(0, 0, 0, 255);
@@ -325,5 +322,8 @@ void Debug_TestView(void) {
         PrintTextWrapper(64.0f, 32.0f, 0.0f, 1.0f, "ＴＥＳＴＶＩＥＷ", 1);
     }
 }
+
+s32 sDebugCodeSeqStep = 0;
+s32 D_800F0B40 = 0;
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/debug/debugMain.s")

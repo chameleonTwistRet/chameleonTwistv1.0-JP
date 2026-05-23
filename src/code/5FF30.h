@@ -527,7 +527,7 @@ s32 SaveData_VerifyFile(SaveFile*, SaveFile*);
 s32 SaveData_Compare(u8 *arg0, u8 *arg1);
 void SaveData_LoadFile(s32 arg0, SaveFile* arg1);
 void SaveData_LoadAllFiles(u8* arg0);
-void SaveData_LoadRecords(u8* arg0);
+void SaveData_LoadRecords(SaveRecord* arg0);
 void SaveData_SaveFile(s32 saveIndex, SaveFile* saveFile);
 s32 SaveData_UpdateFile(s32 saveIndex, SaveFile* saveFile);
 void SaveData_SaveRecords(void);

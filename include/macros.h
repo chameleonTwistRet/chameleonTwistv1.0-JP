@@ -40,6 +40,8 @@
 #define PACK_FILL_COLOR(r, g, b, a) (GPACK_RGBA5551(r, g, b, a) << 0x10) | GPACK_RGBA5551(r, g, b, a)
 #define PACK_FILL_DEPTH(z,dz) (GPACK_ZDZ(z, dz) << 0x10) | GPACK_ZDZ(z, dz)
 
+#define sizeof_signed(x) (s32)sizeof(x)
+
 //goes top left, bottom left, top right, bottom right
 //when the top half and bottom half are copied
 #define SetTextGradient_TopBottom(r1,g1,b1,a1,r2,g2,b2,a2) SetTextGradient(r1, g1, b1, a1, r2, g2, b2, a2, r1, g1, b1, a1, r2, g2, b2, a2)

@@ -614,11 +614,6 @@ typedef struct unk802000C84 {
 /* 0x05 */ s8 unk5;
 } unk802000C84; //sizeof 0x06 (unk size)
 
-//struct for saveGame data?
-typedef struct unkStruct09 {
-/* 0x00 */ char unk_00[0x84];
-} unkStruct09; //sizeof 0x84
-
 typedef struct unkStruct14 {
 /* 0x00 */ char unk_00[0x38];
 /* 0x38 */ s32 unk_38;

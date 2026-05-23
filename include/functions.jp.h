@@ -310,7 +310,7 @@ void func_8002D080(void);
 s32 SaveData_RecordChecksum(void);
 void Porocess_Mode0(void);
 void SaveData_ClearRecords(void);
-void SaveData_LoadRecords(u8*);
+void SaveData_LoadRecords(SaveRecord* arg0);
 void Process_StageSelect(void);
 void FileWork(void);
 void func_8009C904(void);

@@ -4,6 +4,24 @@
 #include "sprite.h"
 #include "ld_addrs.h"
 
+typedef struct SaveFileData {
+    char unk_00[0x60];
+} SaveFileData;
+
+typedef struct SaveFileEep {
+/* 0x00 */ SaveFileData fileData[4];
+/* 0x180 */ SaveRecord savedRecords;
+} SaveFileEep;
+
+#define sizeof_member(type, member) sizeof(((type*)0)->member)
+#define member_offsetof(type, member) ((int)&((type*)0)->member)
+
+//for accessing the eep block offset of files in the eep file (starts 0x0, each is 0x60 in length. Starting at offset(raw offset, not eepblock offset) 0x180 of eep file is SaveRecord)
+#define SAVE_FILE_BLOCK_OFFSET(fileIdx) ((fileIdx * sizeof_signed(SaveFileData)) / EEPROM_BLOCK_SIZE)
+
+//for accessing specific struct members within the eep file by block offset
+#define EEP_FILE_STRUCT_BLOCK_OFFSET(struct, member) sizeof_member(struct, member) / EEPROM_BLOCK_SIZE
+
 u8 D_800FEDC0[226][8] = {
 {104, 136, 1, 4, 1, 5, 25, 0},
 {104, 136, 1, 4, 1, 5, 25, 0},
@@ -4194,7 +4212,7 @@ void MainLoop(void) {
     }
     gGameModeState = 0;
     osRecvMesg(&gSyncMessageQueue, NULL, OS_MESG_BLOCK);
-    SaveData_LoadRecords(gGameRecords.flags);
+    SaveData_LoadRecords(&gGameRecords);
     if (SaveData_RecordChecksum() != gGameRecords.flags[0]) {
         SaveData_ClearRecords();
     }
@@ -8002,7 +8020,7 @@ s32 SaveData_Compare(u8 *arg0, u8 *arg1) {
     return var_s7;
 }
 
-void SaveData_LoadFile(s32 arg0, SaveFile* arg1) {
+void SaveData_LoadFile(s32 fileIdx, SaveFile* arg1) {
     osRecvMesg(&gEepromMsgQ, NULL, OS_MESG_NOBLOCK);
     if (osEepromProbe(&gEepromMsgQ) != 1) {
         DummiedPrintf("ＥＥＰロムエラー \n");
@@ -8010,8 +8028,9 @@ void SaveData_LoadFile(s32 arg0, SaveFile* arg1) {
 
     DummiedPrintf("ロード開始\n");
 
-    if (osEepromLongRead(&gEepromMsgQ, ((arg0 * 0x60) / 8) & 0xFF, (u8*)arg1, 0x60) != 0) {
-        DummiedPrintf("ＥＥＰロム読み込みエラー %d ブロック目から %d バイトを読めません\n", arg0, 0x60);
+    //assumes that the save files start at 0x0 in the eep file (0x180 is where SaveRecord starts)
+    if (osEepromLongRead(&gEepromMsgQ, SAVE_FILE_BLOCK_OFFSET(fileIdx), (u8*)arg1, sizeof(SaveFileData)) != 0) {
+        DummiedPrintf("ＥＥＰロム読み込みエラー %d ブロック目から %d バイトを読めません\n", fileIdx, sizeof(SaveFileData));
     }
 
     SaveData_Wait();
@@ -8025,14 +8044,14 @@ void SaveData_LoadAllFiles(u8* arg0) {
 
     DummiedPrintf("ロード開始\n");
 
-    if (osEepromLongRead(&gEepromMsgQ, 0, arg0, 0x180) != 0) {
-        DummiedPrintf("ＥＥＰロム読み込みエラー %d ブロック目から %d バイトを読めません\n", 0, 0x180);
+    if (osEepromLongRead(&gEepromMsgQ, 0, arg0, sizeof_member(SaveFileEep, fileData)) != 0) {
+        DummiedPrintf("ＥＥＰロム読み込みエラー %d ブロック目から %d バイトを読めません\n", 0, sizeof_member(SaveFileEep, fileData));
     }
 
     SaveData_Wait();
 }
 
-void SaveData_LoadRecords(u8* arg0) {
+void SaveData_LoadRecords(SaveRecord* arg0) {
     osRecvMesg(&gEepromMsgQ, NULL, OS_MESG_NOBLOCK);
     if (osEepromProbe(&gEepromMsgQ) != 1) {
         DummiedPrintf("ＥＥＰロムエラー \n");
@@ -8040,7 +8059,7 @@ void SaveData_LoadRecords(u8* arg0) {
     //"メインロード開始" ("main road start"?)
     DummiedPrintf("メインロード開始\n");
 
-    if (osEepromLongRead(&gEepromMsgQ, 0x30, arg0, sizeof(SaveRecord)) != 0) {
+    if (osEepromLongRead(&gEepromMsgQ, EEP_FILE_STRUCT_BLOCK_OFFSET(SaveFileEep, fileData), (u8*)arg0, sizeof(SaveRecord)) != 0) {
         //"ＥＥＰロム読み込みエラー 共通部分(Main)から %d バイトを読めません"
         //("EEP ROM read error Cannot read %d bytes from common part (Main)")
         DummiedPrintf("ＥＥＰロム読み込みエラー 共通部分(Main)から %d バイトを読めません\n", sizeof(SaveRecord));
@@ -8055,9 +8074,9 @@ void SaveData_LoadRecords(u8* arg0) {
  * @param saveIndex: File number minus one
  * @param saveFile: SaveFile to be saved
  */
-void SaveData_SaveFile(s32 saveIndex, SaveFile* saveFile) {
+void SaveData_SaveFile(s32 fileIdx, SaveFile* saveFile) {
     //"%d 番目のファイルにセーブ  %dバイト目\n"("saving to %d-th file, %d bytes"?)
-    DummiedPrintf("%d 番目のファイルにセーブ  %dバイト目\n", saveIndex, (s32) (saveIndex * 0x60) / 8);
+    DummiedPrintf("%d 番目のファイルにセーブ  %dバイト目\n", fileIdx, SAVE_FILE_BLOCK_OFFSET(fileIdx));
     osRecvMesg(&gEepromMsgQ, NULL, OS_MESG_NOBLOCK);
 
     if (osEepromProbe(&gEepromMsgQ) != 1) {
@@ -8067,7 +8086,7 @@ void SaveData_SaveFile(s32 saveIndex, SaveFile* saveFile) {
     //"セーブ開始\n" ("start save")
     DummiedPrintf("セーブ開始\n");
 
-    if (osEepromLongWrite(&gEepromMsgQ, (saveIndex * 0x60) / 8, (u8*)saveFile, 0x60) != 0) {
+    if (osEepromLongWrite(&gEepromMsgQ, SAVE_FILE_BLOCK_OFFSET(fileIdx), (u8*)saveFile, sizeof(SaveFileData)) != 0) {
         //"ＥＥＰロム書き込みエラー \n"("EEProm write error")
         DummiedPrintf("ＥＥＰロム書き込みエラー \n");
     }
@@ -8114,7 +8133,7 @@ void SaveData_SaveRecords(void) {
 
     DummiedPrintf("セーブ開始\n");
 
-    if (osEepromLongWrite(&gEepromMsgQ, 0x30, &gGameRecords.flags[0], 0x80) != 0) {
+    if (osEepromLongWrite(&gEepromMsgQ, member_offsetof(SaveFileEep, savedRecords) / EEPROM_BLOCK_SIZE, &gGameRecords.flags[0], sizeof(SaveRecord)) != 0) {
         //"ＥＥＰロム書き込みエラー \n"("EEPRom write error")
         DummiedPrintf("ＥＥＰロム書き込みエラー \n");
     }
@@ -8129,12 +8148,13 @@ void SaveData_SaveRecords(void) {
  * @return (s32) 0 for success, 1 for error
  */
 s32 SaveData_UpdateRecords(void) {
+    char pad[4];
     s32 i;
-    unkStruct09 sp28;
-
+    SaveRecord sp28;
     for (i = 0; i < 3; i++) {
+        
         SaveData_SaveRecords();
-        SaveData_LoadRecords((u8*)&sp28);
+        SaveData_LoadRecords(&sp28);
         if (SaveData_Compare((u8*)&gGameRecords, (u8*)&sp28) == 0) {
             return 0;
         }
