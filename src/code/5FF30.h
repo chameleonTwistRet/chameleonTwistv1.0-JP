@@ -519,7 +519,7 @@ s32 func_800A7C58(u32 time);
 
 s32 RecordTime_GetMinsSecs(TimeVal* record, s32* mins, s32* secs);
 s32 RecordTime_ParseToSecs(TimeVal* arg0);
-void RecordTime_SetTo(s32 arg0, TimeVal* arg1);
+void RecordTime_SetTo(s32 arg0, u8* arg1);
 
 s32 SaveData_FileChecksum(u8 *saveData);
 void SaveData_Wait(void);
@@ -628,7 +628,6 @@ extern Unk_800FFDDC* D_800FFDDC[];
 extern s32 D_800FFDEC;
 extern f32* D_800FF610; //this probably isnt right but until we care roll with it
 extern s16 D_801FC9A4;
-extern s8 D_80200C08;
 extern s16 D_80100D8C[];
 extern s16 D_800FFEBC;
 extern s32 D_802023E0;

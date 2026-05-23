@@ -303,7 +303,7 @@ extern s32 D_80176960[];
 extern s32 D_80176980[];
 extern s32 gUnkRumbleArray[];
 void osMotorStop(OSPfs *pfs);
-void RecordTime_SetTo(s32 arg0, TimeVal* arg1);
+void RecordTime_SetTo(s32 arg0, u8* arg1);
 void func_800BE2C0(void);
 extern s32 D_80176960[];
 extern s32 gRumbleTime[];

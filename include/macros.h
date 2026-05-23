@@ -41,6 +41,8 @@
 #define PACK_FILL_DEPTH(z,dz) (GPACK_ZDZ(z, dz) << 0x10) | GPACK_ZDZ(z, dz)
 
 #define sizeof_signed(x) (s32)sizeof(x)
+#define sizeof_member(type, member) sizeof(((type*)0)->member)
+#define member_offsetof(type, member) ((int)&((type*)0)->member)
 
 //goes top left, bottom left, top right, bottom right
 //when the top half and bottom half are copied

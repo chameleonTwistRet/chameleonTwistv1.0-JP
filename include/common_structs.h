@@ -630,14 +630,18 @@ typedef struct unkStruct15 {
 /* 0x18 */ f32 unk_18;
 } unkStruct15; //sizeof 0x18
 
-typedef struct SaveRecord {
-/* 0x00 */ u8 flags[4]; //{checksum,flags,blank,blank}
-/* 0x04 */ s32 perfectCode;
+typedef struct SavedStageData {
 /* 0x08 */ u8 stageTimes[7][5][3]; //[stageIndex][timeRank][]
 /* 0x71 */ s8 index; //index of most recent save file
 /* 0x72 */ s8 unk_72[2];
 /* 0x74 */ u16 bowlingScore;
-/* 0x76 */ s8 pad[10];
+/* 0x76 */ s8 pad[10];    
+} SavedStageData;
+
+typedef struct SaveRecord {
+/* 0x00 */ u8 flags[4]; //{checksum,flags,blank,blank}
+/* 0x04 */ s32 perfectCode;
+/* 0x08 */ SavedStageData savedStageData;
 } SaveRecord; //sizeof 0x80
 
 typedef struct loadedSegInfo {
@@ -879,6 +883,12 @@ typedef struct SaveFile {
 /* 0x5D */ u8 carrotBitfield;
 /* 0x5E */ u8 UNK_5E[2]; //first also copies CARROT progress.
 } SaveFile; //sizeof 0x60
+
+typedef struct Unk80200C08 {
+/* 0x00 */ char unk_00[0x69];
+/* 0x69 */ s8 unk_69;
+/* 0x6A */ char unk_6A[0xE];
+} Unk80200C08; //sizeof 0x78
 
 //5FF30
 //linked list probably, heap related?

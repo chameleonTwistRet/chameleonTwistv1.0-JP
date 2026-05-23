@@ -13,9 +13,6 @@ typedef struct SaveFileEep {
 /* 0x180 */ SaveRecord savedRecords;
 } SaveFileEep;
 
-#define sizeof_member(type, member) sizeof(((type*)0)->member)
-#define member_offsetof(type, member) ((int)&((type*)0)->member)
-
 //for accessing the eep block offset of files in the eep file (starts 0x0, each is 0x60 in length. Starting at offset(raw offset, not eepblock offset) 0x180 of eep file is SaveRecord)
 #define SAVE_FILE_BLOCK_OFFSET(fileIdx) ((fileIdx * sizeof_signed(SaveFileData)) / EEPROM_BLOCK_SIZE)
 
@@ -5902,7 +5899,7 @@ void func_8009ACC8(CTTask* task) {
     }
     else {
         task->function = func_8009ADDC;
-        *(&D_80200C08 + 0x69) = task->unk6A;
+        gGameRecords.savedStageData.index = task->unk6A;
         D_801FC9A4 = 0;
     }
 }
@@ -6032,7 +6029,7 @@ void func_8009BA38(CTTask* task) {
 
 void func_8009BAF4(CTTask* task) {
     SaveData_LoadFile(task->unk6A, &gGameState);
-    (&D_80200C08)[105] = task->unk6A;
+    gGameRecords.savedStageData.index = task->unk6A;
     D_800FF8EC = task->unk6A;
     task->unk_68 = 8;
     task->function = func_8009BB54;
@@ -7098,7 +7095,7 @@ void PrintPerfectCode(CTTask* task) {
     SetTextGradient_TopBottom(255, 144, 242, 255, 255, 56, 100, 255);
     PrintText(144.0f, 24.0f, 0.0f, 0.7f, 0.0f, 0.0f, "ＰＥＲＦＥＣＴ  ＣＯＤＥ", 1);
     SetTextGradient_TopBottom(144, 242, 255, 255, 56, 100, 255, 255);
-    PrintText(160.0f, 40.0f, 0.0f, 0.7f, 0.0f, 0.0f, parseIntToHex(perfectCode, 8, sp50), 1);
+    PrintText(160.0f, 40.0f, 0.0f, 0.7f, 0.0f, 0.0f, parseIntToHex(gGameRecords.perfectCode, 8, sp50), 1);
 }
 
 CTTask* func_800A20CC(void) {
@@ -7942,17 +7939,18 @@ s32 RecordTime_ParseToSecs(TimeVal* arg0) {
 }
 
 //sets record time arg1 to time arg0
-void RecordTime_SetTo(s32 arg0, TimeVal* arg1) {
-    u8 temp = arg1->b0 & 0xF0;
+void RecordTime_SetTo(s32 arg0, u8* arg1) {
+    u8 temp = arg1[0] & 0xF0;
 
-    arg1->b2 = arg0 & 0xFF;
-    arg1->b1 = (arg0 & 0xFF00) >> 8;
-    arg1->b0 = (arg0 & 0xFF0000) >> 16;
+    arg1[2] = arg0 & 0xFF;
+    arg1[1] = (arg0 & 0xFF00) >> 8;
+    arg1[0] = (arg0 & 0xFF0000) >> 16;
 
-    arg1->b0 |= temp; // keep higher 4 bits
+    arg1[0] |= temp; // keep higher 4 bits
 }
 
 //file split? following functions deal with save data.
+//the rodata doesn't seem to allow for a file split however...
 //TODO: fake match
 
 /**
@@ -8180,7 +8178,26 @@ void func_800A87D4(s32 arg0) {
     SaveData_UpdateFile(arg0, &sp18);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/SaveData_ResetRecords.s")
+void SaveData_ResetRecords(void) {
+    s32 i;
+    
+    _bzero(&gGameRecords.savedStageData, sizeof(SavedStageData));
+    
+    for (i = 0; i < 6; i++) {
+        RecordTime_SetTo(0x4B0, &gGameRecords.savedStageData.stageTimes[i][0][0]);
+        gGameRecords.savedStageData.stageTimes[i][0][0] = gGameRecords.savedStageData.stageTimes[i][0][0];
+        RecordTime_SetTo(0x708, &gGameRecords.savedStageData.stageTimes[i][1][0]);
+        gGameRecords.savedStageData.stageTimes[i][1][0] |= 0x20;
+        RecordTime_SetTo(0x960, &gGameRecords.savedStageData.stageTimes[i][2][0]);
+        gGameRecords.savedStageData.stageTimes[i][2][0] |= 0x40;
+        RecordTime_SetTo(0xBB8, &gGameRecords.savedStageData.stageTimes[i][3][0]);
+        gGameRecords.savedStageData.stageTimes[i][3][0] |= 0x60;
+        RecordTime_SetTo(0x1734, &gGameRecords.savedStageData.stageTimes[i][4][0]);
+        gGameRecords.savedStageData.stageTimes[i][4][0] = gGameRecords.savedStageData.stageTimes[i][4][0];
+    }
+
+    gGameRecords.savedStageData.bowlingScore = 0;
+}
 
 /**
  * @brief Clear all records data.

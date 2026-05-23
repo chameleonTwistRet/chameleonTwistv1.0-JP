@@ -7387,7 +7387,7 @@ void Effect_TypeAL_Update(Effect* effect, Gfx** pGfxPos) {
                     s2 += RecordTime_ParseToSecs(&D_80200B85[i]);
                 }
                 Effect_TypeAS_Init(180.0f, 48.0f, 0.6f, 0.6f, 1, 8.0f, 1, 9.3312e8f, 4, (s2 / 3600) % 24, (s2 / 60) % 60, s2 % 60, 0, 1);
-                func_80071A48(perfectCode, data->unk_00);
+                func_80071A48(gGameRecords.perfectCode, data->unk_00);
                 effect->unk5 = 2;
                 effect->lifeTime = 0;
             }
