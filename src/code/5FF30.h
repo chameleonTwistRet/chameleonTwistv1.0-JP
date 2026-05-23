@@ -81,7 +81,7 @@ typedef struct unk80097CF8 {
 } unk80097CF8;
 */
 
-extern s16 D_80200B38;
+extern s16 D_80200B38; //0 when loading from save, 1 when loading from file select?
 extern s32 D_80236978;
 typedef struct UnkPlaySoundEffect {
     char unk_00[0x0E];
