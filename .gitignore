@@ -3,6 +3,7 @@ __pycache__/
 .pyc
 .DS_Store
 .splache
+.linker_cache
 
 # Project-specific ignores
 *.bin

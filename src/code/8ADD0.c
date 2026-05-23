@@ -16,11 +16,11 @@ f32 D_80201960;*/
 
 extern CardinalDirection gCardinalDirections[5];
 
-typedef struct UnkFunctionStructs {
+typedef struct FieldObjectBehaviourFuncs {
     s32 id;
     void* func1;
     void* func2;
-} UnkFunctionStructs;
+} FieldObjectBehaviourFuncs;
 
 typedef struct UnkData {
     s32 unk0;
@@ -43,45 +43,57 @@ s32 D_8010884C[] = {2, 5, 8, 0xB, 0xE, 0x11, 0x14, 0x17};
 s32 D_8010886C[] = {-1, 0x30, 0x32, 0x34, 0x36};
 s32 D_80108880[] = {-1, 0x31, 0x33, 0x35, 0x37};
 
-UnkFunctionStructs D_80108894[] = {
-{0x00000000, func_800B6054, func_800B6078},
-{0x00000001, func_800B6054, func_800B6078},
-{0x00000002, func_800B6054, func_800B6078},
-{0x00000003, func_800B6054, func_800B6078},
-{0x00000004, func_800B6054, func_800B6078},
-{0x00000005, func_800B6098, func_800B61FC},
-{0x00000006, func_800B67D8, func_800B691C},
-{0x00000007, func_800B6B14, func_800B6078},
-{0x00000008, func_800B6B4C, func_800B6C34},
-{0x00000009, func_800B6CD8, func_800B6D24},
-{0x0000000A, func_800B6D44, func_800B6DF4},
-{0x0000000B, func_800B7208, func_800B7328},
-{0x0000000C, func_800B7860, func_800B78F8},
-{0x0000000D, func_800B81B4, func_800B81FC},
-{0x0000000E, func_800B8634, func_800B87A0},
-{0x0000000F, func_800B9298, func_800B9390},
-{0x00000010, func_800B942C, func_800B9514},
-{0x00000011, func_800B9750, func_800B97F0},
-{0x00000012, func_800B9E8C, func_800B9FA8},
-{0x00000013, func_800BA2D0, func_800BA35C},
-{0x00000014, func_800BA89C, func_800BA900},
-{0x00000015, func_800BA89C, func_800BA900},
-{0x00000016, func_800BA89C, func_800BA900},
-{0x00000017, func_800BA92C, func_800BAA28},
-{0x00000018, func_800B6054, func_800B6078},
-{0x00000019, func_800BB038, func_800BB178},
-{0x0000001A, func_800BB254, func_800BB5DC},
-{0x0000001B, func_800BB988, func_800BBA80},
-{0x0000001C, func_800BBC88, func_800BBCE4},
-{0x0000001D, func_800BBF80, func_800BC284},
-{0x0000001E, func_800BCC04, func_800BCD10},
-{0x0000001F, func_800BD1EC, func_800BD2AC},
-{0x00000020, func_800BD55C, func_800BD608},
-{0x00000021, func_800B6054, func_800B6078},
-{0x00000022, func_800BD718, func_800BD938},
-{0x00000023, func_800BDF2C, func_800BE000},
-{0x00000024, func_800BE0D4, func_800BE1C4},
-{0x00000025, func_800B6054, func_800B6078},
+enum FieldObjectBehaviours {
+    FIELD_BEHAVIOUR_DEFAULT,    //static
+    FIELD_BEHAVIOUR_2POINT_MOVING = 0x5,
+    FIELD_BEHAVIOUR_ROTATING = 0x8,
+    FIELD_BEHAVIOUR_KEYFRAME_MOVING = 0xA,
+    FIELD_BEHAVIOUR_DAMAGE = 0x11,
+    FIELD_BEHAVIOUR_FLUID_A = 0x14,
+    FIELD_BEHAVIOUR_FLUID_B = 0x15
+};
+
+// MESH - type:function dictionary  gFieldObjectBehaviourMap[bhvIdx]
+FieldObjectBehaviourFuncs D_80108894[] = {
+    {FIELD_BEHAVIOUR_DEFAULT, func_800B6054, func_800B6078}, // Default Mesh
+    {0x00000001, func_800B6054, func_800B6078}, // (Same as above?)
+    {0x00000002, func_800B6054, func_800B6078}, // (Same as above?)
+    {0x00000003, func_800B6054, func_800B6078}, // (Same as above?)
+    {0x00000004, func_800B6054, func_800B6078}, // (Same as above?)
+    {FIELD_BEHAVIOUR_2POINT_MOVING, func_800B6098, func_800B61FC}, // Linear (2-Point) Movement
+    {0x00000006, func_800B67D8, func_800B691C},
+    {0x00000007, func_800B6B14, func_800B6078},
+    {FIELD_BEHAVIOUR_ROTATING, func_800B6B4C, func_800B6C34}, // Rotating Platform {frameCount (2, 10)}
+    {0x00000009, func_800B6CD8, func_800B6D24},
+    {FIELD_BEHAVIOUR_KEYFRAME_MOVING, func_800B6D44, func_800B6DF4}, // Moving Platform Keyframe {On Player Top-Face Collide}
+    {0x0000000B, func_800B7208, func_800B7328},
+    {0x0000000C, func_800B7860, func_800B78F8}, 
+    {0x0000000D, func_800B81B4, func_800B81FC},
+    {0x0000000E, func_800B8634, func_800B87A0},
+    {0x0000000F, func_800B9298, func_800B9390},
+    {0x00000010, func_800B942C, func_800B9514},
+    {FIELD_BEHAVIOUR_DAMAGE, func_800B9750, func_800B97F0}, // Damage (Rect? - Seems to be calculated based on bounds of min,max vtx) -> DC_Spikes
+    {0x00000012, func_800B9E8C, func_800B9FA8}, // Falling platform
+    {0x00000013, func_800BA2D0, func_800BA35C},
+    {0x00000014, func_800BA89C, func_800BA900}, // Fluid A
+    {0x00000015, func_800BA89C, func_800BA900}, // Fluid B
+    {0x00000016, func_800BA89C, func_800BA900}, // Unknown (Fluid C?)
+    {0x00000017, func_800BA92C, func_800BAA28},
+    {0x00000018, func_800B6054, func_800B6078},
+    {0x00000019, func_800BB038, func_800BB178},
+    {0x0000001A, func_800BB254, func_800BB5DC},
+    {0x0000001B, func_800BB988, func_800BBA80},
+    {0x0000001C, func_800BBC88, func_800BBCE4},
+    {0x0000001D, func_800BBF80, func_800BC284},
+    {0x0000001E, func_800BCC04, func_800BCD10},
+    {0x0000001F, func_800BD1EC, func_800BD2AC},
+    {0x00000020, func_800BD55C, func_800BD608},
+    {0x00000021, func_800B6054, func_800B6078},
+    {0x00000022, func_800BD718, func_800BD938},
+    {0x00000023, func_800BDF2C, func_800BE000},
+    {0x00000024, func_800BE0D4, func_800BE1C4},
+    {0x00000025, func_800B6054, func_800B6078},
+    // if([bhvIdx] >= 0x26U) { pass }
 };
 
 UnkData D_80108A5C[] = {

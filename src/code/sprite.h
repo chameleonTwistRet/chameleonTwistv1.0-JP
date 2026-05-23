@@ -312,7 +312,7 @@ extern f32 D_800FEA1C;
 extern u32 D_800FEDB4;
 extern s32 D_800FEDB8;
 extern Tongue* D_80176B70;
-extern PlayerActor* D_80176B74;
+extern PlayerActor* gPlayerActorPtr;
 extern Camera* D_80176B78;
 extern char D_8010CA1C[];
 extern char D_8010CA54[];

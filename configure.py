@@ -2,13 +2,15 @@
 
 import argparse
 import os
+import pickle
 import shutil
 import subprocess
 import sys
 import glob
 
 from pathlib import Path
-from typing import Dict, List, Set, Union
+from dataclasses import dataclass, field
+from typing import Dict, List, Optional, Set, Union
 
 import ninja_syntax
 import splat
@@ -16,6 +18,7 @@ import splat.scripts.split as split
 from splat.segtypes.linker_entry import LinkerEntry
 
 needsRecalculation = False
+modSrcRemap: Dict[str, str] = {}  # vanilla src/levelGroup/<Land>.c -> build/mod/levelGroup/<Land>.c
 
 ROOT = Path(__file__).parent.resolve()
 TOOLS_DIR = "tools"
@@ -62,19 +65,166 @@ IMG_CONVERT = f"{TOOLS_DIR}/image_converter.py"
 BIN_CONVERT = f"{TOOLS_DIR}/bin_inc_c.py"
 
 NINJA_FILE = "build.ninja"
+ROM_PATH = "baserom.jp.z64"
+LINKER_CACHE = ".linker_cache"
 
 args = None #cmd args for use in build_stuff
 
+
+@dataclass
+class _CachedEntry:
+    kind: str          # "dot" | "s" | "c" | "other"
+    seg_type: str      # raw seg.type string, for error messages
+    object_path: Optional[Path]
+    src_paths: List[Path] = field(default_factory=list)
+
+
+def _classify_entry(entry) -> "_CachedEntry":
+    seg = entry.segment
+    if seg.type[0] == ".":
+        kind = "dot"
+    elif isinstance(seg, splat.segtypes.common.databin.CommonSegDatabin) \
+      or isinstance(seg, splat.segtypes.common.asm.CommonSegAsm) \
+      or isinstance(seg, splat.segtypes.common.data.CommonSegData):
+        kind = "s"
+    elif isinstance(seg, splat.segtypes.common.c.CommonSegC):
+        kind = "c"
+    else:
+        kind = "other"
+    return _CachedEntry(kind, seg.type, entry.object_path, list(entry.src_paths))
+
+
+def _file_sig(path: str):
+    st = os.stat(path)
+    return (st.st_mtime_ns, st.st_size)
+
+
+def _sig_and_assets_valid(yaml_path: str) -> bool:
+    """YAML/ROM sigs match and assets/ is present."""
+    if not os.path.exists(LINKER_CACHE) or not os.path.exists("assets"):
+        return False
+    try:
+        with open(LINKER_CACHE, "rb") as f:
+            data = pickle.load(f)
+        return data.get("sig") == (_file_sig(yaml_path), _file_sig(ROM_PATH))
+    except Exception:
+        return False
+
+
+def _asm_stubs_valid() -> bool:
+    """True if asm/ has function stub directories (nonmatchings, gu, os, libc, etc.)."""
+    if not os.path.exists("asm"):
+        return False
+    return any(
+        e != "data" and os.path.isdir(os.path.join("asm", e))
+        for e in os.listdir("asm")
+    )
+
+
+def _linker_cache_valid(yaml_path: str) -> bool:
+    """Full cache hit: sigs match, assets/ present, asm stubs present."""
+    return _sig_and_assets_valid(yaml_path) and _asm_stubs_valid()
+
+
+def _invalidate_code_splache_entries(yaml_path: str):
+    """
+    Remove only the code segment entries from .splache, keeping LEVELGROUP/asset
+    entries intact. Next splat run (use_cache=True) then rescans code segments
+    (~3s) while skipping the slow 54s asset scan.
+    """
+    if not os.path.exists(".splache"):
+        return
+
+    with open(".splache", "rb") as f:
+        cache = pickle.load(f)
+
+    with open(yaml_path, "r", encoding="utf-8") as f:
+        lines = f.readlines()
+
+    # Find the line where the first LEVELGROUP segment's name appears.
+    first_lg_name_line = None
+    for i, line in enumerate(lines):
+        if 'exclusive_ram_id: "LEVELGROUP"' in line:
+            for j in range(i, -1, -1):
+                if lines[j].startswith("  - name:"):
+                    first_lg_name_line = j
+                    break
+            break
+
+    if first_lg_name_line is None:
+        return  # No asset segments, nothing to preserve
+
+    # Collect names of code segments (those declared before the first LEVELGROUP).
+    # Also include the very last segment (assets6) which comes after the asset zone.
+    code_segs: Set[str] = set()
+    last_seg_name = None
+    for i, line in enumerate(lines):
+        if line.startswith("  - name:"):
+            name = line.split(":", 1)[1].strip()
+            last_seg_name = name
+            if i < first_lg_name_line:
+                code_segs.add(name)
+    if last_seg_name:
+        code_segs.add(last_seg_name)
+
+    # Delete splache entries whose segment is in the code set.
+    to_delete = [
+        k for k in cache
+        if k != "__options__"
+        and any(k == f"code_{n}" or k == f"databin_{n}" or k == f"data_{n}"
+                for n in code_segs)
+    ]
+    for k in to_delete:
+        del cache[k]
+
+    with open(".splache", "wb") as f:
+        pickle.dump(cache, f)
+
+    kept = len(cache) - 1  # exclude __options__
+    print(f"splache: invalidated {len(to_delete)} code entries, {kept} asset entries stay cached")
+
+
+def _load_linker_cache():
+    with open(LINKER_CACHE, "rb") as f:
+        return pickle.load(f)["entries"]
+
+
+def _save_linker_cache(cached_entries: List["_CachedEntry"], yaml_path: str):
+    try:
+        with open(LINKER_CACHE, "wb") as f:
+            pickle.dump({"sig": (_file_sig(yaml_path), _file_sig(ROM_PATH)), "entries": cached_entries}, f)
+    except Exception as e:
+        print(f"warning: could not cache linker entries ({e})")
+
+
 def clean():
-    for file in [".splache", ".ninja_deps", ".ninja_log", "build.ninja"]:
+    for file in [".ninja_deps", ".ninja_log", "build.ninja"]:
+        if os.path.exists(file):
+            os.remove(file)
+    if os.path.exists("asm"):
+        for entry in os.listdir("asm"):
+            if entry == "data":
+                continue  # ROM-derived data stubs — stable, never stale
+            full = os.path.join("asm", entry)
+            shutil.rmtree(full, ignore_errors=True) if os.path.isdir(full) else os.remove(full)
+    print("rm -rf asm/ (data preserved)")
+    if os.path.exists("build"):
+        for entry in os.listdir("build"):
+            if entry == "assets":
+                continue
+            full = os.path.join("build", entry)
+            shutil.rmtree(full, ignore_errors=True) if os.path.isdir(full) else os.remove(full)
+    print("rm -rf build/ (assets preserved)")
+
+
+def full_clean():
+    for file in [".splache", ".ninja_deps", ".ninja_log", "build.ninja", LINKER_CACHE]:
         if os.path.exists(file):
             os.remove(file)
     shutil.rmtree("asm", ignore_errors=True)
     shutil.rmtree("assets", ignore_errors=True)
     shutil.rmtree("build", ignore_errors=True)
-    print("rm -rf asm/")
-    print("rm -rf assets/")
-    print("rm -rf build/")
+    print("rm -rf asm/ assets/ build/")
 
 
 def write_permuter_settings():
@@ -91,7 +241,7 @@ def write_permuter_settings():
             """
             )
 
-def build_stuff(linker_entries: List[LinkerEntry]):
+def build_stuff(linker_entries: List[_CachedEntry], extra_asset_cs: List[Path] = []):
     built_objects: Set[Path] = set()
 
     def build(
@@ -104,6 +254,9 @@ def build_stuff(linker_entries: List[LinkerEntry]):
     ):
         if not isinstance(object_paths, list):
             object_paths = [object_paths]
+
+        if modSrcRemap:
+            src_paths = [Path(modSrcRemap.get(str(p), str(p))) for p in src_paths]
 
         object_strs = [str(obj) for obj in object_paths]
 
@@ -330,24 +483,19 @@ def build_stuff(linker_entries: List[LinkerEntry]):
 
     overrideC = []
     for entry in linker_entries:
-        seg = entry.segment
-
-        if seg.type[0] == ".":
+        if entry.kind == "dot":
             continue
 
         if entry.object_path is None:
             continue
 
-
         #databins' src paths are actually pointing to asm/data.
         #the .s' just incbin the bins anyways. whatever.
         #the rest are just asm so it makes sense
-        if isinstance(seg, splat.segtypes.common.databin.CommonSegDatabin)\
-        or isinstance(seg, splat.segtypes.common.asm.CommonSegAsm)\
-        or isinstance(seg, splat.segtypes.common.data.CommonSegData):
+        if entry.kind == "s":
             build(entry.object_path, entry.src_paths, "s_file")
         #clean this up (namely the overrideC) when we fix the other c's
-        elif isinstance(seg, splat.segtypes.common.c.CommonSegC):
+        elif entry.kind == "c":
             override = any(str(src_path).split("/")[-1] in list(c_file_rule_overrides.keys()) for src_path in entry.src_paths)
             ioCheck = any(str(src_path).startswith("src/io/") for src_path in entry.src_paths)
             osCheck = any(str(src_path).startswith("src/os/") for src_path in entry.src_paths)
@@ -372,14 +520,14 @@ def build_stuff(linker_entries: List[LinkerEntry]):
                 else:
                     build(entry.object_path, entry.src_paths, "O2_cc")
         else:
-            print(f"ERROR: Unsupported build segment type {seg.type}")
+            print(f"ERROR: Unsupported build segment type {entry.seg_type}")
             sys.exit(1)
 
 
     #invalidate this by letting the linker entries do the work
     #cant rn bc of yaml stuff but when we can get that to work
 
-    c_files = [file for file in glob.glob(f"src/**/*.c", recursive=True) if not file in overrideC]
+    c_files = [file for file in glob.glob(f"src/**/*.c", recursive=True) if not file in overrideC and not file.endswith(".inc.c")]
 
     o_files = []
     for c_file in c_files:
@@ -398,6 +546,15 @@ def build_stuff(linker_entries: List[LinkerEntry]):
 
     for obj in built_objects:
         o_files.append(str(obj))
+
+    # Compile mod asset C files (collision meshes, Gfx display lists, etc.)
+    # discovered in manifests/ by the mod block in __main__.
+    for asset_c in extra_asset_cs:
+        rel = asset_c.relative_to(ROOT)
+        o_file = Path("build") / (str(rel) + ".o")
+        o_file.parent.mkdir(parents=True, exist_ok=True)
+        build(o_file, [asset_c], "O2_cc")
+        o_files.append(str(o_file))
     #########################
 
     build(Path(PRE_ELF_PATH), [Path(LD_PATH)], "ld", o_files)
@@ -417,7 +574,14 @@ if __name__ == "__main__":
     parser.add_argument(
         "-c",
         "--clean",
-        help="Clean extraction and build artifacts",
+        help="Clean build artifacts (preserves assets cache)",
+        action="store_true",
+    )
+
+    parser.add_argument(
+        "-fc",
+        "--fullclean",
+        help="Full clean including assets/ and asset cache (implies -c)",
         action="store_true",
     )
 
@@ -449,12 +613,21 @@ if __name__ == "__main__":
         action="store_true",
     )
 
+    parser.add_argument(
+        "-m",
+        "--mod",
+        help="Build a modded ROM: defines CT_MOD, runs LevelEditor codegen, skips SHA1",
+        action="store_true",
+    )
+
     args = parser.parse_args()
 
-    if args.clean:
+    if args.fullclean:
+        full_clean()
+    elif args.clean:
         clean()
 
-    needsRecalculation = args.nonmatching or args.shift or args.chckrecalc
+    needsRecalculation = args.nonmatching or args.shift or args.chckrecalc or args.mod
 
     if needsRecalculation:
         print('checksum will be recalculated when building!')
@@ -462,7 +635,7 @@ if __name__ == "__main__":
 
     if args.shift:
         print('a shiftable rom will be built!')
-        to = DEFINES + " -DSHIFT -DCRASH_SCREEN"
+        to = DEFINES + " -DSHIFT"
         CFLAGS = CFLAGS.replace(DEFINES, to)
         GAME_COMPILE_CMD = GAME_COMPILE_CMD.replace(DEFINES, to)
         DEFINES = to
@@ -474,16 +647,68 @@ if __name__ == "__main__":
         GAME_COMPILE_CMD = GAME_COMPILE_CMD.replace(DEFINES, to)
         DEFINES = to
 
+    mod_asset_cs: List[Path] = []
+
+    if args.mod:
+        # Modding build: define CT_MOD, run LevelEditor codegen for every manifest,
+        # remap modded land src paths to the gated copies under build/mod/levelGroup/.
+        # Intentionally does NOT define NON_MATCHING : that's a decomp-correctness
+        # toggle, separate from modding.
+        print('a modded rom will be built! (CT_MOD defined, SHA1 check skipped)')
+        to = DEFINES + " -DCT_MOD"
+        CFLAGS = CFLAGS.replace(DEFINES, to)
+        GAME_COMPILE_CMD = GAME_COMPILE_CMD.replace(DEFINES, to)
+        DEFINES = to
+
+        manifest_root = ROOT / "tools" / "LevelEditor" / "manifests"
+        build_root = ROOT / "build"
+        for manifest_path in sorted(manifest_root.glob("*/[A-Z]*_mod.json")):
+            print(f"  preparing mod: {manifest_path.relative_to(ROOT)}")
+            rc = subprocess.run(
+                ["python3", str(ROOT / "tools" / "LevelEditor" / "codegen.py"),
+                 str(manifest_path), "--prepare-mod", str(build_root)],
+                cwd=ROOT,
+            ).returncode
+            if rc != 0:
+                print(f"  codegen failed for {manifest_path}")
+                sys.exit(1)
+            # Works in all Python 3 versions
+            land = manifest_path.stem[:-4] if manifest_path.stem.endswith("_mod") else manifest_path.stem
+            vanilla_src = f"src/levelGroup/{land}.c"
+            gated_src = f"build/mod/levelGroup/{land}.c"
+            modSrcRemap[vanilla_src] = gated_src
+
+            # Collect custom model asset C files from the manifest directory.
+            # Convention: each new model lives in manifests/<Land>/<sym>/
+            #   <sym>.collision.c  : exported by the CT level editor (collision mesh)
+            #   <sym>_Gfx.c       : exported by fast64 (visual mesh display list)
+            # Compilation happens inside build_stuff where the build() helper exists.
+            for asset_c in sorted(manifest_path.parent.rglob("*.c")):
+                print(f"    + mod asset: {asset_c.relative_to(ROOT)}")
+                mod_asset_cs.append(asset_c)
+
     yaml_to_use = YAML_FILE
     if not args.full:
         yaml_to_use = YAML_FILE_SMALL
     else:
         print("splitting entire game!")
 
-    split.main([yaml_to_use], modes="all", verbose=False, use_cache=True)
+    if _linker_cache_valid(yaml_to_use):
+        print("asset split cached — skipping splat scan")
+        linker_entries = _load_linker_cache()
+    elif _sig_and_assets_valid(yaml_to_use):
+        # asm/ was cleaned but assets are intact — delete only code entries from
+        # .splache so splat rescans code (~3s) while asset scan stays cached (~0s)
+        print("assets cached — rescanning code segments only")
+        _invalidate_code_splache_entries(yaml_to_use)
+        split.main([yaml_to_use], modes="all", verbose=False, use_cache=True)
+        linker_entries = [_classify_entry(e) for e in split.linker_writer.entries]
+        _save_linker_cache(linker_entries, yaml_to_use)
+    else:
+        split.main([yaml_to_use], modes="all", verbose=False, use_cache=True)
+        linker_entries = [_classify_entry(e) for e in split.linker_writer.entries]
+        _save_linker_cache(linker_entries, yaml_to_use)
 
-    linker_entries = split.linker_writer.entries
-
-    build_stuff(linker_entries)
+    build_stuff(linker_entries, mod_asset_cs)
 
     write_permuter_settings()
