@@ -82,16 +82,16 @@ void Debug_MovePlayer(void) {
         }
     }
     if (func_80055E5C(CONT_UP) != 0) {
-        D_80176B74[0].pos.z -= 100.0f;
+        gPlayerActorPtr[0].pos.z -= 100.0f;
     }
     if (func_80055E5C(CONT_DOWN) != 0) {
-        D_80176B74[0].pos.z += 100.0f;
+        gPlayerActorPtr[0].pos.z += 100.0f;
     }
     if (func_80055E5C(CONT_LEFT) != 0) {
-        D_80176B74[0].pos.x -= 100.0f;
+        gPlayerActorPtr[0].pos.x -= 100.0f;
     }
     if (func_80055E5C(CONT_RIGHT) != 0) {
-        D_80176B74[0].pos.x += 100.0f;
+        gPlayerActorPtr[0].pos.x += 100.0f;
     }
     if (func_80055E5C(U_CBUTTONS) != 0) {
         for (i = 0; i < PLAYERS_MAX; i++) {
@@ -162,17 +162,17 @@ void Debug_ChangeView(void) {
     case 0:
         break;
     case 1:
-        func_8007B480(D_80176B74->pos.x, D_80176B74->pos.y, D_80176B74->pos.z, D_80176B74->pos.x, D_80176B74->pos.y + (f32) sDebugViewZoomOut, D_80176B74->pos.z + 1.0f);
+        func_8007B480(gPlayerActorPtr->pos.x, gPlayerActorPtr->pos.y, gPlayerActorPtr->pos.z, gPlayerActorPtr->pos.x, gPlayerActorPtr->pos.y + (f32) sDebugViewZoomOut, gPlayerActorPtr->pos.z + 1.0f);
         break;
     case 2:
-        func_8007B480(D_80176B74->pos.x, D_80176B74->pos.y, D_80176B74->pos.z,
-            D_80176B74->pos.x + (__sinf(((sDebugViewRotate * 2 * M_PI) / 360)) * sDebugViewZoomOut),
-            D_80176B74->pos.y + 1.0f,
-            D_80176B74->pos.z - (sDebugViewZoomOut * __cosf(sDebugViewRotate * 2 * M_PI / 360)));
+        func_8007B480(gPlayerActorPtr->pos.x, gPlayerActorPtr->pos.y, gPlayerActorPtr->pos.z,
+            gPlayerActorPtr->pos.x + (__sinf(((sDebugViewRotate * 2 * M_PI) / 360)) * sDebugViewZoomOut),
+            gPlayerActorPtr->pos.y + 1.0f,
+            gPlayerActorPtr->pos.z - (sDebugViewZoomOut * __cosf(sDebugViewRotate * 2 * M_PI / 360)));
         
         break;
     case 3:
-        func_8007B480(D_80176B74->pos.x, D_80176B74->pos.y, D_80176B74->pos.z, D_80176B74->pos.x, D_80176B74->pos.y + 1.0f, D_80176B74->pos.z + (f32) sDebugViewZoomOut);
+        func_8007B480(gPlayerActorPtr->pos.x, gPlayerActorPtr->pos.y, gPlayerActorPtr->pos.z, gPlayerActorPtr->pos.x, gPlayerActorPtr->pos.y + 1.0f, gPlayerActorPtr->pos.z + (f32) sDebugViewZoomOut);
         break;
     default:
         func_8007B434(0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f);
