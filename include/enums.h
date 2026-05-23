@@ -2,7 +2,7 @@
 #define _ENUMS_H
 
 #define ACTORS_MAX 64
-//#define PLAYERS_MAX 4
+#define PLAYERS_MAX 4
 
 #define SPRITE_LOAD_ERROR -1
 #define SPRITE_LOAD_SUCCESS 0

@@ -1,22 +1,20 @@
 #include "common.h"
+#include "sprite.h"
+
+typedef struct unkTextStruct {
+char strings[4][0x64];
+} unkTextStruct;
+
+void func_8007B434(f32, f32, f32, f32, f32, f32);
 
 //static u8 D_80176810[4];
 //static u8 D_80176814[4];
 //static u8 D_80176818[4];
 
 char D_80175870[0xFA0];
-u8 D_80176810;
-u8 D_80176811;
-u8 D_80176812;
-u8 D_80176813;
-u8 D_80176814;
-u8 D_80176815;
-u8 D_80176816;
-u8 D_80176817;
-u8 D_80176818;
-u8 D_80176819;
-u8 D_8017681A;
-u8 D_8017681B;
+u8 D_80176810[4];
+u8 D_80176814[4];
+u8 D_80176818[4];
 
 //data
 s16 sDebugPerfectCodeFlag = 1;
@@ -37,8 +35,8 @@ f32 D_800F06C8[] = {
     2
 };
 u8 gSelectedCharacters[4] = {0, 1, 2, 3};
-s16 D_800F06E0[] = {-1, 0};
-s16 D_800F06E4[] = {-1, 0};
+s16 D_800F06E0 = -1;
+s16 D_800F06E4 = -1;
 s32 sGameModeStart = 18;
 
 //value hooked onto the LoadStageByIndex call with D_80174878 to overwrite it
@@ -55,38 +53,6 @@ f32 D_800F070C = 0;
 f32 D_800F0710 = 0;
 f32 D_800F0714 = 0;
 f32 sDebugPlayerHeights[4] = {0, 0, 0, 0};
-u32 sDebugViewType = 0;
-u32 sDebugViewZoomOut = 1000;
-u32 sDebugViewRotate = 0;
-
-//smth like this
-char D_800F0734[][100] = {
-    "ひだりうえ",
-    "ひだりした",
-    "みぎうえ",
-    "みぎした"
-};
-s32 D_800F08C4 = 0;
-s32 D_800F08C8[] = {0, 0};
-s32 D_800F08D0 = 0;
-char D_800F08D4[100] = "SPR_s0_leaf70";
-char D_800F0938[100] = "SPR_s0_leaf71";
-s32 D_800F099C[] = {0, 0};
-s32 D_800F09A4 = 0;
-char D_800F09A8[][100] = {
-    "ITEM_VITAL",
-    "ITEM_3VITAL",
-    "ITEM_MAXVITAL",
-    "ITEM_COLLECT",
-};
-s32 sDebugTestView = 0;
-u32 sDebugCodeSeqStep = 0;
-s32 D_800F0B40[] = {0, 0, 0, 0};
-//
-
-typedef struct unkTextStruct {
-char strings[4][0x64];
-} unkTextStruct;
 
 typedef struct unkarg0_2 {
 /* 0x00*/ f32 unk_00;
@@ -103,7 +69,41 @@ typedef struct unkarg0_2 {
 } unkarg0_2;
 
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/debug/Debug_MovePlayer.s")
+void Debug_MovePlayer(void) {
+    s32 i;
+
+    if (gContMain->buttons0 & 0x20) {
+        for (i = 0; i < PLAYERS_MAX; i++) {
+            gPlayerActors[i].pos.y = sDebugPlayerHeights[i];
+        }
+    } else {
+        for (i = 0; i < PLAYERS_MAX; i++) {
+            sDebugPlayerHeights[i] = gPlayerActors[i].pos.y;
+        }
+    }
+    if (func_80055E5C(CONT_UP) != 0) {
+        D_80176B74[0].pos.z -= 100.0f;
+    }
+    if (func_80055E5C(CONT_DOWN) != 0) {
+        D_80176B74[0].pos.z += 100.0f;
+    }
+    if (func_80055E5C(CONT_LEFT) != 0) {
+        D_80176B74[0].pos.x -= 100.0f;
+    }
+    if (func_80055E5C(CONT_RIGHT) != 0) {
+        D_80176B74[0].pos.x += 100.0f;
+    }
+    if (func_80055E5C(U_CBUTTONS) != 0) {
+        for (i = 0; i < PLAYERS_MAX; i++) {
+            sDebugPlayerHeights[i] += 100.0f;
+        }
+    }
+    if (func_80055E5C(D_CBUTTONS) != 0) {
+        for (i = 0; i < PLAYERS_MAX; i++) {
+            sDebugPlayerHeights[i] -= 100.0f;
+        }
+    }
+}
 
 extern s32 D_802478E0;
 
@@ -137,81 +137,149 @@ void Debug_ChangeRoom(void) {
 void Debug_NOOP(void) {
 }
 
-//https://decomp.me/scratch/MZIQO
-#pragma GLOBAL_ASM("asm/nonmatchings/code/debug/Debug_ChangeView.s")
+void Debug_ChangeView(void) {
+    static s32 sDebugViewType = 0;
+    static s32 sDebugViewZoomOut = 1000;
+    static s32 sDebugViewRotate = 0;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/debug/func_8004EF5C.s")
+    if (func_80055E5C(START_BUTTON) != 0) {
+        sDebugViewType++;
+    }
+    
+    if (func_80055E5C(B_BUTTON) != 0) {
+        if (++sDebugViewRotate >= 360) {
+            sDebugViewRotate -= 360;
+        }
+    }
+    
+    if (func_80055E5C(A_BUTTON) != 0) {
+        if (--sDebugViewRotate < 0) {
+            sDebugViewRotate += 360;
+        }
+    }
+    
+    switch (sDebugViewType) {
+    case 0:
+        break;
+    case 1:
+        func_8007B480(D_80176B74->pos.x, D_80176B74->pos.y, D_80176B74->pos.z, D_80176B74->pos.x, D_80176B74->pos.y + (f32) sDebugViewZoomOut, D_80176B74->pos.z + 1.0f);
+        break;
+    case 2:
+        func_8007B480(D_80176B74->pos.x, D_80176B74->pos.y, D_80176B74->pos.z,
+            D_80176B74->pos.x + (__sinf(((sDebugViewRotate * 2 * M_PI) / 360)) * sDebugViewZoomOut),
+            D_80176B74->pos.y + 1.0f,
+            D_80176B74->pos.z - (sDebugViewZoomOut * __cosf(sDebugViewRotate * 2 * M_PI / 360)));
+        
+        break;
+    case 3:
+        func_8007B480(D_80176B74->pos.x, D_80176B74->pos.y, D_80176B74->pos.z, D_80176B74->pos.x, D_80176B74->pos.y + 1.0f, D_80176B74->pos.z + (f32) sDebugViewZoomOut);
+        break;
+    default:
+        func_8007B434(0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f);
+        sDebugViewType = 0;
+        break;
+    }
+    if (func_80055E5C(Z_TRIG) != 0) {
+        sDebugViewZoomOut += 100;
+    }
+    if (sDebugViewZoomOut >= 20001) {
+        sDebugViewZoomOut = 100;
+    }
+}
 
-// void func_8004EF5C(void) { //needs bss support for static variable
-//     static s32 D_800F08C4;
-//     unkTextStruct buffer = D_800F0734;
-//     s32 i;
+void func_8004EF5C(void) {
+    static unkTextStruct D_800F0734 = {
+        "ひだりうえ",
+        "ひだりした",
+        "みぎうえ",
+        "みぎした"    
+    };
 
-//     if (func_80055E5C(0x4000)) {
-//         D_80176810[D_800F08C4]++;
-//     }
+    static s32 D_800F08C4 = 0;
+    unkTextStruct buffer = D_800F0734;
+    s32 i;
 
-//     if (func_80055E5C(0x8000) != 0) {
-//         D_80176810[D_800F08C4]--;
-//     }
+    if (func_80055E5C(0x4000)) {
+        D_80176810[D_800F08C4]++;
+    }
 
-//     if (func_80055E5C(2) != 0) {
-//         D_80176814[D_800F08C4]++;
-//     }
+    if (func_80055E5C(0x8000) != 0) {
+        D_80176810[D_800F08C4]--;
+    }
 
-//     if (func_80055E5C(4) != 0) {
-//         D_80176814[D_800F08C4]--;
-//     }
+    if (func_80055E5C(2) != 0) {
+        D_80176814[D_800F08C4]++;
+    }
 
-//     if (func_80055E5C(8) != 0) {
-//         D_80176818[D_800F08C4]++;
-//     }
+    if (func_80055E5C(4) != 0) {
+        D_80176814[D_800F08C4]--;
+    }
 
-//     if (func_80055E5C(1) != 0) {
-//         D_80176818[D_800F08C4]--;
-//     }
-//     if (1 == func_80055E5C(0x10)) {
-//         D_800F08C4 = (D_800F08C4) + 1;
-//         D_800F08C4 = (D_800F08C4) & 3;
-//     }
+    if (func_80055E5C(8) != 0) {
+        D_80176818[D_800F08C4]++;
+    }
 
-//     if (func_80055E5C(0x2000) != 0) {
-//         for (i = 0; i < 4; i++) {
-//             D_80176810[i] = D_80176814[i] = D_80176818[i] = 0;
-//         }
-//     }
+    if (func_80055E5C(1) != 0) {
+        D_80176818[D_800F08C4]--;
+    }
+    if (1 == func_80055E5C(0x10)) {
+        D_800F08C4 = (D_800F08C4) + 1;
+        D_800F08C4 = (D_800F08C4) & 3;
+    }
 
-//     func_800610B8();
-//     for (i = 0; i < 4; i++) {
-//         SetTextGradient(D_80176810[0], D_80176814[0], D_80176818[0], 0xFF, D_80176810[1], D_80176814[1], D_80176818[1], 0xFF, D_80176810[2], D_80176814[2], D_80176818[2], 0xFF, D_80176810[3], D_80176814[3], D_80176818[3], 0xFF); PrintNumberWR(180.0f, (i + 2) * 0x20, 0.0f, 0.5f, D_80176810[i], 3, 0);
-//         SetTextGradient(D_80176810[0], D_80176814[0], D_80176818[0], 0xFF, D_80176810[1], D_80176814[1], D_80176818[1], 0xFF, D_80176810[2], D_80176814[2], D_80176818[2], 0xFF, D_80176810[3], D_80176814[3], D_80176818[3], 0xFF);
-//         PrintNumberWR(210.0f, (i + 2) * 0x20, 0.0f, 0.5f, D_80176814[i], 3, 0);
-//         SetTextGradient(D_80176810[0], D_80176814[0], D_80176818[0], 0xFF, D_80176810[1], D_80176814[1], D_80176818[1], 0xFF, D_80176810[2], D_80176814[2], D_80176818[2], 0xFF, D_80176810[3], D_80176814[3], D_80176818[3], 0xFF);
-//         printNumber(240.0f, (i + 2) * 0x20, 0.0f, 0.5f, D_80176818[i], 3, 0);
-//     }
+    if (func_80055E5C(0x2000) != 0) {
+        for (i = 0; i < 4; i++) {
+            D_80176810[i] = D_80176814[i] = D_80176818[i] = 0;
+        }
+    }
 
-//     SetTextGradient(D_80176810[0], D_80176814[0], D_80176818[0], 0xFF, D_80176810[1], D_80176814[1], D_80176818[1], 0xFF, D_80176810[2], D_80176814[2], D_80176818[2], 0xFF, D_80176810[3], D_80176814[3], D_80176818[3], 0xFF);
-//     PrintTextWrapper(140.0f, 32.0f, 0.0f, 1.0f, buffer.strings[D_800F08C4], 1);
+    func_800610B8();
+    for (i = 0; i < 4; i++) {
+        SetTextGradient(D_80176810[0], D_80176814[0], D_80176818[0], 0xFF, D_80176810[1], D_80176814[1], D_80176818[1], 0xFF, D_80176810[2], D_80176814[2], D_80176818[2], 0xFF, D_80176810[3], D_80176814[3], D_80176818[3], 0xFF); PrintNumberWR(180.0f, (i + 2) * 0x20, 0.0f, 0.5f, D_80176810[i], 3, 0);
+        SetTextGradient(D_80176810[0], D_80176814[0], D_80176818[0], 0xFF, D_80176810[1], D_80176814[1], D_80176818[1], 0xFF, D_80176810[2], D_80176814[2], D_80176818[2], 0xFF, D_80176810[3], D_80176814[3], D_80176818[3], 0xFF);
+        PrintNumberWR(210.0f, (i + 2) * 0x20, 0.0f, 0.5f, D_80176814[i], 3, 0);
+        SetTextGradient(D_80176810[0], D_80176814[0], D_80176818[0], 0xFF, D_80176810[1], D_80176814[1], D_80176818[1], 0xFF, D_80176810[2], D_80176814[2], D_80176818[2], 0xFF, D_80176810[3], D_80176814[3], D_80176818[3], 0xFF);
+        printNumber(240.0f, (i + 2) * 0x20, 0.0f, 0.5f, D_80176818[i], 3, 0);
+    }
 
-//     switch (D_800F08C4) {
-//     default:
-//         break;
-//     case 0:
-//         PrintTextWrapper(124.0f, 16.0f, 0.0f, 0.5f, buffer.strings[D_800F08C4], 1);
-//         break;
-//     case 1:
-//         PrintTextWrapper(124.0f, 48.0f, 0.0f, 0.5f, buffer.strings[D_800F08C4], 1);
-//         break;
-//     case 2:
-//         PrintTextWrapper(296.0f, 16.0f, 0.0f, 0.5f, buffer.strings[D_800F08C4], 1);
-//         break;
-//     case 3:
-//         PrintTextWrapper(296.0f, 48.0f, 0.0f, 0.5f, buffer.strings[D_800F08C4], 1);
-//         break;
-//     }
+    SetTextGradient(D_80176810[0], D_80176814[0], D_80176818[0], 0xFF, D_80176810[1], D_80176814[1], D_80176818[1], 0xFF, D_80176810[2], D_80176814[2], D_80176818[2], 0xFF, D_80176810[3], D_80176814[3], D_80176818[3], 0xFF);
+    PrintTextWrapper(140.0f, 32.0f, 0.0f, 1.0f, buffer.strings[D_800F08C4], 1);
 
-//     func_800610B8();
-// }
+    switch (D_800F08C4) {
+    default:
+        break;
+    case 0:
+        PrintTextWrapper(124.0f, 16.0f, 0.0f, 0.5f, buffer.strings[D_800F08C4], 1);
+        break;
+    case 1:
+        PrintTextWrapper(124.0f, 48.0f, 0.0f, 0.5f, buffer.strings[D_800F08C4], 1);
+        break;
+    case 2:
+        PrintTextWrapper(296.0f, 16.0f, 0.0f, 0.5f, buffer.strings[D_800F08C4], 1);
+        break;
+    case 3:
+        PrintTextWrapper(296.0f, 48.0f, 0.0f, 0.5f, buffer.strings[D_800F08C4], 1);
+        break;
+    }
+
+    func_800610B8();
+}
+
+s32 D_800F08C8[] = {0, 0};
+s32 D_800F08D0 = 0;
+char D_800F08D4[100] = "SPR_s0_leaf70";
+char D_800F0938[100] = "SPR_s0_leaf71";
+s32 D_800F099C[] = {0, 0};
+s32 D_800F09A4 = 0;
+char D_800F09A8[][100] = {
+    "ITEM_VITAL",
+    "ITEM_3VITAL",
+    "ITEM_MAXVITAL",
+    "ITEM_COLLECT",
+};
+s32 sDebugTestView = 0;
+u32 sDebugCodeSeqStep = 0;
+s32 D_800F0B40[] = {0, 0, 0, 0};
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/debug/func_8004F61C.s")
 
