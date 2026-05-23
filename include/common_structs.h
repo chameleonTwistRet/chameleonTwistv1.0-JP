@@ -877,11 +877,11 @@ typedef struct SaveFile {
 /* 0x31 */ u8 currentStage;
 /* 0x32 */ u8 gCurrentZone;
 /* 0x33 */ u8 unk33; //copies D_8020d8a8
-/* 0x34 */ u8 unk34[16]; //stores D_802023e0[]
+/* 0x34 */ s8 unk34[16]; //stores D_802023e0[]
 /* 0x44 */ u8 stageCrowns;
 /* 0x45 */ TimeVal stageTimes[8];
-/* 0x5D */ u8 carrotBitfield;
-/* 0x5E */ u8 UNK_5E[2]; //first also copies CARROT progress.
+/* 0x5D */ u8 unk_5D;
+/* 0x5E */ u8 carrotBitfield;
 } SaveFile; //sizeof 0x60
 
 typedef struct Unk80200C08 {

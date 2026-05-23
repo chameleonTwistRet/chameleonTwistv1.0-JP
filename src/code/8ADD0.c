@@ -996,8 +996,8 @@ void AddCarrot(s32 stage) {
     s32 i;
 
     if (stage <= STAGE_GHOST) {
-        gCarrotBitfield |= (1 << stage);        // add the bit corresponding to the stage
-        gTotalCarrots = 0;                      // reset the counter
+        gCarrotBitfield |= IS_STAGE_UNLOCKED(stage);
+        gTotalCarrots = 0;
 
         // iterate through the bitfield and count the number of bits set
         for (i = 0; i < 6; i++) {

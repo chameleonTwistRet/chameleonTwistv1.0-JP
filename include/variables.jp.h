@@ -305,7 +305,7 @@ extern unkIsChange isChange;
 extern s32 gDoorCount;
 extern Field D_80240D6C[];
 extern u8 gCarrotBitfield;
-extern s8 D_801B313D;
+extern u8 D_801B313D;
 extern SaveRecord gGameRecords;
 extern Vec3w D_801087D8[];
 extern s32 Timing_StopGfxTime;

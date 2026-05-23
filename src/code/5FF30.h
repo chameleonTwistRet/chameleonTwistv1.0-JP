@@ -536,7 +536,7 @@ void func_800A878C(SaveFile* arg0);
 void func_800A87D4(s32 arg0);
 void SaveData_ResetRecords(void);
 void SaveData_ClearRecords(void);
-void SaveData_WriteFile(SaveFile*);
+s32 SaveData_WriteFile(SaveFile*);
 void func_800A93AC(ContMain* arg0);
 void func_800A9690(void);
 void func_800A96DC(CTTask* task);
@@ -629,7 +629,7 @@ extern f32* D_800FF610; //this probably isnt right but until we care roll with i
 extern s16 D_801FC9A4;
 extern s16 D_80100D8C[];
 extern s16 D_800FFEBC;
-extern s32 D_802023E0;
+extern s32 D_802023E0[0x20];
 extern s32 D_80202420; //unk type
 extern s32 D_8020D8A8;
 extern s16 D_80100E10;

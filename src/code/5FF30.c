@@ -1054,15 +1054,13 @@ enum StageSelectStages{
     BOSSRUSH // 6
 };
 
-#define canAccess(stage) TRUE << stage
-
 StageSelectData StageSelect[] = {                                                                               //?
     { 56, 192, SPRITE_JL_ICON,          BOSSRUSH,   AL,     BL,     BL,     NONE,   NONE,   NONE,       NONE,   -1},
-    {108, 112, SPRITE_AL_ICON,          NONE,       DC,     DC,     KL,     BL,     JL,     BOSSRUSH,   NONE,   canAccess(JL) | canAccess(BL) | canAccess(DC) | canAccess(KL)},
-    {148, 184, SPRITE_BL_ICON,          DC,         DC,     KL,     KL,     NONE,   JL,     JL,         AL,     canAccess(JL) | canAccess(AL) | canAccess(DC) | canAccess(KL)},
-    {186,  80, SPRITE_DC_ICON,          NONE,       GC,     GC,     KL,     KL,     BL,     AL,         NONE,   canAccess(AL) | canAccess(BL) | canAccess(KL) | canAccess(GC)},
-    {228, 152, SPRITE_KL_ICON,          DC,         GC,     NONE,   NONE,   NONE,   BL,     BL,         AL,     canAccess(AL) | canAccess(BL) | canAccess(DC) | canAccess(GC)},
-    {258,  56, SPRITE_GC_ICON,          NONE,       NONE,   NONE,   KL,     KL,     KL,     DC,         NONE,   canAccess(DC) | canAccess(KL)},
+    {108, 112, SPRITE_AL_ICON,          NONE,       DC,     DC,     KL,     BL,     JL,     BOSSRUSH,   NONE,   IS_STAGE_UNLOCKED(JL) | IS_STAGE_UNLOCKED(BL) | IS_STAGE_UNLOCKED(DC) | IS_STAGE_UNLOCKED(KL)},
+    {148, 184, SPRITE_BL_ICON,          DC,         DC,     KL,     KL,     NONE,   JL,     JL,         AL,     IS_STAGE_UNLOCKED(JL) | IS_STAGE_UNLOCKED(AL) | IS_STAGE_UNLOCKED(DC) | IS_STAGE_UNLOCKED(KL)},
+    {186,  80, SPRITE_DC_ICON,          NONE,       GC,     GC,     KL,     KL,     BL,     AL,         NONE,   IS_STAGE_UNLOCKED(AL) | IS_STAGE_UNLOCKED(BL) | IS_STAGE_UNLOCKED(KL) | IS_STAGE_UNLOCKED(GC)},
+    {228, 152, SPRITE_KL_ICON,          DC,         GC,     NONE,   NONE,   NONE,   BL,     BL,         AL,     IS_STAGE_UNLOCKED(AL) | IS_STAGE_UNLOCKED(BL) | IS_STAGE_UNLOCKED(DC) | IS_STAGE_UNLOCKED(GC)},
+    {258,  56, SPRITE_GC_ICON,          NONE,       NONE,   NONE,   KL,     KL,     KL,     DC,         NONE,   IS_STAGE_UNLOCKED(DC) | IS_STAGE_UNLOCKED(KL)},
     { 56, 110, SPRITE_BOSSRUSH_ICON,    NONE,       NONE,   AL,     NONE,   JL,     NONE,   NONE,       NONE,   0},
     {  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
 };
@@ -8150,7 +8148,6 @@ s32 SaveData_UpdateRecords(void) {
     s32 i;
     SaveRecord sp28;
     for (i = 0; i < 3; i++) {
-        
         SaveData_SaveRecords();
         SaveData_LoadRecords(&sp28);
         if (SaveData_Compare((u8*)&gGameRecords, (u8*)&sp28) == 0) {
@@ -8165,7 +8162,7 @@ void func_800A878C(SaveFile* arg0) {
     //"ファイルクリア"("file clear")
     DummiedPrintf("ファイルクリア\n");
     RecordTime_SetTo(300, &arg0->stageTimes[6]);
-    arg0->carrotBitfield = 0;
+    arg0->unk_5D = 0;
 }
 
 void func_800A87D4(s32 arg0) {
@@ -8209,11 +8206,150 @@ void SaveData_ClearRecords(void) {
     SaveData_UpdateRecords();
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/SaveData_WriteFile.s")
+s32 SaveData_WriteFile(SaveFile* arg0) {
+    SaveFile* var_v1;
+    s32 temp_t8;
+    s32 i;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/SaveData_ReadFile.s")
+    arg0->selectedCharacter = gSelectedCharacters[D_800FF8E8];
+    arg0->currentStage = gCurrentStage;
+    arg0->gCurrentZone = gCurrentZone;
+    arg0->unk33 = D_8020D8A8;
+    arg0->stageCrowns = currentStageCrowns;
+    arg0->carrotBitfield = gCarrotBitfield;
+    
+    if (D_801B313D != 0) {
+        arg0->flags |= 8;
+    } else {
+        arg0->flags &= ~8;
+    }
+    if (isInOverworld == 1) {
+        arg0->flags |= 0x10;
+    } else {
+        arg0->flags &= ~0x10;
+    }
+    if (D_800FFEBC == 1) {
+        arg0->flags |= 0x20;
+    } else {
+        arg0->flags &= ~0x20;
+    }
+    RecordTime_SetTo(gCurrentStageTime, &arg0->stageTimes[7]);
+    DummiedPrintf("\n");
+    func_800B4408(&arg0->unk2, &arg0->UNK_22);
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/SetLevelBitfield.s")
+    for (i = 0; i < 16; i++) {
+        arg0->unk34[i] = D_802023E0[i];
+    }
+
+    DummiedPrintf("\n");
+    return 0;
+}
+
+s32 SaveData_ReadFile(SaveFile* arg0) {
+    SaveFile* var_a0;
+    s32 var_a1;
+    s32* var_v1;
+    s32* var_v1_2;
+    s8 temp_t5;
+    s32 i;
+
+    gSelectedCharacters[D_800FF8E8] = arg0->selectedCharacter;
+    gCurrentStage = arg0->currentStage;
+    gCurrentZone = arg0->gCurrentZone;
+    gCarrotBitfield = arg0->carrotBitfield;
+    gTotalCarrots = 0;
+
+    for (i = 0; i < 6; i++) {
+        if (gCarrotBitfield & (1 << i)) {
+            gTotalCarrots++;
+        }        
+    }
+    
+    if (arg0->flags & 8) {
+        D_801B313D = 1;
+    } else {
+        D_801B313D = 0;
+    }
+    if (arg0->flags & 0x10) {
+        isInOverworld = 1;
+    } else {
+        isInOverworld = 0;
+    }
+    if (arg0->flags & 0x20) {
+        D_800FFEBC = 1;
+    } else {
+        D_800FFEBC = 0;
+    }
+    
+    gCurrentStageTime = RecordTime_ParseToSecs(&arg0->stageTimes[7]);
+
+    for (i = 0; i < ARRAY_COUNT(arg0->unk34); i++) {
+        D_802023E0[i] = arg0->unk34[i];
+    }
+
+    for (i = 16; i < 32; i++) {
+        D_802023E0[i] = 0;
+    }
+    DummiedPrintf("\n");
+    return 0;
+}
+
+s32 SetLevelBitfield(s32 stageIdx) {
+    switch (stageIdx) {
+    case STAGE_JUNGLEBOSS:
+        gGameState.stageAccess |= (1 << STAGE_JUNGLE);
+        break;
+    case STAGE_ANTBOSS:
+        gGameState.stageAccess |= (1 << STAGE_ANT);
+        break;
+    case STAGE_BOMBBOSS:
+        gGameState.stageAccess |= (1 << STAGE_BOMB);
+        break;
+    case STAGE_DESERTBOSS:
+        gGameState.stageAccess |= (1 << STAGE_DESERT);
+        break;
+    case STAGE_KIDSBOSS:
+        gGameState.stageAccess |= (1 << STAGE_KIDS);
+        break;
+    case STAGE_GHOSTBOSS:
+        gGameState.stageAccess |= (1 << STAGE_GHOST);
+        break;
+    case STAGE_BOSSRUSH:
+        gGameState.stageAccess |= (1 << STAGE_OPENING);
+        break;
+    }
+
+    if (D_80200B38 != 0) {
+        switch (stageIdx) {
+        case STAGE_JUNGLEBOSS:
+            gGameState.stageClear |= (1 << STAGE_JUNGLE);
+            break;
+        case STAGE_ANTBOSS:
+            gGameState.stageClear |= (1 << STAGE_ANT);
+            break;
+        case STAGE_BOMBBOSS:
+            gGameState.stageClear |= (1 << STAGE_BOMB);
+            break;
+        case STAGE_DESERTBOSS:
+            gGameState.stageClear |= (1 << STAGE_DESERT);
+            break;
+        case STAGE_KIDSBOSS:
+            gGameState.stageClear |= (1 << STAGE_KIDS);
+            break;
+        case STAGE_GHOSTBOSS:
+            gGameState.stageClear |=
+                (1 << STAGE_JUNGLE) |
+                (1 << STAGE_ANT) |
+                (1 << STAGE_BOMB) |
+                (1 << STAGE_DESERT) |
+                (1 << STAGE_KIDS) |
+                (1 << STAGE_GHOST);
+            break;
+        }
+    }
+
+    return 0;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A8DF8.s")
 

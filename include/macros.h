@@ -71,5 +71,7 @@
 
 #define LIST_END -1
 
+#define IS_STAGE_UNLOCKED(stage) TRUE << stage
+
 
 #endif
