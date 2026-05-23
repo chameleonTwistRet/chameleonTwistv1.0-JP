@@ -357,7 +357,6 @@ extern s32 D_80174980;
 extern s16 D_800FFEBC;
 extern u8 D_800FE6F0;
 extern s32 D_800FE708;
-extern u8 gLevelAccessBitfeild;
 extern Struct_800714C8 D_800FE70C;
 extern s16 sStageCrownTotals[];
 extern TimeVal D_80200B85[];

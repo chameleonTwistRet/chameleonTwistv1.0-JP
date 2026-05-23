@@ -7254,7 +7254,7 @@ void Effect_GameResults_Update(Effect* effect, Gfx** pGfxPos) {
         Effect_TypeAS_Init(224.0f, 178.0f, 1, 1, 30.0f, 8.0f, 60.0f, 218.0f, 5, gTotalCarrots, 0, 0, 1, 0);
 
         for (i = 0; i < 6; i++) {
-            if (gLevelAccessBitfeild & (1 << i)) {
+            if (gGameState.stageAccess & (1 << i)) {
                 sp8C.array[i] = i;
             }
         }
@@ -7384,7 +7384,7 @@ void Effect_TypeAL_Update(Effect* effect, Gfx** pGfxPos) {
                 }
                 //manually print out record
                 for (i = 0; i < 6; i++) {
-                    s2 += RecordTime_ParseToSecs(&D_80200B85[i]);
+                    s2 += RecordTime_ParseToSecs(&gGameState.stageTimes[i]);
                 }
                 Effect_TypeAS_Init(180.0f, 48.0f, 0.6f, 0.6f, 1, 8.0f, 1, 9.3312e8f, 4, (s2 / 3600) % 24, (s2 / 60) % 60, s2 % 60, 0, 1);
                 func_80071A48(gGameRecords.perfectCode, data->unk_00);

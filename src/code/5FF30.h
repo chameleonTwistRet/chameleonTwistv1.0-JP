@@ -605,7 +605,6 @@ extern char D_8010D98C[];
 extern char D_8010D990[];
 extern s16 D_8010026E[];// extern StageSelectionData D_8010026E[];
 extern u8 D_80200B68;
-//extern u8 gLevelAccessBitfeild;
 extern s16 sDebugLevelAccess;
 extern s16 D_80100EB4[];
 extern s16 D_801B317C;
@@ -639,7 +638,6 @@ extern s32 D_80247904;
 
 extern s16 D_80100258[7]; //should be 7?
 extern s16 NameSpriteIDs[7];
-extern s16 gStageCrownRecords[];
 extern s32 D_800FF8EC;
 extern s16 D_80100348[];
 extern f32 D_800FFEE8;
