@@ -427,7 +427,24 @@ void func_800CFDB8(PlayerActor* arg0) {
     arg0->surface = -1;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800CFDC8.s")
+void func_800CFDC8(PlayerActor* arg0) {
+    arg0->vaulting = 0;
+    arg0->surface = -1;
+    arg0->canJump = 1;
+    arg0->vel.x = 0.0f;
+    arg0->vel.y = 0.0f;
+    arg0->vel.z = 0.0f;
+    arg0->move.x = 0.0f;
+    arg0->move.y = 0.0f;
+    arg0->move.z = 0.0f;
+    arg0->xFromCenter = 0.0f;
+    arg0->yFromCenter = 0.0f;
+    arg0->zFromCenter = 0.0f;
+    arg0->shift.x = 0.0f;
+    arg0->shift.y = 0.0f;
+    arg0->shift.z = 0.0f;
+}
+
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800CFE14.s")
 

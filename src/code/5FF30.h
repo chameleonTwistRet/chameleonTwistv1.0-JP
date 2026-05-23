@@ -122,12 +122,6 @@ typedef struct StageLoadData {
     s32 stageId;
 } StageLoadData;
 
-//from ll.c
-//used in AT LEAST SaveData_Wait
-//with SaveData_Wait, just use the last half of the u64's
-u64 __ull_div(u64 a0, u64 a1);
-u64 __ll_mul(u64 a0, u64 a1);
-
 void func_800A27B0(CTTask* task);
 extern s16 D_8020005C;
 
