@@ -7939,14 +7939,14 @@ s32 RecordTime_ParseToSecs(TimeVal* arg0) {
 }
 
 //sets record time arg1 to time arg0
-void RecordTime_SetTo(s32 arg0, u8* arg1) {
-    u8 temp = arg1[0] & 0xF0;
+void RecordTime_SetTo(s32 arg0, TimeVal* arg1) {
+    u8 temp = arg1->b0 & 0xF0;
 
-    arg1[2] = arg0 & 0xFF;
-    arg1[1] = (arg0 & 0xFF00) >> 8;
-    arg1[0] = (arg0 & 0xFF0000) >> 16;
+    arg1->b2 = arg0 & 0xFF;
+    arg1->b1 = (arg0 & 0xFF00) >> 8;
+    arg1->b0 = (arg0 & 0xFF0000) >> 16;
 
-    arg1[0] |= temp; // keep higher 4 bits
+    arg1->b0 |= temp; // keep higher 4 bits
 }
 
 //file split? following functions deal with save data.
@@ -8184,16 +8184,16 @@ void SaveData_ResetRecords(void) {
     _bzero(&gGameRecords.savedStageData, sizeof(SavedStageData));
     
     for (i = 0; i < 6; i++) {
-        RecordTime_SetTo(0x4B0, &gGameRecords.savedStageData.stageTimes[i][0][0]);
-        gGameRecords.savedStageData.stageTimes[i][0][0] = gGameRecords.savedStageData.stageTimes[i][0][0];
-        RecordTime_SetTo(0x708, &gGameRecords.savedStageData.stageTimes[i][1][0]);
-        gGameRecords.savedStageData.stageTimes[i][1][0] |= 0x20;
-        RecordTime_SetTo(0x960, &gGameRecords.savedStageData.stageTimes[i][2][0]);
-        gGameRecords.savedStageData.stageTimes[i][2][0] |= 0x40;
-        RecordTime_SetTo(0xBB8, &gGameRecords.savedStageData.stageTimes[i][3][0]);
-        gGameRecords.savedStageData.stageTimes[i][3][0] |= 0x60;
-        RecordTime_SetTo(0x1734, &gGameRecords.savedStageData.stageTimes[i][4][0]);
-        gGameRecords.savedStageData.stageTimes[i][4][0] = gGameRecords.savedStageData.stageTimes[i][4][0];
+        RecordTime_SetTo(0x4B0, &gGameRecords.savedStageData.stageTimes[i][0]);
+        gGameRecords.savedStageData.stageTimes[i][0].b0 = gGameRecords.savedStageData.stageTimes[i][0].b0;
+        RecordTime_SetTo(0x708, &gGameRecords.savedStageData.stageTimes[i][1]);
+        gGameRecords.savedStageData.stageTimes[i][1].b0 |= 0x20;
+        RecordTime_SetTo(0x960, &gGameRecords.savedStageData.stageTimes[i][2]);
+        gGameRecords.savedStageData.stageTimes[i][2].b0 |= 0x40;
+        RecordTime_SetTo(0xBB8, &gGameRecords.savedStageData.stageTimes[i][3]);
+        gGameRecords.savedStageData.stageTimes[i][3].b0 |= 0x60;
+        RecordTime_SetTo(0x1734, &gGameRecords.savedStageData.stageTimes[i][4]);
+        gGameRecords.savedStageData.stageTimes[i][4].b0 = gGameRecords.savedStageData.stageTimes[i][4].b0;
     }
 
     gGameRecords.savedStageData.bowlingScore = 0;

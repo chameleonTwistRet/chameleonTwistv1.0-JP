@@ -630,8 +630,14 @@ typedef struct unkStruct15 {
 /* 0x18 */ f32 unk_18;
 } unkStruct15; //sizeof 0x18
 
+typedef struct TimeVal {
+/* 0x00 */ u8 b0;
+/* 0x01 */ u8 b1;
+/* 0x02 */ u8 b2;
+} TimeVal; //sizeof 0x3
+
 typedef struct SavedStageData {
-/* 0x08 */ u8 stageTimes[7][5][3]; //[stageIndex][timeRank][]
+/* 0x08 */ TimeVal stageTimes[7][5]; //[stageIndex][timeRank][]
 /* 0x71 */ s8 index; //index of most recent save file
 /* 0x72 */ s8 unk_72[2];
 /* 0x74 */ u16 bowlingScore;
@@ -854,12 +860,6 @@ typedef struct unkStruct02 {
 /* 0x08 */ struct unkStruct02* next;
 /* 0x0C */ char unk_0C[0x74];
 } unkStruct02; //is this actually size 0x80?
-
-typedef struct TimeVal {
-/* 0x00 */ u8 b0;
-/* 0x01 */ u8 b1;
-/* 0x02 */ u8 b2;
-} TimeVal; //sizeof 0x3
 
 typedef struct SaveFile {
 /* 0x00 */ u8 checksum;
