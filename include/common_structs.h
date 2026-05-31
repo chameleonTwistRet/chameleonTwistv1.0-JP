@@ -217,9 +217,7 @@ typedef struct Collider {
 /* 0x010 */ s32 unk_10;
 /* 0x014 */ s32 unk_14;
 /* 0x018 */ Vec3f sfxPos;
-/* 0x024 */ f32 unk_24;
-/* 0x028 */ s32 UNK_28;
-/* 0x02C */ s32 unk_2C;
+/* 0x024 */ Vec3f unk_24;
 /* 0x030 */ Vec3f unk_30;
 /* 0x03C */ Vec3f unk_3C;
 /* 0x048 */ f32 unk_48;
@@ -281,8 +279,8 @@ typedef struct unkSpriteStruct {
 /* 0x014 */ s32 unk_14;
 /* 0x018 */ Vec3f sfxPos;
 /* 0x024 */ f32 unk_24;
-/* 0x028 */ s32 UNK_28;
-/* 0x02C */ s32 unk_2C;
+/* 0x028 */ f32 UNK_28;
+/* 0x02C */ f32 unk_2C;
 /* 0x030 */ Vec3f unk_30;
 /* 0x03C */ Vec3f unk_3C;
 /* 0x048 */ f32 unk_48;

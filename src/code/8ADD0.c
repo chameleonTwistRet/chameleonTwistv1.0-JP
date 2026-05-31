@@ -15,6 +15,7 @@ Vec3f D_80201950;
 f32 D_80201960;*/
 
 extern CardinalDirection gCardinalDirections[5];
+extern void Rect_Expand(Rect3D* r, f32 s);
 
 typedef struct FieldObjectBehaviourFuncs {
     s32 id;
@@ -277,7 +278,74 @@ void func_800B0AA4(Collider* collider) {
     }
 }
 
+// Randomizes the positions of a paired group of sibling colliders (a shuffle puzzle).
+// Two parallel groups (groupA/groupB) are gathered from the collider pool by walking back
+// from this collider's index. If the control switch (unk_B4) is set, every groupA member is
+// given the shared "solved" model gfx. Otherwise it snapshots each member's position, builds
+// a shuffled index list (100 random swaps), and writes the shuffled positions back, notifying
+// each collider (func_800B402C(_, 4, 1)).
+//
+// diff is a whole-function register-number shift 
+// (arg0 lands in s5 vs the target's s6) that the permuter could not break in 73k iterations. 
+// diff score ~313
+#ifdef NON_MATCHING
+void func_800B0B20(Collider* arg0, RoomObject* arg1) {
+    Collider* groupB[25];
+    Collider* groupA[25];
+    Vec3f posB[25];
+    Vec3f posA[25];
+    s32 order[25];
+    Gfx* model;
+    s32 count;
+    s32 boundCount;
+    s32 i;
+    s32 a;
+    s32 b;
+    s32 t;
+
+    func_800B5D68(arg0, 1);
+    count = arg1->keyframes.temp;
+    arg0->unk_AC = count & 0xFF;
+    arg0->unk_B0 = arg1->noKeyframes;
+    arg0->unk_B4 = arg1->unk40;
+    if (count >= 0x1A) {
+        DummiedPrintf3("Too Many Key\n");
+        count = arg0->unk_AC;
+    }
+    boundCount = count;
+    for (i = 0; i < count; i++) {
+        groupB[i] = &D_80236980[func_800B2B50(arg0->unk_04 - count - i - 1, gCurrentZone)];
+        groupA[i] = &D_80236980[func_800B2B50(arg0->unk_04 - i - 1, gCurrentZone)];
+    }
+    if (func_800B34D0(arg0->unk_B4) != 0) {
+        model = *(Gfx**)(D_801B3178->unk8 + arg0->unk_B0 * 0x30);
+        for (i = 0; i < boundCount; i++) {
+            groupA[i]->gfx = model;
+        }
+    } else {
+        for (i = 0; i < boundCount; i++) {
+            posB[i] = groupB[i]->unk_30;
+            posA[i] = groupA[i]->unk_30;
+            order[i] = i;
+        }
+        for (i = 0; i < 100; i++) {
+            a = Random(0, count - 1);
+            b = Random(0, boundCount - 1);
+            t = order[a];
+            order[a] = order[b];
+            order[b] = t;
+        }
+        for (i = 0; i < boundCount; i++) {
+            groupB[i]->unk_30 = posB[order[i]];
+            groupA[i]->unk_30 = posA[order[i]];
+            func_800B402C(groupB[i], 4, 1);
+            func_800B402C(groupA[i], 4, 1);
+        }
+    }
+}
+#else
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B0B20.s")
+#endif
 
 //deals with "shutters"
 //very literal. manages the grenade shutters in Bomb Land
@@ -1284,7 +1352,141 @@ void func_800B6D24(Collider* arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B9750.s")
 
+// Cyclic-path moving platform that is also tongue-grabbable. It cycles through a 4-phase loop
+// (phase lengths unk_AC/B0/B4/B8) on the global clock, lerping its position between a "start"
+// (unk_8C..94) and "end" (unk_98..A0). When the tongue is latched and a tongue segment overlaps
+// the platform (expanded, player-relative bounds), it follows the grab instead. Plays transition
+// sfx (0x8C start-move / 0x8D arrive / 0x8E grab).
+#ifdef NON_MATCHING
+void func_800B97F0(Collider* arg0) {
+    Rect3D box;
+    Vec3f segPos;
+    Rect3D* bounds;
+    f32 pos0x, pos0y, pos0z;
+    f32 pos1x, pos1y, pos1z;
+    f32 px, py, pz;
+    f32 newx, newy, newz;
+    f32 hold, factor, t, invDur;
+    s32 p0, p1, p2, period, clock, clockm1;
+    s32 sfx, mode, seg, grabbed, easeMode;
+    Tongue* tongue;
+    PlayerActor* player;
+
+    sfx = -1;
+    pos0x = arg0->unk_8C; pos0y = arg0->unk_90; pos0z = arg0->unk_94;
+    pos1x = arg0->unk_98; pos1y = arg0->unk_9C; pos1z = arg0->unk_A0;
+    p0 = arg0->unk_AC;
+    p1 = arg0->unk_B0 + p0;
+    p2 = arg0->unk_B4 + p1;
+    period = arg0->unk_B8 + p2;
+    clock = (D_801749A0 - arg0->unk_110) % period;
+    if (clock == 0) {
+        arg0->unkA4 = 1.0f;
+    }
+    bounds = &arg0->unk_CC;
+    player = gPlayerActors;
+    box.min.x = player->pos.x - player->hitboxSize;
+    box.max.x = player->pos.x + player->hitboxSize;
+    box.min.z = player->pos.z - player->hitboxSize;
+    box.max.z = player->pos.z + player->hitboxSize;
+    box.min.y = player->pos.y;
+    box.max.y = player->pos.y + player->hitboxYStretch;
+    if (IfRectsIntersect(bounds, &box) != 0 && gPlayerActors->power != 3) {
+        func_80036D74(gPlayerActors, gTongues);
+    }
+    tongue = gTongues;
+    if (arg0->unkA4 >= 1.0 && tongue->tongueMode != 0 &&
+        tongue->poleSegmentAt < tongue->segments - 1) {
+        grabbed = 0;
+        box.min.x = bounds->min.x; box.min.y = bounds->min.y; box.min.z = bounds->min.z;
+        box.max.x = bounds->max.x; box.max.y = bounds->max.y; box.max.z = bounds->max.z;
+        px = player->pos.x; py = player->pos.y; pz = player->pos.z;
+        box.min.x -= px; box.max.x -= px;
+        box.min.y -= py; box.max.y -= py;
+        box.min.z -= pz; box.max.z -= pz;
+        Rect_Expand(&box, 20.0f);
+        seg = tongue->poleSegmentAt;
+        box.min.y -= 50.0;
+        box.max.y += 50.0;
+        if (seg < gTongues->segments) {
+            do {
+                segPos.x = tongue->tongueXs[seg];
+                segPos.y = tongue->tongueYs[seg];
+                segPos.z = tongue->tongueZs[seg];
+                if (IsPointInRect(segPos, &box) != 0) {
+                    grabbed = 1;
+                    sfx = 0x8E;
+                    break;
+                }
+                seg++;
+            } while (seg < tongue->segments);
+        }
+        if (grabbed != 0) {
+            clockm1 = clock - 1;
+            if (clockm1 < p0) {
+                t = 0.0f; easeMode = arg0->unk_BC;
+            } else if (clockm1 < p1) {
+                easeMode = arg0->unk_BC; t = (f32)(clockm1 - p0) / (f32)(p1 - p0);
+            } else if (clockm1 < p2) {
+                t = 1.0f; easeMode = arg0->unk_C0;
+            } else {
+                easeMode = arg0->unk_C0; t = 1.0 - (f32)(clockm1 - p2) / (f32)(period - p2);
+            }
+            arg0->unkA4 = func_800B2308(t, easeMode);
+        }
+    }
+    invDur = 1.0f / (f32)(p1 - p0);
+    if (clock < p0) {
+        easeMode = arg0->unk_BC;
+        if (p0 - 0x28 < clock) {
+            mode = 0;
+            t = __sinf(((clock - p0 + 0x28) * 3.141592653589793) / 40.0) * 0.25;
+            if (clock + 0x27 == p0) {
+                sfx = 0x8D;
+            }
+        } else {
+            t = 0.0f; mode = 0;
+        }
+    } else if (clock < p1) {
+        easeMode = arg0->unk_BC;
+        mode = 1;
+        t = (f32)(clock - p0) / (f32)(p1 - p0);
+        if (clock == p0) {
+            sfx = 0x8C;
+        }
+    } else if (clock < p2) {
+        t = 1.0f; easeMode = arg0->unk_C0; mode = 0;
+    } else {
+        easeMode = arg0->unk_C0; mode = 0;
+        t = 1.0 - (f32)(clock - p2) / (f32)(period - p2);
+        if (clock == p2) {
+            sfx = 0x8D;
+        }
+    }
+    factor = func_800B2308(t, easeMode);
+    hold = arg0->unkA4;
+    if (hold < factor) {
+        factor = hold;
+        if (mode != 0 && (clock & 1)) {
+            factor = hold - invDur;
+        }
+    }
+    newx = pos0x * (1.0 - factor) + pos1x * factor;
+    newy = pos0y * (1.0 - factor) + pos1y * factor;
+    newz = pos0z * (1.0 - factor) + pos1z * factor;
+    arg0->unk_3C.x = newx - arg0->unk_30.x;
+    arg0->unk_3C.y = newy - arg0->unk_30.y;
+    arg0->unk_3C.z = newz - arg0->unk_30.z;
+    arg0->unk_30.x = newx;
+    arg0->unk_30.y = newy;
+    arg0->unk_30.z = newz;
+    if (sfx >= 0) {
+        func_80088698(PlaySoundEffect(sfx, &arg0->sfxPos.x, &arg0->sfxPos.y, &arg0->sfxPos.z, 0, 0));
+    }
+}
+#else
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B97F0.s")
+#endif
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B9E8C.s")
 
@@ -1880,9 +2082,9 @@ void func_800C2A00(void) {
     func_800CFDC8(gPlayerActors);
     if (D_80236978 != 0) {
         isInOverworld = FALSE;
-        isChange.unk4C = gPlayerActors->pos.x;
-        isChange.unk50 = gPlayerActors->pos.y;
-        isChange.unk54 = gPlayerActors->pos.z;
+        isChange.unk4C = gPlayerActors[0].pos.x;
+        isChange.unk50 = gPlayerActors[0].pos.y;
+        isChange.unk54 = gPlayerActors[0].pos.z;
         sp24 = currentStageCrowns;
         func_800C1204(0, gPlayerActors, 1, 0, 1);
         currentStageCrowns += sp24;
@@ -1950,10 +2152,238 @@ void enterBossRoom(void) {
 }
 
 //referred to in US1.0 as "InitField"
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/InitField.s")
+extern s32 D_800F06F0;
+extern s32 D_801B3170;
+extern s32 D_801B3174;
+extern f32 D_8020D8D0;
+extern f32 D_8020D8D4;
+extern f32 D_8020D8D8;
+
+void InitField(void) {
+    Field* temp_v0;
+    s32 var_a0;
+    PlayerActor* player = gPlayerActors;
+
+    func_800C88AC();
+    D_80236970 = -1;
+    func_800D34CC();
+    if ((D_801B3174 != 0) && (D_801B3170 != 0)) {
+        isInOverworld = 1;
+        D_80236978 = 1;
+    } else if (D_801B3174 == 0) {
+        isInOverworld = 0;
+        D_80236978 = 0;
+    } else {
+        isInOverworld = 1;
+        D_80236978 = 0;
+    }
+    if (D_800F06F0 >= 0) {
+        var_a0 = D_800F06F0;
+    } else if (isInOverworld == 1) {
+        var_a0 = 1;
+    } else {
+        var_a0 = 0;
+    }
+    switch (isInOverworld) {
+    case 0:
+        D_8020D8DC = player[0].pos.x;
+        D_8020D8E0 = player[0].pos.y;
+        D_8020D8E4 = player[0].pos.z;
+        func_800C1204(var_a0, player, 0, -1, 1);
+        temp_v0 = &gZoneFields[gCurrentZone];
+        isChange.unk78 = D_801B3178->unk_18 + (temp_v0->unk80 << 6);
+        break;
+    case 1:
+        func_800C2670(var_a0, player, 1);
+        temp_v0 = &gZoneFields[gCurrentZone];
+        break;
+    default:
+        temp_v0 = &gZoneFields[gCurrentZone];
+        break;
+    }
+    D_80176F58[0] = 1;
+    D_80176F58[1] = 1;
+    isChange.unk0 = 1;
+    isChange.unk4 = 1;
+    isChange.unk_0C = var_a0;
+    isChange.unk18 = 0;
+    temp_v0 = &gZoneFields[gCurrentZone];
+    isChange.unk1C = 0.0f;
+    isChange.unk24 = 0.0f;
+    isChange.unk20 = -1.0f;
+    D_8020D8D0 = player[0].pos.x;
+    D_8020D8D4 = player[0].pos.y;
+    D_8020D8D8 = player[0].pos.z;
+    isChange.unk64 = temp_v0->unk7C;
+    if (IsBossStage() != 0) {
+        isChange.unk64 = 2;
+    }
+    isChange.unk74 = 1;
+    isChange.unkCC = gZoneFields[gCurrentZone].unk80;
+}
 
 //referred to in US1.0 as "moveField"
+#ifdef NON_MATCHING
+// Fully decompiled & structurally correct; matches except register-allocation/
+// spill ties in the sprite-actor distance loop (object score ~5440, frame size
+// matches). decomp-permuter only beats it via junk. GLOBAL_ASM kept for the
+// byte-exact build until the regalloc tail is resolved. See ido53_codegen_quirks.md SS48.
+void MoveField(void) {
+    Vec3f sp8C;
+    Vec3f sp80;
+    f32 sp70;
+    f32 sp58;
+    f32 temp_f0;
+    f32 temp_f2;
+    f32 temp_f6;
+    f32 temp_f12;
+    f32 temp_f14;
+    Collider** var_s5;
+    Collider* temp_s1;
+    Collider* temp_s0;
+    SpriteActor* temp_a0;
+    SpriteActor* sprAct;
+    s32 var_s4;
+    s32 var_s0;
+    s32 temp_v0;
+    s32 temp_v0_2;
+    s32 var_s0_2;
+
+    func_800B56E8();
+    func_800B5600();
+    if (gCurrentStage == 7) {
+        func_800B5314();
+    }
+    if (D_80176F58[0] == 0) {
+        switch (isInOverworld) {
+        case 0:
+            CheckDoor(gPlayerActors);
+            break;
+        case 1:
+            func_800C1CE0(gPlayerActors);
+            break;
+        }
+    }
+    func_800C88D0();
+    func_800C0B74();
+    func_800B3698(gPlayerActors);
+
+    var_s5 = &D_80240898;
+    var_s4 = 0;
+    if (gFieldCount > 0) {
+        do {
+            temp_s1 = *var_s5;
+            temp_v0_2 = temp_s1->unk_10;
+            var_s0 = temp_v0_2;
+            if ((temp_v0_2 != 0) && (temp_v0_2 != 9) && (temp_v0_2 != 0xB) && (temp_v0_2 != 0x22) && (temp_v0_2 != 0xC) && (temp_v0_2 != 0xD) && (temp_v0_2 != 0xE) && (temp_s1->unk_110 < 0)) {
+                if ((temp_v0_2 == 5) && (temp_s1->unk_AC < 0) && (temp_s1->unk_B4 < 0)) {
+                    var_s0 = 5;
+                } else if ((IsntNegative(temp_s1->unk10C) != 0) && (func_800B34D0(temp_s1->unk10C) != 0)) {
+                    temp_s1->unk_110 = D_801749A0;
+                } else {
+                    var_s0 = 0;
+                }
+            }
+            if ((u32) var_s0 < 0x26U) {
+                if (var_s0 == 0) {
+                    ((void (*)(Collider*)) D_80108894[var_s0].func2)(temp_s1);
+                } else {
+                    temp_s1->function(temp_s1);
+                }
+            }
+            if (temp_s1->unk_FC != NULL) {
+                ((void (*)(Collider*)) temp_s1->unk_FC)(temp_s1);
+            }
+            if (temp_s1->unk_4C == NULL) {
+                temp_s1->sfxPos = temp_s1->unk_30;
+                temp_s1->unk_24 = temp_s1->unk_3C;
+            }
+            var_s4 += 1;
+            var_s5 += 1;
+        } while (var_s4 < gFieldCount);
+        var_s5 = &D_80240898;
+        var_s4 = 0;
+    }
+    if (gFieldCount > 0) {
+        do {
+            temp_s1 = *var_s5;
+            temp_s0 = temp_s1->unk_4C;
+            if (temp_s0 != NULL) {
+                if ((func_800B3FFC(temp_s0, 1) == 2) && (temp_s1->unk_10 != 0x23)) {
+                    temp_s0 = temp_s1->unk_4C;
+                    RotateVector3D(&sp8C, temp_s1->unk_30, temp_s0->unk60, temp_s0->unk_5C);
+                    temp_s0 = temp_s1->unk_4C;
+                    temp_s1->sfxPos.x = temp_s0->sfxPos.x + sp8C.x;
+                    temp_s1->sfxPos.y = temp_s0->sfxPos.y + sp8C.y;
+                    temp_s1->sfxPos.z = temp_s0->sfxPos.z + sp8C.z;
+                    RotateVector3D(&sp80, temp_s1->unk_30, temp_s0->unk60 + temp_s0->unk64, temp_s0->unk_5C);
+                    temp_s0 = temp_s1->unk_4C;
+                    temp_s1->unk_24.x = temp_s0->unk_24.x + (sp80.x - sp8C.x);
+                    temp_s1->unk_24.y = temp_s0->unk_24.y + (sp80.y - sp8C.y);
+                    temp_s1->unk_24.z = temp_s0->unk_24.z + (sp80.z - sp8C.z);
+                    temp_s1->unk60 = temp_s0->unk60;
+                    temp_s1->unk64 = temp_s0->unk64;
+                } else {
+                    temp_s0 = temp_s1->unk_4C;
+                    temp_s1->sfxPos.x = temp_s0->sfxPos.x + temp_s1->unk_30.x;
+                    temp_s1->sfxPos.y = temp_s0->sfxPos.y + temp_s1->unk_30.y;
+                    temp_s1->sfxPos.z = temp_s0->sfxPos.z + temp_s1->unk_30.z;
+                    temp_s1->unk_24.x = temp_s0->unk_24.x + temp_s1->unk_3C.x;
+                    temp_s1->unk_24.y = temp_s0->unk_24.y + temp_s1->unk_3C.y;
+                    temp_s1->unk_24.z = temp_s0->unk_24.z + temp_s1->unk_3C.z;
+                }
+            }
+            var_s4 += 1;
+            if (temp_s1->unk_124 != 0) {
+                Poles[temp_s1->unk_128].pos.x = temp_s1->sfxPos.x;
+                Poles[temp_s1->unk_128].pos.y = temp_s1->sfxPos.y;
+                Poles[temp_s1->unk_128].pos.z = temp_s1->sfxPos.z;
+                if (temp_s1->unk_10 == 0x23) {
+                    Poles[temp_s1->unk_128].pos.y -= 190.0 * temp_s1->unk_54;
+                }
+            }
+            switch (temp_s1->unk_0C) {
+            case 0x7:
+                break;
+            case 0x70:
+                ((Vec3f*) temp_s1->unkF4)->x = temp_s1->sfxPos.x;
+                ((Vec3f*) temp_s1->unkF4)->y = temp_s1->sfxPos.y;
+                ((Vec3f*) temp_s1->unkF4)->z = temp_s1->sfxPos.z;
+                break;
+            }
+            var_s5 += 1;
+        } while (var_s4 < gFieldCount);
+        var_s4 = 0;
+    }
+    func_80083F10();
+    if (GetSpriteActCount(gZoneFields[gCurrentZone].spriteActors) > 0) {
+        var_s0_2 = var_s4 * 0x50;
+        do {
+            var_s4 += 1;
+            temp_a0 = gZoneFields[gCurrentZone].spriteActors;
+            sprAct = (SpriteActor*) ((s32) temp_a0 + var_s0_2);
+            if ((sprAct->damages != 0) && (sprAct->unk20 != 0) &&
+                (sp70 = sprAct->position.z,
+                 temp_f6 = sprAct->scale.x,
+                 sp58 = temp_f6,
+                 temp_f0 = sprAct->position.x - gPlayerActors->pos.x,
+                 temp_f2 = (f32) ((f64) sprAct->position.y - ((f64) gPlayerActors->pos.y + (f64) gPlayerActors->hitboxYStretch * 0.5)),
+                 temp_f12 = sp70 - gPlayerActors->pos.z,
+                 temp_f14 = temp_f6 + gPlayerActors->hitboxSize,
+                 (((temp_f0 * temp_f0) + (temp_f2 * temp_f2) + (temp_f12 * temp_f12)) < (temp_f14 * temp_f14)))) {
+                func_80036D74(gPlayerActors, gTongues);
+                break;
+            }
+            var_s0_2 += 0x50;
+        } while (var_s4 < GetSpriteActCount(temp_a0));
+    }
+    func_800B5640();
+    ClearPolygon();
+    func_800B3364(0);
+}
+#else
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/MoveField.s")
+#endif
 
 void func_800C38E0(SpriteActor* arg0) {
     SpriteActor* curSpAct;

@@ -3330,7 +3330,13 @@ s32 func_8008D5DC(ContMain* controller) {
     return result;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008D6B4.s")
+s32 func_8008D6B4(ContMain* arg0) {
+    s32 result = arg0->buttons2 & 0xF00;
+    result |= (arg0->buttons2 & 0xF) << 8;
+    result |= arg0->buttons1 & 0xF00;
+    result |= (arg0->buttons1 & 0xF) << 8;
+    return result;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008D6E4.s")
 

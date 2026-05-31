@@ -32,4 +32,9 @@ tools/cli.ini
 undefined_funcs_auto.txt
 undefined_syms_auto.txt
 ctx.c
+*.m2c
 include/ld_addrs.h
+tools/m2c/
+vault/
+wip/
+nonmatchings/

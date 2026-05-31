@@ -2437,8 +2437,13 @@ void func_80056CA0(u8* arg0, u8* arg1) {
     }
 }
 
-//https://decomp.me/scratch/cUHtJ
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80056CDC.s")
+void func_80056CDC(s32 arg0, s32 arg1) {
+    unkStruct02* temp_v0 = (unkStruct02*) ((arg0 + 0x7F) & ~0x7F);
+    D_80176F4C = temp_v0;
+    temp_v0->flags = ((((arg1 - (s32) temp_v0) + arg0 + 0x7F) & ~0x7F) | 1);
+    temp_v0->unk_04 = NULL;
+    temp_v0->next = NULL;
+}
 
 void func_80056D14(unkStruct02* arg0, s32 arg1, unkStruct02* arg2, unkStruct02* arg3) {
     arg0->flags = arg1;

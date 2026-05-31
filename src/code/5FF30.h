@@ -207,7 +207,7 @@ Gfx* func_8008D168(Gfx* gfxPos, s32 arg1, s32 arg2);
 s32 func_8008D5DC(ContMain* controller);
 //this also came up as CTTask but it generates with buttons1 and buttons2 so i think thats more accurate
 //definitely only has one arg though
-u16 func_8008D6B4(ContMain*);
+s32 func_8008D6B4(ContMain*);
 u16 func_8008D6E4(CTTask*, ContMain*);
 s32 func_8008D7B0(CTTask* task);
 s32 func_8008D7FC(CTTask* task);

@@ -2691,7 +2691,31 @@ void ActorInit_ChocoKidSpawner(Actor* chocoKidSpawner){
 
 }
 
+// scans gActors for a live SPAWNED_CHOCO_KID with matching tag, else spawns one. 
+// matching score ~605
+#ifdef NON_MATCHING
+Actor* ActorTick_ChocoKidSpawner(Actor* chocoKidSpawner) {
+    s32 spawnerTag = chocoKidSpawner->unk_124;
+    Actor* actor = gActors;
+
+    do {
+        if (actor->actorID == SPAWNED_CHOCO_KID) {
+            if (spawnerTag == actor->unk_124) {
+                return actor + 1;
+            }
+        }
+        actor++;
+    } while (actor != (Actor*) Poles);
+
+    return Actor_Init(SPAWNED_CHOCO_KID, chocoKidSpawner->pos.x, chocoKidSpawner->pos.y, chocoKidSpawner->pos.z,
+        chocoKidSpawner->unk_90, chocoKidSpawner->unk_F4, chocoKidSpawner->unk_F8, chocoKidSpawner->unk_FC,
+        chocoKidSpawner->unk_100, chocoKidSpawner->unk_104, chocoKidSpawner->unk_108,
+        chocoKidSpawner->position._f32.x, chocoKidSpawner->position._f32.y, chocoKidSpawner->unk_15C,
+        0.0f, 0.0f, 0.0f, 0.0f, 0.0f, spawnerTag, 0, 0, 0);
+}
+#else
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_ChocoKidSpawner.s")
+#endif
 
 void ActorInit_SpawnedChocoKid(Actor* chocoKid) {
     ActorInit_ChocoKid(chocoKid);
@@ -2784,7 +2808,33 @@ void ActorInit_BattleModeSaucer(Actor* battleModeSaucer) {
     battleModeSaucer->unk_134[0] = battleModeSaucer->pos.y;
 }
 
+// instruction-perfect; 
+// diff is a single register-slot swap (ft3<->ft4) in the else-if
+#ifdef NON_MATCHING
+void ActorTick_BattleModeSaucer(Actor* battleModeSaucer) {
+    f32 targetY = (battleModeSaucer->position._f32.x * battleModeSaucer->userVariables[0]) + battleModeSaucer->unk_134[0];
+
+    if (battleModeSaucer->pos.y < targetY) {
+        battleModeSaucer->pos.y += battleModeSaucer->position._f32.y;
+        if (targetY < battleModeSaucer->pos.y) {
+            battleModeSaucer->pos.y = targetY;
+        }
+    } else if (targetY < battleModeSaucer->pos.y) {
+        battleModeSaucer->pos.y -= battleModeSaucer->position._f32.y;
+        if (battleModeSaucer->pos.y < targetY) {
+            battleModeSaucer->pos.y = targetY;
+        }
+    }
+
+    if (D_80174758[battleModeSaucer->userVariables[0] - 1] == -1) {
+        D_80174758[battleModeSaucer->userVariables[0]] = -1;
+        battleModeSaucer->userVariables[0] -= 1;
+        D_80174758[battleModeSaucer->userVariables[0]] = battleModeSaucer->actorIndex;
+    }
+}
+#else
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_BattleModeSaucer.s")
+#endif
 
 void ActorInit_Unk59(Actor* unk_59){
 
