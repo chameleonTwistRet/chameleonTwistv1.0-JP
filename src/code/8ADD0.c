@@ -2137,16 +2137,16 @@ void func_800C2A00(void) {
 //referred to in US1.0 as "EnterBossRoom"
 //TODO: fake match
 void enterBossRoom(void) {
-    int *new_var2;
-    int new_var;
+    int *ptrToValue3;
+    int value3;
     func_800CFDC8(gPlayerActors);
 
     if (isInOverworld == FALSE) {
         func_800C2A00();
     } else {
-        new_var = 3;
-        new_var2 = &new_var;
-        gGameModeState = *new_var2;
+        value3 = 3;
+        ptrToValue3 = &value3;
+        gGameModeState = *ptrToValue3;
         D_80174878 = 11;
     }
 }

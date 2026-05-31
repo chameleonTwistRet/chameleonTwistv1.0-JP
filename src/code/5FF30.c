@@ -8252,11 +8252,6 @@ s32 SaveData_WriteFile(SaveFile* arg0) {
 }
 
 s32 SaveData_ReadFile(SaveFile* arg0) {
-    SaveFile* var_a0;
-    s32 var_a1;
-    s32* var_v1;
-    s32* var_v1_2;
-    s8 temp_t5;
     s32 i;
 
     gSelectedCharacters[D_800FF8E8] = arg0->selectedCharacter;
@@ -8276,11 +8271,13 @@ s32 SaveData_ReadFile(SaveFile* arg0) {
     } else {
         D_801B313D = 0;
     }
+
     if (arg0->flags & 0x10) {
         isInOverworld = 1;
     } else {
         isInOverworld = 0;
     }
+    
     if (arg0->flags & 0x20) {
         D_800FFEBC = 1;
     } else {

@@ -192,7 +192,7 @@ void idleproc(void *arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/1050/mainproc.s")
 
 //animates the player
-#ifdef NON_MATCHING
+#ifdef NON_EQUIVALENT
 void func_80025EF0(PlayerActor* arg0, Tongue* arg1, s32 arg2) {
     s32 sp124;
     s32 sp120 = arg0->globalTimer * 0.8f;
