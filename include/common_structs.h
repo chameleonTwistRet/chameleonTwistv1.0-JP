@@ -19,6 +19,12 @@ typedef struct Vec3f {
 /* 0x08 */ f32 z;
 } Vec3f;
 
+typedef struct Vec3s {
+/* 0x00 */ s16 x;
+/* 0x02 */ s16 y;
+/* 0x04 */ s16 z;
+} Vec3s;
+
 typedef struct Vec3w {
 /* 0x00 */ s32 x;
 /* 0x04 */ s32 y;

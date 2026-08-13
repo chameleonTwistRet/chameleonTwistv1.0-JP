@@ -5857,7 +5857,15 @@ void UnlockEyeChange(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8006C0D0.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8006C368.s")
+void Effect_TypeBD_Init(f32 posX, f32 posY, f32 posZ, f32 duration, f32 arg4, f32 velX, f32 velZ);
+
+// Every 4th frame, spawns a TypeBD effect at (x, 161, z) while the caller sits above x=6300
+// and within the y band [100, 160].
+void func_8006C368(f32 arg0, f32 arg1, f32 arg2) {
+    if ((arg0 > 6300.0f) && (arg1 >= 100.0f) && (arg1 <= 160.0f) && ((gTimer & 3) == 0)) {
+        Effect_TypeBD_Init(arg0, 161.0f, arg2, 20.0f, 180.0f, -8.0f, 8.0f);
+    }
+}
 
 void Effect_TypeV_Init(f32 posX, f32 posY, f32 posZ, f32 velX, f32 velY, f32 velZ, f32 size, s32 duration, u8 isMain, u8 opacity);
 

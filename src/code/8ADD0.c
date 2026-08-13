@@ -699,7 +699,33 @@ void func_800B2D34(void) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B2D78.s")
+// MaxXZRadius: takes the absolute value of all four inputs, keeps the larger of (|a|,|b|) and the
+// larger of (|c|,|d|), and returns the hypotenuse of those two dominant magnitudes, i.e. the
+// worst-case XZ-plane radius of an extent spanning a..b by c..d.
+f32 MaxXZRadius(f32 a, f32 b, f32 c, f32 d) {
+    f32* pc = &c;
+    f32* pd = &d;
+    f32 maxAB;
+    f32 maxCD;
+
+    if (a < 0.0f) {
+        a = -a;
+    }
+    if (b < 0.0f) {
+        b = -b;
+    }
+    if (*pc < 0.0f) {
+        *pc = -*pc;
+    }
+    if (*pd < 0.0f) {
+        *pd = -*pd;
+    }
+
+    maxAB = (b < a) ? a : b;
+    maxCD = (*pd < *pc) ? *pc : *pd;
+
+    return __sqrtf((maxAB * maxAB) + (maxCD * maxCD));
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B2E40.s")
 
@@ -838,9 +864,51 @@ void ResetStageModels(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/RegistModel.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/moveModel.s")
+// moveModel: translate a collision model in place by `offset`, adding it to every vertex of
+// vertsStart (noXVerts entries, stride 0xC) and shifting both corners of the AABB at settingsStart. 
+void moveModel(ModelCollision* model, Vec3f offset) {
+    s32 i;
+    Vec3f* vert;
+    Rect3D* bounds;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/ScaleModel.s")
+    for (i = 0, vert = model->vertsStart; i < model->noXVerts; i++, vert++) {
+        vert->x += offset.x;
+        vert->y += offset.y;
+        vert->z += offset.z;
+    }
+
+    bounds = model->settingsStart;
+    bounds->min.x += offset.x;
+    bounds->max.x += offset.x;
+    bounds->min.y += offset.y;
+    bounds->max.y += offset.y;
+    bounds->min.z += offset.z;
+    bounds->max.z += offset.z;
+}
+
+// ScaleModel: scale a collision model in place, multiplying every vertex of vertsStart
+// (noXVerts entries, stride 0xC) and both corners of the AABB at settingsStart by the matching
+// per-axis factor. Counterpart to moveModel above and RotateModel below; called by RegistField
+// when a placed model carries a scale.
+void ScaleModel(ModelCollision* model, f32 sx, f32 sy, f32 sz) {
+    s32 i;
+    Vec3f* vert;
+    Rect3D* bounds;
+
+    for (i = 0, vert = model->vertsStart; i < model->noXVerts; i++, vert++) {
+        vert->x *= sx;
+        vert->y *= sy;
+        vert->z *= sz;
+    }
+
+    bounds = model->settingsStart;
+    bounds->min.x *= sx;
+    bounds->max.x *= sx;
+    bounds->min.y *= sy;
+    bounds->max.y *= sy;
+    bounds->min.z *= sz;
+    bounds->max.z *= sz;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/RotateModel.s")
 
@@ -1125,7 +1193,42 @@ void setCrownPositionsForRoom(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/EraseRoomItem.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B4F14.s")
+extern s32 D_800F06F0;
+extern s32 D_801B3170;
+extern s32 D_801B3174;
+
+typedef struct ZoneDoorView {
+    /* 0x00 */ u8 unk_00[0x4C];
+    /* 0x4C */ Vec3s pos;
+} ZoneDoorView;
+
+// Zone_GetDoorPos: fetch the (x,y,z) spawn anchor of door `doorIndex` in the active zone,
+// widening the packed s16 coords to floats through the out-pointers. The zone table comes
+// from the dungeon (D_801B3174) when set, else the overworld header (D_801B3170->unk8);
+// the zone record is picked by the forced-entry override D_800F06F0 when >= 0, else
+// gCurrentZone. Used at room load to place each player at their entry door (see the
+// gPlayerActors caller below).
+void Zone_GetDoorPos(s32 doorIndex, f32* outX, f32* outY, f32* outZ) {
+    s32 base;
+    s32 half;
+    ZoneDoorView* door;
+
+    half = doorIndex * 3;
+    if (D_801B3174 != 0) {
+        base = D_801B3174;
+    } else {
+        base = ((s32*) D_801B3170)[2];
+    }
+    if (D_800F06F0 >= 0) {
+        base = (D_800F06F0 * 0x6C) + base;
+    } else {
+        base = (gCurrentZone * 0x6C) + base;
+    }
+    door = (ZoneDoorView*) ((s16*) base + half);
+    *outX = door->pos.x;
+    *outY = door->pos.y;
+    *outZ = door->pos.z;
+}
 
 void func_800B4FCC(void) {
     s32 i;
@@ -1303,7 +1406,21 @@ void func_800B6098(Collider* arg0, RoomObject* arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B6B4C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B6C34.s")
+// MOVE: rotating platform. Advance angle by speed (unless paused), wrap into [0, 2*PI).
+void func_800B6C34(Collider* arg0) {
+    f32 angle;
+
+    Vec3f_Zero(&arg0->unk_3C);
+    if (func_800B2510() == 0) {
+        arg0->unk60 += arg0->unk64;
+    }
+    angle = arg0->unk60;
+    if (angle < 0.0f) {
+        arg0->unk60 = angle + 6.283185307179586;
+    } else if (angle >= 6.283185307179586) {
+        arg0->unk60 = angle - 6.283185307179586;
+    }
+}
 
 void func_800B6CD8(Collider* arg0, RoomObject* arg1) {
     func_800B5D68(arg0, 1);
@@ -1344,13 +1461,31 @@ void func_800B6D24(Collider* arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B9298.s")
 
+// MOVE hook: sinusoidal oscillation about an axis.
+// angle = sin(2*PI * globalTimer / period) * amplitude (negated if axis == 1).
+// Stores the new angle in unk60 and this frame's delta in unk64.
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B9390.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B942C.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B9514.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B9750.s")
+void func_800B9750(Collider* arg0, RoomObject* arg1) {
+    func_800B5D68(arg0, 2);
+    arg0->unk_8C = arg0->unk_30.x;
+    arg0->unk_90 = arg0->unk_30.y;
+    arg0->unk_94 = arg0->unk_30.z;
+    arg0->unk_98 = arg1->unk28;
+    arg0->unk_9C = arg1->unk2C;
+    arg0->unk_A0 = arg1->unk30;
+    arg0->unkA4 = 1.0f;
+    arg0->unk_AC = arg1->keyframes.temp;
+    arg0->unk_B0 = arg1->noKeyframes;
+    arg0->unk_B4 = arg1->unk40;
+    arg0->unk_B8 = arg1->unk44;
+    arg0->unk_BC = arg1->unk48;
+    arg0->unk_C0 = arg1->unk4C;
+}
 
 // Cyclic-path moving platform that is also tongue-grabbable. It cycles through a 4-phase loop
 // (phase lengths unk_AC/B0/B4/B8) on the global clock, lerping its position between a "start"
@@ -1572,7 +1707,34 @@ void func_800BBC88(Collider* arg0, RoomObject* arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BCD10.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BD1EC.s")
+void func_800BD1EC(Collider* arg0, RoomObject* arg1) {
+    PlatformKeyframe* kf;
+    s32 t;
+    s32 i;
+
+    func_800B5D68(arg0, 2);
+    t = 0;
+    kf = arg1->keyframes._keyframe;
+    i = 0;
+    arg0->unk_AC = arg1->keyframes.temp;
+    arg0->unk_B0 = arg1->noKeyframes;
+    arg0->unk_B4 = 0;
+    arg0->unk_30.x = kf->position.x;
+    arg0->unk_30.y = kf->position.y;
+    arg0->unk_30.z = kf->position.z;
+    for (i = 0; i < arg0->unk_B0 - 1; i++, kf++) {
+        kf->unk18 = t;
+        t += kf->unkC;
+        kf->unk1C = t;
+        t += kf->unk10;
+        kf->unk20 = t;
+    }
+    arg0->unk_B8 = t;
+    arg0->unk_BC = 0;
+    arg0->unk_C0 = 0;
+    arg0->unkC4 = arg1->unk40;
+    arg0->unkC8 = 0;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BD2AC.s")
 
@@ -1584,7 +1746,20 @@ void func_800BD608(Collider* arg0) {
 }
 
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BD634.s")
+Vec3f* func_800BD634(Vec3f* out, Collider* arg1) {
+    Vec3f sp34;
+    Vec3f sp28;
+
+    sp34.x = 0.0 - arg1->unk_8C;
+    sp34.y = 0.0f;
+    sp34.z = 0.0 - arg1->unk_90;
+    RotateVector3D(&sp34, sp34, arg1->unk60, 2);
+    sp28.x = arg1->unk_9C + sp34.x;
+    sp28.y = arg1->unk_A0 + sp34.y;
+    sp28.z = arg1->unkA4 + sp34.z;
+    *out = sp28;
+    return out;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BD718.s")
 
@@ -1603,7 +1778,20 @@ void func_800BDF2C(Collider* arg0, RoomObject* arg1) {
     arg0->unk_94 = arg0->unk_30.z;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BE000.s")
+void func_800BE000(Collider* arg0) {
+    Vec3f sp2C;
+
+    sp2C.x = arg0->unk_8C;
+    sp2C.y = arg0->unk_90;
+    sp2C.z = arg0->unk_94;
+    RotateVector3D(&sp2C, sp2C, arg0->unk_4C->unk60, arg0->unk_5C);
+    arg0->unk_3C.x = sp2C.x - arg0->unk_30.x;
+    arg0->unk_3C.y = sp2C.y - arg0->unk_30.y;
+    arg0->unk_3C.z = sp2C.z - arg0->unk_30.z;
+    arg0->unk_30 = sp2C;
+    arg0->unk60 = arg0->unk_4C->unk60;
+    arg0->unk64 = arg0->unk_4C->unk64;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BE0D4.s")
 
@@ -1727,7 +1915,31 @@ void func_800BE7BC(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BEF6C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/EraseField.s")
+// EraseField: despawn one collider from the live field. The pointer table at D_80240898 holds
+// 0x100 slots: the gFieldCount live entries are packed at the bottom, and released colliders are
+// pushed onto a free stack that grows downward from the top (slot 0x100 - gFieldCount, which the
+// linker resolves through the following symbol D_80240C98). The collider is located by a linear
+// scan, its pole slot is released if it owns one (unk_124 set -> Poles[unk_128].mode = 0), the
+// last live entry is moved into the hole, and gFieldCount drops by one.
+void EraseField(Collider* target) {
+    s32 i;
+
+    for (i = 0; i < gFieldCount; i++) {
+        if (target == (&D_80240898)[i]) {
+            break;
+        }
+    }
+
+    if (target->unk_124 != 0) {
+        Poles[target->unk_128].mode = 0;
+    }
+
+    (&D_80240898)[0x100 - gFieldCount] = target;
+    (&D_80240898)[i] = (&D_80240898)[gFieldCount - 1];
+    (&D_80240898)[gFieldCount - 1] = NULL;
+    target->unk_E4 = NULL;
+    gFieldCount--;
+}
 
 void func_800BF268(s32 arg0) {
     Collider** currentCollider;
@@ -1954,7 +2166,7 @@ void func_800C1458(s32 arg0) {
 
     for (i = 0; i != ARRAY_COUNT(gPlayerActors); i++){
         if ((gPlayerActors[i].active != 0) && (gPlayerActors[i].exists != 0)) {
-            func_800B4F14(i, &gPlayerActors[i].pos.x, &gPlayerActors[i].pos.y, &gPlayerActors[i].pos.z);
+            Zone_GetDoorPos(i, &gPlayerActors[i].pos.x, &gPlayerActors[i].pos.y, &gPlayerActors[i].pos.z);
             gPlayerActors[i].yAngle = ArcTan2Deg(-gPlayerActors[i].pos.x, gPlayerActors[i].pos.z);
         }
     }

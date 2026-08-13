@@ -147,7 +147,7 @@ s32 func_800B4A3C(Collectable*);
 void setCrownPositionsForRoom(s32 arg0);
 void checkRoomItem(s32);
 void EraseRoomItem(s32);
-void func_800B4F14(s32, f32*, f32*, f32*);
+void Zone_GetDoorPos(s32, f32*, f32*, f32*);
 void func_800B4FCC(void);
 void func_800B5314(void);
 void func_800B5600(void);
