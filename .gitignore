@@ -25,6 +25,8 @@ src/mod/
 tools/cli.ini
 
 # Tool artifacts
+objdiff.json
+*.progress_tmp.c
 --no-check-sections
 .ninja_deps
 .ninja_log
