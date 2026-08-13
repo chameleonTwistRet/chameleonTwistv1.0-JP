@@ -3252,7 +3252,52 @@ void CTTask_Unlink_2(CTTask* task) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/bzero32.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/CTTask_Alloc.s")
+//allocates and zeroes a new CTTask and links it into the gCTTaskHead list.
+//arg1 selects the insertion point: 0 links the new task in front of the task
+//given in `task` (inheriting its taskID), -1 links it behind `task` (same
+//inherit), and any other value is the new task's own taskID, which is inserted
+//in ascending taskID order by walking the list from the head. Returns the new
+//task, or NULL if the allocation failed.
+CTTask* CTTask_Alloc(s16 setRunType, s16 arg1, CTTask* task) {
+    CTTask* newTask;
+    CTTask* alloc = _malloc(sizeof(CTTask));
+    CTTask* prevTask;
+    CTTask* nextTask;
+    s16 taskID;
+
+    if (alloc == NULL) {
+        return NULL;
+    }
+    newTask = alloc;
+    bzero32(newTask, sizeof(CTTask));
+
+    if (arg1 == 0) {
+        nextTask = task->next;
+        taskID = task->taskID;
+    } else if (arg1 == -1) {
+        nextTask = task;
+        taskID = task->taskID;
+    } else {
+        taskID = arg1;
+        nextTask = gCTTaskHead->next;
+        while (nextTask->next != NULL) {
+            if (arg1 < nextTask->taskID) {
+                break;
+            }
+            nextTask = nextTask->next;
+        }
+    }
+
+    prevTask = nextTask->prev;
+    newTask->next = nextTask;
+    newTask->prev = prevTask;
+    nextTask->prev = newTask;
+    prevTask->next = newTask;
+    newTask->taskID = taskID;
+    newTask->runType = setRunType;
+    newTask->unk4E = 0;
+    return newTask;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008D060.s")
 
@@ -3824,7 +3869,37 @@ CTTask* func_8008F7A4(s16 arg0, s16 arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008F900.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/ParseIntToBase10.s")
+//writes useInt as a base 10 string of full-width digits into result, using the
+//2-byte-per-digit table D_800FFE78, most significant digit first. The digit
+//count is found by scaling limit by 10 until it passes useInt. Returns result.
+//(note: the terminating zero bytes are written at result[len+1]/result[len+2].)
+char* ParseIntToBase10(s32 useInt, char* result) {
+    s32 base = 10;
+    s32 offset = 0;
+    s32 limit = 10;
+    char* digit;
+
+    while (useInt >= limit) {
+        offset += 2;
+        limit *= base;
+    }
+
+    result[offset + 3] = 0;
+    result[offset + 4] = 0;
+
+    while (TRUE) {
+        digit = &D_800FFE78[(useInt % base) * 2];
+        result[offset] = digit[0];
+        result[offset + 1] = digit[1];
+        if (offset == 0) {
+            break;
+        }
+        offset -= 2;
+        useInt /= base;
+    }
+
+    return result;
+}
 
 //parse int to hex string
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/parseIntToHex.s")
@@ -5866,7 +5941,77 @@ void func_8009A988(CTTask* arg0) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/MakeSaveMaster.s")
+//builds the save/load menu's task tree: the 0x64 master task that draws the
+//menu, a 0x46 helper, one 0x62 task per save file slot, one 0x65 task per
+//player, and the 0xF0 task that is returned (every task keeps the master in
+//unk58). Also clamps gGameRecords.savedStageData.index to 0..3 on the way in.
+CTTask* MakeSaveMaster(void) {
+    CTTask* master;
+    CTTask* task;
+    CTTask* lastTask;
+    s32 i;
+
+    SaveData_LoadAllFiles((u8*)gSaveFiles);
+
+    task = CTTask_Alloc(1, 0x64, NULL);
+    if (task == NULL) {
+        //"MakeSaveMaster メモリが足りません\n"("MakeSaveMaster out of memory\n")
+        DummiedPrintf("MakeSaveMaster メモリが足りません\n");
+        while (1) {}
+    }
+
+    task->unk_04 = 0;
+    task->pos.x = 64.0f;
+    task->pos.y = 64.0f;
+    task->pos.z = 0.0f;
+    task->unk6A = gGameRecords.savedStageData.index;
+    if (task->unk6A < 0) {
+        task->unk6A = 0;
+        gGameRecords.savedStageData.index = 0;
+    }
+    if (task->unk6A >= 4) {
+        task->unk6A = 3;
+        gGameRecords.savedStageData.index = 3;
+    }
+    task->function = func_8009ABF4;
+    master = task;
+    master->unk54 = 0;
+    master->unk66 = 0;
+    master->unk5E = 1;
+
+    task = CTTask_Alloc(1, 0x46, NULL);
+    task->function = func_80097D1C;
+    task->unk58 = master;
+
+    for (i = 0; i < 4; i++) {
+        task = CTTask_Alloc(3, 0x62, NULL);
+        if (task == NULL) {
+            DummiedPrintf("MakeSaveMaster メモリが足りません\n");
+            while (1) {}
+        }
+        task->unk_62 = i;
+        task->function = func_8009960C;
+        task->unk58 = master;
+    }
+
+    for (i = 0; i < 1; i++) {
+        task = CTTask_Alloc(1, 0x65, NULL);
+        task->unk58 = master;
+        task->unk6E = 0;
+        task->unk_70 = 0;
+        task->unk_62 = D_800FF8E8;
+        task->function = func_8009A57C;
+    }
+
+    lastTask = CTTask_Alloc(1, 0xF0, NULL);
+    if (lastTask == NULL) {
+        DummiedPrintf("MakeSaveMaster メモリが足りません\n");
+        while (1) {}
+    }
+    lastTask->unk58 = master;
+    lastTask->function = func_8009A988;
+    return lastTask;
+}
 
 void func_8009ABF4(CTTask* arg0) {
     if (func_8008EC90() != 0) {
@@ -7929,7 +8074,21 @@ s32 RecordTime_GetMinsSecs(TimeVal* record, s32* mins, s32* secs) {
     return 0;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/RecordTime_GetByStageRank.s")
+//reads one record row of gGameRecords.savedStageData.stageTimes[stage][rank]:
+//returns its minutes/seconds plus the two flag fields packed in byte 0 of the
+//TimeVal (bits 5-7 in *arg5, bit 4 in *arg4). Used by printStageRecordTimes.
+s32 RecordTime_GetByStageRank(s32 stage, s32 rank, s32* mins, s32* secs, s32* arg4, s32* arg5) {
+    u8* record = (u8*)&gGameRecords + (stage * 15) + (rank * 3);
+
+    *arg4 = 0;
+    *arg5 = 0;
+    RecordTime_GetMinsSecs((TimeVal*)(record + 8), mins, secs);
+    *arg5 = record[8] & 0xE0;
+    *arg5 >>= 5;
+    *arg4 = record[8] & 0x10;
+    *arg4 >>= 4;
+    return 0;
+}
 
 //parses time kept on record.
 s32 RecordTime_ParseToSecs(TimeVal* arg0) {
@@ -7999,9 +8158,39 @@ s32 SaveData_FileChecksum(u8 *saveData) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/SaveData_RecordChecksum.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/SaveData_Wait.s")
+//spin-waits ~15ms (in CPU cycles) after an eeprom operation before the next
+//access. The extra (now < start) arm handles the 64-bit osGetTime wrapping.
+void SaveData_Wait(void) {
+    OSTime start = osGetTime();
+    OSTime now;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/SaveData_VerifyFile.s")
+    do {
+        now = osGetTime();
+        if ((now < start) && (now > OS_USEC_TO_CYCLES(15000))) {
+            return;
+        }
+    } while (now <= start + OS_USEC_TO_CYCLES(15000));
+}
+
+//byte-compares two SaveFile structs (0x60 bytes), logging every byte that
+//differs. Returns 1 if any byte differs, 0 if they are identical.
+//Used by SaveData_UpdateFile to verify an eeprom write read back correctly.
+s32 SaveData_VerifyFile(SaveFile *arg0, SaveFile *arg1) {
+    s32 i;
+    s32 isDifferent = 0;
+    u8 *file0 = (u8*)arg0;
+    u8 *file1 = (u8*)arg1;
+
+    for (i = 0; i < 0x60; i++) {
+        if (file0[i] != file1[i]) {
+            isDifferent = 1;
+            //"%dバイト目違う [%X][%X}\n"("%d bytes wrong [%X][%X}\n")(sic)
+            DummiedPrintf("%dバイト目違う [%X][%X}\n", i, file0[i], file1[i]);
+        }
+    }
+
+    return isDifferent;
+}
 
 s32 SaveData_Compare(u8 *arg0, u8 *arg1) {
     s32 i;

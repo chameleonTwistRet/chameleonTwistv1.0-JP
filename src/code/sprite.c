@@ -7555,7 +7555,10 @@ void Effect_TypeAM_Init(f32 posX, f32 posY, f32 posZ, f32 arg3, s32* arg4) {
     effect->duration = 0.125f;
 }
 
-#ifdef NON_MATCHING
+//spawns the five record-time rows for one stage: each rank's minutes, seconds
+//and the two flag fields come from RecordTime_GetByStageRank, and each row is
+//drawn 32 units below the previous one. The last argument is the row's index
+//doubled, which the effect uses as its stagger delay.
 void printStageRecordTimes(s32 arg0) {
     s32 i;
     s32 sp98;
@@ -7566,16 +7569,11 @@ void printStageRecordTimes(s32 arg0) {
 
     yOffset = 0.0f;
     for (i = 0; i < 5; i++) {
-        s32 tmp;
         RecordTime_GetByStageRank(arg0, i, &sp98, &sp94, &sp90, &sp8C);
         Effect_StageRecordTime_Init(156.0f, 64.0f + yOffset, -65.0f, sp98, sp94, sp8C, sp90, 8.0f, 2 * i);
         yOffset += 32.0f;
     }
 }
-#else
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/printStageRecordTimes.s")
-void printStageRecordTimes(s32 arg0);
-#endif
 
 
 void func_80072B1C(Effect* effect, Gfx** pGfxPos) {
@@ -8803,7 +8801,7 @@ void Effect_StageRecordTime_Update(Effect* effect, Gfx** pGfxPos) {
     }
 }
 
-void Effect_StageRecordTime_Init(f32 arg0, f32 arg1, f32 arg2, u8 arg3, u8 arg4, u8 arg5, u8 arg6, f32 arg7, f32 arg8) {
+void Effect_StageRecordTime_Init(f32 arg0, f32 arg1, f32 arg2, s32 arg3, u8 arg4, u8 arg5, u8 arg6, f32 arg7, f32 arg8) {
     Effect* effect;
     Effect_StageRecordTime_Data* data;
     s32 i;
@@ -8817,8 +8815,8 @@ void Effect_StageRecordTime_Init(f32 arg0, f32 arg1, f32 arg2, u8 arg3, u8 arg4,
 
     data = (Effect_StageRecordTime_Data*)effect->data;
 
-    D_800FE790[0] = arg3 / 10;
-    D_800FE790[1] = arg3 % 10;
+    D_800FE790[0] = (u8)arg3 / 10;
+    D_800FE790[1] = (u8)arg3 % 10;
     D_800FE790[3] = arg4 / 10;
     D_800FE790[4] = arg4 % 10;
 

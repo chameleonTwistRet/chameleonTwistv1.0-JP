@@ -414,7 +414,7 @@ void Effect_TypeAU_Init(f32, f32, f32, f32, s32, s32, f32, f32, f32);
 void Effect_TypeAS_Init(f32, f32, f32, f32, f32, f32, f32, f32, s32, s32, s32, s32, s32, s32);
 s32 RecordTime_ParseToSecs(TimeVal*);
 s32 RecordTime_GetByStageRank(s32, s32, s32*, s32*, s32*, s32*);
-void Effect_StageRecordTime_Init(f32 arg0, f32 arg1, f32 arg2, u8 arg3, u8 arg4, u8 arg5, u8 arg6, f32 arg7, f32 arg8);
+void Effect_StageRecordTime_Init(f32 arg0, f32 arg1, f32 arg2, s32 arg3, u8 arg4, u8 arg5, u8 arg6, f32 arg7, f32 arg8);
 void func_80054284(void);
 void func_80053CA0(void);
 void Effect_TypeAY_Init(Struct_80076EA0* arg0, f32 arg1, f32 arg2, s32 arg3, s32 arg4, s32* arg5, f32 arg6, f32 arg7, f32 arg8, f32 arg9);

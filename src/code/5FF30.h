@@ -194,7 +194,7 @@ void Task_ClearMost(void);
 void CTTaskList_Init(void);
 void CTTask_Unlink_2(CTTask* task);
 //still unsure
-void bzero32(CTTask*, s32, CTTask*, s16);
+void bzero32(void*, s32);
 CTTask* CTTask_Alloc(s16 setRunType, s16 arg1, CTTask* task);
 void func_8008D114(GraphicStruct* arg0, s32 fbIndex);
 Gfx* func_8008D168(Gfx* gfxPos, s32 arg1, s32 arg2);
