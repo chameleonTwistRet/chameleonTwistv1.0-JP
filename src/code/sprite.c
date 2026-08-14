@@ -9351,7 +9351,25 @@ void func_8007AF58(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8007AF80.s")
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/Rumble_Tick.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8007B174.s")
+/**
+ * @brief Initialise the Rumble Pak on every connected controller
+ *
+ * For each controller port that reported a pack (D_80176960), the Rumble Pak file system
+ * is initialised against the serial message queue and that port's rumble state counters
+ * are cleared.
+ */
+void func_8007B174(void) {
+    s32 i;
+
+    for (i = 0; i < MAXCONTROLLERS; i++) {
+        if (D_80176960[i] == 0) {
+            continue;
+        }
+        osMotorInit(&gEepromMsgQ, &gRumblePfs[i], i);
+        gUnkRumbleArray[i] = 0;
+        D_80176980[i] = 0;
+    }
+}
 
 void Rumble_StopAll(void) {
     OSPfs* gRumblePfsTemp = gRumblePfs;

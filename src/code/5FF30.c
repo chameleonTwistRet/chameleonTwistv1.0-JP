@@ -2568,7 +2568,40 @@ s32 StopSoundEffect(s32 arg0) {
     return func_80087290(temp_v0);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80087390.s")
+/**
+ * @brief Pause the sound effect a sound record is playing
+ *
+ * Records that are not currently starting up (0x20 bit 4 clear) are stopped outright by
+ * func_80087290. Otherwise the sound is selected on the SFX player, muted and stopped
+ * (if it was still playing), and the record is flagged as stopped (0x80) while the
+ * starting flag is left alone.
+ *
+ * @param arg0 sound record
+ * @return 1 if the sound was handled on the player, 0 if the sound id was out of range
+ */
+s32 func_80087390(unk0* arg0) {
+    s32 sound;
+    s16 state;
+
+    if (!(arg0->unk20 & 4)) {
+        return func_80087290(arg0);
+    }
+    sound = arg0->unk48;
+    if ((sound >= 0x10) || (sound < 0)) {
+        return 0;
+    }
+    alSndpSetSound(gSFXPlayerP, sound);
+    alSndpSetVol(gSFXPlayerP, 0);
+    state = alSndpGetState(gSFXPlayerP);
+    arg0->unk3E = state;
+    if (state == 1) {
+        alSndpStop(gSFXPlayerP);
+        arg0->unk20 |= 0x80;
+    } else {
+        arg0->unk20 |= 0x80;
+    }
+    return 1;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008746C.s")
 
@@ -2662,7 +2695,30 @@ void func_8008800C(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80088030.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80088198.s")
+/**
+ * @brief Stop every playing sound effect and reset the per-sound bookkeeping
+ *
+ * Walks the active sound record list from its head, stopping each record, then clears the
+ * global sound settings (func_8008800C) and resets every entry of the per-sound table to
+ * a count of 0 and an id of -1.
+ *
+ * @return always 0
+ */
+s32 func_80088198(void) {
+    unk0* rec = D_801FFB84;
+    s32 i;
+
+    while (rec->unk50 != 0) {
+        func_80087290(rec);
+        rec = rec->unk50;
+    }
+    func_8008800C(0);
+    for (i = 0; i < D_80200A90->unk_0E; i++) {
+        D_801FFB88[i].unk0 = 0;
+        D_801FFB88[i].unk4 = -1;
+    }
+    return 0;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80088248.s")
 
@@ -7471,7 +7527,38 @@ CTTask* func_800A2D84(void) {
     return temp_v0;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A2E18.s")
+/**
+ * @brief Set up the option master task that owns the title screen menu
+ *
+ * Gives the master task its own update function and name, clears its menu counters, kicks
+ * off the fade helper, then spawns the child task that draws and runs the menu itself.
+ *
+ * @param task option master task
+ */
+void func_800A2E18(CTTask* task) {
+    CTTask* master;
+    s32 i;
+
+    DummiedPrintf("オプションマスタ最初\n");
+    task->unk_04 = 0;
+    task->function = func_800A38B8;
+    strcpy(task->unk94, " TITLE");
+    task->unk_64 = 0;
+    task->unk66 = 0;
+    task->unk60 = 0;
+    task->unk_5C = 0;
+    task->unk5E = 0;
+    func_8008EA60(32, 0, 0, 0, &task->unk_64);
+    master = task;
+    for (i = 0; i < 1; i++) {
+        task = CTTask_Alloc(1, 0x69, NULL);
+        task->unk_62 = i;
+        task->unk58 = master;
+        task->unk_70 = 0;
+        task->unk6E = 0;
+        task->function = func_800A39EC;
+    }
+}
 
 const char D_8010EA24[] = "ＳＯＵＮＤ  ＭＯＤＥ";
 const char D_8010EA3C[] = "ＳＯＵＮＤ  ＴＥＳＴ";

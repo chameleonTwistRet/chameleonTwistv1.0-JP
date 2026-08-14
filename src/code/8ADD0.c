@@ -1850,7 +1850,31 @@ void func_800BE370(s32 room) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BE474.s")
+/**
+ * @brief Recompute a player's tongue shot impulse from how much they have swallowed
+ *
+ * The tongue's owner is recovered from its index in gTongues. A player carrying fewer than
+ * six things in their mouth gets an impulse that fades linearly from 0.32 (empty) as the
+ * mouth fills, and anything from six upwards is pinned to the 0.24 minimum (the same value
+ * the formula gives at six). The mini powerup halves the result.
+ *
+ * Both coefficients sit one ulp above the plain decimal in the ROM, so they are written as
+ * the folded float products that reproduce those exact words.
+ *
+ * @param arg0 tongue
+ */
+void func_800BE474(Tongue* arg0) {
+    PlayerActor* player = &gPlayerActors[arg0 - gTongues];
+
+    if (arg0->amountInMouth < 6) {
+        player->forwardImpulse = ((24.0f - arg0->amountInMouth) * (0.4f * 0.8f)) / 24.0f;
+    } else {
+        player->forwardImpulse = 0.4f * 0.6f;
+    }
+    if (player->power == POWERUP_MINI) {
+        player->forwardImpulse *= 0.5f;
+    }
+}
 
 void func_800BE550(Tongue* arg0) {
     arg0->vaulting = 0;
