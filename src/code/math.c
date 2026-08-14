@@ -283,7 +283,7 @@ f32 sAtan2DegTable[64] = {
 };
 f32 sAtan2DegTableMax = 45;
 
-u32 gShadowFlagsSet = 0;
+s32 gShadowFlagsSet = 0;
 s32 D_80108F84[] = {4, 21, 4};
 f32 D_80108F90[] = {0, 0.9800000191, 1};
 Vec3f D_80108F9C = {0, 0, 0};

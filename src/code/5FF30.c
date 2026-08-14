@@ -2314,7 +2314,32 @@ void Sched_SetAudioTask(OSTask* arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/Audio_DMACallback.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/Audio_Dma.s")
+s32 Audio_DMACallback(s32 addr, s32 len, void* state);
+
+/**
+ * @brief ALDMANew handler for the audio synthesizer: hands back the DMA state and its callback
+ *
+ * On the first call, builds the free list of the 60 DMA buffer records at D_801FFBA0
+ * (each record linked to the previous one) and gives each a 0x500 byte buffer from the
+ * audio heap. Later calls only return the already-built state.
+ *
+ * @param state out; receives the DMA state
+ * @return the DMA callback the synthesizer should use
+ */
+ALDMAproc Audio_Dma(AudioDMAState** state) {
+    s32 i;
+
+    if (D_801FFB90.initialized == 0) {
+        D_801FFB90.unk_08 = &D_801FFBA0[0];
+        for (i = 0; i < 59; i++) {
+            alLink((ALLink*)&D_801FFBA0[i + 1], (ALLink*)&D_801FFBA0[i]);
+            D_801FFBA0[i].unk_10 = (s32)alHeapAlloc(&gAlHeap, 1, 0x500);
+        }
+        D_801FFB90.initialized = 1;
+    }
+    *state = &D_801FFB90;
+    return Audio_DMACallback;
+}
 
 void func_80085290(void) {
     void* temp_s1;
@@ -2500,7 +2525,38 @@ s32 func_8008714C(unk0* arg0, s32 arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80087180.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80087290.s")
+/**
+ * @brief Stop the sound effect a sound record is playing
+ *
+ * Records with an out of range sound id are handed to func_80087088 instead. Otherwise
+ * the sound is selected on the SFX player, muted and stopped (if it was still playing),
+ * then the record is flagged as stopped (0x80) and no longer starting (~4).
+ *
+ * @param arg0 sound record
+ * @return 1 if the sound was stopped on the player, 0 otherwise
+ */
+s32 func_80087290(unk0* arg0) {
+    ALSndId sound = arg0->unk48;
+    s16 state;
+
+    arg0->unk4C = 0;
+    if ((sound >= 0x10) || (sound < 0)) {
+        func_80087088(arg0);
+        return 0;
+    }
+    alSndpSetSound(gSFXPlayerP, sound);
+    alSndpSetVol(gSFXPlayerP, 0);
+    state = alSndpGetState(gSFXPlayerP);
+    arg0->unk3E = state;
+    if (state == 1) {
+        alSndpStop(gSFXPlayerP);
+        arg0->unk20 |= 0x80;
+    } else {
+        arg0->unk20 |= 0x80;
+    }
+    arg0->unk20 &= ~4;
+    return 1;
+}
 
 s32 StopSoundEffect(s32 arg0) {
     unk0* temp_v0 = func_80086EB4(arg0);
@@ -4512,7 +4568,33 @@ void func_800911D0(CTTask* task) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80091390.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80091420.s")
+/**
+ * @brief State in the boss-stage task state machine: wait unk_5C frames, then hand off to func_80091694
+ *
+ * Ticks the task with mode 2 each frame while the countdown runs. When it hits zero,
+ * sets what look like jump/launch parameters (unk7C/unk84/unk88, same set the sibling
+ * states tune per boss stage) and advances the task until func_8008D7B0 reports done.
+ * Sibling states branch on the boss stages (see func_800911D0 / the STAGE_*BOSS switch
+ * above), but exactly whose sequence this task drives is unconfirmed.
+ *
+ * @param task
+ */
+void func_80091420(CTTask* task) {
+    task->unk44 = 2;
+    func_8008D7B0(task);
+    if (task->unk_5C != 0) {
+        task->unk_5C--;
+        return;
+    }
+    task->function = func_80091694;
+    task->rotA = 0.0f;
+    task->unk88 = 150.0f;
+    task->unk7C = -15.0f;
+    task->unk84 = 1.5f;
+    task->unk60 = 8;
+    task->unk44 = 1;
+    while (func_8008D7B0(task) == 0) {}
+}
 
 void func_800914CC(CTTask* task) {
     if (!(task->unk7C < 0)) {

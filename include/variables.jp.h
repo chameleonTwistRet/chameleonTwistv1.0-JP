@@ -246,7 +246,9 @@ extern ALSeqpConfig gBGMplayerCfg;
 extern s32 gCurrentStageTime; //measured as ticks (30/sec)
 extern OSIoMesg gAudioIOMsgs[30];
 extern s32 D_801FFB78;
-extern unk_D_801FFB90 D_801FFB90;
+extern ALHeap gAlHeap;
+extern AudioDMAState D_801FFB90;
+extern unk_D_801FFB90 D_801FFBA0[60];
 extern u32 D_80200054;
 extern struct UnkList D_80200060; //beginning of linked list?
 extern s32 D_802025B0;

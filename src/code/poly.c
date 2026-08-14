@@ -23,6 +23,7 @@ extern f32 D_80108FE4;
 extern s32 D_80108FE8;
 extern s32 D_80108FEC;
 extern Vec3f D_802489C8[8];
+extern s32 gShadowFlagsSet;
 
 /* Migrated BSS */
 //TODO: type this data correctly
@@ -329,7 +330,51 @@ Vec3f* func_800CA5B4(Vec3f* arg0, Vec3f arg1, UnkArg4* arg4, f32 arg5) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800CB294.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/poly/Shadows_Reset.s")
+/**
+ * @brief Clear the shadow list and, once per boot, build the per actor type shadow table
+ *
+ * gHasShadow[type] says whether an actor type casts a shadow; every type gets one except
+ * the listed ones (spawners and other invisible helpers). The table is only filled the
+ * first time this runs, guarded by gShadowFlagsSet.
+ */
+void Shadows_Reset(void) {
+    s32 i;
+
+    gShadowCount = 0;
+    if (gShadowFlagsSet == 0) {
+        for (i = 0; i < 0x100; i++) {
+            gHasShadow[i] = 1;
+        }
+        gHasShadow[GREY_ANT_SPAWNER] = 0;
+        gHasShadow[BULLET_HELL_ANT_SPAWNER] = 0;
+        gHasShadow[RED_ANT_SPAWNER] = 0;
+        gHasShadow[ANT_TRIO_SPAWNER] = 0;
+        gHasShadow[MISSILE_SPAWNER] = 0;
+        gHasShadow[EXPLOSION] = 0;
+        gHasShadow[CANNON] = 0;
+        gHasShadow[CHOMPER] = 0;
+        gHasShadow[ARROW_SPAWNER] = 0;
+        gHasShadow[UNK_22] = 0;
+        gHasShadow[MIRROR] = 0;
+        gHasShadow[RNG_ROOM_SPAWNER] = 0;
+        gHasShadow[BARREL_JUMP_FIRE_SPAWNER] = 0;
+        gHasShadow[FIRE_SPAWNER] = 0;
+        gHasShadow[SPIDER_SPAWNER] = 0;
+        gHasShadow[GOLEM_ROOM_SPIDER_SPAWNER] = 0;
+        gHasShadow[LIZARD_KONG_BUTTERFLY_SPAWNER] = 0;
+        gHasShadow[POPCORN_BUCKET_SPAWNER] = 0;
+        gHasShadow[CHOCO_KID_SPAWNER] = 0;
+        gHasShadow[GREY_ANT_SPAWNER_WRAPPER] = 0;
+        gHasShadow[BATTLE_MODE_SAND_CRAB_SPAWNER] = 0;
+        gHasShadow[BATTLE_MODE_FIRE_SPAWNER] = 0;
+        gHasShadow[BATTLE_MODE_SAUCER_SPAWNER] = 0;
+        gHasShadow[UNK_59] = 0;
+        gHasShadow[FALLING_GREY_ANT_SPAWNER] = 0;
+        gHasShadow[POWER_UP_SPAWNER] = 0;
+        gHasShadow[UNK_FIRE_SPAWNER] = 0;
+        gShadowFlagsSet = 1;
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/Shadows_Set.s")
 

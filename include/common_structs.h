@@ -895,6 +895,17 @@ typedef struct Unk80200C08 {
 } Unk80200C08; //sizeof 0x78
 
 //5FF30
+//Header of the audio DMA buffer free/used lists; the 0x14-byte buffer entries
+//themselves are the unk_D_801FFB90 array that starts at D_801FFBA0.
+typedef struct AudioDMAState {
+/* 0x00 */ u8 initialized;
+/* 0x01 */ char pad01[3];
+/* 0x04 */ void* unk_04;
+/* 0x08 */ void* unk_08;
+/* 0x0C */ s32 unk_0C;
+} AudioDMAState; //sizeof 0x10
+
+//5FF30
 //linked list probably, heap related?
 typedef struct unk_D_801FFB90 {
 /* 0x00 */ void* unk_00;
