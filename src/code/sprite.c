@@ -1853,11 +1853,9 @@ Struct_80076EA0 D_800FE404[9] = {
 
 u8 gDontChangeEyes = 0;
 s32 D_800FE4E0 = 0;
-struct_800FE4E4 D_800FE4E4[2] = {
+struct_800FE4E4 D_800FE4E4[4] = {
     {0, 0},
-    {0, 0}
-};
-struct_800FE4E4 D_800FE4E8[2] = {
+    {0, 0},
     {0, 0},
     {0, 0}
 };
@@ -2402,7 +2400,22 @@ void func_80055FBC(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80055FD8.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80056064.s")
+s32 func_80056064(s32 arg0) {
+    s32 *new_var2;
+    s32 new_var;
+    s32 result;
+
+    new_var2 = &new_var;
+    if (D_800F68C4[0] & arg0) {
+        result = D_800F68CC + 1;
+    } else {
+        result = 0;
+    }
+    new_var = result;
+    D_800F68CC = *new_var2;
+    if (1) {}
+    return new_var;
+}
 
 /**
  * @brief Recursively calls until the angle is within the range of 0-360.
@@ -4230,7 +4243,24 @@ void Effect_Init(void) {
     Effect_ResetListEntry(gEffectListHead);
 }
 
+// NON_MATCHING attempt below scores 670.
+#ifdef NON_MATCHING
+void Effect_UpdateAll(Gfx** arg0) {
+    Effect* effect;
+
+    if (gEffectList.next != NULL) {
+        effect = gEffectList.next;
+        do {
+            if (effect->fpUpdate != NULL) {
+                ((void (*)(Effect*, Gfx**)) effect->fpUpdate)(effect, arg0);
+            }
+            effect = effect->next;
+        } while (effect != NULL);
+    }
+}
+#else
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/Effect_UpdateAll.s")
+#endif
 
 void Effect_TypeA_Update(Effect* effect, Gfx** pGfxPos) {
     EffectPart* parts = effect->parts;
@@ -5839,7 +5869,24 @@ void aa1_Bowling(f32 arg0, s32 arg1, s32 arg2) {
     }
 }
 
+// NON_MATCHING attempt below scores 185
+#ifdef NON_MATCHING
+void ResetEyeParams(void) {
+    D_800FE4E4[1].unk_00 = 0;
+    D_800FE4E4[1].unk_01 = 0;
+    D_800FE4E4[2].unk_00 = 0;
+    D_800FE4E4[2].unk_01 = 0;
+    D_800FE4E4[3].unk_00 = 0;
+    D_800FE4E4[3].unk_01 = 0;
+    D_800FE4E4[0].unk_00 = 0;
+    D_800FE4E4[0].unk_01 = 0;
+    gDontChangeEyes = 0;
+    gLockContextEyes = 1;
+    D_800FE6F0 = 0;
+}
+#else
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/ResetEyeParams.s")
+#endif
 
 void LockEyeChange(void) {
     gDontChangeEyes = 1;
@@ -7326,7 +7373,6 @@ void Effect_GameResults_Init() {
     printUISprite(0.0f, 0.0f, 0.0f, 0.0f, 1, 320.0f, 240.0f, 0.0f, SPRITE_BLANK);
 }
 
-#ifdef NON_MATCHING
 void func_80071A48(u32 in_value, char* out_str) {
     s32 shift;
     for (shift = 8-1; shift >= 0; shift -= 1) {
@@ -7339,10 +7385,6 @@ void func_80071A48(u32 in_value, char* out_str) {
     }
     *out_str = 0;
 }
-#else
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80071A48.s")
-void func_80071A48(u32 arg0, char* str);
-#endif
 
 //ending?
 void Effect_TypeAL_Update(Effect* effect, Gfx** pGfxPos) {

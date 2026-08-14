@@ -1080,7 +1080,23 @@ s32 func_800B3FFC(Collider *arg0, s32 arg1) {
     return new_var2 >> (*new_var).z;
 }
 
+// NON_MATCHING attempt below scores 30 (down from 385 for a naive rewrite),
+// structurally identical to the ROM (0 opcode/order diffs) - the ONLY residual
+// is which register holds `shift` (ROM: t8, ours: a3) across the sllv/and/ors
+#ifdef NON_MATCHING
+void func_800B402C(Collider* arg0, s32 arg1, s32 arg2) {
+    Vec3w* entry = &D_801087D8[arg1];
+    s32 mask = entry->y;
+    s32 shift = entry->z;
+
+    arg0->unk_14 &= ~mask;
+    arg2 <<= shift;
+    arg2 &= mask;
+    arg0->unk_14 |= arg2;
+}
+#else
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B402C.s")
+#endif
 
 void func_800B4070(Collider* arg0) {
     s32 var_a2;
@@ -1402,7 +1418,13 @@ void func_800B6098(Collider* arg0, RoomObject* arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B691C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B6B14.s")
+void func_800B6B14(Collider* arg0, RoomObject* arg1) {
+    void (*func)(Collider*, RoomObject*) = (void (*)(Collider*, RoomObject*)) arg1->keyframes.temp;
+    s32 temp = arg1->noKeyframes;
+
+    func(arg0, arg1);
+    arg0->function = (void (*)(Collider*)) temp;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B6B4C.s")
 
@@ -1447,7 +1469,13 @@ void func_800B6D24(Collider* arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B80A8.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B81B4.s")
+void func_800B81B4(Collider* arg0, RoomObject* arg1) {
+    func_800B5D68(arg0, 1);
+    arg0->unk_AC = arg1->keyframes.temp;
+    arg0->unk_B0 = arg1->noKeyframes;
+    arg0->unk_B4 = 0;
+    arg0->unk_B8 = 0;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B81FC.s")
 
@@ -1802,7 +1830,12 @@ void func_800BE24C(void) {
     D_8020D908.unk_00 = temp;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BE264.s")
+s32 func_800BE264(s32 arg0) {
+    Field* temp_v0 = &gZoneFields[arg0];
+    s32 temp = D_801B3178->unk_18 + (temp_v0->unk80 << 6);
+    D_8020D908.unk_00 = temp;
+    return temp;
+}
 
 void func_800BE2A4(s32 arg0) {
     s32 temp = D_801B3178->unk_18;
@@ -1931,7 +1964,14 @@ void func_800BE7BC(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BE7F0.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BE87C.s")
+void func_800BE87C(Collider* arg0, RoomObject* arg1, void* arg2, s32 arg3) {
+    arg0->unk_0C = 7;
+    arg0->unk_50 = arg1->scale.x;
+    arg0->unk_54 = arg1->scale.y;
+    arg0->unk_58 = arg1->scale.z;
+    arg0->collision = *(ModelCollision**) ((u8*) arg2 + arg1->id * 0x30 + 4);
+    arg0->gfx = *(Gfx**) ((u8*) arg2 + arg1->id * 0x30);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BE8D8.s")
 

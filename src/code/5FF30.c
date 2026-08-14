@@ -5256,7 +5256,20 @@ void func_80094120(CTTask* task) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800941C0.s")
+void func_800941C0(CTTask* task) {
+    if (task->unk60 != 0) {
+        task->unk60 -= 1;
+        return;
+    }
+    if (func_8008D7FC(task) != 0) {
+        CTTask* other = task->unk58;
+
+        task->unk_5C = 2;
+        task->unk60 = 0;
+        other->unk54 = 7;
+        task->function = func_80094220;
+    }
+}
 
 void func_80094220(CTTask* task) {
 }
@@ -7589,7 +7602,15 @@ void func_800A3928(CTTask* task) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A3990.s")
+void func_800A3990(CTTask* task) {
+    u8 oldFlags = gGameRecords.flags[1] & 0xFE;
+
+    gGameRecords.flags[1] = gIsStereo;
+    gGameRecords.flags[1] |= oldFlags;
+    gGameRecords.flags[0] = SaveData_RecordChecksum();
+    SaveData_UpdateRecords();
+    SetProcessType(6);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A39EC.s")
 

@@ -382,7 +382,15 @@ void Shadows_Reset(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800CBB2C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800CBB98.s")
+void func_800CBB98(Actor* actor) {
+    s32 pad;
+    Vec3f pos;
+
+    pos.x = actor->pos.x + actor->unknownPositionThings[0].unk_00;
+    pos.y = actor->pos.y;
+    pos.z = actor->pos.z + actor->unknownPositionThings[0].unk_08;
+    func_800CB294(pos, *(s32*) &actor->unknownPositionThings[0].unk_0C);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800CBC08.s")
 
@@ -390,7 +398,16 @@ void Shadows_Reset(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800CBE74.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800CBF54.s")
+void func_800CBF54(void) {
+    Actor* actor = gActors;
+    s32 i;
+
+    for (i = 0; i < 64; i++, actor++) {
+        if (actor->actorID >= 0x5F) {
+            func_800CBE74(actor);
+        }
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/Shadows_Draw_AntQueen.s")
 
@@ -564,7 +581,19 @@ Vec3f* func_800D00DC(Vec3f* arg0, Collider* arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800D01A8.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800D0448.s")
+Collider* func_800D0448(s32 arg0) {
+    Collider* result;
+    Collider** itr;
+    s32 i;
+
+    for (i = 0, itr = &D_80240898; i < gFieldCount; i++, itr++) {
+        result = *itr;
+        if (result->unk_124 == 1 && result->unk_128 == arg0) {
+            break;
+        }
+    }
+    return result;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800D04B0.s")
 
