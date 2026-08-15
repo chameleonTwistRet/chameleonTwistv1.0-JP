@@ -1726,7 +1726,7 @@ void func_800B9298(Collider* arg0, RoomObject* arg1) {
         SetColliderFlag(arg0, 2, 0);
     }
     arg0->unk_AC = arg1->keyframes.temp;
-    arg0->unk_8C = (arg1->unk28 * 3.141592653589793) / 180.0;
+    arg0->unk_8C = DEGREES_TO_RADIANS_PI(arg1->unk28);
     arg0->unk_5C = arg1->noKeyframes;
 }
 #else
@@ -1770,7 +1770,7 @@ void func_800B942C(Collider* arg0, RoomObject* arg1) {
     arg0->unk_90 = y;
     arg0->unk_94 = arg0->sfxPos.z;
     parent = arg0->unk_4C;
-    arg0->unk_98 = (arg1->unk28 * 3.141592653589793) / 180.0;
+    arg0->unk_98 = DEGREES_TO_RADIANS_PI(arg1->unk28)
     arg0->unk_9C = arg1->unk2C;
     d = y - arg0->unk_9C;
     arg0->unk_AC = arg1->keyframes.temp;
@@ -2027,7 +2027,6 @@ s32 func_800BAFA4(PlayerActor* player, Collider* arg1) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BAFA4.s")
 #endif
 
-// score 90
 void func_800BB038(Collider* arg0, RoomObject* arg1) {
     SetColliderFlag(arg0, 0, 0);
     SetColliderFlag(arg0, 1, 2);
@@ -2036,8 +2035,8 @@ void func_800BB038(Collider* arg0, RoomObject* arg1) {
     } else {
         SetColliderFlag(arg0, 2, 0);
     }
-    arg0->unk_8C = (arg1->unk28 * 3.141592653589793) / 180.0;
-    arg0->unk_90 = (arg0->unk60 * 3.141592653589793) / 180.0;
+    arg0->unk_8C = DEGREES_TO_RADIANS_PI(arg1->unk28);
+    arg0->unk_90 = DEGREES_TO_RADIANS_PI(arg0->unk60);
     arg0->unk_AC = 0;
     arg0->unk_B0 = arg1->keyframes.temp;
     arg0->unk_B4 = arg1->noKeyframes;
@@ -2117,7 +2116,7 @@ void func_800BB988(Collider* arg0, RoomObject* arg1) {
     }
     arg0->unk_8C = arg1->unk28;
     arg0->unk_90 = arg1->unk2C;
-    arg0->unk_94 = (arg1->unk30 * 3.141592653589793) / 180.0;
+    arg0->unk_94 = DEGREES_TO_RADIANS_PI(arg1->unk30);
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BBA80.s")
@@ -2402,7 +2401,7 @@ void func_800BE0D4(Collider* arg0, RoomObject* arg1) {
     } else {
         SetColliderFlag(arg0, 2, 0);
     }
-    arg0->unk_8C = (arg1->unk28 * 3.141592653589793) / 180.0;
+    arg0->unk_8C = DEGREES_TO_RADIANS_PI(arg1->unk28);
     arg0->unk_90 = arg1->unk2C;
 }
 
