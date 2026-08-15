@@ -1013,14 +1013,19 @@ void func_800312B0(s32 id) {
     currActor->unknownPositionThings[0].unk_10 = currActor->sizeScalar * currActor->tYPos;
 }
 
-void func_800312FC(Actor* arg0, f32 arg1) {
-    arg0->userVariables[0] = 0;
-    arg0->userVariables[1] = 14;
-    arg0->unk_134[3] = 76.80000305f;
-    arg0->vel.x = cosf(DEGREES_TO_RADIANS_2PI(arg1)) * 16.0f;
-    arg0->vel.z = -sinf(DEGREES_TO_RADIANS_2PI(arg1)) * 16.0f;
-    arg0->tongueCollision = 0;
-    PLAY_SFX_AT(SFX_6D_unkSnd, arg0->pos, 0, 0);
+// Ant Queen's per-hit knockback reaction: launches her away at the given angle, disables
+// tongue-grab, and transitions her state machine (userVariables[1]) to 14. Called by
+// func_80036F30's countdown (unk_120, armed from level data via unk_12C) each hit until it
+// reaches 0, at which point the defeat sequence (func_800313BC + Effect_BossDeadEyes_Init)
+// fires instead.
+void QueenAnt_HitRecoil(Actor* quintella, f32 angle) {
+    quintella->userVariables[0] = 0;
+    quintella->userVariables[1] = 14;
+    quintella->unk_134[3] = 76.80000305f;
+    quintella->vel.x = cosf(DEGREES_TO_RADIANS_2PI(angle)) * 16.0f;
+    quintella->vel.z = -sinf(DEGREES_TO_RADIANS_2PI(angle)) * 16.0f;
+    quintella->tongueCollision = 0;
+    PLAY_SFX_AT(SFX_6D_unkSnd, quintella->pos, 0, 0);
 }
 
 
@@ -1045,45 +1050,48 @@ void func_800314E4(Actor* arg0) {
     arg0->actorID = 0;
 }
 
-#ifdef NON_MATCHING
-void func_80031518(Actor* arg0) {
-    Actor* actor;
+// Shared "room clear condition met" reaction: defeat all golems, mirror rooms, and minigames
+// (billiards, bowling) 
+void TriggerRoomClearReaction(Actor* trigger) {
+    Actor* other;
     s32 i;
-    s32 off;
-    s32 id;
-    s32 curID;
+    s32 actorOffset;
+    s32 triggerID;
+    s32 otherID;
+    s32 golemID = GOLEM;
+    s32 spiderSpawnerID = GOLEM_ROOM_SPIDER_SPAWNER;
     PlayerActor* player;
     f32 x;
     f32 z;
 
-    id = arg0->actorID;
-    if ((id == 0x35) && (arg0->userVariables[1] == 1)) {
-        for (i = 0, off = 0, actor = gActors; i != MAX_ACTORS; i++, off += sizeof(Actor), actor++) {
-            curID = actor->actorID;
-            if (((curID >= 0x30) && (curID < 0x34)) || (curID == 0x35)) {
-                func_800313BC(i, actor->unk_90);
-                curID = actor->actorID;
+    triggerID = trigger->actorID;
+    if ((triggerID == MIRROR) && (trigger->userVariables[1] == 1)) {
+        for (i = 0, actorOffset = 0, other = gActors; i != MAX_ACTORS; i++, actorOffset += sizeof(Actor), other++) {
+            otherID = other->actorID;
+            if (((otherID >= CUP) && (otherID < RNG_ROOM_SPAWNER)) || (otherID == MIRROR)) {
+                func_800313BC(i, other->unk_90);
+                otherID = other->actorID;
             }
-            if ((curID == 0x34) || ((curID == 0x3B) && (actor->actorState == 0))) {
-                func_80031518((Actor*) ((u8*) gActors + off));
+            if ((otherID == RNG_ROOM_SPAWNER) || ((otherID == FIRE) && (other->actorState == 0))) {
+                TriggerRoomClearReaction((Actor*) ((u8*) gActors + actorOffset));
             }
         }
-    } else if (0x44 == id) {
-        arg0->actorID = 0;
-        for (actor = gActors; actor < &gActors[MAX_ACTORS]; actor++) {
-            if (0x44 == actor->actorID) {
+    } else if (golemID == triggerID) {
+        trigger->actorID = 0;
+        for (other = gActors; other < &gActors[MAX_ACTORS]; other++) {
+            if (golemID == other->actorID) {
                 return;
             }
         }
-        for (i = 0, actor = gActors; i != MAX_ACTORS; i++, actor++) {
-            curID = actor->actorID;
-            if (curID != 0) {
-                if ((0x48 == curID) || ((curID == 0x42) && (actor->actorState == 0))) {
+        for (i = 0, other = gActors; i != MAX_ACTORS; i++, other++) {
+            otherID = other->actorID;
+            if (otherID != 0) {
+                if ((spiderSpawnerID == otherID) || ((otherID == SPIDER) && (other->actorState == 0))) {
                     func_800313BC(i, Random(0, 360));
                 }
             }
         }
-    } else if (id == 0x2D) {
+    } else if (triggerID == BILLIARDS_BALL) {
         player = gCurrentActivePlayerPointer;
         x = player->pos.x;
         z = player->pos.z;
@@ -1099,15 +1107,27 @@ void func_80031518(Actor* arg0) {
         if (z < -900.0f) {
             z = -900.0f;
         }
-        Actor_SpawnAt(0x60, x, player->pos.y + 1000.0f, z);
-    } else if ((id == 0x2B) && (gCurrentActivePlayerPointer->pos.x > 1800.0f) &&
-               (gCurrentActivePlayerPointer->pos.z > 900.0f)) {
+        Actor_SpawnAt(FALLING_R_HEART, x, player->pos.y + 1000.0f, z);
+    } else if (triggerID == BOWLING_PINS) {
+        // Same XZ clamp as the BILLIARDS_BALL case, but the result is never used
+        player = gCurrentActivePlayerPointer;
+        x = player->pos.x;
+        z = player->pos.z;
+        if (x > 1800.0f) {
+            x = 1800.0f;
+        }
+        if (x < -1800.0f) {
+            x = -1800.0f;
+        }
+        if (z > 900.0f) {
+            z = 900.0f;
+        }
+        if (z < -900.0f) {
+            z = -900.0f;
+        }
     }
-    func_800314E4(arg0);
+    func_800314E4(trigger);
 }
-#else
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80031518.s")
-#endif
 
 //has to do with tonguing poles and camera stuff?
 void func_800317A0(void) {
@@ -1140,23 +1160,26 @@ s32 func_80032074(s32 arg0) {
 }
 
 
-void func_800320EC(s32 arg0, f32 arg1, f32 arg2) {
+// Called by func_800321F8 when the player's swinging tongue (wrapped around a pole) brushes
+// an actor for two consecutive frames. Computes the angle around the pole where contact
+// happened and arms the actor into an orbit-around-the-pole state at that angle
+void CaptureActorOnPoleSwing(s32 actorIndex, f32 contactX, f32 contactZ) {
     f32 angle;
 
-    angle = CalcAngleBetween2DPoints(arg1, arg2, Poles[gTongueOnePointer->poleID].pos.x, Poles[gTongueOnePointer->poleID].pos.z);
-    if (gActors[arg0].userVariables[0] == 0) {
-        if (gTimer != (gActors[arg0].userVariables[3] + 1)) {
-            gActors[arg0].userVariables[3] = gTimer;
+    angle = CalcAngleBetween2DPoints(contactX, contactZ, Poles[gTongueOnePointer->poleID].pos.x, Poles[gTongueOnePointer->poleID].pos.z);
+    if (gActors[actorIndex].userVariables[0] == 0) {
+        if (gTimer != (gActors[actorIndex].userVariables[3] + 1)) {
+            gActors[actorIndex].userVariables[3] = gTimer;
             return;
         }
         angle += gTongueOnePointer->tongueDir * 90.0f;
         WrapDegrees(&angle);
 
-        gActors[arg0].unk_134[2] = angle;
-        gActors[arg0].userVariables[0] = 1;
-        gActors[arg0].unk_134[0] = angle;
-        gActors[arg0].unk_134[1] = 0.0f;
-        gActors[arg0].unk_134[3] = 0.0f;
+        gActors[actorIndex].unk_134[2] = angle;
+        gActors[actorIndex].userVariables[0] = 1;
+        gActors[actorIndex].unk_134[0] = angle;
+        gActors[actorIndex].unk_134[1] = 0.0f;
+        gActors[actorIndex].unk_134[3] = 0.0f;
     }
 }
 
@@ -1515,7 +1538,7 @@ void ActorTick_BulletHellAntSpawner(Actor* bulletHellAntSpawner) {
         if (((bulletHellAntSpawner->userVariables[0] % (s32) bulletHellAntSpawner->unk_124) == 1) && (Actor_Init(BULLET_HELL_ANT, bulletHellAntSpawner->pos.x, bulletHellAntSpawner->pos.y, bulletHellAntSpawner->pos.z, 0.0f, -50000.0f, 50000.0f, -50000.0f, 50000.0f, -50000.0f, 50000.0f, bulletHellAntSpawner->position._f32.x, bulletHellAntSpawner->position._f32.y, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0, 0, 0, 0) != -1)) {
             bulletHellAntSpawner->userVariables[1] -= 1;
             if (bulletHellAntSpawner->userVariables[1] == 0) {
-                func_80031518(bulletHellAntSpawner);
+                TriggerRoomClearReaction(bulletHellAntSpawner);
             }
         }
     }
@@ -1820,7 +1843,7 @@ void ActorInit_Explosion(Actor* explosion) {
 
 void ActorTick_Explosion(Actor* explosion) {
     if (explosion->unk_124 == explosion->globalTimer) {  //0x124 == 0x10
-        func_80031518(explosion);
+        TriggerRoomClearReaction(explosion);
     }
 }
 
@@ -1834,7 +1857,7 @@ void ActorTick_BombBossBomb(Actor* bsBomb) {
         if (Actor_Init(EXPLOSION, bsBomb->pos.x, bsBomb->pos.y, bsBomb->pos.z, 0.0f, temp_f2, temp_f12, temp_f2, temp_f12, temp_f2, temp_f12, 200.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 10, 0, 0, 0) != -1) {
             Effect_TypeA_Init(bsBomb->pos.x, bsBomb->pos.y, bsBomb->pos.z, 3, 100);
         }
-        func_80031518(bsBomb);
+        TriggerRoomClearReaction(bsBomb);
     }
 }
 
@@ -1906,7 +1929,7 @@ void ActorInit_Arrows(Actor* arrows) {
 
 void ActorTick_Arrow(Actor* arrows) {
     if (arrows->globalTimer == arrows->userVariables[0]) {
-        func_80031518(arrows);
+        TriggerRoomClearReaction(arrows);
     }
     func_800382F4(arrows);
 }
@@ -2778,7 +2801,7 @@ void ActorTick_GhostBossShot(Actor* projectile) {
     projectile->userVariables[0] += 1;
     if (projectile->userVariables[0] == 150) {
         Effect_TypeC_Init(projectile->pos.x, projectile->pos.y, projectile->pos.z, projectile->pos.x, projectile->pos.y + 300.0f, projectile->pos.z, 255, 255, 255, 128, 8, 74);
-        func_80031518(projectile);
+        TriggerRoomClearReaction(projectile);
         return;
     }
     if (projectile->pos.y > 50.0f) {
@@ -3329,7 +3352,7 @@ void ActorTick_Powerup(Actor* powerup) {
     if (powerup->userVariables[0] != 0) {
         powerup->userVariables[1] += 1;
         if (powerup->unk_124 == powerup->userVariables[1]) {
-            func_80031518(powerup);
+            TriggerRoomClearReaction(powerup);
         }
     }
     else {

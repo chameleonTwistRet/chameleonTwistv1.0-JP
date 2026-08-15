@@ -56,9 +56,9 @@ void ClearPlayerPowerups(PlayerActor*);
 s32 func_80030DCC(f32, f32, s32);
 void DespawnButterflyGroup(Actor*);
 void func_800312B0(s32);
-void func_800312FC(Actor*, f32);
+void QueenAnt_HitRecoil(Actor*, f32);
 void func_800313BC(s32, f32); //actor kill
-void func_80031518(Actor*);
+void TriggerRoomClearReaction(Actor*);
 void func_80031DB0(PlayerActor*, Tongue*, s32);
 s32 IsActiveExplosion(Actor*);
 void func_800382F4(Actor*);
