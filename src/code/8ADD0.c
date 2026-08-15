@@ -1179,7 +1179,74 @@ void func_800B4264(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B4408.s")
 
+extern s32 D_802023E0[0x20];
+
+// NON_MATCHING: semantics believed correct (save-state -> runtime restore), but IDO's
+// 4x loop unrolling of the bit-unpack loops schedules differently and picks different
+// induction pointers. ~196 mismatched instr lines, mostly ordering/regalloc in loops 1-2.
+#ifdef NON_MATCHING
+void func_800B4574(u8* arg0, s16* arg1) {
+    CollectableWrapper* w;
+    Field* f;
+    Actor* actor;
+    u8* p;
+    s32 i;
+    s32 j;
+    u32 t;
+    u8 b;
+
+    p = arg0;
+    for (w = &D_802019A8[3]; w < &D_802019A8[0x83]; w += 4) {
+        t = *p++;
+        w[0].bitfield = t & 3;
+        t >>= 2;
+        w[-1].bitfield = t & 3;
+        t >>= 2;
+        w[-2].bitfield = t & 3;
+        t >>= 2;
+        w[-3].bitfield = t & 3;
+    }
+
+    p = (u8*) arg1;
+    for (f = &gZoneFields[7]; f < &gZoneFields[39]; f += 8) {
+        b = *p++;
+        for (j = 0; j < 8; j++) {
+            f[-j].unk68 = b & 1;
+            if (f[-j].unk68 != 0) {
+                if (f[-j].unk60 != 0) {
+                    f[-j].unk64 = 0;
+                }
+            }
+            b >>= 1;
+        }
+    }
+
+    for (i = 0; i < 0x20; i++) {
+        StageFlags[i] = D_802023E0[i];
+    }
+
+    for (i = 0, w = D_802019A8; i < 0x80; i++, w++) {
+        if ((w->bitfield != 1) && (w->actorIndex >= 0)) {
+            gActors[w->actorIndex].actorID = 0;
+            w->actorIndex = -1;
+        }
+    }
+
+    f = &gZoneFields[gCurrentZone];
+    if (f->unk84 != 0) {
+        if (f->unk68 != 0) {
+            for (i = 0, actor = gActors; i != MAX_ACTORS; i++, actor++) {
+                if (f->unk84 == actor->actorID) {
+                    DespawnButterflyGroup(actor);
+                    func_800314E4(actor);
+                }
+            }
+        }
+    }
+}
+#else
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B4574.s")
+#endif
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B47DC.s")
 
@@ -1250,7 +1317,7 @@ void func_800B4FCC(void) {
 
     for (i = 0; i < ARRAY_COUNT(gActors); i++) {
         if ((IsNotPickup(&gActors[i]) != 0) && (gActors[i].actorState == 0)) {
-            func_800311C8(&gActors[i]);
+            DespawnButterflyGroup(&gActors[i]);
             func_800313BC(i, Random(0, 0x168));
         }
     }
@@ -2088,7 +2155,47 @@ void func_800BB254(Collider* arg0, RoomObject* arg1) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BB254.s")
 #endif
 
+// NON_MATCHING: 8 instructions differ by register number only
+#ifdef NON_MATCHING
+s32 func_800BB354(Collider* arg0) {
+    s32 i;
+    Actor* actor;
+    Rect3D rect;
+    s32 id;
+    s32 ret;
+    Vec3f pos;
+    id = arg0->unk_BC;
+
+    rect.min.x = arg0->sfxPos.x - arg0->unkA4;
+    rect.min.y = arg0->sfxPos.y;
+    rect.min.z = arg0->sfxPos.z - arg0->unkA4;
+    rect.max.x = arg0->unkA4 + arg0->sfxPos.x;
+    rect.max.y = arg0->unkA8 + arg0->sfxPos.y;
+    rect.max.z = arg0->unkA4 + arg0->sfxPos.z;
+    ret = 0;
+
+    for (i = 0, actor = gActors; i < MAX_ACTORS; i++, actor++) {
+        if (id == actor->actorID) {
+            pos.x = actor->pos.x;
+            pos.y = actor->pos.y;
+            pos.z = actor->pos.z;
+            if (IsPointInRect(pos, &rect) != 0) {
+                if (actor->actorState == 3) {
+                    DespawnButterflyGroup(actor);
+                    func_800314E4(actor);
+                    ret = 2;
+                } else {
+                    ret = 1;
+                }
+                break;
+            }
+        }
+    }
+    return ret;
+}
+#else
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BB354.s")
+#endif
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BB4A8.s")
 
@@ -2442,12 +2549,12 @@ void func_800BE2C0(void) {
 
     for (i = 0; i < ARRAY_COUNT(gActors); i++, actorList++) {
         if ((IsNotPickup(actorList) != 0) && (actorList->actorState != 0)) {
-            func_800311C8(actorList);
+            DespawnButterflyGroup(actorList);
             func_800314E4(actorList);
         }
     }
 
-    // For all players reset bullet mechanisms
+    // For all players reset tongue vars
     for (i = 0; i < ARRAY_COUNT(gTongues); i++) {
         gTongues[i].amountOnTongue = 0;
         gTongues[i].amountInMouth = 0;
@@ -2469,7 +2576,7 @@ void DespawnActorsInZoneBounds(s32 zone) {
         if (actorList->actorState == 0) {
             if ((rectTemp->min.x <= actorList->pos.x)  && (rectTemp->max.x >= actorList->pos.x)) {
                 if ((rectTemp->min.z <= actorList->pos.z) && (rectTemp->max.z >= actorList->pos.z)) {
-                    func_800311C8(actorList);
+                    DespawnButterflyGroup(actorList);
                     func_800314E4(actorList);
                 }
             }
@@ -2544,7 +2651,7 @@ void func_800BE680(void) {
         if (actor->actorState == 2) {
             continue;
         }
-        func_800311C8(actor);
+        DespawnButterflyGroup(actor);
         func_800314E4(actor);
     }
 }
@@ -2555,7 +2662,7 @@ void func_800BE714(void) {
 
     for (i = 0; i < 0x40; i++, actor++) {
         if (IsNotPickup(actor)) {
-            func_800311C8(actor);
+            DespawnButterflyGroup(actor);
             func_800314E4(actor);
         }
         actor->actorID = 0;
@@ -2787,7 +2894,7 @@ void func_800C0AEC(void) {
     s32 i = 0;
     while (i != ARRAY_COUNT(gActors)){
         if ((IsNotPickup(currentActor) == 0) || (currentActor->actorState != 2)) {
-            func_800311C8(currentActor);
+            DespawnButterflyGroup(currentActor);
             func_800314E4(currentActor);
         }
         i++;

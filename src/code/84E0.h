@@ -60,4 +60,6 @@ extern s32 D_801749A8;
 extern f32 D_8010BC70;
 extern f32 D_8010BC74;
 
+void Effect_TypeX_Create(f32, f32, f32, f32, s32); // sprite.c
+
 #endif //_84E0_H_

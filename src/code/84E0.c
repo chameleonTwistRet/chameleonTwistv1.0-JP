@@ -1,5 +1,8 @@
 #include "84E0.h"
 
+// defined as `stuff D_801003DC` in 5FF30.c; only its first s16 is read here
+extern s16 D_801003DC[];
+
 /* Migrated BSS */
 //TODO: type this data correctly
 
@@ -32,15 +35,15 @@ char D_801749B8[24];
 s32 D_801749D0;
 
 //pob related
-s32 D_801749D8[30];
+s32 D_801749D8[2][15];
 
 unk80174A50 D_80174A50;
 unk80175590 D_80175590;
-unk80175598 D_80175598;
-unk801755A8 D_801755A8;
-unk801755E8 D_801755E8;
-unk801755F8 D_801755F8;
-unk80175608 D_80175608;
+s32 D_80175598[4];
+ContMain D_801755A8[4];
+s32 D_801755E8[4];
+s32 D_801755F8[4];
+s32 D_80175608[6];
 
 //const char padRodata[] = "\0\0\0\0\0\0\0";
 
@@ -967,15 +970,18 @@ void ClearPlayerPowerups(PlayerActor* arg0) {
 //https://decomp.me/scratch/BeR2b
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80030F3C.s")
 
-void func_800311C8(Actor* arg0) {
-    Actor* curActor;
+// Despawns a whole Lizard Kong Butterfly (actorID 0x47) group at once: if this butterfly is idle
+// and its group hasn't already been flagged, clear the shared group record and mark every other
+// butterfly sharing the same group id (unk_128) to despawn too.
+void DespawnButterflyGroup(Actor* butterfly) {
+    Actor* unused; // dead local - incremented but never read, decompiler artifact
     s32 i;
 
-    if ((arg0->actorState == 0) && (arg0->actorID == 0x47)) {
-        if (arg0->userVariables[3] == 0) {
-            D_80170E68[arg0->unk_128].unk_00 = 0;
-            for (i = 0; i < MAX_ACTORS; i++, curActor++) {
-                if ((gActors[i].actorID == 0x47) && (arg0->unk_128 == gActors[i].unk_128)) {
+    if ((butterfly->actorState == 0) && (butterfly->actorID == LIZARD_KONG_BUTTERFLY)) {
+        if (butterfly->userVariables[3] == 0) {
+            D_80170E68[butterfly->unk_128].unk_00 = 0;
+            for (i = 0; i < MAX_ACTORS; i++, unused++) {
+                if ((gActors[i].actorID == LIZARD_KONG_BUTTERFLY) && (butterfly->unk_128 == gActors[i].unk_128)) {
                     gActors[i].userVariables[3] = -1;
                 }
             }
@@ -1001,7 +1007,7 @@ void func_800312FC(Actor* arg0, f32 arg1) {
 
 
 void func_800313BC(s32 arg0, f32 arg1) {
-    func_800311C8(gActors+arg0);
+    DespawnButterflyGroup(gActors+arg0);
     gActors[arg0].actorState = 4;
     gActors[arg0].unk_C8 = 0;
     gActors[arg0].sizeScalar = 1.0f;
@@ -1021,7 +1027,69 @@ void func_800314E4(Actor* arg0) {
     arg0->actorID = 0;
 }
 
+#ifdef NON_MATCHING
+void func_80031518(Actor* arg0) {
+    Actor* actor;
+    s32 i;
+    s32 off;
+    s32 id;
+    s32 curID;
+    PlayerActor* player;
+    f32 x;
+    f32 z;
+
+    id = arg0->actorID;
+    if ((id == 0x35) && (arg0->userVariables[1] == 1)) {
+        for (i = 0, off = 0, actor = gActors; i != MAX_ACTORS; i++, off += sizeof(Actor), actor++) {
+            curID = actor->actorID;
+            if (((curID >= 0x30) && (curID < 0x34)) || (curID == 0x35)) {
+                func_800313BC(i, actor->unk_90);
+                curID = actor->actorID;
+            }
+            if ((curID == 0x34) || ((curID == 0x3B) && (actor->actorState == 0))) {
+                func_80031518((Actor*) ((u8*) gActors + off));
+            }
+        }
+    } else if (0x44 == id) {
+        arg0->actorID = 0;
+        for (actor = gActors; actor < &gActors[MAX_ACTORS]; actor++) {
+            if (0x44 == actor->actorID) {
+                return;
+            }
+        }
+        for (i = 0, actor = gActors; i != MAX_ACTORS; i++, actor++) {
+            curID = actor->actorID;
+            if (curID != 0) {
+                if ((0x48 == curID) || ((curID == 0x42) && (actor->actorState == 0))) {
+                    func_800313BC(i, Random(0, 360));
+                }
+            }
+        }
+    } else if (id == 0x2D) {
+        player = gCurrentActivePlayerPointer;
+        x = player->pos.x;
+        z = player->pos.z;
+        if (x > 1800.0f) {
+            x = 1800.0f;
+        }
+        if (x < -1800.0f) {
+            x = -1800.0f;
+        }
+        if (z > 900.0f) {
+            z = 900.0f;
+        }
+        if (z < -900.0f) {
+            z = -900.0f;
+        }
+        Actor_SpawnAt(0x60, x, player->pos.y + 1000.0f, z);
+    } else if ((id == 0x2B) && (gCurrentActivePlayerPointer->pos.x > 1800.0f) &&
+               (gCurrentActivePlayerPointer->pos.z > 900.0f)) {
+    }
+    func_800314E4(arg0);
+}
+#else
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80031518.s")
+#endif
 
 //has to do with tonguing poles and camera stuff?
 void func_800317A0(void) {
@@ -1196,7 +1264,31 @@ void pickup_collide_func(s32 actorIndex) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80034104.s")
 
+// score 970
+// appears to be the function that drags actors in towards the chameleon following the tongue segment they attached to
+#ifdef NON_MATCHING
+void func_800343B4(void) {
+    Tongue* tongue = gTongueOnePointer;
+    PlayerActor* player;
+    Actor* actor;
+    s32 i;
+    s32 seg;
+
+    for (i = 0; i < (s32) tongue->amountOnTongue; i++) {
+        actor = &gActors[tongue->onTongue[i]];
+        if (actor->actorState == 1) {
+            seg = actor->posOnTongue;
+            player = gCurrentActivePlayerPointer;
+            actor->pos.x = (tongue->tongueHalfX[seg] + player->pos.x) + actor->tOffset.x;
+            actor->pos.y = (((tongue->tongueYs[seg] + player->pos.y) + actor->tOffset.y) + player->tongueYOffset) - (actor->unknownPositionThings[0].unk_10 * 0.5f);
+            actor->pos.z = (tongue->tongueHalfZ[seg] + player->pos.z) + actor->tOffset.z;
+        }
+    }
+}
+#else
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_800343B4.s")
+#endif
+
 
 //spitActor?
 void func_8003449C(void) {
@@ -1462,7 +1554,25 @@ void ActorInit_AntTrio(Actor* antTrio) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_800397DC.s")
 
+// Places a freshly spawned yellow ant on the ring around its pole (unk_124) and faces it
+// tangentially. (430)
+#ifdef NON_MATCHING
+void ActorInit_YellowAnt(Actor* yellowAnt) {
+    f32 angle;
+
+    angle = CalcAngleBetween2DPoints(yellowAnt->pos.x, yellowAnt->pos.z,
+        Poles[yellowAnt->unk_124].pos.x, Poles[yellowAnt->unk_124].pos.z);
+    yellowAnt->pos.x = (yellowAnt->position._f32.x * cosf(DEGREES_TO_RADIANS_2PI(angle + 180.0f))) + Poles[yellowAnt->unk_124].pos.x;
+    yellowAnt->pos.z = Poles[yellowAnt->unk_124].pos.z - (yellowAnt->position._f32.x * sinf(DEGREES_TO_RADIANS_2PI(angle + 180.0f)));
+    yellowAnt->unk_134[4] = yellowAnt->unk_90 = yellowAnt->unk_15C + (angle + 90.0f);
+    WrapDegrees(&yellowAnt->unk_90);
+    yellowAnt->unk_94 = yellowAnt->unk_160;
+    yellowAnt->unk_F0 = Random(0, 0x100);
+}
+#else
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorInit_YellowAnt.s")
+#endif
+
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_YellowAnt.s")
 
@@ -1572,7 +1682,42 @@ void ActorTick_Grenade(Actor* grenade) {
 void ActorInit_MissileSpawner(Actor* missileSpawner) {
 }
 
+// score 20
+#ifdef NON_MATCHING
+void ActorTick_MissileSpawner(Actor* missileSpawner) {
+    Actor* actor = gActors;
+
+    do {
+        if (actor->actorID == MISSILE) {
+            if (actor->unk_12C == missileSpawner->actorIndex) {
+                return;
+            }
+        }
+        actor++;
+    } while (actor != (Actor*) Poles);
+
+    if (missileSpawner->userVariables[0] == 0) {
+        missileSpawner->userVariables[0] = 60;
+    }
+    missileSpawner->userVariables[0] -= 1;
+    if (missileSpawner->userVariables[0] != 0) {
+        return;
+    }
+
+    if (Actor_Init(MISSILE, missileSpawner->pos.x, missileSpawner->pos.y, missileSpawner->pos.z,
+            0.0f, missileSpawner->unk_F4, missileSpawner->unk_F8, missileSpawner->unk_FC,
+            missileSpawner->unk_100, missileSpawner->unk_104, missileSpawner->unk_108,
+            missileSpawner->position._f32.x, missileSpawner->position._f32.y, missileSpawner->unk_15C,
+            missileSpawner->unk_160, missileSpawner->unk_164, missileSpawner->unk_168,
+            missileSpawner->unk_16C, missileSpawner->unk_170, missileSpawner->unk_124,
+            missileSpawner->unk_128, missileSpawner->actorIndex, 0) != -1) {
+        Effect_TypeX_Create(missileSpawner->pos.x, missileSpawner->pos.y, missileSpawner->pos.z, 200.0f, 0x18);
+    }
+}
+#else
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_MissileSpawner.s")
+#endif
+
 
 void ActorInit_Missile(Actor* missile) {
     missile->unk_134[0] = missile->pos.x;
@@ -1778,7 +1923,37 @@ void BoulderCalculations(Actor* boulder) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_Boulder.s")
+void ActorTick_Boulder(Actor* boulder) {
+    if (boulder->userVariables[0] > 0) {
+        boulder->vel.x -= boulder->vel.x * 0.03f;
+        boulder->vel.z -= boulder->vel.z * 0.03f;
+        boulder->unk_134[3] += sqrtf(SUM_OF_SQUARES(boulder->vel.x, boulder->vel.z));
+        boulder->unk_90 = ArcTan2Deg(boulder->vel.x, -boulder->vel.z);
+        boulder->vel.y -= 3.2f;
+        if (boulder->unk_98 == 0) {
+            BoulderCalculations(boulder);
+            boulder->userVariables[1] ^= 1;
+            if (boulder->userVariables[1] != 0) {
+                PLAY_SFX_AT(SFX_RockTumble, boulder->pos, 0, 0);
+            } else {
+                PLAY_SFX_AT(SFX_90_unkSnd, boulder->pos, 0, 0);
+            }
+        }
+    } else if (boulder->userVariables[0] < 0) {
+        boulder->userVariables[2] += 1;
+        if (boulder->userVariables[2] >= 31) {
+            func_800314E4(boulder);
+        } else {
+            boulder->pos.y -= 20.0f;
+        }
+    } else if (gCurrentActivePlayerPointer->pos.y < boulder->unk_15C) {
+        PLAY_SFX_AT(SFX_RockTumble, boulder->pos, 0, 0);
+        boulder->unk_98 = 1;
+        boulder->userVariables[0] = 1;
+        boulder->vel.x = boulder->position._f32.x;
+        boulder->vel.z = boulder->position._f32.y;
+    }
+}
 
 void ActorInit_Armadillo(Actor* armadillo) {
     armadillo->unk_134[0] = armadillo->position._f32.y / armadillo->position._f32.x;
@@ -2412,7 +2587,25 @@ void ActorTick_Sandal(Actor* sandal) {
     ActorTick_Unk2E(sandal);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/GhostBoss_SpawnArms.s")
+void GhostBoss_SpawnArms(Actor* ghostBoss) {
+    s32 i;
+    s32 j;
+    s32 actorID;
+
+    for (i = 0; i < 2; i++) {
+        for (j = 0; j < 15; j++) {
+            actorID = 0x3E;
+            if (j == 0) {
+                actorID = 0x3F;
+            }
+            D_801749D8[i][j] = Actor_Init(actorID, 0.0f, 5000.0f, 0.0f,
+                0.0f, -10000.0f, 10000.0f, -10000.0f, 10000.0f, -10000.0f, 10000.0f,
+                0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f,
+                j, ghostBoss->actorIndex, i, 0);
+        }
+    }
+}
+
 
 void ActorInit_GhostBoss(Actor* pob) {
     pob->unk_EC = 0;
@@ -2423,8 +2616,55 @@ void ActorInit_GhostBoss(Actor* pob) {
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_800448C0.s")
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80044C30.s")
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80044D58.s")
+
+void func_80044C30(Actor* arg0, s32 arg1) {
+    Actor* actor;
+    s32 i;
+
+    if ((arg1 == 0) || (arg1 == 2)) {
+        actor = &gActors[D_801749D8[0][0]];
+        i = arg0->userVariables[0] + 1;
+        arg0->userVariables[0] = i;
+        D_80174A50.unk_000[i][0] = actor->pos.x;
+        D_80174A50.unk_000[i][1] = (actor->unknownPositionThings[0].unk_10 * 0.125f) + actor->pos.y;
+        D_80174A50.unk_000[i][2] = actor->pos.z;
+        D_80174A50.unk_000[i][3] = actor->unk_90;
+    }
+    if ((arg1 == 1) || (arg1 == 2)) {
+        actor = &gActors[D_801749D8[1][0]];
+        i = arg0->userVariables[1] + 1;
+        arg0->userVariables[1] = i;
+        D_80174A50.unk_5A0[i][0] = actor->pos.x;
+        D_80174A50.unk_5A0[i][1] = (actor->unknownPositionThings[0].unk_10 * 0.125f) + actor->pos.y;
+        D_80174A50.unk_5A0[i][2] = actor->pos.z;
+        D_80174A50.unk_5A0[i][3] = actor->unk_90;
+    }
+}
+
+void func_80044D58(Actor* arg0, s32 arg1) {
+    Actor* actor;
+    s32 i;
+
+    if ((arg1 == 0) || (arg1 == 2)) {
+        actor = &gActors[D_801749D8[0][0]];
+        i = arg0->userVariables[0] - 1;
+        arg0->userVariables[0] = i;
+        actor->pos.x = D_80174A50.unk_000[i][0];
+        actor->pos.y = D_80174A50.unk_000[i][1] - (actor->unknownPositionThings[0].unk_10 * 0.125f);
+        actor->pos.z = D_80174A50.unk_000[i][2];
+        actor->unk_90 = D_80174A50.unk_000[i][3];
+    }
+    if ((arg1 == 1) || (arg1 == 2)) {
+        actor = &gActors[D_801749D8[1][0]];
+        i = arg0->userVariables[1] - 1;
+        arg0->userVariables[1] = i;
+        actor->pos.x = D_80174A50.unk_5A0[i][0];
+        actor->pos.y = D_80174A50.unk_5A0[i][1] - (actor->unknownPositionThings[0].unk_10 * 0.125f);
+        actor->pos.z = D_80174A50.unk_5A0[i][2];
+        actor->unk_90 = D_80174A50.unk_5A0[i][3];
+    }
+}
+
 
 s32 func_80044E80(Actor* arg0, s32 arg1) {
     return (arg0->userVariables[arg1] + 5) / 6;
@@ -2432,7 +2672,24 @@ s32 func_80044E80(Actor* arg0, s32 arg1) {
 
 //pob spin on one arm
 //D_801749D8 array of 30 s32s, 15 for each (see also armsMaybe)
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80044EA4.s")
+void func_80044EA4(Actor* arg0, f32 arg1) {
+    Actor* pivot = gActors + D_801749D8[arg0->unk_120][0];
+    Actor* seg;
+    s32 i;
+
+    for (i = 0; i < 15; i++) {
+        seg = gActors + D_801749D8[arg0->unk_120][i];
+        seg->unk_90 += arg1;
+        WrapDegrees(&seg->unk_90);
+        func_8002D434(&seg->pos.x, &seg->pos.z, pivot->pos.x, pivot->pos.z, arg1);
+    }
+    func_8002D434(&arg0->pos.x, &arg0->pos.z, pivot->pos.x, pivot->pos.z, arg1);
+    seg = gActors + D_801749D8[1 - arg0->unk_120][0];
+    seg->unk_90 += arg1;
+    WrapDegrees(&seg->unk_90);
+    func_8002D434(&seg->pos.x, &seg->pos.z, pivot->pos.x, pivot->pos.z, arg1);
+}
+
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_GhostBoss.s")
 
@@ -2533,7 +2790,39 @@ void ActorInit_SpiderTrio(Actor* spiderTrio) {
     spiderTrio->unk_94 = spiderTrio->unk_15C;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_SpiderTrio.s")
+void ActorTick_SpiderTrio(Actor* spiderTrio) {
+    f32 turnRate = 1.0f;
+
+    switch (spiderTrio->userVariables[0]) {
+    case 0:
+        if (spiderTrio->userVariables[2] == 0) {
+            if (func_8002D328(spiderTrio->unk_90, CalcAngleBetween2DPoints(spiderTrio->pos.x, spiderTrio->pos.z, spiderTrio->position._f32.x, spiderTrio->position._f32.y)) < 0) {
+                spiderTrio->userVariables[0] = 1;
+                spiderTrio->userVariables[2] = 1;
+                spiderTrio->unk_94 = 0.0f;
+            }
+        } else {
+            if (func_8002D328(spiderTrio->unk_90, CalcAngleBetween2DPoints(spiderTrio->pos.x, spiderTrio->pos.z, spiderTrio->unk_134[0], spiderTrio->unk_134[1])) < 0) {
+                spiderTrio->userVariables[0] = 1;
+                spiderTrio->userVariables[2] = 0;
+                spiderTrio->unk_94 = 0.0f;
+            }
+        }
+        break;
+    case 1:
+        spiderTrio->unk_90 += turnRate * spiderTrio->unk_160;
+        WrapDegrees(&spiderTrio->unk_90);
+        spiderTrio->userVariables[1] += 1;
+        if ((180.0f / spiderTrio->unk_160) == spiderTrio->userVariables[1]) {
+            spiderTrio->userVariables[0] = 0;
+            spiderTrio->userVariables[1] = 0;
+            spiderTrio->unk_94 = spiderTrio->unk_15C;
+        }
+        break;
+    }
+    func_800382F4(spiderTrio);
+}
+
 
 // GOLEM Room SPIDER Spawner
 void ActorInit_GolemSpiderSpawner(Actor* golemRoomSpiderSpawner){
@@ -2594,7 +2883,25 @@ s32 func_80047FC0(Actor* arg0, s32 arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80048284.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_LizardKongButterfly.s")
+void ActorTick_LizardKongButterfly(Actor* butterfly) {
+    s32 uv3 = butterfly->userVariables[3];
+    unk80170E68* rec;
+    s32 idx;
+
+    if ((uv3 == 0) || (uv3 == -1)) {
+        func_80048284(butterfly);
+    } else {
+        rec = &D_80170E68[butterfly->unk_128];
+        idx = ((uv3 * 16) + rec->unk_04 + 128) % 128;
+        butterfly->vel.x = rec->unk_08[idx] - butterfly->pos.x;
+        butterfly->vel.y = rec->unk_208[idx] - butterfly->pos.y;
+        butterfly->vel.z = rec->unk_408[idx] - butterfly->pos.z;
+        butterfly->unk_90 = rec->unk_608[idx];
+    }
+    PlaySoundEffect(0x42, &butterfly->pos.x, &butterfly->pos.y, &butterfly->pos.z, 1, 0);
+    butterfly->unk_F0++;
+}
+
 
 void ActorInit_LizardKongButterflySpawner(Actor* lizardKongButterflySpawner){
 
@@ -2669,7 +2976,41 @@ void ActorInit_PopcornBucketSpawner(Actor* popcornBucketSpawner){
 
 }
 
+#ifdef NON_MATCHING
+void ActorTick_PopcornBucketSpawner(Actor* popcornBucketSpawner) {
+    Actor* actor;
+
+    actor = gActors;
+    do {
+        if (actor->actorID == 0) {
+            break;
+        }
+        actor++;
+    } while (actor != (Actor*) Poles);
+
+    if (actor != (Actor*) Poles) {
+        if (gActorCount < popcornBucketSpawner->unk_130) {
+            actor = gActors;
+            do {
+                if (actor->actorID == 0x4D) {
+                    return;
+                }
+                actor++;
+            } while (actor != (Actor*) Poles);
+
+            Actor_Init(0x4D, popcornBucketSpawner->pos.x, popcornBucketSpawner->pos.y, popcornBucketSpawner->pos.z,
+                popcornBucketSpawner->unk_90, popcornBucketSpawner->unk_F4, popcornBucketSpawner->unk_F8,
+                popcornBucketSpawner->unk_FC, popcornBucketSpawner->unk_100, popcornBucketSpawner->unk_104,
+                popcornBucketSpawner->unk_108, popcornBucketSpawner->position._f32.x,
+                popcornBucketSpawner->position._f32.y, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f,
+                popcornBucketSpawner->unk_124, popcornBucketSpawner->unk_128, popcornBucketSpawner->unk_12C, 0);
+        }
+    }
+}
+#else
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_PopcornBucketSpawner.s")
+#endif
+
 
 void ActorInit_PopcornBucket(Actor* popcornBucket) {
     ActorInit_Unk1F(popcornBucket);
@@ -2691,23 +3032,22 @@ void ActorInit_ChocoKidSpawner(Actor* chocoKidSpawner){
 
 }
 
-// scans gActors for a live SPAWNED_CHOCO_KID with matching tag, else spawns one. 
-// matching score ~605
+// score 60
 #ifdef NON_MATCHING
-Actor* ActorTick_ChocoKidSpawner(Actor* chocoKidSpawner) {
+void ActorTick_ChocoKidSpawner(Actor* chocoKidSpawner) {
     s32 spawnerTag = chocoKidSpawner->unk_124;
     Actor* actor = gActors;
 
     do {
         if (actor->actorID == SPAWNED_CHOCO_KID) {
             if (spawnerTag == actor->unk_124) {
-                return actor + 1;
+                return;
             }
         }
         actor++;
     } while (actor != (Actor*) Poles);
 
-    return Actor_Init(SPAWNED_CHOCO_KID, chocoKidSpawner->pos.x, chocoKidSpawner->pos.y, chocoKidSpawner->pos.z,
+    Actor_Init(SPAWNED_CHOCO_KID, chocoKidSpawner->pos.x, chocoKidSpawner->pos.y, chocoKidSpawner->pos.z,
         chocoKidSpawner->unk_90, chocoKidSpawner->unk_F4, chocoKidSpawner->unk_F8, chocoKidSpawner->unk_FC,
         chocoKidSpawner->unk_100, chocoKidSpawner->unk_104, chocoKidSpawner->unk_108,
         chocoKidSpawner->position._f32.x, chocoKidSpawner->position._f32.y, chocoKidSpawner->unk_15C,
@@ -2802,14 +3142,46 @@ void ActorInit_BattleModeSaucerSpawner(Actor* bmSaucerSpawner) {
     }
 }
 
+// score 85
+#ifdef NON_MATCHING
+void ActorTick_BattleModeSaucerSpawner(Actor* bmSaucerSpawner) {
+    s32 i;
+    s32 idx;
+
+    if (D_80174758[bmSaucerSpawner->unk_128 - 1] != -1) {
+        return;
+    }
+    bmSaucerSpawner->userVariables[0] += 1;
+    if (bmSaucerSpawner->unk_124 != bmSaucerSpawner->userVariables[0]) {
+        return;
+    }
+
+    for (i = bmSaucerSpawner->unk_128 - 1; i > 0; i--) {
+        if (D_80174758[i - 1] != -1) {
+            gActors[D_80174758[i - 1]].userVariables[0] = i;
+            D_80174758[i] = D_80174758[i - 1];
+            D_80174758[i - 1] = -1;
+        }
+    }
+
+    D_80174758[0] = Actor_Init(0x58, bmSaucerSpawner->pos.x,
+        bmSaucerSpawner->pos.y - bmSaucerSpawner->position._f32.x, bmSaucerSpawner->pos.z,
+        0.0f, bmSaucerSpawner->unk_F4, bmSaucerSpawner->unk_F8, -10000.0f, 10000.0f,
+        bmSaucerSpawner->unk_104, bmSaucerSpawner->unk_108,
+        bmSaucerSpawner->position._f32.x, bmSaucerSpawner->position._f32.y,
+        0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0, 0, 0, 0);
+    bmSaucerSpawner->userVariables[0] = 0;
+}
+#else
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_BattleModeSaucerSpawner.s")
+#endif
+
 
 void ActorInit_BattleModeSaucer(Actor* battleModeSaucer) {
     battleModeSaucer->unk_134[0] = battleModeSaucer->pos.y;
 }
 
-// instruction-perfect; 
-// diff is a single register-slot swap (ft3<->ft4) in the else-if
+// score 30
 #ifdef NON_MATCHING
 void ActorTick_BattleModeSaucer(Actor* battleModeSaucer) {
     f32 targetY = (battleModeSaucer->position._f32.x * battleModeSaucer->userVariables[0]) + battleModeSaucer->unk_134[0];
@@ -2896,7 +3268,29 @@ void ActorInit_UnkFireSpawner(Actor* unkFireSpawner){
 
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_UnkFireSpawner.s")
+void ActorTick_UnkFireSpawner(Actor* unkFireSpawner) {
+    Actor* actor;
+
+    if (StageFlags[unkFireSpawner->unk_130] != 0) {
+        actor = gActors;
+        do {
+            if (actor->actorID == 0x3B) {
+                return;
+            }
+            actor++;
+        } while (actor != (Actor*) Poles);
+
+        if (Actor_Init(0x3B, unkFireSpawner->pos.x, unkFireSpawner->pos.y, unkFireSpawner->pos.z,
+                0.0f, unkFireSpawner->unk_F4, unkFireSpawner->unk_F8, unkFireSpawner->unk_FC,
+                unkFireSpawner->unk_100, unkFireSpawner->unk_104, unkFireSpawner->unk_108,
+                unkFireSpawner->position._f32.x, unkFireSpawner->position._f32.y, unkFireSpawner->unk_15C,
+                unkFireSpawner->unk_160, 0.0f, 0.0f, 0.0f, 0.0f, 0,
+                unkFireSpawner->unk_128, unkFireSpawner->unk_12C, 0) != -1) {
+            Actor_PlaySound(unkFireSpawner, 0xAB, 1, 1);
+        }
+    }
+}
+
 
 void ActorTick_PickupHeartFalling(Actor* fallingHeart) {
     f32 temp_f2;
@@ -2979,11 +3373,88 @@ void func_8004BAC0(void) {
     }
 }
 
+// score 18
+#ifdef NON_MATCHING
+void func_8004BC48(ContMain* arg0) {
+    s32 val;
+    s32 phase;
+    f32 angle;
+    s32 mode;
+
+    val = D_801749D0;
+    mode = 0;
+    if ((val > 0) && (val < 6)) {
+        mode = 1;
+        phase = val - 1;
+    } else if ((val >= 0x14) && (val < 0x29)) {
+        mode = 2;
+        phase = val - 0x14;
+    }
+
+    switch (mode) {
+    case 0:
+        return;
+    case 1:
+        angle = 0.0f;
+        break;
+    case 2:
+        angle = (phase * 15) + 90;
+        break;
+    }
+    arg0->stickX = cosf(DEGREES_TO_RADIANS_2PI(angle)) * 10.0f;
+    arg0->stickY = -sinf(DEGREES_TO_RADIANS_2PI(angle)) * 10.0f;
+    arg0->buttons0 |= 0x4000;
+}
+#else
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8004BC48.s")
+#endif
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8004BD7C.s")
 
+void func_8004BD7C(void) {
+    s32 i;
+
+    for (i = 0; i < 4; i++) {
+        D_80175598[i] = 0;
+        Controller_Zero(&D_801755A8[i]);
+        D_801755E8[i] = 0;
+        D_80175608[i] = ((4 - D_801003DC[0]) * 0x23) / 4;
+        D_801755F8[i] = D_80175608[i] + (Random(0, 99999) % 20);
+    }
+}
+
+#ifdef NON_MATCHING
+s32 func_8004BE90(PlayerActor* player) {
+    Actor* actor;
+    s32 count = 0;
+    s32 i;
+    f32 y;
+
+    actor = gActors;
+    do {
+        if (actor->unk_A0.unk_00 == 1) {
+            if (actor->actorID != 0) {
+                if (actor->actorID < 0x5F) {
+                    if ((actor->actorState == 0) || (actor->actorState == 3)) {
+                        y = (player->pos.y + player->tongueYOffset) - 5.0f;
+                        for (i = 0; i < actor->tongueCollision; i++) {
+                            if (!(actor->unknownPositionThings[i].unk_04 + (actor->pos.y + actor->unknownPositionThings[i].unk_10) < y)) {
+                                if (!(y + 10.0f < actor->unknownPositionThings[i].unk_04 + actor->pos.y)) {
+                                    count++;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        actor++;
+    } while (actor != (Actor*) Poles);
+    return count;
+}
+#else
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8004BE90.s")
+#endif
+
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8004BF88.s")
 
@@ -3052,7 +3523,31 @@ u8 func_8004CC6C(void) {
 }
 
 //only called in func_8004CD9C
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8004CCBC.s")
+s32 func_8004CCBC(PlayerActor* player) {
+    switch (gCurrentZone) {
+    case 1:
+    case 2:
+    case 5:
+        return 0;
+    case 3:
+        return 1;
+    case 4:
+    case 6:
+    case 7:
+        if (player->pos.y < 0.0f) {
+            if (SUM_OF_SQUARES(player->vel.x, player->vel.z) <
+                    (((4225.0f * player->forwardImpulse) * player->forwardImpulse) / 6.0f)) {
+                if (D_801755E8[player->playerID] >= 0x10) {
+                    return 1;
+                }
+            }
+            return 0;
+        }
+        return 1;
+    }
+    return 1;
+}
+
 
 //battle actor manager?
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8004CD9C.s")

@@ -54,7 +54,7 @@ void func_8002F960(Tongue*);
 void ClearPlayerPowerups(PlayerActor*);
 
 s32 func_80030DCC(f32, f32, s32);
-void func_800311C8(Actor*);
+void DespawnButterflyGroup(Actor*);
 void func_800312B0(s32);
 void func_800312FC(Actor*, f32);
 void func_800313BC(s32, f32); //actor kill

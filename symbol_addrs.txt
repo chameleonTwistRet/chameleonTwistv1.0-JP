@@ -2,6 +2,7 @@ ClearTimerPowerup = 0x800BE664; // type:func
 RegisterTwoPointMover = 0x800B6098; // type:func
 MoveTwoPointMover = 0x800B61FC; // type:func
 gFieldObjectBehaviourMap = 0x80108894; // size:0x1C8
+DespawnButterflyGroup = 0x800311C8; // type:func
 RegisterDamageHazard = 0x800B9750; // type:func
 UpdateDamageHazard = 0x800B97F0; // type:func
 UpdateRotatingPlatform = 0x800B6C34; // type:func

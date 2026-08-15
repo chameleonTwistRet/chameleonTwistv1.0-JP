@@ -1214,7 +1214,8 @@ typedef struct unk801749B0 {
 } unk801749B0;
 
 typedef struct unk80174A50 {
-/* 0x00 */ char unk_00[0xB40];
+/* 0x000 */ f32 unk_000[90][4];
+/* 0x5A0 */ f32 unk_5A0[90][4];
 } unk80174A50;
 
 typedef struct unk80175590 {
@@ -1245,8 +1246,12 @@ typedef struct unk80175608 {
 } unk80175608;
 
 typedef struct unk80170E68 {
-/* 0x00 */ s32 unk_00;
-/* 0x04 */ char unk_04[0x804];
+/* 0x000 */ s32 unk_00;
+/* 0x004 */ s32 unk_04;
+/* 0x008 */ f32 unk_08[128];
+/* 0x208 */ f32 unk_208[128];
+/* 0x408 */ f32 unk_408[128];
+/* 0x608 */ f32 unk_608[128];
 } unk80170E68;
 
 /* structs */
