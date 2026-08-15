@@ -203,7 +203,7 @@ void func_80025EF0(PlayerActor* arg0, Tongue* arg1, s32 arg2) {
 
     func_8007AC2C(&sp120);
 
-    if (arg0->playerHURTSTATE == 3 && gTimer % 2 != 0) {
+    if (arg0->playerHurtState == PLAYER_HURT_INVULN && gTimer % 2 != 0) {
         return;
     }
 
@@ -215,9 +215,9 @@ void func_80025EF0(PlayerActor* arg0, Tongue* arg1, s32 arg2) {
         if (gTimer == 120) {
             Effect_TypeT_Init(22.0f, 154.0f, 60, D_800F6870);
         }
-    } else if (arg0->playerHURTSTATE == 4) {
+    } else if (arg0->playerHurtState == PLAYER_HURT_UNK4) {
         Anim_LoadPointer(&static0_chameleonAnims[10], &animObjects, &animFrames, &anim);
-        sp124 = arg0->playerHURTTIMER;
+        sp124 = arg0->playerHurtTimer;
         if (sp124 >= animFrames) {
             sp124 = animFrames - 1;
         }
@@ -232,8 +232,8 @@ void func_80025EF0(PlayerActor* arg0, Tongue* arg1, s32 arg2) {
     } else if (arg0->vaultFall != 0) {
         Anim_LoadPointer(&static0_chameleonAnims[5], &animObjects, &animFrames, &anim);
         func_80027240(&gMatrixBufPtr, anim, animFrames - arg0->vaultFall, animObjects);
-    } else if (arg0->playerHURTSTATE == 1) {
-        sp124 = arg0->playerHURTTIMER - 10;
+    } else if (arg0->playerHurtState == PLAYER_HURT_HIT) {
+        sp124 = arg0->playerHurtTimer - 10;
         Anim_LoadPointer(&static0_chameleonAnims[8], &animObjects, &animFrames, &anim);
         if (sp124 < 0) {
             sp124 = 0;
@@ -241,11 +241,11 @@ void func_80025EF0(PlayerActor* arg0, Tongue* arg1, s32 arg2) {
             sp124 = animFrames - 1;
         }
         func_80027240(&gMatrixBufPtr, anim, sp124, animObjects);
-    } else if (arg0->playerHURTSTATE == 2) {
+    } else if (arg0->playerHurtState == PLAYER_HURT_STAGGER) {
         if (arg0->hp > 0) {
-            sp124 = arg0->playerHURTTIMER;
+            sp124 = arg0->playerHurtTimer;
         } else {
-            sp124 = arg0->playerHURTTIMER / 3;
+            sp124 = arg0->playerHurtTimer / 3;
         }
         Anim_LoadPointer(&static0_chameleonAnims[9], &animObjects, &animFrames, &anim);
         if (sp124 >= animFrames) {
@@ -589,7 +589,7 @@ Gfx* Player_DrawBody(GraphicStruct* arg0, Gfx* gfxPos, PlayerActor* player, Tong
     gSPMatrix(gfxPos++, OS_K0_TO_PHYSICAL(&arg0->playerTranslate[playerIndex]), G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
     gSPMatrix(gfxPos++, OS_K0_TO_PHYSICAL(&arg0->playerRotate[playerIndex]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
     gSPMatrix(gfxPos++, OS_K0_TO_PHYSICAL(&arg0->playerScale[playerIndex]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
-    if (player->playerHURTSTATE != 3 || gTimer % 2 == 0) {
+    if (player->playerHurtState != PLAYER_HURT_INVULN || gTimer % 2 == 0) {
         Gfx* dlist = Davy_restAssociate_Gfx;
         //in what situation is it NOT in 0-6 inclusive???
         if (gSelectedCharacters[playerIndex] <= CHARA_WHITE) {

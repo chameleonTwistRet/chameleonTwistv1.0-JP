@@ -10,6 +10,15 @@
 #define NO_EXT_ROOMS 0
 #define NO_INT_ROOMS 0
 
+// PlayerActor::playerHurtState.
+enum PlayerHurtState {
+	PLAYER_HURT_NONE = 0,
+	PLAYER_HURT_HIT,
+	PLAYER_HURT_STAGGER,
+	PLAYER_HURT_INVULN,
+	PLAYER_HURT_UNK4
+};
+
 enum actorIDs {
 	ACTOR_NULL = 0,
 	RED_ANT,

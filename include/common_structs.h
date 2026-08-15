@@ -120,10 +120,10 @@ typedef struct PlayerActor {
 /* 0x0C0 */ u32 amountLeftToShoot;
 /* 0x0C4 */ u32 vaultFall;//timer for falling after vault
 /* 0x0C8 */ s32 hp;
-/* 0x0CC */ u32 playerHURTSTATE;
-/* 0x0D0 */ s32 playerHURTTIMER;
-/* 0x0D4 */ u32 playerHURTANIM;
-/* 0x0D8 */ u32 playerHURTBY;
+/* 0x0CC */ u32 playerHurtState;
+/* 0x0D0 */ s32 playerHurtTimer;
+/* 0x0D4 */ u32 playerHurtAnim;
+/* 0x0D8 */ u32 playerHurtBy;
 /* 0x0DC */ f32 unk_DC[6];
 /* 0x0F4 */ f32 unk_F4[6];
 /* 0x10C */ f32 timerDown;
@@ -560,10 +560,10 @@ typedef struct PlayerActor_s {
 /* 0x0C0 */ u32 amountLeftToShoot;
 /* 0x0C4 */ u32 vaultFall;//timer for falling after vault
 /* 0x0C8 */ s32 hp;
-/* 0x0CC */ u32 playerHURTSTATE;
-/* 0x0D0 */ s32 playerHURTTIMER;
-/* 0x0D4 */ u32 playerHURTANIM;
-/* 0x0D8 */ u32 playerHURTBY;
+/* 0x0CC */ u32 playerHurtState;
+/* 0x0D0 */ s32 playerHurtTimer;
+/* 0x0D4 */ u32 playerHurtAnim;
+/* 0x0D8 */ u32 playerHurtBy;
 /* 0x0DC */ f32 unk_DC[6];
 /* 0x0F4 */ f32 unk_F4[2];
             s32 arbitraryChange;

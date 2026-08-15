@@ -253,7 +253,11 @@ void func_8002D550(f32 *arg0, f32 *arg1, f32 arg2, f32 arg3, f32 arg4) {
     }
 }
 
-void Actors_Init(s32 actorIndex, s32 actorID, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7, f32 arg8, f32 arg9, f32 argA, f32 argB, f32 argC, f32 argD, f32 argE, f32 argF, f32 arg10, f32 arg11, f32 arg12, f32 arg13, s32 arg14, s32 arg15, s32 arg16, s32 arg17) {
+void Actors_Init(s32 actorIndex, s32 actorID, f32 posX, f32 posY, f32 posZ, f32 arg90,
+                  f32 argF4, f32 argF8, f32 argFC, f32 arg100, f32 arg104, f32 arg108,
+                  f32 argPosition0, f32 argPosition1,
+                  f32 arg15C, f32 arg160, f32 arg164, f32 arg168, f32 arg16C, f32 arg170,
+                  s32 arg124, s32 arg128, s32 arg12C, s32 arg130) {
     Actor* actorInstance;
     s32 i;
 
@@ -272,10 +276,10 @@ void Actors_Init(s32 actorIndex, s32 actorID, f32 arg2, f32 arg3, f32 arg4, f32 
     actorInstance->actorIndex = actorIndex;
     actorInstance->actorID = actorID;
     actorInstance->globalTimer = 0;
-    actorInstance->pos.x = arg2;
-    actorInstance->pos.y = arg3;
-    actorInstance->pos.z = arg4;
-    actorInstance->unk_90 = arg5;
+    actorInstance->pos.x = posX;
+    actorInstance->pos.y = posY;
+    actorInstance->pos.z = posZ;
+    actorInstance->unk_90 = arg90;
 
     for (i = 0; i < 3; i++) {
         actorInstance->unknownPositionThings[i].unk_08 = 0.0f;
@@ -288,24 +292,24 @@ void Actors_Init(s32 actorIndex, s32 actorID, f32 arg2, f32 arg3, f32 arg4, f32 
     actorInstance->tYPos = actorInstance->unknownPositionThings[0].unk_10 = D_8010A6D0[actorID].y;
     actorInstance->tongueCollision = 1;
 
-    actorInstance->unk_F4 = arg6;
-    actorInstance->unk_F8 = arg7;
-    actorInstance->unk_FC = arg8;
-    actorInstance->unk_100 = arg9;
-    actorInstance->unk_104 = argA;
-    actorInstance->unk_108 = argB;
-    actorInstance->position._f32.x = argC;
-    actorInstance->position._f32.y = argD;
-    actorInstance->unk_15C = argE;
-    actorInstance->unk_160 = argF;
-    actorInstance->unk_164 = arg10;
-    actorInstance->unk_168 = arg11;
-    actorInstance->unk_16C = arg12;
-    actorInstance->unk_170 = arg13;
-    actorInstance->unk_124 = arg14;
-    actorInstance->unk_128 = arg15;
-    actorInstance->unk_12C = arg16;
-    actorInstance->unk_130 = arg17;
+    actorInstance->unk_F4 = argF4;
+    actorInstance->unk_F8 = argF8;
+    actorInstance->unk_FC = argFC;
+    actorInstance->unk_100 = arg100;
+    actorInstance->unk_104 = arg104;
+    actorInstance->unk_108 = arg108;
+    actorInstance->position._f32.x = argPosition0;
+    actorInstance->position._f32.y = argPosition1;
+    actorInstance->unk_15C = arg15C;
+    actorInstance->unk_160 = arg160;
+    actorInstance->unk_164 = arg164;
+    actorInstance->unk_168 = arg168;
+    actorInstance->unk_16C = arg16C;
+    actorInstance->unk_170 = arg170;
+    actorInstance->unk_124 = arg124;
+    actorInstance->unk_128 = arg128;
+    actorInstance->unk_12C = arg12C;
+    actorInstance->unk_130 = arg130;
     actorInstance->actorState = 0;
     actorInstance->vel.x = 0.0f;
     actorInstance->vel.y = 0.0f;
@@ -617,7 +621,9 @@ s32 Actor_Init(s32 id, f32 posX, f32 posY, f32 posZ, f32 arg4, f32 arg5, f32 arg
 
     for (i = 0; i < ARRAY_COUNT(gActors); i++, curActor++) {
         if (curActor->actorID == 0) {
-            Actors_Init(i, id, posX, posY, posZ, arg4, arg5, arg6, arg7, arg8, arg9, argA, argB, argC, argD, argE, argF, arg10, arg11, arg12, arg13, arg14, arg15, arg16);
+            Actors_Init(i, id, posX, posY, posZ, arg4, arg5, arg6, 
+                arg7, arg8, arg9, argA, argB, argC, argD, argE, argF,
+                arg10, arg11, arg12, arg13, arg14, arg15, arg16);
             gActorCount++;
             return i;
         }
@@ -625,16 +631,17 @@ s32 Actor_Init(s32 id, f32 posX, f32 posY, f32 posZ, f32 arg4, f32 arg5, f32 arg
     return -1;
 }
 
-s32 func_8002DF5C(s32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4) {
+// Finds a free pole slot (mode == 0), fills it in, and returns its index (-1 if the pool is full).
+s32 RegistPole(s32 mode, f32 x, f32 y, f32 z, f32 height) {
     s32 i;
 
     for (i = 0; i < ARRAY_COUNT(gActors); i++) {
         if (Poles[i].mode == 0) {
-            Poles[i].mode = arg0;
-            Poles[i].pos.x = arg1;
-            Poles[i].pos.y = arg2;
-            Poles[i].pos.z = arg3;
-            Poles[i].yStretch = arg4;
+            Poles[i].mode = mode;
+            Poles[i].pos.x = x;
+            Poles[i].pos.y = y;
+            Poles[i].pos.z = z;
+            Poles[i].yStretch = height;
             return i;
         }
     }
@@ -851,18 +858,22 @@ void func_8002F3D4(void) {
 }
 
 
-void func_8002F528(s32 arg0) {
-    gCurrentActivePlayerPointer->playerHURTSTATE = 3;
-    gCurrentActivePlayerPointer->playerHURTTIMER = 0;
+// Transitions the current active player into the post-hit invulnerability/flicker window
+void StartPlayerInvulnFlicker(s32 arg0) {
+    gCurrentActivePlayerPointer->playerHurtState = PLAYER_HURT_INVULN;
+    gCurrentActivePlayerPointer->playerHurtTimer = 0;
 }
 
 
-void func_8002F54C(f32 arg0, PlayerActor* PlayerP, s32 arg2) {
-    PlayerP->vel.y = arg0;
-    PlayerP->canJump = 1;
-    PlayerP->hasTumbled = arg2;
-    PlayerP->jumpReleasedInAir = 0;
-    PlayerP->jumpAnimFrame = 0;
+// Launches the player vertically: sets vel.y, re-enables jumping, resets the
+// jump-release/anim state, and marks whether this launch counts as a tumble. Only current
+// caller is the damage-knockback path (velY=48.0, tumbling=1).
+void LaunchPlayerVertically(f32 velY, PlayerActor* player, s32 tumbling) {
+    player->vel.y = velY;
+    player->canJump = 1;
+    player->hasTumbled = tumbling;
+    player->jumpReleasedInAir = 0;
+    player->jumpAnimFrame = 0;
 }
 
 
@@ -1368,7 +1379,7 @@ void func_800360E4(Actor* actor) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80036900.s")
 
 void func_80036D74(PlayerActor* arg0, Tongue* arg1) {
-    if (arg0->playerHURTSTATE == 0) {
+    if (arg0->playerHurtState == PLAYER_HURT_NONE) {
         func_8002F884(arg0->playerID, 5);
         Effect_TypeD_Create(arg0->pos.x, arg0->pos.y, arg0->pos.z);
         PLAY_SFX(SFX_ChameleonOw+1, 0, 0x10);
@@ -1380,15 +1391,15 @@ void func_80036D74(PlayerActor* arg0, Tongue* arg1) {
                 D_80174860->size2 = 0.4551661909f;
             }
         }
-        arg0->playerHURTSTATE = 1;
-        arg0->playerHURTTIMER = 0;
-        arg0->playerHURTANIM = 0;
-        arg0->playerHURTBY = 0;
+        arg0->playerHurtState = PLAYER_HURT_HIT;
+        arg0->playerHurtTimer = 0;
+        arg0->playerHurtAnim = 0;
+        arg0->playerHurtBy = 0;
         func_80031DB0(arg0, arg1, 0);
         arg0->yAngle = ArcTan2Deg(-arg0->vel.x, arg0->vel.z);;
         arg0->vel.x = -cosf(DEGREES_TO_RADIANS_2PI(arg0->yAngle)) * 32.0f;
         arg0->vel.z = sinf(DEGREES_TO_RADIANS_2PI(arg0->yAngle)) * 32.0f;
-        func_8002F54C(48.0f, arg0, 1);
+        LaunchPlayerVertically(48.0f, arg0, 1);
     }
 }
 
