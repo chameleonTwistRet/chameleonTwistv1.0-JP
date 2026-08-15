@@ -61,7 +61,7 @@ FieldObjectBehaviourFuncs D_80108894[] = {
     {0x00000002, func_800B6054, func_800B6078}, // (Same as above?)
     {0x00000003, func_800B6054, func_800B6078}, // (Same as above?)
     {0x00000004, func_800B6054, func_800B6078}, // (Same as above?)
-    {FIELD_BEHAVIOUR_2POINT_MOVING, func_800B6098, func_800B61FC}, // Linear (2-Point) Movement
+    {FIELD_BEHAVIOUR_2POINT_MOVING, RegisterTwoPointMover, func_800B61FC}, // Linear (2-Point) Movement
     {0x00000006, func_800B67D8, func_800B691C},
     {0x00000007, func_800B6B14, func_800B6078},
     {FIELD_BEHAVIOUR_ROTATING, func_800B6B4C, func_800B6C34}, // Rotating Platform {frameCount (2, 10)}
@@ -91,7 +91,7 @@ FieldObjectBehaviourFuncs D_80108894[] = {
     {0x00000020, func_800BD55C, func_800BD608},
     {0x00000021, func_800B6054, func_800B6078},
     {0x00000022, func_800BD718, func_800BD938},
-    {0x00000023, func_800BDF2C, func_800BE000},
+    {0x00000023, func_800BDF2C, MoveOrbitChild},
     {0x00000024, func_800BE0D4, func_800BE1C4},
     {0x00000025, func_800B6054, func_800B6078},
     // if([bhvIdx] >= 0x26U) { pass }
@@ -1372,7 +1372,7 @@ void func_800B6078(Collider* arg0) {
     Vec3f_Zero(&arg0->unk_3C);
 }
 
-void func_800B6098(Collider* arg0, RoomObject* arg1) {
+void RegisterTwoPointMover(Collider* arg0, RoomObject* arg1) {
     s32 b4;
     func_800B5D68(arg0, 2);
     arg0->unk_8C = arg0->unk_30.x;
@@ -1477,7 +1477,52 @@ void func_800B81B4(Collider* arg0, RoomObject* arg1) {
     arg0->unk_B8 = 0;
 }
 
+// MOVE hook for behaviour 0xD: a model-swapping (animated-mesh) platform.
+// Collider::unk_AC is the UnkType3[] keyframe table registered by func_800B81B4,
+// unk_B0 its length, unk_B4 the current keyframe index and unk_B8 the tick counter
+// within that keyframe.
+#ifdef NON_MATCHING
+void func_800B81FC(Collider* arg0) {
+    s32 flag;
+    UnkType3* entry;
+    Rect3D rect;
+    s32 temp;
+
+    entry = &((UnkType3*)arg0->unk_AC)[arg0->unk_B4];
+    arg0->unk_120 = entry->unk_14;
+    arg0->collision = *(ModelCollision**)(D_801B3178->unk8 + entry->unk_00[(D_801749A0 / entry->unk_08) % entry->unk_04] * 0x30 + 4);
+    func_800B2E40(arg0);
+    flag = 0;
+    arg0->unk_B8++;
+    temp = entry->unk_10;
+    if (temp < 0) {
+        rect.min.x = arg0->unk_CC.min.x;
+        rect.max.x = arg0->unk_CC.max.x;
+        rect.min.y = arg0->unk_CC.min.y - 100.0;
+        rect.max.y = arg0->unk_CC.max.y + 100.0;
+        rect.min.z = arg0->unk_CC.min.z;
+        rect.max.z = arg0->unk_CC.max.z;
+        if (entry->unk_0C < arg0->unk_B8) {
+            flag = 0;
+            if (func_800B5878(&rect) != 0) {
+                flag = 1;
+            }
+        }
+    } else if (temp < arg0->unk_B8) {
+        flag = 1;
+    }
+    if (flag != 0) {
+        arg0->unk_B8 = 0;
+        arg0->unk_B4++;
+        if (arg0->unk_B4 >= arg0->unk_B0) {
+            arg0->unk_B4 = 0;
+        }
+    }
+    Vec3f_Zero(&arg0->unk_3C);
+}
+#else
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B81FC.s")
+#endif
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B83D8.s")
 
@@ -1774,7 +1819,7 @@ void func_800BD608(Collider* arg0) {
 }
 
 
-Vec3f* func_800BD634(Vec3f* out, Collider* arg1) {
+Vec3f* PlaceChildAtRotatedOffset(Vec3f* out, Collider* arg1) {
     Vec3f sp34;
     Vec3f sp28;
 
@@ -1806,7 +1851,7 @@ void func_800BDF2C(Collider* arg0, RoomObject* arg1) {
     arg0->unk_94 = arg0->unk_30.z;
 }
 
-void func_800BE000(Collider* arg0) {
+void MoveOrbitChild(Collider* arg0) {
     Vec3f sp2C;
 
     sp2C.x = arg0->unk_8C;
@@ -1830,7 +1875,7 @@ void func_800BE24C(void) {
     D_8020D908.unk_00 = temp;
 }
 
-s32 func_800BE264(s32 arg0) {
+s32 SetActiveZoneFieldOffset(s32 arg0) {
     Field* temp_v0 = &gZoneFields[arg0];
     s32 temp = D_801B3178->unk_18 + (temp_v0->unk80 << 6);
     D_8020D908.unk_00 = temp;
@@ -1859,7 +1904,7 @@ void func_800BE2C0(void) {
         gTongues[i].amountInMouth = 0;
         gPlayerActors[i].amountToShoot = 0;
         gPlayerActors[i].amountLeftToShoot = 0;
-        func_800BE474(&gTongues[i]);
+        CalculatePlayerDragFromEaten(&gTongues[i]);
     }
 }
 
@@ -1883,24 +1928,11 @@ void func_800BE370(s32 room) {
     }
 }
 
-/**
- * @brief Recompute a player's tongue shot impulse from how much they have swallowed
- *
- * The tongue's owner is recovered from its index in gTongues. A player carrying fewer than
- * six things in their mouth gets an impulse that fades linearly from 0.32 (empty) as the
- * mouth fills, and anything from six upwards is pinned to the 0.24 minimum (the same value
- * the formula gives at six). The mini powerup halves the result.
- *
- * Both coefficients sit one ulp above the plain decimal in the ROM, so they are written as
- * the folded float products that reproduce those exact words.
- *
- * @param arg0 tongue
- */
-void func_800BE474(Tongue* arg0) {
-    PlayerActor* player = &gPlayerActors[arg0 - gTongues];
+void CalculatePlayerDragFromEaten(Tongue* tongue) {
+    PlayerActor* player = &gPlayerActors[tongue - gTongues];
 
-    if (arg0->amountInMouth < 6) {
-        player->forwardImpulse = ((24.0f - arg0->amountInMouth) * (0.4f * 0.8f)) / 24.0f;
+    if (tongue->amountInMouth < 6) {
+        player->forwardImpulse = ((24.0f - tongue->amountInMouth) * (0.4f * 0.8f)) / 24.0f;
     } else {
         player->forwardImpulse = 0.4f * 0.6f;
     }
@@ -1909,13 +1941,13 @@ void func_800BE474(Tongue* arg0) {
     }
 }
 
-void func_800BE550(Tongue* arg0) {
-    arg0->vaulting = 0;
-    arg0->tongueMode = 0;
-    arg0->segments = 0;
-    arg0->amountOnTongue = 0;
-    arg0->amountInMouth = 0;
-    func_800BE474(arg0);
+void ResetTongue(Tongue* tongue) {
+    tongue->vaulting = 0;
+    tongue->tongueMode = 0;
+    tongue->segments = 0;
+    tongue->amountOnTongue = 0;
+    tongue->amountInMouth = 0;
+    CalculatePlayerDragFromEaten(tongue);
 }
 
 void EraseTongueEatEnemy(Tongue* arg0) {
@@ -1940,10 +1972,10 @@ void EraseTongueEatEnemy(Tongue* arg0) {
             arg0->amountOnTongue -= 1;
 
     }
-    func_800BE474(arg0);
+    CalculatePlayerDragFromEaten(arg0);
 }
 
-void func_800BE664(PlayerActor * arg0) {
+void ClearTimerPowerup(PlayerActor * arg0) {
     if (arg0->power == POWERUP_TIMER) {
         arg0->power = POWERUP_NONE;
     }
@@ -2700,44 +2732,44 @@ void func_800C38E0(SpriteActor* arg0) {
 //draw collision
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C3B50.s")
 
-void func_800C3DCC(Camera* camera, Vec3f arg1, Vec3f arg4, f32 arg7) {
-    camera->lookAt.x = camera->f1.z = arg1.x;
-    camera->f2.x = camera->lookAt.y = arg1.y;
-    camera->f2.z = arg7;
-    camera->f2.y = arg1.z;
-    camera->lookAt.z = arg1.z;
-    camera->f3.x = arg4.x;
-    camera->eye.x = arg4.x;
-    camera->f3.y = arg4.y;
+void CommitCameraShot(Camera* camera, Vec3f lookAtPoint, Vec3f eyePoint, f32 lookAtBaseY) {
+    camera->lookAt.x = camera->f1.z = lookAtPoint.x;
+    camera->f2.x = camera->lookAt.y = lookAtPoint.y;
+    camera->f2.z = lookAtBaseY;
+    camera->f2.y = lookAtPoint.z;
+    camera->lookAt.z = lookAtPoint.z;
+    camera->f3.x = eyePoint.x;
+    camera->eye.x = eyePoint.x;
+    camera->f3.y = eyePoint.y;
     camera->eye.y = camera->f3.y;
-    camera->f3.z = arg4.z;
-    camera->eye.z = arg4.z;
+    camera->f3.z = eyePoint.z;
+    camera->eye.z = eyePoint.z;
     camera->f2.x -= gZoneFields[gCurrentZone].unkD0 * camera->size1;
     camera->f3.y -= gZoneFields[gCurrentZone].unkD0 * camera->size1;
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C3E94.s")
 
-void func_800C4040(PlayerActor* arg0, Tongue* arg1, Camera* camera, f32 arg3, f32 arg4) {
-    Vec3f sp54;
-    Vec3f sp48;
-    Field* temp_v0;
-    f32 temp_f0_8;
-    f32 temp_f12;
+void UpdateFollowCamera(PlayerActor* player, Tongue* tongue, Camera* camera, f32 panX, f32 panZ) {
+    Vec3f lookAt;
+    Vec3f eye;
+    Field* zone;
+    f32 maxPanX;
+    f32 maxPanZ;
 
-    temp_v0 = &gZoneFields[gCurrentZone];
+    zone = &gZoneFields[gCurrentZone];
 
-    if (arg3 == 0.0 && arg4 == 0.0) {
-        arg3 = 1;
+    if (panX == 0.0 && panZ == 0.0) {
+        panX = 1;
     }
 
     //these MUST be formatted like this
-    camera->lookAt.x = camera->f1.z = arg0->pos.x;
-    camera->lookAt.y = camera->f2.x = arg0->pos.y + (60.0 / camera->size1);
-    camera->f2.z = arg0->pos.y;
-    camera->lookAt.z = camera->f2.y = arg0->pos.z;
+    camera->lookAt.x = camera->f1.z = player->pos.x;
+    camera->lookAt.y = camera->f2.x = player->pos.y + (60.0 / camera->size1);
+    camera->f2.z = player->pos.y;
+    camera->lookAt.z = camera->f2.y = player->pos.z;
     camera->eye.x = camera->f3.x = camera->f1.z;
-    camera->eye.y = camera->f3.y = arg0->pos.y + 600 * camera->size1;
+    camera->eye.y = camera->f3.y = player->pos.y + 600 * camera->size1;
     camera->eye.z = camera->f3.z = camera->f2.y;
     camera->lookAt.y += gZoneFields[gCurrentZone].unkD0 * camera->size1;
     camera->eye.y += gZoneFields[gCurrentZone].unkD0 * camera->size1;
@@ -2745,25 +2777,25 @@ void func_800C4040(PlayerActor* arg0, Tongue* arg1, Camera* camera, f32 arg3, f3
     if (isInOverworld == TRUE) {
         camera->eye.z += 800 * camera->size1;
         camera->f3.z += 800 * camera->size1;
-        func_800D3854(arg0, arg1, camera, &sp54, &sp48, 1);
-        func_800C3DCC(camera, sp54, sp48, arg0->pos.y);
+        func_800D3854(player, tongue, camera, &lookAt, &eye, 1);
+        CommitCameraShot(camera, lookAt, eye, player->pos.y);
         return;
     }
 
-    temp_f0_8 = temp_v0->rect_48.min.x;
-    temp_f12 = temp_v0->rect_48.min.z;
-    arg3 *= 800 * camera->size1;
-    arg4 *= 800 * camera->size1;
-    LimitFloat(&arg3, -temp_f0_8, temp_f0_8);
-    LimitFloat(&arg4, -temp_f12, temp_f12);
-    camera->eye.x += arg3;
-    camera->f3.x += arg3;
-    camera->eye.z += arg4;
-    camera->f3.z += arg4;
+    maxPanX = zone->rect_48.min.x;
+    maxPanZ = zone->rect_48.min.z;
+    panX *= 800 * camera->size1;
+    panZ *= 800 * camera->size1;
+    LimitFloat(&panX, -maxPanX, maxPanX);
+    LimitFloat(&panZ, -maxPanZ, maxPanZ);
+    camera->eye.x += panX;
+    camera->f3.x += panX;
+    camera->eye.z += panZ;
+    camera->f3.z += panZ;
 
     if (camera->unk0 == 1) {
-        func_800D69D0(gZoneFields[gCurrentZone].cameraMode, arg0, arg1, camera, &sp54, &sp48, 1);
-        func_800C3DCC(camera, sp54, sp48, arg0->pos.y);
+        func_800D69D0(gZoneFields[gCurrentZone].cameraMode, player, tongue, camera, &lookAt, &eye, 1);
+        CommitCameraShot(camera, lookAt, eye, player->pos.y);
     }
 }
 
@@ -2801,14 +2833,14 @@ void func_800C4968(Vec3f arg0, Vec3f arg3, f32 arg6, f32 arg7, f32 arg8) {
     func_800C48B8(sp7C, sp70, arg0, arg3, arg8, 0);
 }
 
-void func_800C4B1C(Camera* arg0, f32 arg1) {
-    Vec3f lerp1;
-    Vec3f lerp2;
+void BlendCameraKeyframes(Camera* camera, f32 weight) {
+    Vec3f lookAt;
+    Vec3f eye;
 
-    arg1 = func_800B2308(arg1, 0);
-    Vec3f_Lerp(&lerp1, D_8020A298, D_8020D2A8, arg1);
-    Vec3f_Lerp(&lerp2, D_8020D5B8, D_8020D848, arg1);
-    func_800C3DCC(arg0, lerp1, lerp2, D_8020D858);
+    weight = func_800B2308(weight, 0);
+    Vec3f_Lerp(&lookAt, D_8020A298, D_8020D2A8, weight);
+    Vec3f_Lerp(&eye, D_8020D5B8, D_8020D848, weight);
+    CommitCameraShot(camera, lookAt, eye, D_8020D858);
 }
 
 void func_800C4C48(Vec3f arg0, f32 arg3, f32 arg4, f32 arg5, f32 arg6) {
@@ -2827,29 +2859,28 @@ void func_800C4C48(Vec3f arg0, f32 arg3, f32 arg4, f32 arg5, f32 arg6) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C4DF8.s")
 
 //animates camera pans
-void func_800C5304(Camera* camera, f32 weight) {
-    Vec3f sp54;
-    Vec3f sp48;
+void UpdateOrbitalCamera(Camera* camera, f32 weight) {
+    Vec3f eye;
+    Vec3f eyeOffset;
     f32 radius;
     f32 theta;
     f32 phi;
-    Vec3f sp30;
+    Vec3f center;
 
     weight = func_800B2308(weight, 0);
     radius = ((1.0 - weight) * D_80201900) + (weight * D_80201914);
     theta = ((1.0 - weight) * D_80201904) + (weight * D_8020191C);
     phi = ((1.0 - weight) * D_8020190C) + (weight * D_80201924);
     WrapAngle(&phi);
-    Vec3f_Lerp(&sp30, D_80201930, D_80201950, weight);
-    SphericalToCartesian(&sp48, radius, theta, phi);
-    sp54.x = sp30.x + sp48.x;
-    sp54.y = sp30.y + sp48.y; sp54.z = sp30.z + sp48.z;
-    sp30.y += gZoneFields[gCurrentZone].unkD0 * camera->size1;
-    func_800C3DCC(camera, sp30, sp54, D_80201960);
+    Vec3f_Lerp(&center, D_80201930, D_80201950, weight);
+    SphericalToCartesian(&eyeOffset, radius, theta, phi);
+    eye.x = center.x + eyeOffset.x;
+    eye.y = center.y + eyeOffset.y; eye.z = center.z + eyeOffset.z;
+    center.y += gZoneFields[gCurrentZone].unkD0 * camera->size1;
+    CommitCameraShot(camera, center, eye, D_80201960);
 }
 
 
-// why would this ever need to zero Vec2w and arg1? (This surely is zeroing a Vec3w? (this is already a function?))
 void func_800C54F8(Vec2w* arg0, s32* arg1) {
     arg0->x = 0;
     arg0->y = 0;
@@ -2951,7 +2982,6 @@ void func_800C88AC(void) {
     }
 }
 
-//TODO: check if this should be gPlayerActors or gPlayerActors
 void func_800C88D0(void) {
     func_800C56D4(gPlayerActors);
 }

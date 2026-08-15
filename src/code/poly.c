@@ -66,7 +66,7 @@ Vec3f D_802489C8[8];
 char D_80248A28[0x08];
 
 void func_800D5394(PlayerActor*, Tongue*, Camera*, Vec3f*, Vec3f*, s32);
-void func_800D6864(PlayerActor*, Tongue*, Camera*, Vec3f*, Vec3f*);
+void GetCurrentCameraShot(PlayerActor*, Tongue*, Camera*, Vec3f*, Vec3f*);
 Collider* func_800CAF88(Vec3f, f32, f32);
 Collider* SearchPolygonBetween(Vec3f, Vec3f, s32, s32, s32);
 void OrderRectBounds(Rect3D*);
@@ -681,16 +681,16 @@ void func_800D4550(s32 arg0, s32 arg1, Poly* arg2, Vec3f* arg3, Vec3f* arg4) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800D5394.s")
 
-void func_800D6864(PlayerActor* arg0, Tongue* arg1, Camera* arg2, Vec3f* arg3, Vec3f* arg4) {
-    Field* collider;
+void GetCurrentCameraShot(PlayerActor* player, Tongue* tongue, Camera* camera, Vec3f* outLookAt, Vec3f* outEye) {
+    Field* zone;
 
-    collider = &gZoneFields[gCurrentZone];
-    arg3->x = arg2->f1.z;
-    arg3->y = arg2->f2.x + (collider->unkD0 * arg2->size1);
-    arg3->z = arg2->f2.y;
-    arg4->x = arg2->f3.x;
-    arg4->y = arg2->f3.y + (collider->unkD0 * arg2->size1);
-    arg4->z = arg2->f3.z;
+    zone = &gZoneFields[gCurrentZone];
+    outLookAt->x = camera->f1.z;
+    outLookAt->y = camera->f2.x + (zone->unkD0 * camera->size1);
+    outLookAt->z = camera->f2.y;
+    outEye->x = camera->f3.x;
+    outEye->y = camera->f3.y + (zone->unkD0 * camera->size1);
+    outEye->z = camera->f3.z;
 }
 
 void ApplyRotationToVector(Vec3f* vecA, Vec3f* vecB, f32 degreesAngle) {
@@ -721,7 +721,7 @@ void SetCameraParameters(void) {
     Vec3f sp30;
 
     if ((gCurrentStage == STAGE_GHOST) && (gCurrentZone == ZONE_BILLIARDS)) {
-        func_800D6864(gPlayerActors, gTongues, gCamera, &sp3C, &sp30);
+        GetCurrentCameraShot(gPlayerActors, gTongues, gCamera, &sp3C, &sp30);
     } else if ((isInOverworld == TRUE) && (D_8020D8F4 == 0)) {
         func_800D3854(gPlayerActors, gTongues, gCamera, &sp3C, &sp30, 0);
     } else if (gCamera[0].unk0 == 1) {

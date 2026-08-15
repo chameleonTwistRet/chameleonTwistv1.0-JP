@@ -40,3 +40,5 @@ tools/m2c/
 vault/
 wip/
 nonmatchings/
+
+tools/decomp_index/

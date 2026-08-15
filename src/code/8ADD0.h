@@ -18,6 +18,17 @@ typedef struct unk8020D908 {
     char unk_04[0x54];
 } unk8020D908;
 
+// Behaviour 0xD keyframe record. RoomObject::keyframes points at an array of these
+// (RoomObject::noKeyframes entries); Collider::unk_AC/unk_B0 carry them to the MOVE hook.
+typedef struct UnkType3 {
+    /* 0x00 */ s32* unk_00;                         /* array of model ids, unk_04 long */
+    /* 0x04 */ s32 unk_04;
+    /* 0x08 */ s32 unk_08;                          /* gFrameCounter divisor */
+    /* 0x0C */ s32 unk_0C;
+    /* 0x10 */ s32 unk_10;
+    /* 0x14 */ s32 unk_14;
+} UnkType3;                                         /* size = 0x18 */
+
 typedef struct unkStruct20 {
     char unk_00[0x25];
     s8 unk25;
@@ -30,7 +41,7 @@ typedef struct unkStruct20 {
 /* Functions */
 void func_800B6054(Collider*, RoomObject*);
 void func_800B6078(Collider*);
-void func_800B6098(Collider*, RoomObject*);
+void RegisterTwoPointMover(Collider*, RoomObject*);
 void func_800B61FC(Collider*);
 void func_800B67D8(Collider*, RoomObject*);
 void func_800B691C(Collider*);
@@ -82,7 +93,7 @@ void func_800BD608(Collider*);
 void func_800BD718(Collider*, RoomObject*);
 void func_800BD938(Collider*);
 void func_800BDF2C(Collider*, RoomObject*);
-void func_800BE000(Collider*);
+void MoveOrbitChild(Collider*);
 void func_800BE0D4(Collider*, RoomObject*);
 void func_800BE1C4(Collider*);
 void func_800BA89C(Collider* arg0, RoomObject* arg1);
@@ -161,10 +172,10 @@ void func_800BE24C(void);
 void func_800BE2A4(s32 arg0);
 void func_800BE2C0(void);
 void func_800BE370(s32 arg0);
-void func_800BE474(Tongue*);
-void func_800BE550(Tongue* arg0);
+void CalculatePlayerDragFromEaten(Tongue*);
+void ResetTongue(Tongue* arg0);
 void EraseTongueEatEnemy(Tongue* arg0);
-void func_800BE664(PlayerActor * arg0);
+void ClearTimerPowerup(PlayerActor * arg0);
 void func_800BE7BC(void);
 void EraseField(Collider*);
 void func_800BF268(s32);
@@ -198,18 +209,18 @@ void enterBossRoom(void);
 void func_800C38E0(SpriteActor*);
 s32 func_800C3958(s32, s32*, s32, Collider*);
 s32 func_800C3B50(s32 arg0, s32 arg1);
-void func_800C3DCC(Camera* camera, Vec3f arg1, Vec3f arg4, f32 arg7);
+void CommitCameraShot(Camera* camera, Vec3f lookAtPoint, Vec3f eyePoint, f32 lookAtBaseY);
 void func_800C3E94(PlayerActor* arg0, Tongue* arg1, Camera* arg2, f32 arg3, f32 arg4);
-void func_800C4040(PlayerActor* arg0, Tongue* arg1, Camera* arg2, f32 arg3, f32 arg4);
+void UpdateFollowCamera(PlayerActor* player, Tongue* tongue, Camera* camera, f32 panX, f32 panZ);
 void func_800C43AC(PlayerActor* arg0, Tongue* arg1, Camera* arg2, f32 arg3, f32 arg4, f32 arg5);
 void func_800C4594(PlayerActor* arg0, Tongue* arg1, Camera* arg2, f32 arg3, f32 arg4, f32 arg5);
 void func_800C48B8(Vec3f arg0, Vec3f arg3, Vec3f arg6, Vec3f arg9, f32 argC, s32 zero);
 void func_800C4968(Vec3f arg0, Vec3f arg3, f32 arg6, f32 arg7, f32 arg8);
-void func_800C4B1C(Camera* arg0, f32 arg1);
+void BlendCameraKeyframes(Camera* camera, f32 weight);
 void func_800C4C48(Vec3f arg0, f32 arg3, f32 arg4, f32 arg5, f32 arg6);
 void func_800C4CAC(Camera* arg0, f32 arg1);
 void func_800C4DF8(Vec3w arg0, Vec3w arg3, Vec3f arg6, Vec3f arg9, f32 argC, u32 argD);
-void func_800C5304(Camera* camera, f32 weight);
+void UpdateOrbitalCamera(Camera* camera, f32 weight);
 void func_800C54F8(Vec2w* arg0, s32* arg1);
 void func_800C5508(PlayerActor* player);
 void func_800C5538(PlayerActor* arg0);
