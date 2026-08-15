@@ -29,6 +29,11 @@ typedef struct UnkType3 {
     /* 0x14 */ s32 unk_14;
 } UnkType3;                                         /* size = 0x18 */
 
+// gSwitchAreas entries: Door-shaped but 0x48 bytes (Door itself is 0x4C).
+typedef struct SwitchArea {
+    char pad0[0x48];
+} SwitchArea;                                       /* size = 0x48 */
+
 typedef struct unkStruct20 {
     char unk_00[0x25];
     s8 unk25;
@@ -77,6 +82,8 @@ void func_800BAA28(Collider*);
 void func_800BB038(Collider*, RoomObject*);
 void func_800BB178(Collider*);
 void func_800BB254(Collider*, RoomObject*);
+s32 func_800BB354(Collider*);
+void func_800BB4A8(Collider*);
 void func_800BB5DC(Collider*);
 void func_800BB988(Collider*, RoomObject*);
 void func_800BBA80(Collider*);
@@ -259,6 +266,7 @@ extern Vec3f D_8020D5B8;
 extern Vec3f D_8020D848;
 extern f32 D_8020D858;
 extern Door* D_80240C98[];
+extern SwitchArea gSwitchAreas[8];
 extern s32 gSwitchAreaCount;
 extern Vec3f D_8020D868;
 extern f32 D_8020D874;
