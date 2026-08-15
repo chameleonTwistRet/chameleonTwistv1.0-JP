@@ -2040,7 +2040,24 @@ void RegistDoor(RoomObject* obj, s32 arg1, s32 arg2) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/RegistSwitchArea.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BF4AC.s")
+// Same shape as EraseField, one table over: despawn one switch area from the live list.
+// D_80240C98 holds 0x10 slots; the gSwitchAreaCount live entries are packed at the bottom and
+// released entries are pushed onto a free stack growing down from slot 0x10 - gSwitchAreaCount
+// (which the linker resolves through the following symbol, gCurrentZone).
+void func_800BF4AC(Door* target) {
+    s32 i;
+
+    for (i = 0; i < gSwitchAreaCount; i++) {
+        if (target == D_80240C98[i]) {
+            break;
+        }
+    }
+
+    D_80240C98[0x10 - gSwitchAreaCount] = target;
+    D_80240C98[i] = D_80240C98[gSwitchAreaCount - 1];
+    D_80240C98[gSwitchAreaCount - 1] = NULL;
+    gSwitchAreaCount--;
+}
 
 void func_800BF524(s32 inzone) {
     Door** var_s1;

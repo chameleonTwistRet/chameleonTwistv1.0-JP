@@ -2603,7 +2603,32 @@ s32 func_80087390(unk0* arg0) {
     return 1;
 }
 
+// Unlinks a sound record from the active list (like func_8008714C) and re-inserts it further down
+// NON_MATCHING attempt below scores 15
+#ifdef NON_MATCHING
+s32 func_8008746C(unk0* arg0) {
+    unk0* temp_v0;
+    unk0* temp_v1 = arg0->unk50;
+    unk0* var_a1 = arg0->unk54;
+
+    var_a1->unk50 = temp_v1;
+    temp_v1->unk54 = var_a1;
+    while (var_a1->unk54 != 0) {
+        temp_v0 = var_a1->unk54;
+        if (var_a1->unk20 & 0x10) {
+            break;
+        }
+        if (var_a1->unk4C >= arg0->unk4C) {
+            break;
+        }
+        var_a1 = temp_v0;
+    }
+    func_80087130(arg0, var_a1);
+    return 0;
+}
+#else
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008746C.s")
+#endif
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800874E4.s")
 
@@ -4620,7 +4645,18 @@ void func_800911D0(CTTask* task) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009131C.s")
+void func_8009131C(CTTask* task) {
+    CTTask* temp_v0;
+
+    if (func_80090D28(task) != 0) {
+        temp_v0 = task->unk58;
+        task->function = func_80091390;
+        task->unk44 = 1;
+        temp_v0->unk54 = 2;
+        PLAY_SFX(SFX_ChameleonLand, 0, 16);
+    }
+    func_8008D7B0(task);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80091390.s")
 

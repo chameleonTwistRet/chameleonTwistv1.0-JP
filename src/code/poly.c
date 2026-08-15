@@ -9,6 +9,7 @@ extern s32 D_8020D8F4;
 extern f64 D_801106A0;
 extern f64 D_801106A8;
 
+extern f32 D_80108F90[];
 extern Vec3f D_80108F9C;
 extern Vec3f D_80108FA8;
 extern Vec3f D_80108FB4;
@@ -597,7 +598,28 @@ Collider* func_800D0448(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800D04B0.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800D0694.s")
+// Applies the surface's friction class to a player's slide/override movement vector: the collider
+// the player is standing on (surface indexes D_80236980) carries a class in unk_12C, which selects
+// a multiplier from D_80108F90 = {0, 0.98, 1}. Class 0 leaves `move` untouched.
+void func_800D0694(PlayerActor* player, Vec3f vel) {
+    s32 surface = player->surface;
+    s32 friction;
+    Collider* col;
+    f32 mult;
+
+    if (surface >= 0) {
+        col = &D_80236980[surface];
+        friction = col->unk_12C;
+        if (friction > 0) {
+            mult = D_80108F90[friction];
+            player->move.x = vel.x * mult;
+            surface = col->unk_12C; // re-read is required: it keeps D_80236980's base in a register
+            player->move.y = 0.0f;
+            player->move.z = vel.z * mult;
+        }
+    }
+}
+
 //referred to in US1.0 as "Poly.c CalcNextPosition"
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/CalcNextPosition.s")
 

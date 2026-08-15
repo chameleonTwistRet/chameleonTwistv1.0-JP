@@ -273,7 +273,7 @@ typedef struct Collider {
 /* 0x120 */ char pad120[4];
 /* 0x124 */ s32 unk_124;
 /* 0x128 */ s32 unk_128;
-/* 0x12C */ char pad12C[4];
+/* 0x12C */ s32 unk_12C;                        /* surface friction class; indexes D_80108F90 */
 } Collider;                                         /* size = 0x130 */
 
 typedef struct unkSpriteStruct {
