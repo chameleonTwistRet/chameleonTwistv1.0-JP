@@ -1882,7 +1882,7 @@ s32 SetActiveZoneFieldOffset(s32 arg0) {
     return temp;
 }
 
-void func_800BE2A4(s32 arg0) {
+void ResetZoneDrawOffset(s32 zone) {
     s32 temp = D_801B3178->unk_18;
     D_8020D908.unk_00 = temp;
 }
@@ -1908,8 +1908,8 @@ void func_800BE2C0(void) {
     }
 }
 
-void func_800BE370(s32 room) {
-    Rect3D* rectTemp = &gZoneFields[room].roomBounds;
+void DespawnActorsInZoneBounds(s32 zone) {
+    Rect3D* rectTemp = &gZoneFields[zone].roomBounds;
     Actor* actorList;
     s32 i;
 
@@ -2037,12 +2037,12 @@ void EraseField(Collider* target) {
     gFieldCount--;
 }
 
-void func_800BF268(s32 arg0) {
+void EraseZoneColliders(s32 zone) {
     Collider** currentCollider;
     s32 i;
 
     for (i = 0, currentCollider = &D_80240898; i < gFieldCount; i++, currentCollider++){
-        if (arg0 == (*currentCollider)->unk_08) {
+        if (zone == (*currentCollider)->unk_08) {
             EraseField(*currentCollider);
             //must be this way
             i--; currentCollider--;
@@ -2091,13 +2091,13 @@ void func_800BF4AC(Door* target) {
     gSwitchAreaCount--;
 }
 
-void func_800BF524(s32 inzone) {
+void EraseZoneSwitchAreas(s32 zone) {
     Door** var_s1;
     s32 i;
 
     for (i = 0, var_s1 = &D_80240C98[i];
         i < gSwitchAreaCount; i++, var_s1++){
-        if (inzone == (*var_s1)->inZone) {
+        if (zone == (*var_s1)->inZone) {
             func_800BF4AC(*var_s1);
             //must be like this
             i--; var_s1--;
@@ -2291,14 +2291,14 @@ void func_800C1510(s32 arg0, s32 arg1) {
     func_800C1204(arg0, gPlayerActors, 1,  arg1, 1);
 }
 
-s32 func_800C1550(s32 arg0) {
+s32 IsValidZoneIndex(s32 zone) {
     s32 result = TRUE;
     if (D_80236978) {
-        if (arg0 < 0 || arg0 >= D_802478E0) {
+        if (zone < 0 || zone >= D_802478E0) {
             result = FALSE;
         }
     } else {
-        if (arg0 < 0 || arg0 >= (D_802478E0 - 1)) {
+        if (zone < 0 || zone >= (D_802478E0 - 1)) {
             result = FALSE;
         }
 
@@ -2310,50 +2310,50 @@ s32 func_800C1550(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/InitFieldSubScroll.s")
 
-void func_800C198C(s32 arg0, Field* room) {
-    s32 flag;
-    Collider** var_a2;
+void ComputeRoomBounds(s32 roomId, Field* room) {
+    s32 firstMatch;
+    Collider** itr;
     s32 i;
-    Collider* temp_a0;
-    Rect3D sp10;
+    Collider* collider;
+    Rect3D bounds;
 
-    flag = 1;
-    for (i = 0, var_a2 = &D_80240898; i < gFieldCount; i++){
-        temp_a0 = *var_a2;
-        if (arg0 == temp_a0->unk_08) {
-            if (flag != 0) {
-                flag = 0;
-                sp10 = temp_a0->unk_CC;
+    firstMatch = 1;
+    for (i = 0, itr = &D_80240898; i < gFieldCount; i++){
+        collider = *itr;
+        if (roomId == collider->unk_08) {
+            if (firstMatch != 0) {
+                firstMatch = 0;
+                bounds = collider->unk_CC;
             } else {
-                if (sp10.min.x > temp_a0->unk_CC.min.x) {
-                    sp10.min.x = temp_a0->unk_CC.min.x;
+                if (bounds.min.x > collider->unk_CC.min.x) {
+                    bounds.min.x = collider->unk_CC.min.x;
                 }
-                if (sp10.max.x < temp_a0->unk_CC.max.x) {
-                    sp10.max.x = temp_a0->unk_CC.max.x;
+                if (bounds.max.x < collider->unk_CC.max.x) {
+                    bounds.max.x = collider->unk_CC.max.x;
                 }
-                if (sp10.min.y > temp_a0->unk_CC.min.y) {
-                    sp10.min.y = temp_a0->unk_CC.min.y;
+                if (bounds.min.y > collider->unk_CC.min.y) {
+                    bounds.min.y = collider->unk_CC.min.y;
                 }
-                if (sp10.max.y < temp_a0->unk_CC.max.y) {
-                    sp10.max.y = temp_a0->unk_CC.max.y;
+                if (bounds.max.y < collider->unk_CC.max.y) {
+                    bounds.max.y = collider->unk_CC.max.y;
                 }
-                if (sp10.min.z > temp_a0->unk_CC.min.z) {
-                    sp10.min.z = temp_a0->unk_CC.min.z;
+                if (bounds.min.z > collider->unk_CC.min.z) {
+                    bounds.min.z = collider->unk_CC.min.z;
                 }
-                if (sp10.max.z < temp_a0->unk_CC.max.z) {
-                    sp10.max.z = temp_a0->unk_CC.max.z;
+                if (bounds.max.z < collider->unk_CC.max.z) {
+                    bounds.max.z = collider->unk_CC.max.z;
                 }
             }
         }
-        var_a2++;
+        itr++;
     }
-    room->roomBounds = sp10;
-    room->rect_48.min.x = sp10.max.x - sp10.min.x;
-    room->rect_48.min.y = sp10.max.y - sp10.min.y;
-    room->rect_48.min.z = sp10.max.z - sp10.min.z;
-    room->rect_48.max.x = (sp10.min.x + sp10.max.x) / 2;
-    room->rect_48.max.y = (sp10.min.y + sp10.max.y) / 2;
-    room->rect_48.max.z = (sp10.min.z + sp10.max.z) / 2;
+    room->roomBounds = bounds;
+    room->roomExtent.size.x = bounds.max.x - bounds.min.x;
+    room->roomExtent.size.y = bounds.max.y - bounds.min.y;
+    room->roomExtent.size.z = bounds.max.z - bounds.min.z;
+    room->roomExtent.center.x = (bounds.min.x + bounds.max.x) / 2;
+    room->roomExtent.center.y = (bounds.min.y + bounds.max.y) / 2;
+    room->roomExtent.center.z = (bounds.min.z + bounds.max.z) / 2;
 }
 
 void func_800C1B70(void) {
@@ -2364,25 +2364,26 @@ void func_800C1B70(void) {
     }
 }
 
-void func_800C1BF0(s32 arg0) {
+void OpenZone(s32 zone) {
     s8 pad;
-    if (func_800C1550(arg0)) {
-        InitFieldSubScroll(arg0, &gZoneFields[arg0], D_801B3178->unk8, D_801B3178->unk10);
+    if (IsValidZoneIndex(zone)) {
+        InitFieldSubScroll(zone, &gZoneFields[zone], D_801B3178->unk8, D_801B3178->unk10);
         func_800B3364(1);
-        func_800C198C(arg0, &gZoneFields[arg0]);
+        ComputeRoomBounds(zone, &gZoneFields[zone]);
     }
 }
 
-void func_800C1C64(s32 arg0) {
-    if (func_800C1550(arg0)) {
-        if ((gDoorCount > 0) && (arg0 == gDoors->inZone)) {
+// This section might need better names in future
+void CloseZone(s32 zone) {
+    if (IsValidZoneIndex(zone)) {
+        if ((gDoorCount > 0) && (zone == gDoors->inZone)) {
             gDoorCount = 0;
         }
-        func_800BF268(arg0);
-        func_800BF524(arg0);
-        func_800BE370(arg0);
-        func_800BE2A4(arg0);
-        EraseRoomItem(arg0);
+        EraseZoneColliders(zone);
+        EraseZoneSwitchAreas(zone);
+        DespawnActorsInZoneBounds(zone);
+        ResetZoneDrawOffset(zone);
+        EraseRoomItem(zone);
     }
 }
 
@@ -2782,8 +2783,8 @@ void UpdateFollowCamera(PlayerActor* player, Tongue* tongue, Camera* camera, f32
         return;
     }
 
-    maxPanX = zone->rect_48.min.x;
-    maxPanZ = zone->rect_48.min.z;
+    maxPanX = zone->roomExtent.size.x;
+    maxPanZ = zone->roomExtent.size.z;
     panX *= 800 * camera->size1;
     panZ *= 800 * camera->size1;
     LimitFloat(&panX, -maxPanX, maxPanX);

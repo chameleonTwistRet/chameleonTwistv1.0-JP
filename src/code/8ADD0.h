@@ -169,19 +169,19 @@ void func_800B56E8(void);
 s32 func_800B5878(Rect3D* arg0);
 s32 func_800B5908(Collider* collider, f32 yMod);
 void func_800BE24C(void);
-void func_800BE2A4(s32 arg0);
+void ResetZoneDrawOffset(s32 zone);
 void func_800BE2C0(void);
-void func_800BE370(s32 arg0);
+void DespawnActorsInZoneBounds(s32 zone);
 void CalculatePlayerDragFromEaten(Tongue*);
 void ResetTongue(Tongue* arg0);
 void EraseTongueEatEnemy(Tongue* arg0);
 void ClearTimerPowerup(PlayerActor * arg0);
 void func_800BE7BC(void);
 void EraseField(Collider*);
-void func_800BF268(s32);
+void EraseZoneColliders(s32);
 void RegistDoor(RoomObject* arg0, s32 arg1, s32 arg2);
 void func_800BF4AC(Door*);
-void func_800BF524(s32);
+void EraseZoneSwitchAreas(s32);
 void func_800BF5A4(void);
 void func_800BF5E8(RoomActor*);
 void func_800BF84C(s32 collision);
@@ -195,12 +195,12 @@ void CheckDoor(PlayerActor*);
 void func_800C1204(s32, PlayerActor*, s32, s32, s32); 
 void func_800C1458(s32 arg0);
 void func_800C1510(s32 arg0, s32 arg1);
-s32 func_800C1550(s32 arg0);
+s32 IsValidZoneIndex(s32 zone);
 void func_800C15AC(RoomInstance* arg0, s32 arg1);
 void InitFieldSubScroll(s32, Field*, s32, s32);
-void func_800C198C(s32, Field*);
+void ComputeRoomBounds(s32, Field*);
 void func_800C1B70(void);
-void func_800C1C64(s32 arg0);
+void CloseZone(s32 zone);
 void func_800C1CE0(PlayerActor*);
 void func_800C2670(s32, PlayerActor*, s32);
 void func_800C2A00(void);
@@ -315,7 +315,7 @@ extern colliderFuncStruct D_8010889C[];
 extern s32 D_801749A0;
 
 void func_800B4574(u8*, s16*);                         /* extern */
-void func_800C1BF0(s32);                          /* extern */
+void OpenZone(s32);                          /* extern */
 s32 func_800C250C(PlayerActor*);                    /* extern */
 
 

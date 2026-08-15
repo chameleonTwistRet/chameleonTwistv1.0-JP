@@ -431,6 +431,12 @@ typedef struct SpriteActor {
 /* 0x40 */ Color128 color;
 } SpriteActor; // sizeof 0x50
 
+// A Rect3D-sized {size, center} instead of the usual {min, max}
+typedef struct RoomExtent {
+/* 0x00 */ Vec3f size;    
+/* 0x0C */ Vec3f center;  
+} RoomExtent;
+
 typedef struct Field {
 /* 0x00 */ RoomObject* objects; //pointer of levelData objects, 0 for none
 /* 0x04 */ RoomActor* actors; //pointer of levelData actors, 0 for none
@@ -448,7 +454,7 @@ typedef struct Field {
 /* 0x28 */ s32 unk28;
 /* 0x2C */ s32 unk2C;
 /* 0x30 */ Rect3D roomBounds;
-/* 0x48 */ Rect3D rect_48;
+/* 0x48 */ RoomExtent roomExtent;
 /* 0x60 */ s32 unk60;
 /* 0x64 */ s32 unk64;
 /* 0x68 */ s32 unk68;
