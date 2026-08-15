@@ -33,7 +33,7 @@ typedef struct UnkData {
 
 s32 D_801087A0[] = {0, 1, 2, 3, 4, 5, 6, 7};
 s32 sBossIDs[] = {0x4B, 7, 0x13, 0x1E, 0x26, 0x3D};
-Vec3w D_801087D8[] = {{0, 3, 0}, {1, 0xC, 2}, {2, 0x30, 4}, {3, 0x40, 6}, {4, 0x80, 7}};
+Vec3w gColliderFlagTable[] = {{0, 3, 0}, {1, 0xC, 2}, {2, 0x30, 4}, {3, 0x40, 6}, {4, 0x80, 7}};
 s32 D_80108814 = 0; //?
 s32 D_80108818 = 0;
 f32 D_8010881C = 1.0f;
@@ -132,18 +132,18 @@ void func_800AF9D0(Collider* arg0, RoomObject* arg1) {
     D_8020199C = 0.5f;
     D_802019A0 = 1;
     D_802023AC = 0;
-    func_800B402C(arg0, 0, 0);
-    func_800B402C(arg0, 1, 2);
-    func_800B402C(arg0, 2, 1);
+    SetColliderFlag(arg0, 0, 0);
+    SetColliderFlag(arg0, 1, 2);
+    SetColliderFlag(arg0, 2, 1);
     D_802023D4 = -1;
 }
 
 void func_800AFB2C(Collider* arg0, RoomObject* arg1) {
     arg0->unk_5C = 2;
     arg0->unkA4 = 0;
-    func_800B402C(arg0, 0, 2);
-    func_800B402C(arg0, 1, 2);
-    func_800B402C(arg0, 2, 1);
+    SetColliderFlag(arg0, 0, 2);
+    SetColliderFlag(arg0, 1, 2);
+    SetColliderFlag(arg0, 2, 1);
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800AFB88.s")
@@ -283,7 +283,7 @@ void func_800B0AA4(Collider* collider) {
 // from this collider's index. If the control switch (unk_B4) is set, every groupA member is
 // given the shared "solved" model gfx. Otherwise it snapshots each member's position, builds
 // a shuffled index list (100 random swaps), and writes the shuffled positions back, notifying
-// each collider (func_800B402C(_, 4, 1)).
+// each collider (SetColliderFlag(_, 4, 1)).
 //
 // diff is a whole-function register-number shift 
 // (arg0 lands in s5 vs the target's s6) that the permuter could not break in 73k iterations. 
@@ -338,8 +338,8 @@ void func_800B0B20(Collider* arg0, RoomObject* arg1) {
         for (i = 0; i < boundCount; i++) {
             groupB[i]->unk_30 = posB[order[i]];
             groupA[i]->unk_30 = posA[order[i]];
-            func_800B402C(groupB[i], 4, 1);
-            func_800B402C(groupA[i], 4, 1);
+            SetColliderFlag(groupB[i], 4, 1);
+            SetColliderFlag(groupA[i], 4, 1);
         }
     }
 }
@@ -727,9 +727,9 @@ f32 MaxXZRadius(f32 a, f32 b, f32 c, f32 d) {
     return __sqrtf((maxAB * maxAB) + (maxCD * maxCD));
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B2E40.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/ComputeColliderBounds.s")
 
-void func_800B3364(s32 arg0) {
+void RefreshColliderBounds(s32 arg0) {
     s32 i;
     Collider** temp_s0;
     Collider* unkSpritePtr;
@@ -737,8 +737,8 @@ void func_800B3364(s32 arg0) {
     for (i = 0, temp_s0 = &D_80240898; i < gFieldCount; i++, temp_s0++) {
         unkSpritePtr = *temp_s0;
         unkSpritePtr->unk_E4 = 0;
-        if ((arg0 == 1) || (func_800B3FFC(unkSpritePtr, 4) != 0)) {
-            func_800B2E40(unkSpritePtr);
+        if ((arg0 == 1) || (GetColliderFlag(unkSpritePtr, 4) != 0)) {
+            ComputeColliderBounds(unkSpritePtr);
         }
     }
 }
@@ -1073,8 +1073,8 @@ s32 GetSpriteActCount(SpriteActor* sprite) {
 }
 
 //TODO: fix this
-s32 func_800B3FFC(Collider *arg0, s32 arg1) {
-    Vec3w* new_var = &D_801087D8[arg1];
+s32 GetColliderFlag(Collider *arg0, s32 arg1) {
+    Vec3w* new_var = &gColliderFlagTable[arg1];
     int new_var2 = arg0->unk_14 & new_var->y;
 
     return new_var2 >> (*new_var).z;
@@ -1084,8 +1084,8 @@ s32 func_800B3FFC(Collider *arg0, s32 arg1) {
 // structurally identical to the ROM (0 opcode/order diffs) - the ONLY residual
 // is which register holds `shift` (ROM: t8, ours: a3) across the sllv/and/ors
 #ifdef NON_MATCHING
-void func_800B402C(Collider* arg0, s32 arg1, s32 arg2) {
-    Vec3w* entry = &D_801087D8[arg1];
+void SetColliderFlag(Collider* arg0, s32 arg1, s32 arg2) {
+    Vec3w* entry = &gColliderFlagTable[arg1];
     s32 mask = entry->y;
     s32 shift = entry->z;
 
@@ -1095,20 +1095,20 @@ void func_800B402C(Collider* arg0, s32 arg1, s32 arg2) {
     arg0->unk_14 |= arg2;
 }
 #else
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B402C.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/SetColliderFlag.s")
 #endif
 
 void func_800B4070(Collider* arg0) {
     s32 var_a2;
 
-    if ((arg0->unk_4C != 0) && (func_800B3FFC(arg0->unk_4C, 4) == 1)) {
+    if ((arg0->unk_4C != 0) && (GetColliderFlag(arg0->unk_4C, 4) == 1)) {
         var_a2 = 1;
-    } else if (func_800B3FFC(arg0, 0) == 2 || func_800B3FFC(arg0, 2) == 2) {
+    } else if (GetColliderFlag(arg0, 0) == 2 || GetColliderFlag(arg0, 2) == 2) {
         var_a2 = 1;
     } else {
         var_a2 = 0;
     }
-    func_800B402C(arg0, 4, var_a2);
+    SetColliderFlag(arg0, 4, var_a2);
 }
 
 void func_800B40F4(unkSpriteStruct* arg0) {
@@ -1326,27 +1326,27 @@ s32 func_800B5908(Collider* collider, f32 yMod) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B5C60.s")
 
 void func_800B5D68(Collider* arg0, s32 arg1) {
-    func_800B402C(arg0, 0, arg1);
+    SetColliderFlag(arg0, 0, arg1);
     if (arg0->unk_5C != 0) {
-        func_800B402C(arg0, 1, 1);
+        SetColliderFlag(arg0, 1, 1);
     } else {
-        func_800B402C(arg0, 1, 0);
+        SetColliderFlag(arg0, 1, 0);
     }
     if (arg0->unk_50 != 1.0 || arg0->unk_54 != 1.0 || arg0->unk_58 != 1.0) {
-        func_800B402C(arg0, 2, 1);
+        SetColliderFlag(arg0, 2, 1);
     } else {
-        func_800B402C(arg0, 2, 0);
+        SetColliderFlag(arg0, 2, 0);
     }
 }
 
 void func_800B5E40(Collider* arg0, RoomObject* arg1) {
-    func_800B402C(arg0, 0, 1);
+    SetColliderFlag(arg0, 0, 1);
     if (arg0->unk_5C != 0) {
-        func_800B402C(arg0, 1, 1);
+        SetColliderFlag(arg0, 1, 1);
     } else {
-        func_800B402C(arg0, 1, 0);
+        SetColliderFlag(arg0, 1, 0);
     }
-    func_800B402C(arg0, 2, 2);
+    SetColliderFlag(arg0, 2, 2);
     arg0->unk_8C = arg1->unk28;
     arg0->unk_AC = arg1->keyframes.temp - 0x3C;
     arg0->unk_B0 = 0;
@@ -1407,7 +1407,7 @@ void RegisterTwoPointMover(Collider* arg0, RoomObject* arg1) {
             arg0->unk_30.y = arg0->unk_9C;
             arg0->unk_30.z = arg0->unk_A0;
             func_800B5D68(arg0, 1);
-            func_800B2E40(arg0);
+            ComputeColliderBounds(arg0);
         }
     }
 }
@@ -1491,7 +1491,7 @@ void func_800B81FC(Collider* arg0) {
     entry = &((UnkType3*)arg0->unk_AC)[arg0->unk_B4];
     arg0->unk_120 = entry->unk_14;
     arg0->collision = *(ModelCollision**)(D_801B3178->unk8 + entry->unk_00[(D_801749A0 / entry->unk_08) % entry->unk_04] * 0x30 + 4);
-    func_800B2E40(arg0);
+    ComputeColliderBounds(arg0);
     flag = 0;
     arg0->unk_B8++;
     temp = entry->unk_10;
@@ -1839,12 +1839,12 @@ Vec3f* PlaceChildAtRotatedOffset(Vec3f* out, Collider* arg1) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BD938.s")
 
 void func_800BDF2C(Collider* arg0, RoomObject* arg1) {
-    func_800B402C(arg0, 0, 2);
-    func_800B402C(arg0, 1, 2);
+    SetColliderFlag(arg0, 0, 2);
+    SetColliderFlag(arg0, 1, 2);
     if (arg0->unk_50 != 1.0 || arg0->unk_54 != 1.0 || arg0->unk_58 != 1.0) {
-        func_800B402C(arg0, 2, 1);
+        SetColliderFlag(arg0, 2, 1);
     } else {
-        func_800B402C(arg0, 2, 0);
+        SetColliderFlag(arg0, 2, 0);
     }
     arg0->unk_8C = arg0->unk_30.x;
     arg0->unk_90 = arg0->unk_30.y;
@@ -2368,7 +2368,7 @@ void OpenZone(s32 zone) {
     s8 pad;
     if (IsValidZoneIndex(zone)) {
         InitFieldSubScroll(zone, &gZoneFields[zone], D_801B3178->unk8, D_801B3178->unk10);
-        func_800B3364(1);
+        RefreshColliderBounds(1);
         ComputeRoomBounds(zone, &gZoneFields[zone]);
     }
 }
@@ -2635,7 +2635,7 @@ void MoveField(void) {
             temp_s1 = *var_s5;
             temp_s0 = temp_s1->unk_4C;
             if (temp_s0 != NULL) {
-                if ((func_800B3FFC(temp_s0, 1) == 2) && (temp_s1->unk_10 != 0x23)) {
+                if ((GetColliderFlag(temp_s0, 1) == 2) && (temp_s1->unk_10 != 0x23)) {
                     temp_s0 = temp_s1->unk_4C;
                     RotateVector3D(&sp8C, temp_s1->unk_30, temp_s0->unk60, temp_s0->unk_5C);
                     temp_s0 = temp_s1->unk_4C;
@@ -2705,7 +2705,7 @@ void MoveField(void) {
     }
     func_800B5640();
     ClearPolygon();
-    func_800B3364(0);
+    RefreshColliderBounds(0);
 }
 #else
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/MoveField.s")

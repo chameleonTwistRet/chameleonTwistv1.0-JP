@@ -309,7 +309,7 @@ extern Field D_80240D6C[];
 extern u8 gCarrotBitfield;
 extern u8 D_801B313D;
 extern SaveRecord gGameRecords;
-extern Vec3w D_801087D8[];
+extern Vec3w gColliderFlagTable[];
 extern s32 Timing_StopGfxTime;
 extern u32 Timing_StartGfxTime;
 extern u32 Timing_EndFrameTime;
