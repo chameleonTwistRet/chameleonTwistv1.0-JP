@@ -39,19 +39,19 @@ typedef struct unkStruct20 {
 
 
 /* Functions */
-void func_800B6054(Collider*, RoomObject*);
-void func_800B6078(Collider*);
+void RegisterStaticMesh(Collider*, RoomObject*);
+void UpdateStaticMesh(Collider*);
 void RegisterTwoPointMover(Collider*, RoomObject*);
-void func_800B61FC(Collider*);
+void MoveTwoPointMover(Collider*);
 void func_800B67D8(Collider*, RoomObject*);
 void func_800B691C(Collider*);
-void func_800B6B14(Collider*, RoomObject*);
-void func_800B6B4C(Collider*, RoomObject*);
-void func_800B6C34(Collider*);
+void RegisterScriptedBehaviour(Collider*, RoomObject*);
+void RegisterRotatingPlatform(Collider*, RoomObject*);
+void UpdateRotatingPlatform(Collider*);
 void func_800B6CD8(Collider*, RoomObject*);
 void func_800B6D24(Collider*);
-void func_800B6D44(Collider*, RoomObject*);
-void func_800B6DF4(Collider*);
+void RegisterKeyframePlatform(Collider*, RoomObject*);
+void MoveKeyframePlatform(Collider*);
 void func_800B7208(Collider*, RoomObject*);
 void func_800B7328(Collider*);
 void func_800B7860(Collider*, RoomObject*);
@@ -64,8 +64,8 @@ void func_800B9298(Collider*, RoomObject*);
 void func_800B9390(Collider*);
 void func_800B942C(Collider*, RoomObject*);
 void func_800B9514(Collider*);
-void func_800B9750(Collider*, RoomObject*);
-void func_800B97F0(Collider*);
+void RegisterDamageHazard(Collider*, RoomObject*);
+void UpdateDamageHazard(Collider*);
 void func_800B9E8C(Collider*, RoomObject*);
 void func_800B9FA8(Collider*);
 void func_800BA2D0(Collider*, RoomObject*);

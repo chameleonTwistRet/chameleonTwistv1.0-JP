@@ -50,37 +50,38 @@ enum FieldObjectBehaviours {
     FIELD_BEHAVIOUR_ROTATING = 0x8,
     FIELD_BEHAVIOUR_KEYFRAME_MOVING = 0xA,
     FIELD_BEHAVIOUR_DAMAGE = 0x11,
+    FIELD_BEHAVIOUR_FALLING = 0x12,
     FIELD_BEHAVIOUR_FLUID_A = 0x14,
     FIELD_BEHAVIOUR_FLUID_B = 0x15
 };
 
-// MESH - type:function dictionary  gFieldObjectBehaviourMap[bhvIdx]
-FieldObjectBehaviourFuncs D_80108894[] = {
-    {FIELD_BEHAVIOUR_DEFAULT, func_800B6054, func_800B6078}, // Default Mesh
-    {0x00000001, func_800B6054, func_800B6078}, // (Same as above?)
-    {0x00000002, func_800B6054, func_800B6078}, // (Same as above?)
-    {0x00000003, func_800B6054, func_800B6078}, // (Same as above?)
-    {0x00000004, func_800B6054, func_800B6078}, // (Same as above?)
-    {FIELD_BEHAVIOUR_2POINT_MOVING, RegisterTwoPointMover, func_800B61FC}, // Linear (2-Point) Movement
+// MESH
+FieldObjectBehaviourFuncs gFieldObjectBehaviourMap[] = {
+    {FIELD_BEHAVIOUR_DEFAULT, RegisterStaticMesh, UpdateStaticMesh}, // Default Mesh
+    {0x00000001, RegisterStaticMesh, UpdateStaticMesh}, // (Same as above?)
+    {0x00000002, RegisterStaticMesh, UpdateStaticMesh}, // (Same as above?)
+    {0x00000003, RegisterStaticMesh, UpdateStaticMesh}, // (Same as above?)
+    {0x00000004, RegisterStaticMesh, UpdateStaticMesh}, // (Same as above?)
+    {FIELD_BEHAVIOUR_2POINT_MOVING, RegisterTwoPointMover, MoveTwoPointMover}, // Linear (2-Point) Movement Cyclic
     {0x00000006, func_800B67D8, func_800B691C},
-    {0x00000007, func_800B6B14, func_800B6078},
-    {FIELD_BEHAVIOUR_ROTATING, func_800B6B4C, func_800B6C34}, // Rotating Platform {frameCount (2, 10)}
+    {0x00000007, RegisterScriptedBehaviour, UpdateStaticMesh}, // A default mesh type taking static props and enabling scripted behv
+    {FIELD_BEHAVIOUR_ROTATING, RegisterRotatingPlatform, UpdateRotatingPlatform}, // Rotating Platform {frameCount (2, 10)}
     {0x00000009, func_800B6CD8, func_800B6D24},
-    {FIELD_BEHAVIOUR_KEYFRAME_MOVING, func_800B6D44, func_800B6DF4}, // Moving Platform Keyframe {On Player Top-Face Collide}
+    {FIELD_BEHAVIOUR_KEYFRAME_MOVING, RegisterKeyframePlatform, MoveKeyframePlatform}, // Moving Platform Keyframe {On Player Top-Face Collide}
     {0x0000000B, func_800B7208, func_800B7328},
     {0x0000000C, func_800B7860, func_800B78F8}, 
     {0x0000000D, func_800B81B4, func_800B81FC},
     {0x0000000E, func_800B8634, func_800B87A0},
     {0x0000000F, func_800B9298, func_800B9390},
     {0x00000010, func_800B942C, func_800B9514},
-    {FIELD_BEHAVIOUR_DAMAGE, func_800B9750, func_800B97F0}, // Damage (Rect? - Seems to be calculated based on bounds of min,max vtx) -> DC_Spikes
-    {0x00000012, func_800B9E8C, func_800B9FA8}, // Falling platform
+    {FIELD_BEHAVIOUR_DAMAGE, RegisterDamageHazard, UpdateDamageHazard}, // Cyclic-path moving platform that damages the player on contact
+    {FIELD_BEHAVIOUR_FALLING, func_800B9E8C, func_800B9FA8}, // Falling platform
     {0x00000013, func_800BA2D0, func_800BA35C},
     {0x00000014, func_800BA89C, func_800BA900}, // Fluid A
     {0x00000015, func_800BA89C, func_800BA900}, // Fluid B
     {0x00000016, func_800BA89C, func_800BA900}, // Unknown (Fluid C?)
     {0x00000017, func_800BA92C, func_800BAA28},
-    {0x00000018, func_800B6054, func_800B6078},
+    {0x00000018, RegisterStaticMesh, UpdateStaticMesh},
     {0x00000019, func_800BB038, func_800BB178},
     {0x0000001A, func_800BB254, func_800BB5DC},
     {0x0000001B, func_800BB988, func_800BBA80},
@@ -89,11 +90,11 @@ FieldObjectBehaviourFuncs D_80108894[] = {
     {0x0000001E, func_800BCC04, func_800BCD10},
     {0x0000001F, func_800BD1EC, func_800BD2AC},
     {0x00000020, func_800BD55C, func_800BD608},
-    {0x00000021, func_800B6054, func_800B6078},
+    {0x00000021, RegisterStaticMesh, UpdateStaticMesh},
     {0x00000022, func_800BD718, func_800BD938},
     {0x00000023, func_800BDF2C, MoveOrbitChild},
     {0x00000024, func_800BE0D4, func_800BE1C4},
-    {0x00000025, func_800B6054, func_800B6078},
+    {0x00000025, RegisterStaticMesh, UpdateStaticMesh},
     // if([bhvIdx] >= 0x26U) { pass }
 };
 
@@ -1364,11 +1365,11 @@ void func_800B6040(Collider* arg0) {
     arg0->unk_B0 = 2;
 }
 
-void func_800B6054(Collider* arg0, RoomObject* arg1) {
+void RegisterStaticMesh(Collider* arg0, RoomObject* arg1) {
     func_800B5D68(arg0, 1);
 }
 
-void func_800B6078(Collider* arg0) {
+void UpdateStaticMesh(Collider* arg0) {
     Vec3f_Zero(&arg0->unk_3C);
 }
 
@@ -1412,24 +1413,97 @@ void RegisterTwoPointMover(Collider* arg0, RoomObject* arg1) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B61FC.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/MoveTwoPointMover.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B67D8.s")
+void func_800B67D8(Collider* arg0, RoomObject* arg1) {
+    PlatformKeyframe* kf;
+    s32 t;
+    s32 i;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B691C.s")
-
-void func_800B6B14(Collider* arg0, RoomObject* arg1) {
-    void (*func)(Collider*, RoomObject*) = (void (*)(Collider*, RoomObject*)) arg1->keyframes.temp;
-    s32 temp = arg1->noKeyframes;
-
-    func(arg0, arg1);
-    arg0->function = (void (*)(Collider*)) temp;
+    func_800B5D68(arg0, 2);
+    t = 0;
+    i = 0;
+    arg0->unk_AC = arg1->keyframes.temp;
+    arg0->unk_B0 = arg1->noKeyframes;
+    kf = (PlatformKeyframe*) arg0->unk_AC;
+    arg0->unk_30.x = kf->position.x;
+    arg0->unk_30.y = kf->position.y;
+    arg0->unk_30.z = kf->position.z;
+    for (i = 0; i < arg0->unk_B0; i++, kf++) {
+        kf->unk18 = t;
+        t += kf->unkC;
+        kf->unk1C = t;
+        t += kf->unk10;
+        kf->unk20 = t;
+    }
+    arg0->unk_B8 = t;
+    if (arg0->unk_110 >= 0) {
+        t = (D_801749A0 - arg0->unk_110) % arg0->unk_B8;
+        kf = (PlatformKeyframe*) arg0->unk_AC;
+        for (i = 0; i < arg0->unk_B0; i++, kf++) {
+            if ((t >= kf->unk18) && (t < kf->unk20)) {
+                arg0->unk_B4 = i;
+                return;
+            }
+        }
+    } else {
+        arg0->unk_B4 = 0;
+    }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B6B4C.s")
+void func_800B691C(Collider* arg0) {
+    PlatformKeyframe* kf;
+    PlatformKeyframe* next;
+    Vec3f sp64;
+    Vec3f sp58;
+    Vec3f sp4C;
+    s32 r;
+    s32 idx;
+    f32 t;
+
+    idx = arg0->unk_B4;
+    kf = (PlatformKeyframe*) (arg0->unk_AC + idx * 0x24);
+    idx++;
+    if (idx >= arg0->unk_B0) {
+        idx = 0;
+    }
+    next = (PlatformKeyframe*) (arg0->unk_AC + idx * 0x24);
+    sp64.x = kf->position.x;
+    sp64.y = kf->position.y;
+    sp64.z = kf->position.z;
+    sp58.x = next->position.x;
+    sp58.y = next->position.y;
+    sp58.z = next->position.z;
+    t = 0.0f;
+    r = (D_801749A0 - arg0->unk_110) % arg0->unk_B8;
+    if ((r >= kf->unk18) && (r >= kf->unk1C) && (r < kf->unk20)) {
+        t = (f32) (r - kf->unk1C) / (f32) (kf->unk20 - kf->unk1C);
+    }
+    func_800B2470(&sp4C, sp64, sp58, t, kf->unk14);
+    arg0->unk_3C.x = sp4C.x - arg0->unk_30.x;
+    arg0->unk_3C.y = sp4C.y - arg0->unk_30.y;
+    arg0->unk_3C.z = sp4C.z - arg0->unk_30.z;
+    arg0->unk_30 = sp4C;
+    if (r + 1 == kf->unk20) {
+        arg0->unk_B4++;
+        if (arg0->unk_B4 >= arg0->unk_B0) {
+            arg0->unk_B4 = 0;
+        }
+    }
+}
+
+void RegisterScriptedBehaviour(Collider* arg0, RoomObject* arg1) {
+    void (*registerFunc)(Collider*, RoomObject*) = (void (*)(Collider*, RoomObject*)) arg1->keyframes.temp;
+    s32 tickFunc = arg1->noKeyframes;
+
+    registerFunc(arg0, arg1);
+    arg0->function = (void (*)(Collider*)) tickFunc;
+}
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/RegisterRotatingPlatform.s")
 
 // MOVE: rotating platform. Advance angle by speed (unless paused), wrap into [0, 2*PI).
-void func_800B6C34(Collider* arg0) {
+void UpdateRotatingPlatform(Collider* arg0) {
     f32 angle;
 
     Vec3f_Zero(&arg0->unk_3C);
@@ -1455,9 +1529,9 @@ void func_800B6D24(Collider* arg0) {
     Vec3f_Zero(&arg0->unk_3C);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B6D44.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/RegisterKeyframePlatform.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B6DF4.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/MoveKeyframePlatform.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B7208.s")
 
@@ -1482,15 +1556,21 @@ void func_800B81B4(Collider* arg0, RoomObject* arg1) {
 // unk_B0 its length, unk_B4 the current keyframe index and unk_B8 the tick counter
 // within that keyframe.
 #ifdef NON_MATCHING
+// best score 255
 void func_800B81FC(Collider* arg0) {
     s32 flag;
     UnkType3* entry;
+    Vec3f unused;
     Rect3D rect;
     s32 temp;
+    s32 idx;
+    s32 base;
 
     entry = &((UnkType3*)arg0->unk_AC)[arg0->unk_B4];
     arg0->unk_120 = entry->unk_14;
-    arg0->collision = *(ModelCollision**)(D_801B3178->unk8 + entry->unk_00[(D_801749A0 / entry->unk_08) % entry->unk_04] * 0x30 + 4);
+    idx = (D_801749A0 / entry->unk_08) % entry->unk_04;
+    base = D_801B3178->unk8;
+    arg0->collision = *(ModelCollision**)(base + entry->unk_00[idx] * 0x30 + 4);
     ComputeColliderBounds(arg0);
     flag = 0;
     arg0->unk_B8++;
@@ -1543,7 +1623,7 @@ void func_800B81FC(Collider* arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B9514.s")
 
-void func_800B9750(Collider* arg0, RoomObject* arg1) {
+void RegisterDamageHazard(Collider* arg0, RoomObject* arg1) {
     func_800B5D68(arg0, 2);
     arg0->unk_8C = arg0->unk_30.x;
     arg0->unk_90 = arg0->unk_30.y;
@@ -1566,7 +1646,7 @@ void func_800B9750(Collider* arg0, RoomObject* arg1) {
 // the platform (expanded, player-relative bounds), it follows the grab instead. Plays transition
 // sfx (0x8C start-move / 0x8D arrive / 0x8E grab).
 #ifdef NON_MATCHING
-void func_800B97F0(Collider* arg0) {
+void UpdateDamageHazard(Collider* arg0) {
     Rect3D box;
     Vec3f segPos;
     Rect3D* bounds;
@@ -1693,7 +1773,7 @@ void func_800B97F0(Collider* arg0) {
     }
 }
 #else
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B97F0.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/UpdateDamageHazard.s")
 #endif
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B9E8C.s")
@@ -1770,7 +1850,62 @@ void func_800BBC88(Collider* arg0, RoomObject* arg1) {
     arg0->unk_C0 = 0;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BBCE4.s")
+void func_800BBCE4(Collider* arg0) {
+    Vec3f sp94;
+    Vec3f sp88;
+    Vec3f sp7C;
+    f32 t;
+
+    sp94.x = arg0->unk_8C;
+    sp94.y = arg0->unk_90;
+    sp94.z = arg0->unk_94;
+    sp88.x = arg0->unk_98;
+    sp88.y = arg0->unk_9C;
+    sp88.z = arg0->unk_A0;
+
+    switch (arg0->unk_AC) {
+    case 0:
+        t = 0.0f;
+        if (arg0->unk_C0 != 0) {
+            arg0->unk_C0 = 0;
+            arg0->unk_AC = 1;
+            arg0->unk_B0 = arg0->unk_B4;
+        }
+        break;
+    case 1:
+        t = 1.0 - (f32) arg0->unk_B0 / (f32) arg0->unk_B4;
+        arg0->unk_B0--;
+        if (arg0->unk_B0 < 0) {
+            arg0->unk_AC = 2;
+            arg0->unk_B0 = arg0->unk_B8;
+            Actor_Init(0xE, arg0->unk_8C, arg0->unk_90, arg0->unk_94, arg0->unkA4, -5000.0f, 5000.0f, -5000.0f,
+                       5000.0f, -5000.0f, 5000.0f, 5.0f, 5.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 210, 50, 30, 0);
+        }
+        break;
+    case 2:
+        t = 1.0f;
+        arg0->unk_B0--;
+        if (arg0->unk_B0 < 0) {
+            arg0->unk_AC = 3;
+            arg0->unk_B0 = arg0->unk_BC;
+        }
+        break;
+    case 3:
+        t = (f32) arg0->unk_B0 / (f32) arg0->unk_B4;
+        arg0->unk_B0--;
+        if (arg0->unk_B0 < 0) {
+            arg0->unk_AC = 0;
+            arg0->unk_B0 = 0;
+        }
+        break;
+    }
+
+    func_800B2470(&sp7C, sp94, sp88, t, 0);
+    arg0->unk_3C.x = sp7C.x - arg0->unk_30.x;
+    arg0->unk_3C.y = sp7C.y - arg0->unk_30.y;
+    arg0->unk_3C.z = sp7C.z - arg0->unk_30.z;
+    arg0->unk_30 = sp7C;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BBF80.s")
 
@@ -1787,10 +1922,10 @@ void func_800BD1EC(Collider* arg0, RoomObject* arg1) {
 
     func_800B5D68(arg0, 2);
     t = 0;
-    kf = arg1->keyframes._keyframe;
     i = 0;
     arg0->unk_AC = arg1->keyframes.temp;
     arg0->unk_B0 = arg1->noKeyframes;
+    kf = (PlatformKeyframe*) arg0->unk_AC;
     arg0->unk_B4 = 0;
     arg0->unk_30.x = kf->position.x;
     arg0->unk_30.y = kf->position.y;
@@ -1809,9 +1944,98 @@ void func_800BD1EC(Collider* arg0, RoomObject* arg1) {
     arg0->unkC8 = 0;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BD2AC.s")
+#ifdef NON_MATCHING
+// best score 210
+void func_800BD2AC(Collider* arg0) {
+    PlatformKeyframe* kf;
+    PlatformKeyframe* next;
+    Vec3f sp74;
+    Vec3f sp68;
+    Vec3f sp5C;
+    s32 frame;
+    f32 t;
+    s32 pad50;
+    s32 surface = gPlayerActors[0].surface;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BD55C.s")
+    switch (arg0->unk_BC) {
+    case 0:
+        Vec3f_Zero(&arg0->unk_3C);
+        if (((arg0->unk10C >= 0) && (func_800B34D0(arg0->unk10C) != 0)) || (surface == arg0->unk_00)) {
+            arg0->unk_B4 = 0;
+            arg0->unk_BC = 1;
+            arg0->unk_C0 = 0;
+            frame = D_801749A0;
+            arg0->unkC8 = frame;
+        }
+        break;
+    case 1:
+        kf = (PlatformKeyframe*) arg0->unk_AC + arg0->unk_B4;
+        next = kf;
+        next++;
+        sp74.x = kf->position.x;
+        sp74.y = kf->position.y;
+        sp74.z = kf->position.z;
+        if (1) { } if (1) { }
+        sp68.x = next->position.x;
+        sp68.y = next->position.y;
+        sp68.z = next->position.z;
+        arg0->unk_C0++;
+        if (arg0->unk_C0 < kf->unk1C) {
+            t = 0.0f;
+        } else if (kf->unk20 >= arg0->unk_C0) {
+            t = (f32) (arg0->unk_C0 - kf->unk1C) / (f32) (kf->unk20 - kf->unk1C);
+        }
+        func_800B2470(&sp5C, sp74, sp68, t, kf->unk14);
+        arg0->unk_3C.x = sp5C.x - arg0->unk_30.x;
+        arg0->unk_3C.y = sp5C.y - arg0->unk_30.y;
+        arg0->unk_3C.z = sp5C.z - arg0->unk_30.z;
+        arg0->unk_30 = sp5C;
+        if (kf->unk20 == arg0->unk_C0) {
+            arg0->unk_B4++;
+            if (arg0->unk_B4 >= arg0->unk_B0 - 1) {
+                arg0->unk_BC = 2;
+                arg0->unk_C0 = arg0->unkC4;
+            }
+        }
+        break;
+    case 2:
+        Vec3f_Zero(&arg0->unk_3C);
+        arg0->unk_C0--;
+        if (arg0->unkC4 / 2 < arg0->unk_C0) {
+            if ((arg0->unk_C0 & 3) != 0) {
+                arg0->unk_118 = -1;
+            } else {
+                arg0->unk_118 = 0;
+            }
+        } else {
+            if ((arg0->unk_C0 & 1) != 0) {
+                arg0->unk_118 = -1;
+            } else {
+                arg0->unk_118 = 0;
+            }
+        }
+        if (arg0->unk_C0 <= 0) {
+            func_800B560C(arg0->unk_00);
+        }
+        break;
+    }
+}
+#else
+#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BD2AC.s")
+#endif
+
+void func_800BD55C(Collider* arg0, RoomObject* arg1) {
+    func_800B5D68(arg0, 1);
+    arg0->unk_8C = arg1->unk28;
+    arg0->unk_90 = arg1->unk2C;
+    arg0->unk_94 = arg1->unk30;
+    if ((arg0->unk_8C == 0.0) && (arg0->unk_90 == 0.0) && (arg0->unk_94 == 0.0)) {
+        arg0->unk_AC = 0;
+    } else {
+        arg0->unk_AC = 1;
+    }
+    func_800B5A98(arg0, arg1);
+}
 
 void func_800BD608(Collider* arg0) {
     Vec3f_Zero(&arg0->unk_3C);
@@ -2612,7 +2836,7 @@ void MoveField(void) {
             }
             if ((u32) var_s0 < 0x26U) {
                 if (var_s0 == 0) {
-                    ((void (*)(Collider*)) D_80108894[var_s0].func2)(temp_s1);
+                    ((void (*)(Collider*)) gFieldObjectBehaviourMap[var_s0].func2)(temp_s1);
                 } else {
                     temp_s1->function(temp_s1);
                 }
