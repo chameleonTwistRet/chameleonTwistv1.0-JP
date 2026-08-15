@@ -46,11 +46,11 @@ void func_8002F3D4(void);
 void StartPlayerInvulnFlicker(s32);
 void LaunchPlayerVertically(f32, PlayerActor*, s32);
 void func_8002F568(void);
-f32 func_8002F5C4(s32, s32, s32, s32);
+f32 CalcSquishReboundCurve(s32, s32, s32, s32);
 s32 func_8002F6DC(f32*, f32);
 void SetPlayerImpulse(void);
-void func_8002F884(s32, s32);
-void func_8002F960(Tongue*);
+void TriggerPlayerRumble(s32, s32);
+void TongueHitWall(Tongue*);
 void ClearPlayerPowerups(PlayerActor*);
 
 s32 func_80030DCC(f32, f32, s32);

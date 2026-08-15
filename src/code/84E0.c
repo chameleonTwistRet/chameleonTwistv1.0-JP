@@ -886,12 +886,13 @@ void func_8002F568(void) {
     }
 }
 
-f32 func_8002F5C4(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
-    arg0 = arg1 - arg0;
-    if (arg2 < arg0) {
-        arg0 = arg2;
+// Player squish-recovery ease curve
+f32 CalcSquishReboundCurve(s32 squishTimer, s32 targetFrame, s32 duration, s32 wobbleCycles) {
+    squishTimer = targetFrame - squishTimer;
+    if (duration < squishTimer) {
+        squishTimer = duration;
     }
-    return (((((sinf(arg0 * 0x168 * arg3 / arg2 * 2 * PI / 360.0) * (arg2 - arg0)) / arg2) + 3.0) * arg0) / 4) / arg2;
+    return (((((sinf(squishTimer * 0x168 * wobbleCycles / duration * 2 * PI / 360.0) * (duration - squishTimer)) / duration) + 3.0) * squishTimer) / 4) / duration;
 }
 
 s32 func_8002F6DC(f32* arg0, f32 arg1) {
@@ -947,20 +948,26 @@ void SetPlayerImpulse(void) {
     }
 }
 
-void func_8002F884(s32 arg0, s32 arg1) {
-    if (((D_801749B0 == 0) || (gCurrentActivePlayerPointer->playerID != 1)) && (D_80168D78[arg0] == 0)) {
+// Triggers a rumble pulse for a player, scaled by an event-specific intensity (e.g. 2 for
+// TongueHitWall, 5 for the damage-hit sequence). Skipped if D_80168D78[playerID] flags that
+// player's controller slot as rumble-incapable, or (for player 1 specifically) when D_801749B0
+// is set. Duration is scaled differently in battle mode vs normal play.
+void TriggerPlayerRumble(s32 playerID, s32 intensity) {
+    if (((D_801749B0 == 0) || (gCurrentActivePlayerPointer->playerID != 1)) && (D_80168D78[playerID] == 0)) {
         if (gGameModeCurrent == GAME_MODE_BATTLE_MENU) {
-            Rumble_AddTime(arg0, ((arg1 * 100) / 6.0f));
+            Rumble_AddTime(playerID, ((intensity * 100) / 6.0f));
         } else {
-            Rumble_AddTime(arg0, ((arg1 * 100) * 0.5f));
+            Rumble_AddTime(playerID, ((intensity * 100) * 0.5f));
         }
     }
 }
 
-void func_8002F960(Tongue* arg0) {
-    func_8002F884(gCurrentActivePlayerPointer->playerID, 2);
+// Tongue hits a wall: rumble pulse, wall-hit SFX, and a 10-frame lockout (wallTime) during
+// which the tongue is unusable and flickers.
+void TongueHitWall(Tongue* tongue) {
+    TriggerPlayerRumble(gCurrentActivePlayerPointer->playerID, 2);
     PLAY_SFX(SFX_TongueWall, 0, 0X10);
-    arg0->wallTime = 10;
+    tongue->wallTime = 10;
 }
 
 void ClearPlayerPowerups(PlayerActor* arg0) {
@@ -1010,7 +1017,7 @@ void func_800312FC(Actor* arg0, f32 arg1) {
     arg0->userVariables[0] = 0;
     arg0->userVariables[1] = 14;
     arg0->unk_134[3] = 76.80000305f;
-    arg0->vel.x = cosf(DEGREES_TO_RADIANS_2PI(arg1)) * 16.0f;     //cosf(DEGREES_TO_RADIANS_2PI(arg1)) * 16.0f;
+    arg0->vel.x = cosf(DEGREES_TO_RADIANS_2PI(arg1)) * 16.0f;
     arg0->vel.z = -sinf(DEGREES_TO_RADIANS_2PI(arg1)) * 16.0f;
     arg0->tongueCollision = 0;
     PLAY_SFX_AT(SFX_6D_unkSnd, arg0->pos, 0, 0);
@@ -1380,7 +1387,7 @@ void func_800360E4(Actor* actor) {
 
 void func_80036D74(PlayerActor* arg0, Tongue* arg1) {
     if (arg0->playerHurtState == PLAYER_HURT_NONE) {
-        func_8002F884(arg0->playerID, 5);
+        TriggerPlayerRumble(arg0->playerID, 5);
         Effect_TypeD_Create(arg0->pos.x, arg0->pos.y, arg0->pos.z);
         PLAY_SFX(SFX_ChameleonOw+1, 0, 0x10);
         if ((Battle_GameType == BATTLE_TYPE_NOTBATTLE) && (D_80174980 != 3) && (D_80174988 == 0)) {
