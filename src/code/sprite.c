@@ -5869,7 +5869,7 @@ void aa1_Bowling(f32 arg0, s32 arg1, s32 arg2) {
     }
 }
 
-// NON_MATCHING attempt below scores 185
+// scores 185
 #ifdef NON_MATCHING
 void ResetEyeParams(void) {
     D_800FE4E4[1].unk_00 = 0;

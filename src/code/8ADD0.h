@@ -344,7 +344,7 @@ extern s32 isFirstZone;
 
 s32 func_800B47DC(s32);                             /* extern */
 void func_800B4884(RoomInstance*);                     /* extern */
-void func_800BE7F0(void);                                  /* extern */
+void InitFieldPools(void);
 extern RoomInstance* D_802478F0;
 extern s32 D_80247904;
 

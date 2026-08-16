@@ -342,7 +342,7 @@ void func_80095E44(void);
 s32 Segment_Load(s32 segmentID, s32 arg1);
 u32 Stage_Load(s32 stageToLoad, s32 inpAddr);
 void func_800966E0(void);
-s32 func_80096748(u16);
+s32 GetDirectionIndex(u16);
 s32 CanAccessStage(s32 stageIndex);
 f32 func_80096898(u16 arg0);
 void func_80096964(CTTask* task);
@@ -661,6 +661,8 @@ extern s32 CreditsTimeOffset;
 extern RollData CreditsData[];
 extern s32 D_8010875C;
 extern s32 D_80174980;
+extern u64 D_801B35B8[];
+extern u32 D_801FFB7C[];
 
 void Battle_Init(void);
 void func_8002CE54(void);

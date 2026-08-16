@@ -1081,21 +1081,16 @@ s32 GetColliderFlag(Collider *arg0, s32 arg1) {
     return new_var2 >> (*new_var).z;
 }
 
-// NON_MATCHING attempt below scores 55
-#ifdef NON_MATCHING
 void SetColliderFlag(Collider* arg0, s32 arg1, s32 arg2) {
     Vec3w* entry = &gColliderFlagTable[arg1];
-    s32 mask = entry->y;
-    s32 shift = entry->z;
+    s32 mask;
 
-    arg0->unk_14 &= ~mask;
-    arg2 <<= shift;
+    mask = entry->y;
+    arg2 <<= entry->z;
     arg2 &= mask;
+    arg0->unk_14 &= ~mask;
     arg0->unk_14 |= arg2;
 }
-#else
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/SetColliderFlag.s")
-#endif
 
 void func_800B4070(Collider* arg0) {
     s32 var_a2;
@@ -2686,30 +2681,20 @@ void func_800BE7BC(void) {
     }
 }
 
-#ifdef NON_MATCHING
-void func_800BE7F0(void) {
-    Collider** cp;
-    Collider* c;
-    Door** dp;
+// Best Guess: Fills the two free-pool pointer stacks that RegistField/RegistSwitchArea pop from.
+void InitFieldPools(void) {
+    Collider** fieldSlot;
+    SwitchArea** areaSlot;
     s32 i;
 
-    cp = (Collider**)D_80240C98;
-    for (c = D_80236980; c < &D_80236980[128]; c++) {
-        *--cp = c;
+    for (i = 0, fieldSlot = (Collider**)&D_80240C98[0]; i < 128; i++) {
+        *--fieldSlot = &D_80236980[i];
     }
 
-    dp = (Door**)&gCurrentZone;
-    for (i = 0; i < 8; i += 4) {
-        dp[-2] = (Door*)&gSwitchAreas[i + 1];
-        dp[-3] = (Door*)&gSwitchAreas[i + 2];
-        dp[-1] = (Door*)&gSwitchAreas[i];
-        dp[-4] = (Door*)&gSwitchAreas[i + 3];
-        dp -= 4;
+    for (i = 0, areaSlot = (SwitchArea**)&D_80240C98[16]; i < 8; i++) {
+        *--areaSlot = &gSwitchAreas[i];
     }
 }
-#else
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BE7F0.s")
-#endif
 
 void func_800BE87C(Collider* arg0, RoomObject* arg1, void* arg2, s32 arg3) {
     arg0->unk_0C = 7;

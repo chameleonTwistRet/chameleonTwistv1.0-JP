@@ -4004,7 +4004,15 @@ CTTask* func_8008F7A4(s16 arg0, s16 arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008F814.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008F900.s")
+u64 func_8008F900(void) {
+    u64 sum = 0;
+    u64* ptr;
+
+    for (ptr = D_801B35B8; (u32)ptr < (u32)D_801FFB7C - 4; ptr++) {
+        sum += *ptr;
+    }
+    return sum;
+}
 
 //writes useInt as a base 10 string of full-width digits into result, using the
 //2-byte-per-digit table D_800FFE78, most significant digit first. The digit
@@ -5685,7 +5693,22 @@ void func_800966E0(void) {
     D_801FFB78 = Segment_Load(gSelectedCharacters[0] + 8, gLoadedSegments [1].base_address);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80096748.s")
+/**
+ * Maps a d-pad direction bitmask to a direction
+ * index 1-8 via D_80100348. Returns -1 when the mask is not a known direction.
+ */
+s32 GetDirectionIndex(u16 dirMask) {
+    s32 i;
+    s32 ret = -1;
+
+    for (i = 0; i != 9; i++) {
+        if (D_80100348[i] == dirMask) {
+            ret = i;
+            break;
+        }
+    }
+    return ret;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/CanAccessStage.s")
 
