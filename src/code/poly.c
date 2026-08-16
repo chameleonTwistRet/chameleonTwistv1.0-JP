@@ -656,7 +656,17 @@ void func_800D34CC(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800D4200.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800D44C8.s")
+void func_800D44C8(PlayerActor* arg0, Tongue* arg1, Camera* arg2, Vec3f* arg3, Vec3f* arg4) {
+    Field* zone;
+
+    zone = &gZoneFields[gCurrentZone];
+    arg3->x = arg2->f1.z;
+    arg3->y = arg2->f2.x + (zone->unkD0 * arg2->size1);
+    arg3->z = arg2->f2.y;
+    arg4->x = zone->cameraAnchor.x;
+    arg4->y = zone->cameraAnchor.y + (zone->unkD0 * arg2->size1);
+    arg4->z = zone->cameraAnchor.z;
+}
 
 void func_800D4550(s32 arg0, s32 arg1, Poly* arg2, Vec3f* arg3, Vec3f* arg4) {
     Field* temp_v0 = &gZoneFields[gCurrentZone];

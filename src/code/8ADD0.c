@@ -2843,9 +2843,34 @@ void func_800BF84C(s32 room) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/InitFieldSub.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BFCD0.s")
+#ifdef NON_MATCHING
+void func_800BFCD0(void) {
+    s32 i;
 
+    D_8020261C = gCurrentZone;
+    D_80202620 = gZoneFields[gCurrentZone].unk70;
+    D_80202624 = gZoneFields[gCurrentZone].unk74;
+    for (i = 0; i < ARRAY_COUNT(D_80202628); i++) {
+        D_80202628[i] = StageFlags[i];
+    }
+}
+#else
+#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BFCD0.s")
+#endif
+
+#ifdef NON_MATCHING
+void func_800BFD64(void) {
+    s32 i;
+
+    gZoneFields[D_8020261C].unk70 = D_80202620;
+    gZoneFields[D_8020261C].unk74 = D_80202624;
+    for (i = 0; i < ARRAY_COUNT(StageFlags); i++) {
+        StageFlags[i] = D_80202628[i];
+    }
+}
+#else
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BFD64.s")
+#endif
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/CalcRoomInfo.s")
 
