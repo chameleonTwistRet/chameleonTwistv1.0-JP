@@ -2603,17 +2603,27 @@ s32 func_80087390(unk0* arg0) {
     return 1;
 }
 
-// Unlinks a sound record from the active list (like func_8008714C) and re-inserts it further down
-// NON_MATCHING attempt below scores 15
-#ifdef NON_MATCHING
+/**
+ * @brief Unlink a sound record from the active list and re-insert it by priority
+ *
+ * The record is spliced out of the list (like func_8008714C), then its old predecessor
+ * is walked backwards while the neighbour is not flagged 0x10 and has a lower unk4C
+ * (priority) than the record being moved. func_80087130 links the record back in after
+ * whichever node the walk stopped on.
+ *
+ * @param arg0 sound record
+ * @return always 0
+ */
 s32 func_8008746C(unk0* arg0) {
     unk0* temp_v0;
-    unk0* temp_v1 = arg0->unk50;
-    unk0* var_a1 = arg0->unk54;
+    unk0* temp_v1;
+    unk0* var_a1;
 
+    temp_v1 = arg0->unk50;
+    var_a1 = arg0->unk54;
     var_a1->unk50 = temp_v1;
     temp_v1->unk54 = var_a1;
-    while (var_a1->unk54 != 0) {
+    while (var_a1->unk54 != NULL) {
         temp_v0 = var_a1->unk54;
         if (var_a1->unk20 & 0x10) {
             break;
@@ -2623,12 +2633,14 @@ s32 func_8008746C(unk0* arg0) {
         }
         var_a1 = temp_v0;
     }
+    // Fake: emits nothing, but keeps temp_v1 live across the loop so that IDO gives it
+    // $v1 instead of coalescing it onto $v0 with temp_v0. Without it the function is
+    // instruction-identical but scores 15 on those three registers.
+    if (temp_v1 != NULL) {
+    }
     func_80087130(arg0, var_a1);
     return 0;
 }
-#else
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008746C.s")
-#endif
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800874E4.s")
 
@@ -5613,7 +5625,24 @@ void func_80095500(CTTask* task) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80095D38.s")
 
+#ifdef NON_MATCHING
+extern u32* D_801B3178;
+
+// score 280
+void func_80095E44(void) {
+    u32 off = D_801B3178[1];
+
+    if (!IS_SEGMENTED(D_801B3178[1])) {
+        D_801B3174 = D_801B3178[1];
+    } else {
+        D_801B3174 = D_80100F50[SEGMENT_INDEX(D_801B3178[1])].base_address + SEGMENT_OFFSET_CUSTOM(off);
+    }
+    func_80095A3C(D_801B3174);
+    func_80095780();
+}
+#else
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80095E44.s")
+#endif
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80095EC8.s")
 

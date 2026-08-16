@@ -2516,7 +2516,25 @@ void func_80056DF4(unkStruct02* arg0, unkStruct02* arg1) {
 }
 
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/Memory_Free.s")
+void Memory_Free(void* ptr) {
+    unkStruct02* block;
+    unkStruct02* prev;
+    unkStruct02* next;
+
+    if (ptr != NULL) {
+        block = (unkStruct02*) ptr - 1;
+        prev = block->unk_04;
+        next = block->next;
+        block->flags |= 1;
+        if ((prev != NULL) && (prev->flags & 1)) {
+            func_80056DF4(prev, block);
+            block = prev;
+        }
+        if ((next != NULL) && (next->flags & 1)) {
+            func_80056DF4(block, next);
+        }
+    }
+}
 
 void func_80056EB4(void) {
     func_80056CDC((s32) D_801191A0, (s32) D_801FFB78 - (s32) D_801191A0);

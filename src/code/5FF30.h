@@ -602,6 +602,7 @@ extern u8 D_80200B68;
 extern s16 sDebugLevelAccess;
 extern s16 D_80100EB4[];
 extern s16 D_801B317C;
+extern u32 D_801B3174;
 extern s16 gSFXMute;
 extern UnkPlaySoundEffect* D_80200A90;
 extern f32 D_8010F2FC;
