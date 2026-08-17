@@ -1595,24 +1595,21 @@ void ActorInit_AntTrio(Actor* antTrio) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_800397DC.s")
 
-// Places a freshly spawned yellow ant on the ring around its pole (unk_124) and faces it
-// tangentially. (430)
-#ifdef NON_MATCHING
 void ActorInit_YellowAnt(Actor* yellowAnt) {
     f32 angle;
+    f32 trig;
 
     angle = CalcAngleBetween2DPoints(yellowAnt->pos.x, yellowAnt->pos.z,
         Poles[yellowAnt->unk_124].pos.x, Poles[yellowAnt->unk_124].pos.z);
-    yellowAnt->pos.x = (yellowAnt->position._f32.x * cosf(DEGREES_TO_RADIANS_2PI(angle + 180.0f))) + Poles[yellowAnt->unk_124].pos.x;
-    yellowAnt->pos.z = Poles[yellowAnt->unk_124].pos.z - (yellowAnt->position._f32.x * sinf(DEGREES_TO_RADIANS_2PI(angle + 180.0f)));
+    trig = cosf(DEGREES_TO_RADIANS_2PI(angle + 180.0f));
+    yellowAnt->pos.x = (yellowAnt->position._f32.x * trig) + (Poles + yellowAnt->unk_124)->pos.x;
+    trig = sinf(DEGREES_TO_RADIANS_2PI(angle + 180.0f));
+    yellowAnt->pos.z = Poles[yellowAnt->unk_124].pos.z - (yellowAnt->position._f32.x * trig);
     yellowAnt->unk_134[4] = yellowAnt->unk_90 = yellowAnt->unk_15C + (angle + 90.0f);
     WrapDegrees(&yellowAnt->unk_90);
     yellowAnt->unk_94 = yellowAnt->unk_160;
     yellowAnt->unk_F0 = Random(0, 0x100);
 }
-#else
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorInit_YellowAnt.s")
-#endif
 
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_YellowAnt.s")
@@ -1723,12 +1720,8 @@ void ActorTick_Grenade(Actor* grenade) {
 void ActorInit_MissileSpawner(Actor* missileSpawner) {
 }
 
-// score 20
-#ifdef NON_MATCHING
 void ActorTick_MissileSpawner(Actor* missileSpawner) {
-    Actor* actor = gActors;
-
-    do {
+    Actor* actor = gActors; do {
         if (actor->actorID == MISSILE) {
             if (actor->unk_12C == missileSpawner->actorIndex) {
                 return;
@@ -1755,9 +1748,6 @@ void ActorTick_MissileSpawner(Actor* missileSpawner) {
         Effect_TypeX_Create(missileSpawner->pos.x, missileSpawner->pos.y, missileSpawner->pos.z, 200.0f, 0x18);
     }
 }
-#else
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_MissileSpawner.s")
-#endif
 
 
 void ActorInit_Missile(Actor* missile) {
@@ -3017,40 +3007,35 @@ void ActorInit_PopcornBucketSpawner(Actor* popcornBucketSpawner){
 
 }
 
-#ifdef NON_MATCHING
-void ActorTick_PopcornBucketSpawner(Actor* popcornBucketSpawner) {
-    Actor* actor;
-
-    actor = gActors;
-    do {
+void ActorTick_PopcornBucketSpawner(Actor *popcornBucketSpawner)
+{
+  Actor *actor;
+  int unusedCheck;
+  Actor *start;
+  Actor *end;
+ {
+    start = gActors; actor = start; do { end = (Actor *) Poles;
         if (actor->actorID == 0) {
             break;
         }
         actor++;
-    } while (actor != (Actor*) Poles);
-
-    if (actor != (Actor*) Poles) {
+    } while (actor != end);
+    unusedCheck = !popcornBucketSpawner;
+    if (actor != ((Actor *) Poles)) {
         if (gActorCount < popcornBucketSpawner->unk_130) {
-            actor = gActors;
+            if ((!popcornBucketSpawner) && (unusedCheck & 0xFFFFu)) {}
+            actor = start;
             do {
+                start = end;
                 if (actor->actorID == 0x4D) {
                     return;
                 }
                 actor++;
-            } while (actor != (Actor*) Poles);
-
-            Actor_Init(0x4D, popcornBucketSpawner->pos.x, popcornBucketSpawner->pos.y, popcornBucketSpawner->pos.z,
-                popcornBucketSpawner->unk_90, popcornBucketSpawner->unk_F4, popcornBucketSpawner->unk_F8,
-                popcornBucketSpawner->unk_FC, popcornBucketSpawner->unk_100, popcornBucketSpawner->unk_104,
-                popcornBucketSpawner->unk_108, popcornBucketSpawner->position._f32.x,
-                popcornBucketSpawner->position._f32.y, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f,
-                popcornBucketSpawner->unk_124, popcornBucketSpawner->unk_128, popcornBucketSpawner->unk_12C, 0);
-        }
-    }
+                if (actor && actor) {}
+            } while (actor != start);
+            actor = popcornBucketSpawner;
+            Actor_Init(0x4D, popcornBucketSpawner->pos.x, popcornBucketSpawner->pos.y, popcornBucketSpawner->pos.z, popcornBucketSpawner->unk_90, actor->unk_F4, actor->unk_F8, actor->unk_FC, actor->unk_100, actor->unk_104, popcornBucketSpawner->unk_108, popcornBucketSpawner->position._f32.x, actor->position._f32.y, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, actor->unk_124, popcornBucketSpawner->unk_128, actor->unk_12C, 0); } } }
 }
-#else
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_PopcornBucketSpawner.s")
-#endif
 
 
 void ActorInit_PopcornBucket(Actor* popcornBucket) {
@@ -3073,13 +3058,9 @@ void ActorInit_ChocoKidSpawner(Actor* chocoKidSpawner){
 
 }
 
-// score 60
-#ifdef NON_MATCHING
 void ActorTick_ChocoKidSpawner(Actor* chocoKidSpawner) {
     s32 spawnerTag = chocoKidSpawner->unk_124;
-    Actor* actor = gActors;
-
-    do {
+    Actor* actor = gActors; do {
         if (actor->actorID == SPAWNED_CHOCO_KID) {
             if (spawnerTag == actor->unk_124) {
                 return;
@@ -3088,15 +3069,14 @@ void ActorTick_ChocoKidSpawner(Actor* chocoKidSpawner) {
         actor++;
     } while (actor != (Actor*) Poles);
 
+    if (chocoKidSpawner) {}
+
     Actor_Init(SPAWNED_CHOCO_KID, chocoKidSpawner->pos.x, chocoKidSpawner->pos.y, chocoKidSpawner->pos.z,
         chocoKidSpawner->unk_90, chocoKidSpawner->unk_F4, chocoKidSpawner->unk_F8, chocoKidSpawner->unk_FC,
         chocoKidSpawner->unk_100, chocoKidSpawner->unk_104, chocoKidSpawner->unk_108,
         chocoKidSpawner->position._f32.x, chocoKidSpawner->position._f32.y, chocoKidSpawner->unk_15C,
         0.0f, 0.0f, 0.0f, 0.0f, 0.0f, spawnerTag, 0, 0, 0);
 }
-#else
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_ChocoKidSpawner.s")
-#endif
 
 void ActorInit_SpawnedChocoKid(Actor* chocoKid) {
     ActorInit_ChocoKid(chocoKid);
@@ -3183,39 +3163,35 @@ void ActorInit_BattleModeSaucerSpawner(Actor* bmSaucerSpawner) {
     }
 }
 
-// score 85
-#ifdef NON_MATCHING
-void ActorTick_BattleModeSaucerSpawner(Actor* bmSaucerSpawner) {
-    s32 i;
-    s32 idx;
-
-    if (D_80174758[bmSaucerSpawner->unk_128 - 1] != -1) {
-        return;
+void ActorTick_BattleModeSaucerSpawner(Actor *bmSaucerSpawner)
+{
+  s32 i;
+  s32 idx;
+  int new_var;
+  if (D_80174758[bmSaucerSpawner->unk_128 - 1] != (-1))
+  {
+    return;
+  }
+  bmSaucerSpawner->userVariables[0] += 1;
+  if (bmSaucerSpawner->unk_124 != bmSaucerSpawner->userVariables[0])
+  {
+    return;
+  }
+  for (i = bmSaucerSpawner->unk_128 - 1; i > 0; i--)
+  {
+    new_var = i - 1;
+    if (D_80174758[new_var] != (-1))
+    {
+      gActors[D_80174758[i - 1]].userVariables[0] = i;
+      D_80174758[i] = D_80174758[i - 1];
+      D_80174758[i - 1] = -1;
+ if (1) { }
     }
-    bmSaucerSpawner->userVariables[0] += 1;
-    if (bmSaucerSpawner->unk_124 != bmSaucerSpawner->userVariables[0]) {
-        return;
-    }
+  }
 
-    for (i = bmSaucerSpawner->unk_128 - 1; i > 0; i--) {
-        if (D_80174758[i - 1] != -1) {
-            gActors[D_80174758[i - 1]].userVariables[0] = i;
-            D_80174758[i] = D_80174758[i - 1];
-            D_80174758[i - 1] = -1;
-        }
-    }
-
-    D_80174758[0] = Actor_Init(0x58, bmSaucerSpawner->pos.x,
-        bmSaucerSpawner->pos.y - bmSaucerSpawner->position._f32.x, bmSaucerSpawner->pos.z,
-        0.0f, bmSaucerSpawner->unk_F4, bmSaucerSpawner->unk_F8, -10000.0f, 10000.0f,
-        bmSaucerSpawner->unk_104, bmSaucerSpawner->unk_108,
-        bmSaucerSpawner->position._f32.x, bmSaucerSpawner->position._f32.y,
-        0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0, 0, 0, 0);
-    bmSaucerSpawner->userVariables[0] = 0;
+  D_80174758[0] = Actor_Init(0x58, bmSaucerSpawner->pos.x, bmSaucerSpawner->pos.y - bmSaucerSpawner->position._f32.x, bmSaucerSpawner->pos.z, 0.0f, bmSaucerSpawner->unk_F4, bmSaucerSpawner->unk_F8, -10000.0f, 10000.0, bmSaucerSpawner->unk_104, bmSaucerSpawner->unk_108, bmSaucerSpawner->position._f32.x, bmSaucerSpawner->position._f32.y, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0, 0, 0, 0);
+  bmSaucerSpawner->userVariables[0] = 0;
 }
-#else
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_BattleModeSaucerSpawner.s")
-#endif
 
 
 void ActorInit_BattleModeSaucer(Actor* battleModeSaucer) {
@@ -3463,38 +3439,44 @@ void func_8004BD7C(void) {
     }
 }
 
-#ifdef NON_MATCHING
-s32 func_8004BE90(PlayerActor* player) {
-    Actor* actor;
-    s32 count = 0;
-    s32 i;
-    f32 y;
-
-    actor = gActors;
-    do {
-        if (actor->unk_A0.unk_00 == 1) {
-            if (actor->actorID != 0) {
-                if (actor->actorID < 0x5F) {
-                    if ((actor->actorState == 0) || (actor->actorState == 3)) {
-                        y = (player->pos.y + player->tongueYOffset) - 5.0f;
-                        for (i = 0; i < actor->tongueCollision; i++) {
-                            if (!(actor->unknownPositionThings[i].unk_04 + (actor->pos.y + actor->unknownPositionThings[i].unk_10) < y)) {
-                                if (!(y + 10.0f < actor->unknownPositionThings[i].unk_04 + actor->pos.y)) {
-                                    count++;
-                                }
-                            }
-                        }
-                    }
+s32 func_8004BE90(PlayerActor *player)
+{
+  Actor *cur;
+  Actor *actor;
+  s32 count = 0;
+  s32 i;
+  f32 y;
+    /* statement grouping on this line is load-bearing for codegen */
+ cur = actor; actor = gActors; do { cur = actor;
+    if (cur->unk_A0.unk_00 == 1)
+    {
+      if (cur->actorID != 0)
+      {
+        if (cur->actorID < 0x5F)
+        {
+          if ((cur->actorState == 0) || (cur->actorState == 3))
+          {
+            y = (player->pos.y + player->tongueYOffset) - 5.0f;
+            for (i = 0; i < cur->tongueCollision; i++)
+            {
+              if (!(((cur->pos.y + cur->unknownPositionThings[i].unk_10) + cur->unknownPositionThings[i].unk_04) < y))
+              {
+                if (!((y + 10.0f) < (cur->unknownPositionThings[i].unk_04 + cur->pos.y)))
+                {
+                  count++;
                 }
+              }
             }
+
+          }
         }
-        actor++;
-    } while (actor != (Actor*) Poles);
-    return count;
+      }
+    }
+    actor++;
+  }
+  while (actor != ((Actor *) Poles));
+  return count;
 }
-#else
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8004BE90.s")
-#endif
 
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8004BF88.s")
