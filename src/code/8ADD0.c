@@ -1670,15 +1670,13 @@ void func_800B7208(Collider* arg0, RoomObject* arg1) {
     y0 = arg0->unk_90;
     y1 = arg0->unk_9C;
     if ((y0 == y1) || (arg0->unk_B4 == 0x309)) {
-        goto zero;
-    }
-    if (y0 < y1) {
+        arg0->unkC4 = 0;
+    } else if (y0 < y1) {
         arg0->unkC4 = 1;
         arg0->unk_30.y = y1;
         arg0->unk_30.x = arg0->unk_98;
         arg0->unk_30.z = arg0->unk_A0;
     } else {
-zero:
         arg0->unkC4 = 0;
     }
     arg0->unkC8 = StageFlags[arg0->unk10C];

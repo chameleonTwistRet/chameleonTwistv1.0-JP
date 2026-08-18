@@ -772,7 +772,7 @@ void func_8002E5DC(UnkTempStruct arg0) {
         sp2C = -1;
     }
 
-    D_80174860->size1 = D_80174860->size1 + ((D_80174860->size2 - D_80174860->size1) * 0.200000003f);
+    D_80174860->size1 = D_80174860->size1 + ((D_80174860->size2 - D_80174860->size1) * 0.2f);
     if (D_801749A8 == 0) {
         //if room is cycle 4 in kids land, or billiards in ghost castle, force free cam
         if (((gCurrentStage == STAGE_KIDS) && (gCurrentZone == ZONE_GLASS_WALL_2)) || ((gCurrentStage == STAGE_GHOST) && (gCurrentZone == ZONE_BILLIARDS))) {
@@ -781,7 +781,7 @@ void func_8002E5DC(UnkTempStruct arg0) {
                 D_80174860->unk0 = 0;
                 if (D_80174860->unk40 == 2) {
                     PLAY_SFX(SFX_2C_unkSnd+1, 0, 0x10);
-                    D_80174860->size2 /= 1.299999952f;
+                    D_80174860->size2 /= 1.3f;
                     D_80174860->unk40 -= 1;
                 }
                 func_800D34CC();
@@ -794,7 +794,7 @@ void func_8002E5DC(UnkTempStruct arg0) {
                 D_80174860->unk0 = 0;
                 if (D_80174860->unk40 == 2) {
                     PLAY_SFX(SFX_2C_unkSnd+1, 0, 0x10);
-                    D_80174860->size2 /= 1.299999952f;
+                    D_80174860->size2 /= 1.3f;
                     D_80174860->unk40 -= 1;
                 }
             }
@@ -802,12 +802,12 @@ void func_8002E5DC(UnkTempStruct arg0) {
         }
         if ((arg0.unk_02 & 4) && (((D_80174860->unk0 == 1) && (D_80174860->unk40 < 2)) || (D_80174860->unk40 <= 0))) {
             PLAY_SFX(SFX_2C_unkSnd+1, 0, 0x10);
-            D_80174860->size2 *= 1.299999952f;
+            D_80174860->size2 *= 1.3f;
             D_80174860->unk40 += 1;
         }
         if ((arg0.unk_02 & 8) && (sp2C < D_80174860->unk40)) {
             PLAY_SFX(SFX_2C_unkSnd+1, 0, 0x10);
-            D_80174860->size2 /= 1.299999952f;
+            D_80174860->size2 /= 1.3f;
             D_80174860->unk40 -= 1;
         }
         if ((arg0.unk_02 & 1) && (D_80174860->pushHoriz < 9)) {
@@ -902,7 +902,7 @@ void func_8002ECCC(s32 arg0) {
                 sp34 = 0x3C;
             }
             if (sp34 >= 20) {
-                D_80174860->f1.x = D_80174860->f1.x + (((var_f2 * (sp34 - 0x13)) / 41.0f) * 0.02999999933f);
+                D_80174860->f1.x = D_80174860->f1.x + (((var_f2 * (sp34 - 0x13)) / 41.0f) * 0.03f);
             }
             WrapDegrees(&D_80174860->f1.x);
             func_8002E9F4();
@@ -910,9 +910,9 @@ void func_8002ECCC(s32 arg0) {
             D_80174860->f3.z = D_80174860->f2.y - (sinf((((D_80174860->f1.x * 2) * PI) / 360.0)) * sp4C);
         }
         if ((gTongueOnePointer->tongueMode == 4) || (gTongueOnePointer->tongueMode == 5) || (gTongueOnePointer->tongueMode == 0xB)) {
-            D_80174860->f2.z = (D_80174860->f2.z + ((gCurrentActivePlayerPointer->pos2.y - D_80174860->f2.z) * 0.0500000000000000028));
+            D_80174860->f2.z = (D_80174860->f2.z + ((gCurrentActivePlayerPointer->pos2.y - D_80174860->f2.z) * 0.05));
         } else {
-            D_80174860->f2.z = (D_80174860->f2.z + ((gCurrentActivePlayerPointer->yCounter - D_80174860->f2.z) * 0.0500000000000000028));
+            D_80174860->f2.z = (D_80174860->f2.z + ((gCurrentActivePlayerPointer->yCounter - D_80174860->f2.z) * 0.05));
         }
 
         if (D_80174860->f2.z + sp48 < gCurrentActivePlayerPointer->pos2.y) {
@@ -952,16 +952,16 @@ void func_8002F3D4(void) {
     if (gCurrentActivePlayerPointer->canJump == 0) {
         if (gCurrentActivePlayerPointer->forwardVel == 0.0f) {
             gCurrentActivePlayerPointer->groundMovement = 0;
-            gCurrentActivePlayerPointer->globalTimer = (gCurrentActivePlayerPointer->globalTimer + 0.3000000119f);
+            gCurrentActivePlayerPointer->globalTimer = (gCurrentActivePlayerPointer->globalTimer + 0.3f);
             return;
         }
         if (gCurrentActivePlayerPointer->forwardVel < (65.0f * gCurrentActivePlayerPointer->forwardImpulse)) {
             gCurrentActivePlayerPointer->groundMovement = 1;
-            gCurrentActivePlayerPointer->globalTimer = (gCurrentActivePlayerPointer->globalTimer + (((2.0f + (((gCurrentActivePlayerPointer->forwardVel / ((65.0f * gCurrentActivePlayerPointer->forwardImpulse) / 10.0f)) * gCurrentActivePlayerPointer->forwardImpulse) / 0.3200000226f)) / 4.5f) / 1.799999952f));
+            gCurrentActivePlayerPointer->globalTimer = (gCurrentActivePlayerPointer->globalTimer + (((2.0f + (((gCurrentActivePlayerPointer->forwardVel / ((65.0f * gCurrentActivePlayerPointer->forwardImpulse) / 10.0f)) * gCurrentActivePlayerPointer->forwardImpulse) / 0.32000002f)) / 4.5f) / 1.8f));
             return;
         }
         gCurrentActivePlayerPointer->groundMovement = 2;
-        gCurrentActivePlayerPointer->globalTimer = gCurrentActivePlayerPointer->globalTimer + 1.5f * gCurrentActivePlayerPointer->forwardImpulse / 0.3200000226f;
+        gCurrentActivePlayerPointer->globalTimer = gCurrentActivePlayerPointer->globalTimer + 1.5f * gCurrentActivePlayerPointer->forwardImpulse / 0.32000002f;
     }
 }
 
@@ -1019,7 +1019,7 @@ s32 func_8002F6DC(f32* arg0, f32 arg1) {
     }
 
     if (var_f0 < 45.0f) {
-        var_f2 = (var_f0 / 1.607142806f) + 2.0f;
+        var_f2 = (var_f0 / 1.6071428f) + 2.0f;
     }
 
     if (var_f2 <= var_f0) {
@@ -1046,9 +1046,9 @@ void SetPlayerImpulse(void) {
     amountInMouth = gTongueOnePointer->amountInMouth;
     if (amountInMouth < 6) {
         // set impulse between 0.93 and 1.0
-        gCurrentActivePlayerPointer->forwardImpulse = (((24.0f - amountInMouth) * 0.3200000226f) / 24.0f);
+        gCurrentActivePlayerPointer->forwardImpulse = (((24.0f - amountInMouth) * 0.32000002f) / 24.0f);
     } else {
-        gCurrentActivePlayerPointer->forwardImpulse = 0.2400000095f;
+        gCurrentActivePlayerPointer->forwardImpulse = 0.24000001f;
     }
     if (gCurrentActivePlayerPointer->power == POWERUP_MINI) {
         gCurrentActivePlayerPointer->forwardImpulse = (gCurrentActivePlayerPointer->forwardImpulse * 0.5f);
@@ -1225,7 +1225,7 @@ void func_800312B0(s32 id) {
 void QueenAnt_HitRecoil(Actor* quintella, f32 angle) {
     quintella->userVariables[0] = 0;
     quintella->userVariables[1] = 14;
-    quintella->unk_134[3] = 76.80000305f;
+    quintella->unk_134[3] = 76.8f;
     quintella->vel.x = cosf(DEGREES_TO_RADIANS_2PI(angle)) * 16.0f;
     quintella->vel.z = -sinf(DEGREES_TO_RADIANS_2PI(angle)) * 16.0f;
     quintella->tongueCollision = 0;
@@ -1277,7 +1277,7 @@ void TriggerRoomClearReaction(Actor* trigger) {
                 otherID = other->actorID;
             }
             if ((otherID == RNG_ROOM_SPAWNER) || ((otherID == FIRE) && (other->actorState == 0))) {
-                TriggerRoomClearReaction((Actor*) ((u8*) gActors + actorOffset));
+                TriggerRoomClearReaction((Actor*) ((u8*) gActors + actorOffset)); //byte-offset form required for match
             }
         }
     } else if (golemID == triggerID) {
@@ -1622,7 +1622,7 @@ void func_80036D74(PlayerActor* arg0, Tongue* arg1) {
             if (--arg0->hp <= 0) {
                 D_80174980 = 4;
                 D_80174860->unk50 = 0.0f;
-                D_80174860->size2 = 0.4551661909f;
+                D_80174860->size2 = 0.4551662f;
             }
         }
         arg0->playerHurtState = PLAYER_HURT_HIT;
@@ -1761,8 +1761,8 @@ void ActorInit_AntBulletHell(Actor* bulletHellAnt) {
 
 s32 ActorTick_BulletHellAnt(Actor* bulletHellAnt) {
     if (bulletHellAnt->unk_98 != 0) {
-        bulletHellAnt->vel.y -= 3.200000048f;
-        bulletHellAnt->vel.y -= bulletHellAnt->vel.y * 0.05000000075f;
+        bulletHellAnt->vel.y -= 3.2f;
+        bulletHellAnt->vel.y -= bulletHellAnt->vel.y * 0.05f;
     }
     if (gTimer % 8 == 0) {
         PLAY_SFX_AT(SFX_63_unkSnd+3, bulletHellAnt->pos, 1, 0);
@@ -3309,7 +3309,7 @@ void func_80044EA4(Actor* arg0, f32 arg1) {
 void ActorInit_GhostBossArmSegment(Actor* armSeg) {
     if ((armSeg->unk_124 >= 2)) {
         if ((armSeg->unk_124 < gActors[armSeg->unk_128].unk_128 + 2)) {
-            f32 scalar = 1.200000048f;
+            f32 scalar = 1.2f;
             armSeg->tScale *= scalar;
             armSeg->unknownPositionThings[0].unk_0C *= scalar;
         }
@@ -3763,13 +3763,13 @@ void ActorInit_LizardKongBoulder(Actor* lk_boulder) {
 
 void ActorTick_LizardKongBoulder(Actor* lk_boulder) {
     lk_boulder->unk_134[3] += lk_boulder->unk_94;
-    lk_boulder->vel.y -= 3.200000048f;
+    lk_boulder->vel.y -= 3.2f;
 
     if (lk_boulder->unk_98 == 0) {
         lk_boulder->unk_98 = 1;
         lk_boulder->pos.y = lk_boulder->unknownPositionThings[0].unk_10 / 2;
         lk_boulder->vel.y = lk_boulder->position._f32.y * -lk_boulder->vel.y;
-        lk_boulder->unk_94 *= 0.8999999762f;
+        lk_boulder->unk_94 *= 0.9f;
         PLAY_SFX_AT(SFX_RockTumble, lk_boulder->pos, 0, 0);
     }
 
@@ -3942,13 +3942,13 @@ void ActorTick_BattleModeSandCrab(Actor* battleModeSandCrab) {
             battleModeSandCrab->userVariables[1] = 1;
             return;
         }
-        battleModeSandCrab->vel.y -= 3.200000048f;
+        battleModeSandCrab->vel.y -= 3.2f;
         battleModeSandCrab->pos.y += battleModeSandCrab->vel.y;
         return;
     }
     if (battleModeSandCrab->unk_98 != 0) {
-        battleModeSandCrab->vel.y -= 3.200000048f;
-        battleModeSandCrab->vel.y -= battleModeSandCrab->vel.y * 0.05000000075f;
+        battleModeSandCrab->vel.y -= 3.2f;
+        battleModeSandCrab->vel.y -= battleModeSandCrab->vel.y * 0.05f;
     }
 }
 
@@ -4101,8 +4101,8 @@ void ActorInit_Unk5A(Actor* unk_5A) {
 
 void ActorTick_Unk5A(Actor* unk_5A) {
     if (unk_5A->unk_98 != 0) {
-        unk_5A->vel.y -= 3.200000048f;
-        unk_5A->vel.y -= unk_5A->vel.y * 0.05000000075f;
+        unk_5A->vel.y -= 3.2f;
+        unk_5A->vel.y -= unk_5A->vel.y * 0.05f;
         return;
     }
     func_800313BC(unk_5A->actorIndex, Random(0, 360));
@@ -4196,7 +4196,7 @@ void ActorTick_PickupHeartFalling(Actor* fallingHeart) {
     f32 temp_f2;
 
     if (fallingHeart->userVariables[0] == 0) {
-        fallingHeart->vel.y -= (3.200000048f + (fallingHeart->vel.y * 0.05000000075f));
+        fallingHeart->vel.y -= (3.2f + (fallingHeart->vel.y * 0.05f));
         temp_f2 = fallingHeart->pos.y + fallingHeart->vel.y;
         if (temp_f2 < 0.0f) {
             fallingHeart->pos.y = 0.0f;
@@ -4214,7 +4214,7 @@ void ActorTick_Powerup(Actor* powerup) {
             TriggerRoomClearReaction(powerup);
         }
     } else {
-        powerup->vel.y -= (3.200000048f + (powerup->vel.y * 0.05000000075f));
+        powerup->vel.y -= (3.2f + (powerup->vel.y * 0.05f));
         if (powerup->pos.y + powerup->vel.y < powerup->position._f32.x) {
             powerup->pos.y = powerup->position._f32.x;
             powerup->userVariables[0] = 1;

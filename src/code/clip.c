@@ -280,7 +280,7 @@ s32 IsRectInViewArea(Rect3D *rect, f32 radius) {
                                 if ((sViewAngleMax < angle_xz) && (angle_xz < sViewAngleMin)) {
                                     continue;
                                 } else {
-                                    goto label;
+                                    goto label; //shared tail required for match
                                 }
                             }
                             if ((sViewAngleMin > angle_xz) || (sViewAngleMax < angle_xz)) {
