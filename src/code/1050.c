@@ -413,7 +413,7 @@ void func_80026CA8(GraphicStruct *arg0, Mtx *arg1, u32 arg2, f32 arg3, s32 arg4)
     f32 yPos = 0.0f;
     f32 zPos = 0.0f;
 
-    func_800849DC(0, gTongues, gPlayerActors, gCamera);
+    func_800849DC(0, gTongues, gPlayerActors, gCameras);
     guMtxXFML(&arg0->actorRotate[arg2], xPos, yPos, zPos, &xPos, &yPos, &zPos);         // 4x4 fp matrix
     guMtxXFML(&arg0->actorScale[arg2], xPos, yPos, zPos, &xPos, &yPos, &zPos);
     guMtxCatL(arg1, &arg0->actorRotate[arg2], arg1);
@@ -426,7 +426,7 @@ void func_80026E30(GraphicStruct *arg0, Mtx *arg1, u32 arg2, f32 arg3, s32 arg4)
     f32 yPos = 0.0f;
     f32 zPos = 0.0f;
 
-    func_800849DC(0, gTongues, gPlayerActors, gCamera);
+    func_800849DC(0, gTongues, gPlayerActors, gCameras);
     guMtxXFML(&arg0->actorRotate[arg2], xPos, yPos, zPos, &xPos, &yPos, &zPos);
     guMtxXFML(&arg0->actorScale[arg2], xPos, yPos, zPos, &xPos, &yPos, &zPos);
     guMtxCatL(arg1, &arg0->actorRotate[arg2], arg1);
@@ -438,7 +438,7 @@ void func_80026FB8(GraphicStruct *arg0, Mtx *arg1, u32 arg2, f32 arg3, f32 arg4,
     f32 xPos, yPos, zPos;
     zPos = yPos = xPos = 0.0f;
 
-    func_800849DC(0, gTongues, gPlayerActors, gCamera);
+    func_800849DC(0, gTongues, gPlayerActors, gCameras);
     guMtxXFML(arg1, xPos, yPos, zPos, &xPos, &yPos, &zPos);
     guMtxXFML(&arg0->actorRotate[arg2], xPos, yPos, zPos, &xPos, &yPos, &zPos);
     guMtxXFML(&arg0->actorScale[arg2], xPos, yPos, zPos, &xPos, &yPos, &zPos);
@@ -1057,7 +1057,7 @@ Gfx* Actors_DrawAll(GraphicStruct* arg0, Gfx* gfxPos) {
 Gfx* func_8002C280(GraphicStruct* arg0, Gfx* gfxPos) {
     s32 i;
 
-    gfxPos = func_8007B524(arg0, gfxPos, gCamera);
+    gfxPos = func_8007B524(arg0, gfxPos, gCameras);
     gMatrixBufPtr = arg0->mtxBuffer;
     gfxPos = func_8005F408(gfxPos);
 
@@ -1074,11 +1074,11 @@ Gfx* func_8002C280(GraphicStruct* arg0, Gfx* gfxPos) {
         if (!gPlayerActors[i].exists) {
             continue;
         }
-        func_800849DC(i, &gTongues[i], &gPlayerActors[i], gCamera);
+        func_800849DC(i, &gTongues[i], &gPlayerActors[i], gCameras);
         gfxPos = func_800849D4(gfxPos);
     }
 
-    func_800849DC(0, gTongues, gPlayerActors, gCamera);
+    func_800849DC(0, gTongues, gPlayerActors, gCameras);
     gfxPos = func_80084884(gfxPos);
     gfxPos = func_8007ABDC(gfxPos);
 
@@ -1174,10 +1174,10 @@ Gfx* func_8002C900(GraphicStruct* arg0, s32 arg1) {
     func_80027694(arg0);
     func_80084A04();
     func_8005CA38();
-    gfxPos = func_8007A2D8(gfxPos, gCamera);
+    gfxPos = func_8007A2D8(gfxPos, gCameras);
     func_8008C1C8(&gfxPos);
     gfxPos = func_8005CA44(gfxPos);
-    func_8007AC60(gCamera, gPlayerActors);
+    func_8007AC60(gCameras, gPlayerActors);
     func_8008C35C(&gfxPos);
     gDPFullSync(gfxPos++);
     gSPEndDisplayList(gfxPos++);

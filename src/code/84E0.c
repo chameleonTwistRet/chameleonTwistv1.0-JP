@@ -22,12 +22,12 @@ s32 D_80174984;
 s32 D_80174988; //makes you invincible? debug? also has a case for white
 s32 D_8017498C;
 s32 D_80174990;
-f32 D_80174994; //death plane y?
+f32 gCameraMinY; //death plane y?
 s32 D_80174998; //fade?
 s32 gTimer;
 s32 D_801749A0; //actor & object timer (for keeping track of deltas) (the stop watch pauses this !)
 s32 D_801749A4;
-s32 D_801749A8;
+s32 gCameraInputDisabled;
 s32 Battle_GameType;
 s32 D_801749B0;
 s32 gIsMultiplayerPaused;
@@ -764,59 +764,71 @@ s32 Actor_SpawnAt(s32 actorID, f32 posX, f32 posY, f32 posZ) {
 //init script
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8002E0CC.s")
 
-void func_8002E5DC(UnkTempStruct arg0) {
-    s32 sp2C;
+/**
+ * @brief Handles camera zoom, pan, and free cam input.
+ *
+ * Smoothly moves the camera size towards its target, then reads the pressed
+ * buttons: L toggles the free cam (forced off in the glass wall and billiards
+ * rooms), C-Up and C-Down step the zoom level between the minimum and 2, and
+ * C-Left and C-Right push the camera sideways. Does nothing while camera
+ * control is disabled by `gCameraInputDisabled`. The minimum zoom level is -1 in the
+ * overworld and -2 elsewhere.
+ *
+ * @param input The controller input holding the pressed buttons in `unk_02`.
+ */
+void HandleCameraInput(ContInput input) {
+    s32 minZoomLevel;
 
-    sp2C = -2;
+    minZoomLevel = -2;
     if (TRUE == isInOverworld) {
-        sp2C = -1;
+        minZoomLevel = -1;
     }
 
-    D_80174860->size1 = D_80174860->size1 + ((D_80174860->size2 - D_80174860->size1) * 0.2f);
-    if (D_801749A8 == 0) {
-        //if room is cycle 4 in kids land, or billiards in ghost castle, force free cam
+    gCurrentCamera->size1 = gCurrentCamera->size1 + ((gCurrentCamera->size2 - gCurrentCamera->size1) * 0.2f);
+    if (gCameraInputDisabled == 0) {
+        // force free cam
         if (((gCurrentStage == STAGE_KIDS) && (gCurrentZone == ZONE_GLASS_WALL_2)) || ((gCurrentStage == STAGE_GHOST) && (gCurrentZone == ZONE_BILLIARDS))) {
-            if (D_80174860->unk0 == 1) {
+            if (gCurrentCamera->unk0 == 1) {
                 PLAY_SFX(SFX_2C_unkSnd, 0, 0x10);
-                D_80174860->unk0 = 0;
-                if (D_80174860->unk40 == 2) {
+                gCurrentCamera->unk0 = 0;
+                if (gCurrentCamera->unk40 == 2) {
                     PLAY_SFX(SFX_2C_unkSnd+1, 0, 0x10);
-                    D_80174860->size2 /= 1.3f;
-                    D_80174860->unk40 -= 1;
+                    gCurrentCamera->size2 /= 1.3f;
+                    gCurrentCamera->unk40 -= 1;
                 }
                 func_800D34CC();
             }
-        } else if ((Battle_GameType == BATTLE_TYPE_NOTBATTLE) && (TRUE != isInOverworld) && (arg0.unk_02 & 0x20)) {
+        } else if ((Battle_GameType == BATTLE_TYPE_NOTBATTLE) && (TRUE != isInOverworld) && (input.buttons1 & L_TRIG)) {
             PLAY_SFX(SFX_2C_unkSnd, 0, 0x10);
-            if (D_80174860->unk0 == 0) {
-                D_80174860->unk0 = 1;
+            if (gCurrentCamera->unk0 == 0) {
+                gCurrentCamera->unk0 = 1;
             } else {
-                D_80174860->unk0 = 0;
-                if (D_80174860->unk40 == 2) {
+                gCurrentCamera->unk0 = 0;
+                if (gCurrentCamera->unk40 == 2) {
                     PLAY_SFX(SFX_2C_unkSnd+1, 0, 0x10);
-                    D_80174860->size2 /= 1.3f;
-                    D_80174860->unk40 -= 1;
+                    gCurrentCamera->size2 /= 1.3f;
+                    gCurrentCamera->unk40 -= 1;
                 }
             }
             func_800D34CC();
         }
-        if ((arg0.unk_02 & 4) && (((D_80174860->unk0 == 1) && (D_80174860->unk40 < 2)) || (D_80174860->unk40 <= 0))) {
+        if ((input.buttons1 & D_CBUTTONS) && (((gCurrentCamera->unk0 == 1) && (gCurrentCamera->unk40 < 2)) || (gCurrentCamera->unk40 <= 0))) {
             PLAY_SFX(SFX_2C_unkSnd+1, 0, 0x10);
-            D_80174860->size2 *= 1.3f;
-            D_80174860->unk40 += 1;
+            gCurrentCamera->size2 *= 1.3f;
+            gCurrentCamera->unk40 += 1;
         }
-        if ((arg0.unk_02 & 8) && (sp2C < D_80174860->unk40)) {
+        if ((input.buttons1 & U_CBUTTONS) && (minZoomLevel < gCurrentCamera->unk40)) {
             PLAY_SFX(SFX_2C_unkSnd+1, 0, 0x10);
-            D_80174860->size2 /= 1.3f;
-            D_80174860->unk40 -= 1;
+            gCurrentCamera->size2 /= 1.3f;
+            gCurrentCamera->unk40 -= 1;
         }
-        if ((arg0.unk_02 & 1) && (D_80174860->pushHoriz < 9)) {
+        if ((input.buttons1 & R_CBUTTONS) && (gCurrentCamera->pushHoriz < 9)) {
             PLAY_SFX(SFX_2C_unkSnd+1, 0, 0x10);
-            D_80174860->pushHoriz += 9;
+            gCurrentCamera->pushHoriz += 9;
         }
-        if ((arg0.unk_02 & 2) && (D_80174860->pushHoriz >= -8)) {
+        if ((input.buttons1 & L_CBUTTONS) && (gCurrentCamera->pushHoriz >= -8)) {
             PLAY_SFX(SFX_2C_unkSnd+1, 0, 0x10);
-            D_80174860->pushHoriz -= 9;
+            gCurrentCamera->pushHoriz -= 9;
         }
     }
 }
@@ -825,117 +837,131 @@ void func_8002E5DC(UnkTempStruct arg0) {
 //https://decomp.me/scratch/tpjwG
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8002E9F4.s")
 
-void func_8002ECCC(s32 arg0) {
-    f32 sp4C;
-    f32 sp48;
-    f32 sp44;
-    f32 sp40;
-    f32 sp3C;
-    f32 var_f18;
-    s32 sp34;
-    f32 var_f2;
-    f32 temp;
+/**
+ * @brief Updates the third person camera for the current frame.
+ *
+ * Consumes pending sideways pushes from `HandleCameraInput` at 5 degrees per
+ * frame. When a scripted camera override is active (`unk58`) the eye target
+ * comes from the override fields. Otherwise, if the camera was moved this
+ * frame the idle timer resets and the eye is placed behind the camera yaw,
+ * zoomed out further while the tongue is extended; if it was not moved, the
+ * camera starts easing around behind the player after 20 idle frames. The
+ * focus height follows the player smoothly and the eye height is clamped to
+ * stay above the player and above `gCameraMinY`.
+ *
+ * @param moved Nonzero when the camera was rotated by input this frame.
+ */
+void UpdateCamera(s32 moved) {
+    f32 camDist;
+    f32 camHeight;
+    f32 facingAngle;
+    f32 sp40; //unused, but required for match
+    f32 targetYaw;
+    f32 foldedAngle;
+    s32 idleFrames;
+    f32 yawDiff;
+    f32 delta;
 
-    sp4C = D_80174860->size1 * 800.0f;
-    sp48 = D_80174860->size1 * 600.0f;
-    if (D_80174860->pushHoriz > 0) {
-        D_80174860->pushHoriz = D_80174860->pushHoriz - 1;
-        D_80174860->f1.x += 5.0f;
-        WrapDegrees(&D_80174860->f1.x);
-        arg0 = 1;
-    } else if (D_80174860->pushHoriz < 0) {
-        D_80174860->pushHoriz = D_80174860->pushHoriz + 1;
-        D_80174860->f1.x -= 5.0f;
-        WrapDegrees(&D_80174860->f1.x);
-        arg0 = 1;
+    camDist = gCurrentCamera->size1 * 800.0f;
+    camHeight = gCurrentCamera->size1 * 600.0f;
+    if (gCurrentCamera->pushHoriz > 0) {
+        gCurrentCamera->pushHoriz = gCurrentCamera->pushHoriz - 1;
+        gCurrentCamera->f1.x += 5.0f;
+        WrapDegrees(&gCurrentCamera->f1.x);
+        moved = 1;
+    } else if (gCurrentCamera->pushHoriz < 0) {
+        gCurrentCamera->pushHoriz = gCurrentCamera->pushHoriz + 1;
+        gCurrentCamera->f1.x -= 5.0f;
+        WrapDegrees(&gCurrentCamera->f1.x);
+        moved = 1;
     }
-    if (D_80174860->unk58 != 0) {
-        D_80174860->f3.x = D_80174860->unk5C;
-        D_80174860->f3.y = D_80174860->unk60;
-        D_80174860->f3.z = D_80174860->unk64;
+    if (gCurrentCamera->unk58 != 0) {
+        gCurrentCamera->f3.x = gCurrentCamera->unk5C;
+        gCurrentCamera->f3.y = gCurrentCamera->unk60;
+        gCurrentCamera->f3.z = gCurrentCamera->unk64;
         func_8002E9F4();
     } else {
-        if (arg0 != 0) {
-            D_80174860->untouchedFramesElapsed = 0;
+        if (moved != 0) {
+            gCurrentCamera->untouchedFramesElapsed = 0;
             if (gTongueOnePointer->tongueMode != 0) {
-                sp44 = 180.0f - D_80174860->f1.x;
-                WrapDegrees(&sp44);
-                gTongueOnePointer->trueAngle = sp44 - gTongueOnePointer->controlAngle;
+                facingAngle = 180.0f - gCurrentCamera->f1.x;
+                WrapDegrees(&facingAngle);
+                gTongueOnePointer->trueAngle = facingAngle - gTongueOnePointer->controlAngle;
                 WrapDegrees(&gTongueOnePointer->trueAngle);
                 if (gTongueOnePointer->trueAngle > 180.0f) {
                     gTongueOnePointer->trueAngle = 360.0f - gTongueOnePointer->trueAngle;
                 }
                 func_8002E9F4();
                 if (gTongueOnePointer->trueAngle > 90.0f) {
-                    temp = -(90.0f - gTongueOnePointer->trueAngle);
+                    delta = -(90.0f - gTongueOnePointer->trueAngle);
 
                 } else {
-                    temp = (90.0f - gTongueOnePointer->trueAngle);
+                    delta = (90.0f - gTongueOnePointer->trueAngle);
                 }
-                var_f18 = 90.0f - temp;
-                sp4C = (sp4C * 1.0f) * (1.0f + ((gTongueOnePointer->length * (1.0f + ((var_f18 * var_f18) / 3000.0f))) / 10000.0f));
-                sp48 *= 1.0f + ((gTongueOnePointer->length * (1.0f + ( SQ(var_f18) / 8000.0f))) / 10000.0f);
-                D_80174860->f3.x = (cosf((((D_80174860->f1.x * 2) * PI) / 360.0)) * sp4C) + D_80174860->f1.z;
-                D_80174860->f3.z = D_80174860->f2.y - (sinf((((D_80174860->f1.x * 2) * PI) / 360.0)) * sp4C);
+                foldedAngle = 90.0f - delta;
+                camDist = (camDist * 1.0f) * (1.0f + ((gTongueOnePointer->length * (1.0f + ((foldedAngle * foldedAngle) / 3000.0f))) / 10000.0f));
+                camHeight *= 1.0f + ((gTongueOnePointer->length * (1.0f + ( SQ(foldedAngle) / 8000.0f))) / 10000.0f);
+                gCurrentCamera->f3.x = (cosf((((gCurrentCamera->f1.x * 2) * PI) / 360.0)) * camDist) + gCurrentCamera->f1.z;
+                gCurrentCamera->f3.z = gCurrentCamera->f2.y - (sinf((((gCurrentCamera->f1.x * 2) * PI) / 360.0)) * camDist);
             } else {
                 func_8002E9F4();
-                D_80174860->f3.x = (cosf((((D_80174860->f1.x * 2) * PI) / 360.0)) * sp4C) + D_80174860->f1.z;
-                D_80174860->f3.z = D_80174860->f2.y - (sinf((((D_80174860->f1.x * 2) * PI) / 360.0)) * sp4C);
+                gCurrentCamera->f3.x = (cosf((((gCurrentCamera->f1.x * 2) * PI) / 360.0)) * camDist) + gCurrentCamera->f1.z;
+                gCurrentCamera->f3.z = gCurrentCamera->f2.y - (sinf((((gCurrentCamera->f1.x * 2) * PI) / 360.0)) * camDist);
             }
         } else {
-            sp3C = gCurrentActivePlayerPointer->yAngle + D_80174860->unk50;
-            D_80174860->untouchedFramesElapsed++;
-            sp34 = D_80174860->untouchedFramesElapsed;
-            WrapDegrees(&sp3C);
-            if (D_80174860->f1.x < 180.0f) {
-                if ((D_80174860->f1.x + 180.0f) < sp3C) {
-                    var_f2 = (-360.0f - D_80174860->f1.x) + sp3C;
+            targetYaw = gCurrentActivePlayerPointer->yAngle + gCurrentCamera->unk50;
+            gCurrentCamera->untouchedFramesElapsed++;
+            idleFrames = gCurrentCamera->untouchedFramesElapsed;
+            WrapDegrees(&targetYaw);
+            if (gCurrentCamera->f1.x < 180.0f) {
+                if ((gCurrentCamera->f1.x + 180.0f) < targetYaw) {
+                    yawDiff = (-360.0f - gCurrentCamera->f1.x) + targetYaw;
                 } else {
-                    var_f2 = sp3C - D_80174860->f1.x;
+                    yawDiff = targetYaw - gCurrentCamera->f1.x;
                 }
-            } else if (sp3C < (D_80174860->f1.x - 180.0f)) {
-                var_f2 = (360.0f - D_80174860->f1.x) + sp3C;
+            } else if (targetYaw < (gCurrentCamera->f1.x - 180.0f)) {
+                yawDiff = (360.0f - gCurrentCamera->f1.x) + targetYaw;
             } else {
-                var_f2 = sp3C - D_80174860->f1.x;
+                yawDiff = targetYaw - gCurrentCamera->f1.x;
             }
-            if (sp34 >= 61) {
-                sp34 = 0x3C;
+            if (idleFrames >= 61) {
+                idleFrames = 60;
             }
-            if (sp34 >= 20) {
-                D_80174860->f1.x = D_80174860->f1.x + (((var_f2 * (sp34 - 0x13)) / 41.0f) * 0.03f);
+            if (idleFrames >= 20) {
+                gCurrentCamera->f1.x = gCurrentCamera->f1.x + (((yawDiff * (idleFrames - 0x13)) / 41.0f) * 0.03f);
             }
-            WrapDegrees(&D_80174860->f1.x);
+            WrapDegrees(&gCurrentCamera->f1.x);
             func_8002E9F4();
-            D_80174860->f3.x = (cosf( (((D_80174860->f1.x * 2) * PI) / 360.0)) * sp4C) + D_80174860->f1.z;
-            D_80174860->f3.z = D_80174860->f2.y - (sinf((((D_80174860->f1.x * 2) * PI) / 360.0)) * sp4C);
+            gCurrentCamera->f3.x = (cosf( (((gCurrentCamera->f1.x * 2) * PI) / 360.0)) * camDist) + gCurrentCamera->f1.z;
+            gCurrentCamera->f3.z = gCurrentCamera->f2.y - (sinf((((gCurrentCamera->f1.x * 2) * PI) / 360.0)) * camDist);
         }
         if ((gTongueOnePointer->tongueMode == 4) || (gTongueOnePointer->tongueMode == 5) || (gTongueOnePointer->tongueMode == 0xB)) {
-            D_80174860->f2.z = (D_80174860->f2.z + ((gCurrentActivePlayerPointer->pos2.y - D_80174860->f2.z) * 0.05));
+            gCurrentCamera->f2.z = (gCurrentCamera->f2.z + ((gCurrentActivePlayerPointer->pos2.y - gCurrentCamera->f2.z) * 0.05));
         } else {
-            D_80174860->f2.z = (D_80174860->f2.z + ((gCurrentActivePlayerPointer->yCounter - D_80174860->f2.z) * 0.05));
+            gCurrentCamera->f2.z = (gCurrentCamera->f2.z + ((gCurrentActivePlayerPointer->yCounter - gCurrentCamera->f2.z) * 0.05));
         }
 
-        if (D_80174860->f2.z + sp48 < gCurrentActivePlayerPointer->pos2.y) {
-            D_80174860->f3.y = gCurrentActivePlayerPointer->pos2.y;
+        if (gCurrentCamera->f2.z + camHeight < gCurrentActivePlayerPointer->pos2.y) {
+            gCurrentCamera->f3.y = gCurrentActivePlayerPointer->pos2.y;
         } else {
-            D_80174860->f3.y = D_80174860->f2.z + sp48;
+            gCurrentCamera->f3.y = gCurrentCamera->f2.z + camHeight;
         }
-        if (D_80174860->f3.y < D_80174994) {
-            D_80174860->f3.y = D_80174994;
+        if (gCurrentCamera->f3.y < gCameraMinY) {
+            gCurrentCamera->f3.y = gCameraMinY;
         }
     }
 
     SetCameraParameters();
     if (D_800FEA30 >= 2) {
-        D_80174860->eye.x = D_80174860->f3.x;
-        D_80174860->eye.y = D_80174860->f3.y;
-        D_80174860->eye.z = D_80174860->f3.z;
-        D_80174860->lookAt.x = D_80174860->f1.z;
-        D_80174860->lookAt.y = D_80174860->f2.x;
-        D_80174860->lookAt.z = D_80174860->f2.y;
+        gCurrentCamera->eye.x = gCurrentCamera->f3.x;
+        gCurrentCamera->eye.y = gCurrentCamera->f3.y;
+        gCurrentCamera->eye.z = gCurrentCamera->f3.z;
+        gCurrentCamera->lookAt.x = gCurrentCamera->f1.z;
+        gCurrentCamera->lookAt.y = gCurrentCamera->f2.x;
+        gCurrentCamera->lookAt.z = gCurrentCamera->f2.y;
     }
 
-    D_80174860->f1.y = ArcTan2Deg(D_80174860->eye.x - D_80174860->lookAt.x, -(D_80174860->eye.z - D_80174860->lookAt.z));
+    gCurrentCamera->f1.y = ArcTan2Deg(gCurrentCamera->eye.x - gCurrentCamera->lookAt.x, -(gCurrentCamera->eye.z - gCurrentCamera->lookAt.z));
 }
 
 //related to animation
@@ -1621,8 +1647,8 @@ void func_80036D74(PlayerActor* arg0, Tongue* arg1) {
             gNoHit = 0;
             if (--arg0->hp <= 0) {
                 D_80174980 = 4;
-                D_80174860->unk50 = 0.0f;
-                D_80174860->size2 = 0.4551662f;
+                gCurrentCamera->unk50 = 0.0f;
+                gCurrentCamera->size2 = 0.4551662f;
             }
         }
         arg0->playerHurtState = PLAYER_HURT_HIT;
@@ -4261,9 +4287,9 @@ void func_8004BAC0(void) {
         PlaySoundEffect(0xDF, NULL, NULL, NULL, 0, 0x10);
     }
     if ((D_80174980 == 0) || (D_80174980 == 2) || (D_80174980 == 3)) {
-        D_801749A8 = 1;
+        gCameraInputDisabled = 1;
     } else {
-        D_801749A8 = 0;
+        gCameraInputDisabled = 0;
     }
     if ((D_80174878 == 2) && (gCurrentZone == 0xF)) {
         D_801749B0 = 1;
@@ -4302,7 +4328,7 @@ void func_8004BC48(ContMain* arg0) {
     }
     arg0->stickX = cosf(DEGREES_TO_RADIANS_2PI(angle)) * 10.0f;
     arg0->stickY = -sinf(DEGREES_TO_RADIANS_2PI(angle)) * 10.0f;
-    arg0->buttons0 |= 0x4000;
+    arg0->buttons0 |= B_BUTTON;
 }
 #else
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8004BC48.s")

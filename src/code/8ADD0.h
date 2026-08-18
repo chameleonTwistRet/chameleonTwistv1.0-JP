@@ -263,7 +263,7 @@ extern Vec3f D_802032B0[];
 extern s32 D_80202530[32];
 extern s32 D_80206CF8[];
 extern s32 D_80206D78[];
-extern f32 D_80174994;
+extern f32 gCameraMinY;
 extern Vec3f D_8020A298;
 extern Vec3f D_8020D2A8;
 extern Vec3f D_8020D5B8;

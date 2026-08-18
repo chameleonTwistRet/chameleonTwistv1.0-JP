@@ -72,7 +72,7 @@ typedef struct unkarg0_2 {
 void Debug_MovePlayer(void) {
     s32 i;
 
-    if (gContMain->buttons0 & 0x20) {
+    if (gContMain->buttons0 & L_TRIG) {
         for (i = 0; i < PLAYERS_MAX; i++) {
             gPlayerActors[i].pos.y = sDebugPlayerHeights[i];
         }

@@ -302,7 +302,7 @@ s16 gSFXMute = -1;
 s16 D_800FF604 = 0;
 s16 D_800FF608 = 0;
 u8 gGfxTaskYielded = 0;
-Camera* gCameraP = gCamera;
+Camera* gCameraP = gCameras;
 
 extern ALCSPlayer gBGMPlayer;
 extern ALCSeq gBGMSeq;
@@ -3911,17 +3911,17 @@ void func_8008F16C(void) {
         func_8005CA38();
         if (D_800FFDF0 == 3) {
             func_8002E0CC();
-            gCamera->eye.x = 0.0f;
-            gCamera->eye.y = 0.0f;
-            gCamera->eye.z = 0.0f;
-            gCamera->lookAt.x = 1000.0f;
-            gCamera->lookAt.y = 1000.0f;
-            gCamera->lookAt.z = 1000.0f;
+            gCameras->eye.x = 0.0f;
+            gCameras->eye.y = 0.0f;
+            gCameras->eye.z = 0.0f;
+            gCameras->lookAt.x = 1000.0f;
+            gCameras->lookAt.y = 1000.0f;
+            gCameras->lookAt.z = 1000.0f;
         }
-        func_80056F48(0, gTongues, gPlayerActors, gCamera);
+        func_80056F48(0, gTongues, gPlayerActors, gCameras);
         setPrimColor(D_800FF8DC, D_800FF8E0, D_800FF8E4, 255);
         printUISprite(0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 320.0f, 240.0f, 0.0f, SPRITE_BLANK);
-        gMainGfxPos = func_8008E314(gMainGfxPos, gTongues, gPlayerActors, gCamera, gFramebufferIndex);
+        gMainGfxPos = func_8008E314(gMainGfxPos, gTongues, gPlayerActors, gCameras, gFramebufferIndex);
         gMainGfxPos = func_8005F408(gMainGfxPos);
         gMainGfxPos = func_8005CA44(gMainGfxPos);
         gDPFullSync(gMainGfxPos++);
@@ -3930,14 +3930,14 @@ void func_8008F16C(void) {
     } else {
         Controller_StartRead();
         func_8005CA38();
-        func_80056F48(0, gTongues, gPlayerActors, gCamera);
+        func_80056F48(0, gTongues, gPlayerActors, gCameras);
         func_8008D114(&gGraphicsList[1 - gFramebufferIndex], 1 - gFramebufferIndex);
         gMainGfxPos = gGraphicsList[gFramebufferIndex].UnkGroup.dlist;
         gMainGfxPos = func_8008D168(gMainGfxPos, gFramebufferIndex, D_800FFDF0);
         func_8004E784(gContMain, 4, 0, 0);
         Controller_ParseJoystick(gContMain);
         func_8008D060();
-        gMainGfxPos = func_8008E314(gMainGfxPos, gTongues, gPlayerActors, gCamera, gFramebufferIndex);
+        gMainGfxPos = func_8008E314(gMainGfxPos, gTongues, gPlayerActors, gCameras, gFramebufferIndex);
         gMainGfxPos = func_8005F408(gMainGfxPos);
         if (gGameModeCurrent != GAME_MODE_SAVE_MENU) {
             gMainGfxPos = func_80084884(gMainGfxPos);
@@ -3950,7 +3950,7 @@ void func_8008F16C(void) {
         } else {
             gMainGfxPos = SetFrustum(gMainGfxPos, gFramebufferIndex);
             func_8008DB90(&gMainGfxPos, &gGraphicsList[gFramebufferIndex]);
-            gMainGfxPos = func_8008E488(gMainGfxPos, gTongues, gPlayerActors, gCamera, gFramebufferIndex);
+            gMainGfxPos = func_8008E488(gMainGfxPos, gTongues, gPlayerActors, gCameras, gFramebufferIndex);
             gMainGfxPos = func_8005CA44(gMainGfxPos);
         }
         func_8008C438();
@@ -8987,7 +8987,7 @@ void func_800AAB0C(s32 arg0) {
     LoadStageByIndex(arg0);
     DMAStruct_Print();
     _bzero(gPlayerActors, sizeof(gPlayerActors));
-    _bzero(gCamera, sizeof(Camera));
+    _bzero(gCameras, sizeof(Camera));
     D_80168DA0 = 1;
     gPlayerActors[0].active = 1;
     gPlayerActors[1].active = 0;

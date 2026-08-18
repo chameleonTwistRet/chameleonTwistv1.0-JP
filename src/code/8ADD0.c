@@ -3081,9 +3081,9 @@ void ComputeRoomBounds(s32 roomId, Field* room) {
 
 void func_800C1B70(void) {
     if (gZoneFields[gCurrentZone].unkCC != -1.0) {
-        D_80174994 = gZoneFields[gCurrentZone].unkCC;
+        gCameraMinY = gZoneFields[gCurrentZone].unkCC;
     } else {
-        D_80174994 = gZoneFields[gCurrentZone].roomBounds.min.y - 500.0;
+        gCameraMinY = gZoneFields[gCurrentZone].roomBounds.min.y - 500.0;
     }
 }
 

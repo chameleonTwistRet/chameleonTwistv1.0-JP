@@ -731,18 +731,18 @@ void SetCameraParameters(void) {
     Vec3f sp30;
 
     if ((gCurrentStage == STAGE_GHOST) && (gCurrentZone == ZONE_BILLIARDS)) {
-        GetCurrentCameraShot(gPlayerActors, gTongues, gCamera, &sp3C, &sp30);
+        GetCurrentCameraShot(gPlayerActors, gTongues, gCameras, &sp3C, &sp30);
     } else if ((isInOverworld == TRUE) && (D_8020D8F4 == 0)) {
-        func_800D3854(gPlayerActors, gTongues, gCamera, &sp3C, &sp30, 0);
-    } else if (gCamera[0].unk0 == 1) {
-        func_800D69D0(temp->cameraMode, gPlayerActors, gTongues, gCamera, &sp3C, &sp30, 0);
+        func_800D3854(gPlayerActors, gTongues, gCameras, &sp3C, &sp30, 0);
+    } else if (gCameras[0].unk0 == 1) {
+        func_800D69D0(temp->cameraMode, gPlayerActors, gTongues, gCameras, &sp3C, &sp30, 0);
     } else {
-        func_800D5394(gPlayerActors, gTongues, gCamera, &sp3C, &sp30, 0);
+        func_800D5394(gPlayerActors, gTongues, gCameras, &sp3C, &sp30, 0);
     }
 
-    cam = gCamera;
+    cam = gCameras;
 
-    for (i = 0; i < ARRAY_COUNT(gCamera); i++, cam++) {
+    for (i = 0; i < ARRAY_COUNT(gCameras); i++, cam++) {
         cam->lookAt.x = sp3C.x;
         cam->lookAt.y = sp3C.y;
         cam->lookAt.z = sp3C.z;

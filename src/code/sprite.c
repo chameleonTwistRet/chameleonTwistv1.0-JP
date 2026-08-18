@@ -9646,7 +9646,7 @@ void func_80084788(void) {
     D_800FEA1C = 0.0f;
     D_80176B70 = gTongues;
     gPlayerActorPtr = gPlayerActors;
-    D_80176B78 = gCamera;
+    D_80176B78 = gCameras;
     if ((gGameModeCurrent == 0) && ((u32)D_80168DA0 == 1)) {
         Effect_HealthBar_Init(0x10, 0x10, &gPlayerActors[0].hp, &D_800FEDB8, gPlayerActors[0].hp, 0);
         func_800634D4(0xF0, 0x10, &currentStageCrowns, &D_800FEDB8, 2, 0);

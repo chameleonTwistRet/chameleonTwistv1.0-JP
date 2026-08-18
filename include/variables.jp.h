@@ -15,7 +15,7 @@ extern SpriteListing gSpriteListings[230];
 
 extern OSPfs gRumblePfs[MAXCONTROLLERS];
 
-extern Camera* D_80174860;
+extern Camera* gCurrentCamera;
 extern PlayerActor* gCurrentActivePlayerPointer;
 extern Tongue* gTongueOnePointer;
 extern ContMain gContMain[MAXCONTROLLERS];
@@ -294,7 +294,7 @@ extern ALCMidiHdr* D_801FD550;
 extern SaveFile gGameState; //data on current playthrough's progress.
 extern void* D_80200C8C;
 extern void* D_80200C94;
-extern Camera gCamera[4];
+extern Camera gCameras[4];
 extern Mtx D_80129730;
 extern Mtx AnimationSlots[40];
 extern GraphicStruct gGraphicsList[2];

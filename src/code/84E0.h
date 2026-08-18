@@ -4,13 +4,13 @@
 #include "common.h"
 
 /* Structs */
-typedef struct UnkTempStruct {
-    u16 unk_00;
-    u16 unk_02;
+typedef struct ContInput {
+    u16 buttons0;
+    u16 buttons1;
     s32 unk_04;
     s32 unk_08;
     s32 unk_0C;
-} UnkTempStruct;
+} ContInput;
 
 //TODO: find out what this does
 typedef struct Unk_func_80035374{
@@ -55,7 +55,7 @@ extern f32 D_8010B288;
 extern f32 D_8010B28C;
 extern f32 D_8010B290;
 extern f32 D_8010B294;
-extern s32 D_801749A8;
+extern s32 gCameraInputDisabled;
 
 extern f32 D_8010BC70;
 extern f32 D_8010BC74;
