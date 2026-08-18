@@ -620,7 +620,7 @@ s32 Actor_Init(s32 id, f32 posX, f32 posY, f32 posZ, f32 arg4, f32 arg5, f32 arg
     Actor* curActor = gActors;
 
     for (i = 0; i < ARRAY_COUNT(gActors); i++, curActor++) {
-        if (curActor->actorID == 0) {
+        if (curActor->actorID == ACTOR_NULL) {
             Actors_Init(i, id, posX, posY, posZ, arg4, arg5, arg6,
                 arg7, arg8, arg9, argA, argB, argC, argD, argE, argF,
                 arg10, arg11, arg12, arg13, arg14, arg15, arg16);
@@ -1078,10 +1078,10 @@ void func_800313BC(s32 arg0, f32 arg1) {
 }
 
 void func_800314E4(Actor* arg0) {
-    if (arg0->actorID == 1) {
+    if (arg0->actorID == RED_ANT) {
         D_80172E88[arg0->userVariables[0]].unk_00 = 0;
     }
-    arg0->actorID = 0;
+    arg0->actorID = ACTOR_NULL;
 }
 
 // Shared "room clear condition met" reaction: defeat all golems, mirror rooms, and minigames
@@ -1111,7 +1111,7 @@ void TriggerRoomClearReaction(Actor* trigger) {
             }
         }
     } else if (golemID == triggerID) {
-        trigger->actorID = 0;
+        trigger->actorID = ACTOR_NULL;
         for (other = gActors; other < &gActors[MAX_ACTORS]; other++) {
             if (golemID == other->actorID) {
                 return;
@@ -1187,7 +1187,7 @@ s32 func_80032074(s32 arg0) {
     if ((actor->actorState != 0) && (actor->actorState != 3)) {
         return 1;
     }
-    if ((actor->actorID == 0) || (actor->unk_A0.unk_00 == 3)) {
+    if ((actor->actorID == ACTOR_NULL) || (actor->unk_A0.unk_00 == 3)) {
         return 1;
     }
     return 0;
@@ -1328,7 +1328,7 @@ void pickup_collide_func(s32 actorIndex) {
         break;
     }
 
-    actor->actorID = 0;
+    actor->actorID = ACTOR_NULL;
 
     if (var_s0 == 0) {
         Effect_PlayerEyes_Init(gSelectedCharacters[gCurrentActivePlayerPointer->playerID], 2, 50.0f, 0);
@@ -1393,7 +1393,7 @@ void func_8003449C(void) {
         newActor->unk_C4 = (gCurrentActivePlayerPointer->amountToShoot * 2) + 0x5A;
         newActor->sizeScalar = newActor->unk_D0 / 8;
         func_800312B0(newActor->actorIndex);
-        if ((newActor->actorID == 1) || (newActor->actorID == 0x3C)) {
+        if ((newActor->actorID == RED_ANT) || (newActor->actorID == SANDAL)) {
             gCurrentActivePlayerPointer->amountLeftToShoot = 0xC;
         } else {
             gCurrentActivePlayerPointer->amountLeftToShoot = (u32) (s32) (newActor->unk_D0 * 8);
@@ -1542,7 +1542,7 @@ void ActorTick_GreyAntSpawner(Actor* greyAntSpawner) {
     if (((greyAntSpawner->userVariables[0] %  greyAntSpawner->unk_128) == 1) && (Actor_Init(GREY_ANT, greyAntSpawner->pos.x, greyAntSpawner->pos.y, greyAntSpawner->pos.z, 0.0f, -50000.0f, 50000.0f, -50000.0f, 50000.0f, -50000.0f, 50000.0f, greyAntSpawner->position._f32.x, greyAntSpawner->position._f32.y, greyAntSpawner->unk_15C, greyAntSpawner->unk_160, greyAntSpawner->unk_164, greyAntSpawner->unk_168, greyAntSpawner->unk_16C, greyAntSpawner->unk_170, greyAntSpawner->unk_124, greyAntSpawner->unk_128, greyAntSpawner->unk_12C, greyAntSpawner->unk_130) != -1)) {
         greyAntSpawner->userVariables[1] -= 1;
         if (greyAntSpawner->userVariables[1] == 0) {
-            greyAntSpawner->actorID = 0;
+            greyAntSpawner->actorID = ACTOR_NULL;
         }
     }
 }
@@ -1619,7 +1619,7 @@ void ActorTick_RedAntSpawner(Actor* redAntSpawner) {
         rangeSq = redAntSpawner->unk_160;
         if (((dx * dx) + (dz * dz)) < rangeSq) {
             if ((redAntSpawner->userVariables[1] != 0) &&
-                (Actor_Init(1, redAntSpawner->pos.x, redAntSpawner->pos.y - 100.0f, redAntSpawner->pos.z,
+                (Actor_Init(RED_ANT, redAntSpawner->pos.x, redAntSpawner->pos.y - 100.0f, redAntSpawner->pos.z,
                     0.0f, redAntSpawner->unk_F4, redAntSpawner->unk_F8, redAntSpawner->unk_FC,
                     redAntSpawner->unk_100, redAntSpawner->unk_104, redAntSpawner->unk_108,
                     redAntSpawner->position._f32.x, redAntSpawner->position._f32.y, redAntSpawner->unk_15C,
@@ -1673,7 +1673,7 @@ void ActorInit_RedAnt(Actor* redAnt) {
         slot++;
     } while (slotIndex != 0x18);
     if (slotIndex == 0x18) {
-        redAnt->actorID = 0;
+        redAnt->actorID = ACTOR_NULL;
         return;
     }
     slot = &D_80172E88[slotIndex];
@@ -1696,7 +1696,7 @@ void ActorInit_RedAnt(Actor* redAnt) {
     redAnt->unknownPositionThings[1].unk_00 = 0.0f;
     redAnt->unknownPositionThings[2].unk_10 = hitboxTemp;
     redAnt->unknownPositionThings[1].unk_10 = hitboxTemp;
-    PlaySoundEffect(0x5D, &redAnt->pos.x, &redAnt->pos.y, &redAnt->pos.z, 0, 0);
+    PlaySoundEffect(SFX_5D_unkSnd, &redAnt->pos.x, &redAnt->pos.y, &redAnt->pos.z, 0, 0);
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_RedAnt.s")
@@ -1856,7 +1856,7 @@ void ActorInit_WhiteBombSnake(Actor* whiteBombSnake) {
 }
 
 void ActorTick_WhiteBombSnake(Actor* bombSnake) {
-    Actor_PlaySound(bombSnake, 0x73, 0x1E, 1);
+    Actor_PlaySound(bombSnake, SFX_73_unkSnd, 0x1E, 1);
     switch (bombSnake->userVariables[0]) {
     case 0:
         if (bombSnake->userVariables[2] == 0) {
@@ -2019,7 +2019,7 @@ void ActorInit_Cannonball(Actor* cannonball) {
 
 void ActorTick_Cannonball(Actor* cannonball) {
     if ((cannonball->unk_9C != 0) || (cannonball->globalTimer == cannonball->userVariables[0])) {
-        if (Actor_Init(0x14, cannonball->pos.x,
+        if (Actor_Init(EXPLOSION, cannonball->pos.x,
                 (cannonball->pos.y + (cannonball->unknownPositionThings[0].unk_10 / 2)) - (D_8010A6D0[0x14].y / 2),
                 cannonball->pos.z, 0.0f, -50000.0f, 50000.0f, -50000.0f, 50000.0f, -50000.0f, 50000.0f,
                 200.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0xA, 0, 0, 0) != -1) {
@@ -2760,13 +2760,13 @@ void ActorTick_BowlingPin(Actor* bowlingPin) {
         if (bowlingPin->userVariables[0] == 0) {
             switch (Rand() % 3) {
             case 0:
-                PlaySoundEffect(0xBE, NULL, NULL, NULL, 0, 0x10);
+                PlaySoundEffect(SFX_BE_unkSnd, NULL, NULL, NULL, 0, 0x10);
                 break;
             case 1:
-                PlaySoundEffect(0xBF, NULL, NULL, NULL, 0, 0x10);
+                PlaySoundEffect(SFX_BF_unkSnd, NULL, NULL, NULL, 0, 0x10);
                 break;
             default:
-                PlaySoundEffect(0xC0, NULL, NULL, NULL, 0, 0x10);
+                PlaySoundEffect(SFX_C0_unkSnd, NULL, NULL, NULL, 0, 0x10);
                 break;
             }
         } else if (bowlingPin->userVariables[0] >= 0x5B) {
@@ -2847,7 +2847,7 @@ void ActorTick_RNGRoomSpawner(Actor* rngRoomSpawner) {
         spawnZ = (-sinf((((deg * 2) * PI) / 360.0)) * rngRoomSpawner->unk_164) + rngRoomSpawner->pos.z;
         deg += 180.0f;
         WrapDegrees(&deg);
-        if (Actor_Init(0x3B, spawnX, rngRoomSpawner->pos.y, spawnZ, deg,
+        if (Actor_Init(FIRE, spawnX, rngRoomSpawner->pos.y, spawnZ, deg,
                 -5000.0f, 5000.0f, -5000.0f, 5000.0f, -5000.0f, 5000.0f,
                 rngRoomSpawner->position._f32.x, rngRoomSpawner->position._f32.y,
                 rngRoomSpawner->unk_15C, rngRoomSpawner->unk_160,
@@ -2984,9 +2984,9 @@ void GhostBoss_SpawnArms(Actor* ghostBoss) {
 
     for (i = 0; i < 2; i++) {
         for (j = 0; j < 15; j++) {
-            actorID = 0x3E;
+            actorID = PILE_OF_BOOKS_ARM_SEGMENTS;
             if (j == 0) {
-                actorID = 0x3F;
+                actorID = PILE_OF_BOOKS_ARM_SPITTER;
             }
             D_801749D8[i][j] = Actor_Init(actorID, 0.0f, 5000.0f, 0.0f,
                 0.0f, -10000.0f, 10000.0f, -10000.0f, 10000.0f, -10000.0f, 10000.0f,
@@ -3168,7 +3168,7 @@ void ActorTick_SpiderSpawner(Actor* spiderSpawner) {
         (((actorCount < ((maxSpiders * 3) / 4)) && (spiderSpawner->unk_130 < ++spiderSpawner->userVariables[0])) ||
          ((spiderSpawner->unk_130 * 2) < ++spiderSpawner->userVariables[0]))) {
         spiderSpawner->userVariables[0] = 0;
-        if (Actor_Init(0x42, spiderSpawner->pos.x, spiderSpawner->pos.y + 20.0f, spiderSpawner->pos.z,
+        if (Actor_Init(SPIDER, spiderSpawner->pos.x, spiderSpawner->pos.y + 20.0f, spiderSpawner->pos.z,
                 (((spiderSpawner->userVariables[1] % 3) - 1) * 60.0f) + spiderSpawner->unk_90,
                 spiderSpawner->unk_F4, spiderSpawner->unk_F8, spiderSpawner->unk_FC,
                 spiderSpawner->unk_100, spiderSpawner->unk_104, spiderSpawner->unk_108,
@@ -3215,7 +3215,7 @@ void ActorTick_Spider(Actor* spider) {
             } else {
                 spider->userVariables[1] = timer - 1;
             }
-            Actor_PlaySound(spider, 0x43, 4, 4);
+            Actor_PlaySound(spider, SFX_43_unkSnd, 4, 4);
         } else {
             angle += Random(-0x1E, 0x1E);
             WrapDegrees(&angle);
@@ -3311,7 +3311,7 @@ void ActorTick_Golem(Actor* golem) {
         }
         if (StageFlags[golem->unk_124] != 0) {
             golem->userVariables[0] = 1;
-            PlaySoundEffect(0x46, &golem->pos.x, &golem->pos.y, &golem->pos.z, 0, 0);
+            PlaySoundEffect(SFX_46_unkSnd, &golem->pos.x, &golem->pos.y, &golem->pos.z, 0, 0);
         }
         break;
     case 1:
@@ -3333,9 +3333,9 @@ void ActorTick_Golem(Actor* golem) {
             golem->unk_94 = 0.0f;
         }
         if (golem->unk_F0 == 0x18) {
-            PlaySoundEffect(0x44, &golem->pos.x, &golem->pos.y, &golem->pos.z, 0, 0);
+            PlaySoundEffect(SFX_44_unkSnd, &golem->pos.x, &golem->pos.y, &golem->pos.z, 0, 0);
         } else if (golem->unk_F0 == 0x2A) {
-            PlaySoundEffect(0x45, &golem->pos.x, &golem->pos.y, &golem->pos.z, 0, 0);
+            PlaySoundEffect(SFX_45_unkSnd, &golem->pos.x, &golem->pos.y, &golem->pos.z, 0, 0);
         }
         break;
     }
@@ -3390,7 +3390,7 @@ void ActorTick_LizardKongButterfly(Actor* butterfly) {
         butterfly->vel.z = rec->unk_408[idx] - butterfly->pos.z;
         butterfly->unk_90 = rec->unk_608[idx];
     }
-    PlaySoundEffect(0x42, &butterfly->pos.x, &butterfly->pos.y, &butterfly->pos.z, 1, 0);
+    PlaySoundEffect(SFX_42_unkSnd, &butterfly->pos.x, &butterfly->pos.y, &butterfly->pos.z, 1, 0);
     butterfly->unk_F0++;
 }
 
@@ -3476,7 +3476,7 @@ void ActorTick_PopcornBucketSpawner(Actor *popcornBucketSpawner) {
 
     /* statement grouping on this line is load-bearing for codegen */
     start = gActors; actor = start; do { end = (Actor *) Poles;
-        if (actor->actorID == 0) {
+        if (actor->actorID == ACTOR_NULL) {
             break;
         }
         actor++;
@@ -3488,14 +3488,14 @@ void ActorTick_PopcornBucketSpawner(Actor *popcornBucketSpawner) {
             actor = start;
             do {
                 start = end;
-                if (actor->actorID == 0x4D) {
+                if (actor->actorID == POPCORN_BUCKET) {
                     return;
                 }
                 actor++;
                 if (actor && actor) {}
             } while (actor != start);
             actor = popcornBucketSpawner;
-            Actor_Init(0x4D, popcornBucketSpawner->pos.x, popcornBucketSpawner->pos.y, popcornBucketSpawner->pos.z, popcornBucketSpawner->unk_90, actor->unk_F4, actor->unk_F8, actor->unk_FC, actor->unk_100, actor->unk_104, popcornBucketSpawner->unk_108, popcornBucketSpawner->position._f32.x, actor->position._f32.y, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, actor->unk_124, popcornBucketSpawner->unk_128, actor->unk_12C, 0); } }
+            Actor_Init(POPCORN_BUCKET, popcornBucketSpawner->pos.x, popcornBucketSpawner->pos.y, popcornBucketSpawner->pos.z, popcornBucketSpawner->unk_90, actor->unk_F4, actor->unk_F8, actor->unk_FC, actor->unk_100, actor->unk_104, popcornBucketSpawner->unk_108, popcornBucketSpawner->position._f32.x, actor->position._f32.y, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, actor->unk_124, popcornBucketSpawner->unk_128, actor->unk_12C, 0); } }
 }
 
 
@@ -3645,7 +3645,7 @@ void ActorTick_BattleModeSaucerSpawner(Actor *bmSaucerSpawner) {
         }
     }
 
-    D_80174758[0] = Actor_Init(0x58, bmSaucerSpawner->pos.x, bmSaucerSpawner->pos.y - bmSaucerSpawner->position._f32.x, bmSaucerSpawner->pos.z, 0.0f, bmSaucerSpawner->unk_F4, bmSaucerSpawner->unk_F8, -10000.0f, 10000.0, bmSaucerSpawner->unk_104, bmSaucerSpawner->unk_108, bmSaucerSpawner->position._f32.x, bmSaucerSpawner->position._f32.y, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0, 0, 0, 0);
+    D_80174758[0] = Actor_Init(BATTLE_MODE_SAUCER, bmSaucerSpawner->pos.x, bmSaucerSpawner->pos.y - bmSaucerSpawner->position._f32.x, bmSaucerSpawner->pos.z, 0.0f, bmSaucerSpawner->unk_F4, bmSaucerSpawner->unk_F8, -10000.0f, 10000.0, bmSaucerSpawner->unk_104, bmSaucerSpawner->unk_108, bmSaucerSpawner->position._f32.x, bmSaucerSpawner->position._f32.y, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0, 0, 0, 0);
     bmSaucerSpawner->userVariables[0] = 0;
 }
 
@@ -3728,15 +3728,15 @@ void ActorTick_PowerUpSpawner(Actor* powerUpSpawner) {
         weightC = powerUpSpawner->unk_15C;
         spawnID = randVal % ((s32) powerUpSpawner->unk_160 + weightA + weightB + weightC);
         if (spawnID < weightA) {
-            spawnID = 0x67;
+            spawnID = BIG_FEET_POWER_UP;
         } else if (spawnID < (weightB + weightA)) {
-            spawnID = 0x68;
+            spawnID = BIG_HEAD_POWER_UP;
         } else if (spawnID < (weightC + weightA + weightB)) {
-            spawnID = 0x69;
+            spawnID = SHRINK_POWER_UP;
         } else {
             randVal = powerUpSpawner->unk_124;
             if (!randVal) {}
-            spawnID = 0x6A;
+            spawnID = SHRINK_ENEMY_POWER_UP;
         }
         randVal = powerUpSpawner->unk_124; Actor_Init(spawnID, powerUpSpawner->pos.x, powerUpSpawner->pos.y, powerUpSpawner->pos.z, 0.0f,
             -10000.0f, 10000.0f, -10000.0f, 10000.0f, -10000.0f, 10000.0f, powerUpSpawner->unk_164,
@@ -3776,19 +3776,19 @@ void ActorTick_UnkFireSpawner(Actor* unkFireSpawner) {
     if (StageFlags[unkFireSpawner->unk_130] != 0) {
         actor = gActors;
         do {
-            if (actor->actorID == 0x3B) {
+            if (actor->actorID == FIRE) {
                 return;
             }
             actor++;
         } while (actor != (Actor*) Poles);
 
-        if (Actor_Init(0x3B, unkFireSpawner->pos.x, unkFireSpawner->pos.y, unkFireSpawner->pos.z,
+        if (Actor_Init(FIRE, unkFireSpawner->pos.x, unkFireSpawner->pos.y, unkFireSpawner->pos.z,
                 0.0f, unkFireSpawner->unk_F4, unkFireSpawner->unk_F8, unkFireSpawner->unk_FC,
                 unkFireSpawner->unk_100, unkFireSpawner->unk_104, unkFireSpawner->unk_108,
                 unkFireSpawner->position._f32.x, unkFireSpawner->position._f32.y, unkFireSpawner->unk_15C,
                 unkFireSpawner->unk_160, 0.0f, 0.0f, 0.0f, 0.0f, 0,
                 unkFireSpawner->unk_128, unkFireSpawner->unk_12C, 0) != -1) {
-            Actor_PlaySound(unkFireSpawner, 0xAB, 1, 1);
+            Actor_PlaySound(unkFireSpawner, SFX_AB_unkSnd, 1, 1);
         }
     }
 }
@@ -3933,8 +3933,8 @@ s32 CountActorsAtTongueHeight(PlayerActor *player) {
     /* statement grouping on this line is load-bearing for codegen */
     cur = actor; actor = gActors; do { cur = actor;
         if (cur->unk_A0.unk_00 == 1) {
-            if (cur->actorID != 0) {
-                if (cur->actorID < 0x5F) {
+            if (cur->actorID != ACTOR_NULL) {
+                if (cur->actorID < R_HEART) {
                     if ((cur->actorState == 0) || (cur->actorState == 3)) {
                         y = (player->pos.y + player->tongueYOffset) - 5.0f;
                         for (i = 0; i < cur->tongueCollision; i++) {
@@ -3963,7 +3963,7 @@ s32 GetTongueTargetDistSq(Actor* actor, s32 arg1, f32 x, f32 z) {
     s32 dz;
 
     if (actor->unk_A0.unk_00 == 1) {
-        if ((actor->actorID != 0) && (actor->actorID < 0x5F) &&
+        if ((actor->actorID != ACTOR_NULL) && (actor->actorID < R_HEART) &&
             ((actor->actorState == 0) || (actor->actorState == 3))) {
             tongueY = (player->pos.y + player->tongueYOffset) - 5.0f;
             for (i = 0; i < actor->tongueCollision; i++) {
