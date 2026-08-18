@@ -4695,9 +4695,9 @@ void func_80063160(Effect* effect, Gfx** pGfxPos) {
     if (D_800FE164 == TRUE || gCurrentStage == STAGE_TRAINING) {
         return;
     }
-    if (gCurrentStage != 0 && gCurrentStage != 1 && gCurrentStage != 2 && gCurrentStage != 3 &&
-        gCurrentStage != 4 && gCurrentStage != 5 && gCurrentStage != 9 && gCurrentStage != 10 &&
-        gCurrentStage != 11 && gCurrentStage != 12 && gCurrentStage != 13 && gCurrentStage != 14 &&
+    if (gCurrentStage != STAGE_JUNGLE && gCurrentStage != STAGE_ANT && gCurrentStage != STAGE_BOMB && gCurrentStage != STAGE_DESERT &&
+        gCurrentStage != STAGE_KIDS && gCurrentStage != STAGE_GHOST && gCurrentStage != STAGE_JUNGLEBOSS && gCurrentStage != STAGE_ANTBOSS &&
+        gCurrentStage != STAGE_BOMBBOSS && gCurrentStage != STAGE_DESERTBOSS && gCurrentStage != STAGE_KIDSBOSS && gCurrentStage != STAGE_GHOSTBOSS &&
         D_80108790 != 0) {
         return;
     }

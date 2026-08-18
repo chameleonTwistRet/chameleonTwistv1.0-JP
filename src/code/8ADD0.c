@@ -2262,7 +2262,7 @@ void func_800BBCE4(Collider* arg0) {
         if (arg0->unk_B0 < 0) {
             arg0->unk_AC = 2;
             arg0->unk_B0 = arg0->unk_B8;
-            Actor_Init(0xE, arg0->unk_8C, arg0->unk_90, arg0->unk_94, arg0->unkA4, -5000.0f, 5000.0f, -5000.0f,
+            Actor_Init(GRENADE, arg0->unk_8C, arg0->unk_90, arg0->unk_94, arg0->unkA4, -5000.0f, 5000.0f, -5000.0f,
                        5000.0f, -5000.0f, 5000.0f, 5.0f, 5.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 210, 50, 30, 0);
         }
         break;
@@ -3302,7 +3302,7 @@ void MoveField(void) {
 
     func_800B56E8();
     func_800B5600();
-    if (gCurrentStage == 7) {
+    if (gCurrentStage == STAGE_VS) {
         func_800B5314();
     }
     if (D_80176F58[0] == 0) {
