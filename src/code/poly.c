@@ -109,7 +109,7 @@ s32 func_800C982C(Rect3D* arg0, Collider* arg1) {
     var_s3 = 0;
     D_8023696C = 0;
     
-    for (i = 0, var_s2 = &D_80240898; i < gFieldCount; i++, var_s2++){
+    for (i = 0, var_s2 = &D_80240898; i < gFieldCount; i++, var_s2++) {
         temp_s0 = *var_s2;
         if (((temp_s0->unk_10 != 0x21) || (arg1->unk_6C == 0)) && (temp_s0->unk_114 & 2) && (temp_s0->unk_0C & 0x77)) {
             if (IfRectsIntersect(arg0, &temp_s0->unk_CC) == 0) {

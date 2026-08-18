@@ -65,7 +65,7 @@ f32 SumOfSquaresWrapper(f32 x, f32 y) {
  * @return (ptr) altered angle
  */
 void WrapDegrees(f32* theta_ptr) {
-    while(1){
+    while (1) {
         f32 theta = *theta_ptr;
 
         if (theta >= 360.0f) {
@@ -1170,7 +1170,7 @@ void func_800317A0(void) {
     gTongueOnePointer->controlAngle = gCurrentActivePlayerPointer->yAngle;
     gTongueOnePointer->length = 0;
 
-    for (i = gTongueOnePointer->poleSegmentAt; i < gTongueOnePointer->cameraSegmentAt; i++){
+    for (i = gTongueOnePointer->poleSegmentAt; i < gTongueOnePointer->cameraSegmentAt; i++) {
         if (((gTongueOnePointer->tongueXs[i] != 0.0f) || (gTongueOnePointer->tongueZs[i] != 0.0f)) && (gTongueOnePointer->length < gTongueOnePointer->tongueForwards[i])) {
             gTongueOnePointer->controlAngle = ArcTan2Deg(gTongueOnePointer->tongueXs[i], gTongueOnePointer->tongueZs[i]);
             gTongueOnePointer->length = gTongueOnePointer->tongueForwards[i];
@@ -1597,8 +1597,7 @@ s32 ActorTick_BulletHellAnt(Actor* bulletHellAnt) {
     }
     if (gTimer % 8 == 0) {
         PLAY_SFX_AT(SFX_63_unkSnd+3, bulletHellAnt->pos, 1, 0);
-    }
-    else if (gTimer % 8 == 4) {
+    } else if (gTimer % 8 == 4) {
         PLAY_SFX_AT(SFX_63_unkSnd+2, bulletHellAnt->pos, 1, 0);
     }
     return 0;
@@ -2098,7 +2097,7 @@ void ActorTick_BombBossBomb(Actor* bsBomb) {
 }
 
 // Black Chameleon Projectile Spawner
-void ActorInit_ChameleonBlackSpotSpawner(Actor* blackChameleonProjectileSpawner){
+void ActorInit_ChameleonBlackSpotSpawner(Actor* blackChameleonProjectileSpawner) {
 
 }
 
@@ -2207,7 +2206,7 @@ void ActorTick_Arrow(Actor* arrows) {
 }
 
 // BOULDER
-void func_8003E368(Actor* boulder){
+void func_8003E368(Actor* boulder) {
 
 }
 
@@ -2295,7 +2294,7 @@ void func_8003E6C4(Actor* armadillo) {
     f32 rad;
     s32 i;
 
-    for (i = 0; i < armadillo->unk_12C; i++){
+    for (i = 0; i < armadillo->unk_12C; i++) {
         f32 a, b, c, d;
         calc1 = (i * 360.0f) / armadillo->unk_12C;
         rad = DEGREES_TO_RADIANS_2PI(calc1);
@@ -2477,7 +2476,7 @@ void ActorTick_Pogo(Actor* pogo) {
 void ActorTick_Unk22(Actor* unk_22) {
 }
 
-void ActorInit_Unk23(Actor* unk_23){
+void ActorInit_Unk23(Actor* unk_23) {
 
 }
 
@@ -2586,7 +2585,7 @@ void func_800405F8(Actor* cakeBossStrawberry) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_CakeBossStrawberry.s")
 
 // UNK_28
-void func_80040CDC(Actor* unk_28){
+void func_80040CDC(Actor* unk_28) {
 
 }
 
@@ -2595,7 +2594,7 @@ void ActorTick_Unk28(Actor* unk_28) {
 }
 
 // Cake Boss Choco Kid
-void func_80040CEC(Actor* cakeBossChocoKid){
+void func_80040CEC(Actor* cakeBossChocoKid) {
 
 }
 
@@ -2705,7 +2704,7 @@ void ActorTick_CueBall(Actor* cueBall) {
 }
 
 // Billiards Ball
-void ActorInit_BilliardBall(Actor* billiardBall){
+void ActorInit_BilliardBall(Actor* billiardBall) {
 
 }
 
@@ -2785,7 +2784,7 @@ void ActorInit_Unk2E(Actor* unk_2E) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_Unk2E.s")
 
-void ActorInit_Unk2F(Actor* unk_2F){
+void ActorInit_Unk2F(Actor* unk_2F) {
 
 }
 
@@ -2833,7 +2832,7 @@ void ActorTick_Scroll(Actor* scroll) {
 }
 
 // RNG Room Spawner
-void ActorInit_RNGRoomSpawner(Actor* rngRoomSpawner){
+void ActorInit_RNGRoomSpawner(Actor* rngRoomSpawner) {
 
 }
 
@@ -2869,7 +2868,7 @@ void ActorInit_Mirror(Actor* mirror) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_Mirror.s")
 
-void ActorInit_BarrelFireSpawner(Actor* barrelFireSpawner){
+void ActorInit_BarrelFireSpawner(Actor* barrelFireSpawner) {
 
 }
 
@@ -3127,15 +3126,13 @@ void ActorTick_GhostBossArmSpitter(Actor* armSpit) {
             if (armSpit->unk_F0 == 9) {
                 armSpit->userVariables[0] = 1;
             }
-        }
-        else {
+        } else {
             armSpit->unk_F0 -= 1;
             if (armSpit->unk_F0  == 0) {
                 armSpit->userVariables[0] = 0;
             }
         }
-    }
-    else {
+    } else {
         if (armSpit->unk_F0 != 0) {
             armSpit->unk_F0 -= 1;
             armSpit->userVariables[0] = 0;
@@ -3160,7 +3157,7 @@ void ActorTick_GhostBossShot(Actor* projectile) {
     }
 }
 
-void ActorInit_SpiderSpawner(Actor* spiderSpawner){
+void ActorInit_SpiderSpawner(Actor* spiderSpawner) {
 
 }
 
@@ -3280,7 +3277,7 @@ void ActorTick_SpiderTrio(Actor* spiderTrio) {
 
 
 // GOLEM Room SPIDER Spawner
-void ActorInit_GolemSpiderSpawner(Actor* golemRoomSpiderSpawner){
+void ActorInit_GolemSpiderSpawner(Actor* golemRoomSpiderSpawner) {
 
 }
 
@@ -3399,7 +3396,7 @@ void ActorTick_LizardKongButterfly(Actor* butterfly) {
 }
 
 
-void ActorInit_LizardKongButterflySpawner(Actor* lizardKongButterflySpawner){
+void ActorInit_LizardKongButterflySpawner(Actor* lizardKongButterflySpawner) {
 
 }
 
@@ -3468,17 +3465,16 @@ void PlayLizardKongSFX(Actor* arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_LizardKong.s")
 
-void ActorInit_PopcornBucketSpawner(Actor* popcornBucketSpawner){
+void ActorInit_PopcornBucketSpawner(Actor* popcornBucketSpawner) {
 
 }
 
-void ActorTick_PopcornBucketSpawner(Actor *popcornBucketSpawner)
-{
+void ActorTick_PopcornBucketSpawner(Actor *popcornBucketSpawner) {
   Actor *actor;
   int unusedCheck;
   Actor *start;
   Actor *end;
- {
+
     start = gActors; actor = start; do { end = (Actor *) Poles;
         if (actor->actorID == 0) {
             break;
@@ -3499,7 +3495,7 @@ void ActorTick_PopcornBucketSpawner(Actor *popcornBucketSpawner)
                 if (actor && actor) {}
             } while (actor != start);
             actor = popcornBucketSpawner;
-            Actor_Init(0x4D, popcornBucketSpawner->pos.x, popcornBucketSpawner->pos.y, popcornBucketSpawner->pos.z, popcornBucketSpawner->unk_90, actor->unk_F4, actor->unk_F8, actor->unk_FC, actor->unk_100, actor->unk_104, popcornBucketSpawner->unk_108, popcornBucketSpawner->position._f32.x, actor->position._f32.y, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, actor->unk_124, popcornBucketSpawner->unk_128, actor->unk_12C, 0); } } }
+            Actor_Init(0x4D, popcornBucketSpawner->pos.x, popcornBucketSpawner->pos.y, popcornBucketSpawner->pos.z, popcornBucketSpawner->unk_90, actor->unk_F4, actor->unk_F8, actor->unk_FC, actor->unk_100, actor->unk_104, popcornBucketSpawner->unk_108, popcornBucketSpawner->position._f32.x, actor->position._f32.y, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, actor->unk_124, popcornBucketSpawner->unk_128, actor->unk_12C, 0); } }
 }
 
 
@@ -3519,7 +3515,7 @@ void ActorTick_Unk4E(Actor* unk_4e) {
     ActorTick_Popcorn(unk_4e);
 }
 
-void ActorInit_ChocoKidSpawner(Actor* chocoKidSpawner){
+void ActorInit_ChocoKidSpawner(Actor* chocoKidSpawner) {
 
 }
 
@@ -3567,7 +3563,7 @@ void ActorTick_GreyAntWrapper(Actor* greyAntW) {
     ActorTick_GreyAnt(greyAntW);
 }
 
-void ActorInit_BattleModeSandCrabSpawner(Actor* bmSCS){
+void ActorInit_BattleModeSandCrabSpawner(Actor* bmSCS) {
 
 }
 
@@ -3606,7 +3602,7 @@ void ActorTick_BattleModeSandCrab(Actor* battleModeSandCrab) {
     }
 }
 
-void ActorInit_BattleModeFireSpawner(Actor* bmFireSpawner){
+void ActorInit_BattleModeFireSpawner(Actor* bmFireSpawner) {
 
 }
 
@@ -3628,25 +3624,20 @@ void ActorInit_BattleModeSaucerSpawner(Actor* bmSaucerSpawner) {
     }
 }
 
-void ActorTick_BattleModeSaucerSpawner(Actor *bmSaucerSpawner)
-{
+void ActorTick_BattleModeSaucerSpawner(Actor *bmSaucerSpawner) {
   s32 i;
   s32 idx;
   int new_var;
-  if (D_80174758[bmSaucerSpawner->unk_128 - 1] != (-1))
-  {
+  if (D_80174758[bmSaucerSpawner->unk_128 - 1] != (-1)) {
     return;
   }
   bmSaucerSpawner->userVariables[0] += 1;
-  if (bmSaucerSpawner->unk_124 != bmSaucerSpawner->userVariables[0])
-  {
+  if (bmSaucerSpawner->unk_124 != bmSaucerSpawner->userVariables[0]) {
     return;
   }
-  for (i = bmSaucerSpawner->unk_128 - 1; i > 0; i--)
-  {
+  for (i = bmSaucerSpawner->unk_128 - 1; i > 0; i--) {
     new_var = i - 1;
-    if (D_80174758[new_var] != (-1))
-    {
+    if (D_80174758[new_var] != (-1)) {
       gActors[D_80174758[i - 1]].userVariables[0] = i;
       D_80174758[i] = D_80174758[i - 1];
       D_80174758[i - 1] = -1;
@@ -3690,7 +3681,7 @@ void ActorTick_BattleModeSaucer(Actor* battleModeSaucer) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_BattleModeSaucer.s")
 #endif
 
-void ActorInit_Unk59(Actor* unk_59){
+void ActorInit_Unk59(Actor* unk_59) {
 
 }
 
@@ -3719,7 +3710,7 @@ void ActorTick_Unk5A(Actor* unk_5A) {
     func_800313BC(unk_5A->actorIndex, Random(0, 360));
 }
 
-void ActorInit_PowerUpSpawner(Actor* powerUpSpawner){
+void ActorInit_PowerUpSpawner(Actor* powerUpSpawner) {
 
 }
 
@@ -3754,7 +3745,7 @@ void ActorTick_PowerUpSpawner(Actor* powerUpSpawner) {
     }
 }
 
-void ActorInit_FallingGreyAntSpawner(Actor* fallingGreyAntSpawner){
+void ActorInit_FallingGreyAntSpawner(Actor* fallingGreyAntSpawner) {
 
 }
 
@@ -3775,7 +3766,7 @@ void ActorInit_FallingGreyAnt(Actor* fallingGreyAntActor) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_FallingGreyAnt.s")
 
-void ActorInit_UnkFireSpawner(Actor* unkFireSpawner){
+void ActorInit_UnkFireSpawner(Actor* unkFireSpawner) {
 
 }
 
@@ -3824,8 +3815,7 @@ void ActorTick_Powerup(Actor* powerup) {
         if (powerup->unk_124 == powerup->userVariables[1]) {
             TriggerRoomClearReaction(powerup);
         }
-    }
-    else {
+    } else {
         powerup->vel.y -= (3.200000048f + (powerup->vel.y * 0.05000000075f));
         if (powerup->pos.y + powerup->vel.y < powerup->position._f32.x) {
             powerup->pos.y = powerup->position._f32.x;
@@ -3934,8 +3924,7 @@ void func_8004BD7C(void) {
 }
 
 // Count actor collisions overlapping tongue within a height bound
-s32 CountActorsAtTongueHeight(PlayerActor *player)
-{
+s32 CountActorsAtTongueHeight(PlayerActor *player) {
     Actor *cur;
     Actor *actor;
     s32 count = 0;

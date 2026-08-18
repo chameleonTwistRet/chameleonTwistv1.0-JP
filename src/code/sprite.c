@@ -2427,8 +2427,7 @@ f32 WrapAngleRecursive(f32 arg0) {
     if (arg0 >= 360.0f) {
         arg0 = arg0 - 360.0f;
         arg0 = WrapAngleRecursive(arg0);
-    }
-    else if (arg0 < 0.0f) {
+    } else if (arg0 < 0.0f) {
         arg0 = arg0 + 360.0f;
         arg0 = WrapAngleRecursive(arg0);
     }
@@ -2491,7 +2490,7 @@ void* func_80056D30(s32 arg0) {
                 return var_a2 + 1;
             }
             var_a2->flags = flags & ~1; //should be here but breaks tail merging
-            if (((!var_a2) && (!var_a2)) && (!var_a2)){} //TODO: fake match
+            if (((!var_a2) && (!var_a2)) && (!var_a2)) {} //TODO: fake match
             return var_a2 + 1;
         }
 
@@ -4504,7 +4503,7 @@ void func_80062684(Effect* effect) {
     s32 i;
 
     for (i = 0; i < effect->numParts; i++) {
-        switch(parts[i].unk_25) {
+        switch (parts[i].unk_25) {
             case 0:
                 if (((s32)(parts[i].lifeTime * 50.0f) % 2) || D_800F687C == 0) {
                     printUISprite(effect->pos.x + parts[i].pos.x, effect->pos.y + parts[i].pos.y, effect->pos.z + parts[i].pos.z, 0.0f, 0.5f, 0.0f, 0.0f, 0.0f, SPRITE_HITPOINT);
@@ -5791,7 +5790,7 @@ Effect* Effect_TypeT_Init(f32 arg0, f32 arg1, s32 arg2, s32 arg3) {
 void Effect_TypeU_Update(Effect* effect, Gfx** pGfxPos) {
 
     func_800610B8();
-    switch(effect->spriteID) {
+    switch (effect->spriteID) {
         case 0:
             setPrimColor(255, 255, 150, 80.0f * sinf(effect->lifeTime * PI_SHORT));
             break;
@@ -5861,7 +5860,7 @@ void Bowling_CountPins(s32* pinsRemaining) {
     s32 i;
     s32 pinCount;
 
-    for (i = 0, pinCount = 0; i < ARRAY_COUNT(gActors); i++){
+    for (i = 0, pinCount = 0; i < ARRAY_COUNT(gActors); i++) {
         if (gActors[i].actorID == BOWLING_PINS) {
             pinCount++;
         }
@@ -6050,7 +6049,7 @@ void LoadPlayerEyes(s32 arg0) {
     s32 i;
     s32 var_s0 = (arg0 * 10) + 114;
 
-    for (i = 0; i != 10; i++){
+    for (i = 0; i != 10; i++) {
         gLockContextEyes = LoadSprite(var_s0);
         if ((gLockContextEyes) > 0) {
             break;
@@ -6063,7 +6062,7 @@ void FreePlayerEyes(s32 arg0) {
     s32 i;
     s32 var_s0 = (arg0 * 10) + 114;
 
-    for (i = 0; i != 10; i++){
+    for (i = 0; i != 10; i++) {
         FreeSprite(var_s0);
         var_s0 += 1;
     }
@@ -6207,15 +6206,13 @@ u32 Effect_PlayerEyes_Init(s32 charID, s32 arg1, f32 duration, s32 arg3) {
             D_800FE704[arg0] = 1;
         }
         return FALSE;
-    }
-    else if (arg3 == 1 && D_800FE4E4[arg0].unk_00 == 1) {
+    } else if (arg3 == 1 && D_800FE4E4[arg0].unk_00 == 1) {
         if (arg1 == 2) {
             D_800FE6F4[arg0] = 1.0f / duration;
             D_800FE704[arg0] = 1;
         }
         return FALSE;
-    }
-    else if (arg3 == 2 && D_800FE4E4[arg0].unk_01 == 1) {
+    } else if (arg3 == 2 && D_800FE4E4[arg0].unk_01 == 1) {
         if (arg1 == 2) {
             D_800FE6F4[arg0] = 1.0f / duration;
             D_800FE704[arg0] = 1;
@@ -6255,7 +6252,7 @@ void SetBossDeadEyes(s32);
 
 void Effect_BossDeadEyes_Update(Effect* effect, Gfx** pGfxPos) {
     SetBossDeadEyes(effect->spriteID);
-    switch(effect->spriteID) {
+    switch (effect->spriteID) {
         case 75:
             FreeSprite(SPRITE_EYES_DEAD_LIZARD_KONG);
             break;
@@ -6273,7 +6270,7 @@ void Effect_BossDeadEyes_Init(s32 arg0) {
     Effect* effect;
     s32 ret;
 
-    switch(arg0) {
+    switch (arg0) {
         case 75:
             ret = LoadSprite(SPRITE_EYES_DEAD_LIZARD_KONG);
             break;
@@ -6303,7 +6300,7 @@ void SetBossDeadEyes(s32 arg0) {
     s32 eyesIndex;
     s32 spriteIndex;
 
-    switch(arg0) {
+    switch (arg0) {
         case 75:
             spriteIndex = SPRITE_EYES_DEAD_LIZARD_KONG;
             sp20 = 2;
@@ -6505,7 +6502,7 @@ void Effect_TypeZ_Create(f32 posX, f32 posY, f32 posZ, f32 arg3, f32 arg4, s32 a
 
     delta = 360.0f / arg5;
     for (angle = 0.0f, i = 0; i < arg5; angle += delta, i++) {
-        switch(i % 4) {
+        switch (i % 4) {
             case 0:
                 r = 255;
                 g = 20;
@@ -8750,7 +8747,7 @@ void Effect_TypeAZ_Update(Effect* effect, Gfx** pGfxPos) {
     Effect_TypeAZ_Data* data = (Effect_TypeAZ_Data*)effect->data;
     s32 i;
 
-    switch(data->unk_D8) {
+    switch (data->unk_D8) {
         case 0:
             for (i = 0; i < data->unk_D4; i++) {
                 data->unk_00[i].unk_08 = MAX(effect->pos.x, data->unk_00[i].unk_08 - 16.0f);
@@ -9532,11 +9529,9 @@ void func_8007C4C8(void) {
 s32 func_8007C500(void) {
     if (gTrainingState == 1) {
         return 1;
-    }
-    else if (gTrainingState >= 2) {
+    } else if (gTrainingState >= 2) {
         return 2;
-    }
-    else {
+    } else {
         return 0;
     }
 }

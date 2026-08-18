@@ -2702,8 +2702,7 @@ s32 PlaySoundEffect(s32 id, f32* posX, f32* posY, f32* posZ, s32 arg4, s32 flag)
     }
     if (flag & 0x40) {
         flag |= 0x10;
-    }
-    else if (gIsPaused == 1) {
+    } else if (gIsPaused == 1) {
         return -1;
     }
     if (D_80168DA0 >= 2) {
@@ -2999,8 +2998,7 @@ s32 LoadBGM(void) {
         } else {
             return 0;
         }
-    }
-    else if (temp_v0 != AL_STOPPED) {
+    } else if (temp_v0 != AL_STOPPED) {
         return 0;
     }
 
@@ -3491,7 +3489,7 @@ Gfx* func_8008D168(Gfx* gfxPos, s32 arg1, s32 arg2) {
         gDPPipeSync(gfxPos++);
     }
 
-    if (D_800FFEC0 != 0){
+    if (D_800FFEC0 != 0) {
         D_800FFEC0--;
     }
     gSPDisplayList(gfxPos++, D_1015B18);
@@ -3755,7 +3753,7 @@ CTTask* func_8008E9AC(s16 arg0, s16 arg1, s16 arg2, s16 arg3, s16* arg4) {
 
     if (task == NULL) {
         DummiedPrintf("エラー\n");
-        while (1){}
+        while (1) {}
     }
     task->unk_5C = arg0;
     task->unk_64 = -24 - arg0;
@@ -3777,7 +3775,7 @@ CTTask* func_8008EA60(s16 arg0, s16 arg1, s16 arg2, s16 arg3, s16* arg4) {
 
     if (task == NULL) {
         DummiedPrintf("エラー\n"); // error
-        while(1){}
+        while (1) {}
     }
     task->unk_5C = -arg0;
     task->unk_64 = arg0 + 280;
@@ -3798,7 +3796,7 @@ CTTask* func_8008EB08(s16 arg0, s16 arg1, s16 arg2, s16 arg3, s16* arg4, f32 arg
 
     if (newTask == NULL) {
         DummiedPrintf("エラー\n");
-        while(1){}
+        while (1) {}
     }
     *arg4 = 0;
     newTask->unk_5C = -arg0;
@@ -3822,7 +3820,7 @@ CTTask* func_8008EBCC(s16 arg0, s16 arg1, s16 arg2, s16 arg3, CTTask* arg4, f32 
 
     if (newTask == NULL) {
         DummiedPrintf("エラー\n");
-        while(1){}
+        while (1) {}
     }
     arg4->runType = 0;
     newTask->unk_5C = arg0;
@@ -3882,7 +3880,7 @@ CTTask* func_8008F050(s16 arg0, s16 arg1, s16 arg2, s16 arg3, s16* arg4) {
 
     if (task == 0) {
         DummiedPrintf("エラー\n");
-        while(1){}
+        while (1) {}
     }
     task->unk_5C = -arg0;
     task->unk_64 = 160;
@@ -3899,8 +3897,8 @@ CTTask* func_8008F050(s16 arg0, s16 arg1, s16 arg2, s16 arg3, s16* arg4) {
     return task;
 }
 
-void func_8008F114(void){
-    if(MQ_IS_FULL(&gSyncMessageQueue)){
+void func_8008F114(void) {
+    if (MQ_IS_FULL(&gSyncMessageQueue)) {
         osRecvMesg(&gSyncMessageQueue, NULL, OS_MESG_BLOCK);
     }
     osRecvMesg(&gSyncMessageQueue, NULL, OS_MESG_BLOCK);
@@ -3972,7 +3970,7 @@ void func_8008F16C(void) {
         D_800FFDF0--;
     }
     func_8008C554();
-    if(MQ_IS_FULL(&gSyncMessageQueue)){
+    if (MQ_IS_FULL(&gSyncMessageQueue)) {
         osRecvMesg(&gSyncMessageQueue, NULL, OS_MESG_BLOCK);
     }
     osRecvMesg(&gSyncMessageQueue, NULL, OS_MESG_BLOCK);
@@ -4006,7 +4004,7 @@ CTTask* func_8008F7A4(s16 arg0, s16 arg1) {
 
     if (newTask == NULL) {
         DummiedPrintf("Ｂｇ表示タスク作製エラー\n");
-        while(1){}
+        while (1) {}
     }
     newTask->function = func_8008F710;
     newTask->unk_04 = arg0;
@@ -4454,7 +4452,7 @@ void MainLoop(void) {
     #ifdef CRASH_SCREEN
     crash_screen_init();
     #endif
-    while(1){
+    while (1) {
         switch (gGameModeCurrent) {
             case 0:
                 Porocess_Mode0();
@@ -4601,7 +4599,7 @@ void func_80090E2C(void) {
 
     if (task == NULL) {
         DummiedPrintf("エラー\n");
-        while(1){}
+        while (1) {}
     }
     task->function = func_80090E78;
 }
@@ -4661,7 +4659,7 @@ void func_800911D0(CTTask* task) {
         task->unk88 = 150;
         task->unk7C = -15;
         task->unk84 = 1.5f;
-        while (func_8008D7B0(task) == 0){}
+        while (func_8008D7B0(task) == 0) {}
     }
 }
 
@@ -4724,7 +4722,7 @@ void func_800914CC(CTTask* task) {
 
 void func_80091548(CTTask* task) {
     task->unk44 = 1;
-    while (func_8008D7B0(task) == 0){}
+    while (func_8008D7B0(task) == 0) {}
     task->unk60 -= 1;
     if (task->unk60 <= 0) {
         task->function = func_800915C0;
@@ -4901,8 +4899,7 @@ void func_80092690(CTTask* task) {
             task->unk7C *= -1.0f;
             task->unk7C *= 0.7;
             task->unk_5C++;
-        }
-        else {
+        } else {
             task->function = func_8009273C;
             task->unk44 = 20;
             task->unk60 = 30;
@@ -4913,8 +4910,7 @@ void func_80092690(CTTask* task) {
 void func_8009273C(CTTask* task) {
     if (task->unk60 != 0) {
         task->unk60--;
-    }
-    else if (func_8008D7FC(task) != 0) {
+    } else if (func_8008D7FC(task) != 0) {
         task->unk44 = 21;
         task->function = func_800927A8;
         func_8009236C(task);
@@ -5868,7 +5864,7 @@ CTTask* func_80097498(void) {
 
     if (temp_v0 == NULL) {
         DummiedPrintf("エラー\n");
-        while (1){}
+        while (1) {}
     }
     temp_v0->function = func_80097508;
     temp_v0->unk66 = 0;
@@ -5935,7 +5931,7 @@ void func_80097D1C(CTTask* task) {
     func_800610B8();
     printUISprite(80, 16, 0, 0, 1, 0, 0, 0, SPRITE_BATTLE_STAGETITLEBOARD);
     printUISprite(208, 16, 0, 0, 1, 0, 0, 2, SPRITE_BATTLE_STAGETITLEBOARD);
-    for (i = 0x70; i < 0xB1; i += 0x20){
+    for (i = 0x70; i < 0xB1; i += 0x20) {
         printUISprite(i, 16, 0, 0, 1, 0, 0, 1, SPRITE_BATTLE_STAGETITLEBOARD);
     }
     func_800610A8();
@@ -5983,7 +5979,7 @@ void func_800983C8(CTTask* task) {
     func_80059F28(x + 96, y, 0, 0, 1, 0, 0, 2, SPRITE_BATTLE_BIGBOARD);
     func_80059F28(x + 96, y + 24, 0, 0, 1, 0, 0, 5, SPRITE_BATTLE_BIGBOARD);
     func_80059F28(x + 96, y + 40, 0, 0, 1, 0, 0, 8, SPRITE_BATTLE_BIGBOARD);
-    for (i = x + 32; i <= x + 64; i += 32){
+    for (i = x + 32; i <= x + 64; i += 32) {
         func_80059F28(i, y, 0, 0, 1, 0, 0, 1, SPRITE_BATTLE_BIGBOARD);
         func_80059F28(i, y + 24, 0, 0, 1, 0, 0, 4, SPRITE_BATTLE_BIGBOARD);
         func_80059F28(i, y + 40, 0, 0, 1, 0, 0, 7, SPRITE_BATTLE_BIGBOARD);
@@ -6021,7 +6017,7 @@ void func_80098684(u8* arg0, u8* arg1, u8* arg2, u8* arg3, u8* arg4, u8* arg5) {
         *arg3 = 22;
         *arg4 = 200;
         *arg5 = 10;
-    } else{
+    } else {
         temp_f0 = (8 - (ABS2(temp_v0))) / (Eight);
         *arg0 = 220;
         *arg1 = 220;
@@ -6079,7 +6075,7 @@ void func_80098F50(CTTask* task) {
         func_800612F0(0);
         SetTextGradient_TopBottom(20, 100, 1, 255, 240, 220, 0, 255);
         PrintText(x + 20 + 32 + 10, y + 30, 0, 1, 12, 20, ParseIntToBase10(temp, resultChar), 1);
-    } else{
+    } else {
         SetTextGradient_LeftRight(1, 1, 1, 255, 1, 1, 1, 128);
         PrintText(x + 16, y + 32, 0, 1, 8, 16, "ＮＯ  ＤＡＴＡ！", 1);
     }
@@ -6256,8 +6252,7 @@ void func_8009ABF4(CTTask* arg0) {
     if (func_8008EC90() != 0) {
         if (arg0->unk54 == 1) {
             arg0->function = func_8009AC74;
-        }
-        else if (arg0->unk54 == 3) {
+        } else if (arg0->unk54 == 3) {
             arg0->function = func_8009AFFC;
             arg0->unk5E = 0;
             func_8008E9AC(0x20, 0, 0, 0, &arg0->unk5E);
@@ -6269,8 +6264,7 @@ void func_8009AC74(CTTask* arg0) {
     func_80099AF4(arg0);
     if (arg0->unk54 == 2) {
         arg0->function = func_8009ACC8;
-    }
-    else if (arg0->unk54 == 0) {
+    } else if (arg0->unk54 == 0) {
         arg0->function = func_8009ABF4;
     }
 }
@@ -6284,8 +6278,7 @@ void func_8009ACC8(CTTask* task) {
     if (SaveData_UpdateFile(task->unk6A, &gGameState) != 0) {
         task->function = func_8009AE38;
         task->unk_68 = 0x3C;
-    }
-    else {
+    } else {
         task->function = func_8009ADDC;
         gGameRecords.savedStageData.index = task->unk6A;
         D_801FC9A4 = 0;
@@ -6296,7 +6289,7 @@ void func_8009AD74(CTTask* task) {
     CTTask* var_v0 = gCTTaskHead;
     CTTask* var_v1 = var_v0->next;
 
-    while (var_v1 != NULL){
+    while (var_v1 != NULL) {
         if ((var_v0->runType == 3) && (task->unk6A == var_v0->unk_62)) {
             var_v1 = var_v0->next;
             var_v0->function = func_80099598;
@@ -6463,8 +6456,7 @@ void func_8009BC98(CTTask* arg0) {
 
     if (arg0->unk54 == 0xA) {
         arg0->function = func_8009BCF0;
-    }
-    else if (arg0->unk54 == 4) {
+    } else if (arg0->unk54 == 4) {
         arg0->function = func_8009BA38;
     }
 }
@@ -6560,7 +6552,7 @@ void func_8009C394(CTTask* task) {
     CTTask* newTask;
     CTTask* next;
 
-    for (newTask = gCTTaskHead, next = newTask->next; next != NULL; newTask = next, next = next->next){
+    for (newTask = gCTTaskHead, next = newTask->next; next != NULL; newTask = next, next = next->next) {
         if (newTask->runType == 3) {
             if (task->unk_64 == newTask->unk_62) {
                 newTask->function = func_800998CC;
@@ -6591,7 +6583,7 @@ void func_8009C644(CTTask* task) {
 
     for (at = gCTTaskHead, next = at->next;
         next != NULL;
-        at = next, next = next->next){
+        at = next, next = next->next) {
         if ((at->runType == 3) && (task->unk6A == at->unk_62)) {
             next = at->next;
             at->function = func_80099598;
@@ -6667,7 +6659,7 @@ void func_8009CBC0(void) {
     func_80059F28(0, 0, 0, 0, 1, 320, 240, 0, SPRITE_BLANK);
     func_800610B8();
     func_80059F28(48, 16, 0, 0, 1, 32, 32, 0, SPRITE_BATTLE_STAGETITLEBOARD);
-    for (i = 80; i < 209; i += 0x20){
+    for (i = 80; i < 209; i += 0x20) {
         func_80059F28(i, 16, 0, 0, 1, 32, 32, 1, SPRITE_BATTLE_STAGETITLEBOARD);
     }
     func_80059F28(240, 16, 0, 0, 1, 32, 32, 2, SPRITE_BATTLE_STAGETITLEBOARD);
@@ -6675,20 +6667,20 @@ void func_8009CBC0(void) {
     func_80059F28(256, 56, 0, 0, 1, 32, 24, 2, SPRITE_BATTLE_BIGBOARD);
     func_80059F28(32, 200, 0, 0, 1, 32, 24, 6, SPRITE_BATTLE_BIGBOARD);
     func_80059F28(256, 200, 0, 0, 1, 32, 24, 8, SPRITE_BATTLE_BIGBOARD);
-    for (i = 0x40; i < 225; i += 0x20){
+    for (i = 0x40; i < 225; i += 0x20) {
         func_80059F28(i, 56, 0, 0, 1, 32, 24, 1, SPRITE_BATTLE_BIGBOARD);
     }
-    for (i = 0x40; i != 0x100; i += 0x20){
+    for (i = 0x40; i != 0x100; i += 0x20) {
         func_80059F28(i, 200, 0, 0, 1, 32, 24, 7, SPRITE_BATTLE_BIGBOARD);
     }
-    for (j = 80; j < 177; j += 0x18){
+    for (j = 80; j < 177; j += 0x18) {
         func_80059F28(32, j, 0, 0, 1, 32, 24, 3, SPRITE_BATTLE_BIGBOARD);
     }
-    for (j = 80; j != 200; j += 0x18){
+    for (j = 80; j != 200; j += 0x18) {
         func_80059F28(256, j, 0, 0, 1, 32, 24, 5, SPRITE_BATTLE_BIGBOARD);
     }
-    for (i = 0x40; i != 0x100; i += 0x20){
-        for (j = 80; j != 200; j += 0x18){
+    for (i = 0x40; i != 0x100; i += 0x20) {
+        for (j = 80; j != 200; j += 0x18) {
             func_80059F28(i, j, 0, 0, 1, 32, 24, 4, SPRITE_BATTLE_BIGBOARD);
         }
     }
@@ -6698,8 +6690,8 @@ void func_8009CFA8(void) {
     s32 i, j;
 
     func_800610B8();
-    for (i = 0; i != 5; i++){
-        for (j = 0; j != 8; j++){
+    for (i = 0; i != 5; i++) {
+        for (j = 0; j != 8; j++) {
             func_800612F0(i);
             func_80059F28(j * 40, i * 48, 0, 0, 1, 0, 0, j, SPRITE_BATTLE_CHAMELEONBACKGROUND);
         }
@@ -6902,7 +6894,7 @@ void func_8009DB98(CTTask* arg0) {
     if (func_8008EC90() != 0) {
         head = gCTTaskHead;
         next = head->next;
-        while (next != NULL){
+        while (next != NULL) {
             if (head->runType == 2) {
                 head->unk4E = 0;
                 head->function = func_8009F314;
@@ -6969,7 +6961,7 @@ void func_8009DE1C(CTTask* task) {
     task->unk54 = 0;
     task->unk44 = 3;
     if (temp_t1->unk54 == 15) return;
-    while (temp_t1->unk94[task->unk_5C] != 0xFF){
+    while (temp_t1->unk94[task->unk_5C] != 0xFF) {
         task->unk_5C++;
         if ((task->unk_5C == 4) && (D_80200B2C == 0)) {
             task->unk_5C++;
@@ -7010,7 +7002,7 @@ void func_8009DE1C(CTTask* task) {
             task->unk_5C--;
         }
         PLAY_SFX(SFX_2A_unkSnd, 0, 0x10);
-        while (temp_t1->unk94[task->unk_5C] != 0xFF){
+        while (temp_t1->unk94[task->unk_5C] != 0xFF) {
             task->unk_5C--;
             if (task->unk_5C < 0) {
                 task->unk_5C = 5;
@@ -7035,7 +7027,7 @@ void func_8009DE1C(CTTask* task) {
             task->unk_5C = 0;
         }
         PLAY_SFX(SFX_2A_unkSnd, 0, 0x10);
-        while (temp_t1->unk94[task->unk_5C] != 0xFF){
+        while (temp_t1->unk94[task->unk_5C] != 0xFF) {
             task->unk_5C++;
             if ((task->unk_5C == 4) && (D_80200B2C == 0)) {
                 task->unk_5C++;
@@ -7078,7 +7070,7 @@ void func_8009E2B0(CTTask* arg0) {
 void func_8009E784(CTTask* task) {
     CTTask* newTask = task->unk58;
 
-    while (newTask->unk94[task->unk_5C] != 0xFF){
+    while (newTask->unk94[task->unk_5C] != 0xFF) {
         task->unk_5C++;
         if ((task->unk_5C == 4) && (D_80200B2C == 0)) {
             task->unk_5C++;
@@ -7322,7 +7314,7 @@ void func_800A0D90(void) {
     gLoadedSegments [1].base_address = (u32)gFrameBuffers - ALIGN16((u32)static0_VRAM_END - (u32)static0_VRAM);
     gLoadedSegments [1].end_address = (u32)gFrameBuffers; //TODO: is the a singular frame buffer or both?
     address = gLoadedSegments [1].base_address;
-    for (i = 8; i < 14; i++){
+    for (i = 8; i < 14; i++) {
         address = Segment_Load(i, address);
     }
     D_801FFB78 = address;
@@ -7397,7 +7389,7 @@ CTTask* func_800A18C8(void) {
 
     if (task == NULL) {
         DummiedPrintf("エラー\n");
-        while(1){}
+        while (1) {}
     }
     task->function = func_800A1944;
     return task;
@@ -7493,7 +7485,7 @@ CTTask* func_800A20CC(void) {
     task = CTTask_Alloc(1, 100, 0);
     if (!task) {
         DummiedPrintf("エラー\n"); // error
-        while(1){}
+        while (1) {}
     }
     task->function = func_800A2164;
     task->pos.x = 64.0f;
@@ -7613,7 +7605,7 @@ CTTask* func_800A2D84(void) {
 
     if (temp_v0 == NULL) {
         DummiedPrintf("エラー\n");
-        while(1){}
+        while (1) {}
     }
     temp_v0->function = func_800A2E18;
     temp_v0->rot.y = 1;
@@ -7684,7 +7676,7 @@ void func_800A3928(CTTask* task) {
         task->unk_62 = 15;
         if (gIsStereo != (gGameRecords.flags[1] & 1)) {
             task->function = func_800A3990;
-        } else{
+        } else {
             SetProcessType(GAME_MODE_TITLE_SCREEN);
         }
     }
@@ -7896,7 +7888,7 @@ CTTask* func_800A4BCC(CTTask* task) {
     newTask->rot.y = -45;
     newTask->unk58 = task;
     newTask->unk3C = 1;
-    while (func_8008D7FC(newTask) == 0){}
+    while (func_8008D7FC(newTask) == 0) {}
     func_8008EB08(32, 0, 0, 0, &newTask->unk_64, newTask->pos.x - 58, newTask->pos.y - 38, newTask->pos.x + 64, newTask->pos.y + 60, 121);
     return newTask;
 }
@@ -7949,12 +7941,12 @@ void Process_GameOver(void) {
     func_8008C094();
 }
 
-CTTask* func_800A5060(void){
+CTTask* func_800A5060(void) {
     CTTask* task = CTTask_Alloc(1, 0x64, NULL);
 
-    if(!task){
+    if (!task) {
         DummiedPrintf("エラー\n");
-        while(1){}
+        while (1) {}
     }
     task->function = func_800A50B4;
     return task;
@@ -8476,7 +8468,7 @@ s32 SaveData_Compare(u8 *arg0, u8 *arg1) {
     u8 *new_var = arg1;
 
     for (i = 0; i < 128; i++) {
-        if (arg0){}
+        if (arg0) {}
         if (arg0[i] != new_var[i]) {
             var_s7 = 1;
             do {
@@ -9515,8 +9507,7 @@ void AdjustRectToVec3(Rect3D* r, Vec3f vec) {
     if (vec.z < r->min.z) {
         r->min.z = vec.z;
         return;
-    }
-    else if (r->max.z < vec.z) {
+    } else if (r->max.z < vec.z) {
         r->max.z = vec.z;
     }
 }
@@ -9527,7 +9518,7 @@ void AdjustRectToVec3(Rect3D* r, Vec3f vec) {
  * @param r: Pointer to the rectangle to be expanded
  * @param s: Amount to expand the rectangle by
  */
-void Rect_Expand(Rect3D* r, f32 s){
+void Rect_Expand(Rect3D* r, f32 s) {
     r->min.x -= s;
     r->min.y -= s;
     r->min.z -= s;

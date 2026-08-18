@@ -739,7 +739,7 @@ void func_8002AE3C(void) {
             continue;
         }
 
-        switch(gActors[i].actorID) {
+        switch (gActors[i].actorID) {
             case R_HEART:
             case FALLING_R_HEART:
                 s1 = 19;
@@ -1144,7 +1144,7 @@ Gfx* func_8002C4E8(Gfx* gfxPos, s32 arg1, s32 arg2) {
         gDPPipeSync(gfxPos++);
     }
 
-    if (D_800FFEC0 != 0){
+    if (D_800FFEC0 != 0) {
         D_800FFEC0--;
     }
     return gfxPos;

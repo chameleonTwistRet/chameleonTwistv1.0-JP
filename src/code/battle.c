@@ -702,7 +702,7 @@ void func_80053FA0(s32 playerID) {
 
 void func_8005423C(void) {
     s32 i;
-    for (i = 0; i < 6; i++){
+    for (i = 0; i < 6; i++) {
         SetPlayerContextEyes(i, 0, 0);
     }
 }
@@ -819,7 +819,7 @@ void Battle_Update(void) {
 	s32 var_v0;
 	s32 var_v1;
 	s32 j;
-	if ((gCurrentStage != STAGE_VS) || (Battle_GameType == BATTLE_TYPE_NOTBATTLE)){return;}
+	if ((gCurrentStage != STAGE_VS) || (Battle_GameType == BATTLE_TYPE_NOTBATTLE)) {return;}
 	if (gCurrentZone >= 4) {
 		Battle_GameType = BATTLE_TYPE_TIME_TRIAL;
 	} else {

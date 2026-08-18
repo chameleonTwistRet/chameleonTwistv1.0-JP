@@ -95,7 +95,7 @@ FieldObjectBehaviourFuncs gFieldObjectBehaviourMap[] = {
     {0x00000023, func_800BDF2C, MoveOrbitChild},
     {0x00000024, func_800BE0D4, func_800BE1C4},
     {0x00000025, RegisterStaticMesh, UpdateStaticMesh},
-    // if([bhvIdx] >= 0x26U) { pass }
+    // if ([bhvIdx] >= 0x26U) { pass }
 };
 
 UnkData D_80108A5C[] = {
@@ -185,7 +185,7 @@ s32 func_800B07E4(void) {
     Actor* actor;
     s32 count = 0;
 
-    for (i = 0, actor = gActors; i != ARRAY_COUNT(gActors); actor++, i++){
+    for (i = 0, actor = gActors; i != ARRAY_COUNT(gActors); actor++, i++) {
         if ((actor->actorID == WHITE_BOMB) && (actor->actorState == 0)) {
             count++;
         }
@@ -365,7 +365,7 @@ void RegistShutter(Collider* arg0, RoomObject* arg1) {
     arg0->unkC4 = arg1->unk2C;
     D_802025B4 = 0;
     for (i = 0, colliderArray = &D_80240898;
-        i < gFieldCount; i++, colliderArray++){
+        i < gFieldCount; i++, colliderArray++) {
         realCollider = *colliderArray;
         if (realCollider->unk_10 == 28) {
             if (D_802025B4 >= 25) {
@@ -938,7 +938,7 @@ s32 GetRoomObjCount(RoomObject* obj) {
 
     end = 0;
 
-    while(IsRoomObjInvalid(obj) == FALSE){
+    while (IsRoomObjInvalid(obj) == FALSE) {
         end++;
         obj++;
     }
@@ -1159,7 +1159,7 @@ void func_800B4264(void) {
     s32 ifJL = StageCarrotAvailable(gCurrentStage) != STAGE_JUNGLE ? 1 : 2;
     s32 i;
 
-    for (i = 0,  collectableWrapper = D_802019A8; i != 0x80; i++, collectableWrapper++){
+    for (i = 0,  collectableWrapper = D_802019A8; i != 0x80; i++, collectableWrapper++) {
         if ((collectableWrapper->levelDataCollectable != NULL) && (collectableWrapper->levelDataCollectable->id == 0x64) && (ifJL != collectableWrapper->bitfield)) {
             collectableWrapper->bitfield = ifJL;
             if (ifJL == 2) {
@@ -1336,7 +1336,7 @@ void func_800B560C(s32 arg0) {
 
 void func_800B5640() {
     s32 i;
-    for (i = 0; i < D_802025B0; i++){
+    for (i = 0; i < D_802025B0; i++) {
         EraseField(&D_80236980[D_80202530[i]]);
     }
 }
@@ -2741,7 +2741,7 @@ void EraseZoneColliders(s32 zone) {
     Collider** currentCollider;
     s32 i;
 
-    for (i = 0, currentCollider = &D_80240898; i < gFieldCount; i++, currentCollider++){
+    for (i = 0, currentCollider = &D_80240898; i < gFieldCount; i++, currentCollider++) {
         if (zone == (*currentCollider)->unk_08) {
             EraseField(*currentCollider);
             //must be this way
@@ -2796,7 +2796,7 @@ void EraseZoneSwitchAreas(s32 zone) {
     s32 i;
 
     for (i = 0, var_s1 = &D_80240C98[i];
-        i < gSwitchAreaCount; i++, var_s1++){
+        i < gSwitchAreaCount; i++, var_s1++) {
         if (zone == (*var_s1)->inZone) {
             func_800BF4AC(*var_s1);
             //must be like this
@@ -2817,9 +2817,9 @@ void func_800BF84C(s32 room) {
     s32 limit = zone->rmActCount;
     RoomActor* actor = zone->actors;
 
-    for (i = 0; i < limit; i++, actor++){
-        if (actor->id == 13 || actor->id == 45 || zone->unk68 == 0 || actor->id != zone->unk84){
-            if(!IsBossStage() || !IsBossID(actor->id)) {
+    for (i = 0; i < limit; i++, actor++) {
+        if (actor->id == 13 || actor->id == 45 || zone->unk68 == 0 || actor->id != zone->unk84) {
+            if (!IsBossStage() || !IsBossID(actor->id)) {
                 func_800BF5E8(actor);
             }
         }
@@ -2902,7 +2902,7 @@ void ChameleonFromDoor(PlayerActor* player, s32 arg1, s32 arg2, s32 arg3, s32 ar
 void func_800C0AEC(void) {
     Actor* currentActor = gActors;
     s32 i = 0;
-    while (i != ARRAY_COUNT(gActors)){
+    while (i != ARRAY_COUNT(gActors)) {
         if ((IsNotPickup(currentActor) == 0) || (currentActor->actorState != 2)) {
             DespawnButterflyGroup(currentActor);
             func_800314E4(currentActor);
@@ -3002,7 +3002,7 @@ void func_800C1458(s32 arg0) {
         return;
     }
 
-    for (i = 0; i != ARRAY_COUNT(gPlayerActors); i++){
+    for (i = 0; i != ARRAY_COUNT(gPlayerActors); i++) {
         if ((gPlayerActors[i].active != 0) && (gPlayerActors[i].exists != 0)) {
             Zone_GetDoorPos(i, &gPlayerActors[i].pos.x, &gPlayerActors[i].pos.y, &gPlayerActors[i].pos.z);
             gPlayerActors[i].yAngle = ArcTan2Deg(-gPlayerActors[i].pos.x, gPlayerActors[i].pos.z);
@@ -3043,7 +3043,7 @@ void ComputeRoomBounds(s32 roomId, Field* room) {
     Rect3D bounds;
 
     firstMatch = 1;
-    for (i = 0, itr = &D_80240898; i < gFieldCount; i++){
+    for (i = 0, itr = &D_80240898; i < gFieldCount; i++) {
         collider = *itr;
         if (roomId == collider->unk_08) {
             if (firstMatch != 0) {
@@ -3445,7 +3445,7 @@ void func_800C38E0(SpriteActor* arg0) {
 
     curSpAct = arg0;
 
-    while (curSpAct->size >= 0){
+    while (curSpAct->size >= 0) {
         curSpAct->unk20 = IsPointInViewAreaFull(curSpAct->position.x, curSpAct->position.y, curSpAct->position.z, 6000);
         curSpAct++;
     }
