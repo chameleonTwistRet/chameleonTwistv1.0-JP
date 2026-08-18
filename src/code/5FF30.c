@@ -3934,7 +3934,7 @@ void func_8008F16C(void) {
         func_8008D114(&gGraphicsList[1 - gFramebufferIndex], 1 - gFramebufferIndex);
         gMainGfxPos = gGraphicsList[gFramebufferIndex].UnkGroup.dlist;
         gMainGfxPos = func_8008D168(gMainGfxPos, gFramebufferIndex, D_800FFDF0);
-        func_8004E784(gContMain, 4, 0, 0);
+        Controller_UpdateAll(gContMain, 4, 0, 0);
         Controller_ParseJoystick(gContMain);
         func_8008D060();
         gMainGfxPos = func_8008E314(gMainGfxPos, gTongues, gPlayerActors, gCameras, gFramebufferIndex);
@@ -6795,7 +6795,7 @@ void func_8009D1CC(CTTask* arg0) {
         D_80200B28[i] = 2;
         temp_v0->unk3C = 1.0f;
 
-        if (D_80175668[i] != -1) {
+        if (gContPortMap[i] != -1) {
             temp_v0->function = func_8009DE1C;
             temp_v0->unk44 = 3;
             temp_v0->unk72 = 1;
@@ -8478,15 +8478,15 @@ s32 SaveData_Compare(u8 *arg0, u8 *arg1) {
 }
 
 void SaveData_LoadFile(s32 fileIdx, SaveFile* arg1) {
-    osRecvMesg(&gEepromMsgQ, NULL, OS_MESG_NOBLOCK);
-    if (osEepromProbe(&gEepromMsgQ) != 1) {
+    osRecvMesg(&gSiMesgQ, NULL, OS_MESG_NOBLOCK);
+    if (osEepromProbe(&gSiMesgQ) != 1) {
         DummiedPrintf("ＥＥＰロムエラー \n");
     }
 
     DummiedPrintf("ロード開始\n");
 
     //assumes that the save files start at 0x0 in the eep file (0x180 is where SaveRecord starts)
-    if (osEepromLongRead(&gEepromMsgQ, SAVE_FILE_BLOCK_OFFSET(fileIdx), (u8*)arg1, sizeof(SaveFileData)) != 0) {
+    if (osEepromLongRead(&gSiMesgQ, SAVE_FILE_BLOCK_OFFSET(fileIdx), (u8*)arg1, sizeof(SaveFileData)) != 0) {
         DummiedPrintf("ＥＥＰロム読み込みエラー %d ブロック目から %d バイトを読めません\n", fileIdx, sizeof(SaveFileData));
     }
 
@@ -8494,14 +8494,14 @@ void SaveData_LoadFile(s32 fileIdx, SaveFile* arg1) {
 }
 
 void SaveData_LoadAllFiles(u8* arg0) {
-    osRecvMesg(&gEepromMsgQ, NULL, OS_MESG_NOBLOCK);
-    if (osEepromProbe(&gEepromMsgQ) != 1) {
+    osRecvMesg(&gSiMesgQ, NULL, OS_MESG_NOBLOCK);
+    if (osEepromProbe(&gSiMesgQ) != 1) {
         DummiedPrintf("ＥＥＰロムエラー \n");
     }
 
     DummiedPrintf("ロード開始\n");
 
-    if (osEepromLongRead(&gEepromMsgQ, 0, arg0, sizeof_member(SaveFileEep, fileData)) != 0) {
+    if (osEepromLongRead(&gSiMesgQ, 0, arg0, sizeof_member(SaveFileEep, fileData)) != 0) {
         DummiedPrintf("ＥＥＰロム読み込みエラー %d ブロック目から %d バイトを読めません\n", 0, sizeof_member(SaveFileEep, fileData));
     }
 
@@ -8509,14 +8509,14 @@ void SaveData_LoadAllFiles(u8* arg0) {
 }
 
 void SaveData_LoadRecords(SaveRecord* arg0) {
-    osRecvMesg(&gEepromMsgQ, NULL, OS_MESG_NOBLOCK);
-    if (osEepromProbe(&gEepromMsgQ) != 1) {
+    osRecvMesg(&gSiMesgQ, NULL, OS_MESG_NOBLOCK);
+    if (osEepromProbe(&gSiMesgQ) != 1) {
         DummiedPrintf("ＥＥＰロムエラー \n");
     }
     //"メインロード開始" ("main road start"?)
     DummiedPrintf("メインロード開始\n");
 
-    if (osEepromLongRead(&gEepromMsgQ, EEP_FILE_STRUCT_BLOCK_OFFSET(SaveFileEep, fileData), (u8*)arg0, sizeof(SaveRecord)) != 0) {
+    if (osEepromLongRead(&gSiMesgQ, EEP_FILE_STRUCT_BLOCK_OFFSET(SaveFileEep, fileData), (u8*)arg0, sizeof(SaveRecord)) != 0) {
         //"ＥＥＰロム読み込みエラー 共通部分(Main)から %d バイトを読めません"
         //("EEP ROM read error Cannot read %d bytes from common part (Main)")
         DummiedPrintf("ＥＥＰロム読み込みエラー 共通部分(Main)から %d バイトを読めません\n", sizeof(SaveRecord));
@@ -8534,16 +8534,16 @@ void SaveData_LoadRecords(SaveRecord* arg0) {
 void SaveData_SaveFile(s32 fileIdx, SaveFile* saveFile) {
     //"%d 番目のファイルにセーブ  %dバイト目\n"("saving to %d-th file, %d bytes"?)
     DummiedPrintf("%d 番目のファイルにセーブ  %dバイト目\n", fileIdx, SAVE_FILE_BLOCK_OFFSET(fileIdx));
-    osRecvMesg(&gEepromMsgQ, NULL, OS_MESG_NOBLOCK);
+    osRecvMesg(&gSiMesgQ, NULL, OS_MESG_NOBLOCK);
 
-    if (osEepromProbe(&gEepromMsgQ) != 1) {
+    if (osEepromProbe(&gSiMesgQ) != 1) {
         //"ＥＥＰロムエラー \n"("EEP rom error")
         DummiedPrintf("ＥＥＰロムエラー \n");
     }
     //"セーブ開始\n" ("start save")
     DummiedPrintf("セーブ開始\n");
 
-    if (osEepromLongWrite(&gEepromMsgQ, SAVE_FILE_BLOCK_OFFSET(fileIdx), (u8*)saveFile, sizeof(SaveFileData)) != 0) {
+    if (osEepromLongWrite(&gSiMesgQ, SAVE_FILE_BLOCK_OFFSET(fileIdx), (u8*)saveFile, sizeof(SaveFileData)) != 0) {
         //"ＥＥＰロム書き込みエラー \n"("EEProm write error")
         DummiedPrintf("ＥＥＰロム書き込みエラー \n");
     }
@@ -8582,15 +8582,15 @@ s32 SaveData_UpdateFile(s32 saveIndex, SaveFile* saveFile) {
 void SaveData_SaveRecords(void) {
     gGameRecords.flags[0] = SaveData_RecordChecksum();
 
-    osRecvMesg(&gEepromMsgQ, NULL, OS_MESG_NOBLOCK);
+    osRecvMesg(&gSiMesgQ, NULL, OS_MESG_NOBLOCK);
 
-    if (osEepromProbe(&gEepromMsgQ) != 1) {
+    if (osEepromProbe(&gSiMesgQ) != 1) {
         DummiedPrintf("ＥＥＰロムエラー \n");
     }
 
     DummiedPrintf("セーブ開始\n");
 
-    if (osEepromLongWrite(&gEepromMsgQ, member_offsetof(SaveFileEep, savedRecords) / EEPROM_BLOCK_SIZE, &gGameRecords.flags[0], sizeof(SaveRecord)) != 0) {
+    if (osEepromLongWrite(&gSiMesgQ, member_offsetof(SaveFileEep, savedRecords) / EEPROM_BLOCK_SIZE, &gGameRecords.flags[0], sizeof(SaveRecord)) != 0) {
         //"ＥＥＰロム書き込みエラー \n"("EEPRom write error")
         DummiedPrintf("ＥＥＰロム書き込みエラー \n");
     }
@@ -8837,7 +8837,7 @@ void func_800A93AC(ContMain* arg0) {
         if (gPlayerActors[i].active == FALSE) {
             continue;
         }
-        DummiedPrintf("{0x%04X,%d,%d},\n", D_80175650[i].button, D_80175650[i].stick_x, D_80175650[i].stick_y);
+        DummiedPrintf("{0x%04X,%d,%d},\n", gContPads[i].button, gContPads[i].stick_x, gContPads[i].stick_y);
     }
 }
 
@@ -8993,7 +8993,7 @@ void func_800AAB0C(s32 arg0) {
     gPlayerActors[1].active = 0;
     gPlayerActors[2].active = 0;
     gPlayerActors[3].active = 0;
-    D_80175668[0] = 0;
+    gContPortMap[0] = 0;
     func_8002E0CC();
     InitField();
     func_80056EB4();
@@ -9003,8 +9003,8 @@ void func_800AAB0C(s32 arg0) {
     func_80055FA4();
 
     for (i = 0; i < MAXCONTROLLERS; i++) { //TODO: unhardcode this for loop
-        D_801756C0[i] = 0;
-        D_80175678[i] = 0;
+        gContLastButtons[i] = 0;
+        gContSnapshotButtons[i] = 0;
     }
 
     gCurrentDemoTimer = 0x10A9;
@@ -9385,7 +9385,7 @@ s32 func_800AD980(void) {
     gPlayerActors->pos.z = D_80108768;
     Controller_StartRead();
     DemoGfx_DrawFrame(gMainGfxPos, &gGraphicsList[gFramebufferIndex], gFramebufferIndex);
-    func_8004E784(gContMain, gControllerNo, 0, 0);
+    Controller_UpdateAll(gContMain, gControllerNo, 0, 0);
     gMainGfxPos = func_8002C900(&gGraphicsList[1 - gFramebufferIndex], 1 - gFramebufferIndex);
     DemoGfx_SwapFB(gFramebufferIndex);
     gFramebufferIndex = 1 - gFramebufferIndex;
@@ -9399,8 +9399,8 @@ s32 func_800AD980(void) {
 void func_800ADE24(void) {
     Controller_Zero(&D_801FC9B8);
     Controller_Zero(gContMain);
-    *D_801756C0 = 0;
-    *D_80175678 = 0;
+    *gContLastButtons = 0;
+    *gContSnapshotButtons = 0;
     D_80200CA0 = 0;
     D_80200CA8 = 0;
 }
@@ -9415,7 +9415,7 @@ s32 func_800AE158(s32 arg0) {
     gPlayerActors->pos.z = D_8010878C;
     Controller_StartRead();
     DemoGfx_DrawFrame(gMainGfxPos, &gGraphicsList[gFramebufferIndex], gFramebufferIndex);
-    func_8004E784(gContMain, gControllerNo, NULL, NULL);
+    Controller_UpdateAll(gContMain, gControllerNo, NULL, NULL);
     func_8004DDE0();
     temp_v0 = func_80082714(D_80108784, D_80108788, D_8010878C, arg0);
     gMainGfxPos = func_8002C900(&gGraphicsList[1 - gFramebufferIndex], 1 - gFramebufferIndex);

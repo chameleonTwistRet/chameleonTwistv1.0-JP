@@ -7773,7 +7773,7 @@ void Effect_ControllerRumble_Update(Effect* effect, Gfx** pGfxPos) {
 
     s2 = ABS2(((++effect->spriteID) % 32) - 16); // BUG: effect->spriteID incremented twice
 
-    if (D_80175668[0] == -1) {
+    if (gContPortMap[0] == -1) {
         effect->unk5 = 0;
     } else if (RumblePakError > 0) {
         effect->unk5 = 1;
@@ -9401,7 +9401,7 @@ void func_8007AF58(void) {
 /**
  * @brief Initialise the Rumble Pak on every connected controller
  *
- * For each controller port that reported a pack (D_80176960), the Rumble Pak file system
+ * For each controller port that reported a pack (gContPakPresent), the Rumble Pak file system
  * is initialised against the serial message queue and that port's rumble state counters
  * are cleared.
  */
@@ -9409,10 +9409,10 @@ void func_8007B174(void) {
     s32 i;
 
     for (i = 0; i < MAXCONTROLLERS; i++) {
-        if (D_80176960[i] == 0) {
+        if (gContPakPresent[i] == 0) {
             continue;
         }
-        osMotorInit(&gEepromMsgQ, &gRumblePfs[i], i);
+        osMotorInit(&gSiMesgQ, &gRumblePfs[i], i);
         gUnkRumbleArray[i] = 0;
         D_80176980[i] = 0;
     }
@@ -9423,7 +9423,7 @@ void Rumble_StopAll(void) {
     s32 i;
 
     for (i = 0; i < MAXCONTROLLERS; i++) {
-        if (D_80176960[i] == 0) {
+        if (gContPakPresent[i] == 0) {
             continue;
         }
 
@@ -9434,7 +9434,7 @@ void Rumble_StopAll(void) {
 }
 
 void Rumble_AddTime(s32 arg0, s32 arg1) {
-    if (D_80176960[arg0] != 0) {
+    if (gContPakPresent[arg0] != 0) {
         if (arg1 < 0) {
             osMotorStop(&gRumblePfs[arg0]);
             return;

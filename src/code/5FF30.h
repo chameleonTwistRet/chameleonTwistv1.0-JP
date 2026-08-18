@@ -574,7 +574,7 @@ extern u8 D_800FF8DC;
 extern u8 D_800FF8E0;
 extern u8 D_800FF8E4;
 extern s32 perfectCode;
-extern OSContPad D_80175650[MAXCONTROLLERS];
+extern OSContPad gContPads[MAXCONTROLLERS];
 extern s32 D_801FCA08;
 extern s16 gCurrentDemo;
 extern s16 D_80100D64[];

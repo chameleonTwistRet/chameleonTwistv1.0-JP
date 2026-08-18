@@ -1305,7 +1305,7 @@ void func_8002CE54(void) {
     if (gLevelFlowState == 5) {
         D_80168D78[0] = 1;
         func_8004BC48(sp28);
-        func_8004E784(sp28, D_80168DA0, D_80168D78, sp28);
+        Controller_UpdateAll(sp28, D_80168DA0, D_80168D78, sp28);
         D_800FF8DC = 0;
         D_800FF8E0 = 0;
         D_800FF8E4 = 0;
@@ -1327,7 +1327,7 @@ void func_8002CE54(void) {
         } else {
             D_80168D78[0] = 0;
         }
-        func_8004E784(sp28, 4, D_80168D78, sp28);
+        Controller_UpdateAll(sp28, 4, D_80168D78, sp28);
     }
 
     func_8004DDE0();
@@ -1340,7 +1340,7 @@ void func_8002CE54(void) {
 
 void func_8002D080(void) {
     D_80174878 = -1;
-    gControllerNo = Controller_Init();   // @returned: number of controllers
+    gControllerNo = Controller_Init();
     gPlayerActors[0].active = 1;
     gPlayerActors[1].active = 0;
     gPlayerActors[2].active = 0;

@@ -496,7 +496,7 @@ void DemoGfx_DrawFrame(Gfx* arg0, GraphicStruct* arg1, s32 fbIndex);
 void DemoGfx_SwapFB(s32 fbIndex);
 void Video_SetTask(GraphicStruct* arg0, Gfx* arg1, s32 arg2);
 //298D0.c
-void func_8004E784(ContMain* arg0, s32 arg1, s32* arg2, ContMain* arg3);
+void Controller_UpdateAll(ContMain* arg0, s32 arg1, s32* arg2, ContMain* arg3);
 //8ADD0.c
 void func_800B4408(u8*, s16*);
 //84e0.c

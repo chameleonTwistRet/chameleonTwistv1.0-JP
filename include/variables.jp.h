@@ -219,7 +219,7 @@ extern s32 StageFlags[32]; //contextual-per-level flags
 extern s32 D_801748A0;
 extern s32 D_80174998;
 extern s32 gTimer;                                              // Timer: runs when a process starts
-extern OSMesgQueue gEepromMsgQ;
+extern OSMesgQueue gSiMesgQ;
 extern s32 Battle_TimeLeft;
 extern u8 gTextGradient[16]; //probably really RGBA32[4]
 extern f32 D_80176F50;
@@ -280,9 +280,9 @@ extern char D_8010ED5C[];
 extern char D_8010ED68[];
 extern char D_8010ED84[];
 extern char D_8010ED94[];
-extern s32 D_80175668[4];
-extern u16 D_80175678[4];
-extern u16 D_801756C0[4];
+extern s32 gContPortMap[4];
+extern u16 gContSnapshotButtons[4];
+extern u16 gContLastButtons[4];
 extern s16 D_801756C2;
 extern s16 D_801756C4;
 extern s16 D_801756C6;

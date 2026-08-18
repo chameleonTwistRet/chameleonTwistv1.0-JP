@@ -922,9 +922,9 @@ typedef struct unk_D_801FFB90 {
 } unk_D_801FFB90; //sizeof 0x14
 
 typedef struct ContMain {
-/* 0x00 */ u16 buttons0;
-/* 0x02 */ u16 buttons1;
-/* 0x04 */ u16 buttons2;
+/* 0x00 */ u16 buttons0; //held buttons
+/* 0x02 */ u16 buttons1; //pressed since the last Controller_SnapshotButtons
+/* 0x04 */ u16 buttons2; //pressed this frame
 /* 0x06 */ s16 stickX;
 /* 0x08 */ s16 stickY;
 /* 0x0A */ f32 stickAngle;

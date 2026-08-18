@@ -299,13 +299,13 @@ typedef struct chameleonEyeListEntry {
 
 /* extern symbols */
 extern chameleonEyeListEntry chameleonEyeList[6];
-extern s32 D_80176960[];
+extern s32 gContPakPresent[];
 extern s32 D_80176980[];
 extern s32 gUnkRumbleArray[];
 void osMotorStop(OSPfs *pfs);
 void RecordTime_SetTo(s32 arg0, TimeVal* arg1);
 void func_800BE2C0(void);
-extern s32 D_80176960[];
+extern s32 gContPakPresent[];
 extern s32 gRumbleTime[];
 extern f32 D_800FEA18;
 extern f32 D_800FEA1C;
