@@ -47,7 +47,7 @@ void PlaySfxInZoneDiagonal(Collider* arg0, s32 sfxID, s32 arg2, f32 arg3, f32 ar
     f32 xPos;
     f32 zPos;
     f32 temp_f0;
-    s32 zero = 0; 
+    s32 zero = 0;
     f32 sp44;
     f32 var_f12;
     Vec3f sp34;
@@ -57,7 +57,7 @@ void PlaySfxInZoneDiagonal(Collider* arg0, s32 sfxID, s32 arg2, f32 arg3, f32 ar
         xPos = gPlayerActors[0].pos.x - arg4;
         var_v0 = 1;
         temp_f0 = (zPos - xPos) * SQROOT_2_DIV_2;
-        
+
         if (temp_f0 < -(arg5 + arg7)) {
             var_v0 = 0;
         } else {
@@ -71,9 +71,9 @@ void PlaySfxInZoneDiagonal(Collider* arg0, s32 sfxID, s32 arg2, f32 arg3, f32 ar
                 var_v0 = 0;
             }
         }
-        
+
         temp_f0 = (zPos + xPos) * SQROOT_2_DIV_2;
-        
+
         if (temp_f0 < -(arg6 + arg8)) {
             var_v0 = 0;
         } else if (temp_f0 < -arg6) {
@@ -88,7 +88,7 @@ void PlaySfxInZoneDiagonal(Collider* arg0, s32 sfxID, s32 arg2, f32 arg3, f32 ar
 
         if (var_v0 != 0) {
             sp34.z = (arg4 * 1.0f) + (var_f12 - sp44) * SQROOT_2_DIV_2;
-            sp34.y = gPlayerActors[zero].pos.y; 
+            sp34.y = gPlayerActors[zero].pos.y;
             sp34.x = (arg3 * 1.0f) + (sp44 + var_f12) * SQROOT_2_DIV_2;
             func_80088698(PlaySoundEffect(sfxID, &sp34.z, &sp34.y, &sp34.x, 8, 0));
         }
@@ -123,11 +123,11 @@ void PlaySfxInZoneAxisAligned(Collider* arg0, s32 sfxID, s32 arg2, f32 arg3, f32
                 sp40 = arg5;
             } else {
                 var_v0 = 0;
-            }            
+            }
         }
-        
+
         temp_f2 = arg6 + arg8;
-        
+
         if (temp_f16 < -temp_f2) {
             var_v0 = 0;
         } else {

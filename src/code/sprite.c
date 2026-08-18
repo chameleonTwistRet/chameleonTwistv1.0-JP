@@ -14,11 +14,11 @@ extern u8 D_800F0D88[];
 extern u8 D_800F0D8C[];
 
 unkStruct16 D_800F0D90[5] = {
-{&Animations_unk2Pointers_Animp, &Animations_unk2Pointers_Animp, D_800F0D3C, 28, -10.0f},
-{&static0_chameleonAnims[0], &static0_chameleonAnims[0], D_800F0D58, 45, -30.0f},
-{&static0_chameleonAnims[0], &static0_chameleonAnims[0], D_800F0D88, 1, -30.0f},
-{&Animations_unk2Pointers_Animp, &Animations_unk2Pointers_Animp, D_800F0D8C, 1, -10.0f},
-{&Animations_unk1Pointers_Animp, &Animations_unk2Pointers_Animp, D_800F0D3C, 28, 0.0f}
+    {&Animations_unk2Pointers_Animp, &Animations_unk2Pointers_Animp, D_800F0D3C, 28, -10.0f},
+    {&static0_chameleonAnims[0], &static0_chameleonAnims[0], D_800F0D58, 45, -30.0f},
+    {&static0_chameleonAnims[0], &static0_chameleonAnims[0], D_800F0D88, 1, -30.0f},
+    {&Animations_unk2Pointers_Animp, &Animations_unk2Pointers_Animp, D_800F0D8C, 1, -10.0f},
+    {&Animations_unk1Pointers_Animp, &Animations_unk2Pointers_Animp, D_800F0D3C, 28, 0.0f}
 };
 
 unk_80052094_8 Battle_MsgReady[5] = {
@@ -524,140 +524,140 @@ char GC_Boss_Text_White[][TEXT_LINE_SIZE] = {
 char (*Dialogue[CHARA_TOTAL][20])[TEXT_LINE_SIZE] = {
     //Davy
     {
-    JL_IntroText,
-    AL_Intro_Text_Davy,
-    BL_Intro_Text,
-    KL_Intro_Text,
-    DC_Intro_Text,
-    GC_Intro_Text_Davy,
-    Training_Intro_Text_Davy,
-    Training_Room_1_Text,
-    Training_Room_4_Text,
-    Training_Room_2_Text,
-    Training_Room_5_Text,
-    Training_Room_3_Text,
-    JL_Boss_Text,
-    AL_Boss_Text,
-    BL_Boss_Text,
-    KL_Boss_Text,
-    DC_Boss_Text,
-    GC_Boss_Text_Davy,
-    NULL, NULL
+        JL_IntroText,
+        AL_Intro_Text_Davy,
+        BL_Intro_Text,
+        KL_Intro_Text,
+        DC_Intro_Text,
+        GC_Intro_Text_Davy,
+        Training_Intro_Text_Davy,
+        Training_Room_1_Text,
+        Training_Room_4_Text,
+        Training_Room_2_Text,
+        Training_Room_5_Text,
+        Training_Room_3_Text,
+        JL_Boss_Text,
+        AL_Boss_Text,
+        BL_Boss_Text,
+        KL_Boss_Text,
+        DC_Boss_Text,
+        GC_Boss_Text_Davy,
+        NULL, NULL
     },
 
     //Jack
     {
-    JL_IntroText,
-    AL_Intro_Text_Jack,
-    BL_Intro_Text,
-    KL_Intro_Text,
-    DC_Intro_Text,
-    GC_Intro_Text_Jack,
-    Training_Intro_Text_Jack,
-    Training_Room_1_Text,
-    Training_Room_4_Text,
-    Training_Room_2_Text,
-    Training_Room_5_Text,
-    Training_Room_3_Text,
-    JL_Boss_Text,
-    AL_Boss_Text,
-    BL_Boss_Text,
-    KL_Boss_Text,
-    DC_Boss_Text,
-    GC_Boss_Text_Jack,
-    NULL, NULL
+        JL_IntroText,
+        AL_Intro_Text_Jack,
+        BL_Intro_Text,
+        KL_Intro_Text,
+        DC_Intro_Text,
+        GC_Intro_Text_Jack,
+        Training_Intro_Text_Jack,
+        Training_Room_1_Text,
+        Training_Room_4_Text,
+        Training_Room_2_Text,
+        Training_Room_5_Text,
+        Training_Room_3_Text,
+        JL_Boss_Text,
+        AL_Boss_Text,
+        BL_Boss_Text,
+        KL_Boss_Text,
+        DC_Boss_Text,
+        GC_Boss_Text_Jack,
+        NULL, NULL
     },
 
     //Fred
     {
-    JL_IntroText,
-    AL_Intro_Text_Fred,
-    BL_Intro_Text,
-    KL_Intro_Text,
-    DC_Intro_Text,
-    GC_Intro_Text_Fred,
-    Training_Intro_Text_Fred,
-    Training_Room_1_Text,
-    Training_Room_4_Text,
-    Training_Room_2_Text,
-    Training_Room_5_Text,
-    Training_Room_3_Text,
-    JL_Boss_Text,
-    AL_Boss_Text,
-    BL_Boss_Text,
-    KL_Boss_Text,
-    DC_Boss_Text,
-    GC_Boss_Text_Fred,
-    NULL, NULL
+        JL_IntroText,
+        AL_Intro_Text_Fred,
+        BL_Intro_Text,
+        KL_Intro_Text,
+        DC_Intro_Text,
+        GC_Intro_Text_Fred,
+        Training_Intro_Text_Fred,
+        Training_Room_1_Text,
+        Training_Room_4_Text,
+        Training_Room_2_Text,
+        Training_Room_5_Text,
+        Training_Room_3_Text,
+        JL_Boss_Text,
+        AL_Boss_Text,
+        BL_Boss_Text,
+        KL_Boss_Text,
+        DC_Boss_Text,
+        GC_Boss_Text_Fred,
+        NULL, NULL
     },
 
     //Linda
     {
-    JL_IntroText,
-    AL_Intro_Text_Linda,
-    BL_Intro_Text,
-    KL_Intro_Text,
-    DC_Intro_Text,
-    GC_Intro_Text_Linda,
-    Training_Intro_Text_Linda,
-    Training_Room_1_Text,
-    Training_Room_4_Text,
-    Training_Room_2_Text,
-    Training_Room_5_Text,
-    Training_Room_3_Text,
-    JL_Boss_Text,
-    AL_Boss_Text,
-    BL_Boss_Text,
-    KL_Boss_Text,
-    DC_Boss_Text,
-    GC_Boss_Text_Linda,
-    NULL, NULL
+        JL_IntroText,
+        AL_Intro_Text_Linda,
+        BL_Intro_Text,
+        KL_Intro_Text,
+        DC_Intro_Text,
+        GC_Intro_Text_Linda,
+        Training_Intro_Text_Linda,
+        Training_Room_1_Text,
+        Training_Room_4_Text,
+        Training_Room_2_Text,
+        Training_Room_5_Text,
+        Training_Room_3_Text,
+        JL_Boss_Text,
+        AL_Boss_Text,
+        BL_Boss_Text,
+        KL_Boss_Text,
+        DC_Boss_Text,
+        GC_Boss_Text_Linda,
+        NULL, NULL
     },
 
     //Black
     {
-    JL_IntroText,
-    AL_Intro_Text_Black,
-    BL_Intro_Text,
-    KL_Intro_Text,
-    DC_Intro_Text,
-    GC_Intro_Text_Black,
-    Training_Intro_Text_Black,
-    Training_Room_1_Text,
-    Training_Room_4_Text,
-    Training_Room_2_Text,
-    Training_Room_5_Text,
-    Training_Room_3_Text,
-    JL_Boss_Text,
-    AL_Boss_Text,
-    BL_Boss_Text,
-    KL_Boss_Text,
-    DC_Boss_Text,
-    GC_Boss_Text_Black,
-    NULL, NULL
+        JL_IntroText,
+        AL_Intro_Text_Black,
+        BL_Intro_Text,
+        KL_Intro_Text,
+        DC_Intro_Text,
+        GC_Intro_Text_Black,
+        Training_Intro_Text_Black,
+        Training_Room_1_Text,
+        Training_Room_4_Text,
+        Training_Room_2_Text,
+        Training_Room_5_Text,
+        Training_Room_3_Text,
+        JL_Boss_Text,
+        AL_Boss_Text,
+        BL_Boss_Text,
+        KL_Boss_Text,
+        DC_Boss_Text,
+        GC_Boss_Text_Black,
+        NULL, NULL
     },
 
     //White
     {
-    JL_IntroText,
-    AL_Intro_Text_White,
-    BL_Intro_Text,
-    KL_Intro_Text,
-    DC_Intro_Text,
-    GC_Intro_Text_White,
-    Training_Intro_Text_White,
-    Training_Room_1_Text,
-    Training_Room_4_Text,
-    Training_Room_2_Text,
-    Training_Room_5_Text,
-    Training_Room_3_Text,
-    JL_Boss_Text,
-    AL_Boss_Text,
-    BL_Boss_Text,
-    KL_Boss_Text,
-    DC_Boss_Text,
-    GC_Boss_Text_White,
-    NULL, NULL
+        JL_IntroText,
+        AL_Intro_Text_White,
+        BL_Intro_Text,
+        KL_Intro_Text,
+        DC_Intro_Text,
+        GC_Intro_Text_White,
+        Training_Intro_Text_White,
+        Training_Room_1_Text,
+        Training_Room_4_Text,
+        Training_Room_2_Text,
+        Training_Room_5_Text,
+        Training_Room_3_Text,
+        JL_Boss_Text,
+        AL_Boss_Text,
+        BL_Boss_Text,
+        KL_Boss_Text,
+        DC_Boss_Text,
+        GC_Boss_Text_White,
+        NULL, NULL
     }
 
 };
@@ -756,93 +756,93 @@ char Unk2_EndingMove_Text[][TEXT_LINE_SIZE] = {
 char (*D_800F59B8[CHARA_TOTAL + 1][20])[TEXT_LINE_SIZE] = {
     //Davy
     {
-    ItsAnotherBeautifulDay_Text,
-    Rabbit_Busy_Busy_Text,
-    ThisIsNotGoingToGetUsThere_Text,
-    WhatCantWeMakeInTime_Text,
-    CuriousChameleon_Text,
-    Davy_EndingMove_Text,
-    Unk_EndingMove_Text,
-    Unk2_EndingMove_Text,
-    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL
+        ItsAnotherBeautifulDay_Text,
+        Rabbit_Busy_Busy_Text,
+        ThisIsNotGoingToGetUsThere_Text,
+        WhatCantWeMakeInTime_Text,
+        CuriousChameleon_Text,
+        Davy_EndingMove_Text,
+        Unk_EndingMove_Text,
+        Unk2_EndingMove_Text,
+        NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL
     },
 
     //Jack
     {
-    ItsAnotherBeautifulDay_Text,
-    Rabbit_Busy_Busy_Text,
-    ThisIsNotGoingToGetUsThere_Text,
-    WhatCantWeMakeInTime_Text,
-    CuriousChameleon_Text,
-    Jack_EndingMove_Text,
-    Unk_EndingMove_Text,
-    Unk2_EndingMove_Text,
-    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL
+        ItsAnotherBeautifulDay_Text,
+        Rabbit_Busy_Busy_Text,
+        ThisIsNotGoingToGetUsThere_Text,
+        WhatCantWeMakeInTime_Text,
+        CuriousChameleon_Text,
+        Jack_EndingMove_Text,
+        Unk_EndingMove_Text,
+        Unk2_EndingMove_Text,
+        NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL
     },
 
     //Fred
     {
-    ItsAnotherBeautifulDay_Text,
-    Rabbit_Busy_Busy_Text,
-    ThisIsNotGoingToGetUsThere_Text,
-    WhatCantWeMakeInTime_Text,
-    CuriousChameleon_Text,
-    Fred_EndingMove_Text,
-    Unk_EndingMove_Text,
-    Unk2_EndingMove_Text,
-    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL
+        ItsAnotherBeautifulDay_Text,
+        Rabbit_Busy_Busy_Text,
+        ThisIsNotGoingToGetUsThere_Text,
+        WhatCantWeMakeInTime_Text,
+        CuriousChameleon_Text,
+        Fred_EndingMove_Text,
+        Unk_EndingMove_Text,
+        Unk2_EndingMove_Text,
+        NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL
     },
 
     //Linda
     {
-    ItsAnotherBeautifulDay_Text,
-    Rabbit_Busy_Busy_Text,
-    ThisIsNotGoingToGetUsThere_Text,
-    WhatCantWeMakeInTime_Text,
-    CuriousChameleon_Text,
-    Linda_EndingMove_Text,
-    Unk_EndingMove_Text,
-    Unk2_EndingMove_Text,
-    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL
+        ItsAnotherBeautifulDay_Text,
+        Rabbit_Busy_Busy_Text,
+        ThisIsNotGoingToGetUsThere_Text,
+        WhatCantWeMakeInTime_Text,
+        CuriousChameleon_Text,
+        Linda_EndingMove_Text,
+        Unk_EndingMove_Text,
+        Unk2_EndingMove_Text,
+        NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL
     },
 
     //Black (?)
     {
-    ItsAnotherBeautifulDay_Text,
-    Rabbit_Busy_Busy_Text,
-    ThisIsNotGoingToGetUsThere_Text,
-    WhatCantWeMakeInTime_Text,
-    CuriousChameleon_Text,
-    Linda_EndingMove_Text,
-    Unk_EndingMove_Text,
-    Unk2_EndingMove_Text,
-    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL
+        ItsAnotherBeautifulDay_Text,
+        Rabbit_Busy_Busy_Text,
+        ThisIsNotGoingToGetUsThere_Text,
+        WhatCantWeMakeInTime_Text,
+        CuriousChameleon_Text,
+        Linda_EndingMove_Text,
+        Unk_EndingMove_Text,
+        Unk2_EndingMove_Text,
+        NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL
     },
 
     //White
     {
-    ItsAnotherBeautifulDay_Text,
-    Rabbit_Busy_Busy_Text,
-    ThisIsNotGoingToGetUsThere_Text,
-    WhatCantWeMakeInTime_Text,
-    CuriousChameleon_Text,
-    White_EndingMove_Text,
-    Unk_EndingMove_Text,
-    Unk2_EndingMove_Text,
-    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL
+        ItsAnotherBeautifulDay_Text,
+        Rabbit_Busy_Busy_Text,
+        ThisIsNotGoingToGetUsThere_Text,
+        WhatCantWeMakeInTime_Text,
+        CuriousChameleon_Text,
+        White_EndingMove_Text,
+        Unk_EndingMove_Text,
+        Unk2_EndingMove_Text,
+        NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL
     },
 
     //Unknown
     {
-    ItsAnotherBeautifulDay_Text,
-    Rabbit_Busy_Busy_Text,
-    ThisIsNotGoingToGetUsThere_Text,
-    WhatCantWeMakeInTime_Text,
-    CuriousChameleon_Text,
-    Black_EndingMove_Text,
-    Unk_EndingMove_Text,
-    Unk2_EndingMove_Text,
-    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL
+        ItsAnotherBeautifulDay_Text,
+        Rabbit_Busy_Busy_Text,
+        ThisIsNotGoingToGetUsThere_Text,
+        WhatCantWeMakeInTime_Text,
+        CuriousChameleon_Text,
+        Black_EndingMove_Text,
+        Unk_EndingMove_Text,
+        Unk2_EndingMove_Text,
+        NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL
     },
 };
 
@@ -982,32 +982,32 @@ Mtx D_800F68D0[5] = {
 
 //unused
 u8 D_800F6A10[64] = {
- 0, 1, 2, 3, 4, 5, 6, 7,
- 8, 9,10,11,12,13,14,15,
-16,17,18,19,20,21,22,23,
-24,25,26,27,28,29,30,31,
-32,33,34,35,36,37,38,39,
-40,41, 0, 0, 0, 1, 2, 1,
- 0, 1, 2, 3, 4, 5, 2, 3,
- 4, 5, 2, 3, 4, 5, 0, 0
+    0, 1, 2, 3, 4, 5, 6, 7,
+    8, 9,10,11,12,13,14,15,
+    16,17,18,19,20,21,22,23,
+    24,25,26,27,28,29,30,31,
+    32,33,34,35,36,37,38,39,
+    40,41, 0, 0, 0, 1, 2, 1,
+    0, 1, 2, 3, 4, 5, 2, 3,
+    4, 5, 2, 3, 4, 5, 0, 0
 };
 
 //static0_textBig_ia8_PNG
 char D_800F6A50[] = "　ＡＢＣＤＥＦＧＨＩＪＫＬＭＮＯＰＱＲＳＴＵＶＷＸＹＺ"
-                    "０１２３４５６７８９？！＆’”：（）／＋Ｘ＠〜ｘ−ｃ　";
+"０１２３４５６７８９？！＆’”：（）／＋Ｘ＠〜ｘ−ｃ　";
 
 //static0_textSmall_ia4_PNG
 char D_800F6AC0[] = "　アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマ"
-                    "ミムメモヤユヨラリルレロワヲンァィゥェォャュョガギグゲゴザジズゼ"
-                    "ゾダヂヅデドバビブベボパピプペポあいうえおかきくけこさしすせそた"
-                    "ちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをんぁぃ"
-                    "ぅぇぉゃゅょがぎぐげござじずぜぞだぢづでどばびぶべぼぱぴぷぺぽ０"
-                    "１２３４５６７８９？！＆”：（）．，−＋×÷＝「」〜ＡＢＣＤＥＦ"
-                    "ＧＨＩＪＫＬＭＮＯＰＱＲＳＴＵＶＷＸＹＺッっー続接状異動振下正用"
-                    "切源電技部屋上説明出真中舌敵度押匹台鬼火場回転高跳使頂歩逆立移杭"
-                    "次落戻始方向不思議世界入口体操作練習行床大菓子来最後奇妙手私足先"
-                    "’、。進地深数砂漠城通壁待受流落石要注意今日天気時間合何好心強追"
-                    "変身遊対戦狂暴怒攻撃当速得爆倒点全試玉以個持扉開必集巨岩弾楽前挿";
+"ミムメモヤユヨラリルレロワヲンァィゥェォャュョガギグゲゴザジズゼ"
+"ゾダヂヅデドバビブベボパピプペポあいうえおかきくけこさしすせそた"
+"ちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをんぁぃ"
+"ぅぇぉゃゅょがぎぐげござじずぜぞだぢづでどばびぶべぼぱぴぷぺぽ０"
+"１２３４５６７８９？！＆”：（）．，−＋×÷＝「」〜ＡＢＣＤＥＦ"
+"ＧＨＩＪＫＬＭＮＯＰＱＲＳＴＵＶＷＸＹＺッっー続接状異動振下正用"
+"切源電技部屋上説明出真中舌敵度押匹台鬼火場回転高跳使頂歩逆立移杭"
+"次落戻始方向不思議世界入口体操作練習行床大菓子来最後奇妙手私足先"
+"’、。進地深数砂漠城通壁待受流落石要注意今日天気時間合何好心強追"
+"変身遊対戦狂暴怒攻撃当速得爆倒点全試玉以個持扉開必集巨岩弾楽前挿";
 
 //extImages_symbols_ia8_PNG
 char D_800F6D84[] = "ＡＢＣＤＥＦＧＨＩＪＫＬＭＮＯＰＱＲＳＴＵＶＷＸＹＺ４６　";
@@ -1520,14 +1520,14 @@ u8 D_800F726C[116] = {
     6, 6, 6, 7,
     7, 7, 8, 8,
     8, 9, 9, 9,
-   10,10,10,11,
-   11,11, 1, 1,
+    10,10,10,11,
+    11,11, 1, 1,
     1, 2, 4, 6,
     8,10, 3, 5,
     7, 9,11, 2,
     4, 6, 8,10,
     3, 5, 7, 9,
-   11, 2, 4, 6,
+    11, 2, 4, 6,
     8,10, 3, 5,
     7, 9,11, 0,
     0, 0, 0, 0
@@ -1550,7 +1550,7 @@ u8 D_800F72F4[172] = {
     9,10, 0, 1,
     2, 3, 4, 5,
     6, 7, 8, 9,
-   10, 0, 1, 2,
+    10, 0, 1, 2,
     3, 4, 5, 6,
     7, 8, 9,10,
     0, 1, 2, 3,
@@ -1561,38 +1561,37 @@ u8 D_800F72F4[172] = {
     9,10, 0, 1,
     2, 3, 4, 5,
     6, 7, 8, 9,
-   10, 0, 0, 0,
+    10, 0, 0, 0,
     0, 0, 0,11,
-   12,13,14,15,
-   16,17,18,19,
-   20,21,22,23,
-   24,25,26,27,
-   28,29,30,30,
-   30,30,30,30,
-   30,30,30,30,
-   30,30,31,32,
-   33,34,35,35,
-   35,34,33,32,
-   31,31,31,31,
-   32,33,34,35,
-   35,35,34,33,
-   32,31,31,31,
-   32,33,34,35,
-   35,35,34,33,
-   32,31,31,31,
-   32,33,34,35,
-   35,35,34,33,
-   32,31,31,31,
-   31,31,30,28,
-   26,24,22,20,
-   18,16,14,12,
+    12,13,14,15,
+    16,17,18,19,
+    20,21,22,23,
+    24,25,26,27,
+    28,29,30,30,
+    30,30,30,30,
+    30,30,30,30,
+    30,30,31,32,
+    33,34,35,35,
+    35,34,33,32,
+    31,31,31,31,
+    32,33,34,35,
+    35,35,34,33,
+    32,31,31,31,
+    32,33,34,35,
+    35,35,34,33,
+    32,31,31,31,
+    32,33,34,35,
+    35,35,34,33,
+    32,31,31,31,
+    31,31,30,28,
+    26,24,22,20,
+    18,16,14,12,
     0, 0, 0, 0
 };
 
 char D_800F73A0[40] = "０１２３４５６７８９ＡＢＣＤＥＦＧ";
 
 #include "gSpriteListings.c"
-
 
 
 //weird sprite debug variable
@@ -1699,14 +1698,14 @@ s32 D_800FE164 = 0;
 
 //lookup table???
 s32 D_800FE168[8] = {
-1,
-10,
-100,
-1000,
-10000,
-100000,
-1000000,
-10000000
+    1,
+    10,
+    100,
+    1000,
+    10000,
+    100000,
+    1000000,
+    10000000
 };
 
 s32 D_800FE188 = 0;
@@ -1798,29 +1797,29 @@ s32 D_800FE2A8 = 0;
 s32 D_800FE2AC = -1;
 
 Vtx D_800FE2B0[10] = {
- { { { 200, 0, -200 }, 0, { 8160, -32 }, { 255, 55, 55, 255 } } },
- { { { 200, 0,  200 }, 0, { 8160,12256}, { 255, 55, 55, 255 } } },
- { { { 100, 0,  200 }, 0, { 6112,12256}, { 255, 55, 55, 255 } } },
- { { { 100, 0, -200 }, 0, { 6112, -32 }, { 255, 55, 55, 255 } } },
- { { {-200, 0,  200 }, 0, { -32 ,12256}, { 255, 55, 55, 255 } } },
- { { {   0, 0,  200 }, 0, { 4064,12256}, { 255, 55, 55, 255 } } },
- { { {   0, 0, -200 }, 0, { 4064, -32 }, { 255, 55, 55, 255 } } },
- { { {-100, 0,  200 }, 0, { 2016,12256}, { 255, 55, 55, 255 } } },
- { { {-200, 0, -200 }, 0, { -32 , -32 }, { 255, 55, 55, 255 } } },
- { { {-100, 0, -200 }, 0, { 2016, -32 }, { 255, 55, 55, 255 } } },
+    { { { 200, 0, -200 }, 0, { 8160, -32 }, { 255, 55, 55, 255 } } },
+    { { { 200, 0,  200 }, 0, { 8160,12256}, { 255, 55, 55, 255 } } },
+    { { { 100, 0,  200 }, 0, { 6112,12256}, { 255, 55, 55, 255 } } },
+    { { { 100, 0, -200 }, 0, { 6112, -32 }, { 255, 55, 55, 255 } } },
+    { { {-200, 0,  200 }, 0, { -32 ,12256}, { 255, 55, 55, 255 } } },
+    { { {   0, 0,  200 }, 0, { 4064,12256}, { 255, 55, 55, 255 } } },
+    { { {   0, 0, -200 }, 0, { 4064, -32 }, { 255, 55, 55, 255 } } },
+    { { {-100, 0,  200 }, 0, { 2016,12256}, { 255, 55, 55, 255 } } },
+    { { {-200, 0, -200 }, 0, { -32 , -32 }, { 255, 55, 55, 255 } } },
+    { { {-100, 0, -200 }, 0, { 2016, -32 }, { 255, 55, 55, 255 } } },
 };
 
 Vtx D_800FE350[10] = {
- { { { 200, 0, -200 }, 0, { 8160, -32 }, { 255, 55, 55, 255 } } },
- { { { 200, 0,  200 }, 0, { 8160,12256}, { 255, 55, 55, 255 } } },
- { { { 100, 0,  200 }, 0, { 6112,12256}, { 255, 55, 55, 255 } } },
- { { { 100, 0, -200 }, 0, { 6112, -32 }, { 255, 55, 55, 255 } } },
- { { {-200, 0,  200 }, 0, { -32 ,12256}, { 255, 55, 55, 255 } } },
- { { {   0, 0,  200 }, 0, { 4064,12256}, { 255, 55, 55, 255 } } },
- { { {   0, 0, -200 }, 0, { 4064, -32 }, { 255, 55, 55, 255 } } },
- { { {-100, 0,  200 }, 0, { 2016,12256}, { 255, 55, 55, 255 } } },
- { { {-200, 0, -200 }, 0, { -32 , -32 }, { 255, 55, 55, 255 } } },
- { { {-100, 0, -200 }, 0, { 2016, -32 }, { 255, 55, 55, 255 } } },
+    { { { 200, 0, -200 }, 0, { 8160, -32 }, { 255, 55, 55, 255 } } },
+    { { { 200, 0,  200 }, 0, { 8160,12256}, { 255, 55, 55, 255 } } },
+    { { { 100, 0,  200 }, 0, { 6112,12256}, { 255, 55, 55, 255 } } },
+    { { { 100, 0, -200 }, 0, { 6112, -32 }, { 255, 55, 55, 255 } } },
+    { { {-200, 0,  200 }, 0, { -32 ,12256}, { 255, 55, 55, 255 } } },
+    { { {   0, 0,  200 }, 0, { 4064,12256}, { 255, 55, 55, 255 } } },
+    { { {   0, 0, -200 }, 0, { 4064, -32 }, { 255, 55, 55, 255 } } },
+    { { {-100, 0,  200 }, 0, { 2016,12256}, { 255, 55, 55, 255 } } },
+    { { {-200, 0, -200 }, 0, { -32 , -32 }, { 255, 55, 55, 255 } } },
+    { { {-100, 0, -200 }, 0, { 2016, -32 }, { 255, 55, 55, 255 } } },
 };
 
 s32 D_800FE3F0 = 0;
@@ -1886,12 +1885,12 @@ extern TLut White_eyeR_ci8_PAL;
 extern TLut White_eyeL_ci8_PAL;
 
 chameleonEyeListEntry chameleonEyeList[6] = {
-{&Davy_eyeR_ci8_PNG, &Davy_eyeL_ci8_PNG, &Davy_eyeR_ci8_PAL, &Davy_eyeL_ci8_PAL},
-{&Jack_eyeR_ci8_PNG, &Jack_eyeL_ci8_PNG, &Jack_eyeR_ci8_PAL, &Jack_eyeL_ci8_PAL},
-{&Fred_eyeR_ci8_PNG, &Fred_eyeL_ci8_PNG, &Fred_eyeR_ci8_PAL, &Fred_eyeL_ci8_PAL},
-{&Linda_eyeR_ci8_PNG, &Linda_eyeL_ci8_PNG, &Linda_eyeR_ci8_PAL, &Linda_eyeL_ci8_PAL},
-{&Black_eyeR_ci8_PNG, &Black_eyeL_ci8_PNG, &Black_eyeR_ci8_PAL, &Black_eyeL_ci8_PAL},
-{&White_eyeR_ci8_PNG, &White_eyeL_ci8_PNG, &White_eyeR_ci8_PAL, &White_eyeL_ci8_PAL}
+    {&Davy_eyeR_ci8_PNG, &Davy_eyeL_ci8_PNG, &Davy_eyeR_ci8_PAL, &Davy_eyeL_ci8_PAL},
+    {&Jack_eyeR_ci8_PNG, &Jack_eyeL_ci8_PNG, &Jack_eyeR_ci8_PAL, &Jack_eyeL_ci8_PAL},
+    {&Fred_eyeR_ci8_PNG, &Fred_eyeL_ci8_PNG, &Fred_eyeR_ci8_PAL, &Fred_eyeL_ci8_PAL},
+    {&Linda_eyeR_ci8_PNG, &Linda_eyeL_ci8_PNG, &Linda_eyeR_ci8_PAL, &Linda_eyeL_ci8_PAL},
+    {&Black_eyeR_ci8_PNG, &Black_eyeL_ci8_PNG, &Black_eyeR_ci8_PAL, &Black_eyeL_ci8_PAL},
+    {&White_eyeR_ci8_PNG, &White_eyeL_ci8_PNG, &White_eyeR_ci8_PAL, &White_eyeL_ci8_PAL}
 };
 extern unsigned char LizardKong_face_ci4_PNG[];
 extern unsigned char LizardKong_face_ci4_PAL[];
@@ -1921,115 +1920,115 @@ RGBA32 D_800FE564[10] = {
 };
 
 u8 sTextGradientPalettes[] = {
-0, 0, 0, 192,
-0, 0, 0, 192,
-0, 0, 0, 192,
-0, 0, 0, 192,
+    0, 0, 0, 192,
+    0, 0, 0, 192,
+    0, 0, 0, 192,
+    0, 0, 0, 192,
 
-255, 255, 255, 255,
-255, 255, 0, 255,
-255, 255, 255, 255,
-255, 255, 0, 255,
+    255, 255, 255, 255,
+    255, 255, 0, 255,
+    255, 255, 255, 255,
+    255, 255, 0, 255,
 
-22, 200, 10, 255,
-220, 220, 1, 255,
-22, 200, 10, 255,
-220, 220, 1, 255,
+    22, 200, 10, 255,
+    220, 220, 1, 255,
+    22, 200, 10, 255,
+    220, 220, 1, 255,
 
-127, 127, 60, 255,
-30, 30, 20, 255,
-127, 127, 60, 255,
-30, 30, 20, 255,
+    127, 127, 60, 255,
+    30, 30, 20, 255,
+    127, 127, 60, 255,
+    30, 30, 20, 255,
 
-255, 10, 10, 255,
-200, 200, 0, 255,
-255, 10, 10, 255,
-200, 200, 0, 255,
+    255, 10, 10, 255,
+    200, 200, 0, 255,
+    255, 10, 10, 255,
+    200, 200, 0, 255,
 
-240, 220, 10, 255,
-20, 100, 1, 255,
-240, 220, 10, 255,
-20, 100, 1, 255,
+    240, 220, 10, 255,
+    20, 100, 1, 255,
+    240, 220, 10, 255,
+    20, 100, 1, 255,
 
-240, 220, 0, 255,
-20, 100, 1, 255,
-240, 220, 0, 255,
-20, 100, 1, 255,
+    240, 220, 0, 255,
+    20, 100, 1, 255,
+    240, 220, 0, 255,
+    20, 100, 1, 255,
 
-192, 64, 0, 255,
-255, 5, 0, 255,
-192, 64, 0, 255,
-255, 5, 0, 255,
+    192, 64, 0, 255,
+    255, 5, 0, 255,
+    192, 64, 0, 255,
+    255, 5, 0, 255,
 
-180, 250, 255, 255,
-0, 5, 255, 255,
-180, 250, 255, 255,
-0, 5, 255, 255,
+    180, 250, 255, 255,
+    0, 5, 255, 255,
+    180, 250, 255, 255,
+    0, 5, 255, 255,
 
-252, 250, 94, 255,
-200, 60, 1, 255,
-200, 60, 1, 255,
-252, 153, 40, 255,
+    252, 250, 94, 255,
+    200, 60, 1, 255,
+    200, 60, 1, 255,
+    252, 153, 40, 255,
 
-250, 250, 250, 255,
-40, 40, 40, 255,
-30, 30, 30, 255,
-180, 180, 180, 255,
+    250, 250, 250, 255,
+    40, 40, 40, 255,
+    30, 30, 30, 255,
+    180, 180, 180, 255,
 
-217, 167, 167, 255,
-104, 25, 25, 255,
-104, 25, 25, 255,
-135, 86, 86, 255,
+    217, 167, 167, 255,
+    104, 25, 25, 255,
+    104, 25, 25, 255,
+    135, 86, 86, 255,
 
-245, 248, 231, 255,
-142, 0, 27, 255,
-142, 0, 27, 255,
-197, 147, 187, 255,
+    245, 248, 231, 255,
+    142, 0, 27, 255,
+    142, 0, 27, 255,
+    197, 147, 187, 255,
 
-255, 255, 255, 255,
-100, 255, 255, 255,
-100, 255, 255, 255,
-100, 255, 255, 255,
+    255, 255, 255, 255,
+    100, 255, 255, 255,
+    100, 255, 255, 255,
+    100, 255, 255, 255,
 
-255, 255, 255, 255,
-82, 255, 50, 255,
-82, 255, 50, 255,
-82, 255, 50, 255,
+    255, 255, 255, 255,
+    82, 255, 50, 255,
+    82, 255, 50, 255,
+    82, 255, 50, 255,
 
-255, 255, 255, 255,
-255, 255, 0, 255,
-255, 255, 0, 255,
-255, 255, 0, 255,
+    255, 255, 255, 255,
+    255, 255, 0, 255,
+    255, 255, 0, 255,
+    255, 255, 0, 255,
 
-255, 255, 255, 255,
-255, 96, 0, 255,
-255, 96, 0, 255,
-255, 96, 0, 255,
+    255, 255, 255, 255,
+    255, 96, 0, 255,
+    255, 96, 0, 255,
+    255, 96, 0, 255,
 
-0, 192, 255, 255,
-255, 255, 255, 255,
-0, 192, 255, 255,
-255, 255, 255, 255,
+    0, 192, 255, 255,
+    255, 255, 255, 255,
+    0, 192, 255, 255,
+    255, 255, 255, 255,
 
-255, 255, 255, 255,
-255, 192, 0, 212,
-255, 255, 255, 255,
-255, 192, 0, 255,
+    255, 255, 255, 255,
+    255, 192, 0, 212,
+    255, 255, 255, 255,
+    255, 192, 0, 255,
 
-255, 128, 0, 255,
-255, 255, 128, 255,
-255, 128, 0, 255,
-255, 255, 128, 255,
+    255, 128, 0, 255,
+    255, 255, 128, 255,
+    255, 128, 0, 255,
+    255, 255, 128, 255,
 
-255, 255, 128, 255,
-255, 192, 0, 212,
-255, 255, 128, 255,
-255, 192, 0, 255,
+    255, 255, 128, 255,
+    255, 192, 0, 212,
+    255, 255, 128, 255,
+    255, 192, 0, 255,
 
-255, 255, 0, 255,
-255, 255, 0, 255,
-255, 255, 0, 255,
-255, 255, 0, 255,
+    255, 255, 0, 255,
+    255, 255, 0, 255,
+    255, 255, 0, 255,
+    255, 255, 0, 255,
 };
 
 u8 gLockContextEyes = 1;
@@ -2043,15 +2042,15 @@ s32 D_800FE708 = 1;
 Struct_800714C8 D_800FE70C = {{-1, -1, -1, -1, -1, -1}};
 
 u8 D_800FE724[] = {
-0xA3, 0xB0, 0xA3, 0xB1,
-0xA3, 0xB2, 0xA3, 0xB3,
-0xA3, 0xB4, 0xA3, 0xB5,
-0xA3, 0xB6, 0xA3, 0xB7,
-0xA3, 0xB8, 0xA3, 0xB9,
-0xA3, 0xC1, 0xA3, 0xC2,
-0xA3, 0xC3, 0xA3, 0xC4,
-0xA3, 0xC5, 0xA3, 0xC6,
-0x00, 0x00, 0x00, 0x00
+    0xA3, 0xB0, 0xA3, 0xB1,
+    0xA3, 0xB2, 0xA3, 0xB3,
+    0xA3, 0xB4, 0xA3, 0xB5,
+    0xA3, 0xB6, 0xA3, 0xB7,
+    0xA3, 0xB8, 0xA3, 0xB9,
+    0xA3, 0xC1, 0xA3, 0xC2,
+    0xA3, 0xC3, 0xA3, 0xC4,
+    0xA3, 0xC5, 0xA3, 0xC6,
+    0x00, 0x00, 0x00, 0x00
 };
 
 u8 D_800FE748 = 0;
@@ -2059,77 +2058,77 @@ u8 D_800FE748 = 0;
 s32 D_800FE74C = 0;
 
 unk_80052094_8 D_800FE750[] = {
-{2, 2},
-{0, 0},
-{0, 2},
-{7, 0},
-{4, 0},
-{7, 0},
-{3, 0},
-{4, 2}
+    {2, 2},
+    {0, 0},
+    {0, 2},
+    {7, 0},
+    {4, 0},
+    {7, 0},
+    {3, 0},
+    {4, 2}
 };
 
 u8 D_800FE790[] = {
-0x00, 0x00, 0x0D, 0x00,
-0x00, 0x0E, 0x00, 0x00,
-0xF6, 0x3C, 0x0B, 0xB8,
-0xF6, 0x3C, 0x00, 0x00,
-0xFF, 0xE0, 0xFF, 0xE0,
-0xFF, 0xFF, 0xFF, 0xFF,
-0x09, 0xC4, 0x0B, 0xB8,
-0xF6, 0x3C, 0x00, 0x00,
-0x0F, 0xE0, 0xFF, 0xE0,
-0xFF, 0xFF, 0xFF, 0xFF,
-0xF6, 0x3C, 0x0B, 0xB8,
-0x09, 0xC4, 0x00, 0x00,
-0xFF, 0xE0, 0x0F, 0xE0,
-0xFF, 0xFF, 0xFF, 0xFF,
-0x09, 0xC4, 0x0B, 0xB8,
-0x09, 0xC4, 0x00, 0x00,
-0x0F, 0xE0, 0x0F, 0xE0,
-0xFF, 0xFF, 0xFF, 0xFF
+    0x00, 0x00, 0x0D, 0x00,
+    0x00, 0x0E, 0x00, 0x00,
+    0xF6, 0x3C, 0x0B, 0xB8,
+    0xF6, 0x3C, 0x00, 0x00,
+    0xFF, 0xE0, 0xFF, 0xE0,
+    0xFF, 0xFF, 0xFF, 0xFF,
+    0x09, 0xC4, 0x0B, 0xB8,
+    0xF6, 0x3C, 0x00, 0x00,
+    0x0F, 0xE0, 0xFF, 0xE0,
+    0xFF, 0xFF, 0xFF, 0xFF,
+    0xF6, 0x3C, 0x0B, 0xB8,
+    0x09, 0xC4, 0x00, 0x00,
+    0xFF, 0xE0, 0x0F, 0xE0,
+    0xFF, 0xFF, 0xFF, 0xFF,
+    0x09, 0xC4, 0x0B, 0xB8,
+    0x09, 0xC4, 0x00, 0x00,
+    0x0F, 0xE0, 0x0F, 0xE0,
+    0xFF, 0xFF, 0xFF, 0xFF
 };
 
 Vtx D_800FE7D8_Global[15] = {
- { { { -50, 0, -30 }, 0, { -32, 4064 }, { 47, 117, 0, 255 } } },
- { { { 0, -20, 0 }, 0, { 8160, 8160 }, { 47, 117, 0, 255 } } },
- { { { -50, 0, 30 }, 0, { -32, 12256 }, { 47, 117, 0, 255 } } },
- { { { 0, 0, -60 }, 0, { 8159, -32 }, { 23, 118, 39, 255 } } },
- { { { 0, -20, 0 }, 0, { 8160, 8160 }, { 23, 118, 39, 255 } } },
- { { { -50, 0, -30 }, 0, { -32, 4064 }, { 23, 118, 39, 255 } } },
- { { { 50, 0, -30 }, 0, { 16352, 4064 }, { 232, 118, 39, 255 } } },
- { { { 0, -20, 0 }, 0, { 8160, 8160 }, { 232, 118, 39, 255 } } },
- { { { 0, 0, -60 }, 0, { 8159, -32 }, { 232, 118, 39, 255 } } },
- { { { 50, 0, 30 }, 0, { 16352, 12256 }, { 208, 117, 0, 255 } } },
- { { { 0, -20, 0 }, 0, { 8160, 8160 }, { 208, 117, 0, 255 } } },
- { { { 50, 0, -30 }, 0, { 16352, 4064 }, { 208, 117, 0, 255 } } },
- { { { 0, 0, 60 }, 0, { 8160, 16352 }, { 232, 118, 216, 255 } } },
- { { { 0, -20, 0 }, 0, { 8160, 8160 }, { 232, 118, 216, 255 } } },
- { { { 50, 0, 30 }, 0, { 16352, 12256 }, { 232, 118, 216, 255 } } }
+    { { { -50, 0, -30 }, 0, { -32, 4064 }, { 47, 117, 0, 255 } } },
+    { { { 0, -20, 0 }, 0, { 8160, 8160 }, { 47, 117, 0, 255 } } },
+    { { { -50, 0, 30 }, 0, { -32, 12256 }, { 47, 117, 0, 255 } } },
+    { { { 0, 0, -60 }, 0, { 8159, -32 }, { 23, 118, 39, 255 } } },
+    { { { 0, -20, 0 }, 0, { 8160, 8160 }, { 23, 118, 39, 255 } } },
+    { { { -50, 0, -30 }, 0, { -32, 4064 }, { 23, 118, 39, 255 } } },
+    { { { 50, 0, -30 }, 0, { 16352, 4064 }, { 232, 118, 39, 255 } } },
+    { { { 0, -20, 0 }, 0, { 8160, 8160 }, { 232, 118, 39, 255 } } },
+    { { { 0, 0, -60 }, 0, { 8159, -32 }, { 232, 118, 39, 255 } } },
+    { { { 50, 0, 30 }, 0, { 16352, 12256 }, { 208, 117, 0, 255 } } },
+    { { { 0, -20, 0 }, 0, { 8160, 8160 }, { 208, 117, 0, 255 } } },
+    { { { 50, 0, -30 }, 0, { 16352, 4064 }, { 208, 117, 0, 255 } } },
+    { { { 0, 0, 60 }, 0, { 8160, 16352 }, { 232, 118, 216, 255 } } },
+    { { { 0, -20, 0 }, 0, { 8160, 8160 }, { 232, 118, 216, 255 } } },
+    { { { 50, 0, 30 }, 0, { 16352, 12256 }, { 232, 118, 216, 255 } } }
 };
 
 Vtx D_800FE8C8_Global[21] = {
- { { { -50, 0, 30 }, 0, { -32, 12256 }, { 23, 118, 216, 255 } } },
- { { { 0, -20, 0 }, 0, { 8160, 8160 }, { 23, 118, 216, 255 } } },
- { { { 0, 0, 60 }, 0, { 8160, 16352 }, { 23, 118, 216, 255 } } },
- { { { -50, 0, -30 }, 0, { -32, 2016 }, { 47, 117, 0, 255 } } },
- { { { 0, -20, 0 }, 0, { 4064, 4064 }, { 47, 117, 0, 255 } } },
- { { { -50, 0, 30 }, 0, { -32, 6112 }, { 47, 117, 0, 255 } } },
- { { { 0, 0, -60 }, 0, { 4063, -32 }, { 23, 118, 39, 255 } } },
- { { { 0, -20, 0 }, 0, { 4064, 4064 }, { 23, 118, 39, 255 } } },
- { { { -50, 0, -30 }, 0, { -32, 2016 }, { 23, 118, 39, 255 } } },
- { { { 50, 0, -30 }, 0, { 8160, 2016 }, { 232, 118, 39, 255 } } },
- { { { 0, -20, 0 }, 0, { 4064, 4064 }, { 232, 118, 39, 255 } } },
- { { { 0, 0, -60 }, 0, { 4063, -32 }, { 232, 118, 39, 255 } } },
- { { { 50, 0, 30 }, 0, { 8160, 6112 }, { 208, 117, 0, 255 } } },
- { { { 0, -20, 0 }, 0, { 4064, 4064 }, { 208, 117, 0, 255 } } },
- { { { 50, 0, -30 }, 0, { 8160, 2016 }, { 208, 117, 0, 255 } } },
- { { { 0, 0, 60 }, 0, { 4064, 8160 }, { 232, 118, 216, 255 } } },
- { { { 0, -20, 0 }, 0, { 4064, 4064 }, { 232, 118, 216, 255 } } },
- { { { 50, 0, 30 }, 0, { 8160, 6112 }, { 232, 118, 216, 255 } } },
- { { { -50, 0, 30 }, 0, { -32, 6112 }, { 23, 118, 216, 255 } } },
- { { { 0, -20, 0 }, 0, { 4064, 4064 }, { 23, 118, 216, 255 } } },
- { { { 0, 0, 60 }, 0, { 4064, 8160 }, { 23, 118, 216, 255 } } }
+    { { { -50, 0, 30 }, 0, { -32, 12256 }, { 23, 118, 216, 255 } } },
+    { { { 0, -20, 0 }, 0, { 8160, 8160 }, { 23, 118, 216, 255 } } },
+    { { { 0, 0, 60 }, 0, { 8160, 16352 }, { 23, 118, 216, 255 } } },
+    { { { -50, 0, -30 }, 0, { -32, 2016 }, { 47, 117, 0, 255 } } },
+    { { { 0, -20, 0 }, 0, { 4064, 4064 }, { 47, 117, 0, 255 } } },
+    { { { -50, 0, 30 }, 0, { -32, 6112 }, { 47, 117, 0, 255 } } },
+    { { { 0, 0, -60 }, 0, { 4063, -32 }, { 23, 118, 39, 255 } } },
+    { { { 0, -20, 0 }, 0, { 4064, 4064 }, { 23, 118, 39, 255 } } },
+    { { { -50, 0, -30 }, 0, { -32, 2016 }, { 23, 118, 39, 255 } } },
+    { { { 50, 0, -30 }, 0, { 8160, 2016 }, { 232, 118, 39, 255 } } },
+    { { { 0, -20, 0 }, 0, { 4064, 4064 }, { 232, 118, 39, 255 } } },
+    { { { 0, 0, -60 }, 0, { 4063, -32 }, { 232, 118, 39, 255 } } },
+    { { { 50, 0, 30 }, 0, { 8160, 6112 }, { 208, 117, 0, 255 } } },
+    { { { 0, -20, 0 }, 0, { 4064, 4064 }, { 208, 117, 0, 255 } } },
+    { { { 50, 0, -30 }, 0, { 8160, 2016 }, { 208, 117, 0, 255 } } },
+    { { { 0, 0, 60 }, 0, { 4064, 8160 }, { 232, 118, 216, 255 } } },
+    { { { 0, -20, 0 }, 0, { 4064, 4064 }, { 232, 118, 216, 255 } } },
+    { { { 50, 0, 30 }, 0, { 8160, 6112 }, { 232, 118, 216, 255 } } },
+    { { { -50, 0, 30 }, 0, { -32, 6112 }, { 23, 118, 216, 255 } } },
+    { { { 0, -20, 0 }, 0, { 4064, 4064 }, { 23, 118, 216, 255 } } },
+    { { { 0, 0, 60 }, 0, { 4064, 8160 }, { 23, 118, 216, 255 } } }
 };
 
 f32 D_800FEA18 = 0;
@@ -2149,22 +2148,22 @@ f32 D_800FEA48 = 0;
 s32 gTrainingState = 0;
 
 s32 D_800FEA50[] = {
-0x186,
-0x258,
-0x258,
-0x1C2,
-0x258
+    0x186,
+    0x258,
+    0x258,
+    0x1C2,
+    0x258
 };
 
 f32 D_800FEA64[] = {
-0, 0, 0, 30, 0, -90, 1.399999976, 6,
-30, 1, 0, 0, 0, 0, 150, 0, 0, 0, 38,
-1, -90, 1.399999976, 6, 40, 1, 0, 0,
-0, 40, 100, 0, 0, 0, 120, 1, -90,
-1.399999976, 6, 40, 1, 0, 0, 0, -39,
-100, 0, 0, 0, 1, 1, -90, 1.399999976,
-6, 40, 1, 0, 0, 0, -39, 100, 0, 0, 0,
-0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+    0, 0, 0, 30, 0, -90, 1.399999976, 6,
+    30, 1, 0, 0, 0, 0, 150, 0, 0, 0, 38,
+    1, -90, 1.399999976, 6, 40, 1, 0, 0,
+    0, 40, 100, 0, 0, 0, 120, 1, -90,
+    1.399999976, 6, 40, 1, 0, 0, 0, -39,
+    100, 0, 0, 0, 1, 1, -90, 1.399999976,
+    6, 40, 1, 0, 0, 0, -39, 100, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
 };
 
 s32 gTrainingRoomTimer = 0;
@@ -2190,36 +2189,36 @@ f32 D_800FEBD0 = -1;
 Vec4f D_800FEBD4 = {0, 0, 0, 0};
 
 s32 D_800FEBE4[] = {
-1,
-10,
-100,
-1000,
-10000,
-100000,
-1000000,
-10000000,
+    1,
+    10,
+    100,
+    1000,
+    10000,
+    100000,
+    1000000,
+    10000000,
 };
 
 s32 D_800FEC04[] = {
-1,
-10,
-100,
-1000,
-10000,
-100000,
-1000000,
-10000000,
+    1,
+    10,
+    100,
+    1000,
+    10000,
+    100000,
+    1000000,
+    10000000,
 };
 
 s32 D_800FEC24[] = {
-1,
-10,
-100,
-1000,
-10000,
-100000,
-1000000,
-10000000,
+    1,
+    10,
+    100,
+    1000,
+    10000,
+    100000,
+    1000000,
+    10000000,
 };
 
 Mtx D_800FEC48 = IDENTITY;
@@ -3742,48 +3741,48 @@ Gfx* func_8005CA44(Gfx* gfxPos) {
         gSPDisplayList(gfxPos++, tile->unk_00);
 
         switch (tile->type) {
-            case COLORMODE_BLANK:
-                break;
-            case COLORMODE_BW:
-            case COLORMODE_IA4:
-                gDPLoadTextureTile_4b(gfxPos++, tile->raster, G_IM_FMT_IA, tile->width * tile->tileCountX, 0,
+        case COLORMODE_BLANK:
+            break;
+        case COLORMODE_BW:
+        case COLORMODE_IA4:
+            gDPLoadTextureTile_4b(gfxPos++, tile->raster, G_IM_FMT_IA, tile->width * tile->tileCountX, 0,
                                       ulx, uly, ulx + tile->width - 1, uly + tile->height - 1, 0,
                                       G_TX_CLAMP, G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
-                break;
-            case COLORMODE_RGBA32:
-                gDPLoadTextureTile(gfxPos++, tile->raster, G_IM_FMT_RGBA, G_IM_SIZ_32b, tile->width * tile->tileCountX, 0,
+            break;
+        case COLORMODE_RGBA32:
+            gDPLoadTextureTile(gfxPos++, tile->raster, G_IM_FMT_RGBA, G_IM_SIZ_32b, tile->width * tile->tileCountX, 0,
                                     ulx, uly, ulx + tile->width - 1, uly + tile->height - 1, 0,
                                     G_TX_CLAMP, G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
-                break;
-            case COLORMODE_IA8:
-                gDPLoadTextureTile(gfxPos++, tile->raster, G_IM_FMT_IA, G_IM_SIZ_8b, tile->width * tile->tileCountX, 0,
+            break;
+        case COLORMODE_IA8:
+            gDPLoadTextureTile(gfxPos++, tile->raster, G_IM_FMT_IA, G_IM_SIZ_8b, tile->width * tile->tileCountX, 0,
                                     ulx, uly, ulx + tile->width - 1, uly + tile->height - 1, 0,
                                     G_TX_CLAMP, G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
-                break;
-            case COLORMODE_IA16:
-                gDPLoadTextureTile(gfxPos++, tile->raster, G_IM_FMT_IA, G_IM_SIZ_16b, tile->width * tile->tileCountX, 0,
+            break;
+        case COLORMODE_IA16:
+            gDPLoadTextureTile(gfxPos++, tile->raster, G_IM_FMT_IA, G_IM_SIZ_16b, tile->width * tile->tileCountX, 0,
                                     ulx, uly, ulx + tile->width - 1, uly + tile->height - 1, 0,
                                     G_TX_CLAMP, G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
-                break;
-            case COLORMODE_RGBA16:
-                gDPLoadTextureTile(gfxPos++, tile->raster, G_IM_FMT_RGBA, G_IM_SIZ_16b, tile->width * tile->tileCountX, 0,
+            break;
+        case COLORMODE_RGBA16:
+            gDPLoadTextureTile(gfxPos++, tile->raster, G_IM_FMT_RGBA, G_IM_SIZ_16b, tile->width * tile->tileCountX, 0,
                                     ulx, uly, ulx + tile->width - 1, uly + tile->height - 1, 0,
                                     G_TX_CLAMP, G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
-                break;
-            case COLORMODE_CI4:
-                gDPLoadTLUT_pal256(gfxPos++, tile->palette);
-                gDPSetTextureLUT(gfxPos++, G_TT_RGBA16);
-                gDPLoadTextureTile_4b(gfxPos++, tile->raster, G_IM_FMT_CI, tile->width * tile->tileCountX, 0,
+            break;
+        case COLORMODE_CI4:
+            gDPLoadTLUT_pal256(gfxPos++, tile->palette);
+            gDPSetTextureLUT(gfxPos++, G_TT_RGBA16);
+            gDPLoadTextureTile_4b(gfxPos++, tile->raster, G_IM_FMT_CI, tile->width * tile->tileCountX, 0,
                                     ulx, uly, ulx + tile->width - 1, uly + tile->height - 1, 0,
                                     G_TX_CLAMP, G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
-                break;
-            case COLORMODE_CI8:
-                gDPLoadTLUT_pal256(gfxPos++, tile->palette);
-                gDPSetTextureLUT(gfxPos++, G_TT_RGBA16);
-                gDPLoadTextureTile(gfxPos++, tile->raster, G_IM_FMT_CI, G_IM_SIZ_8b, tile->width * tile->tileCountX, 0,
+            break;
+        case COLORMODE_CI8:
+            gDPLoadTLUT_pal256(gfxPos++, tile->palette);
+            gDPSetTextureLUT(gfxPos++, G_TT_RGBA16);
+            gDPLoadTextureTile(gfxPos++, tile->raster, G_IM_FMT_CI, G_IM_SIZ_8b, tile->width * tile->tileCountX, 0,
                                     ulx, uly, ulx + tile->width - 1, uly + tile->height - 1, 0,
                                     G_TX_CLAMP, G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
-                break;
+            break;
         }
 
         gDPSetPrimColor(gfxPos++, 0, 0, tile->prim.r, tile->prim.g, tile->prim.b, tile->prim.a);
@@ -3800,56 +3799,56 @@ Gfx* func_8005CA44(Gfx* gfxPos) {
         uly = ABS2(tile->tileIndexY * tile->height);
 
         switch (tile->type) {
-            case COLORMODE_BLANK:
-                gSPDisplayList(gfxPos++, tile->unk_00);
-                break;
-            case COLORMODE_BW:
-            case COLORMODE_IA4:
-                gSPDisplayList(gfxPos++, tile->unk_00);
-                gDPLoadTextureTile_4b(gfxPos++, tile->raster, G_IM_FMT_IA, tile->width * tile->tileCountX, 0,
+        case COLORMODE_BLANK:
+            gSPDisplayList(gfxPos++, tile->unk_00);
+            break;
+        case COLORMODE_BW:
+        case COLORMODE_IA4:
+            gSPDisplayList(gfxPos++, tile->unk_00);
+            gDPLoadTextureTile_4b(gfxPos++, tile->raster, G_IM_FMT_IA, tile->width * tile->tileCountX, 0,
                                       ulx, uly, ulx + tile->width - 1, uly + tile->height - 1, 0,
                                       G_TX_CLAMP, G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
-                break;
-            case COLORMODE_RGBA32:
-                gSPDisplayList(gfxPos++, tile->unk_00);
-                gDPLoadTextureTile(gfxPos++, tile->raster, G_IM_FMT_RGBA, G_IM_SIZ_32b, tile->width * tile->tileCountX, 0,
+            break;
+        case COLORMODE_RGBA32:
+            gSPDisplayList(gfxPos++, tile->unk_00);
+            gDPLoadTextureTile(gfxPos++, tile->raster, G_IM_FMT_RGBA, G_IM_SIZ_32b, tile->width * tile->tileCountX, 0,
                                     ulx, uly, ulx + tile->width - 1, uly + tile->height - 1, 0,
                                     G_TX_CLAMP, G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
-                break;
-            case COLORMODE_IA16:
-                gSPDisplayList(gfxPos++, tile->unk_00);
-                gDPLoadTextureTile(gfxPos++, tile->raster, G_IM_FMT_IA, G_IM_SIZ_16b, tile->width * tile->tileCountX, 0,
+            break;
+        case COLORMODE_IA16:
+            gSPDisplayList(gfxPos++, tile->unk_00);
+            gDPLoadTextureTile(gfxPos++, tile->raster, G_IM_FMT_IA, G_IM_SIZ_16b, tile->width * tile->tileCountX, 0,
                                     ulx, uly, ulx + tile->width - 1, uly + tile->height - 1, 0,
                                     G_TX_CLAMP, G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
-                break;
-            case COLORMODE_IA8:
-                gSPDisplayList(gfxPos++, tile->unk_00);
-                gDPLoadTextureTile(gfxPos++, tile->raster, G_IM_FMT_IA, G_IM_SIZ_8b, tile->width * tile->tileCountX, 0,
+            break;
+        case COLORMODE_IA8:
+            gSPDisplayList(gfxPos++, tile->unk_00);
+            gDPLoadTextureTile(gfxPos++, tile->raster, G_IM_FMT_IA, G_IM_SIZ_8b, tile->width * tile->tileCountX, 0,
                                     ulx, uly, ulx + tile->width - 1, uly + tile->height - 1, 0,
                                     G_TX_CLAMP, G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
-                break;
-            case COLORMODE_RGBA16:
-                gSPDisplayList(gfxPos++, tile->unk_00);
-                gDPLoadTextureTile(gfxPos++, tile->raster, G_IM_FMT_RGBA, G_IM_SIZ_16b, tile->width * tile->tileCountX, 0,
+            break;
+        case COLORMODE_RGBA16:
+            gSPDisplayList(gfxPos++, tile->unk_00);
+            gDPLoadTextureTile(gfxPos++, tile->raster, G_IM_FMT_RGBA, G_IM_SIZ_16b, tile->width * tile->tileCountX, 0,
                                     ulx, uly, ulx + tile->width - 1, uly + tile->height - 1, 0,
                                     G_TX_CLAMP, G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
-                break;
-            case COLORMODE_CI4:
-                gSPDisplayList(gfxPos++, tile->unk_00);
-                gDPLoadTLUT_pal256(gfxPos++, tile->palette);
-                gDPSetTextureLUT(gfxPos++, G_TT_RGBA16);
-                gDPLoadTextureTile_4b(gfxPos++, tile->raster, G_IM_FMT_CI, tile->width * tile->tileCountX, 0,
+            break;
+        case COLORMODE_CI4:
+            gSPDisplayList(gfxPos++, tile->unk_00);
+            gDPLoadTLUT_pal256(gfxPos++, tile->palette);
+            gDPSetTextureLUT(gfxPos++, G_TT_RGBA16);
+            gDPLoadTextureTile_4b(gfxPos++, tile->raster, G_IM_FMT_CI, tile->width * tile->tileCountX, 0,
                                     ulx, uly, ulx + tile->width - 1, uly + tile->height - 1, 0,
                                     G_TX_CLAMP, G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
-                break;
-            case COLORMODE_CI8:
-                gSPDisplayList(gfxPos++, tile->unk_00);
-                gDPLoadTLUT_pal256(gfxPos++, tile->palette);
-                gDPSetTextureLUT(gfxPos++, G_TT_RGBA16);
-                gDPLoadTextureTile(gfxPos++, tile->raster, G_IM_FMT_CI, G_IM_SIZ_8b, tile->width * tile->tileCountX, 0,
+            break;
+        case COLORMODE_CI8:
+            gSPDisplayList(gfxPos++, tile->unk_00);
+            gDPLoadTLUT_pal256(gfxPos++, tile->palette);
+            gDPSetTextureLUT(gfxPos++, G_TT_RGBA16);
+            gDPLoadTextureTile(gfxPos++, tile->raster, G_IM_FMT_CI, G_IM_SIZ_8b, tile->width * tile->tileCountX, 0,
                                     ulx, uly, ulx + tile->width - 1, uly + tile->height - 1, 0,
                                     G_TX_CLAMP, G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
-                break;
+            break;
         }
 
         gDPSetPrimColor(gfxPos++, 0, 0, tile->prim.r, tile->prim.g, tile->prim.b, tile->prim.a);
@@ -3876,56 +3875,56 @@ Gfx* func_8005CA44(Gfx* gfxPos) {
         uly = ABS2(tile->tileIndexY * tile->height);
 
         switch (tile->type) {
-            case COLORMODE_BLANK:
-                gSPDisplayList(gfxPos++, static0_spriteController9_Gfx);
-                break;
-            case COLORMODE_BW:
-            case COLORMODE_IA4:
-                gSPDisplayList(gfxPos++, static0_spriteController8_Gfx);
-                gDPLoadTextureTile_4b(gfxPos++, tile->raster, G_IM_FMT_IA, tile->width * tile->tileCountX, 0,
+        case COLORMODE_BLANK:
+            gSPDisplayList(gfxPos++, static0_spriteController9_Gfx);
+            break;
+        case COLORMODE_BW:
+        case COLORMODE_IA4:
+            gSPDisplayList(gfxPos++, static0_spriteController8_Gfx);
+            gDPLoadTextureTile_4b(gfxPos++, tile->raster, G_IM_FMT_IA, tile->width * tile->tileCountX, 0,
                                       ulx, uly, ulx + tile->width - 1, uly + tile->height - 1, 0,
                                       G_TX_CLAMP, G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
-                break;
-            case COLORMODE_RGBA32:
-                gSPDisplayList(gfxPos++, static0_spriteController8_Gfx);
-                gDPLoadTextureTile(gfxPos++, tile->raster, G_IM_FMT_RGBA, G_IM_SIZ_32b, tile->width * tile->tileCountX, 0,
+            break;
+        case COLORMODE_RGBA32:
+            gSPDisplayList(gfxPos++, static0_spriteController8_Gfx);
+            gDPLoadTextureTile(gfxPos++, tile->raster, G_IM_FMT_RGBA, G_IM_SIZ_32b, tile->width * tile->tileCountX, 0,
                                     ulx, uly, ulx + tile->width - 1, uly + tile->height - 1, 0,
                                     G_TX_CLAMP, G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
-                break;
-            case COLORMODE_IA8:
-                gSPDisplayList(gfxPos++, static0_spriteController8_Gfx);
-                gDPLoadTextureTile(gfxPos++, tile->raster, G_IM_FMT_IA, G_IM_SIZ_8b, tile->width * tile->tileCountX, 0,
+            break;
+        case COLORMODE_IA8:
+            gSPDisplayList(gfxPos++, static0_spriteController8_Gfx);
+            gDPLoadTextureTile(gfxPos++, tile->raster, G_IM_FMT_IA, G_IM_SIZ_8b, tile->width * tile->tileCountX, 0,
                                     ulx, uly, ulx + tile->width - 1, uly + tile->height - 1, 0,
                                     G_TX_CLAMP, G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
-                break;
-            case COLORMODE_IA16:
-                gSPDisplayList(gfxPos++, static0_spriteController8_Gfx);
-                gDPLoadTextureTile(gfxPos++, tile->raster, G_IM_FMT_IA, G_IM_SIZ_16b, tile->width * tile->tileCountX, 0,
+            break;
+        case COLORMODE_IA16:
+            gSPDisplayList(gfxPos++, static0_spriteController8_Gfx);
+            gDPLoadTextureTile(gfxPos++, tile->raster, G_IM_FMT_IA, G_IM_SIZ_16b, tile->width * tile->tileCountX, 0,
                                     ulx, uly, ulx + tile->width - 1, uly + tile->height - 1, 0,
                                     G_TX_CLAMP, G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
-                break;
-            case COLORMODE_RGBA16:
-                gSPDisplayList(gfxPos++, static0_spriteController8_Gfx);
-                gDPLoadTextureTile(gfxPos++, tile->raster, G_IM_FMT_RGBA, G_IM_SIZ_16b, tile->width * tile->tileCountX, 0,
+            break;
+        case COLORMODE_RGBA16:
+            gSPDisplayList(gfxPos++, static0_spriteController8_Gfx);
+            gDPLoadTextureTile(gfxPos++, tile->raster, G_IM_FMT_RGBA, G_IM_SIZ_16b, tile->width * tile->tileCountX, 0,
                                     ulx, uly, ulx + tile->width - 1, uly + tile->height - 1, 0,
                                     G_TX_CLAMP, G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
-                break;
-            case COLORMODE_CI4:
-                gSPDisplayList(gfxPos++, static0_spriteController8_Gfx);
-                gDPLoadTLUT_pal256(gfxPos++, tile->palette);
-                gDPSetTextureLUT(gfxPos++, G_TT_RGBA16);
-                gDPLoadTextureTile_4b(gfxPos++, tile->raster, G_IM_FMT_CI, tile->width * tile->tileCountX, 0,
+            break;
+        case COLORMODE_CI4:
+            gSPDisplayList(gfxPos++, static0_spriteController8_Gfx);
+            gDPLoadTLUT_pal256(gfxPos++, tile->palette);
+            gDPSetTextureLUT(gfxPos++, G_TT_RGBA16);
+            gDPLoadTextureTile_4b(gfxPos++, tile->raster, G_IM_FMT_CI, tile->width * tile->tileCountX, 0,
                                     ulx, uly, ulx + tile->width - 1, uly + tile->height - 1, 0,
                                     G_TX_CLAMP, G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
-                break;
-            case COLORMODE_CI8:
-                gSPDisplayList(gfxPos++, static0_spriteController8_Gfx);
-                gDPLoadTLUT_pal256(gfxPos++, tile->palette);
-                gDPSetTextureLUT(gfxPos++, G_TT_RGBA16);
-                gDPLoadTextureTile(gfxPos++, tile->raster, G_IM_FMT_CI, G_IM_SIZ_8b, tile->width * tile->tileCountX, 0,
+            break;
+        case COLORMODE_CI8:
+            gSPDisplayList(gfxPos++, static0_spriteController8_Gfx);
+            gDPLoadTLUT_pal256(gfxPos++, tile->palette);
+            gDPSetTextureLUT(gfxPos++, G_TT_RGBA16);
+            gDPLoadTextureTile(gfxPos++, tile->raster, G_IM_FMT_CI, G_IM_SIZ_8b, tile->width * tile->tileCountX, 0,
                                     ulx, uly, ulx + tile->width - 1, uly + tile->height - 1, 0,
                                     G_TX_CLAMP, G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
-                break;
+            break;
         }
 
         gDPSetPrimColor(gfxPos++, 0, 0, tile->prim.r, tile->prim.g, tile->prim.b, tile->prim.a);
@@ -3961,49 +3960,49 @@ Gfx* func_8005F408(Gfx* gfxPos) {
         uly = ABS2(tile->tileIndexY * tile->height);
 
         switch (tile->type) {
-            case COLORMODE_BLANK:
-                gDPSetCombineMode(gfxPos++, G_CC_PRIMITIVE, G_CC_PRIMITIVE);
-                break;
-            case COLORMODE_BW:
-            case COLORMODE_IA4:
-                gDPLoadTextureTile_4b(gfxPos++, tile->raster, G_IM_FMT_IA, tile->width * tile->tileCountX, 0,
+        case COLORMODE_BLANK:
+            gDPSetCombineMode(gfxPos++, G_CC_PRIMITIVE, G_CC_PRIMITIVE);
+            break;
+        case COLORMODE_BW:
+        case COLORMODE_IA4:
+            gDPLoadTextureTile_4b(gfxPos++, tile->raster, G_IM_FMT_IA, tile->width * tile->tileCountX, 0,
                                       ulx, uly, ulx + tile->width - 1, uly + tile->height - 1, 0,
                                       G_TX_CLAMP, G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
-                break;
-            case COLORMODE_RGBA32:
-                gDPLoadTextureTile(gfxPos++, tile->raster, G_IM_FMT_RGBA, G_IM_SIZ_32b, tile->width * tile->tileCountX, 0,
+            break;
+        case COLORMODE_RGBA32:
+            gDPLoadTextureTile(gfxPos++, tile->raster, G_IM_FMT_RGBA, G_IM_SIZ_32b, tile->width * tile->tileCountX, 0,
                                     ulx, uly, ulx + tile->width - 1, uly + tile->height - 1, 0,
                                     G_TX_CLAMP, G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
-                break;
-            case COLORMODE_IA8:
-                gDPLoadTextureTile(gfxPos++, tile->raster, G_IM_FMT_IA, G_IM_SIZ_8b, tile->width * tile->tileCountX, 0,
+            break;
+        case COLORMODE_IA8:
+            gDPLoadTextureTile(gfxPos++, tile->raster, G_IM_FMT_IA, G_IM_SIZ_8b, tile->width * tile->tileCountX, 0,
                                     ulx, uly, ulx + tile->width - 1, uly + tile->height - 1, 0,
                                     G_TX_CLAMP, G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
-                break;
-            case COLORMODE_IA16:
-                gDPLoadTextureTile(gfxPos++, tile->raster, G_IM_FMT_IA, G_IM_SIZ_16b, tile->width * tile->tileCountX, 0,
+            break;
+        case COLORMODE_IA16:
+            gDPLoadTextureTile(gfxPos++, tile->raster, G_IM_FMT_IA, G_IM_SIZ_16b, tile->width * tile->tileCountX, 0,
                                     ulx, uly, ulx + tile->width - 1, uly + tile->height - 1, 0,
                                     G_TX_CLAMP, G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
-                break;
-            case COLORMODE_RGBA16:
-                gDPLoadTextureTile(gfxPos++, tile->raster, G_IM_FMT_RGBA, G_IM_SIZ_16b, tile->width * tile->tileCountX, 0,
+            break;
+        case COLORMODE_RGBA16:
+            gDPLoadTextureTile(gfxPos++, tile->raster, G_IM_FMT_RGBA, G_IM_SIZ_16b, tile->width * tile->tileCountX, 0,
                                     ulx, uly, ulx + tile->width - 1, uly + tile->height - 1, 0,
                                     G_TX_CLAMP, G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
-                break;
-            case COLORMODE_CI4:
-                gDPLoadTLUT_pal256(gfxPos++, tile->palette);
-                gDPSetTextureLUT(gfxPos++, G_TT_RGBA16);
-                gDPLoadTextureTile_4b(gfxPos++, tile->raster, G_IM_FMT_CI, tile->width * tile->tileCountX, 0,
+            break;
+        case COLORMODE_CI4:
+            gDPLoadTLUT_pal256(gfxPos++, tile->palette);
+            gDPSetTextureLUT(gfxPos++, G_TT_RGBA16);
+            gDPLoadTextureTile_4b(gfxPos++, tile->raster, G_IM_FMT_CI, tile->width * tile->tileCountX, 0,
                                     ulx, uly, ulx + tile->width - 1, uly + tile->height - 1, 0,
                                     G_TX_CLAMP, G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
-                break;
-            case COLORMODE_CI8:
-                gDPLoadTLUT_pal256(gfxPos++, tile->palette);
-                gDPSetTextureLUT(gfxPos++, G_TT_RGBA16);
-                gDPLoadTextureTile(gfxPos++, tile->raster, G_IM_FMT_CI, G_IM_SIZ_8b, tile->width * tile->tileCountX, 0,
+            break;
+        case COLORMODE_CI8:
+            gDPLoadTLUT_pal256(gfxPos++, tile->palette);
+            gDPSetTextureLUT(gfxPos++, G_TT_RGBA16);
+            gDPLoadTextureTile(gfxPos++, tile->raster, G_IM_FMT_CI, G_IM_SIZ_8b, tile->width * tile->tileCountX, 0,
                                     ulx, uly, ulx + tile->width - 1, uly + tile->height - 1, 0,
                                     G_TX_CLAMP, G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
-                break;
+            break;
         }
 
         gDPSetPrimColor(gfxPos++, 0, 0, tile->prim.r, tile->prim.g, tile->prim.b, tile->prim.a);
@@ -4019,56 +4018,56 @@ Gfx* func_8005F408(Gfx* gfxPos) {
         uly = ABS2(tile->tileIndexY * tile->height);
 
         switch (tile->type) {
-            case COLORMODE_BLANK:
-                gSPDisplayList(gfxPos++, static0_spriteController9_Gfx);
-                break;
-            case COLORMODE_BW:
-            case COLORMODE_IA4:
-                gSPDisplayList(gfxPos++, static0_spriteController8_Gfx);
-                gDPLoadTextureTile_4b(gfxPos++, tile->raster, G_IM_FMT_IA, tile->width * tile->tileCountX, 0,
+        case COLORMODE_BLANK:
+            gSPDisplayList(gfxPos++, static0_spriteController9_Gfx);
+            break;
+        case COLORMODE_BW:
+        case COLORMODE_IA4:
+            gSPDisplayList(gfxPos++, static0_spriteController8_Gfx);
+            gDPLoadTextureTile_4b(gfxPos++, tile->raster, G_IM_FMT_IA, tile->width * tile->tileCountX, 0,
                                       ulx, uly, ulx + tile->width - 1, uly + tile->height - 1, 0,
                                       G_TX_CLAMP, G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
-                break;
-            case COLORMODE_RGBA32:
-                gSPDisplayList(gfxPos++, static0_spriteController8_Gfx);
-                gDPLoadTextureTile(gfxPos++, tile->raster, G_IM_FMT_RGBA, G_IM_SIZ_32b, tile->width * tile->tileCountX, 0,
+            break;
+        case COLORMODE_RGBA32:
+            gSPDisplayList(gfxPos++, static0_spriteController8_Gfx);
+            gDPLoadTextureTile(gfxPos++, tile->raster, G_IM_FMT_RGBA, G_IM_SIZ_32b, tile->width * tile->tileCountX, 0,
                                     ulx, uly, ulx + tile->width - 1, uly + tile->height - 1, 0,
                                     G_TX_CLAMP, G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
-                break;
-            case COLORMODE_IA8:
-                gSPDisplayList(gfxPos++, static0_spriteController8_Gfx);
-                gDPLoadTextureTile(gfxPos++, tile->raster, G_IM_FMT_IA, G_IM_SIZ_8b, tile->width * tile->tileCountX, 0,
+            break;
+        case COLORMODE_IA8:
+            gSPDisplayList(gfxPos++, static0_spriteController8_Gfx);
+            gDPLoadTextureTile(gfxPos++, tile->raster, G_IM_FMT_IA, G_IM_SIZ_8b, tile->width * tile->tileCountX, 0,
                                     ulx, uly, ulx + tile->width - 1, uly + tile->height - 1, 0,
                                     G_TX_CLAMP, G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
-                break;
-            case COLORMODE_IA16:
-                gSPDisplayList(gfxPos++, static0_spriteController8_Gfx);
-                gDPLoadTextureTile(gfxPos++, tile->raster, G_IM_FMT_IA, G_IM_SIZ_16b, tile->width * tile->tileCountX, 0,
+            break;
+        case COLORMODE_IA16:
+            gSPDisplayList(gfxPos++, static0_spriteController8_Gfx);
+            gDPLoadTextureTile(gfxPos++, tile->raster, G_IM_FMT_IA, G_IM_SIZ_16b, tile->width * tile->tileCountX, 0,
                                     ulx, uly, ulx + tile->width - 1, uly + tile->height - 1, 0,
                                     G_TX_CLAMP, G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
-                break;
-            case COLORMODE_RGBA16:
-                gSPDisplayList(gfxPos++, static0_spriteController8_Gfx);
-                gDPLoadTextureTile(gfxPos++, tile->raster, G_IM_FMT_RGBA, G_IM_SIZ_16b, tile->width * tile->tileCountX, 0,
+            break;
+        case COLORMODE_RGBA16:
+            gSPDisplayList(gfxPos++, static0_spriteController8_Gfx);
+            gDPLoadTextureTile(gfxPos++, tile->raster, G_IM_FMT_RGBA, G_IM_SIZ_16b, tile->width * tile->tileCountX, 0,
                                     ulx, uly, ulx + tile->width - 1, uly + tile->height - 1, 0,
                                     G_TX_CLAMP, G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
-                break;
-            case COLORMODE_CI4:
-                gSPDisplayList(gfxPos++, static0_spriteController8_Gfx);
-                gDPLoadTLUT_pal256(gfxPos++, tile->palette);
-                gDPSetTextureLUT(gfxPos++, G_TT_RGBA16);
-                gDPLoadTextureTile_4b(gfxPos++, tile->raster, G_IM_FMT_CI, tile->width * tile->tileCountX, 0,
+            break;
+        case COLORMODE_CI4:
+            gSPDisplayList(gfxPos++, static0_spriteController8_Gfx);
+            gDPLoadTLUT_pal256(gfxPos++, tile->palette);
+            gDPSetTextureLUT(gfxPos++, G_TT_RGBA16);
+            gDPLoadTextureTile_4b(gfxPos++, tile->raster, G_IM_FMT_CI, tile->width * tile->tileCountX, 0,
                                     ulx, uly, ulx + tile->width - 1, uly + tile->height - 1, 0,
                                     G_TX_CLAMP, G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
-                break;
-            case COLORMODE_CI8:
-                gSPDisplayList(gfxPos++, static0_spriteController8_Gfx);
-                gDPLoadTLUT_pal256(gfxPos++, tile->palette);
-                gDPSetTextureLUT(gfxPos++, G_TT_RGBA16);
-                gDPLoadTextureTile(gfxPos++, tile->raster, G_IM_FMT_CI, G_IM_SIZ_8b, tile->width * tile->tileCountX, 0,
+            break;
+        case COLORMODE_CI8:
+            gSPDisplayList(gfxPos++, static0_spriteController8_Gfx);
+            gDPLoadTLUT_pal256(gfxPos++, tile->palette);
+            gDPSetTextureLUT(gfxPos++, G_TT_RGBA16);
+            gDPLoadTextureTile(gfxPos++, tile->raster, G_IM_FMT_CI, G_IM_SIZ_8b, tile->width * tile->tileCountX, 0,
                                     ulx, uly, ulx + tile->width - 1, uly + tile->height - 1, 0,
                                     G_TX_CLAMP, G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
-                break;
+            break;
         }
 
         gDPSetPrimColor(gfxPos++, 0, 0, tile->prim.r, tile->prim.g, tile->prim.b, tile->prim.a);
@@ -4504,37 +4503,37 @@ void func_80062684(Effect* effect) {
 
     for (i = 0; i < effect->numParts; i++) {
         switch (parts[i].unk_25) {
-            case 0:
-                if (((s32)(parts[i].lifeTime * 50.0f) % 2) || D_800F687C == 0) {
-                    printUISprite(effect->pos.x + parts[i].pos.x, effect->pos.y + parts[i].pos.y, effect->pos.z + parts[i].pos.z, 0.0f, 0.5f, 0.0f, 0.0f, 0.0f, SPRITE_HITPOINT);
-                }
-                if (D_800F687C > 0) {
-                    parts[i].lifeTime += 1.0f / 30.0f;
-                }
-                if (parts[i].lifeTime >= 1.0f) {
-                    parts[i].lifeTime = 0.0f;
-                    parts[i].unk_25 = 2;
-                }
-                break;
-            case 1:
-                if ((s32)(parts[i].lifeTime * 50.0f) % 2) {
-                    printUISprite(effect->pos.x + parts[i].pos.x, effect->pos.y + parts[i].pos.y, effect->pos.z + parts[i].pos.z, (parts[i].lifeTime - 1.0f) * 6.28312, 0.5f, 0.0f, 0.0f, 0.0f, SPRITE_HITPOINT);
-                }
-                if (D_800F687C > 0) {
-                    parts[i].lifeTime += 1.0f / 30.0f;
-                }
-                if (parts[i].lifeTime >= 1.0f) {
-                    parts[i].lifeTime = 0.0f;
-                    parts[i].unk_25 = 3;
-                }
-                break;
-            case 2:
+        case 0:
+            if (((s32)(parts[i].lifeTime * 50.0f) % 2) || D_800F687C == 0) {
                 printUISprite(effect->pos.x + parts[i].pos.x, effect->pos.y + parts[i].pos.y, effect->pos.z + parts[i].pos.z, 0.0f, 0.5f, 0.0f, 0.0f, 0.0f, SPRITE_HITPOINT);
+            }
+            if (D_800F687C > 0) {
+                parts[i].lifeTime += 1.0f / 30.0f;
+            }
+            if (parts[i].lifeTime >= 1.0f) {
                 parts[i].lifeTime = 0.0f;
-                break;
-            case 3:
+                parts[i].unk_25 = 2;
+            }
+            break;
+        case 1:
+            if ((s32)(parts[i].lifeTime * 50.0f) % 2) {
+                printUISprite(effect->pos.x + parts[i].pos.x, effect->pos.y + parts[i].pos.y, effect->pos.z + parts[i].pos.z, (parts[i].lifeTime - 1.0f) * 6.28312, 0.5f, 0.0f, 0.0f, 0.0f, SPRITE_HITPOINT);
+            }
+            if (D_800F687C > 0) {
+                parts[i].lifeTime += 1.0f / 30.0f;
+            }
+            if (parts[i].lifeTime >= 1.0f) {
                 parts[i].lifeTime = 0.0f;
-                break;
+                parts[i].unk_25 = 3;
+            }
+            break;
+        case 2:
+            printUISprite(effect->pos.x + parts[i].pos.x, effect->pos.y + parts[i].pos.y, effect->pos.z + parts[i].pos.z, 0.0f, 0.5f, 0.0f, 0.0f, 0.0f, SPRITE_HITPOINT);
+            parts[i].lifeTime = 0.0f;
+            break;
+        case 3:
+            parts[i].lifeTime = 0.0f;
+            break;
         }
     }
 }
@@ -4588,44 +4587,44 @@ void Effect_HealthBar_Update(Effect* effect, Gfx** pGfxPos) {
     data->lastHP = *data->curHPPtr;
 
     switch (data->mode) {
-        case 0:
-            data->idleTime += 1.0f / 360.0f;
-            if (func_80062038() > 0) {
-                data->idleTime = 0.0f;
-            }
-            data->movePhase = 0.0f;
-            if (data->idleTime >= 1.0f) {
-                data->idleTime = 0.0f;
-                data->mode = 1;
-            }
-            break;
-        case 1:
-            func_8006122C(0.0f, sinf(data->movePhase * PI_SHORT / 2) * 50.0f - 50.0f);
-            func_80062684(effect);
-            func_80061240();
-            data->movePhase += 1.0f / 8.0f;
-            if (data->movePhase >= 1.0f) {
-                data->movePhase = 1.0f;
-                data->mode = 2;
-            }
-            break;
-        case 2:
-            func_80062684(effect);
+    case 0:
+        data->idleTime += 1.0f / 360.0f;
+        if (func_80062038() > 0) {
+            data->idleTime = 0.0f;
+        }
+        data->movePhase = 0.0f;
+        if (data->idleTime >= 1.0f) {
+            data->idleTime = 0.0f;
+            data->mode = 1;
+        }
+        break;
+    case 1:
+        func_8006122C(0.0f, sinf(data->movePhase * PI_SHORT / 2) * 50.0f - 50.0f);
+        func_80062684(effect);
+        func_80061240();
+        data->movePhase += 1.0f / 8.0f;
+        if (data->movePhase >= 1.0f) {
             data->movePhase = 1.0f;
-            if (func_80062038() > 30) {
-                data->mode = 3;
-            }
-            break;
-        case 3:
-            func_8006122C(0.0f, sinf(data->movePhase * PI_SHORT / 2) * 50.0f - 50.0f);
-            func_80062684(effect);
-            func_80061240();
-            data->movePhase -= 1.0f / 15.0f;
-            if (data->movePhase <= 0) {
-                data->movePhase = 0.0f;
-                data->mode = 0;
-            }
-            break;
+            data->mode = 2;
+        }
+        break;
+    case 2:
+        func_80062684(effect);
+        data->movePhase = 1.0f;
+        if (func_80062038() > 30) {
+            data->mode = 3;
+        }
+        break;
+    case 3:
+        func_8006122C(0.0f, sinf(data->movePhase * PI_SHORT / 2) * 50.0f - 50.0f);
+        func_80062684(effect);
+        func_80061240();
+        data->movePhase -= 1.0f / 15.0f;
+        if (data->movePhase <= 0) {
+            data->movePhase = 0.0f;
+            data->mode = 0;
+        }
+        break;
     }
 }
 
@@ -4696,21 +4695,12 @@ void func_80063160(Effect* effect, Gfx** pGfxPos) {
     if (D_800FE164 == TRUE || gCurrentStage == STAGE_TRAINING) {
         return;
     }
-    if (gCurrentStage != 0 &&
-        gCurrentStage != 1 &&
-        gCurrentStage != 2 &&
-        gCurrentStage != 3 &&
-        gCurrentStage != 4 &&
-        gCurrentStage != 5 &&
-        gCurrentStage != 9 &&
-        gCurrentStage != 10 &&
-        gCurrentStage != 11 &&
-        gCurrentStage != 12 &&
-        gCurrentStage != 13 &&
-        gCurrentStage != 14 &&
+    if (gCurrentStage != 0 && gCurrentStage != 1 && gCurrentStage != 2 && gCurrentStage != 3 &&
+        gCurrentStage != 4 && gCurrentStage != 5 && gCurrentStage != 9 && gCurrentStage != 10 &&
+        gCurrentStage != 11 && gCurrentStage != 12 && gCurrentStage != 13 && gCurrentStage != 14 &&
         D_80108790 != 0) {
         return;
-        }
+    }
 
     if (D_80176F58[0] == 1 && D_80176F58[1] == 1) {
         return;
@@ -4738,45 +4728,45 @@ void func_80063160(Effect* effect, Gfx** pGfxPos) {
 
     data->lastHP = *data->curHPPtr;
     switch (data->mode) {
-        case 0:
-            data->idleTime += 1.0f / 180.0f;
-            if (func_80062038() > 0) {
-                data->idleTime = 0.0f;
-            }
-            data->movePhase = 0.0f;
-            if (data->idleTime >= 1.0f) {
-                data->idleTime = 0.0f;
-                data->mode = 1;
-            }
-            break;
-        case 1:
-            func_8006122C(0.0f, sinf(data->movePhase * PI_SHORT / 2) * 50.0f - 50.0f);
-            func_80062E18(effect);
-            func_80061240();
-            data->movePhase += 1.0f / 8.0f;
-            if (data->movePhase >= 1.0f) {
-                func_8006202C();
-                data->movePhase = 1.0f;
-                data->mode = 2;
-            }
-            break;
-        case 2:
-            func_80062E18(effect);
+    case 0:
+        data->idleTime += 1.0f / 180.0f;
+        if (func_80062038() > 0) {
+            data->idleTime = 0.0f;
+        }
+        data->movePhase = 0.0f;
+        if (data->idleTime >= 1.0f) {
+            data->idleTime = 0.0f;
+            data->mode = 1;
+        }
+        break;
+    case 1:
+        func_8006122C(0.0f, sinf(data->movePhase * PI_SHORT / 2) * 50.0f - 50.0f);
+        func_80062E18(effect);
+        func_80061240();
+        data->movePhase += 1.0f / 8.0f;
+        if (data->movePhase >= 1.0f) {
+            func_8006202C();
             data->movePhase = 1.0f;
-            if (func_80062038() > 30) {
-                data->mode = 3;
-            }
-            break;
-        case 3:
-            func_8006122C(0.0f, sinf(data->movePhase * PI_SHORT / 2) * 50.0f - 50.0f);
-            func_80062E18(effect);
-            func_80061240();
-            data->movePhase -= 1.0f / 15.0f;
-            if (data->movePhase <= 0) {
-                data->movePhase = 0.0f;
-                data->mode = 0;
-            }
-            break;
+            data->mode = 2;
+        }
+        break;
+    case 2:
+        func_80062E18(effect);
+        data->movePhase = 1.0f;
+        if (func_80062038() > 30) {
+            data->mode = 3;
+        }
+        break;
+    case 3:
+        func_8006122C(0.0f, sinf(data->movePhase * PI_SHORT / 2) * 50.0f - 50.0f);
+        func_80062E18(effect);
+        func_80061240();
+        data->movePhase -= 1.0f / 15.0f;
+        if (data->movePhase <= 0) {
+            data->movePhase = 0.0f;
+            data->mode = 0;
+        }
+        break;
     }
 }
 #else
@@ -4903,66 +4893,66 @@ void Effect_TypeD_Update(Effect* effect, Gfx** pGfxPos) {
     s32 i;
 
     switch (data->unk_04) {
-        case 2:
-            for (i = 0; i < effect->numParts; i++) {
-                if (parts[i].lifeTime < 1.0f) {
-                    setPrimColor(data->color.r, data->color.g, data->color.b, data->color.a - parts[i].lifeTime * (data->color.a - 1));
-                    func_8005747C(parts[i].pos.x, parts[i].pos.y, parts[i].pos.z, data->sizeX / 3, data->sizeY / 3, effect->lifeTime, SPRITE_PUFF);
-
-                    if (D_800F687C > 0) {
-                        parts[i].vel.y += 1;
-
-                        parts[i].pos.x += parts[i].vel.x;
-                        parts[i].pos.y += parts[i].vel.y;
-                        parts[i].pos.z += parts[i].vel.z;
-
-                        parts[i].lifeTime += 100.0f / (effect->duration * RANDOM(60, 90));
-                    }
-                }
-            }
-            break;
-        case 0:
-            for (i = 0; i < effect->numParts; i++) {
-                if (parts[i].lifeTime < 1.0f) {
-                    setPrimColor(parts[i].sizeX * data->color.r, parts[i].sizeY * data->color.g, (1.0f - parts[i].lifeTime) * data->color.b, (1.0f - parts[i].lifeTime) * data->color.a);
-                    func_800612D8(sinf(parts[i].lifeTime * 6.28312 * 6) * 3.0f);
-                    func_8005747C(parts[i].pos.x, parts[i].pos.y, parts[i].pos.z, RANDOM(10, 20), RANDOM(10, 20), parts[i].lifeTime, SPRITE_BLANK);
-                }
+    case 2:
+        for (i = 0; i < effect->numParts; i++) {
+            if (parts[i].lifeTime < 1.0f) {
+                setPrimColor(data->color.r, data->color.g, data->color.b, data->color.a - parts[i].lifeTime * (data->color.a - 1));
+                func_8005747C(parts[i].pos.x, parts[i].pos.y, parts[i].pos.z, data->sizeX / 3, data->sizeY / 3, effect->lifeTime, SPRITE_PUFF);
 
                 if (D_800F687C > 0) {
+                    parts[i].vel.y += 1;
+
                     parts[i].pos.x += parts[i].vel.x;
                     parts[i].pos.y += parts[i].vel.y;
                     parts[i].pos.z += parts[i].vel.z;
 
-                    parts[i].vel.y -= 1;
-
-                    parts[i].lifeTime += 1.0f / effect->duration;
+                    parts[i].lifeTime += 100.0f / (effect->duration * RANDOM(60, 90));
                 }
             }
-            break;
-        case 1:
-        default:
-            if (effect->lifeTime != 0.0f && effect->lifeTime > 0.0f) {
-                setPrimColor(255, 255, 255, 64 - effect->lifeTime * 64);
-                printUISprite(0.0f, 0.0f, 0.0f, 0.0f, 1, 320.0f, 240.0f, 0.0f, SPRITE_BLANK);
+        }
+        break;
+    case 0:
+        for (i = 0; i < effect->numParts; i++) {
+            if (parts[i].lifeTime < 1.0f) {
+                setPrimColor(parts[i].sizeX * data->color.r, parts[i].sizeY * data->color.g, (1.0f - parts[i].lifeTime) * data->color.b, (1.0f - parts[i].lifeTime) * data->color.a);
+                func_800612D8(sinf(parts[i].lifeTime * 6.28312 * 6) * 3.0f);
+                func_8005747C(parts[i].pos.x, parts[i].pos.y, parts[i].pos.z, RANDOM(10, 20), RANDOM(10, 20), parts[i].lifeTime, SPRITE_BLANK);
             }
 
-            for (i = 0; i < effect->numParts; i++) {
-                if (parts[i].lifeTime < 1.0f) {
-                    setPrimColor((1.0f - parts[i].lifeTime) * data->color.r, (1.0f - parts[i].lifeTime) * data->color.g, (1.0f - parts[i].lifeTime) * data->color.b, (1.0f - parts[i].lifeTime) * data->color.a);
-                    func_800612D8(sinf(parts[i].lifeTime * 6.28312 * 6) * 3.0f);
-                    func_8005747C(parts[i].pos.x, parts[i].pos.y, parts[i].pos.z, 0.0f, 0.0f, parts[i].lifeTime, SPRITE_STAR2);
-                }
+            if (D_800F687C > 0) {
+                parts[i].pos.x += parts[i].vel.x;
+                parts[i].pos.y += parts[i].vel.y;
+                parts[i].pos.z += parts[i].vel.z;
 
-                if (D_800F687C > 0) {
-                    parts[i].pos.x += parts[i].vel.x;
-                    parts[i].pos.y += parts[i].vel.y;
-                    parts[i].pos.z += parts[i].vel.z;
+                parts[i].vel.y -= 1;
 
-                    parts[i].lifeTime += 1.0f / effect->duration;
-                }
+                parts[i].lifeTime += 1.0f / effect->duration;
             }
-            break;
+        }
+        break;
+    case 1:
+    default:
+        if (effect->lifeTime != 0.0f && effect->lifeTime > 0.0f) {
+            setPrimColor(255, 255, 255, 64 - effect->lifeTime * 64);
+            printUISprite(0.0f, 0.0f, 0.0f, 0.0f, 1, 320.0f, 240.0f, 0.0f, SPRITE_BLANK);
+        }
+
+        for (i = 0; i < effect->numParts; i++) {
+            if (parts[i].lifeTime < 1.0f) {
+                setPrimColor((1.0f - parts[i].lifeTime) * data->color.r, (1.0f - parts[i].lifeTime) * data->color.g, (1.0f - parts[i].lifeTime) * data->color.b, (1.0f - parts[i].lifeTime) * data->color.a);
+                func_800612D8(sinf(parts[i].lifeTime * 6.28312 * 6) * 3.0f);
+                func_8005747C(parts[i].pos.x, parts[i].pos.y, parts[i].pos.z, 0.0f, 0.0f, parts[i].lifeTime, SPRITE_STAR2);
+            }
+
+            if (D_800F687C > 0) {
+                parts[i].pos.x += parts[i].vel.x;
+                parts[i].pos.y += parts[i].vel.y;
+                parts[i].pos.z += parts[i].vel.z;
+
+                parts[i].lifeTime += 1.0f / effect->duration;
+            }
+        }
+        break;
     }
 
     if (D_800F687C > 0) {
@@ -5791,36 +5781,36 @@ void Effect_TypeU_Update(Effect* effect, Gfx** pGfxPos) {
 
     func_800610B8();
     switch (effect->spriteID) {
-        case 0:
-            setPrimColor(255, 255, 150, 80.0f * sinf(effect->lifeTime * PI_SHORT));
-            break;
-        case 1:
-            setPrimColor(150, 255, 255, 80.0f * sinf(effect->lifeTime * PI_SHORT));
-            break;
-        case 2:
-            setPrimColor(255, 200, 255, 80.0f * sinf(effect->lifeTime * PI_SHORT));
-            break;
-        case 3:
-            setPrimColor(255, 220, 200, 80.0f * sinf(effect->lifeTime * PI_SHORT));
-            break;
-        case 4:
-            setPrimColor(200, 255, 220, 80.0f * sinf(effect->lifeTime * PI_SHORT));
-            break;
-        case 5:
-            setPrimColor(200, 255, 255, 140);
-            break;
-        case 6:
-            setPrimColor(200, 200, 255, 140);
-            break;
-        case 7:
-            setPrimColor(255, 200, 255, 140);
-            break;
-        case 8:
-            setPrimColor(255, 255, 200, 140);
-            break;
-        default:
-            setPrimColor(200, 255, 200, 140);
-            break;
+    case 0:
+        setPrimColor(255, 255, 150, 80.0f * sinf(effect->lifeTime * PI_SHORT));
+        break;
+    case 1:
+        setPrimColor(150, 255, 255, 80.0f * sinf(effect->lifeTime * PI_SHORT));
+        break;
+    case 2:
+        setPrimColor(255, 200, 255, 80.0f * sinf(effect->lifeTime * PI_SHORT));
+        break;
+    case 3:
+        setPrimColor(255, 220, 200, 80.0f * sinf(effect->lifeTime * PI_SHORT));
+        break;
+    case 4:
+        setPrimColor(200, 255, 220, 80.0f * sinf(effect->lifeTime * PI_SHORT));
+        break;
+    case 5:
+        setPrimColor(200, 255, 255, 140);
+        break;
+    case 6:
+        setPrimColor(200, 200, 255, 140);
+        break;
+    case 7:
+        setPrimColor(255, 200, 255, 140);
+        break;
+    case 8:
+        setPrimColor(255, 255, 200, 140);
+        break;
+    default:
+        setPrimColor(200, 255, 200, 140);
+        break;
     }
 
     func_8005747C(effect->pos.x, effect->pos.y, effect->pos.z, effect->sizeX, effect->sizeY, effect->lifeTime, SPRITE_HEXAGON);
@@ -6092,7 +6082,7 @@ void SetPlayerEyes(s32 spriteIndex, s32 whichEye, s32 eyeIndex) {
     s32 size;
     enum eye {
         BOTH = 0,
-        RIGHT,
+            RIGHT,
         LEFT
     };
     switch (whichEye) {                                 /* irregular */
@@ -6142,31 +6132,31 @@ void Effect_PlayerEyes_Update(Effect* effect, Gfx** pGfxPos) {
         effect->lifeTime += effect->duration;
 
         switch ((s32)effect->pos.x) {
-            case 0:
-                if (effect->lifeTime > 0.0f && effect->lifeTime <= 0.5f) {
-                    SetPlayerEyes(effect->spriteID, effect->pos.y, effect->pos.z);
-                } else if (effect->lifeTime > 0.5f && effect->lifeTime <= 0.7f) {
-                    SetPlayerEyes(effect->spriteID + 1, effect->pos.y, effect->pos.z);
-                } else if (effect->lifeTime > 0.7f && effect->lifeTime <= 0.8f) {
-                    SetPlayerEyes(effect->spriteID + 2, effect->pos.y, effect->pos.z);
-                } else if (effect->lifeTime > 0.8f && effect->lifeTime <= 1.0f) {
-                    SetPlayerEyes(effect->spriteID, effect->pos.y, effect->pos.z);
-                }
-                break;
-            case 1:
-                if (effect->lifeTime >= 1.0f) {
-                    SetPlayerEyes(effect->spriteID, effect->pos.y, effect->pos.z);
-                } else {
-                    SetPlayerEyes(effect->spriteID + 3, effect->pos.y, effect->pos.z);
-                }
-                break;
-            case 2:
-                if (effect->lifeTime >= 1.0f) {
-                    SetPlayerEyes(effect->spriteID, effect->pos.y, effect->pos.z);
-                } else {
-                    SetPlayerEyes(effect->spriteID + 4, effect->pos.y, effect->pos.z);
-                }
-                break;
+        case 0:
+            if (effect->lifeTime > 0.0f && effect->lifeTime <= 0.5f) {
+                SetPlayerEyes(effect->spriteID, effect->pos.y, effect->pos.z);
+            } else if (effect->lifeTime > 0.5f && effect->lifeTime <= 0.7f) {
+                SetPlayerEyes(effect->spriteID + 1, effect->pos.y, effect->pos.z);
+            } else if (effect->lifeTime > 0.7f && effect->lifeTime <= 0.8f) {
+                SetPlayerEyes(effect->spriteID + 2, effect->pos.y, effect->pos.z);
+            } else if (effect->lifeTime > 0.8f && effect->lifeTime <= 1.0f) {
+                SetPlayerEyes(effect->spriteID, effect->pos.y, effect->pos.z);
+            }
+            break;
+        case 1:
+            if (effect->lifeTime >= 1.0f) {
+                SetPlayerEyes(effect->spriteID, effect->pos.y, effect->pos.z);
+            } else {
+                SetPlayerEyes(effect->spriteID + 3, effect->pos.y, effect->pos.z);
+            }
+            break;
+        case 2:
+            if (effect->lifeTime >= 1.0f) {
+                SetPlayerEyes(effect->spriteID, effect->pos.y, effect->pos.z);
+            } else {
+                SetPlayerEyes(effect->spriteID + 4, effect->pos.y, effect->pos.z);
+            }
+            break;
         }
 
         if (effect->lifeTime >= 1.0f) {
@@ -6253,15 +6243,15 @@ void SetBossDeadEyes(s32);
 void Effect_BossDeadEyes_Update(Effect* effect, Gfx** pGfxPos) {
     SetBossDeadEyes(effect->spriteID);
     switch (effect->spriteID) {
-        case 75:
-            FreeSprite(SPRITE_EYES_DEAD_LIZARD_KONG);
-            break;
-        case 7:
-            FreeSprite(SPRITE_EYES_DEAD_QUINTELLA);
-            break;
-        case 30:
-            FreeSprite(SPRITE_EYES_DEAD_ARMADILLO);
-            break;
+    case 75:
+        FreeSprite(SPRITE_EYES_DEAD_LIZARD_KONG);
+        break;
+    case 7:
+        FreeSprite(SPRITE_EYES_DEAD_QUINTELLA);
+        break;
+    case 30:
+        FreeSprite(SPRITE_EYES_DEAD_ARMADILLO);
+        break;
     }
     Effect_Free(effect);
 }
@@ -6271,17 +6261,17 @@ void Effect_BossDeadEyes_Init(s32 arg0) {
     s32 ret;
 
     switch (arg0) {
-        case 75:
-            ret = LoadSprite(SPRITE_EYES_DEAD_LIZARD_KONG);
-            break;
-        case 7:
-            ret = LoadSprite(SPRITE_EYES_DEAD_QUINTELLA);
-            break;
-        case 30:
-            ret = LoadSprite(SPRITE_EYES_DEAD_ARMADILLO);
-            break;
-        default:
-            return;
+    case 75:
+        ret = LoadSprite(SPRITE_EYES_DEAD_LIZARD_KONG);
+        break;
+    case 7:
+        ret = LoadSprite(SPRITE_EYES_DEAD_QUINTELLA);
+        break;
+    case 30:
+        ret = LoadSprite(SPRITE_EYES_DEAD_ARMADILLO);
+        break;
+    default:
+        return;
     }
     if (ret == 0) {
         effect = Effect_Alloc(0, 0, &Effect_BossDeadEyes_Update);
@@ -6301,21 +6291,21 @@ void SetBossDeadEyes(s32 arg0) {
     s32 spriteIndex;
 
     switch (arg0) {
-        case 75:
-            spriteIndex = SPRITE_EYES_DEAD_LIZARD_KONG;
-            sp20 = 2;
-            eyesIndex = 0;
-            break;
-        case 7:
-            //same line required
-            spriteIndex = SPRITE_EYES_DEAD_QUINTELLA;\
-            eyesIndex = 1;
-            break;
-        case 30:
-            //same line required
-            spriteIndex = SPRITE_EYES_DEAD_ARMADILLO;\
-            eyesIndex = 2;
-            break;
+    case 75:
+        spriteIndex = SPRITE_EYES_DEAD_LIZARD_KONG;
+        sp20 = 2;
+        eyesIndex = 0;
+        break;
+    case 7:
+        //same line required
+        spriteIndex = SPRITE_EYES_DEAD_QUINTELLA;\
+        eyesIndex = 1;
+        break;
+    case 30:
+        //same line required
+        spriteIndex = SPRITE_EYES_DEAD_ARMADILLO;\
+        eyesIndex = 2;
+        break;
     }
 
     sprite = &gSpriteListings[spriteIndex];
@@ -6503,26 +6493,26 @@ void Effect_TypeZ_Create(f32 posX, f32 posY, f32 posZ, f32 arg3, f32 arg4, s32 a
     delta = 360.0f / arg5;
     for (angle = 0.0f, i = 0; i < arg5; angle += delta, i++) {
         switch (i % 4) {
-            case 0:
-                r = 255;
-                g = 20;
-                b = 20;
-                break;
-            case 1:
-                r = 20;
-                g = 128;
-                b = 255;
-                break;
-            case 2:
-                r = 0;
-                g = 255;
-                b = 100;
-                break;
-            case 3:
-                r = 255;
-                g = 255;
-                b = 255;
-                break;
+        case 0:
+            r = 255;
+            g = 20;
+            b = 20;
+            break;
+        case 1:
+            r = 20;
+            g = 128;
+            b = 255;
+            break;
+        case 2:
+            r = 0;
+            g = 255;
+            b = 100;
+            break;
+        case 3:
+            r = 255;
+            g = 255;
+            b = 255;
+            break;
         }
 
         x1 = sinf(angle * 0.01745329251994) * arg3;
@@ -6702,31 +6692,31 @@ void Effect_TypeAB_TypeAC_Create(f32 posX, f32 posY, f32 posZ, f32 arg3, f32 arg
 
     for (i = 0; i < arg5; i++) {
         switch (Rand() % 5) {
-            case 0:
-                colorR = 238;
-                colorG = 51;
-                colorB = 71;
-                break;
-            case 1:
-                colorR = 32;
-                colorG = 212;
-                colorB = 52;
-                break;
-            case 2:
-                colorR = 96;
-                colorG = 153;
-                colorB = 255;
-                break;
-            case 3:
-                colorR = 255;
-                colorG = 255;
-                colorB = 0;
-                break;
-            case 4:
-                colorR = 255;
-                colorG = 255;
-                colorB = 255;
-                break;
+        case 0:
+            colorR = 238;
+            colorG = 51;
+            colorB = 71;
+            break;
+        case 1:
+            colorR = 32;
+            colorG = 212;
+            colorB = 52;
+            break;
+        case 2:
+            colorR = 96;
+            colorG = 153;
+            colorB = 255;
+            break;
+        case 3:
+            colorR = 255;
+            colorG = 255;
+            colorB = 0;
+            break;
+        case 4:
+            colorR = 255;
+            colorG = 255;
+            colorB = 255;
+            break;
         }
         size = arg3 * 0.5f;
         unk0 = RANDOM(-size, size);
@@ -6782,31 +6772,31 @@ void Effect_TypeAC_Init(f32 posX, f32 posY, f32 posZ, f32 arg3, f32 duration) {
     data = (Effect_TypeAC_Data*)effect->data;
     data->color.a = 255;
     switch (type) {
-        case 0:
-            data->color.r = 238;
-            data->color.g = 51;
-            data->color.b = 71;
-            break;
-        case 1:
-            data->color.r = 32;
-            data->color.g = 212;
-            data->color.b = 52;
-            break;
-        case 2:
-            data->color.r = 96;
-            data->color.g = 153;
-            data->color.b = 255;
-            break;
-        case 3:
-            data->color.r = 255;
-            data->color.g = 255;
-            data->color.b = 0;
-            break;
-        case 4:
-            data->color.r = 255;
-            data->color.g = 255;
-            data->color.b = 255;
-            break;
+    case 0:
+        data->color.r = 238;
+        data->color.g = 51;
+        data->color.b = 71;
+        break;
+    case 1:
+        data->color.r = 32;
+        data->color.g = 212;
+        data->color.b = 52;
+        break;
+    case 2:
+        data->color.r = 96;
+        data->color.g = 153;
+        data->color.b = 255;
+        break;
+    case 3:
+        data->color.r = 255;
+        data->color.g = 255;
+        data->color.b = 0;
+        break;
+    case 4:
+        data->color.r = 255;
+        data->color.g = 255;
+        data->color.b = 255;
+        break;
     }
 
     effect->pos.x = posX;
@@ -6987,18 +6977,18 @@ void Effect_TypeAF_Init(f32* arg0, f32* arg1, f32* arg2, f32 arg3, f32 arg4, f32
 
 void Effect_TypeAG_Update(Effect* effect, Gfx** pGfxPos) {
     switch ((s32)effect->pos.z) {
-        case 0:
-            effect->lifeTime += effect->pos.x;
-            func_80088474(effect->spriteID, effect->lifeTime * effect->duration);
-            break;
-        case 1:
-            effect->lifeTime += effect->pos.y;
-            func_80088474(effect->spriteID, (1.0f - effect->lifeTime) * effect->duration);
-            break;
-        case 2:
-            StopSoundEffect(effect->spriteID);
-            Effect_Free(effect);
-            break;
+    case 0:
+        effect->lifeTime += effect->pos.x;
+        func_80088474(effect->spriteID, effect->lifeTime * effect->duration);
+        break;
+    case 1:
+        effect->lifeTime += effect->pos.y;
+        func_80088474(effect->spriteID, (1.0f - effect->lifeTime) * effect->duration);
+        break;
+    case 2:
+        StopSoundEffect(effect->spriteID);
+        Effect_Free(effect);
+        break;
     }
 
     if (effect->lifeTime >= 1.0f) {
@@ -7052,27 +7042,27 @@ void Effect_TypeAH_Update(Effect* effect, Gfx** pGfxPos) {
     }
 
     switch (data->unk_A94) {
-        case 0:
-            frameIndex = data->unk_AA4[data->unk_A98 % effect->unk5];
-            break;
-        case 1:
-            frameIndex = data->unk_A98;
-            if (frameIndex >= sp44 - 1) {
-                data->unk_AA8--;
-                if (data->unk_AA8 > 0) {
-                    data->unk_A98 = -1;
-                } else {
-                    data->unk_A94 = 2;
-                    data->unk_A98 = -1;
-                }
+    case 0:
+        frameIndex = data->unk_AA4[data->unk_A98 % effect->unk5];
+        break;
+    case 1:
+        frameIndex = data->unk_A98;
+        if (frameIndex >= sp44 - 1) {
+            data->unk_AA8--;
+            if (data->unk_AA8 > 0) {
+                data->unk_A98 = -1;
+            } else {
+                data->unk_A94 = 2;
+                data->unk_A98 = -1;
             }
-            break;
-        case 2:
-            if (data->unk_A98 >= sp44 - 1) {
-                data->unk_A98 = sp44 - 1;
-            }
-            frameIndex = data->unk_A98;
-            break;
+        }
+        break;
+    case 2:
+        if (data->unk_A98 >= sp44 - 1) {
+            data->unk_A98 = sp44 - 1;
+        }
+        frameIndex = data->unk_A98;
+        break;
     }
     func_80027240(&mtxPos, sp40, frameIndex, sp48);
     gSPMatrix(gfxPos++, OS_K0_TO_PHYSICAL(&data->mtx[data->unk_A9C]), G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
@@ -7231,43 +7221,43 @@ void Effect_TypeAK_Update(Effect* effect, Gfx** pGfxPos) {
     f32 sp38;
 
     switch (effect->unk5) {
-        case 0:
-            effect->lifeTime += effect->duration;
-            if (!(effect->lifeTime <= 1.0f)) {
-                effect->unk5 = 1;
-                effect->lifeTime = 0.0f;
-            }
-            // don't draw anything
-            return;
-        case 1:
-            effect->lifeTime += effect->vel.x;
-            alpha = sinf(effect->lifeTime * PI_HALF);
-            sp38 = alpha * 104.0f;
-            if (effect->lifeTime >= 1.0f) {
-                sp38 = 104.0f;
-                alpha = 1.0f;
-                effect->unk5 = 2;
-                effect->lifeTime = 0.0f;
-            }
-            break;
-        case 2:
+    case 0:
+        effect->lifeTime += effect->duration;
+        if (!(effect->lifeTime <= 1.0f)) {
+            effect->unk5 = 1;
+            effect->lifeTime = 0.0f;
+        }
+        // don't draw anything
+        return;
+    case 1:
+        effect->lifeTime += effect->vel.x;
+        alpha = sinf(effect->lifeTime * PI_HALF);
+        sp38 = alpha * 104.0f;
+        if (effect->lifeTime >= 1.0f) {
+            sp38 = 104.0f;
             alpha = 1.0f;
-            sp38 = 104.0f;
-            effect->lifeTime += effect->vel.y;
-            if (effect->lifeTime >= 1.0f) {
-                effect->unk5 = 3;
-                effect->lifeTime = 0.0f;
-            }
-            break;
-        case 3:
-            sp38 = 104.0f;
-            alpha = cosf(effect->lifeTime * PI_HALF);
-            effect->lifeTime += effect->vel.z;
-            if (effect->lifeTime >= 1.0f) {
-                Effect_Free(effect);
-                return;
-            }
-            break;
+            effect->unk5 = 2;
+            effect->lifeTime = 0.0f;
+        }
+        break;
+    case 2:
+        alpha = 1.0f;
+        sp38 = 104.0f;
+        effect->lifeTime += effect->vel.y;
+        if (effect->lifeTime >= 1.0f) {
+            effect->unk5 = 3;
+            effect->lifeTime = 0.0f;
+        }
+        break;
+    case 3:
+        sp38 = 104.0f;
+        alpha = cosf(effect->lifeTime * PI_HALF);
+        effect->lifeTime += effect->vel.z;
+        if (effect->lifeTime >= 1.0f) {
+            Effect_Free(effect);
+            return;
+        }
+        break;
     }
     SetTextGradientFromPaletteAlpha(17, alpha);
     printUISprite(effect->pos.x, effect->pos.y, 0, 0, 1, sp38, 16.0f, 0, effect->spriteID);
@@ -7417,74 +7407,74 @@ void Effect_TypeAL_Update(Effect* effect, Gfx** pGfxPos) {
     func_8007B480(0.0f, 10000.0f, 0.0f, 0.0f, 10000.0f, 600.0f);
 
     switch (effect->unk5) {
-        case 0:
-            effect->lifeTime += effect->pos.x;
-            sp64 = sinf(effect->lifeTime * PI_HALF);
-            sp60 = 0.0f;
-            if (effect->lifeTime >= 1.0f) {
-                effect->unk5 = 1;
-                effect->lifeTime = 0;
-            }
-            break;
-        case 1:
-            sp64 = 1.0f;
-            sp60 = sinf(effect->vel.z * PI_HALF);
-            s2 = 0;
-            effect->vel.z += effect->pos.y;
-            a0 = 0; //how many total crowns you've collected
-            a1 = 0; //the actual stage limits
+    case 0:
+        effect->lifeTime += effect->pos.x;
+        sp64 = sinf(effect->lifeTime * PI_HALF);
+        sp60 = 0.0f;
+        if (effect->lifeTime >= 1.0f) {
+            effect->unk5 = 1;
+            effect->lifeTime = 0;
+        }
+        break;
+    case 1:
+        sp64 = 1.0f;
+        sp60 = sinf(effect->vel.z * PI_HALF);
+        s2 = 0;
+        effect->vel.z += effect->pos.y;
+        a0 = 0; //how many total crowns you've collected
+        a1 = 0; //the actual stage limits
 
-            if (effect->vel.z >= 1.0f) {
-                //add all of your totals
-                for (i = 0; i < 6; i++) {
-                    a0 += gGameState.stageCrownRecord[i];
-                }
-                //why does this go through 9 if there's only 6 crown stages???
-                for (i = 0; i < 9; i++) {
-                    a1 += sStageCrownTotals[i];
-                }
-                //if collected all AND player is Davy, Jack, Fred or Linda
-                if (a0 == a1 && gSelectedCharacters[0] <= CHARA_LINDA) {
-                    //unlock white (or at least play the animation as if you did)
-                    PLAY_SFX(SFX_ChameleonRespawn, 0, 0x10);
-                    //load twinkle
-                    Effect_TypeW_Init(260.0f, 9920.0f, 0.0f, 32.0f, 20, 16);
-                    //load white model
-                    Effect_TypeAH_Init(&effect->numParts, 260.0f, 9850.0f, 0.0f, -22.0f, &D_800F0D90[4], CHARA_WHITE, 1, 1);
-                }
-                //manually print out record
-                for (i = 0; i < 6; i++) {
-                    s2 += RecordTime_ParseToSecs(&gGameState.stageTimes[i]);
-                }
-                Effect_TypeAS_Init(180.0f, 48.0f, 0.6f, 0.6f, 1, 8.0f, 1, 9.3312e8f, 4, (s2 / 3600) % 24, (s2 / 60) % 60, s2 % 60, 0, 1);
-                func_80071A48(gGameRecords.perfectCode, data->unk_00);
-                effect->unk5 = 2;
-                effect->lifeTime = 0;
+        if (effect->vel.z >= 1.0f) {
+            //add all of your totals
+            for (i = 0; i < 6; i++) {
+                a0 += gGameState.stageCrownRecord[i];
             }
-            break;
-        case 2:
-            SetTextGradientFromPalette(5);
-            PrintTextWrapper(64.0f, 48.0f, 0.0f, .6f, "ＴＯＴＡＬ　ＴＩＭＥ", 1);
+            //why does this go through 9 if there's only 6 crown stages???
+            for (i = 0; i < 9; i++) {
+                a1 += sStageCrownTotals[i];
+            }
+            //if collected all AND player is Davy, Jack, Fred or Linda
+            if (a0 == a1 && gSelectedCharacters[0] <= CHARA_LINDA) {
+                //unlock white (or at least play the animation as if you did)
+                PLAY_SFX(SFX_ChameleonRespawn, 0, 0x10);
+                //load twinkle
+                Effect_TypeW_Init(260.0f, 9920.0f, 0.0f, 32.0f, 20, 16);
+                //load white model
+                Effect_TypeAH_Init(&effect->numParts, 260.0f, 9850.0f, 0.0f, -22.0f, &D_800F0D90[4], CHARA_WHITE, 1, 1);
+            }
+            //manually print out record
+            for (i = 0; i < 6; i++) {
+                s2 += RecordTime_ParseToSecs(&gGameState.stageTimes[i]);
+            }
+            Effect_TypeAS_Init(180.0f, 48.0f, 0.6f, 0.6f, 1, 8.0f, 1, 9.3312e8f, 4, (s2 / 3600) % 24, (s2 / 60) % 60, s2 % 60, 0, 1);
+            func_80071A48(gGameRecords.perfectCode, data->unk_00);
+            effect->unk5 = 2;
+            effect->lifeTime = 0;
+        }
+        break;
+    case 2:
+        SetTextGradientFromPalette(5);
+        PrintTextWrapper(64.0f, 48.0f, 0.0f, .6f, "ＴＯＴＡＬ　ＴＩＭＥ", 1);
+        if (gSelectedCharacters[0] == CHARA_WHITE && gNoHit && gOneRun) {
+            sp68 = 100.0f - sinf(effect->lifeTime * PI_HALF) * 22.0f;
+        }
+        effect->lifeTime += effect->vel.x;
+        if (effect->lifeTime >= 1.0f) {
+            effect->lifeTime = 1.0f;
             if (gSelectedCharacters[0] == CHARA_WHITE && gNoHit && gOneRun) {
-                sp68 = 100.0f - sinf(effect->lifeTime * PI_HALF) * 22.0f;
-            }
-            effect->lifeTime += effect->vel.x;
-            if (effect->lifeTime >= 1.0f) {
-                effect->lifeTime = 1.0f;
-                if (gSelectedCharacters[0] == CHARA_WHITE && gNoHit && gOneRun) {
-                    if (effect->spriteID == 1) {
-                        PLAY_SFX(SFX_38_unkSnd, 0, 0x10);
-                        effect->spriteID = 0;
-                    }
-                    SetTextGradientFromPalette(5);
-                    PrintTextWrapper(100.0f, 128.0f, 0.0f, 0.6f, "ＰＥＲＦＥＣＴ　ＣＯＲＤ", 1);
-                    SetTextGradientFromPalette(4);
-                    PrintTextWrapper(108.0f, 154.0f, 0.0f, 0.8f, data->unk_00, 1); // TODO figure out if unk_00 is u8[] or s8[]
+                if (effect->spriteID == 1) {
+                    PLAY_SFX(SFX_38_unkSnd, 0, 0x10);
+                    effect->spriteID = 0;
                 }
+                SetTextGradientFromPalette(5);
+                PrintTextWrapper(100.0f, 128.0f, 0.0f, 0.6f, "ＰＥＲＦＥＣＴ　ＣＯＲＤ", 1);
+                SetTextGradientFromPalette(4);
+                PrintTextWrapper(108.0f, 154.0f, 0.0f, 0.8f, data->unk_00, 1); // TODO figure out if unk_00 is u8[] or s8[]
             }
-            sp60 = 1.0f;
-            sp64 = 1.0f;
-            break;
+        }
+        sp60 = 1.0f;
+        sp64 = 1.0f;
+        break;
     }
 
     SetTextGradient(0, 162, 227, 255.0f * sp64, 18, 232, 130, 255.0f * sp64, 255, 255, 0, 255.0f * sp64, 255, 110, 194, 255.0f * sp64);
@@ -7530,61 +7520,61 @@ void Effect_TypeAM_Update(Effect* effect, Gfx** pGfxPos) {
 
     DisableInput();
     switch (effect->unk5) {
-        case 0:
-            if (effect->spriteID == 0) {
-                sp7C = cosf(DEGREES_TO_RADIANS_2PI(effect->vel.x + 145.0f));
-                sp80 = sinf(DEGREES_TO_RADIANS_2PI(effect->vel.x + 145.0f));
-                sp84 = cosf(DEGREES_TO_RADIANS_2PI(effect->vel.x + 260.0f));
-                sp88 = sinf(DEGREES_TO_RADIANS_2PI(effect->vel.x + 260.0f));
-                posX = effect->pos.x;
-                func_80068A88(gPlayerActors->pos.x, gPlayerActors->pos.y, gPlayerActors->pos.z,
+    case 0:
+        if (effect->spriteID == 0) {
+            sp7C = cosf(DEGREES_TO_RADIANS_2PI(effect->vel.x + 145.0f));
+            sp80 = sinf(DEGREES_TO_RADIANS_2PI(effect->vel.x + 145.0f));
+            sp84 = cosf(DEGREES_TO_RADIANS_2PI(effect->vel.x + 260.0f));
+            sp88 = sinf(DEGREES_TO_RADIANS_2PI(effect->vel.x + 260.0f));
+            posX = effect->pos.x;
+            func_80068A88(gPlayerActors->pos.x, gPlayerActors->pos.y, gPlayerActors->pos.z,
                               posX, effect->pos.y + 150.0f, effect->pos.z,
                               posX, effect->pos.y, effect->pos.z,
                               D_80176B78->f3.x * 3.0f, D_80176B78->f3.y * 3.0f, D_80176B78->f3.z * 3.0f,
                               posX + sp7C * 1000.0f, effect->pos.y + 30.0f, effect->pos.z - sp80 * 1000.0f,
                               posX + sp84 * 800.0f, effect->pos.y, effect->pos.z - sp88 * 800.0f,
                               60.0f, 60.0f, 18000.0f);
+        }
+        effect->spriteID++;
+        if (effect->spriteID >= 2) {
+            effect->spriteID = 0;
+            effect->unk5++;
+        }
+        break;
+    case 1:
+        if (effect->numParts < 20) {
+            effect->lifeTime += effect->duration;
+            if (effect->lifeTime >= 1.0f) {
+                effect->lifeTime = 0.0f;
+                sp90 = effect->vel.x + RANDOM(45, 120);
+                sp90 = -sp90;
+                WrapDegrees(&sp90);
+                r = Rand();
+                Effect_TypeAA_Init(effect->pos.x, effect->pos.y, effect->pos.z, 1200.0f, r % 360, sp90, 0.0f, 20.0f, 8.0f, RANDOM(2, 5));
+                effect->numParts++;
             }
-            effect->spriteID++;
-            if (effect->spriteID >= 2) {
-                effect->spriteID = 0;
-                effect->unk5++;
-            }
-            break;
-        case 1:
-            if (effect->numParts < 20) {
-                effect->lifeTime += effect->duration;
-                if (effect->lifeTime >= 1.0f) {
-                    effect->lifeTime = 0.0f;
-                    sp90 = effect->vel.x + RANDOM(45, 120);
-                    sp90 = -sp90;
-                    WrapDegrees(&sp90);
-                    r = Rand();
-                    Effect_TypeAA_Init(effect->pos.x, effect->pos.y, effect->pos.z, 1200.0f, r % 360, sp90, 0.0f, 20.0f, 8.0f, RANDOM(2, 5));
-                    effect->numParts++;
-                }
-            }
+        }
 
-            setPrimColor(255, 255, 255, effect->numParts / 21.0f * 255.0f);
-            printUISprite(0.0f, 0.0f, 0.0f, 0.0f, 1, 320.0f, 240.0f, 0.0f, SPRITE_BLANK);
-            effect->spriteID++;
+        setPrimColor(255, 255, 255, effect->numParts / 21.0f * 255.0f);
+        printUISprite(0.0f, 0.0f, 0.0f, 0.0f, 1, 320.0f, 240.0f, 0.0f, SPRITE_BLANK);
+        effect->spriteID++;
 
-            if (effect->numParts == 20) {
-                effect->spriteID = 0;
-                effect->unk5++;
-            }
-            break;
-        case 2:
-            setPrimColor(255, 255, 255, 255);
-            printUISprite(0.0f, 0.0f, 0.0f, 0.0f, 1, 320.0f, 240.0f, 0.0f, SPRITE_BLANK);
-            Effect_TypeAI_Init(255, 1.0f, 32.0f, 1);
-            gIsGamePaused = PAUSEMODE_FROZEN;
-            effect->spriteID++;
-            if (effect->spriteID > 30) {
-                *data->unk_00 = 1;
-                Effect_Free(effect);
-            }
-            break;
+        if (effect->numParts == 20) {
+            effect->spriteID = 0;
+            effect->unk5++;
+        }
+        break;
+    case 2:
+        setPrimColor(255, 255, 255, 255);
+        printUISprite(0.0f, 0.0f, 0.0f, 0.0f, 1, 320.0f, 240.0f, 0.0f, SPRITE_BLANK);
+        Effect_TypeAI_Init(255, 1.0f, 32.0f, 1);
+        gIsGamePaused = PAUSEMODE_FROZEN;
+        effect->spriteID++;
+        if (effect->spriteID > 30) {
+            *data->unk_00 = 1;
+            Effect_Free(effect);
+        }
+        break;
     }
 }
 
@@ -7692,70 +7682,70 @@ void Effect_TypeAO_Update(Effect* effect, Gfx** pGfxPos) {
     Battle_Time++;
 
     switch ((s32)effect->lifeTime) {
+    case 0:
+        Effect_TypeAJ_Init(0, 4.0f, 16.0f);
+        PlayBGM(BGM_TRAINING);
+        effect->lifeTime = 1.0f;
+        break;
+    case 1:
+        if (Battle_Time == temp) {
+            func_80054284();
+        }
+        func_80053CA0();
+        for (i = 0; i < 4; i++) {
+            if (effect->lifeTime == 2.0f) {
+                break;
+            }
+            if (gPlayerActors[i].active && D_80168D78[i] != 1) {
+                if (func_80055F10(i, 0x8000) == 1 || func_80055F10(i, 0x1000) == 1) {
+                    Effect_TypeAY_Init(&D_800FE404[5], 1.0f, 1.0f, 0, 4, &effect->spriteID, 54.0f, 56.0f, 212.0f, 148.0f);
+                }
+                if (1) {} // required to match
+            }
+        }
+        if (effect->spriteID != -1) {
+            if (effect->spriteID >= 0) {
+                effect->lifeTime = 2.0f;
+                Battle_Stage = BATTLE_STAGE_INIT;
+                D_800FE74C = 0;
+                Effect_TypeAI_Init(0, 16.0f, 9000.0f, 1);
+            } else if (effect->spriteID == -2) {
+                D_800FE74C = 0;
+                effect->spriteID = -1;
+            }
+        }
+        break;
+    case 2:
+        effect->duration += 1.0f;
+        if (effect->duration < 18.0f) {
+            func_80053CA0();
+        }
+        if (effect->duration > 20.0f) {
+            effect->lifeTime = 3.0f;
+        }
+        break;
+    case 3:
+        Battle_Time = 0;
+        D_800F0B54[0] = 0;
+        StopBGM();
+        func_8005423C();
+        UnlockEyeChange();
+        switch (effect->spriteID) {
         case 0:
-            Effect_TypeAJ_Init(0, 4.0f, 16.0f);
-            PlayBGM(BGM_TRAINING);
-            effect->lifeTime = 1.0f;
+            SetProcessType(GAME_MODE_BATTLE_MENU);
+            gGameModeState = 4;
             break;
         case 1:
-            if (Battle_Time == temp) {
-                func_80054284();
-            }
-            func_80053CA0();
-            for (i = 0; i < 4; i++) {
-                if (effect->lifeTime == 2.0f) {
-                    break;
-                }
-                if (gPlayerActors[i].active && D_80168D78[i] != 1) {
-                    if (func_80055F10(i, 0x8000) == 1 || func_80055F10(i, 0x1000) == 1) {
-                        Effect_TypeAY_Init(&D_800FE404[5], 1.0f, 1.0f, 0, 4, &effect->spriteID, 54.0f, 56.0f, 212.0f, 148.0f);
-                    }
-                    if (1) {} // required to match
-                }
-            }
-            if (effect->spriteID != -1) {
-                if (effect->spriteID >= 0) {
-                    effect->lifeTime = 2.0f;
-                    Battle_Stage = BATTLE_STAGE_INIT;
-                    D_800FE74C = 0;
-                    Effect_TypeAI_Init(0, 16.0f, 9000.0f, 1);
-                } else if (effect->spriteID == -2) {
-                    D_800FE74C = 0;
-                    effect->spriteID = -1;
-                }
-            }
+            SetProcessType(GAME_MODE_STAGE_SELECT);
             break;
         case 2:
-            effect->duration += 1.0f;
-            if (effect->duration < 18.0f) {
-                func_80053CA0();
-            }
-            if (effect->duration > 20.0f) {
-                effect->lifeTime = 3.0f;
-            }
+            SetProcessType(GAME_MODE_BATTLE_MENU);
             break;
         case 3:
-            Battle_Time = 0;
-            D_800F0B54[0] = 0;
-            StopBGM();
-            func_8005423C();
-            UnlockEyeChange();
-            switch (effect->spriteID) {
-                case 0:
-                    SetProcessType(GAME_MODE_BATTLE_MENU);
-                    gGameModeState = 4;
-                    break;
-                case 1:
-                    SetProcessType(GAME_MODE_STAGE_SELECT);
-                    break;
-                case 2:
-                    SetProcessType(GAME_MODE_BATTLE_MENU);
-                    break;
-                case 3:
-                    SetProcessType(GAME_MODE_TITLE_SCREEN);
-                    break;
-            }
+            SetProcessType(GAME_MODE_TITLE_SCREEN);
             break;
+        }
+        break;
     }
 }
 
@@ -7807,20 +7797,20 @@ void Effect_ControllerRumble_Update(Effect* effect, Gfx** pGfxPos) {
 
     s2 = effect->unk5;
     switch (s2) {
-        case 0:
-            // 電源を切って、コントローラを :  Turn off the power and turn off the controller,
-            func_80080864(48.0f, 120.0f, 0.0f, 1, temp, temp, "電源を切って、コントローラを", 3);
-            // １Ｐ用に正しく接続してください。: Please connect correctly for 1P.
-            func_80080864(40.0f, 144.0f, 0.0f, 1, temp, temp, "１Ｐ用に正しく接続してください。", 3);
-            break;
-        case 1:
-            // 振動パックに異状があります。: There is something wrong with the vibration pack.
-            func_80080864(48.0f, 120.0f, 0.0f, 1, temp, temp, "振動パックに異状があります。", 3);
-            // 電源を切って、: Turn off the power,
-            func_80080864(104.0f, 144.0f, 0.0f, 1, temp, temp, "電源を切って、", 3);
-            // 振動パックをきちんと挿入して下さい。: Please insert the vibration pack properly.
-            func_80080864(20.0f, 168.0f, 0.0f, 1, temp, temp, "振動パックをきちんと挿入して下さい。", 3);
-            break;
+    case 0:
+        // 電源を切って、コントローラを :  Turn off the power and turn off the controller,
+        func_80080864(48.0f, 120.0f, 0.0f, 1, temp, temp, "電源を切って、コントローラを", 3);
+        // １Ｐ用に正しく接続してください。: Please connect correctly for 1P.
+        func_80080864(40.0f, 144.0f, 0.0f, 1, temp, temp, "１Ｐ用に正しく接続してください。", 3);
+        break;
+    case 1:
+        // 振動パックに異状があります。: There is something wrong with the vibration pack.
+        func_80080864(48.0f, 120.0f, 0.0f, 1, temp, temp, "振動パックに異状があります。", 3);
+        // 電源を切って、: Turn off the power,
+        func_80080864(104.0f, 144.0f, 0.0f, 1, temp, temp, "電源を切って、", 3);
+        // 振動パックをきちんと挿入して下さい。: Please insert the vibration pack properly.
+        func_80080864(20.0f, 168.0f, 0.0f, 1, temp, temp, "振動パックをきちんと挿入して下さい。", 3);
+        break;
     }
 }
 
@@ -7861,57 +7851,57 @@ void Effect_TypeAP_Update(Effect* effect, Gfx** pGfxPos) {
     func_80059F28(0.0f, 0.0f, 0.0f, 0.0f, 1, 320.0f, 240.0f, 0.0f, SPRITE_BLANK);
 
     switch (effect->spriteID) {
-        case 0:
-            func_80061394();
-            Effect_TypeAJ_Init(0, 5.0f, 16.0f);
-            effect->spriteID = 1;
+    case 0:
+        func_80061394();
+        Effect_TypeAJ_Init(0, 5.0f, 16.0f);
+        effect->spriteID = 1;
+        effect->lifeTime = 0.0f;
+        break;
+    case 1:
+        if (effect->lifeTime > 30.0f) {
+            effect->spriteID = 2;
             effect->lifeTime = 0.0f;
-            break;
-        case 1:
-            if (effect->lifeTime > 30.0f) {
-                effect->spriteID = 2;
-                effect->lifeTime = 0.0f;
+        }
+        break;
+    case 2:
+        f0 = effect->lifeTime / 32;
+        if (f0 > 0.0 && f0 <= 0.25) {
+            effect->pos.x = f0 / 0.25 * 255.0;
+        }
+        if (f0 > 0.25 && f0 <= 0.5) {
+            effect->pos.y = (f0 - 0.25) / 0.25 * 255.0;
+        }
+        if (f0 > 0.5 && f0 <= 0.75) {
+            effect->pos.z = (f0 - 0.5) / 0.25 * 255.0;
+        }
+        if (f0 > 0.75 && f0 <= 1.0) {
+            effect->vel.x = (f0 - 0.75) / 0.25 * 255.0;
+        }
+        func_800735F4(effect->pos.x, effect->pos.y, effect->pos.z, effect->vel.x);
+        if (effect->lifeTime >= 32.0f) {
+            effect->spriteID = 3;
+            effect->lifeTime = 0.0f;
+        }
+        break;
+    case 3:
+        func_800735F4(255.0f, 255.0f, 255.0f, 255.0f);
+        for (i = 0; i < 4; i++) {
+            if (gPlayerActors[i].active && func_80055F10(i, 0x9000)) {
+                effect->lifeTime = 72.0f;
             }
-            break;
-        case 2:
-            f0 = effect->lifeTime / 32;
-            if (f0 > 0.0 && f0 <= 0.25) {
-                effect->pos.x = f0 / 0.25 * 255.0;
-            }
-            if (f0 > 0.25 && f0 <= 0.5) {
-                effect->pos.y = (f0 - 0.25) / 0.25 * 255.0;
-            }
-            if (f0 > 0.5 && f0 <= 0.75) {
-                effect->pos.z = (f0 - 0.5) / 0.25 * 255.0;
-            }
-            if (f0 > 0.75 && f0 <= 1.0) {
-                effect->vel.x = (f0 - 0.75) / 0.25 * 255.0;
-            }
-            func_800735F4(effect->pos.x, effect->pos.y, effect->pos.z, effect->vel.x);
-            if (effect->lifeTime >= 32.0f) {
-                effect->spriteID = 3;
-                effect->lifeTime = 0.0f;
-            }
-            break;
-        case 3:
-            func_800735F4(255.0f, 255.0f, 255.0f, 255.0f);
-            for (i = 0; i < 4; i++) {
-                if (gPlayerActors[i].active && func_80055F10(i, 0x9000)) {
-                    effect->lifeTime = 72.0f;
-                }
-            }
-            if (effect->lifeTime > 72.0f) {
-                effect->spriteID = 4;
-                effect->lifeTime = 0.0f;
-                Effect_TypeAI_Init(0, 8.0f, 16.0f, 0);
-            }
-            break;
-        case 4:
-            func_800735F4(255.0f, 255.0f, 255.0f, 255.0f);
-            if (effect->lifeTime > 8.0f) {
-                Effect_Free(effect);
-            }
-            break;
+        }
+        if (effect->lifeTime > 72.0f) {
+            effect->spriteID = 4;
+            effect->lifeTime = 0.0f;
+            Effect_TypeAI_Init(0, 8.0f, 16.0f, 0);
+        }
+        break;
+    case 4:
+        func_800735F4(255.0f, 255.0f, 255.0f, 255.0f);
+        if (effect->lifeTime > 8.0f) {
+            Effect_Free(effect);
+        }
+        break;
     }
 }
 void Effect_TypeAP_Init(void) {
@@ -7937,47 +7927,47 @@ void Effect_TypeAQ_Update(Effect* effect, Gfx** pGfxPos) {
     f32 sinAngle;
 
     switch (effect->unk5) {
-        case 0:
-            if (effect->duration-- > 0.0f) {
-                return;
-            }
-            effect->unk5 = 1;
-            break;
-        case 1:
-            effect->lifeTime += data->unk_00;
-            sinAngle = sinf(effect->lifeTime * PI_HALF);
-            parts[data->unk_1C].pos.x = data->unk_0C * sinAngle;
-            parts[data->unk_1C].pos.y = data->unk_10 + cosf(effect->lifeTime * PI_HALF) * 180.0f;
-            parts[data->unk_1C].lifeTime = sinAngle;
+    case 0:
+        if (effect->duration-- > 0.0f) {
+            return;
+        }
+        effect->unk5 = 1;
+        break;
+    case 1:
+        effect->lifeTime += data->unk_00;
+        sinAngle = sinf(effect->lifeTime * PI_HALF);
+        parts[data->unk_1C].pos.x = data->unk_0C * sinAngle;
+        parts[data->unk_1C].pos.y = data->unk_10 + cosf(effect->lifeTime * PI_HALF) * 180.0f;
+        parts[data->unk_1C].lifeTime = sinAngle;
 
-            if (effect->lifeTime >= 1.0f) {
-                effect->lifeTime = 0.0f;
-                data->unk_1C++;
-                if (data->unk_1C == effect->numParts) {
-                    effect->unk5 = 2;
-                }
+        if (effect->lifeTime >= 1.0f) {
+            effect->lifeTime = 0.0f;
+            data->unk_1C++;
+            if (data->unk_1C == effect->numParts) {
+                effect->unk5 = 2;
             }
-            break;
-        case 2:
-            if (*data->unk_18 == 0) {
-                effect->lifeTime = 1.0f;
-            }
-            effect->lifeTime += data->unk_08;
-            if (effect->lifeTime >= 1.0f) {
-                effect->unk5 = 3;
-                effect->lifeTime = 0.0f;
-            }
-            break;
-        case 3:
-            effect->lifeTime += data->unk_04;
-            for (i = 0; i < effect->numParts; i++) {
-                parts[i].lifeTime = cosf(effect->lifeTime * PI_HALF);
-            }
-            if (effect->lifeTime >= 1.0f) {
-                Effect_Free(effect);
-                return;
-            }
-            break;
+        }
+        break;
+    case 2:
+        if (*data->unk_18 == 0) {
+            effect->lifeTime = 1.0f;
+        }
+        effect->lifeTime += data->unk_08;
+        if (effect->lifeTime >= 1.0f) {
+            effect->unk5 = 3;
+            effect->lifeTime = 0.0f;
+        }
+        break;
+    case 3:
+        effect->lifeTime += data->unk_04;
+        for (i = 0; i < effect->numParts; i++) {
+            parts[i].lifeTime = cosf(effect->lifeTime * PI_HALF);
+        }
+        if (effect->lifeTime >= 1.0f) {
+            Effect_Free(effect);
+            return;
+        }
+        break;
     }
 
     if (effect->unk5 != 0) {
@@ -8033,18 +8023,18 @@ void Effect_TypeAQ_Init(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 ar
     data->unk_08 = 1.0f / arg5;
 
     switch (arg8) {
-        case 3:
-            data->unk_0C = 16.0f;
-            data->unk_10 = 16.0f;
-            break;
-        case 4:
-            data->unk_0C = 16.0f;
-            data->unk_10 = 16.0f;
-            break;
-        case 1:
-            data->unk_0C = 16.0f;
-            data->unk_10 = 24.0f;
-            break;
+    case 3:
+        data->unk_0C = 16.0f;
+        data->unk_10 = 16.0f;
+        break;
+    case 4:
+        data->unk_0C = 16.0f;
+        data->unk_10 = 16.0f;
+        break;
+    case 1:
+        data->unk_0C = 16.0f;
+        data->unk_10 = 24.0f;
+        break;
     }
 
     data->unk_18 = arg9;
@@ -8070,43 +8060,43 @@ void Effect_TypeAR_Update(Effect* effect, Gfx** pGfxPos) {
     f32 nv2;
 
     switch (effect->unk5) {
-        case 0:
-            effect->lifeTime += data->unk_00;
-            f12 = ABS2(effect->pos.x - effect->vel.x);
-            f14 = (1.0f - effect->lifeTime) * (nv2 = f12);
-            if (effect->numParts == 0) {
-                f12 = effect->pos.x + f14;
-            } else {
-                f12 = effect->pos.x - f14;
-            }
-            if (effect->lifeTime >= 1.0f) {
-                effect->unk5 = 1;
-                effect->lifeTime = 0.0f;
-            }
-            posX = f12;
-            break;
-        case 1:
-            if (*data->unk_18 == 0) {
-                effect->lifeTime = 1.0f;
-            }
-            effect->lifeTime += data->unk_08;
-            if (effect->lifeTime >= 1.0f) {
-                effect->unk5 = 2;
-                effect->lifeTime = 0.0f;
-            }
-            nv = effect->pos.x;
-            posX = nv;
-            break;
-        case 2:
-            effect->lifeTime += data->unk_04;
-            nv = effect->lifeTime * PI_HALF;
-            effect->vel.z = cosf(nv);
-            if (effect->lifeTime >= 1.0f) {
-                Effect_Free(effect);
-                return;
-            }
-            unused = posX = effect->pos.x;
-            break;
+    case 0:
+        effect->lifeTime += data->unk_00;
+        f12 = ABS2(effect->pos.x - effect->vel.x);
+        f14 = (1.0f - effect->lifeTime) * (nv2 = f12);
+        if (effect->numParts == 0) {
+            f12 = effect->pos.x + f14;
+        } else {
+            f12 = effect->pos.x - f14;
+        }
+        if (effect->lifeTime >= 1.0f) {
+            effect->unk5 = 1;
+            effect->lifeTime = 0.0f;
+        }
+        posX = f12;
+        break;
+    case 1:
+        if (*data->unk_18 == 0) {
+            effect->lifeTime = 1.0f;
+        }
+        effect->lifeTime += data->unk_08;
+        if (effect->lifeTime >= 1.0f) {
+            effect->unk5 = 2;
+            effect->lifeTime = 0.0f;
+        }
+        nv = effect->pos.x;
+        posX = nv;
+        break;
+    case 2:
+        effect->lifeTime += data->unk_04;
+        nv = effect->lifeTime * PI_HALF;
+        effect->vel.z = cosf(nv);
+        if (effect->lifeTime >= 1.0f) {
+            Effect_Free(effect);
+            return;
+        }
+        unused = posX = effect->pos.x;
+        break;
     }
 
     SetTextGradientFromPaletteAlpha(data->unk_14, effect->vel.z);
@@ -8169,42 +8159,42 @@ void Effect_TypeAS_Update(Effect* effect, Gfx** pGfxPos) {
     f32 alpha;
 
     switch (effect->unk5) {
-        case 0:
-            effect->lifeTime += effect->pos.z;
-            if (!(effect->lifeTime <= 1.0f)) {
-                effect->unk5 = 1;
+    case 0:
+        effect->lifeTime += effect->pos.z;
+        if (!(effect->lifeTime <= 1.0f)) {
+            effect->unk5 = 1;
+            effect->lifeTime = 0.0f;
+        }
+        // don't draw anything
+        return;
+    case 1:
+        if (effect->lifeTime >= 1.0f) {
+            effect->lifeTime = 0.0f;
+            data->unk_0C++;
+            if (data->unk_0C == data->unk_10) {
+                data->unk_0C = data->unk_10 - 1;
+                effect->unk5 = 2;
                 effect->lifeTime = 0.0f;
             }
-            // don't draw anything
+        }
+        effect->lifeTime += effect->vel.x;
+        sp6C = 2.0f * (effect->lifeTime - 0.5f);
+        break;
+    case 2:
+        effect->lifeTime += effect->vel.y;
+        if (effect->lifeTime >= 1.0f) {
+            effect->unk5 = 3;
+            effect->lifeTime = 0.0f;
+        }
+        break;
+    case 3:
+        effect->lifeTime += effect->vel.z;
+        cosf(effect->lifeTime * PI_HALF); // ???
+        if (effect->lifeTime >= 1.0f) {
+            Effect_Free(effect);
             return;
-        case 1:
-            if (effect->lifeTime >= 1.0f) {
-                effect->lifeTime = 0.0f;
-                data->unk_0C++;
-                if (data->unk_0C == data->unk_10) {
-                    data->unk_0C = data->unk_10 - 1;
-                    effect->unk5 = 2;
-                    effect->lifeTime = 0.0f;
-                }
-            }
-            effect->lifeTime += effect->vel.x;
-            sp6C = 2.0f * (effect->lifeTime - 0.5f);
-            break;
-        case 2:
-            effect->lifeTime += effect->vel.y;
-            if (effect->lifeTime >= 1.0f) {
-                effect->unk5 = 3;
-                effect->lifeTime = 0.0f;
-            }
-            break;
-        case 3:
-            effect->lifeTime += effect->vel.z;
-            cosf(effect->lifeTime * PI_HALF); // ???
-            if (effect->lifeTime >= 1.0f) {
-                Effect_Free(effect);
-                return;
-            }
-            break;
+        }
+        break;
     }
 
     for (i = 0; i <= data->unk_0C; i++) {
@@ -8296,37 +8286,37 @@ void Effect_TypeAT_Update(Effect* effect, Gfx** pGfxPos) {
     s32 v0;
 
     switch (effect->unk5) {
-        case 0:
-            v0 = effect->vel.x > 0;
-            effect->vel.x -= 1.0f;
-            if (!v0) {
-                effect->unk5 = 1;
-            } else {
-                return;
-            }
-            break;
-        case 1:
-        case 2:
-            if (effect->lifeTime >= 1.0f) {
-                effect->unk5++;
-                alpha = 1.0f;
-                effect->lifeTime = 0.0f;
-            } else if (effect->unk5 == 1) {
-                alpha = sinf(effect->lifeTime * PI_HALF);
-                effect->lifeTime += effect->vel.y;
-            } else {
-                alpha = 1.0f;
-                effect->lifeTime += effect->pos.z;
-            }
-            break;
-        case 3:
-            if (effect->lifeTime >= 1.0f) {
-                Effect_Free(effect);
-                return;
-            }
-            alpha = cosf(effect->lifeTime * PI_HALF);
-            effect->lifeTime += effect->vel.z;
-            break;
+    case 0:
+        v0 = effect->vel.x > 0;
+        effect->vel.x -= 1.0f;
+        if (!v0) {
+            effect->unk5 = 1;
+        } else {
+            return;
+        }
+        break;
+    case 1:
+    case 2:
+        if (effect->lifeTime >= 1.0f) {
+            effect->unk5++;
+            alpha = 1.0f;
+            effect->lifeTime = 0.0f;
+        } else if (effect->unk5 == 1) {
+            alpha = sinf(effect->lifeTime * PI_HALF);
+            effect->lifeTime += effect->vel.y;
+        } else {
+            alpha = 1.0f;
+            effect->lifeTime += effect->pos.z;
+        }
+        break;
+    case 3:
+        if (effect->lifeTime >= 1.0f) {
+            Effect_Free(effect);
+            return;
+        }
+        alpha = cosf(effect->lifeTime * PI_HALF);
+        effect->lifeTime += effect->vel.z;
+        break;
     }
 
     if (effect->unk5 >= 1) {
@@ -8363,29 +8353,29 @@ void Effect_TypeAU_Update(Effect* effect, Gfx** pGfxPos) {
     f32 alpha;
 
     switch (effect->unk5) {
-        case 0:
-        case 1:
-            if (effect->unk5 == 0) {
-                alpha = sinf(effect->lifeTime * PI_HALF);
-                effect->lifeTime += effect->pos.z;
-            } else {
-                alpha = 1.0f;
-                effect->lifeTime += effect->duration;
-            }
-            if (effect->lifeTime >= 1.0f) {
-                alpha = 1.0f;
-                effect->unk5++;
-                effect->lifeTime = 0.0f;
-            }
-            break;
-        case 2:
-            alpha = cosf(effect->lifeTime * PI_HALF);
-            effect->lifeTime += effect->vel.z;
-            if (effect->lifeTime >= 1.0f) {
-                Effect_Free(effect);
-                return;
-            }
-            break;
+    case 0:
+    case 1:
+        if (effect->unk5 == 0) {
+            alpha = sinf(effect->lifeTime * PI_HALF);
+            effect->lifeTime += effect->pos.z;
+        } else {
+            alpha = 1.0f;
+            effect->lifeTime += effect->duration;
+        }
+        if (effect->lifeTime >= 1.0f) {
+            alpha = 1.0f;
+            effect->unk5++;
+            effect->lifeTime = 0.0f;
+        }
+        break;
+    case 2:
+        alpha = cosf(effect->lifeTime * PI_HALF);
+        effect->lifeTime += effect->vel.z;
+        if (effect->lifeTime >= 1.0f) {
+            Effect_Free(effect);
+            return;
+        }
+        break;
     }
 
     SetTextGradient_All(255, 255, 255, alpha * 255);
@@ -8654,54 +8644,54 @@ void Effect_TypeAY_Update(Effect* effect, Gfx** pGfxPos) {
     *data->unk_18 = -1;
 
     switch (data->unk_10) {
-        case 0:
-            effect->lifeTime += data->unk_04;
-            sp44 = effect->lifeTime;
-            if (effect->lifeTime >= 1.0f) {
-                effect->lifeTime = 0.0f;
-                data->unk_10 = 1;
-                sp44 = 1.0f;
-            }
-            break;
-        case 1:
-            for (i = 0; i < 4; i++) {
-                if (i && i) {} // TODO fake match
-                if (gPlayerActors[i].active && D_80168D78[i] == 0) {
-                    if ((func_80055F10(i, 0x800) % 8) == 1) {
-                        if (effect->spriteID > 0 && data->unk_00[effect->spriteID - 1].unk_0C == 1) {
-                            PLAY_SFX(SFX_2A_unkSnd, 0, 0x50);
-                            effect->spriteID--;
-                        }
-                    }
-                    if ((func_80055F10(i, 0x400) % 8) == 1) {
-                        if (effect->spriteID < data->unk_14 - 1 && data->unk_00[effect->spriteID + 1].unk_0C == 1) {
-                            PLAY_SFX(SFX_2A_unkSnd, 0, 0x50);
-                            effect->spriteID++;
-                        }
-                    }
-                    if (func_80055F10(i, 0x8000) == 1 || func_80055F10(i, 0x1000) == 1) {
-                        *data->unk_18 = effect->spriteID;
-                        PLAY_SFX(SFX_Select, 0, 0x50);
-                        data->unk_10 = 2;
-                    }
-                    if (func_80055F10(i, 0x4000) == 1) {
-                        *data->unk_18 = -2;
-                        PLAY_SFX(SFX_Decline, 0, 0x50);
-                        data->unk_10 = 2;
+    case 0:
+        effect->lifeTime += data->unk_04;
+        sp44 = effect->lifeTime;
+        if (effect->lifeTime >= 1.0f) {
+            effect->lifeTime = 0.0f;
+            data->unk_10 = 1;
+            sp44 = 1.0f;
+        }
+        break;
+    case 1:
+        for (i = 0; i < 4; i++) {
+            if (i && i) {} // TODO fake match
+            if (gPlayerActors[i].active && D_80168D78[i] == 0) {
+                if ((func_80055F10(i, 0x800) % 8) == 1) {
+                    if (effect->spriteID > 0 && data->unk_00[effect->spriteID - 1].unk_0C == 1) {
+                        PLAY_SFX(SFX_2A_unkSnd, 0, 0x50);
+                        effect->spriteID--;
                     }
                 }
+                if ((func_80055F10(i, 0x400) % 8) == 1) {
+                    if (effect->spriteID < data->unk_14 - 1 && data->unk_00[effect->spriteID + 1].unk_0C == 1) {
+                        PLAY_SFX(SFX_2A_unkSnd, 0, 0x50);
+                        effect->spriteID++;
+                    }
+                }
+                if (func_80055F10(i, 0x8000) == 1 || func_80055F10(i, 0x1000) == 1) {
+                    *data->unk_18 = effect->spriteID;
+                    PLAY_SFX(SFX_Select, 0, 0x50);
+                    data->unk_10 = 2;
+                }
+                if (func_80055F10(i, 0x4000) == 1) {
+                    *data->unk_18 = -2;
+                    PLAY_SFX(SFX_Decline, 0, 0x50);
+                    data->unk_10 = 2;
+                }
             }
-            sp44 = 1.0f;
-            break;
-        case 2:
-            effect->lifeTime += data->unk_08;
-            sp44 = 1.0f - effect->lifeTime;
-            if (effect->lifeTime >= 1.0f) {
-                gIsGamePaused = PAUSEMODE_NOT_PAUSED;
-                D_800FE74C = 0;
-                Effect_Free(effect);
-            }
-            break;
+        }
+        sp44 = 1.0f;
+        break;
+    case 2:
+        effect->lifeTime += data->unk_08;
+        sp44 = 1.0f - effect->lifeTime;
+        if (effect->lifeTime >= 1.0f) {
+            gIsGamePaused = PAUSEMODE_NOT_PAUSED;
+            D_800FE74C = 0;
+            Effect_Free(effect);
+        }
+        break;
     }
 
     func_8007691C(data, sp44, effect->spriteID);
@@ -8748,38 +8738,38 @@ void Effect_TypeAZ_Update(Effect* effect, Gfx** pGfxPos) {
     s32 i;
 
     switch (data->unk_D8) {
-        case 0:
-            for (i = 0; i < data->unk_D4; i++) {
-                data->unk_00[i].unk_08 = MAX(effect->pos.x, data->unk_00[i].unk_08 - 16.0f);
-            }
-            if (data->unk_00[data->unk_D4 - 1].unk_08 <= effect->pos.x) {
-                effect->lifeTime = 0.0f;
-                data->unk_D8 = 1;
-            }
-            break;
-        case 1:
-            effect->lifeTime += data->unk_C8;
-            if (effect->lifeTime >= 1.0f) {
-                effect->lifeTime = 0.0f;
-                data->unk_D8 = 2;
-            }
-            break;
-        case 2:
-            effect->lifeTime += data->unk_CC;
-            for (i = 0; i < data->unk_D4; i++) {
-                data->unk_00[i].unk_08 = effect->pos.x + data->unk_00[i].unk_10 * effect->lifeTime;
-            }
-            if (effect->lifeTime >= 1.0f) {
-                effect->lifeTime = 0.0f;
-                data->unk_D8 = 3;
-            }
-            break;
-        case 3:
-            effect->lifeTime += data->unk_D0;
-            if (effect->lifeTime >= 1.0f) {
-                Effect_Free(effect);
-            }
-            break;
+    case 0:
+        for (i = 0; i < data->unk_D4; i++) {
+            data->unk_00[i].unk_08 = MAX(effect->pos.x, data->unk_00[i].unk_08 - 16.0f);
+        }
+        if (data->unk_00[data->unk_D4 - 1].unk_08 <= effect->pos.x) {
+            effect->lifeTime = 0.0f;
+            data->unk_D8 = 1;
+        }
+        break;
+    case 1:
+        effect->lifeTime += data->unk_C8;
+        if (effect->lifeTime >= 1.0f) {
+            effect->lifeTime = 0.0f;
+            data->unk_D8 = 2;
+        }
+        break;
+    case 2:
+        effect->lifeTime += data->unk_CC;
+        for (i = 0; i < data->unk_D4; i++) {
+            data->unk_00[i].unk_08 = effect->pos.x + data->unk_00[i].unk_10 * effect->lifeTime;
+        }
+        if (effect->lifeTime >= 1.0f) {
+            effect->lifeTime = 0.0f;
+            data->unk_D8 = 3;
+        }
+        break;
+    case 3:
+        effect->lifeTime += data->unk_D0;
+        if (effect->lifeTime >= 1.0f) {
+            Effect_Free(effect);
+        }
+        break;
     }
 
     for (i = 0; i < data->unk_D4; i++) {

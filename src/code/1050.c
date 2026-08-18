@@ -41,80 +41,80 @@ extern u64 D_80200CB0[0x180];
 // Throw it behind an ifdef so shifting can work correctly and we can hardcode the match
 #ifdef SHIFT
 OSTask D_800F04E0[2] = {
-{
-/* type */              1,
-/* flags */             0,
-/* ucode_boot */        NULL,
-/* ucode_boot_size */   0,
-/* ucode */             NULL,
-/* ucode_size */        0x1000,
-/* ucode_data */        NULL,
-/* ucode_data_size */   0x800,
-/* dram_stack */        (void*)D_80119320,
-/* dram_stack_size */   0x400,
-/* output_buff */       D_80119720, //D_80119720
-/* output_buff_size */  NULL,
-/* data_ptr */          NULL,
-/* data_size */         0,
-/* yield_data_ptr */    D_80200CB0,
-/* yield_data_size */   0xC00
-},
-{
-/* type */ 1,
-/* flags */     0,
-/* ucode_boot */    NULL,
-/* ucode_boot_size */   0,
-/* ucode */             NULL,
-/* ucode_size */        0x1000,
-/* ucode_data */        NULL,
-/* ucode_data_size */   0x800,
-/* dram_stack */        (void*)D_80119320,
-/* dram_stack_size */   0x400,
-/* output_buff */       D_80119720, //(void*)D_80119720
-/* output_buff_size */  NULL,
-/* data_ptr */          NULL,
-/* data_size */         0,
-/* yield_data_ptr */    D_80200CB0,
-/* yield_data_size */   0xC00
+    {
+        /* type */              1,
+        /* flags */             0,
+        /* ucode_boot */        NULL,
+        /* ucode_boot_size */   0,
+        /* ucode */             NULL,
+        /* ucode_size */        0x1000,
+        /* ucode_data */        NULL,
+        /* ucode_data_size */   0x800,
+        /* dram_stack */        (void*)D_80119320,
+        /* dram_stack_size */   0x400,
+        /* output_buff */       D_80119720, //D_80119720
+        /* output_buff_size */  NULL,
+        /* data_ptr */          NULL,
+        /* data_size */         0,
+        /* yield_data_ptr */    D_80200CB0,
+        /* yield_data_size */   0xC00
+    },
+    {
+        /* type */ 1,
+        /* flags */     0,
+        /* ucode_boot */    NULL,
+        /* ucode_boot_size */   0,
+        /* ucode */             NULL,
+        /* ucode_size */        0x1000,
+        /* ucode_data */        NULL,
+        /* ucode_data_size */   0x800,
+        /* dram_stack */        (void*)D_80119320,
+        /* dram_stack_size */   0x400,
+        /* output_buff */       D_80119720, //(void*)D_80119720
+        /* output_buff_size */  NULL,
+        /* data_ptr */          NULL,
+        /* data_size */         0,
+        /* yield_data_ptr */    D_80200CB0,
+        /* yield_data_size */   0xC00
 }};
 
 #else
 OSTask D_800F04E0[2] = {
-{
-/* type */ 1,
-/* flags */     0,
-/* ucode_boot */    NULL,
-/* ucode_boot_size */   0,
-/* ucode */             NULL,
-/* ucode_size */        0x1000,
-/* ucode_data */        NULL,
-/* ucode_data_size */   0x800,
-/* dram_stack */        (u64*)0x80119320, //(void*)D_80119320
-/* dram_stack_size */   0x400,
-/* output_buff */       (void*)0x80119720, //D_80119720
-/* output_buff_size */  NULL,
-/* data_ptr */          NULL,
-/* data_size */         0,
-/* yield_data_ptr */    D_80200CB0,
-/* yield_data_size */   sizeof(D_80200CB0)
-},
-{
-/* type */ 1,
-/* flags */     0,
-/* ucode_boot */    NULL,
-/* ucode_boot_size */   0,
-/* ucode */             NULL,
-/* ucode_size */        0x1000,
-/* ucode_data */        NULL,
-/* ucode_data_size */   0x800,
-/* dram_stack */        (u64*)0x80119320, //(void*)D_80119320
-/* dram_stack_size */   0x400,
-/* output_buff */       (void*)0x80119720, //(void*)D_80119720
-/* output_buff_size */  NULL,
-/* data_ptr */          NULL,
-/* data_size */         0,
-/* yield_data_ptr */    D_80200CB0,
-/* yield_data_size */   sizeof(D_80200CB0)
+    {
+        /* type */ 1,
+        /* flags */     0,
+        /* ucode_boot */    NULL,
+        /* ucode_boot_size */   0,
+        /* ucode */             NULL,
+        /* ucode_size */        0x1000,
+        /* ucode_data */        NULL,
+        /* ucode_data_size */   0x800,
+        /* dram_stack */        (u64*)0x80119320, //(void*)D_80119320
+        /* dram_stack_size */   0x400,
+        /* output_buff */       (void*)0x80119720, //D_80119720
+        /* output_buff_size */  NULL,
+        /* data_ptr */          NULL,
+        /* data_size */         0,
+        /* yield_data_ptr */    D_80200CB0,
+        /* yield_data_size */   sizeof(D_80200CB0)
+    },
+    {
+        /* type */ 1,
+        /* flags */     0,
+        /* ucode_boot */    NULL,
+        /* ucode_boot_size */   0,
+        /* ucode */             NULL,
+        /* ucode_size */        0x1000,
+        /* ucode_data */        NULL,
+        /* ucode_data_size */   0x800,
+        /* dram_stack */        (u64*)0x80119320, //(void*)D_80119320
+        /* dram_stack_size */   0x400,
+        /* output_buff */       (void*)0x80119720, //(void*)D_80119720
+        /* output_buff_size */  NULL,
+        /* data_ptr */          NULL,
+        /* data_size */         0,
+        /* yield_data_ptr */    D_80200CB0,
+        /* yield_data_size */   sizeof(D_80200CB0)
 }};
 #endif
 
@@ -254,59 +254,59 @@ void func_80025EF0(PlayerActor* arg0, Tongue* arg1, s32 arg2) {
         func_80027240(&gMatrixBufPtr, anim, sp124, animObjects);
     } else if (arg1->tongueMode != 0) {
         switch (arg1->tongueMode) {
-            case 1:
-            case 2:
-            case 3:
-                sp124 = arg1->segments;
-                if (sp124 > 3) {
-                    sp124 = 3;
+        case 1:
+        case 2:
+        case 3:
+            sp124 = arg1->segments;
+            if (sp124 > 3) {
+                sp124 = 3;
+            }
+            Anim_LoadPointer(&static0_chameleonAnims[4], &animObjects, &animFrames, &anim);
+            func_80027240(&gMatrixBufPtr, anim, sp124, animObjects);
+            break;
+        case 4:
+            sp124 = arg1->timer % 2 + 4;
+            Anim_LoadPointer(&static0_chameleonAnims[4], &animObjects, &animFrames, &anim);
+            func_80027240(&gMatrixBufPtr, anim, sp124, animObjects);
+            break;
+        case 5:
+            sp124 = arg1->poleSegmentAt % 6 + 6;
+            Anim_LoadPointer(&static0_chameleonAnims[4], &animObjects, &animFrames, &anim);
+            func_80027240(&gMatrixBufPtr, anim, sp124, animObjects);
+            break;
+        case 6:
+        case 7:
+            Anim_LoadPointer(&static0_chameleonAnims[4], &animObjects, &animFrames, &anim);
+            func_80027240(&gMatrixBufPtr, anim, arg1->timer + 12, animObjects);
+            break;
+        case 8:
+        case 9:
+            Anim_LoadPointer(&static0_chameleonAnims[5], &animObjects, &animFrames, &anim);
+            func_80027240(&gMatrixBufPtr, anim, arg1->segments, animObjects);
+            break;
+        case 11:
+            sp124 = arg1->timer;
+            if (sp124 >= 7) {
+                sp124 = (sp124 - 7) % 7 + 7;
+            }
+            if (arg0->unkBC > 0) {
+                Anim_LoadPointer(&static0_chameleonAnims[7], &animObjects, &animFrames, &anim);
+                if (sp124 >= animFrames) {
+                    sp124 = animFrames - 1;
                 }
-                Anim_LoadPointer(&static0_chameleonAnims[4], &animObjects, &animFrames, &anim);
                 func_80027240(&gMatrixBufPtr, anim, sp124, animObjects);
-                break;
-            case 4:
-                sp124 = arg1->timer % 2 + 4;
-                Anim_LoadPointer(&static0_chameleonAnims[4], &animObjects, &animFrames, &anim);
-                func_80027240(&gMatrixBufPtr, anim, sp124, animObjects);
-                break;
-            case 5:
-                sp124 = arg1->poleSegmentAt % 6 + 6;
-                Anim_LoadPointer(&static0_chameleonAnims[4], &animObjects, &animFrames, &anim);
-                func_80027240(&gMatrixBufPtr, anim, sp124, animObjects);
-                break;
-            case 6:
-            case 7:
-                Anim_LoadPointer(&static0_chameleonAnims[4], &animObjects, &animFrames, &anim);
-                func_80027240(&gMatrixBufPtr, anim, arg1->timer + 12, animObjects);
-                break;
-            case 8:
-            case 9:
-                Anim_LoadPointer(&static0_chameleonAnims[5], &animObjects, &animFrames, &anim);
-                func_80027240(&gMatrixBufPtr, anim, arg1->segments, animObjects);
-                break;
-            case 11:
-                sp124 = arg1->timer;
-                if (sp124 >= 7) {
-                    sp124 = (sp124 - 7) % 7 + 7;
+            } else {
+                Anim_LoadPointer(&static0_chameleonAnims[6], &animObjects, &animFrames, &anim);
+                if (sp124 >= animFrames) {
+                    sp124 = animFrames - 1;
                 }
-                if (arg0->unkBC > 0) {
-                    Anim_LoadPointer(&static0_chameleonAnims[7], &animObjects, &animFrames, &anim);
-                    if (sp124 >= animFrames) {
-                        sp124 = animFrames - 1;
-                    }
-                    func_80027240(&gMatrixBufPtr, anim, sp124, animObjects);
-                } else {
-                    Anim_LoadPointer(&static0_chameleonAnims[6], &animObjects, &animFrames, &anim);
-                    if (sp124 >= animFrames) {
-                        sp124 = animFrames - 1;
-                    }
-                    func_80027240(&gMatrixBufPtr, anim, sp124, animObjects);
-                }
-                break;
-            default:
-                Anim_LoadPointer(static0_chameleonAnims, &animObjects, &animFrames, &anim);
-                func_80027240(&gMatrixBufPtr, anim, (s32)arg0->globalTimer % animFrames, animObjects);
-                break;
+                func_80027240(&gMatrixBufPtr, anim, sp124, animObjects);
+            }
+            break;
+        default:
+            Anim_LoadPointer(static0_chameleonAnims, &animObjects, &animFrames, &anim);
+            func_80027240(&gMatrixBufPtr, anim, (s32)arg0->globalTimer % animFrames, animObjects);
+            break;
         }
     } else if (arg0->canJump != 0) {
         if (arg0->vel.y > 0.0f) {
@@ -596,7 +596,7 @@ Gfx* Player_DrawBody(GraphicStruct* arg0, Gfx* gfxPos, PlayerActor* player, Tong
             //load normal
             if (Battle_GameType == BATTLE_TYPE_NOTBATTLE) {
                 dlist = ChameleonGfxs[gSelectedCharacters[playerIndex]];
-            //load battle
+                //load battle
             } else {
                 dlist = Battle_ChameleonGfxs[gSelectedCharacters[playerIndex]];
             }
@@ -740,66 +740,66 @@ void func_8002AE3C(void) {
         }
 
         switch (gActors[i].actorID) {
-            case R_HEART:
-            case FALLING_R_HEART:
-                s1 = 19;
-                break;
-            case O_HEART:
-                s1 = 20;
-                scale = 2.2f;
-                break;
-            case Y_HEART:
-                s1 = 21;
-                scale = 2.4f;
-                break;
-            case CROWN:
-                s1 = 18;
-                scale = 2.5f;
-                break;
-            case CARROT:
-                s1 = 26;
-                break;
-            case UNK_65:
-                s1 = 26;
-                break;
-            case TIME_STOP_POWER_UP:
-                s1 = 27;
-                scale = 2.2f;
-                break;
-            case BIG_FEET_POWER_UP:
-                s1 = 22;
-                scale = 2.5f;
-                break;
-            case BIG_HEAD_POWER_UP:
-                s1 = 23;
-                scale = 2.5f;
-                break;
-            case SHRINK_POWER_UP:
-                s1 = 24;
-                scale = 2.5f;
-                break;
-            case SHRINK_ENEMY_POWER_UP:
-                s1 = 25;
-                scale = 2.5f;
-                break;
-            case BL_BOSS_SEGMENT:
-                if (gActors[i].globalTimer < 100) {
-                    continue;
-                }
-                if (gActors[i].userVariables[3] > 0 && gActors[i].userVariables[3] <= 10) {
-                    f32 f16 = temp * (1 - gActors[i].userVariables[3]) + 150;
-                    func_8005747C(gActors[i].pos.x,
+        case R_HEART:
+        case FALLING_R_HEART:
+            s1 = 19;
+            break;
+        case O_HEART:
+            s1 = 20;
+            scale = 2.2f;
+            break;
+        case Y_HEART:
+            s1 = 21;
+            scale = 2.4f;
+            break;
+        case CROWN:
+            s1 = 18;
+            scale = 2.5f;
+            break;
+        case CARROT:
+            s1 = 26;
+            break;
+        case UNK_65:
+            s1 = 26;
+            break;
+        case TIME_STOP_POWER_UP:
+            s1 = 27;
+            scale = 2.2f;
+            break;
+        case BIG_FEET_POWER_UP:
+            s1 = 22;
+            scale = 2.5f;
+            break;
+        case BIG_HEAD_POWER_UP:
+            s1 = 23;
+            scale = 2.5f;
+            break;
+        case SHRINK_POWER_UP:
+            s1 = 24;
+            scale = 2.5f;
+            break;
+        case SHRINK_ENEMY_POWER_UP:
+            s1 = 25;
+            scale = 2.5f;
+            break;
+        case BL_BOSS_SEGMENT:
+            if (gActors[i].globalTimer < 100) {
+                continue;
+            }
+            if (gActors[i].userVariables[3] > 0 && gActors[i].userVariables[3] <= 10) {
+                f32 f16 = temp * (1 - gActors[i].userVariables[3]) + 150;
+                func_8005747C(gActors[i].pos.x,
                                   gActors[i].pos.y + (gActors[i].unknownPositionThings[0].unk_10 + f16) * 0.5f,
                                   gActors[i].pos.z,
                                   f16 + 2.0f * gActors[i].unknownPositionThings[0].unk_0C,
                                   f16 + 2.0f * gActors[i].unknownPositionThings[0].unk_0C,
                                   (f32)(gTimer % 32) / 32,
                                   gActors[i].userVariables[3] >= 3 && gActors[i].userVariables[3] < 10 ? 0xD3 : 0x2B);
-                }
-                a1 = TRUE;
-                break;
-            default:
-                continue;
+            }
+            a1 = TRUE;
+            break;
+        default:
+            continue;
         }
         if (!a1) {
             func_8005747C(gActors[i].pos.x,
@@ -892,160 +892,160 @@ Gfx* Actors_DrawAll(GraphicStruct* arg0, Gfx* gfxPos) {
         }
 
         switch (gActors[i].actorID) {
-            case YELLOW_ANT:
-                gActors[i].unk_E8 = gActors[i].unk_134[5] - 40.0f;
-                gfxPos = Actor_DrawModel(arg0, gfxPos, AntLand_yellowAnt_gfx14_Gfx, &gActors[i], 3.0f, 0, &mtxIndex);
-                break;
-            case ANT_QUEEN:
-                gActors[i].unk_E8 = gActors[i].unk_134[5];
-                gfxPos = Actor_DrawModel(arg0, gfxPos, Quintella_a_model18_Gfx, &gActors[i], 4.0f, 0, &mtxIndex);
-                break;
-            case BL_BOSS_SEGMENT:
-                if (gActors[i].globalTimer >= 100) {
-                    if (gActors[i].userVariables[3] == 0) {
-                        gActors[i].unk_E8 = 0.0f;
-                        gfxPos = Actor_DrawModel(arg0, gfxPos, BombSnake_unkF_Gfx, &gActors[i], 10.0f, 0, &mtxIndex);
-                    } else if (gActors[i].userVariables[3] == 10) {
-                        gActors[i].unk_E8 = 0;
-                        gfxPos = Actor_DrawModel(arg0, gfxPos, BombSnake_unk11_Gfx, &gActors[i], 10.0f, 0, &mtxIndex);
-                    }
+        case YELLOW_ANT:
+            gActors[i].unk_E8 = gActors[i].unk_134[5] - 40.0f;
+            gfxPos = Actor_DrawModel(arg0, gfxPos, AntLand_yellowAnt_gfx14_Gfx, &gActors[i], 3.0f, 0, &mtxIndex);
+            break;
+        case ANT_QUEEN:
+            gActors[i].unk_E8 = gActors[i].unk_134[5];
+            gfxPos = Actor_DrawModel(arg0, gfxPos, Quintella_a_model18_Gfx, &gActors[i], 4.0f, 0, &mtxIndex);
+            break;
+        case BL_BOSS_SEGMENT:
+            if (gActors[i].globalTimer >= 100) {
+                if (gActors[i].userVariables[3] == 0) {
+                    gActors[i].unk_E8 = 0.0f;
+                    gfxPos = Actor_DrawModel(arg0, gfxPos, BombSnake_unkF_Gfx, &gActors[i], 10.0f, 0, &mtxIndex);
+                } else if (gActors[i].userVariables[3] == 10) {
+                    gActors[i].unk_E8 = 0;
+                    gfxPos = Actor_DrawModel(arg0, gfxPos, BombSnake_unk11_Gfx, &gActors[i], 10.0f, 0, &mtxIndex);
                 }
-                break;
-            case CANNON:
-                gActors[i].unk_E8 = 0.0f;
-                gfxPos = Actor_DrawModel(arg0, gfxPos, BombLand_unk74_Gfx, &gActors[i], 4.0f, 0, &mtxIndex);
-                break;
-            case UNK_1F:
-                gActors[i].unk_E8 = 0.0f;
-                gfxPos = Actor_DrawModel(arg0, gfxPos, BattleMode_a_model1_Gfx, &gActors[i], 2.0f, 0, &mtxIndex);
-                break;
-            case POGO:
-                gActors[i].unk_E8 = 0.0f;
-                gfxPos = Actor_DrawModel(arg0, gfxPos, KidsLand_actorModel9_Gfx, &gActors[i], 3.0f, 0, &mtxIndex);
-                break;
-            case CAKE_BOSS:
-                gActors[i].unk_E8 = 0.0f;
-                gfxPos = Actor_DrawModel(arg0, gfxPos, GiantCake_a_model9_Gfx, &gActors[i], 8.0f, 0, &mtxIndex);
-                gActors[i].unk_E8 = 0.0f;
-                gfxPos = Actor_DrawModel(arg0, gfxPos, GiantCake_a_model13_Gfx, &gActors[i], 8.0f, 1, &mtxIndex);
-                break;
-            case CAKE_BOSS_STRAWBERRY:
-                if (gActors[i].unk_128 == 6) {
-                    actorScale  = 16.0f;
-                } else {
-                    actorScale  = 8.0f;
-                }
-                gActors[i].unk_E8 = 0.0f;
-                gfxPos = Actor_DrawModel(arg0, gfxPos, GiantCake_a_model15_Gfx, &gActors[i], actorScale , 0, &mtxIndex);
-                break;
-            case BOWLING_PINS:
-                if (D_800FE400 == 0) {
-                    bowlingPinsGfx  = KidsLand_actorModel10_Gfx;
-                } else {
-                    bowlingPinsGfx  = KidsLand_actorModel12_Gfx;
-                }
-                gActors[i].unk_E8 = 0.0f;
-                gfxPos = Actor_DrawModel(arg0, gfxPos, bowlingPinsGfx , &gActors[i], 3.0f, 0, &mtxIndex);
-                break;
-            case ARROWS:
-                gActors[i].unk_E8 = 50.0f;
-                gfxPos = Actor_DrawModel(arg0, gfxPos, DesertCastle_actorModel4_Gfx, &gActors[i], 3.0f, 0, &mtxIndex);
-                break;
-            case CHOMPER:
-                actorScale  = gActors[i].unk_164 * 6.0f;
-                gActors[i].unk_E8 = 0.0f;
-                gfxPos = Actor_DrawModel(arg0, gfxPos, DesertCastle_actorModel19_Gfx, &gActors[i], actorScale , 0, &mtxIndex);
-                break;
-            case BOULDER:
-                gActors[i].unk_E8 = 0.0f;
-                gfxPos = Actor_DrawModel(arg0, gfxPos, DesertCastle_actorModel21_Gfx, &gActors[i], 2.0f, 0, &mtxIndex);
-                break;
-            case ARMADILLO:
-                gActors[i].unk_E8 = gActors[i].unk_134[4];
-                gfxPos = Actor_DrawModel(arg0, gfxPos, Armadillo_a_model21_Gfx, &gActors[i], 3.0f, 0, &mtxIndex);
-                break;
-            case SANDAL:
-                gActors[i].unk_E8 = 0.0f;
-                gfxPos = Actor_DrawModel(arg0, gfxPos, GhostCastle_model78_Gfx, &gActors[i], 2.0f, 0, &mtxIndex);
-                break;
-            case METAL_SHEET:
-                gActors[i].unk_E8 = 0.0f;
-                gfxPos = Actor_DrawModel(arg0, gfxPos, GhostCastle_model80_Gfx, &gActors[i], 2.0f, 0, &mtxIndex);
-                break;
-            case SCROLL:
-                gActors[i].unk_E8 = 0.0f;
-                gfxPos = Actor_DrawModel(arg0, gfxPos, GhostCastle_model88_Gfx, &gActors[i], 3.0f, 0, &mtxIndex);
-                break;
-            case FIRE_SPITTER:
-                gActors[i].unk_E8 = gActors[i].unknownPositionThings[0].unk_10 / 2;
-                gfxPos = Actor_DrawModel(arg0, gfxPos, GhostCastle_model83_Gfx, &gActors[i], 2.0f, 0, &mtxIndex);
-                break;
-            case PILE_OF_BOOKS:
-                gActors[i].unk_E8 = -60.0f;
-                gfxPos = Actor_DrawModel(arg0, gfxPos, PileOfBooks_a_model15_Gfx, &gActors[i], 6.0f, 0, &mtxIndex);
-                break;
-            case PILE_OF_BOOKS_ARM_SPITTER:
-                gActors[i].unk_E8 = gActors[i].unknownPositionThings[0].unk_10 / 2;
-                gfxPos = Actor_DrawModel(arg0, gfxPos, PileOfBooks_a_model18_Gfx, &gActors[i], 3.0f, 0, &mtxIndex);
-                break;
-            case GOLEM:
-                gActors[i].unk_E8 = 0.0f;
-                gfxPos = Actor_DrawModel(arg0, gfxPos, JungleLand_unkunk_Gfx, &gActors[i], 4.0f, 0, &mtxIndex);
-                break;
-            case SPIDER_SPAWNER:
-                gActors[i].unk_E8 = 0.0f;
-                gfxPos = Actor_DrawModel(arg0, gfxPos, JungleLand_unkunk2_Gfx, &gActors[i], 2.0f, 0, &mtxIndex);
-                break;
-            case FISH:
-                gActors[i].unk_E8 = 0.0f;
-                gfxPos = Actor_DrawModel(arg0, gfxPos, JungleLand_unkunk3_Gfx, &gActors[i], 1.4f, 0, &mtxIndex);
-                gfxPos = Actor_DrawModel(arg0, gfxPos, JungleLand_unkunk4_Gfx, &gActors[i], 1.4f, 1, &mtxIndex);
-                break;
-            case LIZARD_KONG_BOULDER:
-                gActors[i].unk_E8 = gActors[i].unknownPositionThings[0].unk_10 / 2;
-                gfxPos = Actor_DrawModel(arg0, gfxPos, LizardKong_a_model14_Gfx, &gActors[i], 2.0f, 0, &mtxIndex);
-                break;
-            case LIZARD_KONG:
-                gActors[i].unk_E8 = 0.0f;
-                gfxPos = Actor_DrawModel(arg0, gfxPos, LizardKong_a_model12_Gfx, &gActors[i], 3.0f, 0, &mtxIndex);
-                if (gActors[i].unk_EC == 1 && gActors[i].unk_F0 > 25 && gActors[i].unk_F0 < 62) {
-                    s32 unused;
-                    Mtx* animMtxPtr;
-                    Mtx tempMtx;
-                    Mtx rotMtx;
-                    Mtx combinedMtx;
-                    s32 numObjects;
-                    s32 numFrames;
-                    f32 limb1X, limb1Y, limb1Z; // used to spawn boulder in Lizard_Kongs hands (could be L or R hand)
-                    f32 limb2X, limb2Y, limb2Z;
+            }
+            break;
+        case CANNON:
+            gActors[i].unk_E8 = 0.0f;
+            gfxPos = Actor_DrawModel(arg0, gfxPos, BombLand_unk74_Gfx, &gActors[i], 4.0f, 0, &mtxIndex);
+            break;
+        case UNK_1F:
+            gActors[i].unk_E8 = 0.0f;
+            gfxPos = Actor_DrawModel(arg0, gfxPos, BattleMode_a_model1_Gfx, &gActors[i], 2.0f, 0, &mtxIndex);
+            break;
+        case POGO:
+            gActors[i].unk_E8 = 0.0f;
+            gfxPos = Actor_DrawModel(arg0, gfxPos, KidsLand_actorModel9_Gfx, &gActors[i], 3.0f, 0, &mtxIndex);
+            break;
+        case CAKE_BOSS:
+            gActors[i].unk_E8 = 0.0f;
+            gfxPos = Actor_DrawModel(arg0, gfxPos, GiantCake_a_model9_Gfx, &gActors[i], 8.0f, 0, &mtxIndex);
+            gActors[i].unk_E8 = 0.0f;
+            gfxPos = Actor_DrawModel(arg0, gfxPos, GiantCake_a_model13_Gfx, &gActors[i], 8.0f, 1, &mtxIndex);
+            break;
+        case CAKE_BOSS_STRAWBERRY:
+            if (gActors[i].unk_128 == 6) {
+                actorScale  = 16.0f;
+            } else {
+                actorScale  = 8.0f;
+            }
+            gActors[i].unk_E8 = 0.0f;
+            gfxPos = Actor_DrawModel(arg0, gfxPos, GiantCake_a_model15_Gfx, &gActors[i], actorScale , 0, &mtxIndex);
+            break;
+        case BOWLING_PINS:
+            if (D_800FE400 == 0) {
+                bowlingPinsGfx  = KidsLand_actorModel10_Gfx;
+            } else {
+                bowlingPinsGfx  = KidsLand_actorModel12_Gfx;
+            }
+            gActors[i].unk_E8 = 0.0f;
+            gfxPos = Actor_DrawModel(arg0, gfxPos, bowlingPinsGfx , &gActors[i], 3.0f, 0, &mtxIndex);
+            break;
+        case ARROWS:
+            gActors[i].unk_E8 = 50.0f;
+            gfxPos = Actor_DrawModel(arg0, gfxPos, DesertCastle_actorModel4_Gfx, &gActors[i], 3.0f, 0, &mtxIndex);
+            break;
+        case CHOMPER:
+            actorScale  = gActors[i].unk_164 * 6.0f;
+            gActors[i].unk_E8 = 0.0f;
+            gfxPos = Actor_DrawModel(arg0, gfxPos, DesertCastle_actorModel19_Gfx, &gActors[i], actorScale , 0, &mtxIndex);
+            break;
+        case BOULDER:
+            gActors[i].unk_E8 = 0.0f;
+            gfxPos = Actor_DrawModel(arg0, gfxPos, DesertCastle_actorModel21_Gfx, &gActors[i], 2.0f, 0, &mtxIndex);
+            break;
+        case ARMADILLO:
+            gActors[i].unk_E8 = gActors[i].unk_134[4];
+            gfxPos = Actor_DrawModel(arg0, gfxPos, Armadillo_a_model21_Gfx, &gActors[i], 3.0f, 0, &mtxIndex);
+            break;
+        case SANDAL:
+            gActors[i].unk_E8 = 0.0f;
+            gfxPos = Actor_DrawModel(arg0, gfxPos, GhostCastle_model78_Gfx, &gActors[i], 2.0f, 0, &mtxIndex);
+            break;
+        case METAL_SHEET:
+            gActors[i].unk_E8 = 0.0f;
+            gfxPos = Actor_DrawModel(arg0, gfxPos, GhostCastle_model80_Gfx, &gActors[i], 2.0f, 0, &mtxIndex);
+            break;
+        case SCROLL:
+            gActors[i].unk_E8 = 0.0f;
+            gfxPos = Actor_DrawModel(arg0, gfxPos, GhostCastle_model88_Gfx, &gActors[i], 3.0f, 0, &mtxIndex);
+            break;
+        case FIRE_SPITTER:
+            gActors[i].unk_E8 = gActors[i].unknownPositionThings[0].unk_10 / 2;
+            gfxPos = Actor_DrawModel(arg0, gfxPos, GhostCastle_model83_Gfx, &gActors[i], 2.0f, 0, &mtxIndex);
+            break;
+        case PILE_OF_BOOKS:
+            gActors[i].unk_E8 = -60.0f;
+            gfxPos = Actor_DrawModel(arg0, gfxPos, PileOfBooks_a_model15_Gfx, &gActors[i], 6.0f, 0, &mtxIndex);
+            break;
+        case PILE_OF_BOOKS_ARM_SPITTER:
+            gActors[i].unk_E8 = gActors[i].unknownPositionThings[0].unk_10 / 2;
+            gfxPos = Actor_DrawModel(arg0, gfxPos, PileOfBooks_a_model18_Gfx, &gActors[i], 3.0f, 0, &mtxIndex);
+            break;
+        case GOLEM:
+            gActors[i].unk_E8 = 0.0f;
+            gfxPos = Actor_DrawModel(arg0, gfxPos, JungleLand_unkunk_Gfx, &gActors[i], 4.0f, 0, &mtxIndex);
+            break;
+        case SPIDER_SPAWNER:
+            gActors[i].unk_E8 = 0.0f;
+            gfxPos = Actor_DrawModel(arg0, gfxPos, JungleLand_unkunk2_Gfx, &gActors[i], 2.0f, 0, &mtxIndex);
+            break;
+        case FISH:
+            gActors[i].unk_E8 = 0.0f;
+            gfxPos = Actor_DrawModel(arg0, gfxPos, JungleLand_unkunk3_Gfx, &gActors[i], 1.4f, 0, &mtxIndex);
+            gfxPos = Actor_DrawModel(arg0, gfxPos, JungleLand_unkunk4_Gfx, &gActors[i], 1.4f, 1, &mtxIndex);
+            break;
+        case LIZARD_KONG_BOULDER:
+            gActors[i].unk_E8 = gActors[i].unknownPositionThings[0].unk_10 / 2;
+            gfxPos = Actor_DrawModel(arg0, gfxPos, LizardKong_a_model14_Gfx, &gActors[i], 2.0f, 0, &mtxIndex);
+            break;
+        case LIZARD_KONG:
+            gActors[i].unk_E8 = 0.0f;
+            gfxPos = Actor_DrawModel(arg0, gfxPos, LizardKong_a_model12_Gfx, &gActors[i], 3.0f, 0, &mtxIndex);
+            if (gActors[i].unk_EC == 1 && gActors[i].unk_F0 > 25 && gActors[i].unk_F0 < 62) {
+                s32 unused;
+                Mtx* animMtxPtr;
+                Mtx tempMtx;
+                Mtx rotMtx;
+                Mtx combinedMtx;
+                s32 numObjects;
+                s32 numFrames;
+                f32 limb1X, limb1Y, limb1Z; // used to spawn boulder in Lizard_Kongs hands (could be L or R hand)
+                f32 limb2X, limb2Y, limb2Z;
 
-                    animMtxPtr = NULL;
-                    guRotate(&rotMtx, gActors[i].unk_90 + 90.0f, 0, 1.0f, 0);
-                    Anim_LoadPointer(&LizardKong_unk2Pointers_Animp, &numObjects, &numFrames, &animMtxPtr);
+                animMtxPtr = NULL;
+                guRotate(&rotMtx, gActors[i].unk_90 + 90.0f, 0, 1.0f, 0);
+                Anim_LoadPointer(&LizardKong_unk2Pointers_Animp, &numObjects, &numFrames, &animMtxPtr);
 
-                    tempMtx = animMtxPtr[6 + (gActors[i].unk_F0 / 2) * numObjects];
-                    guMtxCatL(&tempMtx, &rotMtx, &combinedMtx);
-                    guMtxXFML(&combinedMtx, -120.0f, 0.0f, 0.0f, &limb1X, &limb1Y, &limb1Z);
+                tempMtx = animMtxPtr[6 + (gActors[i].unk_F0 / 2) * numObjects];
+                guMtxCatL(&tempMtx, &rotMtx, &combinedMtx);
+                guMtxXFML(&combinedMtx, -120.0f, 0.0f, 0.0f, &limb1X, &limb1Y, &limb1Z);
 
-                    tempMtx = animMtxPtr[8 + (gActors[i].unk_F0 / 2) * numObjects];
-                    guMtxCatL(&tempMtx, &rotMtx, &combinedMtx);
-                    guMtxXFML(&combinedMtx, 120.0f, 0.0f, 0.0f, &limb2X, &limb2Y, &limb2Z);
-                    guTranslate(&arg0->actorTranslate[mtxIndex], gActors[i].pos.x + 3.0f * ((limb1X + limb2X) * 0.5f),
+                tempMtx = animMtxPtr[8 + (gActors[i].unk_F0 / 2) * numObjects];
+                guMtxCatL(&tempMtx, &rotMtx, &combinedMtx);
+                guMtxXFML(&combinedMtx, 120.0f, 0.0f, 0.0f, &limb2X, &limb2Y, &limb2Z);
+                guTranslate(&arg0->actorTranslate[mtxIndex], gActors[i].pos.x + 3.0f * ((limb1X + limb2X) * 0.5f),
                                                               gActors[i].pos.y + 3.0f * ((limb1Y + limb2Y) * 0.5f),
                                                               gActors[i].pos.z + 3.0f * ((limb1Z + limb2Z) * 0.5f));
-                    guRotate(&arg0->actorRotate[mtxIndex], gActors[i].unk_90 + 90.0f, 0, 1.0f, 0);
-                    guScale(&arg0->actorScale[mtxIndex], 2.0f, 2.0f, 2.0f);
-                    gSPMatrix(gfxPos++, OS_K0_TO_PHYSICAL(&arg0->actorTranslate[mtxIndex]), G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
-                    gSPMatrix(gfxPos++, OS_K0_TO_PHYSICAL(&arg0->actorRotate[mtxIndex]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
-                    gSPMatrix(gfxPos++, OS_K0_TO_PHYSICAL(&arg0->actorScale[mtxIndex]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
-                    PutDList(&gMatrixBufPtr, &gfxPos, LizardKong_a_model14_Gfx);
-                    gSPPopMatrix(gfxPos++, G_MTX_MODELVIEW);
-                }
-                break;
-            case POPCORN_BUCKET:
-                gActors[i].unk_E8 = 0.0f;
-                gfxPos = Actor_DrawModel(arg0, gfxPos, BattleMode_a_model1_Gfx, &gActors[i], 2.0f, 0, &mtxIndex);
-                break;
+                guRotate(&arg0->actorRotate[mtxIndex], gActors[i].unk_90 + 90.0f, 0, 1.0f, 0);
+                guScale(&arg0->actorScale[mtxIndex], 2.0f, 2.0f, 2.0f);
+                gSPMatrix(gfxPos++, OS_K0_TO_PHYSICAL(&arg0->actorTranslate[mtxIndex]), G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+                gSPMatrix(gfxPos++, OS_K0_TO_PHYSICAL(&arg0->actorRotate[mtxIndex]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+                gSPMatrix(gfxPos++, OS_K0_TO_PHYSICAL(&arg0->actorScale[mtxIndex]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+                PutDList(&gMatrixBufPtr, &gfxPos, LizardKong_a_model14_Gfx);
+                gSPPopMatrix(gfxPos++, G_MTX_MODELVIEW);
+            }
+            break;
+        case POPCORN_BUCKET:
+            gActors[i].unk_E8 = 0.0f;
+            gfxPos = Actor_DrawModel(arg0, gfxPos, BattleMode_a_model1_Gfx, &gActors[i], 2.0f, 0, &mtxIndex);
+            break;
         }
     }
 

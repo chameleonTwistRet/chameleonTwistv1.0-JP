@@ -16,7 +16,7 @@ typedef struct {
 } CrashScreen; // size = 0x9D4
 
 CrashScreen gCrashScreen = {0}; //force into .data section so it's zeroed on boot
-extern u32	osMemSize;
+extern u32 osMemSize;
 
 u64 osGetTime();
 void* memcpy(void* destination, const void* source, u32 size);

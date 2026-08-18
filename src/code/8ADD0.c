@@ -47,12 +47,12 @@ s32 D_80108880[] = {-1, 0x31, 0x33, 0x35, 0x37};
 enum FieldObjectBehaviours {
     FIELD_BEHAVIOUR_DEFAULT,    //static
     FIELD_BEHAVIOUR_2POINT_MOVING = 0x5,
-    FIELD_BEHAVIOUR_ROTATING = 0x8,
-    FIELD_BEHAVIOUR_KEYFRAME_MOVING = 0xA,
-    FIELD_BEHAVIOUR_DAMAGE = 0x11,
-    FIELD_BEHAVIOUR_FALLING = 0x12,
-    FIELD_BEHAVIOUR_FLUID_A = 0x14,
-    FIELD_BEHAVIOUR_FLUID_B = 0x15
+        FIELD_BEHAVIOUR_ROTATING = 0x8,
+        FIELD_BEHAVIOUR_KEYFRAME_MOVING = 0xA,
+        FIELD_BEHAVIOUR_DAMAGE = 0x11,
+        FIELD_BEHAVIOUR_FALLING = 0x12,
+        FIELD_BEHAVIOUR_FLUID_A = 0x14,
+        FIELD_BEHAVIOUR_FLUID_B = 0x15
 };
 
 // MESH
@@ -69,7 +69,7 @@ FieldObjectBehaviourFuncs gFieldObjectBehaviourMap[] = {
     {0x00000009, func_800B6CD8, func_800B6D24},
     {FIELD_BEHAVIOUR_KEYFRAME_MOVING, RegisterKeyframePlatform, MoveKeyframePlatform}, // Moving Platform Keyframe {On Player Top-Face Collide}
     {0x0000000B, func_800B7208, func_800B7328},
-    {0x0000000C, func_800B7860, func_800B78F8}, 
+    {0x0000000C, func_800B7860, func_800B78F8},
     {0x0000000D, func_800B81B4, func_800B81FC},
     {0x0000000E, func_800B8634, func_800B87A0},
     {0x0000000F, func_800B9298, func_800B9390},
@@ -221,7 +221,7 @@ void func_800B08C8(Collider* arg0) {
             arg0->unk_B8 = gTimer + 150;
             return;
         }
-       break;
+        break;
     case 2:
         if (func_800B07E4() == 0) {
             arg0->unk_B4 = 3;
@@ -272,7 +272,7 @@ void func_800B0AA4(Collider* collider) {
             func_800B35B0(collider->unk_B0);
             collider->unk_AC = 2;
         }
-    //why even have case 1 or 2 at that point?? nulled code???
+        //why even have case 1 or 2 at that point?? nulled code???
     case 1:
     case 2:
         break;
@@ -286,8 +286,8 @@ void func_800B0AA4(Collider* collider) {
 // a shuffled index list (100 random swaps), and writes the shuffled positions back, notifying
 // each collider (SetColliderFlag(_, 4, 1)).
 //
-// diff is a whole-function register-number shift 
-// (arg0 lands in s5 vs the target's s6) that the permuter could not break in 73k iterations. 
+// diff is a whole-function register-number shift
+// (arg0 lands in s5 vs the target's s6) that the permuter could not break in 73k iterations.
 // diff score ~313
 #ifdef NON_MATCHING
 void func_800B0B20(Collider* arg0, RoomObject* arg1) {
@@ -866,7 +866,7 @@ void ResetStageModels(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/RegistModel.s")
 
 // moveModel: translate a collision model in place by `offset`, adding it to every vertex of
-// vertsStart (noXVerts entries, stride 0xC) and shifting both corners of the AABB at settingsStart. 
+// vertsStart (noXVerts entries, stride 0xC) and shifting both corners of the AABB at settingsStart.
 void moveModel(ModelCollision* model, Vec3f offset) {
     s32 i;
     Vec3f* vert;
@@ -2610,17 +2610,17 @@ void EraseTongueEatEnemy(Tongue* arg0) {
 
     for (i = 0; i < ARRAY_COUNT(gActors); i++) {
         if (gActors[i].actorID == 0)
-            continue;
+        continue;
         if (gActors[i].actorState != 1)
-            continue;
-            if (IsPickup(&gActors[i]) != 0) {
-                pickup_collide_func(i);
-            } else {
-                gActors[i].actorState = 2;
-                arg0->inMouth[arg0->amountInMouth] = i;
-                arg0->amountInMouth += 1;
-            }
-            arg0->amountOnTongue -= 1;
+        continue;
+        if (IsPickup(&gActors[i]) != 0) {
+            pickup_collide_func(i);
+        } else {
+            gActors[i].actorState = 2;
+            arg0->inMouth[arg0->amountInMouth] = i;
+            arg0->amountInMouth += 1;
+        }
+        arg0->amountOnTongue -= 1;
 
     }
     CalculatePlayerDragFromEaten(arg0);
@@ -3711,7 +3711,6 @@ void func_800C88AC(void) {
 void func_800C88D0(void) {
     func_800C56D4(gPlayerActors);
 }
-
 
 
 CardinalDirection gCardinalDirections[] = {

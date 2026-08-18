@@ -7,11 +7,11 @@ OSMesgQueue gEepromMsgQ;
 OSMesg D_80175638;
 OSContStatus D_80175640[MAXCONTROLLERS];
 OSContPad D_80175650[MAXCONTROLLERS];
-s32 D_80175668[MAXCONTROLLERS];       
-u16 D_80175678[MAXCONTROLLERS];       
-ContMain gContMain[MAXCONTROLLERS];   
-u16 D_801756C0[MAXCONTROLLERS];       
-OSPfs gRumblePfs[MAXCONTROLLERS];     
+s32 D_80175668[MAXCONTROLLERS];
+u16 D_80175678[MAXCONTROLLERS];
+ContMain gContMain[MAXCONTROLLERS];
+u16 D_801756C0[MAXCONTROLLERS];
+OSPfs gRumblePfs[MAXCONTROLLERS];
 
 /* mainproc() */
 s32 Controller_Init(void) {
@@ -122,7 +122,7 @@ void func_8004E784(ContMain* arg0, s32 arg1, s32* arg2, ContMain* arg3) {
         if ((gContMain[i].stickX >= -6) && (gContMain[i].stickX < 7)) {
             gContMain[i].stickX = 0;
         }
-        
+
         if ((gContMain[i].stickY >= -6) && (gContMain[i].stickY < 7)) {
             gContMain[i].stickY = 0;
         }

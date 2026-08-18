@@ -315,14 +315,14 @@ f32 D_80109008[] = {0, 0};
  * Uses a fixed seed if UseFixedRNGSeed is TRUE or guRandom() if FALSE.
  * @param min: Minimum value to return
  * @param max: Maximum value to return
- * 
+ *
  * @return: A random integer between min and max, inclusive
  */
 s32 Random(s32 min, s32 max) {
     s32 randVal;
     f32 randFloat;
     f32 randFloat2;
-    
+
     if (UseFixedRNGSeed != FALSE) {
         randFloat = ((gCurrentDemoTimer * 256) + gCurrentDemoTimer) % 65535 / 65535.0f;
         randFloat2 = max - min + 1;
@@ -337,7 +337,7 @@ s32 Random(s32 min, s32 max) {
 
 /**
  * @brief Returns a random float between 0 and 1 by calling Random().
- * @return A random float between 0 and 1 
+ * @return A random float between 0 and 1
  */
 f32 RandomF(void) {
     return Random(0, 0xFFFF) / 65535.0f;
@@ -379,7 +379,7 @@ f32 AsinDeg(f32 x) {
     f32 entry1;
     f32 entry2;
     f32 t;
-    
+
     if (x >= 0.0f) {
         sign = 1.0f;
         abs_x = x;
@@ -387,7 +387,7 @@ f32 AsinDeg(f32 x) {
         sign = -1.0f;
         abs_x = -x;
     }
-    
+
     if (abs_x > 1.0) {
         abs_x = 1.0f;
     }
@@ -405,11 +405,11 @@ f32 AsinDeg(f32 x) {
 
     base = cur;
     next = base + 1;
-    
+
     if (next > 64) {
         next = 64;
     }
-    
+
     entry1 = table[base];
     entry2 = table[next];
     t = cur - base;
@@ -420,7 +420,7 @@ f32 AsinDeg(f32 x) {
 /**
  * @brief Calculates the angle s.t. sin(angle) = x.
  * @param x: The value to calculate the angle of.
- * 
+ *
  * @return: The angle s.t. sin(angle) = x.
  */
 f32 AngleFromArcSin(f32 x) {
@@ -444,12 +444,12 @@ f32 ArcTan2Deg(f32 x, f32 y) {
     s32 next_index;
     s32 floor;
     u32 quadrant = 0;
-    
+
     // No input vector
     if (x == 0.0 && y == 0.0) {
         return 0.0f;
     }
-    
+
     /* quadrant is used to store the quadrant of the angle [0,3]
        and later stores the sgn */
     if (x < 0.0f) {
@@ -458,14 +458,14 @@ f32 ArcTan2Deg(f32 x, f32 y) {
     } else {
         absX = x;
     }
-    
+
     if (y < 0.0f) {
         quadrant += 2;
         absY = -y;
     } else {
         absY = y;
     }
-    
+
     /* quadrant += 4 iff |x| < |y| */
     if (absX < absY) {
         quadrant += 4;
@@ -476,21 +476,21 @@ f32 ArcTan2Deg(f32 x, f32 y) {
         frac = slope - floorF;          // frac of slope
     } else {
         slope = (absY / absX) * 64.0f;
-        floor = (s32) slope;       
-        next_index = floor + 1;    
-        floorF = (f32) floor;      
-        frac = slope - floorF;     
+        floor = (s32) slope;
+        next_index = floor + 1;
+        floorF = (f32) floor;
+        frac = slope - floorF;
     }
-    
+
     /* clamp floor and next_index to [0,64] */
     if (next_index > 64) {
         next_index = 64;
     }
-    
+
     /* angle lookup table is 65 entries long, but the last entry is the same as the first */
     lookupOne = sAtan2DegTable[floor];
     lookupTwo = sAtan2DegTable[next_index];
-    
+
     /* Lerp between lookup angle results */
     switch (quadrant) {
     case 0:

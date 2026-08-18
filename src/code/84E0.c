@@ -621,7 +621,7 @@ s32 Actor_Init(s32 id, f32 posX, f32 posY, f32 posZ, f32 arg4, f32 arg5, f32 arg
 
     for (i = 0; i < ARRAY_COUNT(gActors); i++, curActor++) {
         if (curActor->actorID == 0) {
-            Actors_Init(i, id, posX, posY, posZ, arg4, arg5, arg6, 
+            Actors_Init(i, id, posX, posY, posZ, arg4, arg5, arg6,
                 arg7, arg8, arg9, argA, argB, argC, argD, argE, argF,
                 arg10, arg11, arg12, arg13, arg14, arg15, arg16);
             gActorCount++;
@@ -877,7 +877,6 @@ void LaunchPlayerVertically(f32 velY, PlayerActor* player, s32 tumbling) {
 }
 
 
-
 void func_8002F568(void) {
     gCurrentActivePlayerPointer->vel.x = gCurrentActivePlayerPointer->vaultlocity.x * 0.25f;
     gCurrentActivePlayerPointer->vel.z = gCurrentActivePlayerPointer->vaultlocity.z * 0.25f;
@@ -1086,7 +1085,7 @@ void func_800314E4(Actor* arg0) {
 }
 
 // Shared "room clear condition met" reaction: defeat all golems, mirror rooms, and minigames
-// (billiards, bowling) 
+// (billiards, bowling)
 void TriggerRoomClearReaction(Actor* trigger) {
     Actor* other;
     s32 i;
@@ -3470,11 +3469,12 @@ void ActorInit_PopcornBucketSpawner(Actor* popcornBucketSpawner) {
 }
 
 void ActorTick_PopcornBucketSpawner(Actor *popcornBucketSpawner) {
-  Actor *actor;
-  int unusedCheck;
-  Actor *start;
-  Actor *end;
+    Actor *actor;
+    int unusedCheck;
+    Actor *start;
+    Actor *end;
 
+    /* statement grouping on this line is load-bearing for codegen */
     start = gActors; actor = start; do { end = (Actor *) Poles;
         if (actor->actorID == 0) {
             break;
@@ -3625,28 +3625,28 @@ void ActorInit_BattleModeSaucerSpawner(Actor* bmSaucerSpawner) {
 }
 
 void ActorTick_BattleModeSaucerSpawner(Actor *bmSaucerSpawner) {
-  s32 i;
-  s32 idx;
-  int new_var;
-  if (D_80174758[bmSaucerSpawner->unk_128 - 1] != (-1)) {
-    return;
-  }
-  bmSaucerSpawner->userVariables[0] += 1;
-  if (bmSaucerSpawner->unk_124 != bmSaucerSpawner->userVariables[0]) {
-    return;
-  }
-  for (i = bmSaucerSpawner->unk_128 - 1; i > 0; i--) {
-    new_var = i - 1;
-    if (D_80174758[new_var] != (-1)) {
-      gActors[D_80174758[i - 1]].userVariables[0] = i;
-      D_80174758[i] = D_80174758[i - 1];
-      D_80174758[i - 1] = -1;
- if (1) { }
+    s32 i;
+    s32 idx;
+    int new_var;
+    if (D_80174758[bmSaucerSpawner->unk_128 - 1] != (-1)) {
+        return;
     }
-  }
+    bmSaucerSpawner->userVariables[0] += 1;
+    if (bmSaucerSpawner->unk_124 != bmSaucerSpawner->userVariables[0]) {
+        return;
+    }
+    for (i = bmSaucerSpawner->unk_128 - 1; i > 0; i--) {
+        new_var = i - 1;
+        if (D_80174758[new_var] != (-1)) {
+            gActors[D_80174758[i - 1]].userVariables[0] = i;
+            D_80174758[i] = D_80174758[i - 1];
+            D_80174758[i - 1] = -1;
+            if (1) { }
+        }
+    }
 
-  D_80174758[0] = Actor_Init(0x58, bmSaucerSpawner->pos.x, bmSaucerSpawner->pos.y - bmSaucerSpawner->position._f32.x, bmSaucerSpawner->pos.z, 0.0f, bmSaucerSpawner->unk_F4, bmSaucerSpawner->unk_F8, -10000.0f, 10000.0, bmSaucerSpawner->unk_104, bmSaucerSpawner->unk_108, bmSaucerSpawner->position._f32.x, bmSaucerSpawner->position._f32.y, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0, 0, 0, 0);
-  bmSaucerSpawner->userVariables[0] = 0;
+    D_80174758[0] = Actor_Init(0x58, bmSaucerSpawner->pos.x, bmSaucerSpawner->pos.y - bmSaucerSpawner->position._f32.x, bmSaucerSpawner->pos.z, 0.0f, bmSaucerSpawner->unk_F4, bmSaucerSpawner->unk_F8, -10000.0f, 10000.0, bmSaucerSpawner->unk_104, bmSaucerSpawner->unk_108, bmSaucerSpawner->position._f32.x, bmSaucerSpawner->position._f32.y, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0, 0, 0, 0);
+    bmSaucerSpawner->userVariables[0] = 0;
 }
 
 
@@ -3932,23 +3932,23 @@ s32 CountActorsAtTongueHeight(PlayerActor *player) {
     f32 y;
     /* statement grouping on this line is load-bearing for codegen */
     cur = actor; actor = gActors; do { cur = actor;
-    if (cur->unk_A0.unk_00 == 1) {
-        if (cur->actorID != 0) {
-            if (cur->actorID < 0x5F) {
-                if ((cur->actorState == 0) || (cur->actorState == 3)) {
-                    y = (player->pos.y + player->tongueYOffset) - 5.0f;
-                    for (i = 0; i < cur->tongueCollision; i++) {
-                        if (!(((cur->pos.y + cur->unknownPositionThings[i].unk_10) + cur->unknownPositionThings[i].unk_04) < y)) {
-                            if (!((y + 10.0f) < (cur->unknownPositionThings[i].unk_04 + cur->pos.y))) {
-                                count++;
+        if (cur->unk_A0.unk_00 == 1) {
+            if (cur->actorID != 0) {
+                if (cur->actorID < 0x5F) {
+                    if ((cur->actorState == 0) || (cur->actorState == 3)) {
+                        y = (player->pos.y + player->tongueYOffset) - 5.0f;
+                        for (i = 0; i < cur->tongueCollision; i++) {
+                            if (!(((cur->pos.y + cur->unknownPositionThings[i].unk_10) + cur->unknownPositionThings[i].unk_04) < y)) {
+                                if (!((y + 10.0f) < (cur->unknownPositionThings[i].unk_04 + cur->pos.y))) {
+                                    count++;
+                                }
                             }
                         }
                     }
                 }
             }
         }
-    }
-    actor++;
+        actor++;
     }
     while (actor != ((Actor *) Poles));
     return count;
@@ -4114,222 +4114,222 @@ s32 func_8004CCBC(PlayerActor* player) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8004DDE0.s")
 
 const Vec2f D_8010A6D0[0x6B] = {
-{  0,   0},
-{ 50, 100},
-{ 60, 280},
-{ 50, 140},
-{ 50, 140},
-{ 50, 140},
-{ 70, 300},
-{100, 250},
-{ 50, 140},
-{  0,   0},
-{  0,   0},
-{ 50, 100},
-{ 50, 100},
-{ 50, 140},
-{ 50, 140},
-{  0,   0},
-{ 50, 140},
-{100, 120},
-{ 50, 100},
-{ 50, 100},
-{200, 400},
-{ 50, 140},
-{  0,   0},
-{ 50, 100},
-{150, 150},
-{ 50, 100},
-{ 50, 100},
-{  0,   0},
-{ 80,  80},
-{120, 240},
-{150, 250},
-{100, 200},
-{ 40,  80},
-{120, 350},
-{  0,   0},
-{ 50, 100},
-{ 50, 140},
-{ 50, 140},
-{350, 220},
-{ 60, 100},
-{  0,   0},
-{ 80, 200},
-{ 60, 156},
-{ 60, 156},
-{100, 260},
-{ 80, 208},
-{ 50, 100},
-{ 50, 100},
-{ 50, 140},
-{ 60,  90},
-{ 80, 200},
-{ 50, 250},
-{  0,   0},
-{180, 360},
-{  0,   0},
-{ 50, 140},
-{ 50, 140},
-{ 50, 180},
-{  0,   0},
-{ 50, 140},
-{ 75, 100},
-{200, 450},
-{ 60, 120},
-{ 50, 250},
-{ 60, 120},
-{100, 100},
-{ 50, 100},
-{ 50, 100},
-{170, 500},
-{ 50, 100},
-{ 50, 150},
-{ 50, 100},
-{ 50, 100},
-{  0,   0},
-{120, 240},
-{150, 450},
-{  0,   0},
-{ 90, 110},
-{ 50,  80},
-{  0,   0},
-{ 50, 140},
-{  0,   0},
-{ 50, 140},
-{  0,   0},
-{ 50, 100},
-{  0,   0},
-{ 50, 140},
-{  0,   0},
-{ 60,  50},
-{  0,   0},
-{ 50,  80},
-{  0,   0},
-{  0,   0},
-{ 50, 140},
-{  0,   0},
-{ 55, 110},
-{ 55, 110},
-{ 65, 130},
-{ 75, 150},
-{ 75, 150},
-{ 65, 130},
-{ 70, 140},
-{ 80, 140},
-{ 80, 140},
-{ 80, 140},
-{ 80, 140},
-{ 80, 140}
+    {  0,   0},
+    { 50, 100},
+    { 60, 280},
+    { 50, 140},
+    { 50, 140},
+    { 50, 140},
+    { 70, 300},
+    {100, 250},
+    { 50, 140},
+    {  0,   0},
+    {  0,   0},
+    { 50, 100},
+    { 50, 100},
+    { 50, 140},
+    { 50, 140},
+    {  0,   0},
+    { 50, 140},
+    {100, 120},
+    { 50, 100},
+    { 50, 100},
+    {200, 400},
+    { 50, 140},
+    {  0,   0},
+    { 50, 100},
+    {150, 150},
+    { 50, 100},
+    { 50, 100},
+    {  0,   0},
+    { 80,  80},
+    {120, 240},
+    {150, 250},
+    {100, 200},
+    { 40,  80},
+    {120, 350},
+    {  0,   0},
+    { 50, 100},
+    { 50, 140},
+    { 50, 140},
+    {350, 220},
+    { 60, 100},
+    {  0,   0},
+    { 80, 200},
+    { 60, 156},
+    { 60, 156},
+    {100, 260},
+    { 80, 208},
+    { 50, 100},
+    { 50, 100},
+    { 50, 140},
+    { 60,  90},
+    { 80, 200},
+    { 50, 250},
+    {  0,   0},
+    {180, 360},
+    {  0,   0},
+    { 50, 140},
+    { 50, 140},
+    { 50, 180},
+    {  0,   0},
+    { 50, 140},
+    { 75, 100},
+    {200, 450},
+    { 60, 120},
+    { 50, 250},
+    { 60, 120},
+    {100, 100},
+    { 50, 100},
+    { 50, 100},
+    {170, 500},
+    { 50, 100},
+    { 50, 150},
+    { 50, 100},
+    { 50, 100},
+    {  0,   0},
+    {120, 240},
+    {150, 450},
+    {  0,   0},
+    { 90, 110},
+    { 50,  80},
+    {  0,   0},
+    { 50, 140},
+    {  0,   0},
+    { 50, 140},
+    {  0,   0},
+    { 50, 100},
+    {  0,   0},
+    { 50, 140},
+    {  0,   0},
+    { 60,  50},
+    {  0,   0},
+    { 50,  80},
+    {  0,   0},
+    {  0,   0},
+    { 50, 140},
+    {  0,   0},
+    { 55, 110},
+    { 55, 110},
+    { 65, 130},
+    { 75, 150},
+    { 75, 150},
+    { 65, 130},
+    { 70, 140},
+    { 80, 140},
+    { 80, 140},
+    { 80, 140},
+    { 80, 140},
+    { 80, 140}
 };
 
 const unk_8010AA28 D_8010AA28[0x6B] = {
-{0, 0, 0, 0},
-{1, 1, 0, 0},
-{0, 1, 0, 0},
-{1, 1, 0, 0},
-{1, 1, 0, 1},
-{1, 1, 0, 1},
-{2, 1, 0, 0},
-{2, 1, 0, 0},
-{1, 4, 0, 0},
-{3, 0, 0, 0},
-{3, 0, 0, 0},
-{3, 0, 0, 0},
-{3, 0, 0, 0},
-{0, 1, 0, 0},
-{0, 1, 1, 0},
-{3, 0, 0, 0},
-{1, 4, 2, 0},
-{0, 0, 0, 0},
-{1, 4, 2, 0},
-{0, 1, 1, 0},
-{0, 0, 0, 0},
-{1, 0, 0, 0},
-{3, 0, 0, 0},
-{1, 0, 0, 0},
-{0, 4, 0, 0},
-{1, 3, 0, 0},
-{1, 4, 0, 0},
-{3, 0, 0, 0},
-{1, 4, 0, 0},
-{0, 3, 0, 1},
-{0, 4, 0, 0},
-{0, 4, 0, 0},
-{1, 4, 0, 0},
-{0, 4, 0, 0},
-{3, 0, 0, 0},
-{1, 1, 0, 0},
-{1, 4, 0, 0},
-{1, 4, 0, 0},
-{0, 1, 0, 0},
-{0, 4, 0, 0},
-{0, 4, 0, 0},
-{0, 4, 0, 0},
-{0, 1, 1, 1},
-{0, 1, 1, 1},
-{0, 1, 1, 1},
-{0, 1, 1, 1},
-{1, 4, 0, 0},
-{1, 1, 0, 0},
-{0, 4, 0, 0},
-{0, 4, 0, 0},
-{0, 4, 0, 0},
-{0, 4, 0, 0},
-{3, 0, 0, 0},
-{0, 0, 0, 0},
-{3, 0, 0, 0},
-{1, 4, 0, 0},
-{0, 0, 0, 0},
-{0, 0, 0, 0},
-{3, 0, 0, 0},
-{1, 4, 0, 0},
-{1, 4, 0, 0},
-{0, 1, 0, 0},
-{0, 4, 0, 0},
-{0, 4, 0, 0},
-{1, 4, 0, 0},
-{0, 0, 0, 0},
-{1, 3, 1, 0},
-{1, 1, 0, 0},
-{0, 1, 1, 0},
-//porcupine
-{1, 1, 0, 0},
-{1, 4, 0, 0},
-{1, 4, 0, 0},
-{3, 4, 0, 0},
-{3, 0, 0, 0},
-{0, 3, 0, 1},
-{0, 4, 0, 0},
-{3, 0, 0, 0},
-{0, 4, 0, 0},
-{1, 4, 0, 0},
-{3, 0, 0, 0},
-{1, 4, 0, 0},
-{3, 0, 0, 0},
-{1, 1, 0, 0},
-{3, 0, 0, 0},
-{1, 3, 0, 1},
-{3, 0, 0, 0},
-{1, 4, 0, 0},
-{3, 0, 0, 0},
-{1, 4, 0, 0},
-{3, 0, 0, 0},
-{1, 3, 0, 0},
-{3, 0, 0, 0},
-{3, 0, 0, 0},
-{1, 3, 0, 0},
-{3, 0, 0, 0},
-{1, 0, 0, 0},
-{1, 0, 0, 0},
-{1, 0, 0, 0},
-{1, 0, 0, 0},
-{0, 0, 0, 0},
-{0, 0, 0, 0},
-{0, 0, 0, 0},
-{1, 0, 0, 0},
-{1, 0, 0, 0},
-{1, 0, 0, 0},
-{1, 0, 0, 0},
-{1, 0, 0, 0}
+    {0, 0, 0, 0},
+    {1, 1, 0, 0},
+    {0, 1, 0, 0},
+    {1, 1, 0, 0},
+    {1, 1, 0, 1},
+    {1, 1, 0, 1},
+    {2, 1, 0, 0},
+    {2, 1, 0, 0},
+    {1, 4, 0, 0},
+    {3, 0, 0, 0},
+    {3, 0, 0, 0},
+    {3, 0, 0, 0},
+    {3, 0, 0, 0},
+    {0, 1, 0, 0},
+    {0, 1, 1, 0},
+    {3, 0, 0, 0},
+    {1, 4, 2, 0},
+    {0, 0, 0, 0},
+    {1, 4, 2, 0},
+    {0, 1, 1, 0},
+    {0, 0, 0, 0},
+    {1, 0, 0, 0},
+    {3, 0, 0, 0},
+    {1, 0, 0, 0},
+    {0, 4, 0, 0},
+    {1, 3, 0, 0},
+    {1, 4, 0, 0},
+    {3, 0, 0, 0},
+    {1, 4, 0, 0},
+    {0, 3, 0, 1},
+    {0, 4, 0, 0},
+    {0, 4, 0, 0},
+    {1, 4, 0, 0},
+    {0, 4, 0, 0},
+    {3, 0, 0, 0},
+    {1, 1, 0, 0},
+    {1, 4, 0, 0},
+    {1, 4, 0, 0},
+    {0, 1, 0, 0},
+    {0, 4, 0, 0},
+    {0, 4, 0, 0},
+    {0, 4, 0, 0},
+    {0, 1, 1, 1},
+    {0, 1, 1, 1},
+    {0, 1, 1, 1},
+    {0, 1, 1, 1},
+    {1, 4, 0, 0},
+    {1, 1, 0, 0},
+    {0, 4, 0, 0},
+    {0, 4, 0, 0},
+    {0, 4, 0, 0},
+    {0, 4, 0, 0},
+    {3, 0, 0, 0},
+    {0, 0, 0, 0},
+    {3, 0, 0, 0},
+    {1, 4, 0, 0},
+    {0, 0, 0, 0},
+    {0, 0, 0, 0},
+    {3, 0, 0, 0},
+    {1, 4, 0, 0},
+    {1, 4, 0, 0},
+    {0, 1, 0, 0},
+    {0, 4, 0, 0},
+    {0, 4, 0, 0},
+    {1, 4, 0, 0},
+    {0, 0, 0, 0},
+    {1, 3, 1, 0},
+    {1, 1, 0, 0},
+    {0, 1, 1, 0},
+    //porcupine
+    {1, 1, 0, 0},
+    {1, 4, 0, 0},
+    {1, 4, 0, 0},
+    {3, 4, 0, 0},
+    {3, 0, 0, 0},
+    {0, 3, 0, 1},
+    {0, 4, 0, 0},
+    {3, 0, 0, 0},
+    {0, 4, 0, 0},
+    {1, 4, 0, 0},
+    {3, 0, 0, 0},
+    {1, 4, 0, 0},
+    {3, 0, 0, 0},
+    {1, 1, 0, 0},
+    {3, 0, 0, 0},
+    {1, 3, 0, 1},
+    {3, 0, 0, 0},
+    {1, 4, 0, 0},
+    {3, 0, 0, 0},
+    {1, 4, 0, 0},
+    {3, 0, 0, 0},
+    {1, 3, 0, 0},
+    {3, 0, 0, 0},
+    {3, 0, 0, 0},
+    {1, 3, 0, 0},
+    {3, 0, 0, 0},
+    {1, 0, 0, 0},
+    {1, 0, 0, 0},
+    {1, 0, 0, 0},
+    {1, 0, 0, 0},
+    {0, 0, 0, 0},
+    {0, 0, 0, 0},
+    {0, 0, 0, 0},
+    {1, 0, 0, 0},
+    {1, 0, 0, 0},
+    {1, 0, 0, 0},
+    {1, 0, 0, 0},
+    {1, 0, 0, 0}
 };

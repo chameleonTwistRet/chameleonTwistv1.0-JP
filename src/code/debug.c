@@ -2,7 +2,7 @@
 #include "sprite.h"
 
 typedef struct unkTextStruct {
-char strings[4][0x64];
+    char strings[4][0x64];
 } unkTextStruct;
 
 void func_8007B434(f32, f32, f32, f32, f32, f32);
@@ -55,17 +55,17 @@ f32 D_800F0714 = 0;
 f32 sDebugPlayerHeights[4] = {0, 0, 0, 0};
 
 typedef struct unkarg0_2 {
-/* 0x00*/ f32 unk_00;
-/* 0x04 */ f32 unk_04;
-/* 0x08 */ f32 unk_08;
-/* 0x0C */ char unk_0C[4];
-/* 0x10 */ f32 unk_10;
-/* 0x14 */ f32 unk_14;
-/* 0x18 */ f32 unk_18;
-/* 0x18 */ f32 unk_1C;
-/* 0x18 */ f32 unk_20;
-/* 0x18 */ f32 unk_24;
-/* 0x18 */ f32 UNK_28;
+    /* 0x00*/ f32 unk_00;
+    /* 0x04 */ f32 unk_04;
+    /* 0x08 */ f32 unk_08;
+    /* 0x0C */ char unk_0C[4];
+    /* 0x10 */ f32 unk_10;
+    /* 0x14 */ f32 unk_14;
+    /* 0x18 */ f32 unk_18;
+    /* 0x18 */ f32 unk_1C;
+    /* 0x18 */ f32 unk_20;
+    /* 0x18 */ f32 unk_24;
+    /* 0x18 */ f32 UNK_28;
 } unkarg0_2;
 
 
@@ -145,19 +145,19 @@ void Debug_ChangeView(void) {
     if (func_80055E5C(START_BUTTON) != 0) {
         sDebugViewType++;
     }
-    
+
     if (func_80055E5C(B_BUTTON) != 0) {
         if (++sDebugViewRotate >= 360) {
             sDebugViewRotate -= 360;
         }
     }
-    
+
     if (func_80055E5C(A_BUTTON) != 0) {
         if (--sDebugViewRotate < 0) {
             sDebugViewRotate += 360;
         }
     }
-    
+
     switch (sDebugViewType) {
     case 0:
         break;
@@ -169,7 +169,7 @@ void Debug_ChangeView(void) {
             gPlayerActorPtr->pos.x + (__sinf(((sDebugViewRotate * 2 * M_PI) / 360)) * sDebugViewZoomOut),
             gPlayerActorPtr->pos.y + 1.0f,
             gPlayerActorPtr->pos.z - (sDebugViewZoomOut * __cosf(sDebugViewRotate * 2 * M_PI / 360)));
-        
+
         break;
     case 3:
         func_8007B480(gPlayerActorPtr->pos.x, gPlayerActorPtr->pos.y, gPlayerActorPtr->pos.z, gPlayerActorPtr->pos.x, gPlayerActorPtr->pos.y + 1.0f, gPlayerActorPtr->pos.z + (f32) sDebugViewZoomOut);
@@ -192,7 +192,7 @@ void func_8004EF5C(void) {
         "ひだりうえ",
         "ひだりした",
         "みぎうえ",
-        "みぎした"    
+        "みぎした"
     };
 
     static s32 D_800F08C4 = 0;

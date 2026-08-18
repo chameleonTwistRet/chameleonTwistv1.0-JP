@@ -108,7 +108,7 @@ s32 func_800C982C(Rect3D* arg0, Collider* arg1) {
 
     var_s3 = 0;
     D_8023696C = 0;
-    
+
     for (i = 0, var_s2 = &D_80240898; i < gFieldCount; i++, var_s2++) {
         temp_s0 = *var_s2;
         if (((temp_s0->unk_10 != 0x21) || (arg1->unk_6C == 0)) && (temp_s0->unk_114 & 2) && (temp_s0->unk_0C & 0x77)) {
@@ -119,7 +119,7 @@ s32 func_800C982C(Rect3D* arg0, Collider* arg1) {
                 func_800C9504(temp_s0);
                 var_s3++;
             }
-        }        
+        }
     }
     return var_s3;
 }
@@ -170,12 +170,12 @@ void DistanceWithLine(Vec3f point, Vec2f lineStart, Vec2f lineEnd, f32* distance
     deltaYLine = lineEnd.y - lineStart.y;
 
     lineSegmentLengthSquared = (SQ(deltaXLine)) + (SQ(deltaYLine));
-    
+
     if (lineSegmentLengthSquared == 0.0f) {
         DummiedPrintf3("DistanceWithLine(): determinant is 0\n");
     }
     projectionFactor = ((deltaXLine * deltaXPoint) + (deltaYLine * deltaYPoint)) / lineSegmentLengthSquared;
-    
+
     if (projectionFactor <= 0.0f) {
         closestPoint2D = lineStart;
     } else if (projectionFactor >= 1.0f) {
@@ -184,7 +184,7 @@ void DistanceWithLine(Vec3f point, Vec2f lineStart, Vec2f lineEnd, f32* distance
         closestPoint2D.x = ((1.0f - projectionFactor) * lineStart.x) + (projectionFactor * lineEnd.x);
         closestPoint2D.y = ((1.0f - projectionFactor) * lineStart.y) + (projectionFactor * lineEnd.y);
     }
-    
+
     *distance = Distance3DTo2DProjectedXY(point, closestPoint2D);
 
     closestPoint3DLocal.x = closestPoint2D.x;
@@ -266,20 +266,20 @@ UnkPolyStruct* func_800CA3FC(void) {
     if (D_802488A8 == 0) {
         return NULL;
     }
-    
+
     if (D_802488A8 == 1) {
         return D_80248528;
     }
-    
+
     nextUnkPoly = &D_80248528[1];
     curUnkPoly = D_80248528;
-    
+
     for (i = 1; i < D_802488A8; i++, nextUnkPoly++) {
         temp_f0 = curUnkPoly->unk8;
         temp_f2 = nextUnkPoly->unk8;
         if (!(temp_f0 < temp_f2) && ((temp_f0 != temp_f2) || (nextUnkPoly->unk4 == 0) || (curUnkPoly->unk4 == 0) || !(nextUnkPoly->unkC < curUnkPoly->unkC))) {
             curUnkPoly = nextUnkPoly;
-        }        
+        }
     }
     return curUnkPoly;
 }
@@ -302,13 +302,13 @@ Vec3f* func_800CA5B4(Vec3f* arg0, Vec3f arg1, UnkArg4* arg4, f32 arg5) {
         temp_f18 = arg1.y - sp54.y;
         temp_f14 = arg1.z - sp54.z;
         temp_f2 = arg5 / NORM_3(temp_f0, temp_f18, temp_f14);
-        
+
         temp_f0 *= temp_f2;
         arg1.x = sp54.x + (temp_f0);
-        
+
         temp_f18 *= temp_f2;
         arg1.y = sp54.y + (temp_f18);
-        
+
         temp_f14 *= temp_f2;
         arg1.z = sp54.z + (temp_f14);
     } else {
@@ -416,8 +416,8 @@ void func_800CBF54(void) {
 
 /**
  * @brief Calculates the angle of the (x,z) vector from a 3dim vector, with respect to the positive z-axis.
- * 
- * @param vec: The 3dim vector to calculate the angle of. 
+ *
+ * @param vec: The 3dim vector to calculate the angle of.
  */
 void func_800CC7E0(Vec3f vec) {
     // In this instance the z component is flipped.
@@ -449,30 +449,30 @@ void func_800CCDCC(Actor* arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800CEB10.s")
 
 void CalcEnemyNextPosition(Actor* arg0) {
-   switch (arg0->unk_A0.unk_04) {
-   case 0:
-       func_800CCDCC(arg0);
-       break;
-   case 1:
-       func_800CCE4C(arg0);
-       break;
-   case 2:
-       CalcWalkingEnemyNext(arg0);
-       break;
-   case 3:
-       CalcJumpingEnemyNext(arg0);
-       break;
-   case 4:
-       func_800CEB10(arg0);
-       break;
-   default:
-       DummiedPrintf3("CalcEnemyNextPosition(): Unknown ATR_IDOU_XXXX\n");
-       // double 810000
-       break;
-   }
-   if (arg0->tongueCollision >= 2) {
-       func_800CBD24(arg0);
-   }
+    switch (arg0->unk_A0.unk_04) {
+    case 0:
+        func_800CCDCC(arg0);
+        break;
+    case 1:
+        func_800CCE4C(arg0);
+        break;
+    case 2:
+        CalcWalkingEnemyNext(arg0);
+        break;
+    case 3:
+        CalcJumpingEnemyNext(arg0);
+        break;
+    case 4:
+        func_800CEB10(arg0);
+        break;
+    default:
+        DummiedPrintf3("CalcEnemyNextPosition(): Unknown ATR_IDOU_XXXX\n");
+        // double 810000
+        break;
+    }
+    if (arg0->tongueCollision >= 2) {
+        func_800CBD24(arg0);
+    }
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800CF080.s")
@@ -539,11 +539,11 @@ void func_800CFF7C(Vec3f* arg0) {
             }
         } else {
             temp_v0 = &gZoneFields[gCurrentZone].roomBounds;
-            
+
             if (temp_v0->min.x > arg0->x ) {
                 arg0->x = temp_v0->min.x;
             }
-            
+
             if (temp_v0->max.x < arg0->x) {
                 arg0->x = temp_v0->max.x;
             }
@@ -551,7 +551,7 @@ void func_800CFF7C(Vec3f* arg0) {
             if (temp_v0->min.z > arg0->z) {
                 arg0->z = temp_v0->min.z;
             }
-  
+
             if (temp_v0->max.z < arg0->z) {
                 arg0->z = temp_v0->max.z;
             }
@@ -710,10 +710,10 @@ void ApplyRotationToVector(Vec3f* vecA, Vec3f* vecB, f32 degreesAngle) {
     differenceVector.x = vecA->x - vecB->x;
     differenceVector.y = vecA->y - vecB->y;
     differenceVector.z = vecA->z - vecB->z;
-    
+
     // Rotate the difference vector by the given angle around the y-axis
     RotateVector3D(&differenceVector, differenceVector, DEGREES_TO_RADIANS_PI(degreesAngle), 2);
-    
+
     // Add the rotated difference vector to the second vector to get the first vector
     vecA->x = vecB->x + differenceVector.x;
     vecA->y = vecB->y + differenceVector.y;
@@ -739,9 +739,9 @@ void SetCameraParameters(void) {
     } else {
         func_800D5394(gPlayerActors, gTongues, gCamera, &sp3C, &sp30, 0);
     }
-    
+
     cam = gCamera;
-    
+
     for (i = 0; i < ARRAY_COUNT(gCamera); i++, cam++) {
         cam->lookAt.x = sp3C.x;
         cam->lookAt.y = sp3C.y;
@@ -767,7 +767,7 @@ void func_800D71E8(f32 x1, f32 x2, f32 y1, f32 y2, f32 z1, f32 z2) {
     r.min.z = z1;
     r.max.y = y2;
     r.max.z = z2;
-    
+
     // ensure max > min
     OrderRectBounds(&r);
     func_800C9748(&r, 0x77, 2); //unknown
@@ -781,16 +781,13 @@ s32 func_800D7248(f32 x, f32 y, f32 z, f32 arg3, f32 arg4, f32* outX, f32* arg6,
     vec.x = x;
     vec.y = y;
     vec.z = z;
-    
+
     collider = func_800CAF88(vec, arg3, arg4);
-    
+
     // if a collider was found assign its position to the output variables then return 1 for success
+    // ternary-comma shape is codegen-required; a plain if/return does not match
     return (collider != NULL) ?
-        *outX = collider->unk_94,
-        *arg6 = collider->unk_98,
-        *arg7 = collider->unk_9C,
-        1 :
-        0;
+        (*outX = collider->unk_94, *arg6 = collider->unk_98, *arg7 = collider->unk_9C, 1) : 0;
 }
 
 s32 func_800D72DC(f32 x1, f32 y1, f32 z1, f32 x2, f32 y2, f32 z2, f32* outX, f32* outY, f32* outZ) {
@@ -805,14 +802,11 @@ s32 func_800D72DC(f32 x1, f32 y1, f32 z1, f32 x2, f32 y2, f32 z2, f32* outX, f32
     vecTwo.x = x2;
     vecTwo.y = y2;
     vecTwo.z = z2;
-    
+
     collider = SearchPolygonBetween(vecOne, vecTwo, 0x77, 1, 1);
+    // ternary-comma shape is codegen-required; a plain if/return does not match
     return (collider != NULL) ?
-        *outX = collider->unk_94,
-        *outY = collider->unk_98,
-        *outZ = collider->unk_9C,
-        1 :
-        0;
+        (*outX = collider->unk_94, *outY = collider->unk_98, *outZ = collider->unk_9C, 1) : 0;
 }
 
 void func_800D73BC(f32* x, f32* y, f32* z, f32 arg3) {
@@ -822,10 +816,10 @@ void func_800D73BC(f32* x, f32* y, f32* z, f32 arg3) {
     srcVec.x = *x;
     srcVec.y = *y;
     srcVec.z = *z;
-    
+
     //wrong number of args(?)
     func_800CA734(&destVec, srcVec, arg3, 0x77);
-    
+
     *x = destVec.x;
     *y = destVec.y;
     *z = destVec.z;

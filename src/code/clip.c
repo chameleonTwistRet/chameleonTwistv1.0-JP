@@ -25,50 +25,50 @@ void SetViewAreaParam(Camera* cam, f32 fovDeg, f32 range) {
     target.x = cam->lookAt.x;
     target.y = cam->lookAt.y;
     target.z = cam->lookAt.z;
-    
+
     eye.x = cam->eye.x;
     eye.y = cam->eye.y;
     eye.z = cam->eye.z;
-    
+
     toTarget.x = target.x - eye.x;
     toTarget.y = target.y - eye.y;
     toTarget.z = target.z - eye.z;
 
     Vec3f_Normalize(&toTarget);
-    
+
     if (toTarget.x == 0.0 && toTarget.y == 0.0 && toTarget.z == 0.0) {
         DummiedPrintf3("SetViewAreaParam(): target and eye are same point\n");
         return;
     }
-    
+
     toEye.x = eye.x - target.x;
     toEye.y = eye.y - target.y; toEye.z = eye.z - target.z;
-    
+
     CartesianToSpherical(toEye, &spherical.z, &spherical.y, &spherical.x);
-    
+
     if (spherical.y < 45.0) {
         sViewIsHorizontal = 1;
     } else {
         sViewIsHorizontal = 0;
     }
-    
+
     CartesianToSpherical(toTarget, &spherical.z, &spherical.y, &spherical.x);
     toEye = toTarget;
 
     toEye.x *= range;
     toEye.y *= range;
     toEye.z *= range;
-    
+
     sViewOrigin.x = eye.x - toEye.x;
     sViewOrigin.y = eye.y - toEye.y;
     sViewOrigin.z = eye.z - toEye.z;
     azimuth = ArcTan2Deg(toTarget.z, toTarget.x);
     sViewAngleMin = (azimuth - fovDeg * 0.5);
     sViewAngleMax = (azimuth + fovDeg * 0.5);
-    
+
     WrapAngle(&sViewAngleMin);
     WrapAngle(&sViewAngleMax);
-    
+
     if (sViewAngleMax < sViewAngleMin) {
         sViewAngleWraps = 1;
     } else {
@@ -80,13 +80,13 @@ void SetViewAreaParam(Camera* cam, f32 fovDeg, f32 range) {
     } else {
         absMax = toTarget.x;
     }
-    
+
     if (toTarget.y < 0.0f) {
         absCurr = -toTarget.y;
     } else {
         absCurr = toTarget.y;
     }
-    
+
     if (absMax < absCurr) {
         if (toTarget.y < 0.0f) {
             absMax = -toTarget.y;
@@ -94,13 +94,13 @@ void SetViewAreaParam(Camera* cam, f32 fovDeg, f32 range) {
             absMax = toTarget.y;
         }
     }
-    
+
     if (toTarget.z < 0.0f) {
         absCurr = -toTarget.z;
     } else {
         absCurr = toTarget.z;
     }
-    
+
     if (absMax < absCurr) {
         if (toTarget.z < 0.0f) {
             absMax = -toTarget.z;
@@ -112,7 +112,7 @@ void SetViewAreaParam(Camera* cam, f32 fovDeg, f32 range) {
     toTarget.x /= absMax;
     toTarget.y /= absMax;
     toTarget.z /= absMax;
-    
+
     sViewDirX = toTarget.x;
     sViewDirY = toTarget.y;
     sViewDirZ = toTarget.z;
@@ -137,16 +137,16 @@ s32 IsPointInViewArea(f32 x, f32 y, f32 z, f32 radius, s32 ignoreY) {
         sViewBoundingBox.max.y = (f32) (sViewOrigin.y + ((sViewDirY + 1.0) * halfRadius));
         sViewBoundingBox.max.z = (f32) (sViewOrigin.z + ((sViewDirZ + 1.0) * halfRadius));
     }
-    
+
     if (sViewIsHorizontal != 0) {
         if (x < sViewBoundingBox.min.x) {
             return 0;
         }
-        
+
         if (sViewBoundingBox.max.x < x) {
             return 0;
         }
-        
+
         if (ignoreY == 0) {
             if (y < sViewBoundingBox.min.y) {
                 return 0;
@@ -159,7 +159,7 @@ s32 IsPointInViewArea(f32 x, f32 y, f32 z, f32 radius, s32 ignoreY) {
         if (z < sViewBoundingBox.min.z) {
             return 0;
         }
-        
+
         if (sViewBoundingBox.max.z < z) {
             return 0;
         }
@@ -172,31 +172,31 @@ s32 IsPointInViewArea(f32 x, f32 y, f32 z, f32 radius, s32 ignoreY) {
                 return 0;
             }
         }
-        
+
         x = x - sViewOrigin.x;
         z = z - sViewOrigin.z;
-        
+
         if ((radius * radius) < ((z * z) + (x * x))) {
             return 0;
         }
-        
+
         angleXZ = ArcTan2Deg(z, x);
-        
+
         if (sViewAngleWraps != 0) {
             if ((sViewAngleMax < angleXZ) && (angleXZ < sViewAngleMin)) {
                 return 0;
             }
         }
-        
+
         else if (angleXZ < sViewAngleMin) {
             return 0;
         }
-        
+
         else if (sViewAngleMax < angleXZ) {
             return 0;
-        }        
+        }
     }
-    
+
     return 1;
 }
 
@@ -220,7 +220,7 @@ s32 IsRectInViewArea(Rect3D *rect, f32 radius) {
     s32 i;
     f32 distSq;
     f32 x_length;
-    
+
     // Resize the rectangle if the radius has changed since the last call
     if (radius != sViewBoundingBoxRadius) {
         sViewBoundingBoxRadius = radius;        // prev radius
@@ -233,7 +233,7 @@ s32 IsRectInViewArea(Rect3D *rect, f32 radius) {
         sViewBoundingBox.max.y = (f32) (sViewOrigin.y + ((sViewDirY + 1.0) * half_radius));
         sViewBoundingBox.max.z = (f32) (sViewOrigin.z + ((sViewDirZ + 1.0) * half_radius));
     }
-    
+
     // Collision check
     if (sViewIsHorizontal != 0) {
         ret = IfRectsIntersect(rect, &sViewBoundingBox);
@@ -242,15 +242,15 @@ s32 IsRectInViewArea(Rect3D *rect, f32 radius) {
         max_side_length = x_length;
         y_length = rect->max.y - rect->min.y;
         z_length = rect->max.z - rect->min.z;
-        
+
         if (max_side_length < y_length) {
             max_side_length = y_length;
         }
-        
+
         if (max_side_length < z_length) {
             max_side_length = z_length;
         }
-        
+
         if (1000.0 < max_side_length) {
             ret = IfRectsIntersect(rect, &sViewBoundingBox);
         } else {
@@ -295,6 +295,6 @@ s32 IsRectInViewArea(Rect3D *rect, f32 radius) {
                 }
             }
         }
-    }       
+    }
     return ret;
 }
