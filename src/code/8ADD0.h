@@ -19,7 +19,7 @@ typedef struct unk8020D908 {
 } unk8020D908;
 
 // Behaviour 0xD keyframe record. RoomObject::keyframes points at an array of these
-// (RoomObject::noKeyframes entries); Collider::unk_AC/unk_B0 carry them to the MOVE hook.
+// (RoomObject::numKeyframes entries); Collider::unk_AC/unk_B0 carry them to the MOVE hook.
 typedef struct UnkType3 {
     /* 0x00 */ s32* unk_00;                         /* array of model ids, unk_04 long */
     /* 0x04 */ s32 unk_04;

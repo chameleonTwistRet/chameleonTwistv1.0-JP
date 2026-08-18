@@ -100,7 +100,7 @@ typedef struct PlayerActor {
 /* 0x060 */ u32 hasTumbled;    //0x00 = no, 0x01 = yes. resets on jump.
 /* 0x064 */ u32 unk64;
 /* 0x068 */ u32 inWater;//0x00 = no, 0x01 = yes.
-/* 0x06C */ u32 squishTimer;
+/* 0x06C */ u32 squishFramesElapsed;
 /* 0x070 */ f32 yScale;
 /* 0x074 */ u32 locked; //0x00 = no, 0x16 = yes. when using lock to stand in place.
 /* 0x078 */ s32 amountToShoot; //number for machine gun shoot
@@ -121,18 +121,18 @@ typedef struct PlayerActor {
 /* 0x0C4 */ u32 vaultFall;//timer for falling after vault
 /* 0x0C8 */ s32 hp;
 /* 0x0CC */ u32 playerHurtState;
-/* 0x0D0 */ s32 playerHurtTimer;
+/* 0x0D0 */ s32 playerHurtTimer; //likely counts up; increment site still in asm
 /* 0x0D4 */ u32 playerHurtAnim;
 /* 0x0D8 */ u32 playerHurtBy;
 /* 0x0DC */ f32 unk_DC[6];
 /* 0x0F4 */ f32 unk_F4[6];
-/* 0x10C */ f32 timerDown;
+/* 0x10C */ f32 targetLockFramesLeft;
 /* 0x110 */ f32 reticleSize;
 /* 0x114 */ s32 active; //0x00 = no, 0x01 = yes
 /* 0x118 */ s32 exists; //0x00 = no, 0x01 = yes
 /* 0x11C */ u32 power; //enum of power it has
-/* 0x120 */ s32 powerTimer;
-/* 0x124 */ s32 powerTimerTill;
+/* 0x120 */ s32 powerFramesElapsed;
+/* 0x124 */ s32 powerDuration;
 /* 0x128 */ f32 tongueYOffset;
 /* 0x12C */ f32 tongueSeperation;
 } PlayerActor; //sizeof 0x130
@@ -207,8 +207,8 @@ typedef struct Tongue { // at 80169268 (for p1)
 
 
 typedef struct ModelCollision{
-/* 0x00 */ s32 noXVerts;
-/* 0x04 */ s32 noXTris;
+/* 0x00 */ s32 numXVerts;
+/* 0x04 */ s32 numXTris;
 /* 0x08 */ Vec3f *vertsStart; //segmented
 /* 0x0C */ Vec3w* trisStart; //segmented
 /* 0x10 */ Rect3D* settingsStart; //segmented
@@ -340,7 +340,7 @@ typedef struct RoomObject {
         UnkType2* _ut2;
     } keyframes;
     //int arg for ^
-/* 0x3C */ s32 noKeyframes; //pointer sizeof (default usually 90)
+/* 0x3C */ s32 numKeyframes; //pointer sizeof (default usually 90)
 /* 0x40 */ s32 unk40;
 /* 0x44 */ s32 unk44;
 /* 0x48 */ s32 unk48;
@@ -506,7 +506,7 @@ typedef struct Camera {//take these with a grain of salt
 /* 0x40 */ s32 unk40;
 /* 0x44 */ f32 size1;
 /* 0x48 */ f32 size2;
-/* 0x4C */ u32 untouchedTimer; //timer that incs when the camera hasnt been used
+/* 0x4C */ u32 untouchedFramesElapsed; //timer that incs when the camera hasnt been used
 /* 0x50 */ f32 unk50;
 /* 0x54 */ s32 pushHoriz;//the impulse horizontally by the player
 /* 0x58 */ s32 unk58;
@@ -540,7 +540,7 @@ typedef struct PlayerActor_s {
 /* 0x060 */ u32 hasTumbled;    //0x00 = no, 0x01 = yes. resets on jump.
 /* 0x064 */ u32 unk64;
 /* 0x068 */ u32 inWater;//0x00 = no, 0x01 = yes.
-/* 0x06C */ u32 squishTimer;
+/* 0x06C */ u32 squishFramesElapsed;
 /* 0x070 */ f32 yScale;
 /* 0x074 */ u32 locked; //0x00 = no, 0x16 = yes. when using lock to stand in place.
 /* 0x078 */ s32 amountToShoot; //number for machine gun shoot
@@ -561,20 +561,20 @@ typedef struct PlayerActor_s {
 /* 0x0C4 */ u32 vaultFall;//timer for falling after vault
 /* 0x0C8 */ s32 hp;
 /* 0x0CC */ u32 playerHurtState;
-/* 0x0D0 */ s32 playerHurtTimer;
+/* 0x0D0 */ s32 playerHurtTimer; //likely counts up; increment site still in asm
 /* 0x0D4 */ u32 playerHurtAnim;
 /* 0x0D8 */ u32 playerHurtBy;
 /* 0x0DC */ f32 unk_DC[6];
 /* 0x0F4 */ f32 unk_F4[2];
             s32 arbitraryChange;
 /* 0x0F4 */ f32 unk_F4_2[3];
-/* 0x10C */ f32 timerDown;
+/* 0x10C */ f32 targetLockFramesLeft;
 /* 0x110 */ f32 reticleSize;
 /* 0x114 */ s32 active; //0x00 = no, 0x01 = yes
 /* 0x118 */ s32 exists; //0x00 = no, 0x01 = yes
 /* 0x11C */ u32 power; //enum of power it has
-/* 0x120 */ s32 powerTimer;
-/* 0x124 */ s32 powerTimerTill;
+/* 0x120 */ s32 powerFramesElapsed;
+/* 0x124 */ s32 powerDuration;
 /* 0x128 */ f32 tongueYOffset;
 /* 0x12C */ f32 tongueSeperation;
 } PlayerActor_s; //sizeof 0x130
@@ -1186,8 +1186,8 @@ typedef struct Anim {
 } Anim;
 
 typedef struct AnimPointer {
-/* 0x00 */ s32* noFrames; // number of frames
-/* 0x04 */ s32* noObjects; // number of objects
+/* 0x00 */ s32* numFrames; // number of frames
+/* 0x04 */ s32* numObjects; // number of objects
 /* 0x08 */ Mtx* animation; // the Mtx data for the animation
 } AnimPointer;
 

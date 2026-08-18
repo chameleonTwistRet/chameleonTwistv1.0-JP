@@ -748,7 +748,7 @@ void func_8002ECCC(s32 arg0) {
         func_8002E9F4();
     } else {
         if (arg0 != 0) {
-            D_80174860->untouchedTimer = 0;
+            D_80174860->untouchedFramesElapsed = 0;
             if (gTongueOnePointer->tongueMode != 0) {
                 sp44 = 180.0f - D_80174860->f1.x;
                 WrapDegrees(&sp44);
@@ -776,8 +776,8 @@ void func_8002ECCC(s32 arg0) {
             }
         } else {
             sp3C = gCurrentActivePlayerPointer->yAngle + D_80174860->unk50;
-            D_80174860->untouchedTimer++;
-            sp34 = D_80174860->untouchedTimer;
+            D_80174860->untouchedFramesElapsed++;
+            sp34 = D_80174860->untouchedFramesElapsed;
             WrapDegrees(&sp3C);
             if (D_80174860->f1.x < 180.0f) {
                 if ((D_80174860->f1.x + 180.0f) < sp3C) {
@@ -886,12 +886,12 @@ void func_8002F568(void) {
 }
 
 // Player squish-recovery ease curve
-f32 CalcSquishReboundCurve(s32 squishTimer, s32 targetFrame, s32 duration, s32 wobbleCycles) {
-    squishTimer = targetFrame - squishTimer;
-    if (duration < squishTimer) {
-        squishTimer = duration;
+f32 CalcSquishReboundCurve(s32 squishFramesElapsed, s32 targetFrame, s32 duration, s32 wobbleCycles) {
+    squishFramesElapsed = targetFrame - squishFramesElapsed;
+    if (duration < squishFramesElapsed) {
+        squishFramesElapsed = duration;
     }
-    return (((((sinf(squishTimer * 0x168 * wobbleCycles / duration * 2 * PI / 360.0) * (duration - squishTimer)) / duration) + 3.0) * squishTimer) / 4) / duration;
+    return (((((sinf(squishFramesElapsed * 0x168 * wobbleCycles / duration * 2 * PI / 360.0) * (duration - squishFramesElapsed)) / duration) + 3.0) * squishFramesElapsed) / 4) / duration;
 }
 
 s32 func_8002F6DC(f32* arg0, f32 arg1) {
@@ -1005,11 +1005,11 @@ void UpdateTongueReticle(void) {
         hit = 1;
     }
     if (hit != 0) {
-        *(s32*) &gCurrentActivePlayerPointer->timerDown = 6;
+        *(s32*) &gCurrentActivePlayerPointer->targetLockFramesLeft = 6;
     } else {
-        *(s32*) &gCurrentActivePlayerPointer->timerDown = *(s32*) &gCurrentActivePlayerPointer->timerDown - 1;
+        *(s32*) &gCurrentActivePlayerPointer->targetLockFramesLeft = *(s32*) &gCurrentActivePlayerPointer->targetLockFramesLeft - 1;
     }
-    if (*(s32*) &gCurrentActivePlayerPointer->timerDown >= 0) {
+    if (*(s32*) &gCurrentActivePlayerPointer->targetLockFramesLeft >= 0) {
         gCurrentActivePlayerPointer->reticleSize += 0.1f;
         if (gCurrentActivePlayerPointer->reticleSize > 2.0f) {
             gCurrentActivePlayerPointer->reticleSize = 2.0f;
@@ -1271,32 +1271,32 @@ void pickup_collide_func(s32 actorIndex) {
     case TIME_STOP_POWER_UP:
         ClearPlayerPowerups(gCurrentActivePlayerPointer);
         gCurrentActivePlayerPointer->power = 4;
-        gCurrentActivePlayerPointer->powerTimer = 0;
-        gCurrentActivePlayerPointer->powerTimerTill = actor->unk_128;
+        gCurrentActivePlayerPointer->powerFramesElapsed = 0;
+        gCurrentActivePlayerPointer->powerDuration = actor->unk_128;
         PLAY_SFX(SFX_3A_unkSnd, 0, 0x10);
         var_s0 = 0x32;
         break;
     case BIG_FEET_POWER_UP:
         ClearPlayerPowerups(gCurrentActivePlayerPointer);
         gCurrentActivePlayerPointer->power = 1;
-        gCurrentActivePlayerPointer->powerTimer = 0;
-        gCurrentActivePlayerPointer->powerTimerTill = actor->unk_128;
+        gCurrentActivePlayerPointer->powerFramesElapsed = 0;
+        gCurrentActivePlayerPointer->powerDuration = actor->unk_128;
         PLAY_SFX(SFX_3A_unkSnd, 0, 0x10);
         var_s0 = 0x32;
         break;
     case BIG_HEAD_POWER_UP:
         ClearPlayerPowerups(gCurrentActivePlayerPointer);
         gCurrentActivePlayerPointer->power = 2;
-        gCurrentActivePlayerPointer->powerTimer = 0;
-        gCurrentActivePlayerPointer->powerTimerTill = actor->unk_128;
+        gCurrentActivePlayerPointer->powerFramesElapsed = 0;
+        gCurrentActivePlayerPointer->powerDuration = actor->unk_128;
         PLAY_SFX(SFX_3A_unkSnd, 0, 0x10);
         var_s0 = 0x32;
         break;
     case SHRINK_POWER_UP:
         ClearPlayerPowerups(gCurrentActivePlayerPointer);
         gCurrentActivePlayerPointer->power = 3;
-        gCurrentActivePlayerPointer->powerTimer = 0;
-        gCurrentActivePlayerPointer->powerTimerTill = actor->unk_128;
+        gCurrentActivePlayerPointer->powerFramesElapsed = 0;
+        gCurrentActivePlayerPointer->powerDuration = actor->unk_128;
         gCurrentActivePlayerPointer->tongueYOffset = 30.0f;
         gCurrentActivePlayerPointer->tongueSeperation = 25.0f;
         gCurrentActivePlayerPointer->hitboxSize *= 0.5f;
@@ -1314,8 +1314,8 @@ void pickup_collide_func(s32 actorIndex) {
 
             gCurrentActivePlayerPointer = &gPlayerActors[i];
             gCurrentActivePlayerPointer->power = 3;
-            gCurrentActivePlayerPointer->powerTimer = 0;
-            gCurrentActivePlayerPointer->powerTimerTill = actor->unk_128;
+            gCurrentActivePlayerPointer->powerFramesElapsed = 0;
+            gCurrentActivePlayerPointer->powerDuration = actor->unk_128;
             gCurrentActivePlayerPointer->tongueYOffset = 30.0f;
             gCurrentActivePlayerPointer->tongueSeperation = 25.0f;
             gCurrentActivePlayerPointer->hitboxSize *= 0.5f;
@@ -3190,7 +3190,7 @@ void ActorInit_Spider(Actor* spider) {
 
 void ActorTick_Spider(Actor* spider) {
     f32 angle;
-    s32 timer;
+    s32 framesLeft;
 
     if (spider->userVariables[2] == 0) {
         if (spider->unk_98 != 0) {
@@ -3208,12 +3208,12 @@ void ActorTick_Spider(Actor* spider) {
         if (spider->userVariables[0] == 0) {
             spider->unk_94 = spider->position._f32.x;
             func_8002D36C(&spider->unk_90, angle, spider->position._f32.y);
-            timer = spider->userVariables[1];
-            if (timer == 0) {
+            framesLeft = spider->userVariables[1];
+            if (framesLeft == 0) {
                 spider->userVariables[0] = 1;
                 spider->userVariables[1] = Random(1, spider->unk_12C);
             } else {
-                spider->userVariables[1] = timer - 1;
+                spider->userVariables[1] = framesLeft - 1;
             }
             Actor_PlaySound(spider, SFX_43_unkSnd, 4, 4);
         } else {
@@ -3221,12 +3221,12 @@ void ActorTick_Spider(Actor* spider) {
             WrapDegrees(&angle);
             spider->unk_94 = 0.0f;
             func_8002D36C(&spider->unk_90, angle, spider->unk_15C);
-            timer = spider->userVariables[1];
-            if (timer == 0) {
+            framesLeft = spider->userVariables[1];
+            if (framesLeft == 0) {
                 spider->userVariables[0] = 0;
                 spider->userVariables[1] = Random(1, spider->unk_128);
             } else {
-                spider->userVariables[1] = timer - 1;
+                spider->userVariables[1] = framesLeft - 1;
             }
         }
         func_800382F4(spider);

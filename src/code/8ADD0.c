@@ -195,7 +195,7 @@ s32 func_800B07E4(void) {
 
 void func_800B088C(Collider* arg0, RoomObject* arg1) {
     arg0->unk_AC = arg1->keyframes.temp;
-    arg0->unk_B0 = arg1->noKeyframes;
+    arg0->unk_B0 = arg1->numKeyframes;
     arg0->unk_B4 = 0;
     arg0->unk_B8 = -1;
     func_800B35FC(arg0->unk_AC);
@@ -297,7 +297,7 @@ void func_800B0B20(Collider* arg0, RoomObject* arg1) {
     Vec3f posA[25];
     s32 order[25];
     Gfx* model;
-    s32 count;
+    s32 keyframeCount;
     s32 boundCount;
     s32 i;
     s32 a;
@@ -305,17 +305,17 @@ void func_800B0B20(Collider* arg0, RoomObject* arg1) {
     s32 t;
 
     func_800B5D68(arg0, 1);
-    count = arg1->keyframes.temp;
-    arg0->unk_AC = count & 0xFF;
-    arg0->unk_B0 = arg1->noKeyframes;
+    keyframeCount = arg1->keyframes.temp;
+    arg0->unk_AC = keyframeCount & 0xFF;
+    arg0->unk_B0 = arg1->numKeyframes;
     arg0->unk_B4 = arg1->unk40;
-    if (count >= 0x1A) {
+    if (keyframeCount >= 0x1A) {
         DummiedPrintf3("Too Many Key\n");
-        count = arg0->unk_AC;
+        keyframeCount = arg0->unk_AC;
     }
-    boundCount = count;
-    for (i = 0; i < count; i++) {
-        groupB[i] = &D_80236980[func_800B2B50(arg0->unk_04 - count - i - 1, gCurrentZone)];
+    boundCount = keyframeCount;
+    for (i = 0; i < keyframeCount; i++) {
+        groupB[i] = &D_80236980[func_800B2B50(arg0->unk_04 - keyframeCount - i - 1, gCurrentZone)];
         groupA[i] = &D_80236980[func_800B2B50(arg0->unk_04 - i - 1, gCurrentZone)];
     }
     if (func_800B34D0(arg0->unk_B4) != 0) {
@@ -330,7 +330,7 @@ void func_800B0B20(Collider* arg0, RoomObject* arg1) {
             order[i] = i;
         }
         for (i = 0; i < 100; i++) {
-            a = Random(0, count - 1);
+            a = Random(0, keyframeCount - 1);
             b = Random(0, boundCount - 1);
             t = order[a];
             order[a] = order[b];
@@ -357,7 +357,7 @@ void RegistShutter(Collider* arg0, RoomObject* arg1) {
 
     arg0->unk_8C = arg1->unk28;
     arg0->unk_AC = arg1->keyframes.temp;
-    arg0->unk_B0 = arg1->noKeyframes;
+    arg0->unk_B0 = arg1->numKeyframes;
     arg0->unk_B4 = arg1->unk40;
     arg0->unk_B8 = arg1->unk44;
     arg0->unk_BC = arg1->unk48;
@@ -416,12 +416,12 @@ void func_800B2070(s32 arg0) {
     vec.z = gPlayer->pos.z;
 
     // If the player is not in the bounding box, not squished, and not jumping, set the squish timer to 1
-    if (((gPlayer->squishTimer == 0) && (gPlayer->canJump == 0)) && (IsPointInRect(vec, &rect) != 0)) {
+    if (((gPlayer->squishFramesElapsed == 0) && (gPlayer->canJump == 0)) && (IsPointInRect(vec, &rect) != 0)) {
         //D_80168E14 = 1;
-        gPlayer->squishTimer = 1;
+        gPlayer->squishFramesElapsed = 1;
     }
 
-    //(((gPlayerActors->squishTimer == 0) && (gPlayerActors->canJump == 0)) && (IsPointInRect(vec, &rect) != 0)) ? (gPlayerActors->squishTimer = 0) : (gPlayerActors->squishTimer = 1);
+    //(((gPlayerActors->squishFramesElapsed == 0) && (gPlayerActors->canJump == 0)) && (IsPointInRect(vec, &rect) != 0)) ? (gPlayerActors->squishFramesElapsed = 0) : (gPlayerActors->squishFramesElapsed = 1);
 }
 #else
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B2070.s")
@@ -866,13 +866,13 @@ void ResetStageModels(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/RegistModel.s")
 
 // moveModel: translate a collision model in place by `offset`, adding it to every vertex of
-// vertsStart (noXVerts entries, stride 0xC) and shifting both corners of the AABB at settingsStart.
+// vertsStart (numXVerts entries, stride 0xC) and shifting both corners of the AABB at settingsStart.
 void moveModel(ModelCollision* model, Vec3f offset) {
     s32 i;
     Vec3f* vert;
     Rect3D* bounds;
 
-    for (i = 0, vert = model->vertsStart; i < model->noXVerts; i++, vert++) {
+    for (i = 0, vert = model->vertsStart; i < model->numXVerts; i++, vert++) {
         vert->x += offset.x;
         vert->y += offset.y;
         vert->z += offset.z;
@@ -888,7 +888,7 @@ void moveModel(ModelCollision* model, Vec3f offset) {
 }
 
 // ScaleModel: scale a collision model in place, multiplying every vertex of vertsStart
-// (noXVerts entries, stride 0xC) and both corners of the AABB at settingsStart by the matching
+// (numXVerts entries, stride 0xC) and both corners of the AABB at settingsStart by the matching
 // per-axis factor. Counterpart to moveModel above and RotateModel below; called by RegistField
 // when a placed model carries a scale.
 void ScaleModel(ModelCollision* model, f32 sx, f32 sy, f32 sz) {
@@ -896,7 +896,7 @@ void ScaleModel(ModelCollision* model, f32 sx, f32 sy, f32 sz) {
     Vec3f* vert;
     Rect3D* bounds;
 
-    for (i = 0, vert = model->vertsStart; i < model->noXVerts; i++, vert++) {
+    for (i = 0, vert = model->vertsStart; i < model->numXVerts; i++, vert++) {
         vert->x *= sx;
         vert->y *= sy;
         vert->z *= sz;
@@ -1454,7 +1454,7 @@ void RegisterTwoPointMover(Collider* arg0, RoomObject* arg1) {
     arg0->unk_9C = arg1->unk2C;
     arg0->unk_A0 = arg1->unk30;
     arg0->unk_AC = arg1->keyframes.temp;
-    arg0->unk_B0 = arg1->noKeyframes;
+    arg0->unk_B0 = arg1->numKeyframes;
     arg0->unk_B4 = arg1->unk40;
     arg0->unk_B8 = arg1->unk44;
     arg0->unk_BC = arg1->unk48;
@@ -1495,7 +1495,7 @@ void func_800B67D8(Collider* arg0, RoomObject* arg1) {
     t = 0;
     i = 0;
     arg0->unk_AC = arg1->keyframes.temp;
-    arg0->unk_B0 = arg1->noKeyframes;
+    arg0->unk_B0 = arg1->numKeyframes;
     kf = (PlatformKeyframe*) arg0->unk_AC;
     arg0->unk_30.x = kf->position.x;
     arg0->unk_30.y = kf->position.y;
@@ -1565,7 +1565,7 @@ void func_800B691C(Collider* arg0) {
 
 void RegisterScriptedBehaviour(Collider* arg0, RoomObject* arg1) {
     void (*registerFunc)(Collider*, RoomObject*) = (void (*)(Collider*, RoomObject*)) arg1->keyframes.temp;
-    s32 tickFunc = arg1->noKeyframes;
+    s32 tickFunc = arg1->numKeyframes;
 
     registerFunc(arg0, arg1);
     arg0->function = (void (*)(Collider*)) tickFunc;
@@ -1621,7 +1621,7 @@ void RegisterKeyframePlatform(Collider* arg0, RoomObject* arg1) {
     kf = arg1->keyframes._keyframe;
     i = 0;
     arg0->unk_AC = (s32)kf;
-    arg0->unk_B0 = arg1->noKeyframes;
+    arg0->unk_B0 = arg1->numKeyframes;
     arg0->unk_B4 = 0;
     arg0->unk_30.x = kf->position.x;
     arg0->unk_30.y = kf->position.y;
@@ -1657,7 +1657,7 @@ void func_800B7208(Collider* arg0, RoomObject* arg1) {
     arg0->unk_9C = arg1->unk2C;
     arg0->unk_A0 = arg1->unk30;
     arg0->unk_AC = arg1->keyframes.temp;
-    arg0->unk_B0 = arg1->noKeyframes;
+    arg0->unk_B0 = arg1->numKeyframes;
     arg0->unk_B4 = arg1->unk40;
     arg0->unk_B8 = arg1->unk44;
     arg0->unk_BC = arg1->unk48;
@@ -1700,7 +1700,7 @@ void func_800B7860(Collider* arg0, RoomObject* arg1) {
     arg0->unkA4 = 0.0f;
     arg0->unkA8 = 0.0f;
     arg0->unk_B8 = arg1->keyframes.temp;
-    arg0->unk_BC = arg1->noKeyframes;
+    arg0->unk_BC = arg1->numKeyframes;
     arg0->unk_C0 = arg1->unk40;
     arg0->unkC8 = 0;
 }
@@ -1712,7 +1712,7 @@ void func_800B7860(Collider* arg0, RoomObject* arg1) {
 void func_800B81B4(Collider* arg0, RoomObject* arg1) {
     func_800B5D68(arg0, 1);
     arg0->unk_AC = arg1->keyframes.temp;
-    arg0->unk_B0 = arg1->noKeyframes;
+    arg0->unk_B0 = arg1->numKeyframes;
     arg0->unk_B4 = 0;
     arg0->unk_B8 = 0;
 }
@@ -1789,7 +1789,7 @@ void func_800B9298(Collider* arg0, RoomObject* arg1) {
     }
     arg0->unk_AC = arg1->keyframes.temp;
     arg0->unk_8C = DEGREES_TO_RADIANS_PI(arg1->unk28);
-    arg0->unk_5C = arg1->noKeyframes;
+    arg0->unk_5C = arg1->numKeyframes;
 }
 #else
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B9298.s")
@@ -1841,7 +1841,7 @@ void func_800B942C(Collider* arg0, RoomObject* arg1) {
     arg0->sfxPos.y = d;
     z = arg0->unk_94;
     arg0->sfxPos.x = x;
-    arg0->unk_B0 = arg1->noKeyframes;
+    arg0->unk_B0 = arg1->numKeyframes;
     arg0->sfxPos.z = z;
     arg0->unk_30.z = z;
     if (parent != NULL) {
@@ -1866,7 +1866,7 @@ void RegisterDamageHazard(Collider* arg0, RoomObject* arg1) {
     arg0->unk_A0 = arg1->unk30;
     arg0->unkA4 = 1.0f;
     arg0->unk_AC = arg1->keyframes.temp;
-    arg0->unk_B0 = arg1->noKeyframes;
+    arg0->unk_B0 = arg1->numKeyframes;
     arg0->unk_B4 = arg1->unk40;
     arg0->unk_B8 = arg1->unk44;
     arg0->unk_BC = arg1->unk48;
@@ -2022,7 +2022,7 @@ void func_800B9E8C(Collider* arg0, RoomObject* arg1) {
     arg0->unk_AC = 0;
     arg0->unk_B0 = 0;
     arg0->unk_B4 = arg1->keyframes.temp;
-    arg0->unk_B8 = arg1->noKeyframes;
+    arg0->unk_B8 = arg1->numKeyframes;
     arg0->unk_BC = arg1->unk40;
     arg0->unk_C0 = arg1->unk44;
     arg0->unkC4 = arg1->unk48;
@@ -2044,7 +2044,7 @@ void func_800BA2D0(Collider* arg0, RoomObject* arg1) {
     arg0->unk_A0 = arg1->unk30;
     arg0->unkA4 = 0;
     arg0->unk_AC = arg1->keyframes.temp;
-    arg0->unk_B0 = arg1->noKeyframes;
+    arg0->unk_B0 = arg1->numKeyframes;
     arg0->unk_B4 = arg1->unk40;
     arg0->unk_B8 = 0;
     arg0->unk_BC = 0;
@@ -2101,7 +2101,7 @@ void func_800BB038(Collider* arg0, RoomObject* arg1) {
     arg0->unk_90 = DEGREES_TO_RADIANS_PI(arg0->unk60);
     arg0->unk_AC = 0;
     arg0->unk_B0 = arg1->keyframes.temp;
-    arg0->unk_B4 = arg1->noKeyframes;
+    arg0->unk_B4 = arg1->numKeyframes;
     arg0->unk_B8 = arg0->unk_B4 + arg0->unk_B0;
     arg0->unk_BC = -1;
     arg0->unk_C0 = arg1->unk40;
@@ -2139,7 +2139,7 @@ void func_800BB254(Collider* arg0, RoomObject* arg1) {
     }
     arg0->unk_AC = 0;
     arg0->unk_B0 = 0;
-    arg0->unk_B4 = arg1->noKeyframes;
+    arg0->unk_B4 = arg1->numKeyframes;
     arg0->unk_B8 = -1;
     arg0->unk_BC = arg1->unk40;
     arg0->unkA4 = arg1->unk44;
@@ -2300,7 +2300,7 @@ void func_800BCC04(Collider* arg0, RoomObject* arg1) {
 
     func_800B5D68(arg0, 2);
     arg0->unk_AC = arg1->keyframes.temp;
-    arg0->unk_B0 = arg1->noKeyframes;
+    arg0->unk_B0 = arg1->numKeyframes;
     arg0->unk_B4 = arg1->unk40;
     arg0->unk_B8 = 0;
     arg0->unk_BC = 0;
@@ -2329,7 +2329,7 @@ void func_800BD1EC(Collider* arg0, RoomObject* arg1) {
     t = 0;
     i = 0;
     arg0->unk_AC = arg1->keyframes.temp;
-    arg0->unk_B0 = arg1->noKeyframes;
+    arg0->unk_B0 = arg1->numKeyframes;
     kf = (PlatformKeyframe*) arg0->unk_AC;
     arg0->unk_B4 = 0;
     arg0->unk_30.x = kf->position.x;
@@ -2765,7 +2765,7 @@ void RegistDoor(RoomObject* obj, s32 arg1, s32 arg2) {
         door->rect.max.y = obj->unk28;
         door->rect.max.z = obj->unk2C;
         door->direction = obj->keyframes.temp;
-        door->unk34 = obj->noKeyframes;
+        door->unk34 = obj->numKeyframes;
         gDoorCount++;
     }
 }

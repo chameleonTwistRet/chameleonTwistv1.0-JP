@@ -87,7 +87,7 @@ extern u8 gLockContextEyes;
 extern s32 D_800FEA30;
 extern s32 D_800FEA34;
 extern s32 gTrainingState;
-extern s32 gTrainingRoomTimer;
+extern s32 gTrainingRoomTimer; //direction unproven, writes still in asm
 extern s32 gTrainingStateTmer;
 extern s32 D_800FEB98;
 extern s32 D_800FEB9C;
@@ -286,7 +286,7 @@ extern u16 D_801756C0[4];
 extern s16 D_801756C2;
 extern s16 D_801756C4;
 extern s16 D_801756C6;
-extern s32 gCurrentDemoTimer;
+extern s32 gCurrentDemoTimer; //direction unproven, writes still in asm
 extern OSMesg D_801FCF08[50];
 extern s32 D_801FD558;
 extern DMAStruct D_801FCFD8[50];

@@ -369,7 +369,7 @@ void func_80025EF0(PlayerActor* arg0, Tongue* arg1, s32 arg2) {
         }
     }
 
-    if (arg0->power == 1 && (arg0->powerTimer >= 30 && arg0->powerTimer <= arg0->powerTimerTill - 30 || !(gTimer % 2))) {
+    if (arg0->power == 1 && (arg0->powerFramesElapsed >= 30 && arg0->powerFramesElapsed <= arg0->powerDuration - 30 || !(gTimer % 2))) {
         Mtx spD0;
         guMtxIdent(&spD0);
         guScale(&spD0, 2.0f, 2.0f, 2.0f);
@@ -377,7 +377,7 @@ void func_80025EF0(PlayerActor* arg0, Tongue* arg1, s32 arg2) {
         guMtxCatL(&spD0, &sp110[3], &sp110[3]);
     }
 
-    if (arg0->power == 2 && (arg0->powerTimer >= 30 && arg0->powerTimer <= arg0->powerTimerTill - 30 || !(gTimer % 2))) {
+    if (arg0->power == 2 && (arg0->powerFramesElapsed >= 30 && arg0->powerFramesElapsed <= arg0->powerDuration - 30 || !(gTimer % 2))) {
         Mtx limb2X;
         guMtxIdent(&limb2X);
         guScale(&limb2X, 2.0f, 2.0f, 2.0f);
@@ -450,8 +450,8 @@ void func_80026FB8(GraphicStruct *arg0, Mtx *arg1, u32 arg2, f32 arg3, f32 arg4,
 /**
  * @brief Writes the animation data of a given Animation set (through AnimPointer) to a requested place in ram.
  * @param pointer: The AnimPointer in which to read data
- * @param ramObjects: The location in ram in which to write pointer->noObjects
- * @param ramFrames: The location in ram in which to write pointer->noFrames
+ * @param ramObjects: The location in ram in which to write pointer->numObjects
+ * @param ramFrames: The location in ram in which to write pointer->numFrames
  * @param ramAnim: The location in ram in which to write pointer->animation (as a pointer)
  */
 void Anim_LoadPointer(AnimPointer* pointer, s32* ramObjects, s32* ramFrames, Mtx** ramAnim) {
@@ -461,18 +461,18 @@ void Anim_LoadPointer(AnimPointer* pointer, s32* ramObjects, s32* ramFrames, Mtx
     //this is required to be 1 line or codegen breaks
     if (!IS_SEGMENTED(pointer)) {realPointer = pointer;} else {realPointer = SEGMENTED_TO_VIRTUAL(pointer);}
 
-    if (!IS_SEGMENTED(realPointer->noObjects)) {
-        newInt = realPointer->noObjects;
+    if (!IS_SEGMENTED(realPointer->numObjects)) {
+        newInt = realPointer->numObjects;
     } else {
-        newInt = SEGMENTED_TO_VIRTUAL(realPointer->noObjects);
+        newInt = SEGMENTED_TO_VIRTUAL(realPointer->numObjects);
     }
 
     *ramObjects = *newInt;
 
-    if (!IS_SEGMENTED(realPointer->noFrames)) {
-        newInt = realPointer->noFrames;
+    if (!IS_SEGMENTED(realPointer->numFrames)) {
+        newInt = realPointer->numFrames;
     } else {
-        newInt = SEGMENTED_TO_VIRTUAL(realPointer->noFrames);
+        newInt = SEGMENTED_TO_VIRTUAL(realPointer->numFrames);
     }
 
     *ramFrames = *newInt;
@@ -563,7 +563,7 @@ Gfx* Player_DrawBody(GraphicStruct* arg0, Gfx* gfxPos, PlayerActor* player, Tong
     f32 scaleZ = 1.4f;
     f32 sp28 = 25.0f;
 
-    if (player->power == 3 && (player->powerTimer >= 20 && player->powerTimer <= player->powerTimerTill - 20 || !(gTimer % 2))) {
+    if (player->power == 3 && (player->powerFramesElapsed >= 20 && player->powerFramesElapsed <= player->powerDuration - 20 || !(gTimer % 2))) {
         scaleX /= 2.0f;
         scaleY /= 2.0f;
         scaleZ /= 2.0f;
