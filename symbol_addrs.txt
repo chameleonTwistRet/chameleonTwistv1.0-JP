@@ -14594,3 +14594,5 @@ UpdateLevelFlow = 0x8004BAC0; // type:func
 gCpuControllers = 0x801755A8;
 ResetCpuControllers = 0x8004BD7C; // type:func
 FindNearestTongueTarget = 0x8004C110; // type:func
+TryPressButton = 0x8004C374; // type:func
+SetStickToAngle = 0x8004C3A4; // type:func

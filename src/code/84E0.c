@@ -4511,17 +4511,38 @@ s32 func_8004C1C8(PlayerActor *player)
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8004C1C8.s")
 #endif
 
-s32 func_8004C374(u16* arg0, u16* arg1, s32 arg2) {
-    if ((*arg1 & arg2) == 0) {
-        *arg0 |= arg2;
+/**
+ * @brief Presses a button on a virtual controller if it is not already held.
+ *
+ * Used by the CPU input logic in `func_8004CD9C` to produce clean button
+ * presses on `gCpuControllers`.
+ *
+ * @param [out] buttons The button field to press into.
+ * @param heldButtons The button field holding the already-held buttons.
+ * @param button The button mask to press.
+ *
+ * @return (s32) 1 if the button was pressed; otherwise, it returns 0.
+ */
+s32 TryPressButton(u16* buttons, u16* heldButtons, s32 button) {
+    if ((*heldButtons & button) == 0) {
+        *buttons |= button;
         return 1;
     }
     return 0;
 }
 
-void func_8004C3A4(s16* arg0, f32 arg1) {
-    arg0[3] = cosf(DEGREES_TO_RADIANS_2PI(arg1)) * 65.0f;
-    arg0[4] = sinf(DEGREES_TO_RADIANS_2PI(arg1)) * 65.0f;
+/**
+ * @brief Points a controller's stick in the direction of an angle.
+ *
+ * Sets the stick to a deflection of 65 along the given angle in degrees.
+ * Used by the CPU input logic in `func_8004CD9C` to steer `gCpuControllers`.
+ *
+ * @param cont The controller whose stick to set.
+ * @param angle The direction to point the stick, in degrees.
+ */
+void SetStickToAngle(ContMain* cont, f32 angle) {
+    cont->stickX = cosf(DEGREES_TO_RADIANS_2PI(angle)) * 65.0f;
+    cont->stickY = sinf(DEGREES_TO_RADIANS_2PI(angle)) * 65.0f;
 }
 
 s32 SnapToBattleArenaWall(f32* outX, f32* outZ, f32 x, f32 z) {
