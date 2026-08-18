@@ -53,7 +53,7 @@ void TriggerPlayerRumble(s32, s32);
 void TongueHitWall(Tongue*);
 void ClearPlayerPowerups(PlayerActor*);
 
-s32 func_80030DCC(f32, f32, s32);
+s32 func_80030DCC(f32, f32, f32);
 void DespawnButterflyGroup(Actor*);
 void func_800312B0(s32);
 void QueenAnt_HitRecoil(Actor*, f32);
@@ -251,6 +251,7 @@ void SetTextGradient(u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8,
 void func_80061394(void);
 void Effect_Init(void);
 void Effect_TypeA_Init(f32, f32, f32, s32, s32);
+void Effect_TypeY_Init(f32, f32, f32, f32, f32, f32, f32);
 void func_8006202C(void);
 void func_800629C4(void);
 void func_800629D4(void);
