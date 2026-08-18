@@ -6736,7 +6736,7 @@ void Effect_TypeAC_Update(Effect* effect, Gfx** pGfxPos) {
 
     size = effect->lifeTime * effect->vel.x;
 
-    if (D_80174980 == 3 && gCurrentStage == STAGE_GHOSTBOSS && D_800FFEBC == 0) {
+    if (gLevelFlowState == 3 && gCurrentStage == STAGE_GHOSTBOSS && D_800FFEBC == 0) {
         Effect_Free(effect);
         return;
     }

@@ -10,7 +10,7 @@ s32 D_801748A0;
 s32 D_801748A4;
 unk0 D_801748A8; //is size 0x58, struct is a guess
 unk80174900 D_80174900;
-s32 D_80174980; //game state???
+s32 gLevelFlowState; //0 intro (camera locked), 1 playing, 3 no-damage cutscene, 4 player died, 5 stage clear hold
 //0 == menuing?
 //1 == normal
 //2 == ???
@@ -40,7 +40,7 @@ s32 D_801749D8[2][15];
 unk80174A50 D_80174A50;
 unk80175590 D_80175590;
 s32 D_80175598[4];
-ContMain D_801755A8[4];
+ContMain gCpuControllers[4];
 s32 D_801755E8[4];
 s32 D_801755F8[4];
 s32 D_80175608[6];
@@ -1643,10 +1643,10 @@ void func_80036D74(PlayerActor* arg0, Tongue* arg1) {
         TriggerPlayerRumble(arg0->playerID, 5);
         Effect_TypeD_Create(arg0->pos.x, arg0->pos.y, arg0->pos.z);
         PLAY_SFX(SFX_ChameleonOw+1, 0, 0x10);
-        if ((Battle_GameType == BATTLE_TYPE_NOTBATTLE) && (D_80174980 != 3) && (D_80174988 == 0)) {
+        if ((Battle_GameType == BATTLE_TYPE_NOTBATTLE) && (gLevelFlowState != 3) && (D_80174988 == 0)) {
             gNoHit = 0;
             if (--arg0->hp <= 0) {
-                D_80174980 = 4;
+                gLevelFlowState = 4;
                 gCurrentCamera->unk50 = 0.0f;
                 gCurrentCamera->size2 = 0.4551662f;
             }
@@ -4263,35 +4263,44 @@ void func_8004BA5C(s32 arg0) {
     }
 }
 
-void func_8004BAC0(void) {
-    if (D_80174980 == 5) {
+/**
+ * @brief Drives the level flow state each frame.
+ *
+ * During the stage clear hold (state 5) the tongue is raised and `gTimer` is
+ * rewound at frame 65 for 60 repeats, then everything resets to the intro at
+ * frame 200. The intro (state 0) becomes playing (state 1) with a jingle once
+ * `gTimer` reaches 5. Camera input stays disabled through states 0, 2 and 3.
+ * Also raises `D_801749B0` in the room where a second player joins.
+ */
+void UpdateLevelFlow(void) {
+    if (gLevelFlowState == 5) {
         if (1 == gTimer) { //required
             D_801749D0 = 0;
             gPlayerActors->tongueYOffset = 90.0f;
-        } else if (gTimer == 0x41) {
+        } else if (gTimer == 65) {
             D_801749D0++;
-            if (D_801749D0 == 0x3C) {
+            if (D_801749D0 == 60) {
                 D_801749D0 = 0;
             } else {
                 gTimer--;
                 D_801749A0--;
             }
-        } else if (gTimer == 0xC8) {
-            D_80174980 = 0;
+        } else if (gTimer == 200) {
+            gLevelFlowState = 0;
             D_801749A0 = gTimer = 1; //required
             gPlayerActors->tongueYOffset = 60.0f;
         }
     }
-    if ((gTimer >= 5) && (D_80174980 == 0)) {
-        D_80174980 = 1;
+    if ((gTimer >= 5) && (gLevelFlowState == 0)) {
+        gLevelFlowState = 1;
         PlaySoundEffect(0xDF, NULL, NULL, NULL, 0, 0x10);
     }
-    if ((D_80174980 == 0) || (D_80174980 == 2) || (D_80174980 == 3)) {
+    if ((gLevelFlowState == 0) || (gLevelFlowState == 2) || (gLevelFlowState == 3)) {
         gCameraInputDisabled = 1;
     } else {
         gCameraInputDisabled = 0;
     }
-    if ((D_80174878 == 2) && (gCurrentZone == 0xF)) {
+    if ((D_80174878 == 2) && (gCurrentZone == 15)) {
         D_801749B0 = 1;
     } else {
         D_801749B0 = 0;
@@ -4335,12 +4344,21 @@ void func_8004BC48(ContMain* arg0) {
 #endif
 
 
-void func_8004BD7C(void) {
+/**
+ * @brief Resets the CPU players' virtual controllers and reaction timers.
+ *
+ * Zeroes each CPU player's state and virtual controller, then seeds its
+ * reaction delay from the CPU difficulty setting (`D_801003DC[0]`): a base of
+ * `(4 - difficulty) * 35 / 4` frames in `D_80175608`, plus up to 19 random
+ * frames in `D_801755F8`. The CPU input logic in `func_8004CD9C` consumes
+ * these.
+ */
+void ResetCpuControllers(void) {
     s32 i;
 
     for (i = 0; i < 4; i++) {
         D_80175598[i] = 0;
-        Controller_Zero(&D_801755A8[i]);
+        Controller_Zero(&gCpuControllers[i]);
         D_801755E8[i] = 0;
         D_80175608[i] = ((4 - D_801003DC[0]) * 0x23) / 4;
         D_801755F8[i] = D_80175608[i] + (Random(0, 99999) % 20);
@@ -4379,8 +4397,7 @@ s32 CountActorsAtTongueHeight(PlayerActor *player) {
 }
 
 
-s32 GetTongueTargetDistSq(Actor* actor, s32 arg1, f32 x, f32 z) {
-    PlayerActor* player = (PlayerActor*) arg1;
+s32 GetTongueTargetDistSq(Actor* actor, PlayerActor* player, f32 x, f32 z) {
     f32 tongueY;
     s32 i;
     s32 dx;
@@ -4410,25 +4427,38 @@ s32 GetTongueTargetDistSq(Actor* actor, s32 arg1, f32 x, f32 z) {
     return -1;
 }
 
-s32 func_8004C110(s32 arg0, f32 arg1, f32 arg2) {
-    Actor* actorArray;
-    s32 temp_v0;
-    s32 var_s2;
+/**
+ * @brief Finds the actor a player's tongue would best target at a position.
+ *
+ * Checks every actor with `GetTongueTargetDistSq` and keeps the one with the
+ * smallest squared distance. Actors that are not valid tongue targets return
+ * a negative distance and are skipped.
+ *
+ * @param player The player whose tongue is targeting.
+ * @param x The X coordinate to measure from.
+ * @param z The Z coordinate to measure from.
+ *
+ * @return (s32) The index of the nearest targetable actor; otherwise, it returns -1.
+ */
+s32 FindNearestTongueTarget(PlayerActor* player, f32 x, f32 z) {
+    Actor* actor;
+    s32 distSq;
+    s32 bestDistSq;
     s32 actorIndex;
     s32 i;
 
-    var_s2 = 100000000;
+    bestDistSq = 100000000;
     actorIndex = -1;
-    actorArray = gActors;
-    for (i = 0; i < ARRAY_COUNT(gActors); i++, actorArray++) {
-        temp_v0 = GetTongueTargetDistSq(actorArray, arg0, arg1, arg2);
-        //fake match
-        do {
-            if ((temp_v0 >= 0) && (temp_v0 < var_s2)) {
-                var_s2 = temp_v0;
-                actorIndex = i;
-            }
-        } while (0);
+    actor = gActors;
+    for (i = 0; i < ARRAY_COUNT(gActors); i++, actor++) {
+        distSq = GetTongueTargetDistSq(actor, player, x, z);
+        if (distSq < 0) {
+            continue;
+        }
+        if (distSq < bestDistSq) {
+            bestDistSq = distSq;
+            actorIndex = i;
+        }
     }
     return actorIndex;
 }

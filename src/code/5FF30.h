@@ -661,7 +661,7 @@ extern s32 D_80101074;
 extern s32 CreditsTimeOffset;
 extern RollData CreditsData[];
 extern s32 D_8010875C;
-extern s32 D_80174980;
+extern s32 gLevelFlowState;
 extern u64 D_801B35B8[];
 extern u32 D_801FFB7C[];
 

@@ -352,7 +352,7 @@ extern struct_800FE4E4 D_800FE4E4[4];
 extern f32 D_800FE6F4[];
 extern u8 D_800FE704[];
 extern struct_800FE54C D_800FE54C[];
-extern s32 D_80174980;
+extern s32 gLevelFlowState;
 extern s16 D_800FFEBC;
 extern u8 D_800FE6F0;
 extern s32 D_800FE708;

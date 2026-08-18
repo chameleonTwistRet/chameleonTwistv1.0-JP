@@ -44,7 +44,7 @@ extern Mtx* gMatrixBufPtr;
 extern u8 D_800FF8DC;
 extern u8 D_800FF8E0;
 extern u8 D_800FF8E4;
-extern s32 D_80174980;
+extern s32 gLevelFlowState;
 extern s32 Battle_GameType;
 extern OSTask D_800F04E0[2];
 extern OSMesgQueue gFrameDrawnMessageQueue;

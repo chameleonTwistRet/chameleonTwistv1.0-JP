@@ -207,7 +207,7 @@ void func_80025EF0(PlayerActor* arg0, Tongue* arg1, s32 arg2) {
         return;
     }
 
-    if (D_80174980 == 5) {
+    if (gLevelFlowState == 5) {
         func_80027240(&gMatrixBufPtr, gSpriteListings[SPRITE_ANIM1].raster, gTimer / 2, gSpriteListings[SPRITE_ANIM1].tileCountY);
         if (gTimer == 20) {
             Effect_TypeT_Init(22.0f, 154.0f, 60, D_800F686C);
@@ -393,7 +393,7 @@ void func_80025EF0(PlayerActor* arg0, Tongue* arg1, s32 arg2) {
         D_80168D88 = arg0->pos.x + limb2Y;
         D_80168D8C = arg0->pos.y + limb2Z;
         D_80168D90 = arg0->pos.z + sp84;
-        if (D_80174980 == 4) {
+        if (gLevelFlowState == 4) {
             Effect_TypeAF_Init(&D_80168D88, &D_80168D8C, &D_80168D90, 50.0f, 20.0f, 10.0f, 5, 180, 75);
         }
     }
@@ -887,7 +887,7 @@ Gfx* Actors_DrawAll(GraphicStruct* arg0, Gfx* gfxPos) {
             continue;
         }
 
-        if (gActors[i].actorState == 2 || gActors[i].actorState == 4 && (gActors[i].unk_C8 & 1) && D_80174980 != 3 || Actor_IsOffscreen(&gActors[i])) {
+        if (gActors[i].actorState == 2 || gActors[i].actorState == 4 && (gActors[i].unk_C8 & 1) && gLevelFlowState != 3 || Actor_IsOffscreen(&gActors[i])) {
             continue;
         }
 
@@ -1092,7 +1092,7 @@ Gfx* func_8002C280(GraphicStruct* arg0, Gfx* gfxPos) {
             if (!gPlayerActors[i].exists) {
                 continue;
             }
-            if (gGameModeCurrent == 20 || D_80174980 == 3) {
+            if (gGameModeCurrent == 20 || gLevelFlowState == 3) {
                 continue;
             }
             if (gTongues[i].amountInMouth != 0 && gTongues[i].tongueMode == 0 || gPlayerActors[i].locked != 0 || gPlayerActors[i].amountLeftToShoot != 0) {
@@ -1302,7 +1302,7 @@ void func_8002CE54(void) {
         Controller_Zero(&sp28[i]);
     }
 
-    if (D_80174980 == 5) {
+    if (gLevelFlowState == 5) {
         D_80168D78[0] = 1;
         func_8004BC48(sp28);
         func_8004E784(sp28, D_80168DA0, D_80168D78, sp28);

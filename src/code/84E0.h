@@ -35,8 +35,9 @@ typedef struct Unk_func_80035374{
 void WrapDegrees(f32* theta_ptr);
 void Effect_TypeD_Create(f32, f32, f32);
 void func_800D34CC(void);
-s32 GetTongueTargetDistSq(Actor*, s32, f32, f32);
-s32 GetTongueTargetDistSq(Actor*, s32, f32, f32);
+void ResetCpuControllers(void);
+s32 GetTongueTargetDistSq(Actor*, PlayerActor*, f32, f32);
+s32 GetTongueTargetDistSq(Actor*, PlayerActor*, f32, f32);
 void SetCameraParameters(void);
 void func_8002E9F4(void);
 void ActorTick_BattleModeSaucer(Actor* actor);
@@ -45,8 +46,18 @@ void ActorInit_BulletHellAntSpawner(Actor*);
 void ActorInit_Chomper(Actor*);
 
 /* Ext Variables */
-extern s32 D_80174980;
+extern s32 gLevelFlowState;
 extern s32 D_80174988;
+extern s32 D_80174868;
+extern f32 D_80174748;
+extern s32 D_800F06F4;
+extern s32 D_800F06F8;
+extern s32 D_800F06FC;
+extern s32 D_800F0700;
+extern s32 D_80168D7C;
+extern s32 D_80168D80;
+extern s32 D_80168D84;
+extern s32 sDebugMultiplayer;
 extern s32 Battle_GameType;
 
 extern f32 D_8010B348;

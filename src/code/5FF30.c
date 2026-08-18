@@ -4277,7 +4277,7 @@ void Porocess_Mode0(void) {
         func_8005C9B8();
         func_80084788();
 
-        D_80174980 = 0;
+        gLevelFlowState = 0;
         if (gCurrentStage == STAGE_VS) {
             Battle_Init();
         } else {
