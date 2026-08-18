@@ -166,7 +166,7 @@ s32 IsAngleWithinTolerance(f32 targetAngle, f32 refAngle, f32 toleranceAngle) {
  * and -1 if it does not.
  *
  * @param refAngle The reference angle, used to define the 180-degree range.
- * @param targetAngle The angle to be compared to `angleA`.
+ * @param targetAngle The angle to be compared to `refAngle`.
  *
  * @return (s32) 1 if target is within the 180-degree range relative to reference; otherwise, it returns -1.
  */
@@ -183,76 +183,133 @@ s32 AreAnglesWithin180Degrees(f32 refAngle, f32 targetAngle) {
     return 1;
 }
 
-// Rotates angle one 90 degrees, then checks if angle two is within 180 degrees of it
-s32 func_8002D328(f32 theta, f32 phi) {
-    f32* theta_ptr;
+/**
+ * @brief Checks if an angle is within 90 degrees either side of a reference angle.
+ *
+ * Rotates `refAngle` back by 90 degrees, wraps it, then checks whether `targetAngle`
+ * falls within the 180-degree range starting there, covering the half circle
+ * centered on `refAngle`.
+ *
+ * @param refAngle The reference angle at the center of the range.
+ * @param targetAngle The angle to be compared to `refAngle`.
+ *
+ * @return (s32) 1 if target is within 90 degrees of reference; otherwise, it returns -1.
+ */
+s32 IsAngleWithin90Degrees(f32 refAngle, f32 targetAngle) {
+    f32* refAnglePtr;
 
-    theta_ptr = &theta;
-    theta = theta - 90.0f;
-    WrapDegrees(theta_ptr);
-    return AreAnglesWithin180Degrees(theta, phi);
+    refAnglePtr = &refAngle;
+    refAngle = refAngle - 90.0f;
+    WrapDegrees(refAnglePtr);
+    return AreAnglesWithin180Degrees(refAngle, targetAngle);
 }
 
-// Unkown Function: Elisiah
-s32 func_8002D36C(f32* arg0, f32 arg1, f32 arg2) {
-    s32 phi_v1;
-    f32 phi_f0;
-    s32 sp1C;
+/**
+ * @brief Rotates an angle towards a target angle by at most one step.
+ *
+ * Takes the shortest way around the circle. If the target is within one step
+ * it is snapped to exactly, otherwise the angle moves one step in the
+ * direction given by `AreAnglesWithin180Degrees`. The result is wrapped.
+ *
+ * @param [in,out] angle The angle to rotate, in degrees.
+ * @param targetAngle The angle to rotate towards.
+ * @param step The maximum number of degrees to rotate by.
+ *
+ * @return (s32) 1 if the angle reached the target; otherwise, it returns 0.
+ */
+s32 RotateAngleTowards(f32* angle, f32 targetAngle, f32 step) {
+    s32 reached;
+    f32 diff;
 
-    phi_v1 = 0;
-    if (*arg0 < arg1) {
-        phi_f0 = -(*arg0 - arg1);
+    reached = 0;
+    if (*angle < targetAngle) {
+        diff = -(*angle - targetAngle);
     } else {
-        phi_f0 = *arg0 - arg1;
+        diff = *angle - targetAngle;
     }
-    if (phi_f0 > 180.0f) {
-        phi_f0 = 360.0f - phi_f0;
+    if (diff > 180.0f) {
+        diff = 360.0f - diff;
     }
-    if (arg2 <= phi_f0) {
-        sp1C = 0;
-        *arg0 += arg2 * (f32) AreAnglesWithin180Degrees(*arg0, arg1);
+    if (step <= diff) {
+        *angle += step * (f32) AreAnglesWithin180Degrees(*angle, targetAngle);
     } else {
-        *arg0 = arg1;
-        phi_v1 = 1;
+        *angle = targetAngle;
+        reached = 1;
     }
-    sp1C = phi_v1;
-    WrapDegrees(arg0);
-    return sp1C;
+    WrapDegrees(angle);
+    return reached;
 }
 
-void func_8002D434(f32 *vecX, f32 *vecY, f32 diffX, f32 diffY, f32 addAngle) {
+/**
+ * @brief Rotates a 2D point around a pivot point by the given angle.
+ *
+ * Keeps the point at its current distance from the pivot. Does nothing when
+ * the point sits exactly on the pivot.
+ *
+ * @param [in,out] pointX The X coordinate of the point to rotate.
+ * @param [in,out] pointY The Y coordinate of the point to rotate.
+ * @param pivotX The X coordinate of the pivot.
+ * @param pivotY The Y coordinate of the pivot.
+ * @param angle The number of degrees to rotate by.
+ */
+void RotatePointAroundPivot(f32 *pointX, f32 *pointY, f32 pivotX, f32 pivotY, f32 angle) {
     f32 newAngle;
+    f32 dx = *pointX - pivotX;
+    f32 dy = *pointY - pivotY;
+    f32 dist = NORM_2(dx, dy);
 
-    // find magnitude of vector (a,b) = vec - diff
-    f32 a = *vecX - diffX;
-    f32 b = *vecY - diffY;
-    f32 c = NORM_2(a, b);
-
-    // If magnitude is not 0, calculate new angle and adjust vector
-    if (c != 0.0f) {
-        newAngle = ArcTan2Deg(a, -b) + addAngle;
-        *vecX = cosf(DEGREES_TO_RADIANS_2PI(newAngle)) * c + diffX;
-        *vecY = diffY + -(sinf(DEGREES_TO_RADIANS_2PI(newAngle)) * c);
+    if (dist != 0.0f) {
+        newAngle = ArcTan2Deg(dx, -dy) + angle;
+        *pointX = cosf(DEGREES_TO_RADIANS_2PI(newAngle)) * dist + pivotX;
+        *pointY = pivotY + -(sinf(DEGREES_TO_RADIANS_2PI(newAngle)) * dist);
     }
 }
 
-void func_8002D550(f32 *arg0, f32 *arg1, f32 arg2, f32 arg3, f32 arg4) {
-    f32 temp_f12;
-    f32 *new_var;
-    f32 temp_f2;
-    f32 temp_f12_2 = CalcAngleBetween2DPoints(arg2, arg3, *arg0, *arg1);
-    temp_f2 = (*arg0) - arg2;
-    temp_f12 = (*arg1) - arg3;
-    if (SUM_OF_SQUARES(temp_f2, temp_f12) < SQ(arg4)) {
-        temp_f12_2 = DEGREES_TO_RADIANS_2PI(temp_f12_2);
-        if (temp_f12) {
-
-        }
-        *arg0 = (cosf(temp_f12_2) * arg4) + arg2;
-        *arg1 = ((-sinf(temp_f12_2)) * arg4) + arg3;
+/**
+ * @brief Pushes a 2D point out to a minimum distance from a center point.
+ *
+ * If the point is closer to the center than `radius`, it is moved outwards
+ * onto the circle of that radius, keeping its direction from the center.
+ * Points already at or beyond the radius are left alone.
+ *
+ * @param [in,out] pointX The X coordinate of the point to push.
+ * @param [in,out] pointY The Y coordinate of the point to push.
+ * @param centerX The X coordinate of the circle center.
+ * @param centerY The Y coordinate of the circle center.
+ * @param radius The minimum distance to enforce.
+ */
+void PushPointOutOfCircle(f32 *pointX, f32 *pointY, f32 centerX, f32 centerY, f32 radius) {
+    f32 dy;
+    f32 *unusedPtr; //unused, but required for match
+    f32 dx;
+    f32 angle = CalcAngleBetween2DPoints(centerX, centerY, *pointX, *pointY);
+    dx = (*pointX) - centerX;
+    dy = (*pointY) - centerY;
+    if (SUM_OF_SQUARES(dx, dy) < SQ(radius)) {
+        angle = DEGREES_TO_RADIANS_2PI(angle);
+        *pointX = (cosf(angle) * radius) + centerX;
+        *pointY = ((-sinf(angle)) * radius) + centerY;
     }
 }
 
+/**
+ * @brief Fills in a freshly claimed actor slot and runs its type-specific init.
+ *
+ * Zeroes the actor's user variables, velocities, tongue state, and general
+ * fields, stores the position and the pass-through parameters to their fields,
+ * copies the type defaults from `D_8010A6D0` (tongue scale and Y offset) and
+ * `D_8010AA28`, then dispatches to the matching `ActorInit_` function for
+ * `actorID`. Called by `Actor_Init` after it finds a free slot.
+ *
+ * @param actorIndex The slot in `gActors` to initialise.
+ * @param actorID The actor ID to spawn, from `enum actorIDs`.
+ * @param posX The X coordinate to spawn at.
+ * @param posY The Y coordinate to spawn at.
+ * @param posZ The Z coordinate to spawn at.
+ * @param arg90 The initial heading in degrees, stored to `unk_90`.
+ * @param argF4 Stored to `unk_F4`. This and the parameters after it are
+ * per-type values; see `Actor_Init` for the field each one lands in.
+ */
 void Actors_Init(s32 actorIndex, s32 actorID, f32 posX, f32 posY, f32 posZ, f32 arg90,
                   f32 argF4, f32 argF8, f32 argFC, f32 arg100, f32 arg104, f32 arg108,
                   f32 argPosition0, f32 argPosition1,
@@ -615,15 +672,53 @@ void Actors_Init(s32 actorIndex, s32 actorID, f32 posX, f32 posY, f32 posZ, f32 
     }
 }
 
-s32 Actor_Init(s32 id, f32 posX, f32 posY, f32 posZ, f32 arg4, f32 arg5, f32 arg6, f32 arg7, f32 arg8, f32 arg9, f32 argA, f32 argB, f32 argC, f32 argD, f32 argE, f32 argF, f32 arg10, f32 arg11, f32 arg12, s32 arg13, s32 arg14, s32 arg15, s32 arg16) {
+/**
+ * @brief Spawns a new actor in the first free actor slot.
+ *
+ * Searches `gActors` for a slot holding `ACTOR_NULL`, fills it in through
+ * `Actors_Init`, and increments `gActorCount`. Parameters after the position
+ * are stored to the actor field their name refers to; what each field means
+ * depends on the actor type.
+ *
+ * @param id The actor ID to spawn, from `enum actorIDs`.
+ * @param posX The X coordinate to spawn at.
+ * @param posY The Y coordinate to spawn at.
+ * @param posZ The Z coordinate to spawn at.
+ * @param arg90 The initial heading in degrees, stored to `unk_90`.
+ * @param argF4 Stored to `unk_F4`.
+ * @param argF8 Stored to `unk_F8`.
+ * @param argFC Stored to `unk_FC`.
+ * @param arg100 Stored to `unk_100`.
+ * @param arg104 Stored to `unk_104`.
+ * @param arg108 Stored to `unk_108`.
+ * @param argPosition0 Stored to `position._f32.x`.
+ * @param argPosition1 Stored to `position._f32.y`.
+ * @param arg15C Stored to `unk_15C`.
+ * @param arg160 Stored to `unk_160`.
+ * @param arg164 Stored to `unk_164`.
+ * @param arg168 Stored to `unk_168`.
+ * @param arg16C Stored to `unk_16C`.
+ * @param arg170 Stored to `unk_170`.
+ * @param arg124 Stored to `unk_124`.
+ * @param arg128 Stored to `unk_128`.
+ * @param arg12C Stored to `unk_12C`.
+ * @param arg130 Stored to `unk_130`.
+ *
+ * @return (s32) The index of the spawned actor; otherwise, it returns -1 if no slot is free.
+ */
+s32 Actor_Init(s32 id, f32 posX, f32 posY, f32 posZ, f32 arg90,
+               f32 argF4, f32 argF8, f32 argFC, f32 arg100, f32 arg104, f32 arg108,
+               f32 argPosition0, f32 argPosition1,
+               f32 arg15C, f32 arg160, f32 arg164, f32 arg168, f32 arg16C, f32 arg170,
+               s32 arg124, s32 arg128, s32 arg12C, s32 arg130) {
     s32 i;
     Actor* curActor = gActors;
 
     for (i = 0; i < ARRAY_COUNT(gActors); i++, curActor++) {
         if (curActor->actorID == ACTOR_NULL) {
-            Actors_Init(i, id, posX, posY, posZ, arg4, arg5, arg6,
-                arg7, arg8, arg9, argA, argB, argC, argD, argE, argF,
-                arg10, arg11, arg12, arg13, arg14, arg15, arg16);
+            Actors_Init(i, id, posX, posY, posZ, arg90, argF4, argF8,
+                argFC, arg100, arg104, arg108, argPosition0, argPosition1, arg15C, arg160, arg164,
+                arg168, arg16C, arg170, arg124, arg128, arg12C, arg130);
             gActorCount++;
             return i;
         }
@@ -631,11 +726,24 @@ s32 Actor_Init(s32 id, f32 posX, f32 posY, f32 posZ, f32 arg4, f32 arg5, f32 arg
     return -1;
 }
 
-// Finds a free pole slot (mode == 0), fills it in, and returns its index (-1 if the pool is full).
+/**
+ * @brief Registers a pole in the first free pole slot.
+ *
+ * Searches `Poles` for a slot whose mode is 0 (free) and fills it in with
+ * the given mode, position, and height.
+ *
+ * @param mode The pole mode to register; must not be 0, which marks a free slot.
+ * @param x The X coordinate of the pole.
+ * @param y The Y coordinate of the pole.
+ * @param z The Z coordinate of the pole.
+ * @param height The pole height, stored to `yStretch`.
+ *
+ * @return (s32) The index of the registered pole; otherwise, it returns -1 if the pool is full.
+ */
 s32 RegistPole(s32 mode, f32 x, f32 y, f32 z, f32 height) {
     s32 i;
 
-    for (i = 0; i < ARRAY_COUNT(gActors); i++) {
+    for (i = 0; i < ARRAY_COUNT(Poles); i++) {
         if (Poles[i].mode == 0) {
             Poles[i].mode = mode;
             Poles[i].pos.x = x;
@@ -982,7 +1090,69 @@ void ClearPlayerPowerups(PlayerActor* arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8002FA34.s")
 
 //
+#ifdef NON_MATCHING
+// diff score: 92 words
+s32 func_80030DCC(f32 x, f32 y, f32 z)
+{
+  Actor *actor;
+  actorSubArray *seg;
+  s32 byteI;
+  s32 byteEnd;
+  f32 actorY;
+  f32 dx;
+  f32 dz;
+  f32 range;
+  volatile unsigned short new_var2;
+  float new_var;
+  Actor *new_var3;
+  actor = gActors;
+  do
+  {
+    if ((((actor->actorID != 0) && (actor->actorID < 0x5F)) && (actor->unk_A0.unk_00 != 3)) && ((actor->actorState == 0) || (actor->actorState == 3)))
+    {
+      byteI = 0;
+      seg = actor->unknownPositionThings;
+      if (actor->tongueCollision > 0)
+      {
+        actorY = actor->pos.y;
+        do
+        {
+          byteI += 0x14;
+          if (((seg->unk_04 + (actorY + seg->unk_10)) < (y - 50.0f)) || ((y + 50.0f) < (seg->unk_04 + actorY)))
+          {
+            byteEnd = actor->tongueCollision * 0x14;
+          }
+          else
+          {
+            dx = x;
+            new_var3 = actor;
+            new_var = (seg->unk_08 + new_var3->pos.z) - z;
+            dx = (seg->unk_00 + new_var3->pos.x) - dx;
+            range = seg->unk_0C + 50.0f;
+            dz = new_var;
+            if ((range * range) < ((dx * dx) + (dz * dz)))
+            {
+              byteEnd = new_var2;
+            }
+            else
+            {
+              return 1;
+            }
+            new_var2 = new_var3->tongueCollision * 0x14;
+          }
+          seg++;
+        }
+        while (byteI < byteEnd);
+      }
+    }
+    actor++;
+  }
+  while (actor != ((Actor *) Poles));
+  return 0;
+}
+#else
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80030DCC.s")
+#endif
 
 //https://decomp.me/scratch/BeR2b
 void UpdateTongueReticle(void) {
@@ -1753,7 +1923,7 @@ void ActorTick_GreenAnt(Actor* greenAnt) {
 
     switch (greenAnt->userVariables[0]) {
     case 0:
-        func_8002D36C(&greenAnt->unk_90, greenAnt->unk_134[0], greenAnt->position._f32.y);
+        RotateAngleTowards(&greenAnt->unk_90, greenAnt->unk_134[0], greenAnt->position._f32.y);
         if (gTongueOnePointer->amountInMouth != 0) {
             greenAnt->userVariables[1]++;
         } else if (greenAnt->unk_90 == greenAnt->unk_134[0]) {
@@ -1860,12 +2030,12 @@ void ActorTick_WhiteBombSnake(Actor* bombSnake) {
     switch (bombSnake->userVariables[0]) {
     case 0:
         if (bombSnake->userVariables[2] == 0) {
-            if (func_8002D328(bombSnake->unk_90, CalcAngleBetween2DPoints(bombSnake->pos.x, bombSnake->pos.z, bombSnake->position._f32.x, bombSnake->position._f32.y)) < 0) {
+            if (IsAngleWithin90Degrees(bombSnake->unk_90, CalcAngleBetween2DPoints(bombSnake->pos.x, bombSnake->pos.z, bombSnake->position._f32.x, bombSnake->position._f32.y)) < 0) {
                 bombSnake->userVariables[0] = 1;
                 bombSnake->userVariables[2] = 1;
                 bombSnake->unk_94 = 0.0f;
             }
-        } else if (func_8002D328(bombSnake->unk_90, CalcAngleBetween2DPoints(bombSnake->pos.x, bombSnake->pos.z, bombSnake->unk_134[0], bombSnake->unk_134[1])) < 0) {
+        } else if (IsAngleWithin90Degrees(bombSnake->unk_90, CalcAngleBetween2DPoints(bombSnake->pos.x, bombSnake->pos.z, bombSnake->unk_134[0], bombSnake->unk_134[1])) < 0) {
             bombSnake->userVariables[0] = 1;
             bombSnake->userVariables[2] = 0;
             bombSnake->unk_94 = 0.0f;
@@ -1928,7 +2098,7 @@ void ActorTick_Grenade(Actor* grenade) {
         break;
     }
     if (grenade->unk_12C < grenade->globalTimer) {
-        func_8002D36C(&grenade->unk_90, angle, grenade->position._f32.y);
+        RotateAngleTowards(&grenade->unk_90, angle, grenade->position._f32.y);
     }
     Actor_PlaySound(grenade, SFX_GrenadeWalk, 10, 4);
     func_800382F4(grenade);
@@ -2915,7 +3085,60 @@ void ActorInit_FireSpitter(Actor* fireSpitter) {
     fireSpitter->userVariables[0] = fireSpitter->unk_124 - 1;
 }
 
+#ifdef NON_MATCHING
+void ActorTick_FireSpitter(Actor *fireSpitter)
+{
+  f32 dx;
+  f32 dz;
+  f32 distSq;
+  f32 fireX;
+  f32 fireY;
+  f32 fireZ;
+  s32 period;
+  s32 timer;
+  dx = fireSpitter->pos.x - gCurrentActivePlayerPointer->pos.x;
+  dz = fireSpitter->pos.z - gCurrentActivePlayerPointer->pos.z;
+  distSq = (dx * dx) + (dz * dz);
+  if (((distSq < fireSpitter->unk_164) && (fireSpitter->unk_168 < distSq)) && (gActorCount < fireSpitter->unk_130))
+  {
+    period = fireSpitter->unk_124;
+    timer = fireSpitter->userVariables[0];
+    if (timer >= (period - 0xA))
+    {
+      fireSpitter->unk_F0 = (timer - period) + 0xA;
+    }
+    else
+      if (fireSpitter->unk_F0 != 0)
+    {
+      fireSpitter->unk_F0--;
+      if (1)
+      {
+        timer = fireSpitter->userVariables[0];
+        period = fireSpitter->unk_124;
+      }
+    }
+    fireSpitter->userVariables[0] = timer + 1;
+    if (1)
+    {
+    }
+    if (fireSpitter->userVariables[0] == period)
+    {
+      fireSpitter->userVariables[0] = 0;
+      if (Actor_Init(0x3B, fireSpitter->pos.x, fireSpitter->pos.y, fireSpitter->pos.z, 0.0f, fireSpitter->unk_F4, fireSpitter->unk_F8, fireSpitter->unk_FC, fireSpitter->unk_100, fireSpitter->unk_104, fireSpitter->unk_108, fireSpitter->position._f32.x, fireSpitter->position._f32.y, fireSpitter->unk_15C, fireSpitter->unk_160, 0.0f, 0.0f, 0.0f, 0.0f, 0, fireSpitter->unk_128, fireSpitter->unk_12C, 0) != (-1))
+      {
+        fireX = fireSpitter->pos.x;
+        fireY = fireSpitter->pos.y;
+        fireZ = fireSpitter->pos.z;
+        Effect_TypeC_Init(fireX, fireY, fireZ, fireX, fireY + 300.0f, fireZ, 0xFFU, 0xFFU, 0xFFU, 0xFFU, 0x10, 0x4A);
+        PlaySoundEffect(0xAB, &fireSpitter->pos.x, &fireSpitter->pos.y, &fireSpitter->pos.z, 0, 0);
+      }
+    }
+  }
+  fireSpitter->unk_90 = CalcAngleBetween2DPoints(fireSpitter->pos.x, fireSpitter->pos.z, gCurrentActivePlayerPointer->pos.x, gCurrentActivePlayerPointer->pos.z);
+}
+#else
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_FireSpitter.s")
+#endif
 
 void ActorInit_Candles(Actor* candles) {
     ActorInit_FireSpitter(candles);
@@ -2943,7 +3166,7 @@ void ActorTick_Fire(Actor* fire) {
 
     if (fire->userVariables[0] == 0) {
         fire->unk_94 = fire->position._f32.x;
-        func_8002D36C(&fire->unk_90, angle, fire->position._f32.y);
+        RotateAngleTowards(&fire->unk_90, angle, fire->position._f32.y);
         if (fire->userVariables[1] == 0) {
             fire->userVariables[0] = 1;
             fire->userVariables[1] = Random(1, fire->unk_12C);
@@ -2952,7 +3175,7 @@ void ActorTick_Fire(Actor* fire) {
         }
     } else {
         fire->unk_94 = 0.0f;
-        func_8002D36C(&fire->unk_90, angle, fire->unk_160);
+        RotateAngleTowards(&fire->unk_90, angle, fire->unk_160);
         if (fire->userVariables[1] == 0) {
             fire->userVariables[0] = 0;
             fire->userVariables[1] = Random(1, fire->unk_128);
@@ -3071,13 +3294,13 @@ void func_80044EA4(Actor* arg0, f32 arg1) {
         seg = gActors + D_801749D8[arg0->unk_120][i];
         seg->unk_90 += arg1;
         WrapDegrees(&seg->unk_90);
-        func_8002D434(&seg->pos.x, &seg->pos.z, pivot->pos.x, pivot->pos.z, arg1);
+        RotatePointAroundPivot(&seg->pos.x, &seg->pos.z, pivot->pos.x, pivot->pos.z, arg1);
     }
-    func_8002D434(&arg0->pos.x, &arg0->pos.z, pivot->pos.x, pivot->pos.z, arg1);
+    RotatePointAroundPivot(&arg0->pos.x, &arg0->pos.z, pivot->pos.x, pivot->pos.z, arg1);
     seg = gActors + D_801749D8[1 - arg0->unk_120][0];
     seg->unk_90 += arg1;
     WrapDegrees(&seg->unk_90);
-    func_8002D434(&seg->pos.x, &seg->pos.z, pivot->pos.x, pivot->pos.z, arg1);
+    RotatePointAroundPivot(&seg->pos.x, &seg->pos.z, pivot->pos.x, pivot->pos.z, arg1);
 }
 
 
@@ -3207,7 +3430,7 @@ void ActorTick_Spider(Actor* spider) {
             gCurrentActivePlayerPointer->pos.x, gCurrentActivePlayerPointer->pos.z);
         if (spider->userVariables[0] == 0) {
             spider->unk_94 = spider->position._f32.x;
-            func_8002D36C(&spider->unk_90, angle, spider->position._f32.y);
+            RotateAngleTowards(&spider->unk_90, angle, spider->position._f32.y);
             framesLeft = spider->userVariables[1];
             if (framesLeft == 0) {
                 spider->userVariables[0] = 1;
@@ -3220,7 +3443,7 @@ void ActorTick_Spider(Actor* spider) {
             angle += Random(-0x1E, 0x1E);
             WrapDegrees(&angle);
             spider->unk_94 = 0.0f;
-            func_8002D36C(&spider->unk_90, angle, spider->unk_15C);
+            RotateAngleTowards(&spider->unk_90, angle, spider->unk_15C);
             framesLeft = spider->userVariables[1];
             if (framesLeft == 0) {
                 spider->userVariables[0] = 0;
@@ -3247,13 +3470,13 @@ void ActorTick_SpiderTrio(Actor* spiderTrio) {
     switch (spiderTrio->userVariables[0]) {
     case 0:
         if (spiderTrio->userVariables[2] == 0) {
-            if (func_8002D328(spiderTrio->unk_90, CalcAngleBetween2DPoints(spiderTrio->pos.x, spiderTrio->pos.z, spiderTrio->position._f32.x, spiderTrio->position._f32.y)) < 0) {
+            if (IsAngleWithin90Degrees(spiderTrio->unk_90, CalcAngleBetween2DPoints(spiderTrio->pos.x, spiderTrio->pos.z, spiderTrio->position._f32.x, spiderTrio->position._f32.y)) < 0) {
                 spiderTrio->userVariables[0] = 1;
                 spiderTrio->userVariables[2] = 1;
                 spiderTrio->unk_94 = 0.0f;
             }
         } else {
-            if (func_8002D328(spiderTrio->unk_90, CalcAngleBetween2DPoints(spiderTrio->pos.x, spiderTrio->pos.z, spiderTrio->unk_134[0], spiderTrio->unk_134[1])) < 0) {
+            if (IsAngleWithin90Degrees(spiderTrio->unk_90, CalcAngleBetween2DPoints(spiderTrio->pos.x, spiderTrio->pos.z, spiderTrio->unk_134[0], spiderTrio->unk_134[1])) < 0) {
                 spiderTrio->userVariables[0] = 1;
                 spiderTrio->userVariables[2] = 0;
                 spiderTrio->unk_94 = 0.0f;
@@ -3328,7 +3551,7 @@ void ActorTick_Golem(Actor* golem) {
         }
         if ((golem->unk_F0 >= 0x18U) && (golem->unk_F0 < 0x2DU)) {
             golem->unk_94 = golem->position._f32.y;
-            func_8002D36C(&golem->unk_90, ArcTan2Deg(dx, -dz), golem->unk_15C);
+            RotateAngleTowards(&golem->unk_90, ArcTan2Deg(dx, -dz), golem->unk_15C);
         } else {
             golem->unk_94 = 0.0f;
         }
@@ -3348,7 +3571,60 @@ void ActorInit_Hedgehog(Actor* hedgehog) {
     hedgehog->unk_134[2] = (f32) hedgehog->unk_90;
 }
 
+#ifdef NON_MATCHING
+// diff score: 2 words (fp coalesce at -(dz+playerZ) add)
+void ActorTick_Hedgehog(Actor *hedgehog)
+{
+  f32 dx;
+  f32 dzTemp;
+  f32 dz;
+  f32 playerX;
+  f32 playerZ;
+  playerX = gCurrentActivePlayerPointer->pos.x;
+  if ((((hedgehog->unk_F4 < playerX) && (playerX < hedgehog->unk_F8)) && (hedgehog->unk_104 < (playerZ = gCurrentActivePlayerPointer->pos.z))) && (playerZ < hedgehog->unk_108))
+  {
+    dx = playerX - hedgehog->pos.x;
+    dzTemp = playerZ - hedgehog->pos.z;
+    dz = dzTemp;
+    if (((dx * dx) + (dz * dz)) < hedgehog->unk_15C)
+    {
+      hedgehog->userVariables[0] = 1;
+    }
+    if (hedgehog->userVariables[0] != 0)
+    {
+      hedgehog->unk_94 = hedgehog->position._f32.x;
+      dx += Random((s32) (-hedgehog->unk_160), (s32) hedgehog->unk_160);
+      playerZ = Random((s32) (-hedgehog->unk_160), (s32) hedgehog->unk_160);
+      RotateAngleTowards(&hedgehog->unk_90, ArcTan2Deg(dx, -(dz + playerZ)), hedgehog->position._f32.y);
+    }
+    else
+    {
+      hedgehog->unk_94 = hedgehog->position._f32.x;
+      RotateAngleTowards(&hedgehog->unk_90, hedgehog->unk_134[2], hedgehog->position._f32.y);
+    }
+  }
+  else
+  {
+    dx = hedgehog->unk_134[0] - hedgehog->pos.x;
+    dz = hedgehog->unk_134[1] - hedgehog->pos.z;
+    if (((dx * dx) + (dz * dz)) > 2500.0f)
+    {
+      RotateAngleTowards(&hedgehog->unk_90, ArcTan2Deg(dx, -dz), hedgehog->position._f32.y);
+      hedgehog->userVariables[0] = 0;
+    }
+    else
+    {
+      hedgehog->unk_94 = 0.0f;
+      RotateAngleTowards(&hedgehog->unk_90, hedgehog->unk_134[2], hedgehog->position._f32.y);
+    }
+  }
+  Actor_PlaySound(hedgehog, 0x41, 4, 4);
+  hedgehog->unk_F0++;
+  func_800382F4(hedgehog);
+}
+#else
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_Hedgehog.s")
+#endif
 
 void ActorInit_Fish(Actor* fish) {
     fish->unk_134[0] = fish->pos.x;
@@ -3371,7 +3647,81 @@ s32 func_80047FC0(Actor* arg0, s32 arg1) {
     return temp_v0;
 }
 
+#ifdef NON_MATCHING
+void func_800480EC(Actor *butterfly)
+{
+  unk80170E68 *rec;
+  unk80170E68 *fill;
+  s32 slotIndex;
+  s32 i;
+  s32 *new_var2;
+  s32 spawned[4];
+  s32 *p;
+  s32 result;
+  s32 next;
+  unk80170E68 *new_var;
+  butterfly->userVariables[1] = butterfly->unk_124 / 5;
+  butterfly->userVariables[2] = (butterfly->unk_124 * 2) / 3;
+  if (butterfly->unk_128 == (-1))
+  {
+    rec = D_80170E68;
+    slotIndex = 0;
+    do
+    {
+      if (rec->unk_00 == 0)
+      {
+        rec->unk_00 = 1;
+        rec->unk_04 = 0;
+        butterfly->unk_128 = slotIndex;
+        break;
+      }
+      slotIndex++;
+      rec++;
+    }
+    while (slotIndex != 4);
+    if (slotIndex == 4)
+    {
+      butterfly->actorID = 0;
+      return;
+    }
+    new_var = &D_80170E68[slotIndex];
+    fill = new_var;
+    for (i = 0; i < 128; i++)
+    {
+      fill->unk_08[i] = butterfly->pos.x;
+      fill->unk_208[i] = butterfly->pos.y;
+      fill->unk_408[i] = butterfly->pos.z;
+      fill->unk_608[i] = butterfly->unk_90;
+    }
+
+    i = (butterfly->userVariables[3] = 0);
+    p = spawned;
+    do
+    {
+      next = i - -1;
+      result = func_80047FC0(butterfly, next);
+      *p = result;
+      if (result == (-1))
+      {
+        rec->unk_00 = 0;
+        new_var2 = spawned;
+        butterfly->actorID = 0;
+        for (; new_var2 < p; p++)
+        {
+          gActors[spawned[0]].actorID = 0;
+        }
+
+        return;
+      }
+      i = next;
+      p++;
+    }
+    while (next != 4);
+  }
+}
+#else
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_800480EC.s")
+#endif
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80048284.s")
 
@@ -3606,7 +3956,55 @@ void ActorInit_BattleModeFireSpawner(Actor* bmFireSpawner) {
 
 }
 
+#ifdef NON_MATCHING
+// diff score: 5 words: 3 spill-slot offset constants (uopt reserved-slot ordering, not source-reachable) + 2-word lui/addiu schedule pair
+void ActorTick_BattleModeFireSpawner(Actor *fireSpawner)
+{
+  s32 i = 0;
+  Actor *actor;
+  f32 deg;
+  f32 rad;
+  f32 cosResult;
+  f32 sinResult;
+  s32 slotUsed[62];
+  for (; i < fireSpawner->unk_124; i++)
+  {
+    if (1)
+    {
+      slotUsed[i] = 0;
+    }
+  }
+
+  actor = gActors;
+  i = ((deg * 2.0f) * 3.141592653589793) / 360.0;
+  do
+  {
+    if (actor->actorID == 0x56)
+    {
+      slotUsed[actor->unk_124] = 1;
+      rad = i;
+    }
+ do { } while (0);
+    actor++;
+  }
+  while (((u32) actor) < ((u32) Poles));
+  for (i = 0; i < fireSpawner->unk_124; i++)
+  {
+    if (slotUsed[i] == 0)
+    {
+      deg = i;
+      deg = (360.0f * deg) / fireSpawner->unk_124;
+      rad = ((deg * 2) * 3.141592653589793) / 360.0;
+      cosResult = __cosf(rad);
+      sinResult = __sinf(rad);
+      Actor_Init(0x56, (fireSpawner->position._f32.x * cosResult) + fireSpawner->pos.x, fireSpawner->pos.y, fireSpawner->pos.z - (fireSpawner->position._f32.x * sinResult), deg + 180.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, i, 0, 0, 0);
+    }
+  }
+
+}
+#else
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_BattleModeFireSpawner.s")
+#endif
 
 
 void ActorInit_BattleModeFire(Actor* bmFire) {
@@ -4009,7 +4407,53 @@ s32 func_8004C110(s32 arg0, f32 arg1, f32 arg2) {
     return actorIndex;
 }
 
+#ifdef NON_MATCHING
+s32 func_8004C1C8(PlayerActor *player)
+{
+  s32 closest;
+  s32 skip;
+  s32 i;
+  f32 bestDist;
+  f32 x;
+  f32 z;
+  s32 new_var;
+  f32 dx;
+  f32 dz;
+  skip = player->playerID;
+  closest = -1;
+  bestDist = 1e10f;
+  for (i = 0; i < 4; i++)
+  {
+    if (i != skip)
+    {
+      if (gPlayerActors[i].exists != 0)
+      {
+        new_var = gCurrentZone;
+        if ((((new_var != 4) && (new_var != 5)) && (new_var != 6)) && (new_var != 7))
+        {
+          x = player->pos.x;
+          z = player->pos.z;
+        }
+        else
+        {
+          z = (x = 0.0f);
+        }
+        dx = x - gPlayerActors[i].pos.x;
+        dz = z - gPlayerActors[i].pos.z;
+        if (((dx * dx) + (dz * dz)) < bestDist)
+        {
+          closest = i;
+          bestDist = (dx * dx) + (dz * dz);
+        }
+      }
+    }
+  }
+
+  return closest;
+}
+#else
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8004C1C8.s")
+#endif
 
 s32 func_8004C374(u16* arg0, u16* arg1, s32 arg2) {
     if ((*arg1 & arg2) == 0) {

@@ -14577,3 +14577,7 @@ GetTongueTargetDistSq = 0x8004BF88; // type:func
 SnapToBattleArenaWall = 0x8004C43C; // type:func
 UpdateRedAntTrail = 0x800397DC; // type:func
 UpdateTongueReticle = 0x80030F3C; // type:func
+IsAngleWithin90Degrees = 0x8002D328; // type:func
+RotateAngleTowards = 0x8002D36C; // type:func
+RotatePointAroundPivot = 0x8002D434; // type:func
+PushPointOutOfCircle = 0x8002D550; // type:func
