@@ -324,7 +324,7 @@ typedef struct colliderFuncStruct{
     void (*function2)(Collider*, RoomObject*);
 }colliderFuncStruct;
 extern colliderFuncStruct D_8010889C[];
-extern s32 D_801749A0;
+extern s32 gFieldFramesElapsed;
 
 void func_800B4574(u8*, s16*);                         /* extern */
 void OpenZone(s32);                          /* extern */

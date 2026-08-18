@@ -14596,3 +14596,4 @@ ResetCpuControllers = 0x8004BD7C; // type:func
 FindNearestTongueTarget = 0x8004C110; // type:func
 TryPressButton = 0x8004C374; // type:func
 SetStickToAngle = 0x8004C3A4; // type:func
+gFieldFramesElapsed = 0x801749A0;

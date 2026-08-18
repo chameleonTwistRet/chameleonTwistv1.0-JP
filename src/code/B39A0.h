@@ -7,14 +7,14 @@
 
 
 /* Functions */
-void PlaySfxPositionalPeriodicOnSurface(Collider* arg0, s32 arg1, s32 arg2);
+void PlaySfxPositionalPeriodicOnSurface(Collider* collider, s32 sfxID, s32 interval);
 
 
 /* Ext Variables */
-extern s32 D_801749A0;
-extern s32 D_801749A0;
-extern s32 D_801749A0;
-extern s32 D_801749A0;
+extern s32 gFieldFramesElapsed;
+extern s32 gFieldFramesElapsed;
+extern s32 gFieldFramesElapsed;
+extern s32 gFieldFramesElapsed;
 
 
 #endif // _B39A0_H_

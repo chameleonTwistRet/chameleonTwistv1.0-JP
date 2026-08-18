@@ -25,7 +25,7 @@ s32 D_80174990;
 f32 gCameraMinY; //death plane y?
 s32 D_80174998; //fade?
 s32 gTimer;
-s32 D_801749A0; //actor & object timer (for keeping track of deltas) (the stop watch pauses this !)
+s32 gFieldFramesElapsed; //actor & object timer (for keeping track of deltas) (the stop watch pauses this !)
 s32 D_801749A4;
 s32 gCameraInputDisabled;
 s32 Battle_GameType;
@@ -4283,11 +4283,11 @@ void UpdateLevelFlow(void) {
                 D_801749D0 = 0;
             } else {
                 gTimer--;
-                D_801749A0--;
+                gFieldFramesElapsed--;
             }
         } else if (gTimer == 200) {
             gLevelFlowState = 0;
-            D_801749A0 = gTimer = 1; //required
+            gFieldFramesElapsed = gTimer = 1; //required
             gPlayerActors->tongueYOffset = 60.0f;
         }
     }

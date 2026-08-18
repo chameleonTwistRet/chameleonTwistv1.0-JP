@@ -1509,7 +1509,7 @@ void func_800B67D8(Collider* arg0, RoomObject* arg1) {
     }
     arg0->unk_B8 = t;
     if (arg0->unk_110 >= 0) {
-        t = (D_801749A0 - arg0->unk_110) % arg0->unk_B8;
+        t = (gFieldFramesElapsed - arg0->unk_110) % arg0->unk_B8;
         kf = (PlatformKeyframe*) arg0->unk_AC;
         for (i = 0; i < arg0->unk_B0; i++, kf++) {
             if ((t >= kf->unk18) && (t < kf->unk20)) {
@@ -1546,7 +1546,7 @@ void func_800B691C(Collider* arg0) {
     sp58.y = next->position.y;
     sp58.z = next->position.z;
     t = 0.0f;
-    r = (D_801749A0 - arg0->unk_110) % arg0->unk_B8;
+    r = (gFieldFramesElapsed - arg0->unk_110) % arg0->unk_B8;
     if ((r >= kf->unk18) && (r >= kf->unk1C) && (r < kf->unk20)) {
         t = (f32) (r - kf->unk1C) / (f32) (kf->unk20 - kf->unk1C);
     }
@@ -1732,7 +1732,7 @@ void func_800B81FC(Collider* arg0) {
 
     entry = &((UnkType3*)arg0->unk_AC)[arg0->unk_B4];
     arg0->unk_120 = entry->unk_14;
-    idx = (D_801749A0 / entry->unk_08) % entry->unk_04;
+    idx = (gFieldFramesElapsed / entry->unk_08) % entry->unk_04;
     base = D_801B3178->unk8;
     arg0->collision = *(ModelCollision**)(base + entry->unk_00[idx] * 0x30 + 4);
     ComputeColliderBounds(arg0);
@@ -1803,7 +1803,7 @@ void func_800B9390(Collider* arg0) {
     f32 prev;
 
     Vec3f_Zero(&arg0->unk_3C);
-    v = __sinf(((f32)D_801749A0 * 6.283185307179586) / (f32)arg0->unk_AC) * arg0->unk_8C;
+    v = __sinf(((f32)gFieldFramesElapsed * 6.283185307179586) / (f32)arg0->unk_AC) * arg0->unk_8C;
     if (arg0->unk_5C == 1) {
         v = -v;
     }
@@ -1898,7 +1898,7 @@ void UpdateDamageHazard(Collider* arg0) {
     p1 = arg0->unk_B0 + p0;
     p2 = arg0->unk_B4 + p1;
     period = arg0->unk_B8 + p2;
-    clock = (D_801749A0 - arg0->unk_110) % period;
+    clock = (gFieldFramesElapsed - arg0->unk_110) % period;
     if (clock == 0) {
         arg0->unkA4 = 1.0f;
     }
@@ -2367,7 +2367,7 @@ void func_800BD2AC(Collider* arg0) {
             arg0->unk_B4 = 0;
             arg0->unk_BC = 1;
             arg0->unk_C0 = 0;
-            frame = D_801749A0;
+            frame = gFieldFramesElapsed;
             arg0->unkC8 = frame;
         }
         break;
@@ -3328,7 +3328,7 @@ void MoveField(void) {
                 if ((temp_v0_2 == 5) && (temp_s1->unk_AC < 0) && (temp_s1->unk_B4 < 0)) {
                     var_s0 = 5;
                 } else if ((IsntNegative(temp_s1->unk10C) != 0) && (func_800B34D0(temp_s1->unk10C) != 0)) {
-                    temp_s1->unk_110 = D_801749A0;
+                    temp_s1->unk_110 = gFieldFramesElapsed;
                 } else {
                     var_s0 = 0;
                 }
