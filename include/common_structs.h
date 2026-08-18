@@ -215,7 +215,7 @@ typedef struct ModelCollision{
 } ModelCollision;
 
 
-typedef struct Collider {
+typedef struct FieldObject {
 /* 0x000 */ s32 unk_00;
 /* 0x004 */ s32 unk_04;
 /* 0x008 */ s32 unk_08;
@@ -227,7 +227,7 @@ typedef struct Collider {
 /* 0x030 */ Vec3f unk_30;
 /* 0x03C */ Vec3f unk_3C;
 /* 0x048 */ f32 unk_48;
-/* 0x04C */ struct Collider* unk_4C;
+/* 0x04C */ struct FieldObject* unk_4C;
 /* 0x050 */ f32 unk_50;
 /* 0x054 */ f32 unk_54;
 /* 0x058 */ f32 unk_58;
@@ -261,7 +261,7 @@ typedef struct Collider {
 /* 0x0EC */ Gfx* gfx;
 /* 0x0F0 */ char padF0[4];
 /* 0x0F4 */ void* unkF4;                        /* inferred */
-/* 0x0F8 */ void (*function)(struct Collider*);
+/* 0x0F8 */ void (*function)(struct FieldObject*);
 /* 0x0FC */ void* unk_FC;
 /* 0x100 */ void* unk_100;
 /* 0x104 */ char pad104[8];                     /* maybe part of unk_100[3]? */
@@ -274,7 +274,7 @@ typedef struct Collider {
 /* 0x124 */ s32 unk_124;
 /* 0x128 */ s32 unk_128;
 /* 0x12C */ s32 unk_12C;                        /* surface friction class; indexes D_80108F90 */
-} Collider;                                         /* size = 0x130 */
+} FieldObject;                                         /* size = 0x130 */
 
 typedef struct unkSpriteStruct {
 /* 0x000 */ s32 unk_00;
@@ -290,7 +290,7 @@ typedef struct unkSpriteStruct {
 /* 0x030 */ Vec3f unk_30;
 /* 0x03C */ Vec3f unk_3C;
 /* 0x048 */ f32 unk_48;
-/* 0x04C */ struct Collider* unk_4C;
+/* 0x04C */ struct FieldObject* unk_4C;
 /* 0x050 */ f32 unk_50;
 /* 0x054 */ f32 unk_54;
 /* 0x058 */ f32 unk_58;
@@ -353,8 +353,8 @@ typedef struct RoomObject {
     //so for now, they are void* to avoid a million warnings
 /* 0x60 */ void* func1;
 /* 0x64 */ void* func2;
-    // void (*func1)(struct Collider*, struct RoomObject*);
-    // void (*func2)(struct Collider*);
+    // void (*func1)(struct FieldObject*, struct RoomObject*);
+    // void (*func2)(struct FieldObject*);
 /* 0x68 */ s32 unk68;
 /* 0x6C */ s32 unk6C;
 /* 0x70 */ s32 unk70;

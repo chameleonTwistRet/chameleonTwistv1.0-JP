@@ -110,7 +110,7 @@ UnkData D_80108A5C[] = {
     {0, 1.0f, 0.0f, 0.0f}
 };
 
-void func_800AF9D0(Collider* arg0, RoomObject* arg1) {
+void func_800AF9D0(FieldObject* arg0, RoomObject* arg1) {
     arg0->unk_5C = 2;
     D_80201910 = 0.0f;
     D_80201920 = DEGREES_TO_RADIANS_PI(arg1->unk28);
@@ -139,7 +139,7 @@ void func_800AF9D0(Collider* arg0, RoomObject* arg1) {
     D_802023D4 = -1;
 }
 
-void func_800AFB2C(Collider* arg0, RoomObject* arg1) {
+void func_800AFB2C(FieldObject* arg0, RoomObject* arg1) {
     arg0->unk_5C = 2;
     arg0->unkA4 = 0;
     SetColliderFlag(arg0, 0, 2);
@@ -151,7 +151,7 @@ void func_800AFB2C(Collider* arg0, RoomObject* arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/MoveTheater.s")
 
-void func_800B06B0(Collider* arg0) {
+void func_800B06B0(FieldObject* arg0) {
     Vec3f coord;
     if ((D_80201964 == 1) && (arg0->unkC8 == 1) && (arg0->unk_110 < 0) && (arg0->unkA4 == 0)) {
         coord.x = arg0->unk_4C->sfxPos.x + arg0->unk_30.x;
@@ -193,7 +193,7 @@ s32 func_800B07E4(void) {
     return count;
 }
 
-void func_800B088C(Collider* arg0, RoomObject* arg1) {
+void func_800B088C(FieldObject* arg0, RoomObject* arg1) {
     arg0->unk_AC = arg1->keyframes.temp;
     arg0->unk_B0 = arg1->numKeyframes;
     arg0->unk_B4 = 0;
@@ -201,7 +201,7 @@ void func_800B088C(Collider* arg0, RoomObject* arg1) {
     func_800B35FC(arg0->unk_AC);
 }
 
-void func_800B08C8(Collider* arg0) {
+void func_800B08C8(FieldObject* arg0) {
     s32 shotActors;
 
     switch (arg0->unk_B4) {
@@ -237,11 +237,11 @@ void func_800B08C8(Collider* arg0) {
     }
 }
 
-void func_800B09C0(Collider* arg0, RoomObject* arg1) {
+void func_800B09C0(FieldObject* arg0, RoomObject* arg1) {
     func_800B56D4(arg1->unk28, arg1->unk2C);
 }
 
-void func_800B09E8(Collider* arg0, RoomObject* arg1) {
+void func_800B09E8(FieldObject* arg0, RoomObject* arg1) {
     arg0->unk_AC = arg1->keyframes.temp;
     if (func_800B34D0(arg0->unk_AC) != 0) {
         arg0->unk_B0 = 0;
@@ -251,7 +251,7 @@ void func_800B09E8(Collider* arg0, RoomObject* arg1) {
 }
 
 //inits black?
-void func_800B0A30(Collider* arg0, RoomObject* arg1) {
+void func_800B0A30(FieldObject* arg0, RoomObject* arg1) {
     gPlayerActors[1].active = gPlayerActors[1].exists = 1;
 
     gSelectedCharacters[1] = CHARA_BLACK;
@@ -263,14 +263,14 @@ void func_800B0A30(Collider* arg0, RoomObject* arg1) {
     }
 }
 
-void func_800B0AA4(Collider* collider) {
-    switch (collider->unk_AC) {
+void func_800B0AA4(FieldObject* fieldObject) {
+    switch (fieldObject->unk_AC) {
     case 0:
         if (!gPlayerActors[1].exists) {
             func_800B4FCC();
             func_800B40FC();
-            func_800B35B0(collider->unk_B0);
-            collider->unk_AC = 2;
+            func_800B35B0(fieldObject->unk_B0);
+            fieldObject->unk_AC = 2;
         }
         //why even have case 1 or 2 at that point?? nulled code???
     case 1:
@@ -280,19 +280,19 @@ void func_800B0AA4(Collider* collider) {
 }
 
 // Randomizes the positions of a paired group of sibling colliders (a shuffle puzzle).
-// Two parallel groups (groupA/groupB) are gathered from the collider pool by walking back
-// from this collider's index. If the control switch (unk_B4) is set, every groupA member is
+// Two parallel groups (groupA/groupB) are gathered from the fieldObject pool by walking back
+// from this fieldObject's index. If the control switch (unk_B4) is set, every groupA member is
 // given the shared "solved" model gfx. Otherwise it snapshots each member's position, builds
 // a shuffled index list (100 random swaps), and writes the shuffled positions back, notifying
-// each collider (SetColliderFlag(_, 4, 1)).
+// each fieldObject (SetColliderFlag(_, 4, 1)).
 //
 // diff is a whole-function register-number shift
 // (arg0 lands in s5 vs the target's s6) that the permuter could not break in 73k iterations.
 // diff score ~313
 #ifdef NON_MATCHING
-void func_800B0B20(Collider* arg0, RoomObject* arg1) {
-    Collider* groupB[25];
-    Collider* groupA[25];
+void func_800B0B20(FieldObject* arg0, RoomObject* arg1) {
+    FieldObject* groupB[25];
+    FieldObject* groupA[25];
     Vec3f posB[25];
     Vec3f posA[25];
     s32 order[25];
@@ -350,9 +350,9 @@ void func_800B0B20(Collider* arg0, RoomObject* arg1) {
 
 //deals with "shutters"
 //very literal. manages the grenade shutters in Bomb Land
-void RegistShutter(Collider* arg0, RoomObject* arg1) {
-    Collider* realCollider;
-    Collider** colliderArray;
+void RegistShutter(FieldObject* arg0, RoomObject* arg1) {
+    FieldObject* realCollider;
+    FieldObject** colliderArray;
     s32 i;
 
     arg0->unk_8C = arg1->unk28;
@@ -389,7 +389,7 @@ void RegistShutter(Collider* arg0, RoomObject* arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B1538.s")
 
-void func_800B1DA0(Collider* arg0, s32 arg1) {
+void func_800B1DA0(FieldObject* arg0, s32 arg1) {
     func_800B5D68(arg0, 2);
     arg0->unk_8C = 0.0f;
 }
@@ -427,13 +427,13 @@ void func_800B2070(s32 arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B2070.s")
 #endif
 
-void func_800B2144(Collider* arg0, unkStruct14* arg1) {
+void func_800B2144(FieldObject* arg0, unkStruct14* arg1) {
     arg0->unk_AC = arg1->unk_38;
     func_800B35FC(arg0->unk_AC);
 }
 
 // If there are no billiards balls left, call func_800B35B0
-void func_800B216C(Collider* arg0) {
+void func_800B216C(FieldObject* arg0) {
     Actor* actorList;
     s32 ballCount = 0;
     s32 i;
@@ -599,7 +599,7 @@ s32 func_800B2510(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B255C.s")
 
 Vec3f* func_800B2AB4(Vec3f* arg0, Vec3f arg1, s32* arg4) { //TODO: fix arg4 type
-    Collider* temp = &D_80236980[arg4[1]];
+    FieldObject* temp = &D_80236980[arg4[1]];
     Vec3f sp20;
 
     func_800B255C(&sp20, arg1, temp);
@@ -610,8 +610,8 @@ Vec3f* func_800B2AB4(Vec3f* arg0, Vec3f arg1, s32* arg4) { //TODO: fix arg4 type
 s32 func_800B2B50(s32 arg0, s32 arg1) {
     s32 ret = -1;
     s32 i;
-    Collider** temp;
-    Collider* temp2;
+    FieldObject** temp;
+    FieldObject* temp2;
 
     for (i = 0, temp = &D_80240898; i < gFieldCount; i++, temp++) {
         temp2 = *temp;
@@ -732,8 +732,8 @@ f32 MaxXZRadius(f32 a, f32 b, f32 c, f32 d) {
 
 void RefreshColliderBounds(s32 arg0) {
     s32 i;
-    Collider** temp_s0;
-    Collider* unkSpritePtr;
+    FieldObject** temp_s0;
+    FieldObject* unkSpritePtr;
 
     for (i = 0, temp_s0 = &D_80240898; i < gFieldCount; i++, temp_s0++) {
         unkSpritePtr = *temp_s0;
@@ -1074,14 +1074,14 @@ s32 GetSpriteActCount(SpriteActor* sprite) {
 }
 
 //TODO: fix this
-s32 GetColliderFlag(Collider *arg0, s32 arg1) {
+s32 GetColliderFlag(FieldObject *arg0, s32 arg1) {
     Vec3w* new_var = &gColliderFlagTable[arg1];
     int new_var2 = arg0->unk_14 & new_var->y;
 
     return new_var2 >> (*new_var).z;
 }
 
-void SetColliderFlag(Collider* arg0, s32 arg1, s32 arg2) {
+void SetColliderFlag(FieldObject* arg0, s32 arg1, s32 arg2) {
     Vec3w* entry = &gColliderFlagTable[arg1];
     s32 mask;
 
@@ -1092,7 +1092,7 @@ void SetColliderFlag(Collider* arg0, s32 arg1, s32 arg2) {
     arg0->unk_14 |= arg2;
 }
 
-void func_800B4070(Collider* arg0) {
+void func_800B4070(FieldObject* arg0) {
     s32 var_a2;
 
     if ((arg0->unk_4C != 0) && (GetColliderFlag(arg0->unk_4C, 4) == 1)) {
@@ -1363,9 +1363,9 @@ s32 func_800B5878(Rect3D* arg0) {
     return flag;
 }
 
-s32 func_800B5908(Collider* collider, f32 yMod) {
+s32 func_800B5908(FieldObject* fieldObject, f32 yMod) {
     s32 flag, i;
-    Rect3D rect = collider->unk_CC;
+    Rect3D rect = fieldObject->unk_CC;
 
     rect.min.y = rect.max.y;
     rect.max.y += yMod;
@@ -1397,7 +1397,7 @@ void func_800B59F4(s32* arg0, s32 lo, s32 hi) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B5C60.s")
 
-void func_800B5D68(Collider* arg0, s32 arg1) {
+void func_800B5D68(FieldObject* arg0, s32 arg1) {
     SetColliderFlag(arg0, 0, arg1);
     if (arg0->unk_5C != 0) {
         SetColliderFlag(arg0, 1, 1);
@@ -1411,7 +1411,7 @@ void func_800B5D68(Collider* arg0, s32 arg1) {
     }
 }
 
-void func_800B5E40(Collider* arg0, RoomObject* arg1) {
+void func_800B5E40(FieldObject* arg0, RoomObject* arg1) {
     SetColliderFlag(arg0, 0, 1);
     if (arg0->unk_5C != 0) {
         SetColliderFlag(arg0, 1, 1);
@@ -1426,25 +1426,25 @@ void func_800B5E40(Collider* arg0, RoomObject* arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B5ED0.s")
 
-void func_800B602C(Collider* arg0, s32 arg1) {
+void func_800B602C(FieldObject* arg0, s32 arg1) {
     arg0->unk_AC = arg1 - 60;
     arg0->unk_B0 = 1;
 }
 
-void func_800B6040(Collider* arg0) {
+void func_800B6040(FieldObject* arg0) {
     arg0->unk_AC = 60;
     arg0->unk_B0 = 2;
 }
 
-void RegisterStaticMesh(Collider* arg0, RoomObject* arg1) {
+void RegisterStaticMesh(FieldObject* arg0, RoomObject* arg1) {
     func_800B5D68(arg0, 1);
 }
 
-void UpdateStaticMesh(Collider* arg0) {
+void UpdateStaticMesh(FieldObject* arg0) {
     Vec3f_Zero(&arg0->unk_3C);
 }
 
-void RegisterTwoPointMover(Collider* arg0, RoomObject* arg1) {
+void RegisterTwoPointMover(FieldObject* arg0, RoomObject* arg1) {
     s32 b4;
     func_800B5D68(arg0, 2);
     arg0->unk_8C = arg0->unk_30.x;
@@ -1486,7 +1486,7 @@ void RegisterTwoPointMover(Collider* arg0, RoomObject* arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/MoveTwoPointMover.s")
 
-void func_800B67D8(Collider* arg0, RoomObject* arg1) {
+void func_800B67D8(FieldObject* arg0, RoomObject* arg1) {
     PlatformKeyframe* kf;
     s32 t;
     s32 i;
@@ -1522,7 +1522,7 @@ void func_800B67D8(Collider* arg0, RoomObject* arg1) {
     }
 }
 
-void func_800B691C(Collider* arg0) {
+void func_800B691C(FieldObject* arg0) {
     PlatformKeyframe* kf;
     PlatformKeyframe* next;
     Vec3f sp64;
@@ -1563,15 +1563,15 @@ void func_800B691C(Collider* arg0) {
     }
 }
 
-void RegisterScriptedBehaviour(Collider* arg0, RoomObject* arg1) {
-    void (*registerFunc)(Collider*, RoomObject*) = (void (*)(Collider*, RoomObject*)) arg1->keyframes.temp;
-    s32 tickFunc = arg1->numKeyframes;
+void RegisterScriptedBehaviour(FieldObject* fieldObject, RoomObject* roomObject) {
+    void (*registerFunc)(FieldObject*, RoomObject*) = (void (*)(FieldObject*, RoomObject*)) roomObject->keyframes.temp;
+    s32 tickFunc = roomObject->numKeyframes;
 
-    registerFunc(arg0, arg1);
-    arg0->function = (void (*)(Collider*)) tickFunc;
+    registerFunc(fieldObject, roomObject);
+    fieldObject->function = (void (*)(FieldObject*)) tickFunc;
 }
 
-void RegisterRotatingPlatform(Collider* arg0, RoomObject* arg1) {
+void RegisterRotatingPlatform(FieldObject* arg0, RoomObject* arg1) {
     SetColliderFlag(arg0, 0, 0);
     SetColliderFlag(arg0, 1, 2);
     if (arg0->unk_50 != 1.0 || arg0->unk_54 != 1.0 || arg0->unk_58 != 1.0) {
@@ -1583,7 +1583,7 @@ void RegisterRotatingPlatform(Collider* arg0, RoomObject* arg1) {
 }
 
 // MOVE: rotating platform. Advance angle by speed (unless paused), wrap into [0, 2*PI).
-void UpdateRotatingPlatform(Collider* arg0) {
+void UpdateRotatingPlatform(FieldObject* arg0) {
     f32 angle;
 
     Vec3f_Zero(&arg0->unk_3C);
@@ -1598,20 +1598,20 @@ void UpdateRotatingPlatform(Collider* arg0) {
     }
 }
 
-void func_800B6CD8(Collider* arg0, RoomObject* arg1) {
+void func_800B6CD8(FieldObject* arg0, RoomObject* arg1) {
     func_800B5D68(arg0, 1);
     arg0->unk_8C = arg1->unk28;
     arg0->unk_90 = arg1->unk2C;
     arg0->unk_94 = arg1->unk30;
 }
 
-void func_800B6D24(Collider* arg0) {
+void func_800B6D24(FieldObject* arg0) {
     Vec3f_Zero(&arg0->unk_3C);
 }
 
 // score 70
 #ifdef NON_MATCHING
-void RegisterKeyframePlatform(Collider* arg0, RoomObject* arg1) {
+void RegisterKeyframePlatform(FieldObject* arg0, RoomObject* arg1) {
     PlatformKeyframe* kf;
     s32 clock;
     s32 i;
@@ -1645,7 +1645,7 @@ void RegisterKeyframePlatform(Collider* arg0, RoomObject* arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/MoveKeyframePlatform.s")
 
-void func_800B7208(Collider* arg0, RoomObject* arg1) {
+void func_800B7208(FieldObject* arg0, RoomObject* arg1) {
     f32 y0;
     f32 y1;
 
@@ -1684,7 +1684,7 @@ void func_800B7208(Collider* arg0, RoomObject* arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B7328.s")
 
-void func_800B7860(Collider* arg0, RoomObject* arg1) {
+void func_800B7860(FieldObject* arg0, RoomObject* arg1) {
     func_800B5D68(arg0, 2);
     arg0->unk_8C = arg0->unk_30.x;
     arg0->unk_90 = arg0->unk_30.y;
@@ -1707,7 +1707,7 @@ void func_800B7860(Collider* arg0, RoomObject* arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B80A8.s")
 
-void func_800B81B4(Collider* arg0, RoomObject* arg1) {
+void func_800B81B4(FieldObject* arg0, RoomObject* arg1) {
     func_800B5D68(arg0, 1);
     arg0->unk_AC = arg1->keyframes.temp;
     arg0->unk_B0 = arg1->numKeyframes;
@@ -1716,12 +1716,12 @@ void func_800B81B4(Collider* arg0, RoomObject* arg1) {
 }
 
 // MOVE hook for behaviour 0xD: a model-swapping (animated-mesh) platform.
-// Collider::unk_AC is the UnkType3[] keyframe table registered by func_800B81B4,
+// FieldObject::unk_AC is the UnkType3[] keyframe table registered by func_800B81B4,
 // unk_B0 its length, unk_B4 the current keyframe index and unk_B8 the tick counter
 // within that keyframe.
 #ifdef NON_MATCHING
 // best score 255
-void func_800B81FC(Collider* arg0) {
+void func_800B81FC(FieldObject* arg0) {
     s32 flag;
     UnkType3* entry;
     Vec3f unused;
@@ -1777,7 +1777,7 @@ void func_800B81FC(Collider* arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B9078.s")
 
 #ifdef NON_MATCHING
-void func_800B9298(Collider* arg0, RoomObject* arg1) {
+void func_800B9298(FieldObject* arg0, RoomObject* arg1) {
     SetColliderFlag(arg0, 0, 0);
     SetColliderFlag(arg0, 1, 2);
     if (arg0->unk_50 != 1.0 || arg0->unk_54 != 1.0 || arg0->unk_58 != 1.0) {
@@ -1798,7 +1798,7 @@ void func_800B9298(Collider* arg0, RoomObject* arg1) {
 // Stores the new angle in unk60 and this frame's delta in unk64.
 // scores 90
 #ifdef NON_MATCHING
-void func_800B9390(Collider* arg0) {
+void func_800B9390(FieldObject* arg0) {
     f32 v;
     f32 prev;
 
@@ -1816,8 +1816,8 @@ void func_800B9390(Collider* arg0) {
 #endif
 
 #ifdef NON_MATCHING
-void func_800B942C(Collider* arg0, RoomObject* arg1) {
-    Collider* parent;
+void func_800B942C(FieldObject* arg0, RoomObject* arg1) {
+    FieldObject* parent;
     f32 x;
     f32 y;
     f32 d;
@@ -1854,7 +1854,7 @@ void func_800B942C(Collider* arg0, RoomObject* arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B9514.s")
 
-void RegisterDamageHazard(Collider* arg0, RoomObject* arg1) {
+void RegisterDamageHazard(FieldObject* arg0, RoomObject* arg1) {
     func_800B5D68(arg0, 2);
     arg0->unk_8C = arg0->unk_30.x;
     arg0->unk_90 = arg0->unk_30.y;
@@ -1877,7 +1877,7 @@ void RegisterDamageHazard(Collider* arg0, RoomObject* arg1) {
 // the platform (expanded, player-relative bounds), it follows the grab instead. Plays transition
 // sfx (0x8C start-move / 0x8D arrive / 0x8E grab).
 #ifdef NON_MATCHING
-void UpdateDamageHazard(Collider* arg0) {
+void UpdateDamageHazard(FieldObject* arg0) {
     Rect3D box;
     Vec3f segPos;
     Rect3D* bounds;
@@ -2007,7 +2007,7 @@ void UpdateDamageHazard(Collider* arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/UpdateDamageHazard.s")
 #endif
 
-void func_800B9E8C(Collider* arg0, RoomObject* arg1) {
+void func_800B9E8C(FieldObject* arg0, RoomObject* arg1) {
     SetColliderFlag(arg0, 0, 2);
     SetColliderFlag(arg0, 1, 0);
     arg0->unk_5C = 0;
@@ -2032,7 +2032,7 @@ void func_800B9E8C(Collider* arg0, RoomObject* arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B9FA8.s")
 
-void func_800BA2D0(Collider* arg0, RoomObject* arg1) {
+void func_800BA2D0(FieldObject* arg0, RoomObject* arg1) {
     func_800B5D68(arg0, 2);
     arg0->unk_8C = arg0->unk_30.x;
     arg0->unk_90 = arg0->unk_30.y;
@@ -2050,7 +2050,7 @@ void func_800BA2D0(Collider* arg0, RoomObject* arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BA35C.s")
 
-void func_800BA89C(Collider* arg0, RoomObject* arg1) {
+void func_800BA89C(FieldObject* arg0, RoomObject* arg1) {
     func_800B5D68(arg0, 1);
     arg0->unk_8C = arg1->unk28;
     arg0->unk_90 = arg1->unk2C;
@@ -2060,7 +2060,7 @@ void func_800BA89C(Collider* arg0, RoomObject* arg1) {
     arg0->unk_114 = 16;
 }
 
-void func_800BA900(Collider* arg0) {
+void func_800BA900(FieldObject* arg0) {
     Vec3f_Zero(&arg0->unk_3C);
     func_800B5C60(arg0);
 }
@@ -2073,7 +2073,7 @@ void func_800BA900(Collider* arg0) {
 
 // score 40
 #ifdef NON_MATCHING
-s32 func_800BAFA4(PlayerActor* player, Collider* arg1) {
+s32 func_800BAFA4(PlayerActor* player, FieldObject* arg1) {
     s32 n = arg1->unk_B4;
     f32 cellW = (arg1->unk_CC.max.x - arg1->unk_CC.min.x) / (f32)n;
     f32 cellD = (arg1->unk_CC.max.z - arg1->unk_CC.min.z) / (f32)n;
@@ -2087,7 +2087,7 @@ s32 func_800BAFA4(PlayerActor* player, Collider* arg1) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BAFA4.s")
 #endif
 
-void func_800BB038(Collider* arg0, RoomObject* arg1) {
+void func_800BB038(FieldObject* arg0, RoomObject* arg1) {
     SetColliderFlag(arg0, 0, 0);
     SetColliderFlag(arg0, 1, 2);
     if (arg0->unk_50 != 1.0 || arg0->unk_54 != 1.0 || arg0->unk_58 != 1.0) {
@@ -2112,7 +2112,7 @@ void func_800BB038(Collider* arg0, RoomObject* arg1) {
 
 // score 30
 #ifdef NON_MATCHING
-void func_800BB254(Collider* arg0, RoomObject* arg1) {
+void func_800BB254(FieldObject* arg0, RoomObject* arg1) {
     f32 x1;
     f32 x0;
 
@@ -2150,7 +2150,7 @@ void func_800BB254(Collider* arg0, RoomObject* arg1) {
 
 // NON_MATCHING: 8 instructions differ by register number only
 #ifdef NON_MATCHING
-s32 func_800BB354(Collider* arg0) {
+s32 func_800BB354(FieldObject* arg0) {
     s32 i;
     Actor* actor;
     Rect3D rect;
@@ -2192,7 +2192,7 @@ s32 func_800BB354(Collider* arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BB4A8.s")
 
-void func_800BB5DC(Collider* arg0) {
+void func_800BB5DC(FieldObject* arg0) {
     Vec3f_Zero(&arg0->unk_3C);
     arg0->unk_B0 += 1;
     if (arg0->unk_B0 >= arg0->unk_B4) {
@@ -2206,7 +2206,7 @@ void func_800BB5DC(Collider* arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BB64C.s")
 
-void func_800BB988(Collider* arg0, RoomObject* arg1) {
+void func_800BB988(FieldObject* arg0, RoomObject* arg1) {
     SetColliderFlag(arg0, 0, 0);
     SetColliderFlag(arg0, 1, 2);
     if (arg0->unk_50 != 1.0 || arg0->unk_54 != 1.0 || arg0->unk_58 != 1.0) {
@@ -2221,7 +2221,7 @@ void func_800BB988(Collider* arg0, RoomObject* arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BBA80.s")
 
-void func_800BBC88(Collider* arg0, RoomObject* arg1) {
+void func_800BBC88(FieldObject* arg0, RoomObject* arg1) {
     func_800B5D68(arg0, 2);
     arg0->unk_8C = arg0->unk_30.x;
     arg0->unk_90 = arg0->unk_30.y;
@@ -2232,7 +2232,7 @@ void func_800BBC88(Collider* arg0, RoomObject* arg1) {
     arg0->unk_C0 = 0;
 }
 
-void func_800BBCE4(Collider* arg0) {
+void func_800BBCE4(FieldObject* arg0) {
     Vec3f sp94;
     Vec3f sp88;
     Vec3f sp7C;
@@ -2293,7 +2293,7 @@ void func_800BBCE4(Collider* arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BC284.s")
 
-void func_800BCC04(Collider* arg0, RoomObject* arg1) {
+void func_800BCC04(FieldObject* arg0, RoomObject* arg1) {
     ModelCollision* model;
 
     func_800B5D68(arg0, 2);
@@ -2318,7 +2318,7 @@ void func_800BCC04(Collider* arg0, RoomObject* arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BCD10.s")
 
-void func_800BD1EC(Collider* arg0, RoomObject* arg1) {
+void func_800BD1EC(FieldObject* arg0, RoomObject* arg1) {
     PlatformKeyframe* kf;
     s32 t;
     s32 i;
@@ -2349,7 +2349,7 @@ void func_800BD1EC(Collider* arg0, RoomObject* arg1) {
 
 #ifdef NON_MATCHING
 // best score 210
-void func_800BD2AC(Collider* arg0) {
+void func_800BD2AC(FieldObject* arg0) {
     PlatformKeyframe* kf;
     PlatformKeyframe* next;
     Vec3f sp74;
@@ -2427,7 +2427,7 @@ void func_800BD2AC(Collider* arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BD2AC.s")
 #endif
 
-void func_800BD55C(Collider* arg0, RoomObject* arg1) {
+void func_800BD55C(FieldObject* arg0, RoomObject* arg1) {
     func_800B5D68(arg0, 1);
     arg0->unk_8C = arg1->unk28;
     arg0->unk_90 = arg1->unk2C;
@@ -2440,13 +2440,13 @@ void func_800BD55C(Collider* arg0, RoomObject* arg1) {
     func_800B5A98(arg0, arg1);
 }
 
-void func_800BD608(Collider* arg0) {
+void func_800BD608(FieldObject* arg0) {
     Vec3f_Zero(&arg0->unk_3C);
     func_800B5C60(arg0);
 }
 
 
-Vec3f* PlaceChildAtRotatedOffset(Vec3f* out, Collider* arg1) {
+Vec3f* PlaceChildAtRotatedOffset(Vec3f* out, FieldObject* arg1) {
     Vec3f sp34;
     Vec3f sp28;
 
@@ -2465,7 +2465,7 @@ Vec3f* PlaceChildAtRotatedOffset(Vec3f* out, Collider* arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BD938.s")
 
-void func_800BDF2C(Collider* arg0, RoomObject* arg1) {
+void func_800BDF2C(FieldObject* arg0, RoomObject* arg1) {
     SetColliderFlag(arg0, 0, 2);
     SetColliderFlag(arg0, 1, 2);
     if (arg0->unk_50 != 1.0 || arg0->unk_54 != 1.0 || arg0->unk_58 != 1.0) {
@@ -2478,7 +2478,7 @@ void func_800BDF2C(Collider* arg0, RoomObject* arg1) {
     arg0->unk_94 = arg0->unk_30.z;
 }
 
-void MoveOrbitChild(Collider* arg0) {
+void MoveOrbitChild(FieldObject* arg0) {
     Vec3f sp2C;
 
     sp2C.x = arg0->unk_8C;
@@ -2493,7 +2493,7 @@ void MoveOrbitChild(Collider* arg0) {
     arg0->unk64 = arg0->unk_4C->unk64;
 }
 
-void func_800BE0D4(Collider* arg0, RoomObject* arg1) {
+void func_800BE0D4(FieldObject* arg0, RoomObject* arg1) {
     SetColliderFlag(arg0, 0, 0);
     SetColliderFlag(arg0, 1, 2);
     if (arg0->unk_50 != 1.0 || arg0->unk_54 != 1.0 || arg0->unk_58 != 1.0) {
@@ -2507,8 +2507,8 @@ void func_800BE0D4(Collider* arg0, RoomObject* arg1) {
 
 // score 70
 #ifdef NON_MATCHING
-void func_800BE1C4(Collider* arg0) {
-    Collider* parent = arg0->unk_4C;
+void func_800BE1C4(FieldObject* arg0) {
+    FieldObject* parent = arg0->unk_4C;
     f32 amp = (parent->unkC8 * 0.942477796076937935) / 40.0;
     f32 v = __sinf(arg0->unk_8C + parent->unkA8) * (arg0->unk_90 * amp);
 
@@ -2681,11 +2681,11 @@ void func_800BE7BC(void) {
 
 // Best Guess: Fills the two free-pool pointer stacks that RegistField/RegistSwitchArea pop from.
 void InitFieldPools(void) {
-    Collider** fieldSlot;
+    FieldObject** fieldSlot;
     SwitchArea** areaSlot;
     s32 i;
 
-    for (i = 0, fieldSlot = (Collider**)&D_80240C98[0]; i < 128; i++) {
+    for (i = 0, fieldSlot = (FieldObject**)&D_80240C98[0]; i < 128; i++) {
         *--fieldSlot = &D_80236980[i];
     }
 
@@ -2694,7 +2694,7 @@ void InitFieldPools(void) {
     }
 }
 
-void func_800BE87C(Collider* arg0, RoomObject* arg1, void* arg2, s32 arg3) {
+void func_800BE87C(FieldObject* arg0, RoomObject* arg1, void* arg2, s32 arg3) {
     arg0->unk_0C = 7;
     arg0->unk_50 = arg1->scale.x;
     arg0->unk_54 = arg1->scale.y;
@@ -2709,13 +2709,13 @@ void func_800BE87C(Collider* arg0, RoomObject* arg1, void* arg2, s32 arg3) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BEF6C.s")
 
-// EraseField: despawn one collider from the live field. The pointer table at D_80240898 holds
+// EraseField: despawn one fieldObject from the live field. The pointer table at D_80240898 holds
 // 0x100 slots: the gFieldCount live entries are packed at the bottom, and released colliders are
 // pushed onto a free stack that grows downward from the top (slot 0x100 - gFieldCount, which the
-// linker resolves through the following symbol D_80240C98). The collider is located by a linear
+// linker resolves through the following symbol D_80240C98). The fieldObject is located by a linear
 // scan, its pole slot is released if it owns one (unk_124 set -> Poles[unk_128].mode = 0), the
 // last live entry is moved into the hole, and gFieldCount drops by one.
-void EraseField(Collider* target) {
+void EraseField(FieldObject* target) {
     s32 i;
 
     for (i = 0; i < gFieldCount; i++) {
@@ -2736,7 +2736,7 @@ void EraseField(Collider* target) {
 }
 
 void EraseZoneColliders(s32 zone) {
-    Collider** currentCollider;
+    FieldObject** currentCollider;
     s32 i;
 
     for (i = 0, currentCollider = &D_80240898; i < gFieldCount; i++, currentCollider++) {
@@ -3035,36 +3035,36 @@ s32 IsValidZoneIndex(s32 zone) {
 
 void ComputeRoomBounds(s32 roomId, Field* room) {
     s32 firstMatch;
-    Collider** itr;
+    FieldObject** itr;
     s32 i;
-    Collider* collider;
+    FieldObject* fieldObject;
     Rect3D bounds;
 
     firstMatch = 1;
     for (i = 0, itr = &D_80240898; i < gFieldCount; i++) {
-        collider = *itr;
-        if (roomId == collider->unk_08) {
+        fieldObject = *itr;
+        if (roomId == fieldObject->unk_08) {
             if (firstMatch != 0) {
                 firstMatch = 0;
-                bounds = collider->unk_CC;
+                bounds = fieldObject->unk_CC;
             } else {
-                if (bounds.min.x > collider->unk_CC.min.x) {
-                    bounds.min.x = collider->unk_CC.min.x;
+                if (bounds.min.x > fieldObject->unk_CC.min.x) {
+                    bounds.min.x = fieldObject->unk_CC.min.x;
                 }
-                if (bounds.max.x < collider->unk_CC.max.x) {
-                    bounds.max.x = collider->unk_CC.max.x;
+                if (bounds.max.x < fieldObject->unk_CC.max.x) {
+                    bounds.max.x = fieldObject->unk_CC.max.x;
                 }
-                if (bounds.min.y > collider->unk_CC.min.y) {
-                    bounds.min.y = collider->unk_CC.min.y;
+                if (bounds.min.y > fieldObject->unk_CC.min.y) {
+                    bounds.min.y = fieldObject->unk_CC.min.y;
                 }
-                if (bounds.max.y < collider->unk_CC.max.y) {
-                    bounds.max.y = collider->unk_CC.max.y;
+                if (bounds.max.y < fieldObject->unk_CC.max.y) {
+                    bounds.max.y = fieldObject->unk_CC.max.y;
                 }
-                if (bounds.min.z > collider->unk_CC.min.z) {
-                    bounds.min.z = collider->unk_CC.min.z;
+                if (bounds.min.z > fieldObject->unk_CC.min.z) {
+                    bounds.min.z = fieldObject->unk_CC.min.z;
                 }
-                if (bounds.max.z < collider->unk_CC.max.z) {
-                    bounds.max.z = collider->unk_CC.max.z;
+                if (bounds.max.z < fieldObject->unk_CC.max.z) {
+                    bounds.max.z = fieldObject->unk_CC.max.z;
                 }
             }
         }
@@ -3287,9 +3287,9 @@ void MoveField(void) {
     f32 temp_f6;
     f32 temp_f12;
     f32 temp_f14;
-    Collider** var_s5;
-    Collider* temp_s1;
-    Collider* temp_s0;
+    FieldObject** var_s5;
+    FieldObject* temp_s1;
+    FieldObject* temp_s0;
     SpriteActor* temp_a0;
     SpriteActor* sprAct;
     s32 var_s4;
@@ -3335,13 +3335,13 @@ void MoveField(void) {
             }
             if ((u32) var_s0 < 0x26U) {
                 if (var_s0 == 0) {
-                    ((void (*)(Collider*)) gFieldObjectBehaviourMap[var_s0].func2)(temp_s1);
+                    ((void (*)(FieldObject*)) gFieldObjectBehaviourMap[var_s0].func2)(temp_s1);
                 } else {
                     temp_s1->function(temp_s1);
                 }
             }
             if (temp_s1->unk_FC != NULL) {
-                ((void (*)(Collider*)) temp_s1->unk_FC)(temp_s1);
+                ((void (*)(FieldObject*)) temp_s1->unk_FC)(temp_s1);
             }
             if (temp_s1->unk_4C == NULL) {
                 temp_s1->sfxPos = temp_s1->unk_30;

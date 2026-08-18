@@ -300,7 +300,7 @@ extern Mtx AnimationSlots[40];
 extern GraphicStruct gGraphicsList[2];
 extern unk802000C84 D_80200C84;
 extern u8 gHasShadows[256]; //unset for actortypes like spawnners.
-extern Collider D_80236980[128];
+extern FieldObject D_80236980[128];
 extern s32 gFieldCount;
 extern Door gDoors[16];
 extern unkIsChange isChange;
@@ -380,7 +380,7 @@ extern char (*D_800F67A0[6])[TEXT_LINE_SIZE];
 extern char (*D_800F59B8[CHARA_TOTAL + 1][20])[TEXT_LINE_SIZE];
 extern AnimPointer static0_chameleonAnims[12];
 
-extern Collider* D_80240898;
+extern FieldObject* D_80240898;
 extern unk80170E68 D_80170E68[];
 
 

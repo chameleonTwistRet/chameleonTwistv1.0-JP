@@ -4,7 +4,7 @@
 extern char D_801103D0[];
 
 extern f64 D_801104F8;
-extern Collider D_80236980[128];
+extern FieldObject D_80236980[128];
 extern s32 D_8020D8F4;
 extern f64 D_801106A0;
 extern f64 D_801106A8;
@@ -67,8 +67,8 @@ char D_80248A28[0x08];
 
 void func_800D5394(PlayerActor*, Tongue*, Camera*, Vec3f*, Vec3f*, s32);
 void GetCurrentCameraShot(PlayerActor*, Tongue*, Camera*, Vec3f*, Vec3f*);
-Collider* func_800CAF88(Vec3f, f32, f32);
-Collider* SearchPolygonBetween(Vec3f, Vec3f, s32, s32, s32);
+FieldObject* func_800CAF88(Vec3f, f32, f32);
+FieldObject* SearchPolygonBetween(Vec3f, Vec3f, s32, s32, s32);
 void OrderRectBounds(Rect3D*);
 void func_800C9748(Rect3D*, s32, s32);
 void func_800CA734(Vec3f*, Vec3f, f32, s32);
@@ -89,21 +89,21 @@ const char D_80110180[] = "\n";
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800C9600.s")
 
-void func_800C9704(Collider* arg0) {
+void func_800C9704(FieldObject* arg0) {
     D_8023696C = 0;
     func_800C9504(arg0);
 }
 
-void func_800C9728(Collider* arg0) {
+void func_800C9728(FieldObject* arg0) {
     func_800C9504(arg0);
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800C9748.s")
 
-s32 func_800C982C(Rect3D* arg0, Collider* arg1) {
+s32 func_800C982C(Rect3D* arg0, FieldObject* arg1) {
     s32 var_s3;
-    Collider* temp_s0;
-    Collider** var_s2;
+    FieldObject* temp_s0;
+    FieldObject** var_s2;
     s32 i;
 
     var_s3 = 0;
@@ -560,9 +560,9 @@ void func_800CFF7C(Vec3f* arg0) {
 }
 
 
-Vec3f* func_800D00DC(Vec3f* arg0, Collider* arg1) {
+Vec3f* func_800D00DC(Vec3f* arg0, FieldObject* arg1) {
     Vec3f sp24;
-    Collider* temp_v1;
+    FieldObject* temp_v1;
 
     if (arg1->unk80 < 0) {
         Vec3f_Zero(&sp24);
@@ -582,9 +582,9 @@ Vec3f* func_800D00DC(Vec3f* arg0, Collider* arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800D01A8.s")
 
-Collider* func_800D0448(s32 arg0) {
-    Collider* result;
-    Collider** itr;
+FieldObject* func_800D0448(s32 arg0) {
+    FieldObject* result;
+    FieldObject** itr;
     s32 i;
 
     for (i = 0, itr = &D_80240898; i < gFieldCount; i++, itr++) {
@@ -598,13 +598,13 @@ Collider* func_800D0448(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800D04B0.s")
 
-// Applies the surface's friction class to a player's slide/override movement vector: the collider
+// Applies the surface's friction class to a player's slide/override movement vector: the fieldObject
 // the player is standing on (surface indexes D_80236980) carries a class in unk_12C, which selects
 // a multiplier from D_80108F90 = {0, 0.98, 1}. Class 0 leaves `move` untouched.
 void func_800D0694(PlayerActor* player, Vec3f vel) {
     s32 surface = player->surface;
     s32 friction;
-    Collider* col;
+    FieldObject* col;
     f32 mult;
 
     if (surface >= 0) {
@@ -776,24 +776,24 @@ void func_800D71E8(f32 x1, f32 x2, f32 y1, f32 y2, f32 z1, f32 z2) {
 s32 func_800D7248(f32 x, f32 y, f32 z, f32 arg3, f32 arg4, f32* outX, f32* arg6, f32* arg7) {
     Vec3f vec;
     s32 var_v1;
-    Collider* collider;
+    FieldObject* fieldObject;
 
     vec.x = x;
     vec.y = y;
     vec.z = z;
 
-    collider = func_800CAF88(vec, arg3, arg4);
+    fieldObject = func_800CAF88(vec, arg3, arg4);
 
-    // if a collider was found assign its position to the output variables then return 1 for success
+    // if a fieldObject was found assign its position to the output variables then return 1 for success
     // ternary-comma shape is codegen-required; a plain if/return does not match
-    return (collider != NULL) ?
-        (*outX = collider->unk_94, *arg6 = collider->unk_98, *arg7 = collider->unk_9C, 1) : 0;
+    return (fieldObject != NULL) ?
+        (*outX = fieldObject->unk_94, *arg6 = fieldObject->unk_98, *arg7 = fieldObject->unk_9C, 1) : 0;
 }
 
 s32 func_800D72DC(f32 x1, f32 y1, f32 z1, f32 x2, f32 y2, f32 z2, f32* outX, f32* outY, f32* outZ) {
     Vec3f vecOne;
     Vec3f vecTwo;
-    Collider* collider;
+    FieldObject* fieldObject;
 
     vecOne.x = x1;
     vecOne.y = y1;
@@ -803,10 +803,10 @@ s32 func_800D72DC(f32 x1, f32 y1, f32 z1, f32 x2, f32 y2, f32 z2, f32* outX, f32
     vecTwo.y = y2;
     vecTwo.z = z2;
 
-    collider = SearchPolygonBetween(vecOne, vecTwo, 0x77, 1, 1);
+    fieldObject = SearchPolygonBetween(vecOne, vecTwo, 0x77, 1, 1);
     // ternary-comma shape is codegen-required; a plain if/return does not match
-    return (collider != NULL) ?
-        (*outX = collider->unk_94, *outY = collider->unk_98, *outZ = collider->unk_9C, 1) : 0;
+    return (fieldObject != NULL) ?
+        (*outX = fieldObject->unk_94, *outY = fieldObject->unk_98, *outZ = fieldObject->unk_9C, 1) : 0;
 }
 
 void func_800D73BC(f32* x, f32* y, f32* z, f32 arg3) {

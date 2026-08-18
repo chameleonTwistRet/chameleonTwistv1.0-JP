@@ -414,7 +414,7 @@ s32 IsPointInRect(Vec3f, Rect3D*);
 void AdjustRectToVec3(Rect3D* r, Vec3f vec);
 Vec3f* Vec3f_Lerp(Vec3f*, Vec3f, Vec3f, f32);
 void func_800C8F00(void);
-void func_800C9504(Collider*);
+void func_800C9504(FieldObject*);
 void CalcEnemyNextPosition(Actor*);
 s32 func_800CF080(s32, f32);
 void func_800CFDB8(PlayerActor*);
@@ -427,7 +427,7 @@ void Poly_AssertInfoLevel(Poly*, s32, char*);
 void Poly_EnsureInfoLevel (Poly*, s32);
 void Vec3f_Zero(Vec3f*);
 f32 Vec3f_Normalize(Vec3f*);
-void PlaySfxPositionalOnFlag(Collider* arg0, s32 arg1); 
+void PlaySfxPositionalOnFlag(FieldObject* arg0, s32 arg1); 
 void func_800D99D0(s32*, s32, void*, s32, s32*, s32);
 void func_800D9B20(s32*);
 //void func_800DA510(s32*, s32, s32, s32, s32, s32, s32*);
@@ -530,47 +530,47 @@ void Battle_Init(void);
 void func_8002CE54(void);
 
 //RoomObject funcs
-void func_800B09C0(Collider* arg0, RoomObject* arg1);
-void RegistShutter(Collider* arg0, RoomObject* arg1);
-void func_800B118C(Collider* arg0); //assumed
-void func_800B0B20(Collider* arg0, RoomObject* arg1); //assumed
-void func_800B088C(Collider* arg0, RoomObject* arg1);
-void func_800B08C8(Collider* arg0);
-void func_800B09E8(Collider* arg0, RoomObject* arg1);
-void func_800D91D8(Collider* arg0);
-void func_800D90B8(Collider* arg0);
-void func_800AFB2C(Collider* arg0, RoomObject* arg1);
-void func_800B06B0(Collider* arg0);
-void func_800D8D58(Collider* arg0);
-void func_800D8DBC(Collider* arg0);
-void func_800D8DE0(Collider* arg0);
-void func_800B0A30(Collider* arg0, RoomObject* arg1);
-void func_800D8E04(Collider* arg0);
-void func_800D8E28(Collider* arg0);
-void func_800B0AA4(Collider* collider);
-void func_800B1DA0(Collider* arg0, s32 arg1);
-void func_800B12B4(Collider* arg0, RoomObject* arg1); // assumed
-void func_800B1538(Collider* arg0, RoomObject* arg1); // assumed
-void func_800D90E0(Collider* arg0);
-void func_800AF9D0(Collider* arg0, RoomObject* arg1);
+void func_800B09C0(FieldObject* arg0, RoomObject* arg1);
+void RegistShutter(FieldObject* arg0, RoomObject* arg1);
+void func_800B118C(FieldObject* arg0); //assumed
+void func_800B0B20(FieldObject* arg0, RoomObject* arg1); //assumed
+void func_800B088C(FieldObject* arg0, RoomObject* arg1);
+void func_800B08C8(FieldObject* arg0);
+void func_800B09E8(FieldObject* arg0, RoomObject* arg1);
+void func_800D91D8(FieldObject* arg0);
+void func_800D90B8(FieldObject* arg0);
+void func_800AFB2C(FieldObject* arg0, RoomObject* arg1);
+void func_800B06B0(FieldObject* arg0);
+void func_800D8D58(FieldObject* arg0);
+void func_800D8DBC(FieldObject* arg0);
+void func_800D8DE0(FieldObject* arg0);
+void func_800B0A30(FieldObject* arg0, RoomObject* arg1);
+void func_800D8E04(FieldObject* arg0);
+void func_800D8E28(FieldObject* arg0);
+void func_800B0AA4(FieldObject* fieldObject);
+void func_800B1DA0(FieldObject* arg0, s32 arg1);
+void func_800B12B4(FieldObject* arg0, RoomObject* arg1); // assumed
+void func_800B1538(FieldObject* arg0, RoomObject* arg1); // assumed
+void func_800D90E0(FieldObject* arg0);
+void func_800AF9D0(FieldObject* arg0, RoomObject* arg1);
 void MoveTheater(Camera* arg0); // might be wrong
 
-void func_800D8F3C(Collider* arg0);
-void func_800D8F9C(Collider* arg0);
-void func_800D8FFC(Collider* arg0);
-void func_800D9058(Collider* arg0);
-void func_800D8E70(Collider* arg0);
-void func_800D8ED4(Collider* arg0);
+void func_800D8F3C(FieldObject* arg0);
+void func_800D8F9C(FieldObject* arg0);
+void func_800D8FFC(FieldObject* arg0);
+void func_800D9058(FieldObject* arg0);
+void func_800D8E70(FieldObject* arg0);
+void func_800D8ED4(FieldObject* arg0);
 
 
 void func_800B21CC(s32 arg0, s32 arg1);
-void func_800D9128(Collider* arg0);
+void func_800D9128(FieldObject* arg0);
 void func_800B2070(s32 arg0);
-void func_800D9104(Collider* arg0);
-void func_800D9190(Collider* arg0);
-void func_800D914C(Collider* arg0);
-void func_800B2144(Collider* arg0, unkStruct14* arg1);
-void func_800B216C(Collider* arg0);
-void func_800D91B4(Collider* arg0);
+void func_800D9104(FieldObject* arg0);
+void func_800D9190(FieldObject* arg0);
+void func_800D914C(FieldObject* arg0);
+void func_800B2144(FieldObject* arg0, unkStruct14* arg1);
+void func_800B216C(FieldObject* arg0);
+void func_800D91B4(FieldObject* arg0);
 
 #endif

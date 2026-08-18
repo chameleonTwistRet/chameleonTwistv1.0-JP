@@ -7,7 +7,7 @@
 
 
 /* Functions */
-void PlaySfxPositionalPeriodicOnSurface(Collider* collider, s32 sfxID, s32 interval);
+void PlaySfxPositionalPeriodicOnSurface(FieldObject* fieldObject, s32 sfxID, s32 interval);
 
 
 /* Ext Variables */
