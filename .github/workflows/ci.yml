@@ -4,9 +4,11 @@ on:
   push:
     branches:
       - master
+      - refactor-build-assets
   pull_request_target:
     branches:
       - master
+      - refactor-build-assets
 
 jobs:
   build_repo:
@@ -44,6 +46,15 @@ jobs:
     - name: Build Chameleon Twist
       run: ./configure && ninja
 
-    - name: Upload Frogress
-      if: github.ref == 'refs/heads/master'
-      run: python3 tools/uploadProgress.py --api_key ${{ secrets.API_KEY }}
+    - name: Generate progress report (decomp.dev)
+      run: |
+        curl -sL https://github.com/encounter/objdiff/releases/download/v3.8.0/objdiff-cli-linux-x86_64 -o /tmp/objdiff-cli
+        chmod +x /tmp/objdiff-cli
+        python3 tools/gen_objdiff_report.py
+        /tmp/objdiff-cli report generate -o build/report.json
+
+    - name: Upload progress report
+      uses: actions/upload-artifact@v4
+      with:
+        name: jp_report
+        path: build/report.json

@@ -1,180 +1,95 @@
-"""
-N64 Mtx struct splitter
-Dumps out Mtx as a .inc.c file.
+"""Anim array struct splitter: emits Mtx[frames][objects]."""
 
-Modified for CT1 Animations: Nathan R.
-"""
-
-import re
+import os
 import struct
-from pathlib import Path
-from splat.util.log import error
-from math import floor
-from splat.util import options
-from splat.segtypes.common.codesubsegment import CommonSegCodeSubsegment
+import sys
+
+sys.path.insert(0, os.path.dirname(__file__))
+from _ct_base import CTSegBase  # noqa: E402
+
+from splat.util.log import error  # noqa: E402
 
 
-class N64SegAnimArray(CommonSegCodeSubsegment):
-    trueResult = False
-    def __init__(
-        self,
-        rom_start,
-        rom_end,
-        type,
-        name,
-        vram_start,
-        args,
-        yaml,
-    ):
-        super().__init__(
-            rom_start,
-            rom_end,
-            type,
-            name,
-            vram_start,
-            args=args,
-            yaml=yaml,
-        )
-        self.file_text = None
-        self.data_only = isinstance(yaml, dict) and yaml.get("data_only", False)
+def _mtx_lines(buffer):
+    """Format a 64-byte 4x4 matrix as the same set of lines mtx.py emits.
+    Animation arrays use the integer-form (trueResult=False path)."""
+    if len(buffer) != 0x40:
+        if len(buffer) == 72:
+            buffer = buffer[:0x40]
+        else:
+            error(
+                f"Error: Mtx slice in Anim array length ({len(buffer)}) "
+                f"is not a 4x4 matrix!"
+            )
+    words = struct.unpack(">IIIIIIIIIIIIIIII", buffer)
+    h = [f"0x{w:08X}" for w in words]
+    return [
+        f"   {{ {h[0]}, {h[1]},",
+        f"   {h[2]}, {h[3]},",
+        f"   {h[4]}, {h[5]},",
+        f"   {h[6]}, {h[7]},",
+        "",
+        f"   {h[8]}, {h[9]},",
+        f"   {h[10]}, {h[11]},",
+        f"   {h[12]}, {h[13]},",
+        f"   {h[14]}, {h[15]} }}",
+    ]
+
+
+class N64SegAnimArray(CTSegBase):
+    SUFFIX = "animArr"
+
+    def __init__(self, rom_start, rom_end, type, name, vram_start, args, yaml):
+        super().__init__(rom_start, rom_end, type, name, vram_start, args, yaml)
         if isinstance(yaml, dict):
             self.args.append(yaml.get("frames", 1))
             self.args.append(yaml.get("objects", 1))
-
-    def get_linker_section(self) -> str:
-        #return ".data"
-        return []
-
-    def out_path(self) -> Path:
-        return options.opts.asset_path / self.dir / f"{self.name}.animArr.inc.c"
-
-    def scan(self, rom_bytes: bytes):
-        if self.out_path().exists():
-            return
-        self.file_text = self.disassemble_data(rom_bytes)
-        
-        
-    def mtxDisasm(self, rom_bytes):
-        #taken from mtx.py because it doesnt want to import
-        segment_length = len(rom_bytes)
-        if (segment_length) != 0x40:
-            if (segment_length == 72):
-                rom_bytes = rom_bytes[:0x40]
-            else:
-                error(
-                    f"Error: Mtx segment in Anim segment {self.name} length ({segment_length}) is not a 4x4 matrix!"
-                )
-
-        lines = []
-
-        if not self.trueResult:
-            data = list(struct.unpack('>IIIIIIIIIIIIIIII', rom_bytes))
-            i = 0
-            while i < len(data):
-                data[i] = hex(data[i]).upper().replace("0X", "0x")
-                #pad
-                while len(data[i]) < 8 + 2:
-                    data[i] = data[i].replace("0x", "0x0")
-                i += 1
-            lines = [
-                f"""   {{ {data[0]}, {data[1]},""",
-                f"""   {data[2]}, {data[3]},""",
-                f"""   {data[4]}, {data[5]},""",
-                f"""   {data[6]}, {data[7]},""",
-                "",
-                f"""   {data[8]}, {data[9]},""",
-                f"""   {data[10]}, {data[11]},""",
-                f"""   {data[12]}, {data[13]},""",
-                f"""   {data[14]}, {data[15]} }}""",
-            ]
-        else:
-            s15 = []
-            s16 = []
-            for i in range(0, 16):
-                s15.append(int.from_bytes(rom_bytes[(i*2):(i*2)+2], "big", signed=True))
-                s = int.from_bytes(rom_bytes[(i*2)+32:(i*2)+34], "big", signed=True)
-                sign = ""
-                if str(s)[0] == "-":
-                    #remove the sign and add it in front of the 0
-                    sign = "-"
-                    s *= -1
-                s16.append(float(sign + "0." + str(s)))
-
-            lines = [
-            f"""   {{ {s15[0]+s16[0]}, {s15[1]+s16[1]}, {s15[2]+s16[2]}, {s15[3]+s16[3]} }},""",
-            f"""   {{ {s15[4]+s16[4]}, {s15[5]+s16[5]}, {s15[6]+s16[6]}, {s15[7]+s16[7]} }},""",
-            f"""   {{ {s15[8]+s16[8]}, {s15[9]+s16[9]}, {s15[10]+s16[10]}, {s15[11]+s16[11]} }},""",
-            f"""   {{ {s15[12]+s16[12]}, {s15[13]+s16[13]}, {s15[14]+s16[14]}, {s15[15]+s16[15]} }}"""]
-
-        # enforce newline at end of file
-        return "\n".join(lines)
-
 
     def disassemble_data(self, rom_bytes):
         buffer = rom_bytes[self.rom_start : self.rom_end]
         segment_length = len(buffer)
         if segment_length % 0x40 != 0:
             error(
-                f"Error: Animation array segment {self.name} size incorrect; Is ({segment_length}) when it should be a multiple of ({0x40})!"
+                f"Error: Animation array segment {self.name} size incorrect; "
+                f"Is ({segment_length}) when it should be a multiple of ({0x40})!"
             )
 
-        sym2 = self.create_symbol(
+        sym = self.create_symbol(
             addr=self.vram_start, in_segment=True, type="data", define=True
         )
 
-        after = []
-        frames = 0
-        Aoframes = self.args[0]
-        Aoobjects = self.args[1]
-        while (frames * 0x40)< segment_length:
-            frameStart = (frames * 0x40)
-            frameEnd = ((frames + 1) * 0x40)
-            after.append(self.mtxDisasm(buffer[frameStart:frameEnd]))
-            after[-1] = after[-1].replace("{", "{{", 1) + "},"
-            frames += 1
-        frame = 0
-        for i in range(len(after)):
-            line = after[i]
-            linecut = 2 if self.trueResult else 4
-            if frame % Aoobjects == 0: line=line[:linecut]+"{"+line[linecut:]
-            if frame % Aoobjects == Aoobjects-1:line+="},"
-            after[i] = line
-            frame += 1
-            
-        lines = []
+        ao_frames = self.args[0]
+        ao_objects = self.args[1]
 
+        per_frame_blocks = []
+        offset = 0
+        while offset < segment_length:
+            mtx = _mtx_lines(buffer[offset : offset + 0x40])
+            # original wraps each frame in an extra `{ ... },`
+            mtx[0] = mtx[0].replace("{", "{{", 1)
+            mtx[-1] = mtx[-1] + "},"
+            per_frame_blocks.append("\n".join(mtx))
+            offset += 0x40
+
+        # Group objects-per-frame: open `{` at every nth frame, close at the (n-1)th
+        cut = 4  # leading whitespace before first `{` from `_mtx_lines`
+        for idx, block in enumerate(per_frame_blocks):
+            if idx % ao_objects == 0:
+                block = block[:cut] + "{" + block[cut:]
+            if idx % ao_objects == ao_objects - 1:
+                block = block + "},"
+            per_frame_blocks[idx] = block
+
+        lines = []
         if not self.data_only:
             lines.append('#include "common.h"')
             lines.append("")
-            lines.append(f"Mtx {sym2.name}[{Aoframes}][{Aoobjects}] = {{")
-        
+            lines.append(f"Mtx {sym.name}[{ao_frames}][{ao_objects}] = {{")
 
-
-        
-        for frame in after:
-            lines.append(frame)
+        lines.extend(per_frame_blocks)
 
         if not self.data_only:
             lines.append("};")
-        
-        # enforce newline at end of file
+
         lines.append("")
         return "\n".join(lines)
-
-    def split(self, rom_bytes: bytes):
-        if self.file_text and self.out_path():
-            self.out_path().parent.mkdir(parents=True, exist_ok=True)
-
-            with open(self.out_path(), "w", newline="\n") as f:
-                f.write(self.file_text)
-
-
-
-    #def should_scan(self) -> bool:
-    #    return (
-    #        self.rom_start != "auto"
-    #        and self.rom_end != "auto"
-    #    )
-#
-    #def should_split(self) -> bool:
-    #    return self.extract and options.mode_active("mtx")

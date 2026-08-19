@@ -1,5 +1,8 @@
 #include "84E0.h"
 
+// defined as `stuff D_801003DC` in 5FF30.c; only its first s16 is read here
+extern s16 D_801003DC[];
+
 /* Migrated BSS */
 //TODO: type this data correctly
 
@@ -7,7 +10,7 @@ s32 D_801748A0;
 s32 D_801748A4;
 unk0 D_801748A8; //is size 0x58, struct is a guess
 unk80174900 D_80174900;
-s32 D_80174980; //game state???
+s32 gLevelFlowState; //0 intro (camera locked), 1 playing, 3 no-damage cutscene, 4 player died, 5 stage clear hold
 //0 == menuing?
 //1 == normal
 //2 == ???
@@ -19,12 +22,12 @@ s32 D_80174984;
 s32 D_80174988; //makes you invincible? debug? also has a case for white
 s32 D_8017498C;
 s32 D_80174990;
-f32 D_80174994; //death plane y?
+f32 gCameraMinY; //death plane y?
 s32 D_80174998; //fade?
 s32 gTimer;
-s32 D_801749A0; //actor & object timer (for keeping track of deltas) (the stop watch pauses this !)
+s32 gFieldFramesElapsed; //actor & object timer (for keeping track of deltas) (the stop watch pauses this !)
 s32 D_801749A4;
-s32 D_801749A8;
+s32 gCameraInputDisabled;
 s32 Battle_GameType;
 s32 D_801749B0;
 s32 gIsMultiplayerPaused;
@@ -32,15 +35,15 @@ char D_801749B8[24];
 s32 D_801749D0;
 
 //pob related
-s32 D_801749D8[30];
+s32 D_801749D8[2][15];
 
 unk80174A50 D_80174A50;
 unk80175590 D_80175590;
-unk80175598 D_80175598;
-unk801755A8 D_801755A8;
-unk801755E8 D_801755E8;
-unk801755F8 D_801755F8;
-unk80175608 D_80175608;
+s32 D_80175598[4];
+ContMain gCpuControllers[4];
+s32 D_801755E8[4];
+s32 D_801755F8[4];
+s32 D_80175608[6];
 
 //const char padRodata[] = "\0\0\0\0\0\0\0";
 
@@ -62,7 +65,7 @@ f32 SumOfSquaresWrapper(f32 x, f32 y) {
  * @return (ptr) altered angle
  */
 void WrapDegrees(f32* theta_ptr) {
-    while(1){
+    while (1) {
         f32 theta = *theta_ptr;
 
         if (theta >= 360.0f) {
@@ -101,7 +104,7 @@ void ClampPointToDisk(f32* a, f32* b, f32 radius) {
  * @brief Calculate the counterclockwise angle between two 2D points relative to the positive x-axis.
  *
  * This function calculates the counterclockwise angle in radians between two 2D points (x1, y1) and (x2, y2)
- * relative to the positive x-axis. The angle is computed by CalculateAngleOfVector,
+ * relative to the positive x-axis. The angle is computed by ArcTan2Deg,
  * which uses a lookup table to determine the angle based on the provided 2D vector (x, y).
  *
  * @param x1 The x-coordinate of the first point.
@@ -112,7 +115,7 @@ void ClampPointToDisk(f32* a, f32* b, f32 radius) {
  * @return (f32) The counterclockwise angle between the two points in radians.
  */
 f32 CalcAngleBetween2DPoints(f32 x1, f32 y1, f32 x2, f32 y2) {
-    return CalculateAngleOfVector(x2 - x1, -(y2 - y1));
+    return ArcTan2Deg(x2 - x1, -(y2 - y1));
 }
 
 /**
@@ -163,7 +166,7 @@ s32 IsAngleWithinTolerance(f32 targetAngle, f32 refAngle, f32 toleranceAngle) {
  * and -1 if it does not.
  *
  * @param refAngle The reference angle, used to define the 180-degree range.
- * @param targetAngle The angle to be compared to `angleA`.
+ * @param targetAngle The angle to be compared to `refAngle`.
  *
  * @return (s32) 1 if target is within the 180-degree range relative to reference; otherwise, it returns -1.
  */
@@ -180,77 +183,138 @@ s32 AreAnglesWithin180Degrees(f32 refAngle, f32 targetAngle) {
     return 1;
 }
 
-// Rotates angle one 90 degrees, then checks if angle two is within 180 degrees of it
-s32 func_8002D328(f32 theta, f32 phi) {
-    f32* theta_ptr;
+/**
+ * @brief Checks if an angle is within 90 degrees either side of a reference angle.
+ *
+ * Rotates `refAngle` back by 90 degrees, wraps it, then checks whether `targetAngle`
+ * falls within the 180-degree range starting there, covering the half circle
+ * centered on `refAngle`.
+ *
+ * @param refAngle The reference angle at the center of the range.
+ * @param targetAngle The angle to be compared to `refAngle`.
+ *
+ * @return (s32) 1 if target is within 90 degrees of reference; otherwise, it returns -1.
+ */
+s32 IsAngleWithin90Degrees(f32 refAngle, f32 targetAngle) {
+    f32* refAnglePtr;
 
-    theta_ptr = &theta;
-    theta = theta - 90.0f;
-    WrapDegrees(theta_ptr);
-    return AreAnglesWithin180Degrees(theta, phi);
+    refAnglePtr = &refAngle;
+    refAngle = refAngle - 90.0f;
+    WrapDegrees(refAnglePtr);
+    return AreAnglesWithin180Degrees(refAngle, targetAngle);
 }
 
-// Unkown Function: Elisiah
-s32 func_8002D36C(f32* arg0, f32 arg1, f32 arg2) {
-    s32 phi_v1;
-    f32 phi_f0;
-    s32 sp1C;
+/**
+ * @brief Rotates an angle towards a target angle by at most one step.
+ *
+ * Takes the shortest way around the circle. If the target is within one step
+ * it is snapped to exactly, otherwise the angle moves one step in the
+ * direction given by `AreAnglesWithin180Degrees`. The result is wrapped.
+ *
+ * @param [in,out] angle The angle to rotate, in degrees.
+ * @param targetAngle The angle to rotate towards.
+ * @param step The maximum number of degrees to rotate by.
+ *
+ * @return (s32) 1 if the angle reached the target; otherwise, it returns 0.
+ */
+s32 RotateAngleTowards(f32* angle, f32 targetAngle, f32 step) {
+    s32 reached;
+    f32 diff;
 
-    phi_v1 = 0;
-    if (*arg0 < arg1) {
-        phi_f0 = -(*arg0 - arg1);
+    reached = 0;
+    if (*angle < targetAngle) {
+        diff = -(*angle - targetAngle);
     } else {
-        phi_f0 = *arg0 - arg1;
+        diff = *angle - targetAngle;
     }
-    if (phi_f0 > 180.0f) {
-        phi_f0 = 360.0f - phi_f0;
+    if (diff > 180.0f) {
+        diff = 360.0f - diff;
     }
-    if (arg2 <= phi_f0) {
-        sp1C = 0;
-        *arg0 += arg2 * (f32) AreAnglesWithin180Degrees(*arg0, arg1);
+    if (step <= diff) {
+        *angle += step * (f32) AreAnglesWithin180Degrees(*angle, targetAngle);
     } else {
-        *arg0 = arg1;
-        phi_v1 = 1;
+        *angle = targetAngle;
+        reached = 1;
     }
-    sp1C = phi_v1;
-    WrapDegrees(arg0);
-    return sp1C;
+    WrapDegrees(angle);
+    return reached;
 }
 
-void func_8002D434(f32 *vecX, f32 *vecY, f32 diffX, f32 diffY, f32 addAngle) {
+/**
+ * @brief Rotates a 2D point around a pivot point by the given angle.
+ *
+ * Keeps the point at its current distance from the pivot. Does nothing when
+ * the point sits exactly on the pivot.
+ *
+ * @param [in,out] pointX The X coordinate of the point to rotate.
+ * @param [in,out] pointY The Y coordinate of the point to rotate.
+ * @param pivotX The X coordinate of the pivot.
+ * @param pivotY The Y coordinate of the pivot.
+ * @param angle The number of degrees to rotate by.
+ */
+void RotatePointAroundPivot(f32 *pointX, f32 *pointY, f32 pivotX, f32 pivotY, f32 angle) {
     f32 newAngle;
+    f32 dx = *pointX - pivotX;
+    f32 dy = *pointY - pivotY;
+    f32 dist = NORM_2(dx, dy);
 
-    // find magnitude of vector (a,b) = vec - diff
-    f32 a = *vecX - diffX;
-    f32 b = *vecY - diffY;
-    f32 c = NORM_2(a, b);
-
-    // If magnitude is not 0, calculate new angle and adjust vector
-    if (c != 0.0f) {
-        newAngle = CalculateAngleOfVector(a, -b) + addAngle;
-        *vecX = cosf(DEGREES_TO_RADIANS_2PI(newAngle)) * c + diffX;
-        *vecY = diffY + -(sinf(DEGREES_TO_RADIANS_2PI(newAngle)) * c);
+    if (dist != 0.0f) {
+        newAngle = ArcTan2Deg(dx, -dy) + angle;
+        *pointX = cosf(DEGREES_TO_RADIANS_2PI(newAngle)) * dist + pivotX;
+        *pointY = pivotY + -(sinf(DEGREES_TO_RADIANS_2PI(newAngle)) * dist);
     }
 }
 
-void func_8002D550(f32 *arg0, f32 *arg1, f32 arg2, f32 arg3, f32 arg4) {
-    f32 temp_f12;
-    f32 *new_var;
-    f32 temp_f2;
-    f32 temp_f12_2 = CalcAngleBetween2DPoints(arg2, arg3, *arg0, *arg1);
-    temp_f2 = (*arg0) - arg2;
-    temp_f12 = (*arg1) - arg3;
-    if (SUM_OF_SQUARES(temp_f2, temp_f12) < SQ(arg4)) {
-        temp_f12_2 = DEGREES_TO_RADIANS_2PI(temp_f12_2);
-        if (temp_f12) {
-
-        }
-        *arg0 = (cosf(temp_f12_2) * arg4) + arg2;
-        *arg1 = ((-sinf(temp_f12_2)) * arg4) + arg3;
+/**
+ * @brief Pushes a 2D point out to a minimum distance from a center point.
+ *
+ * If the point is closer to the center than `radius`, it is moved outwards
+ * onto the circle of that radius, keeping its direction from the center.
+ * Points already at or beyond the radius are left alone.
+ *
+ * @param [in,out] pointX The X coordinate of the point to push.
+ * @param [in,out] pointY The Y coordinate of the point to push.
+ * @param centerX The X coordinate of the circle center.
+ * @param centerY The Y coordinate of the circle center.
+ * @param radius The minimum distance to enforce.
+ */
+void PushPointOutOfCircle(f32 *pointX, f32 *pointY, f32 centerX, f32 centerY, f32 radius) {
+    f32 dy;
+    f32 *unusedPtr; //unused, but required for match
+    f32 dx;
+    f32 angle = CalcAngleBetween2DPoints(centerX, centerY, *pointX, *pointY);
+    dx = (*pointX) - centerX;
+    dy = (*pointY) - centerY;
+    if (SUM_OF_SQUARES(dx, dy) < SQ(radius)) {
+        angle = DEGREES_TO_RADIANS_2PI(angle);
+        *pointX = (cosf(angle) * radius) + centerX;
+        *pointY = ((-sinf(angle)) * radius) + centerY;
     }
 }
 
-void Actors_Init(s32 actorIndex, s32 actorID, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7, f32 arg8, f32 arg9, f32 argA, f32 argB, f32 argC, f32 argD, f32 argE, f32 argF, f32 arg10, f32 arg11, f32 arg12, f32 arg13, s32 arg14, s32 arg15, s32 arg16, s32 arg17) {
+/**
+ * @brief Fills in a freshly claimed actor slot and runs its type-specific init.
+ *
+ * Zeroes the actor's user variables, velocities, tongue state, and general
+ * fields, stores the position and the pass-through parameters to their fields,
+ * copies the type defaults from `D_8010A6D0` (tongue scale and Y offset) and
+ * `D_8010AA28`, then dispatches to the matching `ActorInit_` function for
+ * `actorID`. Called by `Actor_Init` after it finds a free slot.
+ *
+ * @param actorIndex The slot in `gActors` to initialise.
+ * @param actorID The actor ID to spawn, from `enum actorIDs`.
+ * @param posX The X coordinate to spawn at.
+ * @param posY The Y coordinate to spawn at.
+ * @param posZ The Z coordinate to spawn at.
+ * @param arg90 The initial heading in degrees, stored to `unk_90`.
+ * @param argF4 Stored to `unk_F4`. This and the parameters after it are
+ * per-type values; see `Actor_Init` for the field each one lands in.
+ */
+void Actors_Init(s32 actorIndex, s32 actorID, f32 posX, f32 posY, f32 posZ, f32 arg90,
+                  f32 argF4, f32 argF8, f32 argFC, f32 arg100, f32 arg104, f32 arg108,
+                  f32 argPosition0, f32 argPosition1,
+                  f32 arg15C, f32 arg160, f32 arg164, f32 arg168, f32 arg16C, f32 arg170,
+                  s32 arg124, s32 arg128, s32 arg12C, s32 arg130) {
     Actor* actorInstance;
     s32 i;
 
@@ -269,10 +333,10 @@ void Actors_Init(s32 actorIndex, s32 actorID, f32 arg2, f32 arg3, f32 arg4, f32 
     actorInstance->actorIndex = actorIndex;
     actorInstance->actorID = actorID;
     actorInstance->globalTimer = 0;
-    actorInstance->pos.x = arg2;
-    actorInstance->pos.y = arg3;
-    actorInstance->pos.z = arg4;
-    actorInstance->unk_90 = arg5;
+    actorInstance->pos.x = posX;
+    actorInstance->pos.y = posY;
+    actorInstance->pos.z = posZ;
+    actorInstance->unk_90 = arg90;
 
     for (i = 0; i < 3; i++) {
         actorInstance->unknownPositionThings[i].unk_08 = 0.0f;
@@ -285,24 +349,24 @@ void Actors_Init(s32 actorIndex, s32 actorID, f32 arg2, f32 arg3, f32 arg4, f32 
     actorInstance->tYPos = actorInstance->unknownPositionThings[0].unk_10 = D_8010A6D0[actorID].y;
     actorInstance->tongueCollision = 1;
 
-    actorInstance->unk_F4 = arg6;
-    actorInstance->unk_F8 = arg7;
-    actorInstance->unk_FC = arg8;
-    actorInstance->unk_100 = arg9;
-    actorInstance->unk_104 = argA;
-    actorInstance->unk_108 = argB;
-    actorInstance->position._f32.x = argC;
-    actorInstance->position._f32.y = argD;
-    actorInstance->unk_15C = argE;
-    actorInstance->unk_160 = argF;
-    actorInstance->unk_164 = arg10;
-    actorInstance->unk_168 = arg11;
-    actorInstance->unk_16C = arg12;
-    actorInstance->unk_170 = arg13;
-    actorInstance->unk_124 = arg14;
-    actorInstance->unk_128 = arg15;
-    actorInstance->unk_12C = arg16;
-    actorInstance->unk_130 = arg17;
+    actorInstance->unk_F4 = argF4;
+    actorInstance->unk_F8 = argF8;
+    actorInstance->unk_FC = argFC;
+    actorInstance->unk_100 = arg100;
+    actorInstance->unk_104 = arg104;
+    actorInstance->unk_108 = arg108;
+    actorInstance->position._f32.x = argPosition0;
+    actorInstance->position._f32.y = argPosition1;
+    actorInstance->unk_15C = arg15C;
+    actorInstance->unk_160 = arg160;
+    actorInstance->unk_164 = arg164;
+    actorInstance->unk_168 = arg168;
+    actorInstance->unk_16C = arg16C;
+    actorInstance->unk_170 = arg170;
+    actorInstance->unk_124 = arg124;
+    actorInstance->unk_128 = arg128;
+    actorInstance->unk_12C = arg12C;
+    actorInstance->unk_130 = arg130;
     actorInstance->actorState = 0;
     actorInstance->vel.x = 0.0f;
     actorInstance->vel.y = 0.0f;
@@ -608,13 +672,53 @@ void Actors_Init(s32 actorIndex, s32 actorID, f32 arg2, f32 arg3, f32 arg4, f32 
     }
 }
 
-s32 Actor_Init(s32 id, f32 posX, f32 posY, f32 posZ, f32 arg4, f32 arg5, f32 arg6, f32 arg7, f32 arg8, f32 arg9, f32 argA, f32 argB, f32 argC, f32 argD, f32 argE, f32 argF, f32 arg10, f32 arg11, f32 arg12, s32 arg13, s32 arg14, s32 arg15, s32 arg16) {
+/**
+ * @brief Spawns a new actor in the first free actor slot.
+ *
+ * Searches `gActors` for a slot holding `ACTOR_NULL`, fills it in through
+ * `Actors_Init`, and increments `gActorCount`. Parameters after the position
+ * are stored to the actor field their name refers to; what each field means
+ * depends on the actor type.
+ *
+ * @param id The actor ID to spawn, from `enum actorIDs`.
+ * @param posX The X coordinate to spawn at.
+ * @param posY The Y coordinate to spawn at.
+ * @param posZ The Z coordinate to spawn at.
+ * @param arg90 The initial heading in degrees, stored to `unk_90`.
+ * @param argF4 Stored to `unk_F4`.
+ * @param argF8 Stored to `unk_F8`.
+ * @param argFC Stored to `unk_FC`.
+ * @param arg100 Stored to `unk_100`.
+ * @param arg104 Stored to `unk_104`.
+ * @param arg108 Stored to `unk_108`.
+ * @param argPosition0 Stored to `position._f32.x`.
+ * @param argPosition1 Stored to `position._f32.y`.
+ * @param arg15C Stored to `unk_15C`.
+ * @param arg160 Stored to `unk_160`.
+ * @param arg164 Stored to `unk_164`.
+ * @param arg168 Stored to `unk_168`.
+ * @param arg16C Stored to `unk_16C`.
+ * @param arg170 Stored to `unk_170`.
+ * @param arg124 Stored to `unk_124`.
+ * @param arg128 Stored to `unk_128`.
+ * @param arg12C Stored to `unk_12C`.
+ * @param arg130 Stored to `unk_130`.
+ *
+ * @return (s32) The index of the spawned actor; otherwise, it returns -1 if no slot is free.
+ */
+s32 Actor_Init(s32 id, f32 posX, f32 posY, f32 posZ, f32 arg90,
+               f32 argF4, f32 argF8, f32 argFC, f32 arg100, f32 arg104, f32 arg108,
+               f32 argPosition0, f32 argPosition1,
+               f32 arg15C, f32 arg160, f32 arg164, f32 arg168, f32 arg16C, f32 arg170,
+               s32 arg124, s32 arg128, s32 arg12C, s32 arg130) {
     s32 i;
     Actor* curActor = gActors;
 
     for (i = 0; i < ARRAY_COUNT(gActors); i++, curActor++) {
-        if (curActor->actorID == 0) {
-            Actors_Init(i, id, posX, posY, posZ, arg4, arg5, arg6, arg7, arg8, arg9, argA, argB, argC, argD, argE, argF, arg10, arg11, arg12, arg13, arg14, arg15, arg16);
+        if (curActor->actorID == ACTOR_NULL) {
+            Actors_Init(i, id, posX, posY, posZ, arg90, argF4, argF8,
+                argFC, arg100, arg104, arg108, argPosition0, argPosition1, arg15C, arg160, arg164,
+                arg168, arg16C, arg170, arg124, arg128, arg12C, arg130);
             gActorCount++;
             return i;
         }
@@ -622,16 +726,30 @@ s32 Actor_Init(s32 id, f32 posX, f32 posY, f32 posZ, f32 arg4, f32 arg5, f32 arg
     return -1;
 }
 
-s32 func_8002DF5C(s32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4) {
+/**
+ * @brief Registers a pole in the first free pole slot.
+ *
+ * Searches `Poles` for a slot whose mode is 0 (free) and fills it in with
+ * the given mode, position, and height.
+ *
+ * @param mode The pole mode to register; must not be 0, which marks a free slot.
+ * @param x The X coordinate of the pole.
+ * @param y The Y coordinate of the pole.
+ * @param z The Z coordinate of the pole.
+ * @param height The pole height, stored to `yStretch`.
+ *
+ * @return (s32) The index of the registered pole; otherwise, it returns -1 if the pool is full.
+ */
+s32 RegistPole(s32 mode, f32 x, f32 y, f32 z, f32 height) {
     s32 i;
 
-    for (i = 0; i < ARRAY_COUNT(gActors); i++) {
+    for (i = 0; i < ARRAY_COUNT(Poles); i++) {
         if (Poles[i].mode == 0) {
-            Poles[i].mode = arg0;
-            Poles[i].pos.x = arg1;
-            Poles[i].pos.y = arg2;
-            Poles[i].pos.z = arg3;
-            Poles[i].yStretch = arg4;
+            Poles[i].mode = mode;
+            Poles[i].pos.x = x;
+            Poles[i].pos.y = y;
+            Poles[i].pos.z = z;
+            Poles[i].yStretch = height;
             return i;
         }
     }
@@ -646,59 +764,71 @@ s32 Actor_SpawnAt(s32 actorID, f32 posX, f32 posY, f32 posZ) {
 //init script
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8002E0CC.s")
 
-void func_8002E5DC(UnkTempStruct arg0) {
-    s32 sp2C;
+/**
+ * @brief Handles camera zoom, pan, and free cam input.
+ *
+ * Smoothly moves the camera size towards its target, then reads the pressed
+ * buttons: L toggles the free cam (forced off in the glass wall and billiards
+ * rooms), C-Up and C-Down step the zoom level between the minimum and 2, and
+ * C-Left and C-Right push the camera sideways. Does nothing while camera
+ * control is disabled by `gCameraInputDisabled`. The minimum zoom level is -1 in the
+ * overworld and -2 elsewhere.
+ *
+ * @param input The controller input holding the pressed buttons in `unk_02`.
+ */
+void HandleCameraInput(ContInput input) {
+    s32 minZoomLevel;
 
-    sp2C = -2;
+    minZoomLevel = -2;
     if (TRUE == isInOverworld) {
-        sp2C = -1;
+        minZoomLevel = -1;
     }
 
-    D_80174860->size1 = D_80174860->size1 + ((D_80174860->size2 - D_80174860->size1) * 0.200000003f);
-    if (D_801749A8 == 0) {
-        //if room is cycle 4 in kids land, or billiards in ghost castle, force free cam
+    gCurrentCamera->size1 = gCurrentCamera->size1 + ((gCurrentCamera->size2 - gCurrentCamera->size1) * 0.2f);
+    if (gCameraInputDisabled == 0) {
+        // force free cam
         if (((gCurrentStage == STAGE_KIDS) && (gCurrentZone == ZONE_GLASS_WALL_2)) || ((gCurrentStage == STAGE_GHOST) && (gCurrentZone == ZONE_BILLIARDS))) {
-            if (D_80174860->unk0 == 1) {
+            if (gCurrentCamera->unk0 == 1) {
                 PLAY_SFX(SFX_2C_unkSnd, 0, 0x10);
-                D_80174860->unk0 = 0;
-                if (D_80174860->unk40 == 2) {
+                gCurrentCamera->unk0 = 0;
+                if (gCurrentCamera->unk40 == 2) {
                     PLAY_SFX(SFX_2C_unkSnd+1, 0, 0x10);
-                    D_80174860->size2 /= 1.299999952f;
-                    D_80174860->unk40 -= 1;
+                    gCurrentCamera->size2 /= 1.3f;
+                    gCurrentCamera->unk40 -= 1;
                 }
                 func_800D34CC();
             }
-        } else if ((Battle_GameType == BATTLE_TYPE_NOTBATTLE) && (TRUE != isInOverworld) && (arg0.unk_02 & 0x20)) {
+        } else if ((Battle_GameType == BATTLE_TYPE_NOTBATTLE) && (TRUE != isInOverworld) && (input.buttons1 & L_TRIG)) {
             PLAY_SFX(SFX_2C_unkSnd, 0, 0x10);
-            if (D_80174860->unk0 == 0) {
-                D_80174860->unk0 = 1;
+            if (gCurrentCamera->unk0 == 0) {
+                gCurrentCamera->unk0 = 1;
             } else {
-                D_80174860->unk0 = 0;
-                if (D_80174860->unk40 == 2) {
+                gCurrentCamera->unk0 = 0;
+                if (gCurrentCamera->unk40 == 2) {
                     PLAY_SFX(SFX_2C_unkSnd+1, 0, 0x10);
-                    D_80174860->size2 /= 1.299999952f;
-                    D_80174860->unk40 -= 1;
+                    gCurrentCamera->size2 /= 1.3f;
+                    gCurrentCamera->unk40 -= 1;
                 }
             }
             func_800D34CC();
         }
-        if ((arg0.unk_02 & 4) && (((D_80174860->unk0 == 1) && (D_80174860->unk40 < 2)) || (D_80174860->unk40 <= 0))) {
+        if ((input.buttons1 & D_CBUTTONS) && (((gCurrentCamera->unk0 == 1) && (gCurrentCamera->unk40 < 2)) || (gCurrentCamera->unk40 <= 0))) {
             PLAY_SFX(SFX_2C_unkSnd+1, 0, 0x10);
-            D_80174860->size2 *= 1.299999952f;
-            D_80174860->unk40 += 1;
+            gCurrentCamera->size2 *= 1.3f;
+            gCurrentCamera->unk40 += 1;
         }
-        if ((arg0.unk_02 & 8) && (sp2C < D_80174860->unk40)) {
+        if ((input.buttons1 & U_CBUTTONS) && (minZoomLevel < gCurrentCamera->unk40)) {
             PLAY_SFX(SFX_2C_unkSnd+1, 0, 0x10);
-            D_80174860->size2 /= 1.299999952f;
-            D_80174860->unk40 -= 1;
+            gCurrentCamera->size2 /= 1.3f;
+            gCurrentCamera->unk40 -= 1;
         }
-        if ((arg0.unk_02 & 1) && (D_80174860->pushHoriz < 9)) {
+        if ((input.buttons1 & R_CBUTTONS) && (gCurrentCamera->pushHoriz < 9)) {
             PLAY_SFX(SFX_2C_unkSnd+1, 0, 0x10);
-            D_80174860->pushHoriz += 9;
+            gCurrentCamera->pushHoriz += 9;
         }
-        if ((arg0.unk_02 & 2) && (D_80174860->pushHoriz >= -8)) {
+        if ((input.buttons1 & L_CBUTTONS) && (gCurrentCamera->pushHoriz >= -8)) {
             PLAY_SFX(SFX_2C_unkSnd+1, 0, 0x10);
-            D_80174860->pushHoriz -= 9;
+            gCurrentCamera->pushHoriz -= 9;
         }
     }
 }
@@ -707,117 +837,131 @@ void func_8002E5DC(UnkTempStruct arg0) {
 //https://decomp.me/scratch/tpjwG
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8002E9F4.s")
 
-void func_8002ECCC(s32 arg0) {
-    f32 sp4C;
-    f32 sp48;
-    f32 sp44;
-    f32 sp40;
-    f32 sp3C;
-    f32 var_f18;
-    s32 sp34;
-    f32 var_f2;
-    f32 temp;
+/**
+ * @brief Updates the third person camera for the current frame.
+ *
+ * Consumes pending sideways pushes from `HandleCameraInput` at 5 degrees per
+ * frame. When a scripted camera override is active (`unk58`) the eye target
+ * comes from the override fields. Otherwise, if the camera was moved this
+ * frame the idle timer resets and the eye is placed behind the camera yaw,
+ * zoomed out further while the tongue is extended; if it was not moved, the
+ * camera starts easing around behind the player after 20 idle frames. The
+ * focus height follows the player smoothly and the eye height is clamped to
+ * stay above the player and above `gCameraMinY`.
+ *
+ * @param moved Nonzero when the camera was rotated by input this frame.
+ */
+void UpdateCamera(s32 moved) {
+    f32 camDist;
+    f32 camHeight;
+    f32 facingAngle;
+    f32 sp40; //unused, but required for match
+    f32 targetYaw;
+    f32 foldedAngle;
+    s32 idleFrames;
+    f32 yawDiff;
+    f32 delta;
 
-    sp4C = D_80174860->size1 * 800.0f;
-    sp48 = D_80174860->size1 * 600.0f;
-    if (D_80174860->pushHoriz > 0) {
-        D_80174860->pushHoriz = D_80174860->pushHoriz - 1;
-        D_80174860->f1.x += 5.0f;
-        WrapDegrees(&D_80174860->f1.x);
-        arg0 = 1;
-    } else if (D_80174860->pushHoriz < 0) {
-        D_80174860->pushHoriz = D_80174860->pushHoriz + 1;
-        D_80174860->f1.x -= 5.0f;
-        WrapDegrees(&D_80174860->f1.x);
-        arg0 = 1;
+    camDist = gCurrentCamera->size1 * 800.0f;
+    camHeight = gCurrentCamera->size1 * 600.0f;
+    if (gCurrentCamera->pushHoriz > 0) {
+        gCurrentCamera->pushHoriz = gCurrentCamera->pushHoriz - 1;
+        gCurrentCamera->f1.x += 5.0f;
+        WrapDegrees(&gCurrentCamera->f1.x);
+        moved = 1;
+    } else if (gCurrentCamera->pushHoriz < 0) {
+        gCurrentCamera->pushHoriz = gCurrentCamera->pushHoriz + 1;
+        gCurrentCamera->f1.x -= 5.0f;
+        WrapDegrees(&gCurrentCamera->f1.x);
+        moved = 1;
     }
-    if (D_80174860->unk58 != 0) {
-        D_80174860->f3.x = D_80174860->unk5C;
-        D_80174860->f3.y = D_80174860->unk60;
-        D_80174860->f3.z = D_80174860->unk64;
+    if (gCurrentCamera->unk58 != 0) {
+        gCurrentCamera->f3.x = gCurrentCamera->unk5C;
+        gCurrentCamera->f3.y = gCurrentCamera->unk60;
+        gCurrentCamera->f3.z = gCurrentCamera->unk64;
         func_8002E9F4();
     } else {
-        if (arg0 != 0) {
-            D_80174860->untouchedTimer = 0;
+        if (moved != 0) {
+            gCurrentCamera->untouchedFramesElapsed = 0;
             if (gTongueOnePointer->tongueMode != 0) {
-                sp44 = 180.0f - D_80174860->f1.x;
-                WrapDegrees(&sp44);
-                gTongueOnePointer->trueAngle = sp44 - gTongueOnePointer->controlAngle;
+                facingAngle = 180.0f - gCurrentCamera->f1.x;
+                WrapDegrees(&facingAngle);
+                gTongueOnePointer->trueAngle = facingAngle - gTongueOnePointer->controlAngle;
                 WrapDegrees(&gTongueOnePointer->trueAngle);
                 if (gTongueOnePointer->trueAngle > 180.0f) {
                     gTongueOnePointer->trueAngle = 360.0f - gTongueOnePointer->trueAngle;
                 }
                 func_8002E9F4();
                 if (gTongueOnePointer->trueAngle > 90.0f) {
-                    temp = -(90.0f - gTongueOnePointer->trueAngle);
+                    delta = -(90.0f - gTongueOnePointer->trueAngle);
 
                 } else {
-                    temp = (90.0f - gTongueOnePointer->trueAngle);
+                    delta = (90.0f - gTongueOnePointer->trueAngle);
                 }
-                var_f18 = 90.0f - temp;
-                sp4C = (sp4C * 1.0f) * (1.0f + ((gTongueOnePointer->length * (1.0f + ((var_f18 * var_f18) / 3000.0f))) / 10000.0f));
-                sp48 *= 1.0f + ((gTongueOnePointer->length * (1.0f + ( SQ(var_f18) / 8000.0f))) / 10000.0f);
-                D_80174860->f3.x = (cosf((((D_80174860->f1.x * 2) * PI) / 360.0)) * sp4C) + D_80174860->f1.z;
-                D_80174860->f3.z = D_80174860->f2.y - (sinf((((D_80174860->f1.x * 2) * PI) / 360.0)) * sp4C);
+                foldedAngle = 90.0f - delta;
+                camDist = (camDist * 1.0f) * (1.0f + ((gTongueOnePointer->length * (1.0f + ((foldedAngle * foldedAngle) / 3000.0f))) / 10000.0f));
+                camHeight *= 1.0f + ((gTongueOnePointer->length * (1.0f + ( SQ(foldedAngle) / 8000.0f))) / 10000.0f);
+                gCurrentCamera->f3.x = (cosf((((gCurrentCamera->f1.x * 2) * PI) / 360.0)) * camDist) + gCurrentCamera->f1.z;
+                gCurrentCamera->f3.z = gCurrentCamera->f2.y - (sinf((((gCurrentCamera->f1.x * 2) * PI) / 360.0)) * camDist);
             } else {
                 func_8002E9F4();
-                D_80174860->f3.x = (cosf((((D_80174860->f1.x * 2) * PI) / 360.0)) * sp4C) + D_80174860->f1.z;
-                D_80174860->f3.z = D_80174860->f2.y - (sinf((((D_80174860->f1.x * 2) * PI) / 360.0)) * sp4C);
+                gCurrentCamera->f3.x = (cosf((((gCurrentCamera->f1.x * 2) * PI) / 360.0)) * camDist) + gCurrentCamera->f1.z;
+                gCurrentCamera->f3.z = gCurrentCamera->f2.y - (sinf((((gCurrentCamera->f1.x * 2) * PI) / 360.0)) * camDist);
             }
         } else {
-            sp3C = gCurrentActivePlayerPointer->yAngle + D_80174860->unk50;
-            D_80174860->untouchedTimer++;
-            sp34 = D_80174860->untouchedTimer;
-            WrapDegrees(&sp3C);
-            if (D_80174860->f1.x < 180.0f) {
-                if ((D_80174860->f1.x + 180.0f) < sp3C) {
-                    var_f2 = (-360.0f - D_80174860->f1.x) + sp3C;
+            targetYaw = gCurrentActivePlayerPointer->yAngle + gCurrentCamera->unk50;
+            gCurrentCamera->untouchedFramesElapsed++;
+            idleFrames = gCurrentCamera->untouchedFramesElapsed;
+            WrapDegrees(&targetYaw);
+            if (gCurrentCamera->f1.x < 180.0f) {
+                if ((gCurrentCamera->f1.x + 180.0f) < targetYaw) {
+                    yawDiff = (-360.0f - gCurrentCamera->f1.x) + targetYaw;
                 } else {
-                    var_f2 = sp3C - D_80174860->f1.x;
+                    yawDiff = targetYaw - gCurrentCamera->f1.x;
                 }
-            } else if (sp3C < (D_80174860->f1.x - 180.0f)) {
-                var_f2 = (360.0f - D_80174860->f1.x) + sp3C;
+            } else if (targetYaw < (gCurrentCamera->f1.x - 180.0f)) {
+                yawDiff = (360.0f - gCurrentCamera->f1.x) + targetYaw;
             } else {
-                var_f2 = sp3C - D_80174860->f1.x;
+                yawDiff = targetYaw - gCurrentCamera->f1.x;
             }
-            if (sp34 >= 61) {
-                sp34 = 0x3C;
+            if (idleFrames >= 61) {
+                idleFrames = 60;
             }
-            if (sp34 >= 20) {
-                D_80174860->f1.x = D_80174860->f1.x + (((var_f2 * (sp34 - 0x13)) / 41.0f) * 0.02999999933f);
+            if (idleFrames >= 20) {
+                gCurrentCamera->f1.x = gCurrentCamera->f1.x + (((yawDiff * (idleFrames - 0x13)) / 41.0f) * 0.03f);
             }
-            WrapDegrees(&D_80174860->f1.x);
+            WrapDegrees(&gCurrentCamera->f1.x);
             func_8002E9F4();
-            D_80174860->f3.x = (cosf( (((D_80174860->f1.x * 2) * PI) / 360.0)) * sp4C) + D_80174860->f1.z;
-            D_80174860->f3.z = D_80174860->f2.y - (sinf((((D_80174860->f1.x * 2) * PI) / 360.0)) * sp4C);
+            gCurrentCamera->f3.x = (cosf( (((gCurrentCamera->f1.x * 2) * PI) / 360.0)) * camDist) + gCurrentCamera->f1.z;
+            gCurrentCamera->f3.z = gCurrentCamera->f2.y - (sinf((((gCurrentCamera->f1.x * 2) * PI) / 360.0)) * camDist);
         }
         if ((gTongueOnePointer->tongueMode == 4) || (gTongueOnePointer->tongueMode == 5) || (gTongueOnePointer->tongueMode == 0xB)) {
-            D_80174860->f2.z = (D_80174860->f2.z + ((gCurrentActivePlayerPointer->pos2.y - D_80174860->f2.z) * 0.0500000000000000028));
+            gCurrentCamera->f2.z = (gCurrentCamera->f2.z + ((gCurrentActivePlayerPointer->pos2.y - gCurrentCamera->f2.z) * 0.05));
         } else {
-            D_80174860->f2.z = (D_80174860->f2.z + ((gCurrentActivePlayerPointer->yCounter - D_80174860->f2.z) * 0.0500000000000000028));
+            gCurrentCamera->f2.z = (gCurrentCamera->f2.z + ((gCurrentActivePlayerPointer->yCounter - gCurrentCamera->f2.z) * 0.05));
         }
 
-        if (D_80174860->f2.z + sp48 < gCurrentActivePlayerPointer->pos2.y) {
-            D_80174860->f3.y = gCurrentActivePlayerPointer->pos2.y;
+        if (gCurrentCamera->f2.z + camHeight < gCurrentActivePlayerPointer->pos2.y) {
+            gCurrentCamera->f3.y = gCurrentActivePlayerPointer->pos2.y;
         } else {
-            D_80174860->f3.y = D_80174860->f2.z + sp48;
+            gCurrentCamera->f3.y = gCurrentCamera->f2.z + camHeight;
         }
-        if (D_80174860->f3.y < D_80174994) {
-            D_80174860->f3.y = D_80174994;
+        if (gCurrentCamera->f3.y < gCameraMinY) {
+            gCurrentCamera->f3.y = gCameraMinY;
         }
     }
 
     SetCameraParameters();
     if (D_800FEA30 >= 2) {
-        D_80174860->f4.x = D_80174860->f3.x;
-        D_80174860->f4.y = D_80174860->f3.y;
-        D_80174860->f4.z = D_80174860->f3.z;
-        D_80174860->f5.x = D_80174860->f1.z;
-        D_80174860->f5.y = D_80174860->f2.x;
-        D_80174860->f5.z = D_80174860->f2.y;
+        gCurrentCamera->eye.x = gCurrentCamera->f3.x;
+        gCurrentCamera->eye.y = gCurrentCamera->f3.y;
+        gCurrentCamera->eye.z = gCurrentCamera->f3.z;
+        gCurrentCamera->lookAt.x = gCurrentCamera->f1.z;
+        gCurrentCamera->lookAt.y = gCurrentCamera->f2.x;
+        gCurrentCamera->lookAt.z = gCurrentCamera->f2.y;
     }
 
-    D_80174860->f1.y = CalculateAngleOfVector(D_80174860->f4.x - D_80174860->f5.x, -(D_80174860->f4.z - D_80174860->f5.z));
+    gCurrentCamera->f1.y = ArcTan2Deg(gCurrentCamera->eye.x - gCurrentCamera->lookAt.x, -(gCurrentCamera->eye.z - gCurrentCamera->lookAt.z));
 }
 
 //related to animation
@@ -834,34 +978,37 @@ void func_8002F3D4(void) {
     if (gCurrentActivePlayerPointer->canJump == 0) {
         if (gCurrentActivePlayerPointer->forwardVel == 0.0f) {
             gCurrentActivePlayerPointer->groundMovement = 0;
-            gCurrentActivePlayerPointer->globalTimer = (gCurrentActivePlayerPointer->globalTimer + 0.3000000119f);
+            gCurrentActivePlayerPointer->globalTimer = (gCurrentActivePlayerPointer->globalTimer + 0.3f);
             return;
         }
         if (gCurrentActivePlayerPointer->forwardVel < (65.0f * gCurrentActivePlayerPointer->forwardImpulse)) {
             gCurrentActivePlayerPointer->groundMovement = 1;
-            gCurrentActivePlayerPointer->globalTimer = (gCurrentActivePlayerPointer->globalTimer + (((2.0f + (((gCurrentActivePlayerPointer->forwardVel / ((65.0f * gCurrentActivePlayerPointer->forwardImpulse) / 10.0f)) * gCurrentActivePlayerPointer->forwardImpulse) / 0.3200000226f)) / 4.5f) / 1.799999952f));
+            gCurrentActivePlayerPointer->globalTimer = (gCurrentActivePlayerPointer->globalTimer + (((2.0f + (((gCurrentActivePlayerPointer->forwardVel / ((65.0f * gCurrentActivePlayerPointer->forwardImpulse) / 10.0f)) * gCurrentActivePlayerPointer->forwardImpulse) / 0.32000002f)) / 4.5f) / 1.8f));
             return;
         }
         gCurrentActivePlayerPointer->groundMovement = 2;
-        gCurrentActivePlayerPointer->globalTimer = gCurrentActivePlayerPointer->globalTimer + 1.5f * gCurrentActivePlayerPointer->forwardImpulse / 0.3200000226f;
+        gCurrentActivePlayerPointer->globalTimer = gCurrentActivePlayerPointer->globalTimer + 1.5f * gCurrentActivePlayerPointer->forwardImpulse / 0.32000002f;
     }
 }
 
 
-void func_8002F528(s32 arg0) {
-    gCurrentActivePlayerPointer->playerHURTSTATE = 3;
-    gCurrentActivePlayerPointer->playerHURTTIMER = 0;
+// Transitions the current active player into the post-hit invulnerability/flicker window
+void StartPlayerInvulnFlicker(s32 arg0) {
+    gCurrentActivePlayerPointer->playerHurtState = PLAYER_HURT_INVULN;
+    gCurrentActivePlayerPointer->playerHurtTimer = 0;
 }
 
 
-void func_8002F54C(f32 arg0, PlayerActor* PlayerP, s32 arg2) {
-    PlayerP->vel.y = arg0;
-    PlayerP->canJump = 1;
-    PlayerP->hasTumbled = arg2;
-    PlayerP->jumpReleasedInAir = 0;
-    PlayerP->jumpAnimFrame = 0;
+// Launches the player vertically: sets vel.y, re-enables jumping, resets the
+// jump-release/anim state, and marks whether this launch counts as a tumble. Only current
+// caller is the damage-knockback path (velY=48.0, tumbling=1).
+void LaunchPlayerVertically(f32 velY, PlayerActor* player, s32 tumbling) {
+    player->vel.y = velY;
+    player->canJump = 1;
+    player->hasTumbled = tumbling;
+    player->jumpReleasedInAir = 0;
+    player->jumpAnimFrame = 0;
 }
-
 
 
 void func_8002F568(void) {
@@ -872,12 +1019,13 @@ void func_8002F568(void) {
     }
 }
 
-f32 func_8002F5C4(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
-    arg0 = arg1 - arg0;
-    if (arg2 < arg0) {
-        arg0 = arg2;
+// Player squish-recovery ease curve
+f32 CalcSquishReboundCurve(s32 squishFramesElapsed, s32 targetFrame, s32 duration, s32 wobbleCycles) {
+    squishFramesElapsed = targetFrame - squishFramesElapsed;
+    if (duration < squishFramesElapsed) {
+        squishFramesElapsed = duration;
     }
-    return (((((sinf(arg0 * 0x168 * arg3 / arg2 * 2 * PI / 360.0) * (arg2 - arg0)) / arg2) + 3.0) * arg0) / 4) / arg2;
+    return (((((sinf(squishFramesElapsed * 0x168 * wobbleCycles / duration * 2 * PI / 360.0) * (duration - squishFramesElapsed)) / duration) + 3.0) * squishFramesElapsed) / 4) / duration;
 }
 
 s32 func_8002F6DC(f32* arg0, f32 arg1) {
@@ -897,7 +1045,7 @@ s32 func_8002F6DC(f32* arg0, f32 arg1) {
     }
 
     if (var_f0 < 45.0f) {
-        var_f2 = (var_f0 / 1.607142806f) + 2.0f;
+        var_f2 = (var_f0 / 1.6071428f) + 2.0f;
     }
 
     if (var_f2 <= var_f0) {
@@ -924,29 +1072,35 @@ void SetPlayerImpulse(void) {
     amountInMouth = gTongueOnePointer->amountInMouth;
     if (amountInMouth < 6) {
         // set impulse between 0.93 and 1.0
-        gCurrentActivePlayerPointer->forwardImpulse = (((24.0f - amountInMouth) * 0.3200000226f) / 24.0f);
+        gCurrentActivePlayerPointer->forwardImpulse = (((24.0f - amountInMouth) * 0.32000002f) / 24.0f);
     } else {
-        gCurrentActivePlayerPointer->forwardImpulse = 0.2400000095f;
+        gCurrentActivePlayerPointer->forwardImpulse = 0.24000001f;
     }
     if (gCurrentActivePlayerPointer->power == POWERUP_MINI) {
         gCurrentActivePlayerPointer->forwardImpulse = (gCurrentActivePlayerPointer->forwardImpulse * 0.5f);
     }
 }
 
-void func_8002F884(s32 arg0, s32 arg1) {
-    if (((D_801749B0 == 0) || (gCurrentActivePlayerPointer->playerID != 1)) && (D_80168D78[arg0] == 0)) {
+// Triggers a rumble pulse for a player, scaled by an event-specific intensity (e.g. 2 for
+// TongueHitWall, 5 for the damage-hit sequence). Skipped if D_80168D78[playerID] flags that
+// player's controller slot as rumble-incapable, or (for player 1 specifically) when D_801749B0
+// is set. Duration is scaled differently in battle mode vs normal play.
+void TriggerPlayerRumble(s32 playerID, s32 intensity) {
+    if (((D_801749B0 == 0) || (gCurrentActivePlayerPointer->playerID != 1)) && (D_80168D78[playerID] == 0)) {
         if (gGameModeCurrent == GAME_MODE_BATTLE_MENU) {
-            Rumble_AddTime(arg0, ((arg1 * 100) / 6.0f));
+            Rumble_AddTime(playerID, ((intensity * 100) / 6.0f));
         } else {
-            Rumble_AddTime(arg0, ((arg1 * 100) * 0.5f));
+            Rumble_AddTime(playerID, ((intensity * 100) * 0.5f));
         }
     }
 }
 
-void func_8002F960(Tongue* arg0) {
-    func_8002F884(gCurrentActivePlayerPointer->playerID, 2);
+// Tongue hits a wall: rumble pulse, wall-hit SFX, and a 10-frame lockout (wallTime) during
+// which the tongue is unusable and flickers.
+void TongueHitWall(Tongue* tongue) {
+    TriggerPlayerRumble(gCurrentActivePlayerPointer->playerID, 2);
     PLAY_SFX(SFX_TongueWall, 0, 0X10);
-    arg0->wallTime = 10;
+    tongue->wallTime = 10;
 }
 
 void ClearPlayerPowerups(PlayerActor* arg0) {
@@ -962,20 +1116,120 @@ void ClearPlayerPowerups(PlayerActor* arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8002FA34.s")
 
 //
+#ifdef NON_MATCHING
+// diff score: 92 words
+s32 func_80030DCC(f32 x, f32 y, f32 z)
+{
+  Actor *actor;
+  actorSubArray *seg;
+  s32 byteI;
+  s32 byteEnd;
+  f32 actorY;
+  f32 dx;
+  f32 dz;
+  f32 range;
+  volatile unsigned short new_var2;
+  float new_var;
+  Actor *new_var3;
+  actor = gActors;
+  do
+  {
+    if ((((actor->actorID != 0) && (actor->actorID < 0x5F)) && (actor->unk_A0.unk_00 != 3)) && ((actor->actorState == 0) || (actor->actorState == 3)))
+    {
+      byteI = 0;
+      seg = actor->unknownPositionThings;
+      if (actor->tongueCollision > 0)
+      {
+        actorY = actor->pos.y;
+        do
+        {
+          byteI += 0x14;
+          if (((seg->unk_04 + (actorY + seg->unk_10)) < (y - 50.0f)) || ((y + 50.0f) < (seg->unk_04 + actorY)))
+          {
+            byteEnd = actor->tongueCollision * 0x14;
+          }
+          else
+          {
+            dx = x;
+            new_var3 = actor;
+            new_var = (seg->unk_08 + new_var3->pos.z) - z;
+            dx = (seg->unk_00 + new_var3->pos.x) - dx;
+            range = seg->unk_0C + 50.0f;
+            dz = new_var;
+            if ((range * range) < ((dx * dx) + (dz * dz)))
+            {
+              byteEnd = new_var2;
+            }
+            else
+            {
+              return 1;
+            }
+            new_var2 = new_var3->tongueCollision * 0x14;
+          }
+          seg++;
+        }
+        while (byteI < byteEnd);
+      }
+    }
+    actor++;
+  }
+  while (actor != ((Actor *) Poles));
+  return 0;
+}
+#else
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80030DCC.s")
+#endif
 
 //https://decomp.me/scratch/BeR2b
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80030F3C.s")
+void UpdateTongueReticle(void) {
+    s32 hit;
+    s32 i;
+    s32 spread;
+    f32 dist;
 
-void func_800311C8(Actor* arg0) {
-    Actor* curActor;
+    hit = 0;
+    for (i = 0, spread = 0; i < 6; i++) {
+        dist = (spread / 6) + ((s32) (gTimer << 6) % 533);
+        gCurrentActivePlayerPointer->unk_DC[i] = (cosf((((gCurrentActivePlayerPointer->yAngle * 2) * PI) / 360.0)) * dist) + gCurrentActivePlayerPointer->pos.x;
+        gCurrentActivePlayerPointer->unk_F4[i] = gCurrentActivePlayerPointer->pos.z - (sinf((((gCurrentActivePlayerPointer->yAngle * 2) * PI) / 360.0)) * dist);
+        if (func_80030DCC(gCurrentActivePlayerPointer->unk_DC[i], gCurrentActivePlayerPointer->pos.y + gCurrentActivePlayerPointer->tongueYOffset, gCurrentActivePlayerPointer->unk_F4[i]) != 0) {
+            hit = 1;
+        }
+        spread += 0xC80;
+    }
+    if (func_800CF080((s32) gCurrentActivePlayerPointer, 3200.0f) != 0) {
+        hit = 1;
+    }
+    if (hit != 0) {
+        *(s32*) &gCurrentActivePlayerPointer->targetLockFramesLeft = 6;
+    } else {
+        *(s32*) &gCurrentActivePlayerPointer->targetLockFramesLeft = *(s32*) &gCurrentActivePlayerPointer->targetLockFramesLeft - 1;
+    }
+    if (*(s32*) &gCurrentActivePlayerPointer->targetLockFramesLeft >= 0) {
+        gCurrentActivePlayerPointer->reticleSize += 0.1f;
+        if (gCurrentActivePlayerPointer->reticleSize > 2.0f) {
+            gCurrentActivePlayerPointer->reticleSize = 2.0f;
+        }
+    } else {
+        gCurrentActivePlayerPointer->reticleSize -= 0.1f;
+        if (gCurrentActivePlayerPointer->reticleSize < 1.0f) {
+            gCurrentActivePlayerPointer->reticleSize = 1.0f;
+        }
+    }
+}
+
+// Despawns a whole Lizard Kong Butterfly (actorID 0x47) group at once: if this butterfly is idle
+// and its group hasn't already been flagged, clear the shared group record and mark every other
+// butterfly sharing the same group id (unk_128) to despawn too.
+void DespawnButterflyGroup(Actor* butterfly) {
+    Actor* unused; // dead local - incremented but never read, decompiler artifact
     s32 i;
 
-    if ((arg0->actorState == 0) && (arg0->actorID == 0x47)) {
-        if (arg0->userVariables[3] == 0) {
-            D_80170E68[arg0->unk_128].unk_00 = 0;
-            for (i = 0; i < MAX_ACTORS; i++, curActor++) {
-                if ((gActors[i].actorID == 0x47) && (arg0->unk_128 == gActors[i].unk_128)) {
+    if ((butterfly->actorState == 0) && (butterfly->actorID == LIZARD_KONG_BUTTERFLY)) {
+        if (butterfly->userVariables[3] == 0) {
+            D_80170E68[butterfly->unk_128].unk_00 = 0;
+            for (i = 0; i < MAX_ACTORS; i++, unused++) {
+                if ((gActors[i].actorID == LIZARD_KONG_BUTTERFLY) && (butterfly->unk_128 == gActors[i].unk_128)) {
                     gActors[i].userVariables[3] = -1;
                 }
             }
@@ -989,19 +1243,24 @@ void func_800312B0(s32 id) {
     currActor->unknownPositionThings[0].unk_10 = currActor->sizeScalar * currActor->tYPos;
 }
 
-void func_800312FC(Actor* arg0, f32 arg1) {
-    arg0->userVariables[0] = 0;
-    arg0->userVariables[1] = 14;
-    arg0->unk_134[3] = 76.80000305f;
-    arg0->vel.x = cosf(DEGREES_TO_RADIANS_2PI(arg1)) * 16.0f;     //cosf(DEGREES_TO_RADIANS_2PI(arg1)) * 16.0f;
-    arg0->vel.z = -sinf(DEGREES_TO_RADIANS_2PI(arg1)) * 16.0f;
-    arg0->tongueCollision = 0;
-    PLAY_SFX_AT(SFX_6D_unkSnd, arg0->pos, 0, 0);
+// Ant Queen's per-hit knockback reaction: launches her away at the given angle, disables
+// tongue-grab, and transitions her state machine (userVariables[1]) to 14. Called by
+// func_80036F30's countdown (unk_120, armed from level data via unk_12C) each hit until it
+// reaches 0, at which point the defeat sequence (func_800313BC + Effect_BossDeadEyes_Init)
+// fires instead.
+void QueenAnt_HitRecoil(Actor* quintella, f32 angle) {
+    quintella->userVariables[0] = 0;
+    quintella->userVariables[1] = 14;
+    quintella->unk_134[3] = 76.8f;
+    quintella->vel.x = cosf(DEGREES_TO_RADIANS_2PI(angle)) * 16.0f;
+    quintella->vel.z = -sinf(DEGREES_TO_RADIANS_2PI(angle)) * 16.0f;
+    quintella->tongueCollision = 0;
+    PLAY_SFX_AT(SFX_6D_unkSnd, quintella->pos, 0, 0);
 }
 
 
 void func_800313BC(s32 arg0, f32 arg1) {
-    func_800311C8(gActors+arg0);
+    DespawnButterflyGroup(gActors+arg0);
     gActors[arg0].actorState = 4;
     gActors[arg0].unk_C8 = 0;
     gActors[arg0].sizeScalar = 1.0f;
@@ -1015,13 +1274,90 @@ void func_800313BC(s32 arg0, f32 arg1) {
 }
 
 void func_800314E4(Actor* arg0) {
-    if (arg0->actorID == 1) {
+    if (arg0->actorID == RED_ANT) {
         D_80172E88[arg0->userVariables[0]].unk_00 = 0;
     }
-    arg0->actorID = 0;
+    arg0->actorID = ACTOR_NULL;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80031518.s")
+// Shared "room clear condition met" reaction: defeat all golems, mirror rooms, and minigames
+// (billiards, bowling)
+void TriggerRoomClearReaction(Actor* trigger) {
+    Actor* other;
+    s32 i;
+    s32 actorOffset;
+    s32 triggerID;
+    s32 otherID;
+    s32 golemID = GOLEM;
+    s32 spiderSpawnerID = GOLEM_ROOM_SPIDER_SPAWNER;
+    PlayerActor* player;
+    f32 x;
+    f32 z;
+
+    triggerID = trigger->actorID;
+    if ((triggerID == MIRROR) && (trigger->userVariables[1] == 1)) {
+        for (i = 0, actorOffset = 0, other = gActors; i != MAX_ACTORS; i++, actorOffset += sizeof(Actor), other++) {
+            otherID = other->actorID;
+            if (((otherID >= CUP) && (otherID < RNG_ROOM_SPAWNER)) || (otherID == MIRROR)) {
+                func_800313BC(i, other->unk_90);
+                otherID = other->actorID;
+            }
+            if ((otherID == RNG_ROOM_SPAWNER) || ((otherID == FIRE) && (other->actorState == 0))) {
+                TriggerRoomClearReaction((Actor*) ((u8*) gActors + actorOffset)); //byte-offset form required for match
+            }
+        }
+    } else if (golemID == triggerID) {
+        trigger->actorID = ACTOR_NULL;
+        for (other = gActors; other < &gActors[MAX_ACTORS]; other++) {
+            if (golemID == other->actorID) {
+                return;
+            }
+        }
+        for (i = 0, other = gActors; i != MAX_ACTORS; i++, other++) {
+            otherID = other->actorID;
+            if (otherID != 0) {
+                if ((spiderSpawnerID == otherID) || ((otherID == SPIDER) && (other->actorState == 0))) {
+                    func_800313BC(i, Random(0, 360));
+                }
+            }
+        }
+    } else if (triggerID == BILLIARDS_BALL) {
+        player = gCurrentActivePlayerPointer;
+        x = player->pos.x;
+        z = player->pos.z;
+        if (x > 1800.0f) {
+            x = 1800.0f;
+        }
+        if (x < -1800.0f) {
+            x = -1800.0f;
+        }
+        if (z > 900.0f) {
+            z = 900.0f;
+        }
+        if (z < -900.0f) {
+            z = -900.0f;
+        }
+        Actor_SpawnAt(FALLING_R_HEART, x, player->pos.y + 1000.0f, z);
+    } else if (triggerID == BOWLING_PINS) {
+        // Same XZ clamp as the BILLIARDS_BALL case, but the result is never used
+        player = gCurrentActivePlayerPointer;
+        x = player->pos.x;
+        z = player->pos.z;
+        if (x > 1800.0f) {
+            x = 1800.0f;
+        }
+        if (x < -1800.0f) {
+            x = -1800.0f;
+        }
+        if (z > 900.0f) {
+            z = 900.0f;
+        }
+        if (z < -900.0f) {
+            z = -900.0f;
+        }
+    }
+    func_800314E4(trigger);
+}
 
 //has to do with tonguing poles and camera stuff?
 void func_800317A0(void) {
@@ -1029,9 +1365,9 @@ void func_800317A0(void) {
     gTongueOnePointer->controlAngle = gCurrentActivePlayerPointer->yAngle;
     gTongueOnePointer->length = 0;
 
-    for (i = gTongueOnePointer->poleSegmentAt; i < gTongueOnePointer->cameraSegmentAt; i++){
+    for (i = gTongueOnePointer->poleSegmentAt; i < gTongueOnePointer->cameraSegmentAt; i++) {
         if (((gTongueOnePointer->tongueXs[i] != 0.0f) || (gTongueOnePointer->tongueZs[i] != 0.0f)) && (gTongueOnePointer->length < gTongueOnePointer->tongueForwards[i])) {
-            gTongueOnePointer->controlAngle = CalculateAngleOfVector(gTongueOnePointer->tongueXs[i], gTongueOnePointer->tongueZs[i]);
+            gTongueOnePointer->controlAngle = ArcTan2Deg(gTongueOnePointer->tongueXs[i], gTongueOnePointer->tongueZs[i]);
             gTongueOnePointer->length = gTongueOnePointer->tongueForwards[i];
         }
     }
@@ -1047,30 +1383,33 @@ s32 func_80032074(s32 arg0) {
     if ((actor->actorState != 0) && (actor->actorState != 3)) {
         return 1;
     }
-    if ((actor->actorID == 0) || (actor->unk_A0.unk_00 == 3)) {
+    if ((actor->actorID == ACTOR_NULL) || (actor->unk_A0.unk_00 == 3)) {
         return 1;
     }
     return 0;
 }
 
 
-void func_800320EC(s32 arg0, f32 arg1, f32 arg2) {
+// Called by func_800321F8 when the player's swinging tongue (wrapped around a pole) brushes
+// an actor for two consecutive frames. Computes the angle around the pole where contact
+// happened and arms the actor into an orbit-around-the-pole state at that angle
+void CaptureActorOnPoleSwing(s32 actorIndex, f32 contactX, f32 contactZ) {
     f32 angle;
 
-    angle = CalcAngleBetween2DPoints(arg1, arg2, Poles[gTongueOnePointer->poleID].pos.x, Poles[gTongueOnePointer->poleID].pos.z);
-    if (gActors[arg0].userVariables[0] == 0) {
-        if (gTimer != (gActors[arg0].userVariables[3] + 1)) {
-            gActors[arg0].userVariables[3] = gTimer;
+    angle = CalcAngleBetween2DPoints(contactX, contactZ, Poles[gTongueOnePointer->poleID].pos.x, Poles[gTongueOnePointer->poleID].pos.z);
+    if (gActors[actorIndex].userVariables[0] == 0) {
+        if (gTimer != (gActors[actorIndex].userVariables[3] + 1)) {
+            gActors[actorIndex].userVariables[3] = gTimer;
             return;
         }
         angle += gTongueOnePointer->tongueDir * 90.0f;
         WrapDegrees(&angle);
 
-        gActors[arg0].unk_134[2] = angle;
-        gActors[arg0].userVariables[0] = 1;
-        gActors[arg0].unk_134[0] = angle;
-        gActors[arg0].unk_134[1] = 0.0f;
-        gActors[arg0].unk_134[3] = 0.0f;
+        gActors[actorIndex].unk_134[2] = angle;
+        gActors[actorIndex].userVariables[0] = 1;
+        gActors[actorIndex].unk_134[0] = angle;
+        gActors[actorIndex].unk_134[1] = 0.0f;
+        gActors[actorIndex].unk_134[3] = 0.0f;
     }
 }
 
@@ -1128,32 +1467,32 @@ void pickup_collide_func(s32 actorIndex) {
     case TIME_STOP_POWER_UP:
         ClearPlayerPowerups(gCurrentActivePlayerPointer);
         gCurrentActivePlayerPointer->power = 4;
-        gCurrentActivePlayerPointer->powerTimer = 0;
-        gCurrentActivePlayerPointer->powerTimerTill = actor->unk_128;
+        gCurrentActivePlayerPointer->powerFramesElapsed = 0;
+        gCurrentActivePlayerPointer->powerDuration = actor->unk_128;
         PLAY_SFX(SFX_3A_unkSnd, 0, 0x10);
         var_s0 = 0x32;
         break;
     case BIG_FEET_POWER_UP:
         ClearPlayerPowerups(gCurrentActivePlayerPointer);
         gCurrentActivePlayerPointer->power = 1;
-        gCurrentActivePlayerPointer->powerTimer = 0;
-        gCurrentActivePlayerPointer->powerTimerTill = actor->unk_128;
+        gCurrentActivePlayerPointer->powerFramesElapsed = 0;
+        gCurrentActivePlayerPointer->powerDuration = actor->unk_128;
         PLAY_SFX(SFX_3A_unkSnd, 0, 0x10);
         var_s0 = 0x32;
         break;
     case BIG_HEAD_POWER_UP:
         ClearPlayerPowerups(gCurrentActivePlayerPointer);
         gCurrentActivePlayerPointer->power = 2;
-        gCurrentActivePlayerPointer->powerTimer = 0;
-        gCurrentActivePlayerPointer->powerTimerTill = actor->unk_128;
+        gCurrentActivePlayerPointer->powerFramesElapsed = 0;
+        gCurrentActivePlayerPointer->powerDuration = actor->unk_128;
         PLAY_SFX(SFX_3A_unkSnd, 0, 0x10);
         var_s0 = 0x32;
         break;
     case SHRINK_POWER_UP:
         ClearPlayerPowerups(gCurrentActivePlayerPointer);
         gCurrentActivePlayerPointer->power = 3;
-        gCurrentActivePlayerPointer->powerTimer = 0;
-        gCurrentActivePlayerPointer->powerTimerTill = actor->unk_128;
+        gCurrentActivePlayerPointer->powerFramesElapsed = 0;
+        gCurrentActivePlayerPointer->powerDuration = actor->unk_128;
         gCurrentActivePlayerPointer->tongueYOffset = 30.0f;
         gCurrentActivePlayerPointer->tongueSeperation = 25.0f;
         gCurrentActivePlayerPointer->hitboxSize *= 0.5f;
@@ -1171,8 +1510,8 @@ void pickup_collide_func(s32 actorIndex) {
 
             gCurrentActivePlayerPointer = &gPlayerActors[i];
             gCurrentActivePlayerPointer->power = 3;
-            gCurrentActivePlayerPointer->powerTimer = 0;
-            gCurrentActivePlayerPointer->powerTimerTill = actor->unk_128;
+            gCurrentActivePlayerPointer->powerFramesElapsed = 0;
+            gCurrentActivePlayerPointer->powerDuration = actor->unk_128;
             gCurrentActivePlayerPointer->tongueYOffset = 30.0f;
             gCurrentActivePlayerPointer->tongueSeperation = 25.0f;
             gCurrentActivePlayerPointer->hitboxSize *= 0.5f;
@@ -1185,7 +1524,7 @@ void pickup_collide_func(s32 actorIndex) {
         break;
     }
 
-    actor->actorID = 0;
+    actor->actorID = ACTOR_NULL;
 
     if (var_s0 == 0) {
         Effect_PlayerEyes_Init(gSelectedCharacters[gCurrentActivePlayerPointer->playerID], 2, 50.0f, 0);
@@ -1196,7 +1535,31 @@ void pickup_collide_func(s32 actorIndex) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80034104.s")
 
+// score 970
+// appears to be the function that drags actors in towards the chameleon following the tongue segment they attached to
+#ifdef NON_MATCHING
+void func_800343B4(void) {
+    Tongue* tongue = gTongueOnePointer;
+    PlayerActor* player;
+    Actor* actor;
+    s32 i;
+    s32 seg;
+
+    for (i = 0; i < (s32) tongue->amountOnTongue; i++) {
+        actor = &gActors[tongue->onTongue[i]];
+        if (actor->actorState == 1) {
+            seg = actor->posOnTongue;
+            player = gCurrentActivePlayerPointer;
+            actor->pos.x = (tongue->tongueHalfX[seg] + player->pos.x) + actor->tOffset.x;
+            actor->pos.y = (((tongue->tongueYs[seg] + player->pos.y) + actor->tOffset.y) + player->tongueYOffset) - (actor->unknownPositionThings[0].unk_10 * 0.5f);
+            actor->pos.z = (tongue->tongueHalfZ[seg] + player->pos.z) + actor->tOffset.z;
+        }
+    }
+}
+#else
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_800343B4.s")
+#endif
+
 
 //spitActor?
 void func_8003449C(void) {
@@ -1226,7 +1589,7 @@ void func_8003449C(void) {
         newActor->unk_C4 = (gCurrentActivePlayerPointer->amountToShoot * 2) + 0x5A;
         newActor->sizeScalar = newActor->unk_D0 / 8;
         func_800312B0(newActor->actorIndex);
-        if ((newActor->actorID == 1) || (newActor->actorID == 0x3C)) {
+        if ((newActor->actorID == RED_ANT) || (newActor->actorID == SANDAL)) {
             gCurrentActivePlayerPointer->amountLeftToShoot = 0xC;
         } else {
             gCurrentActivePlayerPointer->amountLeftToShoot = (u32) (s32) (newActor->unk_D0 * 8);
@@ -1246,7 +1609,7 @@ void func_8003449C(void) {
 
 void func_80035374(Unk_func_80035374* arg0) {
     if ((arg0->unk6 == 0) && (arg0->unk8 == 0)) {
-        AreAnglesWithin180Degrees(gCurrentActivePlayerPointer->yAngle, CalculateAngleOfVector((&Poles[gTongueOnePointer->poleID])->pos.x - gCurrentActivePlayerPointer->pos.x, -((&Poles[gTongueOnePointer->poleID])->pos.z - gCurrentActivePlayerPointer->pos.z)));
+        AreAnglesWithin180Degrees(gCurrentActivePlayerPointer->yAngle, ArcTan2Deg((&Poles[gTongueOnePointer->poleID])->pos.x - gCurrentActivePlayerPointer->pos.x, -((&Poles[gTongueOnePointer->poleID])->pos.z - gCurrentActivePlayerPointer->pos.z)));
     } else {
         AreAnglesWithin180Degrees(arg0->unkC, CalcAngleBetween2DPoints(gCurrentActivePlayerPointer->pos.x, gCurrentActivePlayerPointer->pos.z, (&Poles[gTongueOnePointer->poleID])->pos.x, (&Poles[gTongueOnePointer->poleID])->pos.z));
     }
@@ -1261,7 +1624,7 @@ void func_800360E4(Actor* actor) {
 
     if ((actor->pos.y < (gCurrentActivePlayerPointer->pos.y + gCurrentActivePlayerPointer->hitboxYStretch)) && (gCurrentActivePlayerPointer->pos.y < (actor->unknownPositionThings[0].unk_10 + actor->pos.y))) {
         if ((SQ(xCalc) + SQ(zCalc)) < SQ(actor->unknownPositionThings[0].unk_0C)) {
-            angle = CalculateAngleOfVector(xCalc, -zCalc);
+            angle = ArcTan2Deg(xCalc, -zCalc);
             gCurrentActivePlayerPointer->vel.x = ((actor->unknownPositionThings[0].unk_0C * cosf(DEGREES_TO_RADIANS_2PI(angle))) + actor->pos.x) - gCurrentActivePlayerPointer->pos.x;
             gCurrentActivePlayerPointer->vel.z = ((actor->unknownPositionThings[0].unk_0C * -sinf(DEGREES_TO_RADIANS_2PI(angle))) + actor->pos.z) - gCurrentActivePlayerPointer->pos.z;
             CalcNextPosition(gCurrentActivePlayerPointer, gTongueOnePointer, actor);
@@ -1276,27 +1639,27 @@ void func_800360E4(Actor* actor) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80036900.s")
 
 void func_80036D74(PlayerActor* arg0, Tongue* arg1) {
-    if (arg0->playerHURTSTATE == 0) {
-        func_8002F884(arg0->playerID, 5);
+    if (arg0->playerHurtState == PLAYER_HURT_NONE) {
+        TriggerPlayerRumble(arg0->playerID, 5);
         Effect_TypeD_Create(arg0->pos.x, arg0->pos.y, arg0->pos.z);
         PLAY_SFX(SFX_ChameleonOw+1, 0, 0x10);
-        if ((Battle_GameType == BATTLE_TYPE_NOTBATTLE) && (D_80174980 != 3) && (D_80174988 == 0)) {
+        if ((Battle_GameType == BATTLE_TYPE_NOTBATTLE) && (gLevelFlowState != 3) && (D_80174988 == 0)) {
             gNoHit = 0;
             if (--arg0->hp <= 0) {
-                D_80174980 = 4;
-                D_80174860->unk50 = 0.0f;
-                D_80174860->size2 = 0.4551661909f;
+                gLevelFlowState = 4;
+                gCurrentCamera->unk50 = 0.0f;
+                gCurrentCamera->size2 = 0.4551662f;
             }
         }
-        arg0->playerHURTSTATE = 1;
-        arg0->playerHURTTIMER = 0;
-        arg0->playerHURTANIM = 0;
-        arg0->playerHURTBY = 0;
+        arg0->playerHurtState = PLAYER_HURT_HIT;
+        arg0->playerHurtTimer = 0;
+        arg0->playerHurtAnim = 0;
+        arg0->playerHurtBy = 0;
         func_80031DB0(arg0, arg1, 0);
-        arg0->yAngle = CalculateAngleOfVector(-arg0->vel.x, arg0->vel.z);;
+        arg0->yAngle = ArcTan2Deg(-arg0->vel.x, arg0->vel.z);;
         arg0->vel.x = -cosf(DEGREES_TO_RADIANS_2PI(arg0->yAngle)) * 32.0f;
         arg0->vel.z = sinf(DEGREES_TO_RADIANS_2PI(arg0->yAngle)) * 32.0f;
-        func_8002F54C(48.0f, arg0, 1);
+        LaunchPlayerVertically(48.0f, arg0, 1);
     }
 }
 
@@ -1375,7 +1738,7 @@ void ActorTick_GreyAntSpawner(Actor* greyAntSpawner) {
     if (((greyAntSpawner->userVariables[0] %  greyAntSpawner->unk_128) == 1) && (Actor_Init(GREY_ANT, greyAntSpawner->pos.x, greyAntSpawner->pos.y, greyAntSpawner->pos.z, 0.0f, -50000.0f, 50000.0f, -50000.0f, 50000.0f, -50000.0f, 50000.0f, greyAntSpawner->position._f32.x, greyAntSpawner->position._f32.y, greyAntSpawner->unk_15C, greyAntSpawner->unk_160, greyAntSpawner->unk_164, greyAntSpawner->unk_168, greyAntSpawner->unk_16C, greyAntSpawner->unk_170, greyAntSpawner->unk_124, greyAntSpawner->unk_128, greyAntSpawner->unk_12C, greyAntSpawner->unk_130) != -1)) {
         greyAntSpawner->userVariables[1] -= 1;
         if (greyAntSpawner->userVariables[1] == 0) {
-            greyAntSpawner->actorID = 0;
+            greyAntSpawner->actorID = ACTOR_NULL;
         }
     }
 }
@@ -1405,7 +1768,7 @@ void ActorTick_BulletHellAntSpawner(Actor* bulletHellAntSpawner) {
         if (((bulletHellAntSpawner->userVariables[0] % (s32) bulletHellAntSpawner->unk_124) == 1) && (Actor_Init(BULLET_HELL_ANT, bulletHellAntSpawner->pos.x, bulletHellAntSpawner->pos.y, bulletHellAntSpawner->pos.z, 0.0f, -50000.0f, 50000.0f, -50000.0f, 50000.0f, -50000.0f, 50000.0f, bulletHellAntSpawner->position._f32.x, bulletHellAntSpawner->position._f32.y, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0, 0, 0, 0) != -1)) {
             bulletHellAntSpawner->userVariables[1] -= 1;
             if (bulletHellAntSpawner->userVariables[1] == 0) {
-                func_80031518(bulletHellAntSpawner);
+                TriggerRoomClearReaction(bulletHellAntSpawner);
             }
         }
     }
@@ -1424,19 +1787,48 @@ void ActorInit_AntBulletHell(Actor* bulletHellAnt) {
 
 s32 ActorTick_BulletHellAnt(Actor* bulletHellAnt) {
     if (bulletHellAnt->unk_98 != 0) {
-        bulletHellAnt->vel.y -= 3.200000048f;
-        bulletHellAnt->vel.y -= bulletHellAnt->vel.y * 0.05000000075f;
+        bulletHellAnt->vel.y -= 3.2f;
+        bulletHellAnt->vel.y -= bulletHellAnt->vel.y * 0.05f;
     }
     if (gTimer % 8 == 0) {
         PLAY_SFX_AT(SFX_63_unkSnd+3, bulletHellAnt->pos, 1, 0);
-    }
-    else if (gTimer % 8 == 4) {
+    } else if (gTimer % 8 == 4) {
         PLAY_SFX_AT(SFX_63_unkSnd+2, bulletHellAnt->pos, 1, 0);
     }
     return 0;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_RedAntSpawner.s")
+void ActorTick_RedAntSpawner(Actor* redAntSpawner) {
+    f32 dx;
+    f32 dz;
+    f32 rangeSq;
+
+    dx = redAntSpawner->pos.x - gCurrentActivePlayerPointer->pos.x; dz = redAntSpawner->pos.z - gCurrentActivePlayerPointer->pos.z;
+    if (redAntSpawner->userVariables[1] == 0) {
+        redAntSpawner->userVariables[0]++;
+        if ((redAntSpawner->userVariables[0] % redAntSpawner->unk_124) == 1) {
+            redAntSpawner->userVariables[1] = 1;
+        }
+    }
+    redAntSpawner->vel.x = 0.0f;
+    if (redAntSpawner->unk_128 >= gActorCount) {
+        rangeSq = redAntSpawner->unk_160;
+        if (((dx * dx) + (dz * dz)) < rangeSq) {
+            if ((redAntSpawner->userVariables[1] != 0) &&
+                (Actor_Init(RED_ANT, redAntSpawner->pos.x, redAntSpawner->pos.y - 100.0f, redAntSpawner->pos.z,
+                    0.0f, redAntSpawner->unk_F4, redAntSpawner->unk_F8, redAntSpawner->unk_FC,
+                    redAntSpawner->unk_100, redAntSpawner->unk_104, redAntSpawner->unk_108,
+                    redAntSpawner->position._f32.x, redAntSpawner->position._f32.y, redAntSpawner->unk_15C,
+                    rangeSq, redAntSpawner->unk_164, redAntSpawner->unk_168,
+                    0.0f, 0.0f, 0, 0, 0, 0) != -1)) {
+                redAntSpawner->userVariables[1] = 0;
+                Effect_TypeY_Init(redAntSpawner->pos.x, redAntSpawner->pos.y, redAntSpawner->pos.z, 2.0f, 2.5f, 2.0f, 5.0f);
+            }
+            redAntSpawner->userVariables[2]++;
+            redAntSpawner->vel.x = (1 - ((redAntSpawner->userVariables[2] & 1) * 2)) * 20.0f;
+        }
+    }
+}
 
 void ActorTick_AntTrioSpawner(Actor* antTrioSpawner) {
     antTrioSpawner->userVariables[0] += 1;
@@ -1456,13 +1848,93 @@ void ActorInit_AntTrio(Actor* antTrio) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_AntTrio.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorInit_RedAnt.s")
+void ActorInit_RedAnt(Actor* redAnt) {
+    unkStruct* slot;
+    s32 slotIndex;
+    s32 i;
+    f32 hitboxTemp;
+
+    redAnt->unk_90 = redAnt->unk_164;
+    redAnt->userVariables[3] = 80.0f / redAnt->position._f32.x;
+    slot = D_80172E88;
+    slotIndex = 0;
+    do {
+        if (slot->unk_00 == 0) {
+            slot->unk_00 = 1;
+            *(s32*) &slot->unk_04 = 0;
+            redAnt->userVariables[0] = slotIndex;
+            break;
+        }
+        slotIndex++;
+        slot++;
+    } while (slotIndex != 0x18);
+    if (slotIndex == 0x18) {
+        redAnt->actorID = ACTOR_NULL;
+        return;
+    }
+    slot = &D_80172E88[slotIndex];
+    for (i = 0; i < 16; i++) {
+        slot->unk_08[i] = redAnt->pos.x;
+        slot->unk_48[i] = redAnt->pos.y;
+        slot->unk_88[i] = redAnt->pos.z;
+        ((f32*) slot->unk_C8)[i] = redAnt->unk_90;
+    }
+    hitboxTemp = redAnt->unknownPositionThings[0].unk_0C;
+    redAnt->tongueCollision = 3;
+    redAnt->unknownPositionThings[2].unk_0C = hitboxTemp;
+    redAnt->unknownPositionThings[1].unk_0C = hitboxTemp;
+    hitboxTemp = redAnt->unknownPositionThings[0].unk_10;
+    redAnt->unknownPositionThings[2].unk_08 = 0.0f;
+    redAnt->unknownPositionThings[2].unk_04 = 0.0f;
+    redAnt->unknownPositionThings[2].unk_00 = 0.0f;
+    redAnt->unknownPositionThings[1].unk_08 = 0.0f;
+    redAnt->unknownPositionThings[1].unk_04 = 0.0f;
+    redAnt->unknownPositionThings[1].unk_00 = 0.0f;
+    redAnt->unknownPositionThings[2].unk_10 = hitboxTemp;
+    redAnt->unknownPositionThings[1].unk_10 = hitboxTemp;
+    PlaySoundEffect(SFX_5D_unkSnd, &redAnt->pos.x, &redAnt->pos.y, &redAnt->pos.z, 0, 0);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_RedAnt.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_800397DC.s")
+void UpdateRedAntTrail(Actor* redAnt) {
+    unkStruct* slot = &D_80172E88[redAnt->userVariables[0]];
+    s32 head = redAnt->userVariables[1];
+    s32 tail = redAnt->userVariables[2];
+    f32 radius = redAnt->userVariables[3] * redAnt->position._f32.x;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorInit_YellowAnt.s")
+    redAnt->unknownPositionThings[1].unk_00 = cosf((((redAnt->unk_90 + redAnt->unk_C0) * 2) * PI) / 360.0) * radius;
+    redAnt->unknownPositionThings[1].unk_08 = -sinf((((redAnt->unk_90 + redAnt->unk_C0) * 2) * PI) / 360.0) * radius;
+    redAnt->unknownPositionThings[1].unk_0C = redAnt->tScale * redAnt->sizeScalar;
+    redAnt->unknownPositionThings[1].unk_10 = redAnt->tYPos * redAnt->sizeScalar;
+    slot->unk_08[head] = redAnt->unknownPositionThings[1].unk_00 + redAnt->pos.x;
+    slot->unk_48[head] = redAnt->pos.y;
+    slot->unk_88[head] = redAnt->unknownPositionThings[1].unk_08 + redAnt->pos.z;
+    redAnt->unknownPositionThings[2].unk_00 = redAnt->unknownPositionThings[1].unk_00 * (2.0f * 1.0f);
+    redAnt->unknownPositionThings[2].unk_08 = redAnt->unknownPositionThings[1].unk_08 * (2.0f * 1.0f);
+    redAnt->unknownPositionThings[2].unk_0C = redAnt->tScale * redAnt->sizeScalar;
+    redAnt->unknownPositionThings[2].unk_10 = redAnt->tYPos * redAnt->sizeScalar;
+    slot->unk_08[tail] = redAnt->unknownPositionThings[2].unk_00 + redAnt->pos.x;
+    slot->unk_48[tail] = redAnt->pos.y;
+    slot->unk_88[tail] = redAnt->unknownPositionThings[2].unk_08 + redAnt->pos.z;
+}
+
+void ActorInit_YellowAnt(Actor* yellowAnt) {
+    f32 angle;
+    f32 trig;
+
+    angle = CalcAngleBetween2DPoints(yellowAnt->pos.x, yellowAnt->pos.z,
+        Poles[yellowAnt->unk_124].pos.x, Poles[yellowAnt->unk_124].pos.z);
+    trig = cosf(DEGREES_TO_RADIANS_2PI(angle + 180.0f));
+    yellowAnt->pos.x = (yellowAnt->position._f32.x * trig) + (Poles + yellowAnt->unk_124)->pos.x;
+    trig = sinf(DEGREES_TO_RADIANS_2PI(angle + 180.0f));
+    yellowAnt->pos.z = Poles[yellowAnt->unk_124].pos.z - (yellowAnt->position._f32.x * trig);
+    yellowAnt->unk_134[4] = yellowAnt->unk_90 = yellowAnt->unk_15C + (angle + 90.0f);
+    WrapDegrees(&yellowAnt->unk_90);
+    yellowAnt->unk_94 = yellowAnt->unk_160;
+    yellowAnt->unk_F0 = Random(0, 0x100);
+}
+
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_YellowAnt.s")
 
@@ -1472,7 +1944,49 @@ void ActorInit_GreenAnt(Actor* greenAnt) {
     greenAnt->unk_F0 = Random(0, 256);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_GreenAnt.s")
+void ActorTick_GreenAnt(Actor* greenAnt) {
+    s32 phase;
+
+    switch (greenAnt->userVariables[0]) {
+    case 0:
+        RotateAngleTowards(&greenAnt->unk_90, greenAnt->unk_134[0], greenAnt->position._f32.y);
+        if (gTongueOnePointer->amountInMouth != 0) {
+            greenAnt->userVariables[1]++;
+        } else if (greenAnt->unk_90 == greenAnt->unk_134[0]) {
+            greenAnt->userVariables[1] = greenAnt->unk_124 - 1;
+        } else {
+            greenAnt->userVariables[1]++;
+        }
+        if (greenAnt->userVariables[1] >= greenAnt->unk_124) {
+            greenAnt->userVariables[0] = 1;
+            greenAnt->userVariables[1] = 0;
+            greenAnt->unk_94 = greenAnt->position._f32.x;
+        }
+        break;
+    case 1:
+        phase = greenAnt->userVariables[1] % 8;
+        if (phase == 0) {
+            PlaySoundEffect(0x66, &greenAnt->pos.x, &greenAnt->pos.y, &greenAnt->pos.z, 1, 0);
+        } else if (phase == 4) {
+            PlaySoundEffect(0x65, &greenAnt->pos.x, &greenAnt->pos.y, &greenAnt->pos.z, 1, 0);
+        }
+        if (greenAnt->userVariables[2] == ++greenAnt->userVariables[1]) {
+            greenAnt->userVariables[0] = 0;
+            greenAnt->userVariables[1] = 0;
+            greenAnt->unk_94 = 0.0f;
+            if (AreAnglesWithin180Degrees(greenAnt->unk_90, CalcAngleBetween2DPoints(greenAnt->pos.x, greenAnt->pos.z, gCurrentActivePlayerPointer->pos.x, gCurrentActivePlayerPointer->pos.z)) > 0) {
+                greenAnt->unk_134[0] = greenAnt->unk_90 + 90.0f;
+                WrapDegrees(&greenAnt->unk_134[0]);
+            } else {
+                greenAnt->unk_134[0] = greenAnt->unk_90 - 90.0f;
+                WrapDegrees(&greenAnt->unk_134[0]);
+            }
+        }
+        break;
+    }
+    func_800382F4(greenAnt);
+    greenAnt->unk_F0++;
+}
 
 void ActorInit_AntQueen(Actor* quintella) {
     quintella->unk_120 = (s32) quintella->unk_12C;
@@ -1537,7 +2051,54 @@ void ActorInit_WhiteBombSnake(Actor* whiteBombSnake) {
     whiteBombSnake->unk_160 = (f32) (0xB4 / whiteBombSnake->userVariables[3]);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_WhiteBombSnake.s")
+void ActorTick_WhiteBombSnake(Actor* bombSnake) {
+    Actor_PlaySound(bombSnake, SFX_73_unkSnd, 0x1E, 1);
+    switch (bombSnake->userVariables[0]) {
+    case 0:
+        if (bombSnake->userVariables[2] == 0) {
+            if (IsAngleWithin90Degrees(bombSnake->unk_90, CalcAngleBetween2DPoints(bombSnake->pos.x, bombSnake->pos.z, bombSnake->position._f32.x, bombSnake->position._f32.y)) < 0) {
+                bombSnake->userVariables[0] = 1;
+                bombSnake->userVariables[2] = 1;
+                bombSnake->unk_94 = 0.0f;
+            }
+        } else if (IsAngleWithin90Degrees(bombSnake->unk_90, CalcAngleBetween2DPoints(bombSnake->pos.x, bombSnake->pos.z, bombSnake->unk_134[0], bombSnake->unk_134[1])) < 0) {
+            bombSnake->userVariables[0] = 1;
+            bombSnake->userVariables[2] = 0;
+            bombSnake->unk_94 = 0.0f;
+        }
+        break;
+    case 1:
+        bombSnake->userVariables[1]++;
+        if ((bombSnake->unk_124 / 4) == bombSnake->userVariables[1]) {
+            bombSnake->userVariables[0] = 2;
+            bombSnake->userVariables[1] = 0;
+        }
+        break;
+    case 2:
+        bombSnake->unk_90 += bombSnake->unk_160;
+        WrapDegrees(&bombSnake->unk_90);
+        if (bombSnake->userVariables[3] == ++bombSnake->userVariables[1]) {
+            bombSnake->userVariables[0] = 3;
+            bombSnake->userVariables[1] = 0;
+        }
+        break;
+    case 3:
+        if (bombSnake->unk_124 == ++bombSnake->userVariables[1]) {
+            bombSnake->userVariables[0] = 0;
+            bombSnake->userVariables[1] = 0;
+            bombSnake->unk_94 = bombSnake->unk_15C;
+        }
+        break;
+    case 4:
+        if (bombSnake->unk_128 == bombSnake->userVariables[1]++) {
+            bombSnake->userVariables[0] = 0;
+            bombSnake->userVariables[1] = 0;
+            bombSnake->unk_94 = bombSnake->unk_15C;
+        }
+        break;
+    }
+    func_800382F4(bombSnake);
+}
 
 void ActorInit_Grenade(Actor* grenade) {
     grenade->unk_94 = grenade->position._f32.x;
@@ -1563,7 +2124,7 @@ void ActorTick_Grenade(Actor* grenade) {
         break;
     }
     if (grenade->unk_12C < grenade->globalTimer) {
-        func_8002D36C(&grenade->unk_90, angle, grenade->position._f32.y);
+        RotateAngleTowards(&grenade->unk_90, angle, grenade->position._f32.y);
     }
     Actor_PlaySound(grenade, SFX_GrenadeWalk, 10, 4);
     func_800382F4(grenade);
@@ -1572,7 +2133,35 @@ void ActorTick_Grenade(Actor* grenade) {
 void ActorInit_MissileSpawner(Actor* missileSpawner) {
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_MissileSpawner.s")
+void ActorTick_MissileSpawner(Actor* missileSpawner) {
+    Actor* actor = gActors; do {
+        if (actor->actorID == MISSILE) {
+            if (actor->unk_12C == missileSpawner->actorIndex) {
+                return;
+            }
+        }
+        actor++;
+    } while (actor != (Actor*) Poles);
+
+    if (missileSpawner->userVariables[0] == 0) {
+        missileSpawner->userVariables[0] = 60;
+    }
+    missileSpawner->userVariables[0] -= 1;
+    if (missileSpawner->userVariables[0] != 0) {
+        return;
+    }
+
+    if (Actor_Init(MISSILE, missileSpawner->pos.x, missileSpawner->pos.y, missileSpawner->pos.z,
+            0.0f, missileSpawner->unk_F4, missileSpawner->unk_F8, missileSpawner->unk_FC,
+            missileSpawner->unk_100, missileSpawner->unk_104, missileSpawner->unk_108,
+            missileSpawner->position._f32.x, missileSpawner->position._f32.y, missileSpawner->unk_15C,
+            missileSpawner->unk_160, missileSpawner->unk_164, missileSpawner->unk_168,
+            missileSpawner->unk_16C, missileSpawner->unk_170, missileSpawner->unk_124,
+            missileSpawner->unk_128, missileSpawner->actorIndex, 0) != -1) {
+        Effect_TypeX_Create(missileSpawner->pos.x, missileSpawner->pos.y, missileSpawner->pos.z, 200.0f, 0x18);
+    }
+}
+
 
 void ActorInit_Missile(Actor* missile) {
     missile->unk_134[0] = missile->pos.x;
@@ -1595,7 +2184,23 @@ void ActorInit_Cannon(Actor* cannon) {
     cannon->unknownPositionThings[1].unk_08 = 0.0f;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_Cannon.s")
+void ActorTick_Cannon(Actor* cannon) {
+    f32 cannonX;
+    f32 range;
+    f32 playerX;
+
+    playerX = gCurrentActivePlayerPointer->pos.x;
+    range = cannon->unk_168; cannonX = cannon->pos.x;
+    if ((playerX < (range + cannonX)) && ((cannonX - range) < playerX) && (cannon->userVariables[0] == 0) &&
+        (Actor_Init(CANNONBALL, cannon->pos.x, cannon->pos.y - 70.0f, cannon->pos.z - 300.0f, 0.0f,
+            -50000.0f, 50000.0f, -50000.0f, 50000.0f, -50000.0f, 50000.0f,
+            cannon->position._f32.x + (((gTimer % 3) * 0xC8) - 0xC8), cannon->position._f32.y,
+            Random(-200, 200) + cannon->unk_15C, cannon->unk_160, 8.0f, 0.0f, 0.0f, 0.0f,
+            0, 0, 0, 0) != -1)) {
+        Effect_TypeA_Init(cannon->pos.x, cannon->pos.y - 70.0f, cannon->pos.z - 300.0f, 2, 60);
+        cannon->userVariables[0] = 1;
+    }
+}
 
 // CANNONBALL Function
 void ActorInit_Cannonball(Actor* cannonball) {
@@ -1608,7 +2213,18 @@ void ActorInit_Cannonball(Actor* cannonball) {
     PLAY_SFX_AT(SFX_77_unkSnd, cannonball->pos, 0, 0);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_Cannonball.s")
+void ActorTick_Cannonball(Actor* cannonball) {
+    if ((cannonball->unk_9C != 0) || (cannonball->globalTimer == cannonball->userVariables[0])) {
+        if (Actor_Init(EXPLOSION, cannonball->pos.x,
+                (cannonball->pos.y + (cannonball->unknownPositionThings[0].unk_10 / 2)) - (D_8010A6D0[0x14].y / 2),
+                cannonball->pos.z, 0.0f, -50000.0f, 50000.0f, -50000.0f, 50000.0f, -50000.0f, 50000.0f,
+                200.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0xA, 0, 0, 0) != -1) {
+            Effect_TypeA_Init(cannonball->pos.x, cannonball->pos.y, cannonball->pos.z, 3, 0x64);
+        }
+        TriggerRoomClearReaction(cannonball);
+    }
+    cannonball->vel.y = cannonball->unk_134[0] + (sinf((((((((f32) cannonball->globalTimer - 0.5f) * 180.0f) / cannonball->userVariables[0]) + 90.0f) * 2) * PI) / 360.0) * cannonball->unk_164);
+}
 
 s32 func_8003C734(Actor* arg0, s32 arg1) {
     s32 passVar;
@@ -1657,7 +2273,7 @@ void ActorInit_Explosion(Actor* explosion) {
 
 void ActorTick_Explosion(Actor* explosion) {
     if (explosion->unk_124 == explosion->globalTimer) {  //0x124 == 0x10
-        func_80031518(explosion);
+        TriggerRoomClearReaction(explosion);
     }
 }
 
@@ -1671,12 +2287,12 @@ void ActorTick_BombBossBomb(Actor* bsBomb) {
         if (Actor_Init(EXPLOSION, bsBomb->pos.x, bsBomb->pos.y, bsBomb->pos.z, 0.0f, temp_f2, temp_f12, temp_f2, temp_f12, temp_f2, temp_f12, 200.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 10, 0, 0, 0) != -1) {
             Effect_TypeA_Init(bsBomb->pos.x, bsBomb->pos.y, bsBomb->pos.z, 3, 100);
         }
-        func_80031518(bsBomb);
+        TriggerRoomClearReaction(bsBomb);
     }
 }
 
 // Black Chameleon Projectile Spawner
-void ActorInit_ChameleonBlackSpotSpawner(Actor* blackChameleonProjectileSpawner){
+void ActorInit_ChameleonBlackSpotSpawner(Actor* blackChameleonProjectileSpawner) {
 
 }
 
@@ -1716,7 +2332,43 @@ void ActorInit_SandCrab(Actor* sandCrab) {
     func_800382F4(sandCrab);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_SandCrab.s")
+void ActorTick_SandCrab(Actor* sandCrab) {
+    f32 dx;
+    f32 dz;
+    s32 state;
+
+    state = sandCrab->userVariables[1];
+    dx = sandCrab->pos.x - sandCrab->position._f32.y; dz = sandCrab->pos.z - sandCrab->unk_15C;
+    if (state == 0) {
+        if (sandCrab->unk_98 == 0) {
+            if (sandCrab->vel.y < 0.0f) {
+                sandCrab->vel.y = 0.0f;
+                sandCrab->userVariables[1] = 1;
+                sandCrab->unk_A0.unk_04 = 2;
+                return;
+            }
+        }
+        sandCrab->vel.y -= 3.2f;
+        sandCrab->pos.y += sandCrab->vel.y;
+        if (sandCrab->pos.y < (sandCrab->unk_134[0] - 1000.0)) {
+            TriggerRoomClearReaction(sandCrab);
+        }
+    } else if (state == 1) {
+        sandCrab->vel.y = 0.0f;
+        if ((((dx * dx) + (dz * dz)) < 90000.0) || (sandCrab->unk_9C != 0)) {
+            sandCrab->vel.z = 0.0f;
+            sandCrab->vel.x = 0.0f;
+            sandCrab->userVariables[1] = 2;
+            sandCrab->unk_A0.unk_04 = 4;
+        }
+    } else {
+        sandCrab->userVariables[0]++;
+        sandCrab->pos.y -= 5.0f;
+        if (sandCrab->userVariables[0] == 0x1E) {
+            TriggerRoomClearReaction(sandCrab);
+        }
+    }
+}
 
 void ActorInit_Vulture(Actor* vulture) {
     vulture->unk_134[0] = vulture->pos.x;
@@ -1743,13 +2395,13 @@ void ActorInit_Arrows(Actor* arrows) {
 
 void ActorTick_Arrow(Actor* arrows) {
     if (arrows->globalTimer == arrows->userVariables[0]) {
-        func_80031518(arrows);
+        TriggerRoomClearReaction(arrows);
     }
     func_800382F4(arrows);
 }
 
 // BOULDER
-void func_8003E368(Actor* boulder){
+void func_8003E368(Actor* boulder) {
 
 }
 
@@ -1778,7 +2430,37 @@ void BoulderCalculations(Actor* boulder) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_Boulder.s")
+void ActorTick_Boulder(Actor* boulder) {
+    if (boulder->userVariables[0] > 0) {
+        boulder->vel.x -= boulder->vel.x * 0.03f;
+        boulder->vel.z -= boulder->vel.z * 0.03f;
+        boulder->unk_134[3] += sqrtf(SUM_OF_SQUARES(boulder->vel.x, boulder->vel.z));
+        boulder->unk_90 = ArcTan2Deg(boulder->vel.x, -boulder->vel.z);
+        boulder->vel.y -= 3.2f;
+        if (boulder->unk_98 == 0) {
+            BoulderCalculations(boulder);
+            boulder->userVariables[1] ^= 1;
+            if (boulder->userVariables[1] != 0) {
+                PLAY_SFX_AT(SFX_RockTumble, boulder->pos, 0, 0);
+            } else {
+                PLAY_SFX_AT(SFX_90_unkSnd, boulder->pos, 0, 0);
+            }
+        }
+    } else if (boulder->userVariables[0] < 0) {
+        boulder->userVariables[2] += 1;
+        if (boulder->userVariables[2] >= 31) {
+            func_800314E4(boulder);
+        } else {
+            boulder->pos.y -= 20.0f;
+        }
+    } else if (gCurrentActivePlayerPointer->pos.y < boulder->unk_15C) {
+        PLAY_SFX_AT(SFX_RockTumble, boulder->pos, 0, 0);
+        boulder->unk_98 = 1;
+        boulder->userVariables[0] = 1;
+        boulder->vel.x = boulder->position._f32.x;
+        boulder->vel.z = boulder->position._f32.y;
+    }
+}
 
 void ActorInit_Armadillo(Actor* armadillo) {
     armadillo->unk_134[0] = armadillo->position._f32.y / armadillo->position._f32.x;
@@ -1807,7 +2489,7 @@ void func_8003E6C4(Actor* armadillo) {
     f32 rad;
     s32 i;
 
-    for (i = 0; i < armadillo->unk_12C; i++){
+    for (i = 0; i < armadillo->unk_12C; i++) {
         f32 a, b, c, d;
         calc1 = (i * 360.0f) / armadillo->unk_12C;
         rad = DEGREES_TO_RADIANS_2PI(calc1);
@@ -1892,7 +2574,7 @@ void func_8003FA38(Actor* pogo, f32 arg1, f32 arg2, f32 arg3) {
     temp_f8 = (s32) (NORM_2(temp_f0,temp_f2) / pogo->unk_94);
     pogo->userVariables[1] = temp_f8;
     pogo->unk_134[3] = (f32) ((arg2 - pogo->pos.y) / (f32) temp_f8);
-    pogo->unk_90 = CalculateAngleOfVector(temp_f0, -temp_f2);
+    pogo->unk_90 = ArcTan2Deg(temp_f0, -temp_f2);
 }
 
 void ActorInit_Pogo(Actor* pogo) {
@@ -1989,7 +2671,7 @@ void ActorTick_Pogo(Actor* pogo) {
 void ActorTick_Unk22(Actor* unk_22) {
 }
 
-void ActorInit_Unk23(Actor* unk_23){
+void ActorInit_Unk23(Actor* unk_23) {
 
 }
 
@@ -2098,7 +2780,7 @@ void func_800405F8(Actor* cakeBossStrawberry) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_CakeBossStrawberry.s")
 
 // UNK_28
-void func_80040CDC(Actor* unk_28){
+void func_80040CDC(Actor* unk_28) {
 
 }
 
@@ -2107,7 +2789,7 @@ void ActorTick_Unk28(Actor* unk_28) {
 }
 
 // Cake Boss Choco Kid
-void func_80040CEC(Actor* cakeBossChocoKid){
+void func_80040CEC(Actor* cakeBossChocoKid) {
 
 }
 
@@ -2217,7 +2899,7 @@ void ActorTick_CueBall(Actor* cueBall) {
 }
 
 // Billiards Ball
-void ActorInit_BilliardBall(Actor* billiardBall){
+void ActorInit_BilliardBall(Actor* billiardBall) {
 
 }
 
@@ -2230,7 +2912,7 @@ void ActorTick_BilliardBall(Actor* billiardBall) {
     temp_f0_2 = NORM_2(billiardBall->vel.x,billiardBall->vel.z);
     billiardBall->unk_94 = temp_f0_2;
     billiardBall->unk_134[0] = ((180.0f * temp_f0_2) / ( billiardBall->unknownPositionThings[0].unk_0C * PI)) + billiardBall->unk_134[0];
-    billiardBall->unk_90 = CalculateAngleOfVector(billiardBall->vel.x, -billiardBall->vel.z);
+    billiardBall->unk_90 = ArcTan2Deg(billiardBall->vel.x, -billiardBall->vel.z);
 }
 
 //(re)set bowling pins
@@ -2253,7 +2935,42 @@ void ActorInit_BowlingPin(Actor* bowlingPins) {
     bowlingPins->userVariables[1] = (Rand() % 21) + 30;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_BowlingPin.s")
+void ActorTick_BowlingPin(Actor* bowlingPin) {
+    f32 speed;
+
+    if (bowlingPin->userVariables[0] == 0) {
+        bowlingPin->unk_134[0] = 0.0f;
+    }
+    ActorTick_MinigameActor(bowlingPin);
+    speed = sqrtf((bowlingPin->vel.x * bowlingPin->vel.x) + (bowlingPin->vel.z * bowlingPin->vel.z));
+    bowlingPin->unk_94 = speed;
+    bowlingPin->unk_134[0] += (180.0f * speed) / (bowlingPin->unknownPositionThings[0].unk_0C * PI);
+    bowlingPin->unk_90 = ArcTan2Deg(bowlingPin->vel.x, -bowlingPin->vel.z);
+    if (bowlingPin->unk_134[0] >= 5.0f) {
+        bowlingPin->unk_134[0] += 2.0f;
+        if (!(gTimer & 1)) {
+            bowlingPin->pos.y = 5000.0f;
+        } else {
+            bowlingPin->pos.y = 50.0f;
+        }
+        if (bowlingPin->userVariables[0] == 0) {
+            switch (Rand() % 3) {
+            case 0:
+                PlaySoundEffect(SFX_BE_unkSnd, NULL, NULL, NULL, 0, 0x10);
+                break;
+            case 1:
+                PlaySoundEffect(SFX_BF_unkSnd, NULL, NULL, NULL, 0, 0x10);
+                break;
+            default:
+                PlaySoundEffect(SFX_C0_unkSnd, NULL, NULL, NULL, 0, 0x10);
+                break;
+            }
+        } else if (bowlingPin->userVariables[0] >= 0x5B) {
+            TriggerRoomClearReaction(bowlingPin);
+        }
+        bowlingPin->userVariables[0] += 4;
+    }
+}
 
 void ActorInit_Unk2E(Actor* unk_2E) {
     unk_2E->userVariables[0] = 10;
@@ -2262,7 +2979,7 @@ void ActorInit_Unk2E(Actor* unk_2E) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_Unk2E.s")
 
-void ActorInit_Unk2F(Actor* unk_2F){
+void ActorInit_Unk2F(Actor* unk_2F) {
 
 }
 
@@ -2310,11 +3027,31 @@ void ActorTick_Scroll(Actor* scroll) {
 }
 
 // RNG Room Spawner
-void ActorInit_RNGRoomSpawner(Actor* rngRoomSpawner){
+void ActorInit_RNGRoomSpawner(Actor* rngRoomSpawner) {
 
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_RNGRoomSpawner.s")
+void ActorTick_RNGRoomSpawner(Actor* rngRoomSpawner) {
+    f32 deg;
+    f32 spawnX;
+    f32 spawnZ;
+
+    Actor_PlaySound(rngRoomSpawner, 0xD8, 0x19, 4);
+    if ((StageFlags[rngRoomSpawner->unk_130] != 0) && (gActorCount < rngRoomSpawner->unk_124)) {
+        deg = Random(0, 0x167);
+        spawnX = (cosf((((deg * 2) * PI) / 360.0)) * rngRoomSpawner->unk_164) + rngRoomSpawner->pos.x;
+        spawnZ = (-sinf((((deg * 2) * PI) / 360.0)) * rngRoomSpawner->unk_164) + rngRoomSpawner->pos.z;
+        deg += 180.0f;
+        WrapDegrees(&deg);
+        if (Actor_Init(FIRE, spawnX, rngRoomSpawner->pos.y, spawnZ, deg,
+                -5000.0f, 5000.0f, -5000.0f, 5000.0f, -5000.0f, 5000.0f,
+                rngRoomSpawner->position._f32.x, rngRoomSpawner->position._f32.y,
+                rngRoomSpawner->unk_15C, rngRoomSpawner->unk_160,
+                0.0f, 0.0f, 0.0f, 0.0f, 0, rngRoomSpawner->unk_128, rngRoomSpawner->unk_12C, 0) != -1) {
+            Effect_TypeA_Init(spawnX, rngRoomSpawner->pos.y, spawnZ, 3, 0x1E);
+        }
+    }
+}
 
 void ActorInit_Mirror(Actor* mirror) {
     if (gTimer % mirror->unk_128 == mirror->unk_124) {
@@ -2326,7 +3063,7 @@ void ActorInit_Mirror(Actor* mirror) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_Mirror.s")
 
-void ActorInit_BarrelFireSpawner(Actor* barrelFireSpawner){
+void ActorInit_BarrelFireSpawner(Actor* barrelFireSpawner) {
 
 }
 
@@ -2344,13 +3081,90 @@ void ActorInit_BarrelFire(Actor* barrelFire) {
     barrelFire->userVariables[0] = (s32) (360.0f / barrelFire->unk_160) - 2;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_BarrelFire.s")
+void ActorTick_BarrelFire(Actor* barrelFire) {
+    f32 fireY;
+    f32 playerY;
+
+    barrelFire->unk_134[0] += barrelFire->unk_160;
+    WrapDegrees(&barrelFire->unk_134[0]);
+    barrelFire->unk_90 = barrelFire->unk_134[0] + 90.0f;
+    WrapDegrees(&barrelFire->unk_90);
+    barrelFire->pos.x = (cosf((((barrelFire->unk_134[0] * 2) * PI) / 360.0)) * barrelFire->unk_15C) + barrelFire->position._f32.x;
+    barrelFire->pos.z = (-sinf((((barrelFire->unk_134[0] * 2) * PI) / 360.0)) * barrelFire->unk_15C) + barrelFire->position._f32.y;
+    playerY = gCurrentActivePlayerPointer->pos.y;
+    fireY = barrelFire->pos.y;
+    if (playerY < (fireY - 15.0f)) {
+        barrelFire->vel.y = -15.0f;
+    } else if ((fireY + 15.0f) < playerY) {
+        barrelFire->vel.y = 15.0f;
+    } else {
+        barrelFire->vel.y = 0.0f;
+    }
+    Actor_PlaySound(barrelFire, 0xB0, 0x46, 1);
+    if (barrelFire->globalTimer == barrelFire->userVariables[0]) {
+        TriggerRoomClearReaction(barrelFire);
+    }
+    barrelFire->unk_F0++;
+}
 
 void ActorInit_FireSpitter(Actor* fireSpitter) {
     fireSpitter->userVariables[0] = fireSpitter->unk_124 - 1;
 }
 
+#ifdef NON_MATCHING
+void ActorTick_FireSpitter(Actor *fireSpitter)
+{
+  f32 dx;
+  f32 dz;
+  f32 distSq;
+  f32 fireX;
+  f32 fireY;
+  f32 fireZ;
+  s32 period;
+  s32 timer;
+  dx = fireSpitter->pos.x - gCurrentActivePlayerPointer->pos.x;
+  dz = fireSpitter->pos.z - gCurrentActivePlayerPointer->pos.z;
+  distSq = (dx * dx) + (dz * dz);
+  if (((distSq < fireSpitter->unk_164) && (fireSpitter->unk_168 < distSq)) && (gActorCount < fireSpitter->unk_130))
+  {
+    period = fireSpitter->unk_124;
+    timer = fireSpitter->userVariables[0];
+    if (timer >= (period - 0xA))
+    {
+      fireSpitter->unk_F0 = (timer - period) + 0xA;
+    }
+    else
+      if (fireSpitter->unk_F0 != 0)
+    {
+      fireSpitter->unk_F0--;
+      if (1)
+      {
+        timer = fireSpitter->userVariables[0];
+        period = fireSpitter->unk_124;
+      }
+    }
+    fireSpitter->userVariables[0] = timer + 1;
+    if (1)
+    {
+    }
+    if (fireSpitter->userVariables[0] == period)
+    {
+      fireSpitter->userVariables[0] = 0;
+      if (Actor_Init(0x3B, fireSpitter->pos.x, fireSpitter->pos.y, fireSpitter->pos.z, 0.0f, fireSpitter->unk_F4, fireSpitter->unk_F8, fireSpitter->unk_FC, fireSpitter->unk_100, fireSpitter->unk_104, fireSpitter->unk_108, fireSpitter->position._f32.x, fireSpitter->position._f32.y, fireSpitter->unk_15C, fireSpitter->unk_160, 0.0f, 0.0f, 0.0f, 0.0f, 0, fireSpitter->unk_128, fireSpitter->unk_12C, 0) != (-1))
+      {
+        fireX = fireSpitter->pos.x;
+        fireY = fireSpitter->pos.y;
+        fireZ = fireSpitter->pos.z;
+        Effect_TypeC_Init(fireX, fireY, fireZ, fireX, fireY + 300.0f, fireZ, 0xFFU, 0xFFU, 0xFFU, 0xFFU, 0x10, 0x4A);
+        PlaySoundEffect(0xAB, &fireSpitter->pos.x, &fireSpitter->pos.y, &fireSpitter->pos.z, 0, 0);
+      }
+    }
+  }
+  fireSpitter->unk_90 = CalcAngleBetween2DPoints(fireSpitter->pos.x, fireSpitter->pos.z, gCurrentActivePlayerPointer->pos.x, gCurrentActivePlayerPointer->pos.z);
+}
+#else
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_FireSpitter.s")
+#endif
 
 void ActorInit_Candles(Actor* candles) {
     ActorInit_FireSpitter(candles);
@@ -2378,7 +3192,7 @@ void ActorTick_Fire(Actor* fire) {
 
     if (fire->userVariables[0] == 0) {
         fire->unk_94 = fire->position._f32.x;
-        func_8002D36C(&fire->unk_90, angle, fire->position._f32.y);
+        RotateAngleTowards(&fire->unk_90, angle, fire->position._f32.y);
         if (fire->userVariables[1] == 0) {
             fire->userVariables[0] = 1;
             fire->userVariables[1] = Random(1, fire->unk_12C);
@@ -2387,7 +3201,7 @@ void ActorTick_Fire(Actor* fire) {
         }
     } else {
         fire->unk_94 = 0.0f;
-        func_8002D36C(&fire->unk_90, angle, fire->unk_160);
+        RotateAngleTowards(&fire->unk_90, angle, fire->unk_160);
         if (fire->userVariables[1] == 0) {
             fire->userVariables[0] = 0;
             fire->userVariables[1] = Random(1, fire->unk_128);
@@ -2412,7 +3226,25 @@ void ActorTick_Sandal(Actor* sandal) {
     ActorTick_Unk2E(sandal);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/GhostBoss_SpawnArms.s")
+void GhostBoss_SpawnArms(Actor* ghostBoss) {
+    s32 i;
+    s32 j;
+    s32 actorID;
+
+    for (i = 0; i < 2; i++) {
+        for (j = 0; j < 15; j++) {
+            actorID = PILE_OF_BOOKS_ARM_SEGMENTS;
+            if (j == 0) {
+                actorID = PILE_OF_BOOKS_ARM_SPITTER;
+            }
+            D_801749D8[i][j] = Actor_Init(actorID, 0.0f, 5000.0f, 0.0f,
+                0.0f, -10000.0f, 10000.0f, -10000.0f, 10000.0f, -10000.0f, 10000.0f,
+                0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f,
+                j, ghostBoss->actorIndex, i, 0);
+        }
+    }
+}
+
 
 void ActorInit_GhostBoss(Actor* pob) {
     pob->unk_EC = 0;
@@ -2423,8 +3255,55 @@ void ActorInit_GhostBoss(Actor* pob) {
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_800448C0.s")
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80044C30.s")
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80044D58.s")
+
+void func_80044C30(Actor* arg0, s32 arg1) {
+    Actor* actor;
+    s32 i;
+
+    if ((arg1 == 0) || (arg1 == 2)) {
+        actor = &gActors[D_801749D8[0][0]];
+        i = arg0->userVariables[0] + 1;
+        arg0->userVariables[0] = i;
+        D_80174A50.unk_000[i][0] = actor->pos.x;
+        D_80174A50.unk_000[i][1] = (actor->unknownPositionThings[0].unk_10 * 0.125f) + actor->pos.y;
+        D_80174A50.unk_000[i][2] = actor->pos.z;
+        D_80174A50.unk_000[i][3] = actor->unk_90;
+    }
+    if ((arg1 == 1) || (arg1 == 2)) {
+        actor = &gActors[D_801749D8[1][0]];
+        i = arg0->userVariables[1] + 1;
+        arg0->userVariables[1] = i;
+        D_80174A50.unk_5A0[i][0] = actor->pos.x;
+        D_80174A50.unk_5A0[i][1] = (actor->unknownPositionThings[0].unk_10 * 0.125f) + actor->pos.y;
+        D_80174A50.unk_5A0[i][2] = actor->pos.z;
+        D_80174A50.unk_5A0[i][3] = actor->unk_90;
+    }
+}
+
+void func_80044D58(Actor* arg0, s32 arg1) {
+    Actor* actor;
+    s32 i;
+
+    if ((arg1 == 0) || (arg1 == 2)) {
+        actor = &gActors[D_801749D8[0][0]];
+        i = arg0->userVariables[0] - 1;
+        arg0->userVariables[0] = i;
+        actor->pos.x = D_80174A50.unk_000[i][0];
+        actor->pos.y = D_80174A50.unk_000[i][1] - (actor->unknownPositionThings[0].unk_10 * 0.125f);
+        actor->pos.z = D_80174A50.unk_000[i][2];
+        actor->unk_90 = D_80174A50.unk_000[i][3];
+    }
+    if ((arg1 == 1) || (arg1 == 2)) {
+        actor = &gActors[D_801749D8[1][0]];
+        i = arg0->userVariables[1] - 1;
+        arg0->userVariables[1] = i;
+        actor->pos.x = D_80174A50.unk_5A0[i][0];
+        actor->pos.y = D_80174A50.unk_5A0[i][1] - (actor->unknownPositionThings[0].unk_10 * 0.125f);
+        actor->pos.z = D_80174A50.unk_5A0[i][2];
+        actor->unk_90 = D_80174A50.unk_5A0[i][3];
+    }
+}
+
 
 s32 func_80044E80(Actor* arg0, s32 arg1) {
     return (arg0->userVariables[arg1] + 5) / 6;
@@ -2432,14 +3311,31 @@ s32 func_80044E80(Actor* arg0, s32 arg1) {
 
 //pob spin on one arm
 //D_801749D8 array of 30 s32s, 15 for each (see also armsMaybe)
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80044EA4.s")
+void func_80044EA4(Actor* arg0, f32 arg1) {
+    Actor* pivot = gActors + D_801749D8[arg0->unk_120][0];
+    Actor* seg;
+    s32 i;
+
+    for (i = 0; i < 15; i++) {
+        seg = gActors + D_801749D8[arg0->unk_120][i];
+        seg->unk_90 += arg1;
+        WrapDegrees(&seg->unk_90);
+        RotatePointAroundPivot(&seg->pos.x, &seg->pos.z, pivot->pos.x, pivot->pos.z, arg1);
+    }
+    RotatePointAroundPivot(&arg0->pos.x, &arg0->pos.z, pivot->pos.x, pivot->pos.z, arg1);
+    seg = gActors + D_801749D8[1 - arg0->unk_120][0];
+    seg->unk_90 += arg1;
+    WrapDegrees(&seg->unk_90);
+    RotatePointAroundPivot(&seg->pos.x, &seg->pos.z, pivot->pos.x, pivot->pos.z, arg1);
+}
+
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_GhostBoss.s")
 
 void ActorInit_GhostBossArmSegment(Actor* armSeg) {
     if ((armSeg->unk_124 >= 2)) {
         if ((armSeg->unk_124 < gActors[armSeg->unk_128].unk_128 + 2)) {
-            f32 scalar = 1.200000048f;
+            f32 scalar = 1.2f;
             armSeg->tScale *= scalar;
             armSeg->unknownPositionThings[0].unk_0C *= scalar;
         }
@@ -2478,15 +3374,13 @@ void ActorTick_GhostBossArmSpitter(Actor* armSpit) {
             if (armSpit->unk_F0 == 9) {
                 armSpit->userVariables[0] = 1;
             }
-        }
-        else {
+        } else {
             armSpit->unk_F0 -= 1;
             if (armSpit->unk_F0  == 0) {
                 armSpit->userVariables[0] = 0;
             }
         }
-    }
-    else {
+    } else {
         if (armSpit->unk_F0 != 0) {
             armSpit->unk_F0 -= 1;
             armSpit->userVariables[0] = 0;
@@ -2503,7 +3397,7 @@ void ActorTick_GhostBossShot(Actor* projectile) {
     projectile->userVariables[0] += 1;
     if (projectile->userVariables[0] == 150) {
         Effect_TypeC_Init(projectile->pos.x, projectile->pos.y, projectile->pos.z, projectile->pos.x, projectile->pos.y + 300.0f, projectile->pos.z, 255, 255, 255, 128, 8, 74);
-        func_80031518(projectile);
+        TriggerRoomClearReaction(projectile);
         return;
     }
     if (projectile->pos.y > 50.0f) {
@@ -2511,11 +3405,30 @@ void ActorTick_GhostBossShot(Actor* projectile) {
     }
 }
 
-void ActorInit_SpiderSpawner(Actor* spiderSpawner){
+void ActorInit_SpiderSpawner(Actor* spiderSpawner) {
 
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_SpiderSpawner.s")
+void ActorTick_SpiderSpawner(Actor* spiderSpawner) {
+    s32 actorCount = gActorCount;
+    s32 maxSpiders = spiderSpawner->unk_124;
+
+    if ((actorCount < maxSpiders) &&
+        (((actorCount < ((maxSpiders * 3) / 4)) && (spiderSpawner->unk_130 < ++spiderSpawner->userVariables[0])) ||
+         ((spiderSpawner->unk_130 * 2) < ++spiderSpawner->userVariables[0]))) {
+        spiderSpawner->userVariables[0] = 0;
+        if (Actor_Init(SPIDER, spiderSpawner->pos.x, spiderSpawner->pos.y + 20.0f, spiderSpawner->pos.z,
+                (((spiderSpawner->userVariables[1] % 3) - 1) * 60.0f) + spiderSpawner->unk_90,
+                spiderSpawner->unk_F4, spiderSpawner->unk_F8, spiderSpawner->unk_FC,
+                spiderSpawner->unk_100, spiderSpawner->unk_104, spiderSpawner->unk_108,
+                spiderSpawner->position._f32.x, spiderSpawner->position._f32.y, spiderSpawner->unk_15C,
+                spiderSpawner->unk_160, 0.0f, 0.0f, 0.0f, 0.0f, 0,
+                spiderSpawner->unk_128, spiderSpawner->unk_12C, 0) != -1) {
+            spiderSpawner->userVariables[1]++;
+        }
+    }
+    func_800382F4(spiderSpawner);
+}
 
 void ActorInit_Spider(Actor* spider) {
     spider->unk_98 = 1;
@@ -2524,7 +3437,51 @@ void ActorInit_Spider(Actor* spider) {
     func_800382F4(spider);    // Sometimes calls with a arg0, sometimes calls empty?
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_Spider.s")
+void ActorTick_Spider(Actor* spider) {
+    f32 angle;
+    s32 framesLeft;
+
+    if (spider->userVariables[2] == 0) {
+        if (spider->unk_98 != 0) {
+            spider->vel.y -= 3.2f;
+            spider->pos.y += spider->vel.y;
+        } else {
+            spider->unk_A0.unk_04 = 2;
+            spider->userVariables[2] = 1;
+            spider->vel.y = 0.0f;
+            spider->userVariables[1] = spider->unk_128 / 2;
+        }
+    } else {
+        angle = CalcAngleBetween2DPoints(spider->pos.x, spider->pos.z,
+            gCurrentActivePlayerPointer->pos.x, gCurrentActivePlayerPointer->pos.z);
+        if (spider->userVariables[0] == 0) {
+            spider->unk_94 = spider->position._f32.x;
+            RotateAngleTowards(&spider->unk_90, angle, spider->position._f32.y);
+            framesLeft = spider->userVariables[1];
+            if (framesLeft == 0) {
+                spider->userVariables[0] = 1;
+                spider->userVariables[1] = Random(1, spider->unk_12C);
+            } else {
+                spider->userVariables[1] = framesLeft - 1;
+            }
+            Actor_PlaySound(spider, SFX_43_unkSnd, 4, 4);
+        } else {
+            angle += Random(-0x1E, 0x1E);
+            WrapDegrees(&angle);
+            spider->unk_94 = 0.0f;
+            RotateAngleTowards(&spider->unk_90, angle, spider->unk_15C);
+            framesLeft = spider->userVariables[1];
+            if (framesLeft == 0) {
+                spider->userVariables[0] = 0;
+                spider->userVariables[1] = Random(1, spider->unk_128);
+            } else {
+                spider->userVariables[1] = framesLeft - 1;
+            }
+        }
+        func_800382F4(spider);
+    }
+    spider->unk_F0++;
+}
 
 void ActorInit_SpiderTrio(Actor* spiderTrio) {
     spiderTrio->unk_134[0] = spiderTrio->pos.x;
@@ -2533,10 +3490,42 @@ void ActorInit_SpiderTrio(Actor* spiderTrio) {
     spiderTrio->unk_94 = spiderTrio->unk_15C;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_SpiderTrio.s")
+void ActorTick_SpiderTrio(Actor* spiderTrio) {
+    f32 turnRate = 1.0f;
+
+    switch (spiderTrio->userVariables[0]) {
+    case 0:
+        if (spiderTrio->userVariables[2] == 0) {
+            if (IsAngleWithin90Degrees(spiderTrio->unk_90, CalcAngleBetween2DPoints(spiderTrio->pos.x, spiderTrio->pos.z, spiderTrio->position._f32.x, spiderTrio->position._f32.y)) < 0) {
+                spiderTrio->userVariables[0] = 1;
+                spiderTrio->userVariables[2] = 1;
+                spiderTrio->unk_94 = 0.0f;
+            }
+        } else {
+            if (IsAngleWithin90Degrees(spiderTrio->unk_90, CalcAngleBetween2DPoints(spiderTrio->pos.x, spiderTrio->pos.z, spiderTrio->unk_134[0], spiderTrio->unk_134[1])) < 0) {
+                spiderTrio->userVariables[0] = 1;
+                spiderTrio->userVariables[2] = 0;
+                spiderTrio->unk_94 = 0.0f;
+            }
+        }
+        break;
+    case 1:
+        spiderTrio->unk_90 += turnRate * spiderTrio->unk_160;
+        WrapDegrees(&spiderTrio->unk_90);
+        spiderTrio->userVariables[1] += 1;
+        if ((180.0f / spiderTrio->unk_160) == spiderTrio->userVariables[1]) {
+            spiderTrio->userVariables[0] = 0;
+            spiderTrio->userVariables[1] = 0;
+            spiderTrio->unk_94 = spiderTrio->unk_15C;
+        }
+        break;
+    }
+    func_800382F4(spiderTrio);
+}
+
 
 // GOLEM Room SPIDER Spawner
-void ActorInit_GolemSpiderSpawner(Actor* golemRoomSpiderSpawner){
+void ActorInit_GolemSpiderSpawner(Actor* golemRoomSpiderSpawner) {
 
 }
 
@@ -2559,7 +3548,48 @@ void ActorInit_Golem(Actor* golem) {
 
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_Golem.s")
+void ActorTick_Golem(Actor* golem) {
+    f32 dx;
+    f32 dz;
+
+    dx = (golem->unk_160 + gCurrentActivePlayerPointer->pos.x) - golem->pos.x; dz = gCurrentActivePlayerPointer->pos.z - golem->pos.z;
+    switch ((u32) golem->userVariables[0]) {
+    case 0:
+        if (((dx * dx) + (dz * dz)) < golem->position._f32.x) {
+            StageFlags[golem->unk_124] = 1;
+        }
+        if (StageFlags[golem->unk_124] != 0) {
+            golem->userVariables[0] = 1;
+            PlaySoundEffect(SFX_46_unkSnd, &golem->pos.x, &golem->pos.y, &golem->pos.z, 0, 0);
+        }
+        break;
+    case 1:
+        if (++golem->unk_F0 >= 0x14U) {
+            golem->userVariables[0] = 2;
+            golem->unk_F0 = 0;
+            golem->unk_EC = 1;
+        }
+        break;
+    case 2:
+        if ((golem->unk_128 == 0) || ((golem->globalTimer & 0xF) != 7)) {
+            golem->unk_F0++;
+            golem->unk_F0 = golem->unk_F0 % 55U;
+        }
+        if ((golem->unk_F0 >= 0x18U) && (golem->unk_F0 < 0x2DU)) {
+            golem->unk_94 = golem->position._f32.y;
+            RotateAngleTowards(&golem->unk_90, ArcTan2Deg(dx, -dz), golem->unk_15C);
+        } else {
+            golem->unk_94 = 0.0f;
+        }
+        if (golem->unk_F0 == 0x18) {
+            PlaySoundEffect(SFX_44_unkSnd, &golem->pos.x, &golem->pos.y, &golem->pos.z, 0, 0);
+        } else if (golem->unk_F0 == 0x2A) {
+            PlaySoundEffect(SFX_45_unkSnd, &golem->pos.x, &golem->pos.y, &golem->pos.z, 0, 0);
+        }
+        break;
+    }
+    func_800382F4(golem);
+}
 
 void ActorInit_Hedgehog(Actor* hedgehog) {
     hedgehog->unk_134[0] = (f32) hedgehog->pos.x;
@@ -2567,7 +3597,60 @@ void ActorInit_Hedgehog(Actor* hedgehog) {
     hedgehog->unk_134[2] = (f32) hedgehog->unk_90;
 }
 
+#ifdef NON_MATCHING
+// diff score: 2 words (fp coalesce at -(dz+playerZ) add)
+void ActorTick_Hedgehog(Actor *hedgehog)
+{
+  f32 dx;
+  f32 dzTemp;
+  f32 dz;
+  f32 playerX;
+  f32 playerZ;
+  playerX = gCurrentActivePlayerPointer->pos.x;
+  if ((((hedgehog->unk_F4 < playerX) && (playerX < hedgehog->unk_F8)) && (hedgehog->unk_104 < (playerZ = gCurrentActivePlayerPointer->pos.z))) && (playerZ < hedgehog->unk_108))
+  {
+    dx = playerX - hedgehog->pos.x;
+    dzTemp = playerZ - hedgehog->pos.z;
+    dz = dzTemp;
+    if (((dx * dx) + (dz * dz)) < hedgehog->unk_15C)
+    {
+      hedgehog->userVariables[0] = 1;
+    }
+    if (hedgehog->userVariables[0] != 0)
+    {
+      hedgehog->unk_94 = hedgehog->position._f32.x;
+      dx += Random((s32) (-hedgehog->unk_160), (s32) hedgehog->unk_160);
+      playerZ = Random((s32) (-hedgehog->unk_160), (s32) hedgehog->unk_160);
+      RotateAngleTowards(&hedgehog->unk_90, ArcTan2Deg(dx, -(dz + playerZ)), hedgehog->position._f32.y);
+    }
+    else
+    {
+      hedgehog->unk_94 = hedgehog->position._f32.x;
+      RotateAngleTowards(&hedgehog->unk_90, hedgehog->unk_134[2], hedgehog->position._f32.y);
+    }
+  }
+  else
+  {
+    dx = hedgehog->unk_134[0] - hedgehog->pos.x;
+    dz = hedgehog->unk_134[1] - hedgehog->pos.z;
+    if (((dx * dx) + (dz * dz)) > 2500.0f)
+    {
+      RotateAngleTowards(&hedgehog->unk_90, ArcTan2Deg(dx, -dz), hedgehog->position._f32.y);
+      hedgehog->userVariables[0] = 0;
+    }
+    else
+    {
+      hedgehog->unk_94 = 0.0f;
+      RotateAngleTowards(&hedgehog->unk_90, hedgehog->unk_134[2], hedgehog->position._f32.y);
+    }
+  }
+  Actor_PlaySound(hedgehog, 0x41, 4, 4);
+  hedgehog->unk_F0++;
+  func_800382F4(hedgehog);
+}
+#else
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_Hedgehog.s")
+#endif
 
 void ActorInit_Fish(Actor* fish) {
     fish->unk_134[0] = fish->pos.x;
@@ -2590,13 +3673,105 @@ s32 func_80047FC0(Actor* arg0, s32 arg1) {
     return temp_v0;
 }
 
+#ifdef NON_MATCHING
+void func_800480EC(Actor *butterfly)
+{
+  unk80170E68 *rec;
+  unk80170E68 *fill;
+  s32 slotIndex;
+  s32 i;
+  s32 *new_var2;
+  s32 spawned[4];
+  s32 *p;
+  s32 result;
+  s32 next;
+  unk80170E68 *new_var;
+  butterfly->userVariables[1] = butterfly->unk_124 / 5;
+  butterfly->userVariables[2] = (butterfly->unk_124 * 2) / 3;
+  if (butterfly->unk_128 == (-1))
+  {
+    rec = D_80170E68;
+    slotIndex = 0;
+    do
+    {
+      if (rec->unk_00 == 0)
+      {
+        rec->unk_00 = 1;
+        rec->unk_04 = 0;
+        butterfly->unk_128 = slotIndex;
+        break;
+      }
+      slotIndex++;
+      rec++;
+    }
+    while (slotIndex != 4);
+    if (slotIndex == 4)
+    {
+      butterfly->actorID = 0;
+      return;
+    }
+    new_var = &D_80170E68[slotIndex];
+    fill = new_var;
+    for (i = 0; i < 128; i++)
+    {
+      fill->unk_08[i] = butterfly->pos.x;
+      fill->unk_208[i] = butterfly->pos.y;
+      fill->unk_408[i] = butterfly->pos.z;
+      fill->unk_608[i] = butterfly->unk_90;
+    }
+
+    i = (butterfly->userVariables[3] = 0);
+    p = spawned;
+    do
+    {
+      next = i - -1;
+      result = func_80047FC0(butterfly, next);
+      *p = result;
+      if (result == (-1))
+      {
+        rec->unk_00 = 0;
+        new_var2 = spawned;
+        butterfly->actorID = 0;
+        for (; new_var2 < p; p++)
+        {
+          gActors[spawned[0]].actorID = 0;
+        }
+
+        return;
+      }
+      i = next;
+      p++;
+    }
+    while (next != 4);
+  }
+}
+#else
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_800480EC.s")
+#endif
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80048284.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_LizardKongButterfly.s")
+void ActorTick_LizardKongButterfly(Actor* butterfly) {
+    s32 uv3 = butterfly->userVariables[3];
+    unk80170E68* rec;
+    s32 idx;
 
-void ActorInit_LizardKongButterflySpawner(Actor* lizardKongButterflySpawner){
+    if ((uv3 == 0) || (uv3 == -1)) {
+        func_80048284(butterfly);
+    } else {
+        rec = &D_80170E68[butterfly->unk_128];
+        idx = ((uv3 * 16) + rec->unk_04 + 128) % 128;
+        butterfly->vel.x = rec->unk_08[idx] - butterfly->pos.x;
+        butterfly->vel.y = rec->unk_208[idx] - butterfly->pos.y;
+        butterfly->vel.z = rec->unk_408[idx] - butterfly->pos.z;
+        butterfly->unk_90 = rec->unk_608[idx];
+    }
+    PlaySoundEffect(SFX_42_unkSnd, &butterfly->pos.x, &butterfly->pos.y, &butterfly->pos.z, 1, 0);
+    butterfly->unk_F0++;
+}
+
+
+void ActorInit_LizardKongButterflySpawner(Actor* lizardKongButterflySpawner) {
 
 }
 
@@ -2614,13 +3789,13 @@ void ActorInit_LizardKongBoulder(Actor* lk_boulder) {
 
 void ActorTick_LizardKongBoulder(Actor* lk_boulder) {
     lk_boulder->unk_134[3] += lk_boulder->unk_94;
-    lk_boulder->vel.y -= 3.200000048f;
+    lk_boulder->vel.y -= 3.2f;
 
     if (lk_boulder->unk_98 == 0) {
         lk_boulder->unk_98 = 1;
         lk_boulder->pos.y = lk_boulder->unknownPositionThings[0].unk_10 / 2;
         lk_boulder->vel.y = lk_boulder->position._f32.y * -lk_boulder->vel.y;
-        lk_boulder->unk_94 *= 0.8999999762f;
+        lk_boulder->unk_94 *= 0.9f;
         PLAY_SFX_AT(SFX_RockTumble, lk_boulder->pos, 0, 0);
     }
 
@@ -2665,11 +3840,40 @@ void PlayLizardKongSFX(Actor* arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_LizardKong.s")
 
-void ActorInit_PopcornBucketSpawner(Actor* popcornBucketSpawner){
+void ActorInit_PopcornBucketSpawner(Actor* popcornBucketSpawner) {
 
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_PopcornBucketSpawner.s")
+void ActorTick_PopcornBucketSpawner(Actor *popcornBucketSpawner) {
+    Actor *actor;
+    int unusedCheck;
+    Actor *start;
+    Actor *end;
+
+    /* statement grouping on this line is load-bearing for codegen */
+    start = gActors; actor = start; do { end = (Actor *) Poles;
+        if (actor->actorID == ACTOR_NULL) {
+            break;
+        }
+        actor++;
+    } while (actor != end);
+    unusedCheck = !popcornBucketSpawner;
+    if (actor != ((Actor *) Poles)) {
+        if (gActorCount < popcornBucketSpawner->unk_130) {
+            if ((!popcornBucketSpawner) && (unusedCheck & 0xFFFFu)) {}
+            actor = start;
+            do {
+                start = end;
+                if (actor->actorID == POPCORN_BUCKET) {
+                    return;
+                }
+                actor++;
+                if (actor && actor) {}
+            } while (actor != start);
+            actor = popcornBucketSpawner;
+            Actor_Init(POPCORN_BUCKET, popcornBucketSpawner->pos.x, popcornBucketSpawner->pos.y, popcornBucketSpawner->pos.z, popcornBucketSpawner->unk_90, actor->unk_F4, actor->unk_F8, actor->unk_FC, actor->unk_100, actor->unk_104, popcornBucketSpawner->unk_108, popcornBucketSpawner->position._f32.x, actor->position._f32.y, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, actor->unk_124, popcornBucketSpawner->unk_128, actor->unk_12C, 0); } }
+}
+
 
 void ActorInit_PopcornBucket(Actor* popcornBucket) {
     ActorInit_Unk1F(popcornBucket);
@@ -2687,11 +3891,29 @@ void ActorTick_Unk4E(Actor* unk_4e) {
     ActorTick_Popcorn(unk_4e);
 }
 
-void ActorInit_ChocoKidSpawner(Actor* chocoKidSpawner){
+void ActorInit_ChocoKidSpawner(Actor* chocoKidSpawner) {
 
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_ChocoKidSpawner.s")
+void ActorTick_ChocoKidSpawner(Actor* chocoKidSpawner) {
+    s32 spawnerTag = chocoKidSpawner->unk_124;
+    Actor* actor = gActors; do {
+        if (actor->actorID == SPAWNED_CHOCO_KID) {
+            if (spawnerTag == actor->unk_124) {
+                return;
+            }
+        }
+        actor++;
+    } while (actor != (Actor*) Poles);
+
+    if (chocoKidSpawner) {}
+
+    Actor_Init(SPAWNED_CHOCO_KID, chocoKidSpawner->pos.x, chocoKidSpawner->pos.y, chocoKidSpawner->pos.z,
+        chocoKidSpawner->unk_90, chocoKidSpawner->unk_F4, chocoKidSpawner->unk_F8, chocoKidSpawner->unk_FC,
+        chocoKidSpawner->unk_100, chocoKidSpawner->unk_104, chocoKidSpawner->unk_108,
+        chocoKidSpawner->position._f32.x, chocoKidSpawner->position._f32.y, chocoKidSpawner->unk_15C,
+        0.0f, 0.0f, 0.0f, 0.0f, 0.0f, spawnerTag, 0, 0, 0);
+}
 
 void ActorInit_SpawnedChocoKid(Actor* chocoKid) {
     ActorInit_ChocoKid(chocoKid);
@@ -2717,7 +3939,7 @@ void ActorTick_GreyAntWrapper(Actor* greyAntW) {
     ActorTick_GreyAnt(greyAntW);
 }
 
-void ActorInit_BattleModeSandCrabSpawner(Actor* bmSCS){
+void ActorInit_BattleModeSandCrabSpawner(Actor* bmSCS) {
 
 }
 
@@ -2746,21 +3968,69 @@ void ActorTick_BattleModeSandCrab(Actor* battleModeSandCrab) {
             battleModeSandCrab->userVariables[1] = 1;
             return;
         }
-        battleModeSandCrab->vel.y -= 3.200000048f;
+        battleModeSandCrab->vel.y -= 3.2f;
         battleModeSandCrab->pos.y += battleModeSandCrab->vel.y;
         return;
     }
     if (battleModeSandCrab->unk_98 != 0) {
-        battleModeSandCrab->vel.y -= 3.200000048f;
-        battleModeSandCrab->vel.y -= battleModeSandCrab->vel.y * 0.05000000075f;
+        battleModeSandCrab->vel.y -= 3.2f;
+        battleModeSandCrab->vel.y -= battleModeSandCrab->vel.y * 0.05f;
     }
 }
 
-void ActorInit_BattleModeFireSpawner(Actor* bmFireSpawner){
+void ActorInit_BattleModeFireSpawner(Actor* bmFireSpawner) {
 
 }
 
+#ifdef NON_MATCHING
+// diff score: 5 words: 3 spill-slot offset constants (uopt reserved-slot ordering, not source-reachable) + 2-word lui/addiu schedule pair
+void ActorTick_BattleModeFireSpawner(Actor *fireSpawner)
+{
+  s32 i = 0;
+  Actor *actor;
+  f32 deg;
+  f32 rad;
+  f32 cosResult;
+  f32 sinResult;
+  s32 slotUsed[62];
+  for (; i < fireSpawner->unk_124; i++)
+  {
+    if (1)
+    {
+      slotUsed[i] = 0;
+    }
+  }
+
+  actor = gActors;
+  i = ((deg * 2.0f) * 3.141592653589793) / 360.0;
+  do
+  {
+    if (actor->actorID == 0x56)
+    {
+      slotUsed[actor->unk_124] = 1;
+      rad = i;
+    }
+ do { } while (0);
+    actor++;
+  }
+  while (((u32) actor) < ((u32) Poles));
+  for (i = 0; i < fireSpawner->unk_124; i++)
+  {
+    if (slotUsed[i] == 0)
+    {
+      deg = i;
+      deg = (360.0f * deg) / fireSpawner->unk_124;
+      rad = ((deg * 2) * 3.141592653589793) / 360.0;
+      cosResult = __cosf(rad);
+      sinResult = __sinf(rad);
+      Actor_Init(0x56, (fireSpawner->position._f32.x * cosResult) + fireSpawner->pos.x, fireSpawner->pos.y, fireSpawner->pos.z - (fireSpawner->position._f32.x * sinResult), deg + 180.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, i, 0, 0, 0);
+    }
+  }
+
+}
+#else
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_BattleModeFireSpawner.s")
+#endif
 
 
 void ActorInit_BattleModeFire(Actor* bmFire) {
@@ -2778,15 +4048,64 @@ void ActorInit_BattleModeSaucerSpawner(Actor* bmSaucerSpawner) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_BattleModeSaucerSpawner.s")
+void ActorTick_BattleModeSaucerSpawner(Actor *bmSaucerSpawner) {
+    s32 i;
+    s32 idx;
+    int new_var;
+    if (D_80174758[bmSaucerSpawner->unk_128 - 1] != (-1)) {
+        return;
+    }
+    bmSaucerSpawner->userVariables[0] += 1;
+    if (bmSaucerSpawner->unk_124 != bmSaucerSpawner->userVariables[0]) {
+        return;
+    }
+    for (i = bmSaucerSpawner->unk_128 - 1; i > 0; i--) {
+        new_var = i - 1;
+        if (D_80174758[new_var] != (-1)) {
+            gActors[D_80174758[i - 1]].userVariables[0] = i;
+            D_80174758[i] = D_80174758[i - 1];
+            D_80174758[i - 1] = -1;
+            if (1) { }
+        }
+    }
+
+    D_80174758[0] = Actor_Init(BATTLE_MODE_SAUCER, bmSaucerSpawner->pos.x, bmSaucerSpawner->pos.y - bmSaucerSpawner->position._f32.x, bmSaucerSpawner->pos.z, 0.0f, bmSaucerSpawner->unk_F4, bmSaucerSpawner->unk_F8, -10000.0f, 10000.0, bmSaucerSpawner->unk_104, bmSaucerSpawner->unk_108, bmSaucerSpawner->position._f32.x, bmSaucerSpawner->position._f32.y, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0, 0, 0, 0);
+    bmSaucerSpawner->userVariables[0] = 0;
+}
+
 
 void ActorInit_BattleModeSaucer(Actor* battleModeSaucer) {
     battleModeSaucer->unk_134[0] = battleModeSaucer->pos.y;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_BattleModeSaucer.s")
+// score 30
+#ifdef NON_MATCHING
+void ActorTick_BattleModeSaucer(Actor* battleModeSaucer) {
+    f32 targetY = (battleModeSaucer->position._f32.x * battleModeSaucer->userVariables[0]) + battleModeSaucer->unk_134[0];
 
-void ActorInit_Unk59(Actor* unk_59){
+    if (battleModeSaucer->pos.y < targetY) {
+        battleModeSaucer->pos.y += battleModeSaucer->position._f32.y;
+        if (targetY < battleModeSaucer->pos.y) {
+            battleModeSaucer->pos.y = targetY;
+        }
+    } else if (targetY < battleModeSaucer->pos.y) {
+        battleModeSaucer->pos.y -= battleModeSaucer->position._f32.y;
+        if (battleModeSaucer->pos.y < targetY) {
+            battleModeSaucer->pos.y = targetY;
+        }
+    }
+
+    if (D_80174758[battleModeSaucer->userVariables[0] - 1] == -1) {
+        D_80174758[battleModeSaucer->userVariables[0]] = -1;
+        battleModeSaucer->userVariables[0] -= 1;
+        D_80174758[battleModeSaucer->userVariables[0]] = battleModeSaucer->actorIndex;
+    }
+}
+#else
+#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_BattleModeSaucer.s")
+#endif
+
+void ActorInit_Unk59(Actor* unk_59) {
 
 }
 
@@ -2808,20 +4127,49 @@ void ActorInit_Unk5A(Actor* unk_5A) {
 
 void ActorTick_Unk5A(Actor* unk_5A) {
     if (unk_5A->unk_98 != 0) {
-        unk_5A->vel.y -= 3.200000048f;
-        unk_5A->vel.y -= unk_5A->vel.y * 0.05000000075f;
+        unk_5A->vel.y -= 3.2f;
+        unk_5A->vel.y -= unk_5A->vel.y * 0.05f;
         return;
     }
     func_800313BC(unk_5A->actorIndex, Random(0, 360));
 }
 
-void ActorInit_PowerUpSpawner(Actor* powerUpSpawner){
+void ActorInit_PowerUpSpawner(Actor* powerUpSpawner) {
 
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_PowerUpSpawner.s")
+void ActorTick_PowerUpSpawner(Actor* powerUpSpawner) {
+    s32 weightA;
+    s32 weightB;
+    s32 weightC;
+    s32 randVal;
+    s32 spawnID;
 
-void ActorInit_FallingGreyAntSpawner(Actor* fallingGreyAntSpawner){
+    if ((powerUpSpawner->globalTimer % (u32) (s32) powerUpSpawner->unk_168) == 1) {
+        randVal = Random(0, 0xC350);
+        weightA = powerUpSpawner->position._f32.x;
+        weightB = powerUpSpawner->position._f32.y;
+        weightC = powerUpSpawner->unk_15C;
+        spawnID = randVal % ((s32) powerUpSpawner->unk_160 + weightA + weightB + weightC);
+        if (spawnID < weightA) {
+            spawnID = BIG_FEET_POWER_UP;
+        } else if (spawnID < (weightB + weightA)) {
+            spawnID = BIG_HEAD_POWER_UP;
+        } else if (spawnID < (weightC + weightA + weightB)) {
+            spawnID = SHRINK_POWER_UP;
+        } else {
+            randVal = powerUpSpawner->unk_124;
+            if (!randVal) {}
+            spawnID = SHRINK_ENEMY_POWER_UP;
+        }
+        randVal = powerUpSpawner->unk_124; Actor_Init(spawnID, powerUpSpawner->pos.x, powerUpSpawner->pos.y, powerUpSpawner->pos.z, 0.0f,
+            -10000.0f, 10000.0f, -10000.0f, 10000.0f, -10000.0f, 10000.0f, powerUpSpawner->unk_164,
+            0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, (s32) powerUpSpawner->unk_16C,
+            randVal, 0, 0);
+    }
+}
+
+void ActorInit_FallingGreyAntSpawner(Actor* fallingGreyAntSpawner) {
 
 }
 
@@ -2842,17 +4190,39 @@ void ActorInit_FallingGreyAnt(Actor* fallingGreyAntActor) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_FallingGreyAnt.s")
 
-void ActorInit_UnkFireSpawner(Actor* unkFireSpawner){
+void ActorInit_UnkFireSpawner(Actor* unkFireSpawner) {
 
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_UnkFireSpawner.s")
+void ActorTick_UnkFireSpawner(Actor* unkFireSpawner) {
+    Actor* actor;
+
+    if (StageFlags[unkFireSpawner->unk_130] != 0) {
+        actor = gActors;
+        do {
+            if (actor->actorID == FIRE) {
+                return;
+            }
+            actor++;
+        } while (actor != (Actor*) Poles);
+
+        if (Actor_Init(FIRE, unkFireSpawner->pos.x, unkFireSpawner->pos.y, unkFireSpawner->pos.z,
+                0.0f, unkFireSpawner->unk_F4, unkFireSpawner->unk_F8, unkFireSpawner->unk_FC,
+                unkFireSpawner->unk_100, unkFireSpawner->unk_104, unkFireSpawner->unk_108,
+                unkFireSpawner->position._f32.x, unkFireSpawner->position._f32.y, unkFireSpawner->unk_15C,
+                unkFireSpawner->unk_160, 0.0f, 0.0f, 0.0f, 0.0f, 0,
+                unkFireSpawner->unk_128, unkFireSpawner->unk_12C, 0) != -1) {
+            Actor_PlaySound(unkFireSpawner, SFX_AB_unkSnd, 1, 1);
+        }
+    }
+}
+
 
 void ActorTick_PickupHeartFalling(Actor* fallingHeart) {
     f32 temp_f2;
 
     if (fallingHeart->userVariables[0] == 0) {
-        fallingHeart->vel.y -= (3.200000048f + (fallingHeart->vel.y * 0.05000000075f));
+        fallingHeart->vel.y -= (3.2f + (fallingHeart->vel.y * 0.05f));
         temp_f2 = fallingHeart->pos.y + fallingHeart->vel.y;
         if (temp_f2 < 0.0f) {
             fallingHeart->pos.y = 0.0f;
@@ -2867,11 +4237,10 @@ void ActorTick_Powerup(Actor* powerup) {
     if (powerup->userVariables[0] != 0) {
         powerup->userVariables[1] += 1;
         if (powerup->unk_124 == powerup->userVariables[1]) {
-            func_80031518(powerup);
+            TriggerRoomClearReaction(powerup);
         }
-    }
-    else {
-        powerup->vel.y -= (3.200000048f + (powerup->vel.y * 0.05000000075f));
+    } else {
+        powerup->vel.y -= (3.2f + (powerup->vel.y * 0.05f));
         if (powerup->pos.y + powerup->vel.y < powerup->position._f32.x) {
             powerup->pos.y = powerup->position._f32.x;
             powerup->userVariables[0] = 1;
@@ -2886,96 +4255,327 @@ void ActorTick_Powerup(Actor* powerup) {
 //related to spawning collsion pieces
 void func_8004BA5C(s32 arg0) {
     s32 i;
-    gCurrentActivePlayerPointer = &gPlayerActors[0];
-    gTongueOnePointer = &gTongues[0];
+    gCurrentActivePlayerPointer = gPlayerActors;
+    gTongueOnePointer = gTongues;
 
     for (i = 0; i < arg0; i++) {
         Actors_Tick();
     }
 }
 
-void func_8004BAC0(void) {
-    if (D_80174980 == 5) {
+/**
+ * @brief Drives the level flow state each frame.
+ *
+ * During the stage clear hold (state 5) the tongue is raised and `gTimer` is
+ * rewound at frame 65 for 60 repeats, then everything resets to the intro at
+ * frame 200. The intro (state 0) becomes playing (state 1) with a jingle once
+ * `gTimer` reaches 5. Camera input stays disabled through states 0, 2 and 3.
+ * Also raises `D_801749B0` in the room where a second player joins.
+ */
+void UpdateLevelFlow(void) {
+    if (gLevelFlowState == 5) {
         if (1 == gTimer) { //required
             D_801749D0 = 0;
             gPlayerActors->tongueYOffset = 90.0f;
-        } else if (gTimer == 0x41) {
+        } else if (gTimer == 65) {
             D_801749D0++;
-            if (D_801749D0 == 0x3C) {
+            if (D_801749D0 == 60) {
                 D_801749D0 = 0;
             } else {
                 gTimer--;
-                D_801749A0--;
+                gFieldFramesElapsed--;
             }
-        } else if (gTimer == 0xC8) {
-            D_80174980 = 0;
-            D_801749A0 = gTimer = 1; //required
+        } else if (gTimer == 200) {
+            gLevelFlowState = 0;
+            gFieldFramesElapsed = gTimer = 1; //required
             gPlayerActors->tongueYOffset = 60.0f;
         }
     }
-    if ((gTimer >= 5) && (D_80174980 == 0)) {
-        D_80174980 = 1;
+    if ((gTimer >= 5) && (gLevelFlowState == 0)) {
+        gLevelFlowState = 1;
         PlaySoundEffect(0xDF, NULL, NULL, NULL, 0, 0x10);
     }
-    if ((D_80174980 == 0) || (D_80174980 == 2) || (D_80174980 == 3)) {
-        D_801749A8 = 1;
+    if ((gLevelFlowState == 0) || (gLevelFlowState == 2) || (gLevelFlowState == 3)) {
+        gCameraInputDisabled = 1;
     } else {
-        D_801749A8 = 0;
+        gCameraInputDisabled = 0;
     }
-    if ((D_80174878 == 2) && (gCurrentZone == 0xF)) {
+    if ((D_80174878 == 2) && (gCurrentZone == 15)) {
         D_801749B0 = 1;
     } else {
         D_801749B0 = 0;
     }
 }
 
+// score 18
+#ifdef NON_MATCHING
+void func_8004BC48(ContMain* arg0) {
+    s32 val;
+    s32 phase;
+    f32 angle;
+    s32 mode;
+
+    val = D_801749D0;
+    mode = 0;
+    if ((val > 0) && (val < 6)) {
+        mode = 1;
+        phase = val - 1;
+    } else if ((val >= 0x14) && (val < 0x29)) {
+        mode = 2;
+        phase = val - 0x14;
+    }
+
+    switch (mode) {
+    case 0:
+        return;
+    case 1:
+        angle = 0.0f;
+        break;
+    case 2:
+        angle = (phase * 15) + 90;
+        break;
+    }
+    arg0->stickX = cosf(DEGREES_TO_RADIANS_2PI(angle)) * 10.0f;
+    arg0->stickY = -sinf(DEGREES_TO_RADIANS_2PI(angle)) * 10.0f;
+    arg0->buttons0 |= B_BUTTON;
+}
+#else
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8004BC48.s")
+#endif
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8004BD7C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8004BE90.s")
+/**
+ * @brief Resets the CPU players' virtual controllers and reaction timers.
+ *
+ * Zeroes each CPU player's state and virtual controller, then seeds its
+ * reaction delay from the CPU difficulty setting (`D_801003DC[0]`): a base of
+ * `(4 - difficulty) * 35 / 4` frames in `D_80175608`, plus up to 19 random
+ * frames in `D_801755F8`. The CPU input logic in `func_8004CD9C` consumes
+ * these.
+ */
+void ResetCpuControllers(void) {
+    s32 i;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8004BF88.s")
+    for (i = 0; i < 4; i++) {
+        D_80175598[i] = 0;
+        Controller_Zero(&gCpuControllers[i]);
+        D_801755E8[i] = 0;
+        D_80175608[i] = ((4 - D_801003DC[0]) * 0x23) / 4;
+        D_801755F8[i] = D_80175608[i] + (Random(0, 99999) % 20);
+    }
+}
 
-s32 func_8004C110(s32 arg0, f32 arg1, f32 arg2) {
-    Actor* actorArray;
-    s32 temp_v0;
-    s32 var_s2;
+// Count actor collisions overlapping tongue within a height bound
+s32 CountActorsAtTongueHeight(PlayerActor *player) {
+    Actor *cur;
+    Actor *actor;
+    s32 count = 0;
+    s32 i;
+    f32 y;
+    /* statement grouping on this line is load-bearing for codegen */
+    cur = actor; actor = gActors; do { cur = actor;
+        if (cur->unk_A0.unk_00 == 1) {
+            if (cur->actorID != ACTOR_NULL) {
+                if (cur->actorID < R_HEART) {
+                    if ((cur->actorState == 0) || (cur->actorState == 3)) {
+                        y = (player->pos.y + player->tongueYOffset) - 5.0f;
+                        for (i = 0; i < cur->tongueCollision; i++) {
+                            if (!(((cur->pos.y + cur->unknownPositionThings[i].unk_10) + cur->unknownPositionThings[i].unk_04) < y)) {
+                                if (!((y + 10.0f) < (cur->unknownPositionThings[i].unk_04 + cur->pos.y))) {
+                                    count++;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        actor++;
+    }
+    while (actor != ((Actor *) Poles));
+    return count;
+}
+
+
+s32 GetTongueTargetDistSq(Actor* actor, PlayerActor* player, f32 x, f32 z) {
+    f32 tongueY;
+    s32 i;
+    s32 dx;
+    s32 dz;
+
+    if (actor->unk_A0.unk_00 == 1) {
+        if ((actor->actorID != ACTOR_NULL) && (actor->actorID < R_HEART) &&
+            ((actor->actorState == 0) || (actor->actorState == 3))) {
+            tongueY = (player->pos.y + player->tongueYOffset) - 5.0f;
+            for (i = 0; i < actor->tongueCollision; i++) {
+                if ((((actor->pos.y + actor->unknownPositionThings[i].unk_10) + actor->unknownPositionThings[i].unk_04) < tongueY) ||
+                    ((tongueY + 10.0f) < (actor->unknownPositionThings[i].unk_04 + actor->pos.y))) {
+                    continue;
+                }
+                dx = x - actor->pos.x;
+                dz = z - actor->pos.z;
+                if ((gCurrentZone == 2) && (actor->actorState == 3)) {
+                    if (((player->pos.x * player->pos.x) + ((player->pos.z * player->pos.z) / 2)) <
+                        ((actor->pos.x * actor->pos.x) + (actor->pos.z * actor->pos.z))) {
+                        return -1;
+                    }
+                }
+                return (dx * dx) + (dz * dz);
+            }
+        }
+    }
+    return -1;
+}
+
+/**
+ * @brief Finds the actor a player's tongue would best target at a position.
+ *
+ * Checks every actor with `GetTongueTargetDistSq` and keeps the one with the
+ * smallest squared distance. Actors that are not valid tongue targets return
+ * a negative distance and are skipped.
+ *
+ * @param player The player whose tongue is targeting.
+ * @param x The X coordinate to measure from.
+ * @param z The Z coordinate to measure from.
+ *
+ * @return (s32) The index of the nearest targetable actor; otherwise, it returns -1.
+ */
+s32 FindNearestTongueTarget(PlayerActor* player, f32 x, f32 z) {
+    Actor* actor;
+    s32 distSq;
+    s32 bestDistSq;
     s32 actorIndex;
     s32 i;
 
-    var_s2 = 100000000;
+    bestDistSq = 100000000;
     actorIndex = -1;
-    actorArray = gActors;
-    for (i = 0; i < ARRAY_COUNT(gActors); i++, actorArray++) {
-        temp_v0 = func_8004BF88(actorArray, arg0, arg1, arg2);
-        //fake match
-        do {
-            if ((temp_v0 >= 0) && (temp_v0 < var_s2)) {
-                var_s2 = temp_v0;
-                actorIndex = i;
-            }
-        } while (0);
+    actor = gActors;
+    for (i = 0; i < ARRAY_COUNT(gActors); i++, actor++) {
+        distSq = GetTongueTargetDistSq(actor, player, x, z);
+        if (distSq < 0) {
+            continue;
+        }
+        if (distSq < bestDistSq) {
+            bestDistSq = distSq;
+            actorIndex = i;
+        }
     }
     return actorIndex;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8004C1C8.s")
+#ifdef NON_MATCHING
+s32 func_8004C1C8(PlayerActor *player)
+{
+  s32 closest;
+  s32 skip;
+  s32 i;
+  f32 bestDist;
+  f32 x;
+  f32 z;
+  s32 new_var;
+  f32 dx;
+  f32 dz;
+  skip = player->playerID;
+  closest = -1;
+  bestDist = 1e10f;
+  for (i = 0; i < 4; i++)
+  {
+    if (i != skip)
+    {
+      if (gPlayerActors[i].exists != 0)
+      {
+        new_var = gCurrentZone;
+        if ((((new_var != 4) && (new_var != 5)) && (new_var != 6)) && (new_var != 7))
+        {
+          x = player->pos.x;
+          z = player->pos.z;
+        }
+        else
+        {
+          z = (x = 0.0f);
+        }
+        dx = x - gPlayerActors[i].pos.x;
+        dz = z - gPlayerActors[i].pos.z;
+        if (((dx * dx) + (dz * dz)) < bestDist)
+        {
+          closest = i;
+          bestDist = (dx * dx) + (dz * dz);
+        }
+      }
+    }
+  }
 
-s32 func_8004C374(u16* arg0, u16* arg1, s32 arg2) {
-    if ((*arg1 & arg2) == 0) {
-        *arg0 |= arg2;
+  return closest;
+}
+#else
+#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8004C1C8.s")
+#endif
+
+/**
+ * @brief Presses a button on a virtual controller if it is not already held.
+ *
+ * Used by the CPU input logic in `func_8004CD9C` to produce clean button
+ * presses on `gCpuControllers`.
+ *
+ * @param [out] buttons The button field to press into.
+ * @param heldButtons The button field holding the already-held buttons.
+ * @param button The button mask to press.
+ *
+ * @return (s32) 1 if the button was pressed; otherwise, it returns 0.
+ */
+s32 TryPressButton(u16* buttons, u16* heldButtons, s32 button) {
+    if ((*heldButtons & button) == 0) {
+        *buttons |= button;
         return 1;
     }
     return 0;
 }
 
-void func_8004C3A4(s16* arg0, f32 arg1) {
-    arg0[3] = cosf(DEGREES_TO_RADIANS_2PI(arg1)) * 65.0f;
-    arg0[4] = sinf(DEGREES_TO_RADIANS_2PI(arg1)) * 65.0f;
+/**
+ * @brief Points a controller's stick in the direction of an angle.
+ *
+ * Sets the stick to a deflection of 65 along the given angle in degrees.
+ * Used by the CPU input logic in `func_8004CD9C` to steer `gCpuControllers`.
+ *
+ * @param cont The controller whose stick to set.
+ * @param angle The direction to point the stick, in degrees.
+ */
+void SetStickToAngle(ContMain* cont, f32 angle) {
+    cont->stickX = cosf(DEGREES_TO_RADIANS_2PI(angle)) * 65.0f;
+    cont->stickY = sinf(DEGREES_TO_RADIANS_2PI(angle)) * 65.0f;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8004C43C.s")
+s32 SnapToBattleArenaWall(f32* outX, f32* outZ, f32 x, f32 z) {
+    if (((x >= 1500.0f) && (x <= 1560.0f)) || ((x <= -1500.0f) && (x >= -1560.0f))) {
+        if ((z >= -1060.0f) && (z <= 1060.0f)) {
+            *outZ = -1.0f;
+            *outX = -1.0f;
+            return 0;
+        }
+        *outX = x;
+        if (*outZ > 1060.0f) {
+            *outZ = 1060.0f;
+        } else {
+            *outZ = -1060.0f;
+        }
+        return 0;
+    }
+    if (((z >= 1000.0f) && (z <= 1060.0f)) || ((z <= -1000.0f) && (z >= -1060.0f))) {
+        if ((x >= -1560.0f) && (x <= 1560.0f)) {
+            *outZ = -1.0f;
+            *outX = -1.0f;
+            return 0;
+        }
+        *outZ = z;
+        if (*outX > 1560.0f) {
+            *outX = 1560.0f;
+        } else {
+            *outX = -1560.0f;
+        }
+        return 0;
+    }
+    return -1;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8004C600.s")
 
@@ -3002,7 +4602,31 @@ u8 func_8004CC6C(void) {
 }
 
 //only called in func_8004CD9C
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8004CCBC.s")
+s32 func_8004CCBC(PlayerActor* player) {
+    switch (gCurrentZone) {
+    case 1:
+    case 2:
+    case 5:
+        return 0;
+    case 3:
+        return 1;
+    case 4:
+    case 6:
+    case 7:
+        if (player->pos.y < 0.0f) {
+            if (SUM_OF_SQUARES(player->vel.x, player->vel.z) <
+                    (((4225.0f * player->forwardImpulse) * player->forwardImpulse) / 6.0f)) {
+                if (D_801755E8[player->playerID] >= 0x10) {
+                    return 1;
+                }
+            }
+            return 0;
+        }
+        return 1;
+    }
+    return 1;
+}
+
 
 //battle actor manager?
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8004CD9C.s")
@@ -3011,222 +4635,222 @@ u8 func_8004CC6C(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8004DDE0.s")
 
 const Vec2f D_8010A6D0[0x6B] = {
-{  0,   0},
-{ 50, 100},
-{ 60, 280},
-{ 50, 140},
-{ 50, 140},
-{ 50, 140},
-{ 70, 300},
-{100, 250},
-{ 50, 140},
-{  0,   0},
-{  0,   0},
-{ 50, 100},
-{ 50, 100},
-{ 50, 140},
-{ 50, 140},
-{  0,   0},
-{ 50, 140},
-{100, 120},
-{ 50, 100},
-{ 50, 100},
-{200, 400},
-{ 50, 140},
-{  0,   0},
-{ 50, 100},
-{150, 150},
-{ 50, 100},
-{ 50, 100},
-{  0,   0},
-{ 80,  80},
-{120, 240},
-{150, 250},
-{100, 200},
-{ 40,  80},
-{120, 350},
-{  0,   0},
-{ 50, 100},
-{ 50, 140},
-{ 50, 140},
-{350, 220},
-{ 60, 100},
-{  0,   0},
-{ 80, 200},
-{ 60, 156},
-{ 60, 156},
-{100, 260},
-{ 80, 208},
-{ 50, 100},
-{ 50, 100},
-{ 50, 140},
-{ 60,  90},
-{ 80, 200},
-{ 50, 250},
-{  0,   0},
-{180, 360},
-{  0,   0},
-{ 50, 140},
-{ 50, 140},
-{ 50, 180},
-{  0,   0},
-{ 50, 140},
-{ 75, 100},
-{200, 450},
-{ 60, 120},
-{ 50, 250},
-{ 60, 120},
-{100, 100},
-{ 50, 100},
-{ 50, 100},
-{170, 500},
-{ 50, 100},
-{ 50, 150},
-{ 50, 100},
-{ 50, 100},
-{  0,   0},
-{120, 240},
-{150, 450},
-{  0,   0},
-{ 90, 110},
-{ 50,  80},
-{  0,   0},
-{ 50, 140},
-{  0,   0},
-{ 50, 140},
-{  0,   0},
-{ 50, 100},
-{  0,   0},
-{ 50, 140},
-{  0,   0},
-{ 60,  50},
-{  0,   0},
-{ 50,  80},
-{  0,   0},
-{  0,   0},
-{ 50, 140},
-{  0,   0},
-{ 55, 110},
-{ 55, 110},
-{ 65, 130},
-{ 75, 150},
-{ 75, 150},
-{ 65, 130},
-{ 70, 140},
-{ 80, 140},
-{ 80, 140},
-{ 80, 140},
-{ 80, 140},
-{ 80, 140}
+    {  0,   0},
+    { 50, 100},
+    { 60, 280},
+    { 50, 140},
+    { 50, 140},
+    { 50, 140},
+    { 70, 300},
+    {100, 250},
+    { 50, 140},
+    {  0,   0},
+    {  0,   0},
+    { 50, 100},
+    { 50, 100},
+    { 50, 140},
+    { 50, 140},
+    {  0,   0},
+    { 50, 140},
+    {100, 120},
+    { 50, 100},
+    { 50, 100},
+    {200, 400},
+    { 50, 140},
+    {  0,   0},
+    { 50, 100},
+    {150, 150},
+    { 50, 100},
+    { 50, 100},
+    {  0,   0},
+    { 80,  80},
+    {120, 240},
+    {150, 250},
+    {100, 200},
+    { 40,  80},
+    {120, 350},
+    {  0,   0},
+    { 50, 100},
+    { 50, 140},
+    { 50, 140},
+    {350, 220},
+    { 60, 100},
+    {  0,   0},
+    { 80, 200},
+    { 60, 156},
+    { 60, 156},
+    {100, 260},
+    { 80, 208},
+    { 50, 100},
+    { 50, 100},
+    { 50, 140},
+    { 60,  90},
+    { 80, 200},
+    { 50, 250},
+    {  0,   0},
+    {180, 360},
+    {  0,   0},
+    { 50, 140},
+    { 50, 140},
+    { 50, 180},
+    {  0,   0},
+    { 50, 140},
+    { 75, 100},
+    {200, 450},
+    { 60, 120},
+    { 50, 250},
+    { 60, 120},
+    {100, 100},
+    { 50, 100},
+    { 50, 100},
+    {170, 500},
+    { 50, 100},
+    { 50, 150},
+    { 50, 100},
+    { 50, 100},
+    {  0,   0},
+    {120, 240},
+    {150, 450},
+    {  0,   0},
+    { 90, 110},
+    { 50,  80},
+    {  0,   0},
+    { 50, 140},
+    {  0,   0},
+    { 50, 140},
+    {  0,   0},
+    { 50, 100},
+    {  0,   0},
+    { 50, 140},
+    {  0,   0},
+    { 60,  50},
+    {  0,   0},
+    { 50,  80},
+    {  0,   0},
+    {  0,   0},
+    { 50, 140},
+    {  0,   0},
+    { 55, 110},
+    { 55, 110},
+    { 65, 130},
+    { 75, 150},
+    { 75, 150},
+    { 65, 130},
+    { 70, 140},
+    { 80, 140},
+    { 80, 140},
+    { 80, 140},
+    { 80, 140},
+    { 80, 140}
 };
 
 const unk_8010AA28 D_8010AA28[0x6B] = {
-{0, 0, 0, 0},
-{1, 1, 0, 0},
-{0, 1, 0, 0},
-{1, 1, 0, 0},
-{1, 1, 0, 1},
-{1, 1, 0, 1},
-{2, 1, 0, 0},
-{2, 1, 0, 0},
-{1, 4, 0, 0},
-{3, 0, 0, 0},
-{3, 0, 0, 0},
-{3, 0, 0, 0},
-{3, 0, 0, 0},
-{0, 1, 0, 0},
-{0, 1, 1, 0},
-{3, 0, 0, 0},
-{1, 4, 2, 0},
-{0, 0, 0, 0},
-{1, 4, 2, 0},
-{0, 1, 1, 0},
-{0, 0, 0, 0},
-{1, 0, 0, 0},
-{3, 0, 0, 0},
-{1, 0, 0, 0},
-{0, 4, 0, 0},
-{1, 3, 0, 0},
-{1, 4, 0, 0},
-{3, 0, 0, 0},
-{1, 4, 0, 0},
-{0, 3, 0, 1},
-{0, 4, 0, 0},
-{0, 4, 0, 0},
-{1, 4, 0, 0},
-{0, 4, 0, 0},
-{3, 0, 0, 0},
-{1, 1, 0, 0},
-{1, 4, 0, 0},
-{1, 4, 0, 0},
-{0, 1, 0, 0},
-{0, 4, 0, 0},
-{0, 4, 0, 0},
-{0, 4, 0, 0},
-{0, 1, 1, 1},
-{0, 1, 1, 1},
-{0, 1, 1, 1},
-{0, 1, 1, 1},
-{1, 4, 0, 0},
-{1, 1, 0, 0},
-{0, 4, 0, 0},
-{0, 4, 0, 0},
-{0, 4, 0, 0},
-{0, 4, 0, 0},
-{3, 0, 0, 0},
-{0, 0, 0, 0},
-{3, 0, 0, 0},
-{1, 4, 0, 0},
-{0, 0, 0, 0},
-{0, 0, 0, 0},
-{3, 0, 0, 0},
-{1, 4, 0, 0},
-{1, 4, 0, 0},
-{0, 1, 0, 0},
-{0, 4, 0, 0},
-{0, 4, 0, 0},
-{1, 4, 0, 0},
-{0, 0, 0, 0},
-{1, 3, 1, 0},
-{1, 1, 0, 0},
-{0, 1, 1, 0},
-//porcupine
-{1, 1, 0, 0},
-{1, 4, 0, 0},
-{1, 4, 0, 0},
-{3, 4, 0, 0},
-{3, 0, 0, 0},
-{0, 3, 0, 1},
-{0, 4, 0, 0},
-{3, 0, 0, 0},
-{0, 4, 0, 0},
-{1, 4, 0, 0},
-{3, 0, 0, 0},
-{1, 4, 0, 0},
-{3, 0, 0, 0},
-{1, 1, 0, 0},
-{3, 0, 0, 0},
-{1, 3, 0, 1},
-{3, 0, 0, 0},
-{1, 4, 0, 0},
-{3, 0, 0, 0},
-{1, 4, 0, 0},
-{3, 0, 0, 0},
-{1, 3, 0, 0},
-{3, 0, 0, 0},
-{3, 0, 0, 0},
-{1, 3, 0, 0},
-{3, 0, 0, 0},
-{1, 0, 0, 0},
-{1, 0, 0, 0},
-{1, 0, 0, 0},
-{1, 0, 0, 0},
-{0, 0, 0, 0},
-{0, 0, 0, 0},
-{0, 0, 0, 0},
-{1, 0, 0, 0},
-{1, 0, 0, 0},
-{1, 0, 0, 0},
-{1, 0, 0, 0},
-{1, 0, 0, 0}
+    {0, 0, 0, 0},
+    {1, 1, 0, 0},
+    {0, 1, 0, 0},
+    {1, 1, 0, 0},
+    {1, 1, 0, 1},
+    {1, 1, 0, 1},
+    {2, 1, 0, 0},
+    {2, 1, 0, 0},
+    {1, 4, 0, 0},
+    {3, 0, 0, 0},
+    {3, 0, 0, 0},
+    {3, 0, 0, 0},
+    {3, 0, 0, 0},
+    {0, 1, 0, 0},
+    {0, 1, 1, 0},
+    {3, 0, 0, 0},
+    {1, 4, 2, 0},
+    {0, 0, 0, 0},
+    {1, 4, 2, 0},
+    {0, 1, 1, 0},
+    {0, 0, 0, 0},
+    {1, 0, 0, 0},
+    {3, 0, 0, 0},
+    {1, 0, 0, 0},
+    {0, 4, 0, 0},
+    {1, 3, 0, 0},
+    {1, 4, 0, 0},
+    {3, 0, 0, 0},
+    {1, 4, 0, 0},
+    {0, 3, 0, 1},
+    {0, 4, 0, 0},
+    {0, 4, 0, 0},
+    {1, 4, 0, 0},
+    {0, 4, 0, 0},
+    {3, 0, 0, 0},
+    {1, 1, 0, 0},
+    {1, 4, 0, 0},
+    {1, 4, 0, 0},
+    {0, 1, 0, 0},
+    {0, 4, 0, 0},
+    {0, 4, 0, 0},
+    {0, 4, 0, 0},
+    {0, 1, 1, 1},
+    {0, 1, 1, 1},
+    {0, 1, 1, 1},
+    {0, 1, 1, 1},
+    {1, 4, 0, 0},
+    {1, 1, 0, 0},
+    {0, 4, 0, 0},
+    {0, 4, 0, 0},
+    {0, 4, 0, 0},
+    {0, 4, 0, 0},
+    {3, 0, 0, 0},
+    {0, 0, 0, 0},
+    {3, 0, 0, 0},
+    {1, 4, 0, 0},
+    {0, 0, 0, 0},
+    {0, 0, 0, 0},
+    {3, 0, 0, 0},
+    {1, 4, 0, 0},
+    {1, 4, 0, 0},
+    {0, 1, 0, 0},
+    {0, 4, 0, 0},
+    {0, 4, 0, 0},
+    {1, 4, 0, 0},
+    {0, 0, 0, 0},
+    {1, 3, 1, 0},
+    {1, 1, 0, 0},
+    {0, 1, 1, 0},
+    //porcupine
+    {1, 1, 0, 0},
+    {1, 4, 0, 0},
+    {1, 4, 0, 0},
+    {3, 4, 0, 0},
+    {3, 0, 0, 0},
+    {0, 3, 0, 1},
+    {0, 4, 0, 0},
+    {3, 0, 0, 0},
+    {0, 4, 0, 0},
+    {1, 4, 0, 0},
+    {3, 0, 0, 0},
+    {1, 4, 0, 0},
+    {3, 0, 0, 0},
+    {1, 1, 0, 0},
+    {3, 0, 0, 0},
+    {1, 3, 0, 1},
+    {3, 0, 0, 0},
+    {1, 4, 0, 0},
+    {3, 0, 0, 0},
+    {1, 4, 0, 0},
+    {3, 0, 0, 0},
+    {1, 3, 0, 0},
+    {3, 0, 0, 0},
+    {3, 0, 0, 0},
+    {1, 3, 0, 0},
+    {3, 0, 0, 0},
+    {1, 0, 0, 0},
+    {1, 0, 0, 0},
+    {1, 0, 0, 0},
+    {1, 0, 0, 0},
+    {0, 0, 0, 0},
+    {0, 0, 0, 0},
+    {0, 0, 0, 0},
+    {1, 0, 0, 0},
+    {1, 0, 0, 0},
+    {1, 0, 0, 0},
+    {1, 0, 0, 0},
+    {1, 0, 0, 0}
 };

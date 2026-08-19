@@ -3,6 +3,7 @@ __pycache__/
 .pyc
 .DS_Store
 .splache
+.linker_cache
 
 # Project-specific ignores
 *.bin
@@ -24,6 +25,8 @@ src/mod/
 tools/cli.ini
 
 # Tool artifacts
+objdiff.json
+*.progress_tmp.c
 --no-check-sections
 .ninja_deps
 .ninja_log
@@ -31,4 +34,11 @@ tools/cli.ini
 undefined_funcs_auto.txt
 undefined_syms_auto.txt
 ctx.c
+*.m2c
 include/ld_addrs.h
+tools/m2c/
+vault/
+wip/
+nonmatchings/
+
+tools/decomp_index/

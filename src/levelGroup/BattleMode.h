@@ -1,0 +1,112 @@
+#ifndef BATTLEMODE_H
+#define BATTLEMODE_H
+
+#include "common.h"
+
+extern unsigned char Global_JLMountain_ci4_PNG[];
+extern unsigned char Global_JLMountain_ci4_PAL[];
+extern unsigned char Global_jlText3_ci4_PNG[];
+extern unsigned char Global_jlText3_ci4_PAL[];
+extern unsigned char Global_sandAgain_ci4_PNG[];
+extern unsigned char Global_sandAgain_ci4_PAL[];
+extern unsigned char Global_yellowBrickWall_ci4_PNG[];
+extern unsigned char Global_yellowBrickWall_ci4_PAL[];
+extern unsigned char Global_Darkwood_ci4_PNG[];
+extern unsigned char Global_Darkwood_ci4_PAL[];
+extern unsigned char Global_metalPlate_i4_PNG[];
+extern unsigned char Global_strip2_i4_PNG[];
+extern unsigned char Global_BLRedYellowPlate_ci4_PNG[];
+extern unsigned char Global_BLRedYellowPlate_ci4_PAL[];
+extern unsigned char Global_DCBricks_ci4_PNG[];
+extern unsigned char Global_DCBricks_ci4_PAL[];
+extern unsigned char Global_orangeBrick_ci4_PNG[];
+extern unsigned char Global_orangeBrick_ci4_PAL[];
+extern unsigned char Global_orangeLego_ci4_PNG[];
+extern unsigned char Global_orangeLego_ci4_PAL[];
+extern unsigned char Global_blueBrick_ci4_PNG[];
+extern unsigned char Global_blueBrick_ci4_PAL[];
+extern unsigned char Global_blueLego_ci4_PNG[];
+extern unsigned char Global_blueLego_ci4_PAL[];
+extern unsigned char Global_klTILE_ci4_PNG[];
+extern unsigned char Global_klTILE_ci4_PAL[];
+extern unsigned char Global_wood_ci4_PNG[];
+extern unsigned char Global_wood_ci4_PAL[];
+extern unsigned char Global_GCFloorboard_ci4_PNG[];
+extern unsigned char Global_GCFloorboard_ci4_PAL[];
+extern unsigned char Global_cracker_ci4_PNG[];
+extern unsigned char Global_cracker_ci4_PAL[];
+extern unsigned char Global_sandwSide_ci4_PNG[];
+extern unsigned char Global_sandwSide_ci4_PAL[];
+extern unsigned char Global_giftSide_ci4_PNG[];
+extern unsigned char Global_giftSide_ci4_PAL[];
+extern unsigned char Global_giftTop_ci4_PNG[];
+extern unsigned char Global_giftTop_ci4_PAL[];
+extern unsigned char Global_DCWall1_ci4_PNG[];
+extern unsigned char Global_DCWall1_ci4_PAL[];
+
+#include "global_models.h"
+extern Gfx BattleMode_model1_Gfx[];
+extern ModelCollision BattleMode_unkCol1_collision;
+extern Gfx BattleMode_model2_Gfx[];
+extern ModelCollision BattleMode_unkCol2_collision;
+extern Gfx BattleMode_model3_Gfx[];
+extern ModelCollision BattleMode_unkCol3_collision;
+extern Gfx BattleMode_model4_Gfx[];
+extern ModelCollision BattleMode_unkCol4_collision;
+extern Gfx BattleMode_model5_Gfx[];
+extern ModelCollision BattleMode_unkCol5_collision;
+extern Gfx BattleMode_model6_Gfx[];
+extern ModelCollision BattleMode_unkCol6_collision;
+extern Gfx BattleMode_model7_Gfx[];
+extern ModelCollision BattleMode_unkCol7_collision;
+extern Gfx BattleMode_model8_Gfx[];
+extern ModelCollision BattleMode_unkCol8_collision;
+extern Gfx BattleMode_model9_Gfx[];
+extern ModelCollision BattleMode_unkCol9_collision;
+extern Gfx BattleMode_model10_Gfx[];
+extern ModelCollision BattleMode_unkCol10_collision;
+extern Gfx BattleMode_model11_Gfx[];
+extern ModelCollision BattleMode_unkCol11_collision;
+extern Gfx BattleMode_model12_Gfx[];
+extern ModelCollision BattleMode_unkCol12_collision;
+extern Gfx BattleMode_model13_Gfx[];
+extern ModelCollision BattleMode_unkCol13_collision;
+extern Gfx BattleMode_model14_Gfx[];
+extern ModelCollision BattleMode_unkCol14_collision;
+extern Gfx BattleMode_model15_Gfx[];
+extern ModelCollision BattleMode_unkCol15_collision;
+extern Gfx BattleMode_model16_Gfx[];
+extern ModelCollision BattleMode_unkCol16_collision;
+extern Gfx BattleMode_model17_Gfx[];
+extern ModelCollision BattleMode_unkCol17_collision;
+extern Gfx BattleMode_model18_Gfx[];
+extern ModelCollision BattleMode_unkCol18_collision;
+extern Gfx BattleMode_model19_Gfx[];
+extern ModelCollision BattleMode_unkCol19_collision;
+extern Gfx BattleMode_model20_Gfx[];
+extern ModelCollision BattleMode_unkCol20_collision;
+extern Gfx BattleMode_model21_Gfx[];
+extern ModelCollision BattleMode_unkCol21_collision;
+extern Gfx BattleMode_model22_Gfx[];
+extern ModelCollision BattleMode_unkCol22_collision;
+extern Gfx BattleMode_model23_Gfx[];
+extern ModelCollision BattleMode_unkCol23_collision;
+extern Gfx BattleMode_model24_Gfx[];
+extern ModelCollision BattleMode_unkCol24_collision;
+extern Gfx BattleMode_model25_Gfx[];
+extern ModelCollision BattleMode_unkCol25_collision;
+extern Gfx BattleMode_model26_Gfx[];
+extern ModelCollision BattleMode_unkCol26_collision;
+extern Gfx BattleMode_model27_Gfx[];
+extern ModelCollision BattleMode_unkCol27_collision;
+extern Gfx BattleMode_model28_Gfx[];
+extern ModelCollision BattleMode_unkCol28_collision;
+extern Gfx BattleMode_model29_Gfx[];
+extern ModelCollision BattleMode_unkCol29_collision;
+extern Gfx BattleMode_model30_Gfx[];
+extern ModelCollision BattleMode_unkCol30_collision;
+extern Gfx Global_pole_Gfx[];
+extern ModelCollision Global_pole_collision;
+
+
+#endif

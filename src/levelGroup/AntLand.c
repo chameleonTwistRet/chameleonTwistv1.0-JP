@@ -1,436 +1,71 @@
-#include "common.h"
-#include "PR/gu.h"
-
-extern unsigned char Global_brickWall_i4_PNG[];
-extern unsigned char Global_brownBrickWall_ci4_PAL[];
-extern unsigned char Global_brownBrickWall_ci4_PNG[];
-extern unsigned char Global_antMural2_i4_PNG[];
-extern unsigned char Global_antMural1_i4_PNG[];
-extern unsigned char Global_dcRockFloor_i4_PNG[];
-extern unsigned char Global_yellowBrickWall_ci4_PAL[];
-extern unsigned char Global_yellowBrickWall_ci4_PNG[];
-extern unsigned char Global_smallBrickWall_i4_PNG[];
-extern unsigned char Global_bigBrickWall_i4_PNG[];
-extern unsigned char Global_brickWall2_ci4_PAL[];
-extern unsigned char Global_brickWall2_ci4_PNG[];
-extern unsigned char Global_antMural3_i4_PNG[];
-extern unsigned char Global_unk12_i4_PNG[];
-extern unsigned char Global_bigBrickWall2_i4_PNG[];
-extern unsigned char Global_antMural4_i4_PNG[];
-extern unsigned char Global_gravel_i4_PNG[];
-extern unsigned char Global_goldStrip_ci4_PAL[];
-extern unsigned char Global_goldStrip_ci4_PNG[];
-extern unsigned char Global_waterKinda_ci4_PAL[];
-extern unsigned char Global_waterKinda_ci4_PNG[];
-extern unsigned char Global_dcRockFloorColor_ci4_PAL[];
-extern unsigned char Global_dcRockFloorColor_ci4_PNG[];
-extern unsigned char Global_gateGray_ia4_PNG[];
-extern unsigned char Global_wall_i4_PNG[];
-
-extern Gfx Global_fallbackCube_Gfx[];
-extern ModelCollision Global_fallbackCube_ColH;
-extern Gfx Global_exitShadowSouth_Gfx[];
-extern ModelCollision Global_exitShadowSouth_ColH;
-extern Gfx Global_exitShadowNorth_Gfx[];
-extern ModelCollision Global_exitShadowNorth_ColH;
-extern Gfx Global_exitShadowEast_Gfx[];
-extern ModelCollision Global_exitShadowEast_ColH;
-extern Gfx Global_exitShadowWest_Gfx[];
-extern ModelCollision Global_exitShadowWest_ColH;
-extern Gfx Global_ALBLExit_Gfx[];
-extern ModelCollision Global_ALBLExit_ColH;
-extern Gfx Global_sandPit_Gfx[];
-extern ModelCollision Global_sandPit_ColH;
-extern Gfx Global_BossBridge_Gfx[];
-extern ModelCollision Global_BossBridge_ColH;
-extern Gfx Global_ALPole_Gfx[];
-extern ModelCollision Global_ALPole_ColH;
-extern Gfx Global_ALBLDoor_Gfx[];
-extern ModelCollision Global_ALBLDoor_ColH;
-extern Gfx Global_ALSpinDoor_Gfx[];
-extern ModelCollision Global_ALSpinDoor_ColH;
-extern Gfx Global_BLLavaFloor_Gfx[];
-extern ModelCollision Global_BLLavaFloor_ColH;
-extern Gfx Global_BLLava_Gfx[];
-extern ModelCollision Global_BLLava_ColH;
-extern Gfx Global_BLLava2_Gfx[];
-extern ModelCollision Global_BLLava2_ColH;
-extern Gfx Global_BLLava3_Gfx[];
-extern ModelCollision Global_BLLava3_ColH;
-extern Gfx Global_BLLava4_Gfx[];
-extern ModelCollision Global_BLLava4_ColH;
-extern Gfx Global_BLLava5_Gfx[];
-extern ModelCollision Global_BLLava5_ColH;
-extern Gfx Global_BLLava6_Gfx[];
-extern ModelCollision Global_BLLava6_ColH;
-extern Gfx Global_BLLava7_Gfx[];
-extern ModelCollision Global_BLLava7_ColH;
-extern Gfx Global_BLLava8_Gfx[];
-extern ModelCollision Global_BLLava8_ColH;
-extern Gfx Global_BLDestructableTop_Gfx[];
-extern ModelCollision Global_BLDestructableTop_ColH;
-extern Gfx Global_BLMetalBridge_Gfx[];
-extern ModelCollision Global_BLMetalBridge_ColH;
-extern Gfx Global_KLExit_Gfx[];
-extern ModelCollision Global_KLExit_ColH;
-extern Gfx Global_KLDoor_Gfx[];
-extern ModelCollision Global_KLDoor_ColH;
-extern Gfx Global_DCExit_Gfx[];
-extern ModelCollision Global_DCExit_ColH;
-extern Gfx Global_TallExitShadow1_Gfx[];
-extern ModelCollision Global_TallExitShadow1_ColH;
-extern Gfx Global_TallExitShadow2_Gfx[];
-extern ModelCollision Global_TallExitShadow2_ColH;
-extern Gfx Global_GCExit1_Gfx[];
-extern ModelCollision Global_GCExit1_ColH;
-extern Gfx Global_GCExit2_Gfx[];
-extern ModelCollision Global_GCExit2_ColH;
-extern Gfx Global_trainingRoomLight_Gfx[];
-extern ModelCollision Global_trainingRoomLight_ColH;
-extern Gfx Global_JLCaveExit1_Gfx[];
-extern ModelCollision Global_JLCaveExit1_ColH;
-extern Gfx Global_JLCaveExit2_Gfx[];
-extern ModelCollision Global_JLCaveExit2_ColH;
-extern Gfx Global_JLCaveExit3_Gfx[];
-extern ModelCollision Global_JLCaveExit3_ColH;
-extern Gfx Global_JLCaveExit4_Gfx[];
-extern ModelCollision Global_JLCaveExit4_ColH;
-extern Gfx Global_JLOutsideEntrance_Gfx[];
-extern ModelCollision Global_JLOutsideEntrance_ColH;
-extern Gfx Global_JLFxCamPillar_Gfx[];
-extern ModelCollision Global_JLFxCamPillar_ColH;
-extern Gfx Global_JLCaveDoor_Gfx[];
-extern ModelCollision Global_JLCaveDoor_ColH;
-extern Gfx AntLand_exit2_Gfx[];
-extern ModelCollision AntLand_exit2_collision;
-extern Gfx AntLand_exit3_Gfx[];
-extern ModelCollision AntLand_exit3_collision;
-extern Gfx AntLand_exit4_Gfx[];
-extern ModelCollision AntLand_exit4_ColH;
-extern Gfx AntLand_room0_Gfx[];
-extern ModelCollision AntLand_room0_ColH;
-extern Gfx AntLand_room1_Gfx[];
-extern ModelCollision AntLand_room1_ColH;
-extern Gfx AntLand_room2_Gfx[];
-extern ModelCollision AntLand_room2_ColH;
-extern Gfx AntLand_room14_Gfx[];
-extern ModelCollision AntLand_room14_ColH;
-extern Gfx AntLand_room4_Gfx[];
-extern ModelCollision AntLand_room4_ColH;
-extern Gfx AntLand_room5_Gfx[];
-extern ModelCollision AntLand_room5_collision;
-extern Gfx AntLand_room6_Gfx[];
-extern ModelCollision AntLand_room6_collision;
-extern Gfx AntLand_room7_Gfx[];
-extern ModelCollision AntLand_room7_collision;
-extern Gfx AntLand_room8_Gfx[];
-extern ModelCollision AntLand_room8_collision;
-extern Gfx AntLand_room9_Gfx[];
-extern ModelCollision AntLand_room9_collision;
-extern Gfx AntLand_room10_Gfx[];
-extern ModelCollision AntLand_room10_ColH;
-extern Gfx AntLand_room11_Gfx[];
-extern ModelCollision AntLand_room11_ColH;
-extern Gfx AntLand_room12_Gfx[];
-extern ModelCollision AntLand_room12_ColH;
-extern Gfx AntLand_room13_Gfx[];
-extern ModelCollision AntLand_room13_ColH;
-extern Gfx AntLand_room3_Gfx[];
-extern ModelCollision AntLand_room3_ColH;
-extern Gfx AntLand_room17_Gfx[];
-extern ModelCollision AntLand_room17_ColH;
-extern Gfx AntLand_room15_Gfx[];
-extern ModelCollision AntLand_room15_ColH;
-extern Gfx AntLand_room18_Gfx[];
-extern ModelCollision AntLand_room18_ColH;
-extern Gfx AntLand_room16_Gfx[];
-extern ModelCollision AntLand_room16_ColH;
-extern Gfx AntLand_room20_Gfx[];
-extern ModelCollision AntLand_room20_ColH;
-extern Gfx AntLand_room21_Gfx[];
-extern ModelCollision AntLand_room21_ColH;
-extern Gfx AntLand_room4Platform_Gfx[];
-extern ModelCollision AntLand_room4Platform_ColH;
-extern Gfx AntLand_room4Floor_Gfx[];
-extern ModelCollision AntLand_room4Floor_ColH;
-extern Gfx AntLand_room6Floor_Gfx[];
-extern ModelCollision AntLand_room6Floor_ColH;
-extern Gfx AntLand_room8Floor_Gfx[];
-extern ModelCollision AntLand_room8Floor_ColH;
-extern Gfx AntLand_room17Floor_Gfx[];
-extern ModelCollision AntLand_room17Floor_ColH;
-extern Gfx AntLand_room10Floor_Gfx[];
-extern ModelCollision AntLand_room10Floor_ColH;
-extern Gfx AntLand_room10Platform1_Gfx[];
-extern ModelCollision AntLand_room10Platform1_ColH;
-extern Gfx AntLand_room10Platform2_Gfx[];
-extern ModelCollision AntLand_room10Platform2_ColH;
-extern Gfx AntLand_room10Platform3_Gfx[];
-extern ModelCollision AntLand_room10Platform3_ColH;
-extern Gfx AntLand_room5Platform_Gfx[];
-extern ModelCollision AntLand_room5Platform_ColH;
-extern Gfx AntLand_room13Platform_Gfx[];
-extern ModelCollision AntLand_room13Platform_ColH;
-extern Gfx AntLand_room21Platform1_Gfx[];
-extern ModelCollision AntLand_room21Platform1_ColH;
-extern Gfx AntLand_room21Platform2_Gfx[];
-extern ModelCollision AntLand_room21Platform2_ColH;
-extern Gfx AntLand_room12Floor1_Gfx[];
-extern ModelCollision AntLand_room12Floor1_ColH;
-extern Gfx AntLand_room12Floor2_Gfx[];
-extern ModelCollision AntLand_room12Floor2_ColH;
-extern Gfx AntLand_room11Floor1_Gfx[];
-extern ModelCollision AntLand_room11Floor1_ColH;
-extern Gfx AntLand_room11Floor2_Gfx[];
-extern ModelCollision AntLand_room11Floor2_ColH;
-extern Gfx AntLand_room4Grate_Gfx[];
-extern ModelCollision AntLand_room4Grate_ColH;
-extern Gfx AntLand_room7Floor_Gfx[];
-extern ModelCollision AntLand_room7Floor_ColH;
-extern Gfx AntLand_room7Ceiling_Gfx[];
-extern ModelCollision AntLand_room7Ceiling_ColH;
-extern Gfx AntLand_room15Floor_Gfx[];
-extern ModelCollision AntLand_room15Floor_ColH;
-extern Gfx AntLand_room15Ceiling_Gfx[];
-extern ModelCollision AntLand_room15Ceiling_ColH;
-extern Gfx AntLand_room8Floor1_Gfx[];
-extern ModelCollision AntLand_room8Floor1_ColH;
-extern Gfx AntLand_room8Floor2_Gfx[];
-extern ModelCollision AntLand_room8Floor2_ColH;
-extern Gfx AntLand_room0doorPillar1_Gfx[];
-extern ModelCollision AntLand_room0doorPillar1_ColH;
-extern Gfx AntLand_room0doorPillar2_Gfx[];
-extern ModelCollision AntLand_room0doorPillar2_ColH;
-extern Gfx AntLand_room0doorTop_Gfx[];
-extern ModelCollision AntLand_room0doorTop_ColH;
-extern Gfx AntLand_room0doorTorchStand1_Gfx[];
-extern ModelCollision AntLand_room0doorTorchStand1_ColH;
-extern Gfx AntLand_room0doorTorchStand2_Gfx[];
-extern ModelCollision AntLand_room0doorTorchStand2_ColH;
-extern Gfx AntLand_room16Floor1_Gfx[];
-extern ModelCollision AntLand_room16Floor1_ColH;
-extern Gfx AntLand_room16Floor2_Gfx[];
-extern ModelCollision AntLand_room16Floor2_ColH;
-extern Gfx AntLand_room16Grate_Gfx[];
-extern ModelCollision AntLand_room16Grate_ColH;
-extern Gfx AntLand_tiltPlatform_Gfx[];
-extern ModelCollision AntLand_tiltPlatform_ColH;
-extern Gfx AntLand_platform_Gfx[];
-extern ModelCollision AntLand_platform_ColH;
-extern Gfx AntLand_movingPlatform_Gfx[];
-extern ModelCollision AntLand_movingPlatform_ColH;
-extern Gfx AntLand_quad_Gfx[];
-extern ModelCollision AntLand_quad_ColH;
-extern Gfx AntLand_fixedCamPillar_Gfx[];
-extern ModelCollision AntLand_fixedCamPillar_ColH;
-extern Gfx Global_pole_Gfx[];
-extern ModelCollision Global_pole_ColH;
-
+#include "AntLand.h"
 
 Mtx AntLand_IMtx1 = IDENTITY;
 
-enum AntLand_Models {
-    G_FALLBACK_CUBE_MODEL = 0,
-    G_EXIT_SHADOW_SOUTH_MODEL = 1,
-    G_EXIT_SHADOW_NORTH_MODEL = 2,
-    G_EXIT_SHADOW_EAST_MODEL = 3,
-    G_EXIT_SHADOW_WEST_MODEL = 4,
-    G_BL_EXIT_MODEL = 5,
-    G_SANDPIT_MODEL = 6,
-    G_BOSS_BRIDGE_MODEL = 7,
-    G_POLE_MODEL = 8,
-    G_BL_DOOR_MODEL = 9,
-    G_SPIN_DOOR_MODEL = 10,
-    G_BL_LAVA_FLOOR_MODEL = 11,
-    G_BL_LAVA_MODEL = 12,
-    G_BL_LAVA2_MODEL = 13,
-    G_BL_LAVA3_MODEL = 14,
-    G_BL_LAVA4_MODEL = 15,
-    G_BL_LAVA5_MODEL = 16,
-    G_BL_LAVA6_MODEL = 17,
-    G_BL_LAVA7_MODEL = 18,
-    G_BL_LAVA8_MODEL = 19,
-    G_BL_DESTRUCTABLE_TOP_MODEL = 20,
-    G_BL_METAL_BRIDGE_MODEL = 21,
-    G_KL_EXIT_MODEL = 22,
-    G_KL_DOOR_MODEL = 23,
-    G_DC_EXIT_MODEL = 24,
-    G_TALL_EXIT_SHADOW1_MODEL = 25,
-    G_TALL_EXIT_SHADOW2_MODEL = 26,
-    G_GC_EXIT1_MODEL = 27,
-    G_GC_EXIT2_MODEL = 28,
-    G_TRAINING_ROOM_LIGHT_MODEL = 29,
-    G_JL_CAVE_EXIT1_MODEL = 30,
-    G_JL_CAVE_EXIT2_MODEL = 31,
-    G_JL_CAVE_EXIT3_MODEL = 32,
-    G_JL_CAVE_EXIT4_MODEL = 33,
-    G_JL_OUTSIDE_ENTRANCE_MODEL = 34,
-    G_JL_FX_CAM_PILLAR_MODEL = 35,
-    G_JL_CAVE_DOOR_MODEL = 36,
-    AL_EXIT2_MODEL = 37,
-    AL_EXIT3_MODEL = 38,
-    AL_EXIT4_MODEL = 39,
-    AL_ROOM0_MODEL = 40,
-    AL_ROOM1_MODEL = 41,
-    AL_ROOM2_MODEL = 42,
-    AL_ROOM14_MODEL = 43,
-    AL_ROOM4_MODEL = 44,
-    AL_ROOM5_MODEL = 45,
-    AL_ROOM6_MODEL = 46,
-    AL_ROOM7_MODEL = 47,
-    AL_ROOM8_MODEL = 48,
-    AL_ROOM9_MODEL = 49,
-    AL_ROOM10_MODEL = 50,
-    AL_ROOM11_MODEL = 51,
-    AL_ROOM12_MODEL = 52,
-    AL_ROOM13_MODEL = 53,
-    AL_ROOM3_MODEL = 54,
-    AL_ROOM17_MODEL = 55,
-    AL_ROOM15_MODEL = 56,
-    AL_ROOM18_MODEL = 57,
-    AL_ROOM16_MODEL = 58,
-    AL_ROOM20_MODEL = 59,
-    AL_ROOM21_MODEL = 60,
-    AL_ROOM4_PLATFORM_MODEL = 61,
-    AL_ROOM4_FLOOR_MODEL = 62,
-    AL_ROOM6_FLOOR_MODEL = 63,
-    AL_ROOM8_FLOOR_MODEL = 64,
-    AL_ROOM17_FLOOR_MODEL = 65,
-    AL_ROOM10_FLOOR_MODEL = 66,
-    AL_ROOM10_PLATFORM1_MODEL = 67,
-    AL_ROOM10_PLATFORM2_MODEL = 68,
-    AL_ROOM10_PLATFORM3_MODEL = 69,
-    AL_ROOM5_PLATFORM_MODEL = 70,
-    AL_ROOM13_PLATFORM_MODEL = 71,
-    AL_ROOM21_PLATFORM1_MODEL = 72,
-    AL_ROOM21_PLATFORM2_MODEL = 73,
-    AL_ROOM12_FLOOR1_MODEL = 74,
-    AL_ROOM12_FLOOR2_MODEL = 75,
-    AL_ROOM11_FLOOR1_MODEL = 76,
-    AL_ROOM11_FLOOR2_MODEL = 77,
-    AL_ROOM4_GRATE_MODEL = 78,
-    AL_ROOM7_FLOOR_MODEL = 79,
-    AL_ROOM7_CEILING_MODEL = 80,
-    AL_ROOM15_FLOOR_MODEL = 81,
-    AL_ROOM15_CEILING_MODEL = 82,
-    AL_ROOM8_FLOOR1_MODEL = 83,
-    AL_ROOM8_FLOOR2_MODEL = 84,
-    AL_ROOM0DOOR_PILLAR1_MODEL = 85,
-    AL_ROOM0DOOR_PILLAR2_MODEL = 86,
-    AL_ROOM0DOOR_TOP_MODEL = 87,
-    AL_ROOM0DOOR_TORCHSTAND1_MODEL = 88,
-    AL_ROOM0DOOR_TORCHSTAND2_MODEL = 89,
-    AL_ROOM16_FLOOR1_MODEL = 90,
-    AL_ROOM16_FLOOR2_MODEL = 91,
-    AL_ROOM16_GRATE_MODEL = 92,
-    AL_TILT_PLATFORM_MODEL = 93,
-    AL_PLATFORM_MODEL = 94,
-    AL_MOVING_PLATFORM_MODEL = 95,
-    AL_QUAD_MODEL = 96,
-    AL_FIXED_CAM_PILLAR_MODEL = 97,
-    AL_POLE_MODEL = 98
-};
-
-StageModel AntLand_stageModels[99] = {
-    {&Global_fallbackCube_Gfx[0], &Global_fallbackCube_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&Global_exitShadowSouth_Gfx[0], &Global_exitShadowSouth_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&Global_exitShadowNorth_Gfx[0], &Global_exitShadowNorth_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&Global_exitShadowEast_Gfx[0], &Global_exitShadowEast_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&Global_exitShadowWest_Gfx[0], &Global_exitShadowWest_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&Global_ALBLExit_Gfx[0], &Global_ALBLExit_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&Global_sandPit_Gfx[0], &Global_sandPit_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&Global_BossBridge_Gfx[0], &Global_BossBridge_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&Global_ALPole_Gfx[0], &Global_ALPole_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&Global_ALBLDoor_Gfx[0], &Global_ALBLDoor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&Global_ALSpinDoor_Gfx[0], &Global_ALSpinDoor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&Global_BLLavaFloor_Gfx[0], &Global_BLLavaFloor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&Global_BLLava_Gfx[0], &Global_BLLava_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&Global_BLLava2_Gfx[0], &Global_BLLava2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&Global_BLLava3_Gfx[0], &Global_BLLava3_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&Global_BLLava4_Gfx[0], &Global_BLLava4_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&Global_BLLava5_Gfx[0], &Global_BLLava5_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&Global_BLLava6_Gfx[0], &Global_BLLava6_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&Global_BLLava7_Gfx[0], &Global_BLLava7_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&Global_BLLava8_Gfx[0], &Global_BLLava8_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&Global_BLDestructableTop_Gfx[0], &Global_BLDestructableTop_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&Global_BLMetalBridge_Gfx[0], &Global_BLMetalBridge_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&Global_KLExit_Gfx[0], &Global_KLExit_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&Global_KLDoor_Gfx[0], &Global_KLDoor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&Global_DCExit_Gfx[0], &Global_DCExit_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&Global_TallExitShadow1_Gfx[0], &Global_TallExitShadow1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&Global_TallExitShadow2_Gfx[0], &Global_TallExitShadow2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&Global_GCExit1_Gfx[0], &Global_GCExit1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&Global_GCExit2_Gfx[0], &Global_GCExit2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&Global_trainingRoomLight_Gfx[0], &Global_trainingRoomLight_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&Global_JLCaveExit1_Gfx[0], &Global_JLCaveExit1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&Global_JLCaveExit2_Gfx[0], &Global_JLCaveExit2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&Global_JLCaveExit3_Gfx[0], &Global_JLCaveExit3_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&Global_JLCaveExit4_Gfx[0], &Global_JLCaveExit4_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&Global_JLOutsideEntrance_Gfx[0], &Global_JLOutsideEntrance_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&Global_JLFxCamPillar_Gfx[0], &Global_JLFxCamPillar_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&Global_JLCaveDoor_Gfx[0], &Global_JLCaveDoor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&AntLand_exit2_Gfx[0], &AntLand_exit2_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&AntLand_exit3_Gfx[0], &AntLand_exit3_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&AntLand_exit4_Gfx[0], &AntLand_exit4_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&AntLand_room0_Gfx[0], &AntLand_room0_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&AntLand_room1_Gfx[0], &AntLand_room1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&AntLand_room2_Gfx[0], &AntLand_room2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&AntLand_room14_Gfx[0], &AntLand_room14_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&AntLand_room4_Gfx[0], &AntLand_room4_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&AntLand_room5_Gfx[0], &AntLand_room5_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&AntLand_room6_Gfx[0], &AntLand_room6_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&AntLand_room7_Gfx[0], &AntLand_room7_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&AntLand_room8_Gfx[0], &AntLand_room8_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&AntLand_room9_Gfx[0], &AntLand_room9_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&AntLand_room10_Gfx[0], &AntLand_room10_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&AntLand_room11_Gfx[0], &AntLand_room11_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&AntLand_room12_Gfx[0], &AntLand_room12_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&AntLand_room13_Gfx[0], &AntLand_room13_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&AntLand_room3_Gfx[0], &AntLand_room3_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&AntLand_room17_Gfx[0], &AntLand_room17_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&AntLand_room15_Gfx[0], &AntLand_room15_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&AntLand_room18_Gfx[0], &AntLand_room18_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&AntLand_room16_Gfx[0], &AntLand_room16_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&AntLand_room20_Gfx[0], &AntLand_room20_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&AntLand_room21_Gfx[0], &AntLand_room21_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&AntLand_room4Platform_Gfx[0], &AntLand_room4Platform_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&AntLand_room4Floor_Gfx[0], &AntLand_room4Floor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&AntLand_room6Floor_Gfx[0], &AntLand_room6Floor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&AntLand_room8Floor_Gfx[0], &AntLand_room8Floor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&AntLand_room17Floor_Gfx[0], &AntLand_room17Floor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&AntLand_room10Floor_Gfx[0], &AntLand_room10Floor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&AntLand_room10Platform1_Gfx[0], &AntLand_room10Platform1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&AntLand_room10Platform2_Gfx[0], &AntLand_room10Platform2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&AntLand_room10Platform3_Gfx[0], &AntLand_room10Platform3_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&AntLand_room5Platform_Gfx[0], &AntLand_room5Platform_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&AntLand_room13Platform_Gfx[0], &AntLand_room13Platform_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&AntLand_room21Platform1_Gfx[0], &AntLand_room21Platform1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&AntLand_room21Platform2_Gfx[0], &AntLand_room21Platform2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&AntLand_room12Floor1_Gfx[0], &AntLand_room12Floor1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&AntLand_room12Floor2_Gfx[0], &AntLand_room12Floor2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&AntLand_room11Floor1_Gfx[0], &AntLand_room11Floor1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&AntLand_room11Floor2_Gfx[0], &AntLand_room11Floor2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&AntLand_room4Grate_Gfx[0], &AntLand_room4Grate_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&AntLand_room7Floor_Gfx[0], &AntLand_room7Floor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&AntLand_room7Ceiling_Gfx[0], &AntLand_room7Ceiling_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&AntLand_room15Floor_Gfx[0], &AntLand_room15Floor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&AntLand_room15Ceiling_Gfx[0], &AntLand_room15Ceiling_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&AntLand_room8Floor1_Gfx[0], &AntLand_room8Floor1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&AntLand_room8Floor2_Gfx[0], &AntLand_room8Floor2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&AntLand_room0doorPillar1_Gfx[0], &AntLand_room0doorPillar1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&AntLand_room0doorPillar2_Gfx[0], &AntLand_room0doorPillar2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&AntLand_room0doorTop_Gfx[0], &AntLand_room0doorTop_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&AntLand_room0doorTorchStand1_Gfx[0], &AntLand_room0doorTorchStand1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&AntLand_room0doorTorchStand2_Gfx[0], &AntLand_room0doorTorchStand2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&AntLand_room16Floor1_Gfx[0], &AntLand_room16Floor1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&AntLand_room16Floor2_Gfx[0], &AntLand_room16Floor2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&AntLand_room16Grate_Gfx[0], &AntLand_room16Grate_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&AntLand_tiltPlatform_Gfx[0], &AntLand_tiltPlatform_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&AntLand_platform_Gfx[0], &AntLand_platform_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&AntLand_movingPlatform_Gfx[0], &AntLand_movingPlatform_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&AntLand_quad_Gfx[0], &AntLand_quad_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&AntLand_fixedCamPillar_Gfx[0], &AntLand_fixedCamPillar_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-    {&Global_pole_Gfx[0], &Global_pole_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+StageModel AntLand_stageModels[] = {
+    #include "global_models.inc.c"
+    {AntLand_exit2_Gfx, &AntLand_exit2_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {AntLand_exit3_Gfx, &AntLand_exit3_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {AntLand_exit4_Gfx, &AntLand_exit4_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {AntLand_room0_Gfx, &AntLand_room0_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {AntLand_room1_Gfx, &AntLand_room1_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {AntLand_room2_Gfx, &AntLand_room2_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {AntLand_room14_Gfx, &AntLand_room14_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {AntLand_room4_Gfx, &AntLand_room4_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {AntLand_room5_Gfx, &AntLand_room5_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {AntLand_room6_Gfx, &AntLand_room6_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {AntLand_room7_Gfx, &AntLand_room7_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {AntLand_room8_Gfx, &AntLand_room8_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {AntLand_room9_Gfx, &AntLand_room9_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {AntLand_room10_Gfx, &AntLand_room10_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {AntLand_room11_Gfx, &AntLand_room11_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {AntLand_room12_Gfx, &AntLand_room12_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {AntLand_room13_Gfx, &AntLand_room13_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {AntLand_room3_Gfx, &AntLand_room3_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {AntLand_room17_Gfx, &AntLand_room17_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {AntLand_room15_Gfx, &AntLand_room15_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {AntLand_room18_Gfx, &AntLand_room18_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {AntLand_room16_Gfx, &AntLand_room16_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {AntLand_room20_Gfx, &AntLand_room20_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {AntLand_room21_Gfx, &AntLand_room21_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {AntLand_room4Platform_Gfx, &AntLand_room4Platform_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {AntLand_room4Floor_Gfx, &AntLand_room4Floor_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {AntLand_room6Floor_Gfx, &AntLand_room6Floor_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {AntLand_room8Floor_Gfx, &AntLand_room8Floor_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {AntLand_room17Floor_Gfx, &AntLand_room17Floor_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {AntLand_room10Floor_Gfx, &AntLand_room10Floor_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {AntLand_room10Platform1_Gfx, &AntLand_room10Platform1_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {AntLand_room10Platform2_Gfx, &AntLand_room10Platform2_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {AntLand_room10Platform3_Gfx, &AntLand_room10Platform3_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {AntLand_room5Platform_Gfx, &AntLand_room5Platform_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {AntLand_room13Platform_Gfx, &AntLand_room13Platform_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {AntLand_room21Platform1_Gfx, &AntLand_room21Platform1_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {AntLand_room21Platform2_Gfx, &AntLand_room21Platform2_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {AntLand_room12Floor1_Gfx, &AntLand_room12Floor1_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {AntLand_room12Floor2_Gfx, &AntLand_room12Floor2_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {AntLand_room11Floor1_Gfx, &AntLand_room11Floor1_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {AntLand_room11Floor2_Gfx, &AntLand_room11Floor2_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {AntLand_room4Grate_Gfx, &AntLand_room4Grate_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {AntLand_room7Floor_Gfx, &AntLand_room7Floor_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {AntLand_room7Ceiling_Gfx, &AntLand_room7Ceiling_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {AntLand_room15Floor_Gfx, &AntLand_room15Floor_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {AntLand_room15Ceiling_Gfx, &AntLand_room15Ceiling_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {AntLand_room8Floor1_Gfx, &AntLand_room8Floor1_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {AntLand_room8Floor2_Gfx, &AntLand_room8Floor2_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {AntLand_room0doorPillar1_Gfx, &AntLand_room0doorPillar1_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {AntLand_room0doorPillar2_Gfx, &AntLand_room0doorPillar2_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {AntLand_room0doorTop_Gfx, &AntLand_room0doorTop_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {AntLand_room0doorTorchStand1_Gfx, &AntLand_room0doorTorchStand1_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {AntLand_room0doorTorchStand2_Gfx, &AntLand_room0doorTorchStand2_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {AntLand_room16Floor1_Gfx, &AntLand_room16Floor1_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {AntLand_room16Floor2_Gfx, &AntLand_room16Floor2_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {AntLand_room16Grate_Gfx, &AntLand_room16Grate_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {AntLand_tiltPlatform_Gfx, &AntLand_tiltPlatform_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {AntLand_platform_Gfx, &AntLand_platform_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {AntLand_movingPlatform_Gfx, &AntLand_movingPlatform_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {AntLand_quad_Gfx, &AntLand_quad_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {AntLand_fixedCamPillar_Gfx, &AntLand_fixedCamPillar_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {Global_pole_Gfx, &Global_pole_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
 };
 
 unsigned char AntLand_rabobjects_Bin[] = {
@@ -546,9 +181,9 @@ PlatformKeyframe AntLand_room20_platform3_keyframes[2] = {
 };
 
 RoomObject AntLand_room20_objects[] = {
-    {   {-800.0,100.0,800.0},                                 {1.0,1.0,1.0}, 0, 0,   7, 10,    0.0,    0.0,     0.0, 0.0, AntLand_room20_platform1_keyframes,  2, 0,    0, 0, 0,  AL_MOVING_PLATFORM_MODEL, -1, -1, -1, NULL, &func_800D90B8, 0, 0,  7,  4, 4, 0, -1, 0, 0},
-    {    {-800.0,2000.0,0.0},                                 {1.0,1.0,1.0}, 0, 0,   7, 10,    0.0,    0.0,     0.0, 0.0, AntLand_room20_platform2_keyframes,  3, 0,    0, 0, 0,  AL_MOVING_PLATFORM_MODEL, -1, -1, -1, NULL, &func_800D90B8, 0, 0,  7,  4, 4, 0, -1, 0, 0},
-    { {-400.0,1000.0,-800.0},                                 {1.0,1.0,1.0}, 0, 0,   7, 10,    0.0,    0.0,     0.0, 0.0, AntLand_room20_platform3_keyframes,  2, 0,    0, 0, 0,  AL_MOVING_PLATFORM_MODEL, -1, -1, -1, NULL, &func_800D90B8, 0, 0,  7,  4, 4, 0, -1, 0, 0},
+    {   {-800.0,100.0,800.0},                                 {1.0,1.0,1.0}, 0, 0,   7, 10,    0.0,    0.0,     0.0, 0.0, (s32)AntLand_room20_platform1_keyframes,  2, 0,    0, 0, 0,  AL_MOVING_PLATFORM_MODEL, -1, -1, -1, NULL, &func_800D90B8, 0, 0,  7,  4, 4, 0, -1, 0, 0},
+    {    {-800.0,2000.0,0.0},                                 {1.0,1.0,1.0}, 0, 0,   7, 10,    0.0,    0.0,     0.0, 0.0, (s32)AntLand_room20_platform2_keyframes,  3, 0,    0, 0, 0,  AL_MOVING_PLATFORM_MODEL, -1, -1, -1, NULL, &func_800D90B8, 0, 0,  7,  4, 4, 0, -1, 0, 0},
+    { {-400.0,1000.0,-800.0},                                 {1.0,1.0,1.0}, 0, 0,   7, 10,    0.0,    0.0,     0.0, 0.0, (s32)AntLand_room20_platform3_keyframes,  2, 0,    0, 0, 0,  AL_MOVING_PLATFORM_MODEL, -1, -1, -1, NULL, &func_800D90B8, 0, 0,  7,  4, 4, 0, -1, 0, 0},
     {     {0.0,1500.0,800.0},                                 {1.0,1.0,1.0}, 0, 0,   7,  0, 1400.0, 1000.0, -1000.0, 0.0,                                  0, 90, 0, 1000, 0, 0,         AL_PLATFORM_MODEL, -1, -1, -1, NULL,           NULL, 0, 0,  3,  4, 4, 0, -1, 0, 0},
     {     {0.0,2000.0,800.0},                                 {1.0,1.0,1.0}, 0, 0,   7,  0, 1400.0, 1000.0, -1000.0, 0.0,                                  0, 90, 0, 1000, 0, 0,             AL_POLE_MODEL, -1, -1, -1, NULL,           NULL, 0, 0,  3,  4, 4, 0, -1, 0, 0},
     {     {-800.0,500.0,0.0},                                 {1.0,1.0,1.0}, 0, 0,   7,  0, 1400.0, 1000.0, -1000.0, 0.0,                                  0, 90, 0, 1000, 0, 0,         AL_PLATFORM_MODEL, -1, -1, -1, NULL,           NULL, 0, 0,  3,  4, 4, 0, -1, 0, 0},
@@ -605,7 +240,7 @@ PlatformKeyframe AntLand_room5_platform_keyframes[6] = {
 };
 
 RoomObject AntLand_room5_objects[] = {
-    { {-1000.0,100.0,-1000.0},                             {1.0,1.0,1.0}, 0,                                           0,   7, 10,    0.0,    0.0,     0.0, 0.0, AntLand_room5_platform_keyframes,  6,  0,    0, 0, 0,       AL_MOVING_PLATFORM_MODEL, -1, -1, -1, NULL, &func_800D90B8, 0, 0,  7,  4, 4, 0, -1, 0, 0},
+    { {-1000.0,100.0,-1000.0},                             {1.0,1.0,1.0}, 0,                                           0,   7, 10,    0.0,    0.0,     0.0, 0.0, (s32)AntLand_room5_platform_keyframes,  6,  0,    0, 0, 0,       AL_MOVING_PLATFORM_MODEL, -1, -1, -1, NULL, &func_800D90B8, 0, 0,  7,  4, 4, 0, -1, 0, 0},
     {      {200.0,0.0,-200.0},                             {1.0,1.0,1.0}, 0,                                           0,   7,  0, 1400.0, 1000.0, -1000.0, 0.0,                                0, 90,  0, 1000, 0, 0, AL_ROOM0DOOR_TORCHSTAND2_MODEL, -1, -1, -1, NULL,           NULL, 0, 0,  6,  4, 4, 0, -1, 0, 0},
     {         {200.0,0.0,0.0},                             {1.0,1.0,1.0}, 0,                                           0,   7,  0,    0.0,    0.0,     0.0, 0.0,                                0,  0,  0,    0, 0, 0,                   G_POLE_MODEL, -1, -1, -1, NULL,           NULL, 0, 0,  6,  4, 4, 0, -1, 1, 0},
     {     {-1400.0,600.0,0.0},                             {1.0,1.0,1.0}, 0,                                           0,   7,  0, 1400.0, 1000.0, -1000.0, 0.0,                                0, 90,  0, 1000, 0, 0,                 AL_EXIT2_MODEL, -1, -1, -1, NULL,           NULL, 0, 0,  3,  4, 4, 0, -1, 0, 0},
@@ -662,7 +297,7 @@ RoomObject AntLand_roomUnk_objects[] = {
     { {-1200.0,-20.0,0.0},                                              {1.0,1.0,1.0}, 0, 0,   7,  0, 1400.0, 1000.0, -1000.0, 0.0,              0,           90,  0, 1000, 0,  0, G_EXIT_SHADOW_SOUTH_MODEL, -1, -1,  -1,           NULL,           NULL, 0, 0, 3,  4, 4, 0, -1, 0, 0},
     { {-1200.0,-20.0,0.0},                                              {1.0,1.0,1.0}, 0, 0, 256,  0,  400.0,  400.0,     0.0, 0.0,              4,            1,  0,    0, 0,  0,                         0, -1, -1,  -1,           NULL,           NULL, 0, 0, 2, -1, 1, 0, -1, 0, 0},
     { {-1200.0,-20.0,0.0},                                              {4.0,4.0,4.0}, 0, 0,   7,  0, 1400.0, 1000.0, -1000.0, 0.0,              0,           90,  0, 1000, 0,  0,                         0, -1, -1,  -1,           NULL,           NULL, 0, 0, 1,  0, 0, 0, -1, 0, 0},
-    {       {0.0,0.0,0.0}, {0.8799999952316284,0.8799999952316284,0.8799999952316284}, 0, 0,   7,  7,    7.0, 1000.0,     0.0, 0.0, &func_800AF9D0, &MoveTheater, 40,   24, 8, 11,            AL_ROOM7_MODEL, -1, -1,  -1,           NULL,           NULL, 0, 0, 3,  4, 4, 0, -1, 0, 0},
+    {       {0.0,0.0,0.0}, {0.8799999952316284,0.8799999952316284,0.8799999952316284}, 0, 0,   7,  7,    7.0, 1000.0,     0.0, 0.0, (s32)func_800AF9D0, (s32)MoveTheater, 40,   24, 8, 11,            AL_ROOM7_MODEL, -1, -1,  -1,           NULL,           NULL, 0, 0, 3,  4, 4, 0, -1, 0, 0},
     {   {930.0,500.0,0.0},                              {0.20000000298023224,1.0,1.0}, 0, 0,   7, 11,  930.0,    0.0,     0.0, 0.0,              1,           30, -1,   30, 0,  0,         G_SPIN_DOOR_MODEL, -1, -1,   0, &func_800AFB2C, &func_800B06B0, 0, 0, 2,  4, 4, 0, 11, 0, 0},
     {  {-930.0,500.0,0.0},                              {0.20000000298023224,1.0,1.0}, 0, 0,   7, 11, -930.0,    0.0,     0.0, 0.0,              1,           30, -1,   30, 0,  0,         G_SPIN_DOOR_MODEL, -1, -1,   0, &func_800AFB2C, &func_800B06B0, 0, 0, 2,  4, 4, 0, 11, 0, 0},
     {    {-800.0,0.0,0.0},                                              {1.0,1.0,1.0}, 0, 0, 512,  0,  300.0, 1000.0,  2000.0, 0.0,              0,            0,  0,    0, 0,  0,                         0, -1,  0, 523,           NULL,           NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
@@ -681,7 +316,7 @@ RoomObject AntLand_room7_objects[] = {
     { {-1200.0,-20.0,0.0},                                              {1.0,1.0,1.0}, 0, 0, 256,  0,  400.0,  400.0,     0.0, 0.0,              4,            1,  0,    0, 0,  0,                         0, -1, -1,  -1,           NULL,           NULL, 0, 0,  2, -1, 1, 0, -1, 0, 0},
     { {-1200.0,-20.0,0.0},                                              {4.0,4.0,4.0}, 0, 0,   7,  0, 1400.0, 1000.0, -1000.0, 0.0,              0,           90,  0, 1000, 0,  0,                         0, -1, -1,  -1,           NULL,           NULL, 0, 0,  1,  0, 0, 0, -1, 0, 0},
     {       {0.0,0.0,0.0},                                              {1.0,1.0,1.0}, 0, 0,   7,  0, 1400.0, 1000.0, -1000.0, 0.0,              0,           90,  0, 1000, 0,  0,            AL_ROOM7_MODEL, -1, -1,  -1,           NULL,           NULL, 0, 0,  3,  4, 4, 0, -1, 0, 0},
-    {       {0.0,0.0,0.0}, {0.8799999952316284,0.8799999952316284,0.8799999952316284}, 0, 0,   7,  7,    7.0, 1000.0,     0.0, 0.0, &func_800AF9D0, &MoveTheater, 40,   24, 8, 11,            AL_ROOM7_MODEL, -1, -1,  -1,           NULL,           NULL, 0, 0,  3,  4, 4, 0, -1, 0, 0},
+    {       {0.0,0.0,0.0}, {0.8799999952316284,0.8799999952316284,0.8799999952316284}, 0, 0,   7,  7,    7.0, 1000.0,     0.0, 0.0, (s32)func_800AF9D0, (s32)MoveTheater, 40,   24, 8, 11,            AL_ROOM7_MODEL, -1, -1,  -1,           NULL,           NULL, 0, 0,  3,  4, 4, 0, -1, 0, 0},
     {   {930.0,500.0,0.0},                              {0.20000000298023224,1.0,1.0}, 0, 0,   7, 11,  930.0,    0.0,     0.0, 0.0,              1,           30, -1,   30, 0,  0,         G_SPIN_DOOR_MODEL, -1, -1,   0, &func_800AFB2C, &func_800B06B0, 0, 0,  2,  4, 4, 0, 11, 0, 0},
     {  {-930.0,500.0,0.0},                              {0.20000000298023224,1.0,1.0}, 0, 0,   7, 11, -930.0,    0.0,     0.0, 0.0,              1,           30, -1,   30, 0,  0,         G_SPIN_DOOR_MODEL, -1, -1,   0, &func_800AFB2C, &func_800B06B0, 0, 0,  2,  4, 4, 0, 11, 0, 0},
     {     {400.0,0.0,0.0},                                              {1.0,1.0,1.0}, 0, 0, 512,  0,  300.0, 1000.0,  2000.0, 0.0,              0,            0,  0,    0, 0,  0,                         0, -1,  0, 523,           NULL,           NULL, 0, 0,  7, -1, 1, 0, -1, 0, 0},
@@ -945,7 +580,7 @@ RoomObject AntLand_room15_objects[] = {
     {   {0.0,0.0,1200.0},                                              {1.0,1.0,1.0}, 0, 0,   7,  0, 1400.0, 1000.0, -1000.0,    0.0,              0,           90,  0, 1000, 0,  0,  G_EXIT_SHADOW_EAST_MODEL, -1, -1,  -1,           NULL,           NULL, 0, 0,  3,  4, 4, 0, -1, 0, 0},
     {   {0.0,0.0,1200.0},                                              {1.0,1.0,1.0}, 0, 0, 256,  0,  400.0,  400.0,     0.0,    0.0,              3,            1,  0,    0, 0,  0,                         0, -1, -1,  -1,           NULL,           NULL, 0, 0,  2, -1, 1, 0, -1, 0, 0},
     {   {0.0,0.0,1200.0},                                              {4.0,4.0,4.0}, 0, 0,   7,  0, 1400.0, 1000.0, -1000.0,    0.0,              0,           90,  0, 1000, 0,  0,                         0, -1, -1,  -1,           NULL,           NULL, 0, 0,  1,  0, 0, 0, -1, 0, 0},
-    {      {0.0,0.0,0.0}, {0.8799999952316284,0.8799999952316284,0.8799999952316284}, 0, 0,   7,  7,   12.0,    0.0,     0.0, 1000.0, &func_800AF9D0, &MoveTheater, 80,   36, 5, 12,           AL_ROOM15_MODEL, -1, -1,  -1,           NULL,           NULL, 0, 0,  3,  4, 4, 0, -1, 0, 0},
+    {      {0.0,0.0,0.0}, {0.8799999952316284,0.8799999952316284,0.8799999952316284}, 0, 0,   7,  7,   12.0,    0.0,     0.0, 1000.0, (s32)func_800AF9D0, (s32)MoveTheater, 80,   36, 5, 12,           AL_ROOM15_MODEL, -1, -1,  -1,           NULL,           NULL, 0, 0,  3,  4, 4, 0, -1, 0, 0},
     {  {0.0,500.0,930.0},                              {1.0,1.0,0.20000000298023224}, 0, 0,   7, 11,    0.0,    0.0,   930.0,    0.0,              1,           30, -1,   30, 0,  0,         G_SPIN_DOOR_MODEL, -1, -1,   0, &func_800AFB2C, &func_800B06B0, 0, 0,  2,  4, 4, 0, 11, 0, 0},
     { {0.0,500.0,-930.0},                              {1.0,1.0,0.20000000298023224}, 0, 0,   7, 11,    0.0,    0.0,  -930.0,    0.0,              1,           30, -1,   30, 0,  0,         G_SPIN_DOOR_MODEL, -1, -1,   0, &func_800AFB2C, &func_800B06B0, 0, 0,  2,  4, 4, 0, 11, 0, 0},
     {      {0.0,0.0,0.0},                                              {1.0,1.0,1.0}, 0, 0, 512,  0, 2000.0, 1000.0,   300.0,    0.0,              0,            0,  0,    0, 0,  0,                         0, -1,  0, 524,           NULL,           NULL, 0, 0,  7, -1, 1, 0, -1, 0, 0},
@@ -964,7 +599,7 @@ RoomObject AntLand_roomUnk3_objects[] = {
     {   {0.0,0.0,1200.0},                                              {1.0,1.0,1.0}, 0, 0,   7,  0, 1400.0, 1000.0, -1000.0,    0.0,              0,           90,  0, 1000, 0,  0, G_EXIT_SHADOW_EAST_MODEL, -1, -1,  -1,           NULL,           NULL, 0, 0, 3,  4, 4, 0, -1, 0, 0},
     {   {0.0,0.0,1200.0},                                              {1.0,1.0,1.0}, 0, 0, 256,  0,  400.0,  400.0,     0.0,    0.0,              3,            1,  0,    0, 0,  0,                        0, -1, -1,  -1,           NULL,           NULL, 0, 0, 2, -1, 1, 0, -1, 0, 0},
     {   {0.0,0.0,1200.0},                                              {4.0,4.0,4.0}, 0, 0,   7,  0, 1400.0, 1000.0, -1000.0,    0.0,              0,           90,  0, 1000, 0,  0,                        0, -1, -1,  -1,           NULL,           NULL, 0, 0, 1,  0, 0, 0, -1, 0, 0},
-    {      {0.0,0.0,0.0}, {0.8799999952316284,0.8799999952316284,0.8799999952316284}, 0, 0,   7,  7,   10.0,    0.0,     0.0, 1000.0, &func_800AF9D0, &MoveTheater, 60,   32, 6, 12,          AL_ROOM15_MODEL, -1, -1,  -1,           NULL,           NULL, 0, 0, 3,  4, 4, 0, -1, 0, 0},
+    {      {0.0,0.0,0.0}, {0.8799999952316284,0.8799999952316284,0.8799999952316284}, 0, 0,   7,  7,   10.0,    0.0,     0.0, 1000.0, (s32)func_800AF9D0, (s32)MoveTheater, 60,   32, 6, 12,          AL_ROOM15_MODEL, -1, -1,  -1,           NULL,           NULL, 0, 0, 3,  4, 4, 0, -1, 0, 0},
     {  {0.0,500.0,930.0},                              {1.0,1.0,0.20000000298023224}, 0, 0,   7, 11,    0.0,    0.0,   930.0,    0.0,              1,           30, -1,   30, 0,  0,        G_SPIN_DOOR_MODEL, -1, -1,   0, &func_800AFB2C, &func_800B06B0, 0, 0, 2,  4, 4, 0, 11, 0, 0},
     { {0.0,500.0,-930.0},                              {1.0,1.0,0.20000000298023224}, 0, 0,   7, 11,    0.0,    0.0,  -930.0,    0.0,              1,           30, -1,   30, 0,  0,        G_SPIN_DOOR_MODEL, -1, -1,   0, &func_800AFB2C, &func_800B06B0, 0, 0, 2,  4, 4, 0, 11, 0, 0},
     {      {0.0,0.0,0.0},                                              {1.0,1.0,1.0}, 0, 0, 512,  0, 2000.0, 1000.0,   300.0,    0.0,              0,            0,  0,    0, 0,  0,                        0, -1,  0, 524,           NULL,           NULL, 0, 0, 7, -1, 1, 0, -1, 0, 0},
@@ -1658,9 +1293,7 @@ RoomInstance AntLand_nullOWRoom_Rmset[] = {
 };
 
 LevelScope AntLand_scope_Lvlscope = {
-    0,
-    0,
-    0,
+    {0.0f, 0.0f, 0.0f},
     255,
     20000,  // render distance
     60,
@@ -1668,9 +1301,9 @@ LevelScope AntLand_scope_Lvlscope = {
 
 StageData AntLand_stageData = {
     &AntLand_map_data,
-    0,
-    AntLand_stageModels,            // Model array
-    99,                             // Model count
+    NO_EXT_ROOMS,
+    AntLand_stageModels,                // Model array
+    ARRAY_COUNT(AntLand_stageModels),   // Model count
     0,
     AntLand_rabobjects_Bin,
     131072,
@@ -2409,990 +2042,990 @@ Gfx AntLand_fixedCamPillar_Gfx[] = {
 /* Models Collision Information */
 
 Vec3f AntLand_exit2_collison_verts[] = {
-    #include "assets/levelGroup/AntLand/exit2/exit2.colV.inc.c"
+    #include "assets/levelGroup/AntLand/exit2/exit2.colVerts.inc.c"
 };
 
 Vec3w AntLand_exit2_collision_tris[] = {
-    #include "assets/levelGroup/AntLand/exit2/exit2.colT.inc.c"
+    #include "assets/levelGroup/AntLand/exit2/exit2.colTris.inc.c"
 };
 
-Rect3D AntLand_exit2_ColS = {
-    #include "assets/levelGroup/AntLand/exit2/exit2.colS.inc.c"
+Rect3D AntLand_exit2_BoundBox = {
+    #include "assets/levelGroup/AntLand/exit2/exit2.boundBox.inc.c"
 };
 
 ModelCollision AntLand_exit2_collision = {
-    6, 4, AntLand_exit2_collison_verts, AntLand_exit2_collision_tris, &AntLand_exit2_ColS
+    ARRAY_COUNT(AntLand_exit2_collison_verts), ARRAY_COUNT(AntLand_exit2_collision_tris), AntLand_exit2_collison_verts, AntLand_exit2_collision_tris, &AntLand_exit2_BoundBox
 };
 
 Vec3f AntLand_exit3_collison_verts[] = {
-    #include "assets/levelGroup/AntLand/exit3/exit3.colV.inc.c"
+    #include "assets/levelGroup/AntLand/exit3/exit3.colVerts.inc.c"
 };
 
 Vec3w AntLand_exit3_collision_tris[] = {
-    #include "assets/levelGroup/AntLand/exit3/exit3.colT.inc.c"
+    #include "assets/levelGroup/AntLand/exit3/exit3.colTris.inc.c"
 };
 
-Rect3D AntLand_exit3_ColS = {
-    #include "assets/levelGroup/AntLand/exit3/exit3.colS.inc.c"
+Rect3D AntLand_exit3_BoundBox = {
+    #include "assets/levelGroup/AntLand/exit3/exit3.boundBox.inc.c"
 };
 
 ModelCollision AntLand_exit3_collision = {
-    6, 4, AntLand_exit3_collison_verts, AntLand_exit3_collision_tris, &AntLand_exit3_ColS
+    ARRAY_COUNT(AntLand_exit3_collison_verts), ARRAY_COUNT(AntLand_exit3_collision_tris), AntLand_exit3_collison_verts, AntLand_exit3_collision_tris, &AntLand_exit3_BoundBox
 };
 
 Vec3f AntLand_exit4_collison_verts[] = {
-    #include "assets/levelGroup/AntLand/exit4/exit4.colV.inc.c"
+    #include "assets/levelGroup/AntLand/exit4/exit4.colVerts.inc.c"
 };
 
 Vec3w AntLand_exit4_collision_tris[] = {
-    #include "assets/levelGroup/AntLand/exit4/exit4.colT.inc.c"
+    #include "assets/levelGroup/AntLand/exit4/exit4.colTris.inc.c"
 };
 
-Rect3D AntLand_exit4_ColS = {
-    #include "assets/levelGroup/AntLand/exit4/exit4.colS.inc.c"
+Rect3D AntLand_exit4_BoundBox = {
+    #include "assets/levelGroup/AntLand/exit4/exit4.boundBox.inc.c"
 };
 
-ModelCollision AntLand_exit4_ColH = {
-    6, 4, AntLand_exit4_collison_verts, AntLand_exit4_collision_tris, &AntLand_exit4_ColS
+ModelCollision AntLand_exit4_collision = {
+    ARRAY_COUNT(AntLand_exit4_collison_verts), ARRAY_COUNT(AntLand_exit4_collision_tris), AntLand_exit4_collison_verts, AntLand_exit4_collision_tris, &AntLand_exit4_BoundBox
 };
 
 
 // Room 0
 Vec3f AntLand_room0_collision_verts[] = {
-    #include "assets/levelGroup/AntLand/room0/room0.colV.inc.c"
+    #include "assets/levelGroup/AntLand/room0/room0.colVerts.inc.c"
 };
 
 Vec3w AntLand_room0_collision_tris[] = {
-    #include "assets/levelGroup/AntLand/room0/room0.colT.inc.c"
+    #include "assets/levelGroup/AntLand/room0/room0.colTris.inc.c"
 };
 
-Rect3D AntLand_room0_ColS = {
-    #include "assets/levelGroup/AntLand/room0/room0.colS.inc.c"
+Rect3D AntLand_room0_BoundBox = {
+    #include "assets/levelGroup/AntLand/room0/room0.boundBox.inc.c"
 };
 
-ModelCollision AntLand_room0_ColH = {
-    35, 64, AntLand_room0_collision_verts, AntLand_room0_collision_tris, &AntLand_room0_ColS
+ModelCollision AntLand_room0_collision = {
+    ARRAY_COUNT(AntLand_room0_collision_verts), ARRAY_COUNT(AntLand_room0_collision_tris), AntLand_room0_collision_verts, AntLand_room0_collision_tris, &AntLand_room0_BoundBox
 };
 
 // Room 1
 Vec3f AntLand_room1_collision_verts[] = {
-    #include "assets/levelGroup/AntLand/room1/room1.colV.inc.c"
+    #include "assets/levelGroup/AntLand/room1/room1.colVerts.inc.c"
 };
 
 Vec3w AntLand_room1_collision_tris[] = {
-    #include "assets/levelGroup/AntLand/room1/room1.colT.inc.c"
+    #include "assets/levelGroup/AntLand/room1/room1.colTris.inc.c"
 };
 
-Rect3D AntLand_room1_ColS = {
-    #include "assets/levelGroup/AntLand/room1/room1.colS.inc.c"
+Rect3D AntLand_room1_BoundBox = {
+    #include "assets/levelGroup/AntLand/room1/room1.boundBox.inc.c"
 };
 
-ModelCollision AntLand_room1_ColH = {
-    48, 84, AntLand_room1_collision_verts, AntLand_room1_collision_tris, &AntLand_room1_ColS
+ModelCollision AntLand_room1_collision = {
+    ARRAY_COUNT(AntLand_room1_collision_verts), ARRAY_COUNT(AntLand_room1_collision_tris), AntLand_room1_collision_verts, AntLand_room1_collision_tris, &AntLand_room1_BoundBox
 };
 
 // Room 2
 Vec3f AntLand_room2_collision_verts[] = {
-    #include "assets/levelGroup/AntLand/room2/room2.colV.inc.c"
+    #include "assets/levelGroup/AntLand/room2/room2.colVerts.inc.c"
 };
 
 Vec3w AntLand_room2_collision_tris[] = {
-    #include "assets/levelGroup/AntLand/room2/room2.colT.inc.c"
+    #include "assets/levelGroup/AntLand/room2/room2.colTris.inc.c"
 };
 
-Rect3D AntLand_room2_ColS = {
-    #include "assets/levelGroup/AntLand/room2/room2.colS.inc.c"
+Rect3D AntLand_room2_BoundBox = {
+    #include "assets/levelGroup/AntLand/room2/room2.boundBox.inc.c"
 };
 
-ModelCollision AntLand_room2_ColH = {
-    52, 92, AntLand_room2_collision_verts, AntLand_room2_collision_tris, &AntLand_room2_ColS
+ModelCollision AntLand_room2_collision = {
+    ARRAY_COUNT(AntLand_room2_collision_verts), ARRAY_COUNT(AntLand_room2_collision_tris), AntLand_room2_collision_verts, AntLand_room2_collision_tris, &AntLand_room2_BoundBox
 };
 
 // Room 14
 Vec3f AntLand_room14_collision_verts[] = {
-    #include "assets/levelGroup/AntLand/room14/room14.colV.inc.c"
+    #include "assets/levelGroup/AntLand/room14/room14.colVerts.inc.c"
 };
 
 Vec3w AntLand_room14_collision_tris[] = {
-    #include "assets/levelGroup/AntLand/room14/room14.colT.inc.c"
+    #include "assets/levelGroup/AntLand/room14/room14.colTris.inc.c"
 };
 
-Rect3D AntLand_room14_ColS = {
-    #include "assets/levelGroup/AntLand/room14/room14.colS.inc.c"
+Rect3D AntLand_room14_BoundBox = {
+    #include "assets/levelGroup/AntLand/room14/room14.boundBox.inc.c"
 };
 
-ModelCollision AntLand_room14_ColH = {
-    66, 118, AntLand_room14_collision_verts, AntLand_room14_collision_tris, &AntLand_room14_ColS
+ModelCollision AntLand_room14_collision = {
+    ARRAY_COUNT(AntLand_room14_collision_verts), ARRAY_COUNT(AntLand_room14_collision_tris), AntLand_room14_collision_verts, AntLand_room14_collision_tris, &AntLand_room14_BoundBox
 };
 
 // Room 4
 Vec3f AntLand_room4_collision_verts[] = {
-    #include "assets/levelGroup/AntLand/room4/room4.colV.inc.c"
+    #include "assets/levelGroup/AntLand/room4/room4.colVerts.inc.c"
 };
 
 Vec3w AntLand_room4_collision_tris[] = {
-    #include "assets/levelGroup/AntLand/room4/room4.colT.inc.c"
+    #include "assets/levelGroup/AntLand/room4/room4.colTris.inc.c"
 };
 
-Rect3D AntLand_room4_ColS = {
-    #include "assets/levelGroup/AntLand/room4/room4.colS.inc.c"
+Rect3D AntLand_room4_BoundBox = {
+    #include "assets/levelGroup/AntLand/room4/room4.boundBox.inc.c"
 };
 
-ModelCollision AntLand_room4_ColH = {
-    53, 86, AntLand_room4_collision_verts, AntLand_room4_collision_tris, &AntLand_room4_ColS
+ModelCollision AntLand_room4_collision = {
+    ARRAY_COUNT(AntLand_room4_collision_verts), ARRAY_COUNT(AntLand_room4_collision_tris), AntLand_room4_collision_verts, AntLand_room4_collision_tris, &AntLand_room4_BoundBox
 };
 
 // Room 5
 Vec3f AntLand_room5_collision_verts[] = {
-    #include "assets/levelGroup/AntLand/room5/room5.colV.inc.c"
+    #include "assets/levelGroup/AntLand/room5/room5.colVerts.inc.c"
 };
 
 Vec3w AntLand_room5_collision_tris[] = {
-    #include "assets/levelGroup/AntLand/room5/room5.colT.inc.c"
+    #include "assets/levelGroup/AntLand/room5/room5.colTris.inc.c"
 };
 
-Rect3D AntLand_room5_ColS = {
-    #include "assets/levelGroup/AntLand/room5/room5.colS.inc.c"
+Rect3D AntLand_room5_BoundBox = {
+    #include "assets/levelGroup/AntLand/room5/room5.boundBox.inc.c"
 };
 
 ModelCollision AntLand_room5_collision = {
-    48, 84, AntLand_room5_collision_verts, AntLand_room5_collision_tris, &AntLand_room5_ColS
+    ARRAY_COUNT(AntLand_room5_collision_verts), ARRAY_COUNT(AntLand_room5_collision_tris), AntLand_room5_collision_verts, AntLand_room5_collision_tris, &AntLand_room5_BoundBox
 };
 
 // Room 6
 Vec3f AntLand_room6_collision_verts[] = {
-    #include "assets/levelGroup/AntLand/room6/room6.colV.inc.c"
+    #include "assets/levelGroup/AntLand/room6/room6.colVerts.inc.c"
 };
 
 Vec3w AntLand_room6_collision_tris[] = {
-    #include "assets/levelGroup/AntLand/room6/room6.colT.inc.c"
+    #include "assets/levelGroup/AntLand/room6/room6.colTris.inc.c"
 };
 
-Rect3D AntLand_room6_ColS = {
-    #include "assets/levelGroup/AntLand/room6/room6.colS.inc.c"
+Rect3D AntLand_room6_BoundBox = {
+    #include "assets/levelGroup/AntLand/room6/room6.boundBox.inc.c"
 };
 
 ModelCollision AntLand_room6_collision = {
-    76, 118, AntLand_room6_collision_verts, AntLand_room6_collision_tris, &AntLand_room6_ColS
+    ARRAY_COUNT(AntLand_room6_collision_verts), ARRAY_COUNT(AntLand_room6_collision_tris), AntLand_room6_collision_verts, AntLand_room6_collision_tris, &AntLand_room6_BoundBox
 };
 
 // Room 7
 Vec3f AntLand_room7_collision_verts[] = {
-    #include "assets/levelGroup/AntLand/room7/room7.colV.inc.c"
+    #include "assets/levelGroup/AntLand/room7/room7.colVerts.inc.c"
 };
 
 Vec3w AntLand_room7_collision_tris[] = {
-    #include "assets/levelGroup/AntLand/room7/room7.colT.inc.c"
+    #include "assets/levelGroup/AntLand/room7/room7.colTris.inc.c"
 };
 
-Rect3D AntLand_room7_ColS = {
-    #include "assets/levelGroup/AntLand/room7/room7.colS.inc.c"
+Rect3D AntLand_room7_BoundBox = {
+    #include "assets/levelGroup/AntLand/room7/room7.boundBox.inc.c"
 };
 
 ModelCollision AntLand_room7_collision = {
-    38, 45, AntLand_room7_collision_verts, AntLand_room7_collision_tris, &AntLand_room7_ColS
+    ARRAY_COUNT(AntLand_room7_collision_verts), ARRAY_COUNT(AntLand_room7_collision_tris), AntLand_room7_collision_verts, AntLand_room7_collision_tris, &AntLand_room7_BoundBox
 };
 
 // Room 8
 Vec3f AntLand_room8_collision_verts[] = {
-    #include "assets/levelGroup/AntLand/room8/room8.colV.inc.c"
+    #include "assets/levelGroup/AntLand/room8/room8.colVerts.inc.c"
 };
 
 Vec3w AntLand_room8_collision_tris[] = {
-    #include "assets/levelGroup/AntLand/room8/room8.colT.inc.c"
+    #include "assets/levelGroup/AntLand/room8/room8.colTris.inc.c"
 };
 
-Rect3D AntLand_room8_ColS = {
-    #include "assets/levelGroup/AntLand/room8/room8.colS.inc.c"
+Rect3D AntLand_room8_BoundBox = {
+    #include "assets/levelGroup/AntLand/room8/room8.boundBox.inc.c"
 };
 
 ModelCollision AntLand_room8_collision = {
-    82, 150, AntLand_room8_collision_verts, AntLand_room8_collision_tris, &AntLand_room8_ColS
+    ARRAY_COUNT(AntLand_room8_collision_verts), ARRAY_COUNT(AntLand_room8_collision_tris), AntLand_room8_collision_verts, AntLand_room8_collision_tris, &AntLand_room8_BoundBox
 };
 
 // Room 9
 Vec3f AntLand_room9_collision_verts[] = {
-    #include "assets/levelGroup/AntLand/room9/room9.colV.inc.c"
+    #include "assets/levelGroup/AntLand/room9/room9.colVerts.inc.c"
 };
 
 Vec3w AntLand_room9_collision_tris[] = {
-    #include "assets/levelGroup/AntLand/room9/room9.colT.inc.c"
+    #include "assets/levelGroup/AntLand/room9/room9.colTris.inc.c"
 };
 
-Rect3D AntLand_room9_ColS = {
-    #include "assets/levelGroup/AntLand/room9/room9.colS.inc.c"
+Rect3D AntLand_room9_BoundBox = {
+    #include "assets/levelGroup/AntLand/room9/room9.boundBox.inc.c"
 };
 
 ModelCollision AntLand_room9_collision = {
-    24, 38, AntLand_room9_collision_verts, AntLand_room9_collision_tris, &AntLand_room9_ColS
+    ARRAY_COUNT(AntLand_room9_collision_verts), ARRAY_COUNT(AntLand_room9_collision_tris), AntLand_room9_collision_verts, AntLand_room9_collision_tris, &AntLand_room9_BoundBox
 };
 
-Vec3f AntLand_room10_ColV[] = {
-    #include "assets/levelGroup/AntLand/room10/room10.colV.inc.c"
+Vec3f AntLand_room10_ColVerts[] = {
+    #include "assets/levelGroup/AntLand/room10/room10.colVerts.inc.c"
 };
 
-Vec3w AntLand_room10_ColT[] = {
-    #include "assets/levelGroup/AntLand/room10/room10.colT.inc.c"
+Vec3w AntLand_room10_ColTris[] = {
+    #include "assets/levelGroup/AntLand/room10/room10.colTris.inc.c"
 };
 
-Rect3D AntLand_room10_ColS = {
-    #include "assets/levelGroup/AntLand/room10/room10.colS.inc.c"
+Rect3D AntLand_room10_BoundBox = {
+    #include "assets/levelGroup/AntLand/room10/room10.boundBox.inc.c"
 };
 
-ModelCollision AntLand_room10_ColH = {
-    6, 1, AntLand_room10_ColV, AntLand_room10_ColT, &AntLand_room10_ColS
+ModelCollision AntLand_room10_collision = {
+    ARRAY_COUNT(AntLand_room10_ColVerts), ARRAY_COUNT(AntLand_room10_ColTris), AntLand_room10_ColVerts, AntLand_room10_ColTris, &AntLand_room10_BoundBox
 };
 
-Vec3f AntLand_room11_ColV[] = {
-    #include "assets/levelGroup/AntLand/room11/room11.colV.inc.c"
+Vec3f AntLand_room11_ColVerts[] = {
+    #include "assets/levelGroup/AntLand/room11/room11.colVerts.inc.c"
 };
 
-Vec3w AntLand_room11_ColT[] = {
-    #include "assets/levelGroup/AntLand/room11/room11.colT.inc.c"
+Vec3w AntLand_room11_ColTris[] = {
+    #include "assets/levelGroup/AntLand/room11/room11.colTris.inc.c"
 };
 
-Rect3D AntLand_room11_ColS = {
-    #include "assets/levelGroup/AntLand/room11/room11.colS.inc.c"
+Rect3D AntLand_room11_BoundBox = {
+    #include "assets/levelGroup/AntLand/room11/room11.boundBox.inc.c"
 };
 
-ModelCollision AntLand_room11_ColH = {
-    52, 90, AntLand_room11_ColV, AntLand_room11_ColT, &AntLand_room11_ColS
+ModelCollision AntLand_room11_collision = {
+    ARRAY_COUNT(AntLand_room11_ColVerts), ARRAY_COUNT(AntLand_room11_ColTris), AntLand_room11_ColVerts, AntLand_room11_ColTris, &AntLand_room11_BoundBox
 };
 
-Vec3f AntLand_room12_ColV[] = {
-    #include "assets/levelGroup/AntLand/room12/room12.colV.inc.c"
+Vec3f AntLand_room12_ColVerts[] = {
+    #include "assets/levelGroup/AntLand/room12/room12.colVerts.inc.c"
 };
 
-Vec3w AntLand_room12_ColT[] = {
-    #include "assets/levelGroup/AntLand/room12/room12.colT.inc.c"
+Vec3w AntLand_room12_ColTris[] = {
+    #include "assets/levelGroup/AntLand/room12/room12.colTris.inc.c"
 };
 
-Rect3D AntLand_room12_ColS = {
-    #include "assets/levelGroup/AntLand/room12/room12.colS.inc.c"
+Rect3D AntLand_room12_BoundBox = {
+    #include "assets/levelGroup/AntLand/room12/room12.boundBox.inc.c"
 };
 
-ModelCollision AntLand_room12_ColH = {
-    64, 110, AntLand_room12_ColV, AntLand_room12_ColT, &AntLand_room12_ColS
+ModelCollision AntLand_room12_collision = {
+    ARRAY_COUNT(AntLand_room12_ColVerts), ARRAY_COUNT(AntLand_room12_ColTris), AntLand_room12_ColVerts, AntLand_room12_ColTris, &AntLand_room12_BoundBox
 };
 
-Vec3f AntLand_room13_ColV[] = {
-    #include "assets/levelGroup/AntLand/room13/room13.colV.inc.c"
+Vec3f AntLand_room13_ColVerts[] = {
+    #include "assets/levelGroup/AntLand/room13/room13.colVerts.inc.c"
 };
 
-Vec3w AntLand_room13_ColT[] = {
-    #include "assets/levelGroup/AntLand/room13/room13.colT.inc.c"
+Vec3w AntLand_room13_ColTris[] = {
+    #include "assets/levelGroup/AntLand/room13/room13.colTris.inc.c"
 };
 
-Rect3D AntLand_room13_ColS = {
-    #include "assets/levelGroup/AntLand/room13/room13.colS.inc.c"
+Rect3D AntLand_room13_BoundBox = {
+    #include "assets/levelGroup/AntLand/room13/room13.boundBox.inc.c"
 };
 
-ModelCollision AntLand_room13_ColH = {
-    56, 99, AntLand_room13_ColV, AntLand_room13_ColT, &AntLand_room13_ColS
+ModelCollision AntLand_room13_collision = {
+    ARRAY_COUNT(AntLand_room13_ColVerts), ARRAY_COUNT(AntLand_room13_ColTris), AntLand_room13_ColVerts, AntLand_room13_ColTris, &AntLand_room13_BoundBox
 };
 
-Vec3f AntLand_room3_ColV[] = {
-    #include "assets/levelGroup/AntLand/room3/room3.colV.inc.c"
+Vec3f AntLand_room3_ColVerts[] = {
+    #include "assets/levelGroup/AntLand/room3/room3.colVerts.inc.c"
 };
 
-Vec3w AntLand_room3_ColT[] = {
-    #include "assets/levelGroup/AntLand/room3/room3.colT.inc.c"
+Vec3w AntLand_room3_ColTris[] = {
+    #include "assets/levelGroup/AntLand/room3/room3.colTris.inc.c"
 };
 
-Rect3D AntLand_room3_ColS = {
-    #include "assets/levelGroup/AntLand/room3/room3.colS.inc.c"
+Rect3D AntLand_room3_BoundBox = {
+    #include "assets/levelGroup/AntLand/room3/room3.boundBox.inc.c"
 };
 
-ModelCollision AntLand_room3_ColH = {
-    60, 108, AntLand_room3_ColV, AntLand_room3_ColT, &AntLand_room3_ColS
+ModelCollision AntLand_room3_collision = {
+    ARRAY_COUNT(AntLand_room3_ColVerts), ARRAY_COUNT(AntLand_room3_ColTris), AntLand_room3_ColVerts, AntLand_room3_ColTris, &AntLand_room3_BoundBox
 };
 
-Vec3f AntLand_room17_ColV[] = {
-    #include "assets/levelGroup/AntLand/room17/room17.colV.inc.c"
+Vec3f AntLand_room17_ColVerts[] = {
+    #include "assets/levelGroup/AntLand/room17/room17.colVerts.inc.c"
 };
 
-Vec3w AntLand_room17_ColT[] = {
-    #include "assets/levelGroup/AntLand/room17/room17.colT.inc.c"
+Vec3w AntLand_room17_ColTris[] = {
+    #include "assets/levelGroup/AntLand/room17/room17.colTris.inc.c"
 };
 
-Rect3D AntLand_room17_ColS = {
-    #include "assets/levelGroup/AntLand/room17/room17.colS.inc.c"
+Rect3D AntLand_room17_BoundBox = {
+    #include "assets/levelGroup/AntLand/room17/room17.boundBox.inc.c"
 };
 
-ModelCollision AntLand_room17_ColH = {
-    60, 106, AntLand_room17_ColV, AntLand_room17_ColT, &AntLand_room17_ColS
+ModelCollision AntLand_room17_collision = {
+    ARRAY_COUNT(AntLand_room17_ColVerts), ARRAY_COUNT(AntLand_room17_ColTris), AntLand_room17_ColVerts, AntLand_room17_ColTris, &AntLand_room17_BoundBox
 };
 
-Vec3f AntLand_room15_ColV[] = {
-    #include "assets/levelGroup/AntLand/room15/room15.colV.inc.c"
+Vec3f AntLand_room15_ColVerts[] = {
+    #include "assets/levelGroup/AntLand/room15/room15.colVerts.inc.c"
 };
 
-Vec3w AntLand_room15_ColT[] = {
-    #include "assets/levelGroup/AntLand/room15/room15.colT.inc.c"
+Vec3w AntLand_room15_ColTris[] = {
+    #include "assets/levelGroup/AntLand/room15/room15.colTris.inc.c"
 };
 
-Rect3D AntLand_room15_ColS = {
-    #include "assets/levelGroup/AntLand/room15/room15.colS.inc.c"
+Rect3D AntLand_room15_BoundBox = {
+    #include "assets/levelGroup/AntLand/room15/room15.boundBox.inc.c"
 };
 
-ModelCollision AntLand_room15_ColH = {
-    38, 47, AntLand_room15_ColV, AntLand_room15_ColT, &AntLand_room15_ColS
+ModelCollision AntLand_room15_collision = {
+    ARRAY_COUNT(AntLand_room15_ColVerts), ARRAY_COUNT(AntLand_room15_ColTris), AntLand_room15_ColVerts, AntLand_room15_ColTris, &AntLand_room15_BoundBox
 };
 
-Vec3f AntLand_room18_ColV[] = {
-    #include "assets/levelGroup/AntLand/room18/room18.colV.inc.c"
+Vec3f AntLand_room18_ColVerts[] = {
+    #include "assets/levelGroup/AntLand/room18/room18.colVerts.inc.c"
 };
 
-Vec3w AntLand_room18_ColT[] = {
-    #include "assets/levelGroup/AntLand/room18/room18.colT.inc.c"
+Vec3w AntLand_room18_ColTris[] = {
+    #include "assets/levelGroup/AntLand/room18/room18.colTris.inc.c"
 };
 
-Rect3D AntLand_room18_ColS = {
-    #include "assets/levelGroup/AntLand/room18/room18.colS.inc.c"
+Rect3D AntLand_room18_BoundBox = {
+    #include "assets/levelGroup/AntLand/room18/room18.boundBox.inc.c"
 };
 
-ModelCollision AntLand_room18_ColH = {
-    32, 52, AntLand_room18_ColV, AntLand_room18_ColT, &AntLand_room18_ColS
+ModelCollision AntLand_room18_collision = {
+    ARRAY_COUNT(AntLand_room18_ColVerts), ARRAY_COUNT(AntLand_room18_ColTris), AntLand_room18_ColVerts, AntLand_room18_ColTris, &AntLand_room18_BoundBox
 };
 
-Vec3f AntLand_room16_ColV[] = {
-    #include "assets/levelGroup/AntLand/room16/room16.colV.inc.c"
+Vec3f AntLand_room16_ColVerts[] = {
+    #include "assets/levelGroup/AntLand/room16/room16.colVerts.inc.c"
 };
 
-Vec3w AntLand_room16_ColT[] = {
-    #include "assets/levelGroup/AntLand/room16/room16.colT.inc.c"
+Vec3w AntLand_room16_ColTris[] = {
+    #include "assets/levelGroup/AntLand/room16/room16.colTris.inc.c"
 };
 
-Rect3D AntLand_room16_ColS = {
-    #include "assets/levelGroup/AntLand/room16/room16.colS.inc.c"
+Rect3D AntLand_room16_BoundBox = {
+    #include "assets/levelGroup/AntLand/room16/room16.boundBox.inc.c"
 };
 
-ModelCollision AntLand_room16_ColH = {
-    28, 40, AntLand_room16_ColV, AntLand_room16_ColT, &AntLand_room16_ColS
+ModelCollision AntLand_room16_collision = {
+    ARRAY_COUNT(AntLand_room16_ColVerts), ARRAY_COUNT(AntLand_room16_ColTris), AntLand_room16_ColVerts, AntLand_room16_ColTris, &AntLand_room16_BoundBox
 };
 
-Vec3f AntLand_room20_ColV[] = {
-    #include "assets/levelGroup/AntLand/room20/room20.colV.inc.c"
+Vec3f AntLand_room20_ColVerts[] = {
+    #include "assets/levelGroup/AntLand/room20/room20.colVerts.inc.c"
 };
 
-Vec3w AntLand_room20_ColT[] = {
-    #include "assets/levelGroup/AntLand/room20/room20.colT.inc.c"
+Vec3w AntLand_room20_ColTris[] = {
+    #include "assets/levelGroup/AntLand/room20/room20.colTris.inc.c"
 };
 
-Rect3D AntLand_room20_ColS = {
-    #include "assets/levelGroup/AntLand/room20/room20.colS.inc.c"
+Rect3D AntLand_room20_BoundBox = {
+    #include "assets/levelGroup/AntLand/room20/room20.boundBox.inc.c"
 };
 
-ModelCollision AntLand_room20_ColH = {
-    40, 72, AntLand_room20_ColV, AntLand_room20_ColT, &AntLand_room20_ColS
+ModelCollision AntLand_room20_collision = {
+    ARRAY_COUNT(AntLand_room20_ColVerts), ARRAY_COUNT(AntLand_room20_ColTris), AntLand_room20_ColVerts, AntLand_room20_ColTris, &AntLand_room20_BoundBox
 };
 
-Vec3f AntLand_room21_ColV[] = {
-    #include "assets/levelGroup/AntLand/room21/room21.colV.inc.c"
+Vec3f AntLand_room21_ColVerts[] = {
+    #include "assets/levelGroup/AntLand/room21/room21.colVerts.inc.c"
 };
 
-Vec3w AntLand_room21_ColT[] = {
-    #include "assets/levelGroup/AntLand/room21/room21.colT.inc.c"
+Vec3w AntLand_room21_ColTris[] = {
+    #include "assets/levelGroup/AntLand/room21/room21.colTris.inc.c"
 };
 
-Rect3D AntLand_room21_ColS = {
-    #include "assets/levelGroup/AntLand/room21/room21.colS.inc.c"
+Rect3D AntLand_room21_BoundBox = {
+    #include "assets/levelGroup/AntLand/room21/room21.boundBox.inc.c"
 };
 
-ModelCollision AntLand_room21_ColH = {
-    25, 35, AntLand_room21_ColV, AntLand_room21_ColT, &AntLand_room21_ColS
+ModelCollision AntLand_room21_collision = {
+    ARRAY_COUNT(AntLand_room21_ColVerts), ARRAY_COUNT(AntLand_room21_ColTris), AntLand_room21_ColVerts, AntLand_room21_ColTris, &AntLand_room21_BoundBox
 };
 
-Vec3f AntLand_room4Platform_ColV[] = {
-    #include "assets/levelGroup/AntLand/room4Platform/room4Platform.colV.inc.c"
+Vec3f AntLand_room4Platform_ColVerts[] = {
+    #include "assets/levelGroup/AntLand/room4Platform/room4Platform.colVerts.inc.c"
 };
 
-Vec3w AntLand_room4Platform_ColT[] = {
-    #include "assets/levelGroup/AntLand/room4Platform/room4Platform.colT.inc.c"
+Vec3w AntLand_room4Platform_ColTris[] = {
+    #include "assets/levelGroup/AntLand/room4Platform/room4Platform.colTris.inc.c"
 };
 
-Rect3D AntLand_room4Platform_ColS = {
-    #include "assets/levelGroup/AntLand/room4Platform/room4Platform.colS.inc.c"
+Rect3D AntLand_room4Platform_BoundBox = {
+    #include "assets/levelGroup/AntLand/room4Platform/room4Platform.boundBox.inc.c"
 };
 
-ModelCollision AntLand_room4Platform_ColH = {
-    8, 10, AntLand_room4Platform_ColV, AntLand_room4Platform_ColT, &AntLand_room4Platform_ColS
+ModelCollision AntLand_room4Platform_collision = {
+    ARRAY_COUNT(AntLand_room4Platform_ColVerts), ARRAY_COUNT(AntLand_room4Platform_ColTris), AntLand_room4Platform_ColVerts, AntLand_room4Platform_ColTris, &AntLand_room4Platform_BoundBox
 };
 
-Vec3f AntLand_room4Floor_ColV[] = {
-    #include "assets/levelGroup/AntLand/room4Floor/room4Floor.colV.inc.c"
+Vec3f AntLand_room4Floor_ColVerts[] = {
+    #include "assets/levelGroup/AntLand/room4Floor/room4Floor.colVerts.inc.c"
 };
 
-Vec3w AntLand_room4Floor_ColT[] = {
-    #include "assets/levelGroup/AntLand/room4Floor/room4Floor.colT.inc.c"
+Vec3w AntLand_room4Floor_ColTris[] = {
+    #include "assets/levelGroup/AntLand/room4Floor/room4Floor.colTris.inc.c"
 };
 
-Rect3D AntLand_room4Floor_ColS = {
-    #include "assets/levelGroup/AntLand/room4Floor/room4Floor.colS.inc.c"
+Rect3D AntLand_room4Floor_BoundBox = {
+    #include "assets/levelGroup/AntLand/room4Floor/room4Floor.boundBox.inc.c"
 };
 
-ModelCollision AntLand_room4Floor_ColH = {
-    13, 15, AntLand_room4Floor_ColV, AntLand_room4Floor_ColT, &AntLand_room4Floor_ColS
+ModelCollision AntLand_room4Floor_collision = {
+    ARRAY_COUNT(AntLand_room4Floor_ColVerts), ARRAY_COUNT(AntLand_room4Floor_ColTris), AntLand_room4Floor_ColVerts, AntLand_room4Floor_ColTris, &AntLand_room4Floor_BoundBox
 };
 
-Vec3f AntLand_room6Floor_ColV[] = {
-    #include "assets/levelGroup/AntLand/room6Floor/room6Floor.colV.inc.c"
+Vec3f AntLand_room6Floor_ColVerts[] = {
+    #include "assets/levelGroup/AntLand/room6Floor/room6Floor.colVerts.inc.c"
 };
 
-Vec3w AntLand_room6Floor_ColT[] = {
-    #include "assets/levelGroup/AntLand/room6Floor/room6Floor.colT.inc.c"
+Vec3w AntLand_room6Floor_ColTris[] = {
+    #include "assets/levelGroup/AntLand/room6Floor/room6Floor.colTris.inc.c"
 };
 
-Rect3D AntLand_room6Floor_ColS = {
-    #include "assets/levelGroup/AntLand/room6Floor/room6Floor.colS.inc.c"
+Rect3D AntLand_room6Floor_BoundBox = {
+    #include "assets/levelGroup/AntLand/room6Floor/room6Floor.boundBox.inc.c"
 };
 
-ModelCollision AntLand_room6Floor_ColH = {
-    28, 32, AntLand_room6Floor_ColV, AntLand_room6Floor_ColT, &AntLand_room6Floor_ColS
+ModelCollision AntLand_room6Floor_collision = {
+    ARRAY_COUNT(AntLand_room6Floor_ColVerts), ARRAY_COUNT(AntLand_room6Floor_ColTris), AntLand_room6Floor_ColVerts, AntLand_room6Floor_ColTris, &AntLand_room6Floor_BoundBox
 };
 
-Vec3f AntLand_room8Floor_ColV[] = {
-    #include "assets/levelGroup/AntLand/room8Floor/room8Floor.colV.inc.c"
+Vec3f AntLand_room8Floor_ColVerts[] = {
+    #include "assets/levelGroup/AntLand/room8Floor/room8Floor.colVerts.inc.c"
 };
 
-Vec3w AntLand_room8Floor_ColT[] = {
-    #include "assets/levelGroup/AntLand/room8Floor/room8Floor.colT.inc.c"
+Vec3w AntLand_room8Floor_ColTris[] = {
+    #include "assets/levelGroup/AntLand/room8Floor/room8Floor.colTris.inc.c"
 };
 
-Rect3D AntLand_room8Floor_ColS = {
-    #include "assets/levelGroup/AntLand/room8Floor/room8Floor.colS.inc.c"
+Rect3D AntLand_room8Floor_BoundBox = {
+    #include "assets/levelGroup/AntLand/room8Floor/room8Floor.boundBox.inc.c"
 };
 
-ModelCollision AntLand_room8Floor_ColH = {
-    21, 30, AntLand_room8Floor_ColV, AntLand_room8Floor_ColT, &AntLand_room8Floor_ColS
+ModelCollision AntLand_room8Floor_collision = {
+    ARRAY_COUNT(AntLand_room8Floor_ColVerts), ARRAY_COUNT(AntLand_room8Floor_ColTris), AntLand_room8Floor_ColVerts, AntLand_room8Floor_ColTris, &AntLand_room8Floor_BoundBox
 };
 
-Vec3f AntLand_room17Floor_ColV[] = {
-    #include "assets/levelGroup/AntLand/room17Floor/room17Floor.colV.inc.c"
+Vec3f AntLand_room17Floor_ColVerts[] = {
+    #include "assets/levelGroup/AntLand/room17Floor/room17Floor.colVerts.inc.c"
 };
 
-Vec3w AntLand_room17Floor_ColT[] = {
-    #include "assets/levelGroup/AntLand/room17Floor/room17Floor.colT.inc.c"
+Vec3w AntLand_room17Floor_ColTris[] = {
+    #include "assets/levelGroup/AntLand/room17Floor/room17Floor.colTris.inc.c"
 };
 
-Rect3D AntLand_room17Floor_ColS = {
-    #include "assets/levelGroup/AntLand/room17Floor/room17Floor.colS.inc.c"
+Rect3D AntLand_room17Floor_BoundBox = {
+    #include "assets/levelGroup/AntLand/room17Floor/room17Floor.boundBox.inc.c"
 };
 
-ModelCollision AntLand_room17Floor_ColH = {
-56, 80, AntLand_room17Floor_ColV, AntLand_room17Floor_ColT, &AntLand_room17Floor_ColS
+ModelCollision AntLand_room17Floor_collision = {
+    ARRAY_COUNT(AntLand_room17Floor_ColVerts), ARRAY_COUNT(AntLand_room17Floor_ColTris), AntLand_room17Floor_ColVerts, AntLand_room17Floor_ColTris, &AntLand_room17Floor_BoundBox
 };
 
-Vec3f AntLand_room10Floor_ColV[] = {
-    #include "assets/levelGroup/AntLand/room10Floor/room10Floor.colV.inc.c"
+Vec3f AntLand_room10Floor_ColVerts[] = {
+    #include "assets/levelGroup/AntLand/room10Floor/room10Floor.colVerts.inc.c"
 };
 
-Vec3w AntLand_room10Floor_ColT[] = {
-    #include "assets/levelGroup/AntLand/room10Floor/room10Floor.colT.inc.c"
+Vec3w AntLand_room10Floor_ColTris[] = {
+    #include "assets/levelGroup/AntLand/room10Floor/room10Floor.colTris.inc.c"
 };
 
-Rect3D AntLand_room10Floor_ColS = {
-    #include "assets/levelGroup/AntLand/room10Floor/room10Floor.colS.inc.c"
+Rect3D AntLand_room10Floor_BoundBox = {
+    #include "assets/levelGroup/AntLand/room10Floor/room10Floor.boundBox.inc.c"
 };
 
-ModelCollision AntLand_room10Floor_ColH = {
-53, 76, AntLand_room10Floor_ColV, AntLand_room10Floor_ColT, &AntLand_room10Floor_ColS
+ModelCollision AntLand_room10Floor_collision = {
+    ARRAY_COUNT(AntLand_room10Floor_ColVerts), ARRAY_COUNT(AntLand_room10Floor_ColTris), AntLand_room10Floor_ColVerts, AntLand_room10Floor_ColTris, &AntLand_room10Floor_BoundBox
 };
 
-Vec3f AntLand_room10Platform1_ColV[] = {
-    #include "assets/levelGroup/AntLand/room10Platform1/room10Platform1.colV.inc.c"
+Vec3f AntLand_room10Platform1_ColVerts[] = {
+    #include "assets/levelGroup/AntLand/room10Platform1/room10Platform1.colVerts.inc.c"
 };
 
-Vec3w AntLand_room10Platform1_ColT[] = {
-    #include "assets/levelGroup/AntLand/room10Platform1/room10Platform1.colT.inc.c"
+Vec3w AntLand_room10Platform1_ColTris[] = {
+    #include "assets/levelGroup/AntLand/room10Platform1/room10Platform1.colTris.inc.c"
 };
 
-Rect3D AntLand_room10Platform1_ColS = {
-    #include "assets/levelGroup/AntLand/room10Platform1/room10Platform1.colS.inc.c"
+Rect3D AntLand_room10Platform1_BoundBox = {
+    #include "assets/levelGroup/AntLand/room10Platform1/room10Platform1.boundBox.inc.c"
 };
 
-ModelCollision AntLand_room10Platform1_ColH = {
-8, 8, AntLand_room10Platform1_ColV, AntLand_room10Platform1_ColT, &AntLand_room10Platform1_ColS
+ModelCollision AntLand_room10Platform1_collision = {
+    ARRAY_COUNT(AntLand_room10Platform1_ColVerts), ARRAY_COUNT(AntLand_room10Platform1_ColTris), AntLand_room10Platform1_ColVerts, AntLand_room10Platform1_ColTris, &AntLand_room10Platform1_BoundBox
 };
 
-Vec3f AntLand_room10Platform2_ColV[] = {
-    #include "assets/levelGroup/AntLand/room10Platform2/room10Platform2.colV.inc.c"
+Vec3f AntLand_room10Platform2_ColVerts[] = {
+    #include "assets/levelGroup/AntLand/room10Platform2/room10Platform2.colVerts.inc.c"
 };
 
-Vec3w AntLand_room10Platform2_ColT[] = {
-    #include "assets/levelGroup/AntLand/room10Platform2/room10Platform2.colT.inc.c"
+Vec3w AntLand_room10Platform2_ColTris[] = {
+    #include "assets/levelGroup/AntLand/room10Platform2/room10Platform2.colTris.inc.c"
 };
 
-Rect3D AntLand_room10Platform2_ColS = {
-    #include "assets/levelGroup/AntLand/room10Platform2/room10Platform2.colS.inc.c"
+Rect3D AntLand_room10Platform2_BoundBox = {
+    #include "assets/levelGroup/AntLand/room10Platform2/room10Platform2.boundBox.inc.c"
 };
 
-ModelCollision AntLand_room10Platform2_ColH = {
-8, 8, AntLand_room10Platform2_ColV, AntLand_room10Platform2_ColT, &AntLand_room10Platform2_ColS
+ModelCollision AntLand_room10Platform2_collision = {
+    ARRAY_COUNT(AntLand_room10Platform2_ColVerts), ARRAY_COUNT(AntLand_room10Platform2_ColTris), AntLand_room10Platform2_ColVerts, AntLand_room10Platform2_ColTris, &AntLand_room10Platform2_BoundBox
 };
 
-Vec3f AntLand_room10Platform3_ColV[] = {
-    #include "assets/levelGroup/AntLand/room10Platform3/room10Platform3.colV.inc.c"
+Vec3f AntLand_room10Platform3_ColVerts[] = {
+    #include "assets/levelGroup/AntLand/room10Platform3/room10Platform3.colVerts.inc.c"
 };
 
-Vec3w AntLand_room10Platform3_ColT[] = {
-    #include "assets/levelGroup/AntLand/room10Platform3/room10Platform3.colT.inc.c"
+Vec3w AntLand_room10Platform3_ColTris[] = {
+    #include "assets/levelGroup/AntLand/room10Platform3/room10Platform3.colTris.inc.c"
 };
 
-Rect3D AntLand_room10Platform3_ColS = {
-    #include "assets/levelGroup/AntLand/room10Platform3/room10Platform3.colS.inc.c"
+Rect3D AntLand_room10Platform3_BoundBox = {
+    #include "assets/levelGroup/AntLand/room10Platform3/room10Platform3.boundBox.inc.c"
 };
 
-ModelCollision AntLand_room10Platform3_ColH = {
-8, 10, AntLand_room10Platform3_ColV, AntLand_room10Platform3_ColT, &AntLand_room10Platform3_ColS
+ModelCollision AntLand_room10Platform3_collision = {
+    ARRAY_COUNT(AntLand_room10Platform3_ColVerts), ARRAY_COUNT(AntLand_room10Platform3_ColTris), AntLand_room10Platform3_ColVerts, AntLand_room10Platform3_ColTris, &AntLand_room10Platform3_BoundBox
 };
 
-Vec3f AntLand_room5Platform_ColV[] = {
-    #include "assets/levelGroup/AntLand/room5Platform/room5Platform.colV.inc.c"
+Vec3f AntLand_room5Platform_ColVerts[] = {
+    #include "assets/levelGroup/AntLand/room5Platform/room5Platform.colVerts.inc.c"
 };
 
-Vec3w AntLand_room5Platform_ColT[] = {
-    #include "assets/levelGroup/AntLand/room5Platform/room5Platform.colT.inc.c"
+Vec3w AntLand_room5Platform_ColTris[] = {
+    #include "assets/levelGroup/AntLand/room5Platform/room5Platform.colTris.inc.c"
 };
 
-Rect3D AntLand_room5Platform_ColS = {
-    #include "assets/levelGroup/AntLand/room5Platform/room5Platform.colS.inc.c"
+Rect3D AntLand_room5Platform_BoundBox = {
+    #include "assets/levelGroup/AntLand/room5Platform/room5Platform.boundBox.inc.c"
 };
 
-ModelCollision AntLand_room5Platform_ColH = {
-16, 20, AntLand_room5Platform_ColV, AntLand_room5Platform_ColT, &AntLand_room5Platform_ColS
+ModelCollision AntLand_room5Platform_collision = {
+    ARRAY_COUNT(AntLand_room5Platform_ColVerts), ARRAY_COUNT(AntLand_room5Platform_ColTris), AntLand_room5Platform_ColVerts, AntLand_room5Platform_ColTris, &AntLand_room5Platform_BoundBox
 };
 
-Vec3f AntLand_room13Platform_ColV[] = {
-    #include "assets/levelGroup/AntLand/room13Platform/room13Platform.colV.inc.c"
+Vec3f AntLand_room13Platform_ColVerts[] = {
+    #include "assets/levelGroup/AntLand/room13Platform/room13Platform.colVerts.inc.c"
 };
 
-Vec3w AntLand_room13Platform_ColT[] = {
-    #include "assets/levelGroup/AntLand/room13Platform/room13Platform.colT.inc.c"
+Vec3w AntLand_room13Platform_ColTris[] = {
+    #include "assets/levelGroup/AntLand/room13Platform/room13Platform.colTris.inc.c"
 };
 
-Rect3D AntLand_room13Platform_ColS = {
-    #include "assets/levelGroup/AntLand/room13Platform/room13Platform.colS.inc.c"
+Rect3D AntLand_room13Platform_BoundBox = {
+    #include "assets/levelGroup/AntLand/room13Platform/room13Platform.boundBox.inc.c"
 };
 
-ModelCollision AntLand_room13Platform_ColH = {
-16, 20, AntLand_room13Platform_ColV, AntLand_room13Platform_ColT, &AntLand_room13Platform_ColS
+ModelCollision AntLand_room13Platform_collision = {
+    ARRAY_COUNT(AntLand_room13Platform_ColVerts), ARRAY_COUNT(AntLand_room13Platform_ColTris), AntLand_room13Platform_ColVerts, AntLand_room13Platform_ColTris, &AntLand_room13Platform_BoundBox
 };
 
-Vec3f AntLand_room21Platform1_ColV[] = {
-    #include "assets/levelGroup/AntLand/room21Platform1/room21Platform1.colV.inc.c"
+Vec3f AntLand_room21Platform1_ColVerts[] = {
+    #include "assets/levelGroup/AntLand/room21Platform1/room21Platform1.colVerts.inc.c"
 };
 
-Vec3w AntLand_room21Platform1_ColT[] = {
-    #include "assets/levelGroup/AntLand/room21Platform1/room21Platform1.colT.inc.c"
+Vec3w AntLand_room21Platform1_ColTris[] = {
+    #include "assets/levelGroup/AntLand/room21Platform1/room21Platform1.colTris.inc.c"
 };
 
-Rect3D AntLand_room21Platform1_ColS = {
-    #include "assets/levelGroup/AntLand/room21Platform1/room21Platform1.colS.inc.c"
+Rect3D AntLand_room21Platform1_BoundBox = {
+    #include "assets/levelGroup/AntLand/room21Platform1/room21Platform1.boundBox.inc.c"
 };
 
-ModelCollision AntLand_room21Platform1_ColH = {
-7, 6, AntLand_room21Platform1_ColV, AntLand_room21Platform1_ColT, &AntLand_room21Platform1_ColS
+ModelCollision AntLand_room21Platform1_collision = {
+    ARRAY_COUNT(AntLand_room21Platform1_ColVerts), ARRAY_COUNT(AntLand_room21Platform1_ColTris), AntLand_room21Platform1_ColVerts, AntLand_room21Platform1_ColTris, &AntLand_room21Platform1_BoundBox
 };
 
-Vec3f AntLand_room21Platform2_ColV[] = {
-    #include "assets/levelGroup/AntLand/room21Platform2/room21Platform2.colV.inc.c"
+Vec3f AntLand_room21Platform2_ColVerts[] = {
+    #include "assets/levelGroup/AntLand/room21Platform2/room21Platform2.colVerts.inc.c"
 };
 
-Vec3w AntLand_room21Platform2_ColT[] = {
-    #include "assets/levelGroup/AntLand/room21Platform2/room21Platform2.colT.inc.c"
+Vec3w AntLand_room21Platform2_ColTris[] = {
+    #include "assets/levelGroup/AntLand/room21Platform2/room21Platform2.colTris.inc.c"
 };
 
-Rect3D AntLand_room21Platform2_ColS = {
-    #include "assets/levelGroup/AntLand/room21Platform2/room21Platform2.colS.inc.c"
+Rect3D AntLand_room21Platform2_BoundBox = {
+    #include "assets/levelGroup/AntLand/room21Platform2/room21Platform2.boundBox.inc.c"
 };
 
-ModelCollision AntLand_room21Platform2_ColH = {
-7, 6, AntLand_room21Platform2_ColV, AntLand_room21Platform2_ColT, &AntLand_room21Platform2_ColS
+ModelCollision AntLand_room21Platform2_collision = {
+    ARRAY_COUNT(AntLand_room21Platform2_ColVerts), ARRAY_COUNT(AntLand_room21Platform2_ColTris), AntLand_room21Platform2_ColVerts, AntLand_room21Platform2_ColTris, &AntLand_room21Platform2_BoundBox
 };
 
-Vec3f AntLand_room12Floor1_ColV[] = {
-    #include "assets/levelGroup/AntLand/room12Floor1/room12Floor1.colV.inc.c"
+Vec3f AntLand_room12Floor1_ColVerts[] = {
+    #include "assets/levelGroup/AntLand/room12Floor1/room12Floor1.colVerts.inc.c"
 };
 
-Vec3w AntLand_room12Floor1_ColT[] = {
-    #include "assets/levelGroup/AntLand/room12Floor1/room12Floor1.colT.inc.c"
+Vec3w AntLand_room12Floor1_ColTris[] = {
+    #include "assets/levelGroup/AntLand/room12Floor1/room12Floor1.colTris.inc.c"
 };
 
-Rect3D AntLand_room12Floor1_ColS = {
-    #include "assets/levelGroup/AntLand/room12Floor1/room12Floor1.colS.inc.c"
+Rect3D AntLand_room12Floor1_BoundBox = {
+    #include "assets/levelGroup/AntLand/room12Floor1/room12Floor1.boundBox.inc.c"
 };
 
-ModelCollision AntLand_room12Floor1_ColH = {
-63, 94, AntLand_room12Floor1_ColV, AntLand_room12Floor1_ColT, &AntLand_room12Floor1_ColS
+ModelCollision AntLand_room12Floor1_collision = {
+    ARRAY_COUNT(AntLand_room12Floor1_ColVerts), ARRAY_COUNT(AntLand_room12Floor1_ColTris), AntLand_room12Floor1_ColVerts, AntLand_room12Floor1_ColTris, &AntLand_room12Floor1_BoundBox
 };
 
-Vec3f AntLand_room12Floor2_ColV[] = {
-    #include "assets/levelGroup/AntLand/room12Floor2/room12Floor2.colV.inc.c"
+Vec3f AntLand_room12Floor2_ColVerts[] = {
+    #include "assets/levelGroup/AntLand/room12Floor2/room12Floor2.colVerts.inc.c"
 };
 
-Vec3w AntLand_room12Floor2_ColT[] = {
-    #include "assets/levelGroup/AntLand/room12Floor2/room12Floor2.colT.inc.c"
+Vec3w AntLand_room12Floor2_ColTris[] = {
+    #include "assets/levelGroup/AntLand/room12Floor2/room12Floor2.colTris.inc.c"
 };
 
-Rect3D AntLand_room12Floor2_ColS = {
-    #include "assets/levelGroup/AntLand/room12Floor2/room12Floor2.colS.inc.c"
+Rect3D AntLand_room12Floor2_BoundBox = {
+    #include "assets/levelGroup/AntLand/room12Floor2/room12Floor2.boundBox.inc.c"
 };
 
-ModelCollision AntLand_room12Floor2_ColH = {
-13, 13, AntLand_room12Floor2_ColV, AntLand_room12Floor2_ColT, &AntLand_room12Floor2_ColS
+ModelCollision AntLand_room12Floor2_collision = {
+    ARRAY_COUNT(AntLand_room12Floor2_ColVerts), ARRAY_COUNT(AntLand_room12Floor2_ColTris), AntLand_room12Floor2_ColVerts, AntLand_room12Floor2_ColTris, &AntLand_room12Floor2_BoundBox
 };
 
-Vec3f AntLand_room11Floor1_ColV[] = {
-    #include "assets/levelGroup/AntLand/room11Floor1/room11Floor1.colV.inc.c"
+Vec3f AntLand_room11Floor1_ColVerts[] = {
+    #include "assets/levelGroup/AntLand/room11Floor1/room11Floor1.colVerts.inc.c"
 };
 
-Vec3w AntLand_room11Floor1_ColT[] = {
-    #include "assets/levelGroup/AntLand/room11Floor1/room11Floor1.colT.inc.c"
+Vec3w AntLand_room11Floor1_ColTris[] = {
+    #include "assets/levelGroup/AntLand/room11Floor1/room11Floor1.colTris.inc.c"
 };
 
-Rect3D AntLand_room11Floor1_ColS = {
-    #include "assets/levelGroup/AntLand/room11Floor1/room11Floor1.colS.inc.c"
+Rect3D AntLand_room11Floor1_BoundBox = {
+    #include "assets/levelGroup/AntLand/room11Floor1/room11Floor1.boundBox.inc.c"
 };
 
-ModelCollision AntLand_room11Floor1_ColH = {
-8, 8, AntLand_room11Floor1_ColV, AntLand_room11Floor1_ColT, &AntLand_room11Floor1_ColS
+ModelCollision AntLand_room11Floor1_collision = {
+    ARRAY_COUNT(AntLand_room11Floor1_ColVerts), ARRAY_COUNT(AntLand_room11Floor1_ColTris), AntLand_room11Floor1_ColVerts, AntLand_room11Floor1_ColTris, &AntLand_room11Floor1_BoundBox
 };
 
-Vec3f AntLand_room11Floor2_ColV[] = {
-    #include "assets/levelGroup/AntLand/room11Floor2/room11Floor2.colV.inc.c"
+Vec3f AntLand_room11Floor2_ColVerts[] = {
+    #include "assets/levelGroup/AntLand/room11Floor2/room11Floor2.colVerts.inc.c"
 };
 
-Vec3w AntLand_room11Floor2_ColT[] = {
-    #include "assets/levelGroup/AntLand/room11Floor2/room11Floor2.colT.inc.c"
+Vec3w AntLand_room11Floor2_ColTris[] = {
+    #include "assets/levelGroup/AntLand/room11Floor2/room11Floor2.colTris.inc.c"
 };
 
-Rect3D AntLand_room11Floor2_ColS = {
-    #include "assets/levelGroup/AntLand/room11Floor2/room11Floor2.colS.inc.c"
+Rect3D AntLand_room11Floor2_BoundBox = {
+    #include "assets/levelGroup/AntLand/room11Floor2/room11Floor2.boundBox.inc.c"
 };
 
-ModelCollision AntLand_room11Floor2_ColH = {
-8, 8, AntLand_room11Floor2_ColV, AntLand_room11Floor2_ColT, &AntLand_room11Floor2_ColS
+ModelCollision AntLand_room11Floor2_collision = {
+    ARRAY_COUNT(AntLand_room11Floor2_ColVerts), ARRAY_COUNT(AntLand_room11Floor2_ColTris), AntLand_room11Floor2_ColVerts, AntLand_room11Floor2_ColTris, &AntLand_room11Floor2_BoundBox
 };
 
-Vec3f AntLand_room4Grate_ColV[] = {
-    #include "assets/levelGroup/AntLand/room4Grate/room4Grate.colV.inc.c"
+Vec3f AntLand_room4Grate_ColVerts[] = {
+    #include "assets/levelGroup/AntLand/room4Grate/room4Grate.colVerts.inc.c"
 };
 
-Vec3w AntLand_room4Grate_ColT[] = {
-    #include "assets/levelGroup/AntLand/room4Grate/room4Grate.colT.inc.c"
+Vec3w AntLand_room4Grate_ColTris[] = {
+    #include "assets/levelGroup/AntLand/room4Grate/room4Grate.colTris.inc.c"
 };
 
-Rect3D AntLand_room4Grate_ColS = {
-    #include "assets/levelGroup/AntLand/room4Grate/room4Grate.colS.inc.c"
+Rect3D AntLand_room4Grate_BoundBox = {
+    #include "assets/levelGroup/AntLand/room4Grate/room4Grate.boundBox.inc.c"
 };
 
-ModelCollision AntLand_room4Grate_ColH = {
-4, 4, AntLand_room4Grate_ColV, AntLand_room4Grate_ColT, &AntLand_room4Grate_ColS
+ModelCollision AntLand_room4Grate_collision = {
+    ARRAY_COUNT(AntLand_room4Grate_ColVerts), ARRAY_COUNT(AntLand_room4Grate_ColTris), AntLand_room4Grate_ColVerts, AntLand_room4Grate_ColTris, &AntLand_room4Grate_BoundBox
 };
 
-Vec3f AntLand_room7Floor_ColV[] = {
-    #include "assets/levelGroup/AntLand/room7Floor/room7Floor.colV.inc.c"
+Vec3f AntLand_room7Floor_ColVerts[] = {
+    #include "assets/levelGroup/AntLand/room7Floor/room7Floor.colVerts.inc.c"
 };
 
-Vec3w AntLand_room7Floor_ColT[] = {
-    #include "assets/levelGroup/AntLand/room7Floor/room7Floor.colT.inc.c"
+Vec3w AntLand_room7Floor_ColTris[] = {
+    #include "assets/levelGroup/AntLand/room7Floor/room7Floor.colTris.inc.c"
 };
 
-Rect3D AntLand_room7Floor_ColS = {
-    #include "assets/levelGroup/AntLand/room7Floor/room7Floor.colS.inc.c"
+Rect3D AntLand_room7Floor_BoundBox = {
+    #include "assets/levelGroup/AntLand/room7Floor/room7Floor.boundBox.inc.c"
 };
 
-ModelCollision AntLand_room7Floor_ColH = {
-4, 2, AntLand_room7Floor_ColV, AntLand_room7Floor_ColT, &AntLand_room7Floor_ColS
+ModelCollision AntLand_room7Floor_collision = {
+    ARRAY_COUNT(AntLand_room7Floor_ColVerts), ARRAY_COUNT(AntLand_room7Floor_ColTris), AntLand_room7Floor_ColVerts, AntLand_room7Floor_ColTris, &AntLand_room7Floor_BoundBox
 };
 
-Vec3f AntLand_room7Ceiling_ColV[] = {
-    #include "assets/levelGroup/AntLand/room7Ceiling/room7Ceiling.colV.inc.c"
+Vec3f AntLand_room7Ceiling_ColVerts[] = {
+    #include "assets/levelGroup/AntLand/room7Ceiling/room7Ceiling.colVerts.inc.c"
 };
 
-Vec3w AntLand_room7Ceiling_ColT[] = {
-    #include "assets/levelGroup/AntLand/room7Ceiling/room7Ceiling.colT.inc.c"
+Vec3w AntLand_room7Ceiling_ColTris[] = {
+    #include "assets/levelGroup/AntLand/room7Ceiling/room7Ceiling.colTris.inc.c"
 };
 
-Rect3D AntLand_room7Ceiling_ColS = {
-    #include "assets/levelGroup/AntLand/room7Ceiling/room7Ceiling.colS.inc.c"
+Rect3D AntLand_room7Ceiling_BoundBox = {
+    #include "assets/levelGroup/AntLand/room7Ceiling/room7Ceiling.boundBox.inc.c"
 };
 
-ModelCollision AntLand_room7Ceiling_ColH = {
-4, 2, AntLand_room7Ceiling_ColV, AntLand_room7Ceiling_ColT, &AntLand_room7Ceiling_ColS
+ModelCollision AntLand_room7Ceiling_collision = {
+    ARRAY_COUNT(AntLand_room7Ceiling_ColVerts), ARRAY_COUNT(AntLand_room7Ceiling_ColTris), AntLand_room7Ceiling_ColVerts, AntLand_room7Ceiling_ColTris, &AntLand_room7Ceiling_BoundBox
 };
 
-Vec3f AntLand_room15Floor_ColV[] = {
-    #include "assets/levelGroup/AntLand/room15Floor/room15Floor.colV.inc.c"
+Vec3f AntLand_room15Floor_ColVerts[] = {
+    #include "assets/levelGroup/AntLand/room15Floor/room15Floor.colVerts.inc.c"
 };
 
-Vec3w AntLand_room15Floor_ColT[] = {
-    #include "assets/levelGroup/AntLand/room15Floor/room15Floor.colT.inc.c"
+Vec3w AntLand_room15Floor_ColTris[] = {
+    #include "assets/levelGroup/AntLand/room15Floor/room15Floor.colTris.inc.c"
 };
 
-Rect3D AntLand_room15Floor_ColS = {
-    #include "assets/levelGroup/AntLand/room15Floor/room15Floor.colS.inc.c"
+Rect3D AntLand_room15Floor_BoundBox = {
+    #include "assets/levelGroup/AntLand/room15Floor/room15Floor.boundBox.inc.c"
 };
 
-ModelCollision AntLand_room15Floor_ColH = {
-4, 2, AntLand_room15Floor_ColV, AntLand_room15Floor_ColT, &AntLand_room15Floor_ColS
+ModelCollision AntLand_room15Floor_collision = {
+    ARRAY_COUNT(AntLand_room15Floor_ColVerts), ARRAY_COUNT(AntLand_room15Floor_ColTris), AntLand_room15Floor_ColVerts, AntLand_room15Floor_ColTris, &AntLand_room15Floor_BoundBox
 };
 
-Vec3f AntLand_room15Ceiling_ColV[] = {
-    #include "assets/levelGroup/AntLand/room15Ceiling/room15Ceiling.colV.inc.c"
+Vec3f AntLand_room15Ceiling_ColVerts[] = {
+    #include "assets/levelGroup/AntLand/room15Ceiling/room15Ceiling.colVerts.inc.c"
 };
 
-Vec3w AntLand_room15Ceiling_ColT[] = {
-    #include "assets/levelGroup/AntLand/room15Ceiling/room15Ceiling.colT.inc.c"
+Vec3w AntLand_room15Ceiling_ColTris[] = {
+    #include "assets/levelGroup/AntLand/room15Ceiling/room15Ceiling.colTris.inc.c"
 };
 
-Rect3D AntLand_room15Ceiling_ColS = {
-    #include "assets/levelGroup/AntLand/room15Ceiling/room15Ceiling.colS.inc.c"
+Rect3D AntLand_room15Ceiling_BoundBox = {
+    #include "assets/levelGroup/AntLand/room15Ceiling/room15Ceiling.boundBox.inc.c"
 };
 
-ModelCollision AntLand_room15Ceiling_ColH = {
-4, 2, AntLand_room15Ceiling_ColV, AntLand_room15Ceiling_ColT, &AntLand_room15Ceiling_ColS
+ModelCollision AntLand_room15Ceiling_collision = {
+    ARRAY_COUNT(AntLand_room15Ceiling_ColVerts), ARRAY_COUNT(AntLand_room15Ceiling_ColTris), AntLand_room15Ceiling_ColVerts, AntLand_room15Ceiling_ColTris, &AntLand_room15Ceiling_BoundBox
 };
 
-Vec3f AntLand_room8Floor1_ColV[] = {
-    #include "assets/levelGroup/AntLand/room8Floor1/room8Floor1.colV.inc.c"
+Vec3f AntLand_room8Floor1_ColVerts[] = {
+    #include "assets/levelGroup/AntLand/room8Floor1/room8Floor1.colVerts.inc.c"
 };
 
-Vec3w AntLand_room8Floor1_ColT[] = {
-    #include "assets/levelGroup/AntLand/room8Floor1/room8Floor1.colT.inc.c"
+Vec3w AntLand_room8Floor1_ColTris[] = {
+    #include "assets/levelGroup/AntLand/room8Floor1/room8Floor1.colTris.inc.c"
 };
 
-Rect3D AntLand_room8Floor1_ColS = {
-    #include "assets/levelGroup/AntLand/room8Floor1/room8Floor1.colS.inc.c"
+Rect3D AntLand_room8Floor1_BoundBox = {
+    #include "assets/levelGroup/AntLand/room8Floor1/room8Floor1.boundBox.inc.c"
 };
 
-ModelCollision AntLand_room8Floor1_ColH = {
-10, 10, AntLand_room8Floor1_ColV, AntLand_room8Floor1_ColT, &AntLand_room8Floor1_ColS
+ModelCollision AntLand_room8Floor1_collision = {
+    ARRAY_COUNT(AntLand_room8Floor1_ColVerts), ARRAY_COUNT(AntLand_room8Floor1_ColTris), AntLand_room8Floor1_ColVerts, AntLand_room8Floor1_ColTris, &AntLand_room8Floor1_BoundBox
 };
 
-Vec3f AntLand_room8Floor2_ColV[] = {
-    #include "assets/levelGroup/AntLand/room8Floor2/room8Floor2.colV.inc.c"
+Vec3f AntLand_room8Floor2_ColVerts[] = {
+    #include "assets/levelGroup/AntLand/room8Floor2/room8Floor2.colVerts.inc.c"
 };
 
-Vec3w AntLand_room8Floor2_ColT[] = {
-    #include "assets/levelGroup/AntLand/room8Floor2/room8Floor2.colT.inc.c"
+Vec3w AntLand_room8Floor2_ColTris[] = {
+    #include "assets/levelGroup/AntLand/room8Floor2/room8Floor2.colTris.inc.c"
 };
 
-Rect3D AntLand_room8Floor2_ColS = {
-    #include "assets/levelGroup/AntLand/room8Floor2/room8Floor2.colS.inc.c"
+Rect3D AntLand_room8Floor2_BoundBox = {
+    #include "assets/levelGroup/AntLand/room8Floor2/room8Floor2.boundBox.inc.c"
 };
 
-ModelCollision AntLand_room8Floor2_ColH = {
-8, 8, AntLand_room8Floor2_ColV, AntLand_room8Floor2_ColT, &AntLand_room8Floor2_ColS
+ModelCollision AntLand_room8Floor2_collision = {
+    ARRAY_COUNT(AntLand_room8Floor2_ColVerts), ARRAY_COUNT(AntLand_room8Floor2_ColTris), AntLand_room8Floor2_ColVerts, AntLand_room8Floor2_ColTris, &AntLand_room8Floor2_BoundBox
 };
 
-Vec3f AntLand_room0doorPillar1_ColV[] = {
-    #include "assets/levelGroup/AntLand/room0doorPillar1/room0doorPillar1.colV.inc.c"
+Vec3f AntLand_room0doorPillar1_ColVerts[] = {
+    #include "assets/levelGroup/AntLand/room0doorPillar1/room0doorPillar1.colVerts.inc.c"
 };
 
-Vec3w AntLand_room0doorPillar1_ColT[] = {
-    #include "assets/levelGroup/AntLand/room0doorPillar1/room0doorPillar1.colT.inc.c"
+Vec3w AntLand_room0doorPillar1_ColTris[] = {
+    #include "assets/levelGroup/AntLand/room0doorPillar1/room0doorPillar1.colTris.inc.c"
 };
 
-Rect3D AntLand_room0doorPillar1_ColS = {
-    #include "assets/levelGroup/AntLand/room0doorPillar1/room0doorPillar1.colS.inc.c"
+Rect3D AntLand_room0doorPillar1_BoundBox = {
+    #include "assets/levelGroup/AntLand/room0doorPillar1/room0doorPillar1.boundBox.inc.c"
 };
 
-ModelCollision AntLand_room0doorPillar1_ColH = {
-6, 4, AntLand_room0doorPillar1_ColV, AntLand_room0doorPillar1_ColT, &AntLand_room0doorPillar1_ColS
+ModelCollision AntLand_room0doorPillar1_collision = {
+    ARRAY_COUNT(AntLand_room0doorPillar1_ColVerts), ARRAY_COUNT(AntLand_room0doorPillar1_ColTris), AntLand_room0doorPillar1_ColVerts, AntLand_room0doorPillar1_ColTris, &AntLand_room0doorPillar1_BoundBox
 };
 
-Vec3f AntLand_room0doorPillar2_ColV[] = {
-    #include "assets/levelGroup/AntLand/room0doorPillar2/room0doorPillar2.colV.inc.c"
+Vec3f AntLand_room0doorPillar2_ColVerts[] = {
+    #include "assets/levelGroup/AntLand/room0doorPillar2/room0doorPillar2.colVerts.inc.c"
 };
 
-Vec3w AntLand_room0doorPillar2_ColT[] = {
-    #include "assets/levelGroup/AntLand/room0doorPillar2/room0doorPillar2.colT.inc.c"
+Vec3w AntLand_room0doorPillar2_ColTris[] = {
+    #include "assets/levelGroup/AntLand/room0doorPillar2/room0doorPillar2.colTris.inc.c"
 };
 
-Rect3D AntLand_room0doorPillar2_ColS = {
-    #include "assets/levelGroup/AntLand/room0doorPillar2/room0doorPillar2.colS.inc.c"
+Rect3D AntLand_room0doorPillar2_BoundBox = {
+    #include "assets/levelGroup/AntLand/room0doorPillar2/room0doorPillar2.boundBox.inc.c"
 };
 
-ModelCollision AntLand_room0doorPillar2_ColH = {
-6, 4, AntLand_room0doorPillar2_ColV, AntLand_room0doorPillar2_ColT, &AntLand_room0doorPillar2_ColS
+ModelCollision AntLand_room0doorPillar2_collision = {
+    ARRAY_COUNT(AntLand_room0doorPillar2_ColVerts), ARRAY_COUNT(AntLand_room0doorPillar2_ColTris), AntLand_room0doorPillar2_ColVerts, AntLand_room0doorPillar2_ColTris, &AntLand_room0doorPillar2_BoundBox
 };
 
-Vec3f AntLand_room0doorTop_ColV[] = {
-    #include "assets/levelGroup/AntLand/room0doorTop/room0doorTop.colV.inc.c"
+Vec3f AntLand_room0doorTop_ColVerts[] = {
+    #include "assets/levelGroup/AntLand/room0doorTop/room0doorTop.colVerts.inc.c"
 };
 
-Vec3w AntLand_room0doorTop_ColT[] = {
-    #include "assets/levelGroup/AntLand/room0doorTop/room0doorTop.colT.inc.c"
+Vec3w AntLand_room0doorTop_ColTris[] = {
+    #include "assets/levelGroup/AntLand/room0doorTop/room0doorTop.colTris.inc.c"
 };
 
-Rect3D AntLand_room0doorTop_ColS = {
-    #include "assets/levelGroup/AntLand/room0doorTop/room0doorTop.colS.inc.c"
+Rect3D AntLand_room0doorTop_BoundBox = {
+    #include "assets/levelGroup/AntLand/room0doorTop/room0doorTop.boundBox.inc.c"
 };
 
-ModelCollision AntLand_room0doorTop_ColH = {
-8, 10, AntLand_room0doorTop_ColV, AntLand_room0doorTop_ColT, &AntLand_room0doorTop_ColS
+ModelCollision AntLand_room0doorTop_collision = {
+    ARRAY_COUNT(AntLand_room0doorTop_ColVerts), ARRAY_COUNT(AntLand_room0doorTop_ColTris), AntLand_room0doorTop_ColVerts, AntLand_room0doorTop_ColTris, &AntLand_room0doorTop_BoundBox
 };
 
-Vec3f AntLand_room0doorTorchStand1_ColV[] = {
-    #include "assets/levelGroup/AntLand/room0doorTorchStand1/room0doorTorchStand1.colV.inc.c"
+Vec3f AntLand_room0doorTorchStand1_ColVerts[] = {
+    #include "assets/levelGroup/AntLand/room0doorTorchStand1/room0doorTorchStand1.colVerts.inc.c"
 };
 
-Vec3w AntLand_room0doorTorchStand1_ColT[] = {
-    #include "assets/levelGroup/AntLand/room0doorTorchStand1/room0doorTorchStand1.colT.inc.c"
+Vec3w AntLand_room0doorTorchStand1_ColTris[] = {
+    #include "assets/levelGroup/AntLand/room0doorTorchStand1/room0doorTorchStand1.colTris.inc.c"
 };
 
-Rect3D AntLand_room0doorTorchStand1_ColS = {
-    #include "assets/levelGroup/AntLand/room0doorTorchStand1/room0doorTorchStand1.colS.inc.c"
+Rect3D AntLand_room0doorTorchStand1_BoundBox = {
+    #include "assets/levelGroup/AntLand/room0doorTorchStand1/room0doorTorchStand1.boundBox.inc.c"
 };
 
-ModelCollision AntLand_room0doorTorchStand1_ColH = {
-7, 6, AntLand_room0doorTorchStand1_ColV, AntLand_room0doorTorchStand1_ColT, &AntLand_room0doorTorchStand1_ColS
+ModelCollision AntLand_room0doorTorchStand1_collision = {
+    ARRAY_COUNT(AntLand_room0doorTorchStand1_ColVerts), ARRAY_COUNT(AntLand_room0doorTorchStand1_ColTris), AntLand_room0doorTorchStand1_ColVerts, AntLand_room0doorTorchStand1_ColTris, &AntLand_room0doorTorchStand1_BoundBox
 };
 
-Vec3f AntLand_room0doorTorchStand2_ColV[] = {
-    #include "assets/levelGroup/AntLand/room0doorTorchStand2/room0doorTorchStand2.colV.inc.c"
+Vec3f AntLand_room0doorTorchStand2_ColVerts[] = {
+    #include "assets/levelGroup/AntLand/room0doorTorchStand2/room0doorTorchStand2.colVerts.inc.c"
 };
 
-Vec3w AntLand_room0doorTorchStand2_ColT[] = {
-    #include "assets/levelGroup/AntLand/room0doorTorchStand2/room0doorTorchStand2.colT.inc.c"
+Vec3w AntLand_room0doorTorchStand2_ColTris[] = {
+    #include "assets/levelGroup/AntLand/room0doorTorchStand2/room0doorTorchStand2.colTris.inc.c"
 };
 
-Rect3D AntLand_room0doorTorchStand2_ColS = {
-    #include "assets/levelGroup/AntLand/room0doorTorchStand2/room0doorTorchStand2.colS.inc.c"
+Rect3D AntLand_room0doorTorchStand2_BoundBox = {
+    #include "assets/levelGroup/AntLand/room0doorTorchStand2/room0doorTorchStand2.boundBox.inc.c"
 };
 
-ModelCollision AntLand_room0doorTorchStand2_ColH = {
-7, 6, AntLand_room0doorTorchStand2_ColV, AntLand_room0doorTorchStand2_ColT, &AntLand_room0doorTorchStand2_ColS
+ModelCollision AntLand_room0doorTorchStand2_collision = {
+    ARRAY_COUNT(AntLand_room0doorTorchStand2_ColVerts), ARRAY_COUNT(AntLand_room0doorTorchStand2_ColTris), AntLand_room0doorTorchStand2_ColVerts, AntLand_room0doorTorchStand2_ColTris, &AntLand_room0doorTorchStand2_BoundBox
 };
 
-Vec3f AntLand_room16Floor1_ColV[] = {
-    #include "assets/levelGroup/AntLand/room16Floor1/room16Floor1.colV.inc.c"
+Vec3f AntLand_room16Floor1_ColVerts[] = {
+    #include "assets/levelGroup/AntLand/room16Floor1/room16Floor1.colVerts.inc.c"
 };
 
-Vec3w AntLand_room16Floor1_ColT[] = {
-    #include "assets/levelGroup/AntLand/room16Floor1/room16Floor1.colT.inc.c"
+Vec3w AntLand_room16Floor1_ColTris[] = {
+    #include "assets/levelGroup/AntLand/room16Floor1/room16Floor1.colTris.inc.c"
 };
 
-Rect3D AntLand_room16Floor1_ColS = {
-    #include "assets/levelGroup/AntLand/room16Floor1/room16Floor1.colS.inc.c"
+Rect3D AntLand_room16Floor1_BoundBox = {
+    #include "assets/levelGroup/AntLand/room16Floor1/room16Floor1.boundBox.inc.c"
 };
 
-ModelCollision AntLand_room16Floor1_ColH = {
-68, 106, AntLand_room16Floor1_ColV, AntLand_room16Floor1_ColT, &AntLand_room16Floor1_ColS
+ModelCollision AntLand_room16Floor1_collision = {
+    ARRAY_COUNT(AntLand_room16Floor1_ColVerts), ARRAY_COUNT(AntLand_room16Floor1_ColTris), AntLand_room16Floor1_ColVerts, AntLand_room16Floor1_ColTris, &AntLand_room16Floor1_BoundBox
 };
 
-Vec3f AntLand_room16Floor2_ColV[] = {
-    #include "assets/levelGroup/AntLand/room16Floor2/room16Floor2.colV.inc.c"
+Vec3f AntLand_room16Floor2_ColVerts[] = {
+    #include "assets/levelGroup/AntLand/room16Floor2/room16Floor2.colVerts.inc.c"
 };
 
-Vec3w AntLand_room16Floor2_ColT[] = {
-    #include "assets/levelGroup/AntLand/room16Floor2/room16Floor2.colT.inc.c"
+Vec3w AntLand_room16Floor2_ColTris[] = {
+    #include "assets/levelGroup/AntLand/room16Floor2/room16Floor2.colTris.inc.c"
 };
 
-Rect3D AntLand_room16Floor2_ColS = {
-    #include "assets/levelGroup/AntLand/room16Floor2/room16Floor2.colS.inc.c"
+Rect3D AntLand_room16Floor2_BoundBox = {
+    #include "assets/levelGroup/AntLand/room16Floor2/room16Floor2.boundBox.inc.c"
 };
 
-ModelCollision AntLand_room16Floor2_ColH = {
-12, 12, AntLand_room16Floor2_ColV, AntLand_room16Floor2_ColT, &AntLand_room16Floor2_ColS
+ModelCollision AntLand_room16Floor2_collision = {
+    ARRAY_COUNT(AntLand_room16Floor2_ColVerts), ARRAY_COUNT(AntLand_room16Floor2_ColTris), AntLand_room16Floor2_ColVerts, AntLand_room16Floor2_ColTris, &AntLand_room16Floor2_BoundBox
 };
 
-Vec3f AntLand_room16Grate_ColV[] = {
-    #include "assets/levelGroup/AntLand/room16Grate/room16Grate.colV.inc.c"
+Vec3f AntLand_room16Grate_ColVerts[] = {
+    #include "assets/levelGroup/AntLand/room16Grate/room16Grate.colVerts.inc.c"
 };
 
-Vec3w AntLand_room16Grate_ColT[] = {
-    #include "assets/levelGroup/AntLand/room16Grate/room16Grate.colT.inc.c"
+Vec3w AntLand_room16Grate_ColTris[] = {
+    #include "assets/levelGroup/AntLand/room16Grate/room16Grate.colTris.inc.c"
 };
 
-Rect3D AntLand_room16Grate_ColS = {
-    #include "assets/levelGroup/AntLand/room16Grate/room16Grate.colS.inc.c"
+Rect3D AntLand_room16Grate_BoundBox = {
+    #include "assets/levelGroup/AntLand/room16Grate/room16Grate.boundBox.inc.c"
 };
 
-ModelCollision AntLand_room16Grate_ColH = {
-4, 4, AntLand_room16Grate_ColV, AntLand_room16Grate_ColT, &AntLand_room16Grate_ColS
+ModelCollision AntLand_room16Grate_collision = {
+    ARRAY_COUNT(AntLand_room16Grate_ColVerts), ARRAY_COUNT(AntLand_room16Grate_ColTris), AntLand_room16Grate_ColVerts, AntLand_room16Grate_ColTris, &AntLand_room16Grate_BoundBox
 };
 
-Vec3f AntLand_tiltPlatform_ColV[] = {
-    #include "assets/levelGroup/AntLand/tiltPlatform/tiltPlatform.colV.inc.c"
+Vec3f AntLand_tiltPlatform_ColVerts[] = {
+    #include "assets/levelGroup/AntLand/tiltPlatform/tiltPlatform.colVerts.inc.c"
 };
 
-Vec3w AntLand_tiltPlatform_ColT[] = {
-    #include "assets/levelGroup/AntLand/tiltPlatform/tiltPlatform.colT.inc.c"
+Vec3w AntLand_tiltPlatform_ColTris[] = {
+    #include "assets/levelGroup/AntLand/tiltPlatform/tiltPlatform.colTris.inc.c"
 };
 
-Rect3D AntLand_tiltPlatform_ColS = {
-    #include "assets/levelGroup/AntLand/tiltPlatform/tiltPlatform.colS.inc.c"
+Rect3D AntLand_tiltPlatform_BoundBox = {
+    #include "assets/levelGroup/AntLand/tiltPlatform/tiltPlatform.boundBox.inc.c"
 };
 
-ModelCollision AntLand_tiltPlatform_ColH = {
-8, 12, AntLand_tiltPlatform_ColV, AntLand_tiltPlatform_ColT, &AntLand_tiltPlatform_ColS
+ModelCollision AntLand_tiltPlatform_collision = {
+    ARRAY_COUNT(AntLand_tiltPlatform_ColVerts), ARRAY_COUNT(AntLand_tiltPlatform_ColTris), AntLand_tiltPlatform_ColVerts, AntLand_tiltPlatform_ColTris, &AntLand_tiltPlatform_BoundBox
 };
 
-Vec3f AntLand_platform_ColV[] = {
-    #include "assets/levelGroup/AntLand/platform/platform.colV.inc.c"
+Vec3f AntLand_platform_ColVerts[] = {
+    #include "assets/levelGroup/AntLand/platform/platform.colVerts.inc.c"
 };
 
-Vec3w AntLand_platform_ColT[] = {
-    #include "assets/levelGroup/AntLand/platform/platform.colT.inc.c"
+Vec3w AntLand_platform_ColTris[] = {
+    #include "assets/levelGroup/AntLand/platform/platform.colTris.inc.c"
 };
 
-Rect3D AntLand_platform_ColS = {
-    #include "assets/levelGroup/AntLand/platform/platform.colS.inc.c"
+Rect3D AntLand_platform_BoundBox = {
+    #include "assets/levelGroup/AntLand/platform/platform.boundBox.inc.c"
 };
 
-ModelCollision AntLand_platform_ColH = {
-8, 12, AntLand_platform_ColV, AntLand_platform_ColT, &AntLand_platform_ColS
+ModelCollision AntLand_platform_collision = {
+    ARRAY_COUNT(AntLand_platform_ColVerts), ARRAY_COUNT(AntLand_platform_ColTris), AntLand_platform_ColVerts, AntLand_platform_ColTris, &AntLand_platform_BoundBox
 };
 
-Vec3f AntLand_movingPlatform_ColV[] = {
-    #include "assets/levelGroup/AntLand/movingPlatform/movingPlatform.colV.inc.c"
+Vec3f AntLand_movingPlatform_ColVerts[] = {
+    #include "assets/levelGroup/AntLand/movingPlatform/movingPlatform.colVerts.inc.c"
 };
 
-Vec3w AntLand_movingPlatform_ColT[] = {
-    #include "assets/levelGroup/AntLand/movingPlatform/movingPlatform.colT.inc.c"
+Vec3w AntLand_movingPlatform_ColTris[] = {
+    #include "assets/levelGroup/AntLand/movingPlatform/movingPlatform.colTris.inc.c"
 };
 
-Rect3D AntLand_movingPlatform_ColS = {
-    #include "assets/levelGroup/AntLand/movingPlatform/movingPlatform.colS.inc.c"
+Rect3D AntLand_movingPlatform_BoundBox = {
+    #include "assets/levelGroup/AntLand/movingPlatform/movingPlatform.boundBox.inc.c"
 };
 
-ModelCollision AntLand_movingPlatform_ColH = {
-8, 12, AntLand_movingPlatform_ColV, AntLand_movingPlatform_ColT, &AntLand_movingPlatform_ColS
+ModelCollision AntLand_movingPlatform_collision = {
+    ARRAY_COUNT(AntLand_movingPlatform_ColVerts), ARRAY_COUNT(AntLand_movingPlatform_ColTris), AntLand_movingPlatform_ColVerts, AntLand_movingPlatform_ColTris, &AntLand_movingPlatform_BoundBox
 };
 
-Vec3f AntLand_quad_ColV[] = {
-    #include "assets/levelGroup/AntLand/quad/quad.colV.inc.c"
+Vec3f AntLand_quad_ColVerts[] = {
+    #include "assets/levelGroup/AntLand/quad/quad.colVerts.inc.c"
 };
 
-Vec3w AntLand_quad_ColT[] = {
-    #include "assets/levelGroup/AntLand/quad/quad.colT.inc.c"
+Vec3w AntLand_quad_ColTris[] = {
+    #include "assets/levelGroup/AntLand/quad/quad.colTris.inc.c"
 };
 
-Rect3D AntLand_quad_ColS = {
-    #include "assets/levelGroup/AntLand/quad/quad.colS.inc.c"
+Rect3D AntLand_quad_BoundBox = {
+    #include "assets/levelGroup/AntLand/quad/quad.boundBox.inc.c"
 };
 
-ModelCollision AntLand_quad_ColH = {
-4, 2, AntLand_quad_ColV, AntLand_quad_ColT, &AntLand_quad_ColS
+ModelCollision AntLand_quad_collision = {
+    ARRAY_COUNT(AntLand_quad_ColVerts), ARRAY_COUNT(AntLand_quad_ColTris), AntLand_quad_ColVerts, AntLand_quad_ColTris, &AntLand_quad_BoundBox
 };
 
-Vec3f AntLand_fixedCamPillar_ColV[] = {
-    #include "assets/levelGroup/AntLand/fixedCamPillar/fixedCamPillar.colV.inc.c"
+Vec3f AntLand_fixedCamPillar_ColVerts[] = {
+    #include "assets/levelGroup/AntLand/fixedCamPillar/fixedCamPillar.colVerts.inc.c"
 };
 
-Vec3w AntLand_fixedCamPillar_ColT[] = {
-    #include "assets/levelGroup/AntLand/fixedCamPillar/fixedCamPillar.colT.inc.c"
+Vec3w AntLand_fixedCamPillar_ColTris[] = {
+    #include "assets/levelGroup/AntLand/fixedCamPillar/fixedCamPillar.colTris.inc.c"
 };
 
-Rect3D AntLand_fixedCamPillar_ColS = {
-    #include "assets/levelGroup/AntLand/fixedCamPillar/fixedCamPillar.colS.inc.c"
+Rect3D AntLand_fixedCamPillar_BoundBox = {
+    #include "assets/levelGroup/AntLand/fixedCamPillar/fixedCamPillar.boundBox.inc.c"
 };
 
-ModelCollision AntLand_fixedCamPillar_ColH = {
-    8, 8, AntLand_fixedCamPillar_ColV, AntLand_fixedCamPillar_ColT, &AntLand_fixedCamPillar_ColS
+ModelCollision AntLand_fixedCamPillar_collision = {
+    ARRAY_COUNT(AntLand_fixedCamPillar_ColVerts), ARRAY_COUNT(AntLand_fixedCamPillar_ColTris), AntLand_fixedCamPillar_ColVerts, AntLand_fixedCamPillar_ColTris, &AntLand_fixedCamPillar_BoundBox
 };
 
 s32 alignment_Pad[] = {0, 0};
@@ -3549,5 +3182,5 @@ Mtx AntLand_yellowAntAnim_Animarr[20][13] = {
 };
 
 AnimPointer AntLand_yellowAntAnimPointers_Animp[1] = {
-{&AntLand_yellowAntAnim_Animh.frames, &AntLand_yellowAntAnim_Animh.objects, &AntLand_yellowAntAnim_Animarr[0][0]}
+{&AntLand_yellowAntAnim_Animh.frames, &AntLand_yellowAntAnim_Animh.objects, AntLand_yellowAntAnim_Animarr[0]}
 };

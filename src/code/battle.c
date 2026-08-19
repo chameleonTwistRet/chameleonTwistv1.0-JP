@@ -23,7 +23,7 @@ s32 Battle_RankingTable[4][4] = {
     { 0, 0, 0, 0 },
 };
 s32 gCharacterPortraits[6] = { SPRITE_PORTRAITDAVY, SPRITE_PORTRAITJACK, SPRITE_PORTRAITFRED,
-                               SPRITE_PORTRAITLINDA, SPRITE_PORTRAITBLACK, SPRITE_PORTRAITWHITE };
+        SPRITE_PORTRAITLINDA, SPRITE_PORTRAITBLACK, SPRITE_PORTRAITWHITE };
 s32 Battle_PlayerRank[4] = { 0, 0, 0, 0 };
 s32 Battle_SurvivalPlayerRank[4] = { 0, 0, 0, 0 };
 u8 Battle_CornerIndices[4] = { 0, 3, 1, 2 };
@@ -136,56 +136,56 @@ s32 Battle_UpdateRanking(void) {
     }
 
     switch (gameType) {
-        case BATTLE_TYPE_TIME_TRIAL:
-            for (i = 0; i < ARRAY_COUNT(gPlayerActors) ; i++) {
-                s32 rank = 0;
-                if (gPlayerActors[i].active == TRUE) {
-                    for (j = 0; j < ARRAY_COUNT(gPlayerActors); j++) {
-                        if (gPlayerActors[j].active == TRUE) {
-                            if (i != j && Battle_PlayerData[Battle_CornerIndices[j]].fallOffTime <
+    case BATTLE_TYPE_TIME_TRIAL:
+        for (i = 0; i < ARRAY_COUNT(gPlayerActors) ; i++) {
+            s32 rank = 0;
+            if (gPlayerActors[i].active == TRUE) {
+                for (j = 0; j < ARRAY_COUNT(gPlayerActors); j++) {
+                    if (gPlayerActors[j].active == TRUE) {
+                        if (i != j && Battle_PlayerData[Battle_CornerIndices[j]].fallOffTime <
                                           Battle_PlayerData[Battle_CornerIndices[i]].fallOffTime) {
-                                rank++;
-                            }
-                            Battle_PlayerRank[i] = rank;
+                            rank++;
                         }
-                    }
-                    if (Battle_PlayerRank[i] == 0) {
-                        numFirstPlace++;
-                    }
-                    if (Battle_PlayerRank[i] == 1) {
-                        numSecondPlace++;
+                        Battle_PlayerRank[i] = rank;
                     }
                 }
+                if (Battle_PlayerRank[i] == 0) {
+                    numFirstPlace++;
+                }
+                if (Battle_PlayerRank[i] == 1) {
+                    numSecondPlace++;
+                }
             }
+        }
 
-            if (numSecondPlace == 2) {
-                for (i = 0; i < ARRAY_COUNT(gPlayerActors); i++) {
-                    if (gPlayerActors[i].active == TRUE && Battle_PlayerRank[i] == 3) {
-                        Battle_PlayerRank[i] = 2;
-                    }
-                }
-            }
-            if (numFirstPlace == 1) {
-                numFirstPlace = 0;
-            } else {
-                numFirstPlace--;
-            }
-            break;
-        case BATTLE_TYPE_SURVIVAL:
+        if (numSecondPlace == 2) {
             for (i = 0; i < ARRAY_COUNT(gPlayerActors); i++) {
-                if (gPlayerActors[i].active == TRUE) {
-                    Battle_PlayerRank[i] = Battle_SurvivalPlayerRank[i] - 1;
-
-                    if (Battle_SurvivalPlayerRank[i] < 2) {
-                        Battle_PlayerRank[i] = 0;
-                    }
-                    if (Battle_PlayerRank[i] == 0) {
-                        numFirstPlace++;
-                    }
+                if (gPlayerActors[i].active == TRUE && Battle_PlayerRank[i] == 3) {
+                    Battle_PlayerRank[i] = 2;
                 }
             }
+        }
+        if (numFirstPlace == 1) {
+            numFirstPlace = 0;
+        } else {
             numFirstPlace--;
-            break;
+        }
+        break;
+    case BATTLE_TYPE_SURVIVAL:
+        for (i = 0; i < ARRAY_COUNT(gPlayerActors); i++) {
+            if (gPlayerActors[i].active == TRUE) {
+                Battle_PlayerRank[i] = Battle_SurvivalPlayerRank[i] - 1;
+
+                if (Battle_SurvivalPlayerRank[i] < 2) {
+                    Battle_PlayerRank[i] = 0;
+                }
+                if (Battle_PlayerRank[i] == 0) {
+                    numFirstPlace++;
+                }
+            }
+        }
+        numFirstPlace--;
+        break;
     }
     return numFirstPlace;
 }
@@ -233,22 +233,22 @@ f32 Battle_CalcTableColumnWidths(u8 numColumns, f32* arg1, f32 xMin, f32 xMax) {
 
     width = xMax - xMin;
     switch (numColumns) {
-        default:
-            break;
-        case 2:
-            temp_f12 = width / 6.0f;
-            *arg1 = temp_f12 + xMin;
-            width = temp_f12 * 4.0f;
-            break;
-        case 3:
-            temp_f12 = width / 8;
-            *arg1 = temp_f12 + xMin;
-            width = temp_f12 * 3.0f;
-            break;
-        case 4:
-            *arg1 = xMin;
-            width = width / 3.0f;
-            break;
+    default:
+        break;
+    case 2:
+        temp_f12 = width / 6.0f;
+        *arg1 = temp_f12 + xMin;
+        width = temp_f12 * 4.0f;
+        break;
+    case 3:
+        temp_f12 = width / 8;
+        *arg1 = temp_f12 + xMin;
+        width = temp_f12 * 3.0f;
+        break;
+    case 4:
+        *arg1 = xMin;
+        width = width / 3.0f;
+        break;
     }
     return width;
 }
@@ -294,10 +294,13 @@ void Battle_DrawPortraits(void) {
     }
 }
 
+// score 10
 #ifdef NON_MATCHING
 void Battle_PrintPlayerTimer(s32 playerID) {
+    u8 g;
+
     if (Battle_PlayerRank[playerID] == 0) {
-        s8 g = Battle_Time * 16;
+        g = (Battle_Time * 16) & 0xFF;
         SetTextGradient_TopBottom(255, g, 32, 255,
                                   255, 0,  0, 255);
     } else {
@@ -337,12 +340,12 @@ void Battle_PrintPlayerRank(s32 playerID) {
     } else {
         Battle_PlayerData[Battle_CornerIndices[playerID]].rankTimer += 0.125f;
         if (Battle_PlayerData[Battle_CornerIndices[playerID]].rankTimer <= 1.0f) {
-            alpha *= Battle_PlayerData[Battle_CornerIndices[playerID]].rankTimer;
+            alpha = Battle_PlayerData[Battle_CornerIndices[playerID]].rankTimer * alpha;
             go = 1 - alpha;
             temp_f2 = 1.0f + 2.0f * go;
 
-            sp68 *= temp_f2;
-            sp64 *= temp_f2;
+            sp68 = temp_f2 * sp68;
+            sp64 = temp_f2 * sp64;
 
             deltaX = 24.0f;
             deltaY = 16.0f;
@@ -357,18 +360,18 @@ void Battle_PrintPlayerRank(s32 playerID) {
         SetTextGradient_All(255, 255, 255, 255 * alpha);
     } else {
         switch (Battle_PlayerRank[playerID]) {
-            case 0:
-                SetTextGradientFromPaletteAlpha(0xD, alpha);
-                break;
-            case 1:
-                SetTextGradientFromPaletteAlpha(0xE, alpha);
-                break;
-            case 2:
-                SetTextGradientFromPaletteAlpha(0xF, alpha);
-                break;
-            case 3:
-                SetTextGradientFromPaletteAlpha(0x10, alpha);
-                break;
+        case 0:
+            SetTextGradientFromPaletteAlpha(0xD, alpha);
+            break;
+        case 1:
+            SetTextGradientFromPaletteAlpha(0xE, alpha);
+            break;
+        case 2:
+            SetTextGradientFromPaletteAlpha(0xF, alpha);
+            break;
+        case 3:
+            SetTextGradientFromPaletteAlpha(0x10, alpha);
+            break;
         }
     }
     printUISprite(Battle_PlayerData[Battle_CornerIndices[playerID]].rankPos.x - deltaX,
@@ -383,29 +386,29 @@ void Battle_PrintPlayerRank(s32 arg0);
 void func_80051F38(void) {
     s32 i;
     switch (Battle_Stage) {
-        case BATTLE_STAGE_SUDDEN_DEATH:
-            for (i = 0; i < ARRAY_COUNT(gPlayerActors); i++) {
-                if (gPlayerActors[i].active == TRUE) {
-                    if (Battle_GameType == BATTLE_TYPE_TIME_TRIAL) {
-                        if (Battle_PlayerRank[i] < 2) {
-                            Battle_PrintPlayerTimer(i);
-                        } else {
-                            Battle_PrintPlayerRank(i);
-                        }
-                    } else if (Battle_GameType == BATTLE_TYPE_SURVIVAL) {
+    case BATTLE_STAGE_SUDDEN_DEATH:
+        for (i = 0; i < ARRAY_COUNT(gPlayerActors); i++) {
+            if (gPlayerActors[i].active == TRUE) {
+                if (Battle_GameType == BATTLE_TYPE_TIME_TRIAL) {
+                    if (Battle_PlayerRank[i] < 2) {
+                        Battle_PrintPlayerTimer(i);
+                    } else {
                         Battle_PrintPlayerRank(i);
                     }
-                }
-            }
-            break;
-        case BATTLE_STAGE_SHOW_WINNER:
-        case BATTLE_STAGE_WAIT_BEFORE_EXIT:
-            for (i = 0; i < ARRAY_COUNT(gPlayerActors); i++) {
-                if (gPlayerActors[i].active == TRUE && Battle_FirstRankCount == 0) {
+                } else if (Battle_GameType == BATTLE_TYPE_SURVIVAL) {
                     Battle_PrintPlayerRank(i);
                 }
             }
-            break;
+        }
+        break;
+    case BATTLE_STAGE_SHOW_WINNER:
+    case BATTLE_STAGE_WAIT_BEFORE_EXIT:
+        for (i = 0; i < ARRAY_COUNT(gPlayerActors); i++) {
+            if (gPlayerActors[i].active == TRUE && Battle_FirstRankCount == 0) {
+                Battle_PrintPlayerRank(i);
+            }
+        }
+        break;
     }
 }
 
@@ -527,30 +530,30 @@ void Battle_ShimmeringText(u32 charID) {
     }
 
     switch (charID) {
-        case CHARA_DAVY:
-            SetTextGradient_TopBottom(0, D_80176840 * 0.8, D_80176840, 255,
+    case CHARA_DAVY:
+        SetTextGradient_TopBottom(0, D_80176840 * 0.8, D_80176840, 255,
                                       0, D_80176841 * 0.8, D_80176841, 255);
-            break;
-        case CHARA_JACK:
-            SetTextGradient_TopBottom(D_80176840 * 0.4, D_80176840, 0, 255,
+        break;
+    case CHARA_JACK:
+        SetTextGradient_TopBottom(D_80176840 * 0.4, D_80176840, 0, 255,
                                       D_80176841 * 0.4, D_80176841, 0, 255);
-            break;
-        case CHARA_FRED:
-            SetTextGradient_TopBottom(D_80176840, D_80176840, 0, 255,
+        break;
+    case CHARA_FRED:
+        SetTextGradient_TopBottom(D_80176840, D_80176840, 0, 255,
                                       D_80176841, D_80176841, 0, 255);
-            break;
-        case CHARA_LINDA:
-            SetTextGradient_TopBottom(D_80176840, D_80176840 * 0.4, D_80176840 * 0.5, 255,
+        break;
+    case CHARA_LINDA:
+        SetTextGradient_TopBottom(D_80176840, D_80176840 * 0.4, D_80176840 * 0.5, 255,
                                       D_80176841, D_80176841 * 0.4, D_80176841 * 0.5, 255);
-            break;
-        case CHARA_BLACK:
-            SetTextGradient_TopBottom(D_80176840 * 0.4, D_80176840 * 0.2, D_80176840, 255,
+        break;
+    case CHARA_BLACK:
+        SetTextGradient_TopBottom(D_80176840 * 0.4, D_80176840 * 0.2, D_80176840, 255,
                                       D_80176841 * 0.4, D_80176841 * 0.2, D_80176841, 255);
-            break;
-        case CHARA_WHITE:
-            SetTextGradient_TopBottom(D_80176840, D_80176840, D_80176840, 255,
+        break;
+    case CHARA_WHITE:
+        SetTextGradient_TopBottom(D_80176840, D_80176840, D_80176840, 255,
                                       D_80176841, D_80176841, D_80176841, 255);
-            break;
+        break;
     }
 }
 
@@ -686,7 +689,7 @@ void func_80053FA0(s32 playerID) {
 
     posX = gPlayerActors[playerID].pos.x; // required for matching
 
-    func_80068A88(D_80176B78->f5.x, D_80176B78->f5.y, D_80176B78->f5.z,
+    func_80068A88(D_80176B78->lookAt.x, D_80176B78->lookAt.y, D_80176B78->lookAt.z,
                   gPlayerActors[playerID].pos.x, gPlayerActors[playerID].pos.y + 300.0f, gPlayerActors[playerID].pos.z,
                   gPlayerActors[playerID].pos.x, gPlayerActors[playerID].pos.y + 150.0f, gPlayerActors[playerID].pos.z,
                   D_80176B78->f3.x * 3.0f, D_80176B78->f3.y * 3.0f, D_80176B78->f3.z * 3.0f,
@@ -699,7 +702,7 @@ void func_80053FA0(s32 playerID) {
 
 void func_8005423C(void) {
     s32 i;
-    for (i = 0; i < 6; i++){
+    for (i = 0; i < 6; i++) {
         SetPlayerContextEyes(i, 0, 0);
     }
 }
@@ -736,30 +739,30 @@ void func_8005444C(void) {
         Effect_TypeAY_Init(D_800FE404, 16.0f, 16.0f, 1, 5, &D_800F0B5C, 0.0f, 0.0f, 320.0f, 240.0f);
     }
     switch (D_800F0B5C) {
-        case -2:
-        case 1:
-            D_800F0B5C = -1;
-            break;
-        case 2:
-            D_800FE74C = 0;
-            D_800F0B5C = -1;
-            func_8005423C();
-            SetProcessType(GAME_MODE_STAGE_SELECT);
-            break;
-        case 3:
-            D_800FE74C = 0;
-            D_800F0B5C = -1;
-            func_8005423C();
-            SetProcessType(GAME_MODE_BATTLE_MENU);
-            break;
-        case 4:
-            D_800FE74C = 0;
-            D_800F0B5C = -1;
-            func_8005423C();
-            SetProcessType(GAME_MODE_TITLE_SCREEN);
-            break;
-        default:
-            break;
+    case -2:
+    case 1:
+        D_800F0B5C = -1;
+        break;
+    case 2:
+        D_800FE74C = 0;
+        D_800F0B5C = -1;
+        func_8005423C();
+        SetProcessType(GAME_MODE_STAGE_SELECT);
+        break;
+    case 3:
+        D_800FE74C = 0;
+        D_800F0B5C = -1;
+        func_8005423C();
+        SetProcessType(GAME_MODE_BATTLE_MENU);
+        break;
+    case 4:
+        D_800FE74C = 0;
+        D_800F0B5C = -1;
+        func_8005423C();
+        SetProcessType(GAME_MODE_TITLE_SCREEN);
+        break;
+    default:
+        break;
     }
 }
 
@@ -809,18 +812,14 @@ void Battle_Init(void) {
     }
 }
 
-#ifdef NON_MATCHING
+
 void Battle_Update(void) {
+    s32 i;
+    s32 numAlive;
     s32 var_v0;
     s32 var_v1;
-    s32 numAlive;
-    u32 var_v1_2;
-    s32 i;
-
-    if (gCurrentStage != STAGE_VS || Battle_GameType == BATTLE_TYPE_NOTBATTLE) {
-        return;
-    }
-
+    s32 j;
+    if ((gCurrentStage != STAGE_VS) || (Battle_GameType == BATTLE_TYPE_NOTBATTLE)) {return;}
     if (gCurrentZone >= 4) {
         Battle_GameType = BATTLE_TYPE_TIME_TRIAL;
     } else {
@@ -828,10 +827,8 @@ void Battle_Update(void) {
     }
 
     if (!gIsMultiplayerPaused) {
-        var_v1 = 0;
-        var_v0 = 0;
-        for (i = 0; i < 4; i++) {
-            if (gPlayerActors[i].active && D_80168D78[i] == 0) {
+        for (i = 0, var_v1 = 0, var_v0 = 0; i < 4; i++) {
+            if (gPlayerActors[i].active && (D_80168D78[i] == 0)) {
                 var_v0++;
                 if (gPlayerActors[i].exists == 0) {
                     var_v1++;
@@ -840,306 +837,328 @@ void Battle_Update(void) {
         }
 
         if (var_v0 == var_v1) {
-            var_v1_2 = 0;
+            var_v1 = 0;
         } else {
-            var_v1_2 = 1;
+            var_v1 = 1;
         }
-
         for (i = 0; i < 4; i++) {
             if (gPlayerActors[i].active) {
-                if (!var_v1_2) {
+                if (!var_v1) {
                     if (func_80055F10(i, 0x1000) == 1) {
                         gIsGamePaused = PAUSEMODE_PAUSED;
                     }
                 }
-                if (gPlayerActors[i].exists && D_80168D78[i] == 0) {
+                if (gPlayerActors[i].exists && (D_80168D78[i] == 0)) {
                     if (func_80055F10(i, 0x1000) == 1) {
                         gIsGamePaused = PAUSEMODE_PAUSED;
                     }
                 }
             }
         }
+
     }
-
     switch (Battle_Stage) {
-        case BATTLE_STAGE_INIT:
-            gIsGamePaused = PAUSEMODE_FROZEN;
-            DisableInput();
-            for (i = 0; i < 4; i++) {
-                if (gPlayerActors[i].active == TRUE) {
-                    Battle_PlayerCount++;
-                }
+    case BATTLE_STAGE_INIT:
+        gIsGamePaused = PAUSEMODE_FROZEN;
+        DisableInput();
+        for (j = 0, Battle_PlayerCount = 0; j < 4; j++) {
+            if (gPlayerActors[j].active == 1) {
+                Battle_PlayerCount++;
             }
+        }
 
-            if (Battle_GameType == BATTLE_TYPE_SURVIVAL) {
-                Battle_NumRanks = Battle_PlayerCount;
-            } else {
-                Battle_NumRanks = 2;
-            }
-            for (i = 0; i < 4; i++) {
-                Battle_SurvivalPlayerRank[i] = 0;
-                Battle_PlayerData[i].fallOffTime = 29;
-                Battle_PlayerIsOut[i] = FALSE;
-            }
-            for (i = 0; i < 4; i++) {
-                Battle_PlayerRank[i] = 0;
-            }
+        if (Battle_GameType == BATTLE_TYPE_SURVIVAL) {
+            Battle_NumRanks = Battle_PlayerCount;
+        } else {
+            Battle_NumRanks = 2;
+        }
+        for (j = 0; j < 4; j++) {
+            Battle_SurvivalPlayerRank[j] = 0;
+            Battle_PlayerIsOut[j] = 0;
+            Battle_PlayerData[j].fallOffTime = 29;
+        }
 
+        for (numAlive = 0; numAlive < 4; numAlive++) {
+            Battle_PlayerRank[numAlive] = 0;
+        }
+
+        Battle_Time = 0;
+        Battle_Stage = BATTLE_STAGE_AFTER_INIT;
+        Effect_TypeO_Init(255, 255, 255, 0, 0x2D);
+        break;
+
+    case BATTLE_STAGE_INVALID:
+        break;
+
+    case BATTLE_STAGE_AFTER_INIT:
+        DisableInput();
+        gIsGamePaused = PAUSEMODE_FROZEN;
+        Battle_Time++;
+        if (Battle_Time > 45) {
+            if (Battle_Stage) {}
+            Battle_Stage = BATTLE_STAGE_READY;
             Battle_Time = 0;
-            Battle_Stage = BATTLE_STAGE_AFTER_INIT;
-            Effect_TypeO_Init(255, 255, 255, 0, 0x2D);
-            break;
-        case BATTLE_STAGE_INVALID:
-            break;
-        case BATTLE_STAGE_AFTER_INIT:
-            DisableInput();
-            gIsGamePaused = PAUSEMODE_FROZEN;
+            PlaySoundEffect(SFX_3E_unkSnd, 0, 0, 0, 0, 0x10);
+        }
+        break;
+
+    case BATTLE_STAGE_READY:
+        DisableInput();
+        gIsGamePaused = PAUSEMODE_FROZEN;
+        Battle_Time++;
+        Battle_PlayEnvSounds();
+        Battle_PrintTextBig(80.0f, 100.0f, Battle_Time / 23.333334f, 17, 5, Battle_MsgReady, 1);
+        if (Battle_Time == 40) {
+            Effect_TypeAG_Init(8.0f, 90.0f, 0x5FFF);
+        }
+        if (Battle_Time > 70) {
+            gIsGamePaused = PAUSEMODE_NOT_PAUSED;
+            Battle_Stage = BATTLE_STAGE_GO;
+            Battle_Time = 0;
+            D_8017683C = PlaySoundEffect(SFX_40_unkSnd, 0, 0, 0, 0, 0x10);
+            PlayBGM(gMultiplayerBGM);
+            EnableInput();
+        }
+        break;
+
+    case BATTLE_STAGE_GO:
+        Battle_Time++;
+        Battle_PlayEnvSounds();
+        Battle_PrintTextBig(110.0f, 100.0f, 1.0f, 19, 3, Battle_MsgGo, 1);
+        if (Battle_Time > 20) {
+            if (Battle_Stage) {}
+            Battle_Stage = BATTLE_STAGE_GAME;
+            Battle_Time = 0;
+            StopSoundEffect(D_8017683C);
+        }
+        break;
+
+    case BATTLE_STAGE_GAME:
+        if (!gIsMultiplayerPaused) {
+            Battle_TimeLeft--;
             Battle_Time++;
-            if (Battle_Time > 45) {
-                Battle_Stage = BATTLE_STAGE_READY;
-                Battle_Time = 0;
-                PLAY_SFX(SFX_3E_unkSnd, 0, 0x10);
-            }
-            break;
-        case BATTLE_STAGE_READY:
-            DisableInput();
-            gIsGamePaused = PAUSEMODE_FROZEN;
-            Battle_Time++;
-            Battle_PlayEnvSounds();
-            Battle_PrintTextBig(80.0f, 100.0f, Battle_Time / 23.333334f, 17, 5, Battle_MsgReady, 1);
-            if (Battle_Time == 40) {
-                Effect_TypeAG_Init(8.0f, 90.0f, 0x5FFF);
-            }
-            if (Battle_Time > 70) {
-                gIsGamePaused = PAUSEMODE_NOT_PAUSED;
-                Battle_Stage = BATTLE_STAGE_GO;
-                Battle_Time = 0;
-                D_8017683C = PLAY_SFX(SFX_40_unkSnd, 0, 0x10);
-                PlayBGM(gMultiplayerBGM);
-                EnableInput();
-            }
-            break;
-        case BATTLE_STAGE_GO:
-            Battle_Time++;
-            Battle_PlayEnvSounds();
-            Battle_PrintTextBig(110.0f, 100.0f, 1.0f, 19, 3, Battle_MsgGo, 1);
-            if (Battle_Time > 20) {
-                Battle_Stage = BATTLE_STAGE_GAME;
-                Battle_Time = 0;
-                StopSoundEffect(D_8017683C);
-            }
-            break;
-        case BATTLE_STAGE_GAME:
-            if (gIsMultiplayerPaused) {
-                Battle_TimeLeft--;
-                Battle_Time++;
-            }
-            Battle_DrawPortraits();
-            Battle_PlayEnvSounds();
-            func_8005444C();
-            switch (Battle_GameType) {
-                case BATTLE_TYPE_SURVIVAL:
-                    for (i = 0; i < 4; i++) {
-                        if (gPlayerActors[i].active == TRUE && gPlayerActors[i].exists == 0) {
-                            if (!Battle_PlayerIsOut[i]) {
-                                if (Battle_KnockOutPlayer(i) == 0) {
-                                    Battle_NoWinner = TRUE;
-                                    Battle_FirstRankCount = 99;
-                                    Battle_TimeLeft = 0;
-                                    break;
-                                } else {
-                                    Battle_PlayerIsOut[i]++;
-                                }
-                            } else {
-                                Battle_PrintPlayerRank(i);
-                            }
-                        }
-                    }
-                    Battle_PrintHurry();
-                    Battle_PrintCountdownTimer();
-                    if (!Battle_NoWinner) {
-                        Battle_FirstRankCount = Battle_UpdateRanking();
-                    }
-                    if (Battle_NoWinner == TRUE || Battle_FirstRankCount == 0 || Battle_TimeLeft <= 0) {
-                        Battle_Time = 0;
-                        if (Battle_FirstRankCount > 0) {
-                            Battle_NoWinner = TRUE;
-                        }
-                        if (!Battle_NoWinner) {
-                            Battle_Stage = BATTLE_STAGE_END_ACTIONS;
+        }
+        Battle_DrawPortraits();
+        Battle_PlayEnvSounds();
+        func_8005444C();
+        switch (Battle_GameType) {
+        case BATTLE_TYPE_SURVIVAL:
+            for (j = 0; j < 4; j++) {
+                if ((gPlayerActors[j].active == 1) && (gPlayerActors[j].exists == 0)) {
+                    if (!Battle_PlayerIsOut[j]) {
+                        if (Battle_KnockOutPlayer(j) == 0) {
+                            Battle_NoWinner = 1;
+                            Battle_FirstRankCount = 99;
+                            Battle_TimeLeft = 0;
+                            break;
                         } else {
-                            Battle_Stage = BATTLE_STAGE_SHOW_WINNER;
+                            Battle_PlayerIsOut[j]++;
                         }
+                    } else {
+                        Battle_PrintPlayerRank(j);
                     }
-                    break;
-                case BATTLE_TYPE_TIME_TRIAL:
-                    Battle_UpdateFallOffTimers();
-                    Battle_PlayEnvSounds();
-                    Battle_FirstRankCount = Battle_UpdateRanking();
-                    for (i = 0; i < 4; i++) {
-                        if (gPlayerActors[i].active != 0) {
-                            Battle_PrintPlayerTimer(i);
-                        }
-                    }
-                    Battle_PrintHurry();
-                    Battle_PrintCountdownTimer();
-                    if (Battle_TimeLeft <= 0) {
-                        if (Battle_FirstRankCount != 0) {
-                            // at least two players have same time
-                            Battle_Stage = BATTLE_STAGE_SUDDEN_DEATH;
-                            for (i = 0; i < 4; i++) {
-                                if (gPlayerActors[i].active) {
-                                    Battle_SurvivalPlayerRank[i] = Battle_PlayerRank[i] + 1;
-                                    if (Battle_PlayerRank[i] > 0) {
-                                        Battle_PlayerIsOut[i]++;
-                                    }
-                                    Battle_NumRanks = Battle_FirstRankCount + 1;
-                                }
-                            }
-                        } else {
-                            Battle_Stage = BATTLE_STAGE_END_ACTIONS;
-                        }
-                        Battle_Time = 0;
-                    }
-                    break;
-            }
-            break;
-        case BATTLE_STAGE_SUDDEN_DEATH:
-            if (!gIsMultiplayerPaused) {
-                Battle_Time++;
-            }
-            Battle_PlayEnvSounds();
-            for (i = 0; i < 4; i++) {
-                if (gPlayerActors[i].active) {
-                    Battle_DrawLightSpot(gPlayerActors[i].pos.x, -300.0f, gPlayerActors[i].pos.z,
-                                  gPlayerActors[i].pos.y, 200.0f, gSelectedCharacters[i]);
                 }
             }
-            func_8005444C();
-            Battle_PrintSuddenDeath(90.0f, 16.0f);
-            Battle_DrawPortraits();
-            func_80051F38();
-            for (i = 0; i < 4; i++) {
-                if (gPlayerActors[i].active && !Battle_PlayerIsOut[i] && gPlayerActors[i].pos.y < -10.0f) {
-                    if (Battle_KnockOutPlayer(i) == 0) {
-                        Battle_NoWinner = TRUE;
-                        Battle_FirstRankCount = 99;
-                        break;
-                    }
-                    Battle_PlayerIsOut[i]++;
-                }
-            }
+
+            Battle_PrintHurry();
+            Battle_PrintCountdownTimer();
             if (!Battle_NoWinner) {
                 Battle_FirstRankCount = Battle_UpdateRanking();
             }
-            if (Battle_FirstRankCount == 0 || Battle_NoWinner == TRUE) {
+            if (((Battle_NoWinner == 1) || (Battle_FirstRankCount == 0)) || (Battle_TimeLeft <= 0)) {
+                Battle_Time = 0;
+                if (Battle_FirstRankCount > 0) {
+                    Battle_NoWinner = 1;
+                }
                 if (!Battle_NoWinner) {
-                    D_800F0B64 = Battle_Stage;
+                    if (Battle_Stage) {}
                     Battle_Stage = BATTLE_STAGE_END_ACTIONS;
                 } else {
                     Battle_Stage = BATTLE_STAGE_SHOW_WINNER;
                 }
+            }
+            break;
+
+        case BATTLE_TYPE_TIME_TRIAL:
+            Battle_UpdateFallOffTimers();
+            Battle_PlayEnvSounds();
+            Battle_FirstRankCount = Battle_UpdateRanking();
+            for (j = 0; j < 4; j++) {
+                if (gPlayerActors[j].active != 0) {
+                    Battle_PrintPlayerTimer(j);
+                }
+            }
+
+            Battle_PrintHurry();
+            Battle_PrintCountdownTimer();
+            if (Battle_TimeLeft <= 0) {
+                if (Battle_FirstRankCount != 0) {
+                    Battle_Stage = BATTLE_STAGE_SUDDEN_DEATH;
+                    for (j = 0; j < 4; j++) {
+                        if (gPlayerActors[j].active) {
+                            Battle_SurvivalPlayerRank[j] = Battle_PlayerRank[j] + 1;
+                            if (Battle_PlayerRank[j] > 0) {
+                                Battle_PlayerIsOut[j] = 1;
+                            }
+                            Battle_NumRanks = Battle_FirstRankCount + 1;
+                        }
+                    }
+
+                } else {
+                    Battle_Stage = BATTLE_STAGE_END_ACTIONS;
+                }
                 Battle_Time = 0;
             }
             break;
-        case BATTLE_STAGE_END_ACTIONS:
-            gIsGamePaused = PAUSEMODE_NOT_PAUSED;
-            Battle_Stage = BATTLE_STAGE_SHOW_WINNER;
-            Battle_PlayEnvSounds();
-            Battle_DrawPortraits();
-            numAlive = 0;
-            for (i = 0; i < 4; i++) {
-                if (gPlayerActors[i].active) {
-                    if (gPlayerActors[i].exists && Battle_PlayerIsOut[i] != TRUE || D_800F0B64 != BATTLE_STAGE_INVALID) {
-                        numAlive++;
-                        if (gPlayerActors[i].canJump || gPlayerActors[i].playerHURTSTATE != 0 || gTongues[i].tongueMode != 0) {
-                            if (Battle_PlayerRank[i] != 0) {
-                                DisableInput();
-                            }
-                            Battle_Stage = BATTLE_STAGE_END_ACTIONS;
-                        }
-                    }
-                }
-            }
-            if (numAlive == 0) {
-                Battle_Stage = BATTLE_STAGE_SHOW_WINNER;
-                Battle_NoWinner = TRUE;
-                Battle_FirstRankCount = 99;
-            }
-            if (Battle_Stage == BATTLE_STAGE_SHOW_WINNER && numAlive != 0) {
-                Battle_LimitCountersInRanking();
-            }
-            break;
-        case BATTLE_STAGE_SHOW_WINNER:
-            if (Battle_Time++ < 16) {
-                gIsGamePaused = PAUSEMODE_NOT_PAUSED;
-                Battle_DrawPortraits();
-                DisableInput();
-                break;
-            }
-            gIsGamePaused = PAUSEMODE_FROZEN;
-            DisableInput();
-            Battle_DrawPortraits();
-            func_80051F38();
-            Battle_Time = 0;
-            func_80053DA8(Battle_FirstRankCount);
-            if (Battle_FirstRankCount > 0 || Battle_NoWinner == TRUE) {
-                for (i = 0; i < 4; i++) {
-                    Battle_PlayerRank[i] = 1;
-                }
-                func_8008BFE0(90);
-            } else if (Battle_FirstRankCount == 0 && !Battle_NoWinner) {
-                PlayBGM(BGM_BATTLEWIN);
-                for (i = 0; i < 4; i++) {
-                    if (gPlayerActors[i].active == TRUE && Battle_PlayerRank[i] == 0) {
-                        UnlockEyeChange();
-                        SetPlayerContextEyes(gSelectedCharacters[i], 1, 0);
-                        func_80053FA0(i);
-                        gPlayerActors[i].pos.y = 5000.0f;
-                        break;
-                    }
-                }
-            }
-            Battle_Time = 0;
-            Battle_Stage = BATTLE_STAGE_WAIT_BEFORE_EXIT;
-            break;
-        case BATTLE_STAGE_WAIT_BEFORE_EXIT:
-            DisableInput();
+
+        }
+
+        break;
+
+    case BATTLE_STAGE_SUDDEN_DEATH:
+        if (!gIsMultiplayerPaused) {
             Battle_Time++;
-            gIsGamePaused = PAUSEMODE_FROZEN;
-            Battle_PlayEnvSounds();
-            Battle_DrawPortraits();
-            func_80051F38();
-            if (Battle_GameType == BATTLE_TYPE_TIME_TRIAL) {
-                for (i = 0; i < 4; i++) {
-                    if (gPlayerActors[i].active) {
-                        Battle_DrawLightSpot(gPlayerActors[i].pos.x, -300.0f, gPlayerActors[i].pos.z,
-                                      gPlayerActors[i].pos.y, 200.0f, gSelectedCharacters[i]);
+        }
+        Battle_PlayEnvSounds();
+        for (j = 0; j < 4; j++) {
+            if (gPlayerActors[j].active) {
+                Battle_DrawLightSpot(gPlayerActors[j].pos.x, -300.0f, gPlayerActors[j].pos.z, gPlayerActors[j].pos.y, 200.0f, gSelectedCharacters[j]);
+            }
+        }
+
+        func_8005444C();
+        Battle_PrintSuddenDeath(90.0f, 16.0f);
+        Battle_DrawPortraits();
+        func_80051F38();
+        for (j = 0; j < 4; j++) {
+            if ((gPlayerActors[j].active && (!Battle_PlayerIsOut[j])) && (gPlayerActors[j].pos.y < (-10.0f))) {
+                if (Battle_KnockOutPlayer(j) == 0) {
+                    Battle_NoWinner = 1;
+                    Battle_FirstRankCount = 99;
+                    break;
+                }
+                Battle_PlayerIsOut[j]++;
+            }
+        }
+
+        if (!Battle_NoWinner) {
+            Battle_FirstRankCount = Battle_UpdateRanking();
+        }
+        if ((Battle_FirstRankCount == 0) || (Battle_NoWinner == 1)) {
+            var_v0 = BATTLE_STAGE_END_ACTIONS;
+            if (!Battle_NoWinner) {
+                D_800F0B64 = Battle_Stage;
+                Battle_Stage = var_v0;
+            } else {
+                Battle_Stage = BATTLE_STAGE_SHOW_WINNER;
+            }
+            Battle_Time = 0;
+        }
+        break;
+
+    case BATTLE_STAGE_END_ACTIONS:
+        gIsGamePaused = PAUSEMODE_NOT_PAUSED;
+        Battle_Stage = BATTLE_STAGE_SHOW_WINNER;
+        Battle_PlayEnvSounds();
+        Battle_DrawPortraits();
+        for (numAlive = 0, j = 0; j < 4; j++) {
+            if (gPlayerActors[j].active) {
+                if ((gPlayerActors[j].exists && (Battle_PlayerIsOut[j] != 1)) || (D_800F0B64 != BATTLE_STAGE_INVALID)) {
+                    numAlive++;
+                    if ((gPlayerActors[j].canJump || (gPlayerActors[j].playerHurtState != PLAYER_HURT_NONE)) || (gTongues[j].tongueMode != 0)) {
+                        var_v0 = BATTLE_STAGE_END_ACTIONS;
+                        if (Battle_PlayerRank[j] != 0) {
+                            DisableInput();
+                        }
+                        Battle_Stage = var_v0;
                     }
                 }
             }
-            if (Battle_Time > 120) {
-                StopBGM();
-                Battle_Stage = BATTLE_STAGE_EXIT;
-            }
-            break;
-        case BATTLE_STAGE_EXIT:
-            Battle_Time = 0;
-            Battle_Stage = BATTLE_STAGE_INIT;
+        }
+
+        if (numAlive == 0) {
+            Battle_Stage = BATTLE_STAGE_SHOW_WINNER;
+            do { Battle_NoWinner = 1; Battle_FirstRankCount = 99; if (Battle_NoWinner) { } } while (0);
+        }
+        if ((Battle_Stage == BATTLE_STAGE_SHOW_WINNER) && (numAlive != 0)) {
+            Battle_LimitCountersInRanking();
+        }
+        break;
+
+    case BATTLE_STAGE_SHOW_WINNER:
+        if ((Battle_Time++) < 16) {
             gIsGamePaused = PAUSEMODE_NOT_PAUSED;
-            D_800F0B54[0] = 0;
-            EnableInput();
-            SetProcessType(0x11);
+            Battle_DrawPortraits();
+            DisableInput();
             break;
-        default:
-            Battle_Stage = BATTLE_STAGE_INVALID;
-            Battle_Time = 0;
-            break;
+        }
+        gIsGamePaused = PAUSEMODE_FROZEN;
+        DisableInput();
+        Battle_DrawPortraits();
+        func_80051F38();
+        Battle_Time = 0;
+        func_80053DA8(Battle_FirstRankCount);
+        if ((Battle_FirstRankCount > 0) || (Battle_NoWinner == 1)) {
+            for (j = 0; j < 4; j++) {
+                Battle_PlayerRank[j] = 1;
+            }
+
+            func_8008BFE0(90);
+        } else if ((Battle_FirstRankCount == 0) && (!Battle_NoWinner)) {
+            PlayBGM(BGM_BATTLEWIN);
+            for (j = 0; j < 4; j++) {
+                if ((gPlayerActors[j].active == 1) && (Battle_PlayerRank[j] == 0)) {
+                    UnlockEyeChange();
+                    SetPlayerContextEyes(gSelectedCharacters[j], 1, 0);
+                    func_80053FA0(j);
+                    gPlayerActors[j].pos.y = 5000.0f;
+                    break;
+                }
+            }
+
+        }
+        Battle_Time = 0;
+        Battle_Stage = BATTLE_STAGE_WAIT_BEFORE_EXIT;
+        break;
+
+    case BATTLE_STAGE_WAIT_BEFORE_EXIT:
+        DisableInput();
+        Battle_Time++;
+        gIsGamePaused = PAUSEMODE_FROZEN;
+        Battle_PlayEnvSounds();
+        Battle_DrawPortraits();
+        func_80051F38();
+        if (Battle_GameType == BATTLE_TYPE_TIME_TRIAL) {
+            for (j = 0; j < 4; j++) {
+                if (gPlayerActors[j].active) {
+                    Battle_DrawLightSpot(gPlayerActors[j].pos.x, -300.0f, gPlayerActors[j].pos.z, gPlayerActors[j].pos.y, 200.0f, gSelectedCharacters[j]);
+                }
+            }
+
+        }
+        if (Battle_Time > 120) {
+            StopBGM();
+            Battle_Stage = BATTLE_STAGE_EXIT;
+        }
+        break;
+
+    case BATTLE_STAGE_EXIT:
+        Battle_Time = 0;
+        Battle_Stage = BATTLE_STAGE_INIT;
+        gIsGamePaused = PAUSEMODE_NOT_PAUSED;
+        D_800F0B54[0] = 0;
+        EnableInput();
+        SetProcessType(0x11);
+        break;
+
+    default:
+        Battle_Stage = BATTLE_STAGE_INVALID;
+        Battle_Time = 0;
+        break;
+
     }
+
 }
-#else
-#pragma GLOBAL_ASM("asm/nonmatchings/code/battle/Battle_Update.s")
-#endif
 
 void Process_Ranking(void) {
     switch (gGameModeState) {

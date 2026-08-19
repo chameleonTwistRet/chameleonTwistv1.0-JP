@@ -1,159 +1,16 @@
-#include "common.h"
-
-extern unsigned char Global_cabinet_ci4_PNG[];
-extern unsigned char Global_cabinet_ci4_PAL[];
-extern unsigned char Global_DCSandWallFadeUp_ci8_PNG[];
-extern unsigned char Global_DCSandWallFadeUp_ci8_PAL[];
-extern unsigned char Global_cabinetFade_ci8_PNG[];
-extern unsigned char Global_cabinetFade_ci8_PAL[];
-extern unsigned char Global_woodFade_ci8_PNG[];
-extern unsigned char Global_woodFade_ci8_PAL[];
-extern unsigned char Global_DCTiles_ci4_PNG[];
-extern unsigned char Global_DCTiles_ci4_PAL[];
-extern unsigned char Global_water_ci4_PNG[];
-extern unsigned char Global_water_ci4_PAL[];
-extern unsigned char Global_GCWood_ci4_PNG[];
-extern unsigned char Global_GCWood_ci4_PAL[];
-extern unsigned char Global_GCWall_ci4_PNG[];
-extern unsigned char Global_GCWall_ci4_PAL[];
-extern unsigned char Global_fogFade_ia8_PNG[];
-
-extern Gfx Global_fallbackCube_Gfx[];
-extern ModelCollision Global_fallbackCube_ColH;
-extern Gfx Global_exitShadowSouth_Gfx[];
-extern ModelCollision Global_exitShadowSouth_ColH;
-extern Gfx Global_exitShadowNorth_Gfx[];
-extern ModelCollision Global_exitShadowNorth_ColH;
-extern Gfx Global_exitShadowEast_Gfx[];
-extern ModelCollision Global_exitShadowEast_ColH;
-extern Gfx Global_exitShadowWest_Gfx[];
-extern ModelCollision Global_exitShadowWest_ColH;
-extern Gfx Global_ALBLExit_Gfx[];
-extern ModelCollision Global_ALBLExit_ColH;
-extern Gfx Global_sandPit_Gfx[];
-extern ModelCollision Global_sandPit_ColH;
-extern Gfx Global_BossBridge_Gfx[];
-extern ModelCollision Global_BossBridge_ColH;
-extern Gfx Global_ALPole_Gfx[];
-extern ModelCollision Global_ALPole_ColH;
-extern Gfx Global_ALBLDoor_Gfx[];
-extern ModelCollision Global_ALBLDoor_ColH;
-extern Gfx Global_ALSpinDoor_Gfx[];
-extern ModelCollision Global_ALSpinDoor_ColH;
-extern Gfx Global_BLLavaFloor_Gfx[];
-extern ModelCollision Global_BLLavaFloor_ColH;
-extern Gfx Global_BLLava_Gfx[];
-extern ModelCollision Global_BLLava_ColH;
-extern Gfx Global_BLLava2_Gfx[];
-extern ModelCollision Global_BLLava2_ColH;
-extern Gfx Global_BLLava3_Gfx[];
-extern ModelCollision Global_BLLava3_ColH;
-extern Gfx Global_BLLava4_Gfx[];
-extern ModelCollision Global_BLLava4_ColH;
-extern Gfx Global_BLLava5_Gfx[];
-extern ModelCollision Global_BLLava5_ColH;
-extern Gfx Global_BLLava6_Gfx[];
-extern ModelCollision Global_BLLava6_ColH;
-extern Gfx Global_BLLava7_Gfx[];
-extern ModelCollision Global_BLLava7_ColH;
-extern Gfx Global_BLLava8_Gfx[];
-extern ModelCollision Global_BLLava8_ColH;
-extern Gfx Global_BLDestructableTop_Gfx[];
-extern ModelCollision Global_BLDestructableTop_ColH;
-extern Gfx Global_BLMetalBridge_Gfx[];
-extern ModelCollision Global_BLMetalBridge_ColH;
-extern Gfx Global_KLExit_Gfx[];
-extern ModelCollision Global_KLExit_ColH;
-extern Gfx Global_KLDoor_Gfx[];
-extern ModelCollision Global_KLDoor_ColH;
-extern Gfx Global_DCExit_Gfx[];
-extern ModelCollision Global_DCExit_ColH;
-extern Gfx Global_TallExitShadow1_Gfx[];
-extern ModelCollision Global_TallExitShadow1_ColH;
-extern Gfx Global_TallExitShadow2_Gfx[];
-extern ModelCollision Global_TallExitShadow2_ColH;
-extern Gfx Global_GCExit1_Gfx[];
-extern ModelCollision Global_GCExit1_ColH;
-extern Gfx Global_GCExit2_Gfx[];
-extern ModelCollision Global_GCExit2_ColH;
-extern Gfx Global_trainingRoomLight_Gfx[];
-extern ModelCollision Global_trainingRoomLight_ColH;
-extern Gfx Global_JLCaveExit1_Gfx[];
-extern ModelCollision Global_JLCaveExit1_ColH;
-extern Gfx Global_JLCaveExit2_Gfx[];
-extern ModelCollision Global_JLCaveExit2_ColH;
-extern Gfx Global_JLCaveExit3_Gfx[];
-extern ModelCollision Global_JLCaveExit3_ColH;
-extern Gfx Global_JLCaveExit4_Gfx[];
-extern ModelCollision Global_JLCaveExit4_ColH;
-extern Gfx Global_JLOutsideEntrance_Gfx[];
-extern ModelCollision Global_JLOutsideEntrance_ColH;
-extern Gfx Global_JLFxCamPillar_Gfx[];
-extern ModelCollision Global_JLFxCamPillar_ColH;
-extern Gfx Global_JLCaveDoor_Gfx[];
-extern ModelCollision Global_JLCaveDoor_ColH;
-extern Gfx PileOfBooks_model1_Gfx[];
-extern ModelCollision PileOfBooks_unkCol1_ColH;
-extern Gfx PileOfBooks_model2_Gfx[];
-extern ModelCollision PileOfBooks_unkCol2_ColH;
-extern Gfx PileOfBooks_model3_Gfx[];
-extern ModelCollision PileOfBooks_unkCol3_ColH;
-extern Gfx PileOfBooks_model4_Gfx[];
-extern ModelCollision PileOfBooks_unkCol4_ColH;
-extern Gfx PileOfBooks_model5_Gfx[];
-extern ModelCollision PileOfBooks_unkCol5_ColH;
-extern Gfx PileOfBooks_model6_Gfx[];
-extern ModelCollision PileOfBooks_unkCol6_ColH;
-extern Gfx Global_pole_Gfx[];
-extern ModelCollision Global_pole_ColH;
+#include "PileOfBooks.h"
 
 Mtx PileOfBooks_IMtx1 = IDENTITY;
 
-StageModel PileOfBooks_stageModels[44] = {
-{&Global_fallbackCube_Gfx[0], &Global_fallbackCube_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_exitShadowSouth_Gfx[0], &Global_exitShadowSouth_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_exitShadowNorth_Gfx[0], &Global_exitShadowNorth_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_exitShadowEast_Gfx[0], &Global_exitShadowEast_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_exitShadowWest_Gfx[0], &Global_exitShadowWest_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_ALBLExit_Gfx[0], &Global_ALBLExit_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_sandPit_Gfx[0], &Global_sandPit_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_BossBridge_Gfx[0], &Global_BossBridge_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_ALPole_Gfx[0], &Global_ALPole_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_ALBLDoor_Gfx[0], &Global_ALBLDoor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_ALSpinDoor_Gfx[0], &Global_ALSpinDoor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_BLLavaFloor_Gfx[0], &Global_BLLavaFloor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_BLLava_Gfx[0], &Global_BLLava_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_BLLava2_Gfx[0], &Global_BLLava2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_BLLava3_Gfx[0], &Global_BLLava3_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_BLLava4_Gfx[0], &Global_BLLava4_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_BLLava5_Gfx[0], &Global_BLLava5_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_BLLava6_Gfx[0], &Global_BLLava6_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_BLLava7_Gfx[0], &Global_BLLava7_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_BLLava8_Gfx[0], &Global_BLLava8_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_BLDestructableTop_Gfx[0], &Global_BLDestructableTop_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_BLMetalBridge_Gfx[0], &Global_BLMetalBridge_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_KLExit_Gfx[0], &Global_KLExit_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_KLDoor_Gfx[0], &Global_KLDoor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_DCExit_Gfx[0], &Global_DCExit_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_TallExitShadow1_Gfx[0], &Global_TallExitShadow1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_TallExitShadow2_Gfx[0], &Global_TallExitShadow2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_GCExit1_Gfx[0], &Global_GCExit1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_GCExit2_Gfx[0], &Global_GCExit2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_trainingRoomLight_Gfx[0], &Global_trainingRoomLight_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_JLCaveExit1_Gfx[0], &Global_JLCaveExit1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_JLCaveExit2_Gfx[0], &Global_JLCaveExit2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_JLCaveExit3_Gfx[0], &Global_JLCaveExit3_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_JLCaveExit4_Gfx[0], &Global_JLCaveExit4_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_JLOutsideEntrance_Gfx[0], &Global_JLOutsideEntrance_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_JLFxCamPillar_Gfx[0], &Global_JLFxCamPillar_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_JLCaveDoor_Gfx[0], &Global_JLCaveDoor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&PileOfBooks_model1_Gfx[0], &PileOfBooks_unkCol1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&PileOfBooks_model2_Gfx[0], &PileOfBooks_unkCol2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&PileOfBooks_model3_Gfx[0], &PileOfBooks_unkCol3_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&PileOfBooks_model4_Gfx[0], &PileOfBooks_unkCol4_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&PileOfBooks_model5_Gfx[0], &PileOfBooks_unkCol5_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&PileOfBooks_model6_Gfx[0], &PileOfBooks_unkCol6_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_pole_Gfx[0], &Global_pole_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+StageModel PileOfBooks_stageModels[] = {
+#include "global_models.inc.c"
+{PileOfBooks_model1_Gfx, &PileOfBooks_unkCol1_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{PileOfBooks_model2_Gfx, &PileOfBooks_unkCol2_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{PileOfBooks_model3_Gfx, &PileOfBooks_unkCol3_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{PileOfBooks_model4_Gfx, &PileOfBooks_unkCol4_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{PileOfBooks_model5_Gfx, &PileOfBooks_unkCol5_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{PileOfBooks_model6_Gfx, &PileOfBooks_unkCol6_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_pole_Gfx, &Global_pole_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
 };
 
 unsigned char PileOfBooks_rabObjects_Bin[] = {
@@ -287,19 +144,17 @@ RoomInstance PileOfBooks_ext_room_instances[] = {
 };
 
 LevelScope PileOfBooks_scope_Lvlscope = {
-    0,
-    0,
-    0,
+    {0.0f, 0.0f, 0.0f},
     255,
     10000,
     60,
 };
 
-StageData PileOfBooks_header_Lvlhdr = {
+StageData PileOfBooks_stageData = {
     &PileOfBooks_map_data,
-    0,
-    &PileOfBooks_stageModels[0],
-    44,
+    NO_EXT_ROOMS,
+    PileOfBooks_stageModels,
+    ARRAY_COUNT(PileOfBooks_stageModels),
     0,
     PileOfBooks_rabObjects_Bin,
     131072,
@@ -366,100 +221,100 @@ Gfx PileOfBooks_model6_Gfx[] = {
     #include "assets/levelGroup/PileOfBooks/model6/model6.gfx.inc.c"
 };
 
-Vec3f PileOfBooks_unkCol1_ColV[] = {
-    #include "assets/levelGroup/PileOfBooks/unkCol1/unkCol1.colV.inc.c"
+Vec3f PileOfBooks_unkCol1_ColVerts[] = {
+    #include "assets/levelGroup/PileOfBooks/unkCol1/unkCol1.colVerts.inc.c"
 };
 
-Vec3w PileOfBooks_unkCol1_ColT[] = {
-    #include "assets/levelGroup/PileOfBooks/unkCol1/unkCol1.colT.inc.c"
+Vec3w PileOfBooks_unkCol1_ColTris[] = {
+    #include "assets/levelGroup/PileOfBooks/unkCol1/unkCol1.colTris.inc.c"
 };
 
-Rect3D PileOfBooks_unkCol1_ColS = {
-    #include "assets/levelGroup/PileOfBooks/unkCol1/unkCol1.colS.inc.c"
+Rect3D PileOfBooks_unkCol1_BoundBox = {
+    #include "assets/levelGroup/PileOfBooks/unkCol1/unkCol1.boundBox.inc.c"
 };
 
-ModelCollision PileOfBooks_unkCol1_ColH = {
-36, 44, PileOfBooks_unkCol1_ColV, PileOfBooks_unkCol1_ColT, &PileOfBooks_unkCol1_ColS
+ModelCollision PileOfBooks_unkCol1_collision = {
+    ARRAY_COUNT(PileOfBooks_unkCol1_ColVerts), ARRAY_COUNT(PileOfBooks_unkCol1_ColTris), PileOfBooks_unkCol1_ColVerts, PileOfBooks_unkCol1_ColTris, &PileOfBooks_unkCol1_BoundBox
 };
 
-Vec3f PileOfBooks_unkCol2_ColV[] = {
-    #include "assets/levelGroup/PileOfBooks/unkCol2/unkCol2.colV.inc.c"
+Vec3f PileOfBooks_unkCol2_ColVerts[] = {
+    #include "assets/levelGroup/PileOfBooks/unkCol2/unkCol2.colVerts.inc.c"
 };
 
-Vec3w PileOfBooks_unkCol2_ColT[] = {
-    #include "assets/levelGroup/PileOfBooks/unkCol2/unkCol2.colT.inc.c"
+Vec3w PileOfBooks_unkCol2_ColTris[] = {
+    #include "assets/levelGroup/PileOfBooks/unkCol2/unkCol2.colTris.inc.c"
 };
 
-Rect3D PileOfBooks_unkCol2_ColS = {
-    #include "assets/levelGroup/PileOfBooks/unkCol2/unkCol2.colS.inc.c"
+Rect3D PileOfBooks_unkCol2_BoundBox = {
+    #include "assets/levelGroup/PileOfBooks/unkCol2/unkCol2.boundBox.inc.c"
 };
 
-ModelCollision PileOfBooks_unkCol2_ColH = {
-8, 10, PileOfBooks_unkCol2_ColV, PileOfBooks_unkCol2_ColT, &PileOfBooks_unkCol2_ColS
+ModelCollision PileOfBooks_unkCol2_collision = {
+    ARRAY_COUNT(PileOfBooks_unkCol2_ColVerts), ARRAY_COUNT(PileOfBooks_unkCol2_ColTris), PileOfBooks_unkCol2_ColVerts, PileOfBooks_unkCol2_ColTris, &PileOfBooks_unkCol2_BoundBox
 };
 
-Vec3f PileOfBooks_unkCol3_ColV[] = {
-    #include "assets/levelGroup/PileOfBooks/unkCol3/unkCol3.colV.inc.c"
+Vec3f PileOfBooks_unkCol3_ColVerts[] = {
+    #include "assets/levelGroup/PileOfBooks/unkCol3/unkCol3.colVerts.inc.c"
 };
 
-Vec3w PileOfBooks_unkCol3_ColT[] = {
-    #include "assets/levelGroup/PileOfBooks/unkCol3/unkCol3.colT.inc.c"
+Vec3w PileOfBooks_unkCol3_ColTris[] = {
+    #include "assets/levelGroup/PileOfBooks/unkCol3/unkCol3.colTris.inc.c"
 };
 
-Rect3D PileOfBooks_unkCol3_ColS = {
-    #include "assets/levelGroup/PileOfBooks/unkCol3/unkCol3.colS.inc.c"
+Rect3D PileOfBooks_unkCol3_BoundBox = {
+    #include "assets/levelGroup/PileOfBooks/unkCol3/unkCol3.boundBox.inc.c"
 };
 
-ModelCollision PileOfBooks_unkCol3_ColH = {
-64, 100, PileOfBooks_unkCol3_ColV, PileOfBooks_unkCol3_ColT, &PileOfBooks_unkCol3_ColS
+ModelCollision PileOfBooks_unkCol3_collision = {
+    ARRAY_COUNT(PileOfBooks_unkCol3_ColVerts), ARRAY_COUNT(PileOfBooks_unkCol3_ColTris), PileOfBooks_unkCol3_ColVerts, PileOfBooks_unkCol3_ColTris, &PileOfBooks_unkCol3_BoundBox
 };
 
-Vec3f PileOfBooks_unkCol4_ColV[] = {
-    #include "assets/levelGroup/PileOfBooks/unkCol4/unkCol4.colV.inc.c"
+Vec3f PileOfBooks_unkCol4_ColVerts[] = {
+    #include "assets/levelGroup/PileOfBooks/unkCol4/unkCol4.colVerts.inc.c"
 };
 
-Vec3w PileOfBooks_unkCol4_ColT[] = {
-    #include "assets/levelGroup/PileOfBooks/unkCol4/unkCol4.colT.inc.c"
+Vec3w PileOfBooks_unkCol4_ColTris[] = {
+    #include "assets/levelGroup/PileOfBooks/unkCol4/unkCol4.colTris.inc.c"
 };
 
-Rect3D PileOfBooks_unkCol4_ColS = {
-    #include "assets/levelGroup/PileOfBooks/unkCol4/unkCol4.colS.inc.c"
+Rect3D PileOfBooks_unkCol4_BoundBox = {
+    #include "assets/levelGroup/PileOfBooks/unkCol4/unkCol4.boundBox.inc.c"
 };
 
-ModelCollision PileOfBooks_unkCol4_ColH = {
-24, 28, PileOfBooks_unkCol4_ColV, PileOfBooks_unkCol4_ColT, &PileOfBooks_unkCol4_ColS
+ModelCollision PileOfBooks_unkCol4_collision = {
+    ARRAY_COUNT(PileOfBooks_unkCol4_ColVerts), ARRAY_COUNT(PileOfBooks_unkCol4_ColTris), PileOfBooks_unkCol4_ColVerts, PileOfBooks_unkCol4_ColTris, &PileOfBooks_unkCol4_BoundBox
 };
 
-Vec3f PileOfBooks_unkCol5_ColV[] = {
-    #include "assets/levelGroup/PileOfBooks/unkCol5/unkCol5.colV.inc.c"
+Vec3f PileOfBooks_unkCol5_ColVerts[] = {
+    #include "assets/levelGroup/PileOfBooks/unkCol5/unkCol5.colVerts.inc.c"
 };
 
-Vec3w PileOfBooks_unkCol5_ColT[] = {
-    #include "assets/levelGroup/PileOfBooks/unkCol5/unkCol5.colT.inc.c"
+Vec3w PileOfBooks_unkCol5_ColTris[] = {
+    #include "assets/levelGroup/PileOfBooks/unkCol5/unkCol5.colTris.inc.c"
 };
 
-Rect3D PileOfBooks_unkCol5_ColS = {
-    #include "assets/levelGroup/PileOfBooks/unkCol5/unkCol5.colS.inc.c"
+Rect3D PileOfBooks_unkCol5_BoundBox = {
+    #include "assets/levelGroup/PileOfBooks/unkCol5/unkCol5.boundBox.inc.c"
 };
 
-ModelCollision PileOfBooks_unkCol5_ColH = {
-12, 14, PileOfBooks_unkCol5_ColV, PileOfBooks_unkCol5_ColT, &PileOfBooks_unkCol5_ColS
+ModelCollision PileOfBooks_unkCol5_collision = {
+    ARRAY_COUNT(PileOfBooks_unkCol5_ColVerts), ARRAY_COUNT(PileOfBooks_unkCol5_ColTris), PileOfBooks_unkCol5_ColVerts, PileOfBooks_unkCol5_ColTris, &PileOfBooks_unkCol5_BoundBox
 };
 
-Vec3f PileOfBooks_unkCol6_ColV[] = {
-    #include "assets/levelGroup/PileOfBooks/unkCol6/unkCol6.colV.inc.c"
+Vec3f PileOfBooks_unkCol6_ColVerts[] = {
+    #include "assets/levelGroup/PileOfBooks/unkCol6/unkCol6.colVerts.inc.c"
 };
 
-Vec3w PileOfBooks_unkCol6_ColT[] = {
-    #include "assets/levelGroup/PileOfBooks/unkCol6/unkCol6.colT.inc.c"
+Vec3w PileOfBooks_unkCol6_ColTris[] = {
+    #include "assets/levelGroup/PileOfBooks/unkCol6/unkCol6.colTris.inc.c"
 };
 
-Rect3D PileOfBooks_unkCol6_ColS = {
-    #include "assets/levelGroup/PileOfBooks/unkCol6/unkCol6.colS.inc.c"
+Rect3D PileOfBooks_unkCol6_BoundBox = {
+    #include "assets/levelGroup/PileOfBooks/unkCol6/unkCol6.boundBox.inc.c"
 };
 
-ModelCollision PileOfBooks_unkCol6_ColH = {
-12, 14, PileOfBooks_unkCol6_ColV, PileOfBooks_unkCol6_ColT, &PileOfBooks_unkCol6_ColS
+ModelCollision PileOfBooks_unkCol6_collision = {
+    ARRAY_COUNT(PileOfBooks_unkCol6_ColVerts), ARRAY_COUNT(PileOfBooks_unkCol6_ColTris), PileOfBooks_unkCol6_ColVerts, PileOfBooks_unkCol6_ColTris, &PileOfBooks_unkCol6_BoundBox
 };
 Mtx PileOfBooks_IMtx9 = IDENTITY;
 
@@ -742,7 +597,7 @@ Mtx PileOfBooks_unk1_Animarr[90][15] = {
 };
 
 AnimPointer PileOfBooks_unk1Pointers_Animp[1] = {
-{&PileOfBooks_unk1Header_Animh.frames, &PileOfBooks_unk1Header_Animh.objects, &PileOfBooks_unk1_Animarr[0][0]}
+{&PileOfBooks_unk1Header_Animh.frames, &PileOfBooks_unk1Header_Animh.objects, PileOfBooks_unk1_Animarr[0]}
 };
 
 Anim PileOfBooks_unk2Header_Animh = {
@@ -754,7 +609,7 @@ Mtx PileOfBooks_unk2_Animarr[100][15] = {
 };
 
 AnimPointer PileOfBooks_unk2Pointers_Animp[1] = {
-{&PileOfBooks_unk2Header_Animh.frames, &PileOfBooks_unk2Header_Animh.objects, &PileOfBooks_unk2_Animarr[0][0]}
+{&PileOfBooks_unk2Header_Animh.frames, &PileOfBooks_unk2Header_Animh.objects, PileOfBooks_unk2_Animarr[0]}
 };
 
 Anim PileOfBooks_unk3Header_Animh = {
@@ -766,7 +621,7 @@ Mtx PileOfBooks_unk3_Animarr[12][15] = {
 };
 
 AnimPointer PileOfBooks_unk3Pointers_Animp[1] = {
-{&PileOfBooks_unk3Header_Animh.frames, &PileOfBooks_unk3Header_Animh.objects, &PileOfBooks_unk3_Animarr[0][0]}
+{&PileOfBooks_unk3Header_Animh.frames, &PileOfBooks_unk3Header_Animh.objects, PileOfBooks_unk3_Animarr[0]}
 };
 
 Anim PileOfBooks_unk4Header_Animh = {
@@ -778,7 +633,7 @@ Mtx PileOfBooks_unk4_Animarr[40][15] = {
 };
 
 AnimPointer PileOfBooks_unk4Pointers_Animp[1] = {
-{&PileOfBooks_unk4Header_Animh.frames, &PileOfBooks_unk4Header_Animh.objects, &PileOfBooks_unk4_Animarr[0][0]}
+{&PileOfBooks_unk4Header_Animh.frames, &PileOfBooks_unk4Header_Animh.objects, PileOfBooks_unk4_Animarr[0]}
 };
 
 Anim PileOfBooks_unk5Header_Animh = {
@@ -790,5 +645,5 @@ Mtx PileOfBooks_unk5_Animarr[10][2] = {
 };
 
 AnimPointer PileOfBooks_unk5Pointers_Animp[1] = {
-{&PileOfBooks_unk5Header_Animh.frames, &PileOfBooks_unk5Header_Animh.objects, &PileOfBooks_unk5_Animarr[0][0]}
+{&PileOfBooks_unk5Header_Animh.frames, &PileOfBooks_unk5Header_Animh.objects, PileOfBooks_unk5_Animarr[0]}
 };

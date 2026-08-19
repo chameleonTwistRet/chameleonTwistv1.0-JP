@@ -33,32 +33,32 @@ f32 CalcAngleBetween2DPoints(f32, f32, f32, f32);
 f32 ReflectAngleToUpperQuadrants(f32);
 s32 IsAngleWithinTolerance(f32, f32, f32);
 s32 AreAnglesWithin180Degrees(f32, f32);
-s32 func_8002D328(f32, f32);
-s32 func_8002D36C(f32*, f32, f32);
-void func_8002D434(f32*, f32*, f32, f32, f32);
-void func_8002D550(f32*, f32*, f32, f32, f32);
+s32 IsAngleWithin90Degrees(f32, f32);
+s32 RotateAngleTowards(f32*, f32, f32);
+void RotatePointAroundPivot(f32*, f32*, f32, f32, f32);
+void PushPointOutOfCircle(f32*, f32*, f32, f32, f32);
 void Actors_Init(s32, s32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, s32, s32, s32, s32);
 s32 Actor_Init(s32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, s32, s32, s32, s32);
 s32 Actor_SpawnAt(s32, f32, f32, f32);
 void printNumber(f32, f32, f32, f32, f32, s32, s32);
 void func_8002E0CC(void);
 void func_8002F3D4(void);
-void func_8002F528(s32);
-void func_8002F54C(f32, PlayerActor*, s32);
+void StartPlayerInvulnFlicker(s32);
+void LaunchPlayerVertically(f32, PlayerActor*, s32);
 void func_8002F568(void);
-f32 func_8002F5C4(s32, s32, s32, s32);
+f32 CalcSquishReboundCurve(s32, s32, s32, s32);
 s32 func_8002F6DC(f32*, f32);
 void SetPlayerImpulse(void);
-void func_8002F884(s32, s32);
-void func_8002F960(Tongue*);
+void TriggerPlayerRumble(s32, s32);
+void TongueHitWall(Tongue*);
 void ClearPlayerPowerups(PlayerActor*);
 
-s32 func_80030DCC(f32, f32, s32);
-void func_800311C8(Actor*);
+s32 func_80030DCC(f32, f32, f32);
+void DespawnButterflyGroup(Actor*);
 void func_800312B0(s32);
-void func_800312FC(Actor*, f32);
+void QueenAnt_HitRecoil(Actor*, f32);
 void func_800313BC(s32, f32); //actor kill
-void func_80031518(Actor*);
+void TriggerRoomClearReaction(Actor*);
 void func_80031DB0(PlayerActor*, Tongue*, s32);
 s32 IsActiveExplosion(Actor*);
 void func_800382F4(Actor*);
@@ -226,7 +226,7 @@ s32 Free(void*);
 void func_80056F48(s32, Tongue*, PlayerActor*, Camera*);
 void func_80058748(f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, s32);
 s32 LoadSprite(s32); // uses "SPRITE_" #defines
-s32 func_8009603C(s32, s32);
+s32 Segment_Load(s32, s32);
 void PrintReset(void);
 void FreeSprite(s32);
 void func_8005AFA4(f32, f32, f32, f32);
@@ -250,7 +250,12 @@ void func_800612FC(void);
 void SetTextGradient(u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8);
 void func_80061394(void);
 void Effect_Init(void);
+ModelCollision* RegistModel(ModelCollision*);
+void func_80048284(Actor*);
+void func_800CB294(Vec3f, s32);
+void func_800CBE74(Actor*);
 void Effect_TypeA_Init(f32, f32, f32, s32, s32);
+void Effect_TypeY_Init(f32, f32, f32, f32, f32, f32, f32);
 void func_8006202C(void);
 void func_800629C4(void);
 void func_800629D4(void);
@@ -310,7 +315,7 @@ void func_8002D080(void);
 s32 SaveData_RecordChecksum(void);
 void Porocess_Mode0(void);
 void SaveData_ClearRecords(void);
-void SaveData_LoadRecords(u8*);
+void SaveData_LoadRecords(SaveRecord* arg0);
 void Process_StageSelect(void);
 void FileWork(void);
 void func_8009C904(void);
@@ -331,8 +336,8 @@ void func_800557F8(void);
 void Process_Boot(void);
 void Process_SunsoftLogo(void);
 void DummiedPrintf(char*, ...);
-void PrintTextWrapper(f32, f32, f32, f32, char*, s32);
-s32 PrintText(f32, f32, f32, f32, f32, f32, char*, s32);
+void PrintTextWrapper(f32, f32, f32, f32, const char*, s32);
+s32 PrintText(f32, f32, f32, f32, f32, f32, const char*, s32);
 void func_80080F38(f32, f32, f32, f32, f32, f32, u8, u8, u8, s32);
 s32 func_800836FC(f32, f32, s32, s32);
 void func_80083F08(void);
@@ -402,14 +407,14 @@ void InitField(void);
 void func_800C56D4(PlayerActor*);
 s32 Random(s32, s32);
 f32 RandomF(void);
-f32 CalculateAngleOfVector(f32, f32);
-f32 InterpolateAndClampArcSin(f32);
+f32 ArcTan2Deg(f32, f32);
+f32 AsinDeg(f32);
 f32 AngleFromArcSin(f32);
 s32 IsPointInRect(Vec3f, Rect3D*);
 void AdjustRectToVec3(Rect3D* r, Vec3f vec);
 Vec3f* Vec3f_Lerp(Vec3f*, Vec3f, Vec3f, f32);
 void func_800C8F00(void);
-void func_800C9504(Collider*);
+void func_800C9504(FieldObject*);
 void CalcEnemyNextPosition(Actor*);
 s32 func_800CF080(s32, f32);
 void func_800CFDB8(PlayerActor*);
@@ -417,12 +422,12 @@ void func_800CFF64(PlayerActor*);
 
 void func_800D0708(PlayerActor*, Tongue*); //PLAYER PROCESS
 void DummiedPrintf3(char*, ...);
-void func_800D75B4(Poly*, s32);
-void OnlyCheckPolyInfoLevel(Poly*, s32, char*);
-void func_800D79E4(Poly*, s32);
+void Poly_BuildInfoLevel(Poly*, s32);
+void Poly_AssertInfoLevel(Poly*, s32, char*);
+void Poly_EnsureInfoLevel (Poly*, s32);
 void Vec3f_Zero(Vec3f*);
 f32 Vec3f_Normalize(Vec3f*);
-void func_800D87A4(Collider* arg0, s32 arg1); 
+void PlaySfxPositionalOnFlag(FieldObject* arg0, s32 arg1); 
 void func_800D99D0(s32*, s32, void*, s32, s32*, s32);
 void func_800D9B20(s32*);
 //void func_800DA510(s32*, s32, s32, s32, s32, s32, s32*);
@@ -491,7 +496,7 @@ void DemoGfx_DrawFrame(Gfx* arg0, GraphicStruct* arg1, s32 fbIndex);
 void DemoGfx_SwapFB(s32 fbIndex);
 void Video_SetTask(GraphicStruct* arg0, Gfx* arg1, s32 arg2);
 //298D0.c
-void func_8004E784(ContMain* arg0, s32 arg1, s32* arg2, ContMain* arg3);
+void Controller_UpdateAll(ContMain* arg0, s32 arg1, s32* arg2, ContMain* arg3);
 //8ADD0.c
 void func_800B4408(u8*, s16*);
 //84e0.c
@@ -525,47 +530,47 @@ void Battle_Init(void);
 void func_8002CE54(void);
 
 //RoomObject funcs
-void func_800B09C0(Collider* arg0, RoomObject* arg1);
-void RegistShutter(Collider* arg0, RoomObject* arg1);
-void func_800B118C(Collider* arg0); //assumed
-void func_800B0B20(Collider* arg0, RoomObject* arg1); //assumed
-void func_800B088C(Collider* arg0, RoomObject* arg1);
-void func_800B08C8(Collider* arg0);
-void func_800B09E8(Collider* arg0, RoomObject* arg1);
-void func_800D91D8(Collider* arg0);
-void func_800D90B8(Collider* arg0);
-void func_800AFB2C(Collider* arg0, RoomObject* arg1);
-void func_800B06B0(Collider* arg0);
-void func_800D8D58(Collider* arg0);
-void func_800D8DBC(Collider* arg0);
-void func_800D8DE0(Collider* arg0);
-void func_800B0A30(Collider* arg0, RoomObject* arg1);
-void func_800D8E04(Collider* arg0);
-void func_800D8E28(Collider* arg0);
-void func_800B0AA4(Collider* collider);
-void func_800B1DA0(Collider* arg0, s32 arg1);
-void func_800B12B4(Collider* arg0, RoomObject* arg1); // assumed
-void func_800B1538(Collider* arg0, RoomObject* arg1); // assumed
-void func_800D90E0(Collider* arg0);
-void func_800AF9D0(Collider* arg0, RoomObject* arg1);
+void func_800B09C0(FieldObject* arg0, RoomObject* arg1);
+void RegistShutter(FieldObject* arg0, RoomObject* arg1);
+void func_800B118C(FieldObject* arg0); //assumed
+void func_800B0B20(FieldObject* arg0, RoomObject* arg1); //assumed
+void func_800B088C(FieldObject* arg0, RoomObject* arg1);
+void func_800B08C8(FieldObject* arg0);
+void func_800B09E8(FieldObject* arg0, RoomObject* arg1);
+void func_800D91D8(FieldObject* arg0);
+void func_800D90B8(FieldObject* arg0);
+void func_800AFB2C(FieldObject* arg0, RoomObject* arg1);
+void func_800B06B0(FieldObject* arg0);
+void func_800D8D58(FieldObject* arg0);
+void func_800D8DBC(FieldObject* arg0);
+void func_800D8DE0(FieldObject* arg0);
+void func_800B0A30(FieldObject* arg0, RoomObject* arg1);
+void func_800D8E04(FieldObject* arg0);
+void func_800D8E28(FieldObject* arg0);
+void func_800B0AA4(FieldObject* fieldObject);
+void func_800B1DA0(FieldObject* arg0, s32 arg1);
+void func_800B12B4(FieldObject* arg0, RoomObject* arg1); // assumed
+void func_800B1538(FieldObject* arg0, RoomObject* arg1); // assumed
+void func_800D90E0(FieldObject* arg0);
+void func_800AF9D0(FieldObject* arg0, RoomObject* arg1);
 void MoveTheater(Camera* arg0); // might be wrong
 
-void func_800D8F3C(Collider* arg0);
-void func_800D8F9C(Collider* arg0);
-void func_800D8FFC(Collider* arg0);
-void func_800D9058(Collider* arg0);
-void func_800D8E70(Collider* arg0);
-void func_800D8ED4(Collider* arg0);
+void func_800D8F3C(FieldObject* arg0);
+void func_800D8F9C(FieldObject* arg0);
+void func_800D8FFC(FieldObject* arg0);
+void func_800D9058(FieldObject* arg0);
+void func_800D8E70(FieldObject* arg0);
+void func_800D8ED4(FieldObject* arg0);
 
 
 void func_800B21CC(s32 arg0, s32 arg1);
-void func_800D9128(Collider* arg0);
+void func_800D9128(FieldObject* arg0);
 void func_800B2070(s32 arg0);
-void func_800D9104(Collider* arg0);
-void func_800D9190(Collider* arg0);
-void func_800D914C(Collider* arg0);
-void func_800B2144(Collider* arg0, unkStruct14* arg1);
-void func_800B216C(Collider* arg0);
-void func_800D91B4(Collider* arg0);
+void func_800D9104(FieldObject* arg0);
+void func_800D9190(FieldObject* arg0);
+void func_800D914C(FieldObject* arg0);
+void func_800B2144(FieldObject* arg0, unkStruct14* arg1);
+void func_800B216C(FieldObject* arg0);
+void func_800D91B4(FieldObject* arg0);
 
 #endif

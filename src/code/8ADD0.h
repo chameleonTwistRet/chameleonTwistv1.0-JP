@@ -18,6 +18,22 @@ typedef struct unk8020D908 {
     char unk_04[0x54];
 } unk8020D908;
 
+// Behaviour 0xD keyframe record. RoomObject::keyframes points at an array of these
+// (RoomObject::numKeyframes entries); FieldObject::unk_AC/unk_B0 carry them to the MOVE hook.
+typedef struct UnkType3 {
+    /* 0x00 */ s32* unk_00;                         /* array of model ids, unk_04 long */
+    /* 0x04 */ s32 unk_04;
+    /* 0x08 */ s32 unk_08;                          /* gFrameCounter divisor */
+    /* 0x0C */ s32 unk_0C;
+    /* 0x10 */ s32 unk_10;
+    /* 0x14 */ s32 unk_14;
+} UnkType3;                                         /* size = 0x18 */
+
+// gSwitchAreas entries: Door-shaped but 0x48 bytes (Door itself is 0x4C).
+typedef struct SwitchArea {
+    char pad0[0x48];
+} SwitchArea;                                       /* size = 0x48 */
+
 typedef struct unkStruct20 {
     char unk_00[0x25];
     s8 unk25;
@@ -28,73 +44,75 @@ typedef struct unkStruct20 {
 
 
 /* Functions */
-void func_800B6054(Collider*, RoomObject*);
-void func_800B6078(Collider*);
-void func_800B6098(Collider*, RoomObject*);
-void func_800B61FC(Collider*);
-void func_800B67D8(Collider*, RoomObject*);
-void func_800B691C(Collider*);
-void func_800B6B14(Collider*, RoomObject*);
-void func_800B6B4C(Collider*, RoomObject*);
-void func_800B6C34(Collider*);
-void func_800B6CD8(Collider*, RoomObject*);
-void func_800B6D24(Collider*);
-void func_800B6D44(Collider*, RoomObject*);
-void func_800B6DF4(Collider*);
-void func_800B7208(Collider*, RoomObject*);
-void func_800B7328(Collider*);
-void func_800B7860(Collider*, RoomObject*);
-void func_800B78F8(Collider*);
-void func_800B81B4(Collider*, RoomObject*);
-void func_800B81FC(Collider*);
-void func_800B8634(Collider*, RoomObject*);
-void func_800B87A0(Collider*);
-void func_800B9298(Collider*, RoomObject*);
-void func_800B9390(Collider*);
-void func_800B942C(Collider*, RoomObject*);
-void func_800B9514(Collider*);
-void func_800B9750(Collider*, RoomObject*);
-void func_800B97F0(Collider*);
-void func_800B9E8C(Collider*, RoomObject*);
-void func_800B9FA8(Collider*);
-void func_800BA2D0(Collider*, RoomObject*);
-void func_800BA35C(Collider*);
-void func_800BA89C(Collider*, RoomObject*);
-void func_800BA900(Collider*);
-void func_800BA92C(Collider*, RoomObject*);
-void func_800BAA28(Collider*);
-void func_800BB038(Collider*, RoomObject*);
-void func_800BB178(Collider*);
-void func_800BB254(Collider*, RoomObject*);
-void func_800BB5DC(Collider*);
-void func_800BB988(Collider*, RoomObject*);
-void func_800BBA80(Collider*);
-void func_800BBC88(Collider*, RoomObject*);
-void func_800BBCE4(Collider*);
-void func_800BBF80(Collider*, RoomObject*);
-void func_800BC284(Collider*);
-void func_800BCC04(Collider*, RoomObject*);
-void func_800BCD10(Collider*);
-void func_800BD1EC(Collider*, RoomObject*);
-void func_800BD2AC(Collider*);
-void func_800BD55C(Collider*, RoomObject*);
-void func_800BD608(Collider*);
-void func_800BD718(Collider*, RoomObject*);
-void func_800BD938(Collider*);
-void func_800BDF2C(Collider*, RoomObject*);
-void func_800BE000(Collider*);
-void func_800BE0D4(Collider*, RoomObject*);
-void func_800BE1C4(Collider*);
-void func_800BA89C(Collider* arg0, RoomObject* arg1);
-void func_800B5A98(Collider* arg0, RoomObject* arg1);
-void func_800B5C60(Collider* arg0);
+void RegisterStaticMesh(FieldObject*, RoomObject*);
+void UpdateStaticMesh(FieldObject*);
+void RegisterTwoPointMover(FieldObject*, RoomObject*);
+void MoveTwoPointMover(FieldObject*);
+void func_800B67D8(FieldObject*, RoomObject*);
+void func_800B691C(FieldObject*);
+void RegisterScriptedBehaviour(FieldObject*, RoomObject*);
+void RegisterRotatingPlatform(FieldObject*, RoomObject*);
+void UpdateRotatingPlatform(FieldObject*);
+void func_800B6CD8(FieldObject*, RoomObject*);
+void func_800B6D24(FieldObject*);
+void RegisterKeyframePlatform(FieldObject*, RoomObject*);
+void MoveKeyframePlatform(FieldObject*);
+void func_800B7208(FieldObject*, RoomObject*);
+void func_800B7328(FieldObject*);
+void func_800B7860(FieldObject*, RoomObject*);
+void func_800B78F8(FieldObject*);
+void func_800B81B4(FieldObject*, RoomObject*);
+void func_800B81FC(FieldObject*);
+void func_800B8634(FieldObject*, RoomObject*);
+void func_800B87A0(FieldObject*);
+void func_800B9298(FieldObject*, RoomObject*);
+void func_800B9390(FieldObject*);
+void func_800B942C(FieldObject*, RoomObject*);
+void func_800B9514(FieldObject*);
+void RegisterDamageHazard(FieldObject*, RoomObject*);
+void UpdateDamageHazard(FieldObject*);
+void func_800B9E8C(FieldObject*, RoomObject*);
+void func_800B9FA8(FieldObject*);
+void func_800BA2D0(FieldObject*, RoomObject*);
+void func_800BA35C(FieldObject*);
+void func_800BA89C(FieldObject*, RoomObject*);
+void func_800BA900(FieldObject*);
+void func_800BA92C(FieldObject*, RoomObject*);
+void func_800BAA28(FieldObject*);
+void func_800BB038(FieldObject*, RoomObject*);
+void func_800BB178(FieldObject*);
+void func_800BB254(FieldObject*, RoomObject*);
+s32 func_800BB354(FieldObject*);
+void func_800BB4A8(FieldObject*);
+void func_800BB5DC(FieldObject*);
+void func_800BB988(FieldObject*, RoomObject*);
+void func_800BBA80(FieldObject*);
+void func_800BBC88(FieldObject*, RoomObject*);
+void func_800BBCE4(FieldObject*);
+void func_800BBF80(FieldObject*, RoomObject*);
+void func_800BC284(FieldObject*);
+void func_800BCC04(FieldObject*, RoomObject*);
+void func_800BCD10(FieldObject*);
+void func_800BD1EC(FieldObject*, RoomObject*);
+void func_800BD2AC(FieldObject*);
+void func_800BD55C(FieldObject*, RoomObject*);
+void func_800BD608(FieldObject*);
+void func_800BD718(FieldObject*, RoomObject*);
+void func_800BD938(FieldObject*);
+void func_800BDF2C(FieldObject*, RoomObject*);
+void MoveOrbitChild(FieldObject*);
+void func_800BE0D4(FieldObject*, RoomObject*);
+void func_800BE1C4(FieldObject*);
+void func_800BA89C(FieldObject* arg0, RoomObject* arg1);
+void func_800B5A98(FieldObject* arg0, RoomObject* arg1);
+void func_800B5C60(FieldObject* arg0);
 
 
 s32 CountShotActors(void);
 s32 func_800B07E4(void);
 void func_800B2070(s32 arg0);
-void func_800B2144(Collider* arg0, unkStruct14* arg1);
-void func_800B216C(Collider* arg0);
+void func_800B2144(FieldObject* arg0, unkStruct14* arg1);
+void func_800B216C(FieldObject* arg0);
 void func_800B21CC(s32 arg0, s32 arg1);
 void LimitInt(s32* integer, s32 a, s32 b);
 void LimitFloat(f32* _float, f32 a, f32 b);
@@ -105,7 +123,7 @@ s32 IsActorBoss(Actor* actor);
 f32 func_800B2308(f32 arg0, s32 caseNum);
 Vec3f* func_800B2470(Vec3f* vecA, Vec3f vecB, Vec3f vecC, f32 a, s32 b);
 s32 func_800B2510(void);
-void func_800B255C(Vec3f*, Vec3f, Collider*);
+void func_800B255C(Vec3f*, Vec3f, FieldObject*);
 Vec3f* func_800B2AB4(Vec3f* arg0, Vec3f arg1, s32* arg4);
 s32 func_800B2B50(s32 arg0, s32 arg1);
 Vec3f* Vec3f_SetAtBossPos(Vec3f* arg0);
@@ -113,8 +131,8 @@ s32 IsBossPresent(void);
 s32 IsBossStage(void);
 s32 func_800B2D10(s32 arg0, s32* arg1);
 void func_800B2D34(void);
-void func_800B2E40(Collider*);
-void func_800B3364(s32 arg0);
+void ComputeColliderBounds(FieldObject*);
+void RefreshColliderBounds(s32 arg0);
 s32 IsntNegative(s32 value);
 s32* func_800B3424(s32 arg0);
 s32* func_800B3484(s32);
@@ -135,9 +153,9 @@ s32 IsRoomInvalid(RoomInstance* room);
 s32 GetRoomCount(RoomInstance* room);
 s32 IsSpriteActInvalid(SpriteActor* sprite);
 s32 GetSpriteActCount(SpriteActor* arg0);
-s32 func_800B3FFC(Collider* arg0, s32 arg1);
-void func_800B402C(Collider*, s32, s32);
-void func_800B4070(Collider* arg0);
+s32 GetColliderFlag(FieldObject* arg0, s32 arg1);
+void SetColliderFlag(FieldObject*, s32, s32);
+void func_800B4070(FieldObject* arg0);
 void func_800B40F4(unkSpriteStruct* arg0);
 void func_800B40FC(void);
 s32 StageCarrotAvailable(s32 stage);
@@ -147,7 +165,7 @@ s32 func_800B4A3C(Collectable*);
 void setCrownPositionsForRoom(s32 arg0);
 void checkRoomItem(s32);
 void EraseRoomItem(s32);
-void func_800B4F14(s32, f32*, f32*, f32*);
+void Zone_GetDoorPos(s32, f32*, f32*, f32*);
 void func_800B4FCC(void);
 void func_800B5314(void);
 void func_800B5600(void);
@@ -156,21 +174,21 @@ void func_800B5640(void);
 void func_800B56D4(f32 arg0, f32 arg1);
 void func_800B56E8(void);
 s32 func_800B5878(Rect3D* arg0);
-s32 func_800B5908(Collider* collider, f32 yMod);
+s32 func_800B5908(FieldObject* fieldObject, f32 yMod);
 void func_800BE24C(void);
-void func_800BE2A4(s32 arg0);
+void ResetZoneDrawOffset(s32 zone);
 void func_800BE2C0(void);
-void func_800BE370(s32 arg0);
-void func_800BE474(Tongue*);
-void func_800BE550(Tongue* arg0);
-void EraseToungeEatEnemy(Tongue* arg0);
-void func_800BE664(PlayerActor * arg0);
+void DespawnActorsInZoneBounds(s32 zone);
+void CalculatePlayerDragFromEaten(Tongue*);
+void ResetTongue(Tongue* arg0);
+void EraseTongueEatEnemy(Tongue* arg0);
+void ClearTimerPowerup(PlayerActor * arg0);
 void func_800BE7BC(void);
-void EraseField(Collider*);
-void func_800BF268(s32);
+void EraseField(FieldObject*);
+void EraseZoneColliders(s32);
 void RegistDoor(RoomObject* arg0, s32 arg1, s32 arg2);
 void func_800BF4AC(Door*);
-void func_800BF524(s32);
+void EraseZoneSwitchAreas(s32);
 void func_800BF5A4(void);
 void func_800BF5E8(RoomActor*);
 void func_800BF84C(s32 collision);
@@ -184,32 +202,32 @@ void CheckDoor(PlayerActor*);
 void func_800C1204(s32, PlayerActor*, s32, s32, s32); 
 void func_800C1458(s32 arg0);
 void func_800C1510(s32 arg0, s32 arg1);
-s32 func_800C1550(s32 arg0);
+s32 IsValidZoneIndex(s32 zone);
 void func_800C15AC(RoomInstance* arg0, s32 arg1);
 void InitFieldSubScroll(s32, Field*, s32, s32);
-void func_800C198C(s32, Field*);
+void ComputeRoomBounds(s32, Field*);
 void func_800C1B70(void);
-void func_800C1C64(s32 arg0);
+void CloseZone(s32 zone);
 void func_800C1CE0(PlayerActor*);
 void func_800C2670(s32, PlayerActor*, s32);
 void func_800C2A00(void);
 void func_800C2C34(void);
 void enterBossRoom(void);
 void func_800C38E0(SpriteActor*);
-s32 func_800C3958(s32, s32*, s32, Collider*);
+s32 func_800C3958(s32, s32*, s32, FieldObject*);
 s32 func_800C3B50(s32 arg0, s32 arg1);
-void func_800C3DCC(Camera* camera, Vec3f arg1, Vec3f arg4, f32 arg7);
+void CommitCameraShot(Camera* camera, Vec3f lookAtPoint, Vec3f eyePoint, f32 lookAtBaseY);
 void func_800C3E94(PlayerActor* arg0, Tongue* arg1, Camera* arg2, f32 arg3, f32 arg4);
-void func_800C4040(PlayerActor* arg0, Tongue* arg1, Camera* arg2, f32 arg3, f32 arg4);
+void UpdateFollowCamera(PlayerActor* player, Tongue* tongue, Camera* camera, f32 panX, f32 panZ);
 void func_800C43AC(PlayerActor* arg0, Tongue* arg1, Camera* arg2, f32 arg3, f32 arg4, f32 arg5);
 void func_800C4594(PlayerActor* arg0, Tongue* arg1, Camera* arg2, f32 arg3, f32 arg4, f32 arg5);
 void func_800C48B8(Vec3f arg0, Vec3f arg3, Vec3f arg6, Vec3f arg9, f32 argC, s32 zero);
 void func_800C4968(Vec3f arg0, Vec3f arg3, f32 arg6, f32 arg7, f32 arg8);
-void func_800C4B1C(Camera* arg0, f32 arg1);
+void BlendCameraKeyframes(Camera* camera, f32 weight);
 void func_800C4C48(Vec3f arg0, f32 arg3, f32 arg4, f32 arg5, f32 arg6);
 void func_800C4CAC(Camera* arg0, f32 arg1);
 void func_800C4DF8(Vec3w arg0, Vec3w arg3, Vec3f arg6, Vec3f arg9, f32 argC, u32 argD);
-void func_800C5304(Camera* camera, f32 weight);
+void UpdateOrbitalCamera(Camera* camera, f32 weight);
 void func_800C54F8(Vec2w* arg0, s32* arg1);
 void func_800C5508(PlayerActor* player);
 void func_800C5538(PlayerActor* arg0);
@@ -221,7 +239,7 @@ void func_800CFDC8(PlayerActor*);
 void pickup_collide_func(s32);
 void func_800D69D0(s32, PlayerActor*, Tongue*, Camera*, Vec3f*, Vec3f*, s32);
 void func_800D3854(PlayerActor*, Tongue*, Camera*, Vec3f*, Vec3f*, s32);
-void func_800B5D68(Collider* arg0, s32 arg1);
+void func_800B5D68(FieldObject* arg0, s32 arg1);
 
 /* Ext Variables */
 extern CollectableWrapper D_802019A8[];
@@ -237,17 +255,22 @@ extern s32 D_802065B8[];
 extern s32 D_80206958[];
 extern s32 D_802039B4;
 extern s32 D_802026A8;
+extern s32 D_8020261C;
+extern s32 D_80202620;
+extern s32 D_80202624;
+extern s32 D_80202628[32];
 extern Vec3f D_802032B0[];
 extern s32 D_80202530[32];
 extern s32 D_80206CF8[];
 extern s32 D_80206D78[];
-extern f32 D_80174994;
+extern f32 gCameraMinY;
 extern Vec3f D_8020A298;
 extern Vec3f D_8020D2A8;
 extern Vec3f D_8020D5B8;
 extern Vec3f D_8020D848;
 extern f32 D_8020D858;
 extern Door* D_80240C98[];
+extern SwitchArea gSwitchAreas[8];
 extern s32 gSwitchAreaCount;
 extern Vec3f D_8020D868;
 extern f32 D_8020D874;
@@ -278,10 +301,10 @@ extern s32 D_802019A0;
 extern s32 D_802023AC;
 extern s32 D_802023D4;
 extern s32 D_802025B4;
-extern Collider* D_802025B8[];
+extern FieldObject* D_802025B8[];
 extern s32 D_80236970;
 s32 func_80083F18(SpriteActor*);                      /* extern */
-s32 func_800AF604(f32, f32, f32, f32);              /* extern */
+s32 IsPointInViewAreaFull(f32, f32, f32, f32);              /* extern */
 
 void func_800B5224(f32, s32*, s32*);                   /* extern */
 void func_800BE714(void);                                  /* extern */
@@ -296,15 +319,15 @@ extern s32 D_80202528;
 extern s32 D_8020252C;
 
 typedef struct colliderFuncStruct{
-    void (*function)(Collider*);
+    void (*function)(FieldObject*);
     s32 id;
-    void (*function2)(Collider*, RoomObject*);
+    void (*function2)(FieldObject*, RoomObject*);
 }colliderFuncStruct;
 extern colliderFuncStruct D_8010889C[];
-extern s32 D_801749A0;
+extern s32 gFieldFramesElapsed;
 
 void func_800B4574(u8*, s16*);                         /* extern */
-void func_800C1BF0(s32);                          /* extern */
+void OpenZone(s32);                          /* extern */
 s32 func_800C250C(PlayerActor*);                    /* extern */
 
 
@@ -321,7 +344,7 @@ extern s32 isFirstZone;
 
 s32 func_800B47DC(s32);                             /* extern */
 void func_800B4884(RoomInstance*);                     /* extern */
-void func_800BE7F0(void);                                  /* extern */
+void InitFieldPools(void);
 extern RoomInstance* D_802478F0;
 extern s32 D_80247904;
 

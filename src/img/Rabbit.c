@@ -158,5 +158,5 @@ Mtx Rabbit_unk1_Animarr[15][10] = {
 };
 
 AnimPointer Rabbit_unk1Pointers_Animp[1] = {
-{&Rabbit_unk1Header_Animh.frames, &Rabbit_unk1Header_Animh.objects, &Rabbit_unk1_Animarr[0][0]}
+{&Rabbit_unk1Header_Animh.frames, &Rabbit_unk1Header_Animh.objects, Rabbit_unk1_Animarr[0]}
 };

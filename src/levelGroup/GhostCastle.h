@@ -1,0 +1,246 @@
+#ifndef GHOSTCASTLE_H
+#define GHOSTCASTLE_H
+
+#include "common.h"
+
+
+extern unsigned char Global_cabinetFade_ci8_PAL[];
+extern unsigned char Global_cabinetFade_ci8_PNG[];
+extern unsigned char Global_GCWood_ci4_PAL[];
+extern unsigned char Global_GCWood_ci4_PNG[];
+extern unsigned char Global_GCTiles_ci4_PAL[];
+extern unsigned char Global_GCTiles_ci4_PNG[];
+extern unsigned char Global_Darkwood_ci4_PAL[];
+extern unsigned char Global_Darkwood_ci4_PNG[];
+extern unsigned char Global_water_ci4_PAL[];
+extern unsigned char Global_water_ci4_PNG[];
+extern unsigned char Global_sander_ci4_PAL[];
+extern unsigned char Global_sander_ci4_PNG[];
+extern unsigned char Global_GCWall_ci4_PAL[];
+extern unsigned char Global_GCWall_ci4_PNG[];
+extern unsigned char Global_wood_ci4_PAL[];
+extern unsigned char Global_wood_ci4_PNG[];
+extern unsigned char Global_windows_ia4_PNG[];
+extern unsigned char Global_sandFadeTop_ci4_PAL[];
+extern unsigned char Global_sandFadeTop_ci4_PNG[];
+extern unsigned char Global_DCSandWallFadeUp_ci8_PAL[];
+extern unsigned char Global_DCSandWallFadeUp_ci8_PNG[];
+extern unsigned char Global_cabinet_ci4_PAL[];
+extern unsigned char Global_cabinet_ci4_PNG[];
+extern unsigned char Global_GCWall2_ci4_PAL[];
+extern unsigned char Global_GCWall2_ci4_PNG[];
+extern unsigned char Global_DCTiles_ci4_PAL[];
+extern unsigned char Global_DCTiles_ci4_PNG[];
+extern unsigned char Global_GCBigCabinet_ci4_PAL[];
+extern unsigned char Global_GCBigCabinet_ci4_PNG[];
+extern unsigned char Global_GCThing1_ci4_PAL[];
+extern unsigned char Global_GCThing1_ci4_PNG[];
+extern unsigned char Global_woodFade_ci8_PAL[];
+extern unsigned char Global_woodFade_ci8_PNG[];
+extern unsigned char Global_GCFloorboard_ci4_PAL[];
+extern unsigned char Global_GCFloorboard_ci4_PNG[];
+extern unsigned char Global_poleWood_ci8_PAL[];
+extern unsigned char Global_poleWood_ci8_PNG[];
+
+enum GhostCastle_Models {
+    G_FALLBACK_CUBE_MODEL = 0,
+    G_EXIT_SHADOW_SOUTH_MODEL,
+    G_EXIT_SHADOW_NORTH_MODEL,
+    G_EXIT_SHADOW_EAST_MODEL,
+    G_EXIT_SHADOW_WEST_MODEL,
+    G_ALBL_EXIT_MODEL,
+    G_SANDPIT_MODEL,
+    G_BOSS_BRIDGE_MODEL,
+    G_AL_POLE_MODEL,
+    G_ALBL_DOOR_MODEL,
+    G_AL_SPIN_DOOR_MODEL,
+    G_BL_LAVA_FLOOR_MODEL,
+    G_BL_LAVA_MODEL,
+    G_BL_LAVA2_MODEL,
+    G_BL_LAVA3_MODEL,
+    G_BL_LAVA4_MODEL,
+    G_BL_LAVA5_MODEL,
+    G_BL_LAVA6_MODEL,
+    G_BL_LAVA7_MODEL,
+    G_BL_LAVA8_MODEL,
+    G_BL_DESTRUCTABLE_TOP_MODEL,
+    G_BL_METAL_BRIDGE_MODEL,
+    G_KL_EXIT_MODEL,
+    G_KL_DOOR_MODEL,
+    G_DC_EXIT_MODEL,
+    G_TALL_EXIT_SHADOW1_MODEL,
+    G_TALL_EXIT_SHADOW2_MODEL,
+    G_GC_EXIT1_MODEL,
+    G_GC_EXIT2_MODEL,
+    G_TRAINING_ROOM_LIGHT_MODEL,
+    G_JL_CAVE_EXIT1_MODEL,
+    G_JL_CAVE_EXIT2_MODEL,
+    G_JL_CAVE_EXIT3_MODEL,
+    G_JL_CAVE_EXIT4_MODEL,
+    G_JL_OUTSIDE_ENTRANCE_MODEL,
+    G_JL_FX_CAM_PILLAR_MODEL,
+    G_JL_CAVE_DOOR_MODEL,
+    GC_POLE_MODEL = 114
+};
+
+
+#include "global_models.h"
+extern Gfx GhostCastle_model1_Gfx[];
+extern ModelCollision GhostCastle_unkCol1_collision;
+extern Gfx GhostCastle_model2_Gfx[];
+extern ModelCollision GhostCastle_unkCol2_collision;
+extern Gfx GhostCastle_model3_Gfx[];
+extern ModelCollision GhostCastle_unkCol3_collision;
+extern Gfx GhostCastle_model4_Gfx[];
+extern ModelCollision GhostCastle_unkCol4_collision;
+extern Gfx GhostCastle_model5_Gfx[];
+extern ModelCollision GhostCastle_unkCol5_collision;
+extern Gfx GhostCastle_model6_Gfx[];
+extern ModelCollision GhostCastle_unkCol6_collision;
+extern Gfx GhostCastle_model7_Gfx[];
+extern ModelCollision GhostCastle_unkCol7_collision;
+extern Gfx GhostCastle_model8_Gfx[];
+extern ModelCollision GhostCastle_unkCol8_collision;
+extern Gfx GhostCastle_model9_Gfx[];
+extern ModelCollision GhostCastle_unkCol9_collision;
+extern Gfx GhostCastle_model10_Gfx[];
+extern ModelCollision GhostCastle_unkCol10_collision;
+extern Gfx GhostCastle_model11_Gfx[];
+extern ModelCollision GhostCastle_unkCol11_collision;
+extern Gfx GhostCastle_model12_Gfx[];
+extern ModelCollision GhostCastle_unkCol12_collision;
+extern Gfx GhostCastle_model13_Gfx[];
+extern ModelCollision GhostCastle_unkCol13_collision;
+extern Gfx GhostCastle_model14_Gfx[];
+extern ModelCollision GhostCastle_unkCol14_collision;
+extern Gfx GhostCastle_model15_Gfx[];
+extern ModelCollision GhostCastle_unkCol15_collision;
+extern Gfx GhostCastle_model16_Gfx[];
+extern ModelCollision GhostCastle_unkCol16_collision;
+extern Gfx GhostCastle_model17_Gfx[];
+extern ModelCollision GhostCastle_unkCol17_collision;
+extern Gfx GhostCastle_model18_Gfx[];
+extern ModelCollision GhostCastle_unkCol18_collision;
+extern Gfx GhostCastle_model19_Gfx[];
+extern ModelCollision GhostCastle_unkCol19_collision;
+extern Gfx GhostCastle_model20_Gfx[];
+extern ModelCollision GhostCastle_unkCol20_collision;
+extern Gfx GhostCastle_model21_Gfx[];
+extern ModelCollision GhostCastle_unkCol21_collision;
+extern Gfx GhostCastle_model22_Gfx[];
+extern ModelCollision GhostCastle_unkCol22_collision;
+extern Gfx GhostCastle_model23_Gfx[];
+extern ModelCollision GhostCastle_unkCol23_collision;
+extern Gfx GhostCastle_model24_Gfx[];
+extern ModelCollision GhostCastle_unkCol24_collision;
+extern Gfx GhostCastle_model25_Gfx[];
+extern ModelCollision GhostCastle_unkCol25_collision;
+extern Gfx GhostCastle_model84_Gfx[];
+extern ModelCollision GhostCastle_unkCol26_collision;
+extern Gfx GhostCastle_model26_Gfx[];
+extern ModelCollision GhostCastle_unkCol27_collision;
+extern Gfx GhostCastle_model27_Gfx[];
+extern ModelCollision GhostCastle_unkCol28_collision;
+extern Gfx GhostCastle_model28_Gfx[];
+extern ModelCollision GhostCastle_unkCol29_collision;
+extern Gfx GhostCastle_model29_Gfx[];
+extern ModelCollision GhostCastle_unkCol30_collision;
+extern Gfx GhostCastle_model85_Gfx[];
+extern ModelCollision GhostCastle_unkCol31_collision;
+extern Gfx GhostCastle_model86_Gfx[];
+extern ModelCollision GhostCastle_unkCol32_collision;
+extern Gfx GhostCastle_model30_Gfx[];
+extern ModelCollision GhostCastle_unkCol33_collision;
+extern Gfx GhostCastle_model31_Gfx[];
+extern ModelCollision GhostCastle_unkCol34_collision;
+extern Gfx GhostCastle_model32_Gfx[];
+extern ModelCollision GhostCastle_unkCol35_collision;
+extern Gfx GhostCastle_model33_Gfx[];
+extern ModelCollision GhostCastle_unkCol36_collision;
+extern Gfx GhostCastle_model34_Gfx[];
+extern ModelCollision GhostCastle_unkCol37_collision;
+extern Gfx GhostCastle_model35_Gfx[];
+extern ModelCollision GhostCastle_unkCol38_collision;
+extern Gfx GhostCastle_model36_Gfx[];
+extern ModelCollision GhostCastle_unkCol39_collision;
+extern Gfx GhostCastle_model37_Gfx[];
+extern ModelCollision GhostCastle_unkCol40_collision;
+extern Gfx GhostCastle_model38_Gfx[];
+extern ModelCollision GhostCastle_unkCol41_collision;
+extern Gfx GhostCastle_model39_Gfx[];
+extern ModelCollision GhostCastle_unkCol42_collision;
+extern Gfx GhostCastle_model40_Gfx[];
+extern ModelCollision GhostCastle_unkCol43_collision;
+extern Gfx GhostCastle_model41_Gfx[];
+extern ModelCollision GhostCastle_unkCol44_collision;
+extern Gfx GhostCastle_model42_Gfx[];
+extern ModelCollision GhostCastle_unkCol45_collision;
+extern Gfx GhostCastle_model43_Gfx[];
+extern ModelCollision GhostCastle_unkCol46_collision;
+extern Gfx GhostCastle_model44_Gfx[];
+extern ModelCollision GhostCastle_unkCol47_collision;
+extern Gfx GhostCastle_model45_Gfx[];
+extern ModelCollision GhostCastle_unkCol48_collision;
+extern Gfx GhostCastle_model46_Gfx[];
+extern ModelCollision GhostCastle_unkCol49_collision;
+extern Gfx GhostCastle_model47_Gfx[];
+extern ModelCollision GhostCastle_unkCol50_collision;
+extern Gfx GhostCastle_model48_Gfx[];
+extern ModelCollision GhostCastle_unkCol51_collision;
+extern Gfx GhostCastle_model49_Gfx[];
+extern ModelCollision GhostCastle_unkCol52_collision;
+extern Gfx GhostCastle_model50_Gfx[];
+extern ModelCollision GhostCastle_unkCol53_collision;
+extern Gfx GhostCastle_model51_Gfx[];
+extern ModelCollision GhostCastle_unkCol54_collision;
+extern Gfx GhostCastle_model52_Gfx[];
+extern ModelCollision GhostCastle_unkCol55_collision;
+extern Gfx GhostCastle_model53_Gfx[];
+extern ModelCollision GhostCastle_unkCol56_collision;
+extern Gfx GhostCastle_model54_Gfx[];
+extern ModelCollision GhostCastle_unkCol57_collision;
+extern Gfx GhostCastle_model55_Gfx[];
+extern ModelCollision GhostCastle_unkCol58_collision;
+extern Gfx GhostCastle_model56_Gfx[];
+extern ModelCollision GhostCastle_unkCol59_collision;
+extern Gfx GhostCastle_model57_Gfx[];
+extern ModelCollision GhostCastle_unkCol60_collision;
+extern Gfx GhostCastle_model58_Gfx[];
+extern ModelCollision GhostCastle_unkCol61_collision;
+extern Gfx GhostCastle_model59_Gfx[];
+extern ModelCollision GhostCastle_unkCol62_collision;
+extern Gfx GhostCastle_model60_Gfx[];
+extern ModelCollision GhostCastle_unkCol63_collision;
+extern Gfx GhostCastle_model61_Gfx[];
+extern ModelCollision GhostCastle_unkCol64_collision;
+extern Gfx GhostCastle_model62_Gfx[];
+extern ModelCollision GhostCastle_unkCol65_collision;
+extern Gfx GhostCastle_model63_Gfx[];
+extern ModelCollision GhostCastle_unkCol66_collision;
+extern Gfx GhostCastle_model64_Gfx[];
+extern ModelCollision GhostCastle_unkCol67_collision;
+extern Gfx GhostCastle_model65_Gfx[];
+extern ModelCollision GhostCastle_unkCol68_collision;
+extern Gfx GhostCastle_model66_Gfx[];
+extern ModelCollision GhostCastle_unkCol69_collision;
+extern Gfx GhostCastle_model67_Gfx[];
+extern ModelCollision GhostCastle_unkCol70_collision;
+extern Gfx GhostCastle_model68_Gfx[];
+extern ModelCollision GhostCastle_unkCol71_collision;
+extern Gfx GhostCastle_model69_Gfx[];
+extern ModelCollision GhostCastle_unkCol72_collision;
+extern Gfx GhostCastle_model70_Gfx[];
+extern ModelCollision GhostCastle_unkCol73_collision;
+extern Gfx GhostCastle_model71_Gfx[];
+extern ModelCollision GhostCastle_unkCol74_collision;
+extern Gfx GhostCastle_model72_Gfx[];
+extern ModelCollision GhostCastle_unkCol75_collision;
+extern Gfx GhostCastle_model73_Gfx[];
+extern ModelCollision GhostCastle_unkCol76_collision;
+extern Gfx GhostCastle_model74_Gfx[];
+extern ModelCollision GhostCastle_unkCol77_collision;
+extern Gfx Global_pole_Gfx[];
+extern ModelCollision Global_pole_collision;
+
+
+#endif

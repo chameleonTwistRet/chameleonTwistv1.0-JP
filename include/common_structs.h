@@ -19,6 +19,12 @@ typedef struct Vec3f {
 /* 0x08 */ f32 z;
 } Vec3f;
 
+typedef struct Vec3s {
+/* 0x00 */ s16 x;
+/* 0x02 */ s16 y;
+/* 0x04 */ s16 z;
+} Vec3s;
+
 typedef struct Vec3w {
 /* 0x00 */ s32 x;
 /* 0x04 */ s32 y;
@@ -94,7 +100,7 @@ typedef struct PlayerActor {
 /* 0x060 */ u32 hasTumbled;    //0x00 = no, 0x01 = yes. resets on jump.
 /* 0x064 */ u32 unk64;
 /* 0x068 */ u32 inWater;//0x00 = no, 0x01 = yes.
-/* 0x06C */ u32 squishTimer;
+/* 0x06C */ u32 squishFramesElapsed;
 /* 0x070 */ f32 yScale;
 /* 0x074 */ u32 locked; //0x00 = no, 0x16 = yes. when using lock to stand in place.
 /* 0x078 */ s32 amountToShoot; //number for machine gun shoot
@@ -114,19 +120,19 @@ typedef struct PlayerActor {
 /* 0x0C0 */ u32 amountLeftToShoot;
 /* 0x0C4 */ u32 vaultFall;//timer for falling after vault
 /* 0x0C8 */ s32 hp;
-/* 0x0CC */ u32 playerHURTSTATE;
-/* 0x0D0 */ s32 playerHURTTIMER;
-/* 0x0D4 */ u32 playerHURTANIM;
-/* 0x0D8 */ u32 playerHURTBY;
+/* 0x0CC */ u32 playerHurtState;
+/* 0x0D0 */ s32 playerHurtTimer; //likely counts up; increment site still in asm
+/* 0x0D4 */ u32 playerHurtAnim;
+/* 0x0D8 */ u32 playerHurtBy;
 /* 0x0DC */ f32 unk_DC[6];
 /* 0x0F4 */ f32 unk_F4[6];
-/* 0x10C */ f32 timerDown;
+/* 0x10C */ f32 targetLockFramesLeft;
 /* 0x110 */ f32 reticleSize;
 /* 0x114 */ s32 active; //0x00 = no, 0x01 = yes
 /* 0x118 */ s32 exists; //0x00 = no, 0x01 = yes
 /* 0x11C */ u32 power; //enum of power it has
-/* 0x120 */ s32 powerTimer;
-/* 0x124 */ s32 powerTimerTill;
+/* 0x120 */ s32 powerFramesElapsed;
+/* 0x124 */ s32 powerDuration;
 /* 0x128 */ f32 tongueYOffset;
 /* 0x12C */ f32 tongueSeperation;
 } PlayerActor; //sizeof 0x130
@@ -201,15 +207,15 @@ typedef struct Tongue { // at 80169268 (for p1)
 
 
 typedef struct ModelCollision{
-/* 0x00 */ s32 noXVerts;
-/* 0x04 */ s32 noXTris;
+/* 0x00 */ s32 numXVerts;
+/* 0x04 */ s32 numXTris;
 /* 0x08 */ Vec3f *vertsStart; //segmented
 /* 0x0C */ Vec3w* trisStart; //segmented
 /* 0x10 */ Rect3D* settingsStart; //segmented
 } ModelCollision;
 
 
-typedef struct Collider {
+typedef struct FieldObject {
 /* 0x000 */ s32 unk_00;
 /* 0x004 */ s32 unk_04;
 /* 0x008 */ s32 unk_08;
@@ -217,13 +223,11 @@ typedef struct Collider {
 /* 0x010 */ s32 unk_10;
 /* 0x014 */ s32 unk_14;
 /* 0x018 */ Vec3f sfxPos;
-/* 0x024 */ f32 unk_24;
-/* 0x028 */ s32 UNK_28;
-/* 0x02C */ s32 unk_2C;
+/* 0x024 */ Vec3f unk_24;
 /* 0x030 */ Vec3f unk_30;
 /* 0x03C */ Vec3f unk_3C;
 /* 0x048 */ f32 unk_48;
-/* 0x04C */ struct Collider* unk_4C;
+/* 0x04C */ struct FieldObject* unk_4C;
 /* 0x050 */ f32 unk_50;
 /* 0x054 */ f32 unk_54;
 /* 0x058 */ f32 unk_58;
@@ -257,7 +261,7 @@ typedef struct Collider {
 /* 0x0EC */ Gfx* gfx;
 /* 0x0F0 */ char padF0[4];
 /* 0x0F4 */ void* unkF4;                        /* inferred */
-/* 0x0F8 */ void (*function)(struct Collider*);
+/* 0x0F8 */ void (*function)(struct FieldObject*);
 /* 0x0FC */ void* unk_FC;
 /* 0x100 */ void* unk_100;
 /* 0x104 */ char pad104[8];                     /* maybe part of unk_100[3]? */
@@ -266,11 +270,11 @@ typedef struct Collider {
 /* 0x114 */ s32 unk_114;
 /* 0x118 */ s32 unk_118;
 /* 0x11C */ s32 unk_11C;
-/* 0x120 */ char pad120[4];
+/* 0x120 */ s32 unk_120;
 /* 0x124 */ s32 unk_124;
 /* 0x128 */ s32 unk_128;
-/* 0x12C */ char pad12C[4];
-} Collider;                                         /* size = 0x130 */
+/* 0x12C */ s32 unk_12C;                        /* surface friction class; indexes D_80108F90 */
+} FieldObject;                                         /* size = 0x130 */
 
 typedef struct unkSpriteStruct {
 /* 0x000 */ s32 unk_00;
@@ -281,12 +285,12 @@ typedef struct unkSpriteStruct {
 /* 0x014 */ s32 unk_14;
 /* 0x018 */ Vec3f sfxPos;
 /* 0x024 */ f32 unk_24;
-/* 0x028 */ s32 UNK_28;
-/* 0x02C */ s32 unk_2C;
+/* 0x028 */ f32 UNK_28;
+/* 0x02C */ f32 unk_2C;
 /* 0x030 */ Vec3f unk_30;
 /* 0x03C */ Vec3f unk_3C;
 /* 0x048 */ f32 unk_48;
-/* 0x04C */ struct Collider* unk_4C;
+/* 0x04C */ struct FieldObject* unk_4C;
 /* 0x050 */ f32 unk_50;
 /* 0x054 */ f32 unk_54;
 /* 0x058 */ f32 unk_58;
@@ -336,7 +340,7 @@ typedef struct RoomObject {
         UnkType2* _ut2;
     } keyframes;
     //int arg for ^
-/* 0x3C */ s32 noKeyframes; //pointer sizeof (default usually 90)
+/* 0x3C */ s32 numKeyframes; //pointer sizeof (default usually 90)
 /* 0x40 */ s32 unk40;
 /* 0x44 */ s32 unk44;
 /* 0x48 */ s32 unk48;
@@ -349,8 +353,8 @@ typedef struct RoomObject {
     //so for now, they are void* to avoid a million warnings
 /* 0x60 */ void* func1;
 /* 0x64 */ void* func2;
-    // void (*func1)(struct Collider*, struct RoomObject*);
-    // void (*func2)(struct Collider*);
+    // void (*func1)(struct FieldObject*, struct RoomObject*);
+    // void (*func2)(struct FieldObject*);
 /* 0x68 */ s32 unk68;
 /* 0x6C */ s32 unk6C;
 /* 0x70 */ s32 unk70;
@@ -427,6 +431,12 @@ typedef struct SpriteActor {
 /* 0x40 */ Color128 color;
 } SpriteActor; // sizeof 0x50
 
+// A Rect3D-sized {size, center} instead of the usual {min, max}
+typedef struct RoomExtent {
+/* 0x00 */ Vec3f size;    
+/* 0x0C */ Vec3f center;  
+} RoomExtent;
+
 typedef struct Field {
 /* 0x00 */ RoomObject* objects; //pointer of levelData objects, 0 for none
 /* 0x04 */ RoomActor* actors; //pointer of levelData actors, 0 for none
@@ -444,7 +454,7 @@ typedef struct Field {
 /* 0x28 */ s32 unk28;
 /* 0x2C */ s32 unk2C;
 /* 0x30 */ Rect3D roomBounds;
-/* 0x48 */ Rect3D rect_48;
+/* 0x48 */ RoomExtent roomExtent;
 /* 0x60 */ s32 unk60;
 /* 0x64 */ s32 unk64;
 /* 0x68 */ s32 unk68;
@@ -491,12 +501,12 @@ typedef struct Camera {//take these with a grain of salt
 /* 0x04 */ Vec3f f1; //angle freecam will snap to
 /* 0x10 */ Vec3f f2;
 /* 0x1C */ Vec3f f3;
-/* 0x28 */ Vec3f f4; // perspective "eye"
-/* 0x34 */ Vec3f f5; // perspective "at"
+/* 0x28 */ Vec3f eye; // perspective "eye"
+/* 0x34 */ Vec3f lookAt; // perspective "at"
 /* 0x40 */ s32 unk40;
 /* 0x44 */ f32 size1;
 /* 0x48 */ f32 size2;
-/* 0x4C */ u32 untouchedTimer; //timer that incs when the camera hasnt been used
+/* 0x4C */ u32 untouchedFramesElapsed; //timer that incs when the camera hasnt been used
 /* 0x50 */ f32 unk50;
 /* 0x54 */ s32 pushHoriz;//the impulse horizontally by the player
 /* 0x58 */ s32 unk58;
@@ -530,7 +540,7 @@ typedef struct PlayerActor_s {
 /* 0x060 */ u32 hasTumbled;    //0x00 = no, 0x01 = yes. resets on jump.
 /* 0x064 */ u32 unk64;
 /* 0x068 */ u32 inWater;//0x00 = no, 0x01 = yes.
-/* 0x06C */ u32 squishTimer;
+/* 0x06C */ u32 squishFramesElapsed;
 /* 0x070 */ f32 yScale;
 /* 0x074 */ u32 locked; //0x00 = no, 0x16 = yes. when using lock to stand in place.
 /* 0x078 */ s32 amountToShoot; //number for machine gun shoot
@@ -550,21 +560,21 @@ typedef struct PlayerActor_s {
 /* 0x0C0 */ u32 amountLeftToShoot;
 /* 0x0C4 */ u32 vaultFall;//timer for falling after vault
 /* 0x0C8 */ s32 hp;
-/* 0x0CC */ u32 playerHURTSTATE;
-/* 0x0D0 */ s32 playerHURTTIMER;
-/* 0x0D4 */ u32 playerHURTANIM;
-/* 0x0D8 */ u32 playerHURTBY;
+/* 0x0CC */ u32 playerHurtState;
+/* 0x0D0 */ s32 playerHurtTimer; //likely counts up; increment site still in asm
+/* 0x0D4 */ u32 playerHurtAnim;
+/* 0x0D8 */ u32 playerHurtBy;
 /* 0x0DC */ f32 unk_DC[6];
 /* 0x0F4 */ f32 unk_F4[2];
             s32 arbitraryChange;
 /* 0x0F4 */ f32 unk_F4_2[3];
-/* 0x10C */ f32 timerDown;
+/* 0x10C */ f32 targetLockFramesLeft;
 /* 0x110 */ f32 reticleSize;
 /* 0x114 */ s32 active; //0x00 = no, 0x01 = yes
 /* 0x118 */ s32 exists; //0x00 = no, 0x01 = yes
 /* 0x11C */ u32 power; //enum of power it has
-/* 0x120 */ s32 powerTimer;
-/* 0x124 */ s32 powerTimerTill;
+/* 0x120 */ s32 powerFramesElapsed;
+/* 0x124 */ s32 powerDuration;
 /* 0x128 */ f32 tongueYOffset;
 /* 0x12C */ f32 tongueSeperation;
 } PlayerActor_s; //sizeof 0x130
@@ -614,11 +624,6 @@ typedef struct unk802000C84 {
 /* 0x05 */ s8 unk5;
 } unk802000C84; //sizeof 0x06 (unk size)
 
-//struct for saveGame data?
-typedef struct unkStruct09 {
-/* 0x00 */ char unk_00[0x84];
-} unkStruct09; //sizeof 0x84
-
 typedef struct unkStruct14 {
 /* 0x00 */ char unk_00[0x38];
 /* 0x38 */ s32 unk_38;
@@ -635,20 +640,30 @@ typedef struct unkStruct15 {
 /* 0x18 */ f32 unk_18;
 } unkStruct15; //sizeof 0x18
 
-typedef struct SaveRecord {
-/* 0x00 */ u8 flags[4]; //{checksum,flags,blank,blank}
-/* 0x04 */ s32 perfectCode;
-/* 0x08 */ u8 stageTimes[7][5][3]; //[stageIndex][timeRank][]
+typedef struct TimeVal {
+/* 0x00 */ u8 b0;
+/* 0x01 */ u8 b1;
+/* 0x02 */ u8 b2;
+} TimeVal; //sizeof 0x3
+
+typedef struct SavedStageData {
+/* 0x08 */ TimeVal stageTimes[7][5]; //[stageIndex][timeRank][]
 /* 0x71 */ s8 index; //index of most recent save file
 /* 0x72 */ s8 unk_72[2];
 /* 0x74 */ u16 bowlingScore;
-/* 0x76 */ s8 pad[10];
+/* 0x76 */ s8 pad[10];    
+} SavedStageData;
+
+typedef struct SaveRecord {
+/* 0x00 */ u8 flags[4]; //{checksum,flags,blank,blank}
+/* 0x04 */ s32 perfectCode;
+/* 0x08 */ SavedStageData savedStageData;
 } SaveRecord; //sizeof 0x80
 
-typedef struct unk80100F50 {
+typedef struct loadedSegInfo {
 /* 0x00 */ u32 base_address;
-/* 0x04*/ u32 unk4;
-} unk80100F50; //sizeof 0x08
+/* 0x04*/ u32 end_address;
+} loadedSegInfo; //sizeof 0x08
 
 typedef struct FrameBuffer {
 /* 0x00 */ char data[0x25800]; // h*W*colDepth
@@ -690,7 +705,7 @@ typedef struct CTTask {
 /* 0x6C */ s16 unk6C;
 /* 0x6E */ u16 unk6E;
 /* 0x70 */ s16 unk_70;
-/* 0x72 */ s16 unk72;
+/* 0x72 */ u16 unk72;
 /* 0x74 */ s16 unk74;
 /* 0x76 */ char unk76[0x4];
 /* 0x7A */ u16 unk7A;
@@ -739,28 +754,28 @@ typedef struct unkStruct0 {
 /* 0x20 */ s32 unk_24;
 } unkStruct0; //sizeof 0x28
 
-typedef struct unkVecStruct {
+typedef struct OrthBasis {
 /* 0x00 */ Vec3f vec1;
 /* 0x0C */ Vec3f vec2;
 /* 0x18 */ Vec3f normal;
-} unkVecStruct;
+} OrthBasis;
 
 typedef struct Poly {
-/* 0x00 */ s32 unk_00;
+/* 0x00 */ s32 infoLevel;    // level of computation (0-3, -1=invalid)
 /* 0x04 */ char unk_04[4];
-/* 0x08 */ Vec3f offset;
-/* 0x14 */ Vec3f unkVec;
-/* 0x20 */ Vec3f unkVec2;
+/* 0x08 */ Vec3f origin;
+/* 0x14 */ Vec3f edgeVec;
+/* 0x20 */ Vec3f edgeVec2;
 /* 0x2C */ Rect3D boundBox;
-/* 0x44 */ unkVecStruct unkVectorStruct;
+/* 0x44 */ OrthBasis orthBasis;
 /* 0x68 */ f32 unk_68;
-/* 0x6C */ f32 unk_6C;
-/* 0x70 */ f32 unk_70;
-/* 0x74 */ f32 unk_74;
-/* 0x78 */ f32 unk_78;
-/* 0x7C */ Vec2f unk_7C;
-/* 0x84 */ Vec2f unk_84;
-/* 0x8C */ Vec2f unk_8C;
+/* 0x6C */ f32 invMtxU;
+/* 0x70 */ f32 invMtxUSkew;
+/* 0x74 */ f32 invMtxVSkew;
+/* 0x78 */ f32 invMtxV;
+/* 0x7C */ Vec2f uvOffset;
+/* 0x84 */ Vec2f edgeData;
+/* 0x8C */ Vec2f projData;
 } Poly;
 
 typedef struct Actor {
@@ -856,12 +871,6 @@ typedef struct unkStruct02 {
 /* 0x0C */ char unk_0C[0x74];
 } unkStruct02; //is this actually size 0x80?
 
-typedef struct TimeVal {
-/* 0x00 */ u8 b0;
-/* 0x01 */ u8 b1;
-/* 0x02 */ u8 b2;
-} TimeVal; //sizeof 0x3
-
 typedef struct SaveFile {
 /* 0x00 */ u8 checksum;
 /* 0x01 */ u8 flags;
@@ -878,12 +887,29 @@ typedef struct SaveFile {
 /* 0x31 */ u8 currentStage;
 /* 0x32 */ u8 gCurrentZone;
 /* 0x33 */ u8 unk33; //copies D_8020d8a8
-/* 0x34 */ u8 unk34[16]; //stores D_802023e0[]
+/* 0x34 */ s8 unk34[16]; //stores D_802023e0[]
 /* 0x44 */ u8 stageCrowns;
 /* 0x45 */ TimeVal stageTimes[8];
-/* 0x5D */ u8 carrotBitfield;
-/* 0x5E */ u8 UNK_5E[2]; //first also copies CARROT progress.
+/* 0x5D */ u8 unk_5D;
+/* 0x5E */ u8 carrotBitfield;
 } SaveFile; //sizeof 0x60
+
+typedef struct Unk80200C08 {
+/* 0x00 */ char unk_00[0x69];
+/* 0x69 */ s8 unk_69;
+/* 0x6A */ char unk_6A[0xE];
+} Unk80200C08; //sizeof 0x78
+
+//5FF30
+//Header of the audio DMA buffer free/used lists; the 0x14-byte buffer entries
+//themselves are the unk_D_801FFB90 array that starts at D_801FFBA0.
+typedef struct AudioDMAState {
+/* 0x00 */ u8 initialized;
+/* 0x01 */ char pad01[3];
+/* 0x04 */ void* unk_04;
+/* 0x08 */ void* unk_08;
+/* 0x0C */ s32 unk_0C;
+} AudioDMAState; //sizeof 0x10
 
 //5FF30
 //linked list probably, heap related?
@@ -896,9 +922,9 @@ typedef struct unk_D_801FFB90 {
 } unk_D_801FFB90; //sizeof 0x14
 
 typedef struct ContMain {
-/* 0x00 */ u16 buttons0;
-/* 0x02 */ u16 buttons1;
-/* 0x04 */ u16 buttons2;
+/* 0x00 */ u16 buttons0; //held buttons
+/* 0x02 */ u16 buttons1; //pressed since the last Controller_SnapshotButtons
+/* 0x04 */ u16 buttons2; //pressed this frame
 /* 0x06 */ s16 stickX;
 /* 0x08 */ s16 stickY;
 /* 0x0A */ f32 stickAngle;
@@ -1047,7 +1073,7 @@ typedef struct GraphicStruct {
 /*0x12880*/     s8 unk12880[0x4000]; //mtx's for shadows?
 /*0x16880*/     Mtx colliderTransforms[128][3]; // may be wrong.
 /*0x1C880*/     s8 unk1c880[0x2000];
-/*0x1E880*/     Mtx unk1e880[74]; //may be used for "CTTask"s
+/*0x1E880*/     Mtx mtxBuffer[74]; //may be used for "CTTask"s
 } GraphicStruct; //sizeof 0x1FB00
 
 typedef struct Shadow {
@@ -1118,9 +1144,7 @@ typedef struct StageMapData {
 } StageMapData;
 
 typedef struct LevelScope {
-/* 0x00 */ s32 unk0;
-/* 0x04 */ s32 unk4;
-/* 0x08 */ s32 unk8;
+/* 0x00 */ Vec3f spawnPos;
 /* 0x0C */ s32 unkC;
 /* 0x10 */ s32 renderDistance;
 /* 0x14 */ s32 unk14;
@@ -1162,8 +1186,8 @@ typedef struct Anim {
 } Anim;
 
 typedef struct AnimPointer {
-/* 0x00 */ s32* noFrames; // number of frames
-/* 0x04 */ s32* noObjects; // number of objects
+/* 0x00 */ s32* numFrames; // number of frames
+/* 0x04 */ s32* numObjects; // number of objects
 /* 0x08 */ Mtx* animation; // the Mtx data for the animation
 } AnimPointer;
 
@@ -1190,7 +1214,8 @@ typedef struct unk801749B0 {
 } unk801749B0;
 
 typedef struct unk80174A50 {
-/* 0x00 */ char unk_00[0xB40];
+/* 0x000 */ f32 unk_000[90][4];
+/* 0x5A0 */ f32 unk_5A0[90][4];
 } unk80174A50;
 
 typedef struct unk80175590 {
@@ -1221,8 +1246,12 @@ typedef struct unk80175608 {
 } unk80175608;
 
 typedef struct unk80170E68 {
-/* 0x00 */ s32 unk_00;
-/* 0x04 */ char unk_04[0x804];
+/* 0x000 */ s32 unk_00;
+/* 0x004 */ s32 unk_04;
+/* 0x008 */ f32 unk_08[128];
+/* 0x208 */ f32 unk_208[128];
+/* 0x408 */ f32 unk_408[128];
+/* 0x608 */ f32 unk_608[128];
 } unk80170E68;
 
 /* structs */

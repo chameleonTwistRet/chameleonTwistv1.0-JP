@@ -24,7 +24,7 @@ s32 osPfsIsPlug(OSMesgQueue* mq, u8* pattern) {
         ret = __osSiRawStartDma(OS_READ, &__osPfsPifRam);
         osRecvMesg(mq, &msg, OS_MESG_BLOCK);
 
-        __osPfsGetInitData(&bitpattern, &contData[0]);
+        __osPfsGetInitData(&bitpattern, contData);
 
         for (channel = 0; channel < __osMaxControllers; channel++) {
             if ((contData[channel].status & CONT_ADDR_CRC_ER) == 0) {

@@ -1,5 +1,7 @@
 #include "common.h"
 
+void func_800AEB48(Poly*);
+
 // Auth: Rain, revo, simonlindholm
 void DummiedPrintf3(char* arg0, ...) { /* variadic args: simonlindholm*/
 }
@@ -7,7 +9,7 @@ void DummiedPrintf3(char* arg0, ...) { /* variadic args: simonlindholm*/
 /**
  * @brief Wraps an angle to the range [0, 360).
  * @param angle: pointer to the angle to wrap.
- * 
+ *
  * @return: (the wrapped angle).
  */
 
@@ -24,18 +26,18 @@ void WrapAngle(f32* angle) {
 
 /**
  * @brief Compares two angles (degrees), wrapping them to the range [0, 360) before comparing.
- *      
+ *
  * @param angle1: the first angle to compare.
  * @param angle2: the second angle to compare.
- * 
+ *
  * @return: 1 if angle1 is greater than angle2, -1 if angle1 is less than angle2, and 0 if they are equal.
  */
 s32 CompareWrappedAngles(f32 angle1, f32 angle2) {
     s32 ret;
-    
+
     WrapAngle(&angle1);
     WrapAngle(&angle2);
-    
+
     if (angle1 == angle2) {
         ret = 0;
     } else {
@@ -57,145 +59,152 @@ s32 CompareWrappedAngles(f32 angle1, f32 angle2) {
     return ret;
 }
 
-void func_800D75B4(Poly *arg0, s32 arg1) {
+void Poly_BuildInfoLevel(Poly *poly, s32 level) {
     char pad[4];
-    Vec3f sp70;
-    Vec3f temp;
-    f32 temp_f0_2;
-    f32 temp_f0_3;
-    f32 temp_f0_4;
-    f32 temp_f18_3;
-    f32 sp50;
+    Vec3f edge1;          // first edge vector (unkVec - offset)
+    Vec3f edge2;          // second edge vector (unkVec2 - offset)
+    f32 lenEdge1;         // length of edge1 / v1 before normalisation
+    f32 lenNormal;        // length of normal before normalisation
+    f32 lenEdge1_2;       // length of unnormalized edge1 in case 3
+    f32 dotV2T;           // dot(v2, t)
+    f32 dotV1T;           // dot(v1, t)
     char pad2[8];
-    unkVecStruct *temp_v0;
-    
-    switch (arg1) {
-        case 1:
-            func_800AEB48(arg0);
-            break;
-    
-        case 2:
-            // Orthonormalisation Algorithm
-            
-            temp_v0 = &arg0->unkVectorStruct;
+    OrthBasis* basis;     // pointer to the orthonormal basis in poly
 
-            // s = unkVec - offset
-            sp70.x = arg0->unkVec.x - arg0->offset.x;
-            sp70.y = arg0->unkVec.y - arg0->offset.y;
-            sp70.z = arg0->unkVec.z - arg0->offset.z;
 
-            // t = unkVec2 - offset
-            temp.x = arg0->unkVec2.x - arg0->offset.x;
-            temp.y = arg0->unkVec2.y - arg0->offset.y;
-            temp.z = arg0->unkVec2.z - arg0->offset.z;
+    switch (level) {
+    case 1:
+        func_800AEB48(poly);
+        break;
 
-            // v1 = s = (unkvec - off)
-            temp_v0->vec1 = sp70;
+    case 2:
+        basis = &poly->orthBasis;
 
-            // ||v1||
-            temp_f0_2 = __sqrtf((arg0->unkVectorStruct.vec1.z * arg0->unkVectorStruct.vec1.z) + ((arg0->unkVectorStruct.vec1.x * arg0->unkVectorStruct.vec1.x) + (arg0->unkVectorStruct.vec1.y * arg0->unkVectorStruct.vec1.y)));
-            
-            // if length of v1 is 0, not a poly
-            if (temp_f0_2 == 0.0) {
-                arg0->unk_00 = -1;
-                return;
-            }
+        edge1.x = poly->edgeVec.x - poly->origin.x;
+        edge1.y = poly->edgeVec.y - poly->origin.y;
+        edge1.z = poly->edgeVec.z - poly->origin.z;
 
-            // normalise s.t. v1 = v1/||v1||
-            temp_v0->vec1.x /= temp_f0_2;
-            temp_v0->vec1.y /= temp_f0_2;
-            temp_v0->vec1.z /= temp_f0_2;
+        edge2.x = poly->edgeVec2.x - poly->origin.x;
+        edge2.y = poly->edgeVec2.y - poly->origin.y;
+        edge2.z = poly->edgeVec2.z - poly->origin.z;
 
-            // let n = (s x t), hence (s orth n) and (s orth t)
-            temp_v0->normal.x = (sp70.y * temp.z) - (sp70.z * temp.y);
-            temp_v0->normal.y = (sp70.z * temp.x) - (sp70.x * temp.z);
-            temp_v0->normal.z = (sp70.x * temp.y) - (sp70.y * temp.x);
+        // v1 = edge1
+        basis->vec1 = edge1;
 
-            // ||n||
-            temp_f0_3 = __sqrtf((temp_v0->normal.z * temp_v0->normal.z) + ((temp_v0->normal.x * temp_v0->normal.x) + (temp_v0->normal.y * temp_v0->normal.y)));
-            if (temp_f0_3 == 0.0) {
-                arg0->unk_00 = -1;
-                return;
-            }
+        // lenEdge1 = ||v1||
+        lenEdge1 = __sqrtf((basis->vec1.z * basis->vec1.z) + ((basis->vec1.x * basis->vec1.x) + (basis->vec1.y * basis->vec1.y)));
 
-            // normalise s.t. n = n/||n||
-            temp_v0->normal.x = temp_v0->normal.x / temp_f0_3;
-            temp_v0->normal.y = temp_v0->normal.y / temp_f0_3;
-            temp_v0->normal.z = temp_v0->normal.z / temp_f0_3;
+        if (lenEdge1 == 0.0) {
+            poly->infoLevel = -1;
+            return;
+        }
 
-            // v2 = (n x v1) -> (v2 orth n) and (v2 orth v1)
-            // Given two normalised orthogonal vectors, their cross product will also be normalised
-    
-            // from earlier (s orth n) -> (v1 orth n), preserved through normalisation
-            temp_v0->vec2.x = (temp_v0->normal.y * temp_v0->vec1.z) - (temp_v0->vec1.y * temp_v0->normal.z);
-            temp_v0->vec2.y = (temp_v0->normal.z * temp_v0->vec1.x) - (temp_v0->vec1.z * temp_v0->normal.x);
-            temp_v0->vec2.z = (temp_v0->normal.x * temp_v0->vec1.y) - (temp_v0->vec1.x * temp_v0->normal.y);
-            break;
-    
-        case 3:
-            sp70.x = arg0->unkVec.x - arg0->offset.x;
-            sp70.y = arg0->unkVec.y - arg0->offset.y;
-            sp70.z = arg0->unkVec.z - arg0->offset.z;
-            temp.x = arg0->unkVec2.x - arg0->offset.x;
-            temp.y = arg0->unkVec2.y - arg0->offset.y;
-            temp.z = arg0->unkVec2.z - arg0->offset.z;
-            sp50 = (arg0->unkVectorStruct.vec1.z * temp.z) + ((temp.x * arg0->unkVectorStruct.vec1.x) + (temp.y * arg0->unkVectorStruct.vec1.y));
-            //why does having this here twice fix most of the codegen?
-            temp_f18_3 = (arg0->unkVectorStruct.vec2.x * temp.z) + ((temp.x * arg0->unkVectorStruct.vec2.x) + (temp.y * arg0->unkVectorStruct.vec2.y));
-            temp_f18_3 = (arg0->unkVectorStruct.vec2.z * temp.z) + ((temp.x * arg0->unkVectorStruct.vec2.x) + (temp.y * arg0->unkVectorStruct.vec2.y));
-            temp_f0_4 = __sqrtf(((sp70.x * sp70.x) + (sp70.y * sp70.y)) + (sp70.z * sp70.z));
-            if ((temp_f0_4 * temp_f18_3) == 0.0) {
-                arg0->unk_00 = -1;
-                DummiedPrintf3("\nIt's not a polygon.**********************\n");
-                return;
-            }
-            arg0->unk_84.x = temp_f0_4;
-            arg0->unk_8C.x = sp50;
-            arg0->unk_8C.y = temp_f18_3;
-            arg0->unk_70 = 0.0f;
-            arg0->unk_7C.x = 0.0f;
-            arg0->unk_7C.y = 0.0f;
-            arg0->unk_84.y = 0.0f;
-            arg0->unk_6C = arg0->unk_8C.y * ((f32) (1.0 / (arg0->unk_84.x * arg0->unk_8C.y)));
-            arg0->unk_74 = (-sp50) * ((f32) (1.0 / (arg0->unk_84.x * arg0->unk_8C.y)));
-            arg0->unk_78 = arg0->unk_84.x * ((f32) (1.0 / (arg0->unk_84.x * arg0->unk_8C.y)));
-            break;
-    
-        default:
-        case -1:
-        case 0:
-            break;
+        // v1 = v1 / ||v1||
+        basis->vec1.x /= lenEdge1;
+        basis->vec1.y /= lenEdge1;
+        basis->vec1.z /= lenEdge1;
 
+        // normal = edge1 x edge2
+        basis->normal.x = (edge1.y * edge2.z) - (edge1.z * edge2.y);
+        basis->normal.y = (edge1.z * edge2.x) - (edge1.x * edge2.z);
+        basis->normal.z = (edge1.x * edge2.y) - (edge1.y * edge2.x);
+
+        // lenNormal = ||normal||
+        lenNormal = __sqrtf((basis->normal.z * basis->normal.z) + ((basis->normal.x * basis->normal.x) + (basis->normal.y * basis->normal.y)));
+        if (lenNormal == 0.0) {
+            poly->infoLevel = -1;
+            return;
+        }
+
+        // normal = normal / ||normal||
+        basis->normal.x = basis->normal.x / lenNormal;
+        basis->normal.y = basis->normal.y / lenNormal;
+        basis->normal.z = basis->normal.z / lenNormal;
+
+        // v2 = normal x v1
+        // (v1 orth normal) preserved from (edge1 orth normal)
+        // result is automatically normalised since both inputs are orthonormal
+        basis->vec2.x = (basis->normal.y * basis->vec1.z) - (basis->vec1.y * basis->normal.z);
+        basis->vec2.y = (basis->normal.z * basis->vec1.x) - (basis->vec1.z * basis->normal.x);
+        basis->vec2.z = (basis->normal.x * basis->vec1.y) - (basis->vec1.x * basis->normal.y);
+        break;
+
+    case 3:
+        edge1.x = poly->edgeVec.x - poly->origin.x;
+        edge1.y = poly->edgeVec.y - poly->origin.y;
+        edge1.z = poly->edgeVec.z - poly->origin.z;
+        edge2.x = poly->edgeVec2.x - poly->origin.x;
+        edge2.y = poly->edgeVec2.y - poly->origin.y;
+        edge2.z = poly->edgeVec2.z - poly->origin.z;
+
+        // dot(v1, edge2): projection of edge2 onto v1
+        dotV1T = (poly->orthBasis.vec1.z * edge2.z) + ((edge2.x * poly->orthBasis.vec1.x) + (edge2.y * poly->orthBasis.vec1.y));
+
+        // dot(v2, edge2): projection of edge2 onto v2
+        // (duplicated to fix codegen)
+        dotV2T = (poly->orthBasis.vec2.x * edge2.z) + ((edge2.x * poly->orthBasis.vec2.x) + (edge2.y * poly->orthBasis.vec2.y));
+        dotV2T = (poly->orthBasis.vec2.z * edge2.z) + ((edge2.x * poly->orthBasis.vec2.x) + (edge2.y * poly->orthBasis.vec2.y));
+
+        // lenEdge1_2 = ||edge1||
+        lenEdge1_2 = __sqrtf(((edge1.x * edge1.x) + (edge1.y * edge1.y)) + (edge1.z * edge1.z));
+
+        if ((lenEdge1_2 * dotV2T) == 0.0) {
+            poly->infoLevel = -1;
+            DummiedPrintf3("\nIt's not a polygon.**********************\n");
+            return;
+        }
+
+        poly->edgeData.x = lenEdge1_2;
+        poly->projData.x = dotV1T;
+        poly->projData.y = dotV2T;
+        poly->invMtxUSkew = 0.0f;
+        poly->uvOffset.x = 0.0f;
+        poly->uvOffset.y = 0.0f;
+        poly->edgeData.y = 0.0f;
+
+        // Build inverse UV matrix scaled by 1/(lenEdge1_2 * dotV2T)
+        poly->invMtxU = poly->projData.y * ((f32) (1.0 / (poly->edgeData.x * poly->projData.y)));
+        poly->invMtxVSkew = (-dotV1T)      * ((f32) (1.0 / (poly->edgeData.x * poly->projData.y)));
+        poly->invMtxV = poly->edgeData.x * ((f32) (1.0 / (poly->edgeData.x * poly->projData.y)));
+        break;
+
+    default:
+    case -1:
+    case 0:
+        break;
     }
 
-    arg0->unk_00 = arg1;
+    poly->infoLevel = level;
 }
 
-void OnlyCheckPolyInfoLevel(Poly* arg0, s32 arg1, char* arg2) {
-    if (arg0->unk_00 < arg1) {
+// originally named: OnlyCheckPolyInfoLevel by the devs
+void Poly_AssertInfoLevel(Poly* poly, s32 levelCheck, char* funcStr) {
+    if (poly->infoLevel < levelCheck) {
         DummiedPrintf3("OnlyCheckPolyInfoLevel: Need More Info Level\n");
-        DummiedPrintf3("Function: %s\n", arg2);
+        DummiedPrintf3("Function: %s\n", funcStr);
     }
 }
 
-void func_800D79E4(Poly* arg0, s32 arg1) {
-    s32 i = arg0->unk_00 + 1;
-    if (arg0->unk_00 < arg1) {
-        for (; arg1 >= i; i++) {
-            func_800D75B4(arg0, i);
-        }        
+// Incrementally builds poly info up to the requested level.
+// Levels are cumulative, each depends on the previous being computed.
+void Poly_EnsureInfoLevel (Poly* poly, s32 level) {
+    s32 currLevel = poly->infoLevel + 1;
+    if (poly->infoLevel < level) {
+        for (; level >= currLevel; currLevel++) {
+            Poly_BuildInfoLevel(poly, currLevel);
+        }
     }
 }
 
 /**
  * @brief Projects a given 3D vector onto a polygon in 3D space, returning the projected vector.
- * 
+ *
  * @param[in,out]  vec:    the vector to project.
  * @param          perspX: the X coordinate of the perspective point.
  * @param          perspY: the Y coordinate of the perspective point.
  * @param          perspZ: the Z coordinate of the perspective point.
  * @param          poly:   the polygon to project onto.
- * 
+ *
  * @return (Vec3f) the projected vector.
  */
 Vec3f* ProjectOnPolygon(Vec3f* vec, f32 perspX, f32 perspY, f32 perspZ, Poly* poly) {
@@ -205,21 +214,21 @@ Vec3f* ProjectOnPolygon(Vec3f* vec, f32 perspX, f32 perspY, f32 perspZ, Poly* po
     f32 dist;
     f32 p_x2;
 
-    OnlyCheckPolyInfoLevel(poly, 2, "ProjectOnPolygon");
-    p_x = poly->unkVectorStruct.vec1.x;
-    p_x2 = poly->unkVectorStruct.vec2.x;
-    dotProduct = (poly->unkVectorStruct.vec1.z * perspZ) + ((perspX * p_x) + (perspY * poly->unkVectorStruct.vec1.y));
-    dist = (poly->unkVectorStruct.vec2.z * perspZ) + ((perspX * p_x2) + (perspY * poly->unkVectorStruct.vec2.y));
+    Poly_AssertInfoLevel(poly, 2, "ProjectOnPolygon");
+    p_x = poly->orthBasis.vec1.x;
+    p_x2 = poly->orthBasis.vec2.x;
+    dotProduct = (poly->orthBasis.vec1.z * perspZ) + ((perspX * p_x) + (perspY * poly->orthBasis.vec1.y));
+    dist = (poly->orthBasis.vec2.z * perspZ) + ((perspX * p_x2) + (perspY * poly->orthBasis.vec2.y));
     vec_proj.x = (p_x2 * dist) + (dotProduct * p_x);
-    vec_proj.y = (poly->unkVectorStruct.vec2.y * dist) + (dotProduct * poly->unkVectorStruct.vec1.y);
-    vec_proj.z = (poly->unkVectorStruct.vec2.z * dist) + (dotProduct * poly->unkVectorStruct.vec1.z);
+    vec_proj.y = (poly->orthBasis.vec2.y * dist) + (dotProduct * poly->orthBasis.vec1.y);
+    vec_proj.z = (poly->orthBasis.vec2.z * dist) + (dotProduct * poly->orthBasis.vec1.z);
     *vec = vec_proj;
     return vec;
 }
 
-/** 
- * @brief Converts a 3D vector from world space to local space. 
- * 
+/**
+ * @brief Converts a 3D vector from world space to local space.
+ *
  * @param[in,out]  outVec: Pointer to a Vec3f where the resulting local-space vector will be stored.
  * @param          vec:    The 3D vector to be converted from world space to local space.
  * @param          poly:   The polygon with respect to which the conversion should be performed.
@@ -228,24 +237,24 @@ Vec3f* ProjectOnPolygon(Vec3f* vec, f32 perspX, f32 perspY, f32 perspZ, Poly* po
  */
 Vec3f* WorldToLocal(Vec3f* outVec, Vec3f vec, Poly* poly) {
     // Take P to be a matrix with the columns being the x, y, and z vectors of the poly struct
-    // P(v) = outVec, where v is the input vector agter being translated by an offset vector
+    // P(v) = outVec, where v is the input vector after being translated by an offset vector
     Vec3f temp_vec;
- 
-    OnlyCheckPolyInfoLevel(poly, 2, "WorldToLocal");
-    vec.x = vec.x - poly->offset.x;
-    vec.y = vec.y - poly->offset.y;
-    vec.z = vec.z - poly->offset.z;
-    temp_vec.x = (poly->unkVectorStruct.vec1.z * vec.z) + ((vec.x * poly->unkVectorStruct.vec1.x) + (vec.y * poly->unkVectorStruct.vec1.y));
-    temp_vec.y = (poly->unkVectorStruct.vec2.z * vec.z) + ((vec.x * poly->unkVectorStruct.vec2.x) + (vec.y * poly->unkVectorStruct.vec2.y));
-    temp_vec.z = (poly->unkVectorStruct.normal.z * vec.z) + ((vec.x * poly->unkVectorStruct.normal.x) + (vec.y * poly->unkVectorStruct.normal.y));
+
+    Poly_AssertInfoLevel(poly, 2, "WorldToLocal");
+    vec.x = vec.x - poly->origin.x;
+    vec.y = vec.y - poly->origin.y;
+    vec.z = vec.z - poly->origin.z;
+    temp_vec.x = (poly->orthBasis.vec1.z * vec.z) + ((vec.x * poly->orthBasis.vec1.x) + (vec.y * poly->orthBasis.vec1.y));
+    temp_vec.y = (poly->orthBasis.vec2.z * vec.z) + ((vec.x * poly->orthBasis.vec2.x) + (vec.y * poly->orthBasis.vec2.y));
+    temp_vec.z = (poly->orthBasis.normal.z * vec.z) + ((vec.x * poly->orthBasis.normal.x) + (vec.y * poly->orthBasis.normal.y));
     *outVec = temp_vec;
 
     return outVec;
 }
 
-/** 
- * @brief Converts a 3D vector from local space to world space. 
- * 
+/**
+ * @brief Converts a 3D vector from local space to world space.
+ *
  * @param[in,out] outVec:     Pointer to a Vec3f where the resulting world-space vector will be stored.
  * @param         vec:        The 3D vector to be converted from local space to world space.
  * @param         poly:       The polygon with respect to which the conversion should be performed.
@@ -255,41 +264,43 @@ Vec3f* WorldToLocal(Vec3f* outVec, Vec3f vec, Poly* poly) {
 Vec3f* LocalToWorld(Vec3f* outVec, Vec3f vec, Poly* poly) {
     Vec3f temp_vec;
 
-    OnlyCheckPolyInfoLevel(poly, 2, "LocalToWorld");
-    temp_vec.x = (poly->unkVectorStruct.normal.x * vec.z) + ((vec.x * poly->unkVectorStruct.vec1.x) + (vec.y * poly->unkVectorStruct.vec2.x));
-    temp_vec.y = (poly->unkVectorStruct.normal.y * vec.z) + ((vec.x * poly->unkVectorStruct.vec1.y) + (vec.y * poly->unkVectorStruct.vec2.y));
-    temp_vec.z = (poly->unkVectorStruct.normal.z * vec.z) + ((vec.x * poly->unkVectorStruct.vec1.z) + (vec.y * poly->unkVectorStruct.vec2.z));
-    temp_vec.x += poly->offset.x;
-    temp_vec.y += poly->offset.y;
-    temp_vec.z += poly->offset.z;
+    Poly_AssertInfoLevel(poly, 2, "LocalToWorld");
+    temp_vec.x = (poly->orthBasis.normal.x * vec.z) + ((vec.x * poly->orthBasis.vec1.x) + (vec.y * poly->orthBasis.vec2.x));
+    temp_vec.y = (poly->orthBasis.normal.y * vec.z) + ((vec.x * poly->orthBasis.vec1.y) + (vec.y * poly->orthBasis.vec2.y));
+    temp_vec.z = (poly->orthBasis.normal.z * vec.z) + ((vec.x * poly->orthBasis.vec1.z) + (vec.y * poly->orthBasis.vec2.z));
+    temp_vec.x += poly->origin.x;
+    temp_vec.y += poly->origin.y;
+    temp_vec.z += poly->origin.z;
     *outVec = temp_vec;
     return outVec;
 }
 
 /**
- * @brief Checks if a given 3D vector is inside a polygon in 3D space.
- * 
- * @param vec:  the vector to check.
- * @param poly: the polygon to check against
- * 
- * @return (s32 bool) 1 if the vector is inside the polygon, 0 otherwise.
+ * @brief Checks if a given point is inside a polygon using barycentric coordinates.
+ *        Computes barycentric coordinates (U, V) of the point relative to the polygon,
+ *        and returns 1 if the point lies within the triangle (U >= 0, V >= 0, U+V <= 1).
+ *
+ * @param vec:  the point to check.
+ * @param poly: the polygon to check against. Must be at info level 3.
+ *
+ * @return (s32 bool) 1 if the point is inside the polygon, 0 otherwise.
  */
 s32 IsInsidePolygon(Vec3f vec, Poly* poly) {
-   f32 x_0;
-   f32 y_0;
-   OnlyCheckPolyInfoLevel(poly, 3, "IsInsidePolygon");
-   x_0 = (poly->unk_74 * vec.y) + (poly->unk_6C * vec.x);
-   y_0 = (poly->unk_78 * vec.y) + (poly->unk_70 * vec.x);
-   if (x_0 < -0.0001) {
-       return 0;
-   }
-   if (y_0 < -0.0001) {
-       return 0;
-   }
-   if (1.0001 < (x_0 + y_0)) {
-       return 0;
-   }
-   return 1;
+    f32 baryU;
+    f32 baryV;
+    Poly_AssertInfoLevel(poly, 3, "IsInsidePolygon");
+    baryU = (poly->invMtxVSkew * vec.y) + (poly->invMtxU * vec.x);
+    baryV = (poly->invMtxV * vec.y) + (poly->invMtxUSkew * vec.x);
+    if (baryU < -0.0001) {
+        return 0;
+    }
+    if (baryV < -0.0001) {
+        return 0;
+    }
+    if (1.0001 < (baryU + baryV)) {
+        return 0;
+    }
+    return 1;
 }
 
 
@@ -297,21 +308,21 @@ extern char D_801107D0[]; // = "IsOnPolygon" "";
 
 /**
  * @brief Uses the dot product of the point and the polygon's normal vector to determine if the point is on the polygon.
- * 
+ *
  * @param vec:  the point to check
  * @param poly: the polygon to check
- * 
+ *
  * @return (s32 bool) 1 if the point is on the polygon, 0 otherwise
  */
 s32 IsOnPolygon(Vec3f vec, Poly* poly) {
     f32 dotProduct;
-    
-    OnlyCheckPolyInfoLevel(poly, 2, "IsOnPolygon");
-    vec.x -= poly->offset.x;
-    vec.y -= poly->offset.y;
-    vec.z -= poly->offset.z;
-    
-    dotProduct = vec.z * poly->unkVectorStruct.normal.z + (vec.x * poly->unkVectorStruct.normal.x + vec.y * poly->unkVectorStruct.normal.y);
+
+    Poly_AssertInfoLevel(poly, 2, "IsOnPolygon");
+    vec.x -= poly->origin.x;
+    vec.y -= poly->origin.y;
+    vec.z -= poly->origin.z;
+
+    dotProduct = vec.z * poly->orthBasis.normal.z + (vec.x * poly->orthBasis.normal.x + vec.y * poly->orthBasis.normal.y);
 
     if (dotProduct < -1.0) {
         return 0;
@@ -324,7 +335,7 @@ s32 IsOnPolygon(Vec3f vec, Poly* poly) {
 
 /**
  * @brief Calculates the result of a given rotation matrix multiplied by a given vector.
- * 
+ *
  * @param[in,out]   outVec:                 pointer to the output vector
  * @param           inpVec:                 the input vector
  * @param           theta:                  the angle of rotation
@@ -363,7 +374,7 @@ Vec3f* RotateVector3D(Vec3f* outVec, Vec3f inpVec, f32 theta, s32 rotateAroundAx
         temp_vec.y = (sin * inpVec.x) + (cos * inpVec.y);
         break;
     }
-    
+
     *outVec = temp_vec;
     return outVec;
 }
@@ -371,25 +382,25 @@ Vec3f* RotateVector3D(Vec3f* outVec, Vec3f inpVec, f32 theta, s32 rotateAroundAx
 
 /**
  * @brief Return if a point is within a certain radius of another point.
- * 
+ *
  * @param   vec1:           first vector
  * @param   vec2:           second vector
  * @param   approxRadius:   radius to check
- * 
+ *
  * @return (s32 bool) 1 if within radius, 0 if not
  */
 s32 IsNearPoint(Vec3f vec1, Vec3f vec2, f32 approxRadius) {
-    f32 x_0;
-    f32 z_0;
-    f32 y_0;
+    f32 dx;
+    f32 dz;
+    f32 dy;
     s32 ret;
 
     // Find a vector to represent the distance between the two points
-    x_0 = vec1.x - vec2.x;
-    y_0 = vec1.y - vec2.y;
-    z_0 = vec1.z - vec2.z;
-    
-    if (NORM_3(x_0, y_0, z_0) < approxRadius) {     // Check if said vector is within the given radius from the origin
+    dx = vec1.x - vec2.x;
+    dy = vec1.y - vec2.y;
+    dz = vec1.z - vec2.z;
+
+    if (NORM_3(dx, dy, dz) < approxRadius) {     // Check if said vector is within the given radius from the origin
         ret = 1;
     } else {
         ret = 0;
@@ -399,10 +410,10 @@ s32 IsNearPoint(Vec3f vec1, Vec3f vec2, f32 approxRadius) {
 
 /**
  * @brief compares two Vec3f structs. [Both are neccessary for checksum]
- * 
+ *
  * @param vec1: first vector
  * @param vec2: second vector
- * 
+ *
  * @return (s32 bool) 1 if equal, 0 if not
  */
 s32 Vec3f_Equals(Vec3f vec1, Vec3f vec2) {
@@ -411,10 +422,10 @@ s32 Vec3f_Equals(Vec3f vec1, Vec3f vec2) {
 
 /**
  * @brief compares two Vec3f structs. [Both are neccessary for checksum]
- * 
+ *
  * @param vec1: first vector
  * @param vec2: second vector
- * 
+ *
  * @return (s32 bool) 1 if equal, 0 if not
  */
 s32 Vec3f_EqualsCopy(Vec3f vec1, Vec3f vec2) {
@@ -423,7 +434,7 @@ s32 Vec3f_EqualsCopy(Vec3f vec1, Vec3f vec2) {
 
 /**
  * @brief Sets the input vector to have given values.
- * 
+ *
  * @param vec: pointer for vector to set
  * @param x: x value to set
  * @param y: y value to set
@@ -437,7 +448,7 @@ void Vec3f_Set(Vec3f* vec, f32 x, f32 y, f32 z) {
 
 /**
  * @brief Sets the input vector to the zero vector.
- * 
+ *
  * @param vec: pointer for vector to zero
  */
 void Vec3f_Zero(Vec3f* vec) {

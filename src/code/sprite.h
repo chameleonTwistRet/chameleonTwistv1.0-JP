@@ -160,7 +160,7 @@ typedef struct Struct_800714C8 {
 } Struct_800714C8;
 
 typedef struct Effect_TypeAL_Data {
-    /* 0x00 */ s8 unk_00[0x10];
+    /* 0x00 */ char unk_00[16];
     /* 0x10 */ u8 unk_10;
 } Effect_TypeAL_Data; //sizeof 0x11
 
@@ -299,20 +299,20 @@ typedef struct chameleonEyeListEntry {
 
 /* extern symbols */
 extern chameleonEyeListEntry chameleonEyeList[6];
-extern s32 D_80176960[];
+extern s32 gContPakPresent[];
 extern s32 D_80176980[];
 extern s32 gUnkRumbleArray[];
 void osMotorStop(OSPfs *pfs);
 void RecordTime_SetTo(s32 arg0, TimeVal* arg1);
 void func_800BE2C0(void);
-extern s32 D_80176960[];
+extern s32 gContPakPresent[];
 extern s32 gRumbleTime[];
 extern f32 D_800FEA18;
 extern f32 D_800FEA1C;
 extern u32 D_800FEDB4;
 extern s32 D_800FEDB8;
 extern Tongue* D_80176B70;
-extern PlayerActor* D_80176B74;
+extern PlayerActor* gPlayerActorPtr;
 extern Camera* D_80176B78;
 extern char D_8010CA1C[];
 extern char D_8010CA54[];
@@ -348,16 +348,14 @@ extern Gfx static0_gfx1_Gfx[];
 extern Gfx static0_gfx2_Gfx[];
 extern Effect* D_800FE1A0;
 extern s32 Battle_GameType;
-extern struct_800FE4E4 D_800FE4E4[2];
-extern struct_800FE4E4 D_800FE4E8[2];
+extern struct_800FE4E4 D_800FE4E4[4];
 extern f32 D_800FE6F4[];
 extern u8 D_800FE704[];
 extern struct_800FE54C D_800FE54C[];
-extern s32 D_80174980;
+extern s32 gLevelFlowState;
 extern s16 D_800FFEBC;
 extern u8 D_800FE6F0;
 extern s32 D_800FE708;
-extern u8 gLevelAccessBitfeild;
 extern Struct_800714C8 D_800FE70C;
 extern s16 sStageCrownTotals[];
 extern TimeVal D_80200B85[];
@@ -407,7 +405,7 @@ void Effect_TypeAC_Init(f32 posX, f32 posY, f32 posZ, f32 arg3, f32 duration);
 void func_80088474(s32, s32);
 void func_800882D0(s32, s32);
 void func_80088474(s32, s32);
-void func_80027138(AnimPointer* arg0, s32* arg1, s32* arg2, Mtx** arg3);
+void Anim_LoadPointer(AnimPointer* arg0, s32* arg1, s32* arg2, Mtx** arg3);
 void func_80027240(Mtx** arg0, Mtx* arg1, s32 arg2, s32 arg3);
 s32 PutDList(Mtx** arg0, Gfx** arg1, Gfx* arg2);
 void Effect_TypeAT_Init(f32, f32, f32, f32, f32, f32, s32, char*);
@@ -415,7 +413,7 @@ void Effect_TypeAU_Init(f32, f32, f32, f32, s32, s32, f32, f32, f32);
 void Effect_TypeAS_Init(f32, f32, f32, f32, f32, f32, f32, f32, s32, s32, s32, s32, s32, s32);
 s32 RecordTime_ParseToSecs(TimeVal*);
 s32 RecordTime_GetByStageRank(s32, s32, s32*, s32*, s32*, s32*);
-void Effect_StageRecordTime_Init(f32 arg0, f32 arg1, f32 arg2, u8 arg3, u8 arg4, u8 arg5, u8 arg6, f32 arg7, f32 arg8);
+void Effect_StageRecordTime_Init(f32 arg0, f32 arg1, f32 arg2, s32 arg3, u8 arg4, u8 arg5, u8 arg6, f32 arg7, f32 arg8);
 void func_80054284(void);
 void func_80053CA0(void);
 void Effect_TypeAY_Init(Struct_80076EA0* arg0, f32 arg1, f32 arg2, s32 arg3, s32 arg4, s32* arg5, f32 arg6, f32 arg7, f32 arg8, f32 arg9);

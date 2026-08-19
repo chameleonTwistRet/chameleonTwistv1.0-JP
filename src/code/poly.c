@@ -4,11 +4,12 @@
 extern char D_801103D0[];
 
 extern f64 D_801104F8;
-extern Collider D_80236980[128];
+extern FieldObject D_80236980[128];
 extern s32 D_8020D8F4;
 extern f64 D_801106A0;
 extern f64 D_801106A8;
 
+extern f32 D_80108F90[];
 extern Vec3f D_80108F9C;
 extern Vec3f D_80108FA8;
 extern Vec3f D_80108FB4;
@@ -23,6 +24,7 @@ extern f32 D_80108FE4;
 extern s32 D_80108FE8;
 extern s32 D_80108FEC;
 extern Vec3f D_802489C8[8];
+extern s32 gShadowFlagsSet;
 
 /* Migrated BSS */
 //TODO: type this data correctly
@@ -64,9 +66,9 @@ Vec3f D_802489C8[8];
 char D_80248A28[0x08];
 
 void func_800D5394(PlayerActor*, Tongue*, Camera*, Vec3f*, Vec3f*, s32);
-void func_800D6864(PlayerActor*, Tongue*, Camera*, Vec3f*, Vec3f*);
-Collider* func_800CAF88(Vec3f, f32, f32);
-Collider* SearchPolygonBetween(Vec3f, Vec3f, s32, s32, s32);
+void GetCurrentCameraShot(PlayerActor*, Tongue*, Camera*, Vec3f*, Vec3f*);
+FieldObject* func_800CAF88(Vec3f, f32, f32);
+FieldObject* SearchPolygonBetween(Vec3f, Vec3f, s32, s32, s32);
 void OrderRectBounds(Rect3D*);
 void func_800C9748(Rect3D*, s32, s32);
 void func_800CA734(Vec3f*, Vec3f, f32, s32);
@@ -87,27 +89,27 @@ const char D_80110180[] = "\n";
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800C9600.s")
 
-void func_800C9704(Collider* arg0) {
+void func_800C9704(FieldObject* arg0) {
     D_8023696C = 0;
     func_800C9504(arg0);
 }
 
-void func_800C9728(Collider* arg0) {
+void func_800C9728(FieldObject* arg0) {
     func_800C9504(arg0);
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800C9748.s")
 
-s32 func_800C982C(Rect3D* arg0, Collider* arg1) {
+s32 func_800C982C(Rect3D* arg0, FieldObject* arg1) {
     s32 var_s3;
-    Collider* temp_s0;
-    Collider** var_s2;
+    FieldObject* temp_s0;
+    FieldObject** var_s2;
     s32 i;
 
     var_s3 = 0;
     D_8023696C = 0;
-    
-    for (i = 0, var_s2 = &D_80240898; i < gFieldCount; i++, var_s2++){
+
+    for (i = 0, var_s2 = &D_80240898; i < gFieldCount; i++, var_s2++) {
         temp_s0 = *var_s2;
         if (((temp_s0->unk_10 != 0x21) || (arg1->unk_6C == 0)) && (temp_s0->unk_114 & 2) && (temp_s0->unk_0C & 0x77)) {
             if (IfRectsIntersect(arg0, &temp_s0->unk_CC) == 0) {
@@ -117,7 +119,7 @@ s32 func_800C982C(Rect3D* arg0, Collider* arg1) {
                 func_800C9504(temp_s0);
                 var_s3++;
             }
-        }        
+        }
     }
     return var_s3;
 }
@@ -128,11 +130,11 @@ s32 func_800C982C(Rect3D* arg0, Collider* arg1) {
 
 // Checks if Poly's bounding box intersects with the given rectangle
 s32 IfPolyBoundIntersectsRect(Poly* poly, Rect3D* rect) {
-    if (poly->unk_00 < 0) {
+    if (poly->infoLevel < 0) {
         return 0;
     }
 
-    func_800D79E4(poly, 1);
+    Poly_EnsureInfoLevel (poly, 1);
 
     if (IfRectsIntersect(rect, &poly->boundBox) == 0) {
         return 0;
@@ -168,12 +170,12 @@ void DistanceWithLine(Vec3f point, Vec2f lineStart, Vec2f lineEnd, f32* distance
     deltaYLine = lineEnd.y - lineStart.y;
 
     lineSegmentLengthSquared = (SQ(deltaXLine)) + (SQ(deltaYLine));
-    
+
     if (lineSegmentLengthSquared == 0.0f) {
         DummiedPrintf3("DistanceWithLine(): determinant is 0\n");
     }
     projectionFactor = ((deltaXLine * deltaXPoint) + (deltaYLine * deltaYPoint)) / lineSegmentLengthSquared;
-    
+
     if (projectionFactor <= 0.0f) {
         closestPoint2D = lineStart;
     } else if (projectionFactor >= 1.0f) {
@@ -182,7 +184,7 @@ void DistanceWithLine(Vec3f point, Vec2f lineStart, Vec2f lineEnd, f32* distance
         closestPoint2D.x = ((1.0f - projectionFactor) * lineStart.x) + (projectionFactor * lineEnd.x);
         closestPoint2D.y = ((1.0f - projectionFactor) * lineStart.y) + (projectionFactor * lineEnd.y);
     }
-    
+
     *distance = Distance3DTo2DProjectedXY(point, closestPoint2D);
 
     closestPoint3DLocal.x = closestPoint2D.x;
@@ -198,8 +200,8 @@ void MinimunDistance(Vec3f arg0, Poly* polygon, UnkMinDistance arg5) {
 
     WorldToLocal(&arg0, arg0, polygon);
     var_v0 = 0;
-    temp_f0 = (polygon->unk_74 * arg0.y) + (polygon->unk_6C * arg0.x);
-    temp_f2 = (polygon->unk_78 * arg0.y) + (polygon->unk_70 * arg0.x);
+    temp_f0 = (polygon->invMtxVSkew * arg0.y) + (polygon->invMtxU * arg0.x);
+    temp_f2 = (polygon->invMtxV * arg0.y) + (polygon->invMtxUSkew * arg0.x);
 
     if (temp_f0 < 0.0f) {
         var_v0 = 1;
@@ -220,30 +222,30 @@ void MinimunDistance(Vec3f arg0, Poly* polygon, UnkMinDistance arg5) {
         *arg5.unk_08 = 0;
         return;
     case 3:
-        *arg5.vec = polygon->offset;
-        *arg5.unk_04 = Distance3DTo2DProjectedXY(arg0, polygon->unk_7C);
+        *arg5.vec = polygon->origin;
+        *arg5.unk_04 = Distance3DTo2DProjectedXY(arg0, polygon->uvOffset);
         *arg5.unk_08 = 1;
         return;
     case 6:
-        *arg5.vec = polygon->unkVec;
-        *arg5.unk_04 = Distance3DTo2DProjectedXY(arg0, polygon->unk_84);
+        *arg5.vec = polygon->edgeVec;
+        *arg5.unk_04 = Distance3DTo2DProjectedXY(arg0, polygon->edgeData);
         *arg5.unk_08 = 1;
         return;
     case 5:
-        *arg5.vec = polygon->unkVec2;
-        *arg5.unk_04 = Distance3DTo2DProjectedXY(arg0, polygon->unk_8C);
+        *arg5.vec = polygon->edgeVec2;
+        *arg5.unk_04 = Distance3DTo2DProjectedXY(arg0, polygon->projData);
         *arg5.unk_08 = 1;
         return;
     case 2:
-        DistanceWithLine(arg0, polygon->unk_7C, polygon->unk_84, arg5.unk_04, arg5.vec, polygon);
+        DistanceWithLine(arg0, polygon->uvOffset, polygon->edgeData, arg5.unk_04, arg5.vec, polygon);
         *arg5.unk_08 = 1;
         return;
     case 4:
-        DistanceWithLine(arg0, polygon->unk_84, polygon->unk_8C, arg5.unk_04, arg5.vec, polygon);
+        DistanceWithLine(arg0, polygon->edgeData, polygon->projData, arg5.unk_04, arg5.vec, polygon);
         *arg5.unk_08 = 1;
         return;
     case 1:
-        DistanceWithLine(arg0, polygon->unk_8C, polygon->unk_7C, arg5.unk_04, arg5.vec, polygon);
+        DistanceWithLine(arg0, polygon->projData, polygon->uvOffset, arg5.unk_04, arg5.vec, polygon);
         *arg5.unk_08 = 1;
         return;
     default:
@@ -264,20 +266,20 @@ UnkPolyStruct* func_800CA3FC(void) {
     if (D_802488A8 == 0) {
         return NULL;
     }
-    
+
     if (D_802488A8 == 1) {
         return D_80248528;
     }
-    
+
     nextUnkPoly = &D_80248528[1];
     curUnkPoly = D_80248528;
-    
+
     for (i = 1; i < D_802488A8; i++, nextUnkPoly++) {
         temp_f0 = curUnkPoly->unk8;
         temp_f2 = nextUnkPoly->unk8;
         if (!(temp_f0 < temp_f2) && ((temp_f0 != temp_f2) || (nextUnkPoly->unk4 == 0) || (curUnkPoly->unk4 == 0) || !(nextUnkPoly->unkC < curUnkPoly->unkC))) {
             curUnkPoly = nextUnkPoly;
-        }        
+        }
     }
     return curUnkPoly;
 }
@@ -300,13 +302,13 @@ Vec3f* func_800CA5B4(Vec3f* arg0, Vec3f arg1, UnkArg4* arg4, f32 arg5) {
         temp_f18 = arg1.y - sp54.y;
         temp_f14 = arg1.z - sp54.z;
         temp_f2 = arg5 / NORM_3(temp_f0, temp_f18, temp_f14);
-        
+
         temp_f0 *= temp_f2;
         arg1.x = sp54.x + (temp_f0);
-        
+
         temp_f18 *= temp_f2;
         arg1.y = sp54.y + (temp_f18);
-        
+
         temp_f14 *= temp_f2;
         arg1.z = sp54.z + (temp_f14);
     } else {
@@ -329,7 +331,51 @@ Vec3f* func_800CA5B4(Vec3f* arg0, Vec3f arg1, UnkArg4* arg4, f32 arg5) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800CB294.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/poly/Shadows_Reset.s")
+/**
+ * @brief Clear the shadow list and, once per boot, build the per actor type shadow table
+ *
+ * gHasShadow[type] says whether an actor type casts a shadow; every type gets one except
+ * the listed ones (spawners and other invisible helpers). The table is only filled the
+ * first time this runs, guarded by gShadowFlagsSet.
+ */
+void Shadows_Reset(void) {
+    s32 i;
+
+    gShadowCount = 0;
+    if (gShadowFlagsSet == 0) {
+        for (i = 0; i < 0x100; i++) {
+            gHasShadow[i] = 1;
+        }
+        gHasShadow[GREY_ANT_SPAWNER] = 0;
+        gHasShadow[BULLET_HELL_ANT_SPAWNER] = 0;
+        gHasShadow[RED_ANT_SPAWNER] = 0;
+        gHasShadow[ANT_TRIO_SPAWNER] = 0;
+        gHasShadow[MISSILE_SPAWNER] = 0;
+        gHasShadow[EXPLOSION] = 0;
+        gHasShadow[CANNON] = 0;
+        gHasShadow[CHOMPER] = 0;
+        gHasShadow[ARROW_SPAWNER] = 0;
+        gHasShadow[UNK_22] = 0;
+        gHasShadow[MIRROR] = 0;
+        gHasShadow[RNG_ROOM_SPAWNER] = 0;
+        gHasShadow[BARREL_JUMP_FIRE_SPAWNER] = 0;
+        gHasShadow[FIRE_SPAWNER] = 0;
+        gHasShadow[SPIDER_SPAWNER] = 0;
+        gHasShadow[GOLEM_ROOM_SPIDER_SPAWNER] = 0;
+        gHasShadow[LIZARD_KONG_BUTTERFLY_SPAWNER] = 0;
+        gHasShadow[POPCORN_BUCKET_SPAWNER] = 0;
+        gHasShadow[CHOCO_KID_SPAWNER] = 0;
+        gHasShadow[GREY_ANT_SPAWNER_WRAPPER] = 0;
+        gHasShadow[BATTLE_MODE_SAND_CRAB_SPAWNER] = 0;
+        gHasShadow[BATTLE_MODE_FIRE_SPAWNER] = 0;
+        gHasShadow[BATTLE_MODE_SAUCER_SPAWNER] = 0;
+        gHasShadow[UNK_59] = 0;
+        gHasShadow[FALLING_GREY_ANT_SPAWNER] = 0;
+        gHasShadow[POWER_UP_SPAWNER] = 0;
+        gHasShadow[UNK_FIRE_SPAWNER] = 0;
+        gShadowFlagsSet = 1;
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/Shadows_Set.s")
 
@@ -337,7 +383,15 @@ Vec3f* func_800CA5B4(Vec3f* arg0, Vec3f arg1, UnkArg4* arg4, f32 arg5) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800CBB2C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800CBB98.s")
+void func_800CBB98(Actor* actor) {
+    s32 pad;
+    Vec3f pos;
+
+    pos.x = actor->pos.x + actor->unknownPositionThings[0].unk_00;
+    pos.y = actor->pos.y;
+    pos.z = actor->pos.z + actor->unknownPositionThings[0].unk_08;
+    func_800CB294(pos, *(s32*) &actor->unknownPositionThings[0].unk_0C);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800CBC08.s")
 
@@ -345,7 +399,16 @@ Vec3f* func_800CA5B4(Vec3f* arg0, Vec3f arg1, UnkArg4* arg4, f32 arg5) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800CBE74.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800CBF54.s")
+void func_800CBF54(void) {
+    Actor* actor = gActors;
+    s32 i;
+
+    for (i = 0; i < 64; i++, actor++) {
+        if (actor->actorID >= 0x5F) {
+            func_800CBE74(actor);
+        }
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/Shadows_Draw_AntQueen.s")
 
@@ -353,12 +416,12 @@ Vec3f* func_800CA5B4(Vec3f* arg0, Vec3f arg1, UnkArg4* arg4, f32 arg5) {
 
 /**
  * @brief Calculates the angle of the (x,z) vector from a 3dim vector, with respect to the positive z-axis.
- * 
- * @param vec: The 3dim vector to calculate the angle of. 
+ *
+ * @param vec: The 3dim vector to calculate the angle of.
  */
 void func_800CC7E0(Vec3f vec) {
     // In this instance the z component is flipped.
-    CalculateAngleOfVector(vec.x, -vec.z);
+    ArcTan2Deg(vec.x, -vec.z);
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800CC814.s")
@@ -386,30 +449,30 @@ void func_800CCDCC(Actor* arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800CEB10.s")
 
 void CalcEnemyNextPosition(Actor* arg0) {
-   switch (arg0->unk_A0.unk_04) {
-   case 0:
-       func_800CCDCC(arg0);
-       break;
-   case 1:
-       func_800CCE4C(arg0);
-       break;
-   case 2:
-       CalcWalkingEnemyNext(arg0);
-       break;
-   case 3:
-       CalcJumpingEnemyNext(arg0);
-       break;
-   case 4:
-       func_800CEB10(arg0);
-       break;
-   default:
-       DummiedPrintf3("CalcEnemyNextPosition(): Unknown ATR_IDOU_XXXX\n");
-       // double 810000
-       break;
-   }
-   if (arg0->tongueCollision >= 2) {
-       func_800CBD24(arg0);
-   }
+    switch (arg0->unk_A0.unk_04) {
+    case 0:
+        func_800CCDCC(arg0);
+        break;
+    case 1:
+        func_800CCE4C(arg0);
+        break;
+    case 2:
+        CalcWalkingEnemyNext(arg0);
+        break;
+    case 3:
+        CalcJumpingEnemyNext(arg0);
+        break;
+    case 4:
+        func_800CEB10(arg0);
+        break;
+    default:
+        DummiedPrintf3("CalcEnemyNextPosition(): Unknown ATR_IDOU_XXXX\n");
+        // double 810000
+        break;
+    }
+    if (arg0->tongueCollision >= 2) {
+        func_800CBD24(arg0);
+    }
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800CF080.s")
@@ -427,7 +490,24 @@ void func_800CFDB8(PlayerActor* arg0) {
     arg0->surface = -1;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800CFDC8.s")
+void func_800CFDC8(PlayerActor* arg0) {
+    arg0->vaulting = 0;
+    arg0->surface = -1;
+    arg0->canJump = 1;
+    arg0->vel.x = 0.0f;
+    arg0->vel.y = 0.0f;
+    arg0->vel.z = 0.0f;
+    arg0->move.x = 0.0f;
+    arg0->move.y = 0.0f;
+    arg0->move.z = 0.0f;
+    arg0->xFromCenter = 0.0f;
+    arg0->yFromCenter = 0.0f;
+    arg0->zFromCenter = 0.0f;
+    arg0->shift.x = 0.0f;
+    arg0->shift.y = 0.0f;
+    arg0->shift.z = 0.0f;
+}
+
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800CFE14.s")
 
@@ -459,11 +539,11 @@ void func_800CFF7C(Vec3f* arg0) {
             }
         } else {
             temp_v0 = &gZoneFields[gCurrentZone].roomBounds;
-            
+
             if (temp_v0->min.x > arg0->x ) {
                 arg0->x = temp_v0->min.x;
             }
-            
+
             if (temp_v0->max.x < arg0->x) {
                 arg0->x = temp_v0->max.x;
             }
@@ -471,7 +551,7 @@ void func_800CFF7C(Vec3f* arg0) {
             if (temp_v0->min.z > arg0->z) {
                 arg0->z = temp_v0->min.z;
             }
-  
+
             if (temp_v0->max.z < arg0->z) {
                 arg0->z = temp_v0->max.z;
             }
@@ -480,9 +560,9 @@ void func_800CFF7C(Vec3f* arg0) {
 }
 
 
-Vec3f* func_800D00DC(Vec3f* arg0, Collider* arg1) {
+Vec3f* func_800D00DC(Vec3f* arg0, FieldObject* arg1) {
     Vec3f sp24;
-    Collider* temp_v1;
+    FieldObject* temp_v1;
 
     if (arg1->unk80 < 0) {
         Vec3f_Zero(&sp24);
@@ -502,11 +582,44 @@ Vec3f* func_800D00DC(Vec3f* arg0, Collider* arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800D01A8.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800D0448.s")
+FieldObject* func_800D0448(s32 arg0) {
+    FieldObject* result;
+    FieldObject** itr;
+    s32 i;
+
+    for (i = 0, itr = &D_80240898; i < gFieldCount; i++, itr++) {
+        result = *itr;
+        if (result->unk_124 == 1 && result->unk_128 == arg0) {
+            break;
+        }
+    }
+    return result;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800D04B0.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800D0694.s")
+// Applies the surface's friction class to a player's slide/override movement vector: the fieldObject
+// the player is standing on (surface indexes D_80236980) carries a class in unk_12C, which selects
+// a multiplier from D_80108F90 = {0, 0.98, 1}. Class 0 leaves `move` untouched.
+void func_800D0694(PlayerActor* player, Vec3f vel) {
+    s32 surface = player->surface;
+    s32 friction;
+    FieldObject* col;
+    f32 mult;
+
+    if (surface >= 0) {
+        col = &D_80236980[surface];
+        friction = col->unk_12C;
+        if (friction > 0) {
+            mult = D_80108F90[friction];
+            player->move.x = vel.x * mult;
+            surface = col->unk_12C; // re-read is required: it keeps D_80236980's base in a register
+            player->move.y = 0.0f;
+            player->move.z = vel.z * mult;
+        }
+    }
+}
+
 //referred to in US1.0 as "Poly.c CalcNextPosition"
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/CalcNextPosition.s")
 
@@ -543,16 +656,26 @@ void func_800D34CC(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800D4200.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800D44C8.s")
+void func_800D44C8(PlayerActor* arg0, Tongue* arg1, Camera* arg2, Vec3f* arg3, Vec3f* arg4) {
+    Field* zone;
+
+    zone = &gZoneFields[gCurrentZone];
+    arg3->x = arg2->f1.z;
+    arg3->y = arg2->f2.x + (zone->unkD0 * arg2->size1);
+    arg3->z = arg2->f2.y;
+    arg4->x = zone->cameraAnchor.x;
+    arg4->y = zone->cameraAnchor.y + (zone->unkD0 * arg2->size1);
+    arg4->z = zone->cameraAnchor.z;
+}
 
 void func_800D4550(s32 arg0, s32 arg1, Poly* arg2, Vec3f* arg3, Vec3f* arg4) {
     Field* temp_v0 = &gZoneFields[gCurrentZone];
 
     arg3->x = temp_v0->unkA4;
-    arg3->y = temp_v0->unkA8 + (temp_v0->unkD0 * arg2->unkVectorStruct.vec1.x);
+    arg3->y = temp_v0->unkA8 + (temp_v0->unkD0 * arg2->orthBasis.vec1.x);
     arg3->z = temp_v0->unkAC;
     arg4->x = temp_v0->cameraAnchor.x;
-    arg4->y = temp_v0->cameraAnchor.y + (temp_v0->unkD0 * arg2->unkVectorStruct.vec1.x);
+    arg4->y = temp_v0->cameraAnchor.y + (temp_v0->unkD0 * arg2->orthBasis.vec1.x);
     arg4->z = temp_v0->cameraAnchor.z;
 }
 
@@ -568,16 +691,16 @@ void func_800D4550(s32 arg0, s32 arg1, Poly* arg2, Vec3f* arg3, Vec3f* arg4) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800D5394.s")
 
-void func_800D6864(PlayerActor* arg0, Tongue* arg1, Camera* arg2, Vec3f* arg3, Vec3f* arg4) {
-    Field* collider;
+void GetCurrentCameraShot(PlayerActor* player, Tongue* tongue, Camera* camera, Vec3f* outLookAt, Vec3f* outEye) {
+    Field* zone;
 
-    collider = &gZoneFields[gCurrentZone];
-    arg3->x = arg2->f1.z;
-    arg3->y = arg2->f2.x + (collider->unkD0 * arg2->size1);
-    arg3->z = arg2->f2.y;
-    arg4->x = arg2->f3.x;
-    arg4->y = arg2->f3.y + (collider->unkD0 * arg2->size1);
-    arg4->z = arg2->f3.z;
+    zone = &gZoneFields[gCurrentZone];
+    outLookAt->x = camera->f1.z;
+    outLookAt->y = camera->f2.x + (zone->unkD0 * camera->size1);
+    outLookAt->z = camera->f2.y;
+    outEye->x = camera->f3.x;
+    outEye->y = camera->f3.y + (zone->unkD0 * camera->size1);
+    outEye->z = camera->f3.z;
 }
 
 void ApplyRotationToVector(Vec3f* vecA, Vec3f* vecB, f32 degreesAngle) {
@@ -587,10 +710,10 @@ void ApplyRotationToVector(Vec3f* vecA, Vec3f* vecB, f32 degreesAngle) {
     differenceVector.x = vecA->x - vecB->x;
     differenceVector.y = vecA->y - vecB->y;
     differenceVector.z = vecA->z - vecB->z;
-    
+
     // Rotate the difference vector by the given angle around the y-axis
     RotateVector3D(&differenceVector, differenceVector, DEGREES_TO_RADIANS_PI(degreesAngle), 2);
-    
+
     // Add the rotated difference vector to the second vector to get the first vector
     vecA->x = vecB->x + differenceVector.x;
     vecA->y = vecB->y + differenceVector.y;
@@ -608,25 +731,25 @@ void SetCameraParameters(void) {
     Vec3f sp30;
 
     if ((gCurrentStage == STAGE_GHOST) && (gCurrentZone == ZONE_BILLIARDS)) {
-        func_800D6864(gPlayerActors, gTongues, gCamera, &sp3C, &sp30);
+        GetCurrentCameraShot(gPlayerActors, gTongues, gCameras, &sp3C, &sp30);
     } else if ((isInOverworld == TRUE) && (D_8020D8F4 == 0)) {
-        func_800D3854(gPlayerActors, gTongues, gCamera, &sp3C, &sp30, 0);
-    } else if (gCamera[0].unk0 == 1) {
-        func_800D69D0(temp->cameraMode, gPlayerActors, gTongues, gCamera, &sp3C, &sp30, 0);
+        func_800D3854(gPlayerActors, gTongues, gCameras, &sp3C, &sp30, 0);
+    } else if (gCameras[0].unk0 == 1) {
+        func_800D69D0(temp->cameraMode, gPlayerActors, gTongues, gCameras, &sp3C, &sp30, 0);
     } else {
-        func_800D5394(gPlayerActors, gTongues, gCamera, &sp3C, &sp30, 0);
+        func_800D5394(gPlayerActors, gTongues, gCameras, &sp3C, &sp30, 0);
     }
-    
-    cam = &gCamera[0];
-    
-    for (i = 0; i < ARRAY_COUNT(gCamera); i++, cam++) {
-        cam->f5.x = sp3C.x;
-        cam->f5.y = sp3C.y;
-        cam->f5.z = sp3C.z;
 
-        cam->f4.x = sp30.x;
-        cam->f4.y = sp30.y;
-        cam->f4.z = sp30.z;
+    cam = gCameras;
+
+    for (i = 0; i < ARRAY_COUNT(gCameras); i++, cam++) {
+        cam->lookAt.x = sp3C.x;
+        cam->lookAt.y = sp3C.y;
+        cam->lookAt.z = sp3C.z;
+
+        cam->eye.x = sp30.x;
+        cam->eye.y = sp30.y;
+        cam->eye.z = sp30.z;
         if (gCurrentStage != STAGE_VS) {
             break;
         }
@@ -644,7 +767,7 @@ void func_800D71E8(f32 x1, f32 x2, f32 y1, f32 y2, f32 z1, f32 z2) {
     r.min.z = z1;
     r.max.y = y2;
     r.max.z = z2;
-    
+
     // ensure max > min
     OrderRectBounds(&r);
     func_800C9748(&r, 0x77, 2); //unknown
@@ -653,27 +776,24 @@ void func_800D71E8(f32 x1, f32 x2, f32 y1, f32 y2, f32 z1, f32 z2) {
 s32 func_800D7248(f32 x, f32 y, f32 z, f32 arg3, f32 arg4, f32* outX, f32* arg6, f32* arg7) {
     Vec3f vec;
     s32 var_v1;
-    Collider* collider;
+    FieldObject* fieldObject;
 
     vec.x = x;
     vec.y = y;
     vec.z = z;
-    
-    collider = func_800CAF88(vec, arg3, arg4);
-    
-    // if a collider was found assign its position to the output variables then return 1 for success
-    return (collider != NULL) ?
-        *outX = collider->unk_94,
-        *arg6 = collider->unk_98,
-        *arg7 = collider->unk_9C,
-        1 :
-        0;
+
+    fieldObject = func_800CAF88(vec, arg3, arg4);
+
+    // if a fieldObject was found assign its position to the output variables then return 1 for success
+    // ternary-comma shape is codegen-required; a plain if/return does not match
+    return (fieldObject != NULL) ?
+        (*outX = fieldObject->unk_94, *arg6 = fieldObject->unk_98, *arg7 = fieldObject->unk_9C, 1) : 0;
 }
 
 s32 func_800D72DC(f32 x1, f32 y1, f32 z1, f32 x2, f32 y2, f32 z2, f32* outX, f32* outY, f32* outZ) {
     Vec3f vecOne;
     Vec3f vecTwo;
-    Collider* collider;
+    FieldObject* fieldObject;
 
     vecOne.x = x1;
     vecOne.y = y1;
@@ -682,14 +802,11 @@ s32 func_800D72DC(f32 x1, f32 y1, f32 z1, f32 x2, f32 y2, f32 z2, f32* outX, f32
     vecTwo.x = x2;
     vecTwo.y = y2;
     vecTwo.z = z2;
-    
-    collider = SearchPolygonBetween(vecOne, vecTwo, 0x77, 1, 1);
-    return (collider != NULL) ?
-        *outX = collider->unk_94,
-        *outY = collider->unk_98,
-        *outZ = collider->unk_9C,
-        1 :
-        0;
+
+    fieldObject = SearchPolygonBetween(vecOne, vecTwo, 0x77, 1, 1);
+    // ternary-comma shape is codegen-required; a plain if/return does not match
+    return (fieldObject != NULL) ?
+        (*outX = fieldObject->unk_94, *outY = fieldObject->unk_98, *outZ = fieldObject->unk_9C, 1) : 0;
 }
 
 void func_800D73BC(f32* x, f32* y, f32* z, f32 arg3) {
@@ -699,10 +816,10 @@ void func_800D73BC(f32* x, f32* y, f32* z, f32 arg3) {
     srcVec.x = *x;
     srcVec.y = *y;
     srcVec.z = *z;
-    
+
     //wrong number of args(?)
     func_800CA734(&destVec, srcVec, arg3, 0x77);
-    
+
     *x = destVec.x;
     *y = destVec.y;
     *z = destVec.z;

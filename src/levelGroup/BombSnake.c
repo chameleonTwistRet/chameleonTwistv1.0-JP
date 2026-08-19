@@ -1,133 +1,12 @@
-#include "common.h"
-
-extern unsigned char Global_hexComb_i4_PNG[];
-extern unsigned char Global_fraMEd_ia4_PNG[];
-extern unsigned char Global_hexCombFade_i8_PNG[];
-
-extern Gfx Global_fallbackCube_Gfx[];
-extern ModelCollision Global_fallbackCube_ColH;
-extern Gfx Global_exitShadowSouth_Gfx[];
-extern ModelCollision Global_exitShadowSouth_ColH;
-extern Gfx Global_exitShadowNorth_Gfx[];
-extern ModelCollision Global_exitShadowNorth_ColH;
-extern Gfx Global_exitShadowEast_Gfx[];
-extern ModelCollision Global_exitShadowEast_ColH;
-extern Gfx Global_exitShadowWest_Gfx[];
-extern ModelCollision Global_exitShadowWest_ColH;
-extern Gfx Global_ALBLExit_Gfx[];
-extern ModelCollision Global_ALBLExit_ColH;
-extern Gfx Global_sandPit_Gfx[];
-extern ModelCollision Global_sandPit_ColH;
-extern Gfx Global_BossBridge_Gfx[];
-extern ModelCollision Global_BossBridge_ColH;
-extern Gfx Global_ALPole_Gfx[];
-extern ModelCollision Global_ALPole_ColH;
-extern Gfx Global_ALBLDoor_Gfx[];
-extern ModelCollision Global_ALBLDoor_ColH;
-extern Gfx Global_ALSpinDoor_Gfx[];
-extern ModelCollision Global_ALSpinDoor_ColH;
-extern Gfx Global_BLLavaFloor_Gfx[];
-extern ModelCollision Global_BLLavaFloor_ColH;
-extern Gfx Global_BLLava_Gfx[];
-extern ModelCollision Global_BLLava_ColH;
-extern Gfx Global_BLLava2_Gfx[];
-extern ModelCollision Global_BLLava2_ColH;
-extern Gfx Global_BLLava3_Gfx[];
-extern ModelCollision Global_BLLava3_ColH;
-extern Gfx Global_BLLava4_Gfx[];
-extern ModelCollision Global_BLLava4_ColH;
-extern Gfx Global_BLLava5_Gfx[];
-extern ModelCollision Global_BLLava5_ColH;
-extern Gfx Global_BLLava6_Gfx[];
-extern ModelCollision Global_BLLava6_ColH;
-extern Gfx Global_BLLava7_Gfx[];
-extern ModelCollision Global_BLLava7_ColH;
-extern Gfx Global_BLLava8_Gfx[];
-extern ModelCollision Global_BLLava8_ColH;
-extern Gfx Global_BLDestructableTop_Gfx[];
-extern ModelCollision Global_BLDestructableTop_ColH;
-extern Gfx Global_BLMetalBridge_Gfx[];
-extern ModelCollision Global_BLMetalBridge_ColH;
-extern Gfx Global_KLExit_Gfx[];
-extern ModelCollision Global_KLExit_ColH;
-extern Gfx Global_KLDoor_Gfx[];
-extern ModelCollision Global_KLDoor_ColH;
-extern Gfx Global_DCExit_Gfx[];
-extern ModelCollision Global_DCExit_ColH;
-extern Gfx Global_TallExitShadow1_Gfx[];
-extern ModelCollision Global_TallExitShadow1_ColH;
-extern Gfx Global_TallExitShadow2_Gfx[];
-extern ModelCollision Global_TallExitShadow2_ColH;
-extern Gfx Global_GCExit1_Gfx[];
-extern ModelCollision Global_GCExit1_ColH;
-extern Gfx Global_GCExit2_Gfx[];
-extern ModelCollision Global_GCExit2_ColH;
-extern Gfx Global_trainingRoomLight_Gfx[];
-extern ModelCollision Global_trainingRoomLight_ColH;
-extern Gfx Global_JLCaveExit1_Gfx[];
-extern ModelCollision Global_JLCaveExit1_ColH;
-extern Gfx Global_JLCaveExit2_Gfx[];
-extern ModelCollision Global_JLCaveExit2_ColH;
-extern Gfx Global_JLCaveExit3_Gfx[];
-extern ModelCollision Global_JLCaveExit3_ColH;
-extern Gfx Global_JLCaveExit4_Gfx[];
-extern ModelCollision Global_JLCaveExit4_ColH;
-extern Gfx Global_JLOutsideEntrance_Gfx[];
-extern ModelCollision Global_JLOutsideEntrance_ColH;
-extern Gfx Global_JLFxCamPillar_Gfx[];
-extern ModelCollision Global_JLFxCamPillar_ColH;
-extern Gfx Global_JLCaveDoor_Gfx[];
-extern ModelCollision Global_JLCaveDoor_ColH;
-extern Gfx BombSnake_arenaWalls_Gfx[];
-extern ModelCollision BombSnake_arenaWalls_ColH;
-extern Gfx BombSnake_arenaFloor_Gfx[];
-extern ModelCollision BombSnake_arenaFloor_ColH;
-extern Gfx Global_pole_Gfx[];
-extern ModelCollision Global_pole_ColH;
+#include "BombSnake.h"
 
 Mtx BombSnake_IMtx1 = IDENTITY;
 
-StageModel BombSnake_stageModels[40] = {
-{&Global_fallbackCube_Gfx[0], &Global_fallbackCube_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_exitShadowSouth_Gfx[0], &Global_exitShadowSouth_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_exitShadowNorth_Gfx[0], &Global_exitShadowNorth_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_exitShadowEast_Gfx[0], &Global_exitShadowEast_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_exitShadowWest_Gfx[0], &Global_exitShadowWest_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_ALBLExit_Gfx[0], &Global_ALBLExit_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_sandPit_Gfx[0], &Global_sandPit_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_BossBridge_Gfx[0], &Global_BossBridge_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_ALPole_Gfx[0], &Global_ALPole_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_ALBLDoor_Gfx[0], &Global_ALBLDoor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_ALSpinDoor_Gfx[0], &Global_ALSpinDoor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_BLLavaFloor_Gfx[0], &Global_BLLavaFloor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_BLLava_Gfx[0], &Global_BLLava_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_BLLava2_Gfx[0], &Global_BLLava2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_BLLava3_Gfx[0], &Global_BLLava3_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_BLLava4_Gfx[0], &Global_BLLava4_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_BLLava5_Gfx[0], &Global_BLLava5_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_BLLava6_Gfx[0], &Global_BLLava6_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_BLLava7_Gfx[0], &Global_BLLava7_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_BLLava8_Gfx[0], &Global_BLLava8_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_BLDestructableTop_Gfx[0], &Global_BLDestructableTop_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_BLMetalBridge_Gfx[0], &Global_BLMetalBridge_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_KLExit_Gfx[0], &Global_KLExit_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_KLDoor_Gfx[0], &Global_KLDoor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_DCExit_Gfx[0], &Global_DCExit_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_TallExitShadow1_Gfx[0], &Global_TallExitShadow1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_TallExitShadow2_Gfx[0], &Global_TallExitShadow2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_GCExit1_Gfx[0], &Global_GCExit1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_GCExit2_Gfx[0], &Global_GCExit2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_trainingRoomLight_Gfx[0], &Global_trainingRoomLight_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_JLCaveExit1_Gfx[0], &Global_JLCaveExit1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_JLCaveExit2_Gfx[0], &Global_JLCaveExit2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_JLCaveExit3_Gfx[0], &Global_JLCaveExit3_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_JLCaveExit4_Gfx[0], &Global_JLCaveExit4_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_JLOutsideEntrance_Gfx[0], &Global_JLOutsideEntrance_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_JLFxCamPillar_Gfx[0], &Global_JLFxCamPillar_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_JLCaveDoor_Gfx[0], &Global_JLCaveDoor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&BombSnake_arenaWalls_Gfx[0], &BombSnake_arenaWalls_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&BombSnake_arenaFloor_Gfx[0], &BombSnake_arenaFloor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_pole_Gfx[0], &Global_pole_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+StageModel BombSnake_stageModels[] = {
+    #include "global_models.inc.c"
+    {BombSnake_arenaWalls_Gfx, &BombSnake_arenaWalls_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {BombSnake_arenaFloor_Gfx, &BombSnake_arenaFloor_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+    {Global_pole_Gfx, &Global_pole_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
 };
 
 unsigned char BombSnake_rabObjects_Bin[] = {
@@ -230,19 +109,17 @@ RoomInstance BombSnake_ext_room_instances[] = {
 };
 
 LevelScope BombSnake_scope_Lvlscope = {
-    0,
-    0,
-    0,
+    {0.0f, 0.0f, 0.0f},
     255,
     25000,
     60,
 };
 
-StageData BombSnake_header_Lvlhdr = {
+StageData BombSnake_stageData = {
     &BombSnake_map_data,
-    0,
-    &BombSnake_stageModels[0],
-    40,
+    NO_EXT_ROOMS,
+    BombSnake_stageModels,
+    ARRAY_COUNT(BombSnake_stageModels),
     0,
     BombSnake_rabObjects_Bin,
     131072,
@@ -277,36 +154,36 @@ Gfx BombSnake_arenaFloor_Gfx[] = {
     #include "assets/levelGroup/BombSnake/arenaFloor/arenaFloor.gfx.inc.c"
 };
 
-Vec3f BombSnake_arenaWalls_ColV[] = {
-    #include "assets/levelGroup/BombSnake/arenaWalls/arenaWalls.colV.inc.c"
+Vec3f BombSnake_arenaWalls_ColVerts[] = {
+    #include "assets/levelGroup/BombSnake/arenaWalls/arenaWalls.colVerts.inc.c"
 };
 
-Vec3w BombSnake_arenaWalls_ColT[] = {
-    #include "assets/levelGroup/BombSnake/arenaWalls/arenaWalls.colT.inc.c"
+Vec3w BombSnake_arenaWalls_ColTris[] = {
+    #include "assets/levelGroup/BombSnake/arenaWalls/arenaWalls.colTris.inc.c"
 };
 
-Rect3D BombSnake_arenaWalls_ColS = {
-    #include "assets/levelGroup/BombSnake/arenaWalls/arenaWalls.colS.inc.c"
+Rect3D BombSnake_arenaWalls_BoundBox = {
+    #include "assets/levelGroup/BombSnake/arenaWalls/arenaWalls.boundBox.inc.c"
 };
 
-ModelCollision BombSnake_arenaWalls_ColH = {
-18, 24, BombSnake_arenaWalls_ColV, BombSnake_arenaWalls_ColT, &BombSnake_arenaWalls_ColS
+ModelCollision BombSnake_arenaWalls_collision = {
+    ARRAY_COUNT(BombSnake_arenaWalls_ColVerts), ARRAY_COUNT(BombSnake_arenaWalls_ColTris), BombSnake_arenaWalls_ColVerts, BombSnake_arenaWalls_ColTris, &BombSnake_arenaWalls_BoundBox
 };
 
-Vec3f BombSnake_arenaFloor_ColV[] = {
-    #include "assets/levelGroup/BombSnake/arenaFloor/arenaFloor.colV.inc.c"
+Vec3f BombSnake_arenaFloor_ColVerts[] = {
+    #include "assets/levelGroup/BombSnake/arenaFloor/arenaFloor.colVerts.inc.c"
 };
 
-Vec3w BombSnake_arenaFloor_ColT[] = {
-    #include "assets/levelGroup/BombSnake/arenaFloor/arenaFloor.colT.inc.c"
+Vec3w BombSnake_arenaFloor_ColTris[] = {
+    #include "assets/levelGroup/BombSnake/arenaFloor/arenaFloor.colTris.inc.c"
 };
 
-Rect3D BombSnake_arenaFloor_ColS = {
-    #include "assets/levelGroup/BombSnake/arenaFloor/arenaFloor.colS.inc.c"
+Rect3D BombSnake_arenaFloor_BoundBox = {
+    #include "assets/levelGroup/BombSnake/arenaFloor/arenaFloor.boundBox.inc.c"
 };
 
-ModelCollision BombSnake_arenaFloor_ColH = {
-12, 16, BombSnake_arenaFloor_ColV, BombSnake_arenaFloor_ColT, &BombSnake_arenaFloor_ColS
+ModelCollision BombSnake_arenaFloor_collision = {
+    ARRAY_COUNT(BombSnake_arenaFloor_ColVerts), ARRAY_COUNT(BombSnake_arenaFloor_ColTris), BombSnake_arenaFloor_ColVerts, BombSnake_arenaFloor_ColTris, &BombSnake_arenaFloor_BoundBox
 };
 Mtx BombSnake_IMtx5 = IDENTITY;
 
@@ -455,19 +332,19 @@ Gfx BombSnake_unk11_Gfx[] = {
 };
 
 AnimPointer BombSnake_unk1Pointers_Animp[1] = {
-{&BombSnake_unk1Header_Animh.frames, &BombSnake_unk1Header_Animh.objects, &BombSnake_unk1_Animarr[0][0]}
+{&BombSnake_unk1Header_Animh.frames, &BombSnake_unk1Header_Animh.objects, BombSnake_unk1_Animarr[0]}
 };
 
 AnimPointer BombSnake_unk2Pointers_Animp[1] = {
-{&BombSnake_unk2Header_Animh.frames, &BombSnake_unk2Header_Animh.objects, &BombSnake_unk2_Animarr[0][0]}
+{&BombSnake_unk2Header_Animh.frames, &BombSnake_unk2Header_Animh.objects, BombSnake_unk2_Animarr[0]}
 };
 
 AnimPointer BombSnake_unk3Pointers_Animp[1] = {
-{&BombSnake_unk3Header_Animh.frames, &BombSnake_unk3Header_Animh.objects, &BombSnake_unk3_Animarr[0][0]}
+{&BombSnake_unk3Header_Animh.frames, &BombSnake_unk3Header_Animh.objects, BombSnake_unk3_Animarr[0]}
 };
 
 AnimPointer BombSnake_unk4Pointers_Animp[1] = {
-{&BombSnake_unk4Header_Animh.frames, &BombSnake_unk4Header_Animh.objects, &BombSnake_unk4_Animarr[0][0]}
+{&BombSnake_unk4Header_Animh.frames, &BombSnake_unk4Header_Animh.objects, BombSnake_unk4_Animarr[0]}
 };
 
 char SomeBSS[0x320];

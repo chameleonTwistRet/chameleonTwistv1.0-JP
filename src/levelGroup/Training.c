@@ -1,284 +1,32 @@
-#include "common.h"
-
-
-
-extern unsigned char Global_wood_ci4_PNG[];
-extern unsigned char Global_wood_ci4_PAL[];
-extern unsigned char Global_GCBigCabinet_ci4_PNG[];
-extern unsigned char Global_GCBigCabinet_ci4_PAL[];
-extern unsigned char Global_GCWall_ci4_PNG[];
-extern unsigned char Global_GCWall_ci4_PAL[];
-extern unsigned char Global_water_ci4_PNG[];
-extern unsigned char Global_water_ci4_PAL[];
-extern unsigned char Global_windows_ia4_PNG[];
-extern unsigned char Global_GCWall2_ci4_PNG[];
-extern unsigned char Global_GCWall2_ci4_PAL[];
-extern unsigned char Global_GCTiles_ci4_PNG[];
-extern unsigned char Global_GCTiles_ci4_PAL[];
-extern unsigned char Global_cracker_ci4_PNG[];
-extern unsigned char Global_cracker_ci4_PAL[];
-extern unsigned char Global_KLFloor2_ci4_PNG[];
-extern unsigned char Global_KLFloor2_ci4_PAL[];
-extern unsigned char Global_sandwSide_ci4_PNG[];
-extern unsigned char Global_sandwSide_ci4_PAL[];
-extern unsigned char Global_KLFloor3_ci4_PNG[];
-extern unsigned char Global_KLFloor3_ci4_PAL[];
-extern unsigned char Global_KLThing1_ci4_PNG[];
-extern unsigned char Global_KLThing1_ci4_PAL[];
-extern unsigned char Global_jlText3_ci4_PNG[];
-extern unsigned char Global_jlText3_ci4_PAL[];
-extern unsigned char Global_JLMountain_ci4_PNG[];
-extern unsigned char Global_JLMountain_ci4_PAL[];
-extern unsigned char Global_pebbles_ci4_PNG[];
-extern unsigned char Global_pebbles_ci4_PAL[];
-extern unsigned char Global_jlText5_ci4_PNG[];
-extern unsigned char Global_jlText5_ci4_PAL[];
-extern unsigned char Global_jlText2_ci4_PNG[];
-extern unsigned char Global_jlText2_ci4_PAL[];
-extern unsigned char Global_JLCaveFadeTop_ci8_PNG[];
-extern unsigned char Global_JLCaveFadeTop_ci8_PAL[];
-extern unsigned char Global_BLRedYellowPlate_ci4_PNG[];
-extern unsigned char Global_BLRedYellowPlate_ci4_PAL[];
-extern unsigned char Global_metalPlate_i4_PNG[];
-extern unsigned char Global_squares_i4_PNG[];
-extern unsigned char Global_fraMEd_ia4_PNG[];
-extern unsigned char Global_lavaSolid_ci4_PAL[];
-extern unsigned char Global_lavaSolid_ci4_PNG[];
-extern unsigned char Global_ballGround_i4_PNG[];
-extern unsigned char Global_DCFloor2_ci4_PNG[];
-extern unsigned char Global_DCFloor2_ci4_PAL[];
-extern unsigned char Global_DCBricks_ci4_PNG[];
-extern unsigned char Global_DCBricks_ci4_PAL[];
-extern unsigned char Global_sandAgain_ci4_PNG[];
-extern unsigned char Global_sandAgain_ci4_PAL[];
-extern unsigned char Global_brickWall2_ci4_PNG[];
-extern unsigned char Global_brickWall2_ci4_PAL[];
-extern unsigned char Global_waterKinda_ci4_PNG[];
-extern unsigned char Global_waterKinda_ci4_PAL[];
-extern unsigned char Global_yellowBrickWall_ci4_PNG[];
-extern unsigned char Global_yellowBrickWall_ci4_PAL[];
-extern unsigned char Global_bigBrickWall_i4_PNG[];
-extern unsigned char Global_bigBrickWall2_i4_PNG[];
-extern unsigned char Global_strip2_i4_PNG[];
-extern unsigned char Global_justBlack_ci4_PNG[];
-extern unsigned char Global_justBlack_ci4_PAL[];
-extern unsigned char Global_chocoKidsLabel_ci4_PNG[];
-extern unsigned char Global_chocoKidsLabel_ci4_PAL[];
-extern unsigned char Global_chocoKIDS_ci8_PNG[];
-extern unsigned char Global_chocoKIDS_ci8_PAL[];
-extern unsigned char Global_JLCave_ci8_PNG[];
-extern unsigned char Global_JLCave_ci8_PAL[];
-extern unsigned char Global_jlText4_ci4_PNG[];
-extern unsigned char Global_jlText4_ci4_PAL[];
-extern unsigned char Global_factoryPlates_i4_PNG[];
-extern unsigned char Global_steelPlate_i4_PNG[];
-extern unsigned char Global_metalPlates_i4_PNG[];
-extern unsigned char Global_DCSmallTiles_ci4_PNG[];
-extern unsigned char Global_DCSmallTiles_ci4_PAL[];
-extern unsigned char Global_DCSandFloor_ci4_PNG[];
-extern unsigned char Global_DCSandFloor_ci4_PAL[];
-extern unsigned char Global_DCFloor_ci4_PNG[];
-extern unsigned char Global_DCFloor_ci4_PAL[];
-extern unsigned char Global_DCWall3_ci4_PNG[];
-extern unsigned char Global_DCWall3_ci4_PAL[];
-extern unsigned char Global_DCWall2_ci4_PNG[];
-extern unsigned char Global_DCWall2_ci4_PAL[];
-extern unsigned char Global_DCWall1_ci4_PNG[];
-extern unsigned char Global_DCWall1_ci4_PAL[];
-extern unsigned char Global_DCThing3_ci4_PNG[];
-extern unsigned char Global_DCThing3_ci4_PAL[];
-extern unsigned char Global_goldStrip_ci4_PNG[];
-extern unsigned char Global_goldStrip_ci4_PAL[];
-extern unsigned char Global_antMural4_i4_PNG[];
-extern unsigned char Global_DCThing2_ci4_PNG[];
-extern unsigned char Global_DCThing2_ci4_PAL[];
-extern unsigned char Global_DCThing1_ci4_PNG[];
-extern unsigned char Global_DCThing1_ci4_PAL[];
-
-extern Gfx Global_fallbackCube_Gfx[];
-extern ModelCollision Global_fallbackCube_ColH;
-extern Gfx Global_exitShadowSouth_Gfx[];
-extern ModelCollision Global_exitShadowSouth_ColH;
-extern Gfx Global_exitShadowNorth_Gfx[];
-extern ModelCollision Global_exitShadowNorth_ColH;
-extern Gfx Global_exitShadowEast_Gfx[];
-extern ModelCollision Global_exitShadowEast_ColH;
-extern Gfx Global_exitShadowWest_Gfx[];
-extern ModelCollision Global_exitShadowWest_ColH;
-extern Gfx Global_ALBLExit_Gfx[];
-extern ModelCollision Global_ALBLExit_ColH;
-extern Gfx Global_sandPit_Gfx[];
-extern ModelCollision Global_sandPit_ColH;
-extern Gfx Global_BossBridge_Gfx[];
-extern ModelCollision Global_BossBridge_ColH;
-extern Gfx Global_ALPole_Gfx[];
-extern ModelCollision Global_ALPole_ColH;
-extern Gfx Global_ALBLDoor_Gfx[];
-extern ModelCollision Global_ALBLDoor_ColH;
-extern Gfx Global_ALSpinDoor_Gfx[];
-extern ModelCollision Global_ALSpinDoor_ColH;
-extern Gfx Global_BLLavaFloor_Gfx[];
-extern ModelCollision Global_BLLavaFloor_ColH;
-extern Gfx Global_BLLava_Gfx[];
-extern ModelCollision Global_BLLava_ColH;
-extern Gfx Global_BLLava2_Gfx[];
-extern ModelCollision Global_BLLava2_ColH;
-extern Gfx Global_BLLava3_Gfx[];
-extern ModelCollision Global_BLLava3_ColH;
-extern Gfx Global_BLLava4_Gfx[];
-extern ModelCollision Global_BLLava4_ColH;
-extern Gfx Global_BLLava5_Gfx[];
-extern ModelCollision Global_BLLava5_ColH;
-extern Gfx Global_BLLava6_Gfx[];
-extern ModelCollision Global_BLLava6_ColH;
-extern Gfx Global_BLLava7_Gfx[];
-extern ModelCollision Global_BLLava7_ColH;
-extern Gfx Global_BLLava8_Gfx[];
-extern ModelCollision Global_BLLava8_ColH;
-extern Gfx Global_BLDestructableTop_Gfx[];
-extern ModelCollision Global_BLDestructableTop_ColH;
-extern Gfx Global_BLMetalBridge_Gfx[];
-extern ModelCollision Global_BLMetalBridge_ColH;
-extern Gfx Global_KLExit_Gfx[];
-extern ModelCollision Global_KLExit_ColH;
-extern Gfx Global_KLDoor_Gfx[];
-extern ModelCollision Global_KLDoor_ColH;
-extern Gfx Global_DCExit_Gfx[];
-extern ModelCollision Global_DCExit_ColH;
-extern Gfx Global_TallExitShadow1_Gfx[];
-extern ModelCollision Global_TallExitShadow1_ColH;
-extern Gfx Global_TallExitShadow2_Gfx[];
-extern ModelCollision Global_TallExitShadow2_ColH;
-extern Gfx Global_GCExit1_Gfx[];
-extern ModelCollision Global_GCExit1_ColH;
-extern Gfx Global_GCExit2_Gfx[];
-extern ModelCollision Global_GCExit2_ColH;
-extern Gfx Global_trainingRoomLight_Gfx[];
-extern ModelCollision Global_trainingRoomLight_ColH;
-extern Gfx Global_JLCaveExit1_Gfx[];
-extern ModelCollision Global_JLCaveExit1_ColH;
-extern Gfx Global_JLCaveExit2_Gfx[];
-extern ModelCollision Global_JLCaveExit2_ColH;
-extern Gfx Global_JLCaveExit3_Gfx[];
-extern ModelCollision Global_JLCaveExit3_ColH;
-extern Gfx Global_JLCaveExit4_Gfx[];
-extern ModelCollision Global_JLCaveExit4_ColH;
-extern Gfx Global_JLOutsideEntrance_Gfx[];
-extern ModelCollision Global_JLOutsideEntrance_ColH;
-extern Gfx Global_JLFxCamPillar_Gfx[];
-extern ModelCollision Global_JLFxCamPillar_ColH;
-extern Gfx Global_JLCaveDoor_Gfx[];
-extern ModelCollision Global_JLCaveDoor_ColH;
-extern Gfx Training_model1_Gfx[];
-extern ModelCollision Training_unkCol1_ColH;
-extern Gfx Training_model2_Gfx[];
-extern ModelCollision Training_unkCol2_ColH;
-extern Gfx Training_model3_Gfx[];
-extern ModelCollision Training_unkCol3_ColH;
-extern Gfx Training_model4_Gfx[];
-extern ModelCollision Training_unkCol4_ColH;
-extern Gfx Training_model5_Gfx[];
-extern ModelCollision Training_unkCol5_ColH;
-extern Gfx Training_model6_Gfx[];
-extern ModelCollision Training_unkCol6_ColH;
-extern Gfx Training_model7_Gfx[];
-extern ModelCollision Training_unkCol7_ColH;
-extern Gfx Training_model8_Gfx[];
-extern ModelCollision Training_unkCol8_ColH;
-extern Gfx Training_model9_Gfx[];
-extern ModelCollision Training_unkCol9_ColH;
-extern Gfx Training_model10_Gfx[];
-extern ModelCollision Training_unkCol10_ColH;
-extern Gfx Training_model11_Gfx[];
-extern ModelCollision Training_unkCol11_ColH;
-extern Gfx Training_model12_Gfx[];
-extern ModelCollision Training_unkCol12_ColH;
-extern Gfx Training_model13_Gfx[];
-extern ModelCollision Training_unkCol13_ColH;
-extern Gfx Training_model14_Gfx[];
-extern ModelCollision Training_unkCol14_ColH;
-extern Gfx Training_model15_Gfx[];
-extern ModelCollision Training_unkCol15_ColH;
-extern Gfx Training_model16_Gfx[];
-extern ModelCollision Training_unkCol16_ColH;
-extern Gfx Training_model17_Gfx[];
-extern ModelCollision Training_unkCol17_ColH;
-extern Gfx Training_model18_Gfx[];
-extern ModelCollision Training_unkCol18_ColH;
-extern Gfx Training_model19_Gfx[];
-extern ModelCollision Training_unkCol19_ColH;
-extern Gfx Training_model20_Gfx[];
-extern ModelCollision Training_unkCol20_ColH;
-extern Gfx Training_model21_Gfx[];
-extern ModelCollision Training_unkCol21_ColH;
-extern Gfx Training_model22_Gfx[];
-extern ModelCollision Training_unkCol22_ColH;
-extern Gfx Global_pole_Gfx[];
-extern ModelCollision Global_pole_ColH;
+#include "Training.h"
 
 Mtx Training_IMtx1 = IDENTITY;
 
-StageModel Training_stageModels[60] = {
-{&Global_fallbackCube_Gfx[0], &Global_fallbackCube_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_exitShadowSouth_Gfx[0], &Global_exitShadowSouth_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_exitShadowNorth_Gfx[0], &Global_exitShadowNorth_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_exitShadowEast_Gfx[0], &Global_exitShadowEast_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_exitShadowWest_Gfx[0], &Global_exitShadowWest_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_ALBLExit_Gfx[0], &Global_ALBLExit_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_sandPit_Gfx[0], &Global_sandPit_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_BossBridge_Gfx[0], &Global_BossBridge_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_ALPole_Gfx[0], &Global_ALPole_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_ALBLDoor_Gfx[0], &Global_ALBLDoor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_ALSpinDoor_Gfx[0], &Global_ALSpinDoor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_BLLavaFloor_Gfx[0], &Global_BLLavaFloor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_BLLava_Gfx[0], &Global_BLLava_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_BLLava2_Gfx[0], &Global_BLLava2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_BLLava3_Gfx[0], &Global_BLLava3_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_BLLava4_Gfx[0], &Global_BLLava4_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_BLLava5_Gfx[0], &Global_BLLava5_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_BLLava6_Gfx[0], &Global_BLLava6_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_BLLava7_Gfx[0], &Global_BLLava7_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_BLLava8_Gfx[0], &Global_BLLava8_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_BLDestructableTop_Gfx[0], &Global_BLDestructableTop_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_BLMetalBridge_Gfx[0], &Global_BLMetalBridge_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_KLExit_Gfx[0], &Global_KLExit_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_KLDoor_Gfx[0], &Global_KLDoor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_DCExit_Gfx[0], &Global_DCExit_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_TallExitShadow1_Gfx[0], &Global_TallExitShadow1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_TallExitShadow2_Gfx[0], &Global_TallExitShadow2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_GCExit1_Gfx[0], &Global_GCExit1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_GCExit2_Gfx[0], &Global_GCExit2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_trainingRoomLight_Gfx[0], &Global_trainingRoomLight_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_JLCaveExit1_Gfx[0], &Global_JLCaveExit1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_JLCaveExit2_Gfx[0], &Global_JLCaveExit2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_JLCaveExit3_Gfx[0], &Global_JLCaveExit3_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_JLCaveExit4_Gfx[0], &Global_JLCaveExit4_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_JLOutsideEntrance_Gfx[0], &Global_JLOutsideEntrance_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_JLFxCamPillar_Gfx[0], &Global_JLFxCamPillar_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_JLCaveDoor_Gfx[0], &Global_JLCaveDoor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Training_model1_Gfx[0], &Training_unkCol1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Training_model2_Gfx[0], &Training_unkCol2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Training_model3_Gfx[0], &Training_unkCol3_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Training_model4_Gfx[0], &Training_unkCol4_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Training_model5_Gfx[0], &Training_unkCol5_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Training_model6_Gfx[0], &Training_unkCol6_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Training_model7_Gfx[0], &Training_unkCol7_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Training_model8_Gfx[0], &Training_unkCol8_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Training_model9_Gfx[0], &Training_unkCol9_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Training_model10_Gfx[0], &Training_unkCol10_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Training_model11_Gfx[0], &Training_unkCol11_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Training_model12_Gfx[0], &Training_unkCol12_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Training_model13_Gfx[0], &Training_unkCol13_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Training_model14_Gfx[0], &Training_unkCol14_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Training_model15_Gfx[0], &Training_unkCol15_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Training_model16_Gfx[0], &Training_unkCol16_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Training_model17_Gfx[0], &Training_unkCol17_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Training_model18_Gfx[0], &Training_unkCol18_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Training_model19_Gfx[0], &Training_unkCol19_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Training_model20_Gfx[0], &Training_unkCol20_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Training_model21_Gfx[0], &Training_unkCol21_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Training_model22_Gfx[0], &Training_unkCol22_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_pole_Gfx[0], &Global_pole_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+StageModel Training_stageModels[] = {
+#include "global_models.inc.c"
+{Training_model1_Gfx, &Training_unkCol1_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Training_model2_Gfx, &Training_unkCol2_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Training_model3_Gfx, &Training_unkCol3_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Training_model4_Gfx, &Training_unkCol4_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Training_model5_Gfx, &Training_unkCol5_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Training_model6_Gfx, &Training_unkCol6_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Training_model7_Gfx, &Training_unkCol7_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Training_model8_Gfx, &Training_unkCol8_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Training_model9_Gfx, &Training_unkCol9_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Training_model10_Gfx, &Training_unkCol10_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Training_model11_Gfx, &Training_unkCol11_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Training_model12_Gfx, &Training_unkCol12_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Training_model13_Gfx, &Training_unkCol13_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Training_model14_Gfx, &Training_unkCol14_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Training_model15_Gfx, &Training_unkCol15_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Training_model16_Gfx, &Training_unkCol16_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Training_model17_Gfx, &Training_unkCol17_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Training_model18_Gfx, &Training_unkCol18_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Training_model19_Gfx, &Training_unkCol19_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Training_model20_Gfx, &Training_unkCol20_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Training_model21_Gfx, &Training_unkCol21_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Training_model22_Gfx, &Training_unkCol22_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_pole_Gfx, &Global_pole_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
 };
 
 unsigned char Training_rabObjects_Bin[] = {
@@ -556,19 +304,17 @@ RoomInstance Training_ext_room_instances[] = {
 };
 
 LevelScope Training_scope_Lvlscope = {
-    0,
-    0,
-    0,
+    {0.0f, 0.0f, 0.0f},
     -1,
     25000,
     60,
 };
 
-StageData Training_header_Lvlhdr = {
+StageData Training_stageData = {
     &Training_map_data,
-    0,
-    &Training_stageModels[0],
-    60,
+    NO_EXT_ROOMS,
+    Training_stageModels,
+    ARRAY_COUNT(Training_stageModels),
     0,
     Training_rabObjects_Bin,
     131072,
@@ -815,355 +561,355 @@ Gfx Training_model22_Gfx[] = {
     #include "assets/levelGroup/Training/model22/model22.gfx.inc.c"
 };
 
-Vec3f Training_unkCol1_ColV[] = {
-    #include "assets/levelGroup/Training/unkCol1/unkCol1.colV.inc.c"
+Vec3f Training_unkCol1_ColVerts[] = {
+    #include "assets/levelGroup/Training/unkCol1/unkCol1.colVerts.inc.c"
 };
 
-Vec3w Training_unkCol1_ColT[] = {
-    #include "assets/levelGroup/Training/unkCol1/unkCol1.colT.inc.c"
+Vec3w Training_unkCol1_ColTris[] = {
+    #include "assets/levelGroup/Training/unkCol1/unkCol1.colTris.inc.c"
 };
 
-Rect3D Training_unkCol1_ColS = {
-    #include "assets/levelGroup/Training/unkCol1/unkCol1.colS.inc.c"
+Rect3D Training_unkCol1_BoundBox = {
+    #include "assets/levelGroup/Training/unkCol1/unkCol1.boundBox.inc.c"
 };
 
-ModelCollision Training_unkCol1_ColH = {
-122, 213, Training_unkCol1_ColV, Training_unkCol1_ColT, &Training_unkCol1_ColS
+ModelCollision Training_unkCol1_collision = {
+    ARRAY_COUNT(Training_unkCol1_ColVerts), ARRAY_COUNT(Training_unkCol1_ColTris), Training_unkCol1_ColVerts, Training_unkCol1_ColTris, &Training_unkCol1_BoundBox
 };
 
-Vec3f Training_unkCol2_ColV[] = {
-    #include "assets/levelGroup/Training/unkCol2/unkCol2.colV.inc.c"
+Vec3f Training_unkCol2_ColVerts[] = {
+    #include "assets/levelGroup/Training/unkCol2/unkCol2.colVerts.inc.c"
 };
 
-Vec3w Training_unkCol2_ColT[] = {
-    #include "assets/levelGroup/Training/unkCol2/unkCol2.colT.inc.c"
+Vec3w Training_unkCol2_ColTris[] = {
+    #include "assets/levelGroup/Training/unkCol2/unkCol2.colTris.inc.c"
 };
 
-Rect3D Training_unkCol2_ColS = {
-    #include "assets/levelGroup/Training/unkCol2/unkCol2.colS.inc.c"
+Rect3D Training_unkCol2_BoundBox = {
+    #include "assets/levelGroup/Training/unkCol2/unkCol2.boundBox.inc.c"
 };
 
-ModelCollision Training_unkCol2_ColH = {
-28, 46, Training_unkCol2_ColV, Training_unkCol2_ColT, &Training_unkCol2_ColS
+ModelCollision Training_unkCol2_collision = {
+    ARRAY_COUNT(Training_unkCol2_ColVerts), ARRAY_COUNT(Training_unkCol2_ColTris), Training_unkCol2_ColVerts, Training_unkCol2_ColTris, &Training_unkCol2_BoundBox
 };
 
-Vec3f Training_unkCol3_ColV[] = {
-    #include "assets/levelGroup/Training/unkCol3/unkCol3.colV.inc.c"
+Vec3f Training_unkCol3_ColVerts[] = {
+    #include "assets/levelGroup/Training/unkCol3/unkCol3.colVerts.inc.c"
 };
 
-Vec3w Training_unkCol3_ColT[] = {
-    #include "assets/levelGroup/Training/unkCol3/unkCol3.colT.inc.c"
+Vec3w Training_unkCol3_ColTris[] = {
+    #include "assets/levelGroup/Training/unkCol3/unkCol3.colTris.inc.c"
 };
 
-Rect3D Training_unkCol3_ColS = {
-    #include "assets/levelGroup/Training/unkCol3/unkCol3.colS.inc.c"
+Rect3D Training_unkCol3_BoundBox = {
+    #include "assets/levelGroup/Training/unkCol3/unkCol3.boundBox.inc.c"
 };
 
-ModelCollision Training_unkCol3_ColH = {
-59, 97, Training_unkCol3_ColV, Training_unkCol3_ColT, &Training_unkCol3_ColS
+ModelCollision Training_unkCol3_collision = {
+    ARRAY_COUNT(Training_unkCol3_ColVerts), ARRAY_COUNT(Training_unkCol3_ColTris), Training_unkCol3_ColVerts, Training_unkCol3_ColTris, &Training_unkCol3_BoundBox
 };
 
-Vec3f Training_unkCol4_ColV[] = {
-    #include "assets/levelGroup/Training/unkCol4/unkCol4.colV.inc.c"
+Vec3f Training_unkCol4_ColVerts[] = {
+    #include "assets/levelGroup/Training/unkCol4/unkCol4.colVerts.inc.c"
 };
 
-Vec3w Training_unkCol4_ColT[] = {
-    #include "assets/levelGroup/Training/unkCol4/unkCol4.colT.inc.c"
+Vec3w Training_unkCol4_ColTris[] = {
+    #include "assets/levelGroup/Training/unkCol4/unkCol4.colTris.inc.c"
 };
 
-Rect3D Training_unkCol4_ColS = {
-    #include "assets/levelGroup/Training/unkCol4/unkCol4.colS.inc.c"
+Rect3D Training_unkCol4_BoundBox = {
+    #include "assets/levelGroup/Training/unkCol4/unkCol4.boundBox.inc.c"
 };
 
-ModelCollision Training_unkCol4_ColH = {
-51, 84, Training_unkCol4_ColV, Training_unkCol4_ColT, &Training_unkCol4_ColS
+ModelCollision Training_unkCol4_collision = {
+    ARRAY_COUNT(Training_unkCol4_ColVerts), ARRAY_COUNT(Training_unkCol4_ColTris), Training_unkCol4_ColVerts, Training_unkCol4_ColTris, &Training_unkCol4_BoundBox
 };
 
-Vec3f Training_unkCol5_ColV[] = {
-    #include "assets/levelGroup/Training/unkCol5/unkCol5.colV.inc.c"
+Vec3f Training_unkCol5_ColVerts[] = {
+    #include "assets/levelGroup/Training/unkCol5/unkCol5.colVerts.inc.c"
 };
 
-Vec3w Training_unkCol5_ColT[] = {
-    #include "assets/levelGroup/Training/unkCol5/unkCol5.colT.inc.c"
+Vec3w Training_unkCol5_ColTris[] = {
+    #include "assets/levelGroup/Training/unkCol5/unkCol5.colTris.inc.c"
 };
 
-Rect3D Training_unkCol5_ColS = {
-    #include "assets/levelGroup/Training/unkCol5/unkCol5.colS.inc.c"
+Rect3D Training_unkCol5_BoundBox = {
+    #include "assets/levelGroup/Training/unkCol5/unkCol5.boundBox.inc.c"
 };
 
-ModelCollision Training_unkCol5_ColH = {
-23, 34, Training_unkCol5_ColV, Training_unkCol5_ColT, &Training_unkCol5_ColS
+ModelCollision Training_unkCol5_collision = {
+    ARRAY_COUNT(Training_unkCol5_ColVerts), ARRAY_COUNT(Training_unkCol5_ColTris), Training_unkCol5_ColVerts, Training_unkCol5_ColTris, &Training_unkCol5_BoundBox
 };
 
-Vec3f Training_unkCol6_ColV[] = {
-    #include "assets/levelGroup/Training/unkCol6/unkCol6.colV.inc.c"
+Vec3f Training_unkCol6_ColVerts[] = {
+    #include "assets/levelGroup/Training/unkCol6/unkCol6.colVerts.inc.c"
 };
 
-Vec3w Training_unkCol6_ColT[] = {
-    #include "assets/levelGroup/Training/unkCol6/unkCol6.colT.inc.c"
+Vec3w Training_unkCol6_ColTris[] = {
+    #include "assets/levelGroup/Training/unkCol6/unkCol6.colTris.inc.c"
 };
 
-Rect3D Training_unkCol6_ColS = {
-    #include "assets/levelGroup/Training/unkCol6/unkCol6.colS.inc.c"
+Rect3D Training_unkCol6_BoundBox = {
+    #include "assets/levelGroup/Training/unkCol6/unkCol6.boundBox.inc.c"
 };
 
-ModelCollision Training_unkCol6_ColH = {
-46, 83, Training_unkCol6_ColV, Training_unkCol6_ColT, &Training_unkCol6_ColS
+ModelCollision Training_unkCol6_collision = {
+    ARRAY_COUNT(Training_unkCol6_ColVerts), ARRAY_COUNT(Training_unkCol6_ColTris), Training_unkCol6_ColVerts, Training_unkCol6_ColTris, &Training_unkCol6_BoundBox
 };
 
-Vec3f Training_unkCol7_ColV[] = {
-    #include "assets/levelGroup/Training/unkCol7/unkCol7.colV.inc.c"
+Vec3f Training_unkCol7_ColVerts[] = {
+    #include "assets/levelGroup/Training/unkCol7/unkCol7.colVerts.inc.c"
 };
 
-Vec3w Training_unkCol7_ColT[] = {
-    #include "assets/levelGroup/Training/unkCol7/unkCol7.colT.inc.c"
+Vec3w Training_unkCol7_ColTris[] = {
+    #include "assets/levelGroup/Training/unkCol7/unkCol7.colTris.inc.c"
 };
 
-Rect3D Training_unkCol7_ColS = {
-    #include "assets/levelGroup/Training/unkCol7/unkCol7.colS.inc.c"
+Rect3D Training_unkCol7_BoundBox = {
+    #include "assets/levelGroup/Training/unkCol7/unkCol7.boundBox.inc.c"
 };
 
-ModelCollision Training_unkCol7_ColH = {
-16, 16, Training_unkCol7_ColV, Training_unkCol7_ColT, &Training_unkCol7_ColS
+ModelCollision Training_unkCol7_collision = {
+    ARRAY_COUNT(Training_unkCol7_ColVerts), ARRAY_COUNT(Training_unkCol7_ColTris), Training_unkCol7_ColVerts, Training_unkCol7_ColTris, &Training_unkCol7_BoundBox
 };
 
-Vec3f Training_unkCol8_ColV[] = {
-    #include "assets/levelGroup/Training/unkCol8/unkCol8.colV.inc.c"
+Vec3f Training_unkCol8_ColVerts[] = {
+    #include "assets/levelGroup/Training/unkCol8/unkCol8.colVerts.inc.c"
 };
 
-Vec3w Training_unkCol8_ColT[] = {
-    #include "assets/levelGroup/Training/unkCol8/unkCol8.colT.inc.c"
+Vec3w Training_unkCol8_ColTris[] = {
+    #include "assets/levelGroup/Training/unkCol8/unkCol8.colTris.inc.c"
 };
 
-Rect3D Training_unkCol8_ColS = {
-    #include "assets/levelGroup/Training/unkCol8/unkCol8.colS.inc.c"
+Rect3D Training_unkCol8_BoundBox = {
+    #include "assets/levelGroup/Training/unkCol8/unkCol8.boundBox.inc.c"
 };
 
-ModelCollision Training_unkCol8_ColH = {
-8, 18, Training_unkCol8_ColV, Training_unkCol8_ColT, &Training_unkCol8_ColS
+ModelCollision Training_unkCol8_collision = {
+    ARRAY_COUNT(Training_unkCol8_ColVerts), ARRAY_COUNT(Training_unkCol8_ColTris), Training_unkCol8_ColVerts, Training_unkCol8_ColTris, &Training_unkCol8_BoundBox
 };
 
-Vec3f Training_unkCol9_ColV[] = {
-    #include "assets/levelGroup/Training/unkCol9/unkCol9.colV.inc.c"
+Vec3f Training_unkCol9_ColVerts[] = {
+    #include "assets/levelGroup/Training/unkCol9/unkCol9.colVerts.inc.c"
 };
 
-Vec3w Training_unkCol9_ColT[] = {
-    #include "assets/levelGroup/Training/unkCol9/unkCol9.colT.inc.c"
+Vec3w Training_unkCol9_ColTris[] = {
+    #include "assets/levelGroup/Training/unkCol9/unkCol9.colTris.inc.c"
 };
 
-Rect3D Training_unkCol9_ColS = {
-    #include "assets/levelGroup/Training/unkCol9/unkCol9.colS.inc.c"
+Rect3D Training_unkCol9_BoundBox = {
+    #include "assets/levelGroup/Training/unkCol9/unkCol9.boundBox.inc.c"
 };
 
-ModelCollision Training_unkCol9_ColH = {
-16, 22, Training_unkCol9_ColV, Training_unkCol9_ColT, &Training_unkCol9_ColS
+ModelCollision Training_unkCol9_collision = {
+    ARRAY_COUNT(Training_unkCol9_ColVerts), ARRAY_COUNT(Training_unkCol9_ColTris), Training_unkCol9_ColVerts, Training_unkCol9_ColTris, &Training_unkCol9_BoundBox
 };
 
-Vec3f Training_unkCol10_ColV[] = {
-    #include "assets/levelGroup/Training/unkCol10/unkCol10.colV.inc.c"
+Vec3f Training_unkCol10_ColVerts[] = {
+    #include "assets/levelGroup/Training/unkCol10/unkCol10.colVerts.inc.c"
 };
 
-Vec3w Training_unkCol10_ColT[] = {
-    #include "assets/levelGroup/Training/unkCol10/unkCol10.colT.inc.c"
+Vec3w Training_unkCol10_ColTris[] = {
+    #include "assets/levelGroup/Training/unkCol10/unkCol10.colTris.inc.c"
 };
 
-Rect3D Training_unkCol10_ColS = {
-    #include "assets/levelGroup/Training/unkCol10/unkCol10.colS.inc.c"
+Rect3D Training_unkCol10_BoundBox = {
+    #include "assets/levelGroup/Training/unkCol10/unkCol10.boundBox.inc.c"
 };
 
-ModelCollision Training_unkCol10_ColH = {
-20, 24, Training_unkCol10_ColV, Training_unkCol10_ColT, &Training_unkCol10_ColS
+ModelCollision Training_unkCol10_collision = {
+    ARRAY_COUNT(Training_unkCol10_ColVerts), ARRAY_COUNT(Training_unkCol10_ColTris), Training_unkCol10_ColVerts, Training_unkCol10_ColTris, &Training_unkCol10_BoundBox
 };
 
-Vec3f Training_unkCol11_ColV[] = {
-    #include "assets/levelGroup/Training/unkCol11/unkCol11.colV.inc.c"
+Vec3f Training_unkCol11_ColVerts[] = {
+    #include "assets/levelGroup/Training/unkCol11/unkCol11.colVerts.inc.c"
 };
 
-Vec3w Training_unkCol11_ColT[] = {
-    #include "assets/levelGroup/Training/unkCol11/unkCol11.colT.inc.c"
+Vec3w Training_unkCol11_ColTris[] = {
+    #include "assets/levelGroup/Training/unkCol11/unkCol11.colTris.inc.c"
 };
 
-Rect3D Training_unkCol11_ColS = {
-    #include "assets/levelGroup/Training/unkCol11/unkCol11.colS.inc.c"
+Rect3D Training_unkCol11_BoundBox = {
+    #include "assets/levelGroup/Training/unkCol11/unkCol11.boundBox.inc.c"
 };
 
-ModelCollision Training_unkCol11_ColH = {
-16, 22, Training_unkCol11_ColV, Training_unkCol11_ColT, &Training_unkCol11_ColS
+ModelCollision Training_unkCol11_collision = {
+    ARRAY_COUNT(Training_unkCol11_ColVerts), ARRAY_COUNT(Training_unkCol11_ColTris), Training_unkCol11_ColVerts, Training_unkCol11_ColTris, &Training_unkCol11_BoundBox
 };
 
-Vec3f Training_unkCol12_ColV[] = {
-    #include "assets/levelGroup/Training/unkCol12/unkCol12.colV.inc.c"
+Vec3f Training_unkCol12_ColVerts[] = {
+    #include "assets/levelGroup/Training/unkCol12/unkCol12.colVerts.inc.c"
 };
 
-Vec3w Training_unkCol12_ColT[] = {
-    #include "assets/levelGroup/Training/unkCol12/unkCol12.colT.inc.c"
+Vec3w Training_unkCol12_ColTris[] = {
+    #include "assets/levelGroup/Training/unkCol12/unkCol12.colTris.inc.c"
 };
 
-Rect3D Training_unkCol12_ColS = {
-    #include "assets/levelGroup/Training/unkCol12/unkCol12.colS.inc.c"
+Rect3D Training_unkCol12_BoundBox = {
+    #include "assets/levelGroup/Training/unkCol12/unkCol12.boundBox.inc.c"
 };
 
-ModelCollision Training_unkCol12_ColH = {
-19, 23, Training_unkCol12_ColV, Training_unkCol12_ColT, &Training_unkCol12_ColS
+ModelCollision Training_unkCol12_collision = {
+    ARRAY_COUNT(Training_unkCol12_ColVerts), ARRAY_COUNT(Training_unkCol12_ColTris), Training_unkCol12_ColVerts, Training_unkCol12_ColTris, &Training_unkCol12_BoundBox
 };
 
-Vec3f Training_unkCol13_ColV[] = {
-    #include "assets/levelGroup/Training/unkCol13/unkCol13.colV.inc.c"
+Vec3f Training_unkCol13_ColVerts[] = {
+    #include "assets/levelGroup/Training/unkCol13/unkCol13.colVerts.inc.c"
 };
 
-Vec3w Training_unkCol13_ColT[] = {
-    #include "assets/levelGroup/Training/unkCol13/unkCol13.colT.inc.c"
+Vec3w Training_unkCol13_ColTris[] = {
+    #include "assets/levelGroup/Training/unkCol13/unkCol13.colTris.inc.c"
 };
 
-Rect3D Training_unkCol13_ColS = {
-    #include "assets/levelGroup/Training/unkCol13/unkCol13.colS.inc.c"
+Rect3D Training_unkCol13_BoundBox = {
+    #include "assets/levelGroup/Training/unkCol13/unkCol13.boundBox.inc.c"
 };
 
-ModelCollision Training_unkCol13_ColH = {
-13, 12, Training_unkCol13_ColV, Training_unkCol13_ColT, &Training_unkCol13_ColS
+ModelCollision Training_unkCol13_collision = {
+    ARRAY_COUNT(Training_unkCol13_ColVerts), ARRAY_COUNT(Training_unkCol13_ColTris), Training_unkCol13_ColVerts, Training_unkCol13_ColTris, &Training_unkCol13_BoundBox
 };
 
-Vec3f Training_unkCol14_ColV[] = {
-    #include "assets/levelGroup/Training/unkCol14/unkCol14.colV.inc.c"
+Vec3f Training_unkCol14_ColVerts[] = {
+    #include "assets/levelGroup/Training/unkCol14/unkCol14.colVerts.inc.c"
 };
 
-Vec3w Training_unkCol14_ColT[] = {
-    #include "assets/levelGroup/Training/unkCol14/unkCol14.colT.inc.c"
+Vec3w Training_unkCol14_ColTris[] = {
+    #include "assets/levelGroup/Training/unkCol14/unkCol14.colTris.inc.c"
 };
 
-Rect3D Training_unkCol14_ColS = {
-    #include "assets/levelGroup/Training/unkCol14/unkCol14.colS.inc.c"
+Rect3D Training_unkCol14_BoundBox = {
+    #include "assets/levelGroup/Training/unkCol14/unkCol14.boundBox.inc.c"
 };
 
-ModelCollision Training_unkCol14_ColH = {
-8, 10, Training_unkCol14_ColV, Training_unkCol14_ColT, &Training_unkCol14_ColS
+ModelCollision Training_unkCol14_collision = {
+    ARRAY_COUNT(Training_unkCol14_ColVerts), ARRAY_COUNT(Training_unkCol14_ColTris), Training_unkCol14_ColVerts, Training_unkCol14_ColTris, &Training_unkCol14_BoundBox
 };
 
-Vec3f Training_unkCol15_ColV[] = {
-    #include "assets/levelGroup/Training/unkCol15/unkCol15.colV.inc.c"
+Vec3f Training_unkCol15_ColVerts[] = {
+    #include "assets/levelGroup/Training/unkCol15/unkCol15.colVerts.inc.c"
 };
 
-Vec3w Training_unkCol15_ColT[] = {
-    #include "assets/levelGroup/Training/unkCol15/unkCol15.colT.inc.c"
+Vec3w Training_unkCol15_ColTris[] = {
+    #include "assets/levelGroup/Training/unkCol15/unkCol15.colTris.inc.c"
 };
 
-Rect3D Training_unkCol15_ColS = {
-    #include "assets/levelGroup/Training/unkCol15/unkCol15.colS.inc.c"
+Rect3D Training_unkCol15_BoundBox = {
+    #include "assets/levelGroup/Training/unkCol15/unkCol15.boundBox.inc.c"
 };
 
-ModelCollision Training_unkCol15_ColH = {
-12, 18, Training_unkCol15_ColV, Training_unkCol15_ColT, &Training_unkCol15_ColS
+ModelCollision Training_unkCol15_collision = {
+    ARRAY_COUNT(Training_unkCol15_ColVerts), ARRAY_COUNT(Training_unkCol15_ColTris), Training_unkCol15_ColVerts, Training_unkCol15_ColTris, &Training_unkCol15_BoundBox
 };
 
-Vec3f Training_unkCol16_ColV[] = {
-    #include "assets/levelGroup/Training/unkCol16/unkCol16.colV.inc.c"
+Vec3f Training_unkCol16_ColVerts[] = {
+    #include "assets/levelGroup/Training/unkCol16/unkCol16.colVerts.inc.c"
 };
 
-Vec3w Training_unkCol16_ColT[] = {
-    #include "assets/levelGroup/Training/unkCol16/unkCol16.colT.inc.c"
+Vec3w Training_unkCol16_ColTris[] = {
+    #include "assets/levelGroup/Training/unkCol16/unkCol16.colTris.inc.c"
 };
 
-Rect3D Training_unkCol16_ColS = {
-    #include "assets/levelGroup/Training/unkCol16/unkCol16.colS.inc.c"
+Rect3D Training_unkCol16_BoundBox = {
+    #include "assets/levelGroup/Training/unkCol16/unkCol16.boundBox.inc.c"
 };
 
-ModelCollision Training_unkCol16_ColH = {
-8, 10, Training_unkCol16_ColV, Training_unkCol16_ColT, &Training_unkCol16_ColS
+ModelCollision Training_unkCol16_collision = {
+    ARRAY_COUNT(Training_unkCol16_ColVerts), ARRAY_COUNT(Training_unkCol16_ColTris), Training_unkCol16_ColVerts, Training_unkCol16_ColTris, &Training_unkCol16_BoundBox
 };
 
-Vec3f Training_unkCol17_ColV[] = {
-    #include "assets/levelGroup/Training/unkCol17/unkCol17.colV.inc.c"
+Vec3f Training_unkCol17_ColVerts[] = {
+    #include "assets/levelGroup/Training/unkCol17/unkCol17.colVerts.inc.c"
 };
 
-Vec3w Training_unkCol17_ColT[] = {
-    #include "assets/levelGroup/Training/unkCol17/unkCol17.colT.inc.c"
+Vec3w Training_unkCol17_ColTris[] = {
+    #include "assets/levelGroup/Training/unkCol17/unkCol17.colTris.inc.c"
 };
 
-Rect3D Training_unkCol17_ColS = {
-    #include "assets/levelGroup/Training/unkCol17/unkCol17.colS.inc.c"
+Rect3D Training_unkCol17_BoundBox = {
+    #include "assets/levelGroup/Training/unkCol17/unkCol17.boundBox.inc.c"
 };
 
-ModelCollision Training_unkCol17_ColH = {
-15, 18, Training_unkCol17_ColV, Training_unkCol17_ColT, &Training_unkCol17_ColS
+ModelCollision Training_unkCol17_collision = {
+    ARRAY_COUNT(Training_unkCol17_ColVerts), ARRAY_COUNT(Training_unkCol17_ColTris), Training_unkCol17_ColVerts, Training_unkCol17_ColTris, &Training_unkCol17_BoundBox
 };
 
-Vec3f Training_unkCol18_ColV[] = {
-    #include "assets/levelGroup/Training/unkCol18/unkCol18.colV.inc.c"
+Vec3f Training_unkCol18_ColVerts[] = {
+    #include "assets/levelGroup/Training/unkCol18/unkCol18.colVerts.inc.c"
 };
 
-Vec3w Training_unkCol18_ColT[] = {
-    #include "assets/levelGroup/Training/unkCol18/unkCol18.colT.inc.c"
+Vec3w Training_unkCol18_ColTris[] = {
+    #include "assets/levelGroup/Training/unkCol18/unkCol18.colTris.inc.c"
 };
 
-Rect3D Training_unkCol18_ColS = {
-    #include "assets/levelGroup/Training/unkCol18/unkCol18.colS.inc.c"
+Rect3D Training_unkCol18_BoundBox = {
+    #include "assets/levelGroup/Training/unkCol18/unkCol18.boundBox.inc.c"
 };
 
-ModelCollision Training_unkCol18_ColH = {
-20, 24, Training_unkCol18_ColV, Training_unkCol18_ColT, &Training_unkCol18_ColS
+ModelCollision Training_unkCol18_collision = {
+    ARRAY_COUNT(Training_unkCol18_ColVerts), ARRAY_COUNT(Training_unkCol18_ColTris), Training_unkCol18_ColVerts, Training_unkCol18_ColTris, &Training_unkCol18_BoundBox
 };
 
-Vec3f Training_unkCol19_ColV[] = {
-    #include "assets/levelGroup/Training/unkCol19/unkCol19.colV.inc.c"
+Vec3f Training_unkCol19_ColVerts[] = {
+    #include "assets/levelGroup/Training/unkCol19/unkCol19.colVerts.inc.c"
 };
 
-Vec3w Training_unkCol19_ColT[] = {
-    #include "assets/levelGroup/Training/unkCol19/unkCol19.colT.inc.c"
+Vec3w Training_unkCol19_ColTris[] = {
+    #include "assets/levelGroup/Training/unkCol19/unkCol19.colTris.inc.c"
 };
 
-Rect3D Training_unkCol19_ColS = {
-    #include "assets/levelGroup/Training/unkCol19/unkCol19.colS.inc.c"
+Rect3D Training_unkCol19_BoundBox = {
+    #include "assets/levelGroup/Training/unkCol19/unkCol19.boundBox.inc.c"
 };
 
-ModelCollision Training_unkCol19_ColH = {
-6, 4, Training_unkCol19_ColV, Training_unkCol19_ColT, &Training_unkCol19_ColS
+ModelCollision Training_unkCol19_collision = {
+    ARRAY_COUNT(Training_unkCol19_ColVerts), ARRAY_COUNT(Training_unkCol19_ColTris), Training_unkCol19_ColVerts, Training_unkCol19_ColTris, &Training_unkCol19_BoundBox
 };
 
-Vec3f Training_unkCol20_ColV[] = {
-    #include "assets/levelGroup/Training/unkCol20/unkCol20.colV.inc.c"
+Vec3f Training_unkCol20_ColVerts[] = {
+    #include "assets/levelGroup/Training/unkCol20/unkCol20.colVerts.inc.c"
 };
 
-Vec3w Training_unkCol20_ColT[] = {
-    #include "assets/levelGroup/Training/unkCol20/unkCol20.colT.inc.c"
+Vec3w Training_unkCol20_ColTris[] = {
+    #include "assets/levelGroup/Training/unkCol20/unkCol20.colTris.inc.c"
 };
 
-Rect3D Training_unkCol20_ColS = {
-    #include "assets/levelGroup/Training/unkCol20/unkCol20.colS.inc.c"
+Rect3D Training_unkCol20_BoundBox = {
+    #include "assets/levelGroup/Training/unkCol20/unkCol20.boundBox.inc.c"
 };
 
-ModelCollision Training_unkCol20_ColH = {
-6, 4, Training_unkCol20_ColV, Training_unkCol20_ColT, &Training_unkCol20_ColS
+ModelCollision Training_unkCol20_collision = {
+    ARRAY_COUNT(Training_unkCol20_ColVerts), ARRAY_COUNT(Training_unkCol20_ColTris), Training_unkCol20_ColVerts, Training_unkCol20_ColTris, &Training_unkCol20_BoundBox
 };
 
-Vec3f Training_unkCol21_ColV[] = {
-    #include "assets/levelGroup/Training/unkCol21/unkCol21.colV.inc.c"
+Vec3f Training_unkCol21_ColVerts[] = {
+    #include "assets/levelGroup/Training/unkCol21/unkCol21.colVerts.inc.c"
 };
 
-Vec3w Training_unkCol21_ColT[] = {
-    #include "assets/levelGroup/Training/unkCol21/unkCol21.colT.inc.c"
+Vec3w Training_unkCol21_ColTris[] = {
+    #include "assets/levelGroup/Training/unkCol21/unkCol21.colTris.inc.c"
 };
 
-Rect3D Training_unkCol21_ColS = {
-    #include "assets/levelGroup/Training/unkCol21/unkCol21.colS.inc.c"
+Rect3D Training_unkCol21_BoundBox = {
+    #include "assets/levelGroup/Training/unkCol21/unkCol21.boundBox.inc.c"
 };
 
-ModelCollision Training_unkCol21_ColH = {
-6, 4, Training_unkCol21_ColV, Training_unkCol21_ColT, &Training_unkCol21_ColS
+ModelCollision Training_unkCol21_collision = {
+    ARRAY_COUNT(Training_unkCol21_ColVerts), ARRAY_COUNT(Training_unkCol21_ColTris), Training_unkCol21_ColVerts, Training_unkCol21_ColTris, &Training_unkCol21_BoundBox
 };
 
-Vec3f Training_unkCol22_ColV[] = {
-    #include "assets/levelGroup/Training/unkCol22/unkCol22.colV.inc.c"
+Vec3f Training_unkCol22_ColVerts[] = {
+    #include "assets/levelGroup/Training/unkCol22/unkCol22.colVerts.inc.c"
 };
 
-Vec3w Training_unkCol22_ColT[] = {
-    #include "assets/levelGroup/Training/unkCol22/unkCol22.colT.inc.c"
+Vec3w Training_unkCol22_ColTris[] = {
+    #include "assets/levelGroup/Training/unkCol22/unkCol22.colTris.inc.c"
 };
 
-Rect3D Training_unkCol22_ColS = {
-    #include "assets/levelGroup/Training/unkCol22/unkCol22.colS.inc.c"
+Rect3D Training_unkCol22_BoundBox = {
+    #include "assets/levelGroup/Training/unkCol22/unkCol22.boundBox.inc.c"
 };
 
-ModelCollision Training_unkCol22_ColH = {
-6, 4, Training_unkCol22_ColV, Training_unkCol22_ColT, &Training_unkCol22_ColS
+ModelCollision Training_unkCol22_collision = {
+    ARRAY_COUNT(Training_unkCol22_ColVerts), ARRAY_COUNT(Training_unkCol22_ColTris), Training_unkCol22_ColVerts, Training_unkCol22_ColTris, &Training_unkCol22_BoundBox
 };
 Mtx Training_IMtx25 = IDENTITY;

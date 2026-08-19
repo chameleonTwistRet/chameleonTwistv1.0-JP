@@ -1,254 +1,40 @@
-#include "common.h"
-
-extern unsigned char Global_JLMountain_ci4_PNG[];
-extern unsigned char Global_JLMountain_ci4_PAL[];
-extern unsigned char Global_jlText3_ci4_PNG[];
-extern unsigned char Global_jlText3_ci4_PAL[];
-extern unsigned char Global_sandAgain_ci4_PNG[];
-extern unsigned char Global_sandAgain_ci4_PAL[];
-extern unsigned char Global_yellowBrickWall_ci4_PNG[];
-extern unsigned char Global_yellowBrickWall_ci4_PAL[];
-extern unsigned char Global_Darkwood_ci4_PNG[];
-extern unsigned char Global_Darkwood_ci4_PAL[];
-extern unsigned char Global_metalPlate_i4_PNG[];
-extern unsigned char Global_strip2_i4_PNG[];
-extern unsigned char Global_BLRedYellowPlate_ci4_PNG[];
-extern unsigned char Global_BLRedYellowPlate_ci4_PAL[];
-extern unsigned char Global_DCBricks_ci4_PNG[];
-extern unsigned char Global_DCBricks_ci4_PAL[];
-extern unsigned char Global_orangeBrick_ci4_PNG[];
-extern unsigned char Global_orangeBrick_ci4_PAL[];
-extern unsigned char Global_orangeLego_ci4_PNG[];
-extern unsigned char Global_orangeLego_ci4_PAL[];
-extern unsigned char Global_blueBrick_ci4_PNG[];
-extern unsigned char Global_blueBrick_ci4_PAL[];
-extern unsigned char Global_blueLego_ci4_PNG[];
-extern unsigned char Global_blueLego_ci4_PAL[];
-extern unsigned char Global_klTILE_ci4_PNG[];
-extern unsigned char Global_klTILE_ci4_PAL[];
-extern unsigned char Global_wood_ci4_PNG[];
-extern unsigned char Global_wood_ci4_PAL[];
-extern unsigned char Global_GCFloorboard_ci4_PNG[];
-extern unsigned char Global_GCFloorboard_ci4_PAL[];
-extern unsigned char Global_cracker_ci4_PNG[];
-extern unsigned char Global_cracker_ci4_PAL[];
-extern unsigned char Global_sandwSide_ci4_PNG[];
-extern unsigned char Global_sandwSide_ci4_PAL[];
-extern unsigned char Global_giftSide_ci4_PNG[];
-extern unsigned char Global_giftSide_ci4_PAL[];
-extern unsigned char Global_giftTop_ci4_PNG[];
-extern unsigned char Global_giftTop_ci4_PAL[];
-extern unsigned char Global_DCWall1_ci4_PNG[];
-extern unsigned char Global_DCWall1_ci4_PAL[];
-
-extern Gfx Global_fallbackCube_Gfx[];
-extern ModelCollision Global_fallbackCube_ColH;
-extern Gfx Global_exitShadowSouth_Gfx[];
-extern ModelCollision Global_exitShadowSouth_ColH;
-extern Gfx Global_exitShadowNorth_Gfx[];
-extern ModelCollision Global_exitShadowNorth_ColH;
-extern Gfx Global_exitShadowEast_Gfx[];
-extern ModelCollision Global_exitShadowEast_ColH;
-extern Gfx Global_exitShadowWest_Gfx[];
-extern ModelCollision Global_exitShadowWest_ColH;
-extern Gfx Global_ALBLExit_Gfx[];
-extern ModelCollision Global_ALBLExit_ColH;
-extern Gfx Global_sandPit_Gfx[];
-extern ModelCollision Global_sandPit_ColH;
-extern Gfx Global_BossBridge_Gfx[];
-extern ModelCollision Global_BossBridge_ColH;
-extern Gfx Global_ALPole_Gfx[];
-extern ModelCollision Global_ALPole_ColH;
-extern Gfx Global_ALBLDoor_Gfx[];
-extern ModelCollision Global_ALBLDoor_ColH;
-extern Gfx Global_ALSpinDoor_Gfx[];
-extern ModelCollision Global_ALSpinDoor_ColH;
-extern Gfx Global_BLLavaFloor_Gfx[];
-extern ModelCollision Global_BLLavaFloor_ColH;
-extern Gfx Global_BLLava_Gfx[];
-extern ModelCollision Global_BLLava_ColH;
-extern Gfx Global_BLLava2_Gfx[];
-extern ModelCollision Global_BLLava2_ColH;
-extern Gfx Global_BLLava3_Gfx[];
-extern ModelCollision Global_BLLava3_ColH;
-extern Gfx Global_BLLava4_Gfx[];
-extern ModelCollision Global_BLLava4_ColH;
-extern Gfx Global_BLLava5_Gfx[];
-extern ModelCollision Global_BLLava5_ColH;
-extern Gfx Global_BLLava6_Gfx[];
-extern ModelCollision Global_BLLava6_ColH;
-extern Gfx Global_BLLava7_Gfx[];
-extern ModelCollision Global_BLLava7_ColH;
-extern Gfx Global_BLLava8_Gfx[];
-extern ModelCollision Global_BLLava8_ColH;
-extern Gfx Global_BLDestructableTop_Gfx[];
-extern ModelCollision Global_BLDestructableTop_ColH;
-extern Gfx Global_BLMetalBridge_Gfx[];
-extern ModelCollision Global_BLMetalBridge_ColH;
-extern Gfx Global_KLExit_Gfx[];
-extern ModelCollision Global_KLExit_ColH;
-extern Gfx Global_KLDoor_Gfx[];
-extern ModelCollision Global_KLDoor_ColH;
-extern Gfx Global_DCExit_Gfx[];
-extern ModelCollision Global_DCExit_ColH;
-extern Gfx Global_TallExitShadow1_Gfx[];
-extern ModelCollision Global_TallExitShadow1_ColH;
-extern Gfx Global_TallExitShadow2_Gfx[];
-extern ModelCollision Global_TallExitShadow2_ColH;
-extern Gfx Global_GCExit1_Gfx[];
-extern ModelCollision Global_GCExit1_ColH;
-extern Gfx Global_GCExit2_Gfx[];
-extern ModelCollision Global_GCExit2_ColH;
-extern Gfx Global_trainingRoomLight_Gfx[];
-extern ModelCollision Global_trainingRoomLight_ColH;
-extern Gfx Global_JLCaveExit1_Gfx[];
-extern ModelCollision Global_JLCaveExit1_ColH;
-extern Gfx Global_JLCaveExit2_Gfx[];
-extern ModelCollision Global_JLCaveExit2_ColH;
-extern Gfx Global_JLCaveExit3_Gfx[];
-extern ModelCollision Global_JLCaveExit3_ColH;
-extern Gfx Global_JLCaveExit4_Gfx[];
-extern ModelCollision Global_JLCaveExit4_ColH;
-extern Gfx Global_JLOutsideEntrance_Gfx[];
-extern ModelCollision Global_JLOutsideEntrance_ColH;
-extern Gfx Global_JLFxCamPillar_Gfx[];
-extern ModelCollision Global_JLFxCamPillar_ColH;
-extern Gfx Global_JLCaveDoor_Gfx[];
-extern ModelCollision Global_JLCaveDoor_ColH;
-extern Gfx BattleMode_model1_Gfx[];
-extern ModelCollision BattleMode_unkCol1_ColH;
-extern Gfx BattleMode_model2_Gfx[];
-extern ModelCollision BattleMode_unkCol2_ColH;
-extern Gfx BattleMode_model3_Gfx[];
-extern ModelCollision BattleMode_unkCol3_ColH;
-extern Gfx BattleMode_model4_Gfx[];
-extern ModelCollision BattleMode_unkCol4_ColH;
-extern Gfx BattleMode_model5_Gfx[];
-extern ModelCollision BattleMode_unkCol5_ColH;
-extern Gfx BattleMode_model6_Gfx[];
-extern ModelCollision BattleMode_unkCol6_ColH;
-extern Gfx BattleMode_model7_Gfx[];
-extern ModelCollision BattleMode_unkCol7_ColH;
-extern Gfx BattleMode_model8_Gfx[];
-extern ModelCollision BattleMode_unkCol8_ColH;
-extern Gfx BattleMode_model9_Gfx[];
-extern ModelCollision BattleMode_unkCol9_ColH;
-extern Gfx BattleMode_model10_Gfx[];
-extern ModelCollision BattleMode_unkCol10_ColH;
-extern Gfx BattleMode_model11_Gfx[];
-extern ModelCollision BattleMode_unkCol11_ColH;
-extern Gfx BattleMode_model12_Gfx[];
-extern ModelCollision BattleMode_unkCol12_ColH;
-extern Gfx BattleMode_model13_Gfx[];
-extern ModelCollision BattleMode_unkCol13_ColH;
-extern Gfx BattleMode_model14_Gfx[];
-extern ModelCollision BattleMode_unkCol14_ColH;
-extern Gfx BattleMode_model15_Gfx[];
-extern ModelCollision BattleMode_unkCol15_ColH;
-extern Gfx BattleMode_model16_Gfx[];
-extern ModelCollision BattleMode_unkCol16_ColH;
-extern Gfx BattleMode_model17_Gfx[];
-extern ModelCollision BattleMode_unkCol17_ColH;
-extern Gfx BattleMode_model18_Gfx[];
-extern ModelCollision BattleMode_unkCol18_ColH;
-extern Gfx BattleMode_model19_Gfx[];
-extern ModelCollision BattleMode_unkCol19_ColH;
-extern Gfx BattleMode_model20_Gfx[];
-extern ModelCollision BattleMode_unkCol20_ColH;
-extern Gfx BattleMode_model21_Gfx[];
-extern ModelCollision BattleMode_unkCol21_ColH;
-extern Gfx BattleMode_model22_Gfx[];
-extern ModelCollision BattleMode_unkCol22_ColH;
-extern Gfx BattleMode_model23_Gfx[];
-extern ModelCollision BattleMode_unkCol23_ColH;
-extern Gfx BattleMode_model24_Gfx[];
-extern ModelCollision BattleMode_unkCol24_ColH;
-extern Gfx BattleMode_model25_Gfx[];
-extern ModelCollision BattleMode_unkCol25_ColH;
-extern Gfx BattleMode_model26_Gfx[];
-extern ModelCollision BattleMode_unkCol26_ColH;
-extern Gfx BattleMode_model27_Gfx[];
-extern ModelCollision BattleMode_unkCol27_ColH;
-extern Gfx BattleMode_model28_Gfx[];
-extern ModelCollision BattleMode_unkCol28_ColH;
-extern Gfx BattleMode_model29_Gfx[];
-extern ModelCollision BattleMode_unkCol29_ColH;
-extern Gfx BattleMode_model30_Gfx[];
-extern ModelCollision BattleMode_unkCol30_ColH;
-extern Gfx Global_pole_Gfx[];
-extern ModelCollision Global_pole_ColH;
+#include "BattleMode.h"
 
 Mtx BattleMode_IMtx1 = IDENTITY;
 
-StageModel BattleMode_stageModels[68] = {
-{&Global_fallbackCube_Gfx[0], &Global_fallbackCube_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_exitShadowSouth_Gfx[0], &Global_exitShadowSouth_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_exitShadowNorth_Gfx[0], &Global_exitShadowNorth_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_exitShadowEast_Gfx[0], &Global_exitShadowEast_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_exitShadowWest_Gfx[0], &Global_exitShadowWest_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_ALBLExit_Gfx[0], &Global_ALBLExit_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_sandPit_Gfx[0], &Global_sandPit_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_BossBridge_Gfx[0], &Global_BossBridge_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_ALPole_Gfx[0], &Global_ALPole_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_ALBLDoor_Gfx[0], &Global_ALBLDoor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_ALSpinDoor_Gfx[0], &Global_ALSpinDoor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_BLLavaFloor_Gfx[0], &Global_BLLavaFloor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_BLLava_Gfx[0], &Global_BLLava_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_BLLava2_Gfx[0], &Global_BLLava2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_BLLava3_Gfx[0], &Global_BLLava3_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_BLLava4_Gfx[0], &Global_BLLava4_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_BLLava5_Gfx[0], &Global_BLLava5_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_BLLava6_Gfx[0], &Global_BLLava6_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_BLLava7_Gfx[0], &Global_BLLava7_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_BLLava8_Gfx[0], &Global_BLLava8_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_BLDestructableTop_Gfx[0], &Global_BLDestructableTop_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_BLMetalBridge_Gfx[0], &Global_BLMetalBridge_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_KLExit_Gfx[0], &Global_KLExit_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_KLDoor_Gfx[0], &Global_KLDoor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_DCExit_Gfx[0], &Global_DCExit_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_TallExitShadow1_Gfx[0], &Global_TallExitShadow1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_TallExitShadow2_Gfx[0], &Global_TallExitShadow2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_GCExit1_Gfx[0], &Global_GCExit1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_GCExit2_Gfx[0], &Global_GCExit2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_trainingRoomLight_Gfx[0], &Global_trainingRoomLight_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_JLCaveExit1_Gfx[0], &Global_JLCaveExit1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_JLCaveExit2_Gfx[0], &Global_JLCaveExit2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_JLCaveExit3_Gfx[0], &Global_JLCaveExit3_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_JLCaveExit4_Gfx[0], &Global_JLCaveExit4_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_JLOutsideEntrance_Gfx[0], &Global_JLOutsideEntrance_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_JLFxCamPillar_Gfx[0], &Global_JLFxCamPillar_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_JLCaveDoor_Gfx[0], &Global_JLCaveDoor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&BattleMode_model1_Gfx[0], &BattleMode_unkCol1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&BattleMode_model2_Gfx[0], &BattleMode_unkCol2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&BattleMode_model3_Gfx[0], &BattleMode_unkCol3_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&BattleMode_model4_Gfx[0], &BattleMode_unkCol4_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&BattleMode_model5_Gfx[0], &BattleMode_unkCol5_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&BattleMode_model6_Gfx[0], &BattleMode_unkCol6_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&BattleMode_model7_Gfx[0], &BattleMode_unkCol7_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&BattleMode_model8_Gfx[0], &BattleMode_unkCol8_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&BattleMode_model9_Gfx[0], &BattleMode_unkCol9_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&BattleMode_model10_Gfx[0], &BattleMode_unkCol10_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&BattleMode_model11_Gfx[0], &BattleMode_unkCol11_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&BattleMode_model12_Gfx[0], &BattleMode_unkCol12_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&BattleMode_model13_Gfx[0], &BattleMode_unkCol13_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&BattleMode_model14_Gfx[0], &BattleMode_unkCol14_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&BattleMode_model15_Gfx[0], &BattleMode_unkCol15_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&BattleMode_model16_Gfx[0], &BattleMode_unkCol16_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&BattleMode_model17_Gfx[0], &BattleMode_unkCol17_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&BattleMode_model18_Gfx[0], &BattleMode_unkCol18_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&BattleMode_model19_Gfx[0], &BattleMode_unkCol19_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&BattleMode_model20_Gfx[0], &BattleMode_unkCol20_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&BattleMode_model21_Gfx[0], &BattleMode_unkCol21_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&BattleMode_model22_Gfx[0], &BattleMode_unkCol22_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&BattleMode_model23_Gfx[0], &BattleMode_unkCol23_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&BattleMode_model24_Gfx[0], &BattleMode_unkCol24_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&BattleMode_model25_Gfx[0], &BattleMode_unkCol25_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&BattleMode_model26_Gfx[0], &BattleMode_unkCol26_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&BattleMode_model27_Gfx[0], &BattleMode_unkCol27_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&BattleMode_model28_Gfx[0], &BattleMode_unkCol28_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&BattleMode_model29_Gfx[0], &BattleMode_unkCol29_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&BattleMode_model30_Gfx[0], &BattleMode_unkCol30_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_pole_Gfx[0], &Global_pole_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+StageModel BattleMode_stageModels[] = {
+#include "global_models.inc.c"
+{BattleMode_model1_Gfx, &BattleMode_unkCol1_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{BattleMode_model2_Gfx, &BattleMode_unkCol2_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{BattleMode_model3_Gfx, &BattleMode_unkCol3_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{BattleMode_model4_Gfx, &BattleMode_unkCol4_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{BattleMode_model5_Gfx, &BattleMode_unkCol5_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{BattleMode_model6_Gfx, &BattleMode_unkCol6_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{BattleMode_model7_Gfx, &BattleMode_unkCol7_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{BattleMode_model8_Gfx, &BattleMode_unkCol8_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{BattleMode_model9_Gfx, &BattleMode_unkCol9_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{BattleMode_model10_Gfx, &BattleMode_unkCol10_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{BattleMode_model11_Gfx, &BattleMode_unkCol11_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{BattleMode_model12_Gfx, &BattleMode_unkCol12_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{BattleMode_model13_Gfx, &BattleMode_unkCol13_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{BattleMode_model14_Gfx, &BattleMode_unkCol14_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{BattleMode_model15_Gfx, &BattleMode_unkCol15_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{BattleMode_model16_Gfx, &BattleMode_unkCol16_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{BattleMode_model17_Gfx, &BattleMode_unkCol17_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{BattleMode_model18_Gfx, &BattleMode_unkCol18_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{BattleMode_model19_Gfx, &BattleMode_unkCol19_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{BattleMode_model20_Gfx, &BattleMode_unkCol20_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{BattleMode_model21_Gfx, &BattleMode_unkCol21_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{BattleMode_model22_Gfx, &BattleMode_unkCol22_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{BattleMode_model23_Gfx, &BattleMode_unkCol23_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{BattleMode_model24_Gfx, &BattleMode_unkCol24_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{BattleMode_model25_Gfx, &BattleMode_unkCol25_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{BattleMode_model26_Gfx, &BattleMode_unkCol26_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{BattleMode_model27_Gfx, &BattleMode_unkCol27_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{BattleMode_model28_Gfx, &BattleMode_unkCol28_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{BattleMode_model29_Gfx, &BattleMode_unkCol29_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{BattleMode_model30_Gfx, &BattleMode_unkCol30_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_pole_Gfx, &Global_pole_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
 };
 
 unsigned char BattleMode_rabObjects_Bin[] = {
@@ -352,7 +138,7 @@ extern Vtx BattleMode_model3_Vtx[];
 RoomObject BattleMode_room6_objects[] = {
     {    {0.0,0.0,0.0},                                                    {1.0,1.0,1.0}, 0,                DEGREES_TO_RADIANS_2PI(0.0), 7,  0,  0.0, 0.0,  0.0, 0.0,                      0,  0,   0, 0,   0,    0, 67, -1, -1, -1, NULL,           NULL, 0, 0, 2, 4, 4, 0, -1, 0, 0},
     { {0.0,-300.0,0.0},                                                    {5.0,8.0,5.0}, 0,                DEGREES_TO_RADIANS_2PI(0.0), 7,  0,  0.0, 0.0,  0.0, 0.0,                      0,  0,   0, 0,   0,    0, 66, -1, -1, -1, NULL,           NULL, 0, 0, 2, 0, 4, 0, -1, 0, 0},
-    { {0.0,1000.0,0.0}, {0.009999999776482582,0.009999999776482582,0.009999999776482582}, 2,  DEGREES_TO_RADIANS_2PI(45.00000125223908), 7, 32,  2.0, 0.0,  5.0, 0.0, &BattleMode_model3_Vtx, -8, -32, 9, -32, 4064, 39, -1, -1, -1, NULL, &func_800D8E70, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    { {0.0,1000.0,0.0}, {0.009999999776482582,0.009999999776482582,0.009999999776482582}, 2,  DEGREES_TO_RADIANS_2PI(45.00000125223908), 7, 32,  2.0, 0.0,  5.0, 0.0, (s32)BattleMode_model3_Vtx, -8, -32, 9, -32, 4064, 39, -1, -1, -1, NULL, &func_800D8E70, 0, 0, 7, 4, 4, 0, -1, 0, 0},
     {    {0.0,0.0,0.0},                                     {0.5,0.6000000238418579,0.5}, 2,                DEGREES_TO_RADIANS_2PI(0.0), 7,  9,  2.0, 0.0,  5.0, 0.0,                      0,  0,   0, 0,   0,    0, 39, -1, -1, -1, NULL,           NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
     {    {0.0,0.0,0.0},                                     {0.5,0.6000000238418579,0.5}, 2,  DEGREES_TO_RADIANS_2PI(45.00000125223908), 7,  9,  5.0, 0.0,  2.0, 0.0,                      0,  0,   0, 0,   0,    0, 39, -1, -1, -1, NULL,           NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
     {    {0.0,0.0,0.0},                                     {0.5,0.6000000238418579,0.5}, 2,  DEGREES_TO_RADIANS_2PI(90.00000250447816), 7,  9,  5.0, 0.0, -2.0, 0.0,                      0,  0,   0, 0,   0,    0, 39, -1, -1, -1, NULL,           NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
@@ -403,10 +189,10 @@ RoomActor BattleMode_room1_actors[] = {
 #include "assets/levelGroup/BattleMode/newType/g16.ut1.inc.c"
 
 RoomObject BattleMode_room2_objects[] = {
-    {    {0.0,0.0,0.0},   {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 6, 0.0, 0.0, 0.0, 0.0,  &BattleMode_g1_Ut1, 4, 0, 0, 0, 0, 56, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
-    {    {0.0,0.0,0.0},   {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 6, 0.0, 0.0, 0.0, 0.0,  &BattleMode_g5_Ut1, 4, 0, 0, 0, 0, 56, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
-    {    {0.0,0.0,0.0},   {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 6, 0.0, 0.0, 0.0, 0.0,  &BattleMode_g9_Ut1, 4, 0, 0, 0, 0, 56, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
-    {    {0.0,0.0,0.0},   {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 6, 0.0, 0.0, 0.0, 0.0, &BattleMode_g13_Ut1, 4, 0, 0, 0, 0, 56, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {    {0.0,0.0,0.0},   {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 6, 0.0, 0.0, 0.0, 0.0,  (s32)&BattleMode_g1_Ut1, 4, 0, 0, 0, 0, 56, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {    {0.0,0.0,0.0},   {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 6, 0.0, 0.0, 0.0, 0.0,  (s32)&BattleMode_g5_Ut1, 4, 0, 0, 0, 0, 56, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {    {0.0,0.0,0.0},   {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 6, 0.0, 0.0, 0.0, 0.0,  (s32)&BattleMode_g9_Ut1, 4, 0, 0, 0, 0, 56, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    {    {0.0,0.0,0.0},   {1.0,1.0,1.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 6, 0.0, 0.0, 0.0, 0.0, (s32)&BattleMode_g13_Ut1, 4, 0, 0, 0, 0, 56, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
     {    {0.0,0.0,0.0},   {0.5,1.0,0.5}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0,                   0, 0, 0, 0, 0, 0, 57, -1, -1, -1, NULL, NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
     { {0.0,-400.0,0.0}, {15.0,1.0,15.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 7, 0, 0.0, 0.0, 0.0, 0.0,                   0, 0, 0, 0, 0, 0, 48, -1, -1, -1, NULL, NULL, 0, 0, 0, 0, 4, 0, -1, 0, 0},
     {    {0.0,0.0,0.0},   {0.0,0.0,0.0}, 0, DEGREES_TO_RADIANS_2PI(0.0), 0, 0, 0.0, 0.0, 0.0, 0.0,                   0, 0, 0, 0, 0, 0,  0,  0,  0,  0, NULL, NULL, 0, 0, 0, 0, 0, 0,  0, 0, 0}
@@ -460,7 +246,7 @@ RoomObject BattleMode_room3_objects[] = {
 extern Vtx BattleMode_model7_Vtx[];
 
 RoomObject BattleMode_roomUnk_objects[] = {
-    { {0.0,1000.0,0.0}, {0.009999999776482582,0.009999999776482582,0.009999999776482582}, 2,  DEGREES_TO_RADIANS_2PI(45.00000125223908), 7, 32,  2.0, 0.0, 5.0, 0.0, &BattleMode_model7_Vtx, 32, -16, 10, 4484, 4063, 43, -1, -1, -1, NULL, &func_800D8E70, 0, 0, 7, 4, 4, 0, -1, 0, 0},
+    { {0.0,1000.0,0.0}, {0.009999999776482582,0.009999999776482582,0.009999999776482582}, 2,  DEGREES_TO_RADIANS_2PI(45.00000125223908), 7, 32,  2.0, 0.0, 5.0, 0.0, (s32)BattleMode_model7_Vtx, 32, -16, 10, 4484, 4063, 43, -1, -1, -1, NULL, &func_800D8E70, 0, 0, 7, 4, 4, 0, -1, 0, 0},
     {   {0.0,20.0,0.0},                                                    {1.0,1.0,1.0}, 2,                DEGREES_TO_RADIANS_2PI(0.0), 7,  0,  0.0, 0.0, 0.0, 0.0,                      0,  0,   0,  0,    0,    0, 44, -1, -1, -1, NULL,           NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
     {    {0.0,0.0,0.0},                                                    {1.0,1.0,1.0}, 2,                DEGREES_TO_RADIANS_2PI(0.0), 7,  9, -5.0, 0.0, 2.0, 0.0,                      0,  0,   0,  0,    0,    0, 43, -1, -1, -1, NULL,           NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
     {   {0.0,20.0,0.0},                                                    {1.0,1.0,1.0}, 2,  DEGREES_TO_RADIANS_2PI(45.00000125223908), 7,  0,  0.0, 0.0, 0.0, 0.0,                      0,  0,   0,  0,    0,    0, 44, -1, -1, -1, NULL,           NULL, 0, 0, 7, 4, 4, 0, -1, 0, 0},
@@ -664,19 +450,17 @@ RoomInstance BattleMode_ext_room_instances[] = {
 };
 
 LevelScope BattleMode_scope_Lvlscope = {
-    0,
-    0,
-    0,
+    {0.0f, 0.0f, 0.0f},
     -1,
     25000,
     60,
 };
 
-StageData BattleMode_header_Lvlhdr = {
+StageData BattleMode_stageData = {
     &BattleMode_map_data,
-    0,
-    &BattleMode_stageModels[0],
-    68,
+    NO_EXT_ROOMS,
+    BattleMode_stageModels,
+    ARRAY_COUNT(BattleMode_stageModels),
     0,
     BattleMode_rabObjects_Bin,
     131072,
@@ -987,484 +771,484 @@ Gfx BattleMode_model30_Gfx[] = {
     #include "assets/levelGroup/BattleMode/model30/model30.gfx.inc.c"
 };
 
-Vec3f BattleMode_unkCol1_ColV[] = {
-    #include "assets/levelGroup/BattleMode/unkCol1/unkCol1.colV.inc.c"
+Vec3f BattleMode_unkCol1_ColVerts[] = {
+    #include "assets/levelGroup/BattleMode/unkCol1/unkCol1.colVerts.inc.c"
 };
 
-Vec3w BattleMode_unkCol1_ColT[] = {
-    #include "assets/levelGroup/BattleMode/unkCol1/unkCol1.colT.inc.c"
+Vec3w BattleMode_unkCol1_ColTris[] = {
+    #include "assets/levelGroup/BattleMode/unkCol1/unkCol1.colTris.inc.c"
 };
 
-Rect3D BattleMode_unkCol1_ColS = {
-    #include "assets/levelGroup/BattleMode/unkCol1/unkCol1.colS.inc.c"
+Rect3D BattleMode_unkCol1_BoundBox = {
+    #include "assets/levelGroup/BattleMode/unkCol1/unkCol1.boundBox.inc.c"
 };
 
-ModelCollision BattleMode_unkCol1_ColH = {
-16, 22, BattleMode_unkCol1_ColV, BattleMode_unkCol1_ColT, &BattleMode_unkCol1_ColS
+ModelCollision BattleMode_unkCol1_collision = {
+    ARRAY_COUNT(BattleMode_unkCol1_ColVerts), ARRAY_COUNT(BattleMode_unkCol1_ColTris), BattleMode_unkCol1_ColVerts, BattleMode_unkCol1_ColTris, &BattleMode_unkCol1_BoundBox
 };
 
-Vec3f BattleMode_unkCol2_ColV[] = {
-    #include "assets/levelGroup/BattleMode/unkCol2/unkCol2.colV.inc.c"
+Vec3f BattleMode_unkCol2_ColVerts[] = {
+    #include "assets/levelGroup/BattleMode/unkCol2/unkCol2.colVerts.inc.c"
 };
 
-Vec3w BattleMode_unkCol2_ColT[] = {
-    #include "assets/levelGroup/BattleMode/unkCol2/unkCol2.colT.inc.c"
+Vec3w BattleMode_unkCol2_ColTris[] = {
+    #include "assets/levelGroup/BattleMode/unkCol2/unkCol2.colTris.inc.c"
 };
 
-Rect3D BattleMode_unkCol2_ColS = {
-    #include "assets/levelGroup/BattleMode/unkCol2/unkCol2.colS.inc.c"
+Rect3D BattleMode_unkCol2_BoundBox = {
+    #include "assets/levelGroup/BattleMode/unkCol2/unkCol2.boundBox.inc.c"
 };
 
-ModelCollision BattleMode_unkCol2_ColH = {
-16, 22, BattleMode_unkCol2_ColV, BattleMode_unkCol2_ColT, &BattleMode_unkCol2_ColS
+ModelCollision BattleMode_unkCol2_collision = {
+    ARRAY_COUNT(BattleMode_unkCol2_ColVerts), ARRAY_COUNT(BattleMode_unkCol2_ColTris), BattleMode_unkCol2_ColVerts, BattleMode_unkCol2_ColTris, &BattleMode_unkCol2_BoundBox
 };
 
-Vec3f BattleMode_unkCol3_ColV[] = {
-    #include "assets/levelGroup/BattleMode/unkCol3/unkCol3.colV.inc.c"
+Vec3f BattleMode_unkCol3_ColVerts[] = {
+    #include "assets/levelGroup/BattleMode/unkCol3/unkCol3.colVerts.inc.c"
 };
 
-Vec3w BattleMode_unkCol3_ColT[] = {
-    #include "assets/levelGroup/BattleMode/unkCol3/unkCol3.colT.inc.c"
+Vec3w BattleMode_unkCol3_ColTris[] = {
+    #include "assets/levelGroup/BattleMode/unkCol3/unkCol3.colTris.inc.c"
 };
 
-Rect3D BattleMode_unkCol3_ColS = {
-    #include "assets/levelGroup/BattleMode/unkCol3/unkCol3.colS.inc.c"
+Rect3D BattleMode_unkCol3_BoundBox = {
+    #include "assets/levelGroup/BattleMode/unkCol3/unkCol3.boundBox.inc.c"
 };
 
-ModelCollision BattleMode_unkCol3_ColH = {
-5, 3, BattleMode_unkCol3_ColV, BattleMode_unkCol3_ColT, &BattleMode_unkCol3_ColS
+ModelCollision BattleMode_unkCol3_collision = {
+    ARRAY_COUNT(BattleMode_unkCol3_ColVerts), ARRAY_COUNT(BattleMode_unkCol3_ColTris), BattleMode_unkCol3_ColVerts, BattleMode_unkCol3_ColTris, &BattleMode_unkCol3_BoundBox
 };
 
-Vec3f BattleMode_unkCol4_ColV[] = {
-    #include "assets/levelGroup/BattleMode/unkCol4/unkCol4.colV.inc.c"
+Vec3f BattleMode_unkCol4_ColVerts[] = {
+    #include "assets/levelGroup/BattleMode/unkCol4/unkCol4.colVerts.inc.c"
 };
 
-Vec3w BattleMode_unkCol4_ColT[] = {
-    #include "assets/levelGroup/BattleMode/unkCol4/unkCol4.colT.inc.c"
+Vec3w BattleMode_unkCol4_ColTris[] = {
+    #include "assets/levelGroup/BattleMode/unkCol4/unkCol4.colTris.inc.c"
 };
 
-Rect3D BattleMode_unkCol4_ColS = {
-    #include "assets/levelGroup/BattleMode/unkCol4/unkCol4.colS.inc.c"
+Rect3D BattleMode_unkCol4_BoundBox = {
+    #include "assets/levelGroup/BattleMode/unkCol4/unkCol4.boundBox.inc.c"
 };
 
-ModelCollision BattleMode_unkCol4_ColH = {
-32, 48, BattleMode_unkCol4_ColV, BattleMode_unkCol4_ColT, &BattleMode_unkCol4_ColS
+ModelCollision BattleMode_unkCol4_collision = {
+    ARRAY_COUNT(BattleMode_unkCol4_ColVerts), ARRAY_COUNT(BattleMode_unkCol4_ColTris), BattleMode_unkCol4_ColVerts, BattleMode_unkCol4_ColTris, &BattleMode_unkCol4_BoundBox
 };
 
-Vec3f BattleMode_unkCol5_ColV[] = {
-    #include "assets/levelGroup/BattleMode/unkCol5/unkCol5.colV.inc.c"
+Vec3f BattleMode_unkCol5_ColVerts[] = {
+    #include "assets/levelGroup/BattleMode/unkCol5/unkCol5.colVerts.inc.c"
 };
 
-Vec3w BattleMode_unkCol5_ColT[] = {
-    #include "assets/levelGroup/BattleMode/unkCol5/unkCol5.colT.inc.c"
+Vec3w BattleMode_unkCol5_ColTris[] = {
+    #include "assets/levelGroup/BattleMode/unkCol5/unkCol5.colTris.inc.c"
 };
 
-Rect3D BattleMode_unkCol5_ColS = {
-    #include "assets/levelGroup/BattleMode/unkCol5/unkCol5.colS.inc.c"
+Rect3D BattleMode_unkCol5_BoundBox = {
+    #include "assets/levelGroup/BattleMode/unkCol5/unkCol5.boundBox.inc.c"
 };
 
-ModelCollision BattleMode_unkCol5_ColH = {
-4, 2, BattleMode_unkCol5_ColV, BattleMode_unkCol5_ColT, &BattleMode_unkCol5_ColS
+ModelCollision BattleMode_unkCol5_collision = {
+    ARRAY_COUNT(BattleMode_unkCol5_ColVerts), ARRAY_COUNT(BattleMode_unkCol5_ColTris), BattleMode_unkCol5_ColVerts, BattleMode_unkCol5_ColTris, &BattleMode_unkCol5_BoundBox
 };
 
-Vec3f BattleMode_unkCol6_ColV[] = {
-    #include "assets/levelGroup/BattleMode/unkCol6/unkCol6.colV.inc.c"
+Vec3f BattleMode_unkCol6_ColVerts[] = {
+    #include "assets/levelGroup/BattleMode/unkCol6/unkCol6.colVerts.inc.c"
 };
 
-Vec3w BattleMode_unkCol6_ColT[] = {
-    #include "assets/levelGroup/BattleMode/unkCol6/unkCol6.colT.inc.c"
+Vec3w BattleMode_unkCol6_ColTris[] = {
+    #include "assets/levelGroup/BattleMode/unkCol6/unkCol6.colTris.inc.c"
 };
 
-Rect3D BattleMode_unkCol6_ColS = {
-    #include "assets/levelGroup/BattleMode/unkCol6/unkCol6.colS.inc.c"
+Rect3D BattleMode_unkCol6_BoundBox = {
+    #include "assets/levelGroup/BattleMode/unkCol6/unkCol6.boundBox.inc.c"
 };
 
-ModelCollision BattleMode_unkCol6_ColH = {
-24, 42, BattleMode_unkCol6_ColV, BattleMode_unkCol6_ColT, &BattleMode_unkCol6_ColS
+ModelCollision BattleMode_unkCol6_collision = {
+    ARRAY_COUNT(BattleMode_unkCol6_ColVerts), ARRAY_COUNT(BattleMode_unkCol6_ColTris), BattleMode_unkCol6_ColVerts, BattleMode_unkCol6_ColTris, &BattleMode_unkCol6_BoundBox
 };
 
-Vec3f BattleMode_unkCol7_ColV[] = {
-    #include "assets/levelGroup/BattleMode/unkCol7/unkCol7.colV.inc.c"
+Vec3f BattleMode_unkCol7_ColVerts[] = {
+    #include "assets/levelGroup/BattleMode/unkCol7/unkCol7.colVerts.inc.c"
 };
 
-Vec3w BattleMode_unkCol7_ColT[] = {
-    #include "assets/levelGroup/BattleMode/unkCol7/unkCol7.colT.inc.c"
+Vec3w BattleMode_unkCol7_ColTris[] = {
+    #include "assets/levelGroup/BattleMode/unkCol7/unkCol7.colTris.inc.c"
 };
 
-Rect3D BattleMode_unkCol7_ColS = {
-    #include "assets/levelGroup/BattleMode/unkCol7/unkCol7.colS.inc.c"
+Rect3D BattleMode_unkCol7_BoundBox = {
+    #include "assets/levelGroup/BattleMode/unkCol7/unkCol7.boundBox.inc.c"
 };
 
-ModelCollision BattleMode_unkCol7_ColH = {
-8, 6, BattleMode_unkCol7_ColV, BattleMode_unkCol7_ColT, &BattleMode_unkCol7_ColS
+ModelCollision BattleMode_unkCol7_collision = {
+    ARRAY_COUNT(BattleMode_unkCol7_ColVerts), ARRAY_COUNT(BattleMode_unkCol7_ColTris), BattleMode_unkCol7_ColVerts, BattleMode_unkCol7_ColTris, &BattleMode_unkCol7_BoundBox
 };
 
-Vec3f BattleMode_unkCol8_ColV[] = {
-    #include "assets/levelGroup/BattleMode/unkCol8/unkCol8.colV.inc.c"
+Vec3f BattleMode_unkCol8_ColVerts[] = {
+    #include "assets/levelGroup/BattleMode/unkCol8/unkCol8.colVerts.inc.c"
 };
 
-Vec3w BattleMode_unkCol8_ColT[] = {
-    #include "assets/levelGroup/BattleMode/unkCol8/unkCol8.colT.inc.c"
+Vec3w BattleMode_unkCol8_ColTris[] = {
+    #include "assets/levelGroup/BattleMode/unkCol8/unkCol8.colTris.inc.c"
 };
 
-Rect3D BattleMode_unkCol8_ColS = {
-    #include "assets/levelGroup/BattleMode/unkCol8/unkCol8.colS.inc.c"
+Rect3D BattleMode_unkCol8_BoundBox = {
+    #include "assets/levelGroup/BattleMode/unkCol8/unkCol8.boundBox.inc.c"
 };
 
-ModelCollision BattleMode_unkCol8_ColH = {
-6, 4, BattleMode_unkCol8_ColV, BattleMode_unkCol8_ColT, &BattleMode_unkCol8_ColS
+ModelCollision BattleMode_unkCol8_collision = {
+    ARRAY_COUNT(BattleMode_unkCol8_ColVerts), ARRAY_COUNT(BattleMode_unkCol8_ColTris), BattleMode_unkCol8_ColVerts, BattleMode_unkCol8_ColTris, &BattleMode_unkCol8_BoundBox
 };
 
-Vec3f BattleMode_unkCol9_ColV[] = {
-    #include "assets/levelGroup/BattleMode/unkCol9/unkCol9.colV.inc.c"
+Vec3f BattleMode_unkCol9_ColVerts[] = {
+    #include "assets/levelGroup/BattleMode/unkCol9/unkCol9.colVerts.inc.c"
 };
 
-Vec3w BattleMode_unkCol9_ColT[] = {
-    #include "assets/levelGroup/BattleMode/unkCol9/unkCol9.colT.inc.c"
+Vec3w BattleMode_unkCol9_ColTris[] = {
+    #include "assets/levelGroup/BattleMode/unkCol9/unkCol9.colTris.inc.c"
 };
 
-Rect3D BattleMode_unkCol9_ColS = {
-    #include "assets/levelGroup/BattleMode/unkCol9/unkCol9.colS.inc.c"
+Rect3D BattleMode_unkCol9_BoundBox = {
+    #include "assets/levelGroup/BattleMode/unkCol9/unkCol9.boundBox.inc.c"
 };
 
-ModelCollision BattleMode_unkCol9_ColH = {
-8, 10, BattleMode_unkCol9_ColV, BattleMode_unkCol9_ColT, &BattleMode_unkCol9_ColS
+ModelCollision BattleMode_unkCol9_collision = {
+    ARRAY_COUNT(BattleMode_unkCol9_ColVerts), ARRAY_COUNT(BattleMode_unkCol9_ColTris), BattleMode_unkCol9_ColVerts, BattleMode_unkCol9_ColTris, &BattleMode_unkCol9_BoundBox
 };
 
-Vec3f BattleMode_unkCol10_ColV[] = {
-    #include "assets/levelGroup/BattleMode/unkCol10/unkCol10.colV.inc.c"
+Vec3f BattleMode_unkCol10_ColVerts[] = {
+    #include "assets/levelGroup/BattleMode/unkCol10/unkCol10.colVerts.inc.c"
 };
 
-Vec3w BattleMode_unkCol10_ColT[] = {
-    #include "assets/levelGroup/BattleMode/unkCol10/unkCol10.colT.inc.c"
+Vec3w BattleMode_unkCol10_ColTris[] = {
+    #include "assets/levelGroup/BattleMode/unkCol10/unkCol10.colTris.inc.c"
 };
 
-Rect3D BattleMode_unkCol10_ColS = {
-    #include "assets/levelGroup/BattleMode/unkCol10/unkCol10.colS.inc.c"
+Rect3D BattleMode_unkCol10_BoundBox = {
+    #include "assets/levelGroup/BattleMode/unkCol10/unkCol10.boundBox.inc.c"
 };
 
-ModelCollision BattleMode_unkCol10_ColH = {
-8, 10, BattleMode_unkCol10_ColV, BattleMode_unkCol10_ColT, &BattleMode_unkCol10_ColS
+ModelCollision BattleMode_unkCol10_collision = {
+    ARRAY_COUNT(BattleMode_unkCol10_ColVerts), ARRAY_COUNT(BattleMode_unkCol10_ColTris), BattleMode_unkCol10_ColVerts, BattleMode_unkCol10_ColTris, &BattleMode_unkCol10_BoundBox
 };
 
-Vec3f BattleMode_unkCol11_ColV[] = {
-    #include "assets/levelGroup/BattleMode/unkCol11/unkCol11.colV.inc.c"
+Vec3f BattleMode_unkCol11_ColVerts[] = {
+    #include "assets/levelGroup/BattleMode/unkCol11/unkCol11.colVerts.inc.c"
 };
 
-Vec3w BattleMode_unkCol11_ColT[] = {
-    #include "assets/levelGroup/BattleMode/unkCol11/unkCol11.colT.inc.c"
+Vec3w BattleMode_unkCol11_ColTris[] = {
+    #include "assets/levelGroup/BattleMode/unkCol11/unkCol11.colTris.inc.c"
 };
 
-Rect3D BattleMode_unkCol11_ColS = {
-    #include "assets/levelGroup/BattleMode/unkCol11/unkCol11.colS.inc.c"
+Rect3D BattleMode_unkCol11_BoundBox = {
+    #include "assets/levelGroup/BattleMode/unkCol11/unkCol11.boundBox.inc.c"
 };
 
-ModelCollision BattleMode_unkCol11_ColH = {
-4, 2, BattleMode_unkCol11_ColV, BattleMode_unkCol11_ColT, &BattleMode_unkCol11_ColS
+ModelCollision BattleMode_unkCol11_collision = {
+    ARRAY_COUNT(BattleMode_unkCol11_ColVerts), ARRAY_COUNT(BattleMode_unkCol11_ColTris), BattleMode_unkCol11_ColVerts, BattleMode_unkCol11_ColTris, &BattleMode_unkCol11_BoundBox
 };
 
-Vec3f BattleMode_unkCol12_ColV[] = {
-    #include "assets/levelGroup/BattleMode/unkCol12/unkCol12.colV.inc.c"
+Vec3f BattleMode_unkCol12_ColVerts[] = {
+    #include "assets/levelGroup/BattleMode/unkCol12/unkCol12.colVerts.inc.c"
 };
 
-Vec3w BattleMode_unkCol12_ColT[] = {
-    #include "assets/levelGroup/BattleMode/unkCol12/unkCol12.colT.inc.c"
+Vec3w BattleMode_unkCol12_ColTris[] = {
+    #include "assets/levelGroup/BattleMode/unkCol12/unkCol12.colTris.inc.c"
 };
 
-Rect3D BattleMode_unkCol12_ColS = {
-    #include "assets/levelGroup/BattleMode/unkCol12/unkCol12.colS.inc.c"
+Rect3D BattleMode_unkCol12_BoundBox = {
+    #include "assets/levelGroup/BattleMode/unkCol12/unkCol12.boundBox.inc.c"
 };
 
-ModelCollision BattleMode_unkCol12_ColH = {
-4, 2, BattleMode_unkCol12_ColV, BattleMode_unkCol12_ColT, &BattleMode_unkCol12_ColS
+ModelCollision BattleMode_unkCol12_collision = {
+    ARRAY_COUNT(BattleMode_unkCol12_ColVerts), ARRAY_COUNT(BattleMode_unkCol12_ColTris), BattleMode_unkCol12_ColVerts, BattleMode_unkCol12_ColTris, &BattleMode_unkCol12_BoundBox
 };
 
-Vec3f BattleMode_unkCol13_ColV[] = {
-    #include "assets/levelGroup/BattleMode/unkCol13/unkCol13.colV.inc.c"
+Vec3f BattleMode_unkCol13_ColVerts[] = {
+    #include "assets/levelGroup/BattleMode/unkCol13/unkCol13.colVerts.inc.c"
 };
 
-Vec3w BattleMode_unkCol13_ColT[] = {
-    #include "assets/levelGroup/BattleMode/unkCol13/unkCol13.colT.inc.c"
+Vec3w BattleMode_unkCol13_ColTris[] = {
+    #include "assets/levelGroup/BattleMode/unkCol13/unkCol13.colTris.inc.c"
 };
 
-Rect3D BattleMode_unkCol13_ColS = {
-    #include "assets/levelGroup/BattleMode/unkCol13/unkCol13.colS.inc.c"
+Rect3D BattleMode_unkCol13_BoundBox = {
+    #include "assets/levelGroup/BattleMode/unkCol13/unkCol13.boundBox.inc.c"
 };
 
-ModelCollision BattleMode_unkCol13_ColH = {
-4, 2, BattleMode_unkCol13_ColV, BattleMode_unkCol13_ColT, &BattleMode_unkCol13_ColS
+ModelCollision BattleMode_unkCol13_collision = {
+    ARRAY_COUNT(BattleMode_unkCol13_ColVerts), ARRAY_COUNT(BattleMode_unkCol13_ColTris), BattleMode_unkCol13_ColVerts, BattleMode_unkCol13_ColTris, &BattleMode_unkCol13_BoundBox
 };
 
-Vec3f BattleMode_unkCol14_ColV[] = {
-    #include "assets/levelGroup/BattleMode/unkCol14/unkCol14.colV.inc.c"
+Vec3f BattleMode_unkCol14_ColVerts[] = {
+    #include "assets/levelGroup/BattleMode/unkCol14/unkCol14.colVerts.inc.c"
 };
 
-Vec3w BattleMode_unkCol14_ColT[] = {
-    #include "assets/levelGroup/BattleMode/unkCol14/unkCol14.colT.inc.c"
+Vec3w BattleMode_unkCol14_ColTris[] = {
+    #include "assets/levelGroup/BattleMode/unkCol14/unkCol14.colTris.inc.c"
 };
 
-Rect3D BattleMode_unkCol14_ColS = {
-    #include "assets/levelGroup/BattleMode/unkCol14/unkCol14.colS.inc.c"
+Rect3D BattleMode_unkCol14_BoundBox = {
+    #include "assets/levelGroup/BattleMode/unkCol14/unkCol14.boundBox.inc.c"
 };
 
-ModelCollision BattleMode_unkCol14_ColH = {
-4, 2, BattleMode_unkCol14_ColV, BattleMode_unkCol14_ColT, &BattleMode_unkCol14_ColS
+ModelCollision BattleMode_unkCol14_collision = {
+    ARRAY_COUNT(BattleMode_unkCol14_ColVerts), ARRAY_COUNT(BattleMode_unkCol14_ColTris), BattleMode_unkCol14_ColVerts, BattleMode_unkCol14_ColTris, &BattleMode_unkCol14_BoundBox
 };
 
-Vec3f BattleMode_unkCol15_ColV[] = {
-    #include "assets/levelGroup/BattleMode/unkCol15/unkCol15.colV.inc.c"
+Vec3f BattleMode_unkCol15_ColVerts[] = {
+    #include "assets/levelGroup/BattleMode/unkCol15/unkCol15.colVerts.inc.c"
 };
 
-Vec3w BattleMode_unkCol15_ColT[] = {
-    #include "assets/levelGroup/BattleMode/unkCol15/unkCol15.colT.inc.c"
+Vec3w BattleMode_unkCol15_ColTris[] = {
+    #include "assets/levelGroup/BattleMode/unkCol15/unkCol15.colTris.inc.c"
 };
 
-Rect3D BattleMode_unkCol15_ColS = {
-    #include "assets/levelGroup/BattleMode/unkCol15/unkCol15.colS.inc.c"
+Rect3D BattleMode_unkCol15_BoundBox = {
+    #include "assets/levelGroup/BattleMode/unkCol15/unkCol15.boundBox.inc.c"
 };
 
-ModelCollision BattleMode_unkCol15_ColH = {
-4, 2, BattleMode_unkCol15_ColV, BattleMode_unkCol15_ColT, &BattleMode_unkCol15_ColS
+ModelCollision BattleMode_unkCol15_collision = {
+    ARRAY_COUNT(BattleMode_unkCol15_ColVerts), ARRAY_COUNT(BattleMode_unkCol15_ColTris), BattleMode_unkCol15_ColVerts, BattleMode_unkCol15_ColTris, &BattleMode_unkCol15_BoundBox
 };
 
-Vec3f BattleMode_unkCol16_ColV[] = {
-    #include "assets/levelGroup/BattleMode/unkCol16/unkCol16.colV.inc.c"
+Vec3f BattleMode_unkCol16_ColVerts[] = {
+    #include "assets/levelGroup/BattleMode/unkCol16/unkCol16.colVerts.inc.c"
 };
 
-Vec3w BattleMode_unkCol16_ColT[] = {
-    #include "assets/levelGroup/BattleMode/unkCol16/unkCol16.colT.inc.c"
+Vec3w BattleMode_unkCol16_ColTris[] = {
+    #include "assets/levelGroup/BattleMode/unkCol16/unkCol16.colTris.inc.c"
 };
 
-Rect3D BattleMode_unkCol16_ColS = {
-    #include "assets/levelGroup/BattleMode/unkCol16/unkCol16.colS.inc.c"
+Rect3D BattleMode_unkCol16_BoundBox = {
+    #include "assets/levelGroup/BattleMode/unkCol16/unkCol16.boundBox.inc.c"
 };
 
-ModelCollision BattleMode_unkCol16_ColH = {
-4, 2, BattleMode_unkCol16_ColV, BattleMode_unkCol16_ColT, &BattleMode_unkCol16_ColS
+ModelCollision BattleMode_unkCol16_collision = {
+    ARRAY_COUNT(BattleMode_unkCol16_ColVerts), ARRAY_COUNT(BattleMode_unkCol16_ColTris), BattleMode_unkCol16_ColVerts, BattleMode_unkCol16_ColTris, &BattleMode_unkCol16_BoundBox
 };
 
-Vec3f BattleMode_unkCol17_ColV[] = {
-    #include "assets/levelGroup/BattleMode/unkCol17/unkCol17.colV.inc.c"
+Vec3f BattleMode_unkCol17_ColVerts[] = {
+    #include "assets/levelGroup/BattleMode/unkCol17/unkCol17.colVerts.inc.c"
 };
 
-Vec3w BattleMode_unkCol17_ColT[] = {
-    #include "assets/levelGroup/BattleMode/unkCol17/unkCol17.colT.inc.c"
+Vec3w BattleMode_unkCol17_ColTris[] = {
+    #include "assets/levelGroup/BattleMode/unkCol17/unkCol17.colTris.inc.c"
 };
 
-Rect3D BattleMode_unkCol17_ColS = {
-    #include "assets/levelGroup/BattleMode/unkCol17/unkCol17.colS.inc.c"
+Rect3D BattleMode_unkCol17_BoundBox = {
+    #include "assets/levelGroup/BattleMode/unkCol17/unkCol17.boundBox.inc.c"
 };
 
-ModelCollision BattleMode_unkCol17_ColH = {
-8, 4, BattleMode_unkCol17_ColV, BattleMode_unkCol17_ColT, &BattleMode_unkCol17_ColS
+ModelCollision BattleMode_unkCol17_collision = {
+    ARRAY_COUNT(BattleMode_unkCol17_ColVerts), ARRAY_COUNT(BattleMode_unkCol17_ColTris), BattleMode_unkCol17_ColVerts, BattleMode_unkCol17_ColTris, &BattleMode_unkCol17_BoundBox
 };
 
-Vec3f BattleMode_unkCol18_ColV[] = {
-    #include "assets/levelGroup/BattleMode/unkCol18/unkCol18.colV.inc.c"
+Vec3f BattleMode_unkCol18_ColVerts[] = {
+    #include "assets/levelGroup/BattleMode/unkCol18/unkCol18.colVerts.inc.c"
 };
 
-Vec3w BattleMode_unkCol18_ColT[] = {
-    #include "assets/levelGroup/BattleMode/unkCol18/unkCol18.colT.inc.c"
+Vec3w BattleMode_unkCol18_ColTris[] = {
+    #include "assets/levelGroup/BattleMode/unkCol18/unkCol18.colTris.inc.c"
 };
 
-Rect3D BattleMode_unkCol18_ColS = {
-    #include "assets/levelGroup/BattleMode/unkCol18/unkCol18.colS.inc.c"
+Rect3D BattleMode_unkCol18_BoundBox = {
+    #include "assets/levelGroup/BattleMode/unkCol18/unkCol18.boundBox.inc.c"
 };
 
-ModelCollision BattleMode_unkCol18_ColH = {
-4, 2, BattleMode_unkCol18_ColV, BattleMode_unkCol18_ColT, &BattleMode_unkCol18_ColS
+ModelCollision BattleMode_unkCol18_collision = {
+    ARRAY_COUNT(BattleMode_unkCol18_ColVerts), ARRAY_COUNT(BattleMode_unkCol18_ColTris), BattleMode_unkCol18_ColVerts, BattleMode_unkCol18_ColTris, &BattleMode_unkCol18_BoundBox
 };
 
-Vec3f BattleMode_unkCol19_ColV[] = {
-    #include "assets/levelGroup/BattleMode/unkCol19/unkCol19.colV.inc.c"
+Vec3f BattleMode_unkCol19_ColVerts[] = {
+    #include "assets/levelGroup/BattleMode/unkCol19/unkCol19.colVerts.inc.c"
 };
 
-Vec3w BattleMode_unkCol19_ColT[] = {
-    #include "assets/levelGroup/BattleMode/unkCol19/unkCol19.colT.inc.c"
+Vec3w BattleMode_unkCol19_ColTris[] = {
+    #include "assets/levelGroup/BattleMode/unkCol19/unkCol19.colTris.inc.c"
 };
 
-Rect3D BattleMode_unkCol19_ColS = {
-    #include "assets/levelGroup/BattleMode/unkCol19/unkCol19.colS.inc.c"
+Rect3D BattleMode_unkCol19_BoundBox = {
+    #include "assets/levelGroup/BattleMode/unkCol19/unkCol19.boundBox.inc.c"
 };
 
-ModelCollision BattleMode_unkCol19_ColH = {
-8, 4, BattleMode_unkCol19_ColV, BattleMode_unkCol19_ColT, &BattleMode_unkCol19_ColS
+ModelCollision BattleMode_unkCol19_collision = {
+    ARRAY_COUNT(BattleMode_unkCol19_ColVerts), ARRAY_COUNT(BattleMode_unkCol19_ColTris), BattleMode_unkCol19_ColVerts, BattleMode_unkCol19_ColTris, &BattleMode_unkCol19_BoundBox
 };
 
-Vec3f BattleMode_unkCol20_ColV[] = {
-    #include "assets/levelGroup/BattleMode/unkCol20/unkCol20.colV.inc.c"
+Vec3f BattleMode_unkCol20_ColVerts[] = {
+    #include "assets/levelGroup/BattleMode/unkCol20/unkCol20.colVerts.inc.c"
 };
 
-Vec3w BattleMode_unkCol20_ColT[] = {
-    #include "assets/levelGroup/BattleMode/unkCol20/unkCol20.colT.inc.c"
+Vec3w BattleMode_unkCol20_ColTris[] = {
+    #include "assets/levelGroup/BattleMode/unkCol20/unkCol20.colTris.inc.c"
 };
 
-Rect3D BattleMode_unkCol20_ColS = {
-    #include "assets/levelGroup/BattleMode/unkCol20/unkCol20.colS.inc.c"
+Rect3D BattleMode_unkCol20_BoundBox = {
+    #include "assets/levelGroup/BattleMode/unkCol20/unkCol20.boundBox.inc.c"
 };
 
-ModelCollision BattleMode_unkCol20_ColH = {
-8, 10, BattleMode_unkCol20_ColV, BattleMode_unkCol20_ColT, &BattleMode_unkCol20_ColS
+ModelCollision BattleMode_unkCol20_collision = {
+    ARRAY_COUNT(BattleMode_unkCol20_ColVerts), ARRAY_COUNT(BattleMode_unkCol20_ColTris), BattleMode_unkCol20_ColVerts, BattleMode_unkCol20_ColTris, &BattleMode_unkCol20_BoundBox
 };
 
-Vec3f BattleMode_unkCol21_ColV[] = {
-    #include "assets/levelGroup/BattleMode/unkCol21/unkCol21.colV.inc.c"
+Vec3f BattleMode_unkCol21_ColVerts[] = {
+    #include "assets/levelGroup/BattleMode/unkCol21/unkCol21.colVerts.inc.c"
 };
 
-Vec3w BattleMode_unkCol21_ColT[] = {
-    #include "assets/levelGroup/BattleMode/unkCol21/unkCol21.colT.inc.c"
+Vec3w BattleMode_unkCol21_ColTris[] = {
+    #include "assets/levelGroup/BattleMode/unkCol21/unkCol21.colTris.inc.c"
 };
 
-Rect3D BattleMode_unkCol21_ColS = {
-    #include "assets/levelGroup/BattleMode/unkCol21/unkCol21.colS.inc.c"
+Rect3D BattleMode_unkCol21_BoundBox = {
+    #include "assets/levelGroup/BattleMode/unkCol21/unkCol21.boundBox.inc.c"
 };
 
-ModelCollision BattleMode_unkCol21_ColH = {
-8, 10, BattleMode_unkCol21_ColV, BattleMode_unkCol21_ColT, &BattleMode_unkCol21_ColS
+ModelCollision BattleMode_unkCol21_collision = {
+    ARRAY_COUNT(BattleMode_unkCol21_ColVerts), ARRAY_COUNT(BattleMode_unkCol21_ColTris), BattleMode_unkCol21_ColVerts, BattleMode_unkCol21_ColTris, &BattleMode_unkCol21_BoundBox
 };
 
-Vec3f BattleMode_unkCol22_ColV[] = {
-    #include "assets/levelGroup/BattleMode/unkCol22/unkCol22.colV.inc.c"
+Vec3f BattleMode_unkCol22_ColVerts[] = {
+    #include "assets/levelGroup/BattleMode/unkCol22/unkCol22.colVerts.inc.c"
 };
 
-Vec3w BattleMode_unkCol22_ColT[] = {
-    #include "assets/levelGroup/BattleMode/unkCol22/unkCol22.colT.inc.c"
+Vec3w BattleMode_unkCol22_ColTris[] = {
+    #include "assets/levelGroup/BattleMode/unkCol22/unkCol22.colTris.inc.c"
 };
 
-Rect3D BattleMode_unkCol22_ColS = {
-    #include "assets/levelGroup/BattleMode/unkCol22/unkCol22.colS.inc.c"
+Rect3D BattleMode_unkCol22_BoundBox = {
+    #include "assets/levelGroup/BattleMode/unkCol22/unkCol22.boundBox.inc.c"
 };
 
-ModelCollision BattleMode_unkCol22_ColH = {
-7, 5, BattleMode_unkCol22_ColV, BattleMode_unkCol22_ColT, &BattleMode_unkCol22_ColS
+ModelCollision BattleMode_unkCol22_collision = {
+    ARRAY_COUNT(BattleMode_unkCol22_ColVerts), ARRAY_COUNT(BattleMode_unkCol22_ColTris), BattleMode_unkCol22_ColVerts, BattleMode_unkCol22_ColTris, &BattleMode_unkCol22_BoundBox
 };
 
-Vec3f BattleMode_unkCol23_ColV[] = {
-    #include "assets/levelGroup/BattleMode/unkCol23/unkCol23.colV.inc.c"
+Vec3f BattleMode_unkCol23_ColVerts[] = {
+    #include "assets/levelGroup/BattleMode/unkCol23/unkCol23.colVerts.inc.c"
 };
 
-Vec3w BattleMode_unkCol23_ColT[] = {
-    #include "assets/levelGroup/BattleMode/unkCol23/unkCol23.colT.inc.c"
+Vec3w BattleMode_unkCol23_ColTris[] = {
+    #include "assets/levelGroup/BattleMode/unkCol23/unkCol23.colTris.inc.c"
 };
 
-Rect3D BattleMode_unkCol23_ColS = {
-    #include "assets/levelGroup/BattleMode/unkCol23/unkCol23.colS.inc.c"
+Rect3D BattleMode_unkCol23_BoundBox = {
+    #include "assets/levelGroup/BattleMode/unkCol23/unkCol23.boundBox.inc.c"
 };
 
-ModelCollision BattleMode_unkCol23_ColH = {
-7, 5, BattleMode_unkCol23_ColV, BattleMode_unkCol23_ColT, &BattleMode_unkCol23_ColS
+ModelCollision BattleMode_unkCol23_collision = {
+    ARRAY_COUNT(BattleMode_unkCol23_ColVerts), ARRAY_COUNT(BattleMode_unkCol23_ColTris), BattleMode_unkCol23_ColVerts, BattleMode_unkCol23_ColTris, &BattleMode_unkCol23_BoundBox
 };
 
-Vec3f BattleMode_unkCol24_ColV[] = {
-    #include "assets/levelGroup/BattleMode/unkCol24/unkCol24.colV.inc.c"
+Vec3f BattleMode_unkCol24_ColVerts[] = {
+    #include "assets/levelGroup/BattleMode/unkCol24/unkCol24.colVerts.inc.c"
 };
 
-Vec3w BattleMode_unkCol24_ColT[] = {
-    #include "assets/levelGroup/BattleMode/unkCol24/unkCol24.colT.inc.c"
+Vec3w BattleMode_unkCol24_ColTris[] = {
+    #include "assets/levelGroup/BattleMode/unkCol24/unkCol24.colTris.inc.c"
 };
 
-Rect3D BattleMode_unkCol24_ColS = {
-    #include "assets/levelGroup/BattleMode/unkCol24/unkCol24.colS.inc.c"
+Rect3D BattleMode_unkCol24_BoundBox = {
+    #include "assets/levelGroup/BattleMode/unkCol24/unkCol24.boundBox.inc.c"
 };
 
-ModelCollision BattleMode_unkCol24_ColH = {
-4, 2, BattleMode_unkCol24_ColV, BattleMode_unkCol24_ColT, &BattleMode_unkCol24_ColS
+ModelCollision BattleMode_unkCol24_collision = {
+    ARRAY_COUNT(BattleMode_unkCol24_ColVerts), ARRAY_COUNT(BattleMode_unkCol24_ColTris), BattleMode_unkCol24_ColVerts, BattleMode_unkCol24_ColTris, &BattleMode_unkCol24_BoundBox
 };
 
-Vec3f BattleMode_unkCol25_ColV[] = {
-    #include "assets/levelGroup/BattleMode/unkCol25/unkCol25.colV.inc.c"
+Vec3f BattleMode_unkCol25_ColVerts[] = {
+    #include "assets/levelGroup/BattleMode/unkCol25/unkCol25.colVerts.inc.c"
 };
 
-Vec3w BattleMode_unkCol25_ColT[] = {
-    #include "assets/levelGroup/BattleMode/unkCol25/unkCol25.colT.inc.c"
+Vec3w BattleMode_unkCol25_ColTris[] = {
+    #include "assets/levelGroup/BattleMode/unkCol25/unkCol25.colTris.inc.c"
 };
 
-Rect3D BattleMode_unkCol25_ColS = {
-    #include "assets/levelGroup/BattleMode/unkCol25/unkCol25.colS.inc.c"
+Rect3D BattleMode_unkCol25_BoundBox = {
+    #include "assets/levelGroup/BattleMode/unkCol25/unkCol25.boundBox.inc.c"
 };
 
-ModelCollision BattleMode_unkCol25_ColH = {
-4, 2, BattleMode_unkCol25_ColV, BattleMode_unkCol25_ColT, &BattleMode_unkCol25_ColS
+ModelCollision BattleMode_unkCol25_collision = {
+    ARRAY_COUNT(BattleMode_unkCol25_ColVerts), ARRAY_COUNT(BattleMode_unkCol25_ColTris), BattleMode_unkCol25_ColVerts, BattleMode_unkCol25_ColTris, &BattleMode_unkCol25_BoundBox
 };
 
-Vec3f BattleMode_unkCol26_ColV[] = {
-    #include "assets/levelGroup/BattleMode/unkCol26/unkCol26.colV.inc.c"
+Vec3f BattleMode_unkCol26_ColVerts[] = {
+    #include "assets/levelGroup/BattleMode/unkCol26/unkCol26.colVerts.inc.c"
 };
 
-Vec3w BattleMode_unkCol26_ColT[] = {
-    #include "assets/levelGroup/BattleMode/unkCol26/unkCol26.colT.inc.c"
+Vec3w BattleMode_unkCol26_ColTris[] = {
+    #include "assets/levelGroup/BattleMode/unkCol26/unkCol26.colTris.inc.c"
 };
 
-Rect3D BattleMode_unkCol26_ColS = {
-    #include "assets/levelGroup/BattleMode/unkCol26/unkCol26.colS.inc.c"
+Rect3D BattleMode_unkCol26_BoundBox = {
+    #include "assets/levelGroup/BattleMode/unkCol26/unkCol26.boundBox.inc.c"
 };
 
-ModelCollision BattleMode_unkCol26_ColH = {
-8, 10, BattleMode_unkCol26_ColV, BattleMode_unkCol26_ColT, &BattleMode_unkCol26_ColS
+ModelCollision BattleMode_unkCol26_collision = {
+    ARRAY_COUNT(BattleMode_unkCol26_ColVerts), ARRAY_COUNT(BattleMode_unkCol26_ColTris), BattleMode_unkCol26_ColVerts, BattleMode_unkCol26_ColTris, &BattleMode_unkCol26_BoundBox
 };
 
-Vec3f BattleMode_unkCol27_ColV[] = {
-    #include "assets/levelGroup/BattleMode/unkCol27/unkCol27.colV.inc.c"
+Vec3f BattleMode_unkCol27_ColVerts[] = {
+    #include "assets/levelGroup/BattleMode/unkCol27/unkCol27.colVerts.inc.c"
 };
 
-Vec3w BattleMode_unkCol27_ColT[] = {
-    #include "assets/levelGroup/BattleMode/unkCol27/unkCol27.colT.inc.c"
+Vec3w BattleMode_unkCol27_ColTris[] = {
+    #include "assets/levelGroup/BattleMode/unkCol27/unkCol27.colTris.inc.c"
 };
 
-Rect3D BattleMode_unkCol27_ColS = {
-    #include "assets/levelGroup/BattleMode/unkCol27/unkCol27.colS.inc.c"
+Rect3D BattleMode_unkCol27_BoundBox = {
+    #include "assets/levelGroup/BattleMode/unkCol27/unkCol27.boundBox.inc.c"
 };
 
-ModelCollision BattleMode_unkCol27_ColH = {
-8, 10, BattleMode_unkCol27_ColV, BattleMode_unkCol27_ColT, &BattleMode_unkCol27_ColS
+ModelCollision BattleMode_unkCol27_collision = {
+    ARRAY_COUNT(BattleMode_unkCol27_ColVerts), ARRAY_COUNT(BattleMode_unkCol27_ColTris), BattleMode_unkCol27_ColVerts, BattleMode_unkCol27_ColTris, &BattleMode_unkCol27_BoundBox
 };
 
-Vec3f BattleMode_unkCol28_ColV[] = {
-    #include "assets/levelGroup/BattleMode/unkCol28/unkCol28.colV.inc.c"
+Vec3f BattleMode_unkCol28_ColVerts[] = {
+    #include "assets/levelGroup/BattleMode/unkCol28/unkCol28.colVerts.inc.c"
 };
 
-Vec3w BattleMode_unkCol28_ColT[] = {
-    #include "assets/levelGroup/BattleMode/unkCol28/unkCol28.colT.inc.c"
+Vec3w BattleMode_unkCol28_ColTris[] = {
+    #include "assets/levelGroup/BattleMode/unkCol28/unkCol28.colTris.inc.c"
 };
 
-Rect3D BattleMode_unkCol28_ColS = {
-    #include "assets/levelGroup/BattleMode/unkCol28/unkCol28.colS.inc.c"
+Rect3D BattleMode_unkCol28_BoundBox = {
+    #include "assets/levelGroup/BattleMode/unkCol28/unkCol28.boundBox.inc.c"
 };
 
-ModelCollision BattleMode_unkCol28_ColH = {
-8, 10, BattleMode_unkCol28_ColV, BattleMode_unkCol28_ColT, &BattleMode_unkCol28_ColS
+ModelCollision BattleMode_unkCol28_collision = {
+    ARRAY_COUNT(BattleMode_unkCol28_ColVerts), ARRAY_COUNT(BattleMode_unkCol28_ColTris), BattleMode_unkCol28_ColVerts, BattleMode_unkCol28_ColTris, &BattleMode_unkCol28_BoundBox
 };
 
-Vec3f BattleMode_unkCol29_ColV[] = {
-    #include "assets/levelGroup/BattleMode/unkCol29/unkCol29.colV.inc.c"
+Vec3f BattleMode_unkCol29_ColVerts[] = {
+    #include "assets/levelGroup/BattleMode/unkCol29/unkCol29.colVerts.inc.c"
 };
 
-Vec3w BattleMode_unkCol29_ColT[] = {
-    #include "assets/levelGroup/BattleMode/unkCol29/unkCol29.colT.inc.c"
+Vec3w BattleMode_unkCol29_ColTris[] = {
+    #include "assets/levelGroup/BattleMode/unkCol29/unkCol29.colTris.inc.c"
 };
 
-Rect3D BattleMode_unkCol29_ColS = {
-    #include "assets/levelGroup/BattleMode/unkCol29/unkCol29.colS.inc.c"
+Rect3D BattleMode_unkCol29_BoundBox = {
+    #include "assets/levelGroup/BattleMode/unkCol29/unkCol29.boundBox.inc.c"
 };
 
-ModelCollision BattleMode_unkCol29_ColH = {
-8, 10, BattleMode_unkCol29_ColV, BattleMode_unkCol29_ColT, &BattleMode_unkCol29_ColS
+ModelCollision BattleMode_unkCol29_collision = {
+    ARRAY_COUNT(BattleMode_unkCol29_ColVerts), ARRAY_COUNT(BattleMode_unkCol29_ColTris), BattleMode_unkCol29_ColVerts, BattleMode_unkCol29_ColTris, &BattleMode_unkCol29_BoundBox
 };
 
-Vec3f BattleMode_unkCol30_ColV[] = {
-    #include "assets/levelGroup/BattleMode/unkCol30/unkCol30.colV.inc.c"
+Vec3f BattleMode_unkCol30_ColVerts[] = {
+    #include "assets/levelGroup/BattleMode/unkCol30/unkCol30.colVerts.inc.c"
 };
 
-Vec3w BattleMode_unkCol30_ColT[] = {
-    #include "assets/levelGroup/BattleMode/unkCol30/unkCol30.colT.inc.c"
+Vec3w BattleMode_unkCol30_ColTris[] = {
+    #include "assets/levelGroup/BattleMode/unkCol30/unkCol30.colTris.inc.c"
 };
 
-Rect3D BattleMode_unkCol30_ColS = {
-    #include "assets/levelGroup/BattleMode/unkCol30/unkCol30.colS.inc.c"
+Rect3D BattleMode_unkCol30_BoundBox = {
+    #include "assets/levelGroup/BattleMode/unkCol30/unkCol30.boundBox.inc.c"
 };
 
-ModelCollision BattleMode_unkCol30_ColH = {
-8, 10, BattleMode_unkCol30_ColV, BattleMode_unkCol30_ColT, &BattleMode_unkCol30_ColS
+ModelCollision BattleMode_unkCol30_collision = {
+    ARRAY_COUNT(BattleMode_unkCol30_ColVerts), ARRAY_COUNT(BattleMode_unkCol30_ColTris), BattleMode_unkCol30_ColVerts, BattleMode_unkCol30_ColTris, &BattleMode_unkCol30_BoundBox
 };
 Mtx BattleMode_IMtx33 = IDENTITY;
 
@@ -1501,5 +1285,5 @@ Mtx BattleMode_unk1_Animarr[2][1] = {
 };
 
 AnimPointer BattleMode_unk1Pointers_Animp[1] = {
-{&BattleMode_unk1Header_Animh.frames, &BattleMode_unk1Header_Animh.objects, &BattleMode_unk1_Animarr[0][0]}
+{&BattleMode_unk1Header_Animh.frames, &BattleMode_unk1Header_Animh.objects, BattleMode_unk1_Animarr[0]}
 };

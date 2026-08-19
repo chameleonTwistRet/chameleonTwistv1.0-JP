@@ -4,266 +4,281 @@
 #include "sprite.h"
 #include "ld_addrs.h"
 
+typedef struct SaveFileData {
+    char unk_00[0x60];
+} SaveFileData;
+
+typedef struct SaveFileEep {
+    /* 0x00 */ SaveFileData fileData[4];
+    /* 0x180 */ SaveRecord savedRecords;
+} SaveFileEep;
+
+//for accessing the eep block offset of files in the eep file (starts 0x0, each is 0x60 in length. Starting at offset(raw offset, not eepblock offset) 0x180 of eep file is SaveRecord)
+#define SAVE_FILE_BLOCK_OFFSET(fileIdx) ((fileIdx * sizeof_signed(SaveFileData)) / EEPROM_BLOCK_SIZE)
+
+//for accessing specific struct members within the eep file by block offset
+#define EEP_FILE_STRUCT_BLOCK_OFFSET(struct, member) sizeof_member(struct, member) / EEPROM_BLOCK_SIZE
+
 u8 D_800FEDC0[226][8] = {
-{104, 136, 1, 4, 1, 5, 25, 0},
-{104, 136, 1, 4, 1, 5, 25, 0},
-{72, 136, 1, 4, 1, 5, 25, 0},
-{72, 136, 1, 4, 1, 5, 25, 0},
-{111, 255, 1, 4, 1, 10, 25, 0},
-{79, 255, 1, 4, 1, 5, 25, 0},
-{104, 136, 1, 4, 1, 5, 25, 0},
-{104, 136, 1, 4, 1, 5, 25, 0},
-{79, 255, 1, 4, 1, 0, 25, 0},
-{79, 255, 1, 4, 1, 0, 25, 0},
-{79, 255, 1, 8, 1, 0, 25, 0},
-{56, 136, 1, 8, 1, 0, 25, 0},
-{111, 255, 1, 8, 1, 5, 25, 0},
-{111, 255, 1, 8, 1, 5, 25, 0},
-{111, 255, 1, 8, 1, 0, 25, 0},
-{95, 255, 1, 8, 1, 0, 25, 0},
-{111, 255, 1, 8, 1, 0, 25, 0},
-{95, 255, 1, 8, 1, 0, 25, 0},
-{79, 255, 1, 8, 1, 0, 25, 0},
-{79, 255, 1, 2, 1, 10, 25, 0},
-{47, 255, 1, 2, 1, 10, 25, 0},
-{120, 136, 1, 8, 1, 15, 25, 0},
-{111, 255, 1, 8, 1, 5, 25, 0},
-{111, 255, 1, 8, 1, 5, 25, 0},
-{79, 255, 1, 8, 1, 10, 25, 0},
-{63, 255, 1, 8, 1, 5, 25, 0},
-{40, 136, 1, 8, 1, 100, 25, 0},
-{79, 255, 1, 2, 1, 0, 25, 0},
-{79, 255, 1, 2, 1, 0, 25, 0},
-{95, 255, 1, 2, 1, 5, 25, 0},
-{104, 136, 1, 2, 1, 5, 25, 0},
-{104, 136, 1, 2, 1, 5, 25, 0},
-{104, 136, 1, 2, 1, 5, 25, 0},
-{79, 255, 1, 2, 1, 10, 30, 0},
-{79, 255, 1, 2, 1, 10, 28, 0},
-{95, 255, 1, 2, 1, 5, 25, 0},
-{79, 255, 1, 2, 1, 5, 25, 0},
-{79, 255, 1, 2, 1, 5, 25, 0},
-{104, 136, 1, 2, 1, 5, 26, 0},
-{79, 255, 1, 2, 1, 10, 25, 0},
-{79, 255, 1, 2, 1, 5, 25, 0},
-{79, 255, 1, 2, 1, 5, 15, 0},
-{79, 255, 1, 2, 1, 5, 25, 0},
-{79, 255, 1, 2, 1, 5, 25, 0},
-{79, 255, 1, 2, 1, 5, 25, 0},
-{79, 255, 1, 2, 1, 10, 25, 0},
-{79, 255, 1, 2, 1, 20, 25, 0},
-{79, 255, 1, 2, 1, 5, 25, 0},
-{63, 255, 1, 1, 2, 20, 25, 0},
-{72, 136, 1, 1, 2, 10, 25, 0},
-{79, 255, 1, 1, 2, 80, 25, 0},
-{79, 255, 1, 1, 2, 10, 25, 0},
-{47, 255, 1, 1, 2, 20, 25, 0},
-{72, 136, 1, 1, 2, 10, 25, 0},
-{40, 136, 1, 1, 2, 5, 25, 0},
-{53, 85, 1, 1, 2, 5, 25, 0},
-{79, 255, 1, 8, 2, 10, 25, 0},
-{79, 255, 1, 8, 1, 15, 25, 0},
-{79, 255, 1, 8, 1, 15, 25, 0},
-{95, 255, 1, 1, 1, 15, 25, 0},
-{79, 255, 1, 1, 1, 10, 25, 0},
-{95, 255, 1, 1, 3, 5, 25, 0},
-{79, 255, 1, 1, 1, 0, 25, 0},
-{111, 255, 1, 1, 1, 15, 27, 0},
-{127, 255, 1, 1, 4, 0, 25, 0},
-{67, 51, 1, 1, 1, 25, 25, 0},
-{63, 255, 1, 1, 1, 0, 25, 0},
-{51, 51, 1, 1, 1, 25, 25, 0},
-{111, 255, 1, 1, 2, 10, 25, 0},
-{111, 255, 1, 1, 2, 10, 25, 0},
-{111, 255, 1, 1, 2, 20, 25, 0},
-{111, 255, 1, 1, 2, 20, 25, 0},
-{127, 255, 1, 1, 2, 30, 25, 0},
-{111, 255, 1, 1, 2, 20, 25, 0},
-{88, 136, 1, 1, 2, 5, 16, 0},
-{88, 136, 1, 1, 2, 5, 16, 0},
-{95, 255, 1, 4, 2, 5, 25, 0},
-{111, 255, 1, 2, 2, 5, 25, 0},
-{79, 255, 1, 1, 2, 5, 25, 0},
-{56, 136, 1, 1, 1, 100, 25, 0},
-{56, 136, 1, 1, 1, 100, 25, 0},
-{56, 136, 1, 1, 1, 100, 25, 0},
-{40, 136, 1, 1, 1, 100, 25, 0},
-{40, 136, 1, 1, 1, 100, 25, 0},
-{40, 136, 1, 1, 1, 100, 25, 0},
-{48, 0, 1, 3, 2, 30, 25, 0},
-{79, 255, 1, 1, 1, 5, 25, 0},
-{79, 255, 1, 1, 1, 5, 25, 0},
-{79, 255, 1, 1, 1, 5, 25, 0},
-{63, 255, 1, 1, 2, 15, 25, 0},
-{63, 255, 1, 1, 1, 15, 25, 0},
-{79, 255, 1, 2, 2, 15, 25, 0},
-{111, 255, 1, 2, 3, 127, 25, 0},
-{79, 255, 1, 1, 1, 10, 25, 0},
-{79, 255, 1, 1, 1, 0, 25, 0},
-{79, 255, 1, 2, 1, 5, 25, 0},
-{79, 255, 1, 2, 1, 5, 25, 0},
-{79, 255, 1, 1, 1, 5, 25, 0},
-{79, 255, 1, 1, 1, 5, 25, 0},
-{56, 136, 1, 1, 0, 0, 25, 0},
-{56, 136, 1, 1, 0, 0, 23, 0},
-{56, 136, 1, 1, 0, 0, 25, 0},
-{56, 136, 1, 1, 0, 0, 23, 0},
-{56, 136, 1, 1, 0, 0, 25, 0},
-{56, 136, 1, 1, 0, 0, 23, 0},
-{95, 255, 1, 1, 3, 5, 25, 0},
-{79, 255, 1, 1, 3, 10, 25, 0},
-{79, 255, 1, 1, 3, 10, 25, 0},
-{127, 255, 1, 1, 3, 5, 25, 0},
-{127, 255, 1, 1, 3, 20, 25, 0},
-{79, 255, 1, 1, 3, 50, 25, 0},
-{79, 255, 1, 1, 3, 10, 25, 0},
-{111, 255, 1, 1, 3, 10, 25, 0},
-{79, 255, 1, 1, 4, 0, 25, 0},
-{104, 136, 1, 2, 4, 100, 25, 0},
-{63, 255, 1, 1, 1, 10, 25, 0},
-{79, 255, 1, 1, 1, 10, 25, 0},
-{63, 255, 1, 1, 0, 10, 25, 0},
-{79, 255, 1, 1, 1, 10, 25, 0},
-{79, 255, 1, 1, 1, 0, 25, 0},
-{79, 255, 1, 1, 3, 25, 25, 0},
-{111, 255, 1, 1, 3, 30, 20, 0},
-{79, 255, 1, 1, 3, 10, 18, 0},
-{111, 255, 1, 1, 3, 50, 25, 0},
-{95, 255, 1, 1, 3, 25, 25, 0},
-{95, 255, 1, 1, 3, 5, 20, 0},
-{63, 255, 1, 1, 2, 0, 25, 0},
-{111, 255, 1, 1, 2, 5, 25, 0},
-{47, 255, 1, 1, 1, 5, 25, 0},
-{63, 255, 1, 1, 1, 5, 25, 0},
-{63, 255, 1, 3, 1, 5, 25, 0},
-{111, 255, 1, 1, 2, 10, 25, 0},
-{127, 255, 1, 1, 4, 10, 25, 0},
-{127, 255, 1, 1, 2, 10, 25, 0},
-{95, 255, 1, 1, 2, 50, 25, 0},
-{127, 255, 1, 1, 2, 25, 25, 0},
-{104, 136, 1, 1, 2, 15, 20, 0},
-{72, 136, 1, 3, 1, 25, 25, 0},
-{111, 255, 1, 2, 1, 25, 25, 0},
-{79, 255, 1, 2, 1, 5, 25, 0},
-{79, 255, 1, 2, 2, 10, 25, 0},
-{79, 255, 1, 2, 1, 0, 25, 0},
-{95, 255, 1, 3, 1, 0, 25, 0},
-{95, 255, 1, 2, 1, 5, 25, 0},
-{95, 255, 1, 2, 1, 5, 25, 0},
-{79, 255, 1, 1, 1, 5, 25, 0},
-{79, 255, 1, 1, 1, 10, 25, 0},
-{79, 255, 1, 1, 1, 5, 25, 0},
-{79, 255, 1, 1, 1, 5, 25, 0},
-{79, 255, 1, 1, 1, 5, 25, 0},
-{95, 255, 1, 1, 2, 10, 25, 0},
-{79, 255, 1, 1, 1, 10, 25, 0},
-{63, 255, 1, 1, 1, 5, 25, 0},
-{47, 255, 1, 1, 1, 25, 25, 0},
-{79, 255, 1, 1, 3, 0, 25, 0},
-{79, 255, 1, 1, 3, 0, 25, 0},
-{79, 255, 1, 1, 3, 0, 25, 0},
-{79, 255, 1, 1, 3, 0, 25, 0},
-{79, 255, 1, 1, 3, 0, 25, 0},
-{79, 255, 1, 1, 3, 0, 25, 0},
-{63, 255, 1, 1, 1, 10, 25, 0},
-{63, 255, 1, 1, 1, 10, 25, 0},
-{79, 255, 1, 1, 2, 30, 25, 0},
-{79, 255, 1, 1, 1, 5, 25, 0},
-{79, 255, 1, 1, 1, 15, 25, 0},
-{79, 255, 1, 1, 1, 15, 25, 0},
-{111, 255, 1, 1, 3, 10, 25, 0},
-{79, 255, 1, 1, 7, 5, 25, 0},
-{79, 255, 1, 8, 7, 5, 25, 0},
-{79, 255, 1, 2, 8, 10, 25, 0},
-{95, 255, 1, 1, 1, 5, 25, 0},
-{95, 255, 1, 1, 1, 5, 25, 0},
-{79, 255, 1, 1, 4, 20, 25, 0},
-{111, 255, 1, 1, 3, 50, 25, 0},
-{79, 255, 1, 1, 1, 25, 20, 0},
-{79, 255, 1, 1, 2, 5, 25, 0},
-{79, 255, 1, 1, 2, 20, 25, 0},
-{111, 255, 1, 1, 3, 50, 25, 0},
-{79, 255, 1, 8, 1, 5, 25, 0},
-{95, 255, 1, 8, 4, 0, 25, 0},
-{95, 255, 1, 8, 4, 0, 25, 0},
-{111, 255, 1, 3, 4, 0, 25, 0},
-{111, 255, 1, 8, 4, 0, 25, 0},
-{111, 255, 1, 1, 4, 0, 25, 0},
-{95, 255, 1, 8, 4, 0, 25, 0},
-{111, 255, 1, 8, 4, 0, 25, 0},
-{111, 255, 1, 8, 4, 0, 25, 0},
-{95, 255, 1, 8, 4, 0, 20, 0},
-{127, 255, 1, 1, 4, 0, 25, 0},
-{111, 255, 1, 1, 4, 0, 25, 0},
-{111, 255, 1, 11, 4, 0, 25, 0},
-{111, 255, 1, 11, 4, 0, 25, 0},
-{111, 255, 1, 11, 4, 0, 25, 0},
-{79, 255, 9, 1, 0, 0, 25, 0},
-{79, 255, 1, 1, 0, 0, 25, 0},
-{95, 255, 1, 4, 3, 5, 25, 0},
-{79, 255, 1, 1, 10, 5, 25, 0},
-{79, 255, 1, 4, 1, 0, 25, 0},
-{79, 255, 1, 4, 1, 0, 25, 0},
-{79, 255, 1, 4, 1, 0, 25, 0},
-{79, 255, 1, 4, 1, 0, 25, 0},
-{79, 255, 1, 4, 1, 0, 25, 0},
-{56, 136, 1, 8, 1, 0, 25, 0},
-{79, 255, 1, 3, 10, 0, 25, 0},
-{79, 255, 1, 1, 2, 0, 25, 0},
-{79, 255, 1, 1, 1, 0, 25, 0},
-{79, 255, 1, 1, 1, 0, 25, 0},
-{79, 255, 1, 1, 1, 0, 25, 0},
-{31, 255, 1, 1, 1, 0, 25, 0},
-{79, 255, 1, 1, 2, 0, 25, 0},
-{63, 255, 1, 1, 1, 0, 25, 0},
-{79, 255, 1, 1, 4, 0, 25, 0},
-{79, 255, 1, 1, 1, 0, 25, 0},
-{79, 255, 1, 1, 1, 0, 25, 0},
-{79, 255, 1, 1, 1, 0, 25, 0},
-{79, 255, 1, 1, 2, 0, 25, 0},
-{79, 255, 1, 1, 1, 5, 25, 0},
-{79, 255, 1, 1, 1, 0, 25, 0},
-{79, 255, 1, 2, 1, 0, 25, 0},
-{79, 255, 1, 2, 1, 0, 25, 0},
-{79, 255, 1, 1, 3, 0, 25, 0},
-{79, 255, 1, 1, 3, 0, 25, 0},
-{79, 255, 1, 1, 0, 0, 25, 0},
-{79, 255, 1, 1, 0, 0, 25, 0},
-{79, 255, 1, 1, 0, 0, 25, 0},
-{79, 255, 1, 1, 0, 0, 25, 0}};
+    {104, 136, 1, 4, 1, 5, 25, 0},
+    {104, 136, 1, 4, 1, 5, 25, 0},
+    {72, 136, 1, 4, 1, 5, 25, 0},
+    {72, 136, 1, 4, 1, 5, 25, 0},
+    {111, 255, 1, 4, 1, 10, 25, 0},
+    {79, 255, 1, 4, 1, 5, 25, 0},
+    {104, 136, 1, 4, 1, 5, 25, 0},
+    {104, 136, 1, 4, 1, 5, 25, 0},
+    {79, 255, 1, 4, 1, 0, 25, 0},
+    {79, 255, 1, 4, 1, 0, 25, 0},
+    {79, 255, 1, 8, 1, 0, 25, 0},
+    {56, 136, 1, 8, 1, 0, 25, 0},
+    {111, 255, 1, 8, 1, 5, 25, 0},
+    {111, 255, 1, 8, 1, 5, 25, 0},
+    {111, 255, 1, 8, 1, 0, 25, 0},
+    {95, 255, 1, 8, 1, 0, 25, 0},
+    {111, 255, 1, 8, 1, 0, 25, 0},
+    {95, 255, 1, 8, 1, 0, 25, 0},
+    {79, 255, 1, 8, 1, 0, 25, 0},
+    {79, 255, 1, 2, 1, 10, 25, 0},
+    {47, 255, 1, 2, 1, 10, 25, 0},
+    {120, 136, 1, 8, 1, 15, 25, 0},
+    {111, 255, 1, 8, 1, 5, 25, 0},
+    {111, 255, 1, 8, 1, 5, 25, 0},
+    {79, 255, 1, 8, 1, 10, 25, 0},
+    {63, 255, 1, 8, 1, 5, 25, 0},
+    {40, 136, 1, 8, 1, 100, 25, 0},
+    {79, 255, 1, 2, 1, 0, 25, 0},
+    {79, 255, 1, 2, 1, 0, 25, 0},
+    {95, 255, 1, 2, 1, 5, 25, 0},
+    {104, 136, 1, 2, 1, 5, 25, 0},
+    {104, 136, 1, 2, 1, 5, 25, 0},
+    {104, 136, 1, 2, 1, 5, 25, 0},
+    {79, 255, 1, 2, 1, 10, 30, 0},
+    {79, 255, 1, 2, 1, 10, 28, 0},
+    {95, 255, 1, 2, 1, 5, 25, 0},
+    {79, 255, 1, 2, 1, 5, 25, 0},
+    {79, 255, 1, 2, 1, 5, 25, 0},
+    {104, 136, 1, 2, 1, 5, 26, 0},
+    {79, 255, 1, 2, 1, 10, 25, 0},
+    {79, 255, 1, 2, 1, 5, 25, 0},
+    {79, 255, 1, 2, 1, 5, 15, 0},
+    {79, 255, 1, 2, 1, 5, 25, 0},
+    {79, 255, 1, 2, 1, 5, 25, 0},
+    {79, 255, 1, 2, 1, 5, 25, 0},
+    {79, 255, 1, 2, 1, 10, 25, 0},
+    {79, 255, 1, 2, 1, 20, 25, 0},
+    {79, 255, 1, 2, 1, 5, 25, 0},
+    {63, 255, 1, 1, 2, 20, 25, 0},
+    {72, 136, 1, 1, 2, 10, 25, 0},
+    {79, 255, 1, 1, 2, 80, 25, 0},
+    {79, 255, 1, 1, 2, 10, 25, 0},
+    {47, 255, 1, 1, 2, 20, 25, 0},
+    {72, 136, 1, 1, 2, 10, 25, 0},
+    {40, 136, 1, 1, 2, 5, 25, 0},
+    {53, 85, 1, 1, 2, 5, 25, 0},
+    {79, 255, 1, 8, 2, 10, 25, 0},
+    {79, 255, 1, 8, 1, 15, 25, 0},
+    {79, 255, 1, 8, 1, 15, 25, 0},
+    {95, 255, 1, 1, 1, 15, 25, 0},
+    {79, 255, 1, 1, 1, 10, 25, 0},
+    {95, 255, 1, 1, 3, 5, 25, 0},
+    {79, 255, 1, 1, 1, 0, 25, 0},
+    {111, 255, 1, 1, 1, 15, 27, 0},
+    {127, 255, 1, 1, 4, 0, 25, 0},
+    {67, 51, 1, 1, 1, 25, 25, 0},
+    {63, 255, 1, 1, 1, 0, 25, 0},
+    {51, 51, 1, 1, 1, 25, 25, 0},
+    {111, 255, 1, 1, 2, 10, 25, 0},
+    {111, 255, 1, 1, 2, 10, 25, 0},
+    {111, 255, 1, 1, 2, 20, 25, 0},
+    {111, 255, 1, 1, 2, 20, 25, 0},
+    {127, 255, 1, 1, 2, 30, 25, 0},
+    {111, 255, 1, 1, 2, 20, 25, 0},
+    {88, 136, 1, 1, 2, 5, 16, 0},
+    {88, 136, 1, 1, 2, 5, 16, 0},
+    {95, 255, 1, 4, 2, 5, 25, 0},
+    {111, 255, 1, 2, 2, 5, 25, 0},
+    {79, 255, 1, 1, 2, 5, 25, 0},
+    {56, 136, 1, 1, 1, 100, 25, 0},
+    {56, 136, 1, 1, 1, 100, 25, 0},
+    {56, 136, 1, 1, 1, 100, 25, 0},
+    {40, 136, 1, 1, 1, 100, 25, 0},
+    {40, 136, 1, 1, 1, 100, 25, 0},
+    {40, 136, 1, 1, 1, 100, 25, 0},
+    {48, 0, 1, 3, 2, 30, 25, 0},
+    {79, 255, 1, 1, 1, 5, 25, 0},
+    {79, 255, 1, 1, 1, 5, 25, 0},
+    {79, 255, 1, 1, 1, 5, 25, 0},
+    {63, 255, 1, 1, 2, 15, 25, 0},
+    {63, 255, 1, 1, 1, 15, 25, 0},
+    {79, 255, 1, 2, 2, 15, 25, 0},
+    {111, 255, 1, 2, 3, 127, 25, 0},
+    {79, 255, 1, 1, 1, 10, 25, 0},
+    {79, 255, 1, 1, 1, 0, 25, 0},
+    {79, 255, 1, 2, 1, 5, 25, 0},
+    {79, 255, 1, 2, 1, 5, 25, 0},
+    {79, 255, 1, 1, 1, 5, 25, 0},
+    {79, 255, 1, 1, 1, 5, 25, 0},
+    {56, 136, 1, 1, 0, 0, 25, 0},
+    {56, 136, 1, 1, 0, 0, 23, 0},
+    {56, 136, 1, 1, 0, 0, 25, 0},
+    {56, 136, 1, 1, 0, 0, 23, 0},
+    {56, 136, 1, 1, 0, 0, 25, 0},
+    {56, 136, 1, 1, 0, 0, 23, 0},
+    {95, 255, 1, 1, 3, 5, 25, 0},
+    {79, 255, 1, 1, 3, 10, 25, 0},
+    {79, 255, 1, 1, 3, 10, 25, 0},
+    {127, 255, 1, 1, 3, 5, 25, 0},
+    {127, 255, 1, 1, 3, 20, 25, 0},
+    {79, 255, 1, 1, 3, 50, 25, 0},
+    {79, 255, 1, 1, 3, 10, 25, 0},
+    {111, 255, 1, 1, 3, 10, 25, 0},
+    {79, 255, 1, 1, 4, 0, 25, 0},
+    {104, 136, 1, 2, 4, 100, 25, 0},
+    {63, 255, 1, 1, 1, 10, 25, 0},
+    {79, 255, 1, 1, 1, 10, 25, 0},
+    {63, 255, 1, 1, 0, 10, 25, 0},
+    {79, 255, 1, 1, 1, 10, 25, 0},
+    {79, 255, 1, 1, 1, 0, 25, 0},
+    {79, 255, 1, 1, 3, 25, 25, 0},
+    {111, 255, 1, 1, 3, 30, 20, 0},
+    {79, 255, 1, 1, 3, 10, 18, 0},
+    {111, 255, 1, 1, 3, 50, 25, 0},
+    {95, 255, 1, 1, 3, 25, 25, 0},
+    {95, 255, 1, 1, 3, 5, 20, 0},
+    {63, 255, 1, 1, 2, 0, 25, 0},
+    {111, 255, 1, 1, 2, 5, 25, 0},
+    {47, 255, 1, 1, 1, 5, 25, 0},
+    {63, 255, 1, 1, 1, 5, 25, 0},
+    {63, 255, 1, 3, 1, 5, 25, 0},
+    {111, 255, 1, 1, 2, 10, 25, 0},
+    {127, 255, 1, 1, 4, 10, 25, 0},
+    {127, 255, 1, 1, 2, 10, 25, 0},
+    {95, 255, 1, 1, 2, 50, 25, 0},
+    {127, 255, 1, 1, 2, 25, 25, 0},
+    {104, 136, 1, 1, 2, 15, 20, 0},
+    {72, 136, 1, 3, 1, 25, 25, 0},
+    {111, 255, 1, 2, 1, 25, 25, 0},
+    {79, 255, 1, 2, 1, 5, 25, 0},
+    {79, 255, 1, 2, 2, 10, 25, 0},
+    {79, 255, 1, 2, 1, 0, 25, 0},
+    {95, 255, 1, 3, 1, 0, 25, 0},
+    {95, 255, 1, 2, 1, 5, 25, 0},
+    {95, 255, 1, 2, 1, 5, 25, 0},
+    {79, 255, 1, 1, 1, 5, 25, 0},
+    {79, 255, 1, 1, 1, 10, 25, 0},
+    {79, 255, 1, 1, 1, 5, 25, 0},
+    {79, 255, 1, 1, 1, 5, 25, 0},
+    {79, 255, 1, 1, 1, 5, 25, 0},
+    {95, 255, 1, 1, 2, 10, 25, 0},
+    {79, 255, 1, 1, 1, 10, 25, 0},
+    {63, 255, 1, 1, 1, 5, 25, 0},
+    {47, 255, 1, 1, 1, 25, 25, 0},
+    {79, 255, 1, 1, 3, 0, 25, 0},
+    {79, 255, 1, 1, 3, 0, 25, 0},
+    {79, 255, 1, 1, 3, 0, 25, 0},
+    {79, 255, 1, 1, 3, 0, 25, 0},
+    {79, 255, 1, 1, 3, 0, 25, 0},
+    {79, 255, 1, 1, 3, 0, 25, 0},
+    {63, 255, 1, 1, 1, 10, 25, 0},
+    {63, 255, 1, 1, 1, 10, 25, 0},
+    {79, 255, 1, 1, 2, 30, 25, 0},
+    {79, 255, 1, 1, 1, 5, 25, 0},
+    {79, 255, 1, 1, 1, 15, 25, 0},
+    {79, 255, 1, 1, 1, 15, 25, 0},
+    {111, 255, 1, 1, 3, 10, 25, 0},
+    {79, 255, 1, 1, 7, 5, 25, 0},
+    {79, 255, 1, 8, 7, 5, 25, 0},
+    {79, 255, 1, 2, 8, 10, 25, 0},
+    {95, 255, 1, 1, 1, 5, 25, 0},
+    {95, 255, 1, 1, 1, 5, 25, 0},
+    {79, 255, 1, 1, 4, 20, 25, 0},
+    {111, 255, 1, 1, 3, 50, 25, 0},
+    {79, 255, 1, 1, 1, 25, 20, 0},
+    {79, 255, 1, 1, 2, 5, 25, 0},
+    {79, 255, 1, 1, 2, 20, 25, 0},
+    {111, 255, 1, 1, 3, 50, 25, 0},
+    {79, 255, 1, 8, 1, 5, 25, 0},
+    {95, 255, 1, 8, 4, 0, 25, 0},
+    {95, 255, 1, 8, 4, 0, 25, 0},
+    {111, 255, 1, 3, 4, 0, 25, 0},
+    {111, 255, 1, 8, 4, 0, 25, 0},
+    {111, 255, 1, 1, 4, 0, 25, 0},
+    {95, 255, 1, 8, 4, 0, 25, 0},
+    {111, 255, 1, 8, 4, 0, 25, 0},
+    {111, 255, 1, 8, 4, 0, 25, 0},
+    {95, 255, 1, 8, 4, 0, 20, 0},
+    {127, 255, 1, 1, 4, 0, 25, 0},
+    {111, 255, 1, 1, 4, 0, 25, 0},
+    {111, 255, 1, 11, 4, 0, 25, 0},
+    {111, 255, 1, 11, 4, 0, 25, 0},
+    {111, 255, 1, 11, 4, 0, 25, 0},
+    {79, 255, 9, 1, 0, 0, 25, 0},
+    {79, 255, 1, 1, 0, 0, 25, 0},
+    {95, 255, 1, 4, 3, 5, 25, 0},
+    {79, 255, 1, 1, 10, 5, 25, 0},
+    {79, 255, 1, 4, 1, 0, 25, 0},
+    {79, 255, 1, 4, 1, 0, 25, 0},
+    {79, 255, 1, 4, 1, 0, 25, 0},
+    {79, 255, 1, 4, 1, 0, 25, 0},
+    {79, 255, 1, 4, 1, 0, 25, 0},
+    {56, 136, 1, 8, 1, 0, 25, 0},
+    {79, 255, 1, 3, 10, 0, 25, 0},
+    {79, 255, 1, 1, 2, 0, 25, 0},
+    {79, 255, 1, 1, 1, 0, 25, 0},
+    {79, 255, 1, 1, 1, 0, 25, 0},
+    {79, 255, 1, 1, 1, 0, 25, 0},
+    {31, 255, 1, 1, 1, 0, 25, 0},
+    {79, 255, 1, 1, 2, 0, 25, 0},
+    {63, 255, 1, 1, 1, 0, 25, 0},
+    {79, 255, 1, 1, 4, 0, 25, 0},
+    {79, 255, 1, 1, 1, 0, 25, 0},
+    {79, 255, 1, 1, 1, 0, 25, 0},
+    {79, 255, 1, 1, 1, 0, 25, 0},
+    {79, 255, 1, 1, 2, 0, 25, 0},
+    {79, 255, 1, 1, 1, 5, 25, 0},
+    {79, 255, 1, 1, 1, 0, 25, 0},
+    {79, 255, 1, 2, 1, 0, 25, 0},
+    {79, 255, 1, 2, 1, 0, 25, 0},
+    {79, 255, 1, 1, 3, 0, 25, 0},
+    {79, 255, 1, 1, 3, 0, 25, 0},
+    {79, 255, 1, 1, 0, 0, 25, 0},
+    {79, 255, 1, 1, 0, 0, 25, 0},
+    {79, 255, 1, 1, 0, 0, 25, 0},
+    {79, 255, 1, 1, 0, 0, 25, 0}};
 
 
 BGMVolume volumesBGM[] = {
-{0x00005AFF, 0x00000000},
-{0x00006555, 0x00000000},
-{0x00005FFF, 0x00000000},
-{0x00005FFF, 0x00000000},
-{0x00005FFF, 0x00000000},
-{0x000058FF, 0x00000000},
-{0x00005FFF, 0x00000000},
-{0x000053FF, 0x00000000},
-{0x00005FFF, 0x00000000},
-{0x000058FF, 0x00000000},
-{0x000053FF, 0x00000000},
-{0x00006FFF, 0x00000000},
-{0x000053FF, 0x00000000},
-{0x000053FF, 0x00000000},
-{0x000051FF, 0x00000000},
-{0x00006000, 0x00000000},
-{0x000058FF, 0x00000000},
-{0x00005000, 0x00000000},
-{0x000063FF, 0x00000000},
-{0x000063FF, 0x00000000},
-{0x000063FF, 0x00000000},
-{0x000063FF, 0x00000000},
-{0x000063FF, 0x00000000},
-{0x00007FFF, 0x00000000},
-{0x00007FFF, 0x00000000},
-{0x000063FF, 0x00000000},
-{0x00006FFF, 0x00000000},
-{0x000063FF, 0x00000000},
-{0x000063FF, 0x00000000},
-{0x000053FF, 0x00000000}
+    {0x00005AFF, 0x00000000},
+    {0x00006555, 0x00000000},
+    {0x00005FFF, 0x00000000},
+    {0x00005FFF, 0x00000000},
+    {0x00005FFF, 0x00000000},
+    {0x000058FF, 0x00000000},
+    {0x00005FFF, 0x00000000},
+    {0x000053FF, 0x00000000},
+    {0x00005FFF, 0x00000000},
+    {0x000058FF, 0x00000000},
+    {0x000053FF, 0x00000000},
+    {0x00006FFF, 0x00000000},
+    {0x000053FF, 0x00000000},
+    {0x000053FF, 0x00000000},
+    {0x000051FF, 0x00000000},
+    {0x00006000, 0x00000000},
+    {0x000058FF, 0x00000000},
+    {0x00005000, 0x00000000},
+    {0x000063FF, 0x00000000},
+    {0x000063FF, 0x00000000},
+    {0x000063FF, 0x00000000},
+    {0x000063FF, 0x00000000},
+    {0x000063FF, 0x00000000},
+    {0x00007FFF, 0x00000000},
+    {0x00007FFF, 0x00000000},
+    {0x000063FF, 0x00000000},
+    {0x00006FFF, 0x00000000},
+    {0x000063FF, 0x00000000},
+    {0x000063FF, 0x00000000},
+    {0x000053FF, 0x00000000}
 };
 
 s32 D_800FF5C0 = 0; //padding?
@@ -287,7 +302,7 @@ s16 gSFXMute = -1;
 s16 D_800FF604 = 0;
 s16 D_800FF608 = 0;
 u8 gGfxTaskYielded = 0;
-Camera* gCameraP = gCamera;
+Camera* gCameraP = gCameras;
 
 extern ALCSPlayer gBGMPlayer;
 extern ALCSeq gBGMSeq;
@@ -416,7 +431,7 @@ s32 D_800FF8B4 = 0;
 u32 D_800FF8B8 = 0;
 s16 D_800FF8BC = 0;
 s16 D_800FF8C0[] = {0x3737, 0x3700, 0x00FF, 0x00FF, 0xFFFF, 0xFF00, 0xFF00, 0xFFFF, 0xFFFF};
-Mtx* D_800FF8D4 = NULL;
+Mtx* gMatrixBufPtr = NULL;
 s32 D_800FF8D8 = 0;
 u8 D_800FF8DC = 0;
 u8 D_800FF8E0 = 0;
@@ -562,11 +577,11 @@ extern Mtx BombSnake_unk1_Animarr[];
 extern Anim BombSnake_unk1Header_Animh;
 
 Unk_800FFB74 D_800FF9D0 = {
-BombSnake_unk1_Animarr,
-BombSnake_unkF_Gfx,
-&BombSnake_unk1Header_Animh.objects,
-&BombSnake_unk1Header_Animh.frames,
-LIST_END,
+    BombSnake_unk1_Animarr,
+    BombSnake_unkF_Gfx,
+    &BombSnake_unk1Header_Animh.objects,
+    &BombSnake_unk1Header_Animh.frames,
+    LIST_END,
 };
 
 
@@ -575,33 +590,33 @@ extern Mtx BombSnake_unk2_Animarr[];
 extern Anim BombSnake_unk2Header_Animh;
 
 Unk_800FFB74 D_800FF9E4 = {
-BombSnake_unk2_Animarr,
-BombSnake_unk11_Gfx,
-&BombSnake_unk2Header_Animh.objects,
-&BombSnake_unk2Header_Animh.frames,
-LIST_END,
+    BombSnake_unk2_Animarr,
+    BombSnake_unk11_Gfx,
+    &BombSnake_unk2Header_Animh.objects,
+    &BombSnake_unk2Header_Animh.frames,
+    LIST_END,
 };
 
 extern Mtx BombSnake_unk3_Animarr[];
 extern Anim BombSnake_unk3Header_Animh;
 
 Unk_800FFB74 D_800FF9F8 = {
-BombSnake_unk3_Animarr,
-BombSnake_unk11_Gfx,
-&BombSnake_unk3Header_Animh.objects,
-&BombSnake_unk3Header_Animh.frames,
-LIST_END,
+    BombSnake_unk3_Animarr,
+    BombSnake_unk11_Gfx,
+    &BombSnake_unk3Header_Animh.objects,
+    &BombSnake_unk3Header_Animh.frames,
+    LIST_END,
 };
 
 extern Mtx BombSnake_unk4_Animarr[];
 extern Anim BombSnake_unk4Header_Animh;
 
 Unk_800FFB74 D_800FFA0C = {
-BombSnake_unk4_Animarr,
-BombSnake_unk11_Gfx,
-&BombSnake_unk4Header_Animh.objects,
-&BombSnake_unk4Header_Animh.frames,
-LIST_END,
+    BombSnake_unk4_Animarr,
+    BombSnake_unk11_Gfx,
+    &BombSnake_unk4Header_Animh.objects,
+    &BombSnake_unk4Header_Animh.frames,
+    LIST_END,
 };
 
 
@@ -610,55 +625,55 @@ extern Mtx Quintella_unk7_Animarr[];
 extern Anim Quintella_unk7Header_Animh;
 
 Unk_800FFB74 D_800FFA20 = {
-Quintella_unk7_Animarr,
-Quintella_a_model18_Gfx,
-&Quintella_unk7Header_Animh.objects,
-&Quintella_unk7Header_Animh.frames,
-LIST_END,
+    Quintella_unk7_Animarr,
+    Quintella_a_model18_Gfx,
+    &Quintella_unk7Header_Animh.objects,
+    &Quintella_unk7Header_Animh.frames,
+    LIST_END,
 };
 
 extern Mtx Quintella_unk8_Animarr[];
 extern Anim Quintella_unk8Header_Animh;
 
 Unk_800FFB74 D_800FFA34 = {
-Quintella_unk8_Animarr,
-Quintella_a_model18_Gfx,
-&Quintella_unk8Header_Animh.objects,
-&Quintella_unk8Header_Animh.frames,
-0,
+    Quintella_unk8_Animarr,
+    Quintella_a_model18_Gfx,
+    &Quintella_unk8Header_Animh.objects,
+    &Quintella_unk8Header_Animh.frames,
+    0,
 };
 
 extern Mtx Quintella_unk9_Animarr[];
 extern Anim Quintella_unk9Header_Animh;
 
 Unk_800FFB74 D_800FFA48 = {
-Quintella_unk9_Animarr,
-Quintella_a_model18_Gfx,
-&Quintella_unk9Header_Animh.objects,
-&Quintella_unk9Header_Animh.frames,
-LIST_END,
+    Quintella_unk9_Animarr,
+    Quintella_a_model18_Gfx,
+    &Quintella_unk9Header_Animh.objects,
+    &Quintella_unk9Header_Animh.frames,
+    LIST_END,
 };
 
 extern Mtx Quintella_unk10_Animarr[];
 extern Anim Quintella_unk10Header_Animh;
 
 Unk_800FFB74 D_800FFA5C = {
-Quintella_unk10_Animarr,
-Quintella_a_model18_Gfx,
-&Quintella_unk10Header_Animh.objects,
-&Quintella_unk10Header_Animh.frames,
-LIST_END,
+    Quintella_unk10_Animarr,
+    Quintella_a_model18_Gfx,
+    &Quintella_unk10Header_Animh.objects,
+    &Quintella_unk10Header_Animh.frames,
+    LIST_END,
 };
 
 extern Mtx Quintella_unk11_Animarr[];
 extern Anim Quintella_unk11Header_Animh;
 
 Unk_800FFB74 D_800FFA70 = {
-Quintella_unk11_Animarr,
-Quintella_a_model18_Gfx,
-&Quintella_unk11Header_Animh.objects,
-&Quintella_unk11Header_Animh.frames,
-LIST_END,
+    Quintella_unk11_Animarr,
+    Quintella_a_model18_Gfx,
+    &Quintella_unk11Header_Animh.objects,
+    &Quintella_unk11Header_Animh.frames,
+    LIST_END,
 };
 
 
@@ -667,55 +682,55 @@ extern Mtx LizardKong_unk5_Animarr[];
 extern Anim LizardKong_unk5Header_Animh;
 
 Unk_800FFB74 D_800FFA84 = {
-LizardKong_unk5_Animarr,
-LizardKong_a_model12_Gfx,
-&LizardKong_unk5Header_Animh.objects,
-&LizardKong_unk5Header_Animh.frames,
-LIST_END,
+    LizardKong_unk5_Animarr,
+    LizardKong_a_model12_Gfx,
+    &LizardKong_unk5Header_Animh.objects,
+    &LizardKong_unk5Header_Animh.frames,
+    LIST_END,
 };
 
 extern Mtx LizardKong_unk6_Animarr[];
 extern Anim LizardKong_unk6Header_Animh;
 
 Unk_800FFB74 D_800FFA98 = {
-LizardKong_unk6_Animarr,
-LizardKong_a_model12_Gfx,
-&LizardKong_unk6Header_Animh.objects,
-&LizardKong_unk6Header_Animh.frames,
-LIST_END,
+    LizardKong_unk6_Animarr,
+    LizardKong_a_model12_Gfx,
+    &LizardKong_unk6Header_Animh.objects,
+    &LizardKong_unk6Header_Animh.frames,
+    LIST_END,
 };
 
 extern Mtx LizardKong_unk7_Animarr[];
 extern Anim LizardKong_unk7Header_Animh;
 
 Unk_800FFB74 D_800FFAAC = {
-LizardKong_unk7_Animarr,
-LizardKong_a_model12_Gfx,
-&LizardKong_unk7Header_Animh.objects,
-&LizardKong_unk7Header_Animh.frames,
-LIST_END,
+    LizardKong_unk7_Animarr,
+    LizardKong_a_model12_Gfx,
+    &LizardKong_unk7Header_Animh.objects,
+    &LizardKong_unk7Header_Animh.frames,
+    LIST_END,
 };
 
 extern Mtx LizardKong_unk8_Animarr[];
 extern Anim LizardKong_unk8Header_Animh;
 
 Unk_800FFB74 D_800FFAC0 = {
-LizardKong_unk8_Animarr,
-LizardKong_a_model12_Gfx,
-&LizardKong_unk8Header_Animh.objects,
-&LizardKong_unk8Header_Animh.frames,
-LIST_END,
+    LizardKong_unk8_Animarr,
+    LizardKong_a_model12_Gfx,
+    &LizardKong_unk8Header_Animh.objects,
+    &LizardKong_unk8Header_Animh.frames,
+    LIST_END,
 };
 
 extern Mtx LizardKong_unk9_Animarr[];
 extern Anim LizardKong_unk9Header_Animh;
 
 Unk_800FFB74 D_800FFAD4 = {
-LizardKong_unk9_Animarr,
-LizardKong_a_model14_Gfx,
-&LizardKong_unk9Header_Animh.objects,
-&LizardKong_unk9Header_Animh.frames,
-LIST_END,
+    LizardKong_unk9_Animarr,
+    LizardKong_a_model14_Gfx,
+    &LizardKong_unk9Header_Animh.objects,
+    &LizardKong_unk9Header_Animh.frames,
+    LIST_END,
 };
 
 
@@ -724,44 +739,44 @@ extern Mtx Armadillo_unk3_Animarr[];
 extern Anim Armadillo_unk3Header_Animh;
 
 Unk_800FFB74 D_800FFAE8 = {
-Armadillo_unk3_Animarr,
-Armadillo_a_model21_Gfx,
-&Armadillo_unk3Header_Animh.objects,
-&Armadillo_unk3Header_Animh.frames,
-LIST_END,
+    Armadillo_unk3_Animarr,
+    Armadillo_a_model21_Gfx,
+    &Armadillo_unk3Header_Animh.objects,
+    &Armadillo_unk3Header_Animh.frames,
+    LIST_END,
 };
 
 extern Mtx Armadillo_unk4_Animarr[];
 extern Anim Armadillo_unk4Header_Animh;
 
 Unk_800FFB74 D_800FFAFC = {
-Armadillo_unk4_Animarr,
-Armadillo_a_model21_Gfx,
-&Armadillo_unk4Header_Animh.objects,
-&Armadillo_unk4Header_Animh.frames,
-LIST_END,
+    Armadillo_unk4_Animarr,
+    Armadillo_a_model21_Gfx,
+    &Armadillo_unk4Header_Animh.objects,
+    &Armadillo_unk4Header_Animh.frames,
+    LIST_END,
 };
 
 extern Mtx Armadillo_unk5_Animarr[];
 extern Anim Armadillo_unk5Header_Animh;
 
 Unk_800FFB74 D_800FFB10 = {
-Armadillo_unk5_Animarr,
-Armadillo_a_model21_Gfx,
-&Armadillo_unk5Header_Animh.objects,
-&Armadillo_unk5Header_Animh.frames,
-LIST_END,
+    Armadillo_unk5_Animarr,
+    Armadillo_a_model21_Gfx,
+    &Armadillo_unk5Header_Animh.objects,
+    &Armadillo_unk5Header_Animh.frames,
+    LIST_END,
 };
 
 extern Mtx Armadillo_unk6_Animarr[];
 extern Anim Armadillo_unk6Header_Animh;
 
 Unk_800FFB74 D_800FFB24 = {
-Armadillo_unk6_Animarr,
-Armadillo_a_model21_Gfx,
-&Armadillo_unk6Header_Animh.objects,
-&Armadillo_unk6Header_Animh.frames,
-LIST_END,
+    Armadillo_unk6_Animarr,
+    Armadillo_a_model21_Gfx,
+    &Armadillo_unk6Header_Animh.objects,
+    &Armadillo_unk6Header_Animh.frames,
+    LIST_END,
 };
 
 extern Mtx GiantCake_unk4_Animarr[];
@@ -782,11 +797,11 @@ extern Mtx GiantCake_unk3_Animarr[];
 extern Anim GiantCake_unk3Header_Animh;
 
 Unk_800FFB74 D_800FFB4C = {
-GiantCake_unk3_Animarr,
-GiantCake_a_model15_Gfx,
-&GiantCake_unk3Header_Animh.objects,
-&GiantCake_unk3Header_Animh.frames,
-LIST_END,
+    GiantCake_unk3_Animarr,
+    GiantCake_a_model15_Gfx,
+    &GiantCake_unk3Header_Animh.objects,
+    &GiantCake_unk3Header_Animh.frames,
+    LIST_END,
 };
 
 extern Mtx GiantCake_unk5_Animarr[];
@@ -931,38 +946,38 @@ s16 D_800FFEEC[] = {0x18, 0x19, 0x1A, 0x1B, LIST_END};
 
 extern StageData JungleLand_stageData;
 extern StageData AntLand_stageData;
-extern StageData BombLand_header_Lvlhdr;
-extern StageData DesertCastle_header_Lvlhdr;
-extern StageData KidsLand_header_Lvlhdr;
-extern StageData GhostCastle_header_Lvlhdr;
-extern StageData IntroOutro_header_Lvlhdr;
-extern StageData BattleMode_header_Lvlhdr;
-extern StageData Training_header_Lvlhdr;
-extern StageData LizardKong_header_Lvlhdr;
-extern StageData Quintella_header_Lvlhdr;
-extern StageData BombSnake_header_Lvlhdr;
-extern StageData Armadillo_header_Lvlhdr;
-extern StageData GiantCake_header_Lvlhdr;
-extern StageData PileOfBooks_header_Lvlhdr;
-extern StageData BossRush_header_Lvlhdr;
+extern StageData BombLand_stageData;
+extern StageData DesertCastle_stageData;
+extern StageData KidsLand_stageData;
+extern StageData GhostCastle_stageData;
+extern StageData IntroOutro_stageData;
+extern StageData BattleMode_stageData;
+extern StageData Training_stageData;
+extern StageData LizardKong_stageData;
+extern StageData Quintella_stageData;
+extern StageData BombSnake_stageData;
+extern StageData Armadillo_stageData;
+extern StageData GiantCake_stageData;
+extern StageData PileOfBooks_stageData;
+extern StageData BossRush_stageData;
 
 StageLoadData gStageLoadData[] = {
     {&JungleLand_stageData, JungleLand_ROM_START, JungleLand_VRAM, JungleLand_VRAM_END, 0},
     {&AntLand_stageData, AntLand_ROM_START, AntLand_VRAM, AntLand_VRAM_END, 1},
-    {&BombLand_header_Lvlhdr, BombLand_ROM_START, BombLand_VRAM, BombLand_VRAM_END, 2},
-    {&DesertCastle_header_Lvlhdr, DesertCastle_ROM_START, DesertCastle_VRAM, DesertCastle_VRAM_END, 3},
-    {&KidsLand_header_Lvlhdr, KidsLand_ROM_START, KidsLand_VRAM, KidsLand_VRAM_END, 4},
-    {&GhostCastle_header_Lvlhdr, GhostCastle_ROM_START, GhostCastle_VRAM, GhostCastle_VRAM_END, 5},
-    {&IntroOutro_header_Lvlhdr, IntroOutro_ROM_START, IntroOutro_VRAM, IntroOutro_VRAM_END, 6},
-    {&BattleMode_header_Lvlhdr, BattleMode_ROM_START, BattleMode_VRAM, BattleMode_VRAM_END, 7},
-    {&Training_header_Lvlhdr, Training_ROM_START, Training_VRAM, Training_VRAM_END, 8},
-    {&LizardKong_header_Lvlhdr, LizardKong_ROM_START, LizardKong_VRAM, LizardKong_VRAM_END, 9},
-    {&Quintella_header_Lvlhdr, Quintella_ROM_START, Quintella_VRAM, Quintella_VRAM_END, 10},
-    {&BombSnake_header_Lvlhdr, BombSnake_ROM_START, BombSnake_VRAM, BombSnake_VRAM_END, 11},
-    {&Armadillo_header_Lvlhdr, Armadillo_ROM_START, Armadillo_VRAM, Armadillo_VRAM_END, 12},
-    {&GiantCake_header_Lvlhdr, GiantCake_ROM_START, GiantCake_VRAM, GiantCake_VRAM_END, 13},
-    {&PileOfBooks_header_Lvlhdr, PileOfBooks_ROM_START, PileOfBooks_VRAM, PileOfBooks_VRAM_END, 14},
-    {&BossRush_header_Lvlhdr, BossRush_ROM_START, BossRush_VRAM, BossRush_VRAM_END, 15},
+    {&BombLand_stageData, BombLand_ROM_START, BombLand_VRAM, BombLand_VRAM_END, 2},
+    {&DesertCastle_stageData, DesertCastle_ROM_START, DesertCastle_VRAM, DesertCastle_VRAM_END, 3},
+    {&KidsLand_stageData, KidsLand_ROM_START, KidsLand_VRAM, KidsLand_VRAM_END, 4},
+    {&GhostCastle_stageData, GhostCastle_ROM_START, GhostCastle_VRAM, GhostCastle_VRAM_END, 5},
+    {&IntroOutro_stageData, IntroOutro_ROM_START, IntroOutro_VRAM, IntroOutro_VRAM_END, 6},
+    {&BattleMode_stageData, BattleMode_ROM_START, BattleMode_VRAM, BattleMode_VRAM_END, 7},
+    {&Training_stageData, Training_ROM_START, Training_VRAM, Training_VRAM_END, 8},
+    {&LizardKong_stageData, LizardKong_ROM_START, LizardKong_VRAM, LizardKong_VRAM_END, 9},
+    {&Quintella_stageData, Quintella_ROM_START, Quintella_VRAM, Quintella_VRAM_END, 10},
+    {&BombSnake_stageData, BombSnake_ROM_START, BombSnake_VRAM, BombSnake_VRAM_END, 11},
+    {&Armadillo_stageData, Armadillo_ROM_START, Armadillo_VRAM, Armadillo_VRAM_END, 12},
+    {&GiantCake_stageData, GiantCake_ROM_START, GiantCake_VRAM, GiantCake_VRAM_END, 13},
+    {&PileOfBooks_stageData, PileOfBooks_ROM_START, PileOfBooks_VRAM, PileOfBooks_VRAM_END, 14},
+    {&BossRush_stageData, BossRush_ROM_START, BossRush_VRAM, BossRush_VRAM_END, 15},
     {0, 0, 0, 0, -1},
     {0, 0, 0, 0, -1},
     {0, 0, 0, 0, -1},
@@ -1014,23 +1029,23 @@ segTableEntry gSegTable[16] = {
 };
 
 typedef struct StageSelectData {
-/* 0x00 */ s16 xPos;
-/* 0x02 */ s16 yPos;
-/* 0x04 */ s16 spriteID;
-/* 0x06 */ s16 upPathID;
-/* 0x08 */ s16 upRightPathID;
-/* 0x0A */ s16 rightPathID;
-/* 0x0C */ s16 downRightPathID;
-/* 0x0E */ s16 downPathID;
-/* 0x10 */ s16 downLeftPathID;
-/* 0x12 */ s16 leftPathID;
-/* 0x14 */ s16 upLeftPathID;
-/* 0x16 */ u8 unk_16;
+    /* 0x00 */ s16 xPos;
+    /* 0x02 */ s16 yPos;
+    /* 0x04 */ s16 spriteID;
+    /* 0x06 */ s16 upPathID;
+    /* 0x08 */ s16 upRightPathID;
+    /* 0x0A */ s16 rightPathID;
+    /* 0x0C */ s16 downRightPathID;
+    /* 0x0E */ s16 downPathID;
+    /* 0x10 */ s16 downLeftPathID;
+    /* 0x12 */ s16 leftPathID;
+    /* 0x14 */ s16 upLeftPathID;
+    /* 0x16 */ u8 unk_16;
 } StageSelectData; //sizeof 0x18 (with padding)
 
 enum StageSelectStages{
     NONE = -1,
-    JL, // 0
+        JL, // 0
     AL, // 1
     BL, // 2
     DC, // 3
@@ -1039,15 +1054,13 @@ enum StageSelectStages{
     BOSSRUSH // 6
 };
 
-#define canAccess(stage) TRUE << stage
-
 StageSelectData StageSelect[] = {                                                                               //?
     { 56, 192, SPRITE_JL_ICON,          BOSSRUSH,   AL,     BL,     BL,     NONE,   NONE,   NONE,       NONE,   -1},
-    {108, 112, SPRITE_AL_ICON,          NONE,       DC,     DC,     KL,     BL,     JL,     BOSSRUSH,   NONE,   canAccess(JL) | canAccess(BL) | canAccess(DC) | canAccess(KL)},
-    {148, 184, SPRITE_BL_ICON,          DC,         DC,     KL,     KL,     NONE,   JL,     JL,         AL,     canAccess(JL) | canAccess(AL) | canAccess(DC) | canAccess(KL)},
-    {186,  80, SPRITE_DC_ICON,          NONE,       GC,     GC,     KL,     KL,     BL,     AL,         NONE,   canAccess(AL) | canAccess(BL) | canAccess(KL) | canAccess(GC)},
-    {228, 152, SPRITE_KL_ICON,          DC,         GC,     NONE,   NONE,   NONE,   BL,     BL,         AL,     canAccess(AL) | canAccess(BL) | canAccess(DC) | canAccess(GC)},
-    {258,  56, SPRITE_GC_ICON,          NONE,       NONE,   NONE,   KL,     KL,     KL,     DC,         NONE,   canAccess(DC) | canAccess(KL)},
+    {108, 112, SPRITE_AL_ICON,          NONE,       DC,     DC,     KL,     BL,     JL,     BOSSRUSH,   NONE,   IS_STAGE_UNLOCKED(JL) | IS_STAGE_UNLOCKED(BL) | IS_STAGE_UNLOCKED(DC) | IS_STAGE_UNLOCKED(KL)},
+    {148, 184, SPRITE_BL_ICON,          DC,         DC,     KL,     KL,     NONE,   JL,     JL,         AL,     IS_STAGE_UNLOCKED(JL) | IS_STAGE_UNLOCKED(AL) | IS_STAGE_UNLOCKED(DC) | IS_STAGE_UNLOCKED(KL)},
+    {186,  80, SPRITE_DC_ICON,          NONE,       GC,     GC,     KL,     KL,     BL,     AL,         NONE,   IS_STAGE_UNLOCKED(AL) | IS_STAGE_UNLOCKED(BL) | IS_STAGE_UNLOCKED(KL) | IS_STAGE_UNLOCKED(GC)},
+    {228, 152, SPRITE_KL_ICON,          DC,         GC,     NONE,   NONE,   NONE,   BL,     BL,         AL,     IS_STAGE_UNLOCKED(AL) | IS_STAGE_UNLOCKED(BL) | IS_STAGE_UNLOCKED(DC) | IS_STAGE_UNLOCKED(GC)},
+    {258,  56, SPRITE_GC_ICON,          NONE,       NONE,   NONE,   KL,     KL,     KL,     DC,         NONE,   IS_STAGE_UNLOCKED(DC) | IS_STAGE_UNLOCKED(KL)},
     { 56, 110, SPRITE_BOSSRUSH_ICON,    NONE,       NONE,   AL,     NONE,   JL,     NONE,   NONE,       NONE,   0},
     {  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
 };
@@ -1085,9 +1098,9 @@ const char* D_8010035C[] = {D_8010E0CC, D_8010E0D4, D_8010E0DC, D_8010E0E4, NULL
 
 s16 LoadFilePositions[] = {
     //X,   Y
-     44,  64,
+    44,  64,
     188,  64,
-     44, 136,
+    44, 136,
     188, 136
 };
 
@@ -1131,8 +1144,18 @@ stuff D_801003DC = {
     {0, 0, 0, 0, 0, 0}
 };
 
-s16 D_801003E8[] = {0x0040, 0x0080, 0x0080, 0x0080, 0x00C0, 0x0080, 0x0100, 0x0080};
-s16 D_801003F8[] = {0x0044, 0x0080, 0x0080, 0x0080, 0x00BE, 0x0080, 0x00FC, 0x0080};
+s16 D_801003E8[][2] = {
+    0x0040, 0x0080,
+    0x0080, 0x0080,
+    0x00C0, 0x0080,
+    0x0100, 0x0080
+};
+s16 D_801003F8[][2] = {
+    {0x0044, 0x0080},
+    {0x0080, 0x0080},
+    {0x00BE, 0x0080},
+    {0x00FC, 0x0080}
+};
 
 //battle mode
 extern const char D_8010E60C[];
@@ -1351,276 +1374,276 @@ typedef struct unk5ff30_80100614 {
 
 
 unk5ff30_80100614 D_80100614[] = {
-{
-{{  0, 0x78,
-    -7500.0f, 9290.0f, -400.0f,
-    -8400.0f, 9290.0f, -400.0f
-},
-{   0x10000, 0,
-    -7500.0f, 9000.0f, -800.0f,
-      270.0f,    0.0f,    0.0f,
-},
-{   0, 0,
-    0.0f, 0.0f, 0.0f,
-    0.0f, 0.0f, 0.0f,
-}},
-0, 0
-},
-{
-{{  0x10013, 0x78,
-    50.0f, 290.0f,    0.0f,
-    50.0f, 290.0f, 1000.0f
-},
-{   0x10000, 0,
-    -500.0f, 0.0f, 0.0f,
-       0.0f, 0.0f, 0.0f,
-},
-{   0, 0,
-    0.0f, 0.0f, 0.0f,
-    0.0f, 0.0f, 0.0f,
-}},
-0, 0
-},
-{
-{{  0x2000E, 0x78,
-    375.0f, 290.0f,    0.0f,
-    375.0f, 290.0f, 1000.0f
-},
-{   0x10000, 0,
-    -150.0f, 0.0f, 0.0f,
-       0.0f, 0.0f, 0.0f,
-},
-{   0, 0,
-    0.0f, 0.0f, 0.0f,
-    0.0f, 0.0f, 0.0f,
-}},
-0, 0
-},
-{
-{{  0x30000, 0x78,
-    700.0f, 5290.0f,    0.0f,
-    700.0f, 5290.0f, 1000.0f
-},
-{   0x10000, 0,
-    150.0f, 5000.0f, 0.0f,
-      0.0f,    0.0f, 0.0f,
-},
-{   0, 0,
-    0.0f, 0.0f, 0.0f,
-    0.0f, 0.0f, 0.0f,
-}},
-0, 0
-},
-{
-{{  0x40010, 0x78,
-    50.0f, 290.0f,    0.0f,
-    50.0f, 290.0f, 1000.0f
-},
-{   0x10000, 0,
-    -300.0f, 0.0f, 0.0f,
-       0.0f, 0.0f, 0.0f,
-},
-{   0, 0,
-    0.0f, 0.0f, 0.0f,
-    0.0f, 0.0f, 0.0f,
-}},
-0, 0
-},
-{
-{{  0x50013, 0x78,
-    500.0f, 290.0f,    0.0f,
-    500.0f, 290.0f, 1000.0f
-},
-{   0x10000, 0,
-    0.0f, 0.0f, 0.0f,
-    0.0f, 0.0f, 0.0f,
-},
-{   0, 0,
-    0.0f, 0.0f, 0.0f,
-    0.0f, 0.0f, 0.0f,
-}},
-0, 0
-},
-{
-{{  0x10004, 0x78,
-    0.0f, 290.0f,    0.0f,
-    0.0f, 290.0f, 1000.0f
-},
-{   0x10000, 0,
-    -300.0f, 0.0f, 0.0f,
-       0.0f, 0.0f, 0.0f,
-},
-{   0, 0,
-    0.0f, 0.0f, 0.0f,
-    0.0f, 0.0f, 0.0f,
-}},
-0, 0
-},
-{
-{{  9, 0x0258,
-    0.0f, 190.0f,    0.0f,
-    0.0f, 200.0f, 1000.0f
-},
-{   0x10000, 0,
-    12216.0f, 600.0f, -18535.0f,
-        0.0f,   0.0f,      0.0f,
-},
-{   0, 0,
-    0.0f, 0.0f, 0.0f,
-    0.0f, 0.0f, 0.0f,
-}},
-0, 0
-},
-{
-{{  0x10010, 0x258,
-    0.0f, 190.0f,    0.0f,
-    0.0f, 200.0f, 1000.0f
-},
-{   0x10000, 0,
-    0.0f, 0.0f, -1380.0f,
-    0.0f, 0.0f,     0.0f,
-},
-{   0, 0,
-    0.0f, 0.0f, 0.0f,
-    0.0f, 0.0f, 0.0f,
-}},
-0, 0
-},
-{
-{{  0x1000D, 0x258,
-    0.0f, 190.0f,    0.0f,
-    0.0f, 200.0f, 1000.0f
-},
-{   0x10000, 0,
-    -1380.0f, 600.0f, 0.0f,
-        0.0f,   0.0f, 0.0f,
-},
-{   0, 0,
-    0.0f, 0.0f, 0.0f,
-    0.0f, 0.0f, 0.0f,
-}},
-0, 0
-},
-{
-{{  0x2000C, 0x258,
-    0.0f, 190.0f,    0.0f,
-    0.0f, 200.0f, 1000.0f
-},
-{   0x10000, 0,
-    -1880.0f, 0.0f, 0.0f,
-        0.0f, 0.0f, 0.0f,
-},
-{   0, 0,
-    0.0f, 0.0f, 0.0f,
-    0.0f, 0.0f, 0.0f,
-}},
-0, 0
-},
-{
-{{  0x30017, 0x258,
-    0.0f, 190.0f,    0.0f,
-    0.0f, 200.0f, 1000.0f
-},
-{   0x10000, 0,
-    18810.0f, -1000.0f, 7900.0f,
-        0.0f,     0.0f,    0.0f
-},
-{   0, 0,
-    0.0f, 0.0f, 0.0f,
-    0.0f, 0.0f, 0.0f,
-}},
-0, 0
-},
-{
-{{  0x30019, 0x258,
-    0.0f, 190.0f,    0.0f,
-    0.0f, 200.0f, 1000.0f
-},
-{   0x10000, 0,
-    12452.0f, 200.0f, 7397.0f,
-        0.0f,   0.0f,    0.0f
-},
-{   0, 0,
-    0.0f, 0.0f, 0.0f,
-    0.0f, 0.0f, 0.0f,
-}},
-0, 0
-},
-{
-{{  0x40008, 0x258,
-    0.0f, 190.0f,    0.0f,
-    0.0f, 200.0f, 1000.0f
-},
-{   0x10000, 0,
-    1851.0f, 0.0f, -990.0f,
-       0.0f, 0.0f,    0.0f
-},
-{   0, 0,
-    0.0f, 0.0f, 0.0f,
-    0.0f, 0.0f, 0.0f,
-}},
-0, 0
-},
-{
-{{  0x50012, 0x258,
-    0.0f, 190.0f,    0.0f,
-    0.0f, 200.0f, 1000.0f
-},
-{   0x10000, 0,
-    1380.0f, 0.0f, 0.0f,
-       0.0f, 0.0f, 0.0f
-},
-{   0, 0,
-    0.0f, 0.0f, 0.0f,
-    0.0f, 0.0f, 0.0f,
-}},
-0, 0
-},
-{
-{{  0x50006, 0x258,
-    0.0f, 190.0f,    0.0f,
-    0.0f, 200.0f, 1000.0f
-},
-{   0x10000, 0,
-    -2410.0f, 200.0f, 708.0f,
-        0.0f,   0.0f,   0.0f
-},
-{   0, 0,
-    0.0f, 0.0f, 0.0f,
-    0.0f, 0.0f, 0.0f,
-}},
-0, 0
-},
-{
-{{  0xE0002, 0x384,
-    0.0f, 190.0f,    0.0f,
-    0.0f, 200.0f, 1000.0f
-},
-{   0x10000, 0,
-      0.0f, 0.0f, -400.0f,
-    180.0f, 0.0f,    0.0f
-},
-{   0, 0,
-    0.0f, 0.0f, 0.0f,
-    0.0f, 0.0f, 0.0f,
-}},
-0, 0
-},
-{
-{{  0xFFFF0000, 0,
-    0.0f, 190.0f,    0.0f,
-    0.0f, 200.0f, 1000.0f
-},
-{   0x10000, 0,
-    0.0f, 0.0f, 0.0f,
-    0.0f, 0.0f, 0.0f,
-},
-{   0, 0,
-    0.0f, 0.0f, 0.0f,
-    0.0f, 0.0f, 0.0f,
-}},
-0, 0
-}
+    {
+        {{  0, 0x78,
+                -7500.0f, 9290.0f, -400.0f,
+                -8400.0f, 9290.0f, -400.0f
+            },
+            {   0x10000, 0,
+                -7500.0f, 9000.0f, -800.0f,
+                270.0f,    0.0f,    0.0f,
+            },
+            {   0, 0,
+                0.0f, 0.0f, 0.0f,
+                0.0f, 0.0f, 0.0f,
+        }},
+        0, 0
+    },
+    {
+        {{  0x10013, 0x78,
+                50.0f, 290.0f,    0.0f,
+                50.0f, 290.0f, 1000.0f
+            },
+            {   0x10000, 0,
+                -500.0f, 0.0f, 0.0f,
+                0.0f, 0.0f, 0.0f,
+            },
+            {   0, 0,
+                0.0f, 0.0f, 0.0f,
+                0.0f, 0.0f, 0.0f,
+        }},
+        0, 0
+    },
+    {
+        {{  0x2000E, 0x78,
+                375.0f, 290.0f,    0.0f,
+                375.0f, 290.0f, 1000.0f
+            },
+            {   0x10000, 0,
+                -150.0f, 0.0f, 0.0f,
+                0.0f, 0.0f, 0.0f,
+            },
+            {   0, 0,
+                0.0f, 0.0f, 0.0f,
+                0.0f, 0.0f, 0.0f,
+        }},
+        0, 0
+    },
+    {
+        {{  0x30000, 0x78,
+                700.0f, 5290.0f,    0.0f,
+                700.0f, 5290.0f, 1000.0f
+            },
+            {   0x10000, 0,
+                150.0f, 5000.0f, 0.0f,
+                0.0f,    0.0f, 0.0f,
+            },
+            {   0, 0,
+                0.0f, 0.0f, 0.0f,
+                0.0f, 0.0f, 0.0f,
+        }},
+        0, 0
+    },
+    {
+        {{  0x40010, 0x78,
+                50.0f, 290.0f,    0.0f,
+                50.0f, 290.0f, 1000.0f
+            },
+            {   0x10000, 0,
+                -300.0f, 0.0f, 0.0f,
+                0.0f, 0.0f, 0.0f,
+            },
+            {   0, 0,
+                0.0f, 0.0f, 0.0f,
+                0.0f, 0.0f, 0.0f,
+        }},
+        0, 0
+    },
+    {
+        {{  0x50013, 0x78,
+                500.0f, 290.0f,    0.0f,
+                500.0f, 290.0f, 1000.0f
+            },
+            {   0x10000, 0,
+                0.0f, 0.0f, 0.0f,
+                0.0f, 0.0f, 0.0f,
+            },
+            {   0, 0,
+                0.0f, 0.0f, 0.0f,
+                0.0f, 0.0f, 0.0f,
+        }},
+        0, 0
+    },
+    {
+        {{  0x10004, 0x78,
+                0.0f, 290.0f,    0.0f,
+                0.0f, 290.0f, 1000.0f
+            },
+            {   0x10000, 0,
+                -300.0f, 0.0f, 0.0f,
+                0.0f, 0.0f, 0.0f,
+            },
+            {   0, 0,
+                0.0f, 0.0f, 0.0f,
+                0.0f, 0.0f, 0.0f,
+        }},
+        0, 0
+    },
+    {
+        {{  9, 0x0258,
+                0.0f, 190.0f,    0.0f,
+                0.0f, 200.0f, 1000.0f
+            },
+            {   0x10000, 0,
+                12216.0f, 600.0f, -18535.0f,
+                0.0f,   0.0f,      0.0f,
+            },
+            {   0, 0,
+                0.0f, 0.0f, 0.0f,
+                0.0f, 0.0f, 0.0f,
+        }},
+        0, 0
+    },
+    {
+        {{  0x10010, 0x258,
+                0.0f, 190.0f,    0.0f,
+                0.0f, 200.0f, 1000.0f
+            },
+            {   0x10000, 0,
+                0.0f, 0.0f, -1380.0f,
+                0.0f, 0.0f,     0.0f,
+            },
+            {   0, 0,
+                0.0f, 0.0f, 0.0f,
+                0.0f, 0.0f, 0.0f,
+        }},
+        0, 0
+    },
+    {
+        {{  0x1000D, 0x258,
+                0.0f, 190.0f,    0.0f,
+                0.0f, 200.0f, 1000.0f
+            },
+            {   0x10000, 0,
+                -1380.0f, 600.0f, 0.0f,
+                0.0f,   0.0f, 0.0f,
+            },
+            {   0, 0,
+                0.0f, 0.0f, 0.0f,
+                0.0f, 0.0f, 0.0f,
+        }},
+        0, 0
+    },
+    {
+        {{  0x2000C, 0x258,
+                0.0f, 190.0f,    0.0f,
+                0.0f, 200.0f, 1000.0f
+            },
+            {   0x10000, 0,
+                -1880.0f, 0.0f, 0.0f,
+                0.0f, 0.0f, 0.0f,
+            },
+            {   0, 0,
+                0.0f, 0.0f, 0.0f,
+                0.0f, 0.0f, 0.0f,
+        }},
+        0, 0
+    },
+    {
+        {{  0x30017, 0x258,
+                0.0f, 190.0f,    0.0f,
+                0.0f, 200.0f, 1000.0f
+            },
+            {   0x10000, 0,
+                18810.0f, -1000.0f, 7900.0f,
+                0.0f,     0.0f,    0.0f
+            },
+            {   0, 0,
+                0.0f, 0.0f, 0.0f,
+                0.0f, 0.0f, 0.0f,
+        }},
+        0, 0
+    },
+    {
+        {{  0x30019, 0x258,
+                0.0f, 190.0f,    0.0f,
+                0.0f, 200.0f, 1000.0f
+            },
+            {   0x10000, 0,
+                12452.0f, 200.0f, 7397.0f,
+                0.0f,   0.0f,    0.0f
+            },
+            {   0, 0,
+                0.0f, 0.0f, 0.0f,
+                0.0f, 0.0f, 0.0f,
+        }},
+        0, 0
+    },
+    {
+        {{  0x40008, 0x258,
+                0.0f, 190.0f,    0.0f,
+                0.0f, 200.0f, 1000.0f
+            },
+            {   0x10000, 0,
+                1851.0f, 0.0f, -990.0f,
+                0.0f, 0.0f,    0.0f
+            },
+            {   0, 0,
+                0.0f, 0.0f, 0.0f,
+                0.0f, 0.0f, 0.0f,
+        }},
+        0, 0
+    },
+    {
+        {{  0x50012, 0x258,
+                0.0f, 190.0f,    0.0f,
+                0.0f, 200.0f, 1000.0f
+            },
+            {   0x10000, 0,
+                1380.0f, 0.0f, 0.0f,
+                0.0f, 0.0f, 0.0f
+            },
+            {   0, 0,
+                0.0f, 0.0f, 0.0f,
+                0.0f, 0.0f, 0.0f,
+        }},
+        0, 0
+    },
+    {
+        {{  0x50006, 0x258,
+                0.0f, 190.0f,    0.0f,
+                0.0f, 200.0f, 1000.0f
+            },
+            {   0x10000, 0,
+                -2410.0f, 200.0f, 708.0f,
+                0.0f,   0.0f,   0.0f
+            },
+            {   0, 0,
+                0.0f, 0.0f, 0.0f,
+                0.0f, 0.0f, 0.0f,
+        }},
+        0, 0
+    },
+    {
+        {{  0xE0002, 0x384,
+                0.0f, 190.0f,    0.0f,
+                0.0f, 200.0f, 1000.0f
+            },
+            {   0x10000, 0,
+                0.0f, 0.0f, -400.0f,
+                180.0f, 0.0f,    0.0f
+            },
+            {   0, 0,
+                0.0f, 0.0f, 0.0f,
+                0.0f, 0.0f, 0.0f,
+        }},
+        0, 0
+    },
+    {
+        {{  0xFFFF0000, 0,
+                0.0f, 190.0f,    0.0f,
+                0.0f, 200.0f, 1000.0f
+            },
+            {   0x10000, 0,
+                0.0f, 0.0f, 0.0f,
+                0.0f, 0.0f, 0.0f,
+            },
+            {   0, 0,
+                0.0f, 0.0f, 0.0f,
+                0.0f, 0.0f, 0.0f,
+        }},
+        0, 0
+    }
 };
 
 
@@ -1775,7 +1798,7 @@ letterDef* D_80100F28[] = {
     NULL,
 };
 
-unk80100F50 D_80100F50[] = {
+loadedSegInfo gLoadedSegments [] = {
     {(u32) bootproc, (u32) assets0_VRAM},
     {(u32) assets0_VRAM, (u32) static0_VRAM_END},
     {NULL, NULL},
@@ -1865,236 +1888,236 @@ s32 AmountOfCredits_pad = 0;
 
 //this formatting is atrocious please bear with me
 PlayerInit gPlayerInits[10] = {
- {4090, 68, 0, {0, {26.2847900390625f, 0.0f, -1401.450439453125f},
- {13.54901123046875f, 0.0f, -1400.6544189453125f},
- 0.0f, -1.0f, {12.73577880859375f, -13.754118919372559f, -0.7960205078125f},
- {0.0f, 0.0f, 0.0f},
- 3.576324462890625f, 12.760629653930664f, 0.320000022649765f, 1.0f, 30.0f, 150.0f, 0, 1, 10, 0, 0, 0, 0, 1.0f, 0, 0, 0, -1, 0, 7, 0, 26.2847900390625f, 0.0f, -1.450439453125f, {0.0f, 0.0f, 0.0f},
- {0.0f, 0.0f, 0.0f},
- 1, 91.34614562988281f, 0, 0, 0, 10, 0, 0, 0, 0, {377.59930419921875f, 776.8203125f, 1176.0413818359375f, 1575.262451171875f, -1423.4075927734375f, -1448.3587646484375f},
- {-1473.31005859375f, -1498.26123046875f},
- -243, {1.0f, 0.0f, 0.0f},
- 0.0f, 0.0f, 1, 1, 0, 0, 0, 60.0f, 50.0f},
- {0, 0, 0, 0, 0, 0, {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
- {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
- {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
- {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
- {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
- {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
- {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
- 0.0f, 0.0f, 0.0f, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
- 0, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
- 0, {0.0f},
- 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0, 0.0f, 0, 0, 0},
- {0x00, 0x00, 0x00, 0x01, 0x43, 0x90, 0xF5, 0x83, 0x43, 0x87, 0x00, 0x00, 0x42, 0x3C, 0x6D, 0xC2, 0x42, 0x87, 0x4A, 0x3E, 0xC4, 0xA2, 0xA3, 0xA1, 0x40, 0x9A, 0xEF, 0x7F, 0x43, 0x9F, 0xD2, 0xF0, 0x44, 0x17, 0x35, 0xDF, 0xC4, 0x09, 0x3E, 0x00, 0x42, 0x3C, 0x6D, 0xC2, 0x44, 0x1E, 0xC1, 0x78, 0xC3, 0x9F, 0x31, 0x66, 0x42, 0x3C, 0x6D, 0xC2, 0x42, 0x87, 0x4A, 0x3E, 0xC4, 0xA2, 0xA3, 0xA1, 0x00, 0x00, 0x00, 0x00, 0x3F, 0x80, 0x00, 0x00, 0x3F, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x43, 0x34, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00},
- 0, 0, 1},
- {3716, 77, 0, {0, {20.0f, 0.0f, 620.0f},
- {20.0f, 0.0f, 620.0f},
- 0.0f, -1.0f, {0.0f, -13.754118919372559f, 0.0f},
- {0.0f, 0.0f, 0.0f},
- 312.9129943847656f, 0.0f, 0.320000022649765f, 1.0f, 30.0f, 150.0f, 0, 1, 10, 0, 0, 0, 0, 1.0f, 0, 0, 2, -1, 0, 7, 0, 20.0f, 0.0f, 20.0f, {0.0f, 0.0f, 0.0f},
- {0.0f, 0.0f, 0.0f},
- 0, 267.03759765625f, 0, 0, 0, 10, 0, 0, 0, 0, {63.576759338378906f, 335.9315185546875f, 608.2862548828125f, 880.6409912109375f, 666.8728637695312f, 959.8283081054688f},
- {1252.78369140625f, 1545.7392578125f},
- -626, {1.0f, 0.0f, 0.0f},
- 0.0f, 0.0f, 1, 1, 0, 0, 0, 60.0f, 50.0f},
- {0, 0, 0, 0, 0, 0, {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
- {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
- {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
- {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
- {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
- {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
- {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
- 0.0f, 0.0f, 0.0f, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
- 0, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
- 0, {0.0f},
- 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0, 0.0f, 0, 0, 0},
- {0x00, 0x00, 0x00, 0x01, 0x43, 0x62, 0x55, 0x89, 0x43, 0x87, 0x00, 0x00, 0x41, 0x95, 0x94, 0x65, 0x42, 0x81, 0x95, 0xF4, 0x44, 0x02, 0xBC, 0x2C, 0x40, 0x25, 0xDF, 0x3A, 0xC4, 0x05, 0x6A, 0x7E, 0x44, 0x16, 0xA5, 0xDF, 0x44, 0x89, 0xB4, 0x93, 0x41, 0x95, 0x94, 0x65, 0x43, 0xD1, 0x9E, 0xDA, 0x44, 0x8E, 0x1B, 0x99, 0x41, 0x95, 0x94, 0x65, 0x42, 0x81, 0x95, 0xF4, 0x44, 0x02, 0xBC, 0x2C, 0x00, 0x00, 0x00, 0x00, 0x3F, 0x80, 0x00, 0x00, 0x3F, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x38, 0x43, 0x34, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00},
- 0, 0, 10},
- {2866, 47, 0, {0, {1.31561279296875f, 0.0f, 696.3430786132812f},
- {1.31561279296875f, 0.0f, 696.3430786132812f},
- 0.0f, -1.0f, {0.0f, -13.754118919372559f, 0.0f},
- {-31.795303344726562f, 20.247161865234375f, -10.876914978027344f},
- 40.149383544921875f, 0.0f, 0.320000022649765f, 1.0f, 30.0f, 150.0f, 0, 1, 10, 0, 0, 0, 0, 1.0f, 0, 0, 2, -1, 0, 7, 0, 1.31561279296875f, 0.0f, -3.65692138671875f, {0.0f, 0.0f, 0.0f},
- {0.0f, 0.0f, 0.0f},
- 0, 683.8077392578125f, 0, 0, 0, 10, 0, 0, 0, 0, {111.38431549072266f, 417.1307067871094f, 722.8770751953125f, 1028.62353515625f, 603.494384765625f, 345.581298828125f},
- {87.66827392578125f, -170.24481201171875f},
- -1446, {1.0f, 0.0f, 0.0f},
- 0.0f, 0.0f, 1, 1, 0, 0, 0, 60.0f, 50.0f},
- {0, 1, 10, 0, 0, 10, {11.465489387512207f, 45.86195755004883f, 90.57988739013672f, 135.16046142578125f, 179.48687744140625f, 222.97657775878906f, 264.0537109375f, 301.9752197265625f, 338.2799072265625f, 373.91058349609375f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
- {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
- {-9.67173957824707f, -38.68695831298828f, -43.71753692626953f, -49.847145080566406f, -57.603973388671875f, -69.16449737548828f, -87.54025268554688f, -111.76747131347656f, -138.35635375976562f, -165.84188842773438f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
- {40.149383544921875f, 6.418548583984375f, 7.82879638671875f, 9.925872802734375f, 14.88623046875f, 24.101226806640625f, 32.5736083984375f, 36.218353271484375f, 37.646636962890625f, 37.646636962890625f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
- {15.0f, 60.0f, 100.57801818847656f, 144.059326171875f, 188.50399780273438f, 233.4572296142578f, 278.1863708496094f, 321.9953308105469f, 365.4801940917969f, 409.0386962890625f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
- {28.66372299194336f, 68.2209243774414f, 112.87017822265625f, 157.32366943359375f, 201.2317352294922f, 243.51515197753906f, 283.01446533203125f, 320.1275634765625f, 356.0952453613281f, 391.7259216308594f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
- {-24.179349899291992f, -41.202247619628906f, -46.78234100341797f, -53.72555923461914f, -63.38423538208008f, -78.35237121582031f, -99.65386199951172f, -125.0619125366211f, -152.09912109375f, -179.58465576171875f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
- 336.0821228027344f, 409.0386962890625f, 42.526275634765625f, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
- 0, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
- 0, {39.015785217285156f},
- 34.68069839477539f, 30.345609664916992f, 26.010522842407227f, 21.67543601989746f, 17.340349197387695f, 13.005261421203613f, 8.670174598693848f, 4.335087299346924f, 0.0f, 341.1146240234375f, 20.80000114440918f, 138.8479766845703f, 329.2213134765625f, 47.49870300292969f, 24, 0.0f, 0, 0, 0},
- {0x00, 0x00, 0x00, 0x01, 0x43, 0x21, 0x64, 0x40, 0x43, 0x87, 0x00, 0x00, 0x42, 0x36, 0xA0, 0xEA, 0x44, 0x54, 0x83, 0x70, 0x44, 0x06, 0xFF, 0x17, 0x44, 0x08, 0x60, 0x6B, 0xC4, 0x3E, 0x8E, 0x96, 0x44, 0x92, 0xF3, 0x1B, 0x43, 0x85, 0xFC, 0x3E, 0x42, 0x36, 0xA0, 0xEA, 0x44, 0x9A, 0x10, 0x5B, 0x44, 0x96, 0x4D, 0x7C, 0x42, 0x36, 0xA0, 0xEA, 0x44, 0x54, 0x83, 0x70, 0x44, 0x06, 0xFF, 0x17, 0x00, 0x00, 0x00, 0x00, 0x3F, 0x80, 0x00, 0x02, 0x3F, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x43, 0x34, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00},
- 0, 0, 15},
- {2286, 158, 0, {0, {2043.54736328125f, 0.0f, -55.4671630859375f},
- {2059.941650390625f, 0.0f, -42.6661376953125f},
- 0.0f, -1.0f, {-16.394287109375f, -13.754118919372559f, -12.801025390625f},
- {-31.795303344726562f, 20.247161865234375f, -10.876914978027344f},
- 142.0166015625f, 20.80000114440918f, 0.320000022649765f, 1.0f, 30.0f, 150.0f, 0, 1, 10, 0, 0, 0, 0, 1.0f, 0, 0, 2, -1, 0, 20, 0, 2043.54736328125f, 0.0f, -55.4671630859375f, {0.0f, 0.0f, 0.0f},
- {0.0f, 0.0f, 0.0f},
- 2, 927.9891357421875f, -1, 0, 0, 10, 0, 0, 0, 0, {1753.4937744140625f, 1438.2181396484375f, 1122.942626953125f, 807.6668701171875f, -281.9465637207031f, -528.1198120117188f},
- {-774.2930908203125f, -1020.4663696289062f},
- 4, {2.0f, 0.0f, 0.0f},
- 0.0f, 0.0f, 1, 1, 0, 0, 0, 60.0f, 50.0f},
- {0, 0, 0, 0, 0, 0, {-1.8999097347259521f, -7.599638938903809f, -15.403757095336914f, -23.231719970703125f, -31.032169342041016f, -38.82360076904297f, -46.65592575073242f, -54.49021911621094f, -62.313106536865234f, -70.12788391113281f, -77.94017791748047f, -85.74919128417969f, -93.55890655517578f, -101.36884307861328f, -109.17896270751953f, -116.9876708984375f, -124.79508972167969f, -132.60073852539062f, -140.40530395507812f, -158.01840209960938f, -184.6678924560547f, -213.281494140625f, -241.99771118164062f, -270.8002624511719f, -299.5953063964844f, -328.019775390625f, -347.883056640625f, -355.7592468261719f, -363.44580078125f, -371.3194885253906f, 0.0f, 0.0f, -340.96142578125f},
- {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
- {14.879195213317871f, 59.516780853271484f, 103.83453369140625f, 148.14883422851562f, 192.4672393798828f, 236.78746032714844f, 281.1007995605469f, 325.4138488769531f, 369.72857666015625f, 414.04486083984375f, 458.36151123046875f, 502.6787109375f, 546.9957275390625f, 591.31298828125f, 635.6302490234375f, 679.9472045898438f, 724.2647705078125f, 768.5823364257812f, 812.90087890625f, 854.31005859375f, 890.5851440429688f, 925.3368530273438f, 959.951416015625f, 994.5444946289062f, 1029.1378173828125f, 1064.0218505859375f, 1104.3955078125f, 1148.692626953125f, 1193.0482177734375f, 1237.34619140625f, 0.0f, 0.0f, 1324.5211181640625f},
- {-97.27371215820312f, -100.0f, -100.0f, -100.0f, -100.0f, -100.0f, -100.0f, -100.0f, -100.0f, -100.0f, -100.0f, -100.0f, -100.0f, -100.0f, -100.0f, -100.0f, -100.0f, -100.0f, -113.04522705078125f, -126.27313232421875f, -129.42703247070312f, -129.7437744140625f, -129.7437744140625f, -129.7437744140625f, -129.179931640625f, -116.2315673828125f, -100.0f, -100.0f, -100.0f, -70.82520294189453f, 0.0f, 0.0f, -70.82556915283203f},
- {15.0f, 60.0f, 104.97089385986328f, 149.95925903320312f, 194.95298767089844f, 239.94906616210938f, 284.9463806152344f, 329.9444580078125f, 374.9429626464844f, 419.9418029785156f, 464.94085693359375f, 509.9400939941406f, 554.939453125f, 599.9389038085938f, 644.9384155273438f, 689.9380493164062f, 734.9376831054688f, 779.9373168945312f, 824.9370727539062f, 868.8014526367188f, 909.5294799804688f, 949.5985107421875f, 989.984375f, 1030.7525634765625f, 1071.859375f, 1113.4356689453125f, 1157.8912353515625f, 1202.5220947265625f, 1247.1795654296875f, 1291.8607177734375f, 0.0f, 0.0f},
- {-4.74977445602417f, -11.501697540283203f, -19.317737579345703f, -27.13194465637207f, -34.927886962890625f, -42.73976135253906f, -50.57307434082031f, -58.40166473388672f, -66.22049713134766f, -74.03402709960938f, -81.84468078613281f, -89.654052734375f, -97.46387481689453f, -105.2739028930664f, -113.08331298828125f, -120.8913803100586f, -128.69790649414062f, -136.50302124023438f, -149.21185302734375f, -171.3431396484375f, -198.97470092773438f, -227.6396026611328f, -256.39898681640625f, -285.1977844238281f, -313.80755615234375f, -337.951416015625f, -351.8211669921875f, -359.6025390625f, -367.38262939453125f, -371.037353515625f, 0.0f, 0.0f},
- {37.1979866027832f, 81.6756591796875f, 125.99168395996094f, 170.30804443359375f, 214.62734985351562f, 258.9441223144531f, 303.25732421875f, 347.57122802734375f, 391.88671875f, 436.20318603515625f, 480.5201110839844f, 524.8372192382812f, 569.1543579101562f, 613.4716186523438f, 657.7886962890625f, 702.10595703125f, 746.423583984375f, 790.7415771484375f, 833.60546875f, 872.4476318359375f, 907.9609985351562f, 942.6441650390625f, 977.2479248046875f, 1011.8411865234375f, 1046.579833984375f, 1084.208740234375f, 1126.5440673828125f, 1170.870361328125f, 1215.197265625f, 1238.211669921875f, 0.0f, 0.0f},
- -97.27371215820312f, 0.0f, 78.99539184570312f, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
- 0, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
- 0, {39.015785217285156f},
- 34.68069839477539f, 30.345609664916992f, 26.010522842407227f, 21.67543601989746f, 17.340349197387695f, 13.005261421203613f, 8.670174598693848f, 4.335087299346924f, 0.0f, 341.1146240234375f, 20.80000114440918f, 138.8479766845703f, 329.2213134765625f, 47.49870300292969f, 24, 1.8456820249557495f, 0, -1, 0},
- {0x00, 0x00, 0x00, 0x01, 0x42, 0xDC, 0x9C, 0x3D, 0x43, 0x87, 0x00, 0x00, 0x44, 0xEA, 0x02, 0x80, 0x42, 0x74, 0x2A, 0xDE, 0xC3, 0x23, 0xBE, 0x58, 0x3F, 0x0D, 0x0B, 0x67, 0x44, 0xC7, 0x4E, 0xCA, 0x44, 0x16, 0x23, 0x45, 0xC4, 0x64, 0x81, 0xEA, 0x44, 0xEA, 0x02, 0x80, 0x43, 0xF6, 0x18, 0x33, 0x44, 0x11, 0xC1, 0x9F, 0x44, 0xEA, 0x02, 0x80, 0x42, 0x74, 0x2A, 0xDE, 0xC3, 0x23, 0xBE, 0x58, 0x00, 0x00, 0x00, 0x00, 0x3F, 0x80, 0x00, 0x02, 0x3F, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x43, 0x34, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00},
- 0, 0, 20},
- {1555, 48, 0, {0, {1700.0f, 0.0f, 0.0f},
- {1700.0f, 0.0f, 0.0f},
- 0.0f, -1.0f, {0.0f, -13.754118919372559f, 0.0f},
- {-31.795303344726562f, 20.247161865234375f, -10.876914978027344f},
- 74.5086669921875f, 0.0f, 0.320000022649765f, 1.0f, 30.0f, 150.0f, 0, 1, 10, 0, 0, 0, 0, 1.0f, 0, 0, 2, -1, 0, 18, 0, 0.0f, 0.0f, 0.0f, {0.0f, 0.0f, 0.0f},
- {0.0f, 0.0f, 0.0f},
- 0, 1263.68115234375f, -1, 0, 0, 10, 0, 0, 0, 0, {1729.9144287109375f, 1836.75146484375f, 1943.58837890625f, 2050.425537109375f, -107.93114471435547f, -493.3995056152344f},
- {-878.8678588867188f, -1264.336181640625f},
- -86, {1.0f, 0.0f, 0.0f},
- 0.0f, 0.0f, 1, 1, 0, 0, 0, 60.0f, 50.0f},
- {0, 0, 0, 0, 0, 0, {-14.908260345458984f, -59.63304138183594f, -104.41517639160156f, -149.41517639160156f, -194.41517639160156f, -239.41517639160156f, -284.4151611328125f, -328.92938232421875f, -371.72607421875f, -412.0799255371094f, -448.25799560546875f, -479.1686706542969f, -509.3229064941406f, -537.6637573242188f, -558.6005859375f, -568.248779296875f, -568.248779296875f, -568.248779296875f, -564.5556030273438f, -560.8624267578125f, -557.1692504882812f, -553.47607421875f, -553.47607421875f, -553.47607421875f, -448.1075439453125f, -492.62176513671875f, -536.4039916992188f, -579.1486206054688f, -619.817138671875f, -656.2980346679688f, -688.3527221679688f, -720.4074096679688f, -340.96142578125f},
- {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
- {1.6564314365386963f, 6.625725746154785f, 11.048418045043945f, 11.048421859741211f, 11.048425674438477f, 11.048429489135742f, 11.048433303833008f, 4.45414400100708f, -9.454265594482422f, -29.368223190307617f, -56.12913513183594f, -88.83280181884766f, -122.23521423339844f, -157.18942260742188f, -197.02218627929688f, -240.9757080078125f, -285.9757080078125f, -330.9757080078125f, -375.82391357421875f, -420.672119140625f, -465.52032470703125f, -510.3685302734375f, -555.3685302734375f, -600.3685302734375f, -501.5859375f, -494.99163818359375f, -484.59375f, -470.5260925292969f, -451.26287841796875f, -424.916259765625f, -393.3330993652344f, -361.74993896484375f, 1324.5211181640625f},
- {186.34002685546875f, 185.6402587890625f, 180.0f, 180.0f, 180.0f, 180.0f, 171.57354736328125f, 161.9964599609375f, 153.73443603515625f, 143.50967407226562f, 133.38552856445312f, 132.0743408203125f, 129.03509521484375f, 117.72723388671875f, 102.380615234375f, 90.0f, 90.0f, 85.29238891601562f, 85.29238891601562f, 85.29238891601562f, 85.29238891601562f, 90.0f, 90.0f, 90.0f, 188.42645263671875f, 193.3597412109375f, 198.21685791015625f, 205.34521484375f, 215.8369140625f, 224.575439453125f, 224.575439453125f, 224.575439453125f, -70.82556915283203f},
- {15.0f, 59.999996185302734f, 104.99807739257812f, 149.82310485839844f, 194.72885131835938f, 239.6699676513672f, 284.6296691894531f, 328.95953369140625f, 371.8463134765625f, 413.1251220703125f, 451.75848388671875f, 487.33343505859375f, 523.7855224609375f, 560.1703491210938f, 592.3279418945312f, 617.2324829101562f, 636.1515502929688f, 657.6105346679688f, 678.2083740234375f, 701.0932006835938f, 726.0487060546875f, 752.8690185546875f, 784.0726928710938f, 816.5648193359375f, 672.5985717773438f, 698.3501586914062f, 722.8833618164062f, 746.1956176757812f, 766.6886596679688f, 781.8445434570312f, 792.8053588867188f, 806.1326904296875f},
- {-37.270652770996094f, -82.02410888671875f, -126.91517639160156f, -171.91517639160156f, -216.91517639160156f, -261.9151611328125f, -306.6722717285156f, -350.3277282714844f, -391.90301513671875f, -430.1689758300781f, -463.7133483886719f, -494.24578857421875f, -523.4933471679688f, -548.1321411132812f, -563.4246826171875f, -568.248779296875f, -568.248779296875f, -566.4021606445312f, -562.708984375f, -559.0158081054688f, -555.3226318359375f, -553.47607421875f, -553.47607421875f, -553.47607421875f, -470.3646545410156f, -514.5128784179688f, -557.7763061523438f, -599.48291015625f, -638.0576171875f, -672.3253784179688f, -704.3800659179688f, -736.4347534179688f},
- {4.141078948974609f, 8.837072372436523f, 11.048419952392578f, 11.048423767089844f, 11.04842758178711f, 11.048431396484375f, 7.751288414001465f, -2.50006103515625f, -19.411243438720703f, -42.748680114746094f, -72.48097229003906f, -105.53401184082031f, -139.7123260498047f, -177.10580444335938f, -218.9989471435547f, -263.4757080078125f, -308.4757080078125f, -353.3998107910156f, -398.2480163574219f, -443.0962219238281f, -487.9444274902344f, -532.8685302734375f, -577.8685302734375f, -622.8685302734375f, -498.2887878417969f, -489.7926940917969f, -477.5599365234375f, -460.8945007324219f, -438.0895690917969f, -409.12469482421875f, -377.5415344238281f, -345.9583740234375f},
- 186.34002685546875f, 0.0f, 104.2652587890625f, {13, 15, 22, 23, 19, 18, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
- 0, {13, 15, 22, 23, 19, 18, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
- 0, {39.015785217285156f},
- 34.68069839477539f, 30.345609664916992f, 26.010522842407227f, 21.67543601989746f, 17.340349197387695f, 13.005261421203613f, 8.670174598693848f, 4.335087299346924f, 0.0f, 341.1146240234375f, 20.80000114440918f, 138.8479766845703f, 329.2213134765625f, 47.49870300292969f, 24, 1.8456820249557495f, 0, -1, 0},
- {0x00, 0x00, 0x00, 0x01, 0x43, 0x56, 0x42, 0x40, 0x43, 0x87, 0x00, 0x00, 0x44, 0xA8, 0x94, 0xD7, 0x42, 0x43, 0x5C, 0xCC, 0x41, 0x94, 0x17, 0x43, 0x3F, 0xCF, 0x10, 0x8E, 0x43, 0xF4, 0x8B, 0x3E, 0x44, 0x43, 0x67, 0x85, 0x44, 0x16, 0xFD, 0x73, 0x44, 0xA8, 0x94, 0xD7, 0x44, 0x35, 0x70, 0x9F, 0x44, 0x94, 0xDF, 0x07, 0x44, 0xA8, 0x94, 0xD7, 0x42, 0x43, 0x5C, 0xCC, 0x41, 0x94, 0x17, 0x43, 0x00, 0x00, 0x00, 0x01, 0x3F, 0xA6, 0x66, 0x64, 0x3F, 0xA6, 0x66, 0x66, 0x00, 0x00, 0x00, 0x51, 0x43, 0x34, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00},
- 0, 0, 23},
- {1119, 216, 0, {0, {9.81707763671875f, 0.0f, 2292.763916015625f},
- {9.322021484375f, 0.0f, 2313.55810546875f},
- 0.0f, -1.0f, {0.49505615234375f, -13.754118919372559f, -20.794189453125f},
- {-22.704818725585938f, 22.272003173828125f, 0.8305773735046387f},
- 88.63616943359375f, 20.80000114440918f, 0.320000022649765f, 1.0f, 30.0f, 150.0f, 0, 1, 10, 0, 0, 0, 0, 1.0f, 0, 0, 11, -1, 0, 20, 0, 9.81707763671875f, 0.0f, 2292.763916015625f, {0.0f, 0.0f, 0.0f},
- {0.0f, 0.0f, 0.0f},
- 2, 1988.731689453125f, -1, 0, 0, 10, 0, 0, 0, 0, {12.482796669006348f, 22.00322151184082f, 31.52364730834961f, 41.044071197509766f, 2180.795654296875f, 1780.908935546875f},
- {1381.022216796875f, 981.1356201171875f},
- -1336, {1.0f, 0.0f, 0.0f},
- 0.0f, 0.0f, 1, 1, 0, 0, 0, 60.0f, 50.0f},
- {0, 0, 0, 0, 0, 0, {-15.0f, -45.0f, -45.0f, -45.0f, -45.0f, -45.0f, -45.0f, -45.0f, -45.0f, -45.0f, -45.0f, -45.0f, -45.0f, -45.0f, -45.0f, -45.0f, -45.0f, -90.0f, -135.0f, -180.0f, -225.0f, -553.47607421875f, -553.47607421875f, -553.47607421875f, -448.1075439453125f, -492.62176513671875f, -536.4039916992188f, -579.1486206054688f, -619.817138671875f, -656.2980346679688f, -688.3527221679688f, -720.4074096679688f, -327.177734375f},
- {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
- {1.3113416343912832e-06f, 3.934024789487012e-06f, 3.9340256989817135e-06f, 3.934024789487012e-06f, 3.93402387999231e-06f, 3.934024789487012e-06f, 3.9340256989817135e-06f, 3.934022970497608e-06f, 3.9340256989817135e-06f, 3.934022970497608e-06f, 3.93402387999231e-06f, 3.934022970497608e-06f, 3.934022061002906e-06f, 3.934022970497608e-06f, 3.93402387999231e-06f, 3.934022970497608e-06f, 3.934029336960521e-06f, 7.868052307458129e-06f, 1.1802083463408053e-05f, 1.573610643390566e-05f, 1.967012940440327e-05f, -510.3685302734375f, -555.3685302734375f, -600.3685302734375f, -501.5859375f, -494.99163818359375f, -484.59375f, -470.5260925292969f, -451.26287841796875f, -424.916259765625f, -393.3330993652344f, -361.74993896484375f, -36.218570709228516f},
- {180.0f, 180.0f, 180.0f, 180.0f, 180.0f, 180.0f, 180.0f, 180.0f, 180.0f, 180.0f, 180.0f, 180.0f, 180.0f, 180.0f, 180.0f, 180.0f, 180.0f, 180.0f, 180.0f, 180.0f, 160.48312377929688f, 90.0f, 90.0f, 90.0f, 188.42645263671875f, 193.3597412109375f, 198.21685791015625f, 205.34521484375f, 215.8369140625f, 224.575439453125f, 224.575439453125f, 224.575439453125f, 160.48342895507812f},
- {15.0f, 60.0f, 105.0f, 150.0f, 195.0f, 240.0f, 285.0f, 330.0f, 375.0f, 420.0f, 465.0f, 510.0f, 555.0f, 600.0f, 645.0f, 690.0f, 735.0f, 780.0f, 825.0f, 870.0f, 915.0f, 752.8690185546875f, 784.0726928710938f, 816.5648193359375f, 672.5985717773438f, 698.3501586914062f, 722.8833618164062f, 746.1956176757812f, 766.6886596679688f, 781.8445434570312f, 792.8053588867188f, 806.1326904296875f},
- {-37.5f, -45.0f, -45.0f, -45.0f, -45.0f, -45.0f, -45.0f, -45.0f, -45.0f, -45.0f, -45.0f, -45.0f, -45.0f, -45.0f, -45.0f, -45.0f, -45.0f, -90.0f, -135.0f, -180.0f, -203.52178955078125f, -553.47607421875f, -553.47607421875f, -553.47607421875f, -470.3646545410156f, -514.5128784179688f, -557.7763061523438f, -599.48291015625f, -638.0576171875f, -672.3253784179688f, -704.3800659179688f, -736.4347534179688f},
- {3.2783541428216267e-06f, 3.934024789487012e-06f, 3.934024789487012e-06f, 3.934024789487012e-06f, 3.934024789487012e-06f, 3.934026608476415e-06f, 3.934022970497608e-06f, 3.934026608476415e-06f, 3.934022970497608e-06f, 3.934024789487012e-06f, 3.934024789487012e-06f, 3.934024789487012e-06f, 3.934024789487012e-06f, 3.934022970497608e-06f, 3.934022970497608e-06f, 3.934022970497608e-06f, 3.934022970497608e-06f, 7.86804775998462e-06f, 1.1802072549471632e-05f, 1.5736097338958643e-05f, -0.3621532618999481f, -532.8685302734375f, -577.8685302734375f, -622.8685302734375f, -498.2887878417969f, -489.7926940917969f, -477.5599365234375f, -460.8945007324219f, -438.0895690917969f, -409.12469482421875f, -377.5415344238281f, -345.9583740234375f},
- 180.0f, 0.0f, 123.83331298828125f, {13, 15, 22, 23, 19, 18, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
- 0, {13, 15, 22, 23, 19, 18, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
- 0, {58.78312301635742f},
- 52.25166320800781f, 45.72020721435547f, 39.18874740600586f, 32.657291412353516f, 26.125831604003906f, 19.59437370300293f, 13.062915802001953f, 6.531457901000977f, 0.0f, 2.09503173828125f, 20.80000114440918f, 209.05709838867188f, 286.3926086425781f, -7.647623538970947f, 22, 2.168139696121216f, 3, -1, 0},
- {0x00, 0x00, 0x00, 0x01, 0x43, 0x85, 0x66, 0x6B, 0x43, 0x87, 0x00, 0x00, 0x41, 0x57, 0x36, 0xC3, 0x42, 0x10, 0x53, 0x59, 0x45, 0x05, 0x4E, 0xD6, 0x3E, 0x98, 0x6B, 0x34, 0xC2, 0x78, 0x10, 0xE7, 0x44, 0x7D, 0x93, 0x09, 0x45, 0x59, 0xAD, 0x1A, 0x41, 0x57, 0x36, 0xC3, 0x44, 0x67, 0x33, 0x6C, 0x45, 0x65, 0x83, 0xD3, 0x41, 0x57, 0x36, 0xC3, 0x42, 0x10, 0x53, 0x59, 0x45, 0x05, 0x4E, 0xD6, 0x00, 0x00, 0x00, 0x02, 0x3F, 0xD8, 0x51, 0xE8, 0x3F, 0xD8, 0x51, 0xEA, 0x00, 0x00, 0x00, 0x00, 0x43, 0x34, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00},
- 0, 0, 32},
- {0, 0, 0, {0, {0.0f, 0.0f, 0.0f},
- {0.0f, 0.0f, 0.0f},
- 0.0f, 0.0f, {0.0f, 0.0f, 0.0f},
- {0.0f, 0.0f, 0.0f},
- 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0, 0, 0, 0, 0, 0, 0, 0.0f, 0, 0, 0, 0, 0, 0, 0, 0.0f, 0.0f, 0.0f, {0.0f, 0.0f, 0.0f},
- {0.0f, 0.0f, 0.0f},
- 0, 0.0f, 0, 0, 0, 0, 0, 0, 0, 0, {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
- {0.0f, 0.0f},
- 0, {0.0f, 0.0f, 0.0f},
- 0.0f, 0.0f, 0, 0, 0, 0, 0, 0.0f, 0.0f},
- {0, 0, 0, 0, 0, 0, {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
- {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
- {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
- {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
- {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
- {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
- {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
- 0.0f, 0.0f, 0.0f, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
- 0, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
- 0, {0.0f},
- 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0, 0.0f, 0, 0, 0},
- {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00},
- 0, 0, 0},
- {0, 0, 0, {0, {0.0f, 0.0f, 0.0f},
- {0.0f, 0.0f, 0.0f},
- 0.0f, 0.0f, {0.0f, 0.0f, 0.0f},
- {0.0f, 0.0f, 0.0f},
- 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0, 0, 0, 0, 0, 0, 0, 0.0f, 0, 0, 0, 0, 0, 0, 0, 0.0f, 0.0f, 0.0f, {0.0f, 0.0f, 0.0f},
- {0.0f, 0.0f, 0.0f},
- 0, 0.0f, 0, 0, 0, 0, 0, 0, 0, 0, {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
- {0.0f, 0.0f},
- 0, {0.0f, 0.0f, 0.0f},
- 0.0f, 0.0f, 0, 0, 0, 0, 0, 0.0f, 0.0f},
- {0, 0, 0, 0, 0, 0, {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
- {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
- {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
- {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
- {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
- {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
- {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
- 0.0f, 0.0f, 0.0f, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
- 0, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
- 0, {0.0f},
- 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0, 0.0f, 0, 0, 0},
- {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00},
- 0, 0, 0},
- {0, 0, 0, {0, {0.0f, 0.0f, 0.0f},
- {0.0f, 0.0f, 0.0f},
- 0.0f, 0.0f, {0.0f, 0.0f, 0.0f},
- {0.0f, 0.0f, 0.0f},
- 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0, 0, 0, 0, 0, 0, 0, 0.0f, 0, 0, 0, 0, 0, 0, 0, 0.0f, 0.0f, 0.0f, {0.0f, 0.0f, 0.0f},
- {0.0f, 0.0f, 0.0f},
- 0, 0.0f, 0, 0, 0, 0, 0, 0, 0, 0, {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
- {0.0f, 0.0f},
- 0, {0.0f, 0.0f, 0.0f},
- 0.0f, 0.0f, 0, 0, 0, 0, 0, 0.0f, 0.0f},
- {0, 0, 0, 0, 0, 0, {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
- {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
- {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
- {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
- {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
- {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
- {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
- 0.0f, 0.0f, 0.0f, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
- 0, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
- 0, {0.0f},
- 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0, 0.0f, 0, 0, 0},
- {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00},
- 0, 0, 0},
- {0, 0, 0, {0, {0.0f, 0.0f, 0.0f},
- {0.0f, 0.0f, 0.0f},
- 0.0f, 0.0f, {0.0f, 0.0f, 0.0f},
- {0.0f, 0.0f, 0.0f},
- 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0, 0, 0, 0, 0, 0, 0, 0.0f, 0, 0, 0, 0, 0, 0, 0, 0.0f, 0.0f, 0.0f, {0.0f, 0.0f, 0.0f},
- {0.0f, 0.0f, 0.0f},
- 0, 0.0f, 0, 0, 0, 0, 0, 0, 0, 0, {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
- {0.0f, 0.0f},
- 0, {0.0f, 0.0f, 0.0f},
- 0.0f, 0.0f, 0, 0, 0, 0, 0, 0.0f, 0.0f},
- {0, 0, 0, 0, 0, 0, {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
- {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
- {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
- {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
- {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
- {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
- {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
- 0.0f, 0.0f, 0.0f, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
- 0, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
- 0, {0.0f},
- 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0, 0.0f, 0, 0, 0},
- {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00},
- 0, 0, 0}
+    {4090, 68, 0, {0, {26.28479f, 0.0f, -1401.4504395f},
+            {13.549011f, 0.0f, -1400.6544f},
+            0.0f, -1.0f, {12.735779f, -13.754119f, -0.7960205f},
+            {0.0f, 0.0f, 0.0f},
+            3.5763245f, 12.76063f, 0.32000002f, 1.0f, 30.0f, 150.0f, 0, 1, 10, 0, 0, 0, 0, 1.0f, 0, 0, 0, -1, 0, 7, 0, 26.28479f, 0.0f, -1.4504395f, {0.0f, 0.0f, 0.0f},
+            {0.0f, 0.0f, 0.0f},
+            1, 91.346146f, 0, 0, 0, 10, 0, 0, 0, 0, {377.5993f, 776.8203f, 1176.0414f, 1575.2625f, -1423.4076f, -1448.3588f},
+            {-1473.31f, -1498.2612f},
+            -243, {1.0f, 0.0f, 0.0f},
+            0.0f, 0.0f, 1, 1, 0, 0, 0, 60.0f, 50.0f},
+        {0, 0, 0, 0, 0, 0, {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+            {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+            {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+            {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+            {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+            {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+            {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+            0.0f, 0.0f, 0.0f, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            0, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            0, {0.0f},
+            0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0, 0.0f, 0, 0, 0},
+        {0x00, 0x00, 0x00, 0x01, 0x43, 0x90, 0xF5, 0x83, 0x43, 0x87, 0x00, 0x00, 0x42, 0x3C, 0x6D, 0xC2, 0x42, 0x87, 0x4A, 0x3E, 0xC4, 0xA2, 0xA3, 0xA1, 0x40, 0x9A, 0xEF, 0x7F, 0x43, 0x9F, 0xD2, 0xF0, 0x44, 0x17, 0x35, 0xDF, 0xC4, 0x09, 0x3E, 0x00, 0x42, 0x3C, 0x6D, 0xC2, 0x44, 0x1E, 0xC1, 0x78, 0xC3, 0x9F, 0x31, 0x66, 0x42, 0x3C, 0x6D, 0xC2, 0x42, 0x87, 0x4A, 0x3E, 0xC4, 0xA2, 0xA3, 0xA1, 0x00, 0x00, 0x00, 0x00, 0x3F, 0x80, 0x00, 0x00, 0x3F, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x43, 0x34, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00},
+        0, 0, 1},
+    {3716, 77, 0, {0, {20.0f, 0.0f, 620.0f},
+            {20.0f, 0.0f, 620.0f},
+            0.0f, -1.0f, {0.0f, -13.754119f, 0.0f},
+            {0.0f, 0.0f, 0.0f},
+            312.913f, 0.0f, 0.32000002f, 1.0f, 30.0f, 150.0f, 0, 1, 10, 0, 0, 0, 0, 1.0f, 0, 0, 2, -1, 0, 7, 0, 20.0f, 0.0f, 20.0f, {0.0f, 0.0f, 0.0f},
+            {0.0f, 0.0f, 0.0f},
+            0, 267.0376f, 0, 0, 0, 10, 0, 0, 0, 0, {63.57676f, 335.93152f, 608.28625f, 880.641f, 666.87286f, 959.8283f},
+            {1252.7837f, 1545.7393f},
+            -626, {1.0f, 0.0f, 0.0f},
+            0.0f, 0.0f, 1, 1, 0, 0, 0, 60.0f, 50.0f},
+        {0, 0, 0, 0, 0, 0, {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+            {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+            {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+            {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+            {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+            {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+            {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+            0.0f, 0.0f, 0.0f, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            0, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            0, {0.0f},
+            0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0, 0.0f, 0, 0, 0},
+        {0x00, 0x00, 0x00, 0x01, 0x43, 0x62, 0x55, 0x89, 0x43, 0x87, 0x00, 0x00, 0x41, 0x95, 0x94, 0x65, 0x42, 0x81, 0x95, 0xF4, 0x44, 0x02, 0xBC, 0x2C, 0x40, 0x25, 0xDF, 0x3A, 0xC4, 0x05, 0x6A, 0x7E, 0x44, 0x16, 0xA5, 0xDF, 0x44, 0x89, 0xB4, 0x93, 0x41, 0x95, 0x94, 0x65, 0x43, 0xD1, 0x9E, 0xDA, 0x44, 0x8E, 0x1B, 0x99, 0x41, 0x95, 0x94, 0x65, 0x42, 0x81, 0x95, 0xF4, 0x44, 0x02, 0xBC, 0x2C, 0x00, 0x00, 0x00, 0x00, 0x3F, 0x80, 0x00, 0x00, 0x3F, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x38, 0x43, 0x34, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00},
+        0, 0, 10},
+    {2866, 47, 0, {0, {1.3156128f, 0.0f, 696.3431f},
+            {1.3156128f, 0.0f, 696.3431f},
+            0.0f, -1.0f, {0.0f, -13.754119f, 0.0f},
+            {-31.795303f, 20.247162f, -10.876915f},
+            40.149384f, 0.0f, 0.32000002f, 1.0f, 30.0f, 150.0f, 0, 1, 10, 0, 0, 0, 0, 1.0f, 0, 0, 2, -1, 0, 7, 0, 1.3156128f, 0.0f, -3.6569214f, {0.0f, 0.0f, 0.0f},
+            {0.0f, 0.0f, 0.0f},
+            0, 683.80774f, 0, 0, 0, 10, 0, 0, 0, 0, {111.384315f, 417.1307f, 722.8771f, 1028.6235f, 603.4944f, 345.5813f},
+            {87.668274f, -170.24481f},
+            -1446, {1.0f, 0.0f, 0.0f},
+            0.0f, 0.0f, 1, 1, 0, 0, 0, 60.0f, 50.0f},
+        {0, 1, 10, 0, 0, 10, {11.465489f, 45.861958f, 90.57989f, 135.16046f, 179.48688f, 222.97658f, 264.0537f, 301.97522f, 338.2799f, 373.91058f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+            {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+            {-9.67174f, -38.68696f, -43.717537f, -49.847145f, -57.603973f, -69.1645f, -87.54025f, -111.76747f, -138.35635f, -165.84189f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+            {40.149384f, 6.4185486f, 7.8287964f, 9.925873f, 14.88623f, 24.101227f, 32.57361f, 36.218353f, 37.646637f, 37.646637f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+            {15.0f, 60.0f, 100.57802f, 144.05933f, 188.504f, 233.45723f, 278.18637f, 321.99533f, 365.4802f, 409.0387f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+            {28.663723f, 68.220924f, 112.87018f, 157.32367f, 201.23174f, 243.51515f, 283.01447f, 320.12756f, 356.09525f, 391.72592f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+            {-24.17935f, -41.202248f, -46.78234f, -53.72556f, -63.384235f, -78.35237f, -99.65386f, -125.06191f, -152.09912f, -179.58466f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+            336.08212f, 409.0387f, 42.526276f, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            0, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            0, {39.015785f},
+            34.6807f, 30.34561f, 26.010523f, 21.675436f, 17.34035f, 13.005261f, 8.670175f, 4.3350873f, 0.0f, 341.11462f, 20.800001f, 138.84798f, 329.2213f, 47.498703f, 24, 0.0f, 0, 0, 0},
+        {0x00, 0x00, 0x00, 0x01, 0x43, 0x21, 0x64, 0x40, 0x43, 0x87, 0x00, 0x00, 0x42, 0x36, 0xA0, 0xEA, 0x44, 0x54, 0x83, 0x70, 0x44, 0x06, 0xFF, 0x17, 0x44, 0x08, 0x60, 0x6B, 0xC4, 0x3E, 0x8E, 0x96, 0x44, 0x92, 0xF3, 0x1B, 0x43, 0x85, 0xFC, 0x3E, 0x42, 0x36, 0xA0, 0xEA, 0x44, 0x9A, 0x10, 0x5B, 0x44, 0x96, 0x4D, 0x7C, 0x42, 0x36, 0xA0, 0xEA, 0x44, 0x54, 0x83, 0x70, 0x44, 0x06, 0xFF, 0x17, 0x00, 0x00, 0x00, 0x00, 0x3F, 0x80, 0x00, 0x02, 0x3F, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x43, 0x34, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00},
+        0, 0, 15},
+    {2286, 158, 0, {0, {2043.5474f, 0.0f, -55.467163f},
+            {2059.9417f, 0.0f, -42.666138f},
+            0.0f, -1.0f, {-16.394287f, -13.754119f, -12.801025f},
+            {-31.795303f, 20.247162f, -10.876915f},
+            142.0166f, 20.800001f, 0.32000002f, 1.0f, 30.0f, 150.0f, 0, 1, 10, 0, 0, 0, 0, 1.0f, 0, 0, 2, -1, 0, 20, 0, 2043.5474f, 0.0f, -55.467163f, {0.0f, 0.0f, 0.0f},
+            {0.0f, 0.0f, 0.0f},
+            2, 927.98914f, -1, 0, 0, 10, 0, 0, 0, 0, {1753.4938f, 1438.2181f, 1122.9426f, 807.6669f, -281.94656f, -528.1198f},
+            {-774.2931f, -1020.4664f},
+            4, {2.0f, 0.0f, 0.0f},
+            0.0f, 0.0f, 1, 1, 0, 0, 0, 60.0f, 50.0f},
+        {0, 0, 0, 0, 0, 0, {-1.8999097f, -7.599639f, -15.403757f, -23.23172f, -31.03217f, -38.8236f, -46.655926f, -54.49022f, -62.313107f, -70.127884f, -77.94018f, -85.74919f, -93.55891f, -101.36884f, -109.17896f, -116.98767f, -124.79509f, -132.60074f, -140.4053f, -158.0184f, -184.6679f, -213.2815f, -241.99771f, -270.80026f, -299.5953f, -328.01978f, -347.88306f, -355.75925f, -363.4458f, -371.3195f, 0.0f, 0.0f, -340.96143f},
+            {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+            {14.879195f, 59.51678f, 103.83453f, 148.14883f, 192.46724f, 236.78746f, 281.1008f, 325.41385f, 369.72858f, 414.04486f, 458.3615f, 502.6787f, 546.9957f, 591.313f, 635.63025f, 679.9472f, 724.2648f, 768.58234f, 812.9009f, 854.31006f, 890.58514f, 925.33685f, 959.9514f, 994.5445f, 1029.1378f, 1064.0219f, 1104.3955f, 1148.6926f, 1193.0482f, 1237.3462f, 0.0f, 0.0f, 1324.5211f},
+            {-97.27371f, -100.0f, -100.0f, -100.0f, -100.0f, -100.0f, -100.0f, -100.0f, -100.0f, -100.0f, -100.0f, -100.0f, -100.0f, -100.0f, -100.0f, -100.0f, -100.0f, -100.0f, -113.04523f, -126.27313f, -129.42703f, -129.74377f, -129.74377f, -129.74377f, -129.17993f, -116.23157f, -100.0f, -100.0f, -100.0f, -70.8252f, 0.0f, 0.0f, -70.82557f},
+            {15.0f, 60.0f, 104.970894f, 149.95926f, 194.95299f, 239.94907f, 284.94638f, 329.94446f, 374.94296f, 419.9418f, 464.94086f, 509.9401f, 554.93945f, 599.9389f, 644.9384f, 689.93805f, 734.9377f, 779.9373f, 824.9371f, 868.80145f, 909.5295f, 949.5985f, 989.984375f, 1030.7526f, 1071.859375f, 1113.4357f, 1157.8912f, 1202.5221f, 1247.1796f, 1291.8607f, 0.0f, 0.0f},
+            {-4.7497745f, -11.501698f, -19.317738f, -27.131945f, -34.927887f, -42.73976f, -50.573074f, -58.401665f, -66.2205f, -74.03403f, -81.84468f, -89.65405f, -97.463875f, -105.2739f, -113.08331f, -120.89138f, -128.6979f, -136.50302f, -149.21185f, -171.34314f, -198.9747f, -227.6396f, -256.399f, -285.19778f, -313.80756f, -337.95142f, -351.82117f, -359.60254f, -367.38263f, -371.03735f, 0.0f, 0.0f},
+            {37.197987f, 81.67566f, 125.991684f, 170.30804f, 214.62735f, 258.94412f, 303.25732f, 347.57123f, 391.88672f, 436.2032f, 480.5201f, 524.8372f, 569.15436f, 613.4716f, 657.7887f, 702.10596f, 746.4236f, 790.7416f, 833.60547f, 872.44763f, 907.961f, 942.64417f, 977.2479f, 1011.8412f, 1046.5798f, 1084.2087f, 1126.5441f, 1170.8704f, 1215.1973f, 1238.2117f, 0.0f, 0.0f},
+            -97.27371f, 0.0f, 78.99539f, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            0, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            0, {39.015785f},
+            34.6807f, 30.34561f, 26.010523f, 21.675436f, 17.34035f, 13.005261f, 8.670175f, 4.3350873f, 0.0f, 341.11462f, 20.800001f, 138.84798f, 329.2213f, 47.498703f, 24, 1.845682f, 0, -1, 0},
+        {0x00, 0x00, 0x00, 0x01, 0x42, 0xDC, 0x9C, 0x3D, 0x43, 0x87, 0x00, 0x00, 0x44, 0xEA, 0x02, 0x80, 0x42, 0x74, 0x2A, 0xDE, 0xC3, 0x23, 0xBE, 0x58, 0x3F, 0x0D, 0x0B, 0x67, 0x44, 0xC7, 0x4E, 0xCA, 0x44, 0x16, 0x23, 0x45, 0xC4, 0x64, 0x81, 0xEA, 0x44, 0xEA, 0x02, 0x80, 0x43, 0xF6, 0x18, 0x33, 0x44, 0x11, 0xC1, 0x9F, 0x44, 0xEA, 0x02, 0x80, 0x42, 0x74, 0x2A, 0xDE, 0xC3, 0x23, 0xBE, 0x58, 0x00, 0x00, 0x00, 0x00, 0x3F, 0x80, 0x00, 0x02, 0x3F, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x43, 0x34, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00},
+        0, 0, 20},
+    {1555, 48, 0, {0, {1700.0f, 0.0f, 0.0f},
+            {1700.0f, 0.0f, 0.0f},
+            0.0f, -1.0f, {0.0f, -13.754119f, 0.0f},
+            {-31.795303f, 20.247162f, -10.876915f},
+            74.50867f, 0.0f, 0.32000002f, 1.0f, 30.0f, 150.0f, 0, 1, 10, 0, 0, 0, 0, 1.0f, 0, 0, 2, -1, 0, 18, 0, 0.0f, 0.0f, 0.0f, {0.0f, 0.0f, 0.0f},
+            {0.0f, 0.0f, 0.0f},
+            0, 1263.6812f, -1, 0, 0, 10, 0, 0, 0, 0, {1729.9144f, 1836.7515f, 1943.5884f, 2050.4255f, -107.931145f, -493.3995f},
+            {-878.86786f, -1264.3362f},
+            -86, {1.0f, 0.0f, 0.0f},
+            0.0f, 0.0f, 1, 1, 0, 0, 0, 60.0f, 50.0f},
+        {0, 0, 0, 0, 0, 0, {-14.90826f, -59.63304f, -104.41518f, -149.41518f, -194.41518f, -239.41518f, -284.41516f, -328.92938f, -371.72607f, -412.07993f, -448.258f, -479.16867f, -509.3229f, -537.66376f, -558.6006f, -568.2488f, -568.2488f, -568.2488f, -564.5556f, -560.8624f, -557.16925f, -553.4761f, -553.4761f, -553.4761f, -448.10754f, -492.62177f, -536.404f, -579.1486f, -619.81714f, -656.29803f, -688.3527f, -720.4074f, -340.96143f},
+            {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+            {1.6564314f, 6.6257257f, 11.048418f, 11.048422f, 11.048426f, 11.0484295f, 11.048433f, 4.454144f, -9.454266f, -29.368223f, -56.129135f, -88.8328f, -122.235214f, -157.18942f, -197.02219f, -240.97571f, -285.9757f, -330.9757f, -375.8239f, -420.67212f, -465.52032f, -510.36853f, -555.3685f, -600.3685f, -501.58594f, -494.99164f, -484.59375f, -470.5261f, -451.26288f, -424.91626f, -393.3331f, -361.74994f, 1324.5211f},
+            {186.34003f, 185.64026f, 180.0f, 180.0f, 180.0f, 180.0f, 171.57355f, 161.99646f, 153.73444f, 143.50967f, 133.38553f, 132.07434f, 129.0351f, 117.727234f, 102.380615f, 90.0f, 90.0f, 85.29239f, 85.29239f, 85.29239f, 85.29239f, 90.0f, 90.0f, 90.0f, 188.42645f, 193.35974f, 198.21686f, 205.34521f, 215.83691f, 224.57544f, 224.57544f, 224.57544f, -70.82557f},
+            {15.0f, 59.999996f, 104.99808f, 149.8231f, 194.72885f, 239.66997f, 284.62967f, 328.95953f, 371.8463f, 413.12512f, 451.75848f, 487.33344f, 523.7855f, 560.17035f, 592.32794f, 617.2325f, 636.15155f, 657.61053f, 678.2084f, 701.0932f, 726.0487f, 752.869f, 784.0727f, 816.5648f, 672.5986f, 698.35016f, 722.88336f, 746.1956f, 766.68866f, 781.84454f, 792.80536f, 806.1327f},
+            {-37.270653f, -82.02411f, -126.91518f, -171.91518f, -216.91518f, -261.91516f, -306.67227f, -350.32773f, -391.903f, -430.16898f, -463.71335f, -494.2458f, -523.49335f, -548.13214f, -563.4247f, -568.2488f, -568.2488f, -566.40216f, -562.709f, -559.0158f, -555.32263f, -553.4761f, -553.4761f, -553.4761f, -470.36465f, -514.5129f, -557.7763f, -599.4829f, -638.0576f, -672.3254f, -704.38007f, -736.43475f},
+            {4.141079f, 8.837072f, 11.04842f, 11.048424f, 11.048428f, 11.048431f, 7.7512884f, -2.500061f, -19.411243f, -42.74868f, -72.48097f, -105.53401f, -139.71233f, -177.1058f, -218.99895f, -263.4757f, -308.4757f, -353.3998f, -398.24802f, -443.09622f, -487.94443f, -532.8685f, -577.8685f, -622.8685f, -498.2888f, -489.7927f, -477.55994f, -460.8945f, -438.08957f, -409.1247f, -377.54153f, -345.95837f},
+            186.34003f, 0.0f, 104.26526f, {13, 15, 22, 23, 19, 18, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            0, {13, 15, 22, 23, 19, 18, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            0, {39.015785f},
+            34.6807f, 30.34561f, 26.010523f, 21.675436f, 17.34035f, 13.005261f, 8.670175f, 4.3350873f, 0.0f, 341.11462f, 20.800001f, 138.84798f, 329.2213f, 47.498703f, 24, 1.845682f, 0, -1, 0},
+        {0x00, 0x00, 0x00, 0x01, 0x43, 0x56, 0x42, 0x40, 0x43, 0x87, 0x00, 0x00, 0x44, 0xA8, 0x94, 0xD7, 0x42, 0x43, 0x5C, 0xCC, 0x41, 0x94, 0x17, 0x43, 0x3F, 0xCF, 0x10, 0x8E, 0x43, 0xF4, 0x8B, 0x3E, 0x44, 0x43, 0x67, 0x85, 0x44, 0x16, 0xFD, 0x73, 0x44, 0xA8, 0x94, 0xD7, 0x44, 0x35, 0x70, 0x9F, 0x44, 0x94, 0xDF, 0x07, 0x44, 0xA8, 0x94, 0xD7, 0x42, 0x43, 0x5C, 0xCC, 0x41, 0x94, 0x17, 0x43, 0x00, 0x00, 0x00, 0x01, 0x3F, 0xA6, 0x66, 0x64, 0x3F, 0xA6, 0x66, 0x66, 0x00, 0x00, 0x00, 0x51, 0x43, 0x34, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00},
+        0, 0, 23},
+    {1119, 216, 0, {0, {9.817078f, 0.0f, 2292.764f},
+            {9.3220215f, 0.0f, 2313.558f},
+            0.0f, -1.0f, {0.49505615f, -13.754119f, -20.79419f},
+            {-22.704819f, 22.272003f, 0.8305774f},
+            88.63617f, 20.800001f, 0.32000002f, 1.0f, 30.0f, 150.0f, 0, 1, 10, 0, 0, 0, 0, 1.0f, 0, 0, 11, -1, 0, 20, 0, 9.817078f, 0.0f, 2292.764f, {0.0f, 0.0f, 0.0f},
+            {0.0f, 0.0f, 0.0f},
+            2, 1988.7317f, -1, 0, 0, 10, 0, 0, 0, 0, {12.482797f, 22.003222f, 31.523647f, 41.04407f, 2180.7957f, 1780.9089f},
+            {1381.0222f, 981.1356f},
+            -1336, {1.0f, 0.0f, 0.0f},
+            0.0f, 0.0f, 1, 1, 0, 0, 0, 60.0f, 50.0f},
+        {0, 0, 0, 0, 0, 0, {-15.0f, -45.0f, -45.0f, -45.0f, -45.0f, -45.0f, -45.0f, -45.0f, -45.0f, -45.0f, -45.0f, -45.0f, -45.0f, -45.0f, -45.0f, -45.0f, -45.0f, -90.0f, -135.0f, -180.0f, -225.0f, -553.4761f, -553.4761f, -553.4761f, -448.10754f, -492.62177f, -536.404f, -579.1486f, -619.81714f, -656.29803f, -688.3527f, -720.4074f, -327.17773f},
+            {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+            {1.3113416343912832e-06f, 3.934024789487012e-06f, 3.9340256989817135e-06f, 3.934024789487012e-06f, 3.93402387999231e-06f, 3.934024789487012e-06f, 3.9340256989817135e-06f, 3.934022970497608e-06f, 3.9340256989817135e-06f, 3.934022970497608e-06f, 3.93402387999231e-06f, 3.934022970497608e-06f, 3.934022061002906e-06f, 3.934022970497608e-06f, 3.93402387999231e-06f, 3.934022970497608e-06f, 3.934029336960521e-06f, 7.868052307458129e-06f, 1.1802083463408053e-05f, 1.573610643390566e-05f, 1.967012940440327e-05f, -510.36853f, -555.3685f, -600.3685f, -501.58594f, -494.99164f, -484.59375f, -470.5261f, -451.26288f, -424.91626f, -393.3331f, -361.74994f, -36.21857f},
+            {180.0f, 180.0f, 180.0f, 180.0f, 180.0f, 180.0f, 180.0f, 180.0f, 180.0f, 180.0f, 180.0f, 180.0f, 180.0f, 180.0f, 180.0f, 180.0f, 180.0f, 180.0f, 180.0f, 180.0f, 160.48312f, 90.0f, 90.0f, 90.0f, 188.42645f, 193.35974f, 198.21686f, 205.34521f, 215.83691f, 224.57544f, 224.57544f, 224.57544f, 160.48343f},
+            {15.0f, 60.0f, 105.0f, 150.0f, 195.0f, 240.0f, 285.0f, 330.0f, 375.0f, 420.0f, 465.0f, 510.0f, 555.0f, 600.0f, 645.0f, 690.0f, 735.0f, 780.0f, 825.0f, 870.0f, 915.0f, 752.869f, 784.0727f, 816.5648f, 672.5986f, 698.35016f, 722.88336f, 746.1956f, 766.68866f, 781.84454f, 792.80536f, 806.1327f},
+            {-37.5f, -45.0f, -45.0f, -45.0f, -45.0f, -45.0f, -45.0f, -45.0f, -45.0f, -45.0f, -45.0f, -45.0f, -45.0f, -45.0f, -45.0f, -45.0f, -45.0f, -90.0f, -135.0f, -180.0f, -203.52179f, -553.4761f, -553.4761f, -553.4761f, -470.36465f, -514.5129f, -557.7763f, -599.4829f, -638.0576f, -672.3254f, -704.38007f, -736.43475f},
+            {3.2783541428216267e-06f, 3.934024789487012e-06f, 3.934024789487012e-06f, 3.934024789487012e-06f, 3.934024789487012e-06f, 3.934026608476415e-06f, 3.934022970497608e-06f, 3.934026608476415e-06f, 3.934022970497608e-06f, 3.934024789487012e-06f, 3.934024789487012e-06f, 3.934024789487012e-06f, 3.934024789487012e-06f, 3.934022970497608e-06f, 3.934022970497608e-06f, 3.934022970497608e-06f, 3.934022970497608e-06f, 7.86804775998462e-06f, 1.1802072549471632e-05f, 1.5736097338958643e-05f, -0.36215326f, -532.8685f, -577.8685f, -622.8685f, -498.2888f, -489.7927f, -477.55994f, -460.8945f, -438.08957f, -409.1247f, -377.54153f, -345.95837f},
+            180.0f, 0.0f, 123.83331f, {13, 15, 22, 23, 19, 18, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            0, {13, 15, 22, 23, 19, 18, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            0, {58.783123f},
+            52.251663f, 45.720207f, 39.188747f, 32.65729f, 26.125832f, 19.594374f, 13.062916f, 6.531458f, 0.0f, 2.0950317f, 20.800001f, 209.0571f, 286.3926f, -7.6476235f, 22, 2.1681397f, 3, -1, 0},
+        {0x00, 0x00, 0x00, 0x01, 0x43, 0x85, 0x66, 0x6B, 0x43, 0x87, 0x00, 0x00, 0x41, 0x57, 0x36, 0xC3, 0x42, 0x10, 0x53, 0x59, 0x45, 0x05, 0x4E, 0xD6, 0x3E, 0x98, 0x6B, 0x34, 0xC2, 0x78, 0x10, 0xE7, 0x44, 0x7D, 0x93, 0x09, 0x45, 0x59, 0xAD, 0x1A, 0x41, 0x57, 0x36, 0xC3, 0x44, 0x67, 0x33, 0x6C, 0x45, 0x65, 0x83, 0xD3, 0x41, 0x57, 0x36, 0xC3, 0x42, 0x10, 0x53, 0x59, 0x45, 0x05, 0x4E, 0xD6, 0x00, 0x00, 0x00, 0x02, 0x3F, 0xD8, 0x51, 0xE8, 0x3F, 0xD8, 0x51, 0xEA, 0x00, 0x00, 0x00, 0x00, 0x43, 0x34, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00},
+        0, 0, 32},
+    {0, 0, 0, {0, {0.0f, 0.0f, 0.0f},
+            {0.0f, 0.0f, 0.0f},
+            0.0f, 0.0f, {0.0f, 0.0f, 0.0f},
+            {0.0f, 0.0f, 0.0f},
+            0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0, 0, 0, 0, 0, 0, 0, 0.0f, 0, 0, 0, 0, 0, 0, 0, 0.0f, 0.0f, 0.0f, {0.0f, 0.0f, 0.0f},
+            {0.0f, 0.0f, 0.0f},
+            0, 0.0f, 0, 0, 0, 0, 0, 0, 0, 0, {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+            {0.0f, 0.0f},
+            0, {0.0f, 0.0f, 0.0f},
+            0.0f, 0.0f, 0, 0, 0, 0, 0, 0.0f, 0.0f},
+        {0, 0, 0, 0, 0, 0, {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+            {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+            {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+            {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+            {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+            {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+            {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+            0.0f, 0.0f, 0.0f, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            0, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            0, {0.0f},
+            0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0, 0.0f, 0, 0, 0},
+        {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00},
+        0, 0, 0},
+    {0, 0, 0, {0, {0.0f, 0.0f, 0.0f},
+            {0.0f, 0.0f, 0.0f},
+            0.0f, 0.0f, {0.0f, 0.0f, 0.0f},
+            {0.0f, 0.0f, 0.0f},
+            0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0, 0, 0, 0, 0, 0, 0, 0.0f, 0, 0, 0, 0, 0, 0, 0, 0.0f, 0.0f, 0.0f, {0.0f, 0.0f, 0.0f},
+            {0.0f, 0.0f, 0.0f},
+            0, 0.0f, 0, 0, 0, 0, 0, 0, 0, 0, {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+            {0.0f, 0.0f},
+            0, {0.0f, 0.0f, 0.0f},
+            0.0f, 0.0f, 0, 0, 0, 0, 0, 0.0f, 0.0f},
+        {0, 0, 0, 0, 0, 0, {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+            {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+            {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+            {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+            {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+            {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+            {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+            0.0f, 0.0f, 0.0f, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            0, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            0, {0.0f},
+            0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0, 0.0f, 0, 0, 0},
+        {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00},
+        0, 0, 0},
+    {0, 0, 0, {0, {0.0f, 0.0f, 0.0f},
+            {0.0f, 0.0f, 0.0f},
+            0.0f, 0.0f, {0.0f, 0.0f, 0.0f},
+            {0.0f, 0.0f, 0.0f},
+            0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0, 0, 0, 0, 0, 0, 0, 0.0f, 0, 0, 0, 0, 0, 0, 0, 0.0f, 0.0f, 0.0f, {0.0f, 0.0f, 0.0f},
+            {0.0f, 0.0f, 0.0f},
+            0, 0.0f, 0, 0, 0, 0, 0, 0, 0, 0, {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+            {0.0f, 0.0f},
+            0, {0.0f, 0.0f, 0.0f},
+            0.0f, 0.0f, 0, 0, 0, 0, 0, 0.0f, 0.0f},
+        {0, 0, 0, 0, 0, 0, {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+            {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+            {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+            {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+            {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+            {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+            {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+            0.0f, 0.0f, 0.0f, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            0, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            0, {0.0f},
+            0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0, 0.0f, 0, 0, 0},
+        {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00},
+        0, 0, 0},
+    {0, 0, 0, {0, {0.0f, 0.0f, 0.0f},
+            {0.0f, 0.0f, 0.0f},
+            0.0f, 0.0f, {0.0f, 0.0f, 0.0f},
+            {0.0f, 0.0f, 0.0f},
+            0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0, 0, 0, 0, 0, 0, 0, 0.0f, 0, 0, 0, 0, 0, 0, 0, 0.0f, 0.0f, 0.0f, {0.0f, 0.0f, 0.0f},
+            {0.0f, 0.0f, 0.0f},
+            0, 0.0f, 0, 0, 0, 0, 0, 0, 0, 0, {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+            {0.0f, 0.0f},
+            0, {0.0f, 0.0f, 0.0f},
+            0.0f, 0.0f, 0, 0, 0, 0, 0, 0.0f, 0.0f},
+        {0, 0, 0, 0, 0, 0, {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+            {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+            {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+            {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+            {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+            {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+            {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+            0.0f, 0.0f, 0.0f, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            0, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            0, {0.0f},
+            0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0, 0.0f, 0, 0, 0},
+        {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00},
+        0, 0, 0}
 };
 
 
@@ -2176,98 +2199,98 @@ void schedproc(s32 arg0) {
     while (1) {
         osRecvMesg(&gSchedMessageQueue, &mesg, OS_MESG_BLOCK);
         switch ((u32) mesg) {
-            case SCHED_MESG_VINTR:
-                arg0 = var_s2 + 1;
-                osSetTimer(&D_801B3148, 586116, 0, &gSchedMessageQueue, (OSMesg) SCHED_MESG_TIMEOUT); // wait ~12.5 msec, then start audio
-                if (arg0 != 0) {
-                    // command main thread to update game and draw frame
-                    if (osSendMesg(&gSyncMessageQueue, NULL, OS_MESG_NOBLOCK) == -1) {
-                        DummiedPrintf("Gfx送信失敗\n");
-                    } else {
-                        var_s2 ^= 1;
-                    }
+        case SCHED_MESG_VINTR:
+            arg0 = var_s2 + 1;
+            osSetTimer(&D_801B3148, 586116, 0, &gSchedMessageQueue, (OSMesg) SCHED_MESG_TIMEOUT); // wait ~12.5 msec, then start audio
+            if (arg0 != 0) {
+                // command main thread to update game and draw frame
+                if (osSendMesg(&gSyncMessageQueue, NULL, OS_MESG_NOBLOCK) == -1) {
+                    DummiedPrintf("Gfx送信失敗\n");
                 } else {
                     var_s2 ^= 1;
                 }
-                func_800A78D0();
-                continue;
-            case SCHED_MESG_SP_TASK_DONE:
-                if (gAudioTaskState == AUDIO_TASK_STATE_RUNNING) {
-                    DummiedPrintf("Ae"); // audio end
-                    Timing_StopAudio();
-                    gAudioTaskState = AUDIO_TASK_STATE_IDLE;
-                    osSendMesg(&gAudioDoneMessageQueue, (OSMesg)1, OS_MESG_NOBLOCK);
-                } else if (gAudioTaskState == AUDIO_TASK_STATE_PENDING) {
-                    DummiedPrintf("Gy"); // gfx yield
-                    Timing_StopGfx(); // when gfx task is resumed, this timer is not resumed, so duration might be incorrect
-                    gGfxTaskRunning = FALSE;
-                    // this queue is also used to report audio thread that gfx task yielded or finished
-                    osSendMesg(&gAudioDoneMessageQueue, (OSMesg)1, OS_MESG_NOBLOCK);
-                } else {
-                    DummiedPrintf("Ge"); // gfx end
-                    Timing_StopGfx();
-                    gGfxTaskRunning = FALSE;
+            } else {
+                var_s2 ^= 1;
+            }
+            func_800A78D0();
+            continue;
+        case SCHED_MESG_SP_TASK_DONE:
+            if (gAudioTaskState == AUDIO_TASK_STATE_RUNNING) {
+                DummiedPrintf("Ae"); // audio end
+                Timing_StopAudio();
+                gAudioTaskState = AUDIO_TASK_STATE_IDLE;
+                osSendMesg(&gAudioDoneMessageQueue, (OSMesg)1, OS_MESG_NOBLOCK);
+            } else if (gAudioTaskState == AUDIO_TASK_STATE_PENDING) {
+                DummiedPrintf("Gy"); // gfx yield
+                Timing_StopGfx(); // when gfx task is resumed, this timer is not resumed, so duration might be incorrect
+                gGfxTaskRunning = FALSE;
+                // this queue is also used to report audio thread that gfx task yielded or finished
+                osSendMesg(&gAudioDoneMessageQueue, (OSMesg)1, OS_MESG_NOBLOCK);
+            } else {
+                DummiedPrintf("Ge"); // gfx end
+                Timing_StopGfx();
+                gGfxTaskRunning = FALSE;
+            }
+            if (gGfxTaskPending) {
+                osSendMesg(&gSchedMessageQueue, (OSMesg)SCHED_MESG_START_VIDEO_TASK, OS_MESG_NOBLOCK);
+            }
+            continue;
+        case SCHED_MESG_DP_TASK_DONE:
+            DummiedPrintf("D"); // done
+            if (D_800FF5CC != 0) {
+                D_800FF5CC--;
+                if (D_800FF5CC == 0) {
+                    osViBlack(FALSE);
                 }
-                if (gGfxTaskPending) {
-                    osSendMesg(&gSchedMessageQueue, (OSMesg)SCHED_MESG_START_VIDEO_TASK, OS_MESG_NOBLOCK);
-                }
-                continue;
-            case SCHED_MESG_DP_TASK_DONE:
-                DummiedPrintf("D"); // done
-                if (D_800FF5CC != 0) {
-                    D_800FF5CC--;
-                    if (D_800FF5CC == 0) {
-                        osViBlack(FALSE);
-                    }
-                }
-                if (gGfxTaskStarted == TRUE) {
-                    gGfxTaskStarted = FALSE;
-                }
-                osSendMesg(&gFrameDrawnMessageQueue, (OSMesg)2, OS_MESG_NOBLOCK);
-                Timing_EndFrame();
-                continue;
-            case SCHED_MESG_START_VIDEO_TASK:
-                if (gSchedReset) {
-                    DummiedPrintf("Res "); // reset
-                } else if (gAudioTaskState != AUDIO_TASK_STATE_IDLE) {
-                    // wait until audio task is finished
-                    gGfxTaskPending = TRUE;
-                    DummiedPrintf("Sw "); // ??
-                } else {
-                    DummiedPrintf("Gs "); // gfx start
-                    gGfxTaskPending = FALSE;
-                    osWritebackDCacheAll();
-                    osSpTaskStart(gCurrentGfxTask);
-                    Timing_StartGfx();
-                    gGfxTaskRunning = TRUE;
-                    gGfxTaskStarted = TRUE;
-                }
-                continue;
-            case SCHED_MESG_UNK_4:
-                continue;
-            case SCHED_MESG_START_AUDIO_TASK:
-                if (!gSchedReset) {
-                    // clear queue
-                    osRecvMesg(&gAudioDoneMessageQueue, NULL, OS_MESG_NOBLOCK);
-                    DummiedPrintf("As"); // audio start
-                    gAudioTaskState = AUDIO_TASK_STATE_RUNNING;
-                    osWritebackDCacheAll();
-                    osSpTaskStart(gCurrentAudioTask);
-                    Timing_StartAudio();
-                }
-                continue;
-            case SCHED_MESG_TIMEOUT:
-                // start audio task
-                break;
-            case SCHED_MESG_RESET:
-                gSchedReset = TRUE;
-                osViBlack(TRUE);
-                osViSetYScale(1.0f);
-                func_8007B174();
-                Rumble_StopAll();
-                continue;
-            default:
-                continue;
+            }
+            if (gGfxTaskStarted == TRUE) {
+                gGfxTaskStarted = FALSE;
+            }
+            osSendMesg(&gFrameDrawnMessageQueue, (OSMesg)2, OS_MESG_NOBLOCK);
+            Timing_EndFrame();
+            continue;
+        case SCHED_MESG_START_VIDEO_TASK:
+            if (gSchedReset) {
+                DummiedPrintf("Res "); // reset
+            } else if (gAudioTaskState != AUDIO_TASK_STATE_IDLE) {
+                // wait until audio task is finished
+                gGfxTaskPending = TRUE;
+                DummiedPrintf("Sw "); // ??
+            } else {
+                DummiedPrintf("Gs "); // gfx start
+                gGfxTaskPending = FALSE;
+                osWritebackDCacheAll();
+                osSpTaskStart(gCurrentGfxTask);
+                Timing_StartGfx();
+                gGfxTaskRunning = TRUE;
+                gGfxTaskStarted = TRUE;
+            }
+            continue;
+        case SCHED_MESG_UNK_4:
+            continue;
+        case SCHED_MESG_START_AUDIO_TASK:
+            if (!gSchedReset) {
+                // clear queue
+                osRecvMesg(&gAudioDoneMessageQueue, NULL, OS_MESG_NOBLOCK);
+                DummiedPrintf("As"); // audio start
+                gAudioTaskState = AUDIO_TASK_STATE_RUNNING;
+                osWritebackDCacheAll();
+                osSpTaskStart(gCurrentAudioTask);
+                Timing_StartAudio();
+            }
+            continue;
+        case SCHED_MESG_TIMEOUT:
+            // start audio task
+            break;
+        case SCHED_MESG_RESET:
+            gSchedReset = TRUE;
+            osViBlack(TRUE);
+            osViSetYScale(1.0f);
+            func_8007B174();
+            Rumble_StopAll();
+            continue;
+        default:
+            continue;
         }
 
         gAudioTaskState = AUDIO_TASK_STATE_PENDING;
@@ -2291,32 +2314,55 @@ void Sched_SetAudioTask(OSTask* arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/Audio_DMACallback.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/Audio_Dma.s")
+s32 Audio_DMACallback(s32 addr, s32 len, void* state);
+
+/**
+ * @brief ALDMANew handler for the audio synthesizer: hands back the DMA state and its callback
+ *
+ * On the first call, builds the free list of the 60 DMA buffer records at D_801FFBA0
+ * (each record linked to the previous one) and gives each a 0x500 byte buffer from the
+ * audio heap. Later calls only return the already-built state.
+ *
+ * @param state out; receives the DMA state
+ * @return the DMA callback the synthesizer should use
+ */
+ALDMAproc Audio_Dma(AudioDMAState** state) {
+    s32 i;
+
+    if (D_801FFB90.initialized == 0) {
+        D_801FFB90.unk_08 = &D_801FFBA0[0];
+        for (i = 0; i < 59; i++) {
+            alLink((ALLink*)&D_801FFBA0[i + 1], (ALLink*)&D_801FFBA0[i]);
+            D_801FFBA0[i].unk_10 = (s32)alHeapAlloc(&gAlHeap, 1, 0x500);
+        }
+        D_801FFB90.initialized = 1;
+    }
+    *state = &D_801FFB90;
+    return Audio_DMACallback;
+}
 
 void func_80085290(void) {
     void* temp_s1;
     unk_D_801FFB90* phi_s0 = D_801FFB90.unk_04;
 
     D_800FF63C = 0;
-    if (phi_s0 != NULL) {
-        do {
-            temp_s1 = phi_s0->unk_00;
-            D_800FF63C += 1;
-            if ((u32) (phi_s0->unk_0C + 2) < D_80200054) {
-                if (phi_s0 == D_801FFB90.unk_04) {
-                    D_801FFB90.unk_04 = phi_s0->unk_00;
-                }
-                alUnlink((void*)phi_s0);
-                if (D_801FFB90.unk_08 != 0) {
-                    alLink((void*)phi_s0, D_801FFB90.unk_08);
-                } else {
-                    D_801FFB90.unk_08 = phi_s0;
-                    phi_s0->unk_00 = NULL;
-                    phi_s0->unk_04 = 0;
-                }
+    while (phi_s0 != NULL) {
+        temp_s1 = phi_s0->unk_00;
+        D_800FF63C += 1;
+        if ((u32) (phi_s0->unk_0C + 2) < D_80200054) {
+            if (phi_s0 == D_801FFB90.unk_04) {
+                D_801FFB90.unk_04 = phi_s0->unk_00;
             }
-            phi_s0 = temp_s1;
-        } while (temp_s1 != NULL);
+            alUnlink((void*)phi_s0);
+            if (D_801FFB90.unk_08 != 0) {
+                alLink((void*)phi_s0, D_801FFB90.unk_08);
+            } else {
+                D_801FFB90.unk_08 = phi_s0;
+                phi_s0->unk_00 = NULL;
+                phi_s0->unk_04 = 0;
+            }
+        }
+        phi_s0 = temp_s1;
     }
 }
 
@@ -2477,7 +2523,38 @@ s32 func_8008714C(unk0* arg0, s32 arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80087180.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80087290.s")
+/**
+ * @brief Stop the sound effect a sound record is playing
+ *
+ * Records with an out of range sound id are handed to func_80087088 instead. Otherwise
+ * the sound is selected on the SFX player, muted and stopped (if it was still playing),
+ * then the record is flagged as stopped (0x80) and no longer starting (~4).
+ *
+ * @param arg0 sound record
+ * @return 1 if the sound was stopped on the player, 0 otherwise
+ */
+s32 func_80087290(unk0* arg0) {
+    ALSndId sound = arg0->unk48;
+    s16 state;
+
+    arg0->unk4C = 0;
+    if ((sound >= 0x10) || (sound < 0)) {
+        func_80087088(arg0);
+        return 0;
+    }
+    alSndpSetSound(gSFXPlayerP, sound);
+    alSndpSetVol(gSFXPlayerP, 0);
+    state = alSndpGetState(gSFXPlayerP);
+    arg0->unk3E = state;
+    if (state == 1) {
+        alSndpStop(gSFXPlayerP);
+        arg0->unk20 |= 0x80;
+    } else {
+        arg0->unk20 |= 0x80;
+    }
+    arg0->unk20 &= ~4;
+    return 1;
+}
 
 s32 StopSoundEffect(s32 arg0) {
     unk0* temp_v0 = func_80086EB4(arg0);
@@ -2489,9 +2566,79 @@ s32 StopSoundEffect(s32 arg0) {
     return func_80087290(temp_v0);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80087390.s")
+/**
+ * @brief Pause the sound effect a sound record is playing
+ *
+ * Records that are not currently starting up (0x20 bit 4 clear) are stopped outright by
+ * func_80087290. Otherwise the sound is selected on the SFX player, muted and stopped
+ * (if it was still playing), and the record is flagged as stopped (0x80) while the
+ * starting flag is left alone.
+ *
+ * @param arg0 sound record
+ * @return 1 if the sound was handled on the player, 0 if the sound id was out of range
+ */
+s32 func_80087390(unk0* arg0) {
+    s32 sound;
+    s16 state;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008746C.s")
+    if (!(arg0->unk20 & 4)) {
+        return func_80087290(arg0);
+    }
+    sound = arg0->unk48;
+    if ((sound >= 0x10) || (sound < 0)) {
+        return 0;
+    }
+    alSndpSetSound(gSFXPlayerP, sound);
+    alSndpSetVol(gSFXPlayerP, 0);
+    state = alSndpGetState(gSFXPlayerP);
+    arg0->unk3E = state;
+    if (state == 1) {
+        alSndpStop(gSFXPlayerP);
+        arg0->unk20 |= 0x80;
+    } else {
+        arg0->unk20 |= 0x80;
+    }
+    return 1;
+}
+
+/**
+ * @brief Unlink a sound record from the active list and re-insert it by priority
+ *
+ * The record is spliced out of the list (like func_8008714C), then its old predecessor
+ * is walked backwards while the neighbour is not flagged 0x10 and has a lower unk4C
+ * (priority) than the record being moved. func_80087130 links the record back in after
+ * whichever node the walk stopped on.
+ *
+ * @param arg0 sound record
+ * @return always 0
+ */
+s32 func_8008746C(unk0* arg0) {
+    unk0* temp_v0;
+    unk0* temp_v1;
+    unk0* var_a1;
+
+    temp_v1 = arg0->unk50;
+    var_a1 = arg0->unk54;
+    var_a1->unk50 = temp_v1;
+    temp_v1->unk54 = var_a1;
+    while (var_a1->unk54 != NULL) {
+        temp_v0 = var_a1->unk54;
+        if (var_a1->unk20 & 0x10) {
+            break;
+        }
+        if (var_a1->unk4C >= arg0->unk4C) {
+            break;
+        }
+        var_a1 = temp_v0;
+    }
+    // Fake: emits nothing, but keeps temp_v1 live across the loop so that IDO gives it
+    // $v1 instead of coalescing it onto $v0 with temp_v0. Without it the function is
+    // instruction-identical but scores 15 on those three registers.
+    if (temp_v1 != NULL) {
+    }
+    func_80087130(arg0, var_a1);
+    return 0;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800874E4.s")
 
@@ -2553,8 +2700,7 @@ s32 PlaySoundEffect(s32 id, f32* posX, f32* posY, f32* posZ, s32 arg4, s32 flag)
     }
     if (flag & 0x40) {
         flag |= 0x10;
-    }
-    else if (gIsPaused == 1) {
+    } else if (gIsPaused == 1) {
         return -1;
     }
     if (D_80168DA0 >= 2) {
@@ -2583,7 +2729,30 @@ void func_8008800C(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80088030.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80088198.s")
+/**
+ * @brief Stop every playing sound effect and reset the per-sound bookkeeping
+ *
+ * Walks the active sound record list from its head, stopping each record, then clears the
+ * global sound settings (func_8008800C) and resets every entry of the per-sound table to
+ * a count of 0 and an id of -1.
+ *
+ * @return always 0
+ */
+s32 func_80088198(void) {
+    unk0* rec = D_801FFB84;
+    s32 i;
+
+    while (rec->unk50 != 0) {
+        func_80087290(rec);
+        rec = rec->unk50;
+    }
+    func_8008800C(0);
+    for (i = 0; i < D_80200A90->unk_0E; i++) {
+        D_801FFB88[i].unk0 = 0;
+        D_801FFB88[i].unk4 = -1;
+    }
+    return 0;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80088248.s")
 
@@ -2827,8 +2996,7 @@ s32 LoadBGM(void) {
         } else {
             return 0;
         }
-    }
-    else if (temp_v0 != AL_STOPPED) {
+    } else if (temp_v0 != AL_STOPPED) {
         return 0;
     }
 
@@ -3087,23 +3255,23 @@ s32 PutDList(Mtx** arg0, Gfx** arg1, Gfx* arg2) {
         }
 
         switch (var_v1->words.w0 >> 0x18) {
-            default:
-                var_s2 = 0;
-                gSPDisplayList(sp60++, arg2);
-                break;
-            case G_MTX:
-                //this calculation is bizzare...var_v1->words.w1 can be a segmented addr -
-                mtxArrayIndex = (var_v1->words.w1 - (u32)AnimationSlots) / sizeof(Mtx);
-                if ((mtxArrayIndex >= 0) && (mtxArrayIndex < 40)) {
-                    gSPMatrix(sp60++, sp64, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
-                    sp64++;
-                } else {
-                    gSPMatrix(sp60++, var_v1->words.w1, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
-                }
-                break;
-            case G_DL:
-                PutDList(&sp64, &sp60, (Gfx*)var_v1->words.w1);
-                break;
+        default:
+            var_s2 = 0;
+            gSPDisplayList(sp60++, arg2);
+            break;
+        case G_MTX:
+            //this calculation is bizzare...var_v1->words.w1 can be a segmented addr -
+            mtxArrayIndex = (var_v1->words.w1 - (u32)AnimationSlots) / sizeof(Mtx);
+            if ((mtxArrayIndex >= 0) && (mtxArrayIndex < 40)) {
+                gSPMatrix(sp60++, sp64, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+                sp64++;
+            } else {
+                gSPMatrix(sp60++, var_v1->words.w1, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+            }
+            break;
+        case G_DL:
+            PutDList(&sp64, &sp60, (Gfx*)var_v1->words.w1);
+            break;
         }
         arg2++;
         if (var_s2 == 0) {
@@ -3229,7 +3397,52 @@ void CTTask_Unlink_2(CTTask* task) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/bzero32.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/CTTask_Alloc.s")
+//allocates and zeroes a new CTTask and links it into the gCTTaskHead list.
+//arg1 selects the insertion point: 0 links the new task in front of the task
+//given in `task` (inheriting its taskID), -1 links it behind `task` (same
+//inherit), and any other value is the new task's own taskID, which is inserted
+//in ascending taskID order by walking the list from the head. Returns the new
+//task, or NULL if the allocation failed.
+CTTask* CTTask_Alloc(s16 setRunType, s16 arg1, CTTask* task) {
+    CTTask* newTask;
+    CTTask* alloc = _malloc(sizeof(CTTask));
+    CTTask* prevTask;
+    CTTask* nextTask;
+    s16 taskID;
+
+    if (alloc == NULL) {
+        return NULL;
+    }
+    newTask = alloc;
+    bzero32(newTask, sizeof(CTTask));
+
+    if (arg1 == 0) {
+        nextTask = task->next;
+        taskID = task->taskID;
+    } else if (arg1 == -1) {
+        nextTask = task;
+        taskID = task->taskID;
+    } else {
+        taskID = arg1;
+        nextTask = gCTTaskHead->next;
+        while (nextTask->next != NULL) {
+            if (arg1 < nextTask->taskID) {
+                break;
+            }
+            nextTask = nextTask->next;
+        }
+    }
+
+    prevTask = nextTask->prev;
+    newTask->next = nextTask;
+    newTask->prev = prevTask;
+    nextTask->prev = newTask;
+    prevTask->next = newTask;
+    newTask->taskID = taskID;
+    newTask->runType = setRunType;
+    newTask->unk4E = 0;
+    return newTask;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008D060.s")
 
@@ -3246,8 +3459,8 @@ Gfx* func_8008D168(Gfx* gfxPos, s32 arg1, s32 arg2) {
     gSPSegment(gfxPos++, 0x01, OS_K0_TO_PHYSICAL(_ALIGN((u32)gFrameBuffers - (u32)static0_VRAM_END + (u32)static0_VRAM, 16)));
 
     for (i = 2; i < 16; i++) {
-        if (D_80100F50[i].base_address != NULL) {
-            gSPSegment(gfxPos++, i, OS_K0_TO_PHYSICAL(D_80100F50[i].base_address));
+        if (gLoadedSegments [i].base_address != NULL) {
+            gSPSegment(gfxPos++, i, OS_K0_TO_PHYSICAL(gLoadedSegments [i].base_address));
         }
     }
 
@@ -3274,7 +3487,7 @@ Gfx* func_8008D168(Gfx* gfxPos, s32 arg1, s32 arg2) {
         gDPPipeSync(gfxPos++);
     }
 
-    if (D_800FFEC0 != 0){
+    if (D_800FFEC0 != 0) {
         D_800FFEC0--;
     }
     gSPDisplayList(gfxPos++, D_1015B18);
@@ -3307,7 +3520,13 @@ s32 func_8008D5DC(ContMain* controller) {
     return result;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008D6B4.s")
+s32 func_8008D6B4(ContMain* arg0) {
+    s32 result = arg0->buttons2 & 0xF00;
+    result |= (arg0->buttons2 & 0xF) << 8;
+    result |= arg0->buttons1 & 0xF00;
+    result |= (arg0->buttons1 & 0xF) << 8;
+    return result;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008D6E4.s")
 
@@ -3346,7 +3565,7 @@ void func_8008DB90(Gfx** pGfxPos, GraphicStruct* arg1) {
     Mtx* s4;
     Unk_800FFB74* v1;
 
-    D_800FF8D4 = arg1->unk1e880;
+    gMatrixBufPtr = arg1->mtxBuffer;
 
     if (D_800FFDEC) { } // required for matching
 
@@ -3368,13 +3587,13 @@ void func_8008DB90(Gfx** pGfxPos, GraphicStruct* arg1) {
             }
             v12 = *var_t0;
             for (i = 0; i < v12; i++) {
-                *D_800FF8D4++ = var_a0[v12 * (s32)task->unk40 + i];
+                *gMatrixBufPtr++ = var_a0[v12 * (s32)task->unk40 + i];
             }
         }
         task = task->next;
     }
 
-    D_800FF8D4 = arg1->unk1e880;
+    gMatrixBufPtr = arg1->mtxBuffer;
 
     mtxTranslate = arg1->actorTranslate;
     mtxScale = arg1->actorScale;
@@ -3383,7 +3602,7 @@ void func_8008DB90(Gfx** pGfxPos, GraphicStruct* arg1) {
     task = gCTTaskHead->next;
     while (task->next != NULL) {
         if ((task->unk4E & 1) && task->unk46 > 0) {
-            s4 = D_800FF8D4;
+            s4 = gMatrixBufPtr;
 
             if (D_801FC9AC == 1) {
                 guTranslate(mtxTranslate, task->pos.x, 180.0f - task->pos.y, task->pos.z);
@@ -3397,7 +3616,7 @@ void func_8008DB90(Gfx** pGfxPos, GraphicStruct* arg1) {
             gSPMatrix(gfxPos++, OS_K0_TO_PHYSICAL(mtxRotate), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
             gSPMatrix(gfxPos++, OS_K0_TO_PHYSICAL(mtxScale), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
-            PutDList(&D_800FF8D4, &gfxPos, task->unk50);
+            PutDList(&gMatrixBufPtr, &gfxPos, task->unk50);
             gSPPopMatrix(gfxPos++, G_MTX_MODELVIEW);
 
             if (task->unk4E & 2) {
@@ -3436,32 +3655,32 @@ void func_8008DB90(Gfx** pGfxPos, GraphicStruct* arg1) {
         task = task->next;
     }
 
-    mtxCount = ((u32)D_800FF8D4 - (u32)arg1->unk1e880) / sizeof(Mtx);
+    mtxCount = ((u32)gMatrixBufPtr - (u32)arg1->mtxBuffer) / sizeof(Mtx);
     if (D_800FFDEC < mtxCount) {
         DummiedPrintf("Mtx Max = %u\n", mtxCount);
         D_800FFDEC = mtxCount;
     }
     if (mtxCount > 64) {
-        DummiedPrintf("マトリクスの数をオーバーしました( %u )\n", mtxCount);
+        DummiedPrintf("マトリクスの数をオーバーしました( %u )\n", mtxCount);    // Matrix count exceeded
     }
     *pGfxPos = gfxPos;
 }
 
 Gfx* func_8008E314(Gfx* gfxPos, Tongue* tongues, PlayerActor* players, Camera* cameras, s32 fbIndex) {
     u16 perspNorm;
-    Camera* camera = &cameras[0];
+    Camera* camera = cameras;
 
-    camera->f4.x = 0.0f;
-    camera->f4.y = 0.0f;
-    camera->f4.z = 100.0f;
+    camera->eye.x = 0.0f;
+    camera->eye.y = 0.0f;
+    camera->eye.z = 100.0f;
 
     camera->f3.x = 0.0f;
     camera->f3.y = 0.0f;
     camera->f3.z = 0.0f;
 
-    camera->f5.x = 0.0f;
-    camera->f5.y = 0.0f;
-    camera->f5.z = 0.0f;
+    camera->lookAt.x = 0.0f;
+    camera->lookAt.y = 0.0f;
+    camera->lookAt.z = 0.0f;
 
     camera->f1.z = 0.0f;
     camera->f2.x = 0.0f;
@@ -3470,8 +3689,8 @@ Gfx* func_8008E314(Gfx* gfxPos, Tongue* tongues, PlayerActor* players, Camera* c
     guPerspective(&D_801B3180[fbIndex], &perspNorm, 60.0f, 4.0f / 3.0f, 1.0f, 1000.0f, 1.0f);
     gSPPerspNormalize(gfxPos++, perspNorm);
     guLookAt(&D_801B3240[fbIndex],
-             camera->f4.x, camera->f4.y, camera->f4.z, // Eye
-             camera->f5.x, camera->f5.y, camera->f5.z, // At
+             camera->eye.x, camera->eye.y, camera->eye.z, // Eye
+             camera->lookAt.x, camera->lookAt.y, camera->lookAt.z, // At
              0, 1, 0); // Up
     gSPMatrix(gfxPos++, OS_K0_TO_PHYSICAL(&D_801B3180[fbIndex]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
     gSPMatrix(gfxPos++, OS_K0_TO_PHYSICAL(&D_801B3240[fbIndex]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
@@ -3480,19 +3699,19 @@ Gfx* func_8008E314(Gfx* gfxPos, Tongue* tongues, PlayerActor* players, Camera* c
 
 Gfx* func_8008E488(Gfx* gfxPos, Tongue* tongues, PlayerActor* players, Camera* cameras, s32 fbIndex) {
     u16 perspNorm;
-    Camera* camera = &cameras[0];
+    Camera* camera = cameras;
 
-    camera->f4.x = 0.0f;
-    camera->f4.y = 0.0f;
-    camera->f4.z = 5.0f;
+    camera->eye.x = 0.0f;
+    camera->eye.y = 0.0f;
+    camera->eye.z = 5.0f;
 
     camera->f3.x = 0.0f;
     camera->f3.y = 0.0f;
     camera->f3.z = 0.0f;
 
-    camera->f5.x = 0.0f;
-    camera->f5.y = 0.0f;
-    camera->f5.z = 0.0f;
+    camera->lookAt.x = 0.0f;
+    camera->lookAt.y = 0.0f;
+    camera->lookAt.z = 0.0f;
 
     camera->f1.z = 0.0f;
     camera->f2.x = 0.0f;
@@ -3501,8 +3720,8 @@ Gfx* func_8008E488(Gfx* gfxPos, Tongue* tongues, PlayerActor* players, Camera* c
     guPerspective(&D_801B3300[fbIndex], &perspNorm, 60.0f, 4.0f / 3.0f, 1.0f, 20000.0f, 1.0f);
     gSPPerspNormalize(gfxPos++, perspNorm);
     guLookAt(&D_801B33C0[fbIndex],
-             camera->f4.x, camera->f4.y, camera->f4.z, // Eye
-             camera->f5.x, camera->f5.y, camera->f5.z, // At
+             camera->eye.x, camera->eye.y, camera->eye.z, // Eye
+             camera->lookAt.x, camera->lookAt.y, camera->lookAt.z, // At
              0, 1, 0); // Up
     gSPMatrix(gfxPos++, OS_K0_TO_PHYSICAL(&D_801B3300[fbIndex]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
     gSPMatrix(gfxPos++, OS_K0_TO_PHYSICAL(&D_801B33C0[fbIndex]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
@@ -3532,7 +3751,7 @@ CTTask* func_8008E9AC(s16 arg0, s16 arg1, s16 arg2, s16 arg3, s16* arg4) {
 
     if (task == NULL) {
         DummiedPrintf("エラー\n");
-        while (1){}
+        while (1) {}
     }
     task->unk_5C = arg0;
     task->unk_64 = -24 - arg0;
@@ -3554,7 +3773,7 @@ CTTask* func_8008EA60(s16 arg0, s16 arg1, s16 arg2, s16 arg3, s16* arg4) {
 
     if (task == NULL) {
         DummiedPrintf("エラー\n"); // error
-        while(1){}
+        while (1) {}
     }
     task->unk_5C = -arg0;
     task->unk_64 = arg0 + 280;
@@ -3575,7 +3794,7 @@ CTTask* func_8008EB08(s16 arg0, s16 arg1, s16 arg2, s16 arg3, s16* arg4, f32 arg
 
     if (newTask == NULL) {
         DummiedPrintf("エラー\n");
-        while(1){}
+        while (1) {}
     }
     *arg4 = 0;
     newTask->unk_5C = -arg0;
@@ -3599,7 +3818,7 @@ CTTask* func_8008EBCC(s16 arg0, s16 arg1, s16 arg2, s16 arg3, CTTask* arg4, f32 
 
     if (newTask == NULL) {
         DummiedPrintf("エラー\n");
-        while(1){}
+        while (1) {}
     }
     arg4->runType = 0;
     newTask->unk_5C = arg0;
@@ -3659,7 +3878,7 @@ CTTask* func_8008F050(s16 arg0, s16 arg1, s16 arg2, s16 arg3, s16* arg4) {
 
     if (task == 0) {
         DummiedPrintf("エラー\n");
-        while(1){}
+        while (1) {}
     }
     task->unk_5C = -arg0;
     task->unk_64 = 160;
@@ -3676,8 +3895,8 @@ CTTask* func_8008F050(s16 arg0, s16 arg1, s16 arg2, s16 arg3, s16* arg4) {
     return task;
 }
 
-void func_8008F114(void){
-    if(MQ_IS_FULL(&gSyncMessageQueue)){
+void func_8008F114(void) {
+    if (MQ_IS_FULL(&gSyncMessageQueue)) {
         osRecvMesg(&gSyncMessageQueue, NULL, OS_MESG_BLOCK);
     }
     osRecvMesg(&gSyncMessageQueue, NULL, OS_MESG_BLOCK);
@@ -3692,17 +3911,17 @@ void func_8008F16C(void) {
         func_8005CA38();
         if (D_800FFDF0 == 3) {
             func_8002E0CC();
-            gCamera->f4.x = 0.0f;
-            gCamera->f4.y = 0.0f;
-            gCamera->f4.z = 0.0f;
-            gCamera->f5.x = 1000.0f;
-            gCamera->f5.y = 1000.0f;
-            gCamera->f5.z = 1000.0f;
+            gCameras->eye.x = 0.0f;
+            gCameras->eye.y = 0.0f;
+            gCameras->eye.z = 0.0f;
+            gCameras->lookAt.x = 1000.0f;
+            gCameras->lookAt.y = 1000.0f;
+            gCameras->lookAt.z = 1000.0f;
         }
-        func_80056F48(0, gTongues, gPlayerActors, gCamera);
+        func_80056F48(0, gTongues, gPlayerActors, gCameras);
         setPrimColor(D_800FF8DC, D_800FF8E0, D_800FF8E4, 255);
         printUISprite(0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 320.0f, 240.0f, 0.0f, SPRITE_BLANK);
-        gMainGfxPos = func_8008E314(gMainGfxPos, gTongues, gPlayerActors, gCamera, gFramebufferIndex);
+        gMainGfxPos = func_8008E314(gMainGfxPos, gTongues, gPlayerActors, gCameras, gFramebufferIndex);
         gMainGfxPos = func_8005F408(gMainGfxPos);
         gMainGfxPos = func_8005CA44(gMainGfxPos);
         gDPFullSync(gMainGfxPos++);
@@ -3711,14 +3930,14 @@ void func_8008F16C(void) {
     } else {
         Controller_StartRead();
         func_8005CA38();
-        func_80056F48(0, gTongues, gPlayerActors, gCamera);
+        func_80056F48(0, gTongues, gPlayerActors, gCameras);
         func_8008D114(&gGraphicsList[1 - gFramebufferIndex], 1 - gFramebufferIndex);
         gMainGfxPos = gGraphicsList[gFramebufferIndex].UnkGroup.dlist;
         gMainGfxPos = func_8008D168(gMainGfxPos, gFramebufferIndex, D_800FFDF0);
-        func_8004E784(gContMain, 4, 0, 0);
+        Controller_UpdateAll(gContMain, 4, 0, 0);
         Controller_ParseJoystick(gContMain);
         func_8008D060();
-        gMainGfxPos = func_8008E314(gMainGfxPos, gTongues, gPlayerActors, gCamera, gFramebufferIndex);
+        gMainGfxPos = func_8008E314(gMainGfxPos, gTongues, gPlayerActors, gCameras, gFramebufferIndex);
         gMainGfxPos = func_8005F408(gMainGfxPos);
         if (gGameModeCurrent != GAME_MODE_SAVE_MENU) {
             gMainGfxPos = func_80084884(gMainGfxPos);
@@ -3731,7 +3950,7 @@ void func_8008F16C(void) {
         } else {
             gMainGfxPos = SetFrustum(gMainGfxPos, gFramebufferIndex);
             func_8008DB90(&gMainGfxPos, &gGraphicsList[gFramebufferIndex]);
-            gMainGfxPos = func_8008E488(gMainGfxPos, gTongues, gPlayerActors, gCamera, gFramebufferIndex);
+            gMainGfxPos = func_8008E488(gMainGfxPos, gTongues, gPlayerActors, gCameras, gFramebufferIndex);
             gMainGfxPos = func_8005CA44(gMainGfxPos);
         }
         func_8008C438();
@@ -3749,7 +3968,7 @@ void func_8008F16C(void) {
         D_800FFDF0--;
     }
     func_8008C554();
-    if(MQ_IS_FULL(&gSyncMessageQueue)){
+    if (MQ_IS_FULL(&gSyncMessageQueue)) {
         osRecvMesg(&gSyncMessageQueue, NULL, OS_MESG_BLOCK);
     }
     osRecvMesg(&gSyncMessageQueue, NULL, OS_MESG_BLOCK);
@@ -3761,9 +3980,9 @@ s32 DrawBackground(s32 arg0) {
     UnkBg* var_s0 = D_800FFE58[arg0];
 
     for (; var_s0->spriteID != -1; var_s0++) {
-            if (LoadSprite(var_s0->spriteID) != 0) {
-                DummiedPrintf("ＢＧロードエラー %d\n", var_s0->spriteID);
-            }
+        if (LoadSprite(var_s0->spriteID) != 0) {
+            DummiedPrintf("ＢＧロードエラー %d\n", var_s0->spriteID);
+        }
     }
     return 0;
 }
@@ -3783,7 +4002,7 @@ CTTask* func_8008F7A4(s16 arg0, s16 arg1) {
 
     if (newTask == NULL) {
         DummiedPrintf("Ｂｇ表示タスク作製エラー\n");
-        while(1){}
+        while (1) {}
     }
     newTask->function = func_8008F710;
     newTask->unk_04 = arg0;
@@ -3793,37 +4012,75 @@ CTTask* func_8008F7A4(s16 arg0, s16 arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008F814.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008F900.s")
+u64 func_8008F900(void) {
+    u64 sum = 0;
+    u64* ptr;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/ParseIntToBase10.s")
+    for (ptr = D_801B35B8; (u32)ptr < (u32)D_801FFB7C - 4; ptr++) {
+        sum += *ptr;
+    }
+    return sum;
+}
+
+//writes useInt as a base 10 string of full-width digits into result, using the
+//2-byte-per-digit table D_800FFE78, most significant digit first. The digit
+//count is found by scaling limit by 10 until it passes useInt. Returns result.
+//(note: the terminating zero bytes are written at result[len+1]/result[len+2].)
+char* ParseIntToBase10(s32 useInt, char* result) {
+    s32 base = 10;
+    s32 offset = 0;
+    s32 limit = 10;
+    char* digit;
+
+    while (useInt >= limit) {
+        offset += 2;
+        limit *= base;
+    }
+
+    result[offset + 3] = 0;
+    result[offset + 4] = 0;
+
+    while (TRUE) {
+        digit = &D_800FFE78[(useInt % base) * 2];
+        result[offset] = digit[0];
+        result[offset + 1] = digit[1];
+        if (offset == 0) {
+            break;
+        }
+        offset -= 2;
+        useInt /= base;
+    }
+
+    return result;
+}
 
 //parse int to hex string
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/parseIntToHex.s")
 
 s32 ReturnInputS32(s32 n) {
     switch (n) {
-        case 0:
-            return 0;
-        case 1:
-            return 1;
-        case 2:
-            return 2;
-        case 3:
-            return 3;
-        case 4:
-            return 4;
-        case 5:
-            return 5;
-        case 6:
-            return 6;
-        case 7:
-            return 7;
-        case 8:
-            return 8;
-        case 9:
-            return 9;
-        default:
-            return 0;
+    case 0:
+        return 0;
+    case 1:
+        return 1;
+    case 2:
+        return 2;
+    case 3:
+        return 3;
+    case 4:
+        return 4;
+    case 5:
+        return 5;
+    case 6:
+        return 6;
+    case 7:
+        return 7;
+    case 8:
+        return 8;
+    case 9:
+        return 9;
+    default:
+        return 0;
     }
 }
 
@@ -3833,35 +4090,35 @@ s32 GetBaseStage(s32 stageID) {
     //if boss of area x, return area x
     //otherwise just return area x
     switch (stageID) {
-        case STAGE_JUNGLE:
-        case STAGE_JUNGLEBOSS:
-            ret = STAGE_JUNGLE;
-            break;
-        case STAGE_ANT:
-        case STAGE_ANTBOSS:
-            ret = STAGE_ANT;
-            break;
-        case STAGE_BOMB:
-        case STAGE_BOMBBOSS:
-            ret = STAGE_BOMB;
-            break;
-        case STAGE_DESERT:
-        case STAGE_DESERTBOSS:
-            ret = STAGE_DESERT;
-            break;
-        case STAGE_KIDS:
-        case STAGE_KIDSBOSS:
-            ret = STAGE_KIDS;
-            break;
-        case STAGE_GHOST:
-        case STAGE_GHOSTBOSS:
-            ret = STAGE_GHOST;
-            break;
-        case STAGE_BOSSRUSH:
-            ret = 6;
-            break;
-        default:
-            return -1;
+    case STAGE_JUNGLE:
+    case STAGE_JUNGLEBOSS:
+        ret = STAGE_JUNGLE;
+        break;
+    case STAGE_ANT:
+    case STAGE_ANTBOSS:
+        ret = STAGE_ANT;
+        break;
+    case STAGE_BOMB:
+    case STAGE_BOMBBOSS:
+        ret = STAGE_BOMB;
+        break;
+    case STAGE_DESERT:
+    case STAGE_DESERTBOSS:
+        ret = STAGE_DESERT;
+        break;
+    case STAGE_KIDS:
+    case STAGE_KIDSBOSS:
+        ret = STAGE_KIDS;
+        break;
+    case STAGE_GHOST:
+    case STAGE_GHOSTBOSS:
+        ret = STAGE_GHOST;
+        break;
+    case STAGE_BOSSRUSH:
+        ret = 6;
+        break;
+    default:
+        return -1;
     }
     return ret;
 }
@@ -3948,33 +4205,33 @@ void func_8008FE50(void) {
 }
 
 //unfinished naming
-void func_8008FEA8(s32 arg0, s32 arg1) {
-    s32* var_a0; //unknown what this is
-    Vec3f* var_a0_2;
+void func_8008FEA8(s32 levelIdx, s32 zone) {
+    StageData* stage;
+    Vec3f* spawnPos;
 
-    if (arg1 == 0) {
-        if ((arg0 != 1) && (arg0 != 2) && (arg0 != 4)) {
-            if (arg0 != 5) {
-                return;
-            }
+    if (zone == 0) {
+        if ((levelIdx != STAGE_ANT) &&
+            (levelIdx != STAGE_BOMB) &&
+            (levelIdx != STAGE_KIDS) &&
+            (levelIdx != STAGE_GHOST)) {
+            return;
         }
 
-        // set to the virtual base address of the stage
-        if (!IS_SEGMENTED(gStageLoadData[arg0].stageData)) {
-            var_a0 = (s32*)gStageLoadData[arg0].stageData;
+        if (!IS_SEGMENTED(gStageLoadData[levelIdx].stageData)) {
+            stage = gStageLoadData[levelIdx].stageData;
         } else {
-            var_a0 = (s32*)SEGMENTED_TO_VIRTUAL2(gStageLoadData[arg0].stageData);
+            stage = (StageData*)SEGMENTED_TO_VIRTUAL2(gStageLoadData[levelIdx].stageData);
         }
 
-        if (!IS_SEGMENTED(var_a0[7])) {
-            var_a0_2 = (Vec3f*)var_a0[7];
+        if (!IS_SEGMENTED(stage->Scope)) {
+            spawnPos = &stage->Scope->spawnPos;
         } else {
-            var_a0_2 = SEGMENTED_TO_VIRTUAL(var_a0[7]);
+            spawnPos = SEGMENTED_TO_VIRTUAL(&stage->Scope->spawnPos);
         }
 
-        gPlayerActors->pos.x = var_a0_2->x;
-        gPlayerActors->pos.y = var_a0_2->y;
-        gPlayerActors->pos.z = var_a0_2->z;
+        gPlayerActors->pos.x = spawnPos->x;
+        gPlayerActors->pos.y = spawnPos->y;
+        gPlayerActors->pos.z = spawnPos->z;
     }
 }
 
@@ -3985,193 +4242,197 @@ void Porocess_Mode0(void) {
     s32 i;
 
     switch (gGameModeState) {
-        case 0:
-            D_800FFDF0 = 3;
-            DMAStruct_Print();
+    case 0:
+        D_800FFDF0 = 3;
+        DMAStruct_Print();
 
-            D_80174878++;
-            if (sDebugStageOverride >= 0) {
-                D_80174878 = sDebugStageOverride;
-            }
-            D_80174878 = LoadStageByIndex(D_80174878);
+        D_80174878++;
+        if (sDebugStageOverride >= 0) {
+            D_80174878 = sDebugStageOverride;
+        }
+        D_80174878 = LoadStageByIndex(D_80174878);
 
-            if (gCurrentStage == STAGE_VS) {
-                D_80168DA0 = gControllerNo;
-                Battle_GameType = BATTLE_TYPE_TIME_TRIAL;
-            } else {
-                Battle_GameType = BATTLE_TYPE_NOTBATTLE;
-                D_80168DA0 = 1;
-            }
-
-            //required 1 liner to match
-            for (i = 0; i < D_80168DA0; i++) gPlayerActors[i].active = 1;
-
-            for (; i < ARRAY_COUNT(gPlayerActors); i++) {
-                gPlayerActors[i].active = 0;
-            }
-            for (i = 0; i < ARRAY_COUNT(gTongues); i++) {
-                _bzero(&gTongues[i], sizeof(Tongue));
-            }
-
-            func_8002E0CC();
-            InitField();
-            func_80056EB4();
-            Effect_Init();
-            func_8005C9B8();
-            func_80084788();
-
-            D_80174980 = 0;
-            if (gCurrentStage == STAGE_VS) {
-                Battle_Init();
-            } else {
-                func_8008FE00();
-            }
-            if (gCurrentStage == STAGE_BOMB) {
-                LoadPlayerEyes(4);
-                SetPlayerContextEyes(4, 0, 0);
-                FreePlayerEyes(4);
-            }
-            CTTaskList_Init();
-            if ((gCurrentStage == STAGE_BOSSRUSH) || (gCurrentStage == STAGE_TRAINING)) {
-                func_800C1458(0);
-            }
-            func_8008BE14();
-            func_8008800C(8);
-            gGameModeState++;
-            func_8008F114();
-            gCurrentStageTime = 0;
-            return;
-        case 1:
-            func_8002CE54();
-            return;
-        case 2:
-            gGameModeState = 1;
-            return;
-        case 3:
+        if (gCurrentStage == STAGE_VS) {
+            D_80168DA0 = gControllerNo;
+            Battle_GameType = BATTLE_TYPE_TIME_TRIAL;
+        } else {
             Battle_GameType = BATTLE_TYPE_NOTBATTLE;
-            temp_s0 = gPlayerActors->hp;
-            sp28 = currentStageCrowns;
-            sp24 = D_80247904;
-            DMAStruct_Print();
-
-            D_80174878++;
-            if (sDebugStageOverride >= 0) {
-                D_80174878 = sDebugStageOverride;
-            }
-            D_80174878 = LoadStageByIndex(D_80174878);
-
-            func_8002E0CC();
-            InitField();
-            gPlayerActors->hp = temp_s0;
-            func_80056EB4();
-            Effect_Init();
-            func_8005C9B8();
-            func_80084788();
-            CTTaskList_Init();
-            if (D_800FFEBC != 0) {
-                func_800C1458(1);
-            } else {
-                func_800C1458(0);
-            }
-            gGameModeState = 1;
-            func_8008F114();
-            currentStageCrowns = sp28;
-            D_80247904 = sp24;
-            func_8008FE00();
-            if (gCurrentStage == STAGE_BOMB) {
-                LoadPlayerEyes(4);
-                SetPlayerContextEyes(4, 0, 0);
-                FreePlayerEyes(4);
-                return;
-            }
-        default:
-            return;
-        case 4:
-            for (i = 0; i < 4; i++) {
-                _bzero(&gTongues[i], sizeof(Tongue));
-            }
-
-            gPlayerActors[0].active = 1;
-            for (i = 1; i < ARRAY_COUNT(gPlayerActors); i++) {
-                gPlayerActors[i].active = 0;
-            }
-
-            gNoHit = 0;
-            gOneRun = 0;
-            D_80200B38 = 0;
-            Battle_GameType = BATTLE_TYPE_NOTBATTLE;
-            SaveData_ReadFile(&gGameState);
-            D_80174878 = gCurrentStage - 1;
-            func_8008FD68();
-            SaveData_ReadFile(&gGameState);
-            if (isInOverworld == TRUE) {
-                if (gCurrentStage == STAGE_JUNGLE) {
-                    D_80236978 = 1;
-                }
-                func_800C2820(gGameState.gCurrentZone, &gPlayerActors[0], &gGameState);
-            } else {
-                D_80236978 = 0;
-                func_800C1510(gGameState.gCurrentZone, gGameState.unk33);
-                func_800B4574(&gGameState.unk2, &gGameState.UNK_22);
-                func_800C0760(gGameState.gCurrentZone);
-            }
-            currentStageCrowns = (s32) gGameState.stageCrowns;
-            DummiedPrintf("\n");
-            func_8008FEA8(gCurrentStage, gGameState.gCurrentZone);
-            gGameModeState = 1;
-            func_8008F114();
-            func_8008FE00();
-            if (gCurrentStage == STAGE_BOMB) {
-                LoadPlayerEyes(4);
-                SetPlayerContextEyes(4, 0, 0);
-                FreePlayerEyes(4);
-            }
-            func_8008800C(8);
-            return;
-        case 5:
-            SetProcessType(1);
-            func_8008F114();
-            return;
-        case 6:
-            SetProcessType(6);
-            return;
-        case 7:
-            gNoHit = 0;
-            gOneRun = 0;
-            D_80200B38 = 0;
             D_80168DA0 = 1;
-            Battle_GameType = BATTLE_TYPE_NOTBATTLE;
-            SaveData_ReadFile(&gSaveFile);
-            D_80174878 = gCurrentStage - 1;
-            for (i = 0; i < ARRAY_COUNT(gTongues); i++) {
-                _bzero(&gTongues[i], sizeof(Tongue));
-            }
-            func_8008FD68();
-            SaveData_ReadFile(&gSaveFile);
-            if (isInOverworld == TRUE) {
-                if (gCurrentStage == STAGE_JUNGLE) {
-                    D_80236978 = 1;
-                }
-                func_800C2820(gSaveFile.gCurrentZone, &gPlayerActors[0], &gSaveFile);
-            } else {
-                D_80236978 = 0;
-                func_800C1510(gSaveFile.gCurrentZone, gSaveFile.unk33);
-                func_800B4574(&gSaveFile.unk2, &gSaveFile.UNK_22);
-                func_800C0760(gSaveFile.gCurrentZone);
-            }
-            func_8008FEA8(gCurrentStage, gSaveFile.gCurrentZone);
-            currentStageCrowns = (s32) gSaveFile.stageCrowns;
-            gGameModeState = 1;
-            func_8008F114();
+        }
+
+        //required 1 liner to match
+        for (i = 0; i < D_80168DA0; i++) gPlayerActors[i].active = 1;
+
+        for (; i < ARRAY_COUNT(gPlayerActors); i++) {
+            gPlayerActors[i].active = 0;
+        }
+        for (i = 0; i < ARRAY_COUNT(gTongues); i++) {
+            _bzero(&gTongues[i], sizeof(Tongue));
+        }
+
+        func_8002E0CC();
+        InitField();
+        func_80056EB4();
+        Effect_Init();
+        func_8005C9B8();
+        func_80084788();
+
+        gLevelFlowState = 0;
+        if (gCurrentStage == STAGE_VS) {
+            Battle_Init();
+        } else {
             func_8008FE00();
-            if (gCurrentStage == STAGE_BOMB) {
-                LoadPlayerEyes(4);
-                SetPlayerContextEyes(4, 0, 0);
-                FreePlayerEyes(4);
-            }
+        }
+        if (gCurrentStage == STAGE_BOMB) {
+            LoadPlayerEyes(4);
+            SetPlayerContextEyes(4, 0, 0);
+            FreePlayerEyes(4);
+        }
+        CTTaskList_Init();
+        if ((gCurrentStage == STAGE_BOSSRUSH) || (gCurrentStage == STAGE_TRAINING)) {
+            func_800C1458(0);
+        }
+        func_8008BE14();
+        func_8008800C(8);
+        gGameModeState++;
+        func_8008F114();
+        gCurrentStageTime = 0;
+        return;
+    case 1:
+        func_8002CE54();
+        return;
+    case 2:
+        gGameModeState = 1;
+        return;
+    case 3:
+        Battle_GameType = BATTLE_TYPE_NOTBATTLE;
+        temp_s0 = gPlayerActors->hp;
+        sp28 = currentStageCrowns;
+        sp24 = D_80247904;
+        DMAStruct_Print();
+
+        D_80174878++;
+        if (sDebugStageOverride >= 0) {
+            D_80174878 = sDebugStageOverride;
+        }
+        D_80174878 = LoadStageByIndex(D_80174878);
+
+        func_8002E0CC();
+        InitField();
+        gPlayerActors->hp = temp_s0;
+        func_80056EB4();
+        Effect_Init();
+        func_8005C9B8();
+        func_80084788();
+        CTTaskList_Init();
+        if (D_800FFEBC != 0) {
+            func_800C1458(1);
+        } else {
+            func_800C1458(0);
+        }
+        gGameModeState = 1;
+        func_8008F114();
+        currentStageCrowns = sp28;
+        D_80247904 = sp24;
+        func_8008FE00();
+        if (gCurrentStage == STAGE_BOMB) {
+            LoadPlayerEyes(4);
+            SetPlayerContextEyes(4, 0, 0);
+            FreePlayerEyes(4);
             return;
+        }
+    default:
+        return;
+    case 4:
+        for (i = 0; i < 4; i++) {
+            _bzero(&gTongues[i], sizeof(Tongue));
+        }
+
+        gPlayerActors[0].active = 1;
+        for (i = 1; i < ARRAY_COUNT(gPlayerActors); i++) {
+            gPlayerActors[i].active = 0;
+        }
+
+        gNoHit = 0;
+        gOneRun = 0;
+        D_80200B38 = 0;
+        Battle_GameType = BATTLE_TYPE_NOTBATTLE;
+        SaveData_ReadFile(&gGameState);
+        D_80174878 = gCurrentStage - 1;
+        func_8008FD68();
+        SaveData_ReadFile(&gGameState);
+        if (isInOverworld == TRUE) {
+            if (gCurrentStage == STAGE_JUNGLE) {
+                D_80236978 = 1;
+            }
+            func_800C2820(gGameState.gCurrentZone, gPlayerActors, &gGameState);
+        } else {
+            D_80236978 = 0;
+            func_800C1510(gGameState.gCurrentZone, gGameState.unk33);
+            func_800B4574(&gGameState.unk2, &gGameState.UNK_22);
+            func_800C0760(gGameState.gCurrentZone);
+        }
+        currentStageCrowns = (s32) gGameState.stageCrowns;
+        DummiedPrintf("\n");
+        func_8008FEA8(gCurrentStage, gGameState.gCurrentZone);
+        gGameModeState = 1;
+        func_8008F114();
+        func_8008FE00();
+        if (gCurrentStage == STAGE_BOMB) {
+            LoadPlayerEyes(4);
+            SetPlayerContextEyes(4, 0, 0);
+            FreePlayerEyes(4);
+        }
+        func_8008800C(8);
+        return;
+    case 5:
+        SetProcessType(1);
+        func_8008F114();
+        return;
+    case 6:
+        SetProcessType(6);
+        return;
+    case 7:
+        gNoHit = 0;
+        gOneRun = 0;
+        D_80200B38 = 0;
+        D_80168DA0 = 1;
+        Battle_GameType = BATTLE_TYPE_NOTBATTLE;
+        SaveData_ReadFile(&gSaveFile);
+        D_80174878 = gCurrentStage - 1;
+        for (i = 0; i < ARRAY_COUNT(gTongues); i++) {
+            _bzero(&gTongues[i], sizeof(Tongue));
+        }
+        func_8008FD68();
+        SaveData_ReadFile(&gSaveFile);
+        if (isInOverworld == TRUE) {
+            if (gCurrentStage == STAGE_JUNGLE) {
+                D_80236978 = 1;
+            }
+            func_800C2820(gSaveFile.gCurrentZone, gPlayerActors, &gSaveFile);
+        } else {
+            D_80236978 = 0;
+            func_800C1510(gSaveFile.gCurrentZone, gSaveFile.unk33);
+            func_800B4574(&gSaveFile.unk2, &gSaveFile.UNK_22);
+            func_800C0760(gSaveFile.gCurrentZone);
+        }
+        func_8008FEA8(gCurrentStage, gSaveFile.gCurrentZone);
+        currentStageCrowns = (s32) gSaveFile.stageCrowns;
+        gGameModeState = 1;
+        func_8008F114();
+        func_8008FE00();
+        if (gCurrentStage == STAGE_BOMB) {
+            LoadPlayerEyes(4);
+            SetPlayerContextEyes(4, 0, 0);
+            FreePlayerEyes(4);
+        }
+        return;
     }
 }
+
+#ifdef CRASH_SCREEN
+#include "crash.c"
+#endif
 
 void MainLoop(void) {
     func_8002D080();
@@ -4180,77 +4441,80 @@ void MainLoop(void) {
     }
     gGameModeState = 0;
     osRecvMesg(&gSyncMessageQueue, NULL, OS_MESG_BLOCK);
-    SaveData_LoadRecords(gGameRecords.flags);
+    SaveData_LoadRecords(&gGameRecords);
     if (SaveData_RecordChecksum() != gGameRecords.flags[0]) {
         SaveData_ClearRecords();
     }
     gIsStereo = gGameRecords.flags[1] & 1;
     osRecvMesg(&gSyncMessageQueue, NULL, OS_MESG_BLOCK);
-    while(1){
+    #ifdef CRASH_SCREEN
+    crash_screen_init();
+    #endif
+    while (1) {
         switch (gGameModeCurrent) {
-            case 0:
-                Porocess_Mode0();
-                continue;
-            case 1:
-                Process_StageSelect();
-                continue;
-            case 2:
-                FileWork();
-                continue;
-            case 3:
-                func_8009C904();
-                continue;
-            case 4:
-                func_800A9F84();
-                continue;
-            case 5:
-                func_800AA3F0();
-                continue;
-            case 20:
-                func_800ADE70();
-                continue;
-            case 21:
-                func_800AE4AC();
-                continue;
-            case 6:
-                Process_TitleMenu();
-                continue;
-            case 7:
-                Process_BattleMenu();
-                continue;
-            case 8:
-                Process_OptionsMenu();
-                continue;
-            case 9:
-                Process_GameOver();
-                continue;
-            case 10:
-                Process_JSSLogo();
-                continue;
-            case 11:
-                Process_PreCredits();
-                continue;
-            case 12:
-                Process_NewGameMenu();
-                continue;
-            case 13:
-                func_800A6DD8();
-                continue;
-            case 14:
-                func_800A07E0();
-                continue;
-            case 16:
-                Process_Ranking();
-                continue;
-            case 17:
-                func_800557F8();
-                continue;
-            case 18:
-                Process_Boot();
-                continue;
-            case 19:
-                Process_SunsoftLogo();
-                continue;
+        case 0:
+            Porocess_Mode0();
+            continue;
+        case 1:
+            Process_StageSelect();
+            continue;
+        case 2:
+            FileWork();
+            continue;
+        case 3:
+            func_8009C904();
+            continue;
+        case 4:
+            func_800A9F84();
+            continue;
+        case 5:
+            func_800AA3F0();
+            continue;
+        case 20:
+            func_800ADE70();
+            continue;
+        case 21:
+            func_800AE4AC();
+            continue;
+        case 6:
+            Process_TitleMenu();
+            continue;
+        case 7:
+            Process_BattleMenu();
+            continue;
+        case 8:
+            Process_OptionsMenu();
+            continue;
+        case 9:
+            Process_GameOver();
+            continue;
+        case 10:
+            Process_JSSLogo();
+            continue;
+        case 11:
+            Process_PreCredits();
+            continue;
+        case 12:
+            Process_NewGameMenu();
+            continue;
+        case 13:
+            func_800A6DD8();
+            continue;
+        case 14:
+            func_800A07E0();
+            continue;
+        case 16:
+            Process_Ranking();
+            continue;
+        case 17:
+            func_800557F8();
+            continue;
+        case 18:
+            Process_Boot();
+            continue;
+        case 19:
+            Process_SunsoftLogo();
+            continue;
         }
         DummiedPrintf("No Process = %d\n", gGameModeCurrent);
     }
@@ -4286,22 +4550,22 @@ s32 func_80090B10(s32 time, s32 stageID) {
 void func_80090BC0(void) {
     LoadSprite(SPRITE_SPECIFIC_SYMBOLS);
     switch (gCurrentStage) {
-        case STAGE_KIDSBOSS:
-            LoadSprite(SPRITE_PUFF2);
-            LoadSprite(SPRITE_CHOCOKID);
-            break;
-        case STAGE_ANTBOSS:
-            LoadSprite(SPRITE_GRAYANT);
-            break;
-        case STAGE_BOMBBOSS:
-            LoadSprite(SPRITE_BOMBDOKKAN_PART);
-            LoadSprite(SPRITE_BOMBDOKKAN_EYE);
-            LoadSprite(SPRITE_EYEBLINK_UNUSED);
-            LoadSprite(SPRITE_EYETWIRL_UNUSED);
-        default:
-        case STAGE_JUNGLEBOSS:
-        case STAGE_DESERTBOSS:
-            break;
+    case STAGE_KIDSBOSS:
+        LoadSprite(SPRITE_PUFF2);
+        LoadSprite(SPRITE_CHOCOKID);
+        break;
+    case STAGE_ANTBOSS:
+        LoadSprite(SPRITE_GRAYANT);
+        break;
+    case STAGE_BOMBBOSS:
+        LoadSprite(SPRITE_BOMBDOKKAN_PART);
+        LoadSprite(SPRITE_BOMBDOKKAN_EYE);
+        LoadSprite(SPRITE_EYEBLINK_UNUSED);
+        LoadSprite(SPRITE_EYETWIRL_UNUSED);
+    default:
+    case STAGE_JUNGLEBOSS:
+    case STAGE_DESERTBOSS:
+        break;
     }
 }
 
@@ -4333,7 +4597,7 @@ void func_80090E2C(void) {
 
     if (task == NULL) {
         DummiedPrintf("エラー\n");
-        while(1){}
+        while (1) {}
     }
     task->function = func_80090E78;
 }
@@ -4358,15 +4622,15 @@ void func_800910E4(CTTask* task) {
     task->unk84 = 1.5f;
     task->unk7C = -20;
     switch (gCurrentStage) {
-        case STAGE_JUNGLEBOSS:
-            task->unk88 = 95;
-            break;
-        case STAGE_BOMBBOSS:
-            task->unk88 = 102;
-            break;
-        case STAGE_DESERTBOSS:
-            task->unk88 = 90;
-            break;
+    case STAGE_JUNGLEBOSS:
+        task->unk88 = 95;
+        break;
+    case STAGE_BOMBBOSS:
+        task->unk88 = 102;
+        break;
+    case STAGE_DESERTBOSS:
+        task->unk88 = 90;
+        break;
     }
     task->unk4E = 0;
 }
@@ -4393,15 +4657,52 @@ void func_800911D0(CTTask* task) {
         task->unk88 = 150;
         task->unk7C = -15;
         task->unk84 = 1.5f;
-        while (func_8008D7B0(task) == 0){}
+        while (func_8008D7B0(task) == 0) {}
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009131C.s")
+void func_8009131C(CTTask* task) {
+    CTTask* temp_v0;
+
+    if (func_80090D28(task) != 0) {
+        temp_v0 = task->unk58;
+        task->function = func_80091390;
+        task->unk44 = 1;
+        temp_v0->unk54 = 2;
+        PLAY_SFX(SFX_ChameleonLand, 0, 16);
+    }
+    func_8008D7B0(task);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80091390.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80091420.s")
+/**
+ * @brief State in the boss-stage task state machine: wait unk_5C frames, then hand off to func_80091694
+ *
+ * Ticks the task with mode 2 each frame while the countdown runs. When it hits zero,
+ * sets what look like jump/launch parameters (unk7C/unk84/unk88, same set the sibling
+ * states tune per boss stage) and advances the task until func_8008D7B0 reports done.
+ * Sibling states branch on the boss stages (see func_800911D0 / the STAGE_*BOSS switch
+ * above), but exactly whose sequence this task drives is unconfirmed.
+ *
+ * @param task
+ */
+void func_80091420(CTTask* task) {
+    task->unk44 = 2;
+    func_8008D7B0(task);
+    if (task->unk_5C != 0) {
+        task->unk_5C--;
+        return;
+    }
+    task->function = func_80091694;
+    task->rotA = 0.0f;
+    task->unk88 = 150.0f;
+    task->unk7C = -15.0f;
+    task->unk84 = 1.5f;
+    task->unk60 = 8;
+    task->unk44 = 1;
+    while (func_8008D7B0(task) == 0) {}
+}
 
 void func_800914CC(CTTask* task) {
     if (!(task->unk7C < 0)) {
@@ -4419,7 +4720,7 @@ void func_800914CC(CTTask* task) {
 
 void func_80091548(CTTask* task) {
     task->unk44 = 1;
-    while (func_8008D7B0(task) == 0){}
+    while (func_8008D7B0(task) == 0) {}
     task->unk60 -= 1;
     if (task->unk60 <= 0) {
         task->function = func_800915C0;
@@ -4442,7 +4743,7 @@ void func_800915C0(CTTask* arg0) {
             arg0->unk7C = -15.0f;
             arg0->unk60 = 4;
             arg0->function = func_80091548;
-            goto func; //pls match better
+            goto func; //shared tail required for match
         }
     } else {
 func:
@@ -4596,8 +4897,7 @@ void func_80092690(CTTask* task) {
             task->unk7C *= -1.0f;
             task->unk7C *= 0.7;
             task->unk_5C++;
-        }
-        else {
+        } else {
             task->function = func_8009273C;
             task->unk44 = 20;
             task->unk60 = 30;
@@ -4608,8 +4908,7 @@ void func_80092690(CTTask* task) {
 void func_8009273C(CTTask* task) {
     if (task->unk60 != 0) {
         task->unk60--;
-    }
-    else if (func_8008D7FC(task) != 0) {
+    } else if (func_8008D7FC(task) != 0) {
         task->unk44 = 21;
         task->function = func_800927A8;
         func_8009236C(task);
@@ -5007,7 +5306,20 @@ void func_80094120(CTTask* task) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800941C0.s")
+void func_800941C0(CTTask* task) {
+    if (task->unk60 != 0) {
+        task->unk60 -= 1;
+        return;
+    }
+    if (func_8008D7FC(task) != 0) {
+        CTTask* other = task->unk58;
+
+        task->unk_5C = 2;
+        task->unk60 = 0;
+        other->unk54 = 7;
+        task->function = func_80094220;
+    }
+}
 
 void func_80094220(CTTask* task) {
 }
@@ -5307,7 +5619,24 @@ void func_80095500(CTTask* task) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80095D38.s")
 
+#ifdef NON_MATCHING
+extern u32* D_801B3178;
+
+// score 280
+void func_80095E44(void) {
+    u32 off = D_801B3178[1];
+
+    if (!IS_SEGMENTED(D_801B3178[1])) {
+        D_801B3174 = D_801B3178[1];
+    } else {
+        D_801B3174 = D_80100F50[SEGMENT_INDEX(D_801B3178[1])].base_address + SEGMENT_OFFSET_CUSTOM(off);
+    }
+    func_80095A3C(D_801B3174);
+    func_80095780();
+}
+#else
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80095E44.s")
+#endif
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80095EC8.s")
 
@@ -5329,36 +5658,45 @@ const char segNameWhite[] = "白";
 const char segNameSpace[] = "スペ";
 const char segNameDemo[] = "デモ";
 
-/* Segment Loading? */
-s32 func_8009603C(s32 segmentID, s32 arg1) {
-    s32 temp_s0;
+/**
+ * @brief Loads a segment from ROM into RAM and updates the runtime segment table.
+ *
+ * Calculates the segment size from gSegTable, places it below topAddr in RAM,
+ * initiates a DMA transfer from ROM, and waits for completion before returning.
+ *
+ * @param segmentID Index into gSegTable and gLoadedSegments identifying the segment to load
+ * @param topAddr Upper bound address in RAM, the segment is placed immediately below this address
+ * @return (s32) Base address in RAM where the segment was loaded, or 0 on DMA error
+ */
+s32 Segment_Load(s32 segmentID, s32 topAddr) {
+    s32 dmaHandle ;
     s32 size;
-    unk80100F50* temp_s3 = &D_80100F50[segmentID];
-    segTableEntry* segment = &gSegTable[segmentID];
+    loadedSegInfo* segmentLocation = &gLoadedSegments [segmentID];  // segment loaded data
+    segTableEntry* segmentInfo = &gSegTable[segmentID]; // segment information table
 
-    size = (u32) segment->ramAddrEnd - (u32) segment->ramAddrStart;
-    temp_s3->base_address = arg1 - size;
-    temp_s3->unk4 = (u32) arg1;
-    temp_s0 = DMA_Copy(segment->romAddrStart, (void* ) temp_s3->base_address, size);
-    temp_s3->unk4 = temp_s3->base_address + size;
-    if (temp_s0 < 0) {
-        DummiedPrintf("エラー %d\n", temp_s0);
+    size = (u32) segmentInfo->ramAddrEnd - (u32) segmentInfo->ramAddrStart;
+    segmentLocation->base_address = topAddr - size;
+    segmentLocation->end_address = (u32) topAddr;
+    dmaHandle = DMA_Copy(segmentInfo->romAddrStart, (void* ) segmentLocation->base_address, size);
+    segmentLocation->end_address = segmentLocation->base_address + size;
+    if (dmaHandle < 0) {
+        DummiedPrintf("エラー %d\n", dmaHandle);
         return 0;
     }
-    while (func_800A72E8(temp_s0) == 0) {}
-    DummiedPrintf("%sセグメント(%dk)読み込み(%X)\n", segment->name, (u32) size / 1024, size);
-    return (s32) temp_s3->base_address;
+    while (func_800A72E8(dmaHandle) == 0) {}
+    DummiedPrintf("%sセグメント(%dk)読み込み(%X)\n", segmentInfo->name, (u32) size / 1024, size);
+    return (s32) segmentLocation->base_address;
 }
 
 /* Stage Loading? */
-u32 func_80096128(s32 stageToLoad, s32 inpAddr) {
+u32 Stage_Load(s32 stageToLoad, s32 inpAddr) {
     StageLoadData* stageData = &gStageLoadData[stageToLoad];
     s32 size = (u32) stageData->ramEnd - (u32) stageData->ramStart;
     s32 dmaResult;
 
-    D_80100F50[0x3].base_address = inpAddr - size;
-    D_80100F50[0x3].unk4 = D_80100F50[0x3].base_address + size;
-    dmaResult = DMA_Copy(stageData->romStart, (void*)D_80100F50[0x3].base_address, size);
+    gLoadedSegments[0x3].base_address = inpAddr - size;
+    gLoadedSegments[0x3].end_address = gLoadedSegments [0x3].base_address + size;
+    dmaResult = DMA_Copy(stageData->romStart, (void*)gLoadedSegments [0x3].base_address, size);
     if (dmaResult < 0) {
         DummiedPrintf("エラー %d\n", dmaResult);    //Error
         return 0;
@@ -5366,19 +5704,34 @@ u32 func_80096128(s32 stageToLoad, s32 inpAddr) {
         while (func_800A72E8(dmaResult) == 0);
         DummiedPrintf("マップデータ(%dk)読み込み(%X)\n", (u32)size / 1024, size);
         // Map data(%dk),  read(%X)
-        return D_80100F50[3].base_address;
+        return gLoadedSegments[3].base_address;
     }
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/LoadStageByIndex.s")
 
 void func_800966E0(void) {
-    D_80100F50[1].base_address = (u32)&gFrameBuffers - _ALIGN((u32)static0_VRAM_END - (u32)static0_VRAM, 16);
-    D_80100F50[1].unk4 = (u32)&gFrameBuffers;
-    D_801FFB78 = func_8009603C(gSelectedCharacters[0] + 8, D_80100F50[1].base_address);
+    gLoadedSegments[1].base_address = (u32)&gFrameBuffers - _ALIGN((u32)static0_VRAM_END - (u32)static0_VRAM, 16);
+    gLoadedSegments[1].end_address = (u32)&gFrameBuffers;
+    D_801FFB78 = Segment_Load(gSelectedCharacters[0] + 8, gLoadedSegments [1].base_address);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80096748.s")
+/**
+ * Maps a d-pad direction bitmask to a direction
+ * index 1-8 via D_80100348. Returns -1 when the mask is not a known direction.
+ */
+s32 GetDirectionIndex(u16 dirMask) {
+    s32 i;
+    s32 ret = -1;
+
+    for (i = 0; i != 9; i++) {
+        if (D_80100348[i] == dirMask) {
+            ret = i;
+            break;
+        }
+    }
+    return ret;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/CanAccessStage.s")
 
@@ -5420,30 +5773,30 @@ f32 func_80096898(u16 arg0) {
     f32 floatVar = 0.0f;
 
     switch (arg0) {
-        default:
-            break;
-        case 0x800:
-            floatVar = 180.0f;
-            break;
-        case 0x900:
-            floatVar = 135.0f;
-            break;
-        case 0x100:
-            floatVar = 90.0f;
-            break;
-        case 0xC00:
-            floatVar = 45.0f;
-            break;
-        case 0x600:
-            floatVar = -45.0f;
-            break;
-        case 0x200:
-            floatVar = -90.0f;
-            break;
-        case 0xA00:
-            floatVar = -135.0f;
-        case 0x400:
-            break;
+    default:
+        break;
+    case 0x800:
+        floatVar = 180.0f;
+        break;
+    case 0x900:
+        floatVar = 135.0f;
+        break;
+    case 0x100:
+        floatVar = 90.0f;
+        break;
+    case 0xC00:
+        floatVar = 45.0f;
+        break;
+    case 0x600:
+        floatVar = -45.0f;
+        break;
+    case 0x200:
+        floatVar = -90.0f;
+        break;
+    case 0xA00:
+        floatVar = -135.0f;
+    case 0x400:
+        break;
     }
     return floatVar;
 }
@@ -5509,7 +5862,7 @@ CTTask* func_80097498(void) {
 
     if (temp_v0 == NULL) {
         DummiedPrintf("エラー\n");
-        while (1){}
+        while (1) {}
     }
     temp_v0->function = func_80097508;
     temp_v0->unk66 = 0;
@@ -5576,7 +5929,7 @@ void func_80097D1C(CTTask* task) {
     func_800610B8();
     printUISprite(80, 16, 0, 0, 1, 0, 0, 0, SPRITE_BATTLE_STAGETITLEBOARD);
     printUISprite(208, 16, 0, 0, 1, 0, 0, 2, SPRITE_BATTLE_STAGETITLEBOARD);
-    for (i = 0x70; i < 0xB1; i += 0x20){
+    for (i = 0x70; i < 0xB1; i += 0x20) {
         printUISprite(i, 16, 0, 0, 1, 0, 0, 1, SPRITE_BATTLE_STAGETITLEBOARD);
     }
     func_800610A8();
@@ -5624,7 +5977,7 @@ void func_800983C8(CTTask* task) {
     func_80059F28(x + 96, y, 0, 0, 1, 0, 0, 2, SPRITE_BATTLE_BIGBOARD);
     func_80059F28(x + 96, y + 24, 0, 0, 1, 0, 0, 5, SPRITE_BATTLE_BIGBOARD);
     func_80059F28(x + 96, y + 40, 0, 0, 1, 0, 0, 8, SPRITE_BATTLE_BIGBOARD);
-    for (i = x + 32; i <= x + 64; i += 32){
+    for (i = x + 32; i <= x + 64; i += 32) {
         func_80059F28(i, y, 0, 0, 1, 0, 0, 1, SPRITE_BATTLE_BIGBOARD);
         func_80059F28(i, y + 24, 0, 0, 1, 0, 0, 4, SPRITE_BATTLE_BIGBOARD);
         func_80059F28(i, y + 40, 0, 0, 1, 0, 0, 7, SPRITE_BATTLE_BIGBOARD);
@@ -5647,7 +6000,7 @@ void func_80098684(u8* arg0, u8* arg1, u8* arg2, u8* arg3, u8* arg4, u8* arg5) {
         *arg4 = 220;
         *arg5 = 1;
     } else if (temp_t6 == 1) {
-         temp_f0 = (ABS2(temp_v0)) / (Eight);
+        temp_f0 = (ABS2(temp_v0)) / (Eight);
         *arg0 = 22;
         *arg1 = 200;
         *arg2 = 10;
@@ -5662,7 +6015,7 @@ void func_80098684(u8* arg0, u8* arg1, u8* arg2, u8* arg3, u8* arg4, u8* arg5) {
         *arg3 = 22;
         *arg4 = 200;
         *arg5 = 10;
-    } else{
+    } else {
         temp_f0 = (8 - (ABS2(temp_v0))) / (Eight);
         *arg0 = 220;
         *arg1 = 220;
@@ -5708,7 +6061,7 @@ void func_80098F50(CTTask* task) {
         SetTextGradient_TopBottom(127, 127, 60, task->unk_68, 30, 30, 20, task->unk_68);
     }
     PrintText(x, y, 0, 1, 0, 0, "ＤＡＴＡ", 1);
-    PrintText(x + 72, y, 0, 1, 0, 0, ParseIntToBase10(unk62 + 1, &resultChar[0]), 1);
+    PrintText(x + 72, y, 0, 1, 0, 0, ParseIntToBase10(unk62 + 1, resultChar), 1);
     func_800610B8();
     if ((u16) task->unk72 == 1) {
         temp = task->unk_64;
@@ -5719,8 +6072,8 @@ void func_80098F50(CTTask* task) {
         printUISprite(x + 20 + 16 + 9, y + 33, 0, 0, 1, 16, 16, 20, SPRITE_TEXTBIG);
         func_800612F0(0);
         SetTextGradient_TopBottom(20, 100, 1, 255, 240, 220, 0, 255);
-        PrintText(x + 20 + 32 + 10, y + 30, 0, 1, 12, 20, ParseIntToBase10(temp, &resultChar[0]), 1);
-    } else{
+        PrintText(x + 20 + 32 + 10, y + 30, 0, 1, 12, 20, ParseIntToBase10(temp, resultChar), 1);
+    } else {
         SetTextGradient_LeftRight(1, 1, 1, 255, 1, 1, 1, 128);
         PrintText(x + 16, y + 32, 0, 1, 8, 16, "ＮＯ  ＤＡＴＡ！", 1);
     }
@@ -5821,14 +6174,83 @@ void func_8009A988(CTTask* arg0) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/MakeSaveMaster.s")
+//builds the save/load menu's task tree: the 0x64 master task that draws the
+//menu, a 0x46 helper, one 0x62 task per save file slot, one 0x65 task per
+//player, and the 0xF0 task that is returned (every task keeps the master in
+//unk58). Also clamps gGameRecords.savedStageData.index to 0..3 on the way in.
+CTTask* MakeSaveMaster(void) {
+    CTTask* master;
+    CTTask* task;
+    CTTask* lastTask;
+    s32 i;
+
+    SaveData_LoadAllFiles((u8*)gSaveFiles);
+
+    task = CTTask_Alloc(1, 0x64, NULL);
+    if (task == NULL) {
+        //"MakeSaveMaster メモリが足りません\n"("MakeSaveMaster out of memory\n")
+        DummiedPrintf("MakeSaveMaster メモリが足りません\n");
+        while (1) {}
+    }
+
+    task->unk_04 = 0;
+    task->pos.x = 64.0f;
+    task->pos.y = 64.0f;
+    task->pos.z = 0.0f;
+    task->unk6A = gGameRecords.savedStageData.index;
+    if (task->unk6A < 0) {
+        task->unk6A = 0;
+        gGameRecords.savedStageData.index = 0;
+    }
+    if (task->unk6A >= 4) {
+        task->unk6A = 3;
+        gGameRecords.savedStageData.index = 3;
+    }
+    task->function = func_8009ABF4;
+    master = task;
+    master->unk54 = 0;
+    master->unk66 = 0;
+    master->unk5E = 1;
+
+    task = CTTask_Alloc(1, 0x46, NULL);
+    task->function = func_80097D1C;
+    task->unk58 = master;
+
+    for (i = 0; i < 4; i++) {
+        task = CTTask_Alloc(3, 0x62, NULL);
+        if (task == NULL) {
+            DummiedPrintf("MakeSaveMaster メモリが足りません\n");
+            while (1) {}
+        }
+        task->unk_62 = i;
+        task->function = func_8009960C;
+        task->unk58 = master;
+    }
+
+    for (i = 0; i < 1; i++) {
+        task = CTTask_Alloc(1, 0x65, NULL);
+        task->unk58 = master;
+        task->unk6E = 0;
+        task->unk_70 = 0;
+        task->unk_62 = D_800FF8E8;
+        task->function = func_8009A57C;
+    }
+
+    lastTask = CTTask_Alloc(1, 0xF0, NULL);
+    if (lastTask == NULL) {
+        DummiedPrintf("MakeSaveMaster メモリが足りません\n");
+        while (1) {}
+    }
+    lastTask->unk58 = master;
+    lastTask->function = func_8009A988;
+    return lastTask;
+}
 
 void func_8009ABF4(CTTask* arg0) {
     if (func_8008EC90() != 0) {
         if (arg0->unk54 == 1) {
             arg0->function = func_8009AC74;
-        }
-        else if (arg0->unk54 == 3) {
+        } else if (arg0->unk54 == 3) {
             arg0->function = func_8009AFFC;
             arg0->unk5E = 0;
             func_8008E9AC(0x20, 0, 0, 0, &arg0->unk5E);
@@ -5840,8 +6262,7 @@ void func_8009AC74(CTTask* arg0) {
     func_80099AF4(arg0);
     if (arg0->unk54 == 2) {
         arg0->function = func_8009ACC8;
-    }
-    else if (arg0->unk54 == 0) {
+    } else if (arg0->unk54 == 0) {
         arg0->function = func_8009ABF4;
     }
 }
@@ -5855,10 +6276,9 @@ void func_8009ACC8(CTTask* task) {
     if (SaveData_UpdateFile(task->unk6A, &gGameState) != 0) {
         task->function = func_8009AE38;
         task->unk_68 = 0x3C;
-    }
-    else {
+    } else {
         task->function = func_8009ADDC;
-        *(&D_80200C08 + 0x69) = task->unk6A;
+        gGameRecords.savedStageData.index = task->unk6A;
         D_801FC9A4 = 0;
     }
 }
@@ -5867,7 +6287,7 @@ void func_8009AD74(CTTask* task) {
     CTTask* var_v0 = gCTTaskHead;
     CTTask* var_v1 = var_v0->next;
 
-    while (var_v1 != NULL){
+    while (var_v1 != NULL) {
         if ((var_v0->runType == 3) && (task->unk6A == var_v0->unk_62)) {
             var_v1 = var_v0->next;
             var_v0->function = func_80099598;
@@ -5988,7 +6408,7 @@ void func_8009BA38(CTTask* task) {
 
 void func_8009BAF4(CTTask* task) {
     SaveData_LoadFile(task->unk6A, &gGameState);
-    (&D_80200C08)[105] = task->unk6A;
+    gGameRecords.savedStageData.index = task->unk6A;
     D_800FF8EC = task->unk6A;
     task->unk_68 = 8;
     task->function = func_8009BB54;
@@ -6034,8 +6454,7 @@ void func_8009BC98(CTTask* arg0) {
 
     if (arg0->unk54 == 0xA) {
         arg0->function = func_8009BCF0;
-    }
-    else if (arg0->unk54 == 4) {
+    } else if (arg0->unk54 == 4) {
         arg0->function = func_8009BA38;
     }
 }
@@ -6131,7 +6550,7 @@ void func_8009C394(CTTask* task) {
     CTTask* newTask;
     CTTask* next;
 
-    for (newTask = gCTTaskHead, next = newTask->next; next != NULL; newTask = next, next = next->next){
+    for (newTask = gCTTaskHead, next = newTask->next; next != NULL; newTask = next, next = next->next) {
         if (newTask->runType == 3) {
             if (task->unk_64 == newTask->unk_62) {
                 newTask->function = func_800998CC;
@@ -6162,7 +6581,7 @@ void func_8009C644(CTTask* task) {
 
     for (at = gCTTaskHead, next = at->next;
         next != NULL;
-        at = next, next = next->next){
+        at = next, next = next->next) {
         if ((at->runType == 3) && (task->unk6A == at->unk_62)) {
             next = at->next;
             at->function = func_80099598;
@@ -6238,7 +6657,7 @@ void func_8009CBC0(void) {
     func_80059F28(0, 0, 0, 0, 1, 320, 240, 0, SPRITE_BLANK);
     func_800610B8();
     func_80059F28(48, 16, 0, 0, 1, 32, 32, 0, SPRITE_BATTLE_STAGETITLEBOARD);
-    for (i = 80; i < 209; i += 0x20){
+    for (i = 80; i < 209; i += 0x20) {
         func_80059F28(i, 16, 0, 0, 1, 32, 32, 1, SPRITE_BATTLE_STAGETITLEBOARD);
     }
     func_80059F28(240, 16, 0, 0, 1, 32, 32, 2, SPRITE_BATTLE_STAGETITLEBOARD);
@@ -6246,20 +6665,20 @@ void func_8009CBC0(void) {
     func_80059F28(256, 56, 0, 0, 1, 32, 24, 2, SPRITE_BATTLE_BIGBOARD);
     func_80059F28(32, 200, 0, 0, 1, 32, 24, 6, SPRITE_BATTLE_BIGBOARD);
     func_80059F28(256, 200, 0, 0, 1, 32, 24, 8, SPRITE_BATTLE_BIGBOARD);
-    for (i = 0x40; i < 225; i += 0x20){
+    for (i = 0x40; i < 225; i += 0x20) {
         func_80059F28(i, 56, 0, 0, 1, 32, 24, 1, SPRITE_BATTLE_BIGBOARD);
     }
-    for (i = 0x40; i != 0x100; i += 0x20){
+    for (i = 0x40; i != 0x100; i += 0x20) {
         func_80059F28(i, 200, 0, 0, 1, 32, 24, 7, SPRITE_BATTLE_BIGBOARD);
     }
-    for (j = 80; j < 177; j += 0x18){
+    for (j = 80; j < 177; j += 0x18) {
         func_80059F28(32, j, 0, 0, 1, 32, 24, 3, SPRITE_BATTLE_BIGBOARD);
     }
-    for (j = 80; j != 200; j += 0x18){
+    for (j = 80; j != 200; j += 0x18) {
         func_80059F28(256, j, 0, 0, 1, 32, 24, 5, SPRITE_BATTLE_BIGBOARD);
     }
-    for (i = 0x40; i != 0x100; i += 0x20){
-        for (j = 80; j != 200; j += 0x18){
+    for (i = 0x40; i != 0x100; i += 0x20) {
+        for (j = 80; j != 200; j += 0x18) {
             func_80059F28(i, j, 0, 0, 1, 32, 24, 4, SPRITE_BATTLE_BIGBOARD);
         }
     }
@@ -6269,15 +6688,29 @@ void func_8009CFA8(void) {
     s32 i, j;
 
     func_800610B8();
-    for (i = 0; i != 5; i++){
-        for (j = 0; j != 8; j++){
+    for (i = 0; i != 5; i++) {
+        for (j = 0; j != 8; j++) {
             func_800612F0(i);
             func_80059F28(j * 40, i * 48, 0, 0, 1, 0, 0, j, SPRITE_BATTLE_CHAMELEONBACKGROUND);
         }
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009D08C.s")
+void func_8009D08C(CTTask* task) {
+    CTTask* task2 = task->unk58;
+    s32 val = task2->unk54;
+
+    if (val == 0xF) {
+        func_8009CFA8();
+        return;
+    }
+    if (val >= 7) {
+        func_8009CBC0();
+        return;
+    }
+    func_8009CFA8();
+}
+
 
 //battle mode
 const char D_8010E60C[] = "ＤＡＶＹ";
@@ -6287,7 +6720,27 @@ const char D_8010E630[] = "ＬＩＮＤＡ";
 const char D_8010E63C[] = "ＢＬＡＣＫ";
 const char D_8010E648[] = "ＷＨＩＴＥ";
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009D0EC.s")
+void func_8009D1CC(CTTask*);
+
+CTTask* func_8009D0EC(void) {
+    CTTask* sp20;
+    CTTask* temp_v0;
+
+    func_8008EA60(0x20, 0, 0, 0, NULL);
+    sp20 = CTTask_Alloc(1, 0x64, NULL);
+
+    ASSERT_MSG(sp20 != NULL, "エラー\n");
+
+    sp20->function = func_8009D1CC;
+    temp_v0 = sp20;
+    sp20 = CTTask_Alloc(1, 0x63, NULL);
+
+    ASSERT_MSG(sp20 != NULL, "エラー\n");
+
+    sp20->function = func_8009D08C;
+    sp20->unk58 = temp_v0;
+    return sp20;
+}
 
 void func_8009D19C(CTTask* task) {
     if (func_8008EC90()) {
@@ -6295,7 +6748,77 @@ void func_8009D19C(CTTask* task) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009D1CC.s")
+void func_8009D1CC(CTTask* arg0) {
+    CTTask* temp_v0_2;
+    CTTask* temp_v0 = arg0;
+    s32 i;
+
+    temp_v0->unk_04 = 0;
+    temp_v0->function = func_8009DA20;
+    temp_v0->unk54 = 2;
+    temp_v0->unk_64 = 0;
+    temp_v0->unk_5C = 0;
+
+    temp_v0->pos.x = 80.0f;
+    temp_v0->pos.y = 120.0f;
+    temp_v0->pos.z = 10.0f;
+
+    for (i = 0; i < 6; i++) {
+        temp_v0->unk94[i] = 0xFF;
+    }
+
+    if ((sDebugBitfeild >= 0) && (sDebugBitfeild & 2)) {
+        D_80200B30 = 1;
+    } else if (gGameRecords.flags[1] & 4) {
+        D_80200B30 = 1;
+    } else {
+        D_80200B30 = 0;
+    }
+
+    if ((sDebugBitfeild >= 0) && (sDebugBitfeild & 1)) {
+        D_80200B2C = 1;
+    } else if (gGameRecords.flags[1] & 8) {
+        D_80200B2C = 1;
+    } else {
+        D_80200B2C = 0;
+    }
+
+    temp_v0_2 = temp_v0;
+
+    for (i = 0; i < 4; i++) {
+        temp_v0 = CTTask_Alloc(2, 0x69, NULL);
+        temp_v0->unk_70 = 0;
+        temp_v0->unk6E = 0;
+        temp_v0->unk_62 = i;
+        temp_v0->unk5E = 2;
+        temp_v0->unk58 = temp_v0_2;
+        D_80200B28[i] = 2;
+        temp_v0->unk3C = 1.0f;
+
+        if (gContPortMap[i] != -1) {
+            temp_v0->function = func_8009DE1C;
+            temp_v0->unk44 = 3;
+            temp_v0->unk72 = 1;
+        } else {
+            temp_v0->function = func_8009E784;
+            temp_v0->unk44 = 1;
+            temp_v0->unk72 = 0;
+        }
+
+        temp_v0->scale.x = temp_v0->scale.y = temp_v0->scale.z = 0.45f;
+        temp_v0->pos.x = D_801003F8[i][0];
+        temp_v0->pos.y = D_801003F8[i][1];
+        temp_v0->unk_5C = i;
+        temp_v0->pos.z = 0.0f;
+        temp_v0->unk4E = 1;
+        temp_v0->rot.x = 0.0f;
+        temp_v0->rot.y = 1.0f;
+        temp_v0->rot.z = 0.0f;
+        temp_v0->rotA = 1.0f;
+        temp_v0->unk40 = 0.0f;
+        temp_v0->unk72 = 1;
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009D45C.s")
 
@@ -6306,7 +6829,59 @@ void func_8009D954(CTTask* task) {
     func_80080864(72.0f, 208.0f, 0.0f, 1.0f, 16.0f, 16.0f, "ＰＲＥＳＳ  ＳＴＡＲＴ", 1);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009DA20.s")
+void func_8009DA20(CTTask* task) {
+    s32 var_a0;
+    u8 var_a3;
+    s32 i;
+
+    if (func_8008EC90() != 0) {
+        var_a3 = task->unk54;
+        var_a0 = 0;
+        if (var_a3 == 0xF) {
+            task->unk_64 = 0;
+            func_8008E9AC(0x20, 0, 0, 0, &task->unk_64);
+            task->function = func_8009D19C;
+            return;
+        }
+
+        for (i = 0; i < 6; i++) {
+            if (task->unk94[i] != 0xFF) {
+                var_a0++;
+            }
+        }
+        if (var_a0 <= 0) {
+            task->unk54 = 2;
+            return;
+        }
+        if ((var_a0 > 0) && (var_a3 == 2)) {
+            task->unk54 = 3;
+            return;
+        }
+        if (var_a3 == 3) {
+            if (task->unk_5C++ > 0) {
+                func_8009D954(task);
+                if (task->unk_5C >= 9) {
+                    task->unk_5C = -8;
+                }
+            }
+        } else {
+            if (var_a3 == 4) {
+                var_a3 = task->unk54 = 5;
+            }
+            if (var_a3 == 5) {
+                func_8009D45C(task);
+                return;
+            }
+            if (var_a3 == 6) {
+                task->function = func_8009DB98;
+                task->unk_64 = 0;
+                func_8008E9AC(0x20, 0, 0, 0, &task->unk_64);
+                return;
+            }
+            task->unk54 = 2;
+        }
+    }
+}
 
 void func_8009DB98(CTTask* arg0) {
     CTTask* head;
@@ -6315,7 +6890,7 @@ void func_8009DB98(CTTask* arg0) {
     if (func_8008EC90() != 0) {
         head = gCTTaskHead;
         next = head->next;
-        while (next != NULL){
+        while (next != NULL) {
             if (head->runType == 2) {
                 head->unk4E = 0;
                 head->function = func_8009F314;
@@ -6332,7 +6907,44 @@ void func_8009DB98(CTTask* arg0) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009DC40.s")
+s32 func_8009E6D0(void);
+
+void func_8009DC40(CTTask* arg0) {
+    s32 var_a1;
+    CTTask* temp_t6;
+    u8 var_v1;
+    u8 temp_v1;
+    void (*temp_v0)(CTTask*);
+    letterDef sp58;
+
+    temp_t6 = arg0->unk58;
+    var_v1 = temp_t6->unk54;
+    var_a1 = 0;
+
+    if (var_v1 == 5) {
+        var_a1 = func_8009E6D0();
+        var_v1 = temp_t6->unk54;
+    }
+    if (temp_t6->unk54 == 6) {
+        var_a1 = 1;
+    }
+    if (var_a1 == 0) {
+        temp_v0 = arg0->function;
+        if (temp_v0 == NULL) {
+            DummiedPrintf("NULL POINTER %X\n", arg0);
+        } else {
+            temp_v0(arg0);
+        }
+    }
+    func_8008D7FC(arg0);
+    arg0->unk50 = ChameleonGfxs[arg0->unk_5C];
+    temp_v1 = temp_t6->unk54;
+    if ((temp_v1 == 0xF) || (temp_v1 < 7)) {
+        sp58 = D_80100408[arg0->unk_5C];
+        SetTextGradient(1, 1, 1, 0xFF, 1, 1, 1, 0x80, 1, 1, 1, 0xFF, 1, 1, 1, 0x80);
+        func_80080864(arg0->pos.x + sp58.x, sp58.y, 0.0f, 0.5f, 0.0f, 0.0f, sp58.letter, 1);
+    }
+}
 
 u16 func_8009DDEC(CTTask* task) {
     return func_8008D6E4(task, &gContMain[task->unk_62]);
@@ -6345,7 +6957,7 @@ void func_8009DE1C(CTTask* task) {
     task->unk54 = 0;
     task->unk44 = 3;
     if (temp_t1->unk54 == 15) return;
-    while (temp_t1->unk94[task->unk_5C] != 0xFF){
+    while (temp_t1->unk94[task->unk_5C] != 0xFF) {
         task->unk_5C++;
         if ((task->unk_5C == 4) && (D_80200B2C == 0)) {
             task->unk_5C++;
@@ -6386,7 +6998,7 @@ void func_8009DE1C(CTTask* task) {
             task->unk_5C--;
         }
         PLAY_SFX(SFX_2A_unkSnd, 0, 0x10);
-        while (temp_t1->unk94[task->unk_5C] != 0xFF){
+        while (temp_t1->unk94[task->unk_5C] != 0xFF) {
             task->unk_5C--;
             if (task->unk_5C < 0) {
                 task->unk_5C = 5;
@@ -6411,7 +7023,7 @@ void func_8009DE1C(CTTask* task) {
             task->unk_5C = 0;
         }
         PLAY_SFX(SFX_2A_unkSnd, 0, 0x10);
-        while (temp_t1->unk94[task->unk_5C] != 0xFF){
+        while (temp_t1->unk94[task->unk_5C] != 0xFF) {
             task->unk_5C++;
             if ((task->unk_5C == 4) && (D_80200B2C == 0)) {
                 task->unk_5C++;
@@ -6454,7 +7066,7 @@ void func_8009E2B0(CTTask* arg0) {
 void func_8009E784(CTTask* task) {
     CTTask* newTask = task->unk58;
 
-    while (newTask->unk94[task->unk_5C] != 0xFF){
+    while (newTask->unk94[task->unk_5C] != 0xFF) {
         task->unk_5C++;
         if ((task->unk_5C == 4) && (D_80200B2C == 0)) {
             task->unk_5C++;
@@ -6695,11 +7307,11 @@ void func_800A0D90(void) {
     s32 i;
     s32 address;
 
-    D_80100F50[1].base_address = (u32)gFrameBuffers - ALIGN16((u32)static0_VRAM_END - (u32)static0_VRAM);
-    D_80100F50[1].unk4 = (u32)gFrameBuffers; //TODO: is the a singular frame buffer or both?
-    address = D_80100F50[1].base_address;
-    for (i = 8; i < 14; i++){
-        address = func_8009603C(i, address);
+    gLoadedSegments [1].base_address = (u32)gFrameBuffers - ALIGN16((u32)static0_VRAM_END - (u32)static0_VRAM);
+    gLoadedSegments [1].end_address = (u32)gFrameBuffers; //TODO: is the a singular frame buffer or both?
+    address = gLoadedSegments [1].base_address;
+    for (i = 8; i < 14; i++) {
+        address = Segment_Load(i, address);
     }
     D_801FFB78 = address;
     func_80056EB4();
@@ -6773,7 +7385,7 @@ CTTask* func_800A18C8(void) {
 
     if (task == NULL) {
         DummiedPrintf("エラー\n");
-        while(1){}
+        while (1) {}
     }
     task->function = func_800A1944;
     return task;
@@ -6803,50 +7415,50 @@ void func_800A1CCC(CTTask* arg0) {
 
 void Process_NewGameMenu(void) {
     switch (gGameModeState) {
-        case 0:
-            D_800FFDF0 = 3;
-            D_800FFDF4 = 1;
-            //must be like this
-            D_800FF8DC = D_800FF8E0 = D_800FF8E4 = 0;
-            DummiedPrintf("色選択プロセス\n");
-            DMAStruct_Print();
-            func_8008F16C();
-            func_800A0D90();
-            LoadSprite(SPRITE_BATTLE_BIGBOARD);
-            LoadSprite(SPRITE_BATTLE_STAGETITLEBOARD);
-            LoadSprite(SPRITE_SPECIFIC_SYMBOLS);
-            LoadSprite(SPRITE_BATTLE_OPTIONSARROWS);
-            CTTaskList_Init();
-            D_80168DA0 = 1;
-            gGameModeState++;
-            gTimer = 0;
-            UseFixedRNGSeed = 0;
-            func_80088198();
-            func_8008BE14();
-            D_801FC9AC = 0;
-            func_800A878C(&gGameState);
-            func_8008FE50();
-            LockEyeChange();
-            func_8008F16C();
-            break;
-        case 1:
-            PlayBGM(BGM_TRAINING);
-            func_800A18C8();
-            gGameModeState++;
-            func_8008F16C();
-            break;
-        case 2:
-            func_8008F16C();
-            gTimer++;
-            break;
+    case 0:
+        D_800FFDF0 = 3;
+        D_800FFDF4 = 1;
+        //must be like this
+        D_800FF8DC = D_800FF8E0 = D_800FF8E4 = 0;
+        DummiedPrintf("色選択プロセス\n");
+        DMAStruct_Print();
+        func_8008F16C();
+        func_800A0D90();
+        LoadSprite(SPRITE_BATTLE_BIGBOARD);
+        LoadSprite(SPRITE_BATTLE_STAGETITLEBOARD);
+        LoadSprite(SPRITE_SPECIFIC_SYMBOLS);
+        LoadSprite(SPRITE_BATTLE_OPTIONSARROWS);
+        CTTaskList_Init();
+        D_80168DA0 = 1;
+        gGameModeState++;
+        gTimer = 0;
+        UseFixedRNGSeed = 0;
+        func_80088198();
+        func_8008BE14();
+        D_801FC9AC = 0;
+        func_800A878C(&gGameState);
+        func_8008FE50();
+        LockEyeChange();
+        func_8008F16C();
+        break;
+    case 1:
+        PlayBGM(BGM_TRAINING);
+        func_800A18C8();
+        gGameModeState++;
+        func_8008F16C();
+        break;
+    case 2:
+        func_8008F16C();
+        gTimer++;
+        break;
     }
     func_8008C094();
 }
 
 void func_800A1EC4(void) {
-    D_80100F50[1].base_address = (u32)gFrameBuffers - (u32)_ALIGN(((u32)static0_VRAM_END - (u32)static0_VRAM), 16);
-    D_80100F50[1].unk4 = (u32)gFrameBuffers;
-    D_801FFB78 = D_80100F50[1].base_address;
+    gLoadedSegments [1].base_address = (u32)gFrameBuffers - (u32)_ALIGN(((u32)static0_VRAM_END - (u32)static0_VRAM), 16);
+    gLoadedSegments [1].end_address = (u32)gFrameBuffers;
+    D_801FFB78 = gLoadedSegments [1].base_address;
     func_80056EB4();
     Effect_Init();
     func_8005C9B8();
@@ -6859,7 +7471,7 @@ void PrintPerfectCode(CTTask* task) {
     SetTextGradient_TopBottom(255, 144, 242, 255, 255, 56, 100, 255);
     PrintText(144.0f, 24.0f, 0.0f, 0.7f, 0.0f, 0.0f, "ＰＥＲＦＥＣＴ  ＣＯＤＥ", 1);
     SetTextGradient_TopBottom(144, 242, 255, 255, 56, 100, 255, 255);
-    PrintText(160.0f, 40.0f, 0.0f, 0.7f, 0.0f, 0.0f, parseIntToHex(perfectCode, 8, sp50), 1);
+    PrintText(160.0f, 40.0f, 0.0f, 0.7f, 0.0f, 0.0f, parseIntToHex(gGameRecords.perfectCode, 8, sp50), 1);
 }
 
 CTTask* func_800A20CC(void) {
@@ -6869,7 +7481,7 @@ CTTask* func_800A20CC(void) {
     task = CTTask_Alloc(1, 100, 0);
     if (!task) {
         DummiedPrintf("エラー\n"); // error
-        while(1){}
+        while (1) {}
     }
     task->function = func_800A2164;
     task->pos.x = 64.0f;
@@ -6936,50 +7548,50 @@ void func_800A2B9C(CTTask* task) {
 
 void Process_TitleMenu(void) {
     switch (gGameModeState) {
-        case 0:
-            func_80061394();
-            D_800FFDF0 = 3;
-            D_801FC9AC = 0;
-            D_800FFDF4 = 1;
-            //required
-            D_800FF8DC = D_800FF8E0 = 0;
-            D_800FF8E4 = 0;
-            DummiedPrintf("タイトルプロセス\n");
-            DMAStruct_Print();
-            func_800A1EC4();
-            LoadSprite(SPRITE_MENUOPTIONS);
-            CTTaskList_Init();
-            func_8008F16C();
-            D_80168DA0 = 4;
-            gGameModeState++;
-            UseFixedRNGSeed = 0;
-            func_8008BE14();
-            func_80088198();
-            DrawBackground(BG_TITLESCREEN);
-            func_8008F16C();
-            break;
-        case 1:
-            LoadSprite(SPRITE_BATTLE_BIGBOARD); // the bg for menu options
-            LoadSprite(SPRITE_BATTLE_STAGETITLEBOARD); // ?
-            LoadSprite(SPRITE_CHAMELEON); // CHAMELEON
-            LoadSprite(SPRITE_TWIST); // TWIST
-            PlayBGM(BGM_TITLE);
-            func_800A20CC();
-            gGameModeState++;
-            func_8008F114();
-            break;
-        case 2:
-            gGameModeState++;
-            func_8008F114();
-            break;
-        case 3:
-            func_8008F16C();
-            gTimer++;
-            break;
-        case 4:
-            SetProcessType(D_80200058);
-            func_80061394();
-            break;
+    case 0:
+        func_80061394();
+        D_800FFDF0 = 3;
+        D_801FC9AC = 0;
+        D_800FFDF4 = 1;
+        //required
+        D_800FF8DC = D_800FF8E0 = 0;
+        D_800FF8E4 = 0;
+        DummiedPrintf("タイトルプロセス\n");
+        DMAStruct_Print();
+        func_800A1EC4();
+        LoadSprite(SPRITE_MENUOPTIONS);
+        CTTaskList_Init();
+        func_8008F16C();
+        D_80168DA0 = 4;
+        gGameModeState++;
+        UseFixedRNGSeed = 0;
+        func_8008BE14();
+        func_80088198();
+        DrawBackground(BG_TITLESCREEN);
+        func_8008F16C();
+        break;
+    case 1:
+        LoadSprite(SPRITE_BATTLE_BIGBOARD); // the bg for menu options
+        LoadSprite(SPRITE_BATTLE_STAGETITLEBOARD); // ?
+        LoadSprite(SPRITE_CHAMELEON); // CHAMELEON
+        LoadSprite(SPRITE_TWIST); // TWIST
+        PlayBGM(BGM_TITLE);
+        func_800A20CC();
+        gGameModeState++;
+        func_8008F114();
+        break;
+    case 2:
+        gGameModeState++;
+        func_8008F114();
+        break;
+    case 3:
+        func_8008F16C();
+        gTimer++;
+        break;
+    case 4:
+        SetProcessType(D_80200058);
+        func_80061394();
+        break;
     }
     func_8008C094();
 }
@@ -6989,7 +7601,7 @@ CTTask* func_800A2D84(void) {
 
     if (temp_v0 == NULL) {
         DummiedPrintf("エラー\n");
-        while(1){}
+        while (1) {}
     }
     temp_v0->function = func_800A2E18;
     temp_v0->rot.y = 1;
@@ -7004,7 +7616,38 @@ CTTask* func_800A2D84(void) {
     return temp_v0;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A2E18.s")
+/**
+ * @brief Set up the option master task that owns the title screen menu
+ *
+ * Gives the master task its own update function and name, clears its menu counters, kicks
+ * off the fade helper, then spawns the child task that draws and runs the menu itself.
+ *
+ * @param task option master task
+ */
+void func_800A2E18(CTTask* task) {
+    CTTask* master;
+    s32 i;
+
+    DummiedPrintf("オプションマスタ最初\n");
+    task->unk_04 = 0;
+    task->function = func_800A38B8;
+    strcpy(task->unk94, " TITLE");
+    task->unk_64 = 0;
+    task->unk66 = 0;
+    task->unk60 = 0;
+    task->unk_5C = 0;
+    task->unk5E = 0;
+    func_8008EA60(32, 0, 0, 0, &task->unk_64);
+    master = task;
+    for (i = 0; i < 1; i++) {
+        task = CTTask_Alloc(1, 0x69, NULL);
+        task->unk_62 = i;
+        task->unk58 = master;
+        task->unk_70 = 0;
+        task->unk6E = 0;
+        task->function = func_800A39EC;
+    }
+}
 
 const char D_8010EA24[] = "ＳＯＵＮＤ  ＭＯＤＥ";
 const char D_8010EA3C[] = "ＳＯＵＮＤ  ＴＥＳＴ";
@@ -7029,13 +7672,21 @@ void func_800A3928(CTTask* task) {
         task->unk_62 = 15;
         if (gIsStereo != (gGameRecords.flags[1] & 1)) {
             task->function = func_800A3990;
-        } else{
+        } else {
             SetProcessType(GAME_MODE_TITLE_SCREEN);
         }
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A3990.s")
+void func_800A3990(CTTask* task) {
+    u8 oldFlags = gGameRecords.flags[1] & 0xFE;
+
+    gGameRecords.flags[1] = gIsStereo;
+    gGameRecords.flags[1] |= oldFlags;
+    gGameRecords.flags[0] = SaveData_RecordChecksum();
+    SaveData_UpdateRecords();
+    SetProcessType(6);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A39EC.s")
 
@@ -7083,41 +7734,41 @@ void func_800A41C0(CTTask* task) {
 
 void Process_OptionsMenu(void) {
     switch (gGameModeState) {
-        case 0:
-            D_800FFDF4 = 1;
-            DummiedPrintf("オプションプロセス\n", &gGameModeState);
-            DMAStruct_Print();
-            func_800A1EC4();
-            UseFixedRNGSeed = 0;
-            LoadSprite(SPRITE_SPECIFIC_SYMBOLS);
-            LoadSprite(SPRITE_BATTLE_BIGBOARD);
-            LoadSprite(SPRITE_BATTLE_STAGETITLEBOARD);
-            LoadSprite(SPRITE_BATTLE_OPTIONSARROWS);
-            //??????
-            LoadSprite(SPRITE_TEXT_JL2);
-            LoadSprite(SPRITE_GRAYANT);
-            CTTaskList_Init();
-            D_80168DA0 = 4;
-            gGameModeState++;
-            D_800FFDF0 = 3;
-            func_8008BE14();
-            func_80088198();
-            D_801FC9AC = 0;
-            func_8008F114();
-            break;
-        case 1:
-            func_800A2D84();
-            gGameModeState++;
-            func_8008F114();
-            break;
-        case 2:
-            gGameModeState++;
-            func_8008F114();
-            break;
-        case 3:
-            func_8008F16C();
-            gTimer++;
-            break;
+    case 0:
+        D_800FFDF4 = 1;
+        DummiedPrintf("オプションプロセス\n", &gGameModeState);
+        DMAStruct_Print();
+        func_800A1EC4();
+        UseFixedRNGSeed = 0;
+        LoadSprite(SPRITE_SPECIFIC_SYMBOLS);
+        LoadSprite(SPRITE_BATTLE_BIGBOARD);
+        LoadSprite(SPRITE_BATTLE_STAGETITLEBOARD);
+        LoadSprite(SPRITE_BATTLE_OPTIONSARROWS);
+        //??????
+        LoadSprite(SPRITE_TEXT_JL2);
+        LoadSprite(SPRITE_GRAYANT);
+        CTTaskList_Init();
+        D_80168DA0 = 4;
+        gGameModeState++;
+        D_800FFDF0 = 3;
+        func_8008BE14();
+        func_80088198();
+        D_801FC9AC = 0;
+        func_8008F114();
+        break;
+    case 1:
+        func_800A2D84();
+        gGameModeState++;
+        func_8008F114();
+        break;
+    case 2:
+        gGameModeState++;
+        func_8008F114();
+        break;
+    case 3:
+        func_8008F16C();
+        gTimer++;
+        break;
     }
     func_8008C094();
 }
@@ -7233,7 +7884,7 @@ CTTask* func_800A4BCC(CTTask* task) {
     newTask->rot.y = -45;
     newTask->unk58 = task;
     newTask->unk3C = 1;
-    while (func_8008D7FC(newTask) == 0){}
+    while (func_8008D7FC(newTask) == 0) {}
     func_8008EB08(32, 0, 0, 0, &newTask->unk_64, newTask->pos.x - 58, newTask->pos.y - 38, newTask->pos.x + 64, newTask->pos.y + 60, 121);
     return newTask;
 }
@@ -7247,51 +7898,51 @@ void func_800A4D0C(CTTask* arg0) {
 
 void Process_GameOver(void) {
     switch (gGameModeState) {
-        case 0:
-            func_80061394();
-            SaveData_WriteFile(&gSaveFile);
-            D_800FFDF4 = 1;
-            D_800FF8DC = D_800FF8E0 = D_800FF8E4 = 0;
-            DummiedPrintf("ゲームオーバープロセス\n");
-            DMAStruct_Print();
-            func_800A0D90();
-            CTTaskList_Init();
-            LoadSprite(SPRITE_TEXTBIGGER);
-            D_80168DA0 = 4;
-            gGameModeState++;
-            UseFixedRNGSeed = 0;
-            D_800FFDF0 = 3;
-            func_8008BE14();
-            func_80088198();
-            D_801FC9AC = 0;
-            func_8008F114();
-            func_8008FE00();
-            LoadPlayerEyes(gSelectedCharacters[0]);
-            SetPlayerContextEyes(gSelectedCharacters[0], 2, 0);
-            break;
-        case 1:
-            func_800A4484();
-            gGameModeState++;
-            func_8008F114();
-            break;
-        case 2:
-            gGameModeState++;
-            func_8008F114();
-            break;
-        case 3:
-            func_8008F16C();
-            gTimer++;
-            break;
+    case 0:
+        func_80061394();
+        SaveData_WriteFile(&gSaveFile);
+        D_800FFDF4 = 1;
+        D_800FF8DC = D_800FF8E0 = D_800FF8E4 = 0;
+        DummiedPrintf("ゲームオーバープロセス\n");
+        DMAStruct_Print();
+        func_800A0D90();
+        CTTaskList_Init();
+        LoadSprite(SPRITE_TEXTBIGGER);
+        D_80168DA0 = 4;
+        gGameModeState++;
+        UseFixedRNGSeed = 0;
+        D_800FFDF0 = 3;
+        func_8008BE14();
+        func_80088198();
+        D_801FC9AC = 0;
+        func_8008F114();
+        func_8008FE00();
+        LoadPlayerEyes(gSelectedCharacters[0]);
+        SetPlayerContextEyes(gSelectedCharacters[0], 2, 0);
+        break;
+    case 1:
+        func_800A4484();
+        gGameModeState++;
+        func_8008F114();
+        break;
+    case 2:
+        gGameModeState++;
+        func_8008F114();
+        break;
+    case 3:
+        func_8008F16C();
+        gTimer++;
+        break;
     }
     func_8008C094();
 }
 
-CTTask* func_800A5060(void){
+CTTask* func_800A5060(void) {
     CTTask* task = CTTask_Alloc(1, 0x64, NULL);
 
-    if(!task){
+    if (!task) {
         DummiedPrintf("エラー\n");
-        while(1){}
+        while (1) {}
     }
     task->function = func_800A50B4;
     return task;
@@ -7337,46 +7988,46 @@ void func_800A5524(CTTask* task) {
 
 void Process_JSSLogo(void) {
     switch (gGameModeState) {
-        case 0:
-            D_800FF8DC = D_800FF8E0 = D_800FF8E4 = 0;
-            func_80061394();
-            D_800FFDF4 = 1;
-            DummiedPrintf("ロゴプロセス\n"); //Logo process
-            DMAStruct_Print();
-            func_800A1EC4();
-            LoadSprite(SPRITE_JSSLOGO_BG);
-            LoadSprite(SPRITE_JSSLOGO_CAT);
-            CTTaskList_Init();
-            D_80168DA0 = 4;
-            UseFixedRNGSeed = 0;
-            D_800FFDF0 = 3;
-            func_8008BE14();
-            func_80088198();
-            D_801FC9AC = 0;
-            func_8008F114();
-            gGameModeState++;
-            break;
-        case 1:
-            func_800A5060();
-            gGameModeState++;
-            func_8008F114();
-            break;
-        case 2:
-            gGameModeState++;
-            func_8008F114();
-            break;
-        case 3:
-            func_8008F16C();
-            gTimer++;
-            break;
+    case 0:
+        D_800FF8DC = D_800FF8E0 = D_800FF8E4 = 0;
+        func_80061394();
+        D_800FFDF4 = 1;
+        DummiedPrintf("ロゴプロセス\n"); //Logo process
+        DMAStruct_Print();
+        func_800A1EC4();
+        LoadSprite(SPRITE_JSSLOGO_BG);
+        LoadSprite(SPRITE_JSSLOGO_CAT);
+        CTTaskList_Init();
+        D_80168DA0 = 4;
+        UseFixedRNGSeed = 0;
+        D_800FFDF0 = 3;
+        func_8008BE14();
+        func_80088198();
+        D_801FC9AC = 0;
+        func_8008F114();
+        gGameModeState++;
+        break;
+    case 1:
+        func_800A5060();
+        gGameModeState++;
+        func_8008F114();
+        break;
+    case 2:
+        gGameModeState++;
+        func_8008F114();
+        break;
+    case 3:
+        func_8008F16C();
+        gTimer++;
+        break;
     }
     func_8008C094();
 }
 
 void func_800A56D4(void) {
-    D_80100F50[1].base_address = (u32)&gFrameBuffers - _ALIGN((u32)static0_VRAM_END - (u32)static0_VRAM, 16);
-    D_80100F50[1].unk4 = (u32)&gFrameBuffers;
-    D_801FFB78 = D_80100F50[1].base_address;
+    gLoadedSegments [1].base_address = (u32)&gFrameBuffers - _ALIGN((u32)static0_VRAM_END - (u32)static0_VRAM, 16);
+    gLoadedSegments [1].end_address = (u32)&gFrameBuffers;
+    D_801FFB78 = gLoadedSegments [1].base_address;
     func_80056EB4();
     func_8005C9B8();
     Effect_Init();
@@ -7388,22 +8039,22 @@ void func_800A56D4(void) {
 
 s32 func_800A5778(s32 arg0) {
     switch (arg0) {
-        case 0:
-            return 0;
-        case 1:
-            return 1;
-        case 2:
-            return 2;
-        case 3:
-            return 3;
-        case 4:
-            return 4;
-        case 5:
-            return 5;
-        case 15:
-            return 6;
-        default:
-            return 0;
+    case 0:
+        return 0;
+    case 1:
+        return 1;
+    case 2:
+        return 2;
+    case 3:
+        return 3;
+    case 4:
+        return 4;
+    case 5:
+        return 5;
+    case 15:
+        return 6;
+    default:
+        return 0;
     }
 }
 
@@ -7689,7 +8340,21 @@ s32 RecordTime_GetMinsSecs(TimeVal* record, s32* mins, s32* secs) {
     return 0;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/RecordTime_GetByStageRank.s")
+//reads one record row of gGameRecords.savedStageData.stageTimes[stage][rank]:
+//returns its minutes/seconds plus the two flag fields packed in byte 0 of the
+//TimeVal (bits 5-7 in *arg5, bit 4 in *arg4). Used by printStageRecordTimes.
+s32 RecordTime_GetByStageRank(s32 stage, s32 rank, s32* mins, s32* secs, s32* arg4, s32* arg5) {
+    u8* record = (u8*)&gGameRecords + (stage * 15) + (rank * 3);
+
+    *arg4 = 0;
+    *arg5 = 0;
+    RecordTime_GetMinsSecs((TimeVal*)(record + 8), mins, secs);
+    *arg5 = record[8] & 0xE0;
+    *arg5 >>= 5;
+    *arg4 = record[8] & 0x10;
+    *arg4 >>= 4;
+    return 0;
+}
 
 //parses time kept on record.
 s32 RecordTime_ParseToSecs(TimeVal* arg0) {
@@ -7714,6 +8379,7 @@ void RecordTime_SetTo(s32 arg0, TimeVal* arg1) {
 }
 
 //file split? following functions deal with save data.
+//the rodata doesn't seem to allow for a file split however...
 //TODO: fake match
 
 /**
@@ -7758,9 +8424,39 @@ s32 SaveData_FileChecksum(u8 *saveData) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/SaveData_RecordChecksum.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/SaveData_Wait.s")
+//spin-waits ~15ms (in CPU cycles) after an eeprom operation before the next
+//access. The extra (now < start) arm handles the 64-bit osGetTime wrapping.
+void SaveData_Wait(void) {
+    OSTime start = osGetTime();
+    OSTime now;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/SaveData_VerifyFile.s")
+    do {
+        now = osGetTime();
+        if ((now < start) && (now > OS_USEC_TO_CYCLES(15000))) {
+            return;
+        }
+    } while (now <= start + OS_USEC_TO_CYCLES(15000));
+}
+
+//byte-compares two SaveFile structs (0x60 bytes), logging every byte that
+//differs. Returns 1 if any byte differs, 0 if they are identical.
+//Used by SaveData_UpdateFile to verify an eeprom write read back correctly.
+s32 SaveData_VerifyFile(SaveFile *arg0, SaveFile *arg1) {
+    s32 i;
+    s32 isDifferent = 0;
+    u8 *file0 = (u8*)arg0;
+    u8 *file1 = (u8*)arg1;
+
+    for (i = 0; i < 0x60; i++) {
+        if (file0[i] != file1[i]) {
+            isDifferent = 1;
+            //"%dバイト目違う [%X][%X}\n"("%d bytes wrong [%X][%X}\n")(sic)
+            DummiedPrintf("%dバイト目違う [%X][%X}\n", i, file0[i], file1[i]);
+        }
+    }
+
+    return isDifferent;
+}
 
 s32 SaveData_Compare(u8 *arg0, u8 *arg1) {
     s32 i;
@@ -7768,7 +8464,7 @@ s32 SaveData_Compare(u8 *arg0, u8 *arg1) {
     u8 *new_var = arg1;
 
     for (i = 0; i < 128; i++) {
-        if (arg0){}
+        if (arg0) {}
         if (arg0[i] != new_var[i]) {
             var_s7 = 1;
             do {
@@ -7781,45 +8477,46 @@ s32 SaveData_Compare(u8 *arg0, u8 *arg1) {
     return var_s7;
 }
 
-void SaveData_LoadFile(s32 arg0, SaveFile* arg1) {
-    osRecvMesg(&gEepromMsgQ, NULL, OS_MESG_NOBLOCK);
-    if (osEepromProbe(&gEepromMsgQ) != 1) {
+void SaveData_LoadFile(s32 fileIdx, SaveFile* arg1) {
+    osRecvMesg(&gSiMesgQ, NULL, OS_MESG_NOBLOCK);
+    if (osEepromProbe(&gSiMesgQ) != 1) {
         DummiedPrintf("ＥＥＰロムエラー \n");
     }
 
     DummiedPrintf("ロード開始\n");
 
-    if (osEepromLongRead(&gEepromMsgQ, ((arg0 * 0x60) / 8) & 0xFF, (u8*)arg1, 0x60) != 0) {
-        DummiedPrintf("ＥＥＰロム読み込みエラー %d ブロック目から %d バイトを読めません\n", arg0, 0x60);
+    //assumes that the save files start at 0x0 in the eep file (0x180 is where SaveRecord starts)
+    if (osEepromLongRead(&gSiMesgQ, SAVE_FILE_BLOCK_OFFSET(fileIdx), (u8*)arg1, sizeof(SaveFileData)) != 0) {
+        DummiedPrintf("ＥＥＰロム読み込みエラー %d ブロック目から %d バイトを読めません\n", fileIdx, sizeof(SaveFileData));
     }
 
     SaveData_Wait();
 }
 
 void SaveData_LoadAllFiles(u8* arg0) {
-    osRecvMesg(&gEepromMsgQ, NULL, OS_MESG_NOBLOCK);
-    if (osEepromProbe(&gEepromMsgQ) != 1) {
+    osRecvMesg(&gSiMesgQ, NULL, OS_MESG_NOBLOCK);
+    if (osEepromProbe(&gSiMesgQ) != 1) {
         DummiedPrintf("ＥＥＰロムエラー \n");
     }
 
     DummiedPrintf("ロード開始\n");
 
-    if (osEepromLongRead(&gEepromMsgQ, 0, arg0, 0x180) != 0) {
-        DummiedPrintf("ＥＥＰロム読み込みエラー %d ブロック目から %d バイトを読めません\n", 0, 0x180);
+    if (osEepromLongRead(&gSiMesgQ, 0, arg0, sizeof_member(SaveFileEep, fileData)) != 0) {
+        DummiedPrintf("ＥＥＰロム読み込みエラー %d ブロック目から %d バイトを読めません\n", 0, sizeof_member(SaveFileEep, fileData));
     }
 
     SaveData_Wait();
 }
 
-void SaveData_LoadRecords(u8* arg0) {
-    osRecvMesg(&gEepromMsgQ, NULL, OS_MESG_NOBLOCK);
-    if (osEepromProbe(&gEepromMsgQ) != 1) {
+void SaveData_LoadRecords(SaveRecord* arg0) {
+    osRecvMesg(&gSiMesgQ, NULL, OS_MESG_NOBLOCK);
+    if (osEepromProbe(&gSiMesgQ) != 1) {
         DummiedPrintf("ＥＥＰロムエラー \n");
     }
     //"メインロード開始" ("main road start"?)
     DummiedPrintf("メインロード開始\n");
 
-    if (osEepromLongRead(&gEepromMsgQ, 0x30, arg0, sizeof(SaveRecord)) != 0) {
+    if (osEepromLongRead(&gSiMesgQ, EEP_FILE_STRUCT_BLOCK_OFFSET(SaveFileEep, fileData), (u8*)arg0, sizeof(SaveRecord)) != 0) {
         //"ＥＥＰロム読み込みエラー 共通部分(Main)から %d バイトを読めません"
         //("EEP ROM read error Cannot read %d bytes from common part (Main)")
         DummiedPrintf("ＥＥＰロム読み込みエラー 共通部分(Main)から %d バイトを読めません\n", sizeof(SaveRecord));
@@ -7834,19 +8531,19 @@ void SaveData_LoadRecords(u8* arg0) {
  * @param saveIndex: File number minus one
  * @param saveFile: SaveFile to be saved
  */
-void SaveData_SaveFile(s32 saveIndex, SaveFile* saveFile) {
+void SaveData_SaveFile(s32 fileIdx, SaveFile* saveFile) {
     //"%d 番目のファイルにセーブ  %dバイト目\n"("saving to %d-th file, %d bytes"?)
-    DummiedPrintf("%d 番目のファイルにセーブ  %dバイト目\n", saveIndex, (s32) (saveIndex * 0x60) / 8);
-    osRecvMesg(&gEepromMsgQ, NULL, OS_MESG_NOBLOCK);
+    DummiedPrintf("%d 番目のファイルにセーブ  %dバイト目\n", fileIdx, SAVE_FILE_BLOCK_OFFSET(fileIdx));
+    osRecvMesg(&gSiMesgQ, NULL, OS_MESG_NOBLOCK);
 
-    if (osEepromProbe(&gEepromMsgQ) != 1) {
+    if (osEepromProbe(&gSiMesgQ) != 1) {
         //"ＥＥＰロムエラー \n"("EEP rom error")
         DummiedPrintf("ＥＥＰロムエラー \n");
     }
     //"セーブ開始\n" ("start save")
     DummiedPrintf("セーブ開始\n");
 
-    if (osEepromLongWrite(&gEepromMsgQ, (saveIndex * 0x60) / 8, (u8*)saveFile, 0x60) != 0) {
+    if (osEepromLongWrite(&gSiMesgQ, SAVE_FILE_BLOCK_OFFSET(fileIdx), (u8*)saveFile, sizeof(SaveFileData)) != 0) {
         //"ＥＥＰロム書き込みエラー \n"("EEProm write error")
         DummiedPrintf("ＥＥＰロム書き込みエラー \n");
     }
@@ -7885,15 +8582,15 @@ s32 SaveData_UpdateFile(s32 saveIndex, SaveFile* saveFile) {
 void SaveData_SaveRecords(void) {
     gGameRecords.flags[0] = SaveData_RecordChecksum();
 
-    osRecvMesg(&gEepromMsgQ, NULL, OS_MESG_NOBLOCK);
+    osRecvMesg(&gSiMesgQ, NULL, OS_MESG_NOBLOCK);
 
-    if (osEepromProbe(&gEepromMsgQ) != 1) {
+    if (osEepromProbe(&gSiMesgQ) != 1) {
         DummiedPrintf("ＥＥＰロムエラー \n");
     }
 
     DummiedPrintf("セーブ開始\n");
 
-    if (osEepromLongWrite(&gEepromMsgQ, 0x30, &gGameRecords.flags[0], 0x80) != 0) {
+    if (osEepromLongWrite(&gSiMesgQ, member_offsetof(SaveFileEep, savedRecords) / EEPROM_BLOCK_SIZE, &gGameRecords.flags[0], sizeof(SaveRecord)) != 0) {
         //"ＥＥＰロム書き込みエラー \n"("EEPRom write error")
         DummiedPrintf("ＥＥＰロム書き込みエラー \n");
     }
@@ -7908,12 +8605,12 @@ void SaveData_SaveRecords(void) {
  * @return (s32) 0 for success, 1 for error
  */
 s32 SaveData_UpdateRecords(void) {
+    char pad[4];
     s32 i;
-    unkStruct09 sp28;
-
+    SaveRecord sp28;
     for (i = 0; i < 3; i++) {
         SaveData_SaveRecords();
-        SaveData_LoadRecords((u8*)&sp28);
+        SaveData_LoadRecords(&sp28);
         if (SaveData_Compare((u8*)&gGameRecords, (u8*)&sp28) == 0) {
             return 0;
         }
@@ -7926,7 +8623,7 @@ void func_800A878C(SaveFile* arg0) {
     //"ファイルクリア"("file clear")
     DummiedPrintf("ファイルクリア\n");
     RecordTime_SetTo(300, &arg0->stageTimes[6]);
-    arg0->carrotBitfield = 0;
+    arg0->unk_5D = 0;
 }
 
 void func_800A87D4(s32 arg0) {
@@ -7939,7 +8636,26 @@ void func_800A87D4(s32 arg0) {
     SaveData_UpdateFile(arg0, &sp18);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/SaveData_ResetRecords.s")
+void SaveData_ResetRecords(void) {
+    s32 i;
+
+    _bzero(&gGameRecords.savedStageData, sizeof(SavedStageData));
+
+    for (i = 0; i < 6; i++) {
+        RecordTime_SetTo(0x4B0, &gGameRecords.savedStageData.stageTimes[i][0]);
+        gGameRecords.savedStageData.stageTimes[i][0].b0 = gGameRecords.savedStageData.stageTimes[i][0].b0;
+        RecordTime_SetTo(0x708, &gGameRecords.savedStageData.stageTimes[i][1]);
+        gGameRecords.savedStageData.stageTimes[i][1].b0 |= 0x20;
+        RecordTime_SetTo(0x960, &gGameRecords.savedStageData.stageTimes[i][2]);
+        gGameRecords.savedStageData.stageTimes[i][2].b0 |= 0x40;
+        RecordTime_SetTo(0xBB8, &gGameRecords.savedStageData.stageTimes[i][3]);
+        gGameRecords.savedStageData.stageTimes[i][3].b0 |= 0x60;
+        RecordTime_SetTo(0x1734, &gGameRecords.savedStageData.stageTimes[i][4]);
+        gGameRecords.savedStageData.stageTimes[i][4].b0 = gGameRecords.savedStageData.stageTimes[i][4].b0;
+    }
+
+    gGameRecords.savedStageData.bowlingScore = 0;
+}
 
 /**
  * @brief Clear all records data.
@@ -7951,11 +8667,142 @@ void SaveData_ClearRecords(void) {
     SaveData_UpdateRecords();
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/SaveData_WriteFile.s")
+s32 SaveData_WriteFile(SaveFile* arg0) {
+    SaveFile* var_v1;
+    s32 temp_t8;
+    s32 i;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/SaveData_ReadFile.s")
+    arg0->selectedCharacter = gSelectedCharacters[D_800FF8E8];
+    arg0->currentStage = gCurrentStage;
+    arg0->gCurrentZone = gCurrentZone;
+    arg0->unk33 = D_8020D8A8;
+    arg0->stageCrowns = currentStageCrowns;
+    arg0->carrotBitfield = gCarrotBitfield;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/SetLevelBitfield.s")
+    if (D_801B313D != 0) {
+        arg0->flags |= 8;
+    } else {
+        arg0->flags &= ~8;
+    }
+    if (isInOverworld == 1) {
+        arg0->flags |= 0x10;
+    } else {
+        arg0->flags &= ~0x10;
+    }
+    if (D_800FFEBC == 1) {
+        arg0->flags |= 0x20;
+    } else {
+        arg0->flags &= ~0x20;
+    }
+    RecordTime_SetTo(gCurrentStageTime, &arg0->stageTimes[7]);
+    DummiedPrintf("\n");
+    func_800B4408(&arg0->unk2, &arg0->UNK_22);
+
+    for (i = 0; i < 16; i++) {
+        arg0->unk34[i] = D_802023E0[i];
+    }
+
+    DummiedPrintf("\n");
+    return 0;
+}
+
+s32 SaveData_ReadFile(SaveFile* arg0) {
+    s32 i;
+
+    gSelectedCharacters[D_800FF8E8] = arg0->selectedCharacter;
+    gCurrentStage = arg0->currentStage;
+    gCurrentZone = arg0->gCurrentZone;
+    gCarrotBitfield = arg0->carrotBitfield;
+    gTotalCarrots = 0;
+
+    for (i = 0; i < 6; i++) {
+        if (gCarrotBitfield & (1 << i)) {
+            gTotalCarrots++;
+        }
+    }
+
+    if (arg0->flags & 8) {
+        D_801B313D = 1;
+    } else {
+        D_801B313D = 0;
+    }
+
+    if (arg0->flags & 0x10) {
+        isInOverworld = 1;
+    } else {
+        isInOverworld = 0;
+    }
+
+    if (arg0->flags & 0x20) {
+        D_800FFEBC = 1;
+    } else {
+        D_800FFEBC = 0;
+    }
+
+    gCurrentStageTime = RecordTime_ParseToSecs(&arg0->stageTimes[7]);
+
+    for (i = 0; i < ARRAY_COUNT(arg0->unk34); i++) {
+        D_802023E0[i] = arg0->unk34[i];
+    }
+
+    for (i = 16; i < 32; i++) {
+        D_802023E0[i] = 0;
+    }
+    DummiedPrintf("\n");
+    return 0;
+}
+
+s32 SetLevelBitfield(s32 stageIdx) {
+    switch (stageIdx) {
+    case STAGE_JUNGLEBOSS:
+        gGameState.stageAccess |= (1 << STAGE_JUNGLE);
+        break;
+    case STAGE_ANTBOSS:
+        gGameState.stageAccess |= (1 << STAGE_ANT);
+        break;
+    case STAGE_BOMBBOSS:
+        gGameState.stageAccess |= (1 << STAGE_BOMB);
+        break;
+    case STAGE_DESERTBOSS:
+        gGameState.stageAccess |= (1 << STAGE_DESERT);
+        break;
+    case STAGE_KIDSBOSS:
+        gGameState.stageAccess |= (1 << STAGE_KIDS);
+        break;
+    case STAGE_GHOSTBOSS:
+        gGameState.stageAccess |= (1 << STAGE_GHOST);
+        break;
+    case STAGE_BOSSRUSH:
+        gGameState.stageAccess |= (1 << STAGE_OPENING);
+        break;
+    }
+
+    if (D_80200B38 != 0) {
+        switch (stageIdx) {
+        case STAGE_JUNGLEBOSS:
+            gGameState.stageClear |= (1 << STAGE_JUNGLE);
+            break;
+        case STAGE_ANTBOSS:
+            gGameState.stageClear |= (1 << STAGE_ANT);
+            break;
+        case STAGE_BOMBBOSS:
+            gGameState.stageClear |= (1 << STAGE_BOMB);
+            break;
+        case STAGE_DESERTBOSS:
+            gGameState.stageClear |= (1 << STAGE_DESERT);
+            break;
+        case STAGE_KIDSBOSS:
+            gGameState.stageClear |= (1 << STAGE_KIDS);
+            break;
+        case STAGE_GHOSTBOSS:
+            gGameState.stageClear |= (1 << STAGE_JUNGLE) | (1 << STAGE_ANT) | (1 << STAGE_BOMB) |
+                (1 << STAGE_DESERT) | (1 << STAGE_KIDS) | (1 << STAGE_GHOST);
+            break;
+        }
+    }
+
+    return 0;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A8DF8.s")
 
@@ -7990,7 +8837,7 @@ void func_800A93AC(ContMain* arg0) {
         if (gPlayerActors[i].active == FALSE) {
             continue;
         }
-        DummiedPrintf("{0x%04X,%d,%d},\n", D_80175650[i].button, D_80175650[i].stick_x, D_80175650[i].stick_y);
+        DummiedPrintf("{0x%04X,%d,%d},\n", gContPads[i].button, gContPads[i].stick_x, gContPads[i].stick_y);
     }
 }
 
@@ -8140,13 +8987,13 @@ void func_800AAB0C(s32 arg0) {
     LoadStageByIndex(arg0);
     DMAStruct_Print();
     _bzero(gPlayerActors, sizeof(gPlayerActors));
-    _bzero(&gCamera[0], sizeof(Camera));
+    _bzero(gCameras, sizeof(Camera));
     D_80168DA0 = 1;
     gPlayerActors[0].active = 1;
     gPlayerActors[1].active = 0;
     gPlayerActors[2].active = 0;
     gPlayerActors[3].active = 0;
-    D_80175668[0] = 0;
+    gContPortMap[0] = 0;
     func_8002E0CC();
     InitField();
     func_80056EB4();
@@ -8156,8 +9003,8 @@ void func_800AAB0C(s32 arg0) {
     func_80055FA4();
 
     for (i = 0; i < MAXCONTROLLERS; i++) { //TODO: unhardcode this for loop
-        D_801756C0[i] = 0;
-        D_80175678[i] = 0;
+        gContLastButtons[i] = 0;
+        gContSnapshotButtons[i] = 0;
     }
 
     gCurrentDemoTimer = 0x10A9;
@@ -8200,333 +9047,333 @@ void func_800AAB0C(s32 arg0) {
 //related to credits
 void func_800AB734(void) {
     s32 i;
-    char* str1;
-    char* str2;
-    char* str3;
-    char* str4;
-    char* str5;
-    char* str6;
-    char* str7;
+    unsigned char* str1;
+    unsigned char* str2;
+    unsigned char* str3;
+    unsigned char* str4;
+    unsigned char* str5;
+    unsigned char* str6;
+    unsigned char* str7;
 
     for (i = 0; i < AmountOfCredits; i++) {
         if (CreditsData[i].execTime == gCurrentDemoTimer - CreditsTimeOffset) {
             D_80101074 = CreditsData[i].unk_04;
             if (CreditsData[i].unk_04 && CreditsData[i].unk_04 && CreditsData[i].unk_04) {} // TODO: fake match
             switch (CreditsData[i].unk_04) {
-                case 0:
-                    str1 = CreditsData[i].lines[0];
-                    str2 = CreditsData[i].lines[1];
-                    str3 = CreditsData[i].lines[2];
-                    str4 = CreditsData[i].lines[3];
-                    str5 = CreditsData[i].lines[4];
-                    Effect_TypeK_Init(150.0f, 0.0f, -120.0f);
-                    Effect_TypeAR_Init(16.0f, 140.0f, 1, 30.0f, 60.0f, 60.0f, 5, str1, 1, &D_8010875C);
-                    Effect_TypeAQ_Init(54.0f, 180.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str2, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(78.0f, 204.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str3, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(54.0f, 228.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xB, str4, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(78.0f, 252.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xB, str5, 4, &D_8010875C);
-                    break;
-                case 1:
-                    str1 = CreditsData[i].lines[0];
-                    str2 = CreditsData[i].lines[1];
-                    str3 = CreditsData[i].lines[2];
-                    str4 = CreditsData[i].lines[3];
-                    str5 = CreditsData[i].lines[4];
-                    str6 = CreditsData[i].lines[5];
-                    str7 = CreditsData[i].lines[6];
-                    Effect_TypeK_Init(150.0f, 160.0f, -60.0f);
-                    Effect_TypeAR_Init(20.0f, 192.0f, 1, 30.0f, 60.0f, 60.0f, 5, str1, 1, &D_8010875C);
-                    Effect_TypeAQ_Init(24.0f, 48.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str2, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(36.0f, 72.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str3, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(24.0f, 96.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str4, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(36.0f, 120.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str5, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(24.0f, 144.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str6, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(36.0f, 168.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str7, 4, &D_8010875C);
-                    break;
-                case 2:
-                    str1 = CreditsData[i].lines[0];
-                    str2 = CreditsData[i].lines[1];
-                    str3 = CreditsData[i].lines[2];
-                    str4 = CreditsData[i].lines[3];
-                    str5 = CreditsData[i].lines[4];
-                    str6 = CreditsData[i].lines[5];
-                    str7 = CreditsData[i].lines[6];
-                    Effect_TypeK_Init(150.0f, 160.0f, 84.0f);
-                    Effect_TypeAR_Init(60.0f, 24.0f, 1, 30.0f, 60.0f, 60.0f, 5, str1, 1, &D_8010875C);
-                    Effect_TypeAR_Init(60.0f, 48.0f, 0, 30.0f, 60.0f, 60.0f, 5, str2, 1, &D_8010875C);
-                    Effect_TypeAQ_Init(24.0f, 112.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str3, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(36.0f, 136.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str4, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(24.0f, 160.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str5, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(36.0f, 184.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str6, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(24.0f, 208.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str7, 4, &D_8010875C);
-                    break;
-                case 3:
-                    str1 = CreditsData[i].lines[0];
-                    str2 = CreditsData[i].lines[1];
-                    str3 = CreditsData[i].lines[2];
-                    str4 = CreditsData[i].lines[3];
-                    str5 = CreditsData[i].lines[4];
-                    str6 = CreditsData[i].lines[5];
-                    str7 = CreditsData[i].lines[6];
-                    Effect_TypeK_Init(150.0f, 160.0f, -60.0f);
-                    Effect_TypeAR_Init(20.0f, 192.0f, 1, 30.0f, 60.0f, 60.0f, 5, str1, 1, &D_8010875C);
-                    Effect_TypeAQ_Init(24.0f, 24.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str2, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(36.0f, 48.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str3, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(24.0f, 72.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str4, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(36.0f, 96.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str5, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(24.0f, 120.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str6, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(36.0f, 144.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str7, 4, &D_8010875C);
-                    break;
-                case 4:
-                    str1 = CreditsData[i].lines[0];
-                    str2 = CreditsData[i].lines[1];
-                    str3 = CreditsData[i].lines[2];
-                    str4 = CreditsData[i].lines[3];
-                    str5 = CreditsData[i].lines[4];
-                    str6 = CreditsData[i].lines[5];
-                    str7 = CreditsData[i].lines[6];
-                    Effect_TypeK_Init(150.0f, -160.0f, -60.0f);
-                    Effect_TypeAR_Init(20.0f, 192.0f, 0, 30.0f, 60.0f, 60.0f, 5, str1, 1, &D_8010875C);
-                    Effect_TypeAQ_Init(196.0f, 48.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str2, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(208.0f, 72.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str3, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(196.0f, 96.0f, 12.0f, 3.0f, 60.0f, 60.0f, 10, str4, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(208.0f, 120.0f, 12.0f, 3.0f, 60.0f, 60.0f, 10, str5, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(196.0f, 144.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str6, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(208.0f, 168.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str7, 4, &D_8010875C);
-                    break;
-                case 5:
-                    str1 = CreditsData[i].lines[0];
-                    str2 = CreditsData[i].lines[1];
-                    str3 = CreditsData[i].lines[2];
-                    str4 = CreditsData[i].lines[3];
-                    str5 = CreditsData[i].lines[4];
-                    str6 = CreditsData[i].lines[5];
-                    str7 = CreditsData[i].lines[6];
-                    Effect_TypeK_Init(150.0f, 160.0f, 60.0f);
-                    Effect_TypeAR_Init(20.0f, 24.0f, 1, 30.0f, 60.0f, 60.0f, 5, str1, 1, &D_8010875C);
-                    Effect_TypeAQ_Init(24.0f, 88.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str2, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(36.0f, 112.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str3, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(24.0f, 136.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str4, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(36.0f, 160.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str5, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(24.0f, 184.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str6, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(36.0f, 208.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str7, 4, &D_8010875C);
-                    break;
-                case 6:
-                    str1 = CreditsData[i].lines[0];
-                    str2 = CreditsData[i].lines[1];
-                    str3 = CreditsData[i].lines[2];
-                    str4 = CreditsData[i].lines[3];
-                    str5 = CreditsData[i].lines[4];
-                    str6 = CreditsData[i].lines[5];
-                    str7 = CreditsData[i].lines[6];
-                    Effect_TypeK_Init(150.0f, -160.0f, 60.0f);
-                    Effect_TypeAR_Init(20.0f, 24.0f, 0, 30.0f, 60.0f, 60.0f, 5, str1, 1, &D_8010875C);
-                    Effect_TypeAQ_Init(196.0f, 88.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str2, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(208.0f, 112.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str3, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(196.0f, 136.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str4, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(208.0f, 160.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str5, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(196.0f, 184.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str6, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(208.0f, 208.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str7, 4, &D_8010875C);
-                    break;
-                case 7:
-                    str1 = CreditsData[i].lines[0];
-                    str2 = CreditsData[i].lines[1];
-                    str3 = CreditsData[i].lines[2];
-                    str4 = CreditsData[i].lines[3];
-                    str5 = CreditsData[i].lines[4];
-                    str6 = CreditsData[i].lines[5];
-                    str7 = CreditsData[i].lines[6];
-                    Effect_TypeK_Init(150.0f, 160.0f, -60.0f);
-                    Effect_TypeAR_Init(20.0f, 192.0f, 1, 30.0f, 60.0f, 60.0f, 5, str1, 1, &D_8010875C);
-                    Effect_TypeAQ_Init(24.0f, 72.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str2, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(36.0f, 96.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str3, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(24.0f, 120.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str4, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(36.0f, 144.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str5, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(24.0f, 168.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str6, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(36.0f, 192.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str7, 4, &D_8010875C);
-                    break;
-                case 8:
-                    str1 = CreditsData[i].lines[0];
-                    str2 = CreditsData[i].lines[1];
-                    str3 = CreditsData[i].lines[2];
-                    str4 = CreditsData[i].lines[3];
-                    str5 = CreditsData[i].lines[4];
-                    str6 = CreditsData[i].lines[5];
-                    str7 = CreditsData[i].lines[6];
-                    Effect_TypeK_Init(150.0f, 160.0f, 60.0f);
-                    Effect_TypeAR_Init(20.0f, 24.0f, 1, 30.0f, 60.0f, 60.0f, 5, str1, 1, &D_8010875C);
-                    Effect_TypeAQ_Init(24.0f, 88.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str2, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(36.0f, 112.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str3, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(24.0f, 136.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str4, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(36.0f, 160.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str5, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(24.0f, 184.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str6, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(36.0f, 208.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str7, 4, &D_8010875C);
-                    break;
-                case 9:
-                    str1 = CreditsData[i].lines[0];
-                    str2 = CreditsData[i].lines[1];
-                    str3 = CreditsData[i].lines[2];
-                    str4 = CreditsData[i].lines[3];
-                    str5 = CreditsData[i].lines[4];
-                    str6 = CreditsData[i].lines[5];
-                    str7 = CreditsData[i].lines[6];
-                    Effect_TypeK_Init(150.0f, 160.0f, -60.0f);
-                    Effect_TypeAR_Init(20.0f, 192.0f, 1, 30.0f, 60.0f, 60.0f, 5, str1, 1, &D_8010875C);
-                    Effect_TypeAQ_Init(24.0f, 48.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str2, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(36.0f, 72.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str3, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(24.0f, 96.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str4, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(36.0f, 120.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str5, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(24.0f, 144.0f, 12.0f, 3.0f, 60.0f, 60.0f, 6, str6, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(36.0f, 168.0f, 12.0f, 3.0f, 60.0f, 60.0f, 6, str7, 4, &D_8010875C);
-                    break;
-                case 10:
-                    str1 = CreditsData[i].lines[0];
-                    str2 = CreditsData[i].lines[1];
-                    str3 = CreditsData[i].lines[2];
-                    str4 = CreditsData[i].lines[3];
-                    str5 = CreditsData[i].lines[4];
-                    str6 = CreditsData[i].lines[5];
-                    str7 = CreditsData[i].lines[6];
-                    Effect_TypeK_Init(150.0f, -160.0f, 60.0f);
-                    Effect_TypeAR_Init(20.0f, 24.0f, 0, 30.0f, 60.0f, 60.0f, 5, str1, 1, &D_8010875C);
-                    Effect_TypeAQ_Init(196.0f, 88.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str2, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(208.0f, 112.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str3, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(196.0f, 136.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str4, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(208.0f, 160.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str5, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(196.0f, 184.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str6, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(208.0f, 208.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str7, 4, &D_8010875C);
-                    break;
-                case 11:
-                    str1 = CreditsData[i].lines[0];
-                    str2 = CreditsData[i].lines[1];
-                    str3 = CreditsData[i].lines[2];
-                    str4 = CreditsData[i].lines[3];
-                    str5 = CreditsData[i].lines[4];
-                    str6 = CreditsData[i].lines[5];
-                    str7 = CreditsData[i].lines[6];
-                    Effect_TypeK_Init(150.0f, 160.0f, 60.0f);
-                    Effect_TypeAR_Init(20.0f, 24.0f, 1, 30.0f, 60.0f, 60.0f, 5, str1, 1, &D_8010875C);
-                    Effect_TypeAQ_Init(24.0f, 88.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str2, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(36.0f, 112.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str3, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(24.0f, 136.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str4, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(36.0f, 160.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str5, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(24.0f, 184.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str6, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(36.0f, 208.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str7, 4, &D_8010875C);
-                    break;
-                case 12:
-                    str1 = CreditsData[i].lines[0];
-                    str2 = CreditsData[i].lines[1];
-                    str3 = CreditsData[i].lines[2];
-                    str4 = CreditsData[i].lines[3];
-                    str5 = CreditsData[i].lines[4];
-                    str6 = CreditsData[i].lines[5];
-                    str7 = CreditsData[i].lines[6];
-                    Effect_TypeK_Init(150.0f, -160.0f, -84.0f);
-                    Effect_TypeAR_Init(20.0f, 168.0f, 1, 30.0f, 60.0f, 60.0f, 5, str1, 1, &D_8010875C);
-                    Effect_TypeAR_Init(20.0f, 192.0f, 0, 30.0f, 60.0f, 60.0f, 5, str2, 1, &D_8010875C);
-                    Effect_TypeAQ_Init(196.0f, 96.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str3, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(208.0f, 120.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str4, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(196.0f, 144.0f, 12.0f, 3.0f, 60.0f, 60.0f, 10, str5, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(208.0f, 168.0f, 12.0f, 3.0f, 60.0f, 60.0f, 10, str6, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(196.0f, 192.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str7, 4, &D_8010875C);
-                    break;
-                case 13:
-                    str1 = CreditsData[i].lines[0];
-                    str2 = CreditsData[i].lines[1];
-                    str3 = CreditsData[i].lines[2];
-                    str4 = CreditsData[i].lines[3];
-                    str5 = CreditsData[i].lines[4];
-                    str6 = CreditsData[i].lines[5];
-                    str7 = CreditsData[i].lines[6];
-                    Effect_TypeK_Init(150.0f, -160.0f, 60.0f);
-                    Effect_TypeAR_Init(20.0f, 24.0f, 0, 30.0f, 60.0f, 60.0f, 5, str1, 1, &D_8010875C);
-                    Effect_TypeAQ_Init(196.0f, 88.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str2, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(208.0f, 112.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str3, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(196.0f, 136.0f, 12.0f, 3.0f, 60.0f, 60.0f, 10, str4, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(208.0f, 160.0f, 12.0f, 3.0f, 60.0f, 60.0f, 10, str5, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(196.0f, 184.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str6, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(208.0f, 208.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str7, 4, &D_8010875C);
-                    break;
-                case 14:
-                    str1 = CreditsData[i].lines[0];
-                    str2 = CreditsData[i].lines[1];
-                    str3 = CreditsData[i].lines[2];
-                    str4 = CreditsData[i].lines[3];
-                    str5 = CreditsData[i].lines[4];
-                    str6 = CreditsData[i].lines[5];
-                    str7 = CreditsData[i].lines[6];
-                    Effect_TypeK_Init(150.0f, -160.0f, -60.0f);
-                    Effect_TypeAR_Init(20.0f, 192.0f, 0, 30.0f, 60.0f, 60.0f, 5, str1, 1, &D_8010875C);
-                    Effect_TypeAQ_Init(196.0f, 72.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str2, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(208.0f, 96.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str3, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(196.0f, 120.0f, 12.0f, 3.0f, 60.0f, 60.0f, 10, str4, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(208.0f, 144.0f, 12.0f, 3.0f, 60.0f, 60.0f, 10, str5, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(196.0f, 168.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str6, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(208.0f, 192.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str7, 4, &D_8010875C);
-                    break;
-                case 15:
-                    str1 = CreditsData[i].lines[0];
-                    str2 = CreditsData[i].lines[1];
-                    str3 = CreditsData[i].lines[2];
-                    str4 = CreditsData[i].lines[3];
-                    str5 = CreditsData[i].lines[4];
-                    str6 = CreditsData[i].lines[5];
-                    str7 = CreditsData[i].lines[6];
-                    Effect_TypeK_Init(150.0f, -160.0f, -60.0f);
-                    Effect_TypeAR_Init(20.0f, 192.0f, 0, 30.0f, 60.0f, 60.0f, 5, str1, 1, &D_8010875C);
-                    Effect_TypeAQ_Init(196.0f, 72.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str2, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(208.0f, 96.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str3, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(196.0f, 120.0f, 12.0f, 3.0f, 60.0f, 60.0f, 10, str4, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(208.0f, 144.0f, 12.0f, 3.0f, 60.0f, 60.0f, 10, str5, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(196.0f, 168.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str6, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(208.0f, 192.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str7, 4, &D_8010875C);
-                    break;
-                case 16:
-                    str1 = CreditsData[i].lines[0];
-                    str2 = CreditsData[i].lines[1];
-                    str3 = CreditsData[i].lines[2];
-                    str4 = CreditsData[i].lines[3];
-                    str5 = CreditsData[i].lines[4];
-                    str6 = CreditsData[i].lines[5];
-                    str7 = CreditsData[i].lines[6];
-                    Effect_TypeK_Init(150.0f, 160.0f, 60.0f);
-                    Effect_TypeAR_Init(20.0f, 24.0f, 1, 30.0f, 60.0f, 60.0f, 5, str1, 1, &D_8010875C);
-                    Effect_TypeAQ_Init(24.0f, 136.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str2, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(36.0f, 160.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str3, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(24.0f, 184.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str4, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(36.0f, 208.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str5, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(24.0f, 232.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str6, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(36.0f, 256.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str7, 4, &D_8010875C);
-                    break;
-                case 17:
-                    str1 = CreditsData[i].lines[0];
-                    str2 = CreditsData[i].lines[1];
-                    str3 = CreditsData[i].lines[2];
-                    str4 = CreditsData[i].lines[3];
-                    str5 = CreditsData[i].lines[4];
-                    Effect_TypeK_Init(150.0f, 160.0f, 60.0f);
-                    Effect_TypeAR_Init(16.0f, 24.0f, 1, 30.0f, 60.0f, 30.0f, 5, str1, 1, &D_8010875C);
-                    Effect_TypeAQ_Init(24.0f, 112.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str2, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(48.0f, 136.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str3, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(24.0f, 160.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str4, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(48.0f, 184.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str5, 4, &D_8010875C);
-                    break;
-                case 18:
-                    str1 = CreditsData[i].lines[0];
-                    str2 = CreditsData[i].lines[1];
-                    str4 = CreditsData[i].lines[3];
-                    Effect_TypeK_Init(150.0f, 0.0f, -120.0f);
-                    Effect_TypeAR_Init(16.0f, 136.0f, 1, 30.0f, 60.0f, 30.0f, 5, str1, 1, &D_8010875C);
-                    Effect_TypeAQ_Init(24.0f, 188.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str2, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(24.0f, 212.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str4, 4, &D_8010875C);
-                    break;
-                case 19:
-                    str1 = CreditsData[i].lines[0];
-                    str2 = CreditsData[i].lines[1];
-                    Effect_TypeK_Init(150.0f, 0.0f, 120.0f);
-                    Effect_TypeAQ_Init(46.0f, 32.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str1, 4, &D_8010875C);
-                    Effect_TypeAQ_Init(40.0f, 64.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str2, 4, &D_8010875C);
-                    break;
+            case 0:
+                str1 = CreditsData[i].lines[0];
+                str2 = CreditsData[i].lines[1];
+                str3 = CreditsData[i].lines[2];
+                str4 = CreditsData[i].lines[3];
+                str5 = CreditsData[i].lines[4];
+                Effect_TypeK_Init(150.0f, 0.0f, -120.0f);
+                Effect_TypeAR_Init(16.0f, 140.0f, 1, 30.0f, 60.0f, 60.0f, 5, str1, 1, &D_8010875C);
+                Effect_TypeAQ_Init(54.0f, 180.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str2, 4, &D_8010875C);
+                Effect_TypeAQ_Init(78.0f, 204.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str3, 4, &D_8010875C);
+                Effect_TypeAQ_Init(54.0f, 228.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xB, str4, 4, &D_8010875C);
+                Effect_TypeAQ_Init(78.0f, 252.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xB, str5, 4, &D_8010875C);
+                break;
+            case 1:
+                str1 = CreditsData[i].lines[0];
+                str2 = CreditsData[i].lines[1];
+                str3 = CreditsData[i].lines[2];
+                str4 = CreditsData[i].lines[3];
+                str5 = CreditsData[i].lines[4];
+                str6 = CreditsData[i].lines[5];
+                str7 = CreditsData[i].lines[6];
+                Effect_TypeK_Init(150.0f, 160.0f, -60.0f);
+                Effect_TypeAR_Init(20.0f, 192.0f, 1, 30.0f, 60.0f, 60.0f, 5, str1, 1, &D_8010875C);
+                Effect_TypeAQ_Init(24.0f, 48.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str2, 4, &D_8010875C);
+                Effect_TypeAQ_Init(36.0f, 72.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str3, 4, &D_8010875C);
+                Effect_TypeAQ_Init(24.0f, 96.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str4, 4, &D_8010875C);
+                Effect_TypeAQ_Init(36.0f, 120.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str5, 4, &D_8010875C);
+                Effect_TypeAQ_Init(24.0f, 144.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str6, 4, &D_8010875C);
+                Effect_TypeAQ_Init(36.0f, 168.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str7, 4, &D_8010875C);
+                break;
+            case 2:
+                str1 = CreditsData[i].lines[0];
+                str2 = CreditsData[i].lines[1];
+                str3 = CreditsData[i].lines[2];
+                str4 = CreditsData[i].lines[3];
+                str5 = CreditsData[i].lines[4];
+                str6 = CreditsData[i].lines[5];
+                str7 = CreditsData[i].lines[6];
+                Effect_TypeK_Init(150.0f, 160.0f, 84.0f);
+                Effect_TypeAR_Init(60.0f, 24.0f, 1, 30.0f, 60.0f, 60.0f, 5, str1, 1, &D_8010875C);
+                Effect_TypeAR_Init(60.0f, 48.0f, 0, 30.0f, 60.0f, 60.0f, 5, str2, 1, &D_8010875C);
+                Effect_TypeAQ_Init(24.0f, 112.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str3, 4, &D_8010875C);
+                Effect_TypeAQ_Init(36.0f, 136.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str4, 4, &D_8010875C);
+                Effect_TypeAQ_Init(24.0f, 160.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str5, 4, &D_8010875C);
+                Effect_TypeAQ_Init(36.0f, 184.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str6, 4, &D_8010875C);
+                Effect_TypeAQ_Init(24.0f, 208.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str7, 4, &D_8010875C);
+                break;
+            case 3:
+                str1 = CreditsData[i].lines[0];
+                str2 = CreditsData[i].lines[1];
+                str3 = CreditsData[i].lines[2];
+                str4 = CreditsData[i].lines[3];
+                str5 = CreditsData[i].lines[4];
+                str6 = CreditsData[i].lines[5];
+                str7 = CreditsData[i].lines[6];
+                Effect_TypeK_Init(150.0f, 160.0f, -60.0f);
+                Effect_TypeAR_Init(20.0f, 192.0f, 1, 30.0f, 60.0f, 60.0f, 5, str1, 1, &D_8010875C);
+                Effect_TypeAQ_Init(24.0f, 24.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str2, 4, &D_8010875C);
+                Effect_TypeAQ_Init(36.0f, 48.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str3, 4, &D_8010875C);
+                Effect_TypeAQ_Init(24.0f, 72.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str4, 4, &D_8010875C);
+                Effect_TypeAQ_Init(36.0f, 96.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str5, 4, &D_8010875C);
+                Effect_TypeAQ_Init(24.0f, 120.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str6, 4, &D_8010875C);
+                Effect_TypeAQ_Init(36.0f, 144.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str7, 4, &D_8010875C);
+                break;
+            case 4:
+                str1 = CreditsData[i].lines[0];
+                str2 = CreditsData[i].lines[1];
+                str3 = CreditsData[i].lines[2];
+                str4 = CreditsData[i].lines[3];
+                str5 = CreditsData[i].lines[4];
+                str6 = CreditsData[i].lines[5];
+                str7 = CreditsData[i].lines[6];
+                Effect_TypeK_Init(150.0f, -160.0f, -60.0f);
+                Effect_TypeAR_Init(20.0f, 192.0f, 0, 30.0f, 60.0f, 60.0f, 5, str1, 1, &D_8010875C);
+                Effect_TypeAQ_Init(196.0f, 48.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str2, 4, &D_8010875C);
+                Effect_TypeAQ_Init(208.0f, 72.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str3, 4, &D_8010875C);
+                Effect_TypeAQ_Init(196.0f, 96.0f, 12.0f, 3.0f, 60.0f, 60.0f, 10, str4, 4, &D_8010875C);
+                Effect_TypeAQ_Init(208.0f, 120.0f, 12.0f, 3.0f, 60.0f, 60.0f, 10, str5, 4, &D_8010875C);
+                Effect_TypeAQ_Init(196.0f, 144.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str6, 4, &D_8010875C);
+                Effect_TypeAQ_Init(208.0f, 168.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str7, 4, &D_8010875C);
+                break;
+            case 5:
+                str1 = CreditsData[i].lines[0];
+                str2 = CreditsData[i].lines[1];
+                str3 = CreditsData[i].lines[2];
+                str4 = CreditsData[i].lines[3];
+                str5 = CreditsData[i].lines[4];
+                str6 = CreditsData[i].lines[5];
+                str7 = CreditsData[i].lines[6];
+                Effect_TypeK_Init(150.0f, 160.0f, 60.0f);
+                Effect_TypeAR_Init(20.0f, 24.0f, 1, 30.0f, 60.0f, 60.0f, 5, str1, 1, &D_8010875C);
+                Effect_TypeAQ_Init(24.0f, 88.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str2, 4, &D_8010875C);
+                Effect_TypeAQ_Init(36.0f, 112.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str3, 4, &D_8010875C);
+                Effect_TypeAQ_Init(24.0f, 136.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str4, 4, &D_8010875C);
+                Effect_TypeAQ_Init(36.0f, 160.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str5, 4, &D_8010875C);
+                Effect_TypeAQ_Init(24.0f, 184.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str6, 4, &D_8010875C);
+                Effect_TypeAQ_Init(36.0f, 208.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str7, 4, &D_8010875C);
+                break;
+            case 6:
+                str1 = CreditsData[i].lines[0];
+                str2 = CreditsData[i].lines[1];
+                str3 = CreditsData[i].lines[2];
+                str4 = CreditsData[i].lines[3];
+                str5 = CreditsData[i].lines[4];
+                str6 = CreditsData[i].lines[5];
+                str7 = CreditsData[i].lines[6];
+                Effect_TypeK_Init(150.0f, -160.0f, 60.0f);
+                Effect_TypeAR_Init(20.0f, 24.0f, 0, 30.0f, 60.0f, 60.0f, 5, str1, 1, &D_8010875C);
+                Effect_TypeAQ_Init(196.0f, 88.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str2, 4, &D_8010875C);
+                Effect_TypeAQ_Init(208.0f, 112.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str3, 4, &D_8010875C);
+                Effect_TypeAQ_Init(196.0f, 136.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str4, 4, &D_8010875C);
+                Effect_TypeAQ_Init(208.0f, 160.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str5, 4, &D_8010875C);
+                Effect_TypeAQ_Init(196.0f, 184.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str6, 4, &D_8010875C);
+                Effect_TypeAQ_Init(208.0f, 208.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str7, 4, &D_8010875C);
+                break;
+            case 7:
+                str1 = CreditsData[i].lines[0];
+                str2 = CreditsData[i].lines[1];
+                str3 = CreditsData[i].lines[2];
+                str4 = CreditsData[i].lines[3];
+                str5 = CreditsData[i].lines[4];
+                str6 = CreditsData[i].lines[5];
+                str7 = CreditsData[i].lines[6];
+                Effect_TypeK_Init(150.0f, 160.0f, -60.0f);
+                Effect_TypeAR_Init(20.0f, 192.0f, 1, 30.0f, 60.0f, 60.0f, 5, str1, 1, &D_8010875C);
+                Effect_TypeAQ_Init(24.0f, 72.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str2, 4, &D_8010875C);
+                Effect_TypeAQ_Init(36.0f, 96.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str3, 4, &D_8010875C);
+                Effect_TypeAQ_Init(24.0f, 120.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str4, 4, &D_8010875C);
+                Effect_TypeAQ_Init(36.0f, 144.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str5, 4, &D_8010875C);
+                Effect_TypeAQ_Init(24.0f, 168.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str6, 4, &D_8010875C);
+                Effect_TypeAQ_Init(36.0f, 192.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str7, 4, &D_8010875C);
+                break;
+            case 8:
+                str1 = CreditsData[i].lines[0];
+                str2 = CreditsData[i].lines[1];
+                str3 = CreditsData[i].lines[2];
+                str4 = CreditsData[i].lines[3];
+                str5 = CreditsData[i].lines[4];
+                str6 = CreditsData[i].lines[5];
+                str7 = CreditsData[i].lines[6];
+                Effect_TypeK_Init(150.0f, 160.0f, 60.0f);
+                Effect_TypeAR_Init(20.0f, 24.0f, 1, 30.0f, 60.0f, 60.0f, 5, str1, 1, &D_8010875C);
+                Effect_TypeAQ_Init(24.0f, 88.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str2, 4, &D_8010875C);
+                Effect_TypeAQ_Init(36.0f, 112.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str3, 4, &D_8010875C);
+                Effect_TypeAQ_Init(24.0f, 136.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str4, 4, &D_8010875C);
+                Effect_TypeAQ_Init(36.0f, 160.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str5, 4, &D_8010875C);
+                Effect_TypeAQ_Init(24.0f, 184.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str6, 4, &D_8010875C);
+                Effect_TypeAQ_Init(36.0f, 208.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str7, 4, &D_8010875C);
+                break;
+            case 9:
+                str1 = CreditsData[i].lines[0];
+                str2 = CreditsData[i].lines[1];
+                str3 = CreditsData[i].lines[2];
+                str4 = CreditsData[i].lines[3];
+                str5 = CreditsData[i].lines[4];
+                str6 = CreditsData[i].lines[5];
+                str7 = CreditsData[i].lines[6];
+                Effect_TypeK_Init(150.0f, 160.0f, -60.0f);
+                Effect_TypeAR_Init(20.0f, 192.0f, 1, 30.0f, 60.0f, 60.0f, 5, str1, 1, &D_8010875C);
+                Effect_TypeAQ_Init(24.0f, 48.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str2, 4, &D_8010875C);
+                Effect_TypeAQ_Init(36.0f, 72.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str3, 4, &D_8010875C);
+                Effect_TypeAQ_Init(24.0f, 96.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str4, 4, &D_8010875C);
+                Effect_TypeAQ_Init(36.0f, 120.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str5, 4, &D_8010875C);
+                Effect_TypeAQ_Init(24.0f, 144.0f, 12.0f, 3.0f, 60.0f, 60.0f, 6, str6, 4, &D_8010875C);
+                Effect_TypeAQ_Init(36.0f, 168.0f, 12.0f, 3.0f, 60.0f, 60.0f, 6, str7, 4, &D_8010875C);
+                break;
+            case 10:
+                str1 = CreditsData[i].lines[0];
+                str2 = CreditsData[i].lines[1];
+                str3 = CreditsData[i].lines[2];
+                str4 = CreditsData[i].lines[3];
+                str5 = CreditsData[i].lines[4];
+                str6 = CreditsData[i].lines[5];
+                str7 = CreditsData[i].lines[6];
+                Effect_TypeK_Init(150.0f, -160.0f, 60.0f);
+                Effect_TypeAR_Init(20.0f, 24.0f, 0, 30.0f, 60.0f, 60.0f, 5, str1, 1, &D_8010875C);
+                Effect_TypeAQ_Init(196.0f, 88.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str2, 4, &D_8010875C);
+                Effect_TypeAQ_Init(208.0f, 112.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str3, 4, &D_8010875C);
+                Effect_TypeAQ_Init(196.0f, 136.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str4, 4, &D_8010875C);
+                Effect_TypeAQ_Init(208.0f, 160.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str5, 4, &D_8010875C);
+                Effect_TypeAQ_Init(196.0f, 184.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str6, 4, &D_8010875C);
+                Effect_TypeAQ_Init(208.0f, 208.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str7, 4, &D_8010875C);
+                break;
+            case 11:
+                str1 = CreditsData[i].lines[0];
+                str2 = CreditsData[i].lines[1];
+                str3 = CreditsData[i].lines[2];
+                str4 = CreditsData[i].lines[3];
+                str5 = CreditsData[i].lines[4];
+                str6 = CreditsData[i].lines[5];
+                str7 = CreditsData[i].lines[6];
+                Effect_TypeK_Init(150.0f, 160.0f, 60.0f);
+                Effect_TypeAR_Init(20.0f, 24.0f, 1, 30.0f, 60.0f, 60.0f, 5, str1, 1, &D_8010875C);
+                Effect_TypeAQ_Init(24.0f, 88.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str2, 4, &D_8010875C);
+                Effect_TypeAQ_Init(36.0f, 112.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str3, 4, &D_8010875C);
+                Effect_TypeAQ_Init(24.0f, 136.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str4, 4, &D_8010875C);
+                Effect_TypeAQ_Init(36.0f, 160.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str5, 4, &D_8010875C);
+                Effect_TypeAQ_Init(24.0f, 184.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str6, 4, &D_8010875C);
+                Effect_TypeAQ_Init(36.0f, 208.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str7, 4, &D_8010875C);
+                break;
+            case 12:
+                str1 = CreditsData[i].lines[0];
+                str2 = CreditsData[i].lines[1];
+                str3 = CreditsData[i].lines[2];
+                str4 = CreditsData[i].lines[3];
+                str5 = CreditsData[i].lines[4];
+                str6 = CreditsData[i].lines[5];
+                str7 = CreditsData[i].lines[6];
+                Effect_TypeK_Init(150.0f, -160.0f, -84.0f);
+                Effect_TypeAR_Init(20.0f, 168.0f, 1, 30.0f, 60.0f, 60.0f, 5, str1, 1, &D_8010875C);
+                Effect_TypeAR_Init(20.0f, 192.0f, 0, 30.0f, 60.0f, 60.0f, 5, str2, 1, &D_8010875C);
+                Effect_TypeAQ_Init(196.0f, 96.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str3, 4, &D_8010875C);
+                Effect_TypeAQ_Init(208.0f, 120.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str4, 4, &D_8010875C);
+                Effect_TypeAQ_Init(196.0f, 144.0f, 12.0f, 3.0f, 60.0f, 60.0f, 10, str5, 4, &D_8010875C);
+                Effect_TypeAQ_Init(208.0f, 168.0f, 12.0f, 3.0f, 60.0f, 60.0f, 10, str6, 4, &D_8010875C);
+                Effect_TypeAQ_Init(196.0f, 192.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str7, 4, &D_8010875C);
+                break;
+            case 13:
+                str1 = CreditsData[i].lines[0];
+                str2 = CreditsData[i].lines[1];
+                str3 = CreditsData[i].lines[2];
+                str4 = CreditsData[i].lines[3];
+                str5 = CreditsData[i].lines[4];
+                str6 = CreditsData[i].lines[5];
+                str7 = CreditsData[i].lines[6];
+                Effect_TypeK_Init(150.0f, -160.0f, 60.0f);
+                Effect_TypeAR_Init(20.0f, 24.0f, 0, 30.0f, 60.0f, 60.0f, 5, str1, 1, &D_8010875C);
+                Effect_TypeAQ_Init(196.0f, 88.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str2, 4, &D_8010875C);
+                Effect_TypeAQ_Init(208.0f, 112.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str3, 4, &D_8010875C);
+                Effect_TypeAQ_Init(196.0f, 136.0f, 12.0f, 3.0f, 60.0f, 60.0f, 10, str4, 4, &D_8010875C);
+                Effect_TypeAQ_Init(208.0f, 160.0f, 12.0f, 3.0f, 60.0f, 60.0f, 10, str5, 4, &D_8010875C);
+                Effect_TypeAQ_Init(196.0f, 184.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str6, 4, &D_8010875C);
+                Effect_TypeAQ_Init(208.0f, 208.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str7, 4, &D_8010875C);
+                break;
+            case 14:
+                str1 = CreditsData[i].lines[0];
+                str2 = CreditsData[i].lines[1];
+                str3 = CreditsData[i].lines[2];
+                str4 = CreditsData[i].lines[3];
+                str5 = CreditsData[i].lines[4];
+                str6 = CreditsData[i].lines[5];
+                str7 = CreditsData[i].lines[6];
+                Effect_TypeK_Init(150.0f, -160.0f, -60.0f);
+                Effect_TypeAR_Init(20.0f, 192.0f, 0, 30.0f, 60.0f, 60.0f, 5, str1, 1, &D_8010875C);
+                Effect_TypeAQ_Init(196.0f, 72.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str2, 4, &D_8010875C);
+                Effect_TypeAQ_Init(208.0f, 96.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str3, 4, &D_8010875C);
+                Effect_TypeAQ_Init(196.0f, 120.0f, 12.0f, 3.0f, 60.0f, 60.0f, 10, str4, 4, &D_8010875C);
+                Effect_TypeAQ_Init(208.0f, 144.0f, 12.0f, 3.0f, 60.0f, 60.0f, 10, str5, 4, &D_8010875C);
+                Effect_TypeAQ_Init(196.0f, 168.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str6, 4, &D_8010875C);
+                Effect_TypeAQ_Init(208.0f, 192.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str7, 4, &D_8010875C);
+                break;
+            case 15:
+                str1 = CreditsData[i].lines[0];
+                str2 = CreditsData[i].lines[1];
+                str3 = CreditsData[i].lines[2];
+                str4 = CreditsData[i].lines[3];
+                str5 = CreditsData[i].lines[4];
+                str6 = CreditsData[i].lines[5];
+                str7 = CreditsData[i].lines[6];
+                Effect_TypeK_Init(150.0f, -160.0f, -60.0f);
+                Effect_TypeAR_Init(20.0f, 192.0f, 0, 30.0f, 60.0f, 60.0f, 5, str1, 1, &D_8010875C);
+                Effect_TypeAQ_Init(196.0f, 72.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str2, 4, &D_8010875C);
+                Effect_TypeAQ_Init(208.0f, 96.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str3, 4, &D_8010875C);
+                Effect_TypeAQ_Init(196.0f, 120.0f, 12.0f, 3.0f, 60.0f, 60.0f, 10, str4, 4, &D_8010875C);
+                Effect_TypeAQ_Init(208.0f, 144.0f, 12.0f, 3.0f, 60.0f, 60.0f, 10, str5, 4, &D_8010875C);
+                Effect_TypeAQ_Init(196.0f, 168.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str6, 4, &D_8010875C);
+                Effect_TypeAQ_Init(208.0f, 192.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str7, 4, &D_8010875C);
+                break;
+            case 16:
+                str1 = CreditsData[i].lines[0];
+                str2 = CreditsData[i].lines[1];
+                str3 = CreditsData[i].lines[2];
+                str4 = CreditsData[i].lines[3];
+                str5 = CreditsData[i].lines[4];
+                str6 = CreditsData[i].lines[5];
+                str7 = CreditsData[i].lines[6];
+                Effect_TypeK_Init(150.0f, 160.0f, 60.0f);
+                Effect_TypeAR_Init(20.0f, 24.0f, 1, 30.0f, 60.0f, 60.0f, 5, str1, 1, &D_8010875C);
+                Effect_TypeAQ_Init(24.0f, 136.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str2, 4, &D_8010875C);
+                Effect_TypeAQ_Init(36.0f, 160.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str3, 4, &D_8010875C);
+                Effect_TypeAQ_Init(24.0f, 184.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str4, 4, &D_8010875C);
+                Effect_TypeAQ_Init(36.0f, 208.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str5, 4, &D_8010875C);
+                Effect_TypeAQ_Init(24.0f, 232.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str6, 4, &D_8010875C);
+                Effect_TypeAQ_Init(36.0f, 256.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str7, 4, &D_8010875C);
+                break;
+            case 17:
+                str1 = CreditsData[i].lines[0];
+                str2 = CreditsData[i].lines[1];
+                str3 = CreditsData[i].lines[2];
+                str4 = CreditsData[i].lines[3];
+                str5 = CreditsData[i].lines[4];
+                Effect_TypeK_Init(150.0f, 160.0f, 60.0f);
+                Effect_TypeAR_Init(16.0f, 24.0f, 1, 30.0f, 60.0f, 30.0f, 5, str1, 1, &D_8010875C);
+                Effect_TypeAQ_Init(24.0f, 112.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str2, 4, &D_8010875C);
+                Effect_TypeAQ_Init(48.0f, 136.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str3, 4, &D_8010875C);
+                Effect_TypeAQ_Init(24.0f, 160.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str4, 4, &D_8010875C);
+                Effect_TypeAQ_Init(48.0f, 184.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str5, 4, &D_8010875C);
+                break;
+            case 18:
+                str1 = CreditsData[i].lines[0];
+                str2 = CreditsData[i].lines[1];
+                str4 = CreditsData[i].lines[3];
+                Effect_TypeK_Init(150.0f, 0.0f, -120.0f);
+                Effect_TypeAR_Init(16.0f, 136.0f, 1, 30.0f, 60.0f, 30.0f, 5, str1, 1, &D_8010875C);
+                Effect_TypeAQ_Init(24.0f, 188.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str2, 4, &D_8010875C);
+                Effect_TypeAQ_Init(24.0f, 212.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str4, 4, &D_8010875C);
+                break;
+            case 19:
+                str1 = CreditsData[i].lines[0];
+                str2 = CreditsData[i].lines[1];
+                Effect_TypeK_Init(150.0f, 0.0f, 120.0f);
+                Effect_TypeAQ_Init(46.0f, 32.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str1, 4, &D_8010875C);
+                Effect_TypeAQ_Init(40.0f, 64.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str2, 4, &D_8010875C);
+                break;
             }
         }
     }
@@ -8538,7 +9385,7 @@ s32 func_800AD980(void) {
     gPlayerActors->pos.z = D_80108768;
     Controller_StartRead();
     DemoGfx_DrawFrame(gMainGfxPos, &gGraphicsList[gFramebufferIndex], gFramebufferIndex);
-    func_8004E784(gContMain, gControllerNo, 0, 0);
+    Controller_UpdateAll(gContMain, gControllerNo, 0, 0);
     gMainGfxPos = func_8002C900(&gGraphicsList[1 - gFramebufferIndex], 1 - gFramebufferIndex);
     DemoGfx_SwapFB(gFramebufferIndex);
     gFramebufferIndex = 1 - gFramebufferIndex;
@@ -8552,8 +9399,8 @@ s32 func_800AD980(void) {
 void func_800ADE24(void) {
     Controller_Zero(&D_801FC9B8);
     Controller_Zero(gContMain);
-    *D_801756C0 = 0;
-    *D_80175678 = 0;
+    *gContLastButtons = 0;
+    *gContSnapshotButtons = 0;
     D_80200CA0 = 0;
     D_80200CA8 = 0;
 }
@@ -8568,7 +9415,7 @@ s32 func_800AE158(s32 arg0) {
     gPlayerActors->pos.z = D_8010878C;
     Controller_StartRead();
     DemoGfx_DrawFrame(gMainGfxPos, &gGraphicsList[gFramebufferIndex], gFramebufferIndex);
-    func_8004E784(gContMain, gControllerNo, NULL, NULL);
+    Controller_UpdateAll(gContMain, gControllerNo, NULL, NULL);
     func_8004DDE0();
     temp_v0 = func_80082714(D_80108784, D_80108788, D_8010878C, arg0);
     gMainGfxPos = func_8002C900(&gGraphicsList[1 - gFramebufferIndex], 1 - gFramebufferIndex);
@@ -8651,8 +9498,7 @@ void AdjustRectToVec3(Rect3D* r, Vec3f vec) {
     if (vec.z < r->min.z) {
         r->min.z = vec.z;
         return;
-    }
-    else if (r->max.z < vec.z) {
+    } else if (r->max.z < vec.z) {
         r->max.z = vec.z;
     }
 }
@@ -8663,7 +9509,7 @@ void AdjustRectToVec3(Rect3D* r, Vec3f vec) {
  * @param r: Pointer to the rectangle to be expanded
  * @param s: Amount to expand the rectangle by
  */
-void Rect_Expand(Rect3D* r, f32 s){
+void Rect_Expand(Rect3D* r, f32 s) {
     r->min.x -= s;
     r->min.y -= s;
     r->min.z -= s;

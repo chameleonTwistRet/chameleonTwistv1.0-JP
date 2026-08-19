@@ -15,7 +15,7 @@ extern SpriteListing gSpriteListings[230];
 
 extern OSPfs gRumblePfs[MAXCONTROLLERS];
 
-extern Camera* D_80174860;
+extern Camera* gCurrentCamera;
 extern PlayerActor* gCurrentActivePlayerPointer;
 extern Tongue* gTongueOnePointer;
 extern ContMain gContMain[MAXCONTROLLERS];
@@ -87,7 +87,7 @@ extern u8 gLockContextEyes;
 extern s32 D_800FEA30;
 extern s32 D_800FEA34;
 extern s32 gTrainingState;
-extern s32 gTrainingRoomTimer;
+extern s32 gTrainingRoomTimer; //direction unproven, writes still in asm
 extern s32 gTrainingStateTmer;
 extern s32 D_800FEB98;
 extern s32 D_800FEB9C;
@@ -219,7 +219,7 @@ extern s32 StageFlags[32]; //contextual-per-level flags
 extern s32 D_801748A0;
 extern s32 D_80174998;
 extern s32 gTimer;                                              // Timer: runs when a process starts
-extern OSMesgQueue gEepromMsgQ;
+extern OSMesgQueue gSiMesgQ;
 extern s32 Battle_TimeLeft;
 extern u8 gTextGradient[16]; //probably really RGBA32[4]
 extern f32 D_80176F50;
@@ -246,7 +246,9 @@ extern ALSeqpConfig gBGMplayerCfg;
 extern s32 gCurrentStageTime; //measured as ticks (30/sec)
 extern OSIoMesg gAudioIOMsgs[30];
 extern s32 D_801FFB78;
-extern unk_D_801FFB90 D_801FFB90;
+extern ALHeap gAlHeap;
+extern AudioDMAState D_801FFB90;
+extern unk_D_801FFB90 D_801FFBA0[60];
 extern u32 D_80200054;
 extern struct UnkList D_80200060; //beginning of linked list?
 extern s32 D_802025B0;
@@ -278,13 +280,13 @@ extern char D_8010ED5C[];
 extern char D_8010ED68[];
 extern char D_8010ED84[];
 extern char D_8010ED94[];
-extern s32 D_80175668[4];
-extern u16 D_80175678[4];
-extern u16 D_801756C0[4];
+extern s32 gContPortMap[4];
+extern u16 gContSnapshotButtons[4];
+extern u16 gContLastButtons[4];
 extern s16 D_801756C2;
 extern s16 D_801756C4;
 extern s16 D_801756C6;
-extern s32 gCurrentDemoTimer;
+extern s32 gCurrentDemoTimer; //direction unproven, writes still in asm
 extern OSMesg D_801FCF08[50];
 extern s32 D_801FD558;
 extern DMAStruct D_801FCFD8[50];
@@ -292,22 +294,22 @@ extern ALCMidiHdr* D_801FD550;
 extern SaveFile gGameState; //data on current playthrough's progress.
 extern void* D_80200C8C;
 extern void* D_80200C94;
-extern Camera gCamera[4];
+extern Camera gCameras[4];
 extern Mtx D_80129730;
 extern Mtx AnimationSlots[40];
 extern GraphicStruct gGraphicsList[2];
 extern unk802000C84 D_80200C84;
 extern u8 gHasShadows[256]; //unset for actortypes like spawnners.
-extern Collider D_80236980[128];
+extern FieldObject D_80236980[128];
 extern s32 gFieldCount;
 extern Door gDoors[16];
 extern unkIsChange isChange;
 extern s32 gDoorCount;
 extern Field D_80240D6C[];
 extern u8 gCarrotBitfield;
-extern s8 D_801B313D;
+extern u8 D_801B313D;
 extern SaveRecord gGameRecords;
-extern Vec3w D_801087D8[];
+extern Vec3w gColliderFlagTable[];
 extern s32 Timing_StopGfxTime;
 extern u32 Timing_StartGfxTime;
 extern u32 Timing_EndFrameTime;
@@ -356,7 +358,7 @@ extern u8 D_800FF64C;
 extern u8 D_800FF650;
 extern ALSndPlayer* gSFXPlayerP;
 extern FrameBuffer gFrameBuffers[2];
-extern unk80100F50 D_80100F50[];
+extern loadedSegInfo gLoadedSegments [];
 extern CTTask* gCTTaskHead;
 extern CTTask* gCTTaskTail;
 extern s32 sGameModeStart;
@@ -378,9 +380,7 @@ extern char (*D_800F67A0[6])[TEXT_LINE_SIZE];
 extern char (*D_800F59B8[CHARA_TOTAL + 1][20])[TEXT_LINE_SIZE];
 extern AnimPointer static0_chameleonAnims[12];
 
-extern Collider* D_80240898;
-
-extern void* gSfxList[0xE1]; //may be part of struct before
+extern FieldObject* D_80240898;
 extern unk80170E68 D_80170E68[];
 
 

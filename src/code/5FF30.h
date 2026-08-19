@@ -81,7 +81,7 @@ typedef struct unk80097CF8 {
 } unk80097CF8;
 */
 
-extern s16 D_80200B38;
+extern s16 D_80200B38; //0 when loading from save, 1 when loading from file select?
 extern s32 D_80236978;
 typedef struct UnkPlaySoundEffect {
     char unk_00[0x0E];
@@ -111,7 +111,7 @@ typedef struct RollData {
     /* 0x08 */ s32 unk_08; //id???
     /* 0x0C */ s32 unk_0C;
     //expected euc-jp
-    /* 0x10 */ char lines[7][48];
+    /* 0x10 */ u8 lines[7][48];
 } RollData; //sizeof 0x160
 
 typedef struct StageLoadData {
@@ -122,20 +122,13 @@ typedef struct StageLoadData {
     s32 stageId;
 } StageLoadData;
 
-//from ll.c
-//used in AT LEAST SaveData_Wait
-//with SaveData_Wait, just use the last half of the u64's
-u64 __ull_div(u64 a0, u64 a1);
-u64 __ll_mul(u64 a0, u64 a1);
-
-void func_800A27B0(CTTask* task);                   /* extern */
+void func_800A27B0(CTTask* task);
 extern s16 D_8020005C;
 
-void func_8009D45C(CTTask*, u8, u8, u8);                 /* extern */
-void func_8009DA20(CTTask* task);                   /* extern */
-void func_8009F1B4(CTTask* task);                   /* extern */
-void func_8009F5B0(CTTask* task);                   /* extern */
-
+void func_8009D45C(CTTask* task);
+void func_8009DA20(CTTask* task);
+void func_8009F1B4(CTTask* task);
+void func_8009F5B0(CTTask* task);
 
 /* Function Prototypes */
 void schedproc(s32 arg0);
@@ -201,14 +194,14 @@ void Task_ClearMost(void);
 void CTTaskList_Init(void);
 void CTTask_Unlink_2(CTTask* task);
 //still unsure
-void bzero32(CTTask*, s32, CTTask*, s16);
+void bzero32(void*, s32);
 CTTask* CTTask_Alloc(s16 setRunType, s16 arg1, CTTask* task);
 void func_8008D114(GraphicStruct* arg0, s32 fbIndex);
 Gfx* func_8008D168(Gfx* gfxPos, s32 arg1, s32 arg2);
 s32 func_8008D5DC(ContMain* controller);
 //this also came up as CTTask but it generates with buttons1 and buttons2 so i think thats more accurate
 //definitely only has one arg though
-u16 func_8008D6B4(ContMain*);
+s32 func_8008D6B4(ContMain*);
 u16 func_8008D6E4(CTTask*, ContMain*);
 s32 func_8008D7B0(CTTask* task);
 s32 func_8008D7FC(CTTask* task);
@@ -346,10 +339,10 @@ void func_80095184(CTTask* task);
 void func_80095264(CTTask* task);
 void func_80095500(CTTask* task);
 void func_80095E44(void);
-s32 func_8009603C(s32 segmentID, s32 arg1);
-u32 func_80096128(s32 stageToLoad, s32 inpAddr);
+s32 Segment_Load(s32 segmentID, s32 arg1);
+u32 Stage_Load(s32 stageToLoad, s32 inpAddr);
 void func_800966E0(void);
-s32 func_80096748(u16);
+s32 GetDirectionIndex(u16);
 s32 CanAccessStage(s32 stageIndex);
 f32 func_80096898(u16 arg0);
 void func_80096964(CTTask* task);
@@ -528,7 +521,7 @@ s32 SaveData_VerifyFile(SaveFile*, SaveFile*);
 s32 SaveData_Compare(u8 *arg0, u8 *arg1);
 void SaveData_LoadFile(s32 arg0, SaveFile* arg1);
 void SaveData_LoadAllFiles(u8* arg0);
-void SaveData_LoadRecords(u8* arg0);
+void SaveData_LoadRecords(SaveRecord* arg0);
 void SaveData_SaveFile(s32 saveIndex, SaveFile* saveFile);
 s32 SaveData_UpdateFile(s32 saveIndex, SaveFile* saveFile);
 void SaveData_SaveRecords(void);
@@ -537,7 +530,7 @@ void func_800A878C(SaveFile* arg0);
 void func_800A87D4(s32 arg0);
 void SaveData_ResetRecords(void);
 void SaveData_ClearRecords(void);
-void SaveData_WriteFile(SaveFile*);
+s32 SaveData_WriteFile(SaveFile*);
 void func_800A93AC(ContMain* arg0);
 void func_800A9690(void);
 void func_800A96DC(CTTask* task);
@@ -558,7 +551,7 @@ void CalculateBoundingRectFromVectors(Vec3f vecA, Vec3f vecB, Rect3D* rect);
 //////
 
 void func_8009CB14(void);
-void func_8009D0EC(void);
+CTTask* func_8009D0EC(void);
 void func_8009EE44(void);
 
 
@@ -581,7 +574,7 @@ extern u8 D_800FF8DC;
 extern u8 D_800FF8E0;
 extern u8 D_800FF8E4;
 extern s32 perfectCode;
-extern OSContPad D_80175650[MAXCONTROLLERS];
+extern OSContPad gContPads[MAXCONTROLLERS];
 extern s32 D_801FCA08;
 extern s16 gCurrentDemo;
 extern s16 D_80100D64[];
@@ -606,10 +599,10 @@ extern char D_8010D98C[];
 extern char D_8010D990[];
 extern s16 D_8010026E[];// extern StageSelectionData D_8010026E[];
 extern u8 D_80200B68;
-//extern u8 gLevelAccessBitfeild;
 extern s16 sDebugLevelAccess;
 extern s16 D_80100EB4[];
 extern s16 D_801B317C;
+extern u32 D_801B3174;
 extern s16 gSFXMute;
 extern UnkPlaySoundEffect* D_80200A90;
 extern f32 D_8010F2FC;
@@ -623,16 +616,15 @@ extern Mtx D_801B3240[];
 extern Mtx D_801B3300[];
 extern Mtx D_801B33C0[];
 extern Mtx D_801B3480[];
-extern Mtx* D_800FF8D4;
+extern Mtx* gMatrixBufPtr;
 extern Unk_800FFB74* D_800FFB74[];
 extern Unk_800FFDDC* D_800FFDDC[];
 extern s32 D_800FFDEC;
 extern f32* D_800FF610; //this probably isnt right but until we care roll with it
 extern s16 D_801FC9A4;
-extern s8 D_80200C08;
 extern s16 D_80100D8C[];
 extern s16 D_800FFEBC;
-extern s32 D_802023E0;
+extern s32 D_802023E0[0x20];
 extern s32 D_80202420; //unk type
 extern s32 D_8020D8A8;
 extern s16 D_80100E10;
@@ -641,14 +633,13 @@ extern s32 D_80247904;
 
 extern s16 D_80100258[7]; //should be 7?
 extern s16 NameSpriteIDs[7];
-extern s16 gStageCrownRecords[];
 extern s32 D_800FF8EC;
 extern s16 D_80100348[];
 extern f32 D_800FFEE8;
 extern s16 D_800FFEEC[];
 extern s8 D_80200B30;
 extern s16 sDebugBitfeild;
-extern s8 D_80200B28[];
+extern u8 D_80200B28[];
 extern letterDef* D_801005F8[];
 extern s16 D_80200B1A;
 extern s16 D_80200B1C;
@@ -670,7 +661,9 @@ extern s32 D_80101074;
 extern s32 CreditsTimeOffset;
 extern RollData CreditsData[];
 extern s32 D_8010875C;
-extern s32 D_80174980;
+extern s32 gLevelFlowState;
+extern u64 D_801B35B8[];
+extern u32 D_801FFB7C[];
 
 void Battle_Init(void);
 void func_8002CE54(void);

@@ -1,6 +1,6 @@
 #include "common.h"
 
-//prints 
+//prints
 void DummiedPrintf(char* arg0, ...) {
     s32 pad;
 }
@@ -15,12 +15,12 @@ void Sched_StartThread(void) {
     gSchedReset = FALSE;
     gGfxTaskPending = FALSE;
     osCreateThread(&gSchedThread, 5, (void*)schedproc, 0, (void*)&gSchedThreadStack[0x1000], 100);
-                    // OSThread ptr: gSchedThread
-                    // OSId - thread ID: 5  
-                    // entry - pc: &D_80084B30
-                    // arg - a0: 0
-                    // sp - stack pointer: &gSchedThreadStack[0x1000]
-                    // OSPri p - thread priority: 0x64
+    // OSThread ptr: gSchedThread
+    // OSId - thread ID: 5
+    // entry - pc: &D_80084B30
+    // arg - a0: 0
+    // sp - stack pointer: &gSchedThreadStack[0x1000]
+    // OSPri p - thread priority: 0x64
     osStartThread(&gSchedThread);
-                    // Start the new thread
+    // Start the new thread
 }

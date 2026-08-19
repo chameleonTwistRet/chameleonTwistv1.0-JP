@@ -1,137 +1,12 @@
-#include "common.h"
-
-
-extern unsigned char Global_JLCaveFadeTop_ci8_PAL[];
-extern unsigned char Global_JLCaveFadeTop_ci8_PNG[];
-extern unsigned char Global_JLCaveFade_ci8_PAL[];
-extern unsigned char Global_JLCaveFade_ci8_PNG[];
-extern unsigned char Global_jlText5_ci4_PAL[];
-extern unsigned char Global_jlText5_ci4_PNG[];
-
-extern Gfx Global_fallbackCube_Gfx[];
-extern ModelCollision Global_fallbackCube_ColH;
-extern Gfx Global_exitShadowSouth_Gfx[];
-extern ModelCollision Global_exitShadowSouth_ColH;
-extern Gfx Global_exitShadowNorth_Gfx[];
-extern ModelCollision Global_exitShadowNorth_ColH;
-extern Gfx Global_exitShadowEast_Gfx[];
-extern ModelCollision Global_exitShadowEast_ColH;
-extern Gfx Global_exitShadowWest_Gfx[];
-extern ModelCollision Global_exitShadowWest_ColH;
-extern Gfx Global_ALBLExit_Gfx[];
-extern ModelCollision Global_ALBLExit_ColH;
-extern Gfx Global_sandPit_Gfx[];
-extern ModelCollision Global_sandPit_ColH;
-extern Gfx Global_BossBridge_Gfx[];
-extern ModelCollision Global_BossBridge_ColH;
-extern Gfx Global_ALPole_Gfx[];
-extern ModelCollision Global_ALPole_ColH;
-extern Gfx Global_ALBLDoor_Gfx[];
-extern ModelCollision Global_ALBLDoor_ColH;
-extern Gfx Global_ALSpinDoor_Gfx[];
-extern ModelCollision Global_ALSpinDoor_ColH;
-extern Gfx Global_BLLavaFloor_Gfx[];
-extern ModelCollision Global_BLLavaFloor_ColH;
-extern Gfx Global_BLLava_Gfx[];
-extern ModelCollision Global_BLLava_ColH;
-extern Gfx Global_BLLava2_Gfx[];
-extern ModelCollision Global_BLLava2_ColH;
-extern Gfx Global_BLLava3_Gfx[];
-extern ModelCollision Global_BLLava3_ColH;
-extern Gfx Global_BLLava4_Gfx[];
-extern ModelCollision Global_BLLava4_ColH;
-extern Gfx Global_BLLava5_Gfx[];
-extern ModelCollision Global_BLLava5_ColH;
-extern Gfx Global_BLLava6_Gfx[];
-extern ModelCollision Global_BLLava6_ColH;
-extern Gfx Global_BLLava7_Gfx[];
-extern ModelCollision Global_BLLava7_ColH;
-extern Gfx Global_BLLava8_Gfx[];
-extern ModelCollision Global_BLLava8_ColH;
-extern Gfx Global_BLDestructableTop_Gfx[];
-extern ModelCollision Global_BLDestructableTop_ColH;
-extern Gfx Global_BLMetalBridge_Gfx[];
-extern ModelCollision Global_BLMetalBridge_ColH;
-extern Gfx Global_KLExit_Gfx[];
-extern ModelCollision Global_KLExit_ColH;
-extern Gfx Global_KLDoor_Gfx[];
-extern ModelCollision Global_KLDoor_ColH;
-extern Gfx Global_DCExit_Gfx[];
-extern ModelCollision Global_DCExit_ColH;
-extern Gfx Global_TallExitShadow1_Gfx[];
-extern ModelCollision Global_TallExitShadow1_ColH;
-extern Gfx Global_TallExitShadow2_Gfx[];
-extern ModelCollision Global_TallExitShadow2_ColH;
-extern Gfx Global_GCExit1_Gfx[];
-extern ModelCollision Global_GCExit1_ColH;
-extern Gfx Global_GCExit2_Gfx[];
-extern ModelCollision Global_GCExit2_ColH;
-extern Gfx Global_trainingRoomLight_Gfx[];
-extern ModelCollision Global_trainingRoomLight_ColH;
-extern Gfx Global_JLCaveExit1_Gfx[];
-extern ModelCollision Global_JLCaveExit1_ColH;
-extern Gfx Global_JLCaveExit2_Gfx[];
-extern ModelCollision Global_JLCaveExit2_ColH;
-extern Gfx Global_JLCaveExit3_Gfx[];
-extern ModelCollision Global_JLCaveExit3_ColH;
-extern Gfx Global_JLCaveExit4_Gfx[];
-extern ModelCollision Global_JLCaveExit4_ColH;
-extern Gfx Global_JLOutsideEntrance_Gfx[];
-extern ModelCollision Global_JLOutsideEntrance_ColH;
-extern Gfx Global_JLFxCamPillar_Gfx[];
-extern ModelCollision Global_JLFxCamPillar_ColH;
-extern Gfx Global_JLCaveDoor_Gfx[];
-extern ModelCollision Global_JLCaveDoor_ColH;
-extern Gfx LizardKong_model1_Gfx[];
-extern ModelCollision LizardKong_unkCol1_ColH;
-extern Gfx LizardKong_model2_Gfx[];
-extern ModelCollision LizardKong_unkCol2_ColH;
-extern Gfx Global_pole_Gfx[];
-extern ModelCollision Global_pole_ColH;
+#include "LizardKong.h"
 
 Mtx LizardKong_IMtx1 = IDENTITY;
 
-StageModel LizardKong_stageModels[40] = {
-{&Global_fallbackCube_Gfx[0], &Global_fallbackCube_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_exitShadowSouth_Gfx[0], &Global_exitShadowSouth_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_exitShadowNorth_Gfx[0], &Global_exitShadowNorth_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_exitShadowEast_Gfx[0], &Global_exitShadowEast_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_exitShadowWest_Gfx[0], &Global_exitShadowWest_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_ALBLExit_Gfx[0], &Global_ALBLExit_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_sandPit_Gfx[0], &Global_sandPit_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_BossBridge_Gfx[0], &Global_BossBridge_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_ALPole_Gfx[0], &Global_ALPole_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_ALBLDoor_Gfx[0], &Global_ALBLDoor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_ALSpinDoor_Gfx[0], &Global_ALSpinDoor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_BLLavaFloor_Gfx[0], &Global_BLLavaFloor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_BLLava_Gfx[0], &Global_BLLava_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_BLLava2_Gfx[0], &Global_BLLava2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_BLLava3_Gfx[0], &Global_BLLava3_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_BLLava4_Gfx[0], &Global_BLLava4_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_BLLava5_Gfx[0], &Global_BLLava5_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_BLLava6_Gfx[0], &Global_BLLava6_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_BLLava7_Gfx[0], &Global_BLLava7_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_BLLava8_Gfx[0], &Global_BLLava8_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_BLDestructableTop_Gfx[0], &Global_BLDestructableTop_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_BLMetalBridge_Gfx[0], &Global_BLMetalBridge_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_KLExit_Gfx[0], &Global_KLExit_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_KLDoor_Gfx[0], &Global_KLDoor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_DCExit_Gfx[0], &Global_DCExit_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_TallExitShadow1_Gfx[0], &Global_TallExitShadow1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_TallExitShadow2_Gfx[0], &Global_TallExitShadow2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_GCExit1_Gfx[0], &Global_GCExit1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_GCExit2_Gfx[0], &Global_GCExit2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_trainingRoomLight_Gfx[0], &Global_trainingRoomLight_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_JLCaveExit1_Gfx[0], &Global_JLCaveExit1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_JLCaveExit2_Gfx[0], &Global_JLCaveExit2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_JLCaveExit3_Gfx[0], &Global_JLCaveExit3_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_JLCaveExit4_Gfx[0], &Global_JLCaveExit4_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_JLOutsideEntrance_Gfx[0], &Global_JLOutsideEntrance_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_JLFxCamPillar_Gfx[0], &Global_JLFxCamPillar_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_JLCaveDoor_Gfx[0], &Global_JLCaveDoor_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&LizardKong_model1_Gfx[0], &LizardKong_unkCol1_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&LizardKong_model2_Gfx[0], &LizardKong_unkCol2_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
-{&Global_pole_Gfx[0], &Global_pole_ColH, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+StageModel LizardKong_stageModels[] = {
+#include "global_models.inc.c"
+{LizardKong_model1_Gfx, &LizardKong_unkCol1_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{LizardKong_model2_Gfx, &LizardKong_unkCol2_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
+{Global_pole_Gfx, &Global_pole_collision, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, },
 };
 
 unsigned char LizardKong_rabObjects_Bin[] = {
@@ -217,18 +92,16 @@ StageMapData LizardKong_map_data = {
 };
 
 LevelScope LizardKong_scope_Lvlscope = {
-    0,
-    0,
-    0,
+    {0.0f, 0.0f, 0.0f},
     -1,
     25000,
     60,
 };
 
-StageData LizardKong_header_Lvlhdr = {
+StageData LizardKong_stageData = {
     &LizardKong_map_data,
-    0,
-    &LizardKong_stageModels[0],
+    NO_EXT_ROOMS,
+    LizardKong_stageModels,
     40,
     0,
     LizardKong_rabObjects_Bin,
@@ -267,36 +140,36 @@ Gfx LizardKong_model2_Gfx[] = {
     #include "assets/levelGroup/LizardKong/model2/model2.gfx.inc.c"
 };
 
-Vec3f LizardKong_unkCol1_ColV[] = {
-    #include "assets/levelGroup/LizardKong/unkCol1/unkCol1.colV.inc.c"
+Vec3f LizardKong_unkCol1_ColVerts[] = {
+    #include "assets/levelGroup/LizardKong/unkCol1/unkCol1.colVerts.inc.c"
 };
 
-Vec3w LizardKong_unkCol1_ColT[] = {
-    #include "assets/levelGroup/LizardKong/unkCol1/unkCol1.colT.inc.c"
+Vec3w LizardKong_unkCol1_ColTris[] = {
+    #include "assets/levelGroup/LizardKong/unkCol1/unkCol1.colTris.inc.c"
 };
 
-Rect3D LizardKong_unkCol1_ColS = {
-    #include "assets/levelGroup/LizardKong/unkCol1/unkCol1.colS.inc.c"
+Rect3D LizardKong_unkCol1_BoundBox = {
+    #include "assets/levelGroup/LizardKong/unkCol1/unkCol1.boundBox.inc.c"
 };
 
-ModelCollision LizardKong_unkCol1_ColH = {
-27, 33, LizardKong_unkCol1_ColV, LizardKong_unkCol1_ColT, &LizardKong_unkCol1_ColS
+ModelCollision LizardKong_unkCol1_collision = {
+    ARRAY_COUNT(LizardKong_unkCol1_ColVerts), ARRAY_COUNT(LizardKong_unkCol1_ColTris), LizardKong_unkCol1_ColVerts, LizardKong_unkCol1_ColTris, &LizardKong_unkCol1_BoundBox
 };
 
-Vec3f LizardKong_unkCol2_ColV[] = {
-    #include "assets/levelGroup/LizardKong/unkCol2/unkCol2.colV.inc.c"
+Vec3f LizardKong_unkCol2_ColVerts[] = {
+    #include "assets/levelGroup/LizardKong/unkCol2/unkCol2.colVerts.inc.c"
 };
 
-Vec3w LizardKong_unkCol2_ColT[] = {
-    #include "assets/levelGroup/LizardKong/unkCol2/unkCol2.colT.inc.c"
+Vec3w LizardKong_unkCol2_ColTris[] = {
+    #include "assets/levelGroup/LizardKong/unkCol2/unkCol2.colTris.inc.c"
 };
 
-Rect3D LizardKong_unkCol2_ColS = {
-    #include "assets/levelGroup/LizardKong/unkCol2/unkCol2.colS.inc.c"
+Rect3D LizardKong_unkCol2_BoundBox = {
+    #include "assets/levelGroup/LizardKong/unkCol2/unkCol2.boundBox.inc.c"
 };
 
-ModelCollision LizardKong_unkCol2_ColH = {
-14, 16, LizardKong_unkCol2_ColV, LizardKong_unkCol2_ColT, &LizardKong_unkCol2_ColS
+ModelCollision LizardKong_unkCol2_collision = {
+    ARRAY_COUNT(LizardKong_unkCol2_ColVerts), ARRAY_COUNT(LizardKong_unkCol2_ColTris), LizardKong_unkCol2_ColVerts, LizardKong_unkCol2_ColTris, &LizardKong_unkCol2_BoundBox
 };
 Mtx LizardKong_IMtx5 = IDENTITY;
 
@@ -534,7 +407,7 @@ Mtx LizardKong_unk1_Animarr[80][11] = {
 };
 
 AnimPointer LizardKong_unk1Pointers_Animp[1] = {
-{&LizardKong_unk1Header_Animh.frames, &LizardKong_unk1Header_Animh.objects, &LizardKong_unk1_Animarr[0][0]}
+{&LizardKong_unk1Header_Animh.frames, &LizardKong_unk1Header_Animh.objects, LizardKong_unk1_Animarr[0]}
 };
 
 Anim LizardKong_unk2Header_Animh = {
@@ -546,7 +419,7 @@ Mtx LizardKong_unk2_Animarr[40][11] = {
 };
 
 AnimPointer LizardKong_unk2Pointers_Animp[1] = {
-{&LizardKong_unk2Header_Animh.frames, &LizardKong_unk2Header_Animh.objects, &LizardKong_unk2_Animarr[0][0]}
+{&LizardKong_unk2Header_Animh.frames, &LizardKong_unk2Header_Animh.objects, LizardKong_unk2_Animarr[0]}
 };
 
 Anim LizardKong_unk3Header_Animh = {
@@ -558,7 +431,7 @@ Mtx LizardKong_unk3_Animarr[30][11] = {
 };
 
 AnimPointer LizardKong_unk3Pointers_Animp[1] = {
-{&LizardKong_unk3Header_Animh.frames, &LizardKong_unk3Header_Animh.objects, &LizardKong_unk3_Animarr[0][0]}
+{&LizardKong_unk3Header_Animh.frames, &LizardKong_unk3Header_Animh.objects, LizardKong_unk3_Animarr[0]}
 };
 
 Anim LizardKong_unk4Header_Animh = {
@@ -570,7 +443,7 @@ Mtx LizardKong_unk4_Animarr[10][11] = {
 };
 
 AnimPointer LizardKong_unk4Pointers_Animp[1] = {
-{&LizardKong_unk4Header_Animh.frames, &LizardKong_unk4Header_Animh.objects, &LizardKong_unk4_Animarr[0][0]}
+{&LizardKong_unk4Header_Animh.frames, &LizardKong_unk4Header_Animh.objects, LizardKong_unk4_Animarr[0]}
 };
 
 Anim LizardKong_unk5Header_Animh = {
@@ -582,7 +455,7 @@ Mtx LizardKong_unk5_Animarr[5][11] = {
 };
 
 AnimPointer LizardKong_unk5Pointers_Animp[1] = {
-{&LizardKong_unk5Header_Animh.frames, &LizardKong_unk5Header_Animh.objects, &LizardKong_unk5_Animarr[0][0]}
+{&LizardKong_unk5Header_Animh.frames, &LizardKong_unk5Header_Animh.objects, LizardKong_unk5_Animarr[0]}
 };
 
 Anim LizardKong_unk6Header_Animh = {
@@ -594,7 +467,7 @@ Mtx LizardKong_unk6_Animarr[15][11] = {
 };
 
 AnimPointer LizardKong_unk6Pointers_Animp[1] = {
-{&LizardKong_unk6Header_Animh.frames, &LizardKong_unk6Header_Animh.objects, &LizardKong_unk6_Animarr[0][0]}
+{&LizardKong_unk6Header_Animh.frames, &LizardKong_unk6Header_Animh.objects, LizardKong_unk6_Animarr[0]}
 };
 
 Anim LizardKong_unk7Header_Animh = {
@@ -606,7 +479,7 @@ Mtx LizardKong_unk7_Animarr[5][11] = {
 };
 
 AnimPointer LizardKong_unk7Pointers_Animp[1] = {
-{&LizardKong_unk7Header_Animh.frames, &LizardKong_unk7Header_Animh.objects, &LizardKong_unk7_Animarr[0][0]}
+{&LizardKong_unk7Header_Animh.frames, &LizardKong_unk7Header_Animh.objects, LizardKong_unk7_Animarr[0]}
 };
 
 Anim LizardKong_unk8Header_Animh = {
@@ -618,7 +491,7 @@ Mtx LizardKong_unk8_Animarr[20][11] = {
 };
 
 AnimPointer LizardKong_unk8Pointers_Animp[1] = {
-{&LizardKong_unk8Header_Animh.frames, &LizardKong_unk8Header_Animh.objects, &LizardKong_unk8_Animarr[0][0]}
+{&LizardKong_unk8Header_Animh.frames, &LizardKong_unk8Header_Animh.objects, LizardKong_unk8_Animarr[0]}
 };
 
 Anim LizardKong_unk9Header_Animh = {
@@ -630,7 +503,7 @@ Mtx LizardKong_unk9_Animarr[1][1] = {
 };
 
 AnimPointer LizardKong_unk9Pointers_Animp[1] = {
-{&LizardKong_unk9Header_Animh.frames, &LizardKong_unk9Header_Animh.objects, &LizardKong_unk9_Animarr[0][0]}
+{&LizardKong_unk9Header_Animh.frames, &LizardKong_unk9Header_Animh.objects, LizardKong_unk9_Animarr[0]}
 };
 
 Anim LizardKong_unk10Header_Animh = {
@@ -642,7 +515,7 @@ Mtx LizardKong_unk10_Animarr[15][11] = {
 };
 
 AnimPointer LizardKong_unk10Pointers_Animp[1] = {
-{&LizardKong_unk10Header_Animh.frames, &LizardKong_unk10Header_Animh.objects, &LizardKong_unk10_Animarr[0][0]}
+{&LizardKong_unk10Header_Animh.frames, &LizardKong_unk10Header_Animh.objects, LizardKong_unk10_Animarr[0]}
 };
 
 Anim LizardKong_unk11Header_Animh = {
@@ -654,5 +527,5 @@ Mtx LizardKong_unk11_Animarr[15][11] = {
 };
 
 AnimPointer LizardKong_unk11Pointers_Animp[1] = {
-{&LizardKong_unk11Header_Animh.frames, &LizardKong_unk11Header_Animh.objects, &LizardKong_unk11_Animarr[0][0]}
+{&LizardKong_unk11Header_Animh.frames, &LizardKong_unk11Header_Animh.objects, LizardKong_unk11_Animarr[0]}
 };
