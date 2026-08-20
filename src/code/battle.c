@@ -703,7 +703,7 @@ void func_80053FA0(s32 playerID) {
 void func_8005423C(void) {
     s32 i;
     for (i = 0; i < 6; i++) {
-        SetPlayerContextEyes(i, 0, 0);
+        SetPlayerEyeExpression(i, 0, 0);
     }
 }
 
@@ -719,14 +719,14 @@ void func_80054284(void) {
         if (gPlayerActors[i].active == TRUE) {
             if (Battle_PlayerCount == Battle_PlayerRank[i] + 1) {
                 var_s1 = 3;
-                SetPlayerContextEyes(gSelectedCharacters[i], 2, 0);
+                SetPlayerEyeExpression(gSelectedCharacters[i], 2, 0);
             } else {
                 var_s1 = Battle_PlayerRank[i];
-                SetPlayerContextEyes(gSelectedCharacters[i], 1, (Battle_PlayerRank[i] == 0) ^ 1);
+                SetPlayerEyeExpression(gSelectedCharacters[i], 1, (Battle_PlayerRank[i] == 0) ^ 1);
             }
             if (Battle_NoWinner == TRUE) {
                 var_s1 = 1;
-                SetPlayerContextEyes(gSelectedCharacters[i], 0, 0);
+                SetPlayerEyeExpression(gSelectedCharacters[i], 0, 0);
             }
             Effect_TypeAH_Init(D_800F0B54, posX, D_800F0D90[var_s1].unk10, -500.0f, -posX / 12.0f, &D_800F0D90[var_s1], gSelectedCharacters[i], 0, 0);
             posX += width;
@@ -1109,7 +1109,7 @@ void Battle_Update(void) {
             for (j = 0; j < 4; j++) {
                 if ((gPlayerActors[j].active == 1) && (Battle_PlayerRank[j] == 0)) {
                     UnlockEyeChange();
-                    SetPlayerContextEyes(gSelectedCharacters[j], 1, 0);
+                    SetPlayerEyeExpression(gSelectedCharacters[j], 1, 0);
                     func_80053FA0(j);
                     gPlayerActors[j].pos.y = 5000.0f;
                     break;

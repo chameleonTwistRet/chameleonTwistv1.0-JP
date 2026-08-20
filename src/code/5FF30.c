@@ -4189,7 +4189,7 @@ void func_8008FDF8(void) {
 
 void func_8008FE00(void) {
     LoadPlayerEyes(gSelectedCharacters[0]);
-    SetPlayerContextEyes(gSelectedCharacters[0], 0, 0);
+    SetPlayerEyeExpression(gSelectedCharacters[0], 0, 0);
     FreePlayerEyes(gSelectedCharacters[0]);
     LoadPlayerEyes(gSelectedCharacters[0]);
 }
@@ -4199,7 +4199,7 @@ void func_8008FE50(void) {
 
     for (i = CHARA_DAVY; i <= CHARA_WHITE; i++) {
         LoadPlayerEyes(i);
-        SetPlayerContextEyes(i, 0, 0);
+        SetPlayerEyeExpression(i, 0, 0);
         FreePlayerEyes(i);
     }
 }
@@ -4285,7 +4285,7 @@ void Porocess_Mode0(void) {
         }
         if (gCurrentStage == STAGE_BOMB) {
             LoadPlayerEyes(4);
-            SetPlayerContextEyes(4, 0, 0);
+            SetPlayerEyeExpression(4, 0, 0);
             FreePlayerEyes(4);
         }
         CTTaskList_Init();
@@ -4337,7 +4337,7 @@ void Porocess_Mode0(void) {
         func_8008FE00();
         if (gCurrentStage == STAGE_BOMB) {
             LoadPlayerEyes(4);
-            SetPlayerContextEyes(4, 0, 0);
+            SetPlayerEyeExpression(4, 0, 0);
             FreePlayerEyes(4);
             return;
         }
@@ -4380,7 +4380,7 @@ void Porocess_Mode0(void) {
         func_8008FE00();
         if (gCurrentStage == STAGE_BOMB) {
             LoadPlayerEyes(4);
-            SetPlayerContextEyes(4, 0, 0);
+            SetPlayerEyeExpression(4, 0, 0);
             FreePlayerEyes(4);
         }
         func_8008800C(8);
@@ -4423,7 +4423,7 @@ void Porocess_Mode0(void) {
         func_8008FE00();
         if (gCurrentStage == STAGE_BOMB) {
             LoadPlayerEyes(4);
-            SetPlayerContextEyes(4, 0, 0);
+            SetPlayerEyeExpression(4, 0, 0);
             FreePlayerEyes(4);
         }
         return;
@@ -7918,7 +7918,7 @@ void Process_GameOver(void) {
         func_8008F114();
         func_8008FE00();
         LoadPlayerEyes(gSelectedCharacters[0]);
-        SetPlayerContextEyes(gSelectedCharacters[0], 2, 0);
+        SetPlayerEyeExpression(gSelectedCharacters[0], 2, 0);
         break;
     case 1:
         func_800A4484();

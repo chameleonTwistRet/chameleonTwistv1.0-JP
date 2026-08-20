@@ -4259,15 +4259,16 @@ void Effect_Init(void) {
     Effect_ResetListEntry(gEffectListHead);
 }
 
-// NON_MATCHING attempt below scores 670.
 #ifdef NON_MATCHING
 void Effect_UpdateAll(Gfx** arg0) {
     Effect* effect;
+    void* fpUpdate;
 
     if (gEffectList.next != NULL) {
         effect = gEffectList.next;
         do {
-            if (effect->fpUpdate != NULL) {
+            fpUpdate = effect->fpUpdate;
+            if (fpUpdate != NULL) {
                 ((void (*)(Effect*, Gfx**)) effect->fpUpdate)(effect, arg0);
             }
             effect = effect->next;
@@ -5844,6 +5845,7 @@ void Effect_TypeU_Init(f32 posX, f32 posY, f32 posZ, f32 targetX, f32 targetY, f
     effect->lifeTime = 0.0f;
 }
 
+// scores 375
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/Bowling_ResetScore.s")
 
 void Bowling_CountPins(s32* pinsRemaining) {
@@ -6236,7 +6238,26 @@ u32 Effect_PlayerEyes_Init(s32 charID, s32 arg1, f32 duration, s32 arg3) {
     return TRUE;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/SetPlayerContextEyes.s")
+
+void SetPlayerEyeExpression(s32 charID, s32 expression, s32 whichEye) {
+    s32 offset;
+    s32 base;
+
+    base = SPRITE_EYEDAVYR;
+    if (!gLockContextEyes) {
+        switch (expression) {
+        case 1:
+            base = SPRITE_EYEDAVYRHAPPY;
+            break;
+        case 2:
+            base = SPRITE_EYEDAVYRHURT;
+            break;
+        }
+        offset = charID * 10;
+        base = base + offset;
+        SetPlayerEyes(base, whichEye, charID);
+    }
+}
 
 void SetBossDeadEyes(s32);
 
