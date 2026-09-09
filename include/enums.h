@@ -2,7 +2,6 @@
 #define _ENUMS_H
 
 #define ACTORS_MAX 64
-#define PLAYERS_MAX 4
 
 #define SPRITE_LOAD_ERROR -1
 #define SPRITE_LOAD_SUCCESS 0
@@ -173,6 +172,36 @@ enum PlayerCharacters{
 	CHARA_BLACK,
 	CHARA_WHITE,
     CHARA_TOTAL
+};
+
+// Player slot indices into gSelectedCharacters / gPlayerActors / gContMain.
+enum Players {
+    PLAYER_1 = 0,
+    PLAYER_2 = 1,
+    PLAYER_3 = 2,
+    PLAYER_4 = 3,
+    PLAYERS_MAX = 4
+};
+
+// Indices into gSegTable
+enum Segments {
+    SEG_CODE = 0,
+    SEG_STATIC = 1,
+    SEG_COMMON = 2,
+    SEG_FIELD = 3,
+    SEG_FIELD_COMMON = 4,
+    SEG_RABBIT = 5,
+    SEG_SUB_ANIMATION = 6,
+    SEG_BATTLE = 7,          // 対戦 / Battle_Chameleons (?)
+    SEG_DAVY = 8,
+    SEG_JACK = 9,
+    SEG_FRED = 10,
+    SEG_LINDA = 11,
+    SEG_BLACK = 12,
+    SEG_WHITE = 13,
+    SEG_SPACE = 14,
+    SEG_DEMO = 15,
+    SEG_TOTAL = 16
 };
 
 enum Stages{
@@ -652,7 +681,7 @@ enum SFX {
     //97
     //98
     SFX_63_unkSnd = 99,
-    //100
+    SFX_64_unkSnd = 100,
     //101
     //102
     //103

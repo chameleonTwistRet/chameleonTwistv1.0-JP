@@ -999,7 +999,7 @@ extern const char segNameFieldOfPlay[];
 extern const char segNameFieldCommon[];
 extern const char segNameRabbit[];
 extern const char segNameSubAnimation[];
-extern const char segNameCompetition[];
+extern const char segNameBattle[];
 extern const char segNameBlue[];
 extern const char segNameGreen[];
 extern const char segNameYellow[];
@@ -1009,7 +1009,7 @@ extern const char segNameWhite[];
 extern const char segNameSpace[];
 extern const char segNameDemo[];
 
-segTableEntry gSegTable[16] = {
+segTableEntry gSegTable[SEG_TOTAL] = {
     {segNameCode, main_ROM_START, main_ROM_END, main_VRAM, main_VRAM_END},
     {segNameStatic, static0_ROM_START, static0_ROM_END, static0_VRAM, static0_VRAM_END},
     {segNameCommon, Global_ROM_START, Global_ROM_END, Global_VRAM, Global_VRAM_END},
@@ -1017,7 +1017,7 @@ segTableEntry gSegTable[16] = {
     {segNameFieldCommon, 0x00000000, 0x00000000, 0x00000000, 0x00000000},
     {segNameRabbit, Rabbit_ROM_START, Rabbit_ROM_END, Rabbit_VRAM, Rabbit_VRAM_END},
     {segNameSubAnimation, Animations_ROM_START, Animations_ROM_END, Animations_VRAM, Animations_VRAM_END},
-    {segNameCompetition, Battle_Chameleons_ROM_START, Battle_Chameleons_ROM_END, Battle_Chameleons_VRAM, Battle_Chameleons_VRAM_END},
+    {segNameBattle, Battle_Chameleons_ROM_START, Battle_Chameleons_ROM_END, Battle_Chameleons_VRAM, Battle_Chameleons_VRAM_END},
     {segNameBlue, Davy_ROM_START, Davy_ROM_END, Davy_VRAM, Davy_VRAM_END},
     {segNameGreen, Jack_ROM_START, Jack_ROM_END, Jack_VRAM, Jack_VRAM_END},
     {segNameYellow, Fred_ROM_START, Fred_ROM_END, Fred_VRAM, Fred_VRAM_END},
@@ -2754,15 +2754,133 @@ s32 func_80088198(void) {
     return 0;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80088248.s")
+s32 func_80088248(s32 arg0) {
+    unk0* temp_v0 = func_80086EB4(arg0);
+    unk0* sp18 = temp_v0;
+    s16 temp_a1;
+    s16 state;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800882D0.s")
+    if (temp_v0 == NULL) {
+        return -1;
+    }
+
+    temp_a1 = temp_v0->unk48;
+    if ((temp_a1 >= 0x10) || (temp_a1 < 0)) {
+        return 0;
+    }
+
+    alSndpSetSound(gSFXPlayerP, temp_a1);
+    state = alSndpGetState(gSFXPlayerP);
+    sp18->unk3E = state;
+    if (state == 1) {
+        return 1;
+    }
+    return 0;
+}
+
+s32 func_800882D0(s32 arg0, s32 arg1) {
+    unk0 *temp_v0 = func_80086EB4(arg0);
+    s32 v1;
+
+    if (temp_v0 == 0) {
+        return -1;
+    }
+
+    if (arg1 < 0) {
+        arg1 = 0;
+    } else {
+        if (arg1 < 0xFF) {
+            v1 = arg1;
+        } else {
+            v1 = 0xFF;
+        }
+        arg1 = v1;
+    }
+
+    if (arg1 == temp_v0->unk3C) {
+        return 0;
+    } else {
+        temp_v0->unk3C = arg1;
+        if ((temp_v0->unk48 >= 0) && (temp_v0->unk48 < 0x10)) {
+            alSndpSetSound(gSFXPlayerP, temp_v0->unk48);
+            alSndpSetPriority(gSFXPlayerP, temp_v0->unk48, arg1);
+        }
+    }
+
+    return 0;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80088388.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80088474.s")
+s32 func_80088474(s32 arg0, s32 arg1) {
+    s32 v1;
+    unk0 *temp_v0 = func_80086EB4(arg0);
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80088528.s")
+    if (temp_v0 == 0) {
+        return -1;
+    }
+
+    if (arg1 < 0) {
+        arg1 = 0;
+    } else {
+        if (arg1 < 0x7FFF) {
+            v1 = arg1;
+        } else {
+            v1 = 0x7FFF;
+        }
+        arg1 = v1;
+    }
+
+    if (arg1 == temp_v0->unk32) {
+        return 0;
+    } else {
+        temp_v0->unk32 = arg1;
+        if ((temp_v0->unk48 >= 0) && (temp_v0->unk48 < 0x10)) {
+            alSndpSetSound(gSFXPlayerP, temp_v0->unk48);
+            alSndpSetVol(gSFXPlayerP, arg1);
+        }
+    }
+
+    return 0;
+}
+
+s32 func_80088528(s32 arg0, s32 arg1) {
+    s32 v1;
+    s16 sndId;
+    unk0 *temp_v0 = func_80086EB4(arg0);
+
+    if (temp_v0 == 0) {
+        return -1;
+    }
+
+    if (gIsStereo != 0) {
+        if (arg1 < 0) {
+            arg1 = 0;
+        } else {
+            if (arg1 < 0x7F) {
+                v1 = arg1;
+            } else {
+                v1 = 0x7F;
+            }
+            arg1 = v1;
+        }
+    } else {
+        arg1 = 0x40;
+    }
+
+    if (arg1 == temp_v0->unk24) {
+        return 0;
+    } else {
+        temp_v0->unk24 = arg1;
+        if ((temp_v0->unk48 >= 0) && (temp_v0->unk48 < 0x10)) {
+            sndId = temp_v0->unk48;
+            alSndpSetSound(gSFXPlayerP, sndId);
+            alSndpSetPan(gSFXPlayerP, arg1);
+        }
+    }
+
+    return 0;
+}
 
 s32 func_800885EC(s32 arg0, s32 arg1) {
     s32 v1;
@@ -3395,7 +3513,21 @@ void CTTask_Unlink_2(CTTask* task) {
     Free(task);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/bzero32.s")
+void bzero32(void* dst, s32 size) {
+    s32 remainder = size % 8;
+    u64* wide = dst;
+    s32 wideCount = size / 8;
+    s8* tail;
+    s32 i;
+
+    for (i = 0; i < wideCount; i++) {
+        *wide++ = 0;
+    }
+    tail = (s8*)wide;
+    for (i = 0; i < remainder; i++) {
+        *tail++ = 0;
+    }
+}
 
 //allocates and zeroes a new CTTask and links it into the gCTTaskHead list.
 //arg1 selects the insertion point: 0 links the new task in front of the task
@@ -4674,7 +4806,22 @@ void func_8009131C(CTTask* task) {
     func_8008D7B0(task);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80091390.s")
+void func_80091390(CTTask* task) {
+    CTTask* temp_v0;
+
+    task->unk44 = 2;
+    func_8008D7B0(task);
+    temp_v0 = task->unk58;
+    if ((gCurrentStage == STAGE_ANTBOSS) && (temp_v0->unk54 != 7)) {
+        return;
+    }
+    task->unk_5C = 30;
+    task->function = func_80091420;
+    task->unk80 = -5.0f;
+    task->unk7C = -20.0f;
+    task->unk88 = 80.0f;
+    task->unk84 = 1.5f;
+}
 
 /**
  * @brief State in the boss-stage task state machine: wait unk_5C frames, then hand off to func_80091694
@@ -4751,7 +4898,25 @@ func:
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80091694.s")
+void func_80091694(CTTask* task) {
+    task->unk60--;
+    if (task->unk60 > 0) {
+        return;
+    }
+    if (task->unk60 == 0) {
+        PlayBGM(20);
+    } else {
+        task->scale.x += 0.04;
+        task->scale.y += 0.04;
+        task->scale.z += 0.04;
+        task->pos.z = 10.0f;
+        if (func_80090D28(task)) {
+            task->function = func_80091758;
+            task->unk60 = 4;
+        }
+        func_8008D7B0(task);
+    }
+}
 
 void func_80091758(CTTask* arg0) {
     CTTask* task;
@@ -4822,7 +4987,34 @@ void func_80092324(CTTask* arg0) {              // Cy
 }
 
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009236C.s")
+CTTask* func_8009236C(CTTask* arg0) {
+    CTTask* task = CTTask_Alloc(1, 100, 0);
+
+    task->unk44 = 23;
+    task->unk4E = 1;
+    task->unk48 = -1;
+    task->unk_5C = 0;
+    task->unk60 = 0;
+    task->function = func_8009244C;
+    task->scale.z = 0.5f;
+    task->scale.y = 0.5f;
+    task->scale.x = 0.5f;
+    task->unk3C = 1.0f;
+    task->rot.x = 1.0f;
+    task->pos.x = 160.0f;
+    task->rot.y = 0.0f;
+    task->rot.z = 0.0f;
+    task->rotA = 0.0f;
+    task->pos.z = 0.0f;
+    task->unk80 = 0.0f;
+    task->unk7C = 0.0f;
+    task->pos.y = -94.0f;
+    task->unk84 = 3.0f;
+    task->unk88 = -4.0f;
+    task->unk58 = arg0;
+    func_8008D7FC(task);
+    return task;
+}
 
 void func_8009244C(CTTask* task) {
     if (task->unk60 != 0) {
@@ -5248,13 +5440,44 @@ void func_800938E4(s32 xMult) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800939B0.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80093A98.s")
+void func_80093B7C(CTTask*);
+
+void func_80093A98(CTTask* task) {
+    func_800612F0(2);
+    printUISprite(task->pos.x, task->pos.y, 0.0f, 0.0f, 1.0f,
+                  (f32)((f64)task->scale.x * -1.0 * 40.0), task->scale.x * 40.0f,
+                  (f32)task->unk4C, task->unk_04);
+    {
+        CTTask* other = task->unk58;
+
+        if ((other->unk54 >= 3) && (func_80090CB0(task) != 0)) {
+            task->function = func_80093B7C;
+            task->unk80 = -8.0f;
+        }
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80093B7C.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80093CD8.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80093DE4.s")
+void func_80093DE4(CTTask* task) {
+    if (func_80090CB0(task) != 0) {
+        task->unk7C = -10.0f;
+    }
+    if (20.0f < task->pos.x) {
+        CTTask* other = task->unk58;
+        task->unk54 = 1;
+        task->function = func_80093ECC;
+        other->unk54 = 1;
+    }
+    if ((gTimer % 12) == 0) {
+        PLAY_SFX(SFX_63_unkSnd, 0, 0x10);
+    }
+    if ((gTimer % 12) == 6) {
+        PLAY_SFX(SFX_64_unkSnd, 0, 0x10);
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80093ECC.s")
 
@@ -5617,28 +5840,60 @@ void func_80095500(CTTask* task) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80095A3C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80095D38.s")
+extern StageMapData* gInteriorMapData;
 
-#ifdef NON_MATCHING
-extern u32* D_801B3178;
+/**
+ * @brief Finishes loading an interior only stage: resolves the segmented
+ * StageMapData pointer from the freshly loaded stage header into gInteriorMapData, then
+ * resolves its roomInstances and roomsMap pointers in place, before relocating the
+ * per-room pointers and the model table.
+ */
+void LoadStageRelocateInterior(void) {
+    u32 copy;
+    u32 val = (u32)gCurrentStageData->roomsMap;
 
-// score 280
-void func_80095E44(void) {
-    u32 off = D_801B3178[1];
+    copy = val;
 
-    if (!IS_SEGMENTED(D_801B3178[1])) {
-        D_801B3174 = D_801B3178[1];
-    } else {
-        D_801B3174 = D_80100F50[SEGMENT_INDEX(D_801B3178[1])].base_address + SEGMENT_OFFSET_CUSTOM(off);
+    if (!IS_SEGMENTED(copy)) { gInteriorMapData = (StageMapData*)val; } else { val = val & SEGMENT_MASK; gInteriorMapData = (StageMapData*)(gLoadedSegments[val >> SEGMENT_SHIFT].base_address + SEGMENT_OFFSET_CUSTOM(copy)); }
+    if (copy) {
     }
-    func_80095A3C(D_801B3174);
+    if (!IS_SEGMENTED(gInteriorMapData->roomInstances)) {
+        gInteriorMapData->roomInstances = gInteriorMapData->roomInstances;
+    } else {
+        gInteriorMapData->roomInstances = SEGMENTED_TO_VIRTUAL(gInteriorMapData->roomInstances);
+    }
+    if (!IS_SEGMENTED(gInteriorMapData->roomsMap)) {
+        gInteriorMapData->roomsMap = gInteriorMapData->roomsMap;
+    } else {
+        gInteriorMapData->roomsMap = SEGMENTED_TO_VIRTUAL(gInteriorMapData->roomsMap);
+    }
+    func_80095A3C(gInteriorMapData->roomInstances);
     func_80095780();
 }
-#else
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80095E44.s")
-#endif
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80095EC8.s")
+/**
+ * @brief Finishes loading an exterior only stage: resolves the segmented
+ * RoomInstance array pointer from the freshly loaded stage header into gExteriorRooms,
+ * then relocates the per-room pointers and the model table.
+ */
+void LoadStageRelocateExterior(void) {
+    u32 copy;
+    u32 val = (u32)gCurrentStageData->roomInstances;
+
+    copy = val;
+    if (!IS_SEGMENTED(copy)) {
+        gExteriorRooms = val;
+    } else {
+        val = val & SEGMENT_MASK;
+        gExteriorRooms = gLoadedSegments[val >> SEGMENT_SHIFT].base_address + SEGMENT_OFFSET_CUSTOM(copy);
+    }
+    if (copy) {
+    }
+    func_80095A3C(gExteriorRooms);
+    func_80095780();
+}
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/LoadStageRelocateAllRoomTypes.s")
 
 //Segment names
 const char segNameCode[] = "コード";
@@ -5648,7 +5903,7 @@ const char segNameFieldOfPlay[] = "フィールド";
 const char segNameFieldCommon[] = "フィールド共通";
 const char segNameRabbit[] = "ウサギ";
 const char segNameSubAnimation[] = "サブアニメ";
-const char segNameCompetition[] = "対戦";
+const char segNameBattle[] = "対戦";
 const char segNameBlue[] = "青";
 const char segNameGreen[] = "緑";
 const char segNameYellow[] = "黄色";
@@ -5694,9 +5949,9 @@ u32 Stage_Load(s32 stageToLoad, s32 inpAddr) {
     s32 size = (u32) stageData->ramEnd - (u32) stageData->ramStart;
     s32 dmaResult;
 
-    gLoadedSegments[0x3].base_address = inpAddr - size;
-    gLoadedSegments[0x3].end_address = gLoadedSegments [0x3].base_address + size;
-    dmaResult = DMA_Copy(stageData->romStart, (void*)gLoadedSegments [0x3].base_address, size);
+    gLoadedSegments[SEG_FIELD].base_address = inpAddr - size;
+    gLoadedSegments[SEG_FIELD].end_address = gLoadedSegments[SEG_FIELD].base_address + size;
+    dmaResult = DMA_Copy(stageData->romStart, (void*)gLoadedSegments[SEG_FIELD].base_address, size);
     if (dmaResult < 0) {
         DummiedPrintf("エラー %d\n", dmaResult);    //Error
         return 0;
@@ -5704,16 +5959,19 @@ u32 Stage_Load(s32 stageToLoad, s32 inpAddr) {
         while (func_800A72E8(dmaResult) == 0);
         DummiedPrintf("マップデータ(%dk)読み込み(%X)\n", (u32)size / 1024, size);
         // Map data(%dk),  read(%X)
-        return gLoadedSegments[3].base_address;
+        return gLoadedSegments[SEG_FIELD].base_address;
     }
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/LoadStageByIndex.s")
-
-void func_800966E0(void) {
-    gLoadedSegments[1].base_address = (u32)&gFrameBuffers - _ALIGN((u32)static0_VRAM_END - (u32)static0_VRAM, 16);
-    gLoadedSegments[1].end_address = (u32)&gFrameBuffers;
-    D_801FFB78 = Segment_Load(gSelectedCharacters[0] + 8, gLoadedSegments [1].base_address);
+/**
+ * @brief Loads the selected chameleon from the story mode selection screen into RAM
+ * and updates the heap tail. Uses davy as an offset for chamleon seg addresses.
+ */
+void LoadSelectedChameleonSegment(void) {
+    gLoadedSegments[SEG_STATIC].base_address = (u32)&gFrameBuffers - _ALIGN((u32)static0_VRAM_END - (u32)static0_VRAM, 16);
+    gLoadedSegments[SEG_STATIC].end_address = (u32)&gFrameBuffers;
+    gHeapEnd = Segment_Load(gSelectedCharacters[PLAYER_1] + SEG_DAVY, gLoadedSegments[SEG_STATIC].base_address);
 }
 
 /**
@@ -5825,7 +6083,19 @@ void func_80096964(CTTask* task) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/Stage_Select_ChameleonWalk.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80096CA0.s")
+void func_80096CA0(CTTask* task) {
+    CTTask* other = task->unk58;
+    task->unk44 = 4;
+    task->unk_64 -= 1;
+    task->pos.x += task->unk7C;
+    task->pos.y += task->unk80;
+    if (task->unk_64 == 0) {
+        task->function = Stage_Select_ChameleonWalk;
+        task->unk7A = other->unk7A;
+    }
+    func_8008D7FC(task);
+    task->unk50 = ChameleonGfxs[gSelectedCharacters[D_800FF8E8]];
+}
 
 
 //stage names
@@ -6323,7 +6593,13 @@ void func_8009AF98(CTTask* task) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009AFFC.s")
+void func_8009AFFC(CTTask* task) {
+    if (func_8008EC90() != 0) {
+        task->function = func_8009B08C;
+        setPrimColor(0, 0, 0, 255);
+        printUISprite(2.0f, 2.0f, 0.0f, 0.0f, 1.0f, 316.0f, 236.0f, 0.0f, SPRITE_BLANK);
+    }
+}
 
 void func_8009B08C(CTTask* task) {
     setPrimColor(0, 0, 0, 255);
@@ -6525,7 +6801,21 @@ void func_8009C19C(CTTask* task) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009C278.s")
+void func_8009C278(CTTask* task) {
+    CTTask* newTask = task->unk58;
+
+    if (newTask->unk54 == 4) {
+        task->function = func_8009B464;
+    } else if (newTask->unk54 == 0) {
+        task->function = func_8009A57C;
+    } else if (newTask->unk54 == 9) {
+        task->function = func_8009BEC4;
+    } else if (newTask->unk54 == 13) {
+        task->function = func_8009C74C;
+    } else if (newTask->unk54 == 18) {
+        task->function = func_8009C19C;
+    }
+}
 
 void func_8009C2FC(CTTask* arg0) {
     if (arg0->unk54 == 0xF) {
@@ -6647,7 +6937,22 @@ void func_8009C828(CTTask* task) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009C904.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009CB14.s")
+void BattleMenu_LoadAllChameleonSegments(void) {
+    s32 i;
+    s32 address;
+
+    gLoadedSegments[SEG_STATIC].base_address = (u32)gFrameBuffers - ALIGN16((u32)static0_VRAM_END - (u32)static0_VRAM);
+    gLoadedSegments[SEG_STATIC].end_address = (u32)gFrameBuffers;
+    address = gLoadedSegments[SEG_STATIC].base_address;
+    for (i = SEG_DAVY; i <= SEG_WHITE; i++) {
+        address = Segment_Load(i, address);
+    }
+    gHeapEnd = address;
+    func_80056EB4();
+    func_8005C9B8();
+    Effect_Init();
+    func_80084788();
+}
 
 void func_8009CBC0(void) {
     s32 i, j;
@@ -7303,17 +7608,17 @@ void func_800A07E0(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/Process_BattleMenu.s")
 
-void func_800A0D90(void) {
+void LoadAllChameleonSegments(void) {
     s32 i;
     s32 address;
 
-    gLoadedSegments [1].base_address = (u32)gFrameBuffers - ALIGN16((u32)static0_VRAM_END - (u32)static0_VRAM);
-    gLoadedSegments [1].end_address = (u32)gFrameBuffers; //TODO: is the a singular frame buffer or both?
-    address = gLoadedSegments [1].base_address;
-    for (i = 8; i < 14; i++) {
+    gLoadedSegments[SEG_STATIC].base_address = (u32)gFrameBuffers - ALIGN16((u32)static0_VRAM_END - (u32)static0_VRAM);
+    gLoadedSegments[SEG_STATIC].end_address = (u32)gFrameBuffers;
+    address = gLoadedSegments[SEG_STATIC].base_address;
+    for (i = SEG_DAVY; i <= SEG_WHITE; i++) {
         address = Segment_Load(i, address);
     }
-    D_801FFB78 = address;
+    gHeapEnd = address;
     func_80056EB4();
     Effect_Init();
     func_8005C9B8();
@@ -7423,7 +7728,7 @@ void Process_NewGameMenu(void) {
         DummiedPrintf("色選択プロセス\n");
         DMAStruct_Print();
         func_8008F16C();
-        func_800A0D90();
+        LoadAllChameleonSegments();
         LoadSprite(SPRITE_BATTLE_BIGBOARD);
         LoadSprite(SPRITE_BATTLE_STAGETITLEBOARD);
         LoadSprite(SPRITE_SPECIFIC_SYMBOLS);
@@ -7455,10 +7760,10 @@ void Process_NewGameMenu(void) {
     func_8008C094();
 }
 
-void func_800A1EC4(void) {
-    gLoadedSegments [1].base_address = (u32)gFrameBuffers - (u32)_ALIGN(((u32)static0_VRAM_END - (u32)static0_VRAM), 16);
-    gLoadedSegments [1].end_address = (u32)gFrameBuffers;
-    D_801FFB78 = gLoadedSegments [1].base_address;
+void ReleaseChameleonSegments(void) {
+    gLoadedSegments[SEG_STATIC].base_address = (u32)gFrameBuffers - (u32)_ALIGN(((u32)static0_VRAM_END - (u32)static0_VRAM), 16);
+    gLoadedSegments[SEG_STATIC].end_address = (u32)gFrameBuffers;
+    gHeapEnd = gLoadedSegments[SEG_STATIC].base_address;
     func_80056EB4();
     Effect_Init();
     func_8005C9B8();
@@ -7558,7 +7863,7 @@ void Process_TitleMenu(void) {
         D_800FF8E4 = 0;
         DummiedPrintf("タイトルプロセス\n");
         DMAStruct_Print();
-        func_800A1EC4();
+        ReleaseChameleonSegments();
         LoadSprite(SPRITE_MENUOPTIONS);
         CTTaskList_Init();
         func_8008F16C();
@@ -7738,7 +8043,7 @@ void Process_OptionsMenu(void) {
         D_800FFDF4 = 1;
         DummiedPrintf("オプションプロセス\n", &gGameModeState);
         DMAStruct_Print();
-        func_800A1EC4();
+        ReleaseChameleonSegments();
         UseFixedRNGSeed = 0;
         LoadSprite(SPRITE_SPECIFIC_SYMBOLS);
         LoadSprite(SPRITE_BATTLE_BIGBOARD);
@@ -7905,7 +8210,7 @@ void Process_GameOver(void) {
         D_800FF8DC = D_800FF8E0 = D_800FF8E4 = 0;
         DummiedPrintf("ゲームオーバープロセス\n");
         DMAStruct_Print();
-        func_800A0D90();
+        LoadAllChameleonSegments();
         CTTaskList_Init();
         LoadSprite(SPRITE_TEXTBIGGER);
         D_80168DA0 = 4;
@@ -7994,7 +8299,7 @@ void Process_JSSLogo(void) {
         D_800FFDF4 = 1;
         DummiedPrintf("ロゴプロセス\n"); //Logo process
         DMAStruct_Print();
-        func_800A1EC4();
+        ReleaseChameleonSegments();
         LoadSprite(SPRITE_JSSLOGO_BG);
         LoadSprite(SPRITE_JSSLOGO_CAT);
         CTTaskList_Init();
@@ -8025,9 +8330,9 @@ void Process_JSSLogo(void) {
 }
 
 void func_800A56D4(void) {
-    gLoadedSegments [1].base_address = (u32)&gFrameBuffers - _ALIGN((u32)static0_VRAM_END - (u32)static0_VRAM, 16);
-    gLoadedSegments [1].end_address = (u32)&gFrameBuffers;
-    D_801FFB78 = gLoadedSegments [1].base_address;
+    gLoadedSegments[SEG_STATIC].base_address = (u32)&gFrameBuffers - _ALIGN((u32)static0_VRAM_END - (u32)static0_VRAM, 16);
+    gLoadedSegments[SEG_STATIC].end_address = (u32)&gFrameBuffers;
+    gHeapEnd = gLoadedSegments[SEG_STATIC].base_address;
     func_80056EB4();
     func_8005C9B8();
     Effect_Init();
@@ -8130,7 +8435,18 @@ void func_800A6CF4(CTTask* task) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A6D40.s")
+void func_800A6D40(void) {
+    f32 c14 = D_80100614[gCurrentDemo].unk0[0].unk14;
+    f32 c18 = D_80100614[gCurrentDemo].unk0[0].unk18;
+    f32 c1C = D_80100614[gCurrentDemo].unk0[0].unk1C;
+    f32 c8 = D_80100614[gCurrentDemo].unk0[0].unk8;
+    f32 cC = D_80100614[gCurrentDemo].unk0[0].unkC;
+    f32 c10 = D_80100614[gCurrentDemo].unk0[0].unk10;
+    if (D_800F0704 == 0) {
+        func_8007B480(c8, cC, c10, c14, c18, c1C);
+        func_8007B4CC(0.0f, 30.0f, 0.0f, 0.0f, 30.0f, 0.0f);
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A6DD8.s")
 
@@ -8278,7 +8594,18 @@ s32 func_800A78D0(void) {
     return j;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/DMAStruct_Print.s")
+s32 DMAStruct_Print(void) {
+    s32 i;
+
+    for (i = 0; i != 50; i++) {
+        if (D_801FCFD8[i].index >= 0) {
+            //"待ち %d[%d] "("waiting %d[%d] ")
+            DummiedPrintf("待ち %d[%d] ", D_801FCFD8[i].index, i);
+            while (D_801FCFD8[i].index >= 0) {}
+        }
+    }
+    return 0;
+}
 
 //the following three programs are used in generating the "Perfect Code"
 s32 func_800A7A18(u32 arg0) {

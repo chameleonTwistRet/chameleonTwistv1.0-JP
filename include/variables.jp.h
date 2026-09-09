@@ -126,7 +126,7 @@ extern PlayerInit gPlayerInits[10]; // 4 extra blank entries.
 extern f32 D_8010881C;
 extern f32 D_80108820;
 extern s32 D_80108B68;
-extern segTableEntry gSegTable[16];
+extern segTableEntry gSegTable[SEG_TOTAL];
 extern const Vec2f D_8010A6D0[0x6B]; //positions?
 extern const unk_8010AA28 D_8010AA28[0x6B]; //actor related?
 extern f32 D_8010B328;
@@ -245,7 +245,7 @@ extern ALSynConfig D_801FF860;
 extern ALSeqpConfig gBGMplayerCfg;
 extern s32 gCurrentStageTime; //measured as ticks (30/sec)
 extern OSIoMesg gAudioIOMsgs[30];
-extern s32 D_801FFB78;
+extern s32 gHeapEnd;
 extern ALHeap gAlHeap;
 extern AudioDMAState D_801FFB90;
 extern unk_D_801FFB90 D_801FFBA0[60];
@@ -341,6 +341,7 @@ extern u8 gSelectedCharacters[4];
 extern s32 D_801749B0;
 extern s32 gIsMultiplayerPaused;
 extern s32 gCurrentStage;
+extern StageData* gCurrentStageData; // header of the loaded stage (the asset <Stage>_stageData)
 extern s32 D_80176F58[2];
 extern s16 gOneRun;
 extern s16 gNoHit;

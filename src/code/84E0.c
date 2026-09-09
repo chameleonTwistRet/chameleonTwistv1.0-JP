@@ -3330,7 +3330,604 @@ void func_80044EA4(Actor* arg0, f32 arg1) {
 }
 
 
+#ifdef NON_MATCHING
+void ActorTick_GhostBoss(Actor *boss)
+{
+  f32 a;
+  f32 acc;
+  f32 ang;
+  f32 c;
+  f32 ddx;
+  Actor *new_var2;
+  f32 ddz;
+  f32 delta;
+  s32 dir;
+  s32 i;
+  s32 l;
+  s32 left;
+  s32 off;
+  Actor *other;
+  f32 pdx;
+  f32 pdz;
+  s32 r;
+  s32 reps;
+  s32 state;
+  f32 step;
+  s32 swings;
+  s32 t;
+  f32 toPlayer;
+  f32 toTarget;
+  s32 tries;
+  f32 tx;
+  f32 tz;
+  Actor *leftHand;
+  Actor *rightHand;
+  Actor *hand;
+  Actor *hand9;
+  s32 new_var;
+  s32 qa;
+  s32 qb;
+  s32 qc;
+  f32 dx;
+  f32 dx18;
+  f32 dz18;
+  f32 dx19;
+  f32 dz19;
+  f32 dz;
+  s32 r6;
+  if (boss->sizeScalar < 1.0f)
+  {
+    boss->sizeScalar += 0.01f;
+    if (boss->sizeScalar > 1.0f)
+    {
+      boss->sizeScalar = 1.0f;
+    }
+    func_800312B0(boss->actorIndex);
+    if ((boss->globalTimer % 20U) == 0)
+    {
+      PlaySoundEffect(0xBA, 0, 0, 0, 0, 0x10);
+    }
+  }
+  switch (boss->userVariables[2])
+  {
+    case 0:
+      if (boss->globalTimer >= 0x79)
+    {
+      boss->pos.y += 20.0f;
+      if (boss->globalTimer == 0x96)
+      {
+        boss->userVariables[2] = 1;
+        PlaySoundEffect(0xB2, 0, 0, 0, 0, 0x10);
+      }
+    }
+      break;
+
+    case 1:
+      boss->pos.y -= 3.3519554f;
+      boss->pos.z += -4.0f;
+      if (boss->unk_F0 == 0x3C)
+    {
+      PlaySoundEffect(0xB2, 0, 0, 0, 0, 0x10);
+    }
+    else
+      if (boss->unk_F0 == 0xA0)
+    {
+      PlaySoundEffect(0xB3, 0, 0, 0, 0, 0x10);
+    }
+      if ((++boss->unk_F0) == 0xB3)
+    {
+      boss->userVariables[2] = 2;
+      boss->unk_90 = boss->unk_134[2];
+    }
+      break;
+
+    case 2:
+      leftHand = &gActors[D_801749D8[0][0]];
+      rightHand = &gActors[D_801749D8[1][boss->userVariables[2] * 0]];
+      delta = 360.0f - boss->unk_134[0];
+      leftHand->pos.x = (__cosf((f32) ((((f64) ((boss->unk_90 - 90.0f) * 2)) * 3.141592653589793) / 360.0)) * 300.0f) + boss->pos.x;
+      leftHand->pos.y = (boss->pos.y + (boss->unknownPositionThings[0].unk_10 * 0.6f)) - (leftHand->unknownPositionThings[0].unk_10 * 0.125f);
+      leftHand->pos.z = ((-__sinf((f32) ((((f64) ((boss->unk_90 - 90.0f) * 2)) * 3.141592653589793) / 360.0))) * 300.0f) + boss->pos.z;
+      leftHand->unk_90 = boss->unk_90 - 45.0f;
+      rightHand->pos.x = (__cosf((f32) ((((f64) ((boss->unk_90 + 90.0f) * 2)) * 3.141592653589793) / 360.0)) * 300.0f) + boss->pos.x;
+      rightHand->pos.y = (boss->pos.y + (boss->unknownPositionThings[0].unk_10 * 0.6f)) - (rightHand->unknownPositionThings[0].unk_10 * 0.125f);
+      rightHand->pos.z = ((-__sinf((f32) ((((f64) ((boss->unk_90 + 90.0f) * 2)) * 3.141592653589793) / 360.0))) * 300.0f) + boss->pos.z;
+      rightHand->unk_90 = boss->unk_90 + 45.0f;
+      boss->userVariables[0] = -1;
+      boss->userVariables[1] = -1;
+      func_80044C30(boss, 2);
+      func_800448C0(boss);
+      boss->userVariables[2] = 3;
+      PlaySoundEffect(0xB4, &boss->pos.x, &boss->pos.y, &boss->pos.z, 0, 0);
+      break;
+
+    case 3:
+      leftHand = &gActors[D_801749D8[0][0]];
+      new_var2 = &gActors[D_801749D8[1][0]];
+      rightHand = &gActors[D_801749D8[1][0]];
+      leftHand->pos.x += 20.0f * __cosf((f32) ((((f64) (leftHand->unk_90 * 2)) * 3.141592653589793) / 360.0));
+      leftHand->pos.y -= leftHand->pos.y / 10.0f;
+      leftHand->pos.z += 20.0f * (-__sinf((f32) ((((f64) (leftHand->unk_90 * 2)) * 3.141592653589793) / 360.0)));
+      rightHand->pos.x += 20.0f * __cosf((f32) ((((f64) (rightHand->unk_90 * 2)) * 3.141592653589793) / 360.0));
+      rightHand->pos.y -= rightHand->pos.y / 10.0f;
+      rightHand->pos.z += 20.0f * (-__sinf((f32) ((((f64) (rightHand->unk_90 * 2)) * 3.141592653589793) / 360.0)));
+      func_80044C30(boss, 2);
+      func_800448C0(boss);
+      if (func_80044E80(boss, 0) == 8)
+    {
+      boss->userVariables[2] = 4;
+      boss->userVariables[4] += 1;
+      boss->unk_134[7] = (((f32) (Random(0, 0xEA60) % 100)) < (boss->unk_164 * 100.0f)) ? (2.0f * 1.0f) : (1.0f * 1.0f);
+      PlaySoundEffect(0xB4, &boss->pos.x, &boss->pos.y, &boss->pos.z, 0, 0);
+    }
+      break;
+
+    case 4:
+
+    case 5:
+    {
+      if (func_80044E80(boss, 5 - boss->userVariables[2]) == 0)
+      {
+        boss->unk_134[6] += (1.0f * 1.0f);
+        if ((boss->unk_134[6] == 30.0f) || (boss->unk_124 != boss->userVariables[4]))
+        {
+          reps = boss->userVariables[4];
+          pdx = boss->pos.x - gCurrentActivePlayerPointer->pos.x;
+          pdz = boss->pos.z - gCurrentActivePlayerPointer->pos.z;
+          boss->unk_134[6] = 0.0f;
+          if ((boss->unk_124 == reps) || (boss->userVariables[3] == 0))
+          {
+            boss->userVariables[4] = 0;
+            boss->userVariables[2] = 7;
+          }
+          else
+            if (boss->position._f32.x < ((pdx * pdx) + (pdz * pdz)))
+          {
+            boss->userVariables[2] = 6;
+          }
+          else
+            if (boss->userVariables[2] == 4)
+          {
+            boss->userVariables[2] = 5;
+            boss->userVariables[4] = reps + 1;
+            boss->unk_134[7] = (((f32) (Random(0, 0xFF38) % 256)) < (boss->unk_164 * 256.0f)) ? (2.0f * 1.0f) : (1.0f * 1.0f);
+            PlaySoundEffect(0xB4, &boss->pos.x, &boss->pos.y, &boss->pos.z, 0, 0);
+          }
+          else
+          {
+            boss->userVariables[2] = 4;
+            boss->userVariables[4] = reps + 1;
+            new_var = Random(0, 0xFF38);
+            boss->unk_134[7] = (((f32) (new_var % 256)) < (boss->unk_164 * 256.0f)) ? (2.0f * 1.0f) : (1.0f * 1.0f);
+            PlaySoundEffect(0xB4, &boss->pos.x, &boss->pos.y, &boss->pos.z, 0, 0);
+          }
+        }
+      }
+      else
+      {
+        hand = (boss->userVariables[2] - 4) ? (&gActors[D_801749D8[1][0]]) : (&gActors[D_801749D8[0][0]]);
+        swings = (boss->unk_124 == boss->userVariables[4]) ? ((s32) (boss->unk_134[7] * 2)) : ((s32) boss->unk_134[7]);
+        for (qa = 0; qa < swings; qa++)
+        {
+          if (func_80044E80(boss, boss->userVariables[2] - 4) < 9)
+          {
+            hand->pos.y -= hand->pos.y / 10.0f;
+            step = 6.0f / ((f32) swings);
+          }
+          else
+          {
+            step = 2.0f / ((f32) swings);
+          }
+          RotateAngleTowards(&hand->unk_90, CalcAngleBetween2DPoints(hand->pos.x, hand->pos.z, gCurrentActivePlayerPointer->pos.x, gCurrentActivePlayerPointer->pos.z), step);
+          hand->pos.x += 20.0f * __cosf((f32) ((((f64) (hand->unk_90 * 2)) * 3.141592653589793) / 360.0));
+          hand->pos.z += 20.0f * (-__sinf((f32) ((((f64) (hand->unk_90 * 2)) * 3.141592653589793) / 360.0)));
+          func_80044C30(boss, boss->userVariables[2] - 4);
+          func_80044D58(boss, 5 - boss->userVariables[2]);
+          if (func_80044E80(boss, 5 - boss->userVariables[2]) == 0)
+          {
+            break;
+          }
+        }
+
+      }
+      func_800448C0(boss);
+      if ((gTimer % 24) == 0)
+      {
+        PlaySoundEffect(0xB4, &boss->pos.x, &boss->pos.y, &boss->pos.z, 0, 0);
+      }
+      break;
+    }
+
+    case 6:
+
+    case 7:
+      dx = boss->pos.x - gCurrentActivePlayerPointer->pos.x;
+      dz = boss->pos.z - gCurrentActivePlayerPointer->pos.z;
+      l = func_80044E80(boss, 0);
+      r6 = func_80044E80(boss, 1);
+      if (l != 0)
+    {
+      func_80044D58(boss, 0);
+    }
+      if (r6 != 0)
+    {
+      func_80044D58(boss, 1);
+    }
+      func_800448C0(boss);
+      if ((l == 0) && (r6 == 0))
+    {
+      if (boss->userVariables[3] == 0)
+      {
+        boss->userVariables[2] = 0xD;
+        boss->userVariables[4] = 0;
+      }
+      else
+        if (boss->userVariables[2] == 7)
+      {
+        boss->userVariables[2] = 8;
+        boss->unk_EC = 2;
+        boss->unk_F0 = 0;
+      }
+      else
+        if (((dx * dx) + (dz * dz)) < boss->position._f32.x)
+      {
+        boss->userVariables[2] = 3;
+        PlaySoundEffect(0xB4, &boss->pos.x, &boss->pos.y, &boss->pos.z, 0, 0);
+      }
+    }
+    else
+      if ((gTimer % 24) == 0)
+    {
+      PlaySoundEffect(0xB4, &boss->pos.x, &boss->pos.y, &boss->pos.z, 0, (!(boss->globalTimer & 3)) * 0);
+    }
+      break;
+
+    case 8:
+    {
+      leftHand = &gActors[D_801749D8[0][0]];
+      rightHand = &gActors[D_801749D8[1][0]];
+      boss->pos.z += 20.0f;
+      leftHand->pos.z += 20.0f;
+      rightHand->pos.z += 20.0f;
+      if (boss->pos.z >= 0.0f)
+      {
+        boss->unk_120 = (boss->pos.x < gCurrentActivePlayerPointer->pos.x) ? (1) : (0);
+        if (boss->pos.z < gCurrentActivePlayerPointer->pos.z)
+        {
+          boss->unk_134[5] = ((Random(0, 0x7530) % 300) < 0x78) ? (0.5f) : (1.0f * 1.0f);
+        }
+        else
+        {
+          boss->unk_134[5] = ((Random(0, 0x7530) % 300) < 0x78) ? (-0.5f) : (-1.0f);
+        }
+        dir = 2;
+        dir = ((Random(0, 0x1869F) % dir) * 2) - 1;
+        boss->userVariables[2] = 9;
+        boss->unk_16C = (f32) dir;
+        boss->userVariables[boss->unk_120] = -1;
+        func_80044C30(boss, boss->unk_120);
+        a = (f32) ((((f64) ((((((f32) (1 - (boss->unk_120 * 2))) * boss->unk_134[5]) * 90.0f) + CalcAngleBetween2DPoints(gCurrentActivePlayerPointer->pos.x, gCurrentActivePlayerPointer->pos.z, boss->pos.x, boss->pos.z)) * 2)) * 3.141592653589793) / 360.0);
+        tx = (__cosf(a) * (300.0f * 1.0f)) + gCurrentActivePlayerPointer->pos.x;
+        tz = gCurrentActivePlayerPointer->pos.z - (__sinf(a) * (300.0f * 1.0f));
+        boss->unk_134[3] = CalcAngleBetween2DPoints(boss->pos.x, boss->pos.z, tx, tz);
+        boss->unk_134[4] = 0.0f;
+      }
+      else
+      {
+        boss->unk_F0++;
+        if ((boss->unk_EC == 2) && (boss->unk_F0 == 0xC))
+        {
+          boss->unk_EC = 3;
+          boss->unk_F0 = 0;
+        }
+      }
+      break;
+    }
+
+    case 9:
+    {
+      off = boss->unk_120 * 0x3C;
+      hand9 = &gActors[D_801749D8[boss->unk_120][0]];
+      other = &gActors[D_801749D8[1 - boss->unk_120][0]];
+      for (qb = 0; qb < 3; qb++)
+      {
+        step = (func_80044E80(boss, boss->unk_120) < 9) ? ((hand9->pos.y -= hand9->pos.y / 10.0f, 9.0f)) : (3.0f);
+        RotateAngleTowards(&hand9->unk_90, boss->unk_134[3], step);
+        hand9->pos.x += 20.0f * __cosf((f32) ((((f64) (hand9->unk_90 * 2)) * 3.141592653589793) / 360.0));
+        hand9->pos.z += 20.0f * (-__sinf((f32) ((((f64) (hand9->unk_90 * 2)) * 3.141592653589793) / 360.0)));
+        func_80044C30(boss, boss->unk_120);
+      }
+
+      func_800448C0(boss);
+      if ((boss->userVariables[4]++) < 0x14)
+      {
+        boss->unk_134[4] += 1.0f;
+        other->pos.z += 10.0f;
+      }
+      if (func_80044E80(boss, boss->unk_120) == 0xF)
+      {
+        boss->userVariables[2] = 0xA;
+        boss->userVariables[4] = 0;
+        boss->unk_134[0] = 0.0f;
+        PlaySoundEffect(0xB5, &boss->pos.x, &boss->pos.y, &boss->pos.z, 0, 0);
+      }
+      break;
+    }
+
+    case 10:
+    {
+      t = ++boss->userVariables[4];
+      delta = boss->unk_16C * ((boss->position._f32.y * ((f32) ((boss->unk_120 * 2) - 1))) * boss->unk_134[5]);
+      if (t < 8)
+      {
+        delta *= (f32) ((t + 1) / 8);
+      }
+      else
+        if (t == 8)
+      {
+        PlaySoundEffect(0xB5, &boss->pos.x, &boss->pos.y, &boss->pos.z, 0, 0);
+      }
+      acc = boss->unk_134[0] + delta;
+      if (acc > 360.0f)
+      {
+        delta = 360.0f - boss->unk_134[0];
+        acc = boss->unk_134[0] + delta;
+      }
+      if (acc < (-360.0f))
+      {
+        delta = (-360.0f) - boss->unk_134[0];
+        acc = boss->unk_134[0] + delta;
+      }
+      boss->unk_134[0] = acc;
+      boss->unk_90 += delta;
+      WrapDegrees(&boss->unk_90);
+      func_80044EA4(boss, delta);
+      if ((boss->unk_134[0] >= 360.0f) || (boss->unk_134[0] <= (-360.0f)))
+      {
+        boss->userVariables[2] = 0xB;
+        boss->userVariables[4] = 0;
+        boss->unk_90 = boss->unk_134[2];
+        boss->unk_134[6] = 0.0f;
+      }
+      break;
+    }
+
+    case 11:
+    {
+      for (qc = 0; qc < 3; qc++)
+      {
+        func_80044D58(boss, boss->unk_120);
+      }
+
+      func_800448C0(boss);
+      other = &gActors[D_801749D8[1 - boss->unk_120][0]];
+      if ((boss->userVariables[4]++) < 0x14)
+      {
+        boss->unk_134[4] -= 1.0f;
+        other->pos.z -= 10.0f;
+      }
+      if (func_80044E80(boss, boss->unk_120) == 0)
+      {
+        boss->userVariables[2] = 0xC;
+        boss->userVariables[4] = 0;
+        boss->unk_134[4] = 0.0f;
+      }
+      break;
+    }
+
+    case 12:
+      leftHand = &gActors[D_801749D8[0][0]];
+      rightHand = &gActors[D_801749D8[1][0]];
+      boss->pos.z -= 20.0f;
+      leftHand->pos.z -= 20.0f;
+      rightHand->pos.z -= 20.0f;
+      if (boss->pos.z <= boss->unk_134[1])
+    {
+      boss->pos.z = boss->unk_134[1];
+      if (boss->userVariables[3] == 0)
+      {
+        boss->userVariables[4] = 0;
+        boss->userVariables[2] = 0xD;
+      }
+      else
+      {
+        boss->userVariables[2] = 3;
+        PlaySoundEffect(0xB4, &boss->pos.x, &boss->pos.y, &boss->pos.z, 0, 0);
+        boss->userVariables[4] = 0;
+        boss->userVariables[boss->unk_120] = -1;
+        func_80044C30(boss, boss->unk_120);
+        boss->unk_EC = 0;
+        boss->unk_F0 = 0xB3;
+      }
+    }
+    else
+    {
+      if (boss->unk_EC == 2)
+      {
+        boss->unk_F0 -= 1;
+      }
+      else
+      {
+        boss->unk_F0 += 0x27;
+      }
+      if ((boss->unk_EC == 3) && (boss->pos.z <= (boss->unk_134[1] + 240.0f)))
+      {
+        boss->unk_EC = 2;
+        boss->unk_F0 = 0xB;
+      }
+    }
+      break;
+
+    case 13:
+      if ((++boss->userVariables[4]) == 1)
+    {
+      func_800313BC(D_801749D8[0][0], 180.0f);
+      func_800313BC(D_801749D8[1][0], 0.0f * 1.0f);
+      for (i = 1; i < 15; i++)
+      {
+        TriggerRoomClearReaction(&gActors[D_801749D8[0][i]]);
+        TriggerRoomClearReaction(&gActors[D_801749D8[1][i]]);
+      }
+
+    }
+    else
+      if (boss->userVariables[4] == 0x1E)
+    {
+      boss->userVariables[4] = 0;
+      boss->userVariables[2] = 0xE;
+      boss->userVariables[0] = 0;
+      boss->unk_EC = 1;
+      boss->unk_F0 = 0;
+      PlaySoundEffect(0xB2, 0, 0, 0, 0, 0x10);
+    }
+      break;
+
+    case 14:
+      if (boss->unk_F0 == 0x42)
+    {
+      PlaySoundEffect(0xB2, 0, 0, 0, 0, 0x10);
+      if (((!boss->unk_124) && (!boss->unk_124)) && (!boss->unk_124))
+      {
+      }
+    }
+    else
+      if (boss->unk_F0 == 0xB4)
+    {
+      PlaySoundEffect(0xB3, 0, 0, 0, 0, 0x10);
+    }
+      if ((++boss->unk_F0) == 0xC7)
+    {
+      boss->userVariables[2] = 0xF;
+      boss->unknownPositionThings[0].unk_10 = 350.0f;
+      boss->tYPos = 350.0f;
+      boss->unk_120 = Random(0, 0x05F5E0FF) % 3;
+      PlayBGM(0x10);
+    }
+      break;
+
+    case 15:
+      for (tries = 1; tries != 0x21; tries++)
+    {
+      r = Random(0, 0x05F5E0FF);
+      ang = (ArcTan2Deg(boss->pos.x, -boss->pos.z) + ((f32) (r % 300))) + 30.0f;
+      boss->unk_134[3] = __cosf((f32) ((((f64) (ang * 2)) * 3.141592653589793) / 360.0)) * 1800.0f;
+      boss->unk_134[4] = (-__sinf((f32) ((((f64) (ang * 2)) * 3.141592653589793) / 360.0))) * 1800.0f;
+      toPlayer = CalcAngleBetween2DPoints(boss->pos.x, boss->pos.z, gCurrentActivePlayerPointer->pos.x, gCurrentActivePlayerPointer->pos.z);
+      if (IsAngleWithinTolerance(toPlayer, CalcAngleBetween2DPoints(boss->pos.x, boss->pos.z, boss->unk_134[3], boss->unk_134[4]), 30.0f) == 0)
+      {
+        break;
+      }
+    }
+
+      boss->userVariables[2] = 0x10;
+      break;
+
+    case 16:
+      if (1)
+    {
+      toTarget = CalcAngleBetween2DPoints(boss->pos.x, boss->pos.z, boss->unk_134[3], boss->unk_134[4]);
+      ddx = boss->pos.x - boss->unk_134[3];
+      ddz = boss->pos.z - boss->unk_134[4];
+      if (((ddx * ddx) + (ddz * ddz)) < ((boss->unk_160 * boss->unk_160) * 2.0f))
+      {
+        left = boss->unk_120--;
+        boss->unk_94 = 0.0f;
+        if (left != 0)
+        {
+          boss->userVariables[2] = 0xF;
+        }
+        else
+        {
+          boss->userVariables[2] = 0x11;
+          boss->unk_120 = ((Random(0, 0x1869F) % 100) < 0x32) ? (0) : (1);
+          if (boss->unk_120 == 0)
+          {
+            boss->unk_134[5] = CalcAngleBetween2DPoints(boss->pos.x, boss->pos.z, gCurrentActivePlayerPointer->pos.x, gCurrentActivePlayerPointer->pos.z);
+          }
+          else
+          {
+            boss->unk_134[5] = CalcAngleBetween2DPoints(boss->pos.x, boss->pos.z, gCurrentActivePlayerPointer->pos.x, gCurrentActivePlayerPointer->pos.z) - 30.0f;
+            WrapDegrees(&boss->unk_134[5]);
+          }
+        }
+      }
+      else
+      {
+        func_8002F6DC(&boss->unk_90, toTarget);
+        boss->unk_94 += boss->unk_15C;
+        func_800382B4(&boss->unk_94, boss->unk_160);
+      }
+    }
+      break;
+
+    case 17:
+      func_8002F6DC(&boss->unk_90, boss->unk_134[5]);
+      if (boss->unk_90 == boss->unk_134[5])
+    {
+      if (boss->unk_120 == 0)
+      {
+        boss->userVariables[2] = 0x12;
+        boss->userVariables[4] = Random(boss->unk_12C, boss->unk_130);
+      }
+      else
+      {
+        boss->userVariables[2] = 0x13;
+        boss->userVariables[4] = 0;
+      }
+    }
+      break;
+
+    case 18:
+      dx18 = boss->pos.x - gCurrentActivePlayerPointer->pos.x;
+      dz18 = boss->pos.z - gCurrentActivePlayerPointer->pos.z;
+      if ((gCurrentActivePlayerPointer->amountLeftToShoot != 0) && (boss->userVariables[4] >= 4))
+    {
+      func_8002F6DC(&boss->unk_90, CalcAngleBetween2DPoints(boss->pos.x, boss->pos.z, gCurrentActivePlayerPointer->pos.x, gCurrentActivePlayerPointer->pos.z));
+    }
+      if (!(boss->globalTimer & 3))
+    {
+      c = __cosf((f32) ((((f64) (boss->unk_90 * 2)) * 3.141592653589793) / 360.0));
+      if (Actor_Init(0x40, (c * 280.0f) + boss->pos.x, boss->pos.y + 100.0f, boss->pos.z - (__sinf((f32) ((((f64) (boss->unk_90 * 2)) * 3.141592653589793) / 360.0)) * 280.0f), boss->unk_90, boss->unk_F4, boss->unk_F8, boss->unk_FC, boss->unk_100, boss->unk_104, boss->unk_108, 80.0f, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0) != (-1))
+      {
+        PlaySoundEffect(0xBB, 0, 0, 0, 0, 0x10);
+        boss->userVariables[4] -= 1;
+      }
+    }
+      if ((boss->userVariables[4] == 0) || (((dx18 * dx18) + (dz18 * dz18)) < 640000.0f))
+    {
+      boss->userVariables[2] = 0xF;
+      boss->unk_120 = Random(0, 0x05F5E0FF) % 3;
+    }
+      break;
+
+    case 19:
+      dx19 = boss->pos.x - gCurrentActivePlayerPointer->pos.x;
+      dz19 = boss->pos.z - gCurrentActivePlayerPointer->pos.z;
+      if (!(boss->globalTimer & 3))
+    {
+      c = __cosf((f32) ((((f64) (boss->unk_90 * 2)) * 3.141592653589793) / 360.0));
+      if (Actor_Init(0x40, (c * 280.0f) + boss->pos.x, boss->pos.y + 100.0f, boss->pos.z - (__sinf((f32) ((((f64) (boss->unk_90 * 2)) * 3.141592653589793) / 360.0)) * 280.0f), boss->unk_90, boss->unk_F4, boss->unk_F8, boss->unk_FC, boss->unk_100, boss->unk_104, boss->unk_108, 80.0f, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0) != (-1))
+      {
+        PlaySoundEffect(0xBB, 0, 0, 0, 0, 0x10);
+      }
+    }
+      boss->unk_90 += 0.8035714f;
+      WrapDegrees(&boss->unk_90);
+      if ((((++boss->userVariables[4]) == 0x70) || (gCurrentActivePlayerPointer->amountLeftToShoot != 0)) || (((dx19 * dx19) + (dz19 * dz19)) < 640000.0f))
+    {
+      boss->userVariables[2] = 0xF;
+      boss->unk_120 = Random(0, 0x05F5E0FF) % 3;
+    }
+      break;
+
+  }
+
+  func_800382F4(boss);
+  func_800360E4(boss);
+}
+#else
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_GhostBoss.s")
+#endif
 
 void ActorInit_GhostBossArmSegment(Actor* armSeg) {
     if ((armSeg->unk_124 >= 2)) {

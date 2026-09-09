@@ -1020,7 +1020,7 @@ typedef struct unk0 {
 /* 0x42 */ s16 unk42;
 /* 0x44 */ s8 unk44;
 /* 0x45 */ char pad45[3];                       /* maybe part of unk44[4]? */
-/* 0x48 */ s32 unk48; // s16 unk4a????
+/* 0x48 */ s32 unk48;
 /* 0x4C */ s32 unk4C;
 /* 0x50 */ struct unk0* unk50;
 /* 0x54 */ struct unk0* unk54;
@@ -1158,7 +1158,7 @@ typedef struct StageData {
 /* 0x0E */ u16 unkC;
 /* 0x10 */ unsigned char* RoomObjects;
 /* 0x14 */ u32 unk14;
-/* 0x18 */ s32 (*SpriteLib)[];
+/* 0x18 */ s32* spriteLib; // per-zone lists of up to 16 sprite ids (64 bytes each), zero terminated
 /* 0x1C */ LevelScope* Scope;
 } StageData;
 

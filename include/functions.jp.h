@@ -252,7 +252,7 @@ void func_80061394(void);
 void Effect_Init(void);
 ModelCollision* RegistModel(ModelCollision*);
 void func_80048284(Actor*);
-void func_800CB294(Vec3f, s32);
+FieldObject* func_800CB294(Vec3f, s32);
 void func_800CBE74(Actor*);
 void Effect_TypeA_Init(f32, f32, f32, s32, s32);
 void Effect_TypeY_Init(f32, f32, f32, f32, f32, f32, f32);
@@ -397,7 +397,7 @@ s32 DMA_Copy(void* romAddr, void* ramAddr, s32 size);
 s32 func_800A72E8(s32);
 void func_800AAAC8(void);
 s32 AddSoundEffect(s32, f32*, f32*, f32*, s32, s32);
-void func_800A1EC4(void);
+void ReleaseChameleonSegments(void);
 void func_800A54EC(CTTask*);
 s32 DMAStruct_Print(void);
 s32 IfRectsIntersect(Rect3D* arg0, Rect3D* arg1);
@@ -505,7 +505,7 @@ void Effect_BossDeadEyes_Init(s32 arg0);
 
 //funcs from 5ff30 that are called from other c's
 //battle.c
-void func_800A0D90(void);
+void LoadAllChameleonSegments(void);
 //8ADD0.c & battle.c
 s32 func_8008BFE0(s32 arg0);
 //8ADD0.c

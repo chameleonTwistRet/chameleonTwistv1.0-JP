@@ -2437,7 +2437,18 @@ f32 WrapAngleRecursive(f32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8005625C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80056BFC.s")
+void func_8005625C(f32, cutsceneCamera*, cutsceneCamera*);
+
+void func_80056BFC(s32 arg0, s32 arg1, f32 arg2, f32* arg3, f32* arg4, f32* arg5, f32* arg6) {
+    cutsceneCamera sp1C;
+
+    sp1C = *(cutsceneCamera*)&D_800F68D0;
+    func_8005625C(arg2, (cutsceneCamera*)(arg0 + arg1 * 0x3C), &sp1C);
+    *arg3 = sp1C.unk_00;
+    *arg4 = sp1C.unk_04;
+    *arg5 = sp1C.unk_08;
+    *arg6 = sp1C.unk_18;
+}
 
 void func_80056CA0(u8* arg0, u8* arg1) {
     while (*arg0 == 0) {
@@ -2535,7 +2546,7 @@ void Memory_Free(void* ptr) {
 }
 
 void func_80056EB4(void) {
-    func_80056CDC((s32) D_801191A0, (s32) D_801FFB78 - (s32) D_801191A0);
+    func_80056CDC((s32) D_801191A0, (s32) gHeapEnd - (s32) D_801191A0);
 }
 
 
@@ -6832,7 +6843,16 @@ void Effect_TypeAC_Init(f32 posX, f32 posY, f32 posZ, f32 arg3, f32 duration) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8006F43C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8006F8D8.s")
+void func_8006F8D8(f32 posX, f32 posY, f32 posZ) {
+    f32 yaw;
+    s32 i;
+
+    yaw = 0.0f;
+    for (i = 0; i != 6; i++) {
+        Effect_TypeBF_Init(posX, posY, posZ, 0.3f, yaw, 20.0f, 200.0f, 30.0f, 235, 195, 137);
+        yaw += 60.0f;
+    }
+}
 
 void Effect_TypeAD_Update(Effect* effect, Gfx** pGfxPos) {
     f32 sp54 = Rand() % 360;
@@ -9642,7 +9662,27 @@ void PrintTextWrapper(f32 arg0, f32 arg1, f32 arg2, f32 arg3, const char* txt, s
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80080F38.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8008265C.s")
+typedef struct CutsceneEntry {
+    /* 0x00 */ s32 unk_00;
+    /* 0x04 */ s32 unk_04;
+    /* 0x08 */ s32 unk_08;
+    /* 0x0C */ s32 unk_0C;
+    /* 0x10 */ s32 unk_10;
+    /* 0x14 */ s32 unk_14;
+    /* 0x18 */ s32 pad_18[14];
+} CutsceneEntry; /* sizeof 0x50 */
+
+void func_8008265C(CutsceneEntry* arg0) {
+    s32 i = 0;
+
+    cutsceneSwitch = 0;
+    D_800FED10 = 0;
+    D_800FED14 = 0.0f;
+    while (!(arg0[i].unk_00 == -1 && arg0[i].unk_04 == -1 && arg0[i].unk_08 == -1 && arg0[i].unk_0C == -1)) {
+        arg0[i].unk_14 = 0;
+        i++;
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80082714.s")
 

@@ -319,7 +319,7 @@ void func_800B0B20(FieldObject* arg0, RoomObject* arg1) {
         groupA[i] = &D_80236980[func_800B2B50(arg0->unk_04 - i - 1, gCurrentZone)];
     }
     if (func_800B34D0(arg0->unk_B4) != 0) {
-        model = *(Gfx**)(D_801B3178->unk8 + arg0->unk_B0 * 0x30);
+        model = gCurrentStageData->models[arg0->unk_B0].Graphics;
         for (i = 0; i < boundCount; i++) {
             groupA[i]->gfx = model;
         }
@@ -396,7 +396,6 @@ void func_800B1DA0(FieldObject* arg0, s32 arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B1DD4.s")
 
-#ifdef NON_MATCHING
 // TODO: D_80168E14 migration
 
 // Squish player if they are in the squish zone (given by coords not args)
@@ -423,9 +422,6 @@ void func_800B2070(s32 arg0) {
 
     //(((gPlayerActors->squishFramesElapsed == 0) && (gPlayerActors->canJump == 0)) && (IsPointInRect(vec, &rect) != 0)) ? (gPlayerActors->squishFramesElapsed = 0) : (gPlayerActors->squishFramesElapsed = 1);
 }
-#else
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B2070.s")
-#endif
 
 void func_800B2144(FieldObject* arg0, unkStruct14* arg1) {
     arg0->unk_AC = arg1->unk_38;
@@ -1243,7 +1239,29 @@ void func_800B4574(u8* arg0, s16* arg1) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B4574.s")
 #endif
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B47DC.s")
+/**
+   * @brief Counts every CROWN collectable in a stage.
+   *
+   * @param rooms: The stage's RoomInstance array, terminated by an entry with NULL objects.
+   * @return the number of crowns across all rooms.
+   */
+s32 GetStageCrownCount(RoomInstance* rooms) {
+    Collectable* collectable;
+    s32 count = 0;
+
+    while (IsRoomInvalid(rooms) == FALSE) {
+        collectable = rooms->collectables;
+        while ((collectable != NULL) && (IsCollectableInvalid(collectable) == FALSE)) {
+            if (collectable->id == CROWN) {
+                count++;
+            }
+            collectable++;
+        }
+        rooms++;
+    }
+
+    return count;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B4884.s")
 
@@ -1271,30 +1289,24 @@ void setCrownPositionsForRoom(s32 arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/EraseRoomItem.s")
 
 extern s32 D_800F06F0;
-extern s32 D_801B3170;
-extern s32 D_801B3174;
+extern s32 gInteriorMapData;
+extern s32 gExteriorRooms;
 
 typedef struct ZoneDoorView {
     /* 0x00 */ u8 unk_00[0x4C];
     /* 0x4C */ Vec3s pos;
 } ZoneDoorView;
 
-// Zone_GetDoorPos: fetch the (x,y,z) spawn anchor of door `doorIndex` in the active zone,
-// widening the packed s16 coords to floats through the out-pointers. The zone table comes
-// from the dungeon (D_801B3174) when set, else the overworld header (D_801B3170->unk8);
-// the zone record is picked by the forced-entry override D_800F06F0 when >= 0, else
-// gCurrentZone. Used at room load to place each player at their entry door (see the
-// gPlayerActors caller below).
 void Zone_GetDoorPos(s32 doorIndex, f32* outX, f32* outY, f32* outZ) {
     s32 base;
     s32 half;
     ZoneDoorView* door;
 
     half = doorIndex * 3;
-    if (D_801B3174 != 0) {
-        base = D_801B3174;
+    if (gExteriorRooms != 0) {
+        base = gExteriorRooms;
     } else {
-        base = ((s32*) D_801B3170)[2];
+        base = ((s32*) gInteriorMapData)[2];
     }
     if (D_800F06F0 >= 0) {
         base = (D_800F06F0 * 0x6C) + base;
@@ -1733,7 +1745,7 @@ void func_800B81FC(FieldObject* arg0) {
     entry = &((UnkType3*)arg0->unk_AC)[arg0->unk_B4];
     arg0->unk_120 = entry->unk_14;
     idx = (gFieldFramesElapsed / entry->unk_08) % entry->unk_04;
-    base = D_801B3178->unk8;
+    base = (s32)gCurrentStageData->models;
     arg0->collision = *(ModelCollision**)(base + entry->unk_00[idx] * 0x30 + 4);
     ComputeColliderBounds(arg0);
     flag = 0;
@@ -2302,7 +2314,7 @@ void func_800BCC04(FieldObject* arg0, RoomObject* arg1) {
     arg0->unk_B4 = arg1->unk40;
     arg0->unk_B8 = 0;
     arg0->unk_BC = 0;
-    model = *(ModelCollision**)((u8*)D_801B3178->unk8 + arg1->id * 0x30 + 4);
+    model = gCurrentStageData->models[arg1->id].Collisions;
     arg0->collision = RegistModel(model);
     arg0->unk_8C = model->vertsStart[2].y;
     arg0->unk_90 = arg0->unk_8C - arg1->unk28;
@@ -2520,19 +2532,19 @@ void func_800BE1C4(FieldObject* arg0) {
 #endif
 
 void func_800BE24C(void) {
-    s32 temp = D_801B3178->unk_18;
+    s32 temp = (s32)gCurrentStageData->spriteLib;
     D_8020D908.unk_00 = temp;
 }
 
 s32 SetActiveZoneFieldOffset(s32 arg0) {
     Field* temp_v0 = &gZoneFields[arg0];
-    s32 temp = D_801B3178->unk_18 + (temp_v0->unk80 << 6);
+    s32 temp = (s32)gCurrentStageData->spriteLib + (temp_v0->unk80 << 6);
     D_8020D908.unk_00 = temp;
     return temp;
 }
 
 void ResetZoneDrawOffset(s32 zone) {
-    s32 temp = D_801B3178->unk_18;
+    s32 temp = (s32)gCurrentStageData->spriteLib;
     D_8020D908.unk_00 = temp;
 }
 
@@ -2709,12 +2721,6 @@ void func_800BE87C(FieldObject* arg0, RoomObject* arg1, void* arg2, s32 arg3) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BEF6C.s")
 
-// EraseField: despawn one fieldObject from the live field. The pointer table at D_80240898 holds
-// 0x100 slots: the gFieldCount live entries are packed at the bottom, and released colliders are
-// pushed onto a free stack that grows downward from the top (slot 0x100 - gFieldCount, which the
-// linker resolves through the following symbol D_80240C98). The fieldObject is located by a linear
-// scan, its pole slot is released if it owns one (unk_124 set -> Poles[unk_128].mode = 0), the
-// last live entry is moved into the hole, and gFieldCount drops by one.
 void EraseField(FieldObject* target) {
     s32 i;
 
@@ -2770,10 +2776,6 @@ void RegistDoor(RoomObject* obj, s32 arg1, s32 arg2) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/RegistSwitchArea.s")
 
-// Same shape as EraseField, one table over: despawn one switch area from the live list.
-// D_80240C98 holds 0x10 slots; the gSwitchAreaCount live entries are packed at the bottom and
-// released entries are pushed onto a free stack growing down from slot 0x10 - gSwitchAreaCount
-// (which the linker resolves through the following symbol, gCurrentZone).
 void func_800BF4AC(Door* target) {
     s32 i;
 
@@ -3090,7 +3092,7 @@ void func_800C1B70(void) {
 void OpenZone(s32 zone) {
     s8 pad;
     if (IsValidZoneIndex(zone)) {
-        InitFieldSubScroll(zone, &gZoneFields[zone], D_801B3178->unk8, D_801B3178->unk10);
+        InitFieldSubScroll(zone, &gZoneFields[zone], (s32)gCurrentStageData->models, (s32)gCurrentStageData->RoomObjects);
         RefreshColliderBounds(1);
         ComputeRoomBounds(zone, &gZoneFields[zone]);
     }
@@ -3137,7 +3139,7 @@ void func_800C2A00(void) {
         sp24 = currentStageCrowns;
         func_800C1204(0, gPlayerActors, 1, 0, 1);
         currentStageCrowns += sp24;
-        isChange.unk78 = D_801B3178->unk_18 + (isChange.unkCC << 6);
+        isChange.unk78 = (s32)gCurrentStageData->spriteLib + (isChange.unkCC << 6);
         isChange.unk0 = 1;
         isChange.unk4 = 1;
         gNextZone = 0;
@@ -3202,8 +3204,8 @@ void enterBossRoom(void) {
 
 //referred to in US1.0 as "InitField"
 extern s32 D_800F06F0;
-extern s32 D_801B3170;
-extern s32 D_801B3174;
+extern s32 gInteriorMapData;
+extern s32 gExteriorRooms;
 extern f32 D_8020D8D0;
 extern f32 D_8020D8D4;
 extern f32 D_8020D8D8;
@@ -3216,10 +3218,10 @@ void InitField(void) {
     func_800C88AC();
     D_80236970 = -1;
     func_800D34CC();
-    if ((D_801B3174 != 0) && (D_801B3170 != 0)) {
+    if ((gExteriorRooms != 0) && (gInteriorMapData != 0)) {
         isInOverworld = 1;
         D_80236978 = 1;
-    } else if (D_801B3174 == 0) {
+    } else if (gExteriorRooms == 0) {
         isInOverworld = 0;
         D_80236978 = 0;
     } else {
@@ -3240,7 +3242,7 @@ void InitField(void) {
         D_8020D8E4 = player[0].pos.z;
         func_800C1204(var_a0, player, 0, -1, 1);
         temp_v0 = &gZoneFields[gCurrentZone];
-        isChange.unk78 = D_801B3178->unk_18 + (temp_v0->unk80 << 6);
+        isChange.unk78 = (s32)gCurrentStageData->spriteLib + (temp_v0->unk80 << 6);
         break;
     case 1:
         func_800C2670(var_a0, player, 1);

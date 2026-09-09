@@ -65,12 +65,13 @@ char D_802489C0[0x08];
 Vec3f D_802489C8[8];
 char D_80248A28[0x08];
 
+void func_800D363C(Vec3f*, Field*, Camera*);
 void func_800D5394(PlayerActor*, Tongue*, Camera*, Vec3f*, Vec3f*, s32);
 void GetCurrentCameraShot(PlayerActor*, Tongue*, Camera*, Vec3f*, Vec3f*);
 FieldObject* func_800CAF88(Vec3f, f32, f32);
 FieldObject* SearchPolygonBetween(Vec3f, Vec3f, s32, s32, s32);
 void OrderRectBounds(Rect3D*);
-void func_800C9748(Rect3D*, s32, s32);
+s32 func_800C9748(Rect3D*, s32, s32);
 void func_800CA734(Vec3f*, Vec3f, f32, s32);
 void func_800CBC08(Actor*);
 void func_800CC814(Actor*, Vec3f, s32);
@@ -98,7 +99,28 @@ void func_800C9728(FieldObject* arg0) {
     func_800C9504(arg0);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800C9748.s")
+s32 func_800C9748(Rect3D* arg0, s32 arg1, s32 arg2) {
+    s32 var_s3;
+    FieldObject* temp_s0;
+    FieldObject** var_s2;
+    s32 i;
+
+    var_s3 = 0;
+    D_8023696C = 0;
+
+    for (i = 0, var_s2 = &D_80240898; i < gFieldCount; i++, var_s2++) {
+        temp_s0 = *var_s2;
+        if ((temp_s0->unk_114 & arg2) && (temp_s0->unk_0C & arg1)) {
+            if (IfRectsIntersect(arg0, &temp_s0->unk_CC) == 0) {
+                continue;
+            } else {
+                func_800C9504(temp_s0);
+                var_s3++;
+            }
+        }
+    }
+    return var_s3;
+}
 
 s32 func_800C982C(Rect3D* arg0, FieldObject* arg1) {
     s32 var_s3;
@@ -381,7 +403,15 @@ void Shadows_Reset(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800CB99C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800CBB2C.s")
+s32 func_800CB99C(f32 arg0, f32 arg1, f32 arg2, f32* arg3, s32 arg4);
+
+void func_800CBB2C(PlayerActor* player) {
+    if (func_800CB99C(player->pos.x, player->pos.y, player->pos.z, &player->hitboxSize, 0) != 0) {
+        player->yCounter = gShadows[gShadowCount - 1].pos.y;
+    } else {
+        player->yCounter = player->pos.y;
+    }
+}
 
 void func_800CBB98(Actor* actor) {
     s32 pad;
@@ -397,7 +427,26 @@ void func_800CBB98(Actor* actor) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800CBD24.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800CBE74.s")
+s32 IsPointInViewAreaIgnoreY(f32, f32, f32, f32);
+void Shadows_Set(Vec3f, FieldObject*, f32*, Actor*);
+
+void func_800CBE74(Actor* actor) {
+    FieldObject* obj;
+    Vec3f pos;
+
+    pos.x = actor->pos.x + actor->unknownPositionThings[0].unk_00;
+    pos.y = actor->pos.y;
+    pos.z = actor->pos.z + actor->unknownPositionThings[0].unk_08;
+    if (IsPointInViewAreaIgnoreY(pos.x, pos.y, pos.z, 6000.0f)) {
+        obj = func_800CB294(pos, *(s32*) &actor->unknownPositionThings[0].unk_0C);
+        if (obj != NULL) {
+            actor->unk_D4 = obj->unk_94;
+            actor->unk_D8 = obj->unk_98;
+            actor->unk_DC = obj->unk_9C;
+            Shadows_Set(pos, obj, &actor->unknownPositionThings[0].unk_0C, actor);
+        }
+    }
+}
 
 void func_800CBF54(void) {
     Actor* actor = gActors;
@@ -644,7 +693,13 @@ void func_800D34CC(void) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800D3590.s")
+extern void Rect_Expand(Rect3D* r, f32 s);
+
+void func_800D3590(Vec3f v1, Vec3f v2, Vec3f v3, Rect3D* rect) {
+    CalculateBoundingRectFromVectors(v1, v2, rect);
+    AdjustRectToVec3(rect, v3);
+    Rect_Expand(rect, 1000.0f);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800D363C.s")
 
@@ -687,7 +742,18 @@ void func_800D4550(s32 arg0, s32 arg1, Poly* arg2, Vec3f* arg3, Vec3f* arg4) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800D4F50.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800D52E8.s")
+void func_800D52E8(PlayerActor* arg0, Tongue* arg1, Camera* arg2, Vec3f* arg3, Vec3f* arg4) {
+    Vec3f temp;
+    Field* zone = &gZoneFields[gCurrentZone];
+
+    func_800D363C(&temp, zone, arg2);
+    arg3->x = arg2->f1.z;
+    arg3->y = arg2->f2.x + (zone->unkD0 * arg2->size1);
+    arg3->z = arg2->f2.y;
+    arg4->x = temp.x;
+    arg4->y = temp.y;
+    arg4->z = temp.z;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800D5394.s")
 

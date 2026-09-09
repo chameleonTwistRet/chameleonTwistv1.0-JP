@@ -4,15 +4,6 @@
 #include "common.h"
 
 /* Structs */
-typedef struct unk801B3178 {
-    /* 0x00 */ char pad0[8];
-    /* 0x08 */ s32 unk8;                            /* inferred */
-    /* 0x0C */ char padC[4];
-    /* 0x10 */ s32 unk10;                           /* inferred */
-    /* 0x14 */ char pad14[4];
-    /* 0x18 */ s32 unk_18;
-} unk801B3178;                                      /* size = 0x1C */
-
 typedef struct unk8020D908 {
     s32 unk_00;
     char unk_04[0x54];
@@ -245,7 +236,6 @@ void func_800B5D68(FieldObject* arg0, s32 arg1);
 extern CollectableWrapper D_802019A8[];
 extern CardinalDirection gCardinalDirections[5]; // including "NO_DIR"
 extern s32 sBossIDs[6];
-extern unk801B3178* D_801B3178;
 extern unk8020D908 D_8020D908;
 extern unkStruct20 D_802039B8[];
 extern s32 D_80206CF4;
@@ -342,7 +332,7 @@ extern s32 D_8020D964;
 extern s32 gNextZone;
 extern s32 isFirstZone;
 
-s32 func_800B47DC(s32);                             /* extern */
+s32 func_800B47DC(RoomInstance*);                   /* extern */
 void func_800B4884(RoomInstance*);                     /* extern */
 void InitFieldPools(void);
 extern RoomInstance* D_802478F0;

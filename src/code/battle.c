@@ -1166,7 +1166,7 @@ void Process_Ranking(void) {
         D_800FFDF4 = 1;
         D_800FE708 = 0;
         DMAStruct_Print();
-        func_800A1EC4();
+        ReleaseChameleonSegments();
         LoadSprite(SPRITE_RANKING_SCREEN);
         LoadSprite(SPRITE_PORTRAITDAVY);
         LoadSprite(SPRITE_PORTRAITJACK);
@@ -1215,7 +1215,7 @@ void func_800557F8(void) {
     case 0:
         D_800FFDF4 = 1;
         DMAStruct_Print();
-        func_800A0D90();
+        LoadAllChameleonSegments();
 
         for (i = 0; i < ARRAY_COUNT(gPlayerActors); i++) {
             gPlayerActors[i].exists = gPlayerActors[i].active;
@@ -1262,7 +1262,7 @@ void Process_Boot(void) {
     case 0:
         D_800FFDF4 = 1;
         DMAStruct_Print();
-        func_800A1EC4();
+        ReleaseChameleonSegments();
         LoadSprite(SPRITE_TEXTBIGGER);
         CTTaskList_Init();
         func_8002E0CC();
@@ -1294,7 +1294,7 @@ void Process_SunsoftLogo(void) {
     case 0:
         D_800FFDF4 = 1;
         DMAStruct_Print();
-        func_800A1EC4();
+        ReleaseChameleonSegments();
         LoadSprite(SPRITE_SUNSOFTLOGO);
         CTTaskList_Init();
         func_8002E0CC();
