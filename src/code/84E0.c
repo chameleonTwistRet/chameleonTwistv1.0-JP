@@ -1180,7 +1180,6 @@ s32 func_80030DCC(f32 x, f32 y, f32 z)
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80030DCC.s")
 #endif
 
-//https://decomp.me/scratch/BeR2b
 void UpdateTongueReticle(void) {
     s32 hit;
     s32 i;

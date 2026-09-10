@@ -3577,9 +3577,24 @@ void func_800C4C48(Vec3f arg0, f32 arg3, f32 arg4, f32 arg5, f32 arg6) {
     D_8020D880 = arg6;
 }
 
-//sphereicalToCartesian calcs
-//https://decomp.me/scratch/crsmT
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C4CAC.s")
+void func_800C4CAC(Camera* arg0, f32 arg1) {
+    Vec3f erm;
+    Vec3f sp40;
+    f32 pad; // unused
+    f32 temp_f0;
+    Vec3f sp2C;
+
+    temp_f0 = func_800B2308(arg1, 0);
+    sp40 = D_8020D868;
+    temp_f0 = sinf(temp_f0 * (PI * 2.0)) * D_8020D87C + D_8020D878;
+    SphericalToCartesian(&sp2C, 1000, D_8020D874, temp_f0);
+    erm.x = sp40.x - sp2C.x;
+    SphericalToCartesian(&sp2C, 1000, D_8020D874, temp_f0);
+    erm.y = sp40.y - sp2C.y;
+    SphericalToCartesian(&sp2C, 1000, D_8020D874, temp_f0);
+    erm.z = sp40.z - sp2C.z;
+    CommitCameraShot(arg0, erm, sp40, D_8020D880);
+}
 
 //angle stuff with actors
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C4DF8.s")

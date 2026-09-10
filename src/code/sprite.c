@@ -2377,7 +2377,35 @@ void Controller_ParseJoystick(ContMain* conts) {
 }
 //used for Debug function controls
 //https://decomp.me/scratch/rzD9G
+#ifdef NON_MATCHING
+s32 func_80055E5C(s32 button) {
+    s32 held;
+    s32 count;
+
+    if ((gButtons[PLAYER_1] & button) && (gButtons[PLAYER_1] & L_TRIG)) {
+        held = gPrevButtons[PLAYER_1] & button;
+        if (button != held) {
+            D_800F68AC = 1;
+            return 1;
+        }
+        held = D_800F68AC + 1;
+        if (held >= 0x2711) {
+            held = 0x2710;
+        }
+        count = held;
+        if (count >= 6) {
+            D_800F68AC = count;
+            return count;
+        }
+        D_800F68AC = count;
+    } else {
+        return 0;
+    }
+    return 0;
+}
+#else
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80055E5C.s")
+#endif
 
 //takes button define
 s32 func_80055EEC(s32 arg0) {
