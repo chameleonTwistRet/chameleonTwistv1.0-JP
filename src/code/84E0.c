@@ -4193,60 +4193,45 @@ void ActorInit_Hedgehog(Actor* hedgehog) {
     hedgehog->unk_134[2] = (f32) hedgehog->unk_90;
 }
 
-#ifdef NON_MATCHING
-// diff score: 2 words (fp coalesce at -(dz+playerZ) add)
-void ActorTick_Hedgehog(Actor *hedgehog)
-{
-  f32 dx;
-  f32 dzTemp;
-  f32 dz;
-  f32 playerX;
-  f32 playerZ;
-  playerX = gCurrentActivePlayerPointer->pos.x;
-  if ((((hedgehog->unk_F4 < playerX) && (playerX < hedgehog->unk_F8)) && (hedgehog->unk_104 < (playerZ = gCurrentActivePlayerPointer->pos.z))) && (playerZ < hedgehog->unk_108))
-  {
-    dx = playerX - hedgehog->pos.x;
-    dzTemp = playerZ - hedgehog->pos.z;
-    dz = dzTemp;
-    if (((dx * dx) + (dz * dz)) < hedgehog->unk_15C)
-    {
-      hedgehog->userVariables[0] = 1;
+void ActorTick_Hedgehog(Actor* hedgehog) {
+    f32 dx;
+    f32 dz;
+    f32 homeDz;
+    f32 playerX;
+    f32 playerZ;
+
+    playerX = gCurrentActivePlayerPointer->pos.x;
+    if ((hedgehog->unk_F4 < playerX) && (playerX < hedgehog->unk_F8) &&
+        (hedgehog->unk_104 < (playerZ = gCurrentActivePlayerPointer->pos.z)) && (playerZ < hedgehog->unk_108)) {
+        dx = playerX - hedgehog->pos.x;
+        dz = playerZ - hedgehog->pos.z;
+        if (((dx * dx) + (dz * dz)) < hedgehog->unk_15C) {
+            hedgehog->userVariables[0] = 1;
+        }
+        if (hedgehog->userVariables[0] != 0) {
+            hedgehog->unk_94 = hedgehog->position._f32.x;
+            dx += Random((s32) -hedgehog->unk_160, (s32) hedgehog->unk_160);
+            dz += Random((s32) -hedgehog->unk_160, (s32) hedgehog->unk_160);
+            RotateAngleTowards(&hedgehog->unk_90, ArcTan2Deg(dx, -dz), hedgehog->position._f32.y);
+        } else {
+            hedgehog->unk_94 = hedgehog->position._f32.x;
+            RotateAngleTowards(&hedgehog->unk_90, hedgehog->unk_134[2], hedgehog->position._f32.y);
+        }
+    } else {
+        dx = hedgehog->unk_134[0] - hedgehog->pos.x;
+        homeDz = hedgehog->unk_134[1] - hedgehog->pos.z;
+        if (((dx * dx) + (homeDz * homeDz)) > 2500.0f) {
+            RotateAngleTowards(&hedgehog->unk_90, ArcTan2Deg(dx, -homeDz), hedgehog->position._f32.y);
+            hedgehog->userVariables[0] = 0;
+        } else {
+            hedgehog->unk_94 = 0.0f;
+            RotateAngleTowards(&hedgehog->unk_90, hedgehog->unk_134[2], hedgehog->position._f32.y);
+        }
     }
-    if (hedgehog->userVariables[0] != 0)
-    {
-      hedgehog->unk_94 = hedgehog->position._f32.x;
-      dx += Random((s32) (-hedgehog->unk_160), (s32) hedgehog->unk_160);
-      playerZ = Random((s32) (-hedgehog->unk_160), (s32) hedgehog->unk_160);
-      RotateAngleTowards(&hedgehog->unk_90, ArcTan2Deg(dx, -(dz + playerZ)), hedgehog->position._f32.y);
-    }
-    else
-    {
-      hedgehog->unk_94 = hedgehog->position._f32.x;
-      RotateAngleTowards(&hedgehog->unk_90, hedgehog->unk_134[2], hedgehog->position._f32.y);
-    }
-  }
-  else
-  {
-    dx = hedgehog->unk_134[0] - hedgehog->pos.x;
-    dz = hedgehog->unk_134[1] - hedgehog->pos.z;
-    if (((dx * dx) + (dz * dz)) > 2500.0f)
-    {
-      RotateAngleTowards(&hedgehog->unk_90, ArcTan2Deg(dx, -dz), hedgehog->position._f32.y);
-      hedgehog->userVariables[0] = 0;
-    }
-    else
-    {
-      hedgehog->unk_94 = 0.0f;
-      RotateAngleTowards(&hedgehog->unk_90, hedgehog->unk_134[2], hedgehog->position._f32.y);
-    }
-  }
-  Actor_PlaySound(hedgehog, 0x41, 4, 4);
-  hedgehog->unk_F0++;
-  func_800382F4(hedgehog);
+    Actor_PlaySound(hedgehog, 0x41, 4, 4);
+    hedgehog->unk_F0++;
+    func_800382F4(hedgehog);
 }
-#else
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_Hedgehog.s")
-#endif
 
 void ActorInit_Fish(Actor* fish) {
     fish->unk_134[0] = fish->pos.x;
@@ -4903,22 +4888,18 @@ void UpdateLevelFlow(void) {
     }
 }
 
-// score 18
-#ifdef NON_MATCHING
 void func_8004BC48(ContMain* arg0) {
-    s32 val;
+    s32 mode;
     s32 phase;
     f32 angle;
-    s32 mode;
 
-    val = D_801749D0;
     mode = 0;
-    if ((val > 0) && (val < 6)) {
+    if ((D_801749D0 > 0) && (D_801749D0 < 6)) {
         mode = 1;
-        phase = val - 1;
-    } else if ((val >= 0x14) && (val < 0x29)) {
+        phase = D_801749D0 - 1;
+    } else if ((D_801749D0 >= 0x14) && (D_801749D0 < 0x29)) {
         mode = 2;
-        phase = val - 0x14;
+        phase = D_801749D0 - 0x14;
     }
 
     switch (mode) {
@@ -4935,9 +4916,6 @@ void func_8004BC48(ContMain* arg0) {
     arg0->stickY = -sinf(DEGREES_TO_RADIANS_2PI(angle)) * 10.0f;
     arg0->buttons0 |= B_BUTTON;
 }
-#else
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8004BC48.s")
-#endif
 
 
 /**
