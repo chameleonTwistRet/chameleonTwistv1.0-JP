@@ -281,7 +281,7 @@ void func_80092864(CTTask* task);
 void func_8009288C(CTTask* task);
 void func_800928F0(CTTask* arg0);
 void func_80092990(CTTask* task);
-void func_80092A64(CTTask*, s32);
+void func_80092A64(CTTask*, f32);
 s32 func_80092C0C(CTTask* task);
 CTTask* func_80092C54(s32);
 void func_80092D68(CTTask* task);

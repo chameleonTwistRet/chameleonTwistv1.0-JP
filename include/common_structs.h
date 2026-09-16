@@ -670,30 +670,34 @@ typedef struct FrameBuffer {
 } FrameBuffer; //sizeof 0x25800
 
 typedef struct CTTask {
-/* 0x00 */ s16 runType;
-/* 0x02 */ s16 taskID;
-/* 0x04 */ s16 unk_04;
-/* 0x06 */ s8 unk06[2];
+/* 0x00 */ s16 runType;                         // D_800FF8F0 index, 0 = dead
+/* 0x02 */ s16 priority;                        // list sort key, update + draw order
+/* 0x04 */ s16 spriteID;
+/* 0x06 */ char pad06[2];
 /* 0x08 */ void (*function)(struct CTTask*);
 /* 0x0C */ struct CTTask* next;
 /* 0x10 */ struct CTTask* prev;
-/* 0x14 */ Vec3f pos;
-/* 0x20 */ f32 rotA;
+/* 0x14 */ Vec3f pos;                           // +y is down
+/* 0x20 */ f32 rotAngle;
 /* 0x24 */ Vec3f scale;
-/* 0x30 */ Vec3f rot;
-/* 0x3C */ f32 unk3C;
-/* 0x40 */ f32 unk40;
-/* 0x44 */ s16 unk44;
-/* 0x46 */ s16 unk46;
-/* 0x48 */ s16 unk48;
-/* 0x4A */ s16 unk4A;                           /* inferred */
-/* 0x4C */ s16 unk4C;
-/* 0x4E */ u16 unk4E;
-/* 0x50 */ Gfx* unk50;
+/* 0x30 */ Vec3f rotAxis;
+/* 0x3C */ f32 animSpeed;
+/* 0x40 */ f32 animFrame;
+/* 0x44 */ s16 animReq;
+/* 0x46 */ s16 animCur;
+/* 0x48 */ s16 animPrev;                        // -1 forces a restart
+/* 0x4A */ s16 animHoldLeft;
+/* 0x4C */ s16 spriteFrame;
+/* 0x4E */ u16 drawFlags;                       // 1 = model, 2 = attachments
+/* 0x50 */ Gfx* dlist;
+// 0x54 onward: meaning depends on task type
 /* 0x54 */ u8 unk54;
 /* 0x55 */ u8 unk55;
 /* 0x56 */ char pad56[2];                       /* maybe part of unk54[4]? */
-/* 0x58 */ struct CTTask* unk58;
+/* 0x58 */ union {
+               struct CTTask* parent;
+               s16* doneFlag;
+           } unk58;
 /* 0x5C */ s16 unk_5C;
 /* 0x5E */ s16 unk5E;
 /* 0x60 */ s16 unk60;
@@ -713,10 +717,10 @@ typedef struct CTTask {
 /* 0x80 */ f32 unk80;
 /* 0x84 */ f32 unk84;
 /* 0x88 */ f32 unk88;
-/* 0x8C */ s32 unk8C;
+/* 0x8C */ f32 unk8C;
 /* 0x90 */ f32 unk90;
 /* 0x94 */ u8 unk94[0x14];
-} CTTask;                                           /* size = 0xA8 */
+} CTTask;                                         /* size = 0xA8 */
 
 typedef struct BGMVolume {
 /* 0x00 */ s32 vol;
