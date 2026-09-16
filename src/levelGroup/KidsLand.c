@@ -1006,7 +1006,7 @@ Collectable KidsLand_room1_collectables[] = {
 
 Collectable KidsLand_room2_collectables[] = {
     {           CROWN,         {0.0,0.0,0.0}, 4294967295,          0,  0,   0},
-    { SHRINK_POWER_UP, {-850.0,1700.0,850.0},         29, 1154777088, -1, 300},
+    { SHRINK_POWER_UP, {-850.0,1700.0,850.0},         29, 1700.0, -1, 300},
     {      ACTOR_NULL,         {0.0,0.0,0.0}, 4294967295,          0,  0,   0}
 };
 

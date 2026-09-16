@@ -259,7 +259,7 @@ typedef struct FieldObject {
 /* 0x0E4 */ void* unk_E4;
 /* 0x0E8 */ ModelCollision* collision;
 /* 0x0EC */ Gfx* gfx;
-/* 0x0F0 */ char padF0[4];
+/* 0x0F0 */ s32 unk_F0;
 /* 0x0F4 */ void* unkF4;                        /* inferred */
 /* 0x0F8 */ void (*function)(struct FieldObject*);
 /* 0x0FC */ void* unk_FC;
@@ -395,7 +395,7 @@ typedef struct Collectable {
 /* 0x00 */ s32 id;
 /* 0x04 */ Vec3f position;
 /* 0x10 */ s32 unk10;
-/* 0x14 */ s32 unk14;
+/* 0x14 */ f32 unk14;
 /* 0x18 */ s32 unk18;
 /* 0x1C */ s32 unk1C;
 } Collectable;
@@ -901,8 +901,6 @@ typedef struct Unk80200C08 {
 } Unk80200C08; //sizeof 0x78
 
 //5FF30
-//Header of the audio DMA buffer free/used lists; the 0x14-byte buffer entries
-//themselves are the unk_D_801FFB90 array that starts at D_801FFBA0.
 typedef struct AudioDMAState {
 /* 0x00 */ u8 initialized;
 /* 0x01 */ char pad01[3];

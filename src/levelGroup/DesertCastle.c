@@ -551,7 +551,7 @@ RoomObject DesertCastle_room28_objects[] = {
 };
 
 Collectable DesertCastle_room28_collectables[] = {
-    { SHRINK_POWER_UP, {550.0,11200.0,-600.0}, 4294967295, 1177485312, -1, 600},
+    { SHRINK_POWER_UP, {550.0,11200.0,-600.0}, 4294967295, 11200.0, -1, 600},
     {      ACTOR_NULL,          {0.0,0.0,0.0}, 4294967295,          0,  0,   0}
 };
 

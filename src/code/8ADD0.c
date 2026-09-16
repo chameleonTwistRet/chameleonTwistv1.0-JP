@@ -147,7 +147,18 @@ void func_800AFB2C(FieldObject* arg0, RoomObject* arg1) {
     SetColliderFlag(arg0, 2, 1);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800AFB88.s")
+s32 func_800AFB88(f32 arg0) {
+    s32 n;
+
+    n = 0;
+    if (arg0 >= (PI / 2)) {
+        n = (s32)((arg0 - (PI / 2)) / (PI / 2)) + 1;
+    } else if (arg0 < 0.0) {
+        n = -1 - (s32)((0.0 - arg0) / (PI / 2));
+    }
+    arg0 -= n * 0.5 * PI;
+    return ((arg0 < (PI / 10)) || (arg0 > (PI * 0.4))) ? 0 : 1;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/MoveTheater.s")
 
@@ -279,16 +290,7 @@ void func_800B0AA4(FieldObject* fieldObject) {
     }
 }
 
-// Randomizes the positions of a paired group of sibling colliders (a shuffle puzzle).
-// Two parallel groups (groupA/groupB) are gathered from the fieldObject pool by walking back
-// from this fieldObject's index. If the control switch (unk_B4) is set, every groupA member is
-// given the shared "solved" model gfx. Otherwise it snapshots each member's position, builds
-// a shuffled index list (100 random swaps), and writes the shuffled positions back, notifying
-// each fieldObject (SetColliderFlag(_, 4, 1)).
-//
-// diff is a whole-function register-number shift
-// (arg0 lands in s5 vs the target's s6) that the permuter could not break in 73k iterations.
-// diff score ~313
+// NON_MATCHING: score 313
 #ifdef NON_MATCHING
 void func_800B0B20(FieldObject* arg0, RoomObject* arg1) {
     FieldObject* groupB[25];
@@ -414,7 +416,6 @@ void func_800B2070(s32 arg0) {
     vec.y = gPlayer->pos.y;
     vec.z = gPlayer->pos.z;
 
-    // If the player is not in the bounding box, not squished, and not jumping, set the squish timer to 1
     if (((gPlayer->squishFramesElapsed == 0) && (gPlayer->canJump == 0)) && (IsPointInRect(vec, &rect) != 0)) {
         //D_80168E14 = 1;
         gPlayer->squishFramesElapsed = 1;
@@ -626,16 +627,15 @@ Vec3f* Vec3f_SetAtBossPos(Vec3f* arg0) {
     Vec3f pos;
     s32 i;
 
-    Vec3f_Zero(&pos); // Call Vec3f_Zero with the passed in pointer
+    Vec3f_Zero(&pos);
 
     actors = gActors;
     for (i = 0; i < ARRAY_COUNT(gActors); i++, actors++) {
-        if (IsActorBoss(actors)) { // Check if the current actor is a boss
-            //Set coordinates of pos to boss coordinates
+        if (IsActorBoss(actors)) {
             pos.x = actors->pos.x;
             pos.y = actors->pos.y;
             pos.z = actors->pos.z;
-            break; // Break out of the loop since we found a boss actor
+            break;
         }
     }
     *arg0 = pos;
@@ -696,9 +696,6 @@ void func_800B2D34(void) {
     }
 }
 
-// MaxXZRadius: takes the absolute value of all four inputs, keeps the larger of (|a|,|b|) and the
-// larger of (|c|,|d|), and returns the hypotenuse of those two dominant magnitudes, i.e. the
-// worst-case XZ-plane radius of an extent spanning a..b by c..d.
 f32 MaxXZRadius(f32 a, f32 b, f32 c, f32 d) {
     f32* pc = &c;
     f32* pd = &d;
@@ -861,8 +858,6 @@ void ResetStageModels(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/RegistModel.s")
 
-// moveModel: translate a collision model in place by `offset`, adding it to every vertex of
-// vertsStart (numXVerts entries, stride 0xC) and shifting both corners of the AABB at settingsStart.
 void moveModel(ModelCollision* model, Vec3f offset) {
     s32 i;
     Vec3f* vert;
@@ -883,10 +878,6 @@ void moveModel(ModelCollision* model, Vec3f offset) {
     bounds->max.z += offset.z;
 }
 
-// ScaleModel: scale a collision model in place, multiplying every vertex of vertsStart
-// (numXVerts entries, stride 0xC) and both corners of the AABB at settingsStart by the matching
-// per-axis factor. Counterpart to moveModel above and RotateModel below; called by RegistField
-// when a placed model carries a scale.
 void ScaleModel(ModelCollision* model, f32 sx, f32 sy, f32 sz) {
     s32 i;
     Vec3f* vert;
@@ -1141,7 +1132,6 @@ void AddCarrot(s32 stage) {
         gCarrotBitfield |= IS_STAGE_UNLOCKED(stage);
         gTotalCarrots = 0;
 
-        // iterate through the bitfield and count the number of bits set
         for (i = 0; i < 6; i++) {
             if (gCarrotBitfield & (1 << i)) {
                 gTotalCarrots++;
@@ -1172,9 +1162,7 @@ void func_800B4264(void) {
 
 extern s32 D_802023E0[0x20];
 
-// NON_MATCHING: semantics believed correct (save-state -> runtime restore), but IDO's
-// 4x loop unrolling of the bit-unpack loops schedules differently and picks different
-// induction pointers. ~196 mismatched instr lines, mostly ordering/regalloc in loops 1-2.
+// NON_MATCHING
 #ifdef NON_MATCHING
 void func_800B4574(u8* arg0, s16* arg1) {
     CollectableWrapper* w;
@@ -1265,7 +1253,18 @@ s32 GetStageCrownCount(RoomInstance* rooms) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B4884.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B4A3C.s")
+s32 func_800B4A3C(Collectable* arg0) {
+    s32 ret;
+
+    if (arg0->id == 0x66 || arg0->id == 0x67 || arg0->id == 0x68 || arg0->id == 0x69 || arg0->id == 0x6A) {
+        ret = Actor_Init(arg0->id, arg0->position.x, arg0->position.y, arg0->position.z, 0.0f, -5000.0f, 5000.0f,
+                         -5000.0f, 5000.0f, -5000.0f, 5000.0f, arg0->unk14, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f,
+                         arg0->unk18, arg0->unk1C, 0, 0);
+    } else {
+        ret = Actor_SpawnAt(arg0->id, arg0->position.x, arg0->position.y, arg0->position.z);
+    }
+    return ret;
+}
 
 void setCrownPositionsForRoom(s32 arg0) {
     s32 limit;
@@ -1332,7 +1331,27 @@ void func_800B4FCC(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B505C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B5224.s")
+void func_800B5224(f32 arg0) {
+    s32 i;
+    FieldObject** itr;
+    FieldObject* obj;
+
+    for (i = 0, itr = &D_80240898; i < gFieldCount; i++, itr++) {
+        obj = *itr;
+        obj->sfxPos.x *= arg0;
+        obj->unk_30.x *= arg0;
+        obj->sfxPos.z *= arg0;
+        obj->unk_30.z *= arg0;
+        if (obj->unk_124 == 0) {
+            obj->unk_50 *= arg0;
+            obj->unk_58 *= arg0;
+        } else {
+            Poles[obj->unk_128].pos.x = obj->sfxPos.x;
+            Poles[obj->unk_128].pos.y = obj->sfxPos.y;
+            Poles[obj->unk_128].pos.z = obj->sfxPos.z;
+        }
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B5314.s")
 
@@ -1407,7 +1426,39 @@ void func_800B59F4(s32* arg0, s32 lo, s32 hi) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B5A98.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B5C60.s")
+void func_800B5C60(FieldObject* arg0) {
+    Vtx* vtx;
+    s32 i;
+    s32 sLo;
+    s32 sHi;
+    s32 s;
+    s32 t;
+    s32 dS;
+    s32 dT;
+    s32 tLo;
+    s32 tHi;
+
+    if ((arg0->unk_B4 == 0) && (arg0->unk_B8 == 0)) {
+        return;
+    }
+
+    vtx = (Vtx*)arg0->unk_B0;
+    sLo = arg0->unk_BC - 0x3000;
+    sHi = arg0->unk_BC + 0xFFF;
+    tLo = arg0->unk_C0 - 0x3000;
+    tHi = arg0->unk_C0 + 0xFFF;
+    s = (arg0->unk_B4 * gFieldFramesElapsed) + sLo;
+    t = (arg0->unk_B8 * gFieldFramesElapsed) + tLo;
+    func_800B59F4(&s, sLo, sHi - 1);
+    func_800B59F4(&t, tLo, tHi - 1);
+
+    dS = s - vtx->v.tc[0];
+    dT = t - vtx->v.tc[1];
+    for (i = 0; i < arg0->unkC4; i++) {
+        vtx[i].v.tc[0] += dS;
+        vtx[i].v.tc[1] += dT;
+    }
+}
 
 void func_800B5D68(FieldObject* arg0, s32 arg1) {
     SetColliderFlag(arg0, 0, arg1);
@@ -1594,7 +1645,6 @@ void RegisterRotatingPlatform(FieldObject* arg0, RoomObject* arg1) {
     arg0->unk64 = 6.283185307179586 / (f32)arg1->keyframes.temp;
 }
 
-// MOVE: rotating platform. Advance angle by speed (unless paused), wrap into [0, 2*PI).
 void UpdateRotatingPlatform(FieldObject* arg0) {
     f32 angle;
 
@@ -1621,8 +1671,6 @@ void func_800B6D24(FieldObject* arg0) {
     Vec3f_Zero(&arg0->unk_3C);
 }
 
-// score 70
-#ifdef NON_MATCHING
 void RegisterKeyframePlatform(FieldObject* arg0, RoomObject* arg1) {
     PlatformKeyframe* kf;
     s32 clock;
@@ -1630,9 +1678,9 @@ void RegisterKeyframePlatform(FieldObject* arg0, RoomObject* arg1) {
 
     func_800B5D68(arg0, 2);
     clock = 0;
-    kf = arg1->keyframes._keyframe;
     i = 0;
-    arg0->unk_AC = (s32)kf;
+    arg0->unk_AC = arg1->keyframes.temp;
+    kf = (PlatformKeyframe*)arg0->unk_AC;
     arg0->unk_B0 = arg1->numKeyframes;
     arg0->unk_B4 = 0;
     arg0->unk_30.x = kf->position.x;
@@ -1651,9 +1699,6 @@ void RegisterKeyframePlatform(FieldObject* arg0, RoomObject* arg1) {
     arg0->unk_BC = 0;
     arg0->unk_C0 = 0;
 }
-#else
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/RegisterKeyframePlatform.s")
-#endif
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/MoveKeyframePlatform.s")
 
@@ -1717,7 +1762,36 @@ void func_800B7860(FieldObject* arg0, RoomObject* arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B78F8.s")
 
+// NON_MATCHING: score 20
+#ifdef NON_MATCHING
+void func_800B80A8(FieldObject* arg0) {
+    FieldObject* obj = &D_80236980[arg0->unk_04];
+    f32 ax = obj->unk_8C;
+    f32 ay = obj->unk_90;
+    f32 az = obj->unk_94;
+    f32 bx = obj->unk_98;
+    f32 by = obj->unk_9C;
+    f32 bz = obj->unk_A0;
+    Vec3f dir;
+    f32 dot;
+
+    dir.x = bx - ax;
+    dir.y = by - ay;
+    dir.z = bz - az;
+    Vec3f_Normalize(&dir);
+    dot = dir.x * *(f32*)&arg0->unk_5C + dir.y * arg0->unk60 + arg0->unk64 * dir.z;
+    if (dot < 0.0f) {
+        obj->unk_AC = 2;
+        obj->unk_B0 = obj->unk_B0 + 1;
+        if (obj->unk_C0 < obj->unk_B0) {
+            obj->unk_B0 = obj->unk_C0;
+        }
+        PlaySoundEffect(0x95, 0, 0, 0, 0, 0x10);
+    }
+}
+#else
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B80A8.s")
+#endif
 
 void func_800B81B4(FieldObject* arg0, RoomObject* arg1) {
     func_800B5D68(arg0, 1);
@@ -1727,10 +1801,6 @@ void func_800B81B4(FieldObject* arg0, RoomObject* arg1) {
     arg0->unk_B8 = 0;
 }
 
-// MOVE hook for behaviour 0xD: a model-swapping (animated-mesh) platform.
-// FieldObject::unk_AC is the UnkType3[] keyframe table registered by func_800B81B4,
-// unk_B0 its length, unk_B4 the current keyframe index and unk_B8 the tick counter
-// within that keyframe.
 #ifdef NON_MATCHING
 // best score 255
 void func_800B81FC(FieldObject* arg0) {
@@ -1788,7 +1858,6 @@ void func_800B81FC(FieldObject* arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B9078.s")
 
-#ifdef NON_MATCHING
 void func_800B9298(FieldObject* arg0, RoomObject* arg1) {
     SetColliderFlag(arg0, 0, 0);
     SetColliderFlag(arg0, 1, 2);
@@ -1801,68 +1870,43 @@ void func_800B9298(FieldObject* arg0, RoomObject* arg1) {
     arg0->unk_8C = DEGREES_TO_RADIANS_PI(arg1->unk28);
     arg0->unk_5C = arg1->numKeyframes;
 }
-#else
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B9298.s")
-#endif
 
-// MOVE hook: sinusoidal oscillation about an axis.
-// angle = sin(2*PI * globalTimer / period) * amplitude (negated if axis == 1).
-// Stores the new angle in unk60 and this frame's delta in unk64.
-// scores 90
-#ifdef NON_MATCHING
 void func_800B9390(FieldObject* arg0) {
     f32 v;
-    f32 prev;
+    s32* period;
 
     Vec3f_Zero(&arg0->unk_3C);
-    v = __sinf(((f32)gFieldFramesElapsed * 6.283185307179586) / (f32)arg0->unk_AC) * arg0->unk_8C;
+    period = &arg0->unk_AC;
+    // fake: reading the period through a pointer is required to match
+    v = sinf((PI * 2.0) * (f32)gFieldFramesElapsed / (f32)(*period)) * arg0->unk_8C;
     if (arg0->unk_5C == 1) {
         v = -v;
     }
-    prev = arg0->unk60;
+    arg0->unk64 = v - arg0->unk60;
     arg0->unk60 = v;
-    arg0->unk64 = v - prev;
 }
-#else
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B9390.s")
-#endif
 
-#ifdef NON_MATCHING
 void func_800B942C(FieldObject* arg0, RoomObject* arg1) {
     FieldObject* parent;
-    f32 x;
-    f32 y;
-    f32 d;
-    f32 z;
 
     func_800B5D68(arg0, 2);
-    y = arg0->sfxPos.y;
-    x = arg0->sfxPos.x;
-    arg0->unk_8C = x;
-    arg0->unk_90 = y;
+    arg0->unk_8C = arg0->sfxPos.x;
+    arg0->unk_90 = arg0->sfxPos.y;
     arg0->unk_94 = arg0->sfxPos.z;
     parent = arg0->unk_4C;
-    arg0->unk_98 = DEGREES_TO_RADIANS_PI(arg1->unk28)
+    arg0->unk_98 = DEGREES_TO_RADIANS_PI(arg1->unk28);
     arg0->unk_9C = arg1->unk2C;
-    d = y - arg0->unk_9C;
     arg0->unk_AC = arg1->keyframes.temp;
-    arg0->unk_30.x = x;
-    arg0->unk_30.y = d;
-    arg0->sfxPos.y = d;
-    z = arg0->unk_94;
-    arg0->sfxPos.x = x;
     arg0->unk_B0 = arg1->numKeyframes;
-    arg0->sfxPos.z = z;
-    arg0->unk_30.z = z;
+    arg0->unk_30.x = arg0->sfxPos.x = arg0->sfxPos.x;
+    arg0->unk_30.y = arg0->sfxPos.y = arg0->sfxPos.y - arg0->unk_9C;
+    arg0->unk_30.z = arg0->sfxPos.z = arg0->unk_94;
     if (parent != NULL) {
         arg0->unk_30.x -= parent->sfxPos.x;
         arg0->unk_30.y -= parent->sfxPos.y;
         arg0->unk_30.z -= parent->sfxPos.z;
     }
 }
-#else
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B942C.s")
-#endif
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B9514.s")
 
@@ -1883,11 +1927,6 @@ void RegisterDamageHazard(FieldObject* arg0, RoomObject* arg1) {
     arg0->unk_C0 = arg1->unk4C;
 }
 
-// Cyclic-path moving platform that is also tongue-grabbable. It cycles through a 4-phase loop
-// (phase lengths unk_AC/B0/B4/B8) on the global clock, lerping its position between a "start"
-// (unk_8C..94) and "end" (unk_98..A0). When the tongue is latched and a tongue segment overlaps
-// the platform (expanded, player-relative bounds), it follows the grab instead. Plays transition
-// sfx (0x8C start-move / 0x8D arrive / 0x8E grab).
 #ifdef NON_MATCHING
 void UpdateDamageHazard(FieldObject* arg0) {
     Rect3D box;
@@ -2077,7 +2116,39 @@ void func_800BA900(FieldObject* arg0) {
     func_800B5C60(arg0);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BA92C.s")
+void func_800BA92C(FieldObject* arg0, RoomObject* arg1) {
+    s32 count;
+    s32* pCount;
+    s32 i;
+    s32* p1;
+    s32* p2;
+
+    func_800B5D68(arg0, 1);
+    // fake: taking &unk_B4 here is load-bearing
+    pCount = &arg0->unk_B4;
+    arg0->unk_AC = arg1->keyframes.temp;
+    arg0->unk_B0 = arg1->numKeyframes;
+    // fake: this empty block is load-bearing
+    if (arg0 && arg0) {
+    }
+    arg0->unk_B4 = arg1->unk40;
+    arg0->unk_B8 = arg1->unk44;
+    // fake: both if (1) wrappers are load-bearing
+    if (1) {
+        arg0->unk_B8 = (s32)D_80206F78;
+        if (1) {
+            arg0->unk_BC = (s32)D_80207108;
+            p1 = (s32*)arg0->unk_B8;
+        }
+        p2 = (s32*)arg0->unk_BC;
+        arg0->unk_8C = arg1->unk28;
+    }
+    count = (*pCount) * arg0->unk_B4;
+    for (i = 0; i < count; i++) {
+        p1[i] = 0;
+        p2[i] = 0;
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BAA28.s")
 
@@ -2120,32 +2191,51 @@ void func_800BB038(FieldObject* arg0, RoomObject* arg1) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BB178.s")
+void func_800BB178(FieldObject* arg0) {
+    f32 pad; // unused
+    f32 t;
+    f32 v;
 
-// score 30
-#ifdef NON_MATCHING
+    Vec3f_Zero(&arg0->unk_3C);
+    arg0->unk_AC++;
+    if (arg0->unk_AC < arg0->unk_B0) {
+        t = 0.0f;
+    } else if (arg0->unk_AC < arg0->unk_B8) {
+        t = (f32)(arg0->unk_AC - arg0->unk_B0) / (f32)arg0->unk_B4;
+        if (arg0->unk_B0 == arg0->unk_AC) {
+            arg0->unk_BC = gFieldFramesElapsed;
+        }
+    } else {
+        t = 1.0f;
+        arg0->unk_BC = -1;
+        if (arg0->unk_B8 == arg0->unk_AC) {
+            func_800B35B0(arg0->unk_C0);
+        }
+    }
+    v = func_800B2308(t, 0) * arg0->unk_8C + arg0->unk_90;
+    arg0->unk64 = v - arg0->unk60;
+    arg0->unk60 = v;
+}
+
 void func_800BB254(FieldObject* arg0, RoomObject* arg1) {
-    f32 x1;
-    f32 x0;
+    f32 temp;
 
     func_800B5D68(arg0, 1);
     arg0->unk_8C = arg1->unk28;
-    x0 = arg0->unk_8C;
     arg0->unk_90 = arg1->keyframes.temp;
     arg0->unk_94 = arg1->unk30;
     arg0->unk_98 = arg1->unk2C;
-    x1 = arg0->unk_98;
     arg0->unk_9C = arg1->keyframes.temp;
     arg0->unk_A0 = arg1->unk34;
-    if (x1 < x0) {
-        arg0->unk_8C = x1;
-        arg0->unk_98 = x0;
+    if (arg0->unk_98 < arg0->unk_8C) {
+        temp = arg0->unk_8C;
+        arg0->unk_8C = arg0->unk_98;
+        arg0->unk_98 = temp;
     }
-    x1 = arg0->unk_A0;
-    x0 = arg0->unk_94;
-    if (x1 < x0) {
-        arg0->unk_94 = x1;
-        arg0->unk_A0 = x0;
+    if (arg0->unk_A0 < arg0->unk_94) {
+        temp = arg0->unk_94;
+        arg0->unk_94 = arg0->unk_A0;
+        arg0->unk_A0 = temp;
     }
     arg0->unk_AC = 0;
     arg0->unk_B0 = 0;
@@ -2156,9 +2246,6 @@ void func_800BB254(FieldObject* arg0, RoomObject* arg1) {
     arg0->unkA8 = arg1->unk48;
     arg0->unk_C0 = arg1->unk4C;
 }
-#else
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BB254.s")
-#endif
 
 // NON_MATCHING: 8 instructions differ by register number only
 #ifdef NON_MATCHING
@@ -2715,7 +2802,16 @@ void func_800BE87C(FieldObject* arg0, RoomObject* arg1, void* arg2, s32 arg3) {
     arg0->gfx = *(Gfx**) ((u8*) arg2 + arg1->id * 0x30);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BE8D8.s")
+void func_800BE8D8(FieldObject* arg0, RoomObject* arg1, void* arg2, void* arg3) {
+    arg0->unk_0C = 0x70;
+    arg0->unk_50 = *(f32*)((u8*)arg3 + arg1->id * 0x14 + 4) * arg1->scale.x / 100.0;
+    arg0->unk_54 = *(f32*)((u8*)arg3 + arg1->id * 0x14 + 8) * arg1->scale.y / 100.0;
+    arg0->unk_58 = *(f32*)((u8*)arg3 + arg1->id * 0x14 + 0xC) * arg1->scale.z / 100.0;
+    arg0->collision = *(ModelCollision**)((u8*)arg3 + arg1->id * 0x14 + 0x10);
+    arg0->unk_F0 = *(s32*)((u8*)arg3 + arg1->id * 0x14);
+    D_80206958[arg0->unk_F0]++;
+    D_80206CF4++;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/RegistField.s")
 
@@ -2840,7 +2936,21 @@ void func_800BFCD0(void) {
     }
 }
 #else
+// NON_MATCHING: score 1215
+#ifdef NON_MATCHING
+void func_800BFCD0(void) {
+    s32 i;
+
+    D_8020261C = gCurrentZone;
+    D_80202620 = gZoneFields[gCurrentZone].unk70;
+    D_80202624 = gZoneFields[gCurrentZone].unk74;
+    for (i = 0; i < 32; i++) {
+        D_80202628[i] = StageFlags[i];
+    }
+}
+#else
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BFCD0.s")
+#endif
 #endif
 
 #ifdef NON_MATCHING
@@ -2854,7 +2964,21 @@ void func_800BFD64(void) {
     }
 }
 #else
+// NON_MATCHING: score 980
+#ifdef NON_MATCHING
+void func_800BFD64(void) {
+    s32 i;
+    s32 zone = D_8020261C;
+
+    gZoneFields[zone].unk70 = D_80202620;
+    gZoneFields[zone].unk74 = D_80202624;
+    for (i = 0; i < 32; i++) {
+        StageFlags[i] = D_80202628[i];
+    }
+}
+#else
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BFD64.s")
+#endif
 #endif
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/CalcRoomInfo.s")
@@ -2869,7 +2993,22 @@ const char* GetDirectionName(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C0760.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800C08B8.s")
+Vec3f* func_800C08B8(Vec3f* out, PlayerActor* player, Door* door) {
+    Vec3f pos;
+    f32 dirX;
+    f32 dirZ;
+
+    dirX = gCardinalDirections[door->direction].unk0;
+    dirZ = gCardinalDirections[door->direction].unk4;
+    pos.x = door->max.x;
+    pos.y = door->max.y;
+    pos.z = door->max.z;
+    pos.x -= ((door->rect.max.y / 2) + (player->hitboxSize * 6.0f)) * dirX;
+    pos.z -= ((door->rect.max.z / 2) + (player->hitboxSize * 6.0f)) * dirZ;
+    player->yAngle = ArcTan2Deg(-dirX, dirZ);
+    *out = pos;
+    return out;
+}
 
 void ChameleonFromDoor(PlayerActor* player, s32 arg1, s32 arg2, s32 arg3, s32 arg4) {
     Door* currentDoor;
@@ -3275,10 +3414,7 @@ void InitField(void) {
 
 //referred to in US1.0 as "moveField"
 #ifdef NON_MATCHING
-// Fully decompiled & structurally correct; matches except register-allocation/
-// spill ties in the sprite-actor distance loop (object score ~5440, frame size
-// matches). decomp-permuter only beats it via junk. GLOBAL_ASM kept for the
-// byte-exact build until the regalloc tail is resolved. See ido53_codegen_quirks.md SS48.
+// NON_MATCHING: score 5440
 void MoveField(void) {
     Vec3f sp8C;
     Vec3f sp80;

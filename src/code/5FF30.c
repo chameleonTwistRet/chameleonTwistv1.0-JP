@@ -2631,9 +2631,7 @@ s32 func_8008746C(unk0* arg0) {
         }
         var_a1 = temp_v0;
     }
-    // Fake: emits nothing, but keeps temp_v1 live across the loop so that IDO gives it
-    // $v1 instead of coalescing it onto $v0 with temp_v0. Without it the function is
-    // instruction-identical but scores 15 on those three registers.
+    // fake: required to match
     if (temp_v1 != NULL) {
     }
     func_80087130(arg0, var_a1);
@@ -2810,7 +2808,38 @@ s32 func_800882D0(s32 arg0, s32 arg1) {
     return 0;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80088388.s")
+s32 func_80088388(s32 arg0, f32 arg1) {
+    unk0* temp_v0 = func_80086EB4(arg0);
+    f64 v1;
+
+    if (temp_v0 == 0) {
+        return -1;
+    }
+
+    if (arg1 < 0.0) {
+        v1 = 0.0;
+        arg1 = v1;
+    } else {
+        if (arg1 < 2.0) {
+            v1 = arg1;
+        } else {
+            v1 = 2.0;
+        }
+        arg1 = v1;
+    }
+
+    if (arg1 == temp_v0->unk38) {
+        return 0;
+    } else {
+        temp_v0->unk38 = arg1;
+        if ((temp_v0->unk48 >= 0) && (temp_v0->unk48 < 0x10)) {
+            alSndpSetSound(gSFXPlayerP, temp_v0->unk48);
+            alSndpSetPitch(gSFXPlayerP, arg1);
+        }
+    }
+
+    return 0;
+}
 
 s32 func_80088474(s32 arg0, s32 arg1) {
     s32 v1;
@@ -3529,12 +3558,6 @@ void bzero32(void* dst, s32 size) {
     }
 }
 
-//allocates and zeroes a new CTTask and links it into the gCTTaskHead list.
-//arg1 selects the insertion point: 0 links the new task in front of the task
-//given in `task` (inheriting its taskID), -1 links it behind `task` (same
-//inherit), and any other value is the new task's own taskID, which is inserted
-//in ascending taskID order by walking the list from the head. Returns the new
-//task, or NULL if the allocation failed.
 CTTask* CTTask_Alloc(s16 setRunType, s16 arg1, CTTask* task) {
     CTTask* newTask;
     CTTask* alloc = _malloc(sizeof(CTTask));
@@ -3660,7 +3683,43 @@ s32 func_8008D6B4(ContMain* arg0) {
     return result;
 }
 
+// NON_MATCHING: score 445
+#ifdef NON_MATCHING
+u16 func_8008D6E4(CTTask* task, ContMain* cont) {
+    u16 buttons;
+    u16 held;
+    u16 ret;
+
+    buttons = func_8008D6B4(cont);
+    buttons |= func_8008D5DC(cont);
+    ret = buttons;
+    if (buttons == 0) {
+        task->unk6E = 0;
+    }
+    held = task->unk_70;
+    if ((buttons == held) && (buttons != 0)) {
+        if (task->unk6E < 8) {
+            ret = 0;
+            task->unk6E++;
+        } else if (task->unk6E == 8) {
+            task->unk6E++;
+            ret = held;
+        } else {
+            task->unk6E = 5;
+            ret = 0;
+        }
+    } else {
+        task->unk_70 = ret;
+        if (task->unk6E > 0) {
+            ret = 0;
+            task->unk6E = 1;
+        }
+    }
+    return ret;
+}
+#else
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008D6E4.s")
+#endif
 
 s32 func_8008D7B0(CTTask* task) {
     s32 funcResult = func_8008D7FC(task);
@@ -3866,7 +3925,33 @@ Gfx* SetFrustum(Gfx* gfxPos, s32 fbIndex) {
     return gfxPos;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008E698.s")
+void func_8008E698(CTTask* task) {
+    u8 alpha;
+    s16 offsetX;
+    s16 offsetY;
+
+    if (D_801FC9AC == 1) {
+        offsetX = 160;
+        offsetY = -120;
+    } else {
+        offsetX = 0;
+        offsetY = 0;
+    }
+    task->unk_64 += task->unk_5C;
+    if (task->unk_64 >= 255) {
+        alpha = 255;
+    } else if (task->unk_64 <= 0) {
+        alpha = 1;
+    } else {
+        alpha = task->unk_64;
+    }
+    setPrimColor(task->unk5E, task->unk60, task->unk_62, alpha);
+    printUISprite(task->pos.x + offsetX, task->pos.y + offsetY, 0.0f, 0.0f, 1.0f, task->unk7C, task->unk80, 0.0f, SPRITE_BLANK);
+    if ((task->unk_64 < -23) || (task->unk_64 >= 280)) {
+        task->unk58->runType = 1;
+        CTTask_Unlink(task);
+    }
+}
 
 void func_8008E7B8(CTTask* arg0) {
     //more research needed? is it just getting the lower half???
@@ -4142,7 +4227,31 @@ CTTask* func_8008F7A4(s16 arg0, s16 arg1) {
     return newTask;
 }
 
+// NON_MATCHING: score 3178
+#ifdef NON_MATCHING
+u64 func_8008F814(void) {
+    u64 sum = 0;
+    u64 old;
+    u64* ptr;
+
+    for (ptr = (u64*)bootproc; (u32)ptr < (u32)D_800F04E0 - 4; ptr++) {
+        sum += *ptr;
+    }
+    old = D_800FFE70;
+    if (sum == old) {
+        return 0;
+    }
+    if (old == 0) {
+        D_800FFE70 = sum;
+        DummiedPrintf("ZERO(%llu)\n", sum);
+        return 0;
+    }
+    D_800FFE70 = sum;
+    return sum;
+}
+#else
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008F814.s")
+#endif
 
 u64 func_8008F900(void) {
     u64 sum = 0;
@@ -4154,10 +4263,6 @@ u64 func_8008F900(void) {
     return sum;
 }
 
-//writes useInt as a base 10 string of full-width digits into result, using the
-//2-byte-per-digit table D_800FFE78, most significant digit first. The digit
-//count is found by scaling limit by 10 until it passes useInt. Returns result.
-//(note: the terminating zero bytes are written at result[len+1]/result[len+2].)
 char* ParseIntToBase10(s32 useInt, char* result) {
     s32 base = 10;
     s32 offset = 0;
@@ -4722,7 +4827,25 @@ s32 func_80090CB0(CTTask* task) {
     return 0;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80090D28.s")
+s32 func_80090D28(CTTask* task) {
+    s32 ret = func_80090CB0(task);
+
+    if (task->unk7C < 0.0f) {
+        task->unk48 = -1;
+        task->unk44 = 6;
+        task->unk3C = 1.0f;
+    } else if (task->unk88 - task->pos.y < 30.0f) {
+        task->unk3C = 1.0f;
+        if (task->unk40 < 8.0) {
+            task->unk40 = 9.0f;
+        }
+    } else if (task->unk40 >= 8.0) {
+        task->unk3C = -1.0f;
+    } else {
+        task->unk3C = 1.0f;
+    }
+    return ret;
+}
 
 void func_80090E2C(void) {
     CTTask* task = CTTask_Alloc(1, 100, NULL);
@@ -5420,7 +5543,7 @@ void func_800938B0(CTTask* task) {
     }
 }
 
-void func_800938E4(s32 xMult) {
+CTTask* func_800938E4(s32 xMult) {
     CTTask* task = CTTask_Alloc(1, 100, 0);
 
     task->function = func_800939B0;
@@ -5436,9 +5559,28 @@ void func_800938E4(s32 xMult) {
     task->unk84 = 3.0f;
     task->unk7C = -20.0f;
     task->unk80 = 4.0f;
+
+    return task;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800939B0.s")
+void func_80093A98(CTTask*);
+
+void func_800939B0(CTTask* task) {
+    task->pos.x += task->unk80;
+    func_80090C54(task);
+    func_800612F0(2);
+    printUISprite(task->pos.x, task->pos.y, 0.0f, 0.0f, 1.0f,
+                  (f32)((f64)task->scale.x * -1.0 * 40.0), task->scale.x * 40.0f,
+                  (f32)task->unk4C, task->unk_04);
+    {
+        CTTask* other = task->unk58;
+
+        if (other->unk54 >= 2) {
+            task->function = func_80093A98;
+            task->unk80 = 0.0f;
+        }
+    }
+}
 
 void func_80093B7C(CTTask*);
 
@@ -5459,7 +5601,43 @@ void func_80093A98(CTTask* task) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80093B7C.s")
 
+// NON_MATCHING: score 433
+#ifdef NON_MATCHING
+void func_80093CD8(CTTask* task) {
+    CTTask* parent;
+    s32 i;
+
+    Effect_BossDeadEyes_Init(7);
+    task->unk4E = 1;
+    task->unk44 = 10;
+    task->unk48 = -1;
+    func_8008D7FC(task);
+    task->function = func_80093DE4;
+    parent = task;
+    task->unk54 = 0;
+    task->scale.z = 0.75f;
+    task->scale.y = 0.75f;
+    task->scale.x = 0.75f;
+    task->unk3C = 1.0f;
+    task->rot.y = 1.0f;
+    task->rot.x = 0.0f;
+    task->rot.z = 0.0f;
+    task->pos.y = 74.0f;
+    task->unk88 = 74.0f;
+    task->unk80 = 4.0f;
+    task->rotA = -80.0f;
+    task->pos.x = -100.0f;
+    task->pos.z = -30.0f;
+    task->unk84 = 3.0f;
+    task->unk7C = -10.0f;
+
+    for (i = 0; i < 10; i++) {
+        func_800938E4(i)->unk58 = parent;
+    }
+}
+#else
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80093CD8.s")
+#endif
 
 void func_80093DE4(CTTask* task) {
     if (func_80090CB0(task) != 0) {
@@ -5479,7 +5657,26 @@ void func_80093DE4(CTTask* task) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80093ECC.s")
+void func_80093ECC(CTTask* task) {
+    CTTask* other;
+
+    if ((gTimer % 12) == 0) {
+        PLAY_SFX(SFX_63_unkSnd, 0, 0x10);
+    }
+    if ((gTimer % 12) == 6) {
+        PLAY_SFX(SFX_64_unkSnd, 0, 0x10);
+    }
+    task->pos.x += task->unk80;
+    other = task->unk58;
+    if (other->unk54 == 2) {
+        task->unk54 = 2;
+        task->unk60 = 20;
+        task->function = func_80093FC8;
+        task->unk80 = 0.0f;
+        task->unk7C = -20.0f;
+        task->unk88 = 96.0f;
+    }
+}
 
 void func_80093FC8(CTTask* task) {
     if (task->unk60 != 0) {
@@ -5698,7 +5895,32 @@ void func_80094958(CTTask* task) {
     }
 }
 
+// NON_MATCHING: score 280
+#ifdef NON_MATCHING
+void func_800949D8(CTTask* task) {
+    CTTask* newTask;
+
+    task->function = func_80094D64;
+
+    newTask = CTTask_Alloc(1, 100, 0);
+    newTask->function = func_80094ABC;
+    newTask->unk58 = task;
+    newTask->pos.x = task->pos.x + 10.0f;
+    newTask->unk80 = 3.0f;
+    newTask->rotA = 70.0f;
+    newTask->scale.x = -0.75f;
+
+    newTask = CTTask_Alloc(1, 100, 0);
+    newTask->function = func_80094ABC;
+    newTask->unk58 = task;
+    newTask->pos.x = task->pos.x - 10.0f;
+    newTask->unk80 = -3.0f;
+    newTask->rotA = -70.0f;
+    newTask->scale.x = 0.75f;
+}
+#else
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800949D8.s")
+#endif
 
 //thanks rain
 void func_80094ABC(CTTask* task) {
@@ -5778,7 +6000,27 @@ void func_80094E0C(CTTask* arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80094E14.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80094FC8.s")
+CTTask* func_80094FC8(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, s16 arg5, s16 arg6) {
+    CTTask* task = CTTask_Alloc(1, 100, 0);
+
+    if (task == NULL) {
+        return NULL;
+    }
+    task->function = func_80094E14;
+    task->pos.x = arg0;
+    task->pos.y = arg1;
+    task->pos.z = arg2;
+    task->unk80 = arg3;
+    task->unk7C = arg4;
+    task->unk_5C = arg6;
+    // CTTask.unk8C is typed s32 in common_structs.h but holds an f32 here
+    *(f32*)&task->unk8C = 0.0f;
+    task->unk90 = 1.0f / arg5;
+    if (arg0 >= 0.0f && task->pos.x <= 319.0f) {
+        PlaySoundEffect(0x74, NULL, NULL, NULL, 8, 0x10);
+    }
+    return task;
+}
 
 void func_800950C0(CTTask* task) {
     task->unk4E = 1;
@@ -5991,7 +6233,36 @@ s32 GetDirectionIndex(u16 dirMask) {
     return ret;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/CanAccessStage.s")
+s32 CanAccessStage(s32 stageIndex) {
+    u8 requirement = StageSelect[stageIndex].unk_16;
+    s32 crowns;
+    s32 i;
+
+    if (stageIndex == 0) {
+        return TRUE;
+    }
+
+    if (requirement == 0) {
+        crowns = 0;
+        for (i = 0; i < 6; i++) {
+            if (gGameState.stageCrownClear & (1 << i)) {
+                crowns++;
+            }
+        }
+        if (crowns >= 6) {
+            return TRUE;
+        }
+        if (sDebugLevelAccess >= 0) {
+            return TRUE;
+        }
+        return FALSE;
+    }
+
+    if (gGameState.stageAccess & requirement) {
+        return TRUE;
+    }
+    return FALSE;
+}
 
 //need to fix type of D_8010026E
 // s32 CanAccessStage(s32 stageIndex) {
@@ -6147,7 +6418,34 @@ void func_80097508(CTTask* task) {
     task->function = &func_80097540;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80097540.s")
+void func_80097540(CTTask* task) {
+    CTTask* volatile master;
+    CTTask* newTask;
+    s32 stage;
+
+    DummiedPrintf("ステージセレクトマスター初期化\n");
+    task->unk_04 = 0;
+    task->unk6E = 0;
+    task->unk6C = 0;
+    task->unk_62 = D_800FF8E8;
+    task->function = &func_80097624;
+    stage = GetBaseStage(gCurrentStage);
+    if (stage < 0) {
+        task->unk7A = 0;
+    } else {
+        task->unk7A = stage;
+    }
+    master = task;
+    DummiedPrintf("/* リスト表示用タスク */\n");
+    newTask = CTTask_Alloc(1, 0x6E, NULL);
+    newTask->function = &func_80097CF8;
+    newTask->unk58 = master;
+    DummiedPrintf("/* ダミーカメレオンタスク */\n");
+    newTask = CTTask_Alloc(1, 0x78, NULL);
+    newTask->function = &func_80096964;
+    newTask->unk7A = master->unk7A;
+    newTask->unk58 = master;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80097624.s")
 
@@ -6444,10 +6742,6 @@ void func_8009A988(CTTask* arg0) {
     }
 }
 
-//builds the save/load menu's task tree: the 0x64 master task that draws the
-//menu, a 0x46 helper, one 0x62 task per save file slot, one 0x65 task per
-//player, and the 0xF0 task that is returned (every task keeps the master in
-//unk58). Also clamps gGameRecords.savedStageData.index to 0..3 on the way in.
 CTTask* MakeSaveMaster(void) {
     CTTask* master;
     CTTask* task;
@@ -6735,7 +7029,24 @@ void func_8009BC98(CTTask* arg0) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009BCF0.s")
+void func_8009BCF0(CTTask* arg0) {
+    CTTask* task;
+
+    task = gCTTaskHead;
+    arg0->unk5E = 0;
+    for (; task->next != NULL; task = task->next) {
+        if (task->runType != 3) {
+            continue;
+        }
+        if (arg0->unk6A == task->unk_62) {
+            task->function = func_80099870;
+        }
+    }
+    func_800A87D4(arg0->unk6A);
+    func_800A878C(&gSaveFiles[arg0->unk6A]);
+    arg0->unk_68 = 4;
+    arg0->function = func_8009BDC0;
+}
 
 void func_8009BDA8(CTTask* arg0) {
     arg0->unk_68 = 4;
@@ -6749,7 +7060,31 @@ void func_8009BDC0(CTTask* arg0) {
     arg0->function = &func_8009BDA8;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009BDE4.s")
+void func_8009BDE4(CTTask* task) {
+    SaveFile* files;
+    SaveRecord* rec = &gGameRecords;
+
+    if (task->unk_68--) {
+        return;
+    }
+    if (func_8008EC90() == 0) {
+        return;
+    }
+    gGameRecords.flags[1] &= ~4;
+    gGameRecords.flags[1] &= ~8;
+    gGameRecords.flags[1] &= ~0x10;
+    if (&gGameRecords) {
+    }
+    files = gSaveFiles;
+    rec->flags[1] = (files[0].flags & 0xC) | gGameRecords.flags[1];
+    rec->flags[1] = (files[1].flags & 0xC) | gGameRecords.flags[1];
+    rec->flags[1] = (files[2].flags & 0xC) | gGameRecords.flags[1];
+    rec->flags[1] = (files[3].flags & 0xC) | gGameRecords.flags[1];
+    SaveData_UpdateRecords();
+    DummiedPrintf("元に戻る\n");
+    task->function = func_8009BA38;
+    task->unk54 = 4;
+}
 
 void func_8009BEC4(CTTask* task) {
     CTTask* newTask = task->unk58;
@@ -7212,7 +7547,7 @@ void func_8009DB98(CTTask* arg0) {
     }
 }
 
-s32 func_8009E6D0(void);
+s32 func_8009E6D0();
 
 void func_8009DC40(CTTask* arg0) {
     s32 var_a1;
@@ -7366,7 +7701,21 @@ void func_8009E2B0(CTTask* arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009E504.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009E6D0.s")
+s32 func_8009E6D0(CTTask* task) {
+    CTTask* owner = task->unk58;
+
+    if ((gContMain[task->unk_62].buttons2 & START_BUTTON) || (gContMain[task->unk_62].buttons2 & A_BUTTON)) {
+        PLAY_SFX(SFX_Select, 0, 16);
+        owner->unk54 = 6;
+        return 1;
+    }
+    if (gContMain[task->unk_62].buttons2 & B_BUTTON) {
+        owner->unk54 = 3;
+        PLAY_SFX(SFX_Decline, 0, 16);
+        return 1;
+    }
+    return 0;
+}
 
 void func_8009E784(CTTask* task) {
     CTTask* newTask = task->unk58;
@@ -8136,7 +8485,24 @@ void func_800A4868(CTTask* task) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A4904.s")
+void func_800A4904(CTTask* task) {
+    CTTask* master;
+    s32 i;
+
+    func_800A44D8(task);
+    if (task->unk_64 != 0) {
+        master = task;
+        task->function = &func_800A49B0;
+        for (i = 0; i < 1; i++) {
+            task = CTTask_Alloc(1, 0x69, NULL);
+            task->unk58 = master;
+            task->unk_70 = 0;
+            task->unk6E = 0;
+            task->unk_62 = D_800FF8E8;
+            task->function = func_800A4D58;
+        }
+    }
+}
 
 void func_800A49B0(CTTask* task) {
     if (task->unk5E != -1) {
@@ -8667,9 +9033,6 @@ s32 RecordTime_GetMinsSecs(TimeVal* record, s32* mins, s32* secs) {
     return 0;
 }
 
-//reads one record row of gGameRecords.savedStageData.stageTimes[stage][rank]:
-//returns its minutes/seconds plus the two flag fields packed in byte 0 of the
-//TimeVal (bits 5-7 in *arg5, bit 4 in *arg4). Used by printStageRecordTimes.
 s32 RecordTime_GetByStageRank(s32 stage, s32 rank, s32* mins, s32* secs, s32* arg4, s32* arg5) {
     u8* record = (u8*)&gGameRecords + (stage * 15) + (rank * 3);
 
@@ -8723,7 +9086,6 @@ s32 SaveData_FileChecksum(u8 *saveData) {
     s32 hasNoNonFFBytes = 1;
     s32 i;
 
-    // Iterate through the save data (excluding the old checksum), adding each byte to the new checksum
     for (i = 1; i < sizeof(SaveFile); i++) {
         checksum += saveData[i];
         checksum &= 0xff;               // keep checksum in the byte range
@@ -8751,8 +9113,6 @@ s32 SaveData_FileChecksum(u8 *saveData) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/SaveData_RecordChecksum.s")
 
-//spin-waits ~15ms (in CPU cycles) after an eeprom operation before the next
-//access. The extra (now < start) arm handles the 64-bit osGetTime wrapping.
 void SaveData_Wait(void) {
     OSTime start = osGetTime();
     OSTime now;
@@ -8765,9 +9125,6 @@ void SaveData_Wait(void) {
     } while (now <= start + OS_USEC_TO_CYCLES(15000));
 }
 
-//byte-compares two SaveFile structs (0x60 bytes), logging every byte that
-//differs. Returns 1 if any byte differs, 0 if they are identical.
-//Used by SaveData_UpdateFile to verify an eeprom write read back correctly.
 s32 SaveData_VerifyFile(SaveFile *arg0, SaveFile *arg1) {
     s32 i;
     s32 isDifferent = 0;
@@ -9967,4 +10324,32 @@ void CalculateBoundingRectFromVectors(Vec3f vecA, Vec3f vecB, Rect3D* rect) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800AEB48.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800AEDB4.s")
+void func_800AEDB4(ModelCollision* collision) {
+    Vec3f* vert = collision->vertsStart;
+    Rect3D* rect = collision->settingsStart;
+    s32 i;
+
+    rect->min.x = rect->max.x = vert->x;
+    rect->min.y = rect->max.y = vert->y;
+    rect->min.z = rect->max.z = vert->z;
+    vert++;
+
+    for (i = 1; i < collision->numXVerts; i++) {
+        if (vert->x < rect->min.x) {
+            rect->min.x = vert->x;
+        } else if (rect->max.x < vert->x) {
+            rect->max.x = vert->x;
+        }
+        if (vert->y < rect->min.y) {
+            rect->min.y = vert->y;
+        } else if (rect->max.y < vert->y) {
+            rect->max.y = vert->y;
+        }
+        if (vert->z < rect->min.z) {
+            rect->min.z = vert->z;
+        } else if (rect->max.z < vert->z) {
+            rect->max.z = vert->z;
+        }
+        vert++;
+    }
+}

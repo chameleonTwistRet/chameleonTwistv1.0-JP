@@ -9,8 +9,7 @@ typedef struct unk8020D908 {
     char unk_04[0x54];
 } unk8020D908;
 
-// Behaviour 0xD keyframe record. RoomObject::keyframes points at an array of these
-// (RoomObject::numKeyframes entries); FieldObject::unk_AC/unk_B0 carry them to the MOVE hook.
+// Behaviour 0xD keyframe record
 typedef struct UnkType3 {
     /* 0x00 */ s32* unk_00;                         /* array of model ids, unk_04 long */
     /* 0x04 */ s32 unk_04;
@@ -253,6 +252,8 @@ extern Vec3f D_802032B0[];
 extern s32 D_80202530[32];
 extern s32 D_80206CF8[];
 extern s32 D_80206D78[];
+extern s32 D_80206F78[];
+extern s32 D_80207108[];
 extern f32 gCameraMinY;
 extern Vec3f D_8020A298;
 extern Vec3f D_8020D2A8;
@@ -296,7 +297,7 @@ extern s32 D_80236970;
 s32 func_80083F18(SpriteActor*);                      /* extern */
 s32 IsPointInViewAreaFull(f32, f32, f32, f32);              /* extern */
 
-void func_800B5224(f32, s32*, s32*);                   /* extern */
+void func_800B5224(f32);                   /* extern */
 void func_800BE714(void);                                  /* extern */
 extern s32 Battle_Stage;
 extern f32 D_80202510;

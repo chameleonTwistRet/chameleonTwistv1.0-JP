@@ -2412,8 +2412,32 @@ s32 func_80055EEC(s32 arg0) {
     return func_80055F10(0, arg0);
 }
 
-//https://decomp.me/scratch/Paab8
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80055F10.s")
+s32 func_80055F10(s32 cont, s32 button) {
+    s32* p;
+    s32 count;
+    s64 clampFake;
+
+    if (gButtons[cont] & button) {
+        p = &D_800F68B0[cont];
+        if ((gPrevButtons[cont] & button) != button) {
+            D_800F68B0[cont] = 1;
+            return 1;
+        }
+        count = (s64)*p + 1;
+        *p = count;
+        if (count >= 0x2711) {
+            clampFake = 0x2710;
+            count = clampFake;
+            *p = count;
+        }
+        if (count >= 0x15) {
+            return count;
+        }
+    } else {
+        return 0;
+    }
+    return 0;
+}
 
 void func_80055FA4(void) {
     D_800F68C0 = - 1;
@@ -2425,7 +2449,35 @@ void func_80055FBC(s32 arg0) {
     D_800F68C4[0] = arg0;
 }
 
+// NON_MATCHING: score 845 
+#ifdef NON_MATCHING
+s32 func_80055FD8(s32 button) {
+    s32 var_v1;
+    s32 new_var;
+    if (D_800F68C4[0] & button) {
+        var_v1 = D_800F68C0 & button;
+        if (button != var_v1) {
+            D_800F68C4[1] = 1;
+            return 1;
+        }
+        var_v1 = D_800F68C4[1] + 1;
+        if (var_v1 >= 0x2711) {
+            var_v1 = 0x2710;
+        }
+        new_var = var_v1;
+        if (new_var >= 0xB) {
+            D_800F68C4[1] = new_var;
+            return new_var;
+        }
+        D_800F68C4[1] = new_var;
+    } else {
+        return 0;
+    }
+    return 0;
+}
+#else
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80055FD8.s")
+#endif
 
 s32 func_80056064(s32 arg0) {
     s32 *new_var2;
@@ -4298,20 +4350,17 @@ void Effect_Init(void) {
     Effect_ResetListEntry(gEffectListHead);
 }
 
+// NON_MATCHING: score 38
 #ifdef NON_MATCHING
 void Effect_UpdateAll(Gfx** arg0) {
     Effect* effect;
-    void* fpUpdate;
+    Effect* cur;
 
-    if (gEffectList.next != NULL) {
-        effect = gEffectList.next;
-        do {
-            fpUpdate = effect->fpUpdate;
-            if (fpUpdate != NULL) {
-                ((void (*)(Effect*, Gfx**)) effect->fpUpdate)(effect, arg0);
-            }
-            effect = effect->next;
-        } while (effect != NULL);
+    for (effect = gEffectList.next; effect != NULL; effect = cur->next) {
+        cur = effect;
+        if (cur->fpUpdate != NULL) {
+            ((void (*)(Effect*, Gfx**))cur->fpUpdate)(cur, arg0);
+        }
     }
 }
 #else
@@ -5571,7 +5620,36 @@ Effect* Effect_TypeM_Init2(f32 posX, f32 posY, f32 posZ, f32 scaleX, f32 scaleY,
 }
 
 //https://decomp.me/scratch/xl76w
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_800664E8.s")
+//https://decomp.me/scratch/xl76w
+void func_800664E8(AnimPointer* pointer, s32* ramObjects, s32* ramFrames, Mtx** ramAnim) {
+    s32* newInt;
+    AnimPointer* realPointer;
+
+    //this is required to be 1 line or codegen breaks
+    if (!IS_SEGMENTED(pointer)) {realPointer = pointer;} else {realPointer = SEGMENTED_TO_VIRTUAL(pointer);}
+
+    if (!IS_SEGMENTED(realPointer->numObjects)) {
+        newInt = realPointer->numObjects;
+    } else {
+        newInt = SEGMENTED_TO_VIRTUAL(realPointer->numObjects);
+    }
+
+    *ramObjects = *newInt;
+
+    if (!IS_SEGMENTED(realPointer->numFrames)) {
+        newInt = realPointer->numFrames;
+    } else {
+        newInt = SEGMENTED_TO_VIRTUAL(realPointer->numFrames);
+    }
+
+    *ramFrames = *newInt;
+
+    if (!IS_SEGMENTED(realPointer->animation)) {
+        *ramAnim = realPointer->animation;
+    } else {
+        *ramAnim = SEGMENTED_TO_VIRTUAL(realPointer->animation);
+    }
+}
 
 //https://decomp.me/scratch/Jy8t4
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_800665F0.s")
@@ -5588,9 +5666,56 @@ void func_800667C4(Effect*arg0, s32 arg1) {
     arg0->unk5 = (s8) arg1;
 }
 
+void func_800667CC(Effect*);
+
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_800667CC.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_800674B8.s")
+Effect* func_800674B8(f32 arg0, f32 arg1, f32 arg2, Effect_Unk674B8_Part* arg3, s32 arg4, s32 arg5,
+                      s32 arg6, s32 arg7, s32 arg8, s32 arg9, s32 arg10, s32 arg11) {
+    Effect_Unk674B8_Data* data;
+    Effect* effect;
+    s32 temp;
+
+    effect = Effect_Alloc(0, sizeof(Effect_Unk674B8_Data), &func_800667CC);
+    if (effect == NULL) {
+        return effect;
+    }
+
+    data = (Effect_Unk674B8_Data*)effect->data;
+    data->unk_10C = arg4;
+    data->unk_108 = arg3;
+    data->unk_B10 = arg6;
+    data->unk_B14 = arg7;
+    data->unk_B18 = arg8;
+    data->unk_B1C = arg9;
+    data->unk_B20 = arg10;
+    data->unk_B38 = arg5;
+    data->unk_B3C = 0.0f;
+    data->unk_B40 = 0.0f;
+    data->unk_B44 = 0.0f;
+    temp = data->unk_108->unk_34;
+    if (temp != 0) {
+        if (temp < 0) {
+            data->unk_B48 = -temp;
+        } else {
+            data->unk_B48 = temp;
+        }
+    } else {
+        data->unk_B48 = 0;
+    }
+    data->unk_B4C = 0;
+    data->unk_000 = arg11;
+
+    effect->pos.x = arg0;
+    effect->pos.y = arg1;
+    effect->pos.z = arg2;
+    effect->lifeTime = 0.0f;
+    effect->unk5 = 0;
+    effect->spriteID = 0;
+    effect->vel.x = 0.0f;
+    D_800FE19C = 1;
+    return effect;
+}
 
 void Effect_TypeO_Update(Effect* effect, Gfx** pGfxPos) {
     f32 alpha = 255.0f - effect->lifeTime * 254.0f;
@@ -5884,8 +6009,26 @@ void Effect_TypeU_Init(f32 posX, f32 posY, f32 posZ, f32 targetX, f32 targetY, f
     effect->lifeTime = 0.0f;
 }
 
-// scores 375
+// NON_MATCHING: score 375
+#ifdef NON_MATCHING
+extern u32 gBowlingRoll;
+extern s32 gBowlingRolls[21];
+extern s32 gBowlingFrames[10];
+
+void Bowling_ResetScore(void) {
+    s32 i;
+
+    gBowlingRoll = 0;
+    for (i = 0; i < 21; i++) {
+        gBowlingRolls[i] = 0;
+    }
+    for (i = 0; i < 10; i++) {
+        gBowlingFrames[i] = 0;
+    }
+}
+#else
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/Bowling_ResetScore.s")
+#endif
 
 void Bowling_CountPins(s32* pinsRemaining) {
     s32 i;
@@ -5917,7 +6060,7 @@ void aa1_Bowling(f32 arg0, s32 arg1, s32 arg2) {
     }
 }
 
-// scores 185
+// NON_MATCHING: score 14
 #ifdef NON_MATCHING
 void ResetEyeParams(void) {
     D_800FE4E4[1].unk_00 = 0;
@@ -5946,7 +6089,14 @@ void UnlockEyeChange(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8006BA30.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8006BD58.s")
+void func_8006BD58(f32 arg0, f32 arg1, f32 arg2, f32 arg3, s32 arg4) {
+    if (arg0 > 6300.0f && arg1 >= 100.0f && arg1 <= 160.0f) {
+        return;
+    }
+    if (arg0 < 6300.0f && arg1 <= 420.0f && (gTimer % arg4) == 0) {
+        Effect_TypeBC_Init(arg0, 422.0f, arg2, 32.0f, 10.0f, arg3);
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8006BE4C.s")
 
@@ -5954,8 +6104,6 @@ void UnlockEyeChange(void) {
 
 void Effect_TypeBD_Init(f32 posX, f32 posY, f32 posZ, f32 duration, f32 arg4, f32 velX, f32 velZ);
 
-// Every 4th frame, spawns a TypeBD effect at (x, 161, z) while the caller sits above x=6300
-// and within the y band [100, 160].
 void func_8006C368(f32 arg0, f32 arg1, f32 arg2) {
     if ((arg0 > 6300.0f) && (arg1 >= 100.0f) && (arg1 <= 160.0f) && ((gTimer & 3) == 0)) {
         Effect_TypeBD_Init(arg0, 161.0f, arg2, 20.0f, 180.0f, -8.0f, 8.0f);
@@ -7671,10 +7819,6 @@ void Effect_TypeAM_Init(f32 posX, f32 posY, f32 posZ, f32 arg3, s32* arg4) {
     effect->duration = 0.125f;
 }
 
-//spawns the five record-time rows for one stage: each rank's minutes, seconds
-//and the two flag fields come from RecordTime_GetByStageRank, and each row is
-//drawn 32 units below the previous one. The last argument is the row's index
-//doubled, which the effect uses as its stagger delay.
 void printStageRecordTimes(s32 arg0) {
     s32 i;
     s32 sp98;
@@ -9464,7 +9608,17 @@ void func_8007AF58(void) {
     func_8007ADDC(1);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8007AF80.s")
+// Init_Rumble
+void func_8007AF80(void) {
+    s32 i;
+
+    for (i = 0; i < MAXCONTROLLERS; i++) {
+        gUnkRumbleArray[i] = 0;
+        D_80176980[i] = 0;
+        gRumbleTime[i] = 0;
+        D_80176950[i] = 0;
+    }
+}
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/Rumble_Tick.s")
 
 /**
@@ -9676,7 +9830,34 @@ void func_8007E714(f32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8007FB60.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80080318.s")
+s32 func_80080318(s32 spriteId, void* arg1, s32* outCol, s32* outRow) {
+    SpriteListing* listing = &gSpriteListings[spriteId];
+    /* fake: "* 0" forces tileCountX to be read before tileCountY */
+    s32 i = listing->tileCountX * 0;
+    u8* raw = listing->unk10;
+    s32 count = listing->tileCountY * listing->tileCountX;
+    s16* key;
+    s16* tiles;
+
+    if (count > 0) {
+        tiles = (s16*)raw;
+        key = (s16*)arg1;
+        while (1) {
+            if (*key == *tiles) {
+                *outRow = i / listing->tileCountX;
+                *outCol = i % listing->tileCountX;
+                return 0;
+            }
+            i++;
+            tiles++;
+            if (i < count) {
+                continue;
+            }
+            break;
+        }
+    }
+    return -1;
+}
 
 void PrintTextWrapper(f32 arg0, f32 arg1, f32 arg2, f32 arg3, const char* txt, s32 font) {
     PrintText(arg0, arg1, arg2, arg3, 0.0f, 0.0f, txt, font);
@@ -9773,4 +9954,36 @@ void func_800849DC(s32 arg0, Tongue* playerTongue, PlayerActor* player, Camera* 
     D_800F6880 = arg0;
 }
 
+// NON_MATCHING: score 120
+#ifdef NON_MATCHING
+void func_80084A04(void) {
+    s32 t;
+    s32 now;
+
+    t = gTimer;
+    now = t;
+    D_800F687C = 0;
+    if (D_800FEDBC < now) {
+        if (D_800F687C > 0) {
+            D_800F687C++;
+        } else {
+            D_800F687C = 1;
+        }
+    } else if (now < D_800FEDBC) {
+        if (D_800F687C < 0) {
+            D_800F687C--;
+        } else {
+            D_800F687C = -1;
+        }
+    }
+    if (D_800F687C > 10000) {
+        D_800F687C = 10000;
+    }
+    if (D_800F687C < -10000) {
+        D_800F687C = -10000;
+    }
+    D_800FEDBC = now;
+}
+#else
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80084A04.s")
+#endif

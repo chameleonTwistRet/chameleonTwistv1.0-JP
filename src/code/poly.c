@@ -25,6 +25,9 @@ extern s32 D_80108FE8;
 extern s32 D_80108FEC;
 extern Vec3f D_802489C8[8];
 extern s32 gShadowFlagsSet;
+extern Poly* D_80235968[1024];
+s32 IsPointInViewAreaIgnoreY(f32, f32, f32, f32);
+void Shadows_Set(Vec3f, FieldObject*, f32*, Actor*);
 
 /* Migrated BSS */
 //TODO: type this data correctly
@@ -33,13 +36,11 @@ s32 gShadowCount;
 Vec3f D_80248518;
 
 typedef struct UnkPolyStruct {
-    void* unk0;
+    Poly* unk0;
     s32 unk4;
     f32 unk8;
     f32 unkC;
-    f32 unk10;
-    f32 unk14;
-    f32 unk18;
+    Vec3f unk10;
 } UnkPolyStruct;
 
 UnkPolyStruct D_80248528[32];
@@ -76,6 +77,8 @@ void func_800CA734(Vec3f*, Vec3f, f32, s32);
 void func_800CBC08(Actor*);
 void func_800CC814(Actor*, Vec3f, s32);
 Vec3f* WorldToLocal(Vec3f* outVec, Vec3f vec, Poly* poly);
+s32 IsOnPolygon(Vec3f vec, Poly* poly);
+s32 Vec3f_EqualsCopy(Vec3f vec1, Vec3f vec2);
 Vec3f* LocalToWorld(Vec3f* outVec, Vec3f vec, Poly* poly);
 
 void ClearPolygon(void) {
@@ -86,7 +89,27 @@ const char D_80110180[] = "\n";
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800C8F0C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800C9504.s")
+void func_800C9504(FieldObject* arg0) {
+    Poly** dst;
+    Poly* poly;
+    s32 count;
+    s32 i;
+
+    if (arg0->unk_E4 == NULL) {
+        func_800C8F0C(arg0);
+    }
+    dst = &D_80235968[D_8023696C];
+    count = arg0->collision->numXTris;
+    poly = arg0->unk_E4;
+    if (D_8023696C + count > 0x400) {
+        DummiedPrintf3("Too Many Listed Polygons\n");
+    }
+    for (i = 0; i < count; i++) {
+        *dst++ = poly;
+        poly = (Poly*)((u8*)poly + 0xA0);
+    }
+    D_8023696C += count;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800C9600.s")
 
@@ -146,9 +169,61 @@ s32 func_800C982C(Rect3D* arg0, FieldObject* arg1) {
     return var_s3;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800C9928.s")
+s32 func_800C9928(Rect3D* arg0, s32 arg1, s32 arg2) {
+    s32 var_s3;
+    FieldObject* temp_s0;
+    FieldObject** var_s2;
+    s32 i;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800C9A24.s")
+    var_s3 = 0;
+    D_8023696C = 0;
+
+    for (i = 0, var_s2 = &D_80240898; i < gFieldCount; i++, var_s2++) {
+        temp_s0 = *var_s2;
+        //fake: required to match
+        do { } while (0);
+        if ((temp_s0->unk_114 & arg2) && (temp_s0->unk_124 != 1) && (temp_s0->unk_0C & arg1)) {
+            if (IfRectsIntersect(arg0, &temp_s0->unk_CC) == 0) {
+                continue;
+            } else {
+                func_800C9504(temp_s0);
+                var_s3++;
+            }
+        }
+    }
+    return var_s3;
+}
+
+s32 func_800C9A24(Rect3D* arg0, s32 arg1, s32 arg2) {
+    s32 var_s3;
+    FieldObject* temp_s0;
+    FieldObject** var_s2;
+    s32 i;
+    s32 flags;
+
+    var_s3 = 0;
+    D_8023696C = 0;
+
+    for (i = 0, var_s2 = &D_80240898; i < gFieldCount; i++, var_s2++) {
+        temp_s0 = *var_s2;
+        flags = 0;
+        if (temp_s0->unk_118 != 0) {
+            flags = 7;
+        }
+        if (temp_s0->unk_114 & 1) {
+            flags |= 0x70;
+        }
+        if (flags & arg2) {
+            if (IfRectsIntersect(arg0, &temp_s0->unk_CC) == 0) {
+                continue;
+            } else {
+                func_800C9504(temp_s0);
+                var_s3++;
+            }
+        }
+    }
+    return var_s3;
+}
 
 // Checks if Poly's bounding box intersects with the given rectangle
 s32 IfPolyBoundIntersectsRect(Poly* poly, Rect3D* rect) {
@@ -306,7 +381,27 @@ UnkPolyStruct* func_800CA3FC(void) {
     return curUnkPoly;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800CA4BC.s")
+void func_800CA4BC(UnkPolyStruct* arg0) {
+    UnkPolyStruct* it;
+    s32 i;
+
+    if (arg0->unk4 == 0) {
+        return;
+    }
+
+    it = D_80248528;
+    for (i = 0; i < D_802488A8; i++, it++) {
+        if (it == arg0) {
+            continue;
+        }
+        if (IsOnPolygon(arg0->unk10, it->unk0)) {
+            if (Vec3f_EqualsCopy(it->unk0->orthBasis.normal, arg0->unk0->orthBasis.normal)) {
+                arg0->unk4 = 0;
+                return;
+            }
+        }
+    }
+}
 
 Vec3f* func_800CA5B4(Vec3f* arg0, Vec3f arg1, UnkArg4* arg4, f32 arg5) {
     Vec3f sp54;
@@ -351,7 +446,19 @@ Vec3f* func_800CA5B4(Vec3f* arg0, Vec3f arg1, UnkArg4* arg4, f32 arg5) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800CAF88.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800CB294.s")
+FieldObject* func_800CB294(Vec3f arg0, f32 arg1) {
+    s32 pad[2];                                 // fake: 8 bytes of unused frame
+    Vec3f vec;
+    Rect3D rect;
+
+    vec.x = arg0.x;
+    vec.y = arg0.y - (f32) (arg1 * 20.0);
+    vec.z = arg0.z;
+    CalculateBoundingRectFromVectors(arg0, vec, &rect);
+    rect.max.y += 10.0;
+    func_800C9748(&rect, 0x77, 2);
+    return func_800CAF88(arg0, 10.0f, -(f32) (arg1 * 20.0));
+}
 
 /**
  * @brief Clear the shadow list and, once per boot, build the per actor type shadow table
@@ -420,15 +527,13 @@ void func_800CBB98(Actor* actor) {
     pos.x = actor->pos.x + actor->unknownPositionThings[0].unk_00;
     pos.y = actor->pos.y;
     pos.z = actor->pos.z + actor->unknownPositionThings[0].unk_08;
-    func_800CB294(pos, *(s32*) &actor->unknownPositionThings[0].unk_0C);
+    func_800CB294(pos, actor->unknownPositionThings[0].unk_0C);
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800CBC08.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800CBD24.s")
 
-s32 IsPointInViewAreaIgnoreY(f32, f32, f32, f32);
-void Shadows_Set(Vec3f, FieldObject*, f32*, Actor*);
 
 void func_800CBE74(Actor* actor) {
     FieldObject* obj;
@@ -438,7 +543,7 @@ void func_800CBE74(Actor* actor) {
     pos.y = actor->pos.y;
     pos.z = actor->pos.z + actor->unknownPositionThings[0].unk_08;
     if (IsPointInViewAreaIgnoreY(pos.x, pos.y, pos.z, 6000.0f)) {
-        obj = func_800CB294(pos, *(s32*) &actor->unknownPositionThings[0].unk_0C);
+        obj = func_800CB294(pos, actor->unknownPositionThings[0].unk_0C);
         if (obj != NULL) {
             actor->unk_D4 = obj->unk_94;
             actor->unk_D8 = obj->unk_98;
@@ -647,9 +752,6 @@ FieldObject* func_800D0448(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/poly/func_800D04B0.s")
 
-// Applies the surface's friction class to a player's slide/override movement vector: the fieldObject
-// the player is standing on (surface indexes D_80236980) carries a class in unk_12C, which selects
-// a multiplier from D_80108F90 = {0, 0.98, 1}. Class 0 leaves `move` untouched.
 void func_800D0694(PlayerActor* player, Vec3f vel) {
     s32 surface = player->surface;
     s32 friction;
@@ -662,7 +764,7 @@ void func_800D0694(PlayerActor* player, Vec3f vel) {
         if (friction > 0) {
             mult = D_80108F90[friction];
             player->move.x = vel.x * mult;
-            surface = col->unk_12C; // re-read is required: it keeps D_80236980's base in a register
+            surface = col->unk_12C; // re-read is required
             player->move.y = 0.0f;
             player->move.z = vel.z * mult;
         }
@@ -772,15 +874,12 @@ void GetCurrentCameraShot(PlayerActor* player, Tongue* tongue, Camera* camera, V
 void ApplyRotationToVector(Vec3f* vecA, Vec3f* vecB, f32 degreesAngle) {
     Vec3f differenceVector;
 
-    // Calculate the difference vector between the two vectors
     differenceVector.x = vecA->x - vecB->x;
     differenceVector.y = vecA->y - vecB->y;
     differenceVector.z = vecA->z - vecB->z;
 
-    // Rotate the difference vector by the given angle around the y-axis
     RotateVector3D(&differenceVector, differenceVector, DEGREES_TO_RADIANS_PI(degreesAngle), 2);
 
-    // Add the rotated difference vector to the second vector to get the first vector
     vecA->x = vecB->x + differenceVector.x;
     vecA->y = vecB->y + differenceVector.y;
     vecA->z = vecB->z + differenceVector.z;
@@ -826,7 +925,6 @@ void SetCameraParameters(void) {
 void func_800D71E8(f32 x1, f32 x2, f32 y1, f32 y2, f32 z1, f32 z2) {
     Rect3D r;
 
-    // define a rectangle with the given bounds
     r.min.x = x1;
     r.max.x = x2;
     r.min.y = y1;
@@ -834,7 +932,6 @@ void func_800D71E8(f32 x1, f32 x2, f32 y1, f32 y2, f32 z1, f32 z2) {
     r.max.y = y2;
     r.max.z = z2;
 
-    // ensure max > min
     OrderRectBounds(&r);
     func_800C9748(&r, 0x77, 2); //unknown
 }
@@ -850,8 +947,7 @@ s32 func_800D7248(f32 x, f32 y, f32 z, f32 arg3, f32 arg4, f32* outX, f32* arg6,
 
     fieldObject = func_800CAF88(vec, arg3, arg4);
 
-    // if a fieldObject was found assign its position to the output variables then return 1 for success
-    // ternary-comma shape is codegen-required; a plain if/return does not match
+    // ternary-comma shape is required to match
     return (fieldObject != NULL) ?
         (*outX = fieldObject->unk_94, *arg6 = fieldObject->unk_98, *arg7 = fieldObject->unk_9C, 1) : 0;
 }
@@ -870,7 +966,7 @@ s32 func_800D72DC(f32 x1, f32 y1, f32 z1, f32 x2, f32 y2, f32 z2, f32* outX, f32
     vecTwo.z = z2;
 
     fieldObject = SearchPolygonBetween(vecOne, vecTwo, 0x77, 1, 1);
-    // ternary-comma shape is codegen-required; a plain if/return does not match
+    // ternary-comma shape is required to match
     return (fieldObject != NULL) ?
         (*outX = fieldObject->unk_94, *outY = fieldObject->unk_98, *outZ = fieldObject->unk_9C, 1) : 0;
 }

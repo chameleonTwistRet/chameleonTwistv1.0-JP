@@ -87,6 +87,32 @@ typedef struct UnkBowlingStruct {
     /* 0x04 */ s32 unk_04;
 } UnkBowlingStruct; //sizeof 0x8
 
+typedef struct Effect_Unk674B8_Part {
+    /* 0x00 */ char unk_00[0x34];
+    /* 0x34 */ f32 unk_34;
+} Effect_Unk674B8_Part;
+
+typedef struct Effect_Unk674B8_Data {
+    /* 0x000 */ s32 unk_000;
+    /* 0x004 */ char unk_004[0x104];
+    /* 0x108 */ Effect_Unk674B8_Part* unk_108;
+    /* 0x10C */ s32 unk_10C;
+    /* 0x110 */ char unk_110[0xA00];
+    /* 0xB10 */ s32 unk_B10;
+    /* 0xB14 */ s32 unk_B14;
+    /* 0xB18 */ s32 unk_B18;
+    /* 0xB1C */ s32 unk_B1C;
+    /* 0xB20 */ s32 unk_B20;
+    /* 0xB24 */ char unk_B24[0x14];
+    /* 0xB38 */ s32 unk_B38;
+    /* 0xB3C */ f32 unk_B3C;
+    /* 0xB40 */ f32 unk_B40;
+    /* 0xB44 */ f32 unk_B44;
+    /* 0xB48 */ s32 unk_B48;
+    /* 0xB4C */ s32 unk_B4C;
+} Effect_Unk674B8_Data; //sizeof 0xB50
+
+
 typedef struct struct_800FE4E4 {
     /* 0x0 */ u8 unk_00;
     /* 0x1 */ u8 unk_01;
@@ -301,6 +327,8 @@ typedef struct chameleonEyeListEntry {
 extern chameleonEyeListEntry chameleonEyeList[6];
 extern s32 gContPakPresent[];
 extern s32 D_80176980[];
+extern s32 D_80176950[];
+extern s32 D_800F68B0[4];
 extern s32 gUnkRumbleArray[];
 void osMotorStop(OSPfs *pfs);
 void RecordTime_SetTo(s32 arg0, TimeVal* arg1);
