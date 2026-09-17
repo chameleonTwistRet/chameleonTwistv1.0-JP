@@ -860,7 +860,7 @@ void Battle_Update(void) {
     switch (Battle_Stage) {
     case BATTLE_STAGE_INIT:
         gIsGamePaused = PAUSEMODE_FROZEN;
-        DisableInput();
+        SetPlayerInputDisabled();
         for (j = 0, Battle_PlayerCount = 0; j < 4; j++) {
             if (gPlayerActors[j].active == 1) {
                 Battle_PlayerCount++;
@@ -891,7 +891,7 @@ void Battle_Update(void) {
         break;
 
     case BATTLE_STAGE_AFTER_INIT:
-        DisableInput();
+        SetPlayerInputDisabled();
         gIsGamePaused = PAUSEMODE_FROZEN;
         Battle_Time++;
         if (Battle_Time > 45) {
@@ -903,7 +903,7 @@ void Battle_Update(void) {
         break;
 
     case BATTLE_STAGE_READY:
-        DisableInput();
+        SetPlayerInputDisabled();
         gIsGamePaused = PAUSEMODE_FROZEN;
         Battle_Time++;
         Battle_PlayEnvSounds();
@@ -917,7 +917,7 @@ void Battle_Update(void) {
             Battle_Time = 0;
             D_8017683C = PlaySoundEffect(SFX_40_unkSnd, 0, 0, 0, 0, 0x10);
             PlayBGM(gMultiplayerBGM);
-            EnableInput();
+            SetPlayerInputEnabled();
         }
         break;
 
@@ -1068,7 +1068,7 @@ void Battle_Update(void) {
                     if ((gPlayerActors[j].canJump || (gPlayerActors[j].playerHurtState != PLAYER_HURT_NONE)) || (gTongues[j].tongueMode != 0)) {
                         var_v0 = BATTLE_STAGE_END_ACTIONS;
                         if (Battle_PlayerRank[j] != 0) {
-                            DisableInput();
+                            SetPlayerInputDisabled();
                         }
                         Battle_Stage = var_v0;
                     }
@@ -1089,11 +1089,11 @@ void Battle_Update(void) {
         if ((Battle_Time++) < 16) {
             gIsGamePaused = PAUSEMODE_NOT_PAUSED;
             Battle_DrawPortraits();
-            DisableInput();
+            SetPlayerInputDisabled();
             break;
         }
         gIsGamePaused = PAUSEMODE_FROZEN;
-        DisableInput();
+        SetPlayerInputDisabled();
         Battle_DrawPortraits();
         func_80051F38();
         Battle_Time = 0;
@@ -1122,7 +1122,7 @@ void Battle_Update(void) {
         break;
 
     case BATTLE_STAGE_WAIT_BEFORE_EXIT:
-        DisableInput();
+        SetPlayerInputDisabled();
         Battle_Time++;
         gIsGamePaused = PAUSEMODE_FROZEN;
         Battle_PlayEnvSounds();
@@ -1147,7 +1147,7 @@ void Battle_Update(void) {
         Battle_Stage = BATTLE_STAGE_INIT;
         gIsGamePaused = PAUSEMODE_NOT_PAUSED;
         D_800F0B54[0] = 0;
-        EnableInput();
+        SetPlayerInputEnabled();
         SetProcessType(0x11);
         break;
 

@@ -961,7 +961,7 @@ s32 rngSeed = 0x0A6B99CD;
 s32 gPrevButtons[4] = {-1, -1, -1, -1};
 s32 gButtons[4] = {-1, -1, -1, -1};
 
-s32 D_800F68A8 = 1;
+s32 gPlayerInputEnabled = 1;
 
 void DummiedPrintf2(char* arg0, ...) {
 
@@ -987,25 +987,25 @@ s32 Rand(void) {
 void func_80055C04(void) {
     s32 i;
 
-    //EnableInput
-    D_800F68A8 = 1;
+    gPlayerInputEnabled = 1;
 
+    // Initialise Conts
     for (i = 0; i < MAXCONTROLLERS; i++) {
         gPrevButtons[i] = -1;
         gButtons[i] = -1;
     }
 }
 
-void DisableInput(void) {
-    D_800F68A8 = 0;
+void SetPlayerInputDisabled(void) {
+    gPlayerInputEnabled = 0;
 }
 
-void EnableInput(void) {
-    D_800F68A8 = 1;
+void SetPlayerInputEnabled(void) {
+    gPlayerInputEnabled = 1;
 }
 
-s32 func_80055C90(void) {
-    return D_800F68A8;
+s32 GetPlayerInputEnabled(void) {
+    return gPlayerInputEnabled;
 }
 
 /**
@@ -1036,7 +1036,7 @@ void Controller_ParseJoystick(ContMain* conts) {
             }
         }
 
-        if (D_800F68A8 == NULL) {                     // if player is allowed movement (?) | Possibly if the chameleon is loaded
+        if (gPlayerInputEnabled == NULL) {            // if player is allowed movement (?) | Possibly if the chameleon is loaded
             if (((s32)gPlayerActors[i].active > 0)) { //cast required
                 if (gPlayerActors[i].exists > 0) {
                     Controller_Zero(&conts[i]);
@@ -7716,7 +7716,7 @@ void Effect_TypeAM_Update(Effect* effect, Gfx** pGfxPos) {
     f32 sp88, sp84, sp80, sp7C;
     s32 r;
 
-    DisableInput();
+    SetPlayerInputDisabled();
     switch (effect->unk5) {
     case 0:
         if (effect->spriteID == 0) {

@@ -208,9 +208,9 @@ void func_8005423C(void);
 void DummiedPrintf2(char*, ...);
 void Rand_SetSeed(s32);
 s32 Rand(void);
-void DisableInput(void);
-void EnableInput(void);
-s32 func_80055C90(void);
+void SetPlayerInputDisabled(void);
+void SetPlayerInputEnabled(void);
+s32 GetPlayerInputEnabled(void);
 s32 func_80055E5C(s32); // arg is controller #define
 s32 func_80055EEC(s32);
 s32 func_80055F10(s32, s32);

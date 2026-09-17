@@ -24,7 +24,7 @@ extern unk0* D_801FFB84;
 extern s32 gEffectListCount;
 extern Effect* gEffectListHead;
 extern Effect gEffectList;
-extern s32 D_800F68A8;              // s32 (but really only 1bit) is controller input allowed.
+extern s32 gPlayerInputEnabled;     // s32 (but really only 1bit) is controller input allowed.
 extern s32 sDebugInt;
 extern s32 sDebugStageOverride;
 extern s32 sDebugTestView;
