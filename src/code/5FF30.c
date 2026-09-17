@@ -5885,34 +5885,30 @@ void func_80094958(CTTask* task) {
     }
 }
 
-// NON_MATCHING: score 280
-#ifdef NON_MATCHING
 void func_800949D8(CTTask* task) {
-    CTTask* newTask;
+    CTTask* parent;
 
     task->function = func_80094D64;
+    parent = task;
 
-    newTask = CTTask_Alloc(1, 100, 0);
-    newTask->function = func_80094ABC;
-    newTask->unk58.parent = task;
-    newTask->pos.x = task->pos.x + 10.0f;
-    newTask->unk80 = 3.0f;
-    newTask->rotAngle = 70.0f;
-    newTask->scale.x = -0.75f;
+    task = CTTask_Alloc(1, 100, 0);
+    task->function = func_80094ABC;
+    task->unk58.parent = parent;
+    task->pos.x = parent->pos.x + 10.0f;
+    task->unk80 = 3.0f;
+    task->rotAngle = 70.0f;
+    task->scale.x = -0.75f;
 
-    newTask = CTTask_Alloc(1, 100, 0);
-    newTask->function = func_80094ABC;
-    newTask->unk58.parent = task;
-    newTask->pos.x = task->pos.x - 10.0f;
-    newTask->unk80 = -3.0f;
-    newTask->rotAngle = -70.0f;
-    newTask->scale.x = 0.75f;
+    task = CTTask_Alloc(1, 100, 0);
+    task->function = func_80094ABC;
+    task->unk58.parent = parent;
+    task->pos.x = parent->pos.x - 10.0f;
+    task->unk80 = -3.0f;
+    task->rotAngle = -70.0f;
+    task->scale.x = 0.75f;
 }
-#else
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800949D8.s")
-#endif
 
-//thanks rain
+
 void func_80094ABC(CTTask* task) {
     CTTask* temp;
 

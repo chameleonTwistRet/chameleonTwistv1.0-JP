@@ -962,12 +962,180 @@ s32 gPrevButtons[4] = {-1, -1, -1, -1};
 s32 gButtons[4] = {-1, -1, -1, -1};
 
 s32 D_800F68A8 = 1;
-s32 D_800F68AC = 0;
+
+void DummiedPrintf2(char* arg0, ...) {
+
+}
+
+/**
+ * @brief Sets the seed for generating randomness.
+ *
+ * @param seed: seed for rng
+ */
+void Rand_SetSeed(s32 seed) {
+    rngSeed = seed;
+}
+
+s32 Rand(void) {
+    u32 y, z;
+    y = rngSeed * 4 + 2;
+    z = y + 1;
+    y = y * z;
+    return rngSeed = y / 4;
+}
+
+void func_80055C04(void) {
+    s32 i;
+
+    //EnableInput
+    D_800F68A8 = 1;
+
+    for (i = 0; i < MAXCONTROLLERS; i++) {
+        gPrevButtons[i] = -1;
+        gButtons[i] = -1;
+    }
+}
+
+void DisableInput(void) {
+    D_800F68A8 = 0;
+}
+
+void EnableInput(void) {
+    D_800F68A8 = 1;
+}
+
+s32 func_80055C90(void) {
+    return D_800F68A8;
+}
+
+/**
+ * @brief Simplifies joystick movement to d-pad equivalent.
+ *
+ * @param conts: controllers struct
+ */
+void Controller_ParseJoystick(ContMain* conts) {
+    s32 i;
+    f32 sqX,sqY;
+
+    for (i = 0; i < MAXCONTROLLERS; i++) {
+        gPrevButtons[i] = gButtons[i];
+        gButtons[i] = conts[i].buttons0;
+        //NORM_2
+        sqX=SQ(conts[i].stickX);
+        sqY=SQ(conts[i].stickY);
+        if (sqrtf(sqX + sqY) > 42.0) {
+            if (conts[i].stickX < -30) {
+                gButtons[i] |= CONT_LEFT;
+            } else if (conts[i].stickX > 30) {
+                gButtons[i] |= CONT_RIGHT;
+            }
+            if (conts[i].stickY < -30) {
+                gButtons[i] |= CONT_DOWN;
+            } else if (conts[i].stickY > 30) {
+                gButtons[i] |= CONT_UP;
+            }
+        }
+
+        if (D_800F68A8 == NULL) {                     // if player is allowed movement (?) | Possibly if the chameleon is loaded
+            if (((s32)gPlayerActors[i].active > 0)) { //cast required
+                if (gPlayerActors[i].exists > 0) {
+                    Controller_Zero(&conts[i]);
+                }
+            }
+        }
+    }
+}
+//used for Debug function controls
+//https://decomp.me/scratch/rzD9G
+s32 func_80055E5C(s32 button) {
+    static s32 D_800F68AC = 0;
+
+    if ((gButtons[PLAYER_1] & button) && (gButtons[PLAYER_1] & L_TRIG)) {
+        if (button != (gPrevButtons[PLAYER_1] & button)) {
+            D_800F68AC = 1;
+            return 1;
+        }
+        D_800F68AC++;
+        if (D_800F68AC > 10000) {
+            D_800F68AC = 10000;
+        }
+        if (D_800F68AC > 5) {
+            return D_800F68AC;
+        }
+    } else {
+        return 0;
+    }
+    return 0;
+}
 
 s32 D_800F68B0[4] = {0,0,0,0};
 
 s32 D_800F68C0 = -1;
-s32 D_800F68C4[2] = {-1, 0};
+s32 D_800F68C4 = -1;
+
+//takes button define
+s32 func_80055EEC(s32 arg0) {
+    return func_80055F10(0, arg0);
+}
+
+s32 func_80055F10(s32 cont, s32 button) {
+    s32* p;
+    s32 count;
+    s64 clampFake;
+
+    if (gButtons[cont] & button) {
+        p = &D_800F68B0[cont];
+        if ((gPrevButtons[cont] & button) != button) {
+            D_800F68B0[cont] = 1;
+            return 1;
+        }
+        count = (s64)*p + 1;
+        *p = count;
+        if (count >= 0x2711) {
+            clampFake = 0x2710;
+            count = clampFake;
+            *p = count;
+        }
+        if (count >= 0x15) {
+            return count;
+        }
+    } else {
+        return 0;
+    }
+    return 0;
+}
+
+void func_80055FA4(void) {
+    D_800F68C0 = - 1;
+    D_800F68C4 = -1;
+}
+
+void func_80055FBC(s32 arg0) {
+    D_800F68C0 = D_800F68C4;
+    D_800F68C4 = arg0;
+}
+
+s32 func_80055FD8(s32 button) {
+    static s32 D_800F68C8 = 0;
+
+    if (D_800F68C4 & button) {
+        if (button != (D_800F68C0 & button)) {
+            D_800F68C8 = 1;
+            return 1;
+        }
+        D_800F68C8++;
+        if (D_800F68C8 > 10000) {
+            D_800F68C8 = 10000;
+        }
+        if (D_800F68C8 > 10) {
+            return D_800F68C8;
+        }
+    } else {
+        return 0;
+    }
+    return 0;
+}
+
 s32 D_800F68CC = 0;
 
 Mtx D_800F68D0[5] = {
@@ -2292,200 +2460,13 @@ u32 D_800FEDB4 = 0;
 s32 D_800FEDB8 = 1;
 u32 D_800FEDBC = 0;
 
-
-void DummiedPrintf2(char* arg0, ...) {
-
-}
-
-/**
- * @brief Sets the seed for generating randomness.
- *
- * @param seed: seed for rng
- */
-void Rand_SetSeed(s32 seed) {
-    rngSeed = seed;
-}
-
-s32 Rand(void) {
-    u32 y, z;
-    y = rngSeed * 4 + 2;
-    z = y + 1;
-    y = y * z;
-    return rngSeed = y / 4;
-}
-
-void func_80055C04(void) {
-    s32 i;
-
-    //EnableInput
-    D_800F68A8 = 1;
-
-    for (i = 0; i < MAXCONTROLLERS; i++) {
-        gPrevButtons[i] = -1;
-        gButtons[i] = -1;
-    }
-}
-
-void DisableInput(void) {
-    D_800F68A8 = 0;
-}
-
-void EnableInput(void) {
-    D_800F68A8 = 1;
-}
-
-s32 func_80055C90(void) {
-    return D_800F68A8;
-}
-
-/**
- * @brief Simplifies joystick movement to d-pad equivalent.
- *
- * @param conts: controllers struct
- */
-void Controller_ParseJoystick(ContMain* conts) {
-    s32 i;
-    f32 sqX,sqY;
-
-    for (i = 0; i < MAXCONTROLLERS; i++) {
-        gPrevButtons[i] = gButtons[i];
-        gButtons[i] = conts[i].buttons0;
-        //NORM_2
-        sqX=SQ(conts[i].stickX);
-        sqY=SQ(conts[i].stickY);
-        if (sqrtf(sqX + sqY) > 42.0) {
-            if (conts[i].stickX < -30) {
-                gButtons[i] |= CONT_LEFT;
-            } else if (conts[i].stickX > 30) {
-                gButtons[i] |= CONT_RIGHT;
-            }
-            if (conts[i].stickY < -30) {
-                gButtons[i] |= CONT_DOWN;
-            } else if (conts[i].stickY > 30) {
-                gButtons[i] |= CONT_UP;
-            }
-        }
-
-        if (D_800F68A8 == NULL) {                     // if player is allowed movement (?) | Possibly if the chameleon is loaded
-            if (((s32)gPlayerActors[i].active > 0)) { //cast required
-                if (gPlayerActors[i].exists > 0) {
-                    Controller_Zero(&conts[i]);
-                }
-            }
-        }
-    }
-}
-//used for Debug function controls
-//https://decomp.me/scratch/rzD9G
-#ifdef NON_MATCHING
-s32 func_80055E5C(s32 button) {
-    s32 held;
-    s32 count;
-
-    if ((gButtons[PLAYER_1] & button) && (gButtons[PLAYER_1] & L_TRIG)) {
-        held = gPrevButtons[PLAYER_1] & button;
-        if (button != held) {
-            D_800F68AC = 1;
-            return 1;
-        }
-        held = D_800F68AC + 1;
-        if (held >= 0x2711) {
-            held = 0x2710;
-        }
-        count = held;
-        if (count >= 6) {
-            D_800F68AC = count;
-            return count;
-        }
-        D_800F68AC = count;
-    } else {
-        return 0;
-    }
-    return 0;
-}
-#else
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80055E5C.s")
-#endif
-
-//takes button define
-s32 func_80055EEC(s32 arg0) {
-    return func_80055F10(0, arg0);
-}
-
-s32 func_80055F10(s32 cont, s32 button) {
-    s32* p;
-    s32 count;
-    s64 clampFake;
-
-    if (gButtons[cont] & button) {
-        p = &D_800F68B0[cont];
-        if ((gPrevButtons[cont] & button) != button) {
-            D_800F68B0[cont] = 1;
-            return 1;
-        }
-        count = (s64)*p + 1;
-        *p = count;
-        if (count >= 0x2711) {
-            clampFake = 0x2710;
-            count = clampFake;
-            *p = count;
-        }
-        if (count >= 0x15) {
-            return count;
-        }
-    } else {
-        return 0;
-    }
-    return 0;
-}
-
-void func_80055FA4(void) {
-    D_800F68C0 = - 1;
-    D_800F68C4[0] = -1;
-}
-
-void func_80055FBC(s32 arg0) {
-    D_800F68C0 = D_800F68C4[0];
-    D_800F68C4[0] = arg0;
-}
-
-// NON_MATCHING: score 845 
-#ifdef NON_MATCHING
-s32 func_80055FD8(s32 button) {
-    s32 var_v1;
-    s32 new_var;
-    if (D_800F68C4[0] & button) {
-        var_v1 = D_800F68C0 & button;
-        if (button != var_v1) {
-            D_800F68C4[1] = 1;
-            return 1;
-        }
-        var_v1 = D_800F68C4[1] + 1;
-        if (var_v1 >= 0x2711) {
-            var_v1 = 0x2710;
-        }
-        new_var = var_v1;
-        if (new_var >= 0xB) {
-            D_800F68C4[1] = new_var;
-            return new_var;
-        }
-        D_800F68C4[1] = new_var;
-    } else {
-        return 0;
-    }
-    return 0;
-}
-#else
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80055FD8.s")
-#endif
-
 s32 func_80056064(s32 arg0) {
     s32 *new_var2;
     s32 new_var;
     s32 result;
 
     new_var2 = &new_var;
-    if (D_800F68C4[0] & arg0) {
+    if (D_800F68C4 & arg0) {
         result = D_800F68CC + 1;
     } else {
         result = 0;

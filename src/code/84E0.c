@@ -3110,60 +3110,37 @@ void ActorInit_FireSpitter(Actor* fireSpitter) {
     fireSpitter->userVariables[0] = fireSpitter->unk_124 - 1;
 }
 
-#ifdef NON_MATCHING
-void ActorTick_FireSpitter(Actor *fireSpitter)
-{
-  f32 dx;
-  f32 dz;
-  f32 distSq;
-  f32 fireX;
-  f32 fireY;
-  f32 fireZ;
-  s32 period;
-  s32 timer;
-  dx = fireSpitter->pos.x - gCurrentActivePlayerPointer->pos.x;
-  dz = fireSpitter->pos.z - gCurrentActivePlayerPointer->pos.z;
-  distSq = (dx * dx) + (dz * dz);
-  if (((distSq < fireSpitter->unk_164) && (fireSpitter->unk_168 < distSq)) && (gActorCount < fireSpitter->unk_130))
-  {
-    period = fireSpitter->unk_124;
-    timer = fireSpitter->userVariables[0];
-    if (timer >= (period - 0xA))
-    {
-      fireSpitter->unk_F0 = (timer - period) + 0xA;
+void ActorTick_FireSpitter(Actor *fireSpitter) {
+    f32 dx;
+    f32 dz;
+    f32 distSq;
+    f32 fireX;
+    f32 fireY;
+    f32 fireZ;
+
+    dx = fireSpitter->pos.x - gCurrentActivePlayerPointer->pos.x;
+    dz = fireSpitter->pos.z - gCurrentActivePlayerPointer->pos.z;
+    distSq = (dx * dx) + (dz * dz);
+    if ((distSq < fireSpitter->unk_164) && (fireSpitter->unk_168 < distSq) && (gActorCount < fireSpitter->unk_130)) {
+        if (fireSpitter->userVariables[0] >= (fireSpitter->unk_124 - 10)) {
+            fireSpitter->unk_F0 = (fireSpitter->userVariables[0] - fireSpitter->unk_124) + 10;
+        } else if (fireSpitter->unk_F0 != 0) {
+            fireSpitter->unk_F0--;
+        }
+        if (++fireSpitter->userVariables[0] == fireSpitter->userVariables[6]) {  
+            fireSpitter->userVariables[0] = 0;
+            if (Actor_Init(0x3B, fireSpitter->pos.x, fireSpitter->pos.y, fireSpitter->pos.z, 0.0f, fireSpitter->unk_F4, fireSpitter->unk_F8, fireSpitter->unk_FC, fireSpitter->unk_100, fireSpitter->unk_104, fireSpitter->unk_108, fireSpitter->position._f32.x, fireSpitter->position._f32.y, fireSpitter->unk_15C, fireSpitter->unk_160, 0.0f, 0.0f, 0.0f, 0.0f, 0, fireSpitter->unk_128, fireSpitter->unk_12C, 0) != -1) {
+                fireX = fireSpitter->pos.x;
+                fireY = fireSpitter->pos.y;
+                fireZ = fireSpitter->pos.z;
+                Effect_TypeC_Init(fireX, fireY, fireZ, fireX, fireY + 300.0f, fireZ, 0xFF, 0xFF, 0xFF, 0xFF, 0x10, 0x4A);
+                PlaySoundEffect(0xAB, &fireSpitter->pos.x, &fireSpitter->pos.y, &fireSpitter->pos.z, 0, 0);
+            }
+        }
     }
-    else
-      if (fireSpitter->unk_F0 != 0)
-    {
-      fireSpitter->unk_F0--;
-      if (1)
-      {
-        timer = fireSpitter->userVariables[0];
-        period = fireSpitter->unk_124;
-      }
-    }
-    fireSpitter->userVariables[0] = timer + 1;
-    if (1)
-    {
-    }
-    if (fireSpitter->userVariables[0] == period)
-    {
-      fireSpitter->userVariables[0] = 0;
-      if (Actor_Init(0x3B, fireSpitter->pos.x, fireSpitter->pos.y, fireSpitter->pos.z, 0.0f, fireSpitter->unk_F4, fireSpitter->unk_F8, fireSpitter->unk_FC, fireSpitter->unk_100, fireSpitter->unk_104, fireSpitter->unk_108, fireSpitter->position._f32.x, fireSpitter->position._f32.y, fireSpitter->unk_15C, fireSpitter->unk_160, 0.0f, 0.0f, 0.0f, 0.0f, 0, fireSpitter->unk_128, fireSpitter->unk_12C, 0) != (-1))
-      {
-        fireX = fireSpitter->pos.x;
-        fireY = fireSpitter->pos.y;
-        fireZ = fireSpitter->pos.z;
-        Effect_TypeC_Init(fireX, fireY, fireZ, fireX, fireY + 300.0f, fireZ, 0xFFU, 0xFFU, 0xFFU, 0xFFU, 0x10, 0x4A);
-        PlaySoundEffect(0xAB, &fireSpitter->pos.x, &fireSpitter->pos.y, &fireSpitter->pos.z, 0, 0);
-      }
-    }
-  }
-  fireSpitter->unk_90 = CalcAngleBetween2DPoints(fireSpitter->pos.x, fireSpitter->pos.z, gCurrentActivePlayerPointer->pos.x, gCurrentActivePlayerPointer->pos.z);
+    fireSpitter->unk_90 = CalcAngleBetween2DPoints(fireSpitter->pos.x, fireSpitter->pos.z, gCurrentActivePlayerPointer->pos.x, gCurrentActivePlayerPointer->pos.z);
 }
-#else
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_FireSpitter.s")
-#endif
+
 
 void ActorInit_Candles(Actor* candles) {
     ActorInit_FireSpitter(candles);
@@ -4563,55 +4540,36 @@ void ActorInit_BattleModeFireSpawner(Actor* bmFireSpawner) {
 
 }
 
-#ifdef NON_MATCHING
-// diff score: 5 words: 3 spill-slot offset constants (uopt reserved-slot ordering, not source-reachable) + 2-word lui/addiu schedule pair
-void ActorTick_BattleModeFireSpawner(Actor *fireSpawner)
-{
-  s32 i = 0;
-  Actor *actor;
-  f32 deg;
-  f32 rad;
-  f32 cosResult;
-  f32 sinResult;
-  s32 slotUsed[62];
-  for (; i < fireSpawner->unk_124; i++)
-  {
-    if (1)
-    {
-      slotUsed[i] = 0;
-    }
-  }
+void ActorTick_BattleModeFireSpawner(Actor *fireSpawner) {
+    s32 i;
+    s32 slotUsed[ACTORS_MAX];
+    f32 deg;
+    f32 rad;
+    f32 cosResult;
+    f32 sinResult;
 
-  actor = gActors;
-  i = ((deg * 2.0f) * 3.141592653589793) / 360.0;
-  do
-  {
-    if (actor->actorID == 0x56)
-    {
-      slotUsed[actor->unk_124] = 1;
-      rad = i;
+    for (i = 0; i < fireSpawner->unk_124; i++) {
+        slotUsed[i] = 0;
     }
- do { } while (0);
-    actor++;
-  }
-  while (((u32) actor) < ((u32) Poles));
-  for (i = 0; i < fireSpawner->unk_124; i++)
-  {
-    if (slotUsed[i] == 0)
-    {
-      deg = i;
-      deg = (360.0f * deg) / fireSpawner->unk_124;
-      rad = ((deg * 2) * 3.141592653589793) / 360.0;
-      cosResult = __cosf(rad);
-      sinResult = __sinf(rad);
-      Actor_Init(0x56, (fireSpawner->position._f32.x * cosResult) + fireSpawner->pos.x, fireSpawner->pos.y, fireSpawner->pos.z - (fireSpawner->position._f32.x * sinResult), deg + 180.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, i, 0, 0, 0);
-    }
-  }
 
+    for (i = 0; i < ARRAY_COUNT(gActors); i++) {
+        if (gActors[i].actorID == BATTLE_MODE_FIRE) {
+            slotUsed[gActors[i].unk_124] = 1;
+        }
+    }
+
+    for (i = 0; i < fireSpawner->unk_124; i++) {
+        if (slotUsed[i] == 0) {
+            deg = i;
+            deg = (360.0f * deg) / fireSpawner->unk_124;
+            rad = DEGREES_TO_RADIANS_2PI(deg);
+            cosResult = __cosf(rad);
+            sinResult = __sinf(rad);
+            Actor_Init(BATTLE_MODE_FIRE, (fireSpawner->position._f32.x * cosResult) + fireSpawner->pos.x, fireSpawner->pos.y, fireSpawner->pos.z - (fireSpawner->position._f32.x * sinResult), deg + 180.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, i, 0, 0, 0);
+        }
+    }
 }
-#else
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_BattleModeFireSpawner.s")
-#endif
+
 
 
 void ActorInit_BattleModeFire(Actor* bmFire) {

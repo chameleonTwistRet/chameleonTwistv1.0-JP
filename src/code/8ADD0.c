@@ -1762,8 +1762,6 @@ void func_800B7860(FieldObject* arg0, RoomObject* arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B78F8.s")
 
-// NON_MATCHING: score 20
-#ifdef NON_MATCHING
 void func_800B80A8(FieldObject* arg0) {
     FieldObject* obj = &D_80236980[arg0->unk_04];
     f32 ax = obj->unk_8C;
@@ -1773,14 +1771,15 @@ void func_800B80A8(FieldObject* arg0) {
     f32 by = obj->unk_9C;
     f32 bz = obj->unk_A0;
     Vec3f dir;
-    f32 dot;
+    Vec3f* facing;
 
     dir.x = bx - ax;
     dir.y = by - ay;
     dir.z = bz - az;
     Vec3f_Normalize(&dir);
-    dot = dir.x * *(f32*)&arg0->unk_5C + dir.y * arg0->unk60 + arg0->unk64 * dir.z;
-    if (dot < 0.0f) {
+    facing = (Vec3f*)&arg0->unk_5C;
+    ax = facing->z * dir.z + (dir.x * facing->x + dir.y * facing->y);
+    if (ax < 0.0f) {
         obj->unk_AC = 2;
         obj->unk_B0 = obj->unk_B0 + 1;
         if (obj->unk_C0 < obj->unk_B0) {
@@ -1789,9 +1788,7 @@ void func_800B80A8(FieldObject* arg0) {
         PlaySoundEffect(0x95, 0, 0, 0, 0, 0x10);
     }
 }
-#else
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B80A8.s")
-#endif
+
 
 void func_800B81B4(FieldObject* arg0, RoomObject* arg1) {
     func_800B5D68(arg0, 1);
@@ -2154,21 +2151,20 @@ void func_800BA92C(FieldObject* arg0, RoomObject* arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BAC44.s")
 
-// score 40
-#ifdef NON_MATCHING
 s32 func_800BAFA4(PlayerActor* player, FieldObject* arg1) {
+    UnkType3* recs = (UnkType3*)arg1->unk_AC;
     s32 n = arg1->unk_B4;
     f32 cellW = (arg1->unk_CC.max.x - arg1->unk_CC.min.x) / (f32)n;
     f32 cellD = (arg1->unk_CC.max.z - arg1->unk_CC.min.z) / (f32)n;
     s32* grid = (s32*)arg1->unk_B8;
-    UnkType3* recs = (UnkType3*)arg1->unk_AC;
-    s32 idx = ((s32)((player->pos.x - arg1->unk_CC.min.x) / cellW) * n) + (s32)((player->pos.z - arg1->unk_CC.min.z) / cellD);
+    s32 ix = (s32)((player->pos.x - arg1->unk_CC.min.x) / cellW);
+    s32 iz = (s32)((player->pos.z - arg1->unk_CC.min.z) / cellD);
+    s32 idx = ix * n + iz;
+    s32 ret = recs[grid[idx]].unk_14;
 
-    return recs[grid[idx]].unk_14;
+    return ret;
 }
-#else
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BAFA4.s")
-#endif
+
 
 void func_800BB038(FieldObject* arg0, RoomObject* arg1) {
     SetColliderFlag(arg0, 0, 0);
@@ -2247,8 +2243,6 @@ void func_800BB254(FieldObject* arg0, RoomObject* arg1) {
     arg0->unk_C0 = arg1->unk4C;
 }
 
-// NON_MATCHING: 8 instructions differ by register number only
-#ifdef NON_MATCHING
 s32 func_800BB354(FieldObject* arg0) {
     s32 i;
     Actor* actor;
@@ -2267,27 +2261,26 @@ s32 func_800BB354(FieldObject* arg0) {
     ret = 0;
 
     for (i = 0, actor = gActors; i < MAX_ACTORS; i++, actor++) {
-        if (id == actor->actorID) {
-            pos.x = actor->pos.x;
-            pos.y = actor->pos.y;
-            pos.z = actor->pos.z;
-            if (IsPointInRect(pos, &rect) != 0) {
-                if (actor->actorState == 3) {
-                    DespawnButterflyGroup(actor);
-                    func_800314E4(actor);
-                    ret = 2;
-                } else {
-                    ret = 1;
-                }
-                break;
+        if (id != actor->actorID) {
+            continue;
+        }
+        pos.x = actor->pos.x;
+        pos.y = actor->pos.y;
+        pos.z = actor->pos.z;
+        if (IsPointInRect(pos, &rect) != 0) {
+            if (actor->actorState == 3) {
+                DespawnButterflyGroup(actor);
+                func_800314E4(actor);
+                ret = 2;
+            } else {
+                ret = 1;
             }
+            break;
         }
     }
     return ret;
 }
-#else
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BB354.s")
-#endif
+
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BB4A8.s")
 
@@ -2604,19 +2597,16 @@ void func_800BE0D4(FieldObject* arg0, RoomObject* arg1) {
     arg0->unk_90 = arg1->unk2C;
 }
 
-// score 70
-#ifdef NON_MATCHING
 void func_800BE1C4(FieldObject* arg0) {
     FieldObject* parent = arg0->unk_4C;
     f32 amp = (parent->unkC8 * 0.942477796076937935) / 40.0;
-    f32 v = __sinf(arg0->unk_8C + parent->unkA8) * (arg0->unk_90 * amp);
+    f32 phase = parent->unkA8;
+    f32 v = __sinf(arg0->unk_8C + phase) * (arg0->unk_90 * amp);
 
     arg0->unk64 = v - arg0->unk60;
     arg0->unk60 = v;
 }
-#else
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800BE1C4.s")
-#endif
+
 
 void func_800BE24C(void) {
     s32 temp = (s32)gCurrentStageData->spriteLib;
