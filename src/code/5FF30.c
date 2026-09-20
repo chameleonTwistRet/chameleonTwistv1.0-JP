@@ -2426,89 +2426,78 @@ void Audio_StartThread(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80086C7C.s")
 
-unk0* Sfx_FindByHandle(s32 handle) {
-    unk0* lookahead;
-    unk0* record;
+SfxRecord* Sfx_GetRecordByHandle(s32 handle) {
+    SfxRecord* record = gSfxRecordHead->next;
 
-    record = D_801FFB84->unk50;
-    lookahead = record->unk50;
-
-    while (lookahead != NULL) {
-        if (handle == record->unk40) {
+    while (record->next != NULL) {
+        if (handle == record->handle) {
             return record;
         }
-        record = lookahead;
-        lookahead = lookahead->unk50;
+        record = record->next;
     }
     return NULL;
 }
 
-s16 func_80086EFC(s32 arg0) {
-    unk0* next;
-    unk0* prev;
+s16 Sfx_GetRecordSlotByHandle(s32 handle) {
+    SfxRecord* record = gSfxRecordHead->next;
 
-    prev = D_801FFB84->unk50;
-    next = prev->unk50;
-
-    while (next != NULL) {
-        if (arg0 == prev->unk40) {
-            return prev->unk42;
+    while (record->next != NULL) {
+        if (handle == record->handle) {
+            return record->slot;
         }
-        prev = next;
-        next = next->unk50;
+        record = record->next;
     }
-    return 0;
+    return NULL;
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80086F44.s")
 
-void func_80087088(unk0* arg0) {
-    unk0* temp_v0;
-    unk0* temp_v1_2;
-    s16 temp = arg0->unk22;
+void func_80087088(SfxRecord* arg0) {
+    SfxRecord* temp_v0;
+    SfxRecord* temp_v1_2;
+    s16 temp = arg0->soundID;
 
     if (D_801FFB88[temp].unk0 > 0) {
         D_801FFB88[temp].unk0--;
     }
-    if (arg0->unk20 != 0) {
-        temp_v0 = arg0->unk54;
+    if (arg0->flags != 0) {
+        temp_v0 = arg0->prev;
         if (temp_v0 != NULL) {
-            temp_v1_2 = arg0->unk50;
+            temp_v1_2 = arg0->next;
             if (temp_v1_2 != NULL) {
-                if ((arg0->unk48 >= 0) && (arg0->unk48 < 0x10)) {
-                    DummiedPrintf("音鳴ってます (%d)\n", arg0->unk48);
+                if ((arg0->sndId >= 0) && (arg0->sndId < 0x10)) {
+                    DummiedPrintf("音鳴ってます (%d)\n", arg0->sndId);
                     return;
                 }
-                temp_v1_2->unk54 = temp_v0;
-                temp_v0->unk50 = temp_v1_2;
-                arg0->unk48 = -1;
-                arg0->unk20 = 0;
-                arg0->unk0 = 0;
-                arg0->unk4 = 0;
-                arg0->unk8 = 0;
+                temp_v1_2->prev = temp_v0;
+                temp_v0->next = temp_v1_2;
+                arg0->sndId = -1;
+                arg0->flags = 0;
+                arg0->posXPtr = 0;
+                arg0->posYPtr = 0;
+                arg0->posZPtr = 0;
             }
         }
     }
 }
 
-s32 func_80087130(unk0* arg0, unk0* arg1) {
-    unk0* temp_v1 = arg1->unk50;
+s32 SfxList_InsertAfter(SfxRecord* newNode, SfxRecord* after) {
+    SfxRecord* node = after->next;
 
-    arg1->unk50 = arg0;
-    arg0->unk54 = arg1;
-    arg0->unk50 = temp_v1;
-    temp_v1->unk54 = arg0;
+    after->next = newNode;
+    newNode->prev = after;
+    newNode->next = node;
+    node->prev = newNode;
     return 0;
 }
 
-//theres a lot of things wrong with this one
-s32 func_8008714C(unk0* arg0, s32 arg1) {
-    unk0* temp_v0 = arg0->unk50;
-    unk0* temp_a1 = arg0->unk54;
+s32 SfxList_Move(SfxRecord* node, s32 arg1) {
+    SfxRecord* temp_v0 = node->next;
+    SfxRecord* temp_a1 = node->prev;
 
-    temp_a1->unk50 = arg0->unk50;
-    temp_v0->unk54 = temp_a1;
-    func_80087130(arg0, temp_a1);
+    temp_a1->next = node->next;
+    temp_v0->prev = temp_a1;
+    SfxList_InsertAfter(node, temp_a1);
     return 0;
 }
 
@@ -2524,8 +2513,8 @@ s32 func_8008714C(unk0* arg0, s32 arg1) {
  * @param arg0 sound record
  * @return 1 if the sound was stopped on the player, 0 otherwise
  */
-s32 Sfx_Stop(unk0* arg0) {
-    ALSndId sound = arg0->unk48;
+s32 Sfx_Stop(SfxRecord* arg0) {
+    ALSndId sound = arg0->sndId;
     s16 state;
 
     arg0->unk4C = 0;
@@ -2536,19 +2525,19 @@ s32 Sfx_Stop(unk0* arg0) {
     alSndpSetSound(gSFXPlayerP, sound);
     alSndpSetVol(gSFXPlayerP, 0);
     state = alSndpGetState(gSFXPlayerP);
-    arg0->unk3E = state;
+    arg0->playerState = state;
     if (state == 1) {
         alSndpStop(gSFXPlayerP);
-        arg0->unk20 |= 0x80;
+        arg0->flags |= 0x80;
     } else {
-        arg0->unk20 |= 0x80;
+        arg0->flags |= 0x80;
     }
-    arg0->unk20 &= ~4;
+    arg0->flags &= ~4;
     return 1;
 }
 
 s32 Sfx_StopByHandle(s32 handle) {
-    unk0* record = Sfx_FindByHandle(handle);
+    SfxRecord* record = Sfx_GetRecordByHandle(handle);
 
     if (record == NULL) {
         return -1;  // Not Found
@@ -2568,26 +2557,26 @@ s32 Sfx_StopByHandle(s32 handle) {
  * @param arg0 sound record
  * @return 1 if the sound was handled on the player, 0 if the sound id was out of range
  */
-s32 func_80087390(unk0* arg0) {
+s32 func_80087390(SfxRecord* arg0) {
     s32 sound;
     s16 state;
 
-    if (!(arg0->unk20 & 4)) {
+    if (!(arg0->flags & 4)) {
         return Sfx_Stop(arg0);
     }
-    sound = arg0->unk48;
+    sound = arg0->sndId;
     if ((sound >= 0x10) || (sound < 0)) {
         return 0;
     }
     alSndpSetSound(gSFXPlayerP, sound);
     alSndpSetVol(gSFXPlayerP, 0);
     state = alSndpGetState(gSFXPlayerP);
-    arg0->unk3E = state;
+    arg0->playerState = state;
     if (state == 1) {
         alSndpStop(gSFXPlayerP);
-        arg0->unk20 |= 0x80;
+        arg0->flags |= 0x80;
     } else {
-        arg0->unk20 |= 0x80;
+        arg0->flags |= 0x80;
     }
     return 1;
 }
@@ -2595,26 +2584,26 @@ s32 func_80087390(unk0* arg0) {
 /**
  * @brief Unlink a sound record from the active list and re-insert it by priority
  *
- * The record is spliced out of the list (like func_8008714C), then its old predecessor
+ * The record is spliced out of the list (like SfxList_Move), then its old predecessor
  * is walked backwards while the neighbour is not flagged 0x10 and has a lower unk4C
- * (priority) than the record being moved. func_80087130 links the record back in after
+ * (priority) than the record being moved. SfxList_InsertAfter links the record back in after
  * whichever node the walk stopped on.
  *
  * @param arg0 sound record
  * @return always 0
  */
-s32 func_8008746C(unk0* arg0) {
-    unk0* temp_v0;
-    unk0* temp_v1;
-    unk0* var_a1;
+s32 func_8008746C(SfxRecord* arg0) {
+    SfxRecord* temp_v0;
+    SfxRecord* temp_v1;
+    SfxRecord* var_a1;
 
-    temp_v1 = arg0->unk50;
-    var_a1 = arg0->unk54;
-    var_a1->unk50 = temp_v1;
-    temp_v1->unk54 = var_a1;
-    while (var_a1->unk54 != NULL) {
-        temp_v0 = var_a1->unk54;
-        if (var_a1->unk20 & 0x10) {
+    temp_v1 = arg0->next;
+    var_a1 = arg0->prev;
+    var_a1->next = temp_v1;
+    temp_v1->prev = var_a1;
+    while (var_a1->prev != NULL) {
+        temp_v0 = var_a1->prev;
+        if (var_a1->flags & 0x10) {
             break;
         }
         if (var_a1->unk4C >= arg0->unk4C) {
@@ -2625,7 +2614,7 @@ s32 func_8008746C(unk0* arg0) {
     // fake: required to match
     if (temp_v1 != NULL) {
     }
-    func_80087130(arg0, var_a1);
+    SfxList_InsertAfter(arg0, var_a1);
     return 0;
 }
 
@@ -2645,22 +2634,20 @@ s32 func_80087824(s32 arg0, s32 arg1) {
 }
 
 s16 func_8008788C(s32 arg0, f32 arg1) {
-    s32 var_v0 = 0;
-    unk0* var_v1 = D_801FFB84->unk50;
-    unk0* var_a1 = var_v1->unk50;
+    s32 found = 0;
+    SfxRecord* record = gSfxRecordHead->next;
 
-    while (var_a1 != NULL) {
-        if (arg0 == var_v1->unk22) {
-            var_v0 = 1;
-            if (arg1 <= var_v1->unk18) {
-                return var_v1->unk40;
+    while (record->next != NULL) {
+        if (arg0 == record->soundID) {
+            found = 1;
+            if (arg1 <= record->distSq) {
+                return record->handle;
             }
         }
-        var_v1 = var_a1;
-        var_a1 = var_a1->unk50;
+        record = record->next;
     }
 
-    if (var_v0 == 0) {
+    if (found == 0) {
         return -1;
     }
 
@@ -2728,12 +2715,12 @@ void func_8008800C(s32 arg0) {
  * @return always 0
  */
 s32 func_80088198(void) {
-    unk0* rec = D_801FFB84;
+    SfxRecord* rec = gSfxRecordHead;
     s32 i;
 
-    while (rec->unk50 != 0) {
+    while (rec->next != 0) {
         Sfx_Stop(rec);
-        rec = rec->unk50;
+        rec = rec->next;
     }
     func_8008800C(0);
     for (i = 0; i < D_80200A90->unk_0E; i++) {
@@ -2744,8 +2731,8 @@ s32 func_80088198(void) {
 }
 
 s32 func_80088248(s32 arg0) {
-    unk0* temp_v0 = Sfx_FindByHandle(arg0);
-    unk0* sp18 = temp_v0;
+    SfxRecord* temp_v0 = Sfx_GetRecordByHandle(arg0);
+    SfxRecord* sp18 = temp_v0;
     s16 temp_a1;
     s16 state;
 
@@ -2753,14 +2740,14 @@ s32 func_80088248(s32 arg0) {
         return -1;
     }
 
-    temp_a1 = temp_v0->unk48;
+    temp_a1 = temp_v0->sndId;
     if ((temp_a1 >= 0x10) || (temp_a1 < 0)) {
         return 0;
     }
 
     alSndpSetSound(gSFXPlayerP, temp_a1);
     state = alSndpGetState(gSFXPlayerP);
-    sp18->unk3E = state;
+    sp18->playerState = state;
     if (state == 1) {
         return 1;
     }
@@ -2768,7 +2755,7 @@ s32 func_80088248(s32 arg0) {
 }
 
 s32 func_800882D0(s32 arg0, s32 arg1) {
-    unk0 *temp_v0 = Sfx_FindByHandle(arg0);
+    SfxRecord *temp_v0 = Sfx_GetRecordByHandle(arg0);
     s32 v1;
 
     if (temp_v0 == 0) {
@@ -2786,13 +2773,13 @@ s32 func_800882D0(s32 arg0, s32 arg1) {
         arg1 = v1;
     }
 
-    if (arg1 == temp_v0->unk3C) {
+    if (arg1 == temp_v0->priority) {
         return 0;
     } else {
-        temp_v0->unk3C = arg1;
-        if ((temp_v0->unk48 >= 0) && (temp_v0->unk48 < 0x10)) {
-            alSndpSetSound(gSFXPlayerP, temp_v0->unk48);
-            alSndpSetPriority(gSFXPlayerP, temp_v0->unk48, arg1);
+        temp_v0->priority = arg1;
+        if ((temp_v0->sndId >= 0) && (temp_v0->sndId < 0x10)) {
+            alSndpSetSound(gSFXPlayerP, temp_v0->sndId);
+            alSndpSetPriority(gSFXPlayerP, temp_v0->sndId, arg1);
         }
     }
 
@@ -2800,7 +2787,7 @@ s32 func_800882D0(s32 arg0, s32 arg1) {
 }
 
 s32 func_80088388(s32 arg0, f32 arg1) {
-    unk0* temp_v0 = Sfx_FindByHandle(arg0);
+    SfxRecord* temp_v0 = Sfx_GetRecordByHandle(arg0);
     f64 v1;
 
     if (temp_v0 == 0) {
@@ -2819,12 +2806,12 @@ s32 func_80088388(s32 arg0, f32 arg1) {
         arg1 = v1;
     }
 
-    if (arg1 == temp_v0->unk38) {
+    if (arg1 == temp_v0->pitch) {
         return 0;
     } else {
-        temp_v0->unk38 = arg1;
-        if ((temp_v0->unk48 >= 0) && (temp_v0->unk48 < 0x10)) {
-            alSndpSetSound(gSFXPlayerP, temp_v0->unk48);
+        temp_v0->pitch = arg1;
+        if ((temp_v0->sndId >= 0) && (temp_v0->sndId < 0x10)) {
+            alSndpSetSound(gSFXPlayerP, temp_v0->sndId);
             alSndpSetPitch(gSFXPlayerP, arg1);
         }
     }
@@ -2834,7 +2821,7 @@ s32 func_80088388(s32 arg0, f32 arg1) {
 
 s32 func_80088474(s32 arg0, s32 arg1) {
     s32 v1;
-    unk0 *temp_v0 = Sfx_FindByHandle(arg0);
+    SfxRecord *temp_v0 = Sfx_GetRecordByHandle(arg0);
 
     if (temp_v0 == 0) {
         return -1;
@@ -2851,12 +2838,12 @@ s32 func_80088474(s32 arg0, s32 arg1) {
         arg1 = v1;
     }
 
-    if (arg1 == temp_v0->unk32) {
+    if (arg1 == temp_v0->vol) {
         return 0;
     } else {
-        temp_v0->unk32 = arg1;
-        if ((temp_v0->unk48 >= 0) && (temp_v0->unk48 < 0x10)) {
-            alSndpSetSound(gSFXPlayerP, temp_v0->unk48);
+        temp_v0->vol = arg1;
+        if ((temp_v0->sndId >= 0) && (temp_v0->sndId < 0x10)) {
+            alSndpSetSound(gSFXPlayerP, temp_v0->sndId);
             alSndpSetVol(gSFXPlayerP, arg1);
         }
     }
@@ -2867,7 +2854,7 @@ s32 func_80088474(s32 arg0, s32 arg1) {
 s32 func_80088528(s32 arg0, s32 arg1) {
     s32 v1;
     s16 sndId;
-    unk0 *temp_v0 = Sfx_FindByHandle(arg0);
+    SfxRecord *temp_v0 = Sfx_GetRecordByHandle(arg0);
 
     if (temp_v0 == 0) {
         return -1;
@@ -2888,12 +2875,12 @@ s32 func_80088528(s32 arg0, s32 arg1) {
         arg1 = 0x40;
     }
 
-    if (arg1 == temp_v0->unk24) {
+    if (arg1 == temp_v0->pan) {
         return 0;
     } else {
-        temp_v0->unk24 = arg1;
-        if ((temp_v0->unk48 >= 0) && (temp_v0->unk48 < 0x10)) {
-            sndId = temp_v0->unk48;
+        temp_v0->pan = arg1;
+        if ((temp_v0->sndId >= 0) && (temp_v0->sndId < 0x10)) {
+            sndId = temp_v0->sndId;
             alSndpSetSound(gSFXPlayerP, sndId);
             alSndpSetPan(gSFXPlayerP, arg1);
         }
@@ -2904,7 +2891,7 @@ s32 func_80088528(s32 arg0, s32 arg1) {
 
 s32 func_800885EC(s32 arg0, s32 arg1) {
     s32 v1;
-    unk0 *temp_v0 = Sfx_FindByHandle(arg0);
+    SfxRecord *temp_v0 = Sfx_GetRecordByHandle(arg0);
 
     if (temp_v0 == 0) {
         return -1;
@@ -2921,12 +2908,12 @@ s32 func_800885EC(s32 arg0, s32 arg1) {
         arg1 = v1;
     }
 
-    if (arg1 == temp_v0->unk3D) {
+    if (arg1 == temp_v0->fxMix) {
         return 0;
     } else {
-        temp_v0->unk3D = arg1;
-        if ((temp_v0->unk48 >= 0) && (temp_v0->unk48 < 0x10)) {
-            alSndpSetSound(gSFXPlayerP, temp_v0->unk48);
+        temp_v0->fxMix = arg1;
+        if ((temp_v0->sndId >= 0) && (temp_v0->sndId < 0x10)) {
+            alSndpSetSound(gSFXPlayerP, temp_v0->sndId);
             alSndpSetFXMix(gSFXPlayerP, arg1);
         }
     }
@@ -2935,25 +2922,25 @@ s32 func_800885EC(s32 arg0, s32 arg1) {
 }
 
 s32 Sfx_DetachPosition(s32 handle) {
-    unk0* record = Sfx_FindByHandle(handle);
+    SfxRecord* record = Sfx_GetRecordByHandle(handle);
 
     if (record == NULL) {
         return -1;
     }
 
-    record->unk20 |= SFX_FLAG_POS_DETACHED;
+    record->flags |= SFX_FLAG_POS_DETACHED;
     return 0;
 }
 
 s32 func_800886D8(s32 arg0, s16 arg1, s16 arg2) {
-    unk0* temp_v0 = Sfx_FindByHandle(arg0);
+    SfxRecord* temp_v0 = Sfx_GetRecordByHandle(arg0);
 
     if (temp_v0 == NULL) {
         return -1;
     }
 
-    temp_v0->unk30 = arg1;
-    temp_v0->unk2C = (f32)(arg1 - temp_v0->unk32) / arg2;
+    temp_v0->volTarget = arg1;
+    temp_v0->volStep = (f32)(arg1 - temp_v0->vol) / arg2;
     return 0;
 }
 

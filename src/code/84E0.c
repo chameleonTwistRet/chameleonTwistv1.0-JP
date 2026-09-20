@@ -8,7 +8,7 @@ extern s16 D_801003DC[];
 
 s32 D_801748A0;
 s32 D_801748A4;
-unk0 D_801748A8; //is size 0x58, struct is a guess
+s32 D_801748A8[0x16]; // matches but still unsure
 unk80174900 D_80174900;
 s32 gLevelFlowState; //0 intro (camera locked), 1 playing, 3 no-damage cutscene, 4 player died, 5 stage clear hold
 //0 == menuing?

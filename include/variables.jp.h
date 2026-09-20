@@ -20,7 +20,7 @@ extern PlayerActor* gCurrentActivePlayerPointer;
 extern Tongue* gTongueOnePointer;
 extern ContMain gContMain[MAXCONTROLLERS];
 extern s16 gTotalCarrots;
-extern unk0* D_801FFB84;
+extern SfxRecord* gSfxRecordHead;
 extern s32 gEffectListCount;
 extern Effect* gEffectListHead;
 extern Effect gEffectList;

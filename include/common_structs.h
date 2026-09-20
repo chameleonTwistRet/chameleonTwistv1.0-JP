@@ -994,38 +994,37 @@ typedef struct unkStruct {
 /* 0xC8 */ char unk_C8[0x40];
 } unkStruct; //sizeof 0x108
 
-// this struct seems to manage sound effects
-typedef struct unk0 {
-/* 0x00 */ s32 unk0;
-/* 0x04 */ s32 unk4;
-/* 0x08 */ s32 unk8;
-/* 0x0C */ f32 unkC;
-/* 0x10 */ f32 unk10;
-/* 0x14 */ f32 unk14;
-/* 0x18 */ f32 unk18;
+typedef struct SfxRecord {
+/* 0x00 */ s32 posXPtr;
+/* 0x04 */ s32 posYPtr;
+/* 0x08 */ s32 posZPtr;
+/* 0x0C */ f32 posX;
+/* 0x10 */ f32 posY;
+/* 0x14 */ f32 posZ;
+/* 0x18 */ f32 distSq;
 /* 0x1C */ f32 unk1C;
-/* 0x20 */ s16 unk20;
-/* 0x22 */ s16 unk22;
-/* 0x24 */ u8 unk24;
-/* 0x25 */ char pad25[7];                       /* maybe part of unk24[8]? */
-/* 0x2C */ f32 unk2C;
-/* 0x30 */ s16 unk30;
-/* 0x32 */ s16 unk32;
-/* 0x34 */ s16 unk34;
+/* 0x20 */ s16 flags;
+/* 0x22 */ s16 soundID;
+/* 0x24 */ u8 pan;
+/* 0x25 */ char pad25[7];                       /* maybe part of pan[8]? */
+/* 0x2C */ f32 volStep;
+/* 0x30 */ s16 volTarget;
+/* 0x32 */ s16 vol;
+/* 0x34 */ s16 volInitial;
 /* 0x36 */ char pad36[2];
-/* 0x38 */ f32 unk38;
-/* 0x3C */ u8 unk3C;
-/* 0x3D */ u8 unk3D;
-/* 0x3E */ s16 unk3E;                           /* inferred */
-/* 0x40 */ s16 unk40;
-/* 0x42 */ s16 unk42;
+/* 0x38 */ f32 pitch;
+/* 0x3C */ u8 priority;
+/* 0x3D */ u8 fxMix;
+/* 0x3E */ s16 playerState;
+/* 0x40 */ s16 handle;
+/* 0x42 */ s16 slot;
 /* 0x44 */ s8 unk44;
 /* 0x45 */ char pad45[3];                       /* maybe part of unk44[4]? */
-/* 0x48 */ s32 unk48;
+/* 0x48 */ s32 sndId;
 /* 0x4C */ s32 unk4C;
-/* 0x50 */ struct unk0* unk50;
-/* 0x54 */ struct unk0* unk54;
-} unk0;                                             /* size = 0x58 */
+/* 0x50 */ struct SfxRecord* next;
+/* 0x54 */ struct SfxRecord* prev;
+} SfxRecord;                                             /* size = 0x58 */
 
 typedef struct Pole {
 /* 0x00 */ s32 mode;
