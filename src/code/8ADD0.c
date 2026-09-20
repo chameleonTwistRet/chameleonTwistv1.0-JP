@@ -1785,7 +1785,7 @@ void func_800B80A8(FieldObject* arg0) {
         if (obj->unk_C0 < obj->unk_B0) {
             obj->unk_B0 = obj->unk_C0;
         }
-        PlaySoundEffect(0x95, 0, 0, 0, 0, 0x10);
+        Sfx_Play(0x95, 0, 0, 0, 0, 0x10);
     }
 }
 
@@ -2048,7 +2048,7 @@ void UpdateDamageHazard(FieldObject* arg0) {
     arg0->unk_30.y = newy;
     arg0->unk_30.z = newz;
     if (sfx >= 0) {
-        func_80088698(PlaySoundEffect(sfx, &arg0->sfxPos.x, &arg0->sfxPos.y, &arg0->sfxPos.z, 0, 0));
+        Sfx_DetachPosition(Sfx_Play(sfx, &arg0->sfxPos.x, &arg0->sfxPos.y, &arg0->sfxPos.z, 0, 0));
     }
 }
 #else

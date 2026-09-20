@@ -42,6 +42,8 @@ typedef struct unk801FC9BC {
     char unk_02[0x0E];
 } unk801FC9BC;
 
+#define SFX_FLAG_POS_DETACHED 0x20
+
 typedef struct unk801FFB88 {
     s16 unk0;
     s32 unk4;
@@ -140,12 +142,12 @@ void Audio_RomCopy(u32 devAddr, void* vAddr, u32 size);
 void func_80085C90(u32 arg0, void* arg1, s32 arg2);
 void func_80085D14(void);
 void Audio_StartThread(void);
-unk0* func_80086EB4(s32 arg0);
+unk0* Sfx_FindByHandle(s32 handle);
 s16 func_80086EFC(s32 arg0);
 void func_80087088(unk0* arg0);
 s32 func_80087130(unk0* arg0, unk0* arg1);
 s32 func_8008714C(unk0* arg0, s32 arg1);
-s32 StopSoundEffect(s32 arg0);
+s32 Sfx_StopByHandle(s32 arg0);
 s32 func_8008746C(unk0* arg0);
 s16 func_8008788C(s32 arg0, f32 arg1);
 void func_80087E60(f32* arg0, f32* arg1, f32* arg2, f32* arg3);
@@ -153,7 +155,7 @@ void func_80087FA4(u32 arg0);
 void func_8008800C(s32 arg0);
 s32 func_80088248(s32 arg0);
 s32 func_800885EC(s32 arg0, s32 arg1);
-s32 func_80088698(s32 arg0);
+s32 Sfx_DetachPosition(s32 handle);
 s32 func_800886D8(s32 arg0, s16 arg1, s16 arg2);
 s32 func_8008873C(f32* arg0, f32* arg1, f32* arg2);
 void func_80088B7C(u8*, u8*, u8*, u8*, u8*, u8*);

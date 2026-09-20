@@ -1891,7 +1891,7 @@ void ActorInit_RedAnt(Actor* redAnt) {
     redAnt->unknownPositionThings[1].unk_00 = 0.0f;
     redAnt->unknownPositionThings[2].unk_10 = hitboxTemp;
     redAnt->unknownPositionThings[1].unk_10 = hitboxTemp;
-    PlaySoundEffect(SFX_5D_unkSnd, &redAnt->pos.x, &redAnt->pos.y, &redAnt->pos.z, 0, 0);
+    Sfx_Play(SFX_5D_unkSnd, &redAnt->pos.x, &redAnt->pos.y, &redAnt->pos.z, 0, 0);
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_RedAnt.s")
@@ -1965,9 +1965,9 @@ void ActorTick_GreenAnt(Actor* greenAnt) {
     case 1:
         phase = greenAnt->userVariables[1] % 8;
         if (phase == 0) {
-            PlaySoundEffect(0x66, &greenAnt->pos.x, &greenAnt->pos.y, &greenAnt->pos.z, 1, 0);
+            Sfx_Play(0x66, &greenAnt->pos.x, &greenAnt->pos.y, &greenAnt->pos.z, 1, 0);
         } else if (phase == 4) {
-            PlaySoundEffect(0x65, &greenAnt->pos.x, &greenAnt->pos.y, &greenAnt->pos.z, 1, 0);
+            Sfx_Play(0x65, &greenAnt->pos.x, &greenAnt->pos.y, &greenAnt->pos.z, 1, 0);
         }
         if (greenAnt->userVariables[2] == ++greenAnt->userVariables[1]) {
             greenAnt->userVariables[0] = 0;
@@ -2955,13 +2955,13 @@ void ActorTick_BowlingPin(Actor* bowlingPin) {
         if (bowlingPin->userVariables[0] == 0) {
             switch (Rand() % 3) {
             case 0:
-                PlaySoundEffect(SFX_BE_unkSnd, NULL, NULL, NULL, 0, 0x10);
+                Sfx_Play(SFX_BE_unkSnd, NULL, NULL, NULL, 0, 0x10);
                 break;
             case 1:
-                PlaySoundEffect(SFX_BF_unkSnd, NULL, NULL, NULL, 0, 0x10);
+                Sfx_Play(SFX_BF_unkSnd, NULL, NULL, NULL, 0, 0x10);
                 break;
             default:
-                PlaySoundEffect(SFX_C0_unkSnd, NULL, NULL, NULL, 0, 0x10);
+                Sfx_Play(SFX_C0_unkSnd, NULL, NULL, NULL, 0, 0x10);
                 break;
             }
         } else if (bowlingPin->userVariables[0] >= 0x5B) {
@@ -3134,7 +3134,7 @@ void ActorTick_FireSpitter(Actor *fireSpitter) {
                 fireY = fireSpitter->pos.y;
                 fireZ = fireSpitter->pos.z;
                 Effect_TypeC_Init(fireX, fireY, fireZ, fireX, fireY + 300.0f, fireZ, 0xFF, 0xFF, 0xFF, 0xFF, 0x10, 0x4A);
-                PlaySoundEffect(0xAB, &fireSpitter->pos.x, &fireSpitter->pos.y, &fireSpitter->pos.z, 0, 0);
+                Sfx_Play(0xAB, &fireSpitter->pos.x, &fireSpitter->pos.y, &fireSpitter->pos.z, 0, 0);
             }
         }
     }
@@ -3361,7 +3361,7 @@ void ActorTick_GhostBoss(Actor *boss)
     func_800312B0(boss->actorIndex);
     if ((boss->globalTimer % 20U) == 0)
     {
-      PlaySoundEffect(0xBA, 0, 0, 0, 0, 0x10);
+      Sfx_Play(0xBA, 0, 0, 0, 0, 0x10);
     }
   }
   switch (boss->userVariables[2])
@@ -3373,7 +3373,7 @@ void ActorTick_GhostBoss(Actor *boss)
       if (boss->globalTimer == 0x96)
       {
         boss->userVariables[2] = 1;
-        PlaySoundEffect(0xB2, 0, 0, 0, 0, 0x10);
+        Sfx_Play(0xB2, 0, 0, 0, 0, 0x10);
       }
     }
       break;
@@ -3383,12 +3383,12 @@ void ActorTick_GhostBoss(Actor *boss)
       boss->pos.z += -4.0f;
       if (boss->unk_F0 == 0x3C)
     {
-      PlaySoundEffect(0xB2, 0, 0, 0, 0, 0x10);
+      Sfx_Play(0xB2, 0, 0, 0, 0, 0x10);
     }
     else
       if (boss->unk_F0 == 0xA0)
     {
-      PlaySoundEffect(0xB3, 0, 0, 0, 0, 0x10);
+      Sfx_Play(0xB3, 0, 0, 0, 0, 0x10);
     }
       if ((++boss->unk_F0) == 0xB3)
     {
@@ -3414,7 +3414,7 @@ void ActorTick_GhostBoss(Actor *boss)
       func_80044C30(boss, 2);
       func_800448C0(boss);
       boss->userVariables[2] = 3;
-      PlaySoundEffect(0xB4, &boss->pos.x, &boss->pos.y, &boss->pos.z, 0, 0);
+      Sfx_Play(0xB4, &boss->pos.x, &boss->pos.y, &boss->pos.z, 0, 0);
       break;
 
     case 3:
@@ -3434,7 +3434,7 @@ void ActorTick_GhostBoss(Actor *boss)
       boss->userVariables[2] = 4;
       boss->userVariables[4] += 1;
       boss->unk_134[7] = (((f32) (Random(0, 0xEA60) % 100)) < (boss->unk_164 * 100.0f)) ? (2.0f * 1.0f) : (1.0f * 1.0f);
-      PlaySoundEffect(0xB4, &boss->pos.x, &boss->pos.y, &boss->pos.z, 0, 0);
+      Sfx_Play(0xB4, &boss->pos.x, &boss->pos.y, &boss->pos.z, 0, 0);
     }
       break;
 
@@ -3467,7 +3467,7 @@ void ActorTick_GhostBoss(Actor *boss)
             boss->userVariables[2] = 5;
             boss->userVariables[4] = reps + 1;
             boss->unk_134[7] = (((f32) (Random(0, 0xFF38) % 256)) < (boss->unk_164 * 256.0f)) ? (2.0f * 1.0f) : (1.0f * 1.0f);
-            PlaySoundEffect(0xB4, &boss->pos.x, &boss->pos.y, &boss->pos.z, 0, 0);
+            Sfx_Play(0xB4, &boss->pos.x, &boss->pos.y, &boss->pos.z, 0, 0);
           }
           else
           {
@@ -3475,7 +3475,7 @@ void ActorTick_GhostBoss(Actor *boss)
             boss->userVariables[4] = reps + 1;
             new_var = Random(0, 0xFF38);
             boss->unk_134[7] = (((f32) (new_var % 256)) < (boss->unk_164 * 256.0f)) ? (2.0f * 1.0f) : (1.0f * 1.0f);
-            PlaySoundEffect(0xB4, &boss->pos.x, &boss->pos.y, &boss->pos.z, 0, 0);
+            Sfx_Play(0xB4, &boss->pos.x, &boss->pos.y, &boss->pos.z, 0, 0);
           }
         }
       }
@@ -3509,7 +3509,7 @@ void ActorTick_GhostBoss(Actor *boss)
       func_800448C0(boss);
       if ((gTimer % 24) == 0)
       {
-        PlaySoundEffect(0xB4, &boss->pos.x, &boss->pos.y, &boss->pos.z, 0, 0);
+        Sfx_Play(0xB4, &boss->pos.x, &boss->pos.y, &boss->pos.z, 0, 0);
       }
       break;
     }
@@ -3548,13 +3548,13 @@ void ActorTick_GhostBoss(Actor *boss)
         if (((dx * dx) + (dz * dz)) < boss->position._f32.x)
       {
         boss->userVariables[2] = 3;
-        PlaySoundEffect(0xB4, &boss->pos.x, &boss->pos.y, &boss->pos.z, 0, 0);
+        Sfx_Play(0xB4, &boss->pos.x, &boss->pos.y, &boss->pos.z, 0, 0);
       }
     }
     else
       if ((gTimer % 24) == 0)
     {
-      PlaySoundEffect(0xB4, &boss->pos.x, &boss->pos.y, &boss->pos.z, 0, (!(boss->globalTimer & 3)) * 0);
+      Sfx_Play(0xB4, &boss->pos.x, &boss->pos.y, &boss->pos.z, 0, (!(boss->globalTimer & 3)) * 0);
     }
       break;
 
@@ -3625,7 +3625,7 @@ void ActorTick_GhostBoss(Actor *boss)
         boss->userVariables[2] = 0xA;
         boss->userVariables[4] = 0;
         boss->unk_134[0] = 0.0f;
-        PlaySoundEffect(0xB5, &boss->pos.x, &boss->pos.y, &boss->pos.z, 0, 0);
+        Sfx_Play(0xB5, &boss->pos.x, &boss->pos.y, &boss->pos.z, 0, 0);
       }
       break;
     }
@@ -3641,7 +3641,7 @@ void ActorTick_GhostBoss(Actor *boss)
       else
         if (t == 8)
       {
-        PlaySoundEffect(0xB5, &boss->pos.x, &boss->pos.y, &boss->pos.z, 0, 0);
+        Sfx_Play(0xB5, &boss->pos.x, &boss->pos.y, &boss->pos.z, 0, 0);
       }
       acc = boss->unk_134[0] + delta;
       if (acc > 360.0f)
@@ -3708,7 +3708,7 @@ void ActorTick_GhostBoss(Actor *boss)
       else
       {
         boss->userVariables[2] = 3;
-        PlaySoundEffect(0xB4, &boss->pos.x, &boss->pos.y, &boss->pos.z, 0, 0);
+        Sfx_Play(0xB4, &boss->pos.x, &boss->pos.y, &boss->pos.z, 0, 0);
         boss->userVariables[4] = 0;
         boss->userVariables[boss->unk_120] = -1;
         func_80044C30(boss, boss->unk_120);
@@ -3754,14 +3754,14 @@ void ActorTick_GhostBoss(Actor *boss)
       boss->userVariables[0] = 0;
       boss->unk_EC = 1;
       boss->unk_F0 = 0;
-      PlaySoundEffect(0xB2, 0, 0, 0, 0, 0x10);
+      Sfx_Play(0xB2, 0, 0, 0, 0, 0x10);
     }
       break;
 
     case 14:
       if (boss->unk_F0 == 0x42)
     {
-      PlaySoundEffect(0xB2, 0, 0, 0, 0, 0x10);
+      Sfx_Play(0xB2, 0, 0, 0, 0, 0x10);
       if (((!boss->unk_124) && (!boss->unk_124)) && (!boss->unk_124))
       {
       }
@@ -3769,7 +3769,7 @@ void ActorTick_GhostBoss(Actor *boss)
     else
       if (boss->unk_F0 == 0xB4)
     {
-      PlaySoundEffect(0xB3, 0, 0, 0, 0, 0x10);
+      Sfx_Play(0xB3, 0, 0, 0, 0, 0x10);
     }
       if ((++boss->unk_F0) == 0xC7)
     {
@@ -3865,7 +3865,7 @@ void ActorTick_GhostBoss(Actor *boss)
       c = __cosf((f32) ((((f64) (boss->unk_90 * 2)) * 3.141592653589793) / 360.0));
       if (Actor_Init(0x40, (c * 280.0f) + boss->pos.x, boss->pos.y + 100.0f, boss->pos.z - (__sinf((f32) ((((f64) (boss->unk_90 * 2)) * 3.141592653589793) / 360.0)) * 280.0f), boss->unk_90, boss->unk_F4, boss->unk_F8, boss->unk_FC, boss->unk_100, boss->unk_104, boss->unk_108, 80.0f, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0) != (-1))
       {
-        PlaySoundEffect(0xBB, 0, 0, 0, 0, 0x10);
+        Sfx_Play(0xBB, 0, 0, 0, 0, 0x10);
         boss->userVariables[4] -= 1;
       }
     }
@@ -3884,7 +3884,7 @@ void ActorTick_GhostBoss(Actor *boss)
       c = __cosf((f32) ((((f64) (boss->unk_90 * 2)) * 3.141592653589793) / 360.0));
       if (Actor_Init(0x40, (c * 280.0f) + boss->pos.x, boss->pos.y + 100.0f, boss->pos.z - (__sinf((f32) ((((f64) (boss->unk_90 * 2)) * 3.141592653589793) / 360.0)) * 280.0f), boss->unk_90, boss->unk_F4, boss->unk_F8, boss->unk_FC, boss->unk_100, boss->unk_104, boss->unk_108, 80.0f, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0) != (-1))
       {
-        PlaySoundEffect(0xBB, 0, 0, 0, 0, 0x10);
+        Sfx_Play(0xBB, 0, 0, 0, 0, 0x10);
       }
     }
       boss->unk_90 += 0.8035714f;
@@ -4133,7 +4133,7 @@ void ActorTick_Golem(Actor* golem) {
         }
         if (StageFlags[golem->unk_124] != 0) {
             golem->userVariables[0] = 1;
-            PlaySoundEffect(SFX_46_unkSnd, &golem->pos.x, &golem->pos.y, &golem->pos.z, 0, 0);
+            Sfx_Play(SFX_46_unkSnd, &golem->pos.x, &golem->pos.y, &golem->pos.z, 0, 0);
         }
         break;
     case 1:
@@ -4155,9 +4155,9 @@ void ActorTick_Golem(Actor* golem) {
             golem->unk_94 = 0.0f;
         }
         if (golem->unk_F0 == 0x18) {
-            PlaySoundEffect(SFX_44_unkSnd, &golem->pos.x, &golem->pos.y, &golem->pos.z, 0, 0);
+            Sfx_Play(SFX_44_unkSnd, &golem->pos.x, &golem->pos.y, &golem->pos.z, 0, 0);
         } else if (golem->unk_F0 == 0x2A) {
-            PlaySoundEffect(SFX_45_unkSnd, &golem->pos.x, &golem->pos.y, &golem->pos.z, 0, 0);
+            Sfx_Play(SFX_45_unkSnd, &golem->pos.x, &golem->pos.y, &golem->pos.z, 0, 0);
         }
         break;
     }
@@ -4324,7 +4324,7 @@ void ActorTick_LizardKongButterfly(Actor* butterfly) {
         butterfly->vel.z = rec->unk_408[idx] - butterfly->pos.z;
         butterfly->unk_90 = rec->unk_608[idx];
     }
-    PlaySoundEffect(SFX_42_unkSnd, &butterfly->pos.x, &butterfly->pos.y, &butterfly->pos.z, 1, 0);
+    Sfx_Play(SFX_42_unkSnd, &butterfly->pos.x, &butterfly->pos.y, &butterfly->pos.z, 1, 0);
     butterfly->unk_F0++;
 }
 
@@ -4832,7 +4832,7 @@ void UpdateLevelFlow(void) {
     }
     if ((gTimer >= 5) && (gLevelFlowState == 0)) {
         gLevelFlowState = 1;
-        PlaySoundEffect(0xDF, NULL, NULL, NULL, 0, 0x10);
+        Sfx_Play(0xDF, NULL, NULL, NULL, 0, 0x10);
     }
     if ((gLevelFlowState == 0) || (gLevelFlowState == 2) || (gLevelFlowState == 3)) {
         gCameraInputDisabled = 1;

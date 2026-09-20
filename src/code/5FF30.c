@@ -324,7 +324,7 @@ s32 D_800FF648 = 1;
 u8 D_800FF64C = 0;
 u8 D_800FF650 = 0;
 s32 D_800FF654[] = {0x00000008, 0x000032C8, 0x00000000, 0x00000140, 0x00000000, 0xFFFFD99A, 0x00000E10, 0x000007D0, 0x00001388, 0x00000000, 0x00000140, 0x000001E0, 0x00002666, 0xFFFFD99A, 0x00002B84, 0x000007D0, 0x00001388, 0x00005000, 0x00000668, 0x00001400, 0x00004000, 0xFFFFC000, 0x000011EB, 0x0000094C, 0x00001388, 0x00000000, 0x00000708, 0x00001018, 0x00002000, 0xFFFFE000, 0x00000000, 0x0000094C, 0x00001388, 0x00000000, 0x00001950, 0x00002C10, 0x00004000, 0xFFFFC000, 0x000011EB, 0x0000094C, 0x00001388, 0x00006000, 0x000019F0, 0x00002530, 0x00002000, 0xFFFFE000, 0x00000000, 0x0000094C, 0x00001388, 0x00000000, 0x00002530, 0x000029E0, 0x00002000, 0xFFFFE000, 0x00000000, 0x0000094C, 0x00001388, 0x00000000, 0x00000000, 0x00002EB8, 0x00004650, 0x00000000, 0x00000000, 0x0000094C, 0x00001388, 0x00007000};
-s32 D_800FF75C = 1;
+s32 gSfxNextHandle = 1;
 s32 D_800FF760 = 0x40;
 
 
@@ -2426,21 +2426,21 @@ void Audio_StartThread(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80086C7C.s")
 
-unk0* func_80086EB4(s32 arg0) {
-    unk0* next;
-    unk0* prev;
+unk0* Sfx_FindByHandle(s32 handle) {
+    unk0* lookahead;
+    unk0* record;
 
-    prev = D_801FFB84->unk50;
-    next = prev->unk50;
+    record = D_801FFB84->unk50;
+    lookahead = record->unk50;
 
-    while (next != NULL) {
-        if (arg0 == prev->unk40) {
-            return prev;
+    while (lookahead != NULL) {
+        if (handle == record->unk40) {
+            return record;
         }
-        prev = next;
-        next = next->unk50;
+        record = lookahead;
+        lookahead = lookahead->unk50;
     }
-    return 0;
+    return NULL;
 }
 
 s16 func_80086EFC(s32 arg0) {
@@ -2524,7 +2524,7 @@ s32 func_8008714C(unk0* arg0, s32 arg1) {
  * @param arg0 sound record
  * @return 1 if the sound was stopped on the player, 0 otherwise
  */
-s32 func_80087290(unk0* arg0) {
+s32 Sfx_Stop(unk0* arg0) {
     ALSndId sound = arg0->unk48;
     s16 state;
 
@@ -2547,21 +2547,21 @@ s32 func_80087290(unk0* arg0) {
     return 1;
 }
 
-s32 StopSoundEffect(s32 arg0) {
-    unk0* temp_v0 = func_80086EB4(arg0);
+s32 Sfx_StopByHandle(s32 handle) {
+    unk0* record = Sfx_FindByHandle(handle);
 
-    if (temp_v0 == NULL) {
-        return -1;
+    if (record == NULL) {
+        return -1;  // Not Found
     }
 
-    return func_80087290(temp_v0);
+    return Sfx_Stop(record);
 }
 
 /**
  * @brief Pause the sound effect a sound record is playing
  *
  * Records that are not currently starting up (0x20 bit 4 clear) are stopped outright by
- * func_80087290. Otherwise the sound is selected on the SFX player, muted and stopped
+ * Sfx_Stop. Otherwise the sound is selected on the SFX player, muted and stopped
  * (if it was still playing), and the record is flagged as stopped (0x80) while the
  * starting flag is left alone.
  *
@@ -2573,7 +2573,7 @@ s32 func_80087390(unk0* arg0) {
     s16 state;
 
     if (!(arg0->unk20 & 4)) {
-        return func_80087290(arg0);
+        return Sfx_Stop(arg0);
     }
     sound = arg0->unk48;
     if ((sound >= 0x10) || (sound < 0)) {
@@ -2668,7 +2668,7 @@ s16 func_8008788C(s32 arg0, f32 arg1) {
 }
 
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/AddSoundEffect.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/Sfx_Add.s")
 
 void func_80087E60(f32* arg0, f32* arg1, f32* arg2, f32* arg3) {
     *arg0 = gPlayerActors[D_800FF8E8].pos.x;
@@ -2677,7 +2677,7 @@ void func_80087E60(f32* arg0, f32* arg1, f32* arg2, f32* arg3) {
     *arg3 = gCameraP->f1.y;
 }
 
-s32 PlaySoundEffect(s32 id, f32* posX, f32* posY, f32* posZ, s32 arg4, s32 flag) {
+s32 Sfx_Play(s32 id, f32* posX, f32* posY, f32* posZ, s32 arg4, s32 flag) {
     if (gSFXMute > 0) {
         return -1;
     }
@@ -2695,7 +2695,7 @@ s32 PlaySoundEffect(s32 id, f32* posX, f32* posY, f32* posZ, s32 arg4, s32 flag)
     if (D_80168DA0 >= 2) {
         flag |= 0x10;
     }
-    return AddSoundEffect(id, posX, posY, posZ, arg4, flag);
+    return Sfx_Add(id, posX, posY, posZ, arg4, flag);
 }
 
 void func_80087FA4(u32 arg0) {
@@ -2732,7 +2732,7 @@ s32 func_80088198(void) {
     s32 i;
 
     while (rec->unk50 != 0) {
-        func_80087290(rec);
+        Sfx_Stop(rec);
         rec = rec->unk50;
     }
     func_8008800C(0);
@@ -2744,7 +2744,7 @@ s32 func_80088198(void) {
 }
 
 s32 func_80088248(s32 arg0) {
-    unk0* temp_v0 = func_80086EB4(arg0);
+    unk0* temp_v0 = Sfx_FindByHandle(arg0);
     unk0* sp18 = temp_v0;
     s16 temp_a1;
     s16 state;
@@ -2768,7 +2768,7 @@ s32 func_80088248(s32 arg0) {
 }
 
 s32 func_800882D0(s32 arg0, s32 arg1) {
-    unk0 *temp_v0 = func_80086EB4(arg0);
+    unk0 *temp_v0 = Sfx_FindByHandle(arg0);
     s32 v1;
 
     if (temp_v0 == 0) {
@@ -2800,7 +2800,7 @@ s32 func_800882D0(s32 arg0, s32 arg1) {
 }
 
 s32 func_80088388(s32 arg0, f32 arg1) {
-    unk0* temp_v0 = func_80086EB4(arg0);
+    unk0* temp_v0 = Sfx_FindByHandle(arg0);
     f64 v1;
 
     if (temp_v0 == 0) {
@@ -2834,7 +2834,7 @@ s32 func_80088388(s32 arg0, f32 arg1) {
 
 s32 func_80088474(s32 arg0, s32 arg1) {
     s32 v1;
-    unk0 *temp_v0 = func_80086EB4(arg0);
+    unk0 *temp_v0 = Sfx_FindByHandle(arg0);
 
     if (temp_v0 == 0) {
         return -1;
@@ -2867,7 +2867,7 @@ s32 func_80088474(s32 arg0, s32 arg1) {
 s32 func_80088528(s32 arg0, s32 arg1) {
     s32 v1;
     s16 sndId;
-    unk0 *temp_v0 = func_80086EB4(arg0);
+    unk0 *temp_v0 = Sfx_FindByHandle(arg0);
 
     if (temp_v0 == 0) {
         return -1;
@@ -2904,7 +2904,7 @@ s32 func_80088528(s32 arg0, s32 arg1) {
 
 s32 func_800885EC(s32 arg0, s32 arg1) {
     s32 v1;
-    unk0 *temp_v0 = func_80086EB4(arg0);
+    unk0 *temp_v0 = Sfx_FindByHandle(arg0);
 
     if (temp_v0 == 0) {
         return -1;
@@ -2934,19 +2934,19 @@ s32 func_800885EC(s32 arg0, s32 arg1) {
     return 0;
 }
 
-s32 func_80088698(s32 arg0) {
-    unk0* temp_v0 = func_80086EB4(arg0);
+s32 Sfx_DetachPosition(s32 handle) {
+    unk0* record = Sfx_FindByHandle(handle);
 
-    if (temp_v0 == 0) {
+    if (record == NULL) {
         return -1;
     }
 
-    temp_v0->unk20 |= 0x20;
+    record->unk20 |= SFX_FLAG_POS_DETACHED;
     return 0;
 }
 
 s32 func_800886D8(s32 arg0, s16 arg1, s16 arg2) {
-    unk0* temp_v0 = func_80086EB4(arg0);
+    unk0* temp_v0 = Sfx_FindByHandle(arg0);
 
     if (temp_v0 == NULL) {
         return -1;
@@ -2966,7 +2966,7 @@ s32 func_8008873C(f32* arg0, f32* arg1, f32* arg2) {
         return 0;
     }
     DummiedPrintf("TALK = %d\n", D_80200A98[D_800FF64C]);
-    return AddSoundEffect(D_80200A98[D_800FF64C], arg0, arg1, arg2, 0, 2);
+    return Sfx_Add(D_80200A98[D_800FF64C], arg0, arg1, arg2, 0, 2);
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800887F0.s")
@@ -6002,7 +6002,7 @@ CTTask* func_80094FC8(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, s16 arg5
     task->unk8C = 0.0f;
     task->unk90 = 1.0f / arg5;
     if (arg0 >= 0.0f && task->pos.x <= 319.0f) {
-        PlaySoundEffect(0x74, NULL, NULL, NULL, 8, 0x10);
+        Sfx_Play(0x74, NULL, NULL, NULL, 8, 0x10);
     }
     return task;
 }

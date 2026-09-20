@@ -7194,7 +7194,7 @@ void Effect_TypeAG_Update(Effect* effect, Gfx** pGfxPos) {
         func_80088474(effect->spriteID, (1.0f - effect->lifeTime) * effect->duration);
         break;
     case 2:
-        StopSoundEffect(effect->spriteID);
+        Sfx_StopByHandle(effect->spriteID);
         Effect_Free(effect);
         break;
     }

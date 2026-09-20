@@ -1,8 +1,8 @@
-#include "B39A0.h"
+#include "fieldSfx.h"
 
 void PlaySfxPositionalPeriodic(FieldObject* fieldObject, s32 sfxID, s32 interval) {
     if (((fieldObject->unk_00 + gFieldFramesElapsed) % interval) == 0) {
-        func_80088698(PLAY_SFX_AT(sfxID, fieldObject->sfxPos, 0, 0));
+        Sfx_DetachPosition(PLAY_SFX_AT(sfxID, fieldObject->sfxPos, 0, 0));
     }
 }
 
@@ -14,17 +14,17 @@ void PlaySfxPeriodic(FieldObject* fieldObject, s32 sfxID, s32 interval) {
 
 void PlaySfxOnContactAndPeriodic(FieldObject* fieldObject, s32 contactSfxID, s32 periodicSfxID, s32 interval) {
     if ((fieldObject->unk_B4 == 0) && (fieldObject->unk_BC == 1) && (fieldObject->unk_C0 == 0)) {
-        func_80088698(PLAY_SFX_AT(contactSfxID, fieldObject->sfxPos, 0, 0));
+        Sfx_DetachPosition(PLAY_SFX_AT(contactSfxID, fieldObject->sfxPos, 0, 0));
         return;
     }
     if ((fieldObject->unk_BC == 1) && (((fieldObject->unk_00 + gFieldFramesElapsed) % interval) == 0) && (periodicSfxID >= 0)) {
-        func_80088698(PLAY_SFX_AT(periodicSfxID, fieldObject->sfxPos, 0, 0));
+        Sfx_DetachPosition(PLAY_SFX_AT(periodicSfxID, fieldObject->sfxPos, 0, 0));
     }
 }
 
 void PlaySfxPositionalOnFlag(FieldObject* fieldObject, s32 sfxID) {
     if (fieldObject->unk_B8 == 1) {
-        func_80088698(PLAY_SFX_AT(sfxID, fieldObject->sfxPos, 0, 0));
+        Sfx_DetachPosition(PLAY_SFX_AT(sfxID, fieldObject->sfxPos, 0, 0));
     }
 }
 
@@ -36,7 +36,7 @@ void PlaySfxPeriodicGlobal(FieldObject* fieldObject, s32 sfxID, s32 interval) {
 
 void PlaySfxPositionalPeriodicOnSurface(FieldObject* fieldObject, s32 sfxID, s32 interval) {
     if ((fieldObject->unk_00 == gPlayerActors[0].surface) && ((fieldObject->unk_00 + gFieldFramesElapsed) % interval) == 0) {
-        func_80088698(PLAY_SFX_AT(sfxID, fieldObject->sfxPos, 0, 0));
+        Sfx_DetachPosition(PLAY_SFX_AT(sfxID, fieldObject->sfxPos, 0, 0));
     }
 }
 
@@ -91,7 +91,7 @@ void PlaySfxInZoneDiagonal(FieldObject* fieldObject, s32 sfxID, s32 interval, f3
             sfxPos.z = (centerX * 1.0f) + (clampedV - clampedU) * SQROOT_2_DIV_2;
             sfxPos.y = gPlayerActors[zero].pos.y;
             sfxPos.x = (centerZ * 1.0f) + (clampedU + clampedV) * SQROOT_2_DIV_2;
-            func_80088698(PlaySoundEffect(sfxID, &sfxPos.z, &sfxPos.y, &sfxPos.x, 8, 0));
+            Sfx_DetachPosition(Sfx_Play(sfxID, &sfxPos.z, &sfxPos.y, &sfxPos.x, 8, 0));
         }
     }
 }
@@ -148,19 +148,20 @@ void PlaySfxInZoneAxisAligned(FieldObject* fieldObject, s32 sfxID, s32 interval,
             sfxPos.y = gPlayerActors[zero].pos.y;
             //sfxPos.y = D_80168DB0;
             sfxPos.x = centerZ + clampedZ;
-            func_80088698(PlaySoundEffect(sfxID, &sfxPos.z, &sfxPos.y, &sfxPos.x, 0, 0));
+            Sfx_DetachPosition(Sfx_Play(sfxID, &sfxPos.z, &sfxPos.y, &sfxPos.x, 0, 0));
         }
     }
 }
 
 void PlaySfxOnTrigger(FieldObject* fieldObject, s32 sfxID) {
     if ((func_800B34D0(fieldObject->unk_AC) != 0) && (fieldObject->unk_B0 != 0)) {
-        func_80088698(PLAY_SFX_AT(sfxID, fieldObject->sfxPos,0, 0));
+        Sfx_DetachPosition(PLAY_SFX_AT(sfxID, fieldObject->sfxPos,0, 0));
         fieldObject->unk_B0 = 0;
     }
 }
 
-// these zone wrappers keep their bodies on one line: splitting the lines changes codegen
+/* Wrappers */
+// JungleLand
 void func_800D8D58(FieldObject* arg0) {PlaySfxInZoneDiagonal(arg0, SFX_55_unkSnd, 30, -12800.0f, 19600.0f, 700.0f, 1500.0f, 1000.0f, 2000.0f);}
 
 void func_800D8DBC(FieldObject* arg0) {
@@ -179,12 +180,15 @@ void func_800D8E28(FieldObject* arg0) {
     PlaySfxPeriodic(arg0, SFX_5C_unkSnd, 27);
 }
 
+// unreferenced
 void func_800D8E4C(FieldObject* arg0) {
     PlaySfxPeriodic(arg0, SFX_89_unkSnd, 30);
 }
 
+// DesertCastle + BattleMode
 void func_800D8E70(FieldObject* arg0) {PlaySfxInZoneDiagonal(arg0, SFX_89_unkSnd, 30, 6000.0f, 6000.0f, 600.0f, 1500.0f, 500.0f, 2000.0f);}
 
+// DesertCastle
 void func_800D8ED4(FieldObject* arg0) {PlaySfxInZoneDiagonal(arg0, SFX_89_unkSnd, 30, 2200.0f, 1400.0f, 700.0f, 1000.0f, 500.0f, 2000.0f);}
 
 void func_800D8F3C(FieldObject* arg0) {PlaySfxInZoneDiagonal(arg0, SFX_89_unkSnd, 30, -8500.0f, 24000.0f, 600.0f, 2500.0f, 1000.0f, 1000.0f);}
@@ -195,14 +199,17 @@ void func_800D8FFC(FieldObject* arg0) {PlaySfxInZoneAxisAligned(arg0, SFX_89_unk
 
 void func_800D9058(FieldObject* arg0) {PlaySfxInZoneDiagonal(arg0, SFX_89_unkSnd, 30, 5100.0f, 23600.0f, 3000.0f, 600.0f, 1000.0f, 1000.0f);}
 
+// AntLand, KidsLand
 void func_800D90B8(FieldObject* arg0) {
     PlaySfxOnContactAndPeriodic(arg0, SFX_A0_unkSnd, -1, 30);
 }
 
+// KidsLand
 void func_800D90E0(FieldObject* arg0) {
     PlaySfxPositionalPeriodic(arg0, 0xD7, 30);
 }
 
+// GhostCastle
 void func_800D9104(FieldObject* arg0) {
     PlaySfxPositionalPeriodic(arg0, SFX_AC_unkSnd, 45);
 }
@@ -215,10 +222,12 @@ void func_800D914C(FieldObject* arg0) {
     PlaySfxPeriodic(arg0, 0xB1, 39);
 }
 
+// unreferenced
 void func_800D9170(FieldObject* arg0) {
     PlaySfxPositionalOnFlag(arg0, SFX_C2_unkSnd);
 }
 
+// GhostCastle
 void func_800D9190(FieldObject* arg0) {
     PlaySfxPeriodicGlobal(arg0, 0xAD, 39);
 }
@@ -227,6 +236,7 @@ void func_800D91B4(FieldObject* arg0) {
     PlaySfxPositionalPeriodicOnSurface(arg0, 0xAE, 36);
 }
 
+// BombLand
 void func_800D91D8(FieldObject* arg0) {
     PlaySfxOnTrigger(arg0, SFX_3B_unkSnd);
 }

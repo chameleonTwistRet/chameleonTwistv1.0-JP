@@ -1,5 +1,5 @@
-#ifndef _B39A0_H_
-#define _B39A0_H_
+#ifndef _FIELDSFX_H_
+#define _FIELDSFX_H_
 
 #include "common.h"
 
@@ -12,9 +12,6 @@ void PlaySfxPositionalPeriodicOnSurface(FieldObject* fieldObject, s32 sfxID, s32
 
 /* Ext Variables */
 extern s32 gFieldFramesElapsed;
-extern s32 gFieldFramesElapsed;
-extern s32 gFieldFramesElapsed;
-extern s32 gFieldFramesElapsed;
 
 
-#endif // _B39A0_H_
+#endif // _FIELDSFX_H_

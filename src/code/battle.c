@@ -894,7 +894,7 @@ void Battle_Update(void) {
             if (Battle_Stage) {}
             Battle_Stage = BATTLE_STAGE_READY;
             Battle_Time = 0;
-            PlaySoundEffect(SFX_3E_unkSnd, 0, 0, 0, 0, 0x10);
+            Sfx_Play(SFX_3E_unkSnd, 0, 0, 0, 0, 0x10);
         }
         break;
 
@@ -911,7 +911,7 @@ void Battle_Update(void) {
             gIsGamePaused = PAUSEMODE_NOT_PAUSED;
             Battle_Stage = BATTLE_STAGE_GO;
             Battle_Time = 0;
-            D_8017683C = PlaySoundEffect(SFX_40_unkSnd, 0, 0, 0, 0, 0x10);
+            D_8017683C = Sfx_Play(SFX_40_unkSnd, 0, 0, 0, 0, 0x10);
             PlayBGM(gMultiplayerBGM);
             SetPlayerInputEnabled();
         }
@@ -925,7 +925,7 @@ void Battle_Update(void) {
             if (Battle_Stage) {}
             Battle_Stage = BATTLE_STAGE_GAME;
             Battle_Time = 0;
-            StopSoundEffect(D_8017683C);
+            Sfx_StopByHandle(D_8017683C);
         }
         break;
 

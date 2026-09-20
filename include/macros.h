@@ -53,8 +53,8 @@
 #define SetTextGradient_All(r1,g1,b1,a1) SetTextGradient(r1, g1, b1, a1, r1, g1, b1, a1, r1, g1, b1, a1, r1, g1, b1, a1)
 
 //macros for simplifying the "play sound effect" calls
-#define PLAY_SFX(id,arg4,flag) PlaySoundEffect(id,NULL,NULL,NULL,arg4,flag)
-#define PLAY_SFX_AT(id,pos,arg4,flag) PlaySoundEffect(id,&pos.x,&pos.y,&pos.z,arg4,flag)
+#define PLAY_SFX(id,arg4,flag) Sfx_Play(id,NULL,NULL,NULL,arg4,flag)
+#define PLAY_SFX_AT(id,pos,arg4,flag) Sfx_Play(id,&pos.x,&pos.y,&pos.z,arg4,flag)
 
 #define flabs(A) (((A) < 0.0f) ? (-A) : (A))
 #define RANDOM(min, max)  ((min) + (Rand() % (s32)((max) - (min) + 1)))
