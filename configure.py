@@ -607,6 +607,13 @@ if __name__ == "__main__":
     )
 
     parser.add_argument(
+        "-lm",
+        "--logical",
+        help="Compile LOGICAL_MATCH bodies (understood C that IDO won't reproduce); implied by --nonmatching",
+        action="store_true",
+    )
+
+    parser.add_argument(
         "-crc",
         "--chckrecalc",
         help="Build a checksum-recalculated version of the game",
@@ -627,7 +634,7 @@ if __name__ == "__main__":
     elif args.clean:
         clean()
 
-    needsRecalculation = args.nonmatching or args.shift or args.chckrecalc or args.mod
+    needsRecalculation = args.nonmatching or args.logical or args.shift or args.chckrecalc or args.mod
 
     if needsRecalculation:
         print('checksum will be recalculated when building!')
@@ -643,6 +650,13 @@ if __name__ == "__main__":
     if args.nonmatching:
         print('a nonmatching rom will be built!')
         to = DEFINES + " -DNON_MATCHING"
+        CFLAGS = CFLAGS.replace(DEFINES, to)
+        GAME_COMPILE_CMD = GAME_COMPILE_CMD.replace(DEFINES, to)
+        DEFINES = to
+
+    if args.nonmatching or args.logical:
+        print('LOGICAL_MATCH bodies will be compiled!')
+        to = DEFINES + " -DLOGICAL_MATCH"
         CFLAGS = CFLAGS.replace(DEFINES, to)
         GAME_COMPILE_CMD = GAME_COMPILE_CMD.replace(DEFINES, to)
         DEFINES = to

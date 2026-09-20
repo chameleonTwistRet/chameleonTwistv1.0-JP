@@ -418,8 +418,7 @@ void Debug_TestView(void) {
 s32 sDebugCodeSeqStep = 0;
 s32 D_800F0B40 = 0;
 
-// NON_MATCHING: score 0, but only with 10 fake if (1) {} else {} blocks
-#ifdef NON_MATCHING
+#ifdef LOGICAL_MATCH
 void func_80080C28(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, u8 arg6, u8 arg7, u8 arg8, u8 arg9);
 
 void debugMain(void) {
