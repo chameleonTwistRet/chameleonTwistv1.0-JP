@@ -1108,12 +1108,11 @@ Gfx* func_8002C280(GraphicStruct* arg0, Gfx* gfxPos) {
 Gfx* func_8002C280(GraphicStruct* arg0, Gfx* gfxPos);
 #endif
 
-#ifdef NON_MATCHING
 Gfx* func_8002C4E8(Gfx* gfxPos, s32 arg1, s32 arg2) {
     s32 i;
 
     gSPSegment(gfxPos++, 0x00, 0);
-    gSPSegment(gfxPos++, 0x01, OS_K0_TO_PHYSICAL(_ALIGN((u32)gFrameBuffers - (u32)static0_VRAM_END + (u32)static0_VRAM, 0x10)));
+    gSPSegment(gfxPos++, 0x01, OS_K0_TO_PHYSICAL(_ALIGN((u32)framebuffers_VRAM - (u32)static0_VRAM_END + (u32)static0_VRAM, 0x10)));
 
     for (i = 2; i < 16; i++) {
         if (gLoadedSegments [i].base_address != NULL) {
@@ -1149,10 +1148,7 @@ Gfx* func_8002C4E8(Gfx* gfxPos, s32 arg1, s32 arg2) {
     }
     return gfxPos;
 }
-#else
-#pragma GLOBAL_ASM("asm/nonmatchings/code/1050/func_8002C4E8.s")
-Gfx* func_8002C4E8(Gfx* gfxPos, s32 arg1, s32 arg2);
-#endif
+
 
 Gfx* func_8002C900(GraphicStruct* arg0, s32 arg1) {
     Gfx* gfxPos = arg0->UnkGroup.dlist;

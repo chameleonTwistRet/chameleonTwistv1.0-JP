@@ -73,5 +73,7 @@
 
 #define IS_STAGE_UNLOCKED(stage) TRUE << stage
 
+#define NO_BUTTON 0
+
 
 #endif

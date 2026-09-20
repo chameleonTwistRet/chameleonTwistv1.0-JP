@@ -984,6 +984,7 @@ s32 Rand(void) {
     return rngSeed = y / 4;
 }
 
+// Controller related code below implies sprite.c is wrong name scheme? (but it may be because these are used for debug sprite placing)
 void func_80055C04(void) {
     s32 i;
 
@@ -1047,7 +1048,16 @@ void Controller_ParseJoystick(ContMain* conts) {
 }
 //used for Debug function controls
 //https://decomp.me/scratch/rzD9G
-s32 func_80055E5C(s32 button) {
+/**
+   * @brief Debug hotkey: checks a button on controller 1 while L is held. 
+   * Reads gButtons, which SetPlayerInputDisabled does not clear, 
+   * so it still works while player input is off.
+   *
+   * @param button button mask to check
+   * @return 1 on the frame the button is pressed, 0 for the next 4 frames, then the
+   *         number of frames it has been held (max 10000). 0 if L or the button is not held.
+   */
+s32 Debug_GetButtonRepeatWithL(s32 button) {
     static s32 D_800F68AC = 0;
 
     if ((gButtons[PLAYER_1] & button) && (gButtons[PLAYER_1] & L_TRIG)) {
@@ -1075,10 +1085,10 @@ s32 D_800F68C4 = -1;
 
 //takes button define
 s32 func_80055EEC(s32 arg0) {
-    return func_80055F10(0, arg0);
+    return Controller_GetButtonRepeat(0, arg0);
 }
 
-s32 func_80055F10(s32 cont, s32 button) {
+s32 Controller_GetButtonRepeat(s32 cont, s32 button) {
     s32* p;
     s32 count;
     s64 clampFake;
@@ -7845,7 +7855,7 @@ void func_80072B1C(Effect* effect, Gfx** pGfxPos) {
         for (k = 0; k < 4; k++) {
             if (!gPlayerActors[k].active) {
                 continue;
-            } if (func_80055F10(k, 0x4000) != 1) {
+            } if (Controller_GetButtonRepeat(k, 0x4000) != 1) {
                 continue;
             }
             Effect_TypeAI_Init(0, 16.0f, 10.0f, 0);
@@ -7891,7 +7901,7 @@ void Effect_TypeAO_Update(Effect* effect, Gfx** pGfxPos) {
                 break;
             }
             if (gPlayerActors[i].active && D_80168D78[i] != 1) {
-                if (func_80055F10(i, 0x8000) == 1 || func_80055F10(i, 0x1000) == 1) {
+                if (Controller_GetButtonRepeat(i, 0x8000) == 1 || Controller_GetButtonRepeat(i, 0x1000) == 1) {
                     Effect_TypeAY_Init(&D_800FE404[5], 1.0f, 1.0f, 0, 4, &effect->spriteID, 54.0f, 56.0f, 212.0f, 148.0f);
                 }
                 if (1) {} // required to match
@@ -8080,7 +8090,7 @@ void Effect_TypeAP_Update(Effect* effect, Gfx** pGfxPos) {
     case 3:
         func_800735F4(255.0f, 255.0f, 255.0f, 255.0f);
         for (i = 0; i < 4; i++) {
-            if (gPlayerActors[i].active && func_80055F10(i, 0x9000)) {
+            if (gPlayerActors[i].active && Controller_GetButtonRepeat(i, 0x9000)) {
                 effect->lifeTime = 72.0f;
             }
         }
@@ -8851,24 +8861,24 @@ void Effect_TypeAY_Update(Effect* effect, Gfx** pGfxPos) {
         for (i = 0; i < 4; i++) {
             if (i && i) {} // TODO fake match
             if (gPlayerActors[i].active && D_80168D78[i] == 0) {
-                if ((func_80055F10(i, 0x800) % 8) == 1) {
+                if ((Controller_GetButtonRepeat(i, 0x800) % 8) == 1) {
                     if (effect->spriteID > 0 && data->unk_00[effect->spriteID - 1].unk_0C == 1) {
                         PLAY_SFX(SFX_2A_unkSnd, 0, 0x50);
                         effect->spriteID--;
                     }
                 }
-                if ((func_80055F10(i, 0x400) % 8) == 1) {
+                if ((Controller_GetButtonRepeat(i, 0x400) % 8) == 1) {
                     if (effect->spriteID < data->unk_14 - 1 && data->unk_00[effect->spriteID + 1].unk_0C == 1) {
                         PLAY_SFX(SFX_2A_unkSnd, 0, 0x50);
                         effect->spriteID++;
                     }
                 }
-                if (func_80055F10(i, 0x8000) == 1 || func_80055F10(i, 0x1000) == 1) {
+                if (Controller_GetButtonRepeat(i, 0x8000) == 1 || Controller_GetButtonRepeat(i, 0x1000) == 1) {
                     *data->unk_18 = effect->spriteID;
                     PLAY_SFX(SFX_Select, 0, 0x50);
                     data->unk_10 = 2;
                 }
-                if (func_80055F10(i, 0x4000) == 1) {
+                if (Controller_GetButtonRepeat(i, 0x4000) == 1) {
                     *data->unk_18 = -2;
                     PLAY_SFX(SFX_Decline, 0, 0x50);
                     data->unk_10 = 2;

@@ -112,6 +112,7 @@ extern AnimPointer JungleLand_golemSleepPointers_Animp;
 extern AnimPointer JungleLand_golemAttackPointers_Animp;
 extern AnimPointer JungleLand_fishHeadInitPointers_Animp;
 extern AnimPointer JungleLand_fishTailInitPointers_Animp;
+extern Addr framebuffers_VRAM;
 
 
 #endif // _1050_H_

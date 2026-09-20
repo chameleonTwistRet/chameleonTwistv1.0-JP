@@ -323,16 +323,15 @@ void Battle_PrintPlayerTimer(s32 playerID) {
 void Battle_PrintPlayerTimer(s32 playerID);
 #endif
 
-#ifdef NON_MATCHING
 void Battle_PrintPlayerRank(s32 playerID) {
     f32 go;
-    f32 temp_f2;
+    f32 scale;
     f32 alpha = 1.0f;
-    f32 sp68 = 24.0f;
-    f32 sp64 = 16.0f;
+    f32 width = 24.0f;
+    f32 height = 16.0f;
     f32 deltaX = 0.0f;
     f32 deltaY = 0.0f;
-    s32 temp_t4;
+    s32 blinkTime;
 
     if (Battle_PlayerData[Battle_CornerIndices[playerID]].rank != Battle_PlayerRank[Battle_CornerIndices[playerID]]) {
         Battle_PlayerData[Battle_CornerIndices[playerID]].rank = Battle_PlayerRank[Battle_CornerIndices[playerID]];
@@ -341,11 +340,11 @@ void Battle_PrintPlayerRank(s32 playerID) {
         Battle_PlayerData[Battle_CornerIndices[playerID]].rankTimer += 0.125f;
         if (Battle_PlayerData[Battle_CornerIndices[playerID]].rankTimer <= 1.0f) {
             alpha = Battle_PlayerData[Battle_CornerIndices[playerID]].rankTimer * alpha;
-            go = 1 - alpha;
-            temp_f2 = 1.0f + 2.0f * go;
+            go = 1.0f - alpha;
+            scale = 1.0f + 2.0f * go;
 
-            sp68 = temp_f2 * sp68;
-            sp64 = temp_f2 * sp64;
+            width = scale * 24;
+            height = scale * 16;
 
             deltaX = 24.0f;
             deltaY = 16.0f;
@@ -355,8 +354,8 @@ void Battle_PrintPlayerRank(s32 playerID) {
         }
     }
 
-    temp_t4 = Battle_Time % 64;
-    if (temp_t4 < 2 || temp_t4 >= 6 && temp_t4 < 8) {
+    blinkTime = Battle_Time % 64;
+    if (blinkTime < 2 || blinkTime >= 6 && blinkTime < 8) {
         SetTextGradient_All(255, 255, 255, 255 * alpha);
     } else {
         switch (Battle_PlayerRank[playerID]) {
@@ -376,12 +375,9 @@ void Battle_PrintPlayerRank(s32 playerID) {
     }
     printUISprite(Battle_PlayerData[Battle_CornerIndices[playerID]].rankPos.x - deltaX,
                   Battle_PlayerData[Battle_CornerIndices[playerID]].rankPos.y - deltaY,
-                  0, 0, 1, sp68, sp64, Battle_PlayerRank[playerID], SPRITE_ORDINALS);
+                  0, 0, 1.0f, width, height, Battle_PlayerRank[playerID], SPRITE_ORDINALS);
 }
-#else
-#pragma GLOBAL_ASM("asm/nonmatchings/code/battle/Battle_PrintPlayerRank.s")
-void Battle_PrintPlayerRank(s32 arg0);
-#endif
+
 
 void func_80051F38(void) {
     s32 i;
@@ -844,12 +840,12 @@ void Battle_Update(void) {
         for (i = 0; i < 4; i++) {
             if (gPlayerActors[i].active) {
                 if (!var_v1) {
-                    if (func_80055F10(i, 0x1000) == 1) {
+                    if (Controller_GetButtonRepeat(i, 0x1000) == 1) {
                         gIsGamePaused = PAUSEMODE_PAUSED;
                     }
                 }
                 if (gPlayerActors[i].exists && (D_80168D78[i] == 0)) {
-                    if (func_80055F10(i, 0x1000) == 1) {
+                    if (Controller_GetButtonRepeat(i, 0x1000) == 1) {
                         gIsGamePaused = PAUSEMODE_PAUSED;
                     }
                 }
