@@ -4231,81 +4231,53 @@ s32 func_80047FC0(Actor* arg0, s32 arg1) {
     return temp_v0;
 }
 
-#ifdef NON_MATCHING
-void func_800480EC(Actor *butterfly)
-{
-  unk80170E68 *rec;
-  unk80170E68 *fill;
-  s32 slotIndex;
-  s32 i;
-  s32 *new_var2;
-  s32 spawned[4];
-  s32 *p;
-  s32 result;
-  s32 next;
-  unk80170E68 *new_var;
-  butterfly->userVariables[1] = butterfly->unk_124 / 5;
-  butterfly->userVariables[2] = (butterfly->unk_124 * 2) / 3;
-  if (butterfly->unk_128 == (-1))
-  {
-    rec = D_80170E68;
-    slotIndex = 0;
-    do
-    {
-      if (rec->unk_00 == 0)
-      {
-        rec->unk_00 = 1;
-        rec->unk_04 = 0;
-        butterfly->unk_128 = slotIndex;
-        break;
-      }
-      slotIndex++;
-      rec++;
-    }
-    while (slotIndex != 4);
-    if (slotIndex == 4)
-    {
-      butterfly->actorID = 0;
-      return;
-    }
-    new_var = &D_80170E68[slotIndex];
-    fill = new_var;
-    for (i = 0; i < 128; i++)
-    {
-      fill->unk_08[i] = butterfly->pos.x;
-      fill->unk_208[i] = butterfly->pos.y;
-      fill->unk_408[i] = butterfly->pos.z;
-      fill->unk_608[i] = butterfly->unk_90;
-    }
+// Butterfly chains in JL Boss fight
+void func_800480EC(Actor* butterfly) {
+    s32 i;
+    s32 slotIndex;
+    s32 spawned[4];
+    unk80170E68* rec;
+    unk80170E68* rec2;
+    s32 j;
 
-    i = (butterfly->userVariables[3] = 0);
-    p = spawned;
-    do
-    {
-      next = i - -1;
-      result = func_80047FC0(butterfly, next);
-      *p = result;
-      if (result == (-1))
-      {
-        rec->unk_00 = 0;
-        new_var2 = spawned;
-        butterfly->actorID = 0;
-        for (; new_var2 < p; p++)
-        {
-          gActors[spawned[0]].actorID = 0;
+    butterfly->userVariables[1] = butterfly->unk_124 / 5;
+    butterfly->userVariables[2] = (butterfly->unk_124 * 2) / 3;
+    if (butterfly->unk_128 == -1) {
+        rec = D_80170E68;
+        for (slotIndex = 0; slotIndex < 4; slotIndex++, rec++) {
+            if (rec->unk_00 == 0) {
+                rec->unk_00 = 1;
+                rec->unk_04 = 0;
+                butterfly->unk_128 = slotIndex;
+                break;
+            }
         }
-
-        return;
-      }
-      i = next;
-      p++;
+        if (slotIndex == 4) {
+            butterfly->actorID = 0;
+            return;
+        }
+        rec2 = &D_80170E68[slotIndex];
+        for (i = 0; i < 128; i++) {
+            rec2->unk_08[i] = butterfly->pos.x;
+            rec2->unk_208[i] = butterfly->pos.y;
+            rec2->unk_408[i] = butterfly->pos.z;
+            rec2->unk_608[i] = butterfly->unk_90;
+        }
+        butterfly->userVariables[3] = 0;
+        for (i = 0; i < 4; i++) {
+            spawned[i] = func_80047FC0(butterfly, i + 1);
+            if (spawned[i] == -1) {
+                rec->unk_00 = 0;
+                butterfly->actorID = 0;
+                //@bug loop increments i not j - never reached in gameplay as far as we know
+                for (j = 0; j < i; i++) {
+                    gActors[spawned[j]].actorID = 0;
+                }
+                return;
+            }
+        }
     }
-    while (next != 4);
-  }
 }
-#else
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_800480EC.s")
-#endif
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80048284.s")
 

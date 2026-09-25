@@ -4272,7 +4272,7 @@ void Effect_ResetListEntry(Effect* effect) {
     effect->lifeTime = 0.0f;
 }
 
-Effect* Effect_Alloc(s32 numParts, s32 dataSize, void* fpUpdate) {
+Effect* Effect_Alloc(s32 numParts, s32 dataSize, void* update) {
     Effect* effect;
 
     effect = _malloc(sizeof(Effect));
@@ -4308,7 +4308,7 @@ Effect* Effect_Alloc(s32 numParts, s32 dataSize, void* fpUpdate) {
 
     effect->numParts = numParts;
     effect->lifeTime = 0.0f;
-    effect->fpUpdate = fpUpdate;
+    effect->update = update;
 
     effect->previous = gEffectListHead;
     effect->next = gEffectListHead->next;
@@ -4341,22 +4341,16 @@ void Effect_Init(void) {
     Effect_ResetListEntry(gEffectListHead);
 }
 
-// NON_MATCHING: score 38
-#ifdef NON_MATCHING
-void Effect_UpdateAll(Gfx** arg0) {
-    Effect* effect;
-    Effect* cur;
+void Effect_UpdateAll(Gfx** pGfxPos) {
+    Effect* effect = &gEffectList;
 
-    for (effect = gEffectList.next; effect != NULL; effect = cur->next) {
-        cur = effect;
-        if (cur->fpUpdate != NULL) {
-            ((void (*)(Effect*, Gfx**))cur->fpUpdate)(cur, arg0);
+    while (effect->next != NULL) {
+        effect = effect->next;
+        if (effect->update != NULL) {
+            effect->update(effect, pGfxPos);
         }
     }
 }
-#else
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/Effect_UpdateAll.s")
-#endif
 
 void Effect_TypeA_Update(Effect* effect, Gfx** pGfxPos) {
     EffectPart* parts = effect->parts;
@@ -5611,7 +5605,6 @@ Effect* Effect_TypeM_Init2(f32 posX, f32 posY, f32 posZ, f32 scaleX, f32 scaleY,
 }
 
 //https://decomp.me/scratch/xl76w
-//https://decomp.me/scratch/xl76w
 void func_800664E8(AnimPointer* pointer, s32* ramObjects, s32* ramFrames, Mtx** ramAnim) {
     s32* newInt;
     AnimPointer* realPointer;
@@ -5657,7 +5650,7 @@ void func_800667C4(Effect*arg0, s32 arg1) {
     arg0->unk5 = (s8) arg1;
 }
 
-void func_800667CC(Effect*);
+void func_800667CC(Effect*, Gfx**);
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_800667CC.s")
 
@@ -6051,24 +6044,17 @@ void aa1_Bowling(f32 arg0, s32 arg1, s32 arg2) {
     }
 }
 
-// NON_MATCHING: score 14
-#ifdef NON_MATCHING
 void ResetEyeParams(void) {
-    D_800FE4E4[1].unk_00 = 0;
-    D_800FE4E4[1].unk_01 = 0;
-    D_800FE4E4[2].unk_00 = 0;
-    D_800FE4E4[2].unk_01 = 0;
-    D_800FE4E4[3].unk_00 = 0;
-    D_800FE4E4[3].unk_01 = 0;
-    D_800FE4E4[0].unk_00 = 0;
-    D_800FE4E4[0].unk_01 = 0;
+    s32 i;
+
+    for (i = 0; i < 4; i++) {
+        D_800FE4E4[i].unk_00 = 0;
+        D_800FE4E4[i].unk_01 = 0;
+    }
     gDontChangeEyes = 0;
     gLockContextEyes = 1;
     D_800FE6F0 = 0;
 }
-#else
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/ResetEyeParams.s")
-#endif
 
 void LockEyeChange(void) {
     gDontChangeEyes = 1;

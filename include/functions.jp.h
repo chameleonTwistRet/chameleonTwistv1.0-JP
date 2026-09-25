@@ -270,7 +270,7 @@ void func_800667B4(Effect*);
 Effect* func_80068A88(f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32);
 void func_80069858(Effect*, s32);
 void Bowling_ResetScore(void);
-void Bowling_DrawScoreCard(void*, void*);
+void Bowling_DrawScoreCard(Effect*, Gfx**);
 void LockEyeChange(void);
 void UnlockEyeChange(void);
 void func_8006BA30(f32, f32, f32, f32, f32);

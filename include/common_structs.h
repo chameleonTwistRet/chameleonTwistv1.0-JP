@@ -961,7 +961,7 @@ typedef struct Effect {
 /* 0x28 */ f32 sizeX;
 /* 0x2C */ f32 sizeY;
 /* 0x30 */ f32 duration;
-/* 0x34 */ void* fpUpdate;
+/* 0x34 */ void (*update)(struct Effect*, Gfx**);
 /* 0x38 */ void* data; // TODO make union maybe
 /* 0x3C */ EffectPart* parts;
 /* 0x40 */ struct Effect* previous;
