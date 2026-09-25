@@ -109,7 +109,7 @@ typedef struct Unk_800FFDDC {
 //defined in us 1.0's uncompiled source code as ROLL_DATA
 typedef struct RollData {
     /* 0x00 */ s32 execTime; //time (gCurrentDemoTimer - CreditsTimeOffset) to execute this roll
-    /* 0x04 */ s32 unk_04;
+    /* 0x04 */ s32 layoutId;
     /* 0x08 */ s32 unk_08; //id???
     /* 0x0C */ s32 unk_0C;
     //expected euc-jp

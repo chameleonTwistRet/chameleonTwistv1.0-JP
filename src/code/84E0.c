@@ -1640,7 +1640,7 @@ void func_800360E4(Actor* actor) {
 void func_80036D74(PlayerActor* arg0, Tongue* arg1) {
     if (arg0->playerHurtState == PLAYER_HURT_NONE) {
         TriggerPlayerRumble(arg0->playerID, 5);
-        Effect_TypeD_Create(arg0->pos.x, arg0->pos.y, arg0->pos.z);
+        Effect_HitStars_Create(arg0->pos.x, arg0->pos.y, arg0->pos.z);
         PLAY_SFX(SFX_ChameleonOw+1, 0, 0x10);
         if ((Battle_GameType == BATTLE_TYPE_NOTBATTLE) && (gLevelFlowState != 3) && (D_80174988 == 0)) {
             gNoHit = 0;
@@ -1821,7 +1821,7 @@ void ActorTick_RedAntSpawner(Actor* redAntSpawner) {
                     rangeSq, redAntSpawner->unk_164, redAntSpawner->unk_168,
                     0.0f, 0.0f, 0, 0, 0, 0) != -1)) {
                 redAntSpawner->userVariables[1] = 0;
-                Effect_TypeY_Init(redAntSpawner->pos.x, redAntSpawner->pos.y, redAntSpawner->pos.z, 2.0f, 2.5f, 2.0f, 5.0f);
+                Effect_SandBurst_Init(redAntSpawner->pos.x, redAntSpawner->pos.y, redAntSpawner->pos.z, 2.0f, 2.5f, 2.0f, 5.0f);
             }
             redAntSpawner->userVariables[2]++;
             redAntSpawner->vel.x = (1 - ((redAntSpawner->userVariables[2] & 1) * 2)) * 20.0f;
@@ -2157,7 +2157,7 @@ void ActorTick_MissileSpawner(Actor* missileSpawner) {
             missileSpawner->unk_160, missileSpawner->unk_164, missileSpawner->unk_168,
             missileSpawner->unk_16C, missileSpawner->unk_170, missileSpawner->unk_124,
             missileSpawner->unk_128, missileSpawner->actorIndex, 0) != -1) {
-        Effect_TypeX_Create(missileSpawner->pos.x, missileSpawner->pos.y, missileSpawner->pos.z, 200.0f, 0x18);
+        Effect_SmokeRing_Create(missileSpawner->pos.x, missileSpawner->pos.y, missileSpawner->pos.z, 200.0f, 0x18);
     }
 }
 
@@ -2196,7 +2196,7 @@ void ActorTick_Cannon(Actor* cannon) {
             cannon->position._f32.x + (((gTimer % 3) * 0xC8) - 0xC8), cannon->position._f32.y,
             Random(-200, 200) + cannon->unk_15C, cannon->unk_160, 8.0f, 0.0f, 0.0f, 0.0f,
             0, 0, 0, 0) != -1)) {
-        Effect_TypeA_Init(cannon->pos.x, cannon->pos.y - 70.0f, cannon->pos.z - 300.0f, 2, 60);
+        Effect_ExplosionSmoke_Init(cannon->pos.x, cannon->pos.y - 70.0f, cannon->pos.z - 300.0f, 2, 60);
         cannon->userVariables[0] = 1;
     }
 }
@@ -2218,7 +2218,7 @@ void ActorTick_Cannonball(Actor* cannonball) {
                 (cannonball->pos.y + (cannonball->unknownPositionThings[0].unk_10 / 2)) - (D_8010A6D0[0x14].y / 2),
                 cannonball->pos.z, 0.0f, -50000.0f, 50000.0f, -50000.0f, 50000.0f, -50000.0f, 50000.0f,
                 200.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0xA, 0, 0, 0) != -1) {
-            Effect_TypeA_Init(cannonball->pos.x, cannonball->pos.y, cannonball->pos.z, 3, 0x64);
+            Effect_ExplosionSmoke_Init(cannonball->pos.x, cannonball->pos.y, cannonball->pos.z, 3, 0x64);
         }
         TriggerRoomClearReaction(cannonball);
     }
@@ -2284,7 +2284,7 @@ void ActorTick_BombBossBomb(Actor* bsBomb) {
         temp_f2 = -50000.0f;
         temp_f12 = 50000.0f;
         if (Actor_Init(EXPLOSION, bsBomb->pos.x, bsBomb->pos.y, bsBomb->pos.z, 0.0f, temp_f2, temp_f12, temp_f2, temp_f12, temp_f2, temp_f12, 200.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 10, 0, 0, 0) != -1) {
-            Effect_TypeA_Init(bsBomb->pos.x, bsBomb->pos.y, bsBomb->pos.z, 3, 100);
+            Effect_ExplosionSmoke_Init(bsBomb->pos.x, bsBomb->pos.y, bsBomb->pos.z, 3, 100);
         }
         TriggerRoomClearReaction(bsBomb);
     }
@@ -2691,7 +2691,7 @@ void ActorTick_IceCreamSandwich(Actor* iceCreamSandwich) {
             iceCreamSandwich->userVariables[0] = 1;
             iceCreamSandwich->pos.y = iceCreamSandwich->unk_134[0];
             iceCreamSandwich->vel.y = 25.6f;
-            Effect_TypeC_Init(iceCreamSandwich->pos.x, iceCreamSandwich->unk_134[0], iceCreamSandwich->pos.z, iceCreamSandwich->pos.x, iceCreamSandwich->unk_134[0] + 300.0f, iceCreamSandwich->pos.z, 255, 255, 255, 128, 8, 74);
+            Effect_Poof_Init(iceCreamSandwich->pos.x, iceCreamSandwich->unk_134[0], iceCreamSandwich->pos.z, iceCreamSandwich->pos.x, iceCreamSandwich->unk_134[0] + 300.0f, iceCreamSandwich->pos.z, 255, 255, 255, 128, 8, 74);
             PLAY_SFX_AT(SFX_98_unkSnd, iceCreamSandwich->pos, 0, 0);
         }
         break;
@@ -2712,7 +2712,7 @@ void ActorInit_ChocoKid(Actor* chocoKid) {
     chocoKid->unk_134[1] = chocoKid->pos.z;
     chocoKid->unk_94 = chocoKid->position._f32.x;
     chocoKid->unk_134[0] = chocoKid->pos.x;
-    Effect_TypeZ_Create(chocoKid->pos.x, chocoKid->pos.y + 50.0f, chocoKid->pos.z, 120.0f, 20.0f, 0xA);
+    Effect_Confetti_Create(chocoKid->pos.x, chocoKid->pos.y + 50.0f, chocoKid->pos.z, 120.0f, 20.0f, 0xA);
 }
 
 void ActorTick_ChocoKid(Actor* chocoKid) {
@@ -3047,7 +3047,7 @@ void ActorTick_RNGRoomSpawner(Actor* rngRoomSpawner) {
                 rngRoomSpawner->position._f32.x, rngRoomSpawner->position._f32.y,
                 rngRoomSpawner->unk_15C, rngRoomSpawner->unk_160,
                 0.0f, 0.0f, 0.0f, 0.0f, 0, rngRoomSpawner->unk_128, rngRoomSpawner->unk_12C, 0) != -1) {
-            Effect_TypeA_Init(spawnX, rngRoomSpawner->pos.y, spawnZ, 3, 0x1E);
+            Effect_ExplosionSmoke_Init(spawnX, rngRoomSpawner->pos.y, spawnZ, 3, 0x1E);
         }
     }
 }
@@ -3133,7 +3133,7 @@ void ActorTick_FireSpitter(Actor *fireSpitter) {
                 fireX = fireSpitter->pos.x;
                 fireY = fireSpitter->pos.y;
                 fireZ = fireSpitter->pos.z;
-                Effect_TypeC_Init(fireX, fireY, fireZ, fireX, fireY + 300.0f, fireZ, 0xFF, 0xFF, 0xFF, 0xFF, 0x10, 0x4A);
+                Effect_Poof_Init(fireX, fireY, fireZ, fireX, fireY + 300.0f, fireZ, 0xFF, 0xFF, 0xFF, 0xFF, 0x10, 0x4A);
                 Sfx_Play(0xAB, &fireSpitter->pos.x, &fireSpitter->pos.y, &fireSpitter->pos.z, 0, 0);
             }
         }
@@ -3969,7 +3969,7 @@ void ActorInit_GhostBossShot(Actor* projectile) {
 void ActorTick_GhostBossShot(Actor* projectile) {
     projectile->userVariables[0] += 1;
     if (projectile->userVariables[0] == 150) {
-        Effect_TypeC_Init(projectile->pos.x, projectile->pos.y, projectile->pos.z, projectile->pos.x, projectile->pos.y + 300.0f, projectile->pos.z, 255, 255, 255, 128, 8, 74);
+        Effect_Poof_Init(projectile->pos.x, projectile->pos.y, projectile->pos.z, projectile->pos.x, projectile->pos.y + 300.0f, projectile->pos.z, 255, 255, 255, 128, 8, 74);
         TriggerRoomClearReaction(projectile);
         return;
     }

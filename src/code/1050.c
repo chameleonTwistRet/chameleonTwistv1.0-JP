@@ -162,8 +162,7 @@ s32 D_800F066C = 0;
 s32 D_800F0670 = 0;
 s32 gIsGamePaused = 0;
 s32 D_800F0678 = 0;
-//this is definitely not char if its used in ActorTick_Armadillo
-char D_800F067C[] = "BH";
+f32 D_800F067C = 50.0f;
 s32 D_800F0680[4] = {0, 0, 0, 0};
 s32 RumblePakError = 0;
 
@@ -210,10 +209,10 @@ void func_80025EF0(PlayerActor* arg0, Tongue* arg1, s32 arg2) {
     if (gLevelFlowState == 5) {
         func_80027240(&gMatrixBufPtr, gSpriteListings[SPRITE_ANIM1].raster, gTimer / 2, gSpriteListings[SPRITE_ANIM1].tileCountY);
         if (gTimer == 20) {
-            Effect_TypeT_Init(22.0f, 154.0f, 60, D_800F686C);
+            Effect_Textbox_Init(22.0f, 154.0f, 60, D_800F686C);
         }
         if (gTimer == 120) {
-            Effect_TypeT_Init(22.0f, 154.0f, 60, D_800F6870);
+            Effect_Textbox_Init(22.0f, 154.0f, 60, D_800F6870);
         }
     } else if (arg0->playerHurtState == PLAYER_HURT_UNK4) {
         Anim_LoadPointer(&static0_chameleonAnims[10], &animObjects, &animFrames, &anim);
@@ -394,7 +393,7 @@ void func_80025EF0(PlayerActor* arg0, Tongue* arg1, s32 arg2) {
         D_80168D8C = arg0->pos.y + limb2Z;
         D_80168D90 = arg0->pos.z + sp84;
         if (gLevelFlowState == 4) {
-            Effect_TypeAF_Init(&D_80168D88, &D_80168D8C, &D_80168D90, 50.0f, 20.0f, 10.0f, 5, 180, 75);
+            Effect_DizzyStars_Init(&D_80168D88, &D_80168D8C, &D_80168D90, 50.0f, 20.0f, 10.0f, 5, 180, 75);
         }
     }
 }

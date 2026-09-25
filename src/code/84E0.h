@@ -33,7 +33,7 @@ typedef struct Unk_func_80035374{
 /* Functions */
 
 void WrapDegrees(f32* theta_ptr);
-void Effect_TypeD_Create(f32, f32, f32);
+void Effect_HitStars_Create(f32, f32, f32);
 void func_800D34CC(void);
 void ResetCpuControllers(void);
 s32 GetTongueTargetDistSq(Actor*, PlayerActor*, f32, f32);
@@ -71,6 +71,6 @@ extern s32 gCameraInputDisabled;
 extern f32 D_8010BC70;
 extern f32 D_8010BC74;
 
-void Effect_TypeX_Create(f32, f32, f32, f32, s32); // sprite.c
+void Effect_SmokeRing_Create(f32, f32, f32, f32, s32); // sprite.c
 
 #endif //_84E0_H_

@@ -663,11 +663,11 @@ void func_80053DA8(s32 arg0) {
         D_800F0CA4[0].unk_00 = i + 5;
     }
     if (i == -1) {
-        Effect_TypeAZ_Init(70.0f, 80.0f, 170.0f, 1.0f, 5, D_800F0D14, 0x11, 0x12, 5.0f, 10.0f, 120.0f);
+        Effect_BattleWinnerBanner_Init(70.0f, 80.0f, 170.0f, 1.0f, 5, D_800F0D14, 0x11, 0x12, 5.0f, 10.0f, 120.0f);
     } else if (comID >= 0) {
-        Effect_TypeAZ_Init(60.0f, 80.0f, 180.0f, 0.8f, 8, D_800F0CD4, 0x13, 0x14, 5.0f, 8.0f, 120.0f);
+        Effect_BattleWinnerBanner_Init(60.0f, 80.0f, 180.0f, 0.8f, 8, D_800F0CD4, 0x13, 0x14, 5.0f, 8.0f, 120.0f);
     } else {
-        Effect_TypeAZ_Init(70.0f, 80.0f, 170.0f, 1.0f, 6, D_800F0CA4, 0x13, 0x14, 5.0f, 10.0f, 120.0f);
+        Effect_BattleWinnerBanner_Init(70.0f, 80.0f, 170.0f, 1.0f, 6, D_800F0CA4, 0x13, 0x14, 5.0f, 10.0f, 120.0f);
     }
 }
 
@@ -692,7 +692,7 @@ void func_80053FA0(s32 playerID) {
                   posX + sp78 * 1000.0f, gPlayerActors[playerID].pos.y + 120.0f, gPlayerActors[playerID].pos.z - sp7C * 1000.0f,
                   posX + sp80 * 300.0f, gPlayerActors[playerID].pos.y + 90.0f, gPlayerActors[playerID].pos.z - sp84 * 300.0f,
                   60.0f, 60.0f, 360.0f);
-    Effect_TypeAH_Init(D_800F0B54, gPlayerActors[playerID].pos.x, gPlayerActors[playerID].pos.y - 20.0f, gPlayerActors[playerID].pos.z,
+    Effect_ChameleonModel_Init(D_800F0B54, gPlayerActors[playerID].pos.x, gPlayerActors[playerID].pos.y - 20.0f, gPlayerActors[playerID].pos.z,
                   gPlayerActors[playerID].yAngle, &D_800F0D90[4], gSelectedCharacters[playerID], 1, 2);
 }
 
@@ -724,7 +724,7 @@ void func_80054284(void) {
                 var_s1 = 1;
                 SetPlayerEyeExpression(gSelectedCharacters[i], 0, 0);
             }
-            Effect_TypeAH_Init(D_800F0B54, posX, D_800F0D90[var_s1].unk10, -500.0f, -posX / 12.0f, &D_800F0D90[var_s1], gSelectedCharacters[i], 0, 0);
+            Effect_ChameleonModel_Init(D_800F0B54, posX, D_800F0D90[var_s1].unk10, -500.0f, -posX / 12.0f, &D_800F0D90[var_s1], gSelectedCharacters[i], 0, 0);
             posX += width;
         }
     }
@@ -732,7 +732,7 @@ void func_80054284(void) {
 
 void func_8005444C(void) {
     if (gIsMultiplayerPaused == TRUE) {
-        Effect_TypeAY_Init(D_800FE404, 16.0f, 16.0f, 1, 5, &D_800F0B5C, 0.0f, 0.0f, 320.0f, 240.0f);
+        Effect_ChoiceMenu_Init(D_800FE404, 16.0f, 16.0f, 1, 5, &D_800F0B5C, 0.0f, 0.0f, 320.0f, 240.0f);
     }
     switch (D_800F0B5C) {
     case -2:
@@ -740,19 +740,19 @@ void func_8005444C(void) {
         D_800F0B5C = -1;
         break;
     case 2:
-        D_800FE74C = 0;
+        sChoiceMenuOpen = 0;
         D_800F0B5C = -1;
         func_8005423C();
         SetProcessType(GAME_MODE_STAGE_SELECT);
         break;
     case 3:
-        D_800FE74C = 0;
+        sChoiceMenuOpen = 0;
         D_800F0B5C = -1;
         func_8005423C();
         SetProcessType(GAME_MODE_BATTLE_MENU);
         break;
     case 4:
-        D_800FE74C = 0;
+        sChoiceMenuOpen = 0;
         D_800F0B5C = -1;
         func_8005423C();
         SetProcessType(GAME_MODE_TITLE_SCREEN);
@@ -766,7 +766,7 @@ void Battle_DrawLightSpot(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, s32 
     Mtx mtx;
 
     if (Battle_Time % 2) {
-        setPrimColor(D_800FE564[playerID].r, D_800FE564[playerID].g, D_800FE564[playerID].b, D_800FE564[playerID].a * flabs((arg3 / arg1)));
+        setPrimColor(sEffectColors[playerID].r, sEffectColors[playerID].g, sEffectColors[playerID].b, sEffectColors[playerID].a * flabs((arg3 / arg1)));
         guAlign(&mtx, 0.0f, 0.0f, 100.0f, 0.0f);
         func_80058BE4(&mtx, arg0, arg1, arg2, arg4, arg4, 0.0f, SPRITE_PUFF);
     }
@@ -781,7 +781,7 @@ void Battle_Init(void) {
     gIsGamePaused = gIsMultiplayerPaused = PAUSEMODE_NOT_PAUSED;
     Battle_LastKnockOutTime = 999999999;
     Battle_FirstRankCount = 99;
-    D_800FE74C = 0;
+    sChoiceMenuOpen = 0;
     Battle_NoWinner = FALSE;
     D_800F0B5C = -1;
     D_800F0B54[0] = 255;
@@ -880,7 +880,7 @@ void Battle_Update(void) {
 
         Battle_Time = 0;
         Battle_Stage = BATTLE_STAGE_AFTER_INIT;
-        Effect_TypeO_Init(255, 255, 255, 0, 0x2D);
+        Effect_ScreenFadeIn_Init(255, 255, 255, 0, 0x2D);
         break;
 
     case BATTLE_STAGE_INVALID:
@@ -905,7 +905,7 @@ void Battle_Update(void) {
         Battle_PlayEnvSounds();
         Battle_PrintTextBig(80.0f, 100.0f, Battle_Time / 23.333334f, 17, 5, Battle_MsgReady, 1);
         if (Battle_Time == 40) {
-            Effect_TypeAG_Init(8.0f, 90.0f, 0x5FFF);
+            Effect_SfxFade_Init(8.0f, 90.0f, 0x5FFF);
         }
         if (Battle_Time > 70) {
             gIsGamePaused = PAUSEMODE_NOT_PAUSED;
@@ -1185,11 +1185,11 @@ void Process_Ranking(void) {
         func_8008BE14();
         func_80088198();
         D_801FC9AC = 0;
-        Effect_TypeO_Init(0, 0, 0, 0, 0x10);
+        Effect_ScreenFadeIn_Init(0, 0, 0, 0, 0x10);
         func_8008F114();
         break;
     case 1:
-        Effect_TypeAN_Init();
+        Effect_RankingScreen_Init();
         gGameModeState++;
         func_8008F114();
         break;
@@ -1237,7 +1237,7 @@ void func_800557F8(void) {
         func_8008F114();
         break;
     case 1:
-        Effect_TypeAO_Init();
+        Effect_BattleResults_Init();
         gGameModeState++;
         func_8008F114();
         break;
@@ -1300,7 +1300,7 @@ void Process_SunsoftLogo(void) {
         D_801FC9AC = 0;
         break;
     case 1:
-        Effect_TypeAP_Init();
+        Effect_SunsoftLogo_Init();
         gGameModeState++;
         func_8008F114();
         break;

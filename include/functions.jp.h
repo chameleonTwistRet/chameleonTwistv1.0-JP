@@ -198,7 +198,7 @@ void Controller_StartRead(void);
 void Controller_Zero(ContMain*);
 void Debug_NOOP(void);
 void Debug_TestView(void);
-void Effect_TypeAP_Init(void);
+void Effect_SunsoftLogo_Init(void);
 f32 Battle_CalcTableColumnWidths(u8, f32*, f32, f32);
 void Battle_PlayEnvSounds(void);
 void Battle_PrintNumber(f32, f32, f32, f32, s32, s32, s32); 
@@ -254,16 +254,16 @@ ModelCollision* RegistModel(ModelCollision*);
 void func_80048284(Actor*);
 FieldObject* func_800CB294(Vec3f, f32);
 void func_800CBE74(Actor*);
-void Effect_TypeA_Init(f32, f32, f32, s32, s32);
-void Effect_TypeY_Init(f32, f32, f32, f32, f32, f32, f32);
+void Effect_ExplosionSmoke_Init(f32, f32, f32, s32, s32);
+void Effect_SandBurst_Init(f32, f32, f32, f32, f32, f32, f32);
 void func_8006202C(void);
 void func_800629C4(void);
 void func_800629D4(void);
-Effect* Effect_TypeC_Init(f32, f32, f32, f32, f32, f32, u8, u8, u8, u8, s32, s32);
-Effect* Effect_TypeE_Init(f32, f32, f32, f32, f32, f32, f32, f32, s32, s32);
-Effect* Effect_TypeF_Init(f32, f32, f32, f32, f32, f32, f32, f32, s32, s32);
-Effect* Effect_TypeT_Init(f32, f32, s32, s32);
-void Effect_TypeAM_Init(f32 posX, f32 posY, f32 posZ, f32 arg3, s32* arg4);
+Effect* Effect_Poof_Init(f32, f32, f32, f32, f32, f32, u8, u8, u8, u8, s32, s32);
+Effect* Effect_PlayerDust_Init(f32, f32, f32, f32, f32, f32, f32, f32, s32, s32);
+Effect* Effect_SpriteFadeIn_Init(f32, f32, f32, f32, f32, f32, f32, f32, s32, s32);
+Effect* Effect_Textbox_Init(f32, f32, s32, s32);
+void Effect_FinalBossWhiteout_Init(f32 posX, f32 posY, f32 posZ, f32 arg3, s32* arg4);
 Effect* func_80065CAC(f32);
 void func_800667A8(void);
 void func_800667B4(Effect*);
@@ -281,17 +281,17 @@ void LoadPlayerEyes(s32);
 void FreePlayerEyes(s32);
 u32 Effect_PlayerEyes_Init(s32, s32, f32, s32);
 void SetPlayerEyeExpression(s32, s32, s32);
-void Effect_TypeZ_Create(f32, f32, f32, f32, f32, s32);
+void Effect_Confetti_Create(f32, f32, f32, f32, f32, s32);
 void func_8006F8D8(f32, f32, f32);
 void func_80089BA0(void);
-void Effect_TypeAN_Init(void);
+void Effect_RankingScreen_Init(void);
 void Effect_ControllerRumble_Init(void);
 void SetTextGradientFromPaletteAlpha(s32, f32);
 void SetTextGradientFromPalette(s32);
-void Effect_TypeBC_Init(f32, f32, f32, f32, f32, f32);
-void Effect_TypeAR_Init(f32 arg0, f32 arg1, s32 arg2, f32 arg3, f32 arg4, f32 arg5, s32 arg6, char* arg7, s32 arg8, s32* arg9);
-void Effect_TypeAQ_Init(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, s32 arg6, char* arg7, s32 arg8, s32* arg9);
-void Effect_TypeBJ_Init(f32, f32, f32, f32, f32);
+void Effect_WaterRipple_Init(f32, f32, f32, f32, f32, f32);
+void Effect_CreditsRollLine_Init(f32 arg0, f32 arg1, s32 arg2, f32 arg3, f32 arg4, f32 arg5, s32 arg6, char* arg7, s32 arg8, s32* arg9);
+void Effect_CreditsRollChars_Init(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, s32 arg6, char* arg7, s32 arg8, s32* arg9);
+void Effect_ShrinkPuff_Init(f32, f32, f32, f32, f32);
 Gfx* func_8007ABDC(Gfx*);
 void func_8007ABE4(void);
 void func_8007ABF8(bf8*);
@@ -339,7 +339,7 @@ void DummiedPrintf(char*, ...);
 void PrintTextWrapper(f32, f32, f32, f32, const char*, s32);
 s32 PrintText(f32, f32, f32, f32, f32, f32, const char*, s32);
 void func_80080F38(f32, f32, f32, f32, f32, f32, u8, u8, u8, s32);
-s32 func_800836FC(f32, f32, s32, s32);
+s32 Textbox_Draw(f32, f32, s32, s32);
 void func_80083F08(void);
 void func_80083F10(void);
 void func_80084788(void);
@@ -486,7 +486,7 @@ void func_80059254(Mtx* arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, 
 void func_800598C4(Mtx* arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, s32 arg7);
 void loadBossDeadEyes(s32, CTTask*);
 void func_8005747C(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, s32 arg6);
-Effect* Effect_TypeK_Init(f32 duration, f32 arg1, f32 arg2);
+Effect* Effect_CreditsRollWindow_Init(f32 duration, f32 arg1, f32 arg2);
 void func_800747E0(f32 arg0, f32 arg1, u32 arg2, f32 arg3, f32 arg4, f32 arg5, u32 arg6, u8* arg7, s32 arg8, u32* arg9);
 void func_800743BC(f32, f32, f32, f32, f32, f32, u32, u32, s32, u32*);
 s32 func_80082714(f32, f32, f32, s32);
@@ -513,10 +513,10 @@ void PlayStageBGM(s32 arg0);
 
 //funcs from sprite that are called from other c's
 //8ADD0.c
-void Effect_TypeW_Init(f32 posX, f32 posY, f32 posZ, f32 size, s32 duration, s32 arg5);
-Effect* Effect_TypeB_Init(f32 posX, f32 posY, f32 posZ, s32 numParts);
+void Effect_TwinkleBurst_Init(f32 posX, f32 posY, f32 posZ, f32 size, s32 duration, s32 arg5);
+Effect* Effect_RespawnSparkle_Init(f32 posX, f32 posY, f32 posZ, s32 numParts);
 //84e0.c
-void Effect_TypeA_Init2(f32 posX, f32 posY, f32 posZ, s32 numParts, s32 size);
+void Effect_ExplosionSmoke_Init2(f32 posX, f32 posY, f32 posZ, s32 numParts, s32 size);
 
 //funcs from vector that are called from other c's
 //8ADD0.c

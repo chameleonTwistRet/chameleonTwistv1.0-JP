@@ -9713,21 +9713,21 @@ void func_800AB734(void) {
 
     for (i = 0; i < AmountOfCredits; i++) {
         if (CreditsData[i].execTime == gCurrentDemoTimer - CreditsTimeOffset) {
-            D_80101074 = CreditsData[i].unk_04;
-            if (CreditsData[i].unk_04 && CreditsData[i].unk_04 && CreditsData[i].unk_04) {} // TODO: fake match
-            switch (CreditsData[i].unk_04) {
+            D_80101074 = CreditsData[i].layoutId;
+            if (CreditsData[i].layoutId && CreditsData[i].layoutId && CreditsData[i].layoutId) {} // TODO: fake match
+            switch (CreditsData[i].layoutId) {
             case 0:
                 str1 = CreditsData[i].lines[0];
                 str2 = CreditsData[i].lines[1];
                 str3 = CreditsData[i].lines[2];
                 str4 = CreditsData[i].lines[3];
                 str5 = CreditsData[i].lines[4];
-                Effect_TypeK_Init(150.0f, 0.0f, -120.0f);
-                Effect_TypeAR_Init(16.0f, 140.0f, 1, 30.0f, 60.0f, 60.0f, 5, str1, 1, &D_8010875C);
-                Effect_TypeAQ_Init(54.0f, 180.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str2, 4, &D_8010875C);
-                Effect_TypeAQ_Init(78.0f, 204.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str3, 4, &D_8010875C);
-                Effect_TypeAQ_Init(54.0f, 228.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xB, str4, 4, &D_8010875C);
-                Effect_TypeAQ_Init(78.0f, 252.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xB, str5, 4, &D_8010875C);
+                Effect_CreditsRollWindow_Init(150.0f, 0.0f, -120.0f);
+                Effect_CreditsRollLine_Init(16.0f, 140.0f, 1, 30.0f, 60.0f, 60.0f, 5, str1, 1, &D_8010875C);
+                Effect_CreditsRollChars_Init(54.0f, 180.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str2, 4, &D_8010875C);
+                Effect_CreditsRollChars_Init(78.0f, 204.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str3, 4, &D_8010875C);
+                Effect_CreditsRollChars_Init(54.0f, 228.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xB, str4, 4, &D_8010875C);
+                Effect_CreditsRollChars_Init(78.0f, 252.0f, 12.0f, 3.0f, 60.0f, 60.0f, 0xB, str5, 4, &D_8010875C);
                 break;
             case 1:
                 str1 = CreditsData[i].lines[0];
@@ -9737,14 +9737,14 @@ void func_800AB734(void) {
                 str5 = CreditsData[i].lines[4];
                 str6 = CreditsData[i].lines[5];
                 str7 = CreditsData[i].lines[6];
-                Effect_TypeK_Init(150.0f, 160.0f, -60.0f);
-                Effect_TypeAR_Init(20.0f, 192.0f, 1, 30.0f, 60.0f, 60.0f, 5, str1, 1, &D_8010875C);
-                Effect_TypeAQ_Init(24.0f, 48.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str2, 4, &D_8010875C);
-                Effect_TypeAQ_Init(36.0f, 72.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str3, 4, &D_8010875C);
-                Effect_TypeAQ_Init(24.0f, 96.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str4, 4, &D_8010875C);
-                Effect_TypeAQ_Init(36.0f, 120.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str5, 4, &D_8010875C);
-                Effect_TypeAQ_Init(24.0f, 144.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str6, 4, &D_8010875C);
-                Effect_TypeAQ_Init(36.0f, 168.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str7, 4, &D_8010875C);
+                Effect_CreditsRollWindow_Init(150.0f, 160.0f, -60.0f);
+                Effect_CreditsRollLine_Init(20.0f, 192.0f, 1, 30.0f, 60.0f, 60.0f, 5, str1, 1, &D_8010875C);
+                Effect_CreditsRollChars_Init(24.0f, 48.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str2, 4, &D_8010875C);
+                Effect_CreditsRollChars_Init(36.0f, 72.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str3, 4, &D_8010875C);
+                Effect_CreditsRollChars_Init(24.0f, 96.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str4, 4, &D_8010875C);
+                Effect_CreditsRollChars_Init(36.0f, 120.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str5, 4, &D_8010875C);
+                Effect_CreditsRollChars_Init(24.0f, 144.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str6, 4, &D_8010875C);
+                Effect_CreditsRollChars_Init(36.0f, 168.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str7, 4, &D_8010875C);
                 break;
             case 2:
                 str1 = CreditsData[i].lines[0];
@@ -9754,14 +9754,14 @@ void func_800AB734(void) {
                 str5 = CreditsData[i].lines[4];
                 str6 = CreditsData[i].lines[5];
                 str7 = CreditsData[i].lines[6];
-                Effect_TypeK_Init(150.0f, 160.0f, 84.0f);
-                Effect_TypeAR_Init(60.0f, 24.0f, 1, 30.0f, 60.0f, 60.0f, 5, str1, 1, &D_8010875C);
-                Effect_TypeAR_Init(60.0f, 48.0f, 0, 30.0f, 60.0f, 60.0f, 5, str2, 1, &D_8010875C);
-                Effect_TypeAQ_Init(24.0f, 112.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str3, 4, &D_8010875C);
-                Effect_TypeAQ_Init(36.0f, 136.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str4, 4, &D_8010875C);
-                Effect_TypeAQ_Init(24.0f, 160.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str5, 4, &D_8010875C);
-                Effect_TypeAQ_Init(36.0f, 184.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str6, 4, &D_8010875C);
-                Effect_TypeAQ_Init(24.0f, 208.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str7, 4, &D_8010875C);
+                Effect_CreditsRollWindow_Init(150.0f, 160.0f, 84.0f);
+                Effect_CreditsRollLine_Init(60.0f, 24.0f, 1, 30.0f, 60.0f, 60.0f, 5, str1, 1, &D_8010875C);
+                Effect_CreditsRollLine_Init(60.0f, 48.0f, 0, 30.0f, 60.0f, 60.0f, 5, str2, 1, &D_8010875C);
+                Effect_CreditsRollChars_Init(24.0f, 112.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str3, 4, &D_8010875C);
+                Effect_CreditsRollChars_Init(36.0f, 136.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str4, 4, &D_8010875C);
+                Effect_CreditsRollChars_Init(24.0f, 160.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str5, 4, &D_8010875C);
+                Effect_CreditsRollChars_Init(36.0f, 184.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str6, 4, &D_8010875C);
+                Effect_CreditsRollChars_Init(24.0f, 208.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str7, 4, &D_8010875C);
                 break;
             case 3:
                 str1 = CreditsData[i].lines[0];
@@ -9771,14 +9771,14 @@ void func_800AB734(void) {
                 str5 = CreditsData[i].lines[4];
                 str6 = CreditsData[i].lines[5];
                 str7 = CreditsData[i].lines[6];
-                Effect_TypeK_Init(150.0f, 160.0f, -60.0f);
-                Effect_TypeAR_Init(20.0f, 192.0f, 1, 30.0f, 60.0f, 60.0f, 5, str1, 1, &D_8010875C);
-                Effect_TypeAQ_Init(24.0f, 24.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str2, 4, &D_8010875C);
-                Effect_TypeAQ_Init(36.0f, 48.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str3, 4, &D_8010875C);
-                Effect_TypeAQ_Init(24.0f, 72.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str4, 4, &D_8010875C);
-                Effect_TypeAQ_Init(36.0f, 96.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str5, 4, &D_8010875C);
-                Effect_TypeAQ_Init(24.0f, 120.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str6, 4, &D_8010875C);
-                Effect_TypeAQ_Init(36.0f, 144.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str7, 4, &D_8010875C);
+                Effect_CreditsRollWindow_Init(150.0f, 160.0f, -60.0f);
+                Effect_CreditsRollLine_Init(20.0f, 192.0f, 1, 30.0f, 60.0f, 60.0f, 5, str1, 1, &D_8010875C);
+                Effect_CreditsRollChars_Init(24.0f, 24.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str2, 4, &D_8010875C);
+                Effect_CreditsRollChars_Init(36.0f, 48.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str3, 4, &D_8010875C);
+                Effect_CreditsRollChars_Init(24.0f, 72.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str4, 4, &D_8010875C);
+                Effect_CreditsRollChars_Init(36.0f, 96.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str5, 4, &D_8010875C);
+                Effect_CreditsRollChars_Init(24.0f, 120.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str6, 4, &D_8010875C);
+                Effect_CreditsRollChars_Init(36.0f, 144.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str7, 4, &D_8010875C);
                 break;
             case 4:
                 str1 = CreditsData[i].lines[0];
@@ -9788,14 +9788,14 @@ void func_800AB734(void) {
                 str5 = CreditsData[i].lines[4];
                 str6 = CreditsData[i].lines[5];
                 str7 = CreditsData[i].lines[6];
-                Effect_TypeK_Init(150.0f, -160.0f, -60.0f);
-                Effect_TypeAR_Init(20.0f, 192.0f, 0, 30.0f, 60.0f, 60.0f, 5, str1, 1, &D_8010875C);
-                Effect_TypeAQ_Init(196.0f, 48.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str2, 4, &D_8010875C);
-                Effect_TypeAQ_Init(208.0f, 72.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str3, 4, &D_8010875C);
-                Effect_TypeAQ_Init(196.0f, 96.0f, 12.0f, 3.0f, 60.0f, 60.0f, 10, str4, 4, &D_8010875C);
-                Effect_TypeAQ_Init(208.0f, 120.0f, 12.0f, 3.0f, 60.0f, 60.0f, 10, str5, 4, &D_8010875C);
-                Effect_TypeAQ_Init(196.0f, 144.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str6, 4, &D_8010875C);
-                Effect_TypeAQ_Init(208.0f, 168.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str7, 4, &D_8010875C);
+                Effect_CreditsRollWindow_Init(150.0f, -160.0f, -60.0f);
+                Effect_CreditsRollLine_Init(20.0f, 192.0f, 0, 30.0f, 60.0f, 60.0f, 5, str1, 1, &D_8010875C);
+                Effect_CreditsRollChars_Init(196.0f, 48.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str2, 4, &D_8010875C);
+                Effect_CreditsRollChars_Init(208.0f, 72.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str3, 4, &D_8010875C);
+                Effect_CreditsRollChars_Init(196.0f, 96.0f, 12.0f, 3.0f, 60.0f, 60.0f, 10, str4, 4, &D_8010875C);
+                Effect_CreditsRollChars_Init(208.0f, 120.0f, 12.0f, 3.0f, 60.0f, 60.0f, 10, str5, 4, &D_8010875C);
+                Effect_CreditsRollChars_Init(196.0f, 144.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str6, 4, &D_8010875C);
+                Effect_CreditsRollChars_Init(208.0f, 168.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str7, 4, &D_8010875C);
                 break;
             case 5:
                 str1 = CreditsData[i].lines[0];
@@ -9805,14 +9805,14 @@ void func_800AB734(void) {
                 str5 = CreditsData[i].lines[4];
                 str6 = CreditsData[i].lines[5];
                 str7 = CreditsData[i].lines[6];
-                Effect_TypeK_Init(150.0f, 160.0f, 60.0f);
-                Effect_TypeAR_Init(20.0f, 24.0f, 1, 30.0f, 60.0f, 60.0f, 5, str1, 1, &D_8010875C);
-                Effect_TypeAQ_Init(24.0f, 88.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str2, 4, &D_8010875C);
-                Effect_TypeAQ_Init(36.0f, 112.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str3, 4, &D_8010875C);
-                Effect_TypeAQ_Init(24.0f, 136.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str4, 4, &D_8010875C);
-                Effect_TypeAQ_Init(36.0f, 160.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str5, 4, &D_8010875C);
-                Effect_TypeAQ_Init(24.0f, 184.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str6, 4, &D_8010875C);
-                Effect_TypeAQ_Init(36.0f, 208.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str7, 4, &D_8010875C);
+                Effect_CreditsRollWindow_Init(150.0f, 160.0f, 60.0f);
+                Effect_CreditsRollLine_Init(20.0f, 24.0f, 1, 30.0f, 60.0f, 60.0f, 5, str1, 1, &D_8010875C);
+                Effect_CreditsRollChars_Init(24.0f, 88.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str2, 4, &D_8010875C);
+                Effect_CreditsRollChars_Init(36.0f, 112.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str3, 4, &D_8010875C);
+                Effect_CreditsRollChars_Init(24.0f, 136.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str4, 4, &D_8010875C);
+                Effect_CreditsRollChars_Init(36.0f, 160.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str5, 4, &D_8010875C);
+                Effect_CreditsRollChars_Init(24.0f, 184.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str6, 4, &D_8010875C);
+                Effect_CreditsRollChars_Init(36.0f, 208.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str7, 4, &D_8010875C);
                 break;
             case 6:
                 str1 = CreditsData[i].lines[0];
@@ -9822,14 +9822,14 @@ void func_800AB734(void) {
                 str5 = CreditsData[i].lines[4];
                 str6 = CreditsData[i].lines[5];
                 str7 = CreditsData[i].lines[6];
-                Effect_TypeK_Init(150.0f, -160.0f, 60.0f);
-                Effect_TypeAR_Init(20.0f, 24.0f, 0, 30.0f, 60.0f, 60.0f, 5, str1, 1, &D_8010875C);
-                Effect_TypeAQ_Init(196.0f, 88.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str2, 4, &D_8010875C);
-                Effect_TypeAQ_Init(208.0f, 112.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str3, 4, &D_8010875C);
-                Effect_TypeAQ_Init(196.0f, 136.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str4, 4, &D_8010875C);
-                Effect_TypeAQ_Init(208.0f, 160.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str5, 4, &D_8010875C);
-                Effect_TypeAQ_Init(196.0f, 184.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str6, 4, &D_8010875C);
-                Effect_TypeAQ_Init(208.0f, 208.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str7, 4, &D_8010875C);
+                Effect_CreditsRollWindow_Init(150.0f, -160.0f, 60.0f);
+                Effect_CreditsRollLine_Init(20.0f, 24.0f, 0, 30.0f, 60.0f, 60.0f, 5, str1, 1, &D_8010875C);
+                Effect_CreditsRollChars_Init(196.0f, 88.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str2, 4, &D_8010875C);
+                Effect_CreditsRollChars_Init(208.0f, 112.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str3, 4, &D_8010875C);
+                Effect_CreditsRollChars_Init(196.0f, 136.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str4, 4, &D_8010875C);
+                Effect_CreditsRollChars_Init(208.0f, 160.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str5, 4, &D_8010875C);
+                Effect_CreditsRollChars_Init(196.0f, 184.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str6, 4, &D_8010875C);
+                Effect_CreditsRollChars_Init(208.0f, 208.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str7, 4, &D_8010875C);
                 break;
             case 7:
                 str1 = CreditsData[i].lines[0];
@@ -9839,14 +9839,14 @@ void func_800AB734(void) {
                 str5 = CreditsData[i].lines[4];
                 str6 = CreditsData[i].lines[5];
                 str7 = CreditsData[i].lines[6];
-                Effect_TypeK_Init(150.0f, 160.0f, -60.0f);
-                Effect_TypeAR_Init(20.0f, 192.0f, 1, 30.0f, 60.0f, 60.0f, 5, str1, 1, &D_8010875C);
-                Effect_TypeAQ_Init(24.0f, 72.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str2, 4, &D_8010875C);
-                Effect_TypeAQ_Init(36.0f, 96.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str3, 4, &D_8010875C);
-                Effect_TypeAQ_Init(24.0f, 120.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str4, 4, &D_8010875C);
-                Effect_TypeAQ_Init(36.0f, 144.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str5, 4, &D_8010875C);
-                Effect_TypeAQ_Init(24.0f, 168.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str6, 4, &D_8010875C);
-                Effect_TypeAQ_Init(36.0f, 192.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str7, 4, &D_8010875C);
+                Effect_CreditsRollWindow_Init(150.0f, 160.0f, -60.0f);
+                Effect_CreditsRollLine_Init(20.0f, 192.0f, 1, 30.0f, 60.0f, 60.0f, 5, str1, 1, &D_8010875C);
+                Effect_CreditsRollChars_Init(24.0f, 72.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str2, 4, &D_8010875C);
+                Effect_CreditsRollChars_Init(36.0f, 96.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str3, 4, &D_8010875C);
+                Effect_CreditsRollChars_Init(24.0f, 120.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str4, 4, &D_8010875C);
+                Effect_CreditsRollChars_Init(36.0f, 144.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str5, 4, &D_8010875C);
+                Effect_CreditsRollChars_Init(24.0f, 168.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str6, 4, &D_8010875C);
+                Effect_CreditsRollChars_Init(36.0f, 192.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str7, 4, &D_8010875C);
                 break;
             case 8:
                 str1 = CreditsData[i].lines[0];
@@ -9856,14 +9856,14 @@ void func_800AB734(void) {
                 str5 = CreditsData[i].lines[4];
                 str6 = CreditsData[i].lines[5];
                 str7 = CreditsData[i].lines[6];
-                Effect_TypeK_Init(150.0f, 160.0f, 60.0f);
-                Effect_TypeAR_Init(20.0f, 24.0f, 1, 30.0f, 60.0f, 60.0f, 5, str1, 1, &D_8010875C);
-                Effect_TypeAQ_Init(24.0f, 88.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str2, 4, &D_8010875C);
-                Effect_TypeAQ_Init(36.0f, 112.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str3, 4, &D_8010875C);
-                Effect_TypeAQ_Init(24.0f, 136.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str4, 4, &D_8010875C);
-                Effect_TypeAQ_Init(36.0f, 160.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str5, 4, &D_8010875C);
-                Effect_TypeAQ_Init(24.0f, 184.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str6, 4, &D_8010875C);
-                Effect_TypeAQ_Init(36.0f, 208.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str7, 4, &D_8010875C);
+                Effect_CreditsRollWindow_Init(150.0f, 160.0f, 60.0f);
+                Effect_CreditsRollLine_Init(20.0f, 24.0f, 1, 30.0f, 60.0f, 60.0f, 5, str1, 1, &D_8010875C);
+                Effect_CreditsRollChars_Init(24.0f, 88.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str2, 4, &D_8010875C);
+                Effect_CreditsRollChars_Init(36.0f, 112.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str3, 4, &D_8010875C);
+                Effect_CreditsRollChars_Init(24.0f, 136.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str4, 4, &D_8010875C);
+                Effect_CreditsRollChars_Init(36.0f, 160.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str5, 4, &D_8010875C);
+                Effect_CreditsRollChars_Init(24.0f, 184.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str6, 4, &D_8010875C);
+                Effect_CreditsRollChars_Init(36.0f, 208.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str7, 4, &D_8010875C);
                 break;
             case 9:
                 str1 = CreditsData[i].lines[0];
@@ -9873,14 +9873,14 @@ void func_800AB734(void) {
                 str5 = CreditsData[i].lines[4];
                 str6 = CreditsData[i].lines[5];
                 str7 = CreditsData[i].lines[6];
-                Effect_TypeK_Init(150.0f, 160.0f, -60.0f);
-                Effect_TypeAR_Init(20.0f, 192.0f, 1, 30.0f, 60.0f, 60.0f, 5, str1, 1, &D_8010875C);
-                Effect_TypeAQ_Init(24.0f, 48.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str2, 4, &D_8010875C);
-                Effect_TypeAQ_Init(36.0f, 72.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str3, 4, &D_8010875C);
-                Effect_TypeAQ_Init(24.0f, 96.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str4, 4, &D_8010875C);
-                Effect_TypeAQ_Init(36.0f, 120.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str5, 4, &D_8010875C);
-                Effect_TypeAQ_Init(24.0f, 144.0f, 12.0f, 3.0f, 60.0f, 60.0f, 6, str6, 4, &D_8010875C);
-                Effect_TypeAQ_Init(36.0f, 168.0f, 12.0f, 3.0f, 60.0f, 60.0f, 6, str7, 4, &D_8010875C);
+                Effect_CreditsRollWindow_Init(150.0f, 160.0f, -60.0f);
+                Effect_CreditsRollLine_Init(20.0f, 192.0f, 1, 30.0f, 60.0f, 60.0f, 5, str1, 1, &D_8010875C);
+                Effect_CreditsRollChars_Init(24.0f, 48.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str2, 4, &D_8010875C);
+                Effect_CreditsRollChars_Init(36.0f, 72.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str3, 4, &D_8010875C);
+                Effect_CreditsRollChars_Init(24.0f, 96.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str4, 4, &D_8010875C);
+                Effect_CreditsRollChars_Init(36.0f, 120.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str5, 4, &D_8010875C);
+                Effect_CreditsRollChars_Init(24.0f, 144.0f, 12.0f, 3.0f, 60.0f, 60.0f, 6, str6, 4, &D_8010875C);
+                Effect_CreditsRollChars_Init(36.0f, 168.0f, 12.0f, 3.0f, 60.0f, 60.0f, 6, str7, 4, &D_8010875C);
                 break;
             case 10:
                 str1 = CreditsData[i].lines[0];
@@ -9890,14 +9890,14 @@ void func_800AB734(void) {
                 str5 = CreditsData[i].lines[4];
                 str6 = CreditsData[i].lines[5];
                 str7 = CreditsData[i].lines[6];
-                Effect_TypeK_Init(150.0f, -160.0f, 60.0f);
-                Effect_TypeAR_Init(20.0f, 24.0f, 0, 30.0f, 60.0f, 60.0f, 5, str1, 1, &D_8010875C);
-                Effect_TypeAQ_Init(196.0f, 88.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str2, 4, &D_8010875C);
-                Effect_TypeAQ_Init(208.0f, 112.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str3, 4, &D_8010875C);
-                Effect_TypeAQ_Init(196.0f, 136.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str4, 4, &D_8010875C);
-                Effect_TypeAQ_Init(208.0f, 160.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str5, 4, &D_8010875C);
-                Effect_TypeAQ_Init(196.0f, 184.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str6, 4, &D_8010875C);
-                Effect_TypeAQ_Init(208.0f, 208.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str7, 4, &D_8010875C);
+                Effect_CreditsRollWindow_Init(150.0f, -160.0f, 60.0f);
+                Effect_CreditsRollLine_Init(20.0f, 24.0f, 0, 30.0f, 60.0f, 60.0f, 5, str1, 1, &D_8010875C);
+                Effect_CreditsRollChars_Init(196.0f, 88.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str2, 4, &D_8010875C);
+                Effect_CreditsRollChars_Init(208.0f, 112.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str3, 4, &D_8010875C);
+                Effect_CreditsRollChars_Init(196.0f, 136.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str4, 4, &D_8010875C);
+                Effect_CreditsRollChars_Init(208.0f, 160.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str5, 4, &D_8010875C);
+                Effect_CreditsRollChars_Init(196.0f, 184.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str6, 4, &D_8010875C);
+                Effect_CreditsRollChars_Init(208.0f, 208.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str7, 4, &D_8010875C);
                 break;
             case 11:
                 str1 = CreditsData[i].lines[0];
@@ -9907,14 +9907,14 @@ void func_800AB734(void) {
                 str5 = CreditsData[i].lines[4];
                 str6 = CreditsData[i].lines[5];
                 str7 = CreditsData[i].lines[6];
-                Effect_TypeK_Init(150.0f, 160.0f, 60.0f);
-                Effect_TypeAR_Init(20.0f, 24.0f, 1, 30.0f, 60.0f, 60.0f, 5, str1, 1, &D_8010875C);
-                Effect_TypeAQ_Init(24.0f, 88.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str2, 4, &D_8010875C);
-                Effect_TypeAQ_Init(36.0f, 112.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str3, 4, &D_8010875C);
-                Effect_TypeAQ_Init(24.0f, 136.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str4, 4, &D_8010875C);
-                Effect_TypeAQ_Init(36.0f, 160.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str5, 4, &D_8010875C);
-                Effect_TypeAQ_Init(24.0f, 184.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str6, 4, &D_8010875C);
-                Effect_TypeAQ_Init(36.0f, 208.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str7, 4, &D_8010875C);
+                Effect_CreditsRollWindow_Init(150.0f, 160.0f, 60.0f);
+                Effect_CreditsRollLine_Init(20.0f, 24.0f, 1, 30.0f, 60.0f, 60.0f, 5, str1, 1, &D_8010875C);
+                Effect_CreditsRollChars_Init(24.0f, 88.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str2, 4, &D_8010875C);
+                Effect_CreditsRollChars_Init(36.0f, 112.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str3, 4, &D_8010875C);
+                Effect_CreditsRollChars_Init(24.0f, 136.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str4, 4, &D_8010875C);
+                Effect_CreditsRollChars_Init(36.0f, 160.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str5, 4, &D_8010875C);
+                Effect_CreditsRollChars_Init(24.0f, 184.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str6, 4, &D_8010875C);
+                Effect_CreditsRollChars_Init(36.0f, 208.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str7, 4, &D_8010875C);
                 break;
             case 12:
                 str1 = CreditsData[i].lines[0];
@@ -9924,14 +9924,14 @@ void func_800AB734(void) {
                 str5 = CreditsData[i].lines[4];
                 str6 = CreditsData[i].lines[5];
                 str7 = CreditsData[i].lines[6];
-                Effect_TypeK_Init(150.0f, -160.0f, -84.0f);
-                Effect_TypeAR_Init(20.0f, 168.0f, 1, 30.0f, 60.0f, 60.0f, 5, str1, 1, &D_8010875C);
-                Effect_TypeAR_Init(20.0f, 192.0f, 0, 30.0f, 60.0f, 60.0f, 5, str2, 1, &D_8010875C);
-                Effect_TypeAQ_Init(196.0f, 96.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str3, 4, &D_8010875C);
-                Effect_TypeAQ_Init(208.0f, 120.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str4, 4, &D_8010875C);
-                Effect_TypeAQ_Init(196.0f, 144.0f, 12.0f, 3.0f, 60.0f, 60.0f, 10, str5, 4, &D_8010875C);
-                Effect_TypeAQ_Init(208.0f, 168.0f, 12.0f, 3.0f, 60.0f, 60.0f, 10, str6, 4, &D_8010875C);
-                Effect_TypeAQ_Init(196.0f, 192.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str7, 4, &D_8010875C);
+                Effect_CreditsRollWindow_Init(150.0f, -160.0f, -84.0f);
+                Effect_CreditsRollLine_Init(20.0f, 168.0f, 1, 30.0f, 60.0f, 60.0f, 5, str1, 1, &D_8010875C);
+                Effect_CreditsRollLine_Init(20.0f, 192.0f, 0, 30.0f, 60.0f, 60.0f, 5, str2, 1, &D_8010875C);
+                Effect_CreditsRollChars_Init(196.0f, 96.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str3, 4, &D_8010875C);
+                Effect_CreditsRollChars_Init(208.0f, 120.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str4, 4, &D_8010875C);
+                Effect_CreditsRollChars_Init(196.0f, 144.0f, 12.0f, 3.0f, 60.0f, 60.0f, 10, str5, 4, &D_8010875C);
+                Effect_CreditsRollChars_Init(208.0f, 168.0f, 12.0f, 3.0f, 60.0f, 60.0f, 10, str6, 4, &D_8010875C);
+                Effect_CreditsRollChars_Init(196.0f, 192.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str7, 4, &D_8010875C);
                 break;
             case 13:
                 str1 = CreditsData[i].lines[0];
@@ -9941,14 +9941,14 @@ void func_800AB734(void) {
                 str5 = CreditsData[i].lines[4];
                 str6 = CreditsData[i].lines[5];
                 str7 = CreditsData[i].lines[6];
-                Effect_TypeK_Init(150.0f, -160.0f, 60.0f);
-                Effect_TypeAR_Init(20.0f, 24.0f, 0, 30.0f, 60.0f, 60.0f, 5, str1, 1, &D_8010875C);
-                Effect_TypeAQ_Init(196.0f, 88.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str2, 4, &D_8010875C);
-                Effect_TypeAQ_Init(208.0f, 112.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str3, 4, &D_8010875C);
-                Effect_TypeAQ_Init(196.0f, 136.0f, 12.0f, 3.0f, 60.0f, 60.0f, 10, str4, 4, &D_8010875C);
-                Effect_TypeAQ_Init(208.0f, 160.0f, 12.0f, 3.0f, 60.0f, 60.0f, 10, str5, 4, &D_8010875C);
-                Effect_TypeAQ_Init(196.0f, 184.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str6, 4, &D_8010875C);
-                Effect_TypeAQ_Init(208.0f, 208.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str7, 4, &D_8010875C);
+                Effect_CreditsRollWindow_Init(150.0f, -160.0f, 60.0f);
+                Effect_CreditsRollLine_Init(20.0f, 24.0f, 0, 30.0f, 60.0f, 60.0f, 5, str1, 1, &D_8010875C);
+                Effect_CreditsRollChars_Init(196.0f, 88.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str2, 4, &D_8010875C);
+                Effect_CreditsRollChars_Init(208.0f, 112.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str3, 4, &D_8010875C);
+                Effect_CreditsRollChars_Init(196.0f, 136.0f, 12.0f, 3.0f, 60.0f, 60.0f, 10, str4, 4, &D_8010875C);
+                Effect_CreditsRollChars_Init(208.0f, 160.0f, 12.0f, 3.0f, 60.0f, 60.0f, 10, str5, 4, &D_8010875C);
+                Effect_CreditsRollChars_Init(196.0f, 184.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str6, 4, &D_8010875C);
+                Effect_CreditsRollChars_Init(208.0f, 208.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str7, 4, &D_8010875C);
                 break;
             case 14:
                 str1 = CreditsData[i].lines[0];
@@ -9958,14 +9958,14 @@ void func_800AB734(void) {
                 str5 = CreditsData[i].lines[4];
                 str6 = CreditsData[i].lines[5];
                 str7 = CreditsData[i].lines[6];
-                Effect_TypeK_Init(150.0f, -160.0f, -60.0f);
-                Effect_TypeAR_Init(20.0f, 192.0f, 0, 30.0f, 60.0f, 60.0f, 5, str1, 1, &D_8010875C);
-                Effect_TypeAQ_Init(196.0f, 72.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str2, 4, &D_8010875C);
-                Effect_TypeAQ_Init(208.0f, 96.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str3, 4, &D_8010875C);
-                Effect_TypeAQ_Init(196.0f, 120.0f, 12.0f, 3.0f, 60.0f, 60.0f, 10, str4, 4, &D_8010875C);
-                Effect_TypeAQ_Init(208.0f, 144.0f, 12.0f, 3.0f, 60.0f, 60.0f, 10, str5, 4, &D_8010875C);
-                Effect_TypeAQ_Init(196.0f, 168.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str6, 4, &D_8010875C);
-                Effect_TypeAQ_Init(208.0f, 192.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str7, 4, &D_8010875C);
+                Effect_CreditsRollWindow_Init(150.0f, -160.0f, -60.0f);
+                Effect_CreditsRollLine_Init(20.0f, 192.0f, 0, 30.0f, 60.0f, 60.0f, 5, str1, 1, &D_8010875C);
+                Effect_CreditsRollChars_Init(196.0f, 72.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str2, 4, &D_8010875C);
+                Effect_CreditsRollChars_Init(208.0f, 96.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str3, 4, &D_8010875C);
+                Effect_CreditsRollChars_Init(196.0f, 120.0f, 12.0f, 3.0f, 60.0f, 60.0f, 10, str4, 4, &D_8010875C);
+                Effect_CreditsRollChars_Init(208.0f, 144.0f, 12.0f, 3.0f, 60.0f, 60.0f, 10, str5, 4, &D_8010875C);
+                Effect_CreditsRollChars_Init(196.0f, 168.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str6, 4, &D_8010875C);
+                Effect_CreditsRollChars_Init(208.0f, 192.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str7, 4, &D_8010875C);
                 break;
             case 15:
                 str1 = CreditsData[i].lines[0];
@@ -9975,14 +9975,14 @@ void func_800AB734(void) {
                 str5 = CreditsData[i].lines[4];
                 str6 = CreditsData[i].lines[5];
                 str7 = CreditsData[i].lines[6];
-                Effect_TypeK_Init(150.0f, -160.0f, -60.0f);
-                Effect_TypeAR_Init(20.0f, 192.0f, 0, 30.0f, 60.0f, 60.0f, 5, str1, 1, &D_8010875C);
-                Effect_TypeAQ_Init(196.0f, 72.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str2, 4, &D_8010875C);
-                Effect_TypeAQ_Init(208.0f, 96.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str3, 4, &D_8010875C);
-                Effect_TypeAQ_Init(196.0f, 120.0f, 12.0f, 3.0f, 60.0f, 60.0f, 10, str4, 4, &D_8010875C);
-                Effect_TypeAQ_Init(208.0f, 144.0f, 12.0f, 3.0f, 60.0f, 60.0f, 10, str5, 4, &D_8010875C);
-                Effect_TypeAQ_Init(196.0f, 168.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str6, 4, &D_8010875C);
-                Effect_TypeAQ_Init(208.0f, 192.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str7, 4, &D_8010875C);
+                Effect_CreditsRollWindow_Init(150.0f, -160.0f, -60.0f);
+                Effect_CreditsRollLine_Init(20.0f, 192.0f, 0, 30.0f, 60.0f, 60.0f, 5, str1, 1, &D_8010875C);
+                Effect_CreditsRollChars_Init(196.0f, 72.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str2, 4, &D_8010875C);
+                Effect_CreditsRollChars_Init(208.0f, 96.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str3, 4, &D_8010875C);
+                Effect_CreditsRollChars_Init(196.0f, 120.0f, 12.0f, 3.0f, 60.0f, 60.0f, 10, str4, 4, &D_8010875C);
+                Effect_CreditsRollChars_Init(208.0f, 144.0f, 12.0f, 3.0f, 60.0f, 60.0f, 10, str5, 4, &D_8010875C);
+                Effect_CreditsRollChars_Init(196.0f, 168.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str6, 4, &D_8010875C);
+                Effect_CreditsRollChars_Init(208.0f, 192.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str7, 4, &D_8010875C);
                 break;
             case 16:
                 str1 = CreditsData[i].lines[0];
@@ -9992,14 +9992,14 @@ void func_800AB734(void) {
                 str5 = CreditsData[i].lines[4];
                 str6 = CreditsData[i].lines[5];
                 str7 = CreditsData[i].lines[6];
-                Effect_TypeK_Init(150.0f, 160.0f, 60.0f);
-                Effect_TypeAR_Init(20.0f, 24.0f, 1, 30.0f, 60.0f, 60.0f, 5, str1, 1, &D_8010875C);
-                Effect_TypeAQ_Init(24.0f, 136.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str2, 4, &D_8010875C);
-                Effect_TypeAQ_Init(36.0f, 160.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str3, 4, &D_8010875C);
-                Effect_TypeAQ_Init(24.0f, 184.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str4, 4, &D_8010875C);
-                Effect_TypeAQ_Init(36.0f, 208.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str5, 4, &D_8010875C);
-                Effect_TypeAQ_Init(24.0f, 232.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str6, 4, &D_8010875C);
-                Effect_TypeAQ_Init(36.0f, 256.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str7, 4, &D_8010875C);
+                Effect_CreditsRollWindow_Init(150.0f, 160.0f, 60.0f);
+                Effect_CreditsRollLine_Init(20.0f, 24.0f, 1, 30.0f, 60.0f, 60.0f, 5, str1, 1, &D_8010875C);
+                Effect_CreditsRollChars_Init(24.0f, 136.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str2, 4, &D_8010875C);
+                Effect_CreditsRollChars_Init(36.0f, 160.0f, 12.0f, 3.0f, 60.0f, 60.0f, 9, str3, 4, &D_8010875C);
+                Effect_CreditsRollChars_Init(24.0f, 184.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str4, 4, &D_8010875C);
+                Effect_CreditsRollChars_Init(36.0f, 208.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str5, 4, &D_8010875C);
+                Effect_CreditsRollChars_Init(24.0f, 232.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str6, 4, &D_8010875C);
+                Effect_CreditsRollChars_Init(36.0f, 256.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str7, 4, &D_8010875C);
                 break;
             case 17:
                 str1 = CreditsData[i].lines[0];
@@ -10007,28 +10007,28 @@ void func_800AB734(void) {
                 str3 = CreditsData[i].lines[2];
                 str4 = CreditsData[i].lines[3];
                 str5 = CreditsData[i].lines[4];
-                Effect_TypeK_Init(150.0f, 160.0f, 60.0f);
-                Effect_TypeAR_Init(16.0f, 24.0f, 1, 30.0f, 60.0f, 30.0f, 5, str1, 1, &D_8010875C);
-                Effect_TypeAQ_Init(24.0f, 112.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str2, 4, &D_8010875C);
-                Effect_TypeAQ_Init(48.0f, 136.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str3, 4, &D_8010875C);
-                Effect_TypeAQ_Init(24.0f, 160.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str4, 4, &D_8010875C);
-                Effect_TypeAQ_Init(48.0f, 184.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str5, 4, &D_8010875C);
+                Effect_CreditsRollWindow_Init(150.0f, 160.0f, 60.0f);
+                Effect_CreditsRollLine_Init(16.0f, 24.0f, 1, 30.0f, 60.0f, 30.0f, 5, str1, 1, &D_8010875C);
+                Effect_CreditsRollChars_Init(24.0f, 112.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str2, 4, &D_8010875C);
+                Effect_CreditsRollChars_Init(48.0f, 136.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str3, 4, &D_8010875C);
+                Effect_CreditsRollChars_Init(24.0f, 160.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str4, 4, &D_8010875C);
+                Effect_CreditsRollChars_Init(48.0f, 184.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str5, 4, &D_8010875C);
                 break;
             case 18:
                 str1 = CreditsData[i].lines[0];
                 str2 = CreditsData[i].lines[1];
                 str4 = CreditsData[i].lines[3];
-                Effect_TypeK_Init(150.0f, 0.0f, -120.0f);
-                Effect_TypeAR_Init(16.0f, 136.0f, 1, 30.0f, 60.0f, 30.0f, 5, str1, 1, &D_8010875C);
-                Effect_TypeAQ_Init(24.0f, 188.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str2, 4, &D_8010875C);
-                Effect_TypeAQ_Init(24.0f, 212.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str4, 4, &D_8010875C);
+                Effect_CreditsRollWindow_Init(150.0f, 0.0f, -120.0f);
+                Effect_CreditsRollLine_Init(16.0f, 136.0f, 1, 30.0f, 60.0f, 30.0f, 5, str1, 1, &D_8010875C);
+                Effect_CreditsRollChars_Init(24.0f, 188.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str2, 4, &D_8010875C);
+                Effect_CreditsRollChars_Init(24.0f, 212.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str4, 4, &D_8010875C);
                 break;
             case 19:
                 str1 = CreditsData[i].lines[0];
                 str2 = CreditsData[i].lines[1];
-                Effect_TypeK_Init(150.0f, 0.0f, 120.0f);
-                Effect_TypeAQ_Init(46.0f, 32.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str1, 4, &D_8010875C);
-                Effect_TypeAQ_Init(40.0f, 64.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str2, 4, &D_8010875C);
+                Effect_CreditsRollWindow_Init(150.0f, 0.0f, 120.0f);
+                Effect_CreditsRollChars_Init(46.0f, 32.0f, 12.0f, 3.0f, 60.0f, 60.0f, 12, str1, 4, &D_8010875C);
+                Effect_CreditsRollChars_Init(40.0f, 64.0f, 12.0f, 3.0f, 60.0f, 60.0f, 11, str2, 4, &D_8010875C);
                 break;
             }
         }
