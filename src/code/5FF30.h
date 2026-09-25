@@ -31,11 +31,21 @@ typedef struct stuff {
     u8 unk6[6];
 } stuff;
 
-typedef struct letterDef{
+typedef struct LetterDef{
     s16 x;
     s16 y;
     const char* letter;
-}letterDef;
+}LetterDef;
+
+typedef struct MenuItem {
+    s16 x;
+    s16 y;
+    s16 actionId;
+    s16 unused;
+    const char* text;
+} MenuItem;
+
+typedef MenuItem* Menu;
 
 typedef struct unk801FC9BC {
     u16 unk_00;
@@ -565,7 +575,7 @@ extern s16 D_80200CA8;
 extern OSTask D_800F04E0[2];
 extern unk801FFB88* D_801FFB88;
 extern unk801FC9BC D_801FC9BC[]; //probably not correct
-extern letterDef D_80100DF0[];
+extern LetterDef sContinueMenuLabels[];
 extern s32 D_800F0704;
 extern SaveFile gSaveFile;
 extern SaveFile* gSaveFiles;
@@ -643,7 +653,7 @@ extern s16 D_800FFEEC[];
 extern s8 D_80200B30;
 extern s16 sDebugBitfeild;
 extern u8 D_80200B28[];
-extern letterDef* D_801005F8[];
+extern LetterDef* sNameLetterTable[];
 extern s16 D_80200B1A;
 extern s16 D_80200B1C;
 extern s16 gSelectedBattleBGM;
@@ -655,7 +665,7 @@ extern f32 D_80108784;
 extern f32 D_80108788;
 extern f32 D_8010878C;
 extern s16 D_80200B1E;
-extern letterDef* D_80100F28[]; // coords and text for stage names
+extern LetterDef* sStageNameLabelTable[]; // coords and text for stage names
 extern const char* D_80100DD8[];
 extern s16 D_80100D88;
 extern s16 sDebugPerfectCodeFlag;

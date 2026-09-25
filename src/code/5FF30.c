@@ -328,70 +328,63 @@ s32 gSfxNextHandle = 1;
 s32 D_800FF760 = 0x40;
 
 
-typedef struct Unk800FF764 {
-    s16 unk_00;
-    s16 unk_02;
-    s16 unk_04;
-    s16 unk_06;
-    const char* unk_08;
-} Unk800FF764;
 
 //story
-extern const char D_8010D840[];
-extern const char D_8010D850[];
-extern const char D_8010D85C[];
-extern const char D_8010D874[];
+extern const char sText_Cancel_PauseMenu[];
+extern const char sText_Save[];
+extern const char sText_StageQuit[];
+extern const char sText_Exit_PauseMenu[];
 
-Unk800FF764 D_800FF764[] = {
-    {0x0070, 0x0058, 0, 0, D_8010D840},
-    {0x0080, 0x0078, 0x0002, 0x0000, D_8010D850},
-    {0x0050, 0x0098, 0x0001, 0x0000, D_8010D85C},
-    {0x0080, 0x00B8, 0x0007, 0x0000, D_8010D874},
-    {0, 0, 0}
+MenuItem sPauseMenu[] = {
+    {112, 88, 0, 0, sText_Cancel_PauseMenu},
+    {128, 120, 2, 0, sText_Save},
+    {80, 152, 1, 0, sText_StageQuit},
+    {128, 184, 7, 0, sText_Exit_PauseMenu},
+    ARRAY_END
 };
 
 //training (during round)
-extern const char D_8010D880[];
-extern const char D_8010D890[];
-extern const char D_8010D8A0[];
+extern const char sText_Cancel_Training[];
+extern const char sText_Restart[];
+extern const char sText_Exit_Training[];
 
-Unk800FF764 D_800FF7A0[] = {
-    {0x0070, 0x0058, 0, 0, D_8010D880},
-    {0x0068, 0x0078, 0x0006, 0x0000, D_8010D890},
-    {0x0080, 0x0098, 0x0007, 0x0000, D_8010D8A0},
-    {0, 0, 0},
+MenuItem sTrainingPauseMenu[] = {
+    {112, 88, 0, 0, sText_Cancel_Training},
+    {104, 120, 6, 0, sText_Restart},
+    {128, 152, 7, 0, sText_Exit_Training},
+    ARRAY_END,
 };
 
 //training (normal)
-extern const char D_8010D8AC[];
-extern const char D_8010D8BC[];
+extern const char sText_Cancel_QuitPrompt[];
+extern const char sText_Exit_QuitPrompt[];
 
-Unk800FF764 D_800FF7D0[] = {
-    {0x0070, 0x0058, 0, 0, D_8010D8AC},
-    {0x0080, 0x0078, 0x0007, 0x0000, D_8010D8BC},
-    {0, 0, 0}
+MenuItem sQuitPrompt[] = {
+    {112, 88, 0, 0, sText_Cancel_QuitPrompt},
+    {128, 120, 7, 0, sText_Exit_QuitPrompt},
+    ARRAY_END
 };
 
-extern const char D_8010D8C8[];
-extern const char D_8010D8D0[];
+extern const char sText_Yes_QuitPrompt[];
+extern const char sText_No_QuitPrompt[];
 
-Unk800FF764 D_800FF7F4[] = {
-    {0x0088, 0x0068, 0x0009, 0x0000, D_8010D8C8},
-    {0x008E, 0x0088, 0x0008, 0x0000, D_8010D8D0},
-    {0, 0, 0}
+MenuItem sQuitYesNo[] = {
+    {136, 104, 9, 0, sText_Yes_QuitPrompt},
+    {142, 136, 8, 0, sText_No_QuitPrompt},
+    ARRAY_END
 };
 
-extern const char D_8010D8D8[];
-extern const char D_8010D8E0[];
+extern const char sText_Yes_Confirm[];
+extern const char sText_No_Confirm[];
 
-Unk800FF764 D_800FF818[] = {
-    {0x0088, 0x0058, 0x0001, 0x0000, D_8010D8D8},
-    {0x008E, 0x0078, 0x0008, 0x0000, D_8010D8E0},
-    {0, 0, 0}
+MenuItem sConfirmYesNo[] = {
+    {136, 88, 1, 0, sText_Yes_Confirm},
+    {142, 120, 8, 0, sText_No_Confirm},
+    ARRAY_END
 };
 
-Unk800FF764* D_800FF83C[] = {D_800FF764, D_800FF7D0, D_800FF7A0};
-Unk800FF764* D_800FF848[] = {D_800FF7F4, D_800FF818, NULL};
+Menu sPauseMenuTable[] = {sPauseMenu, sQuitPrompt, sTrainingPauseMenu};
+Menu sYesNoMenuTable[] = {sQuitYesNo, sConfirmYesNo, NULL};
 
 s16 sStageBGMs[] = {
     BGM_JUNGLE_EXT,
@@ -1080,12 +1073,12 @@ const char* stageNames[] = {stageNameJungleLand, stageNameAntLand, stageNameBomb
 s16 D_80100348[] = {-1, 0x800, 0x900, 0x100, 0x500, 0x400, 0x600, 0x200, 0xA00};
 
 //save
-extern const char D_8010E0CC[];
-extern const char D_8010E0D4[];
-extern const char D_8010E0DC[];
-extern const char D_8010E0E4[];
+extern const char sText_DataA[];
+extern const char sText_DataB[];
+extern const char sText_DataC[];
+extern const char sText_DataD[];
 
-const char* D_8010035C[] = {D_8010E0CC, D_8010E0D4, D_8010E0DC, D_8010E0E4, NULL};
+const char* D_8010035C[] = {sText_DataA, sText_DataB, sText_DataC, sText_DataD, NULL};
 
 s16 LoadFilePositions[] = {
     //X,   Y
@@ -1096,34 +1089,34 @@ s16 LoadFilePositions[] = {
 };
 
 //????
-extern const char D_8010E0EC[];
-extern const char D_8010E0FC[];
-extern const char D_8010E10C[];
-extern const char D_8010E118[];
+extern const char sText_SNorm[];
+extern const char sText_SYesno[];
+extern const char sText_SOk[];
+extern const char sText_SQuit[];
 //???? part 2
-extern const char D_8010E128[];
-extern const char D_8010E138[];
-extern const char D_8010E148[];
-extern const char D_8010E154[];
+extern const char sText_LNorm[];
+extern const char sText_LYesno[];
+extern const char sText_LOk[];
+extern const char sText_LQuit[];
 //???? part 3
-extern const char D_8010E164[];
-extern const char D_8010E174[];
-extern const char D_8010E184[];
-extern const char D_8010E190[];
+extern const char sText_DNorm[];
+extern const char sText_DYesno[];
+extern const char sText_DOk[];
+extern const char sText_DQuit[];
 //???? part 4
-extern const char D_8010E1A0[];
-extern const char D_8010E1B0[];
-extern const char D_8010E1BC[];
-extern const char D_8010E1CC[];
-extern const char D_8010E1DC[];
-extern const char D_8010E1E8[];
+extern const char sText_CNorm[];
+extern const char sText_CTo[];
+extern const char sText_CBack[];
+extern const char sText_CYesno[];
+extern const char sText_COk[];
+extern const char sText_CQuit[];
 
 const char* D_80100380[] = {
-    D_8010E0EC, D_8010E0FC, D_8010E10C, D_8010E118,
-    D_8010E128, D_8010E138, D_8010E148, D_8010E154,
-    D_8010E164, D_8010E174, D_8010E184, D_8010E190,
-    D_8010E1A0, D_8010E1B0, D_8010E1BC, D_8010E1CC,
-    D_8010E1DC, D_8010E1E8, NULL
+    sText_SNorm, sText_SYesno, sText_SOk, sText_SQuit,
+    sText_LNorm, sText_LYesno, sText_LOk, sText_LQuit,
+    sText_DNorm, sText_DYesno, sText_DOk, sText_DQuit,
+    sText_CNorm, sText_CTo, sText_CBack, sText_CYesno,
+    sText_COk, sText_CQuit, NULL
 };
 
 s16 D_801003CC[] = {0x68, 0x69, 0x6A, 0x6B, 0x6C, 0x6D};
@@ -1149,21 +1142,21 @@ s16 D_801003F8[][2] = {
 };
 
 //battle mode
-extern const char D_8010E60C[];
-extern const char D_8010E618[];
-extern const char D_8010E624[];
-extern const char D_8010E630[];
-extern const char D_8010E63C[];
-extern const char D_8010E648[];
+extern const char sText_Davy[];
+extern const char sText_Jack[];
+extern const char sText_Fred[];
+extern const char sText_Linda[];
+extern const char sText_Black[];
+extern const char sText_White[];
 
-letterDef D_80100408[] = {
-    {-16, 96, D_8010E60C},
-    {-16, 96, D_8010E618},
-    {-16, 96, D_8010E624},
-    {-20, 96, D_8010E630},
-    {-20, 96, D_8010E63C},
-    {-20, 96, D_8010E648},
-    {0, 0, NULL},
+LetterDef sCharNameLabels[] = {
+    {-16, 96, sText_Davy},
+    {-16, 96, sText_Jack},
+    {-16, 96, sText_Fred},
+    {-20, 96, sText_Linda},
+    {-20, 96, sText_Black},
+    {-20, 96, sText_White},
+    ARRAY_END,
 };
 
 u16 D_80100440[] = {
@@ -1217,132 +1210,132 @@ s16 D_80100468[] = {
 };
 
 //battle mode
-extern const char D_8010E754[];
-extern const char D_8010E76C[];
-extern const char D_8010E784[];
-extern const char D_8010E7A4[];
-extern const char D_8010E7B8[];
+extern const char sText_BgmSelect[];
+extern const char sText_TimeLimit[];
+extern const char sText_ComPlayerNum[];
+extern const char sText_ComLevel[];
+extern const char sText_Exit_BattleOptions[];
 
-letterDef D_80100498[] = {
-    {40, 70, D_8010E754},
-    {40, 102, D_8010E76C},
-    {40, 134, D_8010E784},
-    {40, 162, D_8010E7A4},
-    {130, 194, D_8010E7B8},
-    {0, 0, NULL},
+LetterDef sBattleOptionLabels[] = {
+    {40, 70, sText_BgmSelect},
+    {40, 102, sText_TimeLimit},
+    {40, 134, sText_ComPlayerNum},
+    {40, 162, sText_ComLevel},
+    {130, 194, sText_Exit_BattleOptions},
+    ARRAY_END,
 };
 
 //music options for ^
-extern const char D_8010E7C4[];
-extern const char D_8010E7D4[];
-extern const char D_8010E7E0[];
-extern const char D_8010E7EC[];
+extern const char sText_Random[];
+extern const char sText_BGM1[];
+extern const char sText_BGM2[];
+extern const char sText_BGM3[];
 
-letterDef D_801004C8[] = {
-    {192, 70, D_8010E7C4},
-    {202, 70, D_8010E7D4},
-    {202, 70, D_8010E7E0},
-    {202, 70, D_8010E7EC},
-    {0, 0, NULL},
+LetterDef sBgmOptionLabels[] = {
+    {192, 70, sText_Random},
+    {202, 70, sText_BGM1},
+    {202, 70, sText_BGM2},
+    {202, 70, sText_BGM3},
+    ARRAY_END,
 };
 
 //davy name
-extern const char D_8010E878[];
-extern const char D_8010E87C[];
-extern const char D_8010E880[];
-extern const char D_8010E884[];
+extern const char sLetter_Davy0[];
+extern const char sLetter_Davy1[];
+extern const char sLetter_Davy2[];
+extern const char sLetter_Davy3[];
 
-letterDef D_801004F0[] = {
-    {88, 75, D_8010E878},
-    {128, 68, D_8010E87C},
-    {176, 68, D_8010E880},
-    {216, 75, D_8010E884},
-    {0, 0, NULL}
+LetterDef sNameLetters_Davy[] = {
+    {88, 75, sLetter_Davy0},
+    {128, 68, sLetter_Davy1},
+    {176, 68, sLetter_Davy2},
+    {216, 75, sLetter_Davy3},
+    ARRAY_END
 };
 
 //jack name
-extern const char D_8010E888[];
-extern const char D_8010E88C[];
-extern const char D_8010E890[];
-extern const char D_8010E894[];
+extern const char sLetter_Jack0[];
+extern const char sLetter_Jack1[];
+extern const char sLetter_Jack2[];
+extern const char sLetter_Jack3[];
 
-letterDef D_80100518[] = {
-    {88, 75, D_8010E888},
-    {128, 68, D_8010E88C},
-    {176, 68, D_8010E890},
-    {216, 75, D_8010E894},
-    {0, 0, NULL}
+LetterDef sNameLetters_Jack[] = {
+    {88, 75, sLetter_Jack0},
+    {128, 68, sLetter_Jack1},
+    {176, 68, sLetter_Jack2},
+    {216, 75, sLetter_Jack3},
+    ARRAY_END
 };
 
 //fred name
-extern const char D_8010E898[];
-extern const char D_8010E89C[];
-extern const char D_8010E8A0[];
-extern const char D_8010E8A4[];
+extern const char sLetter_Fred0[];
+extern const char sLetter_Fred1[];
+extern const char sLetter_Fred2[];
+extern const char sLetter_Fred3[];
 
-letterDef D_80100540[] = {
-    {88, 75, D_8010E898},
-    {128, 68, D_8010E89C},
-    {176, 68, D_8010E8A0},
-    {216, 75, D_8010E8A4},
-    {0, 0, NULL}
+LetterDef sNameLetters_Fred[] = {
+    {88, 75, sLetter_Fred0},
+    {128, 68, sLetter_Fred1},
+    {176, 68, sLetter_Fred2},
+    {216, 75, sLetter_Fred3},
+    ARRAY_END
 };
 
 //linda name
-extern const char D_8010E8A8[];
-extern const char D_8010E8AC[];
-extern const char D_8010E8B0[];
-extern const char D_8010E8B4[];
-extern const char D_8010E8B8[];
+extern const char sLetter_Linda0[];
+extern const char sLetter_Linda1[];
+extern const char sLetter_Linda2[];
+extern const char sLetter_Linda3[];
+extern const char sLetter_Linda4[];
 
-letterDef D_80100568[] = {
-    {88, 75, D_8010E8A8},
-    {116, 70, D_8010E8AC},
-    {152, 68, D_8010E8B0},
-    {188, 70, D_8010E8B4},
-    {216, 75, D_8010E8B8},
-    {0, 0, NULL}
+LetterDef sNameLetters_Linda[] = {
+    {88, 75, sLetter_Linda0},
+    {116, 70, sLetter_Linda1},
+    {152, 68, sLetter_Linda2},
+    {188, 70, sLetter_Linda3},
+    {216, 75, sLetter_Linda4},
+    ARRAY_END
 };
 
 //black name
-extern const char D_8010E8BC[];
-extern const char D_8010E8C0[];
-extern const char D_8010E8C4[];
-extern const char D_8010E8C8[];
-extern const char D_8010E8CC[];
+extern const char sLetter_Black0[];
+extern const char sLetter_Black1[];
+extern const char sLetter_Black2[];
+extern const char sLetter_Black3[];
+extern const char sLetter_Black4[];
 
-letterDef D_80100598[] = {
-    {88, 75, D_8010E8BC},
-    {116, 70, D_8010E8C0},
-    {152, 68, D_8010E8C4},
-    {188, 70, D_8010E8C8},
-    {216, 75, D_8010E8CC},
-    {0, 0, NULL}
+LetterDef sNameLetters_Black[] = {
+    {88, 75, sLetter_Black0},
+    {116, 70, sLetter_Black1},
+    {152, 68, sLetter_Black2},
+    {188, 70, sLetter_Black3},
+    {216, 75, sLetter_Black4},
+    ARRAY_END
 };
 
 //white name
-extern const char D_8010E8D0[];
-extern const char D_8010E8D4[];
-extern const char D_8010E8D8[];
-extern const char D_8010E8DC[];
-extern const char D_8010E8E0[];
+extern const char sLetter_White0[];
+extern const char sLetter_White1[];
+extern const char sLetter_White2[];
+extern const char sLetter_White3[];
+extern const char sLetter_White4[];
 
-letterDef D_801005C8[] = {
-    {88, 75, D_8010E8D0},
-    {116, 70, D_8010E8D4},
-    {152, 68, D_8010E8D8},
-    {188, 70, D_8010E8DC},
-    {216, 75, D_8010E8E0},
-    {0, 0, NULL}
+LetterDef sNameLetters_White[] = {
+    {88, 75, sLetter_White0},
+    {116, 70, sLetter_White1},
+    {152, 68, sLetter_White2},
+    {188, 70, sLetter_White3},
+    {216, 75, sLetter_White4},
+    ARRAY_END
 };
 
-letterDef* D_801005F8[] = {
-    D_801004F0,
-    D_80100518,
-    D_80100540,
-    D_80100568,
-    D_80100598,
-    D_801005C8,
+LetterDef* sNameLetterTable[] = {
+    sNameLetters_Davy,
+    sNameLetters_Jack,
+    sNameLetters_Fred,
+    sNameLetters_Linda,
+    sNameLetters_Black,
+    sNameLetters_White,
     NULL
 };
 
@@ -1663,47 +1656,47 @@ s16 D_80100D88 = 1;
 s16 D_80100D8C[] = {0, 1, 1, 1, 2, 6, 7, 7, 7, 8};
 
 //0-B
-extern const char D_8010E9A0[];
-extern const char D_8010E9A8[];
-extern const char D_8010E9B0[];
-extern const char D_8010E9B8[];
-extern const char D_8010E9C0[];
-extern const char D_8010E9C8[];
+extern const char sText_Hex01[];
+extern const char sText_Hex23[];
+extern const char sText_Hex45[];
+extern const char sText_Hex67[];
+extern const char sText_Hex89[];
+extern const char sText_HexAB[];
 
-letterDef D_80100DA0[] = {
-    {96, 186, D_8010E9A0},
-    {96, 186, D_8010E9A8},
-    {96, 186, D_8010E9B0},
-    {96, 186, D_8010E9B8},
-    {96, 186, D_8010E9C0},
-    {96, 186, D_8010E9C8},
-    {0, 0, NULL},
+LetterDef sHexPairLabels[] = {
+    {96, 186, sText_Hex01},
+    {96, 186, sText_Hex23},
+    {96, 186, sText_Hex45},
+    {96, 186, sText_Hex67},
+    {96, 186, sText_Hex89},
+    {96, 186, sText_HexAB},
+    ARRAY_END,
 };
 
 //options
-extern const char D_8010EA24[];
-extern const char D_8010EA3C[];
-extern const char D_8010EA54[];
-extern const char D_8010EA6C[];
-extern const char D_8010EA94[];
+extern const char sText_SoundMode[];
+extern const char sText_SoundTest[];
+extern const char sText_MusicTest[];
+extern const char sText_RankingDataClear[];
+extern const char sText_Exit_SoundTest[];
 
 const char* D_80100DD8[] = {
-    D_8010EA24,
-    D_8010EA3C,
-    D_8010EA54,
-    D_8010EA6C,
-    D_8010EA94,
+    sText_SoundMode,
+    sText_SoundTest,
+    sText_MusicTest,
+    sText_RankingDataClear,
+    sText_Exit_SoundTest,
     NULL
 };
 
 //continue/exit
-extern const char D_8010EB40[];
-extern const char D_8010EB54[];
+extern const char sText_Continue[];
+extern const char sText_Exit_Continue[];
 
-letterDef D_80100DF0[] = {
-    {48, 120, D_8010EB40},
-    {80, 152, D_8010EB54},
-    {0, 0, NULL}
+LetterDef sContinueMenuLabels[] = {
+    {48, 120, sText_Continue},
+    {80, 152, sText_Exit_Continue},
+    ARRAY_END
 };
 
 s16 D_80100E08[17][5] = {
@@ -1729,63 +1722,63 @@ s16 D_80100E08[17][5] = {
 s16 D_80100EB4[] = {84,86,85,87,88,89,89,89,89,0};
 
 //jungle, land
-extern const char D_8010EBA4[];
-extern const char D_8010EBB4[];
-letterDef D_80100EC8[] = {
-    {72, 56, D_8010EBA4},
-    {184, 56, D_8010EBB4}
+extern const char sText_Jungle[];
+extern const char sText_Land_Jungle[];
+LetterDef sStageNameLabels_Jungle[] = {
+    {72, 56, sText_Jungle},
+    {184, 56, sText_Land_Jungle}
 };
 
 //ant, land
-extern const char D_8010EBC0[];
-extern const char D_8010EBC8[];
-letterDef D_80100ED8[] = {
-    {96, 56, D_8010EBC0},
-    {160, 56, D_8010EBC8}
+extern const char sText_Ant[];
+extern const char sText_Land_Ant[];
+LetterDef sStageNameLabels_Ant[] = {
+    {96, 56, sText_Ant},
+    {160, 56, sText_Land_Ant}
 };
 
 //bomb, land
-extern const char D_8010EBD4[];
-extern const char D_8010EBE0[];
-letterDef D_80100EE8[] = {
-    {96, 56, D_8010EBD4},
-    {160, 56, D_8010EBE0}
+extern const char sText_Bomb[];
+extern const char sText_Land_Bomb[];
+LetterDef sStageNameLabels_Bomb[] = {
+    {96, 56, sText_Bomb},
+    {160, 56, sText_Land_Bomb}
 };
 
 //desert, castle
-extern const char D_8010EBEC[];
-extern const char D_8010EBFC[];
-letterDef D_80100EF8[] = {
-    {66, 56, D_8010EBEC},
-    {168, 56, D_8010EBFC}
+extern const char sText_Desert[];
+extern const char sText_Castle_Desert[];
+LetterDef sStageNameLabels_Desert[] = {
+    {66, 56, sText_Desert},
+    {168, 56, sText_Castle_Desert}
 };
 
 //kids, land
-extern const char D_8010EC0C[];
-extern const char D_8010EC18[];
-letterDef D_80100F08[] = {
-    {88, 56, D_8010EC0C},
-    {168, 56, D_8010EC18}
+extern const char sText_Kids[];
+extern const char sText_Land_Kids[];
+LetterDef sStageNameLabels_Kids[] = {
+    {88, 56, sText_Kids},
+    {168, 56, sText_Land_Kids}
 };
 
 //ghost, castle
-extern const char D_8010EC24[];
-extern const char D_8010EC30[];
-letterDef D_80100F18[] = {
-    {72, 56, D_8010EC24},
-    {168, 56, D_8010EC30}
+extern const char sText_Ghost[];
+extern const char sText_Castle_Ghost[];
+LetterDef sStageNameLabels_Ghost[] = {
+    {72, 56, sText_Ghost},
+    {168, 56, sText_Castle_Ghost}
 };
 
-letterDef* D_80100F28[] = {
-    D_80100EC8,
-    D_80100ED8,
-    D_80100EE8,
-    D_80100EF8,
-    D_80100F08,
-    D_80100F18,
-    D_80100F18,
-    D_80100F18,
-    D_80100F18,
+LetterDef* sStageNameLabelTable[] = {
+    sStageNameLabels_Jungle,
+    sStageNameLabels_Ant,
+    sStageNameLabels_Bomb,
+    sStageNameLabels_Desert,
+    sStageNameLabels_Kids,
+    sStageNameLabels_Ghost,
+    sStageNameLabels_Ghost,
+    sStageNameLabels_Ghost,
+    sStageNameLabels_Ghost,
     NULL,
 };
 
@@ -1808,44 +1801,44 @@ s32 D_80100F8C[17] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 s16 UseFixedRNGSeed = 0;
 
 //debug
-extern const char D_8010F028[];
-extern const char D_8010F02C[];
-extern const char D_8010F030[];
-extern const char D_8010F034[];
-extern const char D_8010F038[];
-extern const char D_8010F03C[];
-extern const char D_8010F040[];
-extern const char D_8010F044[];
-extern const char D_8010F048[];
-extern const char D_8010F04C[];
-extern const char D_8010F050[];
-extern const char D_8010F054[];
-extern const char D_8010F058[];
-extern const char D_8010F05C[];
-extern const char D_8010F060[];
-extern const char D_8010F064[];
-extern const char D_8010F068[];
-extern const char D_8010F06C[];
+extern const char sText_Abbr_Jungle[];
+extern const char sText_Abbr_Ant[];
+extern const char sText_Abbr_Bomb[];
+extern const char sText_Abbr_Desert[];
+extern const char sText_Abbr_Kids[];
+extern const char sText_Abbr_Ghost[];
+extern const char sText_Abbr_Boss[];
+extern const char sText_Num0[];
+extern const char sText_Num1[];
+extern const char sText_Num2[];
+extern const char sText_Num3[];
+extern const char sText_Num4[];
+extern const char sText_Num5[];
+extern const char sText_Num6[];
+extern const char sText_Num7[];
+extern const char sText_Num8[];
+extern const char sText_Num9[];
+extern const char sText_Num10[];
 
 const char* D_80100FD4[] = {
-    D_8010F028,
-    D_8010F02C,
-    D_8010F030,
-    D_8010F034,
-    D_8010F038,
-    D_8010F03C,
-    D_8010F040,
-    D_8010F044,
-    D_8010F048,
-    D_8010F04C,
-    D_8010F050,
-    D_8010F054,
-    D_8010F058,
-    D_8010F05C,
-    D_8010F060,
-    D_8010F064,
-    D_8010F068,
-    D_8010F06C,
+    sText_Abbr_Jungle,
+    sText_Abbr_Ant,
+    sText_Abbr_Bomb,
+    sText_Abbr_Desert,
+    sText_Abbr_Kids,
+    sText_Abbr_Ghost,
+    sText_Abbr_Boss,
+    sText_Num0,
+    sText_Num1,
+    sText_Num2,
+    sText_Num3,
+    sText_Num4,
+    sText_Num5,
+    sText_Num6,
+    sText_Num7,
+    sText_Num8,
+    sText_Num9,
+    sText_Num10,
     NULL
 };
 
@@ -3004,25 +2997,25 @@ void func_80088B7C(u8* arg0, u8* arg1, u8* arg2, u8* arg3, u8* arg4, u8* arg5) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800893C0.s")
 
 //story
-const char D_8010D840[] = "ＣＡＮＣＥＬ";
-const char D_8010D850[] = "ＳＡＶＥ";
-const char D_8010D85C[] = "ＳＴＡＧＥ  ＱＵＩＴ";
-const char D_8010D874[] = "ＥＸＩＴ";
+const char sText_Cancel_PauseMenu[] = "ＣＡＮＣＥＬ";
+const char sText_Save[] = "ＳＡＶＥ";
+const char sText_StageQuit[] = "ＳＴＡＧＥ  ＱＵＩＴ";
+const char sText_Exit_PauseMenu[] = "ＥＸＩＴ";
 
 //training (during round)
-const char D_8010D880[] = "ＣＡＮＣＥＬ";
-const char D_8010D890[] = "ＲＥＳＴＡＲＴ";
-const char D_8010D8A0[] = "ＥＸＩＴ";
+const char sText_Cancel_Training[] = "ＣＡＮＣＥＬ";
+const char sText_Restart[] = "ＲＥＳＴＡＲＴ";
+const char sText_Exit_Training[] = "ＥＸＩＴ";
 
 //training (normal)
-const char D_8010D8AC[] = "ＣＡＮＣＥＬ";
-const char D_8010D8BC[] = "ＥＸＩＴ";
+const char sText_Cancel_QuitPrompt[] = "ＣＡＮＣＥＬ";
+const char sText_Exit_QuitPrompt[] = "ＥＸＩＴ";
 
-const char D_8010D8C8[] = "ＹＥＳ";
-const char D_8010D8D0[] = "ＮＯ";
+const char sText_Yes_QuitPrompt[] = "ＹＥＳ";
+const char sText_No_QuitPrompt[] = "ＮＯ";
 
-const char D_8010D8D8[] = "ＹＥＳ";
-const char D_8010D8E0[] = "ＮＯ";
+const char sText_Yes_Confirm[] = "ＹＥＳ";
+const char sText_No_Confirm[] = "ＮＯ";
 
 // Display In Game Timer
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80089BA0.s")
@@ -3508,7 +3501,7 @@ void CTTaskList_Init(void) {
     gCTTaskTail->prev = gCTTaskHead;
 }
 
-const char D_8010DA14[] = "壊された %X\n";
+const char sFmtDestroyed[] = "壊された %X\n";
 
 void CTTask_Unlink_2(CTTask* task) {
     CTTask* nextTask = task->next;
@@ -6432,32 +6425,32 @@ void func_80097CF8(CTTask* task) {
 }
 
 //save
-const char D_8010E0CC[] = "DATA A";
-const char D_8010E0D4[] = "DATA B";
-const char D_8010E0DC[] = "DATA C";
-const char D_8010E0E4[] = "DATA D";
+const char sText_DataA[] = "DATA A";
+const char sText_DataB[] = "DATA B";
+const char sText_DataC[] = "DATA C";
+const char sText_DataD[] = "DATA D";
 //????
-const char D_8010E0EC[] = "Ｓ  ＮＯＲＭ";
-const char D_8010E0FC[] = "Ｓ  ＹＥＳＮＯ";
-const char D_8010E10C[] = "Ｓ  ＯＫ";
-const char D_8010E118[] = "Ｓ  ＱＵＩＴ";
+const char sText_SNorm[] = "Ｓ  ＮＯＲＭ";
+const char sText_SYesno[] = "Ｓ  ＹＥＳＮＯ";
+const char sText_SOk[] = "Ｓ  ＯＫ";
+const char sText_SQuit[] = "Ｓ  ＱＵＩＴ";
 //???? part 2
-const char D_8010E128[] = "Ｌ  ＮＯＲＭ";
-const char D_8010E138[] = "Ｌ  ＹＥＳＮＯ";
-const char D_8010E148[] = "Ｌ  ＯＫ";
-const char D_8010E154[] = "Ｌ  ＱＵＩＴ";
+const char sText_LNorm[] = "Ｌ  ＮＯＲＭ";
+const char sText_LYesno[] = "Ｌ  ＹＥＳＮＯ";
+const char sText_LOk[] = "Ｌ  ＯＫ";
+const char sText_LQuit[] = "Ｌ  ＱＵＩＴ";
 //???? part 3
-const char D_8010E164[] = "Ｄ  ＮＯＲＭ";
-const char D_8010E174[] = "Ｄ  ＹＥＳＮＯ";
-const char D_8010E184[] = "Ｄ  ＯＫ";
-const char D_8010E190[] = "Ｄ  ＱＵＩＴ";
+const char sText_DNorm[] = "Ｄ  ＮＯＲＭ";
+const char sText_DYesno[] = "Ｄ  ＹＥＳＮＯ";
+const char sText_DOk[] = "Ｄ  ＯＫ";
+const char sText_DQuit[] = "Ｄ  ＱＵＩＴ";
 //???? part 4
-const char D_8010E1A0[] = "Ｃ  ＮＯＲＭ";
-const char D_8010E1B0[] = "Ｃ  ＴＯ";
-const char D_8010E1BC[] = "Ｃ  ＢＡＣＫ";
-const char D_8010E1CC[] = "Ｃ  ＹＥＳＮＯ";
-const char D_8010E1DC[] = "Ｃ  ＯＫ";
-const char D_8010E1E8[] = "Ｃ  ＱＵＩＴ";
+const char sText_CNorm[] = "Ｃ  ＮＯＲＭ";
+const char sText_CTo[] = "Ｃ  ＴＯ";
+const char sText_CBack[] = "Ｃ  ＢＡＣＫ";
+const char sText_CYesno[] = "Ｃ  ＹＥＳＮＯ";
+const char sText_COk[] = "Ｃ  ＯＫ";
+const char sText_CQuit[] = "Ｃ  ＱＵＩＴ";
 
 //Save menu
 void func_80097D1C(CTTask* task) {
@@ -7325,12 +7318,12 @@ void func_8009D08C(CTTask* task) {
 
 
 //battle mode
-const char D_8010E60C[] = "ＤＡＶＹ";
-const char D_8010E618[] = "ＪＡＣＫ";
-const char D_8010E624[] = "ＦＲＥＤ";
-const char D_8010E630[] = "ＬＩＮＤＡ";
-const char D_8010E63C[] = "ＢＬＡＣＫ";
-const char D_8010E648[] = "ＷＨＩＴＥ";
+const char sText_Davy[] = "ＤＡＶＹ";
+const char sText_Jack[] = "ＪＡＣＫ";
+const char sText_Fred[] = "ＦＲＥＤ";
+const char sText_Linda[] = "ＬＩＮＤＡ";
+const char sText_Black[] = "ＢＬＡＣＫ";
+const char sText_White[] = "ＷＨＩＴＥ";
 
 void func_8009D1CC(CTTask*);
 
@@ -7527,7 +7520,7 @@ void func_8009DC40(CTTask* arg0) {
     u8 var_v1;
     u8 temp_v1;
     void (*temp_v0)(CTTask*);
-    letterDef sp58;
+    LetterDef sp58;
 
     temp_t6 = arg0->unk58.parent;
     var_v1 = temp_t6->unk54;
@@ -7552,7 +7545,7 @@ void func_8009DC40(CTTask* arg0) {
     arg0->dlist = ChameleonGfxs[arg0->unk_5C];
     temp_v1 = temp_t6->unk54;
     if ((temp_v1 == 0xF) || (temp_v1 < 7)) {
-        sp58 = D_80100408[arg0->unk_5C];
+        sp58 = sCharNameLabels[arg0->unk_5C];
         SetTextGradient(1, 1, 1, 0xFF, 1, 1, 1, 0x80, 1, 1, 1, 0xFF, 1, 1, 1, 0x80);
         func_80080864(arg0->pos.x + sp58.x, sp58.y, 0.0f, 0.5f, 0.0f, 0.0f, sp58.letter, 1);
     }
@@ -7799,17 +7792,17 @@ void func_8009F7F4(CTTask* task) {
 }
 
 //battle mode
-const char D_8010E754[] = "ＢＧＭ　ＳＥＬＥＣＴ";
-const char D_8010E76C[] = "ＴＩＭＥ　ＬＩＭＩＴ";
-const char D_8010E784[] = "ＣＯＭ　ＰＬＡＹＥＲ　ＮＵＭ";
-const char D_8010E7A4[] = "ＣＯＭ　ＬＥＶＥＬ";
-const char D_8010E7B8[] = "ＥＸＩＴ";
+const char sText_BgmSelect[] = "ＢＧＭ　ＳＥＬＥＣＴ";
+const char sText_TimeLimit[] = "ＴＩＭＥ　ＬＩＭＩＴ";
+const char sText_ComPlayerNum[] = "ＣＯＭ　ＰＬＡＹＥＲ　ＮＵＭ";
+const char sText_ComLevel[] = "ＣＯＭ　ＬＥＶＥＬ";
+const char sText_Exit_BattleOptions[] = "ＥＸＩＴ";
 
 //music options for ^
-const char D_8010E7C4[] = "ＲＡＮＤＯＭ";
-const char D_8010E7D4[] = "ＢＧＭ１";
-const char D_8010E7E0[] = "ＢＧＭ２";
-const char D_8010E7EC[] = "ＢＧＭ３";
+const char sText_Random[] = "ＲＡＮＤＯＭ";
+const char sText_BGM1[] = "ＢＧＭ１";
+const char sText_BGM2[] = "ＢＧＭ２";
+const char sText_BGM3[] = "ＢＧＭ３";
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009F890.s")
 
@@ -7971,38 +7964,38 @@ void func_800A10E8(CTTask* task) {
 
 //chameleon names
 //if you can somehow get it to build with them being one string be my guest
-const char D_8010E878[] = "Ｄ";
-const char D_8010E87C[] = "Ａ";
-const char D_8010E880[] = "Ｖ";
-const char D_8010E884[] = "Ｙ";
+const char sLetter_Davy0[] = "Ｄ";
+const char sLetter_Davy1[] = "Ａ";
+const char sLetter_Davy2[] = "Ｖ";
+const char sLetter_Davy3[] = "Ｙ";
 
-const char D_8010E888[] = "Ｊ";
-const char D_8010E88C[] = "Ａ";
-const char D_8010E890[] = "Ｃ";
-const char D_8010E894[] = "Ｋ";
+const char sLetter_Jack0[] = "Ｊ";
+const char sLetter_Jack1[] = "Ａ";
+const char sLetter_Jack2[] = "Ｃ";
+const char sLetter_Jack3[] = "Ｋ";
 
-const char D_8010E898[] = "Ｆ";
-const char D_8010E89C[] = "Ｒ";
-const char D_8010E8A0[] = "Ｅ";
-const char D_8010E8A4[] = "Ｄ";
+const char sLetter_Fred0[] = "Ｆ";
+const char sLetter_Fred1[] = "Ｒ";
+const char sLetter_Fred2[] = "Ｅ";
+const char sLetter_Fred3[] = "Ｄ";
 
-const char D_8010E8A8[] = "Ｌ";
-const char D_8010E8AC[] = "Ｉ";
-const char D_8010E8B0[] = "Ｎ";
-const char D_8010E8B4[] = "Ｄ";
-const char D_8010E8B8[] = "Ａ";
+const char sLetter_Linda0[] = "Ｌ";
+const char sLetter_Linda1[] = "Ｉ";
+const char sLetter_Linda2[] = "Ｎ";
+const char sLetter_Linda3[] = "Ｄ";
+const char sLetter_Linda4[] = "Ａ";
 
-const char D_8010E8BC[] = "Ｂ";
-const char D_8010E8C0[] = "Ｌ";
-const char D_8010E8C4[] = "Ａ";
-const char D_8010E8C8[] = "Ｃ";
-const char D_8010E8CC[] = "Ｋ";
+const char sLetter_Black0[] = "Ｂ";
+const char sLetter_Black1[] = "Ｌ";
+const char sLetter_Black2[] = "Ａ";
+const char sLetter_Black3[] = "Ｃ";
+const char sLetter_Black4[] = "Ｋ";
 
-const char D_8010E8D0[] = "Ｗ";
-const char D_8010E8D4[] = "Ｈ";
-const char D_8010E8D8[] = "Ｉ";
-const char D_8010E8DC[] = "Ｔ";
-const char D_8010E8E0[] = "Ｅ";
+const char sLetter_White0[] = "Ｗ";
+const char sLetter_White1[] = "Ｈ";
+const char sLetter_White2[] = "Ｉ";
+const char sLetter_White3[] = "Ｔ";
+const char sLetter_White4[] = "Ｅ";
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A10F0.s")
 
@@ -8121,12 +8114,12 @@ CTTask* func_800A20CC(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A22D4.s")
 
-const char D_8010E9A0[] = "０１";
-const char D_8010E9A8[] = "２３";
-const char D_8010E9B0[] = "４５";
-const char D_8010E9B8[] = "６７";
-const char D_8010E9C0[] = "８９";
-const char D_8010E9C8[] = "ＡＢ";
+const char sText_Hex01[] = "０１";
+const char sText_Hex23[] = "２３";
+const char sText_Hex45[] = "４５";
+const char sText_Hex67[] = "６７";
+const char sText_Hex89[] = "８９";
+const char sText_HexAB[] = "ＡＢ";
 
 //title screen
 void func_800A250C(CTTask* task) {
@@ -8275,11 +8268,11 @@ void func_800A2E18(CTTask* task) {
     }
 }
 
-const char D_8010EA24[] = "ＳＯＵＮＤ  ＭＯＤＥ";
-const char D_8010EA3C[] = "ＳＯＵＮＤ  ＴＥＳＴ";
-const char D_8010EA54[] = "ＭＵＳＩＣ  ＴＥＳＴ";
-const char D_8010EA6C[] = "ＲＡＮＫＩＮＧ  ＤＡＴＡ  ＣＬＥＡＲ";
-const char D_8010EA94[] = "　　　　　　　ＥＸＩＴ　　　　　　　";
+const char sText_SoundMode[] = "ＳＯＵＮＤ  ＭＯＤＥ";
+const char sText_SoundTest[] = "ＳＯＵＮＤ  ＴＥＳＴ";
+const char sText_MusicTest[] = "ＭＵＳＩＣ  ＴＥＳＴ";
+const char sText_RankingDataClear[] = "ＲＡＮＫＩＮＧ  ＤＡＴＡ  ＣＬＥＡＲ";
+const char sText_Exit_SoundTest[] = "　　　　　　　ＥＸＩＴ　　　　　　　";
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A2EF4.s")
 
@@ -8422,20 +8415,20 @@ void func_800A44D8(CTTask* arg0) {
 
     setPrimColor(0, 0, 0, arg0->unk60);
 
-    for (i = 0; D_80100DF0[i].letter != 0; i++) {
-        temp_f22 = D_80100DF0[i].x;
-        temp_f24 = D_80100DF0[i].y;
+    for (i = 0; sContinueMenuLabels[i].letter != 0; i++) {
+        temp_f22 = sContinueMenuLabels[i].x;
+        temp_f24 = sContinueMenuLabels[i].y;
         if (i == arg0->unk66) {
             SetTextGradient_TopBottom(10, 255, 10, 255, 200, 200, 0, 255);
         } else {
             SetTextGradient_TopBottom(160, 160, 160, 204, 40, 40, 40, 204);
         }
-        func_80080864(temp_f22, temp_f24, 0.0f, 1.0f, 0.0f, 0.0f, D_80100DF0[i].letter, 1);
+        func_80080864(temp_f22, temp_f24, 0.0f, 1.0f, 0.0f, 0.0f, sContinueMenuLabels[i].letter, 1);
     }
 }
 
-const char D_8010EB40[] = "ＣＯＮＴＩＮＵＥ";
-const char D_8010EB54[] = "ＥＸＩＴ";
+const char sText_Continue[] = "ＣＯＮＴＩＮＵＥ";
+const char sText_Exit_Continue[] = "ＥＸＩＴ";
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/GameOverMaster.s")
 
@@ -8705,18 +8698,18 @@ s32 func_800A5778(s32 arg0) {
 //i just dont enjoy having 5 copies of the same word
 #define land "ＬＡＮＤ"
 #define castle "ＣＡＳＴＬＥ"
-const char D_8010EBA4[] = "ＪＵＮＧＬＥ";
-const char D_8010EBB4[] = land;
-const char D_8010EBC0[] = "ＡＮＴ";
-const char D_8010EBC8[] = land;
-const char D_8010EBD4[] = "ＢＯＭＢ";
-const char D_8010EBE0[] = land;
-const char D_8010EBEC[] = "ＤＥＳＥＲＴ";
-const char D_8010EBFC[] = castle;
-const char D_8010EC0C[] = "ＫＩＤＳ";
-const char D_8010EC18[] = land;
-const char D_8010EC24[] = "ＧＨＯＳＴ";
-const char D_8010EC30[] = castle;
+const char sText_Jungle[] = "ＪＵＮＧＬＥ";
+const char sText_Land_Jungle[] = land;
+const char sText_Ant[] = "ＡＮＴ";
+const char sText_Land_Ant[] = land;
+const char sText_Bomb[] = "ＢＯＭＢ";
+const char sText_Land_Bomb[] = land;
+const char sText_Desert[] = "ＤＥＳＥＲＴ";
+const char sText_Castle_Desert[] = castle;
+const char sText_Kids[] = "ＫＩＤＳ";
+const char sText_Land_Kids[] = land;
+const char sText_Ghost[] = "ＧＨＯＳＴ";
+const char sText_Castle_Ghost[] = castle;
 
 //https://decomp.me/scratch/8wPlV
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/PrintSelectedStageInfo.s")
@@ -9466,24 +9459,24 @@ s32 SetLevelBitfield(s32 stageIdx) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A9298.s")
 
-const char D_8010F028[] = "Jun";
-const char D_8010F02C[] = "Ant";
-const char D_8010F030[] = "Bom";
-const char D_8010F034[] = "Des";
-const char D_8010F038[] = "Kid";
-const char D_8010F03C[] = "Gho";
-const char D_8010F040[] = "Bos";
-const char D_8010F044[] = "0";
-const char D_8010F048[] = "1";
-const char D_8010F04C[] = "2";
-const char D_8010F050[] = "3";
-const char D_8010F054[] = "4";
-const char D_8010F058[] = "5";
-const char D_8010F05C[] = "6";
-const char D_8010F060[] = "7";
-const char D_8010F064[] = "8";
-const char D_8010F068[] = "9";
-const char D_8010F06C[] = "10";
+const char sText_Abbr_Jungle[] = "Jun";
+const char sText_Abbr_Ant[] = "Ant";
+const char sText_Abbr_Bomb[] = "Bom";
+const char sText_Abbr_Desert[] = "Des";
+const char sText_Abbr_Kids[] = "Kid";
+const char sText_Abbr_Ghost[] = "Gho";
+const char sText_Abbr_Boss[] = "Bos";
+const char sText_Num0[] = "0";
+const char sText_Num1[] = "1";
+const char sText_Num2[] = "2";
+const char sText_Num3[] = "3";
+const char sText_Num4[] = "4";
+const char sText_Num5[] = "5";
+const char sText_Num6[] = "6";
+const char sText_Num7[] = "7";
+const char sText_Num8[] = "8";
+const char sText_Num9[] = "9";
+const char sText_Num10[] = "10";
 
 //debug 4p printer
 void func_800A93AC(ContMain* arg0) {

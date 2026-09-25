@@ -71,6 +71,8 @@
 
 #define LIST_END -1
 
+#define ARRAY_END {0}
+
 #define IS_STAGE_UNLOCKED(stage) TRUE << stage
 
 #define NO_BUTTON 0
